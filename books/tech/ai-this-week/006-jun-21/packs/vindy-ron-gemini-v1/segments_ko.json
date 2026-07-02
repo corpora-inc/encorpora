@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "ko",
+  "total_segments": 114,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "AI This Week에 오신 것을 환영합니다.",
+      "text_markdown": "AI This Week에 오신 것을 환영합니다.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week에 오신 것을 환영합니다.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "저는 Vindy입니다.",
+      "text_markdown": "저는 Vindy입니다.",
+      "title": "",
+      "tts": {
+        "text": "저는 Vindy입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "늘 그렇듯, Ron도 함께합니다.",
+      "text_markdown": "늘 그렇듯, Ron도 함께합니다.",
+      "title": "",
+      "tts": {
+        "text": "늘 그렇듯, Ron도 함께합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "함께하게 되어 좋습니다, Vindy.",
+      "text_markdown": "함께하게 되어 좋습니다, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "함께하게 되어 좋습니다, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "오늘은 2026년 6월 21일 일요일입니다.",
+      "text_markdown": "오늘은 2026년 6월 21일 일요일입니다.",
+      "title": "",
+      "tts": {
+        "text": "오늘은 이천이십육 년 유월 이십일 일 일요일입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "지난주에는 저희 자신에 대해 이야기했는데, 오늘은 정반대 방향으로 나아가 권력의 중심부까지 가보겠습니다.",
+      "text_markdown": "지난주에는 저희 자신에 대해 이야기했는데, 오늘은 정반대 방향으로 나아가 권력의 중심부까지 가보겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "지난주에는 저희 자신에 대해 이야기했는데, 오늘은 정반대 방향으로 나아가 권력의 중심부까지 가보겠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "누가 AI 배포를 통제하고, 누가 인프라 구축 비용을 부담하며, 누가 반도체를 소유하는가.",
+      "text_markdown": "누가 AI 배포를 통제하고, 누가 인프라 구축 비용을 부담하며, 누가 반도체를 소유하는가.",
+      "title": "",
+      "tts": {
+        "text": "누가 AI 배포를 통제하고, 누가 인프라 구축 비용을 부담하며, 누가 반도체를 소유하는가.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "먼저 — 미국 상무부가 지난 금요일 미국산 모델을 공개 서비스에서 철수시켰는데, 거기서부터 시작하겠습니다.",
+      "text_markdown": "먼저 — 미국 상무부가 지난 금요일 미국산 모델을 공개 서비스에서 철수시켰는데, 거기서부터 시작하겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "먼저 — 미국 상무부가 지난 금요일 미국산 모델을 공개 서비스에서 철수시켰는데, 거기서부터 시작하겠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그다음은 데이터 센터 구축 이야기로, 발표 내용과 실제 현실이 맞지 않는 부분을 살펴봅니다.",
+      "text_markdown": "그다음은 데이터 센터 구축 이야기로, 발표 내용과 실제 현실이 맞지 않는 부분을 살펴봅니다.",
+      "title": "",
+      "tts": {
+        "text": "그다음은 데이터 센터 구축 이야기로, 발표 내용과 실제 현실이 맞지 않는 부분을 살펴봅니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이어서 미국과 중국의 비교인데, 진부한 표현 대신 실제 핵심 제약 요인으로 접근합니다.",
+      "text_markdown": "이어서 미국과 중국의 비교인데, 진부한 표현 대신 실제 핵심 제약 요인으로 접근합니다.",
+      "title": "",
+      "tts": {
+        "text": "이어서 미국과 중국의 비교인데, 진부한 표현 대신 실제 핵심 제약 요인으로 접근합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그리고 이주의 개념 — Oracle 재무제표의 단 한 줄이 거의 모든 것을 말해줍니다.",
+      "text_markdown": "그리고 이주의 개념 — Oracle 재무제표의 단 한 줄이 거의 모든 것을 말해줍니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 이주의 개념 — Oracle 재무제표의 단 한 줄이 거의 모든 것을 말해줍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, Anthropic 이야기부터 시작하죠.",
+      "text_markdown": "Ron, Anthropic 이야기부터 시작하죠.",
+      "title": "",
+      "tts": {
+        "text": "Ron, Anthropic 이야기부터 시작하죠.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "6월 12일에 무슨 일이 있었는지.",
+      "text_markdown": "6월 12일에 무슨 일이 있었는지.",
+      "title": "",
+      "tts": {
+        "text": "유월 십이일에 무슨 일이 있었는지.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "6월 12일 금요일 동부 시간 오후 5시 21분, Anthropic은 최신 모델 두 개 — Claude Mythos 5와 Claude Fable 5 — 를 오프라인으로 전환했습니다.",
+      "text_markdown": "6월 12일 금요일 동부 시간 오후 5시 21분, Anthropic은 최신 모델 두 개 — Claude Mythos 5와 Claude Fable 5 — 를 오프라인으로 전환했습니다.",
+      "title": "",
+      "tts": {
+        "text": "유월 열이틀 금요일 동부 시간 오후 다섯 시 이십일 분, Anthropic은 최신 모델 두 개 — Claude Mythos 파이브와 Claude Fable 파이브 — 를 오프라인으로 전환했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "유지보수 때문도 아니고, 자체 안전 검토 때문도 아니었습니다.",
+      "text_markdown": "유지보수 때문도 아니고, 자체 안전 검토 때문도 아니었습니다.",
+      "title": "",
+      "tts": {
+        "text": "유지보수 때문도 아니고, 자체 안전 검토 때문도 아니었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "미국 상무부가 수출 통제를 근거로 지시를 내렸기 때문에 모델을 내린 것입니다.",
+      "text_markdown": "미국 상무부가 수출 통제를 근거로 지시를 내렸기 때문에 모델을 내린 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "미국 상무부가 수출 통제를 근거로 지시를 내렸기 때문에 모델을 내린 것입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "기술적인 이유는 무엇이었나요.",
+      "text_markdown": "기술적인 이유는 무엇이었나요.",
+      "title": "",
+      "tts": {
+        "text": "기술적인 이유는 무엇이었나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "다른 회사가 jailbreak을 시연했고, 그 결과물이 상무부가 수출 통제 대상으로 판단한 출력물을 생성했다고 합니다.",
+      "text_markdown": "다른 회사가 jailbreak을 시연했고, 그 결과물이 상무부가 수출 통제 대상으로 판단한 출력물을 생성했다고 합니다.",
+      "title": "",
+      "tts": {
+        "text": "다른 회사가 jailbreak을 시연했고, 그 결과물이 상무부가 수출 통제 대상으로 판단한 출력물을 생성했다고 합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune은 Amazon이 백악관에 이 사실을 알린 당사자라고 보도했습니다.",
+      "text_markdown": "Fortune은 Amazon이 백악관에 이 사실을 알린 당사자라고 보도했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Fortune은 Amazon이 백악관에 이 사실을 알린 당사자라고 보도했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropic은 어떻게 대응했나요.",
+      "text_markdown": "Anthropic은 어떻게 대응했나요.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic은 어떻게 대응했나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropic은 공개적으로 그 근거에 이의를 제기했습니다.",
+      "text_markdown": "Anthropic은 공개적으로 그 근거에 이의를 제기했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic은 공개적으로 그 근거에 이의를 제기했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "성명서에서 그 jailbreak을 — 인용하자면 — \"범위가 좁고 보편적이지 않다\"고 표현했으며, OpenAI의 GPT-5.5를 포함한 다른 모델에서도 동일한 출력물을 얻을 수 있다고 덧붙였습니다.",
+      "text_markdown": "성명서에서 그 jailbreak을 — 인용하자면 — \"범위가 좁고 보편적이지 않다\"고 표현했으며, OpenAI의 GPT-5.5를 포함한 다른 모델에서도 동일한 출력물을 얻을 수 있다고 덧붙였습니다.",
+      "title": "",
+      "tts": {
+        "text": "성명서에서 그 jailbreak을 — 인용하자면 — \"범위가 좁고 보편적이지 않다\"고 표현했으며, OpenAI의 GPT 파이브 포인트 파이브를 포함한 다른 모델에서도 동일한 출력물을 얻을 수 있다고 덧붙였습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "성명의 핵심 문구는 이렇습니다: \"정부의 조치는 오해에 기반한 것입니다.\"",
+      "text_markdown": "성명의 핵심 문구는 이렇습니다: \"정부의 조치는 오해에 기반한 것입니다.\"",
+      "title": "",
+      "tts": {
+        "text": "성명의 핵심 문구는 이렇습니다: \"정부의 조치는 오해에 기반한 것입니다.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "AI 연구소가 미국 정부에 이렇게 직접적으로 반박하는 것은 매우 이례적입니다.",
+      "text_markdown": "AI 연구소가 미국 정부에 이렇게 직접적으로 반박하는 것은 매우 이례적입니다.",
+      "title": "",
+      "tts": {
+        "text": "AI 연구소가 미국 정부에 이렇게 직접적으로 반박하는 것은 매우 이례적입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "맞습니다, 그리고 그 이면에 있는 구조적 사실이 바로 핵심입니다.",
+      "text_markdown": "맞습니다, 그리고 그 이면에 있는 구조적 사실이 바로 핵심입니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다, 그리고 그 이면에 있는 구조적 사실이 바로 핵심입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "상무부는 이제 수출 통제를 근거로 미국의 민간 AI 연구소에 모델 오프라인 전환을 명령할 수 있으며, 그 명령은 72시간 이내에 이행됩니다.",
+      "text_markdown": "상무부는 이제 수출 통제를 근거로 미국의 민간 AI 연구소에 모델 오프라인 전환을 명령할 수 있으며, 그 명령은 72시간 이내에 이행됩니다.",
+      "title": "",
+      "tts": {
+        "text": "상무부는 이제 수출 통제를 근거로 미국의 민간 AI 연구소에 모델 오프라인 전환을 명령할 수 있으며, 그 명령은 칠십이 시간 이내에 이행됩니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 명령이 옳았든 그렇지 않든.",
+      "text_markdown": "그 명령이 옳았든 그렇지 않든.",
+      "title": "",
+      "tts": {
+        "text": "그 명령이 옳았든 그렇지 않든.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 명령이 옳았든 그렇지 않든.",
+      "text_markdown": "그 명령이 옳았든 그렇지 않든.",
+      "title": "",
+      "tts": {
+        "text": "그 명령이 옳았든 그렇지 않든.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "중요한 것은 그 권한 자체, 그 속도, 그리고 그 선례입니다.",
+      "text_markdown": "중요한 것은 그 권한 자체, 그 속도, 그리고 그 선례입니다.",
+      "title": "",
+      "tts": {
+        "text": "중요한 것은 그 권한 자체, 그 속도, 그리고 그 선례입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그렇다면 Amazon의 역할은 무엇인가요.",
+      "text_markdown": "그렇다면 Amazon의 역할은 무엇인가요.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 Amazon의 역할은 무엇인가요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 부분이 주목해야 할 대목입니다.",
+      "text_markdown": "그 부분이 주목해야 할 대목입니다.",
+      "title": "",
+      "tts": {
+        "text": "그 부분이 주목해야 할 대목입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Amazon은 Anthropic의 주요 투자자이면서, 동시에 자체 기술 개발을 통해 파운데이션 모델 시장에서 Anthropic과 경쟁하는 관계이기도 합니다.",
+      "text_markdown": "Amazon은 Anthropic의 주요 투자자이면서, 동시에 자체 기술 개발을 통해 파운데이션 모델 시장에서 Anthropic과 경쟁하는 관계이기도 합니다.",
+      "title": "",
+      "tts": {
+        "text": "Amazon은 Anthropic의 주요 투자자이면서, 동시에 자체 기술 개발을 통해 파운데이션 모델 시장에서 Anthropic과 경쟁하는 관계이기도 합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "경쟁사의 정부 제보 하나로 라이벌 모델이 긴 주말 안에 오프라인으로 전환된다면, 그것은 산업 역학의 새로운 판도입니다.",
+      "text_markdown": "경쟁사의 정부 제보 하나로 라이벌 모델이 긴 주말 안에 오프라인으로 전환된다면, 그것은 산업 역학의 새로운 판도입니다.",
+      "title": "",
+      "tts": {
+        "text": "경쟁사의 정부 제보 하나로 라이벌 모델이 긴 주말 안에 오프라인으로 전환된다면, 그것은 산업 역학의 새로운 판도입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이제 인프라 구축 이야기로 넘어가죠.",
+      "text_markdown": "이제 인프라 구축 이야기로 넘어가죠.",
+      "title": "",
+      "tts": {
+        "text": "이제 인프라 구축 이야기로 넘어가죠.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate — OpenAI, Oracle, SoftBank의 데이터 센터 이니셔티브입니다.",
+      "text_markdown": "Stargate — OpenAI, Oracle, SoftBank의 데이터 센터 이니셔티브입니다.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI, Oracle, SoftBank의 데이터 센터 이니셔티브입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "실제 수치는 어떻게 됩니까.",
+      "text_markdown": "실제 수치는 어떻게 됩니까.",
+      "title": "",
+      "tts": {
+        "text": "실제 수치는 어떻게 됩니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate는 미국 내 11기가와트 규모의 용량을 발표했습니다.",
+      "text_markdown": "Stargate는 미국 내 11기가와트 규모의 용량을 발표했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Stargate는 미국 내 십일 기가와트 규모의 용량을 발표했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "6월 중순 기준으로, 텍사스주 Abilene 부지의 1단계에서 약 200메가와트가 가동 중입니다.",
+      "text_markdown": "6월 중순 기준으로, 텍사스주 Abilene 부지의 1단계에서 약 200메가와트가 가동 중입니다.",
+      "title": "",
+      "tts": {
+        "text": "유월 중순 기준으로, 텍사스주 Abilene 부지의 일 단계에서 약 이백 메가와트가 가동 중입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "발표된 11기가와트, 실제 가동 중인 200메가와트.",
+      "text_markdown": "발표된 11기가와트, 실제 가동 중인 200메가와트.",
+      "title": "",
+      "tts": {
+        "text": "발표된 십일 기가와트, 실제 가동 중인 이백 메가와트.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "한 줄로 요약되는 엄청난 간극입니다.",
+      "text_markdown": "한 줄로 요약되는 엄청난 간극입니다.",
+      "title": "",
+      "tts": {
+        "text": "한 줄로 요약되는 엄청난 간극입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "맞습니다, 그리고 가장 명확한 사례는 뉴멕시코에 있습니다.",
+      "text_markdown": "맞습니다, 그리고 가장 명확한 사례는 뉴멕시코에 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다, 그리고 가장 명확한 사례는 뉴멕시코에 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Doña Ana County 부지는 단일 Stargate 캠퍼스 중 최대 규모로, 4.5기가와트 규모로 계획되어 있습니다.",
+      "text_markdown": "Doña Ana County 부지는 단일 Stargate 캠퍼스 중 최대 규모로, 4.5기가와트 규모로 계획되어 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana County 부지는 단일 Stargate 캠퍼스 중 최대 규모로, 사점오 기가와트 규모로 계획되어 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "180억 달러 규모의 신디케이트 프로젝트 파이낸싱이 확정되었으며 — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — 여기에 Blue Owl이 30억 달러의 에쿼티를 추가로 투입합니다.",
+      "text_markdown": "180억 달러 규모의 신디케이트 프로젝트 파이낸싱이 확정되었으며 — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — 여기에 Blue Owl이 30억 달러의 에쿼티를 추가로 투입합니다.",
+      "title": "",
+      "tts": {
+        "text": "일백팔십억 달러 규모의 신디케이트 프로젝트 파이낸싱이 확정되었으며 — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — 여기에 Blue Owl이 삼십억 달러의 에쿼티를 추가로 투입합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그리고 현장의 공사 현황은 어떻습니까.",
+      "text_markdown": "그리고 현장의 공사 현황은 어떻습니까.",
+      "title": "",
+      "tts": {
+        "text": "그리고 현장의 공사 현황은 어떻습니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "지금까지 삽 한 번 뜨지 않았습니다.",
+      "text_markdown": "지금까지 삽 한 번 뜨지 않았습니다.",
+      "title": "",
+      "tts": {
+        "text": "지금까지 삽 한 번 뜨지 않았습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이 부지는 뉴멕시코 환경부로부터 대기질 허가를 기다리고 있으며, 원래 4월 22일로 예상되었으나 7,000건이 넘는 공개 의견 제출로 인해 7월 21일로 연기되었습니다.",
+      "text_markdown": "이 부지는 뉴멕시코 환경부로부터 대기질 허가를 기다리고 있으며, 원래 4월 22일로 예상되었으나 7,000건이 넘는 공개 의견 제출로 인해 7월 21일로 연기되었습니다.",
+      "title": "",
+      "tts": {
+        "text": "이 부지는 뉴멕시코 환경부로부터 대기질 허가를 기다리고 있으며, 원래 사월 이십이일로 예상되었으나 칠천 건이 넘는 공개 의견 제출로 인해 칠월 이십일일로 연기되었습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "180억 달러가 투입되었고, 삽 한 번 뜨지 않았으며, 대기질 허가 기한이 하나 남아 있습니다.",
+      "text_markdown": "180억 달러가 투입되었고, 삽 한 번 뜨지 않았으며, 대기질 허가 기한이 하나 남아 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "일백팔십억 달러가 투입되었고, 삽 한 번 뜨지 않았으며, 대기질 허가 기한이 하나 남아 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "숫자가 맞지 않을 경우 손실을 떠안는 쪽은 누구입니까.",
+      "text_markdown": "숫자가 맞지 않을 경우 손실을 떠안는 쪽은 누구입니까.",
+      "title": "",
+      "tts": {
+        "text": "숫자가 맞지 않을 경우 손실을 떠안는 쪽은 누구입니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "바로 거기서 Oracle이 흥미로워집니다.",
+      "text_markdown": "바로 거기서 Oracle이 흥미로워집니다.",
+      "title": "",
+      "tts": {
+        "text": "바로 거기서 Oracle이 흥미로워집니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oracle의 잔여 이행 의무(RPO) — 아직 제공되지 않은 계약 수익을 기록하는 회계 항목 — 가 2026 회계연도 3분기에 5,530억 달러에 달했습니다.",
+      "text_markdown": "Oracle의 잔여 이행 의무(RPO) — 아직 제공되지 않은 계약 수익을 기록하는 회계 항목 — 가 2026 회계연도 3분기에 5,530억 달러에 달했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Oracle의 잔여 이행 의무 — 아직 제공되지 않은 계약 수익을 기록하는 회계 항목 — 가 이천이십육 회계연도 삼분기에 오천오백삼십억 달러에 달했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이는 전년 대비 325% 증가한 수치이며, 그 증가분의 대부분은 공개적으로 OpenAI 및 Stargate와 연관된 것으로 확인됩니다.",
+      "text_markdown": "이는 전년 대비 325% 증가한 수치이며, 그 증가분의 대부분은 공개적으로 OpenAI 및 Stargate와 연관된 것으로 확인됩니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 전년 대비 삼백이십오 퍼센트 증가한 수치이며, 그 증가분의 대부분은 공개적으로 OpenAI 및 Stargate와 연관된 것으로 확인됩니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그리고 부채 측면은 어떻습니까.",
+      "text_markdown": "그리고 부채 측면은 어떻습니까.",
+      "title": "",
+      "tts": {
+        "text": "그리고 부채 측면은 어떻습니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "총 차입금은 2월 28일 기준 1,346억 달러에 달했습니다.",
+      "text_markdown": "총 차입금은 2월 28일 기준 1,346억 달러에 달했습니다.",
+      "title": "",
+      "tts": {
+        "text": "총 차입금은 이월 이십팔일 기준 일천삼백사십육억 달러에 달했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oracle은 2월 한 달에만 300억 달러를 조달했으며 — 투자등급 채권과 의무 전환 우선주를 통해 — 9개월 기간 동안 총 430억 달러의 새로운 선순위 채권을 발행했습니다.",
+      "text_markdown": "Oracle은 2월 한 달에만 300억 달러를 조달했으며 — 투자등급 채권과 의무 전환 우선주를 통해 — 9개월 기간 동안 총 430억 달러의 새로운 선순위 채권을 발행했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Oracle은 이월 한 달에만 삼백억 달러를 조달했으며 — 투자등급 채권과 의무 전환 우선주를 통해 — 구개월 기간 동안 총 사백삼십억 달러의 새로운 선순위 채권을 발행했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그렇다면 현재 포지션을 요약해 주십시오.",
+      "text_markdown": "그렇다면 현재 포지션을 요약해 주십시오.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 현재 포지션을 요약해 주십시오.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "5,530억 달러의 약정, 1,340억 달러의 부채, 그리고 대부분의 리스크를 짊어지는 핵심 고객 하나.",
+      "text_markdown": "5,530억 달러의 약정, 1,340억 달러의 부채, 그리고 대부분의 리스크를 짊어지는 핵심 고객 하나.",
+      "title": "",
+      "tts": {
+        "text": "오천오백삼십억 달러의 약정, 일천삼백사십억 달러의 부채, 그리고 대부분의 리스크를 짊어지는 핵심 고객 하나.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그것이 한 문장으로 요약한 이번 인프라 구축의 구조입니다.",
+      "text_markdown": "그것이 한 문장으로 요약한 이번 인프라 구축의 구조입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 한 문장으로 요약한 이번 인프라 구축의 구조입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "미국과 중국 비교로 넘어가겠습니다.",
+      "text_markdown": "미국과 중국 비교로 넘어가겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "미국과 중국 비교로 넘어가겠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "중국이 몇 개월 뒤처져 있다는 것이 흔한 통념입니다.",
+      "text_markdown": "중국이 몇 개월 뒤처져 있다는 것이 흔한 통념입니다.",
+      "title": "",
+      "tts": {
+        "text": "중국이 몇 개월 뒤처져 있다는 것이 흔한 통념입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "하지만 그 통념은 잘못된 기준을 측정하기 때문에 틀렸습니다.",
+      "text_markdown": "하지만 그 통념은 잘못된 기준을 측정하기 때문에 틀렸습니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 그 통념은 잘못된 기준을 측정하기 때문에 틀렸습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "6월 9일 월요일, Bloomberg는 국가발전개혁위원회가 작성한 중국의 초안 계획을 보도했습니다 — 2028년까지 전국 AI 데이터센터 그리드 구축을 위해 2조 위안, 약 2,950억 달러를 투입하는 계획입니다.",
+      "text_markdown": "6월 9일 월요일, Bloomberg는 국가발전개혁위원회가 작성한 중국의 초안 계획을 보도했습니다 — 2028년까지 전국 AI 데이터센터 그리드 구축을 위해 2조 위안, 약 2,950억 달러를 투입하는 계획입니다.",
+      "title": "",
+      "tts": {
+        "text": "유월 구일 월요일, Bloomberg는 국가발전개혁위원회가 작성한 중국의 초안 계획을 보도했습니다 — 이천이십팔년까지 전국 AI 데이터센터 그리드 구축을 위해 이조 위안, 약 이천구백오십억 달러를 투입하는 계획입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이 계획은 80%의 국내산 반도체 사용을 의무화하며, China Mobile과 China Telecom이 하나로 연결된 컴퓨트 패브릭으로 운영할 예정입니다.",
+      "text_markdown": "이 계획은 80%의 국내산 반도체 사용을 의무화하며, China Mobile과 China Telecom이 하나로 연결된 컴퓨트 패브릭으로 운영할 예정입니다.",
+      "title": "",
+      "tts": {
+        "text": "이 계획은 팔십 퍼센트의 국내산 반도체 사용을 의무화하며, China Mobile과 China Telecom이 하나로 연결된 컴퓨트 패브릭으로 운영할 예정입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 계획의 문제점은 무엇입니까.",
+      "text_markdown": "그 계획의 문제점은 무엇입니까.",
+      "title": "",
+      "tts": {
+        "text": "그 계획의 문제점은 무엇입니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "2조 위안, 국내산 반도체 80%, 2028년 기한 — 그리고 핵심 제약은 로직 칩이 아니라 고대역폭 메모리(HBM)입니다.",
+      "text_markdown": "2조 위안, 국내산 반도체 80%, 2028년 기한 — 그리고 핵심 제약은 로직 칩이 아니라 고대역폭 메모리(HBM)입니다.",
+      "title": "",
+      "tts": {
+        "text": "이조 위안, 국내산 반도체 팔십 퍼센트, 이천이십팔년 기한 — 그리고 핵심 제약은 로직 칩이 아니라 고대역폭 메모리입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "자세히 설명해 주십시오.",
+      "text_markdown": "자세히 설명해 주십시오.",
+      "title": "",
+      "tts": {
+        "text": "자세히 설명해 주십시오.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "모든 AI 가속기에는 로직 다이에 HBM 스택이 결합되어야 합니다.",
+      "text_markdown": "모든 AI 가속기에는 로직 다이에 HBM 스택이 결합되어야 합니다.",
+      "title": "",
+      "tts": {
+        "text": "모든 AI 가속기에는 로직 다이에 HBM 스택이 결합되어야 합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "HBM이 없으면 칩은 무용지물입니다.",
+      "text_markdown": "HBM이 없으면 칩은 무용지물입니다.",
+      "title": "",
+      "tts": {
+        "text": "HBM이 없으면 칩은 무용지물입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "중국은 수출 통제가 시행되기 전에 약 1,300만 개의 HBM 스택을 비축했으며 — 그중 1,140만 개가 Samsung 단독 공급분입니다.",
+      "text_markdown": "중국은 수출 통제가 시행되기 전에 약 1,300만 개의 HBM 스택을 비축했으며 — 그중 1,140만 개가 Samsung 단독 공급분입니다.",
+      "title": "",
+      "tts": {
+        "text": "중국은 수출 통제가 시행되기 전에 약 일천삼백만 개의 HBM 스택을 비축했으며 — 그중 일천백사십만 개가 Samsung 단독 공급분입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Huawei Ascend 910C의 패키징 비율을 적용하면, 그 비축량으로 약 160만 개의 칩을 만들 수 있습니다.",
+      "text_markdown": "Huawei Ascend 910C의 패키징 비율을 적용하면, 그 비축량으로 약 160만 개의 칩을 만들 수 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend 구백십 C의 패키징 비율을 적용하면, 그 비축량으로 약 백육십만 개의 칩을 만들 수 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그리고 그 이후에는 공급이 바닥납니다.",
+      "text_markdown": "그리고 그 이후에는 공급이 바닥납니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 그 이후에는 공급이 바닥납니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 이후에는 공급이 바닥납니다 — HBM 스택 1,300만 개로 160만 개의 칩을 만들 수 있으며, 그것이 상한선입니다.",
+      "text_markdown": "그 이후에는 공급이 바닥납니다 — HBM 스택 1,300만 개로 160만 개의 칩을 만들 수 있으며, 그것이 상한선입니다.",
+      "title": "",
+      "tts": {
+        "text": "그 이후에는 공급이 바닥납니다 — HBM 스택 일천삼백만 개로 백육십만 개의 칩을 만들 수 있으며, 그것이 상한선입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "CXMT가 공급하는 중국 국내산 HBM은 2026년에 약 200만 스택 생산 궤도에 있으며 — 이는 25만~30만 개의 가속기를 만들 수 있는 수량입니다.",
+      "text_markdown": "CXMT가 공급하는 중국 국내산 HBM은 2026년에 약 200만 스택 생산 궤도에 있으며 — 이는 25만~30만 개의 가속기를 만들 수 있는 수량입니다.",
+      "title": "",
+      "tts": {
+        "text": "CXMT가 공급하는 중국 국내산 HBM은 이천이십육년에 약 이백만 스택 생산 궤도에 있으며 — 이는 이십오만에서 삼십만 개의 가속기를 만들 수 있는 수량입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그렇다면 Huawei의 반도체 계획은 어떻게 됩니까.",
+      "text_markdown": "그렇다면 Huawei의 반도체 계획은 어떻게 됩니까.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 Huawei의 반도체 계획은 어떻게 됩니까.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bloomberg는 Huawei의 계획을 인용하여 2026년 910C 칩 생산 목표를 60만 개로, Ascend 제품군 전체로는 최대 160만 다이로 제시했습니다.",
+      "text_markdown": "Bloomberg는 Huawei의 계획을 인용하여 2026년 910C 칩 생산 목표를 60만 개로, Ascend 제품군 전체로는 최대 160만 다이로 제시했습니다.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg는 Huawei의 계획을 인용하여 이천이십육년 구백십 C 칩 생산 목표를 육십만 개로, Ascend 제품군 전체로는 최대 백육십만 다이로 제시했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그 수치인 60만 개는 목표치이지, 실제 출하량이 아닙니다.",
+      "text_markdown": "그 수치인 60만 개는 목표치이지, 실제 출하량이 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "그 수치인 육십만 개는 목표치이지, 실제 출하량이 아닙니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그리고 별개로, 수출 통제로 차단되기 전에 Huawei는 Sophgo와 Bitmain 페이퍼 컴퍼니를 통해 TSMC에서 제조된 290만 개 이상의 Ascend 다이를 확보했습니다.",
+      "text_markdown": "그리고 별개로, 수출 통제로 차단되기 전에 Huawei는 Sophgo와 Bitmain 페이퍼 컴퍼니를 통해 TSMC에서 제조된 290만 개 이상의 Ascend 다이를 확보했습니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 별개로, 수출 통제로 차단되기 전에 Huawei는 Sophgo와 Bitmain 페이퍼 컴퍼니를 통해 TSMC에서 제조된 이백구십만 개 이상의 Ascend 다이를 확보했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "수출 통제가 효과적이라는 서사에는 290만 다이 규모의 구멍이 뚫려 있습니다.",
+      "text_markdown": "수출 통제가 효과적이라는 서사에는 290만 다이 규모의 구멍이 뚫려 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "수출 통제가 효과적이라는 서사에는 이백구십만 다이 규모의 구멍이 뚫려 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "헤드라인으로 빠르게 넘어가겠습니다.",
+      "text_markdown": "헤드라인으로 빠르게 넘어가겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "헤드라인으로 빠르게 넘어가겠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이번 주 첫 번째 헤드라인, Broadcom입니다.",
+      "text_markdown": "이번 주 첫 번째 헤드라인, Broadcom입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 첫 번째 헤드라인, Broadcom입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Broadcom의 시가총액은 약 2조 달러입니다.",
+      "text_markdown": "Broadcom의 시가총액은 약 2조 달러입니다.",
+      "title": "",
+      "tts": {
+        "text": "Broadcom의 시가총액은 약 이조 달러입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "CEO인 Hock Tan은 6월 3일 실적 발표 콜에서 2027 회계연도 AI 반도체 매출 목표 1,000억 달러를 재확인했으며, 약 730억 달러 규모의 AI 수주잔고와 Alphabet 및 Meta와의 2031년까지 이어지는 장기 계약이 이를 뒷받침하고 있습니다.",
+      "text_markdown": "CEO인 Hock Tan은 6월 3일 실적 발표 콜에서 2027 회계연도 AI 반도체 매출 목표 1,000억 달러를 재확인했으며, 약 730억 달러 규모의 AI 수주잔고와 Alphabet 및 Meta와의 2031년까지 이어지는 장기 계약이 이를 뒷받침하고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "CEO인 Hock Tan은 유월 삼일 실적 발표 콜에서 이천이십칠 회계연도 AI 반도체 매출 목표 천억 달러를 재확인했으며, 약 칠백삼십억 달러 규모의 AI 수주잔고와 Alphabet 및 Meta와의 이천삼십일년까지 이어지는 장기 계약이 이를 뒷받침하고 있습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "시가총액 2조 달러, AI 매출 목표 1,000억 달러, 그러나 소비자 인지도는 거의 제로.",
+      "text_markdown": "시가총액 2조 달러, AI 매출 목표 1,000억 달러, 그러나 소비자 인지도는 거의 제로.",
+      "title": "",
+      "tts": {
+        "text": "시가총액 이조 달러, AI 매출 목표 천억 달러, 그러나 소비자 인지도는 거의 제로.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이번 주 두 번째 헤드라인, ASML입니다.",
+      "text_markdown": "이번 주 두 번째 헤드라인, ASML입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 두 번째 헤드라인, ASML입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "최첨단 로직 반도체 생산이 모두 의존하는 리소그래피 장비를 만드는 네덜란드 기업 ASML은 High-NA EUV 시스템을 약 3억 7,000만 달러에 판매합니다.",
+      "text_markdown": "최첨단 로직 반도체 생산이 모두 의존하는 리소그래피 장비를 만드는 네덜란드 기업 ASML은 High-NA EUV 시스템을 약 3억 7,000만 달러에 판매합니다.",
+      "title": "",
+      "tts": {
+        "text": "최첨단 로직 반도체 생산이 모두 의존하는 리소그래피 장비를 만드는 네덜란드 기업 ASML은 하이 NA EUV 시스템을 약 삼억 칠천만 달러에 판매합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "전 세계 연간 생산 능력은 20대 미만입니다.",
+      "text_markdown": "전 세계 연간 생산 능력은 20대 미만입니다.",
+      "title": "",
+      "tts": {
+        "text": "전 세계 연간 생산 능력은 이십 대 미만입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "대당 3억 7,000만 달러, 연간 20대 미만, 단 한 곳에서만 만든다 — 이것이 글로벌 실리콘의 실질적인 병목지점이며, 정책이 아닙니다.",
+      "text_markdown": "대당 3억 7,000만 달러, 연간 20대 미만, 단 한 곳에서만 만든다 — 이것이 글로벌 실리콘의 실질적인 병목지점이며, 정책이 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "대당 삼억 칠천만 달러, 연간 이십 대 미만, 단 한 곳에서만 만든다 — 이것이 글로벌 실리콘의 실질적인 병목지점이며, 정책이 아닙니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이번 주 세 번째 헤드라인, 수출 통제입니다.",
+      "text_markdown": "이번 주 세 번째 헤드라인, 수출 통제입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 세 번째 헤드라인, 수출 통제입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "상무부는 2025년 5월 13일 바이든 시대의 AI 확산 규칙을 철회했고, 새로운 BIS 집행 지침은 2026년 5월 31일이 되어서야 발표했습니다.",
+      "text_markdown": "상무부는 2025년 5월 13일 바이든 시대의 AI 확산 규칙을 철회했고, 새로운 BIS 집행 지침은 2026년 5월 31일이 되어서야 발표했습니다.",
+      "title": "",
+      "tts": {
+        "text": "상무부는 이천이십오년 오월 십삼일 바이든 시대의 AI 확산 규칙을 철회했고, 새로운 BIS 집행 지침은 이천이십육년 오월 삼십일일이 되어서야 발표했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "즉, 라이선스 요건이 적극적으로 집행되지 않은 약 1년간의 공백이 존재했다는 뜻입니다.",
+      "text_markdown": "즉, 라이선스 요건이 적극적으로 집행되지 않은 약 1년간의 공백이 존재했다는 뜻입니다.",
+      "title": "",
+      "tts": {
+        "text": "즉, 라이선스 요건이 적극적으로 집행되지 않은 약 일 년간의 공백이 존재했다는 뜻입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "날짜를 한번 세어 보십시오.",
+      "text_markdown": "날짜를 한번 세어 보십시오.",
+      "title": "",
+      "tts": {
+        "text": "날짜를 한번 세어 보십시오.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "미국 모델 하나를 차단하는 데 72시간, 반도체 수출 규정을 집행하는 데 380일 — 이 비대칭이 바로 이번 이야기의 핵심입니다.",
+      "text_markdown": "미국 모델 하나를 차단하는 데 72시간, 반도체 수출 규정을 집행하는 데 380일 — 이 비대칭이 바로 이번 이야기의 핵심입니다.",
+      "title": "",
+      "tts": {
+        "text": "미국 모델 하나를 차단하는 데 칠십이 시간, 반도체 수출 규정을 집행하는 데 삼백팔십 일 — 이 비대칭이 바로 이번 이야기의 핵심입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그렇다면 그 380일 동안 칩들은 어디로 갔을까요.",
+      "text_markdown": "그렇다면 그 380일 동안 칩들은 어디로 갔을까요.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 그 삼백팔십 일 동안 칩들은 어디로 갔을까요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "대부분은 동남아시아로 향했습니다.",
+      "text_markdown": "대부분은 동남아시아로 향했습니다.",
+      "title": "",
+      "tts": {
+        "text": "대부분은 동남아시아로 향했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "법무부는 3월 하순 Nvidia H100 및 A100 칩이 말레이시아와 싱가포르의 중간상을 통해 우회 수출됐다는 혐의를 담은 기소장을 공개했습니다.",
+      "text_markdown": "법무부는 3월 하순 Nvidia H100 및 A100 칩이 말레이시아와 싱가포르의 중간상을 통해 우회 수출됐다는 혐의를 담은 기소장을 공개했습니다.",
+      "title": "",
+      "tts": {
+        "text": "법무부는 삼월 하순 Nvidia H백 및 A백 칩이 말레이시아와 싱가포르의 중간상을 통해 우회 수출됐다는 혐의를 담은 기소장을 공개했습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune은 5월에 물류 과정을 보여주는 암호화된 문자 메시지를 공개했으며, Super Micro는 25억 달러 규모의 유령 회사 사건에 연루된 것으로 알려졌습니다.",
+      "text_markdown": "Fortune은 5월에 물류 과정을 보여주는 암호화된 문자 메시지를 공개했으며, Super Micro는 25억 달러 규모의 유령 회사 사건에 연루된 것으로 알려졌습니다.",
+      "title": "",
+      "tts": {
+        "text": "Fortune은 오월에 물류 과정을 보여주는 암호화된 문자 메시지를 공개했으며, Super Micro는 이십오억 달러 규모의 유령 회사 사건에 연루된 것으로 알려졌습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "트럼프 행정부는 말레이시아와 태국을 겨냥한 새로운 반도체 수출 규제를 입안 중인 것으로 알려졌습니다.",
+      "text_markdown": "트럼프 행정부는 말레이시아와 태국을 겨냥한 새로운 반도체 수출 규제를 입안 중인 것으로 알려졌습니다.",
+      "title": "",
+      "tts": {
+        "text": "트럼프 행정부는 말레이시아와 태국을 겨냥한 새로운 반도체 수출 규제를 입안 중인 것으로 알려졌습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "한 문장으로 정리하면 이렇습니다.",
+      "text_markdown": "한 문장으로 정리하면 이렇습니다.",
+      "title": "",
+      "tts": {
+        "text": "한 문장으로 정리하면 이렇습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "칩들은 선전으로 직행하지 않습니다 — 먼저 페낭과 싱가포르를 거칩니다.",
+      "text_markdown": "칩들은 선전으로 직행하지 않습니다 — 먼저 페낭과 싱가포르를 거칩니다.",
+      "title": "",
+      "tts": {
+        "text": "칩들은 선전으로 직행하지 않습니다 — 먼저 페낭과 싱가포르를 거칩니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이번 주의 개념 — 잔여 이행 의무(Remaining Performance Obligations).",
+      "text_markdown": "이번 주의 개념 — 잔여 이행 의무(Remaining Performance Obligations).",
+      "title": "",
+      "tts": {
+        "text": "이번 주의 개념 — 잔여 이행 의무(Remaining Performance Obligations).",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "RPO는 기업이 계약을 체결했지만 아직 이행하지 않은 계약의 달러 가치를 기록하는 회계 항목입니다.",
+      "text_markdown": "RPO는 기업이 계약을 체결했지만 아직 이행하지 않은 계약의 달러 가치를 기록하는 회계 항목입니다.",
+      "title": "",
+      "tts": {
+        "text": "RPO는 기업이 계약을 체결했지만 아직 이행하지 않은 계약의 달러 가치를 기록하는 회계 항목입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이는 미래 지향적인 지표로, 오늘 현재 은행에 있는 돈이 아니라 미래 매출에 대해 알려줍니다.",
+      "text_markdown": "이는 미래 지향적인 지표로, 오늘 현재 은행에 있는 돈이 아니라 미래 매출에 대해 알려줍니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 미래 지향적인 지표로, 오늘 현재 은행에 있는 돈이 아니라 미래 매출에 대해 알려줍니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "그렇다면 Oracle에 있어서 이것이 왜 중요할까요.",
+      "text_markdown": "그렇다면 Oracle에 있어서 이것이 왜 중요할까요.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 Oracle에 있어서 이것이 왜 중요할까요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "5,530억 달러의 RPO가 단일 고객의 단일 구축 프로젝트에 크게 집중되어 있다는 것은, Oracle이 향후 수년간 막대한 규모의 컴퓨팅을 제공하겠다고 약속했는데 그 고객의 수익 모델 자체가 여전히 논쟁 중이라는 것을 의미합니다.",
+      "text_markdown": "5,530억 달러의 RPO가 단일 고객의 단일 구축 프로젝트에 크게 집중되어 있다는 것은, Oracle이 향후 수년간 막대한 규모의 컴퓨팅을 제공하겠다고 약속했는데 그 고객의 수익 모델 자체가 여전히 논쟁 중이라는 것을 의미합니다.",
+      "title": "",
+      "tts": {
+        "text": "오천오백삼십억 달러의 RPO가 단일 고객의 단일 구축 프로젝트에 크게 집중되어 있다는 것은, Oracle이 향후 수년간 막대한 규모의 컴퓨팅을 제공하겠다고 약속했는데 그 고객의 수익 모델 자체가 여전히 논쟁 중이라는 것을 의미합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "이 계약들이 이행된다면, Oracle은 10년에 한 번 있을 딜을 성사시킨 것입니다.",
+      "text_markdown": "이 계약들이 이행된다면, Oracle은 10년에 한 번 있을 딜을 성사시킨 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "이 계약들이 이행된다면, Oracle은 십 년에 한 번 있을 딜을 성사시킨 것입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "하지만 계약이 지연되거나 재협상된다면 — Oracle은 계약이 줄어드는 동안 부채를 짊어지게 됩니다.",
+      "text_markdown": "하지만 계약이 지연되거나 재협상된다면 — Oracle은 계약이 줄어드는 동안 부채를 짊어지게 됩니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 계약이 지연되거나 재협상된다면 — Oracle은 계약이 줄어드는 동안 부채를 짊어지게 됩니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "따라서 기술 기업의 공시에서 RPO 수치를 보게 된다면.",
+      "text_markdown": "따라서 기술 기업의 공시에서 RPO 수치를 보게 된다면.",
+      "title": "",
+      "tts": {
+        "text": "따라서 기술 기업의 공시에서 RPO 수치를 보게 된다면.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "고객이 누구인지, 의무가 얼마나 집중되어 있는지, 그리고 회사가 실제로 이행하려면 어떤 조건이 충족되어야 하는지를 살펴보십시오.",
+      "text_markdown": "고객이 누구인지, 의무가 얼마나 집중되어 있는지, 그리고 회사가 실제로 이행하려면 어떤 조건이 충족되어야 하는지를 살펴보십시오.",
+      "title": "",
+      "tts": {
+        "text": "고객이 누구인지, 의무가 얼마나 집중되어 있는지, 그리고 회사가 실제로 이행하려면 어떤 조건이 충족되어야 하는지를 살펴보십시오.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "RPO는 각주 속에 손해를 보는 당사자들이 드러나는 곳입니다.",
+      "text_markdown": "RPO는 각주 속에 손해를 보는 당사자들이 드러나는 곳입니다.",
+      "title": "",
+      "tts": {
+        "text": "RPO는 각주 속에 손해를 보는 당사자들이 드러나는 곳입니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "마무리하기 좋은 지점이네요.",
+      "text_markdown": "마무리하기 좋은 지점이네요.",
+      "title": "",
+      "tts": {
+        "text": "마무리하기 좋은 지점이네요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, 설명해 주셔서 감사합니다.",
+      "text_markdown": "Ron, 설명해 주셔서 감사합니다.",
+      "title": "",
+      "tts": {
+        "text": "Ron, 설명해 주셔서 감사합니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "언제든지요, Vindy — 함께해서 좋았습니다.",
+      "text_markdown": "언제든지요, Vindy — 함께해서 좋았습니다.",
+      "title": "",
+      "tts": {
+        "text": "언제든지요, Vindy — 함께해서 좋았습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "지금까지 2026년 6월 21일 자 AI This Week였습니다.",
+      "text_markdown": "지금까지 2026년 6월 21일 자 AI This Week였습니다.",
+      "title": "",
+      "tts": {
+        "text": "지금까지 이천이십육년 유월 이십일일 자 AI This Week였습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "다음 주에는 오픈 웨이트 모델과 소규모 연구소 소식으로 돌아오겠습니다.",
+      "text_markdown": "다음 주에는 오픈 웨이트 모델과 소규모 연구소 소식으로 돌아오겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "다음 주에는 오픈 웨이트 모델과 소규모 연구소 소식으로 돌아오겠습니다.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "다음 일요일까지, 건강하게 지내세요.",
+      "text_markdown": "다음 일요일까지, 건강하게 지내세요.",
+      "title": "",
+      "tts": {
+        "text": "다음 일요일까지, 건강하게 지내세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

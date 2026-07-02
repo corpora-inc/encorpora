@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "kn",
+  "total_segments": 167,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "AI This Weekಗೆ ನಿಮ್ಮೆಲ್ಲರಿಗೂ ಆತ್ಮೀಯ ಸ್ವಾಗತ.",
+      "text_markdown": "AI This Weekಗೆ ನಿಮ್ಮೆಲ್ಲರಿಗೂ ಆತ್ಮೀಯ ಸ್ವಾಗತ.",
+      "title": "",
+      "tts": {
+        "text": "ಎಐ ದಿಸ್ ವೀಕ್‌ಗೆ ನಿಮ್ಮೆಲ್ಲರಿಗೂ ಆತ್ಮೀಯ ಸ್ವಾಗತ.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನಾನು ವಿಂಡಿ ಆಗಿದ್ದೇನೆ.",
+      "text_markdown": "ನಾನು ವಿಂಡಿ ಆಗಿದ್ದೇನೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನಾನು ವಿಂಡಿ ಆಗಿದ್ದೇನೆ.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+      "text_markdown": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇಲ್ಲಿರುವುದು ಒಳ್ಳೆಯದು, Vindy.",
+      "text_markdown": "ಇಲ್ಲಿರುವುದು ಒಳ್ಳೆಯದು, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ಇಲ್ಲಿರುವುದು ಒಳ್ಳೆಯದು, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇಂದು ಬುಧವಾರ, May 20, 2026.",
+      "text_markdown": "ಇಂದು ಬುಧವಾರ, May 20, 2026.",
+      "title": "",
+      "tts": {
+        "text": "ಇಂದು ಬುಧವಾರ, ಮೇ ಇಪ್ಪತ್ತು, ಎರಡಾವಿರದ ಇಪ್ಪತ್ತಾರು.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಒಂದು ಕಾರ್ಯನಿರತ ವಾರವಾಗಿತ್ತು.",
+      "text_markdown": "ಇದು ಒಂದು ಕಾರ್ಯನಿರತ ವಾರವಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಒಂದು ಕಾರ್ಯನಿರತ ವಾರವಾಗಿತ್ತು.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Google ತನ್ನ developer conference ನ್ನು ನಡೆಸಿತು, Pope ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯ ಬಗ್ಗೆ ಒಂದು encyclical ಅನ್ನು ಮುಗಿಸಿದರು, ಮತ್ತು open-weights ಪ್ರಪಂಚವು ಎಲ್ಲರೂ stages ಹೊಂದಿದ್ದಾಗ shipping ಮಾಡುತ್ತಲೇ ಇತ್ತು.",
+      "text_markdown": "Google ತನ್ನ developer conference ನ್ನು ನಡೆಸಿತು, Pope ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯ ಬಗ್ಗೆ ಒಂದು encyclical ಅನ್ನು ಮುಗಿಸಿದರು, ಮತ್ತು open-weights ಪ್ರಪಂಚವು ಎಲ್ಲರೂ stages ಹೊಂದಿದ್ದಾಗ shipping ಮಾಡುತ್ತಲೇ ಇತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "Google ತನ್ನ developer conference ನ್ನು ನಡೆಸಿತು, Pope ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯ ಬಗ್ಗೆ ಒಂದು encyclical ಅನ್ನು ಮುಗಿಸಿದರು, ಮತ್ತು ಓಪನ್ ವೇಟ್ಸ್ ಪ್ರಪಂಚವು ಎಲ್ಲರೂ stages ಹೊಂದಿದ್ದಾಗ shipping ಮಾಡುತ್ತಲೇ ಇತ್ತು.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ಈ ವಾರ open weights ನಲ್ಲಿ ಏನು ಚಲಿಸಿತು.",
+      "text_markdown": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ಈ ವಾರ open weights ನಲ್ಲಿ ಏನು ಚಲಿಸಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ಈ ವಾರ open weights ನಲ್ಲಿ ಏನು ಚಲಿಸಿತು.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Leaderboards ಎಲ್ಲಿ ಭೂಮಿ ಮಾಡಿದವು.",
+      "text_markdown": "Leaderboards ಎಲ್ಲಿ ಭೂಮಿ ಮಾಡಿದವು.",
+      "title": "",
+      "tts": {
+        "text": "Leaderboards ಎಲ್ಲಿ ಭೂಮಿ ಮಾಡಿದವು.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ದೊಡ್ಡ ಸಂಶೋಧನಾ ಪ್ರಯೋಗಾಲಯಗಳಿಂದ ಬಂದ ಸುದ್ದಿಶೀರ್ಷಿಕೆಗಳ ಮೂಲಕ ಒಂದು ಚುರುಕಾದ ಅವಲೋಕನ.",
+      "text_markdown": "ದೊಡ್ಡ ಸಂಶೋಧನಾ ಪ್ರಯೋಗಾಲಯಗಳಿಂದ ಬಂದ ಸುದ್ದಿಶೀರ್ಷಿಕೆಗಳ ಮೂಲಕ ಒಂದು ಚುರುಕಾದ ಅವಲೋಕನ.",
+      "title": "",
+      "tts": {
+        "text": "ದೊಡ್ಡ ಸಂಶೋಧನಾ ಪ್ರಯೋಗಾಲಯಗಳಿಂದ ಬಂದ ಸುದ್ದಿಶೀರ್ಷಿಕೆಗಳ ಮೂಲಕ ಒಂದು ಚುರುಕಾದ ಅವಲೋಕನ.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನಮ್ಮ ಪ್ರಮುಖ ಸುದ್ದಿ, ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯ ಕುರಿತು ವ್ಯಾಟಿಕನ್‌ನ ಮೊದಲ ಧರ್ಮಪತ್ರ.",
+      "text_markdown": "ನಮ್ಮ ಪ್ರಮುಖ ಸುದ್ದಿ, ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯ ಕುರಿತು ವ್ಯಾಟಿಕನ್‌ನ ಮೊದಲ ಧರ್ಮಪತ್ರ.",
+      "title": "",
+      "tts": {
+        "text": "ನಮ್ಮ ಪ್ರಮುಖ ಸುದ್ದಿ, ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯ ಕುರಿತು ವ್ಯಾಟಿಕನ್‌ನ ಮೊದಲ ಧರ್ಮಪತ್ರ.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ವಾರದ ಪರಿಕಲ್ಪನೆಯು quantization — 7-billion-parameter model ಒಂದು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಹೇಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ.",
+      "text_markdown": "ಮತ್ತು ವಾರದ ಪರಿಕಲ್ಪನೆಯು quantization — 7-billion-parameter model ಒಂದು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಹೇಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ವಾರದ ಪರಿಕಲ್ಪನೆಯು quantization — ಏಳು ಬಿಲಿಯನ್ parameter model ಒಂದು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಹೇಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ron, ಪ್ರಾರಂಭಕ್ಕೆ open weights ವಿಚಾರದಿಂದ ಶುರುಮಾಡೋಣ.",
+      "text_markdown": "Ron, ಪ್ರಾರಂಭಕ್ಕೆ open weights ವಿಚಾರದಿಂದ ಶುರುಮಾಡೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ರಾನ್, ಪ್ರಾರಂಭಕ್ಕೆ ಮುಕ್ತ ಮಾದರಿ ತೂಕಗಳ ವಿಚಾರದಿಂದ ಶುರುಮಾಡೋಣ.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ವಾರ community ನಲ್ಲಿ ಏನು ಚಲಿಸುತ್ತಿದೆ?",
+      "text_markdown": "ಈ ವಾರ community ನಲ್ಲಿ ಏನು ಚಲಿಸುತ್ತಿದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರ community ನಲ್ಲಿ ಏನು ಚಲಿಸುತ್ತಿದೆ?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ಅತಿ ದೊಡ್ಡ open-weights ಕಥೆಯು ಯಾರು ಎಲ್ಲಿ training ಮಾಡುತ್ತಿದ್ದಾರೆ ಎಂಬುದು.",
+      "text_markdown": "ಈಗ ಅತಿ ದೊಡ್ಡ open-weights ಕಥೆಯು ಯಾರು ಎಲ್ಲಿ training ಮಾಡುತ್ತಿದ್ದಾರೆ ಎಂಬುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ಅತಿ ದೊಡ್ಡ ಓಪನ್ ವೇಟ್ಸ್ ಕಥೆಯು ಯಾರು ಎಲ್ಲಿ training ಮಾಡುತ್ತಿದ್ದಾರೆ ಎಂಬುದು.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇತ್ತೀಚಿನ ಅತ್ಯಂತ ಆಸಕ್ತಿಕರವಾದ ಎರಡು open releases ಗಳು non-NVIDIA silicon ನಲ್ಲಿ training ಪೂರ್ಣಗೊಳಿಸಿದ್ದವು.",
+      "text_markdown": "ಇತ್ತೀಚಿನ ಅತ್ಯಂತ ಆಸಕ್ತಿಕರವಾದ ಎರಡು open releases ಗಳು non-NVIDIA silicon ನಲ್ಲಿ training ಪೂರ್ಣಗೊಳಿಸಿದ್ದವು.",
+      "title": "",
+      "tts": {
+        "text": "ಇತ್ತೀಚಿನ ಅತ್ಯಂತ ಆಸಕ್ತಿಕರವಾದ ಎರಡು ಓಪನ್ ರಿಲೀಸ್ ಗಳು ನಾನ್ ಎನ್ ವಿಡಿಯಾ ಸಿಲಿಕಾನ್ ನಲ್ಲಿ ಟ್ರೈನಿಂಗ್ ಪೂರ್ಣಗೊಳಿಸಿದ್ದವು.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನಮಗೆ ಅದರ ಬಗ್ಗೆ ವಿವರಿಸಿ.",
+      "text_markdown": "ನಮಗೆ ಅದರ ಬಗ್ಗೆ ವಿವರಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ನಮಗೆ ಅದರ ಬಗ್ಗೆ ವಿವರಿಸಿ.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Beijing ನಲ್ಲಿರುವ Zhipu AI ಈ ವರ್ಷದ ಮೊದಲಲ್ಲಿ GLM-5 family ಅನ್ನು ship ಮಾಡಿತು — February ನಲ್ಲಿ GLM-5 ಮತ್ತು April ನಲ್ಲಿ GLM-5.1 ಎಂದು ಕರೆಯಲಾದ ಒಂದು update.",
+      "text_markdown": "Beijing ನಲ್ಲಿರುವ Zhipu AI ಈ ವರ್ಷದ ಮೊದಲಲ್ಲಿ GLM-5 family ಅನ್ನು ship ಮಾಡಿತು — February ನಲ್ಲಿ GLM-5 ಮತ್ತು April ನಲ್ಲಿ GLM-5.1 ಎಂದು ಕರೆಯಲಾದ ಒಂದು update.",
+      "title": "",
+      "tts": {
+        "text": "Beijing ನಲ್ಲಿರುವ Zhipu AI ಈ ವರ್ಷದ ಮೊದಲಲ್ಲಿ ಜಿ ಎಲ್ ಎಮ್ ಫೈವ್ family ಅನ್ನು ship ಮಾಡಿತು — ಫೆಬ್ರುವರಿನಲ್ಲಿ ಜಿ ಎಲ್ ಎಮ್ ಫೈವ್ ಮತ್ತು ಏಪ್ರಿಲ್‌ನಲ್ಲಿ ಜಿ ಎಲ್ ಎಮ್ ಫೈವ್ ಪಾಯಿಂಟ್ ಒನ್ ಎಂದು ಕರೆಯಲಾದ ಒಂದು update.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸಂಪೂರ್ಣ GLM-5 family ಸುಮಾರು 100,000 Huawei Ascend 910B chips ನಲ್ಲಿ, MindSpore framework ಬಳಸಿ, training loop ನಲ್ಲಿ ಶೂನ್ಯ NVIDIA GPU ಗಳೊಂದಿಗೆ training ಪೂರ್ಣಗೊಂಡಿತು.",
+      "text_markdown": "ಸಂಪೂರ್ಣ GLM-5 family ಸುಮಾರು 100,000 Huawei Ascend 910B chips ನಲ್ಲಿ, MindSpore framework ಬಳಸಿ, training loop ನಲ್ಲಿ ಶೂನ್ಯ NVIDIA GPU ಗಳೊಂದಿಗೆ training ಪೂರ್ಣಗೊಂಡಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಸಂಪೂರ್ಣ ಜಿ ಎಲ್ ಎಮ್ ಫೈವ್ family ಸುಮಾರು ಒಂದು ಲಕ್ಷ Huawei Ascend ಒಂಬೈನೂರ ಹತ್ತು ಬಿ chips ನಲ್ಲಿ, MindSpore framework ಬಳಸಿ, training loop ನಲ್ಲಿ ಶೂನ್ಯ NVIDIA GPU ಗಳೊಂದಿಗೆ training ಪೂರ್ಣಗೊಂಡಿತು.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು American lab ಆದ Zyphra ಈ ತಿಂಗಳ ಆರಂಭದಲ್ಲಿ ZAYA1-8B ಎಂದು ಕರೆಯಲಾದ model ಅನ್ನು ship ಮಾಡಿತು, ಅದು IBM ಜೊತೆ ನಿರ್ಮಿಸಲಾದ AMD MI300x nodes ಕ್ಲಸ್ಟರ್ ಮೇಲೆ pre-trained ಆಗಿ ಬಂದಿತು.",
+      "text_markdown": "ಮತ್ತು American lab ಆದ Zyphra ಈ ತಿಂಗಳ ಆರಂಭದಲ್ಲಿ ZAYA1-8B ಎಂದು ಕರೆಯಲಾದ model ಅನ್ನು ship ಮಾಡಿತು, ಅದು IBM ಜೊತೆ ನಿರ್ಮಿಸಲಾದ AMD MI300x nodes ಕ್ಲಸ್ಟರ್ ಮೇಲೆ pre-trained ಆಗಿ ಬಂದಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಅಮೆರಿಕನ್ ಲ್ಯಾಬ್ ಆದ ಝೈಫ್ರಾ ಈ ತಿಂಗಳ ಆರಂಭದಲ್ಲಿ ಝಯಾ ಒಂದು ಎಂಟು ಬಿ ಎಂದು ಕರೆಯಲಾದ ಮಾದರಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು, ಅದು ಐಬಿಎಂ ಜೊತೆ ನಿರ್ಮಿಸಲಾದ ಎಎಂಡಿ ಎಂಐ ಮುನ್ನೂರು ಎಕ್ಸ್ ನೋಡ್‌ಗಳ ಕ್ಲಸ್ಟರ್ ಮೇಲೆ ಪೂರ್ವ ತರಬೇತಿ ಪಡೆದು ಬಂದಿತು.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸಿಲಿಕಾನ್ ಏಕೆ ಮುಖ್ಯವಾದುದು?",
+      "text_markdown": "ಸಿಲಿಕಾನ್ ಏಕೆ ಮುಖ್ಯವಾದುದು?",
+      "title": "",
+      "tts": {
+        "text": "ಸಿಲಿಕಾನ್ ಏಕೆ ಮುಖ್ಯವಾದುದು?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದಕ್ಕೆ ಎರಡು ಕಾರಣಗಳಿವೆ.",
+      "text_markdown": "ಇದಕ್ಕೆ ಎರಡು ಕಾರಣಗಳಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದಕ್ಕೆ ಎರಡು ಕಾರಣಗಳಿವೆ.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮೊದಲನೆಯದು, ಕಳೆದ ಮೂರು ವರ್ಷಗಳಿಂದ, ಪ್ರತಿ ಗಂಭೀರ frontier training run ಗೆ NVIDIA H100s ಅಥವಾ H200s ಅನಿವಾರ್ಯ ಆಧಾರವಾಗಿವೆ.",
+      "text_markdown": "ಮೊದಲನೆಯದು, ಕಳೆದ ಮೂರು ವರ್ಷಗಳಿಂದ, ಪ್ರತಿ ಗಂಭೀರ frontier training run ಗೆ NVIDIA H100s ಅಥವಾ H200s ಅನಿವಾರ್ಯ ಆಧಾರವಾಗಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮೊದಲನೆಯದು, ಕಳೆದ ಮೂರು ವರ್ಷಗಳಿಂದ, ಪ್ರತಿ ಗಂಭೀರ frontier training run ಗೆ ಎನ್‌ವಿಡಿಯಾ ಎಚ್ ನೂರುಗಳು ಅಥವಾ ಎಚ್ ಎರಡು ನೂರುಗಳು ಅನಿವಾರ್ಯ ಆಧಾರವಾಗಿವೆ.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಎರಡನೆಯದು, ಆ supply bottleneck ನಿಜವಾಗಿಯೂ bottleneck ಆಗಿದೆ, ಮತ್ತು open modelಗಳು ಹಾಗೂ Chinese frontier ಅದರಿಂದ ಒಂದು generation ಹಿಂದೆ ಇವೆ ಎಂಬ assumption ಬಲವಾಗಿತ್ತು.",
+      "text_markdown": "ಎರಡನೆಯದು, ಆ supply bottleneck ನಿಜವಾಗಿಯೂ bottleneck ಆಗಿದೆ, ಮತ್ತು open modelಗಳು ಹಾಗೂ Chinese frontier ಅದರಿಂದ ಒಂದು generation ಹಿಂದೆ ಇವೆ ಎಂಬ assumption ಬಲವಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡನೆಯದು, ಆ supply bottleneck ನಿಜವಾಗಿಯೂ bottleneck ಆಗಿದೆ, ಮತ್ತು open modelಗಳು ಹಾಗೂ Chinese frontier ಅದರಿಂದ ಒಂದು generation ಹಿಂದೆ ಇವೆ ಎಂಬ assumption ಬಲವಾಗಿತ್ತು.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಒಮ್ಮೆ frontier-class run Huawei Ascend ಅಥವಾ AMD ಮೇಲೆ ನೆಲೆಗೊಂಡರೆ, ಉಳಿದ ಪ್ರತಿಯೊಂದು open lab ಆ recipe ಅನ್ನು copy ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.",
+      "text_markdown": "ಒಮ್ಮೆ frontier-class run Huawei Ascend ಅಥವಾ AMD ಮೇಲೆ ನೆಲೆಗೊಂಡರೆ, ಉಳಿದ ಪ್ರತಿಯೊಂದು open lab ಆ recipe ಅನ್ನು copy ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಮ್ಮೆ ಫ್ರಂಟಿಯರ್ ಕ್ಲಾಸ್ ರನ್ ಹುವಾವೇ ಅಸೆಂಡ್ ಅಥವಾ ಎ ಎಂ ಡಿ ಮೇಲೆ ನೆಲೆಗೊಂಡರೆ, ಉಳಿದ ಪ್ರತಿಯೊಂದು ಓಪನ್ ಲ್ಯಾಬ್ ಆ ರೆಸಿಪಿಯನ್ನು ಕಾಪಿ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಈ ವರ್ಷ ನಡೆಯುತ್ತಿರುವುದು.",
+      "text_markdown": "ಅದು ಈ ವರ್ಷ ನಡೆಯುತ್ತಿರುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಈ ವರ್ಷ ನಡೆಯುತ್ತಿರುವುದು.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ವಾರ ಓಪನ್ ಸೈಡ್ ಕಡೆಯಿಂದ ಇನ್ನೇನಾದರೂ ಸುದ್ದಿ ಬಂದಿದೆಯಾ, ಹೇಳಿ?",
+      "text_markdown": "ಈ ವಾರ ಓಪನ್ ಸೈಡ್ ಕಡೆಯಿಂದ ಇನ್ನೇನಾದರೂ ಸುದ್ದಿ ಬಂದಿದೆಯಾ, ಹೇಳಿ?",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರ ಓಪನ್ ಸೈಡ್ ಕಡೆಯಿಂದ ಇನ್ನೇನಾದರೂ ಸುದ್ದಿ ಬಂದಿದೆಯಾ, ಹೇಳಿ?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಹೌದು, flag ಮಾಡಲು ಮೂರು ವಿಷಯಗಳು.",
+      "text_markdown": "ಹೌದು, flag ಮಾಡಲು ಮೂರು ವಿಷಯಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಹೌದು, flag ಮಾಡಲು ಮೂರು ವಿಷಯಗಳು.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Moonshot ನ Kimi K2.6, April ಕೊನೆಯಲ್ಲಿ release ಆದದ್ದು, token volume ಗಾಗಿ OpenRouter ನಲ್ಲಿ ಇನ್ನೂ top tier ನಲ್ಲಿದೆ — ಅದು ತನ್ನ ಮೊದಲ ವಾರದಲ್ಲಿ 1.88 trillion tokens served ಮಾಡಿ chart ಅನ್ನು topped ಮಾಡಿತು.",
+      "text_markdown": "Moonshot ನ Kimi K2.6, April ಕೊನೆಯಲ್ಲಿ release ಆದದ್ದು, token volume ಗಾಗಿ OpenRouter ನಲ್ಲಿ ಇನ್ನೂ top tier ನಲ್ಲಿದೆ — ಅದು ತನ್ನ ಮೊದಲ ವಾರದಲ್ಲಿ 1.88 trillion tokens served ಮಾಡಿ chart ಅನ್ನು topped ಮಾಡಿತು.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot ನ Kimi ಕೆ ಟೂ ಪಾಯಿಂಟ್ ಸಿಕ್ಸ್, ಏಪ್ರಿಲ್ ಕೊನೆಯಲ್ಲಿ release ಆದದ್ದು, token volume ಗಾಗಿ OpenRouter ನಲ್ಲಿ ಇನ್ನೂ top tier ನಲ್ಲಿದೆ — ಅದು ತನ್ನ ಮೊದಲ ವಾರದಲ್ಲಿ ಒಂದು ಪಾಯಿಂಟ್ ಎಂಟು ಎಂಟು ಟ್ರಿಲಿಯನ್ tokens served ಮಾಡಿ chart ಅನ್ನು topped ಮಾಡಿತು.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಒಂದು Chinese open-weights model major commercial router ನಲ್ಲಿ Claude Sonnet ಮತ್ತು DeepSeek ಅನ್ನು outpace ಮಾಡಿದ್ದು ಮೊದಲ ಸಾರಿ.",
+      "text_markdown": "ಒಂದು Chinese open-weights model major commercial router ನಲ್ಲಿ Claude Sonnet ಮತ್ತು DeepSeek ಅನ್ನು outpace ಮಾಡಿದ್ದು ಮೊದಲ ಸಾರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದು Chinese ಓಪನ್ ವೇಟ್ಸ್ model major commercial router ನಲ್ಲಿ Claude Sonnet ಮತ್ತು DeepSeek ಅನ್ನು outpace ಮಾಡಿದ್ದು ಮೊದಲ ಸಾರಿ.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "DeepSeek V4-Pro ನಲ್ಲಿ ಒಟ್ಟು 1.6 ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಮತ್ತು 49 ಬಿಲಿಯನ್ ಸಕ್ರಿಯ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳಿವೆ.",
+      "text_markdown": "DeepSeek V4-Pro ನಲ್ಲಿ ಒಟ್ಟು 1.6 ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಮತ್ತು 49 ಬಿಲಿಯನ್ ಸಕ್ರಿಯ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಡೀಪ್ ಸೀಕ್ ವಿ ಫೋರ್ ಪ್ರೋ ನಲ್ಲಿ ಒಟ್ಟು ಒಂದು ಪಾಯಿಂಟ್ ಆರು ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಮತ್ತು ನಲವತ್ತೊಂಬತ್ತು ಬಿಲಿಯನ್ ಸಕ್ರಿಯ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳಿವೆ.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅವರ ಅಗ್ಗದ sibling, V4-Flash, 284 billion total ಮತ್ತು 13 billion active parameters ಹೊಂದಿರುವ ಮಾದರಿ.",
+      "text_markdown": "ಅವರ ಅಗ್ಗದ sibling, V4-Flash, 284 billion total ಮತ್ತು 13 billion active parameters ಹೊಂದಿರುವ ಮಾದರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಅಗ್ಗದ sibling, ವಿ ನಾಲ್ಕು ಫ್ಲಾಶ್, ಎರಡು ನೂರ ಎಂಬತ್ತನಾಲ್ಕು ಬಿಲಿಯನ್ total ಮತ್ತು ಹದಿಮೂರು ಬಿಲಿಯನ್ active parameters ಹೊಂದಿರುವ ಮಾದರಿ.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಎರಡೂ MIT license ಅಡಿಯಲ್ಲಿ open weights ಆಗಿ ಲಭ್ಯವಿರುವ ಮಾದರಿಗಳಾಗಿವೆ.",
+      "text_markdown": "ಎರಡೂ MIT license ಅಡಿಯಲ್ಲಿ open weights ಆಗಿ ಲಭ್ಯವಿರುವ ಮಾದರಿಗಳಾಗಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡೂ ಎಂ ಐ ಟಿ ಲೈಸೆನ್ಸ್ ಅಡಿಯಲ್ಲಿ ಓಪನ್ ವೇಟ್ಸ್ ಆಗಿ ಲಭ್ಯವಿರುವ ಮಾದರಿಗಳಾಗಿವೆ.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ZAYA1-8B ಬಗ್ಗೆ ಇನ್ನೂ ನಿರ್ದಿಷ್ಟವಾಗಿ ವಿವರಿಸಿ.",
+      "text_markdown": "ZAYA1-8B ಬಗ್ಗೆ ಇನ್ನೂ ನಿರ್ದಿಷ್ಟವಾಗಿ ವಿವರಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಝಯಾ ಒಂದು ಎಂಟು ಬಿ ಬಗ್ಗೆ ಇನ್ನೂ ನಿರ್ದಿಷ್ಟವಾಗಿ ವಿವರಿಸಿ.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಒಂದು ಚಿಕ್ಕ mixture-of-experts model, ಒಟ್ಟು 8.4 billion parameters ಇದ್ದರೂ, ಪ್ರತಿ token ಗೆ ಸುಮಾರು 760 million ಮಾತ್ರ active ಆಗುವಂತೆ ವಿನ್ಯಾಸ ಮಾಡಲಾಗಿದೆ.",
+      "text_markdown": "ಅದು ಒಂದು ಚಿಕ್ಕ mixture-of-experts model, ಒಟ್ಟು 8.4 billion parameters ಇದ್ದರೂ, ಪ್ರತಿ token ಗೆ ಸುಮಾರು 760 million ಮಾತ್ರ active ಆಗುವಂತೆ ವಿನ್ಯಾಸ ಮಾಡಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಒಂದು ಚಿಕ್ಕ ಮಿಕ್ಸ್ಚರ್ ಆಫ್ ಎಕ್ಸ್‌ಪರ್ಟ್ಸ್ ಮಾಡೆಲ್, ಒಟ್ಟು ಎಂಟು ಪಾಯಿಂಟ್ ನಾಲ್ಕು ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ಸ್ ಇದ್ದರೂ, ಪ್ರತಿ ಟೋಕನ್ ಗೆ ಸುಮಾರು ಏಳು ನೂರು ಅರವತ್ತು ಮಿಲಿಯನ್ ಮಾತ್ರ ಆಕ್ಟಿವ್ ಆಗುವಂತೆ ವಿನ್ಯಾಸ ಮಾಡಲಾಗಿದೆ.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Apache 2.0 license, ಹಾಗಾಗಿ ನೀವು ಅದನ್ನು commercially ಬಳಸಬಹುದು.",
+      "text_markdown": "Apache 2.0 license, ಹಾಗಾಗಿ ನೀವು ಅದನ್ನು commercially ಬಳಸಬಹುದು.",
+      "title": "",
+      "tts": {
+        "text": "Apache ಟೂ ಪಾಯಿಂಟ್ ಝೀರೋ license, ಹಾಗಾಗಿ ನೀವು ಅದನ್ನು commercially ಬಳಸಬಹುದು.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸುಮಾರು 1,024 AMD MI300x nodes ಇರುವ cluster ನಲ್ಲಿ, ಯಾವುದೇ NVIDIA hardware ಬಳಸದೇ pre-training ಪೂರ್ಣಗೊಂಡಿತ್ತು.",
+      "text_markdown": "ಸುಮಾರು 1,024 AMD MI300x nodes ಇರುವ cluster ನಲ್ಲಿ, ಯಾವುದೇ NVIDIA hardware ಬಳಸದೇ pre-training ಪೂರ್ಣಗೊಂಡಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಸುಮಾರು ಒಂದು ಸಾವಿರದ ಇಪ್ಪತ್ತನಾಲ್ಕು ಎ ಎಂ ಡಿ ಎಂ ಐ ಮುನ್ನೂರು ಎಕ್ಸ್ ನೋಡ್ಸ್ ಇರುವ ಕ್ಲಸ್ಟರ್ ನಲ್ಲಿ, ಯಾವುದೇ ಎನ್ ವಿಡಿಯಾ ಹಾರ್ಡ್ ವೇರ್ ಬಳಸದೇ ಪ್ರಿ ಟ್ರೇನಿಂಗ್ ಪೂರ್ಣಗೊಂಡಿತ್ತು.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು AIME ನಲ್ಲಿ 89.1 score ಮಾಡುತ್ತದೆ, math olympiad benchmark, sub-1-billion active-parameter budget ನಲ್ಲಿ ಓಡುತ್ತಾ math ಮತ್ತು coding ನಲ್ಲಿ ಹೆಚ್ಚು ದೊಡ್ಡ models ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ.",
+      "text_markdown": "ಅದು AIME ನಲ್ಲಿ 89.1 score ಮಾಡುತ್ತದೆ, math olympiad benchmark, sub-1-billion active-parameter budget ನಲ್ಲಿ ಓಡುತ್ತಾ math ಮತ್ತು coding ನಲ್ಲಿ ಹೆಚ್ಚು ದೊಡ್ಡ models ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು AIME ನಲ್ಲಿ ಎಂಬತ್ತೊಂಬತ್ತು ಪಾಯಿಂಟ್ ಒಂದು score ಮಾಡುತ್ತದೆ, math olympiad benchmark, ಸಬ್ ಒನ್ ಬಿಲಿಯನ್ active parameter budget ನಲ್ಲಿ ಓಡುತ್ತಾ math ಮತ್ತು coding ನಲ್ಲಿ ಹೆಚ್ಚು ದೊಡ್ಡ models ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಎರಡು open-weights labs, ಎರಡು ತಿಂಗಳುಗಳ ಒಳಗೆ NVIDIA ಇಲ್ಲದೆ training ಸಾಗಿಸುತ್ತಿವೆ.",
+      "text_markdown": "ಎರಡು open-weights labs, ಎರಡು ತಿಂಗಳುಗಳ ಒಳಗೆ NVIDIA ಇಲ್ಲದೆ training ಸಾಗಿಸುತ್ತಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡು ಓಪನ್ ವೇಟ್ಸ್ ಲ್ಯಾಬ್ಸ್ ಎರಡು ತಿಂಗಳುಗಳ ಒಳಗೆ ಎನ್ ವಿಡಿಯಾ ಇಲ್ಲದೆ ಟ್ರೈನಿಂಗ್ ಸಾಗಿಸುತ್ತಿವೆ.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಖಂಡಿತವಾಗಿಯೂ ಕಾಕತಾಳೀಯವಲ್ಲ.",
+      "text_markdown": "ಇದು ಖಂಡಿತವಾಗಿಯೂ ಕಾಕತಾಳೀಯವಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಖಂಡಿತವಾಗಿಯೂ ಕಾಕತಾಳೀಯವಲ್ಲ.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪ್ಲಂಬಿಂಗ್ ಅಂತಿಮವಾಗಿ ಹಿಡಿದುಕೊಂಡಿತು — AMD ROCm ಮತ್ತು Huawei CANN ಎರಡೂ 2025ರಲ್ಲಿ ಬಳಸಬಹುದಾದವಾದವು, ಮತ್ತು 2026 ಓಪನ್ ಸಮುದಾಯವು ಅವುಗಳ ಮೇಲೆ ನಿಜವಾದ ಫ್ರಂಟಿಯರ್-ಕ್ಲಾಸ್ ರನ್‌ಗಳನ್ನು ಶಿಪ್ಪಿಂಗ್ ಮಾಡುತ್ತಿರುವ ಸಮಯ.",
+      "text_markdown": "ಪ್ಲಂಬಿಂಗ್ ಅಂತಿಮವಾಗಿ ಹಿಡಿದುಕೊಂಡಿತು — AMD ROCm ಮತ್ತು Huawei CANN ಎರಡೂ 2025ರಲ್ಲಿ ಬಳಸಬಹುದಾದವಾದವು, ಮತ್ತು 2026 ಓಪನ್ ಸಮುದಾಯವು ಅವುಗಳ ಮೇಲೆ ನಿಜವಾದ ಫ್ರಂಟಿಯರ್-ಕ್ಲಾಸ್ ರನ್‌ಗಳನ್ನು ಶಿಪ್ಪಿಂಗ್ ಮಾಡುತ್ತಿರುವ ಸಮಯ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ಲಂಬಿಂಗ್ ಅಂತಿಮವಾಗಿ ಹಿಡಿದುಕೊಂಡಿತು — ಎಎಂಡಿ ರೋಕ್‌ಎಂ ಮತ್ತು ಹುವಾವೇ ಕ್ಯಾನ್ ಎರಡೂ ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತು ಐದರಲ್ಲಿ ಬಳಸಬಹುದಾದವಾದವು, ಮತ್ತು ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತು ಆರು ಓಪನ್ ಸಮುದಾಯವು ಅವುಗಳ ಮೇಲೆ ನಿಜವಾದ ಫ್ರಂಟಿಯರ್ ಕ್ಲಾಸ್ ರನ್‌ಗಳನ್ನು ಶಿಪ್ಪಿಂಗ್ ಮಾಡುತ್ತಿರುವ ಸಮಯ.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮೂಲಸೌಕರ್ಯ ಭಾಗದ ಪರಿಸ್ಥಿತಿ ಹೇಗಿದೆ?",
+      "text_markdown": "ಮೂಲಸೌಕರ್ಯ ಭಾಗದ ಪರಿಸ್ಥಿತಿ ಹೇಗಿದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಮೂಲಸೌಕರ್ಯ ಭಾಗದ ಪರಿಸ್ಥಿತಿ ಹೇಗಿದೆ?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "vLLM v0.21 ಶುಕ್ರವಾರ, ಮೇ 15ರಂದು ಬಿಡುಗಡೆಯಾಯಿತು.",
+      "text_markdown": "vLLM v0.21 ಶುಕ್ರವಾರ, ಮೇ 15ರಂದು ಬಿಡುಗಡೆಯಾಯಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ವಿ ಎಲ್ ಎಲ್ ಎಂ ವರ್ಷನ್ ಸೊನ್ನೆ ಪಾಯಿಂಟ್ ಇಪ್ಪತ್ತೊಂದು ಶುಕ್ರವಾರ, ಮೇ ಹದಿನೈದರಂದು ಬಿಡುಗಡೆಯಾಯಿತು.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "vLLM ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ — ನೀವು ಮಾಡೆಲ್ ಅನ್ನು ನೀವೇ ಹೋಸ್ಟ್ ಮಾಡಲು ಬಯಸಿದಾಗ ನೀವು ನಿಜವಾಗಿ ರನ್ ಮಾಡುವುದು.",
+      "text_markdown": "vLLM ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ — ನೀವು ಮಾಡೆಲ್ ಅನ್ನು ನೀವೇ ಹೋಸ್ಟ್ ಮಾಡಲು ಬಯಸಿದಾಗ ನೀವು ನಿಜವಾಗಿ ರನ್ ಮಾಡುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ವಿ ಎಲ್ ಎಲ್ ಎಂ ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ — ನೀವು ಮಾಡೆಲ್ ಅನ್ನು ನೀವೇ ಹೋಸ್ಟ್ ಮಾಡಲು ಬಯಸಿದಾಗ ನೀವು ನಿಜವಾಗಿ ರನ್ ಮಾಡುವುದು.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಬ್ಯಾಚಿಂಗ್, ಪೇಜಿಂಗ್ ಮತ್ತು KV ಕ್ಯಾಶ್ ರಿಯೂಸ್ ಅನ್ನು ಹ್ಯಾಂಡಲ್ ಮಾಡುತ್ತದೆ, ಮತ್ತು ಕ್ಲೋಸ್ಡ್ API ಯಲ್ಲಿ ಇಲ್ಲದವರೆಲ್ಲರಿಗೆ ಇದು ಈಗ ಪ್ರೊಡಕ್ಷನ್‌ನಲ್ಲಿ ಡಿಫಾಲ್ಟ್.",
+      "text_markdown": "ಇದು ಬ್ಯಾಚಿಂಗ್, ಪೇಜಿಂಗ್ ಮತ್ತು KV ಕ್ಯಾಶ್ ರಿಯೂಸ್ ಅನ್ನು ಹ್ಯಾಂಡಲ್ ಮಾಡುತ್ತದೆ, ಮತ್ತು ಕ್ಲೋಸ್ಡ್ API ಯಲ್ಲಿ ಇಲ್ಲದವರೆಲ್ಲರಿಗೆ ಇದು ಈಗ ಪ್ರೊಡಕ್ಷನ್‌ನಲ್ಲಿ ಡಿಫಾಲ್ಟ್.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಬ್ಯಾಚಿಂಗ್, ಪೇಜಿಂಗ್ ಮತ್ತು KV ಕ್ಯಾಶ್ ರಿಯೂಸ್ ಅನ್ನು ಹ್ಯಾಂಡಲ್ ಮಾಡುತ್ತದೆ, ಮತ್ತು ಕ್ಲೋಸ್ಡ್ API ಯಲ್ಲಿ ಇಲ್ಲದವರೆಲ್ಲರಿಗೆ ಇದು ಈಗ ಪ್ರೊಡಕ್ಷನ್‌ನಲ್ಲಿ ಡಿಫಾಲ್ಟ್.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ರಿಲೀಸ್ ಹೈಬ್ರಿಡ್ ಮೆಮೊರಿ ಅಲೋಕೇಟರ್‌ನೊಂದಿಗೆ KV ಆಫ್‌ಲೋಡ್ ಅನ್ನು, ಹಾಗೆಯೇ Blackwell GPUಗಳಲ್ಲಿ DeepSeek-R1 ಮತ್ತು Kimi K2.5 ಪ್ರೀಫಿಲ್‌ಗಾಗಿ ಟ್ಯೂನ್ ಮಾಡಿದ ಹೊಸ ಅಟೆನ್ಷನ್ ಬ್ಯಾಕೆಂಡ್ ಅನ್ನು ಒಳಗೊಂಡಿದೆ.",
+      "text_markdown": "ಈ ರಿಲೀಸ್ ಹೈಬ್ರಿಡ್ ಮೆಮೊರಿ ಅಲೋಕೇಟರ್‌ನೊಂದಿಗೆ KV ಆಫ್‌ಲೋಡ್ ಅನ್ನು, ಹಾಗೆಯೇ Blackwell GPUಗಳಲ್ಲಿ DeepSeek-R1 ಮತ್ತು Kimi K2.5 ಪ್ರೀಫಿಲ್‌ಗಾಗಿ ಟ್ಯೂನ್ ಮಾಡಿದ ಹೊಸ ಅಟೆನ್ಷನ್ ಬ್ಯಾಕೆಂಡ್ ಅನ್ನು ಒಳಗೊಂಡಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ರಿಲೀಸ್ ಹೈಬ್ರಿಡ್ ಮೆಮೊರಿ ಅಲೋಕೇಟರ್‌ನೊಂದಿಗೆ ಕೆವಿ ಆಫ್‌ಲೋಡ್ ಅನ್ನು, ಹಾಗೆಯೇ ಬ್ಲಾಕ್‌ವೆಲ್ ಜಿಪಿಯುಗಳಲ್ಲಿ ಡೀಪ್‌ಸೀಕ್ ಆರ್ ಒನ್ ಮತ್ತು ಕಿಮಿ ಕೆ ಎರಡು ಪಾಯಿಂಟ್ ಐದು ಪ್ರೀಫಿಲ್‌ಗಾಗಿ ಟ್ಯೂನ್ ಮಾಡಿದ ಹೊಸ ಅಟೆನ್ಷನ್ ಬ್ಯಾಕೆಂಡ್ ಅನ್ನು ಒಳಗೊಂಡಿದೆ.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ದೊಡ್ಡ ಲ್ಯಾಬ್‌ಗಳು ಕೀನೋಟ್‌ಗಳನ್ನು ಮಾಡುವಾಗ ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ ಶಿಪ್ಪಿಂಗ್ ಮುಂದುವರೆಸುತ್ತದೆ.",
+      "text_markdown": "ದೊಡ್ಡ ಲ್ಯಾಬ್‌ಗಳು ಕೀನೋಟ್‌ಗಳನ್ನು ಮಾಡುವಾಗ ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ ಶಿಪ್ಪಿಂಗ್ ಮುಂದುವರೆಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ದೊಡ್ಡ ಲ್ಯಾಬ್‌ಗಳು ಕೀನೋಟ್‌ಗಳನ್ನು ಮಾಡುವಾಗ ಓಪನ್ ಸರ್ವಿಂಗ್ ಸ್ಟಾಕ್ ಶಿಪ್ಪಿಂಗ್ ಮುಂದುವರೆಸುತ್ತದೆ.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸರಿ, ಈಗ ಮುನ್ನಡೆ ಅಂಕಪಟ್ಟಿಗಳತ್ತ ಸಾಗೋಣ.",
+      "text_markdown": "ಸರಿ, ಈಗ ಮುನ್ನಡೆ ಅಂಕಪಟ್ಟಿಗಳತ್ತ ಸಾಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಸರಿ, ಈಗ ಮುನ್ನಡೆ ಅಂಕಪಟ್ಟಿಗಳತ್ತ ಸಾಗೋಣ.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರಾನ್, ಏನು ಹೋಲ್ಡಿಂಗ್ ಇದೆ ಮತ್ತು ಏನು ಮೂವ್ ಆಯಿತು?",
+      "text_markdown": "ರಾನ್, ಏನು ಹೋಲ್ಡಿಂಗ್ ಇದೆ ಮತ್ತು ಏನು ಮೂವ್ ಆಯಿತು?",
+      "title": "",
+      "tts": {
+        "text": "ರಾನ್, ಏನು ಹೋಲ್ಡಿಂಗ್ ಇದೆ ಮತ್ತು ಏನು ಮೂವ್ ಆಯಿತು?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಹೆಚ್ಚಾಗಿ ಹಿಡಿದುಕೊಂಡೇ ಇರುವುದು.",
+      "text_markdown": "ಹೆಚ್ಚಾಗಿ ಹಿಡಿದುಕೊಂಡೇ ಇರುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಹೆಚ್ಚಾಗಿ ಹಿಡಿದುಕೊಂಡೇ ಇರುವುದು.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Anthropic ಯ Claude Opus 4.7 ಇನ್ನೂ ಸುಮಾರು 1569 Elo ಸ್ಕೋರ್‌ನೊಂದಿಗೆ LM Arena ಕೋಡಿಂಗ್ ಲೀಡರ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "text_markdown": "Anthropic ಯ Claude Opus 4.7 ಇನ್ನೂ ಸುಮಾರು 1569 Elo ಸ್ಕೋರ್‌ನೊಂದಿಗೆ LM Arena ಕೋಡಿಂಗ್ ಲೀಡರ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆಂತ್ರೋಪಿಕ್‌ನ ಕ್ಲೋಡ್ ಒಪಸ್ ನಾಲ್ಕು ಪಾಯಿಂಟ್ ಏಳು ಇನ್ನೂ ಸುಮಾರು ಒಂದು ಸಾವಿರ ಐದು ನೂರು ಅರವತ್ತೊಂಬತ್ತು ಎಲೋ ಸ್ಕೋರ್‌ನೊಂದಿಗೆ ಎಲ್ ಎಂ ಅರೀನಾ ಕೋಡಿಂಗ್ ಲೀಡರ್ ಬೋರ್ಡ್‌ನಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "OpenAI ಯ GPT-5.5 ಹೈ-ರೀಸನಿಂಗ್ ಮೋಡ್‌ನಲ್ಲಿ ಅದೇ ಬೋರ್ಡ್‌ನಲ್ಲಿ ನಂಬರ್ ಏಳಕ್ಕೆ ಕುಳಿತಿದೆ.",
+      "text_markdown": "OpenAI ಯ GPT-5.5 ಹೈ-ರೀಸನಿಂಗ್ ಮೋಡ್‌ನಲ್ಲಿ ಅದೇ ಬೋರ್ಡ್‌ನಲ್ಲಿ ನಂಬರ್ ಏಳಕ್ಕೆ ಕುಳಿತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಪನ್‌ಎಐ ಯ ಜಿಪಿಟಿ ಐದು ಪಾಯಿಂಟ್ ಐದು ಹೈ ರೀಸನಿಂಗ್ ಮೋಡ್‌ನಲ್ಲಿ ಅದೇ ಬೋರ್ಡ್‌ನಲ್ಲಿ ನಂಬರ್ ಏಳಕ್ಕೆ ಕುಳಿತಿದೆ.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು WebDev ಕೋಡಿಂಗ್ ಸಬ್-ಬೋರ್ಡ್‌ನಲ್ಲಿ, GPT-5.5 ನಂಬರ್ 9 ರ್ಯಾಂಕ್ ಪಡೆದುಕೊಂಡಿದೆ.",
+      "text_markdown": "ಮತ್ತು WebDev ಕೋಡಿಂಗ್ ಸಬ್-ಬೋರ್ಡ್‌ನಲ್ಲಿ, GPT-5.5 ನಂಬರ್ 9 ರ್ಯಾಂಕ್ ಪಡೆದುಕೊಂಡಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ವೆಬ್ ಡೆವ್ ಕೋಡಿಂಗ್ ಸಬ್ ಬೋರ್ಡಿನಲ್ಲಿ, ಜಿಪಿಟಿ ಐದು ಪಾಯಿಂಟ್ ಐದು ನಂಬರ್ ಒಂಬತ್ತು ರ್ಯಾಂಕ್ ಪಡೆದುಕೊಂಡಿದೆ.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಹೊಸ Google ಮಾಡೆಲ್ ಯಾವ ಜಾಗದಲ್ಲಿ ನಿಲ್ಲುತ್ತದೆ?",
+      "text_markdown": "ಹೊಸ Google ಮಾಡೆಲ್ ಯಾವ ಜಾಗದಲ್ಲಿ ನಿಲ್ಲುತ್ತದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಹೊಸ ಗೂಗಲ್ ಮಾಡೆಲ್ ಯಾವ ಜಾಗದಲ್ಲಿ ನಿಲ್ಲುತ್ತದೆ?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gemini 3.5 Flash ಮಂಗಳವಾರ Google I/O ನಲ್ಲಿ ಶಿಪ್ ಆಯಿತು, ಆದ್ದರಿಂದ ಅದು ಇನ್ನೂ ಬೋರ್ಡ್‌ಗಳಲ್ಲಿ ಇಲ್ಲ.",
+      "text_markdown": "Gemini 3.5 Flash ಮಂಗಳವಾರ Google I/O ನಲ್ಲಿ ಶಿಪ್ ಆಯಿತು, ಆದ್ದರಿಂದ ಅದು ಇನ್ನೂ ಬೋರ್ಡ್‌ಗಳಲ್ಲಿ ಇಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಜೆಮಿನಿ ಮೂರು ಪಾಯಿಂಟ್ ಐದು ಫ್ಲ್ಯಾಶ್ ಮಂಗಳವಾರ ಗೂಗಲ್ ಐ ಒ ನಲ್ಲಿ ಶಿಪ್ ಆಯಿತು, ಆದ್ದರಿಂದ ಅದು ಇನ್ನೂ ಬೋರ್ಡ್‌ಗಳಲ್ಲಿ ಇಲ್ಲ.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮಾಡೆಲ್ ಸ್ಥಿರ Elo ಪಡೆಯುವ ಮೊದಲು Arena ಗೆ ಕೆಲವು ಸಾವಿರ ಹೆಡ್-ಟು-ಹೆಡ್ ವೋಟ್‌ಗಳು ಬೇಕಾಗುತ್ತವೆ.",
+      "text_markdown": "ಮಾಡೆಲ್ ಸ್ಥಿರ Elo ಪಡೆಯುವ ಮೊದಲು Arena ಗೆ ಕೆಲವು ಸಾವಿರ ಹೆಡ್-ಟು-ಹೆಡ್ ವೋಟ್‌ಗಳು ಬೇಕಾಗುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮಾಡೆಲ್ ಸ್ಥಿರ ಎಲೋ ಪಡೆಯುವ ಮೊದಲು ಅರೀನ ಗೆ ಕೆಲವು ಸಾವಿರ ಹೆಡ್ ಟು ಹೆಡ್ ವೋಟ್‌ಗಳು ಬೇಕಾಗುತ್ತವೆ.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮುಂದಿನ ವಾರ Gemini 3.5 Flash ಕಾಣಿಸಿಕೊಳ್ಳಬಹುದು, ಮತ್ತು Gemini 3.5 Pro ಜೂನ್‌ನಲ್ಲಿ ಲ್ಯಾಂಡ್ ಆಗಬಹುದು ಎಂದು ನಿರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ.",
+      "text_markdown": "ಮುಂದಿನ ವಾರ Gemini 3.5 Flash ಕಾಣಿಸಿಕೊಳ್ಳಬಹುದು, ಮತ್ತು Gemini 3.5 Pro ಜೂನ್‌ನಲ್ಲಿ ಲ್ಯಾಂಡ್ ಆಗಬಹುದು ಎಂದು ನಿರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದಿನ ವಾರ ಜೆಮಿನಿ ಮೂರು ಪಾಯಿಂಟ್ ಐದು ಫ್ಲ್ಯಾಶ್ ಕಾಣಿಸಿಕೊಳ್ಳಬಹುದು, ಮತ್ತು ಜೆಮಿನಿ ಮೂರು ಪಾಯಿಂಟ್ ಐದು ಪ್ರೋ ಜೂನ್‌ನಲ್ಲಿ ಲ್ಯಾಂಡ್ ಆಗಬಹುದು ಎಂದು ನಿರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮೌಲ್ಯಮಾಪನ ಗುಣಮಟ್ಟದ ವಿಷಯದಲ್ಲಿ ಹೊಸದೇನಾದರೂ ಸುದ್ದಿಯಿದೆಯೇ?",
+      "text_markdown": "ಮೌಲ್ಯಮಾಪನ ಗುಣಮಟ್ಟದ ವಿಷಯದಲ್ಲಿ ಹೊಸದೇನಾದರೂ ಸುದ್ದಿಯಿದೆಯೇ?",
+      "title": "",
+      "tts": {
+        "text": "ಮೌಲ್ಯಮಾಪನ ಗುಣಮಟ್ಟದ ವಿಷಯದಲ್ಲಿ ಹೊಸದೇನಾದರೂ ಸುದ್ದಿಯಿದೆಯೇ?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಹೌದು, ಕಳೆದ ವಾರದ ಒಂದು ಕಾಲ್‌ಬ್ಯಾಕ್.",
+      "text_markdown": "ಹೌದು, ಕಳೆದ ವಾರದ ಒಂದು ಕಾಲ್‌ಬ್ಯಾಕ್.",
+      "title": "",
+      "tts": {
+        "text": "ಹೌದು, ಕಳೆದ ವಾರದ ಒಂದು ಕಾಲ್‌ಬ್ಯಾಕ್.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "SWE-bench Verified ಇನ್ನೂ ರಿಟೈರ್ಡ್ ಆಗಿದೆ — OpenAI ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದ ಕೋಡಿಂಗ್ ಬೆಂಚ್‌ಮಾರ್ಕ್, ಅಲ್ಲಿ ಅರ್ಧಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಠಿಣ ಟಾಸ್ಕ್‌ಗಳು ಬ್ರೋಕನ್ ಟೆಸ್ಟ್‌ಗಳನ್ನು ಹೊಂದಿದ್ದವು.",
+      "text_markdown": "SWE-bench Verified ಇನ್ನೂ ರಿಟೈರ್ಡ್ ಆಗಿದೆ — OpenAI ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದ ಕೋಡಿಂಗ್ ಬೆಂಚ್‌ಮಾರ್ಕ್, ಅಲ್ಲಿ ಅರ್ಧಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಠಿಣ ಟಾಸ್ಕ್‌ಗಳು ಬ್ರೋಕನ್ ಟೆಸ್ಟ್‌ಗಳನ್ನು ಹೊಂದಿದ್ದವು.",
+      "title": "",
+      "tts": {
+        "text": "ಎಸ್‌ಡಬ್ಲ್ಯೂಇ ಬೆಂಚ್ ವೆರಿಫೈಡ್ ಇನ್ನೂ ರಿಟೈರ್ಡ್ ಆಗಿದೆ — ಒಪನ್‌ಎಐ ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದ ಕೋಡಿಂಗ್ ಬೆಂಚ್‌ಮಾರ್ಕ್, ಅಲ್ಲಿ ಅರ್ಧಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಠಿಣ ಟಾಸ್ಕ್‌ಗಳು ಬ್ರೋಕನ್ ಟೆಸ್ಟ್‌ಗಳನ್ನು ಹೊಂದಿದ್ದವು.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ಗಮನಿಸಬೇಕಾದ ಬೋರ್ಡ್‌ಗಳು SWE-bench Pro ಮತ್ತು SWE-rebench ಎಂಬ ಎರಡು ಪ್ರಾಜೆಕ್ಟುಗಳಾಗಿವೆ.",
+      "text_markdown": "ಈಗ ಗಮನಿಸಬೇಕಾದ ಬೋರ್ಡ್‌ಗಳು SWE-bench Pro ಮತ್ತು SWE-rebench ಎಂಬ ಎರಡು ಪ್ರಾಜೆಕ್ಟುಗಳಾಗಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ಗಮನಿಸಬೇಕಾದ ಬೋರ್ಡುಗಳು ಸ್ವೀ ಬೆಂಚ್ ಪ್ರೋ ಮತ್ತು ಸ್ವೀ ರೀ ಬೆಂಚ್ ಎಂಬ ಎರಡು ಪ್ರಾಜೆಕ್ಟುಗಳಾಗಿವೆ.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಎರಡೂ ಟೆಸ್ಟ್ ಕೋಡ್ ಅನ್ನು ಪ್ರೈವೇಟ್ ಆಗಿ ಇಡುತ್ತವೆ ಆದ್ದರಿಂದ ಮಾಡೆಲ್‌ಗಳನ್ನು ಅದರ ವಿರುದ್ಧ ಟ್ರೈನ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ಎರಡೂ ಟೆಸ್ಟ್ ಕೋಡ್ ಅನ್ನು ಪ್ರೈವೇಟ್ ಆಗಿ ಇಡುತ್ತವೆ ಆದ್ದರಿಂದ ಮಾಡೆಲ್‌ಗಳನ್ನು ಅದರ ವಿರುದ್ಧ ಟ್ರೈನ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡೂ ಟೆಸ್ಟ್ ಕೋಡ್ ಅನ್ನು ಪ್ರೈವೇಟ್ ಆಗಿ ಇಡುತ್ತವೆ ಆದ್ದರಿಂದ ಮಾಡೆಲ್‌ಗಳನ್ನು ಅದರ ವಿರುದ್ಧ ಟ್ರೈನ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ತೆರೆದ ಮತ್ತು ಮುಚ್ಚಿದ ಮಾದರಿಗಳ ನಡುವಿನ ಅಂತರದ ಕಥೆ ಏನು?",
+      "text_markdown": "ಮತ್ತು ತೆರೆದ ಮತ್ತು ಮುಚ್ಚಿದ ಮಾದರಿಗಳ ನಡುವಿನ ಅಂತರದ ಕಥೆ ಏನು?",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ತೆರೆದ ಮತ್ತು ಮುಚ್ಚಿದ ಮಾದರಿಗಳ ನಡುವಿನ ಅಂತರದ ಕಥೆ ಏನು?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Artificial Analysis ಪ್ರಕಾರ, ಗ್ಯಾಪ್ ಈಗ ಕ್ರಾಸ್-ಇವ್ಯಾಲುಯೇಷನ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಇಂಡೆಕ್ಸ್‌ನಲ್ಲಿ 5 ರಿಂದ 15 ಪಾಯಿಂಟ್‌ಗಳು.",
+      "text_markdown": "Artificial Analysis ಪ್ರಕಾರ, ಗ್ಯಾಪ್ ಈಗ ಕ್ರಾಸ್-ಇವ್ಯಾಲುಯೇಷನ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಇಂಡೆಕ್ಸ್‌ನಲ್ಲಿ 5 ರಿಂದ 15 ಪಾಯಿಂಟ್‌ಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಆರ್ಟಿಫಿಶಿಯಲ್ ಅನಾಲಿಸಿಸ್ ಪ್ರಕಾರ, ಗ್ಯಾಪ್ ಈಗ ಕ್ರಾಸ್ ಇವ್ಯಾಲುಯೇಷನ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಇಂಡೆಕ್ಸ್‌ನಲ್ಲಿ ಐದು ರಿಂದ ಹದಿನೈದು ಪಾಯಿಂಟ್‌ಗಳು.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "18 ತಿಂಗಳುಗಳ ಹಿಂದೆ ಅದು 30 ರಿಂದ 40 ಪಾಯಿಂಟ್‌ಗಳಾಗಿತ್ತು.",
+      "text_markdown": "18 ತಿಂಗಳುಗಳ ಹಿಂದೆ ಅದು 30 ರಿಂದ 40 ಪಾಯಿಂಟ್‌ಗಳಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಹದಿನೆಂಟು ತಿಂಗಳುಗಳ ಹಿಂದೆ ಅದು ಮೂವತ್ತು ರಿಂದ ನಲವತ್ತು ಪಾಯಿಂಟ್‌ಗಳಾಗಿತ್ತು.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kimi K2.6 ಮತ್ತು DeepSeek V4-Pro GPT-5.5 ಮತ್ತು Opus 4.7 ವಿರುದ್ಧ ಆ ಬ್ಯಾಂಡ್‌ನೊಳಗೆ ಕುಳಿತಿವೆ.",
+      "text_markdown": "Kimi K2.6 ಮತ್ತು DeepSeek V4-Pro GPT-5.5 ಮತ್ತು Opus 4.7 ವಿರುದ್ಧ ಆ ಬ್ಯಾಂಡ್‌ನೊಳಗೆ ಕುಳಿತಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಕಿಮಿ ಕೆ ಎರಡು ಪಾಯಿಂಟ್ ಆರು ಮತ್ತು ಡೀಪ್‌ಸೀಕ್ ವಿ ನಾಲ್ಕು ಪ್ರೋ ಜಿಪಿಟಿ ಐದು ಪಾಯಿಂಟ್ ಐದು ಮತ್ತು ಒಪಸ್ ನಾಲ್ಕು ಪಾಯಿಂಟ್ ಏಳು ವಿರುದ್ಧ ಆ ಬ್ಯಾಂಡ್‌ನೊಳಗೆ ಕುಳಿತಿವೆ.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ಹೆಡ್‌ಲೈನ್‌ಗಳಿಗೆ ಹೋಗೋಣ.",
+      "text_markdown": "ಈಗ ಹೆಡ್‌ಲೈನ್‌ಗಳಿಗೆ ಹೋಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ಹೆಡ್‌ಲೈನ್‌ಗಳಿಗೆ ಹೋಗೋಣ.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರಾನ್, ಈ ವಾರ ಫಾಸ್ಟ್ ಕ್ಲಿಪ್‌ನಲ್ಲಿ ಏನಿದೆ?",
+      "text_markdown": "ರಾನ್, ಈ ವಾರ ಫಾಸ್ಟ್ ಕ್ಲಿಪ್‌ನಲ್ಲಿ ಏನಿದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ರಾನ್, ಈ ವಾರ ಫಾಸ್ಟ್ ಕ್ಲಿಪ್‌ನಲ್ಲಿ ಏನಿದೆ?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Google I/O ಮಂಗಳವಾರ ಮತ್ತು ಬುಧವಾರ ಇತ್ತು.",
+      "text_markdown": "Google I/O ಮಂಗಳವಾರ ಮತ್ತು ಬುಧವಾರ ಇತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಗೂಗಲ್ ಐ ಒ ಮಂಗಳವಾರ ಮತ್ತು ಬುಧವಾರ ಇತ್ತು.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gemini 3.5 Flash, ಸಂಭಾಷಣಾ ವೀಡಿಯೋ ಎಡಿಟಿಂಗ್‌ಗಾಗಿ Gemini Omni, ಮತ್ತು ನೀವು ಹೊಂದಿಸದ ಕ್ಲೌಡ್ ವರ್ಚುಯಲ್ ಮಾಶೀನ್‌ನಲ್ಲಿ 24/7 ರನ್ ಆಗುವ ಏಜೆಂಟ್ Gemini Spark, ಇವೆಯೇ ಹೆಡ್‌ಲೈನ್ ಡ್ರಾಪ್‌ಗಳ ಮುಖ್ಯ ಘೋಷಣೆಗಳು.",
+      "text_markdown": "Gemini 3.5 Flash, ಸಂಭಾಷಣಾ ವೀಡಿಯೋ ಎಡಿಟಿಂಗ್‌ಗಾಗಿ Gemini Omni, ಮತ್ತು ನೀವು ಹೊಂದಿಸದ ಕ್ಲೌಡ್ ವರ್ಚುಯಲ್ ಮಾಶೀನ್‌ನಲ್ಲಿ 24/7 ರನ್ ಆಗುವ ಏಜೆಂಟ್ Gemini Spark, ಇವೆಯೇ ಹೆಡ್‌ಲೈನ್ ಡ್ರಾಪ್‌ಗಳ ಮುಖ್ಯ ಘೋಷಣೆಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಜೆಮಿನಿ ಮೂರು ಪಾಯಿಂಟ್ ಐದು ಫ್ಲ್ಯಾಶ್, ಸಂಭಾಷಣಾ ವೀಡಿಯೋ ಎಡಿಟಿಂಗ್‌ಗಾಗಿ ಜೆಮಿನಿ ಒಮ್ನಿ, ಮತ್ತು ನೀವು ಹೊಂದಿಸದ ಕ್ಲೌಡ್ ವರ್ಚುಯಲ್ ಮಾಶೀನ್‌ನಲ್ಲಿ ಇಪ್ಪತ್ತನಾಲ್ಕು ಗಂಟೆ ವಾರದ ಏಳು ದಿನ ರನ್ ಆಗುವ ಏಜೆಂಟ್ ಜೆಮಿನಿ ಸ್ಪಾರ್ಕ್, ಇವೆಯೇ ಹೆಡ್‌ಲೈನ್ ಡ್ರಾಪ್‌ಗಳ ಮುಖ್ಯ ಘೋಷಣೆಗಳು.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದೇ ಪ್ಯಾಟರ್ನ್ — ತನ್ನದೇ ಮಾಶೀನ್‌ನಲ್ಲಿ ರನ್ ಆಗುವ ಮತ್ತು ಮಲ್ಟಿ-ಸ್ಟೆಪ್ ಕೆಲಸ ಮಾಡುವ ಏಜೆಂಟ್ — ಇಂದು ಈಗಾಗಲೇ ಲೋಕಲ್ ಮಾಡೆಲ್‌ನತ್ತ ಪಾಯಿಂಟ್ ಮಾಡಲಾದ Aider ಅಥವಾ OpenCode ನಂತಹ ಓಪನ್ ಟೂಲ್‌ಗಳೊಂದಿಗೆ ನೀವು ಮಾಡಬಹುದಾದ ಸಂಗತಿ ಎಂಬುದು ಗಮನಿಸಬೇಕಾದ ವಿಷಯ.",
+      "text_markdown": "ಅದೇ ಪ್ಯಾಟರ್ನ್ — ತನ್ನದೇ ಮಾಶೀನ್‌ನಲ್ಲಿ ರನ್ ಆಗುವ ಮತ್ತು ಮಲ್ಟಿ-ಸ್ಟೆಪ್ ಕೆಲಸ ಮಾಡುವ ಏಜೆಂಟ್ — ಇಂದು ಈಗಾಗಲೇ ಲೋಕಲ್ ಮಾಡೆಲ್‌ನತ್ತ ಪಾಯಿಂಟ್ ಮಾಡಲಾದ Aider ಅಥವಾ OpenCode ನಂತಹ ಓಪನ್ ಟೂಲ್‌ಗಳೊಂದಿಗೆ ನೀವು ಮಾಡಬಹುದಾದ ಸಂಗತಿ ಎಂಬುದು ಗಮನಿಸಬೇಕಾದ ವಿಷಯ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಪ್ಯಾಟರ್ನ್ — ತನ್ನದೇ ಮಾಶೀನ್‌ನಲ್ಲಿ ರನ್ ಆಗುವ ಮತ್ತು ಮಲ್ಟಿ ಸ್ಟೆಪ್ ಕೆಲಸ ಮಾಡುವ ಏಜೆಂಟ್ — ಇಂದು ಈಗಾಗಲೇ ಲೋಕಲ್ ಮಾಡೆಲ್‌ನತ್ತ ಪಾಯಿಂಟ್ ಮಾಡಲಾದ ಎಯ್ಡರ್ ಅಥವಾ ಒಪನ್‌ಕೋಡ್ ನಂತಹ ಓಪನ್ ಟೂಲ್‌ಗಳೊಂದಿಗೆ ನೀವು ಮಾಡಬಹುದಾದ ಸಂಗತಿ ಎಂಬುದು ಗಮನಿಸಬೇಕಾದ ವಿಷಯ.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Google AI Ultra ತನ್ನ ಸ್ಟಾರ್ಟರ್ ಟಿಯರ್ ಅನ್ನು ತಿಂಗಳಿಗೆ $250 ರಿಂದ $100 ಕ್ಕೆ ಇಳಿಸಿತು, ಮತ್ತು Samsung Gemini ಬಿಲ್ಟ್ ಇನ್ ಇರುವ ಎಕ್ಸ್‌ಟೆಂಡೆಡ್ ರಿಯಾಲಿಟಿ ಗ್ಲಾಸೆಸ್ ಘೋಷಣೆಯನ್ನೂ ಅಧಿಕೃತವಾಗಿ ಪ್ರಕಟಿಸಿತು.",
+      "text_markdown": "Google AI Ultra ತನ್ನ ಸ್ಟಾರ್ಟರ್ ಟಿಯರ್ ಅನ್ನು ತಿಂಗಳಿಗೆ $250 ರಿಂದ $100 ಕ್ಕೆ ಇಳಿಸಿತು, ಮತ್ತು Samsung Gemini ಬಿಲ್ಟ್ ಇನ್ ಇರುವ ಎಕ್ಸ್‌ಟೆಂಡೆಡ್ ರಿಯಾಲಿಟಿ ಗ್ಲಾಸೆಸ್ ಘೋಷಣೆಯನ್ನೂ ಅಧಿಕೃತವಾಗಿ ಪ್ರಕಟಿಸಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಗೂಗಲ್ ಎಐ ಅಲ್ಟ್ರಾ ತನ್ನ ಸ್ಟಾರ್ಟರ್ ಟಿಯರ್ ಅನ್ನು ತಿಂಗಳಿಗೆ ಇನ್ನೂರ ಐವತ್ತು ಡಾಲರ್‌ಗಳಿಂದ ನೂರು ಡಾಲರ್‌ಗಳಿಗೆ ಇಳಿಸಿತು, ಮತ್ತು ಸಾಂಸಂಗ್ ಜೆಮಿನಿ ಬಿಲ್ಟ್ ಇನ್ ಇರುವ ಎಕ್ಸ್‌ಟೆಂಡೆಡ್ ರಿಯಾಲಿಟಿ ಗ್ಲಾಸೆಸ್ ಘೋಷಣೆಯನ್ನೂ ಅಧಿಕೃತವಾಗಿ ಪ್ರಕಟಿಸಿತು.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ದೈನಂದಿನ ಪ್ರಾಂಪ್ಟ್ ಲಿಮಿಟ್‌ಗಳನ್ನು ಐದು ಗಂಟೆಗಳಿಗೊಮ್ಮೆ ರಿಫ್ರೆಶ್ ಆಗುವ ಕಂಪ್ಯೂಟ್ ಬಜೆಟ್‌ನಿಂದ ಬದಲಾಯಿಸಲಾಯಿತು.",
+      "text_markdown": "ದೈನಂದಿನ ಪ್ರಾಂಪ್ಟ್ ಲಿಮಿಟ್‌ಗಳನ್ನು ಐದು ಗಂಟೆಗಳಿಗೊಮ್ಮೆ ರಿಫ್ರೆಶ್ ಆಗುವ ಕಂಪ್ಯೂಟ್ ಬಜೆಟ್‌ನಿಂದ ಬದಲಾಯಿಸಲಾಯಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ದೈನಂದಿನ ಪ್ರಾಂಪ್ಟ್ ಲಿಮಿಟ್‌ಗಳನ್ನು ಐದು ಗಂಟೆಗಳಿಗೊಮ್ಮೆ ರಿಫ್ರೆಶ್ ಆಗುವ ಕಂಪ್ಯೂಟ್ ಬಜೆಟ್‌ನಿಂದ ಬದಲಾಯಿಸಲಾಯಿತು.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ಪರ್ಸನೆಲ್ ಭಾಗದ ಕುರಿತು?",
+      "text_markdown": "ಮತ್ತು ಪರ್ಸನೆಲ್ ಭಾಗದ ಕುರಿತು?",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಪರ್ಸನೆಲ್ ಭಾಗದ ಕುರಿತು?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Andrej Karpathy ಮಂಗಳವಾರ Anthropic ಗೆ ಸೇರಿದರು.",
+      "text_markdown": "Andrej Karpathy ಮಂಗಳವಾರ Anthropic ಗೆ ಸೇರಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "Andrej Karpathy ಮಂಗಳವಾರ Anthropic ಗೆ ಸೇರಿದರು.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅವರು ಪ್ರೀ-ಟ್ರೈನಿಂಗ್ ಟೀಮ್‌ನಲ್ಲಿದ್ದಾರೆ, ಪ್ರೀ-ಟ್ರೈನಿಂಗ್ ರಿಸರ್ಚ್ ಅನ್ನು ಫಾಸ್ಟ್ ಮಾಡಲು Claude ಅನ್ನು ಬಳಸುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸಿದ ಗುಂಪನ್ನು ಮುನ್ನಡೆಸುತ್ತಿದ್ದಾರೆ.",
+      "text_markdown": "ಅವರು ಪ್ರೀ-ಟ್ರೈನಿಂಗ್ ಟೀಮ್‌ನಲ್ಲಿದ್ದಾರೆ, ಪ್ರೀ-ಟ್ರೈನಿಂಗ್ ರಿಸರ್ಚ್ ಅನ್ನು ಫಾಸ್ಟ್ ಮಾಡಲು Claude ಅನ್ನು ಬಳಸುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸಿದ ಗುಂಪನ್ನು ಮುನ್ನಡೆಸುತ್ತಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರು ಪ್ರೀ ಟ್ರೈನಿಂಗ್ ಟೀಮ್‌ನಲ್ಲಿದ್ದಾರೆ, ಪ್ರೀ ಟ್ರೈನಿಂಗ್ ರಿಸರ್ಚ್ ಅನ್ನು ಫಾಸ್ಟ್ ಮಾಡಲು ಕ್ಲೋಡ್ ಅನ್ನು ಬಳಸುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸಿದ ಗುಂಪನ್ನು ಮುನ್ನಡೆಸುತ್ತಿದ್ದಾರೆ.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Karpathy OpenAI ಯ ಸ್ಥಾಪಕ ಸದಸ್ಯರಾಗಿದ್ದರು, ನಂತರ Tesla ಯ AI ಕೆಲಸವನ್ನು ನಡೆಸಿದರು, ನಂತರ AI ಶಿಕ್ಷಣಕ್ಕಾಗಿ Eureka Labs ಎಂಬ ಸಂಸ್ಥೆಯನ್ನು ಸ್ಥಾಪಿಸಿದರು.",
+      "text_markdown": "Karpathy OpenAI ಯ ಸ್ಥಾಪಕ ಸದಸ್ಯರಾಗಿದ್ದರು, ನಂತರ Tesla ಯ AI ಕೆಲಸವನ್ನು ನಡೆಸಿದರು, ನಂತರ AI ಶಿಕ್ಷಣಕ್ಕಾಗಿ Eureka Labs ಎಂಬ ಸಂಸ್ಥೆಯನ್ನು ಸ್ಥಾಪಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "Karpathy OpenAI ಯ ಸ್ಥಾಪಕ ಸದಸ್ಯರಾಗಿದ್ದರು, ನಂತರ Tesla ಯ AI ಕೆಲಸವನ್ನು ನಡೆಸಿದರು, ನಂತರ AI ಶಿಕ್ಷಣಕ್ಕಾಗಿ Eureka Labs ಎಂಬ ಸಂಸ್ಥೆಯನ್ನು ಸ್ಥಾಪಿಸಿದರು.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Apple ಬಗ್ಗೆ ಏನು?",
+      "text_markdown": "Apple ಬಗ್ಗೆ ಏನು?",
+      "title": "",
+      "tts": {
+        "text": "Apple ಬಗ್ಗೆ ಏನು?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Google Cloud CEO Thomas Kurian ಈ ವಾರ Gemini 2026ರ ನಂತರ Siri ಯ ವರ್ಷನ್ ಅನ್ನು ಪವರ್ ಮಾಡುವುದಾಗಿ ಖಚಿತಪಡಿಸಿದರು.",
+      "text_markdown": "Google Cloud CEO Thomas Kurian ಈ ವಾರ Gemini 2026ರ ನಂತರ Siri ಯ ವರ್ಷನ್ ಅನ್ನು ಪವರ್ ಮಾಡುವುದಾಗಿ ಖಚಿತಪಡಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಗೂಗಲ್ ಕ್ಲೌಡ್ ಸಿಇಒ ಥಾಮಸ್ ಕುರಿಯನ್ ಈ ವಾರ ಜೆಮಿನಿ ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತು ಆರರ ನಂತರ ಸಿರಿ ಯ ವರ್ಷನ್ ಅನ್ನು ಪವರ್ ಮಾಡುವುದಾಗಿ ಖಚಿತಪಡಿಸಿದರು.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಡೀಲ್ Apple ನ Foundation Models ಫ್ರೇಮ್‌ವರ್ಕ್ ಮೂಲಕ ರನ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಇಂಟಿಗ್ರೇಷನ್ ಲೇಯರ್ ಅನ್ನು Apple ಇನ್ನೂ ತನ್ನ ಬಳಿಯೇ ನಿಭಾಯಿಸುತ್ತದೆ.",
+      "text_markdown": "ಡೀಲ್ Apple ನ Foundation Models ಫ್ರೇಮ್‌ವರ್ಕ್ ಮೂಲಕ ರನ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಇಂಟಿಗ್ರೇಷನ್ ಲೇಯರ್ ಅನ್ನು Apple ಇನ್ನೂ ತನ್ನ ಬಳಿಯೇ ನಿಭಾಯಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಡೀಲ್ ಆಪಲ್‌ನ ಫೌಂಡೇಶನ್ ಮಾಡೆಲ್ಸ್ ಫ್ರೇಮ್‌ವರ್ಕ್ ಮೂಲಕ ರನ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಇಂಟಿಗ್ರೇಷನ್ ಲೇಯರ್ ಅನ್ನು ಆಪಲ್ ಇನ್ನೂ ತನ್ನ ಬಳಿಯೇ ನಿಭಾಯಿಸುತ್ತದೆ.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ಮಸ್ಕ್ ಮೊಕದ್ದಮೆಯ ವಿಷಯವೇನು?",
+      "text_markdown": "ಮತ್ತು ಮಸ್ಕ್ ಮೊಕದ್ದಮೆಯ ವಿಷಯವೇನು?",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಮಸ್ಕ್ ಮೊಕದ್ದಮೆಯ ವಿಷಯವೇನು?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಒಂಬತ್ತು ಸದಸ್ಯರ ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ ತೀರ್ಪುಗಾರರು ಸೋಮವಾರ, ಮೇ 18 ರಂದು OpenAI ವಿರುದ್ಧ ಎಲೋನ್ ಮಸ್ಕ್ ರ ಮೊಕದ್ದಮೆಯನ್ನು ತಿರಸ್ಕರಿಸಿದರು.",
+      "text_markdown": "ಒಂಬತ್ತು ಸದಸ್ಯರ ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ ತೀರ್ಪುಗಾರರು ಸೋಮವಾರ, ಮೇ 18 ರಂದು OpenAI ವಿರುದ್ಧ ಎಲೋನ್ ಮಸ್ಕ್ ರ ಮೊಕದ್ದಮೆಯನ್ನು ತಿರಸ್ಕರಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂಬತ್ತು ಸದಸ್ಯರ ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ ತೀರ್ಪುಗಾರರು ಸೋಮವಾರ, ಮೇ ಹದಿನೆಂಟರಂದು ಓಪನ್ ಎ ಐ ವಿರುದ್ಧ ಎಲೋನ್ ಮಸ್ಕ್ ರ ಮೊಕದ್ದಮೆಯನ್ನು ತಿರಸ್ಕರಿಸಿದರು.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅವರು ಎರಡು ಗಂಟೆಗಳಿಗಿಂತ ಕಡಿಮೆ ಸಮಯದಲ್ಲಿ ವಿಚಾರಣೆ ನಡೆಸಿದರು.",
+      "text_markdown": "ಅವರು ಎರಡು ಗಂಟೆಗಳಿಗಿಂತ ಕಡಿಮೆ ಸಮಯದಲ್ಲಿ ವಿಚಾರಣೆ ನಡೆಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರು ಎರಡು ಗಂಟೆಗಳಿಗಿಂತ ಕಡಿಮೆ ಸಮಯದಲ್ಲಿ ವಿಚಾರಣೆ ನಡೆಸಿದರು.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮಸ್ಕ್ ಮಿತಿ ಕಾನೂನಿನ ಮಿತಿ ಮೀರಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದಾರೆ ಎಂದು ತೀರ್ಪುಗಾರರು ಕಂಡುಕೊಂಡರು, ಮತ್ತು ನ್ಯಾಯಾಧೀಶರು ಪ್ರಕರಣವನ್ನು ವಜಾಗೊಳಿಸಿದರು.",
+      "text_markdown": "ಮಸ್ಕ್ ಮಿತಿ ಕಾನೂನಿನ ಮಿತಿ ಮೀರಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದಾರೆ ಎಂದು ತೀರ್ಪುಗಾರರು ಕಂಡುಕೊಂಡರು, ಮತ್ತು ನ್ಯಾಯಾಧೀಶರು ಪ್ರಕರಣವನ್ನು ವಜಾಗೊಳಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಮಸ್ಕ್ ಮಿತಿ ಕಾನೂನಿನ ಮಿತಿ ಮೀರಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದಾರೆ ಎಂದು ತೀರ್ಪುಗಾರರು ಕಂಡುಕೊಂಡರು, ಮತ್ತು ನ್ಯಾಯಾಧೀಶರು ಪ್ರಕರಣವನ್ನು ವಜಾಗೊಳಿಸಿದರು.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನೀತಿಯ ದಿಕ್ಕಿನಿಂದ ಏನಾದರೂ ಸುಳಿವು ಸಿಗುತ್ತಿದೆಯೇ?",
+      "text_markdown": "ನೀತಿಯ ದಿಕ್ಕಿನಿಂದ ಏನಾದರೂ ಸುಳಿವು ಸಿಗುತ್ತಿದೆಯೇ?",
+      "title": "",
+      "tts": {
+        "text": "ನೀತಿಯ ದಿಕ್ಕಿನಿಂದ ಏನಾದರೂ ಸುಳಿವು ಸಿಗುತ್ತಿದೆಯೇ?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಖಜಾನೆ ಕಾರ್ಯದರ್ಶಿ ಸ್ಕಾಟ್ ಬೆಸೆಂಟ್ ಮೇ 14 ರಂದು ಬೀಜಿಂಗ್‌ನಲ್ಲಿ ನಡೆದ ಟ್ರಂಪ್-ಶಿ ಶೃಂಗಸಭೆಯಲ್ಲಿ U.S. ಮತ್ತು ಚೀನಾ AI ಸುರಕ್ಷತೆಯ ಮೇಲೆ ಔಪಚಾರಿಕ ಪ್ರೋಟೋಕಾಲ್ ಸ್ಥಾಪಿಸುವುದಾಗಿ ಘೋಷಿಸಿದರು.",
+      "text_markdown": "ಖಜಾನೆ ಕಾರ್ಯದರ್ಶಿ ಸ್ಕಾಟ್ ಬೆಸೆಂಟ್ ಮೇ 14 ರಂದು ಬೀಜಿಂಗ್‌ನಲ್ಲಿ ನಡೆದ ಟ್ರಂಪ್-ಶಿ ಶೃಂಗಸಭೆಯಲ್ಲಿ U.S. ಮತ್ತು ಚೀನಾ AI ಸುರಕ್ಷತೆಯ ಮೇಲೆ ಔಪಚಾರಿಕ ಪ್ರೋಟೋಕಾಲ್ ಸ್ಥಾಪಿಸುವುದಾಗಿ ಘೋಷಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಖಜಾನೆ ಕಾರ್ಯದರ್ಶಿ ಸ್ಕಾಟ್ ಬೆಸೆಂಟ್ ಮೇ ಹದಿನಾಲ್ಕರಂದು ಬೀಜಿಂಗ್‌ನಲ್ಲಿ ನಡೆದ ಟ್ರಂಪ್ ಶಿ ಶೃಂಗಸಭೆಯಲ್ಲಿ ಯು ಎಸ್ ಮತ್ತು ಚೀನಾ ಎ ಐ ಸುರಕ್ಷತೆಯ ಮೇಲೆ ಔಪಚಾರಿಕ ಪ್ರೋಟೋಕಾಲ್ ಸ್ಥಾಪಿಸುವುದಾಗಿ ಘೋಷಿಸಿದರು.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ರಾಜ್ಯೇತರ ನಟರ ಕೈಗೆ ಗಡಿ ಮಾದರಿಗಳು ಸಿಗದಂತೆ ಮಾಡುವ ಉತ್ತಮ ಅಭ್ಯಾಸಗಳಾಗಿ ರೂಪಿಸಲಾಗಿದೆ — ಬಂಧಿಸುವ ವ್ಯವಸ್ಥೆಯಲ್ಲ, ಕೇವಲ ಮಾತುಕತೆ ನಡೆಸುವ ಒಪ್ಪಂದ.",
+      "text_markdown": "ಇದು ರಾಜ್ಯೇತರ ನಟರ ಕೈಗೆ ಗಡಿ ಮಾದರಿಗಳು ಸಿಗದಂತೆ ಮಾಡುವ ಉತ್ತಮ ಅಭ್ಯಾಸಗಳಾಗಿ ರೂಪಿಸಲಾಗಿದೆ — ಬಂಧಿಸುವ ವ್ಯವಸ್ಥೆಯಲ್ಲ, ಕೇವಲ ಮಾತುಕತೆ ನಡೆಸುವ ಒಪ್ಪಂದ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ರಾಜ್ಯೇತರ ನಟರ ಕೈಗೆ ಗಡಿ ಮಾದರಿಗಳು ಸಿಗದಂತೆ ಮಾಡುವ ಉತ್ತಮ ಅಭ್ಯಾಸಗಳಾಗಿ ರೂಪಿಸಲಾಗಿದೆ — ಬಂಧಿಸುವ ವ್ಯವಸ್ಥೆಯಲ್ಲ, ಕೇವಲ ಮಾತುಕತೆ ನಡೆಸುವ ಒಪ್ಪಂದ.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮೊದಲ ಬಾರಿ ಎರಡೂ ಕಡೆಗಳು AI ಸುರಕ್ಷತೆಯನ್ನು ಶುದ್ಧ ಸ್ಪರ್ಧೆಯ ಬದಲಾಗಿ ದ್ವಿಪಕ್ಷೀಯವಾಗಿ ರೂಪಿಸಿವೆ.",
+      "text_markdown": "ಮೊದಲ ಬಾರಿ ಎರಡೂ ಕಡೆಗಳು AI ಸುರಕ್ಷತೆಯನ್ನು ಶುದ್ಧ ಸ್ಪರ್ಧೆಯ ಬದಲಾಗಿ ದ್ವಿಪಕ್ಷೀಯವಾಗಿ ರೂಪಿಸಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮೊದಲ ಬಾರಿ ಎರಡೂ ಕಡೆಗಳು AI ಸುರಕ್ಷತೆಯನ್ನು ಶುದ್ಧ ಸ್ಪರ್ಧೆಯ ಬದಲಾಗಿ ದ್ವಿಪಕ್ಷೀಯವಾಗಿ ರೂಪಿಸಿವೆ.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ನಾವು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ಹಿಂತಿರುಗೋಣ.",
+      "text_markdown": "ಈಗ ನಾವು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ಹಿಂತಿರುಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ನಾವು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ಹಿಂತಿರುಗೋಣ.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರೋನ್, ಪೋಪ್ ಕಳೆದ ವಾರ ನಮ್ಮ ಬಗ್ಗೆ ಬರೆದಿದ್ದಾರೆ.",
+      "text_markdown": "ರೋನ್, ಪೋಪ್ ಕಳೆದ ವಾರ ನಮ್ಮ ಬಗ್ಗೆ ಬರೆದಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ರೋನ್, ಪೋಪ್ ಕಳೆದ ವಾರ ನಮ್ಮ ಬಗ್ಗೆ ಬರೆದಿದ್ದಾರೆ.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪೋಪ್ ಲಿಯೋ XIV ಅವರ ಮೊದಲ ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಈಗ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+      "text_markdown": "ಪೋಪ್ ಲಿಯೋ XIV ಅವರ ಮೊದಲ ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಈಗ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪೋಪ್ ಲಿಯೋ ಹದಿನಾಲ್ಕನೆಯವರ ಮೊದಲ ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಈಗ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದಕ್ಕೆ Magnifica Humanitas ಎಂದು ಶೀರ್ಷಿಕೆ.",
+      "text_markdown": "ಅದಕ್ಕೆ Magnifica Humanitas ಎಂದು ಶೀರ್ಷಿಕೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದಕ್ಕೆ Magnifica Humanitas ಎಂದು ಶೀರ್ಷಿಕೆ.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದನ್ನು “ಮಾನವೀಯತೆಯ ಮಹತ್ತ್ವ” ಎಂದು ಅನುವಾದಿಸಬಹುದು.",
+      "text_markdown": "ಅದನ್ನು “ಮಾನವೀಯತೆಯ ಮಹತ್ತ್ವ” ಎಂದು ಅನುವಾದಿಸಬಹುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದನ್ನು ಮಾನವೀಯತೆಯ ಮಹತ್ತ್ವ ಎಂದು ಅನುವಾದಿಸಬಹುದು.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ವ್ಯಾಟಿಕನ್ ಅದನ್ನು ಸೋಮವಾರ, ಮೇ 25 ರಂದು ಪ್ರಕಟಿಸುತ್ತಿದೆ.",
+      "text_markdown": "ವ್ಯಾಟಿಕನ್ ಅದನ್ನು ಸೋಮವಾರ, ಮೇ 25 ರಂದು ಪ್ರಕಟಿಸುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ವ್ಯಾಟಿಕನ್ ಅದನ್ನು ಸೋಮವಾರ, ಮೇ ಇಪ್ಪತ್ತೈದರಂದು ಪ್ರಕಟಿಸುತ್ತಿದೆ.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ಮಾನವ ಘನತೆಯ ರಕ್ಷಣೆಯನ್ನು ಪ್ರತಿಪಾದಿಸುತ್ತದೆ.",
+      "text_markdown": "ಇದು ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ಮಾನವ ಘನತೆಯ ರಕ್ಷಣೆಯನ್ನು ಪ್ರತಿಪಾದಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ಮಾನವ ಘನತೆಯ ರಕ್ಷಣೆಯನ್ನು ಪ್ರತಿಪಾದಿಸುತ್ತದೆ.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪೋಪ್ ಯಾವಾಗ ಅದಕ್ಕೆ ಸಹಿ ಹಾಕಿದರು?",
+      "text_markdown": "ಪೋಪ್ ಯಾವಾಗ ಅದಕ್ಕೆ ಸಹಿ ಹಾಕಿದರು?",
+      "title": "",
+      "tts": {
+        "text": "ಪೋಪ್ ಯಾವಾಗ ಅದಕ್ಕೆ ಸಹಿ ಹಾಕಿದರು?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಮೇ 15ರಂದು ಆಗಿತ್ತು.",
+      "text_markdown": "ಅದು ಮೇ 15ರಂದು ಆಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಮೇ ಹದಿನೈದರಂದು ಆಗಿತ್ತು.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಆ ದಿನಾಂಕವನ್ನು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ.",
+      "text_markdown": "ಆ ದಿನಾಂಕವನ್ನು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆ ದಿನಾಂಕವನ್ನು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪೋಪ್ ಲಿಯೋ XIII Rerum Novarum ಗೆ ಸಹಿ ಹಾಕಿದ ದಿನದಿಂದ ಇದು ನಿಖರವಾಗಿ 135 ವರ್ಷಗಳು.",
+      "text_markdown": "ಪೋಪ್ ಲಿಯೋ XIII Rerum Novarum ಗೆ ಸಹಿ ಹಾಕಿದ ದಿನದಿಂದ ಇದು ನಿಖರವಾಗಿ 135 ವರ್ಷಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಪೋಪ್ ಲಿಯೋ ಹದಿಮೂರನೆಯವರು Rerum Novarum ಗೆ ಸಹಿ ಹಾಕಿದ ದಿನದಿಂದ ಇದು ನಿಖರವಾಗಿ ನೂರ ಮೂವತ್ತೈದು ವರ್ಷಗಳು.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Rerum Novarum ಎಂದರೆ ನಿಜವಾಗಿ ಏನಾಗಿದೆ?",
+      "text_markdown": "Rerum Novarum ಎಂದರೆ ನಿಜವಾಗಿ ಏನಾಗಿದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ರೆರುಮ್ ನೊವಾರುಮ್ ಎಂದರೆ ನಿಜವಾಗಿ ಏನಾಗಿದೆ?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Rerum Novarum ಶ್ರಮ ಮತ್ತು ಬಂಡವಾಳದ ಮೇಲೆ ಮೂಲಭೂತ ಕ್ಯಾಥೋಲಿಕ್ ಬೋಧನೆಯಾಗಿತ್ತು.",
+      "text_markdown": "Rerum Novarum ಶ್ರಮ ಮತ್ತು ಬಂಡವಾಳದ ಮೇಲೆ ಮೂಲಭೂತ ಕ್ಯಾಥೋಲಿಕ್ ಬೋಧನೆಯಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum ಶ್ರಮ ಮತ್ತು ಬಂಡವಾಳದ ಮೇಲೆ ಮೂಲಭೂತ ಕ್ಯಾಥೋಲಿಕ್ ಬೋಧನೆಯಾಗಿತ್ತು.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು 1891 ರಲ್ಲಿ, ಕೈಗಾರಿಕಾ ಕ್ರಾಂತಿಯ ಮಧ್ಯದಲ್ಲಿ ಹೊರಬಂದಿತು.",
+      "text_markdown": "ಇದು 1891 ರಲ್ಲಿ, ಕೈಗಾರಿಕಾ ಕ್ರಾಂತಿಯ ಮಧ್ಯದಲ್ಲಿ ಹೊರಬಂದಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಹದಿನೆಂಟು ತೊಂಬತ್ತೊಂದರಲ್ಲಿ, ಕೈಗಾರಿಕಾ ಕ್ರಾಂತಿಯ ಮಧ್ಯದಲ್ಲಿ ಹೊರಬಂದಿತು.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಕೆಲಸಗಾರರು, ಮಾಲೀಕರು, ವೇತನಗಳು, ಮತ್ತು ಕೆಲಸದ ಘನತೆಯ ಬಗ್ಗೆ ಚರ್ಚ್ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂದು ವ್ಯಾಖ್ಯಾನಿಸಿತು — ಮತ್ತು ಆ ರೂಪರೇಖೆಯು ಶತಮಾನಕ್ಕೂ ಹೆಚ್ಚು ಕಾಲ ಇದ್ದಿದೆ.",
+      "text_markdown": "ಇದು ಕೆಲಸಗಾರರು, ಮಾಲೀಕರು, ವೇತನಗಳು, ಮತ್ತು ಕೆಲಸದ ಘನತೆಯ ಬಗ್ಗೆ ಚರ್ಚ್ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂದು ವ್ಯಾಖ್ಯಾನಿಸಿತು — ಮತ್ತು ಆ ರೂಪರೇಖೆಯು ಶತಮಾನಕ್ಕೂ ಹೆಚ್ಚು ಕಾಲ ಇದ್ದಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಕೆಲಸಗಾರರು, ಮಾಲೀಕರು, ವೇತನಗಳು, ಮತ್ತು ಕೆಲಸದ ಘನತೆಯ ಬಗ್ಗೆ ಚರ್ಚ್ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂದು ವ್ಯಾಖ್ಯಾನಿಸಿತು — ಮತ್ತು ಆ ರೂಪರೇಖೆಯು ಶತಮಾನಕ್ಕೂ ಹೆಚ್ಚು ಕಾಲ ಇದ್ದಿದೆ.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪೋಪ್ ಲಿಯೋ XIV ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ನಮ್ಮ ಪೀಳಿಗೆಗೆ ಅದೇ ರೀತಿಯ ಯುಗಾಂತಕಾರಿ ಪ್ರಶ್ನೆಯಾಗಿ ಸ್ಥಾನಿಸುತ್ತಿದ್ದಾರೆ.",
+      "text_markdown": "ಪೋಪ್ ಲಿಯೋ XIV ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ನಮ್ಮ ಪೀಳಿಗೆಗೆ ಅದೇ ರೀತಿಯ ಯುಗಾಂತಕಾರಿ ಪ್ರಶ್ನೆಯಾಗಿ ಸ್ಥಾನಿಸುತ್ತಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪೋಪ್ ಲಿಯೋ ಹದಿನಾಲ್ಕನೆಯವರು ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ನಮ್ಮ ಪೀಳಿಗೆಗೆ ಅದೇ ರೀತಿಯ ಯುಗಾಂತಕಾರಿ ಪ್ರಶ್ನೆಯಾಗಿ ಸ್ಥಾನಿಸುತ್ತಿದ್ದಾರೆ.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಉದ್ದೇಶಪೂರ್ವಕ ಪ್ರತಿಧ್ವನಿ.",
+      "text_markdown": "ಅದು ಉದ್ದೇಶಪೂರ್ವಕ ಪ್ರತಿಧ್ವನಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಉದ್ದೇಶಪೂರ್ವಕ ಪ್ರತಿಧ್ವನಿ.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಬಹಳ ಉದ್ದೇಶಪೂರ್ವಕವಾದದ್ದು.",
+      "text_markdown": "ಇದು ಬಹಳ ಉದ್ದೇಶಪೂರ್ವಕವಾದದ್ದು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಬಹಳ ಉದ್ದೇಶಪೂರ್ವಕವಾದದ್ದು.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರಾಜಸಿಂಹಾಸನದ ಹೆಸರಿನ ಆಯ್ಕೆಯೂ — ಲಿಯೋ — ಇದನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "text_markdown": "ರಾಜಸಿಂಹಾಸನದ ಹೆಸರಿನ ಆಯ್ಕೆಯೂ — ಲಿಯೋ — ಇದನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ರಾಜಸಿಂಹಾಸನದ ಹೆಸರಿನ ಆಯ್ಕೆಯೂ — ಲಿಯೋ — ಇದನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ಪೋಪ್ ಹತ್ತೊಂಬತ್ತನೇ ಶತಮಾನಕ್ಕೆ ಕೈಗಾರಿಕೀಕರಣ ಏನಿತ್ತೋ ಅದೇ ನಮ್ಮ ಶತಮಾನಕ್ಕೆ AI ಎಂದು ಬಹಿರಂಗವಾಗಿ ಹೇಳುತ್ತಿದ್ದಾರೆ.",
+      "text_markdown": "ಈ ಪೋಪ್ ಹತ್ತೊಂಬತ್ತನೇ ಶತಮಾನಕ್ಕೆ ಕೈಗಾರಿಕೀಕರಣ ಏನಿತ್ತೋ ಅದೇ ನಮ್ಮ ಶತಮಾನಕ್ಕೆ AI ಎಂದು ಬಹಿರಂಗವಾಗಿ ಹೇಳುತ್ತಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ಪೋಪ್ ಹತ್ತೊಂಬತ್ತನೇ ಶತಮಾನಕ್ಕೆ ಕೈಗಾರಿಕೀಕರಣ ಏನಿತ್ತೋ ಅದೇ ನಮ್ಮ ಶತಮಾನಕ್ಕೆ AI ಎಂದು ಬಹಿರಂಗವಾಗಿ ಹೇಳುತ್ತಿದ್ದಾರೆ.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅವರ ಜೊತೆ ಪ್ರಸ್ತುತಿ ನೀಡುತ್ತಿರುವವರು ಯಾರಾಗಿದ್ದಾರೆ?",
+      "text_markdown": "ಅವರ ಜೊತೆ ಪ್ರಸ್ತುತಿ ನೀಡುತ್ತಿರುವವರು ಯಾರಾಗಿದ್ದಾರೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಜೊತೆ ಪ್ರಸ್ತುತಿ ನೀಡುತ್ತಿರುವವರು ಯಾರಾಗಿದ್ದಾರೆ?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Anthropic ನ ಸಹ-ಸಂಸ್ಥಾಪಕ ಕ್ರಿಸ್ ಒಲಾಹ್ ವ್ಯಾಟಿಕನ್ ಸಿನೊಡ್ ಹಾಲ್‌ನಲ್ಲಿ ವೇದಿಕೆಯ ಮೇಲೆ ಇರುತ್ತಾರೆ.",
+      "text_markdown": "Anthropic ನ ಸಹ-ಸಂಸ್ಥಾಪಕ ಕ್ರಿಸ್ ಒಲಾಹ್ ವ್ಯಾಟಿಕನ್ ಸಿನೊಡ್ ಹಾಲ್‌ನಲ್ಲಿ ವೇದಿಕೆಯ ಮೇಲೆ ಇರುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ನ ಸಹ ಸಂಸ್ಥಾಪಕ ಕ್ರಿಸ್ ಒಲಾಹ್ ವ್ಯಾಟಿಕನ್ ಸಿನೊಡ್ ಹಾಲ್‌ನಲ್ಲಿ ವೇದಿಕೆಯ ಮೇಲೆ ಇರುತ್ತಾರೆ.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಒಲಾಹ್ Anthropic ನಲ್ಲಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧನೆ ನಡೆಸುತ್ತಾರೆ.",
+      "text_markdown": "ಒಲಾಹ್ Anthropic ನಲ್ಲಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧನೆ ನಡೆಸುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಲಾಹ್ Anthropic ನಲ್ಲಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧನೆ ನಡೆಸುತ್ತಾರೆ.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ನರಸಂಖ್ಯಾ ಜಾಲದ ಒಳಗೆ ನಿಜವಾಗಿ ಏನು ನಡೆಯುತ್ತಿದೆ ಎಂದು ಕಂಡುಹಿಡಿಯಲು ಪ್ರಯತ್ನಿಸುವ ಕ್ಷೇತ್ರ.",
+      "text_markdown": "ಅದು ನರಸಂಖ್ಯಾ ಜಾಲದ ಒಳಗೆ ನಿಜವಾಗಿ ಏನು ನಡೆಯುತ್ತಿದೆ ಎಂದು ಕಂಡುಹಿಡಿಯಲು ಪ್ರಯತ್ನಿಸುವ ಕ್ಷೇತ್ರ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ನರಸಂಖ್ಯಾ ಜಾಲದ ಒಳಗೆ ನಿಜವಾಗಿ ಏನು ನಡೆಯುತ್ತಿದೆ ಎಂದು ಕಂಡುಹಿಡಿಯಲು ಪ್ರಯತ್ನಿಸುವ ಕ್ಷೇತ್ರ.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಕಾರ್ಯಕಾರಿ ಅಧಿಕಾರಿಯ ಬದಲು ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧಕನನ್ನು ಯಾಕೆ?",
+      "text_markdown": "ಕಾರ್ಯಕಾರಿ ಅಧಿಕಾರಿಯ ಬದಲು ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧಕನನ್ನು ಯಾಕೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಕಾರ್ಯಕಾರಿ ಅಧಿಕಾರಿಯ ಬದಲು ವ್ಯಾಖ್ಯಾನಶೀಲತೆ ಸಂಶೋಧಕನನ್ನು ಯಾಕೆ?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಏಕೆಂದರೆ ಎನ್‌ಸೈಕ್ಲಿಕಲ್‌ನ ಕೇಂದ್ರ ಪ್ರಶ್ನೆ \"ನಾವು ಏನನ್ನು ನಿರ್ಮಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ನಾವು ಅದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬಹುದೇ?\"",
+      "text_markdown": "ಏಕೆಂದರೆ ಎನ್‌ಸೈಕ್ಲಿಕಲ್‌ನ ಕೇಂದ್ರ ಪ್ರಶ್ನೆ \"ನಾವು ಏನನ್ನು ನಿರ್ಮಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ನಾವು ಅದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬಹುದೇ?\"",
+      "title": "",
+      "tts": {
+        "text": "ಏಕೆಂದರೆ ಎನ್‌ಸೈಕ್ಲಿಕಲ್‌ನ ಕೇಂದ್ರ ಪ್ರಶ್ನೆ \"ನಾವು ಏನನ್ನು ನಿರ್ಮಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ನಾವು ಅದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬಹುದೇ?\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ನಿಖರವಾಗಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆಯ ಪ್ರಶ್ನೆ, ನೈತಿಕ ಚೌಕಟ್ಟಿನಲ್ಲಿ ಮ್ಯಾಪ್ ಮಾಡಲಾಗಿದೆ.",
+      "text_markdown": "ಅದು ನಿಖರವಾಗಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆಯ ಪ್ರಶ್ನೆ, ನೈತಿಕ ಚೌಕಟ್ಟಿನಲ್ಲಿ ಮ್ಯಾಪ್ ಮಾಡಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ನಿಖರವಾಗಿ ವ್ಯಾಖ್ಯಾನಶೀಲತೆಯ ಪ್ರಶ್ನೆ, ನೈತಿಕ ಚೌಕಟ್ಟಿನಲ್ಲಿ ಮ್ಯಾಪ್ ಮಾಡಲಾಗಿದೆ.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆಯಲ್ಲ ಮತ್ತು ಅವರು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆ ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಲಿಲ್ಲ.",
+      "text_markdown": "ಇದು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆಯಲ್ಲ ಮತ್ತು ಅವರು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆ ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಲಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆಯಲ್ಲ ಮತ್ತು ಅವರು ಮಾರಾಟದ ಪ್ರಸ್ತಾವನೆ ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಲಿಲ್ಲ.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ವೇದಿಕೆಯಲ್ಲಿ ಇನ್ನು ಯಾರಿದ್ದಾರೆ?",
+      "text_markdown": "ವೇದಿಕೆಯಲ್ಲಿ ಇನ್ನು ಯಾರಿದ್ದಾರೆ?",
+      "title": "",
+      "tts": {
+        "text": "ವೇದಿಕೆಯಲ್ಲಿ ಇನ್ನು ಯಾರಿದ್ದಾರೆ?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಕಾರ್ಡಿನಲ್ ಪಿಯೆಟ್ರೋ ಪರೋಲಿನ್ ಮುಕ್ತಾಯದ ಭಾಷಣ ಮಾಡುತ್ತಾರೆ.",
+      "text_markdown": "ಕಾರ್ಡಿನಲ್ ಪಿಯೆಟ್ರೋ ಪರೋಲಿನ್ ಮುಕ್ತಾಯದ ಭಾಷಣ ಮಾಡುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಕಾರ್ಡಿನಲ್ ಪಿಯೆಟ್ರೋ ಪರೋಲಿನ್ ಮುಕ್ತಾಯದ ಭಾಷಣ ಮಾಡುತ್ತಾರೆ.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪ್ರಸ್ತುತಿಯನ್ನು ಕಾರ್ಡಿನಲ್ ವಿಕ್ಟರ್ ಮ್ಯಾನುಯೆಲ್ ಫರ್ನಾಂಡೆಜ್ ಹಾಗೂ ಕಾರ್ಡಿನಲ್ ಮೈಕೆಲ್ ಜೆರ್ನಿ ಇವರಿಬ್ಬರು ನಡೆಸಿಕೊಡಲಿದ್ದಾರೆ.",
+      "text_markdown": "ಪ್ರಸ್ತುತಿಯನ್ನು ಕಾರ್ಡಿನಲ್ ವಿಕ್ಟರ್ ಮ್ಯಾನುಯೆಲ್ ಫರ್ನಾಂಡೆಜ್ ಹಾಗೂ ಕಾರ್ಡಿನಲ್ ಮೈಕೆಲ್ ಜೆರ್ನಿ ಇವರಿಬ್ಬರು ನಡೆಸಿಕೊಡಲಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ರಸ್ತುತಿಯನ್ನು ಕಾರ್ಡಿನಲ್ ವಿಕ್ಟರ್ ಮ್ಯಾನುಯೆಲ್ ಫರ್ನಾಂಡೆಜ್ ಹಾಗೂ ಕಾರ್ಡಿನಲ್ ಮೈಕೆಲ್ ಜೆರ್ನಿ ಇವರಿಬ್ಬರು ನಡೆಸಿಕೊಡಲಿದ್ದಾರೆ.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ಇಬ್ಬರು ದೇವತಾಶಾಸ್ತ್ರ ಪ್ರಾಧ್ಯಾಪಕರು — ಯುಕೆಯ ಡರ್ಹಾಮ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಅನ್ನಾ ರೋಲ್ಯಾಂಡ್ಸ್, ಮತ್ತು Santa Clara ವಿಶ್ವವಿದ್ಯಾಲಯದ Jesuit ದೇವತಾಶಾಸ್ತ್ರ ಶಾಲೆಯ ಲೆಯೋಕಾಡಿ ಲುಶೊಂಬೋ — ಸಮಿತಿಯಲ್ಲಿ ಇರುತ್ತಾರೆ.",
+      "text_markdown": "ಮತ್ತು ಇಬ್ಬರು ದೇವತಾಶಾಸ್ತ್ರ ಪ್ರಾಧ್ಯಾಪಕರು — ಯುಕೆಯ ಡರ್ಹಾಮ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಅನ್ನಾ ರೋಲ್ಯಾಂಡ್ಸ್, ಮತ್ತು Santa Clara ವಿಶ್ವವಿದ್ಯಾಲಯದ Jesuit ದೇವತಾಶಾಸ್ತ್ರ ಶಾಲೆಯ ಲೆಯೋಕಾಡಿ ಲುಶೊಂಬೋ — ಸಮಿತಿಯಲ್ಲಿ ಇರುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಇಬ್ಬರು ದೇವತಾಶಾಸ್ತ್ರ ಪ್ರಾಧ್ಯಾಪಕರು — ಯುಕೆಯ ಡರ್ಹಾಮ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಅನ್ನಾ ರೋಲ್ಯಾಂಡ್ಸ್, ಮತ್ತು Santa Clara ವಿಶ್ವವಿದ್ಯಾಲಯದ Jesuit ದೇವತಾಶಾಸ್ತ್ರ ಶಾಲೆಯ ಲೆಯೋಕಾಡಿ ಲುಶೊಂಬೋ — ಸಮಿತಿಯಲ್ಲಿ ಇರುತ್ತಾರೆ.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ವಿಷಯವು ಕೊಠಡಿಯ ಆಚೆಗೆ ಏಕೆ ಮುಖ್ಯವಾಗಿದೆ?",
+      "text_markdown": "ಈ ವಿಷಯವು ಕೊಠಡಿಯ ಆಚೆಗೆ ಏಕೆ ಮುಖ್ಯವಾಗಿದೆ?",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಿಷಯವು ಕೊಠಡಿಯ ಆಚೆಗೆ ಏಕೆ ಮುಖ್ಯವಾಗಿದೆ?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಏಕೆಂದರೆ ಜಗತ್ತಿನಾದ್ಯಂತ 1.4 ಶತಕೋಟಿ ಕ್ಯಾಥೋಲಿಕರು ಇದ್ದಾರೆ ಎಂಬ ಕಾರಣದಿಂದ.",
+      "text_markdown": "ಏಕೆಂದರೆ ಜಗತ್ತಿನಾದ್ಯಂತ 1.4 ಶತಕೋಟಿ ಕ್ಯಾಥೋಲಿಕರು ಇದ್ದಾರೆ ಎಂಬ ಕಾರಣದಿಂದ.",
+      "title": "",
+      "tts": {
+        "text": "ಏಕೆಂದರೆ ಜಗತ್ತಿನಾದ್ಯಂತ ಒಂದು ದಶಮಾಂಶ ನಾಲ್ಕು ಶತಕೋಟಿ ಕ್ಯಾಥೋಲಿಕರು ಇದ್ದಾರೆ ಎಂಬ ಕಾರಣದಿಂದ.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪೋಪ್ ಒಂದು ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಬರೆದಾಗ, ಅದು ಒಂದು ಪೀಳಿಗೆಯವರೆಗೂ ಬೃಹತ್ ಜನಸಂಖ್ಯೆಯು ಒಂದು ವಿಷಯದ ಬಗ್ಗೆ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+      "text_markdown": "ಪೋಪ್ ಒಂದು ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಬರೆದಾಗ, ಅದು ಒಂದು ಪೀಳಿಗೆಯವರೆಗೂ ಬೃಹತ್ ಜನಸಂಖ್ಯೆಯು ಒಂದು ವಿಷಯದ ಬಗ್ಗೆ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪೋಪ್ ಒಂದು ಎನ್‌ಸೈಕ್ಲಿಕಲ್ ಬರೆದಾಗ, ಅದು ಒಂದು ಪೀಳಿಗೆಯವರೆಗೂ ಬೃಹತ್ ಜನಸಂಖ್ಯೆಯು ಒಂದು ವಿಷಯದ ಬಗ್ಗೆ ಹೇಗೆ ಯೋಚಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Rerum Novarum ಇನ್ನೂ 135 ವರ್ಷಗಳ ನಂತರವೂ ಕಾರ್ಮಿಕ ವಿಷಯಗಳಲ್ಲಿ ಕ್ಯಾಥೋಲಿಕ್ ಸಾಮಾಜಿಕ ನೀತಿಯನ್ನು ರೂಪಿಸುತ್ತಿದೆ.",
+      "text_markdown": "Rerum Novarum ಇನ್ನೂ 135 ವರ್ಷಗಳ ನಂತರವೂ ಕಾರ್ಮಿಕ ವಿಷಯಗಳಲ್ಲಿ ಕ್ಯಾಥೋಲಿಕ್ ಸಾಮಾಜಿಕ ನೀತಿಯನ್ನು ರೂಪಿಸುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum ಇನ್ನೂ ನೂರ ಮೂವತ್ತೈದು ವರ್ಷಗಳ ನಂತರವೂ ಕಾರ್ಮಿಕ ವಿಷಯಗಳಲ್ಲಿ ಕ್ಯಾಥೋಲಿಕ್ ಸಾಮಾಜಿಕ ನೀತಿಯನ್ನು ರೂಪಿಸುತ್ತಿದೆ.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Magnifica Humanitas AI ಯ ಮೇಲೆ ಅದೇ ರೀತಿಯ ಪ್ರಭಾವ ಬೀರಲು ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "text_markdown": "Magnifica Humanitas AI ಯ ಮೇಲೆ ಅದೇ ರೀತಿಯ ಪ್ರಭಾವ ಬೀರಲು ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Magnifica Humanitas AI ಯ ಮೇಲೆ ಅದೇ ರೀತಿಯ ಪ್ರಭಾವ ಬೀರಲು ಸ್ಥಾನದಲ್ಲಿದೆ.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ದೃಷ್ಟಿಕೋನ?",
+      "text_markdown": "ಮತ್ತು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ದೃಷ್ಟಿಕೋನ?",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ದೃಷ್ಟಿಕೋನ?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "AI ಉದ್ಯಮದ ಹೊರಗಿನ ಒಂದು ಸಂಸ್ಥೆ ನಾವು ನಿರ್ಮಿಸುತ್ತಿರುವುದರ ಮೇಲೆ ಗಂಭೀರವಾದ ಬೋಧನಾ ಸ್ಥಾನವನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದೆ.",
+      "text_markdown": "AI ಉದ್ಯಮದ ಹೊರಗಿನ ಒಂದು ಸಂಸ್ಥೆ ನಾವು ನಿರ್ಮಿಸುತ್ತಿರುವುದರ ಮೇಲೆ ಗಂಭೀರವಾದ ಬೋಧನಾ ಸ್ಥಾನವನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "AI ಉದ್ಯಮದ ಹೊರಗಿನ ಒಂದು ಸಂಸ್ಥೆ ನಾವು ನಿರ್ಮಿಸುತ್ತಿರುವುದರ ಮೇಲೆ ಗಂಭೀರವಾದ ಬೋಧನಾ ಸ್ಥಾನವನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದೆ.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮತ್ತು ಉದ್ಯಮದ ಭಾಗವು ಸಂಭಾಷಣೆಯ ಮೇಜಿನ ಬಳಿ, ಸರಿಯಾದ ತಂತ್ರದ ಸಂಶೋಧಕರೊಂದಿಗೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತಿದೆ.",
+      "text_markdown": "ಮತ್ತು ಉದ್ಯಮದ ಭಾಗವು ಸಂಭಾಷಣೆಯ ಮೇಜಿನ ಬಳಿ, ಸರಿಯಾದ ತಂತ್ರದ ಸಂಶೋಧಕರೊಂದಿಗೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಉದ್ಯಮದ ಭಾಗವು ಸಂಭಾಷಣೆಯ ಮೇಜಿನ ಬಳಿ, ಸರಿಯಾದ ತಂತ್ರದ ಸಂಶೋಧಕರೊಂದಿಗೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತಿದೆ.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಸಾಮಾನ್ಯ ನಿಲುವಲ್ಲ — ಸಾಮಾನ್ಯವಾಗಿ ಅದು \"ನಮಗೆ ಚೆನ್ನಾಗಿ ಗೊತ್ತು, ನಮ್ಮನ್ನು ಬಿಟ್ಟಿರಿ\" ಅಥವಾ ಲಾಬಿಯಿಂಗ್ ನಿಲುವೇ ಆಗಿರುತ್ತದೆ.",
+      "text_markdown": "ಅದು ಸಾಮಾನ್ಯ ನಿಲುವಲ್ಲ — ಸಾಮಾನ್ಯವಾಗಿ ಅದು \"ನಮಗೆ ಚೆನ್ನಾಗಿ ಗೊತ್ತು, ನಮ್ಮನ್ನು ಬಿಟ್ಟಿರಿ\" ಅಥವಾ ಲಾಬಿಯಿಂಗ್ ನಿಲುವೇ ಆಗಿರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಸಾಮಾನ್ಯ ನಿಲುವಲ್ಲ — ಸಾಮಾನ್ಯವಾಗಿ ಅದು \"ನಮಗೆ ಚೆನ್ನಾಗಿ ಗೊತ್ತು, ನಮ್ಮನ್ನು ಬಿಟ್ಟಿರಿ\" ಅಥವಾ ಲಾಬಿಯಿಂಗ್ ನಿಲುವೇ ಆಗಿರುತ್ತದೆ.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇದು ವಿಭಿನ್ನ ನಿಲುವು.",
+      "text_markdown": "ಇದು ವಿಭಿನ್ನ ನಿಲುವು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ವಿಭಿನ್ನ ನಿಲುವು.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ವಿಭಾಗವನ್ನು ಮುಕ್ತಾಯಗೊಳಿಸಲು ಒಳ್ಳೆಯ ಸಮಯ.",
+      "text_markdown": "ಈ ವಿಭಾಗವನ್ನು ಮುಕ್ತಾಯಗೊಳಿಸಲು ಒಳ್ಳೆಯ ಸಮಯ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಿಭಾಗವನ್ನು ಮುಕ್ತಾಯಗೊಳಿಸಲು ಒಳ್ಳೆಯ ಸಮಯ.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ವಾರದ ಪರಿಕಲ್ಪನೆಗೆ ಹೋಗೋಣ.",
+      "text_markdown": "ಈಗ ವಾರದ ಪರಿಕಲ್ಪನೆಗೆ ಹೋಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ವಾರದ ಪರಿಕಲ್ಪನೆಗೆ ಹೋಗೋಣ.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ ಕ್ವಾಂಟೈಜೇಶನ್, ಅಂದರೆ ಪ್ರಮಾಣೀಕರಣದ ವಿಧಾನವಾಗಿದೆ.",
+      "text_markdown": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ ಕ್ವಾಂಟೈಜೇಶನ್, ಅಂದರೆ ಪ್ರಮಾಣೀಕರಣದ ವಿಧಾನವಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ ಕ್ವಾಂಟೀಕರಣ, ಅಂದರೆ ಪ್ರಮಾಣೀಕರಣದ ವಿಧಾನವಾಗಿದೆ.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರಾನ್, ನಮಗೆ ವಿವರಿಸಿ.",
+      "text_markdown": "ರಾನ್, ನಮಗೆ ವಿವರಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ರಾನ್, ನಮಗೆ ವಿವರಿಸಿ.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಕ್ವಾಂಟೈಜೇಶನ್ ಎಂದರೆ 7-ಬಿಲಿಯನ್-ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಹೇಗೆ ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+      "text_markdown": "ಕ್ವಾಂಟೈಜೇಶನ್ ಎಂದರೆ 7-ಬಿಲಿಯನ್-ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಹೇಗೆ ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಕ್ವಾಂಟೈಜೇಶನ್ ಎಂದರೆ ಏಳು ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಹೇಗೆ ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮೊದಲು ಮೂಲ ಸಮಸ್ಯೆಯಿಂದಲೇ ಶುರು ಮಾಡೋಣ.",
+      "text_markdown": "ಮೊದಲು ಮೂಲ ಸಮಸ್ಯೆಯಿಂದಲೇ ಶುರು ಮಾಡೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಮೊದಲು ಮೂಲ ಸಮಸ್ಯೆಯಿಂದಲೇ ಶುರು ಮಾಡೋಣ.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮಾಡೆಲ್‌ನಲ್ಲಿರುವ ಪ್ರತಿ ತೂಕವು ಸಾಮಾನ್ಯವಾಗಿ 16-ಬಿಟ್ ಫ್ಲೋಟಿಂಗ್-ಪಾಯಿಂಟ್ ಸಂಖ್ಯೆಯಾಗಿದೆ.",
+      "text_markdown": "ಮಾಡೆಲ್‌ನಲ್ಲಿರುವ ಪ್ರತಿ ತೂಕವು ಸಾಮಾನ್ಯವಾಗಿ 16-ಬಿಟ್ ಫ್ಲೋಟಿಂಗ್-ಪಾಯಿಂಟ್ ಸಂಖ್ಯೆಯಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮಾಡೆಲ್‌ನಲ್ಲಿರುವ ಪ್ರತಿ ತೂಕವು ಸಾಮಾನ್ಯವಾಗಿ ಹದಿನಾರು ಬಿಟ್ ಫ್ಲೋಟಿಂಗ್ ಪಾಯಿಂಟ್ ಸಂಖ್ಯೆಯಾಗಿದೆ.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "16-ಬಿಟ್‌ನಲ್ಲಿ 7-ಬಿಲಿಯನ್-ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಸುಮಾರು 14 ಗಿಗಾಬೈಟ್‌ಗಳಾಗಿದೆ.",
+      "text_markdown": "16-ಬಿಟ್‌ನಲ್ಲಿ 7-ಬಿಲಿಯನ್-ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಸುಮಾರು 14 ಗಿಗಾಬೈಟ್‌ಗಳಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹದಿನಾರು ಬಿಟ್‌ನಲ್ಲಿ ಏಳು ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್ ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಸುಮಾರು ಹದಿನಾಲ್ಕು ಗಿಗಾಬೈಟ್‌ಗಳಾಗಿದೆ.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ಅದು ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುವುದಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಆದ್ದರಿಂದ ನೀವು ಸಂಖ್ಯೆಗಳನ್ನು ಕುಗ್ಗಿಸುತ್ತೀರಿ.",
+      "text_markdown": "ಆದ್ದರಿಂದ ನೀವು ಸಂಖ್ಯೆಗಳನ್ನು ಕುಗ್ಗಿಸುತ್ತೀರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದ್ದರಿಂದ ನೀವು ಸಂಖ್ಯೆಗಳನ್ನು ಕುಗ್ಗಿಸುತ್ತೀರಿ.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸರಿ.",
+      "text_markdown": "ಸರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಸರಿ.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನೀವು ಪ್ರತಿ ತೂಕವನ್ನು ಕಡಿಮೆ ಬಿಟ್‌ಗಳಿಗೆ ರೌಂಡ್ ಮಾಡುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು ಪ್ರತಿ ತೂಕವನ್ನು ಕಡಿಮೆ ಬಿಟ್‌ಗಳಿಗೆ ರೌಂಡ್ ಮಾಡುತ್ತೀರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ನೀವು ಪ್ರತಿ ತೂಕವನ್ನು ಕಡಿಮೆ ಬಿಟ್‌ಗಳಿಗೆ ರೌಂಡ್ ಮಾಡುತ್ತೀರಿ.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ಎಂಟು ಬಿಟ್‌ಗಳು ಮಾಡೆಲ್ ಅನ್ನು ಅರ್ಧಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+      "text_markdown": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ಎಂಟು ಬಿಟ್‌ಗಳು ಮಾಡೆಲ್ ಅನ್ನು ಅರ್ಧಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ಎಂಟು ಬಿಟ್‌ಗಳು ಮಾಡೆಲ್ ಅನ್ನು ಅರ್ಧಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ನಾಲ್ಕು ಬಿಟ್‌ಗಳು ಅದನ್ನು ಕಾಲು ಭಾಗಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+      "text_markdown": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ನಾಲ್ಕು ಬಿಟ್‌ಗಳು ಅದನ್ನು ಕಾಲು ಭಾಗಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ರತಿ ತೂಕಕ್ಕೆ ನಾಲ್ಕು ಬಿಟ್‌ಗಳು ಅದನ್ನು ಕಾಲು ಭಾಗಕ್ಕೆ ಕಡಿಮೆಗೊಳಿಸುತ್ತವೆ.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದೇ 7 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್, 4 ಬಿಟ್‌ಗಳಲ್ಲಿ 3.5 ಗಿಗಾಬೈಟ್ ಗಾತ್ರದಲ್ಲಿದೆ.",
+      "text_markdown": "ಅದೇ 7 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್, 4 ಬಿಟ್‌ಗಳಲ್ಲಿ 3.5 ಗಿಗಾಬೈಟ್ ಗಾತ್ರದಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಏಳು ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್ ಮಾಡೆಲ್, ನಾಲ್ಕು ಬಿಟ್‌ಗಳಲ್ಲಿ ಮೂರು ದಶಮಾಂಶ ಐದು ಗಿಗಾಬೈಟ್ ಗಾತ್ರದಲ್ಲಿದೆ.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈಗ ಅದು ಸಿಗುತ್ತದೆ.",
+      "text_markdown": "ಈಗ ಅದು ಸಿಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ಅದು ಸಿಗುತ್ತದೆ.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಈ ಮಾದರಿ ಇನ್ನೂ ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ?",
+      "text_markdown": "ಈ ಮಾದರಿ ಇನ್ನೂ ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ?",
+      "title": "",
+      "tts": {
+        "text": "ಈ ಮಾದರಿ ಇನ್ನೂ ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಸಾಮಾನ್ಯವಾಗಿ ಹೌದು, ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟದ ಇಳಿಕೆಯೊಂದಿಗೆ.",
+      "text_markdown": "ಸಾಮಾನ್ಯವಾಗಿ ಹೌದು, ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟದ ಇಳಿಕೆಯೊಂದಿಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಸಾಮಾನ್ಯವಾಗಿ ಹೌದು, ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟದ ಇಳಿಕೆಯೊಂದಿಗೆ.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮಾಡೆಲ್‌ನಲ್ಲಿ ಎಲ್ಲಿ ನಿಖರತೆಯನ್ನು ಕಳೆದುಕೊಳ್ಳಬೇಕೆಂದು ಆಯ್ಕೆಮಾಡುವುದೇ ಟ್ರಿಕ್.",
+      "text_markdown": "ಮಾಡೆಲ್‌ನಲ್ಲಿ ಎಲ್ಲಿ ನಿಖರತೆಯನ್ನು ಕಳೆದುಕೊಳ್ಳಬೇಕೆಂದು ಆಯ್ಕೆಮಾಡುವುದೇ ಟ್ರಿಕ್.",
+      "title": "",
+      "tts": {
+        "text": "ಮಾಡೆಲ್‌ನಲ್ಲಿ ಎಲ್ಲಿ ನಿಖರತೆಯನ್ನು ಕಳೆದುಕೊಳ್ಳಬೇಕೆಂದು ಆಯ್ಕೆಮಾಡುವುದೇ ಟ್ರಿಕ್.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "AWQ — ಆಕ್ಟಿವೇಶನ್-ಅವೇರ್ ವೇಟ್ ಕ್ವಾಂಟೈಜೇಶನ್ — ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಚಾನೆಲ್‌ಗಳನ್ನು ಹೆಚ್ಚಿನ ನಿಖರತೆಯಲ್ಲಿ ಇರಿಸಿಕೊಳ್ಳುತ್ತದೆ ಮತ್ತು ಉಳಿದವುಗಳನ್ನು ಸ್ಕ್ವೀಝ್ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "AWQ — ಆಕ್ಟಿವೇಶನ್-ಅವೇರ್ ವೇಟ್ ಕ್ವಾಂಟೈಜೇಶನ್ — ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಚಾನೆಲ್‌ಗಳನ್ನು ಹೆಚ್ಚಿನ ನಿಖರತೆಯಲ್ಲಿ ಇರಿಸಿಕೊಳ್ಳುತ್ತದೆ ಮತ್ತು ಉಳಿದವುಗಳನ್ನು ಸ್ಕ್ವೀಝ್ ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "AWQ — ಆಕ್ಟಿವೇಶನ್ ಅವೇರ್ ವೇಟ್ ಕ್ವಾಂಟೈಜೇಶನ್ — ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಚಾನೆಲ್‌ಗಳನ್ನು ಹೆಚ್ಚಿನ ನಿಖರತೆಯಲ್ಲಿ ಇರಿಸಿಕೊಳ್ಳುತ್ತದೆ ಮತ್ತು ಉಳಿದವುಗಳನ್ನು ಸ್ಕ್ವೀಝ್ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "GGUF, llama.cpp ಇದನ್ನು ಬಳಸುತ್ತದೆ, ಒಂದೇ ಮಾಡೆಲ್ ಫೈಲ್‌ನೊಳಗೆ ನಿಖರತೆಗಳನ್ನು ಮಿಶ್ರಣ ಮಾಡುವ Q4_K_M ಮುಂತಾದ ಫಾರ್ಮ್ಯಾಟ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "GGUF, llama.cpp ಇದನ್ನು ಬಳಸುತ್ತದೆ, ಒಂದೇ ಮಾಡೆಲ್ ಫೈಲ್‌ನೊಳಗೆ ನಿಖರತೆಗಳನ್ನು ಮಿಶ್ರಣ ಮಾಡುವ Q4_K_M ಮುಂತಾದ ಫಾರ್ಮ್ಯಾಟ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "GGUF, llama.cpp ಇದನ್ನು ಬಳಸುತ್ತದೆ, ಒಂದೇ ಮಾಡೆಲ್ ಫೈಲ್‌ನೊಳಗೆ ನಿಖರತೆಗಳನ್ನು ಮಿಶ್ರಣ ಮಾಡುವ ಕ್ಯೂ ನಾಲ್ಕು ಕೆ ಎಂ ಮುಂತಾದ ಫಾರ್ಮ್ಯಾಟ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ನೀವು ಎಷ್ಟು ಸಣ್ಣಗೆ ಮಾಡಬಹುದು?",
+      "text_markdown": "ನೀವು ಎಷ್ಟು ಸಣ್ಣಗೆ ಮಾಡಬಹುದು?",
+      "title": "",
+      "tts": {
+        "text": "ನೀವು ಎಷ್ಟು ಸಣ್ಣಗೆ ಮಾಡಬಹುದು?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Apple ನ ಆನ್-ಡಿವೈಸ್ ಫೌಂಡೇಶನ್ ಮಾಡೆಲ್ ಪ್ರತಿ ತೂಕಕ್ಕೆ 2 ಬಿಟ್‌ಗಳವರೆಗೆ ಹೋಗುತ್ತದೆ.",
+      "text_markdown": "Apple ನ ಆನ್-ಡಿವೈಸ್ ಫೌಂಡೇಶನ್ ಮಾಡೆಲ್ ಪ್ರತಿ ತೂಕಕ್ಕೆ 2 ಬಿಟ್‌ಗಳವರೆಗೆ ಹೋಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Apple ನ ಆನ್ ಡಿವೈಸ್ ಫೌಂಡೇಶನ್ ಮಾಡೆಲ್ ಪ್ರತಿ ತೂಕಕ್ಕೆ ಎರಡು ಬಿಟ್‌ಗಳವರೆಗೆ ಹೋಗುತ್ತದೆ.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅವರು ಕ್ವಾಂಟೈಜೇಶನ್-ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಅನ್ನು ಬಳಸುತ್ತಾರೆ, ಇದರಲ್ಲಿ ಮಾಡೆಲ್ ಇನ್‌ಫರೆನ್ಸ್‌ನಲ್ಲಿ 2-ಬಿಟ್ ಆಗಿರುತ್ತದೆ ಎಂದು ತಿಳಿದಿರುವಾಗಲೇ ಮೊದಲಿನಿಂದಲೂ ತರಬೇತಿ ಪಡೆಯುತ್ತದೆ.",
+      "text_markdown": "ಅವರು ಕ್ವಾಂಟೈಜೇಶನ್-ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಅನ್ನು ಬಳಸುತ್ತಾರೆ, ಇದರಲ್ಲಿ ಮಾಡೆಲ್ ಇನ್‌ಫರೆನ್ಸ್‌ನಲ್ಲಿ 2-ಬಿಟ್ ಆಗಿರುತ್ತದೆ ಎಂದು ತಿಳಿದಿರುವಾಗಲೇ ಮೊದಲಿನಿಂದಲೂ ತರಬೇತಿ ಪಡೆಯುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರು ಕ್ವಾಂಟೈಜೇಶನ್ ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಅನ್ನು ಬಳಸುತ್ತಾರೆ, ಇದರಲ್ಲಿ ಮಾಡೆಲ್ ಇನ್‌ಫರೆನ್ಸ್‌ನಲ್ಲಿ ಎರಡು ಬಿಟ್ ಆಗಿರುತ್ತದೆ ಎಂದು ತಿಳಿದಿರುವಾಗಲೇ ಮೊದಲಿನಿಂದಲೂ ತರಬೇತಿ ಪಡೆಯುತ್ತದೆ.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಕೊನೆಯಲ್ಲಿ ಮಾಡುವ ನೇವ್ ರೌಂಡಿಂಗ್‌ಗಿಂತ ತುಂಬಾ ಉತ್ತಮ ಫಲಿತಾಂಶವಾಗಿದೆ.",
+      "text_markdown": "ಅದು ಕೊನೆಯಲ್ಲಿ ಮಾಡುವ ನೇವ್ ರೌಂಡಿಂಗ್‌ಗಿಂತ ತುಂಬಾ ಉತ್ತಮ ಫಲಿತಾಂಶವಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಕೊನೆಯಲ್ಲಿ ಮಾಡುವ ನೇವ್ ರೌಂಡಿಂಗ್‌ಗಿಂತ ತುಂಬಾ ಉತ್ತಮ ಫಲಿತಾಂಶವಾಗಿದೆ.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "2 ಬಿಟ್‌ಗಳಲ್ಲಿ ಸುಮಾರು 3 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಸರಿಸುಮಾರು 750 ಮೆಗಾಬೈಟ್‌ಗಳಾಗಿ ಬರುತ್ತವೆ.",
+      "text_markdown": "2 ಬಿಟ್‌ಗಳಲ್ಲಿ ಸುಮಾರು 3 ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಸರಿಸುಮಾರು 750 ಮೆಗಾಬೈಟ್‌ಗಳಾಗಿ ಬರುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡು ಬಿಟ್‌ಗಳಲ್ಲಿ ಸುಮಾರು ಮೂರು ಬಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು ಸರಿಸುಮಾರು ಏಳು ನೂರ ಐವತ್ತು ಮೆಗಾಬೈಟ್‌ಗಳಾಗಿ ಬರುತ್ತವೆ.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದು ಸಾಕಷ್ಟು ಜಾಗದೊಂದಿಗೆ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+      "text_markdown": "ಅದು ಸಾಕಷ್ಟು ಜಾಗದೊಂದಿಗೆ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಸಾಕಷ್ಟು ಜಾಗದೊಂದಿಗೆ ಫೋನ್‌ನಲ್ಲಿ ಸಿಗುತ್ತದೆ.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದಕ್ಕೆ ಈ ವರ್ಷ ಆನ್-ಡಿವೈಸ್ AI ಅಂತಿಮವಾಗಿ ಬಳಸಲಾಗುವಂತಿದೆ.",
+      "text_markdown": "ಅದಕ್ಕೆ ಈ ವರ್ಷ ಆನ್-ಡಿವೈಸ್ AI ಅಂತಿಮವಾಗಿ ಬಳಸಲಾಗುವಂತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದಕ್ಕೆ ಈ ವರ್ಷ ಆನ್ ಡಿವೈಸ್ AI ಅಂತಿಮವಾಗಿ ಬಳಸಲಾಗುವಂತಿದೆ.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅದೇ ಇದಕ್ಕೆ ಮುಖ್ಯ ಕಾರಣವಾಗಿದೆ.",
+      "text_markdown": "ಅದೇ ಇದಕ್ಕೆ ಮುಖ್ಯ ಕಾರಣವಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಇದಕ್ಕೆ ಮುಖ್ಯ ಕಾರಣವಾಗಿದೆ.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "AWQ, GGUF, ಮತ್ತು ಕ್ವಾಂಟೈಜೇಶನ್-ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಎಂಬ ಮೂರು ಮುಖ್ಯ ಪದಗಳನ್ನು ನೀವು ನೆನಪಿನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಬೇಕು.",
+      "text_markdown": "AWQ, GGUF, ಮತ್ತು ಕ್ವಾಂಟೈಜೇಶನ್-ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಎಂಬ ಮೂರು ಮುಖ್ಯ ಪದಗಳನ್ನು ನೀವು ನೆನಪಿನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಬೇಕು.",
+      "title": "",
+      "tts": {
+        "text": "ಎ ಡಬ್ಲ್ಯೂ ಕ್ಯೂ, ಜಿ ಜಿ ಯು ಎಫ್, ಮತ್ತು ಕ್ವಾಂಟೈಜೇಶನ್ ಅವೇರ್ ಟ್ರೈನಿಂಗ್ ಎಂಬ ಮೂರು ಮುಖ್ಯ ಪದಗಳನ್ನು ನೀವು ನೆನಪಿನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಬೇಕು.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮಾಡೆಲ್ ಈ ಮೂರು ವಿಷಯಗಳನ್ನು ಪೂರೈಸಿದರೆ, ಅದು ಫೋನ್‌ಗಳಲ್ಲಿ ಬರುತ್ತದೆ.",
+      "text_markdown": "ಮಾಡೆಲ್ ಈ ಮೂರು ವಿಷಯಗಳನ್ನು ಪೂರೈಸಿದರೆ, ಅದು ಫೋನ್‌ಗಳಲ್ಲಿ ಬರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮಾಡೆಲ್ ಈ ಮೂರು ವಿಷಯಗಳನ್ನು ಪೂರೈಸಿದರೆ, ಅದು ಫೋನ್‌ಗಳಲ್ಲಿ ಬರುತ್ತದೆ.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಇಳಿಯಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+      "text_markdown": "ಇಳಿಯಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+      "title": "",
+      "tts": {
+        "text": "ಇಳಿಯಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ರಾನ್, ನಿಮಗೆ ಬಹಳ ಧನ್ಯವಾದಗಳು.",
+      "text_markdown": "ರಾನ್, ನಿಮಗೆ ಬಹಳ ಧನ್ಯವಾದಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ರಾನ್, ನಿಮಗೆ ಬಹಳ ಧನ್ಯವಾದಗಳು.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, ವಿಂಡಿ.",
+      "text_markdown": "ಯಾವಾಗ ಬೇಕಾದರೂ, ವಿಂಡಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, ವಿಂಡಿ.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "May 20, 2026ರ AI This Week ಸಂಚಿಕೆ ಇಲ್ಲಿದೆ.",
+      "text_markdown": "May 20, 2026ರ AI This Week ಸಂಚಿಕೆ ಇಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮೇ ಇಪ್ಪತ್ತು, ಎರಡು ಸಾವಿರ ಇಪ್ಪತ್ತಾರರ ಎ ಐ ದಿಸ್ ವೀಕ್ ಸಂಚಿಕೆ ಇಲ್ಲಿದೆ.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಮುಂದಿನ ಬುಧವಾರ ಹೊಸ ಸಂಚಿಕೆ ಬರುತ್ತದೆ.",
+      "text_markdown": "ಮುಂದಿನ ಬುಧವಾರ ಹೊಸ ಸಂಚಿಕೆ ಬರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದಿನ ಬುಧವಾರ ಹೊಸ ಸಂಚಿಕೆ ಬರುತ್ತದೆ.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ಅಲ್ಲಿಯವರೆಗೆ, ಕಾಳಜಿ ವಹಿಸಿ.",
+      "text_markdown": "ಅಲ್ಲಿಯವರೆಗೆ, ಕಾಳಜಿ ವಹಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಅಲ್ಲಿಯವರೆಗೆ, ಕಾಳಜಿ ವಹಿಸಿ.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

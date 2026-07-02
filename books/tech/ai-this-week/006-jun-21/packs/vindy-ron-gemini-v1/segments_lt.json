@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "lt",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Sveiki atvykę į „AI This Week“.",
+      "text_markdown": "Sveiki atvykę į „AI This Week“.",
+      "title": "",
+      "tts": {
+        "text": "Sveiki atvykę į „AI This Week“.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Mano vardas Vindy.",
+      "text_markdown": "Mano vardas Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mano vardas Vindi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Su manimi, kaip visada, yra Ronas.",
+      "text_markdown": "Su manimi, kaip visada, yra Ronas.",
+      "title": "",
+      "tts": {
+        "text": "Su manimi, kaip visada, yra Ronas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Gera čia būti, Vindy.",
+      "text_markdown": "Gera čia būti, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Gera čia būti, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Šiandien sekmadienis, 2026 m. birželio 21 d.",
+      "text_markdown": "Šiandien sekmadienis, 2026 m. birželio 21 d.",
+      "title": "",
+      "tts": {
+        "text": "Šiandien sekmadienis, du tūkstančiai dvidešimt šeštųjų metų birželio dvidešimt pirma diena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Praėjusią savaitę kalbėjome apie save; šiandien judame priešinga kryptimi – tiesiai į galios centrus.",
+      "text_markdown": "Praėjusią savaitę kalbėjome apie save; šiandien judame priešinga kryptimi – tiesiai į galios centrus.",
+      "title": "",
+      "tts": {
+        "text": "Praėjusią savaitę kalbėjome apie save; šiandien judame priešinga kryptimi – tiesiai į galios centrus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Kas kontroliuoja AI diegimą, kas moka už infrastruktūros plėtrą, kam priklauso silicis.",
+      "text_markdown": "Kas kontroliuoja AI diegimą, kas moka už infrastruktūros plėtrą, kam priklauso silicis.",
+      "title": "",
+      "tts": {
+        "text": "Kas kontroliuoja dirbtinio intelekto diegimą, kas moka už infrastruktūros plėtrą, kam priklauso silicis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "Netrukus – JAV Prekybos departamentas praėjusį penktadienį pašalino amerikietišką modelį iš viešo naudojimo, ir nuo to pradėsime.",
+      "text_markdown": "Netrukus – JAV Prekybos departamentas praėjusį penktadienį pašalino amerikietišką modelį iš viešo naudojimo, ir nuo to pradėsime.",
+      "title": "",
+      "tts": {
+        "text": "Netrukus – džė a vė Prekybos departamentas praėjusį penktadienį pašalino amerikietišką modelį iš viešo naudojimo, ir nuo to pradėsime.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Tada duomenų centrų plėtra, kurioje pranešimai ir tikrovė nesutampa.",
+      "text_markdown": "Tada duomenų centrų plėtra, kurioje pranešimai ir tikrovė nesutampa.",
+      "title": "",
+      "tts": {
+        "text": "Tada duomenų centrų plėtra, kurioje pranešimai ir tikrovė nesutampa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "Tada JAV ir Kinijos palyginimas, kuriame klišė pakeista tikruoju ribojančiu veiksniu.",
+      "text_markdown": "Tada JAV ir Kinijos palyginimas, kuriame klišė pakeista tikruoju ribojančiu veiksniu.",
+      "title": "",
+      "tts": {
+        "text": "Tada džė a vė ir Kinijos palyginimas, kuriame klišė pakeista tikruoju ribojančiu veiksniu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "Ir savaitės koncepcija – viena eilutė „Oracle“ balanso ataskaitoje, kuri pasako beveik viską.",
+      "text_markdown": "Ir savaitės koncepcija – viena eilutė „Oracle“ balanso ataskaitoje, kuri pasako beveik viską.",
+      "title": "",
+      "tts": {
+        "text": "Ir savaitės koncepcija – viena eilutė „Oracle“ balanso ataskaitoje, kuri pasako beveik viską.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Ronai, pradėkime nuo „Anthropic“.",
+      "text_markdown": "Ronai, pradėkime nuo „Anthropic“.",
+      "title": "",
+      "tts": {
+        "text": "Ronai, pradėkime nuo „Anthropic“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Kas nutiko birželio dvyliktąją.",
+      "text_markdown": "Kas nutiko birželio dvyliktąją.",
+      "title": "",
+      "tts": {
+        "text": "Kas nutiko birželio dvyliktąją.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Penktadienį, birželio dvyliktąją, penktą valandą dvidešimt vieną minutę po pietų Rytų laiku, „Anthropic“ išjungė du naujausius savo modelius – „Claude Mythos 5“ ir „Claude Fable 5“.",
+      "text_markdown": "Penktadienį, birželio dvyliktąją, penktą valandą dvidešimt vieną minutę po pietų Rytų laiku, „Anthropic“ išjungė du naujausius savo modelius – „Claude Mythos 5“ ir „Claude Fable 5“.",
+      "title": "",
+      "tts": {
+        "text": "Penktadienį, birželio dvyliktąją, penktą valandą dvidešimt vieną minutę po pietų Rytų laiku, „Anthropic“ išjungė du naujausius savo modelius – „Claude Mythos penkis“ ir „Claude Fable penkis“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Ne dėl priežiūros, ne dėl saugumo patikrinimo savo iniciatyva.",
+      "text_markdown": "Ne dėl priežiūros, ne dėl saugumo patikrinimo savo iniciatyva.",
+      "title": "",
+      "tts": {
+        "text": "Ne dėl priežiūros, ne dėl saugumo patikrinimo savo iniciatyva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "Jie juos išjungė, nes JAV Prekybos departamentas išleido direktyvą, nurodančią eksporto kontrolę.",
+      "text_markdown": "Jie juos išjungė, nes JAV Prekybos departamentas išleido direktyvą, nurodančią eksporto kontrolę.",
+      "title": "",
+      "tts": {
+        "text": "Jie juos išjungė, nes džė a vė Prekybos departamentas išleido direktyvą, nurodančią eksporto kontrolę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "Kokia buvo techninė priežastis.",
+      "text_markdown": "Kokia buvo techninė priežastis.",
+      "title": "",
+      "tts": {
+        "text": "Kokia buvo techninė priežastis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Buvo pademonstruotas „jailbreak“, kaip pranešama, kitos įmonės, kuris sukūrė išvestį, kurią Prekybos departamentas laikė eksporto kontrolės objektu.",
+      "text_markdown": "Buvo pademonstruotas „jailbreak“, kaip pranešama, kitos įmonės, kuris sukūrė išvestį, kurią Prekybos departamentas laikė eksporto kontrolės objektu.",
+      "title": "",
+      "tts": {
+        "text": "Buvo pademonstruotas „jailbreak“, kaip pranešama, kitos įmonės, kuris sukūrė išvestį, kurią Prekybos departamentas laikė eksporto kontrolės objektu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "„Fortune“ pranešė, kad „Amazon“ buvo ta, kuri apie tai pranešė Baltiesiems rūmams.",
+      "text_markdown": "„Fortune“ pranešė, kad „Amazon“ buvo ta, kuri apie tai pranešė Baltiesiems rūmams.",
+      "title": "",
+      "tts": {
+        "text": "„Fortune“ pranešė, kad „Amazon“ buvo ta, kuri apie tai pranešė Baltiesiems rūmams.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "Ir kaip atsakė „Anthropic“.",
+      "text_markdown": "Ir kaip atsakė „Anthropic“.",
+      "title": "",
+      "tts": {
+        "text": "Ir kaip atsakė „Anthropic“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "„Anthropic“ viešai ginčija pagrindimą.",
+      "text_markdown": "„Anthropic“ viešai ginčija pagrindimą.",
+      "title": "",
+      "tts": {
+        "text": "„Anthropic“ viešai ginčija pagrindimą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Jų pareiškime „jailbreak“ buvo pavadintas – ir aš cituoju – „siauru, neuniversaliu“, ir pridūrta, kad ta pati išvestis yra prieinama iš kitų modelių, įskaitant „OpenAI“ GPT-5.5.",
+      "text_markdown": "Jų pareiškime „jailbreak“ buvo pavadintas – ir aš cituoju – „siauru, neuniversaliu“, ir pridūrta, kad ta pati išvestis yra prieinama iš kitų modelių, įskaitant „OpenAI“ GPT-5.5.",
+      "title": "",
+      "tts": {
+        "text": "Jų pareiškime „jailbreak“ buvo pavadintas – ir aš cituoju – „siauru, neuniversaliu“, ir pridūrta, kad ta pati išvestis yra prieinama iš kitų modelių, įskaitant „OpenAI“ GPT penkis taškas penkis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Jų apibendrinamoji eilutė: „vyriausybės veiksmai grindžiami nesusipratimu“.",
+      "text_markdown": "Jų apibendrinamoji eilutė: „vyriausybės veiksmai grindžiami nesusipratimu“.",
+      "title": "",
+      "tts": {
+        "text": "Jų apibendrinamoji eilutė: „vyriausybės veiksmai grindžiami nesusipratimu“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Tai neįprastai tiesioginis nesutikimas su JAV vyriausybe dirbtinio intelekto laboratorijai.",
+      "text_markdown": "Tai neįprastai tiesioginis nesutikimas su JAV vyriausybe dirbtinio intelekto laboratorijai.",
+      "title": "",
+      "tts": {
+        "text": "Tai neįprastai tiesioginis nesutikimas su džė a vė vyriausybe dirbtinio intelekto laboratorijai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Taip, ir pagrindinė struktūrinė aplinkybė yra antraštė.",
+      "text_markdown": "Taip, ir pagrindinė struktūrinė aplinkybė yra antraštė.",
+      "title": "",
+      "tts": {
+        "text": "Taip, ir pagrindinė struktūrinė aplinkybė yra antraštė.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "Prekybos departamentas dabar gali įsakyti privačiai Amerikos dirbtinio intelekto laboratorijai išjungti modelį, remdamasis eksporto kontrole, ir tas įsakymas įsigalioja per 72 valandas.",
+      "text_markdown": "Prekybos departamentas dabar gali įsakyti privačiai Amerikos dirbtinio intelekto laboratorijai išjungti modelį, remdamasis eksporto kontrole, ir tas įsakymas įsigalioja per 72 valandas.",
+      "title": "",
+      "tts": {
+        "text": "Prekybos departamentas dabar gali įsakyti privačiai Amerikos dirbtinio intelekto laboratorijai išjungti modelį, remdamasis eksporto kontrole, ir tas įsakymas įsigalioja per septyniasdešimt dvi valandas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+      "text_markdown": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+      "title": "",
+      "tts": {
+        "text": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+      "text_markdown": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+      "title": "",
+      "tts": {
+        "text": "Nepriklausomai nuo to, ar manote, kad įsakymas buvo teisingas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Svarbu pati valdžia, greitis ir precedentas.",
+      "text_markdown": "Svarbu pati valdžia, greitis ir precedentas.",
+      "title": "",
+      "tts": {
+        "text": "Svarbu pati valdžia, greitis ir precedentas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "Ir „Amazon“ vaidmuo čia.",
+      "text_markdown": "Ir „Amazon“ vaidmuo čia.",
+      "title": "",
+      "tts": {
+        "text": "Ir „Amazon“ vaidmuo čia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Tai yra dalis, kurią reikia stebėti.",
+      "text_markdown": "Tai yra dalis, kurią reikia stebėti.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra dalis, kurią reikia stebėti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "„Amazon“ yra pagrindinė „Anthropic“ investuotoja ir taip pat konkuruoja su „Anthropic“ pamatinių modelių rinkoje per savo veiklą.",
+      "text_markdown": "„Amazon“ yra pagrindinė „Anthropic“ investuotoja ir taip pat konkuruoja su „Anthropic“ pamatinių modelių rinkoje per savo veiklą.",
+      "title": "",
+      "tts": {
+        "text": "„Amazon“ yra pagrindinė „Anthropic“ investuotoja ir taip pat konkuruoja su „Anthropic“ pamatinių modelių rinkoje per savo veiklą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Jei konkurento įspėjimas vyriausybei gali išjungti varžovo modelį per ilgąjį savaitgalį, tai yra nauja pramonės dinamikos forma.",
+      "text_markdown": "Jei konkurento įspėjimas vyriausybei gali išjungti varžovo modelį per ilgąjį savaitgalį, tai yra nauja pramonės dinamikos forma.",
+      "title": "",
+      "tts": {
+        "text": "Jei konkurento įspėjimas vyriausybei gali išjungti varžovo modelį per ilgąjį savaitgalį, tai yra nauja pramonės dinamikos forma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Pereikime prie plėtros.",
+      "text_markdown": "Pereikime prie plėtros.",
+      "title": "",
+      "tts": {
+        "text": "Pereikime prie plėtros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "„Stargate“ – „OpenAI“, „Oracle“, „SoftBank“ duomenų centrų iniciatyva.",
+      "text_markdown": "„Stargate“ – „OpenAI“, „Oracle“, „SoftBank“ duomenų centrų iniciatyva.",
+      "title": "",
+      "tts": {
+        "text": "„Stargate“ – „OpenAI“, „Oracle“, „SoftBank“ duomenų centrų iniciatyva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Kokie yra tikrieji skaičiai?",
+      "text_markdown": "Kokie yra tikrieji skaičiai?",
+      "title": "",
+      "tts": {
+        "text": "Kokie yra tikrieji skaičiai?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "„Stargate“ paskelbė apie vienuolika gigavatų JAV pajėgumų.",
+      "text_markdown": "„Stargate“ paskelbė apie vienuolika gigavatų JAV pajėgumų.",
+      "title": "",
+      "tts": {
+        "text": "„Stargate“ paskelbė apie vienuolika gigavatų Jungtinių Amerikos Valstijų pajėgumų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "Nuo birželio vidurio, apie du šimtai megavatų veikia Abilene Teksaso vietoje, Pirmoje fazėje.",
+      "text_markdown": "Nuo birželio vidurio, apie du šimtai megavatų veikia Abilene Teksaso vietoje, Pirmoje fazėje.",
+      "title": "",
+      "tts": {
+        "text": "Nuo birželio vidurio, apie du šimtai megavatų veikia Abilene Teksaso vietoje, Pirmoje fazėje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "Paskelbta vienuolika gigavatų, prijungta du šimtai megavatų.",
+      "text_markdown": "Paskelbta vienuolika gigavatų, prijungta du šimtai megavatų.",
+      "title": "",
+      "tts": {
+        "text": "Paskelbta vienuolika gigavatų, prijungta du šimtai megavatų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "Tai yra visas skirtumas vienoje eilutėje.",
+      "text_markdown": "Tai yra visas skirtumas vienoje eilutėje.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra visas skirtumas vienoje eilutėje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Taip, ir švariausias pavyzdys yra Naujojoje Meksikoje.",
+      "text_markdown": "Taip, ir švariausias pavyzdys yra Naujojoje Meksikoje.",
+      "title": "",
+      "tts": {
+        "text": "Taip, ir švariausias pavyzdys yra Naujojoje Meksikoje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Doña Ana apygardos vieta yra didžiausias „Stargate“ miestelis, numatytas keturių su puse gigavatų galios.",
+      "text_markdown": "Doña Ana apygardos vieta yra didžiausias „Stargate“ miestelis, numatytas keturių su puse gigavatų galios.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana apygardos vieta yra didžiausias „Stargate“ miestelis, numatytas keturių su puse gigavatų galios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "Yra užtikrintas aštuoniolika milijardų dolerių sindikuotas projekto finansavimas – „Sumitomo Mitsui“, „BNP Paribas“, „Goldman Sachs“, „MUFG“ – plius trijų milijardų dolerių nuosavo kapitalo įnašas iš „Blue Owl“.",
+      "text_markdown": "Yra užtikrintas aštuoniolika milijardų dolerių sindikuotas projekto finansavimas – „Sumitomo Mitsui“, „BNP Paribas“, „Goldman Sachs“, „MUFG“ – plius trijų milijardų dolerių nuosavo kapitalo įnašas iš „Blue Owl“.",
+      "title": "",
+      "tts": {
+        "text": "Yra užtikrintas aštuoniolika milijardų dolerių sindikuotas projekto finansavimas – Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG – plius trijų milijardų dolerių nuosavo kapitalo įnašas iš Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "Ir statybos būklė vietoje.",
+      "text_markdown": "Ir statybos būklė vietoje.",
+      "title": "",
+      "tts": {
+        "text": "Ir statybos būklė vietoje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Kol kas nulis kastuvų žemėje.",
+      "text_markdown": "Kol kas nulis kastuvų žemėje.",
+      "title": "",
+      "tts": {
+        "text": "Kol kas nulis kastuvų žemėje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "Vieta laukia oro kokybės leidimo iš Naujosios Meksikos aplinkos departamento, kuris iš pradžių buvo numatytas balandžio 22 d., dabar nukeltas į liepos 21 d. po daugiau nei septynių tūkstančių viešų komentarų.",
+      "text_markdown": "Vieta laukia oro kokybės leidimo iš Naujosios Meksikos aplinkos departamento, kuris iš pradžių buvo numatytas balandžio 22 d., dabar nukeltas į liepos 21 d. po daugiau nei septynių tūkstančių viešų komentarų.",
+      "title": "",
+      "tts": {
+        "text": "Vieta laukia oro kokybės leidimo iš Naujosios Meksikos aplinkos departamento, kuris iš pradžių buvo numatytas balandžio dvidešimt antrai dienai, dabar nukeltas į liepos dvidešimt pirmąją po daugiau nei septynių tūkstančių viešų komentarų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Aštuoniolika milijardų dolerių įsipareigota, nulis kastuvų žemėje, vienas oro kokybės leidimo terminas.",
+      "text_markdown": "Aštuoniolika milijardų dolerių įsipareigota, nulis kastuvų žemėje, vienas oro kokybės leidimo terminas.",
+      "title": "",
+      "tts": {
+        "text": "Aštuoniolika milijardų dolerių įsipareigota, nulis kastuvų žemėje, vienas oro kokybės leidimo terminas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "Kas bus atsakingas, jei skaičiai nesutaps?",
+      "text_markdown": "Kas bus atsakingas, jei skaičiai nesutaps?",
+      "title": "",
+      "tts": {
+        "text": "Kas bus atsakingas, jei skaičiai nesutaps?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Štai kur „Oracle“ tampa įdomi.",
+      "text_markdown": "Štai kur „Oracle“ tampa įdomi.",
+      "title": "",
+      "tts": {
+        "text": "Štai kur „Oracle“ tampa įdomi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "„Oracle“ likusios veiklos įsipareigojimai – apskaitos eilutė, registruojanti sutartines, bet dar nepristatytas pajamas – pasiekė 553 milijardus dolerių trečiąjį fiskalinį 2026 m. ketvirtį.",
+      "text_markdown": "„Oracle“ likusios veiklos įsipareigojimai – apskaitos eilutė, registruojanti sutartines, bet dar nepristatytas pajamas – pasiekė 553 milijardus dolerių trečiąjį fiskalinį 2026 m. ketvirtį.",
+      "title": "",
+      "tts": {
+        "text": "Oracle likusios veiklos įsipareigojimai – apskaitos eilutė, registruojanti sutartines, bet dar nepristatytas pajamas – pasiekė penkis šimtus penkiasdešimt tris milijardus dolerių trečiąjį du tūkstančiai dvidešimt šeštųjų fiskalinių metų ketvirtį.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Tai yra 325 procentų padidėjimas, lyginant su praėjusiais metais, ir didžioji dalis šio šuolio viešai siejama su „OpenAI“ ir „Stargate“.",
+      "text_markdown": "Tai yra 325 procentų padidėjimas, lyginant su praėjusiais metais, ir didžioji dalis šio šuolio viešai siejama su „OpenAI“ ir „Stargate“.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra trys šimtai dvidešimt penkių procentų padidėjimas, lyginant su praėjusiais metais, ir didžioji dalis šio šuolio viešai siejama su OpenAI ir Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "Ir skolos pusė.",
+      "text_markdown": "Ir skolos pusė.",
+      "title": "",
+      "tts": {
+        "text": "Ir skolos pusė.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "Bendras skolinimasis pasiekė 134,6 milijardo dolerių vasario 28 d.",
+      "text_markdown": "Bendras skolinimasis pasiekė 134,6 milijardo dolerių vasario 28 d.",
+      "title": "",
+      "tts": {
+        "text": "Bendras skolinimasis pasiekė vieną šimtą trisdešimt keturis ir šešias dešimtąsias milijardo dolerių vasario dvidešimt aštuntąją dieną.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "„Oracle“ vien vasarį pritraukė trisdešimt milijardų dolerių – investicinio lygio obligacijų ir privalomųjų konvertuojamųjų privilegijuotųjų akcijų – ir per devynių mėnesių laikotarpį išleido keturiasdešimt tris milijardus dolerių naujų vyresniųjų obligacijų.",
+      "text_markdown": "„Oracle“ vien vasarį pritraukė trisdešimt milijardų dolerių – investicinio lygio obligacijų ir privalomųjų konvertuojamųjų privilegijuotųjų akcijų – ir per devynių mėnesių laikotarpį išleido keturiasdešimt tris milijardus dolerių naujų vyresniųjų obligacijų.",
+      "title": "",
+      "tts": {
+        "text": "Oracle vien vasarį pritraukė trisdešimt milijardų dolerių – investicinio lygio obligacijų ir privalomųjų konvertuojamųjų privilegijuotųjų akcijų – ir per devynių mėnesių laikotarpį išleido keturiasdešimt tris milijardus dolerių naujų vyresniųjų obligacijų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Taigi, apibendrinkime padėtį.",
+      "text_markdown": "Taigi, apibendrinkime padėtį.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, apibendrinkime padėtį.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Penki šimtai penkiasdešimt trys milijardai dolerių pažadų, vienas šimtas trisdešimt keturi milijardai dolerių skolos ir vienas didelis klientas, prisiimantis didžiąją dalį rizikos.",
+      "text_markdown": "Penki šimtai penkiasdešimt trys milijardai dolerių pažadų, vienas šimtas trisdešimt keturi milijardai dolerių skolos ir vienas didelis klientas, prisiimantis didžiąją dalį rizikos.",
+      "title": "",
+      "tts": {
+        "text": "Penki šimtai penkiasdešimt trys milijardai dolerių pažadų, vienas šimtas trisdešimt keturi milijardai dolerių skolos ir vienas didelis klientas, prisiimantis didžiąją dalį rizikos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Tai yra plėtros struktūra viename sakinyje.",
+      "text_markdown": "Tai yra plėtros struktūra viename sakinyje.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra plėtros struktūra viename sakinyje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Pereikime prie JAV ir Kinijos palyginimo.",
+      "text_markdown": "Pereikime prie JAV ir Kinijos palyginimo.",
+      "title": "",
+      "tts": {
+        "text": "Pereikime prie Jungtinių Amerikos Valstijų ir Kinijos palyginimo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "Klišė yra ta, kad Kinija atsilieka keliais mėnesiais.",
+      "text_markdown": "Klišė yra ta, kad Kinija atsilieka keliais mėnesiais.",
+      "title": "",
+      "tts": {
+        "text": "Klišė yra ta, kad Kinija atsilieka keliais mėnesiais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "Klišė yra klaidinga, nes ji matuoja neteisingą dalyką.",
+      "text_markdown": "Klišė yra klaidinga, nes ji matuoja neteisingą dalyką.",
+      "title": "",
+      "tts": {
+        "text": "Klišė yra klaidinga, nes ji matuoja neteisingą dalyką.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Pirmadienį, birželio devintąją, „Bloomberg“ pranešė apie Kinijos plėtros ir reformų komisijos (National Development and Reform Commission) parengtą planą – du trilijonai juanių, maždaug du šimtai devyniasdešimt penki milijardai dolerių, visos šalies dirbtinio intelekto duomenų centrų tinklui iki 2028 m.",
+      "text_markdown": "Pirmadienį, birželio devintąją, „Bloomberg“ pranešė apie Kinijos plėtros ir reformų komisijos (National Development and Reform Commission) parengtą planą – du trilijonai juanių, maždaug du šimtai devyniasdešimt penki milijardai dolerių, visos šalies dirbtinio intelekto duomenų centrų tinklui iki 2028 m.",
+      "title": "",
+      "tts": {
+        "text": "Pirmadienį, birželio devintąją, „Bloomberg“ pranešė apie Kinijos plėtros ir reformų komisijos parengtą planą – du trilijonai juanių, maždaug du šimtai devyniasdešimt penki milijardai dolerių, visos šalies A I duomenų centrų tinklui iki du tūkstančiai dvidešimt aštuntųjų metų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "Planas numato 80 procentų vietinės gamybos silicio ir būtų valdomas kaip vienas tarpusavyje sujungtas skaičiavimo tinklas, kurį eksploatuotų „China Mobile“ ir „China Telecom“.",
+      "text_markdown": "Planas numato 80 procentų vietinės gamybos silicio ir būtų valdomas kaip vienas tarpusavyje sujungtas skaičiavimo tinklas, kurį eksploatuotų „China Mobile“ ir „China Telecom“.",
+      "title": "",
+      "tts": {
+        "text": "Planas numato aštuoniasdešimt procentų vietinės gamybos silicio ir būtų valdomas kaip vienas tarpusavyje sujungtas skaičiavimo tinklas, kurį eksploatuotų „China Mobile“ ir „China Telecom“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "Ir kur gi to plano kabliukas?",
+      "text_markdown": "Ir kur gi to plano kabliukas?",
+      "title": "",
+      "tts": {
+        "text": "Ir kur gi to plano kabliukas?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "Du trilijonai juanių, 80 procentų vietinės gamybos silicio, 2028 m. terminas – o kabliukas yra tas, kad ribojantis veiksnys yra ne loginiai lustai, o didelio pralaidumo atmintis.",
+      "text_markdown": "Du trilijonai juanių, 80 procentų vietinės gamybos silicio, 2028 m. terminas – o kabliukas yra tas, kad ribojantis veiksnys yra ne loginiai lustai, o didelio pralaidumo atmintis.",
+      "title": "",
+      "tts": {
+        "text": "Du trilijonai juanių, aštuoniasdešimt procentų vietinės gamybos silicio, du tūkstančiai dvidešimt aštuntųjų metų terminas – o kabliukas yra tas, kad ribojantis veiksnys yra ne loginiai lustai, o didelio pralaidumo atmintis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "Paaiškinkite mums tai.",
+      "text_markdown": "Paaiškinkite mums tai.",
+      "title": "",
+      "tts": {
+        "text": "Paaiškinkite mums tai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Kiekvienam DI spartintuvui reikia HBM modulių, pritvirtintų prie loginio lusto.",
+      "text_markdown": "Kiekvienam DI spartintuvui reikia HBM modulių, pritvirtintų prie loginio lusto.",
+      "title": "",
+      "tts": {
+        "text": "Kiekvienam D I spartintuvui reikia H B M modulių, pritvirtintų prie loginio lusto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "Be HBM lustas yra bevertis.",
+      "text_markdown": "Be HBM lustas yra bevertis.",
+      "title": "",
+      "tts": {
+        "text": "Be H B M lustas yra bevertis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "Kinija sukaupė apie 13 milijonų HBM modulių prieš įsigaliojant eksporto kontrolės priemonėms – 11,4 milijono iš vieno „Samsung“.",
+      "text_markdown": "Kinija sukaupė apie 13 milijonų HBM modulių prieš įsigaliojant eksporto kontrolės priemonėms – 11,4 milijono iš vieno „Samsung“.",
+      "title": "",
+      "tts": {
+        "text": "Kinija sukaupė apie trylika milijonų H B M modulių prieš įsigaliojant eksporto kontrolės priemonėms – vienuolika su keturiais dešimtosiomis milijono iš vieno „Samsung“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "Atsižvelgiant į „Huawei Ascend 910C“ pakavimo santykius, šio sukaupto kiekio pakanka maždaug 1,6 milijono lustų.",
+      "text_markdown": "Atsižvelgiant į „Huawei Ascend 910C“ pakavimo santykius, šio sukaupto kiekio pakanka maždaug 1,6 milijono lustų.",
+      "title": "",
+      "tts": {
+        "text": "Atsižvelgiant į „Huawei Ascend devyni šimtai dešimt C“ pakavimo santykius, šio sukaupto kiekio pakanka maždaug vienam su šešiomis dešimtosiomis milijono lustų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "Ir tada atsargos baigiasi.",
+      "text_markdown": "Ir tada atsargos baigiasi.",
+      "title": "",
+      "tts": {
+        "text": "Ir tada atsargos baigiasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "Tada atsargos baigiasi – 13 milijonų HBM modulių, pakanka 1,6 milijono lustų, ir tai yra riba.",
+      "text_markdown": "Tada atsargos baigiasi – 13 milijonų HBM modulių, pakanka 1,6 milijono lustų, ir tai yra riba.",
+      "title": "",
+      "tts": {
+        "text": "Tada atsargos baigiasi – trylika milijonų H B M modulių, pakanka vienam su šešiomis dešimtosiomis milijono lustų, ir tai yra riba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "Vietinės gamybos Kinijos HBM, iš CXMT, prognozuojama, kad 2026 m. pasieks apie 2 milijonus modulių – pakankamai galbūt 250–300 tūkstančių spartintuvų.",
+      "text_markdown": "Vietinės gamybos Kinijos HBM, iš CXMT, prognozuojama, kad 2026 m. pasieks apie 2 milijonus modulių – pakankamai galbūt 250–300 tūkstančių spartintuvų.",
+      "title": "",
+      "tts": {
+        "text": "Vietinės gamybos Kinijos H B M, iš C X M T, prognozuojama, kad du tūkstančiai dvidešimt šeštaisiais metais pasieks apie du milijonus modulių – pakankamai galbūt dviem šimtams penkiasdešimčiai iki trijų šimtų tūkstančių spartintuvų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "Taigi, kaip atrodo „Huawei“ silicio planai?",
+      "text_markdown": "Taigi, kaip atrodo „Huawei“ silicio planai?",
+      "title": "",
+      "tts": {
+        "text": "Taigi, kaip atrodo „Huawei“ silicio planai?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "„Bloomberg“, remdamasis „Huawei“ planais, nurodė, kad 2026 m. produkcija sieks 600 tūkstančių 910C lustų, o platesnė „Ascend“ produktų linija pasieks iki 1,6 milijono lustų iš viso.",
+      "text_markdown": "„Bloomberg“, remdamasis „Huawei“ planais, nurodė, kad 2026 m. produkcija sieks 600 tūkstančių 910C lustų, o platesnė „Ascend“ produktų linija pasieks iki 1,6 milijono lustų iš viso.",
+      "title": "",
+      "tts": {
+        "text": "„Bloomberg“, remdamasis „Huawei“ planais, nurodė, kad du tūkstančiai dvidešimt šeštųjų metų produkcija sieks šešis šimtus tūkstančių devyni šimtai dešimt C lustų, o platesnė „Ascend“ produktų linija pasieks iki vieno su šešiomis dešimtosiomis milijono lustų iš viso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "Tas skaičius, 600 tūkstančių, yra tikslas, o ne išsiųsta produkcija.",
+      "text_markdown": "Tas skaičius, 600 tūkstančių, yra tikslas, o ne išsiųsta produkcija.",
+      "title": "",
+      "tts": {
+        "text": "Tas skaičius, šeši šimtai tūkstančių, yra tikslas, o ne išsiųsta produkcija.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "Ir atskirai, prieš eksporto kontrolės priemonėms juos nutraukiant, „Huawei“ sukaupė daugiau nei 2,9 milijono „Ascend“ lustų, pagamintų TSMC, per „Sophgo“ ir „Bitmain“ fiktyvias įmones.",
+      "text_markdown": "Ir atskirai, prieš eksporto kontrolės priemonėms juos nutraukiant, „Huawei“ sukaupė daugiau nei 2,9 milijono „Ascend“ lustų, pagamintų TSMC, per „Sophgo“ ir „Bitmain“ fiktyvias įmones.",
+      "title": "",
+      "tts": {
+        "text": "Ir atskirai, prieš eksporto kontrolės priemonėms juos nutraukiant, „Huawei“ sukaupė daugiau nei du su devyniomis dešimtosiomis milijono „Ascend“ lustų, pagamintų T S M C, per „Sophgo“ ir „Bitmain“ fiktyvias įmones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "Pasakojimas, kad eksporto kontrolės priemonės veikia, turi 2,9 milijono lustų skylę.",
+      "text_markdown": "Pasakojimas, kad eksporto kontrolės priemonės veikia, turi 2,9 milijono lustų skylę.",
+      "title": "",
+      "tts": {
+        "text": "Pasakojimas, kad eksporto kontrolės priemonės veikia, turi dviejų su devyniomis dešimtosiomis milijono lustų skylę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "Apžvelkime antraštes greitu tempu.",
+      "text_markdown": "Apžvelkime antraštes greitu tempu.",
+      "title": "",
+      "tts": {
+        "text": "Apžvelkime antraštes greitu tempu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "Pirmoji šios savaitės antraštė – „Broadcom“.",
+      "text_markdown": "Pirmoji šios savaitės antraštė – „Broadcom“.",
+      "title": "",
+      "tts": {
+        "text": "Pirmoji šios savaitės antraštė – „Broadcom“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "„Broadcom“ rinkos kapitalizacija siekia maždaug du trilijonus dolerių.",
+      "text_markdown": "„Broadcom“ rinkos kapitalizacija siekia maždaug du trilijonus dolerių.",
+      "title": "",
+      "tts": {
+        "text": "„Broadcom“ rinkos kapitalizacija siekia maždaug du trilijonus dolerių.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "Jų generalinis direktorius Hockas Tanas pakartojo, kad 2027 m. finansinių metų DI puslaidininkių pajamų tikslas yra 100 milijardų dolerių birželio trečiosios pajamų ataskaitos skambučio metu, paremtas maždaug 73 milijardais dolerių DI užsakymų ir ilgalaikių sutarčių su „Alphabet“ ir „Meta“, besitęsiančių iki 2031 m.",
+      "text_markdown": "Jų generalinis direktorius Hockas Tanas pakartojo, kad 2027 m. finansinių metų DI puslaidininkių pajamų tikslas yra 100 milijardų dolerių birželio trečiosios pajamų ataskaitos skambučio metu, paremtas maždaug 73 milijardais dolerių DI užsakymų ir ilgalaikių sutarčių su „Alphabet“ ir „Meta“, besitęsiančių iki 2031 m.",
+      "title": "",
+      "tts": {
+        "text": "Jų generalinis direktorius Hockas Tanas pakartojo, kad du tūkstančiai dvidešimt septintųjų finansinių metų A I puslaidininkių pajamų tikslas yra šimtas milijardų dolerių birželio trečiosios pajamų ataskaitos skambučio metu, paremtas maždaug septyniasdešimt trimis milijardais dolerių A I užsakymų ir ilgalaikių sutarčių su „Alphabet“ ir „Meta“, besitęsiančių iki du tūkstančiai trisdešimt pirmųjų metų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "Dviejų trilijonų dolerių rinkos kapitalizacija, šimto milijardų dolerių DI pajamų tikslas, beveik jokio mažmeninės prekybos prekės ženklo atpažįstamumo.",
+      "text_markdown": "Dviejų trilijonų dolerių rinkos kapitalizacija, šimto milijardų dolerių DI pajamų tikslas, beveik jokio mažmeninės prekybos prekės ženklo atpažįstamumo.",
+      "title": "",
+      "tts": {
+        "text": "Dviejų trilijonų dolerių rinkos kapitalizacija, šimto milijardų dolerių A I pajamų tikslas, beveik jokio mažmeninės prekybos prekės ženklo atpažįstamumo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "Antroji šios savaitės antraštė – ASML.",
+      "text_markdown": "Antroji šios savaitės antraštė – ASML.",
+      "title": "",
+      "tts": {
+        "text": "Antroji šios savaitės antraštė – A S M L.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "ASML, Nyderlandų įmonė, gaminanti litografijos mašinas, nuo kurių priklauso visa pažangiausia logika, parduoda savo „High-N.A. E.U.V.“ sistemą už maždaug 370 milijonų dolerių.",
+      "text_markdown": "ASML, Nyderlandų įmonė, gaminanti litografijos mašinas, nuo kurių priklauso visa pažangiausia logika, parduoda savo „High-N.A. E.U.V.“ sistemą už maždaug 370 milijonų dolerių.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, Nyderlandų įmonė, gaminanti litografijos mašinas, nuo kurių priklauso visa pažangiausia logika, parduoda savo „High N A E U V“ sistemą už maždaug tris šimtus septyniasdešimt milijonų dolerių.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "Pasaulinis gamybos pajėgumas yra mažiau nei 20 vienetų per metus.",
+      "text_markdown": "Pasaulinis gamybos pajėgumas yra mažiau nei 20 vienetų per metus.",
+      "title": "",
+      "tts": {
+        "text": "Pasaulinis gamybos pajėgumas yra mažiau nei dvidešimt vienetų per metus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "370 milijonų dolerių už mašiną, mažiau nei 20 mašinų per metus, viena įmonė jas gamina – tai yra tikrasis pasaulinio silicio gamybos kliūtis, o ne politika.",
+      "text_markdown": "370 milijonų dolerių už mašiną, mažiau nei 20 mašinų per metus, viena įmonė jas gamina – tai yra tikrasis pasaulinio silicio gamybos kliūtis, o ne politika.",
+      "title": "",
+      "tts": {
+        "text": "Trys šimtai septyniasdešimt milijonų dolerių už mašiną, mažiau nei dvidešimt mašinų per metus, viena įmonė jas gamina – tai yra tikrasis pasaulinio silicio gamybos kliūtis, o ne politika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "Trečioji šios savaitės antraštė – eksporto kontrolė.",
+      "text_markdown": "Trečioji šios savaitės antraštė – eksporto kontrolė.",
+      "title": "",
+      "tts": {
+        "text": "Trečioji šios savaitės antraštė – eksporto kontrolė.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "Prekybos departamentas atšaukė Bideno eros DI sklaidos taisyklę gegužės 13 d., 2025 m., ir neišleido naujo B.I.S. vykdymo paaiškinimo iki gegužės 31 d., 2026 m.",
+      "text_markdown": "Prekybos departamentas atšaukė Bideno eros DI sklaidos taisyklę gegužės 13 d., 2025 m., ir neišleido naujo B.I.S. vykdymo paaiškinimo iki gegužės 31 d., 2026 m.",
+      "title": "",
+      "tts": {
+        "text": "Prekybos departamentas atšaukė Bideno eros A I sklaidos taisyklę gegužės tryliktąją, du tūkstančiai dvidešimt penktaisiais metais, ir neišleido naujo B I S vykdymo paaiškinimo iki gegužės trisdešimt pirmosios, du tūkstančiai dvidešimt šeštųjų metų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "Tai yra maždaug metus trukęs laikotarpis, kai licencijavimo reikalavimai nebuvo aktyviai vykdomi.",
+      "text_markdown": "Tai yra maždaug metus trukęs laikotarpis, kai licencijavimo reikalavimai nebuvo aktyviai vykdomi.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra maždaug metus trukęs laikotarpis, kai licencijavimo reikalavimai nebuvo aktyviai vykdomi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "Taigi, suskaičiuokite dienas.",
+      "text_markdown": "Taigi, suskaičiuokite dienas.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, suskaičiuokite dienas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "Septyniasdešimt dvi valandos, kad būtų išjungtas JAV modelis, trys šimtai aštuoniasdešimt dienų, kad būtų įgyvendinta lustų eksporto taisyklė – ši asimetrija yra esmė.",
+      "text_markdown": "Septyniasdešimt dvi valandos, kad būtų išjungtas JAV modelis, trys šimtai aštuoniasdešimt dienų, kad būtų įgyvendinta lustų eksporto taisyklė – ši asimetrija yra esmė.",
+      "title": "",
+      "tts": {
+        "text": "Septyniasdešimt dvi valandos, kad būtų išjungtas Jungtinių Amerikos Valstijų modelis, trys šimtai aštuoniasdešimt dienų, kad būtų įgyvendinta lustų eksporto taisyklė – ši asimetrija yra esmė.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "Ir kur dingo tie lustai per tas tris šimtus aštuoniasdešimt dienų.",
+      "text_markdown": "Ir kur dingo tie lustai per tas tris šimtus aštuoniasdešimt dienų.",
+      "title": "",
+      "tts": {
+        "text": "Ir kur dingo tie lustai per tas tris šimtus aštuoniasdešimt dienų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "Dauguma jų nukeliavo į Pietryčių Aziją.",
+      "text_markdown": "Dauguma jų nukeliavo į Pietryčių Aziją.",
+      "title": "",
+      "tts": {
+        "text": "Dauguma jų nukeliavo į Pietryčių Aziją.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "Kovo pabaigoje Teisingumo departamentas paviešino kaltinamuosius aktus, kuriuose teigiama, kad „Nvidia H-100“ ir „A-100“ lustai buvo nukreipti per Malaizijos ir Singapūro tarpininkus.",
+      "text_markdown": "Kovo pabaigoje Teisingumo departamentas paviešino kaltinamuosius aktus, kuriuose teigiama, kad „Nvidia H-100“ ir „A-100“ lustai buvo nukreipti per Malaizijos ir Singapūro tarpininkus.",
+      "title": "",
+      "tts": {
+        "text": "Kovo pabaigoje Teisingumo departamentas paviešino kaltinamuosius aktus, kuriuose teigiama, kad „Nvidia H šimtas“ ir „A šimtas“ lustai buvo nukreipti per Malaizijos ir Singapūro tarpininkus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "Gegužę „Fortune“ paskelbė užšifruotus tekstus, rodančius logistiką, o „Super Micro“ yra įtraukta į dviejų su puse milijardo dolerių vertės fiktyvių įmonių bylą.",
+      "text_markdown": "Gegužę „Fortune“ paskelbė užšifruotus tekstus, rodančius logistiką, o „Super Micro“ yra įtraukta į dviejų su puse milijardo dolerių vertės fiktyvių įmonių bylą.",
+      "title": "",
+      "tts": {
+        "text": "Gegužę „Fortune“ paskelbė užšifruotus tekstus, rodančius logistiką, o „Super Micro“ yra įtraukta į dviejų su puse milijardo dolerių vertės fiktyvių įmonių bylą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "Pranešama, kad Trumpo administracija rengia naujus lustų eksporto apribojimus, konkrečiai nukreiptus į Malaiziją ir Tailandą.",
+      "text_markdown": "Pranešama, kad Trumpo administracija rengia naujus lustų eksporto apribojimus, konkrečiai nukreiptus į Malaiziją ir Tailandą.",
+      "title": "",
+      "tts": {
+        "text": "Pranešama, kad Trumpo administracija rengia naujus lustų eksporto apribojimus, konkrečiai nukreiptus į Malaiziją ir Tailandą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "Taigi, vaizdas vienu sakiniu.",
+      "text_markdown": "Taigi, vaizdas vienu sakiniu.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, vaizdas vienu sakiniu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "Lustai neskrenda į Šendženą – pirmiausia jie skrenda į Penangą ir Singapūrą.",
+      "text_markdown": "Lustai neskrenda į Šendženą – pirmiausia jie skrenda į Penangą ir Singapūrą.",
+      "title": "",
+      "tts": {
+        "text": "Lustai neskrenda į Šendženą – pirmiausia jie skrenda į Penangą ir Singapūrą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "Savaitės koncepcija – likusios veiklos įsipareigojimai.",
+      "text_markdown": "Savaitės koncepcija – likusios veiklos įsipareigojimai.",
+      "title": "",
+      "tts": {
+        "text": "Savaitės koncepcija – likusios veiklos įsipareigojimai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "R.P.O. yra apskaitos eilutė, kuri fiksuoja sutarčių, kurias įmonė pasirašė, bet dar neįvykdė, dolerio vertę.",
+      "text_markdown": "R.P.O. yra apskaitos eilutė, kuri fiksuoja sutarčių, kurias įmonė pasirašė, bet dar neįvykdė, dolerio vertę.",
+      "title": "",
+      "tts": {
+        "text": "R P O yra apskaitos eilutė, kuri fiksuoja sutarčių, kurias įmonė pasirašė, bet dar neįvykdė, dolerio vertę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "Tai yra į ateitį orientuota – tai pasakoja apie būsimas pajamas, o ne apie pinigus banke šiandien.",
+      "text_markdown": "Tai yra į ateitį orientuota – tai pasakoja apie būsimas pajamas, o ne apie pinigus banke šiandien.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra į ateitį orientuota – tai pasakoja apie būsimas pajamas, o ne apie pinigus banke šiandien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "Ir kodėl tai svarbu „Oracle“?",
+      "text_markdown": "Ir kodėl tai svarbu „Oracle“?",
+      "title": "",
+      "tts": {
+        "text": "Ir kodėl tai svarbu „Oracle“?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "Nes penki šimtai penkiasdešimt trys milijardai dolerių R.P.O., stipriai sukoncentruoti vienam klientui vienam išplėtimui, reiškia, kad „Oracle“ pažadėjo per ateinančius kelerius metus pristatyti milžinišką skaičiavimo galią klientui, kurio paties pajamų modelis vis dar ginčijamas.",
+      "text_markdown": "Nes penki šimtai penkiasdešimt trys milijardai dolerių R.P.O., stipriai sukoncentruoti vienam klientui vienam išplėtimui, reiškia, kad „Oracle“ pažadėjo per ateinančius kelerius metus pristatyti milžinišką skaičiavimo galią klientui, kurio paties pajamų modelis vis dar ginčijamas.",
+      "title": "",
+      "tts": {
+        "text": "Nes penki šimtai penkiasdešimt trys milijardai dolerių R P O, stipriai sukoncentruoti vienam klientui vienam išplėtimui, reiškia, kad „Oracle“ pažadėjo per ateinančius kelerius metus pristatyti milžinišką skaičiavimo galią klientui, kurio paties pajamų modelis vis dar ginčijamas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "Jei šios sutartys bus įvykdytos, „Oracle“ turės dešimtmečio sandorį.",
+      "text_markdown": "Jei šios sutartys bus įvykdytos, „Oracle“ turės dešimtmečio sandorį.",
+      "title": "",
+      "tts": {
+        "text": "Jei šios sutartys bus įvykdytos, „Oracle“ turės dešimtmečio sandorį.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "Jei jos paslysta – arba yra persideramos – „Oracle“ neša skolą, o sutartys mažėja.",
+      "text_markdown": "Jei jos paslysta – arba yra persideramos – „Oracle“ neša skolą, o sutartys mažėja.",
+      "title": "",
+      "tts": {
+        "text": "Jei jos paslysta – arba yra persideramos – „Oracle“ neša skolą, o sutartys mažėja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "Taigi, kai matote R.P.O. skaičių technologijos ataskaitoje.",
+      "text_markdown": "Taigi, kai matote R.P.O. skaičių technologijos ataskaitoje.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, kai matote R P O skaičių technologijos ataskaitoje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "Perskaitykite, kas yra klientai, kaip sukoncentruoti įsipareigojimai ir kas turėtų įvykti, kad įmonė juos iš tikrųjų įvykdytų.",
+      "text_markdown": "Perskaitykite, kas yra klientai, kaip sukoncentruoti įsipareigojimai ir kas turėtų įvykti, kad įmonė juos iš tikrųjų įvykdytų.",
+      "title": "",
+      "tts": {
+        "text": "Perskaitykite, kas yra klientai, kaip sukoncentruoti įsipareigojimai ir kas turėtų įvykti, kad įmonė juos iš tikrųjų įvykdytų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "R.P.O. yra vieta, kur išnašose pasirodo „bag-holders“.",
+      "text_markdown": "R.P.O. yra vieta, kur išnašose pasirodo „bag-holders“.",
+      "title": "",
+      "tts": {
+        "text": "R P O yra vieta, kur išnašose pasirodo „bag-holders“.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "Gera vieta baigti.",
+      "text_markdown": "Gera vieta baigti.",
+      "title": "",
+      "tts": {
+        "text": "Gera vieta baigti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "Ronai, už apžvalgą dėkoju.",
+      "text_markdown": "Ronai, už apžvalgą dėkoju.",
+      "title": "",
+      "tts": {
+        "text": "Ronai, už apžvalgą dėkoju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "Bet kada, Vindy – gera čia būti.",
+      "text_markdown": "Bet kada, Vindy – gera čia būti.",
+      "title": "",
+      "tts": {
+        "text": "Bet kada, Vindy – gera čia būti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "Tai buvo „AI This Week“ birželio dvidešimt pirmosios, du tūkstančiai dvidešimt šeštųjų metų laida.",
+      "text_markdown": "Tai buvo „AI This Week“ birželio dvidešimt pirmosios, du tūkstančiai dvidešimt šeštųjų metų laida.",
+      "title": "",
+      "tts": {
+        "text": "Tai buvo „AI This Week“ birželio dvidešimt pirmosios, du tūkstančiai dvidešimt šeštųjų metų laida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "Kitą savaitę grįšime prie atvirųjų svorių ir mažų laboratorijų naujienų.",
+      "text_markdown": "Kitą savaitę grįšime prie atvirųjų svorių ir mažų laboratorijų naujienų.",
+      "title": "",
+      "tts": {
+        "text": "Kitą savaitę grįšime prie atvirųjų svorių ir mažų laboratorijų naujienų.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "Iki kito sekmadienio, saugokitės.",
+      "text_markdown": "Iki kito sekmadienio, saugokitės.",
+      "title": "",
+      "tts": {
+        "text": "Iki kito sekmadienio, saugokitės.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

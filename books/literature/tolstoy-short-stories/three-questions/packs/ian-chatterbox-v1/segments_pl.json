@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "pl",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Trzy pytania",
+      "text_markdown": "Trzy pytania",
+      "title": "Trzy pytania"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Pewien car pomyślał, że gdyby zawsze wiedział, jaki czas jest najważniejszy dla każdej sprawy, i gdyby wiedział, jaccy ludzie są najbardziej potrzebni, a przede wszystkim, gdyby zawsze wiedział, która ze wszystkich spraw jest najważniejsza — nigdy by w niczym nie poniósł porażki.",
+      "text_markdown": "Pewien car pomyślał, że gdyby zawsze wiedział, jaki czas jest najważniejszy dla każdej sprawy, i gdyby wiedział, jaccy ludzie są najbardziej potrzebni, a przede wszystkim, gdyby zawsze wiedział, która ze wszystkich spraw jest najważniejsza — nigdy by w niczym nie poniósł porażki.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pewien car pomyślał, że gdyby zawsze wiedział, jaki czas jest najważniejszy dla każdej sprawy, i gdyby wiedział, jaccy ludzie są najbardziej potrzebni, a przede wszystkim, gdyby zawsze wiedział, która ze wszystkich spraw jest najważniejsza — nigdy by w niczym nie poniósł porażki.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "I pomyśliwszy to, car ogłosił w swoim carstwie, że da wielką nagrodę temu, kto nauczy go, jak poznać właściwy czas dla każdej sprawy, jak poznać, jaccy ludzie są najbardziej potrzebni, i jak nie mylić się w tym, która sprawa ze wszystkich jest najważniejsza.",
+      "text_markdown": "I pomyśliwszy to, car ogłosił w swoim carstwie, że da wielką nagrodę temu, kto nauczy go, jak poznać właściwy czas dla każdej sprawy, jak poznać, jaccy ludzie są najbardziej potrzebni, i jak nie mylić się w tym, która sprawa ze wszystkich jest najważniejsza.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "I pomyśliwszy to, car ogłosił w swoim carstwie, że da wielką nagrodę temu, kto nauczy go, jak poznać właściwy czas dla każdej sprawy, jak poznać, jaccy ludzie są najbardziej potrzebni, i jak nie mylić się w tym, która sprawa ze wszystkich jest najważniejsza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Zaczęli przychodzić do cara uczeni ludzie i odpowiadali na jego pytania różnie.",
+      "text_markdown": "Zaczęli przychodzić do cara uczeni ludzie i odpowiadali na jego pytania różnie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Zaczęli przychodzić do cara uczeni ludzie i odpowiadali na jego pytania różnie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Na pierwsze pytanie jedni mówili, że aby poznać właściwy czas dla każdej sprawy, należy wcześniej ułożyć rozkład dni, miesięcy i lat i ściśle go przestrzegać.",
+      "text_markdown": "Na pierwsze pytanie jedni mówili, że aby poznać właściwy czas dla każdej sprawy, należy wcześniej ułożyć rozkład dni, miesięcy i lat i ściśle go przestrzegać.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Na pierwsze pytanie jedni mówili, że aby poznać właściwy czas dla każdej sprawy, należy wcześniej ułożyć rozkład dni, miesięcy i lat i ściśle go przestrzegać.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Tylko wtedy, mówili, każda sprawa będzie wykonywana w swoim czasie.",
+      "text_markdown": "Tylko wtedy, mówili, każda sprawa będzie wykonywana w swoim czasie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Tylko wtedy, mówili, każda sprawa będzie wykonywana w swoim czasie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Inni mówili, że nie można wcześniej zdecydować, jaki czas dla jakiej sprawy będzie właściwy, a należy, nie odwracając się pustymi rozrywkami, zawsze być uważnym na wszystko, co się dzieje, i wtedy zawsze robić to, co jest potrzebniejsze.",
+      "text_markdown": "Inni mówili, że nie można wcześniej zdecydować, jaki czas dla jakiej sprawy będzie właściwy, a należy, nie odwracając się pustymi rozrywkami, zawsze być uważnym na wszystko, co się dzieje, i wtedy zawsze robić to, co jest potrzebniejsze.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Inni mówili, że nie można wcześniej zdecydować, jaki czas dla jakiej sprawy będzie właściwy, a należy, nie odwracając się pustymi rozrywkami, zawsze być uważnym na wszystko, co się dzieje, i wtedy zawsze robić to, co jest potrzebniejsze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Trzeci mówili, że jakkolwiek byłby uważny car na wszystko, co się dzieje, jeden człowiek nie może zawsze słusznie zdecydować o każdej sprawie, kiedy jej czas, a że trzeba mieć radę mędrców i według ich rady wyznaczać czas dla każdej sprawy.",
+      "text_markdown": "Trzeci mówili, że jakkolwiek byłby uważny car na wszystko, co się dzieje, jeden człowiek nie może zawsze słusznie zdecydować o każdej sprawie, kiedy jej czas, a że trzeba mieć radę mędrców i według ich rady wyznaczać czas dla każdej sprawy.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Trzeci mówili, że jakkolwiek byłby uważny car na wszystko, co się dzieje, jeden człowiek nie może zawsze słusznie zdecydować o każdej sprawie, kiedy jej czas, a że trzeba mieć radę mędrców i według ich rady wyznaczać czas dla każdej sprawy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Czwarci mówili, że zdarzają się takie sprawy, które trzeba załatwiać natychmiast, nie czekając na narady, i aby wiedzieć, kiedy dokładnie się zdarzają, trzeba wiedzieć, co będzie w przyszłości.",
+      "text_markdown": "Czwarci mówili, że zdarzają się takie sprawy, które trzeba załatwiać natychmiast, nie czekając na narady, i aby wiedzieć, kiedy dokładnie się zdarzają, trzeba wiedzieć, co będzie w przyszłości.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Czwarci mówili, że zdarzają się takie sprawy, które trzeba załatwiać natychmiast, nie czekając na narady, i aby wiedzieć, kiedy dokładnie się zdarzają, trzeba wiedzieć, co będzie w przyszłości.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "A wiedzieć to mogą tylko czarnoksiężnicy.",
+      "text_markdown": "A wiedzieć to mogą tylko czarnoksiężnicy.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "A wiedzieć to mogą tylko czarnoksiężnicy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "I dlatego, aby poznać właściwy czas dla każdej sprawy, trzeba pytać czarnoksiężników.",
+      "text_markdown": "I dlatego, aby poznać właściwy czas dla każdej sprawy, trzeba pytać czarnoksiężników.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "I dlatego, aby poznać właściwy czas dla każdej sprawy, trzeba pytać czarnoksiężników.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Na drugie pytanie też odpowiadali różnie.",
+      "text_markdown": "Na drugie pytanie też odpowiadali różnie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Na drugie pytanie też odpowiadali różnie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Jedni mówili, że najbardziej potrzebni carowi ludzie to rządcy, inni mówili, że kapłani, trzeci — lekarze, czwarci — wojownicy.",
+      "text_markdown": "Jedni mówili, że najbardziej potrzebni carowi ludzie to rządcy, inni mówili, że kapłani, trzeci — lekarze, czwarci — wojownicy.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Jedni mówili, że najbardziej potrzebni carowi ludzie to rządcy, inni mówili, że kapłani, trzeci — lekarze, czwarci — wojownicy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Na trzecie pytanie — która sprawa jest najważniejsza? — jedni mówili, że najważniejszą na świecie jest nauka; inni mówili — sztuka wojenna, trzeci mówili — pobożność.",
+      "text_markdown": "Na trzecie pytanie — która sprawa jest najważniejsza? — jedni mówili, że najważniejszą na świecie jest nauka; inni mówili — sztuka wojenna, trzeci mówili — pobożność.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Na trzecie pytanie — która sprawa jest najważniejsza? — jedni mówili, że najważniejszą na świecie jest nauka; inni mówili — sztuka wojenna, trzeci mówili — pobożność.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Wszystkie odpowiedzi były różne, i dlatego car nie zgodził się z żadną i nikomu nie dał nagrody.",
+      "text_markdown": "Wszystkie odpowiedzi były różne, i dlatego car nie zgodził się z żadną i nikomu nie dał nagrody.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Wszystkie odpowiedzi były różne, i dlatego car nie zgodził się z żadną i nikomu nie dał nagrody.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Aby jednak lepiej poznać odpowiedzi na swoje pytania, postanowił zapytać pustelnika, o którym szła sława, że jest mądrym człowiekiem.",
+      "text_markdown": "Aby jednak lepiej poznać odpowiedzi na swoje pytania, postanowił zapytać pustelnika, o którym szła sława, że jest mądrym człowiekiem.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Aby jednak lepiej poznać odpowiedzi na swoje pytania, postanowił zapytać pustelnika, o którym szła sława, że jest mądrym człowiekiem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Pustelnik mieszkał w lesie i nigdy stamtąd nie wychodził.",
+      "text_markdown": "Pustelnik mieszkał w lesie i nigdy stamtąd nie wychodził.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pustelnik mieszkał w lesie i nigdy stamtąd nie wychodził.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Przyjmował tylko prostych ludzi, i dlatego car ubrał się prosto i, nie dojeżdżając do mieszkania pustelnika, zszedł z konia i sam poszedł do niego.",
+      "text_markdown": "Przyjmował tylko prostych ludzi, i dlatego car ubrał się prosto i, nie dojeżdżając do mieszkania pustelnika, zszedł z konia i sam poszedł do niego.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Przyjmował tylko prostych ludzi, i dlatego car ubrał się prosto i, nie dojeżdżając do mieszkania pustelnika, zszedł z konia i sam poszedł do niego.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Gdy car podszedł do niego, pustelnik przed swoją chatką kopał grządki.",
+      "text_markdown": "Gdy car podszedł do niego, pustelnik przed swoją chatką kopał grządki.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Gdy car podszedł do niego, pustelnik przed swoją chatką kopał grządki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Zobaczywszy cara, pustelnik skinął mu głową i dalej kopał.",
+      "text_markdown": "Zobaczywszy cara, pustelnik skinął mu głową i dalej kopał.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Zobaczywszy cara, pustelnik skinął mu głową i dalej kopał.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Pustelnik był chudy i słaby i, wtykając łopatę w ziemię i wywracając małe bryły ziemi, ciężko dysał.",
+      "text_markdown": "Pustelnik był chudy i słaby i, wtykając łopatę w ziemię i wywracając małe bryły ziemi, ciężko dysał.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pustelnik był chudy i słaby i, wtykając łopatę w ziemię i wywracając małe bryły ziemi, ciężko dysał.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Car podszedł do niego i powiedział:",
+      "text_markdown": "Car podszedł do niego i powiedział:",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Car podszedł do niego i powiedział:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Przyszedłem do ciebie, mądry pustelniku, prosić cię o odpowiedź na trzy pytania: jaki czas należy pamiętać i nie przepuszczać, aby potem nie żałować?",
+      "text_markdown": "— Przyszedłem do ciebie, mądry pustelniku, prosić cię o odpowiedź na trzy pytania: jaki czas należy pamiętać i nie przepuszczać, aby potem nie żałować?",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Przyszedłem do ciebie, mądry pustelniku, prosić cię o odpowiedź na trzy pytania: jaki czas należy pamiętać i nie przepuszczać, aby potem nie żałować?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Jaccy ludzie są najbardziej potrzebni?",
+      "text_markdown": "Jaccy ludzie są najbardziej potrzebni?",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Jaccy ludzie są najbardziej potrzebni?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "I która sprawa jest najważniejsza?",
+      "text_markdown": "I która sprawa jest najważniejsza?",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "I która sprawa jest najważniejsza?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Pustelnik wysłuchał cara, ale niczego nie odpowiedział, a splunął na rękę i znów zaczął kopać.",
+      "text_markdown": "Pustelnik wysłuchał cara, ale niczego nie odpowiedział, a splunął na rękę i znów zaczął kopać.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pustelnik wysłuchał cara, ale niczego nie odpowiedział, a splunął na rękę i znów zaczął kopać.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Jesteś zmęczony — powiedział car.",
+      "text_markdown": "— Jesteś zmęczony — powiedział car.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Jesteś zmęczony — powiedział car.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Daj, ja ci pomogę.",
+      "text_markdown": "— Daj, ja ci pomogę.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Daj, ja ci pomogę.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Dziękuję — powiedział pustelnik i, oddając carowi łopatę, usiadł na ziemi.",
+      "text_markdown": "— Dziękuję — powiedział pustelnik i, oddając carowi łopatę, usiadł na ziemi.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Dziękuję — powiedział pustelnik i, oddając carowi łopatę, usiadł na ziemi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Skopawszy dwie grządki, car zatrzymał się i powtórzył swoje pytania.",
+      "text_markdown": "Skopawszy dwie grządki, car zatrzymał się i powtórzył swoje pytania.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Skopawszy dwie grządki, car zatrzymał się i powtórzył swoje pytania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Pustelnik znów nie odpowiedział, a wstał i wyciągnął rękę po łopatę:",
+      "text_markdown": "Pustelnik znów nie odpowiedział, a wstał i wyciągnął rękę po łopatę:",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pustelnik znów nie odpowiedział, a wstał i wyciągnął rękę po łopatę:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Teraz odpocznij, dawaj ja — powiedział.",
+      "text_markdown": "— Teraz odpocznij, dawaj ja — powiedział.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Teraz odpocznij, dawaj ja — powiedział.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Ale car nie oddał łopaty i dalej kopał.",
+      "text_markdown": "Ale car nie oddał łopaty i dalej kopał.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Ale car nie oddał łopaty i dalej kopał.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Minęła godzina, minęła druga.",
+      "text_markdown": "Minęła godzina, minęła druga.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Minęła godzina, minęła druga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Słońce zaszło za drzewa.",
+      "text_markdown": "Słońce zaszło za drzewa.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Słońce zaszło za drzewa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Car wbił łopatę w ziemię i powiedział:",
+      "text_markdown": "Car wbił łopatę w ziemię i powiedział:",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Car wbił łopatę w ziemię i powiedział:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Przyszedłem do ciebie, mędrcu, po odpowiedź na moje pytania.",
+      "text_markdown": "— Przyszedłem do ciebie, mędrcu, po odpowiedź na moje pytania.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Przyszedłem do ciebie, mędrcu, po odpowiedź na moje pytania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Jeśli nie możesz mi odpowiedzieć, powiedz to, a ja pójdę do domu.",
+      "text_markdown": "Jeśli nie możesz mi odpowiedzieć, powiedz to, a ja pójdę do domu.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Jeśli nie możesz mi odpowiedzieć, powiedz to, a ja pójdę do domu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— A oto ktoś biegnie — powiedział pustelnik.",
+      "text_markdown": "— A oto ktoś biegnie — powiedział pustelnik.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— A oto ktoś biegnie — powiedział pustelnik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Zobaczmy, kto to.",
+      "text_markdown": "— Zobaczmy, kto to.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Zobaczmy, kto to.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Król odwrócił się i zobaczył — z lasu biegł brodaty człowiek.",
+      "text_markdown": "Król odwrócił się i zobaczył — z lasu biegł brodaty człowiek.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król odwrócił się i zobaczył — z lasu biegł brodaty człowiek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Człowiek ten przyciskał rękami ranę na brzuchu, spod rąk ciekła krew.",
+      "text_markdown": "Człowiek ten przyciskał rękami ranę na brzuchu, spod rąk ciekła krew.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Człowiek ten przyciskał rękami ranę na brzuchu, spod rąk ciekła krew.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Dobiegłszy do króla, człowiek upadł nieprzytomny na ziemię i leżał, cicho jęcząc.",
+      "text_markdown": "Dobiegłszy do króla, człowiek upadł nieprzytomny na ziemię i leżał, cicho jęcząc.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Dobiegłszy do króla, człowiek upadł nieprzytomny na ziemię i leżał, cicho jęcząc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Król wraz z pustelnikiem rozpiął i zdjął z człowieka ubranie.",
+      "text_markdown": "Król wraz z pustelnikiem rozpiął i zdjął z człowieka ubranie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król wraz z pustelnikiem rozpiął i zdjął z człowieka ubranie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "W brzuchu była duża rana.",
+      "text_markdown": "W brzuchu była duża rana.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "W brzuchu była duża rana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Król, jak umiał, przemył ranę i opatrzył ją swoją chusteczką i ręcznikiem pustelnika.",
+      "text_markdown": "Król, jak umiał, przemył ranę i opatrzył ją swoją chusteczką i ręcznikiem pustelnika.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król, jak umiał, przemył ranę i opatrzył ją swoją chusteczką i ręcznikiem pustelnika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Ale krew się nie zatrzymywała.",
+      "text_markdown": "Ale krew się nie zatrzymywała.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Ale krew się nie zatrzymywała.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Król kilka razy zdejmował opatrunek i znów przemywał i opatrywał ranę.",
+      "text_markdown": "Król kilka razy zdejmował opatrunek i znów przemywał i opatrywał ranę.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król kilka razy zdejmował opatrunek i znów przemywał i opatrywał ranę.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Gdy wreszcie krew się uspokoiła, człowiek ocknął się i poprosił o picie.",
+      "text_markdown": "Gdy wreszcie krew się uspokoiła, człowiek ocknął się i poprosił o picie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Gdy wreszcie krew się uspokoiła, człowiek ocknął się i poprosił o picie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Król przyniósł mu świeżej wody i napoił go.",
+      "text_markdown": "Król przyniósł mu świeżej wody i napoił go.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król przyniósł mu świeżej wody i napoił go.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Tymczasem słońce całkiem zaszło i zrobiło się zimno.",
+      "text_markdown": "Tymczasem słońce całkiem zaszło i zrobiło się zimno.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Tymczasem słońce całkiem zaszło i zrobiło się zimno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Król z pomocą pustelnika przeniósł rannego do chaty i położył go na łóżku.",
+      "text_markdown": "Król z pomocą pustelnika przeniósł rannego do chaty i położył go na łóżku.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król z pomocą pustelnika przeniósł rannego do chaty i położył go na łóżku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Ranny zamknął oczy i ucichł.",
+      "text_markdown": "Ranny zamknął oczy i ucichł.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Ranny zamknął oczy i ucichł.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Król tak się zmęczył od chodzenia i pracy, że zaraz tam, na progu, położył się i zasnął, — zasnął tak mocno, że przespał całą krótką letnią noc, i gdy obudził się rano, długo nie mógł zrozumieć, gdzie jest i kim jest ten dziwny brodaty człowiek, który leżał na łóżku i uparcie patrzył na niego błyszczącymi oczami.",
+      "text_markdown": "Król tak się zmęczył od chodzenia i pracy, że zaraz tam, na progu, położył się i zasnął, — zasnął tak mocno, że przespał całą krótką letnią noc, i gdy obudził się rano, długo nie mógł zrozumieć, gdzie jest i kim jest ten dziwny brodaty człowiek, który leżał na łóżku i uparcie patrzył na niego błyszczącymi oczami.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król tak się zmęczył od chodzenia i pracy, że zaraz tam, na progu, położył się i zasnął, — zasnął tak mocno, że przespał całą krótką letnią noc, i gdy obudził się rano, długo nie mógł zrozumieć, gdzie jest i kim jest ten dziwny brodaty człowiek, który leżał na łóżku i uparcie patrzył na niego błyszczącymi oczami.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Przebacz mi — powiedział brodaty człowiek słabym głosem, gdy zobaczył, że król się obudził i patrzy na niego.",
+      "text_markdown": "— Przebacz mi — powiedział brodaty człowiek słabym głosem, gdy zobaczył, że król się obudził i patrzy na niego.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Przebacz mi — powiedział brodaty człowiek słabym głosem, gdy zobaczył, że król się obudził i patrzy na niego.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Nie znam cię i nie mam za co ci przebaczać — powiedział król.",
+      "text_markdown": "— Nie znam cię i nie mam za co ci przebaczać — powiedział król.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Nie znam cię i nie mam za co ci przebaczać — powiedział król.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Ty mnie nie znasz, ale ja cię znam.",
+      "text_markdown": "— Ty mnie nie znasz, ale ja cię znam.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Ty mnie nie znasz, ale ja cię znam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Jestem twoim wrogiem, tym właśnie, który przysiągł ci się zemścić za to, że straciłeś mojego brata i odebrałeś mi moją posiadłość.",
+      "text_markdown": "Jestem twoim wrogiem, tym właśnie, który przysiągł ci się zemścić za to, że straciłeś mojego brata i odebrałeś mi moją posiadłość.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Jestem twoim wrogiem, tym właśnie, który przysiągł ci się zemścić za to, że straciłeś mojego brata i odebrałeś mi moją posiadłość.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Wiedziałem, że sam poszedłeś do pustelnika, i postanowiłem zabić cię w drodze powrotnej.",
+      "text_markdown": "Wiedziałem, że sam poszedłeś do pustelnika, i postanowiłem zabić cię w drodze powrotnej.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Wiedziałem, że sam poszedłeś do pustelnika, i postanowiłem zabić cię w drodze powrotnej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Ale minął cały dzień, a ciebie wciąż nie było.",
+      "text_markdown": "Ale minął cały dzień, a ciebie wciąż nie było.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Ale minął cały dzień, a ciebie wciąż nie było.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Wtedy wyszedłem z zasadzki, żeby cię odszukać, i natrafiłem na twoich strażników.",
+      "text_markdown": "Wtedy wyszedłem z zasadzki, żeby cię odszukać, i natrafiłem na twoich strażników.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Wtedy wyszedłem z zasadzki, żeby cię odszukać, i natrafiłem na twoich strażników.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Rozpoznali mnie i zranili.",
+      "text_markdown": "Rozpoznali mnie i zranili.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Rozpoznali mnie i zranili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Uciekłem przed nimi, ale gdybyś nie opatrzył mojej rany, umarłbym.",
+      "text_markdown": "Uciekłem przed nimi, ale gdybyś nie opatrzył mojej rany, umarłbym.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Uciekłem przed nimi, ale gdybyś nie opatrzył mojej rany, umarłbym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Chciałem cię zabić, a ty ocalałeś mi życie.",
+      "text_markdown": "Chciałem cię zabić, a ty ocalałeś mi życie.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Chciałem cię zabić, a ty ocalałeś mi życie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Teraz, jeśli zostanę żywy i ty tego zechcesz, będę ci służyć jak najwierniejszy sługa, i to samo każę czynić moim synom.",
+      "text_markdown": "Teraz, jeśli zostanę żywy i ty tego zechcesz, będę ci służyć jak najwierniejszy sługa, i to samo każę czynić moim synom.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Teraz, jeśli zostanę żywy i ty tego zechcesz, będę ci służyć jak najwierniejszy sługa, i to samo każę czynić moim synom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Przebacz mi.",
+      "text_markdown": "Przebacz mi.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Przebacz mi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Król był bardzo rad, że tak łatwo udało mu się pogodzić z wrogiem i zyskać przyjaciela, i przebaczył mu i obiecał mu zwrócić jego posiadłość i przysłać swoich lekarzy i sług, żeby go pielęgnowali.",
+      "text_markdown": "Król był bardzo rad, że tak łatwo udało mu się pogodzić z wrogiem i zyskać przyjaciela, i przebaczył mu i obiecał mu zwrócić jego posiadłość i przysłać swoich lekarzy i sług, żeby go pielęgnowali.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król był bardzo rad, że tak łatwo udało mu się pogodzić z wrogiem i zyskać przyjaciela, i przebaczył mu i obiecał mu zwrócić jego posiadłość i przysłać swoich lekarzy i sług, żeby go pielęgnowali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Pożegnawszy się z rannym, król wyszedł na ganek i zaczął szukać wzrokiem pustelnika.",
+      "text_markdown": "Pożegnawszy się z rannym, król wyszedł na ganek i zaczął szukać wzrokiem pustelnika.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pożegnawszy się z rannym, król wyszedł na ganek i zaczął szukać wzrokiem pustelnika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Zanim odejdzie, chciał jeszcze raz poprosić go o odpowiedź na swoje pytania.",
+      "text_markdown": "Zanim odejdzie, chciał jeszcze raz poprosić go o odpowiedź na swoje pytania.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Zanim odejdzie, chciał jeszcze raz poprosić go o odpowiedź na swoje pytania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Pustelnik był na podwórku i, stojąc na kolanach, sadzil nasiona w grządki, które zostały wykopane wczoraj.",
+      "text_markdown": "Pustelnik był na podwórku i, stojąc na kolanach, sadzil nasiona w grządki, które zostały wykopane wczoraj.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Pustelnik był na podwórku i, stojąc na kolanach, sadzil nasiona w grządki, które zostały wykopane wczoraj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Król podszedł do niego.",
+      "text_markdown": "Król podszedł do niego.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "Król podszedł do niego.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Mądry człowieku, po raz ostatni proszę cię: odpowiedz na moje pytania.",
+      "text_markdown": "— Mądry człowieku, po raz ostatni proszę cię: odpowiedz na moje pytania.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Mądry człowieku, po raz ostatni proszę cię: odpowiedz na moje pytania.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Ależ już otrzymałeś odpowiedź — powiedział pustelnik, siedząc na cienkich nogach w kucki i patrząc z dołu na stojącego przed nim króla.",
+      "text_markdown": "— Ależ już otrzymałeś odpowiedź — powiedział pustelnik, siedząc na cienkich nogach w kucki i patrząc z dołu na stojącego przed nim króla.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Ależ już otrzymałeś odpowiedź — powiedział pustelnik, siedząc na cienkich nogach w kucki i patrząc z dołu na stojącego przed nim króla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Jak otrzymałem odpowiedź? — zapytał król.",
+      "text_markdown": "— Jak otrzymałem odpowiedź? — zapytał król.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Jak otrzymałem odpowiedź? — zapytał król.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— A jakże? — powiedział pustelnik.",
+      "text_markdown": "— A jakże? — powiedział pustelnik.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— A jakże? — powiedział pustelnik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Gdybyś wczoraj nie użalił się nade mną i nie zaczął kopać zamiast mnie tych grządek, a poszedł z powrotem, ten człowiek zabiłby cię.",
+      "text_markdown": "— Gdybyś wczoraj nie użalił się nade mną i nie zaczął kopać zamiast mnie tych grządek, a poszedł z powrotem, ten człowiek zabiłby cię.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Gdybyś wczoraj nie użalił się nade mną i nie zaczął kopać zamiast mnie tych grządek, a poszedł z powrotem, ten człowiek zabiłby cię.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "I dlatego najważniejszym czasem był ten, gdy kopałeś grządki.",
+      "text_markdown": "I dlatego najważniejszym czasem był ten, gdy kopałeś grządki.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "I dlatego najważniejszym czasem był ten, gdy kopałeś grządki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "A najpotrzebniejszym człowiekiem byłem ja.",
+      "text_markdown": "A najpotrzebniejszym człowiekiem byłem ja.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "A najpotrzebniejszym człowiekiem byłem ja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "A najważniejszym czynem było — czynić mi dobro.",
+      "text_markdown": "A najważniejszym czynem było — czynić mi dobro.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "A najważniejszym czynem było — czynić mi dobro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "A potem, gdy przybiegł ten człowiek, najważniejszym czasem był ten, gdy się nim zajmowałeś, bo gdybyś nie przemył jego rany, umarłby, nie pojednawszy się z tobą.",
+      "text_markdown": "A potem, gdy przybiegł ten człowiek, najważniejszym czasem był ten, gdy się nim zajmowałeś, bo gdybyś nie przemył jego rany, umarłby, nie pojednawszy się z tobą.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "A potem, gdy przybiegł ten człowiek, najważniejszym czasem był ten, gdy się nim zajmowałeś, bo gdybyś nie przemył jego rany, umarłby, nie pojednawszy się z tobą.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "I dlatego najbardziej potrzebnym człowiekiem był on, a najważniejszą sprawą było to, co dla niego robiłeś.",
+      "text_markdown": "I dlatego najbardziej potrzebnym człowiekiem był on, a najważniejszą sprawą było to, co dla niego robiłeś.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "I dlatego najbardziej potrzebnym człowiekiem był on, a najważniejszą sprawą było to, co dla niego robiłeś.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Zapamiętaj więc — rzekł pustelnik — że najważniejszy czas to jeden: teraz — i jest najważniejszy dlatego, że tylko w nim mamy władzę nad sobą; a najbardziej potrzebny człowiek to ten, z którym teraz masz do czynienia, ponieważ nikt nie może wiedzieć, czy będzie jeszcze miał do czynienia z jakimkolwiek innym człowiekiem; a najważniejszą sprawą jest czynić mu dobro, ponieważ tylko po to został człowiek posłany na świat.",
+      "text_markdown": "— Zapamiętaj więc — rzekł pustelnik — że najważniejszy czas to jeden: teraz — i jest najważniejszy dlatego, że tylko w nim mamy władzę nad sobą; a najbardziej potrzebny człowiek to ten, z którym teraz masz do czynienia, ponieważ nikt nie może wiedzieć, czy będzie jeszcze miał do czynienia z jakimkolwiek innym człowiekiem; a najważniejszą sprawą jest czynić mu dobro, ponieważ tylko po to został człowiek posłany na świat.",
+      "title": "Trzy pytania",
+      "tts": {
+        "text": "— Zapamiętaj więc — rzekł pustelnik — że najważniejszy czas to jeden: teraz — i jest najważniejszy dlatego, że tylko w nim mamy władzę nad sobą; a najbardziej potrzebny człowiek to ten, z którym teraz masz do czynienia, ponieważ nikt nie może wiedzieć, czy będzie jeszcze miał do czynienia z jakimkolwiek innym człowiekiem; a najważniejszą sprawą jest czynić mu dobro, ponieważ tylko po to został człowiek posłany na świat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

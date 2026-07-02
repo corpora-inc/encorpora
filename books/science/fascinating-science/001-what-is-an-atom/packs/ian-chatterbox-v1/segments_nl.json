@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "nl",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 1,
+      "id": "ch01-001",
+      "block_type": "heading",
+      "text": "Alles Is Gemaakt van Atomen",
+      "text_markdown": "Alles Is Gemaakt van Atomen",
+      "title": "Alles Is Gemaakt van Atomen"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-002",
+      "block_type": "text",
+      "text": "Kijk om je heen.",
+      "text_markdown": "Kijk om je heen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kijk om je heen.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-003",
+      "block_type": "text",
+      "text": "Alles wat je kunt zien is gemaakt van atomen.",
+      "text_markdown": "Alles wat je kunt zien is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Alles wat je kunt zien is gemaakt van atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-004",
+      "block_type": "text",
+      "text": "De lucht die je inademt is gemaakt van atomen.",
+      "text_markdown": "De lucht die je inademt is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "De lucht die je inademt is gemaakt van atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-005",
+      "block_type": "text",
+      "text": "Het water dat je drinkt is gemaakt van atomen.",
+      "text_markdown": "Het water dat je drinkt is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Het water dat je drinkt is gemaakt van atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-006",
+      "block_type": "text",
+      "text": "Je lichaam is gemaakt van atomen.",
+      "text_markdown": "Je lichaam is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Je lichaam is gemaakt van atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-007",
+      "block_type": "text",
+      "text": "De grond onder je voeten is gemaakt van atomen.",
+      "text_markdown": "De grond onder je voeten is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "De grond onder je voeten is gemaakt van atomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-008",
+      "block_type": "text",
+      "text": "Een atoom is het kleinste stukje materie dat nog een chemische identiteit heeft.",
+      "text_markdown": "Een atoom is het kleinste stukje materie dat nog een chemische identiteit heeft.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Een atoom is het kleinste stukje materie dat nog een chemische identiteit heeft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-009",
+      "block_type": "text",
+      "text": "Je kunt een enkel atoom niet zien met je ogen.",
+      "text_markdown": "Je kunt een enkel atoom niet zien met je ogen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Je kunt een enkel atoom niet zien met je ogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-010",
+      "block_type": "text",
+      "text": "Je kunt een enkel atoom niet zien met een gewone microscoop.",
+      "text_markdown": "Je kunt een enkel atoom niet zien met een gewone microscoop.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Je kunt een enkel atoom niet zien met een gewone microscoop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-011",
+      "block_type": "text",
+      "text": "Zo klein zijn atomen.",
+      "text_markdown": "Zo klein zijn atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Zo klein zijn atomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-012",
+      "block_type": "text",
+      "text": "Een enkel zandkorreltje bevat ongeveer vijftig triljoen atomen.",
+      "text_markdown": "Een enkel zandkorreltje bevat ongeveer vijftig triljoen atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Een enkel zandkorreltje bevat ongeveer vijftig triljoen atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-013",
+      "block_type": "text",
+      "text": "Dat getal is vijftig gevolgd door achttien nullen.",
+      "text_markdown": "Dat getal is vijftig gevolgd door achttien nullen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Dat getal is vijftig gevolgd door achttien nullen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-014",
+      "block_type": "text",
+      "text": "Er zitten meer atomen in één zandkorreltje dan er zandkorrels op een strand liggen.",
+      "text_markdown": "Er zitten meer atomen in één zandkorreltje dan er zandkorrels op een strand liggen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Er zitten meer atomen in één zandkorreltje dan er zandkorrels op een strand liggen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-015",
+      "block_type": "text",
+      "text": "Atomen zijn de bouwstenen van alles in de fysieke wereld.",
+      "text_markdown": "Atomen zijn de bouwstenen van alles in de fysieke wereld.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomen zijn de bouwstenen van alles in de fysieke wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-016",
+      "block_type": "text",
+      "text": "Een muur is gemaakt van stenen.",
+      "text_markdown": "Een muur is gemaakt van stenen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Een muur is gemaakt van stenen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-017",
+      "block_type": "text",
+      "text": "Een zin is gemaakt van woorden.",
+      "text_markdown": "Een zin is gemaakt van woorden.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Een zin is gemaakt van woorden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-018",
+      "block_type": "text",
+      "text": "Het heelal is gemaakt van atomen.",
+      "text_markdown": "Het heelal is gemaakt van atomen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Het heelal is gemaakt van atomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-019",
+      "block_type": "text",
+      "text": "Het woord atoom komt uit het oud-Grieks.",
+      "text_markdown": "Het woord atoom komt uit het oud-Grieks.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Het woord atoom komt uit het oud-Grieks.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-020",
+      "block_type": "text",
+      "text": "Het Griekse woord atomos betekent ondeelbaar.",
+      "text_markdown": "Het Griekse woord atomos betekent ondeelbaar.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Het Griekse woord atomos betekent ondeelbaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-021",
+      "block_type": "text",
+      "text": "Oude Griekse filosofen dachten dat atomen de kleinst mogelijke stukjes materie waren.",
+      "text_markdown": "Oude Griekse filosofen dachten dat atomen de kleinst mogelijke stukjes materie waren.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Oude Griekse filosofen dachten dat atomen de kleinst mogelijke stukjes materie waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-022",
+      "block_type": "text",
+      "text": "Ze hadden bijna gelijk.",
+      "text_markdown": "Ze hadden bijna gelijk.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ze hadden bijna gelijk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-023",
+      "block_type": "text",
+      "text": "Atomen zijn niet echt de kleinste deeltjes, maar ze zijn wel de kleinste eenheden die hun chemische eigenschappen behouden.",
+      "text_markdown": "Atomen zijn niet echt de kleinste deeltjes, maar ze zijn wel de kleinste eenheden die hun chemische eigenschappen behouden.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomen zijn niet echt de kleinste deeltjes, maar ze zijn wel de kleinste eenheden die hun chemische eigenschappen behouden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-024",
+      "block_type": "text",
+      "text": "Atomen zijn ongelooflijk sterk.",
+      "text_markdown": "Atomen zijn ongelooflijk sterk.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomen zijn ongelooflijk sterk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-025",
+      "block_type": "text",
+      "text": "De atomen in je lichaam zijn miljarden jaren oud.",
+      "text_markdown": "De atomen in je lichaam zijn miljarden jaren oud.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "De atomen in je lichaam zijn miljarden jaren oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-026",
+      "block_type": "text",
+      "text": "Sommige waterstofatomen in het water dat je vandaag hebt gedronken, zijn ontstaan in de eerste minuten na de oerknal.",
+      "text_markdown": "Sommige waterstofatomen in het water dat je vandaag hebt gedronken, zijn ontstaan in de eerste minuten na de oerknal.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Sommige waterstofatomen in het water dat je vandaag hebt gedronken, zijn ontstaan in de eerste minuten na de oerknal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-027",
+      "block_type": "text",
+      "text": "Je bent gemaakt van oeroud materiaal.",
+      "text_markdown": "Je bent gemaakt van oeroud materiaal.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Je bent gemaakt van oeroud materiaal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-028",
+      "block_type": "text",
+      "text": "Atomen worden in het dagelijks leven nooit gemaakt of vernietigd.",
+      "text_markdown": "Atomen worden in het dagelijks leven nooit gemaakt of vernietigd.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomen worden in het dagelijks leven nooit gemaakt of vernietigd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-029",
+      "block_type": "text",
+      "text": "Ze herschikken zich.",
+      "text_markdown": "Ze herschikken zich.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ze herschikken zich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-030",
+      "block_type": "text",
+      "text": "Wanneer hout verbrandt, verdwijnen de atomen niet.",
+      "text_markdown": "Wanneer hout verbrandt, verdwijnen de atomen niet.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Wanneer hout verbrandt, verdwijnen de atomen niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-031",
+      "block_type": "text",
+      "text": "Ze herschikken zich tot rook, as en gas.",
+      "text_markdown": "Ze herschikken zich tot rook, as en gas.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ze herschikken zich tot rook, as en gas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-032",
+      "block_type": "text",
+      "text": "Wanneer ijs smelt, blijven de atomen hetzelfde.",
+      "text_markdown": "Wanneer ijs smelt, blijven de atomen hetzelfde.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Wanneer ijs smelt, blijven de atomen hetzelfde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-033",
+      "block_type": "text",
+      "text": "Alleen hun rangschikking verandert.",
+      "text_markdown": "Alleen hun rangschikking verandert.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Alleen hun rangschikking verandert.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-034",
+      "block_type": "text",
+      "text": "Het begrijpen van atomen is de basis van scheikunde.",
+      "text_markdown": "Het begrijpen van atomen is de basis van scheikunde.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Het begrijpen van atomen is de basis van scheikunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-035",
+      "block_type": "text",
+      "text": "Scheikunde is de wetenschap van hoe atomen zich verbinden, herschikken en op elkaar inwerken.",
+      "text_markdown": "Scheikunde is de wetenschap van hoe atomen zich verbinden, herschikken en op elkaar inwerken.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Scheikunde is de wetenschap van hoe atomen zich verbinden, herschikken en op elkaar inwerken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-036",
+      "block_type": "text",
+      "text": "Alles wat er in de fysieke wereld gebeurt, komt neer op atomen en wat ze doen.",
+      "text_markdown": "Alles wat er in de fysieke wereld gebeurt, komt neer op atomen en wat ze doen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Alles wat er in de fysieke wereld gebeurt, komt neer op atomen en wat ze doen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 2,
+      "id": "ch02-037",
+      "block_type": "heading",
+      "text": "Binnenin het Atoom",
+      "text_markdown": "Binnenin het Atoom",
+      "title": "Binnenin het Atoom"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-038",
+      "block_type": "text",
+      "text": "Een atoom heeft drie soorten deeltjes binnenin.",
+      "text_markdown": "Een atoom heeft drie soorten deeltjes binnenin.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Een atoom heeft drie soorten deeltjes binnenin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-039",
+      "block_type": "text",
+      "text": "Protonen.",
+      "text_markdown": "Protonen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-040",
+      "block_type": "text",
+      "text": "Neutronen.",
+      "text_markdown": "Neutronen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-041",
+      "block_type": "text",
+      "text": "Elektronen.",
+      "text_markdown": "Elektronen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-042",
+      "block_type": "text",
+      "text": "Deze drie deeltjes vormen elk atoom in het heelal.",
+      "text_markdown": "Deze drie deeltjes vormen elk atoom in het heelal.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Deze drie deeltjes vormen elk atoom in het heelal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-043",
+      "block_type": "text",
+      "text": "Het midden van het atoom heet de kern.",
+      "text_markdown": "Het midden van het atoom heet de kern.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Het midden van het atoom heet de kern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-044",
+      "block_type": "text",
+      "text": "De kern bevat de protonen en de neutronen.",
+      "text_markdown": "De kern bevat de protonen en de neutronen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De kern bevat de protonen en de neutronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-045",
+      "block_type": "text",
+      "text": "De kern is heel klein vergeleken met het hele atoom.",
+      "text_markdown": "De kern is heel klein vergeleken met het hele atoom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De kern is heel klein vergeleken met het hele atoom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-046",
+      "block_type": "text",
+      "text": "Als het atoom zo groot was als een voetbalstadion, dan zou de kern zo groot zijn als een knikker op de middenstip.",
+      "text_markdown": "Als het atoom zo groot was als een voetbalstadion, dan zou de kern zo groot zijn als een knikker op de middenstip.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Als het atoom zo groot was als een voetbalstadion, dan zou de kern zo groot zijn als een knikker op de middenstip.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-047",
+      "block_type": "text",
+      "text": "Protonen dragen een positieve elektrische lading.",
+      "text_markdown": "Protonen dragen een positieve elektrische lading.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protonen dragen een positieve elektrische lading.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-048",
+      "block_type": "text",
+      "text": "Elk proton heeft dezelfde hoeveelheid positieve lading.",
+      "text_markdown": "Elk proton heeft dezelfde hoeveelheid positieve lading.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elk proton heeft dezelfde hoeveelheid positieve lading.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-049",
+      "block_type": "text",
+      "text": "Het aantal protonen in een atoom bepaalt welk element het atoom is.",
+      "text_markdown": "Het aantal protonen in een atoom bepaalt welk element het atoom is.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Het aantal protonen in een atoom bepaalt welk element het atoom is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-050",
+      "block_type": "text",
+      "text": "Eén proton betekent waterstof.",
+      "text_markdown": "Eén proton betekent waterstof.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Eén proton betekent waterstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-051",
+      "block_type": "text",
+      "text": "Zes protonen betekent koolstof.",
+      "text_markdown": "Zes protonen betekent koolstof.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Zes protonen betekent koolstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-052",
+      "block_type": "text",
+      "text": "Zesentwintig protonen betekent ijzer.",
+      "text_markdown": "Zesentwintig protonen betekent ijzer.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Zesentwintig protonen betekent ijzer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 6,
+      "chapter": 2,
+      "id": "ch02-053",
+      "block_type": "text",
+      "text": "Het aantal protonen is het belangrijkste feit over een atoom.",
+      "text_markdown": "Het aantal protonen is het belangrijkste feit over een atoom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Het aantal protonen is het belangrijkste feit over een atoom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-054",
+      "block_type": "text",
+      "text": "Neutronen dragen geen elektrische lading.",
+      "text_markdown": "Neutronen dragen geen elektrische lading.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronen dragen geen elektrische lading.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-055",
+      "block_type": "text",
+      "text": "Neutronen zijn neutraal.",
+      "text_markdown": "Neutronen zijn neutraal.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronen zijn neutraal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-056",
+      "block_type": "text",
+      "text": "Neutronen zitten in de kern naast de protonen.",
+      "text_markdown": "Neutronen zitten in de kern naast de protonen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronen zitten in de kern naast de protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-057",
+      "block_type": "text",
+      "text": "Neutronen helpen de kern bij elkaar te houden.",
+      "text_markdown": "Neutronen helpen de kern bij elkaar te houden.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronen helpen de kern bij elkaar te houden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-058",
+      "block_type": "text",
+      "text": "Zonder neutronen zouden de protonen elkaar wegduwen, omdat ze allemaal dezelfde positieve lading dragen.",
+      "text_markdown": "Zonder neutronen zouden de protonen elkaar wegduwen, omdat ze allemaal dezelfde positieve lading dragen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Zonder neutronen zouden de protonen elkaar wegduwen, omdat ze allemaal dezelfde positieve lading dragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-059",
+      "block_type": "text",
+      "text": "Elektronen dragen een negatieve elektrische lading.",
+      "text_markdown": "Elektronen dragen een negatieve elektrische lading.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronen dragen een negatieve elektrische lading.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-060",
+      "block_type": "text",
+      "text": "Elektronen bewegen rond de kern in een wolk.",
+      "text_markdown": "Elektronen bewegen rond de kern in een wolk.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronen bewegen rond de kern in een wolk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-061",
+      "block_type": "text",
+      "text": "Ze draaien niet in banen zoals planeten rond een zon.",
+      "text_markdown": "Ze draaien niet in banen zoals planeten rond een zon.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ze draaien niet in banen zoals planeten rond een zon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-062",
+      "block_type": "text",
+      "text": "Ze bestaan in een wazig gebied van waarschijnlijkheid rond de kern.",
+      "text_markdown": "Ze bestaan in een wazig gebied van waarschijnlijkheid rond de kern.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ze bestaan in een wazig gebied van waarschijnlijkheid rond de kern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-063",
+      "block_type": "text",
+      "text": "De elektronenwolk is de plek waar je op elk moment waarschijnlijk een elektron kunt vinden.",
+      "text_markdown": "De elektronenwolk is de plek waar je op elk moment waarschijnlijk een elektron kunt vinden.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De elektronenwolk is de plek waar je op elk moment waarschijnlijk een elektron kunt vinden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-064",
+      "block_type": "text",
+      "text": "Een elektron heeft bijna geen massa vergeleken met een proton of neutron.",
+      "text_markdown": "Een elektron heeft bijna geen massa vergeleken met een proton of neutron.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Een elektron heeft bijna geen massa vergeleken met een proton of neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-065",
+      "block_type": "text",
+      "text": "Een proton is ongeveer 1.836 keer zwaarder dan een elektron.",
+      "text_markdown": "Een proton is ongeveer 1.836 keer zwaarder dan een elektron.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Een proton is ongeveer duizend achthonderdzesendertig keer zwaarder dan een elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-066",
+      "block_type": "text",
+      "text": "Bijna alle massa van een atoom zit in de kern.",
+      "text_markdown": "Bijna alle massa van een atoom zit in de kern.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Bijna alle massa van een atoom zit in de kern.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-067",
+      "block_type": "text",
+      "text": "In een neutraal atoom is het aantal elektronen gelijk aan het aantal protonen.",
+      "text_markdown": "In een neutraal atoom is het aantal elektronen gelijk aan het aantal protonen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "In een neutraal atoom is het aantal elektronen gelijk aan het aantal protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-068",
+      "block_type": "text",
+      "text": "De positieve ladingen en de negatieve ladingen heffen elkaar op.",
+      "text_markdown": "De positieve ladingen en de negatieve ladingen heffen elkaar op.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De positieve ladingen en de negatieve ladingen heffen elkaar op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-069",
+      "block_type": "text",
+      "text": "Het atoom heeft geen totale lading.",
+      "text_markdown": "Het atoom heeft geen totale lading.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Het atoom heeft geen totale lading.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-070",
+      "block_type": "text",
+      "text": "Dit evenwicht is de standaardtoestand van een atoom.",
+      "text_markdown": "Dit evenwicht is de standaardtoestand van een atoom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Dit evenwicht is de standaardtoestand van een atoom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-071",
+      "block_type": "text",
+      "text": "Het grootste deel van een atoom is lege ruimte.",
+      "text_markdown": "Het grootste deel van een atoom is lege ruimte.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Het grootste deel van een atoom is lege ruimte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-072",
+      "block_type": "text",
+      "text": "De kern is dicht en klein.",
+      "text_markdown": "De kern is dicht en klein.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De kern is dicht en klein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-073",
+      "block_type": "text",
+      "text": "De elektronenwolk is groot en bestaat grotendeels uit niets.",
+      "text_markdown": "De elektronenwolk is groot en bestaat grotendeels uit niets.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "De elektronenwolk is groot en bestaat grotendeels uit niets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-074",
+      "block_type": "text",
+      "text": "Als je alle lege ruimte uit elk atoom in je lichaam zou kunnen halen, zou je krimpen tot kleiner dan een zoutkorrel.",
+      "text_markdown": "Als je alle lege ruimte uit elk atoom in je lichaam zou kunnen halen, zou je krimpen tot kleiner dan een zoutkorrel.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Als je alle lege ruimte uit elk atoom in je lichaam zou kunnen halen, zou je krimpen tot kleiner dan een zoutkorrel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-075",
+      "block_type": "text",
+      "text": "Je massa zou hetzelfde blijven.",
+      "text_markdown": "Je massa zou hetzelfde blijven.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Je massa zou hetzelfde blijven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-076",
+      "block_type": "text",
+      "text": "Je zou alleen ongelooflijk dicht zijn.",
+      "text_markdown": "Je zou alleen ongelooflijk dicht zijn.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Je zou alleen ongelooflijk dicht zijn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 3,
+      "id": "ch03-077",
+      "block_type": "heading",
+      "text": "Elementen",
+      "text_markdown": "Elementen",
+      "title": "Elementen"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-078",
+      "block_type": "text",
+      "text": "Een element is een stof die uit slechts één soort atoom bestaat.",
+      "text_markdown": "Een element is een stof die uit slechts één soort atoom bestaat.",
+      "title": "Elements",
+      "tts": {
+        "text": "Een element is een stof die uit slechts één soort atoom bestaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-079",
+      "block_type": "text",
+      "text": "Puur goud is een element.",
+      "text_markdown": "Puur goud is een element.",
+      "title": "Elements",
+      "tts": {
+        "text": "Puur goud is een element.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-080",
+      "block_type": "text",
+      "text": "Elk atoom in een staaf puur goud heeft negenenzeventig protonen.",
+      "text_markdown": "Elk atoom in een staaf puur goud heeft negenenzeventig protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk atoom in een staaf puur goud heeft negenenzeventig protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-081",
+      "block_type": "text",
+      "text": "Pure zuurstof is een element.",
+      "text_markdown": "Pure zuurstof is een element.",
+      "title": "Elements",
+      "tts": {
+        "text": "Pure zuurstof is een element.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-082",
+      "block_type": "text",
+      "text": "Elk atoom in een tank met pure zuurstof heeft acht protonen.",
+      "text_markdown": "Elk atoom in een tank met pure zuurstof heeft acht protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk atoom in een tank met pure zuurstof heeft acht protonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-083",
+      "block_type": "text",
+      "text": "Er zijn ongeveer tweeënnnegentig elementen die van nature op aarde voorkomen.",
+      "text_markdown": "Er zijn ongeveer tweeënnnegentig elementen die van nature op aarde voorkomen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Er zijn ongeveer tweeënnnegentig elementen die van nature op aarde voorkomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-084",
+      "block_type": "text",
+      "text": "Wetenschappers hebben extra elementen gemaakt in laboratoria.",
+      "text_markdown": "Wetenschappers hebben extra elementen gemaakt in laboratoria.",
+      "title": "Elements",
+      "tts": {
+        "text": "Wetenschappers hebben extra elementen gemaakt in laboratoria.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-085",
+      "block_type": "text",
+      "text": "Het totale aantal bekende elementen is meer dan honderdachttien.",
+      "text_markdown": "Het totale aantal bekende elementen is meer dan honderdachttien.",
+      "title": "Elements",
+      "tts": {
+        "text": "Het totale aantal bekende elementen is meer dan honderdachttien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-086",
+      "block_type": "text",
+      "text": "Elk element heeft een uniek aantal protonen.",
+      "text_markdown": "Elk element heeft een uniek aantal protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk element heeft een uniek aantal protonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-087",
+      "block_type": "text",
+      "text": "Elk element heeft een naam en een symbool.",
+      "text_markdown": "Elk element heeft een naam en een symbool.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk element heeft een naam en een symbool.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-088",
+      "block_type": "text",
+      "text": "Waterstof is H. Zuurstof is O. Koolstof is C. IJzer is Fe.",
+      "text_markdown": "Waterstof is H. Zuurstof is O. Koolstof is C. IJzer is Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "Waterstof is ha. Zuurstof is o. Koolstof is see. IJzer is ef ee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-089",
+      "block_type": "text",
+      "text": "Goud is Au.",
+      "text_markdown": "Goud is Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "Goud is ah uu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-090",
+      "block_type": "text",
+      "text": "De symbolen komen van Latijnse, Griekse of Engelse namen.",
+      "text_markdown": "De symbolen komen van Latijnse, Griekse of Engelse namen.",
+      "title": "Elements",
+      "tts": {
+        "text": "De symbolen komen van Latijnse, Griekse of Engelse namen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-091",
+      "block_type": "text",
+      "text": "Fe komt van het Latijnse woord ferrum.",
+      "text_markdown": "Fe komt van het Latijnse woord ferrum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Ef ee komt van het Latijnse woord ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "chapter": 3,
+      "id": "ch03-092",
+      "block_type": "text",
+      "text": "Au komt van het Latijnse woord aurum.",
+      "text_markdown": "Au komt van het Latijnse woord aurum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Ah uu komt van het Latijnse woord aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-093",
+      "block_type": "text",
+      "text": "Waterstof is het eenvoudigste element.",
+      "text_markdown": "Waterstof is het eenvoudigste element.",
+      "title": "Elements",
+      "tts": {
+        "text": "Waterstof is het eenvoudigste element.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-094",
+      "block_type": "text",
+      "text": "Een waterstofatoom heeft één proton en één elektron.",
+      "text_markdown": "Een waterstofatoom heeft één proton en één elektron.",
+      "title": "Elements",
+      "tts": {
+        "text": "Een waterstofatoom heeft één proton en één elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-095",
+      "block_type": "text",
+      "text": "Waterstof is het meest voorkomende element in het heelal.",
+      "text_markdown": "Waterstof is het meest voorkomende element in het heelal.",
+      "title": "Elements",
+      "tts": {
+        "text": "Waterstof is het meest voorkomende element in het heelal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-096",
+      "block_type": "text",
+      "text": "Sterren bestaan voornamelijk uit waterstof.",
+      "text_markdown": "Sterren bestaan voornamelijk uit waterstof.",
+      "title": "Elements",
+      "tts": {
+        "text": "Sterren bestaan voornamelijk uit waterstof.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-097",
+      "block_type": "text",
+      "text": "Koolstof is het element van het leven.",
+      "text_markdown": "Koolstof is het element van het leven.",
+      "title": "Elements",
+      "tts": {
+        "text": "Koolstof is het element van het leven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-098",
+      "block_type": "text",
+      "text": "Koolstof heeft zes protonen.",
+      "text_markdown": "Koolstof heeft zes protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Koolstof heeft zes protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-099",
+      "block_type": "text",
+      "text": "Koolstofatomen kunnen tegelijkertijd bindingen vormen met veel andere atomen.",
+      "text_markdown": "Koolstofatomen kunnen tegelijkertijd bindingen vormen met veel andere atomen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Koolstofatomen kunnen tegelijkertijd bindingen vormen met veel andere atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-100",
+      "block_type": "text",
+      "text": "Dit vermogen maakt koolstof de ruggengraat van alle levende wezens.",
+      "text_markdown": "Dit vermogen maakt koolstof de ruggengraat van alle levende wezens.",
+      "title": "Elements",
+      "tts": {
+        "text": "Dit vermogen maakt koolstof de ruggengraat van alle levende wezens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-101",
+      "block_type": "text",
+      "text": "Elk eiwit, elke streng DNA en elk suikermolecuul in je lichaam bevat koolstof.",
+      "text_markdown": "Elk eiwit, elke streng DNA en elk suikermolecuul in je lichaam bevat koolstof.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk eiwit, elke streng DNA en elk suikermolecuul in je lichaam bevat koolstof.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-102",
+      "block_type": "text",
+      "text": "Zuurstof heeft acht protonen.",
+      "text_markdown": "Zuurstof heeft acht protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "Zuurstof heeft acht protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-103",
+      "block_type": "text",
+      "text": "Zuurstof is het element dat je inademt.",
+      "text_markdown": "Zuurstof is het element dat je inademt.",
+      "title": "Elements",
+      "tts": {
+        "text": "Zuurstof is het element dat je inademt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-104",
+      "block_type": "text",
+      "text": "Je longen halen zuurstof uit de lucht en sturen het naar je bloed.",
+      "text_markdown": "Je longen halen zuurstof uit de lucht en sturen het naar je bloed.",
+      "title": "Elements",
+      "tts": {
+        "text": "Je longen halen zuurstof uit de lucht en sturen het naar je bloed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-105",
+      "block_type": "text",
+      "text": "Je cellen gebruiken zuurstof om energie uit voedsel vrij te maken.",
+      "text_markdown": "Je cellen gebruiken zuurstof om energie uit voedsel vrij te maken.",
+      "title": "Elements",
+      "tts": {
+        "text": "Je cellen gebruiken zuurstof om energie uit voedsel vrij te maken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-106",
+      "block_type": "text",
+      "text": "IJzer heeft zesentwintig protonen.",
+      "text_markdown": "IJzer heeft zesentwintig protonen.",
+      "title": "Elements",
+      "tts": {
+        "text": "IJzer heeft zesentwintig protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-107",
+      "block_type": "text",
+      "text": "IJzer is het element dat je bloed rood maakt.",
+      "text_markdown": "IJzer is het element dat je bloed rood maakt.",
+      "title": "Elements",
+      "tts": {
+        "text": "IJzer is het element dat je bloed rood maakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-108",
+      "block_type": "text",
+      "text": "IJzer is het hoofdbestanddeel van staal.",
+      "text_markdown": "IJzer is het hoofdbestanddeel van staal.",
+      "title": "Elements",
+      "tts": {
+        "text": "IJzer is het hoofdbestanddeel van staal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-109",
+      "block_type": "text",
+      "text": "De kern van de aarde bestaat grotendeels uit ijzer.",
+      "text_markdown": "De kern van de aarde bestaat grotendeels uit ijzer.",
+      "title": "Elements",
+      "tts": {
+        "text": "De kern van de aarde bestaat grotendeels uit ijzer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-110",
+      "block_type": "text",
+      "text": "De lichtste elementen komen het meest voor in het heelal.",
+      "text_markdown": "De lichtste elementen komen het meest voor in het heelal.",
+      "title": "Elements",
+      "tts": {
+        "text": "De lichtste elementen komen het meest voor in het heelal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-111",
+      "block_type": "text",
+      "text": "Waterstof en helium vormen samen ongeveer achtennegentig procent van alle atomen in het heelal.",
+      "text_markdown": "Waterstof en helium vormen samen ongeveer achtennegentig procent van alle atomen in het heelal.",
+      "title": "Elements",
+      "tts": {
+        "text": "Waterstof en helium vormen samen ongeveer achtennegentig procent van alle atomen in het heelal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-112",
+      "block_type": "text",
+      "text": "De zwaardere elementen zijn daarbij vergeleken zeldzaam.",
+      "text_markdown": "De zwaardere elementen zijn daarbij vergeleken zeldzaam.",
+      "title": "Elements",
+      "tts": {
+        "text": "De zwaardere elementen zijn daarbij vergeleken zeldzaam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-113",
+      "block_type": "text",
+      "text": "Elk atoom van elk zwaar element is gesmeed binnenin een ster.",
+      "text_markdown": "Elk atoom van elk zwaar element is gesmeed binnenin een ster.",
+      "title": "Elements",
+      "tts": {
+        "text": "Elk atoom van elk zwaar element is gesmeed binnenin een ster.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 4,
+      "id": "ch04-114",
+      "block_type": "heading",
+      "text": "Het Periodiek Systeem",
+      "text_markdown": "Het Periodiek Systeem",
+      "title": "Het Periodiek Systeem"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-115",
+      "block_type": "text",
+      "text": "Het periodiek systeem is een tabel die elk bekend element ordent.",
+      "text_markdown": "Het periodiek systeem is een tabel die elk bekend element ordent.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Het periodiek systeem is een tabel die elk bekend element ordent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-116",
+      "block_type": "text",
+      "text": "De tabel rangschikt elementen op hun aantal protonen, van kleinst naar grootst.",
+      "text_markdown": "De tabel rangschikt elementen op hun aantal protonen, van kleinst naar grootst.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De tabel rangschikt elementen op hun aantal protonen, van kleinst naar grootst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-117",
+      "block_type": "text",
+      "text": "Waterstof is de eerste met één proton.",
+      "text_markdown": "Waterstof is de eerste met één proton.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Waterstof is de eerste met één proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-118",
+      "block_type": "text",
+      "text": "Helium is de tweede met twee protonen.",
+      "text_markdown": "Helium is de tweede met twee protonen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Helium is de tweede met twee protonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-119",
+      "block_type": "text",
+      "text": "De tabel gaat helemaal door tot oganesson met honderdachttien protonen.",
+      "text_markdown": "De tabel gaat helemaal door tot oganesson met honderdachttien protonen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De tabel gaat helemaal door tot oganesson met honderdachttien protonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-120",
+      "block_type": "text",
+      "text": "Het periodiek systeem heeft rijen en kolommen.",
+      "text_markdown": "Het periodiek systeem heeft rijen en kolommen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Het periodiek systeem heeft rijen en kolommen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-121",
+      "block_type": "text",
+      "text": "De rijen heten perioden.",
+      "text_markdown": "De rijen heten perioden.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De rijen heten perioden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-122",
+      "block_type": "text",
+      "text": "De kolommen heten groepen.",
+      "text_markdown": "De kolommen heten groepen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De kolommen heten groepen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-123",
+      "block_type": "text",
+      "text": "Elementen in dezelfde groep delen vergelijkbare eigenschappen.",
+      "text_markdown": "Elementen in dezelfde groep delen vergelijkbare eigenschappen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Elementen in dezelfde groep delen vergelijkbare eigenschappen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-124",
+      "block_type": "text",
+      "text": "Daarom heet de tabel periodiek.",
+      "text_markdown": "Daarom heet de tabel periodiek.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Daarom heet de tabel periodiek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-125",
+      "block_type": "text",
+      "text": "De eigenschappen herhalen zich in een vast patroon.",
+      "text_markdown": "De eigenschappen herhalen zich in een vast patroon.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De eigenschappen herhalen zich in een vast patroon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-126",
+      "block_type": "text",
+      "text": "De elementen aan de linkerkant van de tabel zijn metalen.",
+      "text_markdown": "De elementen aan de linkerkant van de tabel zijn metalen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De elementen aan de linkerkant van de tabel zijn metalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-127",
+      "block_type": "text",
+      "text": "De meeste elementen zijn metalen.",
+      "text_markdown": "De meeste elementen zijn metalen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De meeste elementen zijn metalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-128",
+      "block_type": "text",
+      "text": "Metalen zijn glanzend.",
+      "text_markdown": "Metalen zijn glanzend.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metalen zijn glanzend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-129",
+      "block_type": "text",
+      "text": "Metalen geleiden elektriciteit.",
+      "text_markdown": "Metalen geleiden elektriciteit.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metalen geleiden elektriciteit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-130",
+      "block_type": "text",
+      "text": "Metalen geleiden warmte.",
+      "text_markdown": "Metalen geleiden warmte.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metalen geleiden warmte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-131",
+      "block_type": "text",
+      "text": "IJzer, koper, goud en aluminium zijn allemaal metalen.",
+      "text_markdown": "IJzer, koper, goud en aluminium zijn allemaal metalen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "IJzer, koper, goud en aluminium zijn allemaal metalen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-132",
+      "block_type": "text",
+      "text": "De elementen aan de rechterkant van de tabel zijn niet-metalen.",
+      "text_markdown": "De elementen aan de rechterkant van de tabel zijn niet-metalen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De elementen aan de rechterkant van de tabel zijn niet-metalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-133",
+      "block_type": "text",
+      "text": "Niet-metalen zijn onder andere zuurstof, stikstof, koolstof en zwavel.",
+      "text_markdown": "Niet-metalen zijn onder andere zuurstof, stikstof, koolstof en zwavel.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Niet-metalen zijn onder andere zuurstof, stikstof, koolstof en zwavel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-134",
+      "block_type": "text",
+      "text": "Niet-metalen geleiden elektriciteit niet goed.",
+      "text_markdown": "Niet-metalen geleiden elektriciteit niet goed.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Niet-metalen geleiden elektriciteit niet goed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-135",
+      "block_type": "text",
+      "text": "Niet-metalen zijn de elementen waaruit lucht, water en levende wezens bestaan.",
+      "text_markdown": "Niet-metalen zijn de elementen waaruit lucht, water en levende wezens bestaan.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Niet-metalen zijn de elementen waaruit lucht, water en levende wezens bestaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-136",
+      "block_type": "text",
+      "text": "Een paar elementen zitten op de grens tussen metalen en niet-metalen.",
+      "text_markdown": "Een paar elementen zitten op de grens tussen metalen en niet-metalen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Een paar elementen zitten op de grens tussen metalen en niet-metalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-137",
+      "block_type": "text",
+      "text": "Deze elementen worden metalloïden genoemd.",
+      "text_markdown": "Deze elementen worden metalloïden genoemd.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Deze elementen worden metalloïden genoemd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-138",
+      "block_type": "text",
+      "text": "Silicium is een metalloïde.",
+      "text_markdown": "Silicium is een metalloïde.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Silicium is een metalloïde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-139",
+      "block_type": "text",
+      "text": "Silicium geleidt elektriciteit een beetje, maar niet zo goed als een metaal.",
+      "text_markdown": "Silicium geleidt elektriciteit een beetje, maar niet zo goed als een metaal.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Silicium geleidt elektriciteit een beetje, maar niet zo goed als een metaal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-140",
+      "block_type": "text",
+      "text": "Deze eigenschap maakt silicium nuttig in computerchips.",
+      "text_markdown": "Deze eigenschap maakt silicium nuttig in computerchips.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Deze eigenschap maakt silicium nuttig in computerchips.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-141",
+      "block_type": "text",
+      "text": "De edelgassen staan in de laatste kolom aan de rechterkant.",
+      "text_markdown": "De edelgassen staan in de laatste kolom aan de rechterkant.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "De edelgassen staan in de laatste kolom aan de rechterkant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-142",
+      "block_type": "text",
+      "text": "Helium, neon, argon, krypton, xenon en radon zijn edelgassen.",
+      "text_markdown": "Helium, neon, argon, krypton, xenon en radon zijn edelgassen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Helium, neon, argon, krypton, xenon en radon zijn edelgassen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-143",
+      "block_type": "text",
+      "text": "Edelgassen reageren bijna nooit met andere elementen.",
+      "text_markdown": "Edelgassen reageren bijna nooit met andere elementen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Edelgassen reageren bijna nooit met andere elementen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-144",
+      "block_type": "text",
+      "text": "Hun elektronenrangschikking is al stabiel.",
+      "text_markdown": "Hun elektronenrangschikking is al stabiel.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hun elektronenrangschikking is al stabiel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-145",
+      "block_type": "text",
+      "text": "Ze hoeven geen bindingen te vormen.",
+      "text_markdown": "Ze hoeven geen bindingen te vormen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Ze hoeven geen bindingen te vormen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-146",
+      "block_type": "text",
+      "text": "Een Russische wetenschapper genaamd Dmitri Mendelejev maakte het eerste periodiek systeem in 1869.",
+      "text_markdown": "Een Russische wetenschapper genaamd Dmitri Mendelejev maakte het eerste periodiek systeem in 1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Een Russische wetenschapper genaamd Dmitri Mendelejev maakte het eerste periodiek systeem in achttienhonderdnegenenzestig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-147",
+      "block_type": "text",
+      "text": "Mendelejev rangschikte de elementen op hun eigenschappen en ontdekte het herhalende patroon.",
+      "text_markdown": "Mendelejev rangschikte de elementen op hun eigenschappen en ontdekte het herhalende patroon.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mendelejev rangschikte de elementen op hun eigenschappen en ontdekte het herhalende patroon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-148",
+      "block_type": "text",
+      "text": "Hij liet lege plekken in zijn tabel waar hij voorspelde dat onbekende elementen moesten zitten.",
+      "text_markdown": "Hij liet lege plekken in zijn tabel waar hij voorspelde dat onbekende elementen moesten zitten.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hij liet lege plekken in zijn tabel waar hij voorspelde dat onbekende elementen moesten zitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-149",
+      "block_type": "text",
+      "text": "Wetenschappers ontdekten later die elementen.",
+      "text_markdown": "Wetenschappers ontdekten later die elementen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Wetenschappers ontdekten later die elementen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-150",
+      "block_type": "text",
+      "text": "Elke voorspelling was juist.",
+      "text_markdown": "Elke voorspelling was juist.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Elke voorspelling was juist.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-151",
+      "block_type": "text",
+      "text": "Het periodiek systeem is een van de krachtigste hulpmiddelen in de wetenschap.",
+      "text_markdown": "Het periodiek systeem is een van de krachtigste hulpmiddelen in de wetenschap.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Het periodiek systeem is een van de krachtigste hulpmiddelen in de wetenschap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-152",
+      "block_type": "text",
+      "text": "Als je weet waar een element in de tabel staat, kun je voorspellen hoe het zich zal gedragen.",
+      "text_markdown": "Als je weet waar een element in de tabel staat, kun je voorspellen hoe het zich zal gedragen.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Als je weet waar een element in de tabel staat, kun je voorspellen hoe het zich zal gedragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 5,
+      "id": "ch05-153",
+      "block_type": "heading",
+      "text": "Hoe Atomen Zich Binden",
+      "text_markdown": "Hoe Atomen Zich Binden",
+      "title": "Hoe Atomen Zich Binden"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-154",
+      "block_type": "text",
+      "text": "Atomen bestaan zelden alleen.",
+      "text_markdown": "Atomen bestaan zelden alleen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomen bestaan zelden alleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-155",
+      "block_type": "text",
+      "text": "De meeste atomen binden zich met andere atomen om moleculen te vormen.",
+      "text_markdown": "De meeste atomen binden zich met andere atomen om moleculen te vormen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De meeste atomen binden zich met andere atomen om moleculen te vormen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-156",
+      "block_type": "text",
+      "text": "Een molecuul is een groep atomen die bij elkaar worden gehouden door chemische bindingen.",
+      "text_markdown": "Een molecuul is een groep atomen die bij elkaar worden gehouden door chemische bindingen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Een molecuul is een groep atomen die bij elkaar worden gehouden door chemische bindingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-157",
+      "block_type": "text",
+      "text": "Water is een molecuul.",
+      "text_markdown": "Water is een molecuul.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Water is een molecuul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-158",
+      "block_type": "text",
+      "text": "Zuurstofgas is een molecuul.",
+      "text_markdown": "Zuurstofgas is een molecuul.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Zuurstofgas is een molecuul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-159",
+      "block_type": "text",
+      "text": "Suiker is een molecuul.",
+      "text_markdown": "Suiker is een molecuul.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Suiker is een molecuul.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-160",
+      "block_type": "text",
+      "text": "Atomen binden zich vanwege hun elektronen.",
+      "text_markdown": "Atomen binden zich vanwege hun elektronen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomen binden zich vanwege hun elektronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-161",
+      "block_type": "text",
+      "text": "De elektronen in de buitenste schil van een atoom bepalen hoe dat atoom reageert met andere atomen.",
+      "text_markdown": "De elektronen in de buitenste schil van een atoom bepalen hoe dat atoom reageert met andere atomen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De elektronen in de buitenste schil van een atoom bepalen hoe dat atoom reageert met andere atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-162",
+      "block_type": "text",
+      "text": "Deze buitenste elektronen heten valentie-elektronen.",
+      "text_markdown": "Deze buitenste elektronen heten valentie-elektronen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Deze buitenste elektronen heten valentie-elektronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-163",
+      "block_type": "text",
+      "text": "Een atoom met een volle buitenste schil is stabiel.",
+      "text_markdown": "Een atoom met een volle buitenste schil is stabiel.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Een atoom met een volle buitenste schil is stabiel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-164",
+      "block_type": "text",
+      "text": "Een atoom zonder een volle buitenste schil zal proberen die te vullen.",
+      "text_markdown": "Een atoom zonder een volle buitenste schil zal proberen die te vullen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Een atoom zonder een volle buitenste schil zal proberen die te vullen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-165",
+      "block_type": "text",
+      "text": "Er zijn twee hoofdtypen chemische bindingen.",
+      "text_markdown": "Er zijn twee hoofdtypen chemische bindingen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Er zijn twee hoofdtypen chemische bindingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-166",
+      "block_type": "text",
+      "text": "Covalente bindingen en ionbindingen.",
+      "text_markdown": "Covalente bindingen en ionbindingen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Covalente bindingen en ionbindingen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-167",
+      "block_type": "text",
+      "text": "Bij een covalente binding delen twee atomen elektronen.",
+      "text_markdown": "Bij een covalente binding delen twee atomen elektronen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Bij een covalente binding delen twee atomen elektronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-168",
+      "block_type": "text",
+      "text": "Beide atomen leveren elektronen aan een gedeeld paar.",
+      "text_markdown": "Beide atomen leveren elektronen aan een gedeeld paar.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Beide atomen leveren elektronen aan een gedeeld paar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-169",
+      "block_type": "text",
+      "text": "De gedeelde elektronen draaien rond beide kernen.",
+      "text_markdown": "De gedeelde elektronen draaien rond beide kernen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De gedeelde elektronen draaien rond beide kernen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-170",
+      "block_type": "text",
+      "text": "Dit delen houdt de atomen bij elkaar.",
+      "text_markdown": "Dit delen houdt de atomen bij elkaar.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Dit delen houdt de atomen bij elkaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-171",
+      "block_type": "text",
+      "text": "Water wordt bij elkaar gehouden door covalente bindingen.",
+      "text_markdown": "Water wordt bij elkaar gehouden door covalente bindingen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Water wordt bij elkaar gehouden door covalente bindingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-172",
+      "block_type": "text",
+      "text": "Elk waterstofatoom deelt één elektron met het zuurstofatoom.",
+      "text_markdown": "Elk waterstofatoom deelt één elektron met het zuurstofatoom.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Elk waterstofatoom deelt één elektron met het zuurstofatoom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-173",
+      "block_type": "text",
+      "text": "Bij een ionbinding geeft het ene atoom elektronen aan het andere atoom.",
+      "text_markdown": "Bij een ionbinding geeft het ene atoom elektronen aan het andere atoom.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Bij een ionbinding geeft het ene atoom elektronen aan het andere atoom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-174",
+      "block_type": "text",
+      "text": "Het atoom dat elektronen verliest, wordt positief geladen.",
+      "text_markdown": "Het atoom dat elektronen verliest, wordt positief geladen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Het atoom dat elektronen verliest, wordt positief geladen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-175",
+      "block_type": "text",
+      "text": "Het atoom dat elektronen opneemt, wordt negatief geladen.",
+      "text_markdown": "Het atoom dat elektronen opneemt, wordt negatief geladen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Het atoom dat elektronen opneemt, wordt negatief geladen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-176",
+      "block_type": "text",
+      "text": "Tegengestelde ladingen trekken elkaar aan.",
+      "text_markdown": "Tegengestelde ladingen trekken elkaar aan.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Tegengestelde ladingen trekken elkaar aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-177",
+      "block_type": "text",
+      "text": "Deze aantrekkingskracht houdt de twee atomen bij elkaar.",
+      "text_markdown": "Deze aantrekkingskracht houdt de twee atomen bij elkaar.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Deze aantrekkingskracht houdt de twee atomen bij elkaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-178",
+      "block_type": "text",
+      "text": "Keukenzout wordt bij elkaar gehouden door ionbindingen.",
+      "text_markdown": "Keukenzout wordt bij elkaar gehouden door ionbindingen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Keukenzout wordt bij elkaar gehouden door ionbindingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "chapter": 5,
+      "id": "ch05-179",
+      "block_type": "text",
+      "text": "Natrium geeft een elektron aan chloor.",
+      "text_markdown": "Natrium geeft een elektron aan chloor.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Natrium geeft een elektron aan chloor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-180",
+      "block_type": "text",
+      "text": "Een watermolecuul bevat twee waterstofatomen en één zuurstofatoom.",
+      "text_markdown": "Een watermolecuul bevat twee waterstofatomen en één zuurstofatoom.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Een watermolecuul bevat twee waterstofatomen en één zuurstofatoom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-181",
+      "block_type": "text",
+      "text": "Wetenschappers schrijven dit als H2O.",
+      "text_markdown": "Wetenschappers schrijven dit als H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wetenschappers schrijven dit als ha twee o.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-182",
+      "block_type": "text",
+      "text": "De H staat voor waterstof.",
+      "text_markdown": "De H staat voor waterstof.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De ha staat voor waterstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-183",
+      "block_type": "text",
+      "text": "De O staat voor zuurstof.",
+      "text_markdown": "De O staat voor zuurstof.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De o staat voor zuurstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-184",
+      "block_type": "text",
+      "text": "De 2 betekent dat er twee waterstofatomen zijn.",
+      "text_markdown": "De 2 betekent dat er twee waterstofatomen zijn.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De twee betekent dat er twee waterstofatomen zijn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-185",
+      "block_type": "text",
+      "text": "Een molecuul koolstofdioxide bevat één koolstofatoom en twee zuurstofatomen.",
+      "text_markdown": "Een molecuul koolstofdioxide bevat één koolstofatoom en twee zuurstofatomen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Een molecuul koolstofdioxide bevat één koolstofatoom en twee zuurstofatomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-186",
+      "block_type": "text",
+      "text": "Wetenschappers schrijven dit als CO2.",
+      "text_markdown": "Wetenschappers schrijven dit als CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wetenschappers schrijven dit als see o twee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-187",
+      "block_type": "text",
+      "text": "Planten nemen koolstofdioxide op uit de lucht en gebruiken het om suikermoleculen te maken.",
+      "text_markdown": "Planten nemen koolstofdioxide op uit de lucht en gebruiken het om suikermoleculen te maken.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Planten nemen koolstofdioxide op uit de lucht en gebruiken het om suikermoleculen te maken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-188",
+      "block_type": "text",
+      "text": "De bindingen tussen atomen slaan energie op.",
+      "text_markdown": "De bindingen tussen atomen slaan energie op.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "De bindingen tussen atomen slaan energie op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-189",
+      "block_type": "text",
+      "text": "Wanneer bindingen breken, komt er energie vrij.",
+      "text_markdown": "Wanneer bindingen breken, komt er energie vrij.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wanneer bindingen breken, komt er energie vrij.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-190",
+      "block_type": "text",
+      "text": "Wanneer bindingen ontstaan, wordt energie opgenomen.",
+      "text_markdown": "Wanneer bindingen ontstaan, wordt energie opgenomen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wanneer bindingen ontstaan, wordt energie opgenomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-191",
+      "block_type": "text",
+      "text": "Elke chemische reactie in het heelal gaat over het breken van oude bindingen en het vormen van nieuwe.",
+      "text_markdown": "Elke chemische reactie in het heelal gaat over het breken van oude bindingen en het vormen van nieuwe.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Elke chemische reactie in het heelal gaat over het breken van oude bindingen en het vormen van nieuwe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 6,
+      "id": "ch06-192",
+      "block_type": "heading",
+      "text": "Atomen in Beweging",
+      "text_markdown": "Atomen in Beweging",
+      "title": "Atomen in Beweging"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-193",
+      "block_type": "text",
+      "text": "Atomen zijn altijd in beweging.",
+      "text_markdown": "Atomen zijn altijd in beweging.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomen zijn altijd in beweging.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-194",
+      "block_type": "text",
+      "text": "Ze stoppen nooit.",
+      "text_markdown": "Ze stoppen nooit.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze stoppen nooit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-195",
+      "block_type": "text",
+      "text": "Bij elke temperatuur boven het absolute nulpunt trillen, draaien en reizen atomen door de ruimte.",
+      "text_markdown": "Bij elke temperatuur boven het absolute nulpunt trillen, draaien en reizen atomen door de ruimte.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Bij elke temperatuur boven het absolute nulpunt trillen, draaien en reizen atomen door de ruimte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-196",
+      "block_type": "text",
+      "text": "Deze beweging is wat wij ervaren als warmte.",
+      "text_markdown": "Deze beweging is wat wij ervaren als warmte.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Deze beweging is wat wij ervaren als warmte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-197",
+      "block_type": "text",
+      "text": "In een vaste stof trillen atomen op hun plek.",
+      "text_markdown": "In een vaste stof trillen atomen op hun plek.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "In een vaste stof trillen atomen op hun plek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-198",
+      "block_type": "text",
+      "text": "Ze zitten vast in een vaste structuur.",
+      "text_markdown": "Ze zitten vast in een vaste structuur.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze zitten vast in een vaste structuur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-199",
+      "block_type": "text",
+      "text": "Ze schudden heen en weer, maar ze verlaten hun plek niet.",
+      "text_markdown": "Ze schudden heen en weer, maar ze verlaten hun plek niet.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze schudden heen en weer, maar ze verlaten hun plek niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-200",
+      "block_type": "text",
+      "text": "Daarom behouden vaste stoffen hun vorm.",
+      "text_markdown": "Daarom behouden vaste stoffen hun vorm.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Daarom behouden vaste stoffen hun vorm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-201",
+      "block_type": "text",
+      "text": "De atomen in een blok ijs trillen, maar ze blijven in een stijf kristalpatroon.",
+      "text_markdown": "De atomen in een blok ijs trillen, maar ze blijven in een stijf kristalpatroon.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "De atomen in een blok ijs trillen, maar ze blijven in een stijf kristalpatroon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-202",
+      "block_type": "text",
+      "text": "In een vloeistof bewegen atomen vrijer.",
+      "text_markdown": "In een vloeistof bewegen atomen vrijer.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "In een vloeistof bewegen atomen vrijer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-203",
+      "block_type": "text",
+      "text": "Ze glijden langs elkaar.",
+      "text_markdown": "Ze glijden langs elkaar.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze glijden langs elkaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-204",
+      "block_type": "text",
+      "text": "Ze blijven dicht bij elkaar, maar ze zitten niet vast op hun plek.",
+      "text_markdown": "Ze blijven dicht bij elkaar, maar ze zitten niet vast op hun plek.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze blijven dicht bij elkaar, maar ze zitten niet vast op hun plek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-205",
+      "block_type": "text",
+      "text": "Daarom stromen vloeistoffen.",
+      "text_markdown": "Daarom stromen vloeistoffen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Daarom stromen vloeistoffen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-206",
+      "block_type": "text",
+      "text": "De atomen in een glas water bewegen en herschikken zich voortdurend, maar ze blijven dicht bij elkaar.",
+      "text_markdown": "De atomen in een glas water bewegen en herschikken zich voortdurend, maar ze blijven dicht bij elkaar.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "De atomen in een glas water bewegen en herschikken zich voortdurend, maar ze blijven dicht bij elkaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-207",
+      "block_type": "text",
+      "text": "In een gas bewegen atomen snel en verspreiden ze zich.",
+      "text_markdown": "In een gas bewegen atomen snel en verspreiden ze zich.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "In een gas bewegen atomen snel en verspreiden ze zich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-208",
+      "block_type": "text",
+      "text": "Ze vliegen in rechte lijnen totdat ze een ander atoom of een wand raken.",
+      "text_markdown": "Ze vliegen in rechte lijnen totdat ze een ander atoom of een wand raken.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze vliegen in rechte lijnen totdat ze een ander atoom of een wand raken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-209",
+      "block_type": "text",
+      "text": "Ze botsen tegen elkaar en veranderen van richting.",
+      "text_markdown": "Ze botsen tegen elkaar en veranderen van richting.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ze botsen tegen elkaar en veranderen van richting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-210",
+      "block_type": "text",
+      "text": "Daarom vult een gas elke houder waar je het in stopt.",
+      "text_markdown": "Daarom vult een gas elke houder waar je het in stopt.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Daarom vult een gas elke houder waar je het in stopt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-211",
+      "block_type": "text",
+      "text": "De atomen in een kamer vol lucht zoeven in alle richtingen met honderden meters per seconde.",
+      "text_markdown": "De atomen in een kamer vol lucht zoeven in alle richtingen met honderden meters per seconde.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "De atomen in een kamer vol lucht zoeven in alle richtingen met honderden meters per seconde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-212",
+      "block_type": "text",
+      "text": "Temperatuur is een maat voor hoe snel atomen bewegen.",
+      "text_markdown": "Temperatuur is een maat voor hoe snel atomen bewegen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Temperatuur is een maat voor hoe snel atomen bewegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-213",
+      "block_type": "text",
+      "text": "Heet betekent dat de atomen snel bewegen.",
+      "text_markdown": "Heet betekent dat de atomen snel bewegen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Heet betekent dat de atomen snel bewegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-214",
+      "block_type": "text",
+      "text": "Koud betekent dat de atomen langzaam bewegen.",
+      "text_markdown": "Koud betekent dat de atomen langzaam bewegen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Koud betekent dat de atomen langzaam bewegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-215",
+      "block_type": "text",
+      "text": "Wanneer je water verwarmt op een fornuis, laat je de watermoleculen sneller bewegen.",
+      "text_markdown": "Wanneer je water verwarmt op een fornuis, laat je de watermoleculen sneller bewegen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Wanneer je water verwarmt op een fornuis, laat je de watermoleculen sneller bewegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-216",
+      "block_type": "text",
+      "text": "Wanneer de moleculen snel genoeg bewegen, ontsnappen ze uit de vloeistof en worden ze stoom.",
+      "text_markdown": "Wanneer de moleculen snel genoeg bewegen, ontsnappen ze uit de vloeistof en worden ze stoom.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Wanneer de moleculen snel genoeg bewegen, ontsnappen ze uit de vloeistof en worden ze stoom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-217",
+      "block_type": "text",
+      "text": "Het absolute nulpunt is de laagst mogelijke temperatuur.",
+      "text_markdown": "Het absolute nulpunt is de laagst mogelijke temperatuur.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Het absolute nulpunt is de laagst mogelijke temperatuur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-218",
+      "block_type": "text",
+      "text": "Het is ongeveer min 273 graden Celsius.",
+      "text_markdown": "Het is ongeveer min 273 graden Celsius.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Het is ongeveer min tweehonderddrieënzeventig graden Celsius.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-219",
+      "block_type": "text",
+      "text": "Bij het absolute nulpunt hebben atomen de minimaal mogelijke energie.",
+      "text_markdown": "Bij het absolute nulpunt hebben atomen de minimaal mogelijke energie.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Bij het absolute nulpunt hebben atomen de minimaal mogelijke energie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-220",
+      "block_type": "text",
+      "text": "Niets kan kouder zijn dan het absolute nulpunt.",
+      "text_markdown": "Niets kan kouder zijn dan het absolute nulpunt.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Niets kan kouder zijn dan het absolute nulpunt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-221",
+      "block_type": "text",
+      "text": "Wetenschappers zijn heel dicht bij het absolute nulpunt gekomen in laboratoria, maar niemand heeft het ooit precies bereikt.",
+      "text_markdown": "Wetenschappers zijn heel dicht bij het absolute nulpunt gekomen in laboratoria, maar niemand heeft het ooit precies bereikt.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Wetenschappers zijn heel dicht bij het absolute nulpunt gekomen in laboratoria, maar niemand heeft het ooit precies bereikt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-222",
+      "block_type": "text",
+      "text": "Druk wordt veroorzaakt doordat atomen tegen oppervlakken botsen.",
+      "text_markdown": "Druk wordt veroorzaakt doordat atomen tegen oppervlakken botsen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Druk wordt veroorzaakt doordat atomen tegen oppervlakken botsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-223",
+      "block_type": "text",
+      "text": "De lucht in een band duwt naar buiten omdat luchtmoleculen voortdurend tegen de binnenwanden van de band botsen.",
+      "text_markdown": "De lucht in een band duwt naar buiten omdat luchtmoleculen voortdurend tegen de binnenwanden van de band botsen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "De lucht in een band duwt naar buiten omdat luchtmoleculen voortdurend tegen de binnenwanden van de band botsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-224",
+      "block_type": "text",
+      "text": "Meer moleculen of snellere moleculen betekent meer druk.",
+      "text_markdown": "Meer moleculen of snellere moleculen betekent meer druk.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Meer moleculen of snellere moleculen betekent meer druk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-225",
+      "block_type": "text",
+      "text": "Daarom voelt een band harder aan wanneer de lucht warm is.",
+      "text_markdown": "Daarom voelt een band harder aan wanneer de lucht warm is.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Daarom voelt een band harder aan wanneer de lucht warm is.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 7,
+      "id": "ch07-226",
+      "block_type": "heading",
+      "text": "Waar Atomen Vandaan Komen",
+      "text_markdown": "Waar Atomen Vandaan Komen",
+      "title": "Waar Atomen Vandaan Komen"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-227",
+      "block_type": "text",
+      "text": "De waterstof en het helium in het heelal zijn ontstaan in de eerste paar minuten na de oerknal.",
+      "text_markdown": "De waterstof en het helium in het heelal zijn ontstaan in de eerste paar minuten na de oerknal.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De waterstof en het helium in het heelal zijn ontstaan in de eerste paar minuten na de oerknal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-228",
+      "block_type": "text",
+      "text": "Het heelal begon als een ongelooflijk heet, dicht punt ongeveer 13,8 miljard jaar geleden.",
+      "text_markdown": "Het heelal begon als een ongelooflijk heet, dicht punt ongeveer 13,8 miljard jaar geleden.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Het heelal begon als een ongelooflijk heet, dicht punt ongeveer dertien komma acht miljard jaar geleden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-229",
+      "block_type": "text",
+      "text": "Terwijl het uitdijde en afkoelde, ontstonden protonen en neutronen.",
+      "text_markdown": "Terwijl het uitdijde en afkoelde, ontstonden protonen en neutronen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Terwijl het uitdijde en afkoelde, ontstonden protonen en neutronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-230",
+      "block_type": "text",
+      "text": "Die protonen en neutronen combineerden tot de eenvoudigste kernen.",
+      "text_markdown": "Die protonen en neutronen combineerden tot de eenvoudigste kernen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Die protonen en neutronen combineerden tot de eenvoudigste kernen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-231",
+      "block_type": "text",
+      "text": "Waterstof en helium waren de eerste elementen.",
+      "text_markdown": "Waterstof en helium waren de eerste elementen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Waterstof en helium waren de eerste elementen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-232",
+      "block_type": "text",
+      "text": "Miljoenen jaren lang was het heelal een wolk van waterstof- en heliumgas.",
+      "text_markdown": "Miljoenen jaren lang was het heelal een wolk van waterstof- en heliumgas.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Miljoenen jaren lang was het heelal een wolk van waterstof- en heliumgas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-233",
+      "block_type": "text",
+      "text": "Toen trok de zwaartekracht het gas samen tot klonten.",
+      "text_markdown": "Toen trok de zwaartekracht het gas samen tot klonten.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Toen trok de zwaartekracht het gas samen tot klonten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-234",
+      "block_type": "text",
+      "text": "De klonten werden dichter en heter.",
+      "text_markdown": "De klonten werden dichter en heter.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De klonten werden dichter en heter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-235",
+      "block_type": "text",
+      "text": "Toen het midden van een klont ongeveer tien miljoen graden bereikte, begon kernfusie.",
+      "text_markdown": "Toen het midden van een klont ongeveer tien miljoen graden bereikte, begon kernfusie.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Toen het midden van een klont ongeveer tien miljoen graden bereikte, begon kernfusie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-236",
+      "block_type": "text",
+      "text": "Een ster was geboren.",
+      "text_markdown": "Een ster was geboren.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Een ster was geboren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-237",
+      "block_type": "text",
+      "text": "Sterren zijn atomenfabrieken.",
+      "text_markdown": "Sterren zijn atomenfabrieken.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sterren zijn atomenfabrieken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-238",
+      "block_type": "text",
+      "text": "Binnenin een ster smelten waterstofatomen samen tot helium.",
+      "text_markdown": "Binnenin een ster smelten waterstofatomen samen tot helium.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Binnenin een ster smelten waterstofatomen samen tot helium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-239",
+      "block_type": "text",
+      "text": "Deze fusie geeft enorme energie af.",
+      "text_markdown": "Deze fusie geeft enorme energie af.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Deze fusie geeft enorme energie af.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-240",
+      "block_type": "text",
+      "text": "De energie is wat een ster laat schijnen.",
+      "text_markdown": "De energie is wat een ster laat schijnen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De energie is wat een ster laat schijnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-241",
+      "block_type": "text",
+      "text": "Onze zon smelt elke seconde ongeveer zeshonderd miljoen ton waterstof om in helium.",
+      "text_markdown": "Onze zon smelt elke seconde ongeveer zeshonderd miljoen ton waterstof om in helium.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Onze zon smelt elke seconde ongeveer zeshonderd miljoen ton waterstof om in helium.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-242",
+      "block_type": "text",
+      "text": "Grotere sterren smelten zwaardere elementen.",
+      "text_markdown": "Grotere sterren smelten zwaardere elementen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Grotere sterren smelten zwaardere elementen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-243",
+      "block_type": "text",
+      "text": "Nadat een ster al zijn waterstof heeft opgebruikt, begint hij helium om te smelten tot koolstof.",
+      "text_markdown": "Nadat een ster al zijn waterstof heeft opgebruikt, begint hij helium om te smelten tot koolstof.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nadat een ster al zijn waterstof heeft opgebruikt, begint hij helium om te smelten tot koolstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-244",
+      "block_type": "text",
+      "text": "Dan koolstof tot zuurstof.",
+      "text_markdown": "Dan koolstof tot zuurstof.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Dan koolstof tot zuurstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-245",
+      "block_type": "text",
+      "text": "Dan zuurstof tot silicium.",
+      "text_markdown": "Dan zuurstof tot silicium.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Dan zuurstof tot silicium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-246",
+      "block_type": "text",
+      "text": "Dan silicium tot ijzer.",
+      "text_markdown": "Dan silicium tot ijzer.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Dan silicium tot ijzer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-247",
+      "block_type": "text",
+      "text": "Elke fase produceert een zwaarder element.",
+      "text_markdown": "Elke fase produceert een zwaarder element.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Elke fase produceert een zwaarder element.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-248",
+      "block_type": "text",
+      "text": "IJzer is het zwaarste element dat een ster kan maken door gewone fusie.",
+      "text_markdown": "IJzer is het zwaarste element dat een ster kan maken door gewone fusie.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "IJzer is het zwaarste element dat een ster kan maken door gewone fusie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-249",
+      "block_type": "text",
+      "text": "Elementen die zwaarder zijn dan ijzer worden gemaakt wanneer zware sterren ontploffen.",
+      "text_markdown": "Elementen die zwaarder zijn dan ijzer worden gemaakt wanneer zware sterren ontploffen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Elementen die zwaarder zijn dan ijzer worden gemaakt wanneer zware sterren ontploffen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-250",
+      "block_type": "text",
+      "text": "Deze explosies heten supernova's.",
+      "text_markdown": "Deze explosies heten supernova's.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Deze explosies heten supernova's.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-251",
+      "block_type": "text",
+      "text": "Een supernova geeft in een paar seconden meer energie af dan de zon in zijn hele leven zal produceren.",
+      "text_markdown": "Een supernova geeft in een paar seconden meer energie af dan de zon in zijn hele leven zal produceren.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Een supernova geeft in een paar seconden meer energie af dan de zon in zijn hele leven zal produceren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-252",
+      "block_type": "text",
+      "text": "De extreme omstandigheden van een supernova smeden elementen zoals goud, zilver, platina en uranium.",
+      "text_markdown": "De extreme omstandigheden van een supernova smeden elementen zoals goud, zilver, platina en uranium.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De extreme omstandigheden van een supernova smeden elementen zoals goud, zilver, platina en uranium.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-253",
+      "block_type": "text",
+      "text": "De explosie verspreidt deze zware elementen door de ruimte.",
+      "text_markdown": "De explosie verspreidt deze zware elementen door de ruimte.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De explosie verspreidt deze zware elementen door de ruimte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-254",
+      "block_type": "text",
+      "text": "De elementen mengen zich met wolken van waterstof- en heliumgas.",
+      "text_markdown": "De elementen mengen zich met wolken van waterstof- en heliumgas.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De elementen mengen zich met wolken van waterstof- en heliumgas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-255",
+      "block_type": "text",
+      "text": "Uiteindelijk trekt de zwaartekracht het verrijkte gas samen tot nieuwe sterren en planeten.",
+      "text_markdown": "Uiteindelijk trekt de zwaartekracht het verrijkte gas samen tot nieuwe sterren en planeten.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Uiteindelijk trekt de zwaartekracht het verrijkte gas samen tot nieuwe sterren en planeten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-256",
+      "block_type": "text",
+      "text": "Ons zonnestelsel is ontstaan uit een van deze verrijkte wolken, ongeveer 4,6 miljard jaar geleden.",
+      "text_markdown": "Ons zonnestelsel is ontstaan uit een van deze verrijkte wolken, ongeveer 4,6 miljard jaar geleden.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ons zonnestelsel is ontstaan uit een van deze verrijkte wolken, ongeveer vier komma zes miljard jaar geleden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-257",
+      "block_type": "text",
+      "text": "Elk atoom in je lichaam dat zwaarder is dan waterstof, is gemaakt binnenin een ster.",
+      "text_markdown": "Elk atoom in je lichaam dat zwaarder is dan waterstof, is gemaakt binnenin een ster.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Elk atoom in je lichaam dat zwaarder is dan waterstof, is gemaakt binnenin een ster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-258",
+      "block_type": "text",
+      "text": "Het calcium in je botten.",
+      "text_markdown": "Het calcium in je botten.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Het calcium in je botten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-259",
+      "block_type": "text",
+      "text": "Het ijzer in je bloed.",
+      "text_markdown": "Het ijzer in je bloed.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Het ijzer in je bloed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-260",
+      "block_type": "text",
+      "text": "De koolstof in je huid.",
+      "text_markdown": "De koolstof in je huid.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "De koolstof in je huid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-261",
+      "block_type": "text",
+      "text": "Je bent gemaakt van sterrenstof.",
+      "text_markdown": "Je bent gemaakt van sterrenstof.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Je bent gemaakt van sterrenstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-262",
+      "block_type": "text",
+      "text": "Dat is geen beeldspraak.",
+      "text_markdown": "Dat is geen beeldspraak.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Dat is geen beeldspraak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-263",
+      "block_type": "text",
+      "text": "Het is een feit uit de kernfysica.",
+      "text_markdown": "Het is een feit uit de kernfysica.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Het is een feit uit de kernfysica.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 8,
+      "id": "ch08-264",
+      "block_type": "heading",
+      "text": "Atomen Zijn Alles",
+      "text_markdown": "Atomen Zijn Alles",
+      "title": "Atomen Zijn Alles"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-265",
+      "block_type": "text",
+      "text": "Je kent nu de basis.",
+      "text_markdown": "Je kent nu de basis.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Je kent nu de basis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-266",
+      "block_type": "text",
+      "text": "Alles is gemaakt van atomen.",
+      "text_markdown": "Alles is gemaakt van atomen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Alles is gemaakt van atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-267",
+      "block_type": "text",
+      "text": "Atomen bevatten protonen, neutronen en elektronen.",
+      "text_markdown": "Atomen bevatten protonen, neutronen en elektronen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomen bevatten protonen, neutronen en elektronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-268",
+      "block_type": "text",
+      "text": "Het aantal protonen bepaalt het element.",
+      "text_markdown": "Het aantal protonen bepaalt het element.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Het aantal protonen bepaalt het element.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-269",
+      "block_type": "text",
+      "text": "Atomen binden zich tot moleculen.",
+      "text_markdown": "Atomen binden zich tot moleculen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomen binden zich tot moleculen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-270",
+      "block_type": "text",
+      "text": "Atomen zijn altijd in beweging.",
+      "text_markdown": "Atomen zijn altijd in beweging.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomen zijn altijd in beweging.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-271",
+      "block_type": "text",
+      "text": "Sterren hebben de atomen gemaakt waaruit onze wereld bestaat.",
+      "text_markdown": "Sterren hebben de atomen gemaakt waaruit onze wereld bestaat.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Sterren hebben de atomen gemaakt waaruit onze wereld bestaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-272",
+      "block_type": "text",
+      "text": "Deze kennis is de basis van scheikunde, biologie, natuurkunde en geneeskunde.",
+      "text_markdown": "Deze kennis is de basis van scheikunde, biologie, natuurkunde en geneeskunde.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Deze kennis is de basis van scheikunde, biologie, natuurkunde en geneeskunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-273",
+      "block_type": "text",
+      "text": "Elk wetenschappelijk vakgebied is verbonden met atomen.",
+      "text_markdown": "Elk wetenschappelijk vakgebied is verbonden met atomen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Elk wetenschappelijk vakgebied is verbonden met atomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-274",
+      "block_type": "text",
+      "text": "Wanneer een dokter een medicijn voorschrijft, is dat medicijn een specifieke rangschikking van atomen die ontworpen is om te reageren met de moleculen in je lichaam.",
+      "text_markdown": "Wanneer een dokter een medicijn voorschrijft, is dat medicijn een specifieke rangschikking van atomen die ontworpen is om te reageren met de moleculen in je lichaam.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Wanneer een dokter een medicijn voorschrijft, is dat medicijn een specifieke rangschikking van atomen die ontworpen is om te reageren met de moleculen in je lichaam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-275",
+      "block_type": "text",
+      "text": "Wanneer een ingenieur een brug bouwt, hangt de sterkte van die brug af van hoe de ijzeratomen in het staal zijn gerangschikt.",
+      "text_markdown": "Wanneer een ingenieur een brug bouwt, hangt de sterkte van die brug af van hoe de ijzeratomen in het staal zijn gerangschikt.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Wanneer een ingenieur een brug bouwt, hangt de sterkte van die brug af van hoe de ijzeratomen in het staal zijn gerangschikt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-276",
+      "block_type": "text",
+      "text": "Wanneer een boer een gewas verbouwt, groeit dat gewas omdat koolstofatomen uit de lucht zich in de bladeren verbinden met water en zonlicht.",
+      "text_markdown": "Wanneer een boer een gewas verbouwt, groeit dat gewas omdat koolstofatomen uit de lucht zich in de bladeren verbinden met water en zonlicht.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Wanneer een boer een gewas verbouwt, groeit dat gewas omdat koolstofatomen uit de lucht zich in de bladeren verbinden met water en zonlicht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-277",
+      "block_type": "text",
+      "text": "Koken is scheikunde.",
+      "text_markdown": "Koken is scheikunde.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Koken is scheikunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-278",
+      "block_type": "text",
+      "text": "Wanneer je brood bakt, zorgt de warmte ervoor dat de atomen in het deeg zich herschikken.",
+      "text_markdown": "Wanneer je brood bakt, zorgt de warmte ervoor dat de atomen in het deeg zich herschikken.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Wanneer je brood bakt, zorgt de warmte ervoor dat de atomen in het deeg zich herschikken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-279",
+      "block_type": "text",
+      "text": "Eiwitten ontvouwen zich.",
+      "text_markdown": "Eiwitten ontvouwen zich.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Eiwitten ontvouwen zich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-280",
+      "block_type": "text",
+      "text": "Suikers vallen uiteen en combineren opnieuw.",
+      "text_markdown": "Suikers vallen uiteen en combineren opnieuw.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Suikers vallen uiteen en combineren opnieuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-281",
+      "block_type": "text",
+      "text": "Nieuwe moleculen ontstaan die de kleur, textuur en smaak van de korst vormen.",
+      "text_markdown": "Nieuwe moleculen ontstaan die de kleur, textuur en smaak van de korst vormen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Nieuwe moleculen ontstaan die de kleur, textuur en smaak van de korst vormen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-282",
+      "block_type": "text",
+      "text": "Elk recept is een reeks instructies voor het herschikken van atomen.",
+      "text_markdown": "Elk recept is een reeks instructies voor het herschikken van atomen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Elk recept is een reeks instructies voor het herschikken van atomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-283",
+      "block_type": "text",
+      "text": "Ademen is scheikunde.",
+      "text_markdown": "Ademen is scheikunde.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ademen is scheikunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-284",
+      "block_type": "text",
+      "text": "Je ademt zuurstofmoleculen in.",
+      "text_markdown": "Je ademt zuurstofmoleculen in.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Je ademt zuurstofmoleculen in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-285",
+      "block_type": "text",
+      "text": "Je bloed brengt die moleculen naar je cellen.",
+      "text_markdown": "Je bloed brengt die moleculen naar je cellen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Je bloed brengt die moleculen naar je cellen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-286",
+      "block_type": "text",
+      "text": "In je cellen verbinden zuurstofatomen zich met koolstofatomen uit voedsel.",
+      "text_markdown": "In je cellen verbinden zuurstofatomen zich met koolstofatomen uit voedsel.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "In je cellen verbinden zuurstofatomen zich met koolstofatomen uit voedsel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-287",
+      "block_type": "text",
+      "text": "De reactie maakt energie vrij.",
+      "text_markdown": "De reactie maakt energie vrij.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "De reactie maakt energie vrij.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-288",
+      "block_type": "text",
+      "text": "Je ademt de koolstof en zuurstof uit als koolstofdioxide.",
+      "text_markdown": "Je ademt de koolstof en zuurstof uit als koolstofdioxide.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Je ademt de koolstof en zuurstof uit als koolstofdioxide.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-289",
+      "block_type": "text",
+      "text": "Elke ademhaling is een chemische reactie.",
+      "text_markdown": "Elke ademhaling is een chemische reactie.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Elke ademhaling is een chemische reactie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-290",
+      "block_type": "text",
+      "text": "Roest is scheikunde.",
+      "text_markdown": "Roest is scheikunde.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Roest is scheikunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-291",
+      "block_type": "text",
+      "text": "IJzeratomen aan het oppervlak van een spijker reageren met zuurstofatomen in de lucht.",
+      "text_markdown": "IJzeratomen aan het oppervlak van een spijker reageren met zuurstofatomen in de lucht.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "IJzeratomen aan het oppervlak van een spijker reageren met zuurstofatomen in de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-292",
+      "block_type": "text",
+      "text": "Het ijzer en de zuurstof vormen samen een nieuwe stof die ijzeroxide heet.",
+      "text_markdown": "Het ijzer en de zuurstof vormen samen een nieuwe stof die ijzeroxide heet.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Het ijzer en de zuurstof vormen samen een nieuwe stof die ijzeroxide heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-293",
+      "block_type": "text",
+      "text": "IJzeroxide is het roodbruine materiaal dat wij roest noemen.",
+      "text_markdown": "IJzeroxide is het roodbruine materiaal dat wij roest noemen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "IJzeroxide is het roodbruine materiaal dat wij roest noemen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-294",
+      "block_type": "text",
+      "text": "De ijzeratomen zijn er nog steeds.",
+      "text_markdown": "De ijzeratomen zijn er nog steeds.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "De ijzeratomen zijn er nog steeds.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-295",
+      "block_type": "text",
+      "text": "Ze hebben zich alleen verbonden met zuurstof.",
+      "text_markdown": "Ze hebben zich alleen verbonden met zuurstof.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ze hebben zich alleen verbonden met zuurstof.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-296",
+      "block_type": "text",
+      "text": "Atomen zijn niet abstract.",
+      "text_markdown": "Atomen zijn niet abstract.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomen zijn niet abstract.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-297",
+      "block_type": "text",
+      "text": "Atomen zijn de fysieke werkelijkheid van alles wat je aanraakt, proeft, ziet en ruikt.",
+      "text_markdown": "Atomen zijn de fysieke werkelijkheid van alles wat je aanraakt, proeft, ziet en ruikt.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomen zijn de fysieke werkelijkheid van alles wat je aanraakt, proeft, ziet en ruikt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-298",
+      "block_type": "text",
+      "text": "Hoe meer je over atomen begrijpt, hoe meer je de wereld begrijpt.",
+      "text_markdown": "Hoe meer je over atomen begrijpt, hoe meer je de wereld begrijpt.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Hoe meer je over atomen begrijpt, hoe meer je de wereld begrijpt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-299",
+      "block_type": "text",
+      "text": "Dit is het begin.",
+      "text_markdown": "Dit is het begin.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Dit is het begin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-300",
+      "block_type": "text",
+      "text": "Er is nog veel meer te ontdekken.",
+      "text_markdown": "Er is nog veel meer te ontdekken.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Er is nog veel meer te ontdekken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

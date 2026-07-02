@@ -926,6 +926,56 @@ BOOKS: list[BookSpec] = [
             "rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_boreal_forest",
+        title="The Boreal Forest",
+        description=(
+            "A short, plain-spoken tour of the boreal forest — the "
+            "great green belt of evergreen trees, lakes, and quiet "
+            "snow that runs almost all the way around the top of the "
+            "world. The taiga: long cold winters, brief bright "
+            "summers, moose and brown bear and lynx, the Sami and "
+            "Evenki and Dene who have lived among the trees for "
+            "thousands of years. Book seven of the Biomes of the "
+            "World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast boreal forest at dawn "
+            "in late winter. Tall pointed spruce and pine trees stand "
+            "close together, their dark green needles dusted with "
+            "snow. A still frozen lake reflects the pale sky between "
+            "the trees, and soft cold mist drifts low along the "
+            "ground. A few shafts of pale gold sunlight catch on the "
+            "snow. Painterly digital art, restrained palette of deep "
+            "evergreen, soft blue-grey, pale gold, and snow white, "
+            "contemplative and quiet, no people, no clearly rendered "
+            "animals, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_biomes_tundra",
+        title="The Tundra",
+        description=(
+            "A short, plain-spoken tour of the tundra — the cold, "
+            "treeless land at the top of the world and high on the "
+            "mountains. Frozen ground and a brief bright summer, low "
+            "mosses and lichens and tiny flowers, caribou and musk ox "
+            "and arctic fox and snowy owl, and the Inuit, Sami, Nenets "
+            "and Chukchi who have lived here for thousands of years. "
+            "Book eight of the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast open tundra in the low "
+            "golden light of the far north. Treeless rolling ground "
+            "covered in soft green and rust-red moss and tiny "
+            "wildflowers, dotted with small still ponds that mirror a "
+            "huge pale sky. Distant low hills fade into cold blue haze "
+            "on the horizon. Painterly digital art, restrained palette "
+            "of mossy green, rust, pale gold, and cold sky blue, "
+            "spacious and quiet, no people, no clearly rendered "
+            "animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 

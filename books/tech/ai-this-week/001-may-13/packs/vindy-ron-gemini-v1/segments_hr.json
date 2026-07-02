@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "hr",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dobrodošli u AI Ovaj tjedan. Ja sam Vindy.",
+      "text_markdown": "Dobrodošli u AI Ovaj tjedan. Ja sam Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Dobrodošli u AI Ovaj tjedan. Ja sam Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sa mnom je, kao i uvijek, Ron.",
+      "text_markdown": "Sa mnom je, kao i uvijek, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Sa mnom je, kao i uvijek, Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Drago mi je što sam ovdje.",
+      "text_markdown": "Drago mi je što sam ovdje.",
+      "title": "",
+      "tts": {
+        "text": "Drago mi je što sam ovdje.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Danas je srijeda, 13. svibnja 2026. Slijedi: modeli koji su objavljeni ovaj tjedan. Ljestvice, i zašto nekima od njih više ne biste trebali vjerovati. Naš koncept tjedna. I šira slika — SAD je upravo dobio novog predsjednika Federalnih rezervi, a to je za AI važnije nego što mislite.",
+      "text_markdown": "Danas je srijeda, 13. svibnja 2026. Slijedi: modeli koji su objavljeni ovaj tjedan. Ljestvice, i zašto nekima od njih više ne biste trebali vjerovati. Naš koncept tjedna. I šira slika — SAD je upravo dobio novog predsjednika Federalnih rezervi, a to je za AI važnije nego što mislite.",
+      "title": "",
+      "tts": {
+        "text": "Danas je srijeda, trinaesti svibnja, dvije tisuće dvadeset šeste. Slijedi: modeli koji su objavljeni ovaj tjedan. Ljestvice, i zašto nekima od njih više ne biste trebali vjerovati. Naš koncept tjedna. I šira slika — Sjedinjene Američke Države su upravo dobile novog predsjednika Federalnih rezervi, a to je za AI važnije nego što mislite.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, koja je najveća vijest o modelima ovaj tjedan?",
+      "text_markdown": "Ron, koja je najveća vijest o modelima ovaj tjedan?",
+      "title": "",
+      "tts": {
+        "text": "Ron, koja je najveća vijest o modelima ovaj tjedan?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zadani mozak unutar ChatGPT-a se promijenio. OpenAI je prošli tjedan, u utorak, 5. svibnja, predstavio novi model nazvan GPT-5.5 Instant za besplatnu razinu. Ako vam se čini da su besplatni odgovori ChatGPT-a kraći ili manje puni emojija, to je razlog.",
+      "text_markdown": "Zadani mozak unutar ChatGPT-a se promijenio. OpenAI je prošli tjedan, u utorak, 5. svibnja, predstavio novi model nazvan GPT-5.5 Instant za besplatnu razinu. Ako vam se čini da su besplatni odgovori ChatGPT-a kraći ili manje puni emojija, to je razlog.",
+      "title": "",
+      "tts": {
+        "text": "Zadani mozak unutar ChatGPT-a se promijenio. OpenAI je prošli tjedan, u utorak, petog svibnja, predstavio novi model nazvan GPT pet točka pet Instant za besplatnu razinu. Ako vam se čini da su besplatni odgovori ChatGPT-a kraći ili manje puni emojija, to je razlog.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kako to misliš, kraći?",
+      "text_markdown": "Kako to misliš, kraći?",
+      "title": "",
+      "tts": {
+        "text": "Kako to misliš, kraći?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "OpenAI kaže da novi zadani model piše otprilike 30% manje riječi i 30% manje redaka od modela koji je zamijenio. Također tvrde da je došlo do pada od 50% u haluciniranim tvrdnjama na najtežim upitima. Stvari poput medicinskih pitanja, pravnih pitanja i financijskih pitanja.",
+      "text_markdown": "OpenAI kaže da novi zadani model piše otprilike 30% manje riječi i 30% manje redaka od modela koji je zamijenio. Također tvrde da je došlo do pada od 50% u haluciniranim tvrdnjama na najtežim upitima. Stvari poput medicinskih pitanja, pravnih pitanja i financijskih pitanja.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI kaže da novi zadani model piše otprilike trideset posto manje riječi i trideset posto manje redaka od modela koji je zamijenio. Također tvrde da je došlo do pada od pedeset posto u haluciniranim tvrdnjama na najtežim upitima. Stvari poput medicinskih pitanja, pravnih pitanja i financijskih pitanja.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Je li itko izvan OpenAI-ja provjerio te brojeve?",
+      "text_markdown": "Je li itko izvan OpenAI-ja provjerio te brojeve?",
+      "title": "",
+      "tts": {
+        "text": "Je li itko izvan OpenAI-ja provjerio te brojeve?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ne u velikom opsegu. Neovisni ljudi koji se bave benchmarkovima, poput Artificial Analysisa, imaju novi model na vrhu svog ukupnog indeksa inteligencije. Ali tvrdnje o halucinacijama sporo se provjeravaju. One se obično pojavljuju tijekom tjedana, kako ljudi zapravo koriste model.",
+      "text_markdown": "Ne u velikom opsegu. Neovisni ljudi koji se bave benchmarkovima, poput Artificial Analysisa, imaju novi model na vrhu svog ukupnog indeksa inteligencije. Ali tvrdnje o halucinacijama sporo se provjeravaju. One se obično pojavljuju tijekom tjedana, kako ljudi zapravo koriste model.",
+      "title": "",
+      "tts": {
+        "text": "Ne u velikom opsegu. Neovisni ljudi koji se bave benchmarkovima, poput Artificial Analysisa, imaju novi model na vrhu svog ukupnog indeksa inteligencije. Ali tvrdnje o halucinacijama sporo se provjeravaju. One se obično pojavljuju tijekom tjedana, kako ljudi zapravo koriste model.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "A što je s otvorenim utezima?",
+      "text_markdown": "A što je s otvorenim utezima?",
+      "title": "",
+      "tts": {
+        "text": "A što je s otvorenim utezima?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dvije velike stvari. Moonshot, kineski laboratorij iza Kimi modela, prošli je tjedan, 7. svibnja, prikupio 2 milijarde dolara, uz procjenu vrijednosti od 20 milijardi dolara. A njihov najnoviji model, Kimi K 2.6, upravo je zauzeo prvo mjesto na OpenRouteru po volumenu tokena.",
+      "text_markdown": "Dvije velike stvari. Moonshot, kineski laboratorij iza Kimi modela, prošli je tjedan, 7. svibnja, prikupio 2 milijarde dolara, uz procjenu vrijednosti od 20 milijardi dolara. A njihov najnoviji model, Kimi K 2.6, upravo je zauzeo prvo mjesto na OpenRouteru po volumenu tokena.",
+      "title": "",
+      "tts": {
+        "text": "Dvije velike stvari. Moonshot, kineski laboratorij iza Kimi modela, prošli je tjedan, sedmog svibnja, prikupio dvije milijarde dolara, uz procjenu vrijednosti od dvadeset milijardi dolara. A njihov najnoviji model, Kimi K dva točka šest, upravo je zauzeo prvo mjesto na OpenRouteru po volumenu tokena.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Prvo mjesto? Ukupno?",
+      "text_markdown": "Prvo mjesto? Ukupno?",
+      "title": "",
+      "tts": {
+        "text": "Prvo mjesto? Ukupno?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ukupno. To je kineski model otvorenih utega na prvom mjestu na velikom komercijalnom routeru. Prije šest mjeseci to bi bilo nezamislivo.",
+      "text_markdown": "Ukupno. To je kineski model otvorenih utega na prvom mjestu na velikom komercijalnom routeru. Prije šest mjeseci to bi bilo nezamislivo.",
+      "title": "",
+      "tts": {
+        "text": "Ukupno. To je kineski model otvorenih utega na prvom mjestu na velikom komercijalnom routeru. Prije šest mjeseci to bi bilo nezamislivo.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Još nešto vrijedno spomena?",
+      "text_markdown": "Još nešto vrijedno spomena?",
+      "title": "",
+      "tts": {
+        "text": "Još nešto vrijedno spomena?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral, francuski laboratorij, isporučio je Medium 3.5 krajem travnja. Oni spajaju staru podjelu između chat modela, modela za rasuđivanje i modela za kodiranje u jedan proizvod. Isti trend koji je OpenAI započeo s obitelji GPT-5. Cijela industrija ide u tom smjeru.",
+      "text_markdown": "Mistral, francuski laboratorij, isporučio je Medium 3.5 krajem travnja. Oni spajaju staru podjelu između chat modela, modela za rasuđivanje i modela za kodiranje u jedan proizvod. Isti trend koji je OpenAI započeo s obitelji GPT-5. Cijela industrija ide u tom smjeru.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, francuski laboratorij, isporučio je Medium tri točka pet krajem travnja. Oni spajaju staru podjelu između chat modela, modela za rasuđivanje i modela za kodiranje u jedan proizvod. Isti trend koji je OpenAI započeo s obitelji GPT pet. Cijela industrija ide u tom smjeru.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "A što slijedi?",
+      "text_markdown": "A što slijedi?",
+      "title": "",
+      "tts": {
+        "text": "A što slijedi?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Google I/O je u utorak. Svi očekuju novi Gemini, a postoje vjerodostojne glasine o modelu za generiranje videa nazvanom Gemini Omni. OpenAI testira GPT-5.6. Anthropic ima model nazvan Mythos u privatnom pregledu. Sljedeći tjedan znat ćemo puno više.",
+      "text_markdown": "Google I/O je u utorak. Svi očekuju novi Gemini, a postoje vjerodostojne glasine o modelu za generiranje videa nazvanom Gemini Omni. OpenAI testira GPT-5.6. Anthropic ima model nazvan Mythos u privatnom pregledu. Sljedeći tjedan znat ćemo puno više.",
+      "title": "",
+      "tts": {
+        "text": "Google I O je u utorak. Svi očekuju novi Gemini, a postoje vjerodostojne glasine o modelu za generiranje videa nazvanom Gemini Omni. OpenAI testira GPT pet točka šest. Anthropic ima model nazvan Mythos u privatnom pregledu. Sljedeći tjedan znat ćemo puno više.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "U redu, prijeđimo na ljestvice.",
+      "text_markdown": "U redu, prijeđimo na ljestvice.",
+      "title": "",
+      "tts": {
+        "text": "U redu, prijeđimo na ljestvice.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, što se događa na ljestvicama ovaj tjedan?",
+      "text_markdown": "Ron, što se događa na ljestvicama ovaj tjedan?",
+      "title": "",
+      "tts": {
+        "text": "Ron, što se događa na ljestvicama ovaj tjedan?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Prava priča ovog tjedna nisu rezultati. To su rezultati kojima više ne biste trebali vjerovati.",
+      "text_markdown": "Prava priča ovog tjedna nisu rezultati. To su rezultati kojima više ne biste trebali vjerovati.",
+      "title": "",
+      "tts": {
+        "text": "Prava priča ovog tjedna nisu rezultati. To su rezultati kojima više ne biste trebali vjerovati.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Recite nam nešto više o tome, Ron.",
+      "text_markdown": "Recite nam nešto više o tome, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Recite nam nešto više o tome, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Grupa na Berkeleyu objavila je rad. Izgradili su automatizirani skener koji je postigao gotovo savršen rezultat na svakom glavnom benchmarku AI agenta. Bez da su zapravo riješili ijedan zadatak. Iskoristili su način na koji benchmarkovi provjeravaju vlastite odgovore.",
+      "text_markdown": "Grupa na Berkeleyu objavila je rad. Izgradili su automatizirani skener koji je postigao gotovo savršen rezultat na svakom glavnom benchmarku AI agenta. Bez da su zapravo riješili ijedan zadatak. Iskoristili su način na koji benchmarkovi provjeravaju vlastite odgovore.",
+      "title": "",
+      "tts": {
+        "text": "Grupa na Berkeleyu objavila je rad. Izgradili su automatizirani skener koji je postigao gotovo savršen rezultat na svakom glavnom benchmarku AI agenta. Bez da su zapravo riješili ijedan zadatak. Iskoristili su način na koji benchmarkovi provjeravaju vlastite odgovore.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Varali su, a benchmarkovi to nisu otkrili.",
+      "text_markdown": "Varali su, a benchmarkovi to nisu otkrili.",
+      "title": "",
+      "tts": {
+        "text": "Varali su, a benchmarkovi to nisu otkrili.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tako je. I istog tjedna, OpenAI je objavio da povlači svoje evaluacije na SWE bench Verified. To je benchmark za kodiranje koji su stalno citirali. Povukli su ga jer se pokazalo da više od polovice teških zadataka ima neispravne testove.",
+      "text_markdown": "Tako je. I istog tjedna, OpenAI je objavio da povlači svoje evaluacije na SWE bench Verified. To je benchmark za kodiranje koji su stalno citirali. Povukli su ga jer se pokazalo da više od polovice teških zadataka ima neispravne testove.",
+      "title": "",
+      "tts": {
+        "text": "Tako je. I istog tjedna, OpenAI je objavio da povlači svoje evaluacije na SWE bench Verified. To je benchmark za kodiranje koji su stalno citirali. Povukli su ga jer se pokazalo da više od polovice teških zadataka ima neispravne testove.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dakle, mnogi brojevi koje smo čuli tijekom prošle godine su…",
+      "text_markdown": "Dakle, mnogi brojevi koje smo čuli tijekom prošle godine su…",
+      "title": "",
+      "tts": {
+        "text": "Dakle, mnogi brojevi koje smo čuli tijekom prošle godine su…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Barem djelomično napuhani. Ne svaki model. Ne svaki benchmark. Ali polje javno obnavlja svoju mjernu traku. Novije evaluacije poput SWE-bench Pro i projekt nazvan SWE-rebench pokušavaju to popraviti držeći testni kod privatnim.",
+      "text_markdown": "Barem djelomično napuhani. Ne svaki model. Ne svaki benchmark. Ali polje javno obnavlja svoju mjernu traku. Novije evaluacije poput SWE-bench Pro i projekt nazvan SWE-rebench pokušavaju to popraviti držeći testni kod privatnim.",
+      "title": "",
+      "tts": {
+        "text": "Barem djelomično napuhani. Ne svaki model. Ne svaki benchmark. Ali polje javno obnavlja svoju mjernu traku. Novije evaluacije poput SWE bench Pro i projekt nazvan SWE rebench pokušavaju to popraviti držeći testni kod privatnim.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pomiče li se išta zapravo čisto prema gore?",
+      "text_markdown": "Pomiče li se išta zapravo čisto prema gore?",
+      "title": "",
+      "tts": {
+        "text": "Pomiče li se išta zapravo čisto prema gore?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dvije stvari, na čišćim ljestvicama. Sredinom travnja, Anthropicov Claude Opus 4.7 postao je prvi model koji je čisto prešao Elo od 1500 na LM Arena ljestvici za kodiranje. Opus 4.6 je dotaknuo 1500 nekoliko tjedana ranije. Od ovog tjedna, Opus 4.7 je još uvijek na vrhu, oko 1569. Anthropic također ima zaseban model nazvan Mythos u privatnom partnerskom pregledu koji vodi na 17 od 18 agent benchmarkova koje je Anthropic mjerio.",
+      "text_markdown": "Dvije stvari, na čišćim ljestvicama. Sredinom travnja, Anthropicov Claude Opus 4.7 postao je prvi model koji je čisto prešao Elo od 1500 na LM Arena ljestvici za kodiranje. Opus 4.6 je dotaknuo 1500 nekoliko tjedana ranije. Od ovog tjedna, Opus 4.7 je još uvijek na vrhu, oko 1569. Anthropic također ima zaseban model nazvan Mythos u privatnom partnerskom pregledu koji vodi na 17 od 18 agent benchmarkova koje je Anthropic mjerio.",
+      "title": "",
+      "tts": {
+        "text": "Dvije stvari, na čišćim ljestvicama. Sredinom travnja, Anthropicov Claude Opus četiri točka sedam postao je prvi model koji je čisto prešao Elo od tisuću petsto na LM Arena ljestvici za kodiranje. Opus četiri točka šest je dotaknuo tisuću petsto nekoliko tjedana ranije. Od ovog tjedna, Opus četiri točka sedam je još uvijek na vrhu, oko tisuću petsto šezdeset devet. Anthropic također ima zaseban model nazvan Mythos u privatnom partnerskom pregledu koji vodi na sedamnaest od osamnaest agent benchmarkova koje je Anthropic mjerio.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Model koji javnost ne može koristiti je na vrhu ljestvica.",
+      "text_markdown": "Model koji javnost ne može koristiti je na vrhu ljestvica.",
+      "title": "",
+      "tts": {
+        "text": "Model koji javnost ne može koristiti je na vrhu ljestvica.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tu smo. Drugi veliki trend je jaz između otvorenog i zatvorenog. Najuži je ikad bio. DeepSeek V4 Pro i Kimi K 2.6 su nadohvat ruke GPT-5.5 na indeksu inteligencije unakrsne evaluacije. Taj je jaz nekad bio ogroman. Sada je mali.",
+      "text_markdown": "Tu smo. Drugi veliki trend je jaz između otvorenog i zatvorenog. Najuži je ikad bio. DeepSeek V4 Pro i Kimi K 2.6 su nadohvat ruke GPT-5.5 na indeksu inteligencije unakrsne evaluacije. Taj je jaz nekad bio ogroman. Sada je mali.",
+      "title": "",
+      "tts": {
+        "text": "Tu smo. Drugi veliki trend je jaz između otvorenog i zatvorenog. Najuži je ikad bio. DeepSeek V četiri Pro i Kimi K dva točka šest su nadohvat ruke GPT pet točka pet na indeksu inteligencije unakrsne evaluacije. Taj je jaz nekad bio ogroman. Sada je mali.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "U redu, prijeđimo na koncept tjedna.",
+      "text_markdown": "U redu, prijeđimo na koncept tjedna.",
+      "title": "",
+      "tts": {
+        "text": "U redu, prijeđimo na koncept tjedna.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, ovotjedni koncept je mješavina stručnjaka. Zašto se fokusiramo na mješavinu stručnjaka?",
+      "text_markdown": "Ron, ovotjedni koncept je mješavina stručnjaka. Zašto se fokusiramo na mješavinu stručnjaka?",
+      "title": "",
+      "tts": {
+        "text": "Ron, ovotjedni koncept je mješavina stručnjaka. Zašto se fokusiramo na mješavinu stručnjaka?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zato što model otvorenih težina o kojem smo upravo govorili, Kimi K 2.6, ima ukupno 1 bilijun parametara. Ali samo 32 milijarde tih parametara radi u bilo kojem trenutku. To je mješavina stručnjaka.",
+      "text_markdown": "Zato što model otvorenih težina o kojem smo upravo govorili, Kimi K 2.6, ima ukupno 1 bilijun parametara. Ali samo 32 milijarde tih parametara radi u bilo kojem trenutku. To je mješavina stručnjaka.",
+      "title": "",
+      "tts": {
+        "text": "Zato što model otvorenih težina o kojem smo upravo govorili, Kimi K dva točka šest, ima jedan bilijun parametara ukupno. Ali samo trideset dvije milijarde tih parametara radi u bilo kojem trenutku. To je mješavina stručnjaka.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Objasnite nam to za one koji nas slušaju.",
+      "text_markdown": "Objasnite nam to za one koji nas slušaju.",
+      "title": "",
+      "tts": {
+        "text": "Objasnite nam to za one koji nas slušaju.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Običan AI model je poput jednog divovskog mozga. Svaka riječ koju generira koristi svaki dio mozga. Model mješavine stručnjaka više je poput zgrade pune specijalista. S recepcionerom na vratima. Za svaku riječ, recepcioner odabire dva ili tri specijalista za konzultacije, a ostatak zgrade ostaje tih.",
+      "text_markdown": "Običan AI model je poput jednog divovskog mozga. Svaka riječ koju generira koristi svaki dio mozga. Model mješavine stručnjaka više je poput zgrade pune specijalista. S recepcionerom na vratima. Za svaku riječ, recepcioner odabire dva ili tri specijalista za konzultacije, a ostatak zgrade ostaje tih.",
+      "title": "",
+      "tts": {
+        "text": "Običan AI model je poput jednog divovskog mozga. Svaka riječ koju generira koristi svaki dio mozga. Model mješavine stručnjaka više je poput zgrade pune specijalista. S recepcionerom na vratima. Za svaku riječ, recepcioner odabire dva ili tri specijalista za konzultacije, a ostatak zgrade ostaje tih.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dakle, model je ogroman na papiru, ali jeftin za pokretanje.",
+      "text_markdown": "Dakle, model je ogroman na papiru, ali jeftin za pokretanje.",
+      "title": "",
+      "tts": {
+        "text": "Dakle, model je ogroman na papiru, ali jeftin za pokretanje.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Točno. 1 bilijun parametara kapaciteta. Ali samo 32 milijarde parametara računanja po riječi. To je trik. Recepcioner je mali dio koda koji se zove ruter. Specijalisti su pod-mreže koje se nazivaju eksperti. Model trenira ruter i eksperte zajedno, od početka do kraja.",
+      "text_markdown": "Točno. 1 bilijun parametara kapaciteta. Ali samo 32 milijarde parametara računanja po riječi. To je trik. Recepcioner je mali dio koda koji se zove ruter. Specijalisti su pod-mreže koje se nazivaju eksperti. Model trenira ruter i eksperte zajedno, od početka do kraja.",
+      "title": "",
+      "tts": {
+        "text": "Točno. Jedan bilijun parametara kapaciteta. Ali samo trideset dvije milijarde parametara računanja po riječi. To je trik. Recepcioner je mali dio koda koji se zove ruter. Specijalisti su pod-mreže koje se nazivaju eksperti. Model trenira ruter i eksperte zajedno, od početka do kraja.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Radi li to svaki glavni granični model?",
+      "text_markdown": "Radi li to svaki glavni granični model?",
+      "title": "",
+      "tts": {
+        "text": "Radi li to svaki glavni granični model?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Većina njih, da. Iako laboratoriji to ne potvrđuju uvijek. GPT-4 je bio model mješavine stručnjaka. Glavni model iz DeepSeeka je model mješavine stručnjaka. Mistral isporučuje modele mješavine stručnjaka od 2023. Novi val iz Kine je ovaj dizajn doveo do krajnjih granica.",
+      "text_markdown": "Većina njih, da. Iako laboratoriji to ne potvrđuju uvijek. GPT-4 je bio model mješavine stručnjaka. Glavni model iz DeepSeeka je model mješavine stručnjaka. Mistral isporučuje modele mješavine stručnjaka od 2023. Novi val iz Kine je ovaj dizajn doveo do krajnjih granica.",
+      "title": "",
+      "tts": {
+        "text": "Većina njih, da. Iako laboratoriji to ne potvrđuju uvijek. GPT četiri je bio model mješavine stručnjaka. Glavni model iz DeepSeeka je model mješavine stručnjaka. Mistral isporučuje modele mješavine stručnjaka od dvije tisuće dvadeset treće. Novi val iz Kine je ovaj dizajn doveo do krajnjih granica.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Zašto je to važno nekome tko samo koristi ChatGPT?",
+      "text_markdown": "Zašto je to važno nekome tko samo koristi ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Zašto je to važno nekome tko samo koristi ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dva razloga. Prvo. To je glavni razlog zašto laboratorij otvorenih težina u Kini može raditi s kvalitetom granične klase uz djelić budžeta. Drugo. To je glavni razlog zašto jedan API poziv košta cente, a ne dolare. Kada vidite da cijene padaju, a kvaliteta ostaje visoka, mješavina stručnjaka je obično razlog.",
+      "text_markdown": "Dva razloga. Prvo. To je glavni razlog zašto laboratorij otvorenih težina u Kini može raditi s kvalitetom granične klase uz djelić budžeta. Drugo. To je glavni razlog zašto jedan API poziv košta cente, a ne dolare. Kada vidite da cijene padaju, a kvaliteta ostaje visoka, mješavina stručnjaka je obično razlog.",
+      "title": "",
+      "tts": {
+        "text": "Dva razloga. Prvo. To je glavni razlog zašto laboratorij otvorenih težina u Kini može raditi s kvalitetom granične klase uz djelić budžeta. Drugo. To je glavni razlog zašto jedan API poziv košta cente, a ne dolare. Kada vidite da cijene padaju, a kvaliteta ostaje visoka, mješavina stručnjaka je obično razlog.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mješavina stručnjaka. Ruter. Eksperti. Rijetka aktivacija. Tri riječi koje treba zapamtiti. Sada se vratimo na širu sliku.",
+      "text_markdown": "Mješavina stručnjaka. Ruter. Eksperti. Rijetka aktivacija. Tri riječi koje treba zapamtiti. Sada se vratimo na širu sliku.",
+      "title": "",
+      "tts": {
+        "text": "Mješavina stručnjaka. Ruter. Eksperti. Rijetka aktivacija. Tri riječi koje treba zapamtiti. Sada se vratimo na širu sliku.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, velika priča izvan našeg svijeta ovog tjedna je Federalne rezerve.",
+      "text_markdown": "Ron, velika priča izvan našeg svijeta ovog tjedna je Federalne rezerve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, velika priča izvan našeg svijeta ovog tjedna je Federalne rezerve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Danas je američki Senat potvrdio Kevina Warsha za sljedećeg predsjednika Federalnih rezervi. Glasovanje je bilo 54 za i 45 protiv. Najuže glasovanje za predsjednika Feda u modernoj američkoj povijesti. Samo je jedan demokrat prešao na drugu stranu.",
+      "text_markdown": "Danas je američki Senat potvrdio Kevina Warsha za sljedećeg predsjednika Federalnih rezervi. Glasovanje je bilo 54 za i 45 protiv. Najuže glasovanje za predsjednika Feda u modernoj američkoj povijesti. Samo je jedan demokrat prešao na drugu stranu.",
+      "title": "",
+      "tts": {
+        "text": "Danas je američki Senat potvrdio Kevina Warsha za sljedećeg predsjednika Federalnih rezervi. Glasovanje je bilo pedeset četiri za i četrdeset pet protiv. Najuže glasovanje za predsjednika Feda u modernoj američkoj povijesti. Samo je jedan demokrat prešao na drugu stranu.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Zašto je to važno za AI?",
+      "text_markdown": "Zašto je to važno za AI?",
+      "title": "",
+      "tts": {
+        "text": "Zašto je to važno za AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zato što je razvoj AI-a trenutno ograničen dvjema stvarima. Električnom energijom i troškom kapitala. Fed određuje trošak kapitala. A novi predsjednik je javno izjavio da želi smanjiti stope brže nego što bi to učinio njegov prethodnik.",
+      "text_markdown": "Zato što je razvoj AI-a trenutno ograničen dvjema stvarima. Električnom energijom i troškom kapitala. Fed određuje trošak kapitala. A novi predsjednik je javno izjavio da želi smanjiti stope brže nego što bi to učinio njegov prethodnik.",
+      "title": "",
+      "tts": {
+        "text": "Zato što je razvoj AI-a trenutno ograničen dvjema stvarima. Električnom energijom i troškom kapitala. Fed određuje trošak kapitala. A novi predsjednik je javno izjavio da želi smanjiti stope brže nego što bi to učinio njegov prethodnik.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Brže smanjenje kamatnih stopa čini AI investicije jeftinijima.",
+      "text_markdown": "Brže smanjenje kamatnih stopa čini AI investicije jeftinijima.",
+      "title": "",
+      "tts": {
+        "text": "Brže smanjenje kamatnih stopa čini AI investicije jeftinijima.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Da. Hiperskaleri — Microsoft, Google, Amazon, Meta — planiraju potrošiti otprilike 700 milijardi dolara na kapitalne izdatke ove godine. Većina toga su GPU-ovi i podatkovni centri. Niža diskontna stopa čini te višegodišnje izgradnje isplativijima po višim valuacijama.",
+      "text_markdown": "Da. Hiperskaleri — Microsoft, Google, Amazon, Meta — planiraju potrošiti otprilike 700 milijardi dolara na kapitalne izdatke ove godine. Većina toga su GPU-ovi i podatkovni centri. Niža diskontna stopa čini te višegodišnje izgradnje isplativijima po višim valuacijama.",
+      "title": "",
+      "tts": {
+        "text": "Da. Hiperskaleri — Microsoft, Google, Amazon, Meta — planiraju potrošiti otprilike sedamsto milijardi dolara na kapitalne izdatke ove godine. Većina toga su GPU-ovi i podatkovni centri. Niža diskontna stopa čini te višegodišnje izgradnje isplativijima po višim valuacijama.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "A u drugom smjeru. Kako AI utječe na ono što Fed mora odlučiti?",
+      "text_markdown": "A u drugom smjeru. Kako AI utječe na ono što Fed mora odlučiti?",
+      "title": "",
+      "tts": {
+        "text": "A u drugom smjeru. Kako AI utječe na ono što Fed mora odlučiti?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ovo je zanimljiv dio. Kapitalna potrošnja na AI sada je dovoljno velika da je to makro broj. Nije priča o sektoru. Analitičari s Wall Streeta kažu da je izgradnja i oprema povezana s AI-jem činila većinu gospodarskog rasta SAD-a u posljednjih nekoliko kvartala.",
+      "text_markdown": "Ovo je zanimljiv dio. Kapitalna potrošnja na AI sada je dovoljno velika da je to makro broj. Nije priča o sektoru. Analitičari s Wall Streeta kažu da je izgradnja i oprema povezana s AI-jem činila većinu gospodarskog rasta SAD-a u posljednjih nekoliko kvartala.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je zanimljiv dio. Kapitalna potrošnja na AI sada je dovoljno velika da je to makro broj. Nije priča o sektoru. Analitičari s Wall Streeta kažu da je izgradnja i oprema povezana s AI-jem činila većinu gospodarskog rasta SAD-a u posljednjih nekoliko kvartala.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Većina tog porasta.",
+      "text_markdown": "Većina tog porasta.",
+      "title": "",
+      "tts": {
+        "text": "Većina tog porasta.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Većina. I to se za Fed reže u dva smjera. Dugoročno, AI je vjetar u leđa produktivnosti. To je deflacijsko. Daje Fedu prostor za smanjenje. Kratkoročno, to je šok potražnje za energijom, za bakrom, za kvalificiranom radnom snagom, za vodom za hlađenje. To je inflacijsko. Posebno u mjestima poput Virginije i Teksasa, gdje su podatkovni centri koncentrirani.",
+      "text_markdown": "Većina. I to se za Fed reže u dva smjera. Dugoročno, AI je vjetar u leđa produktivnosti. To je deflacijsko. Daje Fedu prostor za smanjenje. Kratkoročno, to je šok potražnje za energijom, za bakrom, za kvalificiranom radnom snagom, za vodom za hlađenje. To je inflacijsko. Posebno u mjestima poput Virginije i Teksasa, gdje su podatkovni centri koncentrirani.",
+      "title": "",
+      "tts": {
+        "text": "Većina. I to se za Fed reže u dva smjera. Dugoročno, AI je vjetar u leđa produktivnosti. To je deflacijsko. Daje Fedu prostor za smanjenje. Kratkoročno, to je šok potražnje za energijom, za bakrom, za kvalificiranom radnom snagom, za vodom za hlađenje. To je inflacijsko. Posebno u mjestima poput Virginije i Teksasa, gdje su podatkovni centri koncentrirani.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dakle, novi predsjednik mora odlučiti je li AI odgovor na inflaciju, ili je li AI uzrok inflacije.",
+      "text_markdown": "Dakle, novi predsjednik mora odlučiti je li AI odgovor na inflaciju, ili je li AI uzrok inflacije.",
+      "title": "",
+      "tts": {
+        "text": "Dakle, novi predsjednik mora odlučiti je li AI odgovor na inflaciju, ili je li AI uzrok inflacije.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Oboje, istovremeno. I sve što kaže u svojim prvim javnim govorima pomaknut će svaki model kapitalnih izdataka za AI na Wall Streetu.",
+      "text_markdown": "Oboje, istovremeno. I sve što kaže u svojim prvim javnim govorima pomaknut će svaki model kapitalnih izdataka za AI na Wall Streetu.",
+      "title": "",
+      "tts": {
+        "text": "Oboje, istovremeno. I sve što kaže u svojim prvim javnim govorima pomaknut će svaki model kapitalnih izdataka za AI na Wall Streetu.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Microsoft ima 80 milijardi dolara neispunjenih narudžbi za oblak zbog energije. Je li to točan broj?",
+      "text_markdown": "Microsoft ima 80 milijardi dolara neispunjenih narudžbi za oblak zbog energije. Je li to točan broj?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft ima osamdeset milijardi dolara neispunjenih narudžbi za oblak zbog energije. Je li to točan broj?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "To je broj koji je Microsoft prijavio. Azure korisnici čekaju u redu za kapacitet. Usko grlo više nisu čipovi. To je električna mreža. Tržišta energije ne mogu izgraditi novi kapacitet onoliko brzo koliko to žele podatkovni centri.",
+      "text_markdown": "To je broj koji je Microsoft prijavio. Azure korisnici čekaju u redu za kapacitet. Usko grlo više nisu čipovi. To je električna mreža. Tržišta energije ne mogu izgraditi novi kapacitet onoliko brzo koliko to žele podatkovni centri.",
+      "title": "",
+      "tts": {
+        "text": "To je broj koji je Microsoft prijavio. Azure korisnici čekaju u redu za kapacitet. Usko grlo više nisu čipovi. To je električna mreža. Tržišta energije ne mogu izgraditi novi kapacitet onoliko brzo koliko to žele podatkovni centri.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kada je Warshov prvi sastanak?",
+      "text_markdown": "Kada je Warshov prvi sastanak?",
+      "title": "",
+      "tts": {
+        "text": "Kada je Warshov prvi sastanak?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "16. i 17. lipnja. Nakon toga ćemo znati puno više o putanji kamatnih stopa.",
+      "text_markdown": "16. i 17. lipnja. Nakon toga ćemo znati puno više o putanji kamatnih stopa.",
+      "title": "",
+      "tts": {
+        "text": "Šesnaestog i sedamnaestog lipnja. Nakon toga ćemo znati puno više o putanji kamatnih stopa.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dobro mjesto za završetak. Ron, hvala ti.",
+      "text_markdown": "Dobro mjesto za završetak. Ron, hvala ti.",
+      "title": "",
+      "tts": {
+        "text": "Dobro mjesto za završetak. Ron, hvala ti.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bilo kada, Vindy.",
+      "text_markdown": "Bilo kada, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bilo kada, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "To je bio AI This Week za 13. svibnja 2026. Novo izdanje sljedeće srijede. Do tada, čuvajte se.",
+      "text_markdown": "To je bio AI This Week za 13. svibnja 2026. Novo izdanje sljedeće srijede. Do tada, čuvajte se.",
+      "title": "",
+      "tts": {
+        "text": "To je bio AI This Week za trinaestog svibnja dvije tisuće dvadeset šeste. Novo izdanje sljedeće srijede. Do tada, čuvajte se.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

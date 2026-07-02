@@ -1,0 +1,6728 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_volcanoes",
+  "language": "ja",
+  "total_segments": 422,
+  "segments": [
+    {
+      "block_type": "heading",
+      "id": "ch01-001",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "地球からの炎",
+      "text_markdown": "地球からの炎",
+      "title": "地球からの炎"
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-002",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "火山とは、地球の表面にある開口部で、地下からとけた岩石やガス、火山灰が出てくるところです。",
+      "text_markdown": "火山とは、地球の表面にある開口部で、地下からとけた岩石やガス、火山灰が出てくるところです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山とは、地球の表面にある開口部で、地下からとけた岩石やガス、火山灰が出てくるところです。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-003",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "「火山」という言葉は、ローマ神話の火の神バルカンに由来します。",
+      "text_markdown": "「火山」という言葉は、ローマ神話の火の神バルカンに由来します。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "「火山」という言葉は、ローマ神話の火の神バルカンに由来します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-004",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "火山はめずらしいものではありません。",
+      "text_markdown": "火山はめずらしいものではありません。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山はめずらしいものではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-005",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "陸地には、活動する可能性のある火山がおよそ1,500もあります。",
+      "text_markdown": "陸地には、活動する可能性のある火山がおよそ1,500もあります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "陸地には、活動する可能性のある火山がおよそせんごひゃくもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-006",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "海の底にはもっとたくさんの火山があります。",
+      "text_markdown": "海の底にはもっとたくさんの火山があります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "海の底にはもっとたくさんの火山があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-007",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "火山の噴火は、地球でもっとも強力な出来事のひとつです。",
+      "text_markdown": "火山の噴火は、地球でもっとも強力な出来事のひとつです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山の噴火は、地球でもっとも強力な出来事のひとつです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-008",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "噴火とは、火山の中から物質が放出されることです。",
+      "text_markdown": "噴火とは、火山の中から物質が放出されることです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "噴火とは、火山の中から物質が放出されることです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-009",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "おだやかな噴火もあります。",
+      "text_markdown": "おだやかな噴火もあります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "おだやかな噴火もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-010",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "溶岩がゆっくりと斜面を流れ下ります。",
+      "text_markdown": "溶岩がゆっくりと斜面を流れ下ります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "溶岩がゆっくりと斜面を流れ下ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-011",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "溶岩とは、地表に達したとけた岩石のことです。",
+      "text_markdown": "溶岩とは、地表に達したとけた岩石のことです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "溶岩とは、地表に達したとけた岩石のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-012",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "はげしい噴火もあります。",
+      "text_markdown": "はげしい噴火もあります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "はげしい噴火もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-013",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "岩石や火山灰やガスを空高くふき上げます。",
+      "text_markdown": "岩石や火山灰やガスを空高くふき上げます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "岩石や火山灰やガスを空高くふき上げます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-014",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "もっとも大きな噴火は、景色をまるごと変えてしまいます。",
+      "text_markdown": "もっとも大きな噴火は、景色をまるごと変えてしまいます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "もっとも大きな噴火は、景色をまるごと変えてしまいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-015",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "火山があるのは、地球の内部が熱いからです。",
+      "text_markdown": "火山があるのは、地球の内部が熱いからです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山があるのは、地球の内部が熱いからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-016",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "深くなればなるほど、温度は高くなります。",
+      "text_markdown": "深くなればなるほど、温度は高くなります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "深くなればなるほど、温度は高くなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-017",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "地球の中心部の温度は、およそ5,500度にもなります。",
+      "text_markdown": "地球の中心部の温度は、およそ5,500度にもなります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "地球の中心部の温度は、およそごせんごひゃくどにもなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-018",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "それは太陽の表面とほぼ同じ温度です。",
+      "text_markdown": "それは太陽の表面とほぼ同じ温度です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "それは太陽の表面とほぼ同じ温度です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-019",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "この内部の熱が、岩石の動きや火山の噴火を引き起こしています。",
+      "text_markdown": "この内部の熱が、岩石の動きや火山の噴火を引き起こしています。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "この内部の熱が、岩石の動きや火山の噴火を引き起こしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-020",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "人間は歴史を通じてずっと火山のそばでくらしてきました。",
+      "text_markdown": "人間は歴史を通じてずっと火山のそばでくらしてきました。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "人間は歴史を通じてずっと火山のそばでくらしてきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-021",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "古代文明は火山の斜面に都市を築きました。",
+      "text_markdown": "古代文明は火山の斜面に都市を築きました。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "古代文明は火山の斜面に都市を築きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-022",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "火山の土壌はミネラルが豊富です。",
+      "text_markdown": "火山の土壌はミネラルが豊富です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山の土壌はミネラルが豊富です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-023",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "ミネラルとは、特定の化学組成を持つ天然の無生物のことです。",
+      "text_markdown": "ミネラルとは、特定の化学組成を持つ天然の無生物のことです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "ミネラルとは、特定の化学組成を持つ天然の無生物のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-024",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "火山の土壌では植物がよく育ちます。",
+      "text_markdown": "火山の土壌では植物がよく育ちます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山の土壌では植物がよく育ちます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-025",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "農家の人たちは昔からそのことを知っていました。",
+      "text_markdown": "農家の人たちは昔からそのことを知っていました。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "農家の人たちは昔からそのことを知っていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-026",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "噴火の危険は、肥沃な土地を手に入れるための代償です。",
+      "text_markdown": "噴火の危険は、肥沃な土地を手に入れるための代償です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "噴火の危険は、肥沃な土地を手に入れるための代償です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-027",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "火山は地球だけにあるわけではありません。",
+      "text_markdown": "火山は地球だけにあるわけではありません。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山は地球だけにあるわけではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-028",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "火星には、太陽系最大の火山があります。",
+      "text_markdown": "火星には、太陽系最大の火山があります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火星には、太陽系最大の火山があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-029",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "それはオリンポス山と呼ばれています。",
+      "text_markdown": "それはオリンポス山と呼ばれています。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "それはオリンポス山と呼ばれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-030",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "高さはおよそ22キロメートルもあります。",
+      "text_markdown": "高さはおよそ22キロメートルもあります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "高さはおよそにじゅうにキロメートルもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-031",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "それはエベレスト山の高さのほぼ3倍です。",
+      "text_markdown": "それはエベレスト山の高さのほぼ3倍です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "それはエベレスト山の高さのほぼ3倍です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-032",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "木星の衛星イオは、太陽系でもっとも火山活動がさかんな天体です。",
+      "text_markdown": "木星の衛星イオは、太陽系でもっとも火山活動がさかんな天体です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "木星の衛星イオは、太陽系でもっとも火山活動がさかんな天体です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-033",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "その表面は噴火によってたえず変化しています。",
+      "text_markdown": "その表面は噴火によってたえず変化しています。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "その表面は噴火によってたえず変化しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-034",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "火山は、岩石でできた天体に十分な内部熱があればどこにでもできます。",
+      "text_markdown": "火山は、岩石でできた天体に十分な内部熱があればどこにでもできます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山は、岩石でできた天体に十分な内部熱があればどこにでもできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-035",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "地球では、火山はランダムに分布しているわけではありません。",
+      "text_markdown": "地球では、火山はランダムに分布しているわけではありません。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "地球では、火山はランダムに分布しているわけではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-036",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "特定の帯やゾーンに集中しています。",
+      "text_markdown": "特定の帯やゾーンに集中しています。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "特定の帯やゾーンに集中しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-037",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "もっとも有名なのは環太平洋火山帯です。",
+      "text_markdown": "もっとも有名なのは環太平洋火山帯です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "もっとも有名なのは環太平洋火山帯です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-038",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "環太平洋火山帯は、太平洋を囲む馬蹄形の火山と地震のゾーンです。",
+      "text_markdown": "環太平洋火山帯は、太平洋を囲む馬蹄形の火山と地震のゾーンです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "環太平洋火山帯は、太平洋を囲む馬蹄形の火山と地震のゾーンです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-039",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "地球の活火山のおよそ75パーセントが、この帯にそって並んでいます。",
+      "text_markdown": "地球の活火山のおよそ75パーセントが、この帯にそって並んでいます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "地球の活火山のおよそななじゅうごパーセントが、この帯にそって並んでいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-040",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "環太平洋火山帯があるのは、プレートの動きのためです。",
+      "text_markdown": "環太平洋火山帯があるのは、プレートの動きのためです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "環太平洋火山帯があるのは、プレートの動きのためです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-041",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "プレートとは、地球の外側の層をつくっている巨大な岩石の板のことです。",
+      "text_markdown": "プレートとは、地球の外側の層をつくっている巨大な岩石の板のことです。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "プレートとは、地球の外側の層をつくっている巨大な岩石の板のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-042",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "火山は破壊的です。",
+      "text_markdown": "火山は破壊的です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山は破壊的です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-043",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "都市を埋めてしまいます。",
+      "text_markdown": "都市を埋めてしまいます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "都市を埋めてしまいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-044",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "空を暗くします。",
+      "text_markdown": "空を暗くします。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "空を暗くします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-045",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "気候を変えます。",
+      "text_markdown": "気候を変えます。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "気候を変えます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-046",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "しかし、火山は創造もします。",
+      "text_markdown": "しかし、火山は創造もします。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "しかし、火山は創造もします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-047",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "島をつくります。",
+      "text_markdown": "島をつくります。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "島をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-048",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "土壌を豊かにします。",
+      "text_markdown": "土壌を豊かにします。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "土壌を豊かにします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-049",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "大気をつくるガスを放出します。",
+      "text_markdown": "大気をつくるガスを放出します。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "大気をつくるガスを放出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-050",
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "火山の物語は、地球そのものの物語です。",
+      "text_markdown": "火山の物語は、地球そのものの物語です。",
+      "title": "地球からの炎",
+      "tts": {
+        "text": "火山の物語は、地球そのものの物語です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch02-051",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "地球の内部",
+      "text_markdown": "地球の内部",
+      "title": "地球の内部"
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-052",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "地球には層があります。",
+      "text_markdown": "地球には層があります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地球には層があります。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-053",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "これらの層を理解することは、火山を理解するために欠かせません。",
+      "text_markdown": "これらの層を理解することは、火山を理解するために欠かせません。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "これらの層を理解することは、火山を理解するために欠かせません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-054",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "火山から噴き出す物質は、地球の奥深くからやってきます。",
+      "text_markdown": "火山から噴き出す物質は、地球の奥深くからやってきます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "火山から噴き出す物質は、地球の奥深くからやってきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-055",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "いちばん外側の層は地殻です。",
+      "text_markdown": "いちばん外側の層は地殻です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "いちばん外側の層は地殻です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-056",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "地殻は、地球の表面をおおう薄くてかたい岩石の殻です。",
+      "text_markdown": "地殻は、地球の表面をおおう薄くてかたい岩石の殻です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地殻は、地球の表面をおおう薄くてかたい岩石の殻です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-057",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "みなさんが立っている地面のことです。",
+      "text_markdown": "みなさんが立っている地面のことです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "みなさんが立っている地面のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-058",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "地殻には2つの種類があります。",
+      "text_markdown": "地殻には2つの種類があります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地殻には2つの種類があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-059",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "大陸地殻は陸地をつくっています。",
+      "text_markdown": "大陸地殻は陸地をつくっています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "大陸地殻は陸地をつくっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-060",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "厚さは平均およそ35キロメートルです。",
+      "text_markdown": "厚さは平均およそ35キロメートルです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "厚さは平均およそさんじゅうごキロメートルです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-061",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "海洋地殻は海底をつくっています。",
+      "text_markdown": "海洋地殻は海底をつくっています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "海洋地殻は海底をつくっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-062",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "薄くて、平均およそ7キロメートルです。",
+      "text_markdown": "薄くて、平均およそ7キロメートルです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "薄くて、平均およそななキロメートルです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-063",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "どちらの地殻もかたい岩石ですが、成分と密度がちがいます。",
+      "text_markdown": "どちらの地殻もかたい岩石ですが、成分と密度がちがいます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "どちらの地殻もかたい岩石ですが、成分と密度がちがいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-064",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "密度とは、物質の単位体積あたりの質量のことです。",
+      "text_markdown": "密度とは、物質の単位体積あたりの質量のことです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "密度とは、物質の単位体積あたりの質量のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-065",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "地殻の下にはマントルがあります。",
+      "text_markdown": "地殻の下にはマントルがあります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地殻の下にはマントルがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-066",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "マントルは、およそ2,900キロメートルの深さまで広がる厚い岩石の層です。",
+      "text_markdown": "マントルは、およそ2,900キロメートルの深さまで広がる厚い岩石の層です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マントルは、およそにせんきゅうひゃくキロメートルの深さまで広がる厚い岩石の層です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-067",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "マントルは液体ではありません。",
+      "text_markdown": "マントルは液体ではありません。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マントルは液体ではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-068",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "大部分は固体です。",
+      "text_markdown": "大部分は固体です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "大部分は固体です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-069",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "しかし、とても熱く、大きな圧力がかかっているので、長い時間をかけてゆっくりと流れます。",
+      "text_markdown": "しかし、とても熱く、大きな圧力がかかっているので、長い時間をかけてゆっくりと流れます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "しかし、とても熱く、大きな圧力がかかっているので、長い時間をかけてゆっくりと流れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-070",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "このゆっくりとした流れを対流といいます。",
+      "text_markdown": "このゆっくりとした流れを対流といいます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "このゆっくりとした流れを対流といいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-071",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "対流とは、温度の差によって物質が動くことです。",
+      "text_markdown": "対流とは、温度の差によって物質が動くことです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "対流とは、温度の差によって物質が動くことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-072",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "熱い物質は上に上がります。",
+      "text_markdown": "熱い物質は上に上がります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "熱い物質は上に上がります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-073",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "冷たい物質は下に沈みます。",
+      "text_markdown": "冷たい物質は下に沈みます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "冷たい物質は下に沈みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-074",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "この循環がマントルの中に流れをつくり、その上のプレートを動かしています。",
+      "text_markdown": "この循環がマントルの中に流れをつくり、その上のプレートを動かしています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "この循環がマントルの中に流れをつくり、その上のプレートを動かしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-075",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "マントルの上の方、地殻のすぐ下には、アセノスフェアとよばれるゾーンがあります。",
+      "text_markdown": "マントルの上の方、地殻のすぐ下には、アセノスフェアとよばれるゾーンがあります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マントルの上の方、地殻のすぐ下には、アセノスフェアとよばれるゾーンがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-076",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "アセノスフェアは、一部がとけたやわらかい岩石の層です。",
+      "text_markdown": "アセノスフェアは、一部がとけたやわらかい岩石の層です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "アセノスフェアは、一部がとけたやわらかい岩石の層です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-077",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "「一部がとけている」とは、岩石の一部がとけて、残りは固体のままということです。",
+      "text_markdown": "「一部がとけている」とは、岩石の一部がとけて、残りは固体のままということです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "「一部がとけている」とは、岩石の一部がとけて、残りは固体のままということです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-078",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "プレートはアセノスフェアの上に乗って、その上をすべっています。",
+      "text_markdown": "プレートはアセノスフェアの上に乗って、その上をすべっています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "プレートはアセノスフェアの上に乗って、その上をすべっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-079",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "アセノスフェアは、ほとんどのマグマが生まれる場所です。",
+      "text_markdown": "アセノスフェアは、ほとんどのマグマが生まれる場所です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "アセノスフェアは、ほとんどのマグマが生まれる場所です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-080",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "マグマとは、地球の表面の下にあるとけた岩石のことです。",
+      "text_markdown": "マグマとは、地球の表面の下にあるとけた岩石のことです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マグマとは、地球の表面の下にあるとけた岩石のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-081",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "マグマが地表に出ると、溶岩とよばれます。",
+      "text_markdown": "マグマが地表に出ると、溶岩とよばれます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マグマが地表に出ると、溶岩とよばれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-082",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "マントルの下には外核があります。",
+      "text_markdown": "マントルの下には外核があります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マントルの下には外核があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-083",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "外核は、主に鉄とニッケルでできた液体の金属の層です。",
+      "text_markdown": "外核は、主に鉄とニッケルでできた液体の金属の層です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "外核は、主に鉄とニッケルでできた液体の金属の層です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-084",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "外核はおよそ2,900キロメートルから5,100キロメートルの深さにあります。",
+      "text_markdown": "外核はおよそ2,900キロメートルから5,100キロメートルの深さにあります。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "外核はおよそにせんきゅうひゃくキロメートルからごせんひゃくキロメートルの深さにあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-085",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "ここの温度はおよそ4,400度から6,100度です。",
+      "text_markdown": "ここの温度はおよそ4,400度から6,100度です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "ここの温度はおよそよんせんよんひゃくどからろくせんひゃくどです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-086",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "この液体の金属の動きが、地球の磁場を生み出しています。",
+      "text_markdown": "この液体の金属の動きが、地球の磁場を生み出しています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "この液体の金属の動きが、地球の磁場を生み出しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-087",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "いちばん中心にあるのが内核です。",
+      "text_markdown": "いちばん中心にあるのが内核です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "いちばん中心にあるのが内核です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-088",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "内核は、鉄とニッケルでできた固体の球です。",
+      "text_markdown": "内核は、鉄とニッケルでできた固体の球です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "内核は、鉄とニッケルでできた固体の球です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-089",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "温度はおよそ5,500度にもなりますが、圧力がとても大きいので固体のままです。",
+      "text_markdown": "温度はおよそ5,500度にもなりますが、圧力がとても大きいので固体のままです。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "温度はおよそごせんごひゃくどにもなりますが、圧力がとても大きいので固体のままです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-090",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "地球の中心の圧力は、地表のおよそ360万倍です。",
+      "text_markdown": "地球の中心の圧力は、地表のおよそ360万倍です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地球の中心の圧力は、地表のおよそさんびゃくろくじゅうまんばいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-091",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "熱は核からマントルを通って地表に向かって流れます。",
+      "text_markdown": "熱は核からマントルを通って地表に向かって流れます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "熱は核からマントルを通って地表に向かって流れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-092",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "この熱がすべてを動かしています。",
+      "text_markdown": "この熱がすべてを動かしています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "この熱がすべてを動かしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-093",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "マントルの中の対流を生み出します。",
+      "text_markdown": "マントルの中の対流を生み出します。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マントルの中の対流を生み出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-094",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "プレートを動かします。",
+      "text_markdown": "プレートを動かします。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "プレートを動かします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-095",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "岩石をとかしてマグマにします。",
+      "text_markdown": "岩石をとかしてマグマにします。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "岩石をとかしてマグマにします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-096",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "マグマを地殻の割れ目や弱い部分から上に押し上げます。",
+      "text_markdown": "マグマを地殻の割れ目や弱い部分から上に押し上げます。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "マグマを地殻の割れ目や弱い部分から上に押し上げます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-097",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "そのマグマが地表に達すると、火山が噴火します。",
+      "text_markdown": "そのマグマが地表に達すると、火山が噴火します。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "そのマグマが地表に達すると、火山が噴火します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-098",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "地球は冷たくて死んだ岩の塊ではありません。",
+      "text_markdown": "地球は冷たくて死んだ岩の塊ではありません。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "地球は冷たくて死んだ岩の塊ではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-099",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "活動的で、熱い惑星です。",
+      "text_markdown": "活動的で、熱い惑星です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "活動的で、熱い惑星です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-100",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "その内部はかき回され、流れ続けています。",
+      "text_markdown": "その内部はかき回され、流れ続けています。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "その内部はかき回され、流れ続けています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-101",
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "火山は、私たちの足の下にかくされた熱と動きの目に見える証拠です。",
+      "text_markdown": "火山は、私たちの足の下にかくされた熱と動きの目に見える証拠です。",
+      "title": "地球の内部",
+      "tts": {
+        "text": "火山は、私たちの足の下にかくされた熱と動きの目に見える証拠です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch03-102",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "プレート",
+      "text_markdown": "プレート",
+      "title": "プレート"
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-103",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "地球の外側の殻は、プレートとよばれる大きなかけらに分かれています。",
+      "text_markdown": "地球の外側の殻は、プレートとよばれる大きなかけらに分かれています。",
+      "title": "プレート",
+      "tts": {
+        "text": "地球の外側の殻は、プレートとよばれる大きなかけらに分かれています。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-104",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "プレートとは、地殻とマントルの上の部分をふくむ、かたい岩石の板のことです。",
+      "text_markdown": "プレートとは、地殻とマントルの上の部分をふくむ、かたい岩石の板のことです。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートとは、地殻とマントルの上の部分をふくむ、かたい岩石の板のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-105",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "地殻とこの上部マントルの層を合わせたものを、リソスフェアといいます。",
+      "text_markdown": "地殻とこの上部マントルの層を合わせたものを、リソスフェアといいます。",
+      "title": "プレート",
+      "tts": {
+        "text": "地殻とこの上部マントルの層を合わせたものを、リソスフェアといいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-106",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "リソスフェアは、地球のかたい外側の殻です。",
+      "text_markdown": "リソスフェアは、地球のかたい外側の殻です。",
+      "title": "プレート",
+      "tts": {
+        "text": "リソスフェアは、地球のかたい外側の殻です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-107",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "主要なプレートはおよそ15枚あり、さらに小さなプレートもいくつかあります。",
+      "text_markdown": "主要なプレートはおよそ15枚あり、さらに小さなプレートもいくつかあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "主要なプレートはおよそじゅうごまいあり、さらに小さなプレートもいくつかあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-108",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "太平洋プレートがいちばん大きいです。",
+      "text_markdown": "太平洋プレートがいちばん大きいです。",
+      "title": "プレート",
+      "tts": {
+        "text": "太平洋プレートがいちばん大きいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-109",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "北アメリカプレート、ユーラシアプレート、アフリカプレートなどもあります。",
+      "text_markdown": "北アメリカプレート、ユーラシアプレート、アフリカプレートなどもあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "北アメリカプレート、ユーラシアプレート、アフリカプレートなどもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-110",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "これらのプレートは止まっていません。",
+      "text_markdown": "これらのプレートは止まっていません。",
+      "title": "プレート",
+      "tts": {
+        "text": "これらのプレートは止まっていません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-111",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "動いています。",
+      "text_markdown": "動いています。",
+      "title": "プレート",
+      "tts": {
+        "text": "動いています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-112",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "すべったり、ぶつかったり、引きはなれたりします。",
+      "text_markdown": "すべったり、ぶつかったり、引きはなれたりします。",
+      "title": "プレート",
+      "tts": {
+        "text": "すべったり、ぶつかったり、引きはなれたりします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-113",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "その動きはゆっくりです。",
+      "text_markdown": "その動きはゆっくりです。",
+      "title": "プレート",
+      "tts": {
+        "text": "その動きはゆっくりです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-114",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "ほとんどのプレートは、1年に2センチメートルから10センチメートル動きます。",
+      "text_markdown": "ほとんどのプレートは、1年に2センチメートルから10センチメートル動きます。",
+      "title": "プレート",
+      "tts": {
+        "text": "ほとんどのプレートは、いちねんににセンチメートルからじゅうセンチメートル動きます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-115",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "それは、つめが伸びるのとほぼ同じ速さです。",
+      "text_markdown": "それは、つめが伸びるのとほぼ同じ速さです。",
+      "title": "プレート",
+      "tts": {
+        "text": "それは、つめが伸びるのとほぼ同じ速さです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-116",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "プレートが動くのは、その下のマントルの対流があるからです。",
+      "text_markdown": "プレートが動くのは、その下のマントルの対流があるからです。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートが動くのは、その下のマントルの対流があるからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-117",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "熱い岩石がマントルの深くから上がってきます。",
+      "text_markdown": "熱い岩石がマントルの深くから上がってきます。",
+      "title": "プレート",
+      "tts": {
+        "text": "熱い岩石がマントルの深くから上がってきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-118",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "リソスフェアの下で横に広がります。",
+      "text_markdown": "リソスフェアの下で横に広がります。",
+      "title": "プレート",
+      "tts": {
+        "text": "リソスフェアの下で横に広がります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-119",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "プレートをいっしょに引きずっていきます。",
+      "text_markdown": "プレートをいっしょに引きずっていきます。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートをいっしょに引きずっていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-120",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "そして冷えて、また下に沈みます。",
+      "text_markdown": "そして冷えて、また下に沈みます。",
+      "title": "プレート",
+      "tts": {
+        "text": "そして冷えて、また下に沈みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-121",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "この循環はたえずくりかえされています。",
+      "text_markdown": "この循環はたえずくりかえされています。",
+      "title": "プレート",
+      "tts": {
+        "text": "この循環はたえずくりかえされています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-122",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "ほとんどの火山は、プレートが出合う境界にできます。",
+      "text_markdown": "ほとんどの火山は、プレートが出合う境界にできます。",
+      "title": "プレート",
+      "tts": {
+        "text": "ほとんどの火山は、プレートが出合う境界にできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-123",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "プレートの境界には3つの種類があります。",
+      "text_markdown": "プレートの境界には3つの種類があります。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートの境界には3つの種類があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-124",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "それぞれの種類が、ちがう火山活動を生み出します。",
+      "text_markdown": "それぞれの種類が、ちがう火山活動を生み出します。",
+      "title": "プレート",
+      "tts": {
+        "text": "それぞれの種類が、ちがう火山活動を生み出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-125",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "発散境界では、プレートが引きはなれます。",
+      "text_markdown": "発散境界では、プレートが引きはなれます。",
+      "title": "プレート",
+      "tts": {
+        "text": "発散境界では、プレートが引きはなれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-126",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "「発散」とは、おたがいから離れていくことです。",
+      "text_markdown": "「発散」とは、おたがいから離れていくことです。",
+      "title": "プレート",
+      "tts": {
+        "text": "「発散」とは、おたがいから離れていくことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-127",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "マグマがマントルから上がってきて、すき間を埋めます。",
+      "text_markdown": "マグマがマントルから上がってきて、すき間を埋めます。",
+      "title": "プレート",
+      "tts": {
+        "text": "マグマがマントルから上がってきて、すき間を埋めます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-128",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "これが新しい地殻をつくります。",
+      "text_markdown": "これが新しい地殻をつくります。",
+      "title": "プレート",
+      "tts": {
+        "text": "これが新しい地殻をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-129",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "大西洋中央海嶺は、発散境界です。",
+      "text_markdown": "大西洋中央海嶺は、発散境界です。",
+      "title": "プレート",
+      "tts": {
+        "text": "大西洋中央海嶺は、発散境界です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-130",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "大西洋の真ん中を走っています。",
+      "text_markdown": "大西洋の真ん中を走っています。",
+      "title": "プレート",
+      "tts": {
+        "text": "大西洋の真ん中を走っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-131",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "アイスランドはこの海嶺の上にあります。",
+      "text_markdown": "アイスランドはこの海嶺の上にあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "アイスランドはこの海嶺の上にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-132",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "アイスランドには活火山がたくさんあります。マグマがたえず地表に上がってくるからです。",
+      "text_markdown": "アイスランドには活火山がたくさんあります。マグマがたえず地表に上がってくるからです。",
+      "title": "プレート",
+      "tts": {
+        "text": "アイスランドには活火山がたくさんあります。マグマがたえず地表に上がってくるからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-133",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "収束境界では、プレートがぶつかり合います。",
+      "text_markdown": "収束境界では、プレートがぶつかり合います。",
+      "title": "プレート",
+      "tts": {
+        "text": "収束境界では、プレートがぶつかり合います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-134",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "「収束」とは、おたがいに近づいていくことです。",
+      "text_markdown": "「収束」とは、おたがいに近づいていくことです。",
+      "title": "プレート",
+      "tts": {
+        "text": "「収束」とは、おたがいに近づいていくことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-135",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "海洋プレートと大陸プレートがぶつかると、密度が大きい海洋プレートが軽い大陸プレートの下にもぐりこみます。",
+      "text_markdown": "海洋プレートと大陸プレートがぶつかると、密度が大きい海洋プレートが軽い大陸プレートの下にもぐりこみます。",
+      "title": "プレート",
+      "tts": {
+        "text": "海洋プレートと大陸プレートがぶつかると、密度が大きい海洋プレートが軽い大陸プレートの下にもぐりこみます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-136",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "このプロセスを沈み込みといいます。",
+      "text_markdown": "このプロセスを沈み込みといいます。",
+      "title": "プレート",
+      "tts": {
+        "text": "このプロセスを沈み込みといいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-137",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "沈み込んだプレートはマントルの中に降りていき、強い熱でとけます。",
+      "text_markdown": "沈み込んだプレートはマントルの中に降りていき、強い熱でとけます。",
+      "title": "プレート",
+      "tts": {
+        "text": "沈み込んだプレートはマントルの中に降りていき、強い熱でとけます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-138",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "とけた岩石はマグマとなって上がり、その上の火山に燃料をあたえます。",
+      "text_markdown": "とけた岩石はマグマとなって上がり、その上の火山に燃料をあたえます。",
+      "title": "プレート",
+      "tts": {
+        "text": "とけた岩石はマグマとなって上がり、その上の火山に燃料をあたえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-139",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "南アメリカのアンデス山脈は、このようにしてできました。",
+      "text_markdown": "南アメリカのアンデス山脈は、このようにしてできました。",
+      "title": "プレート",
+      "tts": {
+        "text": "南アメリカのアンデス山脈は、このようにしてできました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-140",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "アメリカ北西部のカスケード山脈も、同じようにしてできました。",
+      "text_markdown": "アメリカ北西部のカスケード山脈も、同じようにしてできました。",
+      "title": "プレート",
+      "tts": {
+        "text": "アメリカ北西部のカスケード山脈も、同じようにしてできました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-141",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "トランスフォーム境界では、プレートが水平にすれちがいます。",
+      "text_markdown": "トランスフォーム境界では、プレートが水平にすれちがいます。",
+      "title": "プレート",
+      "tts": {
+        "text": "トランスフォーム境界では、プレートが水平にすれちがいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-142",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "トランスフォーム境界は地震を起こしますが、ふつう火山はできません。",
+      "text_markdown": "トランスフォーム境界は地震を起こしますが、ふつう火山はできません。",
+      "title": "プレート",
+      "tts": {
+        "text": "トランスフォーム境界は地震を起こしますが、ふつう火山はできません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-143",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "カリフォルニアのサンアンドレアス断層は、トランスフォーム境界です。",
+      "text_markdown": "カリフォルニアのサンアンドレアス断層は、トランスフォーム境界です。",
+      "title": "プレート",
+      "tts": {
+        "text": "カリフォルニアのサンアンドレアス断層は、トランスフォーム境界です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-144",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "プレートの境界から遠くはなれたところにできる火山もあります。",
+      "text_markdown": "プレートの境界から遠くはなれたところにできる火山もあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートの境界から遠くはなれたところにできる火山もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-145",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "これらはホットスポット火山とよばれています。",
+      "text_markdown": "これらはホットスポット火山とよばれています。",
+      "title": "プレート",
+      "tts": {
+        "text": "これらはホットスポット火山とよばれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-146",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "ホットスポットとは、マントルの深くからとても熱い岩石の柱が上がってくる場所です。",
+      "text_markdown": "ホットスポットとは、マントルの深くからとても熱い岩石の柱が上がってくる場所です。",
+      "title": "プレート",
+      "tts": {
+        "text": "ホットスポットとは、マントルの深くからとても熱い岩石の柱が上がってくる場所です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-147",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "その柱は、上のプレートをとかして貫きます。",
+      "text_markdown": "その柱は、上のプレートをとかして貫きます。",
+      "title": "プレート",
+      "tts": {
+        "text": "その柱は、上のプレートをとかして貫きます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-148",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "ハワイ諸島はホットスポットの上にできました。",
+      "text_markdown": "ハワイ諸島はホットスポットの上にできました。",
+      "title": "プレート",
+      "tts": {
+        "text": "ハワイ諸島はホットスポットの上にできました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-149",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "太平洋プレートが動かないホットスポットの上を移動しています。",
+      "text_markdown": "太平洋プレートが動かないホットスポットの上を移動しています。",
+      "title": "プレート",
+      "tts": {
+        "text": "太平洋プレートが動かないホットスポットの上を移動しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-150",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "それぞれの島は、プレートが柱の上を通りすぎるときにできました。",
+      "text_markdown": "それぞれの島は、プレートが柱の上を通りすぎるときにできました。",
+      "title": "プレート",
+      "tts": {
+        "text": "それぞれの島は、プレートが柱の上を通りすぎるときにできました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-151",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "いちばん古い島は、ホットスポットからいちばん遠くにあります。",
+      "text_markdown": "いちばん古い島は、ホットスポットからいちばん遠くにあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "いちばん古い島は、ホットスポットからいちばん遠くにあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-152",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "いちばん若い島であるハワイ島は、今まさにその上にあります。",
+      "text_markdown": "いちばん若い島であるハワイ島は、今まさにその上にあります。",
+      "title": "プレート",
+      "tts": {
+        "text": "いちばん若い島であるハワイ島は、今まさにその上にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-153",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "プレートが、火山がその場所にある理由です。",
+      "text_markdown": "プレートが、火山がその場所にある理由です。",
+      "title": "プレート",
+      "tts": {
+        "text": "プレートが、火山がその場所にある理由です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-154",
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "火山の地図は、プレートの境界の地図であり、そのあいだにホットスポットが点在しています。",
+      "text_markdown": "火山の地図は、プレートの境界の地図であり、そのあいだにホットスポットが点在しています。",
+      "title": "プレート",
+      "tts": {
+        "text": "火山の地図は、プレートの境界の地図であり、そのあいだにホットスポットが点在しています。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch04-155",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "火山はどうやって噴火するの？",
+      "text_markdown": "火山はどうやって噴火するの？",
+      "title": "火山はどうやって噴火するの？"
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-156",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "噴火は地下の深いところから始まります。",
+      "text_markdown": "噴火は地下の深いところから始まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "噴火は地下の深いところから始まります。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-157",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "マントルの中で岩石がとけてマグマになります。",
+      "text_markdown": "マントルの中で岩石がとけてマグマになります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マントルの中で岩石がとけてマグマになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-158",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "マグマは、まわりの固体の岩石よりも密度が小さいです。",
+      "text_markdown": "マグマは、まわりの固体の岩石よりも密度が小さいです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマは、まわりの固体の岩石よりも密度が小さいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-159",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "密度が小さいので、上に上がります。",
+      "text_markdown": "密度が小さいので、上に上がります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "密度が小さいので、上に上がります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-160",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "マグマは地殻の割れ目や弱い部分を通って上に押し上がります。",
+      "text_markdown": "マグマは地殻の割れ目や弱い部分を通って上に押し上がります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマは地殻の割れ目や弱い部分を通って上に押し上がります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-161",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "マグマは地下の部屋にたまります。",
+      "text_markdown": "マグマは地下の部屋にたまります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマは地下の部屋にたまります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-162",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "マグマだまりは、火山の下にあるとけた岩石の大きなプールです。",
+      "text_markdown": "マグマだまりは、火山の下にあるとけた岩石の大きなプールです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマだまりは、火山の下にあるとけた岩石の大きなプールです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-163",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "マグマだまりは、地表から数キロメートルから数十キロメートル下にあります。",
+      "text_markdown": "マグマだまりは、地表から数キロメートルから数十キロメートル下にあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマだまりは、地表から数キロメートルから数十キロメートル下にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-164",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "マグマは噴火するまで何千年もマグマだまりにとどまることがあります。",
+      "text_markdown": "マグマは噴火するまで何千年もマグマだまりにとどまることがあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマは噴火するまで何千年もマグマだまりにとどまることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-165",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "新しいマグマが下から流れ込み続け、圧力が高まります。",
+      "text_markdown": "新しいマグマが下から流れ込み続け、圧力が高まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "新しいマグマが下から流れ込み続け、圧力が高まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-166",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "圧力が噴火のかぎです。",
+      "text_markdown": "圧力が噴火のかぎです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "圧力が噴火のかぎです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-167",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "マグマには溶けたガスがふくまれています。",
+      "text_markdown": "マグマには溶けたガスがふくまれています。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマには溶けたガスがふくまれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-168",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "おもなガスは、水蒸気、二酸化炭素、二酸化硫黄です。",
+      "text_markdown": "おもなガスは、水蒸気、二酸化炭素、二酸化硫黄です。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "おもなガスは、水蒸気、二酸化炭素、二酸化硫黄です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-169",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "マグマが地下深くにあるあいだは、上の岩石の重みでガスは溶けたままです。",
+      "text_markdown": "マグマが地下深くにあるあいだは、上の岩石の重みでガスは溶けたままです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマが地下深くにあるあいだは、上の岩石の重みでガスは溶けたままです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-170",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "マグマが上がって圧力が下がると、ガスが溶液から出てきます。",
+      "text_markdown": "マグマが上がって圧力が下がると、ガスが溶液から出てきます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマが上がって圧力が下がると、ガスが溶液から出てきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-171",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "あわができます。",
+      "text_markdown": "あわができます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "あわができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-172",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "これは、炭酸水のボトルを開けたときに起こることと似ています。",
+      "text_markdown": "これは、炭酸水のボトルを開けたときに起こることと似ています。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "これは、炭酸水のボトルを開けたときに起こることと似ています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-173",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "圧力が下がると、溶けていたガスがあわになります。",
+      "text_markdown": "圧力が下がると、溶けていたガスがあわになります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "圧力が下がると、溶けていたガスがあわになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-174",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "あわは上がるにつれて大きくなります。",
+      "text_markdown": "あわは上がるにつれて大きくなります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "あわは上がるにつれて大きくなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-175",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "あわがマグマを泡立たせ、密度を下げます。",
+      "text_markdown": "あわがマグマを泡立たせ、密度を下げます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "あわがマグマを泡立たせ、密度を下げます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-176",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "そのため、マグマはさらに速く上がっていきます。",
+      "text_markdown": "そのため、マグマはさらに速く上がっていきます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "そのため、マグマはさらに速く上がっていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-177",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "やがて、上の岩石がおさえきれないほど圧力が大きくなります。",
+      "text_markdown": "やがて、上の岩石がおさえきれないほど圧力が大きくなります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "やがて、上の岩石がおさえきれないほど圧力が大きくなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-178",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "火山が噴火します。",
+      "text_markdown": "火山が噴火します。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火山が噴火します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-179",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "噴火のしかたは、マグマの粘度とガスの量によって決まります。",
+      "text_markdown": "噴火のしかたは、マグマの粘度とガスの量によって決まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "噴火のしかたは、マグマの粘度とガスの量によって決まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-180",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "粘度とは、液体の流れやすさの尺度です。",
+      "text_markdown": "粘度とは、液体の流れやすさの尺度です。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "粘度とは、液体の流れやすさの尺度です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-181",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "粘度の低いマグマはサラサラしています。",
+      "text_markdown": "粘度の低いマグマはサラサラしています。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "粘度の低いマグマはサラサラしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-182",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "かんたんに流れます。",
+      "text_markdown": "かんたんに流れます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "かんたんに流れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-183",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "ガスがおだやかに抜けていきます。",
+      "text_markdown": "ガスがおだやかに抜けていきます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "ガスがおだやかに抜けていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-184",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "粘度の低いマグマの噴火は、溢流性になりやすいです。",
+      "text_markdown": "粘度の低いマグマの噴火は、溢流性になりやすいです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "粘度の低いマグマの噴火は、溢流性になりやすいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-185",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "溢流性とは、溶岩が爆発せずに流れ出ることです。",
+      "text_markdown": "溢流性とは、溶岩が爆発せずに流れ出ることです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "溢流性とは、溶岩が爆発せずに流れ出ることです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-186",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "ハワイの火山はこのように噴火します。",
+      "text_markdown": "ハワイの火山はこのように噴火します。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "ハワイの火山はこのように噴火します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-187",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "溶岩が火口から川のように流れ出たり、噴水のように噴き上がったりします。",
+      "text_markdown": "溶岩が火口から川のように流れ出たり、噴水のように噴き上がったりします。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "溶岩が火口から川のように流れ出たり、噴水のように噴き上がったりします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-188",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "火口とは、火山の頂上にあるお椀のような形のくぼみです。",
+      "text_markdown": "火口とは、火山の頂上にあるお椀のような形のくぼみです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火口とは、火山の頂上にあるお椀のような形のくぼみです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-189",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "粘度の高いマグマはドロドロして粘り気があります。",
+      "text_markdown": "粘度の高いマグマはドロドロして粘り気があります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "粘度の高いマグマはドロドロして粘り気があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-190",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "ガスがかんたんには抜けられません。",
+      "text_markdown": "ガスがかんたんには抜けられません。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "ガスがかんたんには抜けられません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-191",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "マグマが爆発するまで圧力が高まります。",
+      "text_markdown": "マグマが爆発するまで圧力が高まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマが爆発するまで圧力が高まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-192",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "このような噴火を爆発的噴火といいます。",
+      "text_markdown": "このような噴火を爆発的噴火といいます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "このような噴火を爆発的噴火といいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-193",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "火山灰やガスや岩石のかけらを、大気圏の高いところまで吹き上げます。",
+      "text_markdown": "火山灰やガスや岩石のかけらを、大気圏の高いところまで吹き上げます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火山灰やガスや岩石のかけらを、大気圏の高いところまで吹き上げます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-194",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "このかけらをテフラといいます。",
+      "text_markdown": "このかけらをテフラといいます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "このかけらをテフラといいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-195",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "テフラには、細かい火山灰から大きな岩まですべてがふくまれます。",
+      "text_markdown": "テフラには、細かい火山灰から大きな岩まですべてがふくまれます。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "テフラには、細かい火山灰から大きな岩まですべてがふくまれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-196",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "1980年のセントヘレンズ山は、爆発的噴火でした。",
+      "text_markdown": "1980年のセントヘレンズ山は、爆発的噴火でした。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "せんきゅうひゃくはちじゅうねんのセントヘレンズ山は、爆発的噴火でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-197",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "爆風が森林をなぎたおし、火山灰の雲が複数の州に広がりました。",
+      "text_markdown": "爆風が森林をなぎたおし、火山灰の雲が複数の州に広がりました。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "爆風が森林をなぎたおし、火山灰の雲が複数の州に広がりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-198",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "火砕流を起こす噴火もあります。",
+      "text_markdown": "火砕流を起こす噴火もあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火砕流を起こす噴火もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-199",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "火砕流とは、高温のガスと火山灰と岩石のかけらが高速で流れるものです。",
+      "text_markdown": "火砕流とは、高温のガスと火山灰と岩石のかけらが高速で流れるものです。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火砕流とは、高温のガスと火山灰と岩石のかけらが高速で流れるものです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-200",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "火砕流は時速700キロメートルをこえる速さで進むことがあります。",
+      "text_markdown": "火砕流は時速700キロメートルをこえる速さで進むことがあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火砕流は時速ななひゃくキロメートルをこえる速さで進むことがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-201",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "温度は700度をこえることもあります。",
+      "text_markdown": "温度は700度をこえることもあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "温度はななひゃくどをこえることもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-202",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "通り道にあるすべてのものを破壊します。",
+      "text_markdown": "通り道にあるすべてのものを破壊します。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "通り道にあるすべてのものを破壊します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-203",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "火砕流は、火山のもっとも危険な災害です。",
+      "text_markdown": "火砕流は、火山のもっとも危険な災害です。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "火砕流は、火山のもっとも危険な災害です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-204",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "すべての噴火が同じというわけではありません。",
+      "text_markdown": "すべての噴火が同じというわけではありません。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "すべての噴火が同じというわけではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-205",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "おだやかな溶岩流を何年も続ける火山もあります。",
+      "text_markdown": "おだやかな溶岩流を何年も続ける火山もあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "おだやかな溶岩流を何年も続ける火山もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-206",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "何百年も眠っていて、突然壊滅的な力で爆発する火山もあります。",
+      "text_markdown": "何百年も眠っていて、突然壊滅的な力で爆発する火山もあります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "何百年も眠っていて、突然壊滅的な力で爆発する火山もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-207",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "噴火のしかたはマグマによって決まります。",
+      "text_markdown": "噴火のしかたはマグマによって決まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "噴火のしかたはマグマによって決まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-208",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "マグマは、火山の下の地質によって決まります。",
+      "text_markdown": "マグマは、火山の下の地質によって決まります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "マグマは、火山の下の地質によって決まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-209",
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p54",
+      "text": "すべての火山には、それぞれの個性があります。",
+      "text_markdown": "すべての火山には、それぞれの個性があります。",
+      "title": "火山はどうやって噴火するの？",
+      "tts": {
+        "text": "すべての火山には、それぞれの個性があります。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch05-210",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "火山のしゅるい",
+      "text_markdown": "火山のしゅるい",
+      "title": "火山のしゅるい"
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-211",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "すべての火山が同じ形をしているわけではありません。",
+      "text_markdown": "すべての火山が同じ形をしているわけではありません。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "すべての火山が同じ形をしているわけではありません。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-212",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "火山の形は、何がどのように噴き出すかによって決まります。",
+      "text_markdown": "火山の形は、何がどのように噴き出すかによって決まります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "火山の形は、何がどのように噴き出すかによって決まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-213",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "科学者は、構造と噴火のしかたをもとに、火山をいくつかの種類に分けています。",
+      "text_markdown": "科学者は、構造と噴火のしかたをもとに、火山をいくつかの種類に分けています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "科学者は、構造と噴火のしかたをもとに、火山をいくつかの種類に分けています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-214",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "楯状火山は、広くてゆるやかな傾斜をしています。",
+      "text_markdown": "楯状火山は、広くてゆるやかな傾斜をしています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "楯状火山は、広くてゆるやかな傾斜をしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-215",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "地面に置いた戦士の楯のような形をしています。",
+      "text_markdown": "地面に置いた戦士の楯のような形をしています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "地面に置いた戦士の楯のような形をしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-216",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "楯状火山は、粘度の低い溶岩の噴火でできます。",
+      "text_markdown": "楯状火山は、粘度の低い溶岩の噴火でできます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "楯状火山は、粘度の低い溶岩の噴火でできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-217",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "溶岩はかんたんに流れ、冷える前に広い範囲に広がります。",
+      "text_markdown": "溶岩はかんたんに流れ、冷える前に広い範囲に広がります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "溶岩はかんたんに流れ、冷える前に広い範囲に広がります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-218",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "薄い溶岩流の層が何層も重なって、幅広いドーム状の山ができます。",
+      "text_markdown": "薄い溶岩流の層が何層も重なって、幅広いドーム状の山ができます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "薄い溶岩流の層が何層も重なって、幅広いドーム状の山ができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-219",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "ハワイのマウナ・ロアは楯状火山です。",
+      "text_markdown": "ハワイのマウナ・ロアは楯状火山です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ハワイのマウナ・ロアは楯状火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-220",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "体積で見ると、地球でもっとも大きな活火山です。",
+      "text_markdown": "体積で見ると、地球でもっとも大きな活火山です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "体積で見ると、地球でもっとも大きな活火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-221",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "海底のふもとから山頂まで、マウナ・ロアの高さは9,000メートル以上あります。",
+      "text_markdown": "海底のふもとから山頂まで、マウナ・ロアの高さは9,000メートル以上あります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "海底のふもとから山頂まで、マウナ・ロアの高さはきゅうせんメートル以上あります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-222",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "ふもとから頂上までで測ると、エベレスト山よりも高いのです。",
+      "text_markdown": "ふもとから頂上までで測ると、エベレスト山よりも高いのです。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ふもとから頂上までで測ると、エベレスト山よりも高いのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-223",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "成層火山は、高くて急で、円すい形をしています。",
+      "text_markdown": "成層火山は、高くて急で、円すい形をしています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "成層火山は、高くて急で、円すい形をしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-224",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "複合火山ともよばれています。",
+      "text_markdown": "複合火山ともよばれています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "複合火山ともよばれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-225",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "「複合」とは、いくつもの材料でできているという意味です。",
+      "text_markdown": "「複合」とは、いくつもの材料でできているという意味です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "「複合」とは、いくつもの材料でできているという意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-226",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "成層火山は、溶岩、火山灰、岩石のかけらの層が交互に重なってできています。",
+      "text_markdown": "成層火山は、溶岩、火山灰、岩石のかけらの層が交互に重なってできています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "成層火山は、溶岩、火山灰、岩石のかけらの層が交互に重なってできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-227",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "溢流性の噴火も爆発的な噴火もします。",
+      "text_markdown": "溢流性の噴火も爆発的な噴火もします。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "溢流性の噴火も爆発的な噴火もします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-228",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "交互に重なった層が、丈夫で急な構造をつくります。",
+      "text_markdown": "交互に重なった層が、丈夫で急な構造をつくります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "交互に重なった層が、丈夫で急な構造をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-229",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "日本の富士山は成層火山です。",
+      "text_markdown": "日本の富士山は成層火山です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "日本の富士山は成層火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-230",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "ワシントン州のレーニア山は成層火山です。",
+      "text_markdown": "ワシントン州のレーニア山は成層火山です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ワシントン州のレーニア山は成層火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-231",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "これらの火山は、地球でもっとも美しく、もっとも危険な火山のひとつです。",
+      "text_markdown": "これらの火山は、地球でもっとも美しく、もっとも危険な火山のひとつです。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "これらの火山は、地球でもっとも美しく、もっとも危険な火山のひとつです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-232",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "噴石丘は、もっとも小さくて単純な種類の火山です。",
+      "text_markdown": "噴石丘は、もっとも小さくて単純な種類の火山です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "噴石丘は、もっとも小さくて単純な種類の火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-233",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "ガスを多くふくむマグマが噴火して、小さなかけらを空中に飛ばすときにできます。",
+      "text_markdown": "ガスを多くふくむマグマが噴火して、小さなかけらを空中に飛ばすときにできます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ガスを多くふくむマグマが噴火して、小さなかけらを空中に飛ばすときにできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-234",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "このかけらはシンダーやスコリアとよばれ、噴出口のまわりに落ちて円すい形に積み重なります。",
+      "text_markdown": "このかけらはシンダーやスコリアとよばれ、噴出口のまわりに落ちて円すい形に積み重なります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "このかけらはシンダーやスコリアとよばれ、噴出口のまわりに落ちて円すい形に積み重なります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-235",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "噴出口とは、火山の物質が出てくる開口部のことです。",
+      "text_markdown": "噴出口とは、火山の物質が出てくる開口部のことです。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "噴出口とは、火山の物質が出てくる開口部のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-236",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "噴石丘の高さが300メートルをこえることはめったにありません。",
+      "text_markdown": "噴石丘の高さが300メートルをこえることはめったにありません。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "噴石丘の高さがさんびゃくメートルをこえることはめったにありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-237",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "大きな火山の側面にできることがよくあります。",
+      "text_markdown": "大きな火山の側面にできることがよくあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "大きな火山の側面にできることがよくあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-238",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "メキシコのパリクティンは有名な噴石丘です。",
+      "text_markdown": "メキシコのパリクティンは有名な噴石丘です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "メキシコのパリクティンは有名な噴石丘です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-239",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "1943年、農家のトウモロコシ畑に突然あらわれました。",
+      "text_markdown": "1943年、農家のトウモロコシ畑に突然あらわれました。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "せんきゅうひゃくよんじゅうさんねん、農家のトウモロコシ畑に突然あらわれました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-240",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "1年もたたないうちに、300メートル以上の高さに成長しました。",
+      "text_markdown": "1年もたたないうちに、300メートル以上の高さに成長しました。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "いちねんもたたないうちに、さんびゃくメートル以上の高さに成長しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-241",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "溶岩ドームは、ドロドロした粘り気のある溶岩がゆっくり噴出して、噴出口のまわりに積み重なるとできます。",
+      "text_markdown": "溶岩ドームは、ドロドロした粘り気のある溶岩がゆっくり噴出して、噴出口のまわりに積み重なるとできます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "溶岩ドームは、ドロドロした粘り気のある溶岩がゆっくり噴出して、噴出口のまわりに積み重なるとできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-242",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "溶岩はベタベタしすぎて、遠くまで流れません。",
+      "text_markdown": "溶岩はベタベタしすぎて、遠くまで流れません。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "溶岩はベタベタしすぎて、遠くまで流れません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-243",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "丸く盛り上がった塊をつくります。",
+      "text_markdown": "丸く盛り上がった塊をつくります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "丸く盛り上がった塊をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-244",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "溶岩ドームは危険なことがあります。",
+      "text_markdown": "溶岩ドームは危険なことがあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "溶岩ドームは危険なことがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-245",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "不安定です。",
+      "text_markdown": "不安定です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "不安定です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-246",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "ドームがくずれると、火砕流を引き起こすことがあります。",
+      "text_markdown": "ドームがくずれると、火砕流を引き起こすことがあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ドームがくずれると、火砕流を引き起こすことがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-247",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "1980年の噴火の後、セントヘレンズ山の火口の中に溶岩ドームが成長しました。",
+      "text_markdown": "1980年の噴火の後、セントヘレンズ山の火口の中に溶岩ドームが成長しました。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "せんきゅうひゃくはちじゅうねんの噴火の後、セントヘレンズ山の火口の中に溶岩ドームが成長しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-248",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "カルデラは火山の種類ではなく、火山地形の一種です。",
+      "text_markdown": "カルデラは火山の種類ではなく、火山地形の一種です。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "カルデラは火山の種類ではなく、火山地形の一種です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-249",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "カルデラとは、噴火中に火山のマグマだまりが空になったときにできる、大きな盆地状のくぼみです。",
+      "text_markdown": "カルデラとは、噴火中に火山のマグマだまりが空になったときにできる、大きな盆地状のくぼみです。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "カルデラとは、噴火中に火山のマグマだまりが空になったときにできる、大きな盆地状のくぼみです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-250",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "空になったマグマだまりの上の地面が内側に崩れ落ちます。",
+      "text_markdown": "空になったマグマだまりの上の地面が内側に崩れ落ちます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "空になったマグマだまりの上の地面が内側に崩れ落ちます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-251",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "カルデラは巨大になることがあります。",
+      "text_markdown": "カルデラは巨大になることがあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "カルデラは巨大になることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-252",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "ワイオミング州のイエローストーン・カルデラは、長さがおよそ72キロメートルあります。",
+      "text_markdown": "ワイオミング州のイエローストーン・カルデラは、長さがおよそ72キロメートルあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ワイオミング州のイエローストーン・カルデラは、長さがおよそななじゅうにキロメートルあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-253",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "およそ64万年前の大噴火でできました。",
+      "text_markdown": "およそ64万年前の大噴火でできました。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "およそろくじゅうよんまんねんまえの大噴火でできました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-254",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "イエローストーン地域全体がスーパーボルケーノの上にあります。",
+      "text_markdown": "イエローストーン地域全体がスーパーボルケーノの上にあります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "イエローストーン地域全体がスーパーボルケーノの上にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-255",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "スーパーボルケーノとは、火山爆発指数8の噴火を起こすことができ、1,000立方キロメートル以上の物質を噴出する火山のことです。",
+      "text_markdown": "スーパーボルケーノとは、火山爆発指数8の噴火を起こすことができ、1,000立方キロメートル以上の物質を噴出する火山のことです。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "スーパーボルケーノとは、火山爆発指数はちの噴火を起こすことができ、せん立方キロメートル以上の物質を噴出する火山のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-256",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "それぞれの種類の火山が、それを養うマグマについての物語を語っています。",
+      "text_markdown": "それぞれの種類の火山が、それを養うマグマについての物語を語っています。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "それぞれの種類の火山が、それを養うマグマについての物語を語っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-257",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "サラサラのマグマは広い楯状火山をつくります。",
+      "text_markdown": "サラサラのマグマは広い楯状火山をつくります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "サラサラのマグマは広い楯状火山をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-258",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "ドロドロのマグマは急な円すい形をつくります。",
+      "text_markdown": "ドロドロのマグマは急な円すい形をつくります。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "ドロドロのマグマは急な円すい形をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-259",
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "形は物理法則にしたがいます。",
+      "text_markdown": "形は物理法則にしたがいます。",
+      "title": "火山のしゅるい",
+      "tts": {
+        "text": "形は物理法則にしたがいます。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch06-260",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "溶岩と火山灰",
+      "text_markdown": "溶岩と火山灰",
+      "title": "溶岩と火山灰"
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-261",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "火山が噴火すると、液体、固体、気体の3つの形で物質を放出します。",
+      "text_markdown": "火山が噴火すると、液体、固体、気体の3つの形で物質を放出します。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山が噴火すると、液体、固体、気体の3つの形で物質を放出します。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-262",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "それぞれの形は異なるふるまいをし、異なる災害と景色をつくり出します。",
+      "text_markdown": "それぞれの形は異なるふるまいをし、異なる災害と景色をつくり出します。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "それぞれの形は異なるふるまいをし、異なる災害と景色をつくり出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-263",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "溶岩は液体の形です。",
+      "text_markdown": "溶岩は液体の形です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "溶岩は液体の形です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-264",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "地表に達したマグマのことです。",
+      "text_markdown": "地表に達したマグマのことです。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "地表に達したマグマのことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-265",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "溶岩の温度はふつう700度から1,200度です。",
+      "text_markdown": "溶岩の温度はふつう700度から1,200度です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "溶岩の温度はふつうななひゃくどからせんにひゃくどです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-266",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "温度によって色が決まります。",
+      "text_markdown": "温度によって色が決まります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "温度によって色が決まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-267",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "いちばん熱い溶岩は白や黄色に光ります。",
+      "text_markdown": "いちばん熱い溶岩は白や黄色に光ります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "いちばん熱い溶岩は白や黄色に光ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-268",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "少し冷めた溶岩はオレンジ色に光ります。",
+      "text_markdown": "少し冷めた溶岩はオレンジ色に光ります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "少し冷めた溶岩はオレンジ色に光ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-269",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "さらに冷えると、赤くなり、やがて暗くなります。",
+      "text_markdown": "さらに冷えると、赤くなり、やがて暗くなります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "さらに冷えると、赤くなり、やがて暗くなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-270",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "溶岩流にはいくつかの種類があります。",
+      "text_markdown": "溶岩流にはいくつかの種類があります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "溶岩流にはいくつかの種類があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-271",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "パホイホイ溶岩は、なめらかでロープのような模様があります。",
+      "text_markdown": "パホイホイ溶岩は、なめらかでロープのような模様があります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "パホイホイ溶岩は、なめらかでロープのような模様があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-272",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "この言葉はハワイ語です。",
+      "text_markdown": "この言葉はハワイ語です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "この言葉はハワイ語です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-273",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "パホイホイ溶岩は、流動性のある溶岩がゆっくり流れ、表面がなめらかに折りたたまれた皮のように冷えてできます。",
+      "text_markdown": "パホイホイ溶岩は、流動性のある溶岩がゆっくり流れ、表面がなめらかに折りたたまれた皮のように冷えてできます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "パホイホイ溶岩は、流動性のある溶岩がゆっくり流れ、表面がなめらかに折りたたまれた皮のように冷えてできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-274",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "アア溶岩はゴツゴツしてギザギザしています。",
+      "text_markdown": "アア溶岩はゴツゴツしてギザギザしています。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "アア溶岩はゴツゴツしてギザギザしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-275",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "アア溶岩は、溶岩が速く流れて、表面が鋭くでこぼこな塊に割れてできます。",
+      "text_markdown": "アア溶岩は、溶岩が速く流れて、表面が鋭くでこぼこな塊に割れてできます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "アア溶岩は、溶岩が速く流れて、表面が鋭くでこぼこな塊に割れてできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-276",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "枕状溶岩は、溶岩が水中で噴出するとできます。",
+      "text_markdown": "枕状溶岩は、溶岩が水中で噴出するとできます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "枕状溶岩は、溶岩が水中で噴出するとできます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-277",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "水が外側の表面をすぐに冷やし、まくらのような丸い塊ができます。",
+      "text_markdown": "水が外側の表面をすぐに冷やし、まくらのような丸い塊ができます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "水が外側の表面をすぐに冷やし、まくらのような丸い塊ができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-278",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "溶岩流は、おおいつくすすべてのものを破壊します。",
+      "text_markdown": "溶岩流は、おおいつくすすべてのものを破壊します。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "溶岩流は、おおいつくすすべてのものを破壊します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-279",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "道路や建物や農地を埋めてしまいます。",
+      "text_markdown": "道路や建物や農地を埋めてしまいます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "道路や建物や農地を埋めてしまいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-280",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "しかし溶岩流はたいてい、人びとが避難できるくらいゆっくりです。",
+      "text_markdown": "しかし溶岩流はたいてい、人びとが避難できるくらいゆっくりです。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "しかし溶岩流はたいてい、人びとが避難できるくらいゆっくりです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-281",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "溶岩流が直接人を殺すことはめったにありません。",
+      "text_markdown": "溶岩流が直接人を殺すことはめったにありません。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "溶岩流が直接人を殺すことはめったにありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-282",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "より大きな危険は、火山が空中に飛ばすものから来ます。",
+      "text_markdown": "より大きな危険は、火山が空中に飛ばすものから来ます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "より大きな危険は、火山が空中に飛ばすものから来ます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-283",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "火山灰は、もっとも広く広がる火山の産物です。",
+      "text_markdown": "火山灰は、もっとも広く広がる火山の産物です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山灰は、もっとも広く広がる火山の産物です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-284",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "火山灰は、たき火の灰とはちがいます。",
+      "text_markdown": "火山灰は、たき火の灰とはちがいます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山灰は、たき火の灰とはちがいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-285",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "粉々に砕かれた岩石やガラスの小さなかけらでできています。",
+      "text_markdown": "粉々に砕かれた岩石やガラスの小さなかけらでできています。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "粉々に砕かれた岩石やガラスの小さなかけらでできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-286",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "「粉砕」とは、とても細かい破片にくだくことです。",
+      "text_markdown": "「粉砕」とは、とても細かい破片にくだくことです。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "「粉砕」とは、とても細かい破片にくだくことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-287",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "そのかけらは鋭くて硬いです。",
+      "text_markdown": "そのかけらは鋭くて硬いです。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "そのかけらは鋭くて硬いです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-288",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "大きな噴火は、火山灰を成層圏まで送り込むことができます。",
+      "text_markdown": "大きな噴火は、火山灰を成層圏まで送り込むことができます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "大きな噴火は、火山灰を成層圏まで送り込むことができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-289",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "成層圏は、天気が変わるゾーンの上にある大気の層です。",
+      "text_markdown": "成層圏は、天気が変わるゾーンの上にある大気の層です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "成層圏は、天気が変わるゾーンの上にある大気の層です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-290",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "成層圏に達した火山灰は、世界中を移動することがあります。",
+      "text_markdown": "成層圏に達した火山灰は、世界中を移動することがあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "成層圏に達した火山灰は、世界中を移動することがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-291",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "降り積もる火山灰は景色を埋めます。",
+      "text_markdown": "降り積もる火山灰は景色を埋めます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "降り積もる火山灰は景色を埋めます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-292",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "数センチメートルの火山灰の重みで、屋根がつぶれることもあります。",
+      "text_markdown": "数センチメートルの火山灰の重みで、屋根がつぶれることもあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "数センチメートルの火山灰の重みで、屋根がつぶれることもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-293",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "火山灰はエンジンを詰まらせ、水を汚染し、肺にダメージをあたえます。",
+      "text_markdown": "火山灰はエンジンを詰まらせ、水を汚染し、肺にダメージをあたえます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山灰はエンジンを詰まらせ、水を汚染し、肺にダメージをあたえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-294",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "細かい火山灰の粒子は、何日も何週間も空中にただよい続けます。",
+      "text_markdown": "細かい火山灰の粒子は、何日も何週間も空中にただよい続けます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "細かい火山灰の粒子は、何日も何週間も空中にただよい続けます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-295",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "火山から飛ばされるもっと大きなかけらは、火山弾とよばれます。",
+      "text_markdown": "火山から飛ばされるもっと大きなかけらは、火山弾とよばれます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山から飛ばされるもっと大きなかけらは、火山弾とよばれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-296",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "火山弾とは、空中を飛びながら固まるとけた岩石の塊です。",
+      "text_markdown": "火山弾とは、空中を飛びながら固まるとけた岩石の塊です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山弾とは、空中を飛びながら固まるとけた岩石の塊です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-297",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "こぶしくらいの大きさのものもあります。",
+      "text_markdown": "こぶしくらいの大きさのものもあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "こぶしくらいの大きさのものもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-298",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "車くらいの大きさのものもあります。",
+      "text_markdown": "車くらいの大きさのものもあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "車くらいの大きさのものもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-299",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "火山の近くにものすごい力で落ちてきます。",
+      "text_markdown": "火山の近くにものすごい力で落ちてきます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山の近くにものすごい力で落ちてきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-300",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "火山ガスは、噴火で出てくる目に見えない産物です。",
+      "text_markdown": "火山ガスは、噴火で出てくる目に見えない産物です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山ガスは、噴火で出てくる目に見えない産物です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-301",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "もっとも多いガスは水蒸気です。",
+      "text_markdown": "もっとも多いガスは水蒸気です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "もっとも多いガスは水蒸気です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-302",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "二酸化硫黄も、よく出てくる火山ガスです。",
+      "text_markdown": "二酸化硫黄も、よく出てくる火山ガスです。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "二酸化硫黄も、よく出てくる火山ガスです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-303",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "二酸化硫黄が上層大気に達すると、水と結びついて硫酸の小さな粒になります。",
+      "text_markdown": "二酸化硫黄が上層大気に達すると、水と結びついて硫酸の小さな粒になります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "二酸化硫黄が上層大気に達すると、水と結びついて硫酸の小さな粒になります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-304",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "この粒が太陽の光を宇宙にはね返します。",
+      "text_markdown": "この粒が太陽の光を宇宙にはね返します。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "この粒が太陽の光を宇宙にはね返します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-305",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "大きな噴火は、地球全体の気温を何か月も何年も下げることがあります。",
+      "text_markdown": "大きな噴火は、地球全体の気温を何か月も何年も下げることがあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "大きな噴火は、地球全体の気温を何か月も何年も下げることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-306",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "1991年のフィリピンのピナトゥボ山の噴火は、世界の平均気温をおよそ0.5度、約2年間下げました。",
+      "text_markdown": "1991年のフィリピンのピナトゥボ山の噴火は、世界の平均気温をおよそ0.5度、約2年間下げました。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "せんきゅうひゃくきゅうじゅういちねんのフィリピンのピナトゥボ山の噴火は、世界の平均気温をおよそれいてんごど、約にねんかん下げました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-307",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "二酸化炭素も放出されます。",
+      "text_markdown": "二酸化炭素も放出されます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "二酸化炭素も放出されます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-308",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "まれなケースでは、二酸化炭素は空気より重いので、低い場所にたまることがあります。",
+      "text_markdown": "まれなケースでは、二酸化炭素は空気より重いので、低い場所にたまることがあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "まれなケースでは、二酸化炭素は空気より重いので、低い場所にたまることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-309",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "1986年、カメルーンのニオス湖から二酸化炭素の雲が噴き出しました。",
+      "text_markdown": "1986年、カメルーンのニオス湖から二酸化炭素の雲が噴き出しました。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "せんきゅうひゃくはちじゅうろくねん、カメルーンのニオス湖から二酸化炭素（にさんかたんそ）の雲が噴き出しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-310",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "ガスは坂を下り、1,700人以上が窒息して亡くなりました。",
+      "text_markdown": "ガスは坂を下り、1,700人以上が窒息して亡くなりました。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "ガスは坂を下り、せんななひゃくにん以上が窒息して亡くなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-311",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "火山が生み出す物質は危険です。",
+      "text_markdown": "火山が生み出す物質は危険です。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "火山が生み出す物質は危険です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-312",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "しかしそれは、新しい土地、新しい土壌、新しい大気の原料でもあります。",
+      "text_markdown": "しかしそれは、新しい土地、新しい土壌、新しい大気の原料でもあります。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "しかしそれは、新しい土地、新しい土壌、新しい大気の原料でもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-313",
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "破壊と創造は、同じ噴火から生まれます。",
+      "text_markdown": "破壊と創造は、同じ噴火から生まれます。",
+      "title": "溶岩と火山灰",
+      "tts": {
+        "text": "破壊と創造は、同じ噴火から生まれます。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch07-314",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "有名な火山",
+      "text_markdown": "有名な火山",
+      "title": "有名な火山"
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-315",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "ある噴火は、歴史の流れを変えてきました。",
+      "text_markdown": "ある噴火は、歴史の流れを変えてきました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "ある噴火は、歴史の流れを変えてきました。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-316",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "都市を破壊し、気候を変え、地図を書きかえてきました。",
+      "text_markdown": "都市を破壊し、気候を変え、地図を書きかえてきました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "都市を破壊し、気候を変え、地図を書きかえてきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-317",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "有名な噴火はそれぞれ、地球の表面の下にある力について何かを教えてくれます。",
+      "text_markdown": "有名な噴火はそれぞれ、地球の表面の下にある力について何かを教えてくれます。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "有名な噴火はそれぞれ、地球の表面の下にある力について何かを教えてくれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-318",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "ヴェスヴィオ山は、イタリア南部のナポリの近くにあります。",
+      "text_markdown": "ヴェスヴィオ山は、イタリア南部のナポリの近くにあります。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "ヴェスヴィオ山は、イタリア南部のナポリの近くにあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-319",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "西暦79年、ヴェスヴィオ山は前触れなく噴火しました。",
+      "text_markdown": "西暦79年、ヴェスヴィオ山は前触れなく噴火しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "せいれきななじゅうきゅうねん、ヴェスヴィオ山は前触れなく噴火しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-320",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "火山灰と軽石の柱が空高く上がりました。",
+      "text_markdown": "火山灰と軽石の柱が空高く上がりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山灰と軽石の柱が空高く上がりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-321",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "軽石は、ガスの泡がたくさん入った軽い火山岩です。",
+      "text_markdown": "軽石は、ガスの泡がたくさん入った軽い火山岩です。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "軽石は、ガスの泡がたくさん入った軽い火山岩です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-322",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "火山灰が、ローマの都市ポンペイとヘルクラネウムに降り注ぎました。",
+      "text_markdown": "火山灰が、ローマの都市ポンペイとヘルクラネウムに降り注ぎました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山灰が、ローマの都市ポンペイとヘルクラネウムに降り注ぎました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-323",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "そして火砕流がおそいかかりました。",
+      "text_markdown": "そして火砕流がおそいかかりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "そして火砕流がおそいかかりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-324",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "火砕流は、両方の都市を何メートルもの熱い火山灰と岩石で埋めました。",
+      "text_markdown": "火砕流は、両方の都市を何メートルもの熱い火山灰と岩石で埋めました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火砕流は、両方の都市を何メートルもの熱い火山灰と岩石で埋めました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-325",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "何千人もの人が亡くなりました。",
+      "text_markdown": "何千人もの人が亡くなりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "何千人もの人が亡くなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-326",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "両都市はおよそ1,700年もの間、失われていました。",
+      "text_markdown": "両都市はおよそ1,700年もの間、失われていました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "両都市はおよそせんななひゃくねんもの間、失われていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-327",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "考古学者がポンペイを発掘すると、建物や通りや食べ物まで、火山灰の中に保存されていました。",
+      "text_markdown": "考古学者がポンペイを発掘すると、建物や通りや食べ物まで、火山灰の中に保存されていました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "考古学者がポンペイを発掘すると、建物や通りや食べ物まで、火山灰の中に保存されていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-328",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "ヴェスヴィオ山はまだ活動しています。",
+      "text_markdown": "ヴェスヴィオ山はまだ活動しています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "ヴェスヴィオ山はまだ活動しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-329",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "今日、300万人以上がその影のもとで暮らしています。",
+      "text_markdown": "今日、300万人以上がその影のもとで暮らしています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "今日、300万人以上がその影のもとで暮らしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-330",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "クラカタウは、インドネシアにある火山島です。",
+      "text_markdown": "クラカタウは、インドネシアにある火山島です。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "クラカタウは、インドネシアにある火山島です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-331",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "1883年、記録に残る中でもっとも大きな爆発音のひとつを出しました。",
+      "text_markdown": "1883年、記録に残る中でもっとも大きな爆発音のひとつを出しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "せんはっぴゃくはちじゅうさんねん、記録に残る中でもっとも大きな爆発音のひとつを出しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-332",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "その音はおよそ5,000キロメートル離れたところまで聞こえました。",
+      "text_markdown": "その音はおよそ5,000キロメートル離れたところまで聞こえました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "その音はおよそごせんキロメートル離れたところまで聞こえました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-333",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "噴火は島の大部分を破壊しました。",
+      "text_markdown": "噴火は島の大部分を破壊しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "噴火は島の大部分を破壊しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-334",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "津波が発生し、36,000人以上が亡くなりました。",
+      "text_markdown": "津波が発生し、36,000人以上が亡くなりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "津波が発生し、さんまんろくせんにん以上が亡くなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-335",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "津波とは、海底の変動によって起こる大きな海の波のことです。",
+      "text_markdown": "津波とは、海底の変動によって起こる大きな海の波のことです。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "津波とは、海底の変動によって起こる大きな海の波のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-336",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "火山灰は地球を一周し、何か月も鮮やかな赤い夕焼けを見せました。",
+      "text_markdown": "火山灰は地球を一周し、何か月も鮮やかな赤い夕焼けを見せました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山灰は地球を一周し、何か月も鮮やかな赤い夕焼けを見せました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-337",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "世界の気温は目に見えて下がりました。",
+      "text_markdown": "世界の気温は目に見えて下がりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "世界の気温は目に見えて下がりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-338",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "1927年から、同じ場所で新しい火山島アナク・クラカタウが成長しています。",
+      "text_markdown": "1927年から、同じ場所で新しい火山島アナク・クラカタウが成長しています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "せんきゅうひゃくにじゅうななねんから、同じ場所で新しい火山島アナク・クラカタウが成長しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-339",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "「アナク」は子どもという意味です。",
+      "text_markdown": "「アナク」は子どもという意味です。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "「アナク」は子どもという意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-340",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "クラカタウの子どもは、まだ噴火を続けています。",
+      "text_markdown": "クラカタウの子どもは、まだ噴火を続けています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "クラカタウの子どもは、まだ噴火を続けています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-341",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "セントヘレンズ山は、アメリカのワシントン州にあります。",
+      "text_markdown": "セントヘレンズ山は、アメリカのワシントン州にあります。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "セントヘレンズ山は、アメリカのワシントン州にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-342",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "1980年5月18日、地震がきっかけで北側の斜面に大規模な地滑りが起きました。",
+      "text_markdown": "1980年5月18日、地震がきっかけで北側の斜面に大規模な地滑りが起きました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "せんきゅうひゃくはちじゅうねんごがつじゅうはちにち、地震がきっかけで北側の斜面に大規模な地滑りが起きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-343",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "その地滑りは、記録に残る中で最大のものでした。",
+      "text_markdown": "その地滑りは、記録に残る中で最大のものでした。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "その地滑りは、記録に残る中で最大のものでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-344",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "地滑りによって、中のマグマにかかっていた圧力が解放されました。",
+      "text_markdown": "地滑りによって、中のマグマにかかっていた圧力が解放されました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "地滑りによって、中のマグマにかかっていた圧力が解放されました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-345",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "火山は横向きに爆発しました。",
+      "text_markdown": "火山は横向きに爆発しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山は横向きに爆発しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-346",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "横からの爆風が、600平方キロメートルの森林をなぎたおしました。",
+      "text_markdown": "横からの爆風が、600平方キロメートルの森林をなぎたおしました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "横からの爆風が、ろっぴゃく平方キロメートルの森林をなぎたおしました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-347",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "火山灰は大気圏の24キロメートル上空まで上がりました。",
+      "text_markdown": "火山灰は大気圏の24キロメートル上空まで上がりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山灰は大気圏のにじゅうよんキロメートル上空まで上がりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-348",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "57人が亡くなりました。",
+      "text_markdown": "57人が亡くなりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "57人が亡くなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-349",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "噴火によって、山の高さはおよそ400メートル低くなりました。",
+      "text_markdown": "噴火によって、山の高さはおよそ400メートル低くなりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "噴火によって、山の高さはおよそよんひゃくメートル低くなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-350",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "今日、科学者たちはセントヘレンズ山をたえず監視しています。",
+      "text_markdown": "今日、科学者たちはセントヘレンズ山をたえず監視しています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "今日、科学者たちはセントヘレンズ山をたえず監視しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-351",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "火口の中で、新しい溶岩ドームがゆっくり成長しています。",
+      "text_markdown": "火口の中で、新しい溶岩ドームがゆっくり成長しています。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火口の中で、新しい溶岩ドームがゆっくり成長しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-352",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "ピナトゥボ山はフィリピンにあります。",
+      "text_markdown": "ピナトゥボ山はフィリピンにあります。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "ピナトゥボ山はフィリピンにあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-353",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "1991年6月、600年間の休眠の後に噴火しました。",
+      "text_markdown": "1991年6月、600年間の休眠の後に噴火しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "せんきゅうひゃくきゅうじゅういちねんろくがつ、ろっぴゃくねんかんの休眠の後に噴火しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-354",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "休眠とは、活動していない期間のことです。",
+      "text_markdown": "休眠とは、活動していない期間のことです。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "休眠とは、活動していない期間のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-355",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "噴火ではおよそ10立方キロメートルの物質が噴出しました。",
+      "text_markdown": "噴火ではおよそ10立方キロメートルの物質が噴出しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "噴火ではおよそじゅう立方キロメートルの物質が噴出しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-356",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "20世紀で2番目に大きな噴火でした。",
+      "text_markdown": "20世紀で2番目に大きな噴火でした。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "20世紀で2番目に大きな噴火でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-357",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "放出された二酸化硫黄が世界を覆う霧をつくり、地球の気温をおよそ0.5度、2年間下げました。",
+      "text_markdown": "放出された二酸化硫黄が世界を覆う霧をつくり、地球の気温をおよそ0.5度、2年間下げました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "放出された二酸化硫黄（にさんかいおう）が世界を覆う霧をつくり、地球の気温をおよそれいてんごど、にねんかん下げました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-358",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "エイヤフィヤトラヨークトルは、アイスランドにある火山です。",
+      "text_markdown": "エイヤフィヤトラヨークトルは、アイスランドにある火山です。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "エイヤフィヤトラヨークトルは、アイスランドにある火山です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-359",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "2010年、氷河の下で噴火しました。",
+      "text_markdown": "2010年、氷河の下で噴火しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "にせんじゅうねん、氷河の下で噴火しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-360",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "溶岩と氷がぶつかって、大量の細かい火山灰の雲ができました。",
+      "text_markdown": "溶岩と氷がぶつかって、大量の細かい火山灰の雲ができました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "溶岩と氷がぶつかって、大量の細かい火山灰の雲ができました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-361",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "火山灰の雲のため、ヨーロッパ全域で6日間にわたって飛行機が飛べなくなりました。",
+      "text_markdown": "火山灰の雲のため、ヨーロッパ全域で6日間にわたって飛行機が飛べなくなりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山灰の雲のため、ヨーロッパ全域で6日間にわたって飛行機が飛べなくなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-362",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "10万便以上のフライトが欠航になりました。",
+      "text_markdown": "10万便以上のフライトが欠航になりました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "じゅうまんびん以上のフライトが欠航になりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-363",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "火山の基準で見れば、小さな噴火でした。",
+      "text_markdown": "火山の基準で見れば、小さな噴火でした。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "火山の基準で見れば、小さな噴火でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-364",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "しかしその場所とタイミングが、小さな噴火でも現代文明をかく乱できることを示しました。",
+      "text_markdown": "しかしその場所とタイミングが、小さな噴火でも現代文明をかく乱できることを示しました。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "しかしその場所とタイミングが、小さな噴火でも現代文明をかく乱できることを示しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-365",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "これらの噴火は、火山が独自のスケジュールで動いていることを思い出させてくれます。",
+      "text_markdown": "これらの噴火は、火山が独自のスケジュールで動いていることを思い出させてくれます。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "これらの噴火は、火山が独自のスケジュールで動いていることを思い出させてくれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-366",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "人間の計画には従いません。",
+      "text_markdown": "人間の計画には従いません。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "人間の計画には従いません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-367",
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "何百年も眠って、知らせもなく目覚めることがあります。",
+      "text_markdown": "何百年も眠って、知らせもなく目覚めることがあります。",
+      "title": "有名な火山",
+      "tts": {
+        "text": "何百年も眠って、知らせもなく目覚めることがあります。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch08-368",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "h1",
+      "heading_level": 1,
+      "text": "火山が世界をつくる",
+      "text_markdown": "火山が世界をつくる",
+      "title": "火山が世界をつくる"
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-369",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "火山は破壊的です。",
+      "text_markdown": "火山は破壊的です。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山は破壊的です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-370",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "しかし、つくりもします。",
+      "text_markdown": "しかし、つくりもします。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "しかし、つくりもします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-371",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "地質学的な長い時間の中で、火山は私たちが住む世界の多くをつくり出してきました。",
+      "text_markdown": "地質学的な長い時間の中で、火山は私たちが住む世界の多くをつくり出してきました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地質学的な長い時間の中で、火山は私たちが住む世界の多くをつくり出してきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-372",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "地球の大気が存在するのは、ひとつには火山のおかげです。",
+      "text_markdown": "地球の大気が存在するのは、ひとつには火山のおかげです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地球の大気が存在するのは、ひとつには火山のおかげです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-373",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "地球の歴史のはじめのころ、火山は大量のガスを放出しました。",
+      "text_markdown": "地球の歴史のはじめのころ、火山は大量のガスを放出しました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地球の歴史のはじめのころ、火山は大量のガスを放出しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-374",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "おもなガスは、水蒸気、二酸化炭素、窒素でした。",
+      "text_markdown": "おもなガスは、水蒸気、二酸化炭素、窒素でした。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "おもなガスは、水蒸気、二酸化炭素、窒素でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-375",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "水蒸気は冷えて液体になり、やがて海をつくりました。",
+      "text_markdown": "水蒸気は冷えて液体になり、やがて海をつくりました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "水蒸気は冷えて液体になり、やがて海をつくりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-376",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "窒素は、大気の主要なガスになりました。",
+      "text_markdown": "窒素は、大気の主要なガスになりました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "窒素は、大気の主要なガスになりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-377",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "今日みなさんが吸っている空気のおよそ78パーセントは窒素です。",
+      "text_markdown": "今日みなさんが吸っている空気のおよそ78パーセントは窒素です。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "今日みなさんが吸っている空気のおよそななじゅうはちパーセントは窒素です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-378",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "火山のガス放出がなければ、地球には大気も海もなかったでしょう。",
+      "text_markdown": "火山のガス放出がなければ、地球には大気も海もなかったでしょう。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山のガス放出がなければ、地球には大気も海もなかったでしょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-379",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "ガス放出とは、惑星の内部からガスが出てくることです。",
+      "text_markdown": "ガス放出とは、惑星の内部からガスが出てくることです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "ガス放出とは、惑星の内部からガスが出てくることです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-380",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "火山は新しい陸地をつくります。",
+      "text_markdown": "火山は新しい陸地をつくります。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山は新しい陸地をつくります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-381",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "ハワイのすべての島は、太平洋のホットスポットの上で起きた火山の噴火によってつくられました。",
+      "text_markdown": "ハワイのすべての島は、太平洋のホットスポットの上で起きた火山の噴火によってつくられました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "ハワイのすべての島は、太平洋のホットスポットの上で起きた火山の噴火によってつくられました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-382",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "アイスランドは、大西洋中央海嶺に沿った噴火でつくられました。",
+      "text_markdown": "アイスランドは、大西洋中央海嶺に沿った噴火でつくられました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "アイスランドは、大西洋中央海嶺に沿った噴火でつくられました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-383",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "太平洋、大西洋、インド洋の多くの島が、火山からできています。",
+      "text_markdown": "太平洋、大西洋、インド洋の多くの島が、火山からできています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "太平洋、大西洋、インド洋の多くの島が、火山からできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-384",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "海底そのものも、プレートが引きはなれる海嶺でつくられた火山岩でできています。",
+      "text_markdown": "海底そのものも、プレートが引きはなれる海嶺でつくられた火山岩でできています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "海底そのものも、プレートが引きはなれる海嶺でつくられた火山岩でできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-385",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "火山の土壌は、地球でもっとも肥沃な土壌のひとつです。",
+      "text_markdown": "火山の土壌は、地球でもっとも肥沃な土壌のひとつです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山の土壌は、地球でもっとも肥沃な土壌のひとつです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-386",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "溶岩や火山灰は、時間がたつとくずれてミネラルを土壌に放出します。",
+      "text_markdown": "溶岩や火山灰は、時間がたつとくずれてミネラルを土壌に放出します。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "溶岩や火山灰は、時間がたつとくずれてミネラルを土壌に放出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-387",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "カリウム、リン、カルシウムなどのミネラルは、植物に欠かせない栄養素です。",
+      "text_markdown": "カリウム、リン、カルシウムなどのミネラルは、植物に欠かせない栄養素です。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "カリウム、リン、カルシウムなどのミネラルは、植物に欠かせない栄養素です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-388",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "火山の土壌がある地域では、農業がさかんに行われています。",
+      "text_markdown": "火山の土壌がある地域では、農業がさかんに行われています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山の土壌がある地域では、農業がさかんに行われています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-389",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "シチリア島のエトナ山のふもとは、ブドウ畑や果樹園でおおわれています。",
+      "text_markdown": "シチリア島のエトナ山のふもとは、ブドウ畑や果樹園でおおわれています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "シチリア島のエトナ山のふもとは、ブドウ畑や果樹園でおおわれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-390",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "インドネシアのジャワ島は、豊かな火山の土壌のおかげで、地球上でもっとも人口密度の高い場所のひとつです。",
+      "text_markdown": "インドネシアのジャワ島は、豊かな火山の土壌のおかげで、地球上でもっとも人口密度の高い場所のひとつです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "インドネシアのジャワ島は、豊かな火山の土壌のおかげで、地球上でもっとも人口密度の高い場所のひとつです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-391",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "火山は世界の気候に影響をあたえます。",
+      "text_markdown": "火山は世界の気候に影響をあたえます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山は世界の気候に影響をあたえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-392",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "大きな噴火は、二酸化硫黄を成層圏に送り込みます。",
+      "text_markdown": "大きな噴火は、二酸化硫黄を成層圏に送り込みます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "大きな噴火は、二酸化硫黄を成層圏に送り込みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-393",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "二酸化硫黄は硫酸エアロゾルに変わります。",
+      "text_markdown": "二酸化硫黄は硫酸エアロゾルに変わります。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "二酸化硫黄は硫酸エアロゾルに変わります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-394",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "エアロゾルとは、大気中にただよう小さな粒子のことです。",
+      "text_markdown": "エアロゾルとは、大気中にただよう小さな粒子のことです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "エアロゾルとは、大気中にただよう小さな粒子のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-395",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "これらのエアロゾルが太陽の光をはね返し、地球を冷やします。",
+      "text_markdown": "これらのエアロゾルが太陽の光をはね返し、地球を冷やします。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "これらのエアロゾルが太陽の光をはね返し、地球を冷やします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-396",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "1815年のインドネシアのタンボラ山の噴火は、1816年の「夏のない年」を引き起こしました。",
+      "text_markdown": "1815年のインドネシアのタンボラ山の噴火は、1816年の「夏のない年」を引き起こしました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "せんはっぴゃくじゅうごねんのインドネシアのタンボラ山の噴火は、せんはっぴゃくじゅうろくねんの「夏のない年」を引き起こしました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-397",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "ヨーロッパと北アメリカで作物が枯れました。",
+      "text_markdown": "ヨーロッパと北アメリカで作物が枯れました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "ヨーロッパと北アメリカで作物が枯れました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-398",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "一部の地域では、気温が数度下がりました。",
+      "text_markdown": "一部の地域では、気温が数度下がりました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "一部の地域では、気温が数度下がりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-399",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "もっと長い時間でみると、火山が出す二酸化炭素が地球の温度を調節してきました。",
+      "text_markdown": "もっと長い時間でみると、火山が出す二酸化炭素が地球の温度を調節してきました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "もっと長い時間でみると、火山が出す二酸化炭素が地球の温度を調節してきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-400",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "火山活動が活発になると、大気中の二酸化炭素がふえて、地球は温まります。",
+      "text_markdown": "火山活動が活発になると、大気中の二酸化炭素がふえて、地球は温まります。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山活動が活発になると、大気中の二酸化炭素がふえて、地球は温まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-401",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "活動が弱まると、地球は冷えます。",
+      "text_markdown": "活動が弱まると、地球は冷えます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "活動が弱まると、地球は冷えます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-402",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "この火山のサーモスタットは、何十億年もの間はたらいてきました。",
+      "text_markdown": "この火山のサーモスタットは、何十億年もの間はたらいてきました。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "この火山のサーモスタットは、何十億年もの間はたらいてきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-403",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "火山は地熱エネルギーを提供します。",
+      "text_markdown": "火山は地熱エネルギーを提供します。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山は地熱エネルギーを提供します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-404",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "地熱エネルギーとは、地球の内部からの熱で、電気をつくるのに使えるものです。",
+      "text_markdown": "地熱エネルギーとは、地球の内部からの熱で、電気をつくるのに使えるものです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地熱エネルギーとは、地球の内部からの熱で、電気をつくるのに使えるものです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-405",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "アイスランドでは、地熱発電所が国の電力のおよそ25パーセントを生産しています。",
+      "text_markdown": "アイスランドでは、地熱発電所が国の電力のおよそ25パーセントを生産しています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "アイスランドでは、地熱発電所が国の電力のおよそにじゅうごパーセントを生産しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-406",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "火山の熱水は、家や温室をあたためるのに使われます。",
+      "text_markdown": "火山の熱水は、家や温室をあたためるのに使われます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山の熱水は、家や温室をあたためるのに使われます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-407",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "地熱エネルギーは再生可能で、排出ガスがとても少ないです。",
+      "text_markdown": "地熱エネルギーは再生可能で、排出ガスがとても少ないです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地熱エネルギーは再生可能で、排出ガスがとても少ないです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-408",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "火山はまた、独自の生態系をつくり出します。",
+      "text_markdown": "火山はまた、独自の生態系をつくり出します。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山はまた、独自の生態系をつくり出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-409",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "噴火の後の荒れた景色は、長くはそのままではありません。",
+      "text_markdown": "噴火の後の荒れた景色は、長くはそのままではありません。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "噴火の後の荒れた景色は、長くはそのままではありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-410",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "先駆種が新しい岩石に住みつきます。",
+      "text_markdown": "先駆種が新しい岩石に住みつきます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "先駆種が新しい岩石に住みつきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-411",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "先駆種とは、かく乱された環境に最初に住みつく生き物のことです。",
+      "text_markdown": "先駆種とは、かく乱された環境に最初に住みつく生き物のことです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "先駆種とは、かく乱された環境に最初に住みつく生き物のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-412",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "地衣類が岩石を分解します。",
+      "text_markdown": "地衣類が岩石を分解します。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "地衣類が岩石を分解します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-413",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "コケが根をはります。",
+      "text_markdown": "コケが根をはります。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "コケが根をはります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-414",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "草が続きます。",
+      "text_markdown": "草が続きます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "草が続きます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-415",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "やがて、森が育ちます。",
+      "text_markdown": "やがて、森が育ちます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "やがて、森が育ちます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-416",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "火山の大地で起こる生態遷移は、噴火が破壊したものを生命が取り戻していく過程を示しています。",
+      "text_markdown": "火山の大地で起こる生態遷移は、噴火が破壊したものを生命が取り戻していく過程を示しています。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山の大地で起こる生態遷移は、噴火が破壊したものを生命が取り戻していく過程を示しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-417",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "火山はパラドックスです。",
+      "text_markdown": "火山はパラドックスです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山はパラドックスです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-418",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "パラドックスとは、矛盾しているように見えるけれど本当のことです。",
+      "text_markdown": "パラドックスとは、矛盾しているように見えるけれど本当のことです。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "パラドックスとは、矛盾しているように見えるけれど本当のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-419",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "破壊し、創造します。",
+      "text_markdown": "破壊し、創造します。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "破壊し、創造します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-420",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "命をうばい、命をあたえます。",
+      "text_markdown": "命をうばい、命をあたえます。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "命をうばい、命をあたえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-421",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "火山は、地球が自らを新しくする方法です。",
+      "text_markdown": "火山は、地球が自らを新しくする方法です。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山は、地球が自らを新しくする方法です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-422",
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p54",
+      "text": "火山のない地球は、もっと寒く、もっと静かで、もっと住みにくい世界でしょう。",
+      "text_markdown": "火山のない地球は、もっと寒く、もっと静かで、もっと住みにくい世界でしょう。",
+      "title": "火山が世界をつくる",
+      "tts": {
+        "text": "火山のない地球は、もっと寒く、もっと静かで、もっと住みにくい世界でしょう。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

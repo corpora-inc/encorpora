@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "tr",
+  "total_segments": 209,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "AI Bu Hafta'ya hoş geldiniz.",
+      "text_markdown": "AI Bu Hafta'ya hoş geldiniz.",
+      "title": "",
+      "tts": {
+        "text": "AI Bu Hafta'ya hoş geldiniz.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ben Vindy.",
+      "text_markdown": "Ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ben Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yanımda, her zamanki gibi, Ron var.",
+      "text_markdown": "Yanımda, her zamanki gibi, Ron var.",
+      "title": "",
+      "tts": {
+        "text": "Yanımda, her zamanki gibi, Ron var.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Burada olmak güzel, Vindy.",
+      "text_markdown": "Burada olmak güzel, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Burada olmak güzel, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bugün 27 Mayıs 2026 Çarşamba.",
+      "text_markdown": "Bugün 27 Mayıs 2026 Çarşamba.",
+      "title": "",
+      "tts": {
+        "text": "Bugün yirmi yedi Mayıs iki bin yirmi altı Çarşamba.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ve kağıt üzerinde, bu sessiz bir haftaydı.",
+      "text_markdown": "Ve kağıt üzerinde, bu sessiz bir haftaydı.",
+      "title": "",
+      "tts": {
+        "text": "Ve kağıt üzerinde, bu sessiz bir haftaydı.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Büyük yeni bir açık model piyasaya sürülmedi.",
+      "text_markdown": "Büyük yeni bir açık model piyasaya sürülmedi.",
+      "title": "",
+      "tts": {
+        "text": "Büyük yeni bir açık model piyasaya sürülmedi.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ama asıl hikaye, sessiz haftalarda saklıdır.",
+      "text_markdown": "Ama asıl hikaye, sessiz haftalarda saklıdır.",
+      "title": "",
+      "tts": {
+        "text": "Ama asıl hikaye, sessiz haftalarda saklıdır.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu yüzden bugün, açılış konuşmalarının gitmediği yerlere gidiyoruz.",
+      "text_markdown": "Bu yüzden bugün, açılış konuşmalarının gitmediği yerlere gidiyoruz.",
+      "title": "",
+      "tts": {
+        "text": "Bu yüzden bugün, açılış konuşmalarının gitmediği yerlere gidiyoruz.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sırada — açık ağırlıklarda gerçekten ne değişti.",
+      "text_markdown": "Sırada — açık ağırlıklarda gerçekten ne değişti.",
+      "title": "",
+      "tts": {
+        "text": "Sırada — açık ağırlıklarda gerçekten ne değişti.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Önemli olan tek liderlik tablosu, ve bu bir kalite tablosu değil.",
+      "text_markdown": "Önemli olan tek liderlik tablosu, ve bu bir kalite tablosu değil.",
+      "title": "",
+      "tts": {
+        "text": "Önemli olan tek liderlik tablosu, ve bu bir kalite tablosu değil.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu hafta sonu harekete geçebileceğiniz hızlı bir başlık özeti.",
+      "text_markdown": "Bu hafta sonu harekete geçebileceğiniz hızlı bir başlık özeti.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta sonu harekete geçebileceğiniz hızlı bir başlık özeti.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ana haberimiz, açık sesin sahiplenilebilecek kadar iyi hale geldiği yıl.",
+      "text_markdown": "Ana haberimiz, açık sesin sahiplenilebilecek kadar iyi hale geldiği yıl.",
+      "title": "",
+      "tts": {
+        "text": "Ana haberimiz, açık sesin sahiplenilebilecek kadar iyi hale geldiği yıl.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Haftanın konsepti ise nöral ses kodekleri — tüm bir sesi bir telefona sığdırmak için nasıl sıkıştırdığınız.",
+      "text_markdown": "Haftanın konsepti ise nöral ses kodekleri — tüm bir sesi bir telefona sığdırmak için nasıl sıkıştırdığınız.",
+      "title": "",
+      "tts": {
+        "text": "Haftanın konsepti ise nöral ses kodekleri — tüm bir sesi bir telefona sığdırmak için nasıl sıkıştırdığınız.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, açık ağırlıklar dünyasından başlayalım.",
+      "text_markdown": "Ron, açık ağırlıklar dünyasından başlayalım.",
+      "title": "",
+      "tts": {
+        "text": "Ron, açık ağırlıklar dünyasından başlayalım.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu hafta ne değişti?",
+      "text_markdown": "Bu hafta ne değişti?",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta ne değişti?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dürüst olmak gerekirse, bu hafta yeni bir öncü açık model piyasaya sürülmedi.",
+      "text_markdown": "Dürüst olmak gerekirse, bu hafta yeni bir öncü açık model piyasaya sürülmedi.",
+      "title": "",
+      "tts": {
+        "text": "Dürüst olmak gerekirse, bu hafta yeni bir öncü açık model piyasaya sürülmedi.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve bu sorun değil.",
+      "text_markdown": "Ve bu sorun değil.",
+      "title": "",
+      "tts": {
+        "text": "Ve bu sorun değil.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu haftanın asıl açık haberleri altyapı ve fiyatlandırmaydı.",
+      "text_markdown": "Bu haftanın asıl açık haberleri altyapı ve fiyatlandırmaydı.",
+      "title": "",
+      "tts": {
+        "text": "Bu haftanın asıl açık haberleri altyapı ve fiyatlandırmaydı.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Önce altyapı — ne bozuldu veya düzeltildi?",
+      "text_markdown": "Önce altyapı — ne bozuldu veya düzeltildi?",
+      "title": "",
+      "tts": {
+        "text": "Önce altyapı — ne bozuldu veya düzeltildi?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "26 Mayıs'ta SGLang projesi, DeepSeek V4'ü sunmak için bir kararlılık yaması yayınladı.",
+      "text_markdown": "26 Mayıs'ta SGLang projesi, DeepSeek V4'ü sunmak için bir kararlılık yaması yayınladı.",
+      "title": "",
+      "tts": {
+        "text": "Yirmi altı Mayıs'ta S G Lang projesi, DeepSeek V dört'ü sunmak için bir kararlılık yaması yayınladı.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "SGLang, bir modeli kendiniz çalıştırmak için kullandığınız iki büyük açık motordan biridir.",
+      "text_markdown": "SGLang, bir modeli kendiniz çalıştırmak için kullandığınız iki büyük açık motordan biridir.",
+      "title": "",
+      "tts": {
+        "text": "S G Lang, bir modeli kendiniz çalıştırmak için kullandığınız iki büyük açık motordan biridir.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Diğeri ise vLLM.",
+      "text_markdown": "Diğeri ise vLLM.",
+      "title": "",
+      "tts": {
+        "text": "Diğeri ise v L L M.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu yama, en yeni kartlardaki bozuk çıktıyı ve ağır yük altında çökmeyi düzeltti.",
+      "text_markdown": "Bu yama, en yeni kartlardaki bozuk çıktıyı ve ağır yük altında çökmeyi düzeltti.",
+      "title": "",
+      "tts": {
+        "text": "Bu yama, en yeni kartlardaki bozuk çıktıyı ve ağır yük altında çökmeyi düzeltti.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir sunum yaması neden önemli?",
+      "text_markdown": "Bir sunum yaması neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Bir sunum yaması neden önemli?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çünkü açık ağırlıklar, güvenilir bir şekilde sunulamazlarsa işe yaramazdır.",
+      "text_markdown": "Çünkü açık ağırlıklar, güvenilir bir şekilde sunulamazlarsa işe yaramazdır.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü açık ağırlıklar, güvenilir bir şekilde sunulamazlarsa işe yaramazdır.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "DeepSeek V4 açık kaynaklı ve MIT lisanslıdır, ancak çok büyük bir modeldir.",
+      "text_markdown": "DeepSeek V4 açık kaynaklı ve MIT lisanslıdır, ancak çok büyük bir modeldir.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V dört açık kaynaklı ve M İ T lisanslıdır, ancak çok büyük bir modeldir.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Onu sahada çalıştıran motorlar, açık ekosistemin göz alıcı olmayan yarısıdır.",
+      "text_markdown": "Onu sahada çalıştıran motorlar, açık ekosistemin göz alıcı olmayan yarısıdır.",
+      "title": "",
+      "tts": {
+        "text": "Onu sahada çalıştıran motorlar, açık ekosistemin göz alıcı olmayan yarısıdır.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sıkıcı bir yama haftası, sağlıklı bir projenin nasıl göründüğüdür.",
+      "text_markdown": "Sıkıcı bir yama haftası, sağlıklı bir projenin nasıl göründüğüdür.",
+      "title": "",
+      "tts": {
+        "text": "Sıkıcı bir yama haftası, sağlıklı bir projenin nasıl göründüğüdür.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki fiyatlandırma tarafı?",
+      "text_markdown": "Peki fiyatlandırma tarafı?",
+      "title": "",
+      "tts": {
+        "text": "Peki fiyatlandırma tarafı?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu daha ilginç olanı.",
+      "text_markdown": "Bu daha ilginç olanı.",
+      "title": "",
+      "tts": {
+        "text": "Bu daha ilginç olanı.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "22 Mayıs civarında DeepSeek, V4-Pro üzerindeki %75'lik fiyat indirimini kalıcı hale getirdi.",
+      "text_markdown": "22 Mayıs civarında DeepSeek, V4-Pro üzerindeki %75'lik fiyat indirimini kalıcı hale getirdi.",
+      "title": "",
+      "tts": {
+        "text": "Yirmi iki Mayıs civarında DeepSeek, V dört Pro üzerindeki yüzde yetmiş beşlik fiyat indirimini kalıcı hale getirdi.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çıktı fiyatı şu anda milyon token başına yaklaşık 0,87 dolar.",
+      "text_markdown": "Çıktı fiyatı şu anda milyon token başına yaklaşık 0,87 dolar.",
+      "title": "",
+      "tts": {
+        "text": "Çıktı fiyatı şu anda milyon token başına yaklaşık sıfır nokta seksen yedi dolar.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, piyasaya sürüldüğündeki fiyatının yaklaşık dörtte biri.",
+      "text_markdown": "Bu, piyasaya sürüldüğündeki fiyatının yaklaşık dörtte biri.",
+      "title": "",
+      "tts": {
+        "text": "Bu, piyasaya sürüldüğündeki fiyatının yaklaşık dörtte biri.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani açık model kiralamak daha ucuz hale geldi.",
+      "text_markdown": "Yani açık model kiralamak daha ucuz hale geldi.",
+      "title": "",
+      "tts": {
+        "text": "Yani açık model kiralamak daha ucuz hale geldi.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Doğru, ve bu bir soruyu tamamen tersine çeviriyor.",
+      "text_markdown": "Doğru, ve bu bir soruyu tamamen tersine çeviriyor.",
+      "title": "",
+      "tts": {
+        "text": "Doğru, ve bu bir soruyu tamamen tersine çeviriyor.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Genellikle açık ağırlıkların kendi kendine barındırma anlamına geldiğini söyleriz.",
+      "text_markdown": "Genellikle açık ağırlıkların kendi kendine barındırma anlamına geldiğini söyleriz.",
+      "title": "",
+      "tts": {
+        "text": "Genellikle açık ağırlıkların kendi kendine barındırma anlamına geldiğini söyleriz.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ancak milyon token başına bir doların altında bir fiyatla, kiralama genellikle kendi elektriğinizden daha ucuzdur.",
+      "text_markdown": "Ancak milyon token başına bir doların altında bir fiyatla, kiralama genellikle kendi elektriğinizden daha ucuzdur.",
+      "title": "",
+      "tts": {
+        "text": "Ancak milyon token başına bir doların altında bir fiyatla, kiralama genellikle kendi elektriğinizden daha ucuzdur.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yani yeni çerçeve şu: gizlilik ve çevrimdışı kullanım için kendi kendine barındır, ucuz kısa süreli kullanımlar için API'yi kirala.",
+      "text_markdown": "Yani yeni çerçeve şu: gizlilik ve çevrimdışı kullanım için kendi kendine barındır, ucuz kısa süreli kullanımlar için API'yi kirala.",
+      "title": "",
+      "tts": {
+        "text": "Yani yeni çerçeve şu: gizlilik ve çevrimdışı kullanım için kendi kendine barındır, ucuz kısa süreli kullanımlar için A P İ'yi kirala.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Aynı açık ağırlıklar, onları kullanmak için iki çok farklı neden.",
+      "text_markdown": "Aynı açık ağırlıklar, onları kullanmak için iki çok farklı neden.",
+      "title": "",
+      "tts": {
+        "text": "Aynı açık ağırlıklar, onları kullanmak için iki çok farklı neden.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya cihaz içi kullanıcılar?",
+      "text_markdown": "Peki ya cihaz içi kullanıcılar?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya cihaz içi kullanıcılar?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "llama.cpp tüm hafta işini yapmaya devam etti.",
+      "text_markdown": "llama.cpp tüm hafta işini yapmaya devam etti.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P tüm hafta işini yapmaya devam etti.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Aslında sürüm yayınlamıyor — neredeyse her gün derlemeler gönderiyor.",
+      "text_markdown": "Aslında sürüm yayınlamıyor — neredeyse her gün derlemeler gönderiyor.",
+      "title": "",
+      "tts": {
+        "text": "Aslında sürüm yayınlamıyor — neredeyse her gün derlemeler gönderiyor.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta Vulkan, Intel ve telefon sınıfı çipler üzerinde hız çalışmaları yapıldı.",
+      "text_markdown": "Bu hafta Vulkan, Intel ve telefon sınıfı çipler üzerinde hız çalışmaları yapıldı.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta Vulkan, Intel ve telefon sınıfı çipler üzerinde hız çalışmaları yapıldı.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Cihaz içi dünyanın aslında üzerinde çalıştığı motor bu.",
+      "text_markdown": "Cihaz içi dünyanın aslında üzerinde çalıştığı motor bu.",
+      "title": "",
+      "tts": {
+        "text": "Cihaz içi dünyanın aslında üzerinde çalıştığı motor bu.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Drama yok, sadece daha hızlı — olgun bir altyapıdan tam da istediğiniz şey.",
+      "text_markdown": "Drama yok, sadece daha hızlı — olgun bir altyapıdan tam da istediğiniz şey.",
+      "title": "",
+      "tts": {
+        "text": "Drama yok, sadece daha hızlı — olgun bir altyapıdan tam da istediğiniz şey.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bize daha büyük resmi çiz.",
+      "text_markdown": "Bize daha büyük resmi çiz.",
+      "title": "",
+      "tts": {
+        "text": "Bize daha büyük resmi çiz.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Şu anda açık sınır çoğunlukla Çin liderliğinde.",
+      "text_markdown": "Şu anda açık sınır çoğunlukla Çin liderliğinde.",
+      "title": "",
+      "tts": {
+        "text": "Şu anda açık sınır çoğunlukla Çin liderliğinde.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nisan ayında bir dalga vardı — DeepSeek V4, Qwen 3.6, Kimi K2.6 ve daha fazlası, hepsi yaklaşık iki hafta içinde.",
+      "text_markdown": "Nisan ayında bir dalga vardı — DeepSeek V4, Qwen 3.6, Kimi K2.6 ve daha fazlası, hepsi yaklaşık iki hafta içinde.",
+      "title": "",
+      "tts": {
+        "text": "Nisan ayında bir dalga vardı — DeepSeek V dört, Qwen üç nokta altı, Kimi K iki nokta altı ve daha fazlası, hepsi yaklaşık iki hafta içinde.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta o dalganın sessiz artçısı.",
+      "text_markdown": "Bu hafta o dalganın sessiz artçısı.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta o dalganın sessiz artçısı.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya Qwen — haberleri yok muydu?",
+      "text_markdown": "Peki ya Qwen — haberleri yok muydu?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya Qwen — haberleri yok muydu?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, ve bu çok şey anlatan bir haber.",
+      "text_markdown": "Evet, ve bu çok şey anlatan bir haber.",
+      "title": "",
+      "tts": {
+        "text": "Evet, ve bu çok şey anlatan bir haber.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Alibaba'nın yeni amiral gemisi Qwen 3.7 Max, sadece API tabanlı — açık ağırlıklar yok.",
+      "text_markdown": "Alibaba'nın yeni amiral gemisi Qwen 3.7 Max, sadece API tabanlı — açık ağırlıklar yok.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba'nın yeni amiral gemisi Qwen üç nokta yedi Max, sadece A P İ tabanlı — açık ağırlıklar yok.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Açık Qwen serisi hala 3.6'da duruyor.",
+      "text_markdown": "Açık Qwen serisi hala 3.6'da duruyor.",
+      "title": "",
+      "tts": {
+        "text": "Açık Qwen serisi hala üç nokta altıda duruyor.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yani Alibaba, kapalı bir amiral gemisi ve açık bir orta seviye olarak ikiye ayrılıyor.",
+      "text_markdown": "Yani Alibaba, kapalı bir amiral gemisi ve açık bir orta seviye olarak ikiye ayrılıyor.",
+      "title": "",
+      "tts": {
+        "text": "Yani Alibaba, kapalı bir amiral gemisi ve açık bir orta seviye olarak ikiye ayrılıyor.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, Mistral'in geçen yıl uyguladığı aynı oyun planı.",
+      "text_markdown": "Bu, Mistral'in geçen yıl uyguladığı aynı oyun planı.",
+      "title": "",
+      "tts": {
+        "text": "Bu, Mistral'in geçen yıl uyguladığı aynı oyun planı.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O zaman izlemeye değer.",
+      "text_markdown": "O zaman izlemeye değer.",
+      "title": "",
+      "tts": {
+        "text": "O zaman izlemeye değer.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Beklenen açık gelişme, açık bir Qwen 3.7 orta seviye modelinin düşmesi.",
+      "text_markdown": "Beklenen açık gelişme, açık bir Qwen 3.7 orta seviye modelinin düşmesi.",
+      "title": "",
+      "tts": {
+        "text": "Beklenen açık gelişme, açık bir Qwen üç nokta yedi orta seviye modelinin düşmesi.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta itibarıyla Hugging Face'te henüz hiçbir şey yok.",
+      "text_markdown": "Bu hafta itibarıyla Hugging Face'te henüz hiçbir şey yok.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta itibarıyla Hugging Face'te henüz hiçbir şey yok.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Tamam, liderlik tablolarına geçelim.",
+      "text_markdown": "Tamam, liderlik tablolarına geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Tamam, liderlik tablolarına geçelim.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu hafta işler nereye vardı?",
+      "text_markdown": "Bu hafta işler nereye vardı?",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta işler nereye vardı?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İşte manşet, ve oldukça tuhaf bir manşet.",
+      "text_markdown": "İşte manşet, ve oldukça tuhaf bir manşet.",
+      "title": "",
+      "tts": {
+        "text": "İşte manşet, ve oldukça tuhaf bir manşet.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta hareket eden liderlik tablosu bir kalite tablosu değil.",
+      "text_markdown": "Bu hafta hareket eden liderlik tablosu bir kalite tablosu değil.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta hareket eden liderlik tablosu bir kalite tablosu değil.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, OpenRouter'ın kullanım ölçeridir — gerçek model çağrıları, görüşler değil.",
+      "text_markdown": "Bu, OpenRouter'ın kullanım ölçeridir — gerçek model çağrıları, görüşler değil.",
+      "title": "",
+      "tts": {
+        "text": "Bu, OpenRouter'ın kullanım ölçeridir — gerçek model çağrıları, görüşler değil.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kullanım ölçer ne diyor?",
+      "text_markdown": "Kullanım ölçer ne diyor?",
+      "title": "",
+      "tts": {
+        "text": "Kullanım ölçer ne diyor?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "18-24 Mayıs haftasında, Dünya'daki en çok kullanılan model DeepSeek V4-Flash oldu.",
+      "text_markdown": "18-24 Mayıs haftasında, Dünya'daki en çok kullanılan model DeepSeek V4-Flash oldu.",
+      "title": "",
+      "tts": {
+        "text": "On sekiz ila yirmi dört Mayıs haftasında, Dünya'daki en çok kullanılan model DeepSeek V dört Flash oldu.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir haftada yaklaşık 3.43 trilyon token sundu.",
+      "text_markdown": "Bir haftada yaklaşık 3.43 trilyon token sundu.",
+      "title": "",
+      "tts": {
+        "text": "Bir haftada yaklaşık üç nokta kırk üç trilyon token sundu.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve açık ağırlıklı, MIT lisanslı, indirip kendi sunucunuzda barındırabileceğiniz bir şey.",
+      "text_markdown": "Ve açık ağırlıklı, MIT lisanslı, indirip kendi sunucunuzda barındırabileceğiniz bir şey.",
+      "title": "",
+      "tts": {
+        "text": "Ve açık ağırlıklı, M İ T lisanslı, indirip kendi sunucunuzda barındırabileceğiniz bir şey.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "En çok kullanılan model açık mı?",
+      "text_markdown": "En çok kullanılan model açık mı?",
+      "title": "",
+      "tts": {
+        "text": "En çok kullanılan model açık mı?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kullanım tablosunun zirvesinde, evet.",
+      "text_markdown": "Kullanım tablosunun zirvesinde, evet.",
+      "title": "",
+      "tts": {
+        "text": "Kullanım tablosunun zirvesinde, evet.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve yakın bile değil.",
+      "text_markdown": "Ve yakın bile değil.",
+      "title": "",
+      "tts": {
+        "text": "Ve yakın bile değil.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çin modelleri o hafta yaklaşık 9.2 trilyon token çekerken, Amerikan modelleri yaklaşık 4.9 trilyon token çekti.",
+      "text_markdown": "Çin modelleri o hafta yaklaşık 9.2 trilyon token çekerken, Amerikan modelleri yaklaşık 4.9 trilyon token çekti.",
+      "title": "",
+      "tts": {
+        "text": "Çin modelleri o hafta yaklaşık dokuz nokta iki trilyon token çekerken, Amerikan modelleri yaklaşık dört nokta dokuz trilyon token çekti.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, Çinli açık modellerin küresel kullanımda lider olduğu üst üste dördüncü hafta.",
+      "text_markdown": "Bu, Çinli açık modellerin küresel kullanımda lider olduğu üst üste dördüncü hafta.",
+      "title": "",
+      "tts": {
+        "text": "Bu, Çinli açık modellerin küresel kullanımda lider olduğu üst üste dördüncü hafta.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu gerçek bir tersine dönüş.",
+      "text_markdown": "Bu gerçek bir tersine dönüş.",
+      "title": "",
+      "tts": {
+        "text": "Bu gerçek bir tersine dönüş.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Öyle — geliştiricilerin gerçekten hissettiği, üretimde çalışan metrikte, açık kaynaklı olanlar zirvede kazanıyor.",
+      "text_markdown": "Öyle — geliştiricilerin gerçekten hissettiği, üretimde çalışan metrikte, açık kaynaklı olanlar zirvede kazanıyor.",
+      "title": "",
+      "tts": {
+        "text": "Öyle — geliştiricilerin gerçekten hissettiği, üretimde çalışan metrikte, açık kaynaklı olanlar zirvede kazanıyor.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ama kullanım tabloları konusunda dürüst olun.",
+      "text_markdown": "Ama kullanım tabloları konusunda dürüst olun.",
+      "title": "",
+      "tts": {
+        "text": "Ama kullanım tabloları konusunda dürüst olun.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İyi bir içgüdü, ve bu hafta mükemmel bir uyarıcı hikaye var.",
+      "text_markdown": "İyi bir içgüdü, ve bu hafta mükemmel bir uyarıcı hikaye var.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir içgüdü, ve bu hafta mükemmel bir uyarıcı hikaye var.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Başka bir model, Tencent'in Hy3'ü, aynı kullanım tablosunda yükseldi.",
+      "text_markdown": "Başka bir model, Tencent'in Hy3'ü, aynı kullanım tablosunda yükseldi.",
+      "title": "",
+      "tts": {
+        "text": "Başka bir model, Tencent'in H Y üç'ü, aynı kullanım tablosunda yükseldi.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Analist Max Woolf, 26 Mayıs'ta bunu detaylıca inceledi.",
+      "text_markdown": "Analist Max Woolf, 26 Mayıs'ta bunu detaylıca inceledi.",
+      "title": "",
+      "tts": {
+        "text": "Analist Max Woolf, yirmi altı Mayıs'ta bunu detaylıca inceledi.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ne buldu?",
+      "text_markdown": "Ne buldu?",
+      "title": "",
+      "tts": {
+        "text": "Ne buldu?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Token başına ucuz görünüyor, ancak çok yüksek önbellek okuma maliyetleri var.",
+      "text_markdown": "Token başına ucuz görünüyor, ancak çok yüksek önbellek okuma maliyetleri var.",
+      "title": "",
+      "tts": {
+        "text": "Token başına ucuz görünüyor, ancak çok yüksek önbellek okuma maliyetleri var.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bunları saydığınızda, DeepSeek'in gerçek fiyatının neredeyse iki katı.",
+      "text_markdown": "Bunları saydığınızda, DeepSeek'in gerçek fiyatının neredeyse iki katı.",
+      "title": "",
+      "tts": {
+        "text": "Bunları saydığınızda, DeepSeek'in gerçek fiyatının neredeyse iki katı.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve bu ani yükseliş, geniş bir sevgi yerine tek bir dev uygulamanın eseri gibi görünüyor.",
+      "text_markdown": "Ve bu ani yükseliş, geniş bir sevgi yerine tek bir dev uygulamanın eseri gibi görünüyor.",
+      "title": "",
+      "tts": {
+        "text": "Ve bu ani yükseliş, geniş bir sevgi yerine tek bir dev uygulamanın eseri gibi görünüyor.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yani bir kullanım tablosu size neyin iyi olduğunu değil, kimin harcama yaptığını söyler.",
+      "text_markdown": "Yani bir kullanım tablosu size neyin iyi olduğunu değil, kimin harcama yaptığını söyler.",
+      "title": "",
+      "tts": {
+        "text": "Yani bir kullanım tablosu size neyin iyi olduğunu değil, kimin harcama yaptığını söyler.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Trend olmak, en iyi olmakla aynı şey değil.",
+      "text_markdown": "Trend olmak, en iyi olmakla aynı şey değil.",
+      "title": "",
+      "tts": {
+        "text": "Trend olmak, en iyi olmakla aynı şey değil.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "İşte tam da çıkarılması gereken ders bu.",
+      "text_markdown": "İşte tam da çıkarılması gereken ders bu.",
+      "title": "",
+      "tts": {
+        "text": "İşte tam da çıkarılması gereken ders bu.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya kalite tabloları?",
+      "text_markdown": "Peki ya kalite tabloları?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya kalite tabloları?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "En zorlu tablolarda, kapalı modeller hala lider.",
+      "text_markdown": "En zorlu tablolarda, kapalı modeller hala lider.",
+      "title": "",
+      "tts": {
+        "text": "En zorlu tablolarda, kapalı modeller hala lider.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sohbet kalitesi ve ajan terminali tablolarının zirvesi şu anda tamamen kapalı modellere ait.",
+      "text_markdown": "Sohbet kalitesi ve ajan terminali tablolarının zirvesi şu anda tamamen kapalı modellere ait.",
+      "title": "",
+      "tts": {
+        "text": "Sohbet kalitesi ve ajan terminali tablolarının zirvesi şu anda tamamen kapalı modellere ait.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ancak kodlama testi olan SWE-bench Verified'da, açık kaynaklı modeller temelde eşit durumda.",
+      "text_markdown": "Ancak kodlama testi olan SWE-bench Verified'da, açık kaynaklı modeller temelde eşit durumda.",
+      "title": "",
+      "tts": {
+        "text": "Ancak kodlama testi olan S V E bench Verified'da, açık kaynaklı modeller temelde eşit durumda.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Takipçiler en iyi açık modelleri yaklaşık %80 civarında gösteriyor.",
+      "text_markdown": "Takipçiler en iyi açık modelleri yaklaşık %80 civarında gösteriyor.",
+      "title": "",
+      "tts": {
+        "text": "Takipçiler en iyi açık modelleri yaklaşık yüzde seksen civarında gösteriyor.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hangi açık modeller?",
+      "text_markdown": "Hangi açık modeller?",
+      "title": "",
+      "tts": {
+        "text": "Hangi açık modeller?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kimi K2.6 ve MiniMax, DeepSeek'in en büyük modeli de benzer bir iddiada bulunuyor.",
+      "text_markdown": "Kimi K2.6 ve MiniMax, DeepSeek'in en büyük modeli de benzer bir iddiada bulunuyor.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K iki nokta altı ve MiniMax, DeepSeek'in en büyük modeli de benzer bir iddiada bulunuyor.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İddia ediyor diyeceğim, çünkü takipçiler birbirleriyle çelişiyor.",
+      "text_markdown": "İddia ediyor diyeceğim, çünkü takipçiler birbirleriyle çelişiyor.",
+      "title": "",
+      "tts": {
+        "text": "İddia ediyor diyeceğim, çünkü takipçiler birbirleriyle çelişiyor.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Herhangi bir tek kıyaslama (benchmark) sayısını bir iddia olarak kabul edin, bir gerçek olarak değil.",
+      "text_markdown": "Herhangi bir tek kıyaslama (benchmark) sayısını bir iddia olarak kabul edin, bir gerçek olarak değil.",
+      "title": "",
+      "tts": {
+        "text": "Herhangi bir tek kıyaslama (benchmark) sayısını bir iddia olarak kabul edin, bir gerçek olarak değil.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bundan bahsetmişken — kıyaslama (benchmark) güven sorunu.",
+      "text_markdown": "Bundan bahsetmişken — kıyaslama (benchmark) güven sorunu.",
+      "title": "",
+      "tts": {
+        "text": "Bundan bahsetmişken — kıyaslama (benchmark) güven sorunu.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, tam da bu konuda 19 Mayıs'ta çarpıcı bir makale yayımlandı.",
+      "text_markdown": "Evet, tam da bu konuda 19 Mayıs'ta çarpıcı bir makale yayımlandı.",
+      "title": "",
+      "tts": {
+        "text": "Evet, tam da bu konuda on dokuz Mayıs'ta çarpıcı bir makale yayımlandı.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Argüman şu ki, kıyaslamalar (benchmark'lar) kontaminasyona dayanıklı olmalı.",
+      "text_markdown": "Argüman şu ki, kıyaslamalar (benchmark'lar) kontaminasyona dayanıklı olmalı.",
+      "title": "",
+      "tts": {
+        "text": "Argüman şu ki, kıyaslamalar kontaminasyona dayanıklı olmalı.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yani test, eğitim verilerine sızmamalı.",
+      "text_markdown": "Yani test, eğitim verilerine sızmamalı.",
+      "title": "",
+      "tts": {
+        "text": "Yani test, eğitim verilerine sızmamalı.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Aksi takdirde yüksek bir puan, muhakemeyi değil, hafızayı ölçer.",
+      "text_markdown": "Aksi takdirde yüksek bir puan, muhakemeyi değil, hafızayı ölçer.",
+      "title": "",
+      "tts": {
+        "text": "Aksi takdirde yüksek bir puan, muhakemeyi değil, hafızayı ölçer.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani bir sıralama tablosunun yanıltıcı olabileceği iki yol var.",
+      "text_markdown": "Yani bir sıralama tablosunun yanıltıcı olabileceği iki yol var.",
+      "title": "",
+      "tts": {
+        "text": "Yani bir sıralama tablosunun yanıltıcı olabileceği iki yol var.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Doğru — bir yanda kullanım manipülasyonu, diğer yanda kontaminasyon.",
+      "text_markdown": "Doğru — bir yanda kullanım manipülasyonu, diğer yanda kontaminasyon.",
+      "title": "",
+      "tts": {
+        "text": "Doğru — bir yanda kullanım manipülasyonu, diğer yanda kontaminasyon.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Aynı ders — sıralama tablosunu okuyun, ona tapmayın.",
+      "text_markdown": "Aynı ders — sıralama tablosunu okuyun, ona tapmayın.",
+      "title": "",
+      "tts": {
+        "text": "Aynı ders — sıralama tablosunu okuyun, ona tapmayın.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Şimdi başlıklara geçelim.",
+      "text_markdown": "Şimdi başlıklara geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Şimdi başlıklara geçelim.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hızlı bir özet, gerçekten kullanabileceğiniz şeyler.",
+      "text_markdown": "Hızlı bir özet, gerçekten kullanabileceğiniz şeyler.",
+      "title": "",
+      "tts": {
+        "text": "Hızlı bir özet, gerçekten kullanabileceğiniz şeyler.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İlk olarak, o bir numaralı modelin dürüst kendi kendine barındırma (self-hosting) matematiği.",
+      "text_markdown": "İlk olarak, o bir numaralı modelin dürüst kendi kendine barındırma (self-hosting) matematiği.",
+      "title": "",
+      "tts": {
+        "text": "İlk olarak, o bir numaralı modelin dürüst kendi kendine barındırma matematiği.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "DeepSeek V4-Flash yaklaşık 170 gigabayt GPU belleği gerektiriyor.",
+      "text_markdown": "DeepSeek V4-Flash yaklaşık 170 gigabayt GPU belleği gerektiriyor.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V dört Flash yaklaşık yüz yetmiş gigabayt GPU belleği gerektiriyor.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, bulutta saatte yaklaşık yedi dolara mal olan, üst düzey veri merkezi kartlarından oluşan bir çift demek.",
+      "text_markdown": "Bu, bulutta saatte yaklaşık yedi dolara mal olan, üst düzey veri merkezi kartlarından oluşan bir çift demek.",
+      "title": "",
+      "tts": {
+        "text": "Bu, bulutta saatte yaklaşık yedi dolara mal olan, üst düzey veri merkezi kartlarından oluşan bir çift demek.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çok yoğun trafiğin altında, ucuz API hala kazanıyor.",
+      "text_markdown": "Çok yoğun trafiğin altında, ucuz API hala kazanıyor.",
+      "title": "",
+      "tts": {
+        "text": "Çok yoğun trafiğin altında, ucuz API hala kazanıyor.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Gizlilik ve kontrol için kendi kendine barındırın (self-host edin), para tasarrufu için değil — devasa değilseniz tabii.",
+      "text_markdown": "Gizlilik ve kontrol için kendi kendine barındırın (self-host edin), para tasarrufu için değil — devasa değilseniz tabii.",
+      "title": "",
+      "tts": {
+        "text": "Gizlilik ve kontrol için kendi kendine barındırın, para tasarrufu için değil — devasa değilseniz tabii.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Güzel, başka ne var?",
+      "text_markdown": "Güzel, başka ne var?",
+      "title": "",
+      "tts": {
+        "text": "Güzel, başka ne var?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İkinci olarak, cihaz içi konuşma bu yıl büyük bir atılım yaptı.",
+      "text_markdown": "İkinci olarak, cihaz içi konuşma bu yıl büyük bir atılım yaptı.",
+      "title": "",
+      "tts": {
+        "text": "İkinci olarak, cihaz içi konuşma bu yıl büyük bir atılım yaptı.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Hiç GPU'su olmayan bir CPU üzerinde çalışan açık kaynaklı bir metin-konuşma modeli var.",
+      "text_markdown": "Hiç GPU'su olmayan bir CPU üzerinde çalışan açık kaynaklı bir metin-konuşma modeli var.",
+      "title": "",
+      "tts": {
+        "text": "Hiç GPU'su olmayan bir CPU üzerinde çalışan açık kaynaklı bir metin konuşma modeli var.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu düşünceyi aklınızda tutun — bu bizim ana haberimiz.",
+      "text_markdown": "Bu düşünceyi aklınızda tutun — bu bizim ana haberimiz.",
+      "title": "",
+      "tts": {
+        "text": "Bu düşünceyi aklınızda tutun — bu bizim ana haberimiz.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "İpucu alındı.",
+      "text_markdown": "İpucu alındı.",
+      "title": "",
+      "tts": {
+        "text": "İpucu alındı.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Üçüncü olarak, topluluk nicel katmanı (quant layer) açık dünyayı besliyor.",
+      "text_markdown": "Üçüncü olarak, topluluk nicel katmanı (quant layer) açık dünyayı besliyor.",
+      "title": "",
+      "tts": {
+        "text": "Üçüncü olarak, topluluk nicel katmanı (quant layer) açık dünyayı besliyor.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Unsloth gibi gruplar, yeni modellerin ayarlanmış, küçültülmüş versiyonlarını günler içinde piyasaya sürüyor.",
+      "text_markdown": "Unsloth gibi gruplar, yeni modellerin ayarlanmış, küçültülmüş versiyonlarını günler içinde piyasaya sürüyor.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth gibi gruplar, yeni modellerin ayarlanmış, küçültülmüş versiyonlarını günler içinde piyasaya sürüyor.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dev bir modelin kartınıza sığacak bir şeye dönüşmesi işte böyle oluyor.",
+      "text_markdown": "Dev bir modelin kartınıza sığacak bir şeye dönüşmesi işte böyle oluyor.",
+      "title": "",
+      "tts": {
+        "text": "Dev bir modelin kartınıza sığacak bir şeye dönüşmesi işte böyle oluyor.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki dinleme tarafında?",
+      "text_markdown": "Peki dinleme tarafında?",
+      "title": "",
+      "tts": {
+        "text": "Peki dinleme tarafında?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Konuşmadan metne (speech-to-text) de ilerleme kaydedildi.",
+      "text_markdown": "Konuşmadan metne (speech-to-text) de ilerleme kaydedildi.",
+      "title": "",
+      "tts": {
+        "text": "Konuşmadan metne de ilerleme kaydedildi.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Moonshine v2, Whisper'ı doğruluk açısından boyutunun çok küçük bir kısmında geride bırakan açık bir modeldir.",
+      "text_markdown": "Moonshine v2, Whisper'ı doğruluk açısından boyutunun çok küçük bir kısmında geride bırakan açık bir modeldir.",
+      "title": "",
+      "tts": {
+        "text": "Moonshine versiyon iki, Whisper'ı doğruluk açısından boyutunun çok küçük bir kısmında geride bırakan açık bir modeldir.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir Raspberry Pi veya telefon için geliştirilmiştir.",
+      "text_markdown": "Bir Raspberry Pi veya telefon için geliştirilmiştir.",
+      "title": "",
+      "tts": {
+        "text": "Bir Raspberry Pi veya telefon için geliştirilmiştir.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir sunucuda toplu transkripsiyon için NVIDIA'nın Parakeet'i hız için tercih edilen modeldir.",
+      "text_markdown": "Bir sunucuda toplu transkripsiyon için NVIDIA'nın Parakeet'i hız için tercih edilen modeldir.",
+      "title": "",
+      "tts": {
+        "text": "Bir sunucuda toplu transkripsiyon için NVIDIA'nın Parakeet'i hız için tercih edilen modeldir.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir tane daha — çip hikayesi.",
+      "text_markdown": "Bir tane daha — çip hikayesi.",
+      "title": "",
+      "tts": {
+        "text": "Bir tane daha — çip hikayesi.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, tüm bölümü birbirine bağlıyor.",
+      "text_markdown": "Bu, tüm bölümü birbirine bağlıyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu, tüm bölümü birbirine bağlıyor.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "21 Mayıs'ta Nvidia'dan Jensen Huang, Çin'in çip pazarını büyük ölçüde Huawei'ye teslim ettiğini söyledi.",
+      "text_markdown": "21 Mayıs'ta Nvidia'dan Jensen Huang, Çin'in çip pazarını büyük ölçüde Huawei'ye teslim ettiğini söyledi.",
+      "title": "",
+      "tts": {
+        "text": "Yirmi bir Mayıs'ta Nvidia'dan Jensen Huang, Çin'in çip pazarını büyük ölçüde Huawei'ye teslim ettiğini söyledi.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çin, kendi silikonunu öne çıkarmak için onaylanmış Nvidia ithalatını bile engelliyor.",
+      "text_markdown": "Çin, kendi silikonunu öne çıkarmak için onaylanmış Nvidia ithalatını bile engelliyor.",
+      "title": "",
+      "tts": {
+        "text": "Çin, kendi silikonunu öne çıkarmak için onaylanmış Nvidia ithalatını bile engelliyor.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu, bir geliştirici için neden önemli?",
+      "text_markdown": "Bu, bir geliştirici için neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Bu, bir geliştirici için neden önemli?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çünkü kullanım listesinin başında yer alan bu açık Çin modelleri, giderek daha fazla Huawei çiplerinde eğitiliyor ve sunuluyor.",
+      "text_markdown": "Çünkü kullanım listesinin başında yer alan bu açık Çin modelleri, giderek daha fazla Huawei çiplerinde eğitiliyor ve sunuluyor.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü kullanım listesinin başında yer alan bu açık Çin modelleri, giderek daha fazla Huawei çiplerinde eğitiliyor ve sunuluyor.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İhracat kontrolleri, Çin'in yapay zekasını yavaşlatmak içindi.",
+      "text_markdown": "İhracat kontrolleri, Çin'in yapay zekasını yavaşlatmak içindi.",
+      "title": "",
+      "tts": {
+        "text": "İhracat kontrolleri, Çin'in yapay zekasını yavaşlatmak içindi.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bunun yerine, paralel bir açık yığın — hem çipler hem de ağırlıklar — kendi kendine geliştirdiler.",
+      "text_markdown": "Bunun yerine, paralel bir açık yığın — hem çipler hem de ağırlıklar — kendi kendine geliştirdiler.",
+      "title": "",
+      "tts": {
+        "text": "Bunun yerine, paralel bir açık yığın — hem çipler hem de ağırlıklar — kendi kendine geliştirdiler.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Liderlik tablosu hikayesi ve çip hikayesi aynı hikaye.",
+      "text_markdown": "Liderlik tablosu hikayesi ve çip hikayesi aynı hikaye.",
+      "title": "",
+      "tts": {
+        "text": "Liderlik tablosu hikayesi ve çip hikayesi aynı hikaye.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Şimdi ana hikayeye geri dönelim.",
+      "text_markdown": "Şimdi ana hikayeye geri dönelim.",
+      "title": "",
+      "tts": {
+        "text": "Şimdi ana hikayeye geri dönelim.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bize açık ses sözü verdin.",
+      "text_markdown": "Bize açık ses sözü verdin.",
+      "title": "",
+      "tts": {
+        "text": "Bize açık ses sözü verdin.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, verdim ve bu, bu gösterinin ta kendisinin motor dairesi.",
+      "text_markdown": "Evet, verdim ve bu, bu gösterinin ta kendisinin motor dairesi.",
+      "title": "",
+      "tts": {
+        "text": "Evet, verdim ve bu, bu gösterinin ta kendisinin motor dairesi.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu konuda daha fazla bilgi ver.",
+      "text_markdown": "Bu konuda daha fazla bilgi ver.",
+      "title": "",
+      "tts": {
+        "text": "Bu konuda daha fazla bilgi ver.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Duyduğunuz ses, açık ve barındırılan konuşma modellerinden oluşan bir yığın üzerinde çalışıyor.",
+      "text_markdown": "Duyduğunuz ses, açık ve barındırılan konuşma modellerinden oluşan bir yığın üzerinde çalışıyor.",
+      "title": "",
+      "tts": {
+        "text": "Duyduğunuz ses, açık ve barındırılan konuşma modellerinden oluşan bir yığın üzerinde çalışıyor.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve 2026, açık olanların sahip olunabilecek kadar iyi hale geldiği yıldır.",
+      "text_markdown": "Ve 2026, açık olanların sahip olunabilecek kadar iyi hale geldiği yıldır.",
+      "title": "",
+      "tts": {
+        "text": "Ve iki bin yirmi altı, açık olanların sahip olunabilecek kadar iyi hale geldiği yıldır.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Eve en yakın olandan başlayalım.",
+      "text_markdown": "Eve en yakın olandan başlayalım.",
+      "title": "",
+      "tts": {
+        "text": "Eve en yakın olandan başlayalım.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, Resemble AI'dan Chatterbox.",
+      "text_markdown": "Bu, Resemble AI'dan Chatterbox.",
+      "title": "",
+      "tts": {
+        "text": "Bu, Resemble AI'dan Chatterbox.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MIT lisanslıdır, 23 dili kapsar ve cihaz üzerinde çalışır.",
+      "text_markdown": "MIT lisanslıdır, 23 dili kapsar ve cihaz üzerinde çalışır.",
+      "title": "",
+      "tts": {
+        "text": "M İ T lisanslıdır, yirmi üç dili kapsar ve cihaz üzerinde çalışır.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Turbo adlı bir sürümü Mart ayında çıktı.",
+      "text_markdown": "Turbo adlı bir sürümü Mart ayında çıktı.",
+      "title": "",
+      "tts": {
+        "text": "Turbo adlı bir sürümü Mart ayında çıktı.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ses kod çözücüyü on adım yerine tek bir adım haline getiren bir numara kullanıyor.",
+      "text_markdown": "Ses kod çözücüyü on adım yerine tek bir adım haline getiren bir numara kullanıyor.",
+      "title": "",
+      "tts": {
+        "text": "Ses kod çözücüyü on adım yerine tek bir adım haline getiren bir numara kullanıyor.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu numaranın basit açıklaması?",
+      "text_markdown": "Bu numaranın basit açıklaması?",
+      "title": "",
+      "tts": {
+        "text": "Bu numaranın basit açıklaması?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Aynı ses için çok daha az hesaplama gücü anlamına geliyor.",
+      "text_markdown": "Aynı ses için çok daha az hesaplama gücü anlamına geliyor.",
+      "title": "",
+      "tts": {
+        "text": "Aynı ses için çok daha az hesaplama gücü anlamına geliyor.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İyi bir sesi bir telefonda gerçekçi kılan şey budur.",
+      "text_markdown": "İyi bir sesi bir telefonda gerçekçi kılan şey budur.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir sesi bir telefonda gerçekçi kılan şey budur.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Daha fazla dile ihtiyacınız olursa ne olur?",
+      "text_markdown": "Daha fazla dile ihtiyacınız olursa ne olur?",
+      "title": "",
+      "tts": {
+        "text": "Daha fazla dile ihtiyacınız olursa ne olur?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "OmniVoice adlı açık bir model var.",
+      "text_markdown": "OmniVoice adlı açık bir model var.",
+      "title": "",
+      "tts": {
+        "text": "OmniVoice adlı açık bir model var.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "600'den fazla dili desteklediğini iddia ediyor ve hızlıdır.",
+      "text_markdown": "600'den fazla dili desteklediğini iddia ediyor ve hızlıdır.",
+      "title": "",
+      "tts": {
+        "text": "Altı yüzden fazla dili desteklediğini iddia ediyor ve hızlıdır.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Apache lisanslıdır, bu nedenle ticari olarak kullanmak güvenlidir.",
+      "text_markdown": "Apache lisanslıdır, bu nedenle ticari olarak kullanmak güvenlidir.",
+      "title": "",
+      "tts": {
+        "text": "Apache lisanslıdır, bu nedenle ticari olarak kullanmak güvenlidir.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "600 dil kulağa çok hoş geliyor.",
+      "text_markdown": "600 dil kulağa çok hoş geliyor.",
+      "title": "",
+      "tts": {
+        "text": "altı yüz dil kulağa çok hoş geliyor.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu makul bir endişe.",
+      "text_markdown": "Bu makul bir endişe.",
+      "title": "",
+      "tts": {
+        "text": "Bu makul bir endişe.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir dili kapsamak, o dilde kulağa hoş gelmekle aynı şey değildir.",
+      "text_markdown": "Bir dili kapsamak, o dilde kulağa hoş gelmekle aynı şey değildir.",
+      "title": "",
+      "tts": {
+        "text": "Bir dili kapsamak, o dilde kulağa hoş gelmekle aynı şey değildir.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yine de ona güvenmeden önce, dil dil dinlemeniz gerekir.",
+      "text_markdown": "Yine de ona güvenmeden önce, dil dil dinlemeniz gerekir.",
+      "title": "",
+      "tts": {
+        "text": "Yine de ona güvenmeden önce, dil dil dinlemeniz gerekir.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya stüdyo kalitesi?",
+      "text_markdown": "Peki ya stüdyo kalitesi?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya stüdyo kalitesi?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bunun için VoxCPM2'ye bakın.",
+      "text_markdown": "Bunun için VoxCPM2'ye bakın.",
+      "title": "",
+      "tts": {
+        "text": "Bunun için Vox C P M ikiye bakın.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yaklaşık 2 milyar parametreye sahip, Apache lisanslı ve yüksek doğrulukta çıktı veriyor.",
+      "text_markdown": "Yaklaşık 2 milyar parametreye sahip, Apache lisanslı ve yüksek doğrulukta çıktı veriyor.",
+      "title": "",
+      "tts": {
+        "text": "Yaklaşık iki milyar parametreye sahip, Apache lisanslı ve yüksek doğrulukta çıktı veriyor.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "30 dili kapsıyor ve küçük bir ses örneğiyle ince ayar yapabilirsiniz.",
+      "text_markdown": "30 dili kapsıyor ve küçük bir ses örneğiyle ince ayar yapabilirsiniz.",
+      "title": "",
+      "tts": {
+        "text": "Otuz dili kapsıyor ve küçük bir ses örneğiyle ince ayar yapabilirsiniz.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu karışım, onu en ürünleştirilebilir orta boyutlu açık ses yapıyor.",
+      "text_markdown": "Bu karışım, onu en ürünleştirilebilir orta boyutlu açık ses yapıyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu karışım, onu en ürünleştirilebilir orta boyutlu açık ses yapıyor.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya bahsettiğin cihaz içi esneklik?",
+      "text_markdown": "Peki ya bahsettiğin cihaz içi esneklik?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya bahsettiğin cihaz içi esneklik?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu MOSS TTS Nano modeli.",
+      "text_markdown": "Bu MOSS TTS Nano modeli.",
+      "title": "",
+      "tts": {
+        "text": "Bu Mos metinden sese nano modeli.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çok küçük, yaklaşık 100 milyon parametre.",
+      "text_markdown": "Çok küçük, yaklaşık 100 milyon parametre.",
+      "title": "",
+      "tts": {
+        "text": "Çok küçük, yaklaşık yüz milyon parametre.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir CPU'da, GPU olmadan çalışır — hatta bir dizüstü bilgisayarda, tek çekirdekte bile.",
+      "text_markdown": "Bir CPU'da, GPU olmadan çalışır — hatta bir dizüstü bilgisayarda, tek çekirdekte bile.",
+      "title": "",
+      "tts": {
+        "text": "Bir C P U'da, G P U olmadan çalışır — hatta bir dizüstü bilgisayarda, tek çekirdekte bile.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir telefona ses gönderen herkes için bu bir rüya.",
+      "text_markdown": "Bir telefona ses gönderen herkes için bu bir rüya.",
+      "title": "",
+      "tts": {
+        "text": "Bir telefona ses gönderen herkes için bu bir rüya.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani her şey olumlu mu?",
+      "text_markdown": "Yani her şey olumlu mu?",
+      "title": "",
+      "tts": {
+        "text": "Yani her şey olumlu mu?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Hayır — ve işte herkesin gözden kaçırdığı tuzak.",
+      "text_markdown": "Hayır — ve işte herkesin gözden kaçırdığı tuzak.",
+      "title": "",
+      "tts": {
+        "text": "Hayır — ve işte herkesin gözden kaçırdığı tuzak.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral, Voxtral adında hoş bir ses modeli yayınladı.",
+      "text_markdown": "Mistral, Voxtral adında hoş bir ses modeli yayınladı.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, Voxtral adında hoş bir ses modeli yayınladı.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ağırlıklar açık ve kalitesi harika.",
+      "text_markdown": "Ağırlıklar açık ve kalitesi harika.",
+      "title": "",
+      "tts": {
+        "text": "Ağırlıklar açık ve kalitesi harika.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ancak lisans ticari olmayan kullanım içindir.",
+      "text_markdown": "Ancak lisans ticari olmayan kullanım içindir.",
+      "title": "",
+      "tts": {
+        "text": "Ancak lisans ticari olmayan kullanım içindir.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani onu gönderemezsiniz.",
+      "text_markdown": "Yani onu gönderemezsiniz.",
+      "title": "",
+      "tts": {
+        "text": "Yani onu gönderemezsiniz.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ücretli bir üründe değil, bir anlaşma olmadan değil.",
+      "text_markdown": "Ücretli bir üründe değil, bir anlaşma olmadan değil.",
+      "title": "",
+      "tts": {
+        "text": "Ücretli bir üründe değil, bir anlaşma olmadan değil.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Açık ağırlıklar her zaman onları kullanmanıza izin verildiği anlamına gelmez.",
+      "text_markdown": "Açık ağırlıklar her zaman onları kullanmanıza izin verildiği anlamına gelmez.",
+      "title": "",
+      "tts": {
+        "text": "Açık ağırlıklar her zaman onları kullanmanıza izin verildiği anlamına gelmez.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Gerçek bir uygulama için, aşık olmadan önce lisansı okursunuz.",
+      "text_markdown": "Gerçek bir uygulama için, aşık olmadan önce lisansı okursunuz.",
+      "title": "",
+      "tts": {
+        "text": "Gerçek bir uygulama için, aşık olmadan önce lisansı okursunuz.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya bunlarla ilgili kıyaslama iddiaları?",
+      "text_markdown": "Peki ya bunlarla ilgili kıyaslama iddiaları?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya bunlarla ilgili kıyaslama iddiaları?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Şüpheci olun.",
+      "text_markdown": "Şüpheci olun.",
+      "title": "",
+      "tts": {
+        "text": "Şüpheci olun.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Buradaki her lideri yenen iddiası, bir satıcının kendi kör testini yapmasıdır.",
+      "text_markdown": "Buradaki her lideri yenen iddiası, bir satıcının kendi kör testini yapmasıdır.",
+      "title": "",
+      "tts": {
+        "text": "Buradaki her lideri yenen iddiası, bir satıcının kendi kör testini yapmasıdır.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kendi kulaklarınıza güvenin, onların tablosuna değil.",
+      "text_markdown": "Kendi kulaklarınıza güvenin, onların tablosuna değil.",
+      "title": "",
+      "tts": {
+        "text": "Kendi kulaklarınıza güvenin, onların tablosuna değil.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki bu bizi nereye götürüyor?",
+      "text_markdown": "Peki bu bizi nereye götürüyor?",
+      "title": "",
+      "tts": {
+        "text": "Peki bu bizi nereye götürüyor?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bizi gerçekten yeni bir yere bırakıyor.",
+      "text_markdown": "Bizi gerçekten yeni bir yere bırakıyor.",
+      "title": "",
+      "tts": {
+        "text": "Bizi gerçekten yeni bir yere bırakıyor.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bugün kendi cihazınızda harika bir ses çalıştırabilirsiniz.",
+      "text_markdown": "Bugün kendi cihazınızda harika bir ses çalıştırabilirsiniz.",
+      "title": "",
+      "tts": {
+        "text": "Bugün kendi cihazınızda harika bir ses çalıştırabilirsiniz.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zor soru artık yapabilir misin değil — onu hangi lisansla elinde tutabileceğindir.",
+      "text_markdown": "Zor soru artık yapabilir misin değil — onu hangi lisansla elinde tutabileceğindir.",
+      "title": "",
+      "tts": {
+        "text": "Zor soru artık yapabilir misin değil — onu hangi lisansla elinde tutabileceğindir.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hikayeyi sonlandırmak için iyi bir nokta.",
+      "text_markdown": "Hikayeyi sonlandırmak için iyi bir nokta.",
+      "title": "",
+      "tts": {
+        "text": "Hikayeyi sonlandırmak için iyi bir nokta.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Haftanın konseptini yapalım.",
+      "text_markdown": "Haftanın konseptini yapalım.",
+      "title": "",
+      "tts": {
+        "text": "Haftanın konseptini yapalım.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-184",
+      "text": "Nöral ses kodeklerini seçtin.",
+      "text_markdown": "Nöral ses kodeklerini seçtin.",
+      "title": "",
+      "tts": {
+        "text": "Nöral ses kodeklerini seçtin.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-185",
+      "text": "Evet, çünkü her cihaz içi sesin arkasındaki gizli numara bu.",
+      "text_markdown": "Evet, çünkü her cihaz içi sesin arkasındaki gizli numara bu.",
+      "title": "",
+      "tts": {
+        "text": "Evet, çünkü her cihaz içi sesin arkasındaki gizli numara bu.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-186",
+      "text": "Ham ses çok büyük — birkaç saniye milyonlarca sayı demek.",
+      "text_markdown": "Ham ses çok büyük — birkaç saniye milyonlarca sayı demek.",
+      "title": "",
+      "tts": {
+        "text": "Ham ses çok büyük — birkaç saniye milyonlarca sayı demek.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-187",
+      "text": "Bir telefon tüm bunları gerçek zamanlı olarak bir modele aktaramaz.",
+      "text_markdown": "Bir telefon tüm bunları gerçek zamanlı olarak bir modele aktaramaz.",
+      "title": "",
+      "tts": {
+        "text": "Bir telefon tüm bunları gerçek zamanlı olarak bir modele aktaramaz.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-188",
+      "text": "Peki bir kodek ne yapar?",
+      "text_markdown": "Peki bir kodek ne yapar?",
+      "title": "",
+      "tts": {
+        "text": "Peki bir kodek ne yapar?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-189",
+      "text": "Bu sesi küçük bir token akışına sıkıştırmayı öğrenir.",
+      "text_markdown": "Bu sesi küçük bir token akışına sıkıştırmayı öğrenir.",
+      "title": "",
+      "tts": {
+        "text": "Bu sesi küçük bir token akışına sıkıştırmayı öğrenir.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-190",
+      "text": "Onu ses için akıllı bir zip dosyası gibi düşünün.",
+      "text_markdown": "Onu ses için akıllı bir zip dosyası gibi düşünün.",
+      "title": "",
+      "tts": {
+        "text": "Onu ses için akıllı bir zip dosyası gibi düşünün.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-191",
+      "text": "Mimi adlı açık kaynaklı olanı saniyede yaklaşık bir kilobit'e kadar düşüyor.",
+      "text_markdown": "Mimi adlı açık kaynaklı olanı saniyede yaklaşık bir kilobit'e kadar düşüyor.",
+      "title": "",
+      "tts": {
+        "text": "Mimi adlı açık kaynaklı olanı saniyede yaklaşık bir kilobit'e kadar düşüyor.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-192",
+      "text": "Gerçekten ne kadar küçük bu?",
+      "text_markdown": "Gerçekten ne kadar küçük bu?",
+      "title": "",
+      "tts": {
+        "text": "Gerçekten ne kadar küçük bu?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-193",
+      "text": "Milyonlar yerine saniyede birkaç yüz küçük sayı.",
+      "text_markdown": "Milyonlar yerine saniyede birkaç yüz küçük sayı.",
+      "title": "",
+      "tts": {
+        "text": "Milyonlar yerine saniyede birkaç yüz küçük sayı.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-194",
+      "text": "Ve sesi hala doğal duyulacak şekilde yeniden inşa ediyor.",
+      "text_markdown": "Ve sesi hala doğal duyulacak şekilde yeniden inşa ediyor.",
+      "title": "",
+      "tts": {
+        "text": "Ve sesi hala doğal duyulacak şekilde yeniden inşa ediyor.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-195",
+      "text": "Bu bir ses modeli için neden önemli?",
+      "text_markdown": "Bu bir ses modeli için neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Bu bir ses modeli için neden önemli?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-196",
+      "text": "Çünkü model ham sesle değil, bu token'larla konuşuyor.",
+      "text_markdown": "Çünkü model ham sesle değil, bu token'larla konuşuyor.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü model ham sesle değil, bu token'larla konuşuyor.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-197",
+      "text": "Daha az token, her kelime için daha az işlem gücü demek.",
+      "text_markdown": "Daha az token, her kelime için daha az işlem gücü demek.",
+      "title": "",
+      "tts": {
+        "text": "Daha az token, her kelime için daha az işlem gücü demek.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-198",
+      "text": "İyi bir sesin bir telefonda çevrimdışı çalışmasını sağlayan şey bu.",
+      "text_markdown": "İyi bir sesin bir telefonda çevrimdışı çalışmasını sağlayan şey bu.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir sesin bir telefonda çevrimdışı çalışmasını sağlayan şey bu.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-199",
+      "text": "Yani kodek tabanı belirliyor.",
+      "text_markdown": "Yani kodek tabanı belirliyor.",
+      "title": "",
+      "tts": {
+        "text": "Yani kodek tabanı belirliyor.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-200",
+      "text": "Kesinlikle, gecikmeyi ve diğer her şeyin altında çalıştığı bit hızını belirliyor.",
+      "text_markdown": "Kesinlikle, gecikmeyi ve diğer her şeyin altında çalıştığı bit hızını belirliyor.",
+      "title": "",
+      "tts": {
+        "text": "Kesinlikle, gecikmeyi ve diğer her şeyin altında çalıştığı bit hızını belirliyor.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-201",
+      "text": "Açık kaynaklı olanlar, Mimi ve SNAC adlı bir kuzeni, yeni konuşma modellerinin üzerine inşa edildiği şeylerdir.",
+      "text_markdown": "Açık kaynaklı olanlar, Mimi ve SNAC adlı bir kuzeni, yeni konuşma modellerinin üzerine inşa edildiği şeylerdir.",
+      "title": "",
+      "tts": {
+        "text": "Açık kaynaklı olanlar, Mimi ve SNAC adlı bir kuzeni, yeni konuşma modellerinin üzerine inşa edildiği şeylerdir.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-202",
+      "text": "Küçük bir cihaz içi sesle karşılaştığınızda, böyle bir kodek onun altındadır.",
+      "text_markdown": "Küçük bir cihaz içi sesle karşılaştığınızda, böyle bir kodek onun altındadır.",
+      "title": "",
+      "tts": {
+        "text": "Küçük bir cihaz içi sesle karşılaştığınızda, böyle bir kodek onun altındadır.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-203",
+      "text": "İçinden duyabileceğiniz sıkıştırma — işte sessiz atılım bu.",
+      "text_markdown": "İçinden duyabileceğiniz sıkıştırma — işte sessiz atılım bu.",
+      "title": "",
+      "tts": {
+        "text": "İçinden duyabileceğiniz sıkıştırma — işte sessiz atılım bu.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-204",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "İyi bir bitiş noktası.",
+      "text_markdown": "İyi bir bitiş noktası.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir bitiş noktası.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-205",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, teşekkür ederim.",
+      "text_markdown": "Ron, teşekkür ederim.",
+      "title": "",
+      "tts": {
+        "text": "Ron, teşekkür ederim.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-206",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Her zaman, Vindy.",
+      "text_markdown": "Her zaman, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Her zaman, Vindy.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-207",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu, 27 Mayıs 2026 tarihli AI Bu Hafta idi.",
+      "text_markdown": "Bu, 27 Mayıs 2026 tarihli AI Bu Hafta idi.",
+      "title": "",
+      "tts": {
+        "text": "Bu, yirmi yedi Mayıs iki bin yirmi altı tarihli AI Bu Hafta idi.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-208",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yeni sayı gelecek Çarşamba.",
+      "text_markdown": "Yeni sayı gelecek Çarşamba.",
+      "title": "",
+      "tts": {
+        "text": "Yeni sayı gelecek Çarşamba.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-209",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O zamana kadar, kendinize iyi bakın.",
+      "text_markdown": "O zamana kadar, kendinize iyi bakın.",
+      "title": "",
+      "tts": {
+        "text": "O zamana kadar, kendinize iyi bakın.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

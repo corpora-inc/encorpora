@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ツンドラ",
+      "text_markdown": "ツンドラ"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "このバイオームが広がる場所",
+      "text_markdown": "このバイオームが広がる場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラへようこそ。",
+      "text_markdown": "ツンドラへようこそ。",
+      "tts": {
+        "text": "ツンドラへようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは世界の大きなバイオームの一つです。",
+      "text_markdown": "ここは世界の大きなバイオームの一つです。",
+      "tts": {
+        "text": "ここは世界の大きなバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、独自の気候や植物、動物を持つ地球の一部分です。",
+      "text_markdown": "バイオームとは、独自の気候や植物、動物を持つ地球の一部分です。",
+      "tts": {
+        "text": "バイオームとは、独自の気候や植物、動物を持つ地球の一部分です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラは寒くて開けた土地で、寒すぎて木が育ちません。",
+      "text_markdown": "ツンドラは寒くて開けた土地で、寒すぎて木が育ちません。",
+      "tts": {
+        "text": "ツンドラは寒くて開けた土地で、寒すぎて木が育ちません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラという言葉は、木のない平原を意味する古い言葉から来ています。",
+      "text_markdown": "ツンドラという言葉は、木のない平原を意味する古い言葉から来ています。",
+      "tts": {
+        "text": "ツンドラという言葉は、木のない平原を意味する古い言葉から来ています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラは陸の上でいちばん寒いバイオームです。",
+      "text_markdown": "ツンドラは陸の上でいちばん寒いバイオームです。",
+      "tts": {
+        "text": "ツンドラは陸の上でいちばん寒いバイオームです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの多くは、世界の頂上を囲む広い輪のように広がっています。",
+      "text_markdown": "ツンドラの多くは、世界の頂上を囲む広い輪のように広がっています。",
+      "tts": {
+        "text": "ツンドラの多くは、世界の頂上を囲む広い輪のように広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカでは、カナダやアラスカ、グリーンランドの北の縁を覆っています。",
+      "text_markdown": "北アメリカでは、カナダやアラスカ、グリーンランドの北の縁を覆っています。",
+      "tts": {
+        "text": "北アメリカでは、カナダやアラスカ、グリーンランドの北の縁を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ヨーロッパでは、ノルウェーやスウェーデン、フィンランドのはるか北を覆っています。",
+      "text_markdown": "北ヨーロッパでは、ノルウェーやスウェーデン、フィンランドのはるか北を覆っています。",
+      "tts": {
+        "text": "北ヨーロッパでは、ノルウェーやスウェーデン、フィンランドのはるか北を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アジアの北側では、ロシアの長い北の海岸を覆っています。",
+      "text_markdown": "アジアの北側では、ロシアの長い北の海岸を覆っています。",
+      "tts": {
+        "text": "アジアの北側では、ロシアの長い北の海岸を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この寒い土地の輪は、北方林の北、凍った海のまわりに広がっています。",
+      "text_markdown": "この寒い土地の輪は、北方林の北、凍った海のまわりに広がっています。",
+      "tts": {
+        "text": "この寒い土地の輪は、北方林の北、凍った海のまわりに広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラには、もう一つの種類もあります。",
+      "text_markdown": "ツンドラには、もう一つの種類もあります。",
+      "tts": {
+        "text": "ツンドラには、もう一つの種類もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い山の上、最後の木々よりも高いところに、同じ寒くて開けた土地が現れます。",
+      "text_markdown": "高い山の上、最後の木々よりも高いところに、同じ寒くて開けた土地が現れます。",
+      "tts": {
+        "text": "高い山の上、最後の木々よりも高いところに、同じ寒くて開けた土地が現れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この山のツンドラは、世界中の高い峰に見られ、暖かい地球の真ん中の近くにさえあります。",
+      "text_markdown": "この山のツンドラは、世界中の高い峰に見られ、暖かい地球の真ん中の近くにさえあります。",
+      "tts": {
+        "text": "この山のツンドラは、世界中の高い峰に見られ、暖かい地球の真ん中の近くにさえあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どこにあっても、ツンドラは背の低い植物と冷たい風、広く開けた空の土地です。",
+      "text_markdown": "どこにあっても、ツンドラは背の低い植物と冷たい風、広く開けた空の土地です。",
+      "tts": {
+        "text": "どこにあっても、ツンドラは背の低い植物と冷たい風、広く開けた空の土地です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここには森がありません。",
+      "text_markdown": "ここには森がありません。",
+      "tts": {
+        "text": "ここには森がありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面は一年の大半、固く凍っています。",
+      "text_markdown": "地面は一年の大半、固く凍っています。",
+      "tts": {
+        "text": "地面は一年の大半、固く凍っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "けれど、この寒い場所でも、命は生きる道を見つけます。",
+      "text_markdown": "けれど、この寒い場所でも、命は生きる道を見つけます。",
+      "tts": {
+        "text": "けれど、この寒い場所でも、命は生きる道を見つけます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "気候",
+      "text_markdown": "気候"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラは一年の大半、寒く、乾いていて、風が強い土地です。",
+      "text_markdown": "ツンドラは一年の大半、寒く、乾いていて、風が強い土地です。",
+      "tts": {
+        "text": "ツンドラは一年の大半、寒く、乾いていて、風が強い土地です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬は長く、暗く、身を切るように寒いです。",
+      "text_markdown": "冬は長く、暗く、身を切るように寒いです。",
+      "tts": {
+        "text": "冬は長く、暗く、身を切るように寒いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "はるか北では、冬が八か月から九か月も続くことがあります。",
+      "text_markdown": "はるか北では、冬が八か月から九か月も続くことがあります。",
+      "tts": {
+        "text": "はるか北では、冬が八か月から九か月も続くことがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空気は氷点をはるかに下回り、家庭の冷凍庫よりも冷たくなります。",
+      "text_markdown": "空気は氷点をはるかに下回り、家庭の冷凍庫よりも冷たくなります。",
+      "tts": {
+        "text": "空気は氷点をはるかに下回り、家庭の冷凍庫よりも冷たくなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真冬の何週間もの間、太陽はまったく昇りません。",
+      "text_markdown": "真冬の何週間もの間、太陽はまったく昇りません。",
+      "tts": {
+        "text": "真冬の何週間もの間、太陽はまったく昇りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地は青く暗い薄明かりの中に、来る日も来る日も横たわっています。",
+      "text_markdown": "大地は青く暗い薄明かりの中に、来る日も来る日も横たわっています。",
+      "tts": {
+        "text": "大地は青く暗い薄明かりの中に、来る日も来る日も横たわっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "強い風が開けた大地を吹き抜け、それを弱める木もありません。",
+      "text_markdown": "強い風が開けた大地を吹き抜け、それを弱める木もありません。",
+      "tts": {
+        "text": "強い風が開けた大地を吹き抜け、それを弱める木もありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風は乾いた雪を巻き上げ、地面を這うように吹き飛ばします。",
+      "text_markdown": "風は乾いた雪を巻き上げ、地面を這うように吹き飛ばします。",
+      "tts": {
+        "text": "風は乾いた雪を巻き上げ、地面を這うように吹き飛ばします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここには雪も雨もほとんど降りません。",
+      "text_markdown": "ここには雪も雨もほとんど降りません。",
+      "tts": {
+        "text": "ここには雪も雨もほとんど降りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラはとても乾いているので、寒い砂漠と呼ばれることもあります。",
+      "text_markdown": "ツンドラはとても乾いているので、寒い砂漠と呼ばれることもあります。",
+      "tts": {
+        "text": "ツンドラはとても乾いているので、寒い砂漠と呼ばれることもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "けれど、降った水は凍った地面にしみ込むことができません。",
+      "text_markdown": "けれど、降った水は凍った地面にしみ込むことができません。",
+      "tts": {
+        "text": "けれど、降った水は凍った地面にしみ込むことができません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから水は上にたまり、大地は浅い水たまりと湿った地面で点々と覆われます。",
+      "text_markdown": "だから水は上にたまり、大地は浅い水たまりと湿った地面で点々と覆われます。",
+      "tts": {
+        "text": "だから水は上にたまり、大地は浅い水たまりと湿った地面で点々と覆われます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏は短く、涼しいです。",
+      "text_markdown": "夏は短く、涼しいです。",
+      "tts": {
+        "text": "夏は短く、涼しいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数週間の間、太陽はほぼ一日中、夜も空に留まります。",
+      "text_markdown": "数週間の間、太陽はほぼ一日中、夜も空に留まります。",
+      "tts": {
+        "text": "数週間の間、太陽はほぼ一日中、夜も空に留まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "凍った地面の表面がやわらかくなり、大地は緑に、明るく変わります。",
+      "text_markdown": "凍った地面の表面がやわらかくなり、大地は緑に、明るく変わります。",
+      "tts": {
+        "text": "凍った地面の表面がやわらかくなり、大地は緑に、明るく変わります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏でも空気は涼しいままで、どの夜にも霜が戻ってくることがあります。",
+      "text_markdown": "夏でも空気は涼しいままで、どの夜にも霜が戻ってくることがあります。",
+      "tts": {
+        "text": "夏でも空気は涼しいままで、どの夜にも霜が戻ってくることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて短い夏が終わり、太陽は低く沈み、長い冬がまた始まります。",
+      "text_markdown": "やがて短い夏が終わり、太陽は低く沈み、長い冬がまた始まります。",
+      "tts": {
+        "text": "やがて短い夏が終わり、太陽は低く沈み、長い冬がまた始まります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "大地と水",
+      "text_markdown": "大地と水"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラでいちばん大切なものは、足もとの下にあります。",
+      "text_markdown": "ツンドラでいちばん大切なものは、足もとの下にあります。",
+      "tts": {
+        "text": "ツンドラでいちばん大切なものは、足もとの下にあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "表面の下では、地面が一年じゅうかちかちに凍っています。",
+      "text_markdown": "表面の下では、地面が一年じゅうかちかちに凍っています。",
+      "tts": {
+        "text": "表面の下では、地面が一年じゅうかちかちに凍っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この凍った地面は、永久凍土と呼ばれます。",
+      "text_markdown": "この凍った地面は、永久凍土と呼ばれます。",
+      "tts": {
+        "text": "この凍った地面は、永久凍土と呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "場所によっては、永久凍土はいちばん高い建物よりも深くまで達しています。",
+      "text_markdown": "場所によっては、永久凍土はいちばん高い建物よりも深くまで達しています。",
+      "tts": {
+        "text": "場所によっては、永久凍土はいちばん高い建物よりも深くまで達しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは何千年もの間、凍り続けています。",
+      "text_markdown": "それは何千年もの間、凍り続けています。",
+      "tts": {
+        "text": "それは何千年もの間、凍り続けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、土のいちばん上の層だけが解けます。",
+      "text_markdown": "夏には、土のいちばん上の層だけが解けます。",
+      "tts": {
+        "text": "夏には、土のいちばん上の層だけが解けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この薄く解けた層こそ、すべての植物が生きなければならない場所です。",
+      "text_markdown": "この薄く解けた層こそ、すべての植物が生きなければならない場所です。",
+      "tts": {
+        "text": "この薄く解けた層こそ、すべての植物が生きなければならない場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根は深くまで伸びられません。すぐ下の地面が岩のように固いからです。",
+      "text_markdown": "根は深くまで伸びられません。すぐ下の地面が岩のように固いからです。",
+      "tts": {
+        "text": "根は深くまで伸びられません。すぐ下の地面が岩のように固いからです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "凍った地面は、水を表面に閉じ込めもします。",
+      "text_markdown": "凍った地面は、水を表面に閉じ込めもします。",
+      "tts": {
+        "text": "凍った地面は、水を表面に閉じ込めもします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨や解けた雪は、永久凍土を通り抜けて流れ去ることができません。",
+      "text_markdown": "雨や解けた雪は、永久凍土を通り抜けて流れ去ることができません。",
+      "tts": {
+        "text": "雨や解けた雪は、永久凍土を通り抜けて流れ去ることができません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから夏のツンドラは、浅い水たまりや湿原、ゆっくり流れる小川の土地になります。",
+      "text_markdown": "だから夏のツンドラは、浅い水たまりや湿原、ゆっくり流れる小川の土地になります。",
+      "tts": {
+        "text": "だから夏のツンドラは、浅い水たまりや湿原、ゆっくり流れる小川の土地になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "上から見ると、夏のツンドラは何千もの小さな池で輝いています。",
+      "text_markdown": "上から見ると、夏のツンドラは何千もの小さな池で輝いています。",
+      "tts": {
+        "text": "上から見ると、夏のツンドラは何千もの小さな池で輝いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地そのものは、たいてい平らか、なだらかに起伏しています。",
+      "text_markdown": "大地そのものは、たいてい平らか、なだらかに起伏しています。",
+      "tts": {
+        "text": "大地そのものは、たいてい平らか、なだらかに起伏しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの場所で、地面は凍ったり解けたりして、不思議な形に割れています。",
+      "text_markdown": "多くの場所で、地面は凍ったり解けたりして、不思議な形に割れています。",
+      "tts": {
+        "text": "多くの場所で、地面は凍ったり解けたりして、不思議な形に割れています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土は凍って盛り上がり、また解けて沈むことを、毎年くり返します。",
+      "text_markdown": "土は凍って盛り上がり、また解けて沈むことを、毎年くり返します。",
+      "tts": {
+        "text": "土は凍って盛り上がり、また解けて沈むことを、毎年くり返します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このゆっくりした動きが、地面を輪や縞、低い盛り上がりに割っていきます。",
+      "text_markdown": "このゆっくりした動きが、地面を輪や縞、低い盛り上がりに割っていきます。",
+      "tts": {
+        "text": "このゆっくりした動きが、地面を輪や縞、低い盛り上がりに割っていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの土は薄く、やせていて、冷たいです。",
+      "text_markdown": "ツンドラの土は薄く、やせていて、冷たいです。",
+      "tts": {
+        "text": "ツンドラの土は薄く、やせていて、冷たいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "枯れた植物は寒さの中でとてもゆっくり分解するので、よい土もゆっくりとしかできません。",
+      "text_markdown": "枯れた植物は寒さの中でとてもゆっくり分解するので、よい土もゆっくりとしかできません。",
+      "tts": {
+        "text": "枯れた植物は寒さの中でとてもゆっくり分解するので、よい土もゆっくりとしかできません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "凍って湿り、むき出しの厳しい土地ですが、そこは静かに命であふれています。",
+      "text_markdown": "凍って湿り、むき出しの厳しい土地ですが、そこは静かに命であふれています。",
+      "tts": {
+        "text": "凍って湿り、むき出しの厳しい土地ですが、そこは静かに命であふれています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの植物は小さく、たくましく、地面に低く生えています。",
+      "text_markdown": "ツンドラの植物は小さく、たくましく、地面に低く生えています。",
+      "tts": {
+        "text": "ツンドラの植物は小さく、たくましく、地面に低く生えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここに木はありません。木は凍った地面と冷たい風の中では生きられないからです。",
+      "text_markdown": "ここに木はありません。木は凍った地面と冷たい風の中では生きられないからです。",
+      "tts": {
+        "text": "ここに木はありません。木は凍った地面と冷たい風の中では生きられないからです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その代わり、ツンドラは小さな植物の低いじゅうたんで覆われています。",
+      "text_markdown": "その代わり、ツンドラは小さな植物の低いじゅうたんで覆われています。",
+      "tts": {
+        "text": "その代わり、ツンドラは小さな植物の低いじゅうたんで覆われています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "低くとどまることが、ここで生きる秘訣です。",
+      "text_markdown": "低くとどまることが、ここで生きる秘訣です。",
+      "tts": {
+        "text": "低くとどまることが、ここで生きる秘訣です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面の近くでは、風が弱く、空気も少し暖かいのです。",
+      "text_markdown": "地面の近くでは、風が弱く、空気も少し暖かいのです。",
+      "tts": {
+        "text": "地面の近くでは、風が弱く、空気も少し暖かいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くのツンドラの植物は、暖かさを逃がさないように、ぎゅっとしたクッションや厚いじゅうたんの形で育ちます。",
+      "text_markdown": "多くのツンドラの植物は、暖かさを逃がさないように、ぎゅっとしたクッションや厚いじゅうたんの形で育ちます。",
+      "tts": {
+        "text": "多くのツンドラの植物は、暖かさを逃がさないように、ぎゅっとしたクッションや厚いじゅうたんの形で育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コケは地面の多くを厚くやわらかく覆って育ちます。",
+      "text_markdown": "コケは地面の多くを厚くやわらかく覆って育ちます。",
+      "tts": {
+        "text": "コケは地面の多くを厚くやわらかく覆って育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣類は、むき出しの岩や土の上に、灰色や緑、黄色の斑になって育ちます。",
+      "text_markdown": "地衣類は、むき出しの岩や土の上に、灰色や緑、黄色の斑になって育ちます。",
+      "tts": {
+        "text": "地衣類は、むき出しの岩や土の上に、灰色や緑、黄色の斑になって育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣類は一つの植物ではなく、二種類の命が一つになって共に生きているものです。",
+      "text_markdown": "地衣類は一つの植物ではなく、二種類の命が一つになって共に生きているものです。",
+      "tts": {
+        "text": "地衣類は一つの植物ではなく、二種類の命が一つになって共に生きているものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地衣類は、ほかにほとんど何も生きられない場所でも生き、とてもゆっくり育ちます。",
+      "text_markdown": "地衣類は、ほかにほとんど何も生きられない場所でも生き、とてもゆっくり育ちます。",
+      "tts": {
+        "text": "地衣類は、ほかにほとんど何も生きられない場所でも生き、とてもゆっくり育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの地衣類の中には、何百年もの年月を生きたものもあります。",
+      "text_markdown": "ツンドラの地衣類の中には、何百年もの年月を生きたものもあります。",
+      "tts": {
+        "text": "ツンドラの地衣類の中には、何百年もの年月を生きたものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コケの間には、小さな草や背の低い花の咲く植物が育ちます。",
+      "text_markdown": "コケの間には、小さな草や背の低い花の咲く植物が育ちます。",
+      "tts": {
+        "text": "コケの間には、小さな草や背の低い花の咲く植物が育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い夏になると、ツンドラは一気に花ひらきます。",
+      "text_markdown": "短い夏になると、ツンドラは一気に花ひらきます。",
+      "tts": {
+        "text": "短い夏になると、ツンドラは一気に花ひらきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明るい数週間の間、地面は小さな花で覆われます。",
+      "text_markdown": "明るい数週間の間、地面は小さな花で覆われます。",
+      "tts": {
+        "text": "明るい数週間の間、地面は小さな花で覆われます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黄色や白、ピンク、紫の小さな花が、いたるところに咲きます。",
+      "text_markdown": "黄色や白、ピンク、紫の小さな花が、いたるところに咲きます。",
+      "tts": {
+        "text": "黄色や白、ピンク、紫の小さな花が、いたるところに咲きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "植物は寒さが戻る前に、花を咲かせ、種をつくり、栄養をたくわえることを、とても急いでしなければなりません。",
+      "text_markdown": "植物は寒さが戻る前に、花を咲かせ、種をつくり、栄養をたくわえることを、とても急いでしなければなりません。",
+      "tts": {
+        "text": "植物は寒さが戻る前に、花を咲かせ、種をつくり、栄養をたくわえることを、とても急いでしなければなりません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここには、小さなヤナギや小さなカバのような、低い木も少し育ちます。",
+      "text_markdown": "ここには、小さなヤナギや小さなカバのような、低い木も少し育ちます。",
+      "tts": {
+        "text": "ここには、小さなヤナギや小さなカバのような、低い木も少し育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらは、暖かい土地では高く育つのと同じ種類の木です。",
+      "text_markdown": "これらは、暖かい土地では高く育つのと同じ種類の木です。",
+      "tts": {
+        "text": "これらは、暖かい土地では高く育つのと同じ種類の木です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "けれどここでは、足首ほどの高さしかない小さな茂みとなって、地面を這うように育ちます。",
+      "text_markdown": "けれどここでは、足首ほどの高さしかない小さな茂みとなって、地面を這うように育ちます。",
+      "tts": {
+        "text": "けれどここでは、足首ほどの高さしかない小さな茂みとなって、地面を這うように育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏の終わりには、こうした低い植物のいくつかに小さな実が熟します。",
+      "text_markdown": "夏の終わりには、こうした低い植物のいくつかに小さな実が熟します。",
+      "tts": {
+        "text": "夏の終わりには、こうした低い植物のいくつかに小さな実が熟します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの動物や人々は、できるうちにそれを集めます。",
+      "text_markdown": "ツンドラの動物や人々は、できるうちにそれを集めます。",
+      "tts": {
+        "text": "ツンドラの動物や人々は、できるうちにそれを集めます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラの動物は、寒さと風とともに生きられるようにできています。",
+      "text_markdown": "ツンドラの動物は、寒さと風とともに生きられるようにできています。",
+      "tts": {
+        "text": "ツンドラの動物は、寒さと風とともに生きられるようにできています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くは厚い毛皮や厚い羽毛、そして暖かさを保つための脂肪の層を持っています。",
+      "text_markdown": "多くは厚い毛皮や厚い羽毛、そして暖かさを保つための脂肪の層を持っています。",
+      "tts": {
+        "text": "多くは厚い毛皮や厚い羽毛、そして暖かさを保つための脂肪の層を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラでいちばん大きな動物はカリブーで、トナカイとも呼ばれます。",
+      "text_markdown": "ツンドラでいちばん大きな動物はカリブーで、トナカイとも呼ばれます。",
+      "tts": {
+        "text": "ツンドラでいちばん大きな動物はカリブーで、トナカイとも呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブーは大きな群れで暮らし、開けた大地を長い距離にわたって旅します。",
+      "text_markdown": "カリブーは大きな群れで暮らし、開けた大地を長い距離にわたって旅します。",
+      "tts": {
+        "text": "カリブーは大きな群れで暮らし、開けた大地を長い距離にわたって旅します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏にはツンドラの植物を食べ、冬には雪を掘って地衣類を探します。",
+      "text_markdown": "夏にはツンドラの植物を食べ、冬には雪を掘って地衣類を探します。",
+      "tts": {
+        "text": "夏にはツンドラの植物を食べ、冬には雪を掘って地衣類を探します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャコウウシも、ツンドラのもう一つの大きな動物です。",
+      "text_markdown": "ジャコウウシも、ツンドラのもう一つの大きな動物です。",
+      "tts": {
+        "text": "ジャコウウシも、ツンドラのもう一つの大きな動物です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジャコウウシは重い体と、地面近くまで垂れ下がる長い毛の厚いコートを持っています。",
+      "text_markdown": "ジャコウウシは重い体と、地面近くまで垂れ下がる長い毛の厚いコートを持っています。",
+      "tts": {
+        "text": "ジャコウウシは重い体と、地面近くまで垂れ下がる長い毛の厚いコートを持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミが近づくと、ジャコウウシたちは外を向いて輪になって立ち、子どもたちを守ります。",
+      "text_markdown": "オオカミが近づくと、ジャコウウシたちは外を向いて輪になって立ち、子どもたちを守ります。",
+      "tts": {
+        "text": "オオカミが近づくと、ジャコウウシたちは外を向いて輪になって立ち、子どもたちを守ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミはツンドラを越えて群れを追い、年老いたものや弱ったものを狩ります。",
+      "text_markdown": "オオカミはツンドラを越えて群れを追い、年老いたものや弱ったものを狩ります。",
+      "tts": {
+        "text": "オオカミはツンドラを越えて群れを追い、年老いたものや弱ったものを狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ホッキョクギツネは小さく、冬には白く、夏には茶色に変わる厚い毛皮を持っています。",
+      "text_markdown": "ホッキョクギツネは小さく、冬には白く、夏には茶色に変わる厚い毛皮を持っています。",
+      "tts": {
+        "text": "ホッキョクギツネは小さく、冬には白く、夏には茶色に変わる厚い毛皮を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな動物のあとを追って残したものを食べ、小さな動物も狩ります。",
+      "text_markdown": "大きな動物のあとを追って残したものを食べ、小さな動物も狩ります。",
+      "tts": {
+        "text": "大きな動物のあとを追って残したものを食べ、小さな動物も狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ホッキョクノウサギは冬には白く、暖かさを逃がさないように短い耳を持っています。",
+      "text_markdown": "ホッキョクノウサギは冬には白く、暖かさを逃がさないように短い耳を持っています。",
+      "tts": {
+        "text": "ホッキョクノウサギは冬には白く、暖かさを逃がさないように短い耳を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪の下では、レミングという小さな動物がトンネルを掘り、冬じゅう忙しく動きまわります。",
+      "text_markdown": "雪の下では、レミングという小さな動物がトンネルを掘り、冬じゅう忙しく動きまわります。",
+      "tts": {
+        "text": "雪の下では、レミングという小さな動物がトンネルを掘り、冬じゅう忙しく動きまわります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "レミングは、キツネやフクロウ、そのほか多くの狩人たちの食べ物になります。",
+      "text_markdown": "レミングは、キツネやフクロウ、そのほか多くの狩人たちの食べ物になります。",
+      "tts": {
+        "text": "レミングは、キツネやフクロウ、そのほか多くの狩人たちの食べ物になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シロフクロウは大きな白いフクロウで、昼も夜も開けたツンドラを狩ってまわります。",
+      "text_markdown": "シロフクロウは大きな白いフクロウで、昼も夜も開けたツンドラを狩ってまわります。",
+      "tts": {
+        "text": "シロフクロウは大きな白いフクロウで、昼も夜も開けたツンドラを狩ってまわります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "低い丘から見張り、レミングやほかの小さな動物めがけて音もなく舞い降ります。",
+      "text_markdown": "低い丘から見張り、レミングやほかの小さな動物めがけて音もなく舞い降ります。",
+      "tts": {
+        "text": "低い丘から見張り、レミングやほかの小さな動物めがけて音もなく舞い降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い夏には、南から鳥の大きな群れがやって来ます。",
+      "text_markdown": "短い夏には、南から鳥の大きな群れがやって来ます。",
+      "tts": {
+        "text": "短い夏には、南から鳥の大きな群れがやって来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ガンやカモ、たくさんの小さな鳥が、湿って虫の多いツンドラに巣をつくりにやって来ます。",
+      "text_markdown": "ガンやカモ、たくさんの小さな鳥が、湿って虫の多いツンドラに巣をつくりにやって来ます。",
+      "tts": {
+        "text": "ガンやカモ、たくさんの小さな鳥が、湿って虫の多いツンドラに巣をつくりにやって来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い夏の日々とたくさんの虫が豊かな食べ物を意味するので、鳥たちはやって来ます。",
+      "text_markdown": "長い夏の日々とたくさんの虫が豊かな食べ物を意味するので、鳥たちはやって来ます。",
+      "tts": {
+        "text": "長い夏の日々とたくさんの虫が豊かな食べ物を意味するので、鳥たちはやって来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数週間の間、蚊や小さなハエの群れが空気を埋めつくします。",
+      "text_markdown": "数週間の間、蚊や小さなハエの群れが空気を埋めつくします。",
+      "tts": {
+        "text": "数週間の間、蚊や小さなハエの群れが空気を埋めつくします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて鳥たちは急いで子を育て、寒さが戻る前にまた南へ飛んでいきます。",
+      "text_markdown": "やがて鳥たちは急いで子を育て、寒さが戻る前にまた南へ飛んでいきます。",
+      "tts": {
+        "text": "やがて鳥たちは急いで子を育て、寒さが戻る前にまた南へ飛んでいきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラが凍った海と出会う北の縁では、ホッキョクグマが氷の上で狩りをします。",
+      "text_markdown": "ツンドラが凍った海と出会う北の縁では、ホッキョクグマが氷の上で狩りをします。",
+      "tts": {
+        "text": "ツンドラが凍った海と出会う北の縁では、ホッキョクグマが氷の上で狩りをします。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は何千年もの間、ツンドラで暮らしてきました。",
+      "text_markdown": "人々は何千年もの間、ツンドラで暮らしてきました。",
+      "tts": {
+        "text": "人々は何千年もの間、ツンドラで暮らしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここで暮らすには、寒い大地とその動物についての深い知識がいります。",
+      "text_markdown": "ここで暮らすには、寒い大地とその動物についての深い知識がいります。",
+      "tts": {
+        "text": "ここで暮らすには、寒い大地とその動物についての深い知識がいります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカでは、イヌイットやほかの北の人々が、ツンドラや凍った海岸で、とても長い間暮らしてきました。",
+      "text_markdown": "北アメリカでは、イヌイットやほかの北の人々が、ツンドラや凍った海岸で、とても長い間暮らしてきました。",
+      "tts": {
+        "text": "北アメリカでは、イヌイットやほかの北の人々が、ツンドラや凍った海岸で、とても長い間暮らしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々はカリブーを狩り、川や海で魚をとり、氷のふちでアザラシを狩りました。",
+      "text_markdown": "人々はカリブーを狩り、川や海で魚をとり、氷のふちでアザラシを狩りました。",
+      "tts": {
+        "text": "人々はカリブーを狩り、川や海で魚をとり、氷のふちでアザラシを狩りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動物の皮や毛皮から、風を通さないように縫った暖かい衣服をつくりました。",
+      "text_markdown": "動物の皮や毛皮から、風を通さないように縫った暖かい衣服をつくりました。",
+      "tts": {
+        "text": "動物の皮や毛皮から、風を通さないように縫った暖かい衣服をつくりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地が与えてくれるもので家を建て、そりに乗って雪の上を旅しました。",
+      "text_markdown": "大地が与えてくれるもので家を建て、そりに乗って雪の上を旅しました。",
+      "tts": {
+        "text": "大地が与えてくれるもので家を建て、そりに乗って雪の上を旅しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ヨーロッパでは、サーミの人々が何世代にもわたって、ツンドラを越えてトナカイを追ってきました。",
+      "text_markdown": "北ヨーロッパでは、サーミの人々が何世代にもわたって、ツンドラを越えてトナカイを追ってきました。",
+      "tts": {
+        "text": "北ヨーロッパでは、サーミの人々が何世代にもわたって、ツンドラを越えてトナカイを追ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トナカイは、肉や乳、衣服のための皮、そしてそりを引く手だてを人々に与えてくれました。",
+      "text_markdown": "トナカイは、肉や乳、衣服のための皮、そしてそりを引く手だてを人々に与えてくれました。",
+      "tts": {
+        "text": "トナカイは、肉や乳、衣服のための皮、そしてそりを引く手だてを人々に与えてくれました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北ロシアでは、多くの人々がツンドラをすみかとしてきました。",
+      "text_markdown": "北ロシアでは、多くの人々がツンドラをすみかとしてきました。",
+      "tts": {
+        "text": "北ロシアでは、多くの人々がツンドラをすみかとしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ネネツやチュクチ、そのほかの人々が、とても長い間、この寒い土地でトナカイを飼ってきました。",
+      "text_markdown": "ネネツやチュクチ、そのほかの人々が、とても長い間、この寒い土地でトナカイを飼ってきました。",
+      "tts": {
+        "text": "ネネツやチュクチ、そのほかの人々が、とても長い間、この寒い土地でトナカイを飼ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今でも季節とともに移り動きながら、群れとともに旅を続ける人々がいます。",
+      "text_markdown": "今でも季節とともに移り動きながら、群れとともに旅を続ける人々がいます。",
+      "tts": {
+        "text": "今でも季節とともに移り動きながら、群れとともに旅を続ける人々がいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、海岸に向かって北へトナカイを追います。",
+      "text_markdown": "夏には、海岸に向かって北へトナカイを追います。",
+      "tts": {
+        "text": "夏には、海岸に向かって北へトナカイを追います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、森のふちの守りに向かって南へ移ります。",
+      "text_markdown": "冬には、森のふちの守りに向かって南へ移ります。",
+      "tts": {
+        "text": "冬には、森のふちの守りに向かって南へ移ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうしたすべての土地で、人々は天気や雪、氷を読むことを学びました。",
+      "text_markdown": "こうしたすべての土地で、人々は天気や雪、氷を読むことを学びました。",
+      "tts": {
+        "text": "こうしたすべての土地で、人々は天気や雪、氷を読むことを学びました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブーやトナカイの通り道を覚えました。",
+      "text_markdown": "カリブーやトナカイの通り道を覚えました。",
+      "tts": {
+        "text": "カリブーやトナカイの通り道を覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "魚が集まる場所や、鳥がやって来る時を学びました。",
+      "text_markdown": "魚が集まる場所や、鳥がやって来る時を学びました。",
+      "tts": {
+        "text": "魚が集まる場所や、鳥がやって来る時を学びました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い夏の食べ物をたくわえ、長い冬を乗りきることを学びました。",
+      "text_markdown": "短い夏の食べ物をたくわえ、長い冬を乗りきることを学びました。",
+      "tts": {
+        "text": "短い夏の食べ物をたくわえ、長い冬を乗りきることを学びました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラが与えるものは少なく、求めるものは多いですが、人々はとても長い間、ここでよい暮らしを築いてきました。",
+      "text_markdown": "ツンドラが与えるものは少なく、求めるものは多いですが、人々はとても長い間、ここでよい暮らしを築いてきました。",
+      "tts": {
+        "text": "ツンドラが与えるものは少なく、求めるものは多いですが、人々はとても長い間、ここでよい暮らしを築いてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々の歌や物語、そして言葉は、冷たい風と広く開けた大地とともに育ってきました。",
+      "text_markdown": "人々の歌や物語、そして言葉は、冷たい風と広く開けた大地とともに育ってきました。",
+      "tts": {
+        "text": "人々の歌や物語、そして言葉は、冷たい風と広く開けた大地とともに育ってきました。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日のバイオーム",
+      "text_markdown": "今日のバイオーム"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラはもっとも手つかずで人けのないバイオームの一つですが、今、速く変わりつつあります。",
+      "text_markdown": "ツンドラはもっとも手つかずで人けのないバイオームの一つですが、今、速く変わりつつあります。",
+      "tts": {
+        "text": "ツンドラはもっとも手つかずで人けのないバイオームの一つですが、今、速く変わりつつあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "すべてのバイオームの中で、ツンドラはいちばん速く暖かくなっています。",
+      "text_markdown": "すべてのバイオームの中で、ツンドラはいちばん速く暖かくなっています。",
+      "tts": {
+        "text": "すべてのバイオームの中で、ツンドラはいちばん速く暖かくなっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "はるか北は、年ごとに暖かくなっています。",
+      "text_markdown": "はるか北は、年ごとに暖かくなっています。",
+      "tts": {
+        "text": "はるか北は、年ごとに暖かくなっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空気が暖まると、凍った地面が解け始めます。",
+      "text_markdown": "空気が暖まると、凍った地面が解け始めます。",
+      "tts": {
+        "text": "空気が暖まると、凍った地面が解け始めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "永久凍土が解けると、大地は沈み、割れ、泥に変わることがあります。",
+      "text_markdown": "永久凍土が解けると、大地は沈み、割れ、泥に変わることがあります。",
+      "tts": {
+        "text": "永久凍土が解けると、大地は沈み、割れ、泥に変わることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "凍った地面の上に建てられた道路や家、パイプラインは、曲がったり壊れたりすることがあります。",
+      "text_markdown": "凍った地面の上に建てられた道路や家、パイプラインは、曲がったり壊れたりすることがあります。",
+      "tts": {
+        "text": "凍った地面の上に建てられた道路や家、パイプラインは、曲がったり壊れたりすることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "解けていく地面は、とても長い間、凍った土に閉じ込められていた気体をも放ちます。",
+      "text_markdown": "解けていく地面は、とても長い間、凍った土に閉じ込められていた気体をも放ちます。",
+      "tts": {
+        "text": "解けていく地面は、とても長い間、凍った土に閉じ込められていた気体をも放ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうした気体は空へ昇り、地球全体をさらに少し暖かくすることがあります。",
+      "text_markdown": "こうした気体は空へ昇り、地球全体をさらに少し暖かくすることがあります。",
+      "tts": {
+        "text": "こうした気体は空へ昇り、地球全体をさらに少し暖かくすることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラが暖まるにつれ、低い木や小さな木がゆっくりと北へ、その中へ広がっています。",
+      "text_markdown": "ツンドラが暖まるにつれ、低い木や小さな木がゆっくりと北へ、その中へ広がっています。",
+      "tts": {
+        "text": "ツンドラが暖まるにつれ、低い木や小さな木がゆっくりと北へ、その中へ広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かい南の動物のいくつかも、北へ移ってきています。",
+      "text_markdown": "暖かい南の動物のいくつかも、北へ移ってきています。",
+      "tts": {
+        "text": "暖かい南の動物のいくつかも、北へ移ってきています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々もまた、地中の石油やガス、金属を探しにツンドラへやって来ます。",
+      "text_markdown": "人々もまた、地中の石油やガス、金属を探しにツンドラへやって来ます。",
+      "tts": {
+        "text": "人々もまた、地中の石油やガス、金属を探しにツンドラへやって来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その道路や機械は、寒さの中でとてもゆっくりとしか癒えない跡を大地に残すことがあります。",
+      "text_markdown": "その道路や機械は、寒さの中でとてもゆっくりとしか癒えない跡を大地に残すことがあります。",
+      "tts": {
+        "text": "その道路や機械は、寒さの中でとてもゆっくりとしか癒えない跡を大地に残すことがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、多くの人々や団体が、ツンドラを守るために力を尽くしています。",
+      "text_markdown": "今日、多くの人々や団体が、ツンドラを守るために力を尽くしています。",
+      "tts": {
+        "text": "今日、多くの人々や団体が、ツンドラを守るために力を尽くしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カリブーや鳥たちが今も歩きまわれる大きな公園を設けています。",
+      "text_markdown": "カリブーや鳥たちが今も歩きまわれる大きな公園を設けています。",
+      "tts": {
+        "text": "カリブーや鳥たちが今も歩きまわれる大きな公園を設けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何世代もここで暮らしてきた人々とともに、大地を守っています。",
+      "text_markdown": "何世代もここで暮らしてきた人々とともに、大地を守っています。",
+      "tts": {
+        "text": "何世代もここで暮らしてきた人々とともに、大地を守っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラがどう変わりつつあるか、どうすれば健やかに保てるかを知るために、研究を続けています。",
+      "text_markdown": "ツンドラがどう変わりつつあるか、どうすれば健やかに保てるかを知るために、研究を続けています。",
+      "tts": {
+        "text": "ツンドラがどう変わりつつあるか、どうすれば健やかに保てるかを知るために、研究を続けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ツンドラは傷つきやすく癒えるのが遅く、そして凍った炭素の巨大なたくわえを抱えています。",
+      "text_markdown": "ツンドラは傷つきやすく癒えるのが遅く、そして凍った炭素の巨大なたくわえを抱えています。",
+      "tts": {
+        "text": "ツンドラは傷つきやすく癒えるのが遅く、そして凍った炭素の巨大なたくわえを抱えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは私たちが大切にするに値します。",
+      "text_markdown": "それは私たちが大切にするに値します。",
+      "tts": {
+        "text": "それは私たちが大切にするに値します。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがツンドラです。",
+      "text_markdown": "これがツンドラです。",
+      "tts": {
+        "text": "これがツンドラです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の頂上にある、凍った地面と背の低い植物、広く明るい空を持つ、寒くて開けた木のない土地です。",
+      "text_markdown": "世界の頂上にある、凍った地面と背の低い植物、広く明るい空を持つ、寒くて開けた木のない土地です。",
+      "tts": {
+        "text": "世界の頂上にある、凍った地面と背の低い植物、広く明るい空を持つ、寒くて開けた木のない土地です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしいつかそこに立つことがあれば、少しの間じっとしてみてください。",
+      "text_markdown": "もしいつかそこに立つことがあれば、少しの間じっとしてみてください。",
+      "tts": {
+        "text": "もしいつかそこに立つことがあれば、少しの間じっとしてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "開けた大地を渡っていく冷たい風を感じてください。",
+      "text_markdown": "開けた大地を渡っていく冷たい風を感じてください。",
+      "tts": {
+        "text": "開けた大地を渡っていく冷たい風を感じてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "足もとの小さな花とやわらかなコケを見下ろしてください。",
+      "text_markdown": "足もとの小さな花とやわらかなコケを見下ろしてください。",
+      "tts": {
+        "text": "足もとの小さな花とやわらかなコケを見下ろしてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きく何もない空を見上げてください。",
+      "text_markdown": "大きく何もない空を見上げてください。",
+      "tts": {
+        "text": "大きく何もない空を見上げてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このバイオームの静かで辛抱強い鼓動が、あなたのまわりで脈打っているのを感じるでしょう。",
+      "text_markdown": "このバイオームの静かで辛抱強い鼓動が、あなたのまわりで脈打っているのを感じるでしょう。",
+      "tts": {
+        "text": "このバイオームの静かで辛抱強い鼓動が、あなたのまわりで脈打っているのを感じるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

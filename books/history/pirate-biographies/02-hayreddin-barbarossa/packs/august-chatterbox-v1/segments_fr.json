@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "fr",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Note au lecteur",
+      "text_markdown": "Note au lecteur"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voici l'histoire vraie de Khayr ad-Din Barberousse, l'homme qui fit de l'Empire ottoman une superpuissance navale.",
+      "text_markdown": "Voici l'histoire vraie de Khayr ad-Din Barberousse, l'homme qui fit de l'Empire ottoman une superpuissance navale.",
+      "tts": {
+        "text": "Voici l'histoire vraie de Khayr ad Din Barberousse, l'homme qui fit de l'Empire ottoman une superpuissance navale.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il commença sa vie comme fils d'un potier sur une île grecque.",
+      "text_markdown": "Il commença sa vie comme fils d'un potier sur une île grecque.",
+      "tts": {
+        "text": "Il commença sa vie comme fils d'un potier sur une île grecque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il la termina en tant que Grand Amiral de la marine la plus puissante de la mer Méditerranée.",
+      "text_markdown": "Il la termina en tant que Grand Amiral de la marine la plus puissante de la mer Méditerranée.",
+      "tts": {
+        "text": "Il la termina en tant que Grand Amiral de la marine la plus puissante de la mer Méditerranée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son histoire couvre un siècle de conflit entre l'Empire ottoman et l'Europe chrétienne.",
+      "text_markdown": "Son histoire couvre un siècle de conflit entre l'Empire ottoman et l'Europe chrétienne.",
+      "tts": {
+        "text": "Son histoire couvre un siècle de conflit entre l'Empire ottoman et l'Europe chrétienne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'est une histoire de frères, de corsaires, de sultans et de lutte pour le contrôle de la mer.",
+      "text_markdown": "C'est une histoire de frères, de corsaires, de sultans et de lutte pour le contrôle de la mer.",
+      "tts": {
+        "text": "C'est une histoire de frères, de corsaires, de sultans et de lutte pour le contrôle de la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chaque bataille, alliance et trahison décrite dans ce livre est tirée des sources historiques.",
+      "text_markdown": "Chaque bataille, alliance et trahison décrite dans ce livre est tirée des sources historiques.",
+      "tts": {
+        "text": "Chaque bataille, alliance et trahison décrite dans ce livre est tirée des sources historiques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carrière de Barberousse a changé la carte du monde méditerranéen.",
+      "text_markdown": "La carrière de Barberousse a changé la carte du monde méditerranéen.",
+      "tts": {
+        "text": "La carrière de Barberousse a changé la carte du monde méditerranéen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La marine qu'il a bâtie a dominé la mer pendant des générations après sa mort.",
+      "text_markdown": "La marine qu'il a bâtie a dominé la mer pendant des générations après sa mort.",
+      "tts": {
+        "text": "La marine qu'il a bâtie a dominé la mer pendant des générations après sa mort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son héritage façonne encore les côtes et les cultures de l'Afrique du Nord aujourd'hui.",
+      "text_markdown": "Son héritage façonne encore les côtes et les cultures de l'Afrique du Nord aujourd'hui.",
+      "tts": {
+        "text": "Son héritage façonne encore les côtes et les cultures de l'Afrique du Nord aujourd'hui.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Là où les sources historiques sont incomplètes, nous le signalons clairement.",
+      "text_markdown": "Là où les sources historiques sont incomplètes, nous le signalons clairement.",
+      "tts": {
+        "text": "Là où les sources historiques sont incomplètes, nous le signalons clairement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Là où les historiens divergent sur les dates ou les détails, nous présentons le récit le plus largement accepté.",
+      "text_markdown": "Là où les historiens divergent sur les dates ou les détails, nous présentons le récit le plus largement accepté.",
+      "tts": {
+        "text": "Là où les historiens divergent sur les dates ou les détails, nous présentons le récit le plus largement accepté.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Note au lecteur",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ceci est de l'histoire, non de la légende, et nous la traitons avec le soin qu'elle mérite.",
+      "text_markdown": "Ceci est de l'histoire, non de la légende, et nous la traitons avec le soin qu'elle mérite.",
+      "tts": {
+        "text": "Ceci est de l'histoire, non de la légende, et nous la traitons avec le soin qu'elle mérite.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le monde de la Méditerranée",
+      "text_markdown": "Le monde de la Méditerranée"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mer Méditerranée se situe au carrefour de trois continents.",
+      "text_markdown": "La mer Méditerranée se situe au carrefour de trois continents.",
+      "tts": {
+        "text": "La mer Méditerranée se situe au carrefour de trois continents.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'Europe se trouve au nord, l'Afrique au sud et l'Asie à l'est.",
+      "text_markdown": "L'Europe se trouve au nord, l'Afrique au sud et l'Asie à l'est.",
+      "tts": {
+        "text": "L'Europe se trouve au nord, l'Afrique au sud et l'Asie à l'est.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Depuis des millénaires, chaque grande civilisation sur ses rivages s'est battue pour la contrôler.",
+      "text_markdown": "Depuis des millénaires, chaque grande civilisation sur ses rivages s'est battue pour la contrôler.",
+      "tts": {
+        "text": "Depuis des millénaires, chaque grande civilisation sur ses rivages s'est battue pour la contrôler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À la fin du quinzième siècle, la Méditerranée était un champ de bataille entre deux grandes puissances.",
+      "text_markdown": "À la fin du quinzième siècle, la Méditerranée était un champ de bataille entre deux grandes puissances.",
+      "tts": {
+        "text": "À la fin du quinzième siècle, la Méditerranée était un champ de bataille entre deux grandes puissances.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À l'est, l'Empire ottoman s'étendait rapidement sous une série de sultans ambitieux.",
+      "text_markdown": "À l'est, l'Empire ottoman s'étendait rapidement sous une série de sultans ambitieux.",
+      "tts": {
+        "text": "À l'est, l'Empire ottoman s'étendait rapidement sous une série de sultans ambitieux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "À l'ouest, les royaumes d'Espagne et le Saint-Empire romain germanique sous Charles Quint cherchaient à riposter.",
+      "text_markdown": "À l'ouest, les royaumes d'Espagne et le Saint-Empire romain germanique sous Charles Quint cherchaient à riposter.",
+      "tts": {
+        "text": "À l'ouest, les royaumes d'Espagne et le Saint Empire romain germanique sous Charles Quint cherchaient à riposter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Empire ottoman avait pris Constantinople en 1453.",
+      "text_markdown": "L'Empire ottoman avait pris Constantinople en 1453.",
+      "tts": {
+        "text": "L'Empire ottoman avait pris Constantinople en mille quatre cent cinquante trois.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cette victoire mit fin à l'Empire byzantin et donna aux Ottomans le contrôle de la Méditerranée orientale.",
+      "text_markdown": "Cette victoire mit fin à l'Empire byzantin et donna aux Ottomans le contrôle de la Méditerranée orientale.",
+      "tts": {
+        "text": "Cette victoire mit fin à l'Empire byzantin et donna aux Ottomans le contrôle de la Méditerranée orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La ville fut rebaptisée Istanbul et devint la capitale d'un vaste empire en expansion.",
+      "text_markdown": "La ville fut rebaptisée Istanbul et devint la capitale d'un vaste empire en expansion.",
+      "tts": {
+        "text": "La ville fut rebaptisée Istanbul et devint la capitale d'un vaste empire en expansion.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son port, la Corne d'Or, devint le port d'attache de la flotte ottomane.",
+      "text_markdown": "Son port, la Corne d'Or, devint le port d'attache de la flotte ottomane.",
+      "tts": {
+        "text": "Son port, la Corne d'Or, devint le port d'attache de la flotte ottomane.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'Espagne, de son côté, venait d'achever la Reconquista.",
+      "text_markdown": "L'Espagne, de son côté, venait d'achever la Reconquista.",
+      "tts": {
+        "text": "L'Espagne, de son côté, venait d'achever la Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En 1492, les monarques espagnols Ferdinand et Isabelle conquirent Grenade, le dernier royaume musulman de la péninsule Ibérique.",
+      "text_markdown": "En 1492, les monarques espagnols Ferdinand et Isabelle conquirent Grenade, le dernier royaume musulman de la péninsule Ibérique.",
+      "tts": {
+        "text": "En mille quatre cent quatre vingt douze, les monarques espagnols Ferdinand et Isabelle conquirent Grenade, le dernier royaume musulman de la péninsule Ibérique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des centaines de milliers de musulmans et de juifs furent expulsés d'Espagne dans les années qui suivirent.",
+      "text_markdown": "Des centaines de milliers de musulmans et de juifs furent expulsés d'Espagne dans les années qui suivirent.",
+      "tts": {
+        "text": "Des centaines de milliers de musulmans et de juifs furent expulsés d'Espagne dans les années qui suivirent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beaucoup d'entre eux s'enfuirent en Afrique du Nord et dans l'Empire ottoman.",
+      "text_markdown": "Beaucoup d'entre eux s'enfuirent en Afrique du Nord et dans l'Empire ottoman.",
+      "tts": {
+        "text": "Beaucoup d'entre eux s'enfuirent en Afrique du Nord et dans l'Empire ottoman.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La côte nord-africaine, connue sous le nom de côte des Barbaresques, devint un refuge pour ces exilés.",
+      "text_markdown": "La côte nord-africaine, connue sous le nom de côte des Barbaresques, devint un refuge pour ces exilés.",
+      "tts": {
+        "text": "La côte nord africaine, connue sous le nom de côte des Barbaresques, devint un refuge pour ces exilés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des villes comme Alger, Tunis et Tripoli absorbèrent des vagues de réfugiés venus d'Espagne.",
+      "text_markdown": "Des villes comme Alger, Tunis et Tripoli absorbèrent des vagues de réfugiés venus d'Espagne.",
+      "tts": {
+        "text": "Des villes comme Alger, Tunis et Tripoli absorbèrent des vagues de réfugiés venus d'Espagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ces communautés déplacées nourrissaient un profond ressentiment envers la Couronne espagnole.",
+      "text_markdown": "Ces communautés déplacées nourrissaient un profond ressentiment envers la Couronne espagnole.",
+      "tts": {
+        "text": "Ces communautés déplacées nourrissaient un profond ressentiment envers la Couronne espagnole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beaucoup se tournèrent vers la course en mer, à la fois comme gagne-pain et comme vengeance.",
+      "text_markdown": "Beaucoup se tournèrent vers la course en mer, à la fois comme gagne-pain et comme vengeance.",
+      "tts": {
+        "text": "Beaucoup se tournèrent vers la course en mer, à la fois comme gagne pain et comme vengeance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un corsaire était différent d'un pirate ordinaire.",
+      "text_markdown": "Un corsaire était différent d'un pirate ordinaire.",
+      "tts": {
+        "text": "Un corsaire était différent d'un pirate ordinaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les corsaires opéraient avec l'autorisation d'un gouvernement ou d'un souverain.",
+      "text_markdown": "Les corsaires opéraient avec l'autorisation d'un gouvernement ou d'un souverain.",
+      "tts": {
+        "text": "Les corsaires opéraient avec l'autorisation d'un gouvernement ou d'un souverain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils attaquaient les navires marchands ennemis et partageaient les profits avec leur État commanditaire.",
+      "text_markdown": "Ils attaquaient les navires marchands ennemis et partageaient les profits avec leur État commanditaire.",
+      "tts": {
+        "text": "Ils attaquaient les navires marchands ennemis et partageaient les profits avec leur État commanditaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De cette manière, la course était une forme de guerre navale menée par des particuliers.",
+      "text_markdown": "De cette manière, la course était une forme de guerre navale menée par des particuliers.",
+      "tts": {
+        "text": "De cette manière, la course était une forme de guerre navale menée par des particuliers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les puissances chrétiennes comme musulmanes utilisèrent abondamment les corsaires.",
+      "text_markdown": "Les puissances chrétiennes comme musulmanes utilisèrent abondamment les corsaires.",
+      "tts": {
+        "text": "Les puissances chrétiennes comme musulmanes utilisèrent abondamment les corsaires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les Chevaliers de Saint-Jean, basés sur les îles de Rhodes puis de Malte, étaient des corsaires chrétiens qui attaquaient le commerce musulman.",
+      "text_markdown": "Les Chevaliers de Saint-Jean, basés sur les îles de Rhodes puis de Malte, étaient des corsaires chrétiens qui attaquaient le commerce musulman.",
+      "tts": {
+        "text": "Les Chevaliers de Saint Jean, basés sur les îles de Rhodes puis de Malte, étaient des corsaires chrétiens qui attaquaient le commerce musulman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les corsaires musulmans basés en Afrique du Nord attaquaient le commerce chrétien en retour.",
+      "text_markdown": "Les corsaires musulmans basés en Afrique du Nord attaquaient le commerce chrétien en retour.",
+      "tts": {
+        "text": "Les corsaires musulmans basés en Afrique du Nord attaquaient le commerce chrétien en retour.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La Méditerranée était une mer de guerre permanente et de basse intensité.",
+      "text_markdown": "La Méditerranée était une mer de guerre permanente et de basse intensité.",
+      "tts": {
+        "text": "La Méditerranée était une mer de guerre permanente et de basse intensité.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le commerce était l'enjeu qui alimentait ce conflit.",
+      "text_markdown": "Le commerce était l'enjeu qui alimentait ce conflit.",
+      "tts": {
+        "text": "Le commerce était l'enjeu qui alimentait ce conflit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Méditerranée transportait la soie de Chine, les épices d'Inde, le blé d'Égypte et la laine d'Europe.",
+      "text_markdown": "La Méditerranée transportait la soie de Chine, les épices d'Inde, le blé d'Égypte et la laine d'Europe.",
+      "tts": {
+        "text": "La Méditerranée transportait la soie de Chine, les épices d'Inde, le blé d'Égypte et la laine d'Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le contrôle de ces routes commerciales signifiait une richesse immense.",
+      "text_markdown": "Le contrôle de ces routes commerciales signifiait une richesse immense.",
+      "tts": {
+        "text": "Le contrôle de ces routes commerciales signifiait une richesse immense.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chaque ville portuaire dépendait de la mer pour sa survie.",
+      "text_markdown": "Chaque ville portuaire dépendait de la mer pour sa survie.",
+      "tts": {
+        "text": "Chaque ville portuaire dépendait de la mer pour sa survie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les îles de la Méditerranée étaient des enjeux stratégiques.",
+      "text_markdown": "Les îles de la Méditerranée étaient des enjeux stratégiques.",
+      "tts": {
+        "text": "Les îles de la Méditerranée étaient des enjeux stratégiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Celui qui contrôlait les îles contrôlait les voies maritimes entre elles.",
+      "text_markdown": "Celui qui contrôlait les îles contrôlait les voies maritimes entre elles.",
+      "tts": {
+        "text": "Celui qui contrôlait les îles contrôlait les voies maritimes entre elles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rhodes, Chypre, la Crète, la Sicile et Malte changèrent de mains à plusieurs reprises au fil des siècles.",
+      "text_markdown": "Rhodes, Chypre, la Crète, la Sicile et Malte changèrent de mains à plusieurs reprises au fil des siècles.",
+      "tts": {
+        "text": "Rhodes, Chypre, la Crète, la Sicile et Malte changèrent de mains à plusieurs reprises au fil des siècles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La puissance navale déterminait quel empire les détenait.",
+      "text_markdown": "La puissance navale déterminait quel empire les détenait.",
+      "tts": {
+        "text": "La puissance navale déterminait quel empire les détenait.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les galères étaient les navires de guerre de la Méditerranée à cette époque.",
+      "text_markdown": "Les galères étaient les navires de guerre de la Méditerranée à cette époque.",
+      "tts": {
+        "text": "Les galères étaient les navires de guerre de la Méditerranée à cette époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Une galère était un navire long et étroit propulsé par des rames et des voiles.",
+      "text_markdown": "Une galère était un navire long et étroit propulsé par des rames et des voiles.",
+      "tts": {
+        "text": "Une galère était un navire long et étroit propulsé par des rames et des voiles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chaque galère transportait des centaines de rameurs, dont beaucoup étaient des esclaves ou des prisonniers de guerre.",
+      "text_markdown": "Chaque galère transportait des centaines de rameurs, dont beaucoup étaient des esclaves ou des prisonniers de guerre.",
+      "tts": {
+        "text": "Chaque galère transportait des centaines de rameurs, dont beaucoup étaient des esclaves ou des prisonniers de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Au combat, les galères éperonnaient les navires ennemis puis envoyaient des soldats armés à bord pour combattre au corps à corps.",
+      "text_markdown": "Au combat, les galères éperonnaient les navires ennemis puis envoyaient des soldats armés à bord pour combattre au corps à corps.",
+      "tts": {
+        "text": "Au combat, les galères éperonnaient les navires ennemis puis envoyaient des soldats armés à bord pour combattre au corps à corps.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le système d'esclavage des galères était d'une brutalité indicible.",
+      "text_markdown": "Le système d'esclavage des galères était d'une brutalité indicible.",
+      "tts": {
+        "text": "Le système d'esclavage des galères était d'une brutalité indicible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les captifs des guerres et des raids étaient enchaînés aux rames et forcés de ramer jusqu'à la mort.",
+      "text_markdown": "Les captifs des guerres et des raids étaient enchaînés aux rames et forcés de ramer jusqu'à la mort.",
+      "tts": {
+        "text": "Les captifs des guerres et des raids étaient enchaînés aux rames et forcés de ramer jusqu'à la mort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les chrétiens réduisaient les musulmans en esclavage, et les musulmans réduisaient les chrétiens en esclavage.",
+      "text_markdown": "Les chrétiens réduisaient les musulmans en esclavage, et les musulmans réduisaient les chrétiens en esclavage.",
+      "tts": {
+        "text": "Les chrétiens réduisaient les musulmans en esclavage, et les musulmans réduisaient les chrétiens en esclavage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cette cruauté était si courante que les deux camps la considéraient comme normale.",
+      "text_markdown": "Cette cruauté était si courante que les deux camps la considéraient comme normale.",
+      "tts": {
+        "text": "Cette cruauté était si courante que les deux camps la considéraient comme normale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le pape à Rome tenta à plusieurs reprises d'unir les royaumes chrétiens contre la menace ottomane.",
+      "text_markdown": "Le pape à Rome tenta à plusieurs reprises d'unir les royaumes chrétiens contre la menace ottomane.",
+      "tts": {
+        "text": "Le pape à Rome tenta à plusieurs reprises d'unir les royaumes chrétiens contre la menace ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ces alliances, appelées Saintes Ligues, rassemblèrent des navires d'Espagne, de Venise, de Gênes et des États pontificaux.",
+      "text_markdown": "Ces alliances, appelées Saintes Ligues, rassemblèrent des navires d'Espagne, de Venise, de Gênes et des États pontificaux.",
+      "tts": {
+        "text": "Ces alliances, appelées Saintes Ligues, rassemblèrent des navires d'Espagne, de Venise, de Gênes et des États pontificaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais les royaumes chrétiens se méfiaient les uns des autres presque autant qu'ils craignaient les Ottomans.",
+      "text_markdown": "Mais les royaumes chrétiens se méfiaient les uns des autres presque autant qu'ils craignaient les Ottomans.",
+      "tts": {
+        "text": "Mais les royaumes chrétiens se méfiaient les uns des autres presque autant qu'ils craignaient les Ottomans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ces alliances étaient fragiles et s'effondraient souvent avant de produire des résultats durables.",
+      "text_markdown": "Ces alliances étaient fragiles et s'effondraient souvent avant de produire des résultats durables.",
+      "tts": {
+        "text": "Ces alliances étaient fragiles et s'effondraient souvent avant de produire des résultats durables.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans ce monde violent et disputé, deux frères naquirent sur une île grecque sous domination ottomane.",
+      "text_markdown": "Dans ce monde violent et disputé, deux frères naquirent sur une île grecque sous domination ottomane.",
+      "tts": {
+        "text": "Dans ce monde violent et disputé, deux frères naquirent sur une île grecque sous domination ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils s'appelaient Aroudj et Khizr.",
+      "text_markdown": "Ils s'appelaient Aroudj et Khizr.",
+      "tts": {
+        "text": "Ils s'appelaient Aroudj et Khizr.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Khizr serait plus tard connu dans le monde entier sous le nom de Khayr ad-Din Barberousse.",
+      "text_markdown": "Khizr serait plus tard connu dans le monde entier sous le nom de Khayr ad-Din Barberousse.",
+      "tts": {
+        "text": "Khizr serait plus tard connu dans le monde entier sous le nom de Khayr ad Din Barberousse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Le monde de la Méditerranée",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ensemble, ils allaient remodeler l'équilibre des forces de toute la Méditerranée.",
+      "text_markdown": "Ensemble, ils allaient remodeler l'équilibre des forces de toute la Méditerranée.",
+      "tts": {
+        "text": "Ensemble, ils allaient remodeler l'équilibre des forces de toute la Méditerranée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les origines",
+      "text_markdown": "Les origines"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din Barberousse naquit vers 1478 sur l'île de Lesbos.",
+      "text_markdown": "Khayr ad-Din Barberousse naquit vers 1478 sur l'île de Lesbos.",
+      "tts": {
+        "text": "Khayr ad Din Barberousse naquit vers mille quatre cent soixante dix huit sur l'île de Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos est une grande île grecque au nord-est de la mer Égée, proche de la côte de la Turquie actuelle.",
+      "text_markdown": "Lesbos est une grande île grecque au nord-est de la mer Égée, proche de la côte de la Turquie actuelle.",
+      "tts": {
+        "text": "Lesbos est une grande île grecque au nord est de la mer Égée, proche de la côte de la Turquie actuelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Au moment de sa naissance, l'île était passée récemment sous contrôle ottoman.",
+      "text_markdown": "Au moment de sa naissance, l'île était passée récemment sous contrôle ottoman.",
+      "tts": {
+        "text": "Au moment de sa naissance, l'île était passée récemment sous contrôle ottoman.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Son père était Yakoub, un ancien soldat ottoman qui s'était établi à Lesbos après son service militaire.",
+      "text_markdown": "Son père était Yakoub, un ancien soldat ottoman qui s'était établi à Lesbos après son service militaire.",
+      "tts": {
+        "text": "Son père était Yakoub, un ancien soldat ottoman qui s'était établi à Lesbos après son service militaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakoub travaillait comme potier et était, selon la plupart des récits, un artisan modeste.",
+      "text_markdown": "Yakoub travaillait comme potier et était, selon la plupart des récits, un artisan modeste.",
+      "tts": {
+        "text": "Yakoub travaillait comme potier et était, selon la plupart des récits, un artisan modeste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa mère était une femme grecque du lieu, probablement d'origine chrétienne, dont le nom est rapporté comme Katerina.",
+      "text_markdown": "Sa mère était une femme grecque du lieu, probablement d'origine chrétienne, dont le nom est rapporté comme Katerina.",
+      "tts": {
+        "text": "Sa mère était une femme grecque du lieu, probablement d'origine chrétienne, dont le nom est rapporté comme Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La famille n'était pas riche, mais elle n'était pas non plus indigente.",
+      "text_markdown": "La famille n'était pas riche, mais elle n'était pas non plus indigente.",
+      "tts": {
+        "text": "La famille n'était pas riche, mais elle n'était pas non plus indigente.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakoub et Katerina eurent quatre fils.",
+      "text_markdown": "Yakoub et Katerina eurent quatre fils.",
+      "tts": {
+        "text": "Yakoub et Katerina eurent quatre fils.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'aîné était Ishak, puis Aroudj, puis Khizr, et enfin Ilyas.",
+      "text_markdown": "L'aîné était Ishak, puis Aroudj, puis Khizr, et enfin Ilyas.",
+      "tts": {
+        "text": "L'aîné était Ishak, puis Aroudj, puis Khizr, et enfin Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Khizr était le garçon qui deviendrait Khayr ad-Din Barberousse.",
+      "text_markdown": "Khizr était le garçon qui deviendrait Khayr ad-Din Barberousse.",
+      "tts": {
+        "text": "Khizr était le garçon qui deviendrait Khayr ad Din Barberousse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les quatre frères finiraient tous par prendre la mer.",
+      "text_markdown": "Les quatre frères finiraient tous par prendre la mer.",
+      "tts": {
+        "text": "Les quatre frères finiraient tous par prendre la mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les frères grandirent dans un monde façonné par la mer.",
+      "text_markdown": "Les frères grandirent dans un monde façonné par la mer.",
+      "tts": {
+        "text": "Les frères grandirent dans un monde façonné par la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos dépendait de la pêche et du commerce maritime pour son économie.",
+      "text_markdown": "Lesbos dépendait de la pêche et du commerce maritime pour son économie.",
+      "tts": {
+        "text": "Lesbos dépendait de la pêche et du commerce maritime pour son économie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chaque garçon de l'île apprenait à manœuvrer un bateau avant de savoir lire.",
+      "text_markdown": "Chaque garçon de l'île apprenait à manœuvrer un bateau avant de savoir lire.",
+      "tts": {
+        "text": "Chaque garçon de l'île apprenait à manœuvrer un bateau avant de savoir lire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La mer n'était pas une abstraction pour eux, c'était leur réalité quotidienne.",
+      "text_markdown": "La mer n'était pas une abstraction pour eux, c'était leur réalité quotidienne.",
+      "tts": {
+        "text": "La mer n'était pas une abstraction pour eux, c'était leur réalité quotidienne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Devenus jeunes hommes, les frères commencèrent à travailler comme marins et commerçants.",
+      "text_markdown": "Devenus jeunes hommes, les frères commencèrent à travailler comme marins et commerçants.",
+      "tts": {
+        "text": "Devenus jeunes hommes, les frères commencèrent à travailler comme marins et commerçants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils transportaient des marchandises entre les îles de la mer Égée et le continent ottoman.",
+      "text_markdown": "Ils transportaient des marchandises entre les îles de la mer Égée et le continent ottoman.",
+      "tts": {
+        "text": "Ils transportaient des marchandises entre les îles de la mer Égée et le continent ottoman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mais le commerce était une activité risquée dans une mer infestée de corsaires.",
+      "text_markdown": "Mais le commerce était une activité risquée dans une mer infestée de corsaires.",
+      "tts": {
+        "text": "Mais le commerce était une activité risquée dans une mer infestée de corsaires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lors de l'un de leurs premiers voyages, les frères furent attaqués par les Chevaliers de Saint-Jean.",
+      "text_markdown": "Lors de l'un de leurs premiers voyages, les frères furent attaqués par les Chevaliers de Saint-Jean.",
+      "tts": {
+        "text": "Lors de l'un de leurs premiers voyages, les frères furent attaqués par les Chevaliers de Saint Jean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Chevaliers de Saint-Jean étaient un ordre militaire chrétien basé sur l'île de Rhodes.",
+      "text_markdown": "Les Chevaliers de Saint-Jean étaient un ordre militaire chrétien basé sur l'île de Rhodes.",
+      "tts": {
+        "text": "Les Chevaliers de Saint Jean étaient un ordre militaire chrétien basé sur l'île de Rhodes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils figuraient parmi les corsaires les plus redoutés de la Méditerranée.",
+      "text_markdown": "Ils figuraient parmi les corsaires les plus redoutés de la Méditerranée.",
+      "tts": {
+        "text": "Ils figuraient parmi les corsaires les plus redoutés de la Méditerranée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils attaquaient sans relâche le commerce musulman, s'emparant des marchandises et réduisant les équipages en esclavage.",
+      "text_markdown": "Ils attaquaient sans relâche le commerce musulman, s'emparant des marchandises et réduisant les équipages en esclavage.",
+      "tts": {
+        "text": "Ils attaquaient sans relâche le commerce musulman, s'emparant des marchandises et réduisant les équipages en esclavage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lors de l'attaque du navire des frères, Ilyas, le plus jeune, fut tué.",
+      "text_markdown": "Lors de l'attaque du navire des frères, Ilyas, le plus jeune, fut tué.",
+      "tts": {
+        "text": "Lors de l'attaque du navire des frères, Ilyas, le plus jeune, fut tué.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aroudj, le plus agressif des frères, fut capturé et réduit en esclavage.",
+      "text_markdown": "Aroudj, le plus agressif des frères, fut capturé et réduit en esclavage.",
+      "tts": {
+        "text": "Aroudj, le plus agressif des frères, fut capturé et réduit en esclavage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il passa plusieurs années comme esclave de galère, enchaîné aux rames d'un navire de guerre chrétien.",
+      "text_markdown": "Il passa plusieurs années comme esclave de galère, enchaîné aux rames d'un navire de guerre chrétien.",
+      "tts": {
+        "text": "Il passa plusieurs années comme esclave de galère, enchaîné aux rames d'un navire de guerre chrétien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'expérience l'endurcit d'une manière qui allait façonner le reste de sa vie.",
+      "text_markdown": "L'expérience l'endurcit d'une manière qui allait façonner le reste de sa vie.",
+      "tts": {
+        "text": "L'expérience l'endurcit d'une manière qui allait façonner le reste de sa vie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lorsqu'il fut finalement racheté ou s'évada, c'était un homme entièrement changé.",
+      "text_markdown": "Lorsqu'il fut finalement racheté ou s'évada, c'était un homme entièrement changé.",
+      "tts": {
+        "text": "Lorsqu'il fut finalement racheté ou s'évada, c'était un homme entièrement changé.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aroudj décida de devenir lui-même corsaire.",
+      "text_markdown": "Aroudj décida de devenir lui-même corsaire.",
+      "tts": {
+        "text": "Aroudj décida de devenir lui même corsaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il se procura un navire et un équipage et commença à attaquer le commerce chrétien en Méditerranée orientale.",
+      "text_markdown": "Il se procura un navire et un équipage et commença à attaquer le commerce chrétien en Méditerranée orientale.",
+      "tts": {
+        "text": "Il se procura un navire et un équipage et commença à attaquer le commerce chrétien en Méditerranée orientale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son frère cadet Khizr le rejoignit comme second.",
+      "text_markdown": "Son frère cadet Khizr le rejoignit comme second.",
+      "tts": {
+        "text": "Son frère cadet Khizr le rejoignit comme second.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ensemble, ils se révélèrent des corsaires d'une efficacité exceptionnelle.",
+      "text_markdown": "Ensemble, ils se révélèrent des corsaires d'une efficacité exceptionnelle.",
+      "tts": {
+        "text": "Ensemble, ils se révélèrent des corsaires d'une efficacité exceptionnelle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les frères déplacèrent leur base d'opérations vers la Méditerranée occidentale.",
+      "text_markdown": "Les frères déplacèrent leur base d'opérations vers la Méditerranée occidentale.",
+      "tts": {
+        "text": "Les frères déplacèrent leur base d'opérations vers la Méditerranée occidentale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils s'établirent sur l'île de Djerba, au large des côtes de l'actuelle Tunisie.",
+      "text_markdown": "Ils s'établirent sur l'île de Djerba, au large des côtes de l'actuelle Tunisie.",
+      "tts": {
+        "text": "Ils s'établirent sur l'île de Djerba, au large des côtes de l'actuelle Tunisie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Depuis Djerba, ils pouvaient attaquer le commerce espagnol et italien le long des routes commerciales fréquentées.",
+      "text_markdown": "Depuis Djerba, ils pouvaient attaquer le commerce espagnol et italien le long des routes commerciales fréquentées.",
+      "tts": {
+        "text": "Depuis Djerba, ils pouvaient attaquer le commerce espagnol et italien le long des routes commerciales fréquentées.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leur réputation grandit rapidement parmi les alliés comme les ennemis.",
+      "text_markdown": "Leur réputation grandit rapidement parmi les alliés comme les ennemis.",
+      "tts": {
+        "text": "Leur réputation grandit rapidement parmi les alliés comme les ennemis.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aroudj était le visage public de leur association.",
+      "text_markdown": "Aroudj était le visage public de leur association.",
+      "tts": {
+        "text": "Aroudj était le visage public de leur association.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il était audacieux, charismatique et d'une stature imposante.",
+      "text_markdown": "Il était audacieux, charismatique et d'une stature imposante.",
+      "tts": {
+        "text": "Il était audacieux, charismatique et d'une stature imposante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les sources européennes le décrivent comme portant une barbe rousse, ce qui donna aux frères leur célèbre surnom.",
+      "text_markdown": "Les sources européennes le décrivent comme portant une barbe rousse, ce qui donna aux frères leur célèbre surnom.",
+      "tts": {
+        "text": "Les sources européennes le décrivent comme portant une barbe rousse, ce qui donna aux frères leur célèbre surnom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le surnom Barberousse, qui veut littéralement dire barbe rousse, désigna d'abord Aroudj avant de désigner Khayr ad Din.",
+      "text_markdown": "Le surnom Barberousse, qui veut littéralement dire barbe rousse, désigna d'abord Aroudj avant de désigner Khayr ad Din.",
+      "tts": {
+        "text": "Le surnom Barberousse, qui veut littéralement dire barbe rousse, désigna d'abord Aroudj avant de désigner Khayr ad Din.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khizr était le stratège et l'organisateur dans l'ombre.",
+      "text_markdown": "Khizr était le stratège et l'organisateur dans l'ombre.",
+      "tts": {
+        "text": "Khizr était le stratège et l'organisateur dans l'ombre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il gérait la logistique de leur flotte grandissante et entretenait les alliances avec les dirigeants locaux.",
+      "text_markdown": "Il gérait la logistique de leur flotte grandissante et entretenait les alliances avec les dirigeants locaux.",
+      "tts": {
+        "text": "Il gérait la logistique de leur flotte grandissante et entretenait les alliances avec les dirigeants locaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tandis qu'Aroudj menait les raids en personne, Khizr veillait au bon fonctionnement de l'entreprise.",
+      "text_markdown": "Tandis qu'Aroudj menait les raids en personne, Khizr veillait au bon fonctionnement de l'entreprise.",
+      "tts": {
+        "text": "Tandis qu'Aroudj menait les raids en personne, Khizr veillait au bon fonctionnement de l'entreprise.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leurs compétences complémentaires en faisaient une équipe redoutable.",
+      "text_markdown": "Leurs compétences complémentaires en faisaient une équipe redoutable.",
+      "tts": {
+        "text": "Leurs compétences complémentaires en faisaient une équipe redoutable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les raids des frères servaient un objectif au-delà de l'enrichissement personnel.",
+      "text_markdown": "Les raids des frères servaient un objectif au-delà de l'enrichissement personnel.",
+      "tts": {
+        "text": "Les raids des frères servaient un objectif au delà de l'enrichissement personnel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ils sauvaient des réfugiés musulmans fuyant l'Inquisition espagnole.",
+      "text_markdown": "Ils sauvaient des réfugiés musulmans fuyant l'Inquisition espagnole.",
+      "tts": {
+        "text": "Ils sauvaient des réfugiés musulmans fuyant l'Inquisition espagnole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Entre 1504 et 1510, ils transportèrent des milliers de musulmans d'Espagne vers l'Afrique du Nord.",
+      "text_markdown": "Entre 1504 et 1510, ils transportèrent des milliers de musulmans d'Espagne vers l'Afrique du Nord.",
+      "tts": {
+        "text": "Entre mille cinq cent quatre et mille cinq cent dix, ils transportèrent des milliers de musulmans d'Espagne vers l'Afrique du Nord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cela leur valut un immense respect parmi les communautés musulmanes de la côte des Barbaresques.",
+      "text_markdown": "Cela leur valut un immense respect parmi les communautés musulmanes de la côte des Barbaresques.",
+      "tts": {
+        "text": "Cela leur valut un immense respect parmi les communautés musulmanes de la côte des Barbaresques.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aroudj visait un prix plus grand que les simples raids.",
+      "text_markdown": "Aroudj visait un prix plus grand que les simples raids.",
+      "tts": {
+        "text": "Aroudj visait un prix plus grand que les simples raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il voulait s'emparer d'une ville et y établir une base capable de tenir tête à la puissance de l'Espagne.",
+      "text_markdown": "Il voulait s'emparer d'une ville et y établir une base capable de tenir tête à la puissance de l'Espagne.",
+      "tts": {
+        "text": "Il voulait s'emparer d'une ville et y établir une base capable de tenir tête à la puissance de l'Espagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa cible était Alger, une ville portuaire sur la côte nord-africaine dotée d'un magnifique port naturel.",
+      "text_markdown": "Sa cible était Alger, une ville portuaire sur la côte nord-africaine dotée d'un magnifique port naturel.",
+      "tts": {
+        "text": "Sa cible était Alger, une ville portuaire sur la côte nord africaine dotée d'un magnifique port naturel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Les origines",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Prendre Alger transformerait les frères de corsaires en souverains.",
+      "text_markdown": "Prendre Alger transformerait les frères de corsaires en souverains.",
+      "tts": {
+        "text": "Prendre Alger transformerait les frères de corsaires en souverains.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'ascension au pouvoir",
+      "text_markdown": "L'ascension au pouvoir"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1516, Aroudj s'empara de la ville d'Alger.",
+      "text_markdown": "En 1516, Aroudj s'empara de la ville d'Alger.",
+      "tts": {
+        "text": "En mille cinq cent seize, Aroudj s'empara de la ville d'Alger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il renversa le dirigeant local et se proclama sultan d'Alger.",
+      "text_markdown": "Il renversa le dirigeant local et se proclama sultan d'Alger.",
+      "tts": {
+        "text": "Il renversa le dirigeant local et se proclama sultan d'Alger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "C'était un coup audacieux et téméraire qui alarma l'Empire espagnol.",
+      "text_markdown": "C'était un coup audacieux et téméraire qui alarma l'Empire espagnol.",
+      "tts": {
+        "text": "C'était un coup audacieux et téméraire qui alarma l'Empire espagnol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alger était désormais entre les mains d'un seigneur de guerre corsaire.",
+      "text_markdown": "Alger était désormais entre les mains d'un seigneur de guerre corsaire.",
+      "tts": {
+        "text": "Alger était désormais entre les mains d'un seigneur de guerre corsaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aroudj se révéla un dirigeant compétent mais impitoyable.",
+      "text_markdown": "Aroudj se révéla un dirigeant compétent mais impitoyable.",
+      "tts": {
+        "text": "Aroudj se révéla un dirigeant compétent mais impitoyable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il étendit son territoire le long de la côte nord-africaine.",
+      "text_markdown": "Il étendit son territoire le long de la côte nord-africaine.",
+      "tts": {
+        "text": "Il étendit son territoire le long de la côte nord africaine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il noua des alliances avec les tribus berbères locales et les communautés de réfugiés musulmans.",
+      "text_markdown": "Il noua des alliances avec les tribus berbères locales et les communautés de réfugiés musulmans.",
+      "tts": {
+        "text": "Il noua des alliances avec les tribus berbères locales et les communautés de réfugiés musulmans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais son expansion agressive le mit en conflit direct avec l'Espagne.",
+      "text_markdown": "Mais son expansion agressive le mit en conflit direct avec l'Espagne.",
+      "tts": {
+        "text": "Mais son expansion agressive le mit en conflit direct avec l'Espagne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1518, une importante armée espagnole assiégea la ville de Tlemcen, où Aroudj était basé.",
+      "text_markdown": "En 1518, une importante armée espagnole assiégea la ville de Tlemcen, où Aroudj était basé.",
+      "tts": {
+        "text": "En mille cinq cent dix huit, une importante armée espagnole assiégea la ville de Tlemcen, où Aroudj était basé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aroudj tenta de s'enfuir avec une petite troupe.",
+      "text_markdown": "Aroudj tenta de s'enfuir avec une petite troupe.",
+      "tts": {
+        "text": "Aroudj tenta de s'enfuir avec une petite troupe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il fut rattrapé et tué par des soldats espagnols pendant la retraite.",
+      "text_markdown": "Il fut rattrapé et tué par des soldats espagnols pendant la retraite.",
+      "tts": {
+        "text": "Il fut rattrapé et tué par des soldats espagnols pendant la retraite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sa mort fit de Khizr le seul frère survivant et le chef de tout ce qu'avait bâti Aroudj.",
+      "text_markdown": "Sa mort fit de Khizr le seul frère survivant et le chef de tout ce qu'avait bâti Aroudj.",
+      "tts": {
+        "text": "Sa mort fit de Khizr le seul frère survivant et le chef de tout ce qu'avait bâti Aroudj.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khizr, désormais au début de la quarantaine, faisait face à une situation impossible.",
+      "text_markdown": "Khizr, désormais au début de la quarantaine, faisait face à une situation impossible.",
+      "tts": {
+        "text": "Khizr, désormais au début de la quarantaine, faisait face à une situation impossible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'armée espagnole avançait, son frère était mort et ses forces étaient en infériorité numérique.",
+      "text_markdown": "L'armée espagnole avançait, son frère était mort et ses forces étaient en infériorité numérique.",
+      "tts": {
+        "text": "L'armée espagnole avançait, son frère était mort et ses forces étaient en infériorité numérique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il lui fallait un allié puissant ou il perdrait tout.",
+      "text_markdown": "Il lui fallait un allié puissant ou il perdrait tout.",
+      "tts": {
+        "text": "Il lui fallait un allié puissant ou il perdrait tout.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il se tourna vers la plus grande puissance du monde musulman : l'Empire ottoman.",
+      "text_markdown": "Il se tourna vers la plus grande puissance du monde musulman : l'Empire ottoman.",
+      "tts": {
+        "text": "Il se tourna vers la plus grande puissance du monde musulman : l'Empire ottoman.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khizr envoya des émissaires auprès du sultan Sélim Ier à Istanbul.",
+      "text_markdown": "Khizr envoya des émissaires auprès du sultan Sélim Ier à Istanbul.",
+      "tts": {
+        "text": "Khizr envoya des émissaires auprès du sultan Sélim premier à Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il proposa de placer Alger sous la souveraineté ottomane en échange d'un soutien militaire.",
+      "text_markdown": "Il proposa de placer Alger sous la souveraineté ottomane en échange d'un soutien militaire.",
+      "tts": {
+        "text": "Il proposa de placer Alger sous la souveraineté ottomane en échange d'un soutien militaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le sultan reconnut la valeur stratégique d'une base fidèle en Méditerranée occidentale.",
+      "text_markdown": "Le sultan reconnut la valeur stratégique d'une base fidèle en Méditerranée occidentale.",
+      "tts": {
+        "text": "Le sultan reconnut la valeur stratégique d'une base fidèle en Méditerranée occidentale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il accepta l'offre et envoya des soldats, des canons et une flotte de galères pour soutenir Khizr.",
+      "text_markdown": "Il accepta l'offre et envoya des soldats, des canons et une flotte de galères pour soutenir Khizr.",
+      "tts": {
+        "text": "Il accepta l'offre et envoya des soldats, des canons et une flotte de galères pour soutenir Khizr.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dès lors, Khizr n'était plus un simple corsaire.",
+      "text_markdown": "Dès lors, Khizr n'était plus un simple corsaire.",
+      "tts": {
+        "text": "Dès lors, Khizr n'était plus un simple corsaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il était un gouverneur ottoman, régnant sur Alger au nom du sultan.",
+      "text_markdown": "Il était un gouverneur ottoman, régnant sur Alger au nom du sultan.",
+      "tts": {
+        "text": "Il était un gouverneur ottoman, régnant sur Alger au nom du sultan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il prit le nom honorifique de Khayr ad-Din, qui signifie bonté de la foi.",
+      "text_markdown": "Il prit le nom honorifique de Khayr ad-Din, qui signifie bonté de la foi.",
+      "tts": {
+        "text": "Il prit le nom honorifique de Khayr ad Din, qui signifie bonté de la foi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "L'alliance des ressources ottomanes et de son propre génie naval le rendit invincible.",
+      "text_markdown": "L'alliance des ressources ottomanes et de son propre génie naval le rendit invincible.",
+      "tts": {
+        "text": "L'alliance des ressources ottomanes et de son propre génie naval le rendit invincible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din passa la décennie suivante à consolider le pouvoir ottoman le long de la côte nord-africaine.",
+      "text_markdown": "Khayr ad-Din passa la décennie suivante à consolider le pouvoir ottoman le long de la côte nord-africaine.",
+      "tts": {
+        "text": "Khayr ad Din passa la décennie suivante à consolider le pouvoir ottoman le long de la côte nord africaine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il prit Tunis, chassa les garnisons espagnoles des forteresses clés et agrandit la flotte corsaire.",
+      "text_markdown": "Il prit Tunis, chassa les garnisons espagnoles des forteresses clés et agrandit la flotte corsaire.",
+      "tts": {
+        "text": "Il prit Tunis, chassa les garnisons espagnoles des forteresses clés et agrandit la flotte corsaire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il forma une nouvelle génération de commandants navals qui serviraient l'Empire ottoman pendant des décennies.",
+      "text_markdown": "Il forma une nouvelle génération de commandants navals qui serviraient l'Empire ottoman pendant des décennies.",
+      "tts": {
+        "text": "Il forma une nouvelle génération de commandants navals qui serviraient l'Empire ottoman pendant des décennies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sa flotte devint la force dominante de la Méditerranée occidentale.",
+      "text_markdown": "Sa flotte devint la force dominante de la Méditerranée occidentale.",
+      "tts": {
+        "text": "Sa flotte devint la force dominante de la Méditerranée occidentale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En 1533, le sultan Soliman le Magnifique convoqua Khayr ad-Din à Istanbul.",
+      "text_markdown": "En 1533, le sultan Soliman le Magnifique convoqua Khayr ad-Din à Istanbul.",
+      "tts": {
+        "text": "En mille cinq cent trente trois, le sultan Soliman le Magnifique convoqua Khayr ad Din à Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soliman était le souverain le plus puissant du monde à cette époque.",
+      "text_markdown": "Soliman était le souverain le plus puissant du monde à cette époque.",
+      "tts": {
+        "text": "Soliman était le souverain le plus puissant du monde à cette époque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il reconnut que l'Empire ottoman avait besoin d'une marine professionnelle à la hauteur de sa légendaire armée.",
+      "text_markdown": "Il reconnut que l'Empire ottoman avait besoin d'une marine professionnelle à la hauteur de sa légendaire armée.",
+      "tts": {
+        "text": "Il reconnut que l'Empire ottoman avait besoin d'une marine professionnelle à la hauteur de sa légendaire armée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il nomma Khayr ad Din capitan pacha et grand amiral de toute la flotte ottomane.",
+      "text_markdown": "Il nomma Khayr ad Din capitan pacha et grand amiral de toute la flotte ottomane.",
+      "tts": {
+        "text": "Il nomma Khayr ad Din capitan pacha et grand amiral de toute la flotte ottomane.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cette nomination fut un tournant dans l'histoire de la Méditerranée.",
+      "text_markdown": "Cette nomination fut un tournant dans l'histoire de la Méditerranée.",
+      "tts": {
+        "text": "Cette nomination fut un tournant dans l'histoire de la Méditerranée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La marine ottomane avait été compétente mais non dominante.",
+      "text_markdown": "La marine ottomane avait été compétente mais non dominante.",
+      "tts": {
+        "text": "La marine ottomane avait été compétente mais non dominante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sous le commandement de Khayr ad-Din, elle allait devenir la force navale la plus redoutée du monde.",
+      "text_markdown": "Sous le commandement de Khayr ad-Din, elle allait devenir la force navale la plus redoutée du monde.",
+      "tts": {
+        "text": "Sous le commandement de Khayr ad Din, elle allait devenir la force navale la plus redoutée du monde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il rebâtit la flotte depuis les chantiers navals d'Istanbul, appliquant tout ce qu'il avait appris en des décennies de guerre corsaire.",
+      "text_markdown": "Il rebâtit la flotte depuis les chantiers navals d'Istanbul, appliquant tout ce qu'il avait appris en des décennies de guerre corsaire.",
+      "tts": {
+        "text": "Il rebâtit la flotte depuis les chantiers navals d'Istanbul, appliquant tout ce qu'il avait appris en des décennies de guerre corsaire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din modernisa les techniques de construction navale ottomanes.",
+      "text_markdown": "Khayr ad-Din modernisa les techniques de construction navale ottomanes.",
+      "tts": {
+        "text": "Khayr ad Din modernisa les techniques de construction navale ottomanes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il conçut des galères plus rapides et plus maniables, inspirées des navires corsaires.",
+      "text_markdown": "Il conçut des galères plus rapides et plus maniables, inspirées des navires corsaires.",
+      "tts": {
+        "text": "Il conçut des galères plus rapides et plus maniables, inspirées des navires corsaires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il mit en place des programmes de formation pour les officiers de la marine ottomane.",
+      "text_markdown": "Il mit en place des programmes de formation pour les officiers de la marine ottomane.",
+      "tts": {
+        "text": "Il mit en place des programmes de formation pour les officiers de la marine ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il recruta des corsaires expérimentés de toute la Méditerranée pour servir comme capitaines.",
+      "text_markdown": "Il recruta des corsaires expérimentés de toute la Méditerranée pour servir comme capitaines.",
+      "tts": {
+        "text": "Il recruta des corsaires expérimentés de toute la Méditerranée pour servir comme capitaines.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa première grande campagne en tant que Grand Amiral visa la côte italienne.",
+      "text_markdown": "Sa première grande campagne en tant que Grand Amiral visa la côte italienne.",
+      "tts": {
+        "text": "Sa première grande campagne en tant que Grand Amiral visa la côte italienne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En 1534, il mena la flotte ottomane dans un raid dévastateur le long des côtes du sud de l'Italie.",
+      "text_markdown": "En 1534, il mena la flotte ottomane dans un raid dévastateur le long des côtes du sud de l'Italie.",
+      "tts": {
+        "text": "En mille cinq cent trente quatre, il mena la flotte ottomane dans un raid dévastateur le long des côtes du sud de l'Italie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il s'empara de la ville de Tunis et en fit une base navale ottomane.",
+      "text_markdown": "Il s'empara de la ville de Tunis et en fit une base navale ottomane.",
+      "tts": {
+        "text": "Il s'empara de la ville de Tunis et en fit une base navale ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le raid terrorisa les États chrétiens et démontra la portée de la puissance navale ottomane.",
+      "text_markdown": "Le raid terrorisa les États chrétiens et démontra la portée de la puissance navale ottomane.",
+      "tts": {
+        "text": "Le raid terrorisa les États chrétiens et démontra la portée de la puissance navale ottomane.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'empereur Charles Quint du Saint-Empire romain germanique riposta par une contre-attaque massive.",
+      "text_markdown": "L'empereur Charles Quint du Saint-Empire romain germanique riposta par une contre-attaque massive.",
+      "tts": {
+        "text": "L'empereur Charles Quint du Saint Empire romain germanique riposta par une contre attaque massive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En 1535, Charles assembla l'une des plus grandes flottes de l'histoire européenne pour reprendre Tunis.",
+      "text_markdown": "En 1535, Charles assembla l'une des plus grandes flottes de l'histoire européenne pour reprendre Tunis.",
+      "tts": {
+        "text": "En mille cinq cent trente cinq, Charles assembla l'une des plus grandes flottes de l'histoire européenne pour reprendre Tunis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La flotte comprenait des navires d'Espagne, d'Italie, du Portugal et des États pontificaux.",
+      "text_markdown": "La flotte comprenait des navires d'Espagne, d'Italie, du Portugal et des États pontificaux.",
+      "tts": {
+        "text": "La flotte comprenait des navires d'Espagne, d'Italie, du Portugal et des États pontificaux.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Charles réussit à prendre Tunis, mais Khayr ad-Din s'échappa avec le gros de sa flotte intact.",
+      "text_markdown": "Charles réussit à prendre Tunis, mais Khayr ad-Din s'échappa avec le gros de sa flotte intact.",
+      "tts": {
+        "text": "Charles réussit à prendre Tunis, mais Khayr ad Din s'échappa avec le gros de sa flotte intact.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La perte de Tunis fut un revers, mais pas une défaite.",
+      "text_markdown": "La perte de Tunis fut un revers, mais pas une défaite.",
+      "tts": {
+        "text": "La perte de Tunis fut un revers, mais pas une défaite.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Khayr ad-Din se replia sur Alger et commença immédiatement à reconstituer ses forces.",
+      "text_markdown": "Khayr ad-Din se replia sur Alger et commença immédiatement à reconstituer ses forces.",
+      "tts": {
+        "text": "Khayr ad Din se replia sur Alger et commença immédiatement à reconstituer ses forces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il savait que l'alliance chrétienne était temporaire et se disloquerait une fois la menace immédiate passée.",
+      "text_markdown": "Il savait que l'alliance chrétienne était temporaire et se disloquerait une fois la menace immédiate passée.",
+      "tts": {
+        "text": "Il savait que l'alliance chrétienne était temporaire et se disloquerait une fois la menace immédiate passée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il avait raison, et en quelques mois l'alliance commença à se désagréger.",
+      "text_markdown": "Il avait raison, et en quelques mois l'alliance commença à se désagréger.",
+      "tts": {
+        "text": "Il avait raison, et en quelques mois l'alliance commença à se désagréger.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En deux ans, Khayr ad-Din était prêt pour sa plus grande bataille.",
+      "text_markdown": "En deux ans, Khayr ad-Din était prêt pour sa plus grande bataille.",
+      "tts": {
+        "text": "En deux ans, Khayr ad Din était prêt pour sa plus grande bataille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'affrontement qui allait définir son héritage approchait.",
+      "text_markdown": "L'affrontement qui allait définir son héritage approchait.",
+      "tts": {
+        "text": "L'affrontement qui allait définir son héritage approchait.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il aurait lieu dans les eaux au large de la côte occidentale de la Grèce.",
+      "text_markdown": "Il aurait lieu dans les eaux au large de la côte occidentale de la Grèce.",
+      "tts": {
+        "text": "Il aurait lieu dans les eaux au large de la côte occidentale de la Grèce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "L'ascension au pouvoir",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le nom de la bataille était Prévéza, et elle allait changer la Méditerranée à jamais.",
+      "text_markdown": "Le nom de la bataille était Prévéza, et elle allait changer la Méditerranée à jamais.",
+      "tts": {
+        "text": "Le nom de la bataille était Prévéza, et elle allait changer la Méditerranée à jamais.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "À l'apogée",
+      "text_markdown": "À l'apogée"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La bataille de Prévéza se déroula le vingt huitième jour de septembre de l'an mille cinq cent trente huit.",
+      "text_markdown": "La bataille de Prévéza se déroula le vingt huitième jour de septembre de l'an mille cinq cent trente huit.",
+      "tts": {
+        "text": "La bataille de Prévéza se déroula le vingt huitième jour de septembre de l'an mille cinq cent trente huit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ce fut l'engagement naval décisif de la Méditerranée au seizième siècle.",
+      "text_markdown": "Ce fut l'engagement naval décisif de la Méditerranée au seizième siècle.",
+      "tts": {
+        "text": "Ce fut l'engagement naval décisif de la Méditerranée au seizième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "D'un côté se trouvait la flotte ottomane sous le commandement de Khayr ad-Din Barberousse.",
+      "text_markdown": "D'un côté se trouvait la flotte ottomane sous le commandement de Khayr ad-Din Barberousse.",
+      "tts": {
+        "text": "D'un côté se trouvait la flotte ottomane sous le commandement de Khayr ad Din Barberousse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De l'autre se trouvait la flotte combinée de la Sainte Ligue, une alliance d'États chrétiens.",
+      "text_markdown": "De l'autre se trouvait la flotte combinée de la Sainte Ligue, une alliance d'États chrétiens.",
+      "tts": {
+        "text": "De l'autre se trouvait la flotte combinée de la Sainte Ligue, une alliance d'États chrétiens.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La flotte de la Sainte Ligue était commandée par l'amiral génois Andrea Doria.",
+      "text_markdown": "La flotte de la Sainte Ligue était commandée par l'amiral génois Andrea Doria.",
+      "tts": {
+        "text": "La flotte de la Sainte Ligue était commandée par l'amiral génois Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle comptait environ 300 navires d'Espagne, de Venise, des États pontificaux et de Gênes.",
+      "text_markdown": "Elle comptait environ 300 navires d'Espagne, de Venise, des États pontificaux et de Gênes.",
+      "tts": {
+        "text": "Elle comptait environ trois cents navires d'Espagne, de Venise, des États pontificaux et de Gênes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sur le papier, la flotte chrétienne était nettement plus importante que la force ottomane.",
+      "text_markdown": "Sur le papier, la flotte chrétienne était nettement plus importante que la force ottomane.",
+      "tts": {
+        "text": "Sur le papier, la flotte chrétienne était nettement plus importante que la force ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais la taille seule ne suffit pas à gagner des batailles en mer.",
+      "text_markdown": "Mais la taille seule ne suffit pas à gagner des batailles en mer.",
+      "tts": {
+        "text": "Mais la taille seule ne suffit pas à gagner des batailles en mer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din commandait environ 150 galères, ainsi que des navires de soutien plus petits.",
+      "text_markdown": "Khayr ad-Din commandait environ 150 galères, ainsi que des navires de soutien plus petits.",
+      "tts": {
+        "text": "Khayr ad Din commandait environ cent cinquante galères, ainsi que des navires de soutien plus petits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sa flotte était en infériorité numérique mais mieux entraînée, mieux coordonnée et mieux dirigée.",
+      "text_markdown": "Sa flotte était en infériorité numérique mais mieux entraînée, mieux coordonnée et mieux dirigée.",
+      "tts": {
+        "text": "Sa flotte était en infériorité numérique mais mieux entraînée, mieux coordonnée et mieux dirigée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Khayr ad-Din avait passé des décennies à combattre dans ces eaux et connaissait chaque courant, chaque régime de vent et chaque avantage tactique qu'offrait le littoral.",
+      "text_markdown": "Khayr ad-Din avait passé des décennies à combattre dans ces eaux et connaissait chaque courant, chaque régime de vent et chaque avantage tactique qu'offrait le littoral.",
+      "tts": {
+        "text": "Khayr ad Din avait passé des décennies à combattre dans ces eaux et connaissait chaque courant, chaque régime de vent et chaque avantage tactique qu'offrait le littoral.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La bataille eut lieu près de l'entrée du golfe Ambracique, au large de la côte occidentale de la Grèce.",
+      "text_markdown": "La bataille eut lieu près de l'entrée du golfe Ambracique, au large de la côte occidentale de la Grèce.",
+      "tts": {
+        "text": "La bataille eut lieu près de l'entrée du golfe Ambracique, au large de la côte occidentale de la Grèce.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Khayr ad-Din positionna sa flotte pour tirer parti des vents dominants.",
+      "text_markdown": "Khayr ad-Din positionna sa flotte pour tirer parti des vents dominants.",
+      "tts": {
+        "text": "Khayr ad Din positionna sa flotte pour tirer parti des vents dominants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il disposa ses galères en formation de croissant permettant de concentrer le feu sur des groupes ennemis isolés.",
+      "text_markdown": "Il disposa ses galères en formation de croissant permettant de concentrer le feu sur des groupes ennemis isolés.",
+      "tts": {
+        "text": "Il disposa ses galères en formation de croissant permettant de concentrer le feu sur des groupes ennemis isolés.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son positionnement tactique était magistral.",
+      "text_markdown": "Son positionnement tactique était magistral.",
+      "tts": {
+        "text": "Son positionnement tactique était magistral.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria hésita au moment crucial.",
+      "text_markdown": "Andrea Doria hésita au moment crucial.",
+      "tts": {
+        "text": "Andrea Doria hésita au moment crucial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Malgré son avantage numérique, il répugnait à engager toute sa flotte dans un combat rapproché.",
+      "text_markdown": "Malgré son avantage numérique, il répugnait à engager toute sa flotte dans un combat rapproché.",
+      "tts": {
+        "text": "Malgré son avantage numérique, il répugnait à engager toute sa flotte dans un combat rapproché.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il garda ses meilleurs navires en réserve et tenta de manœuvrer pour obtenir une meilleure position.",
+      "text_markdown": "Il garda ses meilleurs navires en réserve et tenta de manœuvrer pour obtenir une meilleure position.",
+      "tts": {
+        "text": "Il garda ses meilleurs navires en réserve et tenta de manœuvrer pour obtenir une meilleure position.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cette prudence se révéla fatale pour la cause chrétienne.",
+      "text_markdown": "Cette prudence se révéla fatale pour la cause chrétienne.",
+      "tts": {
+        "text": "Cette prudence se révéla fatale pour la cause chrétienne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din attaqua avec agressivité, ciblant les navires vénitiens et pontificaux qui s'étaient avancés devant le gros de la flotte.",
+      "text_markdown": "Khayr ad-Din attaqua avec agressivité, ciblant les navires vénitiens et pontificaux qui s'étaient avancés devant le gros de la flotte.",
+      "tts": {
+        "text": "Khayr ad Din attaqua avec agressivité, ciblant les navires vénitiens et pontificaux qui s'étaient avancés devant le gros de la flotte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ses galères se rapprochèrent rapidement et engagèrent le combat à courte portée.",
+      "text_markdown": "Ses galères se rapprochèrent rapidement et engagèrent le combat à courte portée.",
+      "tts": {
+        "text": "Ses galères se rapprochèrent rapidement et engagèrent le combat à courte portée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les combats furent intenses et brutaux, mêlant tir de canon et corps à corps sur des dizaines de navires.",
+      "text_markdown": "Les combats furent intenses et brutaux, mêlant tir de canon et corps à corps sur des dizaines de navires.",
+      "tts": {
+        "text": "Les combats furent intenses et brutaux, mêlant tir de canon et corps à corps sur des dizaines de navires.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Les escadres chrétiennes isolées furent submergées les unes après les autres.",
+      "text_markdown": "Les escadres chrétiennes isolées furent submergées les unes après les autres.",
+      "tts": {
+        "text": "Les escadres chrétiennes isolées furent submergées les unes après les autres.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À la fin de la journée, la Sainte Ligue avait subi une défaite écrasante.",
+      "text_markdown": "À la fin de la journée, la Sainte Ligue avait subi une défaite écrasante.",
+      "tts": {
+        "text": "À la fin de la journée, la Sainte Ligue avait subi une défaite écrasante.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les forces de Khayr ad Din capturèrent des dizaines de navires de guerre chrétiens ou les envoyèrent par le fond.",
+      "text_markdown": "Les forces de Khayr ad Din capturèrent des dizaines de navires de guerre chrétiens ou les envoyèrent par le fond.",
+      "tts": {
+        "text": "Les forces de Khayr ad Din capturèrent des dizaines de navires de guerre chrétiens ou les envoyèrent par le fond.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Des milliers de marins et de soldats chrétiens furent tués ou faits prisonniers.",
+      "text_markdown": "Des milliers de marins et de soldats chrétiens furent tués ou faits prisonniers.",
+      "tts": {
+        "text": "Des milliers de marins et de soldats chrétiens furent tués ou faits prisonniers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria se retira avec les restes de sa flotte, laissant la mer aux Ottomans.",
+      "text_markdown": "Andrea Doria se retira avec les restes de sa flotte, laissant la mer aux Ottomans.",
+      "tts": {
+        "text": "Andrea Doria se retira avec les restes de sa flotte, laissant la mer aux Ottomans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La bataille de Prévéza établit la suprématie navale ottomane en Méditerranée.",
+      "text_markdown": "La bataille de Prévéza établit la suprématie navale ottomane en Méditerranée.",
+      "tts": {
+        "text": "La bataille de Prévéza établit la suprématie navale ottomane en Méditerranée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pendant les décennies suivantes, aucune flotte chrétienne ne put contester le contrôle ottoman de la mer orientale et centrale.",
+      "text_markdown": "Pendant les décennies suivantes, aucune flotte chrétienne ne put contester le contrôle ottoman de la mer orientale et centrale.",
+      "tts": {
+        "text": "Pendant les décennies suivantes, aucune flotte chrétienne ne put contester le contrôle ottoman de la mer orientale et centrale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'Empire ottoman pouvait désormais projeter sa puissance militaire le long de toute la côte nord-africaine et contre la péninsule italienne.",
+      "text_markdown": "L'Empire ottoman pouvait désormais projeter sa puissance militaire le long de toute la côte nord-africaine et contre la péninsule italienne.",
+      "tts": {
+        "text": "L'Empire ottoman pouvait désormais projeter sa puissance militaire le long de toute la côte nord africaine et contre la péninsule italienne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce fut la victoire navale la plus importante du seizième siècle.",
+      "text_markdown": "Ce fut la victoire navale la plus importante du seizième siècle.",
+      "tts": {
+        "text": "Ce fut la victoire navale la plus importante du seizième siècle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din rentra à Istanbul en héros conquérant.",
+      "text_markdown": "Khayr ad-Din rentra à Istanbul en héros conquérant.",
+      "tts": {
+        "text": "Khayr ad Din rentra à Istanbul en héros conquérant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le sultan Soliman le reçut avec les plus grands honneurs que l'empire pouvait décerner.",
+      "text_markdown": "Le sultan Soliman le reçut avec les plus grands honneurs que l'empire pouvait décerner.",
+      "tts": {
+        "text": "Le sultan Soliman le reçut avec les plus grands honneurs que l'empire pouvait décerner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le Grand Amiral avait accompli ce que le sultan lui avait demandé.",
+      "text_markdown": "Le Grand Amiral avait accompli ce que le sultan lui avait demandé.",
+      "tts": {
+        "text": "Le Grand Amiral avait accompli ce que le sultan lui avait demandé.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il avait fait de la marine ottomane la force suprême en Méditerranée.",
+      "text_markdown": "Il avait fait de la marine ottomane la force suprême en Méditerranée.",
+      "tts": {
+        "text": "Il avait fait de la marine ottomane la force suprême en Méditerranée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans les années qui suivirent Prévéza, Khayr ad-Din continua de commander la flotte ottomane.",
+      "text_markdown": "Dans les années qui suivirent Prévéza, Khayr ad-Din continua de commander la flotte ottomane.",
+      "tts": {
+        "text": "Dans les années qui suivirent Prévéza, Khayr ad Din continua de commander la flotte ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il mena des raids contre les villes côtières espagnoles et italiennes.",
+      "text_markdown": "Il mena des raids contre les villes côtières espagnoles et italiennes.",
+      "tts": {
+        "text": "Il mena des raids contre les villes côtières espagnoles et italiennes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il négocia avec le roi de France François Ier, qui s'allia aux Ottomans contre leur ennemi commun, Charles Quint.",
+      "text_markdown": "Il négocia avec le roi de France François Ier, qui s'allia aux Ottomans contre leur ennemi commun, Charles Quint.",
+      "tts": {
+        "text": "Il négocia avec le roi de France François premier, qui s'allia aux Ottomans contre leur ennemi commun, Charles Quint.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cette alliance entre un empire musulman et un royaume chrétien stupéfia toute l'Europe.",
+      "text_markdown": "Cette alliance entre un empire musulman et un royaume chrétien stupéfia toute l'Europe.",
+      "tts": {
+        "text": "Cette alliance entre un empire musulman et un royaume chrétien stupéfia toute l'Europe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durant l'hiver 1543, Khayr ad-Din ancra sa flotte dans le port français de Toulon.",
+      "text_markdown": "Durant l'hiver 1543, Khayr ad-Din ancra sa flotte dans le port français de Toulon.",
+      "tts": {
+        "text": "Durant l'hiver mille cinq cent quarante trois, Khayr ad Din ancra sa flotte dans le port français de Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le roi de France avait offert le port comme base pour des opérations conjointes contre l'Espagne.",
+      "text_markdown": "Le roi de France avait offert le port comme base pour des opérations conjointes contre l'Espagne.",
+      "tts": {
+        "text": "Le roi de France avait offert le port comme base pour des opérations conjointes contre l'Espagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pendant plusieurs mois, des navires de guerre ottomans opérèrent depuis un port français.",
+      "text_markdown": "Pendant plusieurs mois, des navires de guerre ottomans opérèrent depuis un port français.",
+      "tts": {
+        "text": "Pendant plusieurs mois, des navires de guerre ottomans opérèrent depuis un port français.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ce fut un spectacle qui stupéfia le monde chrétien et démontra que la politique de puissance pouvait l'emporter sur les divisions religieuses.",
+      "text_markdown": "Ce fut un spectacle qui stupéfia le monde chrétien et démontra que la politique de puissance pouvait l'emporter sur les divisions religieuses.",
+      "tts": {
+        "text": "Ce fut un spectacle qui stupéfia le monde chrétien et démontra que la politique de puissance pouvait l'emporter sur les divisions religieuses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'administration d'Alger par Khayr ad-Din se poursuivit parallèlement à ses campagnes navales.",
+      "text_markdown": "L'administration d'Alger par Khayr ad-Din se poursuivit parallèlement à ses campagnes navales.",
+      "tts": {
+        "text": "L'administration d'Alger par Khayr ad Din se poursuivit parallèlement à ses campagnes navales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il construisit des mosquées, des bains publics et des fortifications dans la ville.",
+      "text_markdown": "Il construisit des mosquées, des bains publics et des fortifications dans la ville.",
+      "tts": {
+        "text": "Il construisit des mosquées, des bains publics et des fortifications dans la ville.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il encouragea le commerce et attira des artisans qualifiés de tout le monde musulman.",
+      "text_markdown": "Il encouragea le commerce et attira des artisans qualifiés de tout le monde musulman.",
+      "tts": {
+        "text": "Il encouragea le commerce et attira des artisans qualifiés de tout le monde musulman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sous son règne, Alger passa d'un port mineur à l'une des villes les plus importantes d'Afrique du Nord.",
+      "text_markdown": "Sous son règne, Alger passa d'un port mineur à l'une des villes les plus importantes d'Afrique du Nord.",
+      "tts": {
+        "text": "Sous son règne, Alger passa d'un port mineur à l'une des villes les plus importantes d'Afrique du Nord.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa flotte protégeait les routes commerciales ottomanes reliant Istanbul à la Méditerranée occidentale.",
+      "text_markdown": "Sa flotte protégeait les routes commerciales ottomanes reliant Istanbul à la Méditerranée occidentale.",
+      "tts": {
+        "text": "Sa flotte protégeait les routes commerciales ottomanes reliant Istanbul à la Méditerranée occidentale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les navires marchands transportant céréales, textiles et produits manufacturés naviguaient sous la protection de ses bâtiments de guerre.",
+      "text_markdown": "Les navires marchands transportant céréales, textiles et produits manufacturés naviguaient sous la protection de ses bâtiments de guerre.",
+      "tts": {
+        "text": "Les navires marchands transportant céréales, textiles et produits manufacturés naviguaient sous la protection de ses bâtiments de guerre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La prospérité économique de la Méditerranée ottomane dépendait en grande partie de la marine que Khayr ad-Din avait bâtie.",
+      "text_markdown": "La prospérité économique de la Méditerranée ottomane dépendait en grande partie de la marine que Khayr ad-Din avait bâtie.",
+      "tts": {
+        "text": "La prospérité économique de la Méditerranée ottomane dépendait en grande partie de la marine que Khayr ad Din avait bâtie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "À l'apogée",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il avait transformé la course en un instrument de puissance impériale.",
+      "text_markdown": "Il avait transformé la course en un instrument de puissance impériale.",
+      "tts": {
+        "text": "Il avait transformé la course en un instrument de puissance impériale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La fin",
+      "text_markdown": "La fin"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au début des années quinze quarante, Khayr ad-Din Barberousse avait environ soixante-cinq ans.",
+      "text_markdown": "Au début des années quinze quarante, Khayr ad-Din Barberousse avait environ soixante-cinq ans.",
+      "tts": {
+        "text": "Au début des années quinze quarante, Khayr ad Din Barberousse avait environ soixante cinq ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il avait passé plus de quatre décennies en mer, à combattre, à bâtir et à commander.",
+      "text_markdown": "Il avait passé plus de quatre décennies en mer, à combattre, à bâtir et à commander.",
+      "tts": {
+        "text": "Il avait passé plus de quatre décennies en mer, à combattre, à bâtir et à commander.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son corps était usé par des décennies de guerre, de mauvais temps et des exigences physiques de la vie à bord.",
+      "text_markdown": "Son corps était usé par des décennies de guerre, de mauvais temps et des exigences physiques de la vie à bord.",
+      "tts": {
+        "text": "Son corps était usé par des décennies de guerre, de mauvais temps et des exigences physiques de la vie à bord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mais son esprit restait vif et son autorité incontestée.",
+      "text_markdown": "Mais son esprit restait vif et son autorité incontestée.",
+      "tts": {
+        "text": "Mais son esprit restait vif et son autorité incontestée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Après la campagne de Toulon de 1543, Khayr ad-Din rentra à Istanbul.",
+      "text_markdown": "Après la campagne de Toulon de 1543, Khayr ad-Din rentra à Istanbul.",
+      "tts": {
+        "text": "Après la campagne de Toulon de mille cinq cent quarante trois, Khayr ad Din rentra à Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il avait mené sa dernière grande opération navale.",
+      "text_markdown": "Il avait mené sa dernière grande opération navale.",
+      "tts": {
+        "text": "Il avait mené sa dernière grande opération navale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le sultan ne lui demanda pas de diriger une autre campagne.",
+      "text_markdown": "Le sultan ne lui demanda pas de diriger une autre campagne.",
+      "tts": {
+        "text": "Le sultan ne lui demanda pas de diriger une autre campagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "À son âge et avec ses accomplissements, la retraite était à la fois méritée et appropriée.",
+      "text_markdown": "À son âge et avec ses accomplissements, la retraite était à la fois méritée et appropriée.",
+      "tts": {
+        "text": "À son âge et avec ses accomplissements, la retraite était à la fois méritée et appropriée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din passa ses dernières années à Istanbul, dans un grand palais surplombant le Bosphore.",
+      "text_markdown": "Khayr ad-Din passa ses dernières années à Istanbul, dans un grand palais surplombant le Bosphore.",
+      "tts": {
+        "text": "Khayr ad Din passa ses dernières années à Istanbul, dans un grand palais surplombant le Bosphore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il dicta ses mémoires à un scribe, créant l'une des sources primaires les plus importantes de l'histoire de la course en Méditerranée.",
+      "text_markdown": "Il dicta ses mémoires à un scribe, créant l'une des sources primaires les plus importantes de l'histoire de la course en Méditerranée.",
+      "tts": {
+        "text": "Il dicta ses mémoires à un scribe, créant l'une des sources primaires les plus importantes de l'histoire de la course en Méditerranée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ces mémoires, connues sous le nom de Gazavat-i Hayreddin Pacha, subsistent sous forme de manuscrit.",
+      "text_markdown": "Ces mémoires, connues sous le nom de Gazavat-i Hayreddin Pacha, subsistent sous forme de manuscrit.",
+      "tts": {
+        "text": "Ces mémoires, connues sous le nom de Gazavat i Hayreddin Pacha, subsistent sous forme de manuscrit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elles ont été étudiées par les historiens pendant des siècles.",
+      "text_markdown": "Elles ont été étudiées par les historiens pendant des siècles.",
+      "tts": {
+        "text": "Elles ont été étudiées par les historiens pendant des siècles.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il resta impliqué dans les affaires navales ottomanes dans un rôle consultatif.",
+      "text_markdown": "Il resta impliqué dans les affaires navales ottomanes dans un rôle consultatif.",
+      "tts": {
+        "text": "Il resta impliqué dans les affaires navales ottomanes dans un rôle consultatif.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les amiraux plus jeunes sollicitaient ses conseils en matière de stratégie et de construction navale.",
+      "text_markdown": "Les amiraux plus jeunes sollicitaient ses conseils en matière de stratégie et de construction navale.",
+      "tts": {
+        "text": "Les amiraux plus jeunes sollicitaient ses conseils en matière de stratégie et de construction navale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il avait formé toute une génération d'officiers de marine qui poursuivraient son œuvre.",
+      "text_markdown": "Il avait formé toute une génération d'officiers de marine qui poursuivraient son œuvre.",
+      "tts": {
+        "text": "Il avait formé toute une génération d'officiers de marine qui poursuivraient son œuvre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le savoir institutionnel qu'il avait intégré à la marine ottomane fut sa contribution la plus durable.",
+      "text_markdown": "Le savoir institutionnel qu'il avait intégré à la marine ottomane fut sa contribution la plus durable.",
+      "tts": {
+        "text": "Le savoir institutionnel qu'il avait intégré à la marine ottomane fut sa contribution la plus durable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din Barberousse mourut le 4 juillet 1546 à Istanbul.",
+      "text_markdown": "Khayr ad-Din Barberousse mourut le 4 juillet 1546 à Istanbul.",
+      "tts": {
+        "text": "Khayr ad Din Barberousse mourut le quatre juillet mille cinq cent quarante six à Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il avait environ soixante-huit ans.",
+      "text_markdown": "Il avait environ soixante-huit ans.",
+      "tts": {
+        "text": "Il avait environ soixante huit ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sa mort fut pleurée dans tout l'Empire ottoman.",
+      "text_markdown": "Sa mort fut pleurée dans tout l'Empire ottoman.",
+      "tts": {
+        "text": "Sa mort fut pleurée dans tout l'Empire ottoman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le sultan Soliman fit construire pour lui un magnifique mausolée sur les rives du Bosphore, à Beşiktaş.",
+      "text_markdown": "Le sultan Soliman fit construire pour lui un magnifique mausolée sur les rives du Bosphore, à Beşiktaş.",
+      "tts": {
+        "text": "Le sultan Soliman fit construire pour lui un magnifique mausolée sur les rives du Bosphore, à Beşiktaş.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le mausolée se dresse encore aujourd'hui dans le quartier de Beşiktaş à Istanbul.",
+      "text_markdown": "Le mausolée se dresse encore aujourd'hui dans le quartier de Beşiktaş à Istanbul.",
+      "tts": {
+        "text": "Le mausolée se dresse encore aujourd'hui dans le quartier de Beşiktaş à Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "C'est un monument d'architecture ottomane, orné de faïences et de calligraphies.",
+      "text_markdown": "C'est un monument d'architecture ottomane, orné de faïences et de calligraphies.",
+      "tts": {
+        "text": "C'est un monument d'architecture ottomane, orné de faïences et de calligraphies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pendant des siècles, les marins ottomans visitèrent le tombeau avant de prendre la mer.",
+      "text_markdown": "Pendant des siècles, les marins ottomans visitèrent le tombeau avant de prendre la mer.",
+      "tts": {
+        "text": "Pendant des siècles, les marins ottomans visitèrent le tombeau avant de prendre la mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ils priaient pour un voyage sûr et pour que l'esprit du grand amiral les guide.",
+      "text_markdown": "Ils priaient pour un voyage sûr et pour que l'esprit du grand amiral les guide.",
+      "tts": {
+        "text": "Ils priaient pour un voyage sûr et pour que l'esprit du grand amiral les guide.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ses successeurs dans la marine ottomane maintinrent la flotte qu'il avait bâtie.",
+      "text_markdown": "Ses successeurs dans la marine ottomane maintinrent la flotte qu'il avait bâtie.",
+      "tts": {
+        "text": "Ses successeurs dans la marine ottomane maintinrent la flotte qu'il avait bâtie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Des amiraux comme Dragut et Piyale Pacha poursuivirent la domination navale ottomane pendant des décennies.",
+      "text_markdown": "Des amiraux comme Dragut et Piyale Pacha poursuivirent la domination navale ottomane pendant des décennies.",
+      "tts": {
+        "text": "Des amiraux comme Dragut et Piyale Pacha poursuivirent la domination navale ottomane pendant des décennies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ils avaient appris leur métier sous Khayr ad-Din et transmis ses doctrines tactiques.",
+      "text_markdown": "Ils avaient appris leur métier sous Khayr ad-Din et transmis ses doctrines tactiques.",
+      "tts": {
+        "text": "Ils avaient appris leur métier sous Khayr ad Din et transmis ses doctrines tactiques.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La bataille de Lépante en 1571 finit par mettre un terme à la suprématie ottomane en mer, mais même cette défaite ne détruisit pas la marine que Khayr ad-Din avait créée.",
+      "text_markdown": "La bataille de Lépante en 1571 finit par mettre un terme à la suprématie ottomane en mer, mais même cette défaite ne détruisit pas la marine que Khayr ad-Din avait créée.",
+      "tts": {
+        "text": "La bataille de Lépante en mille cinq cent soixante et onze finit par mettre un terme à la suprématie ottomane en mer, mais même cette défaite ne détruisit pas la marine que Khayr ad Din avait créée.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les territoires nord-africains que Khayr ad-Din avait placés sous contrôle ottoman restèrent des provinces ottomanes pendant des siècles.",
+      "text_markdown": "Les territoires nord-africains que Khayr ad-Din avait placés sous contrôle ottoman restèrent des provinces ottomanes pendant des siècles.",
+      "tts": {
+        "text": "Les territoires nord africains que Khayr ad Din avait placés sous contrôle ottoman restèrent des provinces ottomanes pendant des siècles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alger, Tunis et Tripoli restèrent des bases corsaires jusque bien avant dans le dix-neuvième siècle.",
+      "text_markdown": "Alger, Tunis et Tripoli restèrent des bases corsaires jusque bien avant dans le dix-neuvième siècle.",
+      "tts": {
+        "text": "Alger, Tunis et Tripoli restèrent des bases corsaires jusque bien avant dans le dix neuvième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La tradition corsaire de la côte des Barbaresques que Khayr ad-Din avait contribué à établir dura trois cents ans.",
+      "text_markdown": "La tradition corsaire de la côte des Barbaresques que Khayr ad-Din avait contribué à établir dura trois cents ans.",
+      "tts": {
+        "text": "La tradition corsaire de la côte des Barbaresques que Khayr ad Din avait contribué à établir dura trois cents ans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il fallut la puissance combinée de la France et de la Grande-Bretagne pour y mettre fin.",
+      "text_markdown": "Il fallut la puissance combinée de la France et de la Grande-Bretagne pour y mettre fin.",
+      "tts": {
+        "text": "Il fallut la puissance combinée de la France et de la Grande Bretagne pour y mettre fin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din mourut comme il avait vécu : au service de l'État ottoman.",
+      "text_markdown": "Khayr ad-Din mourut comme il avait vécu : au service de l'État ottoman.",
+      "tts": {
+        "text": "Khayr ad Din mourut comme il avait vécu : au service de l'État ottoman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il avait commencé comme fils d'un potier sur une île grecque.",
+      "text_markdown": "Il avait commencé comme fils d'un potier sur une île grecque.",
+      "tts": {
+        "text": "Il avait commencé comme fils d'un potier sur une île grecque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il finit par devenir l'amiral le plus célébré de toute l'histoire ottomane.",
+      "text_markdown": "Il finit par devenir l'amiral le plus célébré de toute l'histoire ottomane.",
+      "tts": {
+        "text": "Il finit par devenir l'amiral le plus célébré de toute l'histoire ottomane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "La fin",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son parcours de Lesbos à la charge de Grand Amiral est l'une des carrières les plus remarquables de l'histoire navale.",
+      "text_markdown": "Son parcours de Lesbos à la charge de Grand Amiral est l'une des carrières les plus remarquables de l'histoire navale.",
+      "tts": {
+        "text": "Son parcours de Lesbos à la charge de Grand Amiral est l'une des carrières les plus remarquables de l'histoire navale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "L'héritage",
+      "text_markdown": "L'héritage"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khayr ad-Din Barberousse transforma l'Empire ottoman d'une puissance terrestre en une superpuissance navale.",
+      "text_markdown": "Khayr ad-Din Barberousse transforma l'Empire ottoman d'une puissance terrestre en une superpuissance navale.",
+      "tts": {
+        "text": "Khayr ad Din Barberousse transforma l'Empire ottoman d'une puissance terrestre en une superpuissance navale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avant sa carrière, les Ottomans étaient redoutables sur terre mais marginaux en mer.",
+      "text_markdown": "Avant sa carrière, les Ottomans étaient redoutables sur terre mais marginaux en mer.",
+      "tts": {
+        "text": "Avant sa carrière, les Ottomans étaient redoutables sur terre mais marginaux en mer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Après sa carrière, la marine ottomane contrôla la Méditerranée pendant des générations.",
+      "text_markdown": "Après sa carrière, la marine ottomane contrôla la Méditerranée pendant des générations.",
+      "tts": {
+        "text": "Après sa carrière, la marine ottomane contrôla la Méditerranée pendant des générations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cette transformation compte parmi les réalisations militaires les plus significatives du seizième siècle.",
+      "text_markdown": "Cette transformation compte parmi les réalisations militaires les plus significatives du seizième siècle.",
+      "tts": {
+        "text": "Cette transformation compte parmi les réalisations militaires les plus significatives du seizième siècle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sa victoire à Prévéza est étudiée dans les académies navales du monde entier encore aujourd'hui.",
+      "text_markdown": "Sa victoire à Prévéza est étudiée dans les académies navales du monde entier encore aujourd'hui.",
+      "tts": {
+        "text": "Sa victoire à Prévéza est étudiée dans les académies navales du monde entier encore aujourd'hui.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elle montre comment un commandement et des tactiques supérieurs peuvent surmonter un désavantage numérique.",
+      "text_markdown": "Elle montre comment un commandement et des tactiques supérieurs peuvent surmonter un désavantage numérique.",
+      "tts": {
+        "text": "Elle montre comment un commandement et des tactiques supérieurs peuvent surmonter un désavantage numérique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La bataille démontra qu'une flotte bien coordonnée pouvait vaincre une flotte plus grande mais mal commandée.",
+      "text_markdown": "La bataille démontra qu'une flotte bien coordonnée pouvait vaincre une flotte plus grande mais mal commandée.",
+      "tts": {
+        "text": "La bataille démontra qu'une flotte bien coordonnée pouvait vaincre une flotte plus grande mais mal commandée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elle reste un exemple de manuel de stratégie navale cinq siècles plus tard.",
+      "text_markdown": "Elle reste un exemple de manuel de stratégie navale cinq siècles plus tard.",
+      "tts": {
+        "text": "Elle reste un exemple de manuel de stratégie navale cinq siècles plus tard.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'impact de Khayr ad-Din sur l'Afrique du Nord fut tout aussi profond.",
+      "text_markdown": "L'impact de Khayr ad-Din sur l'Afrique du Nord fut tout aussi profond.",
+      "tts": {
+        "text": "L'impact de Khayr ad Din sur l'Afrique du Nord fut tout aussi profond.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En plaçant Alger et d'autres villes sous la domination ottomane, il créa une structure politique qui dura des siècles.",
+      "text_markdown": "En plaçant Alger et d'autres villes sous la domination ottomane, il créa une structure politique qui dura des siècles.",
+      "tts": {
+        "text": "En plaçant Alger et d'autres villes sous la domination ottomane, il créa une structure politique qui dura des siècles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La population de ces villes fut façonnée par sa politique d'accueil des réfugiés d'Espagne.",
+      "text_markdown": "La population de ces villes fut façonnée par sa politique d'accueil des réfugiés d'Espagne.",
+      "tts": {
+        "text": "La population de ces villes fut façonnée par sa politique d'accueil des réfugiés d'Espagne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Le mélange culturel d'influences berbères, arabes, turques et andalouses qui définit le Maghreb aujourd'hui a ses racines dans le monde que Khayr ad-Din a contribué à créer.",
+      "text_markdown": "Le mélange culturel d'influences berbères, arabes, turques et andalouses qui définit le Maghreb aujourd'hui a ses racines dans le monde que Khayr ad-Din a contribué à créer.",
+      "tts": {
+        "text": "Le mélange culturel d'influences berbères, arabes, turques et andalouses qui définit le Maghreb aujourd'hui a ses racines dans le monde que Khayr ad Din a contribué à créer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Turquie, Khayr ad-Din Barberousse est un héros national.",
+      "text_markdown": "En Turquie, Khayr ad-Din Barberousse est un héros national.",
+      "tts": {
+        "text": "En Turquie, Khayr ad Din Barberousse est un héros national.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La marine turque a donné son nom à son premier sous-marin.",
+      "text_markdown": "La marine turque a donné son nom à son premier sous-marin.",
+      "tts": {
+        "text": "La marine turque a donné son nom à son premier sous marin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Son image apparaît sur des monuments, des timbres et des monnaies.",
+      "text_markdown": "Son image apparaît sur des monuments, des timbres et des monnaies.",
+      "tts": {
+        "text": "Son image apparaît sur des monuments, des timbres et des monnaies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chaque écolier turc apprend son nom et son histoire.",
+      "text_markdown": "Chaque écolier turc apprend son nom et son histoire.",
+      "tts": {
+        "text": "Chaque écolier turc apprend son nom et son histoire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans la mémoire historique européenne, Barberousse est une figure plus complexe.",
+      "text_markdown": "Dans la mémoire historique européenne, Barberousse est une figure plus complexe.",
+      "tts": {
+        "text": "Dans la mémoire historique européenne, Barberousse est une figure plus complexe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pour les Espagnols et les Italiens de son époque, il était un ennemi redouté et un pillard impitoyable.",
+      "text_markdown": "Pour les Espagnols et les Italiens de son époque, il était un ennemi redouté et un pillard impitoyable.",
+      "tts": {
+        "text": "Pour les Espagnols et les Italiens de son époque, il était un ennemi redouté et un pillard impitoyable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pour les Français, il était un allié inattendu contre leur rival espagnol commun.",
+      "text_markdown": "Pour les Français, il était un allié inattendu contre leur rival espagnol commun.",
+      "tts": {
+        "text": "Pour les Français, il était un allié inattendu contre leur rival espagnol commun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son héritage en Europe reflète la nature divisée et contestée de l'histoire méditerranéenne.",
+      "text_markdown": "Son héritage en Europe reflète la nature divisée et contestée de l'histoire méditerranéenne.",
+      "tts": {
+        "text": "Son héritage en Europe reflète la nature divisée et contestée de l'histoire méditerranéenne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les historiens débattent de la question de savoir si Khayr ad-Din devrait même être qualifié de pirate.",
+      "text_markdown": "Les historiens débattent de la question de savoir si Khayr ad-Din devrait même être qualifié de pirate.",
+      "tts": {
+        "text": "Les historiens débattent de la question de savoir si Khayr ad Din devrait même être qualifié de pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Il opéra avec l'autorité explicite du sultan ottoman pendant la majeure partie de sa carrière.",
+      "text_markdown": "Il opéra avec l'autorité explicite du sultan ottoman pendant la majeure partie de sa carrière.",
+      "tts": {
+        "text": "Il opéra avec l'autorité explicite du sultan ottoman pendant la majeure partie de sa carrière.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ses activités de corsaire étaient une forme reconnue de guerre navale dans la Méditerranée du seizième siècle.",
+      "text_markdown": "Ses activités de corsaire étaient une forme reconnue de guerre navale dans la Méditerranée du seizième siècle.",
+      "tts": {
+        "text": "Ses activités de corsaire étaient une forme reconnue de guerre navale dans la Méditerranée du seizième siècle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La frontière entre piraterie et guerre navale parrainée par l'État était floue, et Khayr ad-Din vécut des deux côtés.",
+      "text_markdown": "La frontière entre piraterie et guerre navale parrainée par l'État était floue, et Khayr ad-Din vécut des deux côtés.",
+      "tts": {
+        "text": "La frontière entre piraterie et guerre navale parrainée par l'État était floue, et Khayr ad Din vécut des deux côtés.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce qui est incontestable, c'est l'ampleur de sa réalisation.",
+      "text_markdown": "Ce qui est incontestable, c'est l'ampleur de sa réalisation.",
+      "tts": {
+        "text": "Ce qui est incontestable, c'est l'ampleur de sa réalisation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un fils de potier d'une île grecque a bâti la marine la plus puissante de la Méditerranée.",
+      "text_markdown": "Un fils de potier d'une île grecque a bâti la marine la plus puissante de la Méditerranée.",
+      "tts": {
+        "text": "Un fils de potier d'une île grecque a bâti la marine la plus puissante de la Méditerranée.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Il vainquit les flottes combinées des plus puissants États chrétiens d'Europe.",
+      "text_markdown": "Il vainquit les flottes combinées des plus puissants États chrétiens d'Europe.",
+      "tts": {
+        "text": "Il vainquit les flottes combinées des plus puissants États chrétiens d'Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Il gouverna une grande ville, façonna la politique d'un continent et mourut honoré par l'empire le plus puissant du monde.",
+      "text_markdown": "Il gouverna une grande ville, façonna la politique d'un continent et mourut honoré par l'empire le plus puissant du monde.",
+      "tts": {
+        "text": "Il gouverna une grande ville, façonna la politique d'un continent et mourut honoré par l'empire le plus puissant du monde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "L'héritage",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sa vie témoigne de ce que l'ambition, le talent et l'opportunité peuvent produire lorsqu'ils se rencontrent au bon moment de l'histoire.",
+      "text_markdown": "Sa vie témoigne de ce que l'ambition, le talent et l'opportunité peuvent produire lorsqu'ils se rencontrent au bon moment de l'histoire.",
+      "tts": {
+        "text": "Sa vie témoigne de ce que l'ambition, le talent et l'opportunité peuvent produire lorsqu'ils se rencontrent au bon moment de l'histoire.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "ko",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "id": "ch01-001",
+      "block_type": "heading",
+      "chapter": 1,
+      "text": "모든 것은 원자로 이루어져 있어요",
+      "text_markdown": "모든 것은 원자로 이루어져 있어요",
+      "title": "모든 것은 원자로 이루어져 있어요"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-002",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "주위를 둘러보세요.",
+      "text_markdown": "주위를 둘러보세요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "주위를 둘러보세요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "id": "ch01-003",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "눈에 보이는 모든 것은 원자로 이루어져 있어요.",
+      "text_markdown": "눈에 보이는 모든 것은 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "눈에 보이는 모든 것은 원자로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "id": "ch01-004",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분이 숨 쉬는 공기도 원자로 이루어져 있어요.",
+      "text_markdown": "여러분이 숨 쉬는 공기도 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분이 숨 쉬는 공기도 원자로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "id": "ch01-005",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분이 마시는 물도 원자로 이루어져 있어요.",
+      "text_markdown": "여러분이 마시는 물도 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분이 마시는 물도 원자로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p2",
+      "id": "ch01-006",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분의 몸도 원자로 이루어져 있어요.",
+      "text_markdown": "여러분의 몸도 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분의 몸도 원자로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p2",
+      "id": "ch01-007",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분의 발 아래 땅도 원자로 이루어져 있어요.",
+      "text_markdown": "여러분의 발 아래 땅도 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분의 발 아래 땅도 원자로 이루어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-008",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자는 화학적 성질을 유지하는 가장 작은 물질 조각이에요.",
+      "text_markdown": "원자는 화학적 성질을 유지하는 가장 작은 물질 조각이에요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자는 화학적 성질을 유지하는 가장 작은 물질 조각이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p3",
+      "id": "ch01-009",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "맨눈으로는 원자 하나를 볼 수 없어요.",
+      "text_markdown": "맨눈으로는 원자 하나를 볼 수 없어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "맨눈으로는 원자 하나를 볼 수 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p3",
+      "id": "ch01-010",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "보통 현미경으로도 원자 하나를 볼 수 없어요.",
+      "text_markdown": "보통 현미경으로도 원자 하나를 볼 수 없어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "보통 현미경으로도 원자 하나를 볼 수 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p3",
+      "id": "ch01-011",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자는 그만큼 작아요.",
+      "text_markdown": "원자는 그만큼 작아요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자는 그만큼 작아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "id": "ch01-012",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "모래알 하나에는 약 오십해 개의 원자가 들어 있어요.",
+      "text_markdown": "모래알 하나에는 약 오십해 개의 원자가 들어 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "모래알 하나에는 약 오십해 개의 원자가 들어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p4",
+      "id": "ch01-013",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "그 숫자는 오십 뒤에 영이 열여덟 개 붙은 거예요.",
+      "text_markdown": "그 숫자는 오십 뒤에 영이 열여덟 개 붙은 거예요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "그 숫자는 오십 뒤에 영이 열여덟 개 붙은 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p4",
+      "id": "ch01-014",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "모래알 하나에 있는 원자의 수가 해변에 있는 모래알의 수보다 더 많아요.",
+      "text_markdown": "모래알 하나에 있는 원자의 수가 해변에 있는 모래알의 수보다 더 많아요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "모래알 하나에 있는 원자의 수가 해변에 있는 모래알의 수보다 더 많아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-015",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자는 물질 세계에 있는 모든 것의 기본 구성 요소예요.",
+      "text_markdown": "원자는 물질 세계에 있는 모든 것의 기본 구성 요소예요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자는 물질 세계에 있는 모든 것의 기본 구성 요소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "id": "ch01-016",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "벽은 벽돌로 만들어져요.",
+      "text_markdown": "벽은 벽돌로 만들어져요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "벽은 벽돌로 만들어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "id": "ch01-017",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "문장은 단어로 이루어져요.",
+      "text_markdown": "문장은 단어로 이루어져요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "문장은 단어로 이루어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p5",
+      "id": "ch01-018",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "우주는 원자로 이루어져 있어요.",
+      "text_markdown": "우주는 원자로 이루어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "우주는 원자로 이루어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-019",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자라는 말은 고대 그리스어에서 왔어요.",
+      "text_markdown": "원자라는 말은 고대 그리스어에서 왔어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자라는 말은 고대 그리스어에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "id": "ch01-020",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "그리스어 아토모스는 '쪼갤 수 없다'라는 뜻이에요.",
+      "text_markdown": "그리스어 아토모스는 '쪼갤 수 없다'라는 뜻이에요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "그리스어 아토모스는 '쪼갤 수 없다'라는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "id": "ch01-021",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "고대 그리스 철학자들은 원자가 물질의 가장 작은 조각이라고 생각했어요.",
+      "text_markdown": "고대 그리스 철학자들은 원자가 물질의 가장 작은 조각이라고 생각했어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "고대 그리스 철학자들은 원자가 물질의 가장 작은 조각이라고 생각했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "id": "ch01-022",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "그들의 생각은 거의 맞았어요.",
+      "text_markdown": "그들의 생각은 거의 맞았어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "그들의 생각은 거의 맞았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "id": "ch01-023",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자가 진짜 가장 작은 입자는 아니지만, 화학적 성질을 유지하는 가장 작은 단위예요.",
+      "text_markdown": "원자가 진짜 가장 작은 입자는 아니지만, 화학적 성질을 유지하는 가장 작은 단위예요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자가 진짜 가장 작은 입자는 아니지만, 화학적 성질을 유지하는 가장 작은 단위예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-024",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자는 놀라울 정도로 튼튼해요.",
+      "text_markdown": "원자는 놀라울 정도로 튼튼해요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자는 놀라울 정도로 튼튼해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "id": "ch01-025",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분 몸속의 원자들은 수십억 년이나 되었어요.",
+      "text_markdown": "여러분 몸속의 원자들은 수십억 년이나 되었어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분 몸속의 원자들은 수십억 년이나 되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "id": "ch01-026",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "오늘 여러분이 마신 물속 수소 원자 중 일부는 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+      "text_markdown": "오늘 여러분이 마신 물속 수소 원자 중 일부는 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "오늘 여러분이 마신 물속 수소 원자 중 일부는 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "id": "ch01-027",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "여러분은 아주 오래된 물질로 만들어져 있어요.",
+      "text_markdown": "여러분은 아주 오래된 물질로 만들어져 있어요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "여러분은 아주 오래된 물질로 만들어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-028",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "일상생활에서 원자는 만들어지거나 사라지지 않아요.",
+      "text_markdown": "일상생활에서 원자는 만들어지거나 사라지지 않아요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "일상생활에서 원자는 만들어지거나 사라지지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "id": "ch01-029",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자들은 재배열될 뿐이에요.",
+      "text_markdown": "원자들은 재배열될 뿐이에요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자들은 재배열될 뿐이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p8",
+      "id": "ch01-030",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "나무가 탈 때, 원자들은 사라지지 않아요.",
+      "text_markdown": "나무가 탈 때, 원자들은 사라지지 않아요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "나무가 탈 때, 원자들은 사라지지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p8",
+      "id": "ch01-031",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자들은 연기, 재, 기체로 재배열돼요.",
+      "text_markdown": "원자들은 연기, 재, 기체로 재배열돼요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자들은 연기, 재, 기체로 재배열돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p8",
+      "id": "ch01-032",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "얼음이 녹을 때, 원자들은 그대로예요.",
+      "text_markdown": "얼음이 녹을 때, 원자들은 그대로예요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "얼음이 녹을 때, 원자들은 그대로예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p8",
+      "id": "ch01-033",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "배열만 달라질 뿐이에요.",
+      "text_markdown": "배열만 달라질 뿐이에요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "배열만 달라질 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "id": "ch01-034",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "원자를 이해하는 것은 화학의 기초예요.",
+      "text_markdown": "원자를 이해하는 것은 화학의 기초예요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "원자를 이해하는 것은 화학의 기초예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "id": "ch01-035",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "화학은 원자가 어떻게 결합하고, 재배열되고, 상호작용하는지 연구하는 과학이에요.",
+      "text_markdown": "화학은 원자가 어떻게 결합하고, 재배열되고, 상호작용하는지 연구하는 과학이에요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "화학은 원자가 어떻게 결합하고, 재배열되고, 상호작용하는지 연구하는 과학이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "id": "ch01-036",
+      "block_type": "text",
+      "chapter": 1,
+      "text": "물질 세계에서 일어나는 모든 일은 결국 원자와 원자가 하는 일로 귀결돼요.",
+      "text_markdown": "물질 세계에서 일어나는 모든 일은 결국 원자와 원자가 하는 일로 귀결돼요.",
+      "title": "모든 것은 원자로 이루어져 있어요",
+      "tts": {
+        "text": "물질 세계에서 일어나는 모든 일은 결국 원자와 원자가 하는 일로 귀결돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "heading_level": 1,
+      "id": "ch02-037",
+      "block_type": "heading",
+      "chapter": 2,
+      "text": "원자의 내부",
+      "text_markdown": "원자의 내부",
+      "title": "원자의 내부"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-038",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자 안에는 세 종류의 입자가 있어요.",
+      "text_markdown": "원자 안에는 세 종류의 입자가 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자 안에는 세 종류의 입자가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p11",
+      "id": "ch02-039",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자.",
+      "text_markdown": "양성자.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p11",
+      "id": "ch02-040",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자.",
+      "text_markdown": "중성자.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p11",
+      "id": "ch02-041",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자.",
+      "text_markdown": "전자.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p11",
+      "id": "ch02-042",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "이 세 가지 입자가 우주의 모든 원자를 이루고 있어요.",
+      "text_markdown": "이 세 가지 입자가 우주의 모든 원자를 이루고 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "이 세 가지 입자가 우주의 모든 원자를 이루고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "id": "ch02-043",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자의 중심부를 원자핵이라고 해요.",
+      "text_markdown": "원자의 중심부를 원자핵이라고 해요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자의 중심부를 원자핵이라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p12",
+      "id": "ch02-044",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자핵에는 양성자와 중성자가 들어 있어요.",
+      "text_markdown": "원자핵에는 양성자와 중성자가 들어 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자핵에는 양성자와 중성자가 들어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p12",
+      "id": "ch02-045",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자핵은 원자 전체에 비해 아주 작아요.",
+      "text_markdown": "원자핵은 원자 전체에 비해 아주 작아요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자핵은 원자 전체에 비해 아주 작아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p12",
+      "id": "ch02-046",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "만약 원자가 축구 경기장만큼 크다면, 원자핵은 경기장 한가운데 놓인 구슬 하나 정도 크기일 거예요.",
+      "text_markdown": "만약 원자가 축구 경기장만큼 크다면, 원자핵은 경기장 한가운데 놓인 구슬 하나 정도 크기일 거예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "만약 원자가 축구 경기장만큼 크다면, 원자핵은 경기장 한가운데 놓인 구슬 하나 정도 크기일 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-047",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자는 양의 전하를 띠어요.",
+      "text_markdown": "양성자는 양의 전하를 띠어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자는 양의 전하를 띠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p13",
+      "id": "ch02-048",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "모든 양성자는 같은 양의 양전하를 가지고 있어요.",
+      "text_markdown": "모든 양성자는 같은 양의 양전하를 가지고 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "모든 양성자는 같은 양의 양전하를 가지고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p13",
+      "id": "ch02-049",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자 안에 있는 양성자의 수가 그 원자가 어떤 원소인지 결정해요.",
+      "text_markdown": "원자 안에 있는 양성자의 수가 그 원자가 어떤 원소인지 결정해요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자 안에 있는 양성자의 수가 그 원자가 어떤 원소인지 결정해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p13",
+      "id": "ch02-050",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자가 하나면 수소예요.",
+      "text_markdown": "양성자가 하나면 수소예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자가 하나면 수소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p13",
+      "id": "ch02-051",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자가 여섯 개면 탄소예요.",
+      "text_markdown": "양성자가 여섯 개면 탄소예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자가 여섯 개면 탄소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p13",
+      "id": "ch02-052",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자가 스물여섯 개면 철이에요.",
+      "text_markdown": "양성자가 스물여섯 개면 철이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자가 스물여섯 개면 철이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p13",
+      "id": "ch02-053",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자의 수는 원자에 대해 가장 중요한 사실이에요.",
+      "text_markdown": "양성자의 수는 원자에 대해 가장 중요한 사실이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자의 수는 원자에 대해 가장 중요한 사실이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-054",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자는 전하를 띠지 않아요.",
+      "text_markdown": "중성자는 전하를 띠지 않아요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자는 전하를 띠지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "id": "ch02-055",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자는 중성이에요.",
+      "text_markdown": "중성자는 중성이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자는 중성이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p14",
+      "id": "ch02-056",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자는 원자핵 안에서 양성자 옆에 자리 잡고 있어요.",
+      "text_markdown": "중성자는 원자핵 안에서 양성자 옆에 자리 잡고 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자는 원자핵 안에서 양성자 옆에 자리 잡고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p14",
+      "id": "ch02-057",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자는 원자핵이 함께 붙어 있도록 도와줘요.",
+      "text_markdown": "중성자는 원자핵이 함께 붙어 있도록 도와줘요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자는 원자핵이 함께 붙어 있도록 도와줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p14",
+      "id": "ch02-058",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성자가 없으면, 양성자들은 모두 같은 양전하를 띠고 있기 때문에 서로 밀어내요.",
+      "text_markdown": "중성자가 없으면, 양성자들은 모두 같은 양전하를 띠고 있기 때문에 서로 밀어내요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성자가 없으면, 양성자들은 모두 같은 양전하를 띠고 있기 때문에 서로 밀어내요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-059",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자는 음의 전하를 띠어요.",
+      "text_markdown": "전자는 음의 전하를 띠어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자는 음의 전하를 띠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "id": "ch02-060",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자는 원자핵 주위를 구름처럼 돌아다녀요.",
+      "text_markdown": "전자는 원자핵 주위를 구름처럼 돌아다녀요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자는 원자핵 주위를 구름처럼 돌아다녀요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p15",
+      "id": "ch02-061",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자는 행성이 태양 주위를 도는 것처럼 궤도를 따라 돌지 않아요.",
+      "text_markdown": "전자는 행성이 태양 주위를 도는 것처럼 궤도를 따라 돌지 않아요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자는 행성이 태양 주위를 도는 것처럼 궤도를 따라 돌지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p15",
+      "id": "ch02-062",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자는 원자핵 주위에 흐릿한 확률 영역에 존재해요.",
+      "text_markdown": "전자는 원자핵 주위에 흐릿한 확률 영역에 존재해요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자는 원자핵 주위에 흐릿한 확률 영역에 존재해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p15",
+      "id": "ch02-063",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자 구름은 어느 순간에든 전자를 발견할 가능성이 있는 영역이에요.",
+      "text_markdown": "전자 구름은 어느 순간에든 전자를 발견할 가능성이 있는 영역이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자 구름은 어느 순간에든 전자를 발견할 가능성이 있는 영역이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "id": "ch02-064",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자는 양성자나 중성자에 비해 질량이 거의 없어요.",
+      "text_markdown": "전자는 양성자나 중성자에 비해 질량이 거의 없어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자는 양성자나 중성자에 비해 질량이 거의 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p16",
+      "id": "ch02-065",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양성자는 전자보다 약 1,836배 무거워요.",
+      "text_markdown": "양성자는 전자보다 약 1,836배 무거워요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양성자는 전자보다 약 천팔백삼십육 배 무거워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p16",
+      "id": "ch02-066",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자의 질량은 거의 대부분 원자핵에 있어요.",
+      "text_markdown": "원자의 질량은 거의 대부분 원자핵에 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자의 질량은 거의 대부분 원자핵에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-067",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "중성 원자에서는 전자의 수가 양성자의 수와 같아요.",
+      "text_markdown": "중성 원자에서는 전자의 수가 양성자의 수와 같아요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "중성 원자에서는 전자의 수가 양성자의 수와 같아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "id": "ch02-068",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "양전하와 음전하가 균형을 이루어요.",
+      "text_markdown": "양전하와 음전하가 균형을 이루어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "양전하와 음전하가 균형을 이루어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "id": "ch02-069",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자는 전체적으로 전하가 없어요.",
+      "text_markdown": "원자는 전체적으로 전하가 없어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자는 전체적으로 전하가 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "id": "ch02-070",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "이 균형이 원자의 기본 상태예요.",
+      "text_markdown": "이 균형이 원자의 기본 상태예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "이 균형이 원자의 기본 상태예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-071",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자의 대부분은 빈 공간이에요.",
+      "text_markdown": "원자의 대부분은 빈 공간이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자의 대부분은 빈 공간이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "id": "ch02-072",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "원자핵은 밀도가 높고 아주 작아요.",
+      "text_markdown": "원자핵은 밀도가 높고 아주 작아요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "원자핵은 밀도가 높고 아주 작아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "id": "ch02-073",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "전자 구름은 크지만 대부분 비어 있어요.",
+      "text_markdown": "전자 구름은 크지만 대부분 비어 있어요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "전자 구름은 크지만 대부분 비어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p18",
+      "id": "ch02-074",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "만약 여러분 몸속 모든 원자에서 빈 공간을 없앤다면, 여러분은 소금 알갱이보다 더 작게 줄어들 거예요.",
+      "text_markdown": "만약 여러분 몸속 모든 원자에서 빈 공간을 없앤다면, 여러분은 소금 알갱이보다 더 작게 줄어들 거예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "만약 여러분 몸속 모든 원자에서 빈 공간을 없앤다면, 여러분은 소금 알갱이보다 더 작게 줄어들 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p18",
+      "id": "ch02-075",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "여러분의 질량은 그대로일 거예요.",
+      "text_markdown": "여러분의 질량은 그대로일 거예요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "여러분의 질량은 그대로일 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p18",
+      "id": "ch02-076",
+      "block_type": "text",
+      "chapter": 2,
+      "text": "그냥 엄청나게 밀도가 높아질 뿐이에요.",
+      "text_markdown": "그냥 엄청나게 밀도가 높아질 뿐이에요.",
+      "title": "원자의 내부",
+      "tts": {
+        "text": "그냥 엄청나게 밀도가 높아질 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "heading_level": 1,
+      "id": "ch03-077",
+      "block_type": "heading",
+      "chapter": 3,
+      "text": "원소",
+      "text_markdown": "원소",
+      "title": "원소"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-078",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "원소는 한 종류의 원자로만 이루어진 물질이에요.",
+      "text_markdown": "원소는 한 종류의 원자로만 이루어진 물질이에요.",
+      "title": "원소",
+      "tts": {
+        "text": "원소는 한 종류의 원자로만 이루어진 물질이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "id": "ch03-079",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "순금은 원소예요.",
+      "text_markdown": "순금은 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "순금은 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "id": "ch03-080",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "순금 막대의 모든 원자에는 양성자가 일흔아홉 개 있어요.",
+      "text_markdown": "순금 막대의 모든 원자에는 양성자가 일흔아홉 개 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "순금 막대의 모든 원자에는 양성자가 일흔아홉 개 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p20",
+      "id": "ch03-081",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "순수한 산소는 원소예요.",
+      "text_markdown": "순수한 산소는 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "순수한 산소는 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p20",
+      "id": "ch03-082",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "순수한 산소 탱크의 모든 원자에는 양성자가 여덟 개 있어요.",
+      "text_markdown": "순수한 산소 탱크의 모든 원자에는 양성자가 여덟 개 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "순수한 산소 탱크의 모든 원자에는 양성자가 여덟 개 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "id": "ch03-083",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "지구에는 자연적으로 존재하는 원소가 약 아흔두 가지 있어요.",
+      "text_markdown": "지구에는 자연적으로 존재하는 원소가 약 아흔두 가지 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "지구에는 자연적으로 존재하는 원소가 약 아흔두 가지 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "id": "ch03-084",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "과학자들은 실험실에서 추가 원소를 만들었어요.",
+      "text_markdown": "과학자들은 실험실에서 추가 원소를 만들었어요.",
+      "title": "원소",
+      "tts": {
+        "text": "과학자들은 실험실에서 추가 원소를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "id": "ch03-085",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "알려진 원소의 총 수는 백열여덟 개가 넘어요.",
+      "text_markdown": "알려진 원소의 총 수는 백열여덟 개가 넘어요.",
+      "title": "원소",
+      "tts": {
+        "text": "알려진 원소의 총 수는 백열여덟 개가 넘어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "id": "ch03-086",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "각 원소는 고유한 양성자 수를 가지고 있어요.",
+      "text_markdown": "각 원소는 고유한 양성자 수를 가지고 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "각 원소는 고유한 양성자 수를 가지고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-087",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "모든 원소에는 이름과 기호가 있어요.",
+      "text_markdown": "모든 원소에는 이름과 기호가 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "모든 원소에는 이름과 기호가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "id": "ch03-088",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "수소는 H, 산소는 O, 탄소는 C, 철은 Fe예요.",
+      "text_markdown": "수소는 H, 산소는 O, 탄소는 C, 철은 Fe예요.",
+      "title": "원소",
+      "tts": {
+        "text": "수소는 에이치, 산소는 오, 탄소는 씨, 철은 에프 이예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "id": "ch03-089",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "금은 Au예요.",
+      "text_markdown": "금은 Au예요.",
+      "title": "원소",
+      "tts": {
+        "text": "금은 에이 유예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "id": "ch03-090",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "기호는 라틴어, 그리스어 또는 영어 이름에서 왔어요.",
+      "text_markdown": "기호는 라틴어, 그리스어 또는 영어 이름에서 왔어요.",
+      "title": "원소",
+      "tts": {
+        "text": "기호는 라틴어, 그리스어 또는 영어 이름에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "id": "ch03-091",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "Fe는 라틴어 페룸에서 왔어요.",
+      "text_markdown": "Fe는 라틴어 페룸에서 왔어요.",
+      "title": "원소",
+      "tts": {
+        "text": "에프 이는 라틴어 페룸에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p22",
+      "id": "ch03-092",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "Au는 라틴어 아우룸에서 왔어요.",
+      "text_markdown": "Au는 라틴어 아우룸에서 왔어요.",
+      "title": "원소",
+      "tts": {
+        "text": "에이 유는 라틴어 아우룸에서 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "id": "ch03-093",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "수소는 가장 간단한 원소예요.",
+      "text_markdown": "수소는 가장 간단한 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "수소는 가장 간단한 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "id": "ch03-094",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "수소 원자에는 양성자 하나와 전자 하나가 있어요.",
+      "text_markdown": "수소 원자에는 양성자 하나와 전자 하나가 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "수소 원자에는 양성자 하나와 전자 하나가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "id": "ch03-095",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "수소는 우주에서 가장 흔한 원소예요.",
+      "text_markdown": "수소는 우주에서 가장 흔한 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "수소는 우주에서 가장 흔한 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p23",
+      "id": "ch03-096",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "별은 대부분 수소로 이루어져 있어요.",
+      "text_markdown": "별은 대부분 수소로 이루어져 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "별은 대부분 수소로 이루어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-097",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "탄소는 생명의 원소예요.",
+      "text_markdown": "탄소는 생명의 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "탄소는 생명의 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p24",
+      "id": "ch03-098",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "탄소는 양성자가 여섯 개 있어요.",
+      "text_markdown": "탄소는 양성자가 여섯 개 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "탄소는 양성자가 여섯 개 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p24",
+      "id": "ch03-099",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "탄소 원자는 동시에 여러 다른 원자와 결합할 수 있어요.",
+      "text_markdown": "탄소 원자는 동시에 여러 다른 원자와 결합할 수 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "탄소 원자는 동시에 여러 다른 원자와 결합할 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p24",
+      "id": "ch03-100",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "이 능력 덕분에 탄소는 모든 생물의 기본 뼈대가 되었어요.",
+      "text_markdown": "이 능력 덕분에 탄소는 모든 생물의 기본 뼈대가 되었어요.",
+      "title": "원소",
+      "tts": {
+        "text": "이 능력 덕분에 탄소는 모든 생물의 기본 뼈대가 되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p24",
+      "id": "ch03-101",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "여러분 몸속의 모든 단백질, 모든 DNA 가닥, 모든 당 분자에는 탄소가 들어 있어요.",
+      "text_markdown": "여러분 몸속의 모든 단백질, 모든 DNA 가닥, 모든 당 분자에는 탄소가 들어 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "여러분 몸속의 모든 단백질, 모든 DNA 가닥, 모든 당 분자에는 탄소가 들어 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "id": "ch03-102",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "산소는 양성자가 여덟 개 있어요.",
+      "text_markdown": "산소는 양성자가 여덟 개 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "산소는 양성자가 여덟 개 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p25",
+      "id": "ch03-103",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "산소는 여러분이 호흡하는 원소예요.",
+      "text_markdown": "산소는 여러분이 호흡하는 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "산소는 여러분이 호흡하는 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p25",
+      "id": "ch03-104",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "여러분의 폐는 공기에서 산소를 꺼내 혈액으로 보내요.",
+      "text_markdown": "여러분의 폐는 공기에서 산소를 꺼내 혈액으로 보내요.",
+      "title": "원소",
+      "tts": {
+        "text": "여러분의 폐는 공기에서 산소를 꺼내 혈액으로 보내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p25",
+      "id": "ch03-105",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "여러분의 세포는 산소를 사용해서 음식에서 에너지를 꺼내요.",
+      "text_markdown": "여러분의 세포는 산소를 사용해서 음식에서 에너지를 꺼내요.",
+      "title": "원소",
+      "tts": {
+        "text": "여러분의 세포는 산소를 사용해서 음식에서 에너지를 꺼내요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "id": "ch03-106",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "철은 양성자가 스물여섯 개 있어요.",
+      "text_markdown": "철은 양성자가 스물여섯 개 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "철은 양성자가 스물여섯 개 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "id": "ch03-107",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "철은 여러분의 피를 빨갛게 만드는 원소예요.",
+      "text_markdown": "철은 여러분의 피를 빨갛게 만드는 원소예요.",
+      "title": "원소",
+      "tts": {
+        "text": "철은 여러분의 피를 빨갛게 만드는 원소예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "id": "ch03-108",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "철은 강철의 주요 성분이에요.",
+      "text_markdown": "철은 강철의 주요 성분이에요.",
+      "title": "원소",
+      "tts": {
+        "text": "철은 강철의 주요 성분이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "id": "ch03-109",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "지구의 핵은 대부분 철로 이루어져 있어요.",
+      "text_markdown": "지구의 핵은 대부분 철로 이루어져 있어요.",
+      "title": "원소",
+      "tts": {
+        "text": "지구의 핵은 대부분 철로 이루어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "id": "ch03-110",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "가장 가벼운 원소가 우주에서 가장 흔해요.",
+      "text_markdown": "가장 가벼운 원소가 우주에서 가장 흔해요.",
+      "title": "원소",
+      "tts": {
+        "text": "가장 가벼운 원소가 우주에서 가장 흔해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "id": "ch03-111",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "수소와 헬륨이 합쳐서 우주에 있는 전체 원자의 약 구십팔 퍼센트를 차지해요.",
+      "text_markdown": "수소와 헬륨이 합쳐서 우주에 있는 전체 원자의 약 구십팔 퍼센트를 차지해요.",
+      "title": "원소",
+      "tts": {
+        "text": "수소와 헬륨이 합쳐서 우주에 있는 전체 원자의 약 구십팔 퍼센트를 차지해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p27",
+      "id": "ch03-112",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "무거운 원소들은 그에 비하면 드물어요.",
+      "text_markdown": "무거운 원소들은 그에 비하면 드물어요.",
+      "title": "원소",
+      "tts": {
+        "text": "무거운 원소들은 그에 비하면 드물어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p27",
+      "id": "ch03-113",
+      "block_type": "text",
+      "chapter": 3,
+      "text": "무거운 원소의 원자 하나하나는 모두 별 내부에서 만들어졌어요.",
+      "text_markdown": "무거운 원소의 원자 하나하나는 모두 별 내부에서 만들어졌어요.",
+      "title": "원소",
+      "tts": {
+        "text": "무거운 원소의 원자 하나하나는 모두 별 내부에서 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "heading_level": 1,
+      "id": "ch04-114",
+      "block_type": "heading",
+      "chapter": 4,
+      "text": "주기율표",
+      "text_markdown": "주기율표",
+      "title": "주기율표"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-115",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "주기율표는 알려진 모든 원소를 정리한 표예요.",
+      "text_markdown": "주기율표는 알려진 모든 원소를 정리한 표예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "주기율표는 알려진 모든 원소를 정리한 표예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p29",
+      "id": "ch04-116",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "이 표는 양성자 수가 적은 것부터 많은 것 순서로 원소를 배열해요.",
+      "text_markdown": "이 표는 양성자 수가 적은 것부터 많은 것 순서로 원소를 배열해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "이 표는 양성자 수가 적은 것부터 많은 것 순서로 원소를 배열해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p29",
+      "id": "ch04-117",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "수소가 양성자 하나로 첫 번째예요.",
+      "text_markdown": "수소가 양성자 하나로 첫 번째예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "수소가 양성자 하나로 첫 번째예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p29",
+      "id": "ch04-118",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "헬륨이 양성자 두 개로 두 번째예요.",
+      "text_markdown": "헬륨이 양성자 두 개로 두 번째예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "헬륨이 양성자 두 개로 두 번째예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p29",
+      "id": "ch04-119",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "이 표는 양성자 백열여덟 개를 가진 오가네손까지 이어져요.",
+      "text_markdown": "이 표는 양성자 백열여덟 개를 가진 오가네손까지 이어져요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "이 표는 양성자 백열여덟 개를 가진 오가네손까지 이어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-120",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "주기율표에는 행과 열이 있어요.",
+      "text_markdown": "주기율표에는 행과 열이 있어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "주기율표에는 행과 열이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p30",
+      "id": "ch04-121",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "행은 주기라고 해요.",
+      "text_markdown": "행은 주기라고 해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "행은 주기라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p30",
+      "id": "ch04-122",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "열은 족이라고 해요.",
+      "text_markdown": "열은 족이라고 해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "열은 족이라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p30",
+      "id": "ch04-123",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "같은 족에 있는 원소들은 비슷한 성질을 공유해요.",
+      "text_markdown": "같은 족에 있는 원소들은 비슷한 성질을 공유해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "같은 족에 있는 원소들은 비슷한 성질을 공유해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p30",
+      "id": "ch04-124",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "그래서 이 표를 '주기'율표라고 부르는 거예요.",
+      "text_markdown": "그래서 이 표를 '주기'율표라고 부르는 거예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "그래서 이 표를 '주기'율표라고 부르는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p30",
+      "id": "ch04-125",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "성질이 규칙적인 패턴으로 반복돼요.",
+      "text_markdown": "성질이 규칙적인 패턴으로 반복돼요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "성질이 규칙적인 패턴으로 반복돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-126",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "표의 왼쪽에 있는 원소들은 금속이에요.",
+      "text_markdown": "표의 왼쪽에 있는 원소들은 금속이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "표의 왼쪽에 있는 원소들은 금속이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p31",
+      "id": "ch04-127",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "대부분의 원소는 금속이에요.",
+      "text_markdown": "대부분의 원소는 금속이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "대부분의 원소는 금속이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p31",
+      "id": "ch04-128",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "금속은 반짝여요.",
+      "text_markdown": "금속은 반짝여요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "금속은 반짝여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p31",
+      "id": "ch04-129",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "금속은 전기를 전달해요.",
+      "text_markdown": "금속은 전기를 전달해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "금속은 전기를 전달해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p31",
+      "id": "ch04-130",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "금속은 열을 전달해요.",
+      "text_markdown": "금속은 열을 전달해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "금속은 열을 전달해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p31",
+      "id": "ch04-131",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "철, 구리, 금, 알루미늄은 모두 금속이에요.",
+      "text_markdown": "철, 구리, 금, 알루미늄은 모두 금속이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "철, 구리, 금, 알루미늄은 모두 금속이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "id": "ch04-132",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "표의 오른쪽에 있는 원소들은 비금속이에요.",
+      "text_markdown": "표의 오른쪽에 있는 원소들은 비금속이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "표의 오른쪽에 있는 원소들은 비금속이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "id": "ch04-133",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비금속에는 산소, 질소, 탄소, 황이 포함돼요.",
+      "text_markdown": "비금속에는 산소, 질소, 탄소, 황이 포함돼요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비금속에는 산소, 질소, 탄소, 황이 포함돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "id": "ch04-134",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비금속은 전기를 잘 전달하지 못해요.",
+      "text_markdown": "비금속은 전기를 잘 전달하지 못해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비금속은 전기를 잘 전달하지 못해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "id": "ch04-135",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비금속은 공기, 물, 생물을 이루는 원소예요.",
+      "text_markdown": "비금속은 공기, 물, 생물을 이루는 원소예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비금속은 공기, 물, 생물을 이루는 원소예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-136",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "몇몇 원소는 금속과 비금속의 경계에 위치해요.",
+      "text_markdown": "몇몇 원소는 금속과 비금속의 경계에 위치해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "몇몇 원소는 금속과 비금속의 경계에 위치해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "id": "ch04-137",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "이런 원소들을 준금속이라고 해요.",
+      "text_markdown": "이런 원소들을 준금속이라고 해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "이런 원소들을 준금속이라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "id": "ch04-138",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "규소는 준금속이에요.",
+      "text_markdown": "규소는 준금속이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "규소는 준금속이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p33",
+      "id": "ch04-139",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "규소는 전기를 조금 전달하지만, 금속만큼 잘하지는 못해요.",
+      "text_markdown": "규소는 전기를 조금 전달하지만, 금속만큼 잘하지는 못해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "규소는 전기를 조금 전달하지만, 금속만큼 잘하지는 못해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p33",
+      "id": "ch04-140",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "이 성질 덕분에 규소는 컴퓨터 칩에 유용해요.",
+      "text_markdown": "이 성질 덕분에 규소는 컴퓨터 칩에 유용해요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "이 성질 덕분에 규소는 컴퓨터 칩에 유용해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-141",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비활성 기체는 오른쪽 맨 끝 열에 있어요.",
+      "text_markdown": "비활성 기체는 오른쪽 맨 끝 열에 있어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비활성 기체는 오른쪽 맨 끝 열에 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "id": "ch04-142",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "헬륨, 네온, 아르곤, 크립톤, 제논, 라돈이 비활성 기체예요.",
+      "text_markdown": "헬륨, 네온, 아르곤, 크립톤, 제논, 라돈이 비활성 기체예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "헬륨, 네온, 아르곤, 크립톤, 제논, 라돈이 비활성 기체예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "id": "ch04-143",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비활성 기체는 다른 원소와 거의 반응하지 않아요.",
+      "text_markdown": "비활성 기체는 다른 원소와 거의 반응하지 않아요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비활성 기체는 다른 원소와 거의 반응하지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "id": "ch04-144",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비활성 기체의 전자 배치는 이미 안정적이에요.",
+      "text_markdown": "비활성 기체의 전자 배치는 이미 안정적이에요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비활성 기체의 전자 배치는 이미 안정적이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "id": "ch04-145",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "비활성 기체는 결합을 할 필요가 없어요.",
+      "text_markdown": "비활성 기체는 결합을 할 필요가 없어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "비활성 기체는 결합을 할 필요가 없어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-146",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "러시아 과학자 드미트리 멘델레예프가 1869년에 최초의 주기율표를 만들었어요.",
+      "text_markdown": "러시아 과학자 드미트리 멘델레예프가 1869년에 최초의 주기율표를 만들었어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "러시아 과학자 드미트리 멘델레예프가 천팔백육십구 년에 최초의 주기율표를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "id": "ch04-147",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "멘델레예프는 원소들을 성질에 따라 배열하고 반복되는 패턴을 발견했어요.",
+      "text_markdown": "멘델레예프는 원소들을 성질에 따라 배열하고 반복되는 패턴을 발견했어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "멘델레예프는 원소들을 성질에 따라 배열하고 반복되는 패턴을 발견했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "id": "ch04-148",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "그는 아직 발견되지 않은 원소가 있을 자리에 빈칸을 남겨 두었어요.",
+      "text_markdown": "그는 아직 발견되지 않은 원소가 있을 자리에 빈칸을 남겨 두었어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "그는 아직 발견되지 않은 원소가 있을 자리에 빈칸을 남겨 두었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p35",
+      "id": "ch04-149",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "과학자들은 나중에 그 원소들을 발견했어요.",
+      "text_markdown": "과학자들은 나중에 그 원소들을 발견했어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "과학자들은 나중에 그 원소들을 발견했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p35",
+      "id": "ch04-150",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "모든 예측이 정확했어요.",
+      "text_markdown": "모든 예측이 정확했어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "모든 예측이 정확했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "id": "ch04-151",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "주기율표는 과학에서 가장 강력한 도구 중 하나예요.",
+      "text_markdown": "주기율표는 과학에서 가장 강력한 도구 중 하나예요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "주기율표는 과학에서 가장 강력한 도구 중 하나예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "id": "ch04-152",
+      "block_type": "text",
+      "chapter": 4,
+      "text": "어떤 원소가 표의 어디에 있는지 알면, 그 원소가 어떻게 행동할지 예측할 수 있어요.",
+      "text_markdown": "어떤 원소가 표의 어디에 있는지 알면, 그 원소가 어떻게 행동할지 예측할 수 있어요.",
+      "title": "주기율표",
+      "tts": {
+        "text": "어떤 원소가 표의 어디에 있는지 알면, 그 원소가 어떻게 행동할지 예측할 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "heading_level": 1,
+      "id": "ch05-153",
+      "block_type": "heading",
+      "chapter": 5,
+      "text": "원자가 결합하는 방법",
+      "text_markdown": "원자가 결합하는 방법",
+      "title": "원자가 결합하는 방법"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-154",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "원자는 혼자 있는 경우가 드물어요.",
+      "text_markdown": "원자는 혼자 있는 경우가 드물어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "원자는 혼자 있는 경우가 드물어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "id": "ch05-155",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "대부분의 원자는 다른 원자와 결합해서 분자를 만들어요.",
+      "text_markdown": "대부분의 원자는 다른 원자와 결합해서 분자를 만들어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "대부분의 원자는 다른 원자와 결합해서 분자를 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p38",
+      "id": "ch05-156",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "분자는 화학 결합으로 붙어 있는 원자들의 모임이에요.",
+      "text_markdown": "분자는 화학 결합으로 붙어 있는 원자들의 모임이에요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "분자는 화학 결합으로 붙어 있는 원자들의 모임이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p38",
+      "id": "ch05-157",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "물은 분자예요.",
+      "text_markdown": "물은 분자예요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "물은 분자예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p38",
+      "id": "ch05-158",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "산소 기체는 분자예요.",
+      "text_markdown": "산소 기체는 분자예요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "산소 기체는 분자예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p38",
+      "id": "ch05-159",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "설탕은 분자예요.",
+      "text_markdown": "설탕은 분자예요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "설탕은 분자예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-160",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "원자는 전자 때문에 결합해요.",
+      "text_markdown": "원자는 전자 때문에 결합해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "원자는 전자 때문에 결합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "id": "ch05-161",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "원자의 가장 바깥 껍질에 있는 전자가 그 원자가 다른 원자와 어떻게 상호작용하는지 결정해요.",
+      "text_markdown": "원자의 가장 바깥 껍질에 있는 전자가 그 원자가 다른 원자와 어떻게 상호작용하는지 결정해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "원자의 가장 바깥 껍질에 있는 전자가 그 원자가 다른 원자와 어떻게 상호작용하는지 결정해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p39",
+      "id": "ch05-162",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "이 바깥쪽 전자를 원자가 전자라고 해요.",
+      "text_markdown": "이 바깥쪽 전자를 원자가 전자라고 해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이 바깥쪽 전자를 원자가 전자라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p39",
+      "id": "ch05-163",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "바깥 껍질이 가득 찬 원자는 안정적이에요.",
+      "text_markdown": "바깥 껍질이 가득 찬 원자는 안정적이에요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "바깥 껍질이 가득 찬 원자는 안정적이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p39",
+      "id": "ch05-164",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "바깥 껍질이 가득 차지 않은 원자는 그것을 채우려고 해요.",
+      "text_markdown": "바깥 껍질이 가득 차지 않은 원자는 그것을 채우려고 해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "바깥 껍질이 가득 차지 않은 원자는 그것을 채우려고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "id": "ch05-165",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "화학 결합에는 두 가지 주요 종류가 있어요.",
+      "text_markdown": "화학 결합에는 두 가지 주요 종류가 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "화학 결합에는 두 가지 주요 종류가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p40",
+      "id": "ch05-166",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "공유 결합과 이온 결합이에요.",
+      "text_markdown": "공유 결합과 이온 결합이에요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "공유 결합과 이온 결합이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-167",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "공유 결합에서는 두 원자가 전자를 공유해요.",
+      "text_markdown": "공유 결합에서는 두 원자가 전자를 공유해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "공유 결합에서는 두 원자가 전자를 공유해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p41",
+      "id": "ch05-168",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "두 원자가 각각 전자를 내놓아 전자 쌍을 공유해요.",
+      "text_markdown": "두 원자가 각각 전자를 내놓아 전자 쌍을 공유해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "두 원자가 각각 전자를 내놓아 전자 쌍을 공유해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p41",
+      "id": "ch05-169",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "공유된 전자는 두 원자핵 주위를 모두 돌아요.",
+      "text_markdown": "공유된 전자는 두 원자핵 주위를 모두 돌아요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "공유된 전자는 두 원자핵 주위를 모두 돌아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p41",
+      "id": "ch05-170",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "이 공유가 원자들을 함께 붙들어 줘요.",
+      "text_markdown": "이 공유가 원자들을 함께 붙들어 줘요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이 공유가 원자들을 함께 붙들어 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p41",
+      "id": "ch05-171",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "물은 공유 결합으로 이루어져 있어요.",
+      "text_markdown": "물은 공유 결합으로 이루어져 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "물은 공유 결합으로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p41",
+      "id": "ch05-172",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "각 수소 원자는 산소 원자와 전자 하나를 공유해요.",
+      "text_markdown": "각 수소 원자는 산소 원자와 전자 하나를 공유해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "각 수소 원자는 산소 원자와 전자 하나를 공유해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-173",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "이온 결합에서는 한 원자가 다른 원자에게 전자를 줘요.",
+      "text_markdown": "이온 결합에서는 한 원자가 다른 원자에게 전자를 줘요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이온 결합에서는 한 원자가 다른 원자에게 전자를 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "id": "ch05-174",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "전자를 잃은 원자는 양전하를 띠게 돼요.",
+      "text_markdown": "전자를 잃은 원자는 양전하를 띠게 돼요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "전자를 잃은 원자는 양전하를 띠게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p42",
+      "id": "ch05-175",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "전자를 얻은 원자는 음전하를 띠게 돼요.",
+      "text_markdown": "전자를 얻은 원자는 음전하를 띠게 돼요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "전자를 얻은 원자는 음전하를 띠게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p42",
+      "id": "ch05-176",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "반대 전하는 서로 끌어당겨요.",
+      "text_markdown": "반대 전하는 서로 끌어당겨요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "반대 전하는 서로 끌어당겨요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p42",
+      "id": "ch05-177",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "이 끌어당기는 힘이 두 원자를 함께 붙들어 줘요.",
+      "text_markdown": "이 끌어당기는 힘이 두 원자를 함께 붙들어 줘요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이 끌어당기는 힘이 두 원자를 함께 붙들어 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p42",
+      "id": "ch05-178",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "식탁 소금은 이온 결합으로 이루어져 있어요.",
+      "text_markdown": "식탁 소금은 이온 결합으로 이루어져 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "식탁 소금은 이온 결합으로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p42",
+      "id": "ch05-179",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "나트륨이 염소에게 전자를 하나 줘요.",
+      "text_markdown": "나트륨이 염소에게 전자를 하나 줘요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "나트륨이 염소에게 전자를 하나 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-180",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "물 분자에는 수소 원자 두 개와 산소 원자 하나가 들어 있어요.",
+      "text_markdown": "물 분자에는 수소 원자 두 개와 산소 원자 하나가 들어 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "물 분자에는 수소 원자 두 개와 산소 원자 하나가 들어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "id": "ch05-181",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "과학자들은 이것을 H2O라고 써요.",
+      "text_markdown": "과학자들은 이것을 H2O라고 써요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "과학자들은 이것을 에이치 투 오라고 써요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "id": "ch05-182",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "H는 수소를 뜻해요.",
+      "text_markdown": "H는 수소를 뜻해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "에이치는 수소를 뜻해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p43",
+      "id": "ch05-183",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "O는 산소를 뜻해요.",
+      "text_markdown": "O는 산소를 뜻해요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "오는 산소를 뜻해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p43",
+      "id": "ch05-184",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "숫자 2는 수소 원자가 두 개라는 뜻이에요.",
+      "text_markdown": "숫자 2는 수소 원자가 두 개라는 뜻이에요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이 숫자 이는 수소 원자가 두 개라는 뜻이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "id": "ch05-185",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "이산화탄소 분자에는 탄소 원자 하나와 산소 원자 두 개가 들어 있어요.",
+      "text_markdown": "이산화탄소 분자에는 탄소 원자 하나와 산소 원자 두 개가 들어 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "이산화탄소 분자에는 탄소 원자 하나와 산소 원자 두 개가 들어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "id": "ch05-186",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "과학자들은 이것을 CO2라고 써요.",
+      "text_markdown": "과학자들은 이것을 CO2라고 써요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "과학자들은 이것을 씨 오 투라고 써요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p44",
+      "id": "ch05-187",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "식물은 공기에서 이산화탄소를 흡수하고 그것으로 당 분자를 만들어요.",
+      "text_markdown": "식물은 공기에서 이산화탄소를 흡수하고 그것으로 당 분자를 만들어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "식물은 공기에서 이산화탄소를 흡수하고 그것으로 당 분자를 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "id": "ch05-188",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "원자 사이의 결합에는 에너지가 저장되어 있어요.",
+      "text_markdown": "원자 사이의 결합에는 에너지가 저장되어 있어요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "원자 사이의 결합에는 에너지가 저장되어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p45",
+      "id": "ch05-189",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "결합이 끊어지면 에너지가 방출돼요.",
+      "text_markdown": "결합이 끊어지면 에너지가 방출돼요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "결합이 끊어지면 에너지가 방출돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p45",
+      "id": "ch05-190",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "결합이 형성되면 에너지가 흡수돼요.",
+      "text_markdown": "결합이 형성되면 에너지가 흡수돼요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "결합이 형성되면 에너지가 흡수돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p45",
+      "id": "ch05-191",
+      "block_type": "text",
+      "chapter": 5,
+      "text": "우주의 모든 화학 반응은 오래된 결합을 끊고 새로운 결합을 만드는 과정이에요.",
+      "text_markdown": "우주의 모든 화학 반응은 오래된 결합을 끊고 새로운 결합을 만드는 과정이에요.",
+      "title": "원자가 결합하는 방법",
+      "tts": {
+        "text": "우주의 모든 화학 반응은 오래된 결합을 끊고 새로운 결합을 만드는 과정이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "heading_level": 1,
+      "id": "ch06-192",
+      "block_type": "heading",
+      "chapter": 6,
+      "text": "움직이는 원자",
+      "text_markdown": "움직이는 원자",
+      "title": "움직이는 원자"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "id": "ch06-193",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "원자는 항상 움직이고 있어요.",
+      "text_markdown": "원자는 항상 움직이고 있어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "원자는 항상 움직이고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p47",
+      "id": "ch06-194",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "절대 멈추지 않아요.",
+      "text_markdown": "절대 멈추지 않아요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "절대 멈추지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p47",
+      "id": "ch06-195",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "절대 영도보다 높은 어떤 온도에서든 원자는 진동하고, 회전하고, 공간을 이동해요.",
+      "text_markdown": "절대 영도보다 높은 어떤 온도에서든 원자는 진동하고, 회전하고, 공간을 이동해요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "절대 영도보다 높은 어떤 온도에서든 원자는 진동하고, 회전하고, 공간을 이동해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p47",
+      "id": "ch06-196",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "이 움직임이 우리가 느끼는 열이에요.",
+      "text_markdown": "이 움직임이 우리가 느끼는 열이에요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "이 움직임이 우리가 느끼는 열이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-197",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "고체에서 원자는 제자리에서 진동해요.",
+      "text_markdown": "고체에서 원자는 제자리에서 진동해요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "고체에서 원자는 제자리에서 진동해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "id": "ch06-198",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "원자들은 고정된 구조에 잠겨 있어요.",
+      "text_markdown": "원자들은 고정된 구조에 잠겨 있어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "원자들은 고정된 구조에 잠겨 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "id": "ch06-199",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "앞뒤로 흔들리지만 자기 자리를 떠나지는 않아요.",
+      "text_markdown": "앞뒤로 흔들리지만 자기 자리를 떠나지는 않아요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "앞뒤로 흔들리지만 자기 자리를 떠나지는 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p48",
+      "id": "ch06-200",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "그래서 고체는 모양을 유지해요.",
+      "text_markdown": "그래서 고체는 모양을 유지해요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "그래서 고체는 모양을 유지해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p48",
+      "id": "ch06-201",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "얼음 덩어리 속 원자들은 진동하지만, 단단한 결정 패턴 안에 머물러 있어요.",
+      "text_markdown": "얼음 덩어리 속 원자들은 진동하지만, 단단한 결정 패턴 안에 머물러 있어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "얼음 덩어리 속 원자들은 진동하지만, 단단한 결정 패턴 안에 머물러 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-202",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "액체에서 원자는 더 자유롭게 움직여요.",
+      "text_markdown": "액체에서 원자는 더 자유롭게 움직여요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "액체에서 원자는 더 자유롭게 움직여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "id": "ch06-203",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "원자들은 서로를 지나쳐 미끄러져요.",
+      "text_markdown": "원자들은 서로를 지나쳐 미끄러져요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "원자들은 서로를 지나쳐 미끄러져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "id": "ch06-204",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "가까이 붙어 있지만, 자리에 고정되어 있지는 않아요.",
+      "text_markdown": "가까이 붙어 있지만, 자리에 고정되어 있지는 않아요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "가까이 붙어 있지만, 자리에 고정되어 있지는 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "id": "ch06-205",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "그래서 액체는 흘러요.",
+      "text_markdown": "그래서 액체는 흘러요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "그래서 액체는 흘러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "id": "ch06-206",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "물 한 컵 속 원자들은 끊임없이 움직이고 재배열되지만, 서로 가까이 있어요.",
+      "text_markdown": "물 한 컵 속 원자들은 끊임없이 움직이고 재배열되지만, 서로 가까이 있어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "물 한 컵 속 원자들은 끊임없이 움직이고 재배열되지만, 서로 가까이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-207",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "기체에서 원자는 빠르게 움직이고 흩어져요.",
+      "text_markdown": "기체에서 원자는 빠르게 움직이고 흩어져요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "기체에서 원자는 빠르게 움직이고 흩어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "id": "ch06-208",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "다른 원자나 벽에 부딪힐 때까지 직선으로 날아가요.",
+      "text_markdown": "다른 원자나 벽에 부딪힐 때까지 직선으로 날아가요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "다른 원자나 벽에 부딪힐 때까지 직선으로 날아가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "id": "ch06-209",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "서로 부딪히면 튕겨 나가며 방향이 바뀌어요.",
+      "text_markdown": "서로 부딪히면 튕겨 나가며 방향이 바뀌어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "서로 부딪히면 튕겨 나가며 방향이 바뀌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p50",
+      "id": "ch06-210",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "그래서 기체는 어떤 용기에 넣든 그 용기를 가득 채워요.",
+      "text_markdown": "그래서 기체는 어떤 용기에 넣든 그 용기를 가득 채워요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "그래서 기체는 어떤 용기에 넣든 그 용기를 가득 채워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p50",
+      "id": "ch06-211",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "방 안 공기 속 원자들은 초속 수백 미터로 모든 방향으로 쏜살같이 날아다녀요.",
+      "text_markdown": "방 안 공기 속 원자들은 초속 수백 미터로 모든 방향으로 쏜살같이 날아다녀요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "방 안 공기 속 원자들은 초속 수백 미터로 모든 방향으로 쏜살같이 날아다녀요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-212",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "온도는 원자가 얼마나 빨리 움직이는지를 나타내는 척도예요.",
+      "text_markdown": "온도는 원자가 얼마나 빨리 움직이는지를 나타내는 척도예요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "온도는 원자가 얼마나 빨리 움직이는지를 나타내는 척도예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p51",
+      "id": "ch06-213",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "뜨겁다는 것은 원자가 빨리 움직인다는 뜻이에요.",
+      "text_markdown": "뜨겁다는 것은 원자가 빨리 움직인다는 뜻이에요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "뜨겁다는 것은 원자가 빨리 움직인다는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p51",
+      "id": "ch06-214",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "차갑다는 것은 원자가 천천히 움직인다는 뜻이에요.",
+      "text_markdown": "차갑다는 것은 원자가 천천히 움직인다는 뜻이에요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "차갑다는 것은 원자가 천천히 움직인다는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p51",
+      "id": "ch06-215",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "가스레인지에서 물을 데울 때, 물 분자가 더 빨리 움직이게 하는 거예요.",
+      "text_markdown": "가스레인지에서 물을 데울 때, 물 분자가 더 빨리 움직이게 하는 거예요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "가스레인지에서 물을 데울 때, 물 분자가 더 빨리 움직이게 하는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p51",
+      "id": "ch06-216",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "분자가 충분히 빨리 움직이면, 액체를 벗어나 수증기가 돼요.",
+      "text_markdown": "분자가 충분히 빨리 움직이면, 액체를 벗어나 수증기가 돼요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "분자가 충분히 빨리 움직이면, 액체를 벗어나 수증기가 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-217",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "절대 영도는 가능한 가장 낮은 온도예요.",
+      "text_markdown": "절대 영도는 가능한 가장 낮은 온도예요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "절대 영도는 가능한 가장 낮은 온도예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p52",
+      "id": "ch06-218",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "약 영하 273도예요.",
+      "text_markdown": "약 영하 273도예요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "약 영하 이백칠십삼 도예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p52",
+      "id": "ch06-219",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "절대 영도에서 원자는 가능한 최소한의 에너지를 가져요.",
+      "text_markdown": "절대 영도에서 원자는 가능한 최소한의 에너지를 가져요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "절대 영도에서 원자는 가능한 최소한의 에너지를 가져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p52",
+      "id": "ch06-220",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "절대 영도보다 더 차가운 것은 없어요.",
+      "text_markdown": "절대 영도보다 더 차가운 것은 없어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "절대 영도보다 더 차가운 것은 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p52",
+      "id": "ch06-221",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "과학자들은 실험실에서 절대 영도에 아주 가까이 다가갔지만, 아직 정확히 도달한 사람은 없어요.",
+      "text_markdown": "과학자들은 실험실에서 절대 영도에 아주 가까이 다가갔지만, 아직 정확히 도달한 사람은 없어요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "과학자들은 실험실에서 절대 영도에 아주 가까이 다가갔지만, 아직 정확히 도달한 사람은 없어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p53",
+      "id": "ch06-222",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "압력은 원자가 표면에 부딪혀서 생겨요.",
+      "text_markdown": "압력은 원자가 표면에 부딪혀서 생겨요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "압력은 원자가 표면에 부딪혀서 생겨요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p53",
+      "id": "ch06-223",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "타이어 안의 공기가 바깥쪽으로 미는 것은 공기 분자가 타이어 안쪽 벽에 끊임없이 부딪히기 때문이에요.",
+      "text_markdown": "타이어 안의 공기가 바깥쪽으로 미는 것은 공기 분자가 타이어 안쪽 벽에 끊임없이 부딪히기 때문이에요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "타이어 안의 공기가 바깥쪽으로 미는 것은 공기 분자가 타이어 안쪽 벽에 끊임없이 부딪히기 때문이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p53",
+      "id": "ch06-224",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "분자가 더 많거나 더 빨리 움직이면 압력이 더 높아져요.",
+      "text_markdown": "분자가 더 많거나 더 빨리 움직이면 압력이 더 높아져요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "분자가 더 많거나 더 빨리 움직이면 압력이 더 높아져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p53",
+      "id": "ch06-225",
+      "block_type": "text",
+      "chapter": 6,
+      "text": "그래서 공기가 뜨거우면 타이어가 더 딱딱하게 느껴져요.",
+      "text_markdown": "그래서 공기가 뜨거우면 타이어가 더 딱딱하게 느껴져요.",
+      "title": "움직이는 원자",
+      "tts": {
+        "text": "그래서 공기가 뜨거우면 타이어가 더 딱딱하게 느껴져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p54",
+      "heading_level": 1,
+      "id": "ch07-226",
+      "block_type": "heading",
+      "chapter": 7,
+      "text": "원자는 어디서 올까요",
+      "text_markdown": "원자는 어디서 올까요",
+      "title": "원자는 어디서 올까요"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-227",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "우주에 있는 수소와 헬륨은 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+      "text_markdown": "우주에 있는 수소와 헬륨은 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "우주에 있는 수소와 헬륨은 빅뱅 직후 처음 몇 분 안에 만들어졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p55",
+      "id": "ch07-228",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "우주는 약 138억 년 전에 믿을 수 없을 만큼 뜨겁고 밀도가 높은 한 점에서 시작되었어요.",
+      "text_markdown": "우주는 약 138억 년 전에 믿을 수 없을 만큼 뜨겁고 밀도가 높은 한 점에서 시작되었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "우주는 약 백삼십팔억 년 전에 믿을 수 없을 만큼 뜨겁고 밀도가 높은 한 점에서 시작되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p55",
+      "id": "ch07-229",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "우주가 팽창하고 식으면서 양성자와 중성자가 형성되었어요.",
+      "text_markdown": "우주가 팽창하고 식으면서 양성자와 중성자가 형성되었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "우주가 팽창하고 식으면서 양성자와 중성자가 형성되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p55",
+      "id": "ch07-230",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그 양성자와 중성자가 결합해서 가장 단순한 원자핵을 만들었어요.",
+      "text_markdown": "그 양성자와 중성자가 결합해서 가장 단순한 원자핵을 만들었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그 양성자와 중성자가 결합해서 가장 단순한 원자핵을 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p55",
+      "id": "ch07-231",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "수소와 헬륨이 최초의 원소였어요.",
+      "text_markdown": "수소와 헬륨이 최초의 원소였어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "수소와 헬륨이 최초의 원소였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-232",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "수백만 년 동안 우주는 수소와 헬륨 기체 구름이었어요.",
+      "text_markdown": "수백만 년 동안 우주는 수소와 헬륨 기체 구름이었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "수백만 년 동안 우주는 수소와 헬륨 기체 구름이었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p56",
+      "id": "ch07-233",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그러다 중력이 기체를 덩어리로 모았어요.",
+      "text_markdown": "그러다 중력이 기체를 덩어리로 모았어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그러다 중력이 기체를 덩어리로 모았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p56",
+      "id": "ch07-234",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "덩어리는 점점 더 밀도가 높아지고 뜨거워졌어요.",
+      "text_markdown": "덩어리는 점점 더 밀도가 높아지고 뜨거워졌어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "덩어리는 점점 더 밀도가 높아지고 뜨거워졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p56",
+      "id": "ch07-235",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "덩어리의 중심이 약 천만 도에 이르렀을 때, 핵융합이 시작되었어요.",
+      "text_markdown": "덩어리의 중심이 약 천만 도에 이르렀을 때, 핵융합이 시작되었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "덩어리의 중심이 약 천만 도에 이르렀을 때, 핵융합이 시작되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p56",
+      "id": "ch07-236",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "별이 태어난 거예요.",
+      "text_markdown": "별이 태어난 거예요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "별이 태어난 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-237",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "별은 원자 공장이에요.",
+      "text_markdown": "별은 원자 공장이에요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "별은 원자 공장이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p57",
+      "id": "ch07-238",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "별 내부에서 수소 원자가 융합하여 헬륨을 만들어요.",
+      "text_markdown": "별 내부에서 수소 원자가 융합하여 헬륨을 만들어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "별 내부에서 수소 원자가 융합하여 헬륨을 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p57",
+      "id": "ch07-239",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "이 핵융합은 엄청난 에너지를 방출해요.",
+      "text_markdown": "이 핵융합은 엄청난 에너지를 방출해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "이 핵융합은 엄청난 에너지를 방출해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p57",
+      "id": "ch07-240",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그 에너지가 별을 빛나게 하는 거예요.",
+      "text_markdown": "그 에너지가 별을 빛나게 하는 거예요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그 에너지가 별을 빛나게 하는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p57",
+      "id": "ch07-241",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "우리 태양은 매초 약 육억 톤의 수소를 헬륨으로 융합해요.",
+      "text_markdown": "우리 태양은 매초 약 육억 톤의 수소를 헬륨으로 융합해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "우리 태양은 매초 약 육억 톤의 수소를 헬륨으로 융합해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-242",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "더 큰 별은 더 무거운 원소를 융합해요.",
+      "text_markdown": "더 큰 별은 더 무거운 원소를 융합해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "더 큰 별은 더 무거운 원소를 융합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p58",
+      "id": "ch07-243",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "별이 수소를 다 태우면, 헬륨을 탄소로 융합하기 시작해요.",
+      "text_markdown": "별이 수소를 다 태우면, 헬륨을 탄소로 융합하기 시작해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "별이 수소를 다 태우면, 헬륨을 탄소로 융합하기 시작해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p58",
+      "id": "ch07-244",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그다음에는 탄소를 산소로 융합해요.",
+      "text_markdown": "그다음에는 탄소를 산소로 융합해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그다음에는 탄소를 산소로 융합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p58",
+      "id": "ch07-245",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그다음에는 산소를 규소로 융합해요.",
+      "text_markdown": "그다음에는 산소를 규소로 융합해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그다음에는 산소를 규소로 융합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p58",
+      "id": "ch07-246",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그다음에는 규소를 철로 융합해요.",
+      "text_markdown": "그다음에는 규소를 철로 융합해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그다음에는 규소를 철로 융합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p58",
+      "id": "ch07-247",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "각 단계마다 더 무거운 원소가 만들어져요.",
+      "text_markdown": "각 단계마다 더 무거운 원소가 만들어져요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "각 단계마다 더 무거운 원소가 만들어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p58",
+      "id": "ch07-248",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "철은 별이 보통의 핵융합으로 만들 수 있는 가장 무거운 원소예요.",
+      "text_markdown": "철은 별이 보통의 핵융합으로 만들 수 있는 가장 무거운 원소예요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "철은 별이 보통의 핵융합으로 만들 수 있는 가장 무거운 원소예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p59",
+      "id": "ch07-249",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "철보다 무거운 원소는 거대한 별이 폭발할 때 만들어져요.",
+      "text_markdown": "철보다 무거운 원소는 거대한 별이 폭발할 때 만들어져요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "철보다 무거운 원소는 거대한 별이 폭발할 때 만들어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p59",
+      "id": "ch07-250",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "이 폭발을 초신성이라고 해요.",
+      "text_markdown": "이 폭발을 초신성이라고 해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "이 폭발을 초신성이라고 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p59",
+      "id": "ch07-251",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "초신성은 단 몇 초 만에 태양이 평생 동안 만들어 낼 에너지보다 더 많은 에너지를 방출해요.",
+      "text_markdown": "초신성은 단 몇 초 만에 태양이 평생 동안 만들어 낼 에너지보다 더 많은 에너지를 방출해요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "초신성은 단 몇 초 만에 태양이 평생 동안 만들어 낼 에너지보다 더 많은 에너지를 방출해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p59",
+      "id": "ch07-252",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "초신성의 극한 조건에서 금, 은, 백금, 우라늄 같은 원소가 만들어져요.",
+      "text_markdown": "초신성의 극한 조건에서 금, 은, 백금, 우라늄 같은 원소가 만들어져요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "초신성의 극한 조건에서 금, 은, 백금, 우라늄 같은 원소가 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p60",
+      "id": "ch07-253",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "폭발은 이런 무거운 원소들을 우주 곳곳에 흩뿌려요.",
+      "text_markdown": "폭발은 이런 무거운 원소들을 우주 곳곳에 흩뿌려요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "폭발은 이런 무거운 원소들을 우주 곳곳에 흩뿌려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p60",
+      "id": "ch07-254",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "그 원소들은 수소와 헬륨 기체 구름과 섞여요.",
+      "text_markdown": "그 원소들은 수소와 헬륨 기체 구름과 섞여요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "그 원소들은 수소와 헬륨 기체 구름과 섞여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p60",
+      "id": "ch07-255",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "결국 중력이 풍부해진 기체를 모아 새로운 별과 행성을 만들어요.",
+      "text_markdown": "결국 중력이 풍부해진 기체를 모아 새로운 별과 행성을 만들어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "결국 중력이 풍부해진 기체를 모아 새로운 별과 행성을 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p60",
+      "id": "ch07-256",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "우리 태양계는 약 46억 년 전에 이런 풍부해진 구름에서 형성되었어요.",
+      "text_markdown": "우리 태양계는 약 46억 년 전에 이런 풍부해진 구름에서 형성되었어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "우리 태양계는 약 사십육억 년 전에 이런 풍부해진 구름에서 형성되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-257",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "여러분 몸속에서 수소보다 무거운 원자는 모두 별 내부에서 만들어졌어요.",
+      "text_markdown": "여러분 몸속에서 수소보다 무거운 원자는 모두 별 내부에서 만들어졌어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "여러분 몸속에서 수소보다 무거운 원자는 모두 별 내부에서 만들어졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p61",
+      "id": "ch07-258",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "여러분 뼈에 있는 칼슘도요.",
+      "text_markdown": "여러분 뼈에 있는 칼슘도요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "여러분 뼈에 있는 칼슘도요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p61",
+      "id": "ch07-259",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "여러분 피에 있는 철도요.",
+      "text_markdown": "여러분 피에 있는 철도요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "여러분 피에 있는 철도요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p61",
+      "id": "ch07-260",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "여러분 피부에 있는 탄소도요.",
+      "text_markdown": "여러분 피부에 있는 탄소도요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "여러분 피부에 있는 탄소도요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p61",
+      "id": "ch07-261",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "여러분은 별의 먼지로 만들어졌어요.",
+      "text_markdown": "여러분은 별의 먼지로 만들어졌어요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "여러분은 별의 먼지로 만들어졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p61",
+      "id": "ch07-262",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "이것은 비유가 아니에요.",
+      "text_markdown": "이것은 비유가 아니에요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "이것은 비유가 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p61",
+      "id": "ch07-263",
+      "block_type": "text",
+      "chapter": 7,
+      "text": "이것은 핵물리학의 사실이에요.",
+      "text_markdown": "이것은 핵물리학의 사실이에요.",
+      "title": "원자는 어디서 올까요",
+      "tts": {
+        "text": "이것은 핵물리학의 사실이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "id": "ch08-264",
+      "block_type": "heading",
+      "chapter": 8,
+      "text": "원자가 곧 모든 것이에요",
+      "text_markdown": "원자가 곧 모든 것이에요",
+      "title": "원자가 곧 모든 것이에요"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-265",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "이제 여러분은 기본을 알게 되었어요.",
+      "text_markdown": "이제 여러분은 기본을 알게 되었어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "이제 여러분은 기본을 알게 되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p63",
+      "id": "ch08-266",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "모든 것은 원자로 이루어져 있어요.",
+      "text_markdown": "모든 것은 원자로 이루어져 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "모든 것은 원자로 이루어져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p63",
+      "id": "ch08-267",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자에는 양성자, 중성자, 전자가 들어 있어요.",
+      "text_markdown": "원자에는 양성자, 중성자, 전자가 들어 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자에는 양성자, 중성자, 전자가 들어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p63",
+      "id": "ch08-268",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "양성자의 수가 원소를 결정해요.",
+      "text_markdown": "양성자의 수가 원소를 결정해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "양성자의 수가 원소를 결정해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p63",
+      "id": "ch08-269",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자가 결합하면 분자가 돼요.",
+      "text_markdown": "원자가 결합하면 분자가 돼요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자가 결합하면 분자가 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p63",
+      "id": "ch08-270",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자는 항상 움직이고 있어요.",
+      "text_markdown": "원자는 항상 움직이고 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자는 항상 움직이고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p63",
+      "id": "ch08-271",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "별이 우리 세상을 이루는 원자를 만들었어요.",
+      "text_markdown": "별이 우리 세상을 이루는 원자를 만들었어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "별이 우리 세상을 이루는 원자를 만들었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p64",
+      "id": "ch08-272",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "이 지식은 화학, 생물학, 물리학, 의학의 기초예요.",
+      "text_markdown": "이 지식은 화학, 생물학, 물리학, 의학의 기초예요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "이 지식은 화학, 생물학, 물리학, 의학의 기초예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p64",
+      "id": "ch08-273",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "모든 과학 분야는 원자로 이어져요.",
+      "text_markdown": "모든 과학 분야는 원자로 이어져요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "모든 과학 분야는 원자로 이어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p65",
+      "id": "ch08-274",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "의사가 약을 처방할 때, 그 약은 여러분 몸속 분자와 상호작용하도록 설계된 특정한 원자 배열이에요.",
+      "text_markdown": "의사가 약을 처방할 때, 그 약은 여러분 몸속 분자와 상호작용하도록 설계된 특정한 원자 배열이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "의사가 약을 처방할 때, 그 약은 여러분 몸속 분자와 상호작용하도록 설계된 특정한 원자 배열이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p65",
+      "id": "ch08-275",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "공학자가 다리를 지을 때, 그 다리의 강도는 강철 속 철 원자가 어떻게 배열되어 있느냐에 달려 있어요.",
+      "text_markdown": "공학자가 다리를 지을 때, 그 다리의 강도는 강철 속 철 원자가 어떻게 배열되어 있느냐에 달려 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "공학자가 다리를 지을 때, 그 다리의 강도는 강철 속 철 원자가 어떻게 배열되어 있느냐에 달려 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p65",
+      "id": "ch08-276",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "농부가 작물을 기를 때, 작물은 공기 중의 탄소 원자가 잎 속에서 물과 햇빛과 결합하기 때문에 자라요.",
+      "text_markdown": "농부가 작물을 기를 때, 작물은 공기 중의 탄소 원자가 잎 속에서 물과 햇빛과 결합하기 때문에 자라요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "농부가 작물을 기를 때, 작물은 공기 중의 탄소 원자가 잎 속에서 물과 햇빛과 결합하기 때문에 자라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-277",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "요리는 화학이에요.",
+      "text_markdown": "요리는 화학이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "요리는 화학이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p66",
+      "id": "ch08-278",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "빵을 구울 때, 열이 반죽 속 원자를 재배열시켜요.",
+      "text_markdown": "빵을 구울 때, 열이 반죽 속 원자를 재배열시켜요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "빵을 구울 때, 열이 반죽 속 원자를 재배열시켜요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p66",
+      "id": "ch08-279",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "단백질이 펼쳐져요.",
+      "text_markdown": "단백질이 펼쳐져요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "단백질이 펼쳐져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p66",
+      "id": "ch08-280",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "당이 분해되고 다시 결합해요.",
+      "text_markdown": "당이 분해되고 다시 결합해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "당이 분해되고 다시 결합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p66",
+      "id": "ch08-281",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "새로운 분자가 만들어져서 빵 껍질의 색깔, 질감, 맛을 만들어요.",
+      "text_markdown": "새로운 분자가 만들어져서 빵 껍질의 색깔, 질감, 맛을 만들어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "새로운 분자가 만들어져서 빵 껍질의 색깔, 질감, 맛을 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p66",
+      "id": "ch08-282",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "모든 요리법은 원자를 재배열하는 지침이에요.",
+      "text_markdown": "모든 요리법은 원자를 재배열하는 지침이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "모든 요리법은 원자를 재배열하는 지침이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-283",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "호흡도 화학이에요.",
+      "text_markdown": "호흡도 화학이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "호흡도 화학이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p67",
+      "id": "ch08-284",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "여러분은 산소 분자를 들이마셔요.",
+      "text_markdown": "여러분은 산소 분자를 들이마셔요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "여러분은 산소 분자를 들이마셔요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p67",
+      "id": "ch08-285",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "혈액이 그 분자들을 세포로 운반해요.",
+      "text_markdown": "혈액이 그 분자들을 세포로 운반해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "혈액이 그 분자들을 세포로 운반해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p67",
+      "id": "ch08-286",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "세포 안에서 산소 원자가 음식에서 온 탄소 원자와 결합해요.",
+      "text_markdown": "세포 안에서 산소 원자가 음식에서 온 탄소 원자와 결합해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "세포 안에서 산소 원자가 음식에서 온 탄소 원자와 결합해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p67",
+      "id": "ch08-287",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "그 반응이 에너지를 방출해요.",
+      "text_markdown": "그 반응이 에너지를 방출해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "그 반응이 에너지를 방출해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p67",
+      "id": "ch08-288",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "여러분은 탄소와 산소를 이산화탄소로 내쉬어요.",
+      "text_markdown": "여러분은 탄소와 산소를 이산화탄소로 내쉬어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "여러분은 탄소와 산소를 이산화탄소로 내쉬어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p67",
+      "id": "ch08-289",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "모든 호흡은 화학 반응이에요.",
+      "text_markdown": "모든 호흡은 화학 반응이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "모든 호흡은 화학 반응이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-290",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "녹도 화학이에요.",
+      "text_markdown": "녹도 화학이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "녹도 화학이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p68",
+      "id": "ch08-291",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "못 표면의 철 원자가 공기 중의 산소 원자와 반응해요.",
+      "text_markdown": "못 표면의 철 원자가 공기 중의 산소 원자와 반응해요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "못 표면의 철 원자가 공기 중의 산소 원자와 반응해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p68",
+      "id": "ch08-292",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "철과 산소가 결합해서 산화철이라는 새로운 물질을 만들어요.",
+      "text_markdown": "철과 산소가 결합해서 산화철이라는 새로운 물질을 만들어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "철과 산소가 결합해서 산화철이라는 새로운 물질을 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p68",
+      "id": "ch08-293",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "산화철은 우리가 녹이라고 부르는 붉은 갈색 물질이에요.",
+      "text_markdown": "산화철은 우리가 녹이라고 부르는 붉은 갈색 물질이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "산화철은 우리가 녹이라고 부르는 붉은 갈색 물질이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p68",
+      "id": "ch08-294",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "철 원자는 아직 그대로 있어요.",
+      "text_markdown": "철 원자는 아직 그대로 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "철 원자는 아직 그대로 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p68",
+      "id": "ch08-295",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "산소와 결합했을 뿐이에요.",
+      "text_markdown": "산소와 결합했을 뿐이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "산소와 결합했을 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-296",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자는 추상적인 것이 아니에요.",
+      "text_markdown": "원자는 추상적인 것이 아니에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자는 추상적인 것이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p69",
+      "id": "ch08-297",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자는 여러분이 만지고, 맛보고, 보고, 냄새 맡는 모든 것의 물리적 실체예요.",
+      "text_markdown": "원자는 여러분이 만지고, 맛보고, 보고, 냄새 맡는 모든 것의 물리적 실체예요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자는 여러분이 만지고, 맛보고, 보고, 냄새 맡는 모든 것의 물리적 실체예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p69",
+      "id": "ch08-298",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "원자를 더 많이 이해할수록 세상을 더 잘 이해하게 돼요.",
+      "text_markdown": "원자를 더 많이 이해할수록 세상을 더 잘 이해하게 돼요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "원자를 더 많이 이해할수록 세상을 더 잘 이해하게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p69",
+      "id": "ch08-299",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "이것은 시작일 뿐이에요.",
+      "text_markdown": "이것은 시작일 뿐이에요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "이것은 시작일 뿐이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p69",
+      "id": "ch08-300",
+      "block_type": "text",
+      "chapter": 8,
+      "text": "탐구할 것이 훨씬 더 많이 남아 있어요.",
+      "text_markdown": "탐구할 것이 훨씬 더 많이 남아 있어요.",
+      "title": "원자가 곧 모든 것이에요",
+      "tts": {
+        "text": "탐구할 것이 훨씬 더 많이 남아 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

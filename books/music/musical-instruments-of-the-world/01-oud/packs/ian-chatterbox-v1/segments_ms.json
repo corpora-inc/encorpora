@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "ms",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Catatan untuk Pendengar",
+      "text_markdown": "Catatan untuk Pendengar"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini buku tentang ud, alat muzik kayu bertali.",
+      "text_markdown": "Ini buku tentang ud, alat muzik kayu bertali.",
+      "tts": {
+        "text": "Ini buku tentang ud, alat muzik kayu bertali.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang sudah memainkannya lebih daripada seribu tahun.",
+      "text_markdown": "Orang sudah memainkannya lebih daripada seribu tahun.",
+      "tts": {
+        "text": "Orang sudah memainkannya lebih daripada seribu tahun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anda boleh mendengar ud di kota tepi laut dan di kampung di pergunungan.",
+      "text_markdown": "Anda boleh mendengar ud di kota tepi laut dan di kampung di pergunungan.",
+      "tts": {
+        "text": "Anda boleh mendengar ud di kota tepi laut dan di kampung di pergunungan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anda boleh mendengarnya di pentas kayu kecil dan di istana lama.",
+      "text_markdown": "Anda boleh mendengarnya di pentas kayu kecil dan di istana lama.",
+      "tts": {
+        "text": "Anda boleh mendengarnya di pentas kayu kecil dan di istana lama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dalam buku ini, kita akan belajar rupa ud, cara ia dibuat, dan siapa yang membentuk kisahnya.",
+      "text_markdown": "Dalam buku ini, kita akan belajar rupa ud, cara ia dibuat, dan siapa yang membentuk kisahnya.",
+      "tts": {
+        "text": "Dalam buku ini, kita akan belajar rupa ud, cara ia dibuat, dan siapa yang membentuk kisahnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada akhirnya, anda akan tahu mengapa ud kadang kala dipanggil raja segala alat bertali.",
+      "text_markdown": "Pada akhirnya, anda akan tahu mengapa ud kadang kala dipanggil raja segala alat bertali.",
+      "tts": {
+        "text": "Pada akhirnya, anda akan tahu mengapa ud kadang kala dipanggil raja segala alat bertali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 1 — Apakah Itu Ud?",
+      "text_markdown": "Bab 1 — Apakah Itu Ud?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud ialah alat muzik bertali.",
+      "text_markdown": "Ud ialah alat muzik bertali.",
+      "tts": {
+        "text": "Ud ialah alat muzik bertali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia sejenis lut, dengan badan seperti pir yang dibelah dua.",
+      "text_markdown": "Ia sejenis lut, dengan badan seperti pir yang dibelah dua.",
+      "tts": {
+        "text": "Ia sejenis lut, dengan badan seperti pir yang dibelah dua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahagian belakang ud bulat dan dalam, seperti mangkuk kayu.",
+      "text_markdown": "Bahagian belakang ud bulat dan dalam, seperti mangkuk kayu.",
+      "tts": {
+        "text": "Bahagian belakang ud bulat dan dalam, seperti mangkuk kayu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahagian depannya rata.",
+      "text_markdown": "Bahagian depannya rata.",
+      "tts": {
+        "text": "Bahagian depannya rata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bahagian depan yang rata itu dipanggil papan bunyi.",
+      "text_markdown": "Bahagian depan yang rata itu dipanggil papan bunyi.",
+      "tts": {
+        "text": "Bahagian depan yang rata itu dipanggil papan bunyi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leher ud pendek, dan alat ini tiada fret.",
+      "text_markdown": "Leher ud pendek, dan alat ini tiada fret.",
+      "tts": {
+        "text": "Leher ud pendek, dan alat ini tiada fret.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fret ialah garis logam kecil pada gitar.",
+      "text_markdown": "Fret ialah garis logam kecil pada gitar.",
+      "tts": {
+        "text": "Fret ialah garis logam kecil pada gitar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tanpanya, pemain boleh meluncur antara nada dengan sangat lancar.",
+      "text_markdown": "Tanpanya, pemain boleh meluncur antara nada dengan sangat lancar.",
+      "tts": {
+        "text": "Tanpanya, pemain boleh meluncur antara nada dengan sangat lancar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan ud mempunyai sebelas tali, yang dibahagikan kepada enam kurs.",
+      "text_markdown": "Kebanyakan ud mempunyai sebelas tali, yang dibahagikan kepada enam kurs.",
+      "tts": {
+        "text": "Kebanyakan ud mempunyai sebelas tali, yang dibahagikan kepada enam kurs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap kumpulan ini dipanggil satu kurs.",
+      "text_markdown": "Setiap kumpulan ini dipanggil satu kurs.",
+      "tts": {
+        "text": "Setiap kumpulan ini dipanggil satu kurs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lima kurs mempunyai dua tali yang ditala sama.",
+      "text_markdown": "Lima kurs mempunyai dua tali yang ditala sama.",
+      "tts": {
+        "text": "Lima kurs mempunyai dua tali yang ditala sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kurs keenam hanya mempunyai satu tali.",
+      "text_markdown": "Kurs keenam hanya mempunyai satu tali.",
+      "tts": {
+        "text": "Kurs keenam hanya mempunyai satu tali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Begitulah jumlahnya menjadi sebelas.",
+      "text_markdown": "Begitulah jumlahnya menjadi sebelas.",
+      "tts": {
+        "text": "Begitulah jumlahnya menjadi sebelas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pemain memegang ud di atas riba.",
+      "text_markdown": "Pemain memegang ud di atas riba.",
+      "tts": {
+        "text": "Pemain memegang ud di atas riba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Satu tangan menekan tali pada leher.",
+      "text_markdown": "Satu tangan menekan tali pada leher.",
+      "tts": {
+        "text": "Satu tangan menekan tali pada leher.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tangan yang satu lagi memetiknya dengan pemetik nipis yang dipanggil risha.",
+      "text_markdown": "Tangan yang satu lagi memetiknya dengan pemetik nipis yang dipanggil risha.",
+      "tts": {
+        "text": "Tangan yang satu lagi memetiknya dengan pemetik nipis yang dipanggil risha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunyinya hangat dan dalam.",
+      "text_markdown": "Bunyinya hangat dan dalam.",
+      "tts": {
+        "text": "Bunyinya hangat dan dalam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunyinya sedikit sedih dan sedikit manis, sekali gus.",
+      "text_markdown": "Bunyinya sedikit sedih dan sedikit manis, sekali gus.",
+      "tts": {
+        "text": "Bunyinya sedikit sedih dan sedikit manis, sekali gus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 2 — Dari Mana Nama Itu Datang",
+      "text_markdown": "Bab 2 — Dari Mana Nama Itu Datang"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nama ud ialah kata Arab yang bermaksud kayu.",
+      "text_markdown": "Nama ud ialah kata Arab yang bermaksud kayu.",
+      "tts": {
+        "text": "Nama ud ialah kata Arab yang bermaksud kayu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alat itu dinamakan sempena bahan yang membentuknya.",
+      "text_markdown": "Alat itu dinamakan sempena bahan yang membentuknya.",
+      "tts": {
+        "text": "Alat itu dinamakan sempena bahan yang membentuknya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jauh sebelum ud, ada saudara tua bernama barbat.",
+      "text_markdown": "Jauh sebelum ud, ada saudara tua bernama barbat.",
+      "tts": {
+        "text": "Jauh sebelum ud, ada saudara tua bernama barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbat dimainkan di Parsi purba lebih daripada dua ribu tahun lalu.",
+      "text_markdown": "Barbat dimainkan di Parsi purba lebih daripada dua ribu tahun lalu.",
+      "tts": {
+        "text": "Barbat dimainkan di Parsi purba lebih daripada dua ribu tahun lalu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbat mempunyai badan kayu dan tali sutera.",
+      "text_markdown": "Barbat mempunyai badan kayu dan tali sutera.",
+      "tts": {
+        "text": "Barbat mempunyai badan kayu dan tali sutera.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunyinya panjang dan lembut.",
+      "text_markdown": "Bunyinya panjang dan lembut.",
+      "tts": {
+        "text": "Bunyinya panjang dan lembut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang memainkannya di istana raja.",
+      "text_markdown": "Orang memainkannya di istana raja.",
+      "tts": {
+        "text": "Orang memainkannya di istana raja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedikit demi sedikit, barbat berubah.",
+      "text_markdown": "Sedikit demi sedikit, barbat berubah.",
+      "tts": {
+        "text": "Sedikit demi sedikit, barbat berubah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Badannya makin bulat, talinya menjadi pasangan, dan lehernya menjadi lebih pendek.",
+      "text_markdown": "Badannya makin bulat, talinya menjadi pasangan, dan lehernya menjadi lebih pendek.",
+      "tts": {
+        "text": "Badannya makin bulat, talinya menjadi pasangan, dan lehernya menjadi lebih pendek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sekitar tahun tujuh ratus, orang di alam Arab memainkan alat yang kini kita panggil ud.",
+      "text_markdown": "Sekitar tahun tujuh ratus, orang di alam Arab memainkan alat yang kini kita panggil ud.",
+      "tts": {
+        "text": "Sekitar tahun tujuh ratus, orang di alam Arab memainkan alat yang kini kita panggil ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dari situ, ud pun mengembara.",
+      "text_markdown": "Dari situ, ud pun mengembara.",
+      "tts": {
+        "text": "Dari situ, ud pun mengembara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia pergi ke Mesir dan Afrika Utara.",
+      "text_markdown": "Ia pergi ke Mesir dan Afrika Utara.",
+      "tts": {
+        "text": "Ia pergi ke Mesir dan Afrika Utara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia menyeberangi laut ke Sepanyol.",
+      "text_markdown": "Ia menyeberangi laut ke Sepanyol.",
+      "tts": {
+        "text": "Ia menyeberangi laut ke Sepanyol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia bergerak ke utara, ke Turki dan Greece.",
+      "text_markdown": "Ia bergerak ke utara, ke Turki dan Greece.",
+      "tts": {
+        "text": "Ia bergerak ke utara, ke Turki dan Greece.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Setiap tempat memberi sedikit suara sendiri kepada ud.",
+      "text_markdown": "Setiap tempat memberi sedikit suara sendiri kepada ud.",
+      "tts": {
+        "text": "Setiap tempat memberi sedikit suara sendiri kepada ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Namun namanya tetap sama.",
+      "text_markdown": "Namun namanya tetap sama.",
+      "tts": {
+        "text": "Namun namanya tetap sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ke mana pun ia pergi, alat kayu itu tetap ud.",
+      "text_markdown": "Ke mana pun ia pergi, alat kayu itu tetap ud.",
+      "tts": {
+        "text": "Ke mana pun ia pergi, alat kayu itu tetap ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 3 — Bagaimana Ud Dibuat",
+      "text_markdown": "Bab 3 — Bagaimana Ud Dibuat"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Membina ud mengambil masa yang lama.",
+      "text_markdown": "Membina ud mengambil masa yang lama.",
+      "tts": {
+        "text": "Membina ud mengambil masa yang lama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pembuat yang baik mungkin menghabiskan banyak minggu untuk satu alat.",
+      "text_markdown": "Pembuat yang baik mungkin menghabiskan banyak minggu untuk satu alat.",
+      "tts": {
+        "text": "Pembuat yang baik mungkin menghabiskan banyak minggu untuk satu alat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahagian mangkuk dibuat daripada jalur kayu nipis, biasanya antara lima belas hingga dua puluh lima jalur.",
+      "text_markdown": "Bahagian mangkuk dibuat daripada jalur kayu nipis, biasanya antara lima belas hingga dua puluh lima jalur.",
+      "tts": {
+        "text": "Bahagian mangkuk dibuat daripada jalur kayu nipis, biasanya antara lima belas hingga dua puluh lima jalur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap jalur dibengkokkan dan dilekatkan pada jalur di sebelahnya.",
+      "text_markdown": "Setiap jalur dibengkokkan dan dilekatkan pada jalur di sebelahnya.",
+      "tts": {
+        "text": "Setiap jalur dibengkokkan dan dilekatkan pada jalur di sebelahnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Semuanya membentuk belakang ud yang bulat dan dalam.",
+      "text_markdown": "Semuanya membentuk belakang ud yang bulat dan dalam.",
+      "tts": {
+        "text": "Semuanya membentuk belakang ud yang bulat dan dalam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jenis kayu itu penting.",
+      "text_markdown": "Jenis kayu itu penting.",
+      "tts": {
+        "text": "Jenis kayu itu penting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayu walnut memberi bunyi hangat, mahogani memberi bunyi lebih gelap, dan mulberi memberi bunyi cerah yang berdering.",
+      "text_markdown": "Kayu walnut memberi bunyi hangat, mahogani memberi bunyi lebih gelap, dan mulberi memberi bunyi cerah yang berdering.",
+      "tts": {
+        "text": "Kayu walnat memberi bunyi hangat, mahogani memberi bunyi lebih gelap, dan mulberi memberi bunyi cerah yang berdering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pembuat memilih kayu mengikut suara yang diinginkannya.",
+      "text_markdown": "Pembuat memilih kayu mengikut suara yang diinginkannya.",
+      "tts": {
+        "text": "Pembuat memilih kayu mengikut suara yang diinginkannya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahagian depan yang rata, iaitu papan bunyi, dibuat daripada sprus.",
+      "text_markdown": "Bahagian depan yang rata, iaitu papan bunyi, dibuat daripada sprus.",
+      "tts": {
+        "text": "Bahagian depan yang rata, iaitu papan bunyi, dibuat daripada sprus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sprus ringan dan kuat, dan ia membolehkan kayu bergetar dengan mudah.",
+      "text_markdown": "Sprus ringan dan kuat, dan ia membolehkan kayu bergetar dengan mudah.",
+      "tts": {
+        "text": "Sprus ringan dan kuat, dan ia membolehkan kayu bergetar dengan mudah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Getaran itulah yang kita dengar sebagai muzik.",
+      "text_markdown": "Getaran itulah yang kita dengar sebagai muzik.",
+      "tts": {
+        "text": "Getaran itulah yang kita dengar sebagai muzik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada papan bunyi ada lubang bulat kecil yang dipanggil roset.",
+      "text_markdown": "Pada papan bunyi ada lubang bulat kecil yang dipanggil roset.",
+      "tts": {
+        "text": "Pada papan bunyi ada lubang bulat kecil yang dipanggil roset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lubang itu sering diukir dengan corak yang indah.",
+      "text_markdown": "Lubang itu sering diukir dengan corak yang indah.",
+      "tts": {
+        "text": "Lubang itu sering diukir dengan corak yang indah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roset membiarkan bunyi keluar dari mangkuk.",
+      "text_markdown": "Roset membiarkan bunyi keluar dari mangkuk.",
+      "tts": {
+        "text": "Roset membiarkan bunyi keluar dari mangkuk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dulu, tali dibuat daripada gut, iaitu urat haiwan kering.",
+      "text_markdown": "Dulu, tali dibuat daripada gut, iaitu urat haiwan kering.",
+      "tts": {
+        "text": "Dulu, tali dibuat daripada urat haiwan kering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hari ini, kebanyakan tali dibuat daripada nilon, dengan dawai logam nipis melilit tali paling rendah.",
+      "text_markdown": "Hari ini, kebanyakan tali dibuat daripada nilon, dengan dawai logam nipis melilit tali paling rendah.",
+      "tts": {
+        "text": "Hari ini, kebanyakan tali dibuat daripada nilon, dengan dawai logam nipis melilit tali paling rendah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pemain memetik tali dengan risha.",
+      "text_markdown": "Pemain memetik tali dengan risha.",
+      "tts": {
+        "text": "Pemain memetik tali dengan risha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kata risha bermaksud bulu.",
+      "text_markdown": "Kata risha bermaksud bulu.",
+      "tts": {
+        "text": "Kata risha bermaksud bulu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plektrum yang terawal dibuat daripada bulu helang.",
+      "text_markdown": "Plektrum yang terawal dibuat daripada bulu helang.",
+      "tts": {
+        "text": "Plektrum yang terawal dibuat daripada bulu helang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hari ini, ia dibuat daripada plastik, tulang, atau cangkerang kura kura.",
+      "text_markdown": "Hari ini, ia dibuat daripada plastik, tulang, atau cangkerang kura kura.",
+      "tts": {
+        "text": "Hari ini, ia dibuat daripada plastik, tulang, atau cangkerang kura kura.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 4 — Di Mana Ud Dimainkan",
+      "text_markdown": "Bab 4 — Di Mana Ud Dimainkan"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud dimainkan di seluruh alam Arab.",
+      "text_markdown": "Ud dimainkan di seluruh alam Arab.",
+      "tts": {
+        "text": "Ud dimainkan di seluruh alam Arab.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anda akan mendengarnya di Mesir, Syria, Iraq, Lubnan, rantau Teluk, dan Afrika Utara.",
+      "text_markdown": "Anda akan mendengarnya di Mesir, Syria, Iraq, Lubnan, rantau Teluk, dan Afrika Utara.",
+      "tts": {
+        "text": "Anda akan mendengarnya di Mesir, Syria, Iraq, Lubnan, rantau Teluk, dan Afrika Utara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia juga dimainkan di luar alam Arab.",
+      "text_markdown": "Ia juga dimainkan di luar alam Arab.",
+      "tts": {
+        "text": "Ia juga dimainkan di luar alam Arab.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Turki mempunyai ud mereka sendiri.",
+      "text_markdown": "Orang Turki mempunyai ud mereka sendiri.",
+      "tts": {
+        "text": "Orang Turki mempunyai ud mereka sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang Yunani mempunyai ud mereka sendiri.",
+      "text_markdown": "Orang Yunani mempunyai ud mereka sendiri.",
+      "tts": {
+        "text": "Orang Yunani mempunyai ud mereka sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Orang Armenia dan orang Iran memainkan saudaranya.",
+      "text_markdown": "Orang Armenia dan orang Iran memainkan saudaranya.",
+      "tts": {
+        "text": "Orang Armenia dan orang Iran memainkan saudaranya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Di Sepanyol, alat ini dimainkan selama ratusan tahun.",
+      "text_markdown": "Di Sepanyol, alat ini dimainkan selama ratusan tahun.",
+      "tts": {
+        "text": "Di Sepanyol, alat ini dimainkan selama ratusan tahun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hari ini ada tiga jenis utama ud.",
+      "text_markdown": "Hari ini ada tiga jenis utama ud.",
+      "tts": {
+        "text": "Hari ini ada tiga jenis utama ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ud Arab besar dan dalam, dengan bunyi penuh dan perlahan.",
+      "text_markdown": "Ud Arab besar dan dalam, dengan bunyi penuh dan perlahan.",
+      "tts": {
+        "text": "Ud Arab besar dan dalam, dengan bunyi penuh dan perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Itulah ud Mesir dan rantau Syam.",
+      "text_markdown": "Itulah ud Mesir dan rantau Syam.",
+      "tts": {
+        "text": "Itulah ud Mesir dan rantau Syam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud Turki lebih kecil dan lebih cerah, serta ditala sedikit lebih tinggi daripada ud Arab.",
+      "text_markdown": "Ud Turki lebih kecil dan lebih cerah, serta ditala sedikit lebih tinggi daripada ud Arab.",
+      "tts": {
+        "text": "Ud Turki lebih kecil dan lebih cerah, serta ditala sedikit lebih tinggi daripada ud Arab.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saudara Parsi itu dipanggil barbat.",
+      "text_markdown": "Saudara Parsi itu dipanggil barbat.",
+      "tts": {
+        "text": "Saudara Parsi itu dipanggil barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alat itu kecil dan tajam, dan menggunakan set nada yang berbeza.",
+      "text_markdown": "Alat itu kecil dan tajam, dan menggunakan set nada yang berbeza.",
+      "tts": {
+        "text": "Alat itu kecil dan tajam, dan menggunakan set nada yang berbeza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud ialah jantung muzik Arab klasik dan muzik makam Turki.",
+      "text_markdown": "Ud ialah jantung muzik Arab klasik dan muzik makam Turki.",
+      "tts": {
+        "text": "Ud ialah jantung muzik Arab klasik dan muzik makam Turki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ud dimainkan di majlis perkahwinan dan pengebumian, di dewan konsert dan di ruang tamu bersama sahabat.",
+      "text_markdown": "Ud dimainkan di majlis perkahwinan dan pengebumian, di dewan konsert dan di ruang tamu bersama sahabat.",
+      "tts": {
+        "text": "Ud dimainkan di majlis perkahwinan dan pengebumian, di dewan konsert dan di ruang tamu bersama sahabat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di mana orang berkumpul dan mahu muzik yang berjiwa, seseorang mungkin mengeluarkan sebuah ud.",
+      "text_markdown": "Di mana orang berkumpul dan mahu muzik yang berjiwa, seseorang mungkin mengeluarkan sebuah ud.",
+      "tts": {
+        "text": "Di mana orang berkumpul dan mahu muzik yang berjiwa, seseorang mungkin mengeluarkan sebuah ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 5 — Maqam",
+      "text_markdown": "Bab 5 — Maqam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila anda memainkan piano, anda menekan kekunci putih dan hitam.",
+      "text_markdown": "Apabila anda memainkan piano, anda menekan kekunci putih dan hitam.",
+      "tts": {
+        "text": "Apabila anda memainkan piano, anda menekan kekunci putih dan hitam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ada dua belas nada dalam setiap oktaf, dan setiap langkah sama besar.",
+      "text_markdown": "Ada dua belas nada dalam setiap oktaf, dan setiap langkah sama besar.",
+      "tts": {
+        "text": "Ada dua belas nada dalam setiap oktaf, dan setiap langkah sama besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kita memanggilnya temperamen sama rata.",
+      "text_markdown": "Kita memanggilnya temperamen sama rata.",
+      "tts": {
+        "text": "Kita memanggilnya temperamen sama rata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud tidak berfungsi begitu.",
+      "text_markdown": "Ud tidak berfungsi begitu.",
+      "tts": {
+        "text": "Ud tidak berfungsi begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ud menggunakan sistem yang jauh lebih tua, dipanggil maqam.",
+      "text_markdown": "Ud menggunakan sistem yang jauh lebih tua, dipanggil maqam.",
+      "tts": {
+        "text": "Ud menggunakan sistem yang jauh lebih tua, dipanggil makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maqam ialah cara memilih nada, dan ada banyak maqamat.",
+      "text_markdown": "Maqam ialah cara memilih nada, dan ada banyak maqamat.",
+      "tts": {
+        "text": "Makam ialah cara memilih nada, dan ada banyak makamat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap satu ada suasananya sendiri.",
+      "text_markdown": "Setiap satu ada suasananya sendiri.",
+      "tts": {
+        "text": "Setiap satu ada suasananya sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ada yang gembira, ada yang sedih, ada yang berbunyi sedikit misteri.",
+      "text_markdown": "Ada yang gembira, ada yang sedih, ada yang berbunyi sedikit misteri.",
+      "tts": {
+        "text": "Ada yang gembira, ada yang sedih, ada yang berbunyi sedikit misteri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rahsia besar maqam ialah ia mempunyai lebih banyak nada daripada piano.",
+      "text_markdown": "Rahsia besar maqam ialah ia mempunyai lebih banyak nada daripada piano.",
+      "tts": {
+        "text": "Rahsia besar makam ialah ia mempunyai lebih banyak nada daripada piano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di antara kekunci putih dan hitam, ada langkah yang lebih kecil, yang kita panggil suku nada.",
+      "text_markdown": "Di antara kekunci putih dan hitam, ada langkah yang lebih kecil, yang kita panggil suku nada.",
+      "tts": {
+        "text": "Di antara kekunci putih dan hitam, ada langkah yang lebih kecil, yang kita panggil suku nada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suku nada ialah separuh daripada separuh langkah.",
+      "text_markdown": "Suku nada ialah separuh daripada separuh langkah.",
+      "tts": {
+        "text": "Suku nada ialah separuh daripada separuh langkah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah nada kecil yang hidup di antara nada yang anda kenal.",
+      "text_markdown": "Ia ialah nada kecil yang hidup di antara nada yang anda kenal.",
+      "tts": {
+        "text": "Ia ialah nada kecil yang hidup di antara nada yang anda kenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pada piano, anda tidak boleh memainkannya.",
+      "text_markdown": "Pada piano, anda tidak boleh memainkannya.",
+      "tts": {
+        "text": "Pada piano, anda tidak boleh memainkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada ud, anda meluncurkan jari untuk mencarinya.",
+      "text_markdown": "Pada ud, anda meluncurkan jari untuk mencarinya.",
+      "tts": {
+        "text": "Pada ud, anda meluncurkan jari untuk mencarinya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maqam dibina daripada kumpulan kecil nada.",
+      "text_markdown": "Maqam dibina daripada kumpulan kecil nada.",
+      "tts": {
+        "text": "Makam dibina daripada kumpulan kecil nada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap kumpulan kecil itu dipanggil jins.",
+      "text_markdown": "Setiap kumpulan kecil itu dipanggil jins.",
+      "tts": {
+        "text": "Setiap kumpulan kecil itu dipanggil jins.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kebanyakan ajnas mempunyai empat nada.",
+      "text_markdown": "Kebanyakan ajnas mempunyai empat nada.",
+      "tts": {
+        "text": "Kebanyakan ajnas mempunyai empat nada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bayangkan jins seperti bata Lego kecil daripada muzik, lalu anda menyusunnya untuk membina maqam.",
+      "text_markdown": "Bayangkan jins seperti bata Lego kecil daripada muzik, lalu anda menyusunnya untuk membina maqam.",
+      "tts": {
+        "text": "Bayangkan jins seperti bata Lego kecil daripada muzik, lalu anda menyusunnya untuk membina makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maqam bersifat melodi, bukan harmoni.",
+      "text_markdown": "Maqam bersifat melodi, bukan harmoni.",
+      "tts": {
+        "text": "Makam bersifat melodi, bukan harmoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maksudnya, muzik bergerak satu nada demi satu, bukan menyusun beberapa nada menjadi kord seperti gitar.",
+      "text_markdown": "Maksudnya, muzik bergerak satu nada demi satu, bukan menyusun beberapa nada menjadi kord seperti gitar.",
+      "tts": {
+        "text": "Maksudnya, muzik bergerak satu nada demi satu, bukan menyusun beberapa nada menjadi kord seperti gitar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila ud memainkan solo perlahan yang berliku, pemain sedang bergerak di dalam satu maqam.",
+      "text_markdown": "Apabila ud memainkan solo perlahan yang berliku, pemain sedang bergerak di dalam satu maqam.",
+      "tts": {
+        "text": "Apabila ud memainkan solo perlahan yang berliku, pemain sedang bergerak di dalam satu makam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka memilih nada daripada bata itu, kemudian meluncur ke bata seterusnya.",
+      "text_markdown": "Mereka memilih nada daripada bata itu, kemudian meluncur ke bata seterusnya.",
+      "tts": {
+        "text": "Mereka memilih nada daripada bata itu, kemudian meluncur ke bata seterusnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Solo itu ada namanya.",
+      "text_markdown": "Solo itu ada namanya.",
+      "tts": {
+        "text": "Solo itu ada namanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kita memanggilnya taqsim.",
+      "text_markdown": "Kita memanggilnya taqsim.",
+      "tts": {
+        "text": "Kita memanggilnya taksim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taqsim yang baik boleh membuat anda ketawa, dan boleh membuat anda menangis.",
+      "text_markdown": "Taqsim yang baik boleh membuat anda ketawa, dan boleh membuat anda menangis.",
+      "tts": {
+        "text": "Taksim yang baik boleh membuat anda ketawa, dan boleh membuat anda menangis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di situlah ud menjadi paling indah.",
+      "text_markdown": "Di situlah ud menjadi paling indah.",
+      "tts": {
+        "text": "Di situlah ud menjadi paling indah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 6 — Para Mahaguru",
+      "text_markdown": "Bab 6 — Para Mahaguru"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud telah dimainkan lebih daripada seribu tahun.",
+      "text_markdown": "Ud telah dimainkan lebih daripada seribu tahun.",
+      "tts": {
+        "text": "Ud telah dimainkan lebih daripada seribu tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dalam masa yang panjang itu, beberapa orang mengubahnya buat selama lamanya.",
+      "text_markdown": "Dalam masa yang panjang itu, beberapa orang mengubahnya buat selama lamanya.",
+      "tts": {
+        "text": "Dalam masa yang panjang itu, beberapa orang mengubahnya buat selama lamanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yang pertama lebih banyak berfikir daripada bermain, namanya al Farabi.",
+      "text_markdown": "Yang pertama lebih banyak berfikir daripada bermain, namanya al Farabi.",
+      "tts": {
+        "text": "Yang pertama lebih banyak berfikir daripada bermain, namanya al Farabi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia hidup sekitar tahun lapan ratus tujuh puluh dua hingga sembilan ratus lima puluh, dan bekerja di kota besar Baghdad.",
+      "text_markdown": "Dia hidup sekitar tahun lapan ratus tujuh puluh dua hingga sembilan ratus lima puluh, dan bekerja di kota besar Baghdad.",
+      "tts": {
+        "text": "Dia hidup sekitar tahun lapan ratus tujuh puluh dua hingga sembilan ratus lima puluh, dan bekerja di kota besar Baghdad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Farabi menulis sebuah buku besar tentang muzik.",
+      "text_markdown": "Al Farabi menulis sebuah buku besar tentang muzik.",
+      "tts": {
+        "text": "Al Farabi menulis sebuah buku besar tentang muzik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menjelaskan cara tali bergetar.",
+      "text_markdown": "Dia menjelaskan cara tali bergetar.",
+      "tts": {
+        "text": "Dia menjelaskan cara tali bergetar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menjelaskan mengapa sesetengah nada berbunyi manis bersama.",
+      "text_markdown": "Dia menjelaskan mengapa sesetengah nada berbunyi manis bersama.",
+      "tts": {
+        "text": "Dia menjelaskan mengapa sesetengah nada berbunyi manis bersama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia menjelaskan mengapa muzik boleh mengubah perasaan seseorang.",
+      "text_markdown": "Dia menjelaskan mengapa muzik boleh mengubah perasaan seseorang.",
+      "tts": {
+        "text": "Dia menjelaskan mengapa muzik boleh mengubah perasaan seseorang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bukunya dibaca dalam bahasa Arab dan Latin selama berkurun.",
+      "text_markdown": "Bukunya dibaca dalam bahasa Arab dan Latin selama berkurun.",
+      "tts": {
+        "text": "Bukunya dibaca dalam bahasa Arab dan Latin selama berkurun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tokoh besar kedua ud ialah seorang penyanyi bernama Ziryab, lahir di Iraq sekitar tahun tujuh ratus lapan puluh sembilan.",
+      "text_markdown": "Tokoh besar kedua ud ialah seorang penyanyi bernama Ziryab, lahir di Iraq sekitar tahun tujuh ratus lapan puluh sembilan.",
+      "tts": {
+        "text": "Tokoh besar kedua ud ialah seorang penyanyi bernama Ziryab, lahir di Iraq sekitar tahun tujuh ratus lapan puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ketika muda, dia terpaksa meninggalkan Baghdad dengan tergesa gesa.",
+      "text_markdown": "Ketika muda, dia terpaksa meninggalkan Baghdad dengan tergesa gesa.",
+      "tts": {
+        "text": "Ketika muda, dia terpaksa meninggalkan Baghdad dengan tergesa gesa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab mengembara ke barat merentas seluruh Afrika Utara.",
+      "text_markdown": "Ziryab mengembara ke barat merentas seluruh Afrika Utara.",
+      "tts": {
+        "text": "Ziryab mengembara ke barat merentas seluruh Afrika Utara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia tiba di kota Cordoba, di Sepanyol, pada tahun lapan ratus dua puluh dua.",
+      "text_markdown": "Dia tiba di kota Cordoba, di Sepanyol, pada tahun lapan ratus dua puluh dua.",
+      "tts": {
+        "text": "Dia tiba di kota Kordoba, di Sepanyol, pada tahun lapan ratus dua puluh dua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Raja Cordoba menyukai muziknya lalu memberinya rumah, gaji, dan masa untuk mengajar.",
+      "text_markdown": "Raja Cordoba menyukai muziknya lalu memberinya rumah, gaji, dan masa untuk mengajar.",
+      "tts": {
+        "text": "Raja Kordoba menyukai muziknya lalu memberinya rumah, gaji, dan masa untuk mengajar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Sepanyol, Ziryab membuka sekolah muzik.",
+      "text_markdown": "Di Sepanyol, Ziryab membuka sekolah muzik.",
+      "tts": {
+        "text": "Di Sepanyol, Ziryab membuka sekolah muzik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ada yang berkata itulah sekolah muzik pertama di dunia.",
+      "text_markdown": "Ada yang berkata itulah sekolah muzik pertama di dunia.",
+      "tts": {
+        "text": "Ada yang berkata itulah sekolah muzik pertama di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menambah kurs kelima pada ud, dan dia mengubah cara plektrum dibuat.",
+      "text_markdown": "Dia menambah kurs kelima pada ud, dan dia mengubah cara plektrum dibuat.",
+      "tts": {
+        "text": "Dia menambah kurs kelima pada ud, dan dia mengubah cara plektrum dibuat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lama selepas Ziryab, pada zaman kita, seorang pemain dari Iraq mengangkat ud ke tempat baharu.",
+      "text_markdown": "Lama selepas Ziryab, pada zaman kita, seorang pemain dari Iraq mengangkat ud ke tempat baharu.",
+      "tts": {
+        "text": "Lama selepas Ziryab, pada zaman kita, seorang pemain dari Iraq mengangkat ud ke tempat baharu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Namanya Munir Bashir, dan orang memanggilnya raja ud.",
+      "text_markdown": "Namanya Munir Bashir, dan orang memanggilnya raja ud.",
+      "tts": {
+        "text": "Namanya Munir Bashir, dan orang memanggilnya raja ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebelum Bashir, ud biasanya dimainkan bersama alat lain.",
+      "text_markdown": "Sebelum Bashir, ud biasanya dimainkan bersama alat lain.",
+      "tts": {
+        "text": "Sebelum Bashir, ud biasanya dimainkan bersama alat lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir membawanya ke pentas sendirian, dan dia memainkan solo yang panjang, senyap, dan dalam.",
+      "text_markdown": "Bashir membawanya ke pentas sendirian, dan dia memainkan solo yang panjang, senyap, dan dalam.",
+      "tts": {
+        "text": "Bashir membawanya ke pentas sendirian, dan dia memainkan solo yang panjang, senyap, dan dalam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang di seluruh dunia mendengarnya lalu jatuh cinta lagi pada ud.",
+      "text_markdown": "Orang di seluruh dunia mendengarnya lalu jatuh cinta lagi pada ud.",
+      "tts": {
+        "text": "Orang di seluruh dunia mendengarnya lalu jatuh cinta lagi pada ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada ramai yang lain.",
+      "text_markdown": "Ada ramai yang lain.",
+      "tts": {
+        "text": "Ada ramai yang lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al Atrash menjadikan ud suara filem Mesir.",
+      "text_markdown": "Farid al Atrash menjadikan ud suara filem Mesir.",
+      "tts": {
+        "text": "Farid al Atrash menjadikan ud suara filem Mesir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anuar Brahem dari Tunisia memainkan ud bersama para pemuzik jaz dari Amerika dan Eropah.",
+      "text_markdown": "Anuar Brahem dari Tunisia memainkan ud bersama para pemuzik jaz dari Amerika dan Eropah.",
+      "tts": {
+        "text": "Anuar Brahem dari Tunisia memainkan ud bersama para pemuzik jaz dari Amerika dan Eropah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud masih hidup.",
+      "text_markdown": "Ud masih hidup.",
+      "tts": {
+        "text": "Ud masih hidup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap tahun, seorang mahaguru baharu lahir di suatu tempat di dunia.",
+      "text_markdown": "Setiap tahun, seorang mahaguru baharu lahir di suatu tempat di dunia.",
+      "tts": {
+        "text": "Setiap tahun, seorang mahaguru baharu lahir di suatu tempat di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 7 — Ud dan Dunia",
+      "text_markdown": "Bab 7 — Ud dan Dunia"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud tidak kekal hanya di alam Arab.",
+      "text_markdown": "Ud tidak kekal hanya di alam Arab.",
+      "tts": {
+        "text": "Ud tidak kekal hanya di alam Arab.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Semasa ia mengembara, bentuknya berubah, namanya berubah, dan lagunya berubah.",
+      "text_markdown": "Semasa ia mengembara, bentuknya berubah, namanya berubah, dan lagunya berubah.",
+      "tts": {
+        "text": "Semasa ia mengembara, bentuknya berubah, namanya berubah, dan lagunya berubah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila ud sampai ke Sepanyol zaman pertengahan, pemain Eropah menyukai mangkuk kayunya dan bunyinya yang dalam.",
+      "text_markdown": "Apabila ud sampai ke Sepanyol zaman pertengahan, pemain Eropah menyukai mangkuk kayunya dan bunyinya yang dalam.",
+      "tts": {
+        "text": "Apabila ud sampai ke Sepanyol zaman pertengahan, pemain Eropah menyukai mangkuk kayunya dan bunyinya yang dalam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Namun mereka mahu fret, seperti alat kecil yang sudah mereka kenal.",
+      "text_markdown": "Namun mereka mahu fret, seperti alat kecil yang sudah mereka kenal.",
+      "tts": {
+        "text": "Namun mereka mahu fret, seperti alat kecil yang sudah mereka kenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lalu mereka menambah fret, meratakan belakangnya sedikit, dan menamakan alat baharu itu lut.",
+      "text_markdown": "Lalu mereka menambah fret, meratakan belakangnya sedikit, dan menamakan alat baharu itu lut.",
+      "tts": {
+        "text": "Lalu mereka menambah fret, meratakan belakangnya sedikit, dan menamakan alat baharu itu lut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama lima ratus tahun, lut ialah alat kegemaran Eropah.",
+      "text_markdown": "Selama lima ratus tahun, lut ialah alat kegemaran Eropah.",
+      "tts": {
+        "text": "Selama lima ratus tahun, lut ialah alat kegemaran Eropah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raja raja memainkannya.",
+      "text_markdown": "Raja raja memainkannya.",
+      "tts": {
+        "text": "Raja raja memainkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penyair memainkannya.",
+      "text_markdown": "Penyair memainkannya.",
+      "tts": {
+        "text": "Penyair memainkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Penggubah terhebat menulis karya untuknya.",
+      "text_markdown": "Penggubah terhebat menulis karya untuknya.",
+      "tts": {
+        "text": "Penggubah terhebat menulis karya untuknya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian lut berubah lagi.",
+      "text_markdown": "Kemudian lut berubah lagi.",
+      "tts": {
+        "text": "Kemudian lut berubah lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pemain menambah lebih banyak tali, meratakan belakangnya lagi, dan memberinya badan yang lebih kecil dan ringan.",
+      "text_markdown": "Pemain menambah lebih banyak tali, meratakan belakangnya lagi, dan memberinya badan yang lebih kecil dan ringan.",
+      "tts": {
+        "text": "Pemain menambah lebih banyak tali, meratakan belakangnya lagi, dan memberinya badan yang lebih kecil dan ringan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sekitar tahun seribu lapan ratus, di Sepanyol, alat baharu ini mendapat nama yang kita semua kenal.",
+      "text_markdown": "Sekitar tahun seribu lapan ratus, di Sepanyol, alat baharu ini mendapat nama yang kita semua kenal.",
+      "tts": {
+        "text": "Sekitar tahun seribu lapan ratus, di Sepanyol, alat baharu ini mendapat nama yang kita semua kenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alat itu ialah sebuah gitar.",
+      "text_markdown": "Alat itu ialah sebuah gitar.",
+      "tts": {
+        "text": "Alat itu ialah sebuah gitar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jadi, ud, lut, dan gitar ialah ahli keluarga yang sama.",
+      "text_markdown": "Jadi, ud, lut, dan gitar ialah ahli keluarga yang sama.",
+      "tts": {
+        "text": "Jadi, ud, lut, dan gitar ialah ahli keluarga yang sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka bersaudara, dan mereka berkongsi seorang datuk.",
+      "text_markdown": "Mereka bersaudara, dan mereka berkongsi seorang datuk.",
+      "tts": {
+        "text": "Mereka bersaudara, dan mereka berkongsi seorang datuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Datuk itu ialah ud.",
+      "text_markdown": "Datuk itu ialah ud.",
+      "tts": {
+        "text": "Datuk itu ialah ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hari ini, ud dan gitar bermain bersama.",
+      "text_markdown": "Hari ini, ud dan gitar bermain bersama.",
+      "tts": {
+        "text": "Hari ini, ud dan gitar bermain bersama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anouar Brahem memainkan ud bersama pemain gitar jaz.",
+      "text_markdown": "Anouar Brahem memainkan ud bersama pemain gitar jaz.",
+      "tts": {
+        "text": "Anuar Brahem memainkan ud bersama pemain gitar jaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir bermain untuk orkestra.",
+      "text_markdown": "Munir Bashir bermain untuk orkestra.",
+      "tts": {
+        "text": "Munir Bashir bermain untuk orkestra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pemain muda di Beirut, Istanbul, Paris, dan New York mencampurkan ud dengan rock, hip hop, dan muzik filem.",
+      "text_markdown": "Pemain muda di Beirut, Istanbul, Paris, dan New York mencampurkan ud dengan rock, hip hop, dan muzik filem.",
+      "tts": {
+        "text": "Pemain muda di Beirut, Istanbul, Paris, dan New York mencampurkan ud dengan rok, hip hop, dan muzik filem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud lebih daripada sekadar alat.",
+      "text_markdown": "Ud lebih daripada sekadar alat.",
+      "tts": {
+        "text": "Ud lebih daripada sekadar alat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah jambatan.",
+      "text_markdown": "Ia ialah jambatan.",
+      "tts": {
+        "text": "Ia ialah jambatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia membawa kisah dari Mesopotamia, melalui Parsi, melalui alam Arab, ke Sepanyol, ke Eropah, lalu kembali ke setiap negara di dunia.",
+      "text_markdown": "Ia membawa kisah dari Mesopotamia, melalui Parsi, melalui alam Arab, ke Sepanyol, ke Eropah, lalu kembali ke setiap negara di dunia.",
+      "tts": {
+        "text": "Ia membawa kisah dari Mesopotamia, melalui Parsi, melalui alam Arab, ke Sepanyol, ke Eropah, lalu kembali ke setiap negara di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap kali anda mendengar gitar, jauh di bawahnya, anda boleh mendengar suara ud yang lembut dan dalam.",
+      "text_markdown": "Setiap kali anda mendengar gitar, jauh di bawahnya, anda boleh mendengar suara ud yang lembut dan dalam.",
+      "tts": {
+        "text": "Setiap kali anda mendengar gitar, jauh di bawahnya, anda boleh mendengar suara ud yang lembut dan dalam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Tentang Buku Ini",
+      "text_markdown": "Tentang Buku Ini"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini jilid pertama dalam Alat Muzik Dunia.",
+      "text_markdown": "Ini jilid pertama dalam Alat Muzik Dunia.",
+      "tts": {
+        "text": "Ini jilid pertama dalam Alat Muzik Dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap buku dalam siri ini menceritakan kisah satu alat.",
+      "text_markdown": "Setiap buku dalam siri ini menceritakan kisah satu alat.",
+      "tts": {
+        "text": "Setiap buku dalam siri ini menceritakan kisah satu alat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap buku ringkas, dan setiap buku benar.",
+      "text_markdown": "Setiap buku ringkas, dan setiap buku benar.",
+      "tts": {
+        "text": "Setiap buku ringkas, dan setiap buku benar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buku seterusnya tentang sitar, lut India berleher panjang yang agung, dengan banyak tali dan suara yang dalam serta berdering.",
+      "text_markdown": "Buku seterusnya tentang sitar, lut India berleher panjang yang agung, dengan banyak tali dan suara yang dalam serta berdering.",
+      "tts": {
+        "text": "Buku seterusnya tentang sitar, lut India berleher panjang yang agung, dengan banyak tali dan suara yang dalam serta berdering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selepas sitar, kita akan ke Afrika Barat untuk kora, kemudian ke Jepun untuk shakuhachi.",
+      "text_markdown": "Selepas sitar, kita akan ke Afrika Barat untuk kora, kemudian ke Jepun untuk shakuhachi.",
+      "tts": {
+        "text": "Selepas sitar, kita akan ke Afrika Barat untuk kora, kemudian ke Jepun untuk syakuhaci.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terima kasih kerana mendengar.",
+      "text_markdown": "Terima kasih kerana mendengar.",
+      "tts": {
+        "text": "Terima kasih kerana mendengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Carilah ud, dalam talian atau di bandar anda, dan biarkan ia bermain untuk anda.",
+      "text_markdown": "Carilah ud, dalam talian atau di bandar anda, dan biarkan ia bermain untuk anda.",
+      "tts": {
+        "text": "Carilah ud, dalam talian atau di bandar anda, dan biarkan ia bermain untuk anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

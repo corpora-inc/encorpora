@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Välimeren biomi",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Välimeren biomi",
+      "text_markdown": "Välimeren biomi"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Missä tämä biomi kasvaa",
+      "text_markdown": "Missä tämä biomi kasvaa"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tervetuloa Välimeren biomiin.",
+      "text_markdown": "Tervetuloa Välimeren biomiin.",
+      "tts": {
+        "text": "Tervetuloa Välimeren biomiin.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on yksi maailman suurista biomeista.",
+      "text_markdown": "Tämä on yksi maailman suurista biomeista.",
+      "tts": {
+        "text": "Tämä on yksi maailman suurista biomeista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "text_markdown": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "tts": {
+        "text": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomi on nimetty Välimeren ympärillä olevien maiden mukaan.",
+      "text_markdown": "Välimeren biomi on nimetty Välimeren ympärillä olevien maiden mukaan.",
+      "tts": {
+        "text": "Välimeren biomi on nimetty Välimeren ympärillä olevien maiden mukaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta se ei kasva vain siellä.",
+      "text_markdown": "Mutta se ei kasva vain siellä.",
+      "tts": {
+        "text": "Mutta se ei kasva vain siellä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomi esiintyy viidessä pienessä osassa maailmaa.",
+      "text_markdown": "Välimeren biomi esiintyy viidessä pienessä osassa maailmaa.",
+      "tts": {
+        "text": "Välimeren biomi esiintyy viidessä pienessä osassa maailmaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kasvaa Välimeren ympärillä olevissa maissa, eteläisessä Euroopassa ja Pohjois Afrikan rannikolla.",
+      "text_markdown": "Se kasvaa Välimeren ympärillä olevissa maissa, eteläisessä Euroopassa ja Pohjois Afrikan rannikolla.",
+      "tts": {
+        "text": "Se kasvaa Välimeren ympärillä olevissa maissa, eteläisessä Euroopassa ja Pohjois Afrikan rannikolla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kasvaa Kaliforniassa, Pohjois Amerikan länsiosassa.",
+      "text_markdown": "Se kasvaa Kaliforniassa, Pohjois Amerikan länsiosassa.",
+      "tts": {
+        "text": "Se kasvaa Kaliforniassa, Pohjois Amerikan länsiosassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kasvaa Chilen rannikon keskiosassa, Etelä Amerikassa.",
+      "text_markdown": "Se kasvaa Chilen rannikon keskiosassa, Etelä Amerikassa.",
+      "tts": {
+        "text": "Se kasvaa Chilen rannikon keskiosassa, Etelä Amerikassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kasvaa lähellä Afrikan eteläkärkeä, Kapin ympärillä.",
+      "text_markdown": "Se kasvaa lähellä Afrikan eteläkärkeä, Kapin ympärillä.",
+      "tts": {
+        "text": "Se kasvaa lähellä Afrikan eteläkärkeä, Kapin ympärillä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kasvaa Australian lounais ja eteläosissa.",
+      "text_markdown": "Se kasvaa Australian lounais ja eteläosissa.",
+      "tts": {
+        "text": "Se kasvaa Australian lounais ja eteläosissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen näistä paikoista on kaukana muista.",
+      "text_markdown": "Jokainen näistä paikoista on kaukana muista.",
+      "tts": {
+        "text": "Jokainen näistä paikoista on kaukana muista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta ne kaikki jakavat saman erityisen sään.",
+      "text_markdown": "Mutta ne kaikki jakavat saman erityisen sään.",
+      "tts": {
+        "text": "Mutta ne kaikki jakavat saman erityisen sään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesät ovat kuumia ja kuivia, ja talvet leutoja ja sateisia.",
+      "text_markdown": "Kesät ovat kuumia ja kuivia, ja talvet leutoja ja sateisia.",
+      "tts": {
+        "text": "Kesät ovat kuumia ja kuivia, ja talvet leutoja ja sateisia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on harvinaista Maassa.",
+      "text_markdown": "Se on harvinaista Maassa.",
+      "tts": {
+        "text": "Se on harvinaista Maassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmissa biomeissa sadeaika on lämpiminä kuukausina.",
+      "text_markdown": "Useimmissa biomeissa sadeaika on lämpiminä kuukausina.",
+      "tts": {
+        "text": "Useimmissa biomeissa sadeaika on lämpiminä kuukausina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Täällä sade sen sijaan lankeaa viileinä kuukausina.",
+      "text_markdown": "Täällä sade sen sijaan lankeaa viileinä kuukausina.",
+      "tts": {
+        "text": "Täällä sade sen sijaan lankeaa viileinä kuukausina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisessa näistä viidestä paikasta on omat kasvinsa ja eläimensä.",
+      "text_markdown": "Jokaisessa näistä viidestä paikasta on omat kasvinsa ja eläimensä.",
+      "tts": {
+        "text": "Jokaisessa näistä viidestä paikasta on omat kasvinsa ja eläimensä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta muodot ovat samat.",
+      "text_markdown": "Mutta muodot ovat samat.",
+      "tts": {
+        "text": "Mutta muodot ovat samat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matalia sitkeitä pensaita, hajanaisia puita, tuoksuvia yrttejä ja paljaita kivisiä kukkuloita.",
+      "text_markdown": "Matalia sitkeitä pensaita, hajanaisia puita, tuoksuvia yrttejä ja paljaita kivisiä kukkuloita.",
+      "tts": {
+        "text": "Matalia sitkeitä pensaita, hajanaisia puita, tuoksuvia yrttejä ja paljaita kivisiä kukkuloita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun seisot Välimeren maassa kesällä, ilma tuoksuu kuivilta yrteiltä ja lämpimältä kiveltä.",
+      "text_markdown": "Kun seisot Välimeren maassa kesällä, ilma tuoksuu kuivilta yrteiltä ja lämpimältä kiveltä.",
+      "tts": {
+        "text": "Kun seisot Välimeren maassa kesällä, ilma tuoksuu kuivilta yrteiltä ja lämpimältä kiveltä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Valo on voimakas ja kullanvärinen.",
+      "text_markdown": "Valo on voimakas ja kullanvärinen.",
+      "tts": {
+        "text": "Valo on voimakas ja kullanvärinen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kukkulat ovat täynnä matalia hopeanvihreitä pensaita.",
+      "text_markdown": "Kukkulat ovat täynnä matalia hopeanvihreitä pensaita.",
+      "tts": {
+        "text": "Kukkulat ovat täynnä matalia hopeanvihreitä pensaita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on Välimeren biomi.",
+      "text_markdown": "Se on Välimeren biomi.",
+      "tts": {
+        "text": "Se on Välimeren biomi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Missä tämä biomi kasvaa",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kirkas, kuiva, tuoksuva maailma, joka kasvaa viidessä pienessä Maan kolkassa.",
+      "text_markdown": "Kirkas, kuiva, tuoksuva maailma, joka kasvaa viidessä pienessä Maan kolkassa.",
+      "tts": {
+        "text": "Kirkas, kuiva, tuoksuva maailma, joka kasvaa viidessä pienessä Maan kolkassa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Sää",
+      "text_markdown": "Sää"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sää Välimeren biomissa on epätavallinen.",
+      "text_markdown": "Sää Välimeren biomissa on epätavallinen.",
+      "tts": {
+        "text": "Sää Välimeren biomissa on epätavallinen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On kaksi selvää vuodenaikaa.",
+      "text_markdown": "On kaksi selvää vuodenaikaa.",
+      "tts": {
+        "text": "On kaksi selvää vuodenaikaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On pitkä, kuuma, kuiva kesä.",
+      "text_markdown": "On pitkä, kuuma, kuiva kesä.",
+      "tts": {
+        "text": "On pitkä, kuuma, kuiva kesä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On lyhyempi, leuto, sateinen talvi.",
+      "text_markdown": "On lyhyempi, leuto, sateinen talvi.",
+      "tts": {
+        "text": "On lyhyempi, leuto, sateinen talvi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesällä taivas on sininen viikkokausia.",
+      "text_markdown": "Kesällä taivas on sininen viikkokausia.",
+      "tts": {
+        "text": "Kesällä taivas on sininen viikkokausia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurinko paistaa voimakkaasti, ja ilma on kuivaa.",
+      "text_markdown": "Aurinko paistaa voimakkaasti, ja ilma on kuivaa.",
+      "tts": {
+        "text": "Aurinko paistaa voimakkaasti, ja ilma on kuivaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadetta ei sada juuri lainkaan moneen kuukauteen.",
+      "text_markdown": "Sadetta ei sada juuri lainkaan moneen kuukauteen.",
+      "tts": {
+        "text": "Sadetta ei sada juuri lainkaan moneen kuukauteen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesän loppuun mennessä ruoho on ruskeaa ja purot kutistuvat muutamaksi hiljaiseksi lammikoksi.",
+      "text_markdown": "Kesän loppuun mennessä ruoho on ruskeaa ja purot kutistuvat muutamaksi hiljaiseksi lammikoksi.",
+      "tts": {
+        "text": "Kesän loppuun mennessä ruoho on ruskeaa ja purot kutistuvat muutamaksi hiljaiseksi lammikoksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Syksyllä mereltä saapuvat ensimmäiset viileät tuulet.",
+      "text_markdown": "Syksyllä mereltä saapuvat ensimmäiset viileät tuulet.",
+      "tts": {
+        "text": "Syksyllä mereltä saapuvat ensimmäiset viileät tuulet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pilvet kerääntyvät, ja ensimmäiset rankkasateet putoavat kuivalle maalle.",
+      "text_markdown": "Pilvet kerääntyvät, ja ensimmäiset rankkasateet putoavat kuivalle maalle.",
+      "tts": {
+        "text": "Pilvet kerääntyvät, ja ensimmäiset rankkasateet putoavat kuivalle maalle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maa juo veden, ja ruoho muuttuu taas vihreäksi.",
+      "text_markdown": "Maa juo veden, ja ruoho muuttuu taas vihreäksi.",
+      "tts": {
+        "text": "Maa juo veden, ja ruoho muuttuu taas vihreäksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvet eivät ole kovin kylmiä.",
+      "text_markdown": "Talvet eivät ole kovin kylmiä.",
+      "tts": {
+        "text": "Talvet eivät ole kovin kylmiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lunta sataa harvoin, paitsi korkealla vuorilla.",
+      "text_markdown": "Lunta sataa harvoin, paitsi korkealla vuorilla.",
+      "tts": {
+        "text": "Lunta sataa harvoin, paitsi korkealla vuorilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sade tulee pitkinä, pehmeinä kuuroina ja joet juoksevat täysinä.",
+      "text_markdown": "Sade tulee pitkinä, pehmeinä kuuroina ja joet juoksevat täysinä.",
+      "tts": {
+        "text": "Sade tulee pitkinä, pehmeinä kuuroina ja joet juoksevat täysinä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keväällä ilma on lämmin ja kukkulat ovat vihreitä.",
+      "text_markdown": "Keväällä ilma on lämmin ja kukkulat ovat vihreitä.",
+      "tts": {
+        "text": "Keväällä ilma on lämmin ja kukkulat ovat vihreitä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muutamien lyhyiden viikkojen ajan luonnonkukat peittävät jokaisen rinteen.",
+      "text_markdown": "Muutamien lyhyiden viikkojen ajan luonnonkukat peittävät jokaisen rinteen.",
+      "tts": {
+        "text": "Muutamien lyhyiden viikkojen ajan luonnonkukat peittävät jokaisen rinteen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten kesä alkaa taas, ja kierto alkaa alusta.",
+      "text_markdown": "Sitten kesä alkaa taas, ja kierto alkaa alusta.",
+      "tts": {
+        "text": "Sitten kesä alkaa taas, ja kierto alkaa alusta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myös tuli on osa tätä biomia.",
+      "text_markdown": "Myös tuli on osa tätä biomia.",
+      "tts": {
+        "text": "Myös tuli on osa tätä biomia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pitkän kuivan kesän aikana salama tai huolimaton kipinä voi sytyttää kuivan pensaikon palamaan.",
+      "text_markdown": "Pitkän kuivan kesän aikana salama tai huolimaton kipinä voi sytyttää kuivan pensaikon palamaan.",
+      "tts": {
+        "text": "Pitkän kuivan kesän aikana salama tai huolimaton kipinä voi sytyttää kuivan pensaikon palamaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet täällä kasvavista kasveista ovat oppineet elämään tulen kanssa ja kasvamaan nopeasti uudelleen sen mentyä ohi.",
+      "text_markdown": "Monet täällä kasvavista kasveista ovat oppineet elämään tulen kanssa ja kasvamaan nopeasti uudelleen sen mentyä ohi.",
+      "tts": {
+        "text": "Monet täällä kasvavista kasveista ovat oppineet elämään tulen kanssa ja kasvamaan nopeasti uudelleen sen mentyä ohi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Maa ja vesi",
+      "text_markdown": "Maa ja vesi"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomin maa on usein mäkistä.",
+      "text_markdown": "Välimeren biomin maa on usein mäkistä.",
+      "tts": {
+        "text": "Välimeren biomin maa on usein mäkistä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuoret kohoavat lähellä rannikkoa monilla näistä alueista.",
+      "text_markdown": "Vuoret kohoavat lähellä rannikkoa monilla näistä alueista.",
+      "tts": {
+        "text": "Vuoret kohoavat lähellä rannikkoa monilla näistä alueista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rinteet ovat kivisiä, ja maa on usein ohutta.",
+      "text_markdown": "Rinteet ovat kivisiä, ja maa on usein ohutta.",
+      "tts": {
+        "text": "Rinteet ovat kivisiä, ja maa on usein ohutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lähellä olevat meret ja valtameret muovaavat säätä.",
+      "text_markdown": "Lähellä olevat meret ja valtameret muovaavat säätä.",
+      "tts": {
+        "text": "Lähellä olevat meret ja valtameret muovaavat säätä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viileä vesi estää kesiä tulemasta yhtä kuumiksi kuin aavikolla, ja talvia tulemasta yhtä kylmiksi kuin sisämaan kaukaisilla alueilla.",
+      "text_markdown": "Viileä vesi estää kesiä tulemasta yhtä kuumiksi kuin aavikolla, ja talvia tulemasta yhtä kylmiksi kuin sisämaan kaukaisilla alueilla.",
+      "tts": {
+        "text": "Viileä vesi estää kesiä tulemasta yhtä kuumiksi kuin aavikolla, ja talvia tulemasta yhtä kylmiksi kuin sisämaan kaukaisilla alueilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vesi on täällä kallisarvoista.",
+      "text_markdown": "Vesi on täällä kallisarvoista.",
+      "tts": {
+        "text": "Vesi on täällä kallisarvoista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat joet kutistuvat tirinäksi kesän loppuun mennessä.",
+      "text_markdown": "Useimmat joet kutistuvat tirinäksi kesän loppuun mennessä.",
+      "tts": {
+        "text": "Useimmat joet kutistuvat tirinäksi kesän loppuun mennessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkin pienemmät purot katoavat kokonaan.",
+      "text_markdown": "Jotkin pienemmät purot katoavat kokonaan.",
+      "tts": {
+        "text": "Jotkin pienemmät purot katoavat kokonaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun talvisateet palaavat, joet täyttyvät nopeasti ja syöksyvät alas kukkuloita kohti merta.",
+      "text_markdown": "Kun talvisateet palaavat, joet täyttyvät nopeasti ja syöksyvät alas kukkuloita kohti merta.",
+      "tts": {
+        "text": "Kun talvisateet palaavat, joet täyttyvät nopeasti ja syöksyvät alas kukkuloita kohti merta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin paikoissa syvältä maan alta nouseva vesi muodostaa lähteen.",
+      "text_markdown": "Joissakin paikoissa syvältä maan alta nouseva vesi muodostaa lähteen.",
+      "tts": {
+        "text": "Joissakin paikoissa syvältä maan alta nouseva vesi muodostaa lähteen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lähde on pieni raikkaan veden lammikko, joka virtaa kalliosta ympäri vuoden.",
+      "text_markdown": "Lähde on pieni raikkaan veden lammikko, joka virtaa kalliosta ympäri vuoden.",
+      "tts": {
+        "text": "Lähde on pieni raikkaan veden lammikko, joka virtaa kalliosta ympäri vuoden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuhansien vuosien ajan ihmiset, eläimet ja puut ovat kokoontuneet näiden lähteiden ympärille.",
+      "text_markdown": "Tuhansien vuosien ajan ihmiset, eläimet ja puut ovat kokoontuneet näiden lähteiden ympärille.",
+      "tts": {
+        "text": "Tuhansien vuosien ajan ihmiset, eläimet ja puut ovat kokoontuneet näiden lähteiden ympärille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rannikolla maa kohtaa meren jyrkänteinä, rantoina ja pieninä lahtina.",
+      "text_markdown": "Rannikolla maa kohtaa meren jyrkänteinä, rantoina ja pieninä lahtina.",
+      "tts": {
+        "text": "Rannikolla maa kohtaa meren jyrkänteinä, rantoina ja pieninä lahtina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meri on täynnä elämää.",
+      "text_markdown": "Meri on täynnä elämää.",
+      "tts": {
+        "text": "Meri on täynnä elämää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kalat, tursaat ja merilinnut löytävät ruokaa lämpimästä, suolaisesta vedestä.",
+      "text_markdown": "Kalat, tursaat ja merilinnut löytävät ruokaa lämpimästä, suolaisesta vedestä.",
+      "tts": {
+        "text": "Kalat, tursaat ja merilinnut löytävät ruokaa lämpimästä, suolaisesta vedestä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomi elää maan, meren ja pitkän sinisen kesätaivaan välissä.",
+      "text_markdown": "Biomi elää maan, meren ja pitkän sinisen kesätaivaan välissä.",
+      "tts": {
+        "text": "Biomi elää maan, meren ja pitkän sinisen kesätaivaan välissä.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kasvit",
+      "text_markdown": "Kasvit"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomin kasvit ovat sitkeitä ja nokkelia.",
+      "text_markdown": "Välimeren biomin kasvit ovat sitkeitä ja nokkelia.",
+      "tts": {
+        "text": "Välimeren biomin kasvit ovat sitkeitä ja nokkelia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne ovat oppineet, kuinka elää pitkän, kuivan kesän läpi.",
+      "text_markdown": "Ne ovat oppineet, kuinka elää pitkän, kuivan kesän läpi.",
+      "tts": {
+        "text": "Ne ovat oppineet, kuinka elää pitkän, kuivan kesän läpi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat niistä eivät ole korkeita.",
+      "text_markdown": "Useimmat niistä eivät ole korkeita.",
+      "tts": {
+        "text": "Useimmat niistä eivät ole korkeita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne kasvavat matalina pensaina, joilla on paksut, nahkamaiset lehdet.",
+      "text_markdown": "Ne kasvavat matalina pensaina, joilla on paksut, nahkamaiset lehdet.",
+      "tts": {
+        "text": "Ne kasvavat matalina pensaina, joilla on paksut, nahkamaiset lehdet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lehdet ovat pieniä ja kiiltäviä, joskus hopeisia tai harmaanvihreitä.",
+      "text_markdown": "Lehdet ovat pieniä ja kiiltäviä, joskus hopeisia tai harmaanvihreitä.",
+      "tts": {
+        "text": "Lehdet ovat pieniä ja kiiltäviä, joskus hopeisia tai harmaanvihreitä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieni, kiiltävä lehti menettää vähemmän vettä auringolle.",
+      "text_markdown": "Pieni, kiiltävä lehti menettää vähemmän vettä auringolle.",
+      "tts": {
+        "text": "Pieni, kiiltävä lehti menettää vähemmän vettä auringolle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vaalea lehti heijastaa enemmän auringonvaloa pois.",
+      "text_markdown": "Vaalea lehti heijastaa enemmän auringonvaloa pois.",
+      "tts": {
+        "text": "Vaalea lehti heijastaa enemmän auringonvaloa pois.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet kasveista tuoksuvat voimakkaalta ja makealta, kun niitä hipaisee.",
+      "text_markdown": "Monet kasveista tuoksuvat voimakkaalta ja makealta, kun niitä hipaisee.",
+      "tts": {
+        "text": "Monet kasveista tuoksuvat voimakkaalta ja makealta, kun niitä hipaisee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se tuoksu tulee lehtien sisällä olevista öljyistä.",
+      "text_markdown": "Se tuoksu tulee lehtien sisällä olevista öljyistä.",
+      "tts": {
+        "text": "Se tuoksu tulee lehtien sisällä olevista öljyistä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Öljyt hidastavat veden menetystä ja auttavat kasvia selviämään kuumuudesta.",
+      "text_markdown": "Öljyt hidastavat veden menetystä ja auttavat kasvia selviämään kuumuudesta.",
+      "tts": {
+        "text": "Öljyt hidastavat veden menetystä ja auttavat kasvia selviämään kuumuudesta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi niin monet suosikkimaustemme tulevat näistä maista.",
+      "text_markdown": "Siksi niin monet suosikkimaustemme tulevat näistä maista.",
+      "tts": {
+        "text": "Siksi niin monet suosikkimaustemme tulevat näistä maista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kasvit kuten rosmariini, salvia, timjami, laventeli, minttu ja oregano kasvavat kaikki villinä Välimeren biomissa.",
+      "text_markdown": "Kasvit kuten rosmariini, salvia, timjami, laventeli, minttu ja oregano kasvavat kaikki villinä Välimeren biomissa.",
+      "tts": {
+        "text": "Kasvit kuten rosmariini, salvia, timjami, laventeli, minttu ja oregano kasvavat kaikki villinä Välimeren biomissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämän biomin kuuluisin puu on oliivipuu.",
+      "text_markdown": "Tämän biomin kuuluisin puu on oliivipuu.",
+      "tts": {
+        "text": "Tämän biomin kuuluisin puu on oliivipuu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oliivipuulla on paksu, kierteinen runko ja pienet, hopeanharmaat lehdet.",
+      "text_markdown": "Oliivipuulla on paksu, kierteinen runko ja pienet, hopeanharmaat lehdet.",
+      "tts": {
+        "text": "Oliivipuulla on paksu, kierteinen runko ja pienet, hopeanharmaat lehdet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkin oliivipuut elävät yli tuhat vuotta.",
+      "text_markdown": "Jotkin oliivipuut elävät yli tuhat vuotta.",
+      "tts": {
+        "text": "Jotkin oliivipuut elävät yli tuhat vuotta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muita yleisiä puita ovat matalat ainavihantaiset tammet, männyt ja korkkitammet.",
+      "text_markdown": "Muita yleisiä puita ovat matalat ainavihantaiset tammet, männyt ja korkkitammet.",
+      "tts": {
+        "text": "Muita yleisiä puita ovat matalat ainavihantaiset tammet, männyt ja korkkitammet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Villi viiniköynnös sai myös alkunsa näistä maista ja kiipesi ulos pensaiden seasta.",
+      "text_markdown": "Villi viiniköynnös sai myös alkunsa näistä maista ja kiipesi ulos pensaiden seasta.",
+      "tts": {
+        "text": "Villi viiniköynnös sai myös alkunsa näistä maista ja kiipesi ulos pensaiden seasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rannikolla saatat löytää korkeita bambukasvustoja, viikunapuita ja mantelipuita.",
+      "text_markdown": "Rannikolla saatat löytää korkeita bambukasvustoja, viikunapuita ja mantelipuita.",
+      "tts": {
+        "text": "Rannikolla saatat löytää korkeita bambukasvustoja, viikunapuita ja mantelipuita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat täällä kasvavista kasveista pitävät lehtensä ympäri vuoden sen sijaan, että pudottaisivat ne syksyllä.",
+      "text_markdown": "Useimmat täällä kasvavista kasveista pitävät lehtensä ympäri vuoden sen sijaan, että pudottaisivat ne syksyllä.",
+      "tts": {
+        "text": "Useimmat täällä kasvavista kasveista pitävät lehtensä ympäri vuoden sen sijaan, että pudottaisivat ne syksyllä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niillä ei ole varaa kasvattaa uusia lehtiä joka kevät.",
+      "text_markdown": "Niillä ei ole varaa kasvattaa uusia lehtiä joka kevät.",
+      "tts": {
+        "text": "Niillä ei ole varaa kasvattaa uusia lehtiä joka kevät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi ne pitävät kiinni pienistä, sitkeistä lehdistä koko vuoden.",
+      "text_markdown": "Siksi ne pitävät kiinni pienistä, sitkeistä lehdistä koko vuoden.",
+      "tts": {
+        "text": "Siksi ne pitävät kiinni pienistä, sitkeistä lehdistä koko vuoden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se antaa Välimeren biomille sen pölyisen, ainavihannan ulkonäön.",
+      "text_markdown": "Se antaa Välimeren biomille sen pölyisen, ainavihannan ulkonäön.",
+      "tts": {
+        "text": "Se antaa Välimeren biomille sen pölyisen, ainavihannan ulkonäön.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eläimet",
+      "text_markdown": "Eläimet"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomin eläimillä on monia tapoja elää kuumuuden ja kuivan kesän kanssa.",
+      "text_markdown": "Välimeren biomin eläimillä on monia tapoja elää kuumuuden ja kuivan kesän kanssa.",
+      "tts": {
+        "text": "Välimeren biomin eläimillä on monia tapoja elää kuumuuden ja kuivan kesän kanssa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat niistä ovat pieniä ja nopeita.",
+      "text_markdown": "Useimmat niistä ovat pieniä ja nopeita.",
+      "tts": {
+        "text": "Useimmat niistä ovat pieniä ja nopeita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieni eläin voi piiloutua helposti pensaan alle tai kivien väliseen rakoon.",
+      "text_markdown": "Pieni eläin voi piiloutua helposti pensaan alle tai kivien väliseen rakoon.",
+      "tts": {
+        "text": "Pieni eläin voi piiloutua helposti pensaan alle tai kivien väliseen rakoon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet niistä lepäävät päivän kuuman keskivaiheen ajan ja tulevat ulos aamun ja illan viileydessä.",
+      "text_markdown": "Monet niistä lepäävät päivän kuuman keskivaiheen ajan ja tulevat ulos aamun ja illan viileydessä.",
+      "tts": {
+        "text": "Monet niistä lepäävät päivän kuuman keskivaiheen ajan ja tulevat ulos aamun ja illan viileydessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanit ja jänikset elävät monissa näistä maista.",
+      "text_markdown": "Kanit ja jänikset elävät monissa näistä maista.",
+      "tts": {
+        "text": "Kanit ja jänikset elävät monissa näistä maista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne syövät hämärässä ja aamunkoitossa, ja viettävät päivänsä piilossa pensaan alla olevassa kolossa.",
+      "text_markdown": "Ne syövät hämärässä ja aamunkoitossa, ja viettävät päivänsä piilossa pensaan alla olevassa kolossa.",
+      "tts": {
+        "text": "Ne syövät hämärässä ja aamunkoitossa, ja viettävät päivänsä piilossa pensaan alla olevassa kolossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ketut metsästävät kaneja ja muita pieniä eläimiä.",
+      "text_markdown": "Ketut metsästävät kaneja ja muita pieniä eläimiä.",
+      "tts": {
+        "text": "Ketut metsästävät kaneja ja muita pieniä eläimiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kettu tuntee jokaisen polun pensaikon läpi.",
+      "text_markdown": "Kettu tuntee jokaisen polun pensaikon läpi.",
+      "tts": {
+        "text": "Kettu tuntee jokaisen polun pensaikon läpi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Villisiat kaivavat pehmeää maata juuria, pähkinöitä ja pieniä eläimiä etsien.",
+      "text_markdown": "Villisiat kaivavat pehmeää maata juuria, pähkinöitä ja pieniä eläimiä etsien.",
+      "tts": {
+        "text": "Villisiat kaivavat pehmeää maata juuria, pähkinöitä ja pieniä eläimiä etsien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne ovat vahvoja ja arkoja, ja ne liikkuvat pienissä perheryhmissä.",
+      "text_markdown": "Ne ovat vahvoja ja arkoja, ja ne liikkuvat pienissä perheryhmissä.",
+      "tts": {
+        "text": "Ne ovat vahvoja ja arkoja, ja ne liikkuvat pienissä perheryhmissä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin Välimeren maissa pienet villit kissat metsästävät yöllä.",
+      "text_markdown": "Joissakin Välimeren maissa pienet villit kissat metsästävät yöllä.",
+      "tts": {
+        "text": "Joissakin Välimeren maissa pienet villit kissat metsästävät yöllä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ilves on yksi näistä kissoista, lyhyellä hännällä ja tupsukorvilla.",
+      "text_markdown": "Ilves on yksi näistä kissoista, lyhyellä hännällä ja tupsukorvilla.",
+      "tts": {
+        "text": "Ilves on yksi näistä kissoista, lyhyellä hännällä ja tupsukorvilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on nyt harvinainen ja elää vain muutamissa villeissä kolkissa.",
+      "text_markdown": "Se on nyt harvinainen ja elää vain muutamissa villeissä kolkissa.",
+      "tts": {
+        "text": "Se on nyt harvinainen ja elää vain muutamissa villeissä kolkissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peurat elävät myös biomin reunalla olevissa metsissä.",
+      "text_markdown": "Peurat elävät myös biomin reunalla olevissa metsissä.",
+      "tts": {
+        "text": "Peurat elävät myös biomin reunalla olevissa metsissä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Käärmeitä ja liskoja on kaikkialla.",
+      "text_markdown": "Käärmeitä ja liskoja on kaikkialla.",
+      "tts": {
+        "text": "Käärmeitä ja liskoja on kaikkialla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lämpimällä kivellä istuva lisko on yleinen näky kesällä.",
+      "text_markdown": "Lämpimällä kivellä istuva lisko on yleinen näky kesällä.",
+      "tts": {
+        "text": "Lämpimällä kivellä istuva lisko on yleinen näky kesällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kilpikonnat liikkuvat hitaasti pensaikon läpi syöden lehtiä ja ruohoa.",
+      "text_markdown": "Kilpikonnat liikkuvat hitaasti pensaikon läpi syöden lehtiä ja ruohoa.",
+      "tts": {
+        "text": "Kilpikonnat liikkuvat hitaasti pensaikon läpi syöden lehtiä ja ruohoa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren kilpikonna voi elää monta vuosikymmentä.",
+      "text_markdown": "Välimeren kilpikonna voi elää monta vuosikymmentä.",
+      "tts": {
+        "text": "Välimeren kilpikonna voi elää monta vuosikymmentä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Täällä elää monia lintuja.",
+      "text_markdown": "Täällä elää monia lintuja.",
+      "tts": {
+        "text": "Täällä elää monia lintuja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varpuset, punarinnat ja kertut täyttävät pensaat äänellään.",
+      "text_markdown": "Varpuset, punarinnat ja kertut täyttävät pensaat äänellään.",
+      "tts": {
+        "text": "Varpuset, punarinnat ja kertut täyttävät pensaat äänellään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korkealla yläpuolella kotkat ja muut suuret linnut liitelevät lämpimässä iltapäiväilmassa.",
+      "text_markdown": "Korkealla yläpuolella kotkat ja muut suuret linnut liitelevät lämpimässä iltapäiväilmassa.",
+      "tts": {
+        "text": "Korkealla yläpuolella kotkat ja muut suuret linnut liitelevät lämpimässä iltapäiväilmassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keväällä perhoset tanssivat kukasta kukkaan.",
+      "text_markdown": "Keväällä perhoset tanssivat kukasta kukkaan.",
+      "tts": {
+        "text": "Keväällä perhoset tanssivat kukasta kukkaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sirkat ja heinäsirkat laulavat lämpiminä kesäiltoina.",
+      "text_markdown": "Sirkat ja heinäsirkat laulavat lämpiminä kesäiltoina.",
+      "tts": {
+        "text": "Sirkat ja heinäsirkat laulavat lämpiminä kesäiltoina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meren rannalla lokit ja muut merilinnut pesivät jyrkänteillä ja kallioisilla saarilla.",
+      "text_markdown": "Meren rannalla lokit ja muut merilinnut pesivät jyrkänteillä ja kallioisilla saarilla.",
+      "tts": {
+        "text": "Meren rannalla lokit ja muut merilinnut pesivät jyrkänteillä ja kallioisilla saarilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen eläin täällä osaa löytää varjon kesällä, juoda lähteeltä ja odottaa talvisateiden viileyttä.",
+      "text_markdown": "Jokainen eläin täällä osaa löytää varjon kesällä, juoda lähteeltä ja odottaa talvisateiden viileyttä.",
+      "tts": {
+        "text": "Jokainen eläin täällä osaa löytää varjon kesällä, juoda lähteeltä ja odottaa talvisateiden viileyttä.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ihmiset",
+      "text_markdown": "Ihmiset"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomi on ollut ihmisten kotina hyvin pitkän aikaa.",
+      "text_markdown": "Välimeren biomi on ollut ihmisten kotina hyvin pitkän aikaa.",
+      "tts": {
+        "text": "Välimeren biomi on ollut ihmisten kotina hyvin pitkän aikaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkin maailman vanhimmista kaupungeista ja maatiloista saivat alkunsa täällä.",
+      "text_markdown": "Jotkin maailman vanhimmista kaupungeista ja maatiloista saivat alkunsa täällä.",
+      "tts": {
+        "text": "Jotkin maailman vanhimmista kaupungeista ja maatiloista saivat alkunsa täällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuhansien vuosien ajan ihmiset Välimeren rannoilla ovat kasvattaneet kolmea kasvia yhdessä.",
+      "text_markdown": "Tuhansien vuosien ajan ihmiset Välimeren rannoilla ovat kasvattaneet kolmea kasvia yhdessä.",
+      "tts": {
+        "text": "Tuhansien vuosien ajan ihmiset Välimeren rannoilla ovat kasvattaneet kolmea kasvia yhdessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He kasvattavat oliivipuita öljyä varten.",
+      "text_markdown": "He kasvattavat oliivipuita öljyä varten.",
+      "tts": {
+        "text": "He kasvattavat oliivipuita öljyä varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He kasvattavat viiniköynnöksiä hedelmiä ja viiniä varten.",
+      "text_markdown": "He kasvattavat viiniköynnöksiä hedelmiä ja viiniä varten.",
+      "tts": {
+        "text": "He kasvattavat viiniköynnöksiä hedelmiä ja viiniä varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He kasvattavat vehnää ja muita viljoja leipää varten.",
+      "text_markdown": "He kasvattavat vehnää ja muita viljoja leipää varten.",
+      "tts": {
+        "text": "He kasvattavat vehnää ja muita viljoja leipää varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yhdessä näitä kolmea kutsutaan joskus Välimeren ruoan sydämeksi.",
+      "text_markdown": "Yhdessä näitä kolmea kutsutaan joskus Välimeren ruoan sydämeksi.",
+      "tts": {
+        "text": "Yhdessä näitä kolmea kutsutaan joskus Välimeren ruoan sydämeksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niiden lisäksi ihmiset lisäsivät vihanneksia, hedelmiä ja kukkuloiden villejä yrttejä.",
+      "text_markdown": "Niiden lisäksi ihmiset lisäsivät vihanneksia, hedelmiä ja kukkuloiden villejä yrttejä.",
+      "tts": {
+        "text": "Niiden lisäksi ihmiset lisäsivät vihanneksia, hedelmiä ja kukkuloiden villejä yrttejä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset ovat myös pitäneet lampaita ja vuohia näissä maissa monia tuhansia vuosia.",
+      "text_markdown": "Ihmiset ovat myös pitäneet lampaita ja vuohia näissä maissa monia tuhansia vuosia.",
+      "tts": {
+        "text": "Ihmiset ovat myös pitäneet lampaita ja vuohia näissä maissa monia tuhansia vuosia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eläimet löytävät ruokaa kivisiltä rinteiltä, joilla on vaikea kasvattaa viljelyskasveja.",
+      "text_markdown": "Eläimet löytävät ruokaa kivisiltä rinteiltä, joilla on vaikea kasvattaa viljelyskasveja.",
+      "tts": {
+        "text": "Eläimet löytävät ruokaa kivisiltä rinteiltä, joilla on vaikea kasvattaa viljelyskasveja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne antavat maitoa juustoa ja jogurttia varten, villaa vaatteita varten ja lihaa.",
+      "text_markdown": "Ne antavat maitoa juustoa ja jogurttia varten, villaa vaatteita varten ja lihaa.",
+      "tts": {
+        "text": "Ne antavat maitoa juustoa ja jogurttia varten, villaa vaatteita varten ja lihaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koska meret ja valtameret ovat lähellä, tämän biomin ihmiset ovat aina olleet kalastajia ja merenkulkijoita.",
+      "text_markdown": "Koska meret ja valtameret ovat lähellä, tämän biomin ihmiset ovat aina olleet kalastajia ja merenkulkijoita.",
+      "tts": {
+        "text": "Koska meret ja valtameret ovat lähellä, tämän biomin ihmiset ovat aina olleet kalastajia ja merenkulkijoita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puiset veneet lähtevät aamunkoitossa ja palaavat kalojen, tursaiden ja muiden mereneläväin kanssa.",
+      "text_markdown": "Puiset veneet lähtevät aamunkoitossa ja palaavat kalojen, tursaiden ja muiden mereneläväin kanssa.",
+      "tts": {
+        "text": "Puiset veneet lähtevät aamunkoitossa ja palaavat kalojen, tursaiden ja muiden mereneläväin kanssa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maailman muissa Välimeren maissa, Kaliforniassa, Chilessä, eteläisessä Afrikassa ja Australiassa, ihmiset jotka asuivat siellä tuhansia vuosia käyttivät samoja villejä kasveja ja eläimiä omilla tavoillaan.",
+      "text_markdown": "Maailman muissa Välimeren maissa, Kaliforniassa, Chilessä, eteläisessä Afrikassa ja Australiassa, ihmiset jotka asuivat siellä tuhansia vuosia käyttivät samoja villejä kasveja ja eläimiä omilla tavoillaan.",
+      "tts": {
+        "text": "Maailman muissa Välimeren maissa, Kaliforniassa, Chilessä, eteläisessä Afrikassa ja Australiassa, ihmiset jotka asuivat siellä tuhansia vuosia käyttivät samoja villejä kasveja ja eläimiä omilla tavoillaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun maanviljelijät Välimeren ympärillä olevilta mailta tulivat noihin paikkoihin paljon myöhemmin, he toivat mukanaan oliivinsa, viiniköynnöksensä ja vehnänsä.",
+      "text_markdown": "Kun maanviljelijät Välimeren ympärillä olevilta mailta tulivat noihin paikkoihin paljon myöhemmin, he toivat mukanaan oliivinsa, viiniköynnöksensä ja vehnänsä.",
+      "tts": {
+        "text": "Kun maanviljelijät Välimeren ympärillä olevilta mailta tulivat noihin paikkoihin paljon myöhemmin, he toivat mukanaan oliivinsa, viiniköynnöksensä ja vehnänsä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nykyään kaikki viisi maailman Välimeren aluetta kasvattavat samanlaisia ruokia.",
+      "text_markdown": "Nykyään kaikki viisi maailman Välimeren aluetta kasvattavat samanlaisia ruokia.",
+      "tts": {
+        "text": "Nykyään kaikki viisi maailman Välimeren aluetta kasvattavat samanlaisia ruokia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maa näyttää kutsuvan siihen.",
+      "text_markdown": "Maa näyttää kutsuvan siihen.",
+      "tts": {
+        "text": "Maa näyttää kutsuvan siihen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisen Välimeren alueen keittiöt jakavat samat peruslahjat.",
+      "text_markdown": "Jokaisen Välimeren alueen keittiöt jakavat samat peruslahjat.",
+      "tts": {
+        "text": "Jokaisen Välimeren alueen keittiöt jakavat samat peruslahjat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leipä, juusto, oliiviöljy, tuoreet tomaatit, kala, hedelmät ja viini.",
+      "text_markdown": "Leipä, juusto, oliiviöljy, tuoreet tomaatit, kala, hedelmät ja viini.",
+      "tts": {
+        "text": "Leipä, juusto, oliiviöljy, tuoreet tomaatit, kala, hedelmät ja viini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Näiden maiden ihmiset ovat aina osanneet hyödyntää pitkää, kuivaa kesää parhaalla mahdollisella tavalla.",
+      "text_markdown": "Näiden maiden ihmiset ovat aina osanneet hyödyntää pitkää, kuivaa kesää parhaalla mahdollisella tavalla.",
+      "tts": {
+        "text": "Näiden maiden ihmiset ovat aina osanneet hyödyntää pitkää, kuivaa kesää parhaalla mahdollisella tavalla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He syövät tuoretta lämpiminä kuukausina.",
+      "text_markdown": "He syövät tuoretta lämpiminä kuukausina.",
+      "tts": {
+        "text": "He syövät tuoretta lämpiminä kuukausina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He säilövät ruokaa öljyssä, suolassa ja purkeissa sateista talvea varten.",
+      "text_markdown": "He säilövät ruokaa öljyssä, suolassa ja purkeissa sateista talvea varten.",
+      "tts": {
+        "text": "He säilövät ruokaa öljyssä, suolassa ja purkeissa sateista talvea varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisella Välimeren alueella tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+      "text_markdown": "Jokaisella Välimeren alueella tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+      "tts": {
+        "text": "Jokaisella Välimeren alueella tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomi tänään",
+      "text_markdown": "Biomi tänään"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren biomi on pieni mutta hyvin tärkeä.",
+      "text_markdown": "Välimeren biomi on pieni mutta hyvin tärkeä.",
+      "tts": {
+        "text": "Välimeren biomi on pieni mutta hyvin tärkeä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vaikka se kattaa vain pienen osan Maasta, siellä elää valtava määrä kasveja ja eläimiä, joita ei löydy mistään muualta.",
+      "text_markdown": "Vaikka se kattaa vain pienen osan Maasta, siellä elää valtava määrä kasveja ja eläimiä, joita ei löydy mistään muualta.",
+      "tts": {
+        "text": "Vaikka se kattaa vain pienen osan Maasta, siellä elää valtava määrä kasveja ja eläimiä, joita ei löydy mistään muualta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmisille tämä biomi on ollut ruoan ja maanviljelyn kehto tuhansien vuosien ajan.",
+      "text_markdown": "Ihmisille tämä biomi on ollut ruoan ja maanviljelyn kehto tuhansien vuosien ajan.",
+      "tts": {
+        "text": "Ihmisille tämä biomi on ollut ruoan ja maanviljelyn kehto tuhansien vuosien ajan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta biomi on vaikeuksissa monissa paikoissa.",
+      "text_markdown": "Mutta biomi on vaikeuksissa monissa paikoissa.",
+      "tts": {
+        "text": "Mutta biomi on vaikeuksissa monissa paikoissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaupungit ja kaupungit ovat kasvaneet rannikoilla, joilla sää on leuto ja meri on lähellä.",
+      "text_markdown": "Kaupungit ja kaupungit ovat kasvaneet rannikoilla, joilla sää on leuto ja meri on lähellä.",
+      "tts": {
+        "text": "Kaupungit ja kaupungit ovat kasvaneet rannikoilla, joilla sää on leuto ja meri on lähellä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tiet, talot, hotellit ja maatilat ovat korvanneet monia villejä pensaita ja puita.",
+      "text_markdown": "Tiet, talot, hotellit ja maatilat ovat korvanneet monia villejä pensaita ja puita.",
+      "tts": {
+        "text": "Tiet, talot, hotellit ja maatilat ovat korvanneet monia villejä pensaita ja puita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pitkät kuivat kesät, jotka ovat kuumempia kuin ennen, tekevät tulipaloista suurempia ja vaarallisempia.",
+      "text_markdown": "Pitkät kuivat kesät, jotka ovat kuumempia kuin ennen, tekevät tulipaloista suurempia ja vaarallisempia.",
+      "tts": {
+        "text": "Pitkät kuivat kesät, jotka ovat kuumempia kuin ennen, tekevät tulipaloista suurempia ja vaarallisempia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkin eläimet, kuten ilves ja Välimeren kilpikonna, ovat tulleet hyvin harvinaisiksi.",
+      "text_markdown": "Jotkin eläimet, kuten ilves ja Välimeren kilpikonna, ovat tulleet hyvin harvinaisiksi.",
+      "tts": {
+        "text": "Jotkin eläimet, kuten ilves ja Välimeren kilpikonna, ovat tulleet hyvin harvinaisiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+      "text_markdown": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+      "tts": {
+        "text": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He perustavat puistoja, joissa villit kasvit ja eläimet voivat yhä elää.",
+      "text_markdown": "He perustavat puistoja, joissa villit kasvit ja eläimet voivat yhä elää.",
+      "tts": {
+        "text": "He perustavat puistoja, joissa villit kasvit ja eläimet voivat yhä elää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He istuttavat uusia oliivipuita ja suojelevat vanhoja.",
+      "text_markdown": "He istuttavat uusia oliivipuita ja suojelevat vanhoja.",
+      "tts": {
+        "text": "He istuttavat uusia oliivipuita ja suojelevat vanhoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He auttavat maanviljelijöitä kasvattamaan ruokaa tavoilla, jotka ovat ystävällisiä maalle.",
+      "text_markdown": "He auttavat maanviljelijöitä kasvattamaan ruokaa tavoilla, jotka ovat ystävällisiä maalle.",
+      "tts": {
+        "text": "He auttavat maanviljelijöitä kasvattamaan ruokaa tavoilla, jotka ovat ystävällisiä maalle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He tutkivat biomia, jotta voisimme ymmärtää sitä paremmin.",
+      "text_markdown": "He tutkivat biomia, jotta voisimme ymmärtää sitä paremmin.",
+      "tts": {
+        "text": "He tutkivat biomia, jotta voisimme ymmärtää sitä paremmin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terve Välimeren biomi on hiljainen, tuoksuva, kaunis paikka.",
+      "text_markdown": "Terve Välimeren biomi on hiljainen, tuoksuva, kaunis paikka.",
+      "tts": {
+        "text": "Terve Välimeren biomi on hiljainen, tuoksuva, kaunis paikka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Biomi tänään",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on hoivamme arvoinen.",
+      "text_markdown": "Se on hoivamme arvoinen.",
+      "tts": {
+        "text": "Se on hoivamme arvoinen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lopetus",
+      "text_markdown": "Lopetus"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on Välimeren biomi.",
+      "text_markdown": "Se on Välimeren biomi.",
+      "tts": {
+        "text": "Se on Välimeren biomi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kirkas, kuiva, tuoksuva maailma, jossa on oliivipuita, matalia pensaita ja lämpimiä kesäiltoja.",
+      "text_markdown": "Kirkas, kuiva, tuoksuva maailma, jossa on oliivipuita, matalia pensaita ja lämpimiä kesäiltoja.",
+      "tts": {
+        "text": "Kirkas, kuiva, tuoksuva maailma, jossa on oliivipuita, matalia pensaita ja lämpimiä kesäiltoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos joskus seisot sellaisessa, ole hiljaa hetken aikaa.",
+      "text_markdown": "Jos joskus seisot sellaisessa, ole hiljaa hetken aikaa.",
+      "tts": {
+        "text": "Jos joskus seisot sellaisessa, ole hiljaa hetken aikaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haista lämpimät yrtit ilmassa.",
+      "text_markdown": "Haista lämpimät yrtit ilmassa.",
+      "tts": {
+        "text": "Haista lämpimät yrtit ilmassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuntele sirkkoja kuivassa ruohossa.",
+      "text_markdown": "Kuuntele sirkkoja kuivassa ruohossa.",
+      "tts": {
+        "text": "Kuuntele sirkkoja kuivassa ruohossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katso ulos kohti merta.",
+      "text_markdown": "Katso ulos kohti merta.",
+      "tts": {
+        "text": "Katso ulos kohti merta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Lopetus",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tunnet biomin sydämen lyövän ympärilläsi.",
+      "text_markdown": "Tunnet biomin sydämen lyövän ympärilläsi.",
+      "tts": {
+        "text": "Tunnet biomin sydämen lyövän ympärilläsi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

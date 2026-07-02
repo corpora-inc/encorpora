@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ملاحظة للقارئ",
+      "text_markdown": "ملاحظة للقارئ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "منذ مئتي عام، كان القطار هو الطريق الحديدي للعالم.",
+      "text_markdown": "منذ مئتي عام، كان القطار هو الطريق الحديدي للعالم.",
+      "tts": {
+        "text": "منذ مئتي عام، كان القطار هو الطريق الحديدي للعالم.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تنقل القطارات الناس.",
+      "text_markdown": "تنقل القطارات الناس.",
+      "tts": {
+        "text": "تنقل القطارات الناس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تنقل القطارات البضائع.",
+      "text_markdown": "تنقل القطارات البضائع.",
+      "tts": {
+        "text": "تنقل القطارات البضائع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يمكن لقطار طويل أن يحمل من الحبوب ما يكفي بلدة كاملة.",
+      "text_markdown": "يمكن لقطار طويل أن يحمل من الحبوب ما يكفي بلدة كاملة.",
+      "tts": {
+        "text": "يمكن لقطار طويل أن يحمل من الحبوب ما يكفي بلدة كاملة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ويمكن لقطار سريع أن يسبق سيارة على الطريق السريع.",
+      "text_markdown": "ويمكن لقطار سريع أن يسبق سيارة على الطريق السريع.",
+      "tts": {
+        "text": "ويمكن لقطار سريع أن يسبق سيارة على الطريق السريع.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبدأ قصة القطار في إنجلترا، قبل نحو مئتي عام، مع رجل، ونار، وغلاية ماء تغلي.",
+      "text_markdown": "تبدأ قصة القطار في إنجلترا، قبل نحو مئتي عام، مع رجل، ونار، وغلاية ماء تغلي.",
+      "tts": {
+        "text": "تبدأ قصة القطار في إنجلترا، قبل نحو مئتي عام، مع رجل، ونار، وغلاية ماء تغلي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الأول: أول قطار بخاري",
+      "text_markdown": "الفصل الأول: أول قطار بخاري"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القطار صف من العربات يسير على قضبان حديدية.",
+      "text_markdown": "القطار صف من العربات يسير على قضبان حديدية.",
+      "tts": {
+        "text": "القطار صف من العربات يسير على قضبان حديدية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "العربة الأولى هي القاطرة.",
+      "text_markdown": "العربة الأولى هي القاطرة.",
+      "tts": {
+        "text": "العربة الأولى هي القاطرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهي تجر جميع العربات الأخرى.",
+      "text_markdown": "وهي تجر جميع العربات الأخرى.",
+      "tts": {
+        "text": "وهي تجر جميع العربات الأخرى.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت القطارات الأولى تعمل بالبخار.",
+      "text_markdown": "كانت القطارات الأولى تعمل بالبخار.",
+      "tts": {
+        "text": "كانت القطارات الأولى تعمل بالبخار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يحرق المحرك البخاري الفحم ليغلي الماء.",
+      "text_markdown": "يحرق المحرك البخاري الفحم ليغلي الماء.",
+      "tts": {
+        "text": "يحرق المحرك البخاري الفحم ليغلي الماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويدفع البخار الساخن المكابس.",
+      "text_markdown": "ويدفع البخار الساخن المكابس.",
+      "tts": {
+        "text": "ويدفع البخار الساخن المكابس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وتدير المكابس العجلات.",
+      "text_markdown": "وتدير المكابس العجلات.",
+      "tts": {
+        "text": "وتدير المكابس العجلات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وتسير العجلات على القضبان.",
+      "text_markdown": "وتسير العجلات على القضبان.",
+      "tts": {
+        "text": "وتسير العجلات على القضبان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبدأ القصة في إنجلترا.",
+      "text_markdown": "تبدأ القصة في إنجلترا.",
+      "tts": {
+        "text": "تبدأ القصة في إنجلترا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في عام ألف وثمانمئة وخمسة وعشرين، افتتحت أول سكة حديد عامة.",
+      "text_markdown": "في عام ألف وثمانمئة وخمسة وعشرين، افتتحت أول سكة حديد عامة.",
+      "tts": {
+        "text": "في عام ألف وثمانمئة وخمسة وعشرين، افتتحت أول سكة حديد عامة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكان اسمها سكة حديد ستوكتون ودارلنغتون.",
+      "text_markdown": "وكان اسمها سكة حديد ستوكتون ودارلنغتون.",
+      "tts": {
+        "text": "وكان اسمها سكة حديد ستوكتون ودارلنغتون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكانت تنقل الفحم من منجم إلى النهر.",
+      "text_markdown": "وكانت تنقل الفحم من منجم إلى النهر.",
+      "tts": {
+        "text": "وكانت تنقل الفحم من منجم إلى النهر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبنى القاطرات رجل اسمه جورج ستيفنسون.",
+      "text_markdown": "وبنى القاطرات رجل اسمه جورج ستيفنسون.",
+      "tts": {
+        "text": "وبنى القاطرات رجل اسمه جورج ستيفنسون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان الناس يسمونه أبا السكك الحديدية.",
+      "text_markdown": "وكان الناس يسمونه أبا السكك الحديدية.",
+      "tts": {
+        "text": "وكان الناس يسمونه أبا السكك الحديدية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي عام ألف وثمانمئة وتسعة وعشرين، بنى ابنه روبرت ستيفنسون قاطرة مشهورة اسمها روكيت.",
+      "text_markdown": "وفي عام ألف وثمانمئة وتسعة وعشرين، بنى ابنه روبرت ستيفنسون قاطرة مشهورة اسمها روكيت.",
+      "tts": {
+        "text": "وفي عام ألف وثمانمئة وتسعة وعشرين، بنى ابنه روبرت ستيفنسون قاطرة مشهورة اسمها روكيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفازت في سباق لأسرع قطار.",
+      "text_markdown": "وفازت في سباق لأسرع قطار.",
+      "tts": {
+        "text": "وفازت في سباق لأسرع قطار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكانت روكيت تستطيع السير بسرعة تقارب ثلاثين ميلا في الساعة.",
+      "text_markdown": "وكانت روكيت تستطيع السير بسرعة تقارب ثلاثين ميلا في الساعة.",
+      "tts": {
+        "text": "وكانت روكيت تستطيع السير بسرعة تقارب ثلاثين ميلا في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكان ذلك أسرع من أي حصان.",
+      "text_markdown": "وكان ذلك أسرع من أي حصان.",
+      "tts": {
+        "text": "وكان ذلك أسرع من أي حصان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: أول قطار بخاري",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكان عصر القطار قد بدأ.",
+      "text_markdown": "وكان عصر القطار قد بدأ.",
+      "tts": {
+        "text": "وكان عصر القطار قد بدأ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثاني: امتداد الطريق الحديدي",
+      "text_markdown": "الفصل الثاني: امتداد الطريق الحديدي"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد روكيت، انتشرت السكك الحديدية بسرعة.",
+      "text_markdown": "بعد روكيت، انتشرت السكك الحديدية بسرعة.",
+      "tts": {
+        "text": "بعد روكيت، انتشرت السكك الحديدية بسرعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ومدت بريطانيا آلاف الأميال من القضبان.",
+      "text_markdown": "ومدت بريطانيا آلاف الأميال من القضبان.",
+      "tts": {
+        "text": "ومدت بريطانيا آلاف الأميال من القضبان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم تبعها بقية العالم.",
+      "text_markdown": "ثم تبعها بقية العالم.",
+      "tts": {
+        "text": "ثم تبعها بقية العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في عام ألف وثمانمئة وثلاثين، افتتحت أول سكة حديد أمريكية كبيرة.",
+      "text_markdown": "في عام ألف وثمانمئة وثلاثين، افتتحت أول سكة حديد أمريكية كبيرة.",
+      "tts": {
+        "text": "في عام ألف وثمانمئة وثلاثين، افتتحت أول سكة حديد أمريكية كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان اسمها بالتيمور وأوهايو.",
+      "text_markdown": "وكان اسمها بالتيمور وأوهايو.",
+      "tts": {
+        "text": "وكان اسمها بالتيمور وأوهايو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكانت تصل مدينة بالتيمور بنهر أوهايو.",
+      "text_markdown": "وكانت تصل مدينة بالتيمور بنهر أوهايو.",
+      "tts": {
+        "text": "وكانت تصل مدينة بالتيمور بنهر أوهايو.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي فرنسا، افتتحت أول سكة حديد في عام ألف وثمانمئة واثنين وثلاثين.",
+      "text_markdown": "وفي فرنسا، افتتحت أول سكة حديد في عام ألف وثمانمئة واثنين وثلاثين.",
+      "tts": {
+        "text": "وفي فرنسا، افتتحت أول سكة حديد في عام ألف وثمانمئة واثنين وثلاثين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت تنقل الفحم، مثل الخط البريطاني.",
+      "text_markdown": "وكانت تنقل الفحم، مثل الخط البريطاني.",
+      "tts": {
+        "text": "وكانت تنقل الفحم، مثل الخط البريطاني.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي ألمانيا، افتتحت أول سكة حديد طويلة في عام ألف وثمانمئة وتسعة وثلاثين.",
+      "text_markdown": "وفي ألمانيا، افتتحت أول سكة حديد طويلة في عام ألف وثمانمئة وتسعة وثلاثين.",
+      "tts": {
+        "text": "وفي ألمانيا، افتتحت أول سكة حديد طويلة في عام ألف وثمانمئة وتسعة وثلاثين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت تسير بين مدينتين، لايبزيغ ودريسدن.",
+      "text_markdown": "وكانت تسير بين مدينتين، لايبزيغ ودريسدن.",
+      "tts": {
+        "text": "وكانت تسير بين مدينتين، لايبزيغ ودريسدن.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبنت روسيا أول سكة حديد لها في عام ألف وثمانمئة وسبعة وثلاثين.",
+      "text_markdown": "وبنت روسيا أول سكة حديد لها في عام ألف وثمانمئة وسبعة وثلاثين.",
+      "tts": {
+        "text": "وبنت روسيا أول سكة حديد لها في عام ألف وثمانمئة وسبعة وثلاثين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان الخط يسير من سانت بطرسبرغ إلى بلدة قريبة.",
+      "text_markdown": "وكان الخط يسير من سانت بطرسبرغ إلى بلدة قريبة.",
+      "tts": {
+        "text": "وكان الخط يسير من سانت بطرسبرغ إلى بلدة قريبة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكان بناء سكة حديد عملا شاقا.",
+      "text_markdown": "وكان بناء سكة حديد عملا شاقا.",
+      "tts": {
+        "text": "وكان بناء سكة حديد عملا شاقا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "حفر الرجال أنفاقا عبر الجبال.",
+      "text_markdown": "حفر الرجال أنفاقا عبر الجبال.",
+      "tts": {
+        "text": "حفر الرجال أنفاقا عبر الجبال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبنوا جسورا فوق الأنهار.",
+      "text_markdown": "وبنوا جسورا فوق الأنهار.",
+      "tts": {
+        "text": "وبنوا جسورا فوق الأنهار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ووضعوا كل قضيب بأيديهم.",
+      "text_markdown": "ووضعوا كل قضيب بأيديهم.",
+      "tts": {
+        "text": "ووضعوا كل قضيب بأيديهم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ونمت البلدات على امتداد الخطوط.",
+      "text_markdown": "ونمت البلدات على امتداد الخطوط.",
+      "tts": {
+        "text": "ونمت البلدات على امتداد الخطوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت قرية صغيرة فيها محطة قد تصبح مدينة.",
+      "text_markdown": "وكانت قرية صغيرة فيها محطة قد تصبح مدينة.",
+      "tts": {
+        "text": "وكانت قرية صغيرة فيها محطة قد تصبح مدينة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جلب القطار الناس.",
+      "text_markdown": "جلب القطار الناس.",
+      "tts": {
+        "text": "جلب القطار الناس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وجلب القطار البضائع.",
+      "text_markdown": "وجلب القطار البضائع.",
+      "tts": {
+        "text": "وجلب القطار البضائع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: امتداد الطريق الحديدي",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وجعل القطار العالم أقرب قليلا.",
+      "text_markdown": "وجعل القطار العالم أقرب قليلا.",
+      "tts": {
+        "text": "وجعل القطار العالم أقرب قليلا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثالث: الخطوط الكبرى",
+      "text_markdown": "الفصل الثالث: الخطوط الكبرى"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض السكك الحديدية قصيرة.",
+      "text_markdown": "بعض السكك الحديدية قصيرة.",
+      "tts": {
+        "text": "بعض السكك الحديدية قصيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وبعضها طويل جدا.",
+      "text_markdown": "وبعضها طويل جدا.",
+      "tts": {
+        "text": "وبعضها طويل جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أما أطول الخطوط فقد عبرت قارات كاملة.",
+      "text_markdown": "أما أطول الخطوط فقد عبرت قارات كاملة.",
+      "tts": {
+        "text": "أما أطول الخطوط فقد عبرت قارات كاملة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الولايات المتحدة، بنت شركتان سكة حديد عبر البلاد.",
+      "text_markdown": "في الولايات المتحدة، بنت شركتان سكة حديد عبر البلاد.",
+      "tts": {
+        "text": "في الولايات المتحدة، بنت شركتان سكة حديد عبر البلاد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بدأت إحداهما في كاليفورنيا واتجهت شرقا.",
+      "text_markdown": "بدأت إحداهما في كاليفورنيا واتجهت شرقا.",
+      "tts": {
+        "text": "بدأت إحداهما في كاليفورنيا واتجهت شرقا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبدأت الأخرى في نبراسكا واتجهت غربا.",
+      "text_markdown": "وبدأت الأخرى في نبراسكا واتجهت غربا.",
+      "tts": {
+        "text": "وبدأت الأخرى في نبراسكا واتجهت غربا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "والتقتا في مكان يسمى برومونتوري ساميت، في يوتا.",
+      "text_markdown": "والتقتا في مكان يسمى برومونتوري ساميت، في يوتا.",
+      "tts": {
+        "text": "والتقتا في مكان يسمى برومونتوري ساميت، في يوتا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكان ذلك في عام ألف وثمانمئة وتسعة وستين.",
+      "text_markdown": "وكان ذلك في عام ألف وثمانمئة وتسعة وستين.",
+      "tts": {
+        "text": "وكان ذلك في عام ألف وثمانمئة وتسعة وستين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان المسمار الأخير من الذهب.",
+      "text_markdown": "وكان المسمار الأخير من الذهب.",
+      "tts": {
+        "text": "وكان المسمار الأخير من الذهب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وسماه الناس المسمار الذهبي.",
+      "text_markdown": "وسماه الناس المسمار الذهبي.",
+      "tts": {
+        "text": "وسماه الناس المسمار الذهبي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكان اسم الخط سكة الحديد العابرة للقارة.",
+      "text_markdown": "وكان اسم الخط سكة الحديد العابرة للقارة.",
+      "tts": {
+        "text": "وكان اسم الخط سكة الحديد العابرة للقارة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وأصبح بوسعك الآن أن تركب قطارا من محيط إلى آخر في نحو أسبوع.",
+      "text_markdown": "وأصبح بوسعك الآن أن تركب قطارا من محيط إلى آخر في نحو أسبوع.",
+      "tts": {
+        "text": "وأصبح بوسعك الآن أن تركب قطارا من محيط إلى آخر في نحو أسبوع.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبنت روسيا خطا أطول من ذلك.",
+      "text_markdown": "وبنت روسيا خطا أطول من ذلك.",
+      "tts": {
+        "text": "وبنت روسيا خطا أطول من ذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "واسمه سكة حديد سيبيريا العابرة.",
+      "text_markdown": "واسمه سكة حديد سيبيريا العابرة.",
+      "tts": {
+        "text": "واسمه سكة حديد سيبيريا العابرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهو يمتد من موسكو في الغرب إلى فلاديفوستوك في الشرق.",
+      "text_markdown": "وهو يمتد من موسكو في الغرب إلى فلاديفوستوك في الشرق.",
+      "tts": {
+        "text": "وهو يمتد من موسكو في الغرب إلى فلاديفوستوك في الشرق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "واكتمل الخط في عام ألف وتسعمئة وستة عشر.",
+      "text_markdown": "واكتمل الخط في عام ألف وتسعمئة وستة عشر.",
+      "tts": {
+        "text": "واكتمل الخط في عام ألف وتسعمئة وستة عشر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ويزيد طوله على تسعة آلاف كيلومتر.",
+      "text_markdown": "ويزيد طوله على تسعة آلاف كيلومتر.",
+      "tts": {
+        "text": "ويزيد طوله على تسعة آلاف كيلومتر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "وتستغرق الرحلة الكاملة نحو سبعة أيام.",
+      "text_markdown": "وتستغرق الرحلة الكاملة نحو سبعة أيام.",
+      "tts": {
+        "text": "وتستغرق الرحلة الكاملة نحو سبعة أيام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: الخطوط الكبرى",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "وما زالت هي أطول سكة حديد في العالم.",
+      "text_markdown": "وما زالت هي أطول سكة حديد في العالم.",
+      "tts": {
+        "text": "وما زالت هي أطول سكة حديد في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الرابع: البخار والديزل والكهرباء",
+      "text_markdown": "الفصل الرابع: البخار والديزل والكهرباء"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لمدة تقارب مئة سنة، كان كل قطار تقريبا قطارا بخاريا.",
+      "text_markdown": "لمدة تقارب مئة سنة، كان كل قطار تقريبا قطارا بخاريا.",
+      "tts": {
+        "text": "لمدة تقارب مئة سنة، كان كل قطار تقريبا قطارا بخاريا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت القاطرات البخارية كبيرة وصاخبة.",
+      "text_markdown": "وكانت القاطرات البخارية كبيرة وصاخبة.",
+      "tts": {
+        "text": "وكانت القاطرات البخارية كبيرة وصاخبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكانت تحرق الفحم.",
+      "text_markdown": "وكانت تحرق الفحم.",
+      "tts": {
+        "text": "وكانت تحرق الفحم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكانت ترسل دخانا كثيفا إلى السماء.",
+      "text_markdown": "وكانت ترسل دخانا كثيفا إلى السماء.",
+      "tts": {
+        "text": "وكانت ترسل دخانا كثيفا إلى السماء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم جاءت قاطرة الديزل.",
+      "text_markdown": "ثم جاءت قاطرة الديزل.",
+      "tts": {
+        "text": "ثم جاءت قاطرة الديزل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فمحرك الديزل يحرق الزيت بدلا من الفحم.",
+      "text_markdown": "فمحرك الديزل يحرق الزيت بدلا من الفحم.",
+      "tts": {
+        "text": "فمحرك الديزل يحرق الزيت بدلا من الفحم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهو أصغر وأنظف.",
+      "text_markdown": "وهو أصغر وأنظف.",
+      "tts": {
+        "text": "وهو أصغر وأنظف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ولا يحتاج إلى نار وخزان ماء.",
+      "text_markdown": "ولا يحتاج إلى نار وخزان ماء.",
+      "tts": {
+        "text": "ولا يحتاج إلى نار وخزان ماء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وأصبحت قطارات الديزل شائعة في الأربعينيات والخمسينيات من القرن العشرين.",
+      "text_markdown": "وأصبحت قطارات الديزل شائعة في الأربعينيات والخمسينيات من القرن العشرين.",
+      "tts": {
+        "text": "وأصبحت قطارات الديزل شائعة في الأربعينيات والخمسينيات من القرن العشرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وببطء، أخرجت القاطرات البخارية الكبيرة من الخدمة.",
+      "text_markdown": "وببطء، أخرجت القاطرات البخارية الكبيرة من الخدمة.",
+      "tts": {
+        "text": "وببطء، أخرجت القاطرات البخارية الكبيرة من الخدمة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ولا يزال بعضها محفوظا في المتاحف وعلى الخطوط السياحية.",
+      "text_markdown": "ولا يزال بعضها محفوظا في المتاحف وعلى الخطوط السياحية.",
+      "tts": {
+        "text": "ولا يزال بعضها محفوظا في المتاحف وعلى الخطوط السياحية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكانت الخطوة التالية هي القطار الكهربائي.",
+      "text_markdown": "وكانت الخطوة التالية هي القطار الكهربائي.",
+      "tts": {
+        "text": "وكانت الخطوة التالية هي القطار الكهربائي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فالقطار الكهربائي لا يملك محركا يحرق الوقود.",
+      "text_markdown": "فالقطار الكهربائي لا يملك محركا يحرق الوقود.",
+      "tts": {
+        "text": "فالقطار الكهربائي لا يملك محركا يحرق الوقود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنه يأخذ الطاقة من سلك فوق السكة أو من قضيب ثالث بجانبها.",
+      "text_markdown": "إنه يأخذ الطاقة من سلك فوق السكة أو من قضيب ثالث بجانبها.",
+      "tts": {
+        "text": "إنه يأخذ الطاقة من سلك فوق السكة أو من قضيب ثالث بجانبها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والقطارات الكهربائية هادئة ونظيفة جدا.",
+      "text_markdown": "والقطارات الكهربائية هادئة ونظيفة جدا.",
+      "tts": {
+        "text": "والقطارات الكهربائية هادئة ونظيفة جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهي أيضا قوية جدا.",
+      "text_markdown": "وهي أيضا قوية جدا.",
+      "tts": {
+        "text": "وهي أيضا قوية جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومعظم قطارات المدن ومعظم القطارات السريعة اليوم كهربائية.",
+      "text_markdown": "ومعظم قطارات المدن ومعظم القطارات السريعة اليوم كهربائية.",
+      "tts": {
+        "text": "ومعظم قطارات المدن ومعظم القطارات السريعة اليوم كهربائية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بخار، وديزل، وكهرباء.",
+      "text_markdown": "بخار، وديزل، وكهرباء.",
+      "tts": {
+        "text": "بخار، وديزل، وكهرباء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: البخار والديزل والكهرباء",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ثلاثة محركات، وثلاثة عصور.",
+      "text_markdown": "ثلاثة محركات، وثلاثة عصور.",
+      "tts": {
+        "text": "ثلاثة محركات، وثلاثة عصور.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "text_markdown": "الفصل الخامس: القطارات السريعة وسباق السرعة"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في عام ألف وتسعمئة وأربعة وستين، افتتحت اليابان سكة حديد جديدة تماما.",
+      "text_markdown": "في عام ألف وتسعمئة وأربعة وستين، افتتحت اليابان سكة حديد جديدة تماما.",
+      "tts": {
+        "text": "في عام ألف وتسعمئة وأربعة وستين، افتتحت اليابان سكة حديد جديدة تماما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت تمتد من طوكيو إلى أوساكا.",
+      "text_markdown": "وكانت تمتد من طوكيو إلى أوساكا.",
+      "tts": {
+        "text": "وكانت تمتد من طوكيو إلى أوساكا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكانت القطارات تبدو مثل رصاصات بيضاء طويلة.",
+      "text_markdown": "وكانت القطارات تبدو مثل رصاصات بيضاء طويلة.",
+      "tts": {
+        "text": "وكانت القطارات تبدو مثل رصاصات بيضاء طويلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "فسماها الناس قطارات الرصاصة.",
+      "text_markdown": "فسماها الناس قطارات الرصاصة.",
+      "tts": {
+        "text": "فسماها الناس قطارات الرصاصة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "واسمها الياباني هو شينكانسن.",
+      "text_markdown": "واسمها الياباني هو شينكانسن.",
+      "tts": {
+        "text": "واسمها الياباني هو شينكانسن.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكانت أول القطارات السريعة تسير بسرعة مئة وثلاثين ميلا في الساعة.",
+      "text_markdown": "وكانت أول القطارات السريعة تسير بسرعة مئة وثلاثين ميلا في الساعة.",
+      "tts": {
+        "text": "وكانت أول القطارات السريعة تسير بسرعة مئة وثلاثين ميلا في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكانت تلك سرعة كبيرة جدا لقطار في عام ألف وتسعمئة وأربعة وستين.",
+      "text_markdown": "وكانت تلك سرعة كبيرة جدا لقطار في عام ألف وتسعمئة وأربعة وستين.",
+      "tts": {
+        "text": "وكانت تلك سرعة كبيرة جدا لقطار في عام ألف وتسعمئة وأربعة وستين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وافتتح الخط في الوقت المناسب تماما لدورة طوكيو الأولمبية.",
+      "text_markdown": "وافتتح الخط في الوقت المناسب تماما لدورة طوكيو الأولمبية.",
+      "tts": {
+        "text": "وافتتح الخط في الوقت المناسب تماما لدورة طوكيو الأولمبية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تبعتها دول أخرى.",
+      "text_markdown": "ثم تبعتها دول أخرى.",
+      "tts": {
+        "text": "ثم تبعتها دول أخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وافتتحت فرنسا خطها فائق السرعة في عام ألف وتسعمئة وواحد وثمانين.",
+      "text_markdown": "وافتتحت فرنسا خطها فائق السرعة في عام ألف وتسعمئة وواحد وثمانين.",
+      "tts": {
+        "text": "وافتتحت فرنسا خطها فائق السرعة في عام ألف وتسعمئة وواحد وثمانين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وتسمى هذه القطارات TGV.",
+      "text_markdown": "وتسمى هذه القطارات TGV.",
+      "tts": {
+        "text": "وتسمى هذه القطارات تي جي في.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ثم لحقت ألمانيا بقطارات ICE.",
+      "text_markdown": "ثم لحقت ألمانيا بقطارات ICE.",
+      "tts": {
+        "text": "ثم لحقت ألمانيا بقطارات آي سي إي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وبنت إيطاليا وإسبانيا وكوريا خطوطها الخاصة فائقة السرعة.",
+      "text_markdown": "وبنت إيطاليا وإسبانيا وكوريا خطوطها الخاصة فائقة السرعة.",
+      "tts": {
+        "text": "وبنت إيطاليا وإسبانيا وكوريا خطوطها الخاصة فائقة السرعة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكانت الصين آخر من بدأ، لكنها بنت بسرعة.",
+      "text_markdown": "وكانت الصين آخر من بدأ، لكنها بنت بسرعة.",
+      "tts": {
+        "text": "وكانت الصين آخر من بدأ، لكنها بنت بسرعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "واليوم، تمتلك الصين أكبر شبكة قطارات فائقة السرعة في العالم.",
+      "text_markdown": "واليوم، تمتلك الصين أكبر شبكة قطارات فائقة السرعة في العالم.",
+      "tts": {
+        "text": "واليوم، تمتلك الصين أكبر شبكة قطارات فائقة السرعة في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفيها عشرات الآلاف من الكيلومترات من القضبان.",
+      "text_markdown": "وفيها عشرات الآلاف من الكيلومترات من القضبان.",
+      "tts": {
+        "text": "وفيها عشرات الآلاف من الكيلومترات من القضبان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويمكن للقطارات السريعة الحديثة أن تسير بسرعة تزيد على مئتي ميل في الساعة.",
+      "text_markdown": "ويمكن للقطارات السريعة الحديثة أن تسير بسرعة تزيد على مئتي ميل في الساعة.",
+      "tts": {
+        "text": "ويمكن للقطارات السريعة الحديثة أن تسير بسرعة تزيد على مئتي ميل في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهي سلسة وهادئة وتصل في موعدها تقريبا دائما.",
+      "text_markdown": "وهي سلسة وهادئة وتصل في موعدها تقريبا دائما.",
+      "tts": {
+        "text": "وهي سلسة وهادئة وتصل في موعدها تقريبا دائما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: القطارات السريعة وسباق السرعة",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفي كثير من الرحلات، تكون أسرع من السفر بالطائرة.",
+      "text_markdown": "وفي كثير من الرحلات، تكون أسرع من السفر بالطائرة.",
+      "tts": {
+        "text": "وفي كثير من الرحلات، تكون أسرع من السفر بالطائرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السادس: أنواع كثيرة من القطارات",
+      "text_markdown": "الفصل السادس: أنواع كثيرة من القطارات"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ليست كل القطارات متشابهة.",
+      "text_markdown": "ليست كل القطارات متشابهة.",
+      "tts": {
+        "text": "ليست كل القطارات متشابهة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فهناك أنواع كثيرة.",
+      "text_markdown": "فهناك أنواع كثيرة.",
+      "tts": {
+        "text": "فهناك أنواع كثيرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ينقل قطار الركاب الناس.",
+      "text_markdown": "ينقل قطار الركاب الناس.",
+      "tts": {
+        "text": "ينقل قطار الركاب الناس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفيه مقاعد ونوافذ، وأحيانا عربة طعام أو عربة نوم.",
+      "text_markdown": "وفيه مقاعد ونوافذ، وأحيانا عربة طعام أو عربة نوم.",
+      "tts": {
+        "text": "وفيه مقاعد ونوافذ، وأحيانا عربة طعام أو عربة نوم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وينقل قطار الشحن البضائع.",
+      "text_markdown": "وينقل قطار الشحن البضائع.",
+      "tts": {
+        "text": "وينقل قطار الشحن البضائع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وتسمى هذه العربات عربات شحن.",
+      "text_markdown": "وتسمى هذه العربات عربات شحن.",
+      "tts": {
+        "text": "وتسمى هذه العربات عربات شحن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "فبعضها يحمل الحبوب.",
+      "text_markdown": "فبعضها يحمل الحبوب.",
+      "tts": {
+        "text": "فبعضها يحمل الحبوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وبعضها يحمل الزيت.",
+      "text_markdown": "وبعضها يحمل الزيت.",
+      "tts": {
+        "text": "وبعضها يحمل الزيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وبعضها يحمل حاويات شحن كاملة مكدسة في طبقتين.",
+      "text_markdown": "وبعضها يحمل حاويات شحن كاملة مكدسة في طبقتين.",
+      "tts": {
+        "text": "وبعضها يحمل حاويات شحن كاملة مكدسة في طبقتين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومترو الأنفاق هو قطار يسير تحت الأرض في المدينة.",
+      "text_markdown": "ومترو الأنفاق هو قطار يسير تحت الأرض في المدينة.",
+      "tts": {
+        "text": "ومترو الأنفاق هو قطار يسير تحت الأرض في المدينة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وقد افتتح أول مترو أنفاق في لندن في عام ألف وثمانمئة وثلاثة وستين.",
+      "text_markdown": "وقد افتتح أول مترو أنفاق في لندن في عام ألف وثمانمئة وثلاثة وستين.",
+      "tts": {
+        "text": "وقد افتتح أول مترو أنفاق في لندن في عام ألف وثمانمئة وثلاثة وستين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "واليوم، تملك المدن الكبيرة شبكات مترو ضخمة تحت شوارعها.",
+      "text_markdown": "واليوم، تملك المدن الكبيرة شبكات مترو ضخمة تحت شوارعها.",
+      "tts": {
+        "text": "واليوم، تملك المدن الكبيرة شبكات مترو ضخمة تحت شوارعها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والترام، أو القطار الخفيف، هو قطار صغير يسير في شوارع المدينة.",
+      "text_markdown": "والترام، أو القطار الخفيف، هو قطار صغير يسير في شوارع المدينة.",
+      "tts": {
+        "text": "والترام، أو القطار الخفيف، هو قطار صغير يسير في شوارع المدينة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وغالبا ما يشارك الطريق مع السيارات والحافلات.",
+      "text_markdown": "وغالبا ما يشارك الطريق مع السيارات والحافلات.",
+      "tts": {
+        "text": "وغالبا ما يشارك الطريق مع السيارات والحافلات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقطار الجبال يصعد التلال الشديدة الانحدار.",
+      "text_markdown": "وقطار الجبال يصعد التلال الشديدة الانحدار.",
+      "tts": {
+        "text": "وقطار الجبال يصعد التلال الشديدة الانحدار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ولبعضها سكة مسننة خاصة في الوسط، تسمى ترسا.",
+      "text_markdown": "ولبعضها سكة مسننة خاصة في الوسط، تسمى ترسا.",
+      "tts": {
+        "text": "ولبعضها سكة مسننة خاصة في الوسط، تسمى ترسا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وتمسك القاطرة بالترس لتصعد وتهبط بأمان.",
+      "text_markdown": "وتمسك القاطرة بالترس لتصعد وتهبط بأمان.",
+      "tts": {
+        "text": "وتمسك القاطرة بالترس لتصعد وتهبط بأمان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبعض القطارات قطارات سياحية أيضا.",
+      "text_markdown": "وبعض القطارات قطارات سياحية أيضا.",
+      "tts": {
+        "text": "وبعض القطارات قطارات سياحية أيضا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: أنواع كثيرة من القطارات",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فهي تسير عبر الغابات والجبال، فقط للاستمتاع بالمشهد.",
+      "text_markdown": "فهي تسير عبر الغابات والجبال، فقط للاستمتاع بالمشهد.",
+      "tts": {
+        "text": "فهي تسير عبر الغابات والجبال، فقط للاستمتاع بالمشهد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السابع: المستقبل على القضبان",
+      "text_markdown": "الفصل السابع: المستقبل على القضبان"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قصة القطار لم تنته بعد.",
+      "text_markdown": "قصة القطار لم تنته بعد.",
+      "tts": {
+        "text": "قصة القطار لم تنته بعد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويجري بناء أنواع جديدة من القطارات الآن.",
+      "text_markdown": "ويجري بناء أنواع جديدة من القطارات الآن.",
+      "tts": {
+        "text": "ويجري بناء أنواع جديدة من القطارات الآن.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وأكثرها إدهاشا هو قطار الماغليف.",
+      "text_markdown": "وأكثرها إدهاشا هو قطار الماغليف.",
+      "tts": {
+        "text": "وأكثرها إدهاشا هو قطار الماغليف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكلمة الماغليف هي اختصار لعبارة الرفع المغناطيسي.",
+      "text_markdown": "وكلمة الماغليف هي اختصار لعبارة الرفع المغناطيسي.",
+      "tts": {
+        "text": "وكلمة الماغليف هي اختصار لعبارة الرفع المغناطيسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وقطار الماغليف لا يلمس سكته.",
+      "text_markdown": "وقطار الماغليف لا يلمس سكته.",
+      "tts": {
+        "text": "وقطار الماغليف لا يلمس سكته.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "فهو يطفو على وسادة من المغناطيس.",
+      "text_markdown": "فهو يطفو على وسادة من المغناطيس.",
+      "tts": {
+        "text": "فهو يطفو على وسادة من المغناطيس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ولا توجد عجلات تدور.",
+      "text_markdown": "ولا توجد عجلات تدور.",
+      "tts": {
+        "text": "ولا توجد عجلات تدور.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ولا يوجد احتكاك.",
+      "text_markdown": "ولا يوجد احتكاك.",
+      "tts": {
+        "text": "ولا يوجد احتكاك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي عام ألفين وأربعة، افتتح خط ماغليف في شنغهاي بالصين.",
+      "text_markdown": "وفي عام ألفين وأربعة، افتتح خط ماغليف في شنغهاي بالصين.",
+      "tts": {
+        "text": "وفي عام ألفين وأربعة، افتتح خط ماغليف في شنغهاي بالصين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويمكن للقطار أن يصل إلى أكثر من مئتين وخمسين ميلا في الساعة.",
+      "text_markdown": "ويمكن للقطار أن يصل إلى أكثر من مئتين وخمسين ميلا في الساعة.",
+      "tts": {
+        "text": "ويمكن للقطار أن يصل إلى أكثر من مئتين وخمسين ميلا في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفي اليابان، سار قطار ماغليف تجريبي بسرعة تجاوزت ثلاثمئة وسبعين ميلا في الساعة.",
+      "text_markdown": "وفي اليابان، سار قطار ماغليف تجريبي بسرعة تجاوزت ثلاثمئة وسبعين ميلا في الساعة.",
+      "tts": {
+        "text": "وفي اليابان، سار قطار ماغليف تجريبي بسرعة تجاوزت ثلاثمئة وسبعين ميلا في الساعة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويعمل مهندسون آخرون على قطار الهيدروجين.",
+      "text_markdown": "ويعمل مهندسون آخرون على قطار الهيدروجين.",
+      "tts": {
+        "text": "ويعمل مهندسون آخرون على قطار الهيدروجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويولد قطار الهيدروجين الكهرباء من خلية وقود صغيرة.",
+      "text_markdown": "ويولد قطار الهيدروجين الكهرباء من خلية وقود صغيرة.",
+      "tts": {
+        "text": "ويولد قطار الهيدروجين الكهرباء من خلية وقود صغيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والشيء الوحيد الذي يخرج من المحرك هو بخار الماء.",
+      "text_markdown": "والشيء الوحيد الذي يخرج من المحرك هو بخار الماء.",
+      "tts": {
+        "text": "والشيء الوحيد الذي يخرج من المحرك هو بخار الماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لا دخان.",
+      "text_markdown": "لا دخان.",
+      "tts": {
+        "text": "لا دخان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "لا فحم.",
+      "text_markdown": "لا فحم.",
+      "tts": {
+        "text": "لا فحم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "وبدأت أول قطارات الهيدروجين الخدمة في ألمانيا في عام ألفين وثمانية عشر.",
+      "text_markdown": "وبدأت أول قطارات الهيدروجين الخدمة في ألمانيا في عام ألفين وثمانية عشر.",
+      "tts": {
+        "text": "وبدأت أول قطارات الهيدروجين الخدمة في ألمانيا في عام ألفين وثمانية عشر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القطارات قديمة جدا.",
+      "text_markdown": "القطارات قديمة جدا.",
+      "tts": {
+        "text": "القطارات قديمة جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهي أيضا جديدة جدا.",
+      "text_markdown": "وهي أيضا جديدة جدا.",
+      "tts": {
+        "text": "وهي أيضا جديدة جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المستقبل على القضبان",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبعد مئتي عام من روكيت، ما زالت القضبان هي المستقبل.",
+      "text_markdown": "وبعد مئتي عام من روكيت، ما زالت القضبان هي المستقبل.",
+      "tts": {
+        "text": "وبعد مئتي عام من روكيت، ما زالت القضبان هي المستقبل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "الطريق الحديدي يستمر",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطريق الحديدي يستمر",
+      "text_markdown": "الطريق الحديدي يستمر"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "الطريق الحديدي يستمر",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من روكيت إلى الماغليف، حمل القطار العالم إلى الأمام لما يقارب مئتي عام.",
+      "text_markdown": "من روكيت إلى الماغليف، حمل القطار العالم إلى الأمام لما يقارب مئتي عام.",
+      "tts": {
+        "text": "من روكيت إلى الماغليف، حمل القطار العالم إلى الأمام لما يقارب مئتي عام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "الطريق الحديدي يستمر",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويجري مد خطوط جديدة الآن، في الصحارى، وفي الجبال، وتحت المدن.",
+      "text_markdown": "ويجري مد خطوط جديدة الآن، في الصحارى، وفي الجبال، وتحت المدن.",
+      "tts": {
+        "text": "ويجري مد خطوط جديدة الآن، في الصحارى، وفي الجبال، وتحت المدن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "الطريق الحديدي يستمر",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والمحطة التالية تكون دائما في مكان ما أمامنا.",
+      "text_markdown": "والمحطة التالية تكون دائما في مكان ما أمامنا.",
+      "tts": {
+        "text": "والمحطة التالية تكون دائما في مكان ما أمامنا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "ar"
+}

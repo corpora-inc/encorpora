@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "id",
+  "total_segments": 170,
+  "segments": [
+    {
+      "chapter": 0,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "id": "ch00-001",
+      "heading_level": 1,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Catatan untuk Pembaca",
+      "text_markdown": "Catatan untuk Pembaca",
+      "title": "Catatan untuk Pembaca"
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini adalah kisah sepeda motor.",
+      "text_markdown": "Ini adalah kisah sepeda motor.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Ini adalah kisah sepeda motor.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "id": "ch00-003",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini adalah kisah nyata.",
+      "text_markdown": "Ini adalah kisah nyata.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Ini adalah kisah nyata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dahulu kala, tidak ada yang memiliki sepeda motor.",
+      "text_markdown": "Dahulu kala, tidak ada yang memiliki sepeda motor.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Dahulu kala, tidak ada yang memiliki sepeda motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "id": "ch00-005",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sekarang, ada jutaan di antaranya.",
+      "text_markdown": "Sekarang, ada jutaan di antaranya.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Sekarang, ada jutaan di antaranya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "id": "ch00-006",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka berisik, cepat, dan berkilau.",
+      "text_markdown": "Mereka berisik, cepat, dan berkilau.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Mereka berisik, cepat, dan berkilau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kita akan mulai dari awal sekali.",
+      "text_markdown": "Kita akan mulai dari awal sekali.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kita akan mulai dari awal sekali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "id": "ch00-008",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kita akan bertemu pembuat pertama, pengendara pertama, dan balapan pertama.",
+      "text_markdown": "Kita akan bertemu pembuat pertama, pengendara pertama, dan balapan pertama.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kita akan bertemu pembuat pertama, pengendara pertama, dan balapan pertama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "id": "ch00-009",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kemudian kita akan melihat dunia saat ini.",
+      "text_markdown": "Kemudian kita akan melihat dunia saat ini.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kemudian kita akan melihat dunia saat ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "id": "ch00-010",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada akhirnya, Anda akan tahu bagaimana mesin kecil ini mengubah jalan selamanya.",
+      "text_markdown": "Pada akhirnya, Anda akan tahu bagaimana mesin kecil ini mengubah jalan selamanya.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Pada akhirnya, Anda akan tahu bagaimana mesin kecil ini mengubah jalan selamanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "id": "ch01-011",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "text_markdown": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor adalah sepeda dengan mesin.",
+      "text_markdown": "Sepeda motor adalah sepeda dengan mesin.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Sepeda motor adalah sepeda dengan mesin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mesin mendorong roda.",
+      "text_markdown": "Mesin mendorong roda.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Mesin mendorong roda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pengendara tidak mengayuh.",
+      "text_markdown": "Pengendara tidak mengayuh.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Pengendara tidak mengayuh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dahulu kala, tidak ada sepeda motor.",
+      "text_markdown": "Dahulu kala, tidak ada sepeda motor.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Dahulu kala, tidak ada sepeda motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "block_type": "text",
+      "part": 0,
+      "text": "Orang-orang menunggang kuda.",
+      "text_markdown": "Orang-orang menunggang kuda.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Orang-orang menunggang kuda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "block_type": "text",
+      "part": 0,
+      "text": "Orang-orang mengendarai sepeda.",
+      "text_markdown": "Orang-orang mengendarai sepeda.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Orang-orang mengendarai sepeda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda memiliki dua roda dan tanpa mesin.",
+      "text_markdown": "Sepeda memiliki dua roda dan tanpa mesin.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Sepeda memiliki dua roda dan tanpa mesin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "id": "ch01-019",
+      "block_type": "text",
+      "part": 0,
+      "text": "Anda harus mengayuh pedal dengan kaki Anda.",
+      "text_markdown": "Anda harus mengayuh pedal dengan kaki Anda.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Anda harus mengayuh pedal dengan kaki Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "id": "ch01-020",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1885, seorang pria di Jerman memiliki ide besar.",
+      "text_markdown": "Pada tahun 1885, seorang pria di Jerman memiliki ide besar.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus delapan puluh lima, seorang pria di Jerman memiliki ide besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "id": "ch01-021",
+      "block_type": "text",
+      "part": 0,
+      "text": "Namanya adalah Gottlieb Daimler.",
+      "text_markdown": "Namanya adalah Gottlieb Daimler.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Namanya adalah Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "id": "ch01-022",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dia mengambil mesin bensin kecil dan memasangnya pada sepeda kayu.",
+      "text_markdown": "Dia mengambil mesin bensin kecil dan memasangnya pada sepeda kayu.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Dia mengambil mesin bensin kecil dan memasangnya pada sepeda kayu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "id": "ch01-023",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dia menamai mesinnya Reitwagen.",
+      "text_markdown": "Dia menamai mesinnya Reitwagen.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Dia menamai mesinnya Reitwagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "id": "ch01-024",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kata itu berarti \"kereta berkuda\" dalam bahasa Jerman.",
+      "text_markdown": "Kata itu berarti \"kereta berkuda\" dalam bahasa Jerman.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Kata itu berarti \"kereta berkuda\" dalam bahasa Jerman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "id": "ch01-025",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu adalah sepeda motor pertama di dunia.",
+      "text_markdown": "Itu adalah sepeda motor pertama di dunia.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Itu adalah sepeda motor pertama di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "id": "ch01-026",
+      "block_type": "text",
+      "part": 0,
+      "text": "Reitwagen itu berisik.",
+      "text_markdown": "Reitwagen itu berisik.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Reitwagen itu berisik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "id": "ch01-027",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu berguncang.",
+      "text_markdown": "Itu berguncang.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Itu berguncang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "id": "ch01-028",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu hanya memiliki satu kecepatan.",
+      "text_markdown": "Itu hanya memiliki satu kecepatan.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Itu hanya memiliki satu kecepatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "id": "ch01-029",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu bisa melaju sekitar 7 mil per jam.",
+      "text_markdown": "Itu bisa melaju sekitar 7 mil per jam.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Itu bisa melaju sekitar tujuh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "id": "ch01-030",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu lebih lambat dari seseorang yang mengendarai sepeda hari ini.",
+      "text_markdown": "Itu lebih lambat dari seseorang yang mengendarai sepeda hari ini.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Itu lebih lambat dari seseorang yang mengendarai sepeda hari ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "id": "ch01-031",
+      "block_type": "text",
+      "part": 0,
+      "text": "Namun, ia bisa bergerak tanpa kuda, dan ia bisa bergerak tanpa pedal.",
+      "text_markdown": "Namun, ia bisa bergerak tanpa kuda, dan ia bisa bergerak tanpa pedal.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Namun, ia bisa bergerak tanpa kuda, dan ia bisa bergerak tanpa pedal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "id": "ch01-032",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor pun lahir.",
+      "text_markdown": "Sepeda motor pun lahir.",
+      "title": "Bab 1 — Kendaraan Roda Dua Pertama yang Berbunyi Vroom",
+      "tts": {
+        "text": "Sepeda motor pun lahir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "id": "ch02-033",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "text_markdown": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama"
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "id": "ch02-034",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setelah Daimler, orang lain juga ingin membuat sepeda motor.",
+      "text_markdown": "Setelah Daimler, orang lain juga ingin membuat sepeda motor.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Setelah Daimler, orang lain juga ingin membuat sepeda motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "id": "ch02-035",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tak lama kemudian, bengkel-bengkel kecil dibuka di seluruh dunia.",
+      "text_markdown": "Tak lama kemudian, bengkel-bengkel kecil dibuka di seluruh dunia.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Tak lama kemudian, bengkel-bengkel kecil dibuka di seluruh dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "id": "ch02-036",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di Inggris, seorang pria bernama Siegfried Bettmann mendirikan perusahaan bernama Triumph.",
+      "text_markdown": "Di Inggris, seorang pria bernama Siegfried Bettmann mendirikan perusahaan bernama Triumph.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Di Inggris, seorang pria bernama Siegfried Bettmann mendirikan perusahaan bernama Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "id": "ch02-037",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor Triumph pertama dibuat pada tahun 1902.",
+      "text_markdown": "Sepeda motor Triumph pertama dibuat pada tahun 1902.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Sepeda motor Triumph pertama dibuat pada tahun seribu sembilan ratus dua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di Amerika, dua teman bernama William Harley dan Arthur Davidson membangun sepeda pertama mereka di sebuah gudang kayu kecil.",
+      "text_markdown": "Di Amerika, dua teman bernama William Harley dan Arthur Davidson membangun sepeda pertama mereka di sebuah gudang kayu kecil.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Di Amerika, dua teman bernama William Harley dan Arthur Davidson membangun sepeda pertama mereka di sebuah gudang kayu kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "block_type": "text",
+      "part": 0,
+      "text": "Gudang itu berada di kota Milwaukee.",
+      "text_markdown": "Gudang itu berada di kota Milwaukee.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Gudang itu berada di kota Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tahun itu adalah 1903.",
+      "text_markdown": "Tahun itu adalah 1903.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Tahun itu adalah seribu sembilan ratus tiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka menamai perusahaan itu Harley-Davidson.",
+      "text_markdown": "Mereka menamai perusahaan itu Harley-Davidson.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Mereka menamai perusahaan itu Harley-Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "id": "ch02-042",
+      "block_type": "text",
+      "part": 0,
+      "text": "Perusahaan Amerika lainnya dimulai beberapa tahun sebelumnya.",
+      "text_markdown": "Perusahaan Amerika lainnya dimulai beberapa tahun sebelumnya.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Perusahaan Amerika lainnya dimulai beberapa tahun sebelumnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "id": "ch02-043",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dua pria di Springfield, Massachusetts, membangun mesin pertama mereka pada tahun 1901.",
+      "text_markdown": "Dua pria di Springfield, Massachusetts, membangun mesin pertama mereka pada tahun 1901.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Dua pria di Springfield, Massachusetts, membangun mesin pertama mereka pada tahun seribu sembilan ratus satu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "id": "ch02-044",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka menamainya Indian.",
+      "text_markdown": "Mereka menamainya Indian.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Mereka menamainya Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "id": "ch02-045",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di India, sebuah perusahaan bernama Royal Enfield juga mulai membuat sepeda motor pada tahun 1901.",
+      "text_markdown": "Di India, sebuah perusahaan bernama Royal Enfield juga mulai membuat sepeda motor pada tahun 1901.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Di India, sebuah perusahaan bernama Royal Enfield juga mulai membuat sepeda motor pada tahun seribu sembilan ratus satu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "id": "ch02-046",
+      "block_type": "text",
+      "part": 0,
+      "text": "Saat ini, Royal Enfield adalah perusahaan sepeda motor tertua di dunia yang masih membuat sepeda.",
+      "text_markdown": "Saat ini, Royal Enfield adalah perusahaan sepeda motor tertua di dunia yang masih membuat sepeda.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Saat ini, Royal Enfield adalah perusahaan sepeda motor tertua di dunia yang masih membuat sepeda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di Jerman, perusahaan BMW mulai membuat sepeda motor sedikit lebih lambat, yaitu pada tahun 1923.",
+      "text_markdown": "Di Jerman, perusahaan BMW mulai membuat sepeda motor sedikit lebih lambat, yaitu pada tahun 1923.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Di Jerman, perusahaan Bee Em Double You mulai membuat sepeda motor sedikit lebih lambat, yaitu pada tahun seribu sembilan ratus dua puluh tiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "block_type": "text",
+      "part": 0,
+      "text": "BMW berarti \"Bavarian Motor Works\" dalam bahasa Jerman.",
+      "text_markdown": "BMW berarti \"Bavarian Motor Works\" dalam bahasa Jerman.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Bee Em Double You berarti \"Bavarian Motor Works\" dalam bahasa Jerman.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "id": "ch02-049",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1910, sepeda motor sudah ada di mana-mana.",
+      "text_markdown": "Pada tahun 1910, sepeda motor sudah ada di mana-mana.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus sepuluh, sepeda motor sudah ada di mana-mana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "id": "ch02-050",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka ada di jalanan kota dan jalan pedesaan.",
+      "text_markdown": "Mereka ada di jalanan kota dan jalan pedesaan.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Mereka ada di jalanan kota dan jalan pedesaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "id": "ch02-051",
+      "block_type": "text",
+      "part": 0,
+      "text": "Era sepeda motor benar-benar telah dimulai.",
+      "text_markdown": "Era sepeda motor benar-benar telah dimulai.",
+      "title": "Bab 2 — Perusahaan-Perusahaan Pertama",
+      "tts": {
+        "text": "Era sepeda motor benar-benar telah dimulai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "id": "ch03-052",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "text_markdown": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang"
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "id": "ch03-053",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor itu cepat.",
+      "text_markdown": "Sepeda motor itu cepat.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Sepeda motor itu cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "id": "ch03-054",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka bisa melewati jalan setapak kecil.",
+      "text_markdown": "Mereka bisa melewati jalan setapak kecil.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Mereka bisa melewati jalan setapak kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "id": "ch03-055",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka bisa membawa pesan antar kamp.",
+      "text_markdown": "Mereka bisa membawa pesan antar kamp.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Mereka bisa membawa pesan antar kamp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "id": "ch03-056",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jadi, ketika perang datang, tentara menginginkan sepeda motor.",
+      "text_markdown": "Jadi, ketika perang datang, tentara menginginkan sepeda motor.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Jadi, ketika perang datang, tentara menginginkan sepeda motor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "id": "ch03-057",
+      "block_type": "text",
+      "part": 0,
+      "text": "Perang Dunia Pertama dimulai pada tahun 1914.",
+      "text_markdown": "Perang Dunia Pertama dimulai pada tahun 1914.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Perang Dunia Pertama dimulai pada tahun seribu sembilan ratus empat belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "id": "ch03-058",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tentara menggunakan sepeda motor Triumph untuk membawa perintah.",
+      "text_markdown": "Tentara menggunakan sepeda motor Triumph untuk membawa perintah.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Tentara menggunakan sepeda motor Triumph untuk membawa perintah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "id": "ch03-059",
+      "block_type": "text",
+      "part": 0,
+      "text": "Triumph Model H kuat dan senyap.",
+      "text_markdown": "Triumph Model H kuat dan senyap.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Triumph Model H kuat dan senyap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "id": "ch03-060",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ia bisa pergi ke tempat yang tidak bisa dilalui kuda.",
+      "text_markdown": "Ia bisa pergi ke tempat yang tidak bisa dilalui kuda.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Ia bisa pergi ke tempat yang tidak bisa dilalui kuda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "id": "ch03-061",
+      "block_type": "text",
+      "part": 0,
+      "text": "Perang Dunia Kedua dimulai pada tahun 1939.",
+      "text_markdown": "Perang Dunia Kedua dimulai pada tahun 1939.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Perang Dunia Kedua dimulai pada tahun seribu sembilan ratus tiga puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "id": "ch03-062",
+      "block_type": "text",
+      "part": 0,
+      "text": "Saat itu, sepeda motor sudah lebih cepat dan lebih kuat.",
+      "text_markdown": "Saat itu, sepeda motor sudah lebih cepat dan lebih kuat.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Saat itu, sepeda motor sudah lebih cepat dan lebih kuat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "id": "ch03-063",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tentara Amerika mengendarai Harley-Davidson WLA.",
+      "text_markdown": "Tentara Amerika mengendarai Harley-Davidson WLA.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Tentara Amerika mengendarai Harley-Davidson W L A.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "id": "ch03-064",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tentara Jerman mengendarai BMW R75.",
+      "text_markdown": "Tentara Jerman mengendarai BMW R75.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Tentara Jerman mengendarai Bee Em Double You R tujuh puluh lima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "id": "ch03-065",
+      "block_type": "text",
+      "part": 0,
+      "text": "R75 memiliki sespan dengan roda ketiga dan tempat duduk untuk tentara lain.",
+      "text_markdown": "R75 memiliki sespan dengan roda ketiga dan tempat duduk untuk tentara lain.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "R tujuh puluh lima memiliki sespan dengan roda ketiga dan tempat duduk untuk tentara lain.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "id": "ch03-066",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setelah perang, para tentara pulang.",
+      "text_markdown": "Setelah perang, para tentara pulang.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Setelah perang, para tentara pulang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "id": "ch03-067",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka membawa sepeda motor mereka.",
+      "text_markdown": "Mereka membawa sepeda motor mereka.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Mereka membawa sepeda motor mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "id": "ch03-068",
+      "block_type": "text",
+      "part": 0,
+      "text": "Banyak dari mereka ingin terus berkendara.",
+      "text_markdown": "Banyak dari mereka ingin terus berkendara.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Banyak dari mereka ingin terus berkendara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "id": "ch03-069",
+      "block_type": "text",
+      "part": 0,
+      "text": "Beberapa dari mereka mendirikan klub sepeda motor sendiri.",
+      "text_markdown": "Beberapa dari mereka mendirikan klub sepeda motor sendiri.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Beberapa dari mereka mendirikan klub sepeda motor sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "id": "ch03-070",
+      "block_type": "text",
+      "part": 0,
+      "text": "Perang membuat sepeda motor terkenal.",
+      "text_markdown": "Perang membuat sepeda motor terkenal.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Perang membuat sepeda motor terkenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "id": "ch03-071",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jutaan orang telah melihatnya untuk pertama kali.",
+      "text_markdown": "Jutaan orang telah melihatnya untuk pertama kali.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Jutaan orang telah melihatnya untuk pertama kali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "id": "ch03-072",
+      "block_type": "text",
+      "part": 0,
+      "text": "Banyak yang menginginkan satu untuk diri mereka sendiri.",
+      "text_markdown": "Banyak yang menginginkan satu untuk diri mereka sendiri.",
+      "title": "Bab 3 — Sepeda Motor Pergi Berperang",
+      "tts": {
+        "text": "Banyak yang menginginkan satu untuk diri mereka sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "id": "ch04-073",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 4 — Kebangkitan Jepang",
+      "text_markdown": "Bab 4 — Kebangkitan Jepang",
+      "title": "Bab 4 — Kebangkitan Jepang"
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "id": "ch04-074",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setelah Perang Dunia Kedua, Jepang miskin.",
+      "text_markdown": "Setelah Perang Dunia Kedua, Jepang miskin.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Setelah Perang Dunia Kedua, Jepang miskin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "id": "ch04-075",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kebanyakan mobil terlalu mahal.",
+      "text_markdown": "Kebanyakan mobil terlalu mahal.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Kebanyakan mobil terlalu mahal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "id": "ch04-076",
+      "block_type": "text",
+      "part": 0,
+      "text": "Orang-orang membutuhkan cara yang kecil dan murah untuk bepergian.",
+      "text_markdown": "Orang-orang membutuhkan cara yang kecil dan murah untuk bepergian.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Orang-orang membutuhkan cara yang kecil dan murah untuk bepergian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "id": "ch04-077",
+      "block_type": "text",
+      "part": 0,
+      "text": "Seorang pemuda Jepang melihat peluang itu.",
+      "text_markdown": "Seorang pemuda Jepang melihat peluang itu.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Seorang pemuda Jepang melihat peluang itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "id": "ch04-078",
+      "block_type": "text",
+      "part": 0,
+      "text": "Namanya Soichiro Honda.",
+      "text_markdown": "Namanya Soichiro Honda.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Namanya Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "id": "ch04-079",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dia memulai sebuah perusahaan kecil pada tahun 1948.",
+      "text_markdown": "Dia memulai sebuah perusahaan kecil pada tahun 1948.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Dia memulai sebuah perusahaan kecil pada tahun seribu sembilan ratus empat puluh delapan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "id": "ch04-080",
+      "block_type": "text",
+      "part": 0,
+      "text": "Dia menamainya Honda.",
+      "text_markdown": "Dia menamainya Honda.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Dia menamainya Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "id": "ch04-081",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1958, Honda membangun sepeda motor kecil bernama Super Cub.",
+      "text_markdown": "Pada tahun 1958, Honda membangun sepeda motor kecil bernama Super Cub.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus lima puluh delapan, Honda membangun sepeda motor kecil bernama Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "id": "ch04-082",
+      "block_type": "text",
+      "part": 0,
+      "text": "Super Cub mudah dikendarai.",
+      "text_markdown": "Super Cub mudah dikendarai.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Super Cub mudah dikendarai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "id": "ch04-083",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mudah diperbaiki.",
+      "text_markdown": "Mudah diperbaiki.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Mudah diperbaiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "id": "ch04-084",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sangat, sangat murah.",
+      "text_markdown": "Sangat, sangat murah.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Sangat, sangat murah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "id": "ch04-085",
+      "block_type": "text",
+      "part": 0,
+      "text": "Orang-orang di seluruh dunia membeli Super Cub.",
+      "text_markdown": "Orang-orang di seluruh dunia membeli Super Cub.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Orang-orang di seluruh dunia membeli Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "id": "ch04-086",
+      "block_type": "text",
+      "part": 0,
+      "text": "Hari ini, lebih dari 100 juta Super Cub telah terjual.",
+      "text_markdown": "Hari ini, lebih dari 100 juta Super Cub telah terjual.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Hari ini, lebih dari seratus juta Super Cub telah terjual.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "id": "ch04-087",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini adalah kendaraan bermotor terlaris sepanjang masa.",
+      "text_markdown": "Ini adalah kendaraan bermotor terlaris sepanjang masa.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Ini adalah kendaraan bermotor terlaris sepanjang masa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "id": "ch04-088",
+      "block_type": "text",
+      "part": 0,
+      "text": "Tak lama kemudian, tiga perusahaan Jepang lainnya mengikuti Honda.",
+      "text_markdown": "Tak lama kemudian, tiga perusahaan Jepang lainnya mengikuti Honda.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Tak lama kemudian, tiga perusahaan Jepang lainnya mengikuti Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "id": "ch04-089",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka adalah Yamaha, Suzuki, dan Kawasaki.",
+      "text_markdown": "Mereka adalah Yamaha, Suzuki, dan Kawasaki.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Mereka adalah Yamaha, Suzuki, dan Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "id": "ch04-090",
+      "block_type": "text",
+      "part": 0,
+      "text": "Bersama Honda, mereka disebut Empat Besar.",
+      "text_markdown": "Bersama Honda, mereka disebut Empat Besar.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Bersama Honda, mereka disebut Empat Besar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "id": "ch04-091",
+      "block_type": "text",
+      "part": 0,
+      "text": "Empat Besar membuat sepeda motor yang cepat, murah, dan mudah dikendarai.",
+      "text_markdown": "Empat Besar membuat sepeda motor yang cepat, murah, dan mudah dikendarai.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Empat Besar membuat sepeda motor yang cepat, murah, dan mudah dikendarai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "id": "ch04-092",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1960-an, sepeda motor Jepang ada di mana-mana.",
+      "text_markdown": "Pada tahun 1960-an, sepeda motor Jepang ada di mana-mana.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus enam puluhan, sepeda motor Jepang ada di mana-mana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "id": "ch04-093",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka adalah raja jalanan yang baru.",
+      "text_markdown": "Mereka adalah raja jalanan yang baru.",
+      "title": "Bab 4 — Kebangkitan Jepang",
+      "tts": {
+        "text": "Mereka adalah raja jalanan yang baru.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "id": "ch05-094",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "text_markdown": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat"
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "id": "ch05-095",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1960-an, pengendara ingin melaju lebih cepat.",
+      "text_markdown": "Pada tahun 1960-an, pengendara ingin melaju lebih cepat.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus enam puluhan, pengendara ingin melaju lebih cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "id": "ch05-096",
+      "block_type": "text",
+      "part": 0,
+      "text": "Para pembuat memulai perlombaan untuk menciptakan sepeda motor tercepat di dunia.",
+      "text_markdown": "Para pembuat memulai perlombaan untuk menciptakan sepeda motor tercepat di dunia.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Para pembuat memulai perlombaan untuk menciptakan sepeda motor tercepat di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "id": "ch05-097",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di Italia, sebuah perusahaan kecil bernama MV Agusta membangun motor merah yang indah yang memenangkan balapan demi balapan.",
+      "text_markdown": "Di Italia, sebuah perusahaan kecil bernama MV Agusta membangun motor merah yang indah yang memenangkan balapan demi balapan.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Di Italia, sebuah perusahaan kecil bernama MV Agusta membangun motor merah yang indah yang memenangkan balapan demi balapan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "id": "ch05-098",
+      "block_type": "text",
+      "part": 0,
+      "text": "Di Inggris, Triumph dan Norton juga membangun mesin-mesin bertenaga.",
+      "text_markdown": "Di Inggris, Triumph dan Norton juga membangun mesin-mesin bertenaga.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Di Inggris, Triumph dan Norton juga membangun mesin-mesin bertenaga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "id": "ch05-099",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kemudian, pada tahun 1969, Honda melakukan sesuatu yang menakjubkan.",
+      "text_markdown": "Kemudian, pada tahun 1969, Honda melakukan sesuatu yang menakjubkan.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Kemudian, pada tahun seribu sembilan ratus enam puluh sembilan, Honda melakukan sesuatu yang menakjubkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "id": "ch05-100",
+      "block_type": "text",
+      "part": 0,
+      "text": "Mereka membangun sepeda motor bernama CB 750.",
+      "text_markdown": "Mereka membangun sepeda motor bernama CB 750.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Mereka membangun sepeda motor bernama C B tujuh ratus lima puluh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "id": "ch05-101",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini memiliki empat silinder dan mesin besar.",
+      "text_markdown": "Motor ini memiliki empat silinder dan mesin besar.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Motor ini memiliki empat silinder dan mesin besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "id": "ch05-102",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini bisa melaju lebih dari 120 mil per jam.",
+      "text_markdown": "Motor ini bisa melaju lebih dari 120 mil per jam.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Motor ini bisa melaju lebih dari seratus dua puluh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "id": "ch05-103",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu adalah superbike sejati pertama.",
+      "text_markdown": "Itu adalah superbike sejati pertama.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Itu adalah superbike sejati pertama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "id": "ch05-104",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setelah CB 750, setiap perusahaan ingin membangun superbike.",
+      "text_markdown": "Setelah CB 750, setiap perusahaan ingin membangun superbike.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Setelah C B tujuh ratus lima puluh, setiap perusahaan ingin membangun superbike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "id": "ch05-105",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor-motor itu semakin cepat dan cepat.",
+      "text_markdown": "Motor-motor itu semakin cepat dan cepat.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Motor-motor itu semakin cepat dan cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "id": "ch05-106",
+      "block_type": "text",
+      "part": 0,
+      "text": "Segera, mereka memiliki fairing cerah, cangkang plastik halus yang membelah angin.",
+      "text_markdown": "Segera, mereka memiliki fairing cerah, cangkang plastik halus yang membelah angin.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Segera, mereka memiliki fairing cerah, cangkang plastik halus yang membelah angin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "id": "ch05-107",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pada tahun 1990, sepeda motor Jepang bernama Kawasaki ZX-11 menjadi sepeda motor tercepat di dunia.",
+      "text_markdown": "Pada tahun 1990, sepeda motor Jepang bernama Kawasaki ZX-11 menjadi sepeda motor tercepat di dunia.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus sembilan puluh, sepeda motor Jepang bernama Kawasaki Z X sebelas menjadi sepeda motor tercepat di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "id": "ch05-108",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini bisa melaju hampir 175 mil per jam.",
+      "text_markdown": "Motor ini bisa melaju hampir 175 mil per jam.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Motor ini bisa melaju hampir seratus tujuh puluh lima mil per jam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "id": "ch05-109",
+      "block_type": "text",
+      "part": 0,
+      "text": "Beberapa tahun kemudian, Suzuki Hayabusa melaju lebih cepat lagi.",
+      "text_markdown": "Beberapa tahun kemudian, Suzuki Hayabusa melaju lebih cepat lagi.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Beberapa tahun kemudian, Suzuki Hayabusa melaju lebih cepat lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "id": "ch05-110",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini mencapai 194 mil per jam.",
+      "text_markdown": "Motor ini mencapai 194 mil per jam.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Motor ini mencapai seratus sembilan puluh empat mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "id": "ch05-111",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itu lebih cepat daripada kebanyakan mobil di jalanan saat ini.",
+      "text_markdown": "Itu lebih cepat daripada kebanyakan mobil di jalanan saat ini.",
+      "title": "Bab 5 — Lebih Cepat, Lebih Cepat, Lebih Cepat",
+      "tts": {
+        "text": "Itu lebih cepat daripada kebanyakan mobil di jalanan saat ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "id": "ch06-112",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "text_markdown": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor"
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "id": "ch06-113",
+      "block_type": "text",
+      "part": 0,
+      "text": "Saat ini, sepeda motor hadir dalam berbagai bentuk.",
+      "text_markdown": "Saat ini, sepeda motor hadir dalam berbagai bentuk.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Saat ini, sepeda motor hadir dalam berbagai bentuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "id": "ch06-114",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setiap jenis dibangun untuk pekerjaan yang berbeda.",
+      "text_markdown": "Setiap jenis dibangun untuk pekerjaan yang berbeda.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Setiap jenis dibangun untuk pekerjaan yang berbeda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "id": "ch06-115",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor sport dibangun untuk melaju sangat cepat.",
+      "text_markdown": "Sepeda motor sport dibangun untuk melaju sangat cepat.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Sepeda motor sport dibangun untuk melaju sangat cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "id": "ch06-116",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini ringan dan rendah.",
+      "text_markdown": "Motor ini ringan dan rendah.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor ini ringan dan rendah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "id": "ch06-117",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pengendara condong ke depan.",
+      "text_markdown": "Pengendara condong ke depan.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Pengendara condong ke depan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "id": "ch06-118",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor sport dibuat untuk jalanan mulus dan sirkuit balap.",
+      "text_markdown": "Sepeda motor sport dibuat untuk jalanan mulus dan sirkuit balap.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Sepeda motor sport dibuat untuk jalanan mulus dan sirkuit balap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "id": "ch06-119",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor trail dibangun untuk lumpur dan tanah.",
+      "text_markdown": "Sepeda motor trail dibangun untuk lumpur dan tanah.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Sepeda motor trail dibangun untuk lumpur dan tanah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "id": "ch06-120",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini memiliki roda tinggi dan ban besar.",
+      "text_markdown": "Motor ini memiliki roda tinggi dan ban besar.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor ini memiliki roda tinggi dan ban besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "id": "ch06-121",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor trail bisa melompati bukit.",
+      "text_markdown": "Motor trail bisa melompati bukit.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor trail bisa melompati bukit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "id": "ch06-122",
+      "block_type": "text",
+      "part": 0,
+      "text": "Banyak pengendara muda belajar menggunakan motor trail terlebih dahulu.",
+      "text_markdown": "Banyak pengendara muda belajar menggunakan motor trail terlebih dahulu.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Banyak pengendara muda belajar menggunakan motor trail terlebih dahulu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "id": "ch06-123",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor cruiser panjang dan rendah.",
+      "text_markdown": "Motor cruiser panjang dan rendah.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor cruiser panjang dan rendah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "id": "ch06-124",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pengendara duduk tegak dan berkendara perlahan.",
+      "text_markdown": "Pengendara duduk tegak dan berkendara perlahan.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Pengendara duduk tegak dan berkendara perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "id": "ch06-125",
+      "block_type": "text",
+      "part": 0,
+      "text": "Harley-Davidson terkenal dengan motor cruiser-nya.",
+      "text_markdown": "Harley-Davidson terkenal dengan motor cruiser-nya.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Harley-Davidson terkenal dengan motor cruiser-nya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "id": "ch06-126",
+      "block_type": "text",
+      "part": 0,
+      "text": "Begitu juga dengan Indian.",
+      "text_markdown": "Begitu juga dengan Indian.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Begitu juga dengan Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "id": "ch06-127",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor petualangan dibuat untuk perjalanan jauh.",
+      "text_markdown": "Motor petualangan dibuat untuk perjalanan jauh.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor petualangan dibuat untuk perjalanan jauh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "id": "ch06-128",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini bisa dikendarai di jalan raya dan tanah.",
+      "text_markdown": "Motor ini bisa dikendarai di jalan raya dan tanah.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Motor ini bisa dikendarai di jalan raya dan tanah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "id": "ch06-129",
+      "block_type": "text",
+      "part": 0,
+      "text": "BMW GS adalah motor petualangan yang terkenal.",
+      "text_markdown": "BMW GS adalah motor petualangan yang terkenal.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Bee Em Double You GS adalah motor petualangan yang terkenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "id": "ch06-130",
+      "block_type": "text",
+      "part": 0,
+      "text": "Begitu juga dengan KTM.",
+      "text_markdown": "Begitu juga dengan KTM.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Begitu juga dengan KTM.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "id": "ch06-131",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ada juga motor chopper, motor skuter, motor balap, dan motor listrik.",
+      "text_markdown": "Ada juga motor chopper, motor skuter, motor balap, dan motor listrik.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Ada juga motor chopper, motor skuter, motor balap, dan motor listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "id": "ch06-132",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ada sepeda motor untuk hampir setiap jenis jalan.",
+      "text_markdown": "Ada sepeda motor untuk hampir setiap jenis jalan.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Ada sepeda motor untuk hampir setiap jenis jalan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "id": "ch06-133",
+      "block_type": "text",
+      "part": 0,
+      "text": "Saat ini, Anda bisa menemukan sepeda motor di setiap negara di dunia.",
+      "text_markdown": "Saat ini, Anda bisa menemukan sepeda motor di setiap negara di dunia.",
+      "title": "Bab 6 — Berbagai Jenis Sepeda Motor",
+      "tts": {
+        "text": "Saat ini, Anda bisa menemukan sepeda motor di setiap negara di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "id": "ch07-134",
+      "heading_level": 2,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Bab 7 — Jalan Baru",
+      "text_markdown": "Bab 7 — Jalan Baru",
+      "title": "Bab 7 — Jalan Baru"
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "id": "ch07-135",
+      "block_type": "text",
+      "part": 0,
+      "text": "Saat ini, sepeda motor memiliki jenis mesin baru.",
+      "text_markdown": "Saat ini, sepeda motor memiliki jenis mesin baru.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Saat ini, sepeda motor memiliki jenis mesin baru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "id": "ch07-136",
+      "block_type": "text",
+      "part": 0,
+      "text": "Yaitu mesin listrik.",
+      "text_markdown": "Yaitu mesin listrik.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Yaitu mesin listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "id": "ch07-137",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor listrik tidak bersuara.",
+      "text_markdown": "Sepeda motor listrik tidak bersuara.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sepeda motor listrik tidak bersuara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "id": "ch07-138",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini tidak membutuhkan bensin.",
+      "text_markdown": "Motor ini tidak membutuhkan bensin.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Motor ini tidak membutuhkan bensin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "id": "ch07-139",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor ini hanya perlu dicolokkan seperti telepon.",
+      "text_markdown": "Motor ini hanya perlu dicolokkan seperti telepon.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Motor ini hanya perlu dicolokkan seperti telepon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "id": "ch07-140",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sebuah perusahaan bernama Zero membuat sepeda motor listrik di California.",
+      "text_markdown": "Sebuah perusahaan bernama Zero membuat sepeda motor listrik di California.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sebuah perusahaan bernama Zero membuat sepeda motor listrik di California.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "id": "ch07-141",
+      "block_type": "text",
+      "part": 0,
+      "text": "Harley-Davidson kini membuat motor listrik bernama LiveWire.",
+      "text_markdown": "Harley-Davidson kini membuat motor listrik bernama LiveWire.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Harley-Davidson kini membuat motor listrik bernama LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "id": "ch07-142",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sebuah perusahaan Italia bernama Energica membuat motor balap listrik.",
+      "text_markdown": "Sebuah perusahaan Italia bernama Energica membuat motor balap listrik.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sebuah perusahaan Italia bernama Energica membuat motor balap listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "id": "ch07-143",
+      "block_type": "text",
+      "part": 0,
+      "text": "Motor-motor itu sangat cepat.",
+      "text_markdown": "Motor-motor itu sangat cepat.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Motor-motor itu sangat cepat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "id": "ch07-144",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor pertama, Reitwagen, bisa melaju 7 mil per jam.",
+      "text_markdown": "Sepeda motor pertama, Reitwagen, bisa melaju 7 mil per jam.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sepeda motor pertama, Right Vagon, bisa melaju tujuh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "id": "ch07-145",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sepeda motor listrik saat ini bisa melaju lebih dari 200 mil per jam.",
+      "text_markdown": "Sepeda motor listrik saat ini bisa melaju lebih dari 200 mil per jam.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sepeda motor listrik saat ini bisa melaju lebih dari dua ratus mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "id": "ch07-146",
+      "block_type": "text",
+      "part": 0,
+      "text": "Itulah kisah sepeda motor sejauh ini.",
+      "text_markdown": "Itulah kisah sepeda motor sejauh ini.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Itulah kisah sepeda motor sejauh ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "id": "ch07-147",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini adalah kisah besarnya.",
+      "text_markdown": "Ini adalah kisah besarnya.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Ini adalah kisah besarnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "id": "ch07-148",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sebelas buku berikutnya akan menceritakan kisah-kisah kecil.",
+      "text_markdown": "Sebelas buku berikutnya akan menceritakan kisah-kisah kecil.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Sebelas buku berikutnya akan menceritakan kisah-kisah kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "id": "ch07-149",
+      "block_type": "text",
+      "part": 0,
+      "text": "Masing-masing tentang satu bagian dari dunia sepeda motor.",
+      "text_markdown": "Masing-masing tentang satu bagian dari dunia sepeda motor.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Masing-masing tentang satu bagian dari dunia sepeda motor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "id": "ch07-150",
+      "block_type": "text",
+      "part": 0,
+      "text": "Volume dua adalah tentang Harley-Davidson.",
+      "text_markdown": "Volume dua adalah tentang Harley-Davidson.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Volume dua adalah tentang Harley-Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "id": "ch07-151",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid tiga adalah tentang Honda.",
+      "text_markdown": "Jilid tiga adalah tentang Honda.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid tiga adalah tentang Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "id": "ch07-152",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid empat adalah tentang Ducati dari Italia.",
+      "text_markdown": "Jilid empat adalah tentang Ducati dari Italia.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid empat adalah tentang Ducati dari Italia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "id": "ch07-153",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid lima adalah tentang BMW dari Jerman.",
+      "text_markdown": "Jilid lima adalah tentang BMW dari Jerman.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid lima adalah tentang Bee Em Double Yu dari Jerman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "id": "ch07-154",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid enam adalah tentang Triumph dari Inggris.",
+      "text_markdown": "Jilid enam adalah tentang Triumph dari Inggris.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid enam adalah tentang Triumph dari Inggris.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "id": "ch07-155",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid tujuh adalah tentang motor trail.",
+      "text_markdown": "Jilid tujuh adalah tentang motor trail.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid tujuh adalah tentang motor trail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "id": "ch07-156",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid delapan adalah tentang motor sport.",
+      "text_markdown": "Jilid delapan adalah tentang motor sport.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid delapan adalah tentang motor sport.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "id": "ch07-157",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid sembilan adalah tentang motor cruiser dan chopper.",
+      "text_markdown": "Jilid sembilan adalah tentang motor cruiser dan chopper.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid sembilan adalah tentang motor cruiser dan chopper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "id": "ch07-158",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid sepuluh adalah tentang motor adventure.",
+      "text_markdown": "Jilid sepuluh adalah tentang motor adventure.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid sepuluh adalah tentang motor adventure.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "id": "ch07-159",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid sebelas adalah tentang balap.",
+      "text_markdown": "Jilid sebelas adalah tentang balap.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid sebelas adalah tentang balap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "id": "ch07-160",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jilid dua belas adalah tentang motor listrik dan masa depan.",
+      "text_markdown": "Jilid dua belas adalah tentang motor listrik dan masa depan.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Jilid dua belas adalah tentang motor listrik dan masa depan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "id": "ch07-161",
+      "block_type": "text",
+      "part": 0,
+      "text": "Pilih yang terlihat paling menyenangkan.",
+      "text_markdown": "Pilih yang terlihat paling menyenangkan.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Pilih yang terlihat paling menyenangkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "id": "ch07-162",
+      "block_type": "text",
+      "part": 0,
+      "text": "Lalu ikutlah dalam perjalanan ini.",
+      "text_markdown": "Lalu ikutlah dalam perjalanan ini.",
+      "title": "Bab 7 — Jalan Baru",
+      "tts": {
+        "text": "Lalu ikutlah dalam perjalanan ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "id": "ch07-163",
+      "heading_level": 1,
+      "block_type": "heading",
+      "part": 0,
+      "text": "Tentang Buku Ini",
+      "text_markdown": "Tentang Buku Ini",
+      "title": "Tentang Buku Ini"
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "id": "ch07-164",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini adalah buku pertama dalam seri Sepeda Motor.",
+      "text_markdown": "Ini adalah buku pertama dalam seri Sepeda Motor.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Ini adalah buku pertama dalam seri Sepeda Motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "id": "ch07-165",
+      "block_type": "text",
+      "part": 0,
+      "text": "Ini dibacakan oleh August.",
+      "text_markdown": "Ini dibacakan oleh August.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Ini dibacakan oleh August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "id": "ch07-166",
+      "block_type": "text",
+      "part": 0,
+      "text": "Setiap kalimat pendek dan jelas sehingga Anda dapat membaca bersama dalam bahasa apa pun.",
+      "text_markdown": "Setiap kalimat pendek dan jelas sehingga Anda dapat membaca bersama dalam bahasa apa pun.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Setiap kalimat pendek dan jelas sehingga Anda dapat membaca bersama dalam bahasa apa pun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "id": "ch07-167",
+      "block_type": "text",
+      "part": 0,
+      "text": "Jika Anda ingin mendengar bagaimana sebuah kalimat terdengar dalam bahasa lain, dengarkan buku yang sama dalam bahasa tersebut.",
+      "text_markdown": "Jika Anda ingin mendengar bagaimana sebuah kalimat terdengar dalam bahasa lain, dengarkan buku yang sama dalam bahasa tersebut.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Jika Anda ingin mendengar bagaimana sebuah kalimat terdengar dalam bahasa lain, dengarkan buku yang sama dalam bahasa tersebut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "id": "ch07-168",
+      "block_type": "text",
+      "part": 0,
+      "text": "Kata-kata di halaman akan sesuai dengan apa yang Anda dengar.",
+      "text_markdown": "Kata-kata di halaman akan sesuai dengan apa yang Anda dengar.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Kata-kata di halaman akan sesuai dengan apa yang Anda dengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "id": "ch07-169",
+      "block_type": "text",
+      "part": 0,
+      "text": "Begitulah cara Anda belajar.",
+      "text_markdown": "Begitulah cara Anda belajar.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Begitulah cara Anda belajar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "id": "ch07-170",
+      "block_type": "text",
+      "part": 0,
+      "text": "Sekarang, cari sepeda motor dan dengarkan suaranya vroom.",
+      "text_markdown": "Sekarang, cari sepeda motor dan dengarkan suaranya vroom.",
+      "title": "Tentang Buku Ini",
+      "tts": {
+        "text": "Sekarang, cari sepeda motor dan dengarkan suaranya vroom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Der tropische Regenwald",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der tropische Regenwald",
+      "text_markdown": "Der tropische Regenwald"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Wo Regenwälder wachsen",
+      "text_markdown": "Wo Regenwälder wachsen"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Willkommen im tropischen Regenwald.",
+      "text_markdown": "Willkommen im tropischen Regenwald.",
+      "tts": {
+        "text": "Willkommen im tropischen Regenwald.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist eines der großen Biome der Erde.",
+      "text_markdown": "Er ist eines der großen Biome der Erde.",
+      "tts": {
+        "text": "Er ist eines der großen Biome der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "text_markdown": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "tts": {
+        "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der tropische Regenwald ist das ganze Jahr warm.",
+      "text_markdown": "Der tropische Regenwald ist das ganze Jahr warm.",
+      "tts": {
+        "text": "Der tropische Regenwald ist das ganze Jahr warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist das ganze Jahr feucht.",
+      "text_markdown": "Er ist das ganze Jahr feucht.",
+      "tts": {
+        "text": "Er ist das ganze Jahr feucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist voller Leben.",
+      "text_markdown": "Er ist voller Leben.",
+      "tts": {
+        "text": "Er ist voller Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten Regenwälder wachsen in der Nähe des Äquators.",
+      "text_markdown": "Die meisten Regenwälder wachsen in der Nähe des Äquators.",
+      "tts": {
+        "text": "Die meisten Regenwälder wachsen in der Nähe des Äquators.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Äquator ist die Linie, die rund um die Mitte der Erde läuft.",
+      "text_markdown": "Der Äquator ist die Linie, die rund um die Mitte der Erde läuft.",
+      "tts": {
+        "text": "Der Äquator ist die Linie, die rund um die Mitte der Erde läuft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In der Nähe des Äquators ist die Sonne jeden Tag stark.",
+      "text_markdown": "In der Nähe des Äquators ist die Sonne jeden Tag stark.",
+      "tts": {
+        "text": "In der Nähe des Äquators ist die Sonne jeden Tag stark.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der größte Regenwald der Welt ist der Amazonas in Südamerika.",
+      "text_markdown": "Der größte Regenwald der Welt ist der Amazonas in Südamerika.",
+      "tts": {
+        "text": "Der größte Regenwald der Welt ist der Amazonas in Südamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch in Afrika gibt es große Regenwälder, in der Nähe des Kongo.",
+      "text_markdown": "Auch in Afrika gibt es große Regenwälder, in der Nähe des Kongo.",
+      "tts": {
+        "text": "Auch in Afrika gibt es große Regenwälder, in der Nähe des Kongo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Südostasien gibt es Regenwälder auf vielen Inseln.",
+      "text_markdown": "In Südostasien gibt es Regenwälder auf vielen Inseln.",
+      "tts": {
+        "text": "In Südostasien gibt es Regenwälder auf vielen Inseln.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt kleinere Regenwälder in Mittelamerika und auf Inseln im Pazifik.",
+      "text_markdown": "Es gibt kleinere Regenwälder in Mittelamerika und auf Inseln im Pazifik.",
+      "tts": {
+        "text": "Es gibt kleinere Regenwälder in Mittelamerika und auf Inseln im Pazifik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeder dieser Wälder ist für sich gewachsen, weit entfernt von den anderen.",
+      "text_markdown": "Jeder dieser Wälder ist für sich gewachsen, weit entfernt von den anderen.",
+      "tts": {
+        "text": "Jeder dieser Wälder ist für sich gewachsen, weit entfernt von den anderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Darum sind die Pflanzen und Tiere in jedem Teil der Welt anders.",
+      "text_markdown": "Darum sind die Pflanzen und Tiere in jedem Teil der Welt anders.",
+      "tts": {
+        "text": "Darum sind die Pflanzen und Tiere in jedem Teil der Welt anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Affe in Amazonien ist nicht derselbe wie ein Affe in Afrika oder Asien.",
+      "text_markdown": "Ein Affe in Amazonien ist nicht derselbe wie ein Affe in Afrika oder Asien.",
+      "tts": {
+        "text": "Ein Affe in Amazonien ist nicht derselbe wie ein Affe in Afrika oder Asien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber sie gehören alle zum selben Biom.",
+      "text_markdown": "Aber sie gehören alle zum selben Biom.",
+      "tts": {
+        "text": "Aber sie gehören alle zum selben Biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du in einem Regenwald stehst, fühlt sich die Luft schwer und warm an.",
+      "text_markdown": "Wenn du in einem Regenwald stehst, fühlt sich die Luft schwer und warm an.",
+      "tts": {
+        "text": "Wenn du in einem Regenwald stehst, fühlt sich die Luft schwer und warm an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Licht ist weich und grün.",
+      "text_markdown": "Das Licht ist weich und grün.",
+      "tts": {
+        "text": "Das Licht ist weich und grün.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume sind so hoch, dass du den Himmel kaum sehen kannst.",
+      "text_markdown": "Die Bäume sind so hoch, dass du den Himmel kaum sehen kannst.",
+      "tts": {
+        "text": "Die Bäume sind so hoch, dass du den Himmel kaum sehen kannst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hörst überall Vögel und Insekten.",
+      "text_markdown": "Du hörst überall Vögel und Insekten.",
+      "tts": {
+        "text": "Du hörst überall Vögel und Insekten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hörst Wasser von den Blättern tropfen.",
+      "text_markdown": "Du hörst Wasser von den Blättern tropfen.",
+      "tts": {
+        "text": "Du hörst Wasser von den Blättern tropfen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du fühlst dich, als wärst du in einem lebendigen Raum.",
+      "text_markdown": "Du fühlst dich, als wärst du in einem lebendigen Raum.",
+      "tts": {
+        "text": "Du fühlst dich, als wärst du in einem lebendigen Raum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist der Regenwald.",
+      "text_markdown": "Das ist der Regenwald.",
+      "tts": {
+        "text": "Das ist der Regenwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Wo Regenwälder wachsen",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine ganze Welt aus Bäumen und Regen.",
+      "text_markdown": "Eine ganze Welt aus Bäumen und Regen.",
+      "tts": {
+        "text": "Eine ganze Welt aus Bäumen und Regen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Wetter",
+      "text_markdown": "Das Wetter"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Wetter im tropischen Regenwald ist einfach.",
+      "text_markdown": "Das Wetter im tropischen Regenwald ist einfach.",
+      "tts": {
+        "text": "Das Wetter im tropischen Regenwald ist einfach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es ist warm, und es regnet viel.",
+      "text_markdown": "Es ist warm, und es regnet viel.",
+      "tts": {
+        "text": "Es ist warm, und es regnet viel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Temperatur bleibt das ganze Jahr ungefähr gleich.",
+      "text_markdown": "Die Temperatur bleibt das ganze Jahr ungefähr gleich.",
+      "tts": {
+        "text": "Die Temperatur bleibt das ganze Jahr ungefähr gleich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter wird es nicht kalt.",
+      "text_markdown": "Im Winter wird es nicht kalt.",
+      "tts": {
+        "text": "Im Winter wird es nicht kalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer wird es nicht sehr heiß.",
+      "text_markdown": "Im Sommer wird es nicht sehr heiß.",
+      "tts": {
+        "text": "Im Sommer wird es nicht sehr heiß.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten Tage sind warm und gleichmäßig.",
+      "text_markdown": "Die meisten Tage sind warm und gleichmäßig.",
+      "tts": {
+        "text": "Die meisten Tage sind warm und gleichmäßig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es regnet fast jeden Tag.",
+      "text_markdown": "Es regnet fast jeden Tag.",
+      "tts": {
+        "text": "Es regnet fast jeden Tag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An manchen Orten fallen mehr als zwei Meter Regen in einem Jahr.",
+      "text_markdown": "An manchen Orten fallen mehr als zwei Meter Regen in einem Jahr.",
+      "tts": {
+        "text": "An manchen Orten fallen mehr als zwei Meter Regen in einem Jahr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist mehr Regen, als die meisten Teile der Welt jemals sehen.",
+      "text_markdown": "Das ist mehr Regen, als die meisten Teile der Welt jemals sehen.",
+      "tts": {
+        "text": "Das ist mehr Regen, als die meisten Teile der Welt jemals sehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Regen kommt oft am Nachmittag.",
+      "text_markdown": "Der Regen kommt oft am Nachmittag.",
+      "tts": {
+        "text": "Der Regen kommt oft am Nachmittag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Große Wolken sammeln sich über den Bäumen.",
+      "text_markdown": "Große Wolken sammeln sich über den Bäumen.",
+      "tts": {
+        "text": "Große Wolken sammeln sich über den Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein schwerer Schauer fällt eine oder zwei Stunden lang.",
+      "text_markdown": "Ein schwerer Schauer fällt eine oder zwei Stunden lang.",
+      "tts": {
+        "text": "Ein schwerer Schauer fällt eine oder zwei Stunden lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann kommt die Sonne wieder heraus.",
+      "text_markdown": "Dann kommt die Sonne wieder heraus.",
+      "tts": {
+        "text": "Dann kommt die Sonne wieder heraus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Blätter glänzen, und vom Boden steigt Dampf auf.",
+      "text_markdown": "Die Blätter glänzen, und vom Boden steigt Dampf auf.",
+      "tts": {
+        "text": "Die Blätter glänzen, und vom Boden steigt Dampf auf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier gibt es keine vier Jahreszeiten.",
+      "text_markdown": "Hier gibt es keine vier Jahreszeiten.",
+      "tts": {
+        "text": "Hier gibt es keine vier Jahreszeiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt nur eine feuchtere Zeit und eine trockenere Zeit.",
+      "text_markdown": "Es gibt nur eine feuchtere Zeit und eine trockenere Zeit.",
+      "tts": {
+        "text": "Es gibt nur eine feuchtere Zeit und eine trockenere Zeit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch in der trockeneren Zeit regnet es oft.",
+      "text_markdown": "Auch in der trockeneren Zeit regnet es oft.",
+      "tts": {
+        "text": "Auch in der trockeneren Zeit regnet es oft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Für die Pflanzen und Tiere des Regenwaldes fühlt sich jeder Tag fast gleich an.",
+      "text_markdown": "Für die Pflanzen und Tiere des Regenwaldes fühlt sich jeder Tag fast gleich an.",
+      "tts": {
+        "text": "Für die Pflanzen und Tiere des Regenwaldes fühlt sich jeder Tag fast gleich an.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Land und das Wasser",
+      "text_markdown": "Das Land und das Wasser"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Boden des Regenwaldes ist reich an Leben, aber die Erde ist dünn.",
+      "text_markdown": "Der Boden des Regenwaldes ist reich an Leben, aber die Erde ist dünn.",
+      "tts": {
+        "text": "Der Boden des Regenwaldes ist reich an Leben, aber die Erde ist dünn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten Nährstoffe liegen in den obersten Zentimetern.",
+      "text_markdown": "Die meisten Nährstoffe liegen in den obersten Zentimetern.",
+      "tts": {
+        "text": "Die meisten Nährstoffe liegen in den obersten Zentimetern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn ein Blatt fällt, zersetzen Insekten und winzige Lebewesen es sehr schnell.",
+      "text_markdown": "Wenn ein Blatt fällt, zersetzen Insekten und winzige Lebewesen es sehr schnell.",
+      "tts": {
+        "text": "Wenn ein Blatt fällt, zersetzen Insekten und winzige Lebewesen es sehr schnell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume nehmen die Nahrung fast sofort wieder auf.",
+      "text_markdown": "Die Bäume nehmen die Nahrung fast sofort wieder auf.",
+      "tts": {
+        "text": "Die Bäume nehmen die Nahrung fast sofort wieder auf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Darum ist ein abgeholzter Regenwald schwer zurückzubringen.",
+      "text_markdown": "Darum ist ein abgeholzter Regenwald schwer zurückzubringen.",
+      "tts": {
+        "text": "Darum ist ein abgeholzter Regenwald schwer zurückzubringen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohne die Bäume spült der Regen die dünne Erde weg.",
+      "text_markdown": "Ohne die Bäume spült der Regen die dünne Erde weg.",
+      "tts": {
+        "text": "Ohne die Bäume spült der Regen die dünne Erde weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durch jeden Regenwald fließen Flüsse.",
+      "text_markdown": "Durch jeden Regenwald fließen Flüsse.",
+      "tts": {
+        "text": "Durch jeden Regenwald fließen Flüsse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Flüsse sind riesig.",
+      "text_markdown": "Manche Flüsse sind riesig.",
+      "tts": {
+        "text": "Manche Flüsse sind riesig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Amazonas führt mehr Wasser als jeder andere Fluss der Welt.",
+      "text_markdown": "Der Amazonas führt mehr Wasser als jeder andere Fluss der Welt.",
+      "tts": {
+        "text": "Der Amazonas führt mehr Wasser als jeder andere Fluss der Welt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In der Regenzeit breiten sich die Flüsse weit in den Wald aus.",
+      "text_markdown": "In der Regenzeit breiten sich die Flüsse weit in den Wald aus.",
+      "tts": {
+        "text": "In der Regenzeit breiten sich die Flüsse weit in den Wald aus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume stehen monatelang im Wasser.",
+      "text_markdown": "Die Bäume stehen monatelang im Wasser.",
+      "tts": {
+        "text": "Die Bäume stehen monatelang im Wasser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fische schwimmen zwischen den Stämmen.",
+      "text_markdown": "Fische schwimmen zwischen den Stämmen.",
+      "tts": {
+        "text": "Fische schwimmen zwischen den Stämmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere Flüsse sind klein und klar, mit Steinen am Grund.",
+      "text_markdown": "Andere Flüsse sind klein und klar, mit Steinen am Grund.",
+      "tts": {
+        "text": "Andere Flüsse sind klein und klar, mit Steinen am Grund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wald selbst wächst in Schichten.",
+      "text_markdown": "Der Wald selbst wächst in Schichten.",
+      "tts": {
+        "text": "Der Wald selbst wächst in Schichten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ganz oben stehen die höchsten Bäume, mit ihren Kronen weit ausgebreitet in der Sonne.",
+      "text_markdown": "Ganz oben stehen die höchsten Bäume, mit ihren Kronen weit ausgebreitet in der Sonne.",
+      "tts": {
+        "text": "Ganz oben stehen die höchsten Bäume, mit ihren Kronen weit ausgebreitet in der Sonne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Darunter liegt ein dichtes grünes Kronendach aus Blättern.",
+      "text_markdown": "Darunter liegt ein dichtes grünes Kronendach aus Blättern.",
+      "tts": {
+        "text": "Darunter liegt ein dichtes grünes Kronendach aus Blättern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unter diesem Dach ist die Luft schattig und still.",
+      "text_markdown": "Unter diesem Dach ist die Luft schattig und still.",
+      "tts": {
+        "text": "Unter diesem Dach ist die Luft schattig und still.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unten am Boden dringt nur wenig Licht durch.",
+      "text_markdown": "Unten am Boden dringt nur wenig Licht durch.",
+      "tts": {
+        "text": "Unten am Boden dringt nur wenig Licht durch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jede Schicht ist ein anderes Zuhause für die Tiere und Pflanzen des Bioms.",
+      "text_markdown": "Jede Schicht ist ein anderes Zuhause für die Tiere und Pflanzen des Bioms.",
+      "tts": {
+        "text": "Jede Schicht ist ein anderes Zuhause für die Tiere und Pflanzen des Bioms.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Pflanzen",
+      "text_markdown": "Die Pflanzen"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der tropische Regenwald hat mehr Pflanzenarten als jedes andere Biom an Land.",
+      "text_markdown": "Der tropische Regenwald hat mehr Pflanzenarten als jedes andere Biom an Land.",
+      "tts": {
+        "text": "Der tropische Regenwald hat mehr Pflanzenarten als jedes andere Biom an Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume sind sein Herz.",
+      "text_markdown": "Die Bäume sind sein Herz.",
+      "tts": {
+        "text": "Die Bäume sind sein Herz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Bäume wachsen sehr hoch und strecken sich zur Sonne.",
+      "text_markdown": "Manche Bäume wachsen sehr hoch und strecken sich zur Sonne.",
+      "tts": {
+        "text": "Manche Bäume wachsen sehr hoch und strecken sich zur Sonne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Stämme sind gerade und glatt.",
+      "text_markdown": "Ihre Stämme sind gerade und glatt.",
+      "tts": {
+        "text": "Ihre Stämme sind gerade und glatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Wurzeln breiten sich unten weit aus, wie Wände, und halten sie in der dünnen Erde aufrecht.",
+      "text_markdown": "Ihre Wurzeln breiten sich unten weit aus, wie Wände, und halten sie in der dünnen Erde aufrecht.",
+      "tts": {
+        "text": "Ihre Wurzeln breiten sich unten weit aus, wie Wände, und halten sie in der dünnen Erde aufrecht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lianen klettern die Stämme hinauf, dem Licht entgegen.",
+      "text_markdown": "Lianen klettern die Stämme hinauf, dem Licht entgegen.",
+      "tts": {
+        "text": "Lianen klettern die Stämme hinauf, dem Licht entgegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Lianen sind so dick wie dein Arm.",
+      "text_markdown": "Manche Lianen sind so dick wie dein Arm.",
+      "tts": {
+        "text": "Manche Lianen sind so dick wie dein Arm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie winden sich um die Bäume und hängen von den Ästen herab.",
+      "text_markdown": "Sie winden sich um die Bäume und hängen von den Ästen herab.",
+      "tts": {
+        "text": "Sie winden sich um die Bäume und hängen von den Ästen herab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf den Bäumen selbst wachsen Pflanzen, hoch oben in der Luft.",
+      "text_markdown": "Auf den Bäumen selbst wachsen Pflanzen, hoch oben in der Luft.",
+      "tts": {
+        "text": "Auf den Bäumen selbst wachsen Pflanzen, hoch oben in der Luft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie haben gar keine Wurzeln im Boden.",
+      "text_markdown": "Sie haben gar keine Wurzeln im Boden.",
+      "tts": {
+        "text": "Sie haben gar keine Wurzeln im Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie trinken den Regen, der an der Rinde herunterläuft.",
+      "text_markdown": "Sie trinken den Regen, der an der Rinde herunterläuft.",
+      "tts": {
+        "text": "Sie trinken den Regen, der an der Rinde herunterläuft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf dem dunklen Waldboden wachsen Farne und weiche grüne Pflanzen.",
+      "text_markdown": "Auf dem dunklen Waldboden wachsen Farne und weiche grüne Pflanzen.",
+      "tts": {
+        "text": "Auf dem dunklen Waldboden wachsen Farne und weiche grüne Pflanzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie haben breite, flache Blätter, um jeden Tropfen Licht einzufangen.",
+      "text_markdown": "Sie haben breite, flache Blätter, um jeden Tropfen Licht einzufangen.",
+      "tts": {
+        "text": "Sie haben breite, flache Blätter, um jeden Tropfen Licht einzufangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blumen blühen in jeder Farbe, die du dir vorstellen kannst.",
+      "text_markdown": "Blumen blühen in jeder Farbe, die du dir vorstellen kannst.",
+      "tts": {
+        "text": "Blumen blühen in jeder Farbe, die du dir vorstellen kannst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche sind rot, manche gelb, manche tief violett.",
+      "text_markdown": "Manche sind rot, manche gelb, manche tief violett.",
+      "tts": {
+        "text": "Manche sind rot, manche gelb, manche tief violett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele von ihnen öffnen sich in der Nacht.",
+      "text_markdown": "Viele von ihnen öffnen sich in der Nacht.",
+      "tts": {
+        "text": "Viele von ihnen öffnen sich in der Nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Früchte hängen das ganze Jahr an den Ästen.",
+      "text_markdown": "Früchte hängen das ganze Jahr an den Ästen.",
+      "tts": {
+        "text": "Früchte hängen das ganze Jahr an den Ästen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt süße Früchte, saure Früchte und Früchte mit harten Schalen.",
+      "text_markdown": "Es gibt süße Früchte, saure Früchte und Früchte mit harten Schalen.",
+      "tts": {
+        "text": "Es gibt süße Früchte, saure Früchte und Früchte mit harten Schalen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Nahrungsmittel, die wir zu Hause essen, sind zuerst in Regenwäldern wild gewachsen.",
+      "text_markdown": "Viele Nahrungsmittel, die wir zu Hause essen, sind zuerst in Regenwäldern wild gewachsen.",
+      "tts": {
+        "text": "Viele Nahrungsmittel, die wir zu Hause essen, sind zuerst in Regenwäldern wild gewachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kakao, die Pflanze, aus der wir Schokolade machen, kam aus den Regenwäldern Südamerikas.",
+      "text_markdown": "Kakao, die Pflanze, aus der wir Schokolade machen, kam aus den Regenwäldern Südamerikas.",
+      "tts": {
+        "text": "Kakao, die Pflanze, aus der wir Schokolade machen, kam aus den Regenwäldern Südamerikas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die ersten Bananenpflanzen wuchsen in den Regenwäldern Südostasiens.",
+      "text_markdown": "Die ersten Bananenpflanzen wuchsen in den Regenwäldern Südostasiens.",
+      "tts": {
+        "text": "Die ersten Bananenpflanzen wuchsen in den Regenwäldern Südostasiens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hinter jedem Essen, das wir lieben, steckt die Geschichte eines Waldes irgendwo auf der Erde.",
+      "text_markdown": "Hinter jedem Essen, das wir lieben, steckt die Geschichte eines Waldes irgendwo auf der Erde.",
+      "tts": {
+        "text": "Hinter jedem Essen, das wir lieben, steckt die Geschichte eines Waldes irgendwo auf der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du eine Regenwaldpflanze anschaust, hat sie oft einen klugen Weg zum Leben gefunden.",
+      "text_markdown": "Wenn du eine Regenwaldpflanze anschaust, hat sie oft einen klugen Weg zum Leben gefunden.",
+      "tts": {
+        "text": "Wenn du eine Regenwaldpflanze anschaust, hat sie oft einen klugen Weg zum Leben gefunden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Blätter haben eine lange Spitze, damit der Regen schnell abläuft.",
+      "text_markdown": "Manche Blätter haben eine lange Spitze, damit der Regen schnell abläuft.",
+      "tts": {
+        "text": "Manche Blätter haben eine lange Spitze, damit der Regen schnell abläuft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Blüten duften nur in der Nacht süß, um das richtige Insekt anzulocken.",
+      "text_markdown": "Manche Blüten duften nur in der Nacht süß, um das richtige Insekt anzulocken.",
+      "tts": {
+        "text": "Manche Blüten duften nur in der Nacht süß, um das richtige Insekt anzulocken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der ganze Wald ist eine stille Maschine aus Grün.",
+      "text_markdown": "Der ganze Wald ist eine stille Maschine aus Grün.",
+      "tts": {
+        "text": "Der ganze Wald ist eine stille Maschine aus Grün.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Tiere",
+      "text_markdown": "Die Tiere"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im tropischen Regenwald leben mehr Tierarten als irgendwo sonst an Land.",
+      "text_markdown": "Im tropischen Regenwald leben mehr Tierarten als irgendwo sonst an Land.",
+      "tts": {
+        "text": "Im tropischen Regenwald leben mehr Tierarten als irgendwo sonst an Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten von ihnen leben oben in den Bäumen, nicht am Boden.",
+      "text_markdown": "Die meisten von ihnen leben oben in den Bäumen, nicht am Boden.",
+      "tts": {
+        "text": "Die meisten von ihnen leben oben in den Bäumen, nicht am Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oben gibt es mehr Nahrung und mehr Licht.",
+      "text_markdown": "Oben gibt es mehr Nahrung und mehr Licht.",
+      "tts": {
+        "text": "Oben gibt es mehr Nahrung und mehr Licht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In vielen Regenwäldern leben Affen.",
+      "text_markdown": "In vielen Regenwäldern leben Affen.",
+      "tts": {
+        "text": "In vielen Regenwäldern leben Affen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie springen von Ast zu Ast und rufen sich quer durch die Bäume zu.",
+      "text_markdown": "Sie springen von Ast zu Ast und rufen sich quer durch die Bäume zu.",
+      "tts": {
+        "text": "Sie springen von Ast zu Ast und rufen sich quer durch die Bäume zu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Regenwäldern Südamerikas haben manche Affen lange Schwänze, die sie wie eine zusätzliche Hand benutzen.",
+      "text_markdown": "In den Regenwäldern Südamerikas haben manche Affen lange Schwänze, die sie wie eine zusätzliche Hand benutzen.",
+      "tts": {
+        "text": "In den Regenwäldern Südamerikas haben manche Affen lange Schwänze, die sie wie eine zusätzliche Hand benutzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papageien und andere bunte Vögel fliegen zwischen den hohen Ästen.",
+      "text_markdown": "Papageien und andere bunte Vögel fliegen zwischen den hohen Ästen.",
+      "tts": {
+        "text": "Papageien und andere bunte Vögel fliegen zwischen den hohen Ästen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie fressen Früchte und Samen.",
+      "text_markdown": "Sie fressen Früchte und Samen.",
+      "tts": {
+        "text": "Sie fressen Früchte und Samen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Federn sind rot, grün, blau und gelb.",
+      "text_markdown": "Ihre Federn sind rot, grün, blau und gelb.",
+      "tts": {
+        "text": "Ihre Federn sind rot, grün, blau und gelb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In vielen Regenwäldern jagen große Katzen nachts am Boden.",
+      "text_markdown": "In vielen Regenwäldern jagen große Katzen nachts am Boden.",
+      "tts": {
+        "text": "In vielen Regenwäldern jagen große Katzen nachts am Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Amerika ist diese Katze der Jaguar.",
+      "text_markdown": "In Amerika ist diese Katze der Jaguar.",
+      "tts": {
+        "text": "In Amerika ist diese Katze der Jaguar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Asien ist es der Tiger.",
+      "text_markdown": "In Asien ist es der Tiger.",
+      "tts": {
+        "text": "In Asien ist es der Tiger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Afrika ist es der Leopard.",
+      "text_markdown": "In Afrika ist es der Leopard.",
+      "tts": {
+        "text": "In Afrika ist es der Leopard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie alle sind stark und leise, mit Flecken oder Streifen auf dem Fell.",
+      "text_markdown": "Sie alle sind stark und leise, mit Flecken oder Streifen auf dem Fell.",
+      "tts": {
+        "text": "Sie alle sind stark und leise, mit Flecken oder Streifen auf dem Fell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schlangen gleiten durch die Blätter und die Bäume.",
+      "text_markdown": "Schlangen gleiten durch die Blätter und die Bäume.",
+      "tts": {
+        "text": "Schlangen gleiten durch die Blätter und die Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Schlangen sind sehr klein, und manche sind sehr lang.",
+      "text_markdown": "Manche Schlangen sind sehr klein, und manche sind sehr lang.",
+      "tts": {
+        "text": "Manche Schlangen sind sehr klein, und manche sind sehr lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten sind scheu und halten sich von Menschen fern.",
+      "text_markdown": "Die meisten sind scheu und halten sich von Menschen fern.",
+      "tts": {
+        "text": "Die meisten sind scheu und halten sich von Menschen fern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Frösche singen jede Nacht, besonders nach dem Regen.",
+      "text_markdown": "Frösche singen jede Nacht, besonders nach dem Regen.",
+      "tts": {
+        "text": "Frösche singen jede Nacht, besonders nach dem Regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Frösche sind winzig und leuchtend bunt.",
+      "text_markdown": "Manche Frösche sind winzig und leuchtend bunt.",
+      "tts": {
+        "text": "Manche Frösche sind winzig und leuchtend bunt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leuchtende Farben warnen andere Tiere davor, sie zu fressen.",
+      "text_markdown": "Leuchtende Farben warnen andere Tiere davor, sie zu fressen.",
+      "tts": {
+        "text": "Leuchtende Farben warnen andere Tiere davor, sie zu fressen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insekten füllen jede Ecke des Waldes.",
+      "text_markdown": "Insekten füllen jede Ecke des Waldes.",
+      "tts": {
+        "text": "Insekten füllen jede Ecke des Waldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Regenwald gibt es mehr Insekten als jede andere Art von Tier.",
+      "text_markdown": "Im Regenwald gibt es mehr Insekten als jede andere Art von Tier.",
+      "tts": {
+        "text": "Im Regenwald gibt es mehr Insekten als jede andere Art von Tier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ameisen marschieren in langen Reihen über den Waldboden.",
+      "text_markdown": "Ameisen marschieren in langen Reihen über den Waldboden.",
+      "tts": {
+        "text": "Ameisen marschieren in langen Reihen über den Waldboden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Käfer klettern an den Stämmen hinauf.",
+      "text_markdown": "Käfer klettern an den Stämmen hinauf.",
+      "tts": {
+        "text": "Käfer klettern an den Stämmen hinauf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schmetterlinge schweben mit breiten, bemalten Flügeln durch die Luft.",
+      "text_markdown": "Schmetterlinge schweben mit breiten, bemalten Flügeln durch die Luft.",
+      "tts": {
+        "text": "Schmetterlinge schweben mit breiten, bemalten Flügeln durch die Luft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fische leben in den Flüssen, in vielen Formen und Größen.",
+      "text_markdown": "Fische leben in den Flüssen, in vielen Formen und Größen.",
+      "tts": {
+        "text": "Fische leben in den Flüssen, in vielen Formen und Größen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Fische sind winzig und silbern, und manche sind größer als ein Kind.",
+      "text_markdown": "Manche Fische sind winzig und silbern, und manche sind größer als ein Kind.",
+      "tts": {
+        "text": "Manche Fische sind winzig und silbern, und manche sind größer als ein Kind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoch über allem gleiten Adler über das grüne Dach des Waldes.",
+      "text_markdown": "Hoch über allem gleiten Adler über das grüne Dach des Waldes.",
+      "tts": {
+        "text": "Hoch über allem gleiten Adler über das grüne Dach des Waldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie achten auf Bewegung weiter unten.",
+      "text_markdown": "Sie achten auf Bewegung weiter unten.",
+      "tts": {
+        "text": "Sie achten auf Bewegung weiter unten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fledermäuse fliegen bei Sonnenuntergang hinaus, um Früchte und Insekten zu fressen.",
+      "text_markdown": "Fledermäuse fliegen bei Sonnenuntergang hinaus, um Früchte und Insekten zu fressen.",
+      "tts": {
+        "text": "Fledermäuse fliegen bei Sonnenuntergang hinaus, um Früchte und Insekten zu fressen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In einem einzigen Regenwaldbaum findest du vielleicht mehr Tierarten als in einer ganzen Stadt anderswo.",
+      "text_markdown": "In einem einzigen Regenwaldbaum findest du vielleicht mehr Tierarten als in einer ganzen Stadt anderswo.",
+      "tts": {
+        "text": "In einem einzigen Regenwaldbaum findest du vielleicht mehr Tierarten als in einer ganzen Stadt anderswo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist das Wunder dieses Bioms.",
+      "text_markdown": "Das ist das Wunder dieses Bioms.",
+      "tts": {
+        "text": "Das ist das Wunder dieses Bioms.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Menschen",
+      "text_markdown": "Die Menschen"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen leben seit sehr langer Zeit im tropischen Regenwald.",
+      "text_markdown": "Menschen leben seit sehr langer Zeit im tropischen Regenwald.",
+      "tts": {
+        "text": "Menschen leben seit sehr langer Zeit im tropischen Regenwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie haben gelernt, gut mit den Bäumen, dem Regen und den Tieren zu leben.",
+      "text_markdown": "Sie haben gelernt, gut mit den Bäumen, dem Regen und den Tieren zu leben.",
+      "tts": {
+        "text": "Sie haben gelernt, gut mit den Bäumen, dem Regen und den Tieren zu leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Menschen des Regenwaldes leben in kleinen Dörfern.",
+      "text_markdown": "Viele Menschen des Regenwaldes leben in kleinen Dörfern.",
+      "tts": {
+        "text": "Viele Menschen des Regenwaldes leben in kleinen Dörfern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Häuser stehen oft auf hohen Holzpfählen, um sie über dem feuchten Boden zu halten.",
+      "text_markdown": "Die Häuser stehen oft auf hohen Holzpfählen, um sie über dem feuchten Boden zu halten.",
+      "tts": {
+        "text": "Die Häuser stehen oft auf hohen Holzpfählen, um sie über dem feuchten Boden zu halten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Dächer bestehen aus Blättern, die in dichten Reihen aufgelegt sind.",
+      "text_markdown": "Die Dächer bestehen aus Blättern, die in dichten Reihen aufgelegt sind.",
+      "tts": {
+        "text": "Die Dächer bestehen aus Blättern, die in dichten Reihen aufgelegt sind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein gutes Blätterdach hält den schweren Regen ab.",
+      "text_markdown": "Ein gutes Blätterdach hält den schweren Regen ab.",
+      "tts": {
+        "text": "Ein gutes Blätterdach hält den schweren Regen ab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wände sind oft offen, damit die warme Luft hindurchziehen kann.",
+      "text_markdown": "Die Wände sind oft offen, damit die warme Luft hindurchziehen kann.",
+      "tts": {
+        "text": "Die Wände sind oft offen, damit die warme Luft hindurchziehen kann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Menschen fischen in den Flüssen und sammeln Nahrung aus dem Wald.",
+      "text_markdown": "Die Menschen fischen in den Flüssen und sammeln Nahrung aus dem Wald.",
+      "tts": {
+        "text": "Die Menschen fischen in den Flüssen und sammeln Nahrung aus dem Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie jagen kleine Tiere mit Bögen und Speeren.",
+      "text_markdown": "Sie jagen kleine Tiere mit Bögen und Speeren.",
+      "tts": {
+        "text": "Sie jagen kleine Tiere mit Bögen und Speeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie bauen Nahrung in kleinen Gärten an, die aus den Bäumen gerodet sind.",
+      "text_markdown": "Sie bauen Nahrung in kleinen Gärten an, die aus den Bäumen gerodet sind.",
+      "tts": {
+        "text": "Sie bauen Nahrung in kleinen Gärten an, die aus den Bäumen gerodet sind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Was sie anbauen, hängt davon ab, wo sie leben.",
+      "text_markdown": "Was sie anbauen, hängt davon ab, wo sie leben.",
+      "tts": {
+        "text": "Was sie anbauen, hängt davon ab, wo sie leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Regenwäldern Südamerikas bauen die Menschen seit Tausenden von Jahren Maniok und Süßkartoffeln an.",
+      "text_markdown": "In den Regenwäldern Südamerikas bauen die Menschen seit Tausenden von Jahren Maniok und Süßkartoffeln an.",
+      "tts": {
+        "text": "In den Regenwäldern Südamerikas bauen die Menschen seit Tausenden von Jahren Maniok und Süßkartoffeln an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Regenwäldern Afrikas bauen die Menschen Yamswurzeln und Palmfrüchte an.",
+      "text_markdown": "In den Regenwäldern Afrikas bauen die Menschen Yamswurzeln und Palmfrüchte an.",
+      "tts": {
+        "text": "In den Regenwäldern Afrikas bauen die Menschen Yamswurzeln und Palmfrüchte an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Regenwäldern Südostasiens und im Pazifik bauen die Menschen Taro, Reis und Brotfrucht an.",
+      "text_markdown": "In den Regenwäldern Südostasiens und im Pazifik bauen die Menschen Taro, Reis und Brotfrucht an.",
+      "tts": {
+        "text": "In den Regenwäldern Südostasiens und im Pazifik bauen die Menschen Taro, Reis und Brotfrucht an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach ein paar Jahren lassen sie den Garten wieder zum Wald werden und legen woanders einen neuen an.",
+      "text_markdown": "Nach ein paar Jahren lassen sie den Garten wieder zum Wald werden und legen woanders einen neuen an.",
+      "tts": {
+        "text": "Nach ein paar Jahren lassen sie den Garten wieder zum Wald werden und legen woanders einen neuen an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So bleibt der Wald gesund.",
+      "text_markdown": "So bleibt der Wald gesund.",
+      "tts": {
+        "text": "So bleibt der Wald gesund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Menschen des Regenwaldes kennen Tausende von Pflanzen.",
+      "text_markdown": "Die Menschen des Regenwaldes kennen Tausende von Pflanzen.",
+      "tts": {
+        "text": "Die Menschen des Regenwaldes kennen Tausende von Pflanzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie wissen, welche Nahrung geben, welche Medizin geben und welche nicht zum Essen geeignet sind.",
+      "text_markdown": "Sie wissen, welche Nahrung geben, welche Medizin geben und welche nicht zum Essen geeignet sind.",
+      "tts": {
+        "text": "Sie wissen, welche Nahrung geben, welche Medizin geben und welche nicht zum Essen geeignet sind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie lernen die Lieder der Vögel.",
+      "text_markdown": "Sie lernen die Lieder der Vögel.",
+      "tts": {
+        "text": "Sie lernen die Lieder der Vögel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie lernen die Spuren der Tiere.",
+      "text_markdown": "Sie lernen die Spuren der Tiere.",
+      "tts": {
+        "text": "Sie lernen die Spuren der Tiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieses Wissen wird Jahr für Jahr von den Eltern an die Kinder weitergegeben.",
+      "text_markdown": "Dieses Wissen wird Jahr für Jahr von den Eltern an die Kinder weitergegeben.",
+      "tts": {
+        "text": "Dieses Wissen wird Jahr für Jahr von den Eltern an die Kinder weitergegeben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In jedem Regenwald hat dieses Leben seine eigenen Sprachen, seine eigenen Geschichten und seine eigene Musik.",
+      "text_markdown": "In jedem Regenwald hat dieses Leben seine eigenen Sprachen, seine eigenen Geschichten und seine eigene Musik.",
+      "tts": {
+        "text": "In jedem Regenwald hat dieses Leben seine eigenen Sprachen, seine eigenen Geschichten und seine eigene Musik.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Regenwald heute",
+      "text_markdown": "Der Regenwald heute"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der tropische Regenwald ist eines der wichtigsten Biome der Erde.",
+      "text_markdown": "Der tropische Regenwald ist eines der wichtigsten Biome der Erde.",
+      "tts": {
+        "text": "Der tropische Regenwald ist eines der wichtigsten Biome der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume ziehen Wasser aus dem Boden und atmen es in den Himmel.",
+      "text_markdown": "Die Bäume ziehen Wasser aus dem Boden und atmen es in den Himmel.",
+      "tts": {
+        "text": "Die Bäume ziehen Wasser aus dem Boden und atmen es in den Himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wolken, die sich über dem Wald bilden, tragen den Regen in weit entfernte Länder.",
+      "text_markdown": "Die Wolken, die sich über dem Wald bilden, tragen den Regen in weit entfernte Länder.",
+      "tts": {
+        "text": "Die Wolken, die sich über dem Wald bilden, tragen den Regen in weit entfernte Länder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume atmen auch, aber andersherum als wir.",
+      "text_markdown": "Die Bäume atmen auch, aber andersherum als wir.",
+      "tts": {
+        "text": "Die Bäume atmen auch, aber andersherum als wir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie nehmen das Gas auf, das wir ausatmen, und sie nutzen es zum Wachsen.",
+      "text_markdown": "Sie nehmen das Gas auf, das wir ausatmen, und sie nutzen es zum Wachsen.",
+      "tts": {
+        "text": "Sie nehmen das Gas auf, das wir ausatmen, und sie nutzen es zum Wachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Und sie geben das Gas zurück, das wir einatmen.",
+      "text_markdown": "Und sie geben das Gas zurück, das wir einatmen.",
+      "tts": {
+        "text": "Und sie geben das Gas zurück, das wir einatmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doch der Regenwald ist in Gefahr.",
+      "text_markdown": "Doch der Regenwald ist in Gefahr.",
+      "tts": {
+        "text": "Doch der Regenwald ist in Gefahr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An vielen Orten haben Menschen die Bäume gefällt, um Felder anzulegen oder Tiere zu halten.",
+      "text_markdown": "An vielen Orten haben Menschen die Bäume gefällt, um Felder anzulegen oder Tiere zu halten.",
+      "tts": {
+        "text": "An vielen Orten haben Menschen die Bäume gefällt, um Felder anzulegen oder Tiere zu halten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn die Bäume weg sind, wird die Erde weggespült, und der Regen fällt nicht mehr so wie früher.",
+      "text_markdown": "Wenn die Bäume weg sind, wird die Erde weggespült, und der Regen fällt nicht mehr so wie früher.",
+      "tts": {
+        "text": "Wenn die Bäume weg sind, wird die Erde weggespült, und der Regen fällt nicht mehr so wie früher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Tiere und Menschen, die dort leben, verlieren ihr Zuhause.",
+      "text_markdown": "Die Tiere und Menschen, die dort leben, verlieren ihr Zuhause.",
+      "tts": {
+        "text": "Die Tiere und Menschen, die dort leben, verlieren ihr Zuhause.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu schützen, was noch da ist.",
+      "text_markdown": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu schützen, was noch da ist.",
+      "tts": {
+        "text": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu schützen, was noch da ist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie pflanzen neue Bäume.",
+      "text_markdown": "Sie pflanzen neue Bäume.",
+      "tts": {
+        "text": "Sie pflanzen neue Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie helfen den Menschen, die im Wald leben, ihn zu pflegen.",
+      "text_markdown": "Sie helfen den Menschen, die im Wald leben, ihn zu pflegen.",
+      "tts": {
+        "text": "Sie helfen den Menschen, die im Wald leben, ihn zu pflegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie erforschen den Wald, damit wir ihn besser verstehen.",
+      "text_markdown": "Sie erforschen den Wald, damit wir ihn besser verstehen.",
+      "tts": {
+        "text": "Sie erforschen den Wald, damit wir ihn besser verstehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Regenwald braucht Hunderte von Jahren, um zu wachsen.",
+      "text_markdown": "Ein Regenwald braucht Hunderte von Jahren, um zu wachsen.",
+      "tts": {
+        "text": "Ein Regenwald braucht Hunderte von Jahren, um zu wachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber ein gesunder Regenwald kann Tausende von Jahren weiterwachsen.",
+      "text_markdown": "Aber ein gesunder Regenwald kann Tausende von Jahren weiterwachsen.",
+      "tts": {
+        "text": "Aber ein gesunder Regenwald kann Tausende von Jahren weiterwachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Der Regenwald heute",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist unsere Fürsorge wert.",
+      "text_markdown": "Er ist unsere Fürsorge wert.",
+      "tts": {
+        "text": "Er ist unsere Fürsorge wert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Schluss",
+      "text_markdown": "Schluss"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist der tropische Regenwald.",
+      "text_markdown": "Das ist der tropische Regenwald.",
+      "tts": {
+        "text": "Das ist der tropische Regenwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine warme, feuchte, grüne Welt voller Leben.",
+      "text_markdown": "Eine warme, feuchte, grüne Welt voller Leben.",
+      "tts": {
+        "text": "Eine warme, feuchte, grüne Welt voller Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du je in einen gehst, bleib eine Minute lang still stehen.",
+      "text_markdown": "Wenn du je in einen gehst, bleib eine Minute lang still stehen.",
+      "tts": {
+        "text": "Wenn du je in einen gehst, bleib eine Minute lang still stehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hör auf die Vögel, die Frösche und den Regen auf den Blättern.",
+      "text_markdown": "Hör auf die Vögel, die Frösche und den Regen auf den Blättern.",
+      "tts": {
+        "text": "Hör auf die Vögel, die Frösche und den Regen auf den Blättern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du wirst das Herz des Bioms um dich schlagen hören.",
+      "text_markdown": "Du wirst das Herz des Bioms um dich schlagen hören.",
+      "tts": {
+        "text": "Du wirst das Herz des Bioms um dich schlagen hören.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

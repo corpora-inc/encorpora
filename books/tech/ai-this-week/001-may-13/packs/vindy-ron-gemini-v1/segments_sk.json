@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "sk",
+  "total_segments": 62,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Vitajte v AI Tento týždeň. Som Vindy.",
+      "text_markdown": "Vitajte v AI Tento týždeň. Som Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Vitajte v AI Tento týždeň. Som Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Ako vždy, je so mnou Ron.",
+      "text_markdown": "Ako vždy, je so mnou Ron.",
+      "title": "",
+      "tts": {
+        "text": "Ako vždy, je so mnou Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Som rád, že tu môžem byť.",
+      "text_markdown": "Som rád, že tu môžem byť.",
+      "title": "",
+      "tts": {
+        "text": "Som rád, že tu môžem byť.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Dnes je streda, 13. mája 2026. Na programe: modely, ktoré boli tento týždeň vydané. Rebríčky a prečo niektorým z nich už nemáte veriť. Náš koncept týždňa. A širší obraz — USA práve získali nového predsedu Federálneho rezervného systému, a pre AI je to dôležitejšie, než si možno myslíte.",
+      "text_markdown": "Dnes je streda, 13. mája 2026. Na programe: modely, ktoré boli tento týždeň vydané. Rebríčky a prečo niektorým z nich už nemáte veriť. Náš koncept týždňa. A širší obraz — USA práve získali nového predsedu Federálneho rezervného systému, a pre AI je to dôležitejšie, než si možno myslíte.",
+      "title": "",
+      "tts": {
+        "text": "Dnes je streda, trinásteho mája, dvetisíc dvadsaťšesť. Na programe: modely, ktoré boli tento týždeň vydané. Rebríčky a prečo niektorým z nich už nemáte veriť. Náš koncept týždňa. A širší obraz — Spojené štáty práve získali nového predsedu Federálneho rezervného systému, a pre AI je to dôležitejšie, než si možno myslíte.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Ron, aké sú najväčšie novinky v oblasti modelov tento týždeň?",
+      "text_markdown": "Ron, aké sú najväčšie novinky v oblasti modelov tento týždeň?",
+      "title": "",
+      "tts": {
+        "text": "Ron, aké sú najväčšie novinky v oblasti modelov tento týždeň?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "Predvolený mozog v ChatGPT sa zmenil. OpenAI minulý týždeň, v utorok 5. mája, sprístupnila nový model s názvom GPT-5.5 Instant pre bezplatnú úroveň. Ak sa vám bezplatná odpoveď z ChatGPT zdala kratšia alebo menej plná emotikonov, to je dôvod.",
+      "text_markdown": "Predvolený mozog v ChatGPT sa zmenil. OpenAI minulý týždeň, v utorok 5. mája, sprístupnila nový model s názvom GPT-5.5 Instant pre bezplatnú úroveň. Ak sa vám bezplatná odpoveď z ChatGPT zdala kratšia alebo menej plná emotikonov, to je dôvod.",
+      "title": "",
+      "tts": {
+        "text": "Predvolený mozog v ChatGPT sa zmenil. OpenAI minulý týždeň, v utorok piateho mája, sprístupnila nový model s názvom GPT päť bodka päť Instant pre bezplatnú úroveň. Ak sa vám bezplatná odpoveď z ChatGPT zdala kratšia alebo menej plná emotikonov, to je dôvod.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Kratšie ako?",
+      "text_markdown": "Kratšie ako?",
+      "title": "",
+      "tts": {
+        "text": "Kratšie ako?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "OpenAI tvrdí, že nový predvolený model píše približne o 30 % menej slov a o 30 % menej riadkov ako model, ktorý nahradil. Taktiež tvrdia, že na najťažších výzvach, ako sú medicínske, právne a finančné otázky, došlo k 50 % poklesu halucinovaných tvrdení.",
+      "text_markdown": "OpenAI tvrdí, že nový predvolený model píše približne o 30 % menej slov a o 30 % menej riadkov ako model, ktorý nahradil. Taktiež tvrdia, že na najťažších výzvach, ako sú medicínske, právne a finančné otázky, došlo k 50 % poklesu halucinovaných tvrdení.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI tvrdí, že nový predvolený model píše približne o tridsať percent menej slov a o tridsať percent menej riadkov ako model, ktorý nahradil. Taktiež tvrdia, že na najťažších výzvach, ako sú medicínske, právne a finančné otázky, došlo k päťdesiat percentnému poklesu halucinovaných tvrdení.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "Overil niekto mimo OpenAI tieto čísla?",
+      "text_markdown": "Overil niekto mimo OpenAI tieto čísla?",
+      "title": "",
+      "tts": {
+        "text": "Overil niekto mimo OpenAI tieto čísla?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "Nie v takom rozsahu. Nezávislí benchmarkoví experti, ako napríklad Artificial Analysis, majú nový model na vrchole svojho celkového indexu inteligencie. Ale tvrdenia o halucináciách sa overujú pomaly. Tie sa zvyknú objaviť až po týždňoch, keď ľudia model skutočne používajú.",
+      "text_markdown": "Nie v takom rozsahu. Nezávislí benchmarkoví experti, ako napríklad Artificial Analysis, majú nový model na vrchole svojho celkového indexu inteligencie. Ale tvrdenia o halucináciách sa overujú pomaly. Tie sa zvyknú objaviť až po týždňoch, keď ľudia model skutočne používajú.",
+      "title": "",
+      "tts": {
+        "text": "Nie v takom rozsahu. Nezávislí benchmarkoví experti, ako napríklad Artificial Analysis, majú nový model na vrchole svojho celkového indexu inteligencie. Ale tvrdenia o halucináciách sa overujú pomaly. Tie sa zvyknú objaviť až po týždňoch, keď ľudia model skutočne používajú.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "A čo na strane otvorených váh?",
+      "text_markdown": "A čo na strane otvorených váh?",
+      "title": "",
+      "tts": {
+        "text": "A čo na strane otvorených váh?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Dve veľké veci. Moonshot, čínske laboratórium stojace za modelom Kimi, minulý týždeň, 7. mája, získalo 2 miliardy dolárov pri ohodnotení 20 miliárd dolárov. A ich najnovší model, Kimi K 2.6, práve obsadil prvé miesto na OpenRouteri v objeme tokenov.",
+      "text_markdown": "Dve veľké veci. Moonshot, čínske laboratórium stojace za modelom Kimi, minulý týždeň, 7. mája, získalo 2 miliardy dolárov pri ohodnotení 20 miliárd dolárov. A ich najnovší model, Kimi K 2.6, práve obsadil prvé miesto na OpenRouteri v objeme tokenov.",
+      "title": "",
+      "tts": {
+        "text": "Dve veľké veci. Moonshot, čínske laboratórium stojace za modelom Kimi, minulý týždeň, siedmeho mája, získalo dve miliardy dolárov pri ohodnotení dvadsať miliárd dolárov. A ich najnovší model, Kimi K dva bodka šesť, práve obsadil prvé miesto na OpenRouteri v objeme tokenov.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Prvé miesto? Celkovo?",
+      "text_markdown": "Prvé miesto? Celkovo?",
+      "title": "",
+      "tts": {
+        "text": "Prvé miesto? Celkovo?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "Celkovo. To je čínsky model s otvorenými váhami na prvom mieste na významnom komerčnom routeri. Pred šiestimi mesiacmi by to bolo nepredstaviteľné.",
+      "text_markdown": "Celkovo. To je čínsky model s otvorenými váhami na prvom mieste na významnom komerčnom routeri. Pred šiestimi mesiacmi by to bolo nepredstaviteľné.",
+      "title": "",
+      "tts": {
+        "text": "Celkovo. To je čínsky model s otvorenými váhami na prvom mieste na významnom komerčnom routeri. Pred šiestimi mesiacmi by to bolo nepredstaviteľné.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Ešte niečo, čo stojí za zmienku?",
+      "text_markdown": "Ešte niečo, čo stojí za zmienku?",
+      "title": "",
+      "tts": {
+        "text": "Ešte niečo, čo stojí za zmienku?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Mistral, francúzske laboratórium, vydalo Medium 3.5 koncom apríla. Zlučujú staré rozdelenie medzi chatovací model, model na uvažovanie a model na kódovanie do jedného produktu. Rovnaký trend, aký začala OpenAI s rodinou GPT-5. Celé odvetvie sa uberá týmto smerom.",
+      "text_markdown": "Mistral, francúzske laboratórium, vydalo Medium 3.5 koncom apríla. Zlučujú staré rozdelenie medzi chatovací model, model na uvažovanie a model na kódovanie do jedného produktu. Rovnaký trend, aký začala OpenAI s rodinou GPT-5. Celé odvetvie sa uberá týmto smerom.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, francúzske laboratórium, vydalo Medium tri bodka päť koncom apríla. Zlučujú staré rozdelenie medzi chatovací model, model na uvažovanie a model na kódovanie do jedného produktu. Rovnaký trend, aký začala OpenAI s rodinou GPT päť. Celé odvetvie sa uberá týmto smerom.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "A čo príde ďalej?",
+      "text_markdown": "A čo príde ďalej?",
+      "title": "",
+      "tts": {
+        "text": "A čo príde ďalej?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Google I/O je v utorok. Všetci očakávajú nový Gemini a šíria sa dôveryhodné správy o modeli na generovanie videa s názvom Gemini Omni. OpenAI testuje GPT-5.6. Anthropic má model s názvom Mythos v súkromnom náhľade. Budúci týždeň budeme vedieť oveľa viac.",
+      "text_markdown": "Google I/O je v utorok. Všetci očakávajú nový Gemini a šíria sa dôveryhodné správy o modeli na generovanie videa s názvom Gemini Omni. OpenAI testuje GPT-5.6. Anthropic má model s názvom Mythos v súkromnom náhľade. Budúci týždeň budeme vedieť oveľa viac.",
+      "title": "",
+      "tts": {
+        "text": "Google I O je v utorok. Všetci očakávajú nový Gemini a šíria sa dôveryhodné správy o modeli na generovanie videa s názvom Gemini Omni. OpenAI testuje GPT päť bodka šesť. Anthropic má model s názvom Mythos v súkromnom náhľade. Budúci týždeň budeme vedieť oveľa viac.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Dobre, poďme k rebríčkom.",
+      "text_markdown": "Dobre, poďme k rebríčkom.",
+      "title": "",
+      "tts": {
+        "text": "Dobre, poďme k rebríčkom.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "Ron, čo sa hýbe v rebríčkoch tento týždeň?",
+      "text_markdown": "Ron, čo sa hýbe v rebríčkoch tento týždeň?",
+      "title": "",
+      "tts": {
+        "text": "Ron, čo sa hýbe v rebríčkoch tento týždeň?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Skutočný príbeh tohto týždňa nie sú skóre. Sú to skóre, ktorým by ste už nemali veriť.",
+      "text_markdown": "Skutočný príbeh tohto týždňa nie sú skóre. Sú to skóre, ktorým by ste už nemali veriť.",
+      "title": "",
+      "tts": {
+        "text": "Skutočný príbeh tohto týždňa nie sú skóre. Sú to skóre, ktorým by ste už nemali veriť.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "Povedz nám o tom trochu viac, Ron.",
+      "text_markdown": "Povedz nám o tom trochu viac, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Povedz nám o tom trochu viac, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "Skupina na Berkeley zverejnila prácu. Vytvorili automatizovaný skener, ktorý dosiahol takmer dokonalé skóre na každom hlavnom benchmarku AI agentov. Bez toho, aby skutočne vyriešil jedinú úlohu. Zneužili spôsob, akým benchmarky kontrolujú svoje vlastné odpovede.",
+      "text_markdown": "Skupina na Berkeley zverejnila prácu. Vytvorili automatizovaný skener, ktorý dosiahol takmer dokonalé skóre na každom hlavnom benchmarku AI agentov. Bez toho, aby skutočne vyriešil jedinú úlohu. Zneužili spôsob, akým benchmarky kontrolujú svoje vlastné odpovede.",
+      "title": "",
+      "tts": {
+        "text": "Skupina na Berkeley zverejnila prácu. Vytvorili automatizovaný skener, ktorý dosiahol takmer dokonalé skóre na každom hlavnom benchmarku AI agentov. Bez toho, aby skutočne vyriešil jedinú úlohu. Zneužili spôsob, akým benchmarky kontrolujú svoje vlastné odpovede.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "Podvádzali a benchmarky to neodhalili.",
+      "text_markdown": "Podvádzali a benchmarky to neodhalili.",
+      "title": "",
+      "tts": {
+        "text": "Podvádzali a benchmarky to neodhalili.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Správne. A v ten istý týždeň OpenAI oznámila, že ruší svoje hodnotenia na SWE bench Verified. To je benchmark na kódovanie, ktorý neustále citovali. Zrušili ho, pretože sa ukázalo, že viac ako polovica náročných úloh mala chybné testy.",
+      "text_markdown": "Správne. A v ten istý týždeň OpenAI oznámila, že ruší svoje hodnotenia na SWE bench Verified. To je benchmark na kódovanie, ktorý neustále citovali. Zrušili ho, pretože sa ukázalo, že viac ako polovica náročných úloh mala chybné testy.",
+      "title": "",
+      "tts": {
+        "text": "Správne. A v ten istý týždeň OpenAI oznámila, že ruší svoje hodnotenia na SWE bench Verified. To je benchmark na kódovanie, ktorý neustále citovali. Zrušili ho, pretože sa ukázalo, že viac ako polovica náročných úloh mala chybné testy.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Takže veľa čísel, ktoré sme počuli za posledný rok, sú…",
+      "text_markdown": "Takže veľa čísel, ktoré sme počuli za posledný rok, sú…",
+      "title": "",
+      "tts": {
+        "text": "Takže veľa čísel, ktoré sme počuli za posledný rok, sú…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Minimálne čiastočne nafúknuté. Nie každý model. Nie každý benchmark. Ale toto odvetvie si verejne prebudováva svoju meraciu pásku. Novšie hodnotenia ako SWE-bench Pro a projekt s názvom SWE-rebench sa to snažia napraviť udržiavaním testovacieho kódu v súkromí.",
+      "text_markdown": "Minimálne čiastočne nafúknuté. Nie každý model. Nie každý benchmark. Ale toto odvetvie si verejne prebudováva svoju meraciu pásku. Novšie hodnotenia ako SWE-bench Pro a projekt s názvom SWE-rebench sa to snažia napraviť udržiavaním testovacieho kódu v súkromí.",
+      "title": "",
+      "tts": {
+        "text": "Minimálne čiastočne nafúknuté. Nie každý model. Nie každý benchmark. Ale toto odvetvie si verejne prebudováva svoju meraciu pásku. Novšie hodnotenia ako SWE bench Pro a projekt s názvom SWE rebench sa to snažia napraviť udržiavaním testovacieho kódu v súkromí.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "Pohybuje sa niečo skutočne čisto nahor?",
+      "text_markdown": "Pohybuje sa niečo skutočne čisto nahor?",
+      "title": "",
+      "tts": {
+        "text": "Pohybuje sa niečo skutočne čisto nahor?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "Dve veci, na čistejších rebríčkoch. V polovici apríla sa Claude Opus 4.7 od Anthropicu stal prvým modelom, ktorý čisto prekročil Elo 1500 v rebríčku kódovania LM Arena. Opus 4.6 dosiahol 1500 o pár týždňov skôr. K tomuto týždňu je Opus 4.7 stále na vrchole, okolo 1569. Anthropic má tiež samostatný model s názvom Mythos v súkromnom partnerskom náhľade, ktorý vedie v 17 z 18 agentových benchmarkov, ktoré Anthropic meral.",
+      "text_markdown": "Dve veci, na čistejších rebríčkoch. V polovici apríla sa Claude Opus 4.7 od Anthropicu stal prvým modelom, ktorý čisto prekročil Elo 1500 v rebríčku kódovania LM Arena. Opus 4.6 dosiahol 1500 o pár týždňov skôr. K tomuto týždňu je Opus 4.7 stále na vrchole, okolo 1569. Anthropic má tiež samostatný model s názvom Mythos v súkromnom partnerskom náhľade, ktorý vedie v 17 z 18 agentových benchmarkov, ktoré Anthropic meral.",
+      "title": "",
+      "tts": {
+        "text": "Dve veci, na čistejších rebríčkoch. V polovici apríla sa Claude Opus štyri bodka sedem od Anthropicu stal prvým modelom, ktorý čisto prekročil Elo pätnásťsto v rebríčku kódovania LM Arena. Opus štyri bodka šesť dosiahol pätnásťsto o pár týždňov skôr. K tomuto týždňu je Opus štyri bodka sedem stále na vrchole, okolo pätnásťsto šesťdesiatdeväť. Anthropic má tiež samostatný model s názvom Mythos v súkromnom partnerskom náhľade, ktorý vedie v sedemnástich z osemnástich agentových benchmarkov, ktoré Anthropic meral.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "Model, ktorý verejnosť nemôže používať, je na vrchole rebríčkov.",
+      "text_markdown": "Model, ktorý verejnosť nemôže používať, je na vrchole rebríčkov.",
+      "title": "",
+      "tts": {
+        "text": "Model, ktorý verejnosť nemôže používať, je na vrchole rebríčkov.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "Tam sa nachádzame. Ďalším veľkým trendom je rozdiel medzi otvorenými a uzavretými systémami. Je najmenší, aký kedy bol. DeepSeek V4 Pro a Kimi K 2.6 sú na dosah od GPT-5.5 v indexe inteligencie krížového hodnotenia. Ten rozdiel býval obrovský. Teraz je malý.",
+      "text_markdown": "Tam sa nachádzame. Ďalším veľkým trendom je rozdiel medzi otvorenými a uzavretými systémami. Je najmenší, aký kedy bol. DeepSeek V4 Pro a Kimi K 2.6 sú na dosah od GPT-5.5 v indexe inteligencie krížového hodnotenia. Ten rozdiel býval obrovský. Teraz je malý.",
+      "title": "",
+      "tts": {
+        "text": "Tam sa nachádzame. Ďalším veľkým trendom je rozdiel medzi otvorenými a uzavretými systémami. Je najmenší, aký kedy bol. DeepSeek V štyri Pro a Kimi K dva bodka šesť sú na dosah od GPT päť bodka päť v indexe inteligencie krížového hodnotenia. Ten rozdiel býval obrovský. Teraz je malý.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Dobre, poďme k pojmu týždňa.",
+      "text_markdown": "Dobre, poďme k pojmu týždňa.",
+      "title": "",
+      "tts": {
+        "text": "Dobre, poďme k pojmu týždňa.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "Ron, tohtotýždňový koncept je zmes expertov. Prečo sa zameriavame na zmes expertov?",
+      "text_markdown": "Ron, tohtotýždňový koncept je zmes expertov. Prečo sa zameriavame na zmes expertov?",
+      "title": "",
+      "tts": {
+        "text": "Ron, tohtotýždňový koncept je zmes expertov. Prečo sa zameriavame na zmes expertov?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Pretože model s otvorenými váhami, o ktorom sme práve hovorili, Kimi K 2.6, má celkovo 1 bilión parametrov. Ale v danom okamihu beží len 32 miliárd z týchto parametrov. To je zmes expertov.",
+      "text_markdown": "Pretože model s otvorenými váhami, o ktorom sme práve hovorili, Kimi K 2.6, má celkovo 1 bilión parametrov. Ale v danom okamihu beží len 32 miliárd z týchto parametrov. To je zmes expertov.",
+      "title": "",
+      "tts": {
+        "text": "Pretože model s otvorenými váhami, o ktorom sme práve hovorili, Kimi K dva bodka šesť, má celkovo jeden bilión parametrov. Ale v danom okamihu beží len tridsaťdva miliárd z týchto parametrov. To je zmes expertov.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Prejdite si to s nami pre ľudí, ktorí nás sledujú.",
+      "text_markdown": "Prejdite si to s nami pre ľudí, ktorí nás sledujú.",
+      "title": "",
+      "tts": {
+        "text": "Prejdite si to s nami pre ľudí, ktorí nás sledujú.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Bežný AI model je ako jeden obrovský mozog. Každé slovo, ktoré generuje, využíva každú časť mozgu. Model zmesi expertov je skôr ako budova plná špecialistov. S recepčnou pri dverách. Pre každé slovo si recepčná vyberie dvoch alebo troch špecialistov na konzultáciu a zvyšok budovy zostane ticho.",
+      "text_markdown": "Bežný AI model je ako jeden obrovský mozog. Každé slovo, ktoré generuje, využíva každú časť mozgu. Model zmesi expertov je skôr ako budova plná špecialistov. S recepčnou pri dverách. Pre každé slovo si recepčná vyberie dvoch alebo troch špecialistov na konzultáciu a zvyšok budovy zostane ticho.",
+      "title": "",
+      "tts": {
+        "text": "Bežný AI model je ako jeden obrovský mozog. Každé slovo, ktoré generuje, využíva každú časť mozgu. Model zmesi expertov je skôr ako budova plná špecialistov. S recepčnou pri dverách. Pre každé slovo si recepčná vyberie dvoch alebo troch špecialistov na konzultáciu a zvyšok budovy zostane ticho.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "Takže model je na papieri obrovský, ale lacný na prevádzku.",
+      "text_markdown": "Takže model je na papieri obrovský, ale lacný na prevádzku.",
+      "title": "",
+      "tts": {
+        "text": "Takže model je na papieri obrovský, ale lacný na prevádzku.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "Presne tak. 1 bilión parametrov kapacity. Ale len 32 miliárd parametrov výpočtového výkonu na slovo. To je ten trik. Recepčná je malý kúsok kódu nazývaný router. Špecialisti sú pod siete nazývané experti. Model trénuje router a expertov spoločne, od začiatku do konca.",
+      "text_markdown": "Presne tak. 1 bilión parametrov kapacity. Ale len 32 miliárd parametrov výpočtového výkonu na slovo. To je ten trik. Recepčná je malý kúsok kódu nazývaný router. Špecialisti sú pod siete nazývané experti. Model trénuje router a expertov spoločne, od začiatku do konca.",
+      "title": "",
+      "tts": {
+        "text": "Presne tak. Jeden bilión parametrov kapacity. Ale len tridsaťdva miliárd parametrov výpočtového výkonu na slovo. To je ten trik. Recepčná je malý kúsok kódu nazývaný router. Špecialisti sú pod siete nazývané experti. Model trénuje router a expertov spoločne, od začiatku do konca.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Robí to každý hlavný hraničný model?",
+      "text_markdown": "Robí to každý hlavný hraničný model?",
+      "title": "",
+      "tts": {
+        "text": "Robí to každý hlavný hraničný model?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "Väčšina z nich áno. Hoci laboratóriá to nie vždy potvrdzujú. GPT-4 bol model zmesi expertov. Vlajková loď DeepSeek je model zmesi expertov. Mistral dodáva modely zmesi expertov od roku 2023. Nová vlna z Číny posunula tento dizajn na hranicu možností.",
+      "text_markdown": "Väčšina z nich áno. Hoci laboratóriá to nie vždy potvrdzujú. GPT-4 bol model zmesi expertov. Vlajková loď DeepSeek je model zmesi expertov. Mistral dodáva modely zmesi expertov od roku 2023. Nová vlna z Číny posunula tento dizajn na hranicu možností.",
+      "title": "",
+      "tts": {
+        "text": "Väčšina z nich áno. Hoci laboratóriá to nie vždy potvrdzujú. GPT štyri bol model zmesi expertov. Vlajková loď DeepSeek je model zmesi expertov. Mistral dodáva modely zmesi expertov od roku dvetisícdvadsaťtri. Nová vlna z Číny posunula tento dizajn na hranicu možností.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Prečo je to dôležité pre niekoho, kto len používa ChatGPT?",
+      "text_markdown": "Prečo je to dôležité pre niekoho, kto len používa ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Prečo je to dôležité pre niekoho, kto len používa ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "Dva dôvody. Po prvé. Je to hlavný dôvod, prečo laboratórium s otvorenými váhami v Číne môže fungovať s kvalitou hraničnej triedy za zlomok rozpočtu. Po druhé. Je to hlavný dôvod, prečo jeden API hovor stojí centy, nie doláre. Keď vidíte, ako klesajú ceny a kvalita zostáva vysoká, zmes expertov je zvyčajne dôvodom.",
+      "text_markdown": "Dva dôvody. Po prvé. Je to hlavný dôvod, prečo laboratórium s otvorenými váhami v Číne môže fungovať s kvalitou hraničnej triedy za zlomok rozpočtu. Po druhé. Je to hlavný dôvod, prečo jeden API hovor stojí centy, nie doláre. Keď vidíte, ako klesajú ceny a kvalita zostáva vysoká, zmes expertov je zvyčajne dôvodom.",
+      "title": "",
+      "tts": {
+        "text": "Dva dôvody. Po prvé. Je to hlavný dôvod, prečo laboratórium s otvorenými váhami v Číne môže fungovať s kvalitou hraničnej triedy za zlomok rozpočtu. Po druhé. Je to hlavný dôvod, prečo jeden API hovor stojí centy, nie doláre. Keď vidíte, ako klesajú ceny a kvalita zostáva vysoká, zmes expertov je zvyčajne dôvodom.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "Zmes expertov. Router. Experti. Riedka aktivácia. Tri slová, ktoré si vezmite so sebou. Teraz sa vráťme k širšiemu obrazu.",
+      "text_markdown": "Zmes expertov. Router. Experti. Riedka aktivácia. Tri slová, ktoré si vezmite so sebou. Teraz sa vráťme k širšiemu obrazu.",
+      "title": "",
+      "tts": {
+        "text": "Zmes expertov. Router. Experti. Riedka aktivácia. Tri slová, ktoré si vezmite so sebou. Teraz sa vráťme k širšiemu obrazu.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "Ron, veľkou správou mimo nášho sveta tento týždeň je Federálny rezervný systém.",
+      "text_markdown": "Ron, veľkou správou mimo nášho sveta tento týždeň je Federálny rezervný systém.",
+      "title": "",
+      "tts": {
+        "text": "Ron, veľkou správou mimo nášho sveta tento týždeň je Federálny rezervný systém.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Dnes Senát USA potvrdil Kevina Warsha ako ďalšieho predsedu Federálneho rezervného systému. Hlasovanie bolo 54 ku 45. Najtesnejšie hlasovanie za predsedu Fedu v modernej americkej histórii. Len jeden demokrat prešiel cez uličku.",
+      "text_markdown": "Dnes Senát USA potvrdil Kevina Warsha ako ďalšieho predsedu Federálneho rezervného systému. Hlasovanie bolo 54 ku 45. Najtesnejšie hlasovanie za predsedu Fedu v modernej americkej histórii. Len jeden demokrat prešiel cez uličku.",
+      "title": "",
+      "tts": {
+        "text": "Dnes Senát USA potvrdil Kevina Warsha ako ďalšieho predsedu Federálneho rezervného systému. Hlasovanie bolo päťdesiatštyri ku štyridsaťpäť. Najtesnejšie hlasovanie za predsedu Fedu v modernej americkej histórii. Len jeden demokrat prešiel cez uličku.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "Prečo je to dôležité pre AI?",
+      "text_markdown": "Prečo je to dôležité pre AI?",
+      "title": "",
+      "tts": {
+        "text": "Prečo je to dôležité pre AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "Pretože budovanie AI je momentálne obmedzené dvoma vecami. Elektrinou a nákladmi na kapitál. Fed určuje náklady na kapitál. A nový predseda je zaznamenaný, že chce znižovať sadzby rýchlejšie, ako by to urobil jeho predchodca.",
+      "text_markdown": "Pretože budovanie AI je momentálne obmedzené dvoma vecami. Elektrinou a nákladmi na kapitál. Fed určuje náklady na kapitál. A nový predseda je zaznamenaný, že chce znižovať sadzby rýchlejšie, ako by to urobil jeho predchodca.",
+      "title": "",
+      "tts": {
+        "text": "Pretože budovanie AI je momentálne obmedzené dvoma vecami. Elektrinou a nákladmi na kapitál. Fed určuje náklady na kapitál. A nový predseda je zaznamenaný, že chce znižovať sadzby rýchlejšie, ako by to urobil jeho predchodca.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "Rýchlejšie znižovanie sadzieb zlacňuje investície do AI.",
+      "text_markdown": "Rýchlejšie znižovanie sadzieb zlacňuje investície do AI.",
+      "title": "",
+      "tts": {
+        "text": "Rýchlejšie znižovanie sadzieb zlacňuje investície do AI.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "Áno. Hyperscaleri — Microsoft, Google, Amazon, Meta — sú na ceste minúť tento rok približne 700 miliárd dolárov na kapitálové výdavky. Väčšinu z toho tvoria GPU a dátové centrá. Nižšia diskontná sadzba spôsobuje, že tieto viacročné výstavby sa vyplatia pri vyšších valuáciách.",
+      "text_markdown": "Áno. Hyperscaleri — Microsoft, Google, Amazon, Meta — sú na ceste minúť tento rok približne 700 miliárd dolárov na kapitálové výdavky. Väčšinu z toho tvoria GPU a dátové centrá. Nižšia diskontná sadzba spôsobuje, že tieto viacročné výstavby sa vyplatia pri vyšších valuáciách.",
+      "title": "",
+      "tts": {
+        "text": "Áno. Hyperscaleri — Microsoft, Google, Amazon, Meta — sú na ceste minúť tento rok približne sedemsto miliárd dolárov na kapitálové výdavky. Väčšinu z toho tvoria GPU a dátové centrá. Nižšia diskontná sadzba spôsobuje, že tieto viacročné výstavby sa vyplatia pri vyšších valuáciách.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "A opačným smerom. Ako AI ovplyvňuje to, o čom musí Fed rozhodnúť?",
+      "text_markdown": "A opačným smerom. Ako AI ovplyvňuje to, o čom musí Fed rozhodnúť?",
+      "title": "",
+      "tts": {
+        "text": "A opačným smerom. Ako AI ovplyvňuje to, o čom musí Fed rozhodnúť?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "Toto je zaujímavá časť. Kapitálové výdavky na AI sú teraz dostatočne veľké na to, aby boli makro číslom. Nie príbehom sektora. Analytici z Wall Street hovoria, že výdavky na výstavbu a vybavenie súvisiace s AI tvorili väčšinu ekonomického rastu USA za posledných niekoľko štvrťrokov.",
+      "text_markdown": "Toto je zaujímavá časť. Kapitálové výdavky na AI sú teraz dostatočne veľké na to, aby boli makro číslom. Nie príbehom sektora. Analytici z Wall Street hovoria, že výdavky na výstavbu a vybavenie súvisiace s AI tvorili väčšinu ekonomického rastu USA za posledných niekoľko štvrťrokov.",
+      "title": "",
+      "tts": {
+        "text": "Toto je zaujímavá časť. Kapitálové výdavky na AI sú teraz dostatočne veľké na to, aby boli makro číslom. Nie príbehom sektora. Analytici z Wall Street hovoria, že výdavky na výstavbu a vybavenie súvisiace s AI tvorili väčšinu ekonomického rastu USA za posledných niekoľko štvrťrokov.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "Väčšina rastu.",
+      "text_markdown": "Väčšina rastu.",
+      "title": "",
+      "tts": {
+        "text": "Väčšina rastu.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "Väčšina. A pre Fed to má dva smery. Z dlhodobého hľadiska je AI hnacou silou produktivity. To je deflačné. Dáva Fedu priestor na znižovanie sadzieb. Z krátkodobého hľadiska je to šok dopytu po energii, medi, kvalifikovanej pracovnej sile, po vode na chladenie. To je inflačné. Najmä v miestach ako Virgínia a Texas, kde sú dátové centrá koncentrované.",
+      "text_markdown": "Väčšina. A pre Fed to má dva smery. Z dlhodobého hľadiska je AI hnacou silou produktivity. To je deflačné. Dáva Fedu priestor na znižovanie sadzieb. Z krátkodobého hľadiska je to šok dopytu po energii, medi, kvalifikovanej pracovnej sile, po vode na chladenie. To je inflačné. Najmä v miestach ako Virgínia a Texas, kde sú dátové centrá koncentrované.",
+      "title": "",
+      "tts": {
+        "text": "Väčšina. A pre Fed to má dva smery. Z dlhodobého hľadiska je AI hnacou silou produktivity. To je deflačné. Dáva Fedu priestor na znižovanie sadzieb. Z krátkodobého hľadiska je to šok dopytu po energii, medi, kvalifikovanej pracovnej sile, po vode na chladenie. To je inflačné. Najmä v miestach ako Virgínia a Texas, kde sú dátové centrá koncentrované.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "Takže nový predseda musí rozhodnúť, či je AI odpoveďou na infláciu, alebo či je AI príčinou inflácie.",
+      "text_markdown": "Takže nový predseda musí rozhodnúť, či je AI odpoveďou na infláciu, alebo či je AI príčinou inflácie.",
+      "title": "",
+      "tts": {
+        "text": "Takže nový predseda musí rozhodnúť, či je AI odpoveďou na infláciu, alebo či je AI príčinou inflácie.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Oboje, súčasne. A čokoľvek povie vo svojich prvých verejných prejavoch, pohne každým modelom kapitálových výdavkov na AI na Wall Street.",
+      "text_markdown": "Oboje, súčasne. A čokoľvek povie vo svojich prvých verejných prejavoch, pohne každým modelom kapitálových výdavkov na AI na Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Oboje, súčasne. A čokoľvek povie vo svojich prvých verejných prejavoch, pohne každým modelom kapitálových výdavkov na AI na Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Microsoft má 80 miliárd dolárov nesplnených cloudových objednávok kvôli energii. Je to správne číslo?",
+      "text_markdown": "Microsoft má 80 miliárd dolárov nesplnených cloudových objednávok kvôli energii. Je to správne číslo?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft má osemdesiat miliárd dolárov nesplnených cloudových objednávok kvôli energii. Je to správne číslo?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "To je číslo, ktoré Microsoft nahlásil. Zákazníci Azure čakajú v rade na kapacitu. Úzkym hrdlom už nie sú čipy. Je to elektrická sieť. Energetické trhy nedokážu vybudovať novú kapacitu tak rýchlo, ako to chcú dátové centrá.",
+      "text_markdown": "To je číslo, ktoré Microsoft nahlásil. Zákazníci Azure čakajú v rade na kapacitu. Úzkym hrdlom už nie sú čipy. Je to elektrická sieť. Energetické trhy nedokážu vybudovať novú kapacitu tak rýchlo, ako to chcú dátové centrá.",
+      "title": "",
+      "tts": {
+        "text": "To je číslo, ktoré Microsoft nahlásil. Zákazníci Azure čakajú v rade na kapacitu. Úzkym hrdlom už nie sú čipy. Je to elektrická sieť. Energetické trhy nedokážu vybudovať novú kapacitu tak rýchlo, ako to chcú dátové centrá.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "Kedy je Warshovo prvé stretnutie?",
+      "text_markdown": "Kedy je Warshovo prvé stretnutie?",
+      "title": "",
+      "tts": {
+        "text": "Kedy je Warshovo prvé stretnutie?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "16. a 17. júna. Potom budeme vedieť oveľa viac o vývoji sadzieb.",
+      "text_markdown": "16. a 17. júna. Potom budeme vedieť oveľa viac o vývoji sadzieb.",
+      "title": "",
+      "tts": {
+        "text": "Šestnásteho a sedemnásteho júna. Potom budeme vedieť oveľa viac o vývoji sadzieb.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "Dobré miesto na záver. Ron, ďakujem.",
+      "text_markdown": "Dobré miesto na záver. Ron, ďakujem.",
+      "title": "",
+      "tts": {
+        "text": "Dobré miesto na záver. Ron, ďakujem.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Kedykoľvek, Vindy.",
+      "text_markdown": "Kedykoľvek, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kedykoľvek, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "To bol AI This Week na 13. mája 2026. Nové vydanie budúcu stredu. Dovtedy sa majte.",
+      "text_markdown": "To bol AI This Week na 13. mája 2026. Nové vydanie budúcu stredu. Dovtedy sa majte.",
+      "title": "",
+      "tts": {
+        "text": "To bol AI This Week na trinásteho mája dvetisícdvadsaťšesť. Nové vydanie budúcu stredu. Dovtedy sa majte.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

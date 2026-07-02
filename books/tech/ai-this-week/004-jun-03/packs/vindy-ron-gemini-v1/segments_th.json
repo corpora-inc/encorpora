@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "th",
+  "total_segments": 197,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "ยินดีต้อนรับสู่ AI This Week",
+      "text_markdown": "ยินดีต้อนรับสู่ AI This Week",
+      "title": "",
+      "tts": {
+        "text": "ยินดีต้อนรับสู่ AI This Week",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "ผมวินดี้",
+      "text_markdown": "ผมวินดี้",
+      "title": "",
+      "tts": {
+        "text": "ผมวินดี้",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "อยู่กับผมตามเคยคือรอน",
+      "text_markdown": "อยู่กับผมตามเคยคือรอน",
+      "title": "",
+      "tts": {
+        "text": "อยู่กับผมตามเคยคือรอน",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "ดีใจที่มาอยู่ที่นี่วินดี้",
+      "text_markdown": "ดีใจที่มาอยู่ที่นี่วินดี้",
+      "title": "",
+      "tts": {
+        "text": "ดีใจที่มาอยู่ที่นี่วินดี้",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "วันนี้เป็นวันพุธที่ 3 มิถุนายน 2026",
+      "text_markdown": "วันนี้เป็นวันพุธที่ 3 มิถุนายน 2026",
+      "title": "",
+      "tts": {
+        "text": "วันนี้เป็นวันพุธที่สามมิถุนายนสองพันยี่สิบหก",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "สัปดาห์นี้เป็นสัปดาห์ที่เงียบสำหรับการตลาดและเสียงดังสำหรับฮาร์ดแวร์",
+      "text_markdown": "สัปดาห์นี้เป็นสัปดาห์ที่เงียบสำหรับการตลาดและเสียงดังสำหรับฮาร์ดแวร์",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้เป็นสัปดาห์ที่เงียบสำหรับการตลาดและเสียงดังสำหรับฮาร์ดแวร์",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "รูปแบบของข่าวหลักไม่ธรรมดา",
+      "text_markdown": "รูปแบบของข่าวหลักไม่ธรรมดา",
+      "title": "",
+      "tts": {
+        "text": "รูปแบบของข่าวหลักไม่ธรรมดา",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "คำปราศรัยของแลบใหญ่ เอกสารลับ คอมพิวเตอร์เล็กๆ ที่มีตัวเลขใหญ่ๆ บนกล่อง",
+      "text_markdown": "คำปราศรัยของแลบใหญ่ เอกสารลับ คอมพิวเตอร์เล็กๆ ที่มีตัวเลขใหญ่ๆ บนกล่อง",
+      "title": "",
+      "tts": {
+        "text": "คำปราศรัยของแลบใหญ่ เอกสารลับ คอมพิวเตอร์เล็กๆ ที่มีตัวเลขใหญ่ๆ บนกล่อง",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "กำลังจะมา — สิ่งที่เปลี่ยนแปลงใน open weights นำโดยสถาปัตยกรรม attention แบบใหม่และโมเดล open ของ NVIDIA",
+      "text_markdown": "กำลังจะมา — สิ่งที่เปลี่ยนแปลงใน open weights นำโดยสถาปัตยกรรม attention แบบใหม่และโมเดล open ของ NVIDIA",
+      "title": "",
+      "tts": {
+        "text": "กำลังจะมา — สิ่งที่เปลี่ยนแปลงใน open weights นำโดยสถาปัตยกรรม attention แบบใหม่และโมเดล open ของ NVIDIA",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "ที่ซึ่งลีดเดอร์บอร์ดตกลง และเรื่องราวที่ใหญ่กว่าที่อยู่ใต้พวกมันเกี่ยวกับวิธีที่เราเชื่อใจคะแนนเลย",
+      "text_markdown": "ที่ซึ่งลีดเดอร์บอร์ดตกลง และเรื่องราวที่ใหญ่กว่าที่อยู่ใต้พวกมันเกี่ยวกับวิธีที่เราเชื่อใจคะแนนเลย",
+      "title": "",
+      "tts": {
+        "text": "ที่ซึ่งลีดเดอร์บอร์ดตกลง และเรื่องราวที่ใหญ่กว่าที่อยู่ใต้พวกมันเกี่ยวกับวิธีที่เราเชื่อใจคะแนนเลย",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "ข่าวหลักสั้นๆ ที่คุณสามารถนำไปใช้ได้ในสุดสัปดาห์นี้",
+      "text_markdown": "ข่าวหลักสั้นๆ ที่คุณสามารถนำไปใช้ได้ในสุดสัปดาห์นี้",
+      "title": "",
+      "tts": {
+        "text": "ข่าวหลักสั้นๆ ที่คุณสามารถนำไปใช้ได้ในสุดสัปดาห์นี้",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "เรื่องราวอันดับต้นของเรา ริกทำเองเติบโตขึ้น — การอนุมาน frontier ตอนนี้เป็นสิ่งที่อยู่บนโต๊ะของคุณแล้ว",
+      "text_markdown": "เรื่องราวอันดับต้นของเรา ริกทำเองเติบโตขึ้น — การอนุมาน frontier ตอนนี้เป็นสิ่งที่อยู่บนโต๊ะของคุณแล้ว",
+      "title": "",
+      "tts": {
+        "text": "เรื่องราวอันดับต้นของเรา ริกทำเองเติบโตขึ้น — การอนุมาน frontier ตอนนี้เป็นสิ่งที่อยู่บนโต๊ะของคุณแล้ว",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "และแนวคิดของสัปดาห์คือ speculative decoding — กลเม็ดที่ทำให้โมเดลใหญ่บนการ์ดเล็กรู้สึกเร็ว",
+      "text_markdown": "และแนวคิดของสัปดาห์คือ speculative decoding — กลเม็ดที่ทำให้โมเดลใหญ่บนการ์ดเล็กรู้สึกเร็ว",
+      "title": "",
+      "tts": {
+        "text": "และแนวคิดของสัปดาห์คือ speculative decoding — กลเม็ดที่ทำให้โมเดลใหญ่บนการ์ดเล็กรู้สึกเร็ว",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "รอน มาเริ่มในโลก open-weights กันเถอะ",
+      "text_markdown": "รอน มาเริ่มในโลก open-weights กันเถอะ",
+      "title": "",
+      "tts": {
+        "text": "รอน มาเริ่มในโลก open weights กันเถอะ",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "สัปดาห์นี้จบลงอย่างไร",
+      "text_markdown": "สัปดาห์นี้จบลงอย่างไร",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้จบลงอย่างไร",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "สัปดาห์นี้เรื่องราวของ open เกี่ยวกับรูปร่างใหม่ ไม่ใช่ขนาดใหม่",
+      "text_markdown": "สัปดาห์นี้เรื่องราวของ open เกี่ยวกับรูปร่างใหม่ ไม่ใช่ขนาดใหม่",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้เรื่องราวของ open เกี่ยวกับรูปร่างใหม่ ไม่ใช่ขนาดใหม่",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "โมเดลที่น่าสนใจทางสถาปัตยกรรมสองตัววางจำหน่ายในวันเดียวกัน วันที่ 1 มิถุนายน",
+      "text_markdown": "โมเดลที่น่าสนใจทางสถาปัตยกรรมสองตัววางจำหน่ายในวันเดียวกัน วันที่ 1 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "โมเดลที่น่าสนใจทางสถาปัตยกรรมสองตัววางจำหน่ายในวันเดียวกัน วันที่หนึ่งมิถุนายน",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "อธิบายตัวแรกให้เราฟังหน่อย",
+      "text_markdown": "อธิบายตัวแรกให้เราฟังหน่อย",
+      "title": "",
+      "tts": {
+        "text": "อธิบายตัวแรกให้เราฟังหน่อย",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "MiniMax ส่ง M3",
+      "text_markdown": "MiniMax ส่ง M3",
+      "title": "",
+      "tts": {
+        "text": "MiniMax ส่ง เอ็มสาม",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "มันใช้การออกแบบ attention แบบใหม่ที่พวกเขาเรียกว่า MSA ย่อมาจาก MiniMax Sparse Attention",
+      "text_markdown": "มันใช้การออกแบบ attention แบบใหม่ที่พวกเขาเรียกว่า MSA ย่อมาจาก MiniMax Sparse Attention",
+      "title": "",
+      "tts": {
+        "text": "มันใช้การออกแบบ attention แบบใหม่ที่พวกเขาเรียกว่า เอ็ม เอส เอ ย่อมาจาก MiniMax Sparse Attention",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "จุดขายคือคอนเท็กซ์หนึ่งล้านโทเค็น ด้วย prefill ที่เร็วกว่าประมาณเก้าเท่าและ decode ที่เร็วกว่าสิบห้าเท่าเมื่อเทียบกับโมเดลก่อนหน้าของพวกเขาที่ความยาวนั้น",
+      "text_markdown": "จุดขายคือคอนเท็กซ์หนึ่งล้านโทเค็น ด้วย prefill ที่เร็วกว่าประมาณเก้าเท่าและ decode ที่เร็วกว่าสิบห้าเท่าเมื่อเทียบกับโมเดลก่อนหน้าของพวกเขาที่ความยาวนั้น",
+      "title": "",
+      "tts": {
+        "text": "จุดขายคือคอนเท็กซ์หนึ่งล้านโทเค็น ด้วย prefill ที่เร็วกว่าประมาณเก้าเท่าและ decode ที่เร็วกว่าสิบห้าเท่าเมื่อเทียบกับโมเดลก่อนหน้าของพวกเขาที่ความยาวนั้น",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "ภาษาธรรมดาว่า sparse attention ทำอะไรจริงๆ",
+      "text_markdown": "ภาษาธรรมดาว่า sparse attention ทำอะไรจริงๆ",
+      "title": "",
+      "tts": {
+        "text": "ภาษาธรรมดาว่า sparse attention ทำอะไรจริงๆ",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "attention ธรรมดาเปรียบเทียบทุกโทเค็นกับทุกโทเค็นอื่น ซึ่งเป็นสิ่งที่ทำให้คอนเท็กซ์ยาวแพงมาก",
+      "text_markdown": "attention ธรรมดาเปรียบเทียบทุกโทเค็นกับทุกโทเค็นอื่น ซึ่งเป็นสิ่งที่ทำให้คอนเท็กซ์ยาวแพงมาก",
+      "title": "",
+      "tts": {
+        "text": "attention ธรรมดาเปรียบเทียบทุกโทเค็นกับทุกโทเค็นอื่น ซึ่งเป็นสิ่งที่ทำให้คอนเท็กซ์ยาวแพงมาก",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Sparse attention กรองคอนเท็กซ์เป็นบล็อกก่อนและทำการเปรียบเทียบแบบเต็มเฉพาะกับบล็อกที่ดูเหมือนจะเกี่ยวข้องกับคำถามปัจจุบัน",
+      "text_markdown": "Sparse attention กรองคอนเท็กซ์เป็นบล็อกก่อนและทำการเปรียบเทียบแบบเต็มเฉพาะกับบล็อกที่ดูเหมือนจะเกี่ยวข้องกับคำถามปัจจุบัน",
+      "title": "",
+      "tts": {
+        "text": "Sparse attention กรองคอนเท็กซ์เป็นบล็อกก่อนและทำการเปรียบเทียบแบบเต็มเฉพาะกับบล็อกที่ดูเหมือนจะเกี่ยวข้องกับคำถามปัจจุบัน",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "คุณได้คุณภาพส่วนใหญ่ด้วยการคำนวณเพียงเศษส่วนหนึ่ง",
+      "text_markdown": "คุณได้คุณภาพส่วนใหญ่ด้วยการคำนวณเพียงเศษส่วนหนึ่ง",
+      "title": "",
+      "tts": {
+        "text": "คุณได้คุณภาพส่วนใหญ่ด้วยการคำนวณเพียงเศษส่วนหนึ่ง",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "แล้วการอ้างเกี่ยวกับเบนช์มาร์กล่ะ",
+      "text_markdown": "แล้วการอ้างเกี่ยวกับเบนช์มาร์กล่ะ",
+      "title": "",
+      "tts": {
+        "text": "แล้วการอ้างเกี่ยวกับเบนช์มาร์กล่ะ",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "MiniMax บอกว่าห้าสิบเก้าเปอร์เซ็นต์บน SWE-bench Pro ซึ่งจะทำให้มันอยู่ข้างหน้า GPT-5.5 และ Gemini 3.5 Pro ในบอร์ดนั้น",
+      "text_markdown": "MiniMax บอกว่าห้าสิบเก้าเปอร์เซ็นต์บน SWE-bench Pro ซึ่งจะทำให้มันอยู่ข้างหน้า GPT-5.5 และ Gemini 3.5 Pro ในบอร์ดนั้น",
+      "title": "",
+      "tts": {
+        "text": "MiniMax บอกว่าห้าสิบเก้าเปอร์เซ็นต์บน SWE bench Pro ซึ่งจะทำให้มันอยู่ข้างหน้า จีพีทีห้าจุดห้าและ Gemini สามจุดห้า Pro ในบอร์ดนั้น",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "ผมจะพูดว่าการอ้าง — นี่เป็นสกอร์การ์ดของผู้ขายเอง ไม่ใช่การทดสอบอิสระ",
+      "text_markdown": "ผมจะพูดว่าการอ้าง — นี่เป็นสกอร์การ์ดของผู้ขายเอง ไม่ใช่การทดสอบอิสระ",
+      "title": "",
+      "tts": {
+        "text": "ผมจะพูดว่าการอ้าง — นี่เป็นสกอร์การ์ดของผู้ขายเอง ไม่ใช่การทดสอบอิสระ",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Open weights ด้วยไหม",
+      "text_markdown": "Open weights ด้วยไหม",
+      "title": "",
+      "tts": {
+        "text": "Open weights ด้วยไหม",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "ใช่ M3 ได้รับการวางตำแหน่งเป็น open-weight; API ใช้งานได้ในวันแรกและ weights กำลังมาถึง Hugging Face เร็วๆ นี้",
+      "text_markdown": "ใช่ M3 ได้รับการวางตำแหน่งเป็น open-weight; API ใช้งานได้ในวันแรกและ weights กำลังมาถึง Hugging Face เร็วๆ นี้",
+      "title": "",
+      "tts": {
+        "text": "ใช่ เอ็มสามได้รับการวางตำแหน่งเป็น open weight; API ใช้งานได้ในวันแรกและ weights กำลังมาถึง Hugging Face เร็วๆ นี้",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "สำหรับนักปรับแต่ง การเดิมพันที่น่าสนใจคือสถาปัตยกรรมมากกว่าคะแนน",
+      "text_markdown": "สำหรับนักปรับแต่ง การเดิมพันที่น่าสนใจคือสถาปัตยกรรมมากกว่าคะแนน",
+      "title": "",
+      "tts": {
+        "text": "สำหรับนักปรับแต่ง การเดิมพันที่น่าสนใจคือสถาปัตยกรรมมากกว่าคะแนน",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "หาก MSA อยู่ได้ ทุกแลบ open อื่นจะลอกรูปร่างภายในไม่กี่เดือน",
+      "text_markdown": "หาก MSA อยู่ได้ ทุกแลบ open อื่นจะลอกรูปร่างภายในไม่กี่เดือน",
+      "title": "",
+      "tts": {
+        "text": "หาก เอ็ม เอส เอ อยู่ได้ ทุกแลบ open อื่นจะลอกรูปร่างภายในไม่กี่เดือน",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "แล้วโมเดลที่สองล่ะ",
+      "text_markdown": "แล้วโมเดลที่สองล่ะ",
+      "title": "",
+      "tts": {
+        "text": "แล้วโมเดลที่สองล่ะ",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "NVIDIA เปิด open-source Nemotron 3 Ultra อย่างเงียบๆ",
+      "text_markdown": "NVIDIA เปิด open-source Nemotron 3 Ultra อย่างเงียบๆ",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA เปิด open source Nemotron สาม Ultra อย่างเงียบๆ",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "มันเป็น mixture of experts ห้าร้อยห้าสิบพันล้านพารามิเตอร์ ที่มีประมาณห้าสิบห้าพันล้านที่ใช้งานต่อโทเค็น",
+      "text_markdown": "มันเป็น mixture of experts ห้าร้อยห้าสิบพันล้านพารามิเตอร์ ที่มีประมาณห้าสิบห้าพันล้านที่ใช้งานต่อโทเค็น",
+      "title": "",
+      "tts": {
+        "text": "มันเป็น mixture of experts ห้าร้อยห้าสิบพันล้านพารามิเตอร์ ที่มีประมาณห้าสิบห้าพันล้านที่ใช้งานต่อโทเค็น",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "กระดูกสันหลังคือ hybrid Mamba-Transformer ไม่ใช่ Transformer แท้",
+      "text_markdown": "กระดูกสันหลังคือ hybrid Mamba-Transformer ไม่ใช่ Transformer แท้",
+      "title": "",
+      "tts": {
+        "text": "กระดูกสันหลังคือ hybrid Mamba Transformer ไม่ใช่ Transformer แท้",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "ภาษาธรรมดาเกี่ยวกับ Mamba",
+      "text_markdown": "ภาษาธรรมดาเกี่ยวกับ Mamba",
+      "title": "",
+      "tts": {
+        "text": "ภาษาธรรมดาเกี่ยวกับ Mamba",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "เลเยอร์ Mamba จัดการกับลำดับยาวด้วย sub-quadratic scaling ซึ่งเป็นวิธีหรูหราในการพูดว่าพวกมันถูกลงต่อโทเค็นเมื่อคอนเท็กซ์เติบโต",
+      "text_markdown": "เลเยอร์ Mamba จัดการกับลำดับยาวด้วย sub-quadratic scaling ซึ่งเป็นวิธีหรูหราในการพูดว่าพวกมันถูกลงต่อโทเค็นเมื่อคอนเท็กซ์เติบโต",
+      "title": "",
+      "tts": {
+        "text": "เลเยอร์ Mamba จัดการกับลำดับยาวด้วย sub quadratic scaling ซึ่งเป็นวิธีหรูหราในการพูดว่าพวกมันถูกลงต่อโทเค็นเมื่อคอนเท็กซ์เติบโต",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "NVIDIA เก็บเลเยอร์ attention สองสามตัวไว้ในสแต็กเพื่อรักษาการเรียกคืนที่แม่นยำสำหรับสิ่งต่างๆ เช่น การตอบคำถามจากเอกสารยาว",
+      "text_markdown": "NVIDIA เก็บเลเยอร์ attention สองสามตัวไว้ในสแต็กเพื่อรักษาการเรียกคืนที่แม่นยำสำหรับสิ่งต่างๆ เช่น การตอบคำถามจากเอกสารยาว",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA เก็บเลเยอร์ attention สองสามตัวไว้ในสแต็กเพื่อรักษาการเรียกคืนที่แม่นยำสำหรับสิ่งต่างๆ เช่น การตอบคำถามจากเอกสารยาว",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "มันเป็นประเภทของ hybrid ที่ชนะอย่างเงียบๆ ในงานวิจัยมาเป็นปี",
+      "text_markdown": "มันเป็นประเภทของ hybrid ที่ชนะอย่างเงียบๆ ในงานวิจัยมาเป็นปี",
+      "title": "",
+      "tts": {
+        "text": "มันเป็นประเภทของ hybrid ที่ชนะอย่างเงียบๆ ในงานวิจัยมาเป็นปี",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "แล้วเรื่องใบอนุญาตล่ะ?",
+      "text_markdown": "แล้วเรื่องใบอนุญาตล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วเรื่องใบอนุญาตล่ะ?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Open Model License ของ NVIDIA เอง อนุญาตให้ใช้เชิงพาณิชย์ได้",
+      "text_markdown": "Open Model License ของ NVIDIA เอง อนุญาตให้ใช้เชิงพาณิชย์ได้",
+      "title": "",
+      "tts": {
+        "text": "Open Model License ของ NVIDIA เอง อนุญาตให้ใช้เชิงพาณิชย์ได้",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "ทุกอย่างปล่อยมาพร้อมกัน รวมทั้ง weights, post-trained checkpoints, NVFP4 quantization และ training recipes",
+      "text_markdown": "ทุกอย่างปล่อยมาพร้อมกัน รวมทั้ง weights, post-trained checkpoints, NVFP4 quantization และ training recipes",
+      "title": "",
+      "tts": {
+        "text": "ทุกอย่างปล่อยมาพร้อมกัน รวมทั้ง weights, post trained checkpoints, เอ็น วี เอฟ พี โฟร์ quantization และ training recipes",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "นั่นเป็นแพ็คเกจที่ใจกว้างกว่าการปล่อย open ส่วนใหญ่",
+      "text_markdown": "นั่นเป็นแพ็คเกจที่ใจกว้างกว่าการปล่อย open ส่วนใหญ่",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นแพ็คเกจที่ใจกว้างกว่าการปล่อย open ส่วนใหญ่",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "แล้วอันดับในกระดานคะแนนล่ะ?",
+      "text_markdown": "แล้วอันดับในกระดานคะแนนล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วอันดับในกระดานคะแนนล่ะ?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "ใน Artificial Analysis Intelligence Index, Nemotron 3 Ultra อยู่ที่ 48",
+      "text_markdown": "ใน Artificial Analysis Intelligence Index, Nemotron 3 Ultra อยู่ที่ 48",
+      "title": "",
+      "tts": {
+        "text": "ใน Artificial Analysis Intelligence Index, Nemotron สาม Ultra อยู่ที่สี่สิบแปด",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "ทำให้อยู่อันดับที่ 9 จาก 89 โมเดลที่พวกเขาติดตาม และอยู่ข้างหน้าโมเดล open ของสหรัฐฯ ทุกตัว",
+      "text_markdown": "ทำให้อยู่อันดับที่ 9 จาก 89 โมเดลที่พวกเขาติดตาม และอยู่ข้างหน้าโมเดล open ของสหรัฐฯ ทุกตัว",
+      "title": "",
+      "tts": {
+        "text": "ทำให้อยู่อันดับที่เก้าจากแปดสิบเก้าโมเดลที่พวกเขาติดตาม และอยู่ข้างหน้าโมเดล open ของสหรัฐฯ ทุกตัว",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "มันยังตามหลัง Kimi K2.6 ของ Moonshot ซึ่งอยู่ที่ 54",
+      "text_markdown": "มันยังตามหลัง Kimi K2.6 ของ Moonshot ซึ่งอยู่ที่ 54",
+      "title": "",
+      "tts": {
+        "text": "มันยังตามหลัง Kimi K สองจุดหกของ Moonshot ซึ่งอยู่ที่ห้าสิบสี่",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "ดังนั้นถึงแม้จะมีทั้งหมดนั้น จีนยังคงนำ open อยู่",
+      "text_markdown": "ดังนั้นถึงแม้จะมีทั้งหมดนั้น จีนยังคงนำ open อยู่",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้นถึงแม้จะมีทั้งหมดนั้น จีนยังคงนำ open อยู่",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "ในคอมโพสิตนั้น ใช่ ห่างกัน 6 คะแนน",
+      "text_markdown": "ในคอมโพสิตนั้น ใช่ ห่างกัน 6 คะแนน",
+      "title": "",
+      "tts": {
+        "text": "ในคอมโพสิตนั้น ใช่ ห่างกันหกคะแนน",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "นั่นเป็นเรื่องเล็กใต้เรื่องใหญ่",
+      "text_markdown": "นั่นเป็นเรื่องเล็กใต้เรื่องใหญ่",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นเรื่องเล็กใต้เรื่องใหญ่",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "มีอะไรเรื่องพี่น้องบ้างมั้ย?",
+      "text_markdown": "มีอะไรเรื่องพี่น้องบ้างมั้ย?",
+      "title": "",
+      "tts": {
+        "text": "มีอะไรเรื่องพี่น้องบ้างมั้ย?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "ใช่ NVIDIA ยังปล่อย Nemotron 3 Nano Omni ด้วย",
+      "text_markdown": "ใช่ NVIDIA ยังปล่อย Nemotron 3 Nano Omni ด้วย",
+      "title": "",
+      "tts": {
+        "text": "ใช่ NVIDIA ยังปล่อย Nemotron สาม Nano Omni ด้วย",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "ตัวนั้นเป็นโมเดลที่รวม vision, audio และ language เข้าด้วยกัน อ้างว่ามีประสิทธิภาพมากกว่า peer open omni models ประมาณ 9 เท่า",
+      "text_markdown": "ตัวนั้นเป็นโมเดลที่รวม vision, audio และ language เข้าด้วยกัน อ้างว่ามีประสิทธิภาพมากกว่า peer open omni models ประมาณ 9 เท่า",
+      "title": "",
+      "tts": {
+        "text": "ตัวนั้นเป็นโมเดลที่รวม vision, audio และ language เข้าด้วยกัน อ้างว่ามีประสิทธิภาพมากกว่า peer open omni models ประมาณเก้าเท่า",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "มันมุ่งเป้าไปที่ on-device agents — โทรศัพท์ แล็ปท็อป workstation เล็กๆ",
+      "text_markdown": "มันมุ่งเป้าไปที่ on-device agents — โทรศัพท์ แล็ปท็อป workstation เล็กๆ",
+      "title": "",
+      "tts": {
+        "text": "มันมุ่งเป้าไปที่ on device agents — โทรศัพท์ แล็ปท็อป workstation เล็กๆ",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "อะไรอีกจากฝั่ง open?",
+      "text_markdown": "อะไรอีกจากฝั่ง open?",
+      "title": "",
+      "tts": {
+        "text": "อะไรอีกจากฝั่ง open?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Mistral Medium 3.5 ปรากฏตัวใน Microsoft's Copilot Studio เมื่อ 28 พฤษภาคม",
+      "text_markdown": "Mistral Medium 3.5 ปรากฏตัวใน Microsoft's Copilot Studio เมื่อ 28 พฤษภาคม",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium สามจุดห้าปรากฏตัวใน Microsoft's Copilot Studio เมื่อยี่สิบแปดพฤษภาคม",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "มันเป็นโมเดล dense 128 พันล้าน parameter กับ context 256,000 token",
+      "text_markdown": "มันเป็นโมเดล dense 128 พันล้าน parameter กับ context 256,000 token",
+      "title": "",
+      "tts": {
+        "text": "มันเป็นโมเดล dense หนึ่งร้อยยี่สิบแปดพันล้าน parameter กับ context สองแสนห้าหมื่นหกพัน token",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "ทำไมการวางตำแหน่งนี้ถึงน่าสนใจ?",
+      "text_markdown": "ทำไมการวางตำแหน่งนี้ถึงน่าสนใจ?",
+      "title": "",
+      "tts": {
+        "text": "ทำไมการวางตำแหน่งนี้ถึงน่าสนใจ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "เพราะว่า Microsoft กำลังแจกจ่ายโมเดลยุโรปที่ไม่ใช่ OpenAI ผ่านแพลตฟอร์มของตัวเอง โดยมี EU data residency ติดตั้งไว้",
+      "text_markdown": "เพราะว่า Microsoft กำลังแจกจ่ายโมเดลยุโรปที่ไม่ใช่ OpenAI ผ่านแพลตฟอร์มของตัวเอง โดยมี EU data residency ติดตั้งไว้",
+      "title": "",
+      "tts": {
+        "text": "เพราะว่า Microsoft กำลังแจกจ่ายโมเดลยุโรปที่ไม่ใช่ OpenAI ผ่านแพลตฟอร์มของตัวเอง โดยมี EU data residency ติดตั้งไว้",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "สองปีที่แล้วประโยคนั้นเป็นไปไม่ได้",
+      "text_markdown": "สองปีที่แล้วประโยคนั้นเป็นไปไม่ได้",
+      "title": "",
+      "tts": {
+        "text": "สองปีที่แล้วประโยคนั้นเป็นไปไม่ได้",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "แล้วทาง Alibaba เป็นอย่างไรบ้าง?",
+      "text_markdown": "แล้วทาง Alibaba เป็นอย่างไรบ้าง?",
+      "title": "",
+      "tts": {
+        "text": "แล้วทาง Alibaba เป็นอย่างไรบ้าง?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "Qwen 3.7 Plus เปิดตัวเมื่อ 2 มิถุนายน แต่มีแค่ API-only บนแพลตฟอร์ม Bailian",
+      "text_markdown": "Qwen 3.7 Plus เปิดตัวเมื่อ 2 มิถุนายน แต่มีแค่ API-only บนแพลตฟอร์ม Bailian",
+      "title": "",
+      "tts": {
+        "text": "Qwen สามจุดเจ็ด Plus เปิดตัวเมื่อสองมิถุนายน แต่มีแค่ API only บนแพลตฟอร์ม Bailian",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "สาย Qwen open ยังคงหยุดที่ 3.6",
+      "text_markdown": "สาย Qwen open ยังคงหยุดที่ 3.6",
+      "title": "",
+      "tts": {
+        "text": "สาย Qwen open ยังคงหยุดที่สามจุดหก",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "นั่นยืนยันการแตกแยกที่เราตั้งธงไว้เมื่อสัปดาห์ที่แล้ว — flagship ปิด open กลางๆ",
+      "text_markdown": "นั่นยืนยันการแตกแยกที่เราตั้งธงไว้เมื่อสัปดาห์ที่แล้ว — flagship ปิด open กลางๆ",
+      "title": "",
+      "tts": {
+        "text": "นั่นยืนยันการแตกแยกที่เราตั้งธงไว้เมื่อสัปดาห์ที่แล้ว — flagship ปิด open กลางๆ",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "กลยุทธ์เดียวกับที่ Mistral ใช้มาหนึ่งปีแล้ว",
+      "text_markdown": "กลยุทธ์เดียวกับที่ Mistral ใช้มาหนึ่งปีแล้ว",
+      "title": "",
+      "tts": {
+        "text": "กลยุทธ์เดียวกับที่ Mistral ใช้มาหนึ่งปีแล้ว",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "ขอบริบทสั้นๆ สองประโยคก่อนไปต่อมั้ย?",
+      "text_markdown": "ขอบริบทสั้นๆ สองประโยคก่อนไปต่อมั้ย?",
+      "title": "",
+      "tts": {
+        "text": "ขอบริบทสั้นๆ สองประโยคก่อนไปต่อมั้ย?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "ได้ครับ เริ่มเลยนะ",
+      "text_markdown": "ได้ครับ เริ่มเลยนะ",
+      "title": "",
+      "tts": {
+        "text": "ได้ครับ เริ่มเลยนะ",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "โมเดล open จีนยังคงนำ OpenRouter token volume — จังหวะเดิมเหมือนสัปดาห์ที่แล้ว ไม่มีการเปลี่ยนแปลง",
+      "text_markdown": "โมเดล open จีนยังคงนำ OpenRouter token volume — จังหวะเดิมเหมือนสัปดาห์ที่แล้ว ไม่มีการเปลี่ยนแปลง",
+      "title": "",
+      "tts": {
+        "text": "โมเดล open จีนยังคงนำ OpenRouter token volume — จังหวะเดิมเหมือนสัปดาห์ที่แล้ว ไม่มีการเปลี่ยนแปลง",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "และ DeepSeek V4 เปิดใช้บนแพลตฟอร์ม Microsoft's Foundry เมื่อ 28 พฤษภาคม ซึ่งหมายความแค่ว่ามีที่เรียกใช้เพิ่มขึ้น",
+      "text_markdown": "และ DeepSeek V4 เปิดใช้บนแพลตฟอร์ม Microsoft's Foundry เมื่อ 28 พฤษภาคม ซึ่งหมายความแค่ว่ามีที่เรียกใช้เพิ่มขึ้น",
+      "title": "",
+      "tts": {
+        "text": "และ DeepSeek V โฟร์เปิดใช้บนแพลตฟอร์ม Microsoft's Foundry เมื่อยี่สิบแปดพฤษภาคม ซึ่งหมายความแค่ว่ามีที่เรียกใช้เพิ่มขึ้น",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "โอเค มาดูกระดานอันดับกันเถอะ",
+      "text_markdown": "โอเค มาดูกระดานอันดับกันเถอะ",
+      "title": "",
+      "tts": {
+        "text": "โอเค มาดูกระดานอันดับกันเถอะ",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "มีใครขยับใหญ่สัปดาห์นี้มั้ย?",
+      "text_markdown": "มีใครขยับใหญ่สัปดาห์นี้มั้ย?",
+      "title": "",
+      "tts": {
+        "text": "มีใครขยับใหญ่สัปดาห์นี้มั้ย?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "มี และมันเป็นแบบปิด — Claude Opus 4.8 ที่ Anthropic ส่งมาเมื่อ 28 พฤษภาคม",
+      "text_markdown": "มี และมันเป็นแบบปิด — Claude Opus 4.8 ที่ Anthropic ส่งมาเมื่อ 28 พฤษภาคม",
+      "title": "",
+      "tts": {
+        "text": "มี และมันเป็นแบบปิด — Claude Opus สี่จุดแปดที่ Anthropic ส่งมาเมื่อยี่สิบแปดพฤษภาคม",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "มันได้ 88.6% ใน SWE-bench Verified และ 69.2% ใน SWE-bench Pro",
+      "text_markdown": "มันได้ 88.6% ใน SWE-bench Verified และ 69.2% ใน SWE-bench Pro",
+      "title": "",
+      "tts": {
+        "text": "มันได้แปดสิบแปดจุดหกเปอร์เซ็นต์ใน SWE bench Verified และหกสิบเก้าจุดสองเปอร์เซ็นต์ใน SWE bench Pro",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "และตอนนี้มันนำ Artificial Analysis Intelligence Index ในคะแนนรวม",
+      "text_markdown": "และตอนนี้มันนำ Artificial Analysis Intelligence Index ในคะแนนรวม",
+      "title": "",
+      "tts": {
+        "text": "และตอนนี้มันนำ Artificial Analysis Intelligence Index ในคะแนนรวม",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "ครั้งแรกที่ Anthropic นำอันนั้น",
+      "text_markdown": "ครั้งแรกที่ Anthropic นำอันนั้น",
+      "title": "",
+      "tts": {
+        "text": "ครั้งแรกที่ Anthropic นำอันนั้น",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "ถูกต้อง",
+      "text_markdown": "ถูกต้อง",
+      "title": "",
+      "tts": {
+        "text": "ถูกต้อง",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "GPT-5.5 ตามหลังหนึ่งคะแนน และ Gemini 3.5 Pro ตามหลังอีกสองสามคะแนน",
+      "text_markdown": "GPT-5.5 ตามหลังหนึ่งคะแนน และ Gemini 3.5 Pro ตามหลังอีกสองสามคะแนน",
+      "title": "",
+      "tts": {
+        "text": "GPT ห้าจุดห้าตามหลังหนึ่งคะแนน และ Gemini สามจุดห้า Pro ตามหลังอีกสองสามคะแนน",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "ใกล้เคียงมากที่ท็อปของกลุ่มปิด",
+      "text_markdown": "ใกล้เคียงมากที่ท็อปของกลุ่มปิด",
+      "title": "",
+      "tts": {
+        "text": "ใกล้เคียงมากที่ท็อปของกลุ่มปิด",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "แต่เรื่อง eval ที่แท้จริงของสัปดาห์นี้เป็นอย่างอื่น",
+      "text_markdown": "แต่เรื่อง eval ที่แท้จริงของสัปดาห์นี้เป็นอย่างอื่น",
+      "title": "",
+      "tts": {
+        "text": "แต่เรื่อง eval ที่แท้จริงของสัปดาห์นี้เป็นอย่างอื่น",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "ใช่ เรื่องจริงคือความซื่อสัตย์",
+      "text_markdown": "ใช่ เรื่องจริงคือความซื่อสัตย์",
+      "title": "",
+      "tts": {
+        "text": "ใช่ เรื่องจริงคือความซื่อสัตย์",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "OpenAI ได้หยุดรายงานเกี่ยวกับ SWE-bench Verified อย่างจริงจัง",
+      "text_markdown": "OpenAI ได้หยุดรายงานเกี่ยวกับ SWE-bench Verified อย่างจริงจัง",
+      "title": "",
+      "tts": {
+        "text": "OpenAI ได้หยุดรายงานเกี่ยวกับ SWE bench Verified อย่างจริงจัง",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "การตรวจสอบการปนเปื้อนพบว่าประมาณ 59% ของงานยากมีการทดสอบหน่วยที่มีข้อบกพร่อง และโมเดลสามารถจำแพทช์ที่ถูกต้องจากข้อมูลฝึกฝนได้อย่างแม่นยำ",
+      "text_markdown": "การตรวจสอบการปนเปื้อนพบว่าประมาณ 59% ของงานยากมีการทดสอบหน่วยที่มีข้อบกพร่อง และโมเดลสามารถจำแพทช์ที่ถูกต้องจากข้อมูลฝึกฝนได้อย่างแม่นยำ",
+      "title": "",
+      "tts": {
+        "text": "การตรวจสอบการปนเปื้อนพบว่าประมาณห้าสิบเก้าเปอร์เซ็นต์ของงานยากมีการทดสอบหน่วยที่มีข้อบกพร่อง และโมเดลสามารถจำแพทช์ที่ถูกต้องจากข้อมูลฝึกฝนได้อย่างแม่นยำ",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "ดังนั้นคะแนนสูงจึงเป็นการวัดความจำ",
+      "text_markdown": "ดังนั้นคะแนนสูงจึงเป็นการวัดความจำ",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้นคะแนนสูงจึงเป็นการวัดความจำ",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "บ่อยครั้งใช่",
+      "text_markdown": "บ่อยครั้งใช่",
+      "title": "",
+      "tts": {
+        "text": "บ่อยครั้งใช่",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "Pro คือเวอร์ชันที่มีงานใหม่และ scaffolding ที่ยากขึ้น นั่นคือสัญญาณใหม่",
+      "text_markdown": "Pro คือเวอร์ชันที่มีงานใหม่และ scaffolding ที่ยากขึ้น นั่นคือสัญญาณใหม่",
+      "title": "",
+      "tts": {
+        "text": "Pro คือเวอร์ชันที่มีงานใหม่และ scaffolding ที่ยากขึ้น นั่นคือสัญญาณใหม่",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "นี่คือการยืนยันจากสถาบันเกี่ยวกับความกังวลเรื่องการปนเปื้อนที่เราป้องกันไว้เมื่อสัปดาห์ที่แล้ว",
+      "text_markdown": "นี่คือการยืนยันจากสถาบันเกี่ยวกับความกังวลเรื่องการปนเปื้อนที่เราป้องกันไว้เมื่อสัปดาห์ที่แล้ว",
+      "title": "",
+      "tts": {
+        "text": "นี่คือการยืนยันจากสถาบันเกี่ยวกับความกังวลเรื่องการปนเปื้อนที่เราป้องกันไว้เมื่อสัปดาห์ที่แล้ว",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "มีเอกสารวิธีการด้วยหรือไม่?",
+      "text_markdown": "มีเอกสารวิธีการด้วยหรือไม่?",
+      "title": "",
+      "tts": {
+        "text": "มีเอกสารวิธีการด้วยหรือไม่?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "มีรายงานที่คมชัดจากกลุ่มชื่อ Kili Technology",
+      "text_markdown": "มีรายงานที่คมชัดจากกลุ่มชื่อ Kili Technology",
+      "title": "",
+      "tts": {
+        "text": "มีรายงานที่คมชัดจากกลุ่มชื่อ Kili Technology",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "พวกเขาได้ทำการทดสอบน้ำหนักโมเดลเดียวกันผ่าน evaluation harnesses ทั่วไปห้าตัว",
+      "text_markdown": "พวกเขาได้ทำการทดสอบน้ำหนักโมเดลเดียวกันผ่าน evaluation harnesses ทั่วไปห้าตัว",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาได้ทำการทดสอบน้ำหนักโมเดลเดียวกันผ่าน evaluation harnesses ทั่วไปห้าตัว",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "คะแนนแตกต่างกันถึง 10 ถึง 20 เปอร์เซ็นต์เพียงแค่จากการเลือก harness",
+      "text_markdown": "คะแนนแตกต่างกันถึง 10 ถึง 20 เปอร์เซ็นต์เพียงแค่จากการเลือก harness",
+      "title": "",
+      "tts": {
+        "text": "คะแนนแตกต่างกันถึงสิบถึงยี่สิบเปอร์เซ็นต์เพียงแค่จากการเลือก harness",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "น้ำหนักเดียวกัน ตัวเลขต่างกัน",
+      "text_markdown": "น้ำหนักเดียวกัน ตัวเลขต่างกัน",
+      "title": "",
+      "tts": {
+        "text": "น้ำหนักเดียวกัน ตัวเลขต่างกัน",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "ถูกต้อง",
+      "text_markdown": "ถูกต้อง",
+      "title": "",
+      "tts": {
+        "text": "ถูกต้อง",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "ข้อสรุปของพวกเขาคือการจัดอันดับ leaderboard ไม่ใช่สัญญาณระดับผู้ซื้อสำหรับการจัดซื้ออีกต่อไป",
+      "text_markdown": "ข้อสรุปของพวกเขาคือการจัดอันดับ leaderboard ไม่ใช่สัญญาณระดับผู้ซื้อสำหรับการจัดซื้ออีกต่อไป",
+      "title": "",
+      "tts": {
+        "text": "ข้อสรุปของพวกเขาคือการจัดอันดับ leaderboard ไม่ใช่สัญญาณระดับผู้ซื้อสำหรับการจัดซื้ออีกต่อไป",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "สำหรับผู้สร้าง do-it-yourself ข้อสรุปจะคมชัดกว่า คือให้ทำ evals ของคุณเองกับ prompts ของคุณเอง",
+      "text_markdown": "สำหรับผู้สร้าง do-it-yourself ข้อสรุปจะคมชัดกว่า คือให้ทำ evals ของคุณเองกับ prompts ของคุณเอง",
+      "title": "",
+      "tts": {
+        "text": "สำหรับผู้สร้าง do it yourself ข้อสรุปจะคมชัดกว่า คือให้ทำ evals ของคุณเองกับ prompts ของคุณเอง",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "นั่นเชื่อมโยงกลับไปยัง MSA และ Nemotron Ultra จริงๆ",
+      "text_markdown": "นั่นเชื่อมโยงกลับไปยัง MSA และ Nemotron Ultra จริงๆ",
+      "title": "",
+      "tts": {
+        "text": "นั่นเชื่อมโยงกลับไปยัง M S A และ Nemotron Ultra จริงๆ",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "ใช่",
+      "text_markdown": "ใช่",
+      "title": "",
+      "tts": {
+        "text": "ใช่",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "เชื่อถือสถาปัตยกรรมและการทดสอบของคุณเอง ไม่ใช่แผนภูมิของคนอื่น",
+      "text_markdown": "เชื่อถือสถาปัตยกรรมและการทดสอบของคุณเอง ไม่ใช่แผนภูมิของคนอื่น",
+      "title": "",
+      "tts": {
+        "text": "เชื่อถือสถาปัตยกรรมและการทดสอบของคุณเอง ไม่ใช่แผนภูมิของคนอื่น",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "เป็นที่ดีที่จะจบการพูดถึงบอร์ด",
+      "text_markdown": "เป็นที่ดีที่จะจบการพูดถึงบอร์ด",
+      "title": "",
+      "tts": {
+        "text": "เป็นที่ดีที่จะจบการพูดถึงบอร์ด",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "ตอนนี้เรามาทำหัวข้อข่าวกัน",
+      "text_markdown": "ตอนนี้เรามาทำหัวข้อข่าวกัน",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้เรามาทำหัวข้อข่าวกัน",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "ด่วนๆ มุมมอง open-ecosystem",
+      "text_markdown": "ด่วนๆ มุมมอง open-ecosystem",
+      "title": "",
+      "tts": {
+        "text": "ด่วนๆ มุมมอง open ecosystem",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "อันดับแรก Microsoft Build จัดขึ้นเมื่อวันที่ 2 มิถุนายน",
+      "text_markdown": "อันดับแรก Microsoft Build จัดขึ้นเมื่อวันที่ 2 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "อันดับแรก Microsoft Build จัดขึ้นเมื่อวันที่สองมิถุนายน",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "Microsoft ได้แสดงโมเดลของตัวเองสองตัว คือ MAI-Thinking-1 และ MAI-Code-1-Flash",
+      "text_markdown": "Microsoft ได้แสดงโมเดลของตัวเองสองตัว คือ MAI-Thinking-1 และ MAI-Code-1-Flash",
+      "title": "",
+      "tts": {
+        "text": "Microsoft ได้แสดงโมเดลของตัวเองสองตัว คือ M A I Thinking หนึ่ง และ M A I Code หนึ่ง Flash",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "อะไรที่น่าสนใจเกี่ยวกับสิ่งเหล่านั้น?",
+      "text_markdown": "อะไรที่น่าสนใจเกี่ยวกับสิ่งเหล่านั้น?",
+      "title": "",
+      "tts": {
+        "text": "อะไรที่น่าสนใจเกี่ยวกับสิ่งเหล่านั้น?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "Thinking-1 คือ sparse mixture of experts ที่มี 35 พันล้าน active parameter พร้อมกับ context window ขนาด 256,000 token",
+      "text_markdown": "Thinking-1 คือ sparse mixture of experts ที่มี 35 พันล้าน active parameter พร้อมกับ context window ขนาด 256,000 token",
+      "title": "",
+      "tts": {
+        "text": "Thinking หนึ่งคือ sparse mixture of experts ที่มีสามสิบห้าพันล้าน active parameter พร้อมกับ context window ขนาดสองแสนห้าหมื่นหกพัน token",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "และ Microsoft ได้ระบุอย่างชัดเจนว่ามันได้รับการฝึกฝนด้วยข้อมูลที่ได้รับใบอนุญาทเชิงพาณิชย์โดยไม่มีการกลั่นจากโมเดลของบุคคลที่สามใดๆ",
+      "text_markdown": "และ Microsoft ได้ระบุอย่างชัดเจนว่ามันได้รับการฝึกฝนด้วยข้อมูลที่ได้รับใบอนุญาทเชิงพาณิชย์โดยไม่มีการกลั่นจากโมเดลของบุคคลที่สามใดๆ",
+      "title": "",
+      "tts": {
+        "text": "และ Microsoft ได้ระบุอย่างชัดเจนว่ามันได้รับการฝึกฝนด้วยข้อมูลที่ได้รับใบอนุญาทเชิงพาณิชย์โดยไม่มีการกลั่นจากโมเดลของบุคคลที่สามใดๆ",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "นั่นเป็นสิ่งที่ไม่ธรรมดา",
+      "text_markdown": "นั่นเป็นสิ่งที่ไม่ธรรมดา",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นสิ่งที่ไม่ธรรมดา",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "ไม่ธรรมดามาก เมื่อพิจารณาว่าส่วนที่เหลือของสาขานี้พึ่งพาข้อมูลสังเคราะห์จากโมเดล frontier เป็นอย่างมาก",
+      "text_markdown": "ไม่ธรรมดามาก เมื่อพิจารณาว่าส่วนที่เหลือของสาขานี้พึ่งพาข้อมูลสังเคราะห์จากโมเดล frontier เป็นอย่างมาก",
+      "title": "",
+      "tts": {
+        "text": "ไม่ธรรมดามาก เมื่อพิจารณาว่าส่วนที่เหลือของสาขานี้พึ่งพาข้อมูลสังเคราะห์จากโมเดล frontier เป็นอย่างมาก",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "Code-1-Flash คือตัวที่ถูกกว่า มันเริ่มเปิดให้บริการกับ GitHub Copilot ทุกระดับเมื่อวันที่ 2 มิถุนายน",
+      "text_markdown": "Code-1-Flash คือตัวที่ถูกกว่า มันเริ่มเปิดให้บริการกับ GitHub Copilot ทุกระดับเมื่อวันที่ 2 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "Code หนึ่ง Flash คือตัวที่ถูกกว่า มันเริ่มเปิดให้บริการกับ GitHub Copilot ทุกระดับเมื่อวันที่สองมิถุนายน",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "ดังนั้น Microsoft ตอนนี้จัดส่ง Mistral, DeepSeek, OpenAI และ MAI ของตัวเองควบคู่กันใน Copilot Studio",
+      "text_markdown": "ดังนั้น Microsoft ตอนนี้จัดส่ง Mistral, DeepSeek, OpenAI และ MAI ของตัวเองควบคู่กันใน Copilot Studio",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้น Microsoft ตอนนี้จัดส่ง Mistral, DeepSeek, OpenAI และ M A I ของตัวเองควบคู่กันใน Copilot Studio",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "หัวข้อข่าวที่สอง?",
+      "text_markdown": "หัวข้อข่าวที่สอง?",
+      "title": "",
+      "tts": {
+        "text": "หัวข้อข่าวที่สอง?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "Anthropic ได้ยื่น S-1 อย่างลับๆ กับ SEC เมื่อวันที่ 1 มิถุนายน",
+      "text_markdown": "Anthropic ได้ยื่น S-1 อย่างลับๆ กับ SEC เมื่อวันที่ 1 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ได้ยื่น S หนึ่งอย่างลับๆ กับ SEC เมื่อวันที่หนึ่งมิถุนายน",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "นั่นคือเอกสารที่เริ่มต้นเส้นทางสู่การเข้าจดทะเบียนในตลาดหลักทรัพย์",
+      "text_markdown": "นั่นคือเอกสารที่เริ่มต้นเส้นทางสู่การเข้าจดทะเบียนในตลาดหลักทรัพย์",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือเอกสารที่เริ่มต้นเส้นทางสู่การเข้าจดทะเบียนในตลาดหลักทรัพย์",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "อัตราการทำรายได้ที่ระบุคือประมาณ 47 พันล้านดอลลาร์ เพิ่มขึ้นจากประมาณ 10 พันล้านเมื่อปีที่แล้ว",
+      "text_markdown": "อัตราการทำรายได้ที่ระบุคือประมาณ 47 พันล้านดอลลาร์ เพิ่มขึ้นจากประมาณ 10 พันล้านเมื่อปีที่แล้ว",
+      "title": "",
+      "tts": {
+        "text": "อัตราการทำรายได้ที่ระบุคือประมาณสี่สิบเจ็ดพันล้านดอลลาร์ เพิ่มขึ้นจากประมาณสิบพันล้านเมื่อปีที่แล้ว",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "text": "ยังไม่มี ticker ไม่มีช่วงราคา ไม่มีวันที่ มีแค่เอกสาร",
+      "text_markdown": "ยังไม่มี ticker ไม่มีช่วงราคา ไม่มีวันที่ มีแค่เอกสาร",
+      "title": "",
+      "tts": {
+        "text": "ยังไม่มี ticker ไม่มีช่วงราคา ไม่มีวันที่ มีแค่เอกสาร",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "text": "ข้อที่สาม",
+      "text_markdown": "ข้อที่สาม",
+      "title": "",
+      "tts": {
+        "text": "ข้อที่สาม",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "text": "GitHub Copilot ได้เปลี่ยนไปใช้การเรียกเก็บเงินตามการใช้งานเมื่อวันที่ 1 มิถุนายน",
+      "text_markdown": "GitHub Copilot ได้เปลี่ยนไปใช้การเรียกเก็บเงินตามการใช้งานเมื่อวันที่ 1 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot ได้เปลี่ยนไปใช้การเรียกเก็บเงินตามการใช้งานเมื่อวันที่หนึ่งมิถุนายน",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "text": "ทุกแผนตอนนี้วัด input, output และ cached tokens ในอัตราเดียวกันกับ model API พื้นฐาน",
+      "text_markdown": "ทุกแผนตอนนี้วัด input, output และ cached tokens ในอัตราเดียวกันกับ model API พื้นฐาน",
+      "title": "",
+      "tts": {
+        "text": "ทุกแผนตอนนี้วัด input, output และ cached tokens ในอัตราเดียวกันกับ model API พื้นฐาน",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "text": "พวกเขาได้ผ่อนผันโดยให้เครดิตตามระดับและแผน Copilot Max ใหม่ที่ 100 ดอลลาร์ต่อเดือนสำหรับผู้ใช้ agentic หนัก",
+      "text_markdown": "พวกเขาได้ผ่อนผันโดยให้เครดิตตามระดับและแผน Copilot Max ใหม่ที่ 100 ดอลลาร์ต่อเดือนสำหรับผู้ใช้ agentic หนัก",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาได้ผ่อนผันโดยให้เครดิตตามระดับและแผน Copilot Max ใหม่ที่หนึ่งร้อยดอลลาร์ต่อเดือนสำหรับผู้ใช้ agentic หนัก",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "text": "แล้วนักพัฒนาตอบรับอย่างไร?",
+      "text_markdown": "แล้วนักพัฒนาตอบรับอย่างไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้วนักพัฒนาตอบรับอย่างไร?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "text": "บางความเห็นค่อนข้างแรงมาก",
+      "text_markdown": "บางความเห็นค่อนข้างแรงมาก",
+      "title": "",
+      "tts": {
+        "text": "บางความเห็นค่อนข้างแรงมาก",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-122",
+      "text": "ผู้ใช้งานหนักที่ใช้ agent loop รายงานว่าค่าใช้จ่ายที่คาดการณ์ไว้สูงกว่าค่าธรรมเนียมคงที่เดิมหลายเท่า",
+      "text_markdown": "ผู้ใช้งานหนักที่ใช้ agent loop รายงานว่าค่าใช้จ่ายที่คาดการณ์ไว้สูงกว่าค่าธรรมเนียมคงที่เดิมหลายเท่า",
+      "title": "",
+      "tts": {
+        "text": "ผู้ใช้งานหนักที่ใช้ agent loop รายงานว่าค่าใช้จ่ายที่คาดการณ์ไว้สูงกว่าค่าธรรมเนียมคงที่เดิมหลายเท่า",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-123",
+      "text": "นี่จะมีความสำคัญต่อข่าวหลักของเรา — จำไว้ก่อน",
+      "text_markdown": "นี่จะมีความสำคัญต่อข่าวหลักของเรา — จำไว้ก่อน",
+      "title": "",
+      "tts": {
+        "text": "นี่จะมีความสำคัญต่อข่าวหลักของเรา — จำไว้ก่อน",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-124",
+      "text": "สี่ มีอะไรต้องแพทช์ในสุดสัปดาห์นี้ไหม?",
+      "text_markdown": "สี่ มีอะไรต้องแพทช์ในสุดสัปดาห์นี้ไหม?",
+      "title": "",
+      "tts": {
+        "text": "สี่ มีอะไรต้องแพทช์ในสุดสัปดาห์นี้ไหม?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-125",
+      "text": "ครับ SGLang เวอร์ชั่นถึง 0.5.11 มีช่องโหว่ cache denial-of-service ที่เปิดเผยเมื่อวันที่ 3 มิถุนายน",
+      "text_markdown": "ครับ SGLang เวอร์ชั่นถึง 0.5.11 มีช่องโหว่ cache denial-of-service ที่เปิดเผยเมื่อวันที่ 3 มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "ครับ เอส จี แลง เวอร์ชั่นถึงศูนย์จุดห้าจุดสิบเอ็ด มีช่องโหว่แคชดีไนออลออฟเซอร์วิสที่เปิดเผยเมื่อวันที่สามมิถุนายน",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-126",
+      "text": "รหัสอ้างอิงคือ CVE-2026-10775 ความรุนแรงอยู่ในระดับต่ำ การโจมตีเกิดขึ้นได้เฉพาะใน local เท่านั้น — แต่ถ้าคุณรันเซิร์ฟเวอร์จาก SGLang ให้แพทช์ในวันจันทร์",
+      "text_markdown": "รหัสอ้างอิงคือ CVE-2026-10775 ความรุนแรงอยู่ในระดับต่ำ การโจมตีเกิดขึ้นได้เฉพาะใน local เท่านั้น — แต่ถ้าคุณรันเซิร์ฟเวอร์จาก SGLang ให้แพทช์ในวันจันทร์",
+      "title": "",
+      "tts": {
+        "text": "รหัสอ้างอิงคือซีวีอีสองพันยี่สิบหกแดชหนึ่งศูนย์เจ็ดเจ็ดห้า ความรุนแรงอยู่ในระดับต่ำ การโจมตีเกิดขึ้นได้เฉพาะในโลคอลเท่านั้น — แต่ถ้าคุณรันเซิร์ฟเวอร์จากเอสจีแลงให้แพทช์ในวันจันทร์",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-127",
+      "text": "อีกหนึ่งข่าว",
+      "text_markdown": "อีกหนึ่งข่าว",
+      "title": "",
+      "tts": {
+        "text": "อีกหนึ่งข่าว",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-128",
+      "text": "Unsloth Studio ได้ปล่อยอัปเดตที่ export full fine-tune ไปยัง GGUF ได้โดยตรง — ไม่ใช่แค่ adapter weights",
+      "text_markdown": "Unsloth Studio ได้ปล่อยอัปเดตที่ export full fine-tune ไปยัง GGUF ได้โดยตรง — ไม่ใช่แค่ adapter weights",
+      "title": "",
+      "tts": {
+        "text": "อันสลอธสตูดิโอได้ปล่อยอัปเดตที่เอ็กซ์ปอร์ตฟูลไฟน์ทูนไปยังจีจียูเอฟได้โดยตรง — ไม่ใช่แค่อะแดปเตอร์เวทส์",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-129",
+      "text": "การ์ดสำหรับผู้บริโภค 24 กิกะไบต์เพียงพอสำหรับการรันที่มีประโยชน์แล้ว",
+      "text_markdown": "การ์ดสำหรับผู้บริโภค 24 กิกะไบต์เพียงพอสำหรับการรันที่มีประโยชน์แล้ว",
+      "title": "",
+      "tts": {
+        "text": "การ์ดสำหรับผู้บริโภคยี่สิบสี่กิกะไบต์เพียงพอสำหรับการรันที่มีประโยชน์แล้ว",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-130",
+      "text": "นี่คือ plumbing ที่เรียบง่ายที่ทำให้ตอนที่เหลือของตอนนี้เป็นจริงได้",
+      "text_markdown": "นี่คือ plumbing ที่เรียบง่ายที่ทำให้ตอนที่เหลือของตอนนี้เป็นจริงได้",
+      "title": "",
+      "tts": {
+        "text": "นี่คือ plumbing ที่เรียบง่ายที่ทำให้ตอนที่เหลือของตอนนี้เป็นจริงได้",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-131",
+      "text": "ตอนนี้มากลับไปที่ข่าวหลักกันเถอะ",
+      "text_markdown": "ตอนนี้มากลับไปที่ข่าวหลักกันเถอะ",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้มากลับไปที่ข่าวหลักกันเถอะ",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-132",
+      "text": "คุณทำให้อยากรู้เรื่อง rig นั่น",
+      "text_markdown": "คุณทำให้อยากรู้เรื่อง rig นั่น",
+      "title": "",
+      "tts": {
+        "text": "คุณทำให้อยากรู้เรื่อง rig นั่น",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-133",
+      "text": "ใช่แล้ว และแก่นของมันคือนี่ — DIY rig โตขึ้นในสัปดาห์นี้",
+      "text_markdown": "ใช่แล้ว และแก่นของมันคือนี่ — DIY rig โตขึ้นในสัปดาห์นี้",
+      "title": "",
+      "tts": {
+        "text": "ใช่แล้ว และแก่นของมันคือนี่ — ดีไอวายริกโตขึ้นในสัปดาห์นี้",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-134",
+      "text": "เริ่มจากฮาร์ดแวร์",
+      "text_markdown": "เริ่มจากฮาร์ดแวร์",
+      "title": "",
+      "tts": {
+        "text": "เริ่มจากฮาร์ดแวร์",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-135",
+      "text": "ตอนนี้มีเครื่องสองรุ่นที่จัดส่งจริงในราคาผู้บริโภค",
+      "text_markdown": "ตอนนี้มีเครื่องสองรุ่นที่จัดส่งจริงในราคาผู้บริโภค",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้มีเครื่องสองรุ่นที่จัดส่งจริงในราคาผู้บริโภค",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-136",
+      "text": "AMD เปิด pre-order สำหรับ Ryzen AI Halo mini PC ในเดือนมิถุนายนในราคา 3,999 ดอลลาร์",
+      "text_markdown": "AMD เปิด pre-order สำหรับ Ryzen AI Halo mini PC ในเดือนมิถุนายนในราคา 3,999 ดอลลาร์",
+      "title": "",
+      "tts": {
+        "text": "เอเอ็มดีเปิดพรีออร์เดอร์สำหรับไรเซนเอไอฮาโลมินิพีซีในเดือนมิถุนายนในราคาสามพันเก้าร้อยเก้าสิบเก้าดอลลาร์",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-137",
+      "text": "มันรัน Ryzen AI Max Plus 395 พร้อม unified LPDDR5x memory 128 กิกะไบต์ และวางขายเฉพาะที่ Micro Center ตอนนี้",
+      "text_markdown": "มันรัน Ryzen AI Max Plus 395 พร้อม unified LPDDR5x memory 128 กิกะไบต์ และวางขายเฉพาะที่ Micro Center ตอนนี้",
+      "title": "",
+      "tts": {
+        "text": "มันรันไรเซนเอไอแม็กซ์พลัสสามร้อยเก้าสิบห้า พร้อมยูนิไฟด์แอลพีดีดีอาร์ห้าเอ็กซ์เมมมอรี่หนึ่งร้อยยี่สิบแปดกิกะไบต์ และวางขายเฉพาะที่ไมโครเซ็นเตอร์ตอนนี้",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-138",
+      "text": "แล้วฝั่ง NVIDIA ล่ะ?",
+      "text_markdown": "แล้วฝั่ง NVIDIA ล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วฝั่ง NVIDIA ล่ะ?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-139",
+      "text": "NVIDIA DGX Spark เป็นเครื่องที่เทียบได้",
+      "text_markdown": "NVIDIA DGX Spark เป็นเครื่องที่เทียบได้",
+      "title": "",
+      "tts": {
+        "text": "เอ็นวิเดียดีจีเอ็กซ์สปาร์กเป็นเครื่องที่เทียบได้",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-140",
+      "text": "มันมี GB10 Grace Blackwell chip และ unified memory 128 กิกะไบต์เหมือนกัน",
+      "text_markdown": "มันมี GB10 Grace Blackwell chip และ unified memory 128 กิกะไบต์เหมือนกัน",
+      "title": "",
+      "tts": {
+        "text": "มันมีจีบีเทนเกรซแบล็กเวลชิพและยูนิไฟด์เมมมอรี่หนึ่งร้อยยี่สิบแปดกิกะไบต์เหมือนกัน",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-141",
+      "text": "ราคาเพิ่งขึ้นจาก 3,999 เป็น 4,699 ดอลลาร์ เพราะปัญหา global memory squeeze",
+      "text_markdown": "ราคาเพิ่งขึ้นจาก 3,999 เป็น 4,699 ดอลลาร์ เพราะปัญหา global memory squeeze",
+      "title": "",
+      "tts": {
+        "text": "ราคาเพิ่งขึ้นจากสามพันเก้าร้อยเก้าสิบเก้าเป็นสี่พันหกร้อยเก้าสิบเก้าดอลลาร์ เพราะปัญหาโกลบอลเมมมอรี่สควีซ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-142",
+      "text": "เครื่องเหล่านี้รองรับโมเดลขนาดใหญ่แค่ไหนจริง ๆ?",
+      "text_markdown": "เครื่องเหล่านี้รองรับโมเดลขนาดใหญ่แค่ไหนจริง ๆ?",
+      "title": "",
+      "tts": {
+        "text": "เครื่องเหล่านี้รองรับโมเดลขนาดใหญ่แค่ไหนจริง ๆ?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-143",
+      "text": "ได้ประมาณ 200 พันล้าน parameters ที่ 4-bit quantization พร้อมพื้นที่สำหรับ context",
+      "text_markdown": "ได้ประมาณ 200 พันล้าน parameters ที่ 4-bit quantization พร้อมพื้นที่สำหรับ context",
+      "title": "",
+      "tts": {
+        "text": "ได้ประมาณสองร้อยพันล้านพารามิเตอร์ที่โฟร์บิตควอนไทเซชั่นพร้อมพื้นที่สำหรับคอนเท็กซต์",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-144",
+      "text": "จับคู่ DGX Spark สองเครื่องเข้าด้วยกันผ่าน ConnectX-7 แล้วคุณจะเข้าถึงระดับประมาณ 400 พันล้าน",
+      "text_markdown": "จับคู่ DGX Spark สองเครื่องเข้าด้วยกันผ่าน ConnectX-7 แล้วคุณจะเข้าถึงระดับประมาณ 400 พันล้าน",
+      "title": "",
+      "tts": {
+        "text": "จับคู่ดีจีเอ็กซ์สปาร์กสองเครื่องเข้าด้วยกันผ่านคอนเน็กต์เอ็กซ์เซเว่นแล้วคุณจะเข้าถึงระดับประมาณสี่ร้อยพันล้าน",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-145",
+      "text": "นั่นเป็น frontier-class footprint บนโต๊ะจริง ๆ",
+      "text_markdown": "นั่นเป็น frontier-class footprint บนโต๊ะจริง ๆ",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นฟรอนเทียร์คลาสฟุตพรินต์บนโต๊ะจริง ๆ",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-146",
+      "text": "ตอนนี้ software stack",
+      "text_markdown": "ตอนนี้ software stack",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้ software stack",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-147",
+      "text": "นี่คือสิ่งที่เปลี่ยนไปใต้เท้าเรา",
+      "text_markdown": "นี่คือสิ่งที่เปลี่ยนไปใต้เท้าเรา",
+      "title": "",
+      "tts": {
+        "text": "นี่คือสิ่งที่เปลี่ยนไปใต้เท้าเรา",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-148",
+      "text": "สำหรับ inference คุณมี vLLM, SGLang, llama.cpp, Ollama และ MLX บน Apple Silicon — ทั้งหมดได้รับการดูแล ทั้งหมดเร็ว",
+      "text_markdown": "สำหรับ inference คุณมี vLLM, SGLang, llama.cpp, Ollama และ MLX บน Apple Silicon — ทั้งหมดได้รับการดูแล ทั้งหมดเร็ว",
+      "title": "",
+      "tts": {
+        "text": "สำหรับอินเฟอเรนซ์คุณมีวีแอลแอลเอ็ม เอสจีแลง ลามาซีพีพี โอลลามา และเอ็มแอลเอ็กซ์บนแอปเปิลซิลิคอน — ทั้งหมดได้รับการดูแล ทั้งหมดเร็ว",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-149",
+      "text": "สำหรับโมเดลเอง คุณมี Nemotron 3 Ultra weights ในสัปดาห์นี้ บวกกับ Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 และ MiniMax M3 weights ที่จะออกมา",
+      "text_markdown": "สำหรับโมเดลเอง คุณมี Nemotron 3 Ultra weights ในสัปดาห์นี้ บวกกับ Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 และ MiniMax M3 weights ที่จะออกมา",
+      "title": "",
+      "tts": {
+        "text": "สำหรับโมเดลเอง คุณมีนีโมตรอนสามอัลตร้าเวทส์ในสัปดาห์นี้ บวกกับคิมิเคสองจุดหก ดีปซีกวีโฟร์แฟลช จีแอลเอ็มห้าจุดหนึ่ง และมินิแม็กซ์เอ็มสามเวทส์ที่จะออกมา",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-150",
+      "text": "สำหรับ fine-tuning Unsloth Studio ตอนนี้เป็น one-click full tune ไปยัง GGUF",
+      "text_markdown": "สำหรับ fine-tuning Unsloth Studio ตอนนี้เป็น one-click full tune ไปยัง GGUF",
+      "title": "",
+      "tts": {
+        "text": "สำหรับไฟน์ทูนนิง อันสลอธสตูดิโอตอนนี้เป็นวันคลิกฟูลทูนไปยังจีจียูเอฟ",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-151",
+      "text": "และสำหรับ agents คุณมี Aider, Continue และ LangGraph version 1 ที่รันโมเดล local 32 พันล้าน parameters ด้วยความน่าเชื่อถือที่ใช้งานได้",
+      "text_markdown": "และสำหรับ agents คุณมี Aider, Continue และ LangGraph version 1 ที่รันโมเดล local 32 พันล้าน parameters ด้วยความน่าเชื่อถือที่ใช้งานได้",
+      "title": "",
+      "tts": {
+        "text": "และสำหรับเอเจนต์ คุณมีเอเดอร์ คอนทินิว และแลงกราฟเวอร์ชั่นหนึ่งที่รันโมเดลโลคอลสามสิบสองพันล้านพารามิเตอร์ด้วยความน่าเชื่อถือที่ใช้งานได้",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-152",
+      "text": "นั่นเป็น loop ครบวงจร",
+      "text_markdown": "นั่นเป็น loop ครบวงจร",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็น loop ครบวงจร",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-153",
+      "text": "นั่นเป็น loop ครบวงจร",
+      "text_markdown": "นั่นเป็น loop ครบวงจร",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็น loop ครบวงจร",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-154",
+      "text": "Silicon, engine, model, fine-tune, agent — ทุกชั้นมี option แบบ open ที่น่าเชื่อถือ และชั้นล่างสุดตอนนี้เป็น mini PC ข้างโต๊ะ",
+      "text_markdown": "Silicon, engine, model, fine-tune, agent — ทุกชั้นมี option แบบ open ที่น่าเชื่อถือ และชั้นล่างสุดตอนนี้เป็น mini PC ข้างโต๊ะ",
+      "title": "",
+      "tts": {
+        "text": "ซิลิคอน เอ็นจิน โมเดล ไฟน์ทูน เอเจนต์ — ทุกชั้นมีออปชั่นแบบโอเพนที่น่าเชื่อถือ และชั้นล่างสุดตอนนี้เป็นมินิพีซีข้างโต๊ะ",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-155",
+      "text": "แล้วเรื่องเศรษฐศาสตร์ล่ะ?",
+      "text_markdown": "แล้วเรื่องเศรษฐศาสตร์ล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วเรื่องเศรษฐศาสตร์ล่ะ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-156",
+      "text": "เศรษฐศาสตร์พลิกผันในสัปดาห์นี้ ในลักษณะที่พลาดยาก",
+      "text_markdown": "เศรษฐศาสตร์พลิกผันในสัปดาห์นี้ ในลักษณะที่พลาดยาก",
+      "title": "",
+      "tts": {
+        "text": "เศรษฐศาสตร์พลิกผันในสัปดาห์นี้ ในลักษณะที่พลาดยาก",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-157",
+      "text": "Copilot ที่คิดค่าบริการตาม token, Anthropic S-1 ที่ส่งสัญญาณความกดดันด้านราคาที่จะมา และคำเตือนจากโครงข่ายไฟฟ้าจาก Texas, Virginia และ Ohio เรื่องฤดูร้อนที่ตึงเครียด",
+      "text_markdown": "Copilot ที่คิดค่าบริการตาม token, Anthropic S-1 ที่ส่งสัญญาณความกดดันด้านราคาที่จะมา และคำเตือนจากโครงข่ายไฟฟ้าจาก Texas, Virginia และ Ohio เรื่องฤดูร้อนที่ตึงเครียด",
+      "title": "",
+      "tts": {
+        "text": "โคไพล็อตที่คิดค่าบริการตามโทเคน แอนโทรปิกเอสหนึ่งที่ส่งสัญญาณความกดดันด้านราคาที่จะมา และคำเตือนจากโครงข่ายไฟฟ้าจากเท็กซัส เวอร์จิเนีย และโอไฮโอเรื่องฤดูร้อนที่ตึงเครียด",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-158",
+      "text": "เหตุผลสำหรับ self-host เคยเป็นเรื่องอุดมการณ์",
+      "text_markdown": "เหตุผลสำหรับ self-host เคยเป็นเรื่องอุดมการณ์",
+      "title": "",
+      "tts": {
+        "text": "เหตุผลสำหรับเซลฟ์โฮสต์เคยเป็นเรื่องอุดมการณ์",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-159",
+      "text": "สัปดาห์นี้มันกลายเป็นเรื่องสเปรดชีต",
+      "text_markdown": "สัปดาห์นี้มันกลายเป็นเรื่องสเปรดชีต",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้มันกลายเป็นเรื่องสเปรดชีต",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-160",
+      "text": "พูดตรง ๆ เรื่องที่ไม่เปลี่ยน",
+      "text_markdown": "พูดตรง ๆ เรื่องที่ไม่เปลี่ยน",
+      "title": "",
+      "tts": {
+        "text": "พูดตรง ๆ เรื่องที่ไม่เปลี่ยน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-161",
+      "text": "ข้อควรระวังที่สำคัญ — เคาน์เตอร์ท็อปของคุณไม่ได้เอาชนะคลาวด์ในตำแหน่งที่ดีที่สุดของชาร์ตคุณภาพ",
+      "text_markdown": "ข้อควรระวังที่สำคัญ — เคาน์เตอร์ท็อปของคุณไม่ได้เอาชนะคลาวด์ในตำแหน่งที่ดีที่สุดของชาร์ตคุณภาพ",
+      "title": "",
+      "tts": {
+        "text": "ข้อควรระวังที่สำคัญ — เคาน์เตอร์ท็อปของคุณไม่ได้เอาชนะคลาวด์ในตำแหน่งที่ดีที่สุดของชาร์ตคุณภาพ",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-162",
+      "text": "Opus 4.8 ยังคงนำในส่วนผสม และ GPT-5.5 ยังคงครอง BrowseComp",
+      "text_markdown": "Opus 4.8 ยังคงนำในส่วนผสม และ GPT-5.5 ยังคงครอง BrowseComp",
+      "title": "",
+      "tts": {
+        "text": "Opus สี่จุดแปด ยังคงนำในส่วนผสม และ GPT ห้าจุดห้า ยังคงครอง BrowseComp",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-163",
+      "text": "สิ่งที่เปลี่ยนแปลงในสัปดาห์นี้คือพื้นฐาน",
+      "text_markdown": "สิ่งที่เปลี่ยนแปลงในสัปดาห์นี้คือพื้นฐาน",
+      "title": "",
+      "tts": {
+        "text": "สิ่งที่เปลี่ยนแปลงในสัปดาห์นี้คือพื้นฐาน",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-164",
+      "text": "โมเดลที่มีความสามารถ ระดับเอเจนต์ ปรับแต่งได้ บนฮาร์ดแวร์ของคุณเอง พร้อมน้ำหนักแบบเปิด",
+      "text_markdown": "โมเดลที่มีความสามารถ ระดับเอเจนต์ ปรับแต่งได้ บนฮาร์ดแวร์ของคุณเอง พร้อมน้ำหนักแบบเปิด",
+      "title": "",
+      "tts": {
+        "text": "โมเดลที่มีความสามารถ ระดับเอเจนต์ ปรับแต่งได้ บนฮาร์ดแวร์ของคุณเอง พร้อมน้ำหนักแบบเปิด",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-165",
+      "text": "นั่นคือเรื่องราว",
+      "text_markdown": "นั่นคือเรื่องราว",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือเรื่องราว",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-166",
+      "text": "เมื่อก่อนต้องใช้ดาต้าเซ็นเตอร์",
+      "text_markdown": "เมื่อก่อนต้องใช้ดาต้าเซ็นเตอร์",
+      "title": "",
+      "tts": {
+        "text": "เมื่อก่อนต้องใช้ดาต้าเซ็นเตอร์",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-167",
+      "text": "สัปดาห์นี้ ใช้แค่เคาน์เตอร์ท็อป",
+      "text_markdown": "สัปดาห์นี้ ใช้แค่เคาน์เตอร์ท็อป",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้ ใช้แค่เคาน์เตอร์ท็อป",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-168",
+      "text": "มาทำหัวข้อแนวคิดของสัปดาห์กัน",
+      "text_markdown": "มาทำหัวข้อแนวคิดของสัปดาห์กัน",
+      "title": "",
+      "tts": {
+        "text": "มาทำหัวข้อแนวคิดของสัปดาห์กัน",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-169",
+      "text": "คุณเลือก speculative decoding",
+      "text_markdown": "คุณเลือก speculative decoding",
+      "title": "",
+      "tts": {
+        "text": "คุณเลือก speculative decoding",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-170",
+      "text": "ใช่ เพราะมันเป็นเทคนิคที่ทำให้ทุกอย่างที่เราเพิ่งพูดถึงรู้สึกเร็ว",
+      "text_markdown": "ใช่ เพราะมันเป็นเทคนิคที่ทำให้ทุกอย่างที่เราเพิ่งพูดถึงรู้สึกเร็ว",
+      "title": "",
+      "tts": {
+        "text": "ใช่ เพราะมันเป็นเทคนิคที่ทำให้ทุกอย่างที่เราเพิ่งพูดถึงรู้สึกเร็ว",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-171",
+      "text": "การอ้างของ MiniMax เรื่องการถอดรหัสเร็วขึ้น 15 เท่า อาศัยเทคนิคที่เกี่ยวข้อง",
+      "text_markdown": "การอ้างของ MiniMax เรื่องการถอดรหัสเร็วขึ้น 15 เท่า อาศัยเทคนิคที่เกี่ยวข้อง",
+      "title": "",
+      "tts": {
+        "text": "การอ้างของ MiniMax เรื่องการถอดรหัสเร็วขึ้นสิบห้าเท่า อาศัยเทคนิคที่เกี่ยวข้อง",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-172",
+      "text": "โหมดร่างโมเดลของ Llama.cpp คือแนวคิดเดียวกันนี้",
+      "text_markdown": "โหมดร่างโมเดลของ Llama.cpp คือแนวคิดเดียวกันนี้",
+      "title": "",
+      "tts": {
+        "text": "โหมดร่างโมเดลของ Llama.cpp คือแนวคิดเดียวกันนี้",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-173",
+      "text": "อธิบายให้เราฟังหน่อย",
+      "text_markdown": "อธิบายให้เราฟังหน่อย",
+      "title": "",
+      "tts": {
+        "text": "อธิบายให้เราฟังหน่อย",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-174",
+      "text": "คุณรันสองโมเดลแบบเคียงข้างกัน",
+      "text_markdown": "คุณรันสองโมเดลแบบเคียงข้างกัน",
+      "title": "",
+      "tts": {
+        "text": "คุณรันสองโมเดลแบบเคียงข้างกัน",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-175",
+      "text": "โมเดลเล็กและเร็วที่เรียกว่า drafter และโมเดลใหญ่และช้าที่เรียกว่า verifier",
+      "text_markdown": "โมเดลเล็กและเร็วที่เรียกว่า drafter และโมเดลใหญ่และช้าที่เรียกว่า verifier",
+      "title": "",
+      "tts": {
+        "text": "โมเดลเล็กและเร็วที่เรียกว่า drafter และโมเดลใหญ่และช้าที่เรียกว่า verifier",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-176",
+      "text": "Drafter เดาโทเค็นถัดไป 4 โทเค็นได้ในครั้งเดียว",
+      "text_markdown": "Drafter เดาโทเค็นถัดไป 4 โทเค็นได้ในครั้งเดียว",
+      "title": "",
+      "tts": {
+        "text": "Drafter เดาโทเค็นถัดไปสี่โทเค็นได้ในครั้งเดียว",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-177",
+      "text": "Verifier ตรวจสอบทั้งสี่แบบขนาน",
+      "text_markdown": "Verifier ตรวจสอบทั้งสี่แบบขนาน",
+      "title": "",
+      "tts": {
+        "text": "Verifier ตรวจสอบทั้งสี่แบบขนาน",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-178",
+      "text": "แล้วอย่างไร?",
+      "text_markdown": "แล้วอย่างไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้วอย่างไร?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-179",
+      "text": "ถ้า verifier เห็นด้วย คุณเก็บทั้งสี่และไปต่อ — คุณเพิ่งทำสี่โทเค็นด้วยต้นทุนประมาณหนึ่งโทเค็น",
+      "text_markdown": "ถ้า verifier เห็นด้วย คุณเก็บทั้งสี่และไปต่อ — คุณเพิ่งทำสี่โทเค็นด้วยต้นทุนประมาณหนึ่งโทเค็น",
+      "title": "",
+      "tts": {
+        "text": "ถ้า verifier เห็นด้วย คุณเก็บทั้งสี่และไปต่อ — คุณเพิ่งทำสี่โทเค็นด้วยต้นทุนประมาณหนึ่งโทเค็น",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-180",
+      "text": "ถ้าไม่เห็นด้วย คุณยอมรับจนถึงจุดที่ผิดเพี้ยนแรกและให้โมเดลใหญ่เข้ามาจัดการต่อจากจุดนั้น",
+      "text_markdown": "ถ้าไม่เห็นด้วย คุณยอมรับจนถึงจุดที่ผิดเพี้ยนแรกและให้โมเดลใหญ่เข้ามาจัดการต่อจากจุดนั้น",
+      "title": "",
+      "tts": {
+        "text": "ถ้าไม่เห็นด้วย คุณยอมรับจนถึงจุดที่ผิดเพี้ยนแรกและให้โมเดลใหญ่เข้ามาจัดการต่อจากจุดนั้น",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-181",
+      "text": "ดังนั้นคำตอบจึงเหมือนกัน",
+      "text_markdown": "ดังนั้นคำตอบจึงเหมือนกัน",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้นคำตอบจึงเหมือนกัน",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-182",
+      "text": "ใช่ นั่นคือส่วนที่สวยงาม",
+      "text_markdown": "ใช่ นั่นคือส่วนที่สวยงาม",
+      "title": "",
+      "tts": {
+        "text": "ใช่ นั่นคือส่วนที่สวยงาม",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-183",
+      "text": "ผลลัพธ์เหมือนกับที่โมเดลใหญ่จะผลิตได้เองทุกประการ",
+      "text_markdown": "ผลลัพธ์เหมือนกับที่โมเดลใหญ่จะผลิตได้เองทุกประการ",
+      "title": "",
+      "tts": {
+        "text": "ผลลัพธ์เหมือนกับที่โมเดลใหญ่จะผลิตได้เองทุกประการ",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-184",
+      "text": "คุณแค่จ่ายสำหรับ forward passes ที่น้อยลง",
+      "text_markdown": "คุณแค่จ่ายสำหรับ forward passes ที่น้อยลง",
+      "title": "",
+      "tts": {
+        "text": "คุณแค่จ่ายสำหรับ forward passes ที่น้อยลง",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-185",
+      "text": "ทำไมมันถึงสำคัญสำหรับคนชอบแปลงของ?",
+      "text_markdown": "ทำไมมันถึงสำคัญสำหรับคนชอบแปลงของ?",
+      "title": "",
+      "tts": {
+        "text": "ทำไมมันถึงสำคัญสำหรับคนชอบแปลงของ?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-186",
+      "text": "เพราะมันเปลี่ยนโมเดล 70 พันล้านพารามิเตอร์บนการ์ดเดียว จากของเล่นให้กลายเป็นคู่สนทนาที่ใช้งานได้จริง",
+      "text_markdown": "เพราะมันเปลี่ยนโมเดล 70 พันล้านพารามิเตอร์บนการ์ดเดียว จากของเล่นให้กลายเป็นคู่สนทนาที่ใช้งานได้จริง",
+      "title": "",
+      "tts": {
+        "text": "เพราะมันเปลี่ยนโมเดลเจ็ดหมื่นล้านพารามิเตอร์บนการ์ดเดียว จากของเล่นให้กลายเป็นคู่สนทนาที่ใช้งานได้จริง",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-187",
+      "text": "และบนโทรศัพท์ มันเป็นส่วนหนึ่งของการทำให้ผู้ช่วยบนอุปกรณ์จริงรู้สึกตอบสนองเร็ว",
+      "text_markdown": "และบนโทรศัพท์ มันเป็นส่วนหนึ่งของการทำให้ผู้ช่วยบนอุปกรณ์จริงรู้สึกตอบสนองเร็ว",
+      "title": "",
+      "tts": {
+        "text": "และบนโทรศัพท์ มันเป็นส่วนหนึ่งของการทำให้ผู้ช่วยบนอุปกรณ์จริงรู้สึกตอบสนองเร็ว",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-188",
+      "text": "แนวคิดของสัปดาห์ที่แล้ว neural audio codecs เป็นเทคนิคเดียวกันนี้แต่เป็นเวอร์ชันเสียง — ขั้นตอนที่แพงน้อยลงสำหรับคุณภาพเดียวกัน",
+      "text_markdown": "แนวคิดของสัปดาห์ที่แล้ว neural audio codecs เป็นเทคนิคเดียวกันนี้แต่เป็นเวอร์ชันเสียง — ขั้นตอนที่แพงน้อยลงสำหรับคุณภาพเดียวกัน",
+      "title": "",
+      "tts": {
+        "text": "แนวคิดของสัปดาห์ที่แล้ว neural audio codecs เป็นเทคนิคเดียวกันนี้แต่เป็นเวอร์ชันเสียง — ขั้นตอนที่แพงน้อยลงสำหรับคุณภาพเดียวกัน",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-189",
+      "text": "คนที่อยากรู้ควรไปดูอะไรต่อ?",
+      "text_markdown": "คนที่อยากรู้ควรไปดูอะไรต่อ?",
+      "title": "",
+      "tts": {
+        "text": "คนที่อยากรู้ควรไปดูอะไรต่อ?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-190",
+      "text": "ไปดู EAGLE-3, Medusa และ lookahead decoding",
+      "text_markdown": "ไปดู EAGLE-3, Medusa และ lookahead decoding",
+      "title": "",
+      "tts": {
+        "text": "ไปดู Eagle สาม, Medusa และ lookahead decoding",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-191",
+      "text": "พวกมันเป็นญาติยุคใหม่ของแนวคิด drafter-verifier ดั้งเดิม และเป็นสิ่งที่เครื่องมือ inference ของคุณใช้งานอยู่จริงๆ เบื้องหลัง",
+      "text_markdown": "พวกมันเป็นญาติยุคใหม่ของแนวคิด drafter-verifier ดั้งเดิม และเป็นสิ่งที่เครื่องมือ inference ของคุณใช้งานอยู่จริงๆ เบื้องหลัง",
+      "title": "",
+      "tts": {
+        "text": "พวกมันเป็นญาติยุคใหม่ของแนวคิด drafter verifier ดั้งเดิม และเป็นสิ่งที่เครื่องมือ inference ของคุณใช้งานอยู่จริงๆ เบื้องหลัง",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-192",
+      "text": "เป็นจุดที่ดีในการจบ",
+      "text_markdown": "เป็นจุดที่ดีในการจบ",
+      "title": "",
+      "tts": {
+        "text": "เป็นจุดที่ดีในการจบ",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-193",
+      "text": "Ron ขอบคุณ",
+      "text_markdown": "Ron ขอบคุณ",
+      "title": "",
+      "tts": {
+        "text": "Ron ขอบคุณ",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-194",
+      "text": "เมื่อไหร่ก็ได้ Vindy",
+      "text_markdown": "เมื่อไหร่ก็ได้ Vindy",
+      "title": "",
+      "tts": {
+        "text": "เมื่อไหร่ก็ได้ Vindy",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-195",
+      "text": "นี่คือ AI This Week สำหรับวันที่ 3 มิถุนายน 2026",
+      "text_markdown": "นี่คือ AI This Week สำหรับวันที่ 3 มิถุนายน 2026",
+      "title": "",
+      "tts": {
+        "text": "นี่คือ AI This Week สำหรับวันที่สามมิถุนายน สองพันยี่สิบหก",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-196",
+      "text": "ฉบับใหม่วันพุธหน้า",
+      "text_markdown": "ฉบับใหม่วันพุธหน้า",
+      "title": "",
+      "tts": {
+        "text": "ฉบับใหม่วันพุธหน้า",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-197",
+      "text": "จนถึงตอนนั้น ดูแลตัวเองด้วยนะ",
+      "text_markdown": "จนถึงตอนนั้น ดูแลตัวเองด้วยนะ",
+      "title": "",
+      "tts": {
+        "text": "จนถึงตอนนั้น ดูแลตัวเองด้วยนะ",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "온대림",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "온대림",
+      "text_markdown": "온대림"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "온대림이 자라는 곳",
+      "text_markdown": "온대림이 자라는 곳"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림에 오신 것을 환영해요.",
+      "text_markdown": "온대림에 오신 것을 환영해요.",
+      "tts": {
+        "text": "온대림에 오신 것을 환영해요.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+      "text_markdown": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+      "tts": {
+        "text": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "생물군계는 고유의 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+      "text_markdown": "생물군계는 고유의 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+      "tts": {
+        "text": "생물군계는 고유의 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림은 넓은 잎을 가진 나무들의 숲이에요.",
+      "text_markdown": "온대림은 넓은 잎을 가진 나무들의 숲이에요.",
+      "tts": {
+        "text": "온대림은 넓은 잎을 가진 나무들의 숲이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여기 나무들은 대부분 일 년에 한 번 잎을 떨구고 봄에 새잎을 틔워요.",
+      "text_markdown": "여기 나무들은 대부분 일 년에 한 번 잎을 떨구고 봄에 새잎을 틔워요.",
+      "tts": {
+        "text": "여기 나무들은 대부분 일 년에 한 번 잎을 떨구고 봄에 새잎을 틔워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이렇게 잎을 떨구는 나무를 낙엽수라고 불러요.",
+      "text_markdown": "이렇게 잎을 떨구는 나무를 낙엽수라고 불러요.",
+      "tts": {
+        "text": "이렇게 잎을 떨구는 나무를 낙엽수라고 불러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림은 세계의 중간 부분에서, 추운 북쪽과 따뜻한 열대 사이에서 자라요.",
+      "text_markdown": "온대림은 세계의 중간 부분에서, 추운 북쪽과 따뜻한 열대 사이에서 자라요.",
+      "tts": {
+        "text": "온대림은 세계의 중간 부분에서, 추운 북쪽과 따뜻한 열대 사이에서 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아메리카 동부에 거대한 온대림이 있어요.",
+      "text_markdown": "북아메리카 동부에 거대한 온대림이 있어요.",
+      "tts": {
+        "text": "북아메리카 동부에 거대한 온대림이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 대부분 지역에도 온대림이 있어요.",
+      "text_markdown": "유럽 대부분 지역에도 온대림이 있어요.",
+      "tts": {
+        "text": "유럽 대부분 지역에도 온대림이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아시아 동부의 중국과 한국과 일본에도 온대림이 있어요.",
+      "text_markdown": "아시아 동부의 중국과 한국과 일본에도 온대림이 있어요.",
+      "tts": {
+        "text": "아시아 동부의 중국과 한국과 일본에도 온대림이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남아메리카 남부와 호주 남동부와 뉴질랜드 남부에도 작은 숲들이 있어요.",
+      "text_markdown": "남아메리카 남부와 호주 남동부와 뉴질랜드 남부에도 작은 숲들이 있어요.",
+      "tts": {
+        "text": "남아메리카 남부와 호주 남동부와 뉴질랜드 남부에도 작은 숲들이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 숲들은 각자 멀리 떨어져서 따로 자라났어요.",
+      "text_markdown": "이 숲들은 각자 멀리 떨어져서 따로 자라났어요.",
+      "tts": {
+        "text": "이 숲들은 각자 멀리 떨어져서 따로 자라났어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 세계 각지마다 나무와 동물의 종류가 달라요.",
+      "text_markdown": "그래서 세계 각지마다 나무와 동물의 종류가 달라요.",
+      "tts": {
+        "text": "그래서 세계 각지마다 나무와 동물의 종류가 달라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 모두 같은 모습을 나눠 가져요.",
+      "text_markdown": "하지만 모두 같은 모습을 나눠 가져요.",
+      "tts": {
+        "text": "하지만 모두 같은 모습을 나눠 가져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잎이 무성한 나무들의 지붕, 떨어진 잎으로 푹신한 바닥, 그리고 아주 다른 네 계절이에요.",
+      "text_markdown": "잎이 무성한 나무들의 지붕, 떨어진 잎으로 푹신한 바닥, 그리고 아주 다른 네 계절이에요.",
+      "tts": {
+        "text": "잎이 무성한 나무들의 지붕, 떨어진 잎으로 푹신한 바닥, 그리고 아주 다른 네 계절이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림에 들어서면 공기가 시원하고 부드럽게 느껴져요.",
+      "text_markdown": "온대림에 들어서면 공기가 시원하고 부드럽게 느껴져요.",
+      "tts": {
+        "text": "온대림에 들어서면 공기가 시원하고 부드럽게 느껴져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 햇살이 잎 사이로 부드러운 초록 얼룩처럼 떨어져요.",
+      "text_markdown": "여름에는 햇살이 잎 사이로 부드러운 초록 얼룩처럼 떨어져요.",
+      "tts": {
+        "text": "여름에는 햇살이 잎 사이로 부드러운 초록 얼룩처럼 떨어져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 잎이 노랗고 주황빛이고 붉게 물들어요.",
+      "text_markdown": "가을에는 잎이 노랗고 주황빛이고 붉게 물들어요.",
+      "tts": {
+        "text": "가을에는 잎이 노랗고 주황빛이고 붉게 물들어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 나무들이 하늘을 향해 앙상하게 서 있어요.",
+      "text_markdown": "겨울에는 나무들이 하늘을 향해 앙상하게 서 있어요.",
+      "tts": {
+        "text": "겨울에는 나무들이 하늘을 향해 앙상하게 서 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄에는 작은 초록 새싹이 돋아나고 숲 전체가 다시 깨어나요.",
+      "text_markdown": "봄에는 작은 초록 새싹이 돋아나고 숲 전체가 다시 깨어나요.",
+      "tts": {
+        "text": "봄에는 작은 초록 새싹이 돋아나고 숲 전체가 다시 깨어나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그것이 온대림이에요.",
+      "text_markdown": "그것이 온대림이에요.",
+      "tts": {
+        "text": "그것이 온대림이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "온대림이 자라는 곳",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일 년에 네 번 얼굴을 바꾸는 푸른 세계예요.",
+      "text_markdown": "일 년에 네 번 얼굴을 바꾸는 푸른 세계예요.",
+      "tts": {
+        "text": "일 년에 네 번 얼굴을 바꾸는 푸른 세계예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "날씨",
+      "text_markdown": "날씨"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림의 날씨는 일 년 내내 크게 바뀌어요.",
+      "text_markdown": "온대림의 날씨는 일 년 내내 크게 바뀌어요.",
+      "tts": {
+        "text": "온대림의 날씨는 일 년 내내 크게 바뀌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네 계절이 있고, 각 계절은 아주 달라요.",
+      "text_markdown": "네 계절이 있고, 각 계절은 아주 달라요.",
+      "tts": {
+        "text": "네 계절이 있고, 각 계절은 아주 달라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 낮이 길고 따뜻해요.",
+      "text_markdown": "여름에는 낮이 길고 따뜻해요.",
+      "tts": {
+        "text": "여름에는 낮이 길고 따뜻해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비가 자주 오고, 때로는 거센 폭풍이 나무들 위로 몰려와요.",
+      "text_markdown": "비가 자주 오고, 때로는 거센 폭풍이 나무들 위로 몰려와요.",
+      "tts": {
+        "text": "비가 자주 오고, 때로는 거센 폭풍이 나무들 위로 몰려와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲은 초록 잎과 새들의 노래로 가득해요.",
+      "text_markdown": "숲은 초록 잎과 새들의 노래로 가득해요.",
+      "tts": {
+        "text": "숲은 초록 잎과 새들의 노래로 가득해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 낮이 짧아지고 공기가 시원해져요.",
+      "text_markdown": "가을에는 낮이 짧아지고 공기가 시원해져요.",
+      "tts": {
+        "text": "가을에는 낮이 짧아지고 공기가 시원해져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무의 잎이 색을 바꾸고 땅으로 떨어져요.",
+      "text_markdown": "나무의 잎이 색을 바꾸고 땅으로 떨어져요.",
+      "tts": {
+        "text": "나무의 잎이 색을 바꾸고 땅으로 떨어져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을 숲을 걷는 것은 부드럽고 밝은 잎 양탄자 위를 걷는 것이에요.",
+      "text_markdown": "가을 숲을 걷는 것은 부드럽고 밝은 잎 양탄자 위를 걷는 것이에요.",
+      "tts": {
+        "text": "가을 숲을 걷는 것은 부드럽고 밝은 잎 양탄자 위를 걷는 것이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 낮이 짧고, 밤은 길고 추워요.",
+      "text_markdown": "겨울에는 낮이 짧고, 밤은 길고 추워요.",
+      "tts": {
+        "text": "겨울에는 낮이 짧고, 밤은 길고 추워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 곳에서 눈이 몇 주 동안 숲을 덮어요.",
+      "text_markdown": "많은 곳에서 눈이 몇 주 동안 숲을 덮어요.",
+      "tts": {
+        "text": "많은 곳에서 눈이 몇 주 동안 숲을 덮어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "앙상한 나뭇가지들이 회색 하늘 아래 가만히 서 있어요.",
+      "text_markdown": "앙상한 나뭇가지들이 회색 하늘 아래 가만히 서 있어요.",
+      "tts": {
+        "text": "앙상한 나뭇가지들이 회색 하늘 아래 가만히 서 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 동물들이 추위 동안 잠들거나 굴 속에 숨어요.",
+      "text_markdown": "많은 동물들이 추위 동안 잠들거나 굴 속에 숨어요.",
+      "tts": {
+        "text": "많은 동물들이 추위 동안 잠들거나 굴 속에 숨어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러다 봄이 와요.",
+      "text_markdown": "그러다 봄이 와요.",
+      "tts": {
+        "text": "그러다 봄이 와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "눈이 녹고, 비가 다시 내리고, 흙이 따뜻해져요.",
+      "text_markdown": "눈이 녹고, 비가 다시 내리고, 흙이 따뜻해져요.",
+      "tts": {
+        "text": "눈이 녹고, 비가 다시 내리고, 흙이 따뜻해져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가지에 초록 새싹이 열리고, 꽃이 땅에서 솟아오르고, 숲은 다시 소리와 색으로 채워져요.",
+      "text_markdown": "가지에 초록 새싹이 열리고, 꽃이 땅에서 솟아오르고, 숲은 다시 소리와 색으로 채워져요.",
+      "tts": {
+        "text": "가지에 초록 새싹이 열리고, 꽃이 땅에서 솟아오르고, 숲은 다시 소리와 색으로 채워져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림은 추위를 견디는 법과 따뜻함이 돌아올 때 기뻐하는 법을 알아요.",
+      "text_markdown": "온대림은 추위를 견디는 법과 따뜻함이 돌아올 때 기뻐하는 법을 알아요.",
+      "tts": {
+        "text": "온대림은 추위를 견디는 법과 따뜻함이 돌아올 때 기뻐하는 법을 알아요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "땅과 물",
+      "text_markdown": "땅과 물"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림 아래의 땅은 비옥해요.",
+      "text_markdown": "온대림 아래의 땅은 비옥해요.",
+      "tts": {
+        "text": "온대림 아래의 땅은 비옥해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수천 년 동안 잎들이 나무에서 떨어져 천천히 어둡고 부드러운 흙이 되었어요.",
+      "text_markdown": "수천 년 동안 잎들이 나무에서 떨어져 천천히 어둡고 부드러운 흙이 되었어요.",
+      "tts": {
+        "text": "수천 년 동안 잎들이 나무에서 떨어져 천천히 어둡고 부드러운 흙이 되었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이런 흙은 물을 잘 머금고, 나무에게 풍부한 양분을 줘요.",
+      "text_markdown": "이런 흙은 물을 잘 머금고, 나무에게 풍부한 양분을 줘요.",
+      "tts": {
+        "text": "이런 흙은 물을 잘 머금고, 나무에게 풍부한 양분을 줘요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲 바닥은 오래된 잎과 부러진 잔가지와 초록 이끼로 덮여 있어요.",
+      "text_markdown": "숲 바닥은 오래된 잎과 부러진 잔가지와 초록 이끼로 덮여 있어요.",
+      "tts": {
+        "text": "숲 바닥은 오래된 잎과 부러진 잔가지와 초록 이끼로 덮여 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잎을 헤치면, 작은 생명들로 가득한 어두운 흙이 보여요.",
+      "text_markdown": "잎을 헤치면, 작은 생명들로 가득한 어두운 흙이 보여요.",
+      "tts": {
+        "text": "잎을 헤치면, 작은 생명들로 가득한 어두운 흙이 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지렁이와 곤충이 그 사이를 다녀요.",
+      "text_markdown": "지렁이와 곤충이 그 사이를 다녀요.",
+      "tts": {
+        "text": "지렁이와 곤충이 그 사이를 다녀요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비가 온 뒤에는 버섯이 아래에서 솟아올라요.",
+      "text_markdown": "비가 온 뒤에는 버섯이 아래에서 솟아올라요.",
+      "tts": {
+        "text": "비가 온 뒤에는 버섯이 아래에서 솟아올라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시냇물이 모든 온대림을 굽이쳐 흘러요.",
+      "text_markdown": "시냇물이 모든 온대림을 굽이쳐 흘러요.",
+      "tts": {
+        "text": "시냇물이 모든 온대림을 굽이쳐 흘러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄에는 녹은 눈으로 가득해 차갑고 맑게 흘러요.",
+      "text_markdown": "봄에는 녹은 눈으로 가득해 차갑고 맑게 흘러요.",
+      "tts": {
+        "text": "봄에는 녹은 눈으로 가득해 차갑고 맑게 흘러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 더 느리게 흐르고, 얕은 물 사이로 돌이 드러나요.",
+      "text_markdown": "여름에는 더 느리게 흐르고, 얕은 물 사이로 돌이 드러나요.",
+      "tts": {
+        "text": "여름에는 더 느리게 흐르고, 얕은 물 사이로 돌이 드러나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 황금빛 잎이 작은 배처럼 떠내려가요.",
+      "text_markdown": "가을에는 황금빛 잎이 작은 배처럼 떠내려가요.",
+      "tts": {
+        "text": "가을에는 황금빛 잎이 작은 배처럼 떠내려가요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 작은 시냇물이 얼고, 물은 얼음 지붕 아래 숨어요.",
+      "text_markdown": "겨울에는 작은 시냇물이 얼고, 물은 얼음 지붕 아래 숨어요.",
+      "tts": {
+        "text": "겨울에는 작은 시냇물이 얼고, 물은 얼음 지붕 아래 숨어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 세계의 큰 강 중 많은 강이 이 숲에서 시작돼요.",
+      "text_markdown": "온대 세계의 큰 강 중 많은 강이 이 숲에서 시작돼요.",
+      "tts": {
+        "text": "온대 세계의 큰 강 중 많은 강이 이 숲에서 시작돼요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무들은 흙을 단단히 붙잡고 시냇물에 물을 조금씩 보내줘요.",
+      "text_markdown": "나무들은 흙을 단단히 붙잡고 시냇물에 물을 조금씩 보내줘요.",
+      "tts": {
+        "text": "나무들은 흙을 단단히 붙잡고 시냇물에 물을 조금씩 보내줘요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲이 없으면, 강은 지금과 같지 않을 거예요.",
+      "text_markdown": "숲이 없으면, 강은 지금과 같지 않을 거예요.",
+      "tts": {
+        "text": "숲이 없으면, 강은 지금과 같지 않을 거예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "식물",
+      "text_markdown": "식물"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무들은 온대림의 심장이에요.",
+      "text_markdown": "나무들은 온대림의 심장이에요.",
+      "tts": {
+        "text": "나무들은 온대림의 심장이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그중 많은 나무가 굵은 줄기와 넓은 가지를 가지고 크고 튼튼하게 자라요.",
+      "text_markdown": "그중 많은 나무가 굵은 줄기와 넓은 가지를 가지고 크고 튼튼하게 자라요.",
+      "tts": {
+        "text": "그중 많은 나무가 굵은 줄기와 넓은 가지를 가지고 크고 튼튼하게 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "목재가 단단하고, 한 그루는 수백 년을 살 수 있어요.",
+      "text_markdown": "목재가 단단하고, 한 그루는 수백 년을 살 수 있어요.",
+      "tts": {
+        "text": "목재가 단단하고, 한 그루는 수백 년을 살 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 나무는 그보다도 더 오래 자라요.",
+      "text_markdown": "어떤 나무는 그보다도 더 오래 자라요.",
+      "tts": {
+        "text": "어떤 나무는 그보다도 더 오래 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림의 가장 유명한 나무는 참나무와 단풍나무와 너도밤나무와 자작나무예요.",
+      "text_markdown": "온대림의 가장 유명한 나무는 참나무와 단풍나무와 너도밤나무와 자작나무예요.",
+      "tts": {
+        "text": "온대림의 가장 유명한 나무는 참나무와 단풍나무와 너도밤나무와 자작나무예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계 각지에서 이런 나무들의 다양한 종류를 만날 수 있어요.",
+      "text_markdown": "세계 각지에서 이런 나무들의 다양한 종류를 만날 수 있어요.",
+      "tts": {
+        "text": "세계 각지에서 이런 나무들의 다양한 종류를 만날 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 같은 모양과 같은 연중 이야기를 나눠 가져요.",
+      "text_markdown": "하지만 같은 모양과 같은 연중 이야기를 나눠 가져요.",
+      "tts": {
+        "text": "하지만 같은 모양과 같은 연중 이야기를 나눠 가져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄에는 모든 가지에 새잎이 열려요.",
+      "text_markdown": "봄에는 모든 가지에 새잎이 열려요.",
+      "tts": {
+        "text": "봄에는 모든 가지에 새잎이 열려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잎은 옅은 초록빛이고 부드러워요.",
+      "text_markdown": "잎은 옅은 초록빛이고 부드러워요.",
+      "tts": {
+        "text": "잎은 옅은 초록빛이고 부드러워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름 내내 잎은 햇빛을 받으려 넓게 펼쳐져요.",
+      "text_markdown": "여름 내내 잎은 햇빛을 받으려 넓게 펼쳐져요.",
+      "tts": {
+        "text": "여름 내내 잎은 햇빛을 받으려 넓게 펼쳐져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "초록 잎 하나하나가 햇빛과 물과 공기를 나무의 양분으로 바꿔요.",
+      "text_markdown": "초록 잎 하나하나가 햇빛과 물과 공기를 나무의 양분으로 바꿔요.",
+      "tts": {
+        "text": "초록 잎 하나하나가 햇빛과 물과 공기를 나무의 양분으로 바꿔요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 잎이 떨어지기 전에 색을 바꿔요.",
+      "text_markdown": "가을에는 잎이 떨어지기 전에 색을 바꿔요.",
+      "tts": {
+        "text": "가을에는 잎이 떨어지기 전에 색을 바꿔요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 잎은 선명한 빨강, 어떤 잎은 환한 노랑, 어떤 잎은 짙은 갈색이 돼요.",
+      "text_markdown": "어떤 잎은 선명한 빨강, 어떤 잎은 환한 노랑, 어떤 잎은 짙은 갈색이 돼요.",
+      "tts": {
+        "text": "어떤 잎은 선명한 빨강, 어떤 잎은 환한 노랑, 어떤 잎은 짙은 갈색이 돼요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 색들이 짧은 몇 주 동안 산비탈 전체를 물들여요.",
+      "text_markdown": "이 색들이 짧은 몇 주 동안 산비탈 전체를 물들여요.",
+      "tts": {
+        "text": "이 색들이 짧은 몇 주 동안 산비탈 전체를 물들여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 후 잎이 떨어지고, 나무는 추위 동안 쉬어요.",
+      "text_markdown": "그 후 잎이 떨어지고, 나무는 추위 동안 쉬어요.",
+      "tts": {
+        "text": "그 후 잎이 떨어지고, 나무는 추위 동안 쉬어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무의 목재는 깊은 안쪽에 필요한 것을 간직해요.",
+      "text_markdown": "나무의 목재는 깊은 안쪽에 필요한 것을 간직해요.",
+      "tts": {
+        "text": "나무의 목재는 깊은 안쪽에 필요한 것을 간직해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄이 돌아오면 나무는 다시 시작해요.",
+      "text_markdown": "봄이 돌아오면 나무는 다시 시작해요.",
+      "tts": {
+        "text": "봄이 돌아오면 나무는 다시 시작해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "큰 나무 아래에는 작은 식물들이 자라요.",
+      "text_markdown": "큰 나무 아래에는 작은 식물들이 자라요.",
+      "tts": {
+        "text": "큰 나무 아래에는 작은 식물들이 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동물들이 좋아하는 열매가 달린 덤불들이 있어요.",
+      "text_markdown": "동물들이 좋아하는 열매가 달린 덤불들이 있어요.",
+      "tts": {
+        "text": "동물들이 좋아하는 열매가 달린 덤불들이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바위와 오래된 통나무 위에는 고사리와 부드러운 이끼가 있어요.",
+      "text_markdown": "바위와 오래된 통나무 위에는 고사리와 부드러운 이끼가 있어요.",
+      "tts": {
+        "text": "바위와 오래된 통나무 위에는 고사리와 부드러운 이끼가 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이른 봄, 큰 나무에 잎이 나기 전에는 들꽃이 숲 바닥을 가득 채워요.",
+      "text_markdown": "이른 봄, 큰 나무에 잎이 나기 전에는 들꽃이 숲 바닥을 가득 채워요.",
+      "tts": {
+        "text": "이른 봄, 큰 나무에 잎이 나기 전에는 들꽃이 숲 바닥을 가득 채워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몇 주 동안 땅은 푸른 종꽃이나 수선화나 다른 밝은 꽃들로 덮여요.",
+      "text_markdown": "몇 주 동안 땅은 푸른 종꽃이나 수선화나 다른 밝은 꽃들로 덮여요.",
+      "tts": {
+        "text": "몇 주 동안 땅은 푸른 종꽃이나 수선화나 다른 밝은 꽃들로 덮여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무들이 잎을 키워 땅에 그늘을 드리우면, 꽃들은 사라져요.",
+      "text_markdown": "나무들이 잎을 키워 땅에 그늘을 드리우면, 꽃들은 사라져요.",
+      "tts": {
+        "text": "나무들이 잎을 키워 땅에 그늘을 드리우면, 꽃들은 사라져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그들은 흙 아래에서 다음 봄을 기다릴 거예요.",
+      "text_markdown": "그들은 흙 아래에서 다음 봄을 기다릴 거예요.",
+      "tts": {
+        "text": "그들은 흙 아래에서 다음 봄을 기다릴 거예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "동물",
+      "text_markdown": "동물"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림은 많은 종류의 동물들의 보금자리예요.",
+      "text_markdown": "온대림은 많은 종류의 동물들의 보금자리예요.",
+      "tts": {
+        "text": "온대림은 많은 종류의 동물들의 보금자리예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무 위에서도 땅 위에서도, 모두 바뀌는 계절과 함께 사는 법을 알아요.",
+      "text_markdown": "나무 위에서도 땅 위에서도, 모두 바뀌는 계절과 함께 사는 법을 알아요.",
+      "tts": {
+        "text": "나무 위에서도 땅 위에서도, 모두 바뀌는 계절과 함께 사는 법을 알아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사슴은 많은 온대림에서 흔해요.",
+      "text_markdown": "사슴은 많은 온대림에서 흔해요.",
+      "tts": {
+        "text": "사슴은 많은 온대림에서 흔해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그들은 나무 사이를 살며시 걸으며 잎과 풀과 작은 식물을 먹어요.",
+      "text_markdown": "그들은 나무 사이를 살며시 걸으며 잎과 풀과 작은 식물을 먹어요.",
+      "tts": {
+        "text": "그들은 나무 사이를 살며시 걸으며 잎과 풀과 작은 식물을 먹어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 털이 짧고 갈색이에요.",
+      "text_markdown": "여름에는 털이 짧고 갈색이에요.",
+      "tts": {
+        "text": "여름에는 털이 짧고 갈색이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 털이 두꺼워지고 회색이 돼요.",
+      "text_markdown": "겨울에는 털이 두꺼워지고 회색이 돼요.",
+      "tts": {
+        "text": "겨울에는 털이 두꺼워지고 회색이 돼요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "곰도 이런 숲 중 일부에 살아요.",
+      "text_markdown": "곰도 이런 숲 중 일부에 살아요.",
+      "tts": {
+        "text": "곰도 이런 숲 중 일부에 살아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "곰은 거의 무엇이든 먹어요. 열매와 물고기와 꿀과 작은 동물들이요.",
+      "text_markdown": "곰은 거의 무엇이든 먹어요. 열매와 물고기와 꿀과 작은 동물들이요.",
+      "tts": {
+        "text": "곰은 거의 무엇이든 먹어요. 열매와 물고기와 꿀과 작은 동물들이요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 곰이 먹을 수 있을 만큼 많이 먹어요.",
+      "text_markdown": "가을에는 곰이 먹을 수 있을 만큼 많이 먹어요.",
+      "tts": {
+        "text": "가을에는 곰이 먹을 수 있을 만큼 많이 먹어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러고는 조용한 곳을 찾아 가장 추운 겨울 동안 깊이 잠들어요.",
+      "text_markdown": "그러고는 조용한 곳을 찾아 가장 추운 겨울 동안 깊이 잠들어요.",
+      "tts": {
+        "text": "그러고는 조용한 곳을 찾아 가장 추운 겨울 동안 깊이 잠들어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "늑대와 여우가 숲에서 사냥해요.",
+      "text_markdown": "늑대와 여우가 숲에서 사냥해요.",
+      "tts": {
+        "text": "늑대와 여우가 숲에서 사냥해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "늑대는 가족 무리로 살며 하루에 먼 거리를 다녀요.",
+      "text_markdown": "늑대는 가족 무리로 살며 하루에 먼 거리를 다녀요.",
+      "tts": {
+        "text": "늑대는 가족 무리로 살며 하루에 먼 거리를 다녀요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여우는 더 작고, 흔히 밤에 혼자 사냥해요.",
+      "text_markdown": "여우는 더 작고, 흔히 밤에 혼자 사냥해요.",
+      "tts": {
+        "text": "여우는 더 작고, 흔히 밤에 혼자 사냥해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다람쥐는 어디에나 있어요.",
+      "text_markdown": "다람쥐는 어디에나 있어요.",
+      "tts": {
+        "text": "다람쥐는 어디에나 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 견과를 모아 숲 곳곳에 묻어 둬요.",
+      "text_markdown": "가을에는 견과를 모아 숲 곳곳에 묻어 둬요.",
+      "tts": {
+        "text": "가을에는 견과를 모아 숲 곳곳에 묻어 둬요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 숨겨 둔 저장고를 파내어 먹어요.",
+      "text_markdown": "겨울에는 숨겨 둔 저장고를 파내어 먹어요.",
+      "tts": {
+        "text": "겨울에는 숨겨 둔 저장고를 파내어 먹어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가끔 몇 개를 잊어버리면, 그 견과들이 다음 나무로 자라요.",
+      "text_markdown": "가끔 몇 개를 잊어버리면, 그 견과들이 다음 나무로 자라요.",
+      "tts": {
+        "text": "가끔 몇 개를 잊어버리면, 그 견과들이 다음 나무로 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "토끼와 작은 쥐는 부드러운 흙과 쓰러진 통나무 아래에 살아요.",
+      "text_markdown": "토끼와 작은 쥐는 부드러운 흙과 쓰러진 통나무 아래에 살아요.",
+      "tts": {
+        "text": "토끼와 작은 쥐는 부드러운 흙과 쓰러진 통나무 아래에 살아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 종류의 새들이 온대림을 소리로 가득 채워요.",
+      "text_markdown": "많은 종류의 새들이 온대림을 소리로 가득 채워요.",
+      "tts": {
+        "text": "많은 종류의 새들이 온대림을 소리로 가득 채워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 새는 일 년 내내 머물며, 앙상한 겨울 가지에서 볼 수 있어요.",
+      "text_markdown": "어떤 새는 일 년 내내 머물며, 앙상한 겨울 가지에서 볼 수 있어요.",
+      "tts": {
+        "text": "어떤 새는 일 년 내내 머물며, 앙상한 겨울 가지에서 볼 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 다른 새들은 겨울에 남쪽으로 날아갔다가 봄이 오면 돌아와요.",
+      "text_markdown": "많은 다른 새들은 겨울에 남쪽으로 날아갔다가 봄이 오면 돌아와요.",
+      "tts": {
+        "text": "많은 다른 새들은 겨울에 남쪽으로 날아갔다가 봄이 오면 돌아와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "딱따구리는 나무 줄기를 두드려요.",
+      "text_markdown": "딱따구리는 나무 줄기를 두드려요.",
+      "tts": {
+        "text": "딱따구리는 나무 줄기를 두드려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "올빼미는 밤에 사냥해요.",
+      "text_markdown": "올빼미는 밤에 사냥해요.",
+      "tts": {
+        "text": "올빼미는 밤에 사냥해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "연못과 시냇물에서는 개구리가 노래하고, 겨울에는 작은 물고기가 얼음 아래에서 헤엄쳐요.",
+      "text_markdown": "연못과 시냇물에서는 개구리가 노래하고, 겨울에는 작은 물고기가 얼음 아래에서 헤엄쳐요.",
+      "tts": {
+        "text": "연못과 시냇물에서는 개구리가 노래하고, 겨울에는 작은 물고기가 얼음 아래에서 헤엄쳐요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나비와 벌은 꽃이 필 때 따뜻한 달에 나와요.",
+      "text_markdown": "나비와 벌은 꽃이 필 때 따뜻한 달에 나와요.",
+      "tts": {
+        "text": "나비와 벌은 꽃이 필 때 따뜻한 달에 나와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여기 모든 동물은 네 계절을 몸으로 알아요.",
+      "text_markdown": "여기 모든 동물은 네 계절을 몸으로 알아요.",
+      "tts": {
+        "text": "여기 모든 동물은 네 계절을 몸으로 알아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "각자 언제 바쁘게 움직이고, 언제 쉬고, 언제 다시 깨어날지 알아요.",
+      "text_markdown": "각자 언제 바쁘게 움직이고, 언제 쉬고, 언제 다시 깨어날지 알아요.",
+      "tts": {
+        "text": "각자 언제 바쁘게 움직이고, 언제 쉬고, 언제 다시 깨어날지 알아요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "사람들",
+      "text_markdown": "사람들"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들은 수천 년 동안 온대림에서 살아왔어요.",
+      "text_markdown": "사람들은 수천 년 동안 온대림에서 살아왔어요.",
+      "tts": {
+        "text": "사람들은 수천 년 동안 온대림에서 살아왔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온화한 계절과 비옥한 흙이 늘 이곳을 사람이 살기 좋은 곳으로 만들었어요.",
+      "text_markdown": "온화한 계절과 비옥한 흙이 늘 이곳을 사람이 살기 좋은 곳으로 만들었어요.",
+      "tts": {
+        "text": "온화한 계절과 비옥한 흙이 늘 이곳을 사람이 살기 좋은 곳으로 만들었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오래전, 이 숲의 사람들은 사슴과 작은 동물들을 사냥했어요.",
+      "text_markdown": "오래전, 이 숲의 사람들은 사슴과 작은 동물들을 사냥했어요.",
+      "tts": {
+        "text": "오래전, 이 숲의 사람들은 사슴과 작은 동물들을 사냥했어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲 바닥에서 견과와 열매와 뿌리를 모았어요.",
+      "text_markdown": "숲 바닥에서 견과와 열매와 뿌리를 모았어요.",
+      "tts": {
+        "text": "숲 바닥에서 견과와 열매와 뿌리를 모았어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 버섯이 안전하고 어떤 버섯이 그렇지 않은지 알았어요.",
+      "text_markdown": "어떤 버섯이 안전하고 어떤 버섯이 그렇지 않은지 알았어요.",
+      "tts": {
+        "text": "어떤 버섯이 안전하고 어떤 버섯이 그렇지 않은지 알았어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "주변 나무의 목재로 집을 지었어요.",
+      "text_markdown": "주변 나무의 목재로 집을 지었어요.",
+      "tts": {
+        "text": "주변 나무의 목재로 집을 지었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "통나무 집과 나무껍질 지붕은 긴 겨울 동안 가족을 따뜻하게 지켜 줘요.",
+      "text_markdown": "통나무 집과 나무껍질 지붕은 긴 겨울 동안 가족을 따뜻하게 지켜 줘요.",
+      "tts": {
+        "text": "통나무 집과 나무껍질 지붕은 긴 겨울 동안 가족을 따뜻하게 지켜 줘요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄과 여름에는 숲에서 일군 작은 밭에서 먹을 것을 길렀어요.",
+      "text_markdown": "봄과 여름에는 숲에서 일군 작은 밭에서 먹을 것을 길렀어요.",
+      "tts": {
+        "text": "봄과 여름에는 숲에서 일군 작은 밭에서 먹을 것을 길렀어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시원한 날씨에 잘 자랄 곡식과 콩과 뿌리채소를 심었어요.",
+      "text_markdown": "시원한 날씨에 잘 자랄 곡식과 콩과 뿌리채소를 심었어요.",
+      "tts": {
+        "text": "시원한 날씨에 잘 자랄 곡식과 콩과 뿌리채소를 심었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을에는 수확물을 거두어 추운 달을 위해 저장했어요.",
+      "text_markdown": "가을에는 수확물을 거두어 추운 달을 위해 저장했어요.",
+      "tts": {
+        "text": "가을에는 수확물을 거두어 추운 달을 위해 저장했어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 불 옆에 앉아 도구를 고치고, 이야기를 나누며 봄을 기다렸어요.",
+      "text_markdown": "겨울에는 불 옆에 앉아 도구를 고치고, 이야기를 나누며 봄을 기다렸어요.",
+      "tts": {
+        "text": "겨울에는 불 옆에 앉아 도구를 고치고, 이야기를 나누며 봄을 기다렸어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲은 불과 건물을 위한 목재를 주었어요.",
+      "text_markdown": "숲은 불과 건물을 위한 목재를 주었어요.",
+      "tts": {
+        "text": "숲은 불과 건물을 위한 목재를 주었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "약을 위한 나무껍질과 잎도 주었어요.",
+      "text_markdown": "약을 위한 나무껍질과 잎도 주었어요.",
+      "tts": {
+        "text": "약을 위한 나무껍질과 잎도 주었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천을 물들일 염료를 주었고, 모든 계절에 먹을 것을 주었어요.",
+      "text_markdown": "천을 물들일 염료를 주었고, 모든 계절에 먹을 것을 주었어요.",
+      "tts": {
+        "text": "천을 물들일 염료를 주었고, 모든 계절에 먹을 것을 주었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시간이 흐르며, 이 숲들 중 많은 곳이 농장과 도시를 만들기 위해 베어졌어요.",
+      "text_markdown": "시간이 흐르며, 이 숲들 중 많은 곳이 농장과 도시를 만들기 위해 베어졌어요.",
+      "tts": {
+        "text": "시간이 흐르며, 이 숲들 중 많은 곳이 농장과 도시를 만들기 위해 베어졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마을은 읍이 되고, 읍은 온대 세계의 큰 도시가 되었어요.",
+      "text_markdown": "마을은 읍이 되고, 읍은 온대 세계의 큰 도시가 되었어요.",
+      "tts": {
+        "text": "마을은 읍이 되고, 읍은 온대 세계의 큰 도시가 되었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 사람들은 여전히 이야기와 노래로 숲을 기억해요.",
+      "text_markdown": "하지만 사람들은 여전히 이야기와 노래로 숲을 기억해요.",
+      "tts": {
+        "text": "하지만 사람들은 여전히 이야기와 노래로 숲을 기억해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 땅들의 오래된 노래와 이야기에는 나무와 늑대와 사슴과 긴 겨울밤이 가득해요.",
+      "text_markdown": "이 땅들의 오래된 노래와 이야기에는 나무와 늑대와 사슴과 긴 겨울밤이 가득해요.",
+      "tts": {
+        "text": "이 땅들의 오래된 노래와 이야기에는 나무와 늑대와 사슴과 긴 겨울밤이 가득해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모든 온대림에는 고유한 언어와 음식과 봄을 기다리는 고유한 방식이 있어요.",
+      "text_markdown": "모든 온대림에는 고유한 언어와 음식과 봄을 기다리는 고유한 방식이 있어요.",
+      "tts": {
+        "text": "모든 온대림에는 고유한 언어와 음식과 봄을 기다리는 고유한 방식이 있어요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "오늘의 숲",
+      "text_markdown": "오늘의 숲"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대림은 사람에게 가장 중요한 생물군계 중 하나예요.",
+      "text_markdown": "온대림은 사람에게 가장 중요한 생물군계 중 하나예요.",
+      "tts": {
+        "text": "온대림은 사람에게 가장 중요한 생물군계 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계의 큰 도시 대부분은 한때 온대림이었던 곳에 서 있어요.",
+      "text_markdown": "세계의 큰 도시 대부분은 한때 온대림이었던 곳에 서 있어요.",
+      "tts": {
+        "text": "세계의 큰 도시 대부분은 한때 온대림이었던 곳에 서 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲은 우리에게 건물용 목재와 글을 쓸 종이와 마실 깨끗한 물을 줘요.",
+      "text_markdown": "숲은 우리에게 건물용 목재와 글을 쓸 종이와 마실 깨끗한 물을 줘요.",
+      "tts": {
+        "text": "숲은 우리에게 건물용 목재와 글을 쓸 종이와 마실 깨끗한 물을 줘요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무들은 우리가 내쉬는 기체를 받아들여 자라는 데 써요.",
+      "text_markdown": "나무들은 우리가 내쉬는 기체를 받아들여 자라는 데 써요.",
+      "tts": {
+        "text": "나무들은 우리가 내쉬는 기체를 받아들여 자라는 데 써요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그리고 우리가 들이마시는 기체를 돌려줘요.",
+      "text_markdown": "그리고 우리가 들이마시는 기체를 돌려줘요.",
+      "tts": {
+        "text": "그리고 우리가 들이마시는 기체를 돌려줘요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을이면 숲은 지구에서 가장 아름다운 풍경 중 하나예요.",
+      "text_markdown": "가을이면 숲은 지구에서 가장 아름다운 풍경 중 하나예요.",
+      "tts": {
+        "text": "가을이면 숲은 지구에서 가장 아름다운 풍경 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들은 단풍을 보기 위해 먼 거리를 여행해요.",
+      "text_markdown": "사람들은 단풍을 보기 위해 먼 거리를 여행해요.",
+      "tts": {
+        "text": "사람들은 단풍을 보기 위해 먼 거리를 여행해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 온대림은 많은 땅을 잃었어요.",
+      "text_markdown": "하지만 온대림은 많은 땅을 잃었어요.",
+      "tts": {
+        "text": "하지만 온대림은 많은 땅을 잃었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수천 년에 걸쳐, 원래 숲의 많은 부분이 베어졌어요.",
+      "text_markdown": "수천 년에 걸쳐, 원래 숲의 많은 부분이 베어졌어요.",
+      "tts": {
+        "text": "수천 년에 걸쳐, 원래 숲의 많은 부분이 베어졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한때 끝없이 나무가 있던 자리에 지금은 밭과 마을과 길과 도시가 있어요.",
+      "text_markdown": "한때 끝없이 나무가 있던 자리에 지금은 밭과 마을과 길과 도시가 있어요.",
+      "tts": {
+        "text": "한때 끝없이 나무가 있던 자리에 지금은 밭과 마을과 길과 도시가 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남아 있는 숲은 더 작고 조각조각 나뉘어 있어요.",
+      "text_markdown": "남아 있는 숲은 더 작고 조각조각 나뉘어 있어요.",
+      "tts": {
+        "text": "남아 있는 숲은 더 작고 조각조각 나뉘어 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계 곳곳의 많은 단체들이 남은 숲을 돌보려 애쓰고 있어요.",
+      "text_markdown": "세계 곳곳의 많은 단체들이 남은 숲을 돌보려 애쓰고 있어요.",
+      "tts": {
+        "text": "세계 곳곳의 많은 단체들이 남은 숲을 돌보려 애쓰고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오래된 나무가 사라진 곳에 새 나무를 심어요.",
+      "text_markdown": "오래된 나무가 사라진 곳에 새 나무를 심어요.",
+      "tts": {
+        "text": "오래된 나무가 사라진 곳에 새 나무를 심어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오래된 숲이 베이지 않도록 지켜요.",
+      "text_markdown": "오래된 숲이 베이지 않도록 지켜요.",
+      "tts": {
+        "text": "오래된 숲이 베이지 않도록 지켜요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "숲을 더 잘 이해하기 위해 연구해요.",
+      "text_markdown": "숲을 더 잘 이해하기 위해 연구해요.",
+      "tts": {
+        "text": "숲을 더 잘 이해하기 위해 연구해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어린 숲은 백 년이면 다시 자랄 수 있어요.",
+      "text_markdown": "어린 숲은 백 년이면 다시 자랄 수 있어요.",
+      "tts": {
+        "text": "어린 숲은 백 년이면 다시 자랄 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오래된 숲에는 근처 어떤 건물보다 더 오래된 살아 있는 나무가 있을 수 있어요.",
+      "text_markdown": "오래된 숲에는 근처 어떤 건물보다 더 오래된 살아 있는 나무가 있을 수 있어요.",
+      "tts": {
+        "text": "오래된 숲에는 근처 어떤 건물보다 더 오래된 살아 있는 나무가 있을 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "오늘의 숲",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우리가 돌볼 가치가 있어요.",
+      "text_markdown": "우리가 돌볼 가치가 있어요.",
+      "tts": {
+        "text": "우리가 돌볼 가치가 있어요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "맺음말",
+      "text_markdown": "맺음말"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그것이 온대림이에요.",
+      "text_markdown": "그것이 온대림이에요.",
+      "tts": {
+        "text": "그것이 온대림이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "키 큰 나무와 시원한 시냇물과 아주 다른 네 계절이 있는 푸른 세계예요.",
+      "text_markdown": "키 큰 나무와 시원한 시냇물과 아주 다른 네 계절이 있는 푸른 세계예요.",
+      "tts": {
+        "text": "키 큰 나무와 시원한 시냇물과 아주 다른 네 계절이 있는 푸른 세계예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "언젠가 그런 숲에 들어가게 되면, 잠시 가만히 서 보세요.",
+      "text_markdown": "언젠가 그런 숲에 들어가게 되면, 잠시 가만히 서 보세요.",
+      "tts": {
+        "text": "언젠가 그런 숲에 들어가게 되면, 잠시 가만히 서 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "머리 위 잎 사이로 부는 바람을 들어 보세요.",
+      "text_markdown": "머리 위 잎 사이로 부는 바람을 들어 보세요.",
+      "tts": {
+        "text": "머리 위 잎 사이로 부는 바람을 들어 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "발밑에 쌓인 오래된 잎의 부드러운 양탄자를 바라보세요.",
+      "text_markdown": "발밑에 쌓인 오래된 잎의 부드러운 양탄자를 바라보세요.",
+      "tts": {
+        "text": "발밑에 쌓인 오래된 잎의 부드러운 양탄자를 바라보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "주위에서 생물군계의 심장이 뛰는 소리를 듣게 될 거예요.",
+      "text_markdown": "주위에서 생물군계의 심장이 뛰는 소리를 듣게 될 거예요.",
+      "tts": {
+        "text": "주위에서 생물군계의 심장이 뛰는 소리를 듣게 될 거예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

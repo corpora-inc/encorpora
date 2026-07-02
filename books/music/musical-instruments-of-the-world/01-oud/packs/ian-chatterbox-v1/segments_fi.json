@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "fi",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Huomio kuuntelijalle",
+      "text_markdown": "Huomio kuuntelijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä kirja kertoo udista, puisesta kielisoittimesta.",
+      "text_markdown": "Tämä kirja kertoo udista, puisesta kielisoittimesta.",
+      "tts": {
+        "text": "Tämä kirja kertoo uudista, puisesta kielisoittimesta.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihmiset ovat soittaneet sitä yli tuhannen vuoden ajan.",
+      "text_markdown": "Ihmiset ovat soittaneet sitä yli tuhannen vuoden ajan.",
+      "tts": {
+        "text": "Ihmiset ovat soittaneet sitä yli tuhannen vuoden ajan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voit kuulla udia merenrantakaupungeissa ja vuoristokylissä.",
+      "text_markdown": "Voit kuulla udia merenrantakaupungeissa ja vuoristokylissä.",
+      "tts": {
+        "text": "Voit kuulla uudia merenrantakaupungeissa ja vuoristokylissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Voit kuulla sitä vanhoissa palatseissa ja pienillä puisilla lavoilla.",
+      "text_markdown": "Voit kuulla sitä vanhoissa palatseissa ja pienillä puisilla lavoilla.",
+      "tts": {
+        "text": "Voit kuulla sitä vanhoissa palatseissa ja pienillä puisilla lavoilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tässä kirjassa opimme, miltä ud näyttää, miten se rakennetaan ja ketkä muovasivat sen tarinaa.",
+      "text_markdown": "Tässä kirjassa opimme, miltä ud näyttää, miten se rakennetaan ja ketkä muovasivat sen tarinaa.",
+      "tts": {
+        "text": "Tässä kirjassa opimme, miltä uud näyttää, miten se rakennetaan ja ketkä muovasivat sen tarinaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lopussa tiedät, miksi udia kutsutaan joskus kaikkien kielisoitinten kuninkaaksi.",
+      "text_markdown": "Lopussa tiedät, miksi udia kutsutaan joskus kaikkien kielisoitinten kuninkaaksi.",
+      "tts": {
+        "text": "Lopussa tiedät, miksi uudia kutsutaan joskus kaikkien kielisoitinten kuninkaaksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 1 – Mikä on ud?",
+      "text_markdown": "Luku 1 – Mikä on ud?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud on kielisoitin.",
+      "text_markdown": "Ud on kielisoitin.",
+      "tts": {
+        "text": "Uud on kielisoitin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on luutun sukuinen soitin, jonka runko on kuin kahtia leikattu päärynä.",
+      "text_markdown": "Se on luutun sukuinen soitin, jonka runko on kuin kahtia leikattu päärynä.",
+      "tts": {
+        "text": "Se on luutun sukuinen soitin, jonka runko on kuin kahtia leikattu päärynä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udin takaosa on pyöreä ja syvä, kuin puinen kulho.",
+      "text_markdown": "Udin takaosa on pyöreä ja syvä, kuin puinen kulho.",
+      "tts": {
+        "text": "Uudin takaosa on pyöreä ja syvä, kuin puinen kulho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etupuoli on tasainen.",
+      "text_markdown": "Etupuoli on tasainen.",
+      "tts": {
+        "text": "Etupuoli on tasainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaikukanneksi kutsutaan tätä tasaista etupuolta.",
+      "text_markdown": "Kaikukanneksi kutsutaan tätä tasaista etupuolta.",
+      "tts": {
+        "text": "Kaikukanneksi kutsutaan tätä tasaista etupuolta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udin kaula on lyhyt, eikä siinä ole nauhoja.",
+      "text_markdown": "Udin kaula on lyhyt, eikä siinä ole nauhoja.",
+      "tts": {
+        "text": "Uudin kaula on lyhyt, eikä siinä ole nauhoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nauhat ovat pieniä metalliviivoja, joita näet kitarassa.",
+      "text_markdown": "Nauhat ovat pieniä metalliviivoja, joita näet kitarassa.",
+      "tts": {
+        "text": "Nauhat ovat pieniä metalliviivoja, joita näet kitarassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilman niitä soittaja voi liukua sävelestä toiseen hyvin sulavasti.",
+      "text_markdown": "Ilman niitä soittaja voi liukua sävelestä toiseen hyvin sulavasti.",
+      "tts": {
+        "text": "Ilman niitä soittaja voi liukua sävelestä toiseen hyvin sulavasti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmissa udeissa on yksitoista kieltä kuudessa kuorossa.",
+      "text_markdown": "Useimmissa udeissa on yksitoista kieltä kuudessa kuorossa.",
+      "tts": {
+        "text": "Useimmissa udeissa on yksitoista kieltä kuudessa kuorossa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokaista tällaista ryhmää kutsutaan kuoroksi.",
+      "text_markdown": "Jokaista tällaista ryhmää kutsutaan kuoroksi.",
+      "tts": {
+        "text": "Jokaista tällaista ryhmää kutsutaan kuoroksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viidessä kuorossa on kaksi samoin viritettyä kieltä.",
+      "text_markdown": "Viidessä kuorossa on kaksi samoin viritettyä kieltä.",
+      "tts": {
+        "text": "Viidessä kuorossa on kaksi samoin viritettyä kieltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuudennessa kuorossa on vain yksi kieli.",
+      "text_markdown": "Kuudennessa kuorossa on vain yksi kieli.",
+      "tts": {
+        "text": "Kuudennessa kuorossa on vain yksi kieli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Niin niitä tulee yksitoista.",
+      "text_markdown": "Niin niitä tulee yksitoista.",
+      "tts": {
+        "text": "Niin niitä tulee yksitoista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soittaja pitää udia sylissään.",
+      "text_markdown": "Soittaja pitää udia sylissään.",
+      "tts": {
+        "text": "Soittaja pitää uudia sylissään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toinen käsi painaa kieliä kaulalla.",
+      "text_markdown": "Toinen käsi painaa kieliä kaulalla.",
+      "tts": {
+        "text": "Toinen käsi painaa kieliä kaulalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toinen käsi näppää niitä ohuella rišalla.",
+      "text_markdown": "Toinen käsi näppää niitä ohuella rišalla.",
+      "tts": {
+        "text": "Toinen käsi näppää niitä ohuella rišalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ääni on lämmin ja syvä.",
+      "text_markdown": "Ääni on lämmin ja syvä.",
+      "tts": {
+        "text": "Ääni on lämmin ja syvä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on vähän surullinen ja vähän suloinen yhtä aikaa.",
+      "text_markdown": "Se on vähän surullinen ja vähän suloinen yhtä aikaa.",
+      "tts": {
+        "text": "Se on vähän surullinen ja vähän suloinen yhtä aikaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 2 – Mistä nimi tulee",
+      "text_markdown": "Luku 2 – Mistä nimi tulee"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sana ud on arabiaa ja tarkoittaa puuta.",
+      "text_markdown": "Sana ud on arabiaa ja tarkoittaa puuta.",
+      "tts": {
+        "text": "Sana uud on arabiaa ja tarkoittaa puuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soitin on saanut nimensä siitä, mistä se on tehty.",
+      "text_markdown": "Soitin on saanut nimensä siitä, mistä se on tehty.",
+      "tts": {
+        "text": "Soitin on saanut nimensä siitä, mistä se on tehty.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ennen udia oli vanhempi sukulainen nimeltä barbat.",
+      "text_markdown": "Ennen udia oli vanhempi sukulainen nimeltä barbat.",
+      "tts": {
+        "text": "Ennen uudia oli vanhempi sukulainen nimeltä barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbatia soitettiin muinaisessa Persiassa jo yli kaksituhatta vuotta sitten.",
+      "text_markdown": "Barbatia soitettiin muinaisessa Persiassa jo yli kaksituhatta vuotta sitten.",
+      "tts": {
+        "text": "Barbatia soitettiin muinaisessa Persiassa jo yli kaksituhatta vuotta sitten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbatissa oli puinen runko ja silkkikielet.",
+      "text_markdown": "Barbatissa oli puinen runko ja silkkikielet.",
+      "tts": {
+        "text": "Barbatissa oli puinen runko ja silkkikielet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sen ääni oli pitkä ja pehmeä.",
+      "text_markdown": "Sen ääni oli pitkä ja pehmeä.",
+      "tts": {
+        "text": "Sen ääni oli pitkä ja pehmeä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuninkaiden hoveissa sitä soitettiin.",
+      "text_markdown": "Kuninkaiden hoveissa sitä soitettiin.",
+      "tts": {
+        "text": "Kuninkaiden hoveissa sitä soitettiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vähitellen barbat muuttui.",
+      "text_markdown": "Vähitellen barbat muuttui.",
+      "tts": {
+        "text": "Vähitellen barbat muuttui.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Runko pyöristyi, kielet kaksinkertaistuivat pareiksi ja kaula lyheni.",
+      "text_markdown": "Runko pyöristyi, kielet kaksinkertaistuivat pareiksi ja kaula lyheni.",
+      "tts": {
+        "text": "Runko pyöristyi, kielet kaksinkertaistuivat pareiksi ja kaula lyheni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Noin vuonna 700 arabimaailmassa soitettiin jo soitinta, jota nyt kutsumme udiksi.",
+      "text_markdown": "Noin vuonna 700 arabimaailmassa soitettiin jo soitinta, jota nyt kutsumme udiksi.",
+      "tts": {
+        "text": "Noin vuonna seitsemänsataa arabimaailmassa soitettiin jo soitinta, jota nyt kutsumme uudiksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sieltä ud jatkoi matkaa.",
+      "text_markdown": "Sieltä ud jatkoi matkaa.",
+      "tts": {
+        "text": "Sieltä uud jatkoi matkaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se meni Egyptiin ja Pohjois-Afrikkaan.",
+      "text_markdown": "Se meni Egyptiin ja Pohjois-Afrikkaan.",
+      "tts": {
+        "text": "Se meni Egyptiin ja Pohjois Afrikkaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se ylitti meren Espanjaan.",
+      "text_markdown": "Se ylitti meren Espanjaan.",
+      "tts": {
+        "text": "Se ylitti meren Espanjaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se kulki pohjoiseen Turkkiin ja Kreikkaan.",
+      "text_markdown": "Se kulki pohjoiseen Turkkiin ja Kreikkaan.",
+      "tts": {
+        "text": "Se kulki pohjoiseen Turkkiin ja Kreikkaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Jokainen paikka antoi udille vähän omaa ääntään.",
+      "text_markdown": "Jokainen paikka antoi udille vähän omaa ääntään.",
+      "tts": {
+        "text": "Jokainen paikka antoi uudille vähän omaa ääntään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta nimi pysyi samana.",
+      "text_markdown": "Mutta nimi pysyi samana.",
+      "tts": {
+        "text": "Mutta nimi pysyi samana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Minne tahansa se meni, tämä puinen soitin oli yhä ud.",
+      "text_markdown": "Minne tahansa se meni, tämä puinen soitin oli yhä ud.",
+      "tts": {
+        "text": "Minne tahansa se meni, tämä puinen soitin oli yhä uud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 3 – Miten ud rakennetaan",
+      "text_markdown": "Luku 3 – Miten ud rakennetaan"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udin rakentaminen vie kauan.",
+      "text_markdown": "Udin rakentaminen vie kauan.",
+      "tts": {
+        "text": "Uudin rakentaminen vie kauan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hyvä rakentaja voi käyttää yhteen soittimeen monta viikkoa.",
+      "text_markdown": "Hyvä rakentaja voi käyttää yhteen soittimeen monta viikkoa.",
+      "tts": {
+        "text": "Hyvä rakentaja voi käyttää yhteen soittimeen monta viikkoa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kulhomaisen takaosan tekee yleensä 15–25 ohuesta puusuikaleesta.",
+      "text_markdown": "Kulhomaisen takaosan tekee yleensä 15–25 ohuesta puusuikaleesta.",
+      "tts": {
+        "text": "Kulhomaisen takaosan tekee yleensä viidestätoista kahteenkymmeneenviidestä ohuesta puusuikaleesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokainen suikale taivutetaan ja liimataan seuraavaan.",
+      "text_markdown": "Jokainen suikale taivutetaan ja liimataan seuraavaan.",
+      "tts": {
+        "text": "Jokainen suikale taivutetaan ja liimataan seuraavaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yhdessä ne muodostavat udin syvän ja pyöreän takaosan.",
+      "text_markdown": "Yhdessä ne muodostavat udin syvän ja pyöreän takaosan.",
+      "tts": {
+        "text": "Yhdessä ne muodostavat uudin syvän ja pyöreän takaosan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puulajilla on väliä.",
+      "text_markdown": "Puulajilla on väliä.",
+      "tts": {
+        "text": "Puulajilla on väliä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pähkinäpuu antaa lämpimän äänen, mahonki tummemman sävyn ja mulperipuu kirkkautta ja helinää.",
+      "text_markdown": "Pähkinäpuu antaa lämpimän äänen, mahonki tummemman sävyn ja mulperipuu kirkkautta ja helinää.",
+      "tts": {
+        "text": "Pähkinäpuu antaa lämpimän äänen, mahonki tummemman sävyn ja mulperipuu kirkkautta ja helinää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rakentaja valitsee puun sen äänen mukaan, jonka hän haluaa.",
+      "text_markdown": "Rakentaja valitsee puun sen äänen mukaan, jonka hän haluaa.",
+      "tts": {
+        "text": "Rakentaja valitsee puun sen äänen mukaan, jonka hän haluaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tasainen etupuoli, kaikukansi, tehdään kuusesta.",
+      "text_markdown": "Tasainen etupuoli, kaikukansi, tehdään kuusesta.",
+      "tts": {
+        "text": "Tasainen etupuoli, kaikukansi, tehdään kuusesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuusi on kevyt ja vahva, ja se värähtelee helposti.",
+      "text_markdown": "Kuusi on kevyt ja vahva, ja se värähtelee helposti.",
+      "tts": {
+        "text": "Kuusi on kevyt ja vahva, ja se värähtelee helposti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sen värähtelyn me kuulemme musiikkina.",
+      "text_markdown": "Sen värähtelyn me kuulemme musiikkina.",
+      "tts": {
+        "text": "Sen värähtelyn me kuulemme musiikkina.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaikukannessa on pieniä pyöreitä aukkoja, joita kutsutaan ruusukkeiksi.",
+      "text_markdown": "Kaikukannessa on pieniä pyöreitä aukkoja, joita kutsutaan ruusukkeiksi.",
+      "tts": {
+        "text": "Kaikukannessa on pieniä pyöreitä aukkoja, joita kutsutaan ruusukkeiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne on usein kaiverrettu kauniiksi kuvioiksi.",
+      "text_markdown": "Ne on usein kaiverrettu kauniiksi kuvioiksi.",
+      "tts": {
+        "text": "Ne on usein kaiverrettu kauniiksi kuvioiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ruusukkeet päästävät äänen ulos kulho-osasta.",
+      "text_markdown": "Ruusukkeet päästävät äänen ulos kulho-osasta.",
+      "tts": {
+        "text": "Ruusukkeet päästävät äänen ulos kulho osasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ennen kielet tehtiin suolesta, eräänlaisesta kuivatusta eläinkudoksesta.",
+      "text_markdown": "Ennen kielet tehtiin suolesta, eräänlaisesta kuivatusta eläinkudoksesta.",
+      "tts": {
+        "text": "Ennen kielet tehtiin suolesta, eräänlaisesta kuivatusta eläinkudoksesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nykyään useimmat kielet ovat nailonia, ja matalimpien ympärillä on ohut metallilanka.",
+      "text_markdown": "Nykyään useimmat kielet ovat nailonia, ja matalimpien ympärillä on ohut metallilanka.",
+      "tts": {
+        "text": "Nykyään useimmat kielet ovat nailonia, ja matalimpien ympärillä on ohut metallilanka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soittaja näppää kielet rišalla.",
+      "text_markdown": "Soittaja näppää kielet rišalla.",
+      "tts": {
+        "text": "Soittaja näppää kielet rišalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sana riša tarkoittaa höyhentä.",
+      "text_markdown": "Sana riša tarkoittaa höyhentä.",
+      "tts": {
+        "text": "Sana riša tarkoittaa höyhentä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ensimmäiset rišat tehtiin kotkan höyhenistä.",
+      "text_markdown": "Ensimmäiset rišat tehtiin kotkan höyhenistä.",
+      "tts": {
+        "text": "Ensimmäiset rišat tehtiin kotkan höyhenistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nykyään ne tehdään muovista, luusta tai kilpikonnankuoresta.",
+      "text_markdown": "Nykyään ne tehdään muovista, luusta tai kilpikonnankuoresta.",
+      "tts": {
+        "text": "Nykyään ne tehdään muovista, luusta tai kilpikonnankuoresta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 4 – Missä udia soitetaan",
+      "text_markdown": "Luku 4 – Missä udia soitetaan"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udia soitetaan kaikkialla arabimaailmassa.",
+      "text_markdown": "Udia soitetaan kaikkialla arabimaailmassa.",
+      "tts": {
+        "text": "Uudia soitetaan kaikkialla arabimaailmassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä kuulee Egyptissä, Syyriassa, Irakissa, Libanonissa, Persianlahden alueella ja Pohjois-Afrikassa.",
+      "text_markdown": "Sitä kuulee Egyptissä, Syyriassa, Irakissa, Libanonissa, Persianlahden alueella ja Pohjois-Afrikassa.",
+      "tts": {
+        "text": "Sitä kuulee Egyptissä, Syyriassa, Irakissa, Libanonissa, Persianlahden alueella ja Pohjois Afrikassa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitä soitetaan myös arabimaailman ulkopuolella.",
+      "text_markdown": "Sitä soitetaan myös arabimaailman ulkopuolella.",
+      "tts": {
+        "text": "Sitä soitetaan myös arabimaailman ulkopuolella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Turkkilaisilla on oma udinsa.",
+      "text_markdown": "Turkkilaisilla on oma udinsa.",
+      "tts": {
+        "text": "Turkkilaisilla on oma uudinsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kreikkalaisilla on oma udinsa.",
+      "text_markdown": "Kreikkalaisilla on oma udinsa.",
+      "tts": {
+        "text": "Kreikkalaisilla on oma uudinsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Armenialaiset ja iranilaiset soittavat sen sukulaisia.",
+      "text_markdown": "Armenialaiset ja iranilaiset soittavat sen sukulaisia.",
+      "tts": {
+        "text": "Armenialaiset ja iranilaiset soittavat sen sukulaisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Espanjassa sitä soitettiin satoja vuosia.",
+      "text_markdown": "Espanjassa sitä soitettiin satoja vuosia.",
+      "tts": {
+        "text": "Espanjassa sitä soitettiin satoja vuosia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nykyään udista on kolme päätyyppiä.",
+      "text_markdown": "Nykyään udista on kolme päätyyppiä.",
+      "tts": {
+        "text": "Nykyään uudista on kolme päätyyppiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arabialainen ud on suuri ja syvä, ja sen ääni on täyteläinen ja rauhallinen.",
+      "text_markdown": "Arabialainen ud on suuri ja syvä, ja sen ääni on täyteläinen ja rauhallinen.",
+      "tts": {
+        "text": "Arabialainen uud on suuri ja syvä, ja sen ääni on täyteläinen ja rauhallinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on Egyptin ja Levantin ud.",
+      "text_markdown": "Se on Egyptin ja Levantin ud.",
+      "tts": {
+        "text": "Se on Egyptin ja Levantin uud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Turkkilainen ud on pienempi ja kirkkaampi, ja se viritetään hieman arabialaista udia ylemmäs.",
+      "text_markdown": "Turkkilainen ud on pienempi ja kirkkaampi, ja se viritetään hieman arabialaista udia ylemmäs.",
+      "tts": {
+        "text": "Turkkilainen uud on pienempi ja kirkkaampi, ja se viritetään hieman arabialaista uudia ylemmäs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialaista sukulaista kutsutaan barbatiksi.",
+      "text_markdown": "Persialaista sukulaista kutsutaan barbatiksi.",
+      "tts": {
+        "text": "Persialaista sukulaista kutsutaan barbatiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on pieni ja teräväsointinen, ja siinä käytetään eri säveliä.",
+      "text_markdown": "Se on pieni ja teräväsointinen, ja siinä käytetään eri säveliä.",
+      "tts": {
+        "text": "Se on pieni ja teräväsointinen, ja siinä käytetään eri säveliä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud on klassisen arabimusiikin ja turkkilaisen makam-musiikin sydän.",
+      "text_markdown": "Ud on klassisen arabimusiikin ja turkkilaisen makam-musiikin sydän.",
+      "tts": {
+        "text": "Uud on klassisen arabimusiikin ja turkkilaisen makam musiikin sydän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä soitetaan häissä ja hautajaisissa, konserttisaleissa ja ystävien olohuoneissa.",
+      "text_markdown": "Sitä soitetaan häissä ja hautajaisissa, konserttisaleissa ja ystävien olohuoneissa.",
+      "tts": {
+        "text": "Sitä soitetaan häissä ja hautajaisissa, konserttisaleissa ja ystävien olohuoneissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Missä ihmiset kokoontuvat ja kaipaavat sielukasta musiikkia, joku voi ottaa esiin udin.",
+      "text_markdown": "Missä ihmiset kokoontuvat ja kaipaavat sielukasta musiikkia, joku voi ottaa esiin udin.",
+      "tts": {
+        "text": "Missä ihmiset kokoontuvat ja kaipaavat sielukasta musiikkia, joku voi ottaa esiin uudin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 5 – Makam",
+      "text_markdown": "Luku 5 – Makam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun soitat pianoa, painat valkoisia ja mustia koskettimia.",
+      "text_markdown": "Kun soitat pianoa, painat valkoisia ja mustia koskettimia.",
+      "tts": {
+        "text": "Kun soitat pianoa, painat valkoisia ja mustia koskettimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokaisessa oktaavissa on kaksitoista säveltä, ja jokainen askel on samankokoinen.",
+      "text_markdown": "Jokaisessa oktaavissa on kaksitoista säveltä, ja jokainen askel on samankokoinen.",
+      "tts": {
+        "text": "Jokaisessa oktaavissa on kaksitoista säveltä, ja jokainen askel on samankokoinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tätä kutsutaan tasavireisyydeksi.",
+      "text_markdown": "Tätä kutsutaan tasavireisyydeksi.",
+      "tts": {
+        "text": "Tätä kutsutaan tasavireisyydeksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud ei toimi niin.",
+      "text_markdown": "Ud ei toimi niin.",
+      "tts": {
+        "text": "Uud ei toimi niin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Udissa käytetään paljon vanhempaa järjestelmää, jota kutsutaan makamiksi.",
+      "text_markdown": "Udissa käytetään paljon vanhempaa järjestelmää, jota kutsutaan makamiksi.",
+      "tts": {
+        "text": "Uudissa käytetään paljon vanhempaa järjestelmää, jota kutsutaan makamiksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam on tapa valita säveliä, ja makameja on monia.",
+      "text_markdown": "Makam on tapa valita säveliä, ja makameja on monia.",
+      "tts": {
+        "text": "Makam on tapa valita säveliä, ja makameja on monia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokaisella on oma tunnelmansa.",
+      "text_markdown": "Jokaisella on oma tunnelmansa.",
+      "tts": {
+        "text": "Jokaisella on oma tunnelmansa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jotkut ovat iloisia, jotkut surullisia, ja jotkut kuulostavat hieman salaperäisiltä.",
+      "text_markdown": "Jotkut ovat iloisia, jotkut surullisia, ja jotkut kuulostavat hieman salaperäisiltä.",
+      "tts": {
+        "text": "Jotkut ovat iloisia, jotkut surullisia, ja jotkut kuulostavat hieman salaperäisiltä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makamin suuri salaisuus on se, että siinä on enemmän säveliä kuin pianossa.",
+      "text_markdown": "Makamin suuri salaisuus on se, että siinä on enemmän säveliä kuin pianossa.",
+      "tts": {
+        "text": "Makamin suuri salaisuus on se, että siinä on enemmän säveliä kuin pianossa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valkoisten ja mustien koskettimien välissä on pienempiä askelia, joita kutsutaan neljäsosasäveliksi.",
+      "text_markdown": "Valkoisten ja mustien koskettimien välissä on pienempiä askelia, joita kutsutaan neljäsosasäveliksi.",
+      "tts": {
+        "text": "Valkoisten ja mustien koskettimien välissä on pienempiä askelia, joita kutsutaan neljäsosasäveliksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neljäsosasävel on puoli puolisävelaskelta.",
+      "text_markdown": "Neljäsosasävel on puoli puolisävelaskelta.",
+      "tts": {
+        "text": "Neljäsosasävel on puoli puolisävelaskelta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on pieni sävel, joka elää tuttujen sävelten välissä.",
+      "text_markdown": "Se on pieni sävel, joka elää tuttujen sävelten välissä.",
+      "tts": {
+        "text": "Se on pieni sävel, joka elää tuttujen sävelten välissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pianolla sitä ei voi soittaa.",
+      "text_markdown": "Pianolla sitä ei voi soittaa.",
+      "tts": {
+        "text": "Pianolla sitä ei voi soittaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Udilla liikutat sormeasi, kunnes löydät sen.",
+      "text_markdown": "Udilla liikutat sormeasi, kunnes löydät sen.",
+      "tts": {
+        "text": "Uudilla liikutat sormeasi, kunnes löydät sen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam rakentuu pienistä sävelryhmistä.",
+      "text_markdown": "Makam rakentuu pienistä sävelryhmistä.",
+      "tts": {
+        "text": "Makam rakentuu pienistä sävelryhmistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokaista pientä ryhmää kutsutaan džinsiksi.",
+      "text_markdown": "Jokaista pientä ryhmää kutsutaan džinsiksi.",
+      "tts": {
+        "text": "Jokaista pientä ryhmää kutsutaan djinsiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Useimmissa džinseissä on neljä säveltä.",
+      "text_markdown": "Useimmissa džinseissä on neljä säveltä.",
+      "tts": {
+        "text": "Useimmissa djinseissä on neljä säveltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Voit ajatella džinsiä pienenä musiikkisena Lego-palikkana, ja niistä rakennetaan makam.",
+      "text_markdown": "Voit ajatella džinsiä pienenä musiikkisena Lego-palikkana, ja niistä rakennetaan makam.",
+      "tts": {
+        "text": "Voit ajatella djinsiä pienenä musiikkisena Lego palikkana, ja niistä rakennetaan makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam on melodinen, ei harmoninen.",
+      "text_markdown": "Makam on melodinen, ei harmoninen.",
+      "tts": {
+        "text": "Makam on melodinen, ei harmoninen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se tarkoittaa, että musiikki liikkuu sävel kerrallaan, eikä rakenna sointuja kuten kitara.",
+      "text_markdown": "Se tarkoittaa, että musiikki liikkuu sävel kerrallaan, eikä rakenna sointuja kuten kitara.",
+      "tts": {
+        "text": "Se tarkoittaa, että musiikki liikkuu sävel kerrallaan, eikä rakenna sointuja kuten kitara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun ud soittaa hitaan ja kiemurtelevan soolon, soittaja liikkuu makamin sisällä.",
+      "text_markdown": "Kun ud soittaa hitaan ja kiemurtelevan soolon, soittaja liikkuu makamin sisällä.",
+      "tts": {
+        "text": "Kun uud soittaa hitaan ja kiemurtelevan soolon, soittaja liikkuu makamin sisällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän poimii säveliä yhdestä palikasta ja liukuu sitten seuraavaan.",
+      "text_markdown": "Hän poimii säveliä yhdestä palikasta ja liukuu sitten seuraavaan.",
+      "tts": {
+        "text": "Hän poimii säveliä yhdestä palikasta ja liukuu sitten seuraavaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sillä soololla on nimi.",
+      "text_markdown": "Sillä soololla on nimi.",
+      "tts": {
+        "text": "Sillä soololla on nimi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sitä kutsutaan taksimiksi.",
+      "text_markdown": "Sitä kutsutaan taksimiksi.",
+      "tts": {
+        "text": "Sitä kutsutaan taksimiksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyvä taksim voi saada sinut nauramaan ja itkemään.",
+      "text_markdown": "Hyvä taksim voi saada sinut nauramaan ja itkemään.",
+      "tts": {
+        "text": "Hyvä taksim voi saada sinut nauramaan ja itkemään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siinä ud on kauneimmillaan.",
+      "text_markdown": "Siinä ud on kauneimmillaan.",
+      "tts": {
+        "text": "Siinä uud on kauneimmillaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 6 – Suuret mestarit",
+      "text_markdown": "Luku 6 – Suuret mestarit"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uudia on soitettu jo yli tuhat vuotta.",
+      "text_markdown": "Uudia on soitettu jo yli tuhat vuotta.",
+      "tts": {
+        "text": "Uudia on soitettu jo yli tuhat vuotta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sinä aikana muutama ihminen muutti sen ikuisesti.",
+      "text_markdown": "Sinä aikana muutama ihminen muutti sen ikuisesti.",
+      "tts": {
+        "text": "Sinä aikana muutama ihminen muutti sen ikuisesti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen, nimeltään al Farabi, oli enemmän ajattelija kuin soittaja.",
+      "text_markdown": "Ensimmäinen, nimeltään al Farabi, oli enemmän ajattelija kuin soittaja.",
+      "tts": {
+        "text": "Ensimmäinen, nimeltään al Farabi, oli enemmän ajattelija kuin soittaja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän eli noin vuosina 872–950 ja työskenteli suuressa Bagdadin kaupungissa.",
+      "text_markdown": "Hän eli noin vuosina 872–950 ja työskenteli suuressa Bagdadin kaupungissa.",
+      "tts": {
+        "text": "Hän eli suunnilleen vuodesta kahdeksansataaseitsemänkymmentäkaksi vuoteen yhdeksänsataaviisikymmentä ja työskenteli suuressa Bagdadin kaupungissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Farabi kirjoitti valtavan kirjan musiikista.",
+      "text_markdown": "Al-Farabi kirjoitti valtavan kirjan musiikista.",
+      "tts": {
+        "text": "Al Farabi kirjoitti valtavan kirjan musiikista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän selitti, miten kielet värähtelevät.",
+      "text_markdown": "Hän selitti, miten kielet värähtelevät.",
+      "tts": {
+        "text": "Hän selitti, miten kielet värähtelevät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän selitti, miksi jotkut sävelet soivat kauniisti yhdessä.",
+      "text_markdown": "Hän selitti, miksi jotkut sävelet soivat kauniisti yhdessä.",
+      "tts": {
+        "text": "Hän selitti, miksi jotkut sävelet soivat kauniisti yhdessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän selitti, miksi musiikki voi muuttaa ihmisen mieltä.",
+      "text_markdown": "Hän selitti, miksi musiikki voi muuttaa ihmisen mieltä.",
+      "tts": {
+        "text": "Hän selitti, miksi musiikki voi muuttaa ihmisen mieltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hänen kirjaansa luettiin arabiaksi ja latinaksi vuosisatojen ajan.",
+      "text_markdown": "Hänen kirjaansa luettiin arabiaksi ja latinaksi vuosisatojen ajan.",
+      "tts": {
+        "text": "Hänen kirjaansa luettiin arabiaksi ja latinaksi vuosisatojen ajan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen suuri uudin mestari oli laulaja nimeltä Zirjab, joka syntyi noin vuonna seitsemänsataa kahdeksankymmentäyhdeksän Irakissa.",
+      "text_markdown": "Toinen suuri uudin mestari oli laulaja nimeltä Zirjab, joka syntyi noin vuonna seitsemänsataa kahdeksankymmentäyhdeksän Irakissa.",
+      "tts": {
+        "text": "Toinen suuri uudin mestari oli laulaja nimeltä Zirjab, joka syntyi noin vuonna seitsemänsataa kahdeksankymmentäyhdeksän Irakissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nuorena miehenä hänen oli lähdettävä kiireesti pois Bagdadin kaupungista.",
+      "text_markdown": "Nuorena miehenä hänen oli lähdettävä kiireesti pois Bagdadin kaupungista.",
+      "tts": {
+        "text": "Nuorena miehenä hänen oli lähdettävä kiireesti pois Bagdadin kaupungista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab matkusti länteen koko Pohjois-Afrikan halki.",
+      "text_markdown": "Ziryab matkusti länteen koko Pohjois-Afrikan halki.",
+      "tts": {
+        "text": "Zirjab matkusti länteen koko Pohjois Afrikan halki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän saapui Espanjan Cordobaan vuonna 822.",
+      "text_markdown": "Hän saapui Espanjan Cordobaan vuonna 822.",
+      "tts": {
+        "text": "Hän saapui Espanjan Kordobaan vuonna kahdeksansataakaksikymmentäkaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cordoban kuningas rakasti hänen musiikkiaan ja antoi hänelle talon, palkan ja aikaa opettaa.",
+      "text_markdown": "Cordoban kuningas rakasti hänen musiikkiaan ja antoi hänelle talon, palkan ja aikaa opettaa.",
+      "tts": {
+        "text": "Kordoban kuningas rakasti hänen musiikkiaan ja antoi hänelle talon, palkan ja aikaa opettaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Espanjassa Ziryab perusti musiikkikoulun.",
+      "text_markdown": "Espanjassa Ziryab perusti musiikkikoulun.",
+      "tts": {
+        "text": "Espanjassa Zirjab perusti musiikkikoulun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jotkut sanovat, että se oli maailman ensimmäinen konservatorio.",
+      "text_markdown": "Jotkut sanovat, että se oli maailman ensimmäinen konservatorio.",
+      "tts": {
+        "text": "Jotkut sanovat, että se oli maailman ensimmäinen konservatorio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän lisäsi udiin viidennen kielikuoron ja muutti plektrojen valmistusta.",
+      "text_markdown": "Hän lisäsi udiin viidennen kielikuoron ja muutti plektrojen valmistusta.",
+      "tts": {
+        "text": "Hän lisäsi uudiin viidennen kielikuoron ja muutti plektrojen valmistusta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kauan Ziryabin jälkeen meidän ajassamme eräs irakilainen soittaja nosti udin uuteen asemaan.",
+      "text_markdown": "Kauan Ziryabin jälkeen meidän ajassamme eräs irakilainen soittaja nosti udin uuteen asemaan.",
+      "tts": {
+        "text": "Kauan Zirjabin jälkeen meidän ajassamme eräs irakilainen soittaja nosti uudin uuteen asemaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen nimensä oli Muniir Bashiir, ja ihmisten suussa hän oli uudin kuningas.",
+      "text_markdown": "Hänen nimensä oli Muniir Bashiir, ja ihmisten suussa hän oli uudin kuningas.",
+      "tts": {
+        "text": "Hänen nimensä oli Muniir Bashiir, ja ihmisten suussa hän oli uudin kuningas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ennen Bashiria ud soi yleensä muiden soittimien kanssa.",
+      "text_markdown": "Ennen Bashiria ud soi yleensä muiden soittimien kanssa.",
+      "tts": {
+        "text": "Ennen Bashiiria uud soi yleensä muiden soittimien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir toi sen lavalle yksin ja soitti pitkiä, hiljaisia ja syviä sooloja.",
+      "text_markdown": "Bashir toi sen lavalle yksin ja soitti pitkiä, hiljaisia ja syviä sooloja.",
+      "tts": {
+        "text": "Bashiir toi sen lavalle yksin ja soitti pitkiä, hiljaisia ja syviä sooloja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihmiset ympäri maailmaa kuulivat hänet ja rakastuivat udiin uudestaan.",
+      "text_markdown": "Ihmiset ympäri maailmaa kuulivat hänet ja rakastuivat udiin uudestaan.",
+      "tts": {
+        "text": "Ihmiset ympäri maailmaa kuulivat hänet ja rakastuivat uudiin uudestaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitakin oli paljon.",
+      "text_markdown": "Muitakin oli paljon.",
+      "tts": {
+        "text": "Muitakin oli paljon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al-Atrash teki udista egyptiläisten elokuvien äänen.",
+      "text_markdown": "Farid al-Atrash teki udista egyptiläisten elokuvien äänen.",
+      "tts": {
+        "text": "Farid al Atrash teki uudista egyptiläisten elokuvien äänen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunisialainen Anuar Brahem soittaa udia eurooppalaisten ja amerikkalaisten jazzmuusikoiden rinnalla.",
+      "text_markdown": "Tunisialainen Anuar Brahem soittaa udia eurooppalaisten ja amerikkalaisten jazzmuusikoiden rinnalla.",
+      "tts": {
+        "text": "Tunisialainen Anuar Brahem soittaa udia eurooppalaisten ja amerikkalaisten jazzmuusikoiden rinnalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud elää yhä.",
+      "text_markdown": "Ud elää yhä.",
+      "tts": {
+        "text": "Uud elää yhä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joka vuosi jossakin maailmassa syntyy uusi mestari.",
+      "text_markdown": "Joka vuosi jossakin maailmassa syntyy uusi mestari.",
+      "tts": {
+        "text": "Joka vuosi jossakin maailmassa syntyy uusi mestari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 7 – Ud ja maailma",
+      "text_markdown": "Luku 7 – Ud ja maailma"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud ei jäänyt arabimaailmaan.",
+      "text_markdown": "Ud ei jäänyt arabimaailmaan.",
+      "tts": {
+        "text": "Uud ei jäänyt arabimaailmaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Matkallaan se muutti muotoaan, nimeään ja laulujaan.",
+      "text_markdown": "Matkallaan se muutti muotoaan, nimeään ja laulujaan.",
+      "tts": {
+        "text": "Matkallaan se muutti muotoaan, nimeään ja laulujaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun ud pääsi keskiajan Espanjaan, eurooppalaiset soittajat pitivät puisesta kulhosta ja syvästä äänestä.",
+      "text_markdown": "Kun ud pääsi keskiajan Espanjaan, eurooppalaiset soittajat pitivät puisesta kulhosta ja syvästä äänestä.",
+      "tts": {
+        "text": "Kun uud pääsi keskiajan Espanjaan, eurooppalaiset soittajat pitivät puisesta kulhosta ja syvästä äänestä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mutta he halusivat nauhat, kuten niissä pienissä soittimissa jotka he jo tunsivat.",
+      "text_markdown": "Mutta he halusivat nauhat, kuten niissä pienissä soittimissa jotka he jo tunsivat.",
+      "tts": {
+        "text": "Mutta he halusivat nauhat, kuten niissä pienissä soittimissa jotka he jo tunsivat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niinpä he lisäsivät nauhat, litistivät takaosaa hieman ja antoivat uudelle soittimelle nimen luuttu.",
+      "text_markdown": "Niinpä he lisäsivät nauhat, litistivät takaosaa hieman ja antoivat uudelle soittimelle nimen luuttu.",
+      "tts": {
+        "text": "Niinpä he lisäsivät nauhat, litistivät takaosaa hieman ja antoivat uudelle soittimelle nimen luuttu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viidensadan vuoden ajan luuttu oli Euroopan suosikkisoitin.",
+      "text_markdown": "Viidensadan vuoden ajan luuttu oli Euroopan suosikkisoitin.",
+      "tts": {
+        "text": "Viidensadan vuoden ajan luuttu oli Euroopan suosikkisoitin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuninkaat soittivat sitä.",
+      "text_markdown": "Kuninkaat soittivat sitä.",
+      "tts": {
+        "text": "Kuninkaat soittivat sitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Runoilijat soittivat sitä.",
+      "text_markdown": "Runoilijat soittivat sitä.",
+      "tts": {
+        "text": "Runoilijat soittivat sitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suurimmat säveltäjät kirjoittivat sille kappaleita.",
+      "text_markdown": "Suurimmat säveltäjät kirjoittivat sille kappaleita.",
+      "tts": {
+        "text": "Suurimmat säveltäjät kirjoittivat sille kappaleita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten luuttu muuttui taas.",
+      "text_markdown": "Sitten luuttu muuttui taas.",
+      "tts": {
+        "text": "Sitten luuttu muuttui taas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soittajat lisäsivät enemmän kieliä, litistivät takaosaa entistäkin enemmän ja tekivät rungosta aiempaa pienemmän ja kevyemmän soittimen.",
+      "text_markdown": "Soittajat lisäsivät enemmän kieliä, litistivät takaosaa entistäkin enemmän ja tekivät rungosta aiempaa pienemmän ja kevyemmän soittimen.",
+      "tts": {
+        "text": "Soittajat lisäsivät enemmän kieliä, litistivät takaosaa entistäkin enemmän ja tekivät rungosta aiempaa pienemmän ja kevyemmän soittimen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Noin vuonna 1800 tällä uudella soittimella oli Espanjassa nimi, jonka me kaikki tunnemme.",
+      "text_markdown": "Noin vuonna 1800 tällä uudella soittimella oli Espanjassa nimi, jonka me kaikki tunnemme.",
+      "tts": {
+        "text": "Noin vuonna tuhatkahdeksansataa tällä uudella soittimella oli Espanjassa nimi, jonka me kaikki tunnemme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se oli kitara.",
+      "text_markdown": "Se oli kitara.",
+      "tts": {
+        "text": "Se oli kitara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niin ud, luuttu ja kitara kuuluvat kaikki samaan perheeseen.",
+      "text_markdown": "Niin ud, luuttu ja kitara kuuluvat kaikki samaan perheeseen.",
+      "tts": {
+        "text": "Niin uud, luuttu ja kitara kuuluvat kaikki samaan perheeseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne ovat serkkuja ja niillä on sama isoisä.",
+      "text_markdown": "Ne ovat serkkuja ja niillä on sama isoisä.",
+      "tts": {
+        "text": "Ne ovat serkkuja ja niillä on sama isoisä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se isoisä on ud.",
+      "text_markdown": "Se isoisä on ud.",
+      "tts": {
+        "text": "Se isoisä on uud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nykyään ud ja kitara soittavat yhdessä.",
+      "text_markdown": "Nykyään ud ja kitara soittavat yhdessä.",
+      "tts": {
+        "text": "Nykyään uud ja kitara soittavat yhdessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anouar Brahem soittaa udia jazzkitaristien kanssa.",
+      "text_markdown": "Anouar Brahem soittaa udia jazzkitaristien kanssa.",
+      "tts": {
+        "text": "Anuar Brahem soittaa uudia jazzkitaristien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir soitti orkestereille.",
+      "text_markdown": "Munir Bashir soitti orkestereille.",
+      "tts": {
+        "text": "Muniir Bashiir soitti orkestereille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nuoret soittajat Beirutissa, Istanbulissa, Pariisissa ja New Yorkissa sekoittavat udia rockiin, hiphoppiin ja elokuvamusiikkiin.",
+      "text_markdown": "Nuoret soittajat Beirutissa, Istanbulissa, Pariisissa ja New Yorkissa sekoittavat udia rockiin, hiphoppiin ja elokuvamusiikkiin.",
+      "tts": {
+        "text": "Nuoret soittajat Beirutissa, Istanbulissa, Pariisissa ja Njuu Jorkissa sekoittavat uudia rockiin, hiphoppiin ja elokuvamusiikkiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud on enemmän kuin soitin.",
+      "text_markdown": "Ud on enemmän kuin soitin.",
+      "tts": {
+        "text": "Uud on enemmän kuin soitin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on silta.",
+      "text_markdown": "Se on silta.",
+      "tts": {
+        "text": "Se on silta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se kantaa tarinaa Mesopotamiasta, Persian kautta arabimaailmaan, Espanjaan, Eurooppaan ja sieltä koko maailmaan.",
+      "text_markdown": "Se kantaa tarinaa Mesopotamiasta, Persian kautta arabimaailmaan, Espanjaan, Eurooppaan ja sieltä koko maailmaan.",
+      "tts": {
+        "text": "Se kantaa tarinaa Mesopotamiasta, Persian kautta arabimaailmaan, Espanjaan, Eurooppaan ja sieltä koko maailmaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aina kun kuulet kitaran, jossakin sen alla kuuluu udin pehmeä ja syvä ääni.",
+      "text_markdown": "Aina kun kuulet kitaran, jossakin sen alla kuuluu udin pehmeä ja syvä ääni.",
+      "tts": {
+        "text": "Aina kun kuulet kitaran, jossakin sen alla kuuluu uudin pehmeä ja syvä ääni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Tästä kirjasta",
+      "text_markdown": "Tästä kirjasta"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on Maailman soittimet -sarjan ensimmäinen osa.",
+      "text_markdown": "Tämä on Maailman soittimet -sarjan ensimmäinen osa.",
+      "tts": {
+        "text": "Tämä on Maailman soittimet sarjan ensimmäinen osa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokainen tämän sarjan kirja kertoo yhden soittimen tarinan.",
+      "text_markdown": "Jokainen tämän sarjan kirja kertoo yhden soittimen tarinan.",
+      "tts": {
+        "text": "Jokainen tämän sarjan kirja kertoo yhden soittimen tarinan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen kirja on lyhyt, ja jokainen kirja kertoo totta.",
+      "text_markdown": "Jokainen kirja on lyhyt, ja jokainen kirja kertoo totta.",
+      "tts": {
+        "text": "Jokainen kirja on lyhyt, ja jokainen kirja kertoo totta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seuraava kirja kertoo sitarista, Intian suuresta pitkäkaulaisesta luutusta, jossa on monta kieltä ja syvä, soiva ääni.",
+      "text_markdown": "Seuraava kirja kertoo sitarista, Intian suuresta pitkäkaulaisesta luutusta, jossa on monta kieltä ja syvä, soiva ääni.",
+      "tts": {
+        "text": "Seuraava kirja kertoo sitaarista, Intian suuresta pitkäkaulaisesta luutusta, jossa on monta kieltä ja syvä, soiva ääni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitarin jälkeen matkustamme Länsi-Afrikkaan koran luo ja sitten Japaniin shakuhachin luo.",
+      "text_markdown": "Sitarin jälkeen matkustamme Länsi-Afrikkaan koran luo ja sitten Japaniin shakuhachin luo.",
+      "tts": {
+        "text": "Sitaarin jälkeen matkustamme Länsi Afrikkaan koran luo ja sitten Japaniin šakuhatšin luo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiitos kuuntelusta.",
+      "text_markdown": "Kiitos kuuntelusta.",
+      "tts": {
+        "text": "Kiitos kuuntelusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etsi ud verkosta tai omasta kaupungistasi ja anna sen soittaa sinulle.",
+      "text_markdown": "Etsi ud verkosta tai omasta kaupungistasi ja anna sen soittaa sinulle.",
+      "tts": {
+        "text": "Etsi uud verkosta tai omasta kaupungistasi ja anna sen soittaa sinulle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

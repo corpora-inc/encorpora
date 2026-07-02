@@ -1,0 +1,2447 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "language": "pt",
+  "total_segments": 165,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "A Floresta Boreal",
+      "text_markdown": "A Floresta Boreal",
+      "title": "A Floresta Boreal"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "paragraph_id": "p2",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Onde Este Bioma Cresce",
+      "text_markdown": "Onde Este Bioma Cresce",
+      "title": "Onde Este Bioma Cresce"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bem-vindo à floresta boreal.",
+      "text_markdown": "Bem-vindo à floresta boreal.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Bem vindo à floresta boreal.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é um dos grandes biomas do mundo.",
+      "text_markdown": "Este é um dos grandes biomas do mundo.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Este é um dos grandes biomas do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "text_markdown": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é um vasto cinturão verde de árvores perenes que se estende pelo topo do mundo.",
+      "text_markdown": "A floresta boreal é um vasto cinturão verde de árvores perenes que se estende pelo topo do mundo.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "A floresta boreal é um vasto cinturão verde de árvores perenes que se estende pelo topo do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Também é chamada de taiga.",
+      "text_markdown": "Também é chamada de taiga.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Também é chamada de taiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é o maior bioma terrestre da Terra.",
+      "text_markdown": "A floresta boreal é o maior bioma terrestre da Terra.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "A floresta boreal é o maior bioma terrestre da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se você voasse bem alto sobre o mundo, veria este cinturão verde-escuro se estendendo por quase toda a volta.",
+      "text_markdown": "Se você voasse bem alto sobre o mundo, veria este cinturão verde-escuro se estendendo por quase toda a volta.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Se você voasse bem alto sobre o mundo, veria este cinturão verde escuro se estendendo por quase toda a volta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela cresce na maior parte do Canadá e do Alasca, na América do Norte.",
+      "text_markdown": "Ela cresce na maior parte do Canadá e do Alasca, na América do Norte.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Ela cresce na maior parte do Canadá e do Alasca, na América do Norte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela cresce na Noruega, Suécia e Finlândia, no norte da Europa.",
+      "text_markdown": "Ela cresce na Noruega, Suécia e Finlândia, no norte da Europa.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Ela cresce na Noruega, Suécia e Finlândia, no norte da Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela cresce na Rússia, desde a Europa até o Oceano Pacífico.",
+      "text_markdown": "Ela cresce na Rússia, desde a Europa até o Oceano Pacífico.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Ela cresce na Rússia, desde a Europa até o Oceano Pacífico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em cada um desses lugares, a floresta parece muito semelhante.",
+      "text_markdown": "Em cada um desses lugares, a floresta parece muito semelhante.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Em cada um desses lugares, a floresta parece muito semelhante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Árvores altas e pontiagudas ficam próximas umas das outras, com musgo macio e pequenos arbustos no chão.",
+      "text_markdown": "Árvores altas e pontiagudas ficam próximas umas das outras, com musgo macio e pequenos arbustos no chão.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Árvores altas e pontiagudas ficam próximas umas das outras, com musgo macio e pequenos arbustos no chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Existem muitos lagos, rios e pântanos entre as árvores.",
+      "text_markdown": "Existem muitos lagos, rios e pântanos entre as árvores.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Existem muitos lagos, rios e pântanos entre as árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal fica logo ao sul da tundra e logo ao norte das florestas temperadas.",
+      "text_markdown": "A floresta boreal fica logo ao sul da tundra e logo ao norte das florestas temperadas.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "A floresta boreal fica logo ao sul da tundra e logo ao norte das florestas temperadas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Não é um lugar quente.",
+      "text_markdown": "Não é um lugar quente.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Não é um lugar quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Invernos longos e muito frios são a regra aqui, com neve profunda no chão por muitos meses.",
+      "text_markdown": "Invernos longos e muito frios são a regra aqui, com neve profunda no chão por muitos meses.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Invernos longos e muito frios são a regra aqui, com neve profunda no chão por muitos meses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os verões são curtos e frescos, com dias longos e noites claras.",
+      "text_markdown": "Os verões são curtos e frescos, com dias longos e noites claras.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Os verões são curtos e frescos, com dias longos e noites claras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poucas pessoas vivem na floresta boreal, mas ela é cheia de vida.",
+      "text_markdown": "Poucas pessoas vivem na floresta boreal, mas ela é cheia de vida.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "Poucas pessoas vivem na floresta boreal, mas ela é cheia de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É o lar de ursos, lobos, alces, corujas e muitos outros animais.",
+      "text_markdown": "É o lar de ursos, lobos, alces, corujas e muitos outros animais.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "É o lar de ursos, lobos, alces, corujas e muitos outros animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "E ela cresce silenciosamente por mais terra do que qualquer outra floresta na Terra.",
+      "text_markdown": "E ela cresce silenciosamente por mais terra do que qualquer outra floresta na Terra.",
+      "title": "Onde Este Bioma Cresce",
+      "tts": {
+        "text": "E ela cresce silenciosamente por mais terra do que qualquer outra floresta na Terra.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "O Clima",
+      "text_markdown": "O Clima",
+      "title": "O Clima"
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é fria durante a maior parte do ano.",
+      "text_markdown": "A floresta boreal é fria durante a maior parte do ano.",
+      "title": "O Clima",
+      "tts": {
+        "text": "A floresta boreal é fria durante a maior parte do ano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O inverno aqui é longo e escuro.",
+      "text_markdown": "O inverno aqui é longo e escuro.",
+      "title": "O Clima",
+      "tts": {
+        "text": "O inverno aqui é longo e escuro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas partes setentrionais da floresta, o inverno pode durar sete ou oito meses.",
+      "text_markdown": "Nas partes setentrionais da floresta, o inverno pode durar sete ou oito meses.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Nas partes setentrionais da floresta, o inverno pode durar sete ou oito meses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ar pode cair para quarenta graus abaixo de zero, tanto em Celsius quanto em Fahrenheit.",
+      "text_markdown": "O ar pode cair para quarenta graus abaixo de zero, tanto em Celsius quanto em Fahrenheit.",
+      "title": "O Clima",
+      "tts": {
+        "text": "O ar pode cair para quarenta graus abaixo de zero, tanto em Celsius quanto em Fahrenheit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esse é um dos lugares mais frios da Terra onde as árvores ainda podem crescer.",
+      "text_markdown": "Esse é um dos lugares mais frios da Terra onde as árvores ainda podem crescer.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Esse é um dos lugares mais frios da Terra onde as árvores ainda podem crescer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neve pesada cobre o chão do outono ao final da primavera.",
+      "text_markdown": "Neve pesada cobre o chão do outono ao final da primavera.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Neve pesada cobre o chão do outono ao final da primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os lagos e rios congelam, às vezes com gelo tão espesso quanto a altura de uma pessoa.",
+      "text_markdown": "Os lagos e rios congelam, às vezes com gelo tão espesso quanto a altura de uma pessoa.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Os lagos e rios congelam, às vezes com gelo tão espesso quanto a altura de uma pessoa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No extremo norte, o sol mal se eleva acima das árvores nos dias mais curtos do inverno.",
+      "text_markdown": "No extremo norte, o sol mal se eleva acima das árvores nos dias mais curtos do inverno.",
+      "title": "O Clima",
+      "tts": {
+        "text": "No extremo norte, o sol mal se eleva acima das árvores nos dias mais curtos do inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Então vem o degelo da primavera.",
+      "text_markdown": "Então vem o degelo da primavera.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Então vem o degelo da primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A neve vira água, e os rios correm cheios e frios.",
+      "text_markdown": "A neve vira água, e os rios correm cheios e frios.",
+      "title": "O Clima",
+      "tts": {
+        "text": "A neve vira água, e os rios correm cheios e frios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo permanece macio e úmido por muitas semanas.",
+      "text_markdown": "O solo permanece macio e úmido por muitas semanas.",
+      "title": "O Clima",
+      "tts": {
+        "text": "O solo permanece macio e úmido por muitas semanas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O verão é curto, mas é cheio de vida.",
+      "text_markdown": "O verão é curto, mas é cheio de vida.",
+      "title": "O Clima",
+      "tts": {
+        "text": "O verão é curto, mas é cheio de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em junho e julho, o sol permanece no céu durante a maior parte da noite.",
+      "text_markdown": "Em junho e julho, o sol permanece no céu durante a maior parte da noite.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Em junho e julho, o sol permanece no céu durante a maior parte da noite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta cresce rapidamente para aproveitar ao máximo a luz quente.",
+      "text_markdown": "A floresta cresce rapidamente para aproveitar ao máximo a luz quente.",
+      "title": "O Clima",
+      "tts": {
+        "text": "A floresta cresce rapidamente para aproveitar ao máximo a luz quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os dias de verão podem ser quentes, mas as noites são geralmente frescas.",
+      "text_markdown": "Os dias de verão podem ser quentes, mas as noites são geralmente frescas.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Os dias de verão podem ser quentes, mas as noites são geralmente frescas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em agosto, o frio começa a rastejar de volta.",
+      "text_markdown": "Em agosto, o frio começa a rastejar de volta.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Em agosto, o frio começa a rastejar de volta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O outono é curto e dourado.",
+      "text_markdown": "O outono é curto e dourado.",
+      "title": "O Clima",
+      "tts": {
+        "text": "O outono é curto e dourado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Então a neve retorna, e o longo inverno começa novamente.",
+      "text_markdown": "Então a neve retorna, e o longo inverno começa novamente.",
+      "title": "O Clima",
+      "tts": {
+        "text": "Então a neve retorna, e o longo inverno começa novamente.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "paragraph_id": "p42",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "A Terra e a Água",
+      "text_markdown": "A Terra e a Água",
+      "title": "A Terra e a Água"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal cresce sobre terras antigas e tranquilas.",
+      "text_markdown": "A floresta boreal cresce sobre terras antigas e tranquilas.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "A floresta boreal cresce sobre terras antigas e tranquilas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há muito tempo, grandes camadas de gelo cobriam todo este país.",
+      "text_markdown": "Há muito tempo, grandes camadas de gelo cobriam todo este país.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Há muito tempo, grandes camadas de gelo cobriam todo este país.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O gelo era mais espesso que as montanhas mais altas que conhecemos hoje.",
+      "text_markdown": "O gelo era mais espesso que as montanhas mais altas que conhecemos hoje.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "O gelo era mais espesso que as montanhas mais altas que conhecemos hoje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando o gelo derreteu, há muitos milhares de anos, deixou a terra plana, arranhada e cheia de buracos.",
+      "text_markdown": "Quando o gelo derreteu, há muitos milhares de anos, deixou a terra plana, arranhada e cheia de buracos.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Quando o gelo derreteu, há muitos milhares de anos, deixou a terra plana, arranhada e cheia de buracos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os buracos se encheram de água.",
+      "text_markdown": "Os buracos se encheram de água.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Os buracos se encheram de água.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É por isso que a floresta boreal tem tantos lagos.",
+      "text_markdown": "É por isso que a floresta boreal tem tantos lagos.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "É por isso que a floresta boreal tem tantos lagos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Só o Canadá tem mais lagos do que o resto do mundo junto.",
+      "text_markdown": "Só o Canadá tem mais lagos do que o resto do mundo junto.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Só o Canadá tem mais lagos do que o resto do mundo junto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos deles ficam dentro da floresta boreal, brilhando como espelhos escuros entre as árvores.",
+      "text_markdown": "Muitos deles ficam dentro da floresta boreal, brilhando como espelhos escuros entre as árvores.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Muitos deles ficam dentro da floresta boreal, brilhando como espelhos escuros entre as árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rios largos e lentos cruzam a floresta, levando água do degelo para os grandes mares do norte.",
+      "text_markdown": "Rios largos e lentos cruzam a floresta, levando água do degelo para os grandes mares do norte.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Rios largos e lentos cruzam a floresta, levando água do degelo para os grandes mares do norte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entre os lagos e os rios, há lugares macios e úmidos chamados turfeiras.",
+      "text_markdown": "Entre os lagos e os rios, há lugares macios e úmidos chamados turfeiras.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Entre os lagos e os rios, há lugares macios e úmidos chamados turfeiras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma turfeira é um pedaço de terra onde a água fica sobre o solo o ano todo.",
+      "text_markdown": "Uma turfeira é um pedaço de terra onde a água fica sobre o solo o ano todo.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Uma turfeira é um pedaço de terra onde a água fica sobre o solo o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musgos crescem densos na turfeira, macios e profundos sob os pés.",
+      "text_markdown": "Musgos crescem densos na turfeira, macios e profundos sob os pés.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Musgos crescem densos na turfeira, macios e profundos sob os pés.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abaixo da superfície, a água da turfeira é fria e marrom.",
+      "text_markdown": "Abaixo da superfície, a água da turfeira é fria e marrom.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Abaixo da superfície, a água da turfeira é fria e marrom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo da floresta boreal é pobre e fino.",
+      "text_markdown": "O solo da floresta boreal é pobre e fino.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "O solo da floresta boreal é pobre e fino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Agulhas de pinheiro e folhas mortas se decompõem lentamente no frio.",
+      "text_markdown": "Agulhas de pinheiro e folhas mortas se decompõem lentamente no frio.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Agulhas de pinheiro e folhas mortas se decompõem lentamente no frio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os bons nutrientes para as plantas levam muito tempo para se acumular.",
+      "text_markdown": "Os bons nutrientes para as plantas levam muito tempo para se acumular.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Os bons nutrientes para as plantas levam muito tempo para se acumular.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No extremo norte da floresta boreal, o solo a mais de um ou dois metros de profundidade permanece congelado o ano todo.",
+      "text_markdown": "No extremo norte da floresta boreal, o solo a mais de um ou dois metros de profundidade permanece congelado o ano todo.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "No extremo norte da floresta boreal, o solo a mais de um ou dois metros de profundidade permanece congelado o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este solo congelado é chamado permafrost.",
+      "text_markdown": "Este solo congelado é chamado permafrost.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Este solo congelado é chamado permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mesmo em um dia quente de verão, o solo sob o musgo é frio ao toque.",
+      "text_markdown": "Mesmo em um dia quente de verão, o solo sob o musgo é frio ao toque.",
+      "title": "A Terra e a Água",
+      "tts": {
+        "text": "Mesmo em um dia quente de verão, o solo sob o musgo é frio ao toque.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "As Árvores",
+      "text_markdown": "As Árvores",
+      "title": "As Árvores"
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores da floresta boreal são em sua maioria perenes.",
+      "text_markdown": "As árvores da floresta boreal são em sua maioria perenes.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "As árvores da floresta boreal são em sua maioria perenes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elas não perdem todas as suas folhas no final do verão.",
+      "text_markdown": "Elas não perdem todas as suas folhas no final do verão.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Elas não perdem todas as suas folhas no final do verão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em vez disso, elas mantêm pequenas agulhas verdes durante todo o ano.",
+      "text_markdown": "Em vez disso, elas mantêm pequenas agulhas verdes durante todo o ano.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Em vez disso, elas mantêm pequenas agulhas verdes durante todo o ano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma agulha é pequena e resistente.",
+      "text_markdown": "Uma agulha é pequena e resistente.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Uma agulha é pequena e resistente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela não perde muita água para o vento e não quebra sob a neve.",
+      "text_markdown": "Ela não perde muita água para o vento e não quebra sob a neve.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Ela não perde muita água para o vento e não quebra sob a neve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitas das árvores crescem em forma de cone alto e estreito.",
+      "text_markdown": "Muitas das árvores crescem em forma de cone alto e estreito.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Muitas das árvores crescem em forma de cone alto e estreito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando a neve pesada cai sobre uma árvore em forma de cone, ela desliza facilmente.",
+      "text_markdown": "Quando a neve pesada cai sobre uma árvore em forma de cone, ela desliza facilmente.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Quando a neve pesada cai sobre uma árvore em forma de cone, ela desliza facilmente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores boreais mais comuns são a pícea, o pinheiro, o abeto e o lariço.",
+      "text_markdown": "As árvores boreais mais comuns são a pícea, o pinheiro, o abeto e o lariço.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "As árvores boreais mais comuns são a pícea, o pinheiro, o abeto e o lariço.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As píceas têm agulhas curtas e afiadas e pequenas pinhas que pendem.",
+      "text_markdown": "As píceas têm agulhas curtas e afiadas e pequenas pinhas que pendem.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "As píceas têm agulhas curtas e afiadas e pequenas pinhas que pendem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os pinheiros têm agulhas longas e macias que crescem em pequenos feixes de duas ou três.",
+      "text_markdown": "Os pinheiros têm agulhas longas e macias que crescem em pequenos feixes de duas ou três.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Os pinheiros têm agulhas longas e macias que crescem em pequenos feixes de duas ou três.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os abetos têm agulhas planas e macias e pinhas altas que apontam para cima.",
+      "text_markdown": "Os abetos têm agulhas planas e macias e pinhas altas que apontam para cima.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Os abetos têm agulhas planas e macias e pinhas altas que apontam para cima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O lariço é a única árvore boreal comum que perde suas agulhas no outono.",
+      "text_markdown": "O lariço é a única árvore boreal comum que perde suas agulhas no outono.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "O lariço é a única árvore boreal comum que perde suas agulhas no outono.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antes de perdê-las, o lariço fica com um tom dourado brilhante.",
+      "text_markdown": "Antes de perdê-las, o lariço fica com um tom dourado brilhante.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Antes de perdê las, o lariço fica com um tom dourado brilhante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma grande floresta de lariços em outubro parece um mar de ouro sobre a terra fria.",
+      "text_markdown": "Uma grande floresta de lariços em outubro parece um mar de ouro sobre a terra fria.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Uma grande floresta de lariços em outubro parece um mar de ouro sobre a terra fria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em todas essas florestas, as árvores ficam próximas umas das outras.",
+      "text_markdown": "Em todas essas florestas, as árvores ficam próximas umas das outras.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Em todas essas florestas, as árvores ficam próximas umas das outras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os galhos são grossos no topo e nus perto da base, onde o sol não alcança.",
+      "text_markdown": "Os galhos são grossos no topo e nus perto da base, onde o sol não alcança.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Os galhos são grossos no topo e nus perto da base, onde o sol não alcança.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A sombra entre as árvores é profunda e silenciosa.",
+      "text_markdown": "A sombra entre as árvores é profunda e silenciosa.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "A sombra entre as árvores é profunda e silenciosa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No chão da floresta, o verde não está nas folhas, mas no musgo.",
+      "text_markdown": "No chão da floresta, o verde não está nas folhas, mas no musgo.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "No chão da floresta, o verde não está nas folhas, mas no musgo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musgo macio e espesso cobre o chão, os troncos caídos e as rochas.",
+      "text_markdown": "Musgo macio e espesso cobre o chão, os troncos caídos e as rochas.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Musgo macio e espesso cobre o chão, os troncos caídos e as rochas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cogumelos de muitas formas e cores brotam através do musgo no final do verão.",
+      "text_markdown": "Cogumelos de muitas formas e cores brotam através do musgo no final do verão.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Cogumelos de muitas formas e cores brotam através do musgo no final do verão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pequenas bagas crescem em minúsculos arbustos entre o musgo.",
+      "text_markdown": "Pequenas bagas crescem em minúsculos arbustos entre o musgo.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Pequenas bagas crescem em minúsculos arbustos entre o musgo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mirtilos selvagens doces, oxicocos vermelhos e pequenas camarinhas pretas crescem todos aqui.",
+      "text_markdown": "Mirtilos selvagens doces, oxicocos vermelhos e pequenas camarinhas pretas crescem todos aqui.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "Mirtilos selvagens doces, oxicocos vermelhos e pequenas camarinhas pretas crescem todos aqui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No breve verão, as pessoas e os animais da floresta os colhem em cestos.",
+      "text_markdown": "No breve verão, as pessoas e os animais da floresta os colhem em cestos.",
+      "title": "As Árvores",
+      "tts": {
+        "text": "No breve verão, as pessoas e os animais da floresta os colhem em cestos.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "paragraph_id": "p86",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Os Animais",
+      "text_markdown": "Os Animais",
+      "title": "Os Animais"
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é o lar de muitos animais que sabem viver no frio.",
+      "text_markdown": "A floresta boreal é o lar de muitos animais que sabem viver no frio.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "A floresta boreal é o lar de muitos animais que sabem viver no frio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria deles tem pelo grosso, gordura sob a pele, ou ambos.",
+      "text_markdown": "A maioria deles tem pelo grosso, gordura sob a pele, ou ambos.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "A maioria deles tem pelo grosso, gordura sob a pele, ou ambos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O maior animal da floresta boreal é o alce.",
+      "text_markdown": "O maior animal da floresta boreal é o alce.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "O maior animal da floresta boreal é o alce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um alce é um cervo muito alto com um rosto comprido e um corpo pesado.",
+      "text_markdown": "Um alce é um cervo muito alto com um rosto comprido e um corpo pesado.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Um alce é um cervo muito alto com um rosto comprido e um corpo pesado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um alce adulto pode ser mais alto que a pessoa mais alta, com grandes e largas galhadas na cabeça.",
+      "text_markdown": "Um alce adulto pode ser mais alto que a pessoa mais alta, com grandes e largas galhadas na cabeça.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Um alce adulto pode ser mais alto que a pessoa mais alta, com grandes e largas galhadas na cabeça.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ele se alimenta de plantas aquáticas no verão e de galhos e cascas no inverno.",
+      "text_markdown": "Ele se alimenta de plantas aquáticas no verão e de galhos e cascas no inverno.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Ele se alimenta de plantas aquáticas no verão e de galhos e cascas no inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um alce é tímido, mas se você encontrar um, não o esquecerá.",
+      "text_markdown": "Um alce é tímido, mas se você encontrar um, não o esquecerá.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Um alce é tímido, mas se você encontrar um, não o esquecerá.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ursos-pardos vivem em muitas partes da floresta boreal.",
+      "text_markdown": "Ursos-pardos vivem em muitas partes da floresta boreal.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Ursos pardos vivem em muitas partes da floresta boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, um urso-pardo come frutas, peixes, raízes e pequenos animais.",
+      "text_markdown": "No verão, um urso-pardo come frutas, peixes, raízes e pequenos animais.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "No verão, um urso pardo come frutas, peixes, raízes e pequenos animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No outono, ele come o máximo que pode para desenvolver uma espessa camada de gordura.",
+      "text_markdown": "No outono, ele come o máximo que pode para desenvolver uma espessa camada de gordura.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "No outono, ele come o máximo que pode para desenvolver uma espessa camada de gordura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Então ele dorme em uma toca sob a neve durante todo o inverno.",
+      "text_markdown": "Então ele dorme em uma toca sob a neve durante todo o inverno.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Então ele dorme em uma toca sob a neve durante todo o inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lobos caçam pela floresta em grupos familiares chamados matilhas.",
+      "text_markdown": "Lobos caçam pela floresta em grupos familiares chamados matilhas.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Lobos caçam pela floresta em grupos familiares chamados matilhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma matilha de lobos pode viajar muitos quilômetros em um único dia.",
+      "text_markdown": "Uma matilha de lobos pode viajar muitos quilômetros em um único dia.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Uma matilha de lobos pode viajar muitos quilômetros em um único dia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os lobos caçam alces, veados e animais menores.",
+      "text_markdown": "Os lobos caçam alces, veados e animais menores.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Os lobos caçam alces, veados e animais menores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na neve profunda, eles andam em fila, cada lobo pisando nas pegadas do que está à frente.",
+      "text_markdown": "Na neve profunda, eles andam em fila, cada lobo pisando nas pegadas do que está à frente.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Na neve profunda, eles andam em fila, cada lobo pisando nas pegadas do que está à frente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O lince é um gato selvagem da floresta boreal.",
+      "text_markdown": "O lince é um gato selvagem da floresta boreal.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "O lince é um gato selvagem da floresta boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ele tem pelo cinza espesso, uma cauda curta e tufos de pelos pontiagudos nas pontas das orelhas.",
+      "text_markdown": "Ele tem pelo cinza espesso, uma cauda curta e tufos de pelos pontiagudos nas pontas das orelhas.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Ele tem pelo cinza espesso, uma cauda curta e tufos de pelos pontiagudos nas pontas das orelhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas grandes patas peludas agem como raquetes de neve na neve profunda.",
+      "text_markdown": "Suas grandes patas peludas agem como raquetes de neve na neve profunda.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Suas grandes patas peludas agem como raquetes de neve na neve profunda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O lince caça principalmente a lebre-da-neve.",
+      "text_markdown": "O lince caça principalmente a lebre-da-neve.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "O lince caça principalmente a lebre da neve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lebre-da-neve fica marrom no verão e branca no inverno, para se camuflar com o chão.",
+      "text_markdown": "A lebre-da-neve fica marrom no verão e branca no inverno, para se camuflar com o chão.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "A lebre da neve fica marrom no verão e branca no inverno, para se camuflar com o chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Castores vivem nos rios e lagos da floresta.",
+      "text_markdown": "Castores vivem nos rios e lagos da floresta.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Castores vivem nos rios e lagos da floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um castor derruba árvores com seus dentes fortes e constrói represas e tocas de madeira e lama.",
+      "text_markdown": "Um castor derruba árvores com seus dentes fortes e constrói represas e tocas de madeira e lama.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Um castor derruba árvores com seus dentes fortes e constrói represas e tocas de madeira e lama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um lago de castor pode transformar um trecho inteiro de floresta em uma lagoa tranquila cheia de vida.",
+      "text_markdown": "Um lago de castor pode transformar um trecho inteiro de floresta em uma lagoa tranquila cheia de vida.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Um lago de castor pode transformar um trecho inteiro de floresta em uma lagoa tranquila cheia de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No alto das árvores, esquilos-vermelhos tagarelam alto e coletam pinhas para o inverno.",
+      "text_markdown": "No alto das árvores, esquilos-vermelhos tagarelam alto e coletam pinhas para o inverno.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "No alto das árvores, esquilos vermelhos tagarelam alto e coletam pinhas para o inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Glutões, martas e visons deslizam silenciosamente pela vegetação rasteira.",
+      "text_markdown": "Glutões, martas e visons deslizam silenciosamente pela vegetação rasteira.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Glutões, martas e visons deslizam silenciosamente pela vegetação rasteira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos tipos de corujas caçam à noite.",
+      "text_markdown": "Muitos tipos de corujas caçam à noite.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Muitos tipos de corujas caçam à noite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A coruja-cinzenta é uma das maiores corujas do mundo e vive na floresta boreal.",
+      "text_markdown": "A coruja-cinzenta é uma das maiores corujas do mundo e vive na floresta boreal.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "A coruja cinzenta é uma das maiores corujas do mundo e vive na floresta boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Corvos voam entre as árvores, chamando uns aos outros com muitas vozes diferentes.",
+      "text_markdown": "Corvos voam entre as árvores, chamando uns aos outros com muitas vozes diferentes.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Corvos voam entre as árvores, chamando uns aos outros com muitas vozes diferentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No curto verão, enxames de mosquitos e pequenas moscas enchem o ar.",
+      "text_markdown": "No curto verão, enxames de mosquitos e pequenas moscas enchem o ar.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "No curto verão, enxames de mosquitos e pequenas moscas enchem o ar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por algumas semanas, a floresta está viva com o zumbido de insetos, os cantos de pequenos pássaros e o chapinhar de peixes nos lagos.",
+      "text_markdown": "Por algumas semanas, a floresta está viva com o zumbido de insetos, os cantos de pequenos pássaros e o chapinhar de peixes nos lagos.",
+      "title": "Os Animais",
+      "tts": {
+        "text": "Por algumas semanas, a floresta está viva com o zumbido de insetos, os cantos de pequenos pássaros e o chapinhar de peixes nos lagos.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "paragraph_id": "p117",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "As Pessoas",
+      "text_markdown": "As Pessoas",
+      "title": "As Pessoas"
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é um dos lugares mais vazios da Terra.",
+      "text_markdown": "A floresta boreal é um dos lugares mais vazios da Terra.",
+      "title": "As Pessoas",
+      "tts": {
+        "text": "A floresta boreal é um dos lugares mais vazios da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Longos invernos e solo pobre dificultam o cultivo de alimentos aqui.",
+      "text_markdown": "Longos invernos e solo pobre dificultam o cultivo de alimentos aqui.",
+      "title": "As Pessoas",
+      "tts": {
+        "text": "Longos invernos e solo pobre dificultam o cultivo de alimentos aqui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas as pessoas vivem nesta grande floresta há muitos milhares de anos.",
+      "text_markdown": "Mas as pessoas vivem nesta grande floresta há muitos milhares de anos.",
+      "title": "As Pessoas",
+      "tts": {
+        "text": "Mas as pessoas vivem nesta grande floresta há muitos milhares de anos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No norte da Europa, o povo Sami viveu na floresta boreal e na tundra acima dela por muito tempo.",
+      "text_markdown": "No norte da Europa, o povo Sami viveu na floresta boreal e na tundra acima dela por muito tempo.",
+      "title": "O Povo",
+      "tts": {
+        "text": "No norte da Europa, o povo Sami viveu na floresta boreal e na tundra acima dela por muito tempo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os Sami pastoreiam renas pelas terras frias da Noruega, Suécia, Finlândia e Rússia.",
+      "text_markdown": "Os Sami pastoreiam renas pelas terras frias da Noruega, Suécia, Finlândia e Rússia.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Os Sami pastoreiam renas pelas terras frias da Noruega, Suécia, Finlândia e Rússia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma rena pode encontrar comida na neve, e ela fornece às pessoas carne, leite e peles.",
+      "text_markdown": "Uma rena pode encontrar comida na neve, e ela fornece às pessoas carne, leite e peles.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Uma rena pode encontrar comida na neve, e ela fornece às pessoas carne, leite e peles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A rena também puxa trenós pela neve do inverno.",
+      "text_markdown": "A rena também puxa trenós pela neve do inverno.",
+      "title": "O Povo",
+      "tts": {
+        "text": "A rena também puxa trenós pela neve do inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Sibéria, no norte da Rússia, muitos grupos de pessoas fizeram da floresta boreal seu lar.",
+      "text_markdown": "Na Sibéria, no norte da Rússia, muitos grupos de pessoas fizeram da floresta boreal seu lar.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Na Sibéria, no norte da Rússia, muitos grupos de pessoas fizeram da floresta boreal seu lar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os Evenki, os Khanty, os Nenets e outros caçaram, pescaram e pastorearam renas aqui por muitas gerações.",
+      "text_markdown": "Os Evenki, os Khanty, os Nenets e outros caçaram, pescaram e pastorearam renas aqui por muitas gerações.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Os Evenki, os Khanty, os Nenets e outros caçaram, pescaram e pastorearam renas aqui por muitas gerações.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No Canadá e no Alasca, muitos povos das Primeiras Nações e os Dene viveram na floresta boreal por milhares de anos.",
+      "text_markdown": "No Canadá e no Alasca, muitos povos das Primeiras Nações e os Dene viveram na floresta boreal por milhares de anos.",
+      "title": "O Povo",
+      "tts": {
+        "text": "No Canadá e no Alasca, muitos povos das Primeiras Nações e os Dene viveram na floresta boreal por milhares de anos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles caçaram alces e caribus, pescaram nos rios frios e colheram frutas silvestres no breve verão.",
+      "text_markdown": "Eles caçaram alces e caribus, pescaram nos rios frios e colheram frutas silvestres no breve verão.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles caçaram alces e caribus, pescaram nos rios frios e colheram frutas silvestres no breve verão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em todas essas terras, as pessoas construíram roupas quentes de inverno com peles e pelos de animais.",
+      "text_markdown": "Em todas essas terras, as pessoas construíram roupas quentes de inverno com peles e pelos de animais.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Em todas essas terras, as pessoas construíram roupas quentes de inverno com peles e pelos de animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles construíram casas de madeira, casca e pele, com pequenas aberturas para manter o frio afastado.",
+      "text_markdown": "Eles construíram casas de madeira, casca e pele, com pequenas aberturas para manter o frio afastado.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles construíram casas de madeira, casca e pele, com pequenas aberturas para manter o frio afastado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles aprenderam a viajar com raquetes de neve e esquis longos e finos, e mais tarde com trenós puxados por cães.",
+      "text_markdown": "Eles aprenderam a viajar com raquetes de neve e esquis longos e finos, e mais tarde com trenós puxados por cães.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles aprenderam a viajar com raquetes de neve e esquis longos e finos, e mais tarde com trenós puxados por cães.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, eles viajavam de canoa, em longos barcos de casca de bétula, ou de rena.",
+      "text_markdown": "No verão, eles viajavam de canoa, em longos barcos de casca de bétula, ou de rena.",
+      "title": "O Povo",
+      "tts": {
+        "text": "No verão, eles viajavam de canoa, em longos barcos de casca de bétula, ou de rena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essas pessoas aprenderam os nomes de cada árvore e de cada animal na floresta.",
+      "text_markdown": "Essas pessoas aprenderam os nomes de cada árvore e de cada animal na floresta.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Essas pessoas aprenderam os nomes de cada árvore e de cada animal na floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles aprenderam onde estavam os arbustos de frutas silvestres e onde os peixes eram mais abundantes.",
+      "text_markdown": "Eles aprenderam onde estavam os arbustos de frutas silvestres e onde os peixes eram mais abundantes.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles aprenderam onde estavam os arbustos de frutas silvestres e onde os peixes eram mais abundantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles aprenderam quais cogumelos podiam ser comidos e quais não.",
+      "text_markdown": "Eles aprenderam quais cogumelos podiam ser comidos e quais não.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles aprenderam quais cogumelos podiam ser comidos e quais não.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles aprenderam a ler a neve em busca das pegadas de alces e ursos.",
+      "text_markdown": "Eles aprenderam a ler a neve em busca das pegadas de alces e ursos.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Eles aprenderam a ler a neve em busca das pegadas de alces e ursos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em tempos mais recentes, outras pessoas vieram para a floresta para cortar madeira, para minerar minério ou para viver em pequenas cidades ao longo dos rios.",
+      "text_markdown": "Em tempos mais recentes, outras pessoas vieram para a floresta para cortar madeira, para minerar minério ou para viver em pequenas cidades ao longo dos rios.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Em tempos mais recentes, outras pessoas vieram para a floresta para cortar madeira, para minerar minério ou para viver em pequenas cidades ao longo dos rios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas, durante a maior parte de sua longa história, a floresta boreal tem sido um lugar tranquilo.",
+      "text_markdown": "Mas, durante a maior parte de sua longa história, a floresta boreal tem sido um lugar tranquilo.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Mas, durante a maior parte de sua longa história, a floresta boreal tem sido um lugar tranquilo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um lugar onde pequenos grupos de pessoas compartilham a terra com as árvores, os animais e o frio.",
+      "text_markdown": "Um lugar onde pequenos grupos de pessoas compartilham a terra com as árvores, os animais e o frio.",
+      "title": "O Povo",
+      "tts": {
+        "text": "Um lugar onde pequenos grupos de pessoas compartilham a terra com as árvores, os animais e o frio.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "paragraph_id": "p140",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "O Bioma Hoje",
+      "text_markdown": "O Bioma Hoje",
+      "title": "O Bioma Hoje"
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal é enorme, mas não é tão intocada quanto parece.",
+      "text_markdown": "A floresta boreal é enorme, mas não é tão intocada quanto parece.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "A floresta boreal é enorme, mas não é tão intocada quanto parece.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por mais de cem anos, as pessoas cortaram grandes quantidades de madeira desta floresta.",
+      "text_markdown": "Por mais de cem anos, as pessoas cortaram grandes quantidades de madeira desta floresta.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Por mais de cem anos, as pessoas cortaram grandes quantidades de madeira desta floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores altas e retas produzem boa madeira e bom papel.",
+      "text_markdown": "As árvores altas e retas produzem boa madeira e bom papel.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "As árvores altas e retas produzem boa madeira e bom papel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em muitas partes da floresta boreal, seções inteiras de árvores foram derrubadas e lentamente voltaram a crescer.",
+      "text_markdown": "Em muitas partes da floresta boreal, seções inteiras de árvores foram derrubadas e lentamente voltaram a crescer.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Em muitas partes da floresta boreal, seções inteiras de árvores foram derrubadas e lentamente voltaram a crescer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta boreal também retém uma enorme quantidade de carbono, nas árvores e no solo e pântanos abaixo.",
+      "text_markdown": "A floresta boreal também retém uma enorme quantidade de carbono, nas árvores e no solo e pântanos abaixo.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "A floresta boreal também retém uma enorme quantidade de carbono, nas árvores e no solo e pântanos abaixo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo boreal saudável mantém esse carbono seguramente aprisionado longe do ar.",
+      "text_markdown": "O solo boreal saudável mantém esse carbono seguramente aprisionado longe do ar.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "O solo boreal saudável mantém esse carbono seguramente aprisionado longe do ar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando as árvores e o solo são mantidos intactos, a floresta ajuda a manter o ar de toda a Terra em equilíbrio.",
+      "text_markdown": "Quando as árvores e o solo são mantidos intactos, a floresta ajuda a manter o ar de toda a Terra em equilíbrio.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Quando as árvores e o solo são mantidos intactos, a floresta ajuda a manter o ar de toda a Terra em equilíbrio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos últimos anos, a floresta boreal ficou mais quente.",
+      "text_markdown": "Nos últimos anos, a floresta boreal ficou mais quente.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Nos últimos anos, a floresta boreal ficou mais quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Verões longos e quentes trouxeram incêndios florestais maiores do que os que o povo do norte se lembra.",
+      "text_markdown": "Verões longos e quentes trouxeram incêndios florestais maiores do que os que o povo do norte se lembra.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Verões longos e quentes trouxeram incêndios florestais maiores do que os que o povo do norte se lembra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns desses incêndios agora duram semanas e queimam milhões de árvores.",
+      "text_markdown": "Alguns desses incêndios agora duram semanas e queimam milhões de árvores.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Alguns desses incêndios agora duram semanas e queimam milhões de árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No extremo norte, os verões mais quentes começaram a amolecer o permafrost.",
+      "text_markdown": "No extremo norte, os verões mais quentes começaram a amolecer o permafrost.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "No extremo norte, os verões mais quentes começaram a amolecer o permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitas pessoas e grupos hoje estão trabalhando para cuidar da floresta boreal.",
+      "text_markdown": "Muitas pessoas e grupos hoje estão trabalhando para cuidar da floresta boreal.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Muitas pessoas e grupos hoje estão trabalhando para cuidar da floresta boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles reservam grandes parques onde a floresta pode crescer como sempre fez.",
+      "text_markdown": "Eles reservam grandes parques onde a floresta pode crescer como sempre fez.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Eles reservam grandes parques onde a floresta pode crescer como sempre fez.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles ajudam as pessoas que viveram lá por muitas gerações a cuidar de suas próprias terras.",
+      "text_markdown": "Eles ajudam as pessoas que viveram lá por muitas gerações a cuidar de suas próprias terras.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Eles ajudam as pessoas que viveram lá por muitas gerações a cuidar de suas próprias terras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles estudam a floresta para entender como ela vive e como mantê-la intacta.",
+      "text_markdown": "Eles estudam a floresta para entender como ela vive e como mantê-la intacta.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Eles estudam a floresta para entender como ela vive e como mantê la intacta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma floresta boreal saudável é um grande cobertor verde que ajuda a manter o mundo fresco.",
+      "text_markdown": "Uma floresta boreal saudável é um grande cobertor verde que ajuda a manter o mundo fresco.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Uma floresta boreal saudável é um grande cobertor verde que ajuda a manter o mundo fresco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela merece nosso cuidado.",
+      "text_markdown": "Ela merece nosso cuidado.",
+      "title": "O Bioma Hoje",
+      "tts": {
+        "text": "Ela merece nosso cuidado.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "paragraph_id": "p158",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Encerramento",
+      "text_markdown": "Encerramento",
+      "title": "Encerramento"
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa é a floresta boreal.",
+      "text_markdown": "Essa é a floresta boreal.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Essa é a floresta boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um vasto cinturão verde de árvores perenes, lagos e neve silenciosa que se estende por quase toda a parte superior do mundo.",
+      "text_markdown": "Um vasto cinturão verde de árvores perenes, lagos e neve silenciosa que se estende por quase toda a parte superior do mundo.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Um vasto cinturão verde de árvores perenes, lagos e neve silenciosa que se estende por quase toda a parte superior do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se você estiver em uma, fique parado por um minuto.",
+      "text_markdown": "Se você estiver em uma, fique parado por um minuto.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Se você estiver em uma, fique parado por um minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouça o vento nas agulhas altas.",
+      "text_markdown": "Ouça o vento nas agulhas altas.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Ouça o vento nas agulhas altas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-163",
+      "chapter": 9,
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Observe o sol passando pelas árvores e caindo sobre o musgo.",
+      "text_markdown": "Observe o sol passando pelas árvores e caindo sobre o musgo.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Observe o sol passando pelas árvores e caindo sobre o musgo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch09-164",
+      "chapter": 9,
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sinta o cheiro do ar frio de pinho.",
+      "text_markdown": "Sinta o cheiro do ar frio de pinho.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Sinta o cheiro do ar frio de pinho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-165",
+      "chapter": 9,
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você sentirá o coração lento e paciente do bioma batendo ao seu redor.",
+      "text_markdown": "Você sentirá o coração lento e paciente do bioma batendo ao seu redor.",
+      "title": "Encerramento",
+      "tts": {
+        "text": "Você sentirá o coração lento e paciente do bioma batendo ao seu redor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

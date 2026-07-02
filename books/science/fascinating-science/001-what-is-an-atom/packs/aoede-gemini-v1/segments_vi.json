@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "vi",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 1,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "text": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "text_markdown": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-002",
+      "text": "Hãy nhìn xung quanh bạn.",
+      "text_markdown": "Hãy nhìn xung quanh bạn.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Hãy nhìn xung quanh bạn.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "text": "Mọi thứ bạn có thể nhìn thấy đều được tạo thành từ nguyên tử.",
+      "text_markdown": "Mọi thứ bạn có thể nhìn thấy đều được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Mọi thứ bạn có thể nhìn thấy đều được tạo thành từ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-004",
+      "text": "Không khí bạn hít thở được tạo thành từ nguyên tử.",
+      "text_markdown": "Không khí bạn hít thở được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Không khí bạn hít thở được tạo thành từ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-005",
+      "text": "Nước bạn uống được tạo thành từ nguyên tử.",
+      "text_markdown": "Nước bạn uống được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nước bạn uống được tạo thành từ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "text": "Cơ thể bạn được tạo thành từ nguyên tử.",
+      "text_markdown": "Cơ thể bạn được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Cơ thể bạn được tạo thành từ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-007",
+      "text": "Mặt đất dưới chân bạn được tạo thành từ nguyên tử.",
+      "text_markdown": "Mặt đất dưới chân bạn được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Mặt đất dưới chân bạn được tạo thành từ nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-008",
+      "text": "Nguyên tử là phần nhỏ nhất của vật chất vẫn giữ được bản chất hóa học của nó.",
+      "text_markdown": "Nguyên tử là phần nhỏ nhất của vật chất vẫn giữ được bản chất hóa học của nó.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử là phần nhỏ nhất của vật chất vẫn giữ được bản chất hóa học của nó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-009",
+      "text": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng mắt thường.",
+      "text_markdown": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng mắt thường.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng mắt thường.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-010",
+      "text": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng kính hiển vi thông thường.",
+      "text_markdown": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng kính hiển vi thông thường.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Bạn không thể nhìn thấy một nguyên tử đơn lẻ bằng kính hiển vi thông thường.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-011",
+      "text": "Nguyên tử nhỏ đến vậy đấy.",
+      "text_markdown": "Nguyên tử nhỏ đến vậy đấy.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử nhỏ đến vậy đấy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-012",
+      "text": "Một hạt cát duy nhất chứa khoảng năm mươi tỷ tỷ nguyên tử.",
+      "text_markdown": "Một hạt cát duy nhất chứa khoảng năm mươi tỷ tỷ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Một hạt cát duy nhất chứa khoảng năm mươi tỷ tỷ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "text": "Con số đó là năm mươi theo sau là mười tám số không.",
+      "text_markdown": "Con số đó là năm mươi theo sau là mười tám số không.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Con số đó là năm mươi theo sau là mười tám số không.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-014",
+      "text": "Có nhiều nguyên tử trong một hạt cát hơn số hạt cát trên một bãi biển.",
+      "text_markdown": "Có nhiều nguyên tử trong một hạt cát hơn số hạt cát trên một bãi biển.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Có nhiều nguyên tử trong một hạt cát hơn số hạt cát trên một bãi biển.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-015",
+      "text": "Nguyên tử là những khối xây dựng của mọi thứ trong thế giới vật chất.",
+      "text_markdown": "Nguyên tử là những khối xây dựng của mọi thứ trong thế giới vật chất.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử là những khối xây dựng của mọi thứ trong thế giới vật chất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "text": "Một bức tường được xây bằng gạch.",
+      "text_markdown": "Một bức tường được xây bằng gạch.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Một bức tường được xây bằng gạch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-017",
+      "text": "Một câu được tạo thành từ các từ.",
+      "text_markdown": "Một câu được tạo thành từ các từ.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Một câu được tạo thành từ các từ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "text": "Vũ trụ được tạo thành từ nguyên tử.",
+      "text_markdown": "Vũ trụ được tạo thành từ nguyên tử.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Vũ trụ được tạo thành từ nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-019",
+      "text": "Từ nguyên tử có nguồn gốc từ tiếng Hy Lạp cổ đại.",
+      "text_markdown": "Từ nguyên tử có nguồn gốc từ tiếng Hy Lạp cổ đại.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Từ nguyên tử có nguồn gốc từ tiếng Hy Lạp cổ đại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "text": "Từ atomos trong tiếng Hy Lạp có nghĩa là không thể cắt được.",
+      "text_markdown": "Từ atomos trong tiếng Hy Lạp có nghĩa là không thể cắt được.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Từ atomos trong tiếng Hy Lạp có nghĩa là không thể cắt được.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-021",
+      "text": "Các nhà triết học Hy Lạp cổ đại cho rằng nguyên tử là những mảnh vật chất nhỏ nhất có thể.",
+      "text_markdown": "Các nhà triết học Hy Lạp cổ đại cho rằng nguyên tử là những mảnh vật chất nhỏ nhất có thể.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Các nhà triết học Hy Lạp cổ đại cho rằng nguyên tử là những mảnh vật chất nhỏ nhất có thể.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-022",
+      "text": "Họ đã gần đúng.",
+      "text_markdown": "Họ đã gần đúng.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Họ đã gần đúng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-023",
+      "text": "Nguyên tử không thực sự là những hạt nhỏ nhất, nhưng chúng là những đơn vị nhỏ nhất giữ được các đặc tính hóa học của chúng.",
+      "text_markdown": "Nguyên tử không thực sự là những hạt nhỏ nhất, nhưng chúng là những đơn vị nhỏ nhất giữ được các đặc tính hóa học của chúng.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử không thực sự là những hạt nhỏ nhất, nhưng chúng là những đơn vị nhỏ nhất giữ được các đặc tính hóa học của chúng.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "text": "Nguyên tử cực kỳ bền bỉ.",
+      "text_markdown": "Nguyên tử cực kỳ bền bỉ.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử cực kỳ bền bỉ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-025",
+      "text": "Các nguyên tử trong cơ thể bạn đã hàng tỷ năm tuổi.",
+      "text_markdown": "Các nguyên tử trong cơ thể bạn đã hàng tỷ năm tuổi.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Các nguyên tử trong cơ thể bạn đã hàng tỷ năm tuổi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-026",
+      "text": "Một số nguyên tử hydro trong nước bạn uống hôm nay đã được tạo ra trong những phút đầu tiên sau Vụ Nổ Lớn.",
+      "text_markdown": "Một số nguyên tử hydro trong nước bạn uống hôm nay đã được tạo ra trong những phút đầu tiên sau Vụ Nổ Lớn.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Một số nguyên tử hydro trong nước bạn uống hôm nay đã được tạo ra trong những phút đầu tiên sau Vụ Nổ Lớn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-027",
+      "text": "Bạn được tạo thành từ những vật liệu cổ xưa.",
+      "text_markdown": "Bạn được tạo thành từ những vật liệu cổ xưa.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Bạn được tạo thành từ những vật liệu cổ xưa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "text": "Nguyên tử không bao giờ được tạo ra hay bị phá hủy trong cuộc sống bình thường.",
+      "text_markdown": "Nguyên tử không bao giờ được tạo ra hay bị phá hủy trong cuộc sống bình thường.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Nguyên tử không bao giờ được tạo ra hay bị phá hủy trong cuộc sống bình thường.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-029",
+      "text": "Chúng sắp xếp lại.",
+      "text_markdown": "Chúng sắp xếp lại.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Chúng sắp xếp lại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-030",
+      "text": "Khi gỗ cháy, các nguyên tử không biến mất.",
+      "text_markdown": "Khi gỗ cháy, các nguyên tử không biến mất.",
+      "title": "Mọi thứ đều được tạo thành từ nguyên tử",
+      "tts": {
+        "text": "Khi gỗ cháy, các nguyên tử không biến mất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "text": "Chúng sắp xếp lại thành khói, tro và khí.",
+      "text_markdown": "Chúng sắp xếp lại thành khói, tro và khí.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Chúng sắp xếp lại thành khói, tro và khí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-032",
+      "text": "Khi băng tan chảy, các nguyên tử vẫn giữ nguyên.",
+      "text_markdown": "Khi băng tan chảy, các nguyên tử vẫn giữ nguyên.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Khi băng tan chảy, các nguyên tử vẫn giữ nguyên.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-033",
+      "text": "Chỉ có sự sắp xếp của chúng thay đổi.",
+      "text_markdown": "Chỉ có sự sắp xếp của chúng thay đổi.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Chỉ có sự sắp xếp của chúng thay đổi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "text": "Hiểu biết về nguyên tử là nền tảng của hóa học.",
+      "text_markdown": "Hiểu biết về nguyên tử là nền tảng của hóa học.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Hiểu biết về nguyên tử là nền tảng của hóa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-035",
+      "text": "Hóa học là khoa học về cách các nguyên tử kết hợp, sắp xếp lại và tương tác.",
+      "text_markdown": "Hóa học là khoa học về cách các nguyên tử kết hợp, sắp xếp lại và tương tác.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Hóa học là khoa học về cách các nguyên tử kết hợp, sắp xếp lại và tương tác.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "chapter": 1,
+      "block_type": "text",
+      "id": "ch01-036",
+      "text": "Mọi thứ xảy ra trong thế giới vật chất đều quy về các nguyên tử và những gì chúng làm.",
+      "text_markdown": "Mọi thứ xảy ra trong thế giới vật chất đều quy về các nguyên tử và những gì chúng làm.",
+      "title": "Mọi Vật Đều Được Cấu Tạo Từ Nguyên Tử",
+      "tts": {
+        "text": "Mọi thứ xảy ra trong thế giới vật chất đều quy về các nguyên tử và những gì chúng làm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 2,
+      "block_type": "heading",
+      "id": "ch02-037",
+      "text": "Bên Trong Nguyên Tử",
+      "text_markdown": "Bên Trong Nguyên Tử",
+      "title": "Bên Trong Nguyên Tử"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-038",
+      "text": "Một nguyên tử có ba loại hạt bên trong.",
+      "text_markdown": "Một nguyên tử có ba loại hạt bên trong.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Một nguyên tử có ba loại hạt bên trong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-039",
+      "text": "Proton.",
+      "text_markdown": "Proton.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-040",
+      "text": "Nơtron.",
+      "text_markdown": "Nơtron.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nơtron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-041",
+      "text": "Electron.",
+      "text_markdown": "Electron.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Electron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-042",
+      "text": "Ba hạt này tạo nên mọi nguyên tử trong vũ trụ.",
+      "text_markdown": "Ba hạt này tạo nên mọi nguyên tử trong vũ trụ.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Ba hạt này tạo nên mọi nguyên tử trong vũ trụ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-043",
+      "text": "Trung tâm của nguyên tử được gọi là hạt nhân.",
+      "text_markdown": "Trung tâm của nguyên tử được gọi là hạt nhân.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Trung tâm của nguyên tử được gọi là hạt nhân.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-044",
+      "text": "Hạt nhân chứa các proton và nơtron.",
+      "text_markdown": "Hạt nhân chứa các proton và nơtron.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Hạt nhân chứa các proton và nơtron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-045",
+      "text": "Hạt nhân rất nhỏ so với toàn bộ nguyên tử.",
+      "text_markdown": "Hạt nhân rất nhỏ so với toàn bộ nguyên tử.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Hạt nhân rất nhỏ so với toàn bộ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-046",
+      "text": "Nếu nguyên tử có kích thước bằng một sân vận động bóng đá, hạt nhân sẽ có kích thước bằng một viên bi trên vạch năm mươi thước.",
+      "text_markdown": "Nếu nguyên tử có kích thước bằng một sân vận động bóng đá, hạt nhân sẽ có kích thước bằng một viên bi trên vạch năm mươi thước.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nếu nguyên tử có kích thước bằng một sân vận động bóng đá, hạt nhân sẽ có kích thước bằng một viên bi trên vạch năm mươi thước.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-047",
+      "text": "Proton mang điện tích dương.",
+      "text_markdown": "Proton mang điện tích dương.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Proton mang điện tích dương.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-048",
+      "text": "Mỗi proton có cùng một lượng điện tích dương.",
+      "text_markdown": "Mỗi proton có cùng một lượng điện tích dương.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Mỗi proton có cùng một lượng điện tích dương.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-049",
+      "text": "Số lượng proton trong một nguyên tử quyết định nguyên tử đó là nguyên tố nào.",
+      "text_markdown": "Số lượng proton trong một nguyên tử quyết định nguyên tử đó là nguyên tố nào.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Số lượng proton trong một nguyên tử quyết định nguyên tử đó là nguyên tố nào.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-050",
+      "text": "Một proton có nghĩa là hydro.",
+      "text_markdown": "Một proton có nghĩa là hydro.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Một proton có nghĩa là hydro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-051",
+      "text": "Sáu proton có nghĩa là cacbon.",
+      "text_markdown": "Sáu proton có nghĩa là cacbon.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Sáu proton có nghĩa là cacbon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 5,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-052",
+      "text": "Hai mươi sáu proton có nghĩa là sắt.",
+      "text_markdown": "Hai mươi sáu proton có nghĩa là sắt.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Hai mươi sáu proton có nghĩa là sắt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 6,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-053",
+      "text": "Số lượng proton là thông tin quan trọng nhất về một nguyên tử.",
+      "text_markdown": "Số lượng proton là thông tin quan trọng nhất về một nguyên tử.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Số lượng proton là thông tin quan trọng nhất về một nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-054",
+      "text": "Nơtron không mang điện tích.",
+      "text_markdown": "Nơtron không mang điện tích.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nơtron không mang điện tích.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-055",
+      "text": "Nơtron là trung hòa.",
+      "text_markdown": "Nơtron là trung hòa.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nơtron là trung hòa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-056",
+      "text": "Nơtron nằm trong hạt nhân bên cạnh các proton.",
+      "text_markdown": "Nơtron nằm trong hạt nhân bên cạnh các proton.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nơtron nằm trong hạt nhân bên cạnh các proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-057",
+      "text": "Nơtron giúp giữ hạt nhân lại với nhau.",
+      "text_markdown": "Nơtron giúp giữ hạt nhân lại với nhau.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nơtron giúp giữ hạt nhân lại với nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-058",
+      "text": "Nếu không có nơtron, các proton sẽ đẩy nhau ra vì chúng đều mang cùng một điện tích dương.",
+      "text_markdown": "Nếu không có nơtron, các proton sẽ đẩy nhau ra vì chúng đều mang cùng một điện tích dương.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Nếu không có nơtron, các proton sẽ đẩy nhau ra vì chúng đều mang cùng một điện tích dương.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-059",
+      "text": "Electron mang điện tích âm.",
+      "text_markdown": "Electron mang điện tích âm.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Electron mang điện tích âm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-060",
+      "text": "Electron di chuyển xung quanh hạt nhân trong một đám mây.",
+      "text_markdown": "Electron di chuyển xung quanh hạt nhân trong một đám mây.",
+      "title": "Bên Trong Nguyên Tử",
+      "tts": {
+        "text": "Electron di chuyển xung quanh hạt nhân trong một đám mây.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-061",
+      "text": "Chúng không quay quanh như các hành tinh quay quanh một mặt trời.",
+      "text_markdown": "Chúng không quay quanh như các hành tinh quay quanh một mặt trời.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Chúng không quay quanh như các hành tinh quay quanh một mặt trời.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-062",
+      "text": "Chúng tồn tại trong một vùng xác suất mờ nhạt xung quanh hạt nhân.",
+      "text_markdown": "Chúng tồn tại trong một vùng xác suất mờ nhạt xung quanh hạt nhân.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Chúng tồn tại trong một vùng xác suất mờ nhạt xung quanh hạt nhân.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-063",
+      "text": "Đám mây electron là nơi bạn có khả năng tìm thấy một electron tại bất kỳ thời điểm nào.",
+      "text_markdown": "Đám mây electron là nơi bạn có khả năng tìm thấy một electron tại bất kỳ thời điểm nào.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Đám mây electron là nơi bạn có khả năng tìm thấy một electron tại bất kỳ thời điểm nào.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-064",
+      "text": "Một electron hầu như không có khối lượng so với một proton hoặc neutron.",
+      "text_markdown": "Một electron hầu như không có khối lượng so với một proton hoặc neutron.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Một electron hầu như không có khối lượng so với một proton hoặc neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-065",
+      "text": "Một proton nặng gấp khoảng 1.836 lần một electron.",
+      "text_markdown": "Một proton nặng gấp khoảng 1.836 lần một electron.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Một proton nặng gấp khoảng một nghìn tám trăm ba mươi sáu lần một electron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-066",
+      "text": "Hầu hết khối lượng của một nguyên tử nằm trong hạt nhân.",
+      "text_markdown": "Hầu hết khối lượng của một nguyên tử nằm trong hạt nhân.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Hầu hết khối lượng của một nguyên tử nằm trong hạt nhân.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-067",
+      "text": "Trong một nguyên tử trung hòa, số electron bằng số proton.",
+      "text_markdown": "Trong một nguyên tử trung hòa, số electron bằng số proton.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Trong một nguyên tử trung hòa, số electron bằng số proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-068",
+      "text": "Các điện tích dương và điện tích âm cân bằng nhau.",
+      "text_markdown": "Các điện tích dương và điện tích âm cân bằng nhau.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Các điện tích dương và điện tích âm cân bằng nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-069",
+      "text": "Nguyên tử không có điện tích tổng thể.",
+      "text_markdown": "Nguyên tử không có điện tích tổng thể.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Nguyên tử không có điện tích tổng thể.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-070",
+      "text": "Sự cân bằng này là trạng thái mặc định của một nguyên tử.",
+      "text_markdown": "Sự cân bằng này là trạng thái mặc định của một nguyên tử.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Sự cân bằng này là trạng thái mặc định của một nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-071",
+      "text": "Hầu hết một nguyên tử là không gian trống.",
+      "text_markdown": "Hầu hết một nguyên tử là không gian trống.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Hầu hết một nguyên tử là không gian trống.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-072",
+      "text": "Hạt nhân thì đặc và nhỏ bé.",
+      "text_markdown": "Hạt nhân thì đặc và nhỏ bé.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Hạt nhân thì đặc và nhỏ bé.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-073",
+      "text": "Đám mây electron thì lớn và hầu như không có gì.",
+      "text_markdown": "Đám mây electron thì lớn và hầu như không có gì.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Đám mây electron thì lớn và hầu như không có gì.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-074",
+      "text": "Nếu bạn có thể loại bỏ tất cả không gian trống từ mọi nguyên tử trong cơ thể mình, bạn sẽ co lại thành một kích thước nhỏ hơn một hạt muối.",
+      "text_markdown": "Nếu bạn có thể loại bỏ tất cả không gian trống từ mọi nguyên tử trong cơ thể mình, bạn sẽ co lại thành một kích thước nhỏ hơn một hạt muối.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Nếu bạn có thể loại bỏ tất cả không gian trống từ mọi nguyên tử trong cơ thể mình, bạn sẽ co lại thành một kích thước nhỏ hơn một hạt muối.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-075",
+      "text": "Khối lượng của bạn sẽ không thay đổi.",
+      "text_markdown": "Khối lượng của bạn sẽ không thay đổi.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Khối lượng của bạn sẽ không thay đổi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "chapter": 2,
+      "block_type": "text",
+      "id": "ch02-076",
+      "text": "Bạn sẽ trở nên cực kỳ đặc.",
+      "text_markdown": "Bạn sẽ trở nên cực kỳ đặc.",
+      "title": "Bên trong Nguyên tử",
+      "tts": {
+        "text": "Bạn sẽ trở nên cực kỳ đặc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 3,
+      "block_type": "heading",
+      "id": "ch03-077",
+      "text": "Các Nguyên tố",
+      "text_markdown": "Các Nguyên tố",
+      "title": "Các Nguyên tố"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-078",
+      "text": "Một nguyên tố là một chất chỉ được tạo thành từ một loại nguyên tử.",
+      "text_markdown": "Một nguyên tố là một chất chỉ được tạo thành từ một loại nguyên tử.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Một nguyên tố là một chất chỉ được tạo thành từ một loại nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-079",
+      "text": "Vàng nguyên chất là một nguyên tố.",
+      "text_markdown": "Vàng nguyên chất là một nguyên tố.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Vàng nguyên chất là một nguyên tố.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-080",
+      "text": "Mỗi nguyên tử trong một thỏi vàng nguyên chất có bảy mươi chín proton.",
+      "text_markdown": "Mỗi nguyên tử trong một thỏi vàng nguyên chất có bảy mươi chín proton.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Mỗi nguyên tử trong một thỏi vàng nguyên chất có bảy mươi chín proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-081",
+      "text": "Oxy nguyên chất là một nguyên tố.",
+      "text_markdown": "Oxy nguyên chất là một nguyên tố.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Oxy nguyên chất là một nguyên tố.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-082",
+      "text": "Mỗi nguyên tử trong một bình oxy nguyên chất có tám proton.",
+      "text_markdown": "Mỗi nguyên tử trong một bình oxy nguyên chất có tám proton.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Mỗi nguyên tử trong một bình oxy nguyên chất có tám proton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-083",
+      "text": "Có khoảng chín mươi hai nguyên tố tồn tại tự nhiên trên Trái Đất.",
+      "text_markdown": "Có khoảng chín mươi hai nguyên tố tồn tại tự nhiên trên Trái Đất.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Có khoảng chín mươi hai nguyên tố tồn tại tự nhiên trên Trái Đất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-084",
+      "text": "Các nhà khoa học đã tạo ra các nguyên tố bổ sung trong phòng thí nghiệm.",
+      "text_markdown": "Các nhà khoa học đã tạo ra các nguyên tố bổ sung trong phòng thí nghiệm.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Các nhà khoa học đã tạo ra các nguyên tố bổ sung trong phòng thí nghiệm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-085",
+      "text": "Tổng số nguyên tố đã biết là hơn một trăm mười tám.",
+      "text_markdown": "Tổng số nguyên tố đã biết là hơn một trăm mười tám.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Tổng số nguyên tố đã biết là hơn một trăm mười tám.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-086",
+      "text": "Mỗi nguyên tố có một số proton duy nhất.",
+      "text_markdown": "Mỗi nguyên tố có một số proton duy nhất.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Mỗi nguyên tố có một số proton duy nhất.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-087",
+      "text": "Mỗi nguyên tố có một tên và một ký hiệu.",
+      "text_markdown": "Mỗi nguyên tố có một tên và một ký hiệu.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Mỗi nguyên tố có một tên và một ký hiệu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-088",
+      "text": "Hydro là H. Oxy là O. Carbon là C. Sắt là Fe.",
+      "text_markdown": "Hydro là H. Oxy là O. Carbon là C. Sắt là Fe.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Hydro là hát. Oxy là ô. Carbon là xê. Sắt là ép e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-089",
+      "text": "Vàng là Au.",
+      "text_markdown": "Vàng là Au.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Vàng là a u.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-090",
+      "text": "Các ký hiệu này có nguồn gốc từ tên tiếng Latin, Hy Lạp hoặc tiếng Anh.",
+      "text_markdown": "Các ký hiệu này có nguồn gốc từ tên tiếng Latin, Hy Lạp hoặc tiếng Anh.",
+      "title": "Các Nguyên tố",
+      "tts": {
+        "text": "Các ký hiệu này có nguồn gốc từ tên tiếng Latin, Hy Lạp hoặc tiếng Anh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-091",
+      "text": "Fe có nguồn gốc từ từ Latinh ferrum.",
+      "text_markdown": "Fe có nguồn gốc từ từ Latinh ferrum.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Ép e có nguồn gốc từ từ Latinh ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-092",
+      "text": "Au có nguồn gốc từ từ Latinh aurum.",
+      "text_markdown": "Au có nguồn gốc từ từ Latinh aurum.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "A u có nguồn gốc từ từ Latinh aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-093",
+      "text": "Hydro là nguyên tố đơn giản nhất.",
+      "text_markdown": "Hydro là nguyên tố đơn giản nhất.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Hydro là nguyên tố đơn giản nhất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-094",
+      "text": "Một nguyên tử hydro có một proton và một electron.",
+      "text_markdown": "Một nguyên tử hydro có một proton và một electron.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Một nguyên tử hydro có một proton và một electron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-095",
+      "text": "Hydro là nguyên tố phổ biến nhất trong vũ trụ.",
+      "text_markdown": "Hydro là nguyên tố phổ biến nhất trong vũ trụ.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Hydro là nguyên tố phổ biến nhất trong vũ trụ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-096",
+      "text": "Các ngôi sao chủ yếu được tạo thành từ hydro.",
+      "text_markdown": "Các ngôi sao chủ yếu được tạo thành từ hydro.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Các ngôi sao chủ yếu được tạo thành từ hydro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-097",
+      "text": "Carbon là nguyên tố của sự sống.",
+      "text_markdown": "Carbon là nguyên tố của sự sống.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Carbon là nguyên tố của sự sống.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-098",
+      "text": "Carbon có sáu proton.",
+      "text_markdown": "Carbon có sáu proton.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Carbon có sáu proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-099",
+      "text": "Các nguyên tử carbon có thể tạo liên kết với nhiều nguyên tử khác cùng một lúc.",
+      "text_markdown": "Các nguyên tử carbon có thể tạo liên kết với nhiều nguyên tử khác cùng một lúc.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Các nguyên tử carbon có thể tạo liên kết với nhiều nguyên tử khác cùng một lúc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-100",
+      "text": "Khả năng này khiến carbon trở thành xương sống của mọi sinh vật sống.",
+      "text_markdown": "Khả năng này khiến carbon trở thành xương sống của mọi sinh vật sống.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Khả năng này khiến carbon trở thành xương sống của mọi sinh vật sống.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-101",
+      "text": "Mọi protein, mọi sợi DNA và mọi phân tử đường trong cơ thể bạn đều chứa carbon.",
+      "text_markdown": "Mọi protein, mọi sợi DNA và mọi phân tử đường trong cơ thể bạn đều chứa carbon.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Mọi protein, mọi sợi đê en a, và mọi phân tử đường trong cơ thể bạn đều chứa carbon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-102",
+      "text": "Oxy có tám proton.",
+      "text_markdown": "Oxy có tám proton.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Oxy có tám proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-103",
+      "text": "Oxy là nguyên tố bạn hít thở.",
+      "text_markdown": "Oxy là nguyên tố bạn hít thở.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Oxy là nguyên tố bạn hít thở.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-104",
+      "text": "Phổi của bạn lấy oxy từ không khí và đưa nó vào máu.",
+      "text_markdown": "Phổi của bạn lấy oxy từ không khí và đưa nó vào máu.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Phổi của bạn lấy oxy từ không khí và đưa nó vào máu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-105",
+      "text": "Các tế bào của bạn sử dụng oxy để giải phóng năng lượng từ thức ăn.",
+      "text_markdown": "Các tế bào của bạn sử dụng oxy để giải phóng năng lượng từ thức ăn.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Các tế bào của bạn sử dụng oxy để giải phóng năng lượng từ thức ăn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-106",
+      "text": "Sắt có hai mươi sáu proton.",
+      "text_markdown": "Sắt có hai mươi sáu proton.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Sắt có hai mươi sáu proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-107",
+      "text": "Sắt là nguyên tố làm cho máu của bạn có màu đỏ.",
+      "text_markdown": "Sắt là nguyên tố làm cho máu của bạn có màu đỏ.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Sắt là nguyên tố làm cho máu của bạn có màu đỏ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-108",
+      "text": "Sắt là thành phần chính trong thép.",
+      "text_markdown": "Sắt là thành phần chính trong thép.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Sắt là thành phần chính trong thép.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-109",
+      "text": "Lõi Trái Đất chủ yếu là sắt.",
+      "text_markdown": "Lõi Trái Đất chủ yếu là sắt.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Lõi Trái Đất chủ yếu là sắt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-110",
+      "text": "Các nguyên tố nhẹ nhất là phổ biến nhất trong vũ trụ.",
+      "text_markdown": "Các nguyên tố nhẹ nhất là phổ biến nhất trong vũ trụ.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Các nguyên tố nhẹ nhất là phổ biến nhất trong vũ trụ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-111",
+      "text": "Hydro và heli cùng nhau chiếm khoảng chín mươi tám phần trăm tổng số nguyên tử trong vũ trụ.",
+      "text_markdown": "Hydro và heli cùng nhau chiếm khoảng chín mươi tám phần trăm tổng số nguyên tử trong vũ trụ.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Hydro và heli cùng nhau chiếm khoảng chín mươi tám phần trăm tổng số nguyên tử trong vũ trụ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-112",
+      "text": "Các nguyên tố nặng hơn thì hiếm hơn nhiều.",
+      "text_markdown": "Các nguyên tố nặng hơn thì hiếm hơn nhiều.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Các nguyên tố nặng hơn thì hiếm hơn nhiều.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "chapter": 3,
+      "block_type": "text",
+      "id": "ch03-113",
+      "text": "Mọi nguyên tử của mọi nguyên tố nặng đều được hình thành bên trong một ngôi sao.",
+      "text_markdown": "Mọi nguyên tử của mọi nguyên tố nặng đều được hình thành bên trong một ngôi sao.",
+      "title": "Các nguyên tố",
+      "tts": {
+        "text": "Mọi nguyên tử của mọi nguyên tố nặng đều được hình thành bên trong một ngôi sao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 4,
+      "block_type": "heading",
+      "id": "ch04-114",
+      "text": "Bảng tuần hoàn",
+      "text_markdown": "Bảng tuần hoàn",
+      "title": "Bảng tuần hoàn"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-115",
+      "text": "Bảng tuần hoàn là một biểu đồ sắp xếp mọi nguyên tố đã biết.",
+      "text_markdown": "Bảng tuần hoàn là một biểu đồ sắp xếp mọi nguyên tố đã biết.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Bảng tuần hoàn là một biểu đồ sắp xếp mọi nguyên tố đã biết.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-116",
+      "text": "Bảng sắp xếp các nguyên tố theo số lượng proton của chúng, từ nhỏ nhất đến lớn nhất.",
+      "text_markdown": "Bảng sắp xếp các nguyên tố theo số lượng proton của chúng, từ nhỏ nhất đến lớn nhất.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Bảng sắp xếp các nguyên tố theo số lượng proton của chúng, từ nhỏ nhất đến lớn nhất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-117",
+      "text": "Hydro đứng đầu với một proton.",
+      "text_markdown": "Hydro đứng đầu với một proton.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Hydro đứng đầu với một proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-118",
+      "text": "Heli đứng thứ hai với hai proton.",
+      "text_markdown": "Heli đứng thứ hai với hai proton.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Heli đứng thứ hai với hai proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-119",
+      "text": "Bảng tiếp tục cho đến oganesson với một trăm mười tám proton.",
+      "text_markdown": "Bảng tiếp tục cho đến oganesson với một trăm mười tám proton.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Bảng tiếp tục cho đến oganesson với một trăm mười tám proton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-120",
+      "text": "Bảng tuần hoàn có các hàng và cột.",
+      "text_markdown": "Bảng tuần hoàn có các hàng và cột.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Bảng tuần hoàn có các hàng và cột.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-121",
+      "text": "Các hàng được gọi là chu kỳ.",
+      "text_markdown": "Các hàng được gọi là chu kỳ.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các hàng được gọi là chu kỳ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-122",
+      "text": "Các cột được gọi là nhóm.",
+      "text_markdown": "Các cột được gọi là nhóm.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các cột được gọi là nhóm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-123",
+      "text": "Các nguyên tố trong cùng một nhóm có chung những tính chất tương tự.",
+      "text_markdown": "Các nguyên tố trong cùng một nhóm có chung những tính chất tương tự.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các nguyên tố trong cùng một nhóm có chung những tính chất tương tự.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-124",
+      "text": "Đây là lý do tại sao bảng được gọi là tuần hoàn.",
+      "text_markdown": "Đây là lý do tại sao bảng được gọi là tuần hoàn.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Đây là lý do tại sao bảng được gọi là tuần hoàn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-125",
+      "text": "Các tính chất lặp lại theo một quy luật nhất định.",
+      "text_markdown": "Các tính chất lặp lại theo một quy luật nhất định.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các tính chất lặp lại theo một quy luật nhất định.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-126",
+      "text": "Các nguyên tố ở phía bên trái của bảng là kim loại.",
+      "text_markdown": "Các nguyên tố ở phía bên trái của bảng là kim loại.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các nguyên tố ở phía bên trái của bảng là kim loại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-127",
+      "text": "Hầu hết các nguyên tố là kim loại.",
+      "text_markdown": "Hầu hết các nguyên tố là kim loại.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Hầu hết các nguyên tố là kim loại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-128",
+      "text": "Kim loại có tính ánh kim.",
+      "text_markdown": "Kim loại có tính ánh kim.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Kim loại có tính ánh kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-129",
+      "text": "Kim loại dẫn điện.",
+      "text_markdown": "Kim loại dẫn điện.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Kim loại dẫn điện.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-130",
+      "text": "Kim loại dẫn nhiệt.",
+      "text_markdown": "Kim loại dẫn nhiệt.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Kim loại dẫn nhiệt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-131",
+      "text": "Sắt, đồng, vàng và nhôm đều là kim loại.",
+      "text_markdown": "Sắt, đồng, vàng và nhôm đều là kim loại.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Sắt, đồng, vàng và nhôm đều là kim loại.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-132",
+      "text": "Các nguyên tố ở phía bên phải của bảng là phi kim.",
+      "text_markdown": "Các nguyên tố ở phía bên phải của bảng là phi kim.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các nguyên tố ở phía bên phải của bảng là phi kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-133",
+      "text": "Phi kim bao gồm oxy, nitơ, cacbon và lưu huỳnh.",
+      "text_markdown": "Phi kim bao gồm oxy, nitơ, cacbon và lưu huỳnh.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Phi kim bao gồm oxy, nitơ, cacbon và lưu huỳnh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-134",
+      "text": "Phi kim không dẫn điện tốt.",
+      "text_markdown": "Phi kim không dẫn điện tốt.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Phi kim không dẫn điện tốt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-135",
+      "text": "Phi kim là những nguyên tố tạo nên không khí, nước và các sinh vật sống.",
+      "text_markdown": "Phi kim là những nguyên tố tạo nên không khí, nước và các sinh vật sống.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Phi kim là những nguyên tố tạo nên không khí, nước và các sinh vật sống.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-136",
+      "text": "Một vài nguyên tố nằm ở ranh giới giữa kim loại và phi kim.",
+      "text_markdown": "Một vài nguyên tố nằm ở ranh giới giữa kim loại và phi kim.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Một vài nguyên tố nằm ở ranh giới giữa kim loại và phi kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-137",
+      "text": "Những nguyên tố này được gọi là á kim.",
+      "text_markdown": "Những nguyên tố này được gọi là á kim.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Những nguyên tố này được gọi là á kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-138",
+      "text": "Silic là một á kim.",
+      "text_markdown": "Silic là một á kim.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Silic là một á kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-139",
+      "text": "Silic dẫn điện một chút, nhưng không tốt bằng kim loại.",
+      "text_markdown": "Silic dẫn điện một chút, nhưng không tốt bằng kim loại.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Silic dẫn điện một chút, nhưng không tốt bằng kim loại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-140",
+      "text": "Tính chất này làm cho silic hữu ích trong các chip máy tính.",
+      "text_markdown": "Tính chất này làm cho silic hữu ích trong các chip máy tính.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Tính chất này làm cho silic hữu ích trong các chip máy tính.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-141",
+      "text": "Các khí hiếm nằm ở cột cuối cùng bên phải.",
+      "text_markdown": "Các khí hiếm nằm ở cột cuối cùng bên phải.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các khí hiếm nằm ở cột cuối cùng bên phải.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-142",
+      "text": "Heli, neon, agon, krypton, xenon và radon là các khí hiếm.",
+      "text_markdown": "Heli, neon, agon, krypton, xenon và radon là các khí hiếm.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Heli, neon, agon, krypton, xenon và radon là các khí hiếm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-143",
+      "text": "Khí hiếm hầu như không bao giờ phản ứng với các nguyên tố khác.",
+      "text_markdown": "Khí hiếm hầu như không bao giờ phản ứng với các nguyên tố khác.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Khí hiếm hầu như không bao giờ phản ứng với các nguyên tố khác.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-144",
+      "text": "Cấu hình electron của chúng đã ổn định.",
+      "text_markdown": "Cấu hình electron của chúng đã ổn định.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Cấu hình electron của chúng đã ổn định.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-145",
+      "text": "Chúng không cần tạo liên kết.",
+      "text_markdown": "Chúng không cần tạo liên kết.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Chúng không cần tạo liên kết.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-146",
+      "text": "Một nhà khoa học người Nga tên là Dmitri Mendeleev đã tạo ra bảng tuần hoàn đầu tiên vào năm 1869.",
+      "text_markdown": "Một nhà khoa học người Nga tên là Dmitri Mendeleev đã tạo ra bảng tuần hoàn đầu tiên vào năm 1869.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Một nhà khoa học người Nga tên là Dmitri Mendeleev đã tạo ra bảng tuần hoàn đầu tiên vào năm một nghìn tám trăm sáu mươi chín.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-147",
+      "text": "Mendeleev đã sắp xếp các nguyên tố theo tính chất của chúng và nhận thấy quy luật lặp lại.",
+      "text_markdown": "Mendeleev đã sắp xếp các nguyên tố theo tính chất của chúng và nhận thấy quy luật lặp lại.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Mendeleev đã sắp xếp các nguyên tố theo tính chất của chúng và nhận thấy quy luật lặp lại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-148",
+      "text": "Ông đã để lại những khoảng trống trong bảng của mình, nơi ông dự đoán sẽ có các nguyên tố chưa biết.",
+      "text_markdown": "Ông đã để lại những khoảng trống trong bảng của mình, nơi ông dự đoán sẽ có các nguyên tố chưa biết.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Ông đã để lại những khoảng trống trong bảng của mình, nơi ông dự đoán sẽ có các nguyên tố chưa biết.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-149",
+      "text": "Các nhà khoa học sau đó đã khám phá ra những nguyên tố đó.",
+      "text_markdown": "Các nhà khoa học sau đó đã khám phá ra những nguyên tố đó.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Các nhà khoa học sau đó đã khám phá ra những nguyên tố đó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-150",
+      "text": "Mọi dự đoán đều chính xác.",
+      "text_markdown": "Mọi dự đoán đều chính xác.",
+      "title": "Bảng tuần hoàn",
+      "tts": {
+        "text": "Mọi dự đoán đều chính xác.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-151",
+      "text": "Bảng tuần hoàn là một trong những công cụ mạnh mẽ nhất trong khoa học.",
+      "text_markdown": "Bảng tuần hoàn là một trong những công cụ mạnh mẽ nhất trong khoa học.",
+      "title": "Bảng Tuần Hoàn",
+      "tts": {
+        "text": "Bảng tuần hoàn là một trong những công cụ mạnh mẽ nhất trong khoa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "chapter": 4,
+      "block_type": "text",
+      "id": "ch04-152",
+      "text": "Nếu bạn biết một nguyên tố nằm ở đâu trên bảng, bạn có thể dự đoán cách nó sẽ hoạt động.",
+      "text_markdown": "Nếu bạn biết một nguyên tố nằm ở đâu trên bảng, bạn có thể dự đoán cách nó sẽ hoạt động.",
+      "title": "Bảng Tuần Hoàn",
+      "tts": {
+        "text": "Nếu bạn biết một nguyên tố nằm ở đâu trên bảng, bạn có thể dự đoán cách nó sẽ hoạt động.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 5,
+      "block_type": "heading",
+      "id": "ch05-153",
+      "text": "Nguyên tử Liên kết như thế nào",
+      "text_markdown": "Nguyên tử Liên kết như thế nào",
+      "title": "Nguyên tử Liên kết như thế nào"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-154",
+      "text": "Nguyên tử hiếm khi tồn tại một mình.",
+      "text_markdown": "Nguyên tử hiếm khi tồn tại một mình.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Nguyên tử hiếm khi tồn tại một mình.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-155",
+      "text": "Hầu hết các nguyên tử liên kết với các nguyên tử khác để tạo thành phân tử.",
+      "text_markdown": "Hầu hết các nguyên tử liên kết với các nguyên tử khác để tạo thành phân tử.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Hầu hết các nguyên tử liên kết với các nguyên tử khác để tạo thành phân tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-156",
+      "text": "Phân tử là một nhóm các nguyên tử được giữ với nhau bằng liên kết hóa học.",
+      "text_markdown": "Phân tử là một nhóm các nguyên tử được giữ với nhau bằng liên kết hóa học.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Phân tử là một nhóm các nguyên tử được giữ với nhau bằng liên kết hóa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-157",
+      "text": "Nước là một phân tử.",
+      "text_markdown": "Nước là một phân tử.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Nước là một phân tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-158",
+      "text": "Khí oxy là một phân tử.",
+      "text_markdown": "Khí oxy là một phân tử.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Khí oxy là một phân tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-159",
+      "text": "Đường là một phân tử.",
+      "text_markdown": "Đường là một phân tử.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Đường là một phân tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-160",
+      "text": "Các nguyên tử liên kết với nhau là do các electron của chúng.",
+      "text_markdown": "Các nguyên tử liên kết với nhau là do các electron của chúng.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Các nguyên tử liên kết với nhau là do các electron của chúng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-161",
+      "text": "Các electron ở lớp vỏ ngoài cùng của một nguyên tử quyết định cách nguyên tử đó tương tác với các nguyên tử khác.",
+      "text_markdown": "Các electron ở lớp vỏ ngoài cùng của một nguyên tử quyết định cách nguyên tử đó tương tác với các nguyên tử khác.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Các electron ở lớp vỏ ngoài cùng của một nguyên tử quyết định cách nguyên tử đó tương tác với các nguyên tử khác.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-162",
+      "text": "Các electron ngoài này được gọi là electron hóa trị.",
+      "text_markdown": "Các electron ngoài này được gọi là electron hóa trị.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Các electron ngoài này được gọi là electron hóa trị.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-163",
+      "text": "Một nguyên tử có lớp vỏ ngoài cùng đầy đủ thì ổn định.",
+      "text_markdown": "Một nguyên tử có lớp vỏ ngoài cùng đầy đủ thì ổn định.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Một nguyên tử có lớp vỏ ngoài cùng đầy đủ thì ổn định.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-164",
+      "text": "Một nguyên tử không có lớp vỏ ngoài cùng đầy đủ sẽ tìm cách lấp đầy nó.",
+      "text_markdown": "Một nguyên tử không có lớp vỏ ngoài cùng đầy đủ sẽ tìm cách lấp đầy nó.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Một nguyên tử không có lớp vỏ ngoài cùng đầy đủ sẽ tìm cách lấp đầy nó.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-165",
+      "text": "Có hai loại liên kết hóa học chính.",
+      "text_markdown": "Có hai loại liên kết hóa học chính.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Có hai loại liên kết hóa học chính.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-166",
+      "text": "Liên kết cộng hóa trị và liên kết ion.",
+      "text_markdown": "Liên kết cộng hóa trị và liên kết ion.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Liên kết cộng hóa trị và liên kết ion.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-167",
+      "text": "Trong liên kết cộng hóa trị, hai nguyên tử chia sẻ electron.",
+      "text_markdown": "Trong liên kết cộng hóa trị, hai nguyên tử chia sẻ electron.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Trong liên kết cộng hóa trị, hai nguyên tử chia sẻ electron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-168",
+      "text": "Cả hai nguyên tử đều đóng góp electron vào một cặp chung.",
+      "text_markdown": "Cả hai nguyên tử đều đóng góp electron vào một cặp chung.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Cả hai nguyên tử đều đóng góp electron vào một cặp chung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-169",
+      "text": "Các electron được chia sẻ quay quanh cả hai hạt nhân.",
+      "text_markdown": "Các electron được chia sẻ quay quanh cả hai hạt nhân.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Các electron được chia sẻ quay quanh cả hai hạt nhân.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-170",
+      "text": "Sự chia sẻ này giữ các nguyên tử lại với nhau.",
+      "text_markdown": "Sự chia sẻ này giữ các nguyên tử lại với nhau.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Sự chia sẻ này giữ các nguyên tử lại với nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-171",
+      "text": "Nước được giữ với nhau bằng liên kết cộng hóa trị.",
+      "text_markdown": "Nước được giữ với nhau bằng liên kết cộng hóa trị.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Nước được giữ với nhau bằng liên kết cộng hóa trị.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-172",
+      "text": "Mỗi nguyên tử hydro chia sẻ một electron với nguyên tử oxy.",
+      "text_markdown": "Mỗi nguyên tử hydro chia sẻ một electron với nguyên tử oxy.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Mỗi nguyên tử hydro chia sẻ một electron với nguyên tử oxy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-173",
+      "text": "Trong liên kết ion, một nguyên tử cho electron cho một nguyên tử khác.",
+      "text_markdown": "Trong liên kết ion, một nguyên tử cho electron cho một nguyên tử khác.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Trong liên kết ion, một nguyên tử cho electron cho một nguyên tử khác.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-174",
+      "text": "Nguyên tử mất electron trở nên tích điện dương.",
+      "text_markdown": "Nguyên tử mất electron trở nên tích điện dương.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Nguyên tử mất electron trở nên tích điện dương.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-175",
+      "text": "Nguyên tử nhận electron trở nên tích điện âm.",
+      "text_markdown": "Nguyên tử nhận electron trở nên tích điện âm.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Nguyên tử nhận electron trở nên tích điện âm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-176",
+      "text": "Các điện tích trái dấu hút nhau.",
+      "text_markdown": "Các điện tích trái dấu hút nhau.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Các điện tích trái dấu hút nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-177",
+      "text": "Lực hút này giữ hai nguyên tử lại với nhau.",
+      "text_markdown": "Lực hút này giữ hai nguyên tử lại với nhau.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Lực hút này giữ hai nguyên tử lại với nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-178",
+      "text": "Muối ăn được giữ với nhau bằng liên kết ion.",
+      "text_markdown": "Muối ăn được giữ với nhau bằng liên kết ion.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Muối ăn được giữ với nhau bằng liên kết ion.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-179",
+      "text": "Natri cho một electron cho clo.",
+      "text_markdown": "Natri cho một electron cho clo.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Natri cho một electron cho clo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-180",
+      "text": "Một phân tử nước chứa hai nguyên tử hydro và một nguyên tử oxy.",
+      "text_markdown": "Một phân tử nước chứa hai nguyên tử hydro và một nguyên tử oxy.",
+      "title": "Nguyên tử Liên kết như thế nào",
+      "tts": {
+        "text": "Một phân tử nước chứa hai nguyên tử hydro và một nguyên tử oxy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-181",
+      "text": "Các nhà khoa học viết công thức này là H2O.",
+      "text_markdown": "Các nhà khoa học viết công thức này là H2O.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Các nhà khoa học viết công thức này là H hai O.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-182",
+      "text": "Chữ H là viết tắt của hiđrô.",
+      "text_markdown": "Chữ H là viết tắt của hiđrô.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Chữ Hờ là viết tắt của hiđrô.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-183",
+      "text": "Chữ O là viết tắt của ôxy.",
+      "text_markdown": "Chữ O là viết tắt của ôxy.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Chữ O là viết tắt của ôxy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-184",
+      "text": "Số 2 có nghĩa là có hai nguyên tử hiđrô.",
+      "text_markdown": "Số 2 có nghĩa là có hai nguyên tử hiđrô.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Số hai có nghĩa là có hai nguyên tử hiđrô.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-185",
+      "text": "Một phân tử cacbon điôxít chứa một nguyên tử cacbon và hai nguyên tử ôxy.",
+      "text_markdown": "Một phân tử cacbon điôxít chứa một nguyên tử cacbon và hai nguyên tử ôxy.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Một phân tử cacbon điôxít chứa một nguyên tử cacbon và hai nguyên tử ôxy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-186",
+      "text": "Các nhà khoa học viết công thức này là CO2.",
+      "text_markdown": "Các nhà khoa học viết công thức này là CO2.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Các nhà khoa học viết công thức này là C O hai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-187",
+      "text": "Thực vật hấp thụ cacbon điôxít từ không khí và sử dụng nó để tạo ra các phân tử đường.",
+      "text_markdown": "Thực vật hấp thụ cacbon điôxít từ không khí và sử dụng nó để tạo ra các phân tử đường.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Thực vật hấp thụ cacbon điôxít từ không khí và sử dụng nó để tạo ra các phân tử đường.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-188",
+      "text": "Các liên kết giữa các nguyên tử lưu trữ năng lượng.",
+      "text_markdown": "Các liên kết giữa các nguyên tử lưu trữ năng lượng.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Các liên kết giữa các nguyên tử lưu trữ năng lượng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-189",
+      "text": "Khi các liên kết bị phá vỡ, năng lượng được giải phóng.",
+      "text_markdown": "Khi các liên kết bị phá vỡ, năng lượng được giải phóng.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Khi các liên kết bị phá vỡ, năng lượng được giải phóng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-190",
+      "text": "Khi các liên kết hình thành, năng lượng được hấp thụ.",
+      "text_markdown": "Khi các liên kết hình thành, năng lượng được hấp thụ.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Khi các liên kết hình thành, năng lượng được hấp thụ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "chapter": 5,
+      "block_type": "text",
+      "id": "ch05-191",
+      "text": "Mọi phản ứng hóa học trong vũ trụ đều liên quan đến việc phá vỡ các liên kết cũ và hình thành các liên kết mới.",
+      "text_markdown": "Mọi phản ứng hóa học trong vũ trụ đều liên quan đến việc phá vỡ các liên kết cũ và hình thành các liên kết mới.",
+      "title": "Nguyên tử liên kết như thế nào",
+      "tts": {
+        "text": "Mọi phản ứng hóa học trong vũ trụ đều liên quan đến việc phá vỡ các liên kết cũ và hình thành các liên kết mới.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 6,
+      "block_type": "heading",
+      "id": "ch06-192",
+      "text": "Nguyên tử chuyển động",
+      "text_markdown": "Nguyên tử chuyển động",
+      "title": "Nguyên tử chuyển động"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-193",
+      "text": "Các nguyên tử luôn chuyển động.",
+      "text_markdown": "Các nguyên tử luôn chuyển động.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Các nguyên tử luôn chuyển động.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-194",
+      "text": "Chúng không bao giờ ngừng lại.",
+      "text_markdown": "Chúng không bao giờ ngừng lại.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng không bao giờ ngừng lại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-195",
+      "text": "Ở bất kỳ nhiệt độ nào trên độ không tuyệt đối, các nguyên tử đều rung động, quay và di chuyển trong không gian.",
+      "text_markdown": "Ở bất kỳ nhiệt độ nào trên độ không tuyệt đối, các nguyên tử đều rung động, quay và di chuyển trong không gian.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Ở bất kỳ nhiệt độ nào trên độ không tuyệt đối, các nguyên tử đều rung động, quay và di chuyển trong không gian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-196",
+      "text": "Chuyển động này là thứ chúng ta cảm nhận được dưới dạng nhiệt.",
+      "text_markdown": "Chuyển động này là thứ chúng ta cảm nhận được dưới dạng nhiệt.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chuyển động này là thứ chúng ta cảm nhận được dưới dạng nhiệt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-197",
+      "text": "Trong chất rắn, các nguyên tử rung động tại chỗ.",
+      "text_markdown": "Trong chất rắn, các nguyên tử rung động tại chỗ.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Trong chất rắn, các nguyên tử rung động tại chỗ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-198",
+      "text": "Chúng bị khóa trong một cấu trúc cố định.",
+      "text_markdown": "Chúng bị khóa trong một cấu trúc cố định.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng bị khóa trong một cấu trúc cố định.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-199",
+      "text": "Chúng rung lắc qua lại, nhưng không rời khỏi vị trí của mình.",
+      "text_markdown": "Chúng rung lắc qua lại, nhưng không rời khỏi vị trí của mình.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng rung lắc qua lại, nhưng không rời khỏi vị trí của mình.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-200",
+      "text": "Đây là lý do tại sao chất rắn giữ được hình dạng của chúng.",
+      "text_markdown": "Đây là lý do tại sao chất rắn giữ được hình dạng của chúng.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Đây là lý do tại sao chất rắn giữ được hình dạng của chúng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-201",
+      "text": "Các nguyên tử trong một khối băng rung động, nhưng chúng vẫn giữ nguyên trong một cấu trúc tinh thể cứng nhắc.",
+      "text_markdown": "Các nguyên tử trong một khối băng rung động, nhưng chúng vẫn giữ nguyên trong một cấu trúc tinh thể cứng nhắc.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Các nguyên tử trong một khối băng rung động, nhưng chúng vẫn giữ nguyên trong một cấu trúc tinh thể cứng nhắc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-202",
+      "text": "Trong chất lỏng, các nguyên tử di chuyển tự do hơn.",
+      "text_markdown": "Trong chất lỏng, các nguyên tử di chuyển tự do hơn.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Trong chất lỏng, các nguyên tử di chuyển tự do hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-203",
+      "text": "Chúng trượt qua nhau.",
+      "text_markdown": "Chúng trượt qua nhau.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng trượt qua nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-204",
+      "text": "Chúng ở gần nhau, nhưng không bị khóa chặt tại một vị trí.",
+      "text_markdown": "Chúng ở gần nhau, nhưng không bị khóa chặt tại một vị trí.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng ở gần nhau, nhưng không bị khóa chặt tại một vị trí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-205",
+      "text": "Đây là lý do tại sao chất lỏng có thể chảy.",
+      "text_markdown": "Đây là lý do tại sao chất lỏng có thể chảy.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Đây là lý do tại sao chất lỏng có thể chảy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-206",
+      "text": "Các nguyên tử trong một cốc nước liên tục di chuyển và sắp xếp lại, nhưng chúng vẫn ở gần nhau.",
+      "text_markdown": "Các nguyên tử trong một cốc nước liên tục di chuyển và sắp xếp lại, nhưng chúng vẫn ở gần nhau.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Các nguyên tử trong một cốc nước liên tục di chuyển và sắp xếp lại, nhưng chúng vẫn ở gần nhau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-207",
+      "text": "Trong chất khí, các nguyên tử di chuyển nhanh và phân tán ra xa.",
+      "text_markdown": "Trong chất khí, các nguyên tử di chuyển nhanh và phân tán ra xa.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Trong chất khí, các nguyên tử di chuyển nhanh và phân tán ra xa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-208",
+      "text": "Chúng bay theo đường thẳng cho đến khi va chạm với một nguyên tử khác hoặc một bức tường.",
+      "text_markdown": "Chúng bay theo đường thẳng cho đến khi va chạm với một nguyên tử khác hoặc một bức tường.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng bay theo đường thẳng cho đến khi va chạm với một nguyên tử khác hoặc một bức tường.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-209",
+      "text": "Chúng bật ra khỏi nhau và thay đổi hướng.",
+      "text_markdown": "Chúng bật ra khỏi nhau và thay đổi hướng.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Chúng bật ra khỏi nhau và thay đổi hướng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-210",
+      "text": "Đây là lý do tại sao chất khí lấp đầy bất kỳ vật chứa nào bạn đặt nó vào.",
+      "text_markdown": "Đây là lý do tại sao chất khí lấp đầy bất kỳ vật chứa nào bạn đặt nó vào.",
+      "title": "Nguyên tử chuyển động",
+      "tts": {
+        "text": "Đây là lý do tại sao chất khí lấp đầy bất kỳ vật chứa nào bạn đặt nó vào.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-211",
+      "text": "Các nguyên tử trong một căn phòng đầy không khí đang di chuyển với tốc độ hàng trăm mét mỗi giây theo mọi hướng.",
+      "text_markdown": "Các nguyên tử trong một căn phòng đầy không khí đang di chuyển với tốc độ hàng trăm mét mỗi giây theo mọi hướng.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Các nguyên tử trong một căn phòng đầy không khí đang di chuyển với tốc độ hàng trăm mét mỗi giây theo mọi hướng.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-212",
+      "text": "Nhiệt độ là thước đo tốc độ chuyển động của các nguyên tử.",
+      "text_markdown": "Nhiệt độ là thước đo tốc độ chuyển động của các nguyên tử.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Nhiệt độ là thước đo tốc độ chuyển động của các nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-213",
+      "text": "Nóng có nghĩa là các nguyên tử đang chuyển động nhanh.",
+      "text_markdown": "Nóng có nghĩa là các nguyên tử đang chuyển động nhanh.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Nóng có nghĩa là các nguyên tử đang chuyển động nhanh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-214",
+      "text": "Lạnh có nghĩa là các nguyên tử đang chuyển động chậm.",
+      "text_markdown": "Lạnh có nghĩa là các nguyên tử đang chuyển động chậm.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Lạnh có nghĩa là các nguyên tử đang chuyển động chậm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-215",
+      "text": "Khi bạn đun nước trên bếp, bạn đang làm cho các phân tử nước chuyển động nhanh hơn.",
+      "text_markdown": "Khi bạn đun nước trên bếp, bạn đang làm cho các phân tử nước chuyển động nhanh hơn.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Khi bạn đun nước trên bếp, bạn đang làm cho các phân tử nước chuyển động nhanh hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-216",
+      "text": "Khi các phân tử chuyển động đủ nhanh, chúng thoát khỏi chất lỏng và trở thành hơi nước.",
+      "text_markdown": "Khi các phân tử chuyển động đủ nhanh, chúng thoát khỏi chất lỏng và trở thành hơi nước.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Khi các phân tử chuyển động đủ nhanh, chúng thoát khỏi chất lỏng và trở thành hơi nước.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-217",
+      "text": "Độ không tuyệt đối là nhiệt độ lạnh nhất có thể.",
+      "text_markdown": "Độ không tuyệt đối là nhiệt độ lạnh nhất có thể.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Độ không tuyệt đối là nhiệt độ lạnh nhất có thể.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-218",
+      "text": "Nó vào khoảng âm 273 độ C.",
+      "text_markdown": "Nó vào khoảng âm 273 độ C.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Nó vào khoảng âm hai trăm bảy mươi ba độ Celsius.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-219",
+      "text": "Ở độ không tuyệt đối, các nguyên tử có năng lượng tối thiểu có thể.",
+      "text_markdown": "Ở độ không tuyệt đối, các nguyên tử có năng lượng tối thiểu có thể.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Ở độ không tuyệt đối, các nguyên tử có năng lượng tối thiểu có thể.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-220",
+      "text": "Không có gì có thể lạnh hơn độ không tuyệt đối.",
+      "text_markdown": "Không có gì có thể lạnh hơn độ không tuyệt đối.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Không có gì có thể lạnh hơn độ không tuyệt đối.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 4,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-221",
+      "text": "Các nhà khoa học đã tiến rất gần đến độ không tuyệt đối trong phòng thí nghiệm, nhưng chưa ai từng đạt được nó một cách chính xác.",
+      "text_markdown": "Các nhà khoa học đã tiến rất gần đến độ không tuyệt đối trong phòng thí nghiệm, nhưng chưa ai từng đạt được nó một cách chính xác.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Các nhà khoa học đã tiến rất gần đến độ không tuyệt đối trong phòng thí nghiệm, nhưng chưa ai từng đạt được nó một cách chính xác.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-222",
+      "text": "Áp suất được gây ra bởi các nguyên tử va chạm vào bề mặt.",
+      "text_markdown": "Áp suất được gây ra bởi các nguyên tử va chạm vào bề mặt.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Áp suất được gây ra bởi các nguyên tử va chạm vào bề mặt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-223",
+      "text": "Không khí trong lốp xe đẩy ra ngoài vì các phân tử không khí liên tục va đập vào thành bên trong của lốp xe.",
+      "text_markdown": "Không khí trong lốp xe đẩy ra ngoài vì các phân tử không khí liên tục va đập vào thành bên trong của lốp xe.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Không khí trong lốp xe đẩy ra ngoài vì các phân tử không khí liên tục va đập vào thành bên trong của lốp xe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-224",
+      "text": "Nhiều phân tử hơn hoặc phân tử chuyển động nhanh hơn có nghĩa là áp suất lớn hơn.",
+      "text_markdown": "Nhiều phân tử hơn hoặc phân tử chuyển động nhanh hơn có nghĩa là áp suất lớn hơn.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Nhiều phân tử hơn hoặc phân tử chuyển động nhanh hơn có nghĩa là áp suất lớn hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "chapter": 6,
+      "block_type": "text",
+      "id": "ch06-225",
+      "text": "Đây là lý do tại sao lốp xe cảm thấy cứng hơn khi không khí nóng.",
+      "text_markdown": "Đây là lý do tại sao lốp xe cảm thấy cứng hơn khi không khí nóng.",
+      "title": "Nguyên Tử Chuyển Động",
+      "tts": {
+        "text": "Đây là lý do tại sao lốp xe cảm thấy cứng hơn khi không khí nóng.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 7,
+      "block_type": "heading",
+      "id": "ch07-226",
+      "text": "Nguyên Tử Đến Từ Đâu",
+      "text_markdown": "Nguyên Tử Đến Từ Đâu",
+      "title": "Nguyên Tử Đến Từ Đâu"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-227",
+      "text": "Hydro và heli trong vũ trụ được tạo ra trong vài phút đầu tiên sau Vụ Nổ Lớn.",
+      "text_markdown": "Hydro và heli trong vũ trụ được tạo ra trong vài phút đầu tiên sau Vụ Nổ Lớn.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Hydro và heli trong vũ trụ được tạo ra trong vài phút đầu tiên sau Vụ Nổ Lớn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-228",
+      "text": "Vũ trụ bắt đầu từ một điểm cực nóng, đậm đặc khoảng 13,8 tỷ năm trước.",
+      "text_markdown": "Vũ trụ bắt đầu từ một điểm cực nóng, đậm đặc khoảng 13,8 tỷ năm trước.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Vũ trụ bắt đầu từ một điểm cực nóng, đậm đặc khoảng mười ba phẩy tám tỷ năm trước.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-229",
+      "text": "Khi nó giãn nở và nguội đi, các proton và neutron đã hình thành.",
+      "text_markdown": "Khi nó giãn nở và nguội đi, các proton và neutron đã hình thành.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Khi nó giãn nở và nguội đi, các proton và neutron đã hình thành.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-230",
+      "text": "Các proton và neutron đó kết hợp lại thành các hạt nhân đơn giản nhất.",
+      "text_markdown": "Các proton và neutron đó kết hợp lại thành các hạt nhân đơn giản nhất.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Các proton và neutron đó kết hợp lại thành các hạt nhân đơn giản nhất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-231",
+      "text": "Hydro và heli là những nguyên tố đầu tiên.",
+      "text_markdown": "Hydro và heli là những nguyên tố đầu tiên.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Hydro và heli là những nguyên tố đầu tiên.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-232",
+      "text": "Trong hàng triệu năm, vũ trụ là một đám mây khí hydro và heli.",
+      "text_markdown": "Trong hàng triệu năm, vũ trụ là một đám mây khí hydro và heli.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Trong hàng triệu năm, vũ trụ là một đám mây khí hydro và heli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-233",
+      "text": "Sau đó, trọng lực kéo khí lại với nhau thành các cụm.",
+      "text_markdown": "Sau đó, trọng lực kéo khí lại với nhau thành các cụm.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Sau đó, trọng lực kéo khí lại với nhau thành các cụm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-234",
+      "text": "Các cụm trở nên đặc hơn và nóng hơn.",
+      "text_markdown": "Các cụm trở nên đặc hơn và nóng hơn.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Các cụm trở nên đặc hơn và nóng hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-235",
+      "text": "Khi trung tâm của một cụm đạt khoảng mười triệu độ, phản ứng tổng hợp hạt nhân đã bùng cháy.",
+      "text_markdown": "Khi trung tâm của một cụm đạt khoảng mười triệu độ, phản ứng tổng hợp hạt nhân đã bùng cháy.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Khi trung tâm của một cụm đạt khoảng mười triệu độ, phản ứng tổng hợp hạt nhân đã bùng cháy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-236",
+      "text": "Một ngôi sao đã ra đời.",
+      "text_markdown": "Một ngôi sao đã ra đời.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Một ngôi sao đã ra đời.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-237",
+      "text": "Các ngôi sao là những nhà máy nguyên tử.",
+      "text_markdown": "Các ngôi sao là những nhà máy nguyên tử.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Các ngôi sao là những nhà máy nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-238",
+      "text": "Bên trong một ngôi sao, các nguyên tử hydro hợp nhất với nhau để tạo thành heli.",
+      "text_markdown": "Bên trong một ngôi sao, các nguyên tử hydro hợp nhất với nhau để tạo thành heli.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Bên trong một ngôi sao, các nguyên tử hydro hợp nhất với nhau để tạo thành heli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-239",
+      "text": "Sự hợp nhất này giải phóng năng lượng khổng lồ.",
+      "text_markdown": "Sự hợp nhất này giải phóng năng lượng khổng lồ.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Sự hợp nhất này giải phóng năng lượng khổng lồ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-240",
+      "text": "Năng lượng là thứ khiến một ngôi sao tỏa sáng.",
+      "text_markdown": "Năng lượng là thứ khiến một ngôi sao tỏa sáng.",
+      "title": "Nguyên Tử Đến Từ Đâu",
+      "tts": {
+        "text": "Năng lượng là thứ khiến một ngôi sao tỏa sáng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-241",
+      "text": "Mặt trời của chúng ta hợp nhất khoảng sáu trăm triệu tấn hydro thành heli mỗi giây.",
+      "text_markdown": "Mặt trời của chúng ta hợp nhất khoảng sáu trăm triệu tấn hydro thành heli mỗi giây.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Mặt trời của chúng ta hợp nhất khoảng sáu trăm triệu tấn hydro thành heli mỗi giây.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-242",
+      "text": "Các ngôi sao lớn hơn hợp nhất các nguyên tố nặng hơn.",
+      "text_markdown": "Các ngôi sao lớn hơn hợp nhất các nguyên tố nặng hơn.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Các ngôi sao lớn hơn hợp nhất các nguyên tố nặng hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-243",
+      "text": "Sau khi một ngôi sao đốt cháy hết hydro, nó bắt đầu hợp nhất heli thành carbon.",
+      "text_markdown": "Sau khi một ngôi sao đốt cháy hết hydro, nó bắt đầu hợp nhất heli thành carbon.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sau khi một ngôi sao đốt cháy hết hydro, nó bắt đầu hợp nhất heli thành carbon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-244",
+      "text": "Sau đó carbon thành oxy.",
+      "text_markdown": "Sau đó carbon thành oxy.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sau đó carbon thành oxy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-245",
+      "text": "Sau đó oxy thành silic.",
+      "text_markdown": "Sau đó oxy thành silic.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sau đó oxy thành silic.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-246",
+      "text": "Sau đó silic thành sắt.",
+      "text_markdown": "Sau đó silic thành sắt.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sau đó silic thành sắt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-247",
+      "text": "Mỗi giai đoạn tạo ra một nguyên tố nặng hơn.",
+      "text_markdown": "Mỗi giai đoạn tạo ra một nguyên tố nặng hơn.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Mỗi giai đoạn tạo ra một nguyên tố nặng hơn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-248",
+      "text": "Sắt là nguyên tố nặng nhất mà một ngôi sao có thể tạo ra thông qua phản ứng hợp hạch thông thường.",
+      "text_markdown": "Sắt là nguyên tố nặng nhất mà một ngôi sao có thể tạo ra thông qua phản ứng hợp hạch thông thường.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sắt là nguyên tố nặng nhất mà một ngôi sao có thể tạo ra thông qua phản ứng hợp hạch thông thường.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-249",
+      "text": "Các nguyên tố nặng hơn sắt được tạo ra khi các ngôi sao khổng lồ phát nổ.",
+      "text_markdown": "Các nguyên tố nặng hơn sắt được tạo ra khi các ngôi sao khổng lồ phát nổ.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Các nguyên tố nặng hơn sắt được tạo ra khi các ngôi sao khổng lồ phát nổ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-250",
+      "text": "Những vụ nổ này được gọi là siêu tân tinh.",
+      "text_markdown": "Những vụ nổ này được gọi là siêu tân tinh.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Những vụ nổ này được gọi là siêu tân tinh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-251",
+      "text": "Một siêu tân tinh giải phóng nhiều năng lượng trong vài giây hơn cả lượng năng lượng mặt trời sẽ tạo ra trong toàn bộ vòng đời của nó.",
+      "text_markdown": "Một siêu tân tinh giải phóng nhiều năng lượng trong vài giây hơn cả lượng năng lượng mặt trời sẽ tạo ra trong toàn bộ vòng đời của nó.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Một siêu tân tinh giải phóng nhiều năng lượng trong vài giây hơn cả lượng năng lượng mặt trời sẽ tạo ra trong toàn bộ vòng đời của nó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-252",
+      "text": "Các điều kiện cực đoan của siêu tân tinh tạo ra các nguyên tố như vàng, bạc, bạch kim và uranium.",
+      "text_markdown": "Các điều kiện cực đoan của siêu tân tinh tạo ra các nguyên tố như vàng, bạc, bạch kim và uranium.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Các điều kiện cực đoan của siêu tân tinh tạo ra các nguyên tố như vàng, bạc, bạch kim và uranium.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-253",
+      "text": "Vụ nổ phân tán các nguyên tố nặng này khắp không gian.",
+      "text_markdown": "Vụ nổ phân tán các nguyên tố nặng này khắp không gian.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Vụ nổ phân tán các nguyên tố nặng này khắp không gian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-254",
+      "text": "Các nguyên tố hòa trộn với các đám mây khí hydro và heli.",
+      "text_markdown": "Các nguyên tố hòa trộn với các đám mây khí hydro và heli.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Các nguyên tố hòa trộn với các đám mây khí hydro và heli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-255",
+      "text": "Cuối cùng, trọng lực kéo khí giàu nguyên tố lại với nhau để hình thành các ngôi sao và hành tinh mới.",
+      "text_markdown": "Cuối cùng, trọng lực kéo khí giàu nguyên tố lại với nhau để hình thành các ngôi sao và hành tinh mới.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Cuối cùng, trọng lực kéo khí giàu nguyên tố lại với nhau để hình thành các ngôi sao và hành tinh mới.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-256",
+      "text": "Hệ mặt trời của chúng ta hình thành từ một trong những đám mây giàu nguyên tố này khoảng 4,6 tỷ năm trước.",
+      "text_markdown": "Hệ mặt trời của chúng ta hình thành từ một trong những đám mây giàu nguyên tố này khoảng 4,6 tỷ năm trước.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Hệ mặt trời của chúng ta hình thành từ một trong những đám mây giàu nguyên tố này khoảng bốn phẩy sáu tỷ năm trước.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-257",
+      "text": "Mọi nguyên tử trong cơ thể bạn nặng hơn hydro đều được tạo ra bên trong một ngôi sao.",
+      "text_markdown": "Mọi nguyên tử trong cơ thể bạn nặng hơn hydro đều được tạo ra bên trong một ngôi sao.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Mọi nguyên tử trong cơ thể bạn nặng hơn hydro đều được tạo ra bên trong một ngôi sao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-258",
+      "text": "Canxi trong xương của bạn.",
+      "text_markdown": "Canxi trong xương của bạn.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Canxi trong xương của bạn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-259",
+      "text": "Sắt trong máu của bạn.",
+      "text_markdown": "Sắt trong máu của bạn.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Sắt trong máu của bạn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-260",
+      "text": "Carbon trong da của bạn.",
+      "text_markdown": "Carbon trong da của bạn.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Carbon trong da của bạn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-261",
+      "text": "Bạn được tạo thành từ bụi sao.",
+      "text_markdown": "Bạn được tạo thành từ bụi sao.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Bạn được tạo thành từ bụi sao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-262",
+      "text": "Đó không phải là một phép ẩn dụ.",
+      "text_markdown": "Đó không phải là một phép ẩn dụ.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Đó không phải là một phép ẩn dụ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "chapter": 7,
+      "block_type": "text",
+      "id": "ch07-263",
+      "text": "Đó là một sự thật của vật lý hạt nhân.",
+      "text_markdown": "Đó là một sự thật của vật lý hạt nhân.",
+      "title": "Nguyên tử đến từ đâu",
+      "tts": {
+        "text": "Đó là một sự thật của vật lý hạt nhân.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "chapter": 8,
+      "block_type": "heading",
+      "id": "ch08-264",
+      "text": "Nguyên tử là tất cả",
+      "text_markdown": "Nguyên tử là tất cả",
+      "title": "Nguyên tử là tất cả"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-265",
+      "text": "Bây giờ bạn đã biết những điều cơ bản.",
+      "text_markdown": "Bây giờ bạn đã biết những điều cơ bản.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Bây giờ bạn đã biết những điều cơ bản.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-266",
+      "text": "Mọi thứ đều được tạo thành từ nguyên tử.",
+      "text_markdown": "Mọi thứ đều được tạo thành từ nguyên tử.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Mọi thứ đều được tạo thành từ nguyên tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-267",
+      "text": "Nguyên tử chứa proton, neutron và electron.",
+      "text_markdown": "Nguyên tử chứa proton, neutron và electron.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Nguyên tử chứa proton, neutron và electron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-268",
+      "text": "Số lượng proton xác định nguyên tố.",
+      "text_markdown": "Số lượng proton xác định nguyên tố.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Số lượng proton xác định nguyên tố.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-269",
+      "text": "Các nguyên tử liên kết để tạo thành phân tử.",
+      "text_markdown": "Các nguyên tử liên kết để tạo thành phân tử.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các nguyên tử liên kết để tạo thành phân tử.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-270",
+      "text": "Các nguyên tử luôn chuyển động.",
+      "text_markdown": "Các nguyên tử luôn chuyển động.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các nguyên tử luôn chuyển động.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 6,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-271",
+      "text": "Các ngôi sao đã tạo ra các nguyên tử cấu thành thế giới của chúng ta.",
+      "text_markdown": "Các ngôi sao đã tạo ra các nguyên tử cấu thành thế giới của chúng ta.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các ngôi sao đã tạo ra các nguyên tử cấu thành thế giới của chúng ta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-272",
+      "text": "Kiến thức này là nền tảng của hóa học, sinh học, vật lý và y học.",
+      "text_markdown": "Kiến thức này là nền tảng của hóa học, sinh học, vật lý và y học.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Kiến thức này là nền tảng của hóa học, sinh học, vật lý và y học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-273",
+      "text": "Mọi lĩnh vực khoa học đều liên quan đến nguyên tử.",
+      "text_markdown": "Mọi lĩnh vực khoa học đều liên quan đến nguyên tử.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Mọi lĩnh vực khoa học đều liên quan đến nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-274",
+      "text": "Khi bác sĩ kê đơn thuốc, loại thuốc đó là một sự sắp xếp cụ thể của các nguyên tử được thiết kế để tương tác với các phân tử trong cơ thể bạn.",
+      "text_markdown": "Khi bác sĩ kê đơn thuốc, loại thuốc đó là một sự sắp xếp cụ thể của các nguyên tử được thiết kế để tương tác với các phân tử trong cơ thể bạn.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Khi bác sĩ kê đơn thuốc, loại thuốc đó là một sự sắp xếp cụ thể của các nguyên tử được thiết kế để tương tác với các phân tử trong cơ thể bạn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-275",
+      "text": "Khi một kỹ sư xây dựng một cây cầu, độ bền của cây cầu đó phụ thuộc vào cách các nguyên tử sắt trong thép được sắp xếp.",
+      "text_markdown": "Khi một kỹ sư xây dựng một cây cầu, độ bền của cây cầu đó phụ thuộc vào cách các nguyên tử sắt trong thép được sắp xếp.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Khi một kỹ sư xây dựng một cây cầu, độ bền của cây cầu đó phụ thuộc vào cách các nguyên tử sắt trong thép được sắp xếp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-276",
+      "text": "Khi một nông dân trồng trọt, cây trồng phát triển vì các nguyên tử carbon từ không khí kết hợp với nước và ánh sáng mặt trời bên trong lá cây.",
+      "text_markdown": "Khi một nông dân trồng trọt, cây trồng phát triển vì các nguyên tử carbon từ không khí kết hợp với nước và ánh sáng mặt trời bên trong lá cây.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Khi một nông dân trồng trọt, cây trồng phát triển vì các nguyên tử carbon từ không khí kết hợp với nước và ánh sáng mặt trời bên trong lá cây.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-277",
+      "text": "Nấu ăn là hóa học.",
+      "text_markdown": "Nấu ăn là hóa học.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Nấu ăn là hóa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-278",
+      "text": "Khi bạn nướng bánh mì, nhiệt làm cho các nguyên tử trong bột nhào sắp xếp lại.",
+      "text_markdown": "Khi bạn nướng bánh mì, nhiệt làm cho các nguyên tử trong bột nhào sắp xếp lại.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Khi bạn nướng bánh mì, nhiệt làm cho các nguyên tử trong bột nhào sắp xếp lại.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-279",
+      "text": "Protein bung ra.",
+      "text_markdown": "Protein bung ra.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Protein bung ra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-280",
+      "text": "Đường phân hủy và tái kết hợp.",
+      "text_markdown": "Đường phân hủy và tái kết hợp.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Đường phân hủy và tái kết hợp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-281",
+      "text": "Các phân tử mới hình thành tạo nên màu sắc, kết cấu và hương vị của vỏ bánh.",
+      "text_markdown": "Các phân tử mới hình thành tạo nên màu sắc, kết cấu và hương vị của vỏ bánh.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các phân tử mới hình thành tạo nên màu sắc, kết cấu và hương vị của vỏ bánh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-282",
+      "text": "Mỗi công thức nấu ăn là một tập hợp các hướng dẫn để sắp xếp lại các nguyên tử.",
+      "text_markdown": "Mỗi công thức nấu ăn là một tập hợp các hướng dẫn để sắp xếp lại các nguyên tử.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Mỗi công thức nấu ăn là một tập hợp các hướng dẫn để sắp xếp lại các nguyên tử.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-283",
+      "text": "Hít thở là hóa học.",
+      "text_markdown": "Hít thở là hóa học.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Hít thở là hóa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-284",
+      "text": "Bạn hít vào các phân tử oxy.",
+      "text_markdown": "Bạn hít vào các phân tử oxy.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Bạn hít vào các phân tử oxy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-285",
+      "text": "Máu của bạn mang các phân tử đó đến các tế bào của bạn.",
+      "text_markdown": "Máu của bạn mang các phân tử đó đến các tế bào của bạn.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Máu của bạn mang các phân tử đó đến các tế bào của bạn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-286",
+      "text": "Bên trong các tế bào của bạn, các nguyên tử oxy kết hợp với các nguyên tử carbon từ thức ăn.",
+      "text_markdown": "Bên trong các tế bào của bạn, các nguyên tử oxy kết hợp với các nguyên tử carbon từ thức ăn.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Bên trong các tế bào của bạn, các nguyên tử oxy kết hợp với các nguyên tử carbon từ thức ăn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-287",
+      "text": "Phản ứng giải phóng năng lượng.",
+      "text_markdown": "Phản ứng giải phóng năng lượng.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Phản ứng giải phóng năng lượng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-288",
+      "text": "Bạn thở ra carbon và oxy dưới dạng carbon dioxide.",
+      "text_markdown": "Bạn thở ra carbon và oxy dưới dạng carbon dioxide.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Bạn thở ra carbon và oxy dưới dạng carbon dioxide.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-289",
+      "text": "Mỗi hơi thở là một phản ứng hóa học.",
+      "text_markdown": "Mỗi hơi thở là một phản ứng hóa học.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Mỗi hơi thở là một phản ứng hóa học.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-290",
+      "text": "Gỉ sét là hóa học.",
+      "text_markdown": "Gỉ sét là hóa học.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Gỉ sét là hóa học.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-291",
+      "text": "Các nguyên tử sắt trên bề mặt một chiếc đinh phản ứng với các nguyên tử oxy trong không khí.",
+      "text_markdown": "Các nguyên tử sắt trên bề mặt một chiếc đinh phản ứng với các nguyên tử oxy trong không khí.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các nguyên tử sắt trên bề mặt một chiếc đinh phản ứng với các nguyên tử oxy trong không khí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-292",
+      "text": "Sắt và oxy kết hợp tạo thành một chất mới gọi là oxit sắt.",
+      "text_markdown": "Sắt và oxy kết hợp tạo thành một chất mới gọi là oxit sắt.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Sắt và oxy kết hợp tạo thành một chất mới gọi là oxit sắt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-293",
+      "text": "Oxit sắt là vật liệu màu nâu đỏ mà chúng ta gọi là gỉ sét.",
+      "text_markdown": "Oxit sắt là vật liệu màu nâu đỏ mà chúng ta gọi là gỉ sét.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Oxit sắt là vật liệu màu nâu đỏ mà chúng ta gọi là gỉ sét.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-294",
+      "text": "Các nguyên tử sắt vẫn còn ở đó.",
+      "text_markdown": "Các nguyên tử sắt vẫn còn ở đó.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Các nguyên tử sắt vẫn còn ở đó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-295",
+      "text": "Chúng chỉ đơn giản là đã liên kết với oxy.",
+      "text_markdown": "Chúng chỉ đơn giản là đã liên kết với oxy.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Chúng chỉ đơn giản là đã liên kết với oxy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-296",
+      "text": "Nguyên tử không phải là trừu tượng.",
+      "text_markdown": "Nguyên tử không phải là trừu tượng.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Nguyên tử không phải là trừu tượng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-297",
+      "text": "Nguyên tử là thực tại vật chất của mọi thứ bạn chạm, nếm, nhìn và ngửi.",
+      "text_markdown": "Nguyên tử là thực tại vật chất của mọi thứ bạn chạm, nếm, nhìn và ngửi.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Nguyên tử là thực tại vật chất của mọi thứ bạn chạm, nếm, nhìn và ngửi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-298",
+      "text": "Bạn càng hiểu về nguyên tử, bạn càng hiểu về thế giới.",
+      "text_markdown": "Bạn càng hiểu về nguyên tử, bạn càng hiểu về thế giới.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Bạn càng hiểu về nguyên tử, bạn càng hiểu về thế giới.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-299",
+      "text": "Đây là sự khởi đầu.",
+      "text_markdown": "Đây là sự khởi đầu.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Đây là sự khởi đầu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "chapter": 8,
+      "block_type": "text",
+      "id": "ch08-300",
+      "text": "Còn rất nhiều điều để khám phá.",
+      "text_markdown": "Còn rất nhiều điều để khám phá.",
+      "title": "Nguyên tử là tất cả",
+      "tts": {
+        "text": "Còn rất nhiều điều để khám phá.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

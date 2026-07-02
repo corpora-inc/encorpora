@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "sr",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dobrodošli u ovonedeljni pregled novosti iz sveta veštačke inteligencije.",
+      "text_markdown": "Dobrodošli u ovonedeljni pregled novosti iz sveta veštačke inteligencije.",
+      "title": "",
+      "tts": {
+        "text": "Dobrodošli u ovonedeljni pregled novosti iz sveta veštačke inteligencije.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Moje ime je Vindy, tako se zovem.",
+      "text_markdown": "Moje ime je Vindy, tako se zovem.",
+      "title": "",
+      "tts": {
+        "text": "Moje ime je Vindi, tako se zovem.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kao i obično, sa mnom je Ron.",
+      "text_markdown": "Kao i obično, sa mnom je Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kao i obično, sa mnom je Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Vindy, baš mi je drago što sam ovde.",
+      "text_markdown": "Vindy, baš mi je drago što sam ovde.",
+      "title": "",
+      "tts": {
+        "text": "Vindi, baš mi je drago što sam ovde.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Danas je sreda, 3. jun 2026.",
+      "text_markdown": "Danas je sreda, 3. jun 2026.",
+      "title": "",
+      "tts": {
+        "text": "Danas je sreda, treći jun dve hiljade dvadeset šeste.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ovo je bila tiha nedelja za oglašavanje i bučna nedelja za računarsku opremu.",
+      "text_markdown": "Ovo je bila tiha nedelja za oglašavanje i bučna nedelja za računarsku opremu.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je bila tiha nedelja za oglašavanje i bučna nedelja za računarsku opremu.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Naslov je imao neobičan oblik.",
+      "text_markdown": "Naslov je imao neobičan oblik.",
+      "title": "",
+      "tts": {
+        "text": "Naslov je imao neobičan oblik.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Glavna prezentacija velike istraživačke laboratorije, poverljiva prijava i mali računar sa kutijom na kojoj stoji veliki broj.",
+      "text_markdown": "Glavna prezentacija velike istraživačke laboratorije, poverljiva prijava i mali računar sa kutijom na kojoj stoji veliki broj.",
+      "title": "",
+      "tts": {
+        "text": "Glavna prezentacija velike istraživačke laboratorije, poverljiva prijava i mali računar sa kutijom na kojoj stoji veliki broj.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sledi pregled promena u otvorenim težinama, predvođenih otvorenim modelom kompanije NVIDIA i novom arhitekturom mehanizma pažnje.",
+      "text_markdown": "Sledi pregled promena u otvorenim težinama, predvođenih otvorenim modelom kompanije NVIDIA i novom arhitekturom mehanizma pažnje.",
+      "title": "",
+      "tts": {
+        "text": "Sledi pregled promena u otvorenim težinama, predvođenih otvorenim modelom kompanije Nvidia i novom arhitekturom mehanizma pažnje.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dokle se stiglo sa rangiranjem, uz širu priču o tome kako uopšte verujemo rezultatima.",
+      "text_markdown": "Dokle se stiglo sa rangiranjem, uz širu priču o tome kako uopšte verujemo rezultatima.",
+      "title": "",
+      "tts": {
+        "text": "Dokle se stiglo sa rangiranjem, uz širu priču o tome kako uopšte verujemo rezultatima.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Evo kratkog pregleda naslova na koje možete odgovoriti ovog vikenda.",
+      "text_markdown": "Evo kratkog pregleda naslova na koje možete odgovoriti ovog vikenda.",
+      "title": "",
+      "tts": {
+        "text": "Evo kratkog pregleda naslova na koje možete odgovoriti ovog vikenda.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Naša glavna priča je da je oprema za kućne projekte sazrela dovoljno da obrada modela na samom uređaju bude dostupna na vašem radnom stolu.",
+      "text_markdown": "Naša glavna priča je da je oprema za kućne projekte sazrela dovoljno da obrada modela na samom uređaju bude dostupna na vašem radnom stolu.",
+      "title": "",
+      "tts": {
+        "text": "Naša glavna priča je da je oprema za kućne projekte sazrela dovoljno da obrada modela na samom uređaju bude dostupna na vašem radnom stolu.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Koncept ove nedelje je spekulativno dekodiranje, tehnika koja omogućava velikom modelu da brzo radi čak i na maloj grafičkoj kartici.",
+      "text_markdown": "Koncept ove nedelje je spekulativno dekodiranje, tehnika koja omogućava velikom modelu da brzo radi čak i na maloj grafičkoj kartici.",
+      "title": "",
+      "tts": {
+        "text": "Koncept ove nedelje je spekulativno dekodiranje, tehnika koja omogućava velikom modelu da brzo radi čak i na maloj grafičkoj kartici.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Rone, počnimo s modelima otvorenih težina.",
+      "text_markdown": "Rone, počnimo s modelima otvorenih težina.",
+      "title": "",
+      "tts": {
+        "text": "Rone, počnimo s modelima otvorenih težina.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kako je protekla ova nedelja?",
+      "text_markdown": "Kako je protekla ova nedelja?",
+      "title": "",
+      "tts": {
+        "text": "Kako je protekla ova nedelja?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tokom ove nedelje, najviše se pričalo o novim oblicima, a ne o novim veličinama.",
+      "text_markdown": "Tokom ove nedelje, najviše se pričalo o novim oblicima, a ne o novim veličinama.",
+      "title": "",
+      "tts": {
+        "text": "Tokom ove nedelje, najviše se pričalo o novim oblicima, a ne o novim veličinama.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Istog dana, 1. juna, predstavljena su dva arhitektonski zanimljiva modela.",
+      "text_markdown": "Istog dana, 1. juna, predstavljena su dva arhitektonski zanimljiva modela.",
+      "title": "",
+      "tts": {
+        "text": "Istog dana, prvog juna, predstavljena su dva arhitektonski zanimljiva modela.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Pokažite nam svoj prvi primer.",
+      "text_markdown": "Pokažite nam svoj prvi primer.",
+      "title": "",
+      "tts": {
+        "text": "Pokažite nam svoj prvi primer.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kompanija MiniMax predstavila je svoj model M3.",
+      "text_markdown": "Kompanija MiniMax predstavila je svoj model M3.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija Mini Maks predstavila je svoj model em tri.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Koristi novi dizajn pažnje sa skraćenicom MSA, koja označava MiniMax pažnju sa retkim povezivanjem.",
+      "text_markdown": "Koristi novi dizajn pažnje sa skraćenicom MSA, koja označava MiniMax pažnju sa retkim povezivanjem.",
+      "title": "",
+      "tts": {
+        "text": "Koristi novi dizajn pažnje sa skraćenicom od slova em es a, koja označava MiniMaks pažnju sa retkim povezivanjem.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Novi model podržava kontekst od milion tokena, uz oko devet puta bržu početnu obradu i petnaest puta brže dekodiranje u odnosu na njihov prethodni model iste dužine.",
+      "text_markdown": "Novi model podržava kontekst od milion tokena, uz oko devet puta bržu početnu obradu i petnaest puta brže dekodiranje u odnosu na njihov prethodni model iste dužine.",
+      "title": "",
+      "tts": {
+        "text": "Novi model podržava kontekst od milion tokena, uz oko devet puta bržu početnu obradu i petnaest puta brže dekodiranje u odnosu na njihov prethodni model iste dužine.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Jednostavno objašnjenje stvarnog načina rada retke pažnje.",
+      "text_markdown": "Jednostavno objašnjenje stvarnog načina rada retke pažnje.",
+      "title": "",
+      "tts": {
+        "text": "Jednostavno objašnjenje stvarnog načina rada retke pažnje.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Standardna pažnja upoređuje svaki deo teksta sa svim drugim delovima, pa obrada dugog konteksta traži mnogo računarske snage.",
+      "text_markdown": "Standardna pažnja upoređuje svaki deo teksta sa svim drugim delovima, pa obrada dugog konteksta traži mnogo računarske snage.",
+      "title": "",
+      "tts": {
+        "text": "Standardna pažnja upoređuje svaki deo teksta sa svim drugim delovima, pa obrada dugog konteksta traži mnogo računarske snage.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Retka pažnja prvo deli sadržaj na blokove, a zatim potpuno poredi samo one blokove koji deluju važni za pitanje koje se trenutno razmatra.",
+      "text_markdown": "Retka pažnja prvo deli sadržaj na blokove, a zatim potpuno poredi samo one blokove koji deluju važni za pitanje koje se trenutno razmatra.",
+      "title": "",
+      "tts": {
+        "text": "Retka pažnja prvo deli sadržaj na blokove, a zatim potpuno poredi samo one blokove koji deluju važni za pitanje koje se trenutno razmatra.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Dobijate gotovo isti kvalitet koristeći samo delić potrebne računarske snage.",
+      "text_markdown": "Dobijate gotovo isti kvalitet koristeći samo delić potrebne računarske snage.",
+      "title": "",
+      "tts": {
+        "text": "Dobijate gotovo isti kvalitet koristeći samo delić potrebne računarske snage.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A šta možemo reći o tvrdnji vezanoj za referentni test?",
+      "text_markdown": "A šta možemo reći o tvrdnji vezanoj za referentni test?",
+      "title": "",
+      "tts": {
+        "text": "A šta možemo reći o tvrdnji vezanoj za referentni test?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "MiniMax ostvaruje 59% na profesionalnom testu procene softverskog inženjerstva, čime bi na toj tabeli nadmašio modele GPT-5.5 i Gemini 3.5 Pro.",
+      "text_markdown": "MiniMax ostvaruje 59% na profesionalnom testu procene softverskog inženjerstva, čime bi na toj tabeli nadmašio modele GPT-5.5 i Gemini 3.5 Pro.",
+      "title": "",
+      "tts": {
+        "text": "Mini Maks ostvaruje pedeset devet procenata na profesionalnom testu procene softverskog inženjerstva, čime bi na toj tabeli nadmašio modele Dži Pi Ti pet tačka pet i Džemini tri tačka pet profesionalni.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Važno je naglasiti da je ovu tabelu rezultata sastavio sam prodavac i da ona nije rezultat nezavisnog testiranja.",
+      "text_markdown": "Važno je naglasiti da je ovu tabelu rezultata sastavio sam prodavac i da ona nije rezultat nezavisnog testiranja.",
+      "title": "",
+      "tts": {
+        "text": "Važno je naglasiti da je ovu tabelu rezultata sastavio sam prodavac i da ona nije rezultat nezavisnog testiranja.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Da li su javno dostupni i težinski parametri?",
+      "text_markdown": "Da li su javno dostupni i težinski parametri?",
+      "title": "",
+      "tts": {
+        "text": "Da li su javno dostupni i težinski parametri?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Platforma Hugging Face uskoro će objaviti težine modela M3, koji je u potpunosti otvorenog koda, a njegov programski interfejs dostupan je od prvog dana.",
+      "text_markdown": "Platforma Hugging Face uskoro će objaviti težine modela M3, koji je u potpunosti otvorenog koda, a njegov programski interfejs dostupan je od prvog dana.",
+      "title": "",
+      "tts": {
+        "text": "Platforma Haging Fejs uskoro će objaviti težine modela em tri, koji je u potpunosti otvorenog koda, a njegov programski interfejs dostupan je od prvog dana.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Majstoru je važnije kako je opklada osmišljena nego kakav je njen ishod.",
+      "text_markdown": "Majstoru je važnije kako je opklada osmišljena nego kakav je njen ishod.",
+      "title": "",
+      "tts": {
+        "text": "Majstoru je važnije kako je opklada osmišljena nego kakav je njen ishod.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bude li taj sporazum i dalje važio, sve ostale otvorene laboratorije kopiraće taj model za nekoliko meseci.",
+      "text_markdown": "Bude li taj sporazum i dalje važio, sve ostale otvorene laboratorije kopiraće taj model za nekoliko meseci.",
+      "title": "",
+      "tts": {
+        "text": "Bude li taj sporazum i dalje važio, sve ostale otvorene laboratorije kopiraće taj model za nekoliko meseci.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A kakva je situacija s drugim modelom?",
+      "text_markdown": "A kakva je situacija s drugim modelom?",
+      "title": "",
+      "tts": {
+        "text": "A kakva je situacija sa drugim modelom?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kompanija NVIDIA je tiho predstavila model otvorenog koda Nemotron 3 Ultra.",
+      "text_markdown": "Kompanija NVIDIA je tiho predstavila model otvorenog koda Nemotron 3 Ultra.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija Envidija je tiho predstavila model otvorenog koda Nemotron tri Ultra.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Model sa mešavinom eksperata ima 550 milijardi parametara, a tokom svake obrade koristi oko 55 milijardi.",
+      "text_markdown": "Model sa mešavinom eksperata ima 550 milijardi parametara, a tokom svake obrade koristi oko 55 milijardi.",
+      "title": "",
+      "tts": {
+        "text": "Model sa mešavinom eksperata ima petsto pedeset milijardi parametara, a tokom svake obrade koristi oko pedeset pet milijardi.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Osnovu čini spoj Mambe i transformerske arhitekture, a ne arhitektura zasnovana isključivo na transformerima.",
+      "text_markdown": "Osnovu čini spoj Mambe i transformerske arhitekture, a ne arhitektura zasnovana isključivo na transformerima.",
+      "title": "",
+      "tts": {
+        "text": "Osnovu čini spoj Mambe i transformerske arhitekture, a ne arhitektura zasnovana isključivo na transformerima.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Jednostavno objašnjenje Mambe.",
+      "text_markdown": "Jednostavno objašnjenje Mambe.",
+      "title": "",
+      "tts": {
+        "text": "Jednostavno objašnjenje Mambe.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mamba slojevi obrađuju duge sekvence uz skaliranje sporije od kvadratnog, što je elegantan način da se kaže da obrada svakog tokena postaje jeftinija sa rastom konteksta.",
+      "text_markdown": "Mamba slojevi obrađuju duge sekvence uz skaliranje sporije od kvadratnog, što je elegantan način da se kaže da obrada svakog tokena postaje jeftinija sa rastom konteksta.",
+      "title": "",
+      "tts": {
+        "text": "Mamba slojevi obrađuju duge sekvence uz skaliranje sporije od kvadratnog, što je elegantan način da se kaže da obrada svakog tokena postaje jeftinija sa rastom konteksta.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "NVIDIA je u svojoj arhitekturi sačuvala nekoliko slojeva za usmeravanje pažnje, čime je očuvala precizno prisećanje neophodno za odgovaranje na pitanja iz dugih dokumenata.",
+      "text_markdown": "NVIDIA je u svojoj arhitekturi sačuvala nekoliko slojeva za usmeravanje pažnje, čime je očuvala precizno prisećanje neophodno za odgovaranje na pitanja iz dugih dokumenata.",
+      "title": "",
+      "tts": {
+        "text": "Envidija je u svojoj arhitekturi sačuvala nekoliko slojeva za usmeravanje pažnje, čime je očuvala precizno prisećanje neophodno za odgovaranje na pitanja iz dugih dokumenata.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Već godinu dana, ovaj hibridni pristup neprimetno niže pobede u istraživanjima.",
+      "text_markdown": "Već godinu dana, ovaj hibridni pristup neprimetno niže pobede u istraživanjima.",
+      "title": "",
+      "tts": {
+        "text": "Već godinu dana, ovaj hibridni pristup neprimetno niže pobede u istraživanjima.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A kakvi su uslovi licence?",
+      "text_markdown": "A kakvi su uslovi licence?",
+      "title": "",
+      "tts": {
+        "text": "A kakvi su uslovi licence?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "NVIDIA za svoje otvorene modele primenjuje sopstvenu licencu, koja dozvoljava komercijalnu upotrebu.",
+      "text_markdown": "NVIDIA za svoje otvorene modele primenjuje sopstvenu licencu, koja dozvoljava komercijalnu upotrebu.",
+      "title": "",
+      "tts": {
+        "text": "Nvidia za svoje otvorene modele primenjuje sopstvenu licencu, koja dozvoljava komercijalnu upotrebu.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sve je objavljeno zajedno, uključujući težine, post-trenirane kontrolne tačke, NVFP4 kvantizaciju i recepte za obuku.",
+      "text_markdown": "Sve je objavljeno zajedno, uključujući težine, post-trenirane kontrolne tačke, NVFP4 kvantizaciju i recepte za obuku.",
+      "title": "",
+      "tts": {
+        "text": "Sve je objavljeno zajedno, uključujući težine, post-trenirane kontrolne tačke, en ve ef pe četiri kvantizaciju i recepte za obuku.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovaj paket pruža više nego većina izdanja otvorenog koda.",
+      "text_markdown": "Ovaj paket pruža više nego većina izdanja otvorenog koda.",
+      "title": "",
+      "tts": {
+        "text": "Ovaj paket pruža više nego većina izdanja otvorenog koda.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A na kom mestu se nalazi na rang listi?",
+      "text_markdown": "A na kom mestu se nalazi na rang listi?",
+      "title": "",
+      "tts": {
+        "text": "A na kom mestu se nalazi na rang listi?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Na rang-listi analitičke inteligencije, Nemotron 3 Ultra nalazi se na 48. mestu.",
+      "text_markdown": "Na rang-listi analitičke inteligencije, Nemotron 3 Ultra nalazi se na 48. mestu.",
+      "title": "",
+      "tts": {
+        "text": "Na rang listi analitičke inteligencije, Nemotron tri Ultra nalazi se na četrdeset osmom mestu.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Time zauzima 9. mesto među 89 praćenih modela i prestiže sve druge američke modele sa otvorenim parametrima.",
+      "text_markdown": "Time zauzima 9. mesto među 89 praćenih modela i prestiže sve druge američke modele sa otvorenim parametrima.",
+      "title": "",
+      "tts": {
+        "text": "Time zauzima deveto mesto među osamdeset devet praćenih modela i prestiže sve druge američke modele sa otvorenim parametrima.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Takođe zaostaje za modelom Kimi K2.6 kompanije Moonshot, koji je na pedeset četiri.",
+      "text_markdown": "Takođe zaostaje za modelom Kimi K2.6 kompanije Moonshot, koji je na pedeset četiri.",
+      "title": "",
+      "tts": {
+        "text": "Takođe zaostaje za modelom Kimi K dva tačka šest kompanije Munšot, koji je na pedeset četiri.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Uprkos svemu tome, Kina ostaje svetski lider u oblasti otvorenog softvera.",
+      "text_markdown": "Uprkos svemu tome, Kina ostaje svetski lider u oblasti otvorenog softvera.",
+      "title": "",
+      "tts": {
+        "text": "Uprkos svemu tome, Kina ostaje svetski lider u oblasti otvorenog softvera.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Na tom jednom složenom pokazatelju razlika iznosi šest poena.",
+      "text_markdown": "Na tom jednom složenom pokazatelju razlika iznosi šest poena.",
+      "title": "",
+      "tts": {
+        "text": "Na tom jednom složenom pokazatelju razlika iznosi šest poena.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "To je manja priča, deo jedne mnogo veće celovite slike.",
+      "text_markdown": "To je manja priča, deo jedne mnogo veće celovite slike.",
+      "title": "",
+      "tts": {
+        "text": "To je manja priča, deo jedne mnogo veće celovite slike.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Možda nešto nalik tome?",
+      "text_markdown": "Možda nešto nalik tome?",
+      "title": "",
+      "tts": {
+        "text": "Možda nešto nalik tome?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Pritom je NVIDIA predstavila i Nano Omni varijantu modela Nemotron 3.",
+      "text_markdown": "Pritom je NVIDIA predstavila i Nano Omni varijantu modela Nemotron 3.",
+      "title": "",
+      "tts": {
+        "text": "Pritom je Envidija predstavila i Nano Omni varijantu modela Nemotron tri.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovaj objedinjeni model za viziju, zvuk i jezik navodno je oko 9 puta efikasniji od sličnih multimodalnih modela otvorenog koda.",
+      "text_markdown": "Ovaj objedinjeni model za viziju, zvuk i jezik navodno je oko 9 puta efikasniji od sličnih multimodalnih modela otvorenog koda.",
+      "title": "",
+      "tts": {
+        "text": "Ovaj objedinjeni model za viziju, zvuk i jezik navodno je oko devet puta efikasniji od sličnih multimodalnih modela otvorenog koda.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Namenjen je agentima koji rade na uređajima poput telefona, laptopova i malih radnih stanica.",
+      "text_markdown": "Namenjen je agentima koji rade na uređajima poput telefona, laptopova i malih radnih stanica.",
+      "title": "",
+      "tts": {
+        "text": "Namenjen je agentima koji rade na uređajima poput telefona, laptopova i malih radnih stanica.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Šta još možemo naći u svetu otvorenog softvera?",
+      "text_markdown": "Šta još možemo naći u svetu otvorenog softvera?",
+      "title": "",
+      "tts": {
+        "text": "Šta još možemo naći u svetu otvorenog softvera?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Od 28. maja, Mistral Medium 3.5 dostupan je u Copilot Studiju kompanije Microsoft.",
+      "text_markdown": "Od 28. maja, Mistral Medium 3.5 dostupan je u Copilot Studiju kompanije Microsoft.",
+      "title": "",
+      "tts": {
+        "text": "Od dvadeset osmog maja, Mistral Medijum tri tačka pet dostupan je u Kopajlot Studiju kompanije Majkrosoft.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "U pitanju je gust model sa kontekstom od 256.000 tokena i ukupno 128 milijardi parametara.",
+      "text_markdown": "U pitanju je gust model sa kontekstom od 256.000 tokena i ukupno 128 milijardi parametara.",
+      "title": "",
+      "tts": {
+        "text": "U pitanju je gust model sa kontekstom od dvesta pedeset šest hiljada tokena i ukupno sto dvadeset osam milijardi parametara.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Zašto je upravo taj plasman interesantan?",
+      "text_markdown": "Zašto je upravo taj plasman interesantan?",
+      "title": "",
+      "tts": {
+        "text": "Zašto je upravo taj plasman interesantan?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Zato što Microsoft sada preko svoje platforme distribuira evropski model koji nije razvio OpenAI i koji omogućava čuvanje podataka unutar Evropske unije.",
+      "text_markdown": "Zato što Microsoft sada preko svoje platforme distribuira evropski model koji nije razvio OpenAI i koji omogućava čuvanje podataka unutar Evropske unije.",
+      "title": "",
+      "tts": {
+        "text": "Zato što Majkrosoft sada preko svoje platforme distribuira evropski model koji nije razvila kompanija Open ej aj i koji omogućava čuvanje podataka unutar Evropske unije.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ta rečenica bi pre dve godine bila nezamisliva.",
+      "text_markdown": "Ta rečenica bi pre dve godine bila nezamisliva.",
+      "title": "",
+      "tts": {
+        "text": "Ta rečenica bi pre dve godine bila nezamisliva.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Gde se u toj priči nalazi Alibaba?",
+      "text_markdown": "Gde se u toj priči nalazi Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "Gde se u toj priči nalazi Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Proširena verzija modela Qwen 3.7 stigla je 2. juna, ali joj se može pristupiti samo preko programskog interfejsa platforme Bailian.",
+      "text_markdown": "Proširena verzija modela Qwen 3.7 stigla je 2. juna, ali joj se može pristupiti samo preko programskog interfejsa platforme Bailian.",
+      "title": "",
+      "tts": {
+        "text": "Proširena verzija modela Kven tri zarez sedam stigla je drugog juna, ali joj se može pristupiti samo preko programskog interfejsa platforme Bajlijan.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Najnovije izdanje otvorene serije modela Qwen i dalje nosi oznaku verzije 3.6.",
+      "text_markdown": "Najnovije izdanje otvorene serije modela Qwen i dalje nosi oznaku verzije 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Najnovije izdanje otvorene serije modela Kuen i dalje nosi oznaku verzije tri tačka šest.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "To potvrđuje podelu koju smo uočili prošle nedelje: vodeći model ostaje zatvoren, a model srednjeg nivoa ostaje otvoren.",
+      "text_markdown": "To potvrđuje podelu koju smo uočili prošle nedelje: vodeći model ostaje zatvoren, a model srednjeg nivoa ostaje otvoren.",
+      "title": "",
+      "tts": {
+        "text": "To potvrđuje podelu koju smo uočili prošle nedelje, vodeći model ostaje zatvoren, a model srednjeg nivoa ostaje otvoren.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mistral ovu strategiju primenjuje već punih godinu dana.",
+      "text_markdown": "Mistral ovu strategiju primenjuje već punih godinu dana.",
+      "title": "",
+      "tts": {
+        "text": "Mistral ovu strategiju primenjuje već punih godinu dana.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Pre nego što nastavimo, evo dve kratke napomene koje pružaju kontekst.",
+      "text_markdown": "Pre nego što nastavimo, evo dve kratke napomene koje pružaju kontekst.",
+      "title": "",
+      "tts": {
+        "text": "Pre nego što nastavimo, evo dve kratke napomene koje pružaju kontekst.",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Da, naravno.",
+      "text_markdown": "Da, naravno.",
+      "title": "",
+      "tts": {
+        "text": "Da, naravno.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Otvoreni modeli iz Kine i dalje imaju najveći obim tokena na OpenRouteru, istim ritmom kao prošle nedelje, bez promene.",
+      "text_markdown": "Otvoreni modeli iz Kine i dalje imaju najveći obim tokena na OpenRouteru, istim ritmom kao prošle nedelje, bez promene.",
+      "title": "",
+      "tts": {
+        "text": "Otvoreni modeli iz Kine i dalje imaju najveći obim tokena na platformi Open Rauter, istim ritmom kao prošle nedelje, bez promene.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Model DeepSeek V4 pokrenut je 28. maja na platformi Foundry kompanije Microsoft, što jednostavno znači da je sada dostupniji za korišćenje.",
+      "text_markdown": "Model DeepSeek V4 pokrenut je 28. maja na platformi Foundry kompanije Microsoft, što jednostavno znači da je sada dostupniji za korišćenje.",
+      "title": "",
+      "tts": {
+        "text": "Model Dipsik verzija četiri pokrenut je dvadeset osmog maja na platformi Faundri kompanije Majkrosoft, što jednostavno znači da je sada dostupniji za korišćenje.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dobro, sada prelazimo na pregled najboljih.",
+      "text_markdown": "Dobro, sada prelazimo na pregled najboljih.",
+      "title": "",
+      "tts": {
+        "text": "U redu, sada prelazimo na pregled najboljih.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Jesmo li ove nedelje videli neki značajan napredak?",
+      "text_markdown": "Jesmo li ove nedelje videli neki značajan napredak?",
+      "title": "",
+      "tts": {
+        "text": "Jesmo li ove nedelje videli neki značajan napredak?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bilo je, i to je zatvoreni model — Claude Opus 4.8, koji je Anthropic objavio 28. maja.",
+      "text_markdown": "Bilo je, i to je zatvoreni model — Claude Opus 4.8, koji je Anthropic objavio 28. maja.",
+      "title": "",
+      "tts": {
+        "text": "Bilo je, i to je zatvoreni model — Claude Opus četiri tačka osam, koji je Anthropic objavio dvadeset osmog maja.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Postiže 88,6% na potvrđenoj verziji testa za softversko inženjerstvo, dok rezultat od 69,2% ostvaruje na profesionalnoj verziji.",
+      "text_markdown": "Postiže 88,6% na potvrđenoj verziji testa za softversko inženjerstvo, dok rezultat od 69,2% ostvaruje na profesionalnoj verziji.",
+      "title": "",
+      "tts": {
+        "text": "Postiže osamdeset osam zarez šest procenata na potvrđenoj verziji testa za softversko inženjerstvo, dok rezultat od šezdeset devet zarez dva procenta ostvaruje na profesionalnoj verziji.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "I sada predvodi Indeks veštačke analitičke inteligencije po ukupnom rezultatu.",
+      "text_markdown": "I sada predvodi Indeks veštačke analitičke inteligencije po ukupnom rezultatu.",
+      "title": "",
+      "tts": {
+        "text": "I sada predvodi Indeks veštačke analitičke inteligencije po ukupnom rezultatu.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kompanija Anthropic je prvi put preuzela vodeću poziciju u toj oblasti.",
+      "text_markdown": "Kompanija Anthropic je prvi put preuzela vodeću poziciju u toj oblasti.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija Antropik je prvi put preuzela vodeću poziciju u toj oblasti.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tako je.",
+      "text_markdown": "Tako je.",
+      "title": "",
+      "tts": {
+        "text": "Tako je.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "GPT-5.5 zaostaje jedan poen, dok Gemini 3.5 Pro zaostaje još nekoliko poena.",
+      "text_markdown": "GPT-5.5 zaostaje jedan poen, dok Gemini 3.5 Pro zaostaje još nekoliko poena.",
+      "title": "",
+      "tts": {
+        "text": "Model Ge Pe Te pet zarez pet zaostaje jedan poen, dok model Džemini tri zarez pet Pro zaostaje još nekoliko poena.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Na samom vrhu zatvorenog paketa vodi se veoma tesna borba.",
+      "text_markdown": "Na samom vrhu zatvorenog paketa vodi se veoma tesna borba.",
+      "title": "",
+      "tts": {
+        "text": "Na samom vrhu zatvorenog paketa vodi se veoma tesna borba.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ali glavna tema ovonedeljnog ocenjivanja bila je nešto sasvim drugo.",
+      "text_markdown": "Ali glavna tema ovonedeljnog ocenjivanja bila je nešto sasvim drugo.",
+      "title": "",
+      "tts": {
+        "text": "Ali glavna tema ovonedeljnog ocenjivanja bila je nešto sasvim drugo.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "U stvari, prava priča govori o integritetu.",
+      "text_markdown": "U stvari, prava priča govori o integritetu.",
+      "title": "",
+      "tts": {
+        "text": "U stvari, prava priča govori o integritetu.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Rezultate verifikovanog SWE-bench testa OpenAI praktično više ne objavljuje.",
+      "text_markdown": "Rezultate verifikovanog SWE-bench testa OpenAI praktično više ne objavljuje.",
+      "title": "",
+      "tts": {
+        "text": "Rezultate verifikovanog es ve e benč testa Open ej aj praktično više ne objavljuje.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Analiza curenja podataka pokazala je da otprilike 59% teških zadataka sadrži neispravne testove pojedinačnih delova programa, dok modeli mogu doslovno da se prisete tačnih zakrpa iz podataka korišćenih za obuku.",
+      "text_markdown": "Analiza curenja podataka pokazala je da otprilike 59% teških zadataka sadrži neispravne testove pojedinačnih delova programa, dok modeli mogu doslovno da se prisete tačnih zakrpa iz podataka korišćenih za obuku.",
+      "title": "",
+      "tts": {
+        "text": "Analiza curenja podataka pokazala je da otprilike pedeset devet procenata teških zadataka sadrži neispravne testove pojedinačnih delova programa, dok modeli mogu doslovno da se prisete tačnih zakrpa iz podataka korišćenih za obuku.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Prema tome, visok broj bodova ukazivao je na dobru sposobnost pamćenja.",
+      "text_markdown": "Prema tome, visok broj bodova ukazivao je na dobru sposobnost pamćenja.",
+      "title": "",
+      "tts": {
+        "text": "Prema tome, visok broj bodova ukazivao je na dobru sposobnost pamćenja.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Da, to se događa veoma često.",
+      "text_markdown": "Da, to se događa veoma često.",
+      "title": "",
+      "tts": {
+        "text": "Da, to se događa veoma često.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Pro je verzija sa novim zadacima i težim skelama — to je novi signal.",
+      "text_markdown": "Pro je verzija sa novim zadacima i težim skelama — to je novi signal.",
+      "title": "",
+      "tts": {
+        "text": "Pro je verzija sa novim zadacima i težim skelama — to je novi signal.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovo je zvanična potvrda nadležnih institucija da postoji zabrinutost zbog zagađenja na koje smo ukazali prošle nedelje.",
+      "text_markdown": "Ovo je zvanična potvrda nadležnih institucija da postoji zabrinutost zbog zagađenja na koje smo ukazali prošle nedelje.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je zvanična potvrda nadležnih institucija da postoji zabrinutost zbog zagađenja na koje smo ukazali prošle nedelje.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Da li je postojao i rad koji se bavio metodologijom?",
+      "text_markdown": "Da li je postojao i rad koji se bavio metodologijom?",
+      "title": "",
+      "tts": {
+        "text": "Da li je postojao i rad koji se bavio metodologijom?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Grupa Kili Technology objavila je oštar izveštaj.",
+      "text_markdown": "Grupa Kili Technology objavila je oštar izveštaj.",
+      "title": "",
+      "tts": {
+        "text": "Grupa Kili tehnolodži objavila je oštar izveštaj.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Model sa nepromenjenim težinama testiran je pomoću pet standardnih okvira za evaluaciju.",
+      "text_markdown": "Model sa nepromenjenim težinama testiran je pomoću pet standardnih okvira za evaluaciju.",
+      "title": "",
+      "tts": {
+        "text": "Model sa nepromenjenim težinama testiran je pomoću pet standardnih okvira za evaluaciju.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Rezultati su se razlikovali za 10 do 20 procentnih poena isključivo zbog izbora remena za nošenje.",
+      "text_markdown": "Rezultati su se razlikovali za 10 do 20 procentnih poena isključivo zbog izbora remena za nošenje.",
+      "title": "",
+      "tts": {
+        "text": "Rezultati su se razlikovali za deset do dvadeset procentnih poena isključivo zbog izbora remena za nošenje.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Težina je ista, samo je broj drugačiji.",
+      "text_markdown": "Težina je ista, samo je broj drugačiji.",
+      "title": "",
+      "tts": {
+        "text": "Težina je ista, samo je broj drugačiji.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tačno.",
+      "text_markdown": "Tačno.",
+      "title": "",
+      "tts": {
+        "text": "Tačno.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Njihov zaključak je bio da rang na tabeli više nije signal kupovne ocene za nabavku.",
+      "text_markdown": "Njihov zaključak je bio da rang na tabeli više nije signal kupovne ocene za nabavku.",
+      "title": "",
+      "tts": {
+        "text": "Njihov zaključak je bio da rang na tabeli više nije signal kupovne ocene za nabavku.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za samostalnog graditelja, pouka je još jasnija: sopstvene upite koristite za pokretanje sopstvenih procena.",
+      "text_markdown": "Za samostalnog graditelja, pouka je još jasnija: sopstvene upite koristite za pokretanje sopstvenih procena.",
+      "title": "",
+      "tts": {
+        "text": "Za samostalnog graditelja, pouka je još jasnija, sopstvene upite koristite za pokretanje sopstvenih procena.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Zapravo, govorimo o modelima MSA i Nemotron Ultra.",
+      "text_markdown": "Zapravo, govorimo o modelima MSA i Nemotron Ultra.",
+      "title": "",
+      "tts": {
+        "text": "Zapravo, govorimo o modelima M S A i Nemotron Ultra.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tako je.",
+      "text_markdown": "Tako je.",
+      "title": "",
+      "tts": {
+        "text": "Tako je.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Oslonite se na arhitekturu i sopstvene testove, a ne na tabelu koju je sastavio neko drugi.",
+      "text_markdown": "Oslonite se na arhitekturu i sopstvene testove, a ne na tabelu koju je sastavio neko drugi.",
+      "title": "",
+      "tts": {
+        "text": "Oslonite se na arhitekturu i sopstvene testove, a ne na tabelu koju je sastavio neko drugi.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ovo je pravo mesto da završimo priču o tabelama.",
+      "text_markdown": "Ovo je pravo mesto da završimo priču o tabelama.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je pravo mesto da završimo priču o tabelama.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sada prelazimo na najvažnije vesti.",
+      "text_markdown": "Sada prelazimo na najvažnije vesti.",
+      "title": "",
+      "tts": {
+        "text": "Sada prelazimo na najvažnije vesti.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sažet pregled iz ugla otvorenog okruženja.",
+      "text_markdown": "Sažet pregled iz ugla otvorenog okruženja.",
+      "title": "",
+      "tts": {
+        "text": "Sažet pregled iz ugla otvorenog okruženja.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Najpre, Microsoft Build održan je 2. juna.",
+      "text_markdown": "Najpre, Microsoft Build održan je 2. juna.",
+      "title": "",
+      "tts": {
+        "text": "Najpre, Majkrosoft Bild održan je drugog juna.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Microsoft je predstavio dva svoja modela, MAI-Thinking-1 i brzi MAI-Code-1-Flash, namenjen programiranju.",
+      "text_markdown": "Microsoft je predstavio dva svoja modela, MAI-Thinking-1 i brzi MAI-Code-1-Flash, namenjen programiranju.",
+      "title": "",
+      "tts": {
+        "text": "Majkrosoft je predstavio dva svoja modela, model Maj Tinking jedan i brzi model Maj Kod jedan Fleš, namenjen programiranju.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Zbog čega su toliko zanimljivi?",
+      "text_markdown": "Zbog čega su toliko zanimljivi?",
+      "title": "",
+      "tts": {
+        "text": "Zbog čega su toliko zanimljivi?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Thinking-1 je model retke mešavine eksperata sa 35 milijardi aktivnih parametara i kontekstualnim prozorom od 256 hiljada tokena.",
+      "text_markdown": "Thinking-1 je model retke mešavine eksperata sa 35 milijardi aktivnih parametara i kontekstualnim prozorom od 256 hiljada tokena.",
+      "title": "",
+      "tts": {
+        "text": "Tinking jedan je model retke mešavine stručnjaka sa trideset pet milijardi aktivnih parametara i kontekstualnim prozorom od dvesta pedeset šest hiljada tokena.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Microsoft posebno ističe da je model obučen na komercijalno licenciranim podacima, bez korišćenja destilacije iz bilo kog modela treće strane.",
+      "text_markdown": "Microsoft posebno ističe da je model obučen na komercijalno licenciranim podacima, bez korišćenja destilacije iz bilo kog modela treće strane.",
+      "title": "",
+      "tts": {
+        "text": "Majkrosoft posebno ističe da je model obučen na komercijalno licenciranim podacima, bez korišćenja destilacije iz bilo kog modela treće strane.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "To je zaista veoma neobično.",
+      "text_markdown": "To je zaista veoma neobično.",
+      "title": "",
+      "tts": {
+        "text": "To je zaista veoma neobično.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Vrlo neobično, s obzirom na to koliko se ostatak polja oslanja na sintetičke podatke iz graničnih modela.",
+      "text_markdown": "Vrlo neobično, s obzirom na to koliko se ostatak polja oslanja na sintetičke podatke iz graničnih modela.",
+      "title": "",
+      "tts": {
+        "text": "Vrlo neobično, s obzirom na to koliko se ostatak polja oslanja na sintetičke podatke iz graničnih modela.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Code-1-Flash je povoljniji i od 2. juna postepeno postaje dostupan korisnicima svih nivoa GitHub Copilota.",
+      "text_markdown": "Code-1-Flash je povoljniji i od 2. juna postepeno postaje dostupan korisnicima svih nivoa GitHub Copilota.",
+      "title": "",
+      "tts": {
+        "text": "Koud jedan Fleš je povoljniji i od drugog juna postepeno postaje dostupan korisnicima svih nivoa GitHab Kopajlota.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tako Microsoft sada u Copilot Studiju na jednom mestu nudi modele Mistrala, DeepSeeka i OpenAI-ja, kao i svoj model MAI.",
+      "text_markdown": "Tako Microsoft sada u Copilot Studiju na jednom mestu nudi modele Mistrala, DeepSeeka i OpenAI-ja, kao i svoj model MAI.",
+      "title": "",
+      "tts": {
+        "text": "Tako Majkrosoft sada u Kopajlot studiju na jednom mestu nudi modele Mistrala, Dip Sika i Open AI kompanije, kao i svoj model Mai.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A kako glasi drugi naslov?",
+      "text_markdown": "A kako glasi drugi naslov?",
+      "title": "",
+      "tts": {
+        "text": "A kako glasi drugi naslov?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kompanija Anthropic je 1. juna poverljivo predala obrazac S-1 američkoj Komisiji za hartije od vrednosti radi registracije.",
+      "text_markdown": "Kompanija Anthropic je 1. juna poverljivo predala obrazac S-1 američkoj Komisiji za hartije od vrednosti radi registracije.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija Antropik je prvog juna poverljivo predala obrazac es jedan američkoj Komisiji za hartije od vrednosti radi registracije.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ova dokumentacija označava početak puta ka javnoj kotaciji.",
+      "text_markdown": "Ova dokumentacija označava početak puta ka javnoj kotaciji.",
+      "title": "",
+      "tts": {
+        "text": "Ova dokumentacija označava početak puta ka javnoj kotaciji.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Pre godinu dana njihov prijavljeni godišnji prihod iznosio je oko 10 milijardi dolara, a sada iznosi oko 47 milijardi dolara.",
+      "text_markdown": "Pre godinu dana njihov prijavljeni godišnji prihod iznosio je oko 10 milijardi dolara, a sada iznosi oko 47 milijardi dolara.",
+      "title": "",
+      "tts": {
+        "text": "Pre godinu dana njihov prijavljeni godišnji prihod iznosio je oko deset milijardi dolara, a sada iznosi oko četrdeset sedam milijardi dolara.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za sada postoji samo dokumentacija, a oznaka, raspon cena i datum još nisu navedeni.",
+      "text_markdown": "Za sada postoji samo dokumentacija, a oznaka, raspon cena i datum još nisu navedeni.",
+      "title": "",
+      "tts": {
+        "text": "Za sada postoji samo dokumentacija, a oznaka, raspon cena i datum još nisu navedeni.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kao treću stvar izdvajamo sledeće.",
+      "text_markdown": "Kao treću stvar izdvajamo sledeće.",
+      "title": "",
+      "tts": {
+        "text": "Kao treću stvar izdvajamo sledeće.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "GitHub Copilot je 1. juna prešao na naplatu prema korišćenju.",
+      "text_markdown": "GitHub Copilot je 1. juna prešao na naplatu prema korišćenju.",
+      "title": "",
+      "tts": {
+        "text": "Git Hab Kopajlot je prvog juna prešao na naplatu prema korišćenju.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Svaki plan sada obračunava ulazne, izlazne i privremeno sačuvane tokene po istim cenama kao osnovni model dostupan putem programskog interfejsa.",
+      "text_markdown": "Svaki plan sada obračunava ulazne, izlazne i privremeno sačuvane tokene po istim cenama kao osnovni model dostupan putem programskog interfejsa.",
+      "title": "",
+      "tts": {
+        "text": "Svaki plan sada obračunava ulazne, izlazne i privremeno sačuvane tokene po istim cenama kao osnovni model dostupan putem programskog interfejsa.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Prelazak su olakšali kreditima dodeljenim po nivoima i novim planom Copilot Max od 100 dolara mesečno, namenjenim korisnicima koji agente upotrebljavaju veoma intenzivno.",
+      "text_markdown": "Prelazak su olakšali kreditima dodeljenim po nivoima i novim planom Copilot Max od 100 dolara mesečno, namenjenim korisnicima koji agente upotrebljavaju veoma intenzivno.",
+      "title": "",
+      "tts": {
+        "text": "Prelazak su olakšali kreditima dodeljenim po nivoima i novim planom Kopajlot Maks od sto dolara mesečno, namenjenim korisnicima koji agente upotrebljavaju veoma intenzivno.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kako su programeri reagovali na to?",
+      "text_markdown": "Kako su programeri reagovali na to?",
+      "title": "",
+      "tts": {
+        "text": "Kako su programeri reagovali na to?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Neki stavovi su bili prilično oštri.",
+      "text_markdown": "Neki stavovi su bili prilično oštri.",
+      "title": "",
+      "tts": {
+        "text": "Neki stavovi su bili prilično oštri.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Korisnici koji često pokreću automatizovane petlje agenata prijavili su procenjene račune višestruko veće od ranije fiksne naknade.",
+      "text_markdown": "Korisnici koji često pokreću automatizovane petlje agenata prijavili su procenjene račune višestruko veće od ranije fiksne naknade.",
+      "title": "",
+      "tts": {
+        "text": "Korisnici koji često pokreću automatizovane petlje agenata prijavili su procenjene račune višestruko veće od ranije fiksne naknade.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovo će biti važno za našu glavnu priču, zato zapamtite ovaj detalj.",
+      "text_markdown": "Ovo će biti važno za našu glavnu priču, zato zapamtite ovaj detalj.",
+      "title": "",
+      "tts": {
+        "text": "Ovo će biti važno za našu glavnu priču, zato zapamtite ovaj detalj.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kao četvrto pitanje, imamo li nešto što treba zakrpiti ovog vikenda?",
+      "text_markdown": "Kao četvrto pitanje, imamo li nešto što treba zakrpiti ovog vikenda?",
+      "title": "",
+      "tts": {
+        "text": "Kao četvrto pitanje, imamo li nešto što treba zakrpiti ovog vikenda?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tačno je, verzije SGLang-a do 0.5.11 imaju propust u kešu koji omogućava uskraćivanje usluge, a otkriven je 3. juna.",
+      "text_markdown": "Tačno je, verzije SGLang-a do 0.5.11 imaju propust u kešu koji omogućava uskraćivanje usluge, a otkriven je 3. juna.",
+      "title": "",
+      "tts": {
+        "text": "Tačno je, verzije Es Dži Langa do nula tačka pet tačka jedanaest imaju propust u kešu koji omogućava uskraćivanje usluge, a propust je otkriven trećeg juna.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ako koristite SGLang, u ponedeljak ga zakrpite zbog lokalno iskoristive ranjivosti niske ozbiljnosti sa oznakom CVE-2026-10775.",
+      "text_markdown": "Ako koristite SGLang, u ponedeljak ga zakrpite zbog lokalno iskoristive ranjivosti niske ozbiljnosti sa oznakom CVE-2026-10775.",
+      "title": "",
+      "tts": {
+        "text": "Ako koristite es dži lang, u ponedeljak ga zakrpite zbog lokalno iskoristive ranjivosti niske ozbiljnosti sa oznakom ce ve e dva nula dva šest jedan nula sedam sedam pet.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ima još nečega.",
+      "text_markdown": "Ima još nečega.",
+      "title": "",
+      "tts": {
+        "text": "Ima još nečega.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Umesto izvoza samo težina adaptera, Unsloth Studio je objavio ažuriranje koje omogućava direktan izvoz potpuno fino podešenog modela u GGUF formatu.",
+      "text_markdown": "Umesto izvoza samo težina adaptera, Unsloth Studio je objavio ažuriranje koje omogućava direktan izvoz potpuno fino podešenog modela u GGUF formatu.",
+      "title": "",
+      "tts": {
+        "text": "Umesto izvoza samo težina adaptera, Anslot Studio je objavio ažuriranje koje omogućava direktan izvoz potpuno fino podešenog modela u ge ge u ef formatu.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Grafička kartica namenjena potrošačima, sa 24 gigabajta memorije, sada omogućava praktičan rad.",
+      "text_markdown": "Grafička kartica namenjena potrošačima, sa 24 gigabajta memorije, sada omogućava praktičan rad.",
+      "title": "",
+      "tts": {
+        "text": "Grafička kartica namenjena potrošačima, sa dvadeset četiri gigabajta memorije, sada omogućava praktičan rad.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovo je jednostavna osnova zahvaljujući kojoj sve ostalo u ovoj epizodi postaje stvarnost.",
+      "text_markdown": "Ovo je jednostavna osnova zahvaljujući kojoj sve ostalo u ovoj epizodi postaje stvarnost.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je jednostavna osnova zahvaljujući kojoj sve ostalo u ovoj epizodi postaje stvarnost.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sada nastavljamo glavnu priču.",
+      "text_markdown": "Sada nastavljamo glavnu priču.",
+      "title": "",
+      "tts": {
+        "text": "Sada nastavljamo glavnu priču.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Opremu ste najavili.",
+      "text_markdown": "Opremu ste najavili.",
+      "title": "",
+      "tts": {
+        "text": "Opremu ste najavili.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Jesam, a poenta je sledeća: oprema za samostalnu izradu ove nedelje je dostigla punu zrelost.",
+      "text_markdown": "Jesam, a poenta je sledeća: oprema za samostalnu izradu ove nedelje je dostigla punu zrelost.",
+      "title": "",
+      "tts": {
+        "text": "Jesam, a poenta je sledeća, oprema za samostalnu izradu ove nedelje je dostigla punu zrelost.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Počnimo od hardverske strane.",
+      "text_markdown": "Počnimo od hardverske strane.",
+      "title": "",
+      "tts": {
+        "text": "Počnimo od hardverske strane.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Dve kutije se sada zapravo isporučuju po potrošačkim cenama.",
+      "text_markdown": "Dve kutije se sada zapravo isporučuju po potrošačkim cenama.",
+      "title": "",
+      "tts": {
+        "text": "Dve kutije se sada zapravo isporučuju po potrošačkim cenama.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "AMD je u junu otvorio prednarudžbine za mini računar Ryzen AI Halo, po ceni od 3.999 dolara.",
+      "text_markdown": "AMD je u junu otvorio prednarudžbine za mini računar Ryzen AI Halo, po ceni od 3.999 dolara.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija AMD je u junu otvorila prednarudžbine za mini računar Rajzen AI Halo, po ceni od tri hiljade devetsto devedeset devet dolara.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Pokreće ga Ryzen AI Max+ 395 sa 128 GB objedinjene LPDDR5X memorije, a zasad se može kupiti isključivo u prodavnicama Micro Center.",
+      "text_markdown": "Pokreće ga Ryzen AI Max+ 395 sa 128 GB objedinjene LPDDR5X memorije, a zasad se može kupiti isključivo u prodavnicama Micro Center.",
+      "title": "",
+      "tts": {
+        "text": "Pokreće ga Rajzen Ej Aj Maks Plus trista devedeset pet sa sto dvadeset osam gigabajta objedinjene el pe de de er pet iks memorije, a zasad se može kupiti isključivo u prodavnicama Majkro Senter.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A kakva je trenutna situacija u kompaniji NVIDIA?",
+      "text_markdown": "A kakva je trenutna situacija u kompaniji NVIDIA?",
+      "title": "",
+      "tts": {
+        "text": "A kakva je trenutna situacija u kompaniji Envidija?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "NVIDIA DGX Spark je uređaj namenjen poređenju.",
+      "text_markdown": "NVIDIA DGX Spark je uređaj namenjen poređenju.",
+      "title": "",
+      "tts": {
+        "text": "Envidija Di Dži Eks Spark je uređaj namenjen poređenju.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Opremljen je čipom GB10 iz porodice Grejs Blekvel i ima istih 128 gigabajta objedinjene memorije.",
+      "text_markdown": "Opremljen je čipom GB10 iz porodice Grejs Blekvel i ima istih 128 gigabajta objedinjene memorije.",
+      "title": "",
+      "tts": {
+        "text": "Opremljen je čipom dži bi deset iz porodice Grejs Blekvel i ima istih sto dvadeset osam gigabajta objedinjene memorije.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Cena je nedavno, zbog nestašice memorije širom sveta, porasla sa 3.999 na 4.699.",
+      "text_markdown": "Cena je nedavno, zbog nestašice memorije širom sveta, porasla sa 3.999 na 4.699.",
+      "title": "",
+      "tts": {
+        "text": "Cena je nedavno, zbog nestašice memorije širom sveta, porasla sa tri hiljade devetsto devedeset devet na četiri hiljade šeststo devedeset devet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Koliko veliki model ovi zapravo mogu da podrže?",
+      "text_markdown": "Koliko veliki model ovi zapravo mogu da podrže?",
+      "title": "",
+      "tts": {
+        "text": "Koliko veliki model ovi zapravo mogu da podrže?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Podržava modele sa približno 200 milijardi parametara, uz četvorobitnu kvantizaciju i dovoljno veliki kontekstni prostor.",
+      "text_markdown": "Podržava modele sa približno 200 milijardi parametara, uz četvorobitnu kvantizaciju i dovoljno veliki kontekstni prostor.",
+      "title": "",
+      "tts": {
+        "text": "Podržava modele sa približno dvesta milijardi parametara, uz četvorobitnu kvantizaciju i dovoljno veliki kontekstni prostor.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Povežite dva DGX Spark uređaja putem ConnectX-7 mreže i dobićete ukupan kapacitet za približno 400 milijardi parametara.",
+      "text_markdown": "Povežite dva DGX Spark uređaja putem ConnectX-7 mreže i dobićete ukupan kapacitet za približno 400 milijardi parametara.",
+      "title": "",
+      "tts": {
+        "text": "Povežite dva de ge iks spark uređaja putem konekt iks sedam mreže i dobićete ukupan kapacitet za približno četiri stotine milijardi parametara.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za stoni računar, to su zaista vrhunske performanse.",
+      "text_markdown": "Za stoni računar, to su zaista vrhunske performanse.",
+      "title": "",
+      "tts": {
+        "text": "Za stoni računar, to su zaista vrhunske performanse.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sada se okrećemo softverskoj tehnologiji.",
+      "text_markdown": "Sada se okrećemo softverskoj tehnologiji.",
+      "title": "",
+      "tts": {
+        "text": "Sada se okrećemo softverskoj tehnologiji.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Upravo smo pred našim očima videli tu promenu.",
+      "text_markdown": "Upravo smo pred našim očima videli tu promenu.",
+      "title": "",
+      "tts": {
+        "text": "Upravo smo pred našim očima videli tu promenu.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za inferenciju možete koristiti redovno održavane i veoma brze alate vLLM, SGLang, llama.cpp, Ollama i MLX za Apple Silicon.",
+      "text_markdown": "Za inferenciju možete koristiti redovno održavane i veoma brze alate vLLM, SGLang, llama.cpp, Ollama i MLX za Apple Silicon.",
+      "title": "",
+      "tts": {
+        "text": "Za inferenciju možete koristiti redovno održavane i veoma brze alate vi el el em, es ge lang, lama ce pe pe, olama i em el iks za Epl silikon.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za same modele ove nedelje imate težine za Nemotron 3 Ultra, Kimi K2.6, DeepSeek V4-Flash i GLM-5.1, dok težine za MiniMax M3 stižu uskoro.",
+      "text_markdown": "Za same modele ove nedelje imate težine za Nemotron 3 Ultra, Kimi K2.6, DeepSeek V4-Flash i GLM-5.1, dok težine za MiniMax M3 stižu uskoro.",
+      "title": "",
+      "tts": {
+        "text": "За саме моделе ове недеље имате тежине за Немотрон три Алтра, Кими ка два тачка шест, Дипсик ве четири Флеш и ге ел ем пет тачка један, док тежине за Минимакс ем три стижу ускоро.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za fino podešavanje, Unsloth Studio sada nudi kompletno podešavanje u GGUF formatu, i to jednim klikom.",
+      "text_markdown": "Za fino podešavanje, Unsloth Studio sada nudi kompletno podešavanje u GGUF formatu, i to jednim klikom.",
+      "title": "",
+      "tts": {
+        "text": "Za fino podešavanje, Anslot studio sada nudi kompletno podešavanje u ge ge u ef formatu, i to jednim klikom.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Za rad sa agentima dostupni su alati Aider, Continue i LangGraph 1, koji lokalne modele sa 32 milijarde parametara pokreću dovoljno pouzdano za praktičnu upotrebu.",
+      "text_markdown": "Za rad sa agentima dostupni su alati Aider, Continue i LangGraph 1, koji lokalne modele sa 32 milijarde parametara pokreću dovoljno pouzdano za praktičnu upotrebu.",
+      "title": "",
+      "tts": {
+        "text": "Za rad sa agentima dostupni su alati Ejder, Kontinju i Langgraf verzija jedan, koji lokalne modele sa trideset dve milijarde parametara pokreću dovoljno pouzdano za praktičnu upotrebu.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "To je čitava petlja.",
+      "text_markdown": "To je čitava petlja.",
+      "title": "",
+      "tts": {
+        "text": "To je čitava petlja.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ovako izgleda čitava petlja, od početka do kraja.",
+      "text_markdown": "Ovako izgleda čitava petlja, od početka do kraja.",
+      "title": "",
+      "tts": {
+        "text": "Ovako izgleda čitava petlja, od početka do kraja.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Danas svaki sloj, od silicijuma, preko pogonskog sistema i modela, do finog podešavanja i agenta, ima pouzdanu opciju otvorenog koda, dok najniži sloj čini mali računar pored stola.",
+      "text_markdown": "Danas svaki sloj, od silicijuma, preko pogonskog sistema i modela, do finog podešavanja i agenta, ima pouzdanu opciju otvorenog koda, dok najniži sloj čini mali računar pored stola.",
+      "title": "",
+      "tts": {
+        "text": "Danas svaki sloj, od silicijuma, preko pogonskog sistema i modela, do finog podešavanja i agenta, ima pouzdanu opciju otvorenog koda, dok najniži sloj čini mali računar pored stola.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "A kakva je situacija u ekonomiji?",
+      "text_markdown": "A kakva je situacija u ekonomiji?",
+      "title": "",
+      "tts": {
+        "text": "A kakva je situacija u ekonomiji?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Privreda je ove nedelje napravila preokret koji je nemoguće prevideti.",
+      "text_markdown": "Privreda je ove nedelje napravila preokret koji je nemoguće prevideti.",
+      "title": "",
+      "tts": {
+        "text": "Privreda je ove nedelje napravila preokret koji je nemoguće prevideti.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Copilot sa merenjem tokena, Anthropic S-1 koji signalizira predstojeći pritisak na cene, i upozorenja o mreži iz Teksasa, Virdžinije i Ohaja o teškom letu.",
+      "text_markdown": "Copilot sa merenjem tokena, Anthropic S-1 koji signalizira predstojeći pritisak na cene, i upozorenja o mreži iz Teksasa, Virdžinije i Ohaja o teškom letu.",
+      "title": "",
+      "tts": {
+        "text": "Kopajlot sa merenjem tokena, Antropik es jedan koji signalizira predstojeći pritisak na cene, i upozorenja o mreži iz Teksasa, Virdžinije i Ohaja o teškom letu.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nekada su razlozi za držanje sistema na sopstvenim serverima bili ideološki.",
+      "text_markdown": "Nekada su razlozi za držanje sistema na sopstvenim serverima bili ideološki.",
+      "title": "",
+      "tts": {
+        "text": "Nekada su razlozi za držanje sistema na sopstvenim serverima bili ideološki.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ove nedelje sve je poprimilo oblik tabelarnog pregleda.",
+      "text_markdown": "Ove nedelje sve je poprimilo oblik tabelarnog pregleda.",
+      "title": "",
+      "tts": {
+        "text": "Ove nedelje sve je poprimilo oblik tabelarnog pregleda.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Iskreno recite šta se nije promenilo.",
+      "text_markdown": "Iskreno recite šta se nije promenilo.",
+      "title": "",
+      "tts": {
+        "text": "Iskreno recite šta se nije promenilo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Važno je naglasiti da vaša radna površina ne nadmašuje oblak kada je reč o vrhunskom kvalitetu.",
+      "text_markdown": "Važno je naglasiti da vaša radna površina ne nadmašuje oblak kada je reč o vrhunskom kvalitetu.",
+      "title": "",
+      "tts": {
+        "text": "Važno je naglasiti da vaša radna površina ne nadmašuje oblak kada je reč o vrhunskom kvalitetu.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Opus 4.8 i dalje predvodi kompozit, a GPT-5.5 i dalje drži BrowseComp.",
+      "text_markdown": "Opus 4.8 i dalje predvodi kompozit, a GPT-5.5 i dalje drži BrowseComp.",
+      "title": "",
+      "tts": {
+        "text": "Opus četiri tačka osam i dalje predvodi kompozit, a Dži Pi Ti pet tačka pet i dalje drži BrauzKomp.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ove nedelje promenio se pod.",
+      "text_markdown": "Ove nedelje promenio se pod.",
+      "title": "",
+      "tts": {
+        "text": "Ove nedelje promenio se pod.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Moćni modeli sa javno dostupnim težinama mogu samostalno da izvršavaju zadatke i dodatno se obučavaju na vašoj opremi.",
+      "text_markdown": "Moćni modeli sa javno dostupnim težinama mogu samostalno da izvršavaju zadatke i dodatno se obučavaju na vašoj opremi.",
+      "title": "",
+      "tts": {
+        "text": "Moćni modeli sa javno dostupnim težinama mogu samostalno da izvršavaju zadatke i dodatno se obučavaju na vašoj opremi.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "To je cela priča.",
+      "text_markdown": "To je cela priča.",
+      "title": "",
+      "tts": {
+        "text": "To je cela priča.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nekada je za takvu obradu bio potreban čitav centar podataka.",
+      "text_markdown": "Nekada je za takvu obradu bio potreban čitav centar podataka.",
+      "title": "",
+      "tts": {
+        "text": "Nekada je za takvu obradu bio potreban čitav centar podataka.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ove nedelje, biće vam potreban stoni računar.",
+      "text_markdown": "Ove nedelje, biće vam potreban stoni računar.",
+      "title": "",
+      "tts": {
+        "text": "Ove nedelje, biće vam potreban stoni računar.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hajde da obradimo koncept nedelje.",
+      "text_markdown": "Hajde da obradimo koncept nedelje.",
+      "title": "",
+      "tts": {
+        "text": "Hajde da obradimo koncept nedelje.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Izabrali ste dekodiranje uz predviđanje.",
+      "text_markdown": "Izabrali ste dekodiranje uz predviđanje.",
+      "title": "",
+      "tts": {
+        "text": "Izabrali ste dekodiranje uz predviđanje.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Upravo taj trik čini da sve o čemu smo pričali deluje brzo.",
+      "text_markdown": "Upravo taj trik čini da sve o čemu smo pričali deluje brzo.",
+      "title": "",
+      "tts": {
+        "text": "Upravo taj trik čini da sve o čemu smo pričali deluje brzo.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kompanija MiniMax tvrdnju o 15 puta bržem dekodiranju zasniva na rezultatima srodnog modela.",
+      "text_markdown": "Kompanija MiniMax tvrdnju o 15 puta bržem dekodiranju zasniva na rezultatima srodnog modela.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija MiniMaks tvrdnju o petnaest puta bržem dekodiranju zasniva na rezultatima srodnog modela.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Režim nacrtnog modela u programu Llama.cpp koristi upravo ovu ideju.",
+      "text_markdown": "Režim nacrtnog modela u programu Llama.cpp koristi upravo ovu ideju.",
+      "title": "",
+      "tts": {
+        "text": "Režim nacrtnog modela u programu Lama koristi upravo ovu ideju.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Provedite nas kroz ceo proces.",
+      "text_markdown": "Provedite nas kroz ceo proces.",
+      "title": "",
+      "tts": {
+        "text": "Provedite nas kroz ceo proces.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Paralelno pokrećete dva modela.",
+      "text_markdown": "Paralelno pokrećete dva modela.",
+      "title": "",
+      "tts": {
+        "text": "Paralelno pokrećete dva modela.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mali i brzi model naziva se predlagač, a veliki i spori model naziva se proveravač.",
+      "text_markdown": "Mali i brzi model naziva se predlagač, a veliki i spori model naziva se proveravač.",
+      "title": "",
+      "tts": {
+        "text": "Mali i brzi model naziva se predlagač, a veliki i spori model naziva se proveravač.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Recimo, nacrtač u jednom pokušaju predviđa naredna četiri tokena.",
+      "text_markdown": "Recimo, nacrtač u jednom pokušaju predviđa naredna četiri tokena.",
+      "title": "",
+      "tts": {
+        "text": "Recimo, nacrtač u jednom pokušaju predviđa naredna četiri tokena.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sistem za kontrolu istovremeno pregleda sva četiri.",
+      "text_markdown": "Sistem za kontrolu istovremeno pregleda sva četiri.",
+      "title": "",
+      "tts": {
+        "text": "Sistem za kontrolu istovremeno pregleda sva četiri.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dobro, šta sledi posle toga?",
+      "text_markdown": "Dobro, šta sledi posle toga?",
+      "title": "",
+      "tts": {
+        "text": "Dobro, šta sledi posle toga?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ako proverivač potvrdi rezultat, zadržavate sva četiri žetona i nastavljate dalje, pa obrađujete četiri žetona uz trošak približno jednak jednom žetonu.",
+      "text_markdown": "Ako proverivač potvrdi rezultat, zadržavate sva četiri žetona i nastavljate dalje, pa obrađujete četiri žetona uz trošak približno jednak jednom žetonu.",
+      "title": "",
+      "tts": {
+        "text": "Ako proverivač potvrdi rezultat, zadržavate sva četiri žetona i nastavljate dalje, pa obrađujete četiri žetona uz trošak približno jednak jednom žetonu.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ako se odgovori ne podudaraju, prihvatate sve do prvog mesta gde se razlikuju, a zatim velikom modelu prepuštate da nastavi.",
+      "text_markdown": "Ako se odgovori ne podudaraju, prihvatate sve do prvog mesta gde se razlikuju, a zatim velikom modelu prepuštate da nastavi.",
+      "title": "",
+      "tts": {
+        "text": "Ako se odgovori ne podudaraju, prihvatate sve do prvog mesta gde se razlikuju, a zatim velikom modelu prepuštate da nastavi.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dakle, odgovor ostaje nepromenjen.",
+      "text_markdown": "Dakle, odgovor ostaje nepromenjen.",
+      "title": "",
+      "tts": {
+        "text": "Dakle, odgovor ostaje nepromenjen.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Upravo se u tome krije prava elegancija.",
+      "text_markdown": "Upravo se u tome krije prava elegancija.",
+      "title": "",
+      "tts": {
+        "text": "Upravo se u tome krije prava elegancija.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Rezultat je upravo onakav kakav bi veliki model samostalno proizveo.",
+      "text_markdown": "Rezultat je upravo onakav kakav bi veliki model samostalno proizveo.",
+      "title": "",
+      "tts": {
+        "text": "Rezultat je upravo onakav kakav bi veliki model samostalno proizveo.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Manji broj njegovih prolazaka jednostavno ste platili unapred.",
+      "text_markdown": "Manji broj njegovih prolazaka jednostavno ste platili unapred.",
+      "title": "",
+      "tts": {
+        "text": "Manji broj njegovih prolazaka jednostavno ste platili unapred.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Zašto je to bitno nekome ko se ovim bavi iz hobija?",
+      "text_markdown": "Zašto je to bitno nekome ko se ovim bavi iz hobija?",
+      "title": "",
+      "tts": {
+        "text": "Zašto je to bitno nekome ko se ovim bavi iz hobija?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Model sa 70 milijardi parametara na jednoj kartici više nije novitet, već praktičan sagovornik.",
+      "text_markdown": "Model sa 70 milijardi parametara na jednoj kartici više nije novitet, već praktičan sagovornik.",
+      "title": "",
+      "tts": {
+        "text": "Model sa sedamdeset milijardi parametara na jednoj kartici više nije novitet, već praktičan sagovornik.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "A na telefonu, to je deo onoga što čini da asistent na uređaju brzo reaguje.",
+      "text_markdown": "A na telefonu, to je deo onoga što čini da asistent na uređaju brzo reaguje.",
+      "title": "",
+      "tts": {
+        "text": "A na telefonu, to je deo onoga što čini da asistent na uređaju brzo reaguje.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Koncept neuronskih kodera zvuka iz prošle nedelje bio je zvučna verzija istog trika, sa manje skupih koraka i bez gubitka kvaliteta.",
+      "text_markdown": "Koncept neuronskih kodera zvuka iz prošle nedelje bio je zvučna verzija istog trika, sa manje skupih koraka i bez gubitka kvaliteta.",
+      "title": "",
+      "tts": {
+        "text": "Koncept neuronskih kodera zvuka iz prošle nedelje bio je zvučna verzija istog trika, sa manje skupih koraka i bez gubitka kvaliteta.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kojim pravcem bi radoznali mogli da nastave istraživanje?",
+      "text_markdown": "Kojim pravcem bi radoznali mogli da nastave istraživanje?",
+      "title": "",
+      "tts": {
+        "text": "Kojim pravcem bi radoznali mogli da nastave istraživanje?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Istražite EAGLE-3, Medusu i dekodiranje s pogledom unapred.",
+      "text_markdown": "Istražite EAGLE-3, Medusu i dekodiranje s pogledom unapred.",
+      "title": "",
+      "tts": {
+        "text": "Istražite model Orao tri, Medusu i dekodiranje s pogledom unapred.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Oni su savremeni naslednici izvorne zamisli o autoru nacrta i njegovom proveravaču, a upravo oni ispod haube pokreću vaš mehanizam zaključivanja.",
+      "text_markdown": "Oni su savremeni naslednici izvorne zamisli o autoru nacrta i njegovom proveravaču, a upravo oni ispod haube pokreću vaš mehanizam zaključivanja.",
+      "title": "",
+      "tts": {
+        "text": "Oni su savremeni naslednici izvorne zamisli o autoru nacrta i njegovom proveravaču, a upravo oni ispod haube pokreću vaš mehanizam zaključivanja.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Upravo ovde treba da završimo.",
+      "text_markdown": "Upravo ovde treba da završimo.",
+      "title": "",
+      "tts": {
+        "text": "Upravo ovde treba da završimo.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hvala ti, Rone, zaista.",
+      "text_markdown": "Hvala ti, Rone, zaista.",
+      "title": "",
+      "tts": {
+        "text": "Hvala ti, Rone, zaista.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kao što je uvek slučaj, Vindy.",
+      "text_markdown": "Kao što je uvek slučaj, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kao što je uvek slučaj, Vindi.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Slušali ste nedeljni pregled veštačke inteligencije za 3. jun 2026.",
+      "text_markdown": "Slušali ste nedeljni pregled veštačke inteligencije za 3. jun 2026.",
+      "title": "",
+      "tts": {
+        "text": "Slušali ste nedeljni pregled veštačke inteligencije za treći jun dve hiljade dvadeset šeste.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Novo izdanje izlazi naredne srede.",
+      "text_markdown": "Novo izdanje izlazi naredne srede.",
+      "title": "",
+      "tts": {
+        "text": "Novo izdanje izlazi naredne srede.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Do tada, budite na oprezu.",
+      "text_markdown": "Do tada, budite na oprezu.",
+      "title": "",
+      "tts": {
+        "text": "Do tada, budite na oprezu.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

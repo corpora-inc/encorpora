@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Toendra",
+      "text_markdown": "De Toendra"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar dit bioom groeit",
+      "text_markdown": "Waar dit bioom groeit"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in de toendra.",
+      "text_markdown": "Welkom in de toendra.",
+      "tts": {
+        "text": "Welkom in de toendra.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de aarde met eigen weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de aarde met eigen weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de aarde met eigen weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is een koud, open land waar het te koud is voor bomen.",
+      "text_markdown": "De toendra is een koud, open land waar het te koud is voor bomen.",
+      "tts": {
+        "text": "De toendra is een koud, open land waar het te koud is voor bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het woord toendra komt van een oud woord dat boomloze vlakte betekent.",
+      "text_markdown": "Het woord toendra komt van een oud woord dat boomloze vlakte betekent.",
+      "tts": {
+        "text": "Het woord toendra komt van een oud woord dat boomloze vlakte betekent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is het koudste bioom op het land.",
+      "text_markdown": "De toendra is het koudste bioom op het land.",
+      "tts": {
+        "text": "De toendra is het koudste bioom op het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste deel van de toendra ligt in een brede ring rond de top van de wereld.",
+      "text_markdown": "Het grootste deel van de toendra ligt in een brede ring rond de top van de wereld.",
+      "tts": {
+        "text": "Het grootste deel van de toendra ligt in een brede ring rond de top van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bedekt de noordranden van Canada, Alaska en Groenland, in Noord-Amerika.",
+      "text_markdown": "Ze bedekt de noordranden van Canada, Alaska en Groenland, in Noord-Amerika.",
+      "tts": {
+        "text": "Ze bedekt de noordranden van Canada, Alaska en Groenland, in Noord Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bedekt het verre noorden van Noorwegen, Zweden en Finland, in Noord-Europa.",
+      "text_markdown": "Ze bedekt het verre noorden van Noorwegen, Zweden en Finland, in Noord-Europa.",
+      "tts": {
+        "text": "Ze bedekt het verre noorden van Noorwegen, Zweden en Finland, in Noord Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bedekt de lange noordkust van Rusland, langs de top van Azië.",
+      "text_markdown": "Ze bedekt de lange noordkust van Rusland, langs de top van Azië.",
+      "tts": {
+        "text": "Ze bedekt de lange noordkust van Rusland, langs de top van Azië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze koude ring van land ligt ten noorden van het boreale woud en rond de bevroren zee.",
+      "text_markdown": "Deze koude ring van land ligt ten noorden van het boreale woud en rond de bevroren zee.",
+      "tts": {
+        "text": "Deze koude ring van land ligt ten noorden van het boreale woud en rond de bevroren zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er bestaat ook nog een andere soort toendra.",
+      "text_markdown": "Er bestaat ook nog een andere soort toendra.",
+      "tts": {
+        "text": "Er bestaat ook nog een andere soort toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog in de bergen, boven de laatste bomen, verschijnt hetzelfde koude, open land.",
+      "text_markdown": "Hoog in de bergen, boven de laatste bomen, verschijnt hetzelfde koude, open land.",
+      "tts": {
+        "text": "Hoog in de bergen, boven de laatste bomen, verschijnt hetzelfde koude, open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze bergtoendra vind je op hoge toppen over de hele wereld, zelfs bij het warme midden van de aarde.",
+      "text_markdown": "Deze bergtoendra vind je op hoge toppen over de hele wereld, zelfs bij het warme midden van de aarde.",
+      "tts": {
+        "text": "Deze bergtoendra vind je op hoge toppen over de hele wereld, zelfs bij het warme midden van de aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar ze ook ligt, de toendra is een land van lage planten, koude wind en wijde hemel.",
+      "text_markdown": "Waar ze ook ligt, de toendra is een land van lage planten, koude wind en wijde hemel.",
+      "tts": {
+        "text": "Waar ze ook ligt, de toendra is een land van lage planten, koude wind en wijde hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier zijn geen bossen.",
+      "text_markdown": "Hier zijn geen bossen.",
+      "tts": {
+        "text": "Hier zijn geen bossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grond is het grootste deel van het jaar hard bevroren.",
+      "text_markdown": "De grond is het grootste deel van het jaar hard bevroren.",
+      "tts": {
+        "text": "De grond is het grootste deel van het jaar hard bevroren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar zelfs op deze koude plek vindt het leven een weg.",
+      "text_markdown": "Maar zelfs op deze koude plek vindt het leven een weg.",
+      "tts": {
+        "text": "Maar zelfs op deze koude plek vindt het leven een weg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is het grootste deel van het jaar koud, droog en winderig.",
+      "text_markdown": "De toendra is het grootste deel van het jaar koud, droog en winderig.",
+      "tts": {
+        "text": "De toendra is het grootste deel van het jaar koud, droog en winderig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De winter is lang, donker en bitter koud.",
+      "text_markdown": "De winter is lang, donker en bitter koud.",
+      "tts": {
+        "text": "De winter is lang, donker en bitter koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het verre noorden kan de winter acht of negen maanden duren.",
+      "text_markdown": "In het verre noorden kan de winter acht of negen maanden duren.",
+      "tts": {
+        "text": "In het verre noorden kan de winter acht of negen maanden duren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lucht kan ver onder het vriespunt zakken, kouder dan een diepvriezer.",
+      "text_markdown": "De lucht kan ver onder het vriespunt zakken, kouder dan een diepvriezer.",
+      "tts": {
+        "text": "De lucht kan ver onder het vriespunt zakken, kouder dan een diepvriezer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vele weken in het diepst van de winter komt de zon helemaal niet op.",
+      "text_markdown": "Vele weken in het diepst van de winter komt de zon helemaal niet op.",
+      "tts": {
+        "text": "Vele weken in het diepst van de winter komt de zon helemaal niet op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land ligt in een lange blauwe en donkere schemering, dag na dag.",
+      "text_markdown": "Het land ligt in een lange blauwe en donkere schemering, dag na dag.",
+      "tts": {
+        "text": "Het land ligt in een lange blauwe en donkere schemering, dag na dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sterke winden waaien over het open land, zonder bomen om ze te remmen.",
+      "text_markdown": "Sterke winden waaien over het open land, zonder bomen om ze te remmen.",
+      "tts": {
+        "text": "Sterke winden waaien over het open land, zonder bomen om ze te remmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind pakt de droge sneeuw op en jaagt haar over de grond.",
+      "text_markdown": "De wind pakt de droge sneeuw op en jaagt haar over de grond.",
+      "tts": {
+        "text": "De wind pakt de droge sneeuw op en jaagt haar over de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er valt hier heel weinig sneeuw of regen.",
+      "text_markdown": "Er valt hier heel weinig sneeuw of regen.",
+      "tts": {
+        "text": "Er valt hier heel weinig sneeuw of regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is zo droog dat ze soms een koude woestijn wordt genoemd.",
+      "text_markdown": "De toendra is zo droog dat ze soms een koude woestijn wordt genoemd.",
+      "tts": {
+        "text": "De toendra is zo droog dat ze soms een koude woestijn wordt genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het water dat wel valt, kan niet in de bevroren grond zakken.",
+      "text_markdown": "Maar het water dat wel valt, kan niet in de bevroren grond zakken.",
+      "tts": {
+        "text": "Maar het water dat wel valt, kan niet in de bevroren grond zakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus blijft het bovenop liggen, en het land is bezaaid met ondiepe plassen en natte grond.",
+      "text_markdown": "Dus blijft het bovenop liggen, en het land is bezaaid met ondiepe plassen en natte grond.",
+      "tts": {
+        "text": "Dus blijft het bovenop liggen, en het land is bezaaid met ondiepe plassen en natte grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zomer is kort en koel.",
+      "text_markdown": "De zomer is kort en koel.",
+      "tts": {
+        "text": "De zomer is kort en koel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar weken lang blijft de zon bijna dag en nacht aan de hemel.",
+      "text_markdown": "Een paar weken lang blijft de zon bijna dag en nacht aan de hemel.",
+      "tts": {
+        "text": "Een paar weken lang blijft de zon bijna dag en nacht aan de hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bovenlaag van de bevroren grond wordt zacht, en het land wordt groen en helder.",
+      "text_markdown": "De bovenlaag van de bevroren grond wordt zacht, en het land wordt groen en helder.",
+      "tts": {
+        "text": "De bovenlaag van de bevroren grond wordt zacht, en het land wordt groen en helder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zelfs in de zomer blijft de lucht koel, en elke nacht kan de vorst terugkeren.",
+      "text_markdown": "Zelfs in de zomer blijft de lucht koel, en elke nacht kan de vorst terugkeren.",
+      "tts": {
+        "text": "Zelfs in de zomer blijft de lucht koel, en elke nacht kan de vorst terugkeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan eindigt de korte zomer, zakt de zon laag, en begint de lange winter opnieuw.",
+      "text_markdown": "Dan eindigt de korte zomer, zakt de zon laag, en begint de lange winter opnieuw.",
+      "tts": {
+        "text": "Dan eindigt de korte zomer, zakt de zon laag, en begint de lange winter opnieuw.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het belangrijkste aan de toendra ligt onder je voeten.",
+      "text_markdown": "Het belangrijkste aan de toendra ligt onder je voeten.",
+      "tts": {
+        "text": "Het belangrijkste aan de toendra ligt onder je voeten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onder het oppervlak is de grond het hele jaar keihard bevroren.",
+      "text_markdown": "Onder het oppervlak is de grond het hele jaar keihard bevroren.",
+      "tts": {
+        "text": "Onder het oppervlak is de grond het hele jaar keihard bevroren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze bevroren grond heet permafrost.",
+      "text_markdown": "Deze bevroren grond heet permafrost.",
+      "tts": {
+        "text": "Deze bevroren grond heet permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken reikt de permafrost dieper dan het hoogste gebouw.",
+      "text_markdown": "Op sommige plekken reikt de permafrost dieper dan het hoogste gebouw.",
+      "tts": {
+        "text": "Op sommige plekken reikt de permafrost dieper dan het hoogste gebouw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze is al duizenden jaren bevroren.",
+      "text_markdown": "Ze is al duizenden jaren bevroren.",
+      "tts": {
+        "text": "Ze is al duizenden jaren bevroren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer ontdooit alleen de allerbovenste laag van de bodem.",
+      "text_markdown": "In de zomer ontdooit alleen de allerbovenste laag van de bodem.",
+      "tts": {
+        "text": "In de zomer ontdooit alleen de allerbovenste laag van de bodem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In deze dunne ontdooide laag moeten alle planten leven.",
+      "text_markdown": "In deze dunne ontdooide laag moeten alle planten leven.",
+      "tts": {
+        "text": "In deze dunne ontdooide laag moeten alle planten leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun wortels kunnen niet diep gaan, want vlak eronder is de grond hard als steen.",
+      "text_markdown": "Hun wortels kunnen niet diep gaan, want vlak eronder is de grond hard als steen.",
+      "tts": {
+        "text": "Hun wortels kunnen niet diep gaan, want vlak eronder is de grond hard als steen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bevroren grond houdt ook water aan het oppervlak vast.",
+      "text_markdown": "De bevroren grond houdt ook water aan het oppervlak vast.",
+      "tts": {
+        "text": "De bevroren grond houdt ook water aan het oppervlak vast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regen en smeltende sneeuw kunnen niet door de permafrost wegzakken.",
+      "text_markdown": "Regen en smeltende sneeuw kunnen niet door de permafrost wegzakken.",
+      "tts": {
+        "text": "Regen en smeltende sneeuw kunnen niet door de permafrost wegzakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus in de zomer wordt de toendra een land van ondiepe plassen, moerassen en trage beekjes.",
+      "text_markdown": "Dus in de zomer wordt de toendra een land van ondiepe plassen, moerassen en trage beekjes.",
+      "tts": {
+        "text": "Dus in de zomer wordt de toendra een land van ondiepe plassen, moerassen en trage beekjes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Van boven glinstert de zomertoendra met duizenden kleine vennen.",
+      "text_markdown": "Van boven glinstert de zomertoendra met duizenden kleine vennen.",
+      "tts": {
+        "text": "Van boven glinstert de zomertoendra met duizenden kleine vennen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land zelf is meestal vlak of licht glooiend.",
+      "text_markdown": "Het land zelf is meestal vlak of licht glooiend.",
+      "tts": {
+        "text": "Het land zelf is meestal vlak of licht glooiend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op veel plekken is de grond door bevriezen en ontdooien in vreemde vormen gebroken.",
+      "text_markdown": "Op veel plekken is de grond door bevriezen en ontdooien in vreemde vormen gebroken.",
+      "tts": {
+        "text": "Op veel plekken is de grond door bevriezen en ontdooien in vreemde vormen gebroken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bodem bevriest en komt omhoog, ontdooit dan en zakt weer, jaar na jaar.",
+      "text_markdown": "De bodem bevriest en komt omhoog, ontdooit dan en zakt weer, jaar na jaar.",
+      "tts": {
+        "text": "De bodem bevriest en komt omhoog, ontdooit dan en zakt weer, jaar na jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze trage beweging breekt de grond in ringen, strepen en lage heuveltjes.",
+      "text_markdown": "Deze trage beweging breekt de grond in ringen, strepen en lage heuveltjes.",
+      "tts": {
+        "text": "Deze trage beweging breekt de grond in ringen, strepen en lage heuveltjes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bodem van de toendra is dun en arm en koud.",
+      "text_markdown": "De bodem van de toendra is dun en arm en koud.",
+      "tts": {
+        "text": "De bodem van de toendra is dun en arm en koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dode planten vergaan heel traag in de kou, dus goede grond ontstaat langzaam.",
+      "text_markdown": "Dode planten vergaan heel traag in de kou, dus goede grond ontstaat langzaam.",
+      "tts": {
+        "text": "Dode planten vergaan heel traag in de kou, dus goede grond ontstaat langzaam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is een hard land, bevroren en nat en kaal, maar het zit stilletjes vol leven.",
+      "text_markdown": "Het is een hard land, bevroren en nat en kaal, maar het zit stilletjes vol leven.",
+      "tts": {
+        "text": "Het is een hard land, bevroren en nat en kaal, maar het zit stilletjes vol leven.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planten van de toendra zijn klein, taai en laag bij de grond.",
+      "text_markdown": "De planten van de toendra zijn klein, taai en laag bij de grond.",
+      "tts": {
+        "text": "De planten van de toendra zijn klein, taai en laag bij de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier zijn geen bomen, want bomen kunnen niet leven in de bevroren grond en koude wind.",
+      "text_markdown": "Hier zijn geen bomen, want bomen kunnen niet leven in de bevroren grond en koude wind.",
+      "tts": {
+        "text": "Hier zijn geen bomen, want bomen kunnen niet leven in de bevroren grond en koude wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In plaats daarvan is de toendra bedekt met lage matten van kleine planten.",
+      "text_markdown": "In plaats daarvan is de toendra bedekt met lage matten van kleine planten.",
+      "tts": {
+        "text": "In plaats daarvan is de toendra bedekt met lage matten van kleine planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laag blijven is het geheim om hier te leven.",
+      "text_markdown": "Laag blijven is het geheim om hier te leven.",
+      "tts": {
+        "text": "Laag blijven is het geheim om hier te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bij de grond is de wind zwakker en de lucht een beetje warmer.",
+      "text_markdown": "Bij de grond is de wind zwakker en de lucht een beetje warmer.",
+      "tts": {
+        "text": "Bij de grond is de wind zwakker en de lucht een beetje warmer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel toendraplanten groeien in dichte kussens of dikke matten om hun warmte vast te houden.",
+      "text_markdown": "Veel toendraplanten groeien in dichte kussens of dikke matten om hun warmte vast te houden.",
+      "tts": {
+        "text": "Veel toendraplanten groeien in dichte kussens of dikke matten om hun warmte vast te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mossen groeien dik en zacht over een groot deel van de grond.",
+      "text_markdown": "Mossen groeien dik en zacht over een groot deel van de grond.",
+      "tts": {
+        "text": "Mossen groeien dik en zacht over een groot deel van de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korstmossen groeien op de kale rotsen en op de grond in grijze, groene en gele plekken.",
+      "text_markdown": "Korstmossen groeien op de kale rotsen en op de grond in grijze, groene en gele plekken.",
+      "tts": {
+        "text": "Korstmossen groeien op de kale rotsen en op de grond in grijze, groene en gele plekken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een korstmos is niet één plant maar twee soorten leven die samen als één leven.",
+      "text_markdown": "Een korstmos is niet één plant maar twee soorten leven die samen als één leven.",
+      "tts": {
+        "text": "Een korstmos is niet één plant maar twee soorten leven die samen als één leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korstmossen kunnen leven waar bijna niets anders kan, en ze groeien heel traag.",
+      "text_markdown": "Korstmossen kunnen leven waar bijna niets anders kan, en ze groeien heel traag.",
+      "tts": {
+        "text": "Korstmossen kunnen leven waar bijna niets anders kan, en ze groeien heel traag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige korstmossen op de toendra zijn honderden jaren oud.",
+      "text_markdown": "Sommige korstmossen op de toendra zijn honderden jaren oud.",
+      "tts": {
+        "text": "Sommige korstmossen op de toendra zijn honderden jaren oud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleine grassen en lage bloeiende planten groeien tussen de mossen.",
+      "text_markdown": "Kleine grassen en lage bloeiende planten groeien tussen de mossen.",
+      "tts": {
+        "text": "Kleine grassen en lage bloeiende planten groeien tussen de mossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de korte zomer barst de toendra in bloei.",
+      "text_markdown": "In de korte zomer barst de toendra in bloei.",
+      "tts": {
+        "text": "In de korte zomer barst de toendra in bloei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar heldere weken lang is de grond bedekt met kleine bloemen.",
+      "text_markdown": "Een paar heldere weken lang is de grond bedekt met kleine bloemen.",
+      "tts": {
+        "text": "Een paar heldere weken lang is de grond bedekt met kleine bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Overal zijn er kleine gele, witte, roze en paarse bloemen.",
+      "text_markdown": "Overal zijn er kleine gele, witte, roze en paarse bloemen.",
+      "tts": {
+        "text": "Overal zijn er kleine gele, witte, roze en paarse bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planten moeten snel bloeien, zaden maken en voedsel opslaan voordat de kou terugkeert.",
+      "text_markdown": "De planten moeten snel bloeien, zaden maken en voedsel opslaan voordat de kou terugkeert.",
+      "tts": {
+        "text": "De planten moeten snel bloeien, zaden maken en voedsel opslaan voordat de kou terugkeert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er groeien hier ook een paar kleine struiken, zoals dwergwilg en dwergberk.",
+      "text_markdown": "Er groeien hier ook een paar kleine struiken, zoals dwergwilg en dwergberk.",
+      "tts": {
+        "text": "Er groeien hier ook een paar kleine struiken, zoals dwergwilg en dwergberk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit zijn dezelfde soorten bomen die hoog groeien in warmere landen.",
+      "text_markdown": "Dit zijn dezelfde soorten bomen die hoog groeien in warmere landen.",
+      "tts": {
+        "text": "Dit zijn dezelfde soorten bomen die hoog groeien in warmere landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar hier groeien ze als kleine struikjes, niet hoger dan je enkel, kruipend over de grond.",
+      "text_markdown": "Maar hier groeien ze als kleine struikjes, niet hoger dan je enkel, kruipend over de grond.",
+      "tts": {
+        "text": "Maar hier groeien ze als kleine struikjes, niet hoger dan je enkel, kruipend over de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleine bessen rijpen aan sommige van deze lage planten aan het eind van de zomer.",
+      "text_markdown": "Kleine bessen rijpen aan sommige van deze lage planten aan het eind van de zomer.",
+      "tts": {
+        "text": "Kleine bessen rijpen aan sommige van deze lage planten aan het eind van de zomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren en de mensen van de toendra plukken ze zolang het kan.",
+      "text_markdown": "De dieren en de mensen van de toendra plukken ze zolang het kan.",
+      "tts": {
+        "text": "De dieren en de mensen van de toendra plukken ze zolang het kan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren van de toendra zijn gebouwd om met kou en wind te leven.",
+      "text_markdown": "De dieren van de toendra zijn gebouwd om met kou en wind te leven.",
+      "tts": {
+        "text": "De dieren van de toendra zijn gebouwd om met kou en wind te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van hen hebben dikke vacht of dikke veren, en een laag vet om warm te blijven.",
+      "text_markdown": "Veel van hen hebben dikke vacht of dikke veren, en een laag vet om warm te blijven.",
+      "tts": {
+        "text": "Veel van hen hebben dikke vacht of dikke veren, en een laag vet om warm te blijven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grootste dieren van de toendra zijn de kariboes, ook wel rendieren genoemd.",
+      "text_markdown": "De grootste dieren van de toendra zijn de kariboes, ook wel rendieren genoemd.",
+      "tts": {
+        "text": "De grootste dieren van de toendra zijn de kariboes, ook wel rendieren genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kariboes leven in grote kudden en leggen lange afstanden af over het open land.",
+      "text_markdown": "Kariboes leven in grote kudden en leggen lange afstanden af over het open land.",
+      "tts": {
+        "text": "Kariboes leven in grote kudden en leggen lange afstanden af over het open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer eten ze de toendraplanten, en in de winter graven ze door de sneeuw naar korstmossen.",
+      "text_markdown": "In de zomer eten ze de toendraplanten, en in de winter graven ze door de sneeuw naar korstmossen.",
+      "tts": {
+        "text": "In de zomer eten ze de toendraplanten, en in de winter graven ze door de sneeuw naar korstmossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De muskusos is nog een groot dier van de toendra.",
+      "text_markdown": "De muskusos is nog een groot dier van de toendra.",
+      "tts": {
+        "text": "De muskusos is nog een groot dier van de toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een muskusos heeft een zwaar lichaam en een dikke vacht van lang haar dat bijna tot de grond hangt.",
+      "text_markdown": "Een muskusos heeft een zwaar lichaam en een dikke vacht van lang haar dat bijna tot de grond hangt.",
+      "tts": {
+        "text": "Een muskusos heeft een zwaar lichaam en een dikke vacht van lang haar dat bijna tot de grond hangt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als wolven naderen, gaan de muskusossen in een ring staan, naar buiten gekeerd, om de jongen te beschermen.",
+      "text_markdown": "Als wolven naderen, gaan de muskusossen in een ring staan, naar buiten gekeerd, om de jongen te beschermen.",
+      "tts": {
+        "text": "Als wolven naderen, gaan de muskusossen in een ring staan, naar buiten gekeerd, om de jongen te beschermen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolven volgen de kudden over de toendra en jagen op de oude en de zwakke dieren.",
+      "text_markdown": "Wolven volgen de kudden over de toendra en jagen op de oude en de zwakke dieren.",
+      "tts": {
+        "text": "Wolven volgen de kudden over de toendra en jagen op de oude en de zwakke dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De poolvos is klein, met dikke vacht die in de winter wit wordt en in de zomer bruin.",
+      "text_markdown": "De poolvos is klein, met dikke vacht die in de winter wit wordt en in de zomer bruin.",
+      "tts": {
+        "text": "De poolvos is klein, met dikke vacht die in de winter wit wordt en in de zomer bruin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij volgt grotere dieren en eet wat ze achterlaten, en hij jaagt ook op kleine dieren.",
+      "text_markdown": "Hij volgt grotere dieren en eet wat ze achterlaten, en hij jaagt ook op kleine dieren.",
+      "tts": {
+        "text": "Hij volgt grotere dieren en eet wat ze achterlaten, en hij jaagt ook op kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De poolhaas is wit in de winter en heeft korte oren om zijn warmte vast te houden.",
+      "text_markdown": "De poolhaas is wit in de winter en heeft korte oren om zijn warmte vast te houden.",
+      "tts": {
+        "text": "De poolhaas is wit in de winter en heeft korte oren om zijn warmte vast te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onder de sneeuw graven kleine dieren die lemmingen heten tunnels en blijven de hele winter druk.",
+      "text_markdown": "Onder de sneeuw graven kleine dieren die lemmingen heten tunnels en blijven de hele winter druk.",
+      "tts": {
+        "text": "Onder de sneeuw graven kleine dieren die lemmingen heten tunnels en blijven de hele winter druk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lemmingen zijn voedsel voor de vos, de uil en vele andere jagers.",
+      "text_markdown": "Lemmingen zijn voedsel voor de vos, de uil en vele andere jagers.",
+      "tts": {
+        "text": "Lemmingen zijn voedsel voor de vos, de uil en vele andere jagers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sneeuwuil is een grote witte uil die dag en nacht over de open toendra jaagt.",
+      "text_markdown": "De sneeuwuil is een grote witte uil die dag en nacht over de open toendra jaagt.",
+      "tts": {
+        "text": "De sneeuwuil is een grote witte uil die dag en nacht over de open toendra jaagt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij kijkt vanaf een lage heuvel en duikt geruisloos op lemmingen en andere kleine dieren.",
+      "text_markdown": "Hij kijkt vanaf een lage heuvel en duikt geruisloos op lemmingen en andere kleine dieren.",
+      "tts": {
+        "text": "Hij kijkt vanaf een lage heuvel en duikt geruisloos op lemmingen en andere kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de korte zomer komen enorme zwermen vogels uit het zuiden aan.",
+      "text_markdown": "In de korte zomer komen enorme zwermen vogels uit het zuiden aan.",
+      "tts": {
+        "text": "In de korte zomer komen enorme zwermen vogels uit het zuiden aan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ganzen, eenden en veel kleine vogels komen nestelen op de natte, insectenrijke toendra.",
+      "text_markdown": "Ganzen, eenden en veel kleine vogels komen nestelen op de natte, insectenrijke toendra.",
+      "tts": {
+        "text": "Ganzen, eenden en veel kleine vogels komen nestelen op de natte, insectenrijke toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze komen omdat de lange zomerdagen en de vele insecten volop voedsel betekenen.",
+      "text_markdown": "Ze komen omdat de lange zomerdagen en de vele insecten volop voedsel betekenen.",
+      "tts": {
+        "text": "Ze komen omdat de lange zomerdagen en de vele insecten volop voedsel betekenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar weken lang vullen wolken muggen en kleine vliegen de lucht.",
+      "text_markdown": "Een paar weken lang vullen wolken muggen en kleine vliegen de lucht.",
+      "tts": {
+        "text": "Een paar weken lang vullen wolken muggen en kleine vliegen de lucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan brengen de vogels hun jongen snel groot en vliegen weer zuidwaarts voordat de kou terugkeert.",
+      "text_markdown": "Dan brengen de vogels hun jongen snel groot en vliegen weer zuidwaarts voordat de kou terugkeert.",
+      "tts": {
+        "text": "Dan brengen de vogels hun jongen snel groot en vliegen weer zuidwaarts voordat de kou terugkeert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aan de noordrand, waar de toendra de bevroren zee raakt, jaagt de ijsbeer op het ijs.",
+      "text_markdown": "Aan de noordrand, waar de toendra de bevroren zee raakt, jaagt de ijsbeer op het ijs.",
+      "tts": {
+        "text": "Aan de noordrand, waar de toendra de bevroren zee raakt, jaagt de ijsbeer op het ijs.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen leven al vele duizenden jaren op de toendra.",
+      "text_markdown": "Mensen leven al vele duizenden jaren op de toendra.",
+      "tts": {
+        "text": "Mensen leven al vele duizenden jaren op de toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om hier te leven is diepe kennis nodig van het koude land en zijn dieren.",
+      "text_markdown": "Om hier te leven is diepe kennis nodig van het koude land en zijn dieren.",
+      "tts": {
+        "text": "Om hier te leven is diepe kennis nodig van het koude land en zijn dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Amerika leven de Inuit en andere noordelijke volkeren al heel lang op de toendra en de bevroren kust.",
+      "text_markdown": "In Noord-Amerika leven de Inuit en andere noordelijke volkeren al heel lang op de toendra en de bevroren kust.",
+      "tts": {
+        "text": "In Noord Amerika leven de Inuit en andere noordelijke volkeren al heel lang op de toendra en de bevroren kust.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze jaagden op kariboes, visten in de rivieren en de zee, en joegen op zeehonden langs het ijs.",
+      "text_markdown": "Ze jaagden op kariboes, visten in de rivieren en de zee, en joegen op zeehonden langs het ijs.",
+      "tts": {
+        "text": "Ze jaagden op kariboes, visten in de rivieren en de zee, en joegen op zeehonden langs het ijs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze maakten warme kleding van dierenhuiden en vacht, genaaid om de wind buiten te houden.",
+      "text_markdown": "Ze maakten warme kleding van dierenhuiden en vacht, genaaid om de wind buiten te houden.",
+      "tts": {
+        "text": "Ze maakten warme kleding van dierenhuiden en vacht, genaaid om de wind buiten te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bouwden huizen van wat het land hun gaf, en reisden met sleden over de sneeuw.",
+      "text_markdown": "Ze bouwden huizen van wat het land hun gaf, en reisden met sleden over de sneeuw.",
+      "tts": {
+        "text": "Ze bouwden huizen van wat het land hun gaf, en reisden met sleden over de sneeuw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Europa volgen de Sami de rendieren al vele generaties over de toendra.",
+      "text_markdown": "In Noord-Europa volgen de Sami de rendieren al vele generaties over de toendra.",
+      "tts": {
+        "text": "In Noord Europa volgen de Sami de rendieren al vele generaties over de toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De rendieren gaven hun vlees, melk, huiden voor kleding, en een manier om sleden te trekken.",
+      "text_markdown": "De rendieren gaven hun vlees, melk, huiden voor kleding, en een manier om sleden te trekken.",
+      "tts": {
+        "text": "De rendieren gaven hun vlees, melk, huiden voor kleding, en een manier om sleden te trekken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Rusland hebben vele volkeren de toendra hun thuis gemaakt.",
+      "text_markdown": "In Noord-Rusland hebben vele volkeren de toendra hun thuis gemaakt.",
+      "tts": {
+        "text": "In Noord Rusland hebben vele volkeren de toendra hun thuis gemaakt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Nenetsen, de Tsjoektsjen en anderen hoeden al heel lang rendieren over deze koude landen.",
+      "text_markdown": "De Nenetsen, de Tsjoektsjen en anderen hoeden al heel lang rendieren over deze koude landen.",
+      "tts": {
+        "text": "De Nenetsen, de Tsjoektsjen en anderen hoeden al heel lang rendieren over deze koude landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommigen van hen trekken vandaag nog met hun kudden mee, met de seizoenen mee.",
+      "text_markdown": "Sommigen van hen trekken vandaag nog met hun kudden mee, met de seizoenen mee.",
+      "tts": {
+        "text": "Sommigen van hen trekken vandaag nog met hun kudden mee, met de seizoenen mee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer volgen ze de rendieren noordwaarts naar de kust.",
+      "text_markdown": "In de zomer volgen ze de rendieren noordwaarts naar de kust.",
+      "tts": {
+        "text": "In de zomer volgen ze de rendieren noordwaarts naar de kust.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter trekken ze zuidwaarts naar de luwte van de bosrand.",
+      "text_markdown": "In de winter trekken ze zuidwaarts naar de luwte van de bosrand.",
+      "tts": {
+        "text": "In de winter trekken ze zuidwaarts naar de luwte van de bosrand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In al deze landen leerden de mensen het weer, de sneeuw en het ijs te lezen.",
+      "text_markdown": "In al deze landen leerden de mensen het weer, de sneeuw en het ijs te lezen.",
+      "tts": {
+        "text": "In al deze landen leerden de mensen het weer, de sneeuw en het ijs te lezen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leerden de paden van de kariboes en de rendieren.",
+      "text_markdown": "Ze leerden de paden van de kariboes en de rendieren.",
+      "tts": {
+        "text": "Ze leerden de paden van de kariboes en de rendieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leerden waar de vissen samenkwamen en wanneer de vogels zouden komen.",
+      "text_markdown": "Ze leerden waar de vissen samenkwamen en wanneer de vogels zouden komen.",
+      "tts": {
+        "text": "Ze leerden waar de vissen samenkwamen en wanneer de vogels zouden komen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leerden voedsel op te slaan uit de korte zomer om de lange winter door te komen.",
+      "text_markdown": "Ze leerden voedsel op te slaan uit de korte zomer om de lange winter door te komen.",
+      "tts": {
+        "text": "Ze leerden voedsel op te slaan uit de korte zomer om de lange winter door te komen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra geeft weinig en vraagt veel, maar mensen leiden hier al heel lang een goed leven.",
+      "text_markdown": "De toendra geeft weinig en vraagt veel, maar mensen leiden hier al heel lang een goed leven.",
+      "tts": {
+        "text": "De toendra geeft weinig en vraagt veel, maar mensen leiden hier al heel lang een goed leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun liederen, hun verhalen en hun talen groeiden op met de koude wind en het wijde open land.",
+      "text_markdown": "Hun liederen, hun verhalen en hun talen groeiden op met de koude wind en het wijde open land.",
+      "tts": {
+        "text": "Hun liederen, hun verhalen en hun talen groeiden op met de koude wind en het wijde open land.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het bioom vandaag",
+      "text_markdown": "Het bioom vandaag"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is een van de wildste en leegste biomen, maar ze verandert snel.",
+      "text_markdown": "De toendra is een van de wildste en leegste biomen, maar ze verandert snel.",
+      "tts": {
+        "text": "De toendra is een van de wildste en leegste biomen, maar ze verandert snel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Van alle biomen warmt de toendra het snelst op.",
+      "text_markdown": "Van alle biomen warmt de toendra het snelst op.",
+      "tts": {
+        "text": "Van alle biomen warmt de toendra het snelst op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het verre noorden wordt jaar na jaar warmer.",
+      "text_markdown": "Het verre noorden wordt jaar na jaar warmer.",
+      "tts": {
+        "text": "Het verre noorden wordt jaar na jaar warmer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Naarmate de lucht opwarmt, begint de bevroren grond te ontdooien.",
+      "text_markdown": "Naarmate de lucht opwarmt, begint de bevroren grond te ontdooien.",
+      "tts": {
+        "text": "Naarmate de lucht opwarmt, begint de bevroren grond te ontdooien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de permafrost ontdooit, kan het land zakken, scheuren en in modder veranderen.",
+      "text_markdown": "Als de permafrost ontdooit, kan het land zakken, scheuren en in modder veranderen.",
+      "tts": {
+        "text": "Als de permafrost ontdooit, kan het land zakken, scheuren en in modder veranderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wegen, huizen en pijpleidingen op de bevroren grond kunnen buigen en breken.",
+      "text_markdown": "Wegen, huizen en pijpleidingen op de bevroren grond kunnen buigen en breken.",
+      "tts": {
+        "text": "Wegen, huizen en pijpleidingen op de bevroren grond kunnen buigen en breken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De ontdooiende grond laat ook gassen vrij die heel lang in de bevroren bodem opgesloten zaten.",
+      "text_markdown": "De ontdooiende grond laat ook gassen vrij die heel lang in de bevroren bodem opgesloten zaten.",
+      "tts": {
+        "text": "De ontdooiende grond laat ook gassen vrij die heel lang in de bevroren bodem opgesloten zaten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze gassen stijgen op in de lucht en kunnen de hele aarde nog een beetje warmer maken.",
+      "text_markdown": "Deze gassen stijgen op in de lucht en kunnen de hele aarde nog een beetje warmer maken.",
+      "tts": {
+        "text": "Deze gassen stijgen op in de lucht en kunnen de hele aarde nog een beetje warmer maken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Naarmate de toendra opwarmt, breiden struiken en kleine bomen zich langzaam noordwaarts uit.",
+      "text_markdown": "Naarmate de toendra opwarmt, breiden struiken en kleine bomen zich langzaam noordwaarts uit.",
+      "tts": {
+        "text": "Naarmate de toendra opwarmt, breiden struiken en kleine bomen zich langzaam noordwaarts uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige dieren uit het warmere zuiden trekken ook naar het noorden.",
+      "text_markdown": "Sommige dieren uit het warmere zuiden trekken ook naar het noorden.",
+      "tts": {
+        "text": "Sommige dieren uit het warmere zuiden trekken ook naar het noorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen komen ook naar de toendra om te zoeken naar olie, gas en metaal in de grond.",
+      "text_markdown": "Mensen komen ook naar de toendra om te zoeken naar olie, gas en metaal in de grond.",
+      "tts": {
+        "text": "Mensen komen ook naar de toendra om te zoeken naar olie, gas en metaal in de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun wegen en machines laten sporen achter op het land die in de kou heel traag helen.",
+      "text_markdown": "Hun wegen en machines laten sporen achter op het land die in de kou heel traag helen.",
+      "tts": {
+        "text": "Hun wegen en machines laten sporen achter op het land die in de kou heel traag helen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel mensen en groepen werken er vandaag aan om voor de toendra te zorgen.",
+      "text_markdown": "Veel mensen en groepen werken er vandaag aan om voor de toendra te zorgen.",
+      "tts": {
+        "text": "Veel mensen en groepen werken er vandaag aan om voor de toendra te zorgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leggen grote parken aan waar de kariboes en de vogels nog kunnen rondtrekken.",
+      "text_markdown": "Ze leggen grote parken aan waar de kariboes en de vogels nog kunnen rondtrekken.",
+      "tts": {
+        "text": "Ze leggen grote parken aan waar de kariboes en de vogels nog kunnen rondtrekken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze werken samen met de mensen die hier al vele generaties leven om het land te beschermen.",
+      "text_markdown": "Ze werken samen met de mensen die hier al vele generaties leven om het land te beschermen.",
+      "tts": {
+        "text": "Ze werken samen met de mensen die hier al vele generaties leven om het land te beschermen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen de toendra om te begrijpen hoe ze verandert en hoe ze gezond te houden.",
+      "text_markdown": "Ze bestuderen de toendra om te begrijpen hoe ze verandert en hoe ze gezond te houden.",
+      "tts": {
+        "text": "Ze bestuderen de toendra om te begrijpen hoe ze verandert en hoe ze gezond te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De toendra is kwetsbaar en heelt traag, en ze bergt een enorme voorraad bevroren koolstof.",
+      "text_markdown": "De toendra is kwetsbaar en heelt traag, en ze bergt een enorme voorraad bevroren koolstof.",
+      "tts": {
+        "text": "De toendra is kwetsbaar en heelt traag, en ze bergt een enorme voorraad bevroren koolstof.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze is onze zorg waard.",
+      "text_markdown": "Ze is onze zorg waard.",
+      "tts": {
+        "text": "Ze is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afsluiting",
+      "text_markdown": "Afsluiting"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is de toendra.",
+      "text_markdown": "Dat is de toendra.",
+      "tts": {
+        "text": "Dat is de toendra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een koud, open, boomloos land van bevroren grond, lage planten en een wijde heldere hemel aan de top van de wereld.",
+      "text_markdown": "Een koud, open, boomloos land van bevroren grond, lage planten en een wijde heldere hemel aan de top van de wereld.",
+      "tts": {
+        "text": "Een koud, open, boomloos land van bevroren grond, lage planten en een wijde heldere hemel aan de top van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in staat, wees dan even stil.",
+      "text_markdown": "Als je er ooit in staat, wees dan even stil.",
+      "tts": {
+        "text": "Als je er ooit in staat, wees dan even stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voel de koude wind over het open land bewegen.",
+      "text_markdown": "Voel de koude wind over het open land bewegen.",
+      "tts": {
+        "text": "Voel de koude wind over het open land bewegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk omlaag naar de kleine bloemen en het zachte mos onder je voeten.",
+      "text_markdown": "Kijk omlaag naar de kleine bloemen en het zachte mos onder je voeten.",
+      "tts": {
+        "text": "Kijk omlaag naar de kleine bloemen en het zachte mos onder je voeten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk omhoog naar de enorme en lege hemel.",
+      "text_markdown": "Kijk omhoog naar de enorme en lege hemel.",
+      "tts": {
+        "text": "Kijk omhoog naar de enorme en lege hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het stille, geduldige hart van het bioom om je heen voelen kloppen.",
+      "text_markdown": "Je zult het stille, geduldige hart van het bioom om je heen voelen kloppen.",
+      "tts": {
+        "text": "Je zult het stille, geduldige hart van het bioom om je heen voelen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

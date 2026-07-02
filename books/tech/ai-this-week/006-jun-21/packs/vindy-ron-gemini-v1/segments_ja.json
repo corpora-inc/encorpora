@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "ja",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "AI This Weekへようこそ。",
+      "text_markdown": "AI This Weekへようこそ。",
+      "title": "",
+      "tts": {
+        "text": "AI This Weekへようこそ。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "私はVindyです。",
+      "text_markdown": "私はVindyです。",
+      "title": "",
+      "tts": {
+        "text": "私はVindyです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "text": "いつものように、Ronも一緒です。",
+      "text_markdown": "いつものように、Ronも一緒です。",
+      "title": "",
+      "tts": {
+        "text": "いつものように、Ronも一緒です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "text": "よろしくお願いします、Vindy。",
+      "text_markdown": "よろしくお願いします、Vindy。",
+      "title": "",
+      "tts": {
+        "text": "よろしくお願いします、Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "今日は2026年6月21日、日曜日です。",
+      "text_markdown": "今日は2026年6月21日、日曜日です。",
+      "title": "",
+      "tts": {
+        "text": "今日は二千二十六年六月二十一日、日曜日です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "text": "先週は私たち自身の話をしましたが、今日は正反対の方向へ——権力の中枢へと向かいます。",
+      "text_markdown": "先週は私たち自身の話をしましたが、今日は正反対の方向へ——権力の中枢へと向かいます。",
+      "title": "",
+      "tts": {
+        "text": "先週は私たち自身の話をしましたが、今日は正反対の方向へ——権力の中枢へと向かいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "AIの展開を誰が制御し、その整備に誰が資金を出し、シリコンを誰が所有しているのか。",
+      "text_markdown": "AIの展開を誰が制御し、その整備に誰が資金を出し、シリコンを誰が所有しているのか。",
+      "title": "",
+      "tts": {
+        "text": "AIの展開を誰が制御し、その整備に誰が資金を出し、シリコンを誰が所有しているのか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "text": "この後——先週金曜日、米商務省がアメリカのモデルを公開利用から取り下げました。まずそこから始めます。",
+      "text_markdown": "この後——先週金曜日、米商務省がアメリカのモデルを公開利用から取り下げました。まずそこから始めます。",
+      "title": "",
+      "tts": {
+        "text": "この後——先週金曜日、米商務省がアメリカのモデルを公開利用から取り下げました。まずそこから始めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "次に、発表内容と実態が一致していないデータセンターの整備状況。",
+      "text_markdown": "次に、発表内容と実態が一致していないデータセンターの整備状況。",
+      "title": "",
+      "tts": {
+        "text": "次に、発表内容と実態が一致していないデータセンターの整備状況。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "text": "続いて、決まり文句を排して実際の制約要因で見る、米中比較。",
+      "text_markdown": "続いて、決まり文句を排して実際の制約要因で見る、米中比較。",
+      "title": "",
+      "tts": {
+        "text": "続いて、決まり文句を排して実際の制約要因で見る、米中比較。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "そして今週のコンセプト——Oracleのバランスシートの一行から、ほぼすべてがわかります。",
+      "text_markdown": "そして今週のコンセプト——Oracleのバランスシートの一行から、ほぼすべてがわかります。",
+      "title": "",
+      "tts": {
+        "text": "そして今週のコンセプト——Oracleのバランスシートの一行から、ほぼすべてがわかります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "text": "Ron、Anthropicの話から始めましょう。",
+      "text_markdown": "Ron、Anthropicの話から始めましょう。",
+      "title": "",
+      "tts": {
+        "text": "Ron、Anthropicの話から始めましょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "6月12日に起きた出来事は、いったい何だったのでしょうか。",
+      "text_markdown": "6月12日に起きた出来事は、いったい何だったのでしょうか。",
+      "title": "",
+      "tts": {
+        "text": "ろくがつじゅうににちに起きた出来事は、いったい何だったのでしょうか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "text": "6月12日金曜日の東部時間午後5時21分、Anthropicは最新の2つのモデル——Claude Mythos 5とClaude Fable 5——をオフラインにしました。",
+      "text_markdown": "6月12日金曜日の東部時間午後5時21分、Anthropicは最新の2つのモデル——Claude Mythos 5とClaude Fable 5——をオフラインにしました。",
+      "title": "",
+      "tts": {
+        "text": "六月十二日金曜日の東部時間午後五時二十一分、Anthropicは最新の二つのモデル——Claude Mythos五とClaude Fable五——をオフラインにしました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "text": "メンテナンスのためでも、自社の判断による安全性レビューのためでもありません。",
+      "text_markdown": "メンテナンスのためでも、自社の判断による安全性レビューのためでもありません。",
+      "title": "",
+      "tts": {
+        "text": "メンテナンスのためでも、自社の判断による安全性レビューのためでもありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "text": "米商務省が輸出規制を根拠に指令を出したため、モデルを停止したのです。",
+      "text_markdown": "米商務省が輸出規制を根拠に指令を出したため、モデルを停止したのです。",
+      "title": "",
+      "tts": {
+        "text": "米商務省が輸出規制を根拠に指令を出したため、モデルを停止したのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "text": "技術的な理由は何だったのか。",
+      "text_markdown": "技術的な理由は何だったのか。",
+      "title": "",
+      "tts": {
+        "text": "技術的な理由は何だったのか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "text": "別の企業によるとされるジェイルブレイクが実証され、商務省が輸出規制対象と見なす出力が生成されました。",
+      "text_markdown": "別の企業によるとされるジェイルブレイクが実証され、商務省が輸出規制対象と見なす出力が生成されました。",
+      "title": "",
+      "tts": {
+        "text": "別の企業によるとされるジェイルブレイクが実証され、商務省が輸出規制対象と見なす出力が生成されました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "text": "Fortuneの報道によると、そのことをホワイトハウスに警告したのはAmazonだったとのことです。",
+      "text_markdown": "Fortuneの報道によると、そのことをホワイトハウスに警告したのはAmazonだったとのことです。",
+      "title": "",
+      "tts": {
+        "text": "Fortuneの報道によると、そのことをホワイトハウスに警告したのはAmazonだったとのことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "text": "Anthropicはどのように対応したのか。",
+      "text_markdown": "Anthropicはどのように対応したのか。",
+      "title": "",
+      "tts": {
+        "text": "Anthropicはどのように対応したのか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "text": "Anthropicは公式に、その根拠に異議を唱えています。",
+      "text_markdown": "Anthropicは公式に、その根拠に異議を唱えています。",
+      "title": "",
+      "tts": {
+        "text": "Anthropicは公式に、その根拠に異議を唱えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "text": "同社の声明はジェイルブレイクについて——引用しますが——「限定的で普遍的なものではない」と述べ、同様の出力はOpenAIのGPT-5.5を含む他のモデルからも得られると付け加えました。",
+      "text_markdown": "同社の声明はジェイルブレイクについて——引用しますが——「限定的で普遍的なものではない」と述べ、同様の出力はOpenAIのGPT-5.5を含む他のモデルからも得られると付け加えました。",
+      "title": "",
+      "tts": {
+        "text": "同社の声明はジェイルブレイクについて——引用しますが——「限定的で普遍的なものではない」と述べ、同様の出力はOpenAIのGPT五点五を含む他のモデルからも得られると付け加えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "声明の要旨はこうです。「政府の措置は誤解に基づいている。」",
+      "text_markdown": "声明の要旨はこうです。「政府の措置は誤解に基づいている。」",
+      "title": "",
+      "tts": {
+        "text": "声明の要旨はこうです。「政府の措置は誤解に基づいている。」",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "text": "AIラボが米国政府にこれほど直接的に反論するのは異例のことです。",
+      "text_markdown": "AIラボが米国政府にこれほど直接的に反論するのは異例のことです。",
+      "title": "",
+      "tts": {
+        "text": "AIラボが米国政府にこれほど直接的に反論するのは異例のことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "text": "そうです。そしてその根底にある構造的な事実こそが、本当の見出しです。",
+      "text_markdown": "そうです。そしてその根底にある構造的な事実こそが、本当の見出しです。",
+      "title": "",
+      "tts": {
+        "text": "そうです。そしてその根底にある構造的な事実こそが、本当の見出しです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "text": "商務省は今や、輸出規制を根拠に民間のアメリカのAIラボに対してモデルをオフラインにするよう命令でき、その命令は72時間以内に効力を持ちます。",
+      "text_markdown": "商務省は今や、輸出規制を根拠に民間のアメリカのAIラボに対してモデルをオフラインにするよう命令でき、その命令は72時間以内に効力を持ちます。",
+      "title": "",
+      "tts": {
+        "text": "商務省は今や、輸出規制を根拠に民間のアメリカのAIラボに対してモデルをオフラインにするよう命令でき、その命令は七十二時間以内に効力を持ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "text": "その命令が正しかったかどうかにかかわらず。",
+      "text_markdown": "その命令が正しかったかどうかにかかわらず。",
+      "title": "",
+      "tts": {
+        "text": "その命令が正しかったかどうかにかかわらず。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "text": "その命令が正しかったかどうかにかかわらず。",
+      "text_markdown": "その命令が正しかったかどうかにかかわらず。",
+      "title": "",
+      "tts": {
+        "text": "その命令が正しかったかどうかにかかわらず。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "text": "重要なのは、権限そのもの、その速さ、そして先例です。",
+      "text_markdown": "重要なのは、権限そのもの、その速さ、そして先例です。",
+      "title": "",
+      "tts": {
+        "text": "重要なのは、権限そのもの、その速さ、そして先例です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "text": "そして、ここでのAmazonの役割は。",
+      "text_markdown": "そして、ここでのAmazonの役割は。",
+      "title": "",
+      "tts": {
+        "text": "そして、ここでのAmazonの役割は。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "text": "そこが注目すべき点です。",
+      "text_markdown": "そこが注目すべき点です。",
+      "title": "",
+      "tts": {
+        "text": "そこが注目すべき点です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "text": "AmazonはAnthropicの主要投資家でありながら、独自の取り組みを通じて基盤モデル市場でAnthropicと競合してもいます。",
+      "text_markdown": "AmazonはAnthropicの主要投資家でありながら、独自の取り組みを通じて基盤モデル市場でAnthropicと競合してもいます。",
+      "title": "",
+      "tts": {
+        "text": "AmazonはAnthropicの主要投資家でありながら、独自の取り組みを通じて基盤モデル市場でAnthropicと競合してもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "text": "競合他社の政府への警告によって、ライバルのモデルを長い週末の間にオフラインにできるとすれば、それは業界の力学に新たな形をもたらすものです。",
+      "text_markdown": "競合他社の政府への警告によって、ライバルのモデルを長い週末の間にオフラインにできるとすれば、それは業界の力学に新たな形をもたらすものです。",
+      "title": "",
+      "tts": {
+        "text": "競合他社の政府への警告によって、ライバルのモデルを長い週末の間にオフラインにできるとすれば、それは業界の力学に新たな形をもたらすものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "text": "整備状況の話に移りましょう。",
+      "text_markdown": "整備状況の話に移りましょう。",
+      "title": "",
+      "tts": {
+        "text": "整備状況の話に移りましょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "text": "Stargate——OpenAI、Oracle、SoftBankによるデータセンター構想。",
+      "text_markdown": "Stargate——OpenAI、Oracle、SoftBankによるデータセンター構想。",
+      "title": "",
+      "tts": {
+        "text": "Stargate——OpenAI、Oracle、SoftBankによるデータセンター構想。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "text": "実際の数字はどうなっているのか。",
+      "text_markdown": "実際の数字はどうなっているのか。",
+      "title": "",
+      "tts": {
+        "text": "実際の数字はどうなっているのか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "text": "Stargateは米国内で11ギガワットの容量を整備すると発表しています。",
+      "text_markdown": "Stargateは米国内で11ギガワットの容量を整備すると発表しています。",
+      "title": "",
+      "tts": {
+        "text": "スターゲートは米国内でじゅういちギガワットの容量を整備すると発表しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "6月中旬時点で、テキサス州アビリーンのサイト、フェーズ1において、約200メガワットが稼働中です。",
+      "text_markdown": "6月中旬時点で、テキサス州アビリーンのサイト、フェーズ1において、約200メガワットが稼働中です。",
+      "title": "",
+      "tts": {
+        "text": "六月中旬時点で、テキサス州アビリーンのサイト、フェーズ一において、約二百メガワットが稼働中です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "text": "発表された11ギガワットに対して、実際に接続されているのは200メガワット。",
+      "text_markdown": "発表された11ギガワットに対して、実際に接続されているのは200メガワット。",
+      "title": "",
+      "tts": {
+        "text": "発表された十一ギガワットに対して、実際に接続されているのは二百メガワット。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "text": "これが一行で示す、すべての乖離です。",
+      "text_markdown": "これが一行で示す、すべての乖離です。",
+      "title": "",
+      "tts": {
+        "text": "これが一行で示す、すべての乖離です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "text": "そうです。最もわかりやすい例がニューメキシコ州にあります。",
+      "text_markdown": "そうです。最もわかりやすい例がニューメキシコ州にあります。",
+      "title": "",
+      "tts": {
+        "text": "そうです。最もわかりやすい例がニューメキシコ州にあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "text": "ドニャ・アナ郡のサイトは最大の単一Stargateキャンパスで、4.5ギガワットが予定されています。",
+      "text_markdown": "ドニャ・アナ郡のサイトは最大の単一Stargateキャンパスで、4.5ギガワットが予定されています。",
+      "title": "",
+      "tts": {
+        "text": "ドニャ・アナ郡のサイトは最大の単一Stargateキャンパスで、よんてんごギガワットが予定されています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "text": "シンジケートによるプロジェクトファイナンス180億ドルがすでに確保されており、三井住友銀行、BNPパリバ、Goldman Sachs、MUFGが参加しています。さらにBlue Owlから30億ドルのエクイティ出資も加わっています。",
+      "text_markdown": "シンジケートによるプロジェクトファイナンス180億ドルがすでに確保されており、三井住友銀行、BNPパリバ、Goldman Sachs、MUFGが参加しています。さらにBlue Owlから30億ドルのエクイティ出資も加わっています。",
+      "title": "",
+      "tts": {
+        "text": "シンジケートによるプロジェクトファイナンスひゃくはちじゅうおくドルがすでに確保されており、三井住友銀行、BNPパリバ、ゴールドマン・サックス、MUFGが参加しています。さらにブルー・オウルからさんじゅうおくドルのエクイティ出資も加わっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "text": "そして、現地の建設状況についてです。",
+      "text_markdown": "そして、現地の建設状況についてです。",
+      "title": "",
+      "tts": {
+        "text": "そして、現地の建設状況についてです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "text": "今のところ、一切着工していません。",
+      "text_markdown": "今のところ、一切着工していません。",
+      "title": "",
+      "tts": {
+        "text": "今のところ、一切着工していません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "text": "このサイトはニューメキシコ州環境局からの大気質許可を待っており、当初は4月22日の取得が見込まれていましたが、7,000件を超えるパブリックコメントを受けて7月21日に延期されました。",
+      "text_markdown": "このサイトはニューメキシコ州環境局からの大気質許可を待っており、当初は4月22日の取得が見込まれていましたが、7,000件を超えるパブリックコメントを受けて7月21日に延期されました。",
+      "title": "",
+      "tts": {
+        "text": "このサイトはニューメキシコ州環境局からの大気質許可を待っており、当初はしがつにじゅうににちの取得が見込まれていましたが、ななせんけんを超えるパブリックコメントを受けてしちがつにじゅういちにちに延期されました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "text": "180億ドルのコミットメント、着工ゼロ、そして1つの大気質許可の期限。",
+      "text_markdown": "180億ドルのコミットメント、着工ゼロ、そして1つの大気質許可の期限。",
+      "title": "",
+      "tts": {
+        "text": "ひゃくはちじゅうおくドルのコミットメント、着工ゼロ、そしてひとつの大気質許可の期限。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "text": "採算が合わなかった場合、損失を被るのは誰なのか。",
+      "text_markdown": "採算が合わなかった場合、損失を被るのは誰なのか。",
+      "title": "",
+      "tts": {
+        "text": "採算が合わなかった場合、損失を被るのは誰なのか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "text": "そこでOracleが興味深い存在になってきます。",
+      "text_markdown": "そこでOracleが興味深い存在になってきます。",
+      "title": "",
+      "tts": {
+        "text": "そこでOracleが興味深い存在になってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "text": "Oracleの残存履行義務――まだ納品されていない契約済み収益を記録する会計上の項目――は、2026会計年度第3四半期に5,530億ドルに達しました。",
+      "text_markdown": "Oracleの残存履行義務――まだ納品されていない契約済み収益を記録する会計上の項目――は、2026会計年度第3四半期に5,530億ドルに達しました。",
+      "title": "",
+      "tts": {
+        "text": "Oracleの残存履行義務――まだ納品されていない契約済み収益を記録する会計上の項目――は、にせんにじゅうろく会計年度だいさんしはんきにごひゃくごじゅうさんおくドルに達しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "これは前年同期比325%増であり、この増加分の大部分はOpenAIとStargateに関連するものと公式に説明されています。",
+      "text_markdown": "これは前年同期比325%増であり、この増加分の大部分はOpenAIとStargateに関連するものと公式に説明されています。",
+      "title": "",
+      "tts": {
+        "text": "これは前年同期比さんびゃくにじゅうごパーセント増であり、この増加分の大部分はOpenAIとStargateに関連するものと公式に説明されています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "text": "そして、負債面についてです。",
+      "text_markdown": "そして、負債面についてです。",
+      "title": "",
+      "tts": {
+        "text": "そして、負債面についてです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "text": "2月28日時点の総借入額は1,346億ドルに達しました。",
+      "text_markdown": "2月28日時点の総借入額は1,346億ドルに達しました。",
+      "title": "",
+      "tts": {
+        "text": "にがつにじゅうはちにち時点の総借入額はせんさんびゃくよんじゅうろくおくドルに達しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "text": "Oracleは2月だけで300億ドルを調達しており――投資適格債と強制転換型優先株の組み合わせにより――9か月間で430億ドルの新規シニアノートを発行しました。",
+      "text_markdown": "Oracleは2月だけで300億ドルを調達しており――投資適格債と強制転換型優先株の組み合わせにより――9か月間で430億ドルの新規シニアノートを発行しました。",
+      "title": "",
+      "tts": {
+        "text": "Oracleはにがつだけでさんびゃくおくドルを調達しており――投資適格債と強制転換型優先株の組み合わせにより――きゅうかげつかんでよんひゃくさんじゅうおくドルの新規シニアノートを発行しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "text": "では、この状況を整理してください。",
+      "text_markdown": "では、この状況を整理してください。",
+      "title": "",
+      "tts": {
+        "text": "では、この状況を整理してください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "text": "5,530億ドルの約束、1,340億ドルの負債、そしてリスクの大半を抱える1社の大口顧客。",
+      "text_markdown": "5,530億ドルの約束、1,340億ドルの負債、そしてリスクの大半を抱える1社の大口顧客。",
+      "title": "",
+      "tts": {
+        "text": "ごひゃくごじゅうさんおくドルの約束、せんさんびゃくよんじゅうおくドルの負債、そしてリスクの大半を抱えるいちしゃの大口顧客。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "text": "一言で言えば、それがこの建設計画の構造です。",
+      "text_markdown": "一言で言えば、それがこの建設計画の構造です。",
+      "title": "",
+      "tts": {
+        "text": "一言で言えば、それがこの建設計画の構造です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "text": "では、米中比較に移りましょう。",
+      "text_markdown": "では、米中比較に移りましょう。",
+      "title": "",
+      "tts": {
+        "text": "では、米中比較に移りましょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "text": "よく言われるのは、中国は数か月遅れているというものです。",
+      "text_markdown": "よく言われるのは、中国は数か月遅れているというものです。",
+      "title": "",
+      "tts": {
+        "text": "よく言われるのは、中国は数か月遅れているというものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "text": "しかし、そのような見方は的外れです。測るべき指標を間違えているからです。",
+      "text_markdown": "しかし、そのような見方は的外れです。測るべき指標を間違えているからです。",
+      "title": "",
+      "tts": {
+        "text": "しかし、そのような見方は的外れです。測るべき指標を間違えているからです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "6月9日月曜日、Bloombergは国家発展改革委員会による中国の草案計画を報じました――2028年までに全国規模のAIデータセンターグリッドを整備するため、2兆元、約2,950億ドルを投じるというものです。",
+      "text_markdown": "6月9日月曜日、Bloombergは国家発展改革委員会による中国の草案計画を報じました――2028年までに全国規模のAIデータセンターグリッドを整備するため、2兆元、約2,950億ドルを投じるというものです。",
+      "title": "",
+      "tts": {
+        "text": "ろくがつここのかもくようび、Bloombergは国家発展改革委員会による中国の草案計画を報じました――にせんにじゅうはちねんまでに全国規模のAIデータセンターグリッドを整備するため、にちょうえん、およそにひゃくきゅうじゅうごおくドルを投じるというものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "text": "この計画では国産シリコンの比率を80%とすることが義務づけられており、中国移動と中国電信が一体的なコンピュートファブリックとして運営することになっています。",
+      "text_markdown": "この計画では国産シリコンの比率を80%とすることが義務づけられており、中国移動と中国電信が一体的なコンピュートファブリックとして運営することになっています。",
+      "title": "",
+      "tts": {
+        "text": "この計画では国産シリコンの比率をはちじゅうパーセントとすることが義務づけられており、中国移動と中国電信が一体的なコンピュートファブリックとして運営することになっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "text": "その計画の落とし穴はどこにあるのでしょうか。",
+      "text_markdown": "その計画の落とし穴はどこにあるのでしょうか。",
+      "title": "",
+      "tts": {
+        "text": "その計画の落とし穴はどこにあるのでしょうか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "text": "2兆元、国産シリコン比率80%、2028年の期限――落とし穴は、制約の本質がロジックチップではなく、高帯域幅メモリにあることです。",
+      "text_markdown": "2兆元、国産シリコン比率80%、2028年の期限――落とし穴は、制約の本質がロジックチップではなく、高帯域幅メモリにあることです。",
+      "title": "",
+      "tts": {
+        "text": "にちょうえん、国産シリコン比率はちじゅうパーセント、にせんにじゅうはちねんの期限――落とし穴は、制約の本質がロジックチップではなく、高帯域幅メモリにあることです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "text": "詳しく説明してください。",
+      "text_markdown": "詳しく説明してください。",
+      "title": "",
+      "tts": {
+        "text": "詳しく説明してください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "text": "あらゆるAIアクセラレータは、ロジックダイにHBMスタックを実装する必要があります。",
+      "text_markdown": "あらゆるAIアクセラレータは、ロジックダイにHBMスタックを実装する必要があります。",
+      "title": "",
+      "tts": {
+        "text": "あらゆるAIアクセラレータは、ロジックダイにHBMスタックを実装する必要があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "text": "HBMがなければ、チップはただの文鎮です。",
+      "text_markdown": "HBMがなければ、チップはただの文鎮です。",
+      "title": "",
+      "tts": {
+        "text": "HBMがなければ、チップはただの文鎮です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "text": "中国は輸出規制が適用される前に約1,300万枚のHBMスタックを備蓄しており、そのうちSamsung製だけで1,140万枚に上ります。",
+      "text_markdown": "中国は輸出規制が適用される前に約1,300万枚のHBMスタックを備蓄しており、そのうちSamsung製だけで1,140万枚に上ります。",
+      "title": "",
+      "tts": {
+        "text": "中国は輸出規制が適用される前に約せんさんびゃくまんまいのHBMスタックを備蓄しており、そのうちSamsung製だけでせんひゃくよんじゅうまんまいに上ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "text": "Huawei Ascend 910CのパッケージングレシオでいうとこのHBMの備蓄は約160万枚のチップに相当します。",
+      "text_markdown": "Huawei Ascend 910CのパッケージングレシオでいうとこのHBMの備蓄は約160万枚のチップに相当します。",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend きゅういちぜろCのパッケージングレシオでいうとこのHBMの備蓄は約ひゃくろくじゅうまんまいのチップに相当します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "text": "そしてその後、供給は尽きます。",
+      "text_markdown": "そしてその後、供給は尽きます。",
+      "title": "",
+      "tts": {
+        "text": "そしてその後、供給は尽きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "text": "そしてその後、供給は尽きます――HBMスタック1,300万枚、約160万枚のチップ分、それが上限です。",
+      "text_markdown": "そしてその後、供給は尽きます――HBMスタック1,300万枚、約160万枚のチップ分、それが上限です。",
+      "title": "",
+      "tts": {
+        "text": "そしてその後、供給は尽きます――HBMスタックせんさんびゃくまんまい、約ひゃくろくじゅうまんまいのチップ分、それが上限です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "text": "CXMTが供給する中国国産HBMは、2026年に約200万スタックのペースで生産が進んでおり、25万～30万枚程度のアクセラレータに相当します。",
+      "text_markdown": "CXMTが供給する中国国産HBMは、2026年に約200万スタックのペースで生産が進んでおり、25万～30万枚程度のアクセラレータに相当します。",
+      "title": "",
+      "tts": {
+        "text": "CXMTが供給する中国国産HBMは、にせんにじゅうろくねんに約にひゃくまんスタックのペースで生産が進んでおり、にじゅうごまんから三十万まいていどのアクセラレータに相当します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "text": "では、Huaweiのシリコン計画はどのような見通しになっているのでしょうか。",
+      "text_markdown": "では、Huaweiのシリコン計画はどのような見通しになっているのでしょうか。",
+      "title": "",
+      "tts": {
+        "text": "では、Huaweiのシリコン計画はどのような見通しになっているのでしょうか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "text": "Bloombergが報じたHuaweiの計画によると、2026年の910Cチップ生産目標は60万枚で、Ascendプロダクトライン全体では最大160万枚のダイに達するとされています。",
+      "text_markdown": "Bloombergが報じたHuaweiの計画によると、2026年の910Cチップ生産目標は60万枚で、Ascendプロダクトライン全体では最大160万枚のダイに達するとされています。",
+      "title": "",
+      "tts": {
+        "text": "Bloombergが報じたHuaweiの計画によると、にせんにじゅうろくねんのきゅういちぜろCチップ生産目標はろくじゅうまんまいで、Ascendプロダクトライン全体では最大ひゃくろくじゅうまんまいのダイに達するとされています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "text": "この60万枚という数字はあくまで目標であり、実際の出荷実績ではありません。",
+      "text_markdown": "この60万枚という数字はあくまで目標であり、実際の出荷実績ではありません。",
+      "title": "",
+      "tts": {
+        "text": "このろくじゅうまんまいという数字はあくまで目標であり、実際の出荷実績ではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "text": "また別の話として、輸出規制によって調達が断ち切られる前に、HuaweiはSophgoやBitmainのシェル会社を通じてTSMCで製造した290万枚を超えるAscendダイを蓄積していました。",
+      "text_markdown": "また別の話として、輸出規制によって調達が断ち切られる前に、HuaweiはSophgoやBitmainのシェル会社を通じてTSMCで製造した290万枚を超えるAscendダイを蓄積していました。",
+      "title": "",
+      "tts": {
+        "text": "また別の話として、輸出規制によって調達が断ち切られる前に、HuaweiはSophgoやBitmainのシェル会社を通じてTSMCで製造したにひゃくきゅうじゅうまんまいを超えるAscendダイを蓄積していました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "text": "「輸出規制は効いている」という主張には、290万枚ものダイという大きな穴が開いています。",
+      "text_markdown": "「輸出規制は効いている」という主張には、290万枚ものダイという大きな穴が開いています。",
+      "title": "",
+      "tts": {
+        "text": "「輸出規制は効いている」という主張には、にひゃくきゅうじゅうまんまいものダイという大きな穴が開いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "text": "では、見出しを速足で追っていきましょう。",
+      "text_markdown": "では、見出しを速足で追っていきましょう。",
+      "title": "",
+      "tts": {
+        "text": "では、見出しを速足で追っていきましょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "text": "今週の第一の見出しは、Broadcomです。",
+      "text_markdown": "今週の第一の見出しは、Broadcomです。",
+      "title": "",
+      "tts": {
+        "text": "今週の第一の見出しは、Broadcomです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "text": "Broadcomの時価総額はおよそ2兆ドルです。",
+      "text_markdown": "Broadcomの時価総額はおよそ2兆ドルです。",
+      "title": "",
+      "tts": {
+        "text": "Broadcomの時価総額はおよそにちょうドルです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "text": "ホック・タンCEOは、6月3日の決算説明会で、2027会計年度のAI半導体売上高目標は1,000億ドルだと改めて示し、その支えとして、約730億ドルのAIバックログと、AlphabetおよびMetaとの2031年までの長期契約を挙げて説明しました。",
+      "text_markdown": "ホック・タンCEOは、6月3日の決算説明会で、2027会計年度のAI半導体売上高目標は1,000億ドルだと改めて示し、その支えとして、約730億ドルのAIバックログと、AlphabetおよびMetaとの2031年までの長期契約を挙げて説明しました。",
+      "title": "",
+      "tts": {
+        "text": "ホック タン シーイーオーは、六月三日の決算説明会で、二千二十七会計年度のエーアイ半導体売上高目標は千億ドルだと改めて示し、その支えとして、約七百三十億ドルのエーアイバックログと、アルファベットおよびメタとの二千三十一年までの長期契約を挙げて説明しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "text": "時価総額2兆ドル、AI売上高目標1,000億ドル、一般消費者へのブランド認知はほぼゼロ。",
+      "text_markdown": "時価総額2兆ドル、AI売上高目標1,000億ドル、一般消費者へのブランド認知はほぼゼロ。",
+      "title": "",
+      "tts": {
+        "text": "時価総額二兆ドル、AI売上高目標千億ドル、一般消費者へのブランド認知はほぼゼロ。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "text": "次は、今週の第2の見出し、ASMLです。",
+      "text_markdown": "次は、今週の第2の見出し、ASMLです。",
+      "title": "",
+      "tts": {
+        "text": "次は、今週の第二の見出し、エーエスエムエルです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "text": "ASMLは、最先端ロジック半導体がすべて依存するリソグラフィ装置を製造するオランダ企業ですが、そのHigh-NA EUVシステムを約3億7,000万ドルで販売しています。",
+      "text_markdown": "ASMLは、最先端ロジック半導体がすべて依存するリソグラフィ装置を製造するオランダ企業ですが、そのHigh-NA EUVシステムを約3億7,000万ドルで販売しています。",
+      "title": "",
+      "tts": {
+        "text": "ASMLは、最先端ロジック半導体がすべて依存するリソグラフィ装置を製造するオランダ企業ですが、そのHigh-NA EUVシステムを約三億七千万ドルで販売しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "text": "世界の生産能力は年間20台未満です。",
+      "text_markdown": "世界の生産能力は年間20台未満です。",
+      "title": "",
+      "tts": {
+        "text": "世界の生産能力は年間二十台未満です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "text": "1台3億7,000万ドル、年間20台未満、製造しているのは1社だけ――これが政策ではなく、世界のシリコンを実際に締め付けているボトルネックです。",
+      "text_markdown": "1台3億7,000万ドル、年間20台未満、製造しているのは1社だけ――これが政策ではなく、世界のシリコンを実際に締め付けているボトルネックです。",
+      "title": "",
+      "tts": {
+        "text": "一台三億七千万ドル、年間二十台未満、製造しているのは一社だけ――これが政策ではなく、世界のシリコンを実際に締め付けているボトルネックです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "text": "今週の第3の見出しは、輸出規制です。",
+      "text_markdown": "今週の第3の見出しは、輸出規制です。",
+      "title": "",
+      "tts": {
+        "text": "今週の第三の見出しは、輸出規制です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "text": "商務省は2025年5月13日にバイデン政権時代のAI拡散規制を撤廃しましたが、新たなBIS執行の明確化を発表したのは2026年5月31日までありませんでした。",
+      "text_markdown": "商務省は2025年5月13日にバイデン政権時代のAI拡散規制を撤廃しましたが、新たなBIS執行の明確化を発表したのは2026年5月31日までありませんでした。",
+      "title": "",
+      "tts": {
+        "text": "商務省は二千二十五年五月十三日にバイデン政権時代のAI拡散規制を撤廃しましたが、新たなBIS執行の明確化を発表したのは二千二十六年五月三十一日までありませんでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "text": "要するに、ライセンス要件が積極的に執行されなかった期間が、およそ1年間あったわけです。",
+      "text_markdown": "要するに、ライセンス要件が積極的に執行されなかった期間が、およそ1年間あったわけです。",
+      "title": "",
+      "tts": {
+        "text": "要するに、ライセンス要件が積極的に執行されなかった期間が、およそ一年間あったわけです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "text": "では、日数を数えてみましょう。",
+      "text_markdown": "では、日数を数えてみましょう。",
+      "title": "",
+      "tts": {
+        "text": "では、日数を数えてみましょう。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "text": "米国モデルを停止するのに72時間、チップ輸出規制を執行するのに380日――この非対称性こそが今回の核心です。",
+      "text_markdown": "米国モデルを停止するのに72時間、チップ輸出規制を執行するのに380日――この非対称性こそが今回の核心です。",
+      "title": "",
+      "tts": {
+        "text": "米国モデルを停止するのに七十二時間、チップ輸出規制を執行するのに三百八十日――この非対称性こそが今回の核心です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "text": "では、その380日間にチップはどこへ向かったのでしょうか。",
+      "text_markdown": "では、その380日間にチップはどこへ向かったのでしょうか。",
+      "title": "",
+      "tts": {
+        "text": "では、その三百八十日間にチップはどこへ向かったのでしょうか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "text": "その大部分は東南アジアへ向かいました。",
+      "text_markdown": "その大部分は東南アジアへ向かいました。",
+      "title": "",
+      "tts": {
+        "text": "その大部分は東南アジアへ向かいました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "text": "司法省は3月下旬、NvidiaのH100およびA100チップがマレーシアとシンガポールの仲介業者を経由して迂回されたと主張する起訴状を公開しました。",
+      "text_markdown": "司法省は3月下旬、NvidiaのH100およびA100チップがマレーシアとシンガポールの仲介業者を経由して迂回されたと主張する起訴状を公開しました。",
+      "title": "",
+      "tts": {
+        "text": "司法省は三月下旬、NvidiaのH百およびA百チップがマレーシアとシンガポールの仲介業者を経由して迂回されたと主張する起訴状を公開しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "text": "Fortuneは5月に物流の詳細を示す暗号化されたテキストメッセージを公開し、Super Microは25億ドル規模のペーパーカンパニー事件に関与しているとされています。",
+      "text_markdown": "Fortuneは5月に物流の詳細を示す暗号化されたテキストメッセージを公開し、Super Microは25億ドル規模のペーパーカンパニー事件に関与しているとされています。",
+      "title": "",
+      "tts": {
+        "text": "Fortuneは五月に物流の詳細を示す暗号化されたテキストメッセージを公開し、Super Microは二十五億ドル規模のペーパーカンパニー事件に関与しているとされています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "text": "トランプ政権は現在、マレーシアとタイを具体的な対象とした新たなチップ輸出規制を策定中と伝えられています。",
+      "text_markdown": "トランプ政権は現在、マレーシアとタイを具体的な対象とした新たなチップ輸出規制を策定中と伝えられています。",
+      "title": "",
+      "tts": {
+        "text": "トランプ政権は現在、マレーシアとタイを具体的な対象とした新たなチップ輸出規制を策定中と伝えられています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "text": "一言で言えば、こういうことです。",
+      "text_markdown": "一言で言えば、こういうことです。",
+      "title": "",
+      "tts": {
+        "text": "一言で言えば、こういうことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "text": "チップは深圳に直接飛ぶのではなく――まずペナンとシンガポールに飛ぶのです。",
+      "text_markdown": "チップは深圳に直接飛ぶのではなく――まずペナンとシンガポールに飛ぶのです。",
+      "title": "",
+      "tts": {
+        "text": "チップは深圳に直接飛ぶのではなく――まずペナンとシンガポールに飛ぶのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "text": "今週のコンセプト――残存履行義務（RPO）。",
+      "text_markdown": "今週のコンセプト――残存履行義務（RPO）。",
+      "title": "",
+      "tts": {
+        "text": "今週のコンセプト――残存履行義務（RPO）。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "text": "RPOとは、企業が契約を締結したものの、まだ履行していない契約の金額を記録する会計上の項目です。",
+      "text_markdown": "RPOとは、企業が契約を締結したものの、まだ履行していない契約の金額を記録する会計上の項目です。",
+      "title": "",
+      "tts": {
+        "text": "RPOとは、企業が契約を締結したものの、まだ履行していない契約の金額を記録する会計上の項目です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "text": "これは将来を見据えた指標です――今日の銀行残高ではなく、将来の収益を示しています。",
+      "text_markdown": "これは将来を見据えた指標です――今日の銀行残高ではなく、将来の収益を示しています。",
+      "title": "",
+      "tts": {
+        "text": "これは将来を見据えた指標です――今日の銀行残高ではなく、将来の収益を示しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "text": "では、なぜOracleにとって重要なのでしょうか。",
+      "text_markdown": "では、なぜOracleにとって重要なのでしょうか。",
+      "title": "",
+      "tts": {
+        "text": "では、なぜOracleにとって重要なのでしょうか。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "text": "5,530億ドルのRPOが1つの顧客による1つの建設プロジェクトに大きく集中しているということは、Oracleが今後数年間にわたって膨大なコンピュートを提供することを約束している一方で、その顧客自身の収益モデルはいまだ議論の最中であることを意味するからです。",
+      "text_markdown": "5,530億ドルのRPOが1つの顧客による1つの建設プロジェクトに大きく集中しているということは、Oracleが今後数年間にわたって膨大なコンピュートを提供することを約束している一方で、その顧客自身の収益モデルはいまだ議論の最中であることを意味するからです。",
+      "title": "",
+      "tts": {
+        "text": "五千五百三十億ドルのRPOが一つの顧客による一つの建設プロジェクトに大きく集中しているということは、Oracleが今後数年間にわたって膨大なコンピュートを提供することを約束している一方で、その顧客自身の収益モデルはいまだ議論の最中であることを意味するからです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "text": "これらの契約が無事に履行されれば、Oracleは10年に一度と言える大型取引を手にしたことになります。",
+      "text_markdown": "これらの契約が無事に履行されれば、Oracleは10年に一度と言える大型取引を手にしたことになります。",
+      "title": "",
+      "tts": {
+        "text": "これらの契約が無事に履行されれば、オラクルは十年に一度と言える大型取引を手にしたことになります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "text": "しかし、遅延や再交渉が生じれば、Oracleは契約が縮小する中で債務を抱え続けることになります。",
+      "text_markdown": "しかし、遅延や再交渉が生じれば、Oracleは契約が縮小する中で債務を抱え続けることになります。",
+      "title": "",
+      "tts": {
+        "text": "しかし、遅延や再交渉が生じれば、Oracleは契約が縮小する中で債務を抱え続けることになります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "text": "ですから、テック企業の開示資料でRPOの数字を見かけたときは――",
+      "text_markdown": "ですから、テック企業の開示資料でRPOの数字を見かけたときは――",
+      "title": "",
+      "tts": {
+        "text": "ですから、テック企業の開示資料でRPOの数字を見かけたときは――",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "text": "顧客が誰か、義務がどれだけ集中しているか、そして企業が実際にそれを履行するためには何が必要かを読み取ってください。",
+      "text_markdown": "顧客が誰か、義務がどれだけ集中しているか、そして企業が実際にそれを履行するためには何が必要かを読み取ってください。",
+      "title": "",
+      "tts": {
+        "text": "顧客が誰か、義務がどれだけ集中しているか、そして企業が実際にそれを履行するためには何が必要かを読み取ってください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "text": "RPOとは、損をつかまされる側が注記に姿を現す場所なのです。",
+      "text_markdown": "RPOとは、損をつかまされる側が注記に姿を現す場所なのです。",
+      "title": "",
+      "tts": {
+        "text": "RPOとは、損をつかまされる側が注記に姿を現す場所なのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "text": "いい締めくくりですね。",
+      "text_markdown": "いい締めくくりですね。",
+      "title": "",
+      "tts": {
+        "text": "いい締めくくりですね。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "text": "Ron、解説をありがとうございました。",
+      "text_markdown": "Ron、解説をありがとうございました。",
+      "title": "",
+      "tts": {
+        "text": "Ron、解説をありがとうございました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "text": "いつでもどうぞ、Vindy――来られてよかったです。",
+      "text_markdown": "いつでもどうぞ、Vindy――来られてよかったです。",
+      "title": "",
+      "tts": {
+        "text": "いつでもどうぞ、Vindy――来られてよかったです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "text": "以上、2026年6月21日のAI This Weekでした。",
+      "text_markdown": "以上、2026年6月21日のAI This Weekでした。",
+      "title": "",
+      "tts": {
+        "text": "以上、二千二十六年六月二十一日のAI This Weekでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "text": "来週は、オープンウェイトと小規模ラボの話題に戻ります。",
+      "text_markdown": "来週は、オープンウェイトと小規模ラボの話題に戻ります。",
+      "title": "",
+      "tts": {
+        "text": "来週は、オープンウェイトと小規模ラボの話題に戻ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "text": "それでは次の日曜日まで、お元気で。",
+      "text_markdown": "それでは次の日曜日まで、お元気で。",
+      "title": "",
+      "tts": {
+        "text": "それでは次の日曜日まで、お元気で。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

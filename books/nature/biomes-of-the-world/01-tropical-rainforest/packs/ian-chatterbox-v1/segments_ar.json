@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "الغابة الاستوائية المطيرة",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الغابة الاستوائية المطيرة",
+      "text_markdown": "الغابة الاستوائية المطيرة"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أين تنمو الغابات المطيرة",
+      "text_markdown": "أين تنمو الغابات المطيرة"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهلاً بكم في الغابة الاستوائية المطيرة.",
+      "text_markdown": "أهلاً بكم في الغابة الاستوائية المطيرة.",
+      "tts": {
+        "text": "أهلاً بكم في الغابة الاستوائية المطيرة.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "text_markdown": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "tts": {
+        "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "text_markdown": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "tts": {
+        "text": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الغابة الاستوائية المطيرة دافئة طوال السنة.",
+      "text_markdown": "الغابة الاستوائية المطيرة دافئة طوال السنة.",
+      "tts": {
+        "text": "الغابة الاستوائية المطيرة دافئة طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي رطبة طوال السنة.",
+      "text_markdown": "وهي رطبة طوال السنة.",
+      "tts": {
+        "text": "وهي رطبة طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي مليئة بالحياة.",
+      "text_markdown": "وهي مليئة بالحياة.",
+      "tts": {
+        "text": "وهي مليئة بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو معظم الغابات المطيرة قرب خط الاستواء.",
+      "text_markdown": "تنمو معظم الغابات المطيرة قرب خط الاستواء.",
+      "tts": {
+        "text": "تنمو معظم الغابات المطيرة قرب خط الاستواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "خط الاستواء هو الخط الذي يدور حول وسط الأرض.",
+      "text_markdown": "خط الاستواء هو الخط الذي يدور حول وسط الأرض.",
+      "tts": {
+        "text": "خط الاستواء هو الخط الذي يدور حول وسط الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قرب خط الاستواء، تكون الشمس قوية كل يوم.",
+      "text_markdown": "قرب خط الاستواء، تكون الشمس قوية كل يوم.",
+      "tts": {
+        "text": "قرب خط الاستواء، تكون الشمس قوية كل يوم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر غابة مطيرة في العالم هي الأمازون، في أمريكا الجنوبية.",
+      "text_markdown": "أكبر غابة مطيرة في العالم هي الأمازون، في أمريكا الجنوبية.",
+      "tts": {
+        "text": "أكبر غابة مطيرة في العالم هي الأمازون، في أمريكا الجنوبية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك غابات مطيرة عظيمة في أفريقيا أيضاً، قرب نهر الكونغو.",
+      "text_markdown": "هناك غابات مطيرة عظيمة في أفريقيا أيضاً، قرب نهر الكونغو.",
+      "tts": {
+        "text": "هناك غابات مطيرة عظيمة في أفريقيا أيضاً، قرب نهر الكونغو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك غابات مطيرة في جنوب شرق آسيا، على جزر كثيرة.",
+      "text_markdown": "هناك غابات مطيرة في جنوب شرق آسيا، على جزر كثيرة.",
+      "tts": {
+        "text": "هناك غابات مطيرة في جنوب شرق آسيا، على جزر كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك غابات مطيرة أصغر في أمريكا الوسطى وعلى جزر في المحيط الهادئ.",
+      "text_markdown": "هناك غابات مطيرة أصغر في أمريكا الوسطى وعلى جزر في المحيط الهادئ.",
+      "tts": {
+        "text": "هناك غابات مطيرة أصغر في أمريكا الوسطى وعلى جزر في المحيط الهادئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل واحدة من هذه الغابات نمت وحدها، بعيداً عن الأخريات.",
+      "text_markdown": "كل واحدة من هذه الغابات نمت وحدها، بعيداً عن الأخريات.",
+      "tts": {
+        "text": "كل واحدة من هذه الغابات نمت وحدها، بعيداً عن الأخريات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "text_markdown": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "tts": {
+        "text": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القرد في الأمازون ليس مثل القرد في أفريقيا أو آسيا.",
+      "text_markdown": "القرد في الأمازون ليس مثل القرد في أفريقيا أو آسيا.",
+      "tts": {
+        "text": "القرد في الأمازون ليس مثل القرد في أفريقيا أو آسيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+      "text_markdown": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+      "tts": {
+        "text": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تقف داخل غابة مطيرة، يشعر الهواء بأنه ثقيل ودافئ.",
+      "text_markdown": "حين تقف داخل غابة مطيرة، يشعر الهواء بأنه ثقيل ودافئ.",
+      "tts": {
+        "text": "حين تقف داخل غابة مطيرة، يشعر الهواء بأنه ثقيل ودافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الضوء ناعم وأخضر.",
+      "text_markdown": "الضوء ناعم وأخضر.",
+      "tts": {
+        "text": "الضوء ناعم وأخضر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأشجار طويلة جداً حتى إنك بالكاد ترى السماء.",
+      "text_markdown": "الأشجار طويلة جداً حتى إنك بالكاد ترى السماء.",
+      "tts": {
+        "text": "الأشجار طويلة جداً حتى إنك بالكاد ترى السماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسمع الطيور والحشرات حولك في كل مكان.",
+      "text_markdown": "تسمع الطيور والحشرات حولك في كل مكان.",
+      "tts": {
+        "text": "تسمع الطيور والحشرات حولك في كل مكان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسمع الماء يقطر من الأوراق.",
+      "text_markdown": "تسمع الماء يقطر من الأوراق.",
+      "tts": {
+        "text": "تسمع الماء يقطر من الأوراق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تشعر كأنك داخل غرفة حيّة.",
+      "text_markdown": "تشعر كأنك داخل غرفة حيّة.",
+      "tts": {
+        "text": "تشعر كأنك داخل غرفة حيّة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه هي الغابة المطيرة.",
+      "text_markdown": "هذه هي الغابة المطيرة.",
+      "tts": {
+        "text": "هذه هي الغابة المطيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "أين تنمو الغابات المطيرة",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالم كامل مبني من الأشجار والمطر.",
+      "text_markdown": "عالم كامل مبني من الأشجار والمطر.",
+      "tts": {
+        "text": "عالم كامل مبني من الأشجار والمطر.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطقس",
+      "text_markdown": "الطقس"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الطقس في الغابة الاستوائية المطيرة بسيط.",
+      "text_markdown": "الطقس في الغابة الاستوائية المطيرة بسيط.",
+      "tts": {
+        "text": "الطقس في الغابة الاستوائية المطيرة بسيط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إنه دافئ، والمطر يهطل كثيراً.",
+      "text_markdown": "إنه دافئ، والمطر يهطل كثيراً.",
+      "tts": {
+        "text": "إنه دافئ، والمطر يهطل كثيراً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبقى درجة الحرارة متشابهة تقريباً طوال السنة.",
+      "text_markdown": "تبقى درجة الحرارة متشابهة تقريباً طوال السنة.",
+      "tts": {
+        "text": "تبقى درجة الحرارة متشابهة تقريباً طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا يصبح الجو بارداً في الشتاء.",
+      "text_markdown": "لا يصبح الجو بارداً في الشتاء.",
+      "tts": {
+        "text": "لا يصبح الجو بارداً في الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولا يصبح حاراً جداً في الصيف.",
+      "text_markdown": "ولا يصبح حاراً جداً في الصيف.",
+      "tts": {
+        "text": "ولا يصبح حاراً جداً في الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الأيام دافئة وثابتة.",
+      "text_markdown": "معظم الأيام دافئة وثابتة.",
+      "tts": {
+        "text": "معظم الأيام دافئة وثابتة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يهطل المطر تقريباً كل يوم.",
+      "text_markdown": "يهطل المطر تقريباً كل يوم.",
+      "tts": {
+        "text": "يهطل المطر تقريباً كل يوم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأماكن يهطل عليها أكثر من مترين من المطر في السنة.",
+      "text_markdown": "بعض الأماكن يهطل عليها أكثر من مترين من المطر في السنة.",
+      "tts": {
+        "text": "بعض الأماكن يهطل عليها أكثر من مترين من المطر في السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا أكثر من المطر الذي تراه معظم أجزاء العالم على الإطلاق.",
+      "text_markdown": "هذا أكثر من المطر الذي تراه معظم أجزاء العالم على الإطلاق.",
+      "tts": {
+        "text": "هذا أكثر من المطر الذي تراه معظم أجزاء العالم على الإطلاق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثيراً ما يأتي المطر بعد الظهر.",
+      "text_markdown": "كثيراً ما يأتي المطر بعد الظهر.",
+      "tts": {
+        "text": "كثيراً ما يأتي المطر بعد الظهر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتجمع غيوم كبيرة فوق الأشجار.",
+      "text_markdown": "تتجمع غيوم كبيرة فوق الأشجار.",
+      "tts": {
+        "text": "تتجمع غيوم كبيرة فوق الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تهطل زخّة قوية لساعة أو ساعتين.",
+      "text_markdown": "تهطل زخّة قوية لساعة أو ساعتين.",
+      "tts": {
+        "text": "تهطل زخّة قوية لساعة أو ساعتين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تعود الشمس للظهور.",
+      "text_markdown": "ثم تعود الشمس للظهور.",
+      "tts": {
+        "text": "ثم تعود الشمس للظهور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلمع الأوراق، ويتصاعد البخار من الأرض.",
+      "text_markdown": "تلمع الأوراق، ويتصاعد البخار من الأرض.",
+      "tts": {
+        "text": "تلمع الأوراق، ويتصاعد البخار من الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا توجد هنا فصول أربعة.",
+      "text_markdown": "لا توجد هنا فصول أربعة.",
+      "tts": {
+        "text": "لا توجد هنا فصول أربعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك فقط وقت أكثر رطوبة ووقت أكثر جفافاً.",
+      "text_markdown": "هناك فقط وقت أكثر رطوبة ووقت أكثر جفافاً.",
+      "tts": {
+        "text": "هناك فقط وقت أكثر رطوبة ووقت أكثر جفافاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حتى في الوقت الأكثر جفافاً، ما زال المطر يهطل كثيراً.",
+      "text_markdown": "حتى في الوقت الأكثر جفافاً، ما زال المطر يهطل كثيراً.",
+      "tts": {
+        "text": "حتى في الوقت الأكثر جفافاً، ما زال المطر يهطل كثيراً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بالنسبة لنباتات الغابة المطيرة وحيواناتها، يبدو كل يوم متشابهاً جداً.",
+      "text_markdown": "بالنسبة لنباتات الغابة المطيرة وحيواناتها، يبدو كل يوم متشابهاً جداً.",
+      "tts": {
+        "text": "بالنسبة لنباتات الغابة المطيرة وحيواناتها، يبدو كل يوم متشابهاً جداً.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض الغابة المطيرة غنية بالحياة، لكن التربة رقيقة.",
+      "text_markdown": "أرض الغابة المطيرة غنية بالحياة، لكن التربة رقيقة.",
+      "tts": {
+        "text": "أرض الغابة المطيرة غنية بالحياة، لكن التربة رقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الخير يوجد في السنتيمترات القليلة العليا.",
+      "text_markdown": "معظم الخير يوجد في السنتيمترات القليلة العليا.",
+      "tts": {
+        "text": "معظم الخير يوجد في السنتيمترات القليلة العليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تسقط ورقة، تقوم الحشرات والكائنات الصغيرة بتحليلها بسرعة كبيرة.",
+      "text_markdown": "حين تسقط ورقة، تقوم الحشرات والكائنات الصغيرة بتحليلها بسرعة كبيرة.",
+      "tts": {
+        "text": "حين تسقط ورقة، تقوم الحشرات والكائنات الصغيرة بتحليلها بسرعة كبيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأخذ الأشجار الغذاء من جديد على الفور تقريباً.",
+      "text_markdown": "تأخذ الأشجار الغذاء من جديد على الفور تقريباً.",
+      "tts": {
+        "text": "تأخذ الأشجار الغذاء من جديد على الفور تقريباً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لهذا السبب يصعب إعادة غابة مطيرة قُطعت.",
+      "text_markdown": "لهذا السبب يصعب إعادة غابة مطيرة قُطعت.",
+      "tts": {
+        "text": "لهذا السبب يصعب إعادة غابة مطيرة قُطعت.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من دون الأشجار، يجرف المطر التربة الرقيقة بعيداً.",
+      "text_markdown": "من دون الأشجار، يجرف المطر التربة الرقيقة بعيداً.",
+      "tts": {
+        "text": "من دون الأشجار، يجرف المطر التربة الرقيقة بعيداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تجري الأنهار في كل غابة مطيرة.",
+      "text_markdown": "تجري الأنهار في كل غابة مطيرة.",
+      "tts": {
+        "text": "تجري الأنهار في كل غابة مطيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأنهار ضخمة.",
+      "text_markdown": "بعض الأنهار ضخمة.",
+      "tts": {
+        "text": "بعض الأنهار ضخمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نهر الأمازون يحمل ماء أكثر من أي نهر آخر في العالم.",
+      "text_markdown": "نهر الأمازون يحمل ماء أكثر من أي نهر آخر في العالم.",
+      "tts": {
+        "text": "نهر الأمازون يحمل ماء أكثر من أي نهر آخر في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الوقت الممطر، تنتشر الأنهار بعيداً داخل الغابة.",
+      "text_markdown": "في الوقت الممطر، تنتشر الأنهار بعيداً داخل الغابة.",
+      "tts": {
+        "text": "في الوقت الممطر، تنتشر الأنهار بعيداً داخل الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تقف الأشجار في الماء لشهور.",
+      "text_markdown": "تقف الأشجار في الماء لشهور.",
+      "tts": {
+        "text": "تقف الأشجار في الماء لشهور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسبح الأسماك بين الجذوع.",
+      "text_markdown": "تسبح الأسماك بين الجذوع.",
+      "tts": {
+        "text": "تسبح الأسماك بين الجذوع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أنهار أخرى صغيرة وصافية، وفي قاعها حجارة.",
+      "text_markdown": "أنهار أخرى صغيرة وصافية، وفي قاعها حجارة.",
+      "tts": {
+        "text": "أنهار أخرى صغيرة وصافية، وفي قاعها حجارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو الغابة نفسها على طبقات.",
+      "text_markdown": "تنمو الغابة نفسها على طبقات.",
+      "tts": {
+        "text": "تنمو الغابة نفسها على طبقات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الأعلى توجد أطول الأشجار، مع تيجانها المنتشرة في الشمس.",
+      "text_markdown": "في الأعلى توجد أطول الأشجار، مع تيجانها المنتشرة في الشمس.",
+      "tts": {
+        "text": "في الأعلى توجد أطول الأشجار، مع تيجانها المنتشرة في الشمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحتها يوجد سقف أخضر كثيف من الأوراق.",
+      "text_markdown": "تحتها يوجد سقف أخضر كثيف من الأوراق.",
+      "tts": {
+        "text": "تحتها يوجد سقف أخضر كثيف من الأوراق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحت ذلك السقف، يكون الهواء ظليلاً وهادئاً.",
+      "text_markdown": "تحت ذلك السقف، يكون الهواء ظليلاً وهادئاً.",
+      "tts": {
+        "text": "تحت ذلك السقف، يكون الهواء ظليلاً وهادئاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على الأرض، يصل قليل من الضوء فقط.",
+      "text_markdown": "على الأرض، يصل قليل من الضوء فقط.",
+      "tts": {
+        "text": "على الأرض، يصل قليل من الضوء فقط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل طبقة هي بيت مختلف لحيوانات المنطقة الحيوية ونباتاتها.",
+      "text_markdown": "كل طبقة هي بيت مختلف لحيوانات المنطقة الحيوية ونباتاتها.",
+      "tts": {
+        "text": "كل طبقة هي بيت مختلف لحيوانات المنطقة الحيوية ونباتاتها.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "النباتات",
+      "text_markdown": "النباتات"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحتوي الغابة الاستوائية المطيرة على أنواع من النباتات أكثر من أي منطقة حيوية أخرى على اليابسة.",
+      "text_markdown": "تحتوي الغابة الاستوائية المطيرة على أنواع من النباتات أكثر من أي منطقة حيوية أخرى على اليابسة.",
+      "tts": {
+        "text": "تحتوي الغابة الاستوائية المطيرة على أنواع من النباتات أكثر من أي منطقة حيوية أخرى على اليابسة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأشجار هي قلبها.",
+      "text_markdown": "الأشجار هي قلبها.",
+      "tts": {
+        "text": "الأشجار هي قلبها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو بعض الأشجار طويلة جداً، تمتد نحو الشمس.",
+      "text_markdown": "تنمو بعض الأشجار طويلة جداً، تمتد نحو الشمس.",
+      "tts": {
+        "text": "تنمو بعض الأشجار طويلة جداً، تمتد نحو الشمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "جذوعها مستقيمة وملساء.",
+      "text_markdown": "جذوعها مستقيمة وملساء.",
+      "tts": {
+        "text": "جذوعها مستقيمة وملساء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنتشر جذورها واسعة في الأسفل، كالجدران، لتثبتها في التربة الرقيقة.",
+      "text_markdown": "تنتشر جذورها واسعة في الأسفل، كالجدران، لتثبتها في التربة الرقيقة.",
+      "tts": {
+        "text": "تنتشر جذورها واسعة في الأسفل، كالجدران، لتثبتها في التربة الرقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتسلق الكروم على الجذوع نحو الضوء.",
+      "text_markdown": "تتسلق الكروم على الجذوع نحو الضوء.",
+      "tts": {
+        "text": "تتسلق الكروم على الجذوع نحو الضوء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الكروم سميك مثل ذراعك.",
+      "text_markdown": "بعض الكروم سميك مثل ذراعك.",
+      "tts": {
+        "text": "بعض الكروم سميك مثل ذراعك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلتف حول الأشجار وتتدلى من الأغصان.",
+      "text_markdown": "تلتف حول الأشجار وتتدلى من الأغصان.",
+      "tts": {
+        "text": "تلتف حول الأشجار وتتدلى من الأغصان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو نباتات على الأشجار نفسها، عالياً في الهواء.",
+      "text_markdown": "تنمو نباتات على الأشجار نفسها، عالياً في الهواء.",
+      "tts": {
+        "text": "تنمو نباتات على الأشجار نفسها، عالياً في الهواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ليس لها جذور في الأرض على الإطلاق.",
+      "text_markdown": "ليس لها جذور في الأرض على الإطلاق.",
+      "tts": {
+        "text": "ليس لها جذور في الأرض على الإطلاق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تشرب المطر الذي يسيل على القشرة.",
+      "text_markdown": "تشرب المطر الذي يسيل على القشرة.",
+      "tts": {
+        "text": "تشرب المطر الذي يسيل على القشرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على أرض الغابة المظلمة تنمو السراخس ونباتات خضراء ناعمة.",
+      "text_markdown": "على أرض الغابة المظلمة تنمو السراخس ونباتات خضراء ناعمة.",
+      "tts": {
+        "text": "على أرض الغابة المظلمة تنمو السراخس ونباتات خضراء ناعمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لها أوراق واسعة ومسطحة لتلتقط كل قطرة من الضوء.",
+      "text_markdown": "لها أوراق واسعة ومسطحة لتلتقط كل قطرة من الضوء.",
+      "tts": {
+        "text": "لها أوراق واسعة ومسطحة لتلتقط كل قطرة من الضوء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتفتح الأزهار بكل لون يمكنك التفكير فيه.",
+      "text_markdown": "تتفتح الأزهار بكل لون يمكنك التفكير فيه.",
+      "tts": {
+        "text": "تتفتح الأزهار بكل لون يمكنك التفكير فيه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعضها أحمر، وبعضها أصفر، وبعضها أرجواني غامق.",
+      "text_markdown": "بعضها أحمر، وبعضها أصفر، وبعضها أرجواني غامق.",
+      "tts": {
+        "text": "بعضها أحمر، وبعضها أصفر، وبعضها أرجواني غامق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير منها يتفتح في الليل.",
+      "text_markdown": "كثير منها يتفتح في الليل.",
+      "tts": {
+        "text": "كثير منها يتفتح في الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتدلى الثمار من الأغصان طوال السنة.",
+      "text_markdown": "تتدلى الثمار من الأغصان طوال السنة.",
+      "tts": {
+        "text": "تتدلى الثمار من الأغصان طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك ثمار حلوة، وثمار حامضة، وثمار ذات قشور صلبة.",
+      "text_markdown": "هناك ثمار حلوة، وثمار حامضة، وثمار ذات قشور صلبة.",
+      "tts": {
+        "text": "هناك ثمار حلوة، وثمار حامضة، وثمار ذات قشور صلبة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من الأطعمة التي نأكلها في البيت نمت أول مرة بَرّيّة في الغابات المطيرة.",
+      "text_markdown": "كثير من الأطعمة التي نأكلها في البيت نمت أول مرة بَرّيّة في الغابات المطيرة.",
+      "tts": {
+        "text": "كثير من الأطعمة التي نأكلها في البيت نمت أول مرة بَرّيّة في الغابات المطيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الكاكاو، النبات الذي يعطينا الشوكولاتة، جاء من الغابات المطيرة في أمريكا الجنوبية.",
+      "text_markdown": "الكاكاو، النبات الذي يعطينا الشوكولاتة، جاء من الغابات المطيرة في أمريكا الجنوبية.",
+      "tts": {
+        "text": "الكاكاو، النبات الذي يعطينا الشوكولاتة، جاء من الغابات المطيرة في أمريكا الجنوبية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نمت أول نباتات الموز في الغابات المطيرة في جنوب شرق آسيا.",
+      "text_markdown": "نمت أول نباتات الموز في الغابات المطيرة في جنوب شرق آسيا.",
+      "tts": {
+        "text": "نمت أول نباتات الموز في الغابات المطيرة في جنوب شرق آسيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكل طعام نحبه قصة غابة في مكان ما على الأرض.",
+      "text_markdown": "لكل طعام نحبه قصة غابة في مكان ما على الأرض.",
+      "tts": {
+        "text": "لكل طعام نحبه قصة غابة في مكان ما على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تنظر إلى نبات في الغابة المطيرة، فغالباً ما يكون قد وجد طريقة ذكية ليعيش بها.",
+      "text_markdown": "حين تنظر إلى نبات في الغابة المطيرة، فغالباً ما يكون قد وجد طريقة ذكية ليعيش بها.",
+      "tts": {
+        "text": "حين تنظر إلى نبات في الغابة المطيرة، فغالباً ما يكون قد وجد طريقة ذكية ليعيش بها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأوراق لها طرف طويل في النهاية، حتى يسيل المطر عنها بسرعة.",
+      "text_markdown": "بعض الأوراق لها طرف طويل في النهاية، حتى يسيل المطر عنها بسرعة.",
+      "tts": {
+        "text": "بعض الأوراق لها طرف طويل في النهاية، حتى يسيل المطر عنها بسرعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأزهار تفوح رائحتها الحلوة في الليل فقط، لتنادي الحشرة المناسبة لزيارتها.",
+      "text_markdown": "بعض الأزهار تفوح رائحتها الحلوة في الليل فقط، لتنادي الحشرة المناسبة لزيارتها.",
+      "tts": {
+        "text": "بعض الأزهار تفوح رائحتها الحلوة في الليل فقط، لتنادي الحشرة المناسبة لزيارتها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الغابة كلها آلة هادئة، مصنوعة من اللون الأخضر.",
+      "text_markdown": "الغابة كلها آلة هادئة، مصنوعة من اللون الأخضر.",
+      "tts": {
+        "text": "الغابة كلها آلة هادئة، مصنوعة من اللون الأخضر.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش في الغابة الاستوائية المطيرة أنواع من الحيوانات أكثر من أي مكان آخر على اليابسة.",
+      "text_markdown": "تعيش في الغابة الاستوائية المطيرة أنواع من الحيوانات أكثر من أي مكان آخر على اليابسة.",
+      "tts": {
+        "text": "تعيش في الغابة الاستوائية المطيرة أنواع من الحيوانات أكثر من أي مكان آخر على اليابسة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها يعيش في الأعلى على الأشجار، لا على الأرض.",
+      "text_markdown": "معظمها يعيش في الأعلى على الأشجار، لا على الأرض.",
+      "tts": {
+        "text": "معظمها يعيش في الأعلى على الأشجار، لا على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك طعام أكثر وضوء أكثر في الأعلى.",
+      "text_markdown": "هناك طعام أكثر وضوء أكثر في الأعلى.",
+      "tts": {
+        "text": "هناك طعام أكثر وضوء أكثر في الأعلى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعيش القرد في غابات مطيرة كثيرة.",
+      "text_markdown": "يعيش القرد في غابات مطيرة كثيرة.",
+      "tts": {
+        "text": "يعيش القرد في غابات مطيرة كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يقفز من غصن إلى غصن وينادي رفاقه عبر الأشجار.",
+      "text_markdown": "يقفز من غصن إلى غصن وينادي رفاقه عبر الأشجار.",
+      "tts": {
+        "text": "يقفز من غصن إلى غصن وينادي رفاقه عبر الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الغابات المطيرة في أمريكا الجنوبية، بعض القرود لها أذيال طويلة تستخدمها كأنها يد إضافية.",
+      "text_markdown": "في الغابات المطيرة في أمريكا الجنوبية، بعض القرود لها أذيال طويلة تستخدمها كأنها يد إضافية.",
+      "tts": {
+        "text": "في الغابات المطيرة في أمريكا الجنوبية، بعض القرود لها أذيال طويلة تستخدمها كأنها يد إضافية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يطير الببغاء وطيور مضيئة أخرى بين الأغصان العالية.",
+      "text_markdown": "يطير الببغاء وطيور مضيئة أخرى بين الأغصان العالية.",
+      "tts": {
+        "text": "يطير الببغاء وطيور مضيئة أخرى بين الأغصان العالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأكل الفاكهة والبذور.",
+      "text_markdown": "تأكل الفاكهة والبذور.",
+      "tts": {
+        "text": "تأكل الفاكهة والبذور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ريشها أحمر وأخضر وأزرق وأصفر.",
+      "text_markdown": "ريشها أحمر وأخضر وأزرق وأصفر.",
+      "tts": {
+        "text": "ريشها أحمر وأخضر وأزرق وأصفر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في غابات مطيرة كثيرة، تصطاد القطط الكبيرة على الأرض في الليل.",
+      "text_markdown": "في غابات مطيرة كثيرة، تصطاد القطط الكبيرة على الأرض في الليل.",
+      "tts": {
+        "text": "في غابات مطيرة كثيرة، تصطاد القطط الكبيرة على الأرض في الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الأمريكتين، هذه القطة هي اليغور.",
+      "text_markdown": "في الأمريكتين، هذه القطة هي اليغور.",
+      "tts": {
+        "text": "في الأمريكتين، هذه القطة هي اليغور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في آسيا، هي النمر.",
+      "text_markdown": "في آسيا، هي النمر.",
+      "tts": {
+        "text": "في آسيا، هي النمر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أفريقيا، هي الفهد.",
+      "text_markdown": "في أفريقيا، هي الفهد.",
+      "tts": {
+        "text": "في أفريقيا، هي الفهد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كلها قوية وهادئة، وعلى فرائها بقع أو خطوط.",
+      "text_markdown": "كلها قوية وهادئة، وعلى فرائها بقع أو خطوط.",
+      "tts": {
+        "text": "كلها قوية وهادئة، وعلى فرائها بقع أو خطوط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنزلق الأفعى بين الأوراق والأشجار.",
+      "text_markdown": "تنزلق الأفعى بين الأوراق والأشجار.",
+      "tts": {
+        "text": "تنزلق الأفعى بين الأوراق والأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأفاعي صغيرة جداً، وبعضها طويل جداً.",
+      "text_markdown": "بعض الأفاعي صغيرة جداً، وبعضها طويل جداً.",
+      "tts": {
+        "text": "بعض الأفاعي صغيرة جداً، وبعضها طويل جداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها خجول ويبتعد عن الناس.",
+      "text_markdown": "معظمها خجول ويبتعد عن الناس.",
+      "tts": {
+        "text": "معظمها خجول ويبتعد عن الناس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يغني الضفدع كل ليلة، خاصة بعد المطر.",
+      "text_markdown": "يغني الضفدع كل ليلة، خاصة بعد المطر.",
+      "tts": {
+        "text": "يغني الضفدع كل ليلة، خاصة بعد المطر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الضفادع صغيرة جداً ومضيئة.",
+      "text_markdown": "بعض الضفادع صغيرة جداً ومضيئة.",
+      "tts": {
+        "text": "بعض الضفادع صغيرة جداً ومضيئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الألوان الزاهية تحذّر الحيوانات الأخرى من أكلها.",
+      "text_markdown": "الألوان الزاهية تحذّر الحيوانات الأخرى من أكلها.",
+      "tts": {
+        "text": "الألوان الزاهية تحذّر الحيوانات الأخرى من أكلها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تملأ الحشرات كل زاوية من الغابة.",
+      "text_markdown": "تملأ الحشرات كل زاوية من الغابة.",
+      "tts": {
+        "text": "تملأ الحشرات كل زاوية من الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك حشرات في الغابة المطيرة أكثر من أي نوع آخر من الحيوانات.",
+      "text_markdown": "هناك حشرات في الغابة المطيرة أكثر من أي نوع آخر من الحيوانات.",
+      "tts": {
+        "text": "هناك حشرات في الغابة المطيرة أكثر من أي نوع آخر من الحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يسير النمل في صفوف طويلة عبر أرض الغابة.",
+      "text_markdown": "يسير النمل في صفوف طويلة عبر أرض الغابة.",
+      "tts": {
+        "text": "يسير النمل في صفوف طويلة عبر أرض الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتسلق الخنفساء الجذوع.",
+      "text_markdown": "تتسلق الخنفساء الجذوع.",
+      "tts": {
+        "text": "تتسلق الخنفساء الجذوع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تطفو الفراشة في الهواء على جناحين واسعين ملوّنين.",
+      "text_markdown": "تطفو الفراشة في الهواء على جناحين واسعين ملوّنين.",
+      "tts": {
+        "text": "تطفو الفراشة في الهواء على جناحين واسعين ملوّنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعيش السمك في الأنهار، بأشكال وأحجام كثيرة.",
+      "text_markdown": "يعيش السمك في الأنهار، بأشكال وأحجام كثيرة.",
+      "tts": {
+        "text": "يعيش السمك في الأنهار، بأشكال وأحجام كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأسماك صغيرة جداً وفضية، وبعضها أكبر من طفل.",
+      "text_markdown": "بعض الأسماك صغيرة جداً وفضية، وبعضها أكبر من طفل.",
+      "tts": {
+        "text": "بعض الأسماك صغيرة جداً وفضية، وبعضها أكبر من طفل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالياً فوق كل شيء، ينساب النسر فوق السقف الأخضر للغابة.",
+      "text_markdown": "عالياً فوق كل شيء، ينساب النسر فوق السقف الأخضر للغابة.",
+      "tts": {
+        "text": "عالياً فوق كل شيء، ينساب النسر فوق السقف الأخضر للغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يراقب أي حركة في الأسفل.",
+      "text_markdown": "يراقب أي حركة في الأسفل.",
+      "tts": {
+        "text": "يراقب أي حركة في الأسفل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يطير الخفاش عند الغروب ليأكل الفاكهة والحشرات.",
+      "text_markdown": "يطير الخفاش عند الغروب ليأكل الفاكهة والحشرات.",
+      "tts": {
+        "text": "يطير الخفاش عند الغروب ليأكل الفاكهة والحشرات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في شجرة واحدة من الغابة المطيرة، قد تجد أنواعاً من الحيوانات أكثر مما تجده في مدينة كاملة في مكان آخر.",
+      "text_markdown": "في شجرة واحدة من الغابة المطيرة، قد تجد أنواعاً من الحيوانات أكثر مما تجده في مدينة كاملة في مكان آخر.",
+      "tts": {
+        "text": "في شجرة واحدة من الغابة المطيرة، قد تجد أنواعاً من الحيوانات أكثر مما تجده في مدينة كاملة في مكان آخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه هي روعة هذه المنطقة الحيوية.",
+      "text_markdown": "هذه هي روعة هذه المنطقة الحيوية.",
+      "tts": {
+        "text": "هذه هي روعة هذه المنطقة الحيوية.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الناس",
+      "text_markdown": "الناس"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عاش الناس في الغابة الاستوائية المطيرة منذ زمن طويل جداً.",
+      "text_markdown": "عاش الناس في الغابة الاستوائية المطيرة منذ زمن طويل جداً.",
+      "tts": {
+        "text": "عاش الناس في الغابة الاستوائية المطيرة منذ زمن طويل جداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلّموا كيف يعيشون بشكل جيد مع الأشجار والمطر والحيوانات.",
+      "text_markdown": "تعلّموا كيف يعيشون بشكل جيد مع الأشجار والمطر والحيوانات.",
+      "tts": {
+        "text": "تعلّموا كيف يعيشون بشكل جيد مع الأشجار والمطر والحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من أهل الغابة المطيرة يعيشون في قرى صغيرة.",
+      "text_markdown": "كثير من أهل الغابة المطيرة يعيشون في قرى صغيرة.",
+      "tts": {
+        "text": "كثير من أهل الغابة المطيرة يعيشون في قرى صغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثيراً ما تُبنى البيوت على أعمدة خشبية طويلة لترتفع فوق الأرض الرطبة.",
+      "text_markdown": "كثيراً ما تُبنى البيوت على أعمدة خشبية طويلة لترتفع فوق الأرض الرطبة.",
+      "tts": {
+        "text": "كثيراً ما تُبنى البيوت على أعمدة خشبية طويلة لترتفع فوق الأرض الرطبة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُصنع السقوف من أوراق توضع في صفوف سميكة.",
+      "text_markdown": "تُصنع السقوف من أوراق توضع في صفوف سميكة.",
+      "tts": {
+        "text": "تُصنع السقوف من أوراق توضع في صفوف سميكة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سقف الأوراق الجيد يحجب المطر الغزير.",
+      "text_markdown": "سقف الأوراق الجيد يحجب المطر الغزير.",
+      "tts": {
+        "text": "سقف الأوراق الجيد يحجب المطر الغزير.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثيراً ما تكون الجدران مفتوحة ليمر الهواء الدافئ.",
+      "text_markdown": "كثيراً ما تكون الجدران مفتوحة ليمر الهواء الدافئ.",
+      "tts": {
+        "text": "كثيراً ما تكون الجدران مفتوحة ليمر الهواء الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يصطاد الناس السمك في الأنهار ويجمعون الطعام من الغابة.",
+      "text_markdown": "يصطاد الناس السمك في الأنهار ويجمعون الطعام من الغابة.",
+      "tts": {
+        "text": "يصطاد الناس السمك في الأنهار ويجمعون الطعام من الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يصطادون الحيوانات الصغيرة بالأقواس والرماح.",
+      "text_markdown": "يصطادون الحيوانات الصغيرة بالأقواس والرماح.",
+      "tts": {
+        "text": "يصطادون الحيوانات الصغيرة بالأقواس والرماح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون الطعام في حدائق صغيرة مفتوحة بين الأشجار.",
+      "text_markdown": "يزرعون الطعام في حدائق صغيرة مفتوحة بين الأشجار.",
+      "tts": {
+        "text": "يزرعون الطعام في حدائق صغيرة مفتوحة بين الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ما يزرعونه يعتمد على المكان الذي يعيشون فيه.",
+      "text_markdown": "ما يزرعونه يعتمد على المكان الذي يعيشون فيه.",
+      "tts": {
+        "text": "ما يزرعونه يعتمد على المكان الذي يعيشون فيه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الغابات المطيرة في أمريكا الجنوبية، زرع الناس الكاسافا والبطاطا الحلوة منذ آلاف السنين.",
+      "text_markdown": "في الغابات المطيرة في أمريكا الجنوبية، زرع الناس الكاسافا والبطاطا الحلوة منذ آلاف السنين.",
+      "tts": {
+        "text": "في الغابات المطيرة في أمريكا الجنوبية، زرع الناس الكاسافا والبطاطا الحلوة منذ آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الغابات المطيرة في أفريقيا، زرع الناس اليام وثمرة النخيل.",
+      "text_markdown": "في الغابات المطيرة في أفريقيا، زرع الناس اليام وثمرة النخيل.",
+      "tts": {
+        "text": "في الغابات المطيرة في أفريقيا، زرع الناس اليام وثمرة النخيل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الغابات المطيرة في جنوب شرق آسيا والمحيط الهادئ، زرع الناس القلقاس والأرز وثمرة الخبز.",
+      "text_markdown": "في الغابات المطيرة في جنوب شرق آسيا والمحيط الهادئ، زرع الناس القلقاس والأرز وثمرة الخبز.",
+      "tts": {
+        "text": "في الغابات المطيرة في جنوب شرق آسيا والمحيط الهادئ، زرع الناس القلقاس والأرز وثمرة الخبز.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد بضع سنوات يتركون الحديقة تنمو من جديد لتصير غابة، ويصنعون حديقة جديدة في مكان آخر.",
+      "text_markdown": "بعد بضع سنوات يتركون الحديقة تنمو من جديد لتصير غابة، ويصنعون حديقة جديدة في مكان آخر.",
+      "tts": {
+        "text": "بعد بضع سنوات يتركون الحديقة تنمو من جديد لتصير غابة، ويصنعون حديقة جديدة في مكان آخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هكذا تبقى الغابة سليمة.",
+      "text_markdown": "هكذا تبقى الغابة سليمة.",
+      "tts": {
+        "text": "هكذا تبقى الغابة سليمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرف أهل الغابة المطيرة آلاف النباتات.",
+      "text_markdown": "يعرف أهل الغابة المطيرة آلاف النباتات.",
+      "tts": {
+        "text": "يعرف أهل الغابة المطيرة آلاف النباتات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرفون أي منها يعطي طعاماً، وأي منها يعطي دواءً، وأي منها ليس آمناً للأكل.",
+      "text_markdown": "يعرفون أي منها يعطي طعاماً، وأي منها يعطي دواءً، وأي منها ليس آمناً للأكل.",
+      "tts": {
+        "text": "يعرفون أي منها يعطي طعاماً، وأي منها يعطي دواءً، وأي منها ليس آمناً للأكل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتعلمون أغاني الطيور.",
+      "text_markdown": "يتعلمون أغاني الطيور.",
+      "tts": {
+        "text": "يتعلمون أغاني الطيور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتعلمون آثار الحيوانات.",
+      "text_markdown": "يتعلمون آثار الحيوانات.",
+      "tts": {
+        "text": "يتعلمون آثار الحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُنقل هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+      "text_markdown": "تُنقل هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+      "tts": {
+        "text": "تُنقل هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في كل غابة مطيرة، لهذا النوع من الحياة لغاته الخاصة وقصصه الخاصة وموسيقاه الخاصة.",
+      "text_markdown": "في كل غابة مطيرة، لهذا النوع من الحياة لغاته الخاصة وقصصه الخاصة وموسيقاه الخاصة.",
+      "tts": {
+        "text": "في كل غابة مطيرة، لهذا النوع من الحياة لغاته الخاصة وقصصه الخاصة وموسيقاه الخاصة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الغابة المطيرة اليوم",
+      "text_markdown": "الغابة المطيرة اليوم"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الغابة الاستوائية المطيرة هي واحدة من أهم المناطق الحيوية على الأرض.",
+      "text_markdown": "الغابة الاستوائية المطيرة هي واحدة من أهم المناطق الحيوية على الأرض.",
+      "tts": {
+        "text": "الغابة الاستوائية المطيرة هي واحدة من أهم المناطق الحيوية على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسحب الأشجار الماء من الأرض وتنفثه في السماء.",
+      "text_markdown": "تسحب الأشجار الماء من الأرض وتنفثه في السماء.",
+      "tts": {
+        "text": "تسحب الأشجار الماء من الأرض وتنفثه في السماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الغيوم التي تتكون فوق الغابة تحمل المطر إلى أراضٍ بعيدة.",
+      "text_markdown": "الغيوم التي تتكون فوق الغابة تحمل المطر إلى أراضٍ بعيدة.",
+      "tts": {
+        "text": "الغيوم التي تتكون فوق الغابة تحمل المطر إلى أراضٍ بعيدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتنفس الأشجار أيضاً، لكن بطريقة معاكسة لنا.",
+      "text_markdown": "تتنفس الأشجار أيضاً، لكن بطريقة معاكسة لنا.",
+      "tts": {
+        "text": "تتنفس الأشجار أيضاً، لكن بطريقة معاكسة لنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأخذ الغاز الذي نزفره، وتستعمله لتنمو.",
+      "text_markdown": "تأخذ الغاز الذي نزفره، وتستعمله لتنمو.",
+      "tts": {
+        "text": "تأخذ الغاز الذي نزفره، وتستعمله لتنمو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتعيد إلينا الغاز الذي نستنشقه.",
+      "text_markdown": "وتعيد إلينا الغاز الذي نستنشقه.",
+      "tts": {
+        "text": "وتعيد إلينا الغاز الذي نستنشقه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الغابة المطيرة في خطر.",
+      "text_markdown": "لكن الغابة المطيرة في خطر.",
+      "tts": {
+        "text": "لكن الغابة المطيرة في خطر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أماكن كثيرة، قطع الناس الأشجار ليزرعوا محاصيل أو ليربّوا حيوانات.",
+      "text_markdown": "في أماكن كثيرة، قطع الناس الأشجار ليزرعوا محاصيل أو ليربّوا حيوانات.",
+      "tts": {
+        "text": "في أماكن كثيرة، قطع الناس الأشجار ليزرعوا محاصيل أو ليربّوا حيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تختفي الأشجار، تنجرف التربة، ويتوقف المطر عن السقوط كما كان من قبل.",
+      "text_markdown": "حين تختفي الأشجار، تنجرف التربة، ويتوقف المطر عن السقوط كما كان من قبل.",
+      "tts": {
+        "text": "حين تختفي الأشجار، تنجرف التربة، ويتوقف المطر عن السقوط كما كان من قبل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تفقد الحيوانات والناس الذين يعيشون هناك بيوتهم.",
+      "text_markdown": "تفقد الحيوانات والناس الذين يعيشون هناك بيوتهم.",
+      "tts": {
+        "text": "تفقد الحيوانات والناس الذين يعيشون هناك بيوتهم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعمل مجموعات كثيرة حول العالم لحماية ما تبقى.",
+      "text_markdown": "تعمل مجموعات كثيرة حول العالم لحماية ما تبقى.",
+      "tts": {
+        "text": "تعمل مجموعات كثيرة حول العالم لحماية ما تبقى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون أشجاراً جديدة.",
+      "text_markdown": "يزرعون أشجاراً جديدة.",
+      "tts": {
+        "text": "يزرعون أشجاراً جديدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يساعدون الناس الذين يعيشون في الغابة على الاعتناء بها.",
+      "text_markdown": "يساعدون الناس الذين يعيشون في الغابة على الاعتناء بها.",
+      "tts": {
+        "text": "يساعدون الناس الذين يعيشون في الغابة على الاعتناء بها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يدرسون الغابة لنفهمها بشكل أفضل.",
+      "text_markdown": "يدرسون الغابة لنفهمها بشكل أفضل.",
+      "tts": {
+        "text": "يدرسون الغابة لنفهمها بشكل أفضل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستغرق الغابة المطيرة مئات السنين لتنمو.",
+      "text_markdown": "تستغرق الغابة المطيرة مئات السنين لتنمو.",
+      "tts": {
+        "text": "تستغرق الغابة المطيرة مئات السنين لتنمو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الغابة المطيرة السليمة يمكن أن تستمر في النمو آلاف السنين.",
+      "text_markdown": "لكن الغابة المطيرة السليمة يمكن أن تستمر في النمو آلاف السنين.",
+      "tts": {
+        "text": "لكن الغابة المطيرة السليمة يمكن أن تستمر في النمو آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "الغابة المطيرة اليوم",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إنها تستحق رعايتنا.",
+      "text_markdown": "إنها تستحق رعايتنا.",
+      "tts": {
+        "text": "إنها تستحق رعايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الخاتمة",
+      "text_markdown": "الخاتمة"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي الغابة الاستوائية المطيرة.",
+      "text_markdown": "تلك هي الغابة الاستوائية المطيرة.",
+      "tts": {
+        "text": "تلك هي الغابة الاستوائية المطيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالم دافئ ورطب وأخضر مليء بالحياة.",
+      "text_markdown": "عالم دافئ ورطب وأخضر مليء بالحياة.",
+      "tts": {
+        "text": "عالم دافئ ورطب وأخضر مليء بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا دخلت إلى واحدة منها يوماً، فقف ساكناً لدقيقة.",
+      "text_markdown": "إذا دخلت إلى واحدة منها يوماً، فقف ساكناً لدقيقة.",
+      "tts": {
+        "text": "إذا دخلت إلى واحدة منها يوماً، فقف ساكناً لدقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "استمع إلى الطيور والضفادع والمطر على الأوراق.",
+      "text_markdown": "استمع إلى الطيور والضفادع والمطر على الأوراق.",
+      "tts": {
+        "text": "استمع إلى الطيور والضفادع والمطر على الأوراق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ستسمع قلب المنطقة الحيوية ينبض حولك.",
+      "text_markdown": "ستسمع قلب المنطقة الحيوية ينبض حولك.",
+      "tts": {
+        "text": "ستسمع قلب المنطقة الحيوية ينبض حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

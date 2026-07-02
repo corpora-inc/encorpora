@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Το Τροπικό Δάσος",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Το Τροπικό Δάσος",
+      "text_markdown": "Το Τροπικό Δάσος"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "text_markdown": "Πού Φυτρώνουν τα Τροπικά Δάση"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλώς ήρθες στο τροπικό δάσος.",
+      "text_markdown": "Καλώς ήρθες στο τροπικό δάσος.",
+      "tts": {
+        "text": "Καλώς ήρθες στο τροπικό δάσος.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτός είναι ένας από τους μεγάλους βιότοπους του κόσμου.",
+      "text_markdown": "Αυτός είναι ένας από τους μεγάλους βιότοπους του κόσμου.",
+      "tts": {
+        "text": "Αυτός είναι ένας από τους μεγάλους βιότοπους του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας βιότοπος είναι ένα μέρος της Γης με το δικό του καιρό, τα δικά του φυτά και τα δικά του ζώα.",
+      "text_markdown": "Ένας βιότοπος είναι ένα μέρος της Γης με το δικό του καιρό, τα δικά του φυτά και τα δικά του ζώα.",
+      "tts": {
+        "text": "Ένας βιότοπος είναι ένα μέρος της Γης με το δικό του καιρό, τα δικά του φυτά και τα δικά του ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το τροπικό δάσος είναι ζεστό όλο το χρόνο.",
+      "text_markdown": "Το τροπικό δάσος είναι ζεστό όλο το χρόνο.",
+      "tts": {
+        "text": "Το τροπικό δάσος είναι ζεστό όλο το χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι υγρό όλο το χρόνο.",
+      "text_markdown": "Είναι υγρό όλο το χρόνο.",
+      "tts": {
+        "text": "Είναι υγρό όλο το χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι γεμάτο ζωή.",
+      "text_markdown": "Είναι γεμάτο ζωή.",
+      "tts": {
+        "text": "Είναι γεμάτο ζωή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα περισσότερα τροπικά δάση φυτρώνουν κοντά στον ισημερινό.",
+      "text_markdown": "Τα περισσότερα τροπικά δάση φυτρώνουν κοντά στον ισημερινό.",
+      "tts": {
+        "text": "Τα περισσότερα τροπικά δάση φυτρώνουν κοντά στον ισημερινό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο ισημερινός είναι η γραμμή που περνά γύρω από τη μέση της Γης.",
+      "text_markdown": "Ο ισημερινός είναι η γραμμή που περνά γύρω από τη μέση της Γης.",
+      "tts": {
+        "text": "Ο ισημερινός είναι η γραμμή που περνά γύρω από τη μέση της Γης.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοντά στον ισημερινό, ο ήλιος είναι δυνατός κάθε μέρα.",
+      "text_markdown": "Κοντά στον ισημερινό, ο ήλιος είναι δυνατός κάθε μέρα.",
+      "tts": {
+        "text": "Κοντά στον ισημερινό, ο ήλιος είναι δυνατός κάθε μέρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μεγαλύτερο τροπικό δάσος του κόσμου είναι ο Αμαζόνιος, στη Νότια Αμερική.",
+      "text_markdown": "Το μεγαλύτερο τροπικό δάσος του κόσμου είναι ο Αμαζόνιος, στη Νότια Αμερική.",
+      "tts": {
+        "text": "Το μεγαλύτερο τροπικό δάσος του κόσμου είναι ο Αμαζόνιος, στη Νότια Αμερική.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν μεγάλα τροπικά δάση και στην Αφρική, κοντά στον ποταμό Κονγκό.",
+      "text_markdown": "Υπάρχουν μεγάλα τροπικά δάση και στην Αφρική, κοντά στον ποταμό Κονγκό.",
+      "tts": {
+        "text": "Υπάρχουν μεγάλα τροπικά δάση και στην Αφρική, κοντά στον ποταμό Κονγκό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν τροπικά δάση στη Νοτιοανατολική Ασία, σε πολλά νησιά.",
+      "text_markdown": "Υπάρχουν τροπικά δάση στη Νοτιοανατολική Ασία, σε πολλά νησιά.",
+      "tts": {
+        "text": "Υπάρχουν τροπικά δάση στη Νοτιοανατολική Ασία, σε πολλά νησιά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν μικρότερα τροπικά δάση στην Κεντρική Αμερική και σε νησιά στον Ειρηνικό.",
+      "text_markdown": "Υπάρχουν μικρότερα τροπικά δάση στην Κεντρική Αμερική και σε νησιά στον Ειρηνικό.",
+      "tts": {
+        "text": "Υπάρχουν μικρότερα τροπικά δάση στην Κεντρική Αμερική και σε νησιά στον Ειρηνικό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε ένα από αυτά τα δάση μεγάλωσε μόνο του, μακριά από τα άλλα.",
+      "text_markdown": "Κάθε ένα από αυτά τα δάση μεγάλωσε μόνο του, μακριά από τα άλλα.",
+      "tts": {
+        "text": "Κάθε ένα από αυτά τα δάση μεγάλωσε μόνο του, μακριά από τα άλλα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έτσι τα φυτά και τα ζώα είναι διαφορετικά σε κάθε μέρος του κόσμου.",
+      "text_markdown": "Έτσι τα φυτά και τα ζώα είναι διαφορετικά σε κάθε μέρος του κόσμου.",
+      "tts": {
+        "text": "Έτσι τα φυτά και τα ζώα είναι διαφορετικά σε κάθε μέρος του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας πίθηκος στον Αμαζόνιο δεν είναι ο ίδιος με έναν πίθηκο στην Αφρική ή στην Ασία.",
+      "text_markdown": "Ένας πίθηκος στον Αμαζόνιο δεν είναι ο ίδιος με έναν πίθηκο στην Αφρική ή στην Ασία.",
+      "tts": {
+        "text": "Ένας πίθηκος στον Αμαζόνιο δεν είναι ο ίδιος με έναν πίθηκο στην Αφρική ή στην Ασία.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αλλά όλοι ανήκουν στον ίδιο βιότοπο.",
+      "text_markdown": "Αλλά όλοι ανήκουν στον ίδιο βιότοπο.",
+      "tts": {
+        "text": "Αλλά όλοι ανήκουν στον ίδιο βιότοπο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν στέκεσαι μέσα σε ένα τροπικό δάσος, ο αέρας είναι βαρύς και ζεστός.",
+      "text_markdown": "Όταν στέκεσαι μέσα σε ένα τροπικό δάσος, ο αέρας είναι βαρύς και ζεστός.",
+      "tts": {
+        "text": "Όταν στέκεσαι μέσα σε ένα τροπικό δάσος, ο αέρας είναι βαρύς και ζεστός.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το φως είναι απαλό και πράσινο.",
+      "text_markdown": "Το φως είναι απαλό και πράσινο.",
+      "tts": {
+        "text": "Το φως είναι απαλό και πράσινο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα είναι τόσο ψηλά που μετά βίας βλέπεις τον ουρανό.",
+      "text_markdown": "Τα δέντρα είναι τόσο ψηλά που μετά βίας βλέπεις τον ουρανό.",
+      "tts": {
+        "text": "Τα δέντρα είναι τόσο ψηλά που μετά βίας βλέπεις τον ουρανό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακούς πουλιά και έντομα παντού γύρω σου.",
+      "text_markdown": "Ακούς πουλιά και έντομα παντού γύρω σου.",
+      "tts": {
+        "text": "Ακούς πουλιά και έντομα παντού γύρω σου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακούς νερό να στάζει από τα φύλλα.",
+      "text_markdown": "Ακούς νερό να στάζει από τα φύλλα.",
+      "tts": {
+        "text": "Ακούς νερό να στάζει από τα φύλλα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Νιώθεις σαν να είσαι μέσα σε ένα ζωντανό δωμάτιο.",
+      "text_markdown": "Νιώθεις σαν να είσαι μέσα σε ένα ζωντανό δωμάτιο.",
+      "tts": {
+        "text": "Νιώθεις σαν να είσαι μέσα σε ένα ζωντανό δωμάτιο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι το τροπικό δάσος.",
+      "text_markdown": "Αυτό είναι το τροπικό δάσος.",
+      "tts": {
+        "text": "Αυτό είναι το τροπικό δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Πού Φυτρώνουν τα Τροπικά Δάση",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας ολόκληρος κόσμος φτιαγμένος από δέντρα και βροχή.",
+      "text_markdown": "Ένας ολόκληρος κόσμος φτιαγμένος από δέντρα και βροχή.",
+      "tts": {
+        "text": "Ένας ολόκληρος κόσμος φτιαγμένος από δέντρα και βροχή.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ο Καιρός",
+      "text_markdown": "Ο Καιρός"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο καιρός στο τροπικό δάσος είναι απλός.",
+      "text_markdown": "Ο καιρός στο τροπικό δάσος είναι απλός.",
+      "tts": {
+        "text": "Ο καιρός στο τροπικό δάσος είναι απλός.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι ζεστός και βρέχει πολύ.",
+      "text_markdown": "Είναι ζεστός και βρέχει πολύ.",
+      "tts": {
+        "text": "Είναι ζεστός και βρέχει πολύ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η θερμοκρασία μένει περίπου η ίδια όλο το χρόνο.",
+      "text_markdown": "Η θερμοκρασία μένει περίπου η ίδια όλο το χρόνο.",
+      "tts": {
+        "text": "Η θερμοκρασία μένει περίπου η ίδια όλο το χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν κάνει κρύο τον χειμώνα.",
+      "text_markdown": "Δεν κάνει κρύο τον χειμώνα.",
+      "tts": {
+        "text": "Δεν κάνει κρύο τον χειμώνα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν κάνει πολλή ζέστη το καλοκαίρι.",
+      "text_markdown": "Δεν κάνει πολλή ζέστη το καλοκαίρι.",
+      "tts": {
+        "text": "Δεν κάνει πολλή ζέστη το καλοκαίρι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι περισσότερες μέρες είναι ζεστές και σταθερές.",
+      "text_markdown": "Οι περισσότερες μέρες είναι ζεστές και σταθερές.",
+      "tts": {
+        "text": "Οι περισσότερες μέρες είναι ζεστές και σταθερές.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Βρέχει σχεδόν κάθε μέρα.",
+      "text_markdown": "Βρέχει σχεδόν κάθε μέρα.",
+      "tts": {
+        "text": "Βρέχει σχεδόν κάθε μέρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε μερικά μέρη πέφτει πάνω από δύο μέτρα βροχή τον χρόνο.",
+      "text_markdown": "Σε μερικά μέρη πέφτει πάνω από δύο μέτρα βροχή τον χρόνο.",
+      "tts": {
+        "text": "Σε μερικά μέρη πέφτει πάνω από δύο μέτρα βροχή τον χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είναι περισσότερη βροχή από όση βλέπουν τα πιο πολλά μέρη του κόσμου.",
+      "text_markdown": "Είναι περισσότερη βροχή από όση βλέπουν τα πιο πολλά μέρη του κόσμου.",
+      "tts": {
+        "text": "Είναι περισσότερη βροχή από όση βλέπουν τα πιο πολλά μέρη του κόσμου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η βροχή συχνά έρχεται το απόγευμα.",
+      "text_markdown": "Η βροχή συχνά έρχεται το απόγευμα.",
+      "tts": {
+        "text": "Η βροχή συχνά έρχεται το απόγευμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μεγάλα σύννεφα μαζεύονται πάνω από τα δέντρα.",
+      "text_markdown": "Μεγάλα σύννεφα μαζεύονται πάνω από τα δέντρα.",
+      "tts": {
+        "text": "Μεγάλα σύννεφα μαζεύονται πάνω από τα δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια δυνατή νεροποντή πέφτει για μία ή δύο ώρες.",
+      "text_markdown": "Μια δυνατή νεροποντή πέφτει για μία ή δύο ώρες.",
+      "tts": {
+        "text": "Μια δυνατή νεροποντή πέφτει για μία ή δύο ώρες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά ο ήλιος βγαίνει πάλι.",
+      "text_markdown": "Μετά ο ήλιος βγαίνει πάλι.",
+      "tts": {
+        "text": "Μετά ο ήλιος βγαίνει πάλι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα φύλλα λάμπουν και ατμός ανεβαίνει από το χώμα.",
+      "text_markdown": "Τα φύλλα λάμπουν και ατμός ανεβαίνει από το χώμα.",
+      "tts": {
+        "text": "Τα φύλλα λάμπουν και ατμός ανεβαίνει από το χώμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν υπάρχουν τέσσερις εποχές εδώ.",
+      "text_markdown": "Δεν υπάρχουν τέσσερις εποχές εδώ.",
+      "tts": {
+        "text": "Δεν υπάρχουν τέσσερις εποχές εδώ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει μόνο μια πιο βροχερή εποχή και μια πιο ξηρή εποχή.",
+      "text_markdown": "Υπάρχει μόνο μια πιο βροχερή εποχή και μια πιο ξηρή εποχή.",
+      "tts": {
+        "text": "Υπάρχει μόνο μια πιο βροχερή εποχή και μια πιο ξηρή εποχή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακόμα και στην πιο ξηρή εποχή, βρέχει συχνά.",
+      "text_markdown": "Ακόμα και στην πιο ξηρή εποχή, βρέχει συχνά.",
+      "tts": {
+        "text": "Ακόμα και στην πιο ξηρή εποχή, βρέχει συχνά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Ο Καιρός",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για τα φυτά και τα ζώα του τροπικού δάσους, κάθε μέρα είναι περίπου η ίδια.",
+      "text_markdown": "Για τα φυτά και τα ζώα του τροπικού δάσους, κάθε μέρα είναι περίπου η ίδια.",
+      "tts": {
+        "text": "Για τα φυτά και τα ζώα του τροπικού δάσους, κάθε μέρα είναι περίπου η ίδια.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Γη και το Νερό",
+      "text_markdown": "Η Γη και το Νερό"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το έδαφος του τροπικού δάσους είναι γεμάτο ζωή, αλλά το χώμα είναι λεπτό.",
+      "text_markdown": "Το έδαφος του τροπικού δάσους είναι γεμάτο ζωή, αλλά το χώμα είναι λεπτό.",
+      "tts": {
+        "text": "Το έδαφος του τροπικού δάσους είναι γεμάτο ζωή, αλλά το χώμα είναι λεπτό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το περισσότερο καλό βρίσκεται στα πρώτα λίγα εκατοστά.",
+      "text_markdown": "Το περισσότερο καλό βρίσκεται στα πρώτα λίγα εκατοστά.",
+      "tts": {
+        "text": "Το περισσότερο καλό βρίσκεται στα πρώτα λίγα εκατοστά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν πέφτει ένα φύλλο, τα έντομα και μικροσκοπικά ζωντανά πλάσματα το διαλύουν πολύ γρήγορα.",
+      "text_markdown": "Όταν πέφτει ένα φύλλο, τα έντομα και μικροσκοπικά ζωντανά πλάσματα το διαλύουν πολύ γρήγορα.",
+      "tts": {
+        "text": "Όταν πέφτει ένα φύλλο, τα έντομα και μικροσκοπικά ζωντανά πλάσματα το διαλύουν πολύ γρήγορα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα παίρνουν την τροφή πίσω σχεδόν αμέσως.",
+      "text_markdown": "Τα δέντρα παίρνουν την τροφή πίσω σχεδόν αμέσως.",
+      "tts": {
+        "text": "Τα δέντρα παίρνουν την τροφή πίσω σχεδόν αμέσως.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Γι' αυτό ένα κομμένο τροπικό δάσος είναι δύσκολο να επανέλθει.",
+      "text_markdown": "Γι' αυτό ένα κομμένο τροπικό δάσος είναι δύσκολο να επανέλθει.",
+      "tts": {
+        "text": "Γι' αυτό ένα κομμένο τροπικό δάσος είναι δύσκολο να επανέλθει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Χωρίς τα δέντρα, η βροχή ξεπλένει το λεπτό χώμα.",
+      "text_markdown": "Χωρίς τα δέντρα, η βροχή ξεπλένει το λεπτό χώμα.",
+      "tts": {
+        "text": "Χωρίς τα δέντρα, η βροχή ξεπλένει το λεπτό χώμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ποτάμια διασχίζουν κάθε τροπικό δάσος.",
+      "text_markdown": "Ποτάμια διασχίζουν κάθε τροπικό δάσος.",
+      "tts": {
+        "text": "Ποτάμια διασχίζουν κάθε τροπικό δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά ποτάμια είναι τεράστια.",
+      "text_markdown": "Μερικά ποτάμια είναι τεράστια.",
+      "tts": {
+        "text": "Μερικά ποτάμια είναι τεράστια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο ποταμός Αμαζόνιος κουβαλάει περισσότερο νερό από κάθε άλλο ποτάμι στον κόσμο.",
+      "text_markdown": "Ο ποταμός Αμαζόνιος κουβαλάει περισσότερο νερό από κάθε άλλο ποτάμι στον κόσμο.",
+      "tts": {
+        "text": "Ο ποταμός Αμαζόνιος κουβαλάει περισσότερο νερό από κάθε άλλο ποτάμι στον κόσμο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη βροχερή εποχή, τα ποτάμια απλώνονται βαθιά μέσα στο δάσος.",
+      "text_markdown": "Στη βροχερή εποχή, τα ποτάμια απλώνονται βαθιά μέσα στο δάσος.",
+      "tts": {
+        "text": "Στη βροχερή εποχή, τα ποτάμια απλώνονται βαθιά μέσα στο δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα στέκονται μέσα στο νερό για μήνες.",
+      "text_markdown": "Τα δέντρα στέκονται μέσα στο νερό για μήνες.",
+      "tts": {
+        "text": "Τα δέντρα στέκονται μέσα στο νερό για μήνες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ψάρια κολυμπούν ανάμεσα στους κορμούς.",
+      "text_markdown": "Ψάρια κολυμπούν ανάμεσα στους κορμούς.",
+      "tts": {
+        "text": "Ψάρια κολυμπούν ανάμεσα στους κορμούς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άλλα ποτάμια είναι μικρά και καθαρά, με πέτρες στον πάτο.",
+      "text_markdown": "Άλλα ποτάμια είναι μικρά και καθαρά, με πέτρες στον πάτο.",
+      "tts": {
+        "text": "Άλλα ποτάμια είναι μικρά και καθαρά, με πέτρες στον πάτο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ίδιο το δάσος μεγαλώνει σε στρώματα.",
+      "text_markdown": "Το ίδιο το δάσος μεγαλώνει σε στρώματα.",
+      "tts": {
+        "text": "Το ίδιο το δάσος μεγαλώνει σε στρώματα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ψηλά είναι τα πιο ψηλά δέντρα, με τις κορώνες τους απλωμένες στον ήλιο.",
+      "text_markdown": "Ψηλά είναι τα πιο ψηλά δέντρα, με τις κορώνες τους απλωμένες στον ήλιο.",
+      "tts": {
+        "text": "Ψηλά είναι τα πιο ψηλά δέντρα, με τις κορώνες τους απλωμένες στον ήλιο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Από κάτω τους είναι μια πυκνή πράσινη στέγη από φύλλα.",
+      "text_markdown": "Από κάτω τους είναι μια πυκνή πράσινη στέγη από φύλλα.",
+      "tts": {
+        "text": "Από κάτω τους είναι μια πυκνή πράσινη στέγη από φύλλα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάτω από αυτήν τη στέγη, ο αέρας είναι σκιερός και ακίνητος.",
+      "text_markdown": "Κάτω από αυτήν τη στέγη, ο αέρας είναι σκιερός και ακίνητος.",
+      "tts": {
+        "text": "Κάτω από αυτήν τη στέγη, ο αέρας είναι σκιερός και ακίνητος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάτω στο έδαφος, μόνο λίγο φως περνά.",
+      "text_markdown": "Κάτω στο έδαφος, μόνο λίγο φως περνά.",
+      "tts": {
+        "text": "Κάτω στο έδαφος, μόνο λίγο φως περνά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Η Γη και το Νερό",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε στρώμα είναι ένα διαφορετικό σπίτι για τα ζώα και τα φυτά του βιότοπου.",
+      "text_markdown": "Κάθε στρώμα είναι ένα διαφορετικό σπίτι για τα ζώα και τα φυτά του βιότοπου.",
+      "tts": {
+        "text": "Κάθε στρώμα είναι ένα διαφορετικό σπίτι για τα ζώα και τα φυτά του βιότοπου.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Τα Φυτά",
+      "text_markdown": "Τα Φυτά"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το τροπικό δάσος έχει περισσότερα είδη φυτών από κάθε άλλο βιότοπο στη στεριά.",
+      "text_markdown": "Το τροπικό δάσος έχει περισσότερα είδη φυτών από κάθε άλλο βιότοπο στη στεριά.",
+      "tts": {
+        "text": "Το τροπικό δάσος έχει περισσότερα είδη φυτών από κάθε άλλο βιότοπο στη στεριά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα είναι η καρδιά του.",
+      "text_markdown": "Τα δέντρα είναι η καρδιά του.",
+      "tts": {
+        "text": "Τα δέντρα είναι η καρδιά του.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά δέντρα μεγαλώνουν πολύ ψηλά, φτάνοντας προς τον ήλιο.",
+      "text_markdown": "Μερικά δέντρα μεγαλώνουν πολύ ψηλά, φτάνοντας προς τον ήλιο.",
+      "tts": {
+        "text": "Μερικά δέντρα μεγαλώνουν πολύ ψηλά, φτάνοντας προς τον ήλιο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι κορμοί τους είναι ίσιοι και λείοι.",
+      "text_markdown": "Οι κορμοί τους είναι ίσιοι και λείοι.",
+      "tts": {
+        "text": "Οι κορμοί τους είναι ίσιοι και λείοι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι ρίζες τους απλώνονται φαρδιές στη βάση, σαν τοίχοι, για να τα κρατούν στο λεπτό χώμα.",
+      "text_markdown": "Οι ρίζες τους απλώνονται φαρδιές στη βάση, σαν τοίχοι, για να τα κρατούν στο λεπτό χώμα.",
+      "tts": {
+        "text": "Οι ρίζες τους απλώνονται φαρδιές στη βάση, σαν τοίχοι, για να τα κρατούν στο λεπτό χώμα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αναρριχητικά φυτά ανεβαίνουν στους κορμούς προς το φως.",
+      "text_markdown": "Αναρριχητικά φυτά ανεβαίνουν στους κορμούς προς το φως.",
+      "tts": {
+        "text": "Αναρριχητικά φυτά ανεβαίνουν στους κορμούς προς το φως.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά αναρριχητικά είναι χοντρά σαν το χέρι σου.",
+      "text_markdown": "Μερικά αναρριχητικά είναι χοντρά σαν το χέρι σου.",
+      "tts": {
+        "text": "Μερικά αναρριχητικά είναι χοντρά σαν το χέρι σου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τυλίγονται γύρω από τα δέντρα και κρέμονται από τα κλαδιά.",
+      "text_markdown": "Τυλίγονται γύρω από τα δέντρα και κρέμονται από τα κλαδιά.",
+      "tts": {
+        "text": "Τυλίγονται γύρω από τα δέντρα και κρέμονται από τα κλαδιά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Φυτά μεγαλώνουν πάνω στα ίδια τα δέντρα, ψηλά στον αέρα.",
+      "text_markdown": "Φυτά μεγαλώνουν πάνω στα ίδια τα δέντρα, ψηλά στον αέρα.",
+      "tts": {
+        "text": "Φυτά μεγαλώνουν πάνω στα ίδια τα δέντρα, ψηλά στον αέρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν έχουν καθόλου ρίζες στο έδαφος.",
+      "text_markdown": "Δεν έχουν καθόλου ρίζες στο έδαφος.",
+      "tts": {
+        "text": "Δεν έχουν καθόλου ρίζες στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πίνουν τη βροχή που τρέχει στον φλοιό.",
+      "text_markdown": "Πίνουν τη βροχή που τρέχει στον φλοιό.",
+      "tts": {
+        "text": "Πίνουν τη βροχή που τρέχει στον φλοιό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στο σκοτεινό έδαφος του δάσους μεγαλώνουν φτέρες και απαλά πράσινα φυτά.",
+      "text_markdown": "Στο σκοτεινό έδαφος του δάσους μεγαλώνουν φτέρες και απαλά πράσινα φυτά.",
+      "tts": {
+        "text": "Στο σκοτεινό έδαφος του δάσους μεγαλώνουν φτέρες και απαλά πράσινα φυτά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έχουν φαρδιά, επίπεδα φύλλα για να πιάνουν κάθε σταγόνα φωτός.",
+      "text_markdown": "Έχουν φαρδιά, επίπεδα φύλλα για να πιάνουν κάθε σταγόνα φωτός.",
+      "tts": {
+        "text": "Έχουν φαρδιά, επίπεδα φύλλα για να πιάνουν κάθε σταγόνα φωτός.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Λουλούδια ανθίζουν σε κάθε χρώμα που μπορείς να σκεφτείς.",
+      "text_markdown": "Λουλούδια ανθίζουν σε κάθε χρώμα που μπορείς να σκεφτείς.",
+      "tts": {
+        "text": "Λουλούδια ανθίζουν σε κάθε χρώμα που μπορείς να σκεφτείς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άλλα είναι κόκκινα, άλλα είναι κίτρινα, άλλα είναι βαθύ μωβ.",
+      "text_markdown": "Άλλα είναι κόκκινα, άλλα είναι κίτρινα, άλλα είναι βαθύ μωβ.",
+      "tts": {
+        "text": "Άλλα είναι κόκκινα, άλλα είναι κίτρινα, άλλα είναι βαθύ μωβ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλά από αυτά ανοίγουν τη νύχτα.",
+      "text_markdown": "Πολλά από αυτά ανοίγουν τη νύχτα.",
+      "tts": {
+        "text": "Πολλά από αυτά ανοίγουν τη νύχτα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Φρούτα κρέμονται από τα κλαδιά όλο το χρόνο.",
+      "text_markdown": "Φρούτα κρέμονται από τα κλαδιά όλο το χρόνο.",
+      "tts": {
+        "text": "Φρούτα κρέμονται από τα κλαδιά όλο το χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν γλυκά φρούτα, ξινά φρούτα και φρούτα με σκληρά κελύφη.",
+      "text_markdown": "Υπάρχουν γλυκά φρούτα, ξινά φρούτα και φρούτα με σκληρά κελύφη.",
+      "tts": {
+        "text": "Υπάρχουν γλυκά φρούτα, ξινά φρούτα και φρούτα με σκληρά κελύφη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλές από τις τροφές που τρώμε στο σπίτι μεγάλωσαν πρώτα άγριες σε τροπικά δάση.",
+      "text_markdown": "Πολλές από τις τροφές που τρώμε στο σπίτι μεγάλωσαν πρώτα άγριες σε τροπικά δάση.",
+      "tts": {
+        "text": "Πολλές από τις τροφές που τρώμε στο σπίτι μεγάλωσαν πρώτα άγριες σε τροπικά δάση.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το κακάο, το φυτό που μας δίνει σοκολάτα, ήρθε από τα τροπικά δάση της Νότιας Αμερικής.",
+      "text_markdown": "Το κακάο, το φυτό που μας δίνει σοκολάτα, ήρθε από τα τροπικά δάση της Νότιας Αμερικής.",
+      "tts": {
+        "text": "Το κακάο, το φυτό που μας δίνει σοκολάτα, ήρθε από τα τροπικά δάση της Νότιας Αμερικής.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα πρώτα φυτά μπανάνας μεγάλωσαν στα τροπικά δάση της Νοτιοανατολικής Ασίας.",
+      "text_markdown": "Τα πρώτα φυτά μπανάνας μεγάλωσαν στα τροπικά δάση της Νοτιοανατολικής Ασίας.",
+      "tts": {
+        "text": "Τα πρώτα φυτά μπανάνας μεγάλωσαν στα τροπικά δάση της Νοτιοανατολικής Ασίας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε τροφή που αγαπάμε έχει την ιστορία ενός δάσους κάπου στη Γη.",
+      "text_markdown": "Κάθε τροφή που αγαπάμε έχει την ιστορία ενός δάσους κάπου στη Γη.",
+      "tts": {
+        "text": "Κάθε τροφή που αγαπάμε έχει την ιστορία ενός δάσους κάπου στη Γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν κοιτάς ένα φυτό του τροπικού δάσους, συχνά έχει βρει έναν έξυπνο τρόπο να ζει.",
+      "text_markdown": "Όταν κοιτάς ένα φυτό του τροπικού δάσους, συχνά έχει βρει έναν έξυπνο τρόπο να ζει.",
+      "tts": {
+        "text": "Όταν κοιτάς ένα φυτό του τροπικού δάσους, συχνά έχει βρει έναν έξυπνο τρόπο να ζει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά φύλλα έχουν μια μακριά μύτη στην άκρη, ώστε η βροχή να φεύγει γρήγορα.",
+      "text_markdown": "Μερικά φύλλα έχουν μια μακριά μύτη στην άκρη, ώστε η βροχή να φεύγει γρήγορα.",
+      "tts": {
+        "text": "Μερικά φύλλα έχουν μια μακριά μύτη στην άκρη, ώστε η βροχή να φεύγει γρήγορα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά λουλούδια μυρίζουν γλυκά μόνο τη νύχτα, για να καλέσουν το σωστό έντομο να έρθει.",
+      "text_markdown": "Μερικά λουλούδια μυρίζουν γλυκά μόνο τη νύχτα, για να καλέσουν το σωστό έντομο να έρθει.",
+      "tts": {
+        "text": "Μερικά λουλούδια μυρίζουν γλυκά μόνο τη νύχτα, για να καλέσουν το σωστό έντομο να έρθει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Τα Φυτά",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ολόκληρο το δάσος είναι μια ήσυχη μηχανή, φτιαγμένη από πράσινο.",
+      "text_markdown": "Ολόκληρο το δάσος είναι μια ήσυχη μηχανή, φτιαγμένη από πράσινο.",
+      "tts": {
+        "text": "Ολόκληρο το δάσος είναι μια ήσυχη μηχανή, φτιαγμένη από πράσινο.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Τα Ζώα",
+      "text_markdown": "Τα Ζώα"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Περισσότερα είδη ζώων ζουν στο τροπικό δάσος από οπουδήποτε αλλού στη στεριά.",
+      "text_markdown": "Περισσότερα είδη ζώων ζουν στο τροπικό δάσος από οπουδήποτε αλλού στη στεριά.",
+      "tts": {
+        "text": "Περισσότερα είδη ζώων ζουν στο τροπικό δάσος από οπουδήποτε αλλού στη στεριά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα περισσότερα από αυτά ζουν ψηλά στα δέντρα, όχι στο έδαφος.",
+      "text_markdown": "Τα περισσότερα από αυτά ζουν ψηλά στα δέντρα, όχι στο έδαφος.",
+      "tts": {
+        "text": "Τα περισσότερα από αυτά ζουν ψηλά στα δέντρα, όχι στο έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει περισσότερη τροφή και περισσότερο φως ψηλά.",
+      "text_markdown": "Υπάρχει περισσότερη τροφή και περισσότερο φως ψηλά.",
+      "tts": {
+        "text": "Υπάρχει περισσότερη τροφή και περισσότερο φως ψηλά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πίθηκοι ζουν σε πολλά τροπικά δάση.",
+      "text_markdown": "Πίθηκοι ζουν σε πολλά τροπικά δάση.",
+      "tts": {
+        "text": "Πίθηκοι ζουν σε πολλά τροπικά δάση.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πηδάνε από κλαδί σε κλαδί και φωνάζουν ο ένας στον άλλο μέσα από τα δέντρα.",
+      "text_markdown": "Πηδάνε από κλαδί σε κλαδί και φωνάζουν ο ένας στον άλλο μέσα από τα δέντρα.",
+      "tts": {
+        "text": "Πηδάνε από κλαδί σε κλαδί και φωνάζουν ο ένας στον άλλο μέσα από τα δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στα τροπικά δάση της Νότιας Αμερικής, μερικοί πίθηκοι έχουν μακριές ουρές που χρησιμοποιούν σαν ένα επιπλέον χέρι.",
+      "text_markdown": "Στα τροπικά δάση της Νότιας Αμερικής, μερικοί πίθηκοι έχουν μακριές ουρές που χρησιμοποιούν σαν ένα επιπλέον χέρι.",
+      "tts": {
+        "text": "Στα τροπικά δάση της Νότιας Αμερικής, μερικοί πίθηκοι έχουν μακριές ουρές που χρησιμοποιούν σαν ένα επιπλέον χέρι.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παπαγάλοι και άλλα φωτεινά πουλιά πετούν ανάμεσα στα ψηλά κλαδιά.",
+      "text_markdown": "Παπαγάλοι και άλλα φωτεινά πουλιά πετούν ανάμεσα στα ψηλά κλαδιά.",
+      "tts": {
+        "text": "Παπαγάλοι και άλλα φωτεινά πουλιά πετούν ανάμεσα στα ψηλά κλαδιά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τρώνε φρούτα και σπόρους.",
+      "text_markdown": "Τρώνε φρούτα και σπόρους.",
+      "tts": {
+        "text": "Τρώνε φρούτα και σπόρους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα φτερά τους είναι κόκκινα, πράσινα, μπλε και κίτρινα.",
+      "text_markdown": "Τα φτερά τους είναι κόκκινα, πράσινα, μπλε και κίτρινα.",
+      "tts": {
+        "text": "Τα φτερά τους είναι κόκκινα, πράσινα, μπλε και κίτρινα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε πολλά τροπικά δάση, μεγάλες γάτες κυνηγούν στο έδαφος τη νύχτα.",
+      "text_markdown": "Σε πολλά τροπικά δάση, μεγάλες γάτες κυνηγούν στο έδαφος τη νύχτα.",
+      "tts": {
+        "text": "Σε πολλά τροπικά δάση, μεγάλες γάτες κυνηγούν στο έδαφος τη νύχτα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στις Αμερικές, αυτή η γάτα είναι ο ιαγουάρος.",
+      "text_markdown": "Στις Αμερικές, αυτή η γάτα είναι ο ιαγουάρος.",
+      "tts": {
+        "text": "Στις Αμερικές, αυτή η γάτα είναι ο ιαγουάρος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Ασία, είναι η τίγρης.",
+      "text_markdown": "Στην Ασία, είναι η τίγρης.",
+      "tts": {
+        "text": "Στην Ασία, είναι η τίγρης.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Αφρική, είναι η λεοπάρδαλη.",
+      "text_markdown": "Στην Αφρική, είναι η λεοπάρδαλη.",
+      "tts": {
+        "text": "Στην Αφρική, είναι η λεοπάρδαλη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όλες τους είναι δυνατές και ήσυχες, με βούλες ή ρίγες στο τρίχωμά τους.",
+      "text_markdown": "Όλες τους είναι δυνατές και ήσυχες, με βούλες ή ρίγες στο τρίχωμά τους.",
+      "tts": {
+        "text": "Όλες τους είναι δυνατές και ήσυχες, με βούλες ή ρίγες στο τρίχωμά τους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Φίδια γλιστρούν μέσα από τα φύλλα και τα δέντρα.",
+      "text_markdown": "Φίδια γλιστρούν μέσα από τα φύλλα και τα δέντρα.",
+      "tts": {
+        "text": "Φίδια γλιστρούν μέσα από τα φύλλα και τα δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά φίδια είναι πολύ μικρά και μερικά είναι πολύ μακριά.",
+      "text_markdown": "Μερικά φίδια είναι πολύ μικρά και μερικά είναι πολύ μακριά.",
+      "tts": {
+        "text": "Μερικά φίδια είναι πολύ μικρά και μερικά είναι πολύ μακριά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα περισσότερα είναι ντροπαλά και μένουν μακριά από τους ανθρώπους.",
+      "text_markdown": "Τα περισσότερα είναι ντροπαλά και μένουν μακριά από τους ανθρώπους.",
+      "tts": {
+        "text": "Τα περισσότερα είναι ντροπαλά και μένουν μακριά από τους ανθρώπους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι βάτραχοι τραγουδούν κάθε νύχτα, ειδικά μετά τη βροχή.",
+      "text_markdown": "Οι βάτραχοι τραγουδούν κάθε νύχτα, ειδικά μετά τη βροχή.",
+      "tts": {
+        "text": "Οι βάτραχοι τραγουδούν κάθε νύχτα, ειδικά μετά τη βροχή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικοί βάτραχοι είναι μικροσκοπικοί και φωτεινοί.",
+      "text_markdown": "Μερικοί βάτραχοι είναι μικροσκοπικοί και φωτεινοί.",
+      "tts": {
+        "text": "Μερικοί βάτραχοι είναι μικροσκοπικοί και φωτεινοί.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα φωτεινά χρώματα προειδοποιούν τα άλλα ζώα να μην τους φάνε.",
+      "text_markdown": "Τα φωτεινά χρώματα προειδοποιούν τα άλλα ζώα να μην τους φάνε.",
+      "tts": {
+        "text": "Τα φωτεινά χρώματα προειδοποιούν τα άλλα ζώα να μην τους φάνε.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα έντομα γεμίζουν κάθε γωνιά του δάσους.",
+      "text_markdown": "Τα έντομα γεμίζουν κάθε γωνιά του δάσους.",
+      "tts": {
+        "text": "Τα έντομα γεμίζουν κάθε γωνιά του δάσους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν περισσότερα έντομα στο τροπικό δάσος από κάθε άλλο είδος ζώου.",
+      "text_markdown": "Υπάρχουν περισσότερα έντομα στο τροπικό δάσος από κάθε άλλο είδος ζώου.",
+      "tts": {
+        "text": "Υπάρχουν περισσότερα έντομα στο τροπικό δάσος από κάθε άλλο είδος ζώου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μυρμήγκια προχωρούν σε μακριές γραμμές πάνω στο έδαφος του δάσους.",
+      "text_markdown": "Μυρμήγκια προχωρούν σε μακριές γραμμές πάνω στο έδαφος του δάσους.",
+      "tts": {
+        "text": "Μυρμήγκια προχωρούν σε μακριές γραμμές πάνω στο έδαφος του δάσους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σκαθάρια σκαρφαλώνουν στους κορμούς.",
+      "text_markdown": "Σκαθάρια σκαρφαλώνουν στους κορμούς.",
+      "tts": {
+        "text": "Σκαθάρια σκαρφαλώνουν στους κορμούς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πεταλούδες πλέουν στον αέρα με φαρδιά, ζωγραφισμένα φτερά.",
+      "text_markdown": "Πεταλούδες πλέουν στον αέρα με φαρδιά, ζωγραφισμένα φτερά.",
+      "tts": {
+        "text": "Πεταλούδες πλέουν στον αέρα με φαρδιά, ζωγραφισμένα φτερά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ψάρια ζουν στα ποτάμια, σε πολλά σχήματα και μεγέθη.",
+      "text_markdown": "Ψάρια ζουν στα ποτάμια, σε πολλά σχήματα και μεγέθη.",
+      "tts": {
+        "text": "Ψάρια ζουν στα ποτάμια, σε πολλά σχήματα και μεγέθη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μερικά ψάρια είναι μικροσκοπικά και ασημένια, και μερικά είναι μεγαλύτερα από ένα παιδί.",
+      "text_markdown": "Μερικά ψάρια είναι μικροσκοπικά και ασημένια, και μερικά είναι μεγαλύτερα από ένα παιδί.",
+      "tts": {
+        "text": "Μερικά ψάρια είναι μικροσκοπικά και ασημένια, και μερικά είναι μεγαλύτερα από ένα παιδί.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ψηλά πάνω από όλα, αετοί πλανώνται πάνω από την πράσινη στέγη του δάσους.",
+      "text_markdown": "Ψηλά πάνω από όλα, αετοί πλανώνται πάνω από την πράσινη στέγη του δάσους.",
+      "tts": {
+        "text": "Ψηλά πάνω από όλα, αετοί πλανώνται πάνω από την πράσινη στέγη του δάσους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παρακολουθούν για κίνηση από κάτω.",
+      "text_markdown": "Παρακολουθούν για κίνηση από κάτω.",
+      "tts": {
+        "text": "Παρακολουθούν για κίνηση από κάτω.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Νυχτερίδες βγαίνουν στο ηλιοβασίλεμα να φάνε φρούτα και έντομα.",
+      "text_markdown": "Νυχτερίδες βγαίνουν στο ηλιοβασίλεμα να φάνε φρούτα και έντομα.",
+      "tts": {
+        "text": "Νυχτερίδες βγαίνουν στο ηλιοβασίλεμα να φάνε φρούτα και έντομα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε ένα δέντρο του τροπικού δάσους, μπορεί να βρεις περισσότερα είδη ζώων από όσα σε μια ολόκληρη πόλη κάπου αλλού.",
+      "text_markdown": "Σε ένα δέντρο του τροπικού δάσους, μπορεί να βρεις περισσότερα είδη ζώων από όσα σε μια ολόκληρη πόλη κάπου αλλού.",
+      "tts": {
+        "text": "Σε ένα δέντρο του τροπικού δάσους, μπορεί να βρεις περισσότερα είδη ζώων από όσα σε μια ολόκληρη πόλη κάπου αλλού.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Τα Ζώα",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι το θαύμα αυτού του βιότοπου.",
+      "text_markdown": "Αυτό είναι το θαύμα αυτού του βιότοπου.",
+      "tts": {
+        "text": "Αυτό είναι το θαύμα αυτού του βιότοπου.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Οι Άνθρωποι",
+      "text_markdown": "Οι Άνθρωποι"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άνθρωποι ζουν στο τροπικό δάσος για πάρα πολύ καιρό.",
+      "text_markdown": "Άνθρωποι ζουν στο τροπικό δάσος για πάρα πολύ καιρό.",
+      "tts": {
+        "text": "Άνθρωποι ζουν στο τροπικό δάσος για πάρα πολύ καιρό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έχουν μάθει πώς να ζουν καλά με τα δέντρα, τη βροχή και τα ζώα.",
+      "text_markdown": "Έχουν μάθει πώς να ζουν καλά με τα δέντρα, τη βροχή και τα ζώα.",
+      "tts": {
+        "text": "Έχουν μάθει πώς να ζουν καλά με τα δέντρα, τη βροχή και τα ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλοί άνθρωποι του τροπικού δάσους ζουν σε μικρά χωριά.",
+      "text_markdown": "Πολλοί άνθρωποι του τροπικού δάσους ζουν σε μικρά χωριά.",
+      "tts": {
+        "text": "Πολλοί άνθρωποι του τροπικού δάσους ζουν σε μικρά χωριά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα σπίτια είναι συχνά χτισμένα πάνω σε ψηλούς ξύλινους πασσάλους για να μένουν πάνω από το υγρό έδαφος.",
+      "text_markdown": "Τα σπίτια είναι συχνά χτισμένα πάνω σε ψηλούς ξύλινους πασσάλους για να μένουν πάνω από το υγρό έδαφος.",
+      "tts": {
+        "text": "Τα σπίτια είναι συχνά χτισμένα πάνω σε ψηλούς ξύλινους πασσάλους για να μένουν πάνω από το υγρό έδαφος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι σκεπές είναι φτιαγμένες από φύλλα στρωμένα σε πυκνές σειρές.",
+      "text_markdown": "Οι σκεπές είναι φτιαγμένες από φύλλα στρωμένα σε πυκνές σειρές.",
+      "tts": {
+        "text": "Οι σκεπές είναι φτιαγμένες από φύλλα στρωμένα σε πυκνές σειρές.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια καλή σκεπή από φύλλα κρατάει έξω τη δυνατή βροχή.",
+      "text_markdown": "Μια καλή σκεπή από φύλλα κρατάει έξω τη δυνατή βροχή.",
+      "tts": {
+        "text": "Μια καλή σκεπή από φύλλα κρατάει έξω τη δυνατή βροχή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι τοίχοι είναι συχνά ανοιχτοί για να περνά ο ζεστός αέρας.",
+      "text_markdown": "Οι τοίχοι είναι συχνά ανοιχτοί για να περνά ο ζεστός αέρας.",
+      "tts": {
+        "text": "Οι τοίχοι είναι συχνά ανοιχτοί για να περνά ο ζεστός αέρας.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι άνθρωποι ψαρεύουν στα ποτάμια και μαζεύουν τροφή από το δάσος.",
+      "text_markdown": "Οι άνθρωποι ψαρεύουν στα ποτάμια και μαζεύουν τροφή από το δάσος.",
+      "tts": {
+        "text": "Οι άνθρωποι ψαρεύουν στα ποτάμια και μαζεύουν τροφή από το δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κυνηγούν μικρά ζώα με τόξα και δόρατα.",
+      "text_markdown": "Κυνηγούν μικρά ζώα με τόξα και δόρατα.",
+      "tts": {
+        "text": "Κυνηγούν μικρά ζώα με τόξα και δόρατα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Καλλιεργούν τροφή σε μικρούς κήπους που έχουν καθαριστεί ανάμεσα στα δέντρα.",
+      "text_markdown": "Καλλιεργούν τροφή σε μικρούς κήπους που έχουν καθαριστεί ανάμεσα στα δέντρα.",
+      "tts": {
+        "text": "Καλλιεργούν τροφή σε μικρούς κήπους που έχουν καθαριστεί ανάμεσα στα δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το τι καλλιεργούν εξαρτάται από το πού ζουν.",
+      "text_markdown": "Το τι καλλιεργούν εξαρτάται από το πού ζουν.",
+      "tts": {
+        "text": "Το τι καλλιεργούν εξαρτάται από το πού ζουν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στα τροπικά δάση της Νότιας Αμερικής, οι άνθρωποι καλλιεργούν κασάβα και γλυκοπατάτες για χιλιάδες χρόνια.",
+      "text_markdown": "Στα τροπικά δάση της Νότιας Αμερικής, οι άνθρωποι καλλιεργούν κασάβα και γλυκοπατάτες για χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Στα τροπικά δάση της Νότιας Αμερικής, οι άνθρωποι καλλιεργούν κασάβα και γλυκοπατάτες για χιλιάδες χρόνια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στα τροπικά δάση της Αφρικής, οι άνθρωποι καλλιεργούν γιαμ και καρπό της φοινικιάς.",
+      "text_markdown": "Στα τροπικά δάση της Αφρικής, οι άνθρωποι καλλιεργούν γιαμ και καρπό της φοινικιάς.",
+      "tts": {
+        "text": "Στα τροπικά δάση της Αφρικής, οι άνθρωποι καλλιεργούν γιαμ και καρπό της φοινικιάς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στα τροπικά δάση της Νοτιοανατολικής Ασίας και του Ειρηνικού, οι άνθρωποι καλλιεργούν τάρο, ρύζι και καρπό του αρτόδεντρου.",
+      "text_markdown": "Στα τροπικά δάση της Νοτιοανατολικής Ασίας και του Ειρηνικού, οι άνθρωποι καλλιεργούν τάρο, ρύζι και καρπό του αρτόδεντρου.",
+      "tts": {
+        "text": "Στα τροπικά δάση της Νοτιοανατολικής Ασίας και του Ειρηνικού, οι άνθρωποι καλλιεργούν τάρο, ρύζι και καρπό του αρτόδεντρου.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά από λίγα χρόνια αφήνουν τον κήπο να γίνει πάλι δάσος και φτιάχνουν έναν καινούριο κάπου αλλού.",
+      "text_markdown": "Μετά από λίγα χρόνια αφήνουν τον κήπο να γίνει πάλι δάσος και φτιάχνουν έναν καινούριο κάπου αλλού.",
+      "tts": {
+        "text": "Μετά από λίγα χρόνια αφήνουν τον κήπο να γίνει πάλι δάσος και φτιάχνουν έναν καινούριο κάπου αλλού.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έτσι μένει υγιές το δάσος.",
+      "text_markdown": "Έτσι μένει υγιές το δάσος.",
+      "tts": {
+        "text": "Έτσι μένει υγιές το δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι άνθρωποι του τροπικού δάσους γνωρίζουν χιλιάδες φυτά.",
+      "text_markdown": "Οι άνθρωποι του τροπικού δάσους γνωρίζουν χιλιάδες φυτά.",
+      "tts": {
+        "text": "Οι άνθρωποι του τροπικού δάσους γνωρίζουν χιλιάδες φυτά.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ξέρουν ποια δίνουν τροφή, ποια δίνουν φάρμακο και ποια δεν είναι ασφαλές να τα φάει κανείς.",
+      "text_markdown": "Ξέρουν ποια δίνουν τροφή, ποια δίνουν φάρμακο και ποια δεν είναι ασφαλές να τα φάει κανείς.",
+      "tts": {
+        "text": "Ξέρουν ποια δίνουν τροφή, ποια δίνουν φάρμακο και ποια δεν είναι ασφαλές να τα φάει κανείς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μαθαίνουν τα τραγούδια των πουλιών.",
+      "text_markdown": "Μαθαίνουν τα τραγούδια των πουλιών.",
+      "tts": {
+        "text": "Μαθαίνουν τα τραγούδια των πουλιών.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μαθαίνουν τα ίχνη των ζώων.",
+      "text_markdown": "Μαθαίνουν τα ίχνη των ζώων.",
+      "tts": {
+        "text": "Μαθαίνουν τα ίχνη των ζώων.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή η γνώση μοιράζεται από τους γονείς στα παιδιά, χρόνο με τον χρόνο.",
+      "text_markdown": "Αυτή η γνώση μοιράζεται από τους γονείς στα παιδιά, χρόνο με τον χρόνο.",
+      "tts": {
+        "text": "Αυτή η γνώση μοιράζεται από τους γονείς στα παιδιά, χρόνο με τον χρόνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Οι Άνθρωποι",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε κάθε τροπικό δάσος, αυτή η ζωή έχει τις δικές της γλώσσες, τις δικές της ιστορίες και τη δική της μουσική.",
+      "text_markdown": "Σε κάθε τροπικό δάσος, αυτή η ζωή έχει τις δικές της γλώσσες, τις δικές της ιστορίες και τη δική της μουσική.",
+      "tts": {
+        "text": "Σε κάθε τροπικό δάσος, αυτή η ζωή έχει τις δικές της γλώσσες, τις δικές της ιστορίες και τη δική της μουσική.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Το Τροπικό Δάσος Σήμερα",
+      "text_markdown": "Το Τροπικό Δάσος Σήμερα"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το τροπικό δάσος είναι ένας από τους πιο σημαντικούς βιότοπους στη Γη.",
+      "text_markdown": "Το τροπικό δάσος είναι ένας από τους πιο σημαντικούς βιότοπους στη Γη.",
+      "tts": {
+        "text": "Το τροπικό δάσος είναι ένας από τους πιο σημαντικούς βιότοπους στη Γη.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα τραβούν νερό από το έδαφος και το ανασαίνουν προς τον ουρανό.",
+      "text_markdown": "Τα δέντρα τραβούν νερό από το έδαφος και το ανασαίνουν προς τον ουρανό.",
+      "tts": {
+        "text": "Τα δέντρα τραβούν νερό από το έδαφος και το ανασαίνουν προς τον ουρανό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα σύννεφα που σχηματίζονται πάνω από το δάσος μεταφέρουν βροχή σε μακρινές χώρες.",
+      "text_markdown": "Τα σύννεφα που σχηματίζονται πάνω από το δάσος μεταφέρουν βροχή σε μακρινές χώρες.",
+      "tts": {
+        "text": "Τα σύννεφα που σχηματίζονται πάνω από το δάσος μεταφέρουν βροχή σε μακρινές χώρες.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα δέντρα ανασαίνουν κι αυτά, αλλά ανάποδα από εμάς.",
+      "text_markdown": "Τα δέντρα ανασαίνουν κι αυτά, αλλά ανάποδα από εμάς.",
+      "tts": {
+        "text": "Τα δέντρα ανασαίνουν κι αυτά, αλλά ανάποδα από εμάς.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παίρνουν μέσα τους το αέριο που εμείς βγάζουμε, και το χρησιμοποιούν για να μεγαλώσουν.",
+      "text_markdown": "Παίρνουν μέσα τους το αέριο που εμείς βγάζουμε, και το χρησιμοποιούν για να μεγαλώσουν.",
+      "tts": {
+        "text": "Παίρνουν μέσα τους το αέριο που εμείς βγάζουμε, και το χρησιμοποιούν για να μεγαλώσουν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και δίνουν πίσω το αέριο που εμείς ανασαίνουμε.",
+      "text_markdown": "Και δίνουν πίσω το αέριο που εμείς ανασαίνουμε.",
+      "tts": {
+        "text": "Και δίνουν πίσω το αέριο που εμείς ανασαίνουμε.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως το τροπικό δάσος βρίσκεται σε κίνδυνο.",
+      "text_markdown": "Όμως το τροπικό δάσος βρίσκεται σε κίνδυνο.",
+      "tts": {
+        "text": "Όμως το τροπικό δάσος βρίσκεται σε κίνδυνο.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε πολλά μέρη, οι άνθρωποι έχουν κόψει τα δέντρα για να φυτέψουν καλλιέργειες ή για να εκτρέφουν ζώα.",
+      "text_markdown": "Σε πολλά μέρη, οι άνθρωποι έχουν κόψει τα δέντρα για να φυτέψουν καλλιέργειες ή για να εκτρέφουν ζώα.",
+      "tts": {
+        "text": "Σε πολλά μέρη, οι άνθρωποι έχουν κόψει τα δέντρα για να φυτέψουν καλλιέργειες ή για να εκτρέφουν ζώα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν τα δέντρα φύγουν, το χώμα ξεπλένεται και η βροχή σταματάει να πέφτει όπως πριν.",
+      "text_markdown": "Όταν τα δέντρα φύγουν, το χώμα ξεπλένεται και η βροχή σταματάει να πέφτει όπως πριν.",
+      "tts": {
+        "text": "Όταν τα δέντρα φύγουν, το χώμα ξεπλένεται και η βροχή σταματάει να πέφτει όπως πριν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα ζώα και οι άνθρωποι που ζουν εκεί χάνουν το σπίτι τους.",
+      "text_markdown": "Τα ζώα και οι άνθρωποι που ζουν εκεί χάνουν το σπίτι τους.",
+      "tts": {
+        "text": "Τα ζώα και οι άνθρωποι που ζουν εκεί χάνουν το σπίτι τους.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολλές ομάδες σε όλον τον κόσμο εργάζονται για να προστατέψουν ό,τι έχει απομείνει.",
+      "text_markdown": "Πολλές ομάδες σε όλον τον κόσμο εργάζονται για να προστατέψουν ό,τι έχει απομείνει.",
+      "tts": {
+        "text": "Πολλές ομάδες σε όλον τον κόσμο εργάζονται για να προστατέψουν ό,τι έχει απομείνει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Φυτεύουν καινούρια δέντρα.",
+      "text_markdown": "Φυτεύουν καινούρια δέντρα.",
+      "tts": {
+        "text": "Φυτεύουν καινούρια δέντρα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Βοηθούν τους ανθρώπους που ζουν στο δάσος να το φροντίζουν.",
+      "text_markdown": "Βοηθούν τους ανθρώπους που ζουν στο δάσος να το φροντίζουν.",
+      "tts": {
+        "text": "Βοηθούν τους ανθρώπους που ζουν στο δάσος να το φροντίζουν.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μελετούν το δάσος ώστε να το καταλαβαίνουμε καλύτερα.",
+      "text_markdown": "Μελετούν το δάσος ώστε να το καταλαβαίνουμε καλύτερα.",
+      "tts": {
+        "text": "Μελετούν το δάσος ώστε να το καταλαβαίνουμε καλύτερα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα τροπικό δάσος χρειάζεται εκατοντάδες χρόνια για να μεγαλώσει.",
+      "text_markdown": "Ένα τροπικό δάσος χρειάζεται εκατοντάδες χρόνια για να μεγαλώσει.",
+      "tts": {
+        "text": "Ένα τροπικό δάσος χρειάζεται εκατοντάδες χρόνια για να μεγαλώσει.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αλλά ένα υγιές τροπικό δάσος μπορεί να συνεχίζει να μεγαλώνει για χιλιάδες χρόνια.",
+      "text_markdown": "Αλλά ένα υγιές τροπικό δάσος μπορεί να συνεχίζει να μεγαλώνει για χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Αλλά ένα υγιές τροπικό δάσος μπορεί να συνεχίζει να μεγαλώνει για χιλιάδες χρόνια.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Το Τροπικό Δάσος Σήμερα",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αξίζει τη φροντίδα μας.",
+      "text_markdown": "Αξίζει τη φροντίδα μας.",
+      "tts": {
+        "text": "Αξίζει τη φροντίδα μας.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Κλείσιμο",
+      "text_markdown": "Κλείσιμο"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι το τροπικό δάσος.",
+      "text_markdown": "Αυτό είναι το τροπικό δάσος.",
+      "tts": {
+        "text": "Αυτό είναι το τροπικό δάσος.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας ζεστός, υγρός, πράσινος κόσμος γεμάτος ζωή.",
+      "text_markdown": "Ένας ζεστός, υγρός, πράσινος κόσμος γεμάτος ζωή.",
+      "tts": {
+        "text": "Ένας ζεστός, υγρός, πράσινος κόσμος γεμάτος ζωή.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν ποτέ μπεις σε ένα, στάσου ακίνητος για ένα λεπτό.",
+      "text_markdown": "Αν ποτέ μπεις σε ένα, στάσου ακίνητος για ένα λεπτό.",
+      "tts": {
+        "text": "Αν ποτέ μπεις σε ένα, στάσου ακίνητος για ένα λεπτό.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άκου τα πουλιά, τους βάτραχους και τη βροχή στα φύλλα.",
+      "text_markdown": "Άκου τα πουλιά, τους βάτραχους και τη βροχή στα φύλλα.",
+      "tts": {
+        "text": "Άκου τα πουλιά, τους βάτραχους και τη βροχή στα φύλλα.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Κλείσιμο",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Θα ακούσεις την καρδιά του βιότοπου να χτυπά γύρω σου.",
+      "text_markdown": "Θα ακούσεις την καρδιά του βιότοπου να χτυπά γύρω σου.",
+      "tts": {
+        "text": "Θα ακούσεις την καρδιά του βιότοπου να χτυπά γύρω σου.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

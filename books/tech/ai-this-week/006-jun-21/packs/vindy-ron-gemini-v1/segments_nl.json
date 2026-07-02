@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "nl",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "text": "Welkom bij AI This Week.",
+      "text_markdown": "Welkom bij AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Welkom bij AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "text": "Ik ben Vindy.",
+      "text_markdown": "Ik ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ik ben Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "block_type": "text",
+      "text": "Bij mij, zoals altijd, is Ron.",
+      "text_markdown": "Bij mij, zoals altijd, is Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bij mij, zoals altijd, is Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "block_type": "text",
+      "text": "Fijn om hier te zijn, Vindy.",
+      "text_markdown": "Fijn om hier te zijn, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Fijn om hier te zijn, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "text": "Vandaag is het zondag 21 juni 2026.",
+      "text_markdown": "Vandaag is het zondag 21 juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Vandaag is het zondag eenentwintig juni tweeduizendzesentwintig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "block_type": "text",
+      "text": "Vorige week spraken we over onszelf; vandaag gaan we de andere kant op — helemaal naar de centra van macht.",
+      "text_markdown": "Vorige week spraken we over onszelf; vandaag gaan we de andere kant op — helemaal naar de centra van macht.",
+      "title": "",
+      "tts": {
+        "text": "Vorige week spraken we over onszelf; vandaag gaan we de andere kant op — helemaal naar de centra van macht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "text": "Wie controleert de AI-implementatie, wie betaalt voor de uitbouw, wie bezit het silicium.",
+      "text_markdown": "Wie controleert de AI-implementatie, wie betaalt voor de uitbouw, wie bezit het silicium.",
+      "title": "",
+      "tts": {
+        "text": "Wie controleert de AI-implementatie, wie betaalt voor de uitbouw, wie bezit het silicium.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "block_type": "text",
+      "text": "Zo dadelijk — het Amerikaanse Ministerie van Handel heeft afgelopen vrijdag een Amerikaans model uit openbaar gebruik gehaald, en daar beginnen we mee.",
+      "text_markdown": "Zo dadelijk — het Amerikaanse Ministerie van Handel heeft afgelopen vrijdag een Amerikaans model uit openbaar gebruik gehaald, en daar beginnen we mee.",
+      "title": "",
+      "tts": {
+        "text": "Zo dadelijk — het Amerikaanse Ministerie van Handel heeft afgelopen vrijdag een Amerikaans model uit openbaar gebruik gehaald, en daar beginnen we mee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "text": "Dan de uitbouw van datacenters, waar de aankondigingen en de werkelijkheid niet overeenkomen.",
+      "text_markdown": "Dan de uitbouw van datacenters, waar de aankondigingen en de werkelijkheid niet overeenkomen.",
+      "title": "",
+      "tts": {
+        "text": "Dan de uitbouw van datacenters, waar de aankondigingen en de werkelijkheid niet overeenkomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "block_type": "text",
+      "text": "Dan de vergelijking tussen de VS en China, waarbij het cliché is vervangen door de werkelijke beperkende factor.",
+      "text_markdown": "Dan de vergelijking tussen de VS en China, waarbij het cliché is vervangen door de werkelijke beperkende factor.",
+      "title": "",
+      "tts": {
+        "text": "Dan de vergelijking tussen de VS en China, waarbij het cliché is vervangen door de werkelijke beperkende factor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "text": "En het concept van de week — één regel op de balans van Oracle die je bijna alles vertelt.",
+      "text_markdown": "En het concept van de week — één regel op de balans van Oracle die je bijna alles vertelt.",
+      "title": "",
+      "tts": {
+        "text": "En het concept van de week — één regel op de balans van Oracle die je bijna alles vertelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "block_type": "text",
+      "text": "Ron, laten we beginnen met Anthropic.",
+      "text_markdown": "Ron, laten we beginnen met Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, laten we beginnen met Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "text": "Wat gebeurde er op twaalf juni.",
+      "text_markdown": "Wat gebeurde er op twaalf juni.",
+      "title": "",
+      "tts": {
+        "text": "Wat gebeurde er op twaalf juni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "text": "Om 17:21 uur Oostelijke Tijd op vrijdag 12 juni, haalde Anthropic zijn twee nieuwste modellen — Claude Mythos 5 en Claude Fable 5 — offline.",
+      "text_markdown": "Om 17:21 uur Oostelijke Tijd op vrijdag 12 juni, haalde Anthropic zijn twee nieuwste modellen — Claude Mythos 5 en Claude Fable 5 — offline.",
+      "title": "",
+      "tts": {
+        "text": "Om vijf uur eenentwintig 's middags Oostelijke Tijd op vrijdag twaalf juni, haalde Anthropic zijn twee nieuwste modellen — Claude Mythos vijf en Claude Fable vijf — offline.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "block_type": "text",
+      "text": "Niet voor onderhoud, niet voor een veiligheidscontrole op eigen initiatief.",
+      "text_markdown": "Niet voor onderhoud, niet voor een veiligheidscontrole op eigen initiatief.",
+      "title": "",
+      "tts": {
+        "text": "Niet voor onderhoud, niet voor een veiligheidscontrole op eigen initiatief.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "text": "Ze haalden ze offline omdat het Amerikaanse Ministerie van Handel een richtlijn uitvaardigde met een beroep op exportcontroles.",
+      "text_markdown": "Ze haalden ze offline omdat het Amerikaanse Ministerie van Handel een richtlijn uitvaardigde met een beroep op exportcontroles.",
+      "title": "",
+      "tts": {
+        "text": "Ze haalden ze offline omdat het Amerikaanse Ministerie van Handel een richtlijn uitvaardigde met een beroep op exportcontroles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "text": "Wat was de technische reden.",
+      "text_markdown": "Wat was de technische reden.",
+      "title": "",
+      "tts": {
+        "text": "Wat was de technische reden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "text": "Er werd een jailbreak gedemonstreerd, naar verluidt door een ander bedrijf, die output produceerde die het Ministerie van Handel als exportgecontroleerd beschouwde.",
+      "text_markdown": "Er werd een jailbreak gedemonstreerd, naar verluidt door een ander bedrijf, die output produceerde die het Ministerie van Handel als exportgecontroleerd beschouwde.",
+      "title": "",
+      "tts": {
+        "text": "Er werd een jailbreak gedemonstreerd, naar verluidt door een ander bedrijf, die output produceerde die het Ministerie van Handel als exportgecontroleerd beschouwde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "block_type": "text",
+      "text": "Fortune meldde dat Amazon degene was die het Witte Huis hiervan op de hoogte bracht.",
+      "text_markdown": "Fortune meldde dat Amazon degene was die het Witte Huis hiervan op de hoogte bracht.",
+      "title": "",
+      "tts": {
+        "text": "Fortune meldde dat Amazon degene was die het Witte Huis hiervan op de hoogte bracht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "block_type": "text",
+      "text": "En hoe reageerde Anthropic.",
+      "text_markdown": "En hoe reageerde Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "En hoe reageerde Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "text": "Anthropic betwist de redenering publiekelijk.",
+      "text_markdown": "Anthropic betwist de redenering publiekelijk.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic betwist de redenering publiekelijk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "block_type": "text",
+      "text": "Hun verklaring noemde de jailbreak — en ik citeer — \"smal, niet-universeel,\" en voegde eraan toe dat dezelfde output beschikbaar is van andere modellen, waaronder OpenAI's GPT-vijf-punt-vijf.",
+      "text_markdown": "Hun verklaring noemde de jailbreak — en ik citeer — \"smal, niet-universeel,\" en voegde eraan toe dat dezelfde output beschikbaar is van andere modellen, waaronder OpenAI's GPT-vijf-punt-vijf.",
+      "title": "",
+      "tts": {
+        "text": "Hun verklaring noemde de jailbreak — en ik citeer — \"smal, niet-universeel,\" en voegde eraan toe dat dezelfde output beschikbaar is van andere modellen, waaronder OpenAI's GPT vijf punt vijf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "text": "Hun samenvattende zin: \"de actie van de overheid is gebaseerd op een misverstand.\"",
+      "text_markdown": "Hun samenvattende zin: \"de actie van de overheid is gebaseerd op een misverstand.\"",
+      "title": "",
+      "tts": {
+        "text": "Hun samenvattende zin: \"de actie van de overheid is gebaseerd op een misverstand.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "block_type": "text",
+      "text": "Dat is een ongewoon directe onenigheid met de Amerikaanse overheid voor een AI-lab.",
+      "text_markdown": "Dat is een ongewoon directe onenigheid met de Amerikaanse overheid voor een AI-lab.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een ongewoon directe onenigheid met de Amerikaanse overheid voor een AI-lab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "text": "Dat is het, en het structurele feit eronder is de kop.",
+      "text_markdown": "Dat is het, en het structurele feit eronder is de kop.",
+      "title": "",
+      "tts": {
+        "text": "Dat is het, en het structurele feit eronder is de kop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "block_type": "text",
+      "text": "Het Ministerie van Handel kan nu een particulier Amerikaans AI-lab opdracht geven een model offline te halen, met een beroep op exportcontroles, en die opdracht wordt binnen tweeënzeventig uur uitgevoerd.",
+      "text_markdown": "Het Ministerie van Handel kan nu een particulier Amerikaans AI-lab opdracht geven een model offline te halen, met een beroep op exportcontroles, en die opdracht wordt binnen tweeënzeventig uur uitgevoerd.",
+      "title": "",
+      "tts": {
+        "text": "Het Ministerie van Handel kan nu een particulier Amerikaans AI-lab opdracht geven een model offline te halen, met een beroep op exportcontroles, en die opdracht wordt binnen tweeënzeventig uur uitgevoerd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "block_type": "text",
+      "text": "Of je nu denkt dat het bevel juist was of niet.",
+      "text_markdown": "Of je nu denkt dat het bevel juist was of niet.",
+      "title": "",
+      "tts": {
+        "text": "Of je nu denkt dat het bevel juist was of niet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "block_type": "text",
+      "text": "Of je nu denkt dat het bevel juist was of niet.",
+      "text_markdown": "Of je nu denkt dat het bevel juist was of niet.",
+      "title": "",
+      "tts": {
+        "text": "Of je nu denkt dat het bevel juist was of niet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "text": "De autoriteit zelf, de snelheid en het precedent zijn wat telt.",
+      "text_markdown": "De autoriteit zelf, de snelheid en het precedent zijn wat telt.",
+      "title": "",
+      "tts": {
+        "text": "De autoriteit zelf, de snelheid en het precedent zijn wat telt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "block_type": "text",
+      "text": "En de rol van Amazon hierin.",
+      "text_markdown": "En de rol van Amazon hierin.",
+      "title": "",
+      "tts": {
+        "text": "En de rol van Amazon hierin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "text": "Dat is het deel om in de gaten te houden.",
+      "text_markdown": "Dat is het deel om in de gaten te houden.",
+      "title": "",
+      "tts": {
+        "text": "Dat is het deel om in de gaten te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "block_type": "text",
+      "text": "Amazon is een belangrijke investeerder in Anthropic en concurreert ook met Anthropic op de markt voor fundamentele modellen via haar eigen werk.",
+      "text_markdown": "Amazon is een belangrijke investeerder in Anthropic en concurreert ook met Anthropic op de markt voor fundamentele modellen via haar eigen werk.",
+      "title": "",
+      "tts": {
+        "text": "Amazon is een belangrijke investeerder in Anthropic en concurreert ook met Anthropic op de markt voor fundamentele modellen via haar eigen werk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "block_type": "text",
+      "text": "Als de waarschuwing van een concurrent aan de overheid het model van een rivaal in een lang weekend offline kan halen, dan is dat een nieuwe vorm voor de dynamiek van de sector.",
+      "text_markdown": "Als de waarschuwing van een concurrent aan de overheid het model van een rivaal in een lang weekend offline kan halen, dan is dat een nieuwe vorm voor de dynamiek van de sector.",
+      "title": "",
+      "tts": {
+        "text": "Als de waarschuwing van een concurrent aan de overheid het model van een rivaal in een lang weekend offline kan halen, dan is dat een nieuwe vorm voor de dynamiek van de sector.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "block_type": "text",
+      "text": "Laten we verdergaan met de uitbouw.",
+      "text_markdown": "Laten we verdergaan met de uitbouw.",
+      "title": "",
+      "tts": {
+        "text": "Laten we verdergaan met de uitbouw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "block_type": "text",
+      "text": "Stargate — het datacenterinitiatief van OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — het datacenterinitiatief van OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — het datacenterinitiatief van OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "block_type": "text",
+      "text": "Wat zijn de werkelijke cijfers.",
+      "text_markdown": "Wat zijn de werkelijke cijfers.",
+      "title": "",
+      "tts": {
+        "text": "Wat zijn de werkelijke cijfers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "block_type": "text",
+      "text": "Stargate heeft elf gigawatt aan Amerikaanse capaciteit aangekondigd.",
+      "text_markdown": "Stargate heeft elf gigawatt aan Amerikaanse capaciteit aangekondigd.",
+      "title": "",
+      "tts": {
+        "text": "Stargate heeft elf gigawatt aan Amerikaanse capaciteit aangekondigd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "text": "Vanaf half juni is ongeveer tweehonderd megawatt operationeel, op de locatie Abilene Texas, Fase Eén.",
+      "text_markdown": "Vanaf half juni is ongeveer tweehonderd megawatt operationeel, op de locatie Abilene Texas, Fase Eén.",
+      "title": "",
+      "tts": {
+        "text": "Vanaf half juni is ongeveer tweehonderd megawatt operationeel, op de locatie Abilene Texas, Fase Eén.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "text": "Elf gigawatt aangekondigd, tweehonderd megawatt aangesloten.",
+      "text_markdown": "Elf gigawatt aangekondigd, tweehonderd megawatt aangesloten.",
+      "title": "",
+      "tts": {
+        "text": "Elf gigawatt aangekondigd, tweehonderd megawatt aangesloten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "block_type": "text",
+      "text": "Dat is de hele kloof in één zin.",
+      "text_markdown": "Dat is de hele kloof in één zin.",
+      "title": "",
+      "tts": {
+        "text": "Dat is de hele kloof in één zin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "block_type": "text",
+      "text": "Dat is zo, en het duidelijkste voorbeeld bevindt zich in New Mexico.",
+      "text_markdown": "Dat is zo, en het duidelijkste voorbeeld bevindt zich in New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Dat is zo, en het duidelijkste voorbeeld bevindt zich in New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "text": "De locatie in Doña Ana County is de grootste afzonderlijke Stargate-campus, gepland op vier komma vijf gigawatt.",
+      "text_markdown": "De locatie in Doña Ana County is de grootste afzonderlijke Stargate-campus, gepland op vier komma vijf gigawatt.",
+      "title": "",
+      "tts": {
+        "text": "De locatie in Doña Ana County is de grootste afzonderlijke Stargate-campus, gepland op vier komma vijf gigawatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "block_type": "text",
+      "text": "Achttien miljard dollar aan gesyndiceerde projectfinanciering is geregeld — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus een aandeleninjectie van drie miljard dollar van Blue Owl.",
+      "text_markdown": "Achttien miljard dollar aan gesyndiceerde projectfinanciering is geregeld — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus een aandeleninjectie van drie miljard dollar van Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Achttien miljard dollar aan gesyndiceerde projectfinanciering is geregeld — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus een aandeleninjectie van drie miljard dollar van Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "block_type": "text",
+      "text": "En de bouwstatus ter plaatse.",
+      "text_markdown": "En de bouwstatus ter plaatse.",
+      "title": "",
+      "tts": {
+        "text": "En de bouwstatus ter plaatse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "text": "Nog geen schop in de grond tot nu toe.",
+      "text_markdown": "Nog geen schop in de grond tot nu toe.",
+      "title": "",
+      "tts": {
+        "text": "Nog geen schop in de grond tot nu toe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "block_type": "text",
+      "text": "De locatie wacht op een luchtkwaliteitsvergunning van het New Mexico Environment Department, oorspronkelijk verwacht op tweeëntwintig april, nu uitgesteld tot eenentwintig juli na meer dan zevenduizend openbare reacties.",
+      "text_markdown": "De locatie wacht op een luchtkwaliteitsvergunning van het New Mexico Environment Department, oorspronkelijk verwacht op tweeëntwintig april, nu uitgesteld tot eenentwintig juli na meer dan zevenduizend openbare reacties.",
+      "title": "",
+      "tts": {
+        "text": "De locatie wacht op een luchtkwaliteitsvergunning van het New Mexico Environment Department, oorspronkelijk verwacht op tweeëntwintig april, nu uitgesteld tot eenentwintig juli na meer dan zevenduizend openbare reacties.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "block_type": "text",
+      "text": "Achttien miljard dollar toegezegd, nul schoppen in de grond, één deadline voor de luchtkwaliteitsvergunning.",
+      "text_markdown": "Achttien miljard dollar toegezegd, nul schoppen in de grond, één deadline voor de luchtkwaliteitsvergunning.",
+      "title": "",
+      "tts": {
+        "text": "Achttien miljard dollar toegezegd, nul schoppen in de grond, één deadline voor de luchtkwaliteitsvergunning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "text": "Wie is de dupe als de cijfers niet kloppen.",
+      "text_markdown": "Wie is de dupe als de cijfers niet kloppen.",
+      "title": "",
+      "tts": {
+        "text": "Wie is de dupe als de cijfers niet kloppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "text": "Dat is waar Oracle interessant wordt.",
+      "text_markdown": "Dat is waar Oracle interessant wordt.",
+      "title": "",
+      "tts": {
+        "text": "Dat is waar Oracle interessant wordt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "block_type": "text",
+      "text": "Oracle's Remaining Performance Obligations — de boekhoudkundige post die gecontracteerde, nog niet geleverde inkomsten registreert — bereikte vijfhonderddrieënvijftig miljard dollar in Q3 fiscaal tweeduizendzesentwintig.",
+      "text_markdown": "Oracle's Remaining Performance Obligations — de boekhoudkundige post die gecontracteerde, nog niet geleverde inkomsten registreert — bereikte vijfhonderddrieënvijftig miljard dollar in Q3 fiscaal tweeduizendzesentwintig.",
+      "title": "",
+      "tts": {
+        "text": "Oracle's Remaining Performance Obligations — de boekhoudkundige post die gecontracteerde, nog niet geleverde inkomsten registreert — bereikte vijfhonderddrieënvijftig miljard dollar in Q drie fiscaal tweeduizendzesentwintig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "text": "Dat is een stijging van driehonderdvijfentwintig procent jaar op jaar, en het grootste deel van die stijging wordt publiekelijk geïdentificeerd met OpenAI en Stargate.",
+      "text_markdown": "Dat is een stijging van driehonderdvijfentwintig procent jaar op jaar, en het grootste deel van die stijging wordt publiekelijk geïdentificeerd met OpenAI en Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een stijging van driehonderdvijfentwintig procent jaar op jaar, en het grootste deel van die stijging wordt publiekelijk geïdentificeerd met OpenAI en Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "block_type": "text",
+      "text": "En de schuldenkant.",
+      "text_markdown": "En de schuldenkant.",
+      "title": "",
+      "tts": {
+        "text": "En de schuldenkant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "text": "De totale leningen bereikten honderdvierenendertig komma zes miljard dollar per achtentwintig februari.",
+      "text_markdown": "De totale leningen bereikten honderdvierenendertig komma zes miljard dollar per achtentwintig februari.",
+      "title": "",
+      "tts": {
+        "text": "De totale leningen bereikten honderdvierenendertig komma zes miljard dollar per achtentwintig februari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "block_type": "text",
+      "text": "Oracle haalde in februari alleen al dertig miljard op — investment-grade obligaties plus verplichte converteerbare preferente aandelen — en gaf over de periode van negen maanden drieënveertig miljard dollar aan nieuwe senior notes uit.",
+      "text_markdown": "Oracle haalde in februari alleen al dertig miljard op — investment-grade obligaties plus verplichte converteerbare preferente aandelen — en gaf over de periode van negen maanden drieënveertig miljard dollar aan nieuwe senior notes uit.",
+      "title": "",
+      "tts": {
+        "text": "Oracle haalde in februari alleen al dertig miljard op — investment-grade obligaties plus verplichte converteerbare preferente aandelen — en gaf over de periode van negen maanden drieënveertig miljard dollar aan nieuwe senior notes uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "block_type": "text",
+      "text": "Dus, samenvattend de positie.",
+      "text_markdown": "Dus, samenvattend de positie.",
+      "title": "",
+      "tts": {
+        "text": "Dus, samenvattend de positie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "block_type": "text",
+      "text": "Vijfhonderddrieënvijftig miljard dollar aan beloftes, honderdvierenendertig miljard dollar aan schulden, en één grote klant die het grootste deel van het risico draagt.",
+      "text_markdown": "Vijfhonderddrieënvijftig miljard dollar aan beloftes, honderdvierenendertig miljard dollar aan schulden, en één grote klant die het grootste deel van het risico draagt.",
+      "title": "",
+      "tts": {
+        "text": "Vijfhonderddrieënvijftig miljard dollar aan beloftes, honderdvierenendertig miljard dollar aan schulden, en één grote klant die het grootste deel van het risico draagt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "block_type": "text",
+      "text": "Dat is de structuur van de uitbouw in één zin.",
+      "text_markdown": "Dat is de structuur van de uitbouw in één zin.",
+      "title": "",
+      "tts": {
+        "text": "Dat is de structuur van de uitbouw in één zin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "text": "Laten we naar de VS en China vergelijking gaan.",
+      "text_markdown": "Laten we naar de VS en China vergelijking gaan.",
+      "title": "",
+      "tts": {
+        "text": "Laten we naar de Verenigde Staten en China vergelijking gaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "block_type": "text",
+      "text": "Het cliché is dat China een aantal maanden achterloopt.",
+      "text_markdown": "Het cliché is dat China een aantal maanden achterloopt.",
+      "title": "",
+      "tts": {
+        "text": "Het cliché is dat China een aantal maanden achterloopt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "block_type": "text",
+      "text": "Het cliché klopt niet omdat het het verkeerde meet.",
+      "text_markdown": "Het cliché klopt niet omdat het het verkeerde meet.",
+      "title": "",
+      "tts": {
+        "text": "Het cliché klopt niet omdat het het verkeerde meet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "text": "Op maandag negen juni rapporteerde Bloomberg een concept Chinees plan van de Nationale Ontwikkelings- en Hervormingscommissie — twee biljoen yuan, ruwweg tweehonderdvijfennegentig miljard dollar, voor een landelijk AI-datacenternetwerk tegen tweeduizachtentwintig.",
+      "text_markdown": "Op maandag negen juni rapporteerde Bloomberg een concept Chinees plan van de Nationale Ontwikkelings- en Hervormingscommissie — twee biljoen yuan, ruwweg tweehonderdvijfennegentig miljard dollar, voor een landelijk AI-datacenternetwerk tegen tweeduizachtentwintig.",
+      "title": "",
+      "tts": {
+        "text": "Op maandag negen juni rapporteerde Bloomberg een concept Chinees plan van de Nationale Ontwikkelings- en Hervormingscommissie — twee biljoen yuan, ruwweg tweehonderdvijfennegentig miljard dollar, voor een landelijk A I-datacenternetwerk tegen tweeduizachtentwintig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "block_type": "text",
+      "text": "Het plan verplicht tachtig procent binnenlands silicium en zou worden geëxploiteerd als één onderling verbonden computernetwerk door China Mobile en China Telecom.",
+      "text_markdown": "Het plan verplicht tachtig procent binnenlands silicium en zou worden geëxploiteerd als één onderling verbonden computernetwerk door China Mobile en China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Het plan verplicht tachtig procent binnenlands silicium en zou worden geëxploiteerd als één onderling verbonden computernetwerk door China Mobile en China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "block_type": "text",
+      "text": "En waar zit de adder onder het gras in dat plan?",
+      "text_markdown": "En waar zit de adder onder het gras in dat plan?",
+      "title": "",
+      "tts": {
+        "text": "En waar zit de adder onder het gras in dat plan?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "block_type": "text",
+      "text": "Twee biljoen yuan, tachtig procent binnenlands silicium, deadline tweeduizachtentwintig — en de adder onder het gras is dat de beperkende factor geen logische chips zijn, maar high-bandwidth memory.",
+      "text_markdown": "Twee biljoen yuan, tachtig procent binnenlands silicium, deadline tweeduizachtentwintig — en de adder onder het gras is dat de beperkende factor geen logische chips zijn, maar high-bandwidth memory.",
+      "title": "",
+      "tts": {
+        "text": "Twee biljoen yuan, tachtig procent binnenlands silicium, deadline tweeduizachtentwintig — en de adder onder het gras is dat de beperkende factor geen logische chips zijn, maar high-bandwidth memory.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "block_type": "text",
+      "text": "Leg dat eens uit.",
+      "text_markdown": "Leg dat eens uit.",
+      "title": "",
+      "tts": {
+        "text": "Leg dat eens uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "block_type": "text",
+      "text": "Elke AI-accelerator heeft HBM-stacks nodig die op de logische die zijn gemonteerd.",
+      "text_markdown": "Elke AI-accelerator heeft HBM-stacks nodig die op de logische die zijn gemonteerd.",
+      "title": "",
+      "tts": {
+        "text": "Elke AI-accelerator heeft HBM-stacks nodig die op de logische die zijn gemonteerd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "block_type": "text",
+      "text": "Zonder HBM is de chip een presse-papier.",
+      "text_markdown": "Zonder HBM is de chip een presse-papier.",
+      "title": "",
+      "tts": {
+        "text": "Zonder HBM is de chip een presse-papier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "block_type": "text",
+      "text": "China heeft ongeveer dertien miljoen HBM-stacks opgeslagen voordat exportcontroles werden ingesteld — elf komma vier miljoen alleen al van Samsung.",
+      "text_markdown": "China heeft ongeveer dertien miljoen HBM-stacks opgeslagen voordat exportcontroles werden ingesteld — elf komma vier miljoen alleen al van Samsung.",
+      "title": "",
+      "tts": {
+        "text": "China heeft ongeveer dertien miljoen HBM-stacks opgeslagen voordat exportcontroles werden ingesteld — elf punt vier miljoen alleen al van Samsung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "block_type": "text",
+      "text": "Bij Huawei Ascend negen-tien C verpakkingsverhoudingen is die voorraad genoeg voor ruwweg één komma zes miljoen chips.",
+      "text_markdown": "Bij Huawei Ascend negen-tien C verpakkingsverhoudingen is die voorraad genoeg voor ruwweg één komma zes miljoen chips.",
+      "title": "",
+      "tts": {
+        "text": "Bij Huawei Ascend negen-tien C verpakkingsverhoudingen is die voorraad genoeg voor ruwweg één punt zes miljoen chips.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "block_type": "text",
+      "text": "En dan raakt de voorraad op.",
+      "text_markdown": "En dan raakt de voorraad op.",
+      "title": "",
+      "tts": {
+        "text": "En dan raakt de voorraad op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "block_type": "text",
+      "text": "Dan raakt de voorraad op — dertien miljoen HBM-stacks, genoeg voor één komma zes miljoen chips, en dat is het plafond.",
+      "text_markdown": "Dan raakt de voorraad op — dertien miljoen HBM-stacks, genoeg voor één komma zes miljoen chips, en dat is het plafond.",
+      "title": "",
+      "tts": {
+        "text": "Dan raakt de voorraad op — dertien miljoen HBM-stacks, genoeg voor één punt zes miljoen chips, en dat is het plafond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "block_type": "text",
+      "text": "Binnenlandse Chinese HBM, van CXMT, ligt op schema voor ongeveer twee miljoen stacks in tweeduizendzesentwintig — genoeg voor misschien tweehonderdvijftig- tot driehonderdduizend accelerators.",
+      "text_markdown": "Binnenlandse Chinese HBM, van CXMT, ligt op schema voor ongeveer twee miljoen stacks in tweeduizendzesentwintig — genoeg voor misschien tweehonderdvijftig- tot driehonderdduizend accelerators.",
+      "title": "",
+      "tts": {
+        "text": "Binnenlandse Chinese HBM, van C X M T, ligt op schema voor ongeveer twee miljoen stacks in tweeduizendzesentwintig — genoeg voor misschien tweehonderdvijftig- tot driehonderdduizend accelerators.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "block_type": "text",
+      "text": "Dus hoe zien de siliciumplannen van Huawei eruit?",
+      "text_markdown": "Dus hoe zien de siliciumplannen van Huawei eruit?",
+      "title": "",
+      "tts": {
+        "text": "Dus hoe zien de siliciumplannen van Huawei eruit?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "block_type": "text",
+      "text": "Bloomberg, onder verwijzing naar de plannen van Huawei, schatte de productie voor tweeduizendzesentwintig op zeshonderdduizend negen-tien C chips, waarbij de bredere Ascend-productlijn een totaal van één komma zes miljoen dies zou bereiken.",
+      "text_markdown": "Bloomberg, onder verwijzing naar de plannen van Huawei, schatte de productie voor tweeduizendzesentwintig op zeshonderdduizend negen-tien C chips, waarbij de bredere Ascend-productlijn een totaal van één komma zes miljoen dies zou bereiken.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, onder verwijzing naar de plannen van Huawei, schatte de productie voor tweeduizendzesentwintig op zeshonderdduizend negen-tien C chips, waarbij de bredere Ascend-productlijn een totaal van één punt zes miljoen dies zou bereiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "block_type": "text",
+      "text": "Dat aantal, zeshonderdduizend, is een doel, geen geleverde output.",
+      "text_markdown": "Dat aantal, zeshonderdduizend, is een doel, geen geleverde output.",
+      "title": "",
+      "tts": {
+        "text": "Dat aantal, zeshonderdduizend, is een doel, geen geleverde output.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "block_type": "text",
+      "text": "En afzonderlijk, voordat exportcontroles hen afsneden, verzamelde Huawei meer dan twee komma negen miljoen Ascend-dies, gefabriceerd bij TSMC via Sophgo en Bitmain dekmantelbedrijven.",
+      "text_markdown": "En afzonderlijk, voordat exportcontroles hen afsneden, verzamelde Huawei meer dan twee komma negen miljoen Ascend-dies, gefabriceerd bij TSMC via Sophgo en Bitmain dekmantelbedrijven.",
+      "title": "",
+      "tts": {
+        "text": "En afzonderlijk, voordat exportcontroles hen afsneden, verzamelde Huawei meer dan twee punt negen miljoen Ascend-dies, gefabriceerd bij T S M C via Sophgo en Bitmain dekmantelbedrijven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "block_type": "text",
+      "text": "Het verhaal dat exportcontroles werken, heeft een gat van twee komma negen miljoen dies.",
+      "text_markdown": "Het verhaal dat exportcontroles werken, heeft een gat van twee komma negen miljoen dies.",
+      "title": "",
+      "tts": {
+        "text": "Het verhaal dat exportcontroles werken, heeft een gat van twee punt negen miljoen dies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "block_type": "text",
+      "text": "Laten we de koppen snel doornemen.",
+      "text_markdown": "Laten we de koppen snel doornemen.",
+      "title": "",
+      "tts": {
+        "text": "Laten we de koppen snel doornemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "block_type": "text",
+      "text": "Eerste kop deze week, Broadcom.",
+      "text_markdown": "Eerste kop deze week, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Eerste kop deze week, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "block_type": "text",
+      "text": "De marktkapitalisatie van Broadcom bedraagt ongeveer twee biljoen dollar.",
+      "text_markdown": "De marktkapitalisatie van Broadcom bedraagt ongeveer twee biljoen dollar.",
+      "title": "",
+      "tts": {
+        "text": "De marktkapitalisatie van Broadcom bedraagt ongeveer twee biljoen dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "block_type": "text",
+      "text": "Hun CEO, Hock Tan, herhaalde een omzetdoel van honderd miljard dollar aan AI-halfgeleiders voor fiscaal tweeduizendzevenentwintig tijdens de winstoproep van drie juni, ondersteund door ongeveer drieënzeventig miljard dollar aan AI-achterstand en langetermijnovereenkomsten met Alphabet en Meta die doorlopen tot tweeduizendeenendertig.",
+      "text_markdown": "Hun CEO, Hock Tan, herhaalde een omzetdoel van honderd miljard dollar aan AI-halfgeleiders voor fiscaal tweeduizendzevenentwintig tijdens de winstoproep van drie juni, ondersteund door ongeveer drieënzeventig miljard dollar aan AI-achterstand en langetermijnovereenkomsten met Alphabet en Meta die doorlopen tot tweeduizendeenendertig.",
+      "title": "",
+      "tts": {
+        "text": "Hun C E O, Hock Tan, herhaalde een omzetdoel van honderd miljard dollar aan A I-halfgeleiders voor fiscaal tweeduizendzevenentwintig tijdens de winstoproep van drie juni, ondersteund door ongeveer drieënzeventig miljard dollar aan A I-achterstand en langetermijnovereenkomsten met Alphabet en Meta die doorlopen tot tweeduizendeenendertig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "block_type": "text",
+      "text": "Twee biljoen dollar marktkapitalisatie, honderd miljard dollar AI-omzetdoel, bijna geen merkbekendheid bij consumenten.",
+      "text_markdown": "Twee biljoen dollar marktkapitalisatie, honderd miljard dollar AI-omzetdoel, bijna geen merkbekendheid bij consumenten.",
+      "title": "",
+      "tts": {
+        "text": "Twee biljoen dollar marktkapitalisatie, honderd miljard dollar A I-omzetdoel, bijna geen merkbekendheid bij consumenten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "block_type": "text",
+      "text": "Tweede kop deze week, ASML.",
+      "text_markdown": "Tweede kop deze week, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Tweede kop deze week, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "block_type": "text",
+      "text": "ASML, het Nederlandse bedrijf dat de lithografiemachines bouwt waarvan alle toonaangevende logica afhankelijk is, verkoopt zijn High-N.A. E.U.V.-systeem voor ongeveer driehonderdzeventig miljoen dollar.",
+      "text_markdown": "ASML, het Nederlandse bedrijf dat de lithografiemachines bouwt waarvan alle toonaangevende logica afhankelijk is, verkoopt zijn High-N.A. E.U.V.-systeem voor ongeveer driehonderdzeventig miljoen dollar.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, het Nederlandse bedrijf dat de lithografiemachines bouwt waarvan alle toonaangevende logica afhankelijk is, verkoopt zijn High-N A E U V-systeem voor ongeveer driehonderdzeventig miljoen dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "block_type": "text",
+      "text": "De wereldwijde productiecapaciteit is minder dan twintig eenheden per jaar.",
+      "text_markdown": "De wereldwijde productiecapaciteit is minder dan twintig eenheden per jaar.",
+      "title": "",
+      "tts": {
+        "text": "De wereldwijde productiecapaciteit is minder dan twintig eenheden per jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "block_type": "text",
+      "text": "Driehonderdzeventig miljoen dollar per machine, minder dan twintig machines per jaar, één bedrijf maakt ze — dat is het werkelijke knelpunt voor wereldwijd silicium, niet beleid.",
+      "text_markdown": "Driehonderdzeventig miljoen dollar per machine, minder dan twintig machines per jaar, één bedrijf maakt ze — dat is het werkelijke knelpunt voor wereldwijd silicium, niet beleid.",
+      "title": "",
+      "tts": {
+        "text": "Driehonderdzeventig miljoen dollar per machine, minder dan twintig machines per jaar, één bedrijf maakt ze — dat is het werkelijke knelpunt voor wereldwijd silicium, niet beleid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "block_type": "text",
+      "text": "Derde kop deze week, exportcontroles.",
+      "text_markdown": "Derde kop deze week, exportcontroles.",
+      "title": "",
+      "tts": {
+        "text": "Derde kop deze week, exportcontroles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "block_type": "text",
+      "text": "Handel trok de Biden-tijdperk AI Diffusion Rule in op dertien mei tweeduizendvijfentwintig, en gaf pas op eenendertig mei tweeduizendzesentwintig een nieuwe B.I.S. handhavingsverduidelijking uit.",
+      "text_markdown": "Handel trok de Biden-tijdperk AI Diffusion Rule in op dertien mei tweeduizendvijfentwintig, en gaf pas op eenendertig mei tweeduizendzesentwintig een nieuwe B.I.S. handhavingsverduidelijking uit.",
+      "title": "",
+      "tts": {
+        "text": "Handel trok de Biden-tijdperk A I Diffusion Rule in op dertien mei tweeduizendvijfentwintig, en gaf pas op eenendertig mei tweeduizendzesentwintig een nieuwe B I S handhavingsverduidelijking uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "block_type": "text",
+      "text": "Dat is een periode van ruwweg een jaar waarin de licentievereisten niet actief werden gehandhaafd.",
+      "text_markdown": "Dat is een periode van ruwweg een jaar waarin de licentievereisten niet actief werden gehandhaafd.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een periode van ruwweg één jaar waarin de licentievereisten niet actief werden gehandhaafd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "block_type": "text",
+      "text": "Dus tel de dagen.",
+      "text_markdown": "Dus tel de dagen.",
+      "title": "",
+      "tts": {
+        "text": "Dus tel de dagen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "block_type": "text",
+      "text": "Tweeënzeventig uur om een Amerikaans model stil te leggen, driehonderdtachtig dagen om een chip-exportregel af te dwingen — die asymmetrie is waar het om draait.",
+      "text_markdown": "Tweeënzeventig uur om een Amerikaans model stil te leggen, driehonderdtachtig dagen om een chip-exportregel af te dwingen — die asymmetrie is waar het om draait.",
+      "title": "",
+      "tts": {
+        "text": "Tweeënzeventig uur om een Amerikaans model stil te leggen, driehonderdtachtig dagen om een chip-exportregel af te dwingen — die asymmetrie is waar het om draait.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "block_type": "text",
+      "text": "En waar gingen de chips naartoe in die driehonderdtachtig dagen.",
+      "text_markdown": "En waar gingen de chips naartoe in die driehonderdtachtig dagen.",
+      "title": "",
+      "tts": {
+        "text": "En waar gingen de chips naartoe in die driehonderdtachtig dagen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "block_type": "text",
+      "text": "Zuidoost-Azië is waar de meeste naartoe gingen.",
+      "text_markdown": "Zuidoost-Azië is waar de meeste naartoe gingen.",
+      "title": "",
+      "tts": {
+        "text": "Zuidoost-Azië is waar de meeste naartoe gingen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "block_type": "text",
+      "text": "Het Ministerie van Justitie ontzegelde eind maart aanklachten waarin werd beweerd dat Nvidia H100- en A100-chips via Maleisische en Singaporese tussenpersonen werden geleid.",
+      "text_markdown": "Het Ministerie van Justitie ontzegelde eind maart aanklachten waarin werd beweerd dat Nvidia H100- en A100-chips via Maleisische en Singaporese tussenpersonen werden geleid.",
+      "title": "",
+      "tts": {
+        "text": "Het Ministerie van Justitie ontzegelde eind maart aanklachten waarin werd beweerd dat Nvidia H honderd en A honderd chips via Maleisische en Singaporese tussenpersonen werden geleid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "block_type": "text",
+      "text": "Fortune publiceerde in mei versleutelde teksten die de logistiek aantoonden, en Super Micro is betrokken bij een zaak van tweeënhalf miljard dollar betreffende een mantelbedrijf.",
+      "text_markdown": "Fortune publiceerde in mei versleutelde teksten die de logistiek aantoonden, en Super Micro is betrokken bij een zaak van tweeënhalf miljard dollar betreffende een mantelbedrijf.",
+      "title": "",
+      "tts": {
+        "text": "Fortune publiceerde in mei versleutelde teksten die de logistiek aantoonden, en Super Micro is betrokken bij een zaak van twee en een half miljard dollar betreffende een mantelbedrijf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "block_type": "text",
+      "text": "De regering-Trump is naar verluidt bezig met het opstellen van nieuwe chip-exportbeperkingen die specifiek gericht zijn op Maleisië en Thailand.",
+      "text_markdown": "De regering-Trump is naar verluidt bezig met het opstellen van nieuwe chip-exportbeperkingen die specifiek gericht zijn op Maleisië en Thailand.",
+      "title": "",
+      "tts": {
+        "text": "De regering-Trump is naar verluidt bezig met het opstellen van nieuwe chip-exportbeperkingen die specifiek gericht zijn op Maleisië en Thailand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "block_type": "text",
+      "text": "Dus het plaatje in één zin.",
+      "text_markdown": "Dus het plaatje in één zin.",
+      "title": "",
+      "tts": {
+        "text": "Dus het plaatje in één zin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "block_type": "text",
+      "text": "De chips vliegen niet naar Shenzhen — ze vliegen eerst naar Penang en Singapore.",
+      "text_markdown": "De chips vliegen niet naar Shenzhen — ze vliegen eerst naar Penang en Singapore.",
+      "title": "",
+      "tts": {
+        "text": "De chips vliegen niet naar Shenzhen — ze vliegen eerst naar Penang en Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "block_type": "text",
+      "text": "Concept van de week — Remaining Performance Obligations.",
+      "text_markdown": "Concept van de week — Remaining Performance Obligations.",
+      "title": "",
+      "tts": {
+        "text": "Concept van de week — Remaining Performance Obligations.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "block_type": "text",
+      "text": "R.P.O. is een boekhoudkundige post die de dollarwaarde vastlegt van contracten die een bedrijf heeft ondertekend, maar waarvoor het nog niet heeft geleverd.",
+      "text_markdown": "R.P.O. is een boekhoudkundige post die de dollarwaarde vastlegt van contracten die een bedrijf heeft ondertekend, maar waarvoor het nog niet heeft geleverd.",
+      "title": "",
+      "tts": {
+        "text": "Er Pee Oo is een boekhoudkundige post die de dollarwaarde vastlegt van contracten die een bedrijf heeft ondertekend, maar waarvoor het nog niet heeft geleverd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "block_type": "text",
+      "text": "Het is toekomstgericht — het vertelt je over toekomstige inkomsten, niet over geld dat vandaag op de bank staat.",
+      "text_markdown": "Het is toekomstgericht — het vertelt je over toekomstige inkomsten, niet over geld dat vandaag op de bank staat.",
+      "title": "",
+      "tts": {
+        "text": "Het is toekomstgericht — het vertelt je over toekomstige inkomsten, niet over geld dat vandaag op de bank staat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "block_type": "text",
+      "text": "En waarom is het belangrijk voor Oracle.",
+      "text_markdown": "En waarom is het belangrijk voor Oracle.",
+      "title": "",
+      "tts": {
+        "text": "En waarom is het belangrijk voor Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "block_type": "text",
+      "text": "Omdat vijfhonderddrieënvijftig miljard dollar aan R.P.O., sterk geconcentreerd bij één klant voor één uitbouw, betekent dat Oracle heeft beloofd een enorme hoeveelheid rekenkracht te leveren in de komende jaren aan een klant wiens eigen inkomstenmodel nog steeds wordt bediscussieerd.",
+      "text_markdown": "Omdat vijfhonderddrieënvijftig miljard dollar aan R.P.O., sterk geconcentreerd bij één klant voor één uitbouw, betekent dat Oracle heeft beloofd een enorme hoeveelheid rekenkracht te leveren in de komende jaren aan een klant wiens eigen inkomstenmodel nog steeds wordt bediscussieerd.",
+      "title": "",
+      "tts": {
+        "text": "Omdat vijfhonderddrieënvijftig miljard dollar aan Er Pee Oo, sterk geconcentreerd bij één klant voor één uitbouw, betekent dat Oracle heeft beloofd een enorme hoeveelheid rekenkracht te leveren in de komende jaren aan een klant wiens eigen inkomstenmodel nog steeds wordt bediscussieerd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "block_type": "text",
+      "text": "Als die contracten worden nagekomen, heeft Oracle de deal van het decennium.",
+      "text_markdown": "Als die contracten worden nagekomen, heeft Oracle de deal van het decennium.",
+      "title": "",
+      "tts": {
+        "text": "Als die contracten worden nagekomen, heeft Oracle de deal van het decennium.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "block_type": "text",
+      "text": "Als ze vertraging oplopen — of opnieuw worden onderhandeld — draagt Oracle de schuld terwijl de contracten krimpen.",
+      "text_markdown": "Als ze vertraging oplopen — of opnieuw worden onderhandeld — draagt Oracle de schuld terwijl de contracten krimpen.",
+      "title": "",
+      "tts": {
+        "text": "Als ze vertraging oplopen — of opnieuw worden onderhandeld — draagt Oracle de schuld terwijl de contracten krimpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "block_type": "text",
+      "text": "Dus wanneer je een R.P.O.-nummer ziet in een tech-rapportage.",
+      "text_markdown": "Dus wanneer je een R.P.O.-nummer ziet in een tech-rapportage.",
+      "title": "",
+      "tts": {
+        "text": "Dus wanneer je een R.P.O.-nummer ziet in een tech-rapportage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "block_type": "text",
+      "text": "Lees wie de klanten zijn, hoe geconcentreerd de verplichtingen zijn, en wat er zou moeten gebeuren om het bedrijf ze daadwerkelijk te laten leveren.",
+      "text_markdown": "Lees wie de klanten zijn, hoe geconcentreerd de verplichtingen zijn, en wat er zou moeten gebeuren om het bedrijf ze daadwerkelijk te laten leveren.",
+      "title": "",
+      "tts": {
+        "text": "Lees wie de klanten zijn, hoe geconcentreerd de verplichtingen zijn, en wat er zou moeten gebeuren om het bedrijf ze daadwerkelijk te laten leveren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "block_type": "text",
+      "text": "R.P.O. is waar de 'bag-holders' verschijnen in de voetnoten.",
+      "text_markdown": "R.P.O. is waar de 'bag-holders' verschijnen in de voetnoten.",
+      "title": "",
+      "tts": {
+        "text": "Er Pee Oo is waar de 'bag-holders' verschijnen in de voetnoten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "block_type": "text",
+      "text": "Een goede plek om te eindigen.",
+      "text_markdown": "Een goede plek om te eindigen.",
+      "title": "",
+      "tts": {
+        "text": "Een goede plek om te eindigen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "block_type": "text",
+      "text": "Ron, bedankt voor de samenvatting.",
+      "text_markdown": "Ron, bedankt voor de samenvatting.",
+      "title": "",
+      "tts": {
+        "text": "Ron, bedankt voor de samenvatting.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "block_type": "text",
+      "text": "Graag gedaan, Vindy — fijn om hier te zijn.",
+      "text_markdown": "Graag gedaan, Vindy — fijn om hier te zijn.",
+      "title": "",
+      "tts": {
+        "text": "Graag gedaan, Vindy — fijn om hier te zijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "block_type": "text",
+      "text": "Dat was AI This Week voor eenentwintig juni, tweeduizendzesentwintig.",
+      "text_markdown": "Dat was AI This Week voor eenentwintig juni, tweeduizendzesentwintig.",
+      "title": "",
+      "tts": {
+        "text": "Dat was AI This Week voor eenentwintig juni, tweeduizendzesentwintig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "block_type": "text",
+      "text": "Volgende week, terug naar de 'open-weights' en de 'small-lab beat'.",
+      "text_markdown": "Volgende week, terug naar de 'open-weights' en de 'small-lab beat'.",
+      "title": "",
+      "tts": {
+        "text": "Volgende week, terug naar de open-weights en de small-lab beat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "block_type": "text",
+      "text": "Tot volgende zondag, het beste.",
+      "text_markdown": "Tot volgende zondag, het beste.",
+      "title": "",
+      "tts": {
+        "text": "Tot volgende zondag, het beste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

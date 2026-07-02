@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Çekim",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Çekim",
+      "text_markdown": "Çekim"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uçaktan ayrıldıktan hemen sonra bir an vardır ki, sana onu bedavaya verebilmeyi isterdim.",
+      "text_markdown": "Uçaktan ayrıldıktan hemen sonra bir an vardır ki, sana onu bedavaya verebilmeyi isterdim.",
+      "tts": {
+        "text": "Uçaktan ayrıldıktan hemen sonra bir an vardır ki, sana onu bedavaya verebilmeyi isterdim.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünya, içinde yaşadığın bir şey olmaktan çıkar.",
+      "text_markdown": "Dünya, içinde yaşadığın bir şey olmaktan çıkar.",
+      "tts": {
+        "text": "Dünya, içinde yaşadığın bir şey olmaktan çıkar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İçinden düştüğün bir şeye dönüşür.",
+      "text_markdown": "İçinden düştüğün bir şeye dönüşür.",
+      "tts": {
+        "text": "İçinden düştüğün bir şeye dönüşür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve ilk birkaç saniye boyunca aklın, bedeninin az önce yaptığı şeye yetişemez.",
+      "text_markdown": "Ve ilk birkaç saniye boyunca aklın, bedeninin az önce yaptığı şeye yetişemez.",
+      "tts": {
+        "text": "Ve ilk birkaç saniye boyunca aklın, bedeninin az önce yaptığı şeye yetişemez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar bana neden atladığımı soruyor.",
+      "text_markdown": "İnsanlar bana neden atladığımı soruyor.",
+      "tts": {
+        "text": "İnsanlar bana neden atladığımı soruyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hep adrenalin için diyeceğimi sanıyorlar.",
+      "text_markdown": "Hep adrenalin için diyeceğimi sanıyorlar.",
+      "tts": {
+        "text": "Hep adrenalin için diyeceğimi sanıyorlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adrenalin değil aslında.",
+      "text_markdown": "Adrenalin değil aslında.",
+      "tts": {
+        "text": "Adrenalin değil aslında.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adrenalini ilk beş atlayışında hissedersin.",
+      "text_markdown": "Adrenalini ilk beş atlayışında hissedersin.",
+      "tts": {
+        "text": "Adrenalini ilk beş atlayışında hissedersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ondan sonra daha sessiz bir şey devralır.",
+      "text_markdown": "Ondan sonra daha sessiz bir şey devralır.",
+      "tts": {
+        "text": "Ondan sonra daha sessiz bir şey devralır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benim peşinde olduğum şey berraklık.",
+      "text_markdown": "Benim peşinde olduğum şey berraklık.",
+      "tts": {
+        "text": "Benim peşinde olduğum şey berraklık.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Serbest düşüşteki altmış saniye boyunca aklının yapacak başka hiçbir şeyi yoktur.",
+      "text_markdown": "Serbest düşüşteki altmış saniye boyunca aklının yapacak başka hiçbir şeyi yoktur.",
+      "tts": {
+        "text": "Serbest düşüşteki altmış saniye boyunca aklının yapacak başka hiçbir şeyi yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Telefon yok.",
+      "text_markdown": "Telefon yok.",
+      "tts": {
+        "text": "Telefon yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Faturalar yok.",
+      "text_markdown": "Faturalar yok.",
+      "tts": {
+        "text": "Faturalar yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Yarın için ufak tefek hiçbir kaygı yok.",
+      "text_markdown": "Yarın için ufak tefek hiçbir kaygı yok.",
+      "tts": {
+        "text": "Yarın için ufak tefek hiçbir kaygı yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sadece rüzgâr, nefesin ve altındaki yerin yavaş kavisi.",
+      "text_markdown": "Sadece rüzgâr, nefesin ve altındaki yerin yavaş kavisi.",
+      "tts": {
+        "text": "Sadece rüzgâr, nefesin ve altındaki yerin yavaş kavisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hayatın çoğu gürültülüdür.",
+      "text_markdown": "Hayatın çoğu gürültülüdür.",
+      "tts": {
+        "text": "Hayatın çoğu gürültülüdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "O dakika değildir.",
+      "text_markdown": "O dakika değildir.",
+      "tts": {
+        "text": "O dakika değildir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paraşütçüler deli değildir.",
+      "text_markdown": "Paraşütçüler deli değildir.",
+      "tts": {
+        "text": "Paraşütçüler deli değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğumuz, daha hızlı sakinleşmenin bir yolunu bulmuş sakin insanlarız.",
+      "text_markdown": "Çoğumuz, daha hızlı sakinleşmenin bir yolunu bulmuş sakin insanlarız.",
+      "tts": {
+        "text": "Çoğumuz, daha hızlı sakinleşmenin bir yolunu bulmuş sakin insanlarız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başkalarının meditasyon yaptığı gibi biz de uçaktan atlıyoruz.",
+      "text_markdown": "Başkalarının meditasyon yaptığı gibi biz de uçaktan atlıyoruz.",
+      "tts": {
+        "text": "Başkalarının meditasyon yaptığı gibi biz de uçaktan atlıyoruz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir şeyleri arındırıyor.",
+      "text_markdown": "Bir şeyleri arındırıyor.",
+      "tts": {
+        "text": "Bir şeyleri arındırıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ve sonra her hafta sonu yeniden arındırıyor.",
+      "text_markdown": "Ve sonra her hafta sonu yeniden arındırıyor.",
+      "tts": {
+        "text": "Ve sonra her hafta sonu yeniden arındırıyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk kez başımın üstünde bir paraşütün açıldığını gördüğümde kemerin içine ağladım.",
+      "text_markdown": "İlk kez başımın üstünde bir paraşütün açıldığını gördüğümde kemerin içine ağladım.",
+      "tts": {
+        "text": "İlk kez başımın üstünde bir paraşütün açıldığını gördüğümde kemerin içine ağladım.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunu beklemiyordum.",
+      "text_markdown": "Bunu beklemiyordum.",
+      "tts": {
+        "text": "Bunu beklemiyordum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yetişkin bir adam, gökyüzünde yumuşak bir kumaş karesinin altında asılı, açıklayamadığı bir sebeple ağlıyordu.",
+      "text_markdown": "Yetişkin bir adam, gökyüzünde yumuşak bir kumaş karesinin altında asılı, açıklayamadığı bir sebeple ağlıyordu.",
+      "tts": {
+        "text": "Yetişkin bir adam, gökyüzünde yumuşak bir kumaş karesinin altında asılı, açıklayamadığı bir sebeple ağlıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eğitmenim usulca güldü ve omzuma hafifçe vurdu.",
+      "text_markdown": "Eğitmenim usulca güldü ve omzuma hafifçe vurdu.",
+      "tts": {
+        "text": "Eğitmenim usulca güldü ve omzuma hafifçe vurdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bunu defalarca görmüştü.",
+      "text_markdown": "Bunu defalarca görmüştü.",
+      "tts": {
+        "text": "Bunu defalarca görmüştü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "İşte o an geri döneceğimi anladım.",
+      "text_markdown": "İşte o an geri döneceğimi anladım.",
+      "tts": {
+        "text": "İşte o an geri döneceğimi anladım.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paraşütle atlama cesur olmakla ilgili değildir.",
+      "text_markdown": "Paraşütle atlama cesur olmakla ilgili değildir.",
+      "tts": {
+        "text": "Paraşütle atlama cesur olmakla ilgili değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aklının sustuğu o tek yeri bulmakla ilgilidir.",
+      "text_markdown": "Aklının sustuğu o tek yeri bulmakla ilgilidir.",
+      "tts": {
+        "text": "Aklının sustuğu o tek yeri bulmakla ilgilidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları için o yer bir yoga matıdır.",
+      "text_markdown": "Bazıları için o yer bir yoga matıdır.",
+      "tts": {
+        "text": "Bazıları için o yer bir yoga matıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazıları için boş bir yolda uzun bir koşudur.",
+      "text_markdown": "Bazıları için boş bir yolda uzun bir koşudur.",
+      "tts": {
+        "text": "Bazıları için boş bir yolda uzun bir koşudur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bazıları için bir olta misinası, ya da bir piyano, ya da sabahın altısında bir mutfaktır.",
+      "text_markdown": "Bazıları için bir olta misinası, ya da bir piyano, ya da sabahın altısında bir mutfaktır.",
+      "tts": {
+        "text": "Bazıları için bir olta misinası, ya da bir piyano, ya da sabahın altısında bir mutfaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Benim için yerden on üç bin fit yukarıda, nefes almaktan başka yapacak hiçbir şeyin olmadığı yerdir.",
+      "text_markdown": "Benim için yerden on üç bin fit yukarıda, nefes almaktan başka yapacak hiçbir şeyin olmadığı yerdir.",
+      "tts": {
+        "text": "Benim için yerden on üç bin fit yukarıda, nefes almaktan başka yapacak hiçbir şeyin olmadığı yerdir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O çekimi bir kez hissedince, akşam yemeğindeki bir arkadaşa anlatmak çok zordur.",
+      "text_markdown": "O çekimi bir kez hissedince, akşam yemeğindeki bir arkadaşa anlatmak çok zordur.",
+      "tts": {
+        "text": "O çekimi bir kez hissedince, akşam yemeğindeki bir arkadaşa anlatmak çok zordur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denersin, onlar da kibarca gülümser, sen de vazgeçersin.",
+      "text_markdown": "Denersin, onlar da kibarca gülümser, sen de vazgeçersin.",
+      "tts": {
+        "text": "Denersin, onlar da kibarca gülümser, sen de vazgeçersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sorun değil.",
+      "text_markdown": "Sorun değil.",
+      "tts": {
+        "text": "Sorun değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Atlamaya başlama sebebin onu açıklamak değildi zaten.",
+      "text_markdown": "Atlamaya başlama sebebin onu açıklamak değildi zaten.",
+      "tts": {
+        "text": "Atlamaya başlama sebebin onu açıklamak değildi zaten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Atlamaya başladın çünkü ilk denediğinde içinden bir ses, ah, işte buradasın, dedi.",
+      "text_markdown": "Atlamaya başladın çünkü ilk denediğinde içinden bir ses, ah, işte buradasın, dedi.",
+      "tts": {
+        "text": "Atlamaya başladın çünkü ilk denediğinde içinden bir ses, ah, işte buradasın, dedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiç yüksek bir yerin kenarında durup bedeninin açık havaya doğru hafifçe eğildiğini hissettin mi?",
+      "text_markdown": "Hiç yüksek bir yerin kenarında durup bedeninin açık havaya doğru hafifçe eğildiğini hissettin mi?",
+      "tts": {
+        "text": "Hiç yüksek bir yerin kenarında durup bedeninin açık havaya doğru hafifçe eğildiğini hissettin mi?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece azıcık, sadece bir saniyeliğine.",
+      "text_markdown": "Sadece azıcık, sadece bir saniyeliğine.",
+      "tts": {
+        "text": "Sadece azıcık, sadece bir saniyeliğine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eğer hissettiysen, neden bahsettiğimi zaten biliyorsun.",
+      "text_markdown": "Eğer hissettiysen, neden bahsettiğimi zaten biliyorsun.",
+      "tts": {
+        "text": "Eğer hissettiysen, neden bahsettiğimi zaten biliyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Paraşütle atlama, eğilmiyormuş gibi yapmayı bıraktığında olan şeydir.",
+      "text_markdown": "Paraşütle atlama, eğilmiyormuş gibi yapmayı bıraktığında olan şeydir.",
+      "tts": {
+        "text": "Paraşütle atlama, eğilmiyormuş gibi yapmayı bıraktığında olan şeydir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bilerek dışarı adım atarsın, bedeninin yıllardır sessizce sorduğu o yere.",
+      "text_markdown": "Bilerek dışarı adım atarsın, bedeninin yıllardır sessizce sorduğu o yere.",
+      "tts": {
+        "text": "Bilerek dışarı adım atarsın, bedeninin yıllardır sessizce sorduğu o yere.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ve sonra çok hızlı bir şekilde, korkunun aslında hiç yerde olmadığını öğrenirsin.",
+      "text_markdown": "Ve sonra çok hızlı bir şekilde, korkunun aslında hiç yerde olmadığını öğrenirsin.",
+      "tts": {
+        "text": "Ve sonra çok hızlı bir şekilde, korkunun aslında hiç yerde olmadığını öğrenirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korku eğilmenin içindeydi.",
+      "text_markdown": "Korku eğilmenin içindeydi.",
+      "tts": {
+        "text": "Korku eğilmenin içindeydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir kere atladın mı, korku gider.",
+      "text_markdown": "Bir kere atladın mı, korku gider.",
+      "tts": {
+        "text": "Bir kere atladın mı, korku gider.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Geriye kalan şey neredeyse eve dönmek gibidir.",
+      "text_markdown": "Geriye kalan şey neredeyse eve dönmek gibidir.",
+      "tts": {
+        "text": "Geriye kalan şey neredeyse eve dönmek gibidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kalbin yavaşlar.",
+      "text_markdown": "Kalbin yavaşlar.",
+      "tts": {
+        "text": "Kalbin yavaşlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Nefesin uzun zamandır aradığı bir ritmi bulur.",
+      "text_markdown": "Nefesin uzun zamandır aradığı bir ritmi bulur.",
+      "tts": {
+        "text": "Nefesin uzun zamandır aradığı bir ritmi bulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hava seni tutar.",
+      "text_markdown": "Hava seni tutar.",
+      "tts": {
+        "text": "Hava seni tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ve belki de uzun zamandır ilk kez, tam olarak bulunduğun yerde olduğunu hissedersin.",
+      "text_markdown": "Ve belki de uzun zamandır ilk kez, tam olarak bulunduğun yerde olduğunu hissedersin.",
+      "tts": {
+        "text": "Ve belki de uzun zamandır ilk kez, tam olarak bulunduğun yerde olduğunu hissedersin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uzun bir yürüyüşte sorsaydın sana anlatacağım şey buydu.",
+      "text_markdown": "Uzun bir yürüyüşte sorsaydın sana anlatacağım şey buydu.",
+      "tts": {
+        "text": "Uzun bir yürüyüşte sorsaydın sana anlatacağım şey buydu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sakin ve aklı başında bir insan neden gayet sağlam uçaklardan atlamaya devam eder?",
+      "text_markdown": "Sakin ve aklı başında bir insan neden gayet sağlam uçaklardan atlamaya devam eder?",
+      "tts": {
+        "text": "Sakin ve aklı başında bir insan neden gayet sağlam uçaklardan atlamaya devam eder?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sana, yaptığım en sessiz şey o, derdim.",
+      "text_markdown": "Sana, yaptığım en sessiz şey o, derdim.",
+      "tts": {
+        "text": "Sana, yaptığım en sessiz şey o, derdim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve bunu içtenlikle söylerdim.",
+      "text_markdown": "Ve bunu içtenlikle söylerdim.",
+      "tts": {
+        "text": "Ve bunu içtenlikle söylerdim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "İlk Kez",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İlk Kez",
+      "text_markdown": "İlk Kez"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seni uçağa koymama izin ver.",
+      "text_markdown": "Seni uçağa koymama izin ver.",
+      "tts": {
+        "text": "Seni uçağa koymama izin ver.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alçak metal bir bankta oturuyorsun, arkandaki eğitmene kemerle bağlısın.",
+      "text_markdown": "Alçak metal bir bankta oturuyorsun, arkandaki eğitmene kemerle bağlısın.",
+      "tts": {
+        "text": "Alçak metal bir bankta oturuyorsun, arkandaki eğitmene kemerle bağlısın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uçak yavaş, tembel daireler çizerek tırmanıyor.",
+      "text_markdown": "Uçak yavaş, tembel daireler çizerek tırmanıyor.",
+      "tts": {
+        "text": "Uçak yavaş, tembel daireler çizerek tırmanıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yanındaki küçük kare pencere giderek daha mavi, daha mavi oluyor.",
+      "text_markdown": "Yanındaki küçük kare pencere giderek daha mavi, daha mavi oluyor.",
+      "tts": {
+        "text": "Yanındaki küçük kare pencere giderek daha mavi, daha mavi oluyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kalbini boğazında hissediyorsun, ama panik yapmıyorsun.",
+      "text_markdown": "Kalbini boğazında hissediyorsun, ama panik yapmıyorsun.",
+      "tts": {
+        "text": "Kalbini boğazında hissediyorsun, ama panik yapmıyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sadece çok ama çok uyanıksın.",
+      "text_markdown": "Sadece çok ama çok uyanıksın.",
+      "tts": {
+        "text": "Sadece çok ama çok uyanıksın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eğitmen kulağına yaklaşıyor.",
+      "text_markdown": "Eğitmen kulağına yaklaşıyor.",
+      "tts": {
+        "text": "Eğitmen kulağına yaklaşıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sakince, yapman gereken her şeyi sırası geldikçe söyleyeceğini anlatıyor.",
+      "text_markdown": "Sakince, yapman gereken her şeyi sırası geldikçe söyleyeceğini anlatıyor.",
+      "tts": {
+        "text": "Sakince, yapman gereken her şeyi sırası geldikçe söyleyeceğini anlatıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Başını sallıyorsun.",
+      "text_markdown": "Başını sallıyorsun.",
+      "tts": {
+        "text": "Başını sallıyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Son bir saatte o kadar çok kez başını salladın ki boynun ağrımaya başladı.",
+      "text_markdown": "Son bir saatte o kadar çok kez başını salladın ki boynun ağrımaya başladı.",
+      "tts": {
+        "text": "Son bir saatte o kadar çok kez başını salladın ki boynun ağrımaya başladı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra kapı açılıyor.",
+      "text_markdown": "Sonra kapı açılıyor.",
+      "tts": {
+        "text": "Sonra kapı açılıyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rüzgâr bir duvar gibi içeri giriyor, gürültülü ve soğuk ve canlı, ve birden uçak çok küçük geliyor.",
+      "text_markdown": "Rüzgâr bir duvar gibi içeri giriyor, gürültülü ve soğuk ve canlı, ve birden uçak çok küçük geliyor.",
+      "tts": {
+        "text": "Rüzgâr bir duvar gibi içeri giriyor, gürültülü ve soğuk ve canlı, ve birden uçak çok küçük geliyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kenara kayıyorsun.",
+      "text_markdown": "Kenara kayıyorsun.",
+      "tts": {
+        "text": "Kenara kayıyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayak parmakların boşlukta sallanıyor.",
+      "text_markdown": "Ayak parmakların boşlukta sallanıyor.",
+      "tts": {
+        "text": "Ayak parmakların boşlukta sallanıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aşağı bakıyorsun ve yer o kadar uzakta ki artık yer gibi görünmüyor.",
+      "text_markdown": "Aşağı bakıyorsun ve yer o kadar uzakta ki artık yer gibi görünmüyor.",
+      "tts": {
+        "text": "Aşağı bakıyorsun ve yer o kadar uzakta ki artık yer gibi görünmüyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bir yorgan gibi görünüyor.",
+      "text_markdown": "Bir yorgan gibi görünüyor.",
+      "tts": {
+        "text": "Bir yorgan gibi görünüyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Yollar iplik kadar ince.",
+      "text_markdown": "Yollar iplik kadar ince.",
+      "tts": {
+        "text": "Yollar iplik kadar ince.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Mat gümüş renginde bir nehir.",
+      "text_markdown": "Mat gümüş renginde bir nehir.",
+      "tts": {
+        "text": "Mat gümüş renginde bir nehir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Çitlerle birbirine dikilmiş minik yeşil ve kahverengi tarlalar.",
+      "text_markdown": "Çitlerle birbirine dikilmiş minik yeşil ve kahverengi tarlalar.",
+      "tts": {
+        "text": "Çitlerle birbirine dikilmiş minik yeşil ve kahverengi tarlalar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eğitmenin sayıyor.",
+      "text_markdown": "Eğitmenin sayıyor.",
+      "tts": {
+        "text": "Eğitmenin sayıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir, diyor.",
+      "text_markdown": "Bir, diyor.",
+      "tts": {
+        "text": "Bir, diyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İki, diyor.",
+      "text_markdown": "İki, diyor.",
+      "tts": {
+        "text": "İki, diyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üçte uçak gitmiş oluyor.",
+      "text_markdown": "Üçte uçak gitmiş oluyor.",
+      "tts": {
+        "text": "Üçte uçak gitmiş oluyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk üç saniye en zor olanı.",
+      "text_markdown": "İlk üç saniye en zor olanı.",
+      "tts": {
+        "text": "İlk üç saniye en zor olanı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bedenin düştüğüne inanıyor, çünkü gerçekten düşüyor, ve bedenine bunun sorun olmadığı hiç söylenmedi.",
+      "text_markdown": "Bedenin düştüğüne inanıyor, çünkü gerçekten düşüyor, ve bedenine bunun sorun olmadığı hiç söylenmedi.",
+      "tts": {
+        "text": "Bedenin düştüğüne inanıyor, çünkü gerçekten düşüyor, ve bedenine bunun sorun olmadığı hiç söylenmedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir ses çıkarıyorsun.",
+      "text_markdown": "Bir ses çıkarıyorsun.",
+      "tts": {
+        "text": "Bir ses çıkarıyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Herkes bir ses çıkarır.",
+      "text_markdown": "Herkes bir ses çıkarır.",
+      "tts": {
+        "text": "Herkes bir ses çıkarır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O ses için utanmana gerek yok.",
+      "text_markdown": "O ses için utanmana gerek yok.",
+      "tts": {
+        "text": "O ses için utanmana gerek yok.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra olağanüstü bir şey olur.",
+      "text_markdown": "Sonra olağanüstü bir şey olur.",
+      "tts": {
+        "text": "Sonra olağanüstü bir şey olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşüş, düşüş gibi hissettirmeyi bırakır.",
+      "text_markdown": "Düşüş, düşüş gibi hissettirmeyi bırakır.",
+      "tts": {
+        "text": "Düşüş, düşüş gibi hissettirmeyi bırakır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rüzgâr seni karşılamaya gelir ve seni tutar, sırtüstü yüzdüğünde suyun seni tuttuğu gibi.",
+      "text_markdown": "Rüzgâr seni karşılamaya gelir ve seni tutar, sırtüstü yüzdüğünde suyun seni tuttuğu gibi.",
+      "tts": {
+        "text": "Rüzgâr seni karşılamaya gelir ve seni tutar, sırtüstü yüzdüğünde suyun seni tuttuğu gibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kollarını ve bacaklarını sen söylemeden açar.",
+      "text_markdown": "Kollarını ve bacaklarını sen söylemeden açar.",
+      "tts": {
+        "text": "Kollarını ve bacaklarını sen söylemeden açar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Yüzünün aynı anda birçok yöne çekildiğini hissedersin.",
+      "text_markdown": "Yüzünün aynı anda birçok yöne çekildiğini hissedersin.",
+      "tts": {
+        "text": "Yüzünün aynı anda birçok yöne çekildiğini hissedersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Gülüyor musun yoksa çığlık mı atıyorsun ayırt edemezsin.",
+      "text_markdown": "Gülüyor musun yoksa çığlık mı atıyorsun ayırt edemezsin.",
+      "tts": {
+        "text": "Gülüyor musun yoksa çığlık mı atıyorsun ayırt edemezsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Önemi yok.",
+      "text_markdown": "Önemi yok.",
+      "tts": {
+        "text": "Önemi yok.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etrafına bakarsın.",
+      "text_markdown": "Etrafına bakarsın.",
+      "tts": {
+        "text": "Etrafına bakarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yer hâlâ çok aşağıda, ama şimdi daha yakın, ve renkleri daha iyi görebiliyorsun.",
+      "text_markdown": "Yer hâlâ çok aşağıda, ama şimdi daha yakın, ve renkleri daha iyi görebiliyorsun.",
+      "tts": {
+        "text": "Yer hâlâ çok aşağıda, ama şimdi daha yakın, ve renkleri daha iyi görebiliyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Otoyolda karıncalar kadar yavaş arabalar.",
+      "text_markdown": "Otoyolda karıncalar kadar yavaş arabalar.",
+      "tts": {
+        "text": "Otoyolda karıncalar kadar yavaş arabalar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mükemmel durgun bir göl.",
+      "text_markdown": "Mükemmel durgun bir göl.",
+      "tts": {
+        "text": "Mükemmel durgun bir göl.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ormanın üzerinde sürüklenen bir bulut gölgesi.",
+      "text_markdown": "Ormanın üzerinde sürüklenen bir bulut gölgesi.",
+      "tts": {
+        "text": "Ormanın üzerinde sürüklenen bir bulut gölgesi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uçuyorsun.",
+      "text_markdown": "Uçuyorsun.",
+      "tts": {
+        "text": "Uçuyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uçakta değil.",
+      "text_markdown": "Uçakta değil.",
+      "tts": {
+        "text": "Uçakta değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sen, bedenin, uçuyor.",
+      "text_markdown": "Sen, bedenin, uçuyor.",
+      "tts": {
+        "text": "Sen, bedenin, uçuyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eğitmenin omzuna dokunur.",
+      "text_markdown": "Eğitmenin omzuna dokunur.",
+      "tts": {
+        "text": "Eğitmenin omzuna dokunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kordonu çekersin.",
+      "text_markdown": "Kordonu çekersin.",
+      "tts": {
+        "text": "Kordonu çekersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yumuşak bir çekiş olur, sanki birisi tişörtünün arkasından nazikçe tutmuş gibi.",
+      "text_markdown": "Yumuşak bir çekiş olur, sanki birisi tişörtünün arkasından nazikçe tutmuş gibi.",
+      "tts": {
+        "text": "Yumuşak bir çekiş olur, sanki birisi tişörtünün arkasından nazikçe tutmuş gibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonra ikinci bir çekiş, daha sert, seni dik konuma kaldırır.",
+      "text_markdown": "Sonra ikinci bir çekiş, daha sert, seni dik konuma kaldırır.",
+      "tts": {
+        "text": "Sonra ikinci bir çekiş, daha sert, seni dik konuma kaldırır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dünya sessizleşir.",
+      "text_markdown": "Dünya sessizleşir.",
+      "tts": {
+        "text": "Dünya sessizleşir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rüzgâr gitmiştir.",
+      "text_markdown": "Rüzgâr gitmiştir.",
+      "tts": {
+        "text": "Rüzgâr gitmiştir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kükreme gitmiştir.",
+      "text_markdown": "Kükreme gitmiştir.",
+      "tts": {
+        "text": "Kükreme gitmiştir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Düşüş gitmiştir.",
+      "text_markdown": "Düşüş gitmiştir.",
+      "tts": {
+        "text": "Düşüş gitmiştir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şimdi bir kemer içinde, geniş bir kumaş dikdörtgenin altında asılısın.",
+      "text_markdown": "Şimdi bir kemer içinde, geniş bir kumaş dikdörtgenin altında asılısın.",
+      "tts": {
+        "text": "Şimdi bir kemer içinde, geniş bir kumaş dikdörtgenin altında asılısın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gökyüzü birden çok ama çok durgun olur.",
+      "text_markdown": "Gökyüzü birden çok ama çok durgun olur.",
+      "tts": {
+        "text": "Gökyüzü birden çok ama çok durgun olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Aşağındaki kuşu duyabilirsin.",
+      "text_markdown": "Aşağındaki kuşu duyabilirsin.",
+      "tts": {
+        "text": "Aşağındaki kuşu duyabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kendi nefesini duyabilirsin.",
+      "text_markdown": "Kendi nefesini duyabilirsin.",
+      "tts": {
+        "text": "Kendi nefesini duyabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Eğitmenin kulağına gülüp nasıl olduğunu sorar.",
+      "text_markdown": "Eğitmenin kulağına gülüp nasıl olduğunu sorar.",
+      "tts": {
+        "text": "Eğitmenin kulağına gülüp nasıl olduğunu sorar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Bir an cevap veremezsin, çünkü ya ağlıyorsundur, ya gülüyorsundur, ya da ikisi birden.",
+      "text_markdown": "Bir an cevap veremezsin, çünkü ya ağlıyorsundur, ya gülüyorsundur, ya da ikisi birden.",
+      "tts": {
+        "text": "Bir an cevap veremezsin, çünkü ya ağlıyorsundur, ya gülüyorsundur, ya da ikisi birden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanat altındaki yolculuk yaklaşık beş dakika sürer.",
+      "text_markdown": "Kanat altındaki yolculuk yaklaşık beş dakika sürer.",
+      "tts": {
+        "text": "Kanat altındaki yolculuk yaklaşık beş dakika sürer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar hayatının en huzurlu beş dakikasıdır.",
+      "text_markdown": "Bunlar hayatının en huzurlu beş dakikasıdır.",
+      "tts": {
+        "text": "Bunlar hayatının en huzurlu beş dakikasıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayakların yere değdiğinde üç kısa koşu adımı atıp durursun.",
+      "text_markdown": "Ayakların yere değdiğinde üç kısa koşu adımı atıp durursun.",
+      "tts": {
+        "text": "Ayakların yere değdiğinde üç kısa koşu adımı atıp durursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çimen yeniden gerçektir.",
+      "text_markdown": "Çimen yeniden gerçektir.",
+      "tts": {
+        "text": "Çimen yeniden gerçektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünya yeniden katıdır.",
+      "text_markdown": "Dünya yeniden katıdır.",
+      "tts": {
+        "text": "Dünya yeniden katıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dönüp gökyüzüne bakarsın.",
+      "text_markdown": "Dönüp gökyüzüne bakarsın.",
+      "tts": {
+        "text": "Dönüp gökyüzüne bakarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ve ilk kez, arkadaşının yıllardır sana anlatmaya çalıştığı şeyi anlarsın.",
+      "text_markdown": "Ve ilk kez, arkadaşının yıllardır sana anlatmaya çalıştığı şeyi anlarsın.",
+      "tts": {
+        "text": "Ve ilk kez, arkadaşının yıllardır sana anlatmaya çalıştığı şeyi anlarsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Başlamak",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Başlamak",
+      "text_markdown": "Başlamak"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peki bir gün bunu yapmak istediğine karar verirsen, gerçekten nasıl yaparsın.",
+      "text_markdown": "Peki bir gün bunu yapmak istediğine karar verirsen, gerçekten nasıl yaparsın.",
+      "tts": {
+        "text": "Peki bir gün bunu yapmak istediğine karar verirsen, gerçekten nasıl yaparsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dürüst cevap, sandığından daha kolay.",
+      "text_markdown": "Dürüst cevap, sandığından daha kolay.",
+      "tts": {
+        "text": "Dürüst cevap, sandığından daha kolay.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünyadaki neredeyse her atlayış bölgesi, aynı sabah seni komple acemi olarak alır.",
+      "text_markdown": "Dünyadaki neredeyse her atlayış bölgesi, aynı sabah seni komple acemi olarak alır.",
+      "tts": {
+        "text": "Dünyadaki neredeyse her atlayış bölgesi, aynı sabah seni komple acemi olarak alır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seni gökyüzüne tandem atlayışla, sırtında bir eğitmenle çıkarırlar.",
+      "text_markdown": "Seni gökyüzüne tandem atlayışla, sırtında bir eğitmenle çıkarırlar.",
+      "tts": {
+        "text": "Seni gökyüzüne tandem atlayışla, sırtında bir eğitmenle çıkarırlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Varırsın, kâğıtları imzalarsın, kısa bir video izlersin ve eğitmeninle tanışırsın.",
+      "text_markdown": "Varırsın, kâğıtları imzalarsın, kısa bir video izlersin ve eğitmeninle tanışırsın.",
+      "tts": {
+        "text": "Varırsın, kâğıtları imzalarsın, kısa bir video izlersin ve eğitmeninle tanışırsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bir tulum ve bir kemer giyersin.",
+      "text_markdown": "Bir tulum ve bir kemer giyersin.",
+      "tts": {
+        "text": "Bir tulum ve bir kemer giyersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Uçağa tırmanırsın.",
+      "text_markdown": "Uçağa tırmanırsın.",
+      "tts": {
+        "text": "Uçağa tırmanırsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Yaklaşık yirmi dakika sonra, hayatının en büyük sırıtışıyla çimenlerden geri yürüyorsundur.",
+      "text_markdown": "Yaklaşık yirmi dakika sonra, hayatının en büyük sırıtışıyla çimenlerden geri yürüyorsundur.",
+      "tts": {
+        "text": "Yaklaşık yirmi dakika sonra, hayatının en büyük sırıtışıyla çimenlerden geri yürüyorsundur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk atlayışın için cesur olmana gerek yok.",
+      "text_markdown": "İlk atlayışın için cesur olmana gerek yok.",
+      "tts": {
+        "text": "İlk atlayışın için cesur olmana gerek yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece gönüllü olman yeterli.",
+      "text_markdown": "Sadece gönüllü olman yeterli.",
+      "tts": {
+        "text": "Sadece gönüllü olman yeterli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eğitmen her şeyi yapar.",
+      "text_markdown": "Eğitmen her şeyi yapar.",
+      "tts": {
+        "text": "Eğitmen her şeyi yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Paraşütü o çeker.",
+      "text_markdown": "Paraşütü o çeker.",
+      "tts": {
+        "text": "Paraşütü o çeker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kanadı o uçurur.",
+      "text_markdown": "Kanadı o uçurur.",
+      "tts": {
+        "text": "Kanadı o uçurur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Seni o indirir.",
+      "text_markdown": "Seni o indirir.",
+      "tts": {
+        "text": "Seni o indirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sen yolculuk için oradasın, dünyanın en iyi koltuğunda.",
+      "text_markdown": "Sen yolculuk için oradasın, dünyanın en iyi koltuğunda.",
+      "tts": {
+        "text": "Sen yolculuk için oradasın, dünyanın en iyi koltuğunda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ilk atlayıştan sonra kendi başına atlamak istersen, bu yola Hızlandırılmış Serbest Düşüş denir.",
+      "text_markdown": "O ilk atlayıştan sonra kendi başına atlamak istersen, bu yola Hızlandırılmış Serbest Düşüş denir.",
+      "tts": {
+        "text": "O ilk atlayıştan sonra kendi başına atlamak istersen, bu yola Hızlandırılmış Serbest Düşüş denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, her atlayış bölgesinde verilen bir eğitim programıdır ve sana gerçek bir paraşütçü olmayı öğretir.",
+      "text_markdown": "Bu, her atlayış bölgesinde verilen bir eğitim programıdır ve sana gerçek bir paraşütçü olmayı öğretir.",
+      "tts": {
+        "text": "Bu, her atlayış bölgesinde verilen bir eğitim programıdır ve sana gerçek bir paraşütçü olmayı öğretir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yolcu değil.",
+      "text_markdown": "Yolcu değil.",
+      "tts": {
+        "text": "Yolcu değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gökyüzünde kendi bedeninin pilotu.",
+      "text_markdown": "Gökyüzünde kendi bedeninin pilotu.",
+      "tts": {
+        "text": "Gökyüzünde kendi bedeninin pilotu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Programın ilk seviyesi uzun bir sınıf günüdür.",
+      "text_markdown": "Programın ilk seviyesi uzun bir sınıf günüdür.",
+      "tts": {
+        "text": "Programın ilk seviyesi uzun bir sınıf günüdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşmeyi öğrenirsin.",
+      "text_markdown": "Düşmeyi öğrenirsin.",
+      "tts": {
+        "text": "Düşmeyi öğrenirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Altimetreni okumayı öğrenirsin.",
+      "text_markdown": "Altimetreni okumayı öğrenirsin.",
+      "tts": {
+        "text": "Altimetreni okumayı öğrenirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ana paraşütün açılmazsa ne yapacağını öğrenirsin.",
+      "text_markdown": "Ana paraşütün açılmazsa ne yapacağını öğrenirsin.",
+      "tts": {
+        "text": "Ana paraşütün açılmazsa ne yapacağını öğrenirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sınıf günü yaklaşık altı veya yedi saat sürer.",
+      "text_markdown": "Sınıf günü yaklaşık altı veya yedi saat sürer.",
+      "tts": {
+        "text": "Sınıf günü yaklaşık altı veya yedi saat sürer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Günün sonunda paraşütler hakkında çoğu insanın bir ömür boyu öğrendiğinden daha fazlasını biliyorsun.",
+      "text_markdown": "Günün sonunda paraşütler hakkında çoğu insanın bir ömür boyu öğrendiğinden daha fazlasını biliyorsun.",
+      "tts": {
+        "text": "Günün sonunda paraşütler hakkında çoğu insanın bir ömür boyu öğrendiğinden daha fazlasını biliyorsun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra ilk solo atlayışın gelir.",
+      "text_markdown": "Sonra ilk solo atlayışın gelir.",
+      "tts": {
+        "text": "Sonra ilk solo atlayışın gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İki eğitmen seninle birlikte atlar, her iki yanında biri, kemerinden tutarak.",
+      "text_markdown": "İki eğitmen seninle birlikte atlar, her iki yanında biri, kemerinden tutarak.",
+      "tts": {
+        "text": "İki eğitmen seninle birlikte atlar, her iki yanında biri, kemerinden tutarak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stabil olunca seni serbest düşüşte bırakırlar.",
+      "text_markdown": "Stabil olunca seni serbest düşüşte bırakırlar.",
+      "tts": {
+        "text": "Stabil olunca seni serbest düşüşte bırakırlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kendi paraşütünü kendin çekersin.",
+      "text_markdown": "Kendi paraşütünü kendin çekersin.",
+      "tts": {
+        "text": "Kendi paraşütünü kendin çekersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kendi kanadını kendin yere indirirsin.",
+      "text_markdown": "Kendi kanadını kendin yere indirirsin.",
+      "tts": {
+        "text": "Kendi kanadını kendin yere indirirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bunu ilk yaptığında, ertesi gün yüzün ne kadar çok sırıtmış olmaktan ağrıyacaktır.",
+      "text_markdown": "Bunu ilk yaptığında, ertesi gün yüzün ne kadar çok sırıtmış olmaktan ağrıyacaktır.",
+      "tts": {
+        "text": "Bunu ilk yaptığında, ertesi gün yüzün ne kadar çok sırıtmış olmaktan ağrıyacaktır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tam program seni yaklaşık yedi atlayıştan geçirir.",
+      "text_markdown": "Tam program seni yaklaşık yedi atlayıştan geçirir.",
+      "tts": {
+        "text": "Tam program seni yaklaşık yedi atlayıştan geçirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonunda, kendi başına atlıyor olursun.",
+      "text_markdown": "Sonunda, kendi başına atlıyor olursun.",
+      "tts": {
+        "text": "Sonunda, kendi başına atlıyor olursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oradan sonra, paraşütçüler genellikle ilk yüz atlayışını ertesi yıl içinde tamamlar.",
+      "text_markdown": "Oradan sonra, paraşütçüler genellikle ilk yüz atlayışını ertesi yıl içinde tamamlar.",
+      "tts": {
+        "text": "Oradan sonra, paraşütçüler genellikle ilk yüz atlayışını ertesi yıl içinde tamamlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yol boyunca, diğer atlayıcılara göre uçmayı öğrenirler.",
+      "text_markdown": "Yol boyunca, diğer atlayıcılara göre uçmayı öğrenirler.",
+      "tts": {
+        "text": "Yol boyunca, diğer atlayıcılara göre uçmayı öğrenirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gökyüzünde iz sürmeyi öğrenirler.",
+      "text_markdown": "Gökyüzünde iz sürmeyi öğrenirler.",
+      "tts": {
+        "text": "Gökyüzünde iz sürmeyi öğrenirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kendi paraşütlerini katlamayı öğrenirler.",
+      "text_markdown": "Kendi paraşütlerini katlamayı öğrenirler.",
+      "tts": {
+        "text": "Kendi paraşütlerini katlamayı öğrenirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Topluluk küçük, dostane ve sabırlıdır.",
+      "text_markdown": "Topluluk küçük, dostane ve sabırlıdır.",
+      "tts": {
+        "text": "Topluluk küçük, dostane ve sabırlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Atlayış bölgesinde kimse seni acemi olduğun için aptal hissettirmez.",
+      "text_markdown": "Atlayış bölgesinde kimse seni acemi olduğun için aptal hissettirmez.",
+      "tts": {
+        "text": "Atlayış bölgesinde kimse seni acemi olduğun için aptal hissettirmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Hepimiz bir zamanlar acemiydik.",
+      "text_markdown": "Hepimiz bir zamanlar acemiydik.",
+      "tts": {
+        "text": "Hepimiz bir zamanlar acemiydik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Çoğumuz hâlâ kendimizi acemi gibi hissediyoruz.",
+      "text_markdown": "Çoğumuz hâlâ kendimizi acemi gibi hissediyoruz.",
+      "tts": {
+        "text": "Çoğumuz hâlâ kendimizi acemi gibi hissediyoruz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peki ya güvenlik.",
+      "text_markdown": "Peki ya güvenlik.",
+      "tts": {
+        "text": "Peki ya güvenlik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, aklı başında her insanın sorduğu bir sorudur ve gerçek bir cevabı hak eder.",
+      "text_markdown": "Bu, aklı başında her insanın sorduğu bir sorudur ve gerçek bir cevabı hak eder.",
+      "tts": {
+        "text": "Bu, aklı başında her insanın sorduğu bir sorudur ve gerçek bir cevabı hak eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Paraşütle atlama aslında çok güvenlidir.",
+      "text_markdown": "Paraşütle atlama aslında çok güvenlidir.",
+      "tts": {
+        "text": "Paraşütle atlama aslında çok güvenlidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yürümek kadar güvenli değil, ama atlayış bölgesine giderken araba kullanmaktan daha güvenli.",
+      "text_markdown": "Yürümek kadar güvenli değil, ama atlayış bölgesine giderken araba kullanmaktan daha güvenli.",
+      "tts": {
+        "text": "Yürümek kadar güvenli değil, ama atlayış bölgesine giderken araba kullanmaktan daha güvenli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ekipman mükemmel.",
+      "text_markdown": "Ekipman mükemmel.",
+      "tts": {
+        "text": "Ekipman mükemmel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bir ana paraşüt ve bir yedek paraşüt vardır, ve sen yapamazsan yedeği ateşleyecek otomatik bir cihaz vardır.",
+      "text_markdown": "Bir ana paraşüt ve bir yedek paraşüt vardır, ve sen yapamazsan yedeği ateşleyecek otomatik bir cihaz vardır.",
+      "tts": {
+        "text": "Bir ana paraşüt ve bir yedek paraşüt vardır, ve sen yapamazsan yedeği ateşleyecek otomatik bir cihaz vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Atlayış bölgeleri, seni önemseyen profesyoneller tarafından işletilir.",
+      "text_markdown": "Atlayış bölgeleri, seni önemseyen profesyoneller tarafından işletilir.",
+      "tts": {
+        "text": "Atlayış bölgeleri, seni önemseyen profesyoneller tarafından işletilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Eğitmenler her atlayışı derin bir ciddiyetle önemser.",
+      "text_markdown": "Eğitmenler her atlayışı derin bir ciddiyetle önemser.",
+      "tts": {
+        "text": "Eğitmenler her atlayışı derin bir ciddiyetle önemser.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maliyeti ne kadar.",
+      "text_markdown": "Maliyeti ne kadar.",
+      "tts": {
+        "text": "Maliyeti ne kadar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir tandem atlayış, iki kişilik güzel bir akşam yemeğinin fiyatı kadardır.",
+      "text_markdown": "Bir tandem atlayış, iki kişilik güzel bir akşam yemeğinin fiyatı kadardır.",
+      "tts": {
+        "text": "Bir tandem atlayış, iki kişilik güzel bir akşam yemeğinin fiyatı kadardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eğitim programı, küçük bir tatilin fiyatı kadardır.",
+      "text_markdown": "Eğitim programı, küçük bir tatilin fiyatı kadardır.",
+      "tts": {
+        "text": "Eğitim programı, küçük bir tatilin fiyatı kadardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ondan sonra her atlayış, bir sinema bileti ve bir yemeğin fiyatı kadardır.",
+      "text_markdown": "Ondan sonra her atlayış, bir sinema bileti ve bir yemeğin fiyatı kadardır.",
+      "tts": {
+        "text": "Ondan sonra her atlayış, bir sinema bileti ve bir yemeğin fiyatı kadardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Normal işleri ve normal hayatları olan insanlar bunu her hafta sonu yapıyor.",
+      "text_markdown": "Normal işleri ve normal hayatları olan insanlar bunu her hafta sonu yapıyor.",
+      "tts": {
+        "text": "Normal işleri ve normal hayatları olan insanlar bunu her hafta sonu yapıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Onlar zengin değil.",
+      "text_markdown": "Onlar zengin değil.",
+      "tts": {
+        "text": "Onlar zengin değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Onlar sıra dışı değil.",
+      "text_markdown": "Onlar sıra dışı değil.",
+      "tts": {
+        "text": "Onlar sıra dışı değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Sadece bunun yaptıkları şey olduğuna karar vermişler.",
+      "text_markdown": "Sadece bunun yaptıkları şey olduğuna karar vermişler.",
+      "tts": {
+        "text": "Sadece bunun yaptıkları şey olduğuna karar vermişler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk atlayışını düşünüyorsan, önemli olan tek tavsiye şu.",
+      "text_markdown": "İlk atlayışını düşünüyorsan, önemli olan tek tavsiye şu.",
+      "tts": {
+        "text": "İlk atlayışını düşünüyorsan, önemli olan tek tavsiye şu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir tarih seç.",
+      "text_markdown": "Bir tarih seç.",
+      "tts": {
+        "text": "Bir tarih seç.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir arkadaşa söyle.",
+      "text_markdown": "Bir arkadaşa söyle.",
+      "tts": {
+        "text": "Bir arkadaşa söyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Oraya git.",
+      "text_markdown": "Oraya git.",
+      "tts": {
+        "text": "Oraya git.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Zor olan kısım düşmek değil.",
+      "text_markdown": "Zor olan kısım düşmek değil.",
+      "tts": {
+        "text": "Zor olan kısım düşmek değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Zor olan kısım karar vermek.",
+      "text_markdown": "Zor olan kısım karar vermek.",
+      "tts": {
+        "text": "Zor olan kısım karar vermek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Karar verdiğin an, gökyüzü çoktan senin oldu.",
+      "text_markdown": "Karar verdiğin an, gökyüzü çoktan senin oldu.",
+      "tts": {
+        "text": "Karar verdiğin an, gökyüzü çoktan senin oldu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zanaat",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zanaat",
+      "text_markdown": "Zanaat"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Düşüşün içinde gizli bir zanaat var, ve seni hayat boyu paraşütle atlamada tutan kısım da o.",
+      "text_markdown": "Düşüşün içinde gizli bir zanaat var, ve seni hayat boyu paraşütle atlamada tutan kısım da o.",
+      "tts": {
+        "text": "Düşüşün içinde gizli bir zanaat var, ve seni hayat boyu paraşütle atlamada tutan kısım da o.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deneyimli bir paraşütçüyü serbest düşüşte izlediğinde, düşen birini görmezsin.",
+      "text_markdown": "Deneyimli bir paraşütçüyü serbest düşüşte izlediğinde, düşen birini görmezsin.",
+      "tts": {
+        "text": "Deneyimli bir paraşütçüyü serbest düşüşte izlediğinde, düşen birini görmezsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uçan birini görürsün.",
+      "text_markdown": "Uçan birini görürsün.",
+      "tts": {
+        "text": "Uçan birini görürsün.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yavaşça, bilinçli olarak, parmak uçlarıyla dönerler.",
+      "text_markdown": "Yavaşça, bilinçli olarak, parmak uçlarıyla dönerler.",
+      "tts": {
+        "text": "Yavaşça, bilinçli olarak, parmak uçlarıyla dönerler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Omuzlarını iki parmak öne yatırarak yarım mil boyunca gökyüzünde kayarlar.",
+      "text_markdown": "Omuzlarını iki parmak öne yatırarak yarım mil boyunca gökyüzünde kayarlar.",
+      "tts": {
+        "text": "Omuzlarını iki parmak öne yatırarak yarım mil boyunca gökyüzünde kayarlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Düşüşün ortasında dururlar ve imkânsız görünen bir hareketsizliği korurlar.",
+      "text_markdown": "Düşüşün ortasında dururlar ve imkânsız görünen bir hareketsizliği korurlar.",
+      "tts": {
+        "text": "Düşüşün ortasında dururlar ve imkânsız görünen bir hareketsizliği korurlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beden bir uçaktır.",
+      "text_markdown": "Beden bir uçaktır.",
+      "tts": {
+        "text": "Beden bir uçaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zanaatın ilk sırrı budur.",
+      "text_markdown": "Zanaatın ilk sırrı budur.",
+      "tts": {
+        "text": "Zanaatın ilk sırrı budur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunu anladığın anda, geri kalan her şey gelir.",
+      "text_markdown": "Bunu anladığın anda, geri kalan her şey gelir.",
+      "tts": {
+        "text": "Bunu anladığın anda, geri kalan her şey gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stabil bir serbest düşüşün temel şekline kemer denir.",
+      "text_markdown": "Stabil bir serbest düşüşün temel şekline kemer denir.",
+      "tts": {
+        "text": "Stabil bir serbest düşüşün temel şekline kemer denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kalçanı öne iter, kollarını ve bacaklarını arkanda salınmaya bırakırsın, bir muz gibi.",
+      "text_markdown": "Kalçanı öne iter, kollarını ve bacaklarını arkanda salınmaya bırakırsın, bir muz gibi.",
+      "tts": {
+        "text": "Kalçanı öne iter, kollarını ve bacaklarını arkanda salınmaya bırakırsın, bir muz gibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sen düşünmek zorunda kalmadan, seni yere yüzü dönük tutan şey o kemerdir.",
+      "text_markdown": "Sen düşünmek zorunda kalmadan, seni yere yüzü dönük tutan şey o kemerdir.",
+      "tts": {
+        "text": "Sen düşünmek zorunda kalmadan, seni yere yüzü dönük tutan şey o kemerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yeni atlayıcılar kemeri önce bir köpük çukurunda öğrenir, sonra rüzgâr tünelinde, sonra gökyüzünde.",
+      "text_markdown": "Yeni atlayıcılar kemeri önce bir köpük çukurunda öğrenir, sonra rüzgâr tünelinde, sonra gökyüzünde.",
+      "tts": {
+        "text": "Yeni atlayıcılar kemeri önce bir köpük çukurunda öğrenir, sonra rüzgâr tünelinde, sonra gökyüzünde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Eski atlayıcılar hâlâ kemerden, eski koşucuların adımlarından bahsettiği gibi bahseder.",
+      "text_markdown": "Eski atlayıcılar hâlâ kemerden, eski koşucuların adımlarından bahsettiği gibi bahseder.",
+      "tts": {
+        "text": "Eski atlayıcılar hâlâ kemerden, eski koşucuların adımlarından bahsettiği gibi bahseder.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stabil bir kemerin olduğunda, serbest düşüşün geri kalanı açılır.",
+      "text_markdown": "Stabil bir kemerin olduğunda, serbest düşüşün geri kalanı açılır.",
+      "tts": {
+        "text": "Stabil bir kemerin olduğunda, serbest düşüşün geri kalanı açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Geniş açılarak yavaş düşmeyi öğrenirsin, kendini bir uçurtmaya dönüştürürsün.",
+      "text_markdown": "Geniş açılarak yavaş düşmeyi öğrenirsin, kendini bir uçurtmaya dönüştürürsün.",
+      "tts": {
+        "text": "Geniş açılarak yavaş düşmeyi öğrenirsin, kendini bir uçurtmaya dönüştürürsün.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük büzülerek hızlı düşmeyi öğrenirsin, kendini bir taşa dönüştürürsün.",
+      "text_markdown": "Küçük büzülerek hızlı düşmeyi öğrenirsin, kendini bir taşa dönüştürürsün.",
+      "tts": {
+        "text": "Küçük büzülerek hızlı düşmeyi öğrenirsin, kendini bir taşa dönüştürürsün.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İz sürmeyi öğrenirsin, ki bu insan bedeninin uçmaya en yakın yapabileceği şeydir.",
+      "text_markdown": "İz sürmeyi öğrenirsin, ki bu insan bedeninin uçmaya en yakın yapabileceği şeydir.",
+      "tts": {
+        "text": "İz sürmeyi öğrenirsin, ki bu insan bedeninin uçmaya en yakın yapabileceği şeydir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İyi bir iz sürücü, gökyüzünde yirmi saniyede çeyrek mil katedebilir.",
+      "text_markdown": "İyi bir iz sürücü, gökyüzünde yirmi saniyede çeyrek mil katedebilir.",
+      "tts": {
+        "text": "İyi bir iz sürücü, gökyüzünde yirmi saniyede çeyrek mil katedebilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kollar geriye yatık, beden eğimli, nereye gittiğini bilen bir kâğıt uçak gibi hareket eder.",
+      "text_markdown": "Kollar geriye yatık, beden eğimli, nereye gittiğini bilen bir kâğıt uçak gibi hareket eder.",
+      "tts": {
+        "text": "Kollar geriye yatık, beden eğimli, nereye gittiğini bilen bir kâğıt uçak gibi hareket eder.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zanaatın diğer yarısı kanattır.",
+      "text_markdown": "Zanaatın diğer yarısı kanattır.",
+      "tts": {
+        "text": "Zanaatın diğer yarısı kanattır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Paraşüt seni aşağı süzen pasif bir şey değildir.",
+      "text_markdown": "Paraşüt seni aşağı süzen pasif bir şey değildir.",
+      "tts": {
+        "text": "Paraşüt seni aşağı süzen pasif bir şey değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O bir kanattır ve sen onu uçurursun.",
+      "text_markdown": "O bir kanattır ve sen onu uçurursun.",
+      "tts": {
+        "text": "O bir kanattır ve sen onu uçurursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sağ kulpu çekmek sağ kanadı eğer ve seni sağa döndürür.",
+      "text_markdown": "Sağ kulpu çekmek sağ kanadı eğer ve seni sağa döndürür.",
+      "tts": {
+        "text": "Sağ kulpu çekmek sağ kanadı eğer ve seni sağa döndürür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İkisini aynı anda çekmek seni yavaşlatır ve yumuşak bir iniş yapmana izin verir.",
+      "text_markdown": "İkisini aynı anda çekmek seni yavaşlatır ve yumuşak bir iniş yapmana izin verir.",
+      "tts": {
+        "text": "İkisini aynı anda çekmek seni yavaşlatır ve yumuşak bir iniş yapmana izin verir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Rüzgârı okursun, noktayı seçersin, devreni planlarsın.",
+      "text_markdown": "Rüzgârı okursun, noktayı seçersin, devreni planlarsın.",
+      "tts": {
+        "text": "Rüzgârı okursun, noktayı seçersin, devreni planlarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Son saniyede flare yaparsın, böylece ayakların yere çarpmak yerine onu öper.",
+      "text_markdown": "Son saniyede flare yaparsın, böylece ayakların yere çarpmak yerine onu öper.",
+      "tts": {
+        "text": "Son saniyede flare yaparsın, böylece ayakların yere çarpmak yerine onu öper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Bütün bunlar kanat uçuşudur ve kendi başına bir disiplindir.",
+      "text_markdown": "Bütün bunlar kanat uçuşudur ve kendi başına bir disiplindir.",
+      "tts": {
+        "text": "Bütün bunlar kanat uçuşudur ve kendi başına bir disiplindir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir de katlama vardır.",
+      "text_markdown": "Bir de katlama vardır.",
+      "tts": {
+        "text": "Bir de katlama vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her paraşütçü kendi paraşütünü kendi katlar.",
+      "text_markdown": "Her paraşütçü kendi paraşütünü kendi katlar.",
+      "tts": {
+        "text": "Her paraşütçü kendi paraşütünü kendi katlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her seferinde.",
+      "text_markdown": "Her seferinde.",
+      "tts": {
+        "text": "Her seferinde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanadı uzun bir matın üzerine yayarsın.",
+      "text_markdown": "Kanadı uzun bir matın üzerine yayarsın.",
+      "tts": {
+        "text": "Kanadı uzun bir matın üzerine yayarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İpleri düzleştirirsin.",
+      "text_markdown": "İpleri düzleştirirsin.",
+      "tts": {
+        "text": "İpleri düzleştirirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hücreleri katlarsın.",
+      "text_markdown": "Hücreleri katlarsın.",
+      "tts": {
+        "text": "Hücreleri katlarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kumaşı koza gibi sararsın, çantaya yavaşça yerleştirirsin, askıyı yönlendirirsin, kabı kapatırsın.",
+      "text_markdown": "Kumaşı koza gibi sararsın, çantaya yavaşça yerleştirirsin, askıyı yönlendirirsin, kabı kapatırsın.",
+      "tts": {
+        "text": "Kumaşı koza gibi sararsın, çantaya yavaşça yerleştirirsin, askıyı yönlendirirsin, kabı kapatırsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Yaklaşık on beş dakika sürer ve bunu yavaş yavaş yaparsın, çünkü hayatın tam da bu kumaş parçasına bağlı olacak.",
+      "text_markdown": "Yaklaşık on beş dakika sürer ve bunu yavaş yavaş yaparsın, çünkü hayatın tam da bu kumaş parçasına bağlı olacak.",
+      "tts": {
+        "text": "Yaklaşık on beş dakika sürer ve bunu yavaş yavaş yaparsın, çünkü hayatın tam da bu kumaş parçasına bağlı olacak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katlama meditasyondur.",
+      "text_markdown": "Katlama meditasyondur.",
+      "tts": {
+        "text": "Katlama meditasyondur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok paraşütçü, günün en sevdikleri kısmının bu olduğunu söyler.",
+      "text_markdown": "Birçok paraşütçü, günün en sevdikleri kısmının bu olduğunu söyler.",
+      "tts": {
+        "text": "Birçok paraşütçü, günün en sevdikleri kısmının bu olduğunu söyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mat, ipler, yavaş katlama.",
+      "text_markdown": "Mat, ipler, yavaş katlama.",
+      "tts": {
+        "text": "Mat, ipler, yavaş katlama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yanında katlayan bir arkadaşın omzu.",
+      "text_markdown": "Yanında katlayan bir arkadaşın omzu.",
+      "tts": {
+        "text": "Yanında katlayan bir arkadaşın omzu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Köşedeki radyodan, çok kez duyduğun bir şarkı.",
+      "text_markdown": "Köşedeki radyodan, çok kez duyduğun bir şarkı.",
+      "tts": {
+        "text": "Köşedeki radyodan, çok kez duyduğun bir şarkı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Katlamanın acelesi olmaz.",
+      "text_markdown": "Katlamanın acelesi olmaz.",
+      "tts": {
+        "text": "Katlamanın acelesi olmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Gökyüzü senin programını umursamaz.",
+      "text_markdown": "Gökyüzü senin programını umursamaz.",
+      "tts": {
+        "text": "Gökyüzü senin programını umursamaz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zanaatın zihniyeti sabırdır.",
+      "text_markdown": "Zanaatın zihniyeti sabırdır.",
+      "tts": {
+        "text": "Zanaatın zihniyeti sabırdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alçakgönüllülüktür.",
+      "text_markdown": "Alçakgönüllülüktür.",
+      "tts": {
+        "text": "Alçakgönüllülüktür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sıkıcı olanlar dahil her atlayışı değerlendirme isteğidir.",
+      "text_markdown": "Sıkıcı olanlar dahil her atlayışı değerlendirme isteğidir.",
+      "tts": {
+        "text": "Sıkıcı olanlar dahil her atlayışı değerlendirme isteğidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Paraşütçüler atlayıştan sonra konuşmayı sever.",
+      "text_markdown": "Paraşütçüler atlayıştan sonra konuşmayı sever.",
+      "tts": {
+        "text": "Paraşütçüler atlayıştan sonra konuşmayı sever.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bir piknik masasında oturup beden pozisyonu pozisyonu, her saniyeyi adım adım anlatırlar.",
+      "text_markdown": "Bir piknik masasında oturup beden pozisyonu pozisyonu, her saniyeyi adım adım anlatırlar.",
+      "tts": {
+        "text": "Bir piknik masasında oturup beden pozisyonu pozisyonu, her saniyeyi adım adım anlatırlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ne işe yaradı.",
+      "text_markdown": "Ne işe yaradı.",
+      "tts": {
+        "text": "Ne işe yaradı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ne özensizdi.",
+      "text_markdown": "Ne özensizdi.",
+      "tts": {
+        "text": "Ne özensizdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Bir dahaki sefere ne denemek istiyorlar.",
+      "text_markdown": "Bir dahaki sefere ne denemek istiyorlar.",
+      "tts": {
+        "text": "Bir dahaki sefere ne denemek istiyorlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar bu yüzden kalır.",
+      "text_markdown": "İnsanlar bu yüzden kalır.",
+      "tts": {
+        "text": "İnsanlar bu yüzden kalır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Düşmek heyecan verici olduğu için değil.",
+      "text_markdown": "Düşmek heyecan verici olduğu için değil.",
+      "tts": {
+        "text": "Düşmek heyecan verici olduğu için değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Düşmek kolay kısımdır.",
+      "text_markdown": "Düşmek kolay kısımdır.",
+      "tts": {
+        "text": "Düşmek kolay kısımdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnsanlar kalır çünkü her zaman öğrenecek bir şey vardır.",
+      "text_markdown": "İnsanlar kalır çünkü her zaman öğrenecek bir şey vardır.",
+      "tts": {
+        "text": "İnsanlar kalır çünkü her zaman öğrenecek bir şey vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Her zaman onu birlikte öğrenecek bir arkadaş vardır.",
+      "text_markdown": "Her zaman onu birlikte öğrenecek bir arkadaş vardır.",
+      "tts": {
+        "text": "Her zaman onu birlikte öğrenecek bir arkadaş vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ve yarın öğlen seni bekleyen bir gökyüzü vardır.",
+      "text_markdown": "Ve yarın öğlen seni bekleyen bir gökyüzü vardır.",
+      "tts": {
+        "text": "Ve yarın öğlen seni bekleyen bir gökyüzü vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Anlar",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Anlar",
+      "text_markdown": "Anlar"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sana üç tane anlatayım.",
+      "text_markdown": "Sana üç tane anlatayım.",
+      "tts": {
+        "text": "Sana üç tane anlatayım.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birincisi gün batımı atlayışı.",
+      "text_markdown": "Birincisi gün batımı atlayışı.",
+      "tts": {
+        "text": "Birincisi gün batımı atlayışı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uçak güneşin batmasından yirmi dakika önce kalkar.",
+      "text_markdown": "Uçak güneşin batmasından yirmi dakika önce kalkar.",
+      "tts": {
+        "text": "Uçak güneşin batmasından yirmi dakika önce kalkar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Turuncu ışık katmanlarından tırmanırsın, kabin sıcak, arkadaşların sessiz.",
+      "text_markdown": "Turuncu ışık katmanlarından tırmanırsın, kabin sıcak, arkadaşların sessiz.",
+      "tts": {
+        "text": "Turuncu ışık katmanlarından tırmanırsın, kabin sıcak, arkadaşların sessiz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu sefer kapı açıldığında, hava pembedir.",
+      "text_markdown": "Bu sefer kapı açıldığında, hava pembedir.",
+      "tts": {
+        "text": "Bu sefer kapı açıldığında, hava pembedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Altındaki yer yarı gölgede, yarı altın renginde.",
+      "text_markdown": "Altındaki yer yarı gölgede, yarı altın renginde.",
+      "tts": {
+        "text": "Altındaki yer yarı gölgede, yarı altın renginde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Dışarı adım atarsın ve altmış saniye boyunca bir gün batımının içinden düşersin.",
+      "text_markdown": "Dışarı adım atarsın ve altmış saniye boyunca bir gün batımının içinden düşersin.",
+      "tts": {
+        "text": "Dışarı adım atarsın ve altmış saniye boyunca bir gün batımının içinden düşersin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gerçek görünmez.",
+      "text_markdown": "Gerçek görünmez.",
+      "tts": {
+        "text": "Gerçek görünmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gözlerinin bulabileceğini bilmediğin renkler göreceksin.",
+      "text_markdown": "Gözlerinin bulabileceğini bilmediğin renkler göreceksin.",
+      "tts": {
+        "text": "Gözlerinin bulabileceğini bilmediğin renkler göreceksin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Paraşütün açıldığında, kısa bir süreliğine alev almış bir dünyanın üstünde süzülüyorsundur.",
+      "text_markdown": "Paraşütün açıldığında, kısa bir süreliğine alev almış bir dünyanın üstünde süzülüyorsundur.",
+      "tts": {
+        "text": "Paraşütün açıldığında, kısa bir süreliğine alev almış bir dünyanın üstünde süzülüyorsundur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rüzgâr hiçe inmiş.",
+      "text_markdown": "Rüzgâr hiçe inmiş.",
+      "tts": {
+        "text": "Rüzgâr hiçe inmiş.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Atlayış bölgesi altında küçük yeşil bir kare, bir tek sıcak ışıkla.",
+      "text_markdown": "Atlayış bölgesi altında küçük yeşil bir kare, bir tek sıcak ışıkla.",
+      "tts": {
+        "text": "Atlayış bölgesi altında küçük yeşil bir kare, bir tek sıcak ışıkla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Yavaş bir daire seçer ve son inenin sen olmasına izin verirsin, çünkü kimse bu kısmın bitmesini istemez.",
+      "text_markdown": "Yavaş bir daire seçer ve son inenin sen olmasına izin verirsin, çünkü kimse bu kısmın bitmesini istemez.",
+      "tts": {
+        "text": "Yavaş bir daire seçer ve son inenin sen olmasına izin verirsin, çünkü kimse bu kısmın bitmesini istemez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ayakların çime değdiğinde, gökyüzü mor olur.",
+      "text_markdown": "Ayakların çime değdiğinde, gökyüzü mor olur.",
+      "tts": {
+        "text": "Ayakların çime değdiğinde, gökyüzü mor olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Arkadaşların kendi inişlerinden yürüyerek geliyor.",
+      "text_markdown": "Arkadaşların kendi inişlerinden yürüyerek geliyor.",
+      "tts": {
+        "text": "Arkadaşların kendi inişlerinden yürüyerek geliyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Onlardan biri sadece sana bakar.",
+      "text_markdown": "Onlardan biri sadece sana bakar.",
+      "tts": {
+        "text": "Onlardan biri sadece sana bakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "İkiniz de başınızı sallarsınız.",
+      "text_markdown": "İkiniz de başınızı sallarsınız.",
+      "tts": {
+        "text": "İkiniz de başınızı sallarsınız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Hiçbiriniz tek bir kelime bulamazsınız.",
+      "text_markdown": "Hiçbiriniz tek bir kelime bulamazsınız.",
+      "tts": {
+        "text": "Hiçbiriniz tek bir kelime bulamazsınız.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkincisi formasyon atlayışı.",
+      "text_markdown": "İkincisi formasyon atlayışı.",
+      "tts": {
+        "text": "İkincisi formasyon atlayışı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yüklemede sekiz kişisiniz.",
+      "text_markdown": "Yüklemede sekiz kişisiniz.",
+      "tts": {
+        "text": "Yüklemede sekiz kişisiniz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bankta oturursunuz, kasklar kucağınızda, ve baş atlayıcı küçük bir beyaz tahtaya dalışı çizer.",
+      "text_markdown": "Bankta oturursunuz, kasklar kucağınızda, ve baş atlayıcı küçük bir beyaz tahtaya dalışı çizer.",
+      "tts": {
+        "text": "Bankta oturursunuz, kasklar kucağınızda, ve baş atlayıcı küçük bir beyaz tahtaya dalışı çizer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uçaktan birlikte bir kümede ayrılacaksınız, beraber düşeceksiniz, bir daire kuracaksınız.",
+      "text_markdown": "Uçaktan birlikte bir kümede ayrılacaksınız, beraber düşeceksiniz, bir daire kuracaksınız.",
+      "tts": {
+        "text": "Uçaktan birlikte bir kümede ayrılacaksınız, beraber düşeceksiniz, bir daire kuracaksınız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hepiniz kendi yerinizi biliyorsunuz.",
+      "text_markdown": "Hepiniz kendi yerinizi biliyorsunuz.",
+      "tts": {
+        "text": "Hepiniz kendi yerinizi biliyorsunuz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Yumruk tokuşturursunuz, birbirinizin ekipmanını kontrol edersiniz, gergin gergin gülersiniz.",
+      "text_markdown": "Yumruk tokuşturursunuz, birbirinizin ekipmanını kontrol edersiniz, gergin gergin gülersiniz.",
+      "tts": {
+        "text": "Yumruk tokuşturursunuz, birbirinizin ekipmanını kontrol edersiniz, gergin gergin gülersiniz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sekiz yetişkin, aynı anda korkmuş ve neşeli, bir uyku partisindeki çocuklar gibi.",
+      "text_markdown": "Sekiz yetişkin, aynı anda korkmuş ve neşeli, bir uyku partisindeki çocuklar gibi.",
+      "tts": {
+        "text": "Sekiz yetişkin, aynı anda korkmuş ve neşeli, bir uyku partisindeki çocuklar gibi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uçak yatay konuma geçer.",
+      "text_markdown": "Uçak yatay konuma geçer.",
+      "tts": {
+        "text": "Uçak yatay konuma geçer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapı açılır.",
+      "text_markdown": "Kapı açılır.",
+      "tts": {
+        "text": "Kapı açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lideriniz dışarı adım atar, ve geri kalanınız onu izler, bir kalp atışı arayla.",
+      "text_markdown": "Lideriniz dışarı adım atar, ve geri kalanınız onu izler, bir kalp atışı arayla.",
+      "tts": {
+        "text": "Lideriniz dışarı adım atar, ve geri kalanınız onu izler, bir kalp atışı arayla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Serbest düşüşte birbirinizi neredeyse düşünmeden bulursunuz.",
+      "text_markdown": "Serbest düşüşte birbirinizi neredeyse düşünmeden bulursunuz.",
+      "tts": {
+        "text": "Serbest düşüşte birbirinizi neredeyse düşünmeden bulursunuz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Eller ellere kavuşur.",
+      "text_markdown": "Eller ellere kavuşur.",
+      "tts": {
+        "text": "Eller ellere kavuşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Daire oluşur.",
+      "text_markdown": "Daire oluşur.",
+      "tts": {
+        "text": "Daire oluşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Birkaç mükemmel saniye boyunca, sekiz insan gökyüzünde birbirini tutar.",
+      "text_markdown": "Birkaç mükemmel saniye boyunca, sekiz insan gökyüzünde birbirini tutar.",
+      "tts": {
+        "text": "Birkaç mükemmel saniye boyunca, sekiz insan gökyüzünde birbirini tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Aynı hızda düşerek.",
+      "text_markdown": "Aynı hızda düşerek.",
+      "tts": {
+        "text": "Aynı hızda düşerek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Birbirinizin gözlerine bakarak.",
+      "text_markdown": "Birbirinizin gözlerine bakarak.",
+      "tts": {
+        "text": "Birbirinizin gözlerine bakarak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Sonra altimetren zamanın geldiğini söyler.",
+      "text_markdown": "Sonra altimetren zamanın geldiğini söyler.",
+      "tts": {
+        "text": "Sonra altimetren zamanın geldiğini söyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Bırakırsın.",
+      "text_markdown": "Bırakırsın.",
+      "tts": {
+        "text": "Bırakırsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Paraşütlerinize açılma alanı vermek için birbirinizden uzaklaşarak iz sürersiniz.",
+      "text_markdown": "Paraşütlerinize açılma alanı vermek için birbirinizden uzaklaşarak iz sürersiniz.",
+      "tts": {
+        "text": "Paraşütlerinize açılma alanı vermek için birbirinizden uzaklaşarak iz sürersiniz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Yerde, sarılmayı bırakamazsınız.",
+      "text_markdown": "Yerde, sarılmayı bırakamazsınız.",
+      "tts": {
+        "text": "Yerde, sarılmayı bırakamazsınız.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Üçüncüsü zor bir yılın ardından yapılan atlayış.",
+      "text_markdown": "Üçüncüsü zor bir yılın ardından yapılan atlayış.",
+      "tts": {
+        "text": "Üçüncüsü zor bir yılın ardından yapılan atlayış.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Belki bir şeyler atlattın.",
+      "text_markdown": "Belki bir şeyler atlattın.",
+      "tts": {
+        "text": "Belki bir şeyler atlattın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İşte kötü bir dönem.",
+      "text_markdown": "İşte kötü bir dönem.",
+      "tts": {
+        "text": "İşte kötü bir dönem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Biten bir ilişki.",
+      "text_markdown": "Biten bir ilişki.",
+      "tts": {
+        "text": "Biten bir ilişki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sıradan dünyayı ince ve uzak hissettiren bir kayıp.",
+      "text_markdown": "Sıradan dünyayı ince ve uzak hissettiren bir kayıp.",
+      "tts": {
+        "text": "Sıradan dünyayı ince ve uzak hissettiren bir kayıp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bir şey hissetmek istediğin için atlamıyorsun.",
+      "text_markdown": "Bir şey hissetmek istediğin için atlamıyorsun.",
+      "tts": {
+        "text": "Bir şey hissetmek istediğin için atlamıyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Atlıyorsun çünkü uzun zamandır hiçbir şey hissedemiyordun ve hâlâ orada olup olmadığını bilmek istiyorsun.",
+      "text_markdown": "Atlıyorsun çünkü uzun zamandır hiçbir şey hissedemiyordun ve hâlâ orada olup olmadığını bilmek istiyorsun.",
+      "tts": {
+        "text": "Atlıyorsun çünkü uzun zamandır hiçbir şey hissedemiyordun ve hâlâ orada olup olmadığını bilmek istiyorsun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uçak tırmanır.",
+      "text_markdown": "Uçak tırmanır.",
+      "tts": {
+        "text": "Uçak tırmanır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapı açılır.",
+      "text_markdown": "Kapı açılır.",
+      "tts": {
+        "text": "Kapı açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dışarı adım atarsın.",
+      "text_markdown": "Dışarı adım atarsın.",
+      "tts": {
+        "text": "Dışarı adım atarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve o ilk üç saniyede, rüzgâr seni yakalamadan önce, içinde bir şey çatlayıp açılır.",
+      "text_markdown": "Ve o ilk üç saniyede, rüzgâr seni yakalamadan önce, içinde bir şey çatlayıp açılır.",
+      "tts": {
+        "text": "Ve o ilk üç saniyede, rüzgâr seni yakalamadan önce, içinde bir şey çatlayıp açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ağlamayı planlamamıştın.",
+      "text_markdown": "Ağlamayı planlamamıştın.",
+      "tts": {
+        "text": "Ağlamayı planlamamıştın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Yine de ağlarsın.",
+      "text_markdown": "Yine de ağlarsın.",
+      "tts": {
+        "text": "Yine de ağlarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Serbest düşüş işini yapar.",
+      "text_markdown": "Serbest düşüş işini yapar.",
+      "tts": {
+        "text": "Serbest düşüş işini yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Altmış uzun saniye, sadece rüzgâr ve nefes ve düşüş.",
+      "text_markdown": "Altmış uzun saniye, sadece rüzgâr ve nefes ve düşüş.",
+      "tts": {
+        "text": "Altmış uzun saniye, sadece rüzgâr ve nefes ve düşüş.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ve bir yerde, içinde her şeyi tutan o kısım, sonunda bir dakikalığına onu yere bırakır.",
+      "text_markdown": "Ve bir yerde, içinde her şeyi tutan o kısım, sonunda bir dakikalığına onu yere bırakır.",
+      "tts": {
+        "text": "Ve bir yerde, içinde her şeyi tutan o kısım, sonunda bir dakikalığına onu yere bırakır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Paraşüt açılır.",
+      "text_markdown": "Paraşüt açılır.",
+      "tts": {
+        "text": "Paraşüt açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Dünya sessizleşir.",
+      "text_markdown": "Dünya sessizleşir.",
+      "tts": {
+        "text": "Dünya sessizleşir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Kemerin içinde asılı kalırsın, hıçkırırsın, gülersin, sonra yine hıçkırırsın bütün vücudunla.",
+      "text_markdown": "Kemerin içinde asılı kalırsın, hıçkırırsın, gülersin, sonra yine hıçkırırsın bütün vücudunla.",
+      "tts": {
+        "text": "Kemerin içinde asılı kalırsın, hıçkırırsın, gülersin, sonra yine hıçkırırsın bütün vücudunla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Kimse seni göremez.",
+      "text_markdown": "Kimse seni göremez.",
+      "tts": {
+        "text": "Kimse seni göremez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Önemli olan da o.",
+      "text_markdown": "Önemli olan da o.",
+      "tts": {
+        "text": "Önemli olan da o.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İndiğinde, iyileşmiş olmazsın.",
+      "text_markdown": "İndiğinde, iyileşmiş olmazsın.",
+      "tts": {
+        "text": "İndiğinde, iyileşmiş olmazsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hâlâ oraya çıkardığın her ne ise onu taşıyorsundur.",
+      "text_markdown": "Hâlâ oraya çıkardığın her ne ise onu taşıyorsundur.",
+      "tts": {
+        "text": "Hâlâ oraya çıkardığın her ne ise onu taşıyorsundur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama orada geçirdiğin tam bir saat boyunca, içinde bir şey hayatta olmanın tam olarak nasıl hissettirebileceğini hatırladı.",
+      "text_markdown": "Ama orada geçirdiğin tam bir saat boyunca, içinde bir şey hayatta olmanın tam olarak nasıl hissettirebileceğini hatırladı.",
+      "tts": {
+        "text": "Ama orada geçirdiğin tam bir saat boyunca, içinde bir şey hayatta olmanın tam olarak nasıl hissettirebileceğini hatırladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Paraşütle atlama yılını çözmedi.",
+      "text_markdown": "Paraşütle atlama yılını çözmedi.",
+      "tts": {
+        "text": "Paraşütle atlama yılını çözmedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sadece onu sana altmış saniyeliğine, tutabileceğin kadar küçük parçalar hâlinde geri verdi.",
+      "text_markdown": "Sadece onu sana altmış saniyeliğine, tutabileceğin kadar küçük parçalar hâlinde geri verdi.",
+      "tts": {
+        "text": "Sadece onu sana altmış saniyeliğine, tutabileceğin kadar küçük parçalar hâlinde geri verdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Neden Kalıcı Olur",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Neden Kalıcı Olur",
+      "text_markdown": "Neden Kalıcı Olur"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uzun zamandır atlıyorum.",
+      "text_markdown": "Uzun zamandır atlıyorum.",
+      "tts": {
+        "text": "Uzun zamandır atlıyorum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayıyı hatırlamayacak kadar uzun süredir.",
+      "text_markdown": "Sayıyı hatırlamayacak kadar uzun süredir.",
+      "tts": {
+        "text": "Sayıyı hatırlamayacak kadar uzun süredir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hâlâ neden bunu yapıyorsun, sorusunun benim için bir anlam ifade etmemeye başladığı kadar uzun süredir.",
+      "text_markdown": "Hâlâ neden bunu yapıyorsun, sorusunun benim için bir anlam ifade etmemeye başladığı kadar uzun süredir.",
+      "tts": {
+        "text": "Hâlâ neden bunu yapıyorsun, sorusunun benim için bir anlam ifade etmemeye başladığı kadar uzun süredir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sana birkaç şey bırakmak istiyorum.",
+      "text_markdown": "Sana birkaç şey bırakmak istiyorum.",
+      "tts": {
+        "text": "Sana birkaç şey bırakmak istiyorum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlki, paraşütle atlamanın bir geçiş dönemi olmadığı.",
+      "text_markdown": "İlki, paraşütle atlamanın bir geçiş dönemi olmadığı.",
+      "tts": {
+        "text": "İlki, paraşütle atlamanın bir geçiş dönemi olmadığı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir arkadaşının bunu yaptığını gören insanlar endişelenir.",
+      "text_markdown": "Bir arkadaşının bunu yaptığını gören insanlar endişelenir.",
+      "tts": {
+        "text": "Bir arkadaşının bunu yaptığını gören insanlar endişelenir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun bir isyan, bir orta yaş işi, bir şeyden kaçma yolu olduğundan endişelenirler.",
+      "text_markdown": "Bunun bir isyan, bir orta yaş işi, bir şeyden kaçma yolu olduğundan endişelenirler.",
+      "tts": {
+        "text": "Bunun bir isyan, bir orta yaş işi, bir şeyden kaçma yolu olduğundan endişelenirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Değildir.",
+      "text_markdown": "Değildir.",
+      "tts": {
+        "text": "Değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kalan insanlar kaçmıyor.",
+      "text_markdown": "Kalan insanlar kaçmıyor.",
+      "tts": {
+        "text": "Kalan insanlar kaçmıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Neredeyse istemeden, gökyüzünün içinde küçük bir hayat kurdular.",
+      "text_markdown": "Neredeyse istemeden, gökyüzünün içinde küçük bir hayat kurdular.",
+      "tts": {
+        "text": "Neredeyse istemeden, gökyüzünün içinde küçük bir hayat kurdular.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Cumartesileri ortaya çıkarlar.",
+      "text_markdown": "Cumartesileri ortaya çıkarlar.",
+      "tts": {
+        "text": "Cumartesileri ortaya çıkarlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Paraşütlerini katlarlar.",
+      "text_markdown": "Paraşütlerini katlarlar.",
+      "tts": {
+        "text": "Paraşütlerini katlarlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Arkadaşlarına sarılırlar.",
+      "text_markdown": "Arkadaşlarına sarılırlar.",
+      "tts": {
+        "text": "Arkadaşlarına sarılırlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Gün batımında eve giderler, iyi anlamda yorgun.",
+      "text_markdown": "Gün batımında eve giderler, iyi anlamda yorgun.",
+      "tts": {
+        "text": "Gün batımında eve giderler, iyi anlamda yorgun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Pazartesi işe geri dönerler ve gözle görülür biçimde eskisinden daha iyi kalpli olurlar.",
+      "text_markdown": "Pazartesi işe geri dönerler ve gözle görülür biçimde eskisinden daha iyi kalpli olurlar.",
+      "tts": {
+        "text": "Pazartesi işe geri dönerler ve gözle görülür biçimde eskisinden daha iyi kalpli olurlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gökyüzü seni değiştirir, ama yavaş yavaş.",
+      "text_markdown": "Gökyüzü seni değiştirir, ama yavaş yavaş.",
+      "tts": {
+        "text": "Gökyüzü seni değiştirir, ama yavaş yavaş.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daha mevcut hâle gelirsin.",
+      "text_markdown": "Daha mevcut hâle gelirsin.",
+      "tts": {
+        "text": "Daha mevcut hâle gelirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük şeylerden daha az korkarsın, çünkü daha büyük şeylerle dürüst olmayı pratik etmişsindir.",
+      "text_markdown": "Küçük şeylerden daha az korkarsın, çünkü daha büyük şeylerle dürüst olmayı pratik etmişsindir.",
+      "tts": {
+        "text": "Küçük şeylerden daha az korkarsın, çünkü daha büyük şeylerle dürüst olmayı pratik etmişsindir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daha kolay gülersin.",
+      "text_markdown": "Daha kolay gülersin.",
+      "tts": {
+        "text": "Daha kolay gülersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İnsanlara onları sevdiğini daha sık söylersin.",
+      "text_markdown": "İnsanlara onları sevdiğini daha sık söylersin.",
+      "tts": {
+        "text": "İnsanlara onları sevdiğini daha sık söylersin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bir kapı eşiğinde, on iki bin fit yukarıda durdun ve hiçbir şeyin garanti olmadığını hatırladın.",
+      "text_markdown": "Bir kapı eşiğinde, on iki bin fit yukarıda durdun ve hiçbir şeyin garanti olmadığını hatırladın.",
+      "tts": {
+        "text": "Bir kapı eşiğinde, on iki bin fit yukarıda durdun ve hiçbir şeyin garanti olmadığını hatırladın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eğer bir akşam yemeğinde bir paraşütçüyle karşılaşırsan, sorabileceğin şeyler şunlar.",
+      "text_markdown": "Eğer bir akşam yemeğinde bir paraşütçüyle karşılaşırsan, sorabileceğin şeyler şunlar.",
+      "tts": {
+        "text": "Eğer bir akşam yemeğinde bir paraşütçüyle karşılaşırsan, sorabileceğin şeyler şunlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nasıl başladığını sorabilirsin.",
+      "text_markdown": "Nasıl başladığını sorabilirsin.",
+      "tts": {
+        "text": "Nasıl başladığını sorabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her paraşütçü ilk atlayışını canlı ayrıntılarıyla hatırlar ve sana memnuniyetle anlatır.",
+      "text_markdown": "Her paraşütçü ilk atlayışını canlı ayrıntılarıyla hatırlar ve sana memnuniyetle anlatır.",
+      "tts": {
+        "text": "Her paraşütçü ilk atlayışını canlı ayrıntılarıyla hatırlar ve sana memnuniyetle anlatır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaç atlayış yaptığını sorabilirsin.",
+      "text_markdown": "Kaç atlayış yaptığını sorabilirsin.",
+      "tts": {
+        "text": "Kaç atlayış yaptığını sorabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sayıyı bilirler, aşağı yukarı, ve olduğundan fazlasıymış gibi davranmazlar.",
+      "text_markdown": "Sayıyı bilirler, aşağı yukarı, ve olduğundan fazlasıymış gibi davranmazlar.",
+      "tts": {
+        "text": "Sayıyı bilirler, aşağı yukarı, ve olduğundan fazlasıymış gibi davranmazlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En sevdikleri atlayış türünün ne olduğunu sorabilirsin.",
+      "text_markdown": "En sevdikleri atlayış türünün ne olduğunu sorabilirsin.",
+      "tts": {
+        "text": "En sevdikleri atlayış türünün ne olduğunu sorabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bazıları gün batımı diyecek.",
+      "text_markdown": "Bazıları gün batımı diyecek.",
+      "tts": {
+        "text": "Bazıları gün batımı diyecek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Bazıları büyük bir formasyon diyecek.",
+      "text_markdown": "Bazıları büyük bir formasyon diyecek.",
+      "tts": {
+        "text": "Bazıları büyük bir formasyon diyecek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Bazıları sakin bir akşamda sessiz bir solo diyecek.",
+      "text_markdown": "Bazıları sakin bir akşamda sessiz bir solo diyecek.",
+      "tts": {
+        "text": "Bazıları sakin bir akşamda sessiz bir solo diyecek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk seferinde korkup korkmadıklarını sorabilirsin.",
+      "text_markdown": "İlk seferinde korkup korkmadıklarını sorabilirsin.",
+      "tts": {
+        "text": "İlk seferinde korkup korkmadıklarını sorabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tabii ki korktular.",
+      "text_markdown": "Tabii ki korktular.",
+      "tts": {
+        "text": "Tabii ki korktular.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Herkes korkar.",
+      "text_markdown": "Herkes korkar.",
+      "tts": {
+        "text": "Herkes korkar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muhtemelen kapıdaki rüzgârdan, sayıdan ve dışarı adım atmadan hemen önce dünyanın nasıl göründüğünden bahsedeceklerdir.",
+      "text_markdown": "Muhtemelen kapıdaki rüzgârdan, sayıdan ve dışarı adım atmadan hemen önce dünyanın nasıl göründüğünden bahsedeceklerdir.",
+      "tts": {
+        "text": "Muhtemelen kapıdaki rüzgârdan, sayıdan ve dışarı adım atmadan hemen önce dünyanın nasıl göründüğünden bahsedeceklerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dikkatle dinle.",
+      "text_markdown": "Dikkatle dinle.",
+      "tts": {
+        "text": "Dikkatle dinle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sana küçük bir hediye veriyorlar.",
+      "text_markdown": "Sana küçük bir hediye veriyorlar.",
+      "tts": {
+        "text": "Sana küçük bir hediye veriyorlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir paraşütçünün yüzünün aydınlanmasını istiyorsan, onlardan paraşüt açıldığı anı tarif etmelerini iste.",
+      "text_markdown": "Bir paraşütçünün yüzünün aydınlanmasını istiyorsan, onlardan paraşüt açıldığı anı tarif etmelerini iste.",
+      "tts": {
+        "text": "Bir paraşütçünün yüzünün aydınlanmasını istiyorsan, onlardan paraşüt açıldığı anı tarif etmelerini iste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yarım saniye gözlerini kapatacaklar.",
+      "text_markdown": "Yarım saniye gözlerini kapatacaklar.",
+      "tts": {
+        "text": "Yarım saniye gözlerini kapatacaklar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra deneyecekler.",
+      "text_markdown": "Sonra deneyecekler.",
+      "tts": {
+        "text": "Sonra deneyecekler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her seferinde farklı bir kelime kullanacaklar.",
+      "text_markdown": "Her seferinde farklı bir kelime kullanacaklar.",
+      "tts": {
+        "text": "Her seferinde farklı bir kelime kullanacaklar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Belki sessiz.",
+      "text_markdown": "Belki sessiz.",
+      "tts": {
+        "text": "Belki sessiz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Belki nazik.",
+      "text_markdown": "Belki nazik.",
+      "tts": {
+        "text": "Belki nazik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Uyanmak gibi.",
+      "text_markdown": "Uyanmak gibi.",
+      "tts": {
+        "text": "Uyanmak gibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Eve dönmek gibi.",
+      "text_markdown": "Eve dönmek gibi.",
+      "tts": {
+        "text": "Eve dönmek gibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Kimse onu iki kez aynı şekilde tarif etmez.",
+      "text_markdown": "Kimse onu iki kez aynı şekilde tarif etmez.",
+      "tts": {
+        "text": "Kimse onu iki kez aynı şekilde tarif etmez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiç atlamadığını söylemekten korkma.",
+      "text_markdown": "Hiç atlamadığını söylemekten korkma.",
+      "tts": {
+        "text": "Hiç atlamadığını söylemekten korkma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Paraşütçüler bu soruyu sever.",
+      "text_markdown": "Paraşütçüler bu soruyu sever.",
+      "tts": {
+        "text": "Paraşütçüler bu soruyu sever.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Paraşütçüler ayrıca sana denemen gerektiğini söylemeyi, ve sonra çok ciddi bir biçimde, seninle birlikte gideceklerini söylemeyi de severler.",
+      "text_markdown": "Paraşütçüler ayrıca sana denemen gerektiğini söylemeyi, ve sonra çok ciddi bir biçimde, seninle birlikte gideceklerini söylemeyi de severler.",
+      "tts": {
+        "text": "Paraşütçüler ayrıca sana denemen gerektiğini söylemeyi, ve sonra çok ciddi bir biçimde, seninle birlikte gideceklerini söylemeyi de severler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çoğumuz bir arkadaşı ilk atlayışına götürmüşüzdür.",
+      "text_markdown": "Çoğumuz bir arkadaşı ilk atlayışına götürmüşüzdür.",
+      "tts": {
+        "text": "Çoğumuz bir arkadaşı ilk atlayışına götürmüşüzdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bu sporun en güzel zevklerinden biridir.",
+      "text_markdown": "Bu sporun en güzel zevklerinden biridir.",
+      "tts": {
+        "text": "Bu sporun en güzel zevklerinden biridir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun sonunda büyük bir ders yok.",
+      "text_markdown": "Bunun sonunda büyük bir ders yok.",
+      "tts": {
+        "text": "Bunun sonunda büyük bir ders yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece bu var.",
+      "text_markdown": "Sadece bu var.",
+      "tts": {
+        "text": "Sadece bu var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şu anda dünyanın bir yerinde, küçük bir grup sakin ve sabırlı insan bir uçağa doğru yürüyor.",
+      "text_markdown": "Şu anda dünyanın bir yerinde, küçük bir grup sakin ve sabırlı insan bir uçağa doğru yürüyor.",
+      "tts": {
+        "text": "Şu anda dünyanın bir yerinde, küçük bir grup sakin ve sabırlı insan bir uçağa doğru yürüyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarla güneşli.",
+      "text_markdown": "Tarla güneşli.",
+      "tts": {
+        "text": "Tarla güneşli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Çimen sıcak.",
+      "text_markdown": "Çimen sıcak.",
+      "tts": {
+        "text": "Çimen sıcak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Birbirlerinin ekipmanlarını kontrol ediyorlar.",
+      "text_markdown": "Birbirlerinin ekipmanlarını kontrol ediyorlar.",
+      "tts": {
+        "text": "Birbirlerinin ekipmanlarını kontrol ediyorlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Gülümsüyorlar.",
+      "text_markdown": "Gülümsüyorlar.",
+      "tts": {
+        "text": "Gülümsüyorlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Otuz dakika sonra gökyüzünde olacaklar, bildikleri en sessiz şeyi yaparak.",
+      "text_markdown": "Otuz dakika sonra gökyüzünde olacaklar, bildikleri en sessiz şeyi yaparak.",
+      "tts": {
+        "text": "Otuz dakika sonra gökyüzünde olacaklar, bildikleri en sessiz şeyi yaparak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Belki bir gün sen de onlardan biri olursun.",
+      "text_markdown": "Belki bir gün sen de onlardan biri olursun.",
+      "tts": {
+        "text": "Belki bir gün sen de onlardan biri olursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Belki bir gün olmazsın.",
+      "text_markdown": "Belki bir gün olmazsın.",
+      "tts": {
+        "text": "Belki bir gün olmazsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her halükârda, gökyüzü orada.",
+      "text_markdown": "Her halükârda, gökyüzü orada.",
+      "tts": {
+        "text": "Her halükârda, gökyüzü orada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hep oradaydı.",
+      "text_markdown": "Hep oradaydı.",
+      "tts": {
+        "text": "Hep oradaydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sabırla bekliyor, eğer eğilmek istersen diye.",
+      "text_markdown": "Sabırla bekliyor, eğer eğilmek istersen diye.",
+      "tts": {
+        "text": "Sabırla bekliyor, eğer eğilmek istersen diye.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

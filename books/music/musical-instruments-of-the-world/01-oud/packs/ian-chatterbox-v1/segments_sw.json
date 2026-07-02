@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "language": "sw",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dokezo kwa Msikilizaji",
+      "text_markdown": "Dokezo kwa Msikilizaji"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiki ni kitabu kuhusu udi, ala ya muziki ya mbao yenye nyuzi.",
+      "text_markdown": "Hiki ni kitabu kuhusu udi, ala ya muziki ya mbao yenye nyuzi.",
+      "tts": {
+        "text": "Hiki ni kitabu kuhusu udi, ala ya muziki ya mbao yenye nyuzi.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watu wamekuwa wakiupiga kwa zaidi ya miaka elfu moja.",
+      "text_markdown": "Watu wamekuwa wakiupiga kwa zaidi ya miaka elfu moja.",
+      "tts": {
+        "text": "Watu wamekuwa wakiupiga kwa zaidi ya miaka elfu moja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaweza kuusikia udi katika miji ya pwani na vijiji vya milimani.",
+      "text_markdown": "Unaweza kuusikia udi katika miji ya pwani na vijiji vya milimani.",
+      "tts": {
+        "text": "Unaweza kuusikia udi katika miji ya pwani na vijiji vya milimani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unaweza kuusikia katika majumba ya kale na kwenye majukwaa madogo ya mbao.",
+      "text_markdown": "Unaweza kuusikia katika majumba ya kale na kwenye majukwaa madogo ya mbao.",
+      "tts": {
+        "text": "Unaweza kuusikia katika majumba ya kale na kwenye majukwaa madogo ya mbao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kitabu hiki, tutajifunza umbo la udi, jinsi ilivyojengwa, na watu walioipa hadithi yake sura.",
+      "text_markdown": "Katika kitabu hiki, tutajifunza umbo la udi, jinsi ilivyojengwa, na watu walioipa hadithi yake sura.",
+      "tts": {
+        "text": "Katika kitabu hiki, tutajifunza umbo la udi, jinsi ilivyojengwa, na watu walioipa hadithi yake sura.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwisho wa kitabu, utajua kwa nini udi huitwa mfalme wa nyuzi zote.",
+      "text_markdown": "Mwisho wa kitabu, utajua kwa nini udi huitwa mfalme wa nyuzi zote.",
+      "tts": {
+        "text": "Mwisho wa kitabu, utajua kwa nini udi huitwa mfalme wa nyuzi zote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 1 — Udi ni Nini?",
+      "text_markdown": "Sura ya 1 — Udi ni Nini?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi ni ala ya nyuzi.",
+      "text_markdown": "Udi ni ala ya nyuzi.",
+      "tts": {
+        "text": "Udi ni ala ya nyuzi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni aina ya luti, yenye mwili kama pea iliyokatwa nusu.",
+      "text_markdown": "Ni aina ya luti, yenye mwili kama pea iliyokatwa nusu.",
+      "tts": {
+        "text": "Ni aina ya luti, yenye mwili kama pea iliyokatwa nusu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sehemu ya nyuma ya udi ni ya mviringo na yenye kina, kama bakuli la mbao.",
+      "text_markdown": "Sehemu ya nyuma ya udi ni ya mviringo na yenye kina, kama bakuli la mbao.",
+      "tts": {
+        "text": "Sehemu ya nyuma ya udi ni ya mviringo na yenye kina, kama bakuli la mbao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sehemu ya mbele ni tambarare.",
+      "text_markdown": "Sehemu ya mbele ni tambarare.",
+      "tts": {
+        "text": "Sehemu ya mbele ni tambarare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunaita upande huo wa mbele ubao wa sauti.",
+      "text_markdown": "Tunaita upande huo wa mbele ubao wa sauti.",
+      "tts": {
+        "text": "Tunaita upande huo wa mbele ubao wa sauti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Shingo ya udi ni fupi, na haina freti.",
+      "text_markdown": "Shingo ya udi ni fupi, na haina freti.",
+      "tts": {
+        "text": "Shingo ya udi ni fupi, na haina freti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Freti ni mistari midogo ya metali unayoiona kwenye gitaa.",
+      "text_markdown": "Freti ni mistari midogo ya metali unayoiona kwenye gitaa.",
+      "tts": {
+        "text": "Freti ni mistari midogo ya metali unayoiona kwenye gitaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bila freti, mpigaji anaweza kuteleza kati ya noti kwa ulaini sana.",
+      "text_markdown": "Bila freti, mpigaji anaweza kuteleza kati ya noti kwa ulaini sana.",
+      "tts": {
+        "text": "Bila freti, mpigaji anaweza kuteleza kati ya noti kwa ulaini sana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi nyingi zina nyuzi kumi na moja, zilizowekwa katika jozi sita.",
+      "text_markdown": "Udi nyingi zina nyuzi kumi na moja, zilizowekwa katika jozi sita.",
+      "tts": {
+        "text": "Udi nyingi zina nyuzi kumi na moja, zilizowekwa katika jozi sita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tunaita kila jozi kozi.",
+      "text_markdown": "Tunaita kila jozi kozi.",
+      "tts": {
+        "text": "Tunaita kila jozi kozi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kozi tano zina nyuzi mbili zilizopangwa sauti moja.",
+      "text_markdown": "Kozi tano zina nyuzi mbili zilizopangwa sauti moja.",
+      "tts": {
+        "text": "Kozi tano zina nyuzi mbili zilizopangwa sauti moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kozi ya sita ina uzi mmoja tu.",
+      "text_markdown": "Kozi ya sita ina uzi mmoja tu.",
+      "tts": {
+        "text": "Kozi ya sita ina uzi mmoja tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hivyo ndipo unapata nyuzi kumi na moja.",
+      "text_markdown": "Hivyo ndipo unapata nyuzi kumi na moja.",
+      "tts": {
+        "text": "Hivyo ndipo unapata nyuzi kumi na moja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mpigaji huweka udi juu ya mapaja.",
+      "text_markdown": "Mpigaji huweka udi juu ya mapaja.",
+      "tts": {
+        "text": "Mpigaji huweka udi juu ya mapaja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mkono mmoja hubana nyuzi kwenye shingo.",
+      "text_markdown": "Mkono mmoja hubana nyuzi kwenye shingo.",
+      "tts": {
+        "text": "Mkono mmoja hubana nyuzi kwenye shingo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mkono mwingine huzikwangua kwa upigio mwembamba unaoitwa risha.",
+      "text_markdown": "Mkono mwingine huzikwangua kwa upigio mwembamba unaoitwa risha.",
+      "tts": {
+        "text": "Mkono mwingine huzikwangua kwa upigio mwembamba unaoitwa risha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sauti yake ni ya joto na yenye kina.",
+      "text_markdown": "Sauti yake ni ya joto na yenye kina.",
+      "tts": {
+        "text": "Sauti yake ni ya joto na yenye kina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ina huzuni kidogo na utamu kidogo, kwa wakati mmoja.",
+      "text_markdown": "Ina huzuni kidogo na utamu kidogo, kwa wakati mmoja.",
+      "tts": {
+        "text": "Ina huzuni kidogo na utamu kidogo, kwa wakati mmoja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 2 — Jina Hilo Limetoka Wapi",
+      "text_markdown": "Sura ya 2 — Jina Hilo Limetoka Wapi"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jina udi ni neno la Kiarabu lenye maana ya mbao.",
+      "text_markdown": "Jina udi ni neno la Kiarabu lenye maana ya mbao.",
+      "tts": {
+        "text": "Jina udi ni neno la Kiarabu lenye maana ya mbao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ala hiyo imepewa jina la kitu inachotengenezwa nacho.",
+      "text_markdown": "Ala hiyo imepewa jina la kitu inachotengenezwa nacho.",
+      "tts": {
+        "text": "Ala hiyo imepewa jina la kitu inachotengenezwa nacho.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kabla ya udi, kulikuwa na binamu wa zamani aliyeitwa barbati.",
+      "text_markdown": "Kabla ya udi, kulikuwa na binamu wa zamani aliyeitwa barbati.",
+      "tts": {
+        "text": "Kabla ya udi, kulikuwa na binamu wa zamani aliyeitwa barbati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbati ilipigwa katika Uajemi wa kale zaidi ya miaka elfu mbili iliyopita.",
+      "text_markdown": "Barbati ilipigwa katika Uajemi wa kale zaidi ya miaka elfu mbili iliyopita.",
+      "tts": {
+        "text": "Barbati ilipigwa katika Uajemi wa kale zaidi ya miaka elfu mbili iliyopita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbati ilikuwa na mwili wa mbao na nyuzi za hariri.",
+      "text_markdown": "Barbati ilikuwa na mwili wa mbao na nyuzi za hariri.",
+      "tts": {
+        "text": "Barbati ilikuwa na mwili wa mbao na nyuzi za hariri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sauti yake ilikuwa ndefu na laini.",
+      "text_markdown": "Sauti yake ilikuwa ndefu na laini.",
+      "tts": {
+        "text": "Sauti yake ilikuwa ndefu na laini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watu katika nyua za wafalme waliipiga.",
+      "text_markdown": "Watu katika nyua za wafalme waliipiga.",
+      "tts": {
+        "text": "Watu katika nyua za wafalme waliipiga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Polepole, barbati ilibadilika.",
+      "text_markdown": "Polepole, barbati ilibadilika.",
+      "tts": {
+        "text": "Polepole, barbati ilibadilika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwili wake ulikuwa wa mviringo zaidi, nyuzi zikawa jozi, na shingo ikafupika.",
+      "text_markdown": "Mwili wake ulikuwa wa mviringo zaidi, nyuzi zikawa jozi, na shingo ikafupika.",
+      "tts": {
+        "text": "Mwili wake ulikuwa wa mviringo zaidi, nyuzi zikawa jozi, na shingo ikafupika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karibu mwaka mia saba, watu katika ulimwengu wa Kiarabu walikuwa wakipiga kile tunachokiita leo udi.",
+      "text_markdown": "Karibu mwaka mia saba, watu katika ulimwengu wa Kiarabu walikuwa wakipiga kile tunachokiita leo udi.",
+      "tts": {
+        "text": "Karibu mwaka mia saba, watu katika ulimwengu wa Kiarabu walikuwa wakipiga kile tunachokiita leo udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutoka hapo, udi ulisafiri.",
+      "text_markdown": "Kutoka hapo, udi ulisafiri.",
+      "tts": {
+        "text": "Kutoka hapo, udi ulisafiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ulienda Misri na Afrika Kaskazini.",
+      "text_markdown": "Ulienda Misri na Afrika Kaskazini.",
+      "tts": {
+        "text": "Ulienda Misri na Afrika Kaskazini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ulivuka bahari hadi Hispania.",
+      "text_markdown": "Ulivuka bahari hadi Hispania.",
+      "tts": {
+        "text": "Ulivuka bahari hadi Hispania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ulienda kaskazini hadi Uturuki na Ugiriki.",
+      "text_markdown": "Ulienda kaskazini hadi Uturuki na Ugiriki.",
+      "tts": {
+        "text": "Ulienda kaskazini hadi Uturuki na Ugiriki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kila mahali paliupa udi chembe ya sauti yake.",
+      "text_markdown": "Kila mahali paliupa udi chembe ya sauti yake.",
+      "tts": {
+        "text": "Kila mahali paliupa udi chembe ya sauti yake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini jina lilibaki lilelile.",
+      "text_markdown": "Lakini jina lilibaki lilelile.",
+      "tts": {
+        "text": "Lakini jina lilibaki lilelile.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Popote ulipoenda, ala hiyo ya mbao iliendelea kuitwa udi bila kubadilika.",
+      "text_markdown": "Popote ulipoenda, ala hiyo ya mbao iliendelea kuitwa udi bila kubadilika.",
+      "tts": {
+        "text": "Popote ulipoenda, ala hiyo ya mbao iliendelea kuitwa udi bila kubadilika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 3 — Udi Hutengenezwa Vipi",
+      "text_markdown": "Sura ya 3 — Udi Hutengenezwa Vipi"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutengeneza udi huchukua muda mrefu.",
+      "text_markdown": "Kutengeneza udi huchukua muda mrefu.",
+      "tts": {
+        "text": "Kutengeneza udi huchukua muda mrefu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mtengenezaji mzuri anaweza kutumia wiki nyingi kwa ala moja.",
+      "text_markdown": "Mtengenezaji mzuri anaweza kutumia wiki nyingi kwa ala moja.",
+      "tts": {
+        "text": "Mtengenezaji mzuri anaweza kutumia wiki nyingi kwa ala moja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bakuli hutengenezwa kwa vipande vyembamba vya mbao, kwa kawaida kati ya vipande kumi na tano na ishirini na tano.",
+      "text_markdown": "Bakuli hutengenezwa kwa vipande vyembamba vya mbao, kwa kawaida kati ya vipande kumi na tano na ishirini na tano.",
+      "tts": {
+        "text": "Bakuli hutengenezwa kwa vipande vyembamba vya mbao, kwa kawaida kati ya vipande kumi na tano na ishirini na tano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila kipande hupindishwa na kugandishwa na kile kinachofuata.",
+      "text_markdown": "Kila kipande hupindishwa na kugandishwa na kile kinachofuata.",
+      "tts": {
+        "text": "Kila kipande hupindishwa na kugandishwa na kile kinachofuata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa pamoja hutengeneza nyuma ya udi, ya kina na ya mviringo.",
+      "text_markdown": "Kwa pamoja hutengeneza nyuma ya udi, ya kina na ya mviringo.",
+      "tts": {
+        "text": "Kwa pamoja hutengeneza nyuma ya udi, ya kina na ya mviringo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aina ya mbao ni muhimu.",
+      "text_markdown": "Aina ya mbao ni muhimu.",
+      "tts": {
+        "text": "Aina ya mbao ni muhimu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walnati hutoa sauti ya joto, muhogani hutoa sauti nzito, na mulberi hutoa sauti angavu yenye mlio.",
+      "text_markdown": "Walnati hutoa sauti ya joto, muhogani hutoa sauti nzito, na mulberi hutoa sauti angavu yenye mlio.",
+      "tts": {
+        "text": "Walnati hutoa sauti ya joto, muhogani hutoa sauti nzito, na mulberi hutoa sauti angavu yenye mlio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mtengenezaji huchagua mbao kwa sauti anayotaka.",
+      "text_markdown": "Mtengenezaji huchagua mbao kwa sauti anayotaka.",
+      "tts": {
+        "text": "Mtengenezaji huchagua mbao kwa sauti anayotaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Upande tambarare wa mbele, ubao wa sauti, hutengenezwa kwa sprusi.",
+      "text_markdown": "Upande tambarare wa mbele, ubao wa sauti, hutengenezwa kwa sprusi.",
+      "tts": {
+        "text": "Upande tambarare wa mbele, ubao wa sauti, hutengenezwa kwa sprusi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sprusi ni nyepesi na imara, na huifanya mbao itetemeke kwa urahisi.",
+      "text_markdown": "Sprusi ni nyepesi na imara, na huifanya mbao itetemeke kwa urahisi.",
+      "tts": {
+        "text": "Sprusi ni nyepesi na imara, na huifanya mbao itetemeke kwa urahisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mtetemo huo ndio tunaousikia kama muziki.",
+      "text_markdown": "Mtetemo huo ndio tunaousikia kama muziki.",
+      "tts": {
+        "text": "Mtetemo huo ndio tunaousikia kama muziki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwenye ubao wa sauti kuna mashimo madogo ya mviringo yanayoitwa roseti.",
+      "text_markdown": "Kwenye ubao wa sauti kuna mashimo madogo ya mviringo yanayoitwa roseti.",
+      "tts": {
+        "text": "Kwenye ubao wa sauti kuna mashimo madogo ya mviringo yanayoitwa roseti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mara nyingi huchongwa kwa michoro ya kupendeza.",
+      "text_markdown": "Mara nyingi huchongwa kwa michoro ya kupendeza.",
+      "tts": {
+        "text": "Mara nyingi huchongwa kwa michoro ya kupendeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roseti huacha sauti itoke kutoka kwenye bakuli.",
+      "text_markdown": "Roseti huacha sauti itoke kutoka kwenye bakuli.",
+      "tts": {
+        "text": "Roseti huacha sauti itoke kutoka kwenye bakuli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zamani nyuzi zilitengenezwa kwa utumbo mkavu wa mnyama.",
+      "text_markdown": "Zamani nyuzi zilitengenezwa kwa utumbo mkavu wa mnyama.",
+      "tts": {
+        "text": "Zamani nyuzi zilitengenezwa kwa utumbo mkavu wa mnyama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leo, nyuzi nyingi hutengenezwa kwa nailoni, na za chini hufungwa waya mwembamba wa metali.",
+      "text_markdown": "Leo, nyuzi nyingi hutengenezwa kwa nailoni, na za chini hufungwa waya mwembamba wa metali.",
+      "tts": {
+        "text": "Leo, nyuzi nyingi hutengenezwa kwa nailoni, na za chini hufungwa waya mwembamba wa metali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mpigaji huzikwangua nyuzi kwa risha.",
+      "text_markdown": "Mpigaji huzikwangua nyuzi kwa risha.",
+      "tts": {
+        "text": "Mpigaji huzikwangua nyuzi kwa risha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neno risha humaanisha unyoya.",
+      "text_markdown": "Neno risha humaanisha unyoya.",
+      "tts": {
+        "text": "Neno risha humaanisha unyoya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vipigio vya kwanza vilitengenezwa kwa manyoya ya tai.",
+      "text_markdown": "Vipigio vya kwanza vilitengenezwa kwa manyoya ya tai.",
+      "tts": {
+        "text": "Vipigio vya kwanza vilitengenezwa kwa manyoya ya tai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leo hutengenezwa kwa plastiki, mfupa, au gamba la kobe.",
+      "text_markdown": "Leo hutengenezwa kwa plastiki, mfupa, au gamba la kobe.",
+      "tts": {
+        "text": "Leo hutengenezwa kwa plastiki, mfupa, au gamba la kobe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 4 — Udi Hupigwa Wapi",
+      "text_markdown": "Sura ya 4 — Udi Hupigwa Wapi"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi hupigwa katika ulimwengu wote wa Kiarabu.",
+      "text_markdown": "Udi hupigwa katika ulimwengu wote wa Kiarabu.",
+      "tts": {
+        "text": "Udi hupigwa katika ulimwengu wote wa Kiarabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Utaisikia Misri, Syria, Iraq, Lebanoni, Ghuba, na Afrika Kaskazini.",
+      "text_markdown": "Utaisikia Misri, Syria, Iraq, Lebanoni, Ghuba, na Afrika Kaskazini.",
+      "tts": {
+        "text": "Utaisikia Misri, Syria, Iraq, Lebanoni, Ghuba, na Afrika Kaskazini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pia hupigwa nje ya ulimwengu wa Kiarabu.",
+      "text_markdown": "Pia hupigwa nje ya ulimwengu wa Kiarabu.",
+      "tts": {
+        "text": "Pia hupigwa nje ya ulimwengu wa Kiarabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waturuki wana udi wao wenyewe.",
+      "text_markdown": "Waturuki wana udi wao wenyewe.",
+      "tts": {
+        "text": "Waturuki wana udi wao wenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wagiriki wana udi wao wenyewe.",
+      "text_markdown": "Wagiriki wana udi wao wenyewe.",
+      "tts": {
+        "text": "Wagiriki wana udi wao wenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Waarmenia na Wairani hupiga binamu zake.",
+      "text_markdown": "Waarmenia na Wairani hupiga binamu zake.",
+      "tts": {
+        "text": "Waarmenia na Wairani hupiga binamu zake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Huko Hispania, ulipigwa kwa mamia ya miaka.",
+      "text_markdown": "Huko Hispania, ulipigwa kwa mamia ya miaka.",
+      "tts": {
+        "text": "Huko Hispania, ulipigwa kwa mamia ya miaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo kuna aina kuu tatu za udi.",
+      "text_markdown": "Leo kuna aina kuu tatu za udi.",
+      "tts": {
+        "text": "Leo kuna aina kuu tatu za udi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Udi wa Kiarabu ni mkubwa na wenye kina, wenye sauti pana na ya taratibu.",
+      "text_markdown": "Udi wa Kiarabu ni mkubwa na wenye kina, wenye sauti pana na ya taratibu.",
+      "tts": {
+        "text": "Udi wa Kiarabu ni mkubwa na wenye kina, wenye sauti pana na ya taratibu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Huo ndio udi wa Misri na Shamu.",
+      "text_markdown": "Huo ndio udi wa Misri na Shamu.",
+      "tts": {
+        "text": "Huo ndio udi wa Misri na Shamu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi wa Uturuki ni mdogo na angavu, na hupangwa sauti juu kidogo kuliko udi wa Kiarabu.",
+      "text_markdown": "Udi wa Uturuki ni mdogo na angavu, na hupangwa sauti juu kidogo kuliko udi wa Kiarabu.",
+      "tts": {
+        "text": "Udi wa Uturuki ni mdogo na angavu, na hupangwa sauti juu kidogo kuliko udi wa Kiarabu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Binamu wa Kiajemi huitwa barbati.",
+      "text_markdown": "Binamu wa Kiajemi huitwa barbati.",
+      "tts": {
+        "text": "Binamu wa Kiajemi huitwa barbati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni mdogo na mkali, na hutumia mpangilio tofauti wa noti.",
+      "text_markdown": "Ni mdogo na mkali, na hutumia mpangilio tofauti wa noti.",
+      "tts": {
+        "text": "Ni mdogo na mkali, na hutumia mpangilio tofauti wa noti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi ndio moyo wa muziki wa jadi wa Kiarabu na muziki wa makam wa Kituruki.",
+      "text_markdown": "Udi ndio moyo wa muziki wa jadi wa Kiarabu na muziki wa makam wa Kituruki.",
+      "tts": {
+        "text": "Udi ndio moyo wa muziki wa jadi wa Kiarabu na muziki wa makam wa Kituruki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hupigwa kwenye harusi na mazishini, katika kumbi za muziki na sebuleni pamoja na marafiki.",
+      "text_markdown": "Hupigwa kwenye harusi na mazishini, katika kumbi za muziki na sebuleni pamoja na marafiki.",
+      "tts": {
+        "text": "Hupigwa kwenye harusi na mazishini, katika kumbi za muziki na sebuleni pamoja na marafiki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Popote watu hukusanyika na kutaka muziki wenye roho, mtu anaweza kuleta udi.",
+      "text_markdown": "Popote watu hukusanyika na kutaka muziki wenye roho, mtu anaweza kuleta udi.",
+      "tts": {
+        "text": "Popote watu hukusanyika na kutaka muziki wenye roho, mtu anaweza kuleta udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 5 — Makam",
+      "text_markdown": "Sura ya 5 — Makam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unapopiga piano, unabonyeza vibonyeupe na vibonyeusi.",
+      "text_markdown": "Unapopiga piano, unabonyeza vibonyeupe na vibonyeusi.",
+      "tts": {
+        "text": "Unapopiga piano, unabonyeza vibonyeupe na vibonyeusi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuna noti kumi na mbili katika kila oktevu, na kila hatua huwa sawa.",
+      "text_markdown": "Kuna noti kumi na mbili katika kila oktevu, na kila hatua huwa sawa.",
+      "tts": {
+        "text": "Kuna noti kumi na mbili katika kila oktevu, na kila hatua huwa sawa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunauita huu mpangilio wa hatua sawa.",
+      "text_markdown": "Tunauita huu mpangilio wa hatua sawa.",
+      "tts": {
+        "text": "Tunauita huu mpangilio wa hatua sawa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hivyo si jinsi udi unavyofanya kazi.",
+      "text_markdown": "Hivyo si jinsi udi unavyofanya kazi.",
+      "tts": {
+        "text": "Hivyo si jinsi udi unavyofanya kazi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Udi hutumia mfumo wa zamani zaidi unaoitwa makam.",
+      "text_markdown": "Udi hutumia mfumo wa zamani zaidi unaoitwa makam.",
+      "tts": {
+        "text": "Udi hutumia mfumo wa zamani zaidi unaoitwa makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam ni njia ya kuchagua noti, na kuna makamat mengi.",
+      "text_markdown": "Makam ni njia ya kuchagua noti, na kuna makamat mengi.",
+      "tts": {
+        "text": "Makam ni njia ya kuchagua noti, na kuna makamat mengi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila mmoja una hisia yake.",
+      "text_markdown": "Kila mmoja una hisia yake.",
+      "tts": {
+        "text": "Kila mmoja una hisia yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baadhi ni za furaha, baadhi ni za huzuni, na baadhi zinasikika za kifumbo kidogo.",
+      "text_markdown": "Baadhi ni za furaha, baadhi ni za huzuni, na baadhi zinasikika za kifumbo kidogo.",
+      "tts": {
+        "text": "Baadhi ni za furaha, baadhi ni za huzuni, na baadhi zinasikika za kifumbo kidogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siri kubwa ya makam ni kwamba ina noti nyingi kuliko piano.",
+      "text_markdown": "Siri kubwa ya makam ni kwamba ina noti nyingi kuliko piano.",
+      "tts": {
+        "text": "Siri kubwa ya makam ni kwamba ina noti nyingi kuliko piano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kati ya vibonyeupe na vibonyeusi, kuna hatua ndogo tunazoita robo toni.",
+      "text_markdown": "Kati ya vibonyeupe na vibonyeusi, kuna hatua ndogo tunazoita robo toni.",
+      "tts": {
+        "text": "Kati ya vibonyeupe na vibonyeusi, kuna hatua ndogo tunazoita robo toni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Robo toni ni nusu ya nusu hatua.",
+      "text_markdown": "Robo toni ni nusu ya nusu hatua.",
+      "tts": {
+        "text": "Robo toni ni nusu ya nusu hatua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni noti ndogo sana inayoishi katikati ya noti unazozijua.",
+      "text_markdown": "Ni noti ndogo sana inayoishi katikati ya noti unazozijua.",
+      "tts": {
+        "text": "Ni noti ndogo sana inayoishi katikati ya noti unazozijua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwenye piano, huwezi kuipiga.",
+      "text_markdown": "Kwenye piano, huwezi kuipiga.",
+      "tts": {
+        "text": "Kwenye piano, huwezi kuipiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwenye udi, unateleza na kidole chako ili kuipata.",
+      "text_markdown": "Kwenye udi, unateleza na kidole chako ili kuipata.",
+      "tts": {
+        "text": "Kwenye udi, unateleza na kidole chako ili kuipata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam hujengwa kwa makundi madogo ya noti.",
+      "text_markdown": "Makam hujengwa kwa makundi madogo ya noti.",
+      "tts": {
+        "text": "Makam hujengwa kwa makundi madogo ya noti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila kundi dogo huitwa jinsi.",
+      "text_markdown": "Kila kundi dogo huitwa jinsi.",
+      "tts": {
+        "text": "Kila kundi dogo huitwa jinsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jinsi nyingi zina noti nne.",
+      "text_markdown": "Jinsi nyingi zina noti nne.",
+      "tts": {
+        "text": "Jinsi nyingi zina noti nne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unaweza kuiona jinsi kama tofali dogo la Lego la muziki, kisha unayaweka pamoja kujenga makam.",
+      "text_markdown": "Unaweza kuiona jinsi kama tofali dogo la Lego la muziki, kisha unayaweka pamoja kujenga makam.",
+      "tts": {
+        "text": "Unaweza kuiona jinsi kama tofali dogo la Lego la muziki, kisha unayaweka pamoja kujenga makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam ni ya melodi, si ya kupanga sauti kwa upatanifu.",
+      "text_markdown": "Makam ni ya melodi, si ya kupanga sauti kwa upatanifu.",
+      "tts": {
+        "text": "Makam ni ya melodi, si ya kupanga sauti kwa upatanifu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiyo maana yake ni kwamba muziki husonga noti moja moja, badala ya kurundika noti kuwa kordi kama gitaa.",
+      "text_markdown": "Hiyo maana yake ni kwamba muziki husonga noti moja moja, badala ya kurundika noti kuwa kordi kama gitaa.",
+      "tts": {
+        "text": "Hiyo maana yake ni kwamba muziki husonga noti moja moja, badala ya kurundika noti kuwa kordi kama gitaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi unapopiga solo ndefu inayozunguka polepole, ndani ya makam mpigaji husafiri kwa utulivu.",
+      "text_markdown": "Udi unapopiga solo ndefu inayozunguka polepole, ndani ya makam mpigaji husafiri kwa utulivu.",
+      "tts": {
+        "text": "Udi unapopiga solo ndefu inayozunguka polepole, ndani ya makam mpigaji husafiri kwa utulivu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anachagua noti kutoka tofali moja, kisha anateleza kwenda jingine.",
+      "text_markdown": "Anachagua noti kutoka tofali moja, kisha anateleza kwenda jingine.",
+      "tts": {
+        "text": "Anachagua noti kutoka tofali moja, kisha anateleza kwenda jingine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Solo hiyo ina jina.",
+      "text_markdown": "Solo hiyo ina jina.",
+      "tts": {
+        "text": "Solo hiyo ina jina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tunaiita taksim.",
+      "text_markdown": "Tunaiita taksim.",
+      "tts": {
+        "text": "Tunaiita taksim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taksim nzuri inaweza kukufanya ucheke, na inaweza kukuliza.",
+      "text_markdown": "Taksim nzuri inaweza kukufanya ucheke, na inaweza kukuliza.",
+      "tts": {
+        "text": "Taksim nzuri inaweza kukufanya ucheke, na inaweza kukuliza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hapo ndipo udi huwa mzuri zaidi.",
+      "text_markdown": "Hapo ndipo udi huwa mzuri zaidi.",
+      "tts": {
+        "text": "Hapo ndipo udi huwa mzuri zaidi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 6 — Mabingwa Wakuu",
+      "text_markdown": "Sura ya 6 — Mabingwa Wakuu"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi umepigwa kwa zaidi ya miaka elfu moja.",
+      "text_markdown": "Udi umepigwa kwa zaidi ya miaka elfu moja.",
+      "tts": {
+        "text": "Udi umepigwa kwa zaidi ya miaka elfu moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Katika muda wote huo, watu wachache waliubadili milele.",
+      "text_markdown": "Katika muda wote huo, watu wachache waliubadili milele.",
+      "tts": {
+        "text": "Katika muda wote huo, watu wachache waliubadili milele.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wa kwanza alikuwa mwanafikra zaidi kuliko mpigaji, aliyeitwa al Farabi.",
+      "text_markdown": "Wa kwanza alikuwa mwanafikra zaidi kuliko mpigaji, aliyeitwa al Farabi.",
+      "tts": {
+        "text": "Wa kwanza alikuwa mwanafikra zaidi kuliko mpigaji, aliyeitwa al Farabi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliishi karibu mwaka mia nane sabini na mbili hadi mwaka mia tisa hamsini, akifanya kazi katika mji mkubwa wa Baghdad.",
+      "text_markdown": "Aliishi karibu mwaka mia nane sabini na mbili hadi mwaka mia tisa hamsini, akifanya kazi katika mji mkubwa wa Baghdad.",
+      "tts": {
+        "text": "Aliishi karibu mwaka mia nane sabini na mbili hadi mwaka mia tisa hamsini, akifanya kazi katika mji mkubwa wa Baghdad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al Farabi aliandika kitabu kikubwa sana kuhusu muziki.",
+      "text_markdown": "Al Farabi aliandika kitabu kikubwa sana kuhusu muziki.",
+      "tts": {
+        "text": "Al Farabi aliandika kitabu kikubwa sana kuhusu muziki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alieleza jinsi nyuzi zinavyotetemeka.",
+      "text_markdown": "Alieleza jinsi nyuzi zinavyotetemeka.",
+      "tts": {
+        "text": "Alieleza jinsi nyuzi zinavyotetemeka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alieleza kwa nini noti fulani husikika tamu pamoja.",
+      "text_markdown": "Alieleza kwa nini noti fulani husikika tamu pamoja.",
+      "tts": {
+        "text": "Alieleza kwa nini noti fulani husikika tamu pamoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alieleza kwa nini muziki unaweza kubadili jinsi mtu anavyohisi.",
+      "text_markdown": "Alieleza kwa nini muziki unaweza kubadili jinsi mtu anavyohisi.",
+      "tts": {
+        "text": "Alieleza kwa nini muziki unaweza kubadili jinsi mtu anavyohisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kitabu chake kilisomwa kwa Kiarabu na Kilatini kwa karne nyingi.",
+      "text_markdown": "Kitabu chake kilisomwa kwa Kiarabu na Kilatini kwa karne nyingi.",
+      "tts": {
+        "text": "Kitabu chake kilisomwa kwa Kiarabu na Kilatini kwa karne nyingi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mtu wa pili mkubwa wa udi alikuwa mwimbaji aliyeitwa Ziryab, aliyezaliwa Iraq karibu mwaka mia saba themanini na tisa.",
+      "text_markdown": "Mtu wa pili mkubwa wa udi alikuwa mwimbaji aliyeitwa Ziryab, aliyezaliwa Iraq karibu mwaka mia saba themanini na tisa.",
+      "tts": {
+        "text": "Mtu wa pili mkubwa wa udi alikuwa mwimbaji aliyeitwa Ziryab, aliyezaliwa Iraq karibu mwaka mia saba themanini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akiwa kijana, ilibidi aondoke Baghdad kwa haraka.",
+      "text_markdown": "Akiwa kijana, ilibidi aondoke Baghdad kwa haraka.",
+      "tts": {
+        "text": "Akiwa kijana, ilibidi aondoke Baghdad kwa haraka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab alisafiri magharibi kuvuka Afrika Kaskazini yote.",
+      "text_markdown": "Ziryab alisafiri magharibi kuvuka Afrika Kaskazini yote.",
+      "tts": {
+        "text": "Ziryab alisafiri magharibi kuvuka Afrika Kaskazini yote.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alifika mjini Kordoba, Hispania, mwaka mia nane ishirini na mbili.",
+      "text_markdown": "Alifika mjini Kordoba, Hispania, mwaka mia nane ishirini na mbili.",
+      "tts": {
+        "text": "Alifika mjini Kordoba, Hispania, mwaka mia nane ishirini na mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mfalme wa Kordoba aliupenda muziki wake na akampa nyumba, mshahara, na muda wa kufundisha.",
+      "text_markdown": "Mfalme wa Kordoba aliupenda muziki wake na akampa nyumba, mshahara, na muda wa kufundisha.",
+      "tts": {
+        "text": "Mfalme wa Kordoba aliupenda muziki wake na akampa nyumba, mshahara, na muda wa kufundisha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko Hispania, Ziryab alifungua shule ya muziki.",
+      "text_markdown": "Huko Hispania, Ziryab alifungua shule ya muziki.",
+      "tts": {
+        "text": "Huko Hispania, Ziryab alifungua shule ya muziki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wengine husema hiyo ilikuwa shule ya kwanza kabisa ya muziki duniani.",
+      "text_markdown": "Wengine husema hiyo ilikuwa shule ya kwanza kabisa ya muziki duniani.",
+      "tts": {
+        "text": "Wengine husema hiyo ilikuwa shule ya kwanza kabisa ya muziki duniani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliongeza kozi ya tano ya nyuzi kwenye udi, na akabadilisha namna vipigio vilivyotengenezwa.",
+      "text_markdown": "Aliongeza kozi ya tano ya nyuzi kwenye udi, na akabadilisha namna vipigio vilivyotengenezwa.",
+      "tts": {
+        "text": "Aliongeza kozi ya tano ya nyuzi kwenye udi, na akabadilisha namna vipigio vilivyotengenezwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muda mrefu baada ya Ziryab, katika wakati wetu, mpigaji kutoka Iraq aliuinua udi hadi mahali pya.",
+      "text_markdown": "Muda mrefu baada ya Ziryab, katika wakati wetu, mpigaji kutoka Iraq aliuinua udi hadi mahali pya.",
+      "tts": {
+        "text": "Muda mrefu baada ya Ziryab, katika wakati wetu, mpigaji kutoka Iraq aliuinua udi hadi mahali pya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jina lake lilikuwa Munir Bashir, na watu walimwita mfalme wa udi.",
+      "text_markdown": "Jina lake lilikuwa Munir Bashir, na watu walimwita mfalme wa udi.",
+      "tts": {
+        "text": "Jina lake lilikuwa Munir Bashir, na watu walimwita mfalme wa udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kabla ya Bashir, kwa kawaida udi ulipigwa pamoja na ala nyingine.",
+      "text_markdown": "Kabla ya Bashir, kwa kawaida udi ulipigwa pamoja na ala nyingine.",
+      "tts": {
+        "text": "Kabla ya Bashir, kwa kawaida udi ulipigwa pamoja na ala nyingine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir aliuweka jukwaani peke yake, na akapiga solo ndefu, tulivu, na za kina.",
+      "text_markdown": "Bashir aliuweka jukwaani peke yake, na akapiga solo ndefu, tulivu, na za kina.",
+      "tts": {
+        "text": "Bashir aliuweka jukwaani peke yake, na akapiga solo ndefu, tulivu, na za kina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watu duniani kote walimsikia na wakaipenda tena udi.",
+      "text_markdown": "Watu duniani kote walimsikia na wakaipenda tena udi.",
+      "tts": {
+        "text": "Watu duniani kote walimsikia na wakaipenda tena udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wengine wengi walikuwapo.",
+      "text_markdown": "Wengine wengi walikuwapo.",
+      "tts": {
+        "text": "Wengine wengi walikuwapo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al Atrash aliufanya udi kuwa sauti ya filamu za Misri.",
+      "text_markdown": "Farid al Atrash aliufanya udi kuwa sauti ya filamu za Misri.",
+      "tts": {
+        "text": "Farid al Atrash aliufanya udi kuwa sauti ya filamu za Misri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anuar Brahem wa Tunisia hupiga udi pamoja na wanamuziki wa jaz kutoka Ulaya na Amerika.",
+      "text_markdown": "Anuar Brahem wa Tunisia hupiga udi pamoja na wanamuziki wa jaz kutoka Ulaya na Amerika.",
+      "tts": {
+        "text": "Anuar Brahem wa Tunisia hupiga udi pamoja na wanamuziki wa jaz kutoka Ulaya na Amerika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi bado uko hai.",
+      "text_markdown": "Udi bado uko hai.",
+      "tts": {
+        "text": "Udi bado uko hai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila mwaka, bingwa mpya huzaliwa mahali fulani duniani.",
+      "text_markdown": "Kila mwaka, bingwa mpya huzaliwa mahali fulani duniani.",
+      "tts": {
+        "text": "Kila mwaka, bingwa mpya huzaliwa mahali fulani duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 7 — Udi na Dunia",
+      "text_markdown": "Sura ya 7 — Udi na Dunia"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi haukubaki katika ulimwengu wa Kiarabu.",
+      "text_markdown": "Udi haukubaki katika ulimwengu wa Kiarabu.",
+      "tts": {
+        "text": "Udi haukubaki katika ulimwengu wa Kiarabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uliposafiri, ulibadili umbo, jina, na nyimbo zake.",
+      "text_markdown": "Uliposafiri, ulibadili umbo, jina, na nyimbo zake.",
+      "tts": {
+        "text": "Uliposafiri, ulibadili umbo, jina, na nyimbo zake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi ulipofika Hispania ya Enzi za Kati, wapigaji wa Ulaya walipenda bakuli la mbao na sauti yake ya kina.",
+      "text_markdown": "Udi ulipofika Hispania ya Enzi za Kati, wapigaji wa Ulaya walipenda bakuli la mbao na sauti yake ya kina.",
+      "tts": {
+        "text": "Udi ulipofika Hispania ya Enzi za Kati, wapigaji wa Ulaya walipenda bakuli la mbao na sauti yake ya kina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lakini walitaka freti, kama ala ndogo walizozijua tayari.",
+      "text_markdown": "Lakini walitaka freti, kama ala ndogo walizozijua tayari.",
+      "tts": {
+        "text": "Lakini walitaka freti, kama ala ndogo walizozijua tayari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hivyo wakaongeza freti, wakatandaza nyuma kidogo, na wakaita ala hiyo mpya luti.",
+      "text_markdown": "Hivyo wakaongeza freti, wakatandaza nyuma kidogo, na wakaita ala hiyo mpya luti.",
+      "tts": {
+        "text": "Hivyo wakaongeza freti, wakatandaza nyuma kidogo, na wakaita ala hiyo mpya luti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa miaka mia tano, luti ilikuwa ala pendwa ya Ulaya.",
+      "text_markdown": "Kwa miaka mia tano, luti ilikuwa ala pendwa ya Ulaya.",
+      "tts": {
+        "text": "Kwa miaka mia tano, luti ilikuwa ala pendwa ya Ulaya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wafalme waliipiga.",
+      "text_markdown": "Wafalme waliipiga.",
+      "tts": {
+        "text": "Wafalme waliipiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Washairi waliipiga.",
+      "text_markdown": "Washairi waliipiga.",
+      "tts": {
+        "text": "Washairi waliipiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Watunzi wakubwa sana waliiandikia vipande vya muziki.",
+      "text_markdown": "Watunzi wakubwa sana waliiandikia vipande vya muziki.",
+      "tts": {
+        "text": "Watunzi wakubwa sana waliiandikia vipande vya muziki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha luti ikabadilika tena.",
+      "text_markdown": "Kisha luti ikabadilika tena.",
+      "tts": {
+        "text": "Kisha luti ikabadilika tena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wapigaji waliongeza nyuzi zaidi, wakatandaza nyuma zaidi, na wakaweka mwili mdogo na mwepesi juu yake.",
+      "text_markdown": "Wapigaji waliongeza nyuzi zaidi, wakatandaza nyuma zaidi, na wakaweka mwili mdogo na mwepesi juu yake.",
+      "tts": {
+        "text": "Wapigaji waliongeza nyuzi zaidi, wakatandaza nyuma zaidi, na wakaweka mwili mdogo na mwepesi juu yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Karibu mwaka elfu moja mia nane, huko Hispania, ala hii mpya ilikuwa na jina tunalolijua sote.",
+      "text_markdown": "Karibu mwaka elfu moja mia nane, huko Hispania, ala hii mpya ilikuwa na jina tunalolijua sote.",
+      "tts": {
+        "text": "Karibu mwaka elfu moja mia nane, huko Hispania, ala hii mpya ilikuwa na jina tunalolijua sote.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ilikuwa gitaa.",
+      "text_markdown": "Ilikuwa gitaa.",
+      "tts": {
+        "text": "Ilikuwa gitaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hivyo udi, luti, na gitaa wote ni wa familia moja.",
+      "text_markdown": "Hivyo udi, luti, na gitaa wote ni wa familia moja.",
+      "tts": {
+        "text": "Hivyo udi, luti, na gitaa wote ni wa familia moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni binamu, na wanashiriki babu mmoja.",
+      "text_markdown": "Ni binamu, na wanashiriki babu mmoja.",
+      "tts": {
+        "text": "Ni binamu, na wanashiriki babu mmoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babu huyo ni udi.",
+      "text_markdown": "Babu huyo ni udi.",
+      "tts": {
+        "text": "Babu huyo ni udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo, udi na gitaa hupiga pamoja.",
+      "text_markdown": "Leo, udi na gitaa hupiga pamoja.",
+      "tts": {
+        "text": "Leo, udi na gitaa hupiga pamoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anuar Brahem hupiga udi pamoja na wapiga gitaa wa jaz.",
+      "text_markdown": "Anuar Brahem hupiga udi pamoja na wapiga gitaa wa jaz.",
+      "tts": {
+        "text": "Anuar Brahem hupiga udi pamoja na wapiga gitaa wa jaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir alipiga kwa okestra.",
+      "text_markdown": "Munir Bashir alipiga kwa okestra.",
+      "tts": {
+        "text": "Munir Bashir alipiga kwa okestra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wapigaji vijana Beirut, Istanbul, Paris, na New York wanachanganya udi na roki, hip hop, na muziki wa filamu.",
+      "text_markdown": "Wapigaji vijana Beirut, Istanbul, Paris, na New York wanachanganya udi na roki, hip hop, na muziki wa filamu.",
+      "tts": {
+        "text": "Wapigaji vijana Beirut, Istanbul, Paris, na Nyu York wanachanganya udi na roki, hip hop, na muziki wa filamu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udi ni zaidi ya ala.",
+      "text_markdown": "Udi ni zaidi ya ala.",
+      "tts": {
+        "text": "Udi ni zaidi ya ala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni daraja.",
+      "text_markdown": "Ni daraja.",
+      "tts": {
+        "text": "Ni daraja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unabeba hadithi kutoka Mesopotamia, kupitia Uajemi, kupitia ulimwengu wa Kiarabu, hadi Hispania, hadi Ulaya, na tena hadi kila nchi duniani.",
+      "text_markdown": "Unabeba hadithi kutoka Mesopotamia, kupitia Uajemi, kupitia ulimwengu wa Kiarabu, hadi Hispania, hadi Ulaya, na tena hadi kila nchi duniani.",
+      "tts": {
+        "text": "Unabeba hadithi kutoka Mesopotamia, kupitia Uajemi, kupitia ulimwengu wa Kiarabu, hadi Hispania, hadi Ulaya, na tena hadi kila nchi duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila unapoisikia gitaa, mahali fulani chini yake, unaweza kuisikia sauti laini na ya kina ya udi.",
+      "text_markdown": "Kila unapoisikia gitaa, mahali fulani chini yake, unaweza kuisikia sauti laini na ya kina ya udi.",
+      "tts": {
+        "text": "Kila unapoisikia gitaa, mahali fulani chini yake, unaweza kuisikia sauti laini na ya kina ya udi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kuhusu Kitabu Hiki",
+      "text_markdown": "Kuhusu Kitabu Hiki"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ndiyo juzuu ya kwanza ya Vyombo vya Muziki vya Dunia.",
+      "text_markdown": "Hii ndiyo juzuu ya kwanza ya Vyombo vya Muziki vya Dunia.",
+      "tts": {
+        "text": "Hii ndiyo juzuu ya kwanza ya Vyombo vya Muziki vya Dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila kitabu katika mfululizo huu husimulia hadithi ya ala moja.",
+      "text_markdown": "Kila kitabu katika mfululizo huu husimulia hadithi ya ala moja.",
+      "tts": {
+        "text": "Kila kitabu katika mfululizo huu husimulia hadithi ya ala moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila kitabu ni kifupi, na kila kimoja ni cha kweli.",
+      "text_markdown": "Kila kitabu ni kifupi, na kila kimoja ni cha kweli.",
+      "tts": {
+        "text": "Kila kitabu ni kifupi, na kila kimoja ni cha kweli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kitabu kijacho ni kuhusu sitari, luti kubwa ya India yenye shingo ndefu, nyuzi nyingi, na sauti ya kina yenye mlio.",
+      "text_markdown": "Kitabu kijacho ni kuhusu sitari, luti kubwa ya India yenye shingo ndefu, nyuzi nyingi, na sauti ya kina yenye mlio.",
+      "tts": {
+        "text": "Kitabu kijacho ni kuhusu sitari, luti kubwa ya India yenye shingo ndefu, nyuzi nyingi, na sauti ya kina yenye mlio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baada ya sitari, tutasafiri hadi Afrika Magharibi kwa kora, kisha hadi Japani kwa shakuhachi.",
+      "text_markdown": "Baada ya sitari, tutasafiri hadi Afrika Magharibi kwa kora, kisha hadi Japani kwa shakuhachi.",
+      "tts": {
+        "text": "Baada ya sitari, tutasafiri hadi Afrika Magharibi kwa kora, kisha hadi Japani kwa shakuhachi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Asante kwa kusikiliza.",
+      "text_markdown": "Asante kwa kusikiliza.",
+      "tts": {
+        "text": "Asante kwa kusikiliza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nenda ukatafute udi, mtandaoni au mjini kwako, na uuache ukuimbie.",
+      "text_markdown": "Nenda ukatafute udi, mtandaoni au mjini kwako, na uuache ukuimbie.",
+      "tts": {
+        "text": "Nenda ukatafute udi, mtandaoni au mjini kwako, na uuache ukuimbie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 170,
+  "version": "2.0.0"
+}

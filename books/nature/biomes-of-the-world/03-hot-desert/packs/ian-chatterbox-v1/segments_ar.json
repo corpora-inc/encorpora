@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "الصحراء الحارة",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الصحراء الحارة",
+      "text_markdown": "الصحراء الحارة"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أين توجد الصحاري",
+      "text_markdown": "أين توجد الصحاري"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهلاً بكم في الصحراء الحارة.",
+      "text_markdown": "أهلاً بكم في الصحراء الحارة.",
+      "tts": {
+        "text": "أهلاً بكم في الصحراء الحارة.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "text_markdown": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "tts": {
+        "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "text_markdown": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "tts": {
+        "text": "المنطقة الحيوية جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الصحراء الحارة مكان جاف.",
+      "text_markdown": "الصحراء الحارة مكان جاف.",
+      "tts": {
+        "text": "الصحراء الحارة مكان جاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يسقط فيها القليل جداً من المطر.",
+      "text_markdown": "يسقط فيها القليل جداً من المطر.",
+      "tts": {
+        "text": "يسقط فيها القليل جداً من المطر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الأيام حارة جداً، ومعظم الليالي معتدلة أو باردة.",
+      "text_markdown": "معظم الأيام حارة جداً، ومعظم الليالي معتدلة أو باردة.",
+      "tts": {
+        "text": "معظم الأيام حارة جداً، ومعظم الليالي معتدلة أو باردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر صحراء حارة في العالم هي الصحراء الكبرى، في شمال أفريقيا.",
+      "text_markdown": "أكبر صحراء حارة في العالم هي الصحراء الكبرى، في شمال أفريقيا.",
+      "tts": {
+        "text": "أكبر صحراء حارة في العالم هي الصحراء الكبرى، في شمال أفريقيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمتد من المحيط الأطلسي حتى تكاد تصل إلى البحر الأحمر.",
+      "text_markdown": "تمتد من المحيط الأطلسي حتى تكاد تصل إلى البحر الأحمر.",
+      "tts": {
+        "text": "تمتد من المحيط الأطلسي حتى تكاد تصل إلى البحر الأحمر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك صحاري عظيمة في وسط الجزيرة العربية، مثل الربع الخالي.",
+      "text_markdown": "وهناك صحاري عظيمة في وسط الجزيرة العربية، مثل الربع الخالي.",
+      "tts": {
+        "text": "وهناك صحاري عظيمة في وسط الجزيرة العربية، مثل الربع الخالي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك صحاري حارة في أمريكا الشمالية، في أماكن مثل جنوب غرب الولايات المتحدة وشمال المكسيك.",
+      "text_markdown": "وهناك صحاري حارة في أمريكا الشمالية، في أماكن مثل جنوب غرب الولايات المتحدة وشمال المكسيك.",
+      "tts": {
+        "text": "وهناك صحاري حارة في أمريكا الشمالية، في أماكن مثل جنوب غرب الولايات المتحدة وشمال المكسيك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتوجد صحاري أصغر في أمريكا الجنوبية، وجنوب أفريقيا، والهند، وعبر معظم أستراليا.",
+      "text_markdown": "وتوجد صحاري أصغر في أمريكا الجنوبية، وجنوب أفريقيا، والهند، وعبر معظم أستراليا.",
+      "tts": {
+        "text": "وتوجد صحاري أصغر في أمريكا الجنوبية، وجنوب أفريقيا، والهند، وعبر معظم أستراليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل واحدة من هذه الصحاري نشأت بمفردها، بعيداً عن الأخرى.",
+      "text_markdown": "كل واحدة من هذه الصحاري نشأت بمفردها، بعيداً عن الأخرى.",
+      "tts": {
+        "text": "كل واحدة من هذه الصحاري نشأت بمفردها، بعيداً عن الأخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "text_markdown": "ولذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "tts": {
+        "text": "ولذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فالصبار الذي تراه في صحراء ليس هو نفسه الذي تراه في صحراء أخرى.",
+      "text_markdown": "فالصبار الذي تراه في صحراء ليس هو نفسه الذي تراه في صحراء أخرى.",
+      "tts": {
+        "text": "فالصبار الذي تراه في صحراء ليس هو نفسه الذي تراه في صحراء أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+      "text_markdown": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+      "tts": {
+        "text": "لكنها كلها جزء من المنطقة الحيوية نفسها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تقف في صحراء حارة، يبدو الهواء جافاً.",
+      "text_markdown": "حين تقف في صحراء حارة، يبدو الهواء جافاً.",
+      "tts": {
+        "text": "حين تقف في صحراء حارة، يبدو الهواء جافاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والشمس قوية على وجهك.",
+      "text_markdown": "والشمس قوية على وجهك.",
+      "tts": {
+        "text": "والشمس قوية على وجهك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والأرض صخرية في أماكن كثيرة، ورملية في أماكن أخرى.",
+      "text_markdown": "والأرض صخرية في أماكن كثيرة، ورملية في أماكن أخرى.",
+      "tts": {
+        "text": "والأرض صخرية في أماكن كثيرة، ورملية في أماكن أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويمكنك أن ترى إلى مسافة بعيدة جداً.",
+      "text_markdown": "ويمكنك أن ترى إلى مسافة بعيدة جداً.",
+      "tts": {
+        "text": "ويمكنك أن ترى إلى مسافة بعيدة جداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والسماء شاسعة.",
+      "text_markdown": "والسماء شاسعة.",
+      "tts": {
+        "text": "والسماء شاسعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقد لا ترى شخصاً آخر أو حيواناً آخر طوال يوم كامل.",
+      "text_markdown": "وقد لا ترى شخصاً آخر أو حيواناً آخر طوال يوم كامل.",
+      "tts": {
+        "text": "وقد لا ترى شخصاً آخر أو حيواناً آخر طوال يوم كامل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي الصحراء الحارة.",
+      "text_markdown": "تلك هي الصحراء الحارة.",
+      "tts": {
+        "text": "تلك هي الصحراء الحارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "أين توجد الصحاري",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض واسعة جافة من الرمل والصخر والشمس الحارقة.",
+      "text_markdown": "أرض واسعة جافة من الرمل والصخر والشمس الحارقة.",
+      "tts": {
+        "text": "أرض واسعة جافة من الرمل والصخر والشمس الحارقة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطقس",
+      "text_markdown": "الطقس"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتشكل الطقس في الصحراء الحارة من شيئين.",
+      "text_markdown": "يتشكل الطقس في الصحراء الحارة من شيئين.",
+      "tts": {
+        "text": "يتشكل الطقس في الصحراء الحارة من شيئين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك شمس أكثر من اللازم، وهناك مطر أقل من الكفاية.",
+      "text_markdown": "هناك شمس أكثر من اللازم، وهناك مطر أقل من الكفاية.",
+      "tts": {
+        "text": "هناك شمس أكثر من اللازم، وهناك مطر أقل من الكفاية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الصحاري، يهطل المطر أياماً قليلة فقط كل سنة.",
+      "text_markdown": "في بعض الصحاري، يهطل المطر أياماً قليلة فقط كل سنة.",
+      "tts": {
+        "text": "في بعض الصحاري، يهطل المطر أياماً قليلة فقط كل سنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي أماكن أخرى، لا يهطل المطر مطلقاً لسنوات طويلة.",
+      "text_markdown": "وفي أماكن أخرى، لا يهطل المطر مطلقاً لسنوات طويلة.",
+      "tts": {
+        "text": "وفي أماكن أخرى، لا يهطل المطر مطلقاً لسنوات طويلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأيام حارة جداً.",
+      "text_markdown": "الأيام حارة جداً.",
+      "tts": {
+        "text": "الأيام حارة جداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في منتصف النهار، يمكن للشمس أن تسخّن الرمل إلى درجة حرارة تحرق قدميك.",
+      "text_markdown": "في منتصف النهار، يمكن للشمس أن تسخّن الرمل إلى درجة حرارة تحرق قدميك.",
+      "tts": {
+        "text": "في منتصف النهار، يمكن للشمس أن تسخّن الرمل إلى درجة حرارة تحرق قدميك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الليالي مختلفة تماماً.",
+      "text_markdown": "لكن الليالي مختلفة تماماً.",
+      "tts": {
+        "text": "لكن الليالي مختلفة تماماً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا توجد غيوم ولا أشجار تحفظ الدفء.",
+      "text_markdown": "لا توجد غيوم ولا أشجار تحفظ الدفء.",
+      "tts": {
+        "text": "لا توجد غيوم ولا أشجار تحفظ الدفء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحالما تغيب الشمس، تنطلق الحرارة مسرعة إلى السماء.",
+      "text_markdown": "وحالما تغيب الشمس، تنطلق الحرارة مسرعة إلى السماء.",
+      "tts": {
+        "text": "وحالما تغيب الشمس، تنطلق الحرارة مسرعة إلى السماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومع منتصف الليل، يصبح الجو معتدلاً، بل بارداً أحياناً.",
+      "text_markdown": "ومع منتصف الليل، يصبح الجو معتدلاً، بل بارداً أحياناً.",
+      "tts": {
+        "text": "ومع منتصف الليل، يصبح الجو معتدلاً، بل بارداً أحياناً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصباح، تكون الصخور باردة عند اللمس.",
+      "text_markdown": "في الصباح، تكون الصخور باردة عند اللمس.",
+      "tts": {
+        "text": "في الصباح، تكون الصخور باردة عند اللمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تشرق الشمس، فتبدأ الحرارة من جديد.",
+      "text_markdown": "ثم تشرق الشمس، فتبدأ الحرارة من جديد.",
+      "tts": {
+        "text": "ثم تشرق الشمس، فتبدأ الحرارة من جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين يأتي المطر، فإنه كثيراً ما يأتي دفعة واحدة.",
+      "text_markdown": "وحين يأتي المطر، فإنه كثيراً ما يأتي دفعة واحدة.",
+      "tts": {
+        "text": "وحين يأتي المطر، فإنه كثيراً ما يأتي دفعة واحدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تهبّ عاصفة كبيرة، وينهمر الماء بغزارة لساعة كاملة.",
+      "text_markdown": "تهبّ عاصفة كبيرة، وينهمر الماء بغزارة لساعة كاملة.",
+      "tts": {
+        "text": "تهبّ عاصفة كبيرة، وينهمر الماء بغزارة لساعة كاملة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمتلئ الأودية الجافة، ويندفع الماء فوق الرمل.",
+      "text_markdown": "تمتلئ الأودية الجافة، ويندفع الماء فوق الرمل.",
+      "tts": {
+        "text": "تمتلئ الأودية الجافة، ويندفع الماء فوق الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تعود الشمس، وفي غضون يوم واحد يختفي الماء من جديد.",
+      "text_markdown": "ثم تعود الشمس، وفي غضون يوم واحد يختفي الماء من جديد.",
+      "tts": {
+        "text": "ثم تعود الشمس، وفي غضون يوم واحد يختفي الماء من جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولنباتات الصحراء وحيواناتها، فإن كل قطرة من ذلك الماء لها قيمتها.",
+      "text_markdown": "ولنباتات الصحراء وحيواناتها، فإن كل قطرة من ذلك الماء لها قيمتها.",
+      "tts": {
+        "text": "ولنباتات الصحراء وحيواناتها، فإن كل قطرة من ذلك الماء لها قيمتها.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الصحراء الحارة ليس من الرمل.",
+      "text_markdown": "معظم الصحراء الحارة ليس من الرمل.",
+      "tts": {
+        "text": "معظم الصحراء الحارة ليس من الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها صخر وحصى وأرض صلبة جافة.",
+      "text_markdown": "معظمها صخر وحصى وأرض صلبة جافة.",
+      "tts": {
+        "text": "معظمها صخر وحصى وأرض صلبة جافة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك أيضاً أماكن فيها بحار عظيمة من الكثبان الرملية.",
+      "text_markdown": "وهناك أيضاً أماكن فيها بحار عظيمة من الكثبان الرملية.",
+      "tts": {
+        "text": "وهناك أيضاً أماكن فيها بحار عظيمة من الكثبان الرملية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحرّك الريح الكثبان الرملية ببطء عبر الأرض.",
+      "text_markdown": "تحرّك الريح الكثبان الرملية ببطء عبر الأرض.",
+      "tts": {
+        "text": "تحرّك الريح الكثبان الرملية ببطء عبر الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قد يكون الكثيب الرملي أصغر من بيت، أو أعلى من مبنى شاهق.",
+      "text_markdown": "قد يكون الكثيب الرملي أصغر من بيت، أو أعلى من مبنى شاهق.",
+      "tts": {
+        "text": "قد يكون الكثيب الرملي أصغر من بيت، أو أعلى من مبنى شاهق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي بعض الأماكن، ترتفع الجبال من قلب الصحراء.",
+      "text_markdown": "وفي بعض الأماكن، ترتفع الجبال من قلب الصحراء.",
+      "tts": {
+        "text": "وفي بعض الأماكن، ترتفع الجبال من قلب الصحراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنحت الريح والرمل الصخور وتشكلها أشكالاً غريبة عبر سنوات طويلة.",
+      "text_markdown": "تنحت الريح والرمل الصخور وتشكلها أشكالاً غريبة عبر سنوات طويلة.",
+      "tts": {
+        "text": "تنحت الريح والرمل الصخور وتشكلها أشكالاً غريبة عبر سنوات طويلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الماء هو أندر وأثمن شيء في الصحراء.",
+      "text_markdown": "الماء هو أندر وأثمن شيء في الصحراء.",
+      "tts": {
+        "text": "الماء هو أندر وأثمن شيء في الصحراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الأودية تجري فقط بعد العاصفة، ثم تجف.",
+      "text_markdown": "معظم الأودية تجري فقط بعد العاصفة، ثم تجف.",
+      "tts": {
+        "text": "معظم الأودية تجري فقط بعد العاصفة، ثم تجف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن في أعماق الرمل، يمكن للماء أن يستقر بين الصخور.",
+      "text_markdown": "لكن في أعماق الرمل، يمكن للماء أن يستقر بين الصخور.",
+      "tts": {
+        "text": "لكن في أعماق الرمل، يمكن للماء أن يستقر بين الصخور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي بعض الأماكن، يصعد هذا الماء الخفي إلى السطح ويصنع بقعة صغيرة من الخضرة.",
+      "text_markdown": "وفي بعض الأماكن، يصعد هذا الماء الخفي إلى السطح ويصنع بقعة صغيرة من الخضرة.",
+      "tts": {
+        "text": "وفي بعض الأماكن، يصعد هذا الماء الخفي إلى السطح ويصنع بقعة صغيرة من الخضرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتسمى هذه واحة.",
+      "text_markdown": "وتسمى هذه واحة.",
+      "tts": {
+        "text": "وتسمى هذه واحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الواحة تنمو الأشجار، وتغرّد الطيور، ويتوقف الناس ليشربوا.",
+      "text_markdown": "في الواحة تنمو الأشجار، وتغرّد الطيور، ويتوقف الناس ليشربوا.",
+      "tts": {
+        "text": "في الواحة تنمو الأشجار، وتغرّد الطيور، ويتوقف الناس ليشربوا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قد تكون الواحة حلقة صغيرة من النخيل في بحر شاسع من الرمل.",
+      "text_markdown": "قد تكون الواحة حلقة صغيرة من النخيل في بحر شاسع من الرمل.",
+      "tts": {
+        "text": "قد تكون الواحة حلقة صغيرة من النخيل في بحر شاسع من الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولولا هذه البقع من الماء، لما استطاع أحد عبور الصحاري الكبرى أبداً.",
+      "text_markdown": "ولولا هذه البقع من الماء، لما استطاع أحد عبور الصحاري الكبرى أبداً.",
+      "tts": {
+        "text": "ولولا هذه البقع من الماء، لما استطاع أحد عبور الصحاري الكبرى أبداً.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "النباتات",
+      "text_markdown": "النباتات"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نباتات الصحراء الحارة هي سيدة الصبر والانتظار.",
+      "text_markdown": "نباتات الصحراء الحارة هي سيدة الصبر والانتظار.",
+      "tts": {
+        "text": "نباتات الصحراء الحارة هي سيدة الصبر والانتظار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلمت كيف تعيش بدون ماء تقريباً.",
+      "text_markdown": "تعلمت كيف تعيش بدون ماء تقريباً.",
+      "tts": {
+        "text": "تعلمت كيف تعيش بدون ماء تقريباً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعضها يطوّر جذوراً طويلة تمتد عميقاً في الأرض.",
+      "text_markdown": "بعضها يطوّر جذوراً طويلة تمتد عميقاً في الأرض.",
+      "tts": {
+        "text": "بعضها يطوّر جذوراً طويلة تمتد عميقاً في الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك نباتات أخرى لها جذور عريضة سطحية تنتشر قرب السطح.",
+      "text_markdown": "وهناك نباتات أخرى لها جذور عريضة سطحية تنتشر قرب السطح.",
+      "tts": {
+        "text": "وهناك نباتات أخرى لها جذور عريضة سطحية تنتشر قرب السطح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد عاصفة المطر، تشرب هذه الجذور كل قطرة ماء قبل أن تجف.",
+      "text_markdown": "بعد عاصفة المطر، تشرب هذه الجذور كل قطرة ماء قبل أن تجف.",
+      "tts": {
+        "text": "بعد عاصفة المطر، تشرب هذه الجذور كل قطرة ماء قبل أن تجف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من نباتات الصحراء يخزّن الماء داخل جسده لفترة الجفاف الطويلة.",
+      "text_markdown": "كثير من نباتات الصحراء يخزّن الماء داخل جسده لفترة الجفاف الطويلة.",
+      "tts": {
+        "text": "كثير من نباتات الصحراء يخزّن الماء داخل جسده لفترة الجفاف الطويلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وسيقانها وأوراقها السميكة يمكن أن تحتفظ بالماء لأشهر، بل لسنوات.",
+      "text_markdown": "وسيقانها وأوراقها السميكة يمكن أن تحتفظ بالماء لأشهر، بل لسنوات.",
+      "tts": {
+        "text": "وسيقانها وأوراقها السميكة يمكن أن تحتفظ بالماء لأشهر، بل لسنوات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في صحاري الأمريكتين، توجد نباتات تسمى الصبار.",
+      "text_markdown": "في صحاري الأمريكتين، توجد نباتات تسمى الصبار.",
+      "tts": {
+        "text": "في صحاري الأمريكتين، توجد نباتات تسمى الصبار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "للصبار سيقان خضراء سميكة مليئة بالماء، وأشواك حادة بدلاً من الأوراق الطرية.",
+      "text_markdown": "للصبار سيقان خضراء سميكة مليئة بالماء، وأشواك حادة بدلاً من الأوراق الطرية.",
+      "tts": {
+        "text": "للصبار سيقان خضراء سميكة مليئة بالماء، وأشواك حادة بدلاً من الأوراق الطرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأشواك تمنع الحيوانات من أكل النباتات.",
+      "text_markdown": "الأشواك تمنع الحيوانات من أكل النباتات.",
+      "tts": {
+        "text": "الأشواك تمنع الحيوانات من أكل النباتات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والأشواك تصنع أيضاً ظلاً صغيراً يحمي من الشمس القوية.",
+      "text_markdown": "والأشواك تصنع أيضاً ظلاً صغيراً يحمي من الشمس القوية.",
+      "tts": {
+        "text": "والأشواك تصنع أيضاً ظلاً صغيراً يحمي من الشمس القوية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي صحاري أفريقيا وآسيا، تقوم نباتات سميكة أخرى بالعمل نفسه.",
+      "text_markdown": "وفي صحاري أفريقيا وآسيا، تقوم نباتات سميكة أخرى بالعمل نفسه.",
+      "tts": {
+        "text": "وفي صحاري أفريقيا وآسيا، تقوم نباتات سميكة أخرى بالعمل نفسه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من نباتات الصحراء رمادي أو أخضر باهت.",
+      "text_markdown": "كثير من نباتات الصحراء رمادي أو أخضر باهت.",
+      "tts": {
+        "text": "كثير من نباتات الصحراء رمادي أو أخضر باهت.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اللون الباهت يعكس ضوء الشمس بعيداً.",
+      "text_markdown": "اللون الباهت يعكس ضوء الشمس بعيداً.",
+      "tts": {
+        "text": "اللون الباهت يعكس ضوء الشمس بعيداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض النباتات تسقط أوراقها حين يأتي فصل الجفاف.",
+      "text_markdown": "بعض النباتات تسقط أوراقها حين يأتي فصل الجفاف.",
+      "tts": {
+        "text": "بعض النباتات تسقط أوراقها حين يأتي فصل الجفاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبقى حية كأغصان بنية عارية حتى المطرة التالية.",
+      "text_markdown": "تبقى حية كأغصان بنية عارية حتى المطرة التالية.",
+      "tts": {
+        "text": "تبقى حية كأغصان بنية عارية حتى المطرة التالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد مطر غزير، يمكن للصحراء أن تتغير في ليلة واحدة.",
+      "text_markdown": "بعد مطر غزير، يمكن للصحراء أن تتغير في ليلة واحدة.",
+      "tts": {
+        "text": "بعد مطر غزير، يمكن للصحراء أن تتغير في ليلة واحدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بذور صغيرة كانت تنتظر في التربة لسنوات تتفتح فجأة زهوراً.",
+      "text_markdown": "بذور صغيرة كانت تنتظر في التربة لسنوات تتفتح فجأة زهوراً.",
+      "tts": {
+        "text": "بذور صغيرة كانت تنتظر في التربة لسنوات تتفتح فجأة زهوراً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولأسابيع قليلة، تكتسي أجزاء من الصحراء بأزهار حمراء وصفراء وبنفسجية.",
+      "text_markdown": "ولأسابيع قليلة، تكتسي أجزاء من الصحراء بأزهار حمراء وصفراء وبنفسجية.",
+      "tts": {
+        "text": "ولأسابيع قليلة، تكتسي أجزاء من الصحراء بأزهار حمراء وصفراء وبنفسجية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تذبل الأزهار، وتسقط البذور، وتعود الصحراء إلى انتظارها.",
+      "text_markdown": "ثم تذبل الأزهار، وتسقط البذور، وتعود الصحراء إلى انتظارها.",
+      "tts": {
+        "text": "ثم تذبل الأزهار، وتسقط البذور، وتعود الصحراء إلى انتظارها.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لحيوانات الصحراء الحارة طرق بارعة كثيرة لتبقى على قيد الحياة.",
+      "text_markdown": "لحيوانات الصحراء الحارة طرق بارعة كثيرة لتبقى على قيد الحياة.",
+      "tts": {
+        "text": "لحيوانات الصحراء الحارة طرق بارعة كثيرة لتبقى على قيد الحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها ينام طوال منتصف النهار الحار.",
+      "text_markdown": "معظمها ينام طوال منتصف النهار الحار.",
+      "tts": {
+        "text": "معظمها ينام طوال منتصف النهار الحار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تخرج في برودة الصباح والمساء والليل.",
+      "text_markdown": "تخرج في برودة الصباح والمساء والليل.",
+      "tts": {
+        "text": "تخرج في برودة الصباح والمساء والليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من حيوانات الصحراء يحفر جحوراً في الرمل أو تحت الصخور.",
+      "text_markdown": "كثير من حيوانات الصحراء يحفر جحوراً في الرمل أو تحت الصخور.",
+      "tts": {
+        "text": "كثير من حيوانات الصحراء يحفر جحوراً في الرمل أو تحت الصخور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يبقى الجحر بارداً بينما يلتهب الهواء في الخارج.",
+      "text_markdown": "يبقى الجحر بارداً بينما يلتهب الهواء في الخارج.",
+      "tts": {
+        "text": "يبقى الجحر بارداً بينما يلتهب الهواء في الخارج.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يستطيع الفأر الصغير أن ينام طوال النهار في جحره دون أن يشعر بالحرارة.",
+      "text_markdown": "يستطيع الفأر الصغير أن ينام طوال النهار في جحره دون أن يشعر بالحرارة.",
+      "tts": {
+        "text": "يستطيع الفأر الصغير أن ينام طوال النهار في جحره دون أن يشعر بالحرارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السحالي شائعة جداً في الصحراء الحارة.",
+      "text_markdown": "السحالي شائعة جداً في الصحراء الحارة.",
+      "tts": {
+        "text": "السحالي شائعة جداً في الصحراء الحارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تجلس على الحجارة الدافئة في شمس الصباح الباكرة.",
+      "text_markdown": "تجلس على الحجارة الدافئة في شمس الصباح الباكرة.",
+      "tts": {
+        "text": "تجلس على الحجارة الدافئة في شمس الصباح الباكرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين يشتد حر النهار، تنزلق إلى الظل أو تحت صخرة.",
+      "text_markdown": "وحين يشتد حر النهار، تنزلق إلى الظل أو تحت صخرة.",
+      "tts": {
+        "text": "وحين يشتد حر النهار، تنزلق إلى الظل أو تحت صخرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والأفاعي أيضاً شائعة.",
+      "text_markdown": "والأفاعي أيضاً شائعة.",
+      "tts": {
+        "text": "والأفاعي أيضاً شائعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنزلق فوق الرمل باحثةً عن حيوانات صغيرة لتأكلها.",
+      "text_markdown": "تنزلق فوق الرمل باحثةً عن حيوانات صغيرة لتأكلها.",
+      "tts": {
+        "text": "تنزلق فوق الرمل باحثةً عن حيوانات صغيرة لتأكلها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأفاعي لها طريقة خاصة في التحرك جانبياً فوق الرمل الحار لتبقي جسدها بعيداً عن الأرض.",
+      "text_markdown": "بعض الأفاعي لها طريقة خاصة في التحرك جانبياً فوق الرمل الحار لتبقي جسدها بعيداً عن الأرض.",
+      "tts": {
+        "text": "بعض الأفاعي لها طريقة خاصة في التحرك جانبياً فوق الرمل الحار لتبقي جسدها بعيداً عن الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "العقارب تصطاد في الليل، رافعةً ذيولها عالياً.",
+      "text_markdown": "العقارب تصطاد في الليل، رافعةً ذيولها عالياً.",
+      "tts": {
+        "text": "العقارب تصطاد في الليل، رافعةً ذيولها عالياً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والعناكب والخنافس تعيش في كل جزء من الصحراء أيضاً.",
+      "text_markdown": "والعناكب والخنافس تعيش في كل جزء من الصحراء أيضاً.",
+      "tts": {
+        "text": "والعناكب والخنافس تعيش في كل جزء من الصحراء أيضاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من خنافس الصحراء يمكنها أن تعيش دون أن تشرب ماءً أبداً.",
+      "text_markdown": "كثير من خنافس الصحراء يمكنها أن تعيش دون أن تشرب ماءً أبداً.",
+      "tts": {
+        "text": "كثير من خنافس الصحراء يمكنها أن تعيش دون أن تشرب ماءً أبداً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحصل على كل ما تحتاجه من الماء من الطعام الذي تأكله.",
+      "text_markdown": "تحصل على كل ما تحتاجه من الماء من الطعام الذي تأكله.",
+      "tts": {
+        "text": "تحصل على كل ما تحتاجه من الماء من الطعام الذي تأكله.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر حيوان في الصحاري الأفريقية والعربية هو الجمل.",
+      "text_markdown": "أكبر حيوان في الصحاري الأفريقية والعربية هو الجمل.",
+      "tts": {
+        "text": "أكبر حيوان في الصحاري الأفريقية والعربية هو الجمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يستطيع الجمل أن يشرب كمية هائلة من الماء دفعة واحدة، ثم يمضي أياماً طويلة دون أن يشرب من جديد.",
+      "text_markdown": "يستطيع الجمل أن يشرب كمية هائلة من الماء دفعة واحدة، ثم يمضي أياماً طويلة دون أن يشرب من جديد.",
+      "tts": {
+        "text": "يستطيع الجمل أن يشرب كمية هائلة من الماء دفعة واحدة، ثم يمضي أياماً طويلة دون أن يشرب من جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أقدامه العريضة الناعمة تمنعه من الغوص في الرمل.",
+      "text_markdown": "أقدامه العريضة الناعمة تمنعه من الغوص في الرمل.",
+      "tts": {
+        "text": "أقدامه العريضة الناعمة تمنعه من الغوص في الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في صحاري أمريكا الشمالية، تصطاد الثعالب والقطط البرية الصغيرة في الليل.",
+      "text_markdown": "في صحاري أمريكا الشمالية، تصطاد الثعالب والقطط البرية الصغيرة في الليل.",
+      "tts": {
+        "text": "في صحاري أمريكا الشمالية، تصطاد الثعالب والقطط البرية الصغيرة في الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أفريقيا، تعيش ثعالب صغيرة ذات آذان كبيرة جداً في الرمال.",
+      "text_markdown": "في أفريقيا، تعيش ثعالب صغيرة ذات آذان كبيرة جداً في الرمال.",
+      "tts": {
+        "text": "في أفريقيا، تعيش ثعالب صغيرة ذات آذان كبيرة جداً في الرمال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الآذان الكبيرة تساعدها على سماع الحيوانات الصغيرة وهي تتحرك تحت الأرض.",
+      "text_markdown": "الآذان الكبيرة تساعدها على سماع الحيوانات الصغيرة وهي تتحرك تحت الأرض.",
+      "tts": {
+        "text": "الآذان الكبيرة تساعدها على سماع الحيوانات الصغيرة وهي تتحرك تحت الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والآذان الكبيرة تساعدها أيضاً على فقدان الحرارة في برودة الليل.",
+      "text_markdown": "والآذان الكبيرة تساعدها أيضاً على فقدان الحرارة في برودة الليل.",
+      "tts": {
+        "text": "والآذان الكبيرة تساعدها أيضاً على فقدان الحرارة في برودة الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي الأعالي، تحلّق النسور والعقبان منسابة في هواء الصحراء الدافئ.",
+      "text_markdown": "وفي الأعالي، تحلّق النسور والعقبان منسابة في هواء الصحراء الدافئ.",
+      "tts": {
+        "text": "وفي الأعالي، تحلّق النسور والعقبان منسابة في هواء الصحراء الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تراقب أي حركة صغيرة على الأرض.",
+      "text_markdown": "تراقب أي حركة صغيرة على الأرض.",
+      "tts": {
+        "text": "تراقب أي حركة صغيرة على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل حيوان هنا يعرف كيف ينتظر البرودة، وكيف يجد الظل، وكيف يجعل كل رشفة ماء تطول.",
+      "text_markdown": "كل حيوان هنا يعرف كيف ينتظر البرودة، وكيف يجد الظل، وكيف يجعل كل رشفة ماء تطول.",
+      "tts": {
+        "text": "كل حيوان هنا يعرف كيف ينتظر البرودة، وكيف يجد الظل، وكيف يجعل كل رشفة ماء تطول.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الناس",
+      "text_markdown": "الناس"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعيش الناس في الصحراء الحارة منذ آلاف السنين.",
+      "text_markdown": "يعيش الناس في الصحراء الحارة منذ آلاف السنين.",
+      "tts": {
+        "text": "يعيش الناس في الصحراء الحارة منذ آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقد وجدوا طرقهم الخاصة للعيش في أرض من شمس ورمل.",
+      "text_markdown": "وقد وجدوا طرقهم الخاصة للعيش في أرض من شمس ورمل.",
+      "tts": {
+        "text": "وقد وجدوا طرقهم الخاصة للعيش في أرض من شمس ورمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في كثير من الصحاري، تنتقل العائلات من مكان إلى آخر مع قطعانها.",
+      "text_markdown": "في كثير من الصحاري، تنتقل العائلات من مكان إلى آخر مع قطعانها.",
+      "tts": {
+        "text": "في كثير من الصحاري، تنتقل العائلات من مكان إلى آخر مع قطعانها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصحراء الكبرى وصحاري الجزيرة العربية، يربي الناس قطعاناً من الجمال والماعز والأغنام.",
+      "text_markdown": "في الصحراء الكبرى وصحاري الجزيرة العربية، يربي الناس قطعاناً من الجمال والماعز والأغنام.",
+      "tts": {
+        "text": "في الصحراء الكبرى وصحاري الجزيرة العربية، يربي الناس قطعاناً من الجمال والماعز والأغنام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستطيع الحيوانات أن تمشي وقتاً طويلاً بين شربة ماء وأخرى.",
+      "text_markdown": "تستطيع الحيوانات أن تمشي وقتاً طويلاً بين شربة ماء وأخرى.",
+      "tts": {
+        "text": "تستطيع الحيوانات أن تمشي وقتاً طويلاً بين شربة ماء وأخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يتبع الناس الحيوانات، والحيوانات تقودهم إلى الكلأ.",
+      "text_markdown": "يتبع الناس الحيوانات، والحيوانات تقودهم إلى الكلأ.",
+      "tts": {
+        "text": "يتبع الناس الحيوانات، والحيوانات تقودهم إلى الكلأ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "خيامهم مصنوعة من قماش منسوج من شعر حيواناتهم وصوفها.",
+      "text_markdown": "خيامهم مصنوعة من قماش منسوج من شعر حيواناتهم وصوفها.",
+      "tts": {
+        "text": "خيامهم مصنوعة من قماش منسوج من شعر حيواناتهم وصوفها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يمكن نصب الخيمة في ساعة وحلّها في ساعة.",
+      "text_markdown": "يمكن نصب الخيمة في ساعة وحلّها في ساعة.",
+      "tts": {
+        "text": "يمكن نصب الخيمة في ساعة وحلّها في ساعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحجب الشمس الحارقة عنهم، وتسمح لهواء الليل البارد بالمرور.",
+      "text_markdown": "تحجب الشمس الحارقة عنهم، وتسمح لهواء الليل البارد بالمرور.",
+      "tts": {
+        "text": "تحجب الشمس الحارقة عنهم، وتسمح لهواء الليل البارد بالمرور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يلبس أهل الصحراء ثياباً فضفاضة طويلة.",
+      "text_markdown": "يلبس أهل الصحراء ثياباً فضفاضة طويلة.",
+      "tts": {
+        "text": "يلبس أهل الصحراء ثياباً فضفاضة طويلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأكمام الطويلة والرأس المغطى تبقي الجسم بارداً وتحميه من الشمس.",
+      "text_markdown": "الأكمام الطويلة والرأس المغطى تبقي الجسم بارداً وتحميه من الشمس.",
+      "tts": {
+        "text": "الأكمام الطويلة والرأس المغطى تبقي الجسم بارداً وتحميه من الشمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ونقش زاهٍ على القماش يساعد صديقك على رؤيتك من بعيد.",
+      "text_markdown": "ونقش زاهٍ على القماش يساعد صديقك على رؤيتك من بعيد.",
+      "tts": {
+        "text": "ونقش زاهٍ على القماش يساعد صديقك على رؤيتك من بعيد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض أهل الصحراء يعيشون في بلدات بُنيت حول الواحة.",
+      "text_markdown": "بعض أهل الصحراء يعيشون في بلدات بُنيت حول الواحة.",
+      "tts": {
+        "text": "بعض أهل الصحراء يعيشون في بلدات بُنيت حول الواحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون نخيل التمر والفواكه والحبوب في الحلقة الخضراء حول الماء.",
+      "text_markdown": "يزرعون نخيل التمر والفواكه والحبوب في الحلقة الخضراء حول الماء.",
+      "tts": {
+        "text": "يزرعون نخيل التمر والفواكه والحبوب في الحلقة الخضراء حول الماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقد تعلموا حفر آبار عميقة ليجدوا الماء الخفي تحت الرمل.",
+      "text_markdown": "وقد تعلموا حفر آبار عميقة ليجدوا الماء الخفي تحت الرمل.",
+      "tts": {
+        "text": "وقد تعلموا حفر آبار عميقة ليجدوا الماء الخفي تحت الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يأتي المسافرون من بعيد إلى الواحة ليستريحوا ويملؤوا قِرَب مائهم.",
+      "text_markdown": "يأتي المسافرون من بعيد إلى الواحة ليستريحوا ويملؤوا قِرَب مائهم.",
+      "tts": {
+        "text": "يأتي المسافرون من بعيد إلى الواحة ليستريحوا ويملؤوا قِرَب مائهم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهل الصحراء يعرفون كل نجم في سماء الليل.",
+      "text_markdown": "أهل الصحراء يعرفون كل نجم في سماء الليل.",
+      "tts": {
+        "text": "أهل الصحراء يعرفون كل نجم في سماء الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويعرفون أسماء كل ريح تهب.",
+      "text_markdown": "ويعرفون أسماء كل ريح تهب.",
+      "tts": {
+        "text": "ويعرفون أسماء كل ريح تهب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويستطيعون أن يقرؤوا آثار كل حيوان في الرمل.",
+      "text_markdown": "ويستطيعون أن يقرؤوا آثار كل حيوان في الرمل.",
+      "tts": {
+        "text": "ويستطيعون أن يقرؤوا آثار كل حيوان في الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتوارث هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+      "text_markdown": "تتوارث هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+      "tts": {
+        "text": "تتوارث هذه المعرفة من الآباء إلى الأبناء، سنة بعد سنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي كل صحراء كبرى، لهذا النوع من الحياة لغاته وأغانيه وقصصه الخاصة.",
+      "text_markdown": "وفي كل صحراء كبرى، لهذا النوع من الحياة لغاته وأغانيه وقصصه الخاصة.",
+      "tts": {
+        "text": "وفي كل صحراء كبرى، لهذا النوع من الحياة لغاته وأغانيه وقصصه الخاصة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الصحراء اليوم",
+      "text_markdown": "الصحراء اليوم"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الصحراء الحارة منطقة حيوية جميلة وقاسية.",
+      "text_markdown": "الصحراء الحارة منطقة حيوية جميلة وقاسية.",
+      "tts": {
+        "text": "الصحراء الحارة منطقة حيوية جميلة وقاسية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي تغطي جزءاً كبيراً من اليابسة على الأرض.",
+      "text_markdown": "وهي تغطي جزءاً كبيراً من اليابسة على الأرض.",
+      "tts": {
+        "text": "وهي تغطي جزءاً كبيراً من اليابسة على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وشمس الصحراء القوية هي أيضاً من أكبر مصادر الطاقة النظيفة لدينا.",
+      "text_markdown": "وشمس الصحراء القوية هي أيضاً من أكبر مصادر الطاقة النظيفة لدينا.",
+      "tts": {
+        "text": "وشمس الصحراء القوية هي أيضاً من أكبر مصادر الطاقة النظيفة لدينا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُبنى حقول واسعة من ألواح تلتقط الشمس في كثير من الصحاري.",
+      "text_markdown": "تُبنى حقول واسعة من ألواح تلتقط الشمس في كثير من الصحاري.",
+      "tts": {
+        "text": "تُبنى حقول واسعة من ألواح تلتقط الشمس في كثير من الصحاري.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحوّل شمس الصحراء إلى كهرباء تذهب إلى مدن بعيدة.",
+      "text_markdown": "تحوّل شمس الصحراء إلى كهرباء تذهب إلى مدن بعيدة.",
+      "tts": {
+        "text": "تحوّل شمس الصحراء إلى كهرباء تذهب إلى مدن بعيدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الصحراء في خطر في بعض الأماكن.",
+      "text_markdown": "لكن الصحراء في خطر في بعض الأماكن.",
+      "tts": {
+        "text": "لكن الصحراء في خطر في بعض الأماكن.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض المناطق، تتسع الصحراء، لأن الناس قد استنفدوا الماء والعشب عند أطرافها.",
+      "text_markdown": "في بعض المناطق، تتسع الصحراء، لأن الناس قد استنفدوا الماء والعشب عند أطرافها.",
+      "tts": {
+        "text": "في بعض المناطق، تتسع الصحراء، لأن الناس قد استنفدوا الماء والعشب عند أطرافها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يموت العشب، وتذهب الأشجار، ويتقدم الرمل.",
+      "text_markdown": "يموت العشب، وتذهب الأشجار، ويتقدم الرمل.",
+      "tts": {
+        "text": "يموت العشب، وتذهب الأشجار، ويتقدم الرمل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي أماكن أخرى، تستنزف البلدات على حافة الصحراء الكثير من الماء الخفي تحت الأرض.",
+      "text_markdown": "وفي أماكن أخرى، تستنزف البلدات على حافة الصحراء الكثير من الماء الخفي تحت الأرض.",
+      "tts": {
+        "text": "وفي أماكن أخرى، تستنزف البلدات على حافة الصحراء الكثير من الماء الخفي تحت الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين يذهب الماء العميق، تجف الواحات أيضاً.",
+      "text_markdown": "وحين يذهب الماء العميق، تجف الواحات أيضاً.",
+      "tts": {
+        "text": "وحين يذهب الماء العميق، تجف الواحات أيضاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعمل جماعات كثيرة حول العالم على رعاية الصحاري.",
+      "text_markdown": "تعمل جماعات كثيرة حول العالم على رعاية الصحاري.",
+      "tts": {
+        "text": "تعمل جماعات كثيرة حول العالم على رعاية الصحاري.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون صفوفاً من الأشجار والأعشاب لإيقاف الرمال الزاحفة.",
+      "text_markdown": "يزرعون صفوفاً من الأشجار والأعشاب لإيقاف الرمال الزاحفة.",
+      "tts": {
+        "text": "يزرعون صفوفاً من الأشجار والأعشاب لإيقاف الرمال الزاحفة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويساعدون أهل الصحراء على استعمال الماء بحكمة.",
+      "text_markdown": "ويساعدون أهل الصحراء على استعمال الماء بحكمة.",
+      "tts": {
+        "text": "ويساعدون أهل الصحراء على استعمال الماء بحكمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويدرسون الصحاري حتى نفهمها فهماً أفضل.",
+      "text_markdown": "ويدرسون الصحاري حتى نفهمها فهماً أفضل.",
+      "tts": {
+        "text": "ويدرسون الصحاري حتى نفهمها فهماً أفضل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الصحراء السليمة مليئة بحياة لا تتوقعها.",
+      "text_markdown": "الصحراء السليمة مليئة بحياة لا تتوقعها.",
+      "tts": {
+        "text": "الصحراء السليمة مليئة بحياة لا تتوقعها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "الصحراء اليوم",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي تستحق رعايتنا.",
+      "text_markdown": "وهي تستحق رعايتنا.",
+      "tts": {
+        "text": "وهي تستحق رعايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الخاتمة",
+      "text_markdown": "الخاتمة"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي الصحراء الحارة.",
+      "text_markdown": "تلك هي الصحراء الحارة.",
+      "tts": {
+        "text": "تلك هي الصحراء الحارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالم جاف مشمس من الرمل والصخر وحياة صابرة.",
+      "text_markdown": "عالم جاف مشمس من الرمل والصخر وحياة صابرة.",
+      "tts": {
+        "text": "عالم جاف مشمس من الرمل والصخر وحياة صابرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن وقفت يوماً في صحراء، فاسكن لحظة.",
+      "text_markdown": "إن وقفت يوماً في صحراء، فاسكن لحظة.",
+      "tts": {
+        "text": "إن وقفت يوماً في صحراء، فاسكن لحظة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أنصت إلى الريح وهي تتحرك فوق الكثبان الرملية.",
+      "text_markdown": "أنصت إلى الريح وهي تتحرك فوق الكثبان الرملية.",
+      "tts": {
+        "text": "أنصت إلى الريح وهي تتحرك فوق الكثبان الرملية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اشعر بحرارة الشمس وببرودة الظل.",
+      "text_markdown": "اشعر بحرارة الشمس وببرودة الظل.",
+      "tts": {
+        "text": "اشعر بحرارة الشمس وببرودة الظل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سوف تسمع قلب المنطقة الحيوية ينبض من حولك.",
+      "text_markdown": "سوف تسمع قلب المنطقة الحيوية ينبض من حولك.",
+      "tts": {
+        "text": "سوف تسمع قلب المنطقة الحيوية ينبض من حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "פתח דבר לקורא",
+      "text_markdown": "פתח דבר לקורא"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך מאתיים שנה, הרכבת הייתה דרך הברזל של העולם.",
+      "text_markdown": "במשך מאתיים שנה, הרכבת הייתה דרך הברזל של העולם.",
+      "tts": {
+        "text": "במשך מאתיים שנה, הרכבת הייתה דרך הברזל של העולם.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רכבות מסיעות אנשים.",
+      "text_markdown": "רכבות מסיעות אנשים.",
+      "tts": {
+        "text": "רכבות מסיעות אנשים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רכבות מובילות סחורות.",
+      "text_markdown": "רכבות מובילות סחורות.",
+      "tts": {
+        "text": "רכבות מובילות סחורות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "רכבת ארוכה יכולה לשאת תבואה בכמות שמספיקה לעיר שלמה.",
+      "text_markdown": "רכבת ארוכה יכולה לשאת תבואה בכמות שמספיקה לעיר שלמה.",
+      "tts": {
+        "text": "רכבת ארוכה יכולה לשאת תבואה בכמות שמספיקה לעיר שלמה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "רכבת מהירה יכולה להיות מהירה יותר ממכונית על הכביש המהיר.",
+      "text_markdown": "רכבת מהירה יכולה להיות מהירה יותר ממכונית על הכביש המהיר.",
+      "tts": {
+        "text": "רכבת מהירה יכולה להיות מהירה יותר ממכונית על הכביש המהיר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "סיפור הרכבת מתחיל באנגליה, לפני כמעט מאתיים שנה, עם איש אחד, אש אחת וקומקום של מים רותחים.",
+      "text_markdown": "סיפור הרכבת מתחיל באנגליה, לפני כמעט מאתיים שנה, עם איש אחד, אש אחת וקומקום של מים רותחים.",
+      "tts": {
+        "text": "סיפור הרכבת מתחיל באנגליה, לפני כמעט מאתיים שנה, עם איש אחד, אש אחת וקומקום של מים רותחים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק ראשון — רכבת הקיטור הראשונה",
+      "text_markdown": "פרק ראשון — רכבת הקיטור הראשונה"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבת היא שורה של קרונות שנוסעת על מסילות ברזל.",
+      "text_markdown": "רכבת היא שורה של קרונות שנוסעת על מסילות ברזל.",
+      "tts": {
+        "text": "רכבת היא שורה של קרונות שנוסעת על מסילות ברזל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בראש הרכבת נמצא הקטר.",
+      "text_markdown": "בראש הרכבת נמצא הקטר.",
+      "tts": {
+        "text": "בראש הרכבת נמצא הקטר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא מושך את כל השאר.",
+      "text_markdown": "הוא מושך את כל השאר.",
+      "tts": {
+        "text": "הוא מושך את כל השאר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרכבות הראשונות פעלו בעזרת קיטור.",
+      "text_markdown": "הרכבות הראשונות פעלו בעזרת קיטור.",
+      "tts": {
+        "text": "הרכבות הראשונות פעלו בעזרת קיטור.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מנוע קיטור שורף פחם כדי להרתיח מים.",
+      "text_markdown": "מנוע קיטור שורף פחם כדי להרתיח מים.",
+      "tts": {
+        "text": "מנוע קיטור שורף פחם כדי להרתיח מים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הקיטור החם דוחף בוכנות.",
+      "text_markdown": "הקיטור החם דוחף בוכנות.",
+      "tts": {
+        "text": "הקיטור החם דוחף בוכנות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הבוכנות מסובבות את הגלגלים.",
+      "text_markdown": "הבוכנות מסובבות את הגלגלים.",
+      "tts": {
+        "text": "הבוכנות מסובבות את הגלגלים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הגלגלים נעים על המסילות.",
+      "text_markdown": "הגלגלים נעים על המסילות.",
+      "tts": {
+        "text": "הגלגלים נעים על המסילות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הסיפור מתחיל באנגליה.",
+      "text_markdown": "הסיפור מתחיל באנגליה.",
+      "tts": {
+        "text": "הסיפור מתחיל באנגליה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בשנת אלף שמונה מאות עשרים וחמש נפתחה מסילת הרכבת הציבורית הראשונה.",
+      "text_markdown": "בשנת אלף שמונה מאות עשרים וחמש נפתחה מסילת הרכבת הציבורית הראשונה.",
+      "tts": {
+        "text": "בשנת אלף שמונה מאות עשרים וחמש נפתחה מסילת הרכבת הציבורית הראשונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היא נקראה מסילת הרכבת סטוקטון ודרלינגטון.",
+      "text_markdown": "היא נקראה מסילת הרכבת סטוקטון ודרלינגטון.",
+      "tts": {
+        "text": "היא נקראה מסילת הרכבת סטוקטון ודרלינגטון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "היא הובילה פחם ממכרה אל הנהר.",
+      "text_markdown": "היא הובילה פחם ממכרה אל הנהר.",
+      "tts": {
+        "text": "היא הובילה פחם ממכרה אל הנהר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "איש בשם ג'ורג' סטיבנסון בנה את הקטרים.",
+      "text_markdown": "איש בשם ג'ורג' סטיבנסון בנה את הקטרים.",
+      "tts": {
+        "text": "איש בשם ג'ורג' סטיבנסון בנה את הקטרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אנשים קראו לו אבי מסילות הרכבת.",
+      "text_markdown": "אנשים קראו לו אבי מסילות הרכבת.",
+      "tts": {
+        "text": "אנשים קראו לו אבי מסילות הרכבת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף שמונה מאות עשרים ותשע, בנו רוברט סטיבנסון בנה קטר מפורסם בשם רוקט.",
+      "text_markdown": "בשנת אלף שמונה מאות עשרים ותשע, בנו רוברט סטיבנסון בנה קטר מפורסם בשם רוקט.",
+      "tts": {
+        "text": "בשנת אלף שמונה מאות עשרים ותשע, בנו רוברט סטיבנסון בנה קטר מפורסם בשם רוקט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא ניצח במרוץ לרכבת המהירה ביותר.",
+      "text_markdown": "הוא ניצח במרוץ לרכבת המהירה ביותר.",
+      "tts": {
+        "text": "הוא ניצח במרוץ לרכבת המהירה ביותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרוקט היה יכול לנסוע במהירות של כמעט שלושים מייל לשעה.",
+      "text_markdown": "הרוקט היה יכול לנסוע במהירות של כמעט שלושים מייל לשעה.",
+      "tts": {
+        "text": "הרוקט היה יכול לנסוע במהירות של כמעט שלושים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זה היה מהר יותר מכל סוס.",
+      "text_markdown": "זה היה מהר יותר מכל סוס.",
+      "tts": {
+        "text": "זה היה מהר יותר מכל סוס.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — רכבת הקיטור הראשונה",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עידן הרכבת התחיל.",
+      "text_markdown": "עידן הרכבת התחיל.",
+      "tts": {
+        "text": "עידן הרכבת התחיל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שני — דרך הברזל מתפשטת",
+      "text_markdown": "פרק שני — דרך הברזל מתפשטת"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי הרוקט, מסילות הרכבת התפשטו במהירות.",
+      "text_markdown": "אחרי הרוקט, מסילות הרכבת התפשטו במהירות.",
+      "tts": {
+        "text": "אחרי הרוקט, מסילות הרכבת התפשטו במהירות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בריטניה הניחה אלפי מיילים של מסילות.",
+      "text_markdown": "בריטניה הניחה אלפי מיילים של מסילות.",
+      "tts": {
+        "text": "בריטניה הניחה אלפי מיילים של מסילות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אחר כך שאר העולם הלך בעקבותיה.",
+      "text_markdown": "אחר כך שאר העולם הלך בעקבותיה.",
+      "tts": {
+        "text": "אחר כך שאר העולם הלך בעקבותיה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף שמונה מאות שלושים נפתחה מסילת הרכבת האמריקאית הגדולה הראשונה.",
+      "text_markdown": "בשנת אלף שמונה מאות שלושים נפתחה מסילת הרכבת האמריקאית הגדולה הראשונה.",
+      "tts": {
+        "text": "בשנת אלף שמונה מאות שלושים נפתחה מסילת הרכבת האמריקאית הגדולה הראשונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא נקראה בולטימור ואוהיו.",
+      "text_markdown": "היא נקראה בולטימור ואוהיו.",
+      "tts": {
+        "text": "היא נקראה בולטימור ואוהיו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היא חיברה את העיר בולטימור אל נהר אוהיו.",
+      "text_markdown": "היא חיברה את העיר בולטימור אל נהר אוהיו.",
+      "tts": {
+        "text": "היא חיברה את העיר בולטימור אל נהר אוהיו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצרפת נפתחה מסילת הרכבת הראשונה בשנת אלף שמונה מאות שלושים ושתיים.",
+      "text_markdown": "בצרפת נפתחה מסילת הרכבת הראשונה בשנת אלף שמונה מאות שלושים ושתיים.",
+      "tts": {
+        "text": "בצרפת נפתחה מסילת הרכבת הראשונה בשנת אלף שמונה מאות שלושים ושתיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא הובילה פחם, כמו הקו הבריטי.",
+      "text_markdown": "היא הובילה פחם, כמו הקו הבריטי.",
+      "tts": {
+        "text": "היא הובילה פחם, כמו הקו הבריטי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בגרמניה נפתחה מסילת הרכבת הארוכה הראשונה בשנת אלף שמונה מאות שלושים ותשע.",
+      "text_markdown": "בגרמניה נפתחה מסילת הרכבת הארוכה הראשונה בשנת אלף שמונה מאות שלושים ותשע.",
+      "tts": {
+        "text": "בגרמניה נפתחה מסילת הרכבת הארוכה הראשונה בשנת אלף שמונה מאות שלושים ותשע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא עברה בין שתי ערים, לייפציג ודרזדן.",
+      "text_markdown": "היא עברה בין שתי ערים, לייפציג ודרזדן.",
+      "tts": {
+        "text": "היא עברה בין שתי ערים, לייפציג ודרזדן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוסיה בנתה את מסילת הרכבת הראשונה שלה בשנת אלף שמונה מאות שלושים ושבע.",
+      "text_markdown": "רוסיה בנתה את מסילת הרכבת הראשונה שלה בשנת אלף שמונה מאות שלושים ושבע.",
+      "tts": {
+        "text": "רוסיה בנתה את מסילת הרכבת הראשונה שלה בשנת אלף שמונה מאות שלושים ושבע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הקו עבר מסנקט פטרבורג אל עיירה סמוכה.",
+      "text_markdown": "הקו עבר מסנקט פטרבורג אל עיירה סמוכה.",
+      "tts": {
+        "text": "הקו עבר מסנקט פטרבורג אל עיירה סמוכה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בניית מסילת רכבת הייתה עבודה קשה.",
+      "text_markdown": "בניית מסילת רכבת הייתה עבודה קשה.",
+      "tts": {
+        "text": "בניית מסילת רכבת הייתה עבודה קשה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "פועלים חפרו מנהרות דרך הרים.",
+      "text_markdown": "פועלים חפרו מנהרות דרך הרים.",
+      "tts": {
+        "text": "פועלים חפרו מנהרות דרך הרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם בנו גשרים מעל נהרות.",
+      "text_markdown": "הם בנו גשרים מעל נהרות.",
+      "tts": {
+        "text": "הם בנו גשרים מעל נהרות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם הניחו כל פס מסילה ביד.",
+      "text_markdown": "הם הניחו כל פס מסילה ביד.",
+      "tts": {
+        "text": "הם הניחו כל פס מסילה ביד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עיירות צמחו לאורך הקווים.",
+      "text_markdown": "עיירות צמחו לאורך הקווים.",
+      "tts": {
+        "text": "עיירות צמחו לאורך הקווים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כפר קטן עם תחנה יכול היה להפוך לעיר.",
+      "text_markdown": "כפר קטן עם תחנה יכול היה להפוך לעיר.",
+      "tts": {
+        "text": "כפר קטן עם תחנה יכול היה להפוך לעיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרכבת הביאה אנשים.",
+      "text_markdown": "הרכבת הביאה אנשים.",
+      "tts": {
+        "text": "הרכבת הביאה אנשים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הרכבת הביאה סחורות.",
+      "text_markdown": "הרכבת הביאה סחורות.",
+      "tts": {
+        "text": "הרכבת הביאה סחורות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — דרך הברזל מתפשטת",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הרכבת קירבה את העולם קצת יותר.",
+      "text_markdown": "הרכבת קירבה את העולם קצת יותר.",
+      "tts": {
+        "text": "הרכבת קירבה את העולם קצת יותר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שלישי — הקווים הגדולים",
+      "text_markdown": "פרק שלישי — הקווים הגדולים"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק ממסילות הרכבת קצרות.",
+      "text_markdown": "חלק ממסילות הרכבת קצרות.",
+      "tts": {
+        "text": "חלק ממסילות הרכבת קצרות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חלק מהן ארוכות מאוד.",
+      "text_markdown": "חלק מהן ארוכות מאוד.",
+      "tts": {
+        "text": "חלק מהן ארוכות מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הקווים הארוכים ביותר חצו יבשות שלמות.",
+      "text_markdown": "הקווים הארוכים ביותר חצו יבשות שלמות.",
+      "tts": {
+        "text": "הקווים הארוכים ביותר חצו יבשות שלמות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בארצות הברית, שתי חברות בנו מסילת רכבת שחצתה את המדינה.",
+      "text_markdown": "בארצות הברית, שתי חברות בנו מסילת רכבת שחצתה את המדינה.",
+      "tts": {
+        "text": "בארצות הברית, שתי חברות בנו מסילת רכבת שחצתה את המדינה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אחת התחילה בקליפורניה והתקדמה מזרחה.",
+      "text_markdown": "אחת התחילה בקליפורניה והתקדמה מזרחה.",
+      "tts": {
+        "text": "אחת התחילה בקליפורניה והתקדמה מזרחה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "השנייה התחילה בנברסקה והתקדמה מערבה.",
+      "text_markdown": "השנייה התחילה בנברסקה והתקדמה מערבה.",
+      "tts": {
+        "text": "השנייה התחילה בנברסקה והתקדמה מערבה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הן נפגשו במקום שנקרא פרומונטורי סאמיט, ביוטה.",
+      "text_markdown": "הן נפגשו במקום שנקרא פרומונטורי סאמיט, ביוטה.",
+      "tts": {
+        "text": "הן נפגשו במקום שנקרא פרומונטורי סאמיט, ביוטה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה קרה בשנת אלף שמונה מאות שישים ותשע.",
+      "text_markdown": "זה קרה בשנת אלף שמונה מאות שישים ותשע.",
+      "tts": {
+        "text": "זה קרה בשנת אלף שמונה מאות שישים ותשע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המסמר האחרון היה עשוי מזהב.",
+      "text_markdown": "המסמר האחרון היה עשוי מזהב.",
+      "tts": {
+        "text": "המסמר האחרון היה עשוי מזהב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנשים קראו לו מסמר הזהב.",
+      "text_markdown": "אנשים קראו לו מסמר הזהב.",
+      "tts": {
+        "text": "אנשים קראו לו מסמר הזהב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "לקו הזה קראו מסילת הרכבת הטרנס קונטיננטלית.",
+      "text_markdown": "לקו הזה קראו מסילת הרכבת הטרנס קונטיננטלית.",
+      "tts": {
+        "text": "לקו הזה קראו מסילת הרכבת הטרנס קונטיננטלית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "עכשיו היה אפשר לנסוע ברכבת מאוקיינוס אחד אל האוקיינוס השני בתוך בערך שבוע.",
+      "text_markdown": "עכשיו היה אפשר לנסוע ברכבת מאוקיינוס אחד אל האוקיינוס השני בתוך בערך שבוע.",
+      "tts": {
+        "text": "עכשיו היה אפשר לנסוע ברכבת מאוקיינוס אחד אל האוקיינוס השני בתוך בערך שבוע.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוסיה בנתה קו ארוך אפילו יותר.",
+      "text_markdown": "רוסיה בנתה קו ארוך אפילו יותר.",
+      "tts": {
+        "text": "רוסיה בנתה קו ארוך אפילו יותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא נקרא מסילת הרכבת הטרנס סיבירית.",
+      "text_markdown": "הוא נקרא מסילת הרכבת הטרנס סיבירית.",
+      "tts": {
+        "text": "הוא נקרא מסילת הרכבת הטרנס סיבירית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא עובר ממוסקבה במערב עד ולדיווסטוק במזרח.",
+      "text_markdown": "הוא עובר ממוסקבה במערב עד ולדיווסטוק במזרח.",
+      "tts": {
+        "text": "הוא עובר ממוסקבה במערב עד ולדיווסטוק במזרח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הקו הושלם בשנת אלף תשע מאות ושש עשרה.",
+      "text_markdown": "הקו הושלם בשנת אלף תשע מאות ושש עשרה.",
+      "tts": {
+        "text": "הקו הושלם בשנת אלף תשע מאות ושש עשרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אורכו יותר מתשעת אלפים קילומטרים.",
+      "text_markdown": "אורכו יותר מתשעת אלפים קילומטרים.",
+      "tts": {
+        "text": "אורכו יותר מתשעת אלפים קילומטרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "נסיעה מלאה נמשכת בערך שבעה ימים.",
+      "text_markdown": "נסיעה מלאה נמשכת בערך שבעה ימים.",
+      "tts": {
+        "text": "נסיעה מלאה נמשכת בערך שבעה ימים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — הקווים הגדולים",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "זו עדיין מסילת הרכבת הארוכה ביותר בעולם.",
+      "text_markdown": "זו עדיין מסילת הרכבת הארוכה ביותר בעולם.",
+      "tts": {
+        "text": "זו עדיין מסילת הרכבת הארוכה ביותר בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק רביעי — קיטור, דיזל, חשמל",
+      "text_markdown": "פרק רביעי — קיטור, דיזל, חשמל"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך כמאה שנה, כמעט כל רכבת הייתה רכבת קיטור.",
+      "text_markdown": "במשך כמאה שנה, כמעט כל רכבת הייתה רכבת קיטור.",
+      "tts": {
+        "text": "במשך כמאה שנה, כמעט כל רכבת הייתה רכבת קיטור.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קטרי קיטור היו גדולים ורועשים.",
+      "text_markdown": "קטרי קיטור היו גדולים ורועשים.",
+      "tts": {
+        "text": "קטרי קיטור היו גדולים ורועשים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם שרפו פחם.",
+      "text_markdown": "הם שרפו פחם.",
+      "tts": {
+        "text": "הם שרפו פחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם שלחו עשן סמיך אל השמיים.",
+      "text_markdown": "הם שלחו עשן סמיך אל השמיים.",
+      "tts": {
+        "text": "הם שלחו עשן סמיך אל השמיים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחר כך הגיע קטר הדיזל.",
+      "text_markdown": "אחר כך הגיע קטר הדיזל.",
+      "tts": {
+        "text": "אחר כך הגיע קטר הדיזל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מנוע דיזל שורף דלק במקום פחם.",
+      "text_markdown": "מנוע דיזל שורף דלק במקום פחם.",
+      "tts": {
+        "text": "מנוע דיזל שורף דלק במקום פחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא קטן יותר ונקי יותר.",
+      "text_markdown": "הוא קטן יותר ונקי יותר.",
+      "tts": {
+        "text": "הוא קטן יותר ונקי יותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא לא צריך אש ומכל מים.",
+      "text_markdown": "הוא לא צריך אש ומכל מים.",
+      "tts": {
+        "text": "הוא לא צריך אש ומכל מים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבות דיזל נעשו נפוצות בשנות הארבעים והחמישים של המאה העשרים.",
+      "text_markdown": "רכבות דיזל נעשו נפוצות בשנות הארבעים והחמישים של המאה העשרים.",
+      "tts": {
+        "text": "רכבות דיזל נעשו נפוצות בשנות הארבעים והחמישים של המאה העשרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לאט לאט, קטרי הקיטור הגדולים יצאו משירות.",
+      "text_markdown": "לאט לאט, קטרי הקיטור הגדולים יצאו משירות.",
+      "tts": {
+        "text": "לאט לאט, קטרי הקיטור הגדולים יצאו משירות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כמה מהם עדיין נשמרים במוזיאונים ובקווי תיירות.",
+      "text_markdown": "כמה מהם עדיין נשמרים במוזיאונים ובקווי תיירות.",
+      "tts": {
+        "text": "כמה מהם עדיין נשמרים במוזיאונים ובקווי תיירות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השלב הבא היה הרכבת החשמלית.",
+      "text_markdown": "השלב הבא היה הרכבת החשמלית.",
+      "tts": {
+        "text": "השלב הבא היה הרכבת החשמלית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לרכבת חשמלית אין מנוע ששורף דלק.",
+      "text_markdown": "לרכבת חשמלית אין מנוע ששורף דלק.",
+      "tts": {
+        "text": "לרכבת חשמלית אין מנוע ששורף דלק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היא מקבלת כוח מחוט מעל המסילה או ממסילה שלישית לצד המסילה.",
+      "text_markdown": "היא מקבלת כוח מחוט מעל המסילה או ממסילה שלישית לצד המסילה.",
+      "tts": {
+        "text": "היא מקבלת כוח מחוט מעל המסילה או ממסילה שלישית לצד המסילה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבות חשמליות שקטות ונקיות מאוד.",
+      "text_markdown": "רכבות חשמליות שקטות ונקיות מאוד.",
+      "tts": {
+        "text": "רכבות חשמליות שקטות ונקיות מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הן גם חזקות מאוד.",
+      "text_markdown": "הן גם חזקות מאוד.",
+      "tts": {
+        "text": "הן גם חזקות מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רוב הרכבות בערים ורוב הרכבות המהירות היום הן חשמליות.",
+      "text_markdown": "רוב הרכבות בערים ורוב הרכבות המהירות היום הן חשמליות.",
+      "tts": {
+        "text": "רוב הרכבות בערים ורוב הרכבות המהירות היום הן חשמליות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קיטור, דיזל, חשמל.",
+      "text_markdown": "קיטור, דיזל, חשמל.",
+      "tts": {
+        "text": "קיטור, דיזל, חשמל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — קיטור, דיזל, חשמל",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שלושה מנועים, שלוש תקופות.",
+      "text_markdown": "שלושה מנועים, שלוש תקופות.",
+      "tts": {
+        "text": "שלושה מנועים, שלוש תקופות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "text_markdown": "פרק חמישי — רכבות קליע והמרוץ למהירות"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף תשע מאות שישים וארבע, יפן פתחה מסילת רכבת חדשה לגמרי.",
+      "text_markdown": "בשנת אלף תשע מאות שישים וארבע, יפן פתחה מסילת רכבת חדשה לגמרי.",
+      "tts": {
+        "text": "בשנת אלף תשע מאות שישים וארבע, יפן פתחה מסילת רכבת חדשה לגמרי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא עברה מטוקיו לאוסקה.",
+      "text_markdown": "היא עברה מטוקיו לאוסקה.",
+      "tts": {
+        "text": "היא עברה מטוקיו לאוסקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרכבות נראו כמו קליעים לבנים וארוכים.",
+      "text_markdown": "הרכבות נראו כמו קליעים לבנים וארוכים.",
+      "tts": {
+        "text": "הרכבות נראו כמו קליעים לבנים וארוכים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אנשים קראו להן רכבות קליע.",
+      "text_markdown": "אנשים קראו להן רכבות קליע.",
+      "tts": {
+        "text": "אנשים קראו להן רכבות קליע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "השם היפני הוא שינקנסן.",
+      "text_markdown": "השם היפני הוא שינקנסן.",
+      "tts": {
+        "text": "השם היפני הוא שינקנסן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבות הקליע הראשונות נסעו במהירות של מאה שלושים מייל לשעה.",
+      "text_markdown": "רכבות הקליע הראשונות נסעו במהירות של מאה שלושים מייל לשעה.",
+      "tts": {
+        "text": "רכבות הקליע הראשונות נסעו במהירות של מאה שלושים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה היה מהיר מאוד בשביל רכבת בשנת אלף תשע מאות שישים וארבע.",
+      "text_markdown": "זה היה מהיר מאוד בשביל רכבת בשנת אלף תשע מאות שישים וארבע.",
+      "tts": {
+        "text": "זה היה מהיר מאוד בשביל רכבת בשנת אלף תשע מאות שישים וארבע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הקו נפתח בדיוק בזמן למשחקים האולימפיים של טוקיו.",
+      "text_markdown": "הקו נפתח בדיוק בזמן למשחקים האולימפיים של טוקיו.",
+      "tts": {
+        "text": "הקו נפתח בדיוק בזמן למשחקים האולימפיים של טוקיו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מדינות אחרות הלכו בעקבותיה.",
+      "text_markdown": "מדינות אחרות הלכו בעקבותיה.",
+      "tts": {
+        "text": "מדינות אחרות הלכו בעקבותיה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "צרפת פתחה את קו הרכבת המהירה שלה בשנת אלף תשע מאות שמונים ואחת.",
+      "text_markdown": "צרפת פתחה את קו הרכבת המהירה שלה בשנת אלף תשע מאות שמונים ואחת.",
+      "tts": {
+        "text": "צרפת פתחה את קו הרכבת המהירה שלה בשנת אלף תשע מאות שמונים ואחת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לרכבות קוראים TGV.",
+      "text_markdown": "לרכבות קוראים TGV.",
+      "tts": {
+        "text": "לרכבות קוראים טי ג'י וי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גרמניה הלכה בעקבותיה עם ICE.",
+      "text_markdown": "גרמניה הלכה בעקבותיה עם ICE.",
+      "tts": {
+        "text": "גרמניה הלכה בעקבותיה עם איי סי אי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "איטליה, ספרד וקוריאה בנו קווי מהירות גבוהה משלהן.",
+      "text_markdown": "איטליה, ספרד וקוריאה בנו קווי מהירות גבוהה משלהן.",
+      "tts": {
+        "text": "איטליה, ספרד וקוריאה בנו קווי מהירות גבוהה משלהן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "סין התחילה אחרונה, אבל בנתה מהר.",
+      "text_markdown": "סין התחילה אחרונה, אבל בנתה מהר.",
+      "tts": {
+        "text": "סין התחילה אחרונה, אבל בנתה מהר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום, לסין יש את רשת המהירות הגבוהה הגדולה בעולם.",
+      "text_markdown": "היום, לסין יש את רשת המהירות הגבוהה הגדולה בעולם.",
+      "tts": {
+        "text": "היום, לסין יש את רשת המהירות הגבוהה הגדולה בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יש בה עשרות אלפי קילומטרים של מסילה.",
+      "text_markdown": "יש בה עשרות אלפי קילומטרים של מסילה.",
+      "tts": {
+        "text": "יש בה עשרות אלפי קילומטרים של מסילה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבות קליע מודרניות יכולות לנסוע במהירות של יותר ממאתיים מייל לשעה.",
+      "text_markdown": "רכבות קליע מודרניות יכולות לנסוע במהירות של יותר ממאתיים מייל לשעה.",
+      "tts": {
+        "text": "רכבות קליע מודרניות יכולות לנסוע במהירות של יותר ממאתיים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הן חלקות, שקטות וכמעט תמיד מגיעות בזמן.",
+      "text_markdown": "הן חלקות, שקטות וכמעט תמיד מגיעות בזמן.",
+      "tts": {
+        "text": "הן חלקות, שקטות וכמעט תמיד מגיעות בזמן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — רכבות קליע והמרוץ למהירות",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בהרבה נסיעות, הן מהירות יותר מטיסה.",
+      "text_markdown": "בהרבה נסיעות, הן מהירות יותר מטיסה.",
+      "tts": {
+        "text": "בהרבה נסיעות, הן מהירות יותר מטיסה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שישי — סוגים רבים של רכבות",
+      "text_markdown": "פרק שישי — סוגים רבים של רכבות"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לא כל הרכבות זהות.",
+      "text_markdown": "לא כל הרכבות זהות.",
+      "tts": {
+        "text": "לא כל הרכבות זהות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש הרבה סוגים.",
+      "text_markdown": "יש הרבה סוגים.",
+      "tts": {
+        "text": "יש הרבה סוגים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבת נוסעים מובילה אנשים.",
+      "text_markdown": "רכבת נוסעים מובילה אנשים.",
+      "tts": {
+        "text": "רכבת נוסעים מובילה אנשים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש בה מושבים, חלונות, ולפעמים גם קרון אוכל או קרון שינה.",
+      "text_markdown": "יש בה מושבים, חלונות, ולפעמים גם קרון אוכל או קרון שינה.",
+      "tts": {
+        "text": "יש בה מושבים, חלונות, ולפעמים גם קרון אוכל או קרון שינה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבת משא מובילה סחורות.",
+      "text_markdown": "רכבת משא מובילה סחורות.",
+      "tts": {
+        "text": "רכבת משא מובילה סחורות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לקרונות האלה קוראים ווגונים.",
+      "text_markdown": "לקרונות האלה קוראים ווגונים.",
+      "tts": {
+        "text": "לקרונות האלה קוראים ווגונים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "חלקם מובילים תבואה.",
+      "text_markdown": "חלקם מובילים תבואה.",
+      "tts": {
+        "text": "חלקם מובילים תבואה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "חלקם מובילים נפט.",
+      "text_markdown": "חלקם מובילים נפט.",
+      "tts": {
+        "text": "חלקם מובילים נפט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "חלקם מובילים מכולות שלמות, מונחות זו על גבי זו בשתי קומות.",
+      "text_markdown": "חלקם מובילים מכולות שלמות, מונחות זו על גבי זו בשתי קומות.",
+      "tts": {
+        "text": "חלקם מובילים מכולות שלמות, מונחות זו על גבי זו בשתי קומות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבת תחתית היא רכבת שנוסעת מתחת לאדמה בעיר.",
+      "text_markdown": "רכבת תחתית היא רכבת שנוסעת מתחת לאדמה בעיר.",
+      "tts": {
+        "text": "רכבת תחתית היא רכבת שנוסעת מתחת לאדמה בעיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רכבת התחתית הראשונה נפתחה בלונדון בשנת אלף שמונה מאות שישים ושלוש.",
+      "text_markdown": "רכבת התחתית הראשונה נפתחה בלונדון בשנת אלף שמונה מאות שישים ושלוש.",
+      "tts": {
+        "text": "רכבת התחתית הראשונה נפתחה בלונדון בשנת אלף שמונה מאות שישים ושלוש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היום, לערים גדולות יש רשתות ענק של רכבת תחתית מתחת לרחובות שלהן.",
+      "text_markdown": "היום, לערים גדולות יש רשתות ענק של רכבת תחתית מתחת לרחובות שלהן.",
+      "tts": {
+        "text": "היום, לערים גדולות יש רשתות ענק של רכבת תחתית מתחת לרחובות שלהן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חשמלית או רכבת קלה היא רכבת קטנה שנוסעת ברחובות העיר.",
+      "text_markdown": "חשמלית או רכבת קלה היא רכבת קטנה שנוסעת ברחובות העיר.",
+      "tts": {
+        "text": "חשמלית או רכבת קלה היא רכבת קטנה שנוסעת ברחובות העיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא חולקת לעיתים קרובות את הכביש עם מכוניות ואוטובוסים.",
+      "text_markdown": "היא חולקת לעיתים קרובות את הכביש עם מכוניות ואוטובוסים.",
+      "tts": {
+        "text": "היא חולקת לעיתים קרובות את הכביש עם מכוניות ואוטובוסים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רכבת הרים מטפסת במעלה גבעות תלולות.",
+      "text_markdown": "רכבת הרים מטפסת במעלה גבעות תלולות.",
+      "tts": {
+        "text": "רכבת הרים מטפסת במעלה גבעות תלולות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בחלק מהן יש באמצע מסילה משוננת מיוחדת, שנקראת קוג.",
+      "text_markdown": "בחלק מהן יש באמצע מסילה משוננת מיוחדת, שנקראת קוג.",
+      "tts": {
+        "text": "בחלק מהן יש באמצע מסילה משוננת מיוחדת, שנקראת קוג.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הקטר נאחז בקוג כדי לעלות וכדי לרדת בבטחה.",
+      "text_markdown": "הקטר נאחז בקוג כדי לעלות וכדי לרדת בבטחה.",
+      "tts": {
+        "text": "הקטר נאחז בקוג כדי לעלות וכדי לרדת בבטחה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מהרכבות הן גם רכבות תיירות.",
+      "text_markdown": "חלק מהרכבות הן גם רכבות תיירות.",
+      "tts": {
+        "text": "חלק מהרכבות הן גם רכבות תיירות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של רכבות",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הן נוסעות דרך יערות והרים, רק בשביל הנוף.",
+      "text_markdown": "הן נוסעות דרך יערות והרים, רק בשביל הנוף.",
+      "tts": {
+        "text": "הן נוסעות דרך יערות והרים, רק בשביל הנוף.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שביעי — העתיד על המסילות",
+      "text_markdown": "פרק שביעי — העתיד על המסילות"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "סיפור הרכבת עוד לא נגמר.",
+      "text_markdown": "סיפור הרכבת עוד לא נגמר.",
+      "tts": {
+        "text": "סיפור הרכבת עוד לא נגמר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "סוגים חדשים של רכבות נבנים ממש עכשיו.",
+      "text_markdown": "סוגים חדשים של רכבות נבנים ממש עכשיו.",
+      "tts": {
+        "text": "סוגים חדשים של רכבות נבנים ממש עכשיו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המדהימה ביותר היא רכבת המגלב.",
+      "text_markdown": "המדהימה ביותר היא רכבת המגלב.",
+      "tts": {
+        "text": "המדהימה ביותר היא רכבת המגלב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילה מגלב היא קיצור של ריחוף מגנטי.",
+      "text_markdown": "המילה מגלב היא קיצור של ריחוף מגנטי.",
+      "tts": {
+        "text": "המילה מגלב היא קיצור של ריחוף מגנטי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רכבת מגלב לא נוגעת במסילה שלה.",
+      "text_markdown": "רכבת מגלב לא נוגעת במסילה שלה.",
+      "tts": {
+        "text": "רכבת מגלב לא נוגעת במסילה שלה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "היא מרחפת על כרית של מגנטים.",
+      "text_markdown": "היא מרחפת על כרית של מגנטים.",
+      "tts": {
+        "text": "היא מרחפת על כרית של מגנטים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אין גלגלים שמסתובבים.",
+      "text_markdown": "אין גלגלים שמסתובבים.",
+      "tts": {
+        "text": "אין גלגלים שמסתובבים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אין חיכוך.",
+      "text_markdown": "אין חיכוך.",
+      "tts": {
+        "text": "אין חיכוך.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלפיים וארבע נפתח קו מגלב בשנגחאי, סין.",
+      "text_markdown": "בשנת אלפיים וארבע נפתח קו מגלב בשנגחאי, סין.",
+      "tts": {
+        "text": "בשנת אלפיים וארבע נפתח קו מגלב בשנגחאי, סין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הרכבת יכולה להגיע ליותר ממאתיים חמישים מייל לשעה.",
+      "text_markdown": "הרכבת יכולה להגיע ליותר ממאתיים חמישים מייל לשעה.",
+      "tts": {
+        "text": "הרכבת יכולה להגיע ליותר ממאתיים חמישים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ביפן, רכבת מגלב ניסיונית נסעה מהר יותר משלוש מאות שבעים מייל לשעה.",
+      "text_markdown": "ביפן, רכבת מגלב ניסיונית נסעה מהר יותר משלוש מאות שבעים מייל לשעה.",
+      "tts": {
+        "text": "ביפן, רכבת מגלב ניסיונית נסעה מהר יותר משלוש מאות שבעים מייל לשעה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מהנדסים אחרים עובדים על רכבת המימן.",
+      "text_markdown": "מהנדסים אחרים עובדים על רכבת המימן.",
+      "tts": {
+        "text": "מהנדסים אחרים עובדים על רכבת המימן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רכבת מימן מייצרת חשמל מתא דלק קטן.",
+      "text_markdown": "רכבת מימן מייצרת חשמל מתא דלק קטן.",
+      "tts": {
+        "text": "רכבת מימן מייצרת חשמל מתא דלק קטן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הדבר היחיד שיוצא מהמנוע הוא אדי מים.",
+      "text_markdown": "הדבר היחיד שיוצא מהמנוע הוא אדי מים.",
+      "tts": {
+        "text": "הדבר היחיד שיוצא מהמנוע הוא אדי מים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אין עשן.",
+      "text_markdown": "אין עשן.",
+      "tts": {
+        "text": "אין עשן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אין פחם.",
+      "text_markdown": "אין פחם.",
+      "tts": {
+        "text": "אין פחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "רכבות המימן הראשונות התחילו לפעול בגרמניה בשנת אלפיים שמונה עשרה.",
+      "text_markdown": "רכבות המימן הראשונות התחילו לפעול בגרמניה בשנת אלפיים שמונה עשרה.",
+      "tts": {
+        "text": "רכבות המימן הראשונות התחילו לפעול בגרמניה בשנת אלפיים שמונה עשרה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרכבות ישנות מאוד.",
+      "text_markdown": "הרכבות ישנות מאוד.",
+      "tts": {
+        "text": "הרכבות ישנות מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הן גם חדשות מאוד.",
+      "text_markdown": "הן גם חדשות מאוד.",
+      "tts": {
+        "text": "הן גם חדשות מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — העתיד על המסילות",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מאתיים שנה אחרי הרוקט, המסילות עדיין הן העתיד.",
+      "text_markdown": "מאתיים שנה אחרי הרוקט, המסילות עדיין הן העתיד.",
+      "tts": {
+        "text": "מאתיים שנה אחרי הרוקט, המסילות עדיין הן העתיד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "דרך הברזל ממשיכה",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "דרך הברזל ממשיכה",
+      "text_markdown": "דרך הברזל ממשיכה"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "דרך הברזל ממשיכה",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מהרוקט ועד המגלב, הרכבת נשאה את העולם קדימה במשך כמעט מאתיים שנה.",
+      "text_markdown": "מהרוקט ועד המגלב, הרכבת נשאה את העולם קדימה במשך כמעט מאתיים שנה.",
+      "tts": {
+        "text": "מהרוקט ועד המגלב, הרכבת נשאה את העולם קדימה במשך כמעט מאתיים שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "דרך הברזל ממשיכה",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קווים חדשים מונחים ממש עכשיו, במדבריות, בהרים ומתחת לערים.",
+      "text_markdown": "קווים חדשים מונחים ממש עכשיו, במדבריות, בהרים ומתחת לערים.",
+      "tts": {
+        "text": "קווים חדשים מונחים ממש עכשיו, במדבריות, בהרים ומתחת לערים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "דרך הברזל ממשיכה",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "התחנה הבאה תמיד נמצאת אי שם בהמשך.",
+      "text_markdown": "התחנה הבאה תמיד נמצאת אי שם בהמשך.",
+      "tts": {
+        "text": "התחנה הבאה תמיד נמצאת אי שם בהמשך.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "he"
+}

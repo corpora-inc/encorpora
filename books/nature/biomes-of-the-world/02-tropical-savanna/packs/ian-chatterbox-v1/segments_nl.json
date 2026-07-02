@@ -1,0 +1,2342 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "language": "nl",
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "De tropische savanne",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De tropische savanne",
+      "text_markdown": "De tropische savanne"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar savannes groeien",
+      "text_markdown": "Waar savannes groeien"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in de tropische savanne.",
+      "text_markdown": "Welkom in de tropische savanne.",
+      "tts": {
+        "text": "Welkom in de tropische savanne.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De savanne is een wijd grasland met verspreide bomen.",
+      "text_markdown": "De savanne is een wijd grasland met verspreide bomen.",
+      "tts": {
+        "text": "De savanne is een wijd grasland met verspreide bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is het hele jaar warm.",
+      "text_markdown": "Het is het hele jaar warm.",
+      "tts": {
+        "text": "Het is het hele jaar warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is een lange droge tijd en een kortere natte tijd.",
+      "text_markdown": "Er is een lange droge tijd en een kortere natte tijd.",
+      "tts": {
+        "text": "Er is een lange droge tijd en een kortere natte tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grootste savannes ter wereld liggen in Afrika.",
+      "text_markdown": "De grootste savannes ter wereld liggen in Afrika.",
+      "tts": {
+        "text": "De grootste savannes ter wereld liggen in Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze strekken zich uit over een groot deel van het midden van het continent.",
+      "text_markdown": "Ze strekken zich uit over een groot deel van het midden van het continent.",
+      "tts": {
+        "text": "Ze strekken zich uit over een groot deel van het midden van het continent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn ook grote savannes in Zuid-Amerika, de cerrado genoemd.",
+      "text_markdown": "Er zijn ook grote savannes in Zuid-Amerika, de cerrado genoemd.",
+      "tts": {
+        "text": "Er zijn ook grote savannes in Zuid Amerika, de cerrado genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn tropische savannes in het noorden van Australië.",
+      "text_markdown": "Er zijn tropische savannes in het noorden van Australië.",
+      "tts": {
+        "text": "Er zijn tropische savannes in het noorden van Australië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn kleinere savannes in India en in Zuidoost-Azië.",
+      "text_markdown": "Er zijn kleinere savannes in India en in Zuidoost-Azië.",
+      "tts": {
+        "text": "Er zijn kleinere savannes in India en in Zuidoost Azië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze is op zichzelf gegroeid, ver van de andere.",
+      "text_markdown": "Elk van deze is op zichzelf gegroeid, ver van de andere.",
+      "tts": {
+        "text": "Elk van deze is op zichzelf gegroeid, ver van de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+      "text_markdown": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+      "tts": {
+        "text": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een grazend dier in Afrika is niet hetzelfde als een in Zuid-Amerika of Australië.",
+      "text_markdown": "Een grazend dier in Afrika is niet hetzelfde als een in Zuid-Amerika of Australië.",
+      "tts": {
+        "text": "Een grazend dier in Afrika is niet hetzelfde als een in Zuid Amerika of Australië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+      "text_markdown": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+      "tts": {
+        "text": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je in een savanne staat, kun je heel ver kijken.",
+      "text_markdown": "Als je in een savanne staat, kun je heel ver kijken.",
+      "tts": {
+        "text": "Als je in een savanne staat, kun je heel ver kijken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras reikt tot aan je middel of hoger.",
+      "text_markdown": "Het gras reikt tot aan je middel of hoger.",
+      "tts": {
+        "text": "Het gras reikt tot aan je middel of hoger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar bomen met platte kruinen steken boven het gras uit.",
+      "text_markdown": "Een paar bomen met platte kruinen steken boven het gras uit.",
+      "tts": {
+        "text": "Een paar bomen met platte kruinen steken boven het gras uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lucht is enorm.",
+      "text_markdown": "De lucht is enorm.",
+      "tts": {
+        "text": "De lucht is enorm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het licht is goudkleurig.",
+      "text_markdown": "Het licht is goudkleurig.",
+      "tts": {
+        "text": "Het licht is goudkleurig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort de wind door het gras strijken.",
+      "text_markdown": "Je hoort de wind door het gras strijken.",
+      "tts": {
+        "text": "Je hoort de wind door het gras strijken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort vogels in de verte roepen.",
+      "text_markdown": "Je hoort vogels in de verte roepen.",
+      "tts": {
+        "text": "Je hoort vogels in de verte roepen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is de savanne, het open grasland.",
+      "text_markdown": "Dat is de savanne, het open grasland.",
+      "tts": {
+        "text": "Dat is de savanne, het open grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Waar savannes groeien",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een groot open land van gras, verspreide bomen en grote luchten.",
+      "text_markdown": "Een groot open land van gras, verspreide bomen en grote luchten.",
+      "tts": {
+        "text": "Een groot open land van gras, verspreide bomen en grote luchten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in de tropische savanne is eenvoudig.",
+      "text_markdown": "Het weer in de tropische savanne is eenvoudig.",
+      "tts": {
+        "text": "Het weer in de tropische savanne is eenvoudig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is het hele jaar warm.",
+      "text_markdown": "Het is het hele jaar warm.",
+      "tts": {
+        "text": "Het is het hele jaar warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar anders dan het regenwoud heeft de savanne twee heel verschillende seizoenen.",
+      "text_markdown": "Maar anders dan het regenwoud heeft de savanne twee heel verschillende seizoenen.",
+      "tts": {
+        "text": "Maar anders dan het regenwoud heeft de savanne twee heel verschillende seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is een lange droge tijd en een kortere natte tijd.",
+      "text_markdown": "Er is een lange droge tijd en een kortere natte tijd.",
+      "tts": {
+        "text": "Er is een lange droge tijd en een kortere natte tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de droge tijd is de lucht maandenlang helder.",
+      "text_markdown": "In de droge tijd is de lucht maandenlang helder.",
+      "tts": {
+        "text": "In de droge tijd is de lucht maandenlang helder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras wordt goudkleurig en bros.",
+      "text_markdown": "Het gras wordt goudkleurig en bros.",
+      "tts": {
+        "text": "Het gras wordt goudkleurig en bros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De rivieren krimpen en veel kleine vijvers drogen helemaal op.",
+      "text_markdown": "De rivieren krimpen en veel kleine vijvers drogen helemaal op.",
+      "tts": {
+        "text": "De rivieren krimpen en veel kleine vijvers drogen helemaal op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen laten hun bladeren vallen om water te sparen.",
+      "text_markdown": "De bomen laten hun bladeren vallen om water te sparen.",
+      "tts": {
+        "text": "De bomen laten hun bladeren vallen om water te sparen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De natte tijd begint met grote wolken die zich aan de horizon opstapelen.",
+      "text_markdown": "De natte tijd begint met grote wolken die zich aan de horizon opstapelen.",
+      "tts": {
+        "text": "De natte tijd begint met grote wolken die zich aan de horizon opstapelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste regens vallen in zware buien met donder en bliksem.",
+      "text_markdown": "De eerste regens vallen in zware buien met donder en bliksem.",
+      "tts": {
+        "text": "De eerste regens vallen in zware buien met donder en bliksem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de regen komt, verandert de savanne in één nacht.",
+      "text_markdown": "Als de regen komt, verandert de savanne in één nacht.",
+      "tts": {
+        "text": "Als de regen komt, verandert de savanne in één nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nieuw gras schiet op uit de droge aarde.",
+      "text_markdown": "Nieuw gras schiet op uit de droge aarde.",
+      "tts": {
+        "text": "Nieuw gras schiet op uit de droge aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bomen krijgen frisse groene bladeren.",
+      "text_markdown": "Bomen krijgen frisse groene bladeren.",
+      "tts": {
+        "text": "Bomen krijgen frisse groene bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bloemen bloeien in golven van kleur.",
+      "text_markdown": "Bloemen bloeien in golven van kleur.",
+      "tts": {
+        "text": "Bloemen bloeien in golven van kleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De natte tijd is kort, maar dan gebeurt het meeste van het leven.",
+      "text_markdown": "De natte tijd is kort, maar dan gebeurt het meeste van het leven.",
+      "tts": {
+        "text": "De natte tijd is kort, maar dan gebeurt het meeste van het leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De droge tijd is lang, maar de savanne is ervoor gebouwd.",
+      "text_markdown": "De droge tijd is lang, maar de savanne is ervoor gebouwd.",
+      "tts": {
+        "text": "De droge tijd is lang, maar de savanne is ervoor gebouwd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elke plant en elk dier hier weet hoe het op de regen moet wachten.",
+      "text_markdown": "Elke plant en elk dier hier weet hoe het op de regen moet wachten.",
+      "tts": {
+        "text": "Elke plant en elk dier hier weet hoe het op de regen moet wachten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land van de savanne is meestal vlak en wijd.",
+      "text_markdown": "Het land van de savanne is meestal vlak en wijd.",
+      "tts": {
+        "text": "Het land van de savanne is meestal vlak en wijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken rijzen lage glooiende heuvels uit het gras op.",
+      "text_markdown": "Op sommige plekken rijzen lage glooiende heuvels uit het gras op.",
+      "tts": {
+        "text": "Op sommige plekken rijzen lage glooiende heuvels uit het gras op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier en daar staat een grote rotsige uitloper alleen op de vlakte.",
+      "text_markdown": "Hier en daar staat een grote rotsige uitloper alleen op de vlakte.",
+      "tts": {
+        "text": "Hier en daar staat een grote rotsige uitloper alleen op de vlakte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grond onder het gras is in verschillende delen van de savanne anders.",
+      "text_markdown": "De grond onder het gras is in verschillende delen van de savanne anders.",
+      "tts": {
+        "text": "De grond onder het gras is in verschillende delen van de savanne anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken is hij donker en rijk.",
+      "text_markdown": "Op sommige plekken is hij donker en rijk.",
+      "tts": {
+        "text": "Op sommige plekken is hij donker en rijk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op andere plekken is hij zandig of dun.",
+      "text_markdown": "Op andere plekken is hij zandig of dun.",
+      "tts": {
+        "text": "Op andere plekken is hij zandig of dun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grassen hebben geleerd om in alles te groeien.",
+      "text_markdown": "De grassen hebben geleerd om in alles te groeien.",
+      "tts": {
+        "text": "De grassen hebben geleerd om in alles te groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de regens komen, verzamelt het water zich op lage plekken en vormt vijvers en ondiepe meren.",
+      "text_markdown": "Als de regens komen, verzamelt het water zich op lage plekken en vormt vijvers en ondiepe meren.",
+      "tts": {
+        "text": "Als de regens komen, verzamelt het water zich op lage plekken en vormt vijvers en ondiepe meren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige blijven maanden bestaan, en andere drogen in een paar weken op.",
+      "text_markdown": "Sommige blijven maanden bestaan, en andere drogen in een paar weken op.",
+      "tts": {
+        "text": "Sommige blijven maanden bestaan, en andere drogen in een paar weken op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rivieren kronkelen door de savanne in lange, langzame bochten.",
+      "text_markdown": "Rivieren kronkelen door de savanne in lange, langzame bochten.",
+      "tts": {
+        "text": "Rivieren kronkelen door de savanne in lange, langzame bochten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de natte tijd zijn ze breed en vol.",
+      "text_markdown": "In de natte tijd zijn ze breed en vol.",
+      "tts": {
+        "text": "In de natte tijd zijn ze breed en vol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de droge tijd krimpen ze tot een dun stroompje in het zand, of tot een reeks stille poelen.",
+      "text_markdown": "In de droge tijd krimpen ze tot een dun stroompje in het zand, of tot een reeks stille poelen.",
+      "tts": {
+        "text": "In de droge tijd krimpen ze tot een dun stroompje in het zand, of tot een reeks stille poelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel dieren van de savanne komen bij deze rivieren en vijvers samen om te drinken.",
+      "text_markdown": "Veel dieren van de savanne komen bij deze rivieren en vijvers samen om te drinken.",
+      "tts": {
+        "text": "Veel dieren van de savanne komen bij deze rivieren en vijvers samen om te drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een vijver in de droge tijd is een drukke plek.",
+      "text_markdown": "Een vijver in de droge tijd is een drukke plek.",
+      "tts": {
+        "text": "Een vijver in de droge tijd is een drukke plek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieren die elkaar normaal niet ontmoeten, staan dicht bij elkaar om te drinken.",
+      "text_markdown": "Dieren die elkaar normaal niet ontmoeten, staan dicht bij elkaar om te drinken.",
+      "tts": {
+        "text": "Dieren die elkaar normaal niet ontmoeten, staan dicht bij elkaar om te drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De rivieren brengen ook een strook hogere bomen mee.",
+      "text_markdown": "De rivieren brengen ook een strook hogere bomen mee.",
+      "tts": {
+        "text": "De rivieren brengen ook een strook hogere bomen mee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de oevers groeien de bomen dicht en groen, zelfs in de droge tijd.",
+      "text_markdown": "Langs de oevers groeien de bomen dicht en groen, zelfs in de droge tijd.",
+      "tts": {
+        "text": "Langs de oevers groeien de bomen dicht en groen, zelfs in de droge tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze linten van bos kruisen de open savanne als groene wegen.",
+      "text_markdown": "Deze linten van bos kruisen de open savanne als groene wegen.",
+      "tts": {
+        "text": "Deze linten van bos kruisen de open savanne als groene wegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze zijn de thuisbasis van dieren die het hele jaar schaduw en water nodig hebben.",
+      "text_markdown": "Ze zijn de thuisbasis van dieren die het hele jaar schaduw en water nodig hebben.",
+      "tts": {
+        "text": "Ze zijn de thuisbasis van dieren die het hele jaar schaduw en water nodig hebben.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het hart van de savanne is het gras.",
+      "text_markdown": "Het hart van de savanne is het gras.",
+      "tts": {
+        "text": "Het hart van de savanne is het gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoge grassen bedekken het land in alle richtingen.",
+      "text_markdown": "Hoge grassen bedekken het land in alle richtingen.",
+      "tts": {
+        "text": "Hoge grassen bedekken het land in alle richtingen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige grassen worden zo hoog als een mens.",
+      "text_markdown": "Sommige grassen worden zo hoog als een mens.",
+      "tts": {
+        "text": "Sommige grassen worden zo hoog als een mens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun wortels reiken diep in de grond om water te vinden.",
+      "text_markdown": "Hun wortels reiken diep in de grond om water te vinden.",
+      "tts": {
+        "text": "Hun wortels reiken diep in de grond om water te vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als er een vuur door de savanne raast, branden de toppen van de grassen weg.",
+      "text_markdown": "Als er een vuur door de savanne raast, branden de toppen van de grassen weg.",
+      "tts": {
+        "text": "Als er een vuur door de savanne raast, branden de toppen van de grassen weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de wortels blijven ondergronds in leven.",
+      "text_markdown": "Maar de wortels blijven ondergronds in leven.",
+      "tts": {
+        "text": "Maar de wortels blijven ondergronds in leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de volgende regen groeien de grassen weer terug, fris en groen.",
+      "text_markdown": "Na de volgende regen groeien de grassen weer terug, fris en groen.",
+      "tts": {
+        "text": "Na de volgende regen groeien de grassen weer terug, fris en groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuur is een natuurlijk onderdeel van dit bioom.",
+      "text_markdown": "Vuur is een natuurlijk onderdeel van dit bioom.",
+      "tts": {
+        "text": "Vuur is een natuurlijk onderdeel van dit bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel planten hier hebben vuur nodig om gezond te blijven.",
+      "text_markdown": "Veel planten hier hebben vuur nodig om gezond te blijven.",
+      "tts": {
+        "text": "Veel planten hier hebben vuur nodig om gezond te blijven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ook bomen groeien op de savanne, maar ze staan verspreid.",
+      "text_markdown": "Ook bomen groeien op de savanne, maar ze staan verspreid.",
+      "tts": {
+        "text": "Ook bomen groeien op de savanne, maar ze staan verspreid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze staan ver uit elkaar, met gras ertussen.",
+      "text_markdown": "Ze staan ver uit elkaar, met gras ertussen.",
+      "tts": {
+        "text": "Ze staan ver uit elkaar, met gras ertussen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste savannebomen zijn laag, met brede, platte kruinen.",
+      "text_markdown": "De meeste savannebomen zijn laag, met brede, platte kruinen.",
+      "tts": {
+        "text": "De meeste savannebomen zijn laag, met brede, platte kruinen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De platte kruin is een brede paraplu van bladeren die elke druppel licht opvangt.",
+      "text_markdown": "De platte kruin is een brede paraplu van bladeren die elke druppel licht opvangt.",
+      "tts": {
+        "text": "De platte kruin is een brede paraplu van bladeren die elke druppel licht opvangt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel savannebomen hebben doorns om grote dieren weg te houden.",
+      "text_markdown": "Veel savannebomen hebben doorns om grote dieren weg te houden.",
+      "tts": {
+        "text": "Veel savannebomen hebben doorns om grote dieren weg te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De beroemde baobab is een reusachtige savanneboom met een dikke, sterke stam.",
+      "text_markdown": "De beroemde baobab is een reusachtige savanneboom met een dikke, sterke stam.",
+      "tts": {
+        "text": "De beroemde baobab is een reusachtige savanneboom met een dikke, sterke stam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij kan water in zijn stam opslaan voor de lange droge tijd.",
+      "text_markdown": "Hij kan water in zijn stam opslaan voor de lange droge tijd.",
+      "tts": {
+        "text": "Hij kan water in zijn stam opslaan voor de lange droge tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige baobabs leven meer dan duizend jaar.",
+      "text_markdown": "Sommige baobabs leven meer dan duizend jaar.",
+      "tts": {
+        "text": "Sommige baobabs leven meer dan duizend jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de rivieren groeien hogere bomen in een dunne groene band.",
+      "text_markdown": "Langs de rivieren groeien hogere bomen in een dunne groene band.",
+      "tts": {
+        "text": "Langs de rivieren groeien hogere bomen in een dunne groene band.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op de open vlakte zijn het gras en een paar verspreide bomen alles wat je kilometers ver ziet.",
+      "text_markdown": "Op de open vlakte zijn het gras en een paar verspreide bomen alles wat je kilometers ver ziet.",
+      "tts": {
+        "text": "Op de open vlakte zijn het gras en een paar verspreide bomen alles wat je kilometers ver ziet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de natte tijd bloeien kleine bloemen tussen de grassen.",
+      "text_markdown": "In de natte tijd bloeien kleine bloemen tussen de grassen.",
+      "tts": {
+        "text": "In de natte tijd bloeien kleine bloemen tussen de grassen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze gaan snel open en houden maar een paar weken stand.",
+      "text_markdown": "Ze gaan snel open en houden maar een paar weken stand.",
+      "tts": {
+        "text": "Ze gaan snel open en houden maar een paar weken stand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De savanne is een stille machine, gemaakt van gras, verspreide bomen, zon en geduldige wortels.",
+      "text_markdown": "De savanne is een stille machine, gemaakt van gras, verspreide bomen, zon en geduldige wortels.",
+      "tts": {
+        "text": "De savanne is een stille machine, gemaakt van gras, verspreide bomen, zon en geduldige wortels.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tropische savanne is wereldwijd beroemd om zijn dieren.",
+      "text_markdown": "De tropische savanne is wereldwijd beroemd om zijn dieren.",
+      "tts": {
+        "text": "De tropische savanne is wereldwijd beroemd om zijn dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grassen voeden enorme kuddes grazende dieren.",
+      "text_markdown": "De grassen voeden enorme kuddes grazende dieren.",
+      "tts": {
+        "text": "De grassen voeden enorme kuddes grazende dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Afrika trekken grote kuddes zebra's, antilopen en buffels over de vlaktes.",
+      "text_markdown": "In Afrika trekken grote kuddes zebra's, antilopen en buffels over de vlaktes.",
+      "tts": {
+        "text": "In Afrika trekken grote kuddes zebra's, antilopen en buffels over de vlaktes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze volgen de regens van het ene deel van de savanne naar het andere.",
+      "text_markdown": "Ze volgen de regens van het ene deel van de savanne naar het andere.",
+      "tts": {
+        "text": "Ze volgen de regens van het ene deel van de savanne naar het andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste landdier op Aarde, de olifant, leeft in de Afrikaanse savanne.",
+      "text_markdown": "Het grootste landdier op Aarde, de olifant, leeft in de Afrikaanse savanne.",
+      "tts": {
+        "text": "Het grootste landdier op Aarde, de olifant, leeft in de Afrikaanse savanne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een familie olifanten loopt langzaam door het gras, geleid door een oude moeder.",
+      "text_markdown": "Een familie olifanten loopt langzaam door het gras, geleid door een oude moeder.",
+      "tts": {
+        "text": "Een familie olifanten loopt langzaam door het gras, geleid door een oude moeder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De giraffe loopt ernaast en strekt zijn lange nek uit om de bladeren van de bomen te eten.",
+      "text_markdown": "De giraffe loopt ernaast en strekt zijn lange nek uit om de bladeren van de bomen te eten.",
+      "tts": {
+        "text": "De giraffe loopt ernaast en strekt zijn lange nek uit om de bladeren van de bomen te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar veel grazende dieren zijn, zijn er ook jagers.",
+      "text_markdown": "Waar veel grazende dieren zijn, zijn er ook jagers.",
+      "tts": {
+        "text": "Waar veel grazende dieren zijn, zijn er ook jagers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De leeuw is de grote jager van de Afrikaanse savanne.",
+      "text_markdown": "De leeuw is de grote jager van de Afrikaanse savanne.",
+      "tts": {
+        "text": "De leeuw is de grote jager van de Afrikaanse savanne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leeuwen leven samen in familiegroepen die roedels worden genoemd.",
+      "text_markdown": "Leeuwen leven samen in familiegroepen die roedels worden genoemd.",
+      "tts": {
+        "text": "Leeuwen leven samen in familiegroepen die roedels worden genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het jachtluipaard is het snelste dier op het land.",
+      "text_markdown": "Het jachtluipaard is het snelste dier op het land.",
+      "tts": {
+        "text": "Het jachtluipaard is het snelste dier op het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het rent in korte sprints om de antilopen te vangen die op de vlaktes grazen.",
+      "text_markdown": "Het rent in korte sprints om de antilopen te vangen die op de vlaktes grazen.",
+      "tts": {
+        "text": "Het rent in korte sprints om de antilopen te vangen die op de vlaktes grazen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De luipaard is een stille jager die in bomen klimt en zijn maaltijden mee de takken in trekt.",
+      "text_markdown": "De luipaard is een stille jager die in bomen klimt en zijn maaltijden mee de takken in trekt.",
+      "tts": {
+        "text": "De luipaard is een stille jager die in bomen klimt en zijn maaltijden mee de takken in trekt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyena's jagen in groepen en ruimen op wat de grotere jagers achterlaten.",
+      "text_markdown": "Hyena's jagen in groepen en ruimen op wat de grotere jagers achterlaten.",
+      "tts": {
+        "text": "Hyena's jagen in groepen en ruimen op wat de grotere jagers achterlaten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleinere dieren zijn er ook overal.",
+      "text_markdown": "Kleinere dieren zijn er ook overal.",
+      "tts": {
+        "text": "Kleinere dieren zijn er ook overal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bavianen trekken in luidruchtige groepen door het gras en door de bomen.",
+      "text_markdown": "Bavianen trekken in luidruchtige groepen door het gras en door de bomen.",
+      "tts": {
+        "text": "Bavianen trekken in luidruchtige groepen door het gras en door de bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grote vogels die struisvogels heten, rennen op lange poten over de open vlakte.",
+      "text_markdown": "Grote vogels die struisvogels heten, rennen op lange poten over de open vlakte.",
+      "tts": {
+        "text": "Grote vogels die struisvogels heten, rennen op lange poten over de open vlakte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gieren cirkelen hoog in de lucht en houden uitkijk naar dieren die zijn gestorven.",
+      "text_markdown": "Gieren cirkelen hoog in de lucht en houden uitkijk naar dieren die zijn gestorven.",
+      "tts": {
+        "text": "Gieren cirkelen hoog in de lucht en houden uitkijk naar dieren die zijn gestorven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de natte tijd zingen kikkers elke nacht rond de nieuwe vijvers.",
+      "text_markdown": "In de natte tijd zingen kikkers elke nacht rond de nieuwe vijvers.",
+      "tts": {
+        "text": "In de natte tijd zingen kikkers elke nacht rond de nieuwe vijvers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insecten vullen de warme lucht en vlinders fladderen tussen de bloemen.",
+      "text_markdown": "Insecten vullen de warme lucht en vlinders fladderen tussen de bloemen.",
+      "tts": {
+        "text": "Insecten vullen de warme lucht en vlinders fladderen tussen de bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de rivieren rusten nijlpaarden de hele dag in het water en komen 's nachts naar buiten om het gras te grazen.",
+      "text_markdown": "In de rivieren rusten nijlpaarden de hele dag in het water en komen 's nachts naar buiten om het gras te grazen.",
+      "tts": {
+        "text": "In de rivieren rusten nijlpaarden de hele dag in het water en komen 's nachts naar buiten om het gras te grazen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Zuid-Amerikaanse savanne nemen grote knaagdieren en grote vogels de plaats in van de Afrikaanse.",
+      "text_markdown": "In de Zuid-Amerikaanse savanne nemen grote knaagdieren en grote vogels de plaats in van de Afrikaanse.",
+      "tts": {
+        "text": "In de Zuid Amerikaanse savanne nemen grote knaagdieren en grote vogels de plaats in van de Afrikaanse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Australische savanne huppen kangoeroes door het gras in plaats dat er antilopen doorheen rennen.",
+      "text_markdown": "In de Australische savanne huppen kangoeroes door het gras in plaats dat er antilopen doorheen rennen.",
+      "tts": {
+        "text": "In de Australische savanne huppen kangoeroes door het gras in plaats dat er antilopen doorheen rennen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elk van deze landen zien de dieren er anders uit.",
+      "text_markdown": "In elk van deze landen zien de dieren er anders uit.",
+      "tts": {
+        "text": "In elk van deze landen zien de dieren er anders uit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het patroon is hetzelfde.",
+      "text_markdown": "Maar het patroon is hetzelfde.",
+      "tts": {
+        "text": "Maar het patroon is hetzelfde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enorme kuddes grazers, stille jagers in het gras en grote zwermen vogels in de lucht.",
+      "text_markdown": "Enorme kuddes grazers, stille jagers in het gras en grote zwermen vogels in de lucht.",
+      "tts": {
+        "text": "Enorme kuddes grazers, stille jagers in het gras en grote zwermen vogels in de lucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is dus het savannelandschap.",
+      "text_markdown": "Dat is dus het savannelandschap.",
+      "tts": {
+        "text": "Dat is dus het savannelandschap.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen wonen al heel lang in de tropische savanne.",
+      "text_markdown": "Mensen wonen al heel lang in de tropische savanne.",
+      "tts": {
+        "text": "Mensen wonen al heel lang in de tropische savanne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onze eigen voorouders stonden zelfs voor het eerst op en liepen over savannes als deze.",
+      "text_markdown": "Onze eigen voorouders stonden zelfs voor het eerst op en liepen over savannes als deze.",
+      "tts": {
+        "text": "Onze eigen voorouders stonden zelfs voor het eerst op en liepen over savannes als deze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het open gras en de verspreide bomen vormden de manier waarop ons lichaam beweegt.",
+      "text_markdown": "Het open gras en de verspreide bomen vormden de manier waarop ons lichaam beweegt.",
+      "tts": {
+        "text": "Het open gras en de verspreide bomen vormden de manier waarop ons lichaam beweegt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel mensen van de savanne houden kuddes dieren.",
+      "text_markdown": "Veel mensen van de savanne houden kuddes dieren.",
+      "tts": {
+        "text": "Veel mensen van de savanne houden kuddes dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Afrika hoeden families vee, geiten en schapen over de graslanden.",
+      "text_markdown": "In Afrika hoeden families vee, geiten en schapen over de graslanden.",
+      "tts": {
+        "text": "In Afrika hoeden families vee, geiten en schapen over de graslanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren eten het gras en maken er melk en vlees van voor de mensen.",
+      "text_markdown": "De dieren eten het gras en maken er melk en vlees van voor de mensen.",
+      "tts": {
+        "text": "De dieren eten het gras en maken er melk en vlees van voor de mensen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De herders trekken met hun dieren mee om de regens te volgen.",
+      "text_markdown": "De herders trekken met hun dieren mee om de regens te volgen.",
+      "tts": {
+        "text": "De herders trekken met hun dieren mee om de regens te volgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de droge tijd reizen ze richting de rivieren.",
+      "text_markdown": "In de droge tijd reizen ze richting de rivieren.",
+      "tts": {
+        "text": "In de droge tijd reizen ze richting de rivieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de natte tijd verspreiden ze zich over de groene vlaktes.",
+      "text_markdown": "In de natte tijd verspreiden ze zich over de groene vlaktes.",
+      "tts": {
+        "text": "In de natte tijd verspreiden ze zich over de groene vlaktes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun huizen zijn vaak makkelijk uit elkaar te halen en mee te nemen naar een nieuwe plek.",
+      "text_markdown": "Hun huizen zijn vaak makkelijk uit elkaar te halen en mee te nemen naar een nieuwe plek.",
+      "tts": {
+        "text": "Hun huizen zijn vaak makkelijk uit elkaar te halen en mee te nemen naar een nieuwe plek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere mensen van de savanne verbouwen voedsel op kleine akkers.",
+      "text_markdown": "Andere mensen van de savanne verbouwen voedsel op kleine akkers.",
+      "tts": {
+        "text": "Andere mensen van de savanne verbouwen voedsel op kleine akkers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar de grond rijk is, planten ze granen en bonen.",
+      "text_markdown": "Waar de grond rijk is, planten ze granen en bonen.",
+      "tts": {
+        "text": "Waar de grond rijk is, planten ze granen en bonen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze gebruiken vuur zorgvuldig om nieuwe akkers vrij te maken en het gras fris te houden voor hun dieren.",
+      "text_markdown": "Ze gebruiken vuur zorgvuldig om nieuwe akkers vrij te maken en het gras fris te houden voor hun dieren.",
+      "tts": {
+        "text": "Ze gebruiken vuur zorgvuldig om nieuwe akkers vrij te maken en het gras fris te houden voor hun dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen van de savanne kennen het land tot in detail.",
+      "text_markdown": "De mensen van de savanne kennen het land tot in detail.",
+      "tts": {
+        "text": "De mensen van de savanne kennen het land tot in detail.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze weten welke planten veilig zijn om te eten en welke goed zijn als medicijn.",
+      "text_markdown": "Ze weten welke planten veilig zijn om te eten en welke goed zijn als medicijn.",
+      "tts": {
+        "text": "Ze weten welke planten veilig zijn om te eten en welke goed zijn als medicijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kennen de sporen van elk dier in het stof.",
+      "text_markdown": "Ze kennen de sporen van elk dier in het stof.",
+      "tts": {
+        "text": "Ze kennen de sporen van elk dier in het stof.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kennen de betekenis van elke soort wolk aan de hemel.",
+      "text_markdown": "Ze kennen de betekenis van elke soort wolk aan de hemel.",
+      "tts": {
+        "text": "Ze kennen de betekenis van elke soort wolk aan de hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+      "text_markdown": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+      "tts": {
+        "text": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elke savanne heeft deze manier van leven zijn eigen talen, zijn eigen liederen en zijn eigen verhalen.",
+      "text_markdown": "In elke savanne heeft deze manier van leven zijn eigen talen, zijn eigen liederen en zijn eigen verhalen.",
+      "tts": {
+        "text": "In elke savanne heeft deze manier van leven zijn eigen talen, zijn eigen liederen en zijn eigen verhalen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De savanne vandaag",
+      "text_markdown": "De savanne vandaag"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tropische savanne is een van de grote wilde landen van de Aarde.",
+      "text_markdown": "De tropische savanne is een van de grote wilde landen van de Aarde.",
+      "tts": {
+        "text": "De tropische savanne is een van de grote wilde landen van de Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij voedt enorme kuddes dieren.",
+      "text_markdown": "Hij voedt enorme kuddes dieren.",
+      "tts": {
+        "text": "Hij voedt enorme kuddes dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij ondersteunt de herders en boeren die hier al duizenden jaren wonen.",
+      "text_markdown": "Hij ondersteunt de herders en boeren die hier al duizenden jaren wonen.",
+      "tts": {
+        "text": "Hij ondersteunt de herders en boeren die hier al duizenden jaren wonen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De graslanden slaan ook veel water en voedsel op in hun diepe wortels.",
+      "text_markdown": "De graslanden slaan ook veel water en voedsel op in hun diepe wortels.",
+      "tts": {
+        "text": "De graslanden slaan ook veel water en voedsel op in hun diepe wortels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de savanne zit ook in de problemen.",
+      "text_markdown": "Maar de savanne zit ook in de problemen.",
+      "tts": {
+        "text": "Maar de savanne zit ook in de problemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op veel plekken hebben mensen het gras omgeploegd om gewassen te planten, of het afgezet voor vee.",
+      "text_markdown": "Op veel plekken hebben mensen het gras omgeploegd om gewassen te planten, of het afgezet voor vee.",
+      "tts": {
+        "text": "Op veel plekken hebben mensen het gras omgeploegd om gewassen te planten, of het afgezet voor vee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als het gras wordt opgebroken, raken de kuddes wilde dieren hun open pad kwijt.",
+      "text_markdown": "Als het gras wordt opgebroken, raken de kuddes wilde dieren hun open pad kwijt.",
+      "tts": {
+        "text": "Als het gras wordt opgebroken, raken de kuddes wilde dieren hun open pad kwijt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wegen en hekken doorsnijden de routes die olifanten en antilopen al eeuwen volgen.",
+      "text_markdown": "Wegen en hekken doorsnijden de routes die olifanten en antilopen al eeuwen volgen.",
+      "tts": {
+        "text": "Wegen en hekken doorsnijden de routes die olifanten en antilopen al eeuwen volgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige savannedieren, zoals de neushoorn en het jachtluipaard, zijn heel zeldzaam geworden.",
+      "text_markdown": "Sommige savannedieren, zoals de neushoorn en het jachtluipaard, zijn heel zeldzaam geworden.",
+      "tts": {
+        "text": "Sommige savannedieren, zoals de neushoorn en het jachtluipaard, zijn heel zeldzaam geworden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken eraan om te beschermen wat er nog is.",
+      "text_markdown": "Veel groepen over de hele wereld werken eraan om te beschermen wat er nog is.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken eraan om te beschermen wat er nog is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leggen grote parken aan waar de wilde dieren zich nog vrij kunnen bewegen.",
+      "text_markdown": "Ze leggen grote parken aan waar de wilde dieren zich nog vrij kunnen bewegen.",
+      "tts": {
+        "text": "Ze leggen grote parken aan waar de wilde dieren zich nog vrij kunnen bewegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze werken samen met de mensen die bij de parken wonen om het land te delen.",
+      "text_markdown": "Ze werken samen met de mensen die bij de parken wonen om het land te delen.",
+      "tts": {
+        "text": "Ze werken samen met de mensen die bij de parken wonen om het land te delen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen het gras, de bomen en de kuddes zodat we het beter begrijpen.",
+      "text_markdown": "Ze bestuderen het gras, de bomen en de kuddes zodat we het beter begrijpen.",
+      "tts": {
+        "text": "Ze bestuderen het gras, de bomen en de kuddes zodat we het beter begrijpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een gezonde savanne kan meer leven dragen dan bijna elk ander landbioom.",
+      "text_markdown": "Een gezonde savanne kan meer leven dragen dan bijna elk ander landbioom.",
+      "tts": {
+        "text": "Een gezonde savanne kan meer leven dragen dan bijna elk ander landbioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "De savanne vandaag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is onze zorg waard.",
+      "text_markdown": "Het is onze zorg waard.",
+      "tts": {
+        "text": "Het is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afsluiting",
+      "text_markdown": "Afsluiting"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is de tropische savanne.",
+      "text_markdown": "Dat is de tropische savanne.",
+      "tts": {
+        "text": "Dat is de tropische savanne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een wijd, warm land van gras, verspreide bomen en grote kuddes dieren.",
+      "text_markdown": "Een wijd, warm land van gras, verspreide bomen en grote kuddes dieren.",
+      "tts": {
+        "text": "Een wijd, warm land van gras, verspreide bomen en grote kuddes dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in staat, sta dan even stil.",
+      "text_markdown": "Als je er ooit in staat, sta dan even stil.",
+      "tts": {
+        "text": "Als je er ooit in staat, sta dan even stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de wind in het gras en de vogels in de verte.",
+      "text_markdown": "Luister naar de wind in het gras en de vogels in de verte.",
+      "tts": {
+        "text": "Luister naar de wind in het gras en de vogels in de verte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk uit naar de lange horizon.",
+      "text_markdown": "Kijk uit naar de lange horizon.",
+      "tts": {
+        "text": "Kijk uit naar de lange horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "text_markdown": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "tts": {
+        "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

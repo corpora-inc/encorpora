@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "地中海生物群落",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海生物群落",
+      "text_markdown": "地中海生物群落"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "这个生物群落生长在哪里",
+      "text_markdown": "这个生物群落生长在哪里"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欢迎来到地中海生物群落。",
+      "text_markdown": "欢迎来到地中海生物群落。",
+      "tts": {
+        "text": "欢迎来到地中海生物群落。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界上最伟大的生物群落之一。",
+      "text_markdown": "这是世界上最伟大的生物群落之一。",
+      "tts": {
+        "text": "这是世界上最伟大的生物群落之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+      "text_markdown": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+      "tts": {
+        "text": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落因地中海周围的土地而得名。",
+      "text_markdown": "地中海生物群落因地中海周围的土地而得名。",
+      "tts": {
+        "text": "地中海生物群落因地中海周围的土地而得名。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它不只在那里生长。",
+      "text_markdown": "但它不只在那里生长。",
+      "tts": {
+        "text": "但它不只在那里生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落出现在世界上五个小区域。",
+      "text_markdown": "地中海生物群落出现在世界上五个小区域。",
+      "tts": {
+        "text": "地中海生物群落出现在世界上五个小区域。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它生长在地中海周围的土地上,在南欧,也沿着北非的海岸。",
+      "text_markdown": "它生长在地中海周围的土地上,在南欧,也沿着北非的海岸。",
+      "tts": {
+        "text": "它生长在地中海周围的土地上,在南欧,也沿着北非的海岸。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它生长在加利福尼亚,在北美洲的西部。",
+      "text_markdown": "它生长在加利福尼亚,在北美洲的西部。",
+      "tts": {
+        "text": "它生长在加利福尼亚,在北美洲的西部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它沿着南美洲智利海岸的中段生长。",
+      "text_markdown": "它沿着南美洲智利海岸的中段生长。",
+      "tts": {
+        "text": "它沿着南美洲智利海岸的中段生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它生长在非洲南端附近,在好望角周围。",
+      "text_markdown": "它生长在非洲南端附近,在好望角周围。",
+      "tts": {
+        "text": "它生长在非洲南端附近,在好望角周围。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它生长在澳大利亚的西南部和南部。",
+      "text_markdown": "它生长在澳大利亚的西南部和南部。",
+      "tts": {
+        "text": "它生长在澳大利亚的西南部和南部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些地方彼此相距遥远。",
+      "text_markdown": "这些地方彼此相距遥远。",
+      "tts": {
+        "text": "这些地方彼此相距遥远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它们都有同样特别的天气。",
+      "text_markdown": "但它们都有同样特别的天气。",
+      "tts": {
+        "text": "但它们都有同样特别的天气。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天炎热干燥,冬天温和湿润。",
+      "text_markdown": "夏天炎热干燥,冬天温和湿润。",
+      "tts": {
+        "text": "夏天炎热干燥,冬天温和湿润。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这在地球上很少见。",
+      "text_markdown": "这在地球上很少见。",
+      "tts": {
+        "text": "这在地球上很少见。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数生物群落的雨季都在温暖的月份。",
+      "text_markdown": "大多数生物群落的雨季都在温暖的月份。",
+      "tts": {
+        "text": "大多数生物群落的雨季都在温暖的月份。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "而这里,雨水却落在凉爽的月份。",
+      "text_markdown": "而这里,雨水却落在凉爽的月份。",
+      "tts": {
+        "text": "而这里,雨水却落在凉爽的月份。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这五个地方各有自己的植物和动物。",
+      "text_markdown": "这五个地方各有自己的植物和动物。",
+      "tts": {
+        "text": "这五个地方各有自己的植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但形态都是一样的。",
+      "text_markdown": "但形态都是一样的。",
+      "tts": {
+        "text": "但形态都是一样的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "低矮坚韧的灌木,散落的树木,芬芳的香草,光秃多石的山丘。",
+      "text_markdown": "低矮坚韧的灌木,散落的树木,芬芳的香草,光秃多石的山丘。",
+      "tts": {
+        "text": "低矮坚韧的灌木,散落的树木,芬芳的香草,光秃多石的山丘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天站在地中海的土地上,空气里满是干香草和温热石头的气味。",
+      "text_markdown": "夏天站在地中海的土地上,空气里满是干香草和温热石头的气味。",
+      "tts": {
+        "text": "夏天站在地中海的土地上,空气里满是干香草和温热石头的气味。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阳光强烈而金黄。",
+      "text_markdown": "阳光强烈而金黄。",
+      "tts": {
+        "text": "阳光强烈而金黄。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "山丘上点缀着低矮的银绿色灌木。",
+      "text_markdown": "山丘上点缀着低矮的银绿色灌木。",
+      "tts": {
+        "text": "山丘上点缀着低矮的银绿色灌木。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是地中海生物群落。",
+      "text_markdown": "这就是地中海生物群落。",
+      "tts": {
+        "text": "这就是地中海生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "这个生物群落生长在哪里",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个明亮、干燥、芬芳的世界,生长在地球的五个小角落里。",
+      "text_markdown": "一个明亮、干燥、芬芳的世界,生长在地球的五个小角落里。",
+      "tts": {
+        "text": "一个明亮、干燥、芬芳的世界,生长在地球的五个小角落里。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天气",
+      "text_markdown": "天气"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落的天气很特别。",
+      "text_markdown": "地中海生物群落的天气很特别。",
+      "tts": {
+        "text": "地中海生物群落的天气很特别。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里有两个分明的季节。",
+      "text_markdown": "这里有两个分明的季节。",
+      "tts": {
+        "text": "这里有两个分明的季节。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有漫长、炎热、干燥的夏天。",
+      "text_markdown": "有漫长、炎热、干燥的夏天。",
+      "tts": {
+        "text": "有漫长、炎热、干燥的夏天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "还有较短、温和、湿润的冬天。",
+      "text_markdown": "还有较短、温和、湿润的冬天。",
+      "tts": {
+        "text": "还有较短、温和、湿润的冬天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天的天空一连几周都是蓝色的。",
+      "text_markdown": "夏天的天空一连几周都是蓝色的。",
+      "tts": {
+        "text": "夏天的天空一连几周都是蓝色的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阳光强烈,空气干燥。",
+      "text_markdown": "阳光强烈,空气干燥。",
+      "tts": {
+        "text": "阳光强烈,空气干燥。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "好几个月几乎不下雨。",
+      "text_markdown": "好几个月几乎不下雨。",
+      "tts": {
+        "text": "好几个月几乎不下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到了夏末,草已变黄,溪流缩成几个安静的小水洼。",
+      "text_markdown": "到了夏末,草已变黄,溪流缩成几个安静的小水洼。",
+      "tts": {
+        "text": "到了夏末,草已变黄,溪流缩成几个安静的小水洼。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋天,第一阵凉风从海上吹来。",
+      "text_markdown": "秋天,第一阵凉风从海上吹来。",
+      "tts": {
+        "text": "秋天,第一阵凉风从海上吹来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "云聚集起来,第一场大雨落在干涸的大地上。",
+      "text_markdown": "云聚集起来,第一场大雨落在干涸的大地上。",
+      "tts": {
+        "text": "云聚集起来,第一场大雨落在干涸的大地上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地饮下雨水,青草又变绿了。",
+      "text_markdown": "大地饮下雨水,青草又变绿了。",
+      "tts": {
+        "text": "大地饮下雨水,青草又变绿了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬天并不很冷。",
+      "text_markdown": "冬天并不很冷。",
+      "tts": {
+        "text": "冬天并不很冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "除了高山上,很少下雪。",
+      "text_markdown": "除了高山上,很少下雪。",
+      "tts": {
+        "text": "除了高山上,很少下雪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨水化作绵长柔和的阵雨,河流满满当当。",
+      "text_markdown": "雨水化作绵长柔和的阵雨,河流满满当当。",
+      "tts": {
+        "text": "雨水化作绵长柔和的阵雨,河流满满当当。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春天,空气温暖,山丘碧绿。",
+      "text_markdown": "春天,空气温暖,山丘碧绿。",
+      "tts": {
+        "text": "春天,空气温暖,山丘碧绿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短短几周里,野花覆盖了每一道山坡。",
+      "text_markdown": "短短几周里,野花覆盖了每一道山坡。",
+      "tts": {
+        "text": "短短几周里,野花覆盖了每一道山坡。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后夏天又开始了,循环重新启动。",
+      "text_markdown": "然后夏天又开始了,循环重新启动。",
+      "tts": {
+        "text": "然后夏天又开始了,循环重新启动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火也是这个生物群落的一部分。",
+      "text_markdown": "火也是这个生物群落的一部分。",
+      "tts": {
+        "text": "火也是这个生物群落的一部分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "漫长干燥的夏天里,闪电或一点疏忽的火星都能点燃干灌木。",
+      "text_markdown": "漫长干燥的夏天里,闪电或一点疏忽的火星都能点燃干灌木。",
+      "tts": {
+        "text": "漫长干燥的夏天里,闪电或一点疏忽的火星都能点燃干灌木。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里许多植物都学会了与火共存,火过之后能迅速重新生长。",
+      "text_markdown": "这里许多植物都学会了与火共存,火过之后能迅速重新生长。",
+      "tts": {
+        "text": "这里许多植物都学会了与火共存,火过之后能迅速重新生长。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地与水",
+      "text_markdown": "土地与水"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落的土地常常多丘陵。",
+      "text_markdown": "地中海生物群落的土地常常多丘陵。",
+      "tts": {
+        "text": "地中海生物群落的土地常常多丘陵。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多这样的地区,山脉靠近海岸。",
+      "text_markdown": "在许多这样的地区,山脉靠近海岸。",
+      "tts": {
+        "text": "在许多这样的地区,山脉靠近海岸。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "山坡多石,土壤往往很薄。",
+      "text_markdown": "山坡多石,土壤往往很薄。",
+      "tts": {
+        "text": "山坡多石,土壤往往很薄。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "附近的海洋塑造着这里的天气。",
+      "text_markdown": "附近的海洋塑造着这里的天气。",
+      "tts": {
+        "text": "附近的海洋塑造着这里的天气。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "凉爽的海水让夏天不像沙漠那么热,也让冬天不像更内陆的地方那么冷。",
+      "text_markdown": "凉爽的海水让夏天不像沙漠那么热,也让冬天不像更内陆的地方那么冷。",
+      "tts": {
+        "text": "凉爽的海水让夏天不像沙漠那么热,也让冬天不像更内陆的地方那么冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水在这里很珍贵。",
+      "text_markdown": "水在这里很珍贵。",
+      "tts": {
+        "text": "水在这里很珍贵。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到了夏末,大多数河流缩成细细的一线。",
+      "text_markdown": "到了夏末,大多数河流缩成细细的一线。",
+      "tts": {
+        "text": "到了夏末,大多数河流缩成细细的一线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些较小的溪流完全消失了。",
+      "text_markdown": "有些较小的溪流完全消失了。",
+      "tts": {
+        "text": "有些较小的溪流完全消失了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬雨回来时,河流很快涨满,顺着山势奔向大海。",
+      "text_markdown": "冬雨回来时,河流很快涨满,顺着山势奔向大海。",
+      "tts": {
+        "text": "冬雨回来时,河流很快涨满,顺着山势奔向大海。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在有些地方,深处的地下水涌出形成泉水。",
+      "text_markdown": "在有些地方,深处的地下水涌出形成泉水。",
+      "tts": {
+        "text": "在有些地方,深处的地下水涌出形成泉水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "泉水是一小汪从岩石中常年流出的淡水。",
+      "text_markdown": "泉水是一小汪从岩石中常年流出的淡水。",
+      "tts": {
+        "text": "泉水是一小汪从岩石中常年流出的淡水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几千年来,人、动物和树木都聚集在这些泉水周围。",
+      "text_markdown": "几千年来,人、动物和树木都聚集在这些泉水周围。",
+      "tts": {
+        "text": "几千年来,人、动物和树木都聚集在这些泉水周围。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿海一带,大地与海相接,形成峭壁、沙滩和小小的海湾。",
+      "text_markdown": "沿海一带,大地与海相接,形成峭壁、沙滩和小小的海湾。",
+      "tts": {
+        "text": "沿海一带,大地与海相接,形成峭壁、沙滩和小小的海湾。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海中充满了生命。",
+      "text_markdown": "海中充满了生命。",
+      "tts": {
+        "text": "海中充满了生命。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鱼、章鱼和海鸟都在温暖咸涩的海水里寻找食物。",
+      "text_markdown": "鱼、章鱼和海鸟都在温暖咸涩的海水里寻找食物。",
+      "tts": {
+        "text": "鱼、章鱼和海鸟都在温暖咸涩的海水里寻找食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个生物群落生活在土地、海洋和漫长湛蓝的夏日天空之间。",
+      "text_markdown": "这个生物群落生活在土地、海洋和漫长湛蓝的夏日天空之间。",
+      "tts": {
+        "text": "这个生物群落生活在土地、海洋和漫长湛蓝的夏日天空之间。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落的植物坚韧而聪明。",
+      "text_markdown": "地中海生物群落的植物坚韧而聪明。",
+      "tts": {
+        "text": "地中海生物群落的植物坚韧而聪明。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们已经学会在漫长干燥的夏天里生存。",
+      "text_markdown": "它们已经学会在漫长干燥的夏天里生存。",
+      "tts": {
+        "text": "它们已经学会在漫长干燥的夏天里生存。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们大多数都不高。",
+      "text_markdown": "它们大多数都不高。",
+      "tts": {
+        "text": "它们大多数都不高。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们以低矮灌木的形态生长,叶子厚实,像皮革一样。",
+      "text_markdown": "它们以低矮灌木的形态生长,叶子厚实,像皮革一样。",
+      "tts": {
+        "text": "它们以低矮灌木的形态生长,叶子厚实,像皮革一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "叶子小而有光泽,有时是银色或灰绿色。",
+      "text_markdown": "叶子小而有光泽,有时是银色或灰绿色。",
+      "tts": {
+        "text": "叶子小而有光泽,有时是银色或灰绿色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小而有光泽的叶子被太阳带走的水分更少。",
+      "text_markdown": "小而有光泽的叶子被太阳带走的水分更少。",
+      "tts": {
+        "text": "小而有光泽的叶子被太阳带走的水分更少。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "浅色的叶子能反射更多阳光。",
+      "text_markdown": "浅色的叶子能反射更多阳光。",
+      "tts": {
+        "text": "浅色的叶子能反射更多阳光。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多植物在你擦过它们时会散发出浓郁甜美的香气。",
+      "text_markdown": "许多植物在你擦过它们时会散发出浓郁甜美的香气。",
+      "tts": {
+        "text": "许多植物在你擦过它们时会散发出浓郁甜美的香气。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那香气来自叶子里的油。",
+      "text_markdown": "那香气来自叶子里的油。",
+      "tts": {
+        "text": "那香气来自叶子里的油。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些油可以减缓水分流失,帮助植物熬过炎热。",
+      "text_markdown": "这些油可以减缓水分流失,帮助植物熬过炎热。",
+      "tts": {
+        "text": "这些油可以减缓水分流失,帮助植物熬过炎热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是为什么我们许多最爱的烹饪香草都来自这些土地。",
+      "text_markdown": "这就是为什么我们许多最爱的烹饪香草都来自这些土地。",
+      "tts": {
+        "text": "这就是为什么我们许多最爱的烹饪香草都来自这些土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "迷迭香、鼠尾草、百里香、薰衣草、薄荷、牛至这些植物,都在地中海生物群落里野生生长。",
+      "text_markdown": "迷迭香、鼠尾草、百里香、薰衣草、薄荷、牛至这些植物,都在地中海生物群落里野生生长。",
+      "tts": {
+        "text": "迷迭香、鼠尾草、百里香、薰衣草、薄荷、牛至这些植物,都在地中海生物群落里野生生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个生物群落最有名的树是橄榄树。",
+      "text_markdown": "这个生物群落最有名的树是橄榄树。",
+      "tts": {
+        "text": "这个生物群落最有名的树是橄榄树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "橄榄树有粗壮扭曲的树干和银灰色的小叶子。",
+      "text_markdown": "橄榄树有粗壮扭曲的树干和银灰色的小叶子。",
+      "tts": {
+        "text": "橄榄树有粗壮扭曲的树干和银灰色的小叶子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些橄榄树能活上千年。",
+      "text_markdown": "有些橄榄树能活上千年。",
+      "tts": {
+        "text": "有些橄榄树能活上千年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其他常见的树木有矮小的常绿橡树、松树和栓皮栎。",
+      "text_markdown": "其他常见的树木有矮小的常绿橡树、松树和栓皮栎。",
+      "tts": {
+        "text": "其他常见的树木有矮小的常绿橡树、松树和栓皮栎。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野生葡萄藤也起源于这些土地,从灌木中向上攀爬。",
+      "text_markdown": "野生葡萄藤也起源于这些土地,从灌木中向上攀爬。",
+      "tts": {
+        "text": "野生葡萄藤也起源于这些土地,从灌木中向上攀爬。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在海岸边,你也许能看到高高的竹林、无花果树和杏仁树。",
+      "text_markdown": "在海岸边,你也许能看到高高的竹林、无花果树和杏仁树。",
+      "tts": {
+        "text": "在海岸边,你也许能看到高高的竹林、无花果树和杏仁树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里大多数植物全年都保留叶子,而不是在秋天落叶。",
+      "text_markdown": "这里大多数植物全年都保留叶子,而不是在秋天落叶。",
+      "tts": {
+        "text": "这里大多数植物全年都保留叶子,而不是在秋天落叶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们承担不起每年春天都长出新叶。",
+      "text_markdown": "它们承担不起每年春天都长出新叶。",
+      "tts": {
+        "text": "它们承担不起每年春天都长出新叶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以它们一年到头都保留着小而坚韧的叶子。",
+      "text_markdown": "所以它们一年到头都保留着小而坚韧的叶子。",
+      "tts": {
+        "text": "所以它们一年到头都保留着小而坚韧的叶子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就让地中海生物群落看起来有一种灰蒙蒙的、常绿的样子。",
+      "text_markdown": "这就让地中海生物群落看起来有一种灰蒙蒙的、常绿的样子。",
+      "tts": {
+        "text": "这就让地中海生物群落看起来有一种灰蒙蒙的、常绿的样子。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "动物",
+      "text_markdown": "动物"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落的动物有许多办法来应对炎热和干燥的夏天。",
+      "text_markdown": "地中海生物群落的动物有许多办法来应对炎热和干燥的夏天。",
+      "tts": {
+        "text": "地中海生物群落的动物有许多办法来应对炎热和干燥的夏天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们大多数体型小,动作快。",
+      "text_markdown": "它们大多数体型小,动作快。",
+      "tts": {
+        "text": "它们大多数体型小,动作快。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小动物很容易躲在灌木下或岩石的缝隙里。",
+      "text_markdown": "小动物很容易躲在灌木下或岩石的缝隙里。",
+      "tts": {
+        "text": "小动物很容易躲在灌木下或岩石的缝隙里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多动物在最炎热的中午休息,在凉爽的清晨和傍晚出来活动。",
+      "text_markdown": "许多动物在最炎热的中午休息,在凉爽的清晨和傍晚出来活动。",
+      "tts": {
+        "text": "许多动物在最炎热的中午休息,在凉爽的清晨和傍晚出来活动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兔子和野兔生活在许多这样的土地上。",
+      "text_markdown": "兔子和野兔生活在许多这样的土地上。",
+      "tts": {
+        "text": "兔子和野兔生活在许多这样的土地上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们在黄昏和黎明觅食,白天则躲在灌木下隐蔽的洞里。",
+      "text_markdown": "它们在黄昏和黎明觅食,白天则躲在灌木下隐蔽的洞里。",
+      "tts": {
+        "text": "它们在黄昏和黎明觅食,白天则躲在灌木下隐蔽的洞里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狐狸捕猎兔子和其他小动物。",
+      "text_markdown": "狐狸捕猎兔子和其他小动物。",
+      "tts": {
+        "text": "狐狸捕猎兔子和其他小动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狐狸熟悉灌木丛中的每一条小路。",
+      "text_markdown": "狐狸熟悉灌木丛中的每一条小路。",
+      "tts": {
+        "text": "狐狸熟悉灌木丛中的每一条小路。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野猪在松软的土里挖掘树根、坚果和小动物。",
+      "text_markdown": "野猪在松软的土里挖掘树根、坚果和小动物。",
+      "tts": {
+        "text": "野猪在松软的土里挖掘树根、坚果和小动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们强壮而胆小,以小家庭群活动。",
+      "text_markdown": "它们强壮而胆小,以小家庭群活动。",
+      "tts": {
+        "text": "它们强壮而胆小,以小家庭群活动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一些地中海土地上,小型野猫在夜里捕猎。",
+      "text_markdown": "在一些地中海土地上,小型野猫在夜里捕猎。",
+      "tts": {
+        "text": "在一些地中海土地上,小型野猫在夜里捕猎。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "猞猁就是其中一种,有短短的尾巴和带毛簇的耳朵。",
+      "text_markdown": "猞猁就是其中一种,有短短的尾巴和带毛簇的耳朵。",
+      "tts": {
+        "text": "猞猁就是其中一种,有短短的尾巴和带毛簇的耳朵。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它现在很稀有,只生活在少数荒野角落里。",
+      "text_markdown": "它现在很稀有,只生活在少数荒野角落里。",
+      "tts": {
+        "text": "它现在很稀有,只生活在少数荒野角落里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鹿也生活在这个生物群落边缘的树林里。",
+      "text_markdown": "鹿也生活在这个生物群落边缘的树林里。",
+      "tts": {
+        "text": "鹿也生活在这个生物群落边缘的树林里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蛇和蜥蜴随处可见。",
+      "text_markdown": "蛇和蜥蜴随处可见。",
+      "tts": {
+        "text": "蛇和蜥蜴随处可见。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天,一只蜥蜴趴在温热的岩石上是常见的景象。",
+      "text_markdown": "夏天,一只蜥蜴趴在温热的岩石上是常见的景象。",
+      "tts": {
+        "text": "夏天,一只蜥蜴趴在温热的岩石上是常见的景象。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "陆龟在灌木丛中缓慢地爬行,吃着叶子和草。",
+      "text_markdown": "陆龟在灌木丛中缓慢地爬行,吃着叶子和草。",
+      "tts": {
+        "text": "陆龟在灌木丛中缓慢地爬行,吃着叶子和草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海陆龟可以活上好几十年。",
+      "text_markdown": "地中海陆龟可以活上好几十年。",
+      "tts": {
+        "text": "地中海陆龟可以活上好几十年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里有许多鸟。",
+      "text_markdown": "这里有许多鸟。",
+      "tts": {
+        "text": "这里有许多鸟。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "麻雀、知更鸟和莺让灌木丛里充满声音。",
+      "text_markdown": "麻雀、知更鸟和莺让灌木丛里充满声音。",
+      "tts": {
+        "text": "麻雀、知更鸟和莺让灌木丛里充满声音。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在高高的天空,鹰和其他大鸟在温暖的午后气流中翱翔。",
+      "text_markdown": "在高高的天空,鹰和其他大鸟在温暖的午后气流中翱翔。",
+      "tts": {
+        "text": "在高高的天空,鹰和其他大鸟在温暖的午后气流中翱翔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春天,蝴蝶在花丛间起舞。",
+      "text_markdown": "春天,蝴蝶在花丛间起舞。",
+      "tts": {
+        "text": "春天,蝴蝶在花丛间起舞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蟋蟀和蚱蜢在温暖的夏夜歌唱。",
+      "text_markdown": "蟋蟀和蚱蜢在温暖的夏夜歌唱。",
+      "tts": {
+        "text": "蟋蟀和蚱蜢在温暖的夏夜歌唱。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在海边,海鸥和其他海鸟在峭壁和礁岛上筑巢。",
+      "text_markdown": "在海边,海鸥和其他海鸟在峭壁和礁岛上筑巢。",
+      "tts": {
+        "text": "在海边,海鸥和其他海鸟在峭壁和礁岛上筑巢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里的每只动物都知道如何在夏天找到阴凉,如何到泉水边喝水,如何等待凉爽的冬雨到来。",
+      "text_markdown": "这里的每只动物都知道如何在夏天找到阴凉,如何到泉水边喝水,如何等待凉爽的冬雨到来。",
+      "tts": {
+        "text": "这里的每只动物都知道如何在夏天找到阴凉,如何到泉水边喝水,如何等待凉爽的冬雨到来。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人",
+      "text_markdown": "人"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落很久以来都是人类的家园。",
+      "text_markdown": "地中海生物群落很久以来都是人类的家园。",
+      "tts": {
+        "text": "地中海生物群落很久以来都是人类的家园。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界上一些最古老的城市和农场就发源于此。",
+      "text_markdown": "世界上一些最古老的城市和农场就发源于此。",
+      "tts": {
+        "text": "世界上一些最古老的城市和农场就发源于此。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几千年来,地中海沿岸的人们一直把三种植物一起种植。",
+      "text_markdown": "几千年来,地中海沿岸的人们一直把三种植物一起种植。",
+      "tts": {
+        "text": "几千年来,地中海沿岸的人们一直把三种植物一起种植。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种橄榄树取油。",
+      "text_markdown": "他们种橄榄树取油。",
+      "tts": {
+        "text": "他们种橄榄树取油。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种葡萄藤取果实和酿酒。",
+      "text_markdown": "他们种葡萄藤取果实和酿酒。",
+      "tts": {
+        "text": "他们种葡萄藤取果实和酿酒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种小麦和其他谷物来做面包。",
+      "text_markdown": "他们种小麦和其他谷物来做面包。",
+      "tts": {
+        "text": "他们种小麦和其他谷物来做面包。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这三样有时被合称为地中海饮食的核心。",
+      "text_markdown": "这三样有时被合称为地中海饮食的核心。",
+      "tts": {
+        "text": "这三样有时被合称为地中海饮食的核心。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在此基础上,人们又加入了蔬菜、水果和山间的野生香草。",
+      "text_markdown": "在此基础上,人们又加入了蔬菜、水果和山间的野生香草。",
+      "tts": {
+        "text": "在此基础上,人们又加入了蔬菜、水果和山间的野生香草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们在这些土地上养绵羊和山羊群也有好几千年了。",
+      "text_markdown": "人们在这些土地上养绵羊和山羊群也有好几千年了。",
+      "tts": {
+        "text": "人们在这些土地上养绵羊和山羊群也有好几千年了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些动物能在难以种庄稼的多石山坡上找到食物。",
+      "text_markdown": "这些动物能在难以种庄稼的多石山坡上找到食物。",
+      "tts": {
+        "text": "这些动物能在难以种庄稼的多石山坡上找到食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们提供做奶酪和酸奶的奶,做衣服的羊毛,还有肉。",
+      "text_markdown": "它们提供做奶酪和酸奶的奶,做衣服的羊毛,还有肉。",
+      "tts": {
+        "text": "它们提供做奶酪和酸奶的奶,做衣服的羊毛,还有肉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "因为海洋就在附近,这个生物群落里的人一直都是渔民和水手。",
+      "text_markdown": "因为海洋就在附近,这个生物群落里的人一直都是渔民和水手。",
+      "tts": {
+        "text": "因为海洋就在附近,这个生物群落里的人一直都是渔民和水手。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木船在黎明出海,带回鱼、章鱼和其他海鲜。",
+      "text_markdown": "木船在黎明出海,带回鱼、章鱼和其他海鲜。",
+      "tts": {
+        "text": "木船在黎明出海,带回鱼、章鱼和其他海鲜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在世界上其他的地中海土地,在加利福尼亚、智利、南非和澳大利亚,几千年来生活在那里的人们也用自己的方式利用同样的野生植物和动物。",
+      "text_markdown": "在世界上其他的地中海土地,在加利福尼亚、智利、南非和澳大利亚,几千年来生活在那里的人们也用自己的方式利用同样的野生植物和动物。",
+      "tts": {
+        "text": "在世界上其他的地中海土地,在加利福尼亚、智利、南非和澳大利亚,几千年来生活在那里的人们也用自己的方式利用同样的野生植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "后来,地中海沿岸土地上的农民来到这些地方,把橄榄、葡萄藤和小麦也带了过去。",
+      "text_markdown": "后来,地中海沿岸土地上的农民来到这些地方,把橄榄、葡萄藤和小麦也带了过去。",
+      "tts": {
+        "text": "后来,地中海沿岸土地上的农民来到这些地方,把橄榄、葡萄藤和小麦也带了过去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天,世界上所有五个地中海地区都种植同样的食物。",
+      "text_markdown": "今天,世界上所有五个地中海地区都种植同样的食物。",
+      "tts": {
+        "text": "今天,世界上所有五个地中海地区都种植同样的食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这片土地仿佛就是在邀请人们这样做。",
+      "text_markdown": "这片土地仿佛就是在邀请人们这样做。",
+      "tts": {
+        "text": "这片土地仿佛就是在邀请人们这样做。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每个地中海地区的厨房,都享有同样的基本馈赠。",
+      "text_markdown": "每个地中海地区的厨房,都享有同样的基本馈赠。",
+      "tts": {
+        "text": "每个地中海地区的厨房,都享有同样的基本馈赠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "面包、奶酪、橄榄油、新鲜的西红柿、鱼、水果和葡萄酒。",
+      "text_markdown": "面包、奶酪、橄榄油、新鲜的西红柿、鱼、水果和葡萄酒。",
+      "tts": {
+        "text": "面包、奶酪、橄榄油、新鲜的西红柿、鱼、水果和葡萄酒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些土地上的人一直都懂得如何充分利用漫长干燥的夏天。",
+      "text_markdown": "这些土地上的人一直都懂得如何充分利用漫长干燥的夏天。",
+      "tts": {
+        "text": "这些土地上的人一直都懂得如何充分利用漫长干燥的夏天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们在温暖的月份吃新鲜食物。",
+      "text_markdown": "他们在温暖的月份吃新鲜食物。",
+      "tts": {
+        "text": "他们在温暖的月份吃新鲜食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们把食物用油、盐和罐子保存起来,留到多雨的冬天。",
+      "text_markdown": "他们把食物用油、盐和罐子保存起来,留到多雨的冬天。",
+      "tts": {
+        "text": "他们把食物用油、盐和罐子保存起来,留到多雨的冬天。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "人",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在每一个地中海地区,这样的生活都有自己的语言、歌曲和故事。",
+      "text_markdown": "在每一个地中海地区,这样的生活都有自己的语言、歌曲和故事。",
+      "tts": {
+        "text": "在每一个地中海地区,这样的生活都有自己的语言、歌曲和故事。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今天的生物群落",
+      "text_markdown": "今天的生物群落"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海生物群落虽小,却非常重要。",
+      "text_markdown": "地中海生物群落虽小,却非常重要。",
+      "tts": {
+        "text": "地中海生物群落虽小,却非常重要。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它虽然只占地球上很小一块地方,却拥有大量别处找不到的植物和动物。",
+      "text_markdown": "它虽然只占地球上很小一块地方,却拥有大量别处找不到的植物和动物。",
+      "tts": {
+        "text": "它虽然只占地球上很小一块地方,却拥有大量别处找不到的植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对人类来说,这个生物群落几千年来都是食物和农耕的摇篮。",
+      "text_markdown": "对人类来说,这个生物群落几千年来都是食物和农耕的摇篮。",
+      "tts": {
+        "text": "对人类来说,这个生物群落几千年来都是食物和农耕的摇篮。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但这个生物群落在许多地方都遇到了麻烦。",
+      "text_markdown": "但这个生物群落在许多地方都遇到了麻烦。",
+      "tts": {
+        "text": "但这个生物群落在许多地方都遇到了麻烦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在天气温和、海洋就在身边的海岸边,城市和小镇不断扩张。",
+      "text_markdown": "在天气温和、海洋就在身边的海岸边,城市和小镇不断扩张。",
+      "tts": {
+        "text": "在天气温和、海洋就在身边的海岸边,城市和小镇不断扩张。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "道路、房屋、酒店和农场取代了许多野生灌木和树木。",
+      "text_markdown": "道路、房屋、酒店和农场取代了许多野生灌木和树木。",
+      "tts": {
+        "text": "道路、房屋、酒店和农场取代了许多野生灌木和树木。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "比从前更热的漫长干燥夏天,让火灾越来越大,越来越危险。",
+      "text_markdown": "比从前更热的漫长干燥夏天,让火灾越来越大,越来越危险。",
+      "tts": {
+        "text": "比从前更热的漫长干燥夏天,让火灾越来越大,越来越危险。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些动物,比如猞猁和地中海陆龟,已经变得非常稀有。",
+      "text_markdown": "有些动物,比如猞猁和地中海陆龟,已经变得非常稀有。",
+      "tts": {
+        "text": "有些动物,比如猞猁和地中海陆龟,已经变得非常稀有。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界各地有许多团体正在努力保护剩下的一切。",
+      "text_markdown": "世界各地有许多团体正在努力保护剩下的一切。",
+      "tts": {
+        "text": "世界各地有许多团体正在努力保护剩下的一切。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们划出公园,让野生植物和动物还能继续生活。",
+      "text_markdown": "他们划出公园,让野生植物和动物还能继续生活。",
+      "tts": {
+        "text": "他们划出公园,让野生植物和动物还能继续生活。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种下新的橄榄树,也保护老的橄榄树。",
+      "text_markdown": "他们种下新的橄榄树,也保护老的橄榄树。",
+      "tts": {
+        "text": "他们种下新的橄榄树,也保护老的橄榄树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们帮助农民用善待土地的方式种植食物。",
+      "text_markdown": "他们帮助农民用善待土地的方式种植食物。",
+      "tts": {
+        "text": "他们帮助农民用善待土地的方式种植食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们研究这个生物群落,好让我们能更好地了解它。",
+      "text_markdown": "他们研究这个生物群落,好让我们能更好地了解它。",
+      "tts": {
+        "text": "他们研究这个生物群落,好让我们能更好地了解它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个健康的地中海生物群落,是一个安静、芬芳、美丽的地方。",
+      "text_markdown": "一个健康的地中海生物群落,是一个安静、芬芳、美丽的地方。",
+      "tts": {
+        "text": "一个健康的地中海生物群落,是一个安静、芬芳、美丽的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "今天的生物群落",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它值得我们用心呵护。",
+      "text_markdown": "它值得我们用心呵护。",
+      "tts": {
+        "text": "它值得我们用心呵护。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结语",
+      "text_markdown": "结语"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是地中海生物群落。",
+      "text_markdown": "这就是地中海生物群落。",
+      "tts": {
+        "text": "这就是地中海生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个明亮、干燥、芬芳的世界,有橄榄树、低矮的灌木和温暖的夏日傍晚。",
+      "text_markdown": "一个明亮、干燥、芬芳的世界,有橄榄树、低矮的灌木和温暖的夏日傍晚。",
+      "tts": {
+        "text": "一个明亮、干燥、芬芳的世界,有橄榄树、低矮的灌木和温暖的夏日傍晚。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有机会站在那里,请安静片刻。",
+      "text_markdown": "如果你有机会站在那里,请安静片刻。",
+      "tts": {
+        "text": "如果你有机会站在那里,请安静片刻。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "闻闻空气里温暖的香草气息。",
+      "text_markdown": "闻闻空气里温暖的香草气息。",
+      "tts": {
+        "text": "闻闻空气里温暖的香草气息。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "听听干草丛里蟋蟀的鸣叫。",
+      "text_markdown": "听听干草丛里蟋蟀的鸣叫。",
+      "tts": {
+        "text": "听听干草丛里蟋蟀的鸣叫。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "眺望远方的大海。",
+      "text_markdown": "眺望远方的大海。",
+      "tts": {
+        "text": "眺望远方的大海。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你会感到这个生物群落的心脏,在你身边跳动。",
+      "text_markdown": "你会感到这个生物群落的心脏,在你身边跳动。",
+      "tts": {
+        "text": "你会感到这个生物群落的心脏,在你身边跳动。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

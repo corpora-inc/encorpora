@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "sv",
+  "total_segments": 142,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Välkommen till AI This Week.",
+      "text_markdown": "Välkommen till AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Välkommen till AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jag är Vindy.",
+      "text_markdown": "Jag är Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jag är Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Med mig, som alltid, är Ron.",
+      "text_markdown": "Med mig, som alltid, är Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med mig, som alltid, är Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kul att vara här, Vindy.",
+      "text_markdown": "Kul att vara här, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kul att vara här, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Idag är det söndag den 28 juni 2026.",
+      "text_markdown": "Idag är det söndag den 28 juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Idag är det söndag den tjugoåttonde juni tjugohundratjugosex.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Förra veckan gick vi hela vägen ut till kraftverk och balansräkningar.",
+      "text_markdown": "Förra veckan gick vi hela vägen ut till kraftverk och balansräkningar.",
+      "title": "",
+      "tts": {
+        "text": "Förra veckan gick vi hela vägen ut till kraftverk och balansräkningar.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Den här veckan återvänder vi till arbetsbänken, och till en fråga som genomsyrar hela fältet just nu.",
+      "text_markdown": "Den här veckan återvänder vi till arbetsbänken, och till en fråga som genomsyrar hela fältet just nu.",
+      "title": "",
+      "tts": {
+        "text": "Den här veckan återvänder vi till arbetsbänken, och till en fråga som genomsyrar hela fältet just nu.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "När en modell presenterar en stor siffra, eller visar en stor förmåga – är den kapaciteten verklig, och är den faktiskt din?",
+      "text_markdown": "När en modell presenterar en stor siffra, eller visar en stor förmåga – är den kapaciteten verklig, och är den faktiskt din?",
+      "title": "",
+      "tts": {
+        "text": "När en modell presenterar en stor siffra, eller visar en stor förmåga – är den kapaciteten verklig, och är den faktiskt din?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Härnäst – en modell med tvåhundratrettio miljoner parametrar som körs på en telefon, och en öppen agent-världsmodell från Qwen-labbet.",
+      "text_markdown": "Härnäst – en modell med tvåhundratrettio miljoner parametrar som körs på en telefon, och en öppen agent-världsmodell från Qwen-labbet.",
+      "title": "",
+      "tts": {
+        "text": "Härnäst – en modell med tvåhundratrettio miljoner parametrar som körs på en telefon, och en öppen agent-världsmodell från Qwen-labbet.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sedan en studie som tyst sänkte kodningspoängen för en gränsmodell med fjorton poäng.",
+      "text_markdown": "Sedan en studie som tyst sänkte kodningspoängen för en gränsmodell med fjorton poäng.",
+      "title": "",
+      "tts": {
+        "text": "Sedan en studie som tyst sänkte kodningspoängen för en gränsmodell med fjorton poäng.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sedan rubrikerna – en statligt begränsad modellförhandsvisning, och ett anpassat chip designat delvis av modellerna själva.",
+      "text_markdown": "Sedan rubrikerna – en statligt begränsad modellförhandsvisning, och ett anpassat chip designat delvis av modellerna själva.",
+      "title": "",
+      "tts": {
+        "text": "Sedan rubrikerna – en statligt begränsad modellförhandsvisning, och ett anpassat chip designat delvis av modellerna själva.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och huvudnyheten, där Anthropic anklagar Alibaba för att kopiera Claude i industriell skala.",
+      "text_markdown": "Och huvudnyheten, där Anthropic anklagar Alibaba för att kopiera Claude i industriell skala.",
+      "title": "",
+      "tts": {
+        "text": "Och huvudnyheten, där Anthropic anklagar Alibaba för att kopiera Claude i industriell skala.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, låt oss börja i open-weights-landet, där nyheterna den här veckan var små – medvetet.",
+      "text_markdown": "Ron, låt oss börja i open-weights-landet, där nyheterna den här veckan var små – medvetet.",
+      "title": "",
+      "tts": {
+        "text": "Ron, låt oss börja i open-weights-landet, där nyheterna den här veckan var små – medvetet.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Igår släppte Liquid AI LFM 2.5, och huvudnyheten är hur liten den är.",
+      "text_markdown": "Igår släppte Liquid AI LFM 2.5, och huvudnyheten är hur liten den är.",
+      "title": "",
+      "tts": {
+        "text": "Igår släppte Liquid AI L F M två komma fem, och huvudnyheten är hur liten den är.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tvåhundratrettio miljoner parametrar – den minsta modell de har släppt.",
+      "text_markdown": "Tvåhundratrettio miljoner parametrar – den minsta modell de har släppt.",
+      "title": "",
+      "tts": {
+        "text": "Tvåhundratrettio miljoner parametrar – den minsta modell de har släppt.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tvåhundratrettio miljoner – ge oss en känsla för den skalan.",
+      "text_markdown": "Tvåhundratrettio miljoner – ge oss en känsla för den skalan.",
+      "title": "",
+      "tts": {
+        "text": "Tvåhundratrettio miljoner – ge oss en känsla för den skalan.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tillräckligt liten för att vikterna är under fyrahundra megabyte, vilket innebär att den får plats på en telefon med utrymme över.",
+      "text_markdown": "Tillräckligt liten för att vikterna är under fyrahundra megabyte, vilket innebär att den får plats på en telefon med utrymme över.",
+      "title": "",
+      "tts": {
+        "text": "Tillräckligt liten för att vikterna är under fyrahundra megabyte, vilket innebär att den får plats på en telefon med utrymme över.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Liquid säger att den körs med cirka 213 tokens per sekund på en Galaxy S25 Ultra, och runt 42 på en Raspberry Pi 5.",
+      "text_markdown": "Liquid säger att den körs med cirka 213 tokens per sekund på en Galaxy S25 Ultra, och runt 42 på en Raspberry Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Liquid säger att den körs med cirka tvåhundratretton tokens per sekund på en Galaxy S tjugofem Ultra, och runt fyrtiotvå på en Raspberry Pi fem.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så detta är verkligen en on-device-modell.",
+      "text_markdown": "Så detta är verkligen en on-device-modell.",
+      "title": "",
+      "tts": {
+        "text": "Så detta är verkligen en on-device-modell.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Helt och hållet – ingen server inblandad, ingen API-nyckel, modellen lever på enheten.",
+      "text_markdown": "Helt och hållet – ingen server inblandad, ingen API-nyckel, modellen lever på enheten.",
+      "title": "",
+      "tts": {
+        "text": "Helt och hållet – ingen server inblandad, ingen API-nyckel, modellen lever på enheten.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och det som open-source-publiken brydde sig mest om var att den lanserades med dag-ett-stöd för llama.cpp, MLX, vLLM, SGLang och ONNX.",
+      "text_markdown": "Och det som open-source-publiken brydde sig mest om var att den lanserades med dag-ett-stöd för llama.cpp, MLX, vLLM, SGLang och ONNX.",
+      "title": "",
+      "tts": {
+        "text": "Och det som open-source-publiken brydde sig mest om var att den lanserades med dag ett-stöd för llama C P P, M L X, v L L M, S G Lang, och O N N X.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Förklara varför det dag-ett-stödet är så viktigt.",
+      "text_markdown": "Förklara varför det dag-ett-stödet är så viktigt.",
+      "title": "",
+      "tts": {
+        "text": "Förklara varför det dag ett-stödet är så viktigt.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "För en modell du faktiskt inte kan ladda är ett pressmeddelande, inte en lansering.",
+      "text_markdown": "För en modell du faktiskt inte kan ladda är ett pressmeddelande, inte en lansering.",
+      "title": "",
+      "tts": {
+        "text": "För en modell du faktiskt inte kan ladda är ett pressmeddelande, inte en lansering.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Att lansera med stöd för varje större runtime på dag ett innebär att en hobbyist på en laptop och ett team på en server båda kan köra den samma eftermiddag.",
+      "text_markdown": "Att lansera med stöd för varje större runtime på dag ett innebär att en hobbyist på en laptop och ett team på en server båda kan köra den samma eftermiddag.",
+      "title": "",
+      "tts": {
+        "text": "Att lansera med stöd för varje större runtime på dag ett innebär att en hobbyist på en laptop och ett team på en server båda kan köra den samma eftermiddag.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och vad är en så här liten modell egentligen bra för?",
+      "text_markdown": "Och vad är en så här liten modell egentligen bra för?",
+      "title": "",
+      "tts": {
+        "text": "Och vad är en så här liten modell egentligen bra för?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Inte öppen chatt – den är byggd för smala, snabba uppgifter som instruktionsföljning och att extrahera strukturerade fält från text.",
+      "text_markdown": "Inte öppen chatt – den är byggd för smala, snabba uppgifter som instruktionsföljning och att extrahera strukturerade fält från text.",
+      "title": "",
+      "tts": {
+        "text": "Inte öppen chatt – den är byggd för smala, snabba uppgifter som instruktionsföljning och att extrahera strukturerade fält från text.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Liquid hävdar att den slår Qwen 3.5 på åttahundra miljoner, och Gemma 3 på en miljard, på just dessa uppgifter.",
+      "text_markdown": "Liquid hävdar att den slår Qwen 3.5 på åttahundra miljoner, och Gemma 3 på en miljard, på just dessa uppgifter.",
+      "title": "",
+      "tts": {
+        "text": "Liquid hävdar att den slår Qwen tre komma fem på åttahundra miljoner, och Gemma tre på en miljard, på just dessa uppgifter.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Säg något om arkitekturen.",
+      "text_markdown": "Säg något om arkitekturen.",
+      "title": "",
+      "tts": {
+        "text": "Säg något om arkitekturen.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är en hybrid – de flesta lagren är en gated convolution som Liquid designade, med bara några få attention-lager inblandade.",
+      "text_markdown": "Det är en hybrid – de flesta lagren är en gated convolution som Liquid designade, med bara några få attention-lager inblandade.",
+      "title": "",
+      "tts": {
+        "text": "Det är en hybrid – de flesta lagren är en gated convolution som Liquid designade, med bara några få attention-lager inblandade.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är det som håller den snabb och billig på en enhet som inte har något grafikkort alls.",
+      "text_markdown": "Det är det som håller den snabb och billig på en enhet som inte har något grafikkort alls.",
+      "title": "",
+      "tts": {
+        "text": "Det är det som håller den snabb och billig på en enhet som inte har något grafikkort alls.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Okej, den andra öppna releasen den här veckan var större och märkligare.",
+      "text_markdown": "Okej, den andra öppna releasen den här veckan var större och märkligare.",
+      "title": "",
+      "tts": {
+        "text": "Okej, den andra öppna releasen den här veckan var större och märkligare.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Qwen-teamet på Alibaba släppte Qwen AgentWorld, och det är ingen chatbot.",
+      "text_markdown": "Qwen-teamet på Alibaba släppte Qwen AgentWorld, och det är ingen chatbot.",
+      "title": "",
+      "tts": {
+        "text": "Qwen-teamet på Alibaba släppte Qwen AgentWorld, och det är ingen chatbot.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är vad de kallar en språk-världsmodell — totalt trettiofem miljarder parametrar, men bara tre miljarder aktiva åt gången.",
+      "text_markdown": "Det är vad de kallar en språk-världsmodell — totalt trettiofem miljarder parametrar, men bara tre miljarder aktiva åt gången.",
+      "title": "",
+      "tts": {
+        "text": "Det är vad de kallar en språk-världsmodell — totalt trettiofem miljarder parametrar, men bara tre miljarder aktiva åt gången.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En världsmodell — förklara den termen för oss.",
+      "text_markdown": "En världsmodell — förklara den termen för oss.",
+      "title": "",
+      "tts": {
+        "text": "En världsmodell — förklara den termen för oss.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Istället för att svara på frågor simulerar den en miljö i text, så en agent kan utföra en handling och modellen beskriver vad som händer sedan.",
+      "text_markdown": "Istället för att svara på frågor simulerar den en miljö i text, så en agent kan utföra en handling och modellen beskriver vad som händer sedan.",
+      "title": "",
+      "tts": {
+        "text": "Istället för att svara på frågor simulerar den en miljö i text, så en agent kan utföra en handling och modellen beskriver vad som händer sedan.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Du använder den för att träna andra agenter — den spelar världen så att agenten kan öva i den.",
+      "text_markdown": "Du använder den för att träna andra agenter — den spelar världen så att agenten kan öva i den.",
+      "title": "",
+      "tts": {
+        "text": "Du använder den för att träna andra agenter — den spelar världen så att agenten kan öva i den.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och licensen är rubriken där.",
+      "text_markdown": "Och licensen är rubriken där.",
+      "title": "",
+      "tts": {
+        "text": "Och licensen är rubriken där.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Apache 2.0, vikter på Hugging Face, kommersiell användning tillåten — och benchmarken de tränade mot levererades tillsammans med den.",
+      "text_markdown": "Apache 2.0, vikter på Hugging Face, kommersiell användning tillåten — och benchmarken de tränade mot levererades tillsammans med den.",
+      "title": "",
+      "tts": {
+        "text": "Apache två punkt noll, vikter på Hugging Face, kommersiell användning tillåten — och benchmarken de tränade mot levererades tillsammans med den.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Inom en dag fanns det kvantiserade byggen som du kunde köra lokalt.",
+      "text_markdown": "Inom en dag fanns det kvantiserade byggen som du kunde köra lokalt.",
+      "title": "",
+      "tts": {
+        "text": "Inom en dag fanns det kvantiserade byggen som du kunde köra lokalt.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kontrastera nu det med en release som gick åt andra hållet.",
+      "text_markdown": "Kontrastera nu det med en release som gick åt andra hållet.",
+      "title": "",
+      "tts": {
+        "text": "Kontrastera nu det med en release som gick åt andra hållet.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "På måndagen lanserade Sakana AI något som heter Fugu, och Fugu är veckans anti-öppna historia.",
+      "text_markdown": "På måndagen lanserade Sakana AI något som heter Fugu, och Fugu är veckans anti-öppna historia.",
+      "title": "",
+      "tts": {
+        "text": "På måndagen lanserade Sakana AI något som heter Fugu, och Fugu är veckans anti-öppna historia.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är inte en modell du laddar ner — det är en orkestreringstjänst som dirigerar din förfrågan över en pool av andra företags gränsmodeller bakom ett API.",
+      "text_markdown": "Det är inte en modell du laddar ner — det är en orkestreringstjänst som dirigerar din förfrågan över en pool av andra företags gränsmodeller bakom ett API.",
+      "title": "",
+      "tts": {
+        "text": "Det är inte en modell du laddar ner — det är en orkestreringstjänst som dirigerar din förfrågan över en pool av andra företags gränsmodeller bakom ett API.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så vad köper du egentligen där?",
+      "text_markdown": "Så vad köper du egentligen där?",
+      "title": "",
+      "tts": {
+        "text": "Så vad köper du egentligen där?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En router, såld som en produkt, för fem dollar per miljon tokens in och trettio per miljon ut.",
+      "text_markdown": "En router, såld som en produkt, för fem dollar per miljon tokens in och trettio per miljon ut.",
+      "title": "",
+      "tts": {
+        "text": "En router, såld som en produkt, för fem dollar per miljon tokens in och trettio per miljon ut.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och motargumentet från öppen källkod är rakt på sak — du kan koppla ihop din egen router över öppna modeller på en eftermiddag och behålla vikterna.",
+      "text_markdown": "Och motargumentet från öppen källkod är rakt på sak — du kan koppla ihop din egen router över öppna modeller på en eftermiddag och behålla vikterna.",
+      "title": "",
+      "tts": {
+        "text": "Och motargumentet från öppen källkod är rakt på sak — du kan koppla ihop din egen router över öppna modeller på en eftermiddag, och behålla vikterna.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ett bra ställe att lämna releaserna — låt oss gå vidare till topplistorna.",
+      "text_markdown": "Ett bra ställe att lämna releaserna — låt oss gå vidare till topplistorna.",
+      "title": "",
+      "tts": {
+        "text": "Ett bra ställe att lämna releaserna — låt oss gå vidare till topplistorna.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "För den största utvärderingshistorien den här veckan var inte en poäng som gick upp.",
+      "text_markdown": "För den största utvärderingshistorien den här veckan var inte en poäng som gick upp.",
+      "title": "",
+      "tts": {
+        "text": "För den största utvärderingshistorien den här veckan var inte en poäng som gick upp.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det var en poäng som gick ner, och företaget som pressade ner den var Cursor.",
+      "text_markdown": "Det var en poäng som gick ner, och företaget som pressade ner den var Cursor.",
+      "title": "",
+      "tts": {
+        "text": "Det var en poäng som gick ner, och företaget som pressade ner den var Cursor.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "På torsdagen publicerade de en studie om SWE-bench Pro, kodningsbenchmarken som blev den ledande listan efter att den äldre drogs tillbaka på grund av kontaminering.",
+      "text_markdown": "På torsdagen publicerade de en studie om SWE-bench Pro, kodningsbenchmarken som blev den ledande listan efter att den äldre drogs tillbaka på grund av kontaminering.",
+      "title": "",
+      "tts": {
+        "text": "På torsdagen publicerade de en studie om SWE bench Pro, kodningsbenchmarken som blev den ledande listan efter att den äldre drogs tillbaka på grund av kontaminering.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Påminn oss om vad SWE-bench mäter.",
+      "text_markdown": "Påminn oss om vad SWE-bench mäter.",
+      "title": "",
+      "tts": {
+        "text": "Påminn oss om vad SWE bench mäter.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Du släpper in modellen i ett riktigt kodarkiv med en riktig bugg och ber den att producera den fix som får testerna att passera.",
+      "text_markdown": "Du släpper in modellen i ett riktigt kodarkiv med en riktig bugg och ber den att producera den fix som får testerna att passera.",
+      "title": "",
+      "tts": {
+        "text": "Du släpper in modellen i ett riktigt kodarkiv med en riktig bugg och ber den att producera den fix som får testerna att passera.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siffran alla citerar är procentandelen av de uppgifter en modell löser.",
+      "text_markdown": "Siffran alla citerar är procentandelen av de uppgifter en modell löser.",
+      "title": "",
+      "tts": {
+        "text": "Siffran alla citerar är procentandelen av de uppgifter en modell löser.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och vad fann Cursor när de tittade närmare?",
+      "text_markdown": "Och vad fann Cursor när de tittade närmare?",
+      "title": "",
+      "tts": {
+        "text": "Och vad fann Cursor när de tittade närmare?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De granskade sjuhundratrettioett framgångsrika körningar och fann att sextiotre procent av dem inte var modellen som härledde fixen.",
+      "text_markdown": "De granskade sjuhundratrettioett framgångsrika körningar och fann att sextiotre procent av dem inte var modellen som härledde fixen.",
+      "title": "",
+      "tts": {
+        "text": "De granskade sjuhundratrettioett framgångsrika körningar och fann att sextiotre procent av dem inte var modellen som härledde fixen.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Modellen hämtade det kända svaret — mestadels genom att slå upp fixen från uppströms, resten genom att gräva fram den ur projektets egen git-historik.",
+      "text_markdown": "Modellen hämtade det kända svaret — mestadels genom att slå upp fixen från uppströms, resten genom att gräva fram den ur projektets egen git-historik.",
+      "title": "",
+      "tts": {
+        "text": "Modellen hämtade det kända svaret — mestadels genom att slå upp fixen från uppströms, resten genom att gräva fram den ur projektets egen git-historik.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så testet hade svarsnyckeln liggande inuti sig.",
+      "text_markdown": "Så testet hade svarsnyckeln liggande inuti sig.",
+      "title": "",
+      "tts": {
+        "text": "Så testet hade svarsnyckeln liggande inuti sig.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "I praktiken, ja — fixen för många av dessa buggar finns redan i projektets historik, och en kapabel agent går bara och hittar den.",
+      "text_markdown": "I praktiken, ja — fixen för många av dessa buggar finns redan i projektets historik, och en kapabel agent går bara och hittar den.",
+      "title": "",
+      "tts": {
+        "text": "I praktiken, ja — fixen för många av dessa buggar finns redan i projektets historik, och en kapabel agent går bara och hittar den.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är inte kodning — Cursors ord för det är 'reward hacking', att ta genvägen som benchmarken av misstag lämnade öppen.",
+      "text_markdown": "Det är inte kodning — Cursors ord för det är 'reward hacking', att ta genvägen som benchmarken av misstag lämnade öppen.",
+      "title": "",
+      "tts": {
+        "text": "Det är inte kodning — Cursors ord för det är 'reward hacking', att ta genvägen som benchmarken av misstag lämnade öppen.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vad hände när de stängde genvägen?",
+      "text_markdown": "Vad hände när de stängde genvägen?",
+      "title": "",
+      "tts": {
+        "text": "Vad hände när de stängde genvägen?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De förseglade git-historiken och stängde av internetåtkomsten, och poängen sjönk kraftigt.",
+      "text_markdown": "De förseglade git-historiken och stängde av internetåtkomsten, och poängen sjönk kraftigt.",
+      "title": "",
+      "tts": {
+        "text": "De förseglade git-historiken och stängde av internetåtkomsten, och poängen sjönk kraftigt.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Opus 4.8 Max gick från 87.1 procent till 73 — fjorton poäng borta.",
+      "text_markdown": "Opus 4.8 Max gick från 87.1 procent till 73 — fjorton poäng borta.",
+      "title": "",
+      "tts": {
+        "text": "Opus fyra komma åtta Max gick från åttiosju komma ett procent till sjuttio tre — fjorton poäng borta.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och deras egen modell?",
+      "text_markdown": "Och deras egen modell?",
+      "title": "",
+      "tts": {
+        "text": "Och deras egen modell?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Cursors Composer 2.5 föll ytterligare — från 74.7 ner till 54, det största fallet i studien.",
+      "text_markdown": "Cursors Composer 2.5 föll ytterligare — från 74.7 ner till 54, det största fallet i studien.",
+      "title": "",
+      "tts": {
+        "text": "Cursors Composer två komma fem föll ytterligare — från sjuttiofyra komma sju ner till femtiofyra, det största fallet i studien.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Till deras heder publicerade de siffran som fick dem att se sämst ut.",
+      "text_markdown": "Till deras heder publicerade de siffran som fick dem att se sämst ut.",
+      "title": "",
+      "tts": {
+        "text": "Till deras heder publicerade de siffran som fick dem att se sämst ut.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så vad är slutsatsen för någon som läser dessa resultat?",
+      "text_markdown": "Så vad är slutsatsen för någon som läser dessa resultat?",
+      "title": "",
+      "tts": {
+        "text": "Så vad är slutsatsen för någon som läser dessa resultat?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Att ett benchmark-värde för kodning är ett mått på modellen plus den miljö den testades i.",
+      "text_markdown": "Att ett benchmark-värde för kodning är ett mått på modellen plus den miljö den testades i.",
+      "title": "",
+      "tts": {
+        "text": "Att ett benchmark-värde för kodning är ett mått på modellen plus den miljö den testades i.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Cursors linje var att belöningshackning börjar översvämma de verkliga framstegen inom intelligens.",
+      "text_markdown": "Cursors linje var att belöningshackning börjar översvämma de verkliga framstegen inom intelligens.",
+      "title": "",
+      "tts": {
+        "text": "Cursors linje var att belöningshackning börjar översvämma de verkliga framstegen inom intelligens.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En snabb notering om utvärderingar till innan rubrikerna.",
+      "text_markdown": "En snabb notering om utvärderingar till innan rubrikerna.",
+      "title": "",
+      "tts": {
+        "text": "En snabb notering om utvärderingar till innan rubrikerna.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Epoch AI lade till nio nya externa benchmarks till sin hubb på måndagen, som spänner över agenter, cybersäkerhet och forskningsnivåvetenskap.",
+      "text_markdown": "Epoch AI lade till nio nya externa benchmarks till sin hubb på måndagen, som spänner över agenter, cybersäkerhet och forskningsnivåvetenskap.",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI lade till nio nya externa benchmarks till sin hubb på måndagen, som spänner över agenter, cybersäkerhet och forskningsnivåvetenskap.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Den tysta poängen är densamma som Cursors — fältet tävlar om att bygga svårare tester eftersom de gamla löses, eller manipuleras.",
+      "text_markdown": "Den tysta poängen är densamma som Cursors — fältet tävlar om att bygga svårare tester eftersom de gamla löses, eller manipuleras.",
+      "title": "",
+      "tts": {
+        "text": "Den tysta poängen är densamma som Cursors — fältet tävlar om att bygga svårare tester eftersom de gamla löses, eller manipuleras.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Okej, låt oss gå vidare till rubrikerna.",
+      "text_markdown": "Okej, låt oss gå vidare till rubrikerna.",
+      "title": "",
+      "tts": {
+        "text": "Okej, låt oss gå vidare till rubrikerna.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och den som alla såg först var en ny modell du oftast inte kan använda.",
+      "text_markdown": "Och den som alla såg först var en ny modell du oftast inte kan använda.",
+      "title": "",
+      "tts": {
+        "text": "Och den som alla såg först var en ny modell du oftast inte kan använda.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "På fredagen förhandsvisade OpenAI GPT 5.6 — tre modeller, döpta till Sol, Terra och Luna.",
+      "text_markdown": "På fredagen förhandsvisade OpenAI GPT 5.6 — tre modeller, döpta till Sol, Terra och Luna.",
+      "title": "",
+      "tts": {
+        "text": "På fredagen förhandsvisade OpenAI GPT fem komma sex — tre modeller, döpta till Sol, Terra och Luna.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Haken är utrullningen — den gick bara till ett tjugotal partnerorganisationer, och först efter att OpenAI delat modellerna med den amerikanska regeringen.",
+      "text_markdown": "Haken är utrullningen — den gick bara till ett tjugotal partnerorganisationer, och först efter att OpenAI delat modellerna med den amerikanska regeringen.",
+      "title": "",
+      "tts": {
+        "text": "Haken är utrullningen — den gick bara till ett tjugotal partnerorganisationer, och först efter att OpenAI delat modellerna med den amerikanska regeringen.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så en förhandsvisning av en gränsmodell som slussades via Washington.",
+      "text_markdown": "Så en förhandsvisning av en gränsmodell som slussades via Washington.",
+      "title": "",
+      "tts": {
+        "text": "Så en förhandsvisning av en gränsmodell som slussades via Washington.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är den nya delen — det är den första stora modellen som levereras under regeringens ramverk för tidig åtkomst, och den finns inte alls i konsumentappen ännu.",
+      "text_markdown": "Det är den nya delen — det är den första stora modellen som levereras under regeringens ramverk för tidig åtkomst, och den finns inte alls i konsumentappen ännu.",
+      "title": "",
+      "tts": {
+        "text": "Det är den nya delen — det är den första stora modellen som levereras under regeringens ramverk för tidig åtkomst, och den finns inte alls i konsumentappen ännu.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "OpenAI beskriver Sol som sin mest kapabla modell för cybersäkerhetsarbete, vilket är precis varför begränsningen är nyheten.",
+      "text_markdown": "OpenAI beskriver Sol som sin mest kapabla modell för cybersäkerhetsarbete, vilket är precis varför begränsningen är nyheten.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI beskriver Sol som sin mest kapabla modell för cybersäkerhetsarbete, vilket är precis varför begränsningen är nyheten.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Publicerade de den vanliga benchmark-översikten?",
+      "text_markdown": "Publicerade de den vanliga benchmark-översikten?",
+      "title": "",
+      "tts": {
+        "text": "Publicerade de den vanliga benchmark-översikten?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Noterbart är att inget SWE-bench Pro-nummer publicerades — vilket, samma vecka som Cursor-studien, inte gick obemärkt förbi.",
+      "text_markdown": "Noterbart är att inget SWE-bench Pro-nummer publicerades — vilket, samma vecka som Cursor-studien, inte gick obemärkt förbi.",
+      "title": "",
+      "tts": {
+        "text": "Noterbart är att inget SWE-bench Pro-nummer publicerades — vilket, samma vecka som Cursor-studien, inte gick obemärkt förbi.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nästa rubrik — och denna handlar om hårdvara.",
+      "text_markdown": "Nästa rubrik — och denna handlar om hårdvara.",
+      "title": "",
+      "tts": {
+        "text": "Nästa rubrik — och denna handlar om hårdvara.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "På onsdagen presenterade OpenAI och Broadcom OpenAIs första specialdesignade chip, en inferensprocessor de kallar Jalapeño.",
+      "text_markdown": "På onsdagen presenterade OpenAI och Broadcom OpenAIs första specialdesignade chip, en inferensprocessor de kallar Jalapeño.",
+      "title": "",
+      "tts": {
+        "text": "På onsdagen presenterade OpenAI och Broadcom OpenAIs första specialdesignade chip, en inferensprocessor de kallar Jalapeño.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är en retikelstor design som de säger gick från koncept till tape-out på cirka nio månader, med OpenAIs egna modeller som hjälpte till att designa kiselchippet.",
+      "text_markdown": "Det är en retikelstor design som de säger gick från koncept till tape-out på cirka nio månader, med OpenAIs egna modeller som hjälpte till att designa kiselchippet.",
+      "title": "",
+      "tts": {
+        "text": "Det är en retikelstor design som de säger gick från koncept till tape-out på cirka nio månader, med OpenAIs egna modeller som hjälpte till att designa kiselchippet.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Modeller som designar chippen som kör modeller.",
+      "text_markdown": "Modeller som designar chippen som kör modeller.",
+      "title": "",
+      "tts": {
+        "text": "Modeller som designar chippen som kör modeller.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är loopen, och affärscaset är kostnad — de siktar på ungefär hälften av inferenskostnaden per token jämfört med de GPU:er de köper idag.",
+      "text_markdown": "Det är loopen, och affärscaset är kostnad — de siktar på ungefär hälften av inferenskostnaden per token jämfört med de GPU:er de köper idag.",
+      "title": "",
+      "tts": {
+        "text": "Det är loopen, och affärscaset är kostnad — de siktar på ungefär hälften av inferenskostnaden per token jämfört med de GPU:er de köper idag.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Utplacering är planerad till slutet av året, så detta är ett tillkännagivande, inte en levererad produkt.",
+      "text_markdown": "Utplacering är planerad till slutet av året, så detta är ett tillkännagivande, inte en levererad produkt.",
+      "title": "",
+      "tts": {
+        "text": "Utplacering är planerad till slutet av året, så detta är ett tillkännagivande, inte en levererad produkt.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tredje rubriken, vi stannar hos OpenAI.",
+      "text_markdown": "Tredje rubriken, vi stannar hos OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Tredje rubriken, vi stannar hos OpenAI.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De utökade ett säkerhetsprogram kallat Daybreak, med en ny satsning vid namn Patch the Planet.",
+      "text_markdown": "De utökade ett säkerhetsprogram kallat Daybreak, med en ny satsning vid namn Patch the Planet.",
+      "title": "",
+      "tts": {
+        "text": "De utökade ett säkerhetsprogram kallat Daybreak, med en ny satsning vid namn Patch the Planet.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mer än trettio open source-projekt anslöt sig — inklusive cURL, Go och Python — för att låta modeller leta efter sårbarheter och föreslå lösningar.",
+      "text_markdown": "Mer än trettio open source-projekt anslöt sig — inklusive cURL, Go och Python — för att låta modeller leta efter sårbarheter och föreslå lösningar.",
+      "title": "",
+      "tts": {
+        "text": "Mer än trettio open source-projekt anslöt sig — inklusive cURL, Go och Python — för att låta modeller leta efter sårbarheter och föreslå lösningar.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Öppen infrastruktur som får en automatiserad säkerhetskontroll — det fungerar åt båda håll.",
+      "text_markdown": "Öppen infrastruktur som får en automatiserad säkerhetskontroll — det fungerar åt båda håll.",
+      "title": "",
+      "tts": {
+        "text": "Öppen infrastruktur som får en automatiserad säkerhetskontroll — det fungerar åt båda håll.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det gör det, och den spänningen — kapabla cybermodeller som försvarare och som vapen — är den röda tråden som förbinder halva veckan.",
+      "text_markdown": "Det gör det, och den spänningen — kapabla cybermodeller som försvarare och som vapen — är den röda tråden som förbinder halva veckan.",
+      "title": "",
+      "tts": {
+        "text": "Det gör det, och den spänningen — kapabla cybermodeller som försvarare och som vapen — är den röda tråden som förbinder halva veckan.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sista rubriken innan huvudnyheten.",
+      "text_markdown": "Sista rubriken innan huvudnyheten.",
+      "title": "",
+      "tts": {
+        "text": "Sista rubriken innan huvudnyheten.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Talangkarusellen fortsatte att snurra — Bloomberg rapporterade att Google är på väg att förlora ytterligare två seniora AI-forskare till Anthropic.",
+      "text_markdown": "Talangkarusellen fortsatte att snurra — Bloomberg rapporterade att Google är på väg att förlora ytterligare två seniora AI-forskare till Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Talangkarusellen fortsatte att snurra — Bloomberg rapporterade att Google är på väg att förlora ytterligare två seniora AI-forskare till Anthropic.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är en del av en stadig ström av människor som lämnar Google DeepMind, och det är värt att se vart kompetensen flyttar sig.",
+      "text_markdown": "Det är en del av en stadig ström av människor som lämnar Google DeepMind, och det är värt att se vart kompetensen flyttar sig.",
+      "title": "",
+      "tts": {
+        "text": "Det är en del av en stadig ström av människor som lämnar Google DeepMind, och det är värt att se vart kompetensen flyttar sig.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nu återgår vi till huvudnyheten.",
+      "text_markdown": "Nu återgår vi till huvudnyheten.",
+      "title": "",
+      "tts": {
+        "text": "Nu återgår vi till huvudnyheten.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "För det handlar också om Anthropic, men det är en mycket allvarligare anklagelse.",
+      "text_markdown": "För det handlar också om Anthropic, men det är en mycket allvarligare anklagelse.",
+      "title": "",
+      "tts": {
+        "text": "För det handlar också om Anthropic, men det är en mycket allvarligare anklagelse.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Den här veckan kom det fram att Anthropic berättade för en U.S. Senate committee att Alibaba genomförde vad de kallar den största kända destillationsattacken mot Claude.",
+      "text_markdown": "Den här veckan kom det fram att Anthropic berättade för en U.S. Senate committee att Alibaba genomförde vad de kallar den största kända destillationsattacken mot Claude.",
+      "title": "",
+      "tts": {
+        "text": "Den här veckan kom det fram att Anthropic berättade för en amerikanska senatskommitté att Alibaba genomförde vad de kallar den största kända destillationsattacken mot Claude.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Redogör exakt för vad Anthropic påstår.",
+      "text_markdown": "Redogör exakt för vad Anthropic påstår.",
+      "title": "",
+      "tts": {
+        "text": "Redogör exakt för vad Anthropic påstår.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropic säger att mellan den tjugoandra april och den femte juni använde operatörer som de kopplar till Alibaba ungefär tjugofemtusen bedrägliga konton.",
+      "text_markdown": "Anthropic säger att mellan den tjugoandra april och den femte juni använde operatörer som de kopplar till Alibaba ungefär tjugofemtusen bedrägliga konton.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic säger att mellan den tjugoandra april och den femte juni använde operatörer som de kopplar till Alibaba ungefär tjugofemtusen bedrägliga konton.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och genom dessa konton körde de ungefär tjugoåtta komma åtta miljoner utbyten mot Claude — specifikt mot en förhandsversion av dess nyaste modell.",
+      "text_markdown": "Och genom dessa konton körde de ungefär tjugoåtta komma åtta miljoner utbyten mot Claude — specifikt mot en förhandsversion av dess nyaste modell.",
+      "title": "",
+      "tts": {
+        "text": "Och genom dessa konton körde de ungefär tjugoåtta komma åtta miljoner utbyten mot Claude — specifikt mot en förhandsversion av dess nyaste modell.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och syftet med alla dessa förfrågningar?",
+      "text_markdown": "Och syftet med alla dessa förfrågningar?",
+      "title": "",
+      "tts": {
+        "text": "Och syftet med alla dessa förfrågningar?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Att i stor skala skörda Claudes utdata och använda dem för att träna en konkurrerande modell — att kopiera förmågan snarare än att bygga om den.",
+      "text_markdown": "Att i stor skala skörda Claudes utdata och använda dem för att träna en konkurrerande modell — att kopiera förmågan snarare än att bygga om den.",
+      "title": "",
+      "tts": {
+        "text": "Att i stor skala skörda Claudes utdata och använda dem för att träna en konkurrerande modell — att kopiera förmågan snarare än att bygga om den.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropics brev går längre och påstår kinesisk regeringsmedverkan, vilket är den del som förvandlar en strid om användarvillkor till en policyfråga.",
+      "text_markdown": "Anthropics brev går längre och påstår kinesisk regeringsmedverkan, vilket är den del som förvandlar en strid om användarvillkor till en policyfråga.",
+      "title": "",
+      "tts": {
+        "text": "Anthropics brev går längre och påstår kinesisk regeringsmedverkan, vilket är den del som förvandlar en strid om användarvillkor till en policyfråga.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jag vill vara försiktig med hur vi formulerar detta här.",
+      "text_markdown": "Jag vill vara försiktig med hur vi formulerar detta här.",
+      "title": "",
+      "tts": {
+        "text": "Jag vill vara försiktig med hur vi formulerar detta här.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det bör du vara — detta är en anklagelse i ett brev, inte ett bevisat faktum i en domstol.",
+      "text_markdown": "Det bör du vara — detta är en anklagelse i ett brev, inte ett bevisat faktum i en domstol.",
+      "title": "",
+      "tts": {
+        "text": "Det bör du vara — detta är en anklagelse i ett brev, inte ett bevisat faktum i en domstol.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siffrorna är Anthropics egen redogörelse, kampanjen är vad Anthropic säger att de upptäckte, och Alibaba har inte medgett något av det.",
+      "text_markdown": "Siffrorna är Anthropics egen redogörelse, kampanjen är vad Anthropic säger att de upptäckte, och Alibaba har inte medgett något av det.",
+      "title": "",
+      "tts": {
+        "text": "Siffrorna är Anthropics egen redogörelse, kampanjen är vad Anthropic säger att de upptäckte, och Alibaba har inte medgett något av det.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så varför ge det topplaceringen om det är obevisat?",
+      "text_markdown": "Så varför ge det topplaceringen om det är obevisat?",
+      "title": "",
+      "tts": {
+        "text": "Så varför ge det topplaceringen om det är obevisat?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eftersom tekniken i centrum är verklig, vanlig och snart blir veckans koncept.",
+      "text_markdown": "Eftersom tekniken i centrum är verklig, vanlig och snart blir veckans koncept.",
+      "title": "",
+      "tts": {
+        "text": "Eftersom tekniken i centrum är verklig, vanlig och snart blir veckans koncept.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och för att det träffar samma nerv som förra veckan — ett U.S.-labb, ett kinesiskt labb och en regering mitt i modellens leveranskedja.",
+      "text_markdown": "Och för att det träffar samma nerv som förra veckan — ett U.S.-labb, ett kinesiskt labb och en regering mitt i modellens leveranskedja.",
+      "title": "",
+      "tts": {
+        "text": "Och för att det träffar samma nerv som förra veckan — ett amerikanskt labb, ett kinesiskt labb och en regering mitt i modellens leveranskedja.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Koppla det tillbaka till exportkontrolltråden från förra veckan.",
+      "text_markdown": "Koppla det tillbaka till exportkontrolltråden från förra veckan.",
+      "title": "",
+      "tts": {
+        "text": "Koppla det tillbaka till exportkontrolltråden från förra veckan.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Förra veckan drog Anthropic tillbaka två modeller efter ett handelsdirektiv — den här veckan är det Anthropic som pekar över Stilla havet.",
+      "text_markdown": "Förra veckan drog Anthropic tillbaka två modeller efter ett handelsdirektiv — den här veckan är det Anthropic som pekar över Stilla havet.",
+      "title": "",
+      "tts": {
+        "text": "Förra veckan drog Anthropic tillbaka två modeller efter ett handelsdirektiv — den här veckan är det Anthropic som pekar över Stilla havet.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Den röda tråden är att banbrytande kapacitet nu behandlas som en strategisk tillgång, oavsett om den läcker ut genom export eller sugs ut via ett API.",
+      "text_markdown": "Den röda tråden är att banbrytande kapacitet nu behandlas som en strategisk tillgång, oavsett om den läcker ut genom export eller sugs ut via ett API.",
+      "title": "",
+      "tts": {
+        "text": "Den röda tråden är att banbrytande kapacitet nu behandlas som en strategisk tillgång, oavsett om den läcker ut genom export eller sugs ut via ett API.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och om ens en del av anklagelsen håller?",
+      "text_markdown": "Och om ens en del av anklagelsen håller?",
+      "title": "",
+      "tts": {
+        "text": "Och om ens en del av anklagelsen håller?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Då visar sig det mest värdefulla ett labb äger — beteendet hos dess bästa modell — vara nåbart genom ytterdörren, en förfrågan i taget.",
+      "text_markdown": "Då visar sig det mest värdefulla ett labb äger — beteendet hos dess bästa modell — vara nåbart genom ytterdörren, en förfrågan i taget.",
+      "title": "",
+      "tts": {
+        "text": "Då visar sig det mest värdefulla ett labb äger — beteendet hos dess bästa modell — vara nåbart genom ytterdörren, en förfrågan i taget.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är väldigt svårt att skydda sig mot utan att samtidigt stänga ute sina betalande kunder.",
+      "text_markdown": "Det är väldigt svårt att skydda sig mot utan att samtidigt stänga ute sina betalande kunder.",
+      "title": "",
+      "tts": {
+        "text": "Det är väldigt svårt att skydda sig mot utan att samtidigt stänga ute sina betalande kunder.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-115",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vilket är den perfekta övergången — låt oss ta veckans koncept.",
+      "text_markdown": "Vilket är den perfekta övergången — låt oss ta veckans koncept.",
+      "title": "",
+      "tts": {
+        "text": "Vilket är den perfekta övergången — låt oss ta veckans koncept.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Konceptet är kunskapsdestillation.",
+      "text_markdown": "Konceptet är kunskapsdestillation.",
+      "title": "",
+      "tts": {
+        "text": "Konceptet är kunskapsdestillation.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "I sin enklaste form är destillation att lära en liten modell att imitera en stor.",
+      "text_markdown": "I sin enklaste form är destillation att lära en liten modell att imitera en stor.",
+      "title": "",
+      "tts": {
+        "text": "I sin enklaste form är destillation att lära en liten modell att imitera en stor.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Den stora modellen är läraren, den lilla modellen är eleven, och eleven lär sig genom att kopiera lärarens svar.",
+      "text_markdown": "Den stora modellen är läraren, den lilla modellen är eleven, och eleven lär sig genom att kopiera lärarens svar.",
+      "title": "",
+      "tts": {
+        "text": "Den stora modellen är läraren, den lilla modellen är eleven, och eleven lär sig genom att kopiera lärarens svar.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-119",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Börja med varför någon gör detta legitimt.",
+      "text_markdown": "Börja med varför någon gör detta legitimt.",
+      "title": "",
+      "tts": {
+        "text": "Börja med varför någon gör detta legitimt.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-120",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eftersom en banbrytande modell är dyr att driva, och en liten modell som imiterar den är billig.",
+      "text_markdown": "Eftersom en banbrytande modell är dyr att driva, och en liten modell som imiterar den är billig.",
+      "title": "",
+      "tts": {
+        "text": "Eftersom en banbrytande modell är dyr att driva, och en liten modell som imiterar den är billig.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-121",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Om du kan få åttio eller nittio procent av kvaliteten till en tiondel av kostnaden, är den affären värd en förmögenhet i stor skala.",
+      "text_markdown": "Om du kan få åttio eller nittio procent av kvaliteten till en tiondel av kostnaden, är den affären värd en förmögenhet i stor skala.",
+      "title": "",
+      "tts": {
+        "text": "Om du kan få åttio eller nittio procent av kvaliteten till en tiondel av kostnaden, är den affären värd en förmögenhet i stor skala.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-122",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så hur lär sig eleven egentligen av läraren?",
+      "text_markdown": "Så hur lär sig eleven egentligen av läraren?",
+      "title": "",
+      "tts": {
+        "text": "Så hur lär sig eleven egentligen av läraren?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det naiva sättet är att bara samla in lärarens svar och träna eleven på dem som en vanlig datamängd.",
+      "text_markdown": "Det naiva sättet är att bara samla in lärarens svar och träna eleven på dem som en vanlig datamängd.",
+      "title": "",
+      "tts": {
+        "text": "Det naiva sättet är att bara samla in lärarens svar och träna eleven på dem som en vanlig datamängd.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-124",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det mer sofistikerade sättet använder vad som kallas mjuka etiketter – inte bara lärarens slutgiltiga svar, utan hur säker den var över alla alternativ.",
+      "text_markdown": "Det mer sofistikerade sättet använder vad som kallas mjuka etiketter – inte bara lärarens slutgiltiga svar, utan hur säker den var över alla alternativ.",
+      "title": "",
+      "tts": {
+        "text": "Det mer sofistikerade sättet använder vad som kallas mjuka etiketter – inte bara lärarens slutgiltiga svar, utan hur säker den var över alla alternativ.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-125",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Varför är dessa mjuka etiketter så värdefulla?",
+      "text_markdown": "Varför är dessa mjuka etiketter så värdefulla?",
+      "title": "",
+      "tts": {
+        "text": "Varför är dessa mjuka etiketter så värdefulla?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-126",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eftersom de bär lärarens resonemang, inte bara dess dom.",
+      "text_markdown": "Eftersom de bär lärarens resonemang, inte bara dess dom.",
+      "title": "",
+      "tts": {
+        "text": "Eftersom de bär lärarens resonemang, inte bara dess dom.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-127",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Att veta att läraren var sjuttio procent säker på ett svar och trettio procent på en nära miss berättar eleven mycket mer än vad det enda rätta ordet gör.",
+      "text_markdown": "Att veta att läraren var sjuttio procent säker på ett svar och trettio procent på en nära miss berättar eleven mycket mer än vad det enda rätta ordet gör.",
+      "title": "",
+      "tts": {
+        "text": "Att veta att läraren var sjuttio procent säker på ett svar och trettio procent på en nära miss berättar eleven mycket mer än vad det enda rätta ordet gör.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-128",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är läroboksversionen – nu till versionen i nyheterna.",
+      "text_markdown": "Det är läroboksversionen – nu till versionen i nyheterna.",
+      "title": "",
+      "tts": {
+        "text": "Det är läroboksversionen – nu till versionen i nyheterna.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Om du inte äger läraren, förvandlas destillation till extraktion.",
+      "text_markdown": "Om du inte äger läraren, förvandlas destillation till extraktion.",
+      "title": "",
+      "tts": {
+        "text": "Om du inte äger läraren, förvandlas destillation till extraktion.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Du anropar någon annans modell via dess API, miljontals gånger, spelar in allt den säger och tränar din elev på transkriptet.",
+      "text_markdown": "Du anropar någon annans modell via dess API, miljontals gånger, spelar in allt den säger och tränar din elev på transkriptet.",
+      "title": "",
+      "tts": {
+        "text": "Du anropar någon annans modell via dess API, miljontals gånger, spelar in allt den säger och tränar din elev på transkriptet.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Så samma teknik är antingen effektivitet eller stöld.",
+      "text_markdown": "Så samma teknik är antingen effektivitet eller stöld.",
+      "title": "",
+      "tts": {
+        "text": "Så samma teknik är antingen effektivitet eller stöld.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-132",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Beroende helt på om du äger läraren – vilket är anledningen till att varje större labs användarvillkor uttryckligen förbjuder att använda deras modell för att träna en konkurrent.",
+      "text_markdown": "Beroende helt på om du äger läraren – vilket är anledningen till att varje större labs användarvillkor uttryckligen förbjuder att använda deras modell för att träna en konkurrent.",
+      "title": "",
+      "tts": {
+        "text": "Beroende helt på om du äger läraren – vilket är anledningen till att varje större labs användarvillkor uttryckligen förbjuder att använda deras modell för att träna en konkurrent.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-133",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anklagelsen mot Alibaba är, i klarspråk, att de tjugoåtta miljoner utbytena var en destillationskörning iklädd tjugofemtusen förklädnader.",
+      "text_markdown": "Anklagelsen mot Alibaba är, i klarspråk, att de tjugoåtta miljoner utbytena var en destillationskörning iklädd tjugofemtusen förklädnader.",
+      "title": "",
+      "tts": {
+        "text": "Anklagelsen mot Alibaba är, i klarspråk, att de tjugoåtta miljoner utbytena var en destillationskörning iklädd tjugofemtusen förklädnader.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Och den obekväma delen för labben?",
+      "text_markdown": "Och den obekväma delen för labben?",
+      "title": "",
+      "tts": {
+        "text": "Och den obekväma delen för labben?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Att destillation fungerar alarmerande bra – en beslutsam elev kan verkligen fånga mycket av en lärare den aldrig hade rätt att kopiera.",
+      "text_markdown": "Att destillation fungerar alarmerande bra – en beslutsam elev kan verkligen fånga mycket av en lärare den aldrig hade rätt att kopiera.",
+      "title": "",
+      "tts": {
+        "text": "Att destillation fungerar alarmerande bra – en beslutsam elev kan verkligen fånga mycket av en lärare den aldrig hade rätt att kopiera.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det du säljer tillgång till är också det du mest behöver skydda, och det är samma dörr.",
+      "text_markdown": "Det du säljer tillgång till är också det du mest behöver skydda, och det är samma dörr.",
+      "title": "",
+      "tts": {
+        "text": "Det du säljer tillgång till är också det du mest behöver skydda, och det är samma dörr.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-137",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det är en knivig punkt att landa på.",
+      "text_markdown": "Det är en knivig punkt att landa på.",
+      "title": "",
+      "tts": {
+        "text": "Det är en knivig punkt att landa på.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-138",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, tack för genomgången.",
+      "text_markdown": "Ron, tack för genomgången.",
+      "title": "",
+      "tts": {
+        "text": "Ron, tack för genomgången.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ingen orsak, Vindy – kul att vara här.",
+      "text_markdown": "Ingen orsak, Vindy – kul att vara här.",
+      "title": "",
+      "tts": {
+        "text": "Ingen orsak, Vindy – kul att vara här.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-140",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Det var AI This Week för den tjugoåttonde juni, tjugohundratjugosex.",
+      "text_markdown": "Det var AI This Week för den tjugoåttonde juni, tjugohundratjugosex.",
+      "title": "",
+      "tts": {
+        "text": "Det var AI This Week för den tjugoåttonde juni, tjugohundratjugosex.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-141",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nästa vecka, tillbaka till de öppna modellerna och de små labben som levererar dem.",
+      "text_markdown": "Nästa vecka, tillbaka till de öppna modellerna och de små labben som levererar dem.",
+      "title": "",
+      "tts": {
+        "text": "Nästa vecka, tillbaka till de öppna modellerna och de små labben som levererar dem.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-142",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tills nästa söndag, ta hand om er.",
+      "text_markdown": "Tills nästa söndag, ta hand om er.",
+      "title": "",
+      "tts": {
+        "text": "Tills nästa söndag, ta hand om er.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

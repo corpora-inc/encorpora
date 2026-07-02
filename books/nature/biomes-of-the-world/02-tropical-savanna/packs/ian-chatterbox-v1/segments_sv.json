@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tropiska savannen",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tropiska savannen",
+      "text_markdown": "Den tropiska savannen"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Var savanner växer",
+      "text_markdown": "Var savanner växer"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välkommen till den tropiska savannen.",
+      "text_markdown": "Välkommen till den tropiska savannen.",
+      "tts": {
+        "text": "Välkommen till den tropiska savannen.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Detta är ett av världens stora biom.",
+      "text_markdown": "Detta är ett av världens stora biom.",
+      "tts": {
+        "text": "Detta är ett av världens stora biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+      "text_markdown": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+      "tts": {
+        "text": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannen är en vidsträckt gräsmark med utspridda träd.",
+      "text_markdown": "Savannen är en vidsträckt gräsmark med utspridda träd.",
+      "tts": {
+        "text": "Savannen är en vidsträckt gräsmark med utspridda träd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är varmt hela året.",
+      "text_markdown": "Det är varmt hela året.",
+      "tts": {
+        "text": "Det är varmt hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den har en lång torrtid och en kortare regntid.",
+      "text_markdown": "Den har en lång torrtid och en kortare regntid.",
+      "tts": {
+        "text": "Den har en lång torrtid och en kortare regntid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De största savannerna i världen finns i Afrika.",
+      "text_markdown": "De största savannerna i världen finns i Afrika.",
+      "tts": {
+        "text": "De största savannerna i världen finns i Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sträcker sig över stora delar av kontinentens mitt.",
+      "text_markdown": "De sträcker sig över stora delar av kontinentens mitt.",
+      "tts": {
+        "text": "De sträcker sig över stora delar av kontinentens mitt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns stora savanner i Sydamerika också, som kallas cerrado.",
+      "text_markdown": "Det finns stora savanner i Sydamerika också, som kallas cerrado.",
+      "tts": {
+        "text": "Det finns stora savanner i Sydamerika också, som kallas cerrado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns tropiska savanner över hela norra Australien.",
+      "text_markdown": "Det finns tropiska savanner över hela norra Australien.",
+      "tts": {
+        "text": "Det finns tropiska savanner över hela norra Australien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns mindre savanner i Indien och i Sydostasien.",
+      "text_markdown": "Det finns mindre savanner i Indien och i Sydostasien.",
+      "tts": {
+        "text": "Det finns mindre savanner i Indien och i Sydostasien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Var och en av dessa växte upp på egen hand, långt från de andra.",
+      "text_markdown": "Var och en av dessa växte upp på egen hand, långt från de andra.",
+      "tts": {
+        "text": "Var och en av dessa växte upp på egen hand, långt från de andra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så växterna och djuren är olika i varje del av världen.",
+      "text_markdown": "Så växterna och djuren är olika i varje del av världen.",
+      "tts": {
+        "text": "Så växterna och djuren är olika i varje del av världen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett betande djur i Afrika är inte detsamma som ett i Sydamerika eller Australien.",
+      "text_markdown": "Ett betande djur i Afrika är inte detsamma som ett i Sydamerika eller Australien.",
+      "tts": {
+        "text": "Ett betande djur i Afrika är inte detsamma som ett i Sydamerika eller Australien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de är alla del av samma biom.",
+      "text_markdown": "Men de är alla del av samma biom.",
+      "tts": {
+        "text": "Men de är alla del av samma biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du står på en savann kan du se långt.",
+      "text_markdown": "När du står på en savann kan du se långt.",
+      "tts": {
+        "text": "När du står på en savann kan du se långt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gräset når dig till midjan eller högre.",
+      "text_markdown": "Gräset når dig till midjan eller högre.",
+      "tts": {
+        "text": "Gräset når dig till midjan eller högre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Några träd med plana kronor reser sig över gräset.",
+      "text_markdown": "Några träd med plana kronor reser sig över gräset.",
+      "tts": {
+        "text": "Några träd med plana kronor reser sig över gräset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Himlen är enorm.",
+      "text_markdown": "Himlen är enorm.",
+      "tts": {
+        "text": "Himlen är enorm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ljuset är gyllene.",
+      "text_markdown": "Ljuset är gyllene.",
+      "tts": {
+        "text": "Ljuset är gyllene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hör vinden som rör sig genom gräset.",
+      "text_markdown": "Du hör vinden som rör sig genom gräset.",
+      "tts": {
+        "text": "Du hör vinden som rör sig genom gräset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hör fåglar som ropar i fjärran.",
+      "text_markdown": "Du hör fåglar som ropar i fjärran.",
+      "tts": {
+        "text": "Du hör fåglar som ropar i fjärran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är savannen.",
+      "text_markdown": "Det är savannen.",
+      "tts": {
+        "text": "Det är savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Var savanner växer",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett stort öppet land av gräs, utspridda träd och vida himlar.",
+      "text_markdown": "Ett stort öppet land av gräs, utspridda träd och vida himlar.",
+      "tts": {
+        "text": "Ett stort öppet land av gräs, utspridda träd och vida himlar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vädret",
+      "text_markdown": "Vädret"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vädret på den tropiska savannen är enkelt.",
+      "text_markdown": "Vädret på den tropiska savannen är enkelt.",
+      "tts": {
+        "text": "Vädret på den tropiska savannen är enkelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är varmt hela året.",
+      "text_markdown": "Det är varmt hela året.",
+      "tts": {
+        "text": "Det är varmt hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men till skillnad från regnskogen har savannen två mycket olika årstider.",
+      "text_markdown": "Men till skillnad från regnskogen har savannen två mycket olika årstider.",
+      "tts": {
+        "text": "Men till skillnad från regnskogen har savannen två mycket olika årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns en lång torrtid och en kortare regntid.",
+      "text_markdown": "Det finns en lång torrtid och en kortare regntid.",
+      "tts": {
+        "text": "Det finns en lång torrtid och en kortare regntid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under torrtiden är himlen klar i många månader.",
+      "text_markdown": "Under torrtiden är himlen klar i många månader.",
+      "tts": {
+        "text": "Under torrtiden är himlen klar i många månader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gräset blir gyllene och skört.",
+      "text_markdown": "Gräset blir gyllene och skört.",
+      "tts": {
+        "text": "Gräset blir gyllene och skört.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Floderna krymper, och många små dammar torkar ut helt.",
+      "text_markdown": "Floderna krymper, och många små dammar torkar ut helt.",
+      "tts": {
+        "text": "Floderna krymper, och många små dammar torkar ut helt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden fäller sina löv för att spara vatten.",
+      "text_markdown": "Träden fäller sina löv för att spara vatten.",
+      "tts": {
+        "text": "Träden fäller sina löv för att spara vatten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regntiden börjar med stora moln som tornar upp sig vid horisonten.",
+      "text_markdown": "Regntiden börjar med stora moln som tornar upp sig vid horisonten.",
+      "tts": {
+        "text": "Regntiden börjar med stora moln som tornar upp sig vid horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De första regnen faller i kraftiga stormar med åska och blixtar.",
+      "text_markdown": "De första regnen faller i kraftiga stormar med åska och blixtar.",
+      "tts": {
+        "text": "De första regnen faller i kraftiga stormar med åska och blixtar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När regnet kommer förändras savannen över en natt.",
+      "text_markdown": "När regnet kommer förändras savannen över en natt.",
+      "tts": {
+        "text": "När regnet kommer förändras savannen över en natt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nytt gräs skjuter upp ur den torra jorden.",
+      "text_markdown": "Nytt gräs skjuter upp ur den torra jorden.",
+      "tts": {
+        "text": "Nytt gräs skjuter upp ur den torra jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden får friska gröna löv.",
+      "text_markdown": "Träden får friska gröna löv.",
+      "tts": {
+        "text": "Träden får friska gröna löv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blommor slår ut i vågor av färg.",
+      "text_markdown": "Blommor slår ut i vågor av färg.",
+      "tts": {
+        "text": "Blommor slår ut i vågor av färg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regntiden är kort, men det är då det mesta av livet sker.",
+      "text_markdown": "Regntiden är kort, men det är då det mesta av livet sker.",
+      "tts": {
+        "text": "Regntiden är kort, men det är då det mesta av livet sker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Torrtiden är lång, men savannen är byggd för den.",
+      "text_markdown": "Torrtiden är lång, men savannen är byggd för den.",
+      "tts": {
+        "text": "Torrtiden är lång, men savannen är byggd för den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varje växt och varje djur här vet hur man väntar på regnet.",
+      "text_markdown": "Varje växt och varje djur här vet hur man väntar på regnet.",
+      "tts": {
+        "text": "Varje växt och varje djur här vet hur man väntar på regnet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet och vattnet",
+      "text_markdown": "Landet och vattnet"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannens mark är för det mesta platt och vid.",
+      "text_markdown": "Savannens mark är för det mesta platt och vid.",
+      "tts": {
+        "text": "Savannens mark är för det mesta platt och vid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På vissa ställen reser sig låga, böljande kullar ur gräset.",
+      "text_markdown": "På vissa ställen reser sig låga, böljande kullar ur gräset.",
+      "tts": {
+        "text": "På vissa ställen reser sig låga, böljande kullar ur gräset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Då och då står en stor klippformation ensam på slätten.",
+      "text_markdown": "Då och då står en stor klippformation ensam på slätten.",
+      "tts": {
+        "text": "Då och då står en stor klippformation ensam på slätten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden under gräset är olika i olika delar av savannen.",
+      "text_markdown": "Jorden under gräset är olika i olika delar av savannen.",
+      "tts": {
+        "text": "Jorden under gräset är olika i olika delar av savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På vissa ställen är den mörk och bördig.",
+      "text_markdown": "På vissa ställen är den mörk och bördig.",
+      "tts": {
+        "text": "På vissa ställen är den mörk och bördig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På andra ställen är den sandig eller tunn.",
+      "text_markdown": "På andra ställen är den sandig eller tunn.",
+      "tts": {
+        "text": "På andra ställen är den sandig eller tunn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gräsen har lärt sig att växa i alla av dem.",
+      "text_markdown": "Gräsen har lärt sig att växa i alla av dem.",
+      "tts": {
+        "text": "Gräsen har lärt sig att växa i alla av dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När regnen kommer samlas vatten på låga ställen och bildar dammar och grunda sjöar.",
+      "text_markdown": "När regnen kommer samlas vatten på låga ställen och bildar dammar och grunda sjöar.",
+      "tts": {
+        "text": "När regnen kommer samlas vatten på låga ställen och bildar dammar och grunda sjöar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa av dessa håller i månader, och andra torkar ut på några veckor.",
+      "text_markdown": "Vissa av dessa håller i månader, och andra torkar ut på några veckor.",
+      "tts": {
+        "text": "Vissa av dessa håller i månader, och andra torkar ut på några veckor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Floder slingrar sig över savannen i långa, långsamma kurvor.",
+      "text_markdown": "Floder slingrar sig över savannen i långa, långsamma kurvor.",
+      "tts": {
+        "text": "Floder slingrar sig över savannen i långa, långsamma kurvor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under regntiden är de breda och fulla.",
+      "text_markdown": "Under regntiden är de breda och fulla.",
+      "tts": {
+        "text": "Under regntiden är de breda och fulla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under torrtiden krymper de till en tunn rännil i sanden, eller till en rad av stilla vattenhål.",
+      "text_markdown": "Under torrtiden krymper de till en tunn rännil i sanden, eller till en rad av stilla vattenhål.",
+      "tts": {
+        "text": "Under torrtiden krymper de till en tunn rännil i sanden, eller till en rad av stilla vattenhål.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många av savannens djur samlas vid dessa floder och dammar för att dricka.",
+      "text_markdown": "Många av savannens djur samlas vid dessa floder och dammar för att dricka.",
+      "tts": {
+        "text": "Många av savannens djur samlas vid dessa floder och dammar för att dricka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En damm under torrtiden är en livlig plats.",
+      "text_markdown": "En damm under torrtiden är en livlig plats.",
+      "tts": {
+        "text": "En damm under torrtiden är en livlig plats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Djur som vanligtvis inte möts står nära varandra för att dricka.",
+      "text_markdown": "Djur som vanligtvis inte möts står nära varandra för att dricka.",
+      "tts": {
+        "text": "Djur som vanligtvis inte möts står nära varandra för att dricka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Floderna för också med sig en remsa av högre träd.",
+      "text_markdown": "Floderna för också med sig en remsa av högre träd.",
+      "tts": {
+        "text": "Floderna för också med sig en remsa av högre träd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Längs stränderna växer träden täta och gröna även under torrtiden.",
+      "text_markdown": "Längs stränderna växer träden täta och gröna även under torrtiden.",
+      "tts": {
+        "text": "Längs stränderna växer träden täta och gröna även under torrtiden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dessa band av skog korsar den öppna savannen som gröna vägar.",
+      "text_markdown": "Dessa band av skog korsar den öppna savannen som gröna vägar.",
+      "tts": {
+        "text": "Dessa band av skog korsar den öppna savannen som gröna vägar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Landet och vattnet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De är hem för djur som behöver skugga och vatten året runt.",
+      "text_markdown": "De är hem för djur som behöver skugga och vatten året runt.",
+      "tts": {
+        "text": "De är hem för djur som behöver skugga och vatten året runt.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Växterna",
+      "text_markdown": "Växterna"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannens hjärta är gräset.",
+      "text_markdown": "Savannens hjärta är gräset.",
+      "tts": {
+        "text": "Savannens hjärta är gräset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Höga gräs täcker marken åt alla håll.",
+      "text_markdown": "Höga gräs täcker marken åt alla håll.",
+      "tts": {
+        "text": "Höga gräs täcker marken åt alla håll.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa gräs växer lika högt som en människa.",
+      "text_markdown": "Vissa gräs växer lika högt som en människa.",
+      "tts": {
+        "text": "Vissa gräs växer lika högt som en människa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras rötter når djupt ner i jorden för att hitta vatten.",
+      "text_markdown": "Deras rötter når djupt ner i jorden för att hitta vatten.",
+      "tts": {
+        "text": "Deras rötter når djupt ner i jorden för att hitta vatten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När eld sveper genom savannen brinner gräsens toppar.",
+      "text_markdown": "När eld sveper genom savannen brinner gräsens toppar.",
+      "tts": {
+        "text": "När eld sveper genom savannen brinner gräsens toppar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men rötterna förblir vid liv under jorden.",
+      "text_markdown": "Men rötterna förblir vid liv under jorden.",
+      "tts": {
+        "text": "Men rötterna förblir vid liv under jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter nästa regn växer gräsen upp igen, friska och gröna.",
+      "text_markdown": "Efter nästa regn växer gräsen upp igen, friska och gröna.",
+      "tts": {
+        "text": "Efter nästa regn växer gräsen upp igen, friska och gröna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eld är en naturlig del av detta biom.",
+      "text_markdown": "Eld är en naturlig del av detta biom.",
+      "tts": {
+        "text": "Eld är en naturlig del av detta biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många av växterna här behöver eld för att hålla sig friska.",
+      "text_markdown": "Många av växterna här behöver eld för att hålla sig friska.",
+      "tts": {
+        "text": "Många av växterna här behöver eld för att hålla sig friska.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träd växer också över savannen, men de är utspridda.",
+      "text_markdown": "Träd växer också över savannen, men de är utspridda.",
+      "tts": {
+        "text": "Träd växer också över savannen, men de är utspridda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De står långt från varandra, med gräs emellan.",
+      "text_markdown": "De står långt från varandra, med gräs emellan.",
+      "tts": {
+        "text": "De står långt från varandra, med gräs emellan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flesta savannträd är låga, med breda, platta kronor.",
+      "text_markdown": "De flesta savannträd är låga, med breda, platta kronor.",
+      "tts": {
+        "text": "De flesta savannträd är låga, med breda, platta kronor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den platta kronan är ett vitt paraply av löv som fångar varje droppe ljus.",
+      "text_markdown": "Den platta kronan är ett vitt paraply av löv som fångar varje droppe ljus.",
+      "tts": {
+        "text": "Den platta kronan är ett vitt paraply av löv som fångar varje droppe ljus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många savannträd har taggar för att hindra stora djur från att äta dem.",
+      "text_markdown": "Många savannträd har taggar för att hindra stora djur från att äta dem.",
+      "tts": {
+        "text": "Många savannträd har taggar för att hindra stora djur från att äta dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den berömda baobaben är ett jättelikt savannträd med en tjock, stark stam.",
+      "text_markdown": "Den berömda baobaben är ett jättelikt savannträd med en tjock, stark stam.",
+      "tts": {
+        "text": "Den berömda baobaben är ett jättelikt savannträd med en tjock, stark stam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den kan lagra vatten i sin stam för den långa torrtiden.",
+      "text_markdown": "Den kan lagra vatten i sin stam för den långa torrtiden.",
+      "tts": {
+        "text": "Den kan lagra vatten i sin stam för den långa torrtiden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa baobaber lever i mer än tusen år.",
+      "text_markdown": "Vissa baobaber lever i mer än tusen år.",
+      "tts": {
+        "text": "Vissa baobaber lever i mer än tusen år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Längs floderna växer högre träd i ett smalt grönt band.",
+      "text_markdown": "Längs floderna växer högre träd i ett smalt grönt band.",
+      "tts": {
+        "text": "Längs floderna växer högre träd i ett smalt grönt band.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ute på den öppna slätten är gräset och några utspridda träd allt du ser milsvitt.",
+      "text_markdown": "Ute på den öppna slätten är gräset och några utspridda träd allt du ser milsvitt.",
+      "tts": {
+        "text": "Ute på den öppna slätten är gräset och några utspridda träd allt du ser milsvitt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under regntiden blommar små blommor mellan gräsen.",
+      "text_markdown": "Under regntiden blommar små blommor mellan gräsen.",
+      "tts": {
+        "text": "Under regntiden blommar små blommor mellan gräsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De öppnar sig snabbt och varar bara några veckor.",
+      "text_markdown": "De öppnar sig snabbt och varar bara några veckor.",
+      "tts": {
+        "text": "De öppnar sig snabbt och varar bara några veckor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannen är en tyst maskin, gjord av gräs, utspridda träd, sol och tålmodiga rötter.",
+      "text_markdown": "Savannen är en tyst maskin, gjord av gräs, utspridda träd, sol och tålmodiga rötter.",
+      "tts": {
+        "text": "Savannen är en tyst maskin, gjord av gräs, utspridda träd, sol och tålmodiga rötter.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Djuren",
+      "text_markdown": "Djuren"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiska savannen är berömd över hela världen för sina djur.",
+      "text_markdown": "Den tropiska savannen är berömd över hela världen för sina djur.",
+      "tts": {
+        "text": "Den tropiska savannen är berömd över hela världen för sina djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gräsen föder enorma hjordar av betande djur.",
+      "text_markdown": "Gräsen föder enorma hjordar av betande djur.",
+      "tts": {
+        "text": "Gräsen föder enorma hjordar av betande djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika rör sig stora hjordar av sebror, antiloper och bufflar över slätterna.",
+      "text_markdown": "I Afrika rör sig stora hjordar av sebror, antiloper och bufflar över slätterna.",
+      "tts": {
+        "text": "I Afrika rör sig stora hjordar av sebror, antiloper och bufflar över slätterna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De följer regnen från en del av savannen till en annan.",
+      "text_markdown": "De följer regnen från en del av savannen till en annan.",
+      "tts": {
+        "text": "De följer regnen från en del av savannen till en annan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det största landdjuret på jorden, elefanten, lever på den afrikanska savannen.",
+      "text_markdown": "Det största landdjuret på jorden, elefanten, lever på den afrikanska savannen.",
+      "tts": {
+        "text": "Det största landdjuret på jorden, elefanten, lever på den afrikanska savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En familj av elefanter går sakta över gräset, ledd av en gammal mor.",
+      "text_markdown": "En familj av elefanter går sakta över gräset, ledd av en gammal mor.",
+      "tts": {
+        "text": "En familj av elefanter går sakta över gräset, ledd av en gammal mor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Giraffen går bredvid och sträcker sig med sin långa hals för att äta lövverk från träden.",
+      "text_markdown": "Giraffen går bredvid och sträcker sig med sin långa hals för att äta lövverk från träden.",
+      "tts": {
+        "text": "Giraffen går bredvid och sträcker sig med sin långa hals för att äta lövverk från träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Där det finns många betande djur finns det också jägare.",
+      "text_markdown": "Där det finns många betande djur finns det också jägare.",
+      "tts": {
+        "text": "Där det finns många betande djur finns det också jägare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lejonet är den stora jägaren på den afrikanska savannen.",
+      "text_markdown": "Lejonet är den stora jägaren på den afrikanska savannen.",
+      "tts": {
+        "text": "Lejonet är den stora jägaren på den afrikanska savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lejon lever tillsammans i familjegrupper som kallas flockar.",
+      "text_markdown": "Lejon lever tillsammans i familjegrupper som kallas flockar.",
+      "tts": {
+        "text": "Lejon lever tillsammans i familjegrupper som kallas flockar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geparden är det snabbaste djuret på land.",
+      "text_markdown": "Geparden är det snabbaste djuret på land.",
+      "tts": {
+        "text": "Geparden är det snabbaste djuret på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den springer i korta utbrott för att fånga antiloperna som betar på slätterna.",
+      "text_markdown": "Den springer i korta utbrott för att fånga antiloperna som betar på slätterna.",
+      "tts": {
+        "text": "Den springer i korta utbrott för att fånga antiloperna som betar på slätterna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leoparden är en tyst jägare som klättrar i träd och drar upp sina måltider i grenarna.",
+      "text_markdown": "Leoparden är en tyst jägare som klättrar i träd och drar upp sina måltider i grenarna.",
+      "tts": {
+        "text": "Leoparden är en tyst jägare som klättrar i träd och drar upp sina måltider i grenarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyenor jagar i grupper och städar upp det som de större jägarna lämnar efter sig.",
+      "text_markdown": "Hyenor jagar i grupper och städar upp det som de större jägarna lämnar efter sig.",
+      "tts": {
+        "text": "Hyenor jagar i grupper och städar upp det som de större jägarna lämnar efter sig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mindre djur finns överallt också.",
+      "text_markdown": "Mindre djur finns överallt också.",
+      "tts": {
+        "text": "Mindre djur finns överallt också.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babianer reser i högljudda grupper över gräset och genom träden.",
+      "text_markdown": "Babianer reser i högljudda grupper över gräset och genom träden.",
+      "tts": {
+        "text": "Babianer reser i högljudda grupper över gräset och genom träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stora fåglar som kallas strutsar springer över den öppna slätten på långa ben.",
+      "text_markdown": "Stora fåglar som kallas strutsar springer över den öppna slätten på långa ben.",
+      "tts": {
+        "text": "Stora fåglar som kallas strutsar springer över den öppna slätten på långa ben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gamar kretsar högt däröver och spanar efter djur som har dött.",
+      "text_markdown": "Gamar kretsar högt däröver och spanar efter djur som har dött.",
+      "tts": {
+        "text": "Gamar kretsar högt däröver och spanar efter djur som har dött.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under regntiden sjunger grodor varje natt runt de nya dammarna.",
+      "text_markdown": "Under regntiden sjunger grodor varje natt runt de nya dammarna.",
+      "tts": {
+        "text": "Under regntiden sjunger grodor varje natt runt de nya dammarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insekter fyller den varma luften, och fjärilar svävar mellan blommorna.",
+      "text_markdown": "Insekter fyller den varma luften, och fjärilar svävar mellan blommorna.",
+      "tts": {
+        "text": "Insekter fyller den varma luften, och fjärilar svävar mellan blommorna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I floderna vilar flodhästar i vattnet hela dagen, och kommer upp för att beta gräset på natten.",
+      "text_markdown": "I floderna vilar flodhästar i vattnet hela dagen, och kommer upp för att beta gräset på natten.",
+      "tts": {
+        "text": "I floderna vilar flodhästar i vattnet hela dagen, och kommer upp för att beta gräset på natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den sydamerikanska savannen tar stora gnagare och stora fåglar de afrikanska djurens plats.",
+      "text_markdown": "På den sydamerikanska savannen tar stora gnagare och stora fåglar de afrikanska djurens plats.",
+      "tts": {
+        "text": "På den sydamerikanska savannen tar stora gnagare och stora fåglar de afrikanska djurens plats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den australiska savannen hoppar känguruer över gräset istället för antiloper som springer över det.",
+      "text_markdown": "På den australiska savannen hoppar känguruer över gräset istället för antiloper som springer över det.",
+      "tts": {
+        "text": "På den australiska savannen hoppar känguruer över gräset istället för antiloper som springer över det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I vart och ett av dessa länder ser djuren olika ut.",
+      "text_markdown": "I vart och ett av dessa länder ser djuren olika ut.",
+      "tts": {
+        "text": "I vart och ett av dessa länder ser djuren olika ut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men mönstret är detsamma.",
+      "text_markdown": "Men mönstret är detsamma.",
+      "tts": {
+        "text": "Men mönstret är detsamma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enorma hjordar av betesdjur, tysta jägare i gräset, och stora flockar av fåglar på himlen.",
+      "text_markdown": "Enorma hjordar av betesdjur, tysta jägare i gräset, och stora flockar av fåglar på himlen.",
+      "tts": {
+        "text": "Enorma hjordar av betesdjur, tysta jägare i gräset, och stora flockar av fåglar på himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är savannen.",
+      "text_markdown": "Det är savannen.",
+      "tts": {
+        "text": "Det är savannen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Människorna",
+      "text_markdown": "Människorna"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människor har levt på den tropiska savannen i mycket lång tid.",
+      "text_markdown": "Människor har levt på den tropiska savannen i mycket lång tid.",
+      "tts": {
+        "text": "Människor har levt på den tropiska savannen i mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Faktum är att våra egna förfäder först reste sig upp och gick över savanner som dessa.",
+      "text_markdown": "Faktum är att våra egna förfäder först reste sig upp och gick över savanner som dessa.",
+      "tts": {
+        "text": "Faktum är att våra egna förfäder först reste sig upp och gick över savanner som dessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det öppna gräset och de utspridda träden formade hur våra kroppar rör sig.",
+      "text_markdown": "Det öppna gräset och de utspridda träden formade hur våra kroppar rör sig.",
+      "tts": {
+        "text": "Det öppna gräset och de utspridda träden formade hur våra kroppar rör sig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många människor på savannen håller hjordar av djur.",
+      "text_markdown": "Många människor på savannen håller hjordar av djur.",
+      "tts": {
+        "text": "Många människor på savannen håller hjordar av djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika driver familjer boskap, getter och får över gräsmarkerna.",
+      "text_markdown": "I Afrika driver familjer boskap, getter och får över gräsmarkerna.",
+      "tts": {
+        "text": "I Afrika driver familjer boskap, getter och får över gräsmarkerna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Djuren äter gräset och förvandlar det till mjölk och kött åt människorna.",
+      "text_markdown": "Djuren äter gräset och förvandlar det till mjölk och kött åt människorna.",
+      "tts": {
+        "text": "Djuren äter gräset och förvandlar det till mjölk och kött åt människorna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Herdarna flyttar med sina djur för att följa regnen.",
+      "text_markdown": "Herdarna flyttar med sina djur för att följa regnen.",
+      "tts": {
+        "text": "Herdarna flyttar med sina djur för att följa regnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under torrtiden färdas de mot floderna.",
+      "text_markdown": "Under torrtiden färdas de mot floderna.",
+      "tts": {
+        "text": "Under torrtiden färdas de mot floderna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under regntiden sprider de ut sig över de gröna slätterna.",
+      "text_markdown": "Under regntiden sprider de ut sig över de gröna slätterna.",
+      "tts": {
+        "text": "Under regntiden sprider de ut sig över de gröna slätterna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras hem är ofta lätta att ta isär och bära till en ny plats.",
+      "text_markdown": "Deras hem är ofta lätta att ta isär och bära till en ny plats.",
+      "tts": {
+        "text": "Deras hem är ofta lätta att ta isär och bära till en ny plats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra människor på savannen odlar mat på små åkrar.",
+      "text_markdown": "Andra människor på savannen odlar mat på små åkrar.",
+      "tts": {
+        "text": "Andra människor på savannen odlar mat på små åkrar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Där jorden är bördig planterar de spannmål och bönor.",
+      "text_markdown": "Där jorden är bördig planterar de spannmål och bönor.",
+      "tts": {
+        "text": "Där jorden är bördig planterar de spannmål och bönor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De använder eld med omsorg för att röja nya åkrar och hålla gräset friskt åt sina djur.",
+      "text_markdown": "De använder eld med omsorg för att röja nya åkrar och hålla gräset friskt åt sina djur.",
+      "tts": {
+        "text": "De använder eld med omsorg för att röja nya åkrar och hålla gräset friskt åt sina djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människorna på savannen känner landet i minsta detalj.",
+      "text_markdown": "Människorna på savannen känner landet i minsta detalj.",
+      "tts": {
+        "text": "Människorna på savannen känner landet i minsta detalj.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vet vilka växter som är säkra att äta och vilka som är bra som medicin.",
+      "text_markdown": "De vet vilka växter som är säkra att äta och vilka som är bra som medicin.",
+      "tts": {
+        "text": "De vet vilka växter som är säkra att äta och vilka som är bra som medicin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De känner igen spåren av varje djur i dammet.",
+      "text_markdown": "De känner igen spåren av varje djur i dammet.",
+      "tts": {
+        "text": "De känner igen spåren av varje djur i dammet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vet vad varje slags moln på himlen betyder.",
+      "text_markdown": "De vet vad varje slags moln på himlen betyder.",
+      "tts": {
+        "text": "De vet vad varje slags moln på himlen betyder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denna kunskap förs vidare från föräldrar till barn, år efter år.",
+      "text_markdown": "Denna kunskap förs vidare från föräldrar till barn, år efter år.",
+      "tts": {
+        "text": "Denna kunskap förs vidare från föräldrar till barn, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På varje savann har detta sätt att leva sina egna språk, sina egna sånger och sina egna berättelser.",
+      "text_markdown": "På varje savann har detta sätt att leva sina egna språk, sina egna sånger och sina egna berättelser.",
+      "tts": {
+        "text": "På varje savann har detta sätt att leva sina egna språk, sina egna sånger och sina egna berättelser.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Savannen idag",
+      "text_markdown": "Savannen idag"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiska savannen är ett av jordens stora vilda landområden.",
+      "text_markdown": "Den tropiska savannen är ett av jordens stora vilda landområden.",
+      "tts": {
+        "text": "Den tropiska savannen är ett av jordens stora vilda landområden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den föder enorma hjordar av djur.",
+      "text_markdown": "Den föder enorma hjordar av djur.",
+      "tts": {
+        "text": "Den föder enorma hjordar av djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den försörjer de herdar och bönder som har levt här i tusentals år.",
+      "text_markdown": "Den försörjer de herdar och bönder som har levt här i tusentals år.",
+      "tts": {
+        "text": "Den försörjer de herdar och bönder som har levt här i tusentals år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gräsmarkerna lagrar också mycket vatten och näring i sina djupa rötter.",
+      "text_markdown": "Gräsmarkerna lagrar också mycket vatten och näring i sina djupa rötter.",
+      "tts": {
+        "text": "Gräsmarkerna lagrar också mycket vatten och näring i sina djupa rötter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men savannen är också i fara.",
+      "text_markdown": "Men savannen är också i fara.",
+      "tts": {
+        "text": "Men savannen är också i fara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På många ställen har människor plöjt upp gräset för att odla grödor, eller stängslat in det för boskap.",
+      "text_markdown": "På många ställen har människor plöjt upp gräset för att odla grödor, eller stängslat in det för boskap.",
+      "tts": {
+        "text": "På många ställen har människor plöjt upp gräset för att odla grödor, eller stängslat in det för boskap.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När gräset bryts upp förlorar hjordarna av vilda djur sina öppna stigar.",
+      "text_markdown": "När gräset bryts upp förlorar hjordarna av vilda djur sina öppna stigar.",
+      "tts": {
+        "text": "När gräset bryts upp förlorar hjordarna av vilda djur sina öppna stigar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vägar och stängsel skär av de leder som elefanter och antiloper har följt i evigheter.",
+      "text_markdown": "Vägar och stängsel skär av de leder som elefanter och antiloper har följt i evigheter.",
+      "tts": {
+        "text": "Vägar och stängsel skär av de leder som elefanter och antiloper har följt i evigheter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa savanndjur, som noshörningen och geparden, har blivit mycket sällsynta.",
+      "text_markdown": "Vissa savanndjur, som noshörningen och geparden, har blivit mycket sällsynta.",
+      "tts": {
+        "text": "Vissa savanndjur, som noshörningen och geparden, har blivit mycket sällsynta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många grupper runt om i världen arbetar för att skydda det som är kvar.",
+      "text_markdown": "Många grupper runt om i världen arbetar för att skydda det som är kvar.",
+      "tts": {
+        "text": "Många grupper runt om i världen arbetar för att skydda det som är kvar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De avsätter stora parker där de vilda djuren fortfarande kan röra sig fritt.",
+      "text_markdown": "De avsätter stora parker där de vilda djuren fortfarande kan röra sig fritt.",
+      "tts": {
+        "text": "De avsätter stora parker där de vilda djuren fortfarande kan röra sig fritt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De samarbetar med människorna som bor nära parkerna för att dela på landet.",
+      "text_markdown": "De samarbetar med människorna som bor nära parkerna för att dela på landet.",
+      "tts": {
+        "text": "De samarbetar med människorna som bor nära parkerna för att dela på landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerar gräset, träden och hjordarna så att vi förstår det bättre.",
+      "text_markdown": "De studerar gräset, träden och hjordarna så att vi förstår det bättre.",
+      "tts": {
+        "text": "De studerar gräset, träden och hjordarna så att vi förstår det bättre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En frisk savann kan bära mer liv än nästan något annat landbiom.",
+      "text_markdown": "En frisk savann kan bära mer liv än nästan något annat landbiom.",
+      "tts": {
+        "text": "En frisk savann kan bära mer liv än nästan något annat landbiom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Savannen idag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den är värd vår omtanke.",
+      "text_markdown": "Den är värd vår omtanke.",
+      "tts": {
+        "text": "Den är värd vår omtanke.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är den tropiska savannen.",
+      "text_markdown": "Det är den tropiska savannen.",
+      "tts": {
+        "text": "Det är den tropiska savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett vidsträckt, varmt land av gräs, utspridda träd och stora hjordar av djur.",
+      "text_markdown": "Ett vidsträckt, varmt land av gräs, utspridda träd och stora hjordar av djur.",
+      "tts": {
+        "text": "Ett vidsträckt, varmt land av gräs, utspridda träd och stora hjordar av djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du någonsin står på en, var stilla en stund.",
+      "text_markdown": "Om du någonsin står på en, var stilla en stund.",
+      "tts": {
+        "text": "Om du någonsin står på en, var stilla en stund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyssna på vinden i gräset och fåglarna i fjärran.",
+      "text_markdown": "Lyssna på vinden i gräset och fåglarna i fjärran.",
+      "tts": {
+        "text": "Lyssna på vinden i gräset och fåglarna i fjärran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blicka ut mot den långa horisonten.",
+      "text_markdown": "Blicka ut mot den långa horisonten.",
+      "tts": {
+        "text": "Blicka ut mot den långa horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kommer att känna biomets hjärta slå runt omkring dig.",
+      "text_markdown": "Du kommer att känna biomets hjärta slå runt omkring dig.",
+      "tts": {
+        "text": "Du kommer att känna biomets hjärta slå runt omkring dig.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

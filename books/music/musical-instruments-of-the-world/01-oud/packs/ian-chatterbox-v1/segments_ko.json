@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "ko",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "듣는 분께",
+      "text_markdown": "듣는 분께"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 우드라는 줄 달린 나무 악기에 대한 책이에요.",
+      "text_markdown": "이것은 우드라는 줄 달린 나무 악기에 대한 책이에요.",
+      "tts": {
+        "text": "이것은 우드라는 줄 달린 나무 악기에 대한 책이에요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 이 악기를 천 년이 넘도록 연주해 왔어요.",
+      "text_markdown": "사람들은 이 악기를 천 년이 넘도록 연주해 왔어요.",
+      "tts": {
+        "text": "사람들은 이 악기를 천 년이 넘도록 연주해 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바닷가 도시에서도, 산속 마을에서도 우드 소리를 들을 수 있어요.",
+      "text_markdown": "바닷가 도시에서도, 산속 마을에서도 우드 소리를 들을 수 있어요.",
+      "tts": {
+        "text": "바닷가 도시에서도, 산속 마을에서도 우드 소리를 들을 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오래된 궁전에서도, 작은 나무 무대에서도 그 소리를 들을 수 있어요.",
+      "text_markdown": "오래된 궁전에서도, 작은 나무 무대에서도 그 소리를 들을 수 있어요.",
+      "tts": {
+        "text": "오래된 궁전에서도, 작은 나무 무대에서도 그 소리를 들을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책에서는 우드의 생김새와 만드는 법, 그리고 그 이야기를 빚은 사람들을 살펴봐요.",
+      "text_markdown": "이 책에서는 우드의 생김새와 만드는 법, 그리고 그 이야기를 빚은 사람들을 살펴봐요.",
+      "tts": {
+        "text": "이 책에서는 우드의 생김새와 만드는 법, 그리고 그 이야기를 빚은 사람들을 살펴봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "책을 다 듣고 나면, 왜 우드를 현악기의 왕이라 부르는지 알게 될 거예요.",
+      "text_markdown": "책을 다 듣고 나면, 왜 우드를 현악기의 왕이라 부르는지 알게 될 거예요.",
+      "tts": {
+        "text": "책을 다 듣고 나면, 왜 우드를 현악기의 왕이라 부르는지 알게 될 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "1장 우드란 무엇일까요?",
+      "text_markdown": "1장 우드란 무엇일까요?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 현악기예요.",
+      "text_markdown": "우드는 현악기예요.",
+      "tts": {
+        "text": "우드는 현악기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 반으로 자른 배를 닮은 몸통을 가진 류트의 한 종류예요.",
+      "text_markdown": "우드는 반으로 자른 배를 닮은 몸통을 가진 류트의 한 종류예요.",
+      "tts": {
+        "text": "우드는 반으로 자른 배를 닮은 몸통을 가진 류트의 한 종류예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드의 등쪽은 둥글고 깊어서 나무 그릇 같아요.",
+      "text_markdown": "우드의 등쪽은 둥글고 깊어서 나무 그릇 같아요.",
+      "tts": {
+        "text": "우드의 등쪽은 둥글고 깊어서 나무 그릇 같아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "앞면은 평평해요.",
+      "text_markdown": "앞면은 평평해요.",
+      "tts": {
+        "text": "앞면은 평평해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 평평한 앞면을 사운드보드라고 불러요.",
+      "text_markdown": "이 평평한 앞면을 사운드보드라고 불러요.",
+      "tts": {
+        "text": "이 평평한 앞면을 사운드보드라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드의 넥은 짧고, 프렛이 없어요.",
+      "text_markdown": "우드의 넥은 짧고, 프렛이 없어요.",
+      "tts": {
+        "text": "우드의 넥은 짧고, 프렛이 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프렛은 기타에서 보이는 작은 금속 선들이에요.",
+      "text_markdown": "프렛은 기타에서 보이는 작은 금속 선들이에요.",
+      "tts": {
+        "text": "프렛은 기타에서 보이는 작은 금속 선들이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "프렛이 없어서 연주자는 음과 음 사이를 아주 부드럽게 미끄러질 수 있어요.",
+      "text_markdown": "프렛이 없어서 연주자는 음과 음 사이를 아주 부드럽게 미끄러질 수 있어요.",
+      "tts": {
+        "text": "프렛이 없어서 연주자는 음과 음 사이를 아주 부드럽게 미끄러질 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "대부분의 우드는 줄이 열한 개이고 여섯 코스로 구성돼요.",
+      "text_markdown": "대부분의 우드는 줄이 열한 개이고 여섯 코스로 구성돼요.",
+      "tts": {
+        "text": "대부분의 우드는 줄이 열한 개이고 여섯 코스로 구성돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우리는 그 한 쌍을 코스라고 불러요.",
+      "text_markdown": "우리는 그 한 쌍을 코스라고 불러요.",
+      "tts": {
+        "text": "우리는 그 한 쌍을 코스라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "코스 다섯 개에는 같은 음으로 맞춘 줄이 두 개씩 있어요.",
+      "text_markdown": "코스 다섯 개에는 같은 음으로 맞춘 줄이 두 개씩 있어요.",
+      "tts": {
+        "text": "코스 다섯 개에는 같은 음으로 맞춘 줄이 두 개씩 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여섯 번째 코스에는 줄이 하나만 있어요.",
+      "text_markdown": "여섯 번째 코스에는 줄이 하나만 있어요.",
+      "tts": {
+        "text": "여섯 번째 코스에는 줄이 하나만 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그래서 모두 합치면 열한 개가 돼요.",
+      "text_markdown": "그래서 모두 합치면 열한 개가 돼요.",
+      "tts": {
+        "text": "그래서 모두 합치면 열한 개가 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "연주자는 우드를 무릎 위에 가로로 올려요.",
+      "text_markdown": "연주자는 우드를 무릎 위에 가로로 올려요.",
+      "tts": {
+        "text": "연주자는 우드를 무릎 위에 가로로 올려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 손은 넥 위에서 줄을 눌러요.",
+      "text_markdown": "한 손은 넥 위에서 줄을 눌러요.",
+      "tts": {
+        "text": "한 손은 넥 위에서 줄을 눌러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 손은 리샤라는 얇은 플렉트럼으로 줄을 튕겨요.",
+      "text_markdown": "다른 손은 리샤라는 얇은 플렉트럼으로 줄을 튕겨요.",
+      "tts": {
+        "text": "다른 손은 리샤라는 얇은 플렉트럼으로 줄을 튕겨요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소리는 따뜻하고 깊어요.",
+      "text_markdown": "소리는 따뜻하고 깊어요.",
+      "tts": {
+        "text": "소리는 따뜻하고 깊어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "조금 슬프고, 조금 달콤한 느낌이 한꺼번에 들어요.",
+      "text_markdown": "조금 슬프고, 조금 달콤한 느낌이 한꺼번에 들어요.",
+      "tts": {
+        "text": "조금 슬프고, 조금 달콤한 느낌이 한꺼번에 들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "2장 이름은 어디서 왔을까요?",
+      "text_markdown": "2장 이름은 어디서 왔을까요?"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드라는 이름은 아랍어로 나무를 뜻해요.",
+      "text_markdown": "우드라는 이름은 아랍어로 나무를 뜻해요.",
+      "tts": {
+        "text": "우드라는 이름은 아랍어로 나무를 뜻해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 악기는 자기를 이루는 재료의 이름을 받았어요.",
+      "text_markdown": "이 악기는 자기를 이루는 재료의 이름을 받았어요.",
+      "tts": {
+        "text": "이 악기는 자기를 이루는 재료의 이름을 받았어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드보다 훨씬 앞서, 바르바트라는 오래된 사촌 악기가 있었어요.",
+      "text_markdown": "우드보다 훨씬 앞서, 바르바트라는 오래된 사촌 악기가 있었어요.",
+      "tts": {
+        "text": "우드보다 훨씬 앞서, 바르바트라는 오래된 사촌 악기가 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바르바트는 이천 년도 더 전에 고대 페르시아에서 연주되었어요.",
+      "text_markdown": "바르바트는 이천 년도 더 전에 고대 페르시아에서 연주되었어요.",
+      "tts": {
+        "text": "바르바트는 이천 년도 더 전에 고대 페르시아에서 연주되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바르바트는 나무 몸통과 비단 줄을 가졌어요.",
+      "text_markdown": "바르바트는 나무 몸통과 비단 줄을 가졌어요.",
+      "tts": {
+        "text": "바르바트는 나무 몸통과 비단 줄을 가졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소리는 길고 부드러웠어요.",
+      "text_markdown": "소리는 길고 부드러웠어요.",
+      "tts": {
+        "text": "소리는 길고 부드러웠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "왕들의 궁정에서 사람들이 그 악기를 연주했어요.",
+      "text_markdown": "왕들의 궁정에서 사람들이 그 악기를 연주했어요.",
+      "tts": {
+        "text": "왕들의 궁정에서 사람들이 그 악기를 연주했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "시간이 흐르며 바르바트는 조금씩 바뀌었어요.",
+      "text_markdown": "시간이 흐르며 바르바트는 조금씩 바뀌었어요.",
+      "tts": {
+        "text": "시간이 흐르며 바르바트는 조금씩 바뀌었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸통은 더 둥글어지고, 줄은 쌍으로 늘었고, 넥은 더 짧아졌어요.",
+      "text_markdown": "몸통은 더 둥글어지고, 줄은 쌍으로 늘었고, 넥은 더 짧아졌어요.",
+      "tts": {
+        "text": "몸통은 더 둥글어지고, 줄은 쌍으로 늘었고, 넥은 더 짧아졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "칠백 년 무렵에는 아랍 세계 사람들이 오늘날 우리가 우드라 부르는 악기를 연주하고 있었어요.",
+      "text_markdown": "칠백 년 무렵에는 아랍 세계 사람들이 오늘날 우리가 우드라 부르는 악기를 연주하고 있었어요.",
+      "tts": {
+        "text": "칠백 년 무렵에는 아랍 세계 사람들이 오늘날 우리가 우드라 부르는 악기를 연주하고 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그곳에서 우드는 더 멀리 퍼져 나갔어요.",
+      "text_markdown": "그곳에서 우드는 더 멀리 퍼져 나갔어요.",
+      "tts": {
+        "text": "그곳에서 우드는 더 멀리 퍼져 나갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 이집트와 북아프리카로 갔어요.",
+      "text_markdown": "우드는 이집트와 북아프리카로 갔어요.",
+      "tts": {
+        "text": "우드는 이집트와 북아프리카로 갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바다를 건너 스페인에도 닿았어요.",
+      "text_markdown": "바다를 건너 스페인에도 닿았어요.",
+      "tts": {
+        "text": "바다를 건너 스페인에도 닿았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "북쪽으로 올라가 튀르키예와 그리스에도 갔어요.",
+      "text_markdown": "북쪽으로 올라가 튀르키예와 그리스에도 갔어요.",
+      "tts": {
+        "text": "북쪽으로 올라가 튀르키예와 그리스에도 갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "곳마다 우드는 그 땅의 목소리를 조금씩 얻었어요.",
+      "text_markdown": "곳마다 우드는 그 땅의 목소리를 조금씩 얻었어요.",
+      "tts": {
+        "text": "곳마다 우드는 그 땅의 목소리를 조금씩 얻었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 이름은 그대로였어요.",
+      "text_markdown": "하지만 이름은 그대로였어요.",
+      "tts": {
+        "text": "하지만 이름은 그대로였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어디로 가든, 그 나무 악기는 여전히 우드였어요.",
+      "text_markdown": "어디로 가든, 그 나무 악기는 여전히 우드였어요.",
+      "tts": {
+        "text": "어디로 가든, 그 나무 악기는 여전히 우드였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "3장 우드는 어떻게 만들어질까요?",
+      "text_markdown": "3장 우드는 어떻게 만들어질까요?"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드를 만드는 데는 오랜 시간이 걸려요.",
+      "text_markdown": "우드를 만드는 데는 오랜 시간이 걸려요.",
+      "tts": {
+        "text": "우드를 만드는 데는 오랜 시간이 걸려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "좋은 제작자는 악기 하나에 여러 주를 쏟기도 해요.",
+      "text_markdown": "좋은 제작자는 악기 하나에 여러 주를 쏟기도 해요.",
+      "tts": {
+        "text": "좋은 제작자는 악기 하나에 여러 주를 쏟기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "보울은 얇은 나무 조각들로 만들고, 그 조각 수는 보통 열다섯 개에서 스물다섯 개 정도에 이릅니다.",
+      "text_markdown": "보울은 얇은 나무 조각들로 만들고, 그 조각 수는 보통 열다섯 개에서 스물다섯 개 정도에 이릅니다.",
+      "tts": {
+        "text": "보울은 얇은 나무 조각들로 만들고, 그 조각 수는 보통 열다섯 개에서 스물다섯 개 정도에 이릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 조각은 휘어서 바로 옆 조각과 붙여요.",
+      "text_markdown": "각 조각은 휘어서 바로 옆 조각과 붙여요.",
+      "tts": {
+        "text": "각 조각은 휘어서 바로 옆 조각과 붙여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그렇게 해서 우드의 깊고 둥근 등이 만들어져요.",
+      "text_markdown": "그렇게 해서 우드의 깊고 둥근 등이 만들어져요.",
+      "tts": {
+        "text": "그렇게 해서 우드의 깊고 둥근 등이 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나무는 아주 중요해요.",
+      "text_markdown": "나무는 아주 중요해요.",
+      "tts": {
+        "text": "나무는 아주 중요해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호두나무는 따뜻한 소리를 내고, 마호가니는 더 어두운 소리를 내고, 뽕나무는 밝고 맑게 울려요.",
+      "text_markdown": "호두나무는 따뜻한 소리를 내고, 마호가니는 더 어두운 소리를 내고, 뽕나무는 밝고 맑게 울려요.",
+      "tts": {
+        "text": "호두나무는 따뜻한 소리를 내고, 마호가니는 더 어두운 소리를 내고, 뽕나무는 밝고 맑게 울려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제작자는 원하는 목소리에 맞춰 나무를 골라요.",
+      "text_markdown": "제작자는 원하는 목소리에 맞춰 나무를 골라요.",
+      "tts": {
+        "text": "제작자는 원하는 목소리에 맞춰 나무를 골라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "평평한 앞면인 사운드보드는 가문비나무로 만들어요.",
+      "text_markdown": "평평한 앞면인 사운드보드는 가문비나무로 만들어요.",
+      "tts": {
+        "text": "평평한 앞면인 사운드보드는 가문비나무로 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가문비나무는 가볍고 튼튼해서 나무가 쉽게 떨리게 해 줘요.",
+      "text_markdown": "가문비나무는 가볍고 튼튼해서 나무가 쉽게 떨리게 해 줘요.",
+      "tts": {
+        "text": "가문비나무는 가볍고 튼튼해서 나무가 쉽게 떨리게 해 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "우리는 그 떨림을 음악으로 들어요.",
+      "text_markdown": "우리는 그 떨림을 음악으로 들어요.",
+      "tts": {
+        "text": "우리는 그 떨림을 음악으로 들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사운드보드에는 로제트라고 부르는 작은 둥근 구멍이 있어요.",
+      "text_markdown": "사운드보드에는 로제트라고 부르는 작은 둥근 구멍이 있어요.",
+      "tts": {
+        "text": "사운드보드에는 로제트라고 부르는 작은 둥근 구멍이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 구멍은 아름다운 무늬로 새기는 일이 많아요.",
+      "text_markdown": "그 구멍은 아름다운 무늬로 새기는 일이 많아요.",
+      "tts": {
+        "text": "그 구멍은 아름다운 무늬로 새기는 일이 많아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "로제트는 보울 안의 소리가 밖으로 나오게 해 줘요.",
+      "text_markdown": "로제트는 보울 안의 소리가 밖으로 나오게 해 줘요.",
+      "tts": {
+        "text": "로제트는 보울 안의 소리가 밖으로 나오게 해 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "예전에는 줄을 말린 동물 힘줄인 거트로 만들었어요.",
+      "text_markdown": "예전에는 줄을 말린 동물 힘줄인 거트로 만들었어요.",
+      "tts": {
+        "text": "예전에는 줄을 말린 동물 힘줄인 거트로 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오늘날 대부분의 줄은 나일론으로 만들고, 가장 낮은 줄들에는 얇은 금속선을 감아요.",
+      "text_markdown": "오늘날 대부분의 줄은 나일론으로 만들고, 가장 낮은 줄들에는 얇은 금속선을 감아요.",
+      "tts": {
+        "text": "오늘날 대부분의 줄은 나일론으로 만들고, 가장 낮은 줄들에는 얇은 금속선을 감아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "연주자는 리샤로 줄을 뜯어요.",
+      "text_markdown": "연주자는 리샤로 줄을 뜯어요.",
+      "tts": {
+        "text": "연주자는 리샤로 줄을 뜯어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "리샤라는 말은 깃털을 뜻해요.",
+      "text_markdown": "리샤라는 말은 깃털을 뜻해요.",
+      "tts": {
+        "text": "리샤라는 말은 깃털을 뜻해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "처음 플렉트럼은 독수리 깃털로 만들었어요.",
+      "text_markdown": "처음 플렉트럼은 독수리 깃털로 만들었어요.",
+      "tts": {
+        "text": "처음 플렉트럼은 독수리 깃털로 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오늘날에는 플라스틱과 뼈, 또는 거북 껍질로 만들어요.",
+      "text_markdown": "오늘날에는 플라스틱과 뼈, 또는 거북 껍질로 만들어요.",
+      "tts": {
+        "text": "오늘날에는 플라스틱과 뼈, 또는 거북 껍질로 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "4장 우드는 어디에서 연주될까요?",
+      "text_markdown": "4장 우드는 어디에서 연주될까요?"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 아랍 세계 곳곳에서 연주돼요.",
+      "text_markdown": "우드는 아랍 세계 곳곳에서 연주돼요.",
+      "tts": {
+        "text": "우드는 아랍 세계 곳곳에서 연주돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이집트와 시리아, 이라크, 레바논, 걸프 지역, 북아프리카에서 그 소리를 들을 수 있어요.",
+      "text_markdown": "이집트와 시리아, 이라크, 레바논, 걸프 지역, 북아프리카에서 그 소리를 들을 수 있어요.",
+      "tts": {
+        "text": "이집트와 시리아, 이라크, 레바논, 걸프 지역, 북아프리카에서 그 소리를 들을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 아랍 세계 밖에서도 연주돼요.",
+      "text_markdown": "우드는 아랍 세계 밖에서도 연주돼요.",
+      "tts": {
+        "text": "우드는 아랍 세계 밖에서도 연주돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "튀르키예에는 자기들만의 우드가 있어요.",
+      "text_markdown": "튀르키예에는 자기들만의 우드가 있어요.",
+      "tts": {
+        "text": "튀르키예에는 자기들만의 우드가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리스에도 자기들만의 우드가 있어요.",
+      "text_markdown": "그리스에도 자기들만의 우드가 있어요.",
+      "tts": {
+        "text": "그리스에도 자기들만의 우드가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아르메니아 사람들과 이란 사람들은 그 사촌 악기들을 연주해요.",
+      "text_markdown": "아르메니아 사람들과 이란 사람들은 그 사촌 악기들을 연주해요.",
+      "tts": {
+        "text": "아르메니아 사람들과 이란 사람들은 그 사촌 악기들을 연주해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "스페인에서는 그 악기가 수백 년 동안 연주되었어요.",
+      "text_markdown": "스페인에서는 그 악기가 수백 년 동안 연주되었어요.",
+      "tts": {
+        "text": "스페인에서는 그 악기가 수백 년 동안 연주되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 우드에는 크게 세 가지가 있어요.",
+      "text_markdown": "오늘날 우드에는 크게 세 가지가 있어요.",
+      "tts": {
+        "text": "오늘날 우드에는 크게 세 가지가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아랍 우드는 크고 깊고, 소리가 풍성하면서도 느긋해요.",
+      "text_markdown": "아랍 우드는 크고 깊고, 소리가 풍성하면서도 느긋해요.",
+      "tts": {
+        "text": "아랍 우드는 크고 깊고, 소리가 풍성하면서도 느긋해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것이 이집트와 레반트의 우드예요.",
+      "text_markdown": "그것이 이집트와 레반트의 우드예요.",
+      "tts": {
+        "text": "그것이 이집트와 레반트의 우드예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "튀르키예 우드는 더 작고 더 밝고, 아랍 우드보다 음을 조금 높게 맞춰요.",
+      "text_markdown": "튀르키예 우드는 더 작고 더 밝고, 아랍 우드보다 음을 조금 높게 맞춰요.",
+      "tts": {
+        "text": "튀르키예 우드는 더 작고 더 밝고, 아랍 우드보다 음을 조금 높게 맞춰요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 쪽 사촌 악기는 바르바트라고 불러요.",
+      "text_markdown": "페르시아 쪽 사촌 악기는 바르바트라고 불러요.",
+      "tts": {
+        "text": "페르시아 쪽 사촌 악기는 바르바트라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 악기는 작고 날카로우며, 다른 음 체계를 써요.",
+      "text_markdown": "그 악기는 작고 날카로우며, 다른 음 체계를 써요.",
+      "tts": {
+        "text": "그 악기는 작고 날카로우며, 다른 음 체계를 써요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 아랍 고전 음악과 튀르키예의 마캄 음악에서 중심이 되는 악기예요.",
+      "text_markdown": "우드는 아랍 고전 음악과 튀르키예의 마캄 음악에서 중심이 되는 악기예요.",
+      "tts": {
+        "text": "우드는 아랍 고전 음악과 튀르키예의 마캄 음악에서 중심이 되는 악기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 결혼식과 장례식에서도, 공연장과 친구들 거실에서도 연주돼요.",
+      "text_markdown": "우드는 결혼식과 장례식에서도, 공연장과 친구들 거실에서도 연주돼요.",
+      "tts": {
+        "text": "우드는 결혼식과 장례식에서도, 공연장과 친구들 거실에서도 연주돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들이 모여 마음이 담긴 음악을 원할 때면, 누군가 우드를 꺼내 들기도 해요.",
+      "text_markdown": "사람들이 모여 마음이 담긴 음악을 원할 때면, 누군가 우드를 꺼내 들기도 해요.",
+      "tts": {
+        "text": "사람들이 모여 마음이 담긴 음악을 원할 때면, 누군가 우드를 꺼내 들기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "5장 마캄",
+      "text_markdown": "5장 마캄"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "피아노를 칠 때는 흰 건반과 검은 건반을 눌러요.",
+      "text_markdown": "피아노를 칠 때는 흰 건반과 검은 건반을 눌러요.",
+      "tts": {
+        "text": "피아노를 칠 때는 흰 건반과 검은 건반을 눌러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "옥타브마다 음은 열두 개이고, 각 간격은 모두 같아요.",
+      "text_markdown": "옥타브마다 음은 열두 개이고, 각 간격은 모두 같아요.",
+      "tts": {
+        "text": "옥타브마다 음은 열두 개이고, 각 간격은 모두 같아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이것을 평균율이라고 불러요.",
+      "text_markdown": "이것을 평균율이라고 불러요.",
+      "tts": {
+        "text": "이것을 평균율이라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 그렇게 움직이지 않아요.",
+      "text_markdown": "우드는 그렇게 움직이지 않아요.",
+      "tts": {
+        "text": "우드는 그렇게 움직이지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 마캄이라는 훨씬 오래된 체계를 써요.",
+      "text_markdown": "우드는 마캄이라는 훨씬 오래된 체계를 써요.",
+      "tts": {
+        "text": "우드는 마캄이라는 훨씬 오래된 체계를 써요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마캄은 음을 고르는 방식이고, 마카마트는 아주 많아요.",
+      "text_markdown": "마캄은 음을 고르는 방식이고, 마카마트는 아주 많아요.",
+      "tts": {
+        "text": "마캄은 음을 고르는 방식이고, 마카마트는 아주 많아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마캄마다 저마다의 기분이 있어요.",
+      "text_markdown": "마캄마다 저마다의 기분이 있어요.",
+      "tts": {
+        "text": "마캄마다 저마다의 기분이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 것은 즐겁고, 어떤 것은 슬프고, 어떤 것은 조금 신비롭게 들려요.",
+      "text_markdown": "어떤 것은 즐겁고, 어떤 것은 슬프고, 어떤 것은 조금 신비롭게 들려요.",
+      "tts": {
+        "text": "어떤 것은 즐겁고, 어떤 것은 슬프고, 어떤 것은 조금 신비롭게 들려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마캄은 피아노보다 더 많은 음을 가지고 있다는 게 큰 비밀이에요.",
+      "text_markdown": "마캄은 피아노보다 더 많은 음을 가지고 있다는 게 큰 비밀이에요.",
+      "tts": {
+        "text": "마캄은 피아노보다 더 많은 음을 가지고 있다는 게 큰 비밀이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "흰 건반과 검은 건반 사이에는 사분음이라고 부르는 더 작은 간격이 있어요.",
+      "text_markdown": "흰 건반과 검은 건반 사이에는 사분음이라고 부르는 더 작은 간격이 있어요.",
+      "tts": {
+        "text": "흰 건반과 검은 건반 사이에는 사분음이라고 부르는 더 작은 간격이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사분음은 반음의 절반이에요.",
+      "text_markdown": "사분음은 반음의 절반이에요.",
+      "tts": {
+        "text": "사분음은 반음의 절반이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 우리가 아는 음들 사이에 사는 아주 작은 음이에요.",
+      "text_markdown": "그것은 우리가 아는 음들 사이에 사는 아주 작은 음이에요.",
+      "tts": {
+        "text": "그것은 우리가 아는 음들 사이에 사는 아주 작은 음이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "피아노에서는 그 음을 낼 수 없어요.",
+      "text_markdown": "피아노에서는 그 음을 낼 수 없어요.",
+      "tts": {
+        "text": "피아노에서는 그 음을 낼 수 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "우드에서는 손가락을 미끄러뜨려 그 음을 찾아요.",
+      "text_markdown": "우드에서는 손가락을 미끄러뜨려 그 음을 찾아요.",
+      "tts": {
+        "text": "우드에서는 손가락을 미끄러뜨려 그 음을 찾아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마캄은 작은 음 묶음들로 이루어져요.",
+      "text_markdown": "마캄은 작은 음 묶음들로 이루어져요.",
+      "tts": {
+        "text": "마캄은 작은 음 묶음들로 이루어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 작은 묶음 하나를 진스라고 불러요.",
+      "text_markdown": "그 작은 묶음 하나를 진스라고 불러요.",
+      "tts": {
+        "text": "그 작은 묶음 하나를 진스라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대부분의 진스는 음이 네 개예요.",
+      "text_markdown": "대부분의 진스는 음이 네 개예요.",
+      "tts": {
+        "text": "대부분의 진스는 음이 네 개예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "진스는 음악으로 만든 작은 레고 블록 같고, 그것을 쌓아 마캄을 만들어요.",
+      "text_markdown": "진스는 음악으로 만든 작은 레고 블록 같고, 그것을 쌓아 마캄을 만들어요.",
+      "tts": {
+        "text": "진스는 음악으로 만든 작은 레고 블록 같고, 그것을 쌓아 마캄을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마캄은 화성이 아니라 선율을 따라 전개돼요.",
+      "text_markdown": "마캄은 화성이 아니라 선율을 따라 전개돼요.",
+      "tts": {
+        "text": "마캄은 화성이 아니라 선율을 따라 전개돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그래서 이 음악은 기타처럼 음을 쌓아 화음을 만들기보다, 음 하나씩 앞으로 나아가요.",
+      "text_markdown": "그래서 이 음악은 기타처럼 음을 쌓아 화음을 만들기보다, 음 하나씩 앞으로 나아가요.",
+      "tts": {
+        "text": "그래서 이 음악은 기타처럼 음을 쌓아 화음을 만들기보다, 음 하나씩 앞으로 나아가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드가 느리고 구불구불한 독주를 할 때, 연주자는 마캄 안을 움직이고 있어요.",
+      "text_markdown": "우드가 느리고 구불구불한 독주를 할 때, 연주자는 마캄 안을 움직이고 있어요.",
+      "tts": {
+        "text": "우드가 느리고 구불구불한 독주를 할 때, 연주자는 마캄 안을 움직이고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "연주자는 그 블록에서 음을 고르고, 다음 블록으로 미끄러져 가요.",
+      "text_markdown": "연주자는 그 블록에서 음을 고르고, 다음 블록으로 미끄러져 가요.",
+      "tts": {
+        "text": "연주자는 그 블록에서 음을 고르고, 다음 블록으로 미끄러져 가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그런 독주에도 이름이 있어요.",
+      "text_markdown": "그런 독주에도 이름이 있어요.",
+      "tts": {
+        "text": "그런 독주에도 이름이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "우리는 그것을 탁심이라고 불러요.",
+      "text_markdown": "우리는 그것을 탁심이라고 불러요.",
+      "tts": {
+        "text": "우리는 그것을 탁심이라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "좋은 탁심은 사람을 웃게도 하고, 울게도 해요.",
+      "text_markdown": "좋은 탁심은 사람을 웃게도 하고, 울게도 해요.",
+      "tts": {
+        "text": "좋은 탁심은 사람을 웃게도 하고, 울게도 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그때 우드는 가장 아름다워져요.",
+      "text_markdown": "그때 우드는 가장 아름다워져요.",
+      "tts": {
+        "text": "그때 우드는 가장 아름다워져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "6장 위대한 거장들",
+      "text_markdown": "6장 위대한 거장들"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 천 년이 넘도록 연주되어 왔어요.",
+      "text_markdown": "우드는 천 년이 넘도록 연주되어 왔어요.",
+      "tts": {
+        "text": "우드는 천 년이 넘도록 연주되어 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 긴 시간 동안 몇몇 사람은 우드를 영원히 바꾸어 놓았어요.",
+      "text_markdown": "그 긴 시간 동안 몇몇 사람은 우드를 영원히 바꾸어 놓았어요.",
+      "tts": {
+        "text": "그 긴 시간 동안 몇몇 사람은 우드를 영원히 바꾸어 놓았어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째 인물은 연주자라기보다 사상가에 가까운 알 파라비였어요.",
+      "text_markdown": "첫 번째 인물은 연주자라기보다 사상가에 가까운 알 파라비였어요.",
+      "tts": {
+        "text": "첫 번째 인물은 연주자라기보다 사상가에 가까운 알 파라비였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 팔백칠십이 년부터 구백오십 년까지 살았고, 위대한 도시 바그다드에서 활동했어요.",
+      "text_markdown": "그는 팔백칠십이 년부터 구백오십 년까지 살았고, 위대한 도시 바그다드에서 활동했어요.",
+      "tts": {
+        "text": "그는 팔백칠십이 년부터 구백오십 년까지 살았고, 위대한 도시 바그다드에서 활동했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "알 파라비는 음악에 관한 아주 큰 책을 썼어요.",
+      "text_markdown": "알 파라비는 음악에 관한 아주 큰 책을 썼어요.",
+      "tts": {
+        "text": "알 파라비는 음악에 관한 아주 큰 책을 썼어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 줄이 어떻게 떨리는지 설명했어요.",
+      "text_markdown": "그는 줄이 어떻게 떨리는지 설명했어요.",
+      "tts": {
+        "text": "그는 줄이 어떻게 떨리는지 설명했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 어떤 음들이 함께 있을 때 왜 달콤하게 들리는지도 설명했어요.",
+      "text_markdown": "그는 어떤 음들이 함께 있을 때 왜 달콤하게 들리는지도 설명했어요.",
+      "tts": {
+        "text": "그는 어떤 음들이 함께 있을 때 왜 달콤하게 들리는지도 설명했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그는 음악이 왜 사람의 마음을 바꾸는지도 설명했어요.",
+      "text_markdown": "그는 음악이 왜 사람의 마음을 바꾸는지도 설명했어요.",
+      "tts": {
+        "text": "그는 음악이 왜 사람의 마음을 바꾸는지도 설명했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그의 책은 수세기 동안 아랍어와 라틴어로 읽혔어요.",
+      "text_markdown": "그의 책은 수세기 동안 아랍어와 라틴어로 읽혔어요.",
+      "tts": {
+        "text": "그의 책은 수세기 동안 아랍어와 라틴어로 읽혔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 번째 큰 인물은 칠백팔십구 년 무렵 이라크에서 태어난 가수 지르야브였어요.",
+      "text_markdown": "두 번째 큰 인물은 칠백팔십구 년 무렵 이라크에서 태어난 가수 지르야브였어요.",
+      "tts": {
+        "text": "두 번째 큰 인물은 칠백팔십구 년 무렵 이라크에서 태어난 가수 지르야브였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 젊은 시절에 바그다드를 서둘러 떠나야 했어요.",
+      "text_markdown": "그는 젊은 시절에 바그다드를 서둘러 떠나야 했어요.",
+      "tts": {
+        "text": "그는 젊은 시절에 바그다드를 서둘러 떠나야 했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지르야브는 북아프리카 전역을 지나 서쪽으로 갔어요.",
+      "text_markdown": "지르야브는 북아프리카 전역을 지나 서쪽으로 갔어요.",
+      "tts": {
+        "text": "지르야브는 북아프리카 전역을 지나 서쪽으로 갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 팔백이십이 년에 스페인의 코르도바에 도착했어요.",
+      "text_markdown": "그는 팔백이십이 년에 스페인의 코르도바에 도착했어요.",
+      "tts": {
+        "text": "그는 팔백이십이 년에 스페인의 코르도바에 도착했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "코르도바의 왕은 그의 음악을 사랑했고, 집과 봉급, 그리고 가르칠 시간을 주었어요.",
+      "text_markdown": "코르도바의 왕은 그의 음악을 사랑했고, 집과 봉급, 그리고 가르칠 시간을 주었어요.",
+      "tts": {
+        "text": "코르도바의 왕은 그의 음악을 사랑했고, 집과 봉급, 그리고 가르칠 시간을 주었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스페인에서 지르야브는 음악 학교를 열었어요.",
+      "text_markdown": "스페인에서 지르야브는 음악 학교를 열었어요.",
+      "tts": {
+        "text": "스페인에서 지르야브는 음악 학교를 열었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어떤 이들은 그것이 세상 최초의 음악원이었다고 말해요.",
+      "text_markdown": "어떤 이들은 그것이 세상 최초의 음악원이었다고 말해요.",
+      "tts": {
+        "text": "어떤 이들은 그것이 세상 최초의 음악원이었다고 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 우드에 다섯 번째 코스를 더했고, 플렉트럼을 만드는 법도 바꾸었어요.",
+      "text_markdown": "그는 우드에 다섯 번째 코스를 더했고, 플렉트럼을 만드는 법도 바꾸었어요.",
+      "tts": {
+        "text": "그는 우드에 다섯 번째 코스를 더했고, 플렉트럼을 만드는 법도 바꾸었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지르야브보다 훨씬 뒤인 우리 시대에는, 이라크 출신 한 연주자가 우드를 새로운 자리로 올려놓았어요.",
+      "text_markdown": "지르야브보다 훨씬 뒤인 우리 시대에는, 이라크 출신 한 연주자가 우드를 새로운 자리로 올려놓았어요.",
+      "tts": {
+        "text": "지르야브보다 훨씬 뒤인 우리 시대에는, 이라크 출신 한 연주자가 우드를 새로운 자리로 올려놓았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 이름은 무니르 바시르였고, 사람들은 그를 우드의 왕이라고 불렀어요.",
+      "text_markdown": "그의 이름은 무니르 바시르였고, 사람들은 그를 우드의 왕이라고 불렀어요.",
+      "tts": {
+        "text": "그의 이름은 무니르 바시르였고, 사람들은 그를 우드의 왕이라고 불렀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바시르 이전의 우드는 보통 다른 악기들과 함께 연주되었어요.",
+      "text_markdown": "바시르 이전의 우드는 보통 다른 악기들과 함께 연주되었어요.",
+      "tts": {
+        "text": "바시르 이전의 우드는 보통 다른 악기들과 함께 연주되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바시르는 우드를 혼자 무대에 세웠고, 길고 조용하고 깊은 독주를 들려주었어요.",
+      "text_markdown": "바시르는 우드를 혼자 무대에 세웠고, 길고 조용하고 깊은 독주를 들려주었어요.",
+      "tts": {
+        "text": "바시르는 우드를 혼자 무대에 세웠고, 길고 조용하고 깊은 독주를 들려주었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전 세계 사람들이 그의 연주를 듣고, 우드를 다시 한 번 사랑하게 되었어요.",
+      "text_markdown": "전 세계 사람들이 그의 연주를 듣고, 우드를 다시 한 번 사랑하게 되었어요.",
+      "tts": {
+        "text": "전 세계 사람들이 그의 연주를 듣고, 우드를 다시 한 번 사랑하게 되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "물론 다른 이들도 많았어요.",
+      "text_markdown": "물론 다른 이들도 많았어요.",
+      "tts": {
+        "text": "물론 다른 이들도 많았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "파리드 알 아트라시는 우드를 이집트 영화의 목소리로 만들었어요.",
+      "text_markdown": "파리드 알 아트라시는 우드를 이집트 영화의 목소리로 만들었어요.",
+      "tts": {
+        "text": "파리드 알 아트라시는 우드를 이집트 영화의 목소리로 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "튀니지의 아누아르 브라헴은 유럽과 미국의 재즈 음악가들과 함께 우드를 연주해요.",
+      "text_markdown": "튀니지의 아누아르 브라헴은 유럽과 미국의 재즈 음악가들과 함께 우드를 연주해요.",
+      "tts": {
+        "text": "튀니지의 아누아르 브라헴은 유럽과 미국의 재즈 음악가들과 함께 우드를 연주해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 아직도 살아 있어요.",
+      "text_markdown": "우드는 아직도 살아 있어요.",
+      "tts": {
+        "text": "우드는 아직도 살아 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해마다 세계 어딘가에서 새로운 거장이 태어나요.",
+      "text_markdown": "해마다 세계 어딘가에서 새로운 거장이 태어나요.",
+      "tts": {
+        "text": "해마다 세계 어딘가에서 새로운 거장이 태어나요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "7장 우드와 세계",
+      "text_markdown": "7장 우드와 세계"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 아랍 세계에만 머물지 않았어요.",
+      "text_markdown": "우드는 아랍 세계에만 머물지 않았어요.",
+      "tts": {
+        "text": "우드는 아랍 세계에만 머물지 않았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 여행하면서 모양도, 이름도, 노래도 바뀌었어요.",
+      "text_markdown": "우드는 여행하면서 모양도, 이름도, 노래도 바뀌었어요.",
+      "tts": {
+        "text": "우드는 여행하면서 모양도, 이름도, 노래도 바뀌었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드가 중세 스페인에 닿았을 때, 유럽의 연주자들은 나무 보울과 깊은 소리를 좋아했어요.",
+      "text_markdown": "우드가 중세 스페인에 닿았을 때, 유럽의 연주자들은 나무 보울과 깊은 소리를 좋아했어요.",
+      "tts": {
+        "text": "우드가 중세 스페인에 닿았을 때, 유럽의 연주자들은 나무 보울과 깊은 소리를 좋아했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 그들은 이미 알던 작은 악기들처럼 프렛을 원했어요.",
+      "text_markdown": "하지만 그들은 이미 알던 작은 악기들처럼 프렛을 원했어요.",
+      "tts": {
+        "text": "하지만 그들은 이미 알던 작은 악기들처럼 프렛을 원했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그래서 그들은 프렛을 더하고, 등을 조금 더 평평하게 만들고, 그 새 악기를 류트라고 불렀어요.",
+      "text_markdown": "그래서 그들은 프렛을 더하고, 등을 조금 더 평평하게 만들고, 그 새 악기를 류트라고 불렀어요.",
+      "tts": {
+        "text": "그래서 그들은 프렛을 더하고, 등을 조금 더 평평하게 만들고, 그 새 악기를 류트라고 불렀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오백 년 동안 류트는 유럽이 가장 사랑한 악기였어요.",
+      "text_markdown": "오백 년 동안 류트는 유럽이 가장 사랑한 악기였어요.",
+      "tts": {
+        "text": "오백 년 동안 류트는 유럽이 가장 사랑한 악기였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "왕들도 그것을 연주했어요.",
+      "text_markdown": "왕들도 그것을 연주했어요.",
+      "tts": {
+        "text": "왕들도 그것을 연주했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시인들도 그것을 연주했어요.",
+      "text_markdown": "시인들도 그것을 연주했어요.",
+      "tts": {
+        "text": "시인들도 그것을 연주했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "가장 위대한 작곡가들도 그 악기를 위한 곡을 썼어요.",
+      "text_markdown": "가장 위대한 작곡가들도 그 악기를 위한 곡을 썼어요.",
+      "tts": {
+        "text": "가장 위대한 작곡가들도 그 악기를 위한 곡을 썼어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러고 나서 류트는 다시 바뀌었어요.",
+      "text_markdown": "그러고 나서 류트는 다시 바뀌었어요.",
+      "tts": {
+        "text": "그러고 나서 류트는 다시 바뀌었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "연주자들은 줄을 더하고, 등을 더 평평하게 하고, 더 작고 가벼운 몸통을 얹었어요.",
+      "text_markdown": "연주자들은 줄을 더하고, 등을 더 평평하게 하고, 더 작고 가벼운 몸통을 얹었어요.",
+      "tts": {
+        "text": "연주자들은 줄을 더하고, 등을 더 평평하게 하고, 더 작고 가벼운 몸통을 얹었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "천팔백 년쯤 스페인에서 이 새 악기는 우리 모두가 아는 이름을 얻었어요.",
+      "text_markdown": "천팔백 년쯤 스페인에서 이 새 악기는 우리 모두가 아는 이름을 얻었어요.",
+      "tts": {
+        "text": "천팔백 년쯤 스페인에서 이 새 악기는 우리 모두가 아는 이름을 얻었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그것은 기타였어요.",
+      "text_markdown": "그것은 기타였어요.",
+      "tts": {
+        "text": "그것은 기타였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 우드와 류트와 기타는 모두 같은 가족이에요.",
+      "text_markdown": "그래서 우드와 류트와 기타는 모두 같은 가족이에요.",
+      "tts": {
+        "text": "그래서 우드와 류트와 기타는 모두 같은 가족이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서로 사촌이고, 공통의 할아버지를 가져요.",
+      "text_markdown": "서로 사촌이고, 공통의 할아버지를 가져요.",
+      "tts": {
+        "text": "서로 사촌이고, 공통의 할아버지를 가져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 할아버지가 바로 우드예요.",
+      "text_markdown": "그 할아버지가 바로 우드예요.",
+      "tts": {
+        "text": "그 할아버지가 바로 우드예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 우드와 기타는 함께 연주돼요.",
+      "text_markdown": "오늘날 우드와 기타는 함께 연주돼요.",
+      "tts": {
+        "text": "오늘날 우드와 기타는 함께 연주돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아누아르 브라헴은 재즈 기타 연주자들과 함께 우드를 연주해요.",
+      "text_markdown": "아누아르 브라헴은 재즈 기타 연주자들과 함께 우드를 연주해요.",
+      "tts": {
+        "text": "아누아르 브라헴은 재즈 기타 연주자들과 함께 우드를 연주해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "무니르 바시르는 관현악단과 함께 연주했어요.",
+      "text_markdown": "무니르 바시르는 관현악단과 함께 연주했어요.",
+      "tts": {
+        "text": "무니르 바시르는 관현악단과 함께 연주했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "베이루트와 이스탄불, 파리, 뉴욕의 젊은 연주자들은 우드를 록과 힙합, 영화 음악과 섞고 있어요.",
+      "text_markdown": "베이루트와 이스탄불, 파리, 뉴욕의 젊은 연주자들은 우드를 록과 힙합, 영화 음악과 섞고 있어요.",
+      "tts": {
+        "text": "베이루트와 이스탄불, 파리, 뉴욕의 젊은 연주자들은 우드를 록과 힙합, 영화 음악과 섞고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우드는 악기 그 이상이에요.",
+      "text_markdown": "우드는 악기 그 이상이에요.",
+      "tts": {
+        "text": "우드는 악기 그 이상이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우드는 다리 같은 존재예요.",
+      "text_markdown": "우드는 다리 같은 존재예요.",
+      "tts": {
+        "text": "우드는 다리 같은 존재예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "우드는 메소포타미아에서 페르시아를 지나, 아랍 세계와 스페인을 거쳐, 유럽을 지나 다시 세계 모든 나라로 이어지는 이야기를 실어 나르지요.",
+      "text_markdown": "우드는 메소포타미아에서 페르시아를 지나, 아랍 세계와 스페인을 거쳐, 유럽을 지나 다시 세계 모든 나라로 이어지는 이야기를 실어 나르지요.",
+      "tts": {
+        "text": "우드는 메소포타미아에서 페르시아를 지나, 아랍 세계와 스페인을 거쳐, 유럽을 지나 다시 세계 모든 나라로 이어지는 이야기를 실어 나르지요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기타 소리를 들을 때마다, 아주 깊은 바닥 어딘가에서 부드럽고 깊은 우드의 목소리도 들을 수 있어요.",
+      "text_markdown": "기타 소리를 들을 때마다, 아주 깊은 바닥 어딘가에서 부드럽고 깊은 우드의 목소리도 들을 수 있어요.",
+      "tts": {
+        "text": "기타 소리를 들을 때마다, 아주 깊은 바닥 어딘가에서 부드럽고 깊은 우드의 목소리도 들을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "이 책에 대하여",
+      "text_markdown": "이 책에 대하여"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 세계의 악기들 시리즈의 첫 번째 권이에요.",
+      "text_markdown": "이것은 세계의 악기들 시리즈의 첫 번째 권이에요.",
+      "tts": {
+        "text": "이것은 세계의 악기들 시리즈의 첫 번째 권이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 시리즈의 책은 저마다 한 가지 악기의 이야기를 들려줘요.",
+      "text_markdown": "이 시리즈의 책은 저마다 한 가지 악기의 이야기를 들려줘요.",
+      "tts": {
+        "text": "이 시리즈의 책은 저마다 한 가지 악기의 이야기를 들려줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "책마다 짧고, 모두 사실에 바탕을 두고 있어요.",
+      "text_markdown": "책마다 짧고, 모두 사실에 바탕을 두고 있어요.",
+      "tts": {
+        "text": "책마다 짧고, 모두 사실에 바탕을 두고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다음 책은 많은 줄과 깊고 맑게 울리는 소리를 가진 인도의 긴 목 류트, 시타르에 대한 이야기예요.",
+      "text_markdown": "다음 책은 많은 줄과 깊고 맑게 울리는 소리를 가진 인도의 긴 목 류트, 시타르에 대한 이야기예요.",
+      "tts": {
+        "text": "다음 책은 많은 줄과 깊고 맑게 울리는 소리를 가진 인도의 긴 목 류트, 시타르에 대한 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "시타르 다음에는 서아프리카의 코라를 만나러 가고, 그다음에는 일본의 샤쿠하치로 가요.",
+      "text_markdown": "시타르 다음에는 서아프리카의 코라를 만나러 가고, 그다음에는 일본의 샤쿠하치로 가요.",
+      "tts": {
+        "text": "시타르 다음에는 서아프리카의 코라를 만나러 가고, 그다음에는 일본의 샤쿠하치로 가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "들어 줘서 고마워요.",
+      "text_markdown": "들어 줘서 고마워요.",
+      "tts": {
+        "text": "들어 줘서 고마워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "온라인에서든, 사는 도시에서든 우드를 찾아 그 소리에 귀를 맡겨 보세요.",
+      "text_markdown": "온라인에서든, 사는 도시에서든 우드를 찾아 그 소리에 귀를 맡겨 보세요.",
+      "tts": {
+        "text": "온라인에서든, 사는 도시에서든 우드를 찾아 그 소리에 귀를 맡겨 보세요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

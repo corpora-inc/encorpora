@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "no",
+  "total_segments": 209,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Velkommen til AI denne uken.",
+      "text_markdown": "Velkommen til AI denne uken.",
+      "title": "",
+      "tts": {
+        "text": "Velkommen til AI denne uken.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jeg er Vindy.",
+      "text_markdown": "Jeg er Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jeg er Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Med meg, som alltid, er Ron.",
+      "text_markdown": "Med meg, som alltid, er Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med meg, som alltid, er Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Godt å være her, Vindy.",
+      "text_markdown": "Godt å være her, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Godt å være her, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "I dag er det onsdag 27. mai 2026.",
+      "text_markdown": "I dag er det onsdag 27. mai 2026.",
+      "title": "",
+      "tts": {
+        "text": "I dag er det onsdag tjuesyvende mai tjuetjueseks.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og på papiret var dette en rolig uke.",
+      "text_markdown": "Og på papiret var dette en rolig uke.",
+      "title": "",
+      "tts": {
+        "text": "Og på papiret var dette en rolig uke.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ingen stor ny åpen modell ble lansert.",
+      "text_markdown": "Ingen stor ny åpen modell ble lansert.",
+      "title": "",
+      "tts": {
+        "text": "Ingen stor ny åpen modell ble lansert.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Men rolige uker er der den virkelige historien skjuler seg.",
+      "text_markdown": "Men rolige uker er der den virkelige historien skjuler seg.",
+      "title": "",
+      "tts": {
+        "text": "Men rolige uker er der den virkelige historien skjuler seg.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så i dag drar vi dit hovedtalene ikke gjør.",
+      "text_markdown": "Så i dag drar vi dit hovedtalene ikke gjør.",
+      "title": "",
+      "tts": {
+        "text": "Så i dag drar vi dit hovedtalene ikke gjør.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Snart – hva som faktisk rørte seg innenfor åpne vekter.",
+      "text_markdown": "Snart – hva som faktisk rørte seg innenfor åpne vekter.",
+      "title": "",
+      "tts": {
+        "text": "Snart – hva som faktisk rørte seg innenfor åpne vekter.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Den ene ledertavlen som betyr noe, og det er ikke en kvalitetstavle.",
+      "text_markdown": "Den ene ledertavlen som betyr noe, og det er ikke en kvalitetstavle.",
+      "title": "",
+      "tts": {
+        "text": "Den ene ledertavlen som betyr noe, og det er ikke en kvalitetstavle.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Et raskt klipp med overskrifter du kan handle på denne helgen.",
+      "text_markdown": "Et raskt klipp med overskrifter du kan handle på denne helgen.",
+      "title": "",
+      "tts": {
+        "text": "Et raskt klipp med overskrifter du kan handle på denne helgen.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Vår hovedsak: året da åpen stemme ble god nok til å eie.",
+      "text_markdown": "Vår hovedsak: året da åpen stemme ble god nok til å eie.",
+      "title": "",
+      "tts": {
+        "text": "Vår hovedsak: året da åpen stemme ble god nok til å eie.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og ukens konsept er nevrale lydkodeker – hvordan du presser en hel stemme ned for å passe på en telefon.",
+      "text_markdown": "Og ukens konsept er nevrale lydkodeker – hvordan du presser en hel stemme ned for å passe på en telefon.",
+      "title": "",
+      "tts": {
+        "text": "Og ukens konsept er nevrale lydkodeker – hvordan du presser en hel stemme ned for å passe på en telefon.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, la oss starte i verdenen av åpne vekter.",
+      "text_markdown": "Ron, la oss starte i verdenen av åpne vekter.",
+      "title": "",
+      "tts": {
+        "text": "Ron, la oss starte i verdenen av åpne vekter.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva rørte seg denne uken?",
+      "text_markdown": "Hva rørte seg denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Hva rørte seg denne uken?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ærlig talt, ingen ny grensesprengende åpen modell ble lansert denne uken.",
+      "text_markdown": "Ærlig talt, ingen ny grensesprengende åpen modell ble lansert denne uken.",
+      "title": "",
+      "tts": {
+        "text": "Ærlig talt, ingen ny grensesprengende åpen modell ble lansert denne uken.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og det er greit.",
+      "text_markdown": "Og det er greit.",
+      "title": "",
+      "tts": {
+        "text": "Og det er greit.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den virkelige åpne nyheten denne uken handlet om infrastruktur og prising.",
+      "text_markdown": "Den virkelige åpne nyheten denne uken handlet om infrastruktur og prising.",
+      "title": "",
+      "tts": {
+        "text": "Den virkelige åpne nyheten denne uken handlet om infrastruktur og prising.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Først infrastruktur – hva brøt sammen eller ble fikset?",
+      "text_markdown": "Først infrastruktur – hva brøt sammen eller ble fikset?",
+      "title": "",
+      "tts": {
+        "text": "Først infrastruktur – hva brøt sammen eller ble fikset?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den 26. mai lanserte SGLang-prosjektet en stabilitetsoppdatering for å betjene DeepSeek V4.",
+      "text_markdown": "Den 26. mai lanserte SGLang-prosjektet en stabilitetsoppdatering for å betjene DeepSeek V4.",
+      "title": "",
+      "tts": {
+        "text": "Den tjuesjette mai lanserte S G Lang-prosjektet en stabilitetsoppdatering for å betjene DeepSeek V fire.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "SGLang er en av de to store åpne motorene du bruker for å faktisk kjøre en modell selv.",
+      "text_markdown": "SGLang er en av de to store åpne motorene du bruker for å faktisk kjøre en modell selv.",
+      "title": "",
+      "tts": {
+        "text": "S G Lang er en av de to store åpne motorene du bruker for å faktisk kjøre en modell selv.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den andre er vLLM.",
+      "text_markdown": "Den andre er vLLM.",
+      "title": "",
+      "tts": {
+        "text": "Den andre er v L L M.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Denne oppdateringen fikset forvrengt utdata på de nyeste kortene og en krasj under tung belastning.",
+      "text_markdown": "Denne oppdateringen fikset forvrengt utdata på de nyeste kortene og en krasj under tung belastning.",
+      "title": "",
+      "tts": {
+        "text": "Denne oppdateringen fikset forvrengt utdata på de nyeste kortene og en krasj under tung belastning.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvorfor er en serverings-oppdatering viktig?",
+      "text_markdown": "Hvorfor er en serverings-oppdatering viktig?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er en serverings-oppdatering viktig?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fordi åpne vekter er ubrukelige hvis du ikke kan betjene dem pålitelig.",
+      "text_markdown": "Fordi åpne vekter er ubrukelige hvis du ikke kan betjene dem pålitelig.",
+      "title": "",
+      "tts": {
+        "text": "Fordi åpne vekter er ubrukelige hvis du ikke kan betjene dem pålitelig.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "DeepSeek V4 er åpen og MIT-lisensiert, men det er en enorm modell.",
+      "text_markdown": "DeepSeek V4 er åpen og MIT-lisensiert, men det er en enorm modell.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V fire er åpen og M I T-lisensiert, men det er en enorm modell.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Motorene som får den til å kjøre i det fri, er den uglamorøse halvdelen av det åpne økosystemet.",
+      "text_markdown": "Motorene som får den til å kjøre i det fri, er den uglamorøse halvdelen av det åpne økosystemet.",
+      "title": "",
+      "tts": {
+        "text": "Motorene som får den til å kjøre i det fri, er den uglamorøse halvdelen av det åpne økosystemet.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "En kjedelig oppdateringsuke er slik et sunt prosjekt ser ut.",
+      "text_markdown": "En kjedelig oppdateringsuke er slik et sunt prosjekt ser ut.",
+      "title": "",
+      "tts": {
+        "text": "En kjedelig oppdateringsuke er slik et sunt prosjekt ser ut.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og prissiden?",
+      "text_markdown": "Og prissiden?",
+      "title": "",
+      "tts": {
+        "text": "Og prissiden?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dette er den mer interessante.",
+      "text_markdown": "Dette er den mer interessante.",
+      "title": "",
+      "tts": {
+        "text": "Dette er den mer interessante.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Rundt 22. mai gjorde DeepSeek sitt 75 % priskutt på V4-Pro permanent.",
+      "text_markdown": "Rundt 22. mai gjorde DeepSeek sitt 75 % priskutt på V4-Pro permanent.",
+      "title": "",
+      "tts": {
+        "text": "Rundt tjuendeandre mai gjorde DeepSeek sitt syttifem prosent priskutt på V fire Pro permanent.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Utprisen er nå omtrent $0,87 per million tokens.",
+      "text_markdown": "Utprisen er nå omtrent $0,87 per million tokens.",
+      "title": "",
+      "tts": {
+        "text": "Utprisen er nå omtrent null komma åttisyv dollar per million tokens.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er omtrent en fjerdedel av lanseringsprisen.",
+      "text_markdown": "Det er omtrent en fjerdedel av lanseringsprisen.",
+      "title": "",
+      "tts": {
+        "text": "Det er omtrent en fjerdedel av lanseringsprisen.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så den åpne modellen ble billigere å leie.",
+      "text_markdown": "Så den åpne modellen ble billigere å leie.",
+      "title": "",
+      "tts": {
+        "text": "Så den åpne modellen ble billigere å leie.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nettopp, og det snur et spørsmål på hodet.",
+      "text_markdown": "Nettopp, og det snur et spørsmål på hodet.",
+      "title": "",
+      "tts": {
+        "text": "Nettopp, og det snur et spørsmål på hodet.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vi sier vanligvis at åpne vekter betyr at du selv-hoster.",
+      "text_markdown": "Vi sier vanligvis at åpne vekter betyr at du selv-hoster.",
+      "title": "",
+      "tts": {
+        "text": "Vi sier vanligvis at åpne vekter betyr at du selv hoster.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Men med under én dollar per million tokens tilgjengelig, er leie ofte billigere enn din egen strøm.",
+      "text_markdown": "Men med under én dollar per million tokens tilgjengelig, er leie ofte billigere enn din egen strøm.",
+      "title": "",
+      "tts": {
+        "text": "Men med under én dollar per million tokens tilgjengelig, er leie ofte billigere enn din egen strøm.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Så den nye rammen er — selv-host for personvern og offline, lei API-et for billige utbrudd.",
+      "text_markdown": "Så den nye rammen er — selv-host for personvern og offline, lei API-et for billige utbrudd.",
+      "title": "",
+      "tts": {
+        "text": "Så den nye rammen er — selv host for personvern og offline, lei A P I-et for billige utbrudd.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Samme åpne vekter, to veldig forskjellige grunner til å bruke dem.",
+      "text_markdown": "Samme åpne vekter, to veldig forskjellige grunner til å bruke dem.",
+      "title": "",
+      "tts": {
+        "text": "Samme åpne vekter, to veldig forskjellige grunner til å bruke dem.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva med on-device-publikummet?",
+      "text_markdown": "Hva med on-device-publikummet?",
+      "title": "",
+      "tts": {
+        "text": "Hva med on device publikummet?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "llama.cpp fortsatte som før hele uken.",
+      "text_markdown": "llama.cpp fortsatte som før hele uken.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P fortsatte som før hele uken.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den gjør egentlig ikke utgivelser — den sender ut bygg nesten hver dag.",
+      "text_markdown": "Den gjør egentlig ikke utgivelser — den sender ut bygg nesten hver dag.",
+      "title": "",
+      "tts": {
+        "text": "Den gjør egentlig ikke utgivelser — den sender ut bygg nesten hver dag.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Denne uken var det hastighetsarbeid på Vulkan, Intel og telefonklasse-brikker.",
+      "text_markdown": "Denne uken var det hastighetsarbeid på Vulkan, Intel og telefonklasse-brikker.",
+      "title": "",
+      "tts": {
+        "text": "Denne uken var det hastighetsarbeid på Vulkan, Intel og telefonklasse brikker.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er motoren som on-device-verdenen faktisk kjører på.",
+      "text_markdown": "Det er motoren som on-device-verdenen faktisk kjører på.",
+      "title": "",
+      "tts": {
+        "text": "Det er motoren som on device verdenen faktisk kjører på.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ingen dramatikk, bare raskere — akkurat det du vil ha fra moden infrastruktur.",
+      "text_markdown": "Ingen dramatikk, bare raskere — akkurat det du vil ha fra moden infrastruktur.",
+      "title": "",
+      "tts": {
+        "text": "Ingen dramatikk, bare raskere — akkurat det du vil ha fra moden infrastruktur.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sett den større scenen for oss.",
+      "text_markdown": "Sett den større scenen for oss.",
+      "title": "",
+      "tts": {
+        "text": "Sett den større scenen for oss.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den åpne fronten er nå for det meste kinesisk-ledet.",
+      "text_markdown": "Den åpne fronten er nå for det meste kinesisk-ledet.",
+      "title": "",
+      "tts": {
+        "text": "Den åpne fronten er nå for det meste kinesisk ledet.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tilbake i april var det en bølge — DeepSeek V4, Qwen 3.6, Kimi K2.6, og mer, alt på omtrent to uker.",
+      "text_markdown": "Tilbake i april var det en bølge — DeepSeek V4, Qwen 3.6, Kimi K2.6, og mer, alt på omtrent to uker.",
+      "title": "",
+      "tts": {
+        "text": "Tilbake i april var det en bølge — DeepSeek V fire, Qwen tre komma seks, Kimi K to komma seks, og mer, alt på omtrent to uker.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Denne uken er det stille etterspillet av den bølgen.",
+      "text_markdown": "Denne uken er det stille etterspillet av den bølgen.",
+      "title": "",
+      "tts": {
+        "text": "Denne uken er det stille etterspillet av den bølgen.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og Qwen — hadde de ikke nyheter?",
+      "text_markdown": "Og Qwen — hadde de ikke nyheter?",
+      "title": "",
+      "tts": {
+        "text": "Og Qwen — hadde de ikke nyheter?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ja, og det er en talende en.",
+      "text_markdown": "Ja, og det er en talende en.",
+      "title": "",
+      "tts": {
+        "text": "Ja, og det er en talende en.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Alibabas nye flaggskip, Qwen 3.7 Max, er kun API — ingen åpne vekter.",
+      "text_markdown": "Alibabas nye flaggskip, Qwen 3.7 Max, er kun API — ingen åpne vekter.",
+      "title": "",
+      "tts": {
+        "text": "Alibabas nye flaggskip, Qwen tre komma syv Max, er kun A P I — ingen åpne vekter.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den åpne Qwen-linjen stopper fortsatt ved 3.6.",
+      "text_markdown": "Den åpne Qwen-linjen stopper fortsatt ved 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Den åpne Qwen-linjen stopper fortsatt ved tre komma seks.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Så Alibaba deler seg inn i et lukket flaggskip og en åpen mellomklasse.",
+      "text_markdown": "Så Alibaba deler seg inn i et lukket flaggskip og en åpen mellomklasse.",
+      "title": "",
+      "tts": {
+        "text": "Så Alibaba deler seg inn i et lukket flaggskip og en åpen mellomklasse.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er den samme strategien Mistral brukte i fjor.",
+      "text_markdown": "Det er den samme strategien Mistral brukte i fjor.",
+      "title": "",
+      "tts": {
+        "text": "Det er den samme strategien Mistral brukte i fjor.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Verdt å følge med på, da.",
+      "text_markdown": "Verdt å følge med på, da.",
+      "title": "",
+      "tts": {
+        "text": "Verdt å følge med på, da.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den åpne skoen som skal slippes er en åpen Qwen 3.7 mellomklasse.",
+      "text_markdown": "Den åpne skoen som skal slippes er en åpen Qwen 3.7 mellomklasse.",
+      "title": "",
+      "tts": {
+        "text": "Den åpne skoen som skal slippes er en åpen Qwen tre komma syv mellomklasse.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Per denne uken er ingenting på Hugging Face ennå.",
+      "text_markdown": "Per denne uken er ingenting på Hugging Face ennå.",
+      "title": "",
+      "tts": {
+        "text": "Per denne uken er ingenting på Hugging Face ennå.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ok, la oss gå til ledertavlene.",
+      "text_markdown": "Ok, la oss gå til ledertavlene.",
+      "title": "",
+      "tts": {
+        "text": "Ok, la oss gå til ledertavlene.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvor landet ting denne uken?",
+      "text_markdown": "Hvor landet ting denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Hvor landet ting denne uken?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Her er overskriften, og den er merkelig.",
+      "text_markdown": "Her er overskriften, og den er merkelig.",
+      "title": "",
+      "tts": {
+        "text": "Her er overskriften, og den er merkelig.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ledertavlen som beveget seg denne uken er ikke en kvalitetstavle.",
+      "text_markdown": "Ledertavlen som beveget seg denne uken er ikke en kvalitetstavle.",
+      "title": "",
+      "tts": {
+        "text": "Ledertavlen som beveget seg denne uken er ikke en kvalitetstavle.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er OpenRouters bruksmåler – faktiske modellkall, ikke meninger.",
+      "text_markdown": "Det er OpenRouters bruksmåler – faktiske modellkall, ikke meninger.",
+      "title": "",
+      "tts": {
+        "text": "Det er OpenRouters bruksmåler – faktiske modellkall, ikke meninger.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva sier bruksmåleren?",
+      "text_markdown": "Hva sier bruksmåleren?",
+      "title": "",
+      "tts": {
+        "text": "Hva sier bruksmåleren?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For uken 18. til 24. mai var den mest brukte modellen på jorden DeepSeek V4-Flash.",
+      "text_markdown": "For uken 18. til 24. mai var den mest brukte modellen på jorden DeepSeek V4-Flash.",
+      "title": "",
+      "tts": {
+        "text": "For uken attende til tjuefjerde mai, var den mest brukte modellen på jorden DeepSeek V fire Flash.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den behandlet omtrent 3,43 billioner tokens på én uke.",
+      "text_markdown": "Den behandlet omtrent 3,43 billioner tokens på én uke.",
+      "title": "",
+      "tts": {
+        "text": "Den behandlet omtrent tre komma førtitre billioner tokens på én uke.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og den er åpen vekt, MIT-lisensiert, noe du kan laste ned og selv-hoste.",
+      "text_markdown": "Og den er åpen vekt, MIT-lisensiert, noe du kan laste ned og selv-hoste.",
+      "title": "",
+      "tts": {
+        "text": "Og den er åpen vekt, M I T lisensiert, noe du kan laste ned og selv-hoste.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Den mest brukte modellen er åpen?",
+      "text_markdown": "Den mest brukte modellen er åpen?",
+      "title": "",
+      "tts": {
+        "text": "Den mest brukte modellen er åpen?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "På toppen av bruksdiagrammet, ja.",
+      "text_markdown": "På toppen av bruksdiagrammet, ja.",
+      "title": "",
+      "tts": {
+        "text": "På toppen av bruksdiagrammet, ja.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og det er ikke i nærheten.",
+      "text_markdown": "Og det er ikke i nærheten.",
+      "title": "",
+      "tts": {
+        "text": "Og det er ikke i nærheten.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kinesiske modeller behandlet omtrent 9,2 billioner tokens den uken, mot omtrent 4,9 billioner for amerikanske modeller.",
+      "text_markdown": "Kinesiske modeller behandlet omtrent 9,2 billioner tokens den uken, mot omtrent 4,9 billioner for amerikanske modeller.",
+      "title": "",
+      "tts": {
+        "text": "Kinesiske modeller behandlet omtrent ni komma to billioner tokens den uken, mot omtrent fire komma ni billioner for amerikanske modeller.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er den fjerde uken på rad at kinesiske åpne modeller ledet global bruk.",
+      "text_markdown": "Det er den fjerde uken på rad at kinesiske åpne modeller ledet global bruk.",
+      "title": "",
+      "tts": {
+        "text": "Det er den fjerde uken på rad at kinesiske åpne modeller ledet global bruk.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Det er en reell inversjon.",
+      "text_markdown": "Det er en reell inversjon.",
+      "title": "",
+      "tts": {
+        "text": "Det er en reell inversjon.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er – på den metrikken utviklere faktisk føler, hva som kjører i produksjon, vinner åpent i toppen.",
+      "text_markdown": "Det er – på den metrikken utviklere faktisk føler, hva som kjører i produksjon, vinner åpent i toppen.",
+      "title": "",
+      "tts": {
+        "text": "Det er – på den metrikken utviklere faktisk føler, hva som kjører i produksjon, vinner åpent i toppen.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Men vær ærlig om bruksdiagrammer.",
+      "text_markdown": "Men vær ærlig om bruksdiagrammer.",
+      "title": "",
+      "tts": {
+        "text": "Men vær ærlig om bruksdiagrammer.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Godt instinkt, og det er en perfekt advarende historie denne uken.",
+      "text_markdown": "Godt instinkt, og det er en perfekt advarende historie denne uken.",
+      "title": "",
+      "tts": {
+        "text": "Godt instinkt, og det er en perfekt advarende historie denne uken.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "En annen modell, Tencents Hy3, skjøt opp den samme bruksgrafen.",
+      "text_markdown": "En annen modell, Tencents Hy3, skjøt opp den samme bruksgrafen.",
+      "title": "",
+      "tts": {
+        "text": "En annen modell, Tencents H Y tre, skjøt opp den samme bruksgrafen.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Analytikeren Max Woolf analyserte den 26. mai.",
+      "text_markdown": "Analytikeren Max Woolf analyserte den 26. mai.",
+      "title": "",
+      "tts": {
+        "text": "Analytikeren Max Woolf analyserte den tjuesjette mai.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva fant han?",
+      "text_markdown": "Hva fant han?",
+      "title": "",
+      "tts": {
+        "text": "Hva fant han?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den virker billig per token, men den har svært høye kostnader for cache-lesing.",
+      "text_markdown": "Den virker billig per token, men den har svært høye kostnader for cache-lesing.",
+      "title": "",
+      "tts": {
+        "text": "Den virker billig per token, men den har svært høye kostnader for cache-lesing.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Når du teller med dem, er det nesten dobbelt så dyrt som DeepSeeks reelle pris.",
+      "text_markdown": "Når du teller med dem, er det nesten dobbelt så dyrt som DeepSeeks reelle pris.",
+      "title": "",
+      "tts": {
+        "text": "Når du teller med dem, er det nesten dobbelt så dyrt som DeepSeeks reelle pris.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og økningen ser ut som én gigantisk app, ikke bred popularitet.",
+      "text_markdown": "Og økningen ser ut som én gigantisk app, ikke bred popularitet.",
+      "title": "",
+      "tts": {
+        "text": "Og økningen ser ut som én gigantisk app, ikke bred popularitet.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Så en bruks-tavle forteller deg hvem som bruker penger, ikke hva som er bra.",
+      "text_markdown": "Så en bruks-tavle forteller deg hvem som bruker penger, ikke hva som er bra.",
+      "title": "",
+      "tts": {
+        "text": "Så en bruks-tavle forteller deg hvem som bruker penger, ikke hva som er bra.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Trending er ikke det samme som best.",
+      "text_markdown": "Trending er ikke det samme som best.",
+      "title": "",
+      "tts": {
+        "text": "Trending er ikke det samme som best.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er akkurat den lærdommen man bør ta med seg.",
+      "text_markdown": "Det er akkurat den lærdommen man bør ta med seg.",
+      "title": "",
+      "tts": {
+        "text": "Det er akkurat den lærdommen man bør ta med seg.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva med kvalitetstavlene?",
+      "text_markdown": "Hva med kvalitetstavlene?",
+      "title": "",
+      "tts": {
+        "text": "Hva med kvalitetstavlene?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "På de vanskeligste tavlene leder lukkede modeller fortsatt.",
+      "text_markdown": "På de vanskeligste tavlene leder lukkede modeller fortsatt.",
+      "title": "",
+      "tts": {
+        "text": "På de vanskeligste tavlene leder lukkede modeller fortsatt.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Toppen av chat-kvalitets- og agent-terminal-tavlene er alle lukkede akkurat nå.",
+      "text_markdown": "Toppen av chat-kvalitets- og agent-terminal-tavlene er alle lukkede akkurat nå.",
+      "title": "",
+      "tts": {
+        "text": "Toppen av chat-kvalitets- og agent-terminal-tavlene er alle lukkede akkurat nå.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Men på SWE-bench Verified, kodetesten, er åpent i bunn og grunn på lik linje.",
+      "text_markdown": "Men på SWE-bench Verified, kodetesten, er åpent i bunn og grunn på lik linje.",
+      "title": "",
+      "tts": {
+        "text": "Men på S V E bench Verified, kodetesten, er åpent i bunn og grunn på lik linje.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sporere plasserer de beste åpne modellene rundt 80 %.",
+      "text_markdown": "Sporere plasserer de beste åpne modellene rundt 80 %.",
+      "title": "",
+      "tts": {
+        "text": "Sporere plasserer de beste åpne modellene rundt åtti prosent.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvilke åpne modeller?",
+      "text_markdown": "Hvilke åpne modeller?",
+      "title": "",
+      "tts": {
+        "text": "Hvilke åpne modeller?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kimi K2.6 og MiniMax, med DeepSeeks største modell som hevder lignende.",
+      "text_markdown": "Kimi K2.6 og MiniMax, med DeepSeeks største modell som hevder lignende.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K to komma seks og MiniMax, med DeepSeeks største modell som hevder lignende.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Jeg vil si hevder, fordi sporere er uenige med hverandre.",
+      "text_markdown": "Jeg vil si hevder, fordi sporere er uenige med hverandre.",
+      "title": "",
+      "tts": {
+        "text": "Jeg vil si hevder, fordi sporere er uenige med hverandre.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Behandle ethvert enkelt benchmark-tall som en påstand, ikke et faktum.",
+      "text_markdown": "Behandle ethvert enkelt benchmark-tall som en påstand, ikke et faktum.",
+      "title": "",
+      "tts": {
+        "text": "Behandle ethvert enkelt benchmark-tall som en påstand, ikke et faktum.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Apropos det — benchmark-tillitsproblemet.",
+      "text_markdown": "Apropos det — benchmark-tillitsproblemet.",
+      "title": "",
+      "tts": {
+        "text": "Apropos det — benchmark-tillitsproblemet.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ja, en skarp artikkel landet 19. mai om akkurat det.",
+      "text_markdown": "Ja, en skarp artikkel landet 19. mai om akkurat det.",
+      "title": "",
+      "tts": {
+        "text": "Ja, en skarp artikkel landet nittende mai om akkurat det.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Argumentet er at benchmarks bør være kontamineringsresistente.",
+      "text_markdown": "Argumentet er at benchmarks bør være kontamineringsresistente.",
+      "title": "",
+      "tts": {
+        "text": "Argumentet er at benchmarks bør være kontamineringsresistente.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det betyr at testen ikke må lekke inn i treningsdataene.",
+      "text_markdown": "Det betyr at testen ikke må lekke inn i treningsdataene.",
+      "title": "",
+      "tts": {
+        "text": "Det betyr at testen ikke må lekke inn i treningsdataene.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ellers måler en høy score minne, ikke resonnement.",
+      "text_markdown": "Ellers måler en høy score minne, ikke resonnement.",
+      "title": "",
+      "tts": {
+        "text": "Ellers måler en høy score minne, ikke resonnement.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så to måter en rangering kan lyve på.",
+      "text_markdown": "Så to måter en rangering kan lyve på.",
+      "title": "",
+      "tts": {
+        "text": "Så to måter en rangering kan lyve på.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Riktig — bruksmanipulering på den ene siden, kontaminering på den andre.",
+      "text_markdown": "Riktig — bruksmanipulering på den ene siden, kontaminering på den andre.",
+      "title": "",
+      "tts": {
+        "text": "Riktig — bruksmanipulering på den ene siden, kontaminering på den andre.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Samme lærdom — les rangeringen, ikke tilbe den.",
+      "text_markdown": "Samme lærdom — les rangeringen, ikke tilbe den.",
+      "title": "",
+      "tts": {
+        "text": "Samme lærdom — les rangeringen, ikke tilbe den.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Nå tar vi overskriftene.",
+      "text_markdown": "Nå tar vi overskriftene.",
+      "title": "",
+      "tts": {
+        "text": "Nå tar vi overskriftene.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kort og raskt, ting du faktisk kan bruke.",
+      "text_markdown": "Kort og raskt, ting du faktisk kan bruke.",
+      "title": "",
+      "tts": {
+        "text": "Kort og raskt, ting du faktisk kan bruke.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Først, den ærlige selv-hosting-matematikken for den nummer én-modellen.",
+      "text_markdown": "Først, den ærlige selv-hosting-matematikken for den nummer én-modellen.",
+      "title": "",
+      "tts": {
+        "text": "Først, den ærlige selv-hosting-matematikken for den nummer én-modellen.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "DeepSeek V4-Flash trenger rundt 170 gigabyte GPU-minne.",
+      "text_markdown": "DeepSeek V4-Flash trenger rundt 170 gigabyte GPU-minne.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V fire Flash trenger rundt hundre og sytti gigabyte GPU-minne.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er et par toppmoderne datasenterkort, rundt syv dollar i timen i skyen.",
+      "text_markdown": "Det er et par toppmoderne datasenterkort, rundt syv dollar i timen i skyen.",
+      "title": "",
+      "tts": {
+        "text": "Det er et par toppmoderne datasenterkort, rundt syv dollar i timen i skyen.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Under svært tung trafikk vinner fortsatt den billige API-en.",
+      "text_markdown": "Under svært tung trafikk vinner fortsatt den billige API-en.",
+      "title": "",
+      "tts": {
+        "text": "Under svært tung trafikk vinner fortsatt den billige API-en.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Selv-host for personvern og kontroll, ikke for å spare penger — med mindre du er enorm.",
+      "text_markdown": "Selv-host for personvern og kontroll, ikke for å spare penger — med mindre du er enorm.",
+      "title": "",
+      "tts": {
+        "text": "Selv-host for personvern og kontroll, ikke for å spare penger — med mindre du er enorm.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bra, hva mer?",
+      "text_markdown": "Bra, hva mer?",
+      "title": "",
+      "tts": {
+        "text": "Bra, hva mer?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For det andre tok tale på enheten et sprang i år.",
+      "text_markdown": "For det andre tok tale på enheten et sprang i år.",
+      "title": "",
+      "tts": {
+        "text": "For det andre tok tale på enheten et sprang i år.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det finnes en åpen tekst-til-tale-modell som kjører på en CPU uten GPU i det hele tatt.",
+      "text_markdown": "Det finnes en åpen tekst-til-tale-modell som kjører på en CPU uten GPU i det hele tatt.",
+      "title": "",
+      "tts": {
+        "text": "Det finnes en åpen tekst-til-tale-modell som kjører på en CPU uten GPU i det hele tatt.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Hold den tanken — det er vår toppsak.",
+      "text_markdown": "Hold den tanken — det er vår toppsak.",
+      "title": "",
+      "tts": {
+        "text": "Hold den tanken — det er vår toppsak.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hint notert.",
+      "text_markdown": "Hint notert.",
+      "title": "",
+      "tts": {
+        "text": "Hint notert.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For det tredje holder fellesskapets kvantiseringslag den åpne verden forsynt.",
+      "text_markdown": "For det tredje holder fellesskapets kvantiseringslag den åpne verden forsynt.",
+      "title": "",
+      "tts": {
+        "text": "For det tredje holder fellesskapets kvantiseringslag den åpne verden forsynt.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Grupper som Unsloth sender ut tunede, krympede versjoner av nye modeller innen dager.",
+      "text_markdown": "Grupper som Unsloth sender ut tunede, krympede versjoner av nye modeller innen dager.",
+      "title": "",
+      "tts": {
+        "text": "Grupper som Unsloth sender ut tunede, krympede versjoner av nye modeller innen dager.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er slik en gigantisk modell blir noe som passer kortet ditt.",
+      "text_markdown": "Det er slik en gigantisk modell blir noe som passer kortet ditt.",
+      "title": "",
+      "tts": {
+        "text": "Det er slik en gigantisk modell blir noe som passer kortet ditt.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og på lyttesiden?",
+      "text_markdown": "Og på lyttesiden?",
+      "title": "",
+      "tts": {
+        "text": "Og på lyttesiden?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tale-til-tekst beveget seg også.",
+      "text_markdown": "Tale-til-tekst beveget seg også.",
+      "title": "",
+      "tts": {
+        "text": "Tale-til-tekst beveget seg også.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Moonshine v2 er en åpen modell som slår Whisper på nøyaktighet til en brøkdel av størrelsen.",
+      "text_markdown": "Moonshine v2 er en åpen modell som slår Whisper på nøyaktighet til en brøkdel av størrelsen.",
+      "title": "",
+      "tts": {
+        "text": "Moonshine versjon to er en åpen modell som slår Whisper på nøyaktighet til en brøkdel av størrelsen.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den er bygget for en Raspberry Pi eller en telefon.",
+      "text_markdown": "Den er bygget for en Raspberry Pi eller en telefon.",
+      "title": "",
+      "tts": {
+        "text": "Den er bygget for en Raspberry Pi eller en telefon.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For massetranskripsjon på en server er NVIDIAs Parakeet det raskeste valget.",
+      "text_markdown": "For massetranskripsjon på en server er NVIDIAs Parakeet det raskeste valget.",
+      "title": "",
+      "tts": {
+        "text": "For massetranskripsjon på en server er NVIDIAs Parakeet det raskeste valget.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "En til — chip-historien.",
+      "text_markdown": "En til — chip-historien.",
+      "title": "",
+      "tts": {
+        "text": "En til — chip-historien.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Denne knytter hele episoden sammen.",
+      "text_markdown": "Denne knytter hele episoden sammen.",
+      "title": "",
+      "tts": {
+        "text": "Denne knytter hele episoden sammen.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den 21. mai sa Nvidias Jensen Huang at han i stor grad har overlatt Kinas chip-marked til Huawei.",
+      "text_markdown": "Den 21. mai sa Nvidias Jensen Huang at han i stor grad har overlatt Kinas chip-marked til Huawei.",
+      "title": "",
+      "tts": {
+        "text": "Den tjueførste mai sa Nvidias Jensen Huang at han i stor grad har overlatt Kinas chip-marked til Huawei.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kina blokkerer til og med godkjente Nvidia-importer for å fremme sin egen silisiumproduksjon.",
+      "text_markdown": "Kina blokkerer til og med godkjente Nvidia-importer for å fremme sin egen silisiumproduksjon.",
+      "title": "",
+      "tts": {
+        "text": "Kina blokkerer til og med godkjente Nvidia-importer for å fremme sin egen silisiumproduksjon.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvorfor er det viktig for en utvikler?",
+      "text_markdown": "Hvorfor er det viktig for en utvikler?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er det viktig for en utvikler?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fordi de åpne kinesiske modellene som topper bruksstatistikken, i økende grad trenes og kjøres på Huawei-chips.",
+      "text_markdown": "Fordi de åpne kinesiske modellene som topper bruksstatistikken, i økende grad trenes og kjøres på Huawei-chips.",
+      "title": "",
+      "tts": {
+        "text": "Fordi de åpne kinesiske modellene som topper bruksstatistikken, i økende grad trenes og kjøres på Huawei-chips.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Eksportkontroller var ment å bremse Kinas AI.",
+      "text_markdown": "Eksportkontroller var ment å bremse Kinas AI.",
+      "title": "",
+      "tts": {
+        "text": "Eksportkontroller var ment å bremse Kinas AI.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "I stedet bootstrappet de en parallell åpen stack — både chips og vekter.",
+      "text_markdown": "I stedet bootstrappet de en parallell åpen stack — både chips og vekter.",
+      "title": "",
+      "tts": {
+        "text": "I stedet bootstrappet de en parallell åpen stack — både chips og vekter.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Historien om ledertavlen og chip-historien er den samme historien.",
+      "text_markdown": "Historien om ledertavlen og chip-historien er den samme historien.",
+      "title": "",
+      "tts": {
+        "text": "Historien om ledertavlen og chip-historien er den samme historien.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "La oss nå gå tilbake til hovedhistorien.",
+      "text_markdown": "La oss nå gå tilbake til hovedhistorien.",
+      "title": "",
+      "tts": {
+        "text": "La oss nå gå tilbake til hovedhistorien.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Du lovet oss åpen stemme.",
+      "text_markdown": "Du lovet oss åpen stemme.",
+      "title": "",
+      "tts": {
+        "text": "Du lovet oss åpen stemme.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det gjorde jeg, og dette er maskinrommet til nettopp dette programmet.",
+      "text_markdown": "Det gjorde jeg, og dette er maskinrommet til nettopp dette programmet.",
+      "title": "",
+      "tts": {
+        "text": "Det gjorde jeg, og dette er maskinrommet til nettopp dette programmet.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Fortell mer om det.",
+      "text_markdown": "Fortell mer om det.",
+      "title": "",
+      "tts": {
+        "text": "Fortell mer om det.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Stemmen du hører, kjører på en stack av åpne og hostede talemodeller.",
+      "text_markdown": "Stemmen du hører, kjører på en stack av åpne og hostede talemodeller.",
+      "title": "",
+      "tts": {
+        "text": "Stemmen du hører, kjører på en stack av åpne og hostede talemodeller.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og 2026 er året da de åpne ble gode nok til å eie.",
+      "text_markdown": "Og 2026 er året da de åpne ble gode nok til å eie.",
+      "title": "",
+      "tts": {
+        "text": "Og tjuetjueseks er året da de åpne ble gode nok til å eie.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Start med den som er nærmest hjemme.",
+      "text_markdown": "Start med den som er nærmest hjemme.",
+      "title": "",
+      "tts": {
+        "text": "Start med den som er nærmest hjemme.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er Chatterbox, fra Resemble AI.",
+      "text_markdown": "Det er Chatterbox, fra Resemble AI.",
+      "title": "",
+      "tts": {
+        "text": "Det er Chatterbox, fra Resemble AI.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den er MIT-lisensiert, dekker 23 språk, og kjører på enheten.",
+      "text_markdown": "Den er MIT-lisensiert, dekker 23 språk, og kjører på enheten.",
+      "title": "",
+      "tts": {
+        "text": "Den er M I T-lisensiert, dekker tjuetre språk, og kjører på enheten.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "En versjon kalt Turbo kom ut i mars.",
+      "text_markdown": "En versjon kalt Turbo kom ut i mars.",
+      "title": "",
+      "tts": {
+        "text": "En versjon kalt Turbo kom ut i mars.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den bruker et triks som gjør lydekoderen til ett enkelt trinn i stedet for ti.",
+      "text_markdown": "Den bruker et triks som gjør lydekoderen til ett enkelt trinn i stedet for ti.",
+      "title": "",
+      "tts": {
+        "text": "Den bruker et triks som gjør lydekoderen til ett enkelt trinn i stedet for ti.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Enkel forklaring på det trikset?",
+      "text_markdown": "Enkel forklaring på det trikset?",
+      "title": "",
+      "tts": {
+        "text": "Enkel forklaring på det trikset?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det betyr langt mindre datakraft for den samme stemmen.",
+      "text_markdown": "Det betyr langt mindre datakraft for den samme stemmen.",
+      "title": "",
+      "tts": {
+        "text": "Det betyr langt mindre datakraft for den samme stemmen.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er det som gjør en god stemme realistisk på en telefon.",
+      "text_markdown": "Det er det som gjør en god stemme realistisk på en telefon.",
+      "title": "",
+      "tts": {
+        "text": "Det er det som gjør en god stemme realistisk på en telefon.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva om du trenger flere språk?",
+      "text_markdown": "Hva om du trenger flere språk?",
+      "title": "",
+      "tts": {
+        "text": "Hva om du trenger flere språk?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det finnes en åpen modell kalt OmniVoice.",
+      "text_markdown": "Det finnes en åpen modell kalt OmniVoice.",
+      "title": "",
+      "tts": {
+        "text": "Det finnes en åpen modell kalt Omni Voice.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den hevder å støtte over 600 språk, og den er rask.",
+      "text_markdown": "Den hevder å støtte over 600 språk, og den er rask.",
+      "title": "",
+      "tts": {
+        "text": "Den hevder å støtte over seks hundre språk, og den er rask.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den er Apache-lisensiert, så den er trygg å bruke kommersielt.",
+      "text_markdown": "Den er Apache-lisensiert, så den er trygg å bruke kommersielt.",
+      "title": "",
+      "tts": {
+        "text": "Den er Apache-lisensiert, så den er trygg å bruke kommersielt.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "600 språk høres for godt ut.",
+      "text_markdown": "600 språk høres for godt ut.",
+      "title": "",
+      "tts": {
+        "text": "seks hundre språk høres for godt ut.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er en berettiget bekymring.",
+      "text_markdown": "Det er en berettiget bekymring.",
+      "title": "",
+      "tts": {
+        "text": "Det er en berettiget bekymring.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Å dekke et språk er ikke det samme som å høres bra ut på det.",
+      "text_markdown": "Å dekke et språk er ikke det samme som å høres bra ut på det.",
+      "title": "",
+      "tts": {
+        "text": "Å dekke et språk er ikke det samme som å høres bra ut på det.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Du må fortsatt lytte, språk for språk, før du stoler på det.",
+      "text_markdown": "Du må fortsatt lytte, språk for språk, før du stoler på det.",
+      "title": "",
+      "tts": {
+        "text": "Du må fortsatt lytte, språk for språk, før du stoler på det.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hva med studiokvalitet?",
+      "text_markdown": "Hva med studiokvalitet?",
+      "title": "",
+      "tts": {
+        "text": "Hva med studiokvalitet?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For det, se på VoxCPM2.",
+      "text_markdown": "For det, se på VoxCPM2.",
+      "title": "",
+      "tts": {
+        "text": "For det, se på Vox C P M to.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den har omtrent 2 milliarder parametere, er Apache-lisensiert, og leverer utdata i høy kvalitet.",
+      "text_markdown": "Den har omtrent 2 milliarder parametere, er Apache-lisensiert, og leverer utdata i høy kvalitet.",
+      "title": "",
+      "tts": {
+        "text": "Den har omtrent to milliarder parametere, er Apache-lisensiert, og leverer utdata i høy kvalitet.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den dekker 30 språk, og du kan finjustere den med en liten stemmeprøve.",
+      "text_markdown": "Den dekker 30 språk, og du kan finjustere den med en liten stemmeprøve.",
+      "title": "",
+      "tts": {
+        "text": "Den dekker tretti språk, og du kan finjustere den med en liten stemmeprøve.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den kombinasjonen gjør den til den mest produktiviserbare mellomstore åpne stemmen.",
+      "text_markdown": "Den kombinasjonen gjør den til den mest produktiviserbare mellomstore åpne stemmen.",
+      "title": "",
+      "tts": {
+        "text": "Den kombinasjonen gjør den til den mest produktiviserbare mellomstore åpne stemmen.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og den innebygde fleksibiliteten du ertet med?",
+      "text_markdown": "Og den innebygde fleksibiliteten du ertet med?",
+      "title": "",
+      "tts": {
+        "text": "Og den innebygde fleksibiliteten du ertet med?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er MOSS-TTS-Nano.",
+      "text_markdown": "Det er MOSS-TTS-Nano.",
+      "title": "",
+      "tts": {
+        "text": "Det er MOSS T T S Nano.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den er bitteliten, omtrent 100 millioner parametere.",
+      "text_markdown": "Den er bitteliten, omtrent 100 millioner parametere.",
+      "title": "",
+      "tts": {
+        "text": "Den er bitteliten, omtrent ett hundre millioner parametere.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den kjører på en CPU uten GPU – selv på en bærbar PC, på én kjerne.",
+      "text_markdown": "Den kjører på en CPU uten GPU – selv på en bærbar PC, på én kjerne.",
+      "title": "",
+      "tts": {
+        "text": "Den kjører på en C P U uten G P U – selv på en bærbar PC, på en enkelt kjerne.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For alle som leverer en stemme til en telefon, er det drømmen.",
+      "text_markdown": "For alle som leverer en stemme til en telefon, er det drømmen.",
+      "title": "",
+      "tts": {
+        "text": "For alle som leverer en stemme til en telefon, er det drømmen.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så det er bare fordeler?",
+      "text_markdown": "Så det er bare fordeler?",
+      "title": "",
+      "tts": {
+        "text": "Så det er bare fordeler?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nei – og her er fellen alle overser.",
+      "text_markdown": "Nei – og her er fellen alle overser.",
+      "title": "",
+      "tts": {
+        "text": "Nei – og her er fellen alle overser.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral ga ut en nydelig stemmemodell kalt Voxtral.",
+      "text_markdown": "Mistral ga ut en nydelig stemmemodell kalt Voxtral.",
+      "title": "",
+      "tts": {
+        "text": "Mistral ga ut en nydelig stemmemodell kalt Voxtral.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vektene er åpne og kvaliteten er flott.",
+      "text_markdown": "Vektene er åpne og kvaliteten er flott.",
+      "title": "",
+      "tts": {
+        "text": "Vektene er åpne og kvaliteten er flott.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Men lisensen er ikke-kommersiell.",
+      "text_markdown": "Men lisensen er ikke-kommersiell.",
+      "title": "",
+      "tts": {
+        "text": "Men lisensen er ikke kommersiell.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Det betyr at du ikke kan levere den.",
+      "text_markdown": "Det betyr at du ikke kan levere den.",
+      "title": "",
+      "tts": {
+        "text": "Det betyr at du ikke kan levere den.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ikke i et betalt produkt, ikke uten en avtale.",
+      "text_markdown": "Ikke i et betalt produkt, ikke uten en avtale.",
+      "title": "",
+      "tts": {
+        "text": "Ikke i et betalt produkt, ikke uten en avtale.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Åpne vekter betyr ikke alltid at du har lov til å bruke dem.",
+      "text_markdown": "Åpne vekter betyr ikke alltid at du har lov til å bruke dem.",
+      "title": "",
+      "tts": {
+        "text": "Åpne vekter betyr ikke alltid at du har lov til å bruke dem.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "For en ekte app leser du lisensen før du forelsker deg.",
+      "text_markdown": "For en ekte app leser du lisensen før du forelsker deg.",
+      "title": "",
+      "tts": {
+        "text": "For en ekte app leser du lisensen før du forelsker deg.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Og benchmark-påstandene rundt disse?",
+      "text_markdown": "Og benchmark-påstandene rundt disse?",
+      "title": "",
+      "tts": {
+        "text": "Og benchmark-påstandene rundt disse?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vær skeptisk.",
+      "text_markdown": "Vær skeptisk.",
+      "title": "",
+      "tts": {
+        "text": "Vær skeptisk.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Hver påstand om å slå lederen her er en leverandør som kjører sin egen blindtest.",
+      "text_markdown": "Hver påstand om å slå lederen her er en leverandør som kjører sin egen blindtest.",
+      "title": "",
+      "tts": {
+        "text": "Hver påstand om å slå lederen her er en leverandør som kjører sin egen blindtest.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Stol på dine egne ører, ikke deres diagram.",
+      "text_markdown": "Stol på dine egne ører, ikke deres diagram.",
+      "title": "",
+      "tts": {
+        "text": "Stol på dine egne ører, ikke deres diagram.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så hvor etterlater det oss?",
+      "text_markdown": "Så hvor etterlater det oss?",
+      "title": "",
+      "tts": {
+        "text": "Så hvor etterlater det oss?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det etterlater oss et sted som er genuint nytt.",
+      "text_markdown": "Det etterlater oss et sted som er genuint nytt.",
+      "title": "",
+      "tts": {
+        "text": "Det etterlater oss et sted som er genuint nytt.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Du kan kjøre en flott stemme på din egen enhet i dag.",
+      "text_markdown": "Du kan kjøre en flott stemme på din egen enhet i dag.",
+      "title": "",
+      "tts": {
+        "text": "Du kan kjøre en flott stemme på din egen enhet i dag.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det vanskelige spørsmålet er ikke lenger om du kan — det er hvilken lisens som lar deg beholde det.",
+      "text_markdown": "Det vanskelige spørsmålet er ikke lenger om du kan — det er hvilken lisens som lar deg beholde det.",
+      "title": "",
+      "tts": {
+        "text": "Det vanskelige spørsmålet er ikke lenger om du kan — det er hvilken lisens som lar deg beholde det.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Det er et godt punkt å avslutte historien på.",
+      "text_markdown": "Det er et godt punkt å avslutte historien på.",
+      "title": "",
+      "tts": {
+        "text": "Det er et godt punkt å avslutte historien på.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "La oss ta ukens konsept.",
+      "text_markdown": "La oss ta ukens konsept.",
+      "title": "",
+      "tts": {
+        "text": "La oss ta ukens konsept.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Du valgte nevrale lydkodeker.",
+      "text_markdown": "Du valgte nevrale lydkodeker.",
+      "title": "",
+      "tts": {
+        "text": "Du valgte nevrale lydkodeker.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det gjorde jeg, fordi det er det skjulte trikset bak hver stemme på enheten.",
+      "text_markdown": "Det gjorde jeg, fordi det er det skjulte trikset bak hver stemme på enheten.",
+      "title": "",
+      "tts": {
+        "text": "Det gjorde jeg, fordi det er det skjulte trikset bak hver stemme på enheten.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Rå lyd er enormt — noen få sekunder er millioner av tall.",
+      "text_markdown": "Rå lyd er enormt — noen få sekunder er millioner av tall.",
+      "title": "",
+      "tts": {
+        "text": "Rå lyd er enormt — noen få sekunder er millioner av tall.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "En telefon kan ikke strømme alt det til en modell i sanntid.",
+      "text_markdown": "En telefon kan ikke strømme alt det til en modell i sanntid.",
+      "title": "",
+      "tts": {
+        "text": "En telefon kan ikke strømme alt det til en modell i sanntid.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så hva gjør en kodek?",
+      "text_markdown": "Så hva gjør en kodek?",
+      "title": "",
+      "tts": {
+        "text": "Så hva gjør en kodek?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den lærer å komprimere lyden til en liten strøm av tokens.",
+      "text_markdown": "Den lærer å komprimere lyden til en liten strøm av tokens.",
+      "title": "",
+      "tts": {
+        "text": "Den lærer å komprimere lyden til en liten strøm av tokens.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tenk på det som en smart zip-fil for lyd.",
+      "text_markdown": "Tenk på det som en smart zip-fil for lyd.",
+      "title": "",
+      "tts": {
+        "text": "Tenk på det som en smart zip-fil for lyd.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Den åpne, kalt Mimi, kommer ned til omtrent én kilobit per sekund.",
+      "text_markdown": "Den åpne, kalt Mimi, kommer ned til omtrent én kilobit per sekund.",
+      "title": "",
+      "tts": {
+        "text": "Den åpne, kalt Mimi, kommer ned til omtrent ett kilobit per sekund.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvor lite er det, egentlig?",
+      "text_markdown": "Hvor lite er det, egentlig?",
+      "title": "",
+      "tts": {
+        "text": "Hvor lite er det, egentlig?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Noen hundre små tall i sekundet, i stedet for millioner.",
+      "text_markdown": "Noen hundre små tall i sekundet, i stedet for millioner.",
+      "title": "",
+      "tts": {
+        "text": "Noen hundre små tall i sekundet, i stedet for millioner.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Og den gjenoppbygger fortsatt stemmen slik at den høres naturlig ut.",
+      "text_markdown": "Og den gjenoppbygger fortsatt stemmen slik at den høres naturlig ut.",
+      "title": "",
+      "tts": {
+        "text": "Og den gjenoppbygger fortsatt stemmen slik at den høres naturlig ut.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hvorfor er det viktig for en stemmemodell?",
+      "text_markdown": "Hvorfor er det viktig for en stemmemodell?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er det viktig for en stemmemodell?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fordi modellen snakker i disse tokens, ikke i rå lyd.",
+      "text_markdown": "Fordi modellen snakker i disse tokens, ikke i rå lyd.",
+      "title": "",
+      "tts": {
+        "text": "Fordi modellen snakker i disse tokens, ikke i rå lyd.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Færre tokens betyr mindre beregningskraft for hvert ord.",
+      "text_markdown": "Færre tokens betyr mindre beregningskraft for hvert ord.",
+      "title": "",
+      "tts": {
+        "text": "Færre tokens betyr mindre beregningskraft for hvert ord.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-198",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Det er det som lar en god stemme kjøre på en telefon, offline.",
+      "text_markdown": "Det er det som lar en god stemme kjøre på en telefon, offline.",
+      "title": "",
+      "tts": {
+        "text": "Det er det som lar en god stemme kjøre på en telefon, offline.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-199",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Så kodeken setter grunnlaget.",
+      "text_markdown": "Så kodeken setter grunnlaget.",
+      "title": "",
+      "tts": {
+        "text": "Så kodeken setter grunnlaget.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-200",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nettopp, den setter latensen og bitrate som alt annet lever under.",
+      "text_markdown": "Nettopp, den setter latensen og bitrate som alt annet lever under.",
+      "title": "",
+      "tts": {
+        "text": "Nettopp, den setter latensen og bitrate som alt annet lever under.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-201",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "De åpne, Mimi og en fetter kalt SNAC, er det nye talemodeller bygger på.",
+      "text_markdown": "De åpne, Mimi og en fetter kalt SNAC, er det nye talemodeller bygger på.",
+      "title": "",
+      "tts": {
+        "text": "De åpne, Mimi og en fetter kalt SNAC, er det nye talemodeller bygger på.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-202",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Når du møter en liten stemme på enheten, er en slik kodek under den.",
+      "text_markdown": "Når du møter en liten stemme på enheten, er en slik kodek under den.",
+      "title": "",
+      "tts": {
+        "text": "Når du møter en liten stemme på enheten, er en slik kodek under den.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-203",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Komprimering du kan høre gjennom — det er det stille gjennombruddet.",
+      "text_markdown": "Komprimering du kan høre gjennom — det er det stille gjennombruddet.",
+      "title": "",
+      "tts": {
+        "text": "Komprimering du kan høre gjennom — det er det stille gjennombruddet.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-204",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Et godt sted å avslutte.",
+      "text_markdown": "Et godt sted å avslutte.",
+      "title": "",
+      "tts": {
+        "text": "Et godt sted å avslutte.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-205",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, takk skal du ha.",
+      "text_markdown": "Ron, takk skal du ha.",
+      "title": "",
+      "tts": {
+        "text": "Ron, takk skal du ha.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-206",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Når som helst, Vindy.",
+      "text_markdown": "Når som helst, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Når som helst, Vindy.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-207",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Det var AI This Week for 27. mai 2026.",
+      "text_markdown": "Det var AI This Week for 27. mai 2026.",
+      "title": "",
+      "tts": {
+        "text": "Det var AI This Week for tjuesyvende mai, tjuetjueseks.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-208",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ny utgave neste onsdag.",
+      "text_markdown": "Ny utgave neste onsdag.",
+      "title": "",
+      "tts": {
+        "text": "Ny utgave neste onsdag.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-209",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Inntil da, ta vare på deg selv.",
+      "text_markdown": "Inntil da, ta vare på deg selv.",
+      "title": "",
+      "tts": {
+        "text": "Inntil da, ta vare på deg selv.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

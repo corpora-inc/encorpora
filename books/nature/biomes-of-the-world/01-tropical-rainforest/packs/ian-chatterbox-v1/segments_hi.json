@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "उष्णकटिबंधीय वर्षावन",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "उष्णकटिबंधीय वर्षावन",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "वर्षावन कहाँ उगते हैं",
+      "text_markdown": "वर्षावन कहाँ उगते हैं"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय वर्षावन में आपका स्वागत है।",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन में आपका स्वागत है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय वर्षावन में आपका स्वागत है।",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "text_markdown": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "tts": {
+        "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जैव क्षेत्र पृथ्वी का वह हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "text_markdown": "जैव क्षेत्र पृथ्वी का वह हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "tts": {
+        "text": "जैव क्षेत्र पृथ्वी का वह हिस्सा है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय वर्षावन पूरे साल गर्म रहता है।",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन पूरे साल गर्म रहता है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय वर्षावन पूरे साल गर्म रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह पूरे साल गीला रहता है।",
+      "text_markdown": "यह पूरे साल गीला रहता है।",
+      "tts": {
+        "text": "यह पूरे साल गीला रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह जीवन से भरा हुआ है।",
+      "text_markdown": "यह जीवन से भरा हुआ है।",
+      "tts": {
+        "text": "यह जीवन से भरा हुआ है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर वर्षावन भूमध्य रेखा के पास उगते हैं।",
+      "text_markdown": "ज़्यादातर वर्षावन भूमध्य रेखा के पास उगते हैं।",
+      "tts": {
+        "text": "ज़्यादातर वर्षावन भूमध्य रेखा के पास उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भूमध्य रेखा वह रेखा है जो पृथ्वी के बीचों बीच घूमती है।",
+      "text_markdown": "भूमध्य रेखा वह रेखा है जो पृथ्वी के बीचों बीच घूमती है।",
+      "tts": {
+        "text": "भूमध्य रेखा वह रेखा है जो पृथ्वी के बीचों बीच घूमती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भूमध्य रेखा के पास सूरज हर दिन तेज़ रहता है।",
+      "text_markdown": "भूमध्य रेखा के पास सूरज हर दिन तेज़ रहता है।",
+      "tts": {
+        "text": "भूमध्य रेखा के पास सूरज हर दिन तेज़ रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया का सबसे बड़ा वर्षावन अमेज़न है, जो दक्षिण अमेरिका में है।",
+      "text_markdown": "दुनिया का सबसे बड़ा वर्षावन अमेज़न है, जो दक्षिण अमेरिका में है।",
+      "tts": {
+        "text": "दुनिया का सबसे बड़ा वर्षावन अमेज़न है, जो दक्षिण अमेरिका में है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में भी बड़े वर्षावन हैं, कांगो नदी के पास।",
+      "text_markdown": "अफ़्रीका में भी बड़े वर्षावन हैं, कांगो नदी के पास।",
+      "tts": {
+        "text": "अफ़्रीका में भी बड़े वर्षावन हैं, कांगो नदी के पास।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण पूर्व एशिया में, कई द्वीपों पर वर्षावन हैं।",
+      "text_markdown": "दक्षिण पूर्व एशिया में, कई द्वीपों पर वर्षावन हैं।",
+      "tts": {
+        "text": "दक्षिण पूर्व एशिया में, कई द्वीपों पर वर्षावन हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मध्य अमेरिका में और प्रशांत के द्वीपों पर छोटे वर्षावन हैं।",
+      "text_markdown": "मध्य अमेरिका में और प्रशांत के द्वीपों पर छोटे वर्षावन हैं।",
+      "tts": {
+        "text": "मध्य अमेरिका में और प्रशांत के द्वीपों पर छोटे वर्षावन हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से हर जंगल अपने आप उगा, दूसरों से बहुत दूर।",
+      "text_markdown": "इनमें से हर जंगल अपने आप उगा, दूसरों से बहुत दूर।",
+      "tts": {
+        "text": "इनमें से हर जंगल अपने आप उगा, दूसरों से बहुत दूर।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग अलग हैं।",
+      "text_markdown": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग अलग हैं।",
+      "tts": {
+        "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग अलग हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेज़न का बंदर अफ़्रीका या एशिया के बंदर जैसा नहीं है।",
+      "text_markdown": "अमेज़न का बंदर अफ़्रीका या एशिया के बंदर जैसा नहीं है।",
+      "tts": {
+        "text": "अमेज़न का बंदर अफ़्रीका या एशिया के बंदर जैसा नहीं है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन ये सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "text_markdown": "लेकिन ये सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "tts": {
+        "text": "लेकिन ये सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आप वर्षावन के अंदर खड़े होते हैं, तो हवा भारी और गर्म लगती है।",
+      "text_markdown": "जब आप वर्षावन के अंदर खड़े होते हैं, तो हवा भारी और गर्म लगती है।",
+      "tts": {
+        "text": "जब आप वर्षावन के अंदर खड़े होते हैं, तो हवा भारी और गर्म लगती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रोशनी नरम और हरी होती है।",
+      "text_markdown": "रोशनी नरम और हरी होती है।",
+      "tts": {
+        "text": "रोशनी नरम और हरी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ इतने ऊँचे होते हैं कि आसमान मुश्किल से दिखता है।",
+      "text_markdown": "पेड़ इतने ऊँचे होते हैं कि आसमान मुश्किल से दिखता है।",
+      "tts": {
+        "text": "पेड़ इतने ऊँचे होते हैं कि आसमान मुश्किल से दिखता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आपको चारों तरफ़ पक्षियों और कीड़ों की आवाज़ सुनाई देती है।",
+      "text_markdown": "आपको चारों तरफ़ पक्षियों और कीड़ों की आवाज़ सुनाई देती है।",
+      "tts": {
+        "text": "आपको चारों तरफ़ पक्षियों और कीड़ों की आवाज़ सुनाई देती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आपको पत्तों से पानी टपकने की आवाज़ सुनाई देती है।",
+      "text_markdown": "आपको पत्तों से पानी टपकने की आवाज़ सुनाई देती है।",
+      "tts": {
+        "text": "आपको पत्तों से पानी टपकने की आवाज़ सुनाई देती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऐसा लगता है जैसे आप मौजूद हैं किसी जीते जागते कमरे के अंदर।",
+      "text_markdown": "ऐसा लगता है जैसे आप मौजूद हैं किसी जीते जागते कमरे के अंदर।",
+      "tts": {
+        "text": "ऐसा लगता है जैसे आप मौजूद हैं किसी जीते जागते कमरे के अंदर।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही है वर्षावन।",
+      "text_markdown": "यही है वर्षावन।",
+      "tts": {
+        "text": "यही है वर्षावन।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "वर्षावन कहाँ उगते हैं",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ों और बारिश से बनी एक पूरी दुनिया।",
+      "text_markdown": "पेड़ों और बारिश से बनी एक पूरी दुनिया।",
+      "tts": {
+        "text": "पेड़ों और बारिश से बनी एक पूरी दुनिया।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "मौसम",
+      "text_markdown": "मौसम"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय वर्षावन का मौसम सरल है।",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन का मौसम सरल है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय वर्षावन का मौसम सरल है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह गर्म रहता है, और बहुत बारिश होती है।",
+      "text_markdown": "यह गर्म रहता है, और बहुत बारिश होती है।",
+      "tts": {
+        "text": "यह गर्म रहता है, और बहुत बारिश होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तापमान पूरे साल लगभग एक जैसा रहता है।",
+      "text_markdown": "तापमान पूरे साल लगभग एक जैसा रहता है।",
+      "tts": {
+        "text": "तापमान पूरे साल लगभग एक जैसा रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सर्दियों में ठंड नहीं पड़ती।",
+      "text_markdown": "सर्दियों में ठंड नहीं पड़ती।",
+      "tts": {
+        "text": "सर्दियों में ठंड नहीं पड़ती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मियों में बहुत गर्मी नहीं होती।",
+      "text_markdown": "गर्मियों में बहुत गर्मी नहीं होती।",
+      "tts": {
+        "text": "गर्मियों में बहुत गर्मी नहीं होती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर दिन गर्म और स्थिर रहते हैं।",
+      "text_markdown": "ज़्यादातर दिन गर्म और स्थिर रहते हैं।",
+      "tts": {
+        "text": "ज़्यादातर दिन गर्म और स्थिर रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारिश लगभग हर दिन होती है।",
+      "text_markdown": "बारिश लगभग हर दिन होती है।",
+      "tts": {
+        "text": "बारिश लगभग हर दिन होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर साल में दो मीटर से ज़्यादा बारिश होती है।",
+      "text_markdown": "कुछ जगहों पर साल में दो मीटर से ज़्यादा बारिश होती है।",
+      "tts": {
+        "text": "कुछ जगहों पर साल में दो मीटर से ज़्यादा बारिश होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह दुनिया के ज़्यादातर हिस्सों में होने वाली बारिश से कहीं ज़्यादा है।",
+      "text_markdown": "यह दुनिया के ज़्यादातर हिस्सों में होने वाली बारिश से कहीं ज़्यादा है।",
+      "tts": {
+        "text": "यह दुनिया के ज़्यादातर हिस्सों में होने वाली बारिश से कहीं ज़्यादा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारिश अक्सर दोपहर बाद आती है।",
+      "text_markdown": "बारिश अक्सर दोपहर बाद आती है।",
+      "tts": {
+        "text": "बारिश अक्सर दोपहर बाद आती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ों के ऊपर बड़े बादल जमा हो जाते हैं।",
+      "text_markdown": "पेड़ों के ऊपर बड़े बादल जमा हो जाते हैं।",
+      "tts": {
+        "text": "पेड़ों के ऊपर बड़े बादल जमा हो जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक दो घंटे तक तेज़ बौछार पड़ती है।",
+      "text_markdown": "एक दो घंटे तक तेज़ बौछार पड़ती है।",
+      "tts": {
+        "text": "एक दो घंटे तक तेज़ बौछार पड़ती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर सूरज वापस निकल आता है।",
+      "text_markdown": "फिर सूरज वापस निकल आता है।",
+      "tts": {
+        "text": "फिर सूरज वापस निकल आता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पत्ते चमकते हैं, और ज़मीन से भाप उठती है।",
+      "text_markdown": "पत्ते चमकते हैं, और ज़मीन से भाप उठती है।",
+      "tts": {
+        "text": "पत्ते चमकते हैं, और ज़मीन से भाप उठती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ चार मौसम नहीं होते।",
+      "text_markdown": "यहाँ चार मौसम नहीं होते।",
+      "tts": {
+        "text": "यहाँ चार मौसम नहीं होते।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बस एक ज़्यादा गीला समय और एक ज़्यादा सूखा समय होता है।",
+      "text_markdown": "बस एक ज़्यादा गीला समय और एक ज़्यादा सूखा समय होता है।",
+      "tts": {
+        "text": "बस एक ज़्यादा गीला समय और एक ज़्यादा सूखा समय होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखे समय में भी अक्सर बारिश होती रहती है।",
+      "text_markdown": "सूखे समय में भी अक्सर बारिश होती रहती है।",
+      "tts": {
+        "text": "सूखे समय में भी अक्सर बारिश होती रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन के पौधों और जानवरों के लिए, हर दिन लगभग एक जैसा लगता है।",
+      "text_markdown": "वर्षावन के पौधों और जानवरों के लिए, हर दिन लगभग एक जैसा लगता है।",
+      "tts": {
+        "text": "वर्षावन के पौधों और जानवरों के लिए, हर दिन लगभग एक जैसा लगता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ज़मीन और पानी",
+      "text_markdown": "ज़मीन और पानी"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन की ज़मीन जीवन से भरपूर है, लेकिन मिट्टी पतली है।",
+      "text_markdown": "वर्षावन की ज़मीन जीवन से भरपूर है, लेकिन मिट्टी पतली है।",
+      "tts": {
+        "text": "वर्षावन की ज़मीन जीवन से भरपूर है, लेकिन मिट्टी पतली है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर अच्छाई ऊपर के कुछ ही सेंटीमीटर में होती है।",
+      "text_markdown": "ज़्यादातर अच्छाई ऊपर के कुछ ही सेंटीमीटर में होती है।",
+      "tts": {
+        "text": "ज़्यादातर अच्छाई ऊपर के कुछ ही सेंटीमीटर में होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब कोई पत्ता गिरता है, तो कीड़े और सूक्ष्म जीव उसे बहुत जल्दी तोड़ देते हैं।",
+      "text_markdown": "जब कोई पत्ता गिरता है, तो कीड़े और सूक्ष्म जीव उसे बहुत जल्दी तोड़ देते हैं।",
+      "tts": {
+        "text": "जब कोई पत्ता गिरता है, तो कीड़े और सूक्ष्म जीव उसे बहुत जल्दी तोड़ देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ उस भोजन को लगभग तुरंत वापस ले लेते हैं।",
+      "text_markdown": "पेड़ उस भोजन को लगभग तुरंत वापस ले लेते हैं।",
+      "tts": {
+        "text": "पेड़ उस भोजन को लगभग तुरंत वापस ले लेते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसीलिए कटे हुए वर्षावन को वापस लाना मुश्किल है।",
+      "text_markdown": "इसीलिए कटे हुए वर्षावन को वापस लाना मुश्किल है।",
+      "tts": {
+        "text": "इसीलिए कटे हुए वर्षावन को वापस लाना मुश्किल है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ों के बिना, बारिश पतली मिट्टी को बहा ले जाती है।",
+      "text_markdown": "पेड़ों के बिना, बारिश पतली मिट्टी को बहा ले जाती है।",
+      "tts": {
+        "text": "पेड़ों के बिना, बारिश पतली मिट्टी को बहा ले जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर वर्षावन में से नदियाँ बहती हैं।",
+      "text_markdown": "हर वर्षावन में से नदियाँ बहती हैं।",
+      "tts": {
+        "text": "हर वर्षावन में से नदियाँ बहती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ नदियाँ बहुत बड़ी हैं।",
+      "text_markdown": "कुछ नदियाँ बहुत बड़ी हैं।",
+      "tts": {
+        "text": "कुछ नदियाँ बहुत बड़ी हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेज़न नदी दुनिया की किसी भी और नदी से ज़्यादा पानी ले जाती है।",
+      "text_markdown": "अमेज़न नदी दुनिया की किसी भी और नदी से ज़्यादा पानी ले जाती है।",
+      "tts": {
+        "text": "अमेज़न नदी दुनिया की किसी भी और नदी से ज़्यादा पानी ले जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बरसात के समय, नदियाँ जंगल के अंदर दूर तक फैल जाती हैं।",
+      "text_markdown": "बरसात के समय, नदियाँ जंगल के अंदर दूर तक फैल जाती हैं।",
+      "tts": {
+        "text": "बरसात के समय, नदियाँ जंगल के अंदर दूर तक फैल जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ महीनों तक पानी में खड़े रहते हैं।",
+      "text_markdown": "पेड़ महीनों तक पानी में खड़े रहते हैं।",
+      "tts": {
+        "text": "पेड़ महीनों तक पानी में खड़े रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मछलियाँ तनों के बीच तैरती हैं।",
+      "text_markdown": "मछलियाँ तनों के बीच तैरती हैं।",
+      "tts": {
+        "text": "मछलियाँ तनों के बीच तैरती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी नदियाँ छोटी और साफ़ हैं, जिनके तले में पत्थर हैं।",
+      "text_markdown": "दूसरी नदियाँ छोटी और साफ़ हैं, जिनके तले में पत्थर हैं।",
+      "tts": {
+        "text": "दूसरी नदियाँ छोटी और साफ़ हैं, जिनके तले में पत्थर हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जंगल खुद कई परतों में उगता है।",
+      "text_markdown": "जंगल खुद कई परतों में उगता है।",
+      "tts": {
+        "text": "जंगल खुद कई परतों में उगता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊपर सबसे ऊँचे पेड़ हैं, जिनकी चोटियाँ धूप में फैली हुई हैं।",
+      "text_markdown": "ऊपर सबसे ऊँचे पेड़ हैं, जिनकी चोटियाँ धूप में फैली हुई हैं।",
+      "tts": {
+        "text": "ऊपर सबसे ऊँचे पेड़ हैं, जिनकी चोटियाँ धूप में फैली हुई हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके नीचे पत्तों की एक घनी हरी छत है।",
+      "text_markdown": "उनके नीचे पत्तों की एक घनी हरी छत है।",
+      "tts": {
+        "text": "उनके नीचे पत्तों की एक घनी हरी छत है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उस छत के नीचे हवा छायादार और शांत है।",
+      "text_markdown": "उस छत के नीचे हवा छायादार और शांत है।",
+      "tts": {
+        "text": "उस छत के नीचे हवा छायादार और शांत है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नीचे ज़मीन पर, बहुत थोड़ी रोशनी ही पहुँचती है।",
+      "text_markdown": "नीचे ज़मीन पर, बहुत थोड़ी रोशनी ही पहुँचती है।",
+      "tts": {
+        "text": "नीचे ज़मीन पर, बहुत थोड़ी रोशनी ही पहुँचती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर परत इस जैव क्षेत्र के जानवरों और पौधों के लिए एक अलग घर है।",
+      "text_markdown": "हर परत इस जैव क्षेत्र के जानवरों और पौधों के लिए एक अलग घर है।",
+      "tts": {
+        "text": "हर परत इस जैव क्षेत्र के जानवरों और पौधों के लिए एक अलग घर है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पौधे",
+      "text_markdown": "पौधे"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय वर्षावन में ज़मीन के किसी भी और जैव क्षेत्र से ज़्यादा तरह के पौधे हैं।",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन में ज़मीन के किसी भी और जैव क्षेत्र से ज़्यादा तरह के पौधे हैं।",
+      "tts": {
+        "text": "उष्णकटिबंधीय वर्षावन में ज़मीन के किसी भी और जैव क्षेत्र से ज़्यादा तरह के पौधे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ इसका दिल हैं।",
+      "text_markdown": "पेड़ इसका दिल हैं।",
+      "tts": {
+        "text": "पेड़ इसका दिल हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ पेड़ सूरज की ओर पहुँचते हुए बहुत ऊँचे उगते हैं।",
+      "text_markdown": "कुछ पेड़ सूरज की ओर पहुँचते हुए बहुत ऊँचे उगते हैं।",
+      "tts": {
+        "text": "कुछ पेड़ सूरज की ओर पहुँचते हुए बहुत ऊँचे उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके तने सीधे और चिकने होते हैं।",
+      "text_markdown": "उनके तने सीधे और चिकने होते हैं।",
+      "tts": {
+        "text": "उनके तने सीधे और चिकने होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनकी जड़ें नीचे दीवारों की तरह चौड़ी फैली होती हैं, ताकि पतली मिट्टी में उन्हें थामे रख सकें।",
+      "text_markdown": "उनकी जड़ें नीचे दीवारों की तरह चौड़ी फैली होती हैं, ताकि पतली मिट्टी में उन्हें थामे रख सकें।",
+      "tts": {
+        "text": "उनकी जड़ें नीचे दीवारों की तरह चौड़ी फैली होती हैं, ताकि पतली मिट्टी में उन्हें थामे रख सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बेलें तनों पर रोशनी की ओर चढ़ती हैं।",
+      "text_markdown": "बेलें तनों पर रोशनी की ओर चढ़ती हैं।",
+      "tts": {
+        "text": "बेलें तनों पर रोशनी की ओर चढ़ती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ बेलें आपकी बाँह जितनी मोटी होती हैं।",
+      "text_markdown": "कुछ बेलें आपकी बाँह जितनी मोटी होती हैं।",
+      "tts": {
+        "text": "कुछ बेलें आपकी बाँह जितनी मोटी होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे पेड़ों के चारों ओर लिपटती हैं और शाखाओं से नीचे लटकती हैं।",
+      "text_markdown": "वे पेड़ों के चारों ओर लिपटती हैं और शाखाओं से नीचे लटकती हैं।",
+      "tts": {
+        "text": "वे पेड़ों के चारों ओर लिपटती हैं और शाखाओं से नीचे लटकती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पौधे खुद पेड़ों पर, हवा में ऊँचाई पर उगते हैं।",
+      "text_markdown": "पौधे खुद पेड़ों पर, हवा में ऊँचाई पर उगते हैं।",
+      "tts": {
+        "text": "पौधे खुद पेड़ों पर, हवा में ऊँचाई पर उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनकी जड़ें ज़मीन में बिल्कुल नहीं होतीं।",
+      "text_markdown": "उनकी जड़ें ज़मीन में बिल्कुल नहीं होतीं।",
+      "tts": {
+        "text": "उनकी जड़ें ज़मीन में बिल्कुल नहीं होतीं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे उस बारिश को पीते हैं जो छाल पर से बहती है।",
+      "text_markdown": "वे उस बारिश को पीते हैं जो छाल पर से बहती है।",
+      "tts": {
+        "text": "वे उस बारिश को पीते हैं जो छाल पर से बहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अंधेरी जंगल की ज़मीन पर फ़र्न और मुलायम हरे पौधे उगते हैं।",
+      "text_markdown": "अंधेरी जंगल की ज़मीन पर फ़र्न और मुलायम हरे पौधे उगते हैं।",
+      "tts": {
+        "text": "अंधेरी जंगल की ज़मीन पर फ़र्न और मुलायम हरे पौधे उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके पत्ते चौड़े और चपटे होते हैं ताकि रोशनी की हर बूँद पकड़ सकें।",
+      "text_markdown": "उनके पत्ते चौड़े और चपटे होते हैं ताकि रोशनी की हर बूँद पकड़ सकें।",
+      "tts": {
+        "text": "उनके पत्ते चौड़े और चपटे होते हैं ताकि रोशनी की हर बूँद पकड़ सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर उस रंग के फूल खिलते हैं जिसके बारे में आप सोच सकते हैं।",
+      "text_markdown": "हर उस रंग के फूल खिलते हैं जिसके बारे में आप सोच सकते हैं।",
+      "tts": {
+        "text": "हर उस रंग के फूल खिलते हैं जिसके बारे में आप सोच सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ लाल हैं, कुछ पीले हैं, कुछ गहरे बैंगनी हैं।",
+      "text_markdown": "कुछ लाल हैं, कुछ पीले हैं, कुछ गहरे बैंगनी हैं।",
+      "tts": {
+        "text": "कुछ लाल हैं, कुछ पीले हैं, कुछ गहरे बैंगनी हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से कई रात को खुलते हैं।",
+      "text_markdown": "इनमें से कई रात को खुलते हैं।",
+      "tts": {
+        "text": "इनमें से कई रात को खुलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शाखाओं पर पूरे साल फल लटकते रहते हैं।",
+      "text_markdown": "शाखाओं पर पूरे साल फल लटकते रहते हैं।",
+      "tts": {
+        "text": "शाखाओं पर पूरे साल फल लटकते रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मीठे फल हैं, खट्टे फल हैं, और सख़्त छिलके वाले फल हैं।",
+      "text_markdown": "मीठे फल हैं, खट्टे फल हैं, और सख़्त छिलके वाले फल हैं।",
+      "tts": {
+        "text": "मीठे फल हैं, खट्टे फल हैं, और सख़्त छिलके वाले फल हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जो खाना हम घर पर खाते हैं, उसमें से बहुत कुछ पहले वर्षावनों में जंगली रूप से उगा था।",
+      "text_markdown": "जो खाना हम घर पर खाते हैं, उसमें से बहुत कुछ पहले वर्षावनों में जंगली रूप से उगा था।",
+      "tts": {
+        "text": "जो खाना हम घर पर खाते हैं, उसमें से बहुत कुछ पहले वर्षावनों में जंगली रूप से उगा था।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कोको, वह पौधा जिससे हमें चॉकलेट मिलती है, दक्षिण अमेरिका के वर्षावनों से आया।",
+      "text_markdown": "कोको, वह पौधा जिससे हमें चॉकलेट मिलती है, दक्षिण अमेरिका के वर्षावनों से आया।",
+      "tts": {
+        "text": "कोको, वह पौधा जिससे हमें चॉकलेट मिलती है, दक्षिण अमेरिका के वर्षावनों से आया।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहले केले के पौधे दक्षिण पूर्व एशिया के वर्षावनों में उगे थे।",
+      "text_markdown": "पहले केले के पौधे दक्षिण पूर्व एशिया के वर्षावनों में उगे थे।",
+      "tts": {
+        "text": "पहले केले के पौधे दक्षिण पूर्व एशिया के वर्षावनों में उगे थे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर पसंदीदा खाने के पीछे पृथ्वी पर कहीं किसी जंगल की कहानी है।",
+      "text_markdown": "हर पसंदीदा खाने के पीछे पृथ्वी पर कहीं किसी जंगल की कहानी है।",
+      "tts": {
+        "text": "हर पसंदीदा खाने के पीछे पृथ्वी पर कहीं किसी जंगल की कहानी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आप वर्षावन के किसी पौधे को देखते हैं, तो अक्सर उसने जीने का कोई चतुर तरीका खोज लिया होता है।",
+      "text_markdown": "जब आप वर्षावन के किसी पौधे को देखते हैं, तो अक्सर उसने जीने का कोई चतुर तरीका खोज लिया होता है।",
+      "tts": {
+        "text": "जब आप वर्षावन के किसी पौधे को देखते हैं, तो अक्सर उसने जीने का कोई चतुर तरीका खोज लिया होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ पत्तों की नोक पर एक लंबी नोक होती है, ताकि बारिश जल्दी बह जाए।",
+      "text_markdown": "कुछ पत्तों की नोक पर एक लंबी नोक होती है, ताकि बारिश जल्दी बह जाए।",
+      "tts": {
+        "text": "कुछ पत्तों की नोक पर एक लंबी नोक होती है, ताकि बारिश जल्दी बह जाए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ फूल केवल रात को मीठी ख़ुशबू देते हैं, ताकि सही कीड़े को बुला सकें।",
+      "text_markdown": "कुछ फूल केवल रात को मीठी ख़ुशबू देते हैं, ताकि सही कीड़े को बुला सकें।",
+      "tts": {
+        "text": "कुछ फूल केवल रात को मीठी ख़ुशबू देते हैं, ताकि सही कीड़े को बुला सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पूरा जंगल एक शांत मशीन है, जो हरे रंग से बनी है।",
+      "text_markdown": "पूरा जंगल एक शांत मशीन है, जो हरे रंग से बनी है।",
+      "tts": {
+        "text": "पूरा जंगल एक शांत मशीन है, जो हरे रंग से बनी है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "जानवर",
+      "text_markdown": "जानवर"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़मीन पर किसी भी और जगह से ज़्यादा तरह के जानवर उष्णकटिबंधीय वर्षावन में रहते हैं।",
+      "text_markdown": "ज़मीन पर किसी भी और जगह से ज़्यादा तरह के जानवर उष्णकटिबंधीय वर्षावन में रहते हैं।",
+      "tts": {
+        "text": "ज़मीन पर किसी भी और जगह से ज़्यादा तरह के जानवर उष्णकटिबंधीय वर्षावन में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से ज़्यादातर पेड़ों पर ऊपर रहते हैं, ज़मीन पर नहीं।",
+      "text_markdown": "इनमें से ज़्यादातर पेड़ों पर ऊपर रहते हैं, ज़मीन पर नहीं।",
+      "tts": {
+        "text": "इनमें से ज़्यादातर पेड़ों पर ऊपर रहते हैं, ज़मीन पर नहीं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊपर ज़्यादा खाना और ज़्यादा रोशनी होती है।",
+      "text_markdown": "ऊपर ज़्यादा खाना और ज़्यादा रोशनी होती है।",
+      "tts": {
+        "text": "ऊपर ज़्यादा खाना और ज़्यादा रोशनी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कई वर्षावनों में बंदर रहते हैं।",
+      "text_markdown": "कई वर्षावनों में बंदर रहते हैं।",
+      "tts": {
+        "text": "कई वर्षावनों में बंदर रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे एक शाखा से दूसरी शाखा पर कूदते हैं और पेड़ों के पार एक दूसरे को आवाज़ देते हैं।",
+      "text_markdown": "वे एक शाखा से दूसरी शाखा पर कूदते हैं और पेड़ों के पार एक दूसरे को आवाज़ देते हैं।",
+      "tts": {
+        "text": "वे एक शाखा से दूसरी शाखा पर कूदते हैं और पेड़ों के पार एक दूसरे को आवाज़ देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण अमेरिका के वर्षावनों में, कुछ बंदरों की लंबी पूँछ होती है जिसे वे एक अतिरिक्त हाथ की तरह इस्तेमाल करते हैं।",
+      "text_markdown": "दक्षिण अमेरिका के वर्षावनों में, कुछ बंदरों की लंबी पूँछ होती है जिसे वे एक अतिरिक्त हाथ की तरह इस्तेमाल करते हैं।",
+      "tts": {
+        "text": "दक्षिण अमेरिका के वर्षावनों में, कुछ बंदरों की लंबी पूँछ होती है जिसे वे एक अतिरिक्त हाथ की तरह इस्तेमाल करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तोते और दूसरे चमकीले पक्षी ऊँची शाखाओं के बीच उड़ते हैं।",
+      "text_markdown": "तोते और दूसरे चमकीले पक्षी ऊँची शाखाओं के बीच उड़ते हैं।",
+      "tts": {
+        "text": "तोते और दूसरे चमकीले पक्षी ऊँची शाखाओं के बीच उड़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे फल और बीज खाते हैं।",
+      "text_markdown": "वे फल और बीज खाते हैं।",
+      "tts": {
+        "text": "वे फल और बीज खाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके पंख लाल, हरे, नीले, और पीले होते हैं।",
+      "text_markdown": "उनके पंख लाल, हरे, नीले, और पीले होते हैं।",
+      "tts": {
+        "text": "उनके पंख लाल, हरे, नीले, और पीले होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कई वर्षावनों में, बड़ी बिल्लियाँ रात को ज़मीन पर शिकार करती हैं।",
+      "text_markdown": "कई वर्षावनों में, बड़ी बिल्लियाँ रात को ज़मीन पर शिकार करती हैं।",
+      "tts": {
+        "text": "कई वर्षावनों में, बड़ी बिल्लियाँ रात को ज़मीन पर शिकार करती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेरिका में, यह बिल्ली जगुआर है।",
+      "text_markdown": "अमेरिका में, यह बिल्ली जगुआर है।",
+      "tts": {
+        "text": "अमेरिका में, यह बिल्ली जगुआर है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एशिया में, यह है बाघ।",
+      "text_markdown": "एशिया में, यह है बाघ।",
+      "tts": {
+        "text": "एशिया में, यह है बाघ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में, यह है तेंदुआ।",
+      "text_markdown": "अफ़्रीका में, यह है तेंदुआ।",
+      "tts": {
+        "text": "अफ़्रीका में, यह है तेंदुआ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये सब मज़बूत और चुप होते हैं, और इनके बालों पर धब्बे या धारियाँ होती हैं।",
+      "text_markdown": "ये सब मज़बूत और चुप होते हैं, और इनके बालों पर धब्बे या धारियाँ होती हैं।",
+      "tts": {
+        "text": "ये सब मज़बूत और चुप होते हैं, और इनके बालों पर धब्बे या धारियाँ होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साँप पत्तों और पेड़ों के बीच से फिसलते हैं।",
+      "text_markdown": "साँप पत्तों और पेड़ों के बीच से फिसलते हैं।",
+      "tts": {
+        "text": "साँप पत्तों और पेड़ों के बीच से फिसलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ साँप बहुत छोटे होते हैं, और कुछ बहुत लंबे होते हैं।",
+      "text_markdown": "कुछ साँप बहुत छोटे होते हैं, और कुछ बहुत लंबे होते हैं।",
+      "tts": {
+        "text": "कुछ साँप बहुत छोटे होते हैं, और कुछ बहुत लंबे होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से ज़्यादातर शर्मीले होते हैं और लोगों से दूर रहते हैं।",
+      "text_markdown": "इनमें से ज़्यादातर शर्मीले होते हैं और लोगों से दूर रहते हैं।",
+      "tts": {
+        "text": "इनमें से ज़्यादातर शर्मीले होते हैं और लोगों से दूर रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मेंढक हर रात गाते हैं, ख़ासकर बारिश के बाद।",
+      "text_markdown": "मेंढक हर रात गाते हैं, ख़ासकर बारिश के बाद।",
+      "tts": {
+        "text": "मेंढक हर रात गाते हैं, ख़ासकर बारिश के बाद।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ मेंढक छोटे और चमकीले होते हैं।",
+      "text_markdown": "कुछ मेंढक छोटे और चमकीले होते हैं।",
+      "tts": {
+        "text": "कुछ मेंढक छोटे और चमकीले होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चमकीले रंग दूसरे जानवरों को चेतावनी देते हैं कि वे इन्हें न खाएँ।",
+      "text_markdown": "चमकीले रंग दूसरे जानवरों को चेतावनी देते हैं कि वे इन्हें न खाएँ।",
+      "tts": {
+        "text": "चमकीले रंग दूसरे जानवरों को चेतावनी देते हैं कि वे इन्हें न खाएँ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जंगल के हर कोने में कीड़े भरे हुए हैं।",
+      "text_markdown": "जंगल के हर कोने में कीड़े भरे हुए हैं।",
+      "tts": {
+        "text": "जंगल के हर कोने में कीड़े भरे हुए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन में किसी भी और तरह के जानवर से ज़्यादा कीड़े हैं।",
+      "text_markdown": "वर्षावन में किसी भी और तरह के जानवर से ज़्यादा कीड़े हैं।",
+      "tts": {
+        "text": "वर्षावन में किसी भी और तरह के जानवर से ज़्यादा कीड़े हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चींटियाँ जंगल की ज़मीन पर लंबी कतारों में चलती हैं।",
+      "text_markdown": "चींटियाँ जंगल की ज़मीन पर लंबी कतारों में चलती हैं।",
+      "tts": {
+        "text": "चींटियाँ जंगल की ज़मीन पर लंबी कतारों में चलती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भृंग तनों पर चढ़ते हैं।",
+      "text_markdown": "भृंग तनों पर चढ़ते हैं।",
+      "tts": {
+        "text": "भृंग तनों पर चढ़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तितलियाँ चौड़े, रंगीन पंखों पर हवा में तैरती हैं।",
+      "text_markdown": "तितलियाँ चौड़े, रंगीन पंखों पर हवा में तैरती हैं।",
+      "tts": {
+        "text": "तितलियाँ चौड़े, रंगीन पंखों पर हवा में तैरती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियों में मछलियाँ रहती हैं, कई आकार और रूपों में।",
+      "text_markdown": "नदियों में मछलियाँ रहती हैं, कई आकार और रूपों में।",
+      "tts": {
+        "text": "नदियों में मछलियाँ रहती हैं, कई आकार और रूपों में।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ मछलियाँ छोटी और चाँदी जैसी होती हैं, और कुछ बच्चे से भी बड़ी होती हैं।",
+      "text_markdown": "कुछ मछलियाँ छोटी और चाँदी जैसी होती हैं, और कुछ बच्चे से भी बड़ी होती हैं।",
+      "tts": {
+        "text": "कुछ मछलियाँ छोटी और चाँदी जैसी होती हैं, और कुछ बच्चे से भी बड़ी होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इन सबके ऊपर, गरुड़ जंगल की हरी छत के ऊपर मँडराते हैं।",
+      "text_markdown": "इन सबके ऊपर, गरुड़ जंगल की हरी छत के ऊपर मँडराते हैं।",
+      "tts": {
+        "text": "इन सबके ऊपर, गरुड़ जंगल की हरी छत के ऊपर मँडराते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे नीचे हलचल की तलाश में रहते हैं।",
+      "text_markdown": "वे नीचे हलचल की तलाश में रहते हैं।",
+      "tts": {
+        "text": "वे नीचे हलचल की तलाश में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चमगादड़ शाम को फल और कीड़े खाने के लिए निकलते हैं।",
+      "text_markdown": "चमगादड़ शाम को फल और कीड़े खाने के लिए निकलते हैं।",
+      "tts": {
+        "text": "चमगादड़ शाम को फल और कीड़े खाने के लिए निकलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन के एक ही पेड़ पर शायद आपको किसी और जगह के पूरे शहर से ज़्यादा तरह के जानवर मिल जाएँ।",
+      "text_markdown": "वर्षावन के एक ही पेड़ पर शायद आपको किसी और जगह के पूरे शहर से ज़्यादा तरह के जानवर मिल जाएँ।",
+      "tts": {
+        "text": "वर्षावन के एक ही पेड़ पर शायद आपको किसी और जगह के पूरे शहर से ज़्यादा तरह के जानवर मिल जाएँ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही इस जैव क्षेत्र का अचंभा है।",
+      "text_markdown": "यही इस जैव क्षेत्र का अचंभा है।",
+      "tts": {
+        "text": "यही इस जैव क्षेत्र का अचंभा है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लोग",
+      "text_markdown": "लोग"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग बहुत लंबे समय से उष्णकटिबंधीय वर्षावन में रहते आए हैं।",
+      "text_markdown": "लोग बहुत लंबे समय से उष्णकटिबंधीय वर्षावन में रहते आए हैं।",
+      "tts": {
+        "text": "लोग बहुत लंबे समय से उष्णकटिबंधीय वर्षावन में रहते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने पेड़ों, बारिश, और जानवरों के साथ अच्छी तरह रहना सीखा है।",
+      "text_markdown": "उन्होंने पेड़ों, बारिश, और जानवरों के साथ अच्छी तरह रहना सीखा है।",
+      "tts": {
+        "text": "उन्होंने पेड़ों, बारिश, और जानवरों के साथ अच्छी तरह रहना सीखा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन के कई लोग छोटे गाँवों में रहते हैं।",
+      "text_markdown": "वर्षावन के कई लोग छोटे गाँवों में रहते हैं।",
+      "tts": {
+        "text": "वर्षावन के कई लोग छोटे गाँवों में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घर अक्सर ऊँचे लकड़ी के खंभों पर बनाए जाते हैं ताकि गीली ज़मीन से ऊपर रहें।",
+      "text_markdown": "घर अक्सर ऊँचे लकड़ी के खंभों पर बनाए जाते हैं ताकि गीली ज़मीन से ऊपर रहें।",
+      "tts": {
+        "text": "घर अक्सर ऊँचे लकड़ी के खंभों पर बनाए जाते हैं ताकि गीली ज़मीन से ऊपर रहें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "छतें घनी कतारों में बिछाए गए पत्तों से बनती हैं।",
+      "text_markdown": "छतें घनी कतारों में बिछाए गए पत्तों से बनती हैं।",
+      "tts": {
+        "text": "छतें घनी कतारों में बिछाए गए पत्तों से बनती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक अच्छी पत्तों की छत भारी बारिश को बाहर रखती है।",
+      "text_markdown": "एक अच्छी पत्तों की छत भारी बारिश को बाहर रखती है।",
+      "tts": {
+        "text": "एक अच्छी पत्तों की छत भारी बारिश को बाहर रखती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दीवारें अक्सर खुली होती हैं ताकि गर्म हवा गुज़र सके।",
+      "text_markdown": "दीवारें अक्सर खुली होती हैं ताकि गर्म हवा गुज़र सके।",
+      "tts": {
+        "text": "दीवारें अक्सर खुली होती हैं ताकि गर्म हवा गुज़र सके।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग नदियों में मछली पकड़ते हैं और जंगल से खाना इकट्ठा करते हैं।",
+      "text_markdown": "लोग नदियों में मछली पकड़ते हैं और जंगल से खाना इकट्ठा करते हैं।",
+      "tts": {
+        "text": "लोग नदियों में मछली पकड़ते हैं और जंगल से खाना इकट्ठा करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे धनुष और भालों से छोटे जानवरों का शिकार करते हैं।",
+      "text_markdown": "वे धनुष और भालों से छोटे जानवरों का शिकार करते हैं।",
+      "tts": {
+        "text": "वे धनुष और भालों से छोटे जानवरों का शिकार करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे पेड़ों से साफ़ किए गए छोटे बग़ीचों में खाना उगाते हैं।",
+      "text_markdown": "वे पेड़ों से साफ़ किए गए छोटे बग़ीचों में खाना उगाते हैं।",
+      "tts": {
+        "text": "वे पेड़ों से साफ़ किए गए छोटे बग़ीचों में खाना उगाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे क्या उगाते हैं यह इस पर निर्भर करता है कि वे कहाँ रहते हैं।",
+      "text_markdown": "वे क्या उगाते हैं यह इस पर निर्भर करता है कि वे कहाँ रहते हैं।",
+      "tts": {
+        "text": "वे क्या उगाते हैं यह इस पर निर्भर करता है कि वे कहाँ रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण अमेरिका के वर्षावनों में, लोग हज़ारों सालों से कसावा और शकरकंद उगाते आए हैं।",
+      "text_markdown": "दक्षिण अमेरिका के वर्षावनों में, लोग हज़ारों सालों से कसावा और शकरकंद उगाते आए हैं।",
+      "tts": {
+        "text": "दक्षिण अमेरिका के वर्षावनों में, लोग हज़ारों सालों से कसावा और शकरकंद उगाते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका के वर्षावनों में, लोग रतालू और ताड़ का फल उगाते आए हैं।",
+      "text_markdown": "अफ़्रीका के वर्षावनों में, लोग रतालू और ताड़ का फल उगाते आए हैं।",
+      "tts": {
+        "text": "अफ़्रीका के वर्षावनों में, लोग रतालू और ताड़ का फल उगाते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण पूर्व एशिया और प्रशांत के वर्षावनों में, लोग अरबी, चावल, और रोटीफल उगाते आए हैं।",
+      "text_markdown": "दक्षिण पूर्व एशिया और प्रशांत के वर्षावनों में, लोग अरबी, चावल, और रोटीफल उगाते आए हैं।",
+      "tts": {
+        "text": "दक्षिण पूर्व एशिया और प्रशांत के वर्षावनों में, लोग अरबी, चावल, और रोटीफल उगाते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ सालों बाद वे बग़ीचे को फिर से जंगल बनने देते हैं, और कहीं और नए बग़ीचे की शुरुआत करते हैं।",
+      "text_markdown": "कुछ सालों बाद वे बग़ीचे को फिर से जंगल बनने देते हैं, और कहीं और नए बग़ीचे की शुरुआत करते हैं।",
+      "tts": {
+        "text": "कुछ सालों बाद वे बग़ीचे को फिर से जंगल बनने देते हैं, और कहीं और नए बग़ीचे की शुरुआत करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसी तरह जंगल स्वस्थ रहता है।",
+      "text_markdown": "इसी तरह जंगल स्वस्थ रहता है।",
+      "tts": {
+        "text": "इसी तरह जंगल स्वस्थ रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वर्षावन के लोग हज़ारों पौधों को जानते हैं।",
+      "text_markdown": "वर्षावन के लोग हज़ारों पौधों को जानते हैं।",
+      "tts": {
+        "text": "वर्षावन के लोग हज़ारों पौधों को जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जानते हैं कि कौन से खाना देते हैं, कौन से दवा देते हैं, और कौन से खाने के लिए सुरक्षित नहीं हैं।",
+      "text_markdown": "वे जानते हैं कि कौन से खाना देते हैं, कौन से दवा देते हैं, और कौन से खाने के लिए सुरक्षित नहीं हैं।",
+      "tts": {
+        "text": "वे जानते हैं कि कौन से खाना देते हैं, कौन से दवा देते हैं, और कौन से खाने के लिए सुरक्षित नहीं हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे पक्षियों के गीत सीखते हैं।",
+      "text_markdown": "वे पक्षियों के गीत सीखते हैं।",
+      "tts": {
+        "text": "वे पक्षियों के गीत सीखते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जानवरों के निशान सीखते हैं।",
+      "text_markdown": "वे जानवरों के निशान सीखते हैं।",
+      "tts": {
+        "text": "वे जानवरों के निशान सीखते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह ज्ञान माता पिता से बच्चों तक, साल दर साल बाँटा जाता है।",
+      "text_markdown": "यह ज्ञान माता पिता से बच्चों तक, साल दर साल बाँटा जाता है।",
+      "tts": {
+        "text": "यह ज्ञान माता पिता से बच्चों तक, साल दर साल बाँटा जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर वर्षावन में, इस तरह के जीवन की अपनी भाषाएँ, अपनी कहानियाँ, और अपना संगीत होता है।",
+      "text_markdown": "हर वर्षावन में, इस तरह के जीवन की अपनी भाषाएँ, अपनी कहानियाँ, और अपना संगीत होता है।",
+      "tts": {
+        "text": "हर वर्षावन में, इस तरह के जीवन की अपनी भाषाएँ, अपनी कहानियाँ, और अपना संगीत होता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "आज का वर्षावन",
+      "text_markdown": "आज का वर्षावन"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय वर्षावन पृथ्वी के सबसे महत्वपूर्ण जैव क्षेत्रों में से एक है।",
+      "text_markdown": "उष्णकटिबंधीय वर्षावन पृथ्वी के सबसे महत्वपूर्ण जैव क्षेत्रों में से एक है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय वर्षावन पृथ्वी के सबसे महत्वपूर्ण जैव क्षेत्रों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ ज़मीन से पानी ऊपर खींचते हैं और उसे आसमान में साँस की तरह छोड़ते हैं।",
+      "text_markdown": "पेड़ ज़मीन से पानी ऊपर खींचते हैं और उसे आसमान में साँस की तरह छोड़ते हैं।",
+      "tts": {
+        "text": "पेड़ ज़मीन से पानी ऊपर खींचते हैं और उसे आसमान में साँस की तरह छोड़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जो बादल जंगल के ऊपर बनते हैं, वे दूर की ज़मीनों तक बारिश ले जाते हैं।",
+      "text_markdown": "जो बादल जंगल के ऊपर बनते हैं, वे दूर की ज़मीनों तक बारिश ले जाते हैं।",
+      "tts": {
+        "text": "जो बादल जंगल के ऊपर बनते हैं, वे दूर की ज़मीनों तक बारिश ले जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ भी साँस लेते हैं, लेकिन साँस लेने में उनका तरीका हमसे उलटा होता है, बिल्कुल।",
+      "text_markdown": "पेड़ भी साँस लेते हैं, लेकिन साँस लेने में उनका तरीका हमसे उलटा होता है, बिल्कुल।",
+      "tts": {
+        "text": "पेड़ भी साँस लेते हैं, लेकिन साँस लेने में उनका तरीका हमसे उलटा होता है, बिल्कुल।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे वह गैस अंदर लेते हैं जो हम बाहर छोड़ते हैं, और उसका इस्तेमाल बढ़ने के लिए करते हैं।",
+      "text_markdown": "वे वह गैस अंदर लेते हैं जो हम बाहर छोड़ते हैं, और उसका इस्तेमाल बढ़ने के लिए करते हैं।",
+      "tts": {
+        "text": "वे वह गैस अंदर लेते हैं जो हम बाहर छोड़ते हैं, और उसका इस्तेमाल बढ़ने के लिए करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और वे वही गैस वापस देते हैं, हमारी सांसों वाली ऑक्सीजन।",
+      "text_markdown": "और वे वही गैस वापस देते हैं, हमारी सांसों वाली ऑक्सीजन।",
+      "tts": {
+        "text": "और वे वही गैस वापस देते हैं, हमारी सांसों वाली ऑक्सीजन।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन मुश्किल में है वर्षावन।",
+      "text_markdown": "लेकिन मुश्किल में है वर्षावन।",
+      "tts": {
+        "text": "लेकिन मुश्किल में है वर्षावन।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कई जगहों पर, लोगों ने फ़सलें उगाने या जानवर पालने के लिए पेड़ काट दिए हैं।",
+      "text_markdown": "कई जगहों पर, लोगों ने फ़सलें उगाने या जानवर पालने के लिए पेड़ काट दिए हैं।",
+      "tts": {
+        "text": "कई जगहों पर, लोगों ने फ़सलें उगाने या जानवर पालने के लिए पेड़ काट दिए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब पेड़ ख़त्म हो जाते हैं, तो मिट्टी बह जाती है, और बारिश पहले की तरह नहीं गिरती।",
+      "text_markdown": "जब पेड़ ख़त्म हो जाते हैं, तो मिट्टी बह जाती है, और बारिश पहले की तरह नहीं गिरती।",
+      "tts": {
+        "text": "जब पेड़ ख़त्म हो जाते हैं, तो मिट्टी बह जाती है, और बारिश पहले की तरह नहीं गिरती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वहाँ रहने वाले जानवर और लोग अपना घर खो देते हैं।",
+      "text_markdown": "वहाँ रहने वाले जानवर और लोग अपना घर खो देते हैं।",
+      "tts": {
+        "text": "वहाँ रहने वाले जानवर और लोग अपना घर खो देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया भर में कई समूह जो बचा है उसे बचाने के लिए काम कर रहे हैं।",
+      "text_markdown": "दुनिया भर में कई समूह जो बचा है उसे बचाने के लिए काम कर रहे हैं।",
+      "tts": {
+        "text": "दुनिया भर में कई समूह जो बचा है उसे बचाने के लिए काम कर रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे नए पेड़ लगाते हैं।",
+      "text_markdown": "वे नए पेड़ लगाते हैं।",
+      "tts": {
+        "text": "वे नए पेड़ लगाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जंगल में रहने वाले लोगों की मदद करते हैं ताकि वे जंगल की देखभाल कर सकें।",
+      "text_markdown": "वे जंगल में रहने वाले लोगों की मदद करते हैं ताकि वे जंगल की देखभाल कर सकें।",
+      "tts": {
+        "text": "वे जंगल में रहने वाले लोगों की मदद करते हैं ताकि वे जंगल की देखभाल कर सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जंगल का अध्ययन करते हैं ताकि हम उसे बेहतर समझ सकें।",
+      "text_markdown": "वे जंगल का अध्ययन करते हैं ताकि हम उसे बेहतर समझ सकें।",
+      "tts": {
+        "text": "वे जंगल का अध्ययन करते हैं ताकि हम उसे बेहतर समझ सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक वर्षावन को बढ़ने में सैकड़ों साल लगते हैं।",
+      "text_markdown": "एक वर्षावन को बढ़ने में सैकड़ों साल लगते हैं।",
+      "tts": {
+        "text": "एक वर्षावन को बढ़ने में सैकड़ों साल लगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन एक स्वस्थ वर्षावन हज़ारों सालों तक बढ़ता रह सकता है।",
+      "text_markdown": "लेकिन एक स्वस्थ वर्षावन हज़ारों सालों तक बढ़ता रह सकता है।",
+      "tts": {
+        "text": "लेकिन एक स्वस्थ वर्षावन हज़ारों सालों तक बढ़ता रह सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "आज का वर्षावन",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हमें इसकी देखभाल करनी चाहिए।",
+      "text_markdown": "हमें इसकी देखभाल करनी चाहिए।",
+      "tts": {
+        "text": "हमें इसकी देखभाल करनी चाहिए।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "समापन",
+      "text_markdown": "समापन"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह है उष्णकटिबंधीय वर्षावन।",
+      "text_markdown": "यह है उष्णकटिबंधीय वर्षावन।",
+      "tts": {
+        "text": "यह है उष्णकटिबंधीय वर्षावन।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक गर्म, गीली, हरी दुनिया जो जीवन से भरी हुई है।",
+      "text_markdown": "एक गर्म, गीली, हरी दुनिया जो जीवन से भरी हुई है।",
+      "tts": {
+        "text": "एक गर्म, गीली, हरी दुनिया जो जीवन से भरी हुई है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप कभी किसी वर्षावन में जाएँ, तो एक मिनट के लिए चुपचाप खड़े हो जाइए।",
+      "text_markdown": "अगर आप कभी किसी वर्षावन में जाएँ, तो एक मिनट के लिए चुपचाप खड़े हो जाइए।",
+      "tts": {
+        "text": "अगर आप कभी किसी वर्षावन में जाएँ, तो एक मिनट के लिए चुपचाप खड़े हो जाइए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पक्षियों, मेंढकों, और पत्तों पर पड़ती बारिश को सुनिए।",
+      "text_markdown": "पक्षियों, मेंढकों, और पत्तों पर पड़ती बारिश को सुनिए।",
+      "tts": {
+        "text": "पक्षियों, मेंढकों, और पत्तों पर पड़ती बारिश को सुनिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप अपने चारों ओर इस जैव क्षेत्र के दिल को धड़कते हुए सुनेंगे।",
+      "text_markdown": "आप अपने चारों ओर इस जैव क्षेत्र के दिल को धड़कते हुए सुनेंगे।",
+      "tts": {
+        "text": "आप अपने चारों ओर इस जैव क्षेत्र के दिल को धड़कते हुए सुनेंगे।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

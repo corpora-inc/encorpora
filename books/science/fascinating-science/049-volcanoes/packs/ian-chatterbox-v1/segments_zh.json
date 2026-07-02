@@ -1,0 +1,6728 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_volcanoes",
+  "language": "zh",
+  "total_segments": 422,
+  "segments": [
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch01-001",
+      "text": "地球之火",
+      "text_markdown": "地球之火",
+      "title": "地球之火"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "text": "火山是地球表面的一个开口，熔化的岩石、气体和火山灰从地下逸出。",
+      "text_markdown": "火山是地球表面的一个开口，熔化的岩石、气体和火山灰从地下逸出。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山是地球表面的一个开口，熔化的岩石、气体和火山灰从地下逸出。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-003",
+      "text": "火山这个词来自伏尔甘，罗马神话中的火神。",
+      "text_markdown": "火山这个词来自伏尔甘，罗马神话中的火神。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山这个词来自伏尔甘，罗马神话中的火神。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "text": "火山并不稀少。",
+      "text_markdown": "火山并不稀少。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山并不稀少。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "text": "陆地上大约有一千五百座潜在的活火山。",
+      "text_markdown": "陆地上大约有一千五百座潜在的活火山。",
+      "title": "地球之火",
+      "tts": {
+        "text": "陆地上大约有一千五百座潜在的活火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-006",
+      "text": "更多的火山隐藏在海洋之下。",
+      "text_markdown": "更多的火山隐藏在海洋之下。",
+      "title": "地球之火",
+      "tts": {
+        "text": "更多的火山隐藏在海洋之下。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-007",
+      "text": "火山喷发是地球上最强大的事件之一。",
+      "text_markdown": "火山喷发是地球上最强大的事件之一。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山喷发是地球上最强大的事件之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-008",
+      "text": "喷发是火山内部物质的释放。",
+      "text_markdown": "喷发是火山内部物质的释放。",
+      "title": "地球之火",
+      "tts": {
+        "text": "喷发是火山内部物质的释放。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-009",
+      "text": "有些喷发很温和。",
+      "text_markdown": "有些喷发很温和。",
+      "title": "地球之火",
+      "tts": {
+        "text": "有些喷发很温和。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-010",
+      "text": "熔岩沿着山坡缓缓流下。",
+      "text_markdown": "熔岩沿着山坡缓缓流下。",
+      "title": "地球之火",
+      "tts": {
+        "text": "熔岩沿着山坡缓缓流下。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-011",
+      "text": "熔岩是到达地表的熔化岩石。",
+      "text_markdown": "熔岩是到达地表的熔化岩石。",
+      "title": "地球之火",
+      "tts": {
+        "text": "熔岩是到达地表的熔化岩石。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "text": "另一些喷发则非常猛烈。",
+      "text_markdown": "另一些喷发则非常猛烈。",
+      "title": "地球之火",
+      "tts": {
+        "text": "另一些喷发则非常猛烈。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-013",
+      "text": "它们将岩石、火山灰和气体高高喷入天空。",
+      "text_markdown": "它们将岩石、火山灰和气体高高喷入天空。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们将岩石、火山灰和气体高高喷入天空。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "text": "最大的喷发会重塑整个地貌。",
+      "text_markdown": "最大的喷发会重塑整个地貌。",
+      "title": "地球之火",
+      "tts": {
+        "text": "最大的喷发会重塑整个地貌。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "text": "火山之所以存在，是因为地球内部很热。",
+      "text_markdown": "火山之所以存在，是因为地球内部很热。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山之所以存在，是因为地球内部很热。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-016",
+      "text": "越往深处，温度越高。",
+      "text_markdown": "越往深处，温度越高。",
+      "title": "地球之火",
+      "tts": {
+        "text": "越往深处，温度越高。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "text": "在地球中心，温度大约达到五千五百摄氏度。",
+      "text_markdown": "在地球中心，温度大约达到五千五百摄氏度。",
+      "title": "地球之火",
+      "tts": {
+        "text": "在地球中心，温度大约达到五千五百摄氏度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-018",
+      "text": "这大约相当于太阳表面的温度。",
+      "text_markdown": "这大约相当于太阳表面的温度。",
+      "title": "地球之火",
+      "tts": {
+        "text": "这大约相当于太阳表面的温度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "text": "这种内部的热量驱动着岩石的运动和火山的喷发。",
+      "text_markdown": "这种内部的热量驱动着岩石的运动和火山的喷发。",
+      "title": "地球之火",
+      "tts": {
+        "text": "这种内部的热量驱动着岩石的运动和火山的喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-020",
+      "text": "人类在整个历史中一直与火山相伴而生。",
+      "text_markdown": "人类在整个历史中一直与火山相伴而生。",
+      "title": "地球之火",
+      "tts": {
+        "text": "人类在整个历史中一直与火山相伴而生。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-021",
+      "text": "古代文明在火山斜坡上建造了城市。",
+      "text_markdown": "古代文明在火山斜坡上建造了城市。",
+      "title": "地球之火",
+      "tts": {
+        "text": "古代文明在火山斜坡上建造了城市。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "text": "火山土壤富含矿物质。",
+      "text_markdown": "火山土壤富含矿物质。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山土壤富含矿物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "text": "矿物质是具有特定化学成分的天然非生物物质。",
+      "text_markdown": "矿物质是具有特定化学成分的天然非生物物质。",
+      "title": "地球之火",
+      "tts": {
+        "text": "矿物质是具有特定化学成分的天然非生物物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-024",
+      "text": "植物在火山土壤中生长得很好。",
+      "text_markdown": "植物在火山土壤中生长得很好。",
+      "title": "地球之火",
+      "tts": {
+        "text": "植物在火山土壤中生长得很好。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-025",
+      "text": "农民们一直都知道这一点。",
+      "text_markdown": "农民们一直都知道这一点。",
+      "title": "地球之火",
+      "tts": {
+        "text": "农民们一直都知道这一点。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "text": "喷发的危险是获得肥沃土地的代价。",
+      "text_markdown": "喷发的危险是获得肥沃土地的代价。",
+      "title": "地球之火",
+      "tts": {
+        "text": "喷发的危险是获得肥沃土地的代价。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "text": "火山不仅存在于地球上。",
+      "text_markdown": "火山不仅存在于地球上。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山不仅存在于地球上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-028",
+      "text": "火星拥有太阳系中已知最大的火山。",
+      "text_markdown": "火星拥有太阳系中已知最大的火山。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火星拥有太阳系中已知最大的火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "text": "它叫做奥林匹斯山。",
+      "text_markdown": "它叫做奥林匹斯山。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它叫做奥林匹斯山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "text": "它大约有二十二千米高。",
+      "text_markdown": "它大约有二十二千米高。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它大约有二十二千米高。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-031",
+      "text": "这几乎是珠穆朗玛峰高度的三倍。",
+      "text_markdown": "这几乎是珠穆朗玛峰高度的三倍。",
+      "title": "地球之火",
+      "tts": {
+        "text": "这几乎是珠穆朗玛峰高度的三倍。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "text": "木星的卫星木卫一是太阳系中火山活动最活跃的天体。",
+      "text_markdown": "木星的卫星木卫一是太阳系中火山活动最活跃的天体。",
+      "title": "地球之火",
+      "tts": {
+        "text": "木星的卫星木卫一是太阳系中火山活动最活跃的天体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "text": "它的表面不断被喷发重塑。",
+      "text_markdown": "它的表面不断被喷发重塑。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它的表面不断被喷发重塑。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-034",
+      "text": "只要一个岩质天体内部有足够的热量，就会存在火山。",
+      "text_markdown": "只要一个岩质天体内部有足够的热量，就会存在火山。",
+      "title": "地球之火",
+      "tts": {
+        "text": "只要一个岩质天体内部有足够的热量，就会存在火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-035",
+      "text": "在地球上，火山并非随机分布的。",
+      "text_markdown": "在地球上，火山并非随机分布的。",
+      "title": "地球之火",
+      "tts": {
+        "text": "在地球上，火山并非随机分布的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-036",
+      "text": "它们集中分布在特定的带状区域。",
+      "text_markdown": "它们集中分布在特定的带状区域。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们集中分布在特定的带状区域。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "text": "最著名的是环太平洋火山带。",
+      "text_markdown": "最著名的是环太平洋火山带。",
+      "title": "地球之火",
+      "tts": {
+        "text": "最著名的是环太平洋火山带。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-038",
+      "text": "环太平洋火山带是一条马蹄形的火山和地震带，环绕着太平洋。",
+      "text_markdown": "环太平洋火山带是一条马蹄形的火山和地震带，环绕着太平洋。",
+      "title": "地球之火",
+      "tts": {
+        "text": "环太平洋火山带是一条马蹄形的火山和地震带，环绕着太平洋。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "text": "地球上大约百分之七十五的活火山分布在这条火山带上。",
+      "text_markdown": "地球上大约百分之七十五的活火山分布在这条火山带上。",
+      "title": "地球之火",
+      "tts": {
+        "text": "地球上大约百分之七十五的活火山分布在这条火山带上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-040",
+      "text": "环太平洋火山带的存在是因为板块的运动。",
+      "text_markdown": "环太平洋火山带的存在是因为板块的运动。",
+      "title": "地球之火",
+      "tts": {
+        "text": "环太平洋火山带的存在是因为板块的运动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "text": "板块是构成地球外层的巨大岩石板块。",
+      "text_markdown": "板块是构成地球外层的巨大岩石板块。",
+      "title": "地球之火",
+      "tts": {
+        "text": "板块是构成地球外层的巨大岩石板块。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-042",
+      "text": "火山具有破坏性。",
+      "text_markdown": "火山具有破坏性。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山具有破坏性。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-043",
+      "text": "它们埋葬城市。",
+      "text_markdown": "它们埋葬城市。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们埋葬城市。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "text": "它们遮蔽天空。",
+      "text_markdown": "它们遮蔽天空。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们遮蔽天空。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-045",
+      "text": "它们改变气候。",
+      "text_markdown": "它们改变气候。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们改变气候。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-046",
+      "text": "但火山也在创造。",
+      "text_markdown": "但火山也在创造。",
+      "title": "地球之火",
+      "tts": {
+        "text": "但火山也在创造。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-047",
+      "text": "它们建造岛屿。",
+      "text_markdown": "它们建造岛屿。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们建造岛屿。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-048",
+      "text": "它们肥沃土壤。",
+      "text_markdown": "它们肥沃土壤。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们肥沃土壤。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "text": "它们释放出形成大气层的气体。",
+      "text_markdown": "它们释放出形成大气层的气体。",
+      "title": "地球之火",
+      "tts": {
+        "text": "它们释放出形成大气层的气体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-050",
+      "text": "火山的故事就是地球本身的故事。",
+      "text_markdown": "火山的故事就是地球本身的故事。",
+      "title": "地球之火",
+      "tts": {
+        "text": "火山的故事就是地球本身的故事。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch02-051",
+      "text": "地球内部",
+      "text_markdown": "地球内部",
+      "title": "地球内部"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-052",
+      "text": "地球有很多层。",
+      "text_markdown": "地球有很多层。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地球有很多层。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-053",
+      "text": "了解这些层对于理解火山至关重要。",
+      "text_markdown": "了解这些层对于理解火山至关重要。",
+      "title": "地球内部",
+      "tts": {
+        "text": "了解这些层对于理解火山至关重要。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-054",
+      "text": "从火山中喷发出来的物质来自地球深处。",
+      "text_markdown": "从火山中喷发出来的物质来自地球深处。",
+      "title": "地球内部",
+      "tts": {
+        "text": "从火山中喷发出来的物质来自地球深处。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-055",
+      "text": "最外层是地壳。",
+      "text_markdown": "最外层是地壳。",
+      "title": "地球内部",
+      "tts": {
+        "text": "最外层是地壳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-056",
+      "text": "地壳是地球表面薄薄的固体岩石外壳。",
+      "text_markdown": "地壳是地球表面薄薄的固体岩石外壳。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地壳是地球表面薄薄的固体岩石外壳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-057",
+      "text": "就是你站着的地面。",
+      "text_markdown": "就是你站着的地面。",
+      "title": "地球内部",
+      "tts": {
+        "text": "就是你站着的地面。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-058",
+      "text": "地壳有两种类型。",
+      "text_markdown": "地壳有两种类型。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地壳有两种类型。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-059",
+      "text": "大陆地壳构成了陆地。",
+      "text_markdown": "大陆地壳构成了陆地。",
+      "title": "地球内部",
+      "tts": {
+        "text": "大陆地壳构成了陆地。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-060",
+      "text": "大陆地壳更厚，平均大约三十五千米。",
+      "text_markdown": "大陆地壳更厚，平均大约三十五千米。",
+      "title": "地球内部",
+      "tts": {
+        "text": "大陆地壳更厚，平均大约三十五千米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-061",
+      "text": "大洋地壳构成了海底。",
+      "text_markdown": "大洋地壳构成了海底。",
+      "title": "地球内部",
+      "tts": {
+        "text": "大洋地壳构成了海底。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-062",
+      "text": "大洋地壳更薄，平均大约七千米。",
+      "text_markdown": "大洋地壳更薄，平均大约七千米。",
+      "title": "地球内部",
+      "tts": {
+        "text": "大洋地壳更薄，平均大约七千米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-063",
+      "text": "两种地壳都是固体岩石，但成分和密度不同。",
+      "text_markdown": "两种地壳都是固体岩石，但成分和密度不同。",
+      "title": "地球内部",
+      "tts": {
+        "text": "两种地壳都是固体岩石，但成分和密度不同。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-064",
+      "text": "密度是物质单位体积的质量。",
+      "text_markdown": "密度是物质单位体积的质量。",
+      "title": "地球内部",
+      "tts": {
+        "text": "密度是物质单位体积的质量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-065",
+      "text": "地壳之下是地幔。",
+      "text_markdown": "地壳之下是地幔。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地壳之下是地幔。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-066",
+      "text": "地幔是一层厚厚的岩石层，深度约两千九百千米。",
+      "text_markdown": "地幔是一层厚厚的岩石层，深度约两千九百千米。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地幔是一层厚厚的岩石层，深度约两千九百千米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-067",
+      "text": "地幔不是液态的。",
+      "text_markdown": "地幔不是液态的。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地幔不是液态的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-068",
+      "text": "它大部分是固态的。",
+      "text_markdown": "它大部分是固态的。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它大部分是固态的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-069",
+      "text": "但它非常热，承受着巨大的压力，所以在很长的时间内会缓慢流动。",
+      "text_markdown": "但它非常热，承受着巨大的压力，所以在很长的时间内会缓慢流动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "但它非常热，承受着巨大的压力，所以在很长的时间内会缓慢流动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-070",
+      "text": "这种缓慢的流动被称为对流。",
+      "text_markdown": "这种缓慢的流动被称为对流。",
+      "title": "地球内部",
+      "tts": {
+        "text": "这种缓慢的流动被称为对流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-071",
+      "text": "对流是由温度差异引起的物质运动。",
+      "text_markdown": "对流是由温度差异引起的物质运动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "对流是由温度差异引起的物质运动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-072",
+      "text": "较热的物质上升。",
+      "text_markdown": "较热的物质上升。",
+      "title": "地球内部",
+      "tts": {
+        "text": "较热的物质上升。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-073",
+      "text": "较冷的物质下沉。",
+      "text_markdown": "较冷的物质下沉。",
+      "title": "地球内部",
+      "tts": {
+        "text": "较冷的物质下沉。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-074",
+      "text": "这个循环在地幔中产生了推动上方板块运动的对流。",
+      "text_markdown": "这个循环在地幔中产生了推动上方板块运动的对流。",
+      "title": "地球内部",
+      "tts": {
+        "text": "这个循环在地幔中产生了推动上方板块运动的对流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-075",
+      "text": "地幔上部，就在地壳下面，有一个叫做软流层的区域。",
+      "text_markdown": "地幔上部，就在地壳下面，有一个叫做软流层的区域。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地幔上部，就在地壳下面，有一个叫做软流层的区域。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-076",
+      "text": "软流层是一层部分熔化的、柔软的岩石层。",
+      "text_markdown": "软流层是一层部分熔化的、柔软的岩石层。",
+      "title": "地球内部",
+      "tts": {
+        "text": "软流层是一层部分熔化的、柔软的岩石层。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-077",
+      "text": "部分熔化意味着一些岩石已经融化，而其余的仍然是固态的。",
+      "text_markdown": "部分熔化意味着一些岩石已经融化，而其余的仍然是固态的。",
+      "title": "地球内部",
+      "tts": {
+        "text": "部分熔化意味着一些岩石已经融化，而其余的仍然是固态的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-078",
+      "text": "板块位于软流层之上，在它上面滑动。",
+      "text_markdown": "板块位于软流层之上，在它上面滑动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "板块位于软流层之上，在它上面滑动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-079",
+      "text": "软流层是大多数岩浆的发源地。",
+      "text_markdown": "软流层是大多数岩浆的发源地。",
+      "title": "地球内部",
+      "tts": {
+        "text": "软流层是大多数岩浆的发源地。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-080",
+      "text": "岩浆是地球表面以下的熔化岩石。",
+      "text_markdown": "岩浆是地球表面以下的熔化岩石。",
+      "title": "地球内部",
+      "tts": {
+        "text": "岩浆是地球表面以下的熔化岩石。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-081",
+      "text": "当岩浆到达地表时，就被称为熔岩。",
+      "text_markdown": "当岩浆到达地表时，就被称为熔岩。",
+      "title": "地球内部",
+      "tts": {
+        "text": "当岩浆到达地表时，就被称为熔岩。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-082",
+      "text": "地幔下面是外核。",
+      "text_markdown": "地幔下面是外核。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地幔下面是外核。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-083",
+      "text": "外核是一层液态金属层，主要由铁和镍组成。",
+      "text_markdown": "外核是一层液态金属层，主要由铁和镍组成。",
+      "title": "地球内部",
+      "tts": {
+        "text": "外核是一层液态金属层，主要由铁和镍组成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-084",
+      "text": "它从大约两千九百千米延伸到五千一百千米深处。",
+      "text_markdown": "它从大约两千九百千米延伸到五千一百千米深处。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它从大约两千九百千米延伸到五千一百千米深处。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-085",
+      "text": "这里的温度大约在四千四百到六千一百摄氏度之间。",
+      "text_markdown": "这里的温度大约在四千四百到六千一百摄氏度之间。",
+      "title": "地球内部",
+      "tts": {
+        "text": "这里的温度大约在四千四百到六千一百摄氏度之间。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-086",
+      "text": "这层液态金属的运动产生了地球的磁场。",
+      "text_markdown": "这层液态金属的运动产生了地球的磁场。",
+      "title": "地球内部",
+      "tts": {
+        "text": "这层液态金属的运动产生了地球的磁场。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-087",
+      "text": "最中心是内核。",
+      "text_markdown": "最中心是内核。",
+      "title": "地球内部",
+      "tts": {
+        "text": "最中心是内核。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-088",
+      "text": "内核是一个由铁和镍组成的固态球。",
+      "text_markdown": "内核是一个由铁和镍组成的固态球。",
+      "title": "地球内部",
+      "tts": {
+        "text": "内核是一个由铁和镍组成的固态球。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-089",
+      "text": "尽管温度约为五千五百摄氏度，它仍然是固态的，因为压力极其巨大。",
+      "text_markdown": "尽管温度约为五千五百摄氏度，它仍然是固态的，因为压力极其巨大。",
+      "title": "地球内部",
+      "tts": {
+        "text": "尽管温度约为五千五百摄氏度，它仍然是固态的，因为压力极其巨大。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-090",
+      "text": "地球中心的压力大约是地表压力的三百六十万倍。",
+      "text_markdown": "地球中心的压力大约是地表压力的三百六十万倍。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地球中心的压力大约是地表压力的三百六十万倍。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-091",
+      "text": "热量从地核通过地幔流向地表。",
+      "text_markdown": "热量从地核通过地幔流向地表。",
+      "title": "地球内部",
+      "tts": {
+        "text": "热量从地核通过地幔流向地表。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-092",
+      "text": "这种热量驱动着一切。",
+      "text_markdown": "这种热量驱动着一切。",
+      "title": "地球内部",
+      "tts": {
+        "text": "这种热量驱动着一切。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-093",
+      "text": "它驱动着地幔中的对流。",
+      "text_markdown": "它驱动着地幔中的对流。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它驱动着地幔中的对流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-094",
+      "text": "它推动着板块运动。",
+      "text_markdown": "它推动着板块运动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它推动着板块运动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-095",
+      "text": "它将岩石融化成岩浆。",
+      "text_markdown": "它将岩石融化成岩浆。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它将岩石融化成岩浆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-096",
+      "text": "它推动岩浆通过地壳的裂缝和薄弱点向上运动。",
+      "text_markdown": "它推动岩浆通过地壳的裂缝和薄弱点向上运动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它推动岩浆通过地壳的裂缝和薄弱点向上运动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-097",
+      "text": "当岩浆到达地表时，火山就喷发了。",
+      "text_markdown": "当岩浆到达地表时，火山就喷发了。",
+      "title": "地球内部",
+      "tts": {
+        "text": "当岩浆到达地表时，火山就喷发了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-098",
+      "text": "地球不是一块冰冷、死寂的岩石。",
+      "text_markdown": "地球不是一块冰冷、死寂的岩石。",
+      "title": "地球内部",
+      "tts": {
+        "text": "地球不是一块冰冷、死寂的岩石。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-099",
+      "text": "它是一颗活跃、炽热的行星。",
+      "text_markdown": "它是一颗活跃、炽热的行星。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它是一颗活跃、炽热的行星。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-100",
+      "text": "它的内部翻搅流动。",
+      "text_markdown": "它的内部翻搅流动。",
+      "title": "地球内部",
+      "tts": {
+        "text": "它的内部翻搅流动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch02-101",
+      "text": "火山是隐藏在我们脚下的热量和运动的可见证据。",
+      "text_markdown": "火山是隐藏在我们脚下的热量和运动的可见证据。",
+      "title": "地球内部",
+      "tts": {
+        "text": "火山是隐藏在我们脚下的热量和运动的可见证据。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch03-102",
+      "text": "板块构造",
+      "text_markdown": "板块构造",
+      "title": "板块构造"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-103",
+      "text": "地球的外壳被分裂成叫做板块的大块岩石。",
+      "text_markdown": "地球的外壳被分裂成叫做板块的大块岩石。",
+      "title": "板块构造",
+      "tts": {
+        "text": "地球的外壳被分裂成叫做板块的大块岩石。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-104",
+      "text": "板块是包括地壳和上地幔在内的刚性岩石板。",
+      "text_markdown": "板块是包括地壳和上地幔在内的刚性岩石板。",
+      "title": "板块构造",
+      "tts": {
+        "text": "板块是包括地壳和上地幔在内的刚性岩石板。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-105",
+      "text": "地壳和这层上地幔共同构成了岩石圈。",
+      "text_markdown": "地壳和这层上地幔共同构成了岩石圈。",
+      "title": "板块构造",
+      "tts": {
+        "text": "地壳和这层上地幔共同构成了岩石圈。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-106",
+      "text": "岩石圈是地球坚硬的外壳。",
+      "text_markdown": "岩石圈是地球坚硬的外壳。",
+      "title": "板块构造",
+      "tts": {
+        "text": "岩石圈是地球坚硬的外壳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-107",
+      "text": "大约有十五个主要板块和几个较小的板块。",
+      "text_markdown": "大约有十五个主要板块和几个较小的板块。",
+      "title": "板块构造",
+      "tts": {
+        "text": "大约有十五个主要板块和几个较小的板块。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-108",
+      "text": "太平洋板块是最大的。",
+      "text_markdown": "太平洋板块是最大的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "太平洋板块是最大的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-109",
+      "text": "北美板块、欧亚板块和非洲板块是其他几个大板块。",
+      "text_markdown": "北美板块、欧亚板块和非洲板块是其他几个大板块。",
+      "title": "板块构造",
+      "tts": {
+        "text": "北美板块、欧亚板块和非洲板块是其他几个大板块。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-110",
+      "text": "这些板块不是静止不动的。",
+      "text_markdown": "这些板块不是静止不动的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这些板块不是静止不动的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-111",
+      "text": "它们在移动。",
+      "text_markdown": "它们在移动。",
+      "title": "板块构造",
+      "tts": {
+        "text": "它们在移动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-112",
+      "text": "它们滑动、碰撞、互相分离。",
+      "text_markdown": "它们滑动、碰撞、互相分离。",
+      "title": "板块构造",
+      "tts": {
+        "text": "它们滑动、碰撞、互相分离。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-113",
+      "text": "这种运动非常缓慢。",
+      "text_markdown": "这种运动非常缓慢。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这种运动非常缓慢。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-114",
+      "text": "大多数板块每年移动二到十厘米。",
+      "text_markdown": "大多数板块每年移动二到十厘米。",
+      "title": "板块构造",
+      "tts": {
+        "text": "大多数板块每年移动二到十厘米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-115",
+      "text": "这大约是你指甲生长的速度。",
+      "text_markdown": "这大约是你指甲生长的速度。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这大约是你指甲生长的速度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-116",
+      "text": "板块的移动是由它们下方地幔中的对流驱动的。",
+      "text_markdown": "板块的移动是由它们下方地幔中的对流驱动的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "板块的移动是由它们下方地幔中的对流驱动的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-117",
+      "text": "热岩从地幔深处上升。",
+      "text_markdown": "热岩从地幔深处上升。",
+      "title": "板块构造",
+      "tts": {
+        "text": "热岩从地幔深处上升。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-118",
+      "text": "它在岩石圈下方向两侧扩展。",
+      "text_markdown": "它在岩石圈下方向两侧扩展。",
+      "title": "板块构造",
+      "tts": {
+        "text": "它在岩石圈下方向两侧扩展。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-119",
+      "text": "它拖动着板块一起移动。",
+      "text_markdown": "它拖动着板块一起移动。",
+      "title": "板块构造",
+      "tts": {
+        "text": "它拖动着板块一起移动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-120",
+      "text": "然后它冷却下来，重新下沉。",
+      "text_markdown": "然后它冷却下来，重新下沉。",
+      "title": "板块构造",
+      "tts": {
+        "text": "然后它冷却下来，重新下沉。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-121",
+      "text": "这个循环不断重复。",
+      "text_markdown": "这个循环不断重复。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这个循环不断重复。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-122",
+      "text": "大多数火山形成于板块相遇的边界。",
+      "text_markdown": "大多数火山形成于板块相遇的边界。",
+      "title": "板块构造",
+      "tts": {
+        "text": "大多数火山形成于板块相遇的边界。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-123",
+      "text": "板块边界有三种类型。",
+      "text_markdown": "板块边界有三种类型。",
+      "title": "板块构造",
+      "tts": {
+        "text": "板块边界有三种类型。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-124",
+      "text": "每种类型产生不同的火山活动。",
+      "text_markdown": "每种类型产生不同的火山活动。",
+      "title": "板块构造",
+      "tts": {
+        "text": "每种类型产生不同的火山活动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-125",
+      "text": "在分离型边界，板块彼此远离。",
+      "text_markdown": "在分离型边界，板块彼此远离。",
+      "title": "板块构造",
+      "tts": {
+        "text": "在分离型边界，板块彼此远离。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-126",
+      "text": "分离意味着互相远离。",
+      "text_markdown": "分离意味着互相远离。",
+      "title": "板块构造",
+      "tts": {
+        "text": "分离意味着互相远离。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-127",
+      "text": "岩浆从地幔上升来填补空隙。",
+      "text_markdown": "岩浆从地幔上升来填补空隙。",
+      "title": "板块构造",
+      "tts": {
+        "text": "岩浆从地幔上升来填补空隙。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-128",
+      "text": "这就产生了新的地壳。",
+      "text_markdown": "这就产生了新的地壳。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这就产生了新的地壳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-129",
+      "text": "大西洋中脊是一个分离型边界。",
+      "text_markdown": "大西洋中脊是一个分离型边界。",
+      "title": "板块构造",
+      "tts": {
+        "text": "大西洋中脊是一个分离型边界。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-130",
+      "text": "它沿着大西洋中心延伸。",
+      "text_markdown": "它沿着大西洋中心延伸。",
+      "title": "板块构造",
+      "tts": {
+        "text": "它沿着大西洋中心延伸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-131",
+      "text": "冰岛就坐落在这条海脊上。",
+      "text_markdown": "冰岛就坐落在这条海脊上。",
+      "title": "板块构造",
+      "tts": {
+        "text": "冰岛就坐落在这条海脊上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-132",
+      "text": "冰岛有许多活火山，因为岩浆不断上升到那里的地表。",
+      "text_markdown": "冰岛有许多活火山，因为岩浆不断上升到那里的地表。",
+      "title": "板块构造",
+      "tts": {
+        "text": "冰岛有许多活火山，因为岩浆不断上升到那里的地表。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-133",
+      "text": "在汇聚型边界，板块相互靠拢。",
+      "text_markdown": "在汇聚型边界，板块相互靠拢。",
+      "title": "板块构造",
+      "tts": {
+        "text": "在汇聚型边界，板块相互靠拢。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-134",
+      "text": "汇聚意味着互相靠近。",
+      "text_markdown": "汇聚意味着互相靠近。",
+      "title": "板块构造",
+      "tts": {
+        "text": "汇聚意味着互相靠近。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-135",
+      "text": "当大洋板块遇到大陆板块时，密度较大的大洋板块会滑到较轻的大陆板块下面。",
+      "text_markdown": "当大洋板块遇到大陆板块时，密度较大的大洋板块会滑到较轻的大陆板块下面。",
+      "title": "板块构造",
+      "tts": {
+        "text": "当大洋板块遇到大陆板块时，密度较大的大洋板块会滑到较轻的大陆板块下面。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-136",
+      "text": "这个过程叫做俯冲。",
+      "text_markdown": "这个过程叫做俯冲。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这个过程叫做俯冲。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-137",
+      "text": "俯冲的板块下降到地幔中，在那里强烈的高温将它融化。",
+      "text_markdown": "俯冲的板块下降到地幔中，在那里强烈的高温将它融化。",
+      "title": "板块构造",
+      "tts": {
+        "text": "俯冲的板块下降到地幔中，在那里强烈的高温将它融化。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-138",
+      "text": "融化的岩石以岩浆的形式上升，为上方的火山提供燃料。",
+      "text_markdown": "融化的岩石以岩浆的形式上升，为上方的火山提供燃料。",
+      "title": "板块构造",
+      "tts": {
+        "text": "融化的岩石以岩浆的形式上升，为上方的火山提供燃料。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-139",
+      "text": "南美洲的安第斯山脉就是这样形成的。",
+      "text_markdown": "南美洲的安第斯山脉就是这样形成的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "南美洲的安第斯山脉就是这样形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-140",
+      "text": "美国西北部的喀斯喀特山脉也是这样形成的。",
+      "text_markdown": "美国西北部的喀斯喀特山脉也是这样形成的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "美国西北部的喀斯喀特山脉也是这样形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-141",
+      "text": "在转换型边界，板块水平地相互滑过。",
+      "text_markdown": "在转换型边界，板块水平地相互滑过。",
+      "title": "板块构造",
+      "tts": {
+        "text": "在转换型边界，板块水平地相互滑过。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-142",
+      "text": "转换型边界会产生地震，但通常不会产生火山。",
+      "text_markdown": "转换型边界会产生地震，但通常不会产生火山。",
+      "title": "板块构造",
+      "tts": {
+        "text": "转换型边界会产生地震，但通常不会产生火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-143",
+      "text": "加利福尼亚的圣安德烈亚斯断层是一个转换型边界。",
+      "text_markdown": "加利福尼亚的圣安德烈亚斯断层是一个转换型边界。",
+      "title": "板块构造",
+      "tts": {
+        "text": "加利福尼亚的圣安德烈亚斯断层是一个转换型边界。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-144",
+      "text": "有些火山形成于远离板块边界的地方。",
+      "text_markdown": "有些火山形成于远离板块边界的地方。",
+      "title": "板块构造",
+      "tts": {
+        "text": "有些火山形成于远离板块边界的地方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-145",
+      "text": "这些被称为热点火山。",
+      "text_markdown": "这些被称为热点火山。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这些被称为热点火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-146",
+      "text": "热点是一个特别炽热的岩石柱从地幔深处上升的地方。",
+      "text_markdown": "热点是一个特别炽热的岩石柱从地幔深处上升的地方。",
+      "title": "板块构造",
+      "tts": {
+        "text": "热点是一个特别炽热的岩石柱从地幔深处上升的地方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-147",
+      "text": "这个岩石柱融穿了上方的板块。",
+      "text_markdown": "这个岩石柱融穿了上方的板块。",
+      "title": "板块构造",
+      "tts": {
+        "text": "这个岩石柱融穿了上方的板块。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-148",
+      "text": "夏威夷群岛就是在一个热点上形成的。",
+      "text_markdown": "夏威夷群岛就是在一个热点上形成的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "夏威夷群岛就是在一个热点上形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-149",
+      "text": "太平洋板块在这个静止的热点上方移动。",
+      "text_markdown": "太平洋板块在这个静止的热点上方移动。",
+      "title": "板块构造",
+      "tts": {
+        "text": "太平洋板块在这个静止的热点上方移动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-150",
+      "text": "每个岛屿都是在板块经过岩石柱上方时形成的。",
+      "text_markdown": "每个岛屿都是在板块经过岩石柱上方时形成的。",
+      "title": "板块构造",
+      "tts": {
+        "text": "每个岛屿都是在板块经过岩石柱上方时形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-151",
+      "text": "最古老的岛屿离热点最远。",
+      "text_markdown": "最古老的岛屿离热点最远。",
+      "title": "板块构造",
+      "tts": {
+        "text": "最古老的岛屿离热点最远。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-152",
+      "text": "最年轻的岛屿夏威夷今天正好位于热点之上。",
+      "text_markdown": "最年轻的岛屿夏威夷今天正好位于热点之上。",
+      "title": "板块构造",
+      "tts": {
+        "text": "最年轻的岛屿夏威夷今天正好位于热点之上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-153",
+      "text": "板块是火山分布的原因。",
+      "text_markdown": "板块是火山分布的原因。",
+      "title": "板块构造",
+      "tts": {
+        "text": "板块是火山分布的原因。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch03-154",
+      "text": "火山的分布图就是板块边界的地图，中间散布着热点。",
+      "text_markdown": "火山的分布图就是板块边界的地图，中间散布着热点。",
+      "title": "板块构造",
+      "tts": {
+        "text": "火山的分布图就是板块边界的地图，中间散布着热点。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch04-155",
+      "text": "火山如何喷发",
+      "text_markdown": "火山如何喷发",
+      "title": "火山如何喷发"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-156",
+      "text": "喷发始于地下深处。",
+      "text_markdown": "喷发始于地下深处。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "喷发始于地下深处。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-157",
+      "text": "地幔中的岩石融化成岩浆。",
+      "text_markdown": "地幔中的岩石融化成岩浆。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "地幔中的岩石融化成岩浆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-158",
+      "text": "岩浆的密度比周围的固体岩石小。",
+      "text_markdown": "岩浆的密度比周围的固体岩石小。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆的密度比周围的固体岩石小。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-159",
+      "text": "因为密度较小，它会上升。",
+      "text_markdown": "因为密度较小，它会上升。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "因为密度较小，它会上升。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-160",
+      "text": "它通过地壳中的裂缝和薄弱区域向上推进。",
+      "text_markdown": "它通过地壳中的裂缝和薄弱区域向上推进。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它通过地壳中的裂缝和薄弱区域向上推进。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-161",
+      "text": "岩浆聚集在地下的岩浆室中。",
+      "text_markdown": "岩浆聚集在地下的岩浆室中。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆聚集在地下的岩浆室中。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-162",
+      "text": "岩浆室是火山下方一个大的熔岩池。",
+      "text_markdown": "岩浆室是火山下方一个大的熔岩池。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆室是火山下方一个大的熔岩池。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-163",
+      "text": "岩浆室可能位于地表以下几千米到几十千米深的任何位置。",
+      "text_markdown": "岩浆室可能位于地表以下几千米到几十千米深的任何位置。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆室可能位于地表以下几千米到几十千米深的任何位置。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-164",
+      "text": "岩浆可以在岩浆室中停留数千年才喷发。",
+      "text_markdown": "岩浆可以在岩浆室中停留数千年才喷发。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆可以在岩浆室中停留数千年才喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-165",
+      "text": "新的岩浆不断从下方涌入，积聚压力。",
+      "text_markdown": "新的岩浆不断从下方涌入，积聚压力。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "新的岩浆不断从下方涌入，积聚压力。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-166",
+      "text": "压力是喷发的关键。",
+      "text_markdown": "压力是喷发的关键。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "压力是喷发的关键。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-167",
+      "text": "岩浆中含有溶解的气体。",
+      "text_markdown": "岩浆中含有溶解的气体。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆中含有溶解的气体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-168",
+      "text": "主要的气体是水蒸气、二氧化碳和二氧化硫。",
+      "text_markdown": "主要的气体是水蒸气、二氧化碳和二氧化硫。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "主要的气体是水蒸气、二氧化碳和二氧化硫。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-169",
+      "text": "当岩浆位于地下深处时，上方岩石的重量使这些气体保持溶解状态。",
+      "text_markdown": "当岩浆位于地下深处时，上方岩石的重量使这些气体保持溶解状态。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "当岩浆位于地下深处时，上方岩石的重量使这些气体保持溶解状态。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-170",
+      "text": "随着岩浆上升，压力降低，气体开始从溶液中释放出来。",
+      "text_markdown": "随着岩浆上升，压力降低，气体开始从溶液中释放出来。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "随着岩浆上升，压力降低，气体开始从溶液中释放出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-171",
+      "text": "它们形成了气泡。",
+      "text_markdown": "它们形成了气泡。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它们形成了气泡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-172",
+      "text": "这类似于你打开一瓶碳酸水时发生的情况。",
+      "text_markdown": "这类似于你打开一瓶碳酸水时发生的情况。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "这类似于你打开一瓶碳酸水时发生的情况。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-173",
+      "text": "压力的释放使溶解的气体形成气泡。",
+      "text_markdown": "压力的释放使溶解的气体形成气泡。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "压力的释放使溶解的气体形成气泡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-174",
+      "text": "气泡在上升过程中膨胀。",
+      "text_markdown": "气泡在上升过程中膨胀。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "气泡在上升过程中膨胀。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-175",
+      "text": "它们使岩浆变得充满泡沫，密度更低。",
+      "text_markdown": "它们使岩浆变得充满泡沫，密度更低。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它们使岩浆变得充满泡沫，密度更低。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-176",
+      "text": "这使岩浆上升得更快。",
+      "text_markdown": "这使岩浆上升得更快。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "这使岩浆上升得更快。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-177",
+      "text": "最终，压力大到上方的岩石无法再承受。",
+      "text_markdown": "最终，压力大到上方的岩石无法再承受。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "最终，压力大到上方的岩石无法再承受。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-178",
+      "text": "火山喷发了。",
+      "text_markdown": "火山喷发了。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山喷发了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-179",
+      "text": "喷发的方式取决于岩浆的黏度和气体含量。",
+      "text_markdown": "喷发的方式取决于岩浆的黏度和气体含量。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "喷发的方式取决于岩浆的黏度和气体含量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-180",
+      "text": "黏度是衡量液体流动难易程度的指标。",
+      "text_markdown": "黏度是衡量液体流动难易程度的指标。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "黏度是衡量液体流动难易程度的指标。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-181",
+      "text": "低黏度的岩浆很稀薄。",
+      "text_markdown": "低黏度的岩浆很稀薄。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "低黏度的岩浆很稀薄。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-182",
+      "text": "它流动起来很容易。",
+      "text_markdown": "它流动起来很容易。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它流动起来很容易。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-183",
+      "text": "气体可以温和地从中逸出。",
+      "text_markdown": "气体可以温和地从中逸出。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "气体可以温和地从中逸出。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-184",
+      "text": "低黏度岩浆的喷发往往是溢流式的。",
+      "text_markdown": "低黏度岩浆的喷发往往是溢流式的。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "低黏度岩浆的喷发往往是溢流式的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-185",
+      "text": "溢流式意味着熔岩流出，而不是爆炸。",
+      "text_markdown": "溢流式意味着熔岩流出，而不是爆炸。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "溢流式意味着熔岩流出，而不是爆炸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-186",
+      "text": "夏威夷的火山就是这样喷发的。",
+      "text_markdown": "夏威夷的火山就是这样喷发的。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "夏威夷的火山就是这样喷发的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-187",
+      "text": "熔岩从火山口以河流和喷泉的形式涌出。",
+      "text_markdown": "熔岩从火山口以河流和喷泉的形式涌出。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "熔岩从火山口以河流和喷泉的形式涌出。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-188",
+      "text": "火山口是火山顶部碗形的凹地。",
+      "text_markdown": "火山口是火山顶部碗形的凹地。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山口是火山顶部碗形的凹地。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-189",
+      "text": "高黏度的岩浆又厚又黏。",
+      "text_markdown": "高黏度的岩浆又厚又黏。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "高黏度的岩浆又厚又黏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-190",
+      "text": "气体不容易逸出。",
+      "text_markdown": "气体不容易逸出。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "气体不容易逸出。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-191",
+      "text": "压力不断积聚，直到岩浆爆炸。",
+      "text_markdown": "压力不断积聚，直到岩浆爆炸。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "压力不断积聚，直到岩浆爆炸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-192",
+      "text": "这些喷发被称为爆炸式喷发。",
+      "text_markdown": "这些喷发被称为爆炸式喷发。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "这些喷发被称为爆炸式喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-193",
+      "text": "它们将火山灰、气体和岩石碎片的柱子喷射到高空中。",
+      "text_markdown": "它们将火山灰、气体和岩石碎片的柱子喷射到高空中。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它们将火山灰、气体和岩石碎片的柱子喷射到高空中。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-194",
+      "text": "这些碎片被称为火山碎屑。",
+      "text_markdown": "这些碎片被称为火山碎屑。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "这些碎片被称为火山碎屑。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-195",
+      "text": "火山碎屑包括从细小的火山灰到巨石的一切物质。",
+      "text_markdown": "火山碎屑包括从细小的火山灰到巨石的一切物质。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山碎屑包括从细小的火山灰到巨石的一切物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-196",
+      "text": "一九八零年的圣海伦斯火山是一次爆炸式喷发。",
+      "text_markdown": "一九八零年的圣海伦斯火山是一次爆炸式喷发。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "一九八零年的圣海伦斯火山是一次爆炸式喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-197",
+      "text": "爆炸夷平了森林，火山灰云扩散到了多个州。",
+      "text_markdown": "爆炸夷平了森林，火山灰云扩散到了多个州。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "爆炸夷平了森林，火山灰云扩散到了多个州。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-198",
+      "text": "有些喷发会产生火山碎屑流。",
+      "text_markdown": "有些喷发会产生火山碎屑流。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "有些喷发会产生火山碎屑流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-199",
+      "text": "火山碎屑流是一股快速移动的由热气体、火山灰和岩石碎片组成的气流。",
+      "text_markdown": "火山碎屑流是一股快速移动的由热气体、火山灰和岩石碎片组成的气流。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山碎屑流是一股快速移动的由热气体、火山灰和岩石碎片组成的气流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-200",
+      "text": "火山碎屑流的速度可以超过七百千米每小时。",
+      "text_markdown": "火山碎屑流的速度可以超过七百千米每小时。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山碎屑流的速度可以超过七百千米每小时。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-201",
+      "text": "它们的温度可以超过七百摄氏度。",
+      "text_markdown": "它们的温度可以超过七百摄氏度。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它们的温度可以超过七百摄氏度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-202",
+      "text": "它们摧毁所经之处的一切。",
+      "text_markdown": "它们摧毁所经之处的一切。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "它们摧毁所经之处的一切。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-203",
+      "text": "火山碎屑流是最致命的火山灾害。",
+      "text_markdown": "火山碎屑流是最致命的火山灾害。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "火山碎屑流是最致命的火山灾害。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-204",
+      "text": "不是每次喷发都一样。",
+      "text_markdown": "不是每次喷发都一样。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "不是每次喷发都一样。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-205",
+      "text": "有些火山连续喷发数年，熔岩温和地流动。",
+      "text_markdown": "有些火山连续喷发数年，熔岩温和地流动。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "有些火山连续喷发数年，熔岩温和地流动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-206",
+      "text": "另一些沉睡了几个世纪，然后以灾难性的力量爆发。",
+      "text_markdown": "另一些沉睡了几个世纪，然后以灾难性的力量爆发。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "另一些沉睡了几个世纪，然后以灾难性的力量爆发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-207",
+      "text": "喷发的方式取决于岩浆。",
+      "text_markdown": "喷发的方式取决于岩浆。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "喷发的方式取决于岩浆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-208",
+      "text": "岩浆则取决于火山下方的地质条件。",
+      "text_markdown": "岩浆则取决于火山下方的地质条件。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "岩浆则取决于火山下方的地质条件。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch04-209",
+      "text": "每座火山都有自己的特点。",
+      "text_markdown": "每座火山都有自己的特点。",
+      "title": "火山如何喷发",
+      "tts": {
+        "text": "每座火山都有自己的特点。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch05-210",
+      "text": "火山的类型",
+      "text_markdown": "火山的类型",
+      "title": "火山的类型"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-211",
+      "text": "并非所有火山看起来都一样。",
+      "text_markdown": "并非所有火山看起来都一样。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "并非所有火山看起来都一样。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-212",
+      "text": "它们的形状取决于喷出的物质和喷发方式。",
+      "text_markdown": "它们的形状取决于喷出的物质和喷发方式。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们的形状取决于喷出的物质和喷发方式。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-213",
+      "text": "科学家根据火山的结构和喷发方式将火山分为几种类型。",
+      "text_markdown": "科学家根据火山的结构和喷发方式将火山分为几种类型。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "科学家根据火山的结构和喷发方式将火山分为几种类型。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-214",
+      "text": "盾状火山宽阔、坡度平缓。",
+      "text_markdown": "盾状火山宽阔、坡度平缓。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "盾状火山宽阔、坡度平缓。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-215",
+      "text": "它们看起来像放在地上的战士盾牌。",
+      "text_markdown": "它们看起来像放在地上的战士盾牌。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们看起来像放在地上的战士盾牌。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-216",
+      "text": "盾状火山由低黏度的熔岩喷发形成。",
+      "text_markdown": "盾状火山由低黏度的熔岩喷发形成。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "盾状火山由低黏度的熔岩喷发形成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-217",
+      "text": "熔岩流动性好，在冷却之前会扩散到很大的面积。",
+      "text_markdown": "熔岩流动性好，在冷却之前会扩散到很大的面积。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "熔岩流动性好，在冷却之前会扩散到很大的面积。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-218",
+      "text": "一层又一层的薄熔岩流堆积成一座宽阔的圆顶形山。",
+      "text_markdown": "一层又一层的薄熔岩流堆积成一座宽阔的圆顶形山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "一层又一层的薄熔岩流堆积成一座宽阔的圆顶形山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-219",
+      "text": "夏威夷的莫纳罗亚山是一座盾状火山。",
+      "text_markdown": "夏威夷的莫纳罗亚山是一座盾状火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "夏威夷的莫纳罗亚山是一座盾状火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-220",
+      "text": "它是地球上体积最大的活火山。",
+      "text_markdown": "它是地球上体积最大的活火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它是地球上体积最大的活火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-221",
+      "text": "从海底的山脚到山顶，莫纳罗亚山高出九千多米。",
+      "text_markdown": "从海底的山脚到山顶，莫纳罗亚山高出九千多米。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "从海底的山脚到山顶，莫纳罗亚山高出九千多米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-222",
+      "text": "从底部到顶部来量的话，它比珠穆朗玛峰还高。",
+      "text_markdown": "从底部到顶部来量的话，它比珠穆朗玛峰还高。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "从底部到顶部来量的话，它比珠穆朗玛峰还高。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-223",
+      "text": "层状火山又高又陡，呈锥形。",
+      "text_markdown": "层状火山又高又陡，呈锥形。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "层状火山又高又陡，呈锥形。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-224",
+      "text": "它们也被称为复合火山。",
+      "text_markdown": "它们也被称为复合火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们也被称为复合火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-225",
+      "text": "复合意味着由多种材料组成。",
+      "text_markdown": "复合意味着由多种材料组成。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "复合意味着由多种材料组成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-226",
+      "text": "层状火山由交替的熔岩层、火山灰层和岩石碎片层堆积而成。",
+      "text_markdown": "层状火山由交替的熔岩层、火山灰层和岩石碎片层堆积而成。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "层状火山由交替的熔岩层、火山灰层和岩石碎片层堆积而成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-227",
+      "text": "它们既有溢流式喷发，也有爆炸式喷发。",
+      "text_markdown": "它们既有溢流式喷发，也有爆炸式喷发。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们既有溢流式喷发，也有爆炸式喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-228",
+      "text": "交替的层次形成了坚固而陡峭的结构。",
+      "text_markdown": "交替的层次形成了坚固而陡峭的结构。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "交替的层次形成了坚固而陡峭的结构。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-229",
+      "text": "日本的富士山是一座层状火山。",
+      "text_markdown": "日本的富士山是一座层状火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "日本的富士山是一座层状火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-230",
+      "text": "华盛顿州的雷尼尔山是一座层状火山。",
+      "text_markdown": "华盛顿州的雷尼尔山是一座层状火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "华盛顿州的雷尼尔山是一座层状火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-231",
+      "text": "这些火山是地球上最美丽也最危险的火山之一。",
+      "text_markdown": "这些火山是地球上最美丽也最危险的火山之一。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "这些火山是地球上最美丽也最危险的火山之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-232",
+      "text": "火山渣锥是最小、最简单的火山类型。",
+      "text_markdown": "火山渣锥是最小、最简单的火山类型。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "火山渣锥是最小、最简单的火山类型。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-233",
+      "text": "当富含气体的岩浆喷发，将小碎片喷入空中时，就会形成火山渣锥。",
+      "text_markdown": "当富含气体的岩浆喷发，将小碎片喷入空中时，就会形成火山渣锥。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "当富含气体的岩浆喷发，将小碎片喷入空中时，就会形成火山渣锥。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-234",
+      "text": "这些被称为火山渣的碎片落回火山口周围，堆积成锥形。",
+      "text_markdown": "这些被称为火山渣的碎片落回火山口周围，堆积成锥形。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "这些被称为火山渣的碎片落回火山口周围，堆积成锥形。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-235",
+      "text": "火山口是火山物质逸出的开口。",
+      "text_markdown": "火山口是火山物质逸出的开口。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "火山口是火山物质逸出的开口。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-236",
+      "text": "火山渣锥的高度很少超过三百米。",
+      "text_markdown": "火山渣锥的高度很少超过三百米。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "火山渣锥的高度很少超过三百米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-237",
+      "text": "它们经常在较大火山的侧面形成。",
+      "text_markdown": "它们经常在较大火山的侧面形成。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们经常在较大火山的侧面形成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-238",
+      "text": "墨西哥的帕里库廷是一座著名的火山渣锥。",
+      "text_markdown": "墨西哥的帕里库廷是一座著名的火山渣锥。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "墨西哥的帕里库廷是一座著名的火山渣锥。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-239",
+      "text": "它在一九四三年突然出现在一个农民的玉米地里。",
+      "text_markdown": "它在一九四三年突然出现在一个农民的玉米地里。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它在一九四三年突然出现在一个农民的玉米地里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-240",
+      "text": "不到一年，它就长到了三百多米高。",
+      "text_markdown": "不到一年，它就长到了三百多米高。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "不到一年，它就长到了三百多米高。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-241",
+      "text": "当厚重、黏稠的熔岩缓慢喷发并堆积在火山口周围时，就会形成熔岩穹丘。",
+      "text_markdown": "当厚重、黏稠的熔岩缓慢喷发并堆积在火山口周围时，就会形成熔岩穹丘。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "当厚重、黏稠的熔岩缓慢喷发并堆积在火山口周围时，就会形成熔岩穹丘。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-242",
+      "text": "熔岩太黏了，流不了多远。",
+      "text_markdown": "熔岩太黏了，流不了多远。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "熔岩太黏了，流不了多远。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-243",
+      "text": "它堆积成一个圆圆的、隆起的土丘。",
+      "text_markdown": "它堆积成一个圆圆的、隆起的土丘。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它堆积成一个圆圆的、隆起的土丘。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-244",
+      "text": "熔岩穹丘可能很危险。",
+      "text_markdown": "熔岩穹丘可能很危险。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "熔岩穹丘可能很危险。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-245",
+      "text": "它们不稳定。",
+      "text_markdown": "它们不稳定。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它们不稳定。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-246",
+      "text": "如果穹丘坍塌，可能会引发火山碎屑流。",
+      "text_markdown": "如果穹丘坍塌，可能会引发火山碎屑流。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "如果穹丘坍塌，可能会引发火山碎屑流。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-247",
+      "text": "一九八零年圣海伦斯火山喷发后，一个熔岩穹丘在火山口内生长了起来。",
+      "text_markdown": "一九八零年圣海伦斯火山喷发后，一个熔岩穹丘在火山口内生长了起来。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "一九八零年圣海伦斯火山喷发后，一个熔岩穹丘在火山口内生长了起来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-248",
+      "text": "破火山口不是一种火山类型，而是一种火山地貌。",
+      "text_markdown": "破火山口不是一种火山类型，而是一种火山地貌。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "破火山口不是一种火山类型，而是一种火山地貌。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-249",
+      "text": "破火山口是一个大型的盆状凹地，当火山的岩浆室在喷发中排空时形成。",
+      "text_markdown": "破火山口是一个大型的盆状凹地，当火山的岩浆室在喷发中排空时形成。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "破火山口是一个大型的盆状凹地，当火山的岩浆室在喷发中排空时形成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-250",
+      "text": "排空的岩浆室上方的地面向内坍塌。",
+      "text_markdown": "排空的岩浆室上方的地面向内坍塌。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "排空的岩浆室上方的地面向内坍塌。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-251",
+      "text": "破火山口可以非常巨大。",
+      "text_markdown": "破火山口可以非常巨大。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "破火山口可以非常巨大。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-252",
+      "text": "怀俄明州的黄石破火山口约七十二千米长。",
+      "text_markdown": "怀俄明州的黄石破火山口约七十二千米长。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "怀俄明州的黄石破火山口约七十二千米长。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-253",
+      "text": "它是在大约六十四万年前一次巨大的喷发中形成的。",
+      "text_markdown": "它是在大约六十四万年前一次巨大的喷发中形成的。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "它是在大约六十四万年前一次巨大的喷发中形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-254",
+      "text": "整个黄石地区坐落在一座超级火山之上。",
+      "text_markdown": "整个黄石地区坐落在一座超级火山之上。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "整个黄石地区坐落在一座超级火山之上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-255",
+      "text": "超级火山是能够产生火山爆发指数八级喷发的火山，可以喷出超过一千立方千米的物质。",
+      "text_markdown": "超级火山是能够产生火山爆发指数八级喷发的火山，可以喷出超过一千立方千米的物质。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "超级火山是能够产生火山爆发指数八级喷发的火山，可以喷出超过一千立方千米的物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-256",
+      "text": "每种火山都讲述着供给它的岩浆的故事。",
+      "text_markdown": "每种火山都讲述着供给它的岩浆的故事。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "每种火山都讲述着供给它的岩浆的故事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-257",
+      "text": "稀薄的岩浆形成宽阔的盾状火山。",
+      "text_markdown": "稀薄的岩浆形成宽阔的盾状火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "稀薄的岩浆形成宽阔的盾状火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-258",
+      "text": "黏稠的岩浆形成陡峭的锥状火山。",
+      "text_markdown": "黏稠的岩浆形成陡峭的锥状火山。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "黏稠的岩浆形成陡峭的锥状火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch05-259",
+      "text": "形态遵循物理规律。",
+      "text_markdown": "形态遵循物理规律。",
+      "title": "火山的类型",
+      "tts": {
+        "text": "形态遵循物理规律。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch06-260",
+      "text": "熔岩与火山灰",
+      "text_markdown": "熔岩与火山灰",
+      "title": "熔岩与火山灰"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-261",
+      "text": "火山喷发时，会以三种形式释放物质：液态、固态和气态。",
+      "text_markdown": "火山喷发时，会以三种形式释放物质：液态、固态和气态。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山喷发时，会以三种形式释放物质：液态、固态和气态。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-262",
+      "text": "每种形式的表现不同，造成的危害和地貌也不同。",
+      "text_markdown": "每种形式的表现不同，造成的危害和地貌也不同。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "每种形式的表现不同，造成的危害和地貌也不同。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-263",
+      "text": "熔岩是液态形式。",
+      "text_markdown": "熔岩是液态形式。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "熔岩是液态形式。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-264",
+      "text": "它是到达地表的岩浆。",
+      "text_markdown": "它是到达地表的岩浆。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它是到达地表的岩浆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-265",
+      "text": "熔岩的温度通常在七百到一千二百摄氏度之间。",
+      "text_markdown": "熔岩的温度通常在七百到一千二百摄氏度之间。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "熔岩的温度通常在七百到一千二百摄氏度之间。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-266",
+      "text": "温度决定了颜色。",
+      "text_markdown": "温度决定了颜色。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "温度决定了颜色。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-267",
+      "text": "最热的熔岩发出白色或黄色的光。",
+      "text_markdown": "最热的熔岩发出白色或黄色的光。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "最热的熔岩发出白色或黄色的光。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-268",
+      "text": "稍微凉一点的熔岩发出橙色的光。",
+      "text_markdown": "稍微凉一点的熔岩发出橙色的光。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "稍微凉一点的熔岩发出橙色的光。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-269",
+      "text": "继续冷却后，它变成红色，然后变暗。",
+      "text_markdown": "继续冷却后，它变成红色，然后变暗。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "继续冷却后，它变成红色，然后变暗。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-270",
+      "text": "熔岩流有不同的类型。",
+      "text_markdown": "熔岩流有不同的类型。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "熔岩流有不同的类型。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-271",
+      "text": "帕霍伊霍伊熔岩光滑如绳。",
+      "text_markdown": "帕霍伊霍伊熔岩光滑如绳。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "帕霍伊霍伊熔岩光滑如绳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-272",
+      "text": "这个词来自夏威夷语。",
+      "text_markdown": "这个词来自夏威夷语。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "这个词来自夏威夷语。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-273",
+      "text": "帕霍伊霍伊熔岩是当流动性好的熔岩缓慢流动时形成的，表面冷却成光滑、褶皱的外皮。",
+      "text_markdown": "帕霍伊霍伊熔岩是当流动性好的熔岩缓慢流动时形成的，表面冷却成光滑、褶皱的外皮。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "帕霍伊霍伊熔岩是当流动性好的熔岩缓慢流动时形成的，表面冷却成光滑、褶皱的外皮。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-274",
+      "text": "阿阿熔岩粗糙而参差不齐。",
+      "text_markdown": "阿阿熔岩粗糙而参差不齐。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "阿阿熔岩粗糙而参差不齐。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-275",
+      "text": "阿阿熔岩是当熔岩流动较快时形成的，表面破碎成尖锐、不规则的块状。",
+      "text_markdown": "阿阿熔岩是当熔岩流动较快时形成的，表面破碎成尖锐、不规则的块状。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "阿阿熔岩是当熔岩流动较快时形成的，表面破碎成尖锐、不规则的块状。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-276",
+      "text": "枕状熔岩是在水下喷发时形成的。",
+      "text_markdown": "枕状熔岩是在水下喷发时形成的。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "枕状熔岩是在水下喷发时形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-277",
+      "text": "水会立即冷却外表面，形成圆润的、枕头形状的团块。",
+      "text_markdown": "水会立即冷却外表面，形成圆润的、枕头形状的团块。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "水会立即冷却外表面，形成圆润的、枕头形状的团块。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-278",
+      "text": "熔岩流会摧毁它覆盖的一切。",
+      "text_markdown": "熔岩流会摧毁它覆盖的一切。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "熔岩流会摧毁它覆盖的一切。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-279",
+      "text": "它们埋葬道路、建筑和农田。",
+      "text_markdown": "它们埋葬道路、建筑和农田。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它们埋葬道路、建筑和农田。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-280",
+      "text": "但熔岩流的速度通常足够慢，人们可以撤离。",
+      "text_markdown": "但熔岩流的速度通常足够慢，人们可以撤离。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "但熔岩流的速度通常足够慢，人们可以撤离。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-281",
+      "text": "它们很少直接致死。",
+      "text_markdown": "它们很少直接致死。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它们很少直接致死。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-282",
+      "text": "更大的危险来自火山喷射到空中的物质。",
+      "text_markdown": "更大的危险来自火山喷射到空中的物质。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "更大的危险来自火山喷射到空中的物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-283",
+      "text": "火山灰是分布最广泛的火山产物。",
+      "text_markdown": "火山灰是分布最广泛的火山产物。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山灰是分布最广泛的火山产物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-284",
+      "text": "火山灰与篝火的灰不同。",
+      "text_markdown": "火山灰与篝火的灰不同。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山灰与篝火的灰不同。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-285",
+      "text": "它由极其细小的碎裂岩石和玻璃碎片组成。",
+      "text_markdown": "它由极其细小的碎裂岩石和玻璃碎片组成。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它由极其细小的碎裂岩石和玻璃碎片组成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-286",
+      "text": "碎裂意味着被打碎成非常细小的碎片。",
+      "text_markdown": "碎裂意味着被打碎成非常细小的碎片。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "碎裂意味着被打碎成非常细小的碎片。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-287",
+      "text": "这些碎片尖锐而坚硬。",
+      "text_markdown": "这些碎片尖锐而坚硬。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "这些碎片尖锐而坚硬。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-288",
+      "text": "一次大喷发可以将火山灰送入平流层高处。",
+      "text_markdown": "一次大喷发可以将火山灰送入平流层高处。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "一次大喷发可以将火山灰送入平流层高处。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-289",
+      "text": "平流层是天气区域上方的大气层。",
+      "text_markdown": "平流层是天气区域上方的大气层。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "平流层是天气区域上方的大气层。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-290",
+      "text": "平流层中的火山灰可以飘遍全世界。",
+      "text_markdown": "平流层中的火山灰可以飘遍全世界。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "平流层中的火山灰可以飘遍全世界。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-291",
+      "text": "降落的火山灰覆盖地面。",
+      "text_markdown": "降落的火山灰覆盖地面。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "降落的火山灰覆盖地面。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-292",
+      "text": "几厘米厚的火山灰就能让屋顶在它的重量下坍塌。",
+      "text_markdown": "几厘米厚的火山灰就能让屋顶在它的重量下坍塌。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "几厘米厚的火山灰就能让屋顶在它的重量下坍塌。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-293",
+      "text": "火山灰堵塞发动机、污染水源、损害肺部。",
+      "text_markdown": "火山灰堵塞发动机、污染水源、损害肺部。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山灰堵塞发动机、污染水源、损害肺部。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-294",
+      "text": "细小的火山灰颗粒可以在空中停留数天或数周。",
+      "text_markdown": "细小的火山灰颗粒可以在空中停留数天或数周。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "细小的火山灰颗粒可以在空中停留数天或数周。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-295",
+      "text": "从火山喷出的较大碎片被称为火山弹。",
+      "text_markdown": "从火山喷出的较大碎片被称为火山弹。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "从火山喷出的较大碎片被称为火山弹。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-296",
+      "text": "火山弹是一团在飞行过程中凝固的熔融岩石。",
+      "text_markdown": "火山弹是一团在飞行过程中凝固的熔融岩石。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山弹是一团在飞行过程中凝固的熔融岩石。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-297",
+      "text": "有些像拳头那么大。",
+      "text_markdown": "有些像拳头那么大。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "有些像拳头那么大。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-298",
+      "text": "有些像汽车那么大。",
+      "text_markdown": "有些像汽车那么大。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "有些像汽车那么大。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-299",
+      "text": "它们以巨大的力量落在火山附近。",
+      "text_markdown": "它们以巨大的力量落在火山附近。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它们以巨大的力量落在火山附近。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-300",
+      "text": "火山气体是喷发的无形产物。",
+      "text_markdown": "火山气体是喷发的无形产物。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山气体是喷发的无形产物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-301",
+      "text": "含量最多的气体是水蒸气。",
+      "text_markdown": "含量最多的气体是水蒸气。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "含量最多的气体是水蒸气。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-302",
+      "text": "二氧化硫是另一种常见的火山气体。",
+      "text_markdown": "二氧化硫是另一种常见的火山气体。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "二氧化硫是另一种常见的火山气体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-303",
+      "text": "当二氧化硫到达高层大气时，它与水结合形成硫酸液滴。",
+      "text_markdown": "当二氧化硫到达高层大气时，它与水结合形成硫酸液滴。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "当二氧化硫到达高层大气时，它与水结合形成硫酸液滴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-304",
+      "text": "这些液滴将阳光反射回太空。",
+      "text_markdown": "这些液滴将阳光反射回太空。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "这些液滴将阳光反射回太空。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-305",
+      "text": "一次大喷发可以使全球气温降低数月甚至数年。",
+      "text_markdown": "一次大喷发可以使全球气温降低数月甚至数年。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "一次大喷发可以使全球气温降低数月甚至数年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-306",
+      "text": "一九九一年菲律宾皮纳图博火山的喷发使全球平均气温降低了大约零点五摄氏度，持续了近两年。",
+      "text_markdown": "一九九一年菲律宾皮纳图博火山的喷发使全球平均气温降低了大约零点五摄氏度，持续了近两年。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "一九九一年菲律宾皮纳图博火山的喷发使全球平均气温降低了大约零点五摄氏度，持续了近两年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-307",
+      "text": "二氧化碳也会被释放出来。",
+      "text_markdown": "二氧化碳也会被释放出来。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "二氧化碳也会被释放出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-308",
+      "text": "在少数情况下，二氧化碳会聚集在低洼地区，因为它比空气重。",
+      "text_markdown": "在少数情况下，二氧化碳会聚集在低洼地区，因为它比空气重。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "在少数情况下，二氧化碳会聚集在低洼地区，因为它比空气重。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-309",
+      "text": "一九八六年，一团二氧化碳从喀麦隆的尼奥斯湖喷出。",
+      "text_markdown": "一九八六年，一团二氧化碳从喀麦隆的尼奥斯湖喷出。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "一九八六年，一团二氧化碳从喀麦隆的尼奥斯湖喷出。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-310",
+      "text": "气体顺着山坡向下流动，导致一千七百多人窒息死亡。",
+      "text_markdown": "气体顺着山坡向下流动，导致一千七百多人窒息死亡。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "气体顺着山坡向下流动，导致一千七百多人窒息死亡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-311",
+      "text": "火山产生的物质是危险的。",
+      "text_markdown": "火山产生的物质是危险的。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "火山产生的物质是危险的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-312",
+      "text": "它们也是新土地、新土壤和新大气的原材料。",
+      "text_markdown": "它们也是新土地、新土壤和新大气的原材料。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "它们也是新土地、新土壤和新大气的原材料。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch06-313",
+      "text": "毁灭与创造来自同一次喷发。",
+      "text_markdown": "毁灭与创造来自同一次喷发。",
+      "title": "熔岩与火山灰",
+      "tts": {
+        "text": "毁灭与创造来自同一次喷发。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch07-314",
+      "text": "著名火山",
+      "text_markdown": "著名火山",
+      "title": "著名火山"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-315",
+      "text": "某些喷发改变了历史的进程。",
+      "text_markdown": "某些喷发改变了历史的进程。",
+      "title": "著名火山",
+      "tts": {
+        "text": "某些喷发改变了历史的进程。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-316",
+      "text": "它们摧毁了城市，改变了气候，重塑了地图。",
+      "text_markdown": "它们摧毁了城市，改变了气候，重塑了地图。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它们摧毁了城市，改变了气候，重塑了地图。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-317",
+      "text": "每一次著名的喷发都教给我们关于地球表面之下力量的知识。",
+      "text_markdown": "每一次著名的喷发都教给我们关于地球表面之下力量的知识。",
+      "title": "著名火山",
+      "tts": {
+        "text": "每一次著名的喷发都教给我们关于地球表面之下力量的知识。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-318",
+      "text": "维苏威火山矗立在意大利南部那不勒斯市附近。",
+      "text_markdown": "维苏威火山矗立在意大利南部那不勒斯市附近。",
+      "title": "著名火山",
+      "tts": {
+        "text": "维苏威火山矗立在意大利南部那不勒斯市附近。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-319",
+      "text": "公元七十九年，它毫无预警地喷发了。",
+      "text_markdown": "公元七十九年，它毫无预警地喷发了。",
+      "title": "著名火山",
+      "tts": {
+        "text": "公元七十九年，它毫无预警地喷发了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-320",
+      "text": "火山灰和浮石柱高高升入天空。",
+      "text_markdown": "火山灰和浮石柱高高升入天空。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山灰和浮石柱高高升入天空。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-321",
+      "text": "浮石是一种充满气泡的轻质火山岩。",
+      "text_markdown": "浮石是一种充满气泡的轻质火山岩。",
+      "title": "著名火山",
+      "tts": {
+        "text": "浮石是一种充满气泡的轻质火山岩。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-322",
+      "text": "火山灰降落在罗马城市庞贝和赫库兰尼姆上。",
+      "text_markdown": "火山灰降落在罗马城市庞贝和赫库兰尼姆上。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山灰降落在罗马城市庞贝和赫库兰尼姆上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-323",
+      "text": "随后，火山碎屑流横扫而过。",
+      "text_markdown": "随后，火山碎屑流横扫而过。",
+      "title": "著名火山",
+      "tts": {
+        "text": "随后，火山碎屑流横扫而过。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-324",
+      "text": "碎屑流将两座城市埋在了数米厚的炽热火山灰和岩石之下。",
+      "text_markdown": "碎屑流将两座城市埋在了数米厚的炽热火山灰和岩石之下。",
+      "title": "著名火山",
+      "tts": {
+        "text": "碎屑流将两座城市埋在了数米厚的炽热火山灰和岩石之下。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-325",
+      "text": "数千人死亡。",
+      "text_markdown": "数千人死亡。",
+      "title": "著名火山",
+      "tts": {
+        "text": "数千人死亡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-326",
+      "text": "这些城市失落了将近一千七百年。",
+      "text_markdown": "这些城市失落了将近一千七百年。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这些城市失落了将近一千七百年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-327",
+      "text": "考古学家挖掘庞贝时，发现了建筑、街道，甚至保存在火山灰中的食物。",
+      "text_markdown": "考古学家挖掘庞贝时，发现了建筑、街道，甚至保存在火山灰中的食物。",
+      "title": "著名火山",
+      "tts": {
+        "text": "考古学家挖掘庞贝时，发现了建筑、街道，甚至保存在火山灰中的食物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-328",
+      "text": "维苏威火山至今仍然活跃。",
+      "text_markdown": "维苏威火山至今仍然活跃。",
+      "title": "著名火山",
+      "tts": {
+        "text": "维苏威火山至今仍然活跃。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-329",
+      "text": "今天有三百多万人生活在它的阴影之下。",
+      "text_markdown": "今天有三百多万人生活在它的阴影之下。",
+      "title": "著名火山",
+      "tts": {
+        "text": "今天有三百多万人生活在它的阴影之下。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-330",
+      "text": "喀拉喀托火山是印度尼西亚的一座火山岛。",
+      "text_markdown": "喀拉喀托火山是印度尼西亚的一座火山岛。",
+      "title": "著名火山",
+      "tts": {
+        "text": "喀拉喀托火山是印度尼西亚的一座火山岛。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-331",
+      "text": "一八八三年，它产生了有记录以来最响亮的喷发之一。",
+      "text_markdown": "一八八三年，它产生了有记录以来最响亮的喷发之一。",
+      "title": "著名火山",
+      "tts": {
+        "text": "一八八三年，它产生了有记录以来最响亮的喷发之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-332",
+      "text": "声音传到了近五千千米以外。",
+      "text_markdown": "声音传到了近五千千米以外。",
+      "title": "著名火山",
+      "tts": {
+        "text": "声音传到了近五千千米以外。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-333",
+      "text": "这次喷发摧毁了岛屿的大部分。",
+      "text_markdown": "这次喷发摧毁了岛屿的大部分。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这次喷发摧毁了岛屿的大部分。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-334",
+      "text": "它引发的海啸造成了三万六千多人死亡。",
+      "text_markdown": "它引发的海啸造成了三万六千多人死亡。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它引发的海啸造成了三万六千多人死亡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-335",
+      "text": "海啸是由水下扰动引起的巨大海浪。",
+      "text_markdown": "海啸是由水下扰动引起的巨大海浪。",
+      "title": "著名火山",
+      "tts": {
+        "text": "海啸是由水下扰动引起的巨大海浪。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-336",
+      "text": "火山灰环绕地球，数月间产生了鲜艳的红色日落。",
+      "text_markdown": "火山灰环绕地球，数月间产生了鲜艳的红色日落。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山灰环绕地球，数月间产生了鲜艳的红色日落。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-337",
+      "text": "全球气温明显下降。",
+      "text_markdown": "全球气温明显下降。",
+      "title": "著名火山",
+      "tts": {
+        "text": "全球气温明显下降。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-338",
+      "text": "一座新的火山岛——喀拉喀托之子，自一九二七年以来一直在同一位置生长。",
+      "text_markdown": "一座新的火山岛——喀拉喀托之子，自一九二七年以来一直在同一位置生长。",
+      "title": "著名火山",
+      "tts": {
+        "text": "一座新的火山岛——喀拉喀托之子，自一九二七年以来一直在同一位置生长。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-339",
+      "text": "喀拉喀托之子中的“子”意为孩子。",
+      "text_markdown": "喀拉喀托之子中的“子”意为孩子。",
+      "title": "著名火山",
+      "tts": {
+        "text": "喀拉喀托之子中的“子”意为孩子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-340",
+      "text": "喀拉喀托的孩子至今仍在喷发。",
+      "text_markdown": "喀拉喀托的孩子至今仍在喷发。",
+      "title": "著名火山",
+      "tts": {
+        "text": "喀拉喀托的孩子至今仍在喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-341",
+      "text": "圣海伦斯火山位于美国华盛顿州。",
+      "text_markdown": "圣海伦斯火山位于美国华盛顿州。",
+      "title": "著名火山",
+      "tts": {
+        "text": "圣海伦斯火山位于美国华盛顿州。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-342",
+      "text": "一九八零年五月十八日，一场地震引发了北面的大规模山体滑坡。",
+      "text_markdown": "一九八零年五月十八日，一场地震引发了北面的大规模山体滑坡。",
+      "title": "著名火山",
+      "tts": {
+        "text": "一九八零年五月十八日，一场地震引发了北面的大规模山体滑坡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-343",
+      "text": "这是有记录以来最大的山体滑坡。",
+      "text_markdown": "这是有记录以来最大的山体滑坡。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这是有记录以来最大的山体滑坡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-344",
+      "text": "它释放了内部岩浆上的压力。",
+      "text_markdown": "它释放了内部岩浆上的压力。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它释放了内部岩浆上的压力。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-345",
+      "text": "火山向侧面爆炸了。",
+      "text_markdown": "火山向侧面爆炸了。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山向侧面爆炸了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-346",
+      "text": "侧向爆炸夷平了六百平方千米的森林。",
+      "text_markdown": "侧向爆炸夷平了六百平方千米的森林。",
+      "title": "著名火山",
+      "tts": {
+        "text": "侧向爆炸夷平了六百平方千米的森林。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-347",
+      "text": "火山灰升到了大气层二十四千米的高处。",
+      "text_markdown": "火山灰升到了大气层二十四千米的高处。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山灰升到了大气层二十四千米的高处。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-348",
+      "text": "五十七人遇难。",
+      "text_markdown": "五十七人遇难。",
+      "title": "著名火山",
+      "tts": {
+        "text": "五十七人遇难。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-349",
+      "text": "这次喷发使山的高度降低了大约四百米。",
+      "text_markdown": "这次喷发使山的高度降低了大约四百米。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这次喷发使山的高度降低了大约四百米。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-350",
+      "text": "今天，科学家持续监测着圣海伦斯火山。",
+      "text_markdown": "今天，科学家持续监测着圣海伦斯火山。",
+      "title": "著名火山",
+      "tts": {
+        "text": "今天，科学家持续监测着圣海伦斯火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-351",
+      "text": "一个新的熔岩穹丘在火山口内缓慢生长。",
+      "text_markdown": "一个新的熔岩穹丘在火山口内缓慢生长。",
+      "title": "著名火山",
+      "tts": {
+        "text": "一个新的熔岩穹丘在火山口内缓慢生长。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-352",
+      "text": "皮纳图博火山位于菲律宾。",
+      "text_markdown": "皮纳图博火山位于菲律宾。",
+      "title": "著名火山",
+      "tts": {
+        "text": "皮纳图博火山位于菲律宾。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-353",
+      "text": "一九九一年六月，它在沉寂了六百年后喷发了。",
+      "text_markdown": "一九九一年六月，它在沉寂了六百年后喷发了。",
+      "title": "著名火山",
+      "tts": {
+        "text": "一九九一年六月，它在沉寂了六百年后喷发了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-354",
+      "text": "沉寂意味着一段不活动的时期。",
+      "text_markdown": "沉寂意味着一段不活动的时期。",
+      "title": "著名火山",
+      "tts": {
+        "text": "沉寂意味着一段不活动的时期。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-355",
+      "text": "这次喷发喷出了大约十立方千米的物质。",
+      "text_markdown": "这次喷发喷出了大约十立方千米的物质。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这次喷发喷出了大约十立方千米的物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-356",
+      "text": "这是二十世纪第二大的喷发。",
+      "text_markdown": "这是二十世纪第二大的喷发。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这是二十世纪第二大的喷发。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-357",
+      "text": "它释放的二氧化硫形成了一层全球性的烟雾，使地球在两年内降温了大约零点五摄氏度。",
+      "text_markdown": "它释放的二氧化硫形成了一层全球性的烟雾，使地球在两年内降温了大约零点五摄氏度。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它释放的二氧化硫形成了一层全球性的烟雾，使地球在两年内降温了大约零点五摄氏度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-358",
+      "text": "艾雅法拉约库尔是冰岛的一座火山。",
+      "text_markdown": "艾雅法拉约库尔是冰岛的一座火山。",
+      "title": "著名火山",
+      "tts": {
+        "text": "艾雅法拉约库尔是冰岛的一座火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-359",
+      "text": "二零一零年，它在一座冰川下面喷发了。",
+      "text_markdown": "二零一零年，它在一座冰川下面喷发了。",
+      "title": "著名火山",
+      "tts": {
+        "text": "二零一零年，它在一座冰川下面喷发了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-360",
+      "text": "熔岩和冰的相互作用产生了大量细小的火山灰云。",
+      "text_markdown": "熔岩和冰的相互作用产生了大量细小的火山灰云。",
+      "title": "著名火山",
+      "tts": {
+        "text": "熔岩和冰的相互作用产生了大量细小的火山灰云。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-361",
+      "text": "火山灰云导致欧洲的航空运输中断了六天。",
+      "text_markdown": "火山灰云导致欧洲的航空运输中断了六天。",
+      "title": "著名火山",
+      "tts": {
+        "text": "火山灰云导致欧洲的航空运输中断了六天。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-362",
+      "text": "超过十万次航班被取消。",
+      "text_markdown": "超过十万次航班被取消。",
+      "title": "著名火山",
+      "tts": {
+        "text": "超过十万次航班被取消。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-363",
+      "text": "按火山标准来看，这次喷发规模较小。",
+      "text_markdown": "按火山标准来看，这次喷发规模较小。",
+      "title": "著名火山",
+      "tts": {
+        "text": "按火山标准来看，这次喷发规模较小。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-364",
+      "text": "但它的位置和时机表明，即使一次中等规模的喷发也能扰乱现代文明。",
+      "text_markdown": "但它的位置和时机表明，即使一次中等规模的喷发也能扰乱现代文明。",
+      "title": "著名火山",
+      "tts": {
+        "text": "但它的位置和时机表明，即使一次中等规模的喷发也能扰乱现代文明。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-365",
+      "text": "这些喷发提醒我们，火山按照它们自己的时间表运作。",
+      "text_markdown": "这些喷发提醒我们，火山按照它们自己的时间表运作。",
+      "title": "著名火山",
+      "tts": {
+        "text": "这些喷发提醒我们，火山按照它们自己的时间表运作。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-366",
+      "text": "它们不遵循人类的计划。",
+      "text_markdown": "它们不遵循人类的计划。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它们不遵循人类的计划。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch07-367",
+      "text": "它们可以沉睡几个世纪，然后毫无预警地醒来。",
+      "text_markdown": "它们可以沉睡几个世纪，然后毫无预警地醒来。",
+      "title": "著名火山",
+      "tts": {
+        "text": "它们可以沉睡几个世纪，然后毫无预警地醒来。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "h1",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "id": "ch08-368",
+      "text": "火山建造世界",
+      "text_markdown": "火山建造世界",
+      "title": "火山建造世界"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-369",
+      "text": "火山具有破坏性。",
+      "text_markdown": "火山具有破坏性。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山具有破坏性。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-370",
+      "text": "它们也在建造。",
+      "text_markdown": "它们也在建造。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "它们也在建造。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-371",
+      "text": "在漫长的地质时间里，火山创造了我们生活的世界的大部分。",
+      "text_markdown": "在漫长的地质时间里，火山创造了我们生活的世界的大部分。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "在漫长的地质时间里，火山创造了我们生活的世界的大部分。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-372",
+      "text": "地球的大气层部分是因为火山而存在的。",
+      "text_markdown": "地球的大气层部分是因为火山而存在的。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "地球的大气层部分是因为火山而存在的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-373",
+      "text": "在地球历史的早期，火山释放了大量的气体。",
+      "text_markdown": "在地球历史的早期，火山释放了大量的气体。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "在地球历史的早期，火山释放了大量的气体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-374",
+      "text": "主要的气体是水蒸气、二氧化碳和氮气。",
+      "text_markdown": "主要的气体是水蒸气、二氧化碳和氮气。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "主要的气体是水蒸气、二氧化碳和氮气。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-375",
+      "text": "水蒸气凝结，最终形成了海洋。",
+      "text_markdown": "水蒸气凝结，最终形成了海洋。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "水蒸气凝结，最终形成了海洋。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-376",
+      "text": "氮气成为了大气层中含量最多的气体。",
+      "text_markdown": "氮气成为了大气层中含量最多的气体。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "氮气成为了大气层中含量最多的气体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-377",
+      "text": "你今天呼吸的空气中大约百分之七十八是氮气。",
+      "text_markdown": "你今天呼吸的空气中大约百分之七十八是氮气。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "你今天呼吸的空气中大约百分之七十八是氮气。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-378",
+      "text": "如果没有火山释放气体，地球将没有大气层，也没有海洋。",
+      "text_markdown": "如果没有火山释放气体，地球将没有大气层，也没有海洋。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "如果没有火山释放气体，地球将没有大气层，也没有海洋。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-379",
+      "text": "释气是指气体从行星内部释放的过程。",
+      "text_markdown": "释气是指气体从行星内部释放的过程。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "释气是指气体从行星内部释放的过程。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-380",
+      "text": "火山创造新的土地。",
+      "text_markdown": "火山创造新的土地。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山创造新的土地。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-381",
+      "text": "夏威夷的每一个岛屿都是由太平洋热点之上的火山喷发形成的。",
+      "text_markdown": "夏威夷的每一个岛屿都是由太平洋热点之上的火山喷发形成的。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "夏威夷的每一个岛屿都是由太平洋热点之上的火山喷发形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-382",
+      "text": "冰岛是由大西洋中脊的喷发形成的。",
+      "text_markdown": "冰岛是由大西洋中脊的喷发形成的。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "冰岛是由大西洋中脊的喷发形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-383",
+      "text": "太平洋、大西洋和印度洋上的许多岛屿都起源于火山。",
+      "text_markdown": "太平洋、大西洋和印度洋上的许多岛屿都起源于火山。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "太平洋、大西洋和印度洋上的许多岛屿都起源于火山。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-384",
+      "text": "海底本身就是由火山岩组成的，是在板块分离的大洋中脊处形成的。",
+      "text_markdown": "海底本身就是由火山岩组成的，是在板块分离的大洋中脊处形成的。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "海底本身就是由火山岩组成的，是在板块分离的大洋中脊处形成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-385",
+      "text": "火山土壤是地球上最肥沃的土壤之一。",
+      "text_markdown": "火山土壤是地球上最肥沃的土壤之一。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山土壤是地球上最肥沃的土壤之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-386",
+      "text": "熔岩和火山灰经过长时间分解后，会将矿物质释放到土壤中。",
+      "text_markdown": "熔岩和火山灰经过长时间分解后，会将矿物质释放到土壤中。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "熔岩和火山灰经过长时间分解后，会将矿物质释放到土壤中。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-387",
+      "text": "这些矿物质，包括钾、磷和钙，是植物必需的营养物质。",
+      "text_markdown": "这些矿物质，包括钾、磷和钙，是植物必需的营养物质。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "这些矿物质，包括钾、磷和钙，是植物必需的营养物质。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-388",
+      "text": "有火山土壤的地区支撑着丰富的农业。",
+      "text_markdown": "有火山土壤的地区支撑着丰富的农业。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "有火山土壤的地区支撑着丰富的农业。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-389",
+      "text": "西西里岛埃特纳火山的斜坡上布满了葡萄园和果园。",
+      "text_markdown": "西西里岛埃特纳火山的斜坡上布满了葡萄园和果园。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "西西里岛埃特纳火山的斜坡上布满了葡萄园和果园。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-390",
+      "text": "印度尼西亚的爪哇岛拥有肥沃的火山土壤，支撑着地球上人口最密集的地区之一。",
+      "text_markdown": "印度尼西亚的爪哇岛拥有肥沃的火山土壤，支撑着地球上人口最密集的地区之一。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "印度尼西亚的爪哇岛拥有肥沃的火山土壤，支撑着地球上人口最密集的地区之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-391",
+      "text": "火山影响全球气候。",
+      "text_markdown": "火山影响全球气候。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山影响全球气候。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-392",
+      "text": "大的喷发会将二氧化硫注入平流层。",
+      "text_markdown": "大的喷发会将二氧化硫注入平流层。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "大的喷发会将二氧化硫注入平流层。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-393",
+      "text": "二氧化硫转化为硫酸气溶胶。",
+      "text_markdown": "二氧化硫转化为硫酸气溶胶。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "二氧化硫转化为硫酸气溶胶。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-394",
+      "text": "气溶胶是悬浮在大气中的微小颗粒。",
+      "text_markdown": "气溶胶是悬浮在大气中的微小颗粒。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "气溶胶是悬浮在大气中的微小颗粒。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-395",
+      "text": "这些气溶胶反射入射的阳光，使地球降温。",
+      "text_markdown": "这些气溶胶反射入射的阳光，使地球降温。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "这些气溶胶反射入射的阳光，使地球降温。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-396",
+      "text": "一八一五年印度尼西亚坦博拉火山的喷发导致了一八一六年的“无夏之年”。",
+      "text_markdown": "一八一五年印度尼西亚坦博拉火山的喷发导致了一八一六年的“无夏之年”。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "一八一五年印度尼西亚坦博拉火山的喷发导致了一八一六年的“无夏之年”。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-397",
+      "text": "欧洲和北美的庄稼歉收。",
+      "text_markdown": "欧洲和北美的庄稼歉收。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "欧洲和北美的庄稼歉收。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-398",
+      "text": "一些地区的气温下降了好几度。",
+      "text_markdown": "一些地区的气温下降了好几度。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "一些地区的气温下降了好几度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-399",
+      "text": "在更长的时间尺度上，火山排放的二氧化碳帮助调节着地球的温度。",
+      "text_markdown": "在更长的时间尺度上，火山排放的二氧化碳帮助调节着地球的温度。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "在更长的时间尺度上，火山排放的二氧化碳帮助调节着地球的温度。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-400",
+      "text": "当火山活动增加时，更多的二氧化碳进入大气层，使地球变暖。",
+      "text_markdown": "当火山活动增加时，更多的二氧化碳进入大气层，使地球变暖。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "当火山活动增加时，更多的二氧化碳进入大气层，使地球变暖。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-401",
+      "text": "当它减少时，地球变冷。",
+      "text_markdown": "当它减少时，地球变冷。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "当它减少时，地球变冷。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-402",
+      "text": "这个火山恒温器已经运行了数十亿年。",
+      "text_markdown": "这个火山恒温器已经运行了数十亿年。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "这个火山恒温器已经运行了数十亿年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-403",
+      "text": "火山提供地热能。",
+      "text_markdown": "火山提供地热能。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山提供地热能。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-404",
+      "text": "地热能是地球内部的热量，可以用来发电。",
+      "text_markdown": "地热能是地球内部的热量，可以用来发电。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "地热能是地球内部的热量，可以用来发电。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-405",
+      "text": "在冰岛，地热发电站提供了该国大约百分之二十五的电力。",
+      "text_markdown": "在冰岛，地热发电站提供了该国大约百分之二十五的电力。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "在冰岛，地热发电站提供了该国大约百分之二十五的电力。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-406",
+      "text": "火山系统中的热水为住宅和温室供暖。",
+      "text_markdown": "火山系统中的热水为住宅和温室供暖。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山系统中的热水为住宅和温室供暖。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-407",
+      "text": "地热能是可再生的，排放量非常低。",
+      "text_markdown": "地热能是可再生的，排放量非常低。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "地热能是可再生的，排放量非常低。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-408",
+      "text": "火山还创造了独特的生态系统。",
+      "text_markdown": "火山还创造了独特的生态系统。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山还创造了独特的生态系统。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-409",
+      "text": "喷发后的荒芜地带不会荒芜太久。",
+      "text_markdown": "喷发后的荒芜地带不会荒芜太久。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "喷发后的荒芜地带不会荒芜太久。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-410",
+      "text": "先锋物种会在新的岩石上定居。",
+      "text_markdown": "先锋物种会在新的岩石上定居。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "先锋物种会在新的岩石上定居。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-411",
+      "text": "先锋物种是最先定居在受扰动环境中的生物。",
+      "text_markdown": "先锋物种是最先定居在受扰动环境中的生物。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "先锋物种是最先定居在受扰动环境中的生物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-412",
+      "text": "地衣分解岩石。",
+      "text_markdown": "地衣分解岩石。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "地衣分解岩石。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-413",
+      "text": "苔藓扎根生长。",
+      "text_markdown": "苔藓扎根生长。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "苔藓扎根生长。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-414",
+      "text": "草紧随其后。",
+      "text_markdown": "草紧随其后。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "草紧随其后。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-415",
+      "text": "最终，森林生长起来。",
+      "text_markdown": "最终，森林生长起来。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "最终，森林生长起来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-416",
+      "text": "火山地上的生态演替过程展示了生命如何重新夺回被喷发摧毁的土地。",
+      "text_markdown": "火山地上的生态演替过程展示了生命如何重新夺回被喷发摧毁的土地。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山地上的生态演替过程展示了生命如何重新夺回被喷发摧毁的土地。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-417",
+      "text": "火山是一个矛盾体。",
+      "text_markdown": "火山是一个矛盾体。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "火山是一个矛盾体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-418",
+      "text": "矛盾体看似自相矛盾，但却是真实的。",
+      "text_markdown": "矛盾体看似自相矛盾，但却是真实的。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "矛盾体看似自相矛盾，但却是真实的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-419",
+      "text": "它们既毁灭，又创造。",
+      "text_markdown": "它们既毁灭，又创造。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "它们既毁灭，又创造。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-420",
+      "text": "它们既夺命，又赋予生命。",
+      "text_markdown": "它们既夺命，又赋予生命。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "它们既夺命，又赋予生命。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-421",
+      "text": "它们是地球自我更新的方式。",
+      "text_markdown": "它们是地球自我更新的方式。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "它们是地球自我更新的方式。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch08-422",
+      "text": "没有火山的地球将是一个更冷、更安静、更不适合居住的世界。",
+      "text_markdown": "没有火山的地球将是一个更冷、更安静、更不适合居住的世界。",
+      "title": "火山建造世界",
+      "tts": {
+        "text": "没有火山的地球将是一个更冷、更安静、更不适合居住的世界。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

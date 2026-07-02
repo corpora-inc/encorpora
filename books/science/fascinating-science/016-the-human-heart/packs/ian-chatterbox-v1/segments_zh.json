@@ -1,0 +1,6407 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_heart",
+  "lang": "zh",
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "永不停歇的泵",
+      "text": "永不停歇的泵",
+      "text_markdown": "永不停歇的泵"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你的心脏此刻正在跳动。",
+      "text_markdown": "你的心脏此刻正在跳动。",
+      "tts": {
+        "text": "你的心脏此刻正在跳动。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它在你睡觉时跳动。",
+      "text_markdown": "它在你睡觉时跳动。",
+      "tts": {
+        "text": "它在你睡觉时跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它在你进食时跳动。",
+      "text_markdown": "它在你进食时跳动。",
+      "tts": {
+        "text": "它在你进食时跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它在你阅读这句话时跳动。",
+      "text_markdown": "它在你阅读这句话时跳动。",
+      "tts": {
+        "text": "它在你阅读这句话时跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你的心脏从不休息。",
+      "text_markdown": "你的心脏从不休息。",
+      "tts": {
+        "text": "你的心脏从不休息。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它是世界上最可靠的泵。",
+      "text_markdown": "它是世界上最可靠的泵。",
+      "tts": {
+        "text": "它是世界上最可靠的泵。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏是位于胸腔内的肌肉器官。",
+      "text_markdown": "心脏是位于胸腔内的肌肉器官。",
+      "tts": {
+        "text": "心脏是位于胸腔内的肌肉器官。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "器官是具有特定功能的身体部位。",
+      "text_markdown": "器官是具有特定功能的身体部位。",
+      "tts": {
+        "text": "器官是具有特定功能的身体部位。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏的功能是泵送血液。",
+      "text_markdown": "心脏的功能是泵送血液。",
+      "tts": {
+        "text": "心脏的功能是泵送血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它位于胸腔中央略偏左的位置。",
+      "text_markdown": "它位于胸腔中央略偏左的位置。",
+      "tts": {
+        "text": "它位于胸腔中央略偏左的位置。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它的大小大约与你的拳头相当。",
+      "text_markdown": "它的大小大约与你的拳头相当。",
+      "tts": {
+        "text": "它的大小大约与你的拳头相当。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏由一种称为心肌的特殊肌肉组成。",
+      "text_markdown": "心脏由一种称为心肌的特殊肌肉组成。",
+      "tts": {
+        "text": "心脏由一种称为心肌的特殊肌肉组成。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏的（Cardiac）意思是\"与心脏有关\"。心肌与你手臂和腿部的肌肉不同。",
+      "text_markdown": "心脏的（Cardiac）意思是\"与心脏有关\"。心肌与你手臂和腿部的肌肉不同。",
+      "tts": {
+        "text": "心脏的意思是与心脏有关。心肌与你手臂和腿部的肌肉不同。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你可以用意志控制手臂的肌肉。",
+      "text_markdown": "你可以用意志控制手臂的肌肉。",
+      "tts": {
+        "text": "你可以用意志控制手臂的肌肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你无法控制心肌。",
+      "text_markdown": "你无法控制心肌。",
+      "tts": {
+        "text": "你无法控制心肌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它自主收缩。",
+      "text_markdown": "它自主收缩。",
+      "tts": {
+        "text": "它自主收缩。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它自动收缩，贯穿你生命中的每一秒。",
+      "text_markdown": "它自动收缩，贯穿你生命中的每一秒。",
+      "tts": {
+        "text": "它自动收缩，贯穿你生命中的每一秒。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "每次收缩都将血液推送到全身。",
+      "text_markdown": "每次收缩都将血液推送到全身。",
+      "tts": {
+        "text": "每次收缩都将血液推送到全身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "血液将氧气输送到细胞。",
+      "text_markdown": "血液将氧气输送到细胞。",
+      "tts": {
+        "text": "血液将氧气输送到细胞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "氧气是细胞产生能量所需的气体。",
+      "text_markdown": "氧气是细胞产生能量所需的气体。",
+      "tts": {
+        "text": "氧气是细胞产生能量所需的气体。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "没有氧气，细胞会在数分钟内死亡。",
+      "text_markdown": "没有氧气，细胞会在数分钟内死亡。",
+      "tts": {
+        "text": "没有氧气，细胞会在数分钟内死亡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏确保氧气能到达身体的每个部位。",
+      "text_markdown": "心脏确保氧气能到达身体的每个部位。",
+      "tts": {
+        "text": "心脏确保氧气能到达身体的每个部位。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你的心脏每分钟泵送约5升血液。",
+      "text_markdown": "你的心脏每分钟泵送约5升血液。",
+      "tts": {
+        "text": "你的心脏每分钟泵送约五升血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "1升大约相当于1夸脱。",
+      "text_markdown": "1升大约相当于1夸脱。",
+      "tts": {
+        "text": "一升大约相当于一夸脱。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "这意味着你全身的血液大约每分钟循环经过心脏一次。",
+      "text_markdown": "这意味着你全身的血液大约每分钟循环经过心脏一次。",
+      "tts": {
+        "text": "这意味着你全身的血液大约每分钟循环经过心脏一次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "一天之内，你的心脏大约泵送7500升血液。",
+      "text_markdown": "一天之内，你的心脏大约泵送7500升血液。",
+      "tts": {
+        "text": "一天之内，你的心脏大约泵送七千五百升血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "一年之内，它泵送近300万升血液。",
+      "text_markdown": "一年之内，它泵送近300万升血液。",
+      "tts": {
+        "text": "一年之内，它泵送近三百万升血液。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "人类心脏很早就开始跳动了。",
+      "text_markdown": "人类心脏很早就开始跳动了。",
+      "tts": {
+        "text": "人类心脏很早就开始跳动了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它在受孕后约3到4周开始跳动。",
+      "text_markdown": "它在受孕后约3到4周开始跳动。",
+      "tts": {
+        "text": "它在受孕后约三到四周开始跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "受孕是新生命诞生的那一刻。",
+      "text_markdown": "受孕是新生命诞生的那一刻。",
+      "tts": {
+        "text": "受孕是新生命诞生的那一刻。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏是最早形成的器官之一。",
+      "text_markdown": "心脏是最早形成的器官之一。",
+      "tts": {
+        "text": "心脏是最早形成的器官之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它在大脑完全发育之前就已经开始跳动。",
+      "text_markdown": "它在大脑完全发育之前就已经开始跳动。",
+      "tts": {
+        "text": "它在大脑完全发育之前就已经开始跳动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "古代人们就知道心脏的重要性。",
+      "text_markdown": "古代人们就知道心脏的重要性。",
+      "tts": {
+        "text": "古代人们就知道心脏的重要性。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "古埃及人认为心脏是智慧的中心。",
+      "text_markdown": "古埃及人认为心脏是智慧的中心。",
+      "tts": {
+        "text": "古埃及人认为心脏是智慧的中心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "古希腊人争论究竟是心脏还是大脑控制着身体。",
+      "text_markdown": "古希腊人争论究竟是心脏还是大脑控制着身体。",
+      "tts": {
+        "text": "古希腊人争论究竟是心脏还是大脑控制着身体。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "亚里士多德认为心脏是灵魂的居所。",
+      "text_markdown": "亚里士多德认为心脏是灵魂的居所。",
+      "tts": {
+        "text": "亚里士多德认为心脏是灵魂的居所。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "我们现在知道大脑控制思维。",
+      "text_markdown": "我们现在知道大脑控制思维。",
+      "tts": {
+        "text": "我们现在知道大脑控制思维。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "但心脏维持着大脑的生命。",
+      "text_markdown": "但心脏维持着大脑的生命。",
+      "tts": {
+        "text": "但心脏维持着大脑的生命。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "循环系统是在你体内输送血液的网络。",
+      "text_markdown": "循环系统是在你体内输送血液的网络。",
+      "tts": {
+        "text": "循环系统是在你体内输送血液的网络。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "心脏处于这个系统的中心。",
+      "text_markdown": "心脏处于这个系统的中心。",
+      "tts": {
+        "text": "心脏处于这个系统的中心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "循环（Circulatory）来源于\"circulate\"一词，意为\"循环流动\"。",
+      "text_markdown": "循环（Circulatory）来源于\"circulate\"一词，意为\"循环流动\"。",
+      "tts": {
+        "text": "循环来源于英文单词循环，意为循环流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "血液离开心脏，流经全身，再回到心脏。",
+      "text_markdown": "血液离开心脏，流经全身，再回到心脏。",
+      "tts": {
+        "text": "血液离开心脏，流经全身，再回到心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "这个循环从不停止。",
+      "text_markdown": "这个循环从不停止。",
+      "tts": {
+        "text": "这个循环从不停止。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "你的心脏在你出生之前就已经开始跳动了。",
+      "text_markdown": "你的心脏在你出生之前就已经开始跳动了。",
+      "tts": {
+        "text": "你的心脏在你出生之前就已经开始跳动了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "永不停歇的泵",
+      "text": "它将在你的一生中跳动数十亿次。",
+      "text_markdown": "它将在你的一生中跳动数十亿次。",
+      "tts": {
+        "text": "它将在你的一生中跳动数十亿次。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "四个腔室",
+      "text": "四个腔室",
+      "text_markdown": "四个腔室"
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "人类心脏有四个腔室。",
+      "text_markdown": "人类心脏有四个腔室。",
+      "tts": {
+        "text": "人类心脏有四个腔室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "腔室是一个封闭的空间。",
+      "text_markdown": "腔室是一个封闭的空间。",
+      "tts": {
+        "text": "腔室是一个封闭的空间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "每个腔室在输送血液中发挥着特定作用。",
+      "text_markdown": "每个腔室在输送血液中发挥着特定作用。",
+      "tts": {
+        "text": "每个腔室在输送血液中发挥着特定作用。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "上面两个腔室称为心房。",
+      "text_markdown": "上面两个腔室称为心房。",
+      "tts": {
+        "text": "上面两个腔室称为心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "单个称为心房（atrium）。",
+      "text_markdown": "单个称为心房（atrium）。",
+      "tts": {
+        "text": "单个称为心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "心房较小，壁较薄。",
+      "text_markdown": "心房较小，壁较薄。",
+      "tts": {
+        "text": "心房较小，壁较薄。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它们接收流入心脏的血液。",
+      "text_markdown": "它们接收流入心脏的血液。",
+      "tts": {
+        "text": "它们接收流入心脏的血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "可以把它们想象成接待室。",
+      "text_markdown": "可以把它们想象成接待室。",
+      "tts": {
+        "text": "可以把它们想象成接待室。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "下面两个腔室称为心室。",
+      "text_markdown": "下面两个腔室称为心室。",
+      "tts": {
+        "text": "下面两个腔室称为心室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "心室是壁更厚、肌肉更发达的腔室。",
+      "text_markdown": "心室是壁更厚、肌肉更发达的腔室。",
+      "tts": {
+        "text": "心室是壁更厚、肌肉更发达的腔室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "心室将血液泵出心脏。",
+      "text_markdown": "心室将血液泵出心脏。",
+      "tts": {
+        "text": "心室将血液泵出心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它们承担着最繁重的工作。",
+      "text_markdown": "它们承担着最繁重的工作。",
+      "tts": {
+        "text": "它们承担着最繁重的工作。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "右心房接收来自全身的血液。",
+      "text_markdown": "右心房接收来自全身的血液。",
+      "tts": {
+        "text": "右心房接收来自全身的血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "这些血液已经将氧气输送给了细胞。",
+      "text_markdown": "这些血液已经将氧气输送给了细胞。",
+      "tts": {
+        "text": "这些血液已经将氧气输送给了细胞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它含氧量低。",
+      "text_markdown": "它含氧量低。",
+      "tts": {
+        "text": "它含氧量低。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它呈深红色。",
+      "text_markdown": "它呈深红色。",
+      "tts": {
+        "text": "它呈深红色。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "血液通过两条大静脉进入右心房。",
+      "text_markdown": "血液通过两条大静脉进入右心房。",
+      "tts": {
+        "text": "血液通过两条大静脉进入右心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "静脉是将血液输送回心脏的血管。",
+      "text_markdown": "静脉是将血液输送回心脏的血管。",
+      "tts": {
+        "text": "静脉是将血液输送回心脏的血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "这两条静脉分别是上腔静脉和下腔静脉。",
+      "text_markdown": "这两条静脉分别是上腔静脉和下腔静脉。",
+      "tts": {
+        "text": "这两条静脉分别是上腔静脉和下腔静脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "上腔（Superior）意为上方。",
+      "text_markdown": "上腔（Superior）意为上方。",
+      "tts": {
+        "text": "上腔意为上方。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 8,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "下腔（Inferior）意为下方。",
+      "text_markdown": "下腔（Inferior）意为下方。",
+      "tts": {
+        "text": "下腔意为下方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "血液从右心房向下流入右心室。",
+      "text_markdown": "血液从右心房向下流入右心室。",
+      "tts": {
+        "text": "血液从右心房向下流入右心室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "右心室将血液泵送至肺部。",
+      "text_markdown": "右心室将血液泵送至肺部。",
+      "tts": {
+        "text": "右心室将血液泵送至肺部。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "在肺部，血液获取新鲜氧气。",
+      "text_markdown": "在肺部，血液获取新鲜氧气。",
+      "tts": {
+        "text": "在肺部，血液获取新鲜氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "血液同时释放二氧化碳。",
+      "text_markdown": "血液同时释放二氧化碳。",
+      "tts": {
+        "text": "血液同时释放二氧化碳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "二氧化碳是细胞产生的废气。",
+      "text_markdown": "二氧化碳是细胞产生的废气。",
+      "tts": {
+        "text": "二氧化碳是细胞产生的废气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "你每次呼气时都会呼出二氧化碳。",
+      "text_markdown": "你每次呼气时都会呼出二氧化碳。",
+      "tts": {
+        "text": "你每次呼气时都会呼出二氧化碳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "血液从肺部返回左心房。",
+      "text_markdown": "血液从肺部返回左心房。",
+      "tts": {
+        "text": "血液从肺部返回左心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "此时的血液富含氧气。",
+      "text_markdown": "此时的血液富含氧气。",
+      "tts": {
+        "text": "此时的血液富含氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它呈鲜红色。",
+      "text_markdown": "它呈鲜红色。",
+      "tts": {
+        "text": "它呈鲜红色。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它通过肺静脉进入左心房。",
+      "text_markdown": "它通过肺静脉进入左心房。",
+      "tts": {
+        "text": "它通过肺静脉进入左心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "肺（Pulmonary）意为\"与肺有关\"。",
+      "text_markdown": "肺（Pulmonary）意为\"与肺有关\"。",
+      "tts": {
+        "text": "肺的意思是与肺有关。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "从左心房，血液流入左心室。",
+      "text_markdown": "从左心房，血液流入左心室。",
+      "tts": {
+        "text": "从左心房，血液流入左心室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "左心室是力量最强的腔室。",
+      "text_markdown": "左心室是力量最强的腔室。",
+      "tts": {
+        "text": "左心室是力量最强的腔室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它的壁最厚。",
+      "text_markdown": "它的壁最厚。",
+      "tts": {
+        "text": "它的壁最厚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "左心室将富含氧气的血液泵送到全身。",
+      "text_markdown": "左心室将富含氧气的血液泵送到全身。",
+      "tts": {
+        "text": "左心室将富含氧气的血液泵送到全身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "它必须将血液一路推送至你的脚趾和头顶。",
+      "text_markdown": "它必须将血液一路推送至你的脚趾和头顶。",
+      "tts": {
+        "text": "它必须将血液一路推送至你的脚趾和头顶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "这需要巨大的力量。",
+      "text_markdown": "这需要巨大的力量。",
+      "tts": {
+        "text": "这需要巨大的力量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "腔室之间有瓣膜。",
+      "text_markdown": "腔室之间有瓣膜。",
+      "tts": {
+        "text": "腔室之间有瓣膜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "瓣膜是一种只能单向开启的活瓣。",
+      "text_markdown": "瓣膜是一种只能单向开启的活瓣。",
+      "tts": {
+        "text": "瓣膜是一种只能单向开启的活瓣。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "瓣膜防止血液倒流。",
+      "text_markdown": "瓣膜防止血液倒流。",
+      "tts": {
+        "text": "瓣膜防止血液倒流。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "心脏中共有四个瓣膜。",
+      "text_markdown": "心脏中共有四个瓣膜。",
+      "tts": {
+        "text": "心脏中共有四个瓣膜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "三尖瓣位于右心房和右心室之间。",
+      "text_markdown": "三尖瓣位于右心房和右心室之间。",
+      "tts": {
+        "text": "三尖瓣位于右心房和右心室之间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "二尖瓣位于左心房和左心室之间。",
+      "text_markdown": "二尖瓣位于左心房和左心室之间。",
+      "tts": {
+        "text": "二尖瓣位于左心房和左心室之间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "肺动脉瓣守护着右心室的出口。",
+      "text_markdown": "肺动脉瓣守护着右心室的出口。",
+      "tts": {
+        "text": "肺动脉瓣守护着右心室的出口。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "主动脉瓣守护着左心室的出口。",
+      "text_markdown": "主动脉瓣守护着左心室的出口。",
+      "tts": {
+        "text": "主动脉瓣守护着左心室的出口。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "瓣膜关闭时会发出声音。",
+      "text_markdown": "瓣膜关闭时会发出声音。",
+      "tts": {
+        "text": "瓣膜关闭时会发出声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "医生可以用听诊器听到这个声音。",
+      "text_markdown": "医生可以用听诊器听到这个声音。",
+      "tts": {
+        "text": "医生可以用听诊器听到这个声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "听诊器是一种用于聆听体内声音的工具。",
+      "text_markdown": "听诊器是一种用于聆听体内声音的工具。",
+      "tts": {
+        "text": "听诊器是一种用于聆听体内声音的工具。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "心跳声\"咚—嗒\"来自瓣膜的关闭。",
+      "text_markdown": "心跳声\"咚—嗒\"来自瓣膜的关闭。",
+      "tts": {
+        "text": "心跳声咚嗒来自瓣膜的关闭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "\"咚\"是二尖瓣和三尖瓣关闭的声音。",
+      "text_markdown": "\"咚\"是二尖瓣和三尖瓣关闭的声音。",
+      "tts": {
+        "text": "咚是二尖瓣和三尖瓣关闭的声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "\"嗒\"是主动脉瓣和肺动脉瓣关闭的声音。",
+      "text_markdown": "\"嗒\"是主动脉瓣和肺动脉瓣关闭的声音。",
+      "tts": {
+        "text": "嗒是主动脉瓣和肺动脉瓣关闭的声音。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "四个腔室。",
+      "text_markdown": "四个腔室。",
+      "tts": {
+        "text": "四个腔室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "四个瓣膜。",
+      "text_markdown": "四个瓣膜。",
+      "tts": {
+        "text": "四个瓣膜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "四个腔室",
+      "text": "一个目的：让血液持续流动。",
+      "text_markdown": "一个目的：让血液持续流动。",
+      "tts": {
+        "text": "一个目的：让血液持续流动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "血管",
+      "text": "血管",
+      "text_markdown": "血管"
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "血液并非在你体内自由流淌。",
+      "text_markdown": "血液并非在你体内自由流淌。",
+      "tts": {
+        "text": "血液并非在你体内自由流淌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "它在称为血管的管道中流动。",
+      "text_markdown": "它在称为血管的管道中流动。",
+      "tts": {
+        "text": "它在称为血管的管道中流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "血管构成一个网络，延伸至你体内的每一处组织。",
+      "text_markdown": "血管构成一个网络，延伸至你体内的每一处组织。",
+      "tts": {
+        "text": "血管构成一个网络，延伸至你体内的每一处组织。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "如果将你所有的血管首尾相接，它们可以延伸约100000千米。",
+      "text_markdown": "如果将你所有的血管首尾相接，它们可以延伸约100000千米。",
+      "tts": {
+        "text": "如果将你所有的血管首尾相接，它们可以延伸约十万千米。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "这足以绕地球两圈半。",
+      "text_markdown": "这足以绕地球两圈半。",
+      "tts": {
+        "text": "这足以绕地球两圈半。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "血管主要有三种类型：动脉、静脉和毛细血管。",
+      "text_markdown": "血管主要有三种类型：动脉、静脉和毛细血管。",
+      "tts": {
+        "text": "血管主要有三种类型：动脉、静脉和毛细血管。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "动脉将血液从心脏输送出去。",
+      "text_markdown": "动脉将血液从心脏输送出去。",
+      "tts": {
+        "text": "动脉将血液从心脏输送出去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "动脉（artery）将富含氧气的血液输送到全身组织，\"动\"字暗示它主动输送氧气。",
+      "text_markdown": "动脉（artery）将富含氧气的血液输送到全身组织，\"动\"字暗示它主动输送氧气。",
+      "tts": {
+        "text": "动脉将富含氧气的血液输送到全身组织，动字暗示它主动输送氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "最大的动脉是主动脉。",
+      "text_markdown": "最大的动脉是主动脉。",
+      "tts": {
+        "text": "最大的动脉是主动脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "主动脉从左心室发出。",
+      "text_markdown": "主动脉从左心室发出。",
+      "tts": {
+        "text": "主动脉从左心室发出。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "它向上弯曲，然后向下延伸穿过胸腔和腹腔。",
+      "text_markdown": "它向上弯曲，然后向下延伸穿过胸腔和腹腔。",
+      "tts": {
+        "text": "它向上弯曲，然后向下延伸穿过胸腔和腹腔。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血管",
+      "text": "从主动脉分出的分支延伸到身体的各个部位。",
+      "text_markdown": "从主动脉分出的分支延伸到身体的各个部位。",
+      "tts": {
+        "text": "从主动脉分出的分支延伸到身体的各个部位。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "动脉壁厚而富有弹性。",
+      "text_markdown": "动脉壁厚而富有弹性。",
+      "tts": {
+        "text": "动脉壁厚而富有弹性。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "弹性意味着它们能够伸展并弹回原状。",
+      "text_markdown": "弹性意味着它们能够伸展并弹回原状。",
+      "tts": {
+        "text": "弹性意味着它们能够伸展并弹回原状。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "当心脏收缩时，它将一股血浪推入动脉。",
+      "text_markdown": "当心脏收缩时，它将一股血浪推入动脉。",
+      "tts": {
+        "text": "当心脏收缩时，它将一股血浪推入动脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "动脉壁扩张以吸收这股压力。",
+      "text_markdown": "动脉壁扩张以吸收这股压力。",
+      "tts": {
+        "text": "动脉壁扩张以吸收这股压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "然后它们弹回，将血液向前推送。",
+      "text_markdown": "然后它们弹回，将血液向前推送。",
+      "tts": {
+        "text": "然后它们弹回，将血液向前推送。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血管",
+      "text": "这就产生了脉搏。",
+      "text_markdown": "这就产生了脉搏。",
+      "tts": {
+        "text": "这就产生了脉搏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血管",
+      "text": "脉搏是你可以在某些部位感受到的有节律的跳动。",
+      "text_markdown": "脉搏是你可以在某些部位感受到的有节律的跳动。",
+      "tts": {
+        "text": "脉搏是你可以在某些部位感受到的有节律的跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "血管",
+      "text": "你可以在手腕或颈侧感受到自己的脉搏。",
+      "text_markdown": "你可以在手腕或颈侧感受到自己的脉搏。",
+      "tts": {
+        "text": "你可以在手腕或颈侧感受到自己的脉搏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉将血液输送回心脏。",
+      "text_markdown": "静脉将血液输送回心脏。",
+      "tts": {
+        "text": "静脉将血液输送回心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "大多数静脉携带含氧量低的血液。",
+      "text_markdown": "大多数静脉携带含氧量低的血液。",
+      "tts": {
+        "text": "大多数静脉携带含氧量低的血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉壁比动脉壁更薄。",
+      "text_markdown": "静脉壁比动脉壁更薄。",
+      "tts": {
+        "text": "静脉壁比动脉壁更薄。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉中的血液在较低的压力下流动。",
+      "text_markdown": "静脉中的血液在较低的压力下流动。",
+      "tts": {
+        "text": "静脉中的血液在较低的压力下流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉内部有小瓣膜。",
+      "text_markdown": "静脉内部有小瓣膜。",
+      "tts": {
+        "text": "静脉内部有小瓣膜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血管",
+      "text": "这些瓣膜防止血液倒流。",
+      "text_markdown": "这些瓣膜防止血液倒流。",
+      "tts": {
+        "text": "这些瓣膜防止血液倒流。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血管",
+      "text": "当你站立时，腿部的血液必须逆重力向上流动。",
+      "text_markdown": "当你站立时，腿部的血液必须逆重力向上流动。",
+      "tts": {
+        "text": "当你站立时，腿部的血液必须逆重力向上流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "血管",
+      "text": "瓣膜确保血液朝正确方向流动。",
+      "text_markdown": "瓣膜确保血液朝正确方向流动。",
+      "tts": {
+        "text": "瓣膜确保血液朝正确方向流动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "毛细血管是最小的血管。",
+      "text_markdown": "毛细血管是最小的血管。",
+      "tts": {
+        "text": "毛细血管是最小的血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "它们是微观级别的。",
+      "text_markdown": "它们是微观级别的。",
+      "tts": {
+        "text": "它们是微观级别的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "微观意味着不借助显微镜就无法看见。",
+      "text_markdown": "微观意味着不借助显微镜就无法看见。",
+      "tts": {
+        "text": "微观意味着不借助显微镜就无法看见。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "毛细血管壁只有一个细胞厚。",
+      "text_markdown": "毛细血管壁只有一个细胞厚。",
+      "tts": {
+        "text": "毛细血管壁只有一个细胞厚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "这种薄度非常重要。",
+      "text_markdown": "这种薄度非常重要。",
+      "tts": {
+        "text": "这种薄度非常重要。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血管",
+      "text": "氧气穿过毛细血管壁进入周围组织。",
+      "text_markdown": "氧气穿过毛细血管壁进入周围组织。",
+      "tts": {
+        "text": "氧气穿过毛细血管壁进入周围组织。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血管",
+      "text": "二氧化碳从组织进入毛细血管。",
+      "text_markdown": "二氧化碳从组织进入毛细血管。",
+      "tts": {
+        "text": "二氧化碳从组织进入毛细血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "血管",
+      "text": "营养物质输送出去。",
+      "text_markdown": "营养物质输送出去。",
+      "tts": {
+        "text": "营养物质输送出去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 8,
+      "block_type": "text",
+      "title": "血管",
+      "text": "废物进入血管。",
+      "text_markdown": "废物进入血管。",
+      "tts": {
+        "text": "废物进入血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p28",
+      "sentence_index": 9,
+      "block_type": "text",
+      "title": "血管",
+      "text": "所有物质交换都在毛细血管中完成。",
+      "text_markdown": "所有物质交换都在毛细血管中完成。",
+      "tts": {
+        "text": "所有物质交换都在毛细血管中完成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "动脉分支为越来越细的血管，称为小动脉。",
+      "text_markdown": "动脉分支为越来越细的血管，称为小动脉。",
+      "tts": {
+        "text": "动脉分支为越来越细的血管，称为小动脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "小动脉与毛细血管相连。",
+      "text_markdown": "小动脉与毛细血管相连。",
+      "tts": {
+        "text": "小动脉与毛细血管相连。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "毛细血管汇合成稍大的血管，称为小静脉。",
+      "text_markdown": "毛细血管汇合成稍大的血管，称为小静脉。",
+      "tts": {
+        "text": "毛细血管汇合成稍大的血管，称为小静脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "小静脉汇合成静脉。",
+      "text_markdown": "小静脉汇合成静脉。",
+      "tts": {
+        "text": "小静脉汇合成静脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉将血液输送回心脏。",
+      "text_markdown": "静脉将血液输送回心脏。",
+      "tts": {
+        "text": "静脉将血液输送回心脏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血管",
+      "text": "这是一个封闭的循环。",
+      "text_markdown": "这是一个封闭的循环。",
+      "tts": {
+        "text": "这是一个封闭的循环。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血管",
+      "text": "在正常情况下，血液不会离开血管。",
+      "text_markdown": "在正常情况下，血液不会离开血管。",
+      "tts": {
+        "text": "在正常情况下，血液不会离开血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血管",
+      "text": "心脏通过动脉将血液泵出。",
+      "text_markdown": "心脏通过动脉将血液泵出。",
+      "tts": {
+        "text": "心脏通过动脉将血液泵出。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血管",
+      "text": "毛细血管完成物质交换。",
+      "text_markdown": "毛细血管完成物质交换。",
+      "tts": {
+        "text": "毛细血管完成物质交换。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血管",
+      "text": "静脉将血液带回。",
+      "text_markdown": "静脉将血液带回。",
+      "tts": {
+        "text": "静脉将血液带回。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "心跳",
+      "text": "心跳",
+      "text_markdown": "心跳"
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "你的心脏每天大约跳动100000次。",
+      "text_markdown": "你的心脏每天大约跳动100000次。",
+      "tts": {
+        "text": "你的心脏每天大约跳动十万次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "每次跳动都是一系列精确计时的事件。",
+      "text_markdown": "每次跳动都是一系列精确计时的事件。",
+      "tts": {
+        "text": "每次跳动都是一系列精确计时的事件。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这个时序由心脏内部产生的电信号来控制。",
+      "text_markdown": "这个时序由心脏内部产生的电信号来控制。",
+      "tts": {
+        "text": "这个时序由心脏内部产生的电信号来控制。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "心脏的天然起搏点称为窦房结。",
+      "text_markdown": "心脏的天然起搏点称为窦房结。",
+      "tts": {
+        "text": "心脏的天然起搏点称为窦房结。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "我们通常称它为SA结。",
+      "text_markdown": "我们通常称它为SA结。",
+      "tts": {
+        "text": "我们通常称它为窦房结。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "它是右心房壁上的一小簇细胞。",
+      "text_markdown": "它是右心房壁上的一小簇细胞。",
+      "tts": {
+        "text": "它是右心房壁上的一小簇细胞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "簇是指紧密聚集在一起的一群事物。",
+      "text_markdown": "簇是指紧密聚集在一起的一群事物。",
+      "tts": {
+        "text": "簇是指紧密聚集在一起的一群事物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "窦房结产生电冲动。",
+      "text_markdown": "窦房结产生电冲动。",
+      "tts": {
+        "text": "窦房结产生电冲动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "冲动是一种突然的能量爆发。",
+      "text_markdown": "冲动是一种突然的能量爆发。",
+      "tts": {
+        "text": "冲动是一种突然的能量爆发。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这些冲动决定心跳的节奏。",
+      "text_markdown": "这些冲动决定心跳的节奏。",
+      "tts": {
+        "text": "这些冲动决定心跳的节奏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "在静息状态下，成年人的窦房结每分钟激发约60到100次。",
+      "text_markdown": "在静息状态下，成年人的窦房结每分钟激发约60到100次。",
+      "tts": {
+        "text": "在静息状态下，成年人的窦房结每分钟激发约六十到一百次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "每个冲动扩散到两个心房。",
+      "text_markdown": "每个冲动扩散到两个心房。",
+      "tts": {
+        "text": "每个冲动扩散到两个心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "两个心房同时收缩。",
+      "text_markdown": "两个心房同时收缩。",
+      "tts": {
+        "text": "两个心房同时收缩。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "它们将血液挤入心室。",
+      "text_markdown": "它们将血液挤入心室。",
+      "tts": {
+        "text": "它们将血液挤入心室。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "冲动随后到达另一个称为房室结的节点。",
+      "text_markdown": "冲动随后到达另一个称为房室结的节点。",
+      "tts": {
+        "text": "冲动随后到达另一个称为房室结的节点。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "我们称之为AV结。",
+      "text_markdown": "我们称之为AV结。",
+      "tts": {
+        "text": "我们称之为房室结。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "房室结位于心房和心室之间。",
+      "text_markdown": "房室结位于心房和心室之间。",
+      "tts": {
+        "text": "房室结位于心房和心室之间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "它将信号暂停几分之一秒。",
+      "text_markdown": "它将信号暂停几分之一秒。",
+      "tts": {
+        "text": "它将信号暂停几分之一秒。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这个暂停至关重要。",
+      "text_markdown": "这个暂停至关重要。",
+      "tts": {
+        "text": "这个暂停至关重要。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "它让心房有时间在心室收缩之前完成排血。",
+      "text_markdown": "它让心房有时间在心室收缩之前完成排血。",
+      "tts": {
+        "text": "它让心房有时间在心室收缩之前完成排血。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "暂停之后，信号沿着一条称为希氏束的通路向下传导。",
+      "text_markdown": "暂停之后，信号沿着一条称为希氏束的通路向下传导。",
+      "tts": {
+        "text": "暂停之后，信号沿着一条称为希氏束的通路向下传导。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "希氏束（His bundle）以发现者威廉·希斯二世博士命名，\"His\"读作\"希斯\"，是人名而非代词。",
+      "text_markdown": "希氏束（His bundle）以发现者威廉·希斯二世博士命名，\"His\"读作\"希斯\"，是人名而非代词。",
+      "tts": {
+        "text": "希氏束以发现者威廉·希斯二世博士命名，希斯是人名而非代词。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "希氏束分为两个分支。",
+      "text_markdown": "希氏束分为两个分支。",
+      "tts": {
+        "text": "希氏束分为两个分支。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "一个分支通向右心室。",
+      "text_markdown": "一个分支通向右心室。",
+      "tts": {
+        "text": "一个分支通向右心室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "另一个通向左心室。",
+      "text_markdown": "另一个通向左心室。",
+      "tts": {
+        "text": "另一个通向左心室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "分支进一步扩展为称为浦肯野纤维的细小纤维。",
+      "text_markdown": "分支进一步扩展为称为浦肯野纤维的细小纤维。",
+      "tts": {
+        "text": "分支进一步扩展为称为浦肯野纤维的细小纤维。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这些纤维将信号传递到两个心室的肌肉细胞。",
+      "text_markdown": "这些纤维将信号传递到两个心室的肌肉细胞。",
+      "tts": {
+        "text": "这些纤维将信号传递到两个心室的肌肉细胞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "两个心室同时有力地收缩。",
+      "text_markdown": "两个心室同时有力地收缩。",
+      "tts": {
+        "text": "两个心室同时有力地收缩。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "一次完整的收缩与舒张循环称为心动周期。",
+      "text_markdown": "一次完整的收缩与舒张循环称为心动周期。",
+      "tts": {
+        "text": "一次完整的收缩与舒张循环称为心动周期。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "收缩期称为收缩相（systole）。",
+      "text_markdown": "收缩期称为收缩相（systole）。",
+      "tts": {
+        "text": "收缩期称为收缩相。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "收缩相（Systole）来源于希腊语，意为\"收紧\"。舒张期称为舒张相（diastole）。",
+      "text_markdown": "收缩相（Systole）来源于希腊语，意为\"收紧\"。舒张期称为舒张相（diastole）。",
+      "tts": {
+        "text": "收缩相来源于希腊语，意为收紧。舒张期称为舒张相。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "舒张相（Diastole）来源于希腊语，意为\"扩张\"。",
+      "text_markdown": "舒张相（Diastole）来源于希腊语，意为\"扩张\"。",
+      "tts": {
+        "text": "舒张相来源于希腊语，意为扩张。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "在收缩相，心室收缩并将血液泵出。",
+      "text_markdown": "在收缩相，心室收缩并将血液泵出。",
+      "tts": {
+        "text": "在收缩相，心室收缩并将血液泵出。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "在舒张相，心室放松并充满血液。",
+      "text_markdown": "在舒张相，心室放松并充满血液。",
+      "tts": {
+        "text": "在舒张相，心室放松并充满血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这个周期不断重复。",
+      "text_markdown": "这个周期不断重复。",
+      "tts": {
+        "text": "这个周期不断重复。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "医生可以用一种称为心电图（ECG）的机器测量心脏的电活动。",
+      "text_markdown": "医生可以用一种称为心电图（ECG）的机器测量心脏的电活动。",
+      "tts": {
+        "text": "医生可以用一种称为心电图的机器测量心脏的电活动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "心电图将电冲动以波形显示在屏幕上。",
+      "text_markdown": "心电图将电冲动以波形显示在屏幕上。",
+      "tts": {
+        "text": "心电图将电冲动以波形显示在屏幕上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "每种波形都有特定的形状。",
+      "text_markdown": "每种波形都有特定的形状。",
+      "tts": {
+        "text": "每种波形都有特定的形状。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "医生通过读取这些形状来检查心脏是否正常运作。",
+      "text_markdown": "医生通过读取这些形状来检查心脏是否正常运作。",
+      "tts": {
+        "text": "医生通过读取这些形状来检查心脏是否正常运作。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "不规律的心跳称为心律失常（arrhythmia）。",
+      "text_markdown": "不规律的心跳称为心律失常（arrhythmia）。",
+      "tts": {
+        "text": "不规律的心跳称为心律失常。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "心律失常（Arrhythmia）意为\"无节律\"。有些心律失常是无害的。",
+      "text_markdown": "心律失常（Arrhythmia）意为\"无节律\"。有些心律失常是无害的。",
+      "tts": {
+        "text": "心律失常意为无节律。有些心律失常是无害的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "另一些则是危险的。",
+      "text_markdown": "另一些则是危险的。",
+      "tts": {
+        "text": "另一些则是危险的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "如果窦房结功能衰竭，医生可以植入人工起搏器。",
+      "text_markdown": "如果窦房结功能衰竭，医生可以植入人工起搏器。",
+      "tts": {
+        "text": "如果窦房结功能衰竭，医生可以植入人工起搏器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "这种小型装置发出电信号，使心脏保持稳定跳动。",
+      "text_markdown": "这种小型装置发出电信号，使心脏保持稳定跳动。",
+      "tts": {
+        "text": "这种小型装置发出电信号，使心脏保持稳定跳动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "心脏是自己的鼓手。",
+      "text_markdown": "心脏是自己的鼓手。",
+      "tts": {
+        "text": "心脏是自己的鼓手。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "心跳",
+      "text": "它设定自己的节拍，并保持完美的节律。",
+      "text_markdown": "它设定自己的节拍，并保持完美的节律。",
+      "tts": {
+        "text": "它设定自己的节拍，并保持完美的节律。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-199",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "血压",
+      "text": "血压",
+      "text_markdown": "血压"
+    },
+    {
+      "id": "ch05-200",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "血液在流动时会对动脉壁产生压力。",
+      "text_markdown": "血液在流动时会对动脉壁产生压力。",
+      "tts": {
+        "text": "血液在流动时会对动脉壁产生压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-201",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "这种压力称为血压。",
+      "text_markdown": "这种压力称为血压。",
+      "tts": {
+        "text": "这种压力称为血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-202",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "血压是血液对血管内壁施加的力。",
+      "text_markdown": "血压是血液对血管内壁施加的力。",
+      "tts": {
+        "text": "血压是血液对血管内壁施加的力。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch05-203",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "血压用两个数字来表示。",
+      "text_markdown": "血压用两个数字来表示。",
+      "tts": {
+        "text": "血压用两个数字来表示。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-204",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "上面的数字称为收缩压。",
+      "text_markdown": "上面的数字称为收缩压。",
+      "tts": {
+        "text": "上面的数字称为收缩压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-205",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "收缩压是心脏收缩时的压力。",
+      "text_markdown": "收缩压是心脏收缩时的压力。",
+      "tts": {
+        "text": "收缩压是心脏收缩时的压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-206",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "它是较高的数字。",
+      "text_markdown": "它是较高的数字。",
+      "tts": {
+        "text": "它是较高的数字。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-207",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血压",
+      "text": "下面的数字称为舒张压。",
+      "text_markdown": "下面的数字称为舒张压。",
+      "tts": {
+        "text": "下面的数字称为舒张压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血压",
+      "text": "舒张压是心脏舒张时的压力。",
+      "text_markdown": "舒张压是心脏舒张时的压力。",
+      "tts": {
+        "text": "舒张压是心脏舒张时的压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血压",
+      "text": "它是较低的数字。",
+      "text_markdown": "它是较低的数字。",
+      "tts": {
+        "text": "它是较低的数字。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "成年人的健康血压约为120比80。",
+      "text_markdown": "成年人的健康血压约为120比80。",
+      "tts": {
+        "text": "成年人的健康血压约为一百二十比八十。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "写作120/80。",
+      "text_markdown": "写作120/80。",
+      "tts": {
+        "text": "写作一百二十比八十。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "计量单位是毫米汞柱，写作mmHg。",
+      "text_markdown": "计量单位是毫米汞柱，写作mmHg。",
+      "tts": {
+        "text": "计量单位是毫米汞柱。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "这个单位来源于早期使用汞柱测量压力的装置。",
+      "text_markdown": "这个单位来源于早期使用汞柱测量压力的装置。",
+      "tts": {
+        "text": "这个单位来源于早期使用汞柱测量压力的装置。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "血压用一种称为血压计（sphygmomanometer）的设备来测量。",
+      "text_markdown": "血压用一种称为血压计（sphygmomanometer）的设备来测量。",
+      "tts": {
+        "text": "血压用一种称为血压计的设备来测量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "这是个很长的词。",
+      "text_markdown": "这是个很长的词。",
+      "tts": {
+        "text": "这是个很长的词。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "它来源于希腊语词根，意为\"脉搏\"和\"测量\"。测量时，袖带缠绕在上臂。",
+      "text_markdown": "它来源于希腊语词根，意为\"脉搏\"和\"测量\"。测量时，袖带缠绕在上臂。",
+      "tts": {
+        "text": "它来源于希腊语词根，意为脉搏和测量。测量时，袖带缠绕在上臂。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "袖带充气后会压迫动脉使其闭合。",
+      "text_markdown": "袖带充气后会压迫动脉使其闭合。",
+      "tts": {
+        "text": "袖带充气后会压迫动脉使其闭合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血压",
+      "text": "然后袖带缓慢放气。",
+      "text_markdown": "然后袖带缓慢放气。",
+      "tts": {
+        "text": "然后袖带缓慢放气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血压",
+      "text": "医生用听诊器聆听血液流动的声音。",
+      "text_markdown": "医生用听诊器聆听血液流动的声音。",
+      "tts": {
+        "text": "医生用听诊器聆听血液流动的声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血压",
+      "text": "声音开始的那一点是收缩压。",
+      "text_markdown": "声音开始的那一点是收缩压。",
+      "tts": {
+        "text": "声音开始的那一点是收缩压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "血压",
+      "text": "声音消失的那一点是舒张压。",
+      "text_markdown": "声音消失的那一点是舒张压。",
+      "tts": {
+        "text": "声音消失的那一点是舒张压。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "高血压称为高血压症（hypertension）。",
+      "text_markdown": "高血压称为高血压症（hypertension）。",
+      "tts": {
+        "text": "高血压称为高血压症。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "高（Hyper）意为\"超过\"或\"过度\"，张（tension）指压力。",
+      "text_markdown": "高（Hyper）意为\"超过\"或\"过度\"，张（tension）指压力。",
+      "tts": {
+        "text": "高意为超过或过度，张指压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "高血压症是指血液对动脉壁施加过大的压力。",
+      "text_markdown": "高血压症是指血液对动脉壁施加过大的压力。",
+      "tts": {
+        "text": "高血压症是指血液对动脉壁施加过大的压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "久而久之，这会损伤动脉。",
+      "text_markdown": "久而久之，这会损伤动脉。",
+      "tts": {
+        "text": "久而久之，这会损伤动脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血压",
+      "text": "它使心脏工作更为努力。",
+      "text_markdown": "它使心脏工作更为努力。",
+      "tts": {
+        "text": "它使心脏工作更为努力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血压",
+      "text": "它增加了心脏病发作和中风的风险。",
+      "text_markdown": "它增加了心脏病发作和中风的风险。",
+      "tts": {
+        "text": "它增加了心脏病发作和中风的风险。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血压",
+      "text": "心脏病发作是指流向部分心肌的血流被阻断。",
+      "text_markdown": "心脏病发作是指流向部分心肌的血流被阻断。",
+      "tts": {
+        "text": "心脏病发作是指流向部分心肌的血流被阻断。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p47",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "血压",
+      "text": "中风是指流向部分大脑的血流被阻断。",
+      "text_markdown": "中风是指流向部分大脑的血流被阻断。",
+      "tts": {
+        "text": "中风是指流向部分大脑的血流被阻断。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "高血压被称为\"沉默的杀手\"。",
+      "text_markdown": "高血压被称为\"沉默的杀手\"。",
+      "tts": {
+        "text": "高血压被称为沉默的杀手。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "大多数高血压患者没有任何症状。",
+      "text_markdown": "大多数高血压患者没有任何症状。",
+      "tts": {
+        "text": "大多数高血压患者没有任何症状。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "他们不知道自己患有高血压。",
+      "text_markdown": "他们不知道自己患有高血压。",
+      "tts": {
+        "text": "他们不知道自己患有高血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "这就是定期体检很重要的原因。",
+      "text_markdown": "这就是定期体检很重要的原因。",
+      "tts": {
+        "text": "这就是定期体检很重要的原因。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "低血压称为低血压症（hypotension）。",
+      "text_markdown": "低血压称为低血压症（hypotension）。",
+      "tts": {
+        "text": "低血压称为低血压症。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "低（Hypo）意为\"低于\"。低血压症可能导致头晕和晕厥。",
+      "text_markdown": "低（Hypo）意为\"低于\"。低血压症可能导致头晕和晕厥。",
+      "tts": {
+        "text": "低意为低于。低血压症可能导致头晕和晕厥。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "这意味着身体没有获得足够的血液供应。",
+      "text_markdown": "这意味着身体没有获得足够的血液供应。",
+      "tts": {
+        "text": "这意味着身体没有获得足够的血液供应。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "许多因素会影响血压。",
+      "text_markdown": "许多因素会影响血压。",
+      "tts": {
+        "text": "许多因素会影响血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "盐分会升高血压。",
+      "text_markdown": "盐分会升高血压。",
+      "tts": {
+        "text": "盐分会升高血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "血压",
+      "text": "运动会暂时升高血压，但从长远来看会改善血压。",
+      "text_markdown": "运动会暂时升高血压，但从长远来看会改善血压。",
+      "tts": {
+        "text": "运动会暂时升高血压，但从长远来看会改善血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "血压",
+      "text": "压力会升高血压。",
+      "text_markdown": "压力会升高血压。",
+      "tts": {
+        "text": "压力会升高血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "血压",
+      "text": "睡眠会降低血压。",
+      "text_markdown": "睡眠会降低血压。",
+      "tts": {
+        "text": "睡眠会降低血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "血压",
+      "text": "肥胖会升高血压。",
+      "text_markdown": "肥胖会升高血压。",
+      "tts": {
+        "text": "肥胖会升高血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "血压",
+      "text": "肥胖是指体内脂肪过多。",
+      "text_markdown": "肥胖是指体内脂肪过多。",
+      "tts": {
+        "text": "肥胖是指体内脂肪过多。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "血压",
+      "text": "将血压保持在健康范围内，可以保护心脏、大脑、肾脏以及身体中的每一个器官。",
+      "text_markdown": "将血压保持在健康范围内，可以保护心脏、大脑、肾脏以及身体中的每一个器官。",
+      "tts": {
+        "text": "将血压保持在健康范围内，可以保护心脏、大脑、肾脏以及身体中的每一个器官。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "血压",
+      "text": "每次心跳背后的力量都至关重要。",
+      "text_markdown": "每次心跳背后的力量都至关重要。",
+      "tts": {
+        "text": "每次心跳背后的力量都至关重要。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-246",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "运动与心脏",
+      "text": "运动与心脏",
+      "text_markdown": "运动与心脏"
+    },
+    {
+      "id": "ch06-247",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "运动使你的心脏更强壮。",
+      "text_markdown": "运动使你的心脏更强壮。",
+      "tts": {
+        "text": "运动使你的心脏更强壮。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-248",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心脏是一块肌肉。",
+      "text_markdown": "心脏是一块肌肉。",
+      "tts": {
+        "text": "心脏是一块肌肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-249",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "就像任何肌肉一样，使用它，它就会变得更强壮。",
+      "text_markdown": "就像任何肌肉一样，使用它，它就会变得更强壮。",
+      "tts": {
+        "text": "就像任何肌肉一样，使用它，它就会变得更强壮。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-250",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "定期运动是你能为心脏做的最好的事情之一。",
+      "text_markdown": "定期运动是你能为心脏做的最好的事情之一。",
+      "tts": {
+        "text": "定期运动是你能为心脏做的最好的事情之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-251",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "当你运动时，肌肉需要更多氧气。",
+      "text_markdown": "当你运动时，肌肉需要更多氧气。",
+      "tts": {
+        "text": "当你运动时，肌肉需要更多氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它们正在更努力地工作。",
+      "text_markdown": "它们正在更努力地工作。",
+      "tts": {
+        "text": "它们正在更努力地工作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它们消耗更多能量。",
+      "text_markdown": "它们消耗更多能量。",
+      "tts": {
+        "text": "它们消耗更多能量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "为了输送更多氧气，心脏跳得更快。",
+      "text_markdown": "为了输送更多氧气，心脏跳得更快。",
+      "tts": {
+        "text": "为了输送更多氧气，心脏跳得更快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它的跳动也更有力。",
+      "text_markdown": "它的跳动也更有力。",
+      "tts": {
+        "text": "它的跳动也更有力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "每次收缩泵送更多血液。",
+      "text_markdown": "每次收缩泵送更多血液。",
+      "tts": {
+        "text": "每次收缩泵送更多血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p54",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心脏每分钟泵送的血液量称为心输出量。",
+      "text_markdown": "心脏每分钟泵送的血液量称为心输出量。",
+      "tts": {
+        "text": "心脏每分钟泵送的血液量称为心输出量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "健康成年人静息时的心率为每分钟60到100次。",
+      "text_markdown": "健康成年人静息时的心率为每分钟60到100次。",
+      "tts": {
+        "text": "健康成年人静息时的心率为每分钟六十到一百次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "在剧烈运动期间，心率可升至每分钟150、170甚至200次。",
+      "text_markdown": "在剧烈运动期间，心率可升至每分钟150、170甚至200次。",
+      "tts": {
+        "text": "在剧烈运动期间，心率可升至每分钟一百五十、一百七十甚至二百次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心率是每分钟心跳的次数。",
+      "text_markdown": "心率是每分钟心跳的次数。",
+      "tts": {
+        "text": "心率是每分钟心跳的次数。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "你可以数15秒的脉搏次数再乘以4来测量心率。",
+      "text_markdown": "你可以数15秒的脉搏次数再乘以4来测量心率。",
+      "tts": {
+        "text": "你可以数十五秒的脉搏次数再乘以四来测量心率。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "运动员的静息心率往往更低。",
+      "text_markdown": "运动员的静息心率往往更低。",
+      "tts": {
+        "text": "运动员的静息心率往往更低。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "训练有素的耐力运动员静息心率可能只有每分钟40到50次。",
+      "text_markdown": "训练有素的耐力运动员静息心率可能只有每分钟40到50次。",
+      "tts": {
+        "text": "训练有素的耐力运动员静息心率可能只有每分钟四十到五十次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "这是因为他们的心脏更强壮。",
+      "text_markdown": "这是因为他们的心脏更强壮。",
+      "tts": {
+        "text": "这是因为他们的心脏更强壮。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "更强壮的心脏每次跳动能泵送更多血液。",
+      "text_markdown": "更强壮的心脏每次跳动能泵送更多血液。",
+      "tts": {
+        "text": "更强壮的心脏每次跳动能泵送更多血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它不需要跳那么频繁。",
+      "text_markdown": "它不需要跳那么频繁。",
+      "tts": {
+        "text": "它不需要跳那么频繁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "这称为每搏输出量。",
+      "text_markdown": "这称为每搏输出量。",
+      "tts": {
+        "text": "这称为每搏输出量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "每搏输出量是每次跳动泵出的血液量。",
+      "text_markdown": "每搏输出量是每次跳动泵出的血液量。",
+      "tts": {
+        "text": "每搏输出量是每次跳动泵出的血液量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p56",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "训练可以增加每搏输出量。",
+      "text_markdown": "训练可以增加每搏输出量。",
+      "tts": {
+        "text": "训练可以增加每搏输出量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "有氧运动对心脏特别有益。",
+      "text_markdown": "有氧运动对心脏特别有益。",
+      "tts": {
+        "text": "有氧运动对心脏特别有益。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "有氧（Aerobic）意为\"有氧气参与\"。有氧运动包括跑步、游泳、骑行和快步行走。",
+      "text_markdown": "有氧（Aerobic）意为\"有氧气参与\"。有氧运动包括跑步、游泳、骑行和快步行走。",
+      "tts": {
+        "text": "有氧意为有氧气参与。有氧运动包括跑步、游泳、骑行和快步行走。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "有氧运动期间，呼吸频率加快。",
+      "text_markdown": "有氧运动期间，呼吸频率加快。",
+      "tts": {
+        "text": "有氧运动期间，呼吸频率加快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心率加快。",
+      "text_markdown": "心率加快。",
+      "tts": {
+        "text": "心率加快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "你的身体利用氧气在较长时间内稳定地燃烧燃料。",
+      "text_markdown": "你的身体利用氧气在较长时间内稳定地燃烧燃料。",
+      "tts": {
+        "text": "你的身体利用氧气在较长时间内稳定地燃烧燃料。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "定期有氧运动可以降低静息血压。",
+      "text_markdown": "定期有氧运动可以降低静息血压。",
+      "tts": {
+        "text": "定期有氧运动可以降低静息血压。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它能提高高密度脂蛋白胆固醇（HDL）的水平。",
+      "text_markdown": "它能提高高密度脂蛋白胆固醇（HDL）的水平。",
+      "tts": {
+        "text": "它能提高高密度脂蛋白胆固醇的水平。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "HDL是高密度脂蛋白的缩写。",
+      "text_markdown": "HDL是高密度脂蛋白的缩写。",
+      "tts": {
+        "text": "这是高密度脂蛋白的缩写。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "HDL常被称为\"好\"胆固醇。",
+      "text_markdown": "HDL常被称为\"好\"胆固醇。",
+      "tts": {
+        "text": "高密度脂蛋白常被称为好胆固醇。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它有助于清除动脉中的有害胆固醇。",
+      "text_markdown": "它有助于清除动脉中的有害胆固醇。",
+      "tts": {
+        "text": "它有助于清除动脉中的有害胆固醇。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "胆固醇是血液中的一种蜡状物质。",
+      "text_markdown": "胆固醇是血液中的一种蜡状物质。",
+      "tts": {
+        "text": "胆固醇是血液中的一种蜡状物质。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "摄入过多的坏胆固醇会堵塞动脉。",
+      "text_markdown": "摄入过多的坏胆固醇会堵塞动脉。",
+      "tts": {
+        "text": "摄入过多的坏胆固醇会堵塞动脉。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "运动还能增强血管壁。",
+      "text_markdown": "运动还能增强血管壁。",
+      "tts": {
+        "text": "运动还能增强血管壁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "它使血管更具弹性。",
+      "text_markdown": "它使血管更具弹性。",
+      "tts": {
+        "text": "它使血管更具弹性。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "富有弹性的血管能更好地应对压力变化。",
+      "text_markdown": "富有弹性的血管能更好地应对压力变化。",
+      "tts": {
+        "text": "富有弹性的血管能更好地应对压力变化。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "运动能减轻炎症。",
+      "text_markdown": "运动能减轻炎症。",
+      "tts": {
+        "text": "运动能减轻炎症。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "炎症是组织的肿胀和刺激。",
+      "text_markdown": "炎症是组织的肿胀和刺激。",
+      "tts": {
+        "text": "炎症是组织的肿胀和刺激。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "慢性炎症会随时间损伤动脉。",
+      "text_markdown": "慢性炎症会随时间损伤动脉。",
+      "tts": {
+        "text": "慢性炎症会随时间损伤动脉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p59",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "慢性意味着长期持续的。",
+      "text_markdown": "慢性意味着长期持续的。",
+      "tts": {
+        "text": "慢性意味着长期持续的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "缺乏运动的人患心脏病的风险更高。",
+      "text_markdown": "缺乏运动的人患心脏病的风险更高。",
+      "tts": {
+        "text": "缺乏运动的人患心脏病的风险更高。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心脏病是全球头号死亡原因。",
+      "text_markdown": "心脏病是全球头号死亡原因。",
+      "tts": {
+        "text": "心脏病是全球头号死亡原因。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "即使是适度的运动也能带来改变。",
+      "text_markdown": "即使是适度的运动也能带来改变。",
+      "tts": {
+        "text": "即使是适度的运动也能带来改变。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "每天步行30分钟可以显著降低风险。",
+      "text_markdown": "每天步行30分钟可以显著降低风险。",
+      "tts": {
+        "text": "每天步行三十分钟可以显著降低风险。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "心脏会对你的生活方式作出回应。",
+      "text_markdown": "心脏会对你的生活方式作出回应。",
+      "tts": {
+        "text": "心脏会对你的生活方式作出回应。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "挑战它，它就会变得更强壮。",
+      "text_markdown": "挑战它，它就会变得更强壮。",
+      "tts": {
+        "text": "挑战它，它就会变得更强壮。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "忽视它，它就会变得虚弱。",
+      "text_markdown": "忽视它，它就会变得虚弱。",
+      "tts": {
+        "text": "忽视它，它就会变得虚弱。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "运动与心脏",
+      "text": "每一步都有意义。",
+      "text_markdown": "每一步都有意义。",
+      "tts": {
+        "text": "每一步都有意义。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-297",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "出生前的心脏",
+      "text": "出生前的心脏",
+      "text_markdown": "出生前的心脏"
+    },
+    {
+      "id": "ch07-298",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "心脏是最早发育的器官之一。",
+      "text_markdown": "心脏是最早发育的器官之一。",
+      "tts": {
+        "text": "心脏是最早发育的器官之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-299",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它之所以早期形成，是因为正在发育的胚胎需要血液循环来维持生命。",
+      "text_markdown": "它之所以早期形成，是因为正在发育的胚胎需要血液循环来维持生命。",
+      "tts": {
+        "text": "它之所以早期形成，是因为正在发育的胚胎需要血液循环来维持生命。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-300",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "胚胎是处于最初发育阶段的生命体。",
+      "text_markdown": "胚胎是处于最初发育阶段的生命体。",
+      "tts": {
+        "text": "胚胎是处于最初发育阶段的生命体。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-301",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "受孕后约18到20天，心脏细胞开始出现。",
+      "text_markdown": "受孕后约18到20天，心脏细胞开始出现。",
+      "tts": {
+        "text": "受孕后约十八到二十天，心脏细胞开始出现。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-302",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它们形成一根简单的管状结构。",
+      "text_markdown": "它们形成一根简单的管状结构。",
+      "tts": {
+        "text": "它们形成一根简单的管状结构。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-303",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "这根管子在第22天左右开始跳动。",
+      "text_markdown": "这根管子在第22天左右开始跳动。",
+      "tts": {
+        "text": "这根管子在第二十二天左右开始跳动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-304",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "此时，胚胎比一粒米还小。",
+      "text_markdown": "此时，胚胎比一粒米还小。",
+      "tts": {
+        "text": "此时，胚胎比一粒米还小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-305",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p64",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "这根跳动的管子将液体推送到微小的身体内。",
+      "text_markdown": "这根跳动的管子将液体推送到微小的身体内。",
+      "tts": {
+        "text": "这根跳动的管子将液体推送到微小的身体内。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-306",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "在接下来的几周内，这根管子折叠、扭转。",
+      "text_markdown": "在接下来的几周内，这根管子折叠、扭转。",
+      "tts": {
+        "text": "在接下来的几周内，这根管子折叠、扭转。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-307",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它弯曲成S形。",
+      "text_markdown": "它弯曲成S形。",
+      "tts": {
+        "text": "它弯曲成乙形。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-308",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它分化出腔室。",
+      "text_markdown": "它分化出腔室。",
+      "tts": {
+        "text": "它分化出腔室。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-309",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "称为间隔（septa）的壁在腔室之间生长。",
+      "text_markdown": "称为间隔（septa）的壁在腔室之间生长。",
+      "tts": {
+        "text": "称为间隔的壁在腔室之间生长。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-310",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "间隔（septum）是分隔两个空间的壁。",
+      "text_markdown": "间隔（septum）是分隔两个空间的壁。",
+      "tts": {
+        "text": "间隔是分隔两个空间的壁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-311",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "其复数形式为septa（间隔们）。",
+      "text_markdown": "其复数形式为septa（间隔们）。",
+      "tts": {
+        "text": "其复数形式为间隔们。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-312",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "大约8周时，心脏已形成四个明显的腔室。",
+      "text_markdown": "大约8周时，心脏已形成四个明显的腔室。",
+      "tts": {
+        "text": "大约八周时，心脏已形成四个明显的腔室。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-313",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "胎儿心脏的工作方式与出生后的心脏不同。",
+      "text_markdown": "胎儿心脏的工作方式与出生后的心脏不同。",
+      "tts": {
+        "text": "胎儿心脏的工作方式与出生后的心脏不同。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-314",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "胎儿是指发育约8周后的未出生婴儿。",
+      "text_markdown": "胎儿是指发育约8周后的未出生婴儿。",
+      "tts": {
+        "text": "胎儿是指发育约八周后的未出生婴儿。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-315",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "胎儿不呼吸空气。",
+      "text_markdown": "胎儿不呼吸空气。",
+      "tts": {
+        "text": "胎儿不呼吸空气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-316",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它的肺部充满液体。",
+      "text_markdown": "它的肺部充满液体。",
+      "tts": {
+        "text": "它的肺部充满液体。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-317",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它通过胎盘从母亲那里获得氧气。",
+      "text_markdown": "它通过胎盘从母亲那里获得氧气。",
+      "tts": {
+        "text": "它通过胎盘从母亲那里获得氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-318",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "胎盘是连接胎儿与母亲血液供应的器官。",
+      "text_markdown": "胎盘是连接胎儿与母亲血液供应的器官。",
+      "tts": {
+        "text": "胎盘是连接胎儿与母亲血液供应的器官。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-319",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p66",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "氧气和营养物质通过胎盘从母亲的血液传递到胎儿的血液。",
+      "text_markdown": "氧气和营养物质通过胎盘从母亲的血液传递到胎儿的血液。",
+      "tts": {
+        "text": "氧气和营养物质通过胎盘从母亲的血液传递到胎儿的血液。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-320",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "因为胎儿的肺部尚未使用，心脏有一条捷径。",
+      "text_markdown": "因为胎儿的肺部尚未使用，心脏有一条捷径。",
+      "tts": {
+        "text": "因为胎儿的肺部尚未使用，心脏有一条捷径。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-321",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "右心房和左心房之间有一个开口。",
+      "text_markdown": "右心房和左心房之间有一个开口。",
+      "tts": {
+        "text": "右心房和左心房之间有一个开口。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-322",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "这个开口称为卵圆孔（foramen ovale）。",
+      "text_markdown": "这个开口称为卵圆孔（foramen ovale）。",
+      "tts": {
+        "text": "这个开口称为卵圆孔。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-323",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "卵圆孔（Foramen）在拉丁语中意为\"开口\"。",
+      "text_markdown": "卵圆孔（Foramen）在拉丁语中意为\"开口\"。",
+      "tts": {
+        "text": "卵圆孔在拉丁语中意为开口。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-324",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "卵（Ovale）意为\"椭圆形\"。血液通过这个开口流动，绕过肺部。",
+      "text_markdown": "卵（Ovale）意为\"椭圆形\"。血液通过这个开口流动，绕过肺部。",
+      "tts": {
+        "text": "卵意为椭圆形。血液通过这个开口流动，绕过肺部。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-325",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "大部分血液直接流向心脏左侧并输送到全身。",
+      "text_markdown": "大部分血液直接流向心脏左侧并输送到全身。",
+      "tts": {
+        "text": "大部分血液直接流向心脏左侧并输送到全身。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-326",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "还有另一条称为动脉导管（ductus arteriosus）的捷径。",
+      "text_markdown": "还有另一条称为动脉导管（ductus arteriosus）的捷径。",
+      "tts": {
+        "text": "还有另一条称为动脉导管的捷径。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-327",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "这是一条连接肺动脉和主动脉的小血管。",
+      "text_markdown": "这是一条连接肺动脉和主动脉的小血管。",
+      "tts": {
+        "text": "这是一条连接肺动脉和主动脉的小血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-328",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它将血液从肺部引开。",
+      "text_markdown": "它将血液从肺部引开。",
+      "tts": {
+        "text": "它将血液从肺部引开。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-329",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "这两条捷径确保血液能迅速到达全身，而无需绕行至尚未工作的肺部。",
+      "text_markdown": "这两条捷径确保血液能迅速到达全身，而无需绕行至尚未工作的肺部。",
+      "tts": {
+        "text": "这两条捷径确保血液能迅速到达全身，而无需绕行至尚未工作的肺部。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-330",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "出生时，一切都改变了。",
+      "text_markdown": "出生时，一切都改变了。",
+      "tts": {
+        "text": "出生时，一切都改变了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-331",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "婴儿第一次呼吸。",
+      "text_markdown": "婴儿第一次呼吸。",
+      "tts": {
+        "text": "婴儿第一次呼吸。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-332",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "肺部扩张。",
+      "text_markdown": "肺部扩张。",
+      "tts": {
+        "text": "肺部扩张。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-333",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "血液开始流向肺部以获取氧气。",
+      "text_markdown": "血液开始流向肺部以获取氧气。",
+      "tts": {
+        "text": "血液开始流向肺部以获取氧气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-334",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "卵圆孔关闭。",
+      "text_markdown": "卵圆孔关闭。",
+      "tts": {
+        "text": "卵圆孔关闭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-335",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它通常在出生后第一年内完全闭合。",
+      "text_markdown": "它通常在出生后第一年内完全闭合。",
+      "tts": {
+        "text": "它通常在出生后第一年内完全闭合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-336",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "动脉导管也关闭。",
+      "text_markdown": "动脉导管也关闭。",
+      "tts": {
+        "text": "动脉导管也关闭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-337",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p69",
+      "sentence_index": 7,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它通常在出生后几天内关闭。",
+      "text_markdown": "它通常在出生后几天内关闭。",
+      "tts": {
+        "text": "它通常在出生后几天内关闭。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-338",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "有时这些结构不能正常闭合。",
+      "text_markdown": "有时这些结构不能正常闭合。",
+      "tts": {
+        "text": "有时这些结构不能正常闭合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-339",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "卵圆孔持续开放的状态称为卵圆孔未闭（patent foramen ovale）。",
+      "text_markdown": "卵圆孔持续开放的状态称为卵圆孔未闭（patent foramen ovale）。",
+      "tts": {
+        "text": "卵圆孔持续开放的状态称为卵圆孔未闭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-340",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "未闭（Patent）意为\"开放\"。这种情况很常见。",
+      "text_markdown": "未闭（Patent）意为\"开放\"。这种情况很常见。",
+      "tts": {
+        "text": "未闭意为开放。这种情况很常见。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-341",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "约四分之一的人有这种情况。",
+      "text_markdown": "约四分之一的人有这种情况。",
+      "tts": {
+        "text": "约四分之一的人有这种情况。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-342",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "大多数人从不知道。",
+      "text_markdown": "大多数人从不知道。",
+      "tts": {
+        "text": "大多数人从不知道。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-343",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "它很少引起问题。",
+      "text_markdown": "它很少引起问题。",
+      "tts": {
+        "text": "它很少引起问题。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-344",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "出生时的转变是非凡的。",
+      "text_markdown": "出生时的转变是非凡的。",
+      "tts": {
+        "text": "出生时的转变是非凡的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-345",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "出生前的心脏",
+      "text": "在短短几秒钟内，心脏从胎儿循环模式切换到将在余生使用的循环模式。",
+      "text_markdown": "在短短几秒钟内，心脏从胎儿循环模式切换到将在余生使用的循环模式。",
+      "tts": {
+        "text": "在短短几秒钟内，心脏从胎儿循环模式切换到将在余生使用的循环模式。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch08-346",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "一生的跳动",
+      "text": "一生的跳动",
+      "text_markdown": "一生的跳动"
+    },
+    {
+      "id": "ch08-347",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "人类心脏在一生中平均跳动约25亿次。",
+      "text_markdown": "人类心脏在一生中平均跳动约25亿次。",
+      "tts": {
+        "text": "人类心脏在一生中平均跳动约二十五亿次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-348",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "这个数字令人叹为观止。",
+      "text_markdown": "这个数字令人叹为观止。",
+      "tts": {
+        "text": "这个数字令人叹为观止。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-349",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "世界上没有任何机械泵能与这种可靠性相媲美。",
+      "text_markdown": "世界上没有任何机械泵能与这种可靠性相媲美。",
+      "tts": {
+        "text": "世界上没有任何机械泵能与这种可靠性相媲美。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-350",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "婴儿期，心脏跳动很快。",
+      "text_markdown": "婴儿期，心脏跳动很快。",
+      "tts": {
+        "text": "婴儿期，心脏跳动很快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-351",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "新生儿的心率是每分钟120到160次。",
+      "text_markdown": "新生儿的心率是每分钟120到160次。",
+      "tts": {
+        "text": "新生儿的心率是每分钟一百二十到一百六十次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-352",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "婴儿很小。",
+      "text_markdown": "婴儿很小。",
+      "tts": {
+        "text": "婴儿很小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-353",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "他们的心脏也很小。",
+      "text_markdown": "他们的心脏也很小。",
+      "tts": {
+        "text": "他们的心脏也很小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-354",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "小心脏必须跳得更快才能泵送足够的血液。",
+      "text_markdown": "小心脏必须跳得更快才能泵送足够的血液。",
+      "tts": {
+        "text": "小心脏必须跳得更快才能泵送足够的血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-355",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "随着孩子的成长，心脏也随之生长。",
+      "text_markdown": "随着孩子的成长，心脏也随之生长。",
+      "tts": {
+        "text": "随着孩子的成长，心脏也随之生长。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-356",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p74",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心率逐渐减慢。",
+      "text_markdown": "心率逐渐减慢。",
+      "tts": {
+        "text": "心率逐渐减慢。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-357",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "到成年时，静息心率稳定在每分钟60到100次。",
+      "text_markdown": "到成年时，静息心率稳定在每分钟60到100次。",
+      "tts": {
+        "text": "到成年时，静息心率稳定在每分钟六十到一百次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-358",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "这个频率在几十年内保持相对稳定。",
+      "text_markdown": "这个频率在几十年内保持相对稳定。",
+      "tts": {
+        "text": "这个频率在几十年内保持相对稳定。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-359",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "老年时，心脏可能会略微减慢。",
+      "text_markdown": "老年时，心脏可能会略微减慢。",
+      "tts": {
+        "text": "老年时，心脏可能会略微减慢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-360",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心肌随时间变得僵硬。",
+      "text_markdown": "心肌随时间变得僵硬。",
+      "tts": {
+        "text": "心肌随时间变得僵硬。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-361",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "瓣膜可能会增厚。",
+      "text_markdown": "瓣膜可能会增厚。",
+      "tts": {
+        "text": "瓣膜可能会增厚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-362",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "电传导系统可能变得不那么可靠。",
+      "text_markdown": "电传导系统可能变得不那么可靠。",
+      "tts": {
+        "text": "电传导系统可能变得不那么可靠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-363",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p75",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "但心脏继续跳动。",
+      "text_markdown": "但心脏继续跳动。",
+      "tts": {
+        "text": "但心脏继续跳动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-364",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心脏病会打乱这种节律。",
+      "text_markdown": "心脏病会打乱这种节律。",
+      "tts": {
+        "text": "心脏病会打乱这种节律。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-365",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "冠状动脉疾病是最常见的一种。",
+      "text_markdown": "冠状动脉疾病是最常见的一种。",
+      "tts": {
+        "text": "冠状动脉疾病是最常见的一种。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-366",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "冠状动脉是供给心肌本身血液的血管。",
+      "text_markdown": "冠状动脉是供给心肌本身血液的血管。",
+      "tts": {
+        "text": "冠状动脉是供给心肌本身血液的血管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-367",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心脏需要自身的血液供应才能正常运作。",
+      "text_markdown": "心脏需要自身的血液供应才能正常运作。",
+      "tts": {
+        "text": "心脏需要自身的血液供应才能正常运作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-368",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "冠状动脉疾病是指称为斑块的脂肪沉积物在这些动脉内壁堆积。",
+      "text_markdown": "冠状动脉疾病是指称为斑块的脂肪沉积物在这些动脉内壁堆积。",
+      "tts": {
+        "text": "冠状动脉疾病是指称为斑块的脂肪沉积物在这些动脉内壁堆积。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-369",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "斑块使动脉变窄。",
+      "text_markdown": "斑块使动脉变窄。",
+      "tts": {
+        "text": "斑块使动脉变窄。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-370",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p76",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "到达心肌的血液减少。",
+      "text_markdown": "到达心肌的血液减少。",
+      "tts": {
+        "text": "到达心肌的血液减少。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-371",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "如果斑块破裂，可能形成血栓。",
+      "text_markdown": "如果斑块破裂，可能形成血栓。",
+      "tts": {
+        "text": "如果斑块破裂，可能形成血栓。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-372",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "血栓是凝固的血块。",
+      "text_markdown": "血栓是凝固的血块。",
+      "tts": {
+        "text": "血栓是凝固的血块。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-373",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "如果血栓完全阻塞冠状动脉，部分心肌就会缺氧。",
+      "text_markdown": "如果血栓完全阻塞冠状动脉，部分心肌就会缺氧。",
+      "tts": {
+        "text": "如果血栓完全阻塞冠状动脉，部分心肌就会缺氧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-374",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "那部分肌肉组织开始死亡。",
+      "text_markdown": "那部分肌肉组织开始死亡。",
+      "tts": {
+        "text": "那部分肌肉组织开始死亡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-375",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "这就是心脏病发作。",
+      "text_markdown": "这就是心脏病发作。",
+      "tts": {
+        "text": "这就是心脏病发作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-376",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "医学术语是心肌梗死（myocardial infarction）。",
+      "text_markdown": "医学术语是心肌梗死（myocardial infarction）。",
+      "tts": {
+        "text": "医学术语是心肌梗死。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-377",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p77",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心肌（Myocardial）意为\"与心肌有关\"。梗死（Infarction）意为\"因血流中断导致的组织死亡\"。",
+      "text_markdown": "心肌（Myocardial）意为\"与心肌有关\"。梗死（Infarction）意为\"因血流中断导致的组织死亡\"。",
+      "tts": {
+        "text": "心肌意为与心肌有关。梗死意为因血流中断导致的组织死亡。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-378",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "在心脏病发作期间，迅速救治可以保护心肌。",
+      "text_markdown": "在心脏病发作期间，迅速救治可以保护心肌。",
+      "tts": {
+        "text": "在心脏病发作期间，迅速救治可以保护心肌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-379",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "医生可能会放置支架。",
+      "text_markdown": "医生可能会放置支架。",
+      "tts": {
+        "text": "医生可能会放置支架。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-380",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "支架是一种微小的网状管。",
+      "text_markdown": "支架是一种微小的网状管。",
+      "tts": {
+        "text": "支架是一种微小的网状管。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-381",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它使动脉保持畅通。",
+      "text_markdown": "它使动脉保持畅通。",
+      "tts": {
+        "text": "它使动脉保持畅通。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-382",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "医生还可能进行搭桥手术。",
+      "text_markdown": "医生还可能进行搭桥手术。",
+      "tts": {
+        "text": "医生还可能进行搭桥手术。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-383",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p78",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "他们从身体其他部位取一段健康血管，用它绕过阻塞部位重新建立血液通道。",
+      "text_markdown": "他们从身体其他部位取一段健康血管，用它绕过阻塞部位重新建立血液通道。",
+      "tts": {
+        "text": "他们从身体其他部位取一段健康血管，用它绕过阻塞部位重新建立血液通道。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-384",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心力衰竭是另一种不同的状况。",
+      "text_markdown": "心力衰竭是另一种不同的状况。",
+      "tts": {
+        "text": "心力衰竭是另一种不同的状况。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-385",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心力衰竭是指心脏太虚弱，无法泵送足够的血液以满足身体的需求。",
+      "text_markdown": "心力衰竭是指心脏太虚弱，无法泵送足够的血液以满足身体的需求。",
+      "tts": {
+        "text": "心力衰竭是指心脏太虚弱，无法泵送足够的血液以满足身体的需求。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch08-386",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "这并不意味着心脏停止了。",
+      "text_markdown": "这并不意味着心脏停止了。",
+      "tts": {
+        "text": "这并不意味着心脏停止了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-387",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它意味着心脏跟不上需求。",
+      "text_markdown": "它意味着心脏跟不上需求。",
+      "tts": {
+        "text": "它意味着心脏跟不上需求。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-388",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "液体可能积聚在肺部和腿部。",
+      "text_markdown": "液体可能积聚在肺部和腿部。",
+      "tts": {
+        "text": "液体可能积聚在肺部和腿部。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-389",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "对一些患者来说，唯一的选择是心脏移植。",
+      "text_markdown": "对一些患者来说，唯一的选择是心脏移植。",
+      "tts": {
+        "text": "对一些患者来说，唯一的选择是心脏移植。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-390",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "心脏移植是用捐献者的健康心脏替换衰竭的心脏。",
+      "text_markdown": "心脏移植是用捐献者的健康心脏替换衰竭的心脏。",
+      "tts": {
+        "text": "心脏移植是用捐献者的健康心脏替换衰竭的心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "id": "ch08-391",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "人类首例成功的心脏移植手术于1967年由南非的克里斯蒂安·巴纳德医生完成。",
+      "text_markdown": "人类首例成功的心脏移植手术于1967年由南非的克里斯蒂安·巴纳德医生完成。",
+      "tts": {
+        "text": "人类首例成功的心脏移植手术于一九六七年由南非的克里斯蒂安·巴纳德医生完成。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-392",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "如今，每年有数千例心脏移植手术。",
+      "text_markdown": "如今，每年有数千例心脏移植手术。",
+      "tts": {
+        "text": "如今，每年有数千例心脏移植手术。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-393",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "科学界还创造了人工心脏。",
+      "text_markdown": "科学界还创造了人工心脏。",
+      "tts": {
+        "text": "科学界还创造了人工心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-394",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "这些机械装置可以在患者等待移植期间维持血液流动。",
+      "text_markdown": "这些机械装置可以在患者等待移植期间维持血液流动。",
+      "tts": {
+        "text": "这些机械装置可以在患者等待移植期间维持血液流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-395",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它们目前还不能永久替代心脏。",
+      "text_markdown": "它们目前还不能永久替代心脏。",
+      "tts": {
+        "text": "它们目前还不能永久替代心脏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-396",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "但研究在继续。",
+      "text_markdown": "但研究在继续。",
+      "tts": {
+        "text": "但研究在继续。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-397",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "你的心脏是非凡的。",
+      "text_markdown": "你的心脏是非凡的。",
+      "tts": {
+        "text": "你的心脏是非凡的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-398",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它不知疲倦地工作。",
+      "text_markdown": "它不知疲倦地工作。",
+      "tts": {
+        "text": "它不知疲倦地工作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-399",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它适应你的需求。",
+      "text_markdown": "它适应你的需求。",
+      "tts": {
+        "text": "它适应你的需求。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-400",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它回应喜悦、恐惧、运动和睡眠。",
+      "text_markdown": "它回应喜悦、恐惧、运动和睡眠。",
+      "tts": {
+        "text": "它回应喜悦、恐惧、运动和睡眠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-401",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "它是你生命的引擎。",
+      "text_markdown": "它是你生命的引擎。",
+      "tts": {
+        "text": "它是你生命的引擎。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-402",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p82",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "一生的跳动",
+      "text": "好好照顾它，它也会好好照顾你。",
+      "text_markdown": "好好照顾它，它也会好好照顾你。",
+      "tts": {
+        "text": "好好照顾它，它也会好好照顾你。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    }
+  ]
+}

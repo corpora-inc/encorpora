@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "ja",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "heading",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "heading_level": 1,
+      "text": "すべてのものは原子でできている",
+      "text_markdown": "すべてのものは原子でできている",
+      "title": "すべてのものは原子でできている"
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "text": "まわりを見てみましょう。",
+      "text_markdown": "まわりを見てみましょう。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "まわりを見てみましょう。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "text": "目に見えるものはすべて、原子でできています。",
+      "text_markdown": "目に見えるものはすべて、原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "目に見えるものはすべて、原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "text": "あなたがすう空気も、原子でできています。",
+      "text_markdown": "あなたがすう空気も、原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたがすう空気も、原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "text": "あなたが飲む水も、原子でできています。",
+      "text_markdown": "あなたが飲む水も、原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたが飲む水も、原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "text": "あなたの体も、原子でできています。",
+      "text_markdown": "あなたの体も、原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたの体も、原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "text": "あなたの足の下の地面も、原子でできています。",
+      "text_markdown": "あなたの足の下の地面も、原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたの足の下の地面も、原子でできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "text": "原子は、化学的な性質を持つ最も小さな物質のかけらです。",
+      "text_markdown": "原子は、化学的な性質を持つ最も小さな物質のかけらです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は、化学的な性質を持つ最も小さな物質のかけらです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "text": "原子は目では見ることができません。",
+      "text_markdown": "原子は目では見ることができません。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は目では見ることができません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "text": "ふつうの顕微鏡でも、原子は見えません。",
+      "text_markdown": "ふつうの顕微鏡でも、原子は見えません。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "ふつうの顕微鏡でも、原子は見えません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "text": "原子はそれほど小さいのです。",
+      "text_markdown": "原子はそれほど小さいのです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子はそれほど小さいのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "text": "砂つぶ一つには、およそ五千京個の原子がふくまれています。",
+      "text_markdown": "砂つぶ一つには、およそ五千京個の原子がふくまれています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "砂つぶ一つには、およそ五千京個の原子がふくまれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "text": "この数は、五十の後ろにゼロが十八個ならんだ数です。",
+      "text_markdown": "この数は、五十の後ろにゼロが十八個ならんだ数です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "この数は、五十の後ろにゼロが十八個ならんだ数です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "text": "砂つぶ一つの中の原子の数は、浜辺にある砂つぶの数よりも多いのです。",
+      "text_markdown": "砂つぶ一つの中の原子の数は、浜辺にある砂つぶの数よりも多いのです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "砂つぶ一つの中の原子の数は、浜辺にある砂つぶの数よりも多いのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "text": "原子は、この世界のすべてのものを作る「積み木」のようなものです。",
+      "text_markdown": "原子は、この世界のすべてのものを作る「積み木」のようなものです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は、この世界のすべてのものを作る「積み木」のようなものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "text": "壁はレンガでできています。",
+      "text_markdown": "壁はレンガでできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "壁はレンガでできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "text": "文章は言葉でできています。",
+      "text_markdown": "文章は言葉でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "文章は言葉でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "text": "宇宙は原子でできています。",
+      "text_markdown": "宇宙は原子でできています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "宇宙は原子でできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "text": "「原子」という言葉は、古代ギリシャ語からきています。",
+      "text_markdown": "「原子」という言葉は、古代ギリシャ語からきています。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "「原子」という言葉は、古代ギリシャ語からきています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "text": "ギリシャ語の「アトモス」は「切ることができない」という意味です。",
+      "text_markdown": "ギリシャ語の「アトモス」は「切ることができない」という意味です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "ギリシャ語の「アトモス」は「切ることができない」という意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "text": "古代ギリシャの哲学者たちは、原子が物質の最も小さなかけらだと考えました。",
+      "text_markdown": "古代ギリシャの哲学者たちは、原子が物質の最も小さなかけらだと考えました。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "古代ギリシャの哲学者たちは、原子が物質の最も小さなかけらだと考えました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "text": "その考えは、ほとんど正しかったのです。",
+      "text_markdown": "その考えは、ほとんど正しかったのです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "その考えは、ほとんど正しかったのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "text": "原子は本当に最も小さな粒子ではありませんが、化学的な性質を持つ最も小さな単位です。",
+      "text_markdown": "原子は本当に最も小さな粒子ではありませんが、化学的な性質を持つ最も小さな単位です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は本当に最も小さな粒子ではありませんが、化学的な性質を持つ最も小さな単位です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "text": "原子はとても丈夫です。",
+      "text_markdown": "原子はとても丈夫です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子はとても丈夫です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "text": "あなたの体の中の原子は、何十億年も前からあるものです。",
+      "text_markdown": "あなたの体の中の原子は、何十億年も前からあるものです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたの体の中の原子は、何十億年も前からあるものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "text": "今日あなたが飲んだ水の中の水素原子には、ビッグバンの直後に生まれたものもあります。",
+      "text_markdown": "今日あなたが飲んだ水の中の水素原子には、ビッグバンの直後に生まれたものもあります。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "今日あなたが飲んだ水の中の水素原子には、ビッグバンの直後に生まれたものもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "text": "あなたは、大昔の材料でできているのです。",
+      "text_markdown": "あなたは、大昔の材料でできているのです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "あなたは、大昔の材料でできているのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "text": "ふだんの生活の中では、原子が生まれたりなくなったりすることはありません。",
+      "text_markdown": "ふだんの生活の中では、原子が生まれたりなくなったりすることはありません。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "ふだんの生活の中では、原子が生まれたりなくなったりすることはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "text": "原子は並びかえられるだけです。",
+      "text_markdown": "原子は並びかえられるだけです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は並びかえられるだけです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "text": "木がもえても、原子はなくなりません。",
+      "text_markdown": "木がもえても、原子はなくなりません。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "木がもえても、原子はなくなりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "text": "原子は、煙や灰やガスに並びかわるのです。",
+      "text_markdown": "原子は、煙や灰やガスに並びかわるのです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子は、煙や灰やガスに並びかわるのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "text": "氷がとけても、原子はそのままです。",
+      "text_markdown": "氷がとけても、原子はそのままです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "氷がとけても、原子はそのままです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "text": "変わるのは、原子の並び方だけです。",
+      "text_markdown": "変わるのは、原子の並び方だけです。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "変わるのは、原子の並び方だけです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "text": "原子を理解することは、化学の基本です。",
+      "text_markdown": "原子を理解することは、化学の基本です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子を理解することは、化学の基本です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "text": "化学は、原子がどのように結びつき、並びかわり、たがいに関わり合うかを研究する科学です。",
+      "text_markdown": "化学は、原子がどのように結びつき、並びかわり、たがいに関わり合うかを研究する科学です。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "化学は、原子がどのように結びつき、並びかわり、たがいに関わり合うかを研究する科学です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "text": "この世界で起きるすべてのことは、原子とその働きに行きつきます。",
+      "text_markdown": "この世界で起きるすべてのことは、原子とその働きに行きつきます。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "この世界で起きるすべてのことは、原子とその働きに行きつきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "heading",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "heading_level": 1,
+      "text": "原子の中をのぞいてみよう",
+      "text_markdown": "原子の中をのぞいてみよう",
+      "title": "原子の中をのぞいてみよう"
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "text": "原子の中には、三種類の粒子があります。",
+      "text_markdown": "原子の中には、三種類の粒子があります。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子の中には、三種類の粒子があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "text": "陽子。",
+      "text_markdown": "陽子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "text": "中性子。",
+      "text_markdown": "中性子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "text": "電子。",
+      "text_markdown": "電子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "text": "この三つの粒子が、宇宙のすべての原子を作っています。",
+      "text_markdown": "この三つの粒子が、宇宙のすべての原子を作っています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "この三つの粒子が、宇宙のすべての原子を作っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "text": "原子の中心は、原子核とよばれます。",
+      "text_markdown": "原子の中心は、原子核とよばれます。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子の中心は、原子核とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "text": "原子核には、陽子と中性子がふくまれています。",
+      "text_markdown": "原子核には、陽子と中性子がふくまれています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子核には、陽子と中性子がふくまれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "text": "原子核は、原子全体にくらべると、とても小さいです。",
+      "text_markdown": "原子核は、原子全体にくらべると、とても小さいです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子核は、原子全体にくらべると、とても小さいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "text": "もし原子がサッカー場くらいの大きさだったら、原子核はグラウンドの真ん中にあるビー玉くらいの大きさです。",
+      "text_markdown": "もし原子がサッカー場くらいの大きさだったら、原子核はグラウンドの真ん中にあるビー玉くらいの大きさです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "もし原子がサッカー場くらいの大きさだったら、原子核はグラウンドの真ん中にあるビー玉くらいの大きさです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "text": "陽子はプラスの電気を持っています。",
+      "text_markdown": "陽子はプラスの電気を持っています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子はプラスの電気を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "text": "どの陽子も、同じ量のプラスの電気を持っています。",
+      "text_markdown": "どの陽子も、同じ量のプラスの電気を持っています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "どの陽子も、同じ量のプラスの電気を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "text": "原子の中の陽子の数が、その原子がどの元素かを決めます。",
+      "text_markdown": "原子の中の陽子の数が、その原子がどの元素かを決めます。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子の中の陽子の数が、その原子がどの元素かを決めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "text": "陽子が一つなら、水素です。",
+      "text_markdown": "陽子が一つなら、水素です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子が一つなら、水素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "text": "陽子が六つなら、炭素です。",
+      "text_markdown": "陽子が六つなら、炭素です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子が六つなら、炭素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "text": "陽子が二十六個なら、鉄です。",
+      "text_markdown": "陽子が二十六個なら、鉄です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子が二十六個なら、鉄です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p13",
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "text": "陽子の数は、原子について最も大切な情報です。",
+      "text_markdown": "陽子の数は、原子について最も大切な情報です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子の数は、原子について最も大切な情報です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "text": "中性子は電気を持っていません。",
+      "text_markdown": "中性子は電気を持っていません。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子は電気を持っていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "text": "中性子は中性です。",
+      "text_markdown": "中性子は中性です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子は中性です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "text": "中性子は原子核の中で、陽子のとなりにあります。",
+      "text_markdown": "中性子は原子核の中で、陽子のとなりにあります。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子は原子核の中で、陽子のとなりにあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "text": "中性子は原子核をまとめる役割をしています。",
+      "text_markdown": "中性子は原子核をまとめる役割をしています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子は原子核をまとめる役割をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "text": "中性子がなかったら、陽子はみんな同じプラスの電気を持っているので、たがいに押し合って離れてしまいます。",
+      "text_markdown": "中性子がなかったら、陽子はみんな同じプラスの電気を持っているので、たがいに押し合って離れてしまいます。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中性子がなかったら、陽子はみんな同じプラスの電気を持っているので、たがいに押し合って離れてしまいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "text": "電子はマイナスの電気を持っています。",
+      "text_markdown": "電子はマイナスの電気を持っています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子はマイナスの電気を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "text": "電子は原子核のまわりを、雲のように動いています。",
+      "text_markdown": "電子は原子核のまわりを、雲のように動いています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子は原子核のまわりを、雲のように動いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "text": "太陽のまわりを回る惑星のようには動いていません。",
+      "text_markdown": "太陽のまわりを回る惑星のようには動いていません。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "太陽のまわりを回る惑星のようには動いていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "text": "電子は、原子核のまわりの「ぼんやりとした確率の領域」にいます。",
+      "text_markdown": "電子は、原子核のまわりの「ぼんやりとした確率の領域」にいます。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子は、原子核のまわりの「ぼんやりとした確率の領域」にいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "text": "電子雲とは、ある瞬間に電子が見つかりそうな場所のことです。",
+      "text_markdown": "電子雲とは、ある瞬間に電子が見つかりそうな場所のことです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子雲とは、ある瞬間に電子が見つかりそうな場所のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "text": "電子は、陽子や中性子とくらべると、ほとんど重さがありません。",
+      "text_markdown": "電子は、陽子や中性子とくらべると、ほとんど重さがありません。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子は、陽子や中性子とくらべると、ほとんど重さがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "text": "陽子は電子の約千八百三十六倍の重さがあります。",
+      "text_markdown": "陽子は電子の約千八百三十六倍の重さがあります。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "陽子は電子のやくせんはっぴゃくさんじゅうろくばいの重さがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "text": "原子の重さのほとんどは、原子核にあります。",
+      "text_markdown": "原子の重さのほとんどは、原子核にあります。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子の重さのほとんどは、原子核にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "text": "電気的に中性の原子では、電子の数は陽子の数と同じです。",
+      "text_markdown": "電気的に中性の原子では、電子の数は陽子の数と同じです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電気的に中性の原子では、電子の数は陽子の数と同じです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "text": "プラスの電気とマイナスの電気がつり合っています。",
+      "text_markdown": "プラスの電気とマイナスの電気がつり合っています。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "プラスの電気とマイナスの電気がつり合っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "text": "原子全体としては電気を持っていません。",
+      "text_markdown": "原子全体としては電気を持っていません。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子全体としては電気を持っていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "text": "このバランスが、原子のふつうの状態です。",
+      "text_markdown": "このバランスが、原子のふつうの状態です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "このバランスが、原子のふつうの状態です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "text": "原子の中のほとんどは、空っぽの空間です。",
+      "text_markdown": "原子の中のほとんどは、空っぽの空間です。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子の中のほとんどは、空っぽの空間です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "text": "原子核は密度が高く、とても小さいです。",
+      "text_markdown": "原子核は密度が高く、とても小さいです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子核は密度が高く、とても小さいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "text": "電子雲は大きくて、ほとんど何もありません。",
+      "text_markdown": "電子雲は大きくて、ほとんど何もありません。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "電子雲は大きくて、ほとんど何もありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "text": "もしあなたの体のすべての原子から空っぽの空間を取り除いたら、塩のつぶよりも小さくなります。",
+      "text_markdown": "もしあなたの体のすべての原子から空っぽの空間を取り除いたら、塩のつぶよりも小さくなります。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "もしあなたの体のすべての原子から空っぽの空間を取り除いたら、塩のつぶよりも小さくなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "text": "でも、重さはそのままです。",
+      "text_markdown": "でも、重さはそのままです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "でも、重さはそのままです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "text": "ただ、信じられないほど密度が高くなるのです。",
+      "text_markdown": "ただ、信じられないほど密度が高くなるのです。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ただ、信じられないほど密度が高くなるのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "heading",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "heading_level": 1,
+      "text": "元素",
+      "text_markdown": "元素",
+      "title": "元素"
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "text": "元素とは、一種類の原子だけでできている物質のことです。",
+      "text_markdown": "元素とは、一種類の原子だけでできている物質のことです。",
+      "title": "Elements",
+      "tts": {
+        "text": "元素とは、一種類の原子だけでできている物質のことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "text": "純粋な金は元素です。",
+      "text_markdown": "純粋な金は元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "純粋な金は元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "text": "純粋な金の塊の中のすべての原子は、陽子を七十九個持っています。",
+      "text_markdown": "純粋な金の塊の中のすべての原子は、陽子を七十九個持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "純粋な金の塊の中のすべての原子は、陽子を七十九個持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "text": "純粋な酸素は元素です。",
+      "text_markdown": "純粋な酸素は元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "純粋な酸素は元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "text": "純粋な酸素のタンクの中のすべての原子は、陽子を八個持っています。",
+      "text_markdown": "純粋な酸素のタンクの中のすべての原子は、陽子を八個持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "純粋な酸素のタンクの中のすべての原子は、陽子を八個持っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "text": "地球に自然にある元素は約九十二種類あります。",
+      "text_markdown": "地球に自然にある元素は約九十二種類あります。",
+      "title": "Elements",
+      "tts": {
+        "text": "地球に自然にある元素は約九十二種類あります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "text": "科学者たちは、研究室でさらに多くの元素を作り出しました。",
+      "text_markdown": "科学者たちは、研究室でさらに多くの元素を作り出しました。",
+      "title": "Elements",
+      "tts": {
+        "text": "科学者たちは、研究室でさらに多くの元素を作り出しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "text": "これまでに見つかっている元素の数は、百十八をこえています。",
+      "text_markdown": "これまでに見つかっている元素の数は、百十八をこえています。",
+      "title": "Elements",
+      "tts": {
+        "text": "これまでに見つかっている元素の数は、百十八をこえています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "text": "それぞれの元素は、ちがう数の陽子を持っています。",
+      "text_markdown": "それぞれの元素は、ちがう数の陽子を持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "それぞれの元素は、ちがう数の陽子を持っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "text": "すべての元素には、名前と記号があります。",
+      "text_markdown": "すべての元素には、名前と記号があります。",
+      "title": "Elements",
+      "tts": {
+        "text": "すべての元素には、名前と記号があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "text": "水素はH。酸素はO。炭素はC。鉄はFe。",
+      "text_markdown": "水素はH。酸素はO。炭素はC。鉄はFe。",
+      "title": "Elements",
+      "tts": {
+        "text": "水素はエイチ。酸素はオー。炭素はシー。鉄はエフ イー。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "text": "金はAu。",
+      "text_markdown": "金はAu。",
+      "title": "Elements",
+      "tts": {
+        "text": "金はエー ユー。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "text": "記号は、ラテン語やギリシャ語や英語の名前からきています。",
+      "text_markdown": "記号は、ラテン語やギリシャ語や英語の名前からきています。",
+      "title": "Elements",
+      "tts": {
+        "text": "記号は、ラテン語やギリシャ語や英語の名前からきています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "text": "Feはラテン語のferrumという言葉からきています。",
+      "text_markdown": "Feはラテン語のferrumという言葉からきています。",
+      "title": "Elements",
+      "tts": {
+        "text": "エフ イーはラテン語のフェルムという言葉からきています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "text": "Auはラテン語のaurumという言葉からきています。",
+      "text_markdown": "Auはラテン語のaurumという言葉からきています。",
+      "title": "Elements",
+      "tts": {
+        "text": "エー ユーはラテン語のアウルムという言葉からきています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "text": "水素は最もかんたんな元素です。",
+      "text_markdown": "水素は最もかんたんな元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "水素は最もかんたんな元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "text": "水素原子は、陽子が一つと電子が一つでできています。",
+      "text_markdown": "水素原子は、陽子が一つと電子が一つでできています。",
+      "title": "Elements",
+      "tts": {
+        "text": "水素原子は、陽子が一つと電子が一つでできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "text": "水素は、宇宙で最もたくさんある元素です。",
+      "text_markdown": "水素は、宇宙で最もたくさんある元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "水素は、宇宙で最もたくさんある元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "text": "星のほとんどは水素でできています。",
+      "text_markdown": "星のほとんどは水素でできています。",
+      "title": "Elements",
+      "tts": {
+        "text": "星のほとんどは水素でできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "text": "炭素は「命の元素」です。",
+      "text_markdown": "炭素は「命の元素」です。",
+      "title": "Elements",
+      "tts": {
+        "text": "炭素は「命の元素」です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "text": "炭素は陽子を六個持っています。",
+      "text_markdown": "炭素は陽子を六個持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "炭素は陽子を六個持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "text": "炭素原子は、同時にたくさんのほかの原子と結びつくことができます。",
+      "text_markdown": "炭素原子は、同時にたくさんのほかの原子と結びつくことができます。",
+      "title": "Elements",
+      "tts": {
+        "text": "炭素原子は、同時にたくさんのほかの原子と結びつくことができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "text": "この能力があるから、炭素はすべての生き物の骨組みになっているのです。",
+      "text_markdown": "この能力があるから、炭素はすべての生き物の骨組みになっているのです。",
+      "title": "Elements",
+      "tts": {
+        "text": "この能力があるから、炭素はすべての生き物の骨組みになっているのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "text": "あなたの体の中のタンパク質も、DNAも、砂糖の分子も、すべて炭素をふくんでいます。",
+      "text_markdown": "あなたの体の中のタンパク質も、DNAも、砂糖の分子も、すべて炭素をふくんでいます。",
+      "title": "Elements",
+      "tts": {
+        "text": "あなたの体の中のタンパク質も、DNAも、砂糖の分子も、すべて炭素をふくんでいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "text": "酸素は陽子を八個持っています。",
+      "text_markdown": "酸素は陽子を八個持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "酸素は陽子を八個持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "text": "酸素は、あなたが呼吸する元素です。",
+      "text_markdown": "酸素は、あなたが呼吸する元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "酸素は、あなたが呼吸する元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "text": "肺は空気から酸素を取り出して、血液に送ります。",
+      "text_markdown": "肺は空気から酸素を取り出して、血液に送ります。",
+      "title": "Elements",
+      "tts": {
+        "text": "肺は空気から酸素を取り出して、血液に送ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "text": "あなたの細胞は、酸素を使って食べ物からエネルギーを取り出します。",
+      "text_markdown": "あなたの細胞は、酸素を使って食べ物からエネルギーを取り出します。",
+      "title": "Elements",
+      "tts": {
+        "text": "あなたの細胞は、酸素を使って食べ物からエネルギーを取り出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "text": "鉄は陽子を二十六個持っています。",
+      "text_markdown": "鉄は陽子を二十六個持っています。",
+      "title": "Elements",
+      "tts": {
+        "text": "鉄は陽子を二十六個持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "text": "鉄は、血を赤くしている元素です。",
+      "text_markdown": "鉄は、血を赤くしている元素です。",
+      "title": "Elements",
+      "tts": {
+        "text": "鉄は、血を赤くしている元素です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "text": "鉄は、鋼鉄の主な材料です。",
+      "text_markdown": "鉄は、鋼鉄の主な材料です。",
+      "title": "Elements",
+      "tts": {
+        "text": "鉄は、鋼鉄の主な材料です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "text": "地球の中心部は、ほとんどが鉄でできています。",
+      "text_markdown": "地球の中心部は、ほとんどが鉄でできています。",
+      "title": "Elements",
+      "tts": {
+        "text": "地球の中心部は、ほとんどが鉄でできています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "text": "軽い元素ほど、宇宙にたくさんあります。",
+      "text_markdown": "軽い元素ほど、宇宙にたくさんあります。",
+      "title": "Elements",
+      "tts": {
+        "text": "軽い元素ほど、宇宙にたくさんあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "text": "水素とヘリウムを合わせると、宇宙の原子の約九十八パーセントをしめています。",
+      "text_markdown": "水素とヘリウムを合わせると、宇宙の原子の約九十八パーセントをしめています。",
+      "title": "Elements",
+      "tts": {
+        "text": "水素とヘリウムを合わせると、宇宙の原子の約九十八パーセントをしめています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "text": "重い元素は、それにくらべるとめずらしいのです。",
+      "text_markdown": "重い元素は、それにくらべるとめずらしいのです。",
+      "title": "Elements",
+      "tts": {
+        "text": "重い元素は、それにくらべるとめずらしいのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "text": "重い元素はすべて、星の中で作られました。",
+      "text_markdown": "重い元素はすべて、星の中で作られました。",
+      "title": "Elements",
+      "tts": {
+        "text": "重い元素はすべて、星の中で作られました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "heading",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "heading_level": 1,
+      "text": "周期表",
+      "text_markdown": "周期表",
+      "title": "周期表"
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "text": "周期表は、すべての元素を整理した表です。",
+      "text_markdown": "周期表は、すべての元素を整理した表です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "周期表は、すべての元素を整理した表です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "text": "この表は、陽子の数が少ない順から多い順に元素をならべています。",
+      "text_markdown": "この表は、陽子の数が少ない順から多い順に元素をならべています。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "この表は、陽子の数が少ない順から多い順に元素をならべています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "text": "水素は陽子が一つで、最初にきます。",
+      "text_markdown": "水素は陽子が一つで、最初にきます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "水素は陽子が一つで、最初にきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "text": "ヘリウムは陽子が二つで、二番目にきます。",
+      "text_markdown": "ヘリウムは陽子が二つで、二番目にきます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ヘリウムは陽子が二つで、二番目にきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "text": "この表は、陽子が百十八個のオガネソンまでつづきます。",
+      "text_markdown": "この表は、陽子が百十八個のオガネソンまでつづきます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "この表は、陽子が百十八個のオガネソンまでつづきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "text": "周期表には、行と列があります。",
+      "text_markdown": "周期表には、行と列があります。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "周期表には、行と列があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "text": "行は「周期」とよばれます。",
+      "text_markdown": "行は「周期」とよばれます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "行は「周期」とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "text": "列は「族」とよばれます。",
+      "text_markdown": "列は「族」とよばれます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "列は「族」とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "text": "同じ族の元素は、にた性質を持っています。",
+      "text_markdown": "同じ族の元素は、にた性質を持っています。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "同じ族の元素は、にた性質を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "text": "だから、この表は「周期表」とよばれるのです。",
+      "text_markdown": "だから、この表は「周期表」とよばれるのです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "だから、この表は「周期表」とよばれるのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "text": "性質が、きまったパターンでくり返されるからです。",
+      "text_markdown": "性質が、きまったパターンでくり返されるからです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "性質が、きまったパターンでくり返されるからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "text": "表の左がわにある元素は、金属です。",
+      "text_markdown": "表の左がわにある元素は、金属です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "表の左がわにある元素は、金属です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "text": "ほとんどの元素は金属です。",
+      "text_markdown": "ほとんどの元素は金属です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ほとんどの元素は金属です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "text": "金属はぴかぴか光ります。",
+      "text_markdown": "金属はぴかぴか光ります。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属はぴかぴか光ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "text": "金属は電気を通します。",
+      "text_markdown": "金属は電気を通します。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属は電気を通します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "text": "金属は熱を伝えます。",
+      "text_markdown": "金属は熱を伝えます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属は熱を伝えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "text": "鉄、銅、金、アルミニウムは、すべて金属です。",
+      "text_markdown": "鉄、銅、金、アルミニウムは、すべて金属です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "鉄、銅、金、アルミニウムは、すべて金属です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "text": "表の右がわにある元素は、非金属です。",
+      "text_markdown": "表の右がわにある元素は、非金属です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "表の右がわにある元素は、非金属です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "text": "非金属には、酸素、窒素、炭素、硫黄などがあります。",
+      "text_markdown": "非金属には、酸素、窒素、炭素、硫黄などがあります。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属には、酸素、窒素、炭素、硫黄などがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "text": "非金属は電気をうまく通しません。",
+      "text_markdown": "非金属は電気をうまく通しません。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属は電気をうまく通しません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "text": "非金属は、空気や水や生き物を作っている元素です。",
+      "text_markdown": "非金属は、空気や水や生き物を作っている元素です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属は、空気や水や生き物を作っている元素です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "text": "いくつかの元素は、金属と非金属のさかい目にあります。",
+      "text_markdown": "いくつかの元素は、金属と非金属のさかい目にあります。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "いくつかの元素は、金属と非金属のさかい目にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "text": "こうした元素は「半金属」とよばれます。",
+      "text_markdown": "こうした元素は「半金属」とよばれます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "こうした元素は「半金属」とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "text": "ケイ素は半金属です。",
+      "text_markdown": "ケイ素は半金属です。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ケイ素は半金属です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "text": "ケイ素は電気を少しだけ通しますが、金属ほどはうまく通しません。",
+      "text_markdown": "ケイ素は電気を少しだけ通しますが、金属ほどはうまく通しません。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ケイ素は電気を少しだけ通しますが、金属ほどはうまく通しません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "text": "この性質があるから、ケイ素はコンピューターのチップに使われるのです。",
+      "text_markdown": "この性質があるから、ケイ素はコンピューターのチップに使われるのです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "この性質があるから、ケイ素はコンピューターのチップに使われるのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "text": "貴ガスは、一番右のれつにあります。",
+      "text_markdown": "貴ガスは、一番右のれつにあります。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "貴ガスは、一番右のれつにあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "text": "ヘリウム、ネオン、アルゴン、クリプトン、キセノン、ラドンが貴ガスです。",
+      "text_markdown": "ヘリウム、ネオン、アルゴン、クリプトン、キセノン、ラドンが貴ガスです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ヘリウム、ネオン、アルゴン、クリプトン、キセノン、ラドンが貴ガスです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "text": "貴ガスは、ほかの元素とほとんど反応しません。",
+      "text_markdown": "貴ガスは、ほかの元素とほとんど反応しません。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "貴ガスは、ほかの元素とほとんど反応しません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "text": "電子の配置がすでに安定しているからです。",
+      "text_markdown": "電子の配置がすでに安定しているからです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "電子の配置がすでに安定しているからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "text": "結びつきを作る必要がないのです。",
+      "text_markdown": "結びつきを作る必要がないのです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "結びつきを作る必要がないのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "text": "ロシアの科学者、ドミトリ・メンデレーエフが、千八百六十九年に最初の周期表を作りました。",
+      "text_markdown": "ロシアの科学者、ドミトリ・メンデレーエフが、千八百六十九年に最初の周期表を作りました。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ロシアの科学者、ドミトリ・メンデレーエフが、せんはっぴゃくろくじゅうきゅうねんに最初の周期表を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "text": "メンデレーエフは元素を性質ごとにならべ、くり返しのパターンに気づきました。",
+      "text_markdown": "メンデレーエフは元素を性質ごとにならべ、くり返しのパターンに気づきました。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "メンデレーエフは元素を性質ごとにならべ、くり返しのパターンに気づきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "text": "彼はまだ見つかっていない元素があると予想して、表に空きを残しました。",
+      "text_markdown": "彼はまだ見つかっていない元素があると予想して、表に空きを残しました。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "彼はまだ見つかっていない元素があると予想して、表に空きを残しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "text": "後に科学者たちが、その元素を発見しました。",
+      "text_markdown": "後に科学者たちが、その元素を発見しました。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "後に科学者たちが、その元素を発見しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "text": "予想はすべて正しかったのです。",
+      "text_markdown": "予想はすべて正しかったのです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "予想はすべて正しかったのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "text": "周期表は、科学の中で最も力強い道具の一つです。",
+      "text_markdown": "周期表は、科学の中で最も力強い道具の一つです。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "周期表は、科学の中で最も力強い道具の一つです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "text": "元素が表のどこにあるかがわかれば、その元素がどうふるまうか予想できます。",
+      "text_markdown": "元素が表のどこにあるかがわかれば、その元素がどうふるまうか予想できます。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "元素が表のどこにあるかがわかれば、その元素がどうふるまうか予想できます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "heading",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "heading_level": 1,
+      "text": "原子はどうやって結びつくのか",
+      "text_markdown": "原子はどうやって結びつくのか",
+      "title": "原子はどうやって結びつくのか"
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "text": "原子が一つだけで存在することはめったにありません。",
+      "text_markdown": "原子が一つだけで存在することはめったにありません。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子が一つだけで存在することはめったにありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "text": "ほとんどの原子は、ほかの原子と結びついて分子を作ります。",
+      "text_markdown": "ほとんどの原子は、ほかの原子と結びついて分子を作ります。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ほとんどの原子は、ほかの原子と結びついて分子を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "text": "分子とは、化学結合によって結びついた原子のグループのことです。",
+      "text_markdown": "分子とは、化学結合によって結びついた原子のグループのことです。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "分子とは、化学結合によって結びついた原子のグループのことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "text": "水は分子です。",
+      "text_markdown": "水は分子です。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "水は分子です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "text": "酸素ガスは分子です。",
+      "text_markdown": "酸素ガスは分子です。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "酸素ガスは分子です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "text": "砂糖は分子です。",
+      "text_markdown": "砂糖は分子です。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "砂糖は分子です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "text": "原子が結びつくのは、電子のはたらきによるものです。",
+      "text_markdown": "原子が結びつくのは、電子のはたらきによるものです。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子が結びつくのは、電子のはたらきによるものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "text": "原子のいちばん外側のかくにある電子が、ほかの原子とどう関わるかを決めます。",
+      "text_markdown": "原子のいちばん外側のかくにある電子が、ほかの原子とどう関わるかを決めます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子のいちばん外側のかくにある電子が、ほかの原子とどう関わるかを決めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "text": "この外側の電子は「価電子」とよばれます。",
+      "text_markdown": "この外側の電子は「価電子」とよばれます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "この外側の電子は「価電子」とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "text": "外側のかくがいっぱいになっている原子は安定しています。",
+      "text_markdown": "外側のかくがいっぱいになっている原子は安定しています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "外側のかくがいっぱいになっている原子は安定しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "text": "外側のかくがいっぱいでない原子は、それを満たそうとします。",
+      "text_markdown": "外側のかくがいっぱいでない原子は、それを満たそうとします。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "外側のかくがいっぱいでない原子は、それを満たそうとします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "text": "化学結合には、大きく分けて二つの種類があります。",
+      "text_markdown": "化学結合には、大きく分けて二つの種類があります。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "化学結合には、大きく分けて二つの種類があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "text": "共有結合とイオン結合です。",
+      "text_markdown": "共有結合とイオン結合です。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "共有結合とイオン結合です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "text": "共有結合では、二つの原子が電子を共有します。",
+      "text_markdown": "共有結合では、二つの原子が電子を共有します。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "共有結合では、二つの原子が電子を共有します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "text": "二つの原子がそれぞれ電子を出し合い、共有のペアを作ります。",
+      "text_markdown": "二つの原子がそれぞれ電子を出し合い、共有のペアを作ります。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "二つの原子がそれぞれ電子を出し合い、共有のペアを作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "text": "共有された電子は、両方の原子核のまわりを動きます。",
+      "text_markdown": "共有された電子は、両方の原子核のまわりを動きます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "共有された電子は、両方の原子核のまわりを動きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "text": "この共有が、原子どうしを結びつけています。",
+      "text_markdown": "この共有が、原子どうしを結びつけています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "この共有が、原子どうしを結びつけています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "text": "水は共有結合で結びついています。",
+      "text_markdown": "水は共有結合で結びついています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "水は共有結合で結びついています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "text": "それぞれの水素原子は、酸素原子と電子を一つずつ共有しています。",
+      "text_markdown": "それぞれの水素原子は、酸素原子と電子を一つずつ共有しています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "それぞれの水素原子は、酸素原子と電子を一つずつ共有しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "text": "イオン結合では、一つの原子がもう一つの原子に電子をわたします。",
+      "text_markdown": "イオン結合では、一つの原子がもう一つの原子に電子をわたします。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "イオン結合では、一つの原子がもう一つの原子に電子をわたします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "text": "電子を失った原子はプラスの電気を帯びます。",
+      "text_markdown": "電子を失った原子はプラスの電気を帯びます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "電子を失った原子はプラスの電気を帯びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "text": "電子をもらった原子はマイナスの電気を帯びます。",
+      "text_markdown": "電子をもらった原子はマイナスの電気を帯びます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "電子をもらった原子はマイナスの電気を帯びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "text": "プラスとマイナスの電気は引き合います。",
+      "text_markdown": "プラスとマイナスの電気は引き合います。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "プラスとマイナスの電気は引き合います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "text": "この引き合う力が、二つの原子を結びつけます。",
+      "text_markdown": "この引き合う力が、二つの原子を結びつけます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "この引き合う力が、二つの原子を結びつけます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "text": "食塩はイオン結合で結びついています。",
+      "text_markdown": "食塩はイオン結合で結びついています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "食塩はイオン結合で結びついています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "text": "ナトリウムが塩素に電子を一つわたします。",
+      "text_markdown": "ナトリウムが塩素に電子を一つわたします。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ナトリウムが塩素に電子を一つわたします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "text": "水の分子は、二つの水素原子と一つの酸素原子でできています。",
+      "text_markdown": "水の分子は、二つの水素原子と一つの酸素原子でできています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "水の分子は、二つの水素原子と一つの酸素原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "text": "科学者はこれをH2Oと書きます。",
+      "text_markdown": "科学者はこれをH2Oと書きます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "科学者はこれをエイチ ツー オーと書きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "text": "Hは水素を表しています。",
+      "text_markdown": "Hは水素を表しています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "エイチは水素を表しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "text": "Oは酸素を表しています。",
+      "text_markdown": "Oは酸素を表しています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "オーは酸素を表しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "text": "2は水素原子が二つあるという意味です。",
+      "text_markdown": "2は水素原子が二つあるという意味です。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "このにはすいそげんしがふたつあるといういみです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "text": "二酸化炭素の分子は、一つの炭素原子と二つの酸素原子でできています。",
+      "text_markdown": "二酸化炭素の分子は、一つの炭素原子と二つの酸素原子でできています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "二酸化炭素の分子は、一つの炭素原子と二つの酸素原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "text": "科学者はこれをCO2と書きます。",
+      "text_markdown": "科学者はこれをCO2と書きます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "科学者はこれをシー オー ツーと書きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "text": "植物は空気中の二酸化炭素を取り入れ、砂糖の分子を作るのに使います。",
+      "text_markdown": "植物は空気中の二酸化炭素を取り入れ、砂糖の分子を作るのに使います。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "植物は空気中の二酸化炭素を取り入れ、砂糖の分子を作るのに使います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "text": "原子どうしの結合には、エネルギーがたくわえられています。",
+      "text_markdown": "原子どうしの結合には、エネルギーがたくわえられています。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子どうしの結合には、エネルギーがたくわえられています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "text": "結合がこわれると、エネルギーが放出されます。",
+      "text_markdown": "結合がこわれると、エネルギーが放出されます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "結合がこわれると、エネルギーが放出されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "text": "結合ができると、エネルギーが吸収されます。",
+      "text_markdown": "結合ができると、エネルギーが吸収されます。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "結合ができると、エネルギーが吸収されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "text": "宇宙のすべての化学反応は、古い結合をこわして新しい結合を作ることです。",
+      "text_markdown": "宇宙のすべての化学反応は、古い結合をこわして新しい結合を作ることです。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "宇宙のすべての化学反応は、古い結合をこわして新しい結合を作ることです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "heading",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "heading_level": 1,
+      "text": "動きまわる原子",
+      "text_markdown": "動きまわる原子",
+      "title": "動きまわる原子"
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "text": "原子はいつも動いています。",
+      "text_markdown": "原子はいつも動いています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "原子はいつも動いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "text": "止まることはありません。",
+      "text_markdown": "止まることはありません。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "止まることはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "text": "絶対零度より高いどんな温度でも、原子はふるえたり、回転したり、空間を飛びまわったりしています。",
+      "text_markdown": "絶対零度より高いどんな温度でも、原子はふるえたり、回転したり、空間を飛びまわったりしています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "絶対零度より高いどんな温度でも、原子はふるえたり、回転したり、空間を飛びまわったりしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "text": "この動きが、わたしたちが感じる「熱」の正体です。",
+      "text_markdown": "この動きが、わたしたちが感じる「熱」の正体です。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "この動きが、わたしたちが感じる「熱」の正体です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "text": "固体の中では、原子はその場でふるえています。",
+      "text_markdown": "固体の中では、原子はその場でふるえています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "固体の中では、原子はその場でふるえています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "text": "決まった構造の中にロックされています。",
+      "text_markdown": "決まった構造の中にロックされています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "決まった構造の中にロックされています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "text": "前後にゆれますが、自分の位置からは動きません。",
+      "text_markdown": "前後にゆれますが、自分の位置からは動きません。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "前後にゆれますが、自分の位置からは動きません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "text": "だから固体は形を保つのです。",
+      "text_markdown": "だから固体は形を保つのです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "だから固体は形を保つのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "text": "氷のかたまりの中の原子はふるえていますが、きちんとした結晶のパターンを保っています。",
+      "text_markdown": "氷のかたまりの中の原子はふるえていますが、きちんとした結晶のパターンを保っています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "氷のかたまりの中の原子はふるえていますが、きちんとした結晶のパターンを保っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "text": "液体の中では、原子はもっと自由に動きます。",
+      "text_markdown": "液体の中では、原子はもっと自由に動きます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "液体の中では、原子はもっと自由に動きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "text": "原子はたがいのそばをすべるように動きます。",
+      "text_markdown": "原子はたがいのそばをすべるように動きます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "原子はたがいのそばをすべるように動きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "text": "近くにいますが、位置は決まっていません。",
+      "text_markdown": "近くにいますが、位置は決まっていません。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "近くにいますが、位置は決まっていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "text": "だから液体は流れるのです。",
+      "text_markdown": "だから液体は流れるのです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "だから液体は流れるのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "text": "コップの水の中の原子は、つねに動いたり並びかわったりしていますが、たがいに近くにいます。",
+      "text_markdown": "コップの水の中の原子は、つねに動いたり並びかわったりしていますが、たがいに近くにいます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "コップの水の中の原子は、つねに動いたり並びかわったりしていますが、たがいに近くにいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "text": "気体の中では、原子は速く動き、広がっていきます。",
+      "text_markdown": "気体の中では、原子は速く動き、広がっていきます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "気体の中では、原子は速く動き、広がっていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "text": "ほかの原子やかべにぶつかるまで、まっすぐ飛んでいきます。",
+      "text_markdown": "ほかの原子やかべにぶつかるまで、まっすぐ飛んでいきます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "ほかの原子やかべにぶつかるまで、まっすぐ飛んでいきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "text": "原子はたがいにぶつかって、向きを変えます。",
+      "text_markdown": "原子はたがいにぶつかって、向きを変えます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "原子はたがいにぶつかって、向きを変えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "text": "だから気体は、入れ物の形に広がるのです。",
+      "text_markdown": "だから気体は、入れ物の形に広がるのです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "だから気体は、入れ物の形に広がるのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "text": "部屋の中の空気の原子は、毎秒何百メートルもの速さで、あらゆる方向に飛びまわっています。",
+      "text_markdown": "部屋の中の空気の原子は、毎秒何百メートルもの速さで、あらゆる方向に飛びまわっています。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "部屋の中の空気の原子は、毎秒何百メートルもの速さで、あらゆる方向に飛びまわっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "text": "温度とは、原子がどれだけ速く動いているかを表すものです。",
+      "text_markdown": "温度とは、原子がどれだけ速く動いているかを表すものです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "温度とは、原子がどれだけ速く動いているかを表すものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "text": "熱いとは、原子が速く動いているということです。",
+      "text_markdown": "熱いとは、原子が速く動いているということです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "熱いとは、原子が速く動いているということです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "text": "冷たいとは、原子がゆっくり動いているということです。",
+      "text_markdown": "冷たいとは、原子がゆっくり動いているということです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "冷たいとは、原子がゆっくり動いているということです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "text": "コンロで水を温めるとき、あなたは水の分子をもっと速く動かしているのです。",
+      "text_markdown": "コンロで水を温めるとき、あなたは水の分子をもっと速く動かしているのです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "コンロで水を温めるとき、あなたは水の分子をもっと速く動かしているのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "text": "分子が十分に速く動くと、液体からぬけ出して蒸気になります。",
+      "text_markdown": "分子が十分に速く動くと、液体からぬけ出して蒸気になります。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "分子が十分に速く動くと、液体からぬけ出して蒸気になります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "text": "絶対零度は、ありうる最も低い温度です。",
+      "text_markdown": "絶対零度は、ありうる最も低い温度です。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "絶対零度は、ありうる最も低い温度です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "text": "それはマイナス二百七十三度（摂氏）くらいです。",
+      "text_markdown": "それはマイナス二百七十三度（摂氏）くらいです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "それはマイナスにひゃくななじゅうさんど、せっしくらいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "text": "絶対零度では、原子のエネルギーは最小になります。",
+      "text_markdown": "絶対零度では、原子のエネルギーは最小になります。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "絶対零度では、原子のエネルギーは最小になります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "text": "絶対零度より冷たいものはありません。",
+      "text_markdown": "絶対零度より冷たいものはありません。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "絶対零度より冷たいものはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p52",
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "text": "科学者たちは研究室で絶対零度にとても近づきましたが、ぴったり絶対零度に達した人はまだいません。",
+      "text_markdown": "科学者たちは研究室で絶対零度にとても近づきましたが、ぴったり絶対零度に達した人はまだいません。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "科学者たちは研究室で絶対零度にとても近づきましたが、ぴったり絶対零度に達した人はまだいません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "text": "気圧は、原子がものの表面にぶつかることで生まれます。",
+      "text_markdown": "気圧は、原子がものの表面にぶつかることで生まれます。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "気圧は、原子がものの表面にぶつかることで生まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "text": "タイヤの中の空気が外に押すのは、空気の分子がタイヤの内がわのかべにたえずぶつかっているからです。",
+      "text_markdown": "タイヤの中の空気が外に押すのは、空気の分子がタイヤの内がわのかべにたえずぶつかっているからです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "タイヤの中の空気が外に押すのは、空気の分子がタイヤの内がわのかべにたえずぶつかっているからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "text": "分子がもっと多いか、もっと速く動いていれば、圧力はもっと高くなります。",
+      "text_markdown": "分子がもっと多いか、もっと速く動いていれば、圧力はもっと高くなります。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "分子がもっと多いか、もっと速く動いていれば、圧力はもっと高くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "text": "だから、空気が熱いとタイヤがかたく感じるのです。",
+      "text_markdown": "だから、空気が熱いとタイヤがかたく感じるのです。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "だから、空気が熱いとタイヤがかたく感じるのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "heading",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "heading_level": 1,
+      "text": "原子はどこからきたのか",
+      "text_markdown": "原子はどこからきたのか",
+      "title": "原子はどこからきたのか"
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "text": "宇宙の水素とヘリウムは、ビッグバンの直後の数分間に作られました。",
+      "text_markdown": "宇宙の水素とヘリウムは、ビッグバンの直後の数分間に作られました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "宇宙の水素とヘリウムは、ビッグバンの直後の数分間に作られました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "text": "宇宙は約百三十八億年前に、信じられないほど熱くて密度の高い一点から始まりました。",
+      "text_markdown": "宇宙は約百三十八億年前に、信じられないほど熱くて密度の高い一点から始まりました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "宇宙はやくひゃくさんじゅうはちおくねんまえに、信じられないほど熱くて密度の高い一点から始まりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "text": "宇宙がふくらんで冷えていくうちに、陽子と中性子ができました。",
+      "text_markdown": "宇宙がふくらんで冷えていくうちに、陽子と中性子ができました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "宇宙がふくらんで冷えていくうちに、陽子と中性子ができました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "text": "その陽子と中性子が合わさって、最もかんたんな原子核ができました。",
+      "text_markdown": "その陽子と中性子が合わさって、最もかんたんな原子核ができました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "その陽子と中性子が合わさって、最もかんたんな原子核ができました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "text": "水素とヘリウムが最初の元素でした。",
+      "text_markdown": "水素とヘリウムが最初の元素でした。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "水素とヘリウムが最初の元素でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "text": "何百万年ものあいだ、宇宙は水素とヘリウムのガスの雲でした。",
+      "text_markdown": "何百万年ものあいだ、宇宙は水素とヘリウムのガスの雲でした。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "何百万年ものあいだ、宇宙は水素とヘリウムのガスの雲でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "text": "やがて重力がガスを引き寄せて、かたまりにしました。",
+      "text_markdown": "やがて重力がガスを引き寄せて、かたまりにしました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "やがて重力がガスを引き寄せて、かたまりにしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "text": "そのかたまりは、どんどん密度が高く、熱くなっていきました。",
+      "text_markdown": "そのかたまりは、どんどん密度が高く、熱くなっていきました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "そのかたまりは、どんどん密度が高く、熱くなっていきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "text": "かたまりの中心が約一千万度に達すると、核融合が始まりました。",
+      "text_markdown": "かたまりの中心が約一千万度に達すると、核融合が始まりました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "かたまりの中心が約一千万度に達すると、核融合が始まりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "text": "星が誕生したのです。",
+      "text_markdown": "星が誕生したのです。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "星が誕生したのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "text": "星は原子の工場です。",
+      "text_markdown": "星は原子の工場です。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "星は原子の工場です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "text": "星の中では、水素原子が融合してヘリウムになります。",
+      "text_markdown": "星の中では、水素原子が融合してヘリウムになります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "星の中では、水素原子が融合してヘリウムになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "text": "この核融合は、ばくだいなエネルギーを放出します。",
+      "text_markdown": "この核融合は、ばくだいなエネルギーを放出します。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "この核融合は、ばくだいなエネルギーを放出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "text": "そのエネルギーが、星を輝かせているのです。",
+      "text_markdown": "そのエネルギーが、星を輝かせているのです。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "そのエネルギーが、星を輝かせているのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "text": "わたしたちの太陽は、毎秒約六億トンの水素をヘリウムに変えています。",
+      "text_markdown": "わたしたちの太陽は、毎秒約六億トンの水素をヘリウムに変えています。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "わたしたちの太陽は、毎秒約六億トンの水素をヘリウムに変えています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "text": "大きな星は、より重い元素を作ります。",
+      "text_markdown": "大きな星は、より重い元素を作ります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "大きな星は、より重い元素を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "text": "星が水素を使い果たすと、次はヘリウムを融合して炭素を作り始めます。",
+      "text_markdown": "星が水素を使い果たすと、次はヘリウムを融合して炭素を作り始めます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "星が水素を使い果たすと、次はヘリウムを融合して炭素を作り始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "text": "次に炭素から酸素を作ります。",
+      "text_markdown": "次に炭素から酸素を作ります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "次に炭素から酸素を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "text": "次に酸素からケイ素を作ります。",
+      "text_markdown": "次に酸素からケイ素を作ります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "次に酸素からケイ素を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "text": "次にケイ素から鉄を作ります。",
+      "text_markdown": "次にケイ素から鉄を作ります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "次にケイ素から鉄を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "text": "それぞれの段階で、より重い元素ができます。",
+      "text_markdown": "それぞれの段階で、より重い元素ができます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "それぞれの段階で、より重い元素ができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "text": "鉄は、星がふつうの核融合で作ることのできる、最も重い元素です。",
+      "text_markdown": "鉄は、星がふつうの核融合で作ることのできる、最も重い元素です。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "鉄は、星がふつうの核融合で作ることのできる、最も重い元素です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "text": "鉄より重い元素は、巨大な星がばく発するときに作られます。",
+      "text_markdown": "鉄より重い元素は、巨大な星がばく発するときに作られます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "鉄より重い元素は、巨大な星がばく発するときに作られます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "text": "このばく発は「超新星」とよばれます。",
+      "text_markdown": "このばく発は「超新星」とよばれます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "このばく発は「超新星」とよばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "text": "超新星は、数秒のあいだに、太陽が一生のうちに出すよりも多くのエネルギーを放出します。",
+      "text_markdown": "超新星は、数秒のあいだに、太陽が一生のうちに出すよりも多くのエネルギーを放出します。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "超新星は、数秒のあいだに、太陽が一生のうちに出すよりも多くのエネルギーを放出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "text": "超新星のきわめて激しい条件のもとで、金、銀、プラチナ、ウランなどの元素が作られます。",
+      "text_markdown": "超新星のきわめて激しい条件のもとで、金、銀、プラチナ、ウランなどの元素が作られます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "超新星のきわめて激しい条件のもとで、金、銀、プラチナ、ウランなどの元素が作られます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "text": "ばく発によって、こうした重い元素は宇宙空間にまき散らされます。",
+      "text_markdown": "ばく発によって、こうした重い元素は宇宙空間にまき散らされます。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ばく発によって、こうした重い元素は宇宙空間にまき散らされます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "text": "重い元素は、水素やヘリウムのガスの雲と混ざり合います。",
+      "text_markdown": "重い元素は、水素やヘリウムのガスの雲と混ざり合います。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "重い元素は、水素やヘリウムのガスの雲と混ざり合います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "text": "やがて重力が、この豊かなガスを引き寄せて、新しい星や惑星を作ります。",
+      "text_markdown": "やがて重力が、この豊かなガスを引き寄せて、新しい星や惑星を作ります。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "やがて重力が、この豊かなガスを引き寄せて、新しい星や惑星を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "text": "わたしたちの太陽系は、こうした豊かな雲から約四十六億年前に生まれました。",
+      "text_markdown": "わたしたちの太陽系は、こうした豊かな雲から約四十六億年前に生まれました。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "わたしたちの太陽系は、こうした豊かな雲からやくよんじゅうろくおくねんまえに生まれました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "text": "あなたの体の中にある水素より重い原子はすべて、星の中で作られたものです。",
+      "text_markdown": "あなたの体の中にある水素より重い原子はすべて、星の中で作られたものです。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "あなたの体の中にある水素より重い原子はすべて、星の中で作られたものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "text": "あなたの骨の中のカルシウム。",
+      "text_markdown": "あなたの骨の中のカルシウム。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "あなたの骨の中のカルシウム。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "text": "あなたの血の中の鉄。",
+      "text_markdown": "あなたの血の中の鉄。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "あなたの血の中の鉄。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "text": "あなたの肌の中の炭素。",
+      "text_markdown": "あなたの肌の中の炭素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "あなたの肌の中の炭素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "text": "あなたは星のかけらでできているのです。",
+      "text_markdown": "あなたは星のかけらでできているのです。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "あなたは星のかけらでできているのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "text": "これは、たとえ話ではありません。",
+      "text_markdown": "これは、たとえ話ではありません。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "これは、たとえ話ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "text": "原子核物理学の事実です。",
+      "text_markdown": "原子核物理学の事実です。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "原子核物理学の事実です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "heading",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "heading_level": 1,
+      "text": "原子はすべてのもの",
+      "text_markdown": "原子はすべてのもの",
+      "title": "原子はすべてのもの"
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "text": "ここまでで、基本がわかりましたね。",
+      "text_markdown": "ここまでで、基本がわかりましたね。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "ここまでで、基本がわかりましたね。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "text": "すべてのものは原子でできています。",
+      "text_markdown": "すべてのものは原子でできています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "すべてのものは原子でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "text": "原子には陽子、中性子、電子がふくまれています。",
+      "text_markdown": "原子には陽子、中性子、電子がふくまれています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子には陽子、中性子、電子がふくまれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "text": "陽子の数が元素を決めます。",
+      "text_markdown": "陽子の数が元素を決めます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "陽子の数が元素を決めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "text": "原子は結びついて分子を作ります。",
+      "text_markdown": "原子は結びついて分子を作ります。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子は結びついて分子を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "text": "原子はいつも動いています。",
+      "text_markdown": "原子はいつも動いています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子はいつも動いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p63",
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "text": "星がわたしたちの世界を作る原子を生み出しました。",
+      "text_markdown": "星がわたしたちの世界を作る原子を生み出しました。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "星がわたしたちの世界を作る原子を生み出しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "text": "この知識は、化学、生物学、物理学、医学の基礎です。",
+      "text_markdown": "この知識は、化学、生物学、物理学、医学の基礎です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "この知識は、化学、生物学、物理学、医学の基礎です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "text": "すべての科学分野は、原子につながっています。",
+      "text_markdown": "すべての科学分野は、原子につながっています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "すべての科学分野は、原子につながっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "text": "お医者さんが薬を出すとき、その薬はあなたの体の分子と関わるように作られた、特別な原子の並び方をしています。",
+      "text_markdown": "お医者さんが薬を出すとき、その薬はあなたの体の分子と関わるように作られた、特別な原子の並び方をしています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "お医者さんが薬を出すとき、その薬はあなたの体の分子と関わるように作られた、特別な原子の並び方をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "text": "エンジニアが橋を作るとき、その橋の強さは鋼鉄の中の鉄原子の並び方にかかっています。",
+      "text_markdown": "エンジニアが橋を作るとき、その橋の強さは鋼鉄の中の鉄原子の並び方にかかっています。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "エンジニアが橋を作るとき、その橋の強さは鋼鉄の中の鉄原子の並び方にかかっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "text": "農家が作物を育てるとき、その作物は葉の中で空気中の炭素原子が水と日光と結びつくことで育ちます。",
+      "text_markdown": "農家が作物を育てるとき、その作物は葉の中で空気中の炭素原子が水と日光と結びつくことで育ちます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "農家が作物を育てるとき、その作物は葉の中で空気中の炭素原子が水と日光と結びつくことで育ちます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "text": "料理は化学です。",
+      "text_markdown": "料理は化学です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "料理は化学です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "text": "パンを焼くとき、熱が生地の中の原子を並びかえます。",
+      "text_markdown": "パンを焼くとき、熱が生地の中の原子を並びかえます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "パンを焼くとき、熱が生地の中の原子を並びかえます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "text": "タンパク質がほどけます。",
+      "text_markdown": "タンパク質がほどけます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "タンパク質がほどけます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "text": "砂糖がばらばらになって、新しく結びつきます。",
+      "text_markdown": "砂糖がばらばらになって、新しく結びつきます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "砂糖がばらばらになって、新しく結びつきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "text": "パンの皮の色や食感やおいしさを作る、新しい分子ができるのです。",
+      "text_markdown": "パンの皮の色や食感やおいしさを作る、新しい分子ができるのです。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "パンの皮の色や食感やおいしさを作る、新しい分子ができるのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "text": "すべてのレシピは、原子を並びかえるための指示書なのです。",
+      "text_markdown": "すべてのレシピは、原子を並びかえるための指示書なのです。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "すべてのレシピは、原子を並びかえるための指示書なのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "text": "呼吸も化学です。",
+      "text_markdown": "呼吸も化学です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "呼吸も化学です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "text": "あなたは酸素の分子を吸いこみます。",
+      "text_markdown": "あなたは酸素の分子を吸いこみます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "あなたは酸素の分子を吸いこみます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "text": "血液がその分子を細胞に届けます。",
+      "text_markdown": "血液がその分子を細胞に届けます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "血液がその分子を細胞に届けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "text": "細胞の中で、酸素原子が食べ物の炭素原子と結びつきます。",
+      "text_markdown": "細胞の中で、酸素原子が食べ物の炭素原子と結びつきます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "細胞の中で、酸素原子が食べ物の炭素原子と結びつきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "text": "この反応からエネルギーが生まれます。",
+      "text_markdown": "この反応からエネルギーが生まれます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "この反応からエネルギーが生まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "text": "あなたは炭素と酸素を二酸化炭素としてはき出します。",
+      "text_markdown": "あなたは炭素と酸素を二酸化炭素としてはき出します。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "あなたは炭素と酸素を二酸化炭素としてはき出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "text": "ひと息ひと息が、化学反応なのです。",
+      "text_markdown": "ひと息ひと息が、化学反応なのです。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "ひと息ひと息が、化学反応なのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "text": "さびも化学です。",
+      "text_markdown": "さびも化学です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "さびも化学です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "text": "くぎの表面の鉄原子が、空気中の酸素原子と反応します。",
+      "text_markdown": "くぎの表面の鉄原子が、空気中の酸素原子と反応します。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "くぎの表面の鉄原子が、空気中の酸素原子と反応します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "text": "鉄と酸素が結びついて、酸化鉄という新しい物質ができます。",
+      "text_markdown": "鉄と酸素が結びついて、酸化鉄という新しい物質ができます。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "鉄と酸素が結びついて、酸化鉄という新しい物質ができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "text": "酸化鉄は、わたしたちが「さび」とよぶ赤茶色の物質です。",
+      "text_markdown": "酸化鉄は、わたしたちが「さび」とよぶ赤茶色の物質です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "酸化鉄は、わたしたちが「さび」とよぶ赤茶色の物質です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "text": "鉄の原子はまだそこにあります。",
+      "text_markdown": "鉄の原子はまだそこにあります。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "鉄の原子はまだそこにあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "text": "ただ、酸素と結びついただけなのです。",
+      "text_markdown": "ただ、酸素と結びついただけなのです。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "ただ、酸素と結びついただけなのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "text": "原子はむずかしい話ではありません。",
+      "text_markdown": "原子はむずかしい話ではありません。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子はむずかしい話ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "text": "原子は、あなたが触れたり、味わったり、見たり、においをかいだりするすべてのものの、本当の姿です。",
+      "text_markdown": "原子は、あなたが触れたり、味わったり、見たり、においをかいだりするすべてのものの、本当の姿です。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子は、あなたが触れたり、味わったり、見たり、においをかいだりするすべてのものの、本当の姿です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "text": "原子をもっとよく知れば知るほど、世界がもっとよくわかるようになります。",
+      "text_markdown": "原子をもっとよく知れば知るほど、世界がもっとよくわかるようになります。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子をもっとよく知れば知るほど、世界がもっとよくわかるようになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "text": "これは始まりにすぎません。",
+      "text_markdown": "これは始まりにすぎません。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "これは始まりにすぎません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "text": "まだまだ探検することがたくさんあります。",
+      "text_markdown": "まだまだ探検することがたくさんあります。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "まだまだ探検することがたくさんあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

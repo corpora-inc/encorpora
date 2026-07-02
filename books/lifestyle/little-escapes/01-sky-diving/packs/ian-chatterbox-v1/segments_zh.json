@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "心之所向",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "心之所向",
+      "text_markdown": "心之所向"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有那么一个瞬间,就在你离开飞机之后,我多希望能把它免费送给你。",
+      "text_markdown": "有那么一个瞬间,就在你离开飞机之后,我多希望能把它免费送给你。",
+      "tts": {
+        "text": "有那么一个瞬间,就在你离开飞机之后,我多希望能把它免费送给你。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界不再是一个你居住其中的东西。",
+      "text_markdown": "世界不再是一个你居住其中的东西。",
+      "tts": {
+        "text": "世界不再是一个你居住其中的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它变成了一个你穿越坠落的东西。",
+      "text_markdown": "它变成了一个你穿越坠落的东西。",
+      "tts": {
+        "text": "它变成了一个你穿越坠落的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在最初的几秒里,你的头脑还来不及跟上你身体刚刚做出的事。",
+      "text_markdown": "在最初的几秒里,你的头脑还来不及跟上你身体刚刚做出的事。",
+      "tts": {
+        "text": "在最初的几秒里,你的头脑还来不及跟上你身体刚刚做出的事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们问我为什么要跳伞。",
+      "text_markdown": "人们问我为什么要跳伞。",
+      "tts": {
+        "text": "人们问我为什么要跳伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们总以为我会说,是为了那股冲劲。",
+      "text_markdown": "他们总以为我会说,是为了那股冲劲。",
+      "tts": {
+        "text": "他们总以为我会说,是为了那股冲劲。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "并不是那股冲劲。",
+      "text_markdown": "并不是那股冲劲。",
+      "tts": {
+        "text": "并不是那股冲劲。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那股冲劲是你在头五次跳伞时才会有的感觉。",
+      "text_markdown": "那股冲劲是你在头五次跳伞时才会有的感觉。",
+      "tts": {
+        "text": "那股冲劲是你在头五次跳伞时才会有的感觉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "在那之后,有一种更安静的东西取而代之。",
+      "text_markdown": "在那之后,有一种更安静的东西取而代之。",
+      "tts": {
+        "text": "在那之后,有一种更安静的东西取而代之。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我所追寻的,是那份清明。",
+      "text_markdown": "我所追寻的,是那份清明。",
+      "tts": {
+        "text": "我所追寻的,是那份清明。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在六十秒的自由落体里,你的头脑无事可做。",
+      "text_markdown": "在六十秒的自由落体里,你的头脑无事可做。",
+      "tts": {
+        "text": "在六十秒的自由落体里,你的头脑无事可做。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有手机。",
+      "text_markdown": "没有手机。",
+      "tts": {
+        "text": "没有手机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有账单。",
+      "text_markdown": "没有账单。",
+      "tts": {
+        "text": "没有账单。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "没有对明天的小小忧虑。",
+      "text_markdown": "没有对明天的小小忧虑。",
+      "tts": {
+        "text": "没有对明天的小小忧虑。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "只有风、你的呼吸,以及你脚下大地缓缓的弧线。",
+      "text_markdown": "只有风、你的呼吸,以及你脚下大地缓缓的弧线。",
+      "tts": {
+        "text": "只有风、你的呼吸,以及你脚下大地缓缓的弧线。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "生活的大部分都很嘈杂。",
+      "text_markdown": "生活的大部分都很嘈杂。",
+      "tts": {
+        "text": "生活的大部分都很嘈杂。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "那一分钟却不是。",
+      "text_markdown": "那一分钟却不是。",
+      "tts": {
+        "text": "那一分钟却不是。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "跳伞员并不疯狂。",
+      "text_markdown": "跳伞员并不疯狂。",
+      "tts": {
+        "text": "跳伞员并不疯狂。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我们大多是平静的人,只是找到了一种更快感到平静的方式。",
+      "text_markdown": "我们大多是平静的人,只是找到了一种更快感到平静的方式。",
+      "tts": {
+        "text": "我们大多是平静的人,只是找到了一种更快感到平静的方式。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们跳出飞机的方式,就像别人冥想一样。",
+      "text_markdown": "我们跳出飞机的方式,就像别人冥想一样。",
+      "tts": {
+        "text": "我们跳出飞机的方式,就像别人冥想一样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它清理了某些东西。",
+      "text_markdown": "它清理了某些东西。",
+      "tts": {
+        "text": "它清理了某些东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "然后,每个周末,它再一次把它清理干净。",
+      "text_markdown": "然后,每个周末,它再一次把它清理干净。",
+      "tts": {
+        "text": "然后,每个周末,它再一次把它清理干净。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我第一次看到降落伞在头顶打开时,在安全带里哭了。",
+      "text_markdown": "我第一次看到降落伞在头顶打开时,在安全带里哭了。",
+      "tts": {
+        "text": "我第一次看到降落伞在头顶打开时,在安全带里哭了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我没料到自己会哭。",
+      "text_markdown": "我没料到自己会哭。",
+      "tts": {
+        "text": "我没料到自己会哭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一个成年人,挂在天空里,在一块柔软的方形布料下,毫无理由地流着泪。",
+      "text_markdown": "一个成年人,挂在天空里,在一块柔软的方形布料下,毫无理由地流着泪。",
+      "tts": {
+        "text": "一个成年人,挂在天空里,在一块柔软的方形布料下,毫无理由地流着泪。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我的教练温和地笑了笑,拍了拍我的肩膀。",
+      "text_markdown": "我的教练温和地笑了笑,拍了拍我的肩膀。",
+      "tts": {
+        "text": "我的教练温和地笑了笑,拍了拍我的肩膀。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他见过很多次了。",
+      "text_markdown": "他见过很多次了。",
+      "tts": {
+        "text": "他见过很多次了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "就在那一刻,我知道我还会回来。",
+      "text_markdown": "就在那一刻,我知道我还会回来。",
+      "tts": {
+        "text": "就在那一刻,我知道我还会回来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "跳伞无关勇敢。",
+      "text_markdown": "跳伞无关勇敢。",
+      "tts": {
+        "text": "跳伞无关勇敢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它关乎找到那一处让你的头脑安静下来的地方。",
+      "text_markdown": "它关乎找到那一处让你的头脑安静下来的地方。",
+      "tts": {
+        "text": "它关乎找到那一处让你的头脑安静下来的地方。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对一些人来说,那个地方是一张瑜伽垫。",
+      "text_markdown": "对一些人来说,那个地方是一张瑜伽垫。",
+      "tts": {
+        "text": "对一些人来说,那个地方是一张瑜伽垫。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "对一些人来说,是空旷路上的一段长跑。",
+      "text_markdown": "对一些人来说,是空旷路上的一段长跑。",
+      "tts": {
+        "text": "对一些人来说,是空旷路上的一段长跑。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "对一些人来说,是一根钓鱼线、一架钢琴,或是清晨六点的厨房。",
+      "text_markdown": "对一些人来说,是一根钓鱼线、一架钢琴,或是清晨六点的厨房。",
+      "tts": {
+        "text": "对一些人来说,是一根钓鱼线、一架钢琴,或是清晨六点的厨房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "对我来说,是离地一万三千英尺的高空,无事可做,只剩呼吸。",
+      "text_markdown": "对我来说,是离地一万三千英尺的高空,无事可做,只剩呼吸。",
+      "tts": {
+        "text": "对我来说,是离地一万三千英尺的高空,无事可做,只剩呼吸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那种牵引,一旦你感受过,就很难在晚餐时向朋友描述。",
+      "text_markdown": "那种牵引,一旦你感受过,就很难在晚餐时向朋友描述。",
+      "tts": {
+        "text": "那种牵引,一旦你感受过,就很难在晚餐时向朋友描述。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你会试着说,他们会礼貌地微笑,然后你就会放弃。",
+      "text_markdown": "你会试着说,他们会礼貌地微笑,然后你就会放弃。",
+      "tts": {
+        "text": "你会试着说,他们会礼貌地微笑,然后你就会放弃。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那也没关系。",
+      "text_markdown": "那也没关系。",
+      "tts": {
+        "text": "那也没关系。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你开始跳伞,本来就不是为了解释它。",
+      "text_markdown": "你开始跳伞,本来就不是为了解释它。",
+      "tts": {
+        "text": "你开始跳伞,本来就不是为了解释它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你开始跳伞,是因为第一次尝试时,你内心有个声音说,啊,你在这里啊。",
+      "text_markdown": "你开始跳伞,是因为第一次尝试时,你内心有个声音说,啊,你在这里啊。",
+      "tts": {
+        "text": "你开始跳伞,是因为第一次尝试时,你内心有个声音说,啊,你在这里啊。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你有没有曾经站在某个高处的边缘,感到身体微微向开阔的空气倾去?",
+      "text_markdown": "你有没有曾经站在某个高处的边缘,感到身体微微向开阔的空气倾去?",
+      "tts": {
+        "text": "你有没有曾经站在某个高处的边缘,感到身体微微向开阔的空气倾去?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "只是轻轻一倾,只是一瞬间。",
+      "text_markdown": "只是轻轻一倾,只是一瞬间。",
+      "tts": {
+        "text": "只是轻轻一倾,只是一瞬间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "如果有过,你已经懂得我在说什么了。",
+      "text_markdown": "如果有过,你已经懂得我在说什么了。",
+      "tts": {
+        "text": "如果有过,你已经懂得我在说什么了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "跳伞,就是当你不再假装自己没有在倾斜时,所发生的事。",
+      "text_markdown": "跳伞,就是当你不再假装自己没有在倾斜时,所发生的事。",
+      "tts": {
+        "text": "跳伞,就是当你不再假装自己没有在倾斜时,所发生的事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你有意识地走出去,走进那个你的身体多年来一直默默询问的地方。",
+      "text_markdown": "你有意识地走出去,走进那个你的身体多年来一直默默询问的地方。",
+      "tts": {
+        "text": "你有意识地走出去,走进那个你的身体多年来一直默默询问的地方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后你很快就会明白,恐惧从来都不在地面那里。",
+      "text_markdown": "然后你很快就会明白,恐惧从来都不在地面那里。",
+      "tts": {
+        "text": "然后你很快就会明白,恐惧从来都不在地面那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "恐惧是在那一倾之中。",
+      "text_markdown": "恐惧是在那一倾之中。",
+      "tts": {
+        "text": "恐惧是在那一倾之中。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一旦你跳下去,恐惧就消失了。",
+      "text_markdown": "一旦你跳下去,恐惧就消失了。",
+      "tts": {
+        "text": "一旦你跳下去,恐惧就消失了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "剩下的,几乎像是回家的感觉。",
+      "text_markdown": "剩下的,几乎像是回家的感觉。",
+      "tts": {
+        "text": "剩下的,几乎像是回家的感觉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你的心跳慢下来。",
+      "text_markdown": "你的心跳慢下来。",
+      "tts": {
+        "text": "你的心跳慢下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你的呼吸找到了它一直在寻找的节奏。",
+      "text_markdown": "你的呼吸找到了它一直在寻找的节奏。",
+      "tts": {
+        "text": "你的呼吸找到了它一直在寻找的节奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "空气托住你。",
+      "text_markdown": "空气托住你。",
+      "tts": {
+        "text": "空气托住你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "你感到,也许是很久以来第一次,你正好就在你所在之处。",
+      "text_markdown": "你感到,也许是很久以来第一次,你正好就在你所在之处。",
+      "tts": {
+        "text": "你感到,也许是很久以来第一次,你正好就在你所在之处。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你在一段长长的散步中问我,我就会这样告诉你。",
+      "text_markdown": "如果你在一段长长的散步中问我,我就会这样告诉你。",
+      "tts": {
+        "text": "如果你在一段长长的散步中问我,我就会这样告诉你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "为什么一个冷静而理智的人,会一次次跳出完好无损的飞机?",
+      "text_markdown": "为什么一个冷静而理智的人,会一次次跳出完好无损的飞机?",
+      "tts": {
+        "text": "为什么一个冷静而理智的人,会一次次跳出完好无损的飞机?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我会告诉你,这是我做过的最安静的事。",
+      "text_markdown": "我会告诉你,这是我做过的最安静的事。",
+      "tts": {
+        "text": "我会告诉你,这是我做过的最安静的事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "而且我是认真的。",
+      "text_markdown": "而且我是认真的。",
+      "tts": {
+        "text": "而且我是认真的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "第一次",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "第一次",
+      "text_markdown": "第一次"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让我把你放进飞机里。",
+      "text_markdown": "让我把你放进飞机里。",
+      "tts": {
+        "text": "让我把你放进飞机里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你坐在一条低矮的金属长凳上,身后绑着一位教练,与你同体相连。",
+      "text_markdown": "你坐在一条低矮的金属长凳上,身后绑着一位教练,与你同体相连。",
+      "tts": {
+        "text": "你坐在一条低矮的金属长凳上,身后绑着一位教练,与你同体相连。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "飞机缓慢、懒洋洋地盘旋上升。",
+      "text_markdown": "飞机缓慢、懒洋洋地盘旋上升。",
+      "tts": {
+        "text": "飞机缓慢、懒洋洋地盘旋上升。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你身边那扇小小的方形舷窗,变得越来越蓝。",
+      "text_markdown": "你身边那扇小小的方形舷窗,变得越来越蓝。",
+      "tts": {
+        "text": "你身边那扇小小的方形舷窗,变得越来越蓝。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你能感到自己的心跳到了喉咙里,但你并不慌乱。",
+      "text_markdown": "你能感到自己的心跳到了喉咙里,但你并不慌乱。",
+      "tts": {
+        "text": "你能感到自己的心跳到了喉咙里,但你并不慌乱。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你只是非常、非常清醒。",
+      "text_markdown": "你只是非常、非常清醒。",
+      "tts": {
+        "text": "你只是非常、非常清醒。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "教练把脸凑近你的耳朵。",
+      "text_markdown": "教练把脸凑近你的耳朵。",
+      "tts": {
+        "text": "教练把脸凑近你的耳朵。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他平静地告诉你,你需要做的每一件事,他都会在合适的时候告诉你。",
+      "text_markdown": "他平静地告诉你,你需要做的每一件事,他都会在合适的时候告诉你。",
+      "tts": {
+        "text": "他平静地告诉你,你需要做的每一件事,他都会在合适的时候告诉你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你点点头。",
+      "text_markdown": "你点点头。",
+      "tts": {
+        "text": "你点点头。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在过去的一个小时里,你点了太多次头,脖子开始发酸。",
+      "text_markdown": "在过去的一个小时里,你点了太多次头,脖子开始发酸。",
+      "tts": {
+        "text": "在过去的一个小时里,你点了太多次头,脖子开始发酸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后舱门打开了。",
+      "text_markdown": "然后舱门打开了。",
+      "tts": {
+        "text": "然后舱门打开了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风像一堵墙一样涌进来,响亮、寒冷而活生生,飞机一下子显得很小。",
+      "text_markdown": "风像一堵墙一样涌进来,响亮、寒冷而活生生,飞机一下子显得很小。",
+      "tts": {
+        "text": "风像一堵墙一样涌进来,响亮、寒冷而活生生,飞机一下子显得很小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你挪到边缘。",
+      "text_markdown": "你挪到边缘。",
+      "tts": {
+        "text": "你挪到边缘。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你的脚趾悬在虚空中。",
+      "text_markdown": "你的脚趾悬在虚空中。",
+      "tts": {
+        "text": "你的脚趾悬在虚空中。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你向下看,地面离得那么远,看上去已经不像地面了。",
+      "text_markdown": "你向下看,地面离得那么远,看上去已经不像地面了。",
+      "tts": {
+        "text": "你向下看,地面离得那么远,看上去已经不像地面了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它像一床拼布被。",
+      "text_markdown": "它像一床拼布被。",
+      "tts": {
+        "text": "它像一床拼布被。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "细如丝线的道路。",
+      "text_markdown": "细如丝线的道路。",
+      "tts": {
+        "text": "细如丝线的道路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "一条暗银色的河流。",
+      "text_markdown": "一条暗银色的河流。",
+      "tts": {
+        "text": "一条暗银色的河流。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "由树篱缝合在一起的小小的绿色和棕色田野。",
+      "text_markdown": "由树篱缝合在一起的小小的绿色和棕色田野。",
+      "tts": {
+        "text": "由树篱缝合在一起的小小的绿色和棕色田野。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你的教练开始数。",
+      "text_markdown": "你的教练开始数。",
+      "tts": {
+        "text": "你的教练开始数。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他说,一。",
+      "text_markdown": "他说,一。",
+      "tts": {
+        "text": "他说,一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他说,二。",
+      "text_markdown": "他说,二。",
+      "tts": {
+        "text": "他说,二。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到三的时候,飞机已经不见了。",
+      "text_markdown": "到三的时候,飞机已经不见了。",
+      "tts": {
+        "text": "到三的时候,飞机已经不见了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初的三秒最难熬。",
+      "text_markdown": "最初的三秒最难熬。",
+      "tts": {
+        "text": "最初的三秒最难熬。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你的身体相信它正在坠落,因为它确实在坠落,而你的身体从来没被告知过这是没事的。",
+      "text_markdown": "你的身体相信它正在坠落,因为它确实在坠落,而你的身体从来没被告知过这是没事的。",
+      "tts": {
+        "text": "你的身体相信它正在坠落,因为它确实在坠落,而你的身体从来没被告知过这是没事的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你发出了一个声音。",
+      "text_markdown": "你发出了一个声音。",
+      "tts": {
+        "text": "你发出了一个声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每个人都会发出一个声音。",
+      "text_markdown": "每个人都会发出一个声音。",
+      "tts": {
+        "text": "每个人都会发出一个声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "没必要为那个声音感到难为情。",
+      "text_markdown": "没必要为那个声音感到难为情。",
+      "tts": {
+        "text": "没必要为那个声音感到难为情。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后,某种非凡的事情发生了。",
+      "text_markdown": "然后,某种非凡的事情发生了。",
+      "tts": {
+        "text": "然后,某种非凡的事情发生了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "下坠不再像下坠。",
+      "text_markdown": "下坠不再像下坠。",
+      "tts": {
+        "text": "下坠不再像下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "风迎上来托住你,就像你仰面漂浮时,水托住你一样。",
+      "text_markdown": "风迎上来托住你,就像你仰面漂浮时,水托住你一样。",
+      "tts": {
+        "text": "风迎上来托住你,就像你仰面漂浮时,水托住你一样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你的双臂双腿不需你下令就自己舒展开来。",
+      "text_markdown": "你的双臂双腿不需你下令就自己舒展开来。",
+      "tts": {
+        "text": "你的双臂双腿不需你下令就自己舒展开来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你的脸感觉像被许多方向同时拉扯。",
+      "text_markdown": "你的脸感觉像被许多方向同时拉扯。",
+      "tts": {
+        "text": "你的脸感觉像被许多方向同时拉扯。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你分不清自己是在微笑还是在尖叫。",
+      "text_markdown": "你分不清自己是在微笑还是在尖叫。",
+      "tts": {
+        "text": "你分不清自己是在微笑还是在尖叫。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "那都不重要。",
+      "text_markdown": "那都不重要。",
+      "tts": {
+        "text": "那都不重要。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你环顾四周。",
+      "text_markdown": "你环顾四周。",
+      "tts": {
+        "text": "你环顾四周。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "大地仍然在你脚下很远的地方,但已经更近了,你能更清晰地看到颜色。",
+      "text_markdown": "大地仍然在你脚下很远的地方,但已经更近了,你能更清晰地看到颜色。",
+      "tts": {
+        "text": "大地仍然在你脚下很远的地方,但已经更近了,你能更清晰地看到颜色。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高速公路上的汽车,慢得像蚂蚁。",
+      "text_markdown": "高速公路上的汽车,慢得像蚂蚁。",
+      "tts": {
+        "text": "高速公路上的汽车,慢得像蚂蚁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一片湖,平静无波。",
+      "text_markdown": "一片湖,平静无波。",
+      "tts": {
+        "text": "一片湖,平静无波。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "云的影子,飘过一片森林。",
+      "text_markdown": "云的影子,飘过一片森林。",
+      "tts": {
+        "text": "云的影子,飘过一片森林。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你在飞。",
+      "text_markdown": "你在飞。",
+      "tts": {
+        "text": "你在飞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不是坐在飞机里。",
+      "text_markdown": "不是坐在飞机里。",
+      "tts": {
+        "text": "不是坐在飞机里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你,你的身体,正在飞翔。",
+      "text_markdown": "你,你的身体,正在飞翔。",
+      "tts": {
+        "text": "你,你的身体,正在飞翔。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你的教练拍了拍你的肩膀。",
+      "text_markdown": "你的教练拍了拍你的肩膀。",
+      "tts": {
+        "text": "你的教练拍了拍你的肩膀。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你拉下开伞索。",
+      "text_markdown": "你拉下开伞索。",
+      "tts": {
+        "text": "你拉下开伞索。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有一次轻柔的拽动,像有人轻轻抓住你后衣领。",
+      "text_markdown": "有一次轻柔的拽动,像有人轻轻抓住你后衣领。",
+      "tts": {
+        "text": "有一次轻柔的拽动,像有人轻轻抓住你后衣领。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "然后第二次更用力的拽动,把你拉成竖直的姿势。",
+      "text_markdown": "然后第二次更用力的拽动,把你拉成竖直的姿势。",
+      "tts": {
+        "text": "然后第二次更用力的拽动,把你拉成竖直的姿势。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界静下来了。",
+      "text_markdown": "世界静下来了。",
+      "tts": {
+        "text": "世界静下来了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风没了。",
+      "text_markdown": "风没了。",
+      "tts": {
+        "text": "风没了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "轰鸣没了。",
+      "text_markdown": "轰鸣没了。",
+      "tts": {
+        "text": "轰鸣没了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "下坠没了。",
+      "text_markdown": "下坠没了。",
+      "tts": {
+        "text": "下坠没了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你现在悬挂着,在安全带里,在一块宽阔的长方形布料下面。",
+      "text_markdown": "你现在悬挂着,在安全带里,在一块宽阔的长方形布料下面。",
+      "tts": {
+        "text": "你现在悬挂着,在安全带里,在一块宽阔的长方形布料下面。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "天空忽然变得非常、非常安静。",
+      "text_markdown": "天空忽然变得非常、非常安静。",
+      "tts": {
+        "text": "天空忽然变得非常、非常安静。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你能听见你下方的鸟。",
+      "text_markdown": "你能听见你下方的鸟。",
+      "tts": {
+        "text": "你能听见你下方的鸟。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "你能听见自己的呼吸。",
+      "text_markdown": "你能听见自己的呼吸。",
+      "tts": {
+        "text": "你能听见自己的呼吸。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "你的教练在你耳边笑出声,问你感觉怎么样。",
+      "text_markdown": "你的教练在你耳边笑出声,问你感觉怎么样。",
+      "tts": {
+        "text": "你的教练在你耳边笑出声,问你感觉怎么样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "你一时答不上来,因为你正在哭,或者笑,或者两者都有。",
+      "text_markdown": "你一时答不上来,因为你正在哭,或者笑,或者两者都有。",
+      "tts": {
+        "text": "你一时答不上来,因为你正在哭,或者笑,或者两者都有。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "伞衣下的滑翔大约要五分钟。",
+      "text_markdown": "伞衣下的滑翔大约要五分钟。",
+      "tts": {
+        "text": "伞衣下的滑翔大约要五分钟。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那是你这辈子最平静的五分钟。",
+      "text_markdown": "那是你这辈子最平静的五分钟。",
+      "tts": {
+        "text": "那是你这辈子最平静的五分钟。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你的脚触到地面时,你向前小跑了三步,就停下来。",
+      "text_markdown": "当你的脚触到地面时,你向前小跑了三步,就停下来。",
+      "tts": {
+        "text": "当你的脚触到地面时,你向前小跑了三步,就停下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "草地又变得真实了。",
+      "text_markdown": "草地又变得真实了。",
+      "tts": {
+        "text": "草地又变得真实了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界又变得坚实了。",
+      "text_markdown": "世界又变得坚实了。",
+      "tts": {
+        "text": "世界又变得坚实了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你转过身,抬头望向天空。",
+      "text_markdown": "你转过身,抬头望向天空。",
+      "tts": {
+        "text": "你转过身,抬头望向天空。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你第一次明白,你的朋友这些年来一直想告诉你的是什么。",
+      "text_markdown": "你第一次明白,你的朋友这些年来一直想告诉你的是什么。",
+      "tts": {
+        "text": "你第一次明白,你的朋友这些年来一直想告诉你的是什么。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "迈出第一步",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "迈出第一步",
+      "text_markdown": "迈出第一步"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那么,如果有一天你决定要试试,你究竟要怎么做。",
+      "text_markdown": "那么,如果有一天你决定要试试,你究竟要怎么做。",
+      "tts": {
+        "text": "那么,如果有一天你决定要试试,你究竟要怎么做。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "诚实的回答是,比你想的容易。",
+      "text_markdown": "诚实的回答是,比你想的容易。",
+      "tts": {
+        "text": "诚实的回答是,比你想的容易。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界上几乎任何一个跳伞区,都会在当天上午接待一个完全的新手。",
+      "text_markdown": "世界上几乎任何一个跳伞区,都会在当天上午接待一个完全的新手。",
+      "tts": {
+        "text": "世界上几乎任何一个跳伞区,都会在当天上午接待一个完全的新手。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们会让你做一次双人跳伞,把你和一位教练绑在一起送上天空。",
+      "text_markdown": "他们会让你做一次双人跳伞,把你和一位教练绑在一起送上天空。",
+      "tts": {
+        "text": "他们会让你做一次双人跳伞,把你和一位教练绑在一起送上天空。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你到达,签署文件,看一段简短的视频,见到你的教练。",
+      "text_markdown": "你到达,签署文件,看一段简短的视频,见到你的教练。",
+      "tts": {
+        "text": "你到达,签署文件,看一段简短的视频,见到你的教练。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你穿上跳伞服和安全带。",
+      "text_markdown": "你穿上跳伞服和安全带。",
+      "tts": {
+        "text": "你穿上跳伞服和安全带。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你登上飞机。",
+      "text_markdown": "你登上飞机。",
+      "tts": {
+        "text": "你登上飞机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "大约二十分钟后,你正穿过草地走回来,脸上是这辈子最灿烂的笑容。",
+      "text_markdown": "大约二十分钟后,你正穿过草地走回来,脸上是这辈子最灿烂的笑容。",
+      "tts": {
+        "text": "大约二十分钟后,你正穿过草地走回来,脸上是这辈子最灿烂的笑容。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对于你的第一次跳伞,你不需要勇敢。",
+      "text_markdown": "对于你的第一次跳伞,你不需要勇敢。",
+      "tts": {
+        "text": "对于你的第一次跳伞,你不需要勇敢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你只需要愿意。",
+      "text_markdown": "你只需要愿意。",
+      "tts": {
+        "text": "你只需要愿意。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "教练会做一切。",
+      "text_markdown": "教练会做一切。",
+      "tts": {
+        "text": "教练会做一切。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他来拉降落伞。",
+      "text_markdown": "他来拉降落伞。",
+      "tts": {
+        "text": "他来拉降落伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他来驾驶伞衣。",
+      "text_markdown": "他来驾驶伞衣。",
+      "tts": {
+        "text": "他来驾驶伞衣。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他来带你着陆。",
+      "text_markdown": "他来带你着陆。",
+      "tts": {
+        "text": "他来带你着陆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "你只是一同前往,坐着世界上最棒的座位。",
+      "text_markdown": "你只是一同前往,坐着世界上最棒的座位。",
+      "tts": {
+        "text": "你只是一同前往,坐着世界上最棒的座位。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果第一次跳伞之后,你有兴趣自己跳,这条路叫做加速自由落体训练。",
+      "text_markdown": "如果第一次跳伞之后,你有兴趣自己跳,这条路叫做加速自由落体训练。",
+      "tts": {
+        "text": "如果第一次跳伞之后,你有兴趣自己跳,这条路叫做加速自由落体训练。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一个训练课程,每个跳伞区都开,教你如何成为一名真正的跳伞员。",
+      "text_markdown": "这是一个训练课程,每个跳伞区都开,教你如何成为一名真正的跳伞员。",
+      "tts": {
+        "text": "这是一个训练课程,每个跳伞区都开,教你如何成为一名真正的跳伞员。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "不是乘客。",
+      "text_markdown": "不是乘客。",
+      "tts": {
+        "text": "不是乘客。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "而是空中你自己身体的驾驶员。",
+      "text_markdown": "而是空中你自己身体的驾驶员。",
+      "tts": {
+        "text": "而是空中你自己身体的驾驶员。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "课程的第一关,是漫长的一整天教室课。",
+      "text_markdown": "课程的第一关,是漫长的一整天教室课。",
+      "tts": {
+        "text": "课程的第一关,是漫长的一整天教室课。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你学习如何下坠。",
+      "text_markdown": "你学习如何下坠。",
+      "tts": {
+        "text": "你学习如何下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你学习如何看你的高度表。",
+      "text_markdown": "你学习如何看你的高度表。",
+      "tts": {
+        "text": "你学习如何看你的高度表。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你学习如果主伞没打开该怎么办。",
+      "text_markdown": "你学习如果主伞没打开该怎么办。",
+      "tts": {
+        "text": "你学习如果主伞没打开该怎么办。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "教室那一天大约要六到七个小时。",
+      "text_markdown": "教室那一天大约要六到七个小时。",
+      "tts": {
+        "text": "教室那一天大约要六到七个小时。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "结束时,你对降落伞的了解,已经超过大多数人一辈子所学的。",
+      "text_markdown": "结束时,你对降落伞的了解,已经超过大多数人一辈子所学的。",
+      "tts": {
+        "text": "结束时,你对降落伞的了解,已经超过大多数人一辈子所学的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后是你的第一次单人跳。",
+      "text_markdown": "然后是你的第一次单人跳。",
+      "tts": {
+        "text": "然后是你的第一次单人跳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "两位教练和你一起跳,一边一个,抓着你的安全带。",
+      "text_markdown": "两位教练和你一起跳,一边一个,抓着你的安全带。",
+      "tts": {
+        "text": "两位教练和你一起跳,一边一个,抓着你的安全带。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "等你姿势稳定了,他们就在自由落体中放开你。",
+      "text_markdown": "等你姿势稳定了,他们就在自由落体中放开你。",
+      "tts": {
+        "text": "等你姿势稳定了,他们就在自由落体中放开你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你自己拉开自己的降落伞。",
+      "text_markdown": "你自己拉开自己的降落伞。",
+      "tts": {
+        "text": "你自己拉开自己的降落伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你自己驾驶你的伞衣降到地面。",
+      "text_markdown": "你自己驾驶你的伞衣降到地面。",
+      "tts": {
+        "text": "你自己驾驶你的伞衣降到地面。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你第一次这样做的时候,第二天你的脸会因为笑得太用力而发酸。",
+      "text_markdown": "你第一次这样做的时候,第二天你的脸会因为笑得太用力而发酸。",
+      "tts": {
+        "text": "你第一次这样做的时候,第二天你的脸会因为笑得太用力而发酸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "完整的训练课程会带你跳大约七次。",
+      "text_markdown": "完整的训练课程会带你跳大约七次。",
+      "tts": {
+        "text": "完整的训练课程会带你跳大约七次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "课程结束时,你已经在独自跳伞了。",
+      "text_markdown": "课程结束时,你已经在独自跳伞了。",
+      "tts": {
+        "text": "课程结束时,你已经在独自跳伞了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "从那以后,跳伞员通常会在接下来的一年里完成自己的前一百次跳伞。",
+      "text_markdown": "从那以后,跳伞员通常会在接下来的一年里完成自己的前一百次跳伞。",
+      "tts": {
+        "text": "从那以后,跳伞员通常会在接下来的一年里完成自己的前一百次跳伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在这个过程中,他们学会与其他跳伞员相对飞行。",
+      "text_markdown": "在这个过程中,他们学会与其他跳伞员相对飞行。",
+      "tts": {
+        "text": "在这个过程中,他们学会与其他跳伞员相对飞行。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他们学会在天空中长距离移动。",
+      "text_markdown": "他们学会在天空中长距离移动。",
+      "tts": {
+        "text": "他们学会在天空中长距离移动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们学会自己折叠降落伞。",
+      "text_markdown": "他们学会自己折叠降落伞。",
+      "tts": {
+        "text": "他们学会自己折叠降落伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "这个圈子很小,友好,而且有耐心。",
+      "text_markdown": "这个圈子很小,友好,而且有耐心。",
+      "tts": {
+        "text": "这个圈子很小,友好,而且有耐心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "跳伞区里没有人会让你因为是新手而感到自己很蠢。",
+      "text_markdown": "跳伞区里没有人会让你因为是新手而感到自己很蠢。",
+      "tts": {
+        "text": "跳伞区里没有人会让你因为是新手而感到自己很蠢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "我们都曾是新手。",
+      "text_markdown": "我们都曾是新手。",
+      "tts": {
+        "text": "我们都曾是新手。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "我们大多数人至今仍觉得自己是新手。",
+      "text_markdown": "我们大多数人至今仍觉得自己是新手。",
+      "tts": {
+        "text": "我们大多数人至今仍觉得自己是新手。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那么安全呢。",
+      "text_markdown": "那么安全呢。",
+      "tts": {
+        "text": "那么安全呢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是每一个理智的人都会问的问题,它值得一个真诚的回答。",
+      "text_markdown": "这是每一个理智的人都会问的问题,它值得一个真诚的回答。",
+      "tts": {
+        "text": "这是每一个理智的人都会问的问题,它值得一个真诚的回答。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "事实上,跳伞是非常安全的。",
+      "text_markdown": "事实上,跳伞是非常安全的。",
+      "tts": {
+        "text": "事实上,跳伞是非常安全的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "不像走路那么安全,但比开车去跳伞区更安全。",
+      "text_markdown": "不像走路那么安全,但比开车去跳伞区更安全。",
+      "tts": {
+        "text": "不像走路那么安全,但比开车去跳伞区更安全。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "装备非常优良。",
+      "text_markdown": "装备非常优良。",
+      "tts": {
+        "text": "装备非常优良。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "有一个主伞,一个备份伞,还有一个自动装置,如果你做不到,它会替你打开备份伞。",
+      "text_markdown": "有一个主伞,一个备份伞,还有一个自动装置,如果你做不到,它会替你打开备份伞。",
+      "tts": {
+        "text": "有一个主伞,一个备份伞,还有一个自动装置,如果你做不到,它会替你打开备份伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "跳伞区由真心关心你的专业人士运营。",
+      "text_markdown": "跳伞区由真心关心你的专业人士运营。",
+      "tts": {
+        "text": "跳伞区由真心关心你的专业人士运营。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "教练对每一次跳伞都怀有深深的关切。",
+      "text_markdown": "教练对每一次跳伞都怀有深深的关切。",
+      "tts": {
+        "text": "教练对每一次跳伞都怀有深深的关切。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "费用是多少。",
+      "text_markdown": "费用是多少。",
+      "tts": {
+        "text": "费用是多少。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一次双人跳伞的价格,等于两个人一顿不错的晚餐。",
+      "text_markdown": "一次双人跳伞的价格,等于两个人一顿不错的晚餐。",
+      "tts": {
+        "text": "一次双人跳伞的价格,等于两个人一顿不错的晚餐。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "训练课程的价格,等于一次小型度假。",
+      "text_markdown": "训练课程的价格,等于一次小型度假。",
+      "tts": {
+        "text": "训练课程的价格,等于一次小型度假。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在那以后,每一次跳伞的价格,等于一张电影票加一顿饭。",
+      "text_markdown": "在那以后,每一次跳伞的价格,等于一张电影票加一顿饭。",
+      "tts": {
+        "text": "在那以后,每一次跳伞的价格,等于一张电影票加一顿饭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "拥有普通工作和普通生活的人,每个周末都在做这件事。",
+      "text_markdown": "拥有普通工作和普通生活的人,每个周末都在做这件事。",
+      "tts": {
+        "text": "拥有普通工作和普通生活的人,每个周末都在做这件事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们并不富有。",
+      "text_markdown": "他们并不富有。",
+      "tts": {
+        "text": "他们并不富有。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "他们并不特殊。",
+      "text_markdown": "他们并不特殊。",
+      "tts": {
+        "text": "他们并不特殊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "他们只是决定了,这就是他们要做的事。",
+      "text_markdown": "他们只是决定了,这就是他们要做的事。",
+      "tts": {
+        "text": "他们只是决定了,这就是他们要做的事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你正在考虑你的第一次跳伞,真正重要的建议只有这一条。",
+      "text_markdown": "如果你正在考虑你的第一次跳伞,真正重要的建议只有这一条。",
+      "tts": {
+        "text": "如果你正在考虑你的第一次跳伞,真正重要的建议只有这一条。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "选一个日期。",
+      "text_markdown": "选一个日期。",
+      "tts": {
+        "text": "选一个日期。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "告诉一个朋友。",
+      "text_markdown": "告诉一个朋友。",
+      "tts": {
+        "text": "告诉一个朋友。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "出现就好。",
+      "text_markdown": "出现就好。",
+      "tts": {
+        "text": "出现就好。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "难的不是下坠。",
+      "text_markdown": "难的不是下坠。",
+      "tts": {
+        "text": "难的不是下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "难的是决定。",
+      "text_markdown": "难的是决定。",
+      "tts": {
+        "text": "难的是决定。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "一旦你决定了,天空就已经是你的了。",
+      "text_markdown": "一旦你决定了,天空就已经是你的了。",
+      "tts": {
+        "text": "一旦你决定了,天空就已经是你的了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "技艺",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "技艺",
+      "text_markdown": "技艺"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下坠之中,藏着一门技艺,而正是这门技艺,让你一生留在跳伞里。",
+      "text_markdown": "下坠之中,藏着一门技艺,而正是这门技艺,让你一生留在跳伞里。",
+      "tts": {
+        "text": "下坠之中,藏着一门技艺,而正是这门技艺,让你一生留在跳伞里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你看到一位有经验的跳伞员在自由落体中,你看到的不是有人在下坠。",
+      "text_markdown": "当你看到一位有经验的跳伞员在自由落体中,你看到的不是有人在下坠。",
+      "tts": {
+        "text": "当你看到一位有经验的跳伞员在自由落体中,你看到的不是有人在下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你看到的是有人在飞。",
+      "text_markdown": "你看到的是有人在飞。",
+      "tts": {
+        "text": "你看到的是有人在飞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们用指尖,有意识地,缓缓转身。",
+      "text_markdown": "他们用指尖,有意识地,缓缓转身。",
+      "tts": {
+        "text": "他们用指尖,有意识地,缓缓转身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们只把肩膀向前倾两英寸,就在天空中向前滑行半英里。",
+      "text_markdown": "他们只把肩膀向前倾两英寸,就在天空中向前滑行半英里。",
+      "tts": {
+        "text": "他们只把肩膀向前倾两英寸,就在天空中向前滑行半英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他们在半空停下来,保持一种看上去不可能的静止。",
+      "text_markdown": "他们在半空停下来,保持一种看上去不可能的静止。",
+      "tts": {
+        "text": "他们在半空停下来,保持一种看上去不可能的静止。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "身体就是飞机。",
+      "text_markdown": "身体就是飞机。",
+      "tts": {
+        "text": "身体就是飞机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是这门技艺的第一个秘密。",
+      "text_markdown": "这是这门技艺的第一个秘密。",
+      "tts": {
+        "text": "这是这门技艺的第一个秘密。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一旦你明白了这一点,其他一切就都顺理成章。",
+      "text_markdown": "一旦你明白了这一点,其他一切就都顺理成章。",
+      "tts": {
+        "text": "一旦你明白了这一点,其他一切就都顺理成章。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稳定自由落体的基本姿势叫做拱形。",
+      "text_markdown": "稳定自由落体的基本姿势叫做拱形。",
+      "tts": {
+        "text": "稳定自由落体的基本姿势叫做拱形。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你把胯部向前推,让胳膊和腿向后拖,像一根香蕉。",
+      "text_markdown": "你把胯部向前推,让胳膊和腿向后拖,像一根香蕉。",
+      "tts": {
+        "text": "你把胯部向前推,让胳膊和腿向后拖,像一根香蕉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拱形让你脸朝下面对地面,而不必去想着它。",
+      "text_markdown": "拱形让你脸朝下面对地面,而不必去想着它。",
+      "tts": {
+        "text": "拱形让你脸朝下面对地面,而不必去想着它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "新手会先在泡沫坑里学拱形,然后是风洞,然后才是天空。",
+      "text_markdown": "新手会先在泡沫坑里学拱形,然后是风洞,然后才是天空。",
+      "tts": {
+        "text": "新手会先在泡沫坑里学拱形,然后是风洞,然后才是天空。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "老跳伞员谈起拱形的样子,就像老跑者谈起自己的步幅。",
+      "text_markdown": "老跳伞员谈起拱形的样子,就像老跑者谈起自己的步幅。",
+      "tts": {
+        "text": "老跳伞员谈起拱形的样子,就像老跑者谈起自己的步幅。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一旦你拥有了一个稳定的拱形,自由落体的其余部分就向你敞开了。",
+      "text_markdown": "一旦你拥有了一个稳定的拱形,自由落体的其余部分就向你敞开了。",
+      "tts": {
+        "text": "一旦你拥有了一个稳定的拱形,自由落体的其余部分就向你敞开了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你学会通过把身体张得很大、把自己变成一只风筝,来慢慢下坠。",
+      "text_markdown": "你学会通过把身体张得很大、把自己变成一只风筝,来慢慢下坠。",
+      "tts": {
+        "text": "你学会通过把身体张得很大、把自己变成一只风筝,来慢慢下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你学会通过把身体收得很小、把自己变成一块石头,来快速下坠。",
+      "text_markdown": "你学会通过把身体收得很小、把自己变成一块石头,来快速下坠。",
+      "tts": {
+        "text": "你学会通过把身体收得很小、把自己变成一块石头,来快速下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你学会长距离平移,这是人体所能做到的最接近飞翔的事。",
+      "text_markdown": "你学会长距离平移,这是人体所能做到的最接近飞翔的事。",
+      "tts": {
+        "text": "你学会长距离平移,这是人体所能做到的最接近飞翔的事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "一个出色的平移者,能在二十秒内横越天空四分之一英里。",
+      "text_markdown": "一个出色的平移者,能在二十秒内横越天空四分之一英里。",
+      "tts": {
+        "text": "一个出色的平移者,能在二十秒内横越天空四分之一英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "胳膊向后掠,身体倾斜,像一架知道自己要去哪里的纸飞机。",
+      "text_markdown": "胳膊向后掠,身体倾斜,像一架知道自己要去哪里的纸飞机。",
+      "tts": {
+        "text": "胳膊向后掠,身体倾斜,像一架知道自己要去哪里的纸飞机。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这门技艺的另一半,是伞衣。",
+      "text_markdown": "这门技艺的另一半,是伞衣。",
+      "tts": {
+        "text": "这门技艺的另一半,是伞衣。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "降落伞不是一个被动地把你带下来的东西。",
+      "text_markdown": "降落伞不是一个被动地把你带下来的东西。",
+      "tts": {
+        "text": "降落伞不是一个被动地把你带下来的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是一只翅膀,而你来驾驭它。",
+      "text_markdown": "它是一只翅膀,而你来驾驭它。",
+      "tts": {
+        "text": "它是一只翅膀,而你来驾驭它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "拉右边的操纵带,会让右翼下沉,把你转向右边。",
+      "text_markdown": "拉右边的操纵带,会让右翼下沉,把你转向右边。",
+      "tts": {
+        "text": "拉右边的操纵带,会让右翼下沉,把你转向右边。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "同时拉两边,会让你减速,让你轻轻落地。",
+      "text_markdown": "同时拉两边,会让你减速,让你轻轻落地。",
+      "tts": {
+        "text": "同时拉两边,会让你减速,让你轻轻落地。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你解读风,你选择落点,你规划自己的航线。",
+      "text_markdown": "你解读风,你选择落点,你规划自己的航线。",
+      "tts": {
+        "text": "你解读风,你选择落点,你规划自己的航线。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "你在最后一刻拉平,让你的脚轻轻吻住地面,而不是猛烈撞击它。",
+      "text_markdown": "你在最后一刻拉平,让你的脚轻轻吻住地面,而不是猛烈撞击它。",
+      "tts": {
+        "text": "你在最后一刻拉平,让你的脚轻轻吻住地面,而不是猛烈撞击它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "所有这一切,叫做伞衣飞行,它本身就是一门学问。",
+      "text_markdown": "所有这一切,叫做伞衣飞行,它本身就是一门学问。",
+      "tts": {
+        "text": "所有这一切,叫做伞衣飞行,它本身就是一门学问。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后是折伞。",
+      "text_markdown": "然后是折伞。",
+      "tts": {
+        "text": "然后是折伞。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每一位跳伞员都自己折叠自己的降落伞。",
+      "text_markdown": "每一位跳伞员都自己折叠自己的降落伞。",
+      "tts": {
+        "text": "每一位跳伞员都自己折叠自己的降落伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一次都是。",
+      "text_markdown": "每一次都是。",
+      "tts": {
+        "text": "每一次都是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你把伞衣铺在一张长长的垫子上。",
+      "text_markdown": "你把伞衣铺在一张长长的垫子上。",
+      "tts": {
+        "text": "你把伞衣铺在一张长长的垫子上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你抚平伞绳。",
+      "text_markdown": "你抚平伞绳。",
+      "tts": {
+        "text": "你抚平伞绳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你折叠伞胞。",
+      "text_markdown": "你折叠伞胞。",
+      "tts": {
+        "text": "你折叠伞胞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你把布料卷成蚕茧的样子,慢慢塞进伞包,引导伞缰,合上容器。",
+      "text_markdown": "你把布料卷成蚕茧的样子,慢慢塞进伞包,引导伞缰,合上容器。",
+      "tts": {
+        "text": "你把布料卷成蚕茧的样子,慢慢塞进伞包,引导伞缰,合上容器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "这大约要十五分钟,而你做得很慢,因为你的生命将要依赖于这块布。",
+      "text_markdown": "这大约要十五分钟,而你做得很慢,因为你的生命将要依赖于这块布。",
+      "tts": {
+        "text": "这大约要十五分钟,而你做得很慢,因为你的生命将要依赖于这块布。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "折伞就是冥想。",
+      "text_markdown": "折伞就是冥想。",
+      "tts": {
+        "text": "折伞就是冥想。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "许多跳伞员会说,这是他们一天里最爱的部分。",
+      "text_markdown": "许多跳伞员会说,这是他们一天里最爱的部分。",
+      "tts": {
+        "text": "许多跳伞员会说,这是他们一天里最爱的部分。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那张垫子,那些伞绳,那缓慢的折叠。",
+      "text_markdown": "那张垫子,那些伞绳,那缓慢的折叠。",
+      "tts": {
+        "text": "那张垫子,那些伞绳,那缓慢的折叠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在你身边折伞的朋友的肩膀。",
+      "text_markdown": "在你身边折伞的朋友的肩膀。",
+      "tts": {
+        "text": "在你身边折伞的朋友的肩膀。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "角落里的收音机,放着一首你已经听了太多遍的歌。",
+      "text_markdown": "角落里的收音机,放着一首你已经听了太多遍的歌。",
+      "tts": {
+        "text": "角落里的收音机,放着一首你已经听了太多遍的歌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "折伞这件事不能赶。",
+      "text_markdown": "折伞这件事不能赶。",
+      "tts": {
+        "text": "折伞这件事不能赶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "天空不在乎你的时间表。",
+      "text_markdown": "天空不在乎你的时间表。",
+      "tts": {
+        "text": "天空不在乎你的时间表。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这门技艺的心态,是耐心。",
+      "text_markdown": "这门技艺的心态,是耐心。",
+      "tts": {
+        "text": "这门技艺的心态,是耐心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "是谦逊。",
+      "text_markdown": "是谦逊。",
+      "tts": {
+        "text": "是谦逊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "是愿意为每一次跳伞复盘,哪怕是最平淡的一次。",
+      "text_markdown": "是愿意为每一次跳伞复盘,哪怕是最平淡的一次。",
+      "tts": {
+        "text": "是愿意为每一次跳伞复盘,哪怕是最平淡的一次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "跳伞员都喜欢在跳伞之后聊一聊。",
+      "text_markdown": "跳伞员都喜欢在跳伞之后聊一聊。",
+      "tts": {
+        "text": "跳伞员都喜欢在跳伞之后聊一聊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他们会坐在野餐桌旁,把每一秒、每一个身体姿势都过一遍。",
+      "text_markdown": "他们会坐在野餐桌旁,把每一秒、每一个身体姿势都过一遍。",
+      "tts": {
+        "text": "他们会坐在野餐桌旁,把每一秒、每一个身体姿势都过一遍。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "什么做对了。",
+      "text_markdown": "什么做对了。",
+      "tts": {
+        "text": "什么做对了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "什么做得马虎。",
+      "text_markdown": "什么做得马虎。",
+      "tts": {
+        "text": "什么做得马虎。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "下次想要尝试什么。",
+      "text_markdown": "下次想要尝试什么。",
+      "tts": {
+        "text": "下次想要尝试什么。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是为什么人们留下来。",
+      "text_markdown": "这就是为什么人们留下来。",
+      "tts": {
+        "text": "这就是为什么人们留下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "并不是因为下坠很刺激。",
+      "text_markdown": "并不是因为下坠很刺激。",
+      "tts": {
+        "text": "并不是因为下坠很刺激。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "下坠是简单的部分。",
+      "text_markdown": "下坠是简单的部分。",
+      "tts": {
+        "text": "下坠是简单的部分。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "人们留下来,是因为永远有东西要学。",
+      "text_markdown": "人们留下来,是因为永远有东西要学。",
+      "tts": {
+        "text": "人们留下来,是因为永远有东西要学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "永远有一个朋友陪你一起学。",
+      "text_markdown": "永远有一个朋友陪你一起学。",
+      "tts": {
+        "text": "永远有一个朋友陪你一起学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "也永远有一片天空,在明天中午等你。",
+      "text_markdown": "也永远有一片天空,在明天中午等你。",
+      "tts": {
+        "text": "也永远有一片天空,在明天中午等你。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "那些瞬间",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "那些瞬间",
+      "text_markdown": "那些瞬间"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "让我给你三个。",
+      "text_markdown": "让我给你三个。",
+      "tts": {
+        "text": "让我给你三个。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一个,是日落班机。",
+      "text_markdown": "第一个,是日落班机。",
+      "tts": {
+        "text": "第一个,是日落班机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "飞机在太阳下山前二十分钟起飞。",
+      "text_markdown": "飞机在太阳下山前二十分钟起飞。",
+      "tts": {
+        "text": "飞机在太阳下山前二十分钟起飞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你穿过一层层橙色的光,机舱里很暖,你的朋友们都安静下来。",
+      "text_markdown": "你穿过一层层橙色的光,机舱里很暖,你的朋友们都安静下来。",
+      "tts": {
+        "text": "你穿过一层层橙色的光,机舱里很暖,你的朋友们都安静下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这一次门打开时,空气是粉色的。",
+      "text_markdown": "这一次门打开时,空气是粉色的。",
+      "tts": {
+        "text": "这一次门打开时,空气是粉色的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你脚下的大地一半在阴影里,一半镀着金色。",
+      "text_markdown": "你脚下的大地一半在阴影里,一半镀着金色。",
+      "tts": {
+        "text": "你脚下的大地一半在阴影里,一半镀着金色。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你迈步出去,在六十秒里,你正坠落穿过一场日落的内里。",
+      "text_markdown": "你迈步出去,在六十秒里,你正坠落穿过一场日落的内里。",
+      "tts": {
+        "text": "你迈步出去,在六十秒里,你正坠落穿过一场日落的内里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它看上去并不真实。",
+      "text_markdown": "它看上去并不真实。",
+      "tts": {
+        "text": "它看上去并不真实。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你会看到一些你不知道你的眼睛能找到的颜色。",
+      "text_markdown": "你会看到一些你不知道你的眼睛能找到的颜色。",
+      "tts": {
+        "text": "你会看到一些你不知道你的眼睛能找到的颜色。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "当你的降落伞打开时,你正漂浮在一个短暂燃烧着的世界之上。",
+      "text_markdown": "当你的降落伞打开时,你正漂浮在一个短暂燃烧着的世界之上。",
+      "tts": {
+        "text": "当你的降落伞打开时,你正漂浮在一个短暂燃烧着的世界之上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "风已经几乎平息。",
+      "text_markdown": "风已经几乎平息。",
+      "tts": {
+        "text": "风已经几乎平息。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "跳伞区在你下方是一小块绿色的方块,亮着一盏温暖的灯。",
+      "text_markdown": "跳伞区在你下方是一小块绿色的方块,亮着一盏温暖的灯。",
+      "tts": {
+        "text": "跳伞区在你下方是一小块绿色的方块,亮着一盏温暖的灯。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你选了一个慢慢的圆圈,让自己最后一个降落,因为没有人想让这一段结束。",
+      "text_markdown": "你选了一个慢慢的圆圈,让自己最后一个降落,因为没有人想让这一段结束。",
+      "tts": {
+        "text": "你选了一个慢慢的圆圈,让自己最后一个降落,因为没有人想让这一段结束。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "当你的脚触到草地时,天空已经是紫色的。",
+      "text_markdown": "当你的脚触到草地时,天空已经是紫色的。",
+      "tts": {
+        "text": "当你的脚触到草地时,天空已经是紫色的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "你的朋友们正从他们各自的着陆点走过来。",
+      "text_markdown": "你的朋友们正从他们各自的着陆点走过来。",
+      "tts": {
+        "text": "你的朋友们正从他们各自的着陆点走过来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "其中一个只是看着你。",
+      "text_markdown": "其中一个只是看着你。",
+      "tts": {
+        "text": "其中一个只是看着你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "你们俩都摇了摇头。",
+      "text_markdown": "你们俩都摇了摇头。",
+      "tts": {
+        "text": "你们俩都摇了摇头。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "你们都找不到一个词。",
+      "text_markdown": "你们都找不到一个词。",
+      "tts": {
+        "text": "你们都找不到一个词。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二个,是编队跳伞。",
+      "text_markdown": "第二个,是编队跳伞。",
+      "tts": {
+        "text": "第二个,是编队跳伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这趟班机上有八个人。",
+      "text_markdown": "这趟班机上有八个人。",
+      "tts": {
+        "text": "这趟班机上有八个人。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你们坐在长凳上,头盔放在膝上,领跳的人在一块小白板上画出这次的动作设计。",
+      "text_markdown": "你们坐在长凳上,头盔放在膝上,领跳的人在一块小白板上画出这次的动作设计。",
+      "tts": {
+        "text": "你们坐在长凳上,头盔放在膝上,领跳的人在一块小白板上画出这次的动作设计。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你们将聚成一团离开飞机,一起下坠,组成一个圆。",
+      "text_markdown": "你们将聚成一团离开飞机,一起下坠,组成一个圆。",
+      "tts": {
+        "text": "你们将聚成一团离开飞机,一起下坠,组成一个圆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你们都知道自己的位置。",
+      "text_markdown": "你们都知道自己的位置。",
+      "tts": {
+        "text": "你们都知道自己的位置。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你们碰碰拳头,互相检查装备,紧张地笑出声。",
+      "text_markdown": "你们碰碰拳头,互相检查装备,紧张地笑出声。",
+      "tts": {
+        "text": "你们碰碰拳头,互相检查装备,紧张地笑出声。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "八个成年人,既害怕又兴奋,像孩子们在过夜聚会。",
+      "text_markdown": "八个成年人,既害怕又兴奋,像孩子们在过夜聚会。",
+      "tts": {
+        "text": "八个成年人,既害怕又兴奋,像孩子们在过夜聚会。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飞机平飞。",
+      "text_markdown": "飞机平飞。",
+      "tts": {
+        "text": "飞机平飞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "门打开。",
+      "text_markdown": "门打开。",
+      "tts": {
+        "text": "门打开。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你们的领跳迈出去,其余的人跟着,每隔一拍心跳跟一个。",
+      "text_markdown": "你们的领跳迈出去,其余的人跟着,每隔一拍心跳跟一个。",
+      "tts": {
+        "text": "你们的领跳迈出去,其余的人跟着,每隔一拍心跳跟一个。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在自由落体里,你们几乎不用想就找到了彼此。",
+      "text_markdown": "在自由落体里,你们几乎不用想就找到了彼此。",
+      "tts": {
+        "text": "在自由落体里,你们几乎不用想就找到了彼此。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "手与手相遇。",
+      "text_markdown": "手与手相遇。",
+      "tts": {
+        "text": "手与手相遇。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "圆圈成形。",
+      "text_markdown": "圆圈成形。",
+      "tts": {
+        "text": "圆圈成形。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "在那几秒完美的时光里,八个人在天空中互相握住。",
+      "text_markdown": "在那几秒完美的时光里,八个人在天空中互相握住。",
+      "tts": {
+        "text": "在那几秒完美的时光里,八个人在天空中互相握住。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "以同样的速度下坠。",
+      "text_markdown": "以同样的速度下坠。",
+      "tts": {
+        "text": "以同样的速度下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "彼此对望着对方的眼睛。",
+      "text_markdown": "彼此对望着对方的眼睛。",
+      "tts": {
+        "text": "彼此对望着对方的眼睛。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "然后你的高度表说,该松手了。",
+      "text_markdown": "然后你的高度表说,该松手了。",
+      "tts": {
+        "text": "然后你的高度表说,该松手了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "你松开手。",
+      "text_markdown": "你松开手。",
+      "tts": {
+        "text": "你松开手。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "你们彼此拉开距离平移开,给各自的降落伞留出打开的空间。",
+      "text_markdown": "你们彼此拉开距离平移开,给各自的降落伞留出打开的空间。",
+      "tts": {
+        "text": "你们彼此拉开距离平移开,给各自的降落伞留出打开的空间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "在地面上,你们停不下相互拥抱。",
+      "text_markdown": "在地面上,你们停不下相互拥抱。",
+      "tts": {
+        "text": "在地面上,你们停不下相互拥抱。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第三个,是经历过艰难一年后的一次跳伞。",
+      "text_markdown": "第三个,是经历过艰难一年后的一次跳伞。",
+      "tts": {
+        "text": "第三个,是经历过艰难一年后的一次跳伞。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "也许你刚刚熬过了什么。",
+      "text_markdown": "也许你刚刚熬过了什么。",
+      "tts": {
+        "text": "也许你刚刚熬过了什么。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "工作上糟糕的一段日子。",
+      "text_markdown": "工作上糟糕的一段日子。",
+      "tts": {
+        "text": "工作上糟糕的一段日子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一段结束了的感情。",
+      "text_markdown": "一段结束了的感情。",
+      "tts": {
+        "text": "一段结束了的感情。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一种让普通世界显得稀薄而遥远的失去。",
+      "text_markdown": "一种让普通世界显得稀薄而遥远的失去。",
+      "tts": {
+        "text": "一种让普通世界显得稀薄而遥远的失去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你跳伞,不是因为你想感受到什么。",
+      "text_markdown": "你跳伞,不是因为你想感受到什么。",
+      "tts": {
+        "text": "你跳伞,不是因为你想感受到什么。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你跳伞,是因为你已经感受不到任何东西,你想知道你是不是还在那里。",
+      "text_markdown": "你跳伞,是因为你已经感受不到任何东西,你想知道你是不是还在那里。",
+      "tts": {
+        "text": "你跳伞,是因为你已经感受不到任何东西,你想知道你是不是还在那里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飞机攀升。",
+      "text_markdown": "飞机攀升。",
+      "tts": {
+        "text": "飞机攀升。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "门打开。",
+      "text_markdown": "门打开。",
+      "tts": {
+        "text": "门打开。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你迈出去。",
+      "text_markdown": "你迈出去。",
+      "tts": {
+        "text": "你迈出去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在最初那三秒里,在风还没接住你之前,你内心有什么东西裂开了。",
+      "text_markdown": "在最初那三秒里,在风还没接住你之前,你内心有什么东西裂开了。",
+      "tts": {
+        "text": "在最初那三秒里,在风还没接住你之前,你内心有什么东西裂开了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你本来没打算哭。",
+      "text_markdown": "你本来没打算哭。",
+      "tts": {
+        "text": "你本来没打算哭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你还是哭了。",
+      "text_markdown": "你还是哭了。",
+      "tts": {
+        "text": "你还是哭了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "自由落体在做它的工作。",
+      "text_markdown": "自由落体在做它的工作。",
+      "tts": {
+        "text": "自由落体在做它的工作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "六十秒漫长的时光,只有风、呼吸和下坠。",
+      "text_markdown": "六十秒漫长的时光,只有风、呼吸和下坠。",
+      "tts": {
+        "text": "六十秒漫长的时光,只有风、呼吸和下坠。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "在那其中的某个地方,你那一直紧紧攥着一切的部分,终于把它放下了一分钟。",
+      "text_markdown": "在那其中的某个地方,你那一直紧紧攥着一切的部分,终于把它放下了一分钟。",
+      "tts": {
+        "text": "在那其中的某个地方,你那一直紧紧攥着一切的部分,终于把它放下了一分钟。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "降落伞打开了。",
+      "text_markdown": "降落伞打开了。",
+      "tts": {
+        "text": "降落伞打开了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "世界静下来。",
+      "text_markdown": "世界静下来。",
+      "tts": {
+        "text": "世界静下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "你挂在安全带里,你哭,你笑,你又哭。",
+      "text_markdown": "你挂在安全带里,你哭,你笑,你又哭。",
+      "tts": {
+        "text": "你挂在安全带里,你哭,你笑,你又哭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "没有人能看到你。",
+      "text_markdown": "没有人能看到你。",
+      "tts": {
+        "text": "没有人能看到你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "这正是关键所在。",
+      "text_markdown": "这正是关键所在。",
+      "tts": {
+        "text": "这正是关键所在。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你着陆时,你并没有被修好。",
+      "text_markdown": "当你着陆时,你并没有被修好。",
+      "tts": {
+        "text": "当你着陆时,你并没有被修好。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你仍然背着你带上去的一切。",
+      "text_markdown": "你仍然背着你带上去的一切。",
+      "tts": {
+        "text": "你仍然背着你带上去的一切。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但在那上面整整一个小时里,你内心有一部分,清清楚楚地记起了活着是什么感觉。",
+      "text_markdown": "但在那上面整整一个小时里,你内心有一部分,清清楚楚地记起了活着是什么感觉。",
+      "tts": {
+        "text": "但在那上面整整一个小时里,你内心有一部分,清清楚楚地记起了活着是什么感觉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "跳伞没有解决你这一年。",
+      "text_markdown": "跳伞没有解决你这一年。",
+      "tts": {
+        "text": "跳伞没有解决你这一年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它只是把它还给了你六十秒,碎成你能握住的小小的几片。",
+      "text_markdown": "它只是把它还给了你六十秒,碎成你能握住的小小的几片。",
+      "tts": {
+        "text": "它只是把它还给了你六十秒,碎成你能握住的小小的几片。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "为何留下",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "为何留下",
+      "text_markdown": "为何留下"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我跳伞已经很久了。",
+      "text_markdown": "我跳伞已经很久了。",
+      "tts": {
+        "text": "我跳伞已经很久了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "久到我已经记不清次数。",
+      "text_markdown": "久到我已经记不清次数。",
+      "tts": {
+        "text": "久到我已经记不清次数。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "久到那个问题,你怎么还在做这个,对我来说已经没有任何意义。",
+      "text_markdown": "久到那个问题,你怎么还在做这个,对我来说已经没有任何意义。",
+      "tts": {
+        "text": "久到那个问题,你怎么还在做这个,对我来说已经没有任何意义。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我想留给你几样东西。",
+      "text_markdown": "我想留给你几样东西。",
+      "tts": {
+        "text": "我想留给你几样东西。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一件是,跳伞不是一个阶段。",
+      "text_markdown": "第一件是,跳伞不是一个阶段。",
+      "tts": {
+        "text": "第一件是,跳伞不是一个阶段。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们看到朋友开始跳伞时,会担心。",
+      "text_markdown": "人们看到朋友开始跳伞时,会担心。",
+      "tts": {
+        "text": "人们看到朋友开始跳伞时,会担心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们担心这是一种叛逆,是中年的什么,是逃避什么的方式。",
+      "text_markdown": "他们担心这是一种叛逆,是中年的什么,是逃避什么的方式。",
+      "tts": {
+        "text": "他们担心这是一种叛逆,是中年的什么,是逃避什么的方式。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "并不是。",
+      "text_markdown": "并不是。",
+      "tts": {
+        "text": "并不是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "留下来的人,并不是在逃。",
+      "text_markdown": "留下来的人,并不是在逃。",
+      "tts": {
+        "text": "留下来的人,并不是在逃。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们几乎是无意之中,在天空里搭起了一种小小的生活。",
+      "text_markdown": "他们几乎是无意之中,在天空里搭起了一种小小的生活。",
+      "tts": {
+        "text": "他们几乎是无意之中,在天空里搭起了一种小小的生活。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "他们在周六出现。",
+      "text_markdown": "他们在周六出现。",
+      "tts": {
+        "text": "他们在周六出现。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "他们折叠自己的降落伞。",
+      "text_markdown": "他们折叠自己的降落伞。",
+      "tts": {
+        "text": "他们折叠自己的降落伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "他们拥抱朋友。",
+      "text_markdown": "他们拥抱朋友。",
+      "tts": {
+        "text": "他们拥抱朋友。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "他们在日落时回家,以一种良好的方式累着。",
+      "text_markdown": "他们在日落时回家,以一种良好的方式累着。",
+      "tts": {
+        "text": "他们在日落时回家,以一种良好的方式累着。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "周一他们回去工作,他们比从前明显地温柔了。",
+      "text_markdown": "周一他们回去工作,他们比从前明显地温柔了。",
+      "tts": {
+        "text": "周一他们回去工作,他们比从前明显地温柔了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "天空会改变你,只是慢慢地改变。",
+      "text_markdown": "天空会改变你,只是慢慢地改变。",
+      "tts": {
+        "text": "天空会改变你,只是慢慢地改变。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你变得更专注当下。",
+      "text_markdown": "你变得更专注当下。",
+      "tts": {
+        "text": "你变得更专注当下。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你不再那么害怕小事,因为你已经练习过对更大的事坦诚。",
+      "text_markdown": "你不再那么害怕小事,因为你已经练习过对更大的事坦诚。",
+      "tts": {
+        "text": "你不再那么害怕小事,因为你已经练习过对更大的事坦诚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你笑得更容易。",
+      "text_markdown": "你笑得更容易。",
+      "tts": {
+        "text": "你笑得更容易。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你更经常告诉别人,你爱他们。",
+      "text_markdown": "你更经常告诉别人,你爱他们。",
+      "tts": {
+        "text": "你更经常告诉别人,你爱他们。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "你曾在一万二千英尺的高空,站在一道舱门边,记得世间没有什么是被许诺的。",
+      "text_markdown": "你曾在一万二千英尺的高空,站在一道舱门边,记得世间没有什么是被许诺的。",
+      "tts": {
+        "text": "你曾在一万二千英尺的高空,站在一道舱门边,记得世间没有什么是被许诺的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有一天和一位跳伞员一起吃饭,这里有几个你可以问的问题。",
+      "text_markdown": "如果你有一天和一位跳伞员一起吃饭,这里有几个你可以问的问题。",
+      "tts": {
+        "text": "如果你有一天和一位跳伞员一起吃饭,这里有几个你可以问的问题。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你可以问他们是怎么开始的。",
+      "text_markdown": "你可以问他们是怎么开始的。",
+      "tts": {
+        "text": "你可以问他们是怎么开始的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一位跳伞员都清楚地记得自己的第一次跳伞,他们会很乐意告诉你。",
+      "text_markdown": "每一位跳伞员都清楚地记得自己的第一次跳伞,他们会很乐意告诉你。",
+      "tts": {
+        "text": "每一位跳伞员都清楚地记得自己的第一次跳伞,他们会很乐意告诉你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你可以问他们跳了多少次。",
+      "text_markdown": "你可以问他们跳了多少次。",
+      "tts": {
+        "text": "你可以问他们跳了多少次。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们会知道这个数字,差不多准,他们也不会假装比实际更多。",
+      "text_markdown": "他们会知道这个数字,差不多准,他们也不会假装比实际更多。",
+      "tts": {
+        "text": "他们会知道这个数字,差不多准,他们也不会假装比实际更多。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你可以问他们最喜欢哪一种跳伞。",
+      "text_markdown": "你可以问他们最喜欢哪一种跳伞。",
+      "tts": {
+        "text": "你可以问他们最喜欢哪一种跳伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "有些人会说,日落跳。",
+      "text_markdown": "有些人会说,日落跳。",
+      "tts": {
+        "text": "有些人会说,日落跳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "有些人会说,大型编队。",
+      "text_markdown": "有些人会说,大型编队。",
+      "tts": {
+        "text": "有些人会说,大型编队。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "有些人会说,是平静夜晚里的一次安静的单人跳。",
+      "text_markdown": "有些人会说,是平静夜晚里的一次安静的单人跳。",
+      "tts": {
+        "text": "有些人会说,是平静夜晚里的一次安静的单人跳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你可以问他们第一次的时候害不害怕。",
+      "text_markdown": "你可以问他们第一次的时候害不害怕。",
+      "tts": {
+        "text": "你可以问他们第一次的时候害不害怕。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们当然害怕。",
+      "text_markdown": "他们当然害怕。",
+      "tts": {
+        "text": "他们当然害怕。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每个人都害怕。",
+      "text_markdown": "每个人都害怕。",
+      "tts": {
+        "text": "每个人都害怕。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们大概会提到舱门口的风、那一声数数,以及在你迈出去的前一刻世界看上去的样子。",
+      "text_markdown": "他们大概会提到舱门口的风、那一声数数,以及在你迈出去的前一刻世界看上去的样子。",
+      "tts": {
+        "text": "他们大概会提到舱门口的风、那一声数数,以及在你迈出去的前一刻世界看上去的样子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "请仔细听。",
+      "text_markdown": "请仔细听。",
+      "tts": {
+        "text": "请仔细听。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们正在送你一个小小的礼物。",
+      "text_markdown": "他们正在送你一个小小的礼物。",
+      "tts": {
+        "text": "他们正在送你一个小小的礼物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你想让一个跳伞员眼睛发亮,就请他们描述一下降落伞打开的那一刻。",
+      "text_markdown": "如果你想让一个跳伞员眼睛发亮,就请他们描述一下降落伞打开的那一刻。",
+      "tts": {
+        "text": "如果你想让一个跳伞员眼睛发亮,就请他们描述一下降落伞打开的那一刻。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们会闭上眼睛半秒钟。",
+      "text_markdown": "他们会闭上眼睛半秒钟。",
+      "tts": {
+        "text": "他们会闭上眼睛半秒钟。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然后他们会试着去说。",
+      "text_markdown": "然后他们会试着去说。",
+      "tts": {
+        "text": "然后他们会试着去说。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们每次都会用一个不一样的词。",
+      "text_markdown": "他们每次都会用一个不一样的词。",
+      "tts": {
+        "text": "他们每次都会用一个不一样的词。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "也许是,安静。",
+      "text_markdown": "也许是,安静。",
+      "tts": {
+        "text": "也许是,安静。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "也许是,温柔。",
+      "text_markdown": "也许是,温柔。",
+      "tts": {
+        "text": "也许是,温柔。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "像是醒来。",
+      "text_markdown": "像是醒来。",
+      "tts": {
+        "text": "像是醒来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "像是回家。",
+      "text_markdown": "像是回家。",
+      "tts": {
+        "text": "像是回家。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "没有人会用同样的方式描述它两次。",
+      "text_markdown": "没有人会用同样的方式描述它两次。",
+      "tts": {
+        "text": "没有人会用同样的方式描述它两次。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "不要害怕承认你从来没跳过。",
+      "text_markdown": "不要害怕承认你从来没跳过。",
+      "tts": {
+        "text": "不要害怕承认你从来没跳过。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "跳伞员爱这个问题。",
+      "text_markdown": "跳伞员爱这个问题。",
+      "tts": {
+        "text": "跳伞员爱这个问题。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "跳伞员也爱告诉你,你应该试一试,然后非常认真地告诉你,他们会陪你一起去。",
+      "text_markdown": "跳伞员也爱告诉你,你应该试一试,然后非常认真地告诉你,他们会陪你一起去。",
+      "tts": {
+        "text": "跳伞员也爱告诉你,你应该试一试,然后非常认真地告诉你,他们会陪你一起去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我们大多数人都曾带朋友去做他们的第一次跳伞。",
+      "text_markdown": "我们大多数人都曾带朋友去做他们的第一次跳伞。",
+      "tts": {
+        "text": "我们大多数人都曾带朋友去做他们的第一次跳伞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "这是这项运动里最大的乐趣之一。",
+      "text_markdown": "这是这项运动里最大的乐趣之一。",
+      "tts": {
+        "text": "这是这项运动里最大的乐趣之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这一切的最后,没有什么大道理。",
+      "text_markdown": "在这一切的最后,没有什么大道理。",
+      "tts": {
+        "text": "在这一切的最后,没有什么大道理。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "只有这个。",
+      "text_markdown": "只有这个。",
+      "tts": {
+        "text": "只有这个。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "此刻,世界上某处,一小群冷静而耐心的人正走向一架飞机。",
+      "text_markdown": "此刻,世界上某处,一小群冷静而耐心的人正走向一架飞机。",
+      "tts": {
+        "text": "此刻,世界上某处,一小群冷静而耐心的人正走向一架飞机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "田野在阳光下。",
+      "text_markdown": "田野在阳光下。",
+      "tts": {
+        "text": "田野在阳光下。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "草是温暖的。",
+      "text_markdown": "草是温暖的。",
+      "tts": {
+        "text": "草是温暖的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们在互相检查装备。",
+      "text_markdown": "他们在互相检查装备。",
+      "tts": {
+        "text": "他们在互相检查装备。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "他们在微笑。",
+      "text_markdown": "他们在微笑。",
+      "tts": {
+        "text": "他们在微笑。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "三十分钟后,他们会在天空中,做着他们所知道的最安静的事。",
+      "text_markdown": "三十分钟后,他们会在天空中,做着他们所知道的最安静的事。",
+      "tts": {
+        "text": "三十分钟后,他们会在天空中,做着他们所知道的最安静的事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "也许有一天你会成为他们中的一员。",
+      "text_markdown": "也许有一天你会成为他们中的一员。",
+      "tts": {
+        "text": "也许有一天你会成为他们中的一员。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "也许有一天你不会。",
+      "text_markdown": "也许有一天你不会。",
+      "tts": {
+        "text": "也许有一天你不会。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "无论如何,天空都在那里。",
+      "text_markdown": "无论如何,天空都在那里。",
+      "tts": {
+        "text": "无论如何,天空都在那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它一直都在那里。",
+      "text_markdown": "它一直都在那里。",
+      "tts": {
+        "text": "它一直都在那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它在耐心地等着,以防你哪天又想要稍稍倾身。",
+      "text_markdown": "它在耐心地等着,以防你哪天又想要稍稍倾身。",
+      "tts": {
+        "text": "它在耐心地等着,以防你哪天又想要稍稍倾身。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

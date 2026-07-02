@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "language": "ar",
+  "version": "2.0.0",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ملاحظة للمستمع",
+      "text_markdown": "ملاحظة للمستمع"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا كتاب عن العود، وهو آلة موسيقية خشبية ذات أوتار.",
+      "text_markdown": "هذا كتاب عن العود، وهو آلة موسيقية خشبية ذات أوتار.",
+      "tts": {
+        "text": "هذا كتاب عن العود، وهو آلة موسيقية خشبية ذات أوتار.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يعزف الناس على هذه الآلة منذ أكثر من ألف عام.",
+      "text_markdown": "يعزف الناس على هذه الآلة منذ أكثر من ألف عام.",
+      "tts": {
+        "text": "يعزف الناس على هذه الآلة منذ أكثر من ألف عام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يمكنك أن تسمع العود في مدن البحر وفي قرى الجبال.",
+      "text_markdown": "يمكنك أن تسمع العود في مدن البحر وفي قرى الجبال.",
+      "tts": {
+        "text": "يمكنك أن تسمع العود في مدن البحر وفي قرى الجبال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويمكنك أن تسمعه في القصور القديمة وعلى المسارح الصغيرة المصنوعة من الخشب.",
+      "text_markdown": "ويمكنك أن تسمعه في القصور القديمة وعلى المسارح الصغيرة المصنوعة من الخشب.",
+      "tts": {
+        "text": "ويمكنك أن تسمعه في القصور القديمة وعلى المسارح الصغيرة المصنوعة من الخشب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في هذا الكتاب، سنتعرف إلى شكل العود وكيف يُصنع. وسنتعرف إلى الذين رسموا حكايته.",
+      "text_markdown": "في هذا الكتاب، سنتعرف إلى شكل العود وكيف يُصنع. وسنتعرف إلى الذين رسموا حكايته.",
+      "tts": {
+        "text": "في هذا الكتاب، سنتعرف إلى شكل العود وكيف يُصنع. وسنتعرف إلى الذين رسموا حكايته.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفي النهاية، ستعرف لماذا يسمون العود أحيانًا ملك الأوتار كلها.",
+      "text_markdown": "وفي النهاية، ستعرف لماذا يسمون العود أحيانًا ملك الأوتار كلها.",
+      "tts": {
+        "text": "وفي النهاية، ستعرف لماذا يسمون العود أحيانًا ملك الأوتار كلها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الأول: ما هو العود؟",
+      "text_markdown": "الفصل الأول: ما هو العود؟"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "العود آلة وترية.",
+      "text_markdown": "العود آلة وترية.",
+      "tts": {
+        "text": "العود آلة وترية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهو نوع من اللوت، وجسمه يشبه نصف ثمرة كمثرى.",
+      "text_markdown": "وهو نوع من اللوت، وجسمه يشبه نصف ثمرة كمثرى.",
+      "tts": {
+        "text": "وهو نوع من اللوت، وجسمه يشبه نصف ثمرة كمثرى.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ظهر العود مستدير وعميق، مثل وعاء خشبي.",
+      "text_markdown": "ظهر العود مستدير وعميق، مثل وعاء خشبي.",
+      "tts": {
+        "text": "ظهر العود مستدير وعميق، مثل وعاء خشبي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أما وجهه فهو مسطح.",
+      "text_markdown": "أما وجهه فهو مسطح.",
+      "tts": {
+        "text": "أما وجهه فهو مسطح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ونسمي هذا الوجه المسطح لوح الصوت.",
+      "text_markdown": "ونسمي هذا الوجه المسطح لوح الصوت.",
+      "tts": {
+        "text": "ونسمي هذا الوجه المسطح لوح الصوت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "رقبة العود قصيرة، وليس عليها دساتين.",
+      "text_markdown": "رقبة العود قصيرة، وليس عليها دساتين.",
+      "tts": {
+        "text": "رقبة العود قصيرة، وليس عليها دساتين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والدساتين هي الخطوط المعدنية الصغيرة التي تراها على الغيتار.",
+      "text_markdown": "والدساتين هي الخطوط المعدنية الصغيرة التي تراها على الغيتار.",
+      "tts": {
+        "text": "والدساتين هي الخطوط المعدنية الصغيرة التي تراها على الغيتار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومن دونها، يستطيع العازف أن ينزلق بين النغمات بسلاسة كبيرة.",
+      "text_markdown": "ومن دونها، يستطيع العازف أن ينزلق بين النغمات بسلاسة كبيرة.",
+      "tts": {
+        "text": "ومن دونها، يستطيع العازف أن ينزلق بين النغمات بسلاسة كبيرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أغلب الأعواد أحد عشر وترًا، مرتبة في ست مجموعات.",
+      "text_markdown": "في أغلب الأعواد أحد عشر وترًا، مرتبة في ست مجموعات.",
+      "tts": {
+        "text": "في أغلب الأعواد أحد عشر وترًا، مرتبة في ست مجموعات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ونسمي كل زوج من الأوتار مجموعة وترية.",
+      "text_markdown": "ونسمي كل زوج من الأوتار مجموعة وترية.",
+      "tts": {
+        "text": "ونسمي كل زوج من الأوتار مجموعة وترية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفي خمس مجموعات، يُضبط الوتران على النغمة نفسها.",
+      "text_markdown": "وفي خمس مجموعات، يُضبط الوتران على النغمة نفسها.",
+      "tts": {
+        "text": "وفي خمس مجموعات، يُضبط الوتران على النغمة نفسها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أما المجموعة السادسة ففيها وتر واحد فقط.",
+      "text_markdown": "أما المجموعة السادسة ففيها وتر واحد فقط.",
+      "tts": {
+        "text": "أما المجموعة السادسة ففيها وتر واحد فقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وهكذا يصبح العدد أحد عشر.",
+      "text_markdown": "وهكذا يصبح العدد أحد عشر.",
+      "tts": {
+        "text": "وهكذا يصبح العدد أحد عشر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويمسك العازف العود على حجره.",
+      "text_markdown": "ويمسك العازف العود على حجره.",
+      "tts": {
+        "text": "ويمسك العازف العود على حجره.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تضغط إحدى اليدين على الأوتار فوق الرقبة.",
+      "text_markdown": "تضغط إحدى اليدين على الأوتار فوق الرقبة.",
+      "tts": {
+        "text": "تضغط إحدى اليدين على الأوتار فوق الرقبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وتنقر اليد الأخرى الأوتار بمضراب رفيع يسمى ريشة.",
+      "text_markdown": "وتنقر اليد الأخرى الأوتار بمضراب رفيع يسمى ريشة.",
+      "tts": {
+        "text": "وتنقر اليد الأخرى الأوتار بمضراب رفيع يسمى ريشة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وصوته دافئ وعميق.",
+      "text_markdown": "وصوته دافئ وعميق.",
+      "tts": {
+        "text": "وصوته دافئ وعميق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فيه شيء من الحزن وشيء من الحلاوة، في الوقت نفسه.",
+      "text_markdown": "فيه شيء من الحزن وشيء من الحلاوة، في الوقت نفسه.",
+      "tts": {
+        "text": "فيه شيء من الحزن وشيء من الحلاوة، في الوقت نفسه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثاني: من أين جاء الاسم",
+      "text_markdown": "الفصل الثاني: من أين جاء الاسم"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اسم العود كلمة عربية تعني الخشب.",
+      "text_markdown": "اسم العود كلمة عربية تعني الخشب.",
+      "tts": {
+        "text": "اسم العود كلمة عربية تعني الخشب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وسميت الآلة باسم المادة التي تصنع منها.",
+      "text_markdown": "وسميت الآلة باسم المادة التي تصنع منها.",
+      "tts": {
+        "text": "وسميت الآلة باسم المادة التي تصنع منها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقبل العود بزمن طويل، كان هناك قريب أقدم اسمه البربط.",
+      "text_markdown": "وقبل العود بزمن طويل، كان هناك قريب أقدم اسمه البربط.",
+      "tts": {
+        "text": "وقبل العود بزمن طويل، كان هناك قريب أقدم اسمه البربط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان البربط يُعزف في فارس القديمة قبل أكثر من ألفي عام.",
+      "text_markdown": "وكان البربط يُعزف في فارس القديمة قبل أكثر من ألفي عام.",
+      "tts": {
+        "text": "وكان البربط يُعزف في فارس القديمة قبل أكثر من ألفي عام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكان للبربط جسم خشبي وأوتار من حرير.",
+      "text_markdown": "وكان للبربط جسم خشبي وأوتار من حرير.",
+      "tts": {
+        "text": "وكان للبربط جسم خشبي وأوتار من حرير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان صوته طويلًا وناعمًا.",
+      "text_markdown": "وكان صوته طويلًا وناعمًا.",
+      "tts": {
+        "text": "وكان صوته طويلًا وناعمًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكان الناس يعزفون عليه في مجالس الملوك.",
+      "text_markdown": "وكان الناس يعزفون عليه في مجالس الملوك.",
+      "tts": {
+        "text": "وكان الناس يعزفون عليه في مجالس الملوك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تغيّر البربط ببطء.",
+      "text_markdown": "ثم تغيّر البربط ببطء.",
+      "tts": {
+        "text": "ثم تغيّر البربط ببطء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "صار جسمه أكثر استدارة، وصارت أوتاره أزواجًا، وقصرت رقبته.",
+      "text_markdown": "صار جسمه أكثر استدارة، وصارت أوتاره أزواجًا، وقصرت رقبته.",
+      "tts": {
+        "text": "صار جسمه أكثر استدارة، وصارت أوتاره أزواجًا، وقصرت رقبته.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبحلول سنة سبعمئة تقريبًا، كان الناس في العالم العربي يعزفون ما نسميه اليوم العود.",
+      "text_markdown": "وبحلول سنة سبعمئة تقريبًا، كان الناس في العالم العربي يعزفون ما نسميه اليوم العود.",
+      "tts": {
+        "text": "وبحلول سنة سبعمئة تقريبًا، كان الناس في العالم العربي يعزفون ما نسميه اليوم العود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن هناك، بدأ العود رحلته.",
+      "text_markdown": "ومن هناك، بدأ العود رحلته.",
+      "tts": {
+        "text": "ومن هناك، بدأ العود رحلته.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ذهب إلى مصر وإلى شمال أفريقيا.",
+      "text_markdown": "ذهب إلى مصر وإلى شمال أفريقيا.",
+      "tts": {
+        "text": "ذهب إلى مصر وإلى شمال أفريقيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وعبر البحر إلى إسبانيا.",
+      "text_markdown": "وعبر البحر إلى إسبانيا.",
+      "tts": {
+        "text": "وعبر البحر إلى إسبانيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "واتجه شمالًا إلى تركيا واليونان.",
+      "text_markdown": "واتجه شمالًا إلى تركيا واليونان.",
+      "tts": {
+        "text": "واتجه شمالًا إلى تركيا واليونان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وفي كل مكان، أخذ العود شيئًا من صوت أهله.",
+      "text_markdown": "وفي كل مكان، أخذ العود شيئًا من صوت أهله.",
+      "tts": {
+        "text": "وفي كل مكان، أخذ العود شيئًا من صوت أهله.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن اسمه بقي كما هو.",
+      "text_markdown": "لكن اسمه بقي كما هو.",
+      "tts": {
+        "text": "لكن اسمه بقي كما هو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وأينما ذهب، بقيت الآلة الخشبية هي العود.",
+      "text_markdown": "وأينما ذهب، بقيت الآلة الخشبية هي العود.",
+      "tts": {
+        "text": "وأينما ذهب، بقيت الآلة الخشبية هي العود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثالث: كيف يُصنع العود",
+      "text_markdown": "الفصل الثالث: كيف يُصنع العود"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "صنع العود يحتاج إلى وقت طويل.",
+      "text_markdown": "صنع العود يحتاج إلى وقت طويل.",
+      "tts": {
+        "text": "صنع العود يحتاج إلى وقت طويل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وقد يمضي الصانع أسابيع كثيرة على آلة واحدة.",
+      "text_markdown": "وقد يمضي الصانع أسابيع كثيرة على آلة واحدة.",
+      "tts": {
+        "text": "وقد يمضي الصانع أسابيع كثيرة على آلة واحدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُصنع الظهر من شرائح خشبية رفيعة، وعددها غالبًا بين خمس عشرة وخمس وعشرين شريحة.",
+      "text_markdown": "يُصنع الظهر من شرائح خشبية رفيعة، وعددها غالبًا بين خمس عشرة وخمس وعشرين شريحة.",
+      "tts": {
+        "text": "يُصنع الظهر من شرائح خشبية رفيعة، وعددها غالبًا بين خمس عشرة وخمس وعشرين شريحة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وتُثنى كل شريحة وتُلصق بالشريحة التي تليها.",
+      "text_markdown": "وتُثنى كل شريحة وتُلصق بالشريحة التي تليها.",
+      "tts": {
+        "text": "وتُثنى كل شريحة وتُلصق بالشريحة التي تليها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومعًا تصنع هذه الشرائح ظهر العود العميق المستدير.",
+      "text_markdown": "ومعًا تصنع هذه الشرائح ظهر العود العميق المستدير.",
+      "tts": {
+        "text": "ومعًا تصنع هذه الشرائح ظهر العود العميق المستدير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ونوع الخشب مهم.",
+      "text_markdown": "ونوع الخشب مهم.",
+      "tts": {
+        "text": "ونوع الخشب مهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "خشب الجوز يعطي صوتًا دافئًا، والماهوجني يعطي صوتًا أغمق، والتوت يعطي صوتًا لامعًا رنانًا.",
+      "text_markdown": "خشب الجوز يعطي صوتًا دافئًا، والماهوجني يعطي صوتًا أغمق، والتوت يعطي صوتًا لامعًا رنانًا.",
+      "tts": {
+        "text": "خشب الجوز يعطي صوتًا دافئًا، والماهوجني يعطي صوتًا أغمق، والتوت يعطي صوتًا لامعًا رنانًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويختار الصانع الخشب بحسب الصوت الذي يريده.",
+      "text_markdown": "ويختار الصانع الخشب بحسب الصوت الذي يريده.",
+      "tts": {
+        "text": "ويختار الصانع الخشب بحسب الصوت الذي يريده.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أما الوجه المسطح فيُصنع من خشب التنوب، وهو ما يسمى لوح الصوت.",
+      "text_markdown": "أما الوجه المسطح فيُصنع من خشب التنوب، وهو ما يسمى لوح الصوت.",
+      "tts": {
+        "text": "أما الوجه المسطح فيُصنع من خشب التنوب، وهو ما يسمى لوح الصوت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وخشب التنوب خفيف وقوي، ويسمح للخشب أن يهتز بسهولة.",
+      "text_markdown": "وخشب التنوب خفيف وقوي، ويسمح للخشب أن يهتز بسهولة.",
+      "tts": {
+        "text": "وخشب التنوب خفيف وقوي، ويسمح للخشب أن يهتز بسهولة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهذا الاهتزاز هو ما نسمعه على هيئة موسيقى.",
+      "text_markdown": "وهذا الاهتزاز هو ما نسمعه على هيئة موسيقى.",
+      "tts": {
+        "text": "وهذا الاهتزاز هو ما نسمعه على هيئة موسيقى.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي لوح الصوت فتحات دائرية صغيرة تُسمى وردات.",
+      "text_markdown": "وفي لوح الصوت فتحات دائرية صغيرة تُسمى وردات.",
+      "tts": {
+        "text": "وفي لوح الصوت فتحات دائرية صغيرة تُسمى وردات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وغالبًا ما تُحفر فيها نقوش جميلة.",
+      "text_markdown": "وغالبًا ما تُحفر فيها نقوش جميلة.",
+      "tts": {
+        "text": "وغالبًا ما تُحفر فيها نقوش جميلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وتسمح الوردات للصوت بأن يخرج من تجويف العود.",
+      "text_markdown": "وتسمح الوردات للصوت بأن يخرج من تجويف العود.",
+      "tts": {
+        "text": "وتسمح الوردات للصوت بأن يخرج من تجويف العود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكانت الأوتار قديمًا تُصنع من أمعاء الحيوانات بعد تجفيفها.",
+      "text_markdown": "وكانت الأوتار قديمًا تُصنع من أمعاء الحيوانات بعد تجفيفها.",
+      "tts": {
+        "text": "وكانت الأوتار قديمًا تُصنع من أمعاء الحيوانات بعد تجفيفها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أما اليوم، فمعظم الأوتار من النايلون، وتلتف حول الأوتار الغليظة أسلاك معدنية رفيعة.",
+      "text_markdown": "أما اليوم، فمعظم الأوتار من النايلون، وتلتف حول الأوتار الغليظة أسلاك معدنية رفيعة.",
+      "tts": {
+        "text": "أما اليوم، فمعظم الأوتار من النايلون، وتلتف حول الأوتار الغليظة أسلاك معدنية رفيعة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وينقر العازف الأوتار بريشة.",
+      "text_markdown": "وينقر العازف الأوتار بريشة.",
+      "tts": {
+        "text": "وينقر العازف الأوتار بريشة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكلمة ريشة تعني ريشة طائر.",
+      "text_markdown": "وكلمة ريشة تعني ريشة طائر.",
+      "tts": {
+        "text": "وكلمة ريشة تعني ريشة طائر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكانت المضرابات الأولى تُصنع من ريش النسور.",
+      "text_markdown": "وكانت المضرابات الأولى تُصنع من ريش النسور.",
+      "tts": {
+        "text": "وكانت المضرابات الأولى تُصنع من ريش النسور.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أما اليوم، فتُصنع من البلاستيك أو العظم أو درع السلحفاة.",
+      "text_markdown": "أما اليوم، فتُصنع من البلاستيك أو العظم أو درع السلحفاة.",
+      "tts": {
+        "text": "أما اليوم، فتُصنع من البلاستيك أو العظم أو درع السلحفاة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الرابع: أين يُعزف العود",
+      "text_markdown": "الفصل الرابع: أين يُعزف العود"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُعزف العود في أنحاء العالم العربي كلها.",
+      "text_markdown": "يُعزف العود في أنحاء العالم العربي كلها.",
+      "tts": {
+        "text": "يُعزف العود في أنحاء العالم العربي كلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ستسمعه في مصر وسوريا والعراق ولبنان والخليج وشمال أفريقيا.",
+      "text_markdown": "ستسمعه في مصر وسوريا والعراق ولبنان والخليج وشمال أفريقيا.",
+      "tts": {
+        "text": "ستسمعه في مصر وسوريا والعراق ولبنان والخليج وشمال أفريقيا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويُعزف عليه أيضًا خارج العالم العربي.",
+      "text_markdown": "ويُعزف عليه أيضًا خارج العالم العربي.",
+      "tts": {
+        "text": "ويُعزف عليه أيضًا خارج العالم العربي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وللأتراك عودهم الخاص.",
+      "text_markdown": "وللأتراك عودهم الخاص.",
+      "tts": {
+        "text": "وللأتراك عودهم الخاص.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ولليونانيين عودهم الخاص أيضًا.",
+      "text_markdown": "ولليونانيين عودهم الخاص أيضًا.",
+      "tts": {
+        "text": "ولليونانيين عودهم الخاص أيضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ويعزف الأرمن والإيرانيون على آلات قريبة منه.",
+      "text_markdown": "ويعزف الأرمن والإيرانيون على آلات قريبة منه.",
+      "tts": {
+        "text": "ويعزف الأرمن والإيرانيون على آلات قريبة منه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وفي إسبانيا، عُزف عليه مئات السنين.",
+      "text_markdown": "وفي إسبانيا، عُزف عليه مئات السنين.",
+      "tts": {
+        "text": "وفي إسبانيا، عُزف عليه مئات السنين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "واليوم توجد ثلاثة أنواع رئيسية من العود.",
+      "text_markdown": "واليوم توجد ثلاثة أنواع رئيسية من العود.",
+      "tts": {
+        "text": "واليوم توجد ثلاثة أنواع رئيسية من العود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "العود العربي كبير وعميق، وصوته ممتلئ ومتمهل.",
+      "text_markdown": "العود العربي كبير وعميق، وصوته ممتلئ ومتمهل.",
+      "tts": {
+        "text": "العود العربي كبير وعميق، وصوته ممتلئ ومتمهل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهو عود مصر وبلاد الشام.",
+      "text_markdown": "وهو عود مصر وبلاد الشام.",
+      "tts": {
+        "text": "وهو عود مصر وبلاد الشام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أما العود التركي فأصغر وأكثر لمعانًا، ويُضبط أعلى قليلًا من العود العربي.",
+      "text_markdown": "أما العود التركي فأصغر وأكثر لمعانًا، ويُضبط أعلى قليلًا من العود العربي.",
+      "tts": {
+        "text": "أما العود التركي فأصغر وأكثر لمعانًا، ويُضبط أعلى قليلًا من العود العربي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أما القريب الفارسي فيُسمى البربط.",
+      "text_markdown": "أما القريب الفارسي فيُسمى البربط.",
+      "tts": {
+        "text": "أما القريب الفارسي فيُسمى البربط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهو صغير وحاد، ويستعمل مجموعة مختلفة من النغمات.",
+      "text_markdown": "وهو صغير وحاد، ويستعمل مجموعة مختلفة من النغمات.",
+      "tts": {
+        "text": "وهو صغير وحاد، ويستعمل مجموعة مختلفة من النغمات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والعود هو قلب الموسيقى العربية الكلاسيكية وموسيقى المقام التركية.",
+      "text_markdown": "والعود هو قلب الموسيقى العربية الكلاسيكية وموسيقى المقام التركية.",
+      "tts": {
+        "text": "والعود هو قلب الموسيقى العربية الكلاسيكية وموسيقى المقام التركية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويُعزف في الأعراس والجنازات، وفي قاعات الحفلات وغرف الجلوس مع الأصدقاء.",
+      "text_markdown": "ويُعزف في الأعراس والجنازات، وفي قاعات الحفلات وغرف الجلوس مع الأصدقاء.",
+      "tts": {
+        "text": "ويُعزف في الأعراس والجنازات، وفي قاعات الحفلات وغرف الجلوس مع الأصدقاء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحيثما يجتمع الناس ويطلبون موسيقى فيها روح، قد يخرج أحدهم عودًا.",
+      "text_markdown": "وحيثما يجتمع الناس ويطلبون موسيقى فيها روح، قد يخرج أحدهم عودًا.",
+      "tts": {
+        "text": "وحيثما يجتمع الناس ويطلبون موسيقى فيها روح، قد يخرج أحدهم عودًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الخامس: المقام",
+      "text_markdown": "الفصل الخامس: المقام"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تعزف على البيانو، تضغط مفاتيح بيضاء وسوداء.",
+      "text_markdown": "حين تعزف على البيانو، تضغط مفاتيح بيضاء وسوداء.",
+      "tts": {
+        "text": "حين تعزف على البيانو، تضغط مفاتيح بيضاء وسوداء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في كل أوكتاف اثنتا عشرة نغمة، وكل خطوة لها الحجم نفسه.",
+      "text_markdown": "في كل أوكتاف اثنتا عشرة نغمة، وكل خطوة لها الحجم نفسه.",
+      "tts": {
+        "text": "في كل أوكتاف اثنتا عشرة نغمة، وكل خطوة لها الحجم نفسه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ونسمي هذا النظام التسوية المتساوية.",
+      "text_markdown": "ونسمي هذا النظام التسوية المتساوية.",
+      "tts": {
+        "text": "ونسمي هذا النظام التسوية المتساوية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن العود لا يعمل بهذه الطريقة.",
+      "text_markdown": "لكن العود لا يعمل بهذه الطريقة.",
+      "tts": {
+        "text": "لكن العود لا يعمل بهذه الطريقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فالعود يستعمل نظامًا أقدم بكثير يسمى المقام.",
+      "text_markdown": "فالعود يستعمل نظامًا أقدم بكثير يسمى المقام.",
+      "tts": {
+        "text": "فالعود يستعمل نظامًا أقدم بكثير يسمى المقام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والمقام طريقة لاختيار النغمات، وهناك مقامات كثيرة.",
+      "text_markdown": "والمقام طريقة لاختيار النغمات، وهناك مقامات كثيرة.",
+      "tts": {
+        "text": "والمقام طريقة لاختيار النغمات، وهناك مقامات كثيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ولكل مقام مزاجه الخاص.",
+      "text_markdown": "ولكل مقام مزاجه الخاص.",
+      "tts": {
+        "text": "ولكل مقام مزاجه الخاص.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بعضها فرح، وبعضها حزين، وبعضها فيه شيء من الغموض.",
+      "text_markdown": "بعضها فرح، وبعضها حزين، وبعضها فيه شيء من الغموض.",
+      "tts": {
+        "text": "بعضها فرح، وبعضها حزين، وبعضها فيه شيء من الغموض.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وسر المقام الكبير أنه يضم نغمات أكثر من البيانو.",
+      "text_markdown": "وسر المقام الكبير أنه يضم نغمات أكثر من البيانو.",
+      "tts": {
+        "text": "وسر المقام الكبير أنه يضم نغمات أكثر من البيانو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وبين المفاتيح البيضاء والسوداء، توجد خطوات أصغر نسميها أرباع الأصوات.",
+      "text_markdown": "وبين المفاتيح البيضاء والسوداء، توجد خطوات أصغر نسميها أرباع الأصوات.",
+      "tts": {
+        "text": "وبين المفاتيح البيضاء والسوداء، توجد خطوات أصغر نسميها أرباع الأصوات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وربع الصوت يساوي نصف نصف خطوة.",
+      "text_markdown": "وربع الصوت يساوي نصف نصف خطوة.",
+      "tts": {
+        "text": "وربع الصوت يساوي نصف نصف خطوة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها نغمة صغيرة تعيش بين النغمات التي تعرفها.",
+      "text_markdown": "إنها نغمة صغيرة تعيش بين النغمات التي تعرفها.",
+      "tts": {
+        "text": "إنها نغمة صغيرة تعيش بين النغمات التي تعرفها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ولا يمكنك عزفها على البيانو.",
+      "text_markdown": "ولا يمكنك عزفها على البيانو.",
+      "tts": {
+        "text": "ولا يمكنك عزفها على البيانو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أما على العود، فتحرك إصبعك قليلًا لتجدها.",
+      "text_markdown": "أما على العود، فتحرك إصبعك قليلًا لتجدها.",
+      "tts": {
+        "text": "أما على العود، فتحرك إصبعك قليلًا لتجدها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويتكوّن المقام من مجموعات صغيرة من النغمات.",
+      "text_markdown": "ويتكوّن المقام من مجموعات صغيرة من النغمات.",
+      "tts": {
+        "text": "ويتكوّن المقام من مجموعات صغيرة من النغمات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وتُسمى كل مجموعة صغيرة جنسًا.",
+      "text_markdown": "وتُسمى كل مجموعة صغيرة جنسًا.",
+      "tts": {
+        "text": "وتُسمى كل مجموعة صغيرة جنسًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومعظم الأجناس فيها أربع نغمات.",
+      "text_markdown": "ومعظم الأجناس فيها أربع نغمات.",
+      "tts": {
+        "text": "ومعظم الأجناس فيها أربع نغمات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يمكنك أن تتخيل الجنس كقطعة ليغو موسيقية صغيرة، ثم تكدس القطع لتبني مقامًا.",
+      "text_markdown": "يمكنك أن تتخيل الجنس كقطعة ليغو موسيقية صغيرة، ثم تكدس القطع لتبني مقامًا.",
+      "tts": {
+        "text": "يمكنك أن تتخيل الجنس كقطعة ليغو موسيقية صغيرة، ثم تكدس القطع لتبني مقامًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والمقام لحني، ولا يقوم على التآلفات.",
+      "text_markdown": "والمقام لحني، ولا يقوم على التآلفات.",
+      "tts": {
+        "text": "والمقام لحني، ولا يقوم على التآلفات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهذا يعني أن الموسيقى تمضي نغمة بعد نغمة، لا تآلفات مكدسة مثل الغيتار.",
+      "text_markdown": "وهذا يعني أن الموسيقى تمضي نغمة بعد نغمة، لا تآلفات مكدسة مثل الغيتار.",
+      "tts": {
+        "text": "وهذا يعني أن الموسيقى تمضي نغمة بعد نغمة، لا تآلفات مكدسة مثل الغيتار.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين يعزف العود لحنًا منفردًا بطيئًا ومتلويًا، يتحرك العازف داخل مقام.",
+      "text_markdown": "وحين يعزف العود لحنًا منفردًا بطيئًا ومتلويًا، يتحرك العازف داخل مقام.",
+      "tts": {
+        "text": "وحين يعزف العود لحنًا منفردًا بطيئًا ومتلويًا، يتحرك العازف داخل مقام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه يختار نغمات من جنس، ثم ينزلق إلى الجنس التالي.",
+      "text_markdown": "إنه يختار نغمات من جنس، ثم ينزلق إلى الجنس التالي.",
+      "tts": {
+        "text": "إنه يختار نغمات من جنس، ثم ينزلق إلى الجنس التالي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ولهذا اللحن المنفرد اسم.",
+      "text_markdown": "ولهذا اللحن المنفرد اسم.",
+      "tts": {
+        "text": "ولهذا اللحن المنفرد اسم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "نسميه تقسيمًا.",
+      "text_markdown": "نسميه تقسيمًا.",
+      "tts": {
+        "text": "نسميه تقسيمًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والتقسيم الجميل قد يضحكك، وقد يبكيك.",
+      "text_markdown": "والتقسيم الجميل قد يضحكك، وقد يبكيك.",
+      "tts": {
+        "text": "والتقسيم الجميل قد يضحكك، وقد يبكيك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهنا يبلغ العود أجمل صوره.",
+      "text_markdown": "وهنا يبلغ العود أجمل صوره.",
+      "tts": {
+        "text": "وهنا يبلغ العود أجمل صوره.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السادس: كبار الأساتذة",
+      "text_markdown": "الفصل السادس: كبار الأساتذة"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُعزف العود منذ أكثر من ألف عام.",
+      "text_markdown": "يُعزف العود منذ أكثر من ألف عام.",
+      "tts": {
+        "text": "يُعزف العود منذ أكثر من ألف عام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفي كل هذا الزمن، غيّره عدد قليل من الناس إلى الأبد.",
+      "text_markdown": "وفي كل هذا الزمن، غيّره عدد قليل من الناس إلى الأبد.",
+      "tts": {
+        "text": "وفي كل هذا الزمن، غيّره عدد قليل من الناس إلى الأبد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وأولهم كان مفكرًا أكثر من كونه عازفًا، واسمه الفارابي.",
+      "text_markdown": "وأولهم كان مفكرًا أكثر من كونه عازفًا، واسمه الفارابي.",
+      "tts": {
+        "text": "وأولهم كان مفكرًا أكثر من كونه عازفًا، واسمه الفارابي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "عاش تقريبًا بين سنة ثمانمئة واثنتين وسبعين وسنة تسعمئة وخمسين. وكان يعمل في بغداد العظيمة.",
+      "text_markdown": "عاش تقريبًا بين سنة ثمانمئة واثنتين وسبعين وسنة تسعمئة وخمسين. وكان يعمل في بغداد العظيمة.",
+      "tts": {
+        "text": "عاش تقريبًا بين سنة ثمانمئة واثنتين وسبعين وسنة تسعمئة وخمسين. وكان يعمل في بغداد العظيمة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكتب الفارابي كتابًا ضخمًا عن الموسيقى.",
+      "text_markdown": "وكتب الفارابي كتابًا ضخمًا عن الموسيقى.",
+      "tts": {
+        "text": "وكتب الفارابي كتابًا ضخمًا عن الموسيقى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وشرح فيه كيف تهتز الأوتار.",
+      "text_markdown": "وشرح فيه كيف تهتز الأوتار.",
+      "tts": {
+        "text": "وشرح فيه كيف تهتز الأوتار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وشرح لماذا تبدو بعض النغمات حلوة معًا.",
+      "text_markdown": "وشرح لماذا تبدو بعض النغمات حلوة معًا.",
+      "tts": {
+        "text": "وشرح لماذا تبدو بعض النغمات حلوة معًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وشرح كيف تستطيع الموسيقى أن تغيّر شعور الإنسان.",
+      "text_markdown": "وشرح كيف تستطيع الموسيقى أن تغيّر شعور الإنسان.",
+      "tts": {
+        "text": "وشرح كيف تستطيع الموسيقى أن تغيّر شعور الإنسان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وقُرئ كتابه بالعربية واللاتينية قرونًا طويلة.",
+      "text_markdown": "وقُرئ كتابه بالعربية واللاتينية قرونًا طويلة.",
+      "tts": {
+        "text": "وقُرئ كتابه بالعربية واللاتينية قرونًا طويلة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وثاني رجال العود الكبار كان مغنيًا اسمه زرياب. وُلد في العراق نحو سنة سبعمئة وتسع وثمانين.",
+      "text_markdown": "وثاني رجال العود الكبار كان مغنيًا اسمه زرياب. وُلد في العراق نحو سنة سبعمئة وتسع وثمانين.",
+      "tts": {
+        "text": "وثاني رجال العود الكبار كان مغنيًا اسمه زرياب. وُلد في العراق نحو سنة سبعمئة وتسع وثمانين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفي شبابه، اضطر إلى مغادرة بغداد على عجل.",
+      "text_markdown": "وفي شبابه، اضطر إلى مغادرة بغداد على عجل.",
+      "tts": {
+        "text": "وفي شبابه، اضطر إلى مغادرة بغداد على عجل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وسافر زرياب غربًا عبر شمال أفريقيا كله.",
+      "text_markdown": "وسافر زرياب غربًا عبر شمال أفريقيا كله.",
+      "tts": {
+        "text": "وسافر زرياب غربًا عبر شمال أفريقيا كله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ووصل إلى مدينة قرطبة في إسبانيا، سنة ثمانمئة واثنتين وعشرين.",
+      "text_markdown": "ووصل إلى مدينة قرطبة في إسبانيا، سنة ثمانمئة واثنتين وعشرين.",
+      "tts": {
+        "text": "ووصل إلى مدينة قرطبة في إسبانيا، سنة ثمانمئة واثنتين وعشرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وأحب ملك قرطبة موسيقاه، فأعطاه بيتًا وراتبًا ووقتًا للتعليم.",
+      "text_markdown": "وأحب ملك قرطبة موسيقاه، فأعطاه بيتًا وراتبًا ووقتًا للتعليم.",
+      "tts": {
+        "text": "وأحب ملك قرطبة موسيقاه، فأعطاه بيتًا وراتبًا ووقتًا للتعليم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي إسبانيا، فتح زرياب مدرسة للموسيقى.",
+      "text_markdown": "وفي إسبانيا، فتح زرياب مدرسة للموسيقى.",
+      "tts": {
+        "text": "وفي إسبانيا، فتح زرياب مدرسة للموسيقى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويقول بعض الناس إنها كانت أول معهد موسيقي في العالم.",
+      "text_markdown": "ويقول بعض الناس إنها كانت أول معهد موسيقي في العالم.",
+      "tts": {
+        "text": "ويقول بعض الناس إنها كانت أول معهد موسيقي في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وأضاف إلى العود مجموعة خامسة من الأوتار، وغيّر طريقة صنع المضرابات.",
+      "text_markdown": "وأضاف إلى العود مجموعة خامسة من الأوتار، وغيّر طريقة صنع المضرابات.",
+      "tts": {
+        "text": "وأضاف إلى العود مجموعة خامسة من الأوتار، وغيّر طريقة صنع المضرابات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبعد زرياب بزمن طويل، رفع عازف من العراق العود إلى مكان جديد.",
+      "text_markdown": "وبعد زرياب بزمن طويل، رفع عازف من العراق العود إلى مكان جديد.",
+      "tts": {
+        "text": "وبعد زرياب بزمن طويل، رفع عازف من العراق العود إلى مكان جديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان اسمه منير بشير، وكان الناس يسمونه ملك العود.",
+      "text_markdown": "كان اسمه منير بشير، وكان الناس يسمونه ملك العود.",
+      "tts": {
+        "text": "كان اسمه منير بشير، وكان الناس يسمونه ملك العود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقبل بشير، كان العود يعزف غالبًا مع آلات أخرى.",
+      "text_markdown": "وقبل بشير، كان العود يعزف غالبًا مع آلات أخرى.",
+      "tts": {
+        "text": "وقبل بشير، كان العود يعزف غالبًا مع آلات أخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لكن بشير وضعه وحده على المسرح، وعزف مقطوعات منفردة طويلة، هادئة، وعميقة.",
+      "text_markdown": "لكن بشير وضعه وحده على المسرح، وعزف مقطوعات منفردة طويلة، هادئة، وعميقة.",
+      "tts": {
+        "text": "لكن بشير وضعه وحده على المسرح، وعزف مقطوعات منفردة طويلة، هادئة، وعميقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سمعه الناس في أنحاء العالم، ووقعوا في حب العود من جديد.",
+      "text_markdown": "سمعه الناس في أنحاء العالم، ووقعوا في حب العود من جديد.",
+      "tts": {
+        "text": "سمعه الناس في أنحاء العالم، ووقعوا في حب العود من جديد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكان هناك كثيرون غيره.",
+      "text_markdown": "وكان هناك كثيرون غيره.",
+      "tts": {
+        "text": "وكان هناك كثيرون غيره.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وجعل فريد الأطرش العود صوت الأفلام المصرية.",
+      "text_markdown": "وجعل فريد الأطرش العود صوت الأفلام المصرية.",
+      "tts": {
+        "text": "وجعل فريد الأطرش العود صوت الأفلام المصرية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويعزف أنور براهم من تونس العود مع موسيقيي الجاز من أوروبا وأمريكا.",
+      "text_markdown": "ويعزف أنور براهم من تونس العود مع موسيقيي الجاز من أوروبا وأمريكا.",
+      "tts": {
+        "text": "ويعزف أنور براهم من تونس العود مع موسيقيي الجاز من أوروبا وأمريكا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والعود ما زال حيًا.",
+      "text_markdown": "والعود ما زال حيًا.",
+      "tts": {
+        "text": "والعود ما زال حيًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفي كل سنة، يولد أستاذ جديد للعود في مكان ما من العالم.",
+      "text_markdown": "وفي كل سنة، يولد أستاذ جديد للعود في مكان ما من العالم.",
+      "tts": {
+        "text": "وفي كل سنة، يولد أستاذ جديد للعود في مكان ما من العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السابع: العود والعالم",
+      "text_markdown": "الفصل السابع: العود والعالم"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لم يبق العود داخل العالم العربي.",
+      "text_markdown": "لم يبق العود داخل العالم العربي.",
+      "tts": {
+        "text": "لم يبق العود داخل العالم العربي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ومع رحلته، تغيّر شكله وتغيّر اسمه وتغيّرت أغانيه.",
+      "text_markdown": "ومع رحلته، تغيّر شكله وتغيّر اسمه وتغيّرت أغانيه.",
+      "tts": {
+        "text": "ومع رحلته، تغيّر شكله وتغيّر اسمه وتغيّرت أغانيه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين وصل العود إلى إسبانيا في العصور الوسطى، أحب الأوروبيون ظهره الخشبي المستدير وصوته العميق.",
+      "text_markdown": "وحين وصل العود إلى إسبانيا في العصور الوسطى، أحب الأوروبيون ظهره الخشبي المستدير وصوته العميق.",
+      "tts": {
+        "text": "وحين وصل العود إلى إسبانيا في العصور الوسطى، أحب الأوروبيون ظهره الخشبي المستدير وصوته العميق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لكنهم أرادوا دساتين، مثل الآلات الصغيرة التي عرفوها من قبل.",
+      "text_markdown": "لكنهم أرادوا دساتين، مثل الآلات الصغيرة التي عرفوها من قبل.",
+      "tts": {
+        "text": "لكنهم أرادوا دساتين، مثل الآلات الصغيرة التي عرفوها من قبل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "فأضافوا الدساتين، وسطحوا الظهر قليلًا، وسموا الآلة الجديدة اللوت.",
+      "text_markdown": "فأضافوا الدساتين، وسطحوا الظهر قليلًا، وسموا الآلة الجديدة اللوت.",
+      "tts": {
+        "text": "فأضافوا الدساتين، وسطحوا الظهر قليلًا، وسموا الآلة الجديدة اللوت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولخمسمئة سنة، كان اللوت الآلة المفضلة في أوروبا.",
+      "text_markdown": "ولخمسمئة سنة، كان اللوت الآلة المفضلة في أوروبا.",
+      "tts": {
+        "text": "ولخمسمئة سنة، كان اللوت الآلة المفضلة في أوروبا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "عزف عليه الملوك.",
+      "text_markdown": "عزف عليه الملوك.",
+      "tts": {
+        "text": "عزف عليه الملوك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وعزف عليه الشعراء.",
+      "text_markdown": "وعزف عليه الشعراء.",
+      "tts": {
+        "text": "وعزف عليه الشعراء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكتب له أعظم المؤلفين مقطوعات.",
+      "text_markdown": "وكتب له أعظم المؤلفين مقطوعات.",
+      "tts": {
+        "text": "وكتب له أعظم المؤلفين مقطوعات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تغيّر اللوت مرة أخرى.",
+      "text_markdown": "ثم تغيّر اللوت مرة أخرى.",
+      "tts": {
+        "text": "ثم تغيّر اللوت مرة أخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أضاف العازفون أوتارًا أكثر، وسطحوا الظهر أكثر، ووضعوا له جسمًا أصغر حجمًا وأخف وزنًا.",
+      "text_markdown": "أضاف العازفون أوتارًا أكثر، وسطحوا الظهر أكثر، ووضعوا له جسمًا أصغر حجمًا وأخف وزنًا.",
+      "tts": {
+        "text": "أضاف العازفون أوتارًا أكثر، وسطحوا الظهر أكثر، ووضعوا له جسمًا أصغر حجمًا وأخف وزنًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبحلول سنة ألف وثمانمئة تقريبًا، كان لهذه الآلة الجديدة في إسبانيا اسم نعرفه جميعًا.",
+      "text_markdown": "وبحلول سنة ألف وثمانمئة تقريبًا، كان لهذه الآلة الجديدة في إسبانيا اسم نعرفه جميعًا.",
+      "tts": {
+        "text": "وبحلول سنة ألف وثمانمئة تقريبًا، كان لهذه الآلة الجديدة في إسبانيا اسم نعرفه جميعًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كان اسمها الغيتار.",
+      "text_markdown": "كان اسمها الغيتار.",
+      "tts": {
+        "text": "كان اسمها الغيتار.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لذلك، فالعود واللوت والغيتار كلها من عائلة واحدة.",
+      "text_markdown": "لذلك، فالعود واللوت والغيتار كلها من عائلة واحدة.",
+      "tts": {
+        "text": "لذلك، فالعود واللوت والغيتار كلها من عائلة واحدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها أبناء عمومة، ولها جد واحد.",
+      "text_markdown": "إنها أبناء عمومة، ولها جد واحد.",
+      "tts": {
+        "text": "إنها أبناء عمومة، ولها جد واحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وذلك الجد هو العود.",
+      "text_markdown": "وذلك الجد هو العود.",
+      "tts": {
+        "text": "وذلك الجد هو العود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "واليوم، يعزف العود والغيتار معًا.",
+      "text_markdown": "واليوم، يعزف العود والغيتار معًا.",
+      "tts": {
+        "text": "واليوم، يعزف العود والغيتار معًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويعزف أنور براهم العود مع عازفي غيتار الجاز.",
+      "text_markdown": "ويعزف أنور براهم العود مع عازفي غيتار الجاز.",
+      "tts": {
+        "text": "ويعزف أنور براهم العود مع عازفي غيتار الجاز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكان منير بشير يعزف مع الأوركسترات.",
+      "text_markdown": "وكان منير بشير يعزف مع الأوركسترات.",
+      "tts": {
+        "text": "وكان منير بشير يعزف مع الأوركسترات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ويمزج العازفون الشباب في بيروت وإسطنبول وباريس ونيويورك العود بالروك والهيب هوب وموسيقى الأفلام.",
+      "text_markdown": "ويمزج العازفون الشباب في بيروت وإسطنبول وباريس ونيويورك العود بالروك والهيب هوب وموسيقى الأفلام.",
+      "tts": {
+        "text": "ويمزج العازفون الشباب في بيروت وإسطنبول وباريس ونيويورك العود بالروك والهيب هوب وموسيقى الأفلام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والعود أكثر من آلة موسيقية.",
+      "text_markdown": "والعود أكثر من آلة موسيقية.",
+      "tts": {
+        "text": "والعود أكثر من آلة موسيقية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه جسر.",
+      "text_markdown": "إنه جسر.",
+      "tts": {
+        "text": "إنه جسر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنه يحمل حكاية من بلاد الرافدين، عبر فارس، وعبر العالم العربي، إلى إسبانيا، ثم إلى أوروبا، ثم إلى كل بلد في العالم.",
+      "text_markdown": "إنه يحمل حكاية من بلاد الرافدين، عبر فارس، وعبر العالم العربي، إلى إسبانيا، ثم إلى أوروبا، ثم إلى كل بلد في العالم.",
+      "tts": {
+        "text": "إنه يحمل حكاية من بلاد الرافدين، عبر فارس، وعبر العالم العربي، إلى إسبانيا، ثم إلى أوروبا، ثم إلى كل بلد في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكلما سمعت غيتارًا، أمكنك في العمق البعيد أن تسمع صوت العود الناعم العميق.",
+      "text_markdown": "وكلما سمعت غيتارًا، أمكنك في العمق البعيد أن تسمع صوت العود الناعم العميق.",
+      "tts": {
+        "text": "وكلما سمعت غيتارًا، أمكنك في العمق البعيد أن تسمع صوت العود الناعم العميق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "عن هذا الكتاب",
+      "text_markdown": "عن هذا الكتاب"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا هو المجلد الأول من سلسلة الآلات الموسيقية في العالم.",
+      "text_markdown": "هذا هو المجلد الأول من سلسلة الآلات الموسيقية في العالم.",
+      "tts": {
+        "text": "هذا هو المجلد الأول من سلسلة الآلات الموسيقية في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كل كتاب في هذه السلسلة يروي حكاية آلة واحدة.",
+      "text_markdown": "كل كتاب في هذه السلسلة يروي حكاية آلة واحدة.",
+      "tts": {
+        "text": "كل كتاب في هذه السلسلة يروي حكاية آلة واحدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل كتاب قصير، وكل كتاب حقيقي.",
+      "text_markdown": "كل كتاب قصير، وكل كتاب حقيقي.",
+      "tts": {
+        "text": "كل كتاب قصير، وكل كتاب حقيقي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والكتاب التالي عن السيتار، وهو اللوت الهندي العظيم ذو الرقبة الطويلة، وأوتاره الكثيرة، وصوته العميق الرنان.",
+      "text_markdown": "والكتاب التالي عن السيتار، وهو اللوت الهندي العظيم ذو الرقبة الطويلة، وأوتاره الكثيرة، وصوته العميق الرنان.",
+      "tts": {
+        "text": "والكتاب التالي عن السيتار، وهو اللوت الهندي العظيم ذو الرقبة الطويلة، وأوتاره الكثيرة، وصوته العميق الرنان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وبعد السيتار، سنسافر إلى غرب أفريقيا من أجل الكورا، ثم إلى اليابان من أجل الشاكوهاشي.",
+      "text_markdown": "وبعد السيتار، سنسافر إلى غرب أفريقيا من أجل الكورا، ثم إلى اليابان من أجل الشاكوهاشي.",
+      "tts": {
+        "text": "وبعد السيتار، سنسافر إلى غرب أفريقيا من أجل الكورا، ثم إلى اليابان من أجل الشاكوهاشي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "شكرًا لك على الاستماع.",
+      "text_markdown": "شكرًا لك على الاستماع.",
+      "tts": {
+        "text": "شكرًا لك على الاستماع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اذهب وابحث عن عود، على الإنترنت أو في مدينتك، ودعه يعزف لك.",
+      "text_markdown": "اذهب وابحث عن عود، على الإنترنت أو في مدينتك، ودعه يعزف لك.",
+      "tts": {
+        "text": "اذهب وابحث عن عود، على الإنترنت أو في مدينتك، ودعه يعزف لك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "fa",
+  "total_segments": 167,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "به «هوش مصنوعی این هفته» خوش آمدید.",
+      "text_markdown": "به «هوش مصنوعی این هفته» خوش آمدید.",
+      "title": "",
+      "tts": {
+        "text": "به «هوش مصنوعی این هفته» خوش آمدید.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "من ویندی هستم.",
+      "text_markdown": "من ویندی هستم.",
+      "title": "",
+      "tts": {
+        "text": "من ویندی هستم.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "مثل همیشه، ران هم با من است.",
+      "text_markdown": "مثل همیشه، ران هم با من است.",
+      "title": "",
+      "tts": {
+        "text": "مثل همیشه، ران هم با من است.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "خوشحالم که اینجا هستم، ویندی.",
+      "text_markdown": "خوشحالم که اینجا هستم، ویندی.",
+      "title": "",
+      "tts": {
+        "text": "خوشحالم که اینجا هستم، ویندی.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "امروز چهارشنبه، ۲۰ مه ۲۰۲۶ است.",
+      "text_markdown": "امروز چهارشنبه، ۲۰ مه ۲۰۲۶ است.",
+      "title": "",
+      "tts": {
+        "text": "امروز چهارشنبه، بیستم مه، سال دو هزار و بیست و شش است.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "هفته شلوغی بود.",
+      "text_markdown": "هفته شلوغی بود.",
+      "title": "",
+      "tts": {
+        "text": "هفته شلوغی بود.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "گوگل کنفرانس توسعه‌دهندگان خود را برگزار کرد، پاپ یک بخشنامه درباره هوش مصنوعی را به پایان رساند، و دنیای «وزن‌های باز» به انتشار ادامه داد در حالی که بقیه روی صحنه بودند.",
+      "text_markdown": "گوگل کنفرانس توسعه‌دهندگان خود را برگزار کرد، پاپ یک بخشنامه درباره هوش مصنوعی را به پایان رساند، و دنیای «وزن‌های باز» به انتشار ادامه داد در حالی که بقیه روی صحنه بودند.",
+      "title": "",
+      "tts": {
+        "text": "گوگل کنفرانس توسعه‌دهندگان خود را برگزار کرد، پاپ یک بخشنامه درباره هوش مصنوعی را به پایان رساند، و دنیای «اوپن وِیتس» به انتشار ادامه داد در حالی که بقیه روی صحنه بودند.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "در ادامه — چه چیزهایی در «وزن‌های باز» این هفته تغییر کرد.",
+      "text_markdown": "در ادامه — چه چیزهایی در «وزن‌های باز» این هفته تغییر کرد.",
+      "title": "",
+      "tts": {
+        "text": "در ادامه — چه چیزهایی در «اوپن وِیتس» این هفته تغییر کرد.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "جایگاه جدول‌های امتیازات.",
+      "text_markdown": "جایگاه جدول‌های امتیازات.",
+      "title": "",
+      "tts": {
+        "text": "جایگاه جدول‌های امتیازات.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "مروری سریع بر تیترهای خبری از آزمایشگاه‌های بزرگ‌تر.",
+      "text_markdown": "مروری سریع بر تیترهای خبری از آزمایشگاه‌های بزرگ‌تر.",
+      "title": "",
+      "tts": {
+        "text": "مروری سریع بر تیترهای خبری از آزمایشگاه‌های بزرگ‌تر.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "داستان اصلی ما، اولین بخشنامه واتیکان درباره هوش مصنوعی.",
+      "text_markdown": "داستان اصلی ما، اولین بخشنامه واتیکان درباره هوش مصنوعی.",
+      "title": "",
+      "tts": {
+        "text": "داستان اصلی ما، اولین بخشنامه واتیکان درباره هوش مصنوعی.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "و مفهوم هفته «کوانتیزاسیون» است — چگونه یک مدل ۷ میلیارد پارامتری روی گوشی شما جا می‌شود.",
+      "text_markdown": "و مفهوم هفته «کوانتیزاسیون» است — چگونه یک مدل ۷ میلیارد پارامتری روی گوشی شما جا می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "و مفهوم هفته «کوانتیزاسیون» است — چگونه یک مدل هفت میلیارد پارامتری روی گوشی شما جا می‌شود.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "ران، بیایید با «وزن‌های باز» شروع کنیم.",
+      "text_markdown": "ران، بیایید با «وزن‌های باز» شروع کنیم.",
+      "title": "",
+      "tts": {
+        "text": "ران، بیایید با «اوپن وِیتس» شروع کنیم.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "این هفته چه چیزی در جامعه در حال تغییر است؟",
+      "text_markdown": "این هفته چه چیزی در جامعه در حال تغییر است؟",
+      "title": "",
+      "tts": {
+        "text": "این هفته چه چیزی در جامعه در حال تغییر است؟",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "بزرگترین خبر «وزن‌های باز» در حال حاضر این است که چه کسی کجا آموزش می‌دهد.",
+      "text_markdown": "بزرگترین خبر «وزن‌های باز» در حال حاضر این است که چه کسی کجا آموزش می‌دهد.",
+      "title": "",
+      "tts": {
+        "text": "بزرگترین خبر «اوپن وِیتس» در حال حاضر این است که چه کسی کجا آموزش می‌دهد.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "دو مورد از جالب‌ترین نسخه‌های عمومی اخیر که روی سیلیکون غیر-NVIDIA آموزش دیده‌اند.",
+      "text_markdown": "دو مورد از جالب‌ترین نسخه‌های عمومی اخیر که روی سیلیکون غیر-NVIDIA آموزش دیده‌اند.",
+      "title": "",
+      "tts": {
+        "text": "دو مورد از جالب‌ترین نسخه‌های عمومی اخیر که روی سیلیکون غیر اِن ویدیا آموزش دیده‌اند.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "آن را برای ما توضیح دهید.",
+      "text_markdown": "آن را برای ما توضیح دهید.",
+      "title": "",
+      "tts": {
+        "text": "آن را برای ما توضیح دهید.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Zhipu AI در پکن خانواده GLM-5 را اوایل امسال عرضه کرد — GLM-5 در فوریه و به‌روزرسانی به نام GLM-5.1 در آوریل.",
+      "text_markdown": "Zhipu AI در پکن خانواده GLM-5 را اوایل امسال عرضه کرد — GLM-5 در فوریه و به‌روزرسانی به نام GLM-5.1 در آوریل.",
+      "title": "",
+      "tts": {
+        "text": "ژیپو اِی آی در پکن خانواده جی ال اِم پنج را اوایل امسال عرضه کرد — جی ال اِم پنج در فوریه و به‌روزرسانی به نام جی ال اِم پنج پوینت یک در آوریل.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "کل خانواده GLM-5 تقریباً روی ۱۰۰,۰۰۰ تراشه Huawei Ascend 910B، با استفاده از چارچوب MindSpore، و بدون هیچ GPU انویدیا آموزش دید.",
+      "text_markdown": "کل خانواده GLM-5 تقریباً روی ۱۰۰,۰۰۰ تراشه Huawei Ascend 910B، با استفاده از چارچوب MindSpore، و بدون هیچ GPU انویدیا آموزش دید.",
+      "title": "",
+      "tts": {
+        "text": "کل خانواده جی ال اِم پنج تقریباً روی صد هزار تراشه هوآوی اَسِند نهصد و ده بی، با استفاده از چارچوب ماینداسپور، و بدون هیچ جی پی یو اِن ویدیا آموزش دید.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "و Zyphra، یک آزمایشگاه آمریکایی، مدلی به نام ZAYA1-8B را اوایل این ماه عرضه کرد که روی خوشه‌ای از نودهای AMD MI300x ساخته شده با IBM از پیش آموزش دیده بود.",
+      "text_markdown": "و Zyphra، یک آزمایشگاه آمریکایی، مدلی به نام ZAYA1-8B را اوایل این ماه عرضه کرد که روی خوشه‌ای از نودهای AMD MI300x ساخته شده با IBM از پیش آموزش دیده بود.",
+      "title": "",
+      "tts": {
+        "text": "و زایفرا، یک آزمایشگاه آمریکایی، مدلی به نام زایا یک هشت بی را اوایل این ماه عرضه کرد که روی خوشه‌ای از نودهای اِی اِم دی اِم آی سیصد ایکس ساخته شده با آی بی اِم از پیش آموزش دیده بود.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "چرا سیلیکون اهمیت دارد؟",
+      "text_markdown": "چرا سیلیکون اهمیت دارد؟",
+      "title": "",
+      "tts": {
+        "text": "چرا سیلیکون اهمیت دارد؟",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "دو دلیل دارد.",
+      "text_markdown": "دو دلیل دارد.",
+      "title": "",
+      "tts": {
+        "text": "دو دلیل دارد.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "یک — در سه سال گذشته، هر اجرای جدی آموزش مدل‌های پیشرفته به NVIDIA H100s یا H200s نیاز داشته است.",
+      "text_markdown": "یک — در سه سال گذشته، هر اجرای جدی آموزش مدل‌های پیشرفته به NVIDIA H100s یا H200s نیاز داشته است.",
+      "title": "",
+      "tts": {
+        "text": "یک — در سه سال گذشته، هر اجرای جدی آموزش مدل‌های پیشرفته به اِن ویدیا اِچ صد اِس یا اِچ دویست اِس نیاز داشته است.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "دو — این عرضه گلوگاه بوده است، و فرض بر این بود که مرزهای باز و چینی به همین دلیل یک نسل عقب‌تر هستند.",
+      "text_markdown": "دو — این عرضه گلوگاه بوده است، و فرض بر این بود که مرزهای باز و چینی به همین دلیل یک نسل عقب‌تر هستند.",
+      "title": "",
+      "tts": {
+        "text": "دو — این عرضه گلوگاه بوده است، و فرض بر این بود که مرزهای باز و چینی به همین دلیل یک نسل عقب‌تر هستند.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "هنگامی که یک اجرای در سطح پیشرفته روی Huawei Ascend یا AMD قرار می‌گیرد، هر آزمایشگاه باز دیگری می‌تواند از این الگو کپی کند.",
+      "text_markdown": "هنگامی که یک اجرای در سطح پیشرفته روی Huawei Ascend یا AMD قرار می‌گیرد، هر آزمایشگاه باز دیگری می‌تواند از این الگو کپی کند.",
+      "title": "",
+      "tts": {
+        "text": "هنگامی که یک اجرای در سطح پیشرفته روی هوآوی اَسِند یا اِی اِم دی قرار می‌گیرد، هر آزمایشگاه باز دیگری می‌تواند از این الگو کپی کند.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "این همان چیزی است که امسال در حال وقوع است.",
+      "text_markdown": "این همان چیزی است که امسال در حال وقوع است.",
+      "title": "",
+      "tts": {
+        "text": "این همان چیزی است که امسال در حال وقوع است.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "چیز دیگری از سمت باز این هفته؟",
+      "text_markdown": "چیز دیگری از سمت باز این هفته؟",
+      "title": "",
+      "tts": {
+        "text": "چیز دیگری از سمت باز این هفته؟",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "بله، سه نکته قابل توجه.",
+      "text_markdown": "بله، سه نکته قابل توجه.",
+      "title": "",
+      "tts": {
+        "text": "بله، سه نکته قابل توجه.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Kimi K2.6 از Moonshot، که در اواخر آوریل منتشر شد، همچنان در رده‌های بالای OpenRouter از نظر حجم توکن قرار دارد — در هفته اول خود با ۱.۸۸ تریلیون توکن ارائه شده، در صدر جدول قرار گرفت.",
+      "text_markdown": "Kimi K2.6 از Moonshot، که در اواخر آوریل منتشر شد، همچنان در رده‌های بالای OpenRouter از نظر حجم توکن قرار دارد — در هفته اول خود با ۱.۸۸ تریلیون توکن ارائه شده، در صدر جدول قرار گرفت.",
+      "title": "",
+      "tts": {
+        "text": "کیمی کِی دو پوینت شش از مون‌شات، که در اواخر آوریل منتشر شد، همچنان در رده‌های بالای اوپن‌روتر از نظر حجم توکن قرار دارد — در هفته اول خود با یک پوینت هشتاد و هشت تریلیون توکن ارائه شده، در صدر جدول قرار گرفت.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "این اولین بار بود که یک مدل چینی با وزن‌های باز، Claude Sonnet و DeepSeek را در روتر تجاری اصلی پشت سر گذاشته بود.",
+      "text_markdown": "این اولین بار بود که یک مدل چینی با وزن‌های باز، Claude Sonnet و DeepSeek را در روتر تجاری اصلی پشت سر گذاشته بود.",
+      "title": "",
+      "tts": {
+        "text": "این اولین بار بود که یک مدل چینی با وزن‌های باز، کلود سانِت و دیپ‌سیک را در روتر تجاری اصلی پشت سر گذاشته بود.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "DeepSeek V4-Pro دارای ۱.۶ تریلیون پارامتر کلی با ۴۹ میلیارد پارامتر فعال است.",
+      "text_markdown": "DeepSeek V4-Pro دارای ۱.۶ تریلیون پارامتر کلی با ۴۹ میلیارد پارامتر فعال است.",
+      "title": "",
+      "tts": {
+        "text": "دیپ‌سیک وی چهار پرو دارای یک ممیز شش تریلیون پارامتر کلی با چهل و نه میلیارد پارامتر فعال است.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "خواهر و برادر ارزان‌تر آن‌ها، V4-Flash، دارای ۲۸۴ میلیارد پارامتر کلی با ۱۳ میلیارد پارامتر فعال است.",
+      "text_markdown": "خواهر و برادر ارزان‌تر آن‌ها، V4-Flash، دارای ۲۸۴ میلیارد پارامتر کلی با ۱۳ میلیارد پارامتر فعال است.",
+      "title": "",
+      "tts": {
+        "text": "خواهر و برادر ارزان‌تر آن‌ها، وی چهار فلش، دارای دویست و هشتاد و چهار میلیارد پارامتر کلی با سیزده میلیارد پارامتر فعال است.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "هر دو تحت مجوز MIT دارای وزن‌های باز هستند.",
+      "text_markdown": "هر دو تحت مجوز MIT دارای وزن‌های باز هستند.",
+      "title": "",
+      "tts": {
+        "text": "هر دو تحت مجوز MIT دارای وزن‌های باز هستند.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "درباره ZAYA1-8B به طور خاص بیشتر بگویید.",
+      "text_markdown": "درباره ZAYA1-8B به طور خاص بیشتر بگویید.",
+      "title": "",
+      "tts": {
+        "text": "درباره زایا یک هشت بی به طور خاص بیشتر بگویید.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "این یک مدل کوچک mixture-of-experts است — ۸.۴ میلیارد پارامتر کلی، با تنها حدود ۷۶۰ میلیون پارامتر فعال به ازای هر توکن.",
+      "text_markdown": "این یک مدل کوچک mixture-of-experts است — ۸.۴ میلیارد پارامتر کلی، با تنها حدود ۷۶۰ میلیون پارامتر فعال به ازای هر توکن.",
+      "title": "",
+      "tts": {
+        "text": "این یک مدل کوچک میکسچر آو اکسپرتس است — هشت ممیز چهار میلیارد پارامتر کلی، با تنها حدود هفتصد و شصت میلیون پارامتر فعال به ازای هر توکن.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "مجوز Apache 2.0، بنابراین می‌توانید آن را به صورت تجاری استفاده کنید.",
+      "text_markdown": "مجوز Apache 2.0، بنابراین می‌توانید آن را به صورت تجاری استفاده کنید.",
+      "title": "",
+      "tts": {
+        "text": "مجوز آپاچی دو ممیز صفر، بنابراین می‌توانید آن را به صورت تجاری استفاده کنید.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "از پیش روی خوشه‌ای متشکل از حدود ۱,۰۲۴ گره AMD MI300x آموزش دیده است، بدون دخالت سخت‌افزار NVIDIA.",
+      "text_markdown": "از پیش روی خوشه‌ای متشکل از حدود ۱,۰۲۴ گره AMD MI300x آموزش دیده است، بدون دخالت سخت‌افزار NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "از پیش روی خوشه‌ای متشکل از حدود یک هزار و بیست و چهار گره ای ام دی ام آی سیصد ایکس آموزش دیده است، بدون دخالت سخت‌افزار انویدیا.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "این مدل در AIME، معیار المپیاد ریاضی، امتیاز ۸۹.۱ را کسب کرده و مدل‌های بسیار بزرگ‌تر را در ریاضیات و کدنویسی شکست می‌دهد، در حالی که با بودجه‌ای کمتر از ۱ میلیارد پارامتر فعال کار می‌کند.",
+      "text_markdown": "این مدل در AIME، معیار المپیاد ریاضی، امتیاز ۸۹.۱ را کسب کرده و مدل‌های بسیار بزرگ‌تر را در ریاضیات و کدنویسی شکست می‌دهد، در حالی که با بودجه‌ای کمتر از ۱ میلیارد پارامتر فعال کار می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "این مدل در ای آی ام ای، معیار المپیاد ریاضی، امتیاز هشتاد و نه ممیز یک را کسب کرده و مدل‌های بسیار بزرگ‌تر را در ریاضیات و کدنویسی شکست می‌دهد، در حالی که با بودجه‌ای کمتر از یک میلیارد پارامتر فعال کار می‌کند.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "دو آزمایشگاه با وزن‌های باز که در عرض دو ماه بدون NVIDIA آموزش دیدند.",
+      "text_markdown": "دو آزمایشگاه با وزن‌های باز که در عرض دو ماه بدون NVIDIA آموزش دیدند.",
+      "title": "",
+      "tts": {
+        "text": "دو آزمایشگاه با وزن‌های باز که در عرض دو ماه بدون انویدیا آموزش دیدند.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "تصادفی نیست.",
+      "text_markdown": "تصادفی نیست.",
+      "title": "",
+      "tts": {
+        "text": "تصادفی نیست.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "زیرساخت‌ها بالاخره به روز شدند — AMD ROCm و Huawei CANN هر دو در سال ۲۰۲۵ قابل استفاده شدند، و سال ۲۰۲۶ زمانی است که جامعه متن‌باز در حال اجرای عملیات‌های واقعی در سطح مرزی روی آن‌ها است.",
+      "text_markdown": "زیرساخت‌ها بالاخره به روز شدند — AMD ROCm و Huawei CANN هر دو در سال ۲۰۲۵ قابل استفاده شدند، و سال ۲۰۲۶ زمانی است که جامعه متن‌باز در حال اجرای عملیات‌های واقعی در سطح مرزی روی آن‌ها است.",
+      "title": "",
+      "tts": {
+        "text": "زیرساخت‌ها بالاخره به روز شدند — ای ام دی آر او سی ام و هوآوی سی ای ان ان هر دو در سال دو هزار و بیست و پنج قابل استفاده شدند، و سال دو هزار و بیست و شش زمانی است که جامعه متن‌باز در حال اجرای عملیات‌های واقعی در سطح مرزی روی آن‌ها است.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "در مورد بخش زیرساخت چه؟",
+      "text_markdown": "در مورد بخش زیرساخت چه؟",
+      "title": "",
+      "tts": {
+        "text": "در مورد بخش زیرساخت چه؟",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "vLLM نسخه ۰.۲۱ در جمعه، ۱۵ می عرضه شد.",
+      "text_markdown": "vLLM نسخه ۰.۲۱ در جمعه، ۱۵ می عرضه شد.",
+      "title": "",
+      "tts": {
+        "text": "وی ال ال ام نسخه صفر ممیز بیست و یک در جمعه، پانزدهم می عرضه شد.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "vLLM پشته سرویس‌دهی متن‌باز است — آنچه که شما واقعاً اجرا می‌کنید وقتی می‌خواهید خودتان یک مدل را میزبانی کنید.",
+      "text_markdown": "vLLM پشته سرویس‌دهی متن‌باز است — آنچه که شما واقعاً اجرا می‌کنید وقتی می‌خواهید خودتان یک مدل را میزبانی کنید.",
+      "title": "",
+      "tts": {
+        "text": "وی ال ال ام پشته سرویس‌دهی متن‌باز است — آنچه که شما واقعاً اجرا می‌کنید وقتی می‌خواهید خودتان یک مدل را میزبانی کنید.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "این سیستم دسته‌بندی، صفحه‌بندی و استفاده مجدد از کش KV را مدیریت می‌کند، و اکنون برای هر کسی که از API بسته استفاده نمی‌کند، پیش‌فرض در تولید است.",
+      "text_markdown": "این سیستم دسته‌بندی، صفحه‌بندی و استفاده مجدد از کش KV را مدیریت می‌کند، و اکنون برای هر کسی که از API بسته استفاده نمی‌کند، پیش‌فرض در تولید است.",
+      "title": "",
+      "tts": {
+        "text": "این سیستم دسته‌بندی، صفحه‌بندی و استفاده مجدد از کش KV را مدیریت می‌کند، و اکنون برای هر کسی که از API بسته استفاده نمی‌کند، پیش‌فرض در تولید است.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "این نسخه قابلیت KV offload را با یک تخصیص‌دهنده حافظه هیبریدی، و یک بک‌اند توجه جدید که برای پیش‌بارگذاری DeepSeek-R1 و Kimi K2.5 روی GPUهای Blackwell تنظیم شده است، اضافه می‌کند.",
+      "text_markdown": "این نسخه قابلیت KV offload را با یک تخصیص‌دهنده حافظه هیبریدی، و یک بک‌اند توجه جدید که برای پیش‌بارگذاری DeepSeek-R1 و Kimi K2.5 روی GPUهای Blackwell تنظیم شده است، اضافه می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "این نسخه قابلیت کی وی آف‌لود را با یک تخصیص‌دهنده حافظه هیبریدی، و یک بک‌اند توجه جدید که برای پیش‌بارگذاری دیپ‌سیک آر یک و کیمی کی دو پوینت فایو روی جی‌پی‌یوهای بلک‌ول تنظیم شده است، اضافه می‌کند.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "پشته سرویس‌دهی باز در حال عرضه است، در حالی که آزمایشگاه‌های بزرگ سخنرانی‌های اصلی خود را ارائه می‌دهند.",
+      "text_markdown": "پشته سرویس‌دهی باز در حال عرضه است، در حالی که آزمایشگاه‌های بزرگ سخنرانی‌های اصلی خود را ارائه می‌دهند.",
+      "title": "",
+      "tts": {
+        "text": "پشته سرویس‌دهی باز در حال عرضه است، در حالی که آزمایشگاه‌های بزرگ سخنرانی‌های اصلی خود را ارائه می‌دهند.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "خب، بریم سراغ جدول‌های رده‌بندی.",
+      "text_markdown": "خب، بریم سراغ جدول‌های رده‌بندی.",
+      "title": "",
+      "tts": {
+        "text": "خب، بریم سراغ جدول‌های رده‌بندی.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "ران، چه چیزی ثابت مانده و چه چیزی تغییر کرده است؟",
+      "text_markdown": "ران، چه چیزی ثابت مانده و چه چیزی تغییر کرده است؟",
+      "title": "",
+      "tts": {
+        "text": "ران، چه چیزی ثابت مانده و چه چیزی تغییر کرده است؟",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "بیشتر ثابت مانده است.",
+      "text_markdown": "بیشتر ثابت مانده است.",
+      "title": "",
+      "tts": {
+        "text": "بیشتر ثابت مانده است.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Claude Opus 4.7 از Anthropic همچنان در صدر جدول رده‌بندی کدنویسی LM Arena قرار دارد، با امتیاز Elo حدود 1569.",
+      "text_markdown": "Claude Opus 4.7 از Anthropic همچنان در صدر جدول رده‌بندی کدنویسی LM Arena قرار دارد، با امتیاز Elo حدود 1569.",
+      "title": "",
+      "tts": {
+        "text": "کلود اوپوس چهار پوینت سون از انتروپیک همچنان در صدر جدول رده‌بندی کدنویسی ال‌ام آرنا قرار دارد، با امتیاز ایلو حدود هزار و پانصد و شصت و نه.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "GPT-5.5 از OpenAI در حالت high-reasoning در رتبه هفتم همین جدول قرار دارد.",
+      "text_markdown": "GPT-5.5 از OpenAI در حالت high-reasoning در رتبه هفتم همین جدول قرار دارد.",
+      "title": "",
+      "tts": {
+        "text": "جی‌پی‌تی فایو پوینت فایو از اوپن‌ای‌آی در حالت های ریزنینگ در رتبه هفتم همین جدول قرار دارد.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "و در زیرجدول کدنویسی WebDev، GPT-5.5 در رتبه نهم است.",
+      "text_markdown": "و در زیرجدول کدنویسی WebDev، GPT-5.5 در رتبه نهم است.",
+      "title": "",
+      "tts": {
+        "text": "و در زیرجدول کدنویسی وب‌دِو، جی‌پی‌تی فایو پوینت فایو در رتبه نهم است.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "مدل جدید گوگل در کجا قرار می‌گیرد؟",
+      "text_markdown": "مدل جدید گوگل در کجا قرار می‌گیرد؟",
+      "title": "",
+      "tts": {
+        "text": "مدل جدید گوگل در کجا قرار می‌گیرد؟",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Gemini 3.5 Flash روز سه‌شنبه در Google I/O عرضه شد، بنابراین هنوز در جدول‌ها نیست.",
+      "text_markdown": "Gemini 3.5 Flash روز سه‌شنبه در Google I/O عرضه شد، بنابراین هنوز در جدول‌ها نیست.",
+      "title": "",
+      "tts": {
+        "text": "جِمینای تری پوینت فایو فلش روز سه‌شنبه در گوگل آی او عرضه شد، بنابراین هنوز در جدول‌ها نیست.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Arena به چند هزار رأی رودررو نیاز دارد تا یک مدل به امتیاز Elo پایداری دست یابد.",
+      "text_markdown": "Arena به چند هزار رأی رودررو نیاز دارد تا یک مدل به امتیاز Elo پایداری دست یابد.",
+      "title": "",
+      "tts": {
+        "text": "آرنا به چند هزار رأی رودررو نیاز دارد تا یک مدل به امتیاز ایلو پایداری دست یابد.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "انتظار می‌رود Gemini 3.5 Flash هفته آینده و Gemini 3.5 Pro در ماه ژوئن ظاهر شوند.",
+      "text_markdown": "انتظار می‌رود Gemini 3.5 Flash هفته آینده و Gemini 3.5 Pro در ماه ژوئن ظاهر شوند.",
+      "title": "",
+      "tts": {
+        "text": "انتظار می‌رود جِمینای تری پوینت فایو فلش هفته آینده و جِمینای تری پوینت فایو پرو در ماه ژوئن ظاهر شوند.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "خبری از جبهه کیفیت ارزیابی هست؟",
+      "text_markdown": "خبری از جبهه کیفیت ارزیابی هست؟",
+      "title": "",
+      "tts": {
+        "text": "خبری از جبهه اِوَل کوالیتی فرانت هست؟",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "بله، اشاره‌ای به هفته گذشته.",
+      "text_markdown": "بله، اشاره‌ای به هفته گذشته.",
+      "title": "",
+      "tts": {
+        "text": "بله، اشاره‌ای به هفته گذشته.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "SWE-bench Verified همچنان بازنشسته است — بنچمارک کدنویسی که OpenAI از آن نقل قول می‌کرد، جایی که بیش از نیمی از وظایف دشوار تست‌های خراب داشتند.",
+      "text_markdown": "SWE-bench Verified همچنان بازنشسته است — بنچمارک کدنویسی که OpenAI از آن نقل قول می‌کرد، جایی که بیش از نیمی از وظایف دشوار تست‌های خراب داشتند.",
+      "title": "",
+      "tts": {
+        "text": "اس‌دبلیوئی بنچ وریفاید همچنان بازنشسته است — بنچمارک کدنویسی که اوپن‌ای‌آی از آن نقل قول می‌کرد، جایی که بیش از نیمی از وظایف دشوار تست‌های خراب داشتند.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "پلتفرم‌هایی که اکنون باید زیر نظر داشت SWE-bench Pro و پروژه‌ای به نام SWE-rebench هستند.",
+      "text_markdown": "پلتفرم‌هایی که اکنون باید زیر نظر داشت SWE-bench Pro و پروژه‌ای به نام SWE-rebench هستند.",
+      "title": "",
+      "tts": {
+        "text": "پلتفرم‌هایی که اکنون باید زیر نظر داشت اس دبلیو ای بنچ پرو و پروژه‌ای به نام اس دبلیو ای ری بنچ هستند.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "هر دو کد آزمایشی را خصوصی نگه می‌دارند تا مدل‌ها نتوانند بر اساس آن آموزش ببینند.",
+      "text_markdown": "هر دو کد آزمایشی را خصوصی نگه می‌دارند تا مدل‌ها نتوانند بر اساس آن آموزش ببینند.",
+      "title": "",
+      "tts": {
+        "text": "هر دو کد آزمایشی را خصوصی نگه می‌دارند تا مدل‌ها نتوانند بر اساس آن آموزش ببینند.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "و شکاف بین مدل‌های باز و بسته چطور؟",
+      "text_markdown": "و شکاف بین مدل‌های باز و بسته چطور؟",
+      "title": "",
+      "tts": {
+        "text": "و شکاف بین مدل‌های باز و بسته چطور؟",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "طبق گزارش Artificial Analysis، این شکاف اکنون در شاخص هوش ارزیابی متقابل، ۵ تا ۱۵ امتیاز است.",
+      "text_markdown": "طبق گزارش Artificial Analysis، این شکاف اکنون در شاخص هوش ارزیابی متقابل، ۵ تا ۱۵ امتیاز است.",
+      "title": "",
+      "tts": {
+        "text": "طبق گزارش آرتیفیشال آنالیز، این شکاف اکنون در شاخص هوش ارزیابی متقابل، پنج تا پانزده امتیاز است.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "این رقم ۱۸ ماه پیش ۳۰ تا ۴۰ امتیاز بود.",
+      "text_markdown": "این رقم ۱۸ ماه پیش ۳۰ تا ۴۰ امتیاز بود.",
+      "title": "",
+      "tts": {
+        "text": "این رقم هجده ماه پیش سی تا چهل امتیاز بود.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Kimi K2.6 و DeepSeek V4-Pro در این محدوده در برابر GPT-5.5 و Opus 4.7 قرار دارند.",
+      "text_markdown": "Kimi K2.6 و DeepSeek V4-Pro در این محدوده در برابر GPT-5.5 و Opus 4.7 قرار دارند.",
+      "title": "",
+      "tts": {
+        "text": "کیمی کی دو ممیز شش و دیپ سیک وی چهار پرو در این محدوده در برابر جی پی تی پنج ممیز پنج و اوپوس چهار ممیز هفت قرار دارند.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "حالا به تیتر خبرها بپردازیم.",
+      "text_markdown": "حالا به تیتر خبرها بپردازیم.",
+      "title": "",
+      "tts": {
+        "text": "حالا به تیتر خبرها بپردازیم.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "ران، این هفته چه خبرهایی در بخش سریع داریم؟",
+      "text_markdown": "ران، این هفته چه خبرهایی در بخش سریع داریم؟",
+      "title": "",
+      "tts": {
+        "text": "ران، این هفته چه خبرهایی در بخش سریع داریم؟",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "Google I/O سه‌شنبه و چهارشنبه برگزار شد.",
+      "text_markdown": "Google I/O سه‌شنبه و چهارشنبه برگزار شد.",
+      "title": "",
+      "tts": {
+        "text": "گوگل آی او سه‌شنبه و چهارشنبه برگزار شد.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "اخبار مهم شامل Gemini 3.5 Flash، Gemini Omni برای ویرایش ویدیوی مکالمه‌ای، و Gemini Spark، یک عامل هوشمند که ۲۴/۷ روی یک ماشین مجازی ابری که مالک آن نیستید، اجرا می‌شود، بودند.",
+      "text_markdown": "اخبار مهم شامل Gemini 3.5 Flash، Gemini Omni برای ویرایش ویدیوی مکالمه‌ای، و Gemini Spark، یک عامل هوشمند که ۲۴/۷ روی یک ماشین مجازی ابری که مالک آن نیستید، اجرا می‌شود، بودند.",
+      "title": "",
+      "tts": {
+        "text": "اخبار مهم شامل جیمینای سه ممیز پنج فلش، جیمینای اومنی برای ویرایش ویدیوی مکالمه‌ای، و جیمینای اسپارک، یک عامل هوشمند که بیست و چهار هفت روی یک ماشین مجازی ابری که مالک آن نیستید، اجرا می‌شود، بودند.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "شایان ذکر است که همین الگو — یک عامل هوشمند که روی ماشین خودش اجرا می‌شود و کارهای چند مرحله‌ای انجام می‌دهد — چیزی است که امروز می‌توانید با ابزارهای باز مانند Aider یا OpenCode که به یک مدل محلی اشاره دارند، انجام دهید.",
+      "text_markdown": "شایان ذکر است که همین الگو — یک عامل هوشمند که روی ماشین خودش اجرا می‌شود و کارهای چند مرحله‌ای انجام می‌دهد — چیزی است که امروز می‌توانید با ابزارهای باز مانند Aider یا OpenCode که به یک مدل محلی اشاره دارند، انجام دهید.",
+      "title": "",
+      "tts": {
+        "text": "شایان ذکر است که همین الگو — یک عامل هوشمند که روی ماشین خودش اجرا می‌شود و کارهای چند مرحله‌ای انجام می‌دهد — چیزی است که امروز می‌توانید با ابزارهای باز مانند ایدر یا اوپن کد که به یک مدل محلی اشاره دارند، انجام دهید.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "Google AI Ultra سطح اولیه خود را از ۲۵۰ دلار در ماه به ۱۰۰ دلار در ماه کاهش داد، و سامسونگ عینک‌های واقعیت توسعه‌یافته با Gemini داخلی را معرفی کرد.",
+      "text_markdown": "Google AI Ultra سطح اولیه خود را از ۲۵۰ دلار در ماه به ۱۰۰ دلار در ماه کاهش داد، و سامسونگ عینک‌های واقعیت توسعه‌یافته با Gemini داخلی را معرفی کرد.",
+      "title": "",
+      "tts": {
+        "text": "گوگل ای آی اولترا سطح اولیه خود را از دویست و پنجاه دلار در ماه به صد دلار در ماه کاهش داد، و سامسونگ عینک‌های واقعیت توسعه‌یافته با جیمینای داخلی را معرفی کرد.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "محدودیت‌های روزانه پرامپت با یک بودجه محاسباتی جایگزین شد که هر پنج ساعت یک بار تازه می‌شود.",
+      "text_markdown": "محدودیت‌های روزانه پرامپت با یک بودجه محاسباتی جایگزین شد که هر پنج ساعت یک بار تازه می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "محدودیت‌های روزانه پرامپت با یک بودجه محاسباتی جایگزین شد که هر پنج ساعت یک بار تازه می‌شود.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "و در بخش پرسنل چطور؟",
+      "text_markdown": "و در بخش پرسنل چطور؟",
+      "title": "",
+      "tts": {
+        "text": "و در بخش پرسنل چطور؟",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "آندری کارپاتی سه‌شنبه به Anthropic پیوست.",
+      "text_markdown": "آندری کارپاتی سه‌شنبه به Anthropic پیوست.",
+      "title": "",
+      "tts": {
+        "text": "آندری کارپاتی سه‌شنبه به Anthropic پیوست.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "او در تیم پیش‌آموزش است و گروهی را رهبری می‌کند که بر استفاده از Claude برای تسریع تحقیقات پیش‌آموزش متمرکز است.",
+      "text_markdown": "او در تیم پیش‌آموزش است و گروهی را رهبری می‌کند که بر استفاده از Claude برای تسریع تحقیقات پیش‌آموزش متمرکز است.",
+      "title": "",
+      "tts": {
+        "text": "او در تیم پیش‌آموزش است و گروهی را رهبری می‌کند که بر استفاده از Claude برای تسریع تحقیقات پیش‌آموزش متمرکز است.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "کارپاتی یکی از اعضای مؤسس OpenAI بود، سپس کار هوش مصنوعی تسلا را اداره می‌کرد و بعد Eureka Labs را برای آموزش هوش مصنوعی راه‌اندازی کرد.",
+      "text_markdown": "کارپاتی یکی از اعضای مؤسس OpenAI بود، سپس کار هوش مصنوعی تسلا را اداره می‌کرد و بعد Eureka Labs را برای آموزش هوش مصنوعی راه‌اندازی کرد.",
+      "title": "",
+      "tts": {
+        "text": "کارپاتی یکی از اعضای مؤسس OpenAI بود، سپس کار هوش مصنوعی تسلا را اداره می‌کرد و بعد Eureka Labs را برای آموزش هوش مصنوعی راه‌اندازی کرد.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "اپل چطور؟",
+      "text_markdown": "اپل چطور؟",
+      "title": "",
+      "tts": {
+        "text": "اپل چطور؟",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "توماس کوریان، مدیرعامل Google Cloud، این هفته تأیید کرد که Gemini نسخه‌ای از Siri را اواخر سال ۲۰۲۶ قدرت خواهد بخشید.",
+      "text_markdown": "توماس کوریان، مدیرعامل Google Cloud، این هفته تأیید کرد که Gemini نسخه‌ای از Siri را اواخر سال ۲۰۲۶ قدرت خواهد بخشید.",
+      "title": "",
+      "tts": {
+        "text": "توماس کوریان، مدیرعامل گوگل کلود، این هفته تأیید کرد که جِمینای نسخه‌ای از سیری را اواخر سال دو هزار و بیست و شش قدرت خواهد بخشید.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "این قرارداد از طریق چارچوب مدل‌های بنیادی اپل انجام می‌شود، بنابراین اپل همچنان مالک لایه یکپارچه‌سازی است.",
+      "text_markdown": "این قرارداد از طریق چارچوب مدل‌های بنیادی اپل انجام می‌شود، بنابراین اپل همچنان مالک لایه یکپارچه‌سازی است.",
+      "title": "",
+      "tts": {
+        "text": "این قرارداد از طریق چارچوب مدل‌های بنیادی اپل انجام می‌شود، بنابراین اپل همچنان مالک لایه یکپارچه‌سازی است.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "پس شکایت ایلان ماسک چه؟",
+      "text_markdown": "پس شکایت ایلان ماسک چه؟",
+      "title": "",
+      "tts": {
+        "text": "پس شکایت ایلان ماسک چه؟",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "هیئت منصفه نه‌نفره کالیفرنیا، شکایت ایلان ماسک علیه OpenAI را دوشنبه، ۱۸ مه رد کرد.",
+      "text_markdown": "هیئت منصفه نه‌نفره کالیفرنیا، شکایت ایلان ماسک علیه OpenAI را دوشنبه، ۱۸ مه رد کرد.",
+      "title": "",
+      "tts": {
+        "text": "هیئت منصفه نه‌نفره کالیفرنیا، شکایت ایلان ماسک علیه اوپن ای آی را دوشنبه، هجدهم مه رد کرد.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "آنها کمتر از دو ساعت مشورت کردند.",
+      "text_markdown": "آنها کمتر از دو ساعت مشورت کردند.",
+      "title": "",
+      "tts": {
+        "text": "آنها کمتر از دو ساعت مشورت کردند.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "هیئت منصفه دریافت که ماسک پس از انقضای مهلت قانونی شکایت کرده است و قاضی پرونده را مختومه اعلام کرد.",
+      "text_markdown": "هیئت منصفه دریافت که ماسک پس از انقضای مهلت قانونی شکایت کرده است و قاضی پرونده را مختومه اعلام کرد.",
+      "title": "",
+      "tts": {
+        "text": "هیئت منصفه دریافت که ماسک پس از انقضای مهلت قانونی شکایت کرده است و قاضی پرونده را مختومه اعلام کرد.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "خبری از سیاست؟",
+      "text_markdown": "خبری از سیاست؟",
+      "title": "",
+      "tts": {
+        "text": "خبری از سیاست؟",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "اسکات بسنت، وزیر خزانه‌داری، در اجلاس سران ترامپ-شی در پکن در ۱۴ مه اعلام کرد که ایالات متحده و چین یک پروتکل رسمی در مورد ایمنی هوش مصنوعی ایجاد خواهند کرد.",
+      "text_markdown": "اسکات بسنت، وزیر خزانه‌داری، در اجلاس سران ترامپ-شی در پکن در ۱۴ مه اعلام کرد که ایالات متحده و چین یک پروتکل رسمی در مورد ایمنی هوش مصنوعی ایجاد خواهند کرد.",
+      "title": "",
+      "tts": {
+        "text": "اسکات بسنت، وزیر خزانه‌داری، در اجلاس سران ترامپ-شی در پکن در چهاردهم مه اعلام کرد که ایالات متحده و چین یک پروتکل رسمی در مورد ایمنی هوش مصنوعی ایجاد خواهند کرد.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "این به عنوان بهترین شیوه‌ها برای دور نگه داشتن مدل‌های پیشرفته از دست بازیگران غیردولتی چارچوب‌بندی شده است — نه یک رژیم الزام‌آور، بلکه فقط توافقی برای گفتگو.",
+      "text_markdown": "این به عنوان بهترین شیوه‌ها برای دور نگه داشتن مدل‌های پیشرفته از دست بازیگران غیردولتی چارچوب‌بندی شده است — نه یک رژیم الزام‌آور، بلکه فقط توافقی برای گفتگو.",
+      "title": "",
+      "tts": {
+        "text": "این به عنوان بهترین شیوه‌ها برای دور نگه داشتن مدل‌های پیشرفته از دست بازیگران غیردولتی چارچوب‌بندی شده است — نه یک رژیم الزام‌آور، بلکه فقط توافقی برای گفتگو.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "این اولین بار است که دو طرف ایمنی هوش مصنوعی را دوجانبه تلقی کرده‌اند، به جای یک رقابت صرف.",
+      "text_markdown": "این اولین بار است که دو طرف ایمنی هوش مصنوعی را دوجانبه تلقی کرده‌اند، به جای یک رقابت صرف.",
+      "title": "",
+      "tts": {
+        "text": "این اولین بار است که دو طرف ایمنی هوش مصنوعی را دوجانبه تلقی کرده‌اند، به جای یک رقابت صرف.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "حالا برگردیم به خبر اصلی.",
+      "text_markdown": "حالا برگردیم به خبر اصلی.",
+      "title": "",
+      "tts": {
+        "text": "حالا برگردیم به خبر اصلی.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "ران، پاپ هفته گذشته درباره ما نوشت.",
+      "text_markdown": "ران، پاپ هفته گذشته درباره ما نوشت.",
+      "title": "",
+      "tts": {
+        "text": "ران، پاپ هفته گذشته درباره ما نوشت.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "پاپ لئو چهاردهم اولین بخشنامه پاپی خود را به پایان رسانده است.",
+      "text_markdown": "پاپ لئو چهاردهم اولین بخشنامه پاپی خود را به پایان رسانده است.",
+      "title": "",
+      "tts": {
+        "text": "پاپ لئو چهاردهم اولین بخشنامه پاپی خود را به پایان رسانده است.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "عنوان آن Magnifica Humanitas است.",
+      "text_markdown": "عنوان آن Magnifica Humanitas است.",
+      "title": "",
+      "tts": {
+        "text": "عنوان آن Magnifica Humanitas است.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "این به معنای «عظمت انسانیت» است.",
+      "text_markdown": "این به معنای «عظمت انسانیت» است.",
+      "title": "",
+      "tts": {
+        "text": "این به معنای «عظمت انسانیت» است.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "واتیکان آن را دوشنبه، ۲۵ مه منتشر می‌کند.",
+      "text_markdown": "واتیکان آن را دوشنبه، ۲۵ مه منتشر می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "واتیکان آن را دوشنبه، بیست و پنجم مه منتشر می‌کند.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "به هوش مصنوعی و حفاظت از کرامت انسانی می‌پردازد.",
+      "text_markdown": "به هوش مصنوعی و حفاظت از کرامت انسانی می‌پردازد.",
+      "title": "",
+      "tts": {
+        "text": "به هوش مصنوعی و حفاظت از کرامت انسانی می‌پردازد.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "پاپ چه زمانی آن را امضا کرد؟",
+      "text_markdown": "پاپ چه زمانی آن را امضا کرد؟",
+      "title": "",
+      "tts": {
+        "text": "پاپ چه زمانی آن را امضا کرد؟",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "۱۵ مه.",
+      "text_markdown": "۱۵ مه.",
+      "title": "",
+      "tts": {
+        "text": "پانزدهم مه.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "آن تاریخ عمداً انتخاب شد.",
+      "text_markdown": "آن تاریخ عمداً انتخاب شد.",
+      "title": "",
+      "tts": {
+        "text": "آن تاریخ عمداً انتخاب شد.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "این دقیقاً ۱۳۵ سال تمام پس از امضای Rerum Novarum توسط پاپ لئو سیزدهم است.",
+      "text_markdown": "این دقیقاً ۱۳۵ سال تمام پس از امضای Rerum Novarum توسط پاپ لئو سیزدهم است.",
+      "title": "",
+      "tts": {
+        "text": "این دقیقاً صد و سی و پنج سال تمام پس از امضای Rerum Novarum توسط پاپ لئو سیزدهم است.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "Rerum Novarum چه بود؟",
+      "text_markdown": "Rerum Novarum چه بود؟",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum چه بود؟",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "Rerum Novarum آموزه بنیادی کاتولیک در مورد کار و سرمایه بود.",
+      "text_markdown": "Rerum Novarum آموزه بنیادی کاتولیک در مورد کار و سرمایه بود.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum آموزه بنیادی کاتولیک در مورد کار و سرمایه بود.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "این در سال ۱۸۹۱، در میانه انقلاب صنعتی منتشر شد.",
+      "text_markdown": "این در سال ۱۸۹۱، در میانه انقلاب صنعتی منتشر شد.",
+      "title": "",
+      "tts": {
+        "text": "این در سال هزار و هشتصد و نود و یک، در میانه انقلاب صنعتی منتشر شد.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "آن تعریف کرد که کلیسا چگونه در مورد کارگران، مالکان، دستمزدها و کرامت کار می‌اندیشد — و این چارچوب برای بیش از یک قرن پابرجا مانده است.",
+      "text_markdown": "آن تعریف کرد که کلیسا چگونه در مورد کارگران، مالکان، دستمزدها و کرامت کار می‌اندیشد — و این چارچوب برای بیش از یک قرن پابرجا مانده است.",
+      "title": "",
+      "tts": {
+        "text": "آن تعریف کرد که کلیسا چگونه در مورد کارگران، مالکان، دستمزدها و کرامت کار می‌اندیشد — و این چارچوب برای بیش از یک قرن پابرجا مانده است.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "پاپ لئو چهاردهم هوش مصنوعی را به عنوان همان نوع پرسش دوران‌ساز برای نسل ما مطرح می‌کند.",
+      "text_markdown": "پاپ لئو چهاردهم هوش مصنوعی را به عنوان همان نوع پرسش دوران‌ساز برای نسل ما مطرح می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "پاپ لئو چهاردهم هوش مصنوعی را به عنوان همان نوع پرسش دوران‌ساز برای نسل ما مطرح می‌کند.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "این یک پژواک عمدی است.",
+      "text_markdown": "این یک پژواک عمدی است.",
+      "title": "",
+      "tts": {
+        "text": "این یک پژواک عمدی است.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "بسیار سنجیده.",
+      "text_markdown": "بسیار سنجیده.",
+      "title": "",
+      "tts": {
+        "text": "بسیار سنجیده.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "حتی انتخاب نام سلطنتی — لئو — نیز این را نشان می‌دهد.",
+      "text_markdown": "حتی انتخاب نام سلطنتی — لئو — نیز این را نشان می‌دهد.",
+      "title": "",
+      "tts": {
+        "text": "حتی انتخاب نام سلطنتی — لئو — نیز این را نشان می‌دهد.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "این پاپ با صدای بلند می‌گوید که هوش مصنوعی برای قرن ما همان چیزی است که صنعتی‌سازی برای قرن نوزدهم بود.",
+      "text_markdown": "این پاپ با صدای بلند می‌گوید که هوش مصنوعی برای قرن ما همان چیزی است که صنعتی‌سازی برای قرن نوزدهم بود.",
+      "title": "",
+      "tts": {
+        "text": "این پاپ با صدای بلند می‌گوید که هوش مصنوعی برای قرن ما همان چیزی است که صنعتی‌سازی برای قرن نوزدهم بود.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "چه کسی در کنار او سخنرانی می‌کند؟",
+      "text_markdown": "چه کسی در کنار او سخنرانی می‌کند؟",
+      "title": "",
+      "tts": {
+        "text": "چه کسی در کنار او سخنرانی می‌کند؟",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "کریس اولا، هم‌بنیان‌گذار انتروپیک، در سالن سینود واتیکان روی صحنه خواهد بود.",
+      "text_markdown": "کریس اولا، هم‌بنیان‌گذار انتروپیک، در سالن سینود واتیکان روی صحنه خواهد بود.",
+      "title": "",
+      "tts": {
+        "text": "کریس اولا، هم بنیان گذار انتروپیک، در سالن سینود واتیکان روی صحنه خواهد بود.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "اولا تحقیقات قابلیت تفسیرپذیری را در انتروپیک مدیریت می‌کند.",
+      "text_markdown": "اولا تحقیقات قابلیت تفسیرپذیری را در انتروپیک مدیریت می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "اولا تحقیقات قابلیت تفسیرپذیری را در انتروپیک مدیریت می‌کند.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "این حوزه‌ای است که تلاش می‌کند بفهمد واقعاً چه چیزی درون یک شبکه عصبی اتفاق می‌افتد.",
+      "text_markdown": "این حوزه‌ای است که تلاش می‌کند بفهمد واقعاً چه چیزی درون یک شبکه عصبی اتفاق می‌افتد.",
+      "title": "",
+      "tts": {
+        "text": "این حوزه‌ای است که تلاش می‌کند بفهمد واقعاً چه چیزی درون یک شبکه عصبی اتفاق می‌افتد.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "چرا یک محقق قابلیت تفسیرپذیری و نه یک مدیر اجرایی؟",
+      "text_markdown": "چرا یک محقق قابلیت تفسیرپذیری و نه یک مدیر اجرایی؟",
+      "title": "",
+      "tts": {
+        "text": "چرا یک محقق قابلیت تفسیرپذیری و نه یک مدیر اجرایی؟",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "زیرا سؤال اصلی بخشنامه این است که «این چیزی که می‌سازیم چیست و آیا می‌توانیم آن را درک کنیم؟»",
+      "text_markdown": "زیرا سؤال اصلی بخشنامه این است که «این چیزی که می‌سازیم چیست و آیا می‌توانیم آن را درک کنیم؟»",
+      "title": "",
+      "tts": {
+        "text": "زیرا سؤال اصلی بخشنامه این است که «این چیزی که می‌سازیم چیست و آیا می‌توانیم آن را درک کنیم؟»",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-115",
+      "text": "این دقیقاً همان سؤال قابلیت تفسیرپذیری است که بر یک چارچوب اخلاقی منطبق شده است.",
+      "text_markdown": "این دقیقاً همان سؤال قابلیت تفسیرپذیری است که بر یک چارچوب اخلاقی منطبق شده است.",
+      "title": "",
+      "tts": {
+        "text": "این دقیقاً همان سؤال قابلیت تفسیرپذیری است که بر یک چارچوب اخلاقی منطبق شده است.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-116",
+      "text": "این یک سخنرانی تبلیغاتی نیست و آنها یک فرد تبلیغاتی را انتخاب نکردند.",
+      "text_markdown": "این یک سخنرانی تبلیغاتی نیست و آنها یک فرد تبلیغاتی را انتخاب نکردند.",
+      "title": "",
+      "tts": {
+        "text": "این یک سخنرانی تبلیغاتی نیست و آنها یک فرد تبلیغاتی را انتخاب نکردند.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-117",
+      "text": "چه کسان دیگری روی صحنه هستند؟",
+      "text_markdown": "چه کسان دیگری روی صحنه هستند؟",
+      "title": "",
+      "tts": {
+        "text": "چه کسان دیگری روی صحنه هستند؟",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-118",
+      "text": "کاردینال پیترو پارولین سخنان پایانی را ایراد خواهد کرد.",
+      "text_markdown": "کاردینال پیترو پارولین سخنان پایانی را ایراد خواهد کرد.",
+      "title": "",
+      "tts": {
+        "text": "کاردینال پیترو پارولین سخنان پایانی را ایراد خواهد کرد.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-119",
+      "text": "همچنین سخنرانان: کاردینال ویکتور مانوئل فرناندز و کاردینال مایکل چرنی.",
+      "text_markdown": "همچنین سخنرانان: کاردینال ویکتور مانوئل فرناندز و کاردینال مایکل چرنی.",
+      "title": "",
+      "tts": {
+        "text": "همچنین سخنرانان: کاردینال ویکتور مانوئل فرناندز و کاردینال مایکل چرنی.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-120",
+      "text": "و دو استاد الهیات — آنا رولندز از دانشگاه دورهام در بریتانیا، و لئوکادی لوشومبو از دانشکده الهیات یسوعی در دانشگاه سانتا کلارا — در این پنل حضور خواهند داشت.",
+      "text_markdown": "و دو استاد الهیات — آنا رولندز از دانشگاه دورهام در بریتانیا، و لئوکادی لوشومبو از دانشکده الهیات یسوعی در دانشگاه سانتا کلارا — در این پنل حضور خواهند داشت.",
+      "title": "",
+      "tts": {
+        "text": "و دو استاد الهیات — آنا رولندز از دانشگاه دورهام در یو کی، و لئوکادی لوشومبو از دانشکده الهیات یسوعی در دانشگاه سانتا کلارا — در این پنل حضور خواهند داشت.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-121",
+      "text": "چرا این موضوع فراتر از این اتاق اهمیت دارد؟",
+      "text_markdown": "چرا این موضوع فراتر از این اتاق اهمیت دارد؟",
+      "title": "",
+      "tts": {
+        "text": "چرا این موضوع فراتر از این اتاق اهمیت دارد؟",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-122",
+      "text": "زیرا ۱.۴ میلیارد کاتولیک در جهان وجود دارد.",
+      "text_markdown": "زیرا ۱.۴ میلیارد کاتولیک در جهان وجود دارد.",
+      "title": "",
+      "tts": {
+        "text": "زیرا یک ممیز چهار میلیارد کاتولیک در جهان وجود دارد.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-123",
+      "text": "وقتی پاپ یک بخشنامه می‌نویسد، نحوه تفکر جمعیت عظیمی را در مورد یک موضوع برای یک نسل شکل می‌دهد.",
+      "text_markdown": "وقتی پاپ یک بخشنامه می‌نویسد، نحوه تفکر جمعیت عظیمی را در مورد یک موضوع برای یک نسل شکل می‌دهد.",
+      "title": "",
+      "tts": {
+        "text": "وقتی پاپ یک بخشنامه می‌نویسد، نحوه تفکر جمعیت عظیمی را در مورد یک موضوع برای یک نسل شکل می‌دهد.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-124",
+      "text": "Rerum Novarum همچنان سیاست اجتماعی کاتولیک‌ها را در مورد کار، ۱۳۵ سال بعد، شکل می‌دهد.",
+      "text_markdown": "Rerum Novarum همچنان سیاست اجتماعی کاتولیک‌ها را در مورد کار، ۱۳۵ سال بعد، شکل می‌دهد.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum همچنان سیاست اجتماعی کاتولیک‌ها را در مورد کار، صد و سی و پنج سال بعد، شکل می‌دهد.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-125",
+      "text": "Magnifica Humanitas در موقعیتی قرار دارد که همین کار را در مورد هوش مصنوعی انجام دهد.",
+      "text_markdown": "Magnifica Humanitas در موقعیتی قرار دارد که همین کار را در مورد هوش مصنوعی انجام دهد.",
+      "title": "",
+      "tts": {
+        "text": "Magnifica Humanitas در موقعیتی قرار دارد که همین کار را در مورد هوش مصنوعی انجام دهد.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-126",
+      "text": "و زاویه نگاه از جهت دیگر چطور؟",
+      "text_markdown": "و زاویه نگاه از جهت دیگر چطور؟",
+      "title": "",
+      "tts": {
+        "text": "و زاویه نگاه از جهت دیگر چطور؟",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-127",
+      "text": "یک نهاد خارج از صنعت هوش مصنوعی، موضع آموزشی جدی در مورد آنچه ما می‌سازیم، اتخاذ کرده است.",
+      "text_markdown": "یک نهاد خارج از صنعت هوش مصنوعی، موضع آموزشی جدی در مورد آنچه ما می‌سازیم، اتخاذ کرده است.",
+      "title": "",
+      "tts": {
+        "text": "یک نهاد خارج از صنعت هوش مصنوعی، موضع آموزشی جدی در مورد آنچه ما می‌سازیم، اتخاذ کرده است.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-128",
+      "text": "و طرف صنعت نیز با نوع مناسبی از محققان، سر میز حاضر می‌شود.",
+      "text_markdown": "و طرف صنعت نیز با نوع مناسبی از محققان، سر میز حاضر می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "و طرف صنعت نیز با نوع مناسبی از محققان، سر میز حاضر می‌شود.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-129",
+      "text": "این موضع معمول نیست — معمولاً یا «ما بهتر می‌دانیم، ما را تنها بگذارید» است یا یک موضع لابی‌گری.",
+      "text_markdown": "این موضع معمول نیست — معمولاً یا «ما بهتر می‌دانیم، ما را تنها بگذارید» است یا یک موضع لابی‌گری.",
+      "title": "",
+      "tts": {
+        "text": "این موضع معمول نیست — معمولاً یا «ما بهتر می‌دانیم، ما را تنها بگذارید» است یا یک موضع لابی‌گری.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-130",
+      "text": "این یک موضع متفاوت است.",
+      "text_markdown": "این یک موضع متفاوت است.",
+      "title": "",
+      "tts": {
+        "text": "این یک موضع متفاوت است.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-131",
+      "text": "زمان خوبی برای پایان دادن به این بخش است.",
+      "text_markdown": "زمان خوبی برای پایان دادن به این بخش است.",
+      "title": "",
+      "tts": {
+        "text": "زمان خوبی برای پایان دادن به این بخش است.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-132",
+      "text": "حالا بیایید به مفهوم هفته بپردازیم.",
+      "text_markdown": "حالا بیایید به مفهوم هفته بپردازیم.",
+      "title": "",
+      "tts": {
+        "text": "حالا بیایید به مفهوم هفته بپردازیم.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-133",
+      "text": "مفهوم این هفته کوانتیزاسیون است.",
+      "text_markdown": "مفهوم این هفته کوانتیزاسیون است.",
+      "title": "",
+      "tts": {
+        "text": "مفهوم این هفته کوانتیزاسیون است.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-134",
+      "text": "ران، آن را برای ما توضیح بده.",
+      "text_markdown": "ران، آن را برای ما توضیح بده.",
+      "title": "",
+      "tts": {
+        "text": "ران، آن را برای ما توضیح بده.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-135",
+      "text": "کوانتیزاسیون این است که چگونه یک مدل ۷ میلیارد پارامتری روی گوشی شما جا می‌شود.",
+      "text_markdown": "کوانتیزاسیون این است که چگونه یک مدل ۷ میلیارد پارامتری روی گوشی شما جا می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "کوانتیزاسیون این است که چگونه یک مدل هفت میلیارد پارامتری روی گوشی شما جا می‌شود.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-136",
+      "text": "با مشکل اصلی شروع کنید.",
+      "text_markdown": "با مشکل اصلی شروع کنید.",
+      "title": "",
+      "tts": {
+        "text": "با مشکل اصلی شروع کنید.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-137",
+      "text": "هر وزن در یک مدل معمولاً یک عدد ممیز شناور ۱۶ بیتی است.",
+      "text_markdown": "هر وزن در یک مدل معمولاً یک عدد ممیز شناور ۱۶ بیتی است.",
+      "title": "",
+      "tts": {
+        "text": "هر وزن در یک مدل معمولاً یک عدد ممیز شناور شانزده بیتی است.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-138",
+      "text": "یک مدل ۷ میلیارد پارامتری ۱۶ بیتی حدود ۱۴ گیگابایت روی دیسک فضا اشغال می‌کند.",
+      "text_markdown": "یک مدل ۷ میلیارد پارامتری ۱۶ بیتی حدود ۱۴ گیگابایت روی دیسک فضا اشغال می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "یک مدل هفت میلیارد پارامتری شانزده بیتی حدود چهارده گیگابایت روی دیسک فضا اشغال می‌کند.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-139",
+      "text": "این روی یک گوشی جا نمی‌شود.",
+      "text_markdown": "این روی یک گوشی جا نمی‌شود.",
+      "title": "",
+      "tts": {
+        "text": "این روی یک گوشی جا نمی‌شود.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-140",
+      "text": "پس شما اعداد را کوچک می‌کنید.",
+      "text_markdown": "پس شما اعداد را کوچک می‌کنید.",
+      "title": "",
+      "tts": {
+        "text": "پس شما اعداد را کوچک می‌کنید.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-141",
+      "text": "درست است.",
+      "text_markdown": "درست است.",
+      "title": "",
+      "tts": {
+        "text": "درست است.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-142",
+      "text": "شما هر وزن را به بیت‌های کمتری گرد می‌کنید.",
+      "text_markdown": "شما هر وزن را به بیت‌های کمتری گرد می‌کنید.",
+      "title": "",
+      "tts": {
+        "text": "شما هر وزن را به بیت‌های کمتری گرد می‌کنید.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-143",
+      "text": "هشت بیت برای هر وزن، حجم مدل را نصف می‌کند.",
+      "text_markdown": "هشت بیت برای هر وزن، حجم مدل را نصف می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "هشت بیت برای هر وزن، حجم مدل را نصف می‌کند.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-144",
+      "text": "چهار بیت برای هر وزن، آن را به یک چهارم کاهش می‌دهد.",
+      "text_markdown": "چهار بیت برای هر وزن، آن را به یک چهارم کاهش می‌دهد.",
+      "title": "",
+      "tts": {
+        "text": "چهار بیت برای هر وزن، آن را به یک چهارم کاهش می‌دهد.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-145",
+      "text": "همان مدل ۷ میلیارد پارامتری با چهار بیت، ۳.۵ گیگابایت است.",
+      "text_markdown": "همان مدل ۷ میلیارد پارامتری با چهار بیت، ۳.۵ گیگابایت است.",
+      "title": "",
+      "tts": {
+        "text": "همان مدل هفت میلیارد پارامتری با چهار بیت، سه و نیم گیگابایت است.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-146",
+      "text": "حالا جا می‌شود.",
+      "text_markdown": "حالا جا می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "حالا جا می‌شود.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-147",
+      "text": "آیا مدل هنوز کار می‌کند؟",
+      "text_markdown": "آیا مدل هنوز کار می‌کند؟",
+      "title": "",
+      "tts": {
+        "text": "آیا مدل هنوز کار می‌کند؟",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-148",
+      "text": "معمولاً بله، با افت کیفیت جزئی.",
+      "text_markdown": "معمولاً بله، با افت کیفیت جزئی.",
+      "title": "",
+      "tts": {
+        "text": "معمولاً بله، با افت کیفیت جزئی.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-149",
+      "text": "ترفند این است که انتخاب کنید در کجای مدل دقت را از دست بدهید.",
+      "text_markdown": "ترفند این است که انتخاب کنید در کجای مدل دقت را از دست بدهید.",
+      "title": "",
+      "tts": {
+        "text": "ترفند این است که انتخاب کنید در کجای مدل دقت را از دست بدهید.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-150",
+      "text": "AWQ — کوانتیزاسیون وزن آگاه از فعال‌سازی — کانال‌هایی را که بیشترین اهمیت را دارند با دقت بالاتر حفظ می‌کند و بقیه را فشرده می‌کند.",
+      "text_markdown": "AWQ — کوانتیزاسیون وزن آگاه از فعال‌سازی — کانال‌هایی را که بیشترین اهمیت را دارند با دقت بالاتر حفظ می‌کند و بقیه را فشرده می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "ای دبلیو کیو — کوانتیزاسیون وزن آگاه از فعال‌سازی — کانال‌هایی را که بیشترین اهمیت را دارند با دقت بالاتر حفظ می‌کند و بقیه را فشرده می‌کند.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-151",
+      "text": "GGUF، که llama.cpp از آن استفاده می‌کند، فرمت‌هایی مانند Q4_K_M دارد که دقت‌ها را در یک فایل مدل واحد ترکیب می‌کند.",
+      "text_markdown": "GGUF، که llama.cpp از آن استفاده می‌کند، فرمت‌هایی مانند Q4_K_M دارد که دقت‌ها را در یک فایل مدل واحد ترکیب می‌کند.",
+      "title": "",
+      "tts": {
+        "text": "GGUF، که llama.cpp از آن استفاده می‌کند، فرمت‌هایی مانند کیو چهار کی اِم دارد که دقت‌ها را در یک فایل مدل واحد ترکیب می‌کند.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-152",
+      "text": "چقدر می‌توانید کوچک شوید؟",
+      "text_markdown": "چقدر می‌توانید کوچک شوید؟",
+      "title": "",
+      "tts": {
+        "text": "چقدر می‌توانید کوچک شوید؟",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-153",
+      "text": "مدل بنیادین روی دستگاه اپل به ۲ بیت به ازای هر وزن می‌رسد.",
+      "text_markdown": "مدل بنیادین روی دستگاه اپل به ۲ بیت به ازای هر وزن می‌رسد.",
+      "title": "",
+      "tts": {
+        "text": "مدل بنیادین روی دستگاه اپل به دو بیت به ازای هر وزن می‌رسد.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-154",
+      "text": "آنها از Quantization-Aware Training استفاده می‌کنند، جایی که مدل از ابتدا با علم به اینکه در زمان استنتاج ۲ بیتی خواهد بود، آموزش داده می‌شود.",
+      "text_markdown": "آنها از Quantization-Aware Training استفاده می‌کنند، جایی که مدل از ابتدا با علم به اینکه در زمان استنتاج ۲ بیتی خواهد بود، آموزش داده می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "آنها از Quantization Aware Training استفاده می‌کنند، جایی که مدل از ابتدا با علم به اینکه در زمان استنتاج دو بیتی خواهد بود، آموزش داده می‌شود.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-155",
+      "text": "این نتیجه‌ای بسیار بهتر از گرد کردن ساده‌لوحانه پس از واقعیت است.",
+      "text_markdown": "این نتیجه‌ای بسیار بهتر از گرد کردن ساده‌لوحانه پس از واقعیت است.",
+      "title": "",
+      "tts": {
+        "text": "این نتیجه‌ای بسیار بهتر از گرد کردن ساده‌لوحانه پس از واقعیت است.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-156",
+      "text": "حدود ۳ میلیارد پارامتر با ۲ بیت، تقریباً ۷۵۰ مگابایت می‌شود.",
+      "text_markdown": "حدود ۳ میلیارد پارامتر با ۲ بیت، تقریباً ۷۵۰ مگابایت می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "حدود سه میلیارد پارامتر با دو بیت، تقریباً هفتصد و پنجاه مگابایت می‌شود.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-157",
+      "text": "این روی یک گوشی با فضای اضافی جا می‌شود.",
+      "text_markdown": "این روی یک گوشی با فضای اضافی جا می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "این روی یک گوشی با فضای اضافی جا می‌شود.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-158",
+      "text": "پس به همین دلیل است که هوش مصنوعی روی دستگاه بالاخره امسال قابل استفاده است.",
+      "text_markdown": "پس به همین دلیل است که هوش مصنوعی روی دستگاه بالاخره امسال قابل استفاده است.",
+      "title": "",
+      "tts": {
+        "text": "پس به همین دلیل است که هوش مصنوعی روی دستگاه بالاخره امسال قابل استفاده است.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-159",
+      "text": "این دلیل اصلی است.",
+      "text_markdown": "این دلیل اصلی است.",
+      "title": "",
+      "tts": {
+        "text": "این دلیل اصلی است.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-160",
+      "text": "سه کلمه را با خود به خاطر بسپارید — AWQ، GGUF، و Quantization-Aware Training.",
+      "text_markdown": "سه کلمه را با خود به خاطر بسپارید — AWQ، GGUF، و Quantization-Aware Training.",
+      "title": "",
+      "tts": {
+        "text": "سه کلمه را با خود به خاطر بسپارید — ای دبلیو کیو، جی جی یو اف، و Quantization Aware Training.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-161",
+      "text": "اگر یک مدل این سه چیز را ارائه دهد، روی گوشی‌ها عرضه می‌شود.",
+      "text_markdown": "اگر یک مدل این سه چیز را ارائه دهد، روی گوشی‌ها عرضه می‌شود.",
+      "title": "",
+      "tts": {
+        "text": "اگر یک مدل این سه چیز را ارائه دهد، روی گوشی‌ها عرضه می‌شود.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-162",
+      "text": "جای خوبی برای پایان دادن.",
+      "text_markdown": "جای خوبی برای پایان دادن.",
+      "title": "",
+      "tts": {
+        "text": "جای خوبی برای پایان دادن.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-163",
+      "text": "ران، متشکرم.",
+      "text_markdown": "ران، متشکرم.",
+      "title": "",
+      "tts": {
+        "text": "ران، متشکرم.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-164",
+      "text": "خواهش می‌کنم، ویندی.",
+      "text_markdown": "خواهش می‌کنم، ویندی.",
+      "title": "",
+      "tts": {
+        "text": "خواهش می‌کنم، ویندی.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-165",
+      "text": "این قسمت AI This Week برای ۲۰ می ۲۰۲۶ بود.",
+      "text_markdown": "این قسمت AI This Week برای ۲۰ می ۲۰۲۶ بود.",
+      "title": "",
+      "tts": {
+        "text": "این قسمت ای‌آی دیس ویک برای بیستم می دو هزار و بیست و شش بود.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-166",
+      "text": "شماره جدید چهارشنبه آینده.",
+      "text_markdown": "شماره جدید چهارشنبه آینده.",
+      "title": "",
+      "tts": {
+        "text": "شماره جدید چهارشنبه آینده.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-167",
+      "text": "تا آن زمان، مراقب باشید.",
+      "text_markdown": "تا آن زمان، مراقب باشید.",
+      "title": "",
+      "tts": {
+        "text": "تا آن زمان، مراقب باشید.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

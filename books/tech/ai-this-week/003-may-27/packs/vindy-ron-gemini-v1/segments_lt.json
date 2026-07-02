@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "lt",
+  "total_segments": 209,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sveiki atvykę į „Šią savaitę AI“.",
+      "text_markdown": "Sveiki atvykę į „Šią savaitę AI“.",
+      "title": "",
+      "tts": {
+        "text": "Sveiki atvykę į „Šią savaitę AI“.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vindy yra mano vardas.",
+      "text_markdown": "Vindy yra mano vardas.",
+      "title": "",
+      "tts": {
+        "text": "Vindi yra mano vardas.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Su manimi, kaip visada, Ronas.",
+      "text_markdown": "Su manimi, kaip visada, Ronas.",
+      "title": "",
+      "tts": {
+        "text": "Su manimi, kaip visada, Ronas.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gera čia būti, Vindy.",
+      "text_markdown": "Gera čia būti, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Gera čia būti, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šiandien trečiadienis, 2026 m. gegužės 27 d.",
+      "text_markdown": "Šiandien trečiadienis, 2026 m. gegužės 27 d.",
+      "title": "",
+      "tts": {
+        "text": "Šiandien trečiadienis, gegužės dvidešimt septintoji, du tūkstančiai dvidešimt šešti metai.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir popieriuje, tai buvo rami savaitė.",
+      "text_markdown": "Ir popieriuje, tai buvo rami savaitė.",
+      "title": "",
+      "tts": {
+        "text": "Ir popieriuje, tai buvo rami savaitė.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nepasirodė joks didelis naujas atvirasis modelis.",
+      "text_markdown": "Nepasirodė joks didelis naujas atvirasis modelis.",
+      "title": "",
+      "tts": {
+        "text": "Nepasirodė joks didelis naujas atvirasis modelis.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tačiau ramiose savaitėse slepiasi tikroji istorija.",
+      "text_markdown": "Tačiau ramiose savaitėse slepiasi tikroji istorija.",
+      "title": "",
+      "tts": {
+        "text": "Tačiau ramiose savaitėse slepiasi tikroji istorija.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi šiandien einame ten, kur neina pagrindiniai pranešimai.",
+      "text_markdown": "Taigi šiandien einame ten, kur neina pagrindiniai pranešimai.",
+      "title": "",
+      "tts": {
+        "text": "Taigi šiandien einame ten, kur neina pagrindiniai pranešimai.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Toliau – kas iš tiesų pasikeitė atvirosiose svoriuose.",
+      "text_markdown": "Toliau – kas iš tiesų pasikeitė atvirosiose svoriuose.",
+      "title": "",
+      "tts": {
+        "text": "Toliau – kas iš tiesų pasikeitė atvirosiose svoriuose.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vienas svarbiausių lyderių sąrašų, ir tai nėra kokybės sąrašas.",
+      "text_markdown": "Vienas svarbiausių lyderių sąrašų, ir tai nėra kokybės sąrašas.",
+      "title": "",
+      "tts": {
+        "text": "Vienas svarbiausių lyderių sąrašų, ir tai nėra kokybės sąrašas.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Greita antraščių apžvalga, kuria galite pasinaudoti šį savaitgalį.",
+      "text_markdown": "Greita antraščių apžvalga, kuria galite pasinaudoti šį savaitgalį.",
+      "title": "",
+      "tts": {
+        "text": "Greita antraščių apžvalga, kuria galite pasinaudoti šį savaitgalį.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Mūsų pagrindinė istorija: metai, kai atviras balsas tapo pakankamai geras, kad jį būtų galima turėti.",
+      "text_markdown": "Mūsų pagrindinė istorija: metai, kai atviras balsas tapo pakankamai geras, kad jį būtų galima turėti.",
+      "title": "",
+      "tts": {
+        "text": "Mūsų pagrindinė istorija: metai, kai atviras balsas tapo pakankamai geras, kad jį būtų galima turėti.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir savaitės koncepcija – neuroniniai garso kodekai – kaip sutalpinti visą balsą į telefoną.",
+      "text_markdown": "Ir savaitės koncepcija – neuroniniai garso kodekai – kaip sutalpinti visą balsą į telefoną.",
+      "title": "",
+      "tts": {
+        "text": "Ir savaitės koncepcija – neuroniniai garso kodekai – kaip sutalpinti visą balsą į telefoną.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ronai, pradėkime nuo atvirųjų svorių pasaulio.",
+      "text_markdown": "Ronai, pradėkime nuo atvirųjų svorių pasaulio.",
+      "title": "",
+      "tts": {
+        "text": "Ronai, pradėkime nuo atvirųjų svorių pasaulio.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kas pasikeitė šią savaitę?",
+      "text_markdown": "Kas pasikeitė šią savaitę?",
+      "title": "",
+      "tts": {
+        "text": "Kas pasikeitė šią savaitę?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atvirai kalbant, šią savaitę nebuvo pristatytas joks naujas pažangus atvirasis modelis.",
+      "text_markdown": "Atvirai kalbant, šią savaitę nebuvo pristatytas joks naujas pažangus atvirasis modelis.",
+      "title": "",
+      "tts": {
+        "text": "Atvirai kalbant, šią savaitę nebuvo pristatytas joks naujas pažangus atvirasis modelis.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir tai gerai.",
+      "text_markdown": "Ir tai gerai.",
+      "title": "",
+      "tts": {
+        "text": "Ir tai gerai.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tikrosios atvirosios naujienos šią savaitę buvo susijusios su infrastruktūra ir kainodara.",
+      "text_markdown": "Tikrosios atvirosios naujienos šią savaitę buvo susijusios su infrastruktūra ir kainodara.",
+      "title": "",
+      "tts": {
+        "text": "Tikrosios atvirosios naujienos šią savaitę buvo susijusios su infrastruktūra ir kainodara.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pirmiausia apie infrastruktūrą – kas sugedo ar buvo pataisyta?",
+      "text_markdown": "Pirmiausia apie infrastruktūrą – kas sugedo ar buvo pataisyta?",
+      "title": "",
+      "tts": {
+        "text": "Pirmiausia apie infrastruktūrą – kas sugedo ar buvo pataisyta?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gegužės 26 d. „SGLang“ projektas išleido stabilumo pataisą, skirtą „DeepSeek V4“ aptarnavimui.",
+      "text_markdown": "Gegužės 26 d. „SGLang“ projektas išleido stabilumo pataisą, skirtą „DeepSeek V4“ aptarnavimui.",
+      "title": "",
+      "tts": {
+        "text": "Gegužės dvidešimt šeštąją dieną „S G Lang“ projektas išleido stabilumo pataisą, skirtą „DeepSeek V keturi“ aptarnavimui.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "„SGLang“ yra vienas iš dviejų didelių atvirųjų variklių, kuriuos naudojate norėdami patys paleisti modelį.",
+      "text_markdown": "„SGLang“ yra vienas iš dviejų didelių atvirųjų variklių, kuriuos naudojate norėdami patys paleisti modelį.",
+      "title": "",
+      "tts": {
+        "text": "„S G Lang“ yra vienas iš dviejų didelių atvirųjų variklių, kuriuos naudojate norėdami patys paleisti modelį.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kitas yra „vLLM“.",
+      "text_markdown": "Kitas yra „vLLM“.",
+      "title": "",
+      "tts": {
+        "text": "Kitas yra „v L L M“.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ši pataisa ištaisė iškraipytą išvestį naujausiose kortelėse ir gedimą esant didelei apkrovai.",
+      "text_markdown": "Ši pataisa ištaisė iškraipytą išvestį naujausiose kortelėse ir gedimą esant didelei apkrovai.",
+      "title": "",
+      "tts": {
+        "text": "Ši pataisa ištaisė iškraipytą išvestį naujausiose kortelėse ir gedimą esant didelei apkrovai.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kodėl aptarnavimo pataisa yra svarbi?",
+      "text_markdown": "Kodėl aptarnavimo pataisa yra svarbi?",
+      "title": "",
+      "tts": {
+        "text": "Kodėl aptarnavimo pataisa yra svarbi?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nes atvirieji svoriai yra beverčiai, jei negalite jų patikimai aptarnauti.",
+      "text_markdown": "Nes atvirieji svoriai yra beverčiai, jei negalite jų patikimai aptarnauti.",
+      "title": "",
+      "tts": {
+        "text": "Nes atvirieji svoriai yra beverčiai, jei negalite jų patikimai aptarnauti.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "„DeepSeek V4“ yra atviras ir licencijuotas pagal MIT, tačiau tai yra didžiulis modelis.",
+      "text_markdown": "„DeepSeek V4“ yra atviras ir licencijuotas pagal MIT, tačiau tai yra didžiulis modelis.",
+      "title": "",
+      "tts": {
+        "text": "„DeepSeek V keturi“ yra atviras ir licencijuotas pagal „M I T“, tačiau tai yra didžiulis modelis.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Varikliai, kurie leidžia jam veikti laukinėje aplinkoje, yra nepatraukli atvirosios ekosistemos pusė.",
+      "text_markdown": "Varikliai, kurie leidžia jam veikti laukinėje aplinkoje, yra nepatraukli atvirosios ekosistemos pusė.",
+      "title": "",
+      "tts": {
+        "text": "Varikliai, kurie leidžia jam veikti laukinėje aplinkoje, yra nepatraukli atvirosios ekosistemos pusė.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nuobodi pataisų savaitė rodo, kaip atrodo sveikas projektas.",
+      "text_markdown": "Nuobodi pataisų savaitė rodo, kaip atrodo sveikas projektas.",
+      "title": "",
+      "tts": {
+        "text": "Nuobodi pataisų savaitė rodo, kaip atrodo sveikas projektas.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kainodaros pusė?",
+      "text_markdown": "O kainodaros pusė?",
+      "title": "",
+      "tts": {
+        "text": "O kainodaros pusė?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šis yra įdomesnis.",
+      "text_markdown": "Šis yra įdomesnis.",
+      "title": "",
+      "tts": {
+        "text": "Šis yra įdomesnis.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Apie gegužės 22 d. „DeepSeek“ visam laikui 75% sumažino V4-Pro kainą.",
+      "text_markdown": "Apie gegužės 22 d. „DeepSeek“ visam laikui 75% sumažino V4-Pro kainą.",
+      "title": "",
+      "tts": {
+        "text": "Apie gegužės dvidešimt antrą dieną „DeepSeek“ visam laikui septyniasdešimt penkiais procentais sumažino V keturi Pro kainą.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Išvesties kaina dabar yra apie 0,87 USD už milijoną žetonų.",
+      "text_markdown": "Išvesties kaina dabar yra apie 0,87 USD už milijoną žetonų.",
+      "title": "",
+      "tts": {
+        "text": "Išvesties kaina dabar yra apie nulį taškas aštuoniasdešimt septynis dolerius už milijoną žetonų.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai yra maždaug ketvirtadalis pradinės kainos.",
+      "text_markdown": "Tai yra maždaug ketvirtadalis pradinės kainos.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra maždaug ketvirtadalis pradinės kainos.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi atvirąjį modelį tapo pigiau nuomotis.",
+      "text_markdown": "Taigi atvirąjį modelį tapo pigiau nuomotis.",
+      "title": "",
+      "tts": {
+        "text": "Taigi atvirąjį modelį tapo pigiau nuomotis.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Teisingai, ir tai apverčia klausimą aukštyn kojomis.",
+      "text_markdown": "Teisingai, ir tai apverčia klausimą aukštyn kojomis.",
+      "title": "",
+      "tts": {
+        "text": "Teisingai, ir tai apverčia klausimą aukštyn kojomis.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Paprastai sakome, kad atviri svoriai reiškia, kad valdote patys.",
+      "text_markdown": "Paprastai sakome, kad atviri svoriai reiškia, kad valdote patys.",
+      "title": "",
+      "tts": {
+        "text": "Paprastai sakome, kad atviri svoriai reiškia, kad valdote patys.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tačiau už mažiau nei dolerį už milijoną žetonų, nuoma dažnai yra pigesnė nei jūsų paties elektra.",
+      "text_markdown": "Tačiau už mažiau nei dolerį už milijoną žetonų, nuoma dažnai yra pigesnė nei jūsų paties elektra.",
+      "title": "",
+      "tts": {
+        "text": "Tačiau už mažiau nei dolerį už milijoną žetonų, nuoma dažnai yra pigesnė nei jūsų paties elektra.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi naujas požiūris yra – valdykite patys dėl privatumo ir veikimo neprisijungus, nuomokitės API pigiems trumpalaikiams naudojimams.",
+      "text_markdown": "Taigi naujas požiūris yra – valdykite patys dėl privatumo ir veikimo neprisijungus, nuomokitės API pigiems trumpalaikiams naudojimams.",
+      "title": "",
+      "tts": {
+        "text": "Taigi naujas požiūris yra – valdykite patys dėl privatumo ir veikimo neprisijungus, nuomokitės API pigiems trumpalaikiams naudojimams.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tie patys atviri svoriai, dvi labai skirtingos priežastys juos naudoti.",
+      "text_markdown": "Tie patys atviri svoriai, dvi labai skirtingos priežastys juos naudoti.",
+      "title": "",
+      "tts": {
+        "text": "Tie patys atviri svoriai, dvi labai skirtingos priežastys juos naudoti.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kaip su įrenginiuose veikiančių modelių naudotojais?",
+      "text_markdown": "O kaip su įrenginiuose veikiančių modelių naudotojais?",
+      "title": "",
+      "tts": {
+        "text": "O kaip su įrenginiuose veikiančių modelių naudotojais?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "llama.cpp visą savaitę tęsė savo darbą.",
+      "text_markdown": "llama.cpp visą savaitę tęsė savo darbą.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P visą savaitę tęsė savo darbą.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis iš tikrųjų neteikia leidimų – jis beveik kasdien išleidžia versijas.",
+      "text_markdown": "Jis iš tikrųjų neteikia leidimų – jis beveik kasdien išleidžia versijas.",
+      "title": "",
+      "tts": {
+        "text": "Jis iš tikrųjų neteikia leidimų – jis beveik kasdien išleidžia versijas.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šią savaitę buvo atliekami spartinimo darbai su „Vulkan“, „Intel“ ir telefonų klasės lustais.",
+      "text_markdown": "Šią savaitę buvo atliekami spartinimo darbai su „Vulkan“, „Intel“ ir telefonų klasės lustais.",
+      "title": "",
+      "tts": {
+        "text": "Šią savaitę buvo atliekami spartinimo darbai su „Vulkan“, „Intel“ ir telefonų klasės lustais.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai yra variklis, kuriuo iš tikrųjų veikia įrenginiuose veikiančių modelių pasaulis.",
+      "text_markdown": "Tai yra variklis, kuriuo iš tikrųjų veikia įrenginiuose veikiančių modelių pasaulis.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra variklis, kuriuo iš tikrųjų veikia įrenginiuose veikiančių modelių pasaulis.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jokios dramos, tiesiog greičiau – būtent to ir norisi iš brandžios infrastruktūros.",
+      "text_markdown": "Jokios dramos, tiesiog greičiau – būtent to ir norisi iš brandžios infrastruktūros.",
+      "title": "",
+      "tts": {
+        "text": "Jokios dramos, tiesiog greičiau – būtent to ir norisi iš brandžios infrastruktūros.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Papasakokite mums apie platesnį kontekstą.",
+      "text_markdown": "Papasakokite mums apie platesnį kontekstą.",
+      "title": "",
+      "tts": {
+        "text": "Papasakokite mums apie platesnį kontekstą.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atviroji sritis šiuo metu daugiausia valdoma Kinijos.",
+      "text_markdown": "Atviroji sritis šiuo metu daugiausia valdoma Kinijos.",
+      "title": "",
+      "tts": {
+        "text": "Atviroji sritis šiuo metu daugiausia valdoma Kinijos.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Balandžio mėnesį buvo banga – „DeepSeek V4“, „Qwen 3.6“, „Kimi K2.6“ ir kiti, viskas per maždaug dvi savaites.",
+      "text_markdown": "Balandžio mėnesį buvo banga – „DeepSeek V4“, „Qwen 3.6“, „Kimi K2.6“ ir kiti, viskas per maždaug dvi savaites.",
+      "title": "",
+      "tts": {
+        "text": "Balandžio mėnesį buvo banga – „DeepSeek V keturi“, „Qwen trys taškas šeši“, „Kimi K du taškas šeši“ ir kiti, viskas per maždaug dvi savaites.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šią savaitę jaučiame ramias tos bangos pasekmes.",
+      "text_markdown": "Šią savaitę jaučiame ramias tos bangos pasekmes.",
+      "title": "",
+      "tts": {
+        "text": "Šią savaitę jaučiame ramias tos bangos pasekmes.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O „Qwen“ – ar jie neturėjo naujienų?",
+      "text_markdown": "O „Qwen“ – ar jie neturėjo naujienų?",
+      "title": "",
+      "tts": {
+        "text": "O „Qwen“ – ar jie neturėjo naujienų?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taip, ir tai daug pasakantis faktas.",
+      "text_markdown": "Taip, ir tai daug pasakantis faktas.",
+      "title": "",
+      "tts": {
+        "text": "Taip, ir tai daug pasakantis faktas.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Naujasis „Alibaba“ flagmanas, „Qwen 3.7 Max“, yra tik API – be atvirų svorių.",
+      "text_markdown": "Naujasis „Alibaba“ flagmanas, „Qwen 3.7 Max“, yra tik API – be atvirų svorių.",
+      "title": "",
+      "tts": {
+        "text": "Naujasis „Alibaba“ flagmanas, „Qwen trys taškas septyni Max“, yra tik API – be atvirų svorių.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atviroji „Qwen“ linija vis dar sustoja ties 3.6.",
+      "text_markdown": "Atviroji „Qwen“ linija vis dar sustoja ties 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Atviroji „Qwen“ linija vis dar sustoja ties trys taškas šeši.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi „Alibaba“ skyla į uždarą flagmaną ir atvirą vidutinės klasės modelį.",
+      "text_markdown": "Taigi „Alibaba“ skyla į uždarą flagmaną ir atvirą vidutinės klasės modelį.",
+      "title": "",
+      "tts": {
+        "text": "Taigi „Alibaba“ skyla į uždarą flagmaną ir atvirą vidutinės klasės modelį.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai tas pats scenarijus, kurį „Mistral“ naudojo praėjusiais metais.",
+      "text_markdown": "Tai tas pats scenarijus, kurį „Mistral“ naudojo praėjusiais metais.",
+      "title": "",
+      "tts": {
+        "text": "Tai tas pats scenarijus, kurį „Mistral“ naudojo praėjusiais metais.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Verta stebėti, vadinasi.",
+      "text_markdown": "Verta stebėti, vadinasi.",
+      "title": "",
+      "tts": {
+        "text": "Verta stebėti, vadinasi.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Laukiama, kad pasirodys atviras „Qwen 3.7“ vidutinės klasės modelis.",
+      "text_markdown": "Laukiama, kad pasirodys atviras „Qwen 3.7“ vidutinės klasės modelis.",
+      "title": "",
+      "tts": {
+        "text": "Laukiama, kad pasirodys atviras „Qwen trys taškas septyni“ vidutinės klasės modelis.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šios savaitės duomenimis, „Hugging Face“ dar nieko nėra.",
+      "text_markdown": "Šios savaitės duomenimis, „Hugging Face“ dar nieko nėra.",
+      "title": "",
+      "tts": {
+        "text": "Šios savaitės duomenimis, „Hugging Face“ dar nieko nėra.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gerai, pereikime prie lyderių lentelių.",
+      "text_markdown": "Gerai, pereikime prie lyderių lentelių.",
+      "title": "",
+      "tts": {
+        "text": "Gerai, pereikime prie lyderių lentelių.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kur viskas nusileido šią savaitę?",
+      "text_markdown": "Kur viskas nusileido šią savaitę?",
+      "title": "",
+      "tts": {
+        "text": "Kur viskas nusileido šią savaitę?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Štai antraštė, ir ji keista.",
+      "text_markdown": "Štai antraštė, ir ji keista.",
+      "title": "",
+      "tts": {
+        "text": "Štai antraštė, ir ji keista.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šią savaitę pasikeitusi lyderių lentelė nėra kokybės lentelė.",
+      "text_markdown": "Šią savaitę pasikeitusi lyderių lentelė nėra kokybės lentelė.",
+      "title": "",
+      "tts": {
+        "text": "Šią savaitę pasikeitusi lyderių lentelė nėra kokybės lentelė.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai yra „OpenRouter“ naudojimo matuoklis – tikri modelių iškvietimai, o ne nuomonės.",
+      "text_markdown": "Tai yra „OpenRouter“ naudojimo matuoklis – tikri modelių iškvietimai, o ne nuomonės.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra „OpenRouter“ naudojimo matuoklis – tikri modelių iškvietimai, o ne nuomonės.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ką rodo naudojimo matuoklis?",
+      "text_markdown": "Ką rodo naudojimo matuoklis?",
+      "title": "",
+      "tts": {
+        "text": "Ką rodo naudojimo matuoklis?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gegužės 18–24 dienomis vienintelis labiausiai Žemėje naudotas modelis buvo „DeepSeek V4-Flash“.",
+      "text_markdown": "Gegužės 18–24 dienomis vienintelis labiausiai Žemėje naudotas modelis buvo „DeepSeek V4-Flash“.",
+      "title": "",
+      "tts": {
+        "text": "Gegužės aštuonioliktos iki dvidešimt ketvirtos dienos savaitę, vienintelis labiausiai Žemėje naudotas modelis buvo „DeepSeek V keturi Flash“.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Per vieną savaitę jis aptarnavo apie 3,43 trilijono žetonų.",
+      "text_markdown": "Per vieną savaitę jis aptarnavo apie 3,43 trilijono žetonų.",
+      "title": "",
+      "tts": {
+        "text": "Per vieną savaitę jis aptarnavo apie tris kablelis keturiasdešimt tris trilijono žetonų.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir tai yra atvirojo kodo svoriai, licencijuoti pagal MIT, kažkas, ką galite atsisiųsti ir priglobti patys.",
+      "text_markdown": "Ir tai yra atvirojo kodo svoriai, licencijuoti pagal MIT, kažkas, ką galite atsisiųsti ir priglobti patys.",
+      "title": "",
+      "tts": {
+        "text": "Ir tai yra atvirojo kodo svoriai, licencijuoti pagal M I T, kažkas, ką galite atsisiųsti ir priglobti patys.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Labiausiai naudojamas modelis yra atviras?",
+      "text_markdown": "Labiausiai naudojamas modelis yra atviras?",
+      "title": "",
+      "tts": {
+        "text": "Labiausiai naudojamas modelis yra atviras?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Naudojimo diagramos viršuje, taip.",
+      "text_markdown": "Naudojimo diagramos viršuje, taip.",
+      "title": "",
+      "tts": {
+        "text": "Naudojimo diagramos viršuje, taip.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir tai nėra arti.",
+      "text_markdown": "Ir tai nėra arti.",
+      "title": "",
+      "tts": {
+        "text": "Ir tai nėra arti.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kinijos modeliai tą savaitę aptarnavo apie 9,2 trilijono žetonų, palyginti su maždaug 4,9 trilijono Amerikos modelių.",
+      "text_markdown": "Kinijos modeliai tą savaitę aptarnavo apie 9,2 trilijono žetonų, palyginti su maždaug 4,9 trilijono Amerikos modelių.",
+      "title": "",
+      "tts": {
+        "text": "Kinijos modeliai tą savaitę aptarnavo apie devynis kablelis du trilijono žetonų, palyginti su maždaug keturiais kablelis devyniais trilijono Amerikos modelių.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai jau ketvirta savaitė iš eilės, kai Kinijos atviri modeliai pirmauja pasauliniame naudojime.",
+      "text_markdown": "Tai jau ketvirta savaitė iš eilės, kai Kinijos atviri modeliai pirmauja pasauliniame naudojime.",
+      "title": "",
+      "tts": {
+        "text": "Tai jau ketvirta savaitė iš eilės, kai Kinijos atviri modeliai pirmauja pasauliniame naudojime.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai tikra inversija.",
+      "text_markdown": "Tai tikra inversija.",
+      "title": "",
+      "tts": {
+        "text": "Tai tikra inversija.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai yra – pagal metriką, kurią kūrėjai iš tiesų jaučia, kas veikia gamyboje, atvirasis kodas laimi viršuje.",
+      "text_markdown": "Tai yra – pagal metriką, kurią kūrėjai iš tiesų jaučia, kas veikia gamyboje, atvirasis kodas laimi viršuje.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra – pagal metriką, kurią kūrėjai iš tiesų jaučia, kas veikia gamyboje, atvirasis kodas laimi viršuje.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tačiau būkite sąžiningi dėl naudojimo diagramų.",
+      "text_markdown": "Tačiau būkite sąžiningi dėl naudojimo diagramų.",
+      "title": "",
+      "tts": {
+        "text": "Tačiau būkite sąžiningi dėl naudojimo diagramų.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Geras instinktas, ir šią savaitę yra puiki pamokanti istorija.",
+      "text_markdown": "Geras instinktas, ir šią savaitę yra puiki pamokanti istorija.",
+      "title": "",
+      "tts": {
+        "text": "Geras instinktas, ir šią savaitę yra puiki pamokanti istorija.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kitas modelis, „Tencent“ „Hy3“, pakilo toje pačioje naudojimo diagramoje.",
+      "text_markdown": "Kitas modelis, „Tencent“ „Hy3“, pakilo toje pačioje naudojimo diagramoje.",
+      "title": "",
+      "tts": {
+        "text": "Kitas modelis, „Tencent“ „H Y trys“, pakilo toje pačioje naudojimo diagramoje.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Analitikas Maxas Woolfas išanalizavo tai gegužės 26 d.",
+      "text_markdown": "Analitikas Maxas Woolfas išanalizavo tai gegužės 26 d.",
+      "title": "",
+      "tts": {
+        "text": "Analitikas Maxas Woolfas išanalizavo tai gegužės dvidešimt šeštą dieną.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ką jis rado?",
+      "text_markdown": "Ką jis rado?",
+      "title": "",
+      "tts": {
+        "text": "Ką jis rado?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis atrodo pigus už žetoną, tačiau turi labai dideles talpyklos skaitymo išlaidas.",
+      "text_markdown": "Jis atrodo pigus už žetoną, tačiau turi labai dideles talpyklos skaitymo išlaidas.",
+      "title": "",
+      "tts": {
+        "text": "Jis atrodo pigus už žetoną, tačiau turi labai dideles talpyklos skaitymo išlaidas.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kai suskaičiuosite juos, tai beveik dvigubai viršija tikrąją „DeepSeek“ kainą.",
+      "text_markdown": "Kai suskaičiuosite juos, tai beveik dvigubai viršija tikrąją „DeepSeek“ kainą.",
+      "title": "",
+      "tts": {
+        "text": "Kai suskaičiuosite juos, tai beveik dvigubai viršija tikrąją „DeepSeek“ kainą.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir tas šuolis atrodo kaip viena milžiniška programa, o ne platus populiarumas.",
+      "text_markdown": "Ir tas šuolis atrodo kaip viena milžiniška programa, o ne platus populiarumas.",
+      "title": "",
+      "tts": {
+        "text": "Ir tas šuolis atrodo kaip viena milžiniška programa, o ne platus populiarumas.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, naudojimo lentelė parodo, kas išleidžia, o ne kas yra gerai.",
+      "text_markdown": "Taigi, naudojimo lentelė parodo, kas išleidžia, o ne kas yra gerai.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, naudojimo lentelė parodo, kas išleidžia, o ne kas yra gerai.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Populiarumas nėra tas pats, kas geriausias.",
+      "text_markdown": "Populiarumas nėra tas pats, kas geriausias.",
+      "title": "",
+      "tts": {
+        "text": "Populiarumas nėra tas pats, kas geriausias.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Būtent tai ir yra pamoka, kurią reikia įsidėmėti.",
+      "text_markdown": "Būtent tai ir yra pamoka, kurią reikia įsidėmėti.",
+      "title": "",
+      "tts": {
+        "text": "Būtent tai ir yra pamoka, kurią reikia įsidėmėti.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kaip su kokybės lentelėmis?",
+      "text_markdown": "O kaip su kokybės lentelėmis?",
+      "title": "",
+      "tts": {
+        "text": "O kaip su kokybės lentelėmis?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sunkiausiose lentelėse vis dar pirmauja uždari modeliai.",
+      "text_markdown": "Sunkiausiose lentelėse vis dar pirmauja uždari modeliai.",
+      "title": "",
+      "tts": {
+        "text": "Sunkiausiose lentelėse vis dar pirmauja uždari modeliai.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pokalbių kokybės ir agentų terminalų lentelių viršus šiuo metu yra visiškai uždaras.",
+      "text_markdown": "Pokalbių kokybės ir agentų terminalų lentelių viršus šiuo metu yra visiškai uždaras.",
+      "title": "",
+      "tts": {
+        "text": "Pokalbių kokybės ir agentų terminalų lentelių viršus šiuo metu yra visiškai uždaras.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tačiau „SWE-bench Verified“, kodavimo teste, atvirasis kodas iš esmės yra lygiavertis.",
+      "text_markdown": "Tačiau „SWE-bench Verified“, kodavimo teste, atvirasis kodas iš esmės yra lygiavertis.",
+      "title": "",
+      "tts": {
+        "text": "Tačiau „S V E bench Verified“, kodavimo teste, atvirasis kodas iš esmės yra lygiavertis.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Stebėtojai geriausius atvirus modelius vertina maždaug 80%.",
+      "text_markdown": "Stebėtojai geriausius atvirus modelius vertina maždaug 80%.",
+      "title": "",
+      "tts": {
+        "text": "Stebėtojai geriausius atvirus modelius vertina maždaug aštuoniasdešimt procentų.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kokie atviri modeliai?",
+      "text_markdown": "Kokie atviri modeliai?",
+      "title": "",
+      "tts": {
+        "text": "Kokie atviri modeliai?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kimi K2.6 ir MiniMax, o DeepSeek didžiausias modelis teigia esąs panašus.",
+      "text_markdown": "Kimi K2.6 ir MiniMax, o DeepSeek didžiausias modelis teigia esąs panašus.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K du taškas šeši ir MiniMax, o DeepSeek didžiausias modelis teigia esąs panašus.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sakau „teigia“, nes stebėtojai nesutaria tarpusavyje.",
+      "text_markdown": "Sakau „teigia“, nes stebėtojai nesutaria tarpusavyje.",
+      "title": "",
+      "tts": {
+        "text": "Sakau „teigia“, nes stebėtojai nesutaria tarpusavyje.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Bet kokį vieną etaloninį skaičių vertinkite kaip teiginį, o ne faktą.",
+      "text_markdown": "Bet kokį vieną etaloninį skaičių vertinkite kaip teiginį, o ne faktą.",
+      "title": "",
+      "tts": {
+        "text": "Bet kokį vieną etaloninį skaičių vertinkite kaip teiginį, o ne faktą.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kalbant apie tai – etalonų patikimumo problema.",
+      "text_markdown": "Kalbant apie tai – etalonų patikimumo problema.",
+      "title": "",
+      "tts": {
+        "text": "Kalbant apie tai – etalonų patikimumo problema.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taip, geras straipsnis pasirodė gegužės 19 d. būtent apie tai.",
+      "text_markdown": "Taip, geras straipsnis pasirodė gegužės 19 d. būtent apie tai.",
+      "title": "",
+      "tts": {
+        "text": "Taip, geras straipsnis pasirodė gegužės devynioliktą dieną būtent apie tai.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Argumentas yra tas, kad etalonai turėtų būti atsparūs užteršimui.",
+      "text_markdown": "Argumentas yra tas, kad etalonai turėtų būti atsparūs užteršimui.",
+      "title": "",
+      "tts": {
+        "text": "Argumentas yra tas, kad etalonai turėtų būti atsparūs užteršimui.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai reiškia, kad testas neturi patekti į mokymo duomenis.",
+      "text_markdown": "Tai reiškia, kad testas neturi patekti į mokymo duomenis.",
+      "title": "",
+      "tts": {
+        "text": "Tai reiškia, kad testas neturi patekti į mokymo duomenis.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Priešingu atveju aukštas balas matuoja atmintį, o ne mąstymą.",
+      "text_markdown": "Priešingu atveju aukštas balas matuoja atmintį, o ne mąstymą.",
+      "title": "",
+      "tts": {
+        "text": "Priešingu atveju aukštas balas matuoja atmintį, o ne mąstymą.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, du būdai, kaip lenta gali meluoti.",
+      "text_markdown": "Taigi, du būdai, kaip lenta gali meluoti.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, du būdai, kaip lenta gali meluoti.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Teisingai – naudojimo manipuliavimas vienoje pusėje, užteršimas kitoje.",
+      "text_markdown": "Teisingai – naudojimo manipuliavimas vienoje pusėje, užteršimas kitoje.",
+      "title": "",
+      "tts": {
+        "text": "Teisingai – naudojimo manipuliavimas vienoje pusėje, užteršimas kitoje.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ta pati pamoka – skaitykite lyderių lentelę, bet jos negarbinkite.",
+      "text_markdown": "Ta pati pamoka – skaitykite lyderių lentelę, bet jos negarbinkite.",
+      "title": "",
+      "tts": {
+        "text": "Ta pati pamoka – skaitykite lyderių lentelę, bet jos negarbinkite.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dabar pereikime prie antraščių.",
+      "text_markdown": "Dabar pereikime prie antraščių.",
+      "title": "",
+      "tts": {
+        "text": "Dabar pereikime prie antraščių.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Greita apžvalga, dalykai, kuriuos galite realiai panaudoti.",
+      "text_markdown": "Greita apžvalga, dalykai, kuriuos galite realiai panaudoti.",
+      "title": "",
+      "tts": {
+        "text": "Greita apžvalga, dalykai, kuriuos galite realiai panaudoti.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pirma, sąžininga savarankiško talpinimo matematika apie tą numeris vienas modelį.",
+      "text_markdown": "Pirma, sąžininga savarankiško talpinimo matematika apie tą numeris vienas modelį.",
+      "title": "",
+      "tts": {
+        "text": "Pirma, sąžininga savarankiško talpinimo matematika apie tą numeris vienas modelį.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "DeepSeek V4-Flash reikia apie 170 gigabaitų GPU atminties.",
+      "text_markdown": "DeepSeek V4-Flash reikia apie 170 gigabaitų GPU atminties.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V keturi Flash reikia apie vieną šimtą septyniasdešimt gigabaitų G P U atminties.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai yra pora aukščiausios klasės duomenų centrų kortelių, apie septynis dolerius per valandą debesyje.",
+      "text_markdown": "Tai yra pora aukščiausios klasės duomenų centrų kortelių, apie septynis dolerius per valandą debesyje.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra pora aukščiausios klasės duomenų centrų kortelių, apie septynis dolerius per valandą debesyje.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Esant labai dideliam srautui, pigus API vis dar laimi.",
+      "text_markdown": "Esant labai dideliam srautui, pigus API vis dar laimi.",
+      "title": "",
+      "tts": {
+        "text": "Esant labai dideliam srautui, pigus API vis dar laimi.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Talpinkite patys dėl privatumo ir kontrolės, o ne norėdami sutaupyti pinigų – nebent esate milžiniški.",
+      "text_markdown": "Talpinkite patys dėl privatumo ir kontrolės, o ne norėdami sutaupyti pinigų – nebent esate milžiniški.",
+      "title": "",
+      "tts": {
+        "text": "Talpinkite patys dėl privatumo ir kontrolės, o ne norėdami sutaupyti pinigų – nebent esate milžiniški.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gerai, kas dar?",
+      "text_markdown": "Gerai, kas dar?",
+      "title": "",
+      "tts": {
+        "text": "Gerai, kas dar?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Antra, kalbos apdorojimas įrenginyje šiais metais padarė didelį šuolį.",
+      "text_markdown": "Antra, kalbos apdorojimas įrenginyje šiais metais padarė didelį šuolį.",
+      "title": "",
+      "tts": {
+        "text": "Antra, kalbos apdorojimas įrenginyje šiais metais padarė didelį šuolį.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Yra atviras teksto į kalbą modelis, veikiantis CPU be jokio GPU.",
+      "text_markdown": "Yra atviras teksto į kalbą modelis, veikiantis CPU be jokio GPU.",
+      "title": "",
+      "tts": {
+        "text": "Yra atviras teksto į kalbą modelis, veikiantis C P U be jokio G P U.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Palikite šią mintį – tai mūsų pagrindinė istorija.",
+      "text_markdown": "Palikite šią mintį – tai mūsų pagrindinė istorija.",
+      "title": "",
+      "tts": {
+        "text": "Palikite šią mintį – tai mūsų pagrindinė istorija.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Užuomina užfiksuota.",
+      "text_markdown": "Užuomina užfiksuota.",
+      "title": "",
+      "tts": {
+        "text": "Užuomina užfiksuota.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Trečia, bendruomenės kvantavimo sluoksnis palaiko atvirą pasaulį.",
+      "text_markdown": "Trečia, bendruomenės kvantavimo sluoksnis palaiko atvirą pasaulį.",
+      "title": "",
+      "tts": {
+        "text": "Trečia, bendruomenės kvantavimo sluoksnis palaiko atvirą pasaulį.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Grupės, tokios kaip „Unsloth“, per kelias dienas pristato patobulintas, sumažintas naujų modelių versijas.",
+      "text_markdown": "Grupės, tokios kaip „Unsloth“, per kelias dienas pristato patobulintas, sumažintas naujų modelių versijas.",
+      "title": "",
+      "tts": {
+        "text": "Grupės, tokios kaip „Unsloth“, per kelias dienas pristato patobulintas, sumažintas naujų modelių versijas.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Štai kaip milžiniškas modelis tampa kažkuo, kas telpa į jūsų kortelę.",
+      "text_markdown": "Štai kaip milžiniškas modelis tampa kažkuo, kas telpa į jūsų kortelę.",
+      "title": "",
+      "tts": {
+        "text": "Štai kaip milžiniškas modelis tampa kažkuo, kas telpa į jūsų kortelę.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O klausymo pusėje?",
+      "text_markdown": "O klausymo pusėje?",
+      "title": "",
+      "tts": {
+        "text": "O klausymo pusėje?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kalba į tekstą taip pat pajudėjo.",
+      "text_markdown": "Kalba į tekstą taip pat pajudėjo.",
+      "title": "",
+      "tts": {
+        "text": "Kalba į tekstą taip pat pajudėjo.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "„Moonshine v2“ yra atviras modelis, kuris tikslumu pranoksta „Whisper“, užimdamas tik dalį jo dydžio.",
+      "text_markdown": "„Moonshine v2“ yra atviras modelis, kuris tikslumu pranoksta „Whisper“, užimdamas tik dalį jo dydžio.",
+      "title": "",
+      "tts": {
+        "text": "„Moonshine“ versija du yra atviras modelis, kuris tikslumu pranoksta „Whisper“, užimdamas tik dalį jo dydžio.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis sukurtas „Raspberry Pi“ arba telefonui.",
+      "text_markdown": "Jis sukurtas „Raspberry Pi“ arba telefonui.",
+      "title": "",
+      "tts": {
+        "text": "Jis sukurtas „Raspberry Pi“ arba telefonui.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Masiniam transkribavimui serveryje „NVIDIA Parakeet“ yra greičio pasirinkimas.",
+      "text_markdown": "Masiniam transkribavimui serveryje „NVIDIA Parakeet“ yra greičio pasirinkimas.",
+      "title": "",
+      "tts": {
+        "text": "Masiniam transkribavimui serveryje „NVIDIA Parakeet“ yra greičio pasirinkimas.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dar viena – lustų istorija.",
+      "text_markdown": "Dar viena – lustų istorija.",
+      "title": "",
+      "tts": {
+        "text": "Dar viena – lustų istorija.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ši istorija susieja visą epizodą.",
+      "text_markdown": "Ši istorija susieja visą epizodą.",
+      "title": "",
+      "tts": {
+        "text": "Ši istorija susieja visą epizodą.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gegužės 21 d. „Nvidia“ atstovas Jensenas Huangas pareiškė, kad iš esmės užleido Kinijos lustų rinką „Huawei“.",
+      "text_markdown": "Gegužės 21 d. „Nvidia“ atstovas Jensenas Huangas pareiškė, kad iš esmės užleido Kinijos lustų rinką „Huawei“.",
+      "title": "",
+      "tts": {
+        "text": "Gegužės dvidešimt pirmą dieną „Nvidia“ atstovas Jensenas Huangas pareiškė, kad iš esmės užleido Kinijos lustų rinką „Huawei“.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kinija netgi blokuoja patvirtintą „Nvidia“ importą, siekdama skatinti savo silicio gamybą.",
+      "text_markdown": "Kinija netgi blokuoja patvirtintą „Nvidia“ importą, siekdama skatinti savo silicio gamybą.",
+      "title": "",
+      "tts": {
+        "text": "Kinija netgi blokuoja patvirtintą „Nvidia“ importą, siekdama skatinti savo silicio gamybą.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kodėl tai svarbu kūrėjui?",
+      "text_markdown": "Kodėl tai svarbu kūrėjui?",
+      "title": "",
+      "tts": {
+        "text": "Kodėl tai svarbu kūrėjui?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nes tie atviri Kinijos modeliai, lyderiaujantys naudojimo diagramoje, vis dažniau apmokomi ir aptarnaujami „Huawei“ lustais.",
+      "text_markdown": "Nes tie atviri Kinijos modeliai, lyderiaujantys naudojimo diagramoje, vis dažniau apmokomi ir aptarnaujami „Huawei“ lustais.",
+      "title": "",
+      "tts": {
+        "text": "Nes tie atviri Kinijos modeliai, lyderiaujantys naudojimo diagramoje, vis dažniau apmokomi ir aptarnaujami „Huawei“ lustais.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Eksporto kontrolė turėjo sulėtinti Kinijos dirbtinį intelektą.",
+      "text_markdown": "Eksporto kontrolė turėjo sulėtinti Kinijos dirbtinį intelektą.",
+      "title": "",
+      "tts": {
+        "text": "Eksporto kontrolė turėjo sulėtinti Kinijos dirbtinį intelektą.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vietoj to, jie sukūrė lygiagretų atvirą technologijų rinkinį – tiek lustus, tiek svorius.",
+      "text_markdown": "Vietoj to, jie sukūrė lygiagretų atvirą technologijų rinkinį – tiek lustus, tiek svorius.",
+      "title": "",
+      "tts": {
+        "text": "Vietoj to, jie sukūrė lygiagretų atvirą technologijų rinkinį – tiek lustus, tiek svorius.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Lyderių lentelės istorija ir lustų istorija yra ta pati istorija.",
+      "text_markdown": "Lyderių lentelės istorija ir lustų istorija yra ta pati istorija.",
+      "title": "",
+      "tts": {
+        "text": "Lyderių lentelės istorija ir lustų istorija yra ta pati istorija.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dabar grįžkime prie pagrindinės istorijos.",
+      "text_markdown": "Dabar grįžkime prie pagrindinės istorijos.",
+      "title": "",
+      "tts": {
+        "text": "Dabar grįžkime prie pagrindinės istorijos.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jūs mums pažadėjote atvirą balsą.",
+      "text_markdown": "Jūs mums pažadėjote atvirą balsą.",
+      "title": "",
+      "tts": {
+        "text": "Jūs mums pažadėjote atvirą balsą.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taip, ir tai yra šios laidos variklis.",
+      "text_markdown": "Taip, ir tai yra šios laidos variklis.",
+      "title": "",
+      "tts": {
+        "text": "Taip, ir tai yra šios laidos variklis.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Papasakokite daugiau apie tai.",
+      "text_markdown": "Papasakokite daugiau apie tai.",
+      "title": "",
+      "tts": {
+        "text": "Papasakokite daugiau apie tai.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Balsas, kurį girdite, veikia remiantis atviraisiais ir talpinamais kalbos modeliais.",
+      "text_markdown": "Balsas, kurį girdite, veikia remiantis atviraisiais ir talpinamais kalbos modeliais.",
+      "title": "",
+      "tts": {
+        "text": "Balsas, kurį girdite, veikia remiantis atviraisiais ir talpinamais kalbos modeliais.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir 2026-ieji yra metai, kai atvirieji tapo pakankamai geri, kad juos būtų galima turėti.",
+      "text_markdown": "Ir 2026-ieji yra metai, kai atvirieji tapo pakankamai geri, kad juos būtų galima turėti.",
+      "title": "",
+      "tts": {
+        "text": "Ir du tūkstančiai dvidešimt šeštieji yra metai, kai atvirieji tapo pakankamai geri, kad juos būtų galima turėti.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pradėkime nuo artimiausio mums.",
+      "text_markdown": "Pradėkime nuo artimiausio mums.",
+      "title": "",
+      "tts": {
+        "text": "Pradėkime nuo artimiausio mums.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai „Chatterbox“ iš „Resemble AI“.",
+      "text_markdown": "Tai „Chatterbox“ iš „Resemble AI“.",
+      "title": "",
+      "tts": {
+        "text": "Tai „Chatterbox“ iš „Resemble AI“.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis turi MIT licenciją, apima 23 kalbas ir veikia įrenginyje.",
+      "text_markdown": "Jis turi MIT licenciją, apima 23 kalbas ir veikia įrenginyje.",
+      "title": "",
+      "tts": {
+        "text": "Jis turi MIT licenciją, apima dvidešimt tris kalbas ir veikia įrenginyje.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Versija, pavadinta „Turbo“, pasirodė kovą.",
+      "text_markdown": "Versija, pavadinta „Turbo“, pasirodė kovą.",
+      "title": "",
+      "tts": {
+        "text": "Versija, pavadinta „Turbo“, pasirodė kovą.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ji naudoja gudrybę, kuri garso dekoderį paverčia vienu žingsniu vietoj dešimties.",
+      "text_markdown": "Ji naudoja gudrybę, kuri garso dekoderį paverčia vienu žingsniu vietoj dešimties.",
+      "title": "",
+      "tts": {
+        "text": "Ji naudoja gudrybę, kuri garso dekoderį paverčia vienu žingsniu vietoj dešimties.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Paprasta kalba apie tą gudrybę?",
+      "text_markdown": "Paprasta kalba apie tą gudrybę?",
+      "title": "",
+      "tts": {
+        "text": "Paprasta kalba apie tą gudrybę?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai reiškia žymiai mažiau skaičiavimo galios tam pačiam balsui.",
+      "text_markdown": "Tai reiškia žymiai mažiau skaičiavimo galios tam pačiam balsui.",
+      "title": "",
+      "tts": {
+        "text": "Tai reiškia žymiai mažiau skaičiavimo galios tam pačiam balsui.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Štai kas padaro gerą balsą realistišką telefone.",
+      "text_markdown": "Štai kas padaro gerą balsą realistišką telefone.",
+      "title": "",
+      "tts": {
+        "text": "Štai kas padaro gerą balsą realistišką telefone.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kas, jei reikia daugiau kalbų?",
+      "text_markdown": "O kas, jei reikia daugiau kalbų?",
+      "title": "",
+      "tts": {
+        "text": "O kas, jei reikia daugiau kalbų?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Yra atviras modelis, pavadintas „OmniVoice“.",
+      "text_markdown": "Yra atviras modelis, pavadintas „OmniVoice“.",
+      "title": "",
+      "tts": {
+        "text": "Yra atviras modelis, pavadintas „OmniVoice“.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis teigia palaikantis daugiau nei 600 kalbų ir yra greitas.",
+      "text_markdown": "Jis teigia palaikantis daugiau nei 600 kalbų ir yra greitas.",
+      "title": "",
+      "tts": {
+        "text": "Jis teigia palaikantis daugiau nei šešis šimtus kalbų ir yra greitas.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis turi „Apache“ licenciją, todėl jį saugu naudoti komerciniais tikslais.",
+      "text_markdown": "Jis turi „Apache“ licenciją, todėl jį saugu naudoti komerciniais tikslais.",
+      "title": "",
+      "tts": {
+        "text": "Jis turi „Apache“ licenciją, todėl jį saugu naudoti komerciniais tikslais.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "600 kalbų skamba per gerai.",
+      "text_markdown": "600 kalbų skamba per gerai.",
+      "title": "",
+      "tts": {
+        "text": "šeši šimtai kalbų skamba per gerai.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai pagrįstas nerimas.",
+      "text_markdown": "Tai pagrįstas nerimas.",
+      "title": "",
+      "tts": {
+        "text": "Tai pagrįstas nerimas.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Aprėpti kalbą nėra tas pats, kas gerai ja skambėti.",
+      "text_markdown": "Aprėpti kalbą nėra tas pats, kas gerai ja skambėti.",
+      "title": "",
+      "tts": {
+        "text": "Aprėpti kalbą nėra tas pats, kas gerai ja skambėti.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vis tiek turite klausytis, kalba po kalbos, prieš pasitikėdami ja.",
+      "text_markdown": "Vis tiek turite klausytis, kalba po kalbos, prieš pasitikėdami ja.",
+      "title": "",
+      "tts": {
+        "text": "Vis tiek turite klausytis, kalba po kalbos, prieš pasitikėdami ja.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kaip studijos kokybė?",
+      "text_markdown": "O kaip studijos kokybė?",
+      "title": "",
+      "tts": {
+        "text": "O kaip studijos kokybė?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tam pažiūrėkite į VoxCPM2.",
+      "text_markdown": "Tam pažiūrėkite į VoxCPM2.",
+      "title": "",
+      "tts": {
+        "text": "Tam pažiūrėkite į Vox C P M du.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai apie 2 milijardus parametrų, licencijuota pagal Apache ir išveda aukštos kokybės garsą.",
+      "text_markdown": "Tai apie 2 milijardus parametrų, licencijuota pagal Apache ir išveda aukštos kokybės garsą.",
+      "title": "",
+      "tts": {
+        "text": "Tai apie du milijardus parametrų, licencijuota pagal Apache ir išveda aukštos kokybės garsą.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ji apima 30 kalbų ir ją galima tiksliai sureguliuoti naudojant nedidelį balso pavyzdį.",
+      "text_markdown": "Ji apima 30 kalbų ir ją galima tiksliai sureguliuoti naudojant nedidelį balso pavyzdį.",
+      "title": "",
+      "tts": {
+        "text": "Ji apima trisdešimt kalbų ir ją galima tiksliai sureguliuoti naudojant nedidelį balso pavyzdį.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dėl šio derinio tai yra labiausiai komercializuojamas vidutinio dydžio atviras balsas.",
+      "text_markdown": "Dėl šio derinio tai yra labiausiai komercializuojamas vidutinio dydžio atviras balsas.",
+      "title": "",
+      "tts": {
+        "text": "Dėl šio derinio tai yra labiausiai komercializuojamas vidutinio dydžio atviras balsas.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kaip dėl įrenginyje veikiančio lankstumo, kurį užsiminėte?",
+      "text_markdown": "O kaip dėl įrenginyje veikiančio lankstumo, kurį užsiminėte?",
+      "title": "",
+      "tts": {
+        "text": "O kaip dėl įrenginyje veikiančio lankstumo, kurį užsiminėte?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai MOSS-TTS-Nano modelis.",
+      "text_markdown": "Tai MOSS-TTS-Nano modelis.",
+      "title": "",
+      "tts": {
+        "text": "Tai Mos teksto į kalbą nano modelis.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis mažas, apie 100 milijonų parametrų.",
+      "text_markdown": "Jis mažas, apie 100 milijonų parametrų.",
+      "title": "",
+      "tts": {
+        "text": "Jis mažas, apie šimtą milijonų parametrų.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis veikia su CPU be GPU – net nešiojamajame kompiuteryje, su vienu branduoliu.",
+      "text_markdown": "Jis veikia su CPU be GPU – net nešiojamajame kompiuteryje, su vienu branduoliu.",
+      "title": "",
+      "tts": {
+        "text": "Jis veikia su CPU be GPU – net nešiojamajame kompiuteryje, su vienu branduoliu.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kiekvienam, kuris siunčia balsą į telefoną, tai yra svajonė.",
+      "text_markdown": "Kiekvienam, kuris siunčia balsą į telefoną, tai yra svajonė.",
+      "title": "",
+      "tts": {
+        "text": "Kiekvienam, kuris siunčia balsą į telefoną, tai yra svajonė.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, viskas tik gerai?",
+      "text_markdown": "Taigi, viskas tik gerai?",
+      "title": "",
+      "tts": {
+        "text": "Taigi, viskas tik gerai?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ne – ir štai spąstai, kuriuos visi praleidžia.",
+      "text_markdown": "Ne – ir štai spąstai, kuriuos visi praleidžia.",
+      "title": "",
+      "tts": {
+        "text": "Ne – ir štai spąstai, kuriuos visi praleidžia.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Mistral išleido puikų balso modelį pavadinimu Voxtral.",
+      "text_markdown": "Mistral išleido puikų balso modelį pavadinimu Voxtral.",
+      "title": "",
+      "tts": {
+        "text": "Mistral išleido puikų balso modelį pavadinimu Voxtral.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Svorio koeficientai yra atviri, o kokybė puiki.",
+      "text_markdown": "Svorio koeficientai yra atviri, o kokybė puiki.",
+      "title": "",
+      "tts": {
+        "text": "Svorio koeficientai yra atviri, o kokybė puiki.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tačiau licencija yra nekomercinė.",
+      "text_markdown": "Tačiau licencija yra nekomercinė.",
+      "title": "",
+      "tts": {
+        "text": "Tačiau licencija yra nekomercinė.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai reiškia, kad negalite jos platinti.",
+      "text_markdown": "Tai reiškia, kad negalite jos platinti.",
+      "title": "",
+      "tts": {
+        "text": "Tai reiškia, kad negalite jos platinti.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ne mokamame produkte, ne be susitarimo.",
+      "text_markdown": "Ne mokamame produkte, ne be susitarimo.",
+      "title": "",
+      "tts": {
+        "text": "Ne mokamame produkte, ne be susitarimo.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atviri svorio koeficientai ne visada reiškia, kad jums leidžiama juos naudoti.",
+      "text_markdown": "Atviri svorio koeficientai ne visada reiškia, kad jums leidžiama juos naudoti.",
+      "title": "",
+      "tts": {
+        "text": "Atviri svorio koeficientai ne visada reiškia, kad jums leidžiama juos naudoti.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tikrai programėlei perskaitykite licenciją, prieš įsimylėdami.",
+      "text_markdown": "Tikrai programėlei perskaitykite licenciją, prieš įsimylėdami.",
+      "title": "",
+      "tts": {
+        "text": "Tikrai programėlei perskaitykite licenciją, prieš įsimylėdami.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "O kaip dėl etaloninių teiginių apie juos?",
+      "text_markdown": "O kaip dėl etaloninių teiginių apie juos?",
+      "title": "",
+      "tts": {
+        "text": "O kaip dėl etaloninių teiginių apie juos?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Būkite skeptiški.",
+      "text_markdown": "Būkite skeptiški.",
+      "title": "",
+      "tts": {
+        "text": "Būkite skeptiški.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kiekvienas teiginys „pranoksta lyderį“ čia yra pardavėjo, atliekančio savo akląjį testą.",
+      "text_markdown": "Kiekvienas teiginys „pranoksta lyderį“ čia yra pardavėjo, atliekančio savo akląjį testą.",
+      "title": "",
+      "tts": {
+        "text": "Kiekvienas teiginys „pranoksta lyderį“ čia yra pardavėjo, atliekančio savo akląjį testą.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pasitikėkite savo ausimis, o ne jų diagrama.",
+      "text_markdown": "Pasitikėkite savo ausimis, o ne jų diagrama.",
+      "title": "",
+      "tts": {
+        "text": "Pasitikėkite savo ausimis, o ne jų diagrama.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, kur tai mus palieka?",
+      "text_markdown": "Taigi, kur tai mus palieka?",
+      "title": "",
+      "tts": {
+        "text": "Taigi, kur tai mus palieka?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai palieka mus kažkur išties naujoje vietoje.",
+      "text_markdown": "Tai palieka mus kažkur išties naujoje vietoje.",
+      "title": "",
+      "tts": {
+        "text": "Tai palieka mus kažkur išties naujoje vietoje.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Šiandien galite paleisti puikų balsą savo įrenginyje.",
+      "text_markdown": "Šiandien galite paleisti puikų balsą savo įrenginyje.",
+      "title": "",
+      "tts": {
+        "text": "Šiandien galite paleisti puikų balsą savo įrenginyje.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sunkus klausimas nebėra „ar galite“ – o „kokia licencija leidžia jums tai pasilikti“.",
+      "text_markdown": "Sunkus klausimas nebėra „ar galite“ – o „kokia licencija leidžia jums tai pasilikti“.",
+      "title": "",
+      "tts": {
+        "text": "Sunkus klausimas nebėra „ar galite“ – o „kokia licencija leidžia jums tai pasilikti“.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai gera mintis užbaigti istoriją.",
+      "text_markdown": "Tai gera mintis užbaigti istoriją.",
+      "title": "",
+      "tts": {
+        "text": "Tai gera mintis užbaigti istoriją.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Aptarkime savaitės koncepciją.",
+      "text_markdown": "Aptarkime savaitės koncepciją.",
+      "title": "",
+      "tts": {
+        "text": "Aptarkime savaitės koncepciją.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jūs pasirinkote neuroninius garso kodekus.",
+      "text_markdown": "Jūs pasirinkote neuroninius garso kodekus.",
+      "title": "",
+      "tts": {
+        "text": "Jūs pasirinkote neuroninius garso kodekus.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Aš pasirinkau, nes tai yra paslėptas triukas už kiekvieno įrenginyje veikiančio balso.",
+      "text_markdown": "Aš pasirinkau, nes tai yra paslėptas triukas už kiekvieno įrenginyje veikiančio balso.",
+      "title": "",
+      "tts": {
+        "text": "Aš pasirinkau, nes tai yra paslėptas triukas už kiekvieno įrenginyje veikiančio balso.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Neapdorotas garsas yra milžiniškas – kelios sekundės yra milijonai skaičių.",
+      "text_markdown": "Neapdorotas garsas yra milžiniškas – kelios sekundės yra milijonai skaičių.",
+      "title": "",
+      "tts": {
+        "text": "Neapdorotas garsas yra milžiniškas – kelios sekundės yra milijonai skaičių.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Telefonas negali viso to transliuoti modeliui realiuoju laiku.",
+      "text_markdown": "Telefonas negali viso to transliuoti modeliui realiuoju laiku.",
+      "title": "",
+      "tts": {
+        "text": "Telefonas negali viso to transliuoti modeliui realiuoju laiku.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, ką daro kodekas?",
+      "text_markdown": "Taigi, ką daro kodekas?",
+      "title": "",
+      "tts": {
+        "text": "Taigi, ką daro kodekas?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jis išmoksta suspausti tą garsą į mažytį žetonų srautą.",
+      "text_markdown": "Jis išmoksta suspausti tą garsą į mažytį žetonų srautą.",
+      "title": "",
+      "tts": {
+        "text": "Jis išmoksta suspausti tą garsą į mažytį žetonų srautą.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Galvokite apie tai kaip apie išmanųjį garso „zip“ failą.",
+      "text_markdown": "Galvokite apie tai kaip apie išmanųjį garso „zip“ failą.",
+      "title": "",
+      "tts": {
+        "text": "Galvokite apie tai kaip apie išmanųjį garso „zip“ failą.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atvirasis, pavadintas Mimi, pasiekia maždaug vieną kilobitą per sekundę.",
+      "text_markdown": "Atvirasis, pavadintas Mimi, pasiekia maždaug vieną kilobitą per sekundę.",
+      "title": "",
+      "tts": {
+        "text": "Atvirasis, pavadintas Mimi, pasiekia maždaug vieną kilobitą per sekundę.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kiek tai iš tiesų maža?",
+      "text_markdown": "Kiek tai iš tiesų maža?",
+      "title": "",
+      "tts": {
+        "text": "Kiek tai iš tiesų maža?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Keli šimtai mažų skaičių per sekundę, vietoj milijonų.",
+      "text_markdown": "Keli šimtai mažų skaičių per sekundę, vietoj milijonų.",
+      "title": "",
+      "tts": {
+        "text": "Keli šimtai mažų skaičių per sekundę, vietoj milijonų.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ir jis vis tiek atkuria balsą taip, kad jis skambėtų natūraliai.",
+      "text_markdown": "Ir jis vis tiek atkuria balsą taip, kad jis skambėtų natūraliai.",
+      "title": "",
+      "tts": {
+        "text": "Ir jis vis tiek atkuria balsą taip, kad jis skambėtų natūraliai.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kodėl tai svarbu balso modeliui?",
+      "text_markdown": "Kodėl tai svarbu balso modeliui?",
+      "title": "",
+      "tts": {
+        "text": "Kodėl tai svarbu balso modeliui?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nes modelis kalba tais žetonais, o ne neapdorotu garsu.",
+      "text_markdown": "Nes modelis kalba tais žetonais, o ne neapdorotu garsu.",
+      "title": "",
+      "tts": {
+        "text": "Nes modelis kalba tais žetonais, o ne neapdorotu garsu.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Mažiau žetonų reiškia mažiau skaičiavimų kiekvienam žodžiui.",
+      "text_markdown": "Mažiau žetonų reiškia mažiau skaičiavimų kiekvienam žodžiui.",
+      "title": "",
+      "tts": {
+        "text": "Mažiau žetonų reiškia mažiau skaičiavimų kiekvienam žodžiui.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-198",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Būtent tai leidžia geram balsui veikti telefone, neprisijungus.",
+      "text_markdown": "Būtent tai leidžia geram balsui veikti telefone, neprisijungus.",
+      "title": "",
+      "tts": {
+        "text": "Būtent tai leidžia geram balsui veikti telefone, neprisijungus.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-199",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Taigi, kodekas nustato ribą.",
+      "text_markdown": "Taigi, kodekas nustato ribą.",
+      "title": "",
+      "tts": {
+        "text": "Taigi, kodekas nustato ribą.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-200",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tiksliai, jis nustato delsą ir bitų spartą, po kuria veikia visa kita.",
+      "text_markdown": "Tiksliai, jis nustato delsą ir bitų spartą, po kuria veikia visa kita.",
+      "title": "",
+      "tts": {
+        "text": "Tiksliai, jis nustato delsą ir bitų spartą, po kuria veikia visa kita.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-201",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Atvirieji, Mimi ir pusbrolis, pavadintas SNAC, yra tai, kuo remiasi nauji kalbos modeliai.",
+      "text_markdown": "Atvirieji, Mimi ir pusbrolis, pavadintas SNAC, yra tai, kuo remiasi nauji kalbos modeliai.",
+      "title": "",
+      "tts": {
+        "text": "Atvirieji, Mimi ir pusbrolis, pavadintas SNAC, yra tai, kuo remiasi nauji kalbos modeliai.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-202",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kai susiduriate su mažu įrenginyje veikiančiu balsu, po juo slypi toks kodekas.",
+      "text_markdown": "Kai susiduriate su mažu įrenginyje veikiančiu balsu, po juo slypi toks kodekas.",
+      "title": "",
+      "tts": {
+        "text": "Kai susiduriate su mažu įrenginyje veikiančiu balsu, po juo slypi toks kodekas.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-203",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Suspaudimas, kurį galite girdėti – tai tylus proveržis.",
+      "text_markdown": "Suspaudimas, kurį galite girdėti – tai tylus proveržis.",
+      "title": "",
+      "tts": {
+        "text": "Suspaudimas, kurį galite girdėti – tai tylus proveržis.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-204",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Gera vieta užbaigti.",
+      "text_markdown": "Gera vieta užbaigti.",
+      "title": "",
+      "tts": {
+        "text": "Gera vieta užbaigti.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-205",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dėkoju tau, Ronai.",
+      "text_markdown": "Dėkoju tau, Ronai.",
+      "title": "",
+      "tts": {
+        "text": "Dėkoju tau, Ronai.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-206",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vindy, visada prašom.",
+      "text_markdown": "Vindy, visada prašom.",
+      "title": "",
+      "tts": {
+        "text": "Vindy, visada prašom.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-207",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tai buvo „AI This Week“ 2026 m. gegužės 27 d.",
+      "text_markdown": "Tai buvo „AI This Week“ 2026 m. gegužės 27 d.",
+      "title": "",
+      "tts": {
+        "text": "Tai buvo „AI This Week“ du tūkstančiai dvidešimt šeštųjų metų gegužės dvidešimt septintą dieną.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-208",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Naujas numeris kitą trečiadienį.",
+      "text_markdown": "Naujas numeris kitą trečiadienį.",
+      "title": "",
+      "tts": {
+        "text": "Naujas numeris kitą trečiadienį.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-209",
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Iki tol, pasisaugokite.",
+      "text_markdown": "Iki tol, pasisaugokite.",
+      "title": "",
+      "tts": {
+        "text": "Iki tol, pasisaugokite.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

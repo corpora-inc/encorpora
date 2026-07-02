@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "language": "tr",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merhaba.",
+      "text_markdown": "Merhaba.",
+      "tts": {
+        "text": "Merhaba.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ben Kym.",
+      "text_markdown": "Ben Kym.",
+      "tts": {
+        "text": "Ben Kaym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yemeği seviyorum.",
+      "text_markdown": "Yemeği seviyorum.",
+      "tts": {
+        "text": "Yemeği seviyorum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yemekle ilgili hikayeleri de seviyorum.",
+      "text_markdown": "Yemekle ilgili hikayeleri de seviyorum.",
+      "tts": {
+        "text": "Yemekle ilgili hikayeleri de seviyorum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, büyük bir mutfak hakkında küçük bir kitap.",
+      "text_markdown": "Bu, büyük bir mutfak hakkında küçük bir kitap.",
+      "tts": {
+        "text": "Bu, büyük bir mutfak hakkında küçük bir kitap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu mutfak, Pers mutfağı.",
+      "text_markdown": "Bu mutfak, Pers mutfağı.",
+      "tts": {
+        "text": "Bu mutfak, Pers mutfağı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, İran'ın mutfağı.",
+      "text_markdown": "Bu, İran'ın mutfağı.",
+      "tts": {
+        "text": "Bu, İran'ın mutfağı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aynı zamanda Persya denen çok daha eski bir ülkenin mutfağı.",
+      "text_markdown": "Aynı zamanda Persya denen çok daha eski bir ülkenin mutfağı.",
+      "tts": {
+        "text": "Aynı zamanda Persya denen çok daha eski bir ülkenin mutfağı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya, insanların bilerek yiyecek yetiştirdiği en eski yerlerden biri.",
+      "text_markdown": "Persya, insanların bilerek yiyecek yetiştirdiği en eski yerlerden biri.",
+      "tts": {
+        "text": "Persya, insanların bilerek yiyecek yetiştirdiği en eski yerlerden biri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buğday, arpa, şeftali, kayısı, nar, ıspanak ve safran gibi birçok şey orada doğdu.",
+      "text_markdown": "Buğday, arpa, şeftali, kayısı, nar, ıspanak ve safran gibi birçok şey orada doğdu.",
+      "tts": {
+        "text": "Buğday, arpa, şeftali, kayısı, nar, ıspanak ve safran gibi birçok şey orada doğdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Önce toprakla başlayacağız.",
+      "text_markdown": "Önce toprakla başlayacağız.",
+      "tts": {
+        "text": "Önce toprakla başlayacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonra orada yetişen şeylere bakacağız.",
+      "text_markdown": "Sonra orada yetişen şeylere bakacağız.",
+      "tts": {
+        "text": "Sonra orada yetişen şeylere bakacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra pirince, ekmeğe, ete ve yahnilere bakacağız.",
+      "text_markdown": "Sonra pirince, ekmeğe, ete ve yahnilere bakacağız.",
+      "tts": {
+        "text": "Sonra pirince, ekmeğe, ete ve yahnilere bakacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonunda, bir Pers sofrasında ne olduğunu ve bunların nereden geldiğini bileceksiniz.",
+      "text_markdown": "Sonunda, bir Pers sofrasında ne olduğunu ve bunların nereden geldiğini bileceksiniz.",
+      "tts": {
+        "text": "Sonunda, bir Pers sofrasında ne olduğunu ve bunların nereden geldiğini bileceksiniz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oturun.",
+      "text_markdown": "Oturun.",
+      "tts": {
+        "text": "Oturun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Biraz çay koyun.",
+      "text_markdown": "Biraz çay koyun.",
+      "tts": {
+        "text": "Biraz çay koyun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hadi başlayalım.",
+      "text_markdown": "Hadi başlayalım.",
+      "tts": {
+        "text": "Hadi başlayalım.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 1 — Tarımın Başladığı Topraklar",
+      "text_markdown": "Bölüm 1 — Tarımın Başladığı Topraklar"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya yüksek ve kurak bir ülkedir.",
+      "text_markdown": "Persya yüksek ve kurak bir ülkedir.",
+      "tts": {
+        "text": "Persya yüksek ve kurak bir ülkedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzeyde Hazar Denizi ile güneyde Basra Körfezi arasında yer alır.",
+      "text_markdown": "Kuzeyde Hazar Denizi ile güneyde Basra Körfezi arasında yer alır.",
+      "tts": {
+        "text": "Kuzeyde Hazar Denizi ile güneyde Basra Körfezi arasında yer alır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batısında Mezopotamya vardır.",
+      "text_markdown": "Batısında Mezopotamya vardır.",
+      "tts": {
+        "text": "Batısında Mezopotamya vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Doğusunda Hindistan vardır.",
+      "text_markdown": "Doğusunda Hindistan vardır.",
+      "tts": {
+        "text": "Doğusunda Hindistan vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ortada dağlar ve çöller vardır.",
+      "text_markdown": "Ortada dağlar ve çöller vardır.",
+      "tts": {
+        "text": "Ortada dağlar ve çöller vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hemen yanı başında, yaklaşık on bin yıl önce, insanlar ilk kez bilerek buğday ve arpa yetiştirdi.",
+      "text_markdown": "Hemen yanı başında, yaklaşık on bin yıl önce, insanlar ilk kez bilerek buğday ve arpa yetiştirdi.",
+      "tts": {
+        "text": "Hemen yanı başında, yaklaşık on bin yıl önce, insanlar ilk kez bilerek buğday ve arpa yetiştirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarım orada doğdu.",
+      "text_markdown": "Tarım orada doğdu.",
+      "tts": {
+        "text": "Tarım orada doğdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persya bunu öğrenen ilk yerlerden biriydi.",
+      "text_markdown": "Persya bunu öğrenen ilk yerlerden biriydi.",
+      "tts": {
+        "text": "Persya bunu öğrenen ilk yerlerden biriydi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O uzun başlangıcın izi her Pers tabağında vardır.",
+      "text_markdown": "O uzun başlangıcın izi her Pers tabağında vardır.",
+      "tts": {
+        "text": "O uzun başlangıcın izi her Pers tabağında vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şeftali Persya'dandır.",
+      "text_markdown": "Şeftali Persya'dandır.",
+      "tts": {
+        "text": "Şeftali Persya'dandır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Romalılar ona Persika, \"Pers meyvesi\" derdi. İngilizcedeki peach sözcüğü de bu addan gelir.",
+      "text_markdown": "Romalılar ona Persika, \"Pers meyvesi\" derdi. İngilizcedeki peach sözcüğü de bu addan gelir.",
+      "tts": {
+        "text": "Romalılar ona Persika, Pers meyvesi derdi. İngilizcedeki piiç sözcüğü de bu addan gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kayısı da oradandır.",
+      "text_markdown": "Kayısı da oradandır.",
+      "tts": {
+        "text": "Kayısı da oradandır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nar da öyle.",
+      "text_markdown": "Nar da öyle.",
+      "tts": {
+        "text": "Nar da öyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ceviz de öyle.",
+      "text_markdown": "Ceviz de öyle.",
+      "tts": {
+        "text": "Ceviz de öyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vişne de öyle.",
+      "text_markdown": "Vişne de öyle.",
+      "tts": {
+        "text": "Vişne de öyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dünyanın ilk salata yeşilliklerinden biri olan ıspanak da öyle.",
+      "text_markdown": "Dünyanın ilk salata yeşilliklerinden biri olan ıspanak da öyle.",
+      "tts": {
+        "text": "Dünyanın ilk salata yeşilliklerinden biri olan ıspanak da öyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "İngilizcedeki spinach sözcüğü, Farsça esfenac sözünden gelir.",
+      "text_markdown": "İngilizcedeki spinach sözcüğü, Farsça esfenac sözünden gelir.",
+      "tts": {
+        "text": "İngilizcedeki spiniç sözcüğü, Farsça esfenac sözünden gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngilizcedeki paradise sözcüğü bile Farsça kökenlidir.",
+      "text_markdown": "İngilizcedeki paradise sözcüğü bile Farsça kökenlidir.",
+      "tts": {
+        "text": "İngilizcedeki peradayz sözcüğü bile Farsça kökenlidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu söz, duvarla çevrili bahçe anlamındaki pardis kelimesinden gelir.",
+      "text_markdown": "Bu söz, duvarla çevrili bahçe anlamındaki pardis kelimesinden gelir.",
+      "tts": {
+        "text": "Bu söz, duvarla çevrili bahçe anlamındaki pardis kelimesinden gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlk cennet, nar ağaçlarıyla dolu bir Pers meyve bahçesiydi.",
+      "text_markdown": "İlk cennet, nar ağaçlarıyla dolu bir Pers meyve bahçesiydi.",
+      "tts": {
+        "text": "İlk cennet, nar ağaçlarıyla dolu bir Pers meyve bahçesiydi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya yalnızca iyi yemek yemedi.",
+      "text_markdown": "Persya yalnızca iyi yemek yemedi.",
+      "tts": {
+        "text": "Persya yalnızca iyi yemek yemedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persya dünyaya iyi yemeyi öğretti.",
+      "text_markdown": "Persya dünyaya iyi yemeyi öğretti.",
+      "tts": {
+        "text": "Persya dünyaya iyi yemeyi öğretti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 2 — Yerli Kiler",
+      "text_markdown": "Bölüm 2 — Yerli Kiler"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir Pers kilerini açın.",
+      "text_markdown": "Bir Pers kilerini açın.",
+      "tts": {
+        "text": "Bir Pers kilerini açın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kokular size hikayeyi anlatır.",
+      "text_markdown": "Kokular size hikayeyi anlatır.",
+      "tts": {
+        "text": "Kokular size hikayeyi anlatır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk koku safrandır.",
+      "text_markdown": "İlk koku safrandır.",
+      "tts": {
+        "text": "İlk koku safrandır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İran, dünyadaki safranın yaklaşık yüzde doksanını yetiştirir.",
+      "text_markdown": "İran, dünyadaki safranın yaklaşık yüzde doksanını yetiştirir.",
+      "tts": {
+        "text": "İran, dünyadaki safranın yaklaşık yüzde doksanını yetiştirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun çoğu Horasan denilen bir bölgeden gelir.",
+      "text_markdown": "Bunun çoğu Horasan denilen bir bölgeden gelir.",
+      "tts": {
+        "text": "Bunun çoğu Horasan denilen bir bölgeden gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir gram yapmak için çiftçi, yaklaşık iki yüz çiğdem çiçeğinden kırmızı lifleri elle toplar.",
+      "text_markdown": "Bir gram yapmak için çiftçi, yaklaşık iki yüz çiğdem çiçeğinden kırmızı lifleri elle toplar.",
+      "tts": {
+        "text": "Bir gram yapmak için çiftçi, yaklaşık iki yüz çiğdem çiçeğinden kırmızı lifleri elle toplar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bu iş soğuk sonbahar şafaklarında yapılır.",
+      "text_markdown": "Bu iş soğuk sonbahar şafaklarında yapılır.",
+      "tts": {
+        "text": "Bu iş soğuk sonbahar şafaklarında yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Safran, dünyanın en pahalı baharatıdır.",
+      "text_markdown": "Safran, dünyanın en pahalı baharatıdır.",
+      "tts": {
+        "text": "Safran, dünyanın en pahalı baharatıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Bir tutam pirinci altın rengine çevirir, suyu da parfüm gibi kokutur.",
+      "text_markdown": "Bir tutam pirinci altın rengine çevirir, suyu da parfüm gibi kokutur.",
+      "tts": {
+        "text": "Bir tutam pirinci altın rengine çevirir, suyu da parfüm gibi kokutur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci koku nardır.",
+      "text_markdown": "İkinci koku nardır.",
+      "tts": {
+        "text": "İkinci koku nardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persler binlerce yıldır nar yetiştiriyor.",
+      "text_markdown": "Persler binlerce yıldır nar yetiştiriyor.",
+      "tts": {
+        "text": "Persler binlerce yıldır nar yetiştiriyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu meyve aşkın ve cennetin simgesidir.",
+      "text_markdown": "Bu meyve aşkın ve cennetin simgesidir.",
+      "tts": {
+        "text": "Bu meyve aşkın ve cennetin simgesidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suyu yahnilere sıkılır.",
+      "text_markdown": "Suyu yahnilere sıkılır.",
+      "tts": {
+        "text": "Suyu yahnilere sıkılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Taneleri pirincin ve salataların üstüne serpilir.",
+      "text_markdown": "Taneleri pirincin ve salataların üstüne serpilir.",
+      "tts": {
+        "text": "Taneleri pirincin ve salataların üstüne serpilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra antep fıstığı gelir.",
+      "text_markdown": "Sonra antep fıstığı gelir.",
+      "tts": {
+        "text": "Sonra antep fıstığı gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İran'da üç bin yıllık antep fıstığı bahçeleri vardır.",
+      "text_markdown": "İran'da üç bin yıllık antep fıstığı bahçeleri vardır.",
+      "tts": {
+        "text": "İran'da üç bin yıllık antep fıstığı bahçeleri vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyada yediğiniz antep fıstığı, çoğu zaman bir Pers ağacının torunudur.",
+      "text_markdown": "Dünyada yediğiniz antep fıstığı, çoğu zaman bir Pers ağacının torunudur.",
+      "tts": {
+        "text": "Dünyada yediğiniz antep fıstığı, çoğu zaman bir Pers ağacının torunudur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ceviz, vişne, ayva, kavun ve hurma da vardır.",
+      "text_markdown": "Ceviz, vişne, ayva, kavun ve hurma da vardır.",
+      "tts": {
+        "text": "Ceviz, vişne, ayva, kavun ve hurma da vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yabani bir çalıdan gelen koyu kırmızı, ekşi bir baharat olan sumak da vardır.",
+      "text_markdown": "Yabani bir çalıdan gelen koyu kırmızı, ekşi bir baharat olan sumak da vardır.",
+      "tts": {
+        "text": "Yabani bir çalıdan gelen koyu kırmızı, ekşi bir baharat olan sumak da vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Limon her yerde yokken, sumak yemeğe canlı bir tat verirdi.",
+      "text_markdown": "Limon her yerde yokken, sumak yemeğe canlı bir tat verirdi.",
+      "tts": {
+        "text": "Limon her yerde yokken, sumak yemeğe canlı bir tat verirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hala verir.",
+      "text_markdown": "Hala verir.",
+      "tts": {
+        "text": "Hala verir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir Pers kileri, meyve tarihinin yarısını taşır.",
+      "text_markdown": "Bir Pers kileri, meyve tarihinin yarısını taşır.",
+      "tts": {
+        "text": "Bir Pers kileri, meyve tarihinin yarısını taşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 3 — Pirinç, Ekmek ve Kutsal Kabuk",
+      "text_markdown": "Bölüm 3 — Pirinç, Ekmek ve Kutsal Kabuk"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pirinç, yaklaşık iki bin beş yüz yıl önce Hindistan'dan Persya'ya geldi.",
+      "text_markdown": "Pirinç, yaklaşık iki bin beş yüz yıl önce Hindistan'dan Persya'ya geldi.",
+      "tts": {
+        "text": "Pirinç, yaklaşık iki bin beş yüz yıl önce Hindistan'dan Persya'ya geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sofranın kalbi oldu.",
+      "text_markdown": "Sofranın kalbi oldu.",
+      "tts": {
+        "text": "Sofranın kalbi oldu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persler pirinci iki şekilde pişirir.",
+      "text_markdown": "Persler pirinci iki şekilde pişirir.",
+      "tts": {
+        "text": "Persler pirinci iki şekilde pişirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sade pirince çelo denir.",
+      "text_markdown": "Sade pirince çelo denir.",
+      "tts": {
+        "text": "Sade pirince çelo denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ot, et ya da meyveyle karışan pirince polo denir.",
+      "text_markdown": "Ot, et ya da meyveyle karışan pirince polo denir.",
+      "tts": {
+        "text": "Ot, et ya da meyveyle karışan pirince polo denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İkisi de uzun, hafif ve tane tanedir.",
+      "text_markdown": "İkisi de uzun, hafif ve tane tanedir.",
+      "tts": {
+        "text": "İkisi de uzun, hafif ve tane tanedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama sihir tencerenin dibindedir.",
+      "text_markdown": "Ama sihir tencerenin dibindedir.",
+      "tts": {
+        "text": "Ama sihir tencerenin dibindedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buna tahdig denir.",
+      "text_markdown": "Buna tahdig denir.",
+      "tts": {
+        "text": "Buna tah dig denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aşçı tencerenin dibine ince bir kat koyar, bazen safranlı pirinç, bazen bir patates dilimi, bazen de bir parça ekmek.",
+      "text_markdown": "Aşçı tencerenin dibine ince bir kat koyar, bazen safranlı pirinç, bazen bir patates dilimi, bazen de bir parça ekmek.",
+      "tts": {
+        "text": "Aşçı tencerenin dibine ince bir kat koyar, bazen safranlı pirinç, bazen bir patates dilimi, bazen de bir parça ekmek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonra üstüne pirinç gelir.",
+      "text_markdown": "Sonra üstüne pirinç gelir.",
+      "tts": {
+        "text": "Sonra üstüne pirinç gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sonra kapak kapanır, bir çay beziyle sarılır ve işi buhar yapar.",
+      "text_markdown": "Sonra kapak kapanır, bir çay beziyle sarılır ve işi buhar yapar.",
+      "tts": {
+        "text": "Sonra kapak kapanır, bir çay beziyle sarılır ve işi buhar yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bir saat sonra alttaki katman altın rengi ve çıtır olur.",
+      "text_markdown": "Bir saat sonra alttaki katman altın rengi ve çıtır olur.",
+      "tts": {
+        "text": "Bir saat sonra alttaki katman altın rengi ve çıtır olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig kutsaldır.",
+      "text_markdown": "Tahdig kutsaldır.",
+      "tts": {
+        "text": "Tah dig kutsaldır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aileler onun için kavga eder.",
+      "text_markdown": "Aileler onun için kavga eder.",
+      "tts": {
+        "text": "Aileler onun için kavga eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İran televizyonunda, en iyi tahdigi kimin yaptığına dair programlar bile vardır.",
+      "text_markdown": "İran televizyonunda, en iyi tahdigi kimin yaptığına dair programlar bile vardır.",
+      "tts": {
+        "text": "İran televizyonunda, en iyi tah digi kimin yaptığına dair programlar bile vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kusursuz bir tahdig, tavadan tek parça güzel bir yuvarlak olarak çıkar.",
+      "text_markdown": "Kusursuz bir tahdig, tavadan tek parça güzel bir yuvarlak olarak çıkar.",
+      "tts": {
+        "text": "Kusursuz bir tah dig, tavadan tek parça güzel bir yuvarlak olarak çıkar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir de ekmek vardır.",
+      "text_markdown": "Bir de ekmek vardır.",
+      "tts": {
+        "text": "Bir de ekmek vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ünlüsü sangaktır.",
+      "text_markdown": "En ünlüsü sangaktır.",
+      "tts": {
+        "text": "En ünlüsü sangaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak, beş bin yıllık bir yöntemle, kızgın çakılların üstünde pişirilir.",
+      "text_markdown": "Sangak, beş bin yıllık bir yöntemle, kızgın çakılların üstünde pişirilir.",
+      "tts": {
+        "text": "Sangak, beş bin yıllık bir yöntemle, kızgın çakılların üstünde pişirilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çakıllar hala ekmeğin içinde olur.",
+      "text_markdown": "Çakıllar hala ekmeğin içinde olur.",
+      "tts": {
+        "text": "Çakıllar hala ekmeğin içinde olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Onları sofrada ayıklarsınız.",
+      "text_markdown": "Onları sofrada ayıklarsınız.",
+      "tts": {
+        "text": "Onları sofrada ayıklarsınız.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Öteki ekmekler barbari, lavaş ve taftundur.",
+      "text_markdown": "Öteki ekmekler barbari, lavaş ve taftundur.",
+      "tts": {
+        "text": "Öteki ekmekler barbari, lavaş ve taftundur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Pers kahvaltısı, ekmek, çay ve yumuşak beyaz peynirden oluşur.",
+      "text_markdown": "Bir Pers kahvaltısı, ekmek, çay ve yumuşak beyaz peynirden oluşur.",
+      "tts": {
+        "text": "Bir Pers kahvaltısı, ekmek, çay ve yumuşak beyaz peynirden oluşur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 4 — Kebap ve Sabırlı Yahni",
+      "text_markdown": "Bölüm 4 — Kebap ve Sabırlı Yahni"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebap sözcüğü Farsçadır.",
+      "text_markdown": "Kebap sözcüğü Farsçadır.",
+      "tts": {
+        "text": "Kebap sözcüğü Farsçadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aslı kababdır, anlamı da ateşte pişen ettir.",
+      "text_markdown": "Aslı kababdır, anlamı da ateşte pişen ettir.",
+      "tts": {
+        "text": "Aslı kababdır, anlamı da ateşte pişen ettir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persler binlerce yıldır kuzuyu uzun, düz şişlerde pişiriyor.",
+      "text_markdown": "Persler binlerce yıldır kuzuyu uzun, düz şişlerde pişiriyor.",
+      "tts": {
+        "text": "Persler binlerce yıldır kuzuyu uzun, düz şişlerde pişiriyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün en sevilen kebap kubidedir.",
+      "text_markdown": "Bugün en sevilen kebap kubidedir.",
+      "tts": {
+        "text": "Bugün en sevilen kebap kubidedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kebap, soğan ve tuzla karıştırılan kıyma kuzu ya da sığır etinden yapılır, geniş ve düz bir şişe bastırılır ve közde pişirilir.",
+      "text_markdown": "Bu kebap, soğan ve tuzla karıştırılan kıyma kuzu ya da sığır etinden yapılır, geniş ve düz bir şişe bastırılır ve közde pişirilir.",
+      "tts": {
+        "text": "Bu kebap, soğan ve tuzla karıştırılan kıyma kuzu ya da sığır etinden yapılır, geniş ve düz bir şişe bastırılır ve közde pişirilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çok eski görünür.",
+      "text_markdown": "Çok eski görünür.",
+      "tts": {
+        "text": "Çok eski görünür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ama öyle değildir.",
+      "text_markdown": "Ama öyle değildir.",
+      "tts": {
+        "text": "Ama öyle değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Et kıyma makinesi İran'a ancak bin sekiz yüzlerin sonlarında geldi.",
+      "text_markdown": "Et kıyma makinesi İran'a ancak bin sekiz yüzlerin sonlarında geldi.",
+      "tts": {
+        "text": "Et kıyma makinesi İran'a ancak bin sekiz yüzlerin sonlarında geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kebapların en Pers olanı kubide, yüz yıldan biraz daha yaşlıdır.",
+      "text_markdown": "Kebapların en Pers olanı kubide, yüz yıldan biraz daha yaşlıdır.",
+      "tts": {
+        "text": "Kebapların en Pers olanı kubide, yüz yıldan biraz daha yaşlıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha eski kebaplar dilim etten yapılır.",
+      "text_markdown": "Daha eski kebaplar dilim etten yapılır.",
+      "tts": {
+        "text": "Daha eski kebaplar dilim etten yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cuce, safran ve yoğurtla marine edilen tavuktur.",
+      "text_markdown": "Cuce, safran ve yoğurtla marine edilen tavuktur.",
+      "tts": {
+        "text": "Cuce, safran ve yoğurtla marine edilen tavuktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg, ince bir kuzu filetosudur.",
+      "text_markdown": "Barg, ince bir kuzu filetosudur.",
+      "tts": {
+        "text": "Barg, ince bir kuzu filetosudur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İkisi de safranlı pirinç yatağının üstünde ve ızgara domatesle servis edilir.",
+      "text_markdown": "İkisi de safranlı pirinç yatağının üstünde ve ızgara domatesle servis edilir.",
+      "tts": {
+        "text": "İkisi de safranlı pirinç yatağının üstünde ve ızgara domatesle servis edilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şimdi sabırlı yemekle tanışın: horeş, yani Pers yahnisi.",
+      "text_markdown": "Şimdi sabırlı yemekle tanışın: horeş, yani Pers yahnisi.",
+      "tts": {
+        "text": "Şimdi sabırlı yemekle tanışın, horeş, yani Pers yahnisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir horeş saatlerce pişer.",
+      "text_markdown": "Bir horeş saatlerce pişer.",
+      "tts": {
+        "text": "Bir horeş saatlerce pişer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ünlüsü fesencandır.",
+      "text_markdown": "En ünlüsü fesencandır.",
+      "tts": {
+        "text": "En ünlüsü fesencandır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, öğütülmüş ceviz ve nar suyundan yapılan koyu bir sos içinde yavaş pişen tavuk ya da ördektir.",
+      "text_markdown": "Bu, öğütülmüş ceviz ve nar suyundan yapılan koyu bir sos içinde yavaş pişen tavuk ya da ördektir.",
+      "tts": {
+        "text": "Bu, öğütülmüş ceviz ve nar suyundan yapılan koyu bir sos içinde yavaş pişen tavuk ya da ördektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarifi, bulunan en eski yahni tariflerinden biridir.",
+      "text_markdown": "Tarifi, bulunan en eski yahni tariflerinden biridir.",
+      "tts": {
+        "text": "Tarifi, bulunan en eski yahni tariflerinden biridir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir çeşidi, Persepolis kalıntılarındaki çivi yazılı tabletlerde geçer.",
+      "text_markdown": "Bir çeşidi, Persepolis kalıntılarındaki çivi yazılı tabletlerde geçer.",
+      "tts": {
+        "text": "Bir çeşidi, Persepolis kalıntılarındaki çivi yazılı tabletlerde geçer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bu da ona iki bin beş yüz yıldan fazla bir yaş verir.",
+      "text_markdown": "Bu da ona iki bin beş yüz yıldan fazla bir yaş verir.",
+      "tts": {
+        "text": "Bu da ona iki bin beş yüz yıldan fazla bir yaş verir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "İnsanlar onu bugün de aynı şekilde pişirir.",
+      "text_markdown": "İnsanlar onu bugün de aynı şekilde pişirir.",
+      "tts": {
+        "text": "İnsanlar onu bugün de aynı şekilde pişirir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir başka klasik de gorme sabzidir: kuzu eti, kırmızı fasulye ve dağ gibi taze ot, hepsi kuru limonla birlikte ağır ağır pişer.",
+      "text_markdown": "Bir başka klasik de gorme sabzidir: kuzu eti, kırmızı fasulye ve dağ gibi taze ot, hepsi kuru limonla birlikte ağır ağır pişer.",
+      "tts": {
+        "text": "Bir başka klasik de gorme sabzidir, kuzu eti, kırmızı fasulye ve dağ gibi taze ot, hepsi kuru limonla birlikte ağır ağır pişer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok İranlı ona milli yemek der.",
+      "text_markdown": "Birçok İranlı ona milli yemek der.",
+      "tts": {
+        "text": "Birçok İranlı ona milli yemek der.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 5 — Yoğurt, Çay ve En Eski Tatlılar",
+      "text_markdown": "Bölüm 5 — Yoğurt, Çay ve En Eski Tatlılar"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persler yoğurdu her şeyle yer.",
+      "text_markdown": "Persler yoğurdu her şeyle yer.",
+      "tts": {
+        "text": "Persler yoğurdu her şeyle yer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sade yoğurda mast denir.",
+      "text_markdown": "Sade yoğurda mast denir.",
+      "tts": {
+        "text": "Sade yoğurda mast denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Salatalık ve kuru naneli masta mast o hıyar denir.",
+      "text_markdown": "Salatalık ve kuru naneli masta mast o hıyar denir.",
+      "tts": {
+        "text": "Salatalık ve kuru naneli masta mast o hıyar denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Naneli tuzlu yoğurt içeceğine duğ denir.",
+      "text_markdown": "Naneli tuzlu yoğurt içeceğine duğ denir.",
+      "tts": {
+        "text": "Naneli tuzlu yoğurt içeceğine du denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bir de kaşk vardır, çorbalarda kullanılan yoğun, kurutulmuş bir peynir altı suyu.",
+      "text_markdown": "Bir de kaşk vardır, çorbalarda kullanılan yoğun, kurutulmuş bir peynir altı suyu.",
+      "tts": {
+        "text": "Bir de kaşk vardır, çorbalarda kullanılan yoğun, kurutulmuş bir peynir altı suyu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir de çay vardır.",
+      "text_markdown": "Bir de çay vardır.",
+      "tts": {
+        "text": "Bir de çay vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persler çayı sabah, öğle ve gece, semaverin üstündeki uzun demlikte, koyu demleyerek içer.",
+      "text_markdown": "Persler çayı sabah, öğle ve gece, semaverin üstündeki uzun demlikte, koyu demleyerek içer.",
+      "tts": {
+        "text": "Persler çayı sabah, öğle ve gece, semaverin üstündeki uzun demlikte, koyu demleyerek içer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çay öylesine merkezde durur ki geç geldiğini öğrenince insanlar şaşırır.",
+      "text_markdown": "Çay öylesine merkezde durur ki geç geldiğini öğrenince insanlar şaşırır.",
+      "tts": {
+        "text": "Çay öylesine merkezde durur ki geç geldiğini öğrenince insanlar şaşırır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pers tarihinin büyük bölümünde içecek kahveydi.",
+      "text_markdown": "Pers tarihinin büyük bölümünde içecek kahveydi.",
+      "tts": {
+        "text": "Pers tarihinin büyük bölümünde içecek kahveydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Çay ancak bin sekiz yüzlerin sonlarında üstün geldi.",
+      "text_markdown": "Çay ancak bin sekiz yüzlerin sonlarında üstün geldi.",
+      "tts": {
+        "text": "Çay ancak bin sekiz yüzlerin sonlarında üstün geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bugün İran, dünyada en çok çay içen ülkelerden biridir.",
+      "text_markdown": "Bugün İran, dünyada en çok çay içen ülkelerden biridir.",
+      "tts": {
+        "text": "Bugün İran, dünyada en çok çay içen ülkelerden biridir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun küçük bir ritüeli vardır.",
+      "text_markdown": "Bunun küçük bir ritüeli vardır.",
+      "tts": {
+        "text": "Bunun küçük bir ritüeli vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dişlerinizin arasına bir kesme şeker alırsınız.",
+      "text_markdown": "Dişlerinizin arasına bir kesme şeker alırsınız.",
+      "tts": {
+        "text": "Dişlerinizin arasına bir kesme şeker alırsınız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çayı o şekerin içinden yudumlarsınız.",
+      "text_markdown": "Çayı o şekerin içinden yudumlarsınız.",
+      "tts": {
+        "text": "Çayı o şekerin içinden yudumlarsınız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şeker biraz erir.",
+      "text_markdown": "Şeker biraz erir.",
+      "tts": {
+        "text": "Şeker biraz erir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Çay boğazdan inerken sıcak, koyu ve tatlıdır.",
+      "text_markdown": "Çay boğazdan inerken sıcak, koyu ve tatlıdır.",
+      "tts": {
+        "text": "Çay boğazdan inerken sıcak, koyu ve tatlıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şimdi tatlılara gelelim.",
+      "text_markdown": "Şimdi tatlılara gelelim.",
+      "tts": {
+        "text": "Şimdi tatlılara gelelim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pers tatlıları eski, zengin ve küçüktür.",
+      "text_markdown": "Pers tatlıları eski, zengin ve küçüktür.",
+      "tts": {
+        "text": "Pers tatlıları eski, zengin ve küçüktür.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En eskisi faludedir.",
+      "text_markdown": "En eskisi faludedir.",
+      "tts": {
+        "text": "En eskisi faludedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, gül suyu şurubunda dondurulmuş ince pirinç eriştesidir, limon suyu ve antep fıstığıyla servis edilir.",
+      "text_markdown": "Bu, gül suyu şurubunda dondurulmuş ince pirinç eriştesidir, limon suyu ve antep fıstığıyla servis edilir.",
+      "tts": {
+        "text": "Bu, gül suyu şurubunda dondurulmuş ince pirinç eriştesidir, limon suyu ve antep fıstığıyla servis edilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pers yazarları ondan, İsa'dan yaklaşık dört yüz yıl önce söz eder.",
+      "text_markdown": "Pers yazarları ondan, İsa'dan yaklaşık dört yüz yıl önce söz eder.",
+      "tts": {
+        "text": "Pers yazarları ondan, İsa'dan yaklaşık dört yüz yıl önce söz eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu da faludeyi dünyanın en eski donmuş tatlılarından biri yapar.",
+      "text_markdown": "Bu da faludeyi dünyanın en eski donmuş tatlılarından biri yapar.",
+      "tts": {
+        "text": "Bu da faludeyi dünyanın en eski donmuş tatlılarından biri yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dondurmadan iki bin yıldan da fazla eskidir.",
+      "text_markdown": "Dondurmadan iki bin yıldan da fazla eskidir.",
+      "tts": {
+        "text": "Dondurmadan iki bin yıldan da fazla eskidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka klasikler de vardır: Tebriz baklavası, Türk usulünden daha hafif, cevizli ve gülsulu.",
+      "text_markdown": "Başka klasikler de vardır: Tebriz baklavası, Türk usulünden daha hafif, cevizli ve gülsulu.",
+      "tts": {
+        "text": "Başka klasikler de vardır: Tebriz baklavası, Türk usulünden daha hafif, cevizli ve gülsulu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Helva, susam ya da safrandan yapılan yoğun bir ezmedir.",
+      "text_markdown": "Helva, susam ya da safrandan yapılan yoğun bir ezmedir.",
+      "tts": {
+        "text": "Helva, susam ya da safrandan yapılan yoğun bir ezmedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İsfahan gazı, antep fıstıklı yumuşak bir nuga tatlısıdır.",
+      "text_markdown": "İsfahan gazı, antep fıstıklı yumuşak bir nuga tatlısıdır.",
+      "tts": {
+        "text": "İsfahan gazı, antep fıstıklı yumuşak bir nuga tatlısıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, altın renkli, gevrek bir safran şekeridir.",
+      "text_markdown": "Sohan, altın renkli, gevrek bir safran şekeridir.",
+      "tts": {
+        "text": "Sohan, altın renkli, gevrek bir safran şekeridir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nohudçi, Kum'dan gelen minicik bir nohut kurabiyesidir.",
+      "text_markdown": "Nohudçi, Kum'dan gelen minicik bir nohut kurabiyesidir.",
+      "tts": {
+        "text": "Nohudçi, Kumdan gelen minicik bir nohut kurabiyesidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Küçük bir tatlı tabağı, bir fincan çay, yavaş bir sohbet.",
+      "text_markdown": "Küçük bir tatlı tabağı, bir fincan çay, yavaş bir sohbet.",
+      "tts": {
+        "text": "Küçük bir tatlı tabağı, bir fincan çay, yavaş bir sohbet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İşte bir Pers öğleden sonrası budur.",
+      "text_markdown": "İşte bir Pers öğleden sonrası budur.",
+      "tts": {
+        "text": "İşte bir Pers öğleden sonrası budur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 6 — Persya'nın Verdikleri ve Aldıkları",
+      "text_markdown": "Bölüm 6 — Persya'nın Verdikleri ve Aldıkları"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya eski dünyanın ortasında duruyordu.",
+      "text_markdown": "Persya eski dünyanın ortasında duruyordu.",
+      "tts": {
+        "text": "Persya eski dünyanın ortasında duruyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kervanlar oradan geçti.",
+      "text_markdown": "Kervanlar oradan geçti.",
+      "tts": {
+        "text": "Kervanlar oradan geçti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İmparatorluklar orada yükseldi ve çöktü.",
+      "text_markdown": "İmparatorluklar orada yükseldi ve çöktü.",
+      "tts": {
+        "text": "İmparatorluklar orada yükseldi ve çöktü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yemek de iki yönde oradan geçti.",
+      "text_markdown": "Yemek de iki yönde oradan geçti.",
+      "tts": {
+        "text": "Yemek de iki yönde oradan geçti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kelimelere bakın.",
+      "text_markdown": "Kelimelere bakın.",
+      "tts": {
+        "text": "Kelimelere bakın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngilizce, Farsçadan onlarca yemek kelimesi aldı.",
+      "text_markdown": "İngilizce, Farsçadan onlarca yemek kelimesi aldı.",
+      "tts": {
+        "text": "İngilizce, Farsçadan onlarca yemek kelimesi aldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İngilizcedeki sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet ve paradise kelimelerinin kökü Farsçadır.",
+      "text_markdown": "İngilizcedeki sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet ve paradise kelimelerinin kökü Farsçadır.",
+      "tts": {
+        "text": "İngilizcedeki şugır, kendi, lemon, orınç, cazmin, laylık, tülip, kiyosk, şerbet ve peradayz kelimelerinin kökü Farsçadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şah mat sözü de öyledir, anlamı da \"kral çaresiz\" demektir. Persya, dünyanın yarısının ağzına kelimeler koydu.",
+      "text_markdown": "Şah mat sözü de öyledir, anlamı da \"kral çaresiz\" demektir. Persya, dünyanın yarısının ağzına kelimeler koydu.",
+      "tts": {
+        "text": "Şah mat sözü de öyledir, anlamı da kral çaresiz demektir. Persya, dünyanın yarısının ağzına kelimeler koydu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pers usulü pirinç pişirme doğuya gitti.",
+      "text_markdown": "Pers usulü pirinç pişirme doğuya gitti.",
+      "tts": {
+        "text": "Pers usulü pirinç pişirme doğuya gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hindistan'ın Babür hükümdarları Pers mutfağını sevdi ve saraylarına Pers aşçıları getirdi.",
+      "text_markdown": "Hindistan'ın Babür hükümdarları Pers mutfağını sevdi ve saraylarına Pers aşçıları getirdi.",
+      "tts": {
+        "text": "Hindistan'ın Babür hükümdarları Pers mutfağını sevdi ve saraylarına Pers aşçıları getirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O aşçılar biryani yaptı.",
+      "text_markdown": "O aşçılar biryani yaptı.",
+      "tts": {
+        "text": "O aşçılar biryani yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Akdeniz'den Orta Asya bozkırlarına uzanan o uzun taneli, baharatlı pilavın kökü Pers pirinç geleneğindedir.",
+      "text_markdown": "Akdeniz'den Orta Asya bozkırlarına uzanan o uzun taneli, baharatlı pilavın kökü Pers pirinç geleneğindedir.",
+      "tts": {
+        "text": "Akdeniz'den Orta Asya bozkırlarına uzanan o uzun taneli, baharatlı pilavın kökü Pers pirinç geleneğindedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pers meyveleri batıya gitti.",
+      "text_markdown": "Pers meyveleri batıya gitti.",
+      "tts": {
+        "text": "Pers meyveleri batıya gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Romalılar şeftaliyi Persya'dan aldıkları için İtalya'da yetiştirdi.",
+      "text_markdown": "Romalılar şeftaliyi Persya'dan aldıkları için İtalya'da yetiştirdi.",
+      "tts": {
+        "text": "Romalılar şeftaliyi Persya'dan aldıkları için İtalya'da yetiştirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ispanak, Pers dünyasından gelen tüccarlar sayesinde İspanya üzerinden Avrupa'ya ulaştı.",
+      "text_markdown": "Ispanak, Pers dünyasından gelen tüccarlar sayesinde İspanya üzerinden Avrupa'ya ulaştı.",
+      "tts": {
+        "text": "Ispanak, Pers dünyasından gelen tüccarlar sayesinde İspanya üzerinden Avrupa'ya ulaştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hollanda'nın simgesi olan lale, Hollanda'ya varmadan çok önce Persya'da ve Türkiye'de yetiştiriliyordu.",
+      "text_markdown": "Hollanda'nın simgesi olan lale, Hollanda'ya varmadan çok önce Persya'da ve Türkiye'de yetiştiriliyordu.",
+      "tts": {
+        "text": "Hollanda'nın simgesi olan lale, Hollanda'ya varmadan çok önce Persya'da ve Türkiye'de yetiştiriliyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya dışarıdan da şeyler aldı.",
+      "text_markdown": "Persya dışarıdan da şeyler aldı.",
+      "tts": {
+        "text": "Persya dışarıdan da şeyler aldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On üçüncü yüzyılda Persya'yı istila eden Moğollar, ızgara ve kızarmış ete daha güçlü bir tat getirdi.",
+      "text_markdown": "On üçüncü yüzyılda Persya'yı istila eden Moğollar, ızgara ve kızarmış ete daha güçlü bir tat getirdi.",
+      "tts": {
+        "text": "On üçüncü yüzyılda Persya'yı istila eden Moğollar, ızgara ve kızarmış ete daha güçlü bir tat getirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arap tarımı, güneyden ve doğudan şeker kamışı, turunçgil ve pirinç getirdi.",
+      "text_markdown": "Arap tarımı, güneyden ve doğudan şeker kamışı, turunçgil ve pirinç getirdi.",
+      "tts": {
+        "text": "Arap tarımı, güneyden ve doğudan şeker kamışı, turunçgil ve pirinç getirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Semaver kuzeyden, yani Rusya'dan, on sekizinci yüzyılda geldi.",
+      "text_markdown": "Semaver kuzeyden, yani Rusya'dan, on sekizinci yüzyılda geldi.",
+      "tts": {
+        "text": "Semaver kuzeyden, yani Rusya'dan, on sekizinci yüzyılda geldi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yirmi beş yüzyıl önce yazan Yunan tarihçi Herodot, Perslerin doğum günlerini yılın başka her gününden daha gösterişli kutladığını söyler.",
+      "text_markdown": "Yirmi beş yüzyıl önce yazan Yunan tarihçi Herodot, Perslerin doğum günlerini yılın başka her gününden daha gösterişli kutladığını söyler.",
+      "tts": {
+        "text": "Yirmi beş yüzyıl önce yazan Yunan tarihçi Herodot, Perslerin doğum günlerini yılın başka her gününden daha gösterişli kutladığını söyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O gün, diye yazar, sofra her zamankinden daha bol kurulur.",
+      "text_markdown": "O gün, diye yazar, sofra her zamankinden daha bol kurulur.",
+      "tts": {
+        "text": "O gün, diye yazar, sofra her zamankinden daha bol kurulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı şeyler hiç değişmedi.",
+      "text_markdown": "Bazı şeyler hiç değişmedi.",
+      "tts": {
+        "text": "Bazı şeyler hiç değişmedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 7 — Pers Sofrasında",
+      "text_markdown": "Bölüm 7 — Pers Sofrasında"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şimdi sofraya oturuyoruz.",
+      "text_markdown": "Şimdi sofraya oturuyoruz.",
+      "tts": {
+        "text": "Şimdi sofraya oturuyoruz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pers yılı, ilkbahar ekinoksunda, mart ayının yaklaşık yirmi birinde başlar.",
+      "text_markdown": "Pers yılı, ilkbahar ekinoksunda, mart ayının yaklaşık yirmi birinde başlar.",
+      "tts": {
+        "text": "Pers yılı, ilkbahar ekinoksunda, mart ayının yaklaşık yirmi birinde başlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu bayrama Nevruz, yani Yeni Gün, denir.",
+      "text_markdown": "Bu bayrama Nevruz, yani Yeni Gün, denir.",
+      "tts": {
+        "text": "Bu bayrama Nevruz, yani Yeni Gün, denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yılın en önemli bayramıdır.",
+      "text_markdown": "Yılın en önemli bayramıdır.",
+      "tts": {
+        "text": "Yılın en önemli bayramıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her aile, haft sin denen özel bir sofra kurar.",
+      "text_markdown": "Her aile, haft sin denen özel bir sofra kurar.",
+      "tts": {
+        "text": "Her aile, haft sin denen özel bir sofra kurar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft, yedi demektir.",
+      "text_markdown": "Haft, yedi demektir.",
+      "tts": {
+        "text": "Haft, yedi demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin, S harfidir. Sofrada Farsçada S ile başlayan yedi şey bulunur.",
+      "text_markdown": "Sin, S harfidir. Sofrada Farsçada S ile başlayan yedi şey bulunur.",
+      "tts": {
+        "text": "Sin, se harfidir. Sofrada Farsçada se ile başlayan yedi şey bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sib, bir elmadır.",
+      "text_markdown": "Sib, bir elmadır.",
+      "tts": {
+        "text": "Sib, bir elmadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekke, bir madeni paradır.",
+      "text_markdown": "Sekke, bir madeni paradır.",
+      "tts": {
+        "text": "Sekke, bir madeni paradır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, sümbül çiçeğidir.",
+      "text_markdown": "Sonbol, sümbül çiçeğidir.",
+      "tts": {
+        "text": "Sonbol, sümbül çiçeğidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, tatlı bir buğday pudingidir.",
+      "text_markdown": "Samanu, tatlı bir buğday pudingidir.",
+      "tts": {
+        "text": "Samanu, tatlı bir buğday pudingidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senced, iğde ağacının kurutulmuş meyvesidir.",
+      "text_markdown": "Senced, iğde ağacının kurutulmuş meyvesidir.",
+      "tts": {
+        "text": "Senced, iğde ağacının kurutulmuş meyvesidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somak, sumaktır.",
+      "text_markdown": "Somak, sumaktır.",
+      "tts": {
+        "text": "Somak, sumaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serke, sirkedir.",
+      "text_markdown": "Serke, sirkedir.",
+      "tts": {
+        "text": "Serke, sirkedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Her biri bir şeyi simgeler, sağlık, zenginlik, güzellik, sabır, aşk, yükselen güneş ve zamanın geçişi.",
+      "text_markdown": "Her biri bir şeyi simgeler, sağlık, zenginlik, güzellik, sabır, aşk, yükselen güneş ve zamanın geçişi.",
+      "tts": {
+        "text": "Her biri bir şeyi simgeler, sağlık, zenginlik, güzellik, sabır, aşk, yükselen güneş ve zamanın geçişi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yeni yıl yemeği, mahi ile servis edilen sabzi polodur.",
+      "text_markdown": "Yeni yıl yemeği, mahi ile servis edilen sabzi polodur.",
+      "tts": {
+        "text": "Yeni yıl yemeği, mahi ile servis edilen sabzi polodur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, kıyılmış taze otlarla koyu yeşile dönen pirinçtir ve yanında beyaz balık gelir.",
+      "text_markdown": "Bu, kıyılmış taze otlarla koyu yeşile dönen pirinçtir ve yanında beyaz balık gelir.",
+      "tts": {
+        "text": "Bu, kıyılmış taze otlarla koyu yeşile dönen pirinçtir ve yanında beyaz balık gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tabakta bahar gibi.",
+      "text_markdown": "Tabakta bahar gibi.",
+      "tts": {
+        "text": "Tabakta bahar gibi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir başka klasik de aş reştedir, fasulye, otlar, kızarmış soğan, kaşk ve erişteyle yapılan koyu bir çorba.",
+      "text_markdown": "Bir başka klasik de aş reştedir, fasulye, otlar, kızarmış soğan, kaşk ve erişteyle yapılan koyu bir çorba.",
+      "tts": {
+        "text": "Bir başka klasik de aş reştedir, fasulye, otlar, kızarmış soğan, kaşk ve erişteyle yapılan koyu bir çorba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persler, zor bir karardan önce onu yemeniz gerektiğini söyler.",
+      "text_markdown": "Persler, zor bir karardan önce onu yemeniz gerektiğini söyler.",
+      "tts": {
+        "text": "Persler, zor bir karardan önce onu yemeniz gerektiğini söyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onlara göre erişteler kaderin düğümlerini çözer.",
+      "text_markdown": "Onlara göre erişteler kaderin düğümlerini çözer.",
+      "tts": {
+        "text": "Onlara göre erişteler kaderin düğümlerini çözer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çayhane de bir Pers icadıdır.",
+      "text_markdown": "Çayhane de bir Pers icadıdır.",
+      "tts": {
+        "text": "Çayhane de bir Pers icadıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buna kahvehane denir, kelime anlamı kahve evidir, ama içilen şey artık çaydır.",
+      "text_markdown": "Buna kahvehane denir, kelime anlamı kahve evidir, ama içilen şey artık çaydır.",
+      "tts": {
+        "text": "Buna kahvehane denir, kelime anlamı kahve evidir, ama içilen şey artık çaydır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beş yüz yıldır kadınlar ve erkekler orada tavla oynar, şiir dinler ve dünya hakkında tartışır.",
+      "text_markdown": "Beş yüz yıldır kadınlar ve erkekler orada tavla oynar, şiir dinler ve dünya hakkında tartışır.",
+      "tts": {
+        "text": "Beş yüz yıldır kadınlar ve erkekler orada tavla oynar, şiir dinler ve dünya hakkında tartışır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçok büyük Pers hikayesi ilk kez dumanı tüten bir bardak yanında anlatıldı.",
+      "text_markdown": "Birçok büyük Pers hikayesi ilk kez dumanı tüten bir bardak yanında anlatıldı.",
+      "tts": {
+        "text": "Birçok büyük Pers hikayesi ilk kez dumanı tüten bir bardak yanında anlatıldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin yıl önce yaşayan ünlü Pers hekimi İbn Sina, her yiyeceğin ya sıcak ya da soğuk olduğunu öğretti.",
+      "text_markdown": "Bin yıl önce yaşayan ünlü Pers hekimi İbn Sina, her yiyeceğin ya sıcak ya da soğuk olduğunu öğretti.",
+      "tts": {
+        "text": "Bin yıl önce yaşayan ünlü Pers hekimi İbn Sina, her yiyeceğin ya sıcak ya da soğuk olduğunu öğretti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Safran, ceviz ve kuzu sıcaktır.",
+      "text_markdown": "Safran, ceviz ve kuzu sıcaktır.",
+      "tts": {
+        "text": "Safran, ceviz ve kuzu sıcaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoğurt, salatalık ve karpuz soğuktur.",
+      "text_markdown": "Yoğurt, salatalık ve karpuz soğuktur.",
+      "tts": {
+        "text": "Yoğurt, salatalık ve karpuz soğuktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İyi bir öğün bunları dengeler.",
+      "text_markdown": "İyi bir öğün bunları dengeler.",
+      "tts": {
+        "text": "İyi bir öğün bunları dengeler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Birçok Pers evinde bu fikir öğle yemeğinde hala yaşar.",
+      "text_markdown": "Birçok Pers evinde bu fikir öğle yemeğinde hala yaşar.",
+      "tts": {
+        "text": "Birçok Pers evinde bu fikir öğle yemeğinde hala yaşar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pers yemeği sabırlıdır.",
+      "text_markdown": "Pers yemeği sabırlıdır.",
+      "tts": {
+        "text": "Pers yemeği sabırlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cömerttir.",
+      "text_markdown": "Cömerttir.",
+      "tts": {
+        "text": "Cömerttir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eskidir.",
+      "text_markdown": "Eskidir.",
+      "tts": {
+        "text": "Eskidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ve bugün de her gün milyonlarca ocakta pişer.",
+      "text_markdown": "Ve bugün de her gün milyonlarca ocakta pişer.",
+      "tts": {
+        "text": "Ve bugün de her gün milyonlarca ocakta pişer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hoşça kal",
+      "text_markdown": "Hoşça kal"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kısa gezimizin sonu buydu.",
+      "text_markdown": "Bu kısa gezimizin sonu buydu.",
+      "tts": {
+        "text": "Bu kısa gezimizin sonu buydu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Umarım bir şey öğrendiniz.",
+      "text_markdown": "Umarım bir şey öğrendiniz.",
+      "tts": {
+        "text": "Umarım bir şey öğrendiniz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Umarım sayfadaki bir şey sizi acıktırdı.",
+      "text_markdown": "Umarım sayfadaki bir şey sizi acıktırdı.",
+      "tts": {
+        "text": "Umarım sayfadaki bir şey sizi acıktırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Safran ve pirinç.",
+      "text_markdown": "Safran ve pirinç.",
+      "tts": {
+        "text": "Safran ve pirinç.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nar ve ceviz.",
+      "text_markdown": "Nar ve ceviz.",
+      "tts": {
+        "text": "Nar ve ceviz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Küçük bir tabakta küçük bir tatlı.",
+      "text_markdown": "Küçük bir tabakta küçük bir tatlı.",
+      "tts": {
+        "text": "Küçük bir tabakta küçük bir tatlı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mümkünse, yakınınızda bir Pers lokantası bulun.",
+      "text_markdown": "Mümkünse, yakınınızda bir Pers lokantası bulun.",
+      "tts": {
+        "text": "Mümkünse, yakınınızda bir Pers lokantası bulun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ya da bir Pers yemek kitabı açın.",
+      "text_markdown": "Ya da bir Pers yemek kitabı açın.",
+      "tts": {
+        "text": "Ya da bir Pers yemek kitabı açın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir yahni deneyin.",
+      "text_markdown": "Bir yahni deneyin.",
+      "tts": {
+        "text": "Bir yahni deneyin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir bardak çay deneyin.",
+      "text_markdown": "Bir bardak çay deneyin.",
+      "tts": {
+        "text": "Bir bardak çay deneyin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bu yemek binlerce yıldır bekliyor.",
+      "text_markdown": "Bu yemek binlerce yıldır bekliyor.",
+      "tts": {
+        "text": "Bu yemek binlerce yıldır bekliyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sizi de bekleyebilir.",
+      "text_markdown": "Sizi de bekleyebilir.",
+      "tts": {
+        "text": "Sizi de bekleyebilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dinlediğiniz için teşekkürler.",
+      "text_markdown": "Dinlediğiniz için teşekkürler.",
+      "tts": {
+        "text": "Dinlediğiniz için teşekkürler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir şey pişirin.",
+      "text_markdown": "Bir şey pişirin.",
+      "tts": {
+        "text": "Bir şey pişirin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlarla birlikte yiyin.",
+      "text_markdown": "İnsanlarla birlikte yiyin.",
+      "tts": {
+        "text": "İnsanlarla birlikte yiyin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ben Kym.",
+      "text_markdown": "Ben Kym.",
+      "tts": {
+        "text": "Ben Kaym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hoşça kal.",
+      "text_markdown": "Hoşça kal.",
+      "tts": {
+        "text": "Hoşça kal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 220,
+  "version": "2.0.0"
+}

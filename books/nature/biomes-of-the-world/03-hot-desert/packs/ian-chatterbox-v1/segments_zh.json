@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "热带沙漠",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "热带沙漠",
+      "text_markdown": "热带沙漠"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "沙漠在哪里",
+      "text_markdown": "沙漠在哪里"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欢迎来到热带沙漠。",
+      "text_markdown": "欢迎来到热带沙漠。",
+      "tts": {
+        "text": "欢迎来到热带沙漠。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界上伟大的生物群落之一。",
+      "text_markdown": "这是世界上伟大的生物群落之一。",
+      "tts": {
+        "text": "这是世界上伟大的生物群落之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+      "text_markdown": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+      "tts": {
+        "text": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠是一个干燥的地方。",
+      "text_markdown": "热带沙漠是一个干燥的地方。",
+      "tts": {
+        "text": "热带沙漠是一个干燥的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里很少下雨。",
+      "text_markdown": "这里很少下雨。",
+      "tts": {
+        "text": "这里很少下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数白天非常炎热,大多数夜晚凉爽或寒冷。",
+      "text_markdown": "大多数白天非常炎热,大多数夜晚凉爽或寒冷。",
+      "tts": {
+        "text": "大多数白天非常炎热,大多数夜晚凉爽或寒冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界上最大的热带沙漠是撒哈拉,位于非洲北部。",
+      "text_markdown": "世界上最大的热带沙漠是撒哈拉,位于非洲北部。",
+      "tts": {
+        "text": "世界上最大的热带沙漠是撒哈拉,位于非洲北部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它从大西洋一直延伸到几乎红海。",
+      "text_markdown": "它从大西洋一直延伸到几乎红海。",
+      "tts": {
+        "text": "它从大西洋一直延伸到几乎红海。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿拉伯中部也有大沙漠,比如鲁卜哈利沙漠。",
+      "text_markdown": "阿拉伯中部也有大沙漠,比如鲁卜哈利沙漠。",
+      "tts": {
+        "text": "阿拉伯中部也有大沙漠,比如鲁卜哈利沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北美也有热带沙漠,例如美国西南部和墨西哥北部。",
+      "text_markdown": "北美也有热带沙漠,例如美国西南部和墨西哥北部。",
+      "tts": {
+        "text": "北美也有热带沙漠,例如美国西南部和墨西哥北部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南美、非洲南部、印度以及澳大利亚大部分地区也有较小的沙漠。",
+      "text_markdown": "南美、非洲南部、印度以及澳大利亚大部分地区也有较小的沙漠。",
+      "tts": {
+        "text": "南美、非洲南部、印度以及澳大利亚大部分地区也有较小的沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每一片沙漠都独自成长,彼此相距遥远。",
+      "text_markdown": "每一片沙漠都独自成长,彼此相距遥远。",
+      "tts": {
+        "text": "每一片沙漠都独自成长,彼此相距遥远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以世界各地的植物和动物都不一样。",
+      "text_markdown": "所以世界各地的植物和动物都不一样。",
+      "tts": {
+        "text": "所以世界各地的植物和动物都不一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一片沙漠里看到的仙人掌,和在另一片沙漠里看到的不一样。",
+      "text_markdown": "在一片沙漠里看到的仙人掌,和在另一片沙漠里看到的不一样。",
+      "tts": {
+        "text": "在一片沙漠里看到的仙人掌,和在另一片沙漠里看到的不一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它们都属于同一个生物群落。",
+      "text_markdown": "但它们都属于同一个生物群落。",
+      "tts": {
+        "text": "但它们都属于同一个生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你站在热带沙漠中,空气感觉很干燥。",
+      "text_markdown": "当你站在热带沙漠中,空气感觉很干燥。",
+      "tts": {
+        "text": "当你站在热带沙漠中,空气感觉很干燥。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阳光强烈地照在你的脸上。",
+      "text_markdown": "阳光强烈地照在你的脸上。",
+      "tts": {
+        "text": "阳光强烈地照在你的脸上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多地方地面布满岩石,另一些地方则是沙地。",
+      "text_markdown": "许多地方地面布满岩石,另一些地方则是沙地。",
+      "tts": {
+        "text": "许多地方地面布满岩石,另一些地方则是沙地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你可以望到很远的地方。",
+      "text_markdown": "你可以望到很远的地方。",
+      "tts": {
+        "text": "你可以望到很远的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "天空非常辽阔。",
+      "text_markdown": "天空非常辽阔。",
+      "tts": {
+        "text": "天空非常辽阔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你可能一整天都看不到另一个人或动物。",
+      "text_markdown": "你可能一整天都看不到另一个人或动物。",
+      "tts": {
+        "text": "你可能一整天都看不到另一个人或动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是热带沙漠。",
+      "text_markdown": "这就是热带沙漠。",
+      "tts": {
+        "text": "这就是热带沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "沙漠在哪里",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片辽阔干燥的土地,有沙子、岩石和灼热的太阳。",
+      "text_markdown": "一片辽阔干燥的土地,有沙子、岩石和灼热的太阳。",
+      "tts": {
+        "text": "一片辽阔干燥的土地,有沙子、岩石和灼热的太阳。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天气",
+      "text_markdown": "天气"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠的天气由两件事决定。",
+      "text_markdown": "热带沙漠的天气由两件事决定。",
+      "tts": {
+        "text": "热带沙漠的天气由两件事决定。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阳光太强,雨水太少。",
+      "text_markdown": "阳光太强,雨水太少。",
+      "tts": {
+        "text": "阳光太强,雨水太少。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一些沙漠里,一年只下几天雨。",
+      "text_markdown": "在一些沙漠里,一年只下几天雨。",
+      "tts": {
+        "text": "在一些沙漠里,一年只下几天雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在另一些地方,很多年都不下雨。",
+      "text_markdown": "在另一些地方,很多年都不下雨。",
+      "tts": {
+        "text": "在另一些地方,很多年都不下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "白天非常炎热。",
+      "text_markdown": "白天非常炎热。",
+      "tts": {
+        "text": "白天非常炎热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中午时分,阳光能把沙子烤得烫脚。",
+      "text_markdown": "中午时分,阳光能把沙子烤得烫脚。",
+      "tts": {
+        "text": "中午时分,阳光能把沙子烤得烫脚。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但夜晚却大不相同。",
+      "text_markdown": "但夜晚却大不相同。",
+      "tts": {
+        "text": "但夜晚却大不相同。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里没有云,也没有树来留住温暖。",
+      "text_markdown": "这里没有云,也没有树来留住温暖。",
+      "tts": {
+        "text": "这里没有云,也没有树来留住温暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以太阳一落山,热量就迅速逃入天空。",
+      "text_markdown": "所以太阳一落山,热量就迅速逃入天空。",
+      "tts": {
+        "text": "所以太阳一落山,热量就迅速逃入天空。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "到了半夜,可能会感觉凉爽,甚至寒冷。",
+      "text_markdown": "到了半夜,可能会感觉凉爽,甚至寒冷。",
+      "tts": {
+        "text": "到了半夜,可能会感觉凉爽,甚至寒冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "早晨,岩石摸起来冰凉。",
+      "text_markdown": "早晨,岩石摸起来冰凉。",
+      "tts": {
+        "text": "早晨,岩石摸起来冰凉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后太阳升起,热度又开始了。",
+      "text_markdown": "然后太阳升起,热度又开始了。",
+      "tts": {
+        "text": "然后太阳升起,热度又开始了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨水来时,常常一下子倾盆而下。",
+      "text_markdown": "雨水来时,常常一下子倾盆而下。",
+      "tts": {
+        "text": "雨水来时,常常一下子倾盆而下。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一场大风暴卷来,雨水倾泻一个小时。",
+      "text_markdown": "一场大风暴卷来,雨水倾泻一个小时。",
+      "tts": {
+        "text": "一场大风暴卷来,雨水倾泻一个小时。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "干涸的河床被灌满,水流冲过沙地。",
+      "text_markdown": "干涸的河床被灌满,水流冲过沙地。",
+      "tts": {
+        "text": "干涸的河床被灌满,水流冲过沙地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "随后太阳回来,一天之内水就又消失了。",
+      "text_markdown": "随后太阳回来,一天之内水就又消失了。",
+      "tts": {
+        "text": "随后太阳回来,一天之内水就又消失了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对沙漠中的植物和动物来说,每一滴水都珍贵无比。",
+      "text_markdown": "对沙漠中的植物和动物来说,每一滴水都珍贵无比。",
+      "tts": {
+        "text": "对沙漠中的植物和动物来说,每一滴水都珍贵无比。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地与水",
+      "text_markdown": "土地与水"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠的大部分并不是沙子。",
+      "text_markdown": "热带沙漠的大部分并不是沙子。",
+      "tts": {
+        "text": "热带沙漠的大部分并不是沙子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大部分是岩石、砾石和坚硬干燥的地面。",
+      "text_markdown": "大部分是岩石、砾石和坚硬干燥的地面。",
+      "tts": {
+        "text": "大部分是岩石、砾石和坚硬干燥的地面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "也有一些地方布满成片的沙丘。",
+      "text_markdown": "也有一些地方布满成片的沙丘。",
+      "tts": {
+        "text": "也有一些地方布满成片的沙丘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风缓缓地把沙丘吹过土地。",
+      "text_markdown": "风缓缓地把沙丘吹过土地。",
+      "tts": {
+        "text": "风缓缓地把沙丘吹过土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沙丘可以比一座房子还小,也可以比一栋高楼还高。",
+      "text_markdown": "沙丘可以比一座房子还小,也可以比一栋高楼还高。",
+      "tts": {
+        "text": "沙丘可以比一座房子还小,也可以比一栋高楼还高。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一些地方,山从沙漠中拔地而起。",
+      "text_markdown": "在一些地方,山从沙漠中拔地而起。",
+      "tts": {
+        "text": "在一些地方,山从沙漠中拔地而起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "风和沙经年累月地把岩石雕刻成奇形怪状。",
+      "text_markdown": "风和沙经年累月地把岩石雕刻成奇形怪状。",
+      "tts": {
+        "text": "风和沙经年累月地把岩石雕刻成奇形怪状。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水是沙漠里最稀有、最珍贵的东西。",
+      "text_markdown": "水是沙漠里最稀有、最珍贵的东西。",
+      "tts": {
+        "text": "水是沙漠里最稀有、最珍贵的东西。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数河流只在风暴之后流淌,然后就干涸。",
+      "text_markdown": "大多数河流只在风暴之后流淌,然后就干涸。",
+      "tts": {
+        "text": "大多数河流只在风暴之后流淌,然后就干涸。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但在沙子深处,水可以藏在岩石之中。",
+      "text_markdown": "但在沙子深处,水可以藏在岩石之中。",
+      "tts": {
+        "text": "但在沙子深处,水可以藏在岩石之中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在某些地方,这些隐藏的水升到地面,形成一小片绿色的水塘。",
+      "text_markdown": "在某些地方,这些隐藏的水升到地面,形成一小片绿色的水塘。",
+      "tts": {
+        "text": "在某些地方,这些隐藏的水升到地面,形成一小片绿色的水塘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就叫做绿洲。",
+      "text_markdown": "这就叫做绿洲。",
+      "tts": {
+        "text": "这就叫做绿洲。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在绿洲,树木生长,鸟儿歌唱,人们停下来饮水。",
+      "text_markdown": "在绿洲,树木生长,鸟儿歌唱,人们停下来饮水。",
+      "tts": {
+        "text": "在绿洲,树木生长,鸟儿歌唱,人们停下来饮水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "绿洲可以是茫茫沙海中一小圈棕榈树。",
+      "text_markdown": "绿洲可以是茫茫沙海中一小圈棕榈树。",
+      "tts": {
+        "text": "绿洲可以是茫茫沙海中一小圈棕榈树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有这些水的点,没人能穿越广阔的沙漠。",
+      "text_markdown": "没有这些水的点,没人能穿越广阔的沙漠。",
+      "tts": {
+        "text": "没有这些水的点,没人能穿越广阔的沙漠。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠的植物是等待的大师。",
+      "text_markdown": "热带沙漠的植物是等待的大师。",
+      "tts": {
+        "text": "热带沙漠的植物是等待的大师。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们学会了几乎没有水也能活下去。",
+      "text_markdown": "它们学会了几乎没有水也能活下去。",
+      "tts": {
+        "text": "它们学会了几乎没有水也能活下去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些植物长出很长的根,深深扎入地下。",
+      "text_markdown": "有些植物长出很长的根,深深扎入地下。",
+      "tts": {
+        "text": "有些植物长出很长的根,深深扎入地下。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一些植物有又宽又浅的根,铺展在地表附近。",
+      "text_markdown": "另一些植物有又宽又浅的根,铺展在地表附近。",
+      "tts": {
+        "text": "另一些植物有又宽又浅的根,铺展在地表附近。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暴雨之后,这些根会在水变干之前喝下每一滴水。",
+      "text_markdown": "暴雨之后,这些根会在水变干之前喝下每一滴水。",
+      "tts": {
+        "text": "暴雨之后,这些根会在水变干之前喝下每一滴水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多沙漠植物把水储存在体内,以度过漫长的旱季。",
+      "text_markdown": "许多沙漠植物把水储存在体内,以度过漫长的旱季。",
+      "tts": {
+        "text": "许多沙漠植物把水储存在体内,以度过漫长的旱季。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们厚厚的茎和叶子能存水数月,甚至数年。",
+      "text_markdown": "它们厚厚的茎和叶子能存水数月,甚至数年。",
+      "tts": {
+        "text": "它们厚厚的茎和叶子能存水数月,甚至数年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在美洲的沙漠里,有一种叫仙人掌的植物。",
+      "text_markdown": "在美洲的沙漠里,有一种叫仙人掌的植物。",
+      "tts": {
+        "text": "在美洲的沙漠里,有一种叫仙人掌的植物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "仙人掌有粗壮的绿色茎,里面装满了水,还有锋利的刺代替柔软的叶子。",
+      "text_markdown": "仙人掌有粗壮的绿色茎,里面装满了水,还有锋利的刺代替柔软的叶子。",
+      "tts": {
+        "text": "仙人掌有粗壮的绿色茎,里面装满了水,还有锋利的刺代替柔软的叶子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些刺阻止动物吃掉植物。",
+      "text_markdown": "这些刺阻止动物吃掉植物。",
+      "tts": {
+        "text": "这些刺阻止动物吃掉植物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些刺还能挡住强烈的阳光,提供一点点阴凉。",
+      "text_markdown": "这些刺还能挡住强烈的阳光,提供一点点阴凉。",
+      "tts": {
+        "text": "这些刺还能挡住强烈的阳光,提供一点点阴凉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲和亚洲的沙漠里,其他粗壮的植物也起着同样的作用。",
+      "text_markdown": "在非洲和亚洲的沙漠里,其他粗壮的植物也起着同样的作用。",
+      "tts": {
+        "text": "在非洲和亚洲的沙漠里,其他粗壮的植物也起着同样的作用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多沙漠植物是灰色或淡绿色的。",
+      "text_markdown": "许多沙漠植物是灰色或淡绿色的。",
+      "tts": {
+        "text": "许多沙漠植物是灰色或淡绿色的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "浅色能把阳光反射回去。",
+      "text_markdown": "浅色能把阳光反射回去。",
+      "tts": {
+        "text": "浅色能把阳光反射回去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些植物在旱季到来时会落下叶子。",
+      "text_markdown": "有些植物在旱季到来时会落下叶子。",
+      "tts": {
+        "text": "有些植物在旱季到来时会落下叶子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们以光秃秃的褐色枝条活着,直到下一场雨。",
+      "text_markdown": "它们以光秃秃的褐色枝条活着,直到下一场雨。",
+      "tts": {
+        "text": "它们以光秃秃的褐色枝条活着,直到下一场雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一场大雨之后,沙漠可以一夜之间变样。",
+      "text_markdown": "一场大雨之后,沙漠可以一夜之间变样。",
+      "tts": {
+        "text": "一场大雨之后,沙漠可以一夜之间变样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在土里等候多年的小种子,纷纷绽放成花。",
+      "text_markdown": "在土里等候多年的小种子,纷纷绽放成花。",
+      "tts": {
+        "text": "在土里等候多年的小种子,纷纷绽放成花。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在那几周里,沙漠的一些地方被红色、黄色和紫色的花朵覆盖。",
+      "text_markdown": "在那几周里,沙漠的一些地方被红色、黄色和紫色的花朵覆盖。",
+      "tts": {
+        "text": "在那几周里,沙漠的一些地方被红色、黄色和紫色的花朵覆盖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后花儿凋谢,种子落下,沙漠又开始等待。",
+      "text_markdown": "然后花儿凋谢,种子落下,沙漠又开始等待。",
+      "tts": {
+        "text": "然后花儿凋谢,种子落下,沙漠又开始等待。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "动物",
+      "text_markdown": "动物"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠的动物有许多聪明的生存方法。",
+      "text_markdown": "热带沙漠的动物有许多聪明的生存方法。",
+      "tts": {
+        "text": "热带沙漠的动物有许多聪明的生存方法。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们大多在炎热的中午睡觉。",
+      "text_markdown": "它们大多在炎热的中午睡觉。",
+      "tts": {
+        "text": "它们大多在炎热的中午睡觉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们在凉爽的清晨、傍晚和夜晚出来活动。",
+      "text_markdown": "它们在凉爽的清晨、傍晚和夜晚出来活动。",
+      "tts": {
+        "text": "它们在凉爽的清晨、傍晚和夜晚出来活动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多沙漠动物在沙里或岩石下挖洞穴。",
+      "text_markdown": "许多沙漠动物在沙里或岩石下挖洞穴。",
+      "tts": {
+        "text": "许多沙漠动物在沙里或岩石下挖洞穴。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "外面的空气灼热时,洞穴里却保持凉爽。",
+      "text_markdown": "外面的空气灼热时,洞穴里却保持凉爽。",
+      "tts": {
+        "text": "外面的空气灼热时,洞穴里却保持凉爽。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一只小老鼠可以整天睡在洞里,从不感觉到热。",
+      "text_markdown": "一只小老鼠可以整天睡在洞里,从不感觉到热。",
+      "tts": {
+        "text": "一只小老鼠可以整天睡在洞里,从不感觉到热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蜥蜴在热带沙漠里很常见。",
+      "text_markdown": "蜥蜴在热带沙漠里很常见。",
+      "tts": {
+        "text": "蜥蜴在热带沙漠里很常见。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们在清晨的阳光下趴在暖暖的石头上。",
+      "text_markdown": "它们在清晨的阳光下趴在暖暖的石头上。",
+      "tts": {
+        "text": "它们在清晨的阳光下趴在暖暖的石头上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当白天变得太热时,它们就溜进阴凉处或岩石下面。",
+      "text_markdown": "当白天变得太热时,它们就溜进阴凉处或岩石下面。",
+      "tts": {
+        "text": "当白天变得太热时,它们就溜进阴凉处或岩石下面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蛇也很常见。",
+      "text_markdown": "蛇也很常见。",
+      "tts": {
+        "text": "蛇也很常见。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们在沙地上滑行,寻找小动物来吃。",
+      "text_markdown": "它们在沙地上滑行,寻找小动物来吃。",
+      "tts": {
+        "text": "它们在沙地上滑行,寻找小动物来吃。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些蛇有一种特别的方式,横着穿过滚烫的沙子,让身体离开地面。",
+      "text_markdown": "有些蛇有一种特别的方式,横着穿过滚烫的沙子,让身体离开地面。",
+      "tts": {
+        "text": "有些蛇有一种特别的方式,横着穿过滚烫的沙子,让身体离开地面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蝎子在夜里捕食,尾巴高高翘起。",
+      "text_markdown": "蝎子在夜里捕食,尾巴高高翘起。",
+      "tts": {
+        "text": "蝎子在夜里捕食,尾巴高高翘起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蜘蛛和甲虫也生活在沙漠的各个角落。",
+      "text_markdown": "蜘蛛和甲虫也生活在沙漠的各个角落。",
+      "tts": {
+        "text": "蜘蛛和甲虫也生活在沙漠的各个角落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多沙漠甲虫从不喝水也能生存。",
+      "text_markdown": "许多沙漠甲虫从不喝水也能生存。",
+      "tts": {
+        "text": "许多沙漠甲虫从不喝水也能生存。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们从吃下的食物中获取所需的全部水分。",
+      "text_markdown": "它们从吃下的食物中获取所需的全部水分。",
+      "tts": {
+        "text": "它们从吃下的食物中获取所需的全部水分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "非洲和阿拉伯沙漠中最大的动物是骆驼。",
+      "text_markdown": "非洲和阿拉伯沙漠中最大的动物是骆驼。",
+      "tts": {
+        "text": "非洲和阿拉伯沙漠中最大的动物是骆驼。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "骆驼一次能喝下大量的水,然后可以好多天不再喝水。",
+      "text_markdown": "骆驼一次能喝下大量的水,然后可以好多天不再喝水。",
+      "tts": {
+        "text": "骆驼一次能喝下大量的水,然后可以好多天不再喝水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它宽宽柔软的脚使它不会陷入沙中。",
+      "text_markdown": "它宽宽柔软的脚使它不会陷入沙中。",
+      "tts": {
+        "text": "它宽宽柔软的脚使它不会陷入沙中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在北美的沙漠里,狐狸和小型野猫在夜里捕食。",
+      "text_markdown": "在北美的沙漠里,狐狸和小型野猫在夜里捕食。",
+      "tts": {
+        "text": "在北美的沙漠里,狐狸和小型野猫在夜里捕食。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲,长着大大耳朵的小狐狸生活在沙子里。",
+      "text_markdown": "在非洲,长着大大耳朵的小狐狸生活在沙子里。",
+      "tts": {
+        "text": "在非洲,长着大大耳朵的小狐狸生活在沙子里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大耳朵帮助它们听到地下小动物的动静。",
+      "text_markdown": "大耳朵帮助它们听到地下小动物的动静。",
+      "tts": {
+        "text": "大耳朵帮助它们听到地下小动物的动静。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大耳朵还能帮助它们在凉爽的夜里散热。",
+      "text_markdown": "大耳朵还能帮助它们在凉爽的夜里散热。",
+      "tts": {
+        "text": "大耳朵还能帮助它们在凉爽的夜里散热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高高的天上,秃鹫和鹰在温暖的沙漠气流中盘旋。",
+      "text_markdown": "高高的天上,秃鹫和鹰在温暖的沙漠气流中盘旋。",
+      "tts": {
+        "text": "高高的天上,秃鹫和鹰在温暖的沙漠气流中盘旋。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们注视着地面上任何细微的动静。",
+      "text_markdown": "它们注视着地面上任何细微的动静。",
+      "tts": {
+        "text": "它们注视着地面上任何细微的动静。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里的每一种动物都懂得如何等待凉爽,如何寻找阴凉,如何让每一口水都用得长久。",
+      "text_markdown": "这里的每一种动物都懂得如何等待凉爽,如何寻找阴凉,如何让每一口水都用得长久。",
+      "tts": {
+        "text": "这里的每一种动物都懂得如何等待凉爽,如何寻找阴凉,如何让每一口水都用得长久。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人们",
+      "text_markdown": "人们"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们在热带沙漠中已经生活了几千年。",
+      "text_markdown": "人们在热带沙漠中已经生活了几千年。",
+      "tts": {
+        "text": "人们在热带沙漠中已经生活了几千年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们找到了在阳光和沙地中生活的自己的方式。",
+      "text_markdown": "他们找到了在阳光和沙地中生活的自己的方式。",
+      "tts": {
+        "text": "他们找到了在阳光和沙地中生活的自己的方式。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多沙漠里,家庭带着畜群从一处迁到另一处。",
+      "text_markdown": "在许多沙漠里,家庭带着畜群从一处迁到另一处。",
+      "tts": {
+        "text": "在许多沙漠里,家庭带着畜群从一处迁到另一处。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在撒哈拉和阿拉伯沙漠,人们饲养骆驼、山羊和绵羊的畜群。",
+      "text_markdown": "在撒哈拉和阿拉伯沙漠,人们饲养骆驼、山羊和绵羊的畜群。",
+      "tts": {
+        "text": "在撒哈拉和阿拉伯沙漠,人们饲养骆驼、山羊和绵羊的畜群。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些动物在两次饮水之间可以走很长时间。",
+      "text_markdown": "这些动物在两次饮水之间可以走很长时间。",
+      "tts": {
+        "text": "这些动物在两次饮水之间可以走很长时间。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们跟随着动物,动物把他们带到有食物的地方。",
+      "text_markdown": "人们跟随着动物,动物把他们带到有食物的地方。",
+      "tts": {
+        "text": "人们跟随着动物,动物把他们带到有食物的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们的帐篷由用动物的毛织成的布料制成。",
+      "text_markdown": "他们的帐篷由用动物的毛织成的布料制成。",
+      "tts": {
+        "text": "他们的帐篷由用动物的毛织成的布料制成。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一座帐篷一个小时就能搭起,一个小时就能拆掉。",
+      "text_markdown": "一座帐篷一个小时就能搭起,一个小时就能拆掉。",
+      "tts": {
+        "text": "一座帐篷一个小时就能搭起,一个小时就能拆掉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它能挡住灼热的阳光,又让凉爽的夜风穿过。",
+      "text_markdown": "它能挡住灼热的阳光,又让凉爽的夜风穿过。",
+      "tts": {
+        "text": "它能挡住灼热的阳光,又让凉爽的夜风穿过。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沙漠里的人们穿着宽松的长袍。",
+      "text_markdown": "沙漠里的人们穿着宽松的长袍。",
+      "tts": {
+        "text": "沙漠里的人们穿着宽松的长袍。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "长袖和遮头的衣物让身体凉爽,并防止阳光晒伤。",
+      "text_markdown": "长袖和遮头的衣物让身体凉爽,并防止阳光晒伤。",
+      "tts": {
+        "text": "长袖和遮头的衣物让身体凉爽,并防止阳光晒伤。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鲜艳的布料花纹让朋友能从远处认出你。",
+      "text_markdown": "鲜艳的布料花纹让朋友能从远处认出你。",
+      "tts": {
+        "text": "鲜艳的布料花纹让朋友能从远处认出你。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些沙漠居民住在围绕绿洲建起的城镇里。",
+      "text_markdown": "有些沙漠居民住在围绕绿洲建起的城镇里。",
+      "tts": {
+        "text": "有些沙漠居民住在围绕绿洲建起的城镇里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们在水边绿色的圈子里种植椰枣树、水果和谷物。",
+      "text_markdown": "他们在水边绿色的圈子里种植椰枣树、水果和谷物。",
+      "tts": {
+        "text": "他们在水边绿色的圈子里种植椰枣树、水果和谷物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们学会了挖深井,寻找沙子下面隐藏的水。",
+      "text_markdown": "他们学会了挖深井,寻找沙子下面隐藏的水。",
+      "tts": {
+        "text": "他们学会了挖深井,寻找沙子下面隐藏的水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "远方的旅人来到绿洲休息,装满他们的水袋。",
+      "text_markdown": "远方的旅人来到绿洲休息,装满他们的水袋。",
+      "tts": {
+        "text": "远方的旅人来到绿洲休息,装满他们的水袋。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沙漠里的人们认识夜空中的每一颗星。",
+      "text_markdown": "沙漠里的人们认识夜空中的每一颗星。",
+      "tts": {
+        "text": "沙漠里的人们认识夜空中的每一颗星。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们知道每一种风的名字。",
+      "text_markdown": "他们知道每一种风的名字。",
+      "tts": {
+        "text": "他们知道每一种风的名字。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们能读懂沙地上每一种动物留下的足迹。",
+      "text_markdown": "他们能读懂沙地上每一种动物留下的足迹。",
+      "tts": {
+        "text": "他们能读懂沙地上每一种动物留下的足迹。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这种知识年复一年地从父母传给孩子。",
+      "text_markdown": "这种知识年复一年地从父母传给孩子。",
+      "tts": {
+        "text": "这种知识年复一年地从父母传给孩子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在每一片大沙漠里,这种生活都有自己的语言、歌谣和故事。",
+      "text_markdown": "在每一片大沙漠里,这种生活都有自己的语言、歌谣和故事。",
+      "tts": {
+        "text": "在每一片大沙漠里,这种生活都有自己的语言、歌谣和故事。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今天的沙漠",
+      "text_markdown": "今天的沙漠"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带沙漠是一个美丽而严苛的生物群落。",
+      "text_markdown": "热带沙漠是一个美丽而严苛的生物群落。",
+      "tts": {
+        "text": "热带沙漠是一个美丽而严苛的生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它覆盖了地球陆地的很大一部分。",
+      "text_markdown": "它覆盖了地球陆地的很大一部分。",
+      "tts": {
+        "text": "它覆盖了地球陆地的很大一部分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "强烈的沙漠阳光也是我们最大的清洁能源之一。",
+      "text_markdown": "强烈的沙漠阳光也是我们最大的清洁能源之一。",
+      "tts": {
+        "text": "强烈的沙漠阳光也是我们最大的清洁能源之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多沙漠里正在建造一大片一大片的太阳能板。",
+      "text_markdown": "许多沙漠里正在建造一大片一大片的太阳能板。",
+      "tts": {
+        "text": "许多沙漠里正在建造一大片一大片的太阳能板。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们把沙漠的阳光转化为电力,送往遥远的城市。",
+      "text_markdown": "它们把沙漠的阳光转化为电力,送往遥远的城市。",
+      "tts": {
+        "text": "它们把沙漠的阳光转化为电力,送往遥远的城市。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但有些地方的沙漠正陷入麻烦。",
+      "text_markdown": "但有些地方的沙漠正陷入麻烦。",
+      "tts": {
+        "text": "但有些地方的沙漠正陷入麻烦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一些地区,沙漠正在扩大,因为人们耗尽了边缘地带的水和草。",
+      "text_markdown": "在一些地区,沙漠正在扩大,因为人们耗尽了边缘地带的水和草。",
+      "tts": {
+        "text": "在一些地区,沙漠正在扩大,因为人们耗尽了边缘地带的水和草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草死了,树没了,沙子就移了进来。",
+      "text_markdown": "草死了,树没了,沙子就移了进来。",
+      "tts": {
+        "text": "草死了,树没了,沙子就移了进来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在另一些地方,沙漠边缘的城镇过度抽取地下深处隐藏的水。",
+      "text_markdown": "在另一些地方,沙漠边缘的城镇过度抽取地下深处隐藏的水。",
+      "tts": {
+        "text": "在另一些地方,沙漠边缘的城镇过度抽取地下深处隐藏的水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深处的水一旦枯竭,绿洲也会随之干涸。",
+      "text_markdown": "深处的水一旦枯竭,绿洲也会随之干涸。",
+      "tts": {
+        "text": "深处的水一旦枯竭,绿洲也会随之干涸。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界各地有许多团体正在努力守护沙漠。",
+      "text_markdown": "世界各地有许多团体正在努力守护沙漠。",
+      "tts": {
+        "text": "世界各地有许多团体正在努力守护沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种下一排排树木和草,挡住流动的沙子。",
+      "text_markdown": "他们种下一排排树木和草,挡住流动的沙子。",
+      "tts": {
+        "text": "他们种下一排排树木和草,挡住流动的沙子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们帮助住在沙漠里的人们明智地使用水。",
+      "text_markdown": "他们帮助住在沙漠里的人们明智地使用水。",
+      "tts": {
+        "text": "他们帮助住在沙漠里的人们明智地使用水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们研究沙漠,好让我们更好地了解它。",
+      "text_markdown": "他们研究沙漠,好让我们更好地了解它。",
+      "tts": {
+        "text": "他们研究沙漠,好让我们更好地了解它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片健康的沙漠里,充满你意想不到的生命。",
+      "text_markdown": "一片健康的沙漠里,充满你意想不到的生命。",
+      "tts": {
+        "text": "一片健康的沙漠里,充满你意想不到的生命。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今天的沙漠",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它值得我们去关心。",
+      "text_markdown": "它值得我们去关心。",
+      "tts": {
+        "text": "它值得我们去关心。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结语",
+      "text_markdown": "结语"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是热带沙漠。",
+      "text_markdown": "这就是热带沙漠。",
+      "tts": {
+        "text": "这就是热带沙漠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个干燥、阳光普照的世界,有沙、岩石和耐心的生命。",
+      "text_markdown": "一个干燥、阳光普照的世界,有沙、岩石和耐心的生命。",
+      "tts": {
+        "text": "一个干燥、阳光普照的世界,有沙、岩石和耐心的生命。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有一天站在沙漠里,请安静一会儿。",
+      "text_markdown": "如果你有一天站在沙漠里,请安静一会儿。",
+      "tts": {
+        "text": "如果你有一天站在沙漠里,请安静一会儿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "聆听风穿过沙丘的声音。",
+      "text_markdown": "聆听风穿过沙丘的声音。",
+      "tts": {
+        "text": "聆听风穿过沙丘的声音。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "感受阳光的炽热与阴凉的清爽。",
+      "text_markdown": "感受阳光的炽热与阴凉的清爽。",
+      "tts": {
+        "text": "感受阳光的炽热与阴凉的清爽。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你会听到生物群落的心跳在你周围跳动。",
+      "text_markdown": "你会听到生物群落的心跳在你周围跳动。",
+      "tts": {
+        "text": "你会听到生物群落的心跳在你周围跳动。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

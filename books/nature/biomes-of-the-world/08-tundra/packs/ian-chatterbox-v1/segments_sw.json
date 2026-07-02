@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tundra",
+      "text_markdown": "Tundra"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mahali Biomu Hii Inapopatikana",
+      "text_markdown": "Mahali Biomu Hii Inapopatikana"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu kwenye tundra.",
+      "text_markdown": "Karibu kwenye tundra.",
+      "tts": {
+        "text": "Karibu kwenye tundra.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ni mojawapo ya biomu kuu za dunia.",
+      "text_markdown": "Hii ni mojawapo ya biomu kuu za dunia.",
+      "tts": {
+        "text": "Hii ni mojawapo ya biomu kuu za dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ni sehemu ya dunia yenye aina yake ya hali ya hewa, mimea, na wanyama.",
+      "text_markdown": "Biomu ni sehemu ya dunia yenye aina yake ya hali ya hewa, mimea, na wanyama.",
+      "tts": {
+        "text": "Biomu ni sehemu ya dunia yenye aina yake ya hali ya hewa, mimea, na wanyama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni nchi ya baridi na wazi ambako ni baridi mno kwa miti kukua.",
+      "text_markdown": "Tundra ni nchi ya baridi na wazi ambako ni baridi mno kwa miti kukua.",
+      "tts": {
+        "text": "Tundra ni nchi ya baridi na wazi ambako ni baridi mno kwa miti kukua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neno tundra linatokana na neno la zamani lenye maana ya tambarare isiyo na miti.",
+      "text_markdown": "Neno tundra linatokana na neno la zamani lenye maana ya tambarare isiyo na miti.",
+      "tts": {
+        "text": "Neno tundra linatokana na neno la zamani lenye maana ya tambarare isiyo na miti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni biomu yenye baridi zaidi nchi kavu.",
+      "text_markdown": "Tundra ni biomu yenye baridi zaidi nchi kavu.",
+      "tts": {
+        "text": "Tundra ni biomu yenye baridi zaidi nchi kavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sehemu kubwa ya tundra iko katika duara pana kuzunguka kilele cha dunia.",
+      "text_markdown": "Sehemu kubwa ya tundra iko katika duara pana kuzunguka kilele cha dunia.",
+      "tts": {
+        "text": "Sehemu kubwa ya tundra iko katika duara pana kuzunguka kilele cha dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inafunika kingo za kaskazini za Kanada, Alaska, na Greenland, katika Amerika Kaskazini.",
+      "text_markdown": "Inafunika kingo za kaskazini za Kanada, Alaska, na Greenland, katika Amerika Kaskazini.",
+      "tts": {
+        "text": "Inafunika kingo za kaskazini za Kanada, Alaska, na Greenland, katika Amerika Kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inafunika kaskazini ya mbali ya Norway, Uswidi, na Ufini, katika Ulaya ya kaskazini.",
+      "text_markdown": "Inafunika kaskazini ya mbali ya Norway, Uswidi, na Ufini, katika Ulaya ya kaskazini.",
+      "tts": {
+        "text": "Inafunika kaskazini ya mbali ya Norway, Uswidi, na Ufini, katika Ulaya ya kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inafunika pwani ndefu ya kaskazini ya Urusi, kuvuka kilele cha Asia.",
+      "text_markdown": "Inafunika pwani ndefu ya kaskazini ya Urusi, kuvuka kilele cha Asia.",
+      "tts": {
+        "text": "Inafunika pwani ndefu ya kaskazini ya Urusi, kuvuka kilele cha Asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duara hii ya baridi ya nchi iko kaskazini mwa msitu wa boreal na kuzunguka bahari iliyoganda.",
+      "text_markdown": "Duara hii ya baridi ya nchi iko kaskazini mwa msitu wa boreal na kuzunguka bahari iliyoganda.",
+      "tts": {
+        "text": "Duara hii ya baridi ya nchi iko kaskazini mwa msitu wa boreal na kuzunguka bahari iliyoganda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna aina nyingine ya tundra pia.",
+      "text_markdown": "Kuna aina nyingine ya tundra pia.",
+      "tts": {
+        "text": "Kuna aina nyingine ya tundra pia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juu ya milima mirefu, juu ya miti ya mwisho, nchi ile ile ya baridi na wazi hujitokeza.",
+      "text_markdown": "Juu ya milima mirefu, juu ya miti ya mwisho, nchi ile ile ya baridi na wazi hujitokeza.",
+      "tts": {
+        "text": "Juu ya milima mirefu, juu ya miti ya mwisho, nchi ile ile ya baridi na wazi hujitokeza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra hii ya mlimani hupatikana kwenye vilele virefu duniani kote, hata karibu na katikati yenye joto ya dunia.",
+      "text_markdown": "Tundra hii ya mlimani hupatikana kwenye vilele virefu duniani kote, hata karibu na katikati yenye joto ya dunia.",
+      "tts": {
+        "text": "Tundra hii ya mlimani hupatikana kwenye vilele virefu duniani kote, hata karibu na katikati yenye joto ya dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Popote inapokua, tundra ni nchi ya mimea mifupi, upepo baridi, na anga pana wazi.",
+      "text_markdown": "Popote inapokua, tundra ni nchi ya mimea mifupi, upepo baridi, na anga pana wazi.",
+      "tts": {
+        "text": "Popote inapokua, tundra ni nchi ya mimea mifupi, upepo baridi, na anga pana wazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hakuna misitu hapa.",
+      "text_markdown": "Hakuna misitu hapa.",
+      "tts": {
+        "text": "Hakuna misitu hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi imeganda ngumu kwa sehemu kubwa ya mwaka.",
+      "text_markdown": "Ardhi imeganda ngumu kwa sehemu kubwa ya mwaka.",
+      "tts": {
+        "text": "Ardhi imeganda ngumu kwa sehemu kubwa ya mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini hata katika mahali hapa pa baridi, uhai hupata njia.",
+      "text_markdown": "Lakini hata katika mahali hapa pa baridi, uhai hupata njia.",
+      "tts": {
+        "text": "Lakini hata katika mahali hapa pa baridi, uhai hupata njia.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hali ya Hewa",
+      "text_markdown": "Hali ya Hewa"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni ya baridi, kavu, na yenye upepo kwa sehemu kubwa ya mwaka.",
+      "text_markdown": "Tundra ni ya baridi, kavu, na yenye upepo kwa sehemu kubwa ya mwaka.",
+      "tts": {
+        "text": "Tundra ni ya baridi, kavu, na yenye upepo kwa sehemu kubwa ya mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majira ya baridi ni marefu, ya giza, na ya baridi kali.",
+      "text_markdown": "Majira ya baridi ni marefu, ya giza, na ya baridi kali.",
+      "tts": {
+        "text": "Majira ya baridi ni marefu, ya giza, na ya baridi kali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kaskazini ya mbali, majira ya baridi yanaweza kudumu miezi minane au tisa.",
+      "text_markdown": "Katika kaskazini ya mbali, majira ya baridi yanaweza kudumu miezi minane au tisa.",
+      "tts": {
+        "text": "Katika kaskazini ya mbali, majira ya baridi yanaweza kudumu miezi minane au tisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hewa inaweza kushuka chini sana ya kiwango cha kuganda, baridi kuliko friji ya nyumbani.",
+      "text_markdown": "Hewa inaweza kushuka chini sana ya kiwango cha kuganda, baridi kuliko friji ya nyumbani.",
+      "tts": {
+        "text": "Hewa inaweza kushuka chini sana ya kiwango cha kuganda, baridi kuliko friji ya nyumbani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa wiki nyingi katikati ya majira ya baridi, jua halichomozi hata kidogo.",
+      "text_markdown": "Kwa wiki nyingi katikati ya majira ya baridi, jua halichomozi hata kidogo.",
+      "tts": {
+        "text": "Kwa wiki nyingi katikati ya majira ya baridi, jua halichomozi hata kidogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchi hukaa katika mwanga hafifu wa buluu na giza kwa muda mrefu, siku baada ya siku.",
+      "text_markdown": "Nchi hukaa katika mwanga hafifu wa buluu na giza kwa muda mrefu, siku baada ya siku.",
+      "tts": {
+        "text": "Nchi hukaa katika mwanga hafifu wa buluu na giza kwa muda mrefu, siku baada ya siku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pepo kali huvuma kuvuka nchi wazi, bila miti ya kuupunguza mwendo.",
+      "text_markdown": "Pepo kali huvuma kuvuka nchi wazi, bila miti ya kuupunguza mwendo.",
+      "tts": {
+        "text": "Pepo kali huvuma kuvuka nchi wazi, bila miti ya kuupunguza mwendo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Upepo huokota theluji kavu na kuipeleka juu ya ardhi.",
+      "text_markdown": "Upepo huokota theluji kavu na kuipeleka juu ya ardhi.",
+      "tts": {
+        "text": "Upepo huokota theluji kavu na kuipeleka juu ya ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Theluji au mvua kidogo sana huanguka hapa.",
+      "text_markdown": "Theluji au mvua kidogo sana huanguka hapa.",
+      "tts": {
+        "text": "Theluji au mvua kidogo sana huanguka hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni kavu sana kiasi kwamba mara nyingine huitwa jangwa la baridi.",
+      "text_markdown": "Tundra ni kavu sana kiasi kwamba mara nyingine huitwa jangwa la baridi.",
+      "tts": {
+        "text": "Tundra ni kavu sana kiasi kwamba mara nyingine huitwa jangwa la baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini maji yanayoanguka hayawezi kupenya ardhi iliyoganda.",
+      "text_markdown": "Lakini maji yanayoanguka hayawezi kupenya ardhi iliyoganda.",
+      "tts": {
+        "text": "Lakini maji yanayoanguka hayawezi kupenya ardhi iliyoganda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa hivyo hukaa juu, na nchi hujaa madimbwi mafupi na ardhi yenye unyevu.",
+      "text_markdown": "Kwa hivyo hukaa juu, na nchi hujaa madimbwi mafupi na ardhi yenye unyevu.",
+      "tts": {
+        "text": "Kwa hivyo hukaa juu, na nchi hujaa madimbwi mafupi na ardhi yenye unyevu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majira ya joto ni mafupi na ya ubaridi.",
+      "text_markdown": "Majira ya joto ni mafupi na ya ubaridi.",
+      "tts": {
+        "text": "Majira ya joto ni mafupi na ya ubaridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa wiki chache, jua hubaki angani karibu mchana kutwa na usiku kucha.",
+      "text_markdown": "Kwa wiki chache, jua hubaki angani karibu mchana kutwa na usiku kucha.",
+      "tts": {
+        "text": "Kwa wiki chache, jua hubaki angani karibu mchana kutwa na usiku kucha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sehemu ya juu ya ardhi iliyoganda hulainika, na nchi hugeuka kijani na yenye kung'aa.",
+      "text_markdown": "Sehemu ya juu ya ardhi iliyoganda hulainika, na nchi hugeuka kijani na yenye kung'aa.",
+      "tts": {
+        "text": "Sehemu ya juu ya ardhi iliyoganda hulainika, na nchi hugeuka kijani na yenye kung'aa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hata katika majira ya joto, hewa hubaki ya ubaridi, na sakitu inaweza kurudi usiku wowote.",
+      "text_markdown": "Hata katika majira ya joto, hewa hubaki ya ubaridi, na sakitu inaweza kurudi usiku wowote.",
+      "tts": {
+        "text": "Hata katika majira ya joto, hewa hubaki ya ubaridi, na sakitu inaweza kurudi usiku wowote.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha majira mafupi ya joto huisha, jua huzama chini, na majira marefu ya baridi huanza tena.",
+      "text_markdown": "Kisha majira mafupi ya joto huisha, jua huzama chini, na majira marefu ya baridi huanza tena.",
+      "tts": {
+        "text": "Kisha majira mafupi ya joto huisha, jua huzama chini, na majira marefu ya baridi huanza tena.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nchi na Maji",
+      "text_markdown": "Nchi na Maji"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jambo muhimu zaidi kuhusu tundra liko chini ya miguu yako.",
+      "text_markdown": "Jambo muhimu zaidi kuhusu tundra liko chini ya miguu yako.",
+      "tts": {
+        "text": "Jambo muhimu zaidi kuhusu tundra liko chini ya miguu yako.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chini ya uso, ardhi imeganda ngumu mwaka mzima.",
+      "text_markdown": "Chini ya uso, ardhi imeganda ngumu mwaka mzima.",
+      "tts": {
+        "text": "Chini ya uso, ardhi imeganda ngumu mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi hii iliyoganda huitwa pemafrosti.",
+      "text_markdown": "Ardhi hii iliyoganda huitwa pemafrosti.",
+      "tts": {
+        "text": "Ardhi hii iliyoganda huitwa pemafrosti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika maeneo mengine pemafrosti hufika chini zaidi kuliko jengo refu zaidi.",
+      "text_markdown": "Katika maeneo mengine pemafrosti hufika chini zaidi kuliko jengo refu zaidi.",
+      "tts": {
+        "text": "Katika maeneo mengine pemafrosti hufika chini zaidi kuliko jengo refu zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Imekuwa imeganda kwa maelfu ya miaka.",
+      "text_markdown": "Imekuwa imeganda kwa maelfu ya miaka.",
+      "tts": {
+        "text": "Imekuwa imeganda kwa maelfu ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya joto, ni tabaka la juu kabisa la udongo pekee linaloyeyuka.",
+      "text_markdown": "Katika majira ya joto, ni tabaka la juu kabisa la udongo pekee linaloyeyuka.",
+      "tts": {
+        "text": "Katika majira ya joto, ni tabaka la juu kabisa la udongo pekee linaloyeyuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tabaka hili jembamba lililoyeyuka ndipo mimea yote lazima iishi.",
+      "text_markdown": "Tabaka hili jembamba lililoyeyuka ndipo mimea yote lazima iishi.",
+      "tts": {
+        "text": "Tabaka hili jembamba lililoyeyuka ndipo mimea yote lazima iishi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mizizi yao haiwezi kwenda chini, kwa sababu chini yao kidogo ardhi ni ngumu kama mwamba.",
+      "text_markdown": "Mizizi yao haiwezi kwenda chini, kwa sababu chini yao kidogo ardhi ni ngumu kama mwamba.",
+      "tts": {
+        "text": "Mizizi yao haiwezi kwenda chini, kwa sababu chini yao kidogo ardhi ni ngumu kama mwamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi iliyoganda pia hunasa maji juu ya uso.",
+      "text_markdown": "Ardhi iliyoganda pia hunasa maji juu ya uso.",
+      "tts": {
+        "text": "Ardhi iliyoganda pia hunasa maji juu ya uso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mvua na theluji inayoyeyuka haziwezi kupita kupitia pemafrosti.",
+      "text_markdown": "Mvua na theluji inayoyeyuka haziwezi kupita kupitia pemafrosti.",
+      "tts": {
+        "text": "Mvua na theluji inayoyeyuka haziwezi kupita kupitia pemafrosti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa hivyo katika majira ya joto tundra huwa nchi ya madimbwi mafupi, matope, na vijito vya taratibu.",
+      "text_markdown": "Kwa hivyo katika majira ya joto tundra huwa nchi ya madimbwi mafupi, matope, na vijito vya taratibu.",
+      "tts": {
+        "text": "Kwa hivyo katika majira ya joto tundra huwa nchi ya madimbwi mafupi, matope, na vijito vya taratibu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutoka juu, tundra ya majira ya joto hung'aa kwa maelfu ya madimbwi madogo.",
+      "text_markdown": "Kutoka juu, tundra ya majira ya joto hung'aa kwa maelfu ya madimbwi madogo.",
+      "tts": {
+        "text": "Kutoka juu, tundra ya majira ya joto hung'aa kwa maelfu ya madimbwi madogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchi yenyewe kwa kiasi kikubwa ni tambarare au yenye vilima vidogo laini.",
+      "text_markdown": "Nchi yenyewe kwa kiasi kikubwa ni tambarare au yenye vilima vidogo laini.",
+      "tts": {
+        "text": "Nchi yenyewe kwa kiasi kikubwa ni tambarare au yenye vilima vidogo laini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika maeneo mengi ardhi huvunjika na kuwa maumbo ya ajabu kwa sababu ya kuganda na kuyeyuka.",
+      "text_markdown": "Katika maeneo mengi ardhi huvunjika na kuwa maumbo ya ajabu kwa sababu ya kuganda na kuyeyuka.",
+      "tts": {
+        "text": "Katika maeneo mengi ardhi huvunjika na kuwa maumbo ya ajabu kwa sababu ya kuganda na kuyeyuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udongo huganda na kuinuka, kisha huyeyuka na kutulia, mwaka baada ya mwaka.",
+      "text_markdown": "Udongo huganda na kuinuka, kisha huyeyuka na kutulia, mwaka baada ya mwaka.",
+      "tts": {
+        "text": "Udongo huganda na kuinuka, kisha huyeyuka na kutulia, mwaka baada ya mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwendo huu wa taratibu hupasua ardhi na kuwa duara na milia na vilima vifupi.",
+      "text_markdown": "Mwendo huu wa taratibu hupasua ardhi na kuwa duara na milia na vilima vifupi.",
+      "tts": {
+        "text": "Mwendo huu wa taratibu hupasua ardhi na kuwa duara na milia na vilima vifupi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udongo wa tundra ni membamba na duni na wa baridi.",
+      "text_markdown": "Udongo wa tundra ni membamba na duni na wa baridi.",
+      "tts": {
+        "text": "Udongo wa tundra ni membamba na duni na wa baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea iliyokufa huoza taratibu sana katika baridi, kwa hivyo udongo mzuri hujengeka taratibu.",
+      "text_markdown": "Mimea iliyokufa huoza taratibu sana katika baridi, kwa hivyo udongo mzuri hujengeka taratibu.",
+      "tts": {
+        "text": "Mimea iliyokufa huoza taratibu sana katika baridi, kwa hivyo udongo mzuri hujengeka taratibu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ni nchi ngumu, iliyoganda na yenye unyevu na tupu, lakini imejaa uhai kwa utulivu.",
+      "text_markdown": "Ni nchi ngumu, iliyoganda na yenye unyevu na tupu, lakini imejaa uhai kwa utulivu.",
+      "tts": {
+        "text": "Ni nchi ngumu, iliyoganda na yenye unyevu na tupu, lakini imejaa uhai kwa utulivu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mimea",
+      "text_markdown": "Mimea"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea ya tundra ni midogo, migumu, na mifupi karibu na ardhi.",
+      "text_markdown": "Mimea ya tundra ni midogo, migumu, na mifupi karibu na ardhi.",
+      "tts": {
+        "text": "Mimea ya tundra ni midogo, migumu, na mifupi karibu na ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hakuna miti hapa, kwa sababu miti haiwezi kuishi katika ardhi iliyoganda na upepo baridi.",
+      "text_markdown": "Hakuna miti hapa, kwa sababu miti haiwezi kuishi katika ardhi iliyoganda na upepo baridi.",
+      "tts": {
+        "text": "Hakuna miti hapa, kwa sababu miti haiwezi kuishi katika ardhi iliyoganda na upepo baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Badala yake, tundra imefunikwa na matandiko mafupi ya mimea midogo.",
+      "text_markdown": "Badala yake, tundra imefunikwa na matandiko mafupi ya mimea midogo.",
+      "tts": {
+        "text": "Badala yake, tundra imefunikwa na matandiko mafupi ya mimea midogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kubaki chini ndiyo siri ya kuishi hapa.",
+      "text_markdown": "Kubaki chini ndiyo siri ya kuishi hapa.",
+      "tts": {
+        "text": "Kubaki chini ndiyo siri ya kuishi hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu na ardhi, upepo ni dhaifu zaidi na hewa ina joto kidogo zaidi.",
+      "text_markdown": "Karibu na ardhi, upepo ni dhaifu zaidi na hewa ina joto kidogo zaidi.",
+      "tts": {
+        "text": "Karibu na ardhi, upepo ni dhaifu zaidi na hewa ina joto kidogo zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea mingi ya tundra hukua katika matakia yaliyoshikamana au matandiko mazito ili kuhifadhi joto lake.",
+      "text_markdown": "Mimea mingi ya tundra hukua katika matakia yaliyoshikamana au matandiko mazito ili kuhifadhi joto lake.",
+      "tts": {
+        "text": "Mimea mingi ya tundra hukua katika matakia yaliyoshikamana au matandiko mazito ili kuhifadhi joto lake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuvunga hukua nene na laini juu ya sehemu kubwa ya ardhi.",
+      "text_markdown": "Kuvunga hukua nene na laini juu ya sehemu kubwa ya ardhi.",
+      "tts": {
+        "text": "Kuvunga hukua nene na laini juu ya sehemu kubwa ya ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuvumwani hukua juu ya miamba tupu na juu ya udongo katika mabaka ya kijivu, kijani, na manjano.",
+      "text_markdown": "Kuvumwani hukua juu ya miamba tupu na juu ya udongo katika mabaka ya kijivu, kijani, na manjano.",
+      "tts": {
+        "text": "Kuvumwani hukua juu ya miamba tupu na juu ya udongo katika mabaka ya kijivu, kijani, na manjano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuvumwani si mmea mmoja bali ni aina mbili za uhai zinazoishi pamoja kama kitu kimoja.",
+      "text_markdown": "Kuvumwani si mmea mmoja bali ni aina mbili za uhai zinazoishi pamoja kama kitu kimoja.",
+      "tts": {
+        "text": "Kuvumwani si mmea mmoja bali ni aina mbili za uhai zinazoishi pamoja kama kitu kimoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuvumwani huweza kuishi mahali ambapo karibu hakuna kitu kingine kinachoweza, na hukua taratibu sana.",
+      "text_markdown": "Kuvumwani huweza kuishi mahali ambapo karibu hakuna kitu kingine kinachoweza, na hukua taratibu sana.",
+      "tts": {
+        "text": "Kuvumwani huweza kuishi mahali ambapo karibu hakuna kitu kingine kinachoweza, na hukua taratibu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya kuvumwani katika tundra ina umri wa mamia ya miaka.",
+      "text_markdown": "Baadhi ya kuvumwani katika tundra ina umri wa mamia ya miaka.",
+      "tts": {
+        "text": "Baadhi ya kuvumwani katika tundra ina umri wa mamia ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyasi ndogo na mimea mifupi yenye maua hukua kati ya kuvunga.",
+      "text_markdown": "Nyasi ndogo na mimea mifupi yenye maua hukua kati ya kuvunga.",
+      "tts": {
+        "text": "Nyasi ndogo na mimea mifupi yenye maua hukua kati ya kuvunga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira mafupi ya joto, tundra huchanua kwa wingi.",
+      "text_markdown": "Katika majira mafupi ya joto, tundra huchanua kwa wingi.",
+      "tts": {
+        "text": "Katika majira mafupi ya joto, tundra huchanua kwa wingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa wiki chache zenye mwangaza, ardhi hufunikwa na maua madogo.",
+      "text_markdown": "Kwa wiki chache zenye mwangaza, ardhi hufunikwa na maua madogo.",
+      "tts": {
+        "text": "Kwa wiki chache zenye mwangaza, ardhi hufunikwa na maua madogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna maua madogo ya manjano, meupe, waridi, na zambarau kila mahali.",
+      "text_markdown": "Kuna maua madogo ya manjano, meupe, waridi, na zambarau kila mahali.",
+      "tts": {
+        "text": "Kuna maua madogo ya manjano, meupe, waridi, na zambarau kila mahali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea lazima ichanue, itengeneze mbegu, na ihifadhi chakula haraka sana kabla ya baridi kurudi.",
+      "text_markdown": "Mimea lazima ichanue, itengeneze mbegu, na ihifadhi chakula haraka sana kabla ya baridi kurudi.",
+      "tts": {
+        "text": "Mimea lazima ichanue, itengeneze mbegu, na ihifadhi chakula haraka sana kabla ya baridi kurudi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vichaka vichache vidogo hukua hapa pia, kama vile wilo kibete na birchi kibete.",
+      "text_markdown": "Vichaka vichache vidogo hukua hapa pia, kama vile wilo kibete na birchi kibete.",
+      "tts": {
+        "text": "Vichaka vichache vidogo hukua hapa pia, kama vile wilo kibete na birchi kibete.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ni aina zile zile za miti inayokua mirefu katika nchi zenye joto zaidi.",
+      "text_markdown": "Hii ni aina zile zile za miti inayokua mirefu katika nchi zenye joto zaidi.",
+      "tts": {
+        "text": "Hii ni aina zile zile za miti inayokua mirefu katika nchi zenye joto zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini hapa hukua kama vichaka vidogo, virefu kama kifundo cha mguu wako tu, vikitambaa juu ya ardhi.",
+      "text_markdown": "Lakini hapa hukua kama vichaka vidogo, virefu kama kifundo cha mguu wako tu, vikitambaa juu ya ardhi.",
+      "tts": {
+        "text": "Lakini hapa hukua kama vichaka vidogo, virefu kama kifundo cha mguu wako tu, vikitambaa juu ya ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matunda madogo huiva kwenye baadhi ya mimea hii mifupi mwishoni mwa majira ya joto.",
+      "text_markdown": "Matunda madogo huiva kwenye baadhi ya mimea hii mifupi mwishoni mwa majira ya joto.",
+      "tts": {
+        "text": "Matunda madogo huiva kwenye baadhi ya mimea hii mifupi mwishoni mwa majira ya joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanyama na watu wa tundra huyakusanya wakati wanapoweza.",
+      "text_markdown": "Wanyama na watu wa tundra huyakusanya wakati wanapoweza.",
+      "tts": {
+        "text": "Wanyama na watu wa tundra huyakusanya wakati wanapoweza.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Wanyama",
+      "text_markdown": "Wanyama"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanyama wa tundra wameumbwa kuishi na baridi na upepo.",
+      "text_markdown": "Wanyama wa tundra wameumbwa kuishi na baridi na upepo.",
+      "tts": {
+        "text": "Wanyama wa tundra wameumbwa kuishi na baridi na upepo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wengi wao wana singa nene au manyoya manene, na tabaka la mafuta ili kubaki na joto.",
+      "text_markdown": "Wengi wao wana singa nene au manyoya manene, na tabaka la mafuta ili kubaki na joto.",
+      "tts": {
+        "text": "Wengi wao wana singa nene au manyoya manene, na tabaka la mafuta ili kubaki na joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanyama wakubwa zaidi wa tundra ni kariboo, wanaoitwa pia reindia.",
+      "text_markdown": "Wanyama wakubwa zaidi wa tundra ni kariboo, wanaoitwa pia reindia.",
+      "tts": {
+        "text": "Wanyama wakubwa zaidi wa tundra ni kariboo, wanaoitwa pia reindia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kariboo huishi katika makundi makubwa na husafiri umbali mrefu kuvuka nchi wazi.",
+      "text_markdown": "Kariboo huishi katika makundi makubwa na husafiri umbali mrefu kuvuka nchi wazi.",
+      "tts": {
+        "text": "Kariboo huishi katika makundi makubwa na husafiri umbali mrefu kuvuka nchi wazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya joto hula mimea ya tundra, na katika majira ya baridi huchimba theluji kutafuta kuvumwani.",
+      "text_markdown": "Katika majira ya joto hula mimea ya tundra, na katika majira ya baridi huchimba theluji kutafuta kuvumwani.",
+      "tts": {
+        "text": "Katika majira ya joto hula mimea ya tundra, na katika majira ya baridi huchimba theluji kutafuta kuvumwani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyati wa musk ni mnyama mwingine mkubwa wa tundra.",
+      "text_markdown": "Nyati wa musk ni mnyama mwingine mkubwa wa tundra.",
+      "tts": {
+        "text": "Nyati wa musk ni mnyama mwingine mkubwa wa tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyati wa musk ana mwili mzito na koti nene la nywele ndefu zinazoning'inia karibu na ardhi.",
+      "text_markdown": "Nyati wa musk ana mwili mzito na koti nene la nywele ndefu zinazoning'inia karibu na ardhi.",
+      "tts": {
+        "text": "Nyati wa musk ana mwili mzito na koti nene la nywele ndefu zinazoning'inia karibu na ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mbwa mwitu wanapokaribia, nyati wa musk husimama katika duara, wakielekea nje, ili kuwalinda wadogo.",
+      "text_markdown": "Mbwa mwitu wanapokaribia, nyati wa musk husimama katika duara, wakielekea nje, ili kuwalinda wadogo.",
+      "tts": {
+        "text": "Mbwa mwitu wanapokaribia, nyati wa musk husimama katika duara, wakielekea nje, ili kuwalinda wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mbwa mwitu hufuata makundi kuvuka tundra, wakiwinda wazee na wadhaifu.",
+      "text_markdown": "Mbwa mwitu hufuata makundi kuvuka tundra, wakiwinda wazee na wadhaifu.",
+      "tts": {
+        "text": "Mbwa mwitu hufuata makundi kuvuka tundra, wakiwinda wazee na wadhaifu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mbweha wa Aktiki ni mdogo, mwenye singa nene inayogeuka nyeupe wakati wa baridi na kahawia wakati wa joto.",
+      "text_markdown": "Mbweha wa Aktiki ni mdogo, mwenye singa nene inayogeuka nyeupe wakati wa baridi na kahawia wakati wa joto.",
+      "tts": {
+        "text": "Mbweha wa Aktiki ni mdogo, mwenye singa nene inayogeuka nyeupe wakati wa baridi na kahawia wakati wa joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hufuata wanyama wakubwa na hula wanachokiacha, na huwinda wanyama wadogo pia.",
+      "text_markdown": "Hufuata wanyama wakubwa na hula wanachokiacha, na huwinda wanyama wadogo pia.",
+      "tts": {
+        "text": "Hufuata wanyama wakubwa na hula wanachokiacha, na huwinda wanyama wadogo pia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungura wa Aktiki ni mweupe wakati wa baridi na ana masikio mafupi ili kuhifadhi joto lake.",
+      "text_markdown": "Sungura wa Aktiki ni mweupe wakati wa baridi na ana masikio mafupi ili kuhifadhi joto lake.",
+      "tts": {
+        "text": "Sungura wa Aktiki ni mweupe wakati wa baridi na ana masikio mafupi ili kuhifadhi joto lake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chini ya theluji, wanyama wadogo waitwao lemingi huchimba mahandaki na hubaki na shughuli majira yote ya baridi.",
+      "text_markdown": "Chini ya theluji, wanyama wadogo waitwao lemingi huchimba mahandaki na hubaki na shughuli majira yote ya baridi.",
+      "tts": {
+        "text": "Chini ya theluji, wanyama wadogo waitwao lemingi huchimba mahandaki na hubaki na shughuli majira yote ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lemingi ni chakula cha mbweha, bundi, na wawindaji wengine wengi.",
+      "text_markdown": "Lemingi ni chakula cha mbweha, bundi, na wawindaji wengine wengi.",
+      "tts": {
+        "text": "Lemingi ni chakula cha mbweha, bundi, na wawindaji wengine wengi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bundi wa theluji ni bundi mkubwa mweupe anayewinda kuvuka tundra wazi mchana na usiku.",
+      "text_markdown": "Bundi wa theluji ni bundi mkubwa mweupe anayewinda kuvuka tundra wazi mchana na usiku.",
+      "tts": {
+        "text": "Bundi wa theluji ni bundi mkubwa mweupe anayewinda kuvuka tundra wazi mchana na usiku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hutazama kutoka kilima kifupi na hushuka kimya juu ya lemingi na wanyama wengine wadogo.",
+      "text_markdown": "Hutazama kutoka kilima kifupi na hushuka kimya juu ya lemingi na wanyama wengine wadogo.",
+      "tts": {
+        "text": "Hutazama kutoka kilima kifupi na hushuka kimya juu ya lemingi na wanyama wengine wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira mafupi ya joto, makundi makubwa ya ndege hufika kutoka kusini.",
+      "text_markdown": "Katika majira mafupi ya joto, makundi makubwa ya ndege hufika kutoka kusini.",
+      "tts": {
+        "text": "Katika majira mafupi ya joto, makundi makubwa ya ndege hufika kutoka kusini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bukini, bata, na ndege wadogo wengi huja kutaga viota kwenye tundra yenye unyevu na wadudu.",
+      "text_markdown": "Bukini, bata, na ndege wadogo wengi huja kutaga viota kwenye tundra yenye unyevu na wadudu.",
+      "tts": {
+        "text": "Bukini, bata, na ndege wadogo wengi huja kutaga viota kwenye tundra yenye unyevu na wadudu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huja kwa sababu siku ndefu za majira ya joto na wadudu wengi humaanisha chakula kingi.",
+      "text_markdown": "Huja kwa sababu siku ndefu za majira ya joto na wadudu wengi humaanisha chakula kingi.",
+      "tts": {
+        "text": "Huja kwa sababu siku ndefu za majira ya joto na wadudu wengi humaanisha chakula kingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa wiki chache, mawingu ya mbu na inzi wadogo hujaza hewa.",
+      "text_markdown": "Kwa wiki chache, mawingu ya mbu na inzi wadogo hujaza hewa.",
+      "tts": {
+        "text": "Kwa wiki chache, mawingu ya mbu na inzi wadogo hujaza hewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha ndege hulea wadogo wao haraka na huruka kurudi kusini kabla ya baridi kurudi.",
+      "text_markdown": "Kisha ndege hulea wadogo wao haraka na huruka kurudi kusini kabla ya baridi kurudi.",
+      "tts": {
+        "text": "Kisha ndege hulea wadogo wao haraka na huruka kurudi kusini kabla ya baridi kurudi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kandokando ya ukingo wa kaskazini, ambapo tundra hukutana na bahari iliyoganda, dubu wa Aktiki huwinda juu ya barafu.",
+      "text_markdown": "Kandokando ya ukingo wa kaskazini, ambapo tundra hukutana na bahari iliyoganda, dubu wa Aktiki huwinda juu ya barafu.",
+      "tts": {
+        "text": "Kandokando ya ukingo wa kaskazini, ambapo tundra hukutana na bahari iliyoganda, dubu wa Aktiki huwinda juu ya barafu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Watu",
+      "text_markdown": "Watu"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu wameishi katika tundra kwa maelfu mengi ya miaka.",
+      "text_markdown": "Watu wameishi katika tundra kwa maelfu mengi ya miaka.",
+      "tts": {
+        "text": "Watu wameishi katika tundra kwa maelfu mengi ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuishi hapa kunahitaji maarifa ya kina kuhusu nchi ya baridi na wanyama wake.",
+      "text_markdown": "Kuishi hapa kunahitaji maarifa ya kina kuhusu nchi ya baridi na wanyama wake.",
+      "tts": {
+        "text": "Kuishi hapa kunahitaji maarifa ya kina kuhusu nchi ya baridi na wanyama wake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika Amerika Kaskazini, Wainuit na watu wengine wa kaskazini wameishi katika tundra na pwani iliyoganda kwa muda mrefu sana.",
+      "text_markdown": "Katika Amerika Kaskazini, Wainuit na watu wengine wa kaskazini wameishi katika tundra na pwani iliyoganda kwa muda mrefu sana.",
+      "tts": {
+        "text": "Katika Amerika Kaskazini, Wainuit na watu wengine wa kaskazini wameishi katika tundra na pwani iliyoganda kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waliwinda kariboo, walivua samaki mitoni na baharini, na waliwinda sili kandokando ya barafu.",
+      "text_markdown": "Waliwinda kariboo, walivua samaki mitoni na baharini, na waliwinda sili kandokando ya barafu.",
+      "tts": {
+        "text": "Waliwinda kariboo, walivua samaki mitoni na baharini, na waliwinda sili kandokando ya barafu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walitengeneza mavazi ya joto kutoka ngozi za wanyama na singa, yaliyoshonwa ili kuzuia upepo.",
+      "text_markdown": "Walitengeneza mavazi ya joto kutoka ngozi za wanyama na singa, yaliyoshonwa ili kuzuia upepo.",
+      "tts": {
+        "text": "Walitengeneza mavazi ya joto kutoka ngozi za wanyama na singa, yaliyoshonwa ili kuzuia upepo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walijenga nyumba kutokana na kile nchi iliyowapa, na walisafiri kwa slei kuvuka theluji.",
+      "text_markdown": "Walijenga nyumba kutokana na kile nchi iliyowapa, na walisafiri kwa slei kuvuka theluji.",
+      "tts": {
+        "text": "Walijenga nyumba kutokana na kile nchi iliyowapa, na walisafiri kwa slei kuvuka theluji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika Ulaya ya kaskazini, Wasami wamefuata reindia kuvuka tundra kwa vizazi vingi.",
+      "text_markdown": "Katika Ulaya ya kaskazini, Wasami wamefuata reindia kuvuka tundra kwa vizazi vingi.",
+      "tts": {
+        "text": "Katika Ulaya ya kaskazini, Wasami wamefuata reindia kuvuka tundra kwa vizazi vingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reindia iliwapa nyama, maziwa, ngozi za mavazi, na njia ya kuvuta slei.",
+      "text_markdown": "Reindia iliwapa nyama, maziwa, ngozi za mavazi, na njia ya kuvuta slei.",
+      "tts": {
+        "text": "Reindia iliwapa nyama, maziwa, ngozi za mavazi, na njia ya kuvuta slei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika Urusi ya kaskazini, watu wa makabila mengi wameifanya tundra kuwa nyumbani kwao.",
+      "text_markdown": "Katika Urusi ya kaskazini, watu wa makabila mengi wameifanya tundra kuwa nyumbani kwao.",
+      "tts": {
+        "text": "Katika Urusi ya kaskazini, watu wa makabila mengi wameifanya tundra kuwa nyumbani kwao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanenets, Wachukchi, na wengineo wamechunga reindia kuvuka nchi hizi za baridi kwa muda mrefu sana.",
+      "text_markdown": "Wanenets, Wachukchi, na wengineo wamechunga reindia kuvuka nchi hizi za baridi kwa muda mrefu sana.",
+      "tts": {
+        "text": "Wanenets, Wachukchi, na wengineo wamechunga reindia kuvuka nchi hizi za baridi kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi yao bado husafiri na makundi yao leo, wakihama kulingana na majira.",
+      "text_markdown": "Baadhi yao bado husafiri na makundi yao leo, wakihama kulingana na majira.",
+      "tts": {
+        "text": "Baadhi yao bado husafiri na makundi yao leo, wakihama kulingana na majira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya joto hufuata reindia kaskazini kuelekea pwani.",
+      "text_markdown": "Katika majira ya joto hufuata reindia kaskazini kuelekea pwani.",
+      "tts": {
+        "text": "Katika majira ya joto hufuata reindia kaskazini kuelekea pwani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya baridi huhamia kusini kuelekea hifadhi ya ukingo wa msitu.",
+      "text_markdown": "Katika majira ya baridi huhamia kusini kuelekea hifadhi ya ukingo wa msitu.",
+      "tts": {
+        "text": "Katika majira ya baridi huhamia kusini kuelekea hifadhi ya ukingo wa msitu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika nchi hizi zote, watu walijifunza kusoma hali ya hewa, theluji, na barafu.",
+      "text_markdown": "Katika nchi hizi zote, watu walijifunza kusoma hali ya hewa, theluji, na barafu.",
+      "tts": {
+        "text": "Katika nchi hizi zote, watu walijifunza kusoma hali ya hewa, theluji, na barafu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walijifunza njia za kariboo na reindia.",
+      "text_markdown": "Walijifunza njia za kariboo na reindia.",
+      "tts": {
+        "text": "Walijifunza njia za kariboo na reindia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walijifunza mahali samaki walipokusanyika na wakati ndege watakapokuja.",
+      "text_markdown": "Walijifunza mahali samaki walipokusanyika na wakati ndege watakapokuja.",
+      "tts": {
+        "text": "Walijifunza mahali samaki walipokusanyika na wakati ndege watakapokuja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walijifunza kuhifadhi chakula kutoka majira mafupi ya joto ili kidumu majira marefu ya baridi.",
+      "text_markdown": "Walijifunza kuhifadhi chakula kutoka majira mafupi ya joto ili kidumu majira marefu ya baridi.",
+      "tts": {
+        "text": "Walijifunza kuhifadhi chakula kutoka majira mafupi ya joto ili kidumu majira marefu ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra hutoa kidogo, na huomba mengi, lakini watu wamejenga maisha mazuri hapa kwa muda mrefu sana.",
+      "text_markdown": "Tundra hutoa kidogo, na huomba mengi, lakini watu wamejenga maisha mazuri hapa kwa muda mrefu sana.",
+      "tts": {
+        "text": "Tundra hutoa kidogo, na huomba mengi, lakini watu wamejenga maisha mazuri hapa kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyimbo zao, hadithi zao, na lugha zao zilikua pamoja na upepo baridi na nchi pana wazi.",
+      "text_markdown": "Nyimbo zao, hadithi zao, na lugha zao zilikua pamoja na upepo baridi na nchi pana wazi.",
+      "tts": {
+        "text": "Nyimbo zao, hadithi zao, na lugha zao zilikua pamoja na upepo baridi na nchi pana wazi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomu Leo",
+      "text_markdown": "Biomu Leo"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni mojawapo ya biomu za mwitu zaidi na tupu zaidi, lakini inabadilika haraka.",
+      "text_markdown": "Tundra ni mojawapo ya biomu za mwitu zaidi na tupu zaidi, lakini inabadilika haraka.",
+      "tts": {
+        "text": "Tundra ni mojawapo ya biomu za mwitu zaidi na tupu zaidi, lakini inabadilika haraka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kati ya biomu zote, tundra inapata joto kwa kasi zaidi.",
+      "text_markdown": "Kati ya biomu zote, tundra inapata joto kwa kasi zaidi.",
+      "tts": {
+        "text": "Kati ya biomu zote, tundra inapata joto kwa kasi zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaskazini ya mbali inazidi kuwa na joto mwaka baada ya mwaka.",
+      "text_markdown": "Kaskazini ya mbali inazidi kuwa na joto mwaka baada ya mwaka.",
+      "tts": {
+        "text": "Kaskazini ya mbali inazidi kuwa na joto mwaka baada ya mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hewa inapopata joto, ardhi iliyoganda huanza kuyeyuka.",
+      "text_markdown": "Hewa inapopata joto, ardhi iliyoganda huanza kuyeyuka.",
+      "tts": {
+        "text": "Hewa inapopata joto, ardhi iliyoganda huanza kuyeyuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pemafrosti inapoyeyuka, nchi inaweza kudidimia, kupasuka, na kugeuka matope.",
+      "text_markdown": "Pemafrosti inapoyeyuka, nchi inaweza kudidimia, kupasuka, na kugeuka matope.",
+      "tts": {
+        "text": "Pemafrosti inapoyeyuka, nchi inaweza kudidimia, kupasuka, na kugeuka matope.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barabara, nyumba, na mabomba yaliyojengwa juu ya ardhi iliyoganda yanaweza kupinda na kuvunjika.",
+      "text_markdown": "Barabara, nyumba, na mabomba yaliyojengwa juu ya ardhi iliyoganda yanaweza kupinda na kuvunjika.",
+      "tts": {
+        "text": "Barabara, nyumba, na mabomba yaliyojengwa juu ya ardhi iliyoganda yanaweza kupinda na kuvunjika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi inayoyeyuka pia hutoa gesi zilizokuwa zimefungwa katika udongo ulioganda kwa muda mrefu sana.",
+      "text_markdown": "Ardhi inayoyeyuka pia hutoa gesi zilizokuwa zimefungwa katika udongo ulioganda kwa muda mrefu sana.",
+      "tts": {
+        "text": "Ardhi inayoyeyuka pia hutoa gesi zilizokuwa zimefungwa katika udongo ulioganda kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gesi hizi hupanda hewani na zinaweza kuifanya dunia nzima kuwa na joto kidogo zaidi.",
+      "text_markdown": "Gesi hizi hupanda hewani na zinaweza kuifanya dunia nzima kuwa na joto kidogo zaidi.",
+      "tts": {
+        "text": "Gesi hizi hupanda hewani na zinaweza kuifanya dunia nzima kuwa na joto kidogo zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra inapopata joto, vichaka na miti midogo vinaenea taratibu kaskazini ndani yake.",
+      "text_markdown": "Tundra inapopata joto, vichaka na miti midogo vinaenea taratibu kaskazini ndani yake.",
+      "tts": {
+        "text": "Tundra inapopata joto, vichaka na miti midogo vinaenea taratibu kaskazini ndani yake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya wanyama wa kusini yenye joto zaidi wanahamia kaskazini pia.",
+      "text_markdown": "Baadhi ya wanyama wa kusini yenye joto zaidi wanahamia kaskazini pia.",
+      "tts": {
+        "text": "Baadhi ya wanyama wa kusini yenye joto zaidi wanahamia kaskazini pia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu pia huja tundra kutafuta mafuta, gesi, na madini ardhini.",
+      "text_markdown": "Watu pia huja tundra kutafuta mafuta, gesi, na madini ardhini.",
+      "tts": {
+        "text": "Watu pia huja tundra kutafuta mafuta, gesi, na madini ardhini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barabara na mashine zao zinaweza kuacha alama juu ya nchi zinazopona taratibu sana katika baridi.",
+      "text_markdown": "Barabara na mashine zao zinaweza kuacha alama juu ya nchi zinazopona taratibu sana katika baridi.",
+      "tts": {
+        "text": "Barabara na mashine zao zinaweza kuacha alama juu ya nchi zinazopona taratibu sana katika baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu na vikundi vingi leo wanafanya kazi kuitunza tundra.",
+      "text_markdown": "Watu na vikundi vingi leo wanafanya kazi kuitunza tundra.",
+      "tts": {
+        "text": "Watu na vikundi vingi leo wanafanya kazi kuitunza tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanatenga mbuga kubwa ambapo kariboo na ndege bado wanaweza kuzurura.",
+      "text_markdown": "Wanatenga mbuga kubwa ambapo kariboo na ndege bado wanaweza kuzurura.",
+      "tts": {
+        "text": "Wanatenga mbuga kubwa ambapo kariboo na ndege bado wanaweza kuzurura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanafanya kazi na watu walioishi hapa kwa vizazi vingi ili kulinda nchi.",
+      "text_markdown": "Wanafanya kazi na watu walioishi hapa kwa vizazi vingi ili kulinda nchi.",
+      "tts": {
+        "text": "Wanafanya kazi na watu walioishi hapa kwa vizazi vingi ili kulinda nchi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanaisoma tundra ili kuelewa jinsi inavyobadilika na jinsi ya kuiweka yenye afya.",
+      "text_markdown": "Wanaisoma tundra ili kuelewa jinsi inavyobadilika na jinsi ya kuiweka yenye afya.",
+      "tts": {
+        "text": "Wanaisoma tundra ili kuelewa jinsi inavyobadilika na jinsi ya kuiweka yenye afya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ni dhaifu na huchelewa kupona, na inashikilia hazina kubwa ya kaboni iliyoganda.",
+      "text_markdown": "Tundra ni dhaifu na huchelewa kupona, na inashikilia hazina kubwa ya kaboni iliyoganda.",
+      "tts": {
+        "text": "Tundra ni dhaifu na huchelewa kupona, na inashikilia hazina kubwa ya kaboni iliyoganda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inastahili utunzaji wetu.",
+      "text_markdown": "Inastahili utunzaji wetu.",
+      "tts": {
+        "text": "Inastahili utunzaji wetu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hitimisho",
+      "text_markdown": "Hitimisho"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiyo ndiyo tundra.",
+      "text_markdown": "Hiyo ndiyo tundra.",
+      "tts": {
+        "text": "Hiyo ndiyo tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchi ya baridi, wazi, isiyo na miti yenye ardhi iliyoganda, mimea mifupi, na anga pana lenye mwangaza katika kilele cha dunia.",
+      "text_markdown": "Nchi ya baridi, wazi, isiyo na miti yenye ardhi iliyoganda, mimea mifupi, na anga pana lenye mwangaza katika kilele cha dunia.",
+      "tts": {
+        "text": "Nchi ya baridi, wazi, isiyo na miti yenye ardhi iliyoganda, mimea mifupi, na anga pana lenye mwangaza katika kilele cha dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ukiwahi kusimama katika moja, tulia kwa dakika moja.",
+      "text_markdown": "Ukiwahi kusimama katika moja, tulia kwa dakika moja.",
+      "tts": {
+        "text": "Ukiwahi kusimama katika moja, tulia kwa dakika moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hisi upepo baridi ukisogea kuvuka nchi wazi.",
+      "text_markdown": "Hisi upepo baridi ukisogea kuvuka nchi wazi.",
+      "tts": {
+        "text": "Hisi upepo baridi ukisogea kuvuka nchi wazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tazama chini kwenye maua madogo na kuvunga laini chini ya miguu yako.",
+      "text_markdown": "Tazama chini kwenye maua madogo na kuvunga laini chini ya miguu yako.",
+      "tts": {
+        "text": "Tazama chini kwenye maua madogo na kuvunga laini chini ya miguu yako.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tazama juu kwenye anga kubwa na tupu.",
+      "text_markdown": "Tazama juu kwenye anga kubwa na tupu.",
+      "tts": {
+        "text": "Tazama juu kwenye anga kubwa na tupu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utahisi moyo tulivu na wenye subira wa biomu ukipiga kukuzunguka.",
+      "text_markdown": "Utahisi moyo tulivu na wenye subira wa biomu ukipiga kukuzunguka.",
+      "tts": {
+        "text": "Utahisi moyo tulivu na wenye subira wa biomu ukipiga kukuzunguka.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

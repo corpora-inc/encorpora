@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Der Laubwald",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Laubwald",
+      "text_markdown": "Der Laubwald"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Wo Laubwälder wachsen",
+      "text_markdown": "Wo Laubwälder wachsen"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Willkommen im Laubwald.",
+      "text_markdown": "Willkommen im Laubwald.",
+      "tts": {
+        "text": "Willkommen im Laubwald.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist eines der großen Biome der Welt.",
+      "text_markdown": "Dies ist eines der großen Biome der Welt.",
+      "tts": {
+        "text": "Dies ist eines der großen Biome der Welt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "text_markdown": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "tts": {
+        "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Laubwald ist ein Wald aus breiten, belaubten Bäumen.",
+      "text_markdown": "Der Laubwald ist ein Wald aus breiten, belaubten Bäumen.",
+      "tts": {
+        "text": "Der Laubwald ist ein Wald aus breiten, belaubten Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten Bäume hier verlieren einmal im Jahr ihre Blätter und treiben im Frühling neue aus.",
+      "text_markdown": "Die meisten Bäume hier verlieren einmal im Jahr ihre Blätter und treiben im Frühling neue aus.",
+      "tts": {
+        "text": "Die meisten Bäume hier verlieren einmal im Jahr ihre Blätter und treiben im Frühling neue aus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bäume, die so ihre Blätter abwerfen, nennt man laubabwerfende Bäume.",
+      "text_markdown": "Bäume, die so ihre Blätter abwerfen, nennt man laubabwerfende Bäume.",
+      "tts": {
+        "text": "Bäume, die so ihre Blätter abwerfen, nennt man laubabwerfende Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laubwälder wachsen in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+      "text_markdown": "Laubwälder wachsen in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+      "tts": {
+        "text": "Laubwälder wachsen in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt große Laubwälder im östlichen Teil Nordamerikas.",
+      "text_markdown": "Es gibt große Laubwälder im östlichen Teil Nordamerikas.",
+      "tts": {
+        "text": "Es gibt große Laubwälder im östlichen Teil Nordamerikas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt Laubwälder in weiten Teilen Europas.",
+      "text_markdown": "Es gibt Laubwälder in weiten Teilen Europas.",
+      "tts": {
+        "text": "Es gibt Laubwälder in weiten Teilen Europas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt Laubwälder in Ostasien, in China, Korea und Japan.",
+      "text_markdown": "Es gibt Laubwälder in Ostasien, in China, Korea und Japan.",
+      "tts": {
+        "text": "Es gibt Laubwälder in Ostasien, in China, Korea und Japan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt kleinere Gebiete im südlichen Südamerika, im südöstlichen Australien und im südlichen Neuseeland.",
+      "text_markdown": "Es gibt kleinere Gebiete im südlichen Südamerika, im südöstlichen Australien und im südlichen Neuseeland.",
+      "tts": {
+        "text": "Es gibt kleinere Gebiete im südlichen Südamerika, im südöstlichen Australien und im südlichen Neuseeland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeder dieser Wälder ist für sich gewachsen, weit weg von den anderen.",
+      "text_markdown": "Jeder dieser Wälder ist für sich gewachsen, weit weg von den anderen.",
+      "tts": {
+        "text": "Jeder dieser Wälder ist für sich gewachsen, weit weg von den anderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deshalb sind die Bäume und Tiere in jedem Teil der Welt unterschiedlich.",
+      "text_markdown": "Deshalb sind die Bäume und Tiere in jedem Teil der Welt unterschiedlich.",
+      "tts": {
+        "text": "Deshalb sind die Bäume und Tiere in jedem Teil der Welt unterschiedlich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber sie alle folgen demselben Muster.",
+      "text_markdown": "Aber sie alle folgen demselben Muster.",
+      "tts": {
+        "text": "Aber sie alle folgen demselben Muster.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Kronendach aus belaubten Bäumen, ein weicher Boden aus gefallenen Blättern und vier sehr unterschiedliche Jahreszeiten.",
+      "text_markdown": "Ein Kronendach aus belaubten Bäumen, ein weicher Boden aus gefallenen Blättern und vier sehr unterschiedliche Jahreszeiten.",
+      "tts": {
+        "text": "Ein Kronendach aus belaubten Bäumen, ein weicher Boden aus gefallenen Blättern und vier sehr unterschiedliche Jahreszeiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du in einen Laubwald hineingehst, fühlt sich die Luft kühl und sanft an.",
+      "text_markdown": "Wenn du in einen Laubwald hineingehst, fühlt sich die Luft kühl und sanft an.",
+      "tts": {
+        "text": "Wenn du in einen Laubwald hineingehst, fühlt sich die Luft kühl und sanft an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer fällt das Sonnenlicht in sanften grünen Flecken durch die Blätter.",
+      "text_markdown": "Im Sommer fällt das Sonnenlicht in sanften grünen Flecken durch die Blätter.",
+      "tts": {
+        "text": "Im Sommer fällt das Sonnenlicht in sanften grünen Flecken durch die Blätter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst werden die Blätter gelb, orange und rot.",
+      "text_markdown": "Im Herbst werden die Blätter gelb, orange und rot.",
+      "tts": {
+        "text": "Im Herbst werden die Blätter gelb, orange und rot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter stehen die Bäume kahl gegen den Himmel.",
+      "text_markdown": "Im Winter stehen die Bäume kahl gegen den Himmel.",
+      "tts": {
+        "text": "Im Winter stehen die Bäume kahl gegen den Himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling erscheinen winzige grüne Knospen, und der ganze Wald erwacht wieder.",
+      "text_markdown": "Im Frühling erscheinen winzige grüne Knospen, und der ganze Wald erwacht wieder.",
+      "tts": {
+        "text": "Im Frühling erscheinen winzige grüne Knospen, und der ganze Wald erwacht wieder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist der Laubwald.",
+      "text_markdown": "Das ist der Laubwald.",
+      "tts": {
+        "text": "Das ist der Laubwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Wo Laubwälder wachsen",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine grüne Welt, die viermal im Jahr ihr Gesicht verändert.",
+      "text_markdown": "Eine grüne Welt, die viermal im Jahr ihr Gesicht verändert.",
+      "tts": {
+        "text": "Eine grüne Welt, die viermal im Jahr ihr Gesicht verändert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Wetter",
+      "text_markdown": "Das Wetter"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Wetter im Laubwald verändert sich im Laufe des Jahres sehr stark.",
+      "text_markdown": "Das Wetter im Laubwald verändert sich im Laufe des Jahres sehr stark.",
+      "tts": {
+        "text": "Das Wetter im Laubwald verändert sich im Laufe des Jahres sehr stark.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt vier Jahreszeiten, und jede ist sehr anders.",
+      "text_markdown": "Es gibt vier Jahreszeiten, und jede ist sehr anders.",
+      "tts": {
+        "text": "Es gibt vier Jahreszeiten, und jede ist sehr anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer sind die Tage lang und warm.",
+      "text_markdown": "Im Sommer sind die Tage lang und warm.",
+      "tts": {
+        "text": "Im Sommer sind die Tage lang und warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es regnet oft, und manchmal zieht ein schweres Gewitter über die Bäume hinweg.",
+      "text_markdown": "Es regnet oft, und manchmal zieht ein schweres Gewitter über die Bäume hinweg.",
+      "tts": {
+        "text": "Es regnet oft, und manchmal zieht ein schweres Gewitter über die Bäume hinweg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wald ist voller grüner Blätter und dem Gesang der Vögel.",
+      "text_markdown": "Der Wald ist voller grüner Blätter und dem Gesang der Vögel.",
+      "tts": {
+        "text": "Der Wald ist voller grüner Blätter und dem Gesang der Vögel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst werden die Tage kürzer, und die Luft wird kühl.",
+      "text_markdown": "Im Herbst werden die Tage kürzer, und die Luft wird kühl.",
+      "tts": {
+        "text": "Im Herbst werden die Tage kürzer, und die Luft wird kühl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Blätter der Bäume wechseln die Farbe und fallen zu Boden.",
+      "text_markdown": "Die Blätter der Bäume wechseln die Farbe und fallen zu Boden.",
+      "tts": {
+        "text": "Die Blätter der Bäume wechseln die Farbe und fallen zu Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Spaziergang in einem Herbstwald ist ein Spaziergang über einen weichen, leuchtenden Blätterteppich.",
+      "text_markdown": "Ein Spaziergang in einem Herbstwald ist ein Spaziergang über einen weichen, leuchtenden Blätterteppich.",
+      "tts": {
+        "text": "Ein Spaziergang in einem Herbstwald ist ein Spaziergang über einen weichen, leuchtenden Blätterteppich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter sind die Tage kurz, und die Nächte sind lang und kalt.",
+      "text_markdown": "Im Winter sind die Tage kurz, und die Nächte sind lang und kalt.",
+      "tts": {
+        "text": "Im Winter sind die Tage kurz, und die Nächte sind lang und kalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An vielen Orten bedeckt Schnee den Wald wochenlang.",
+      "text_markdown": "An vielen Orten bedeckt Schnee den Wald wochenlang.",
+      "tts": {
+        "text": "An vielen Orten bedeckt Schnee den Wald wochenlang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die kahlen Äste der Bäume stehen still vor einem grauen Himmel.",
+      "text_markdown": "Die kahlen Äste der Bäume stehen still vor einem grauen Himmel.",
+      "tts": {
+        "text": "Die kahlen Äste der Bäume stehen still vor einem grauen Himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Tiere schlafen die Kälte durch oder verstecken sich in ihren Bauen.",
+      "text_markdown": "Viele Tiere schlafen die Kälte durch oder verstecken sich in ihren Bauen.",
+      "tts": {
+        "text": "Viele Tiere schlafen die Kälte durch oder verstecken sich in ihren Bauen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann kommt der Frühling.",
+      "text_markdown": "Dann kommt der Frühling.",
+      "tts": {
+        "text": "Dann kommt der Frühling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Schnee schmilzt, der Regen beginnt wieder, und der Boden erwärmt sich.",
+      "text_markdown": "Der Schnee schmilzt, der Regen beginnt wieder, und der Boden erwärmt sich.",
+      "tts": {
+        "text": "Der Schnee schmilzt, der Regen beginnt wieder, und der Boden erwärmt sich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grüne Knospen öffnen sich an den Ästen, Blumen drücken sich aus dem Boden, und der Wald füllt sich wieder mit Klang und Farbe.",
+      "text_markdown": "Grüne Knospen öffnen sich an den Ästen, Blumen drücken sich aus dem Boden, und der Wald füllt sich wieder mit Klang und Farbe.",
+      "tts": {
+        "text": "Grüne Knospen öffnen sich an den Ästen, Blumen drücken sich aus dem Boden, und der Wald füllt sich wieder mit Klang und Farbe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Laubwald weiß, wie man durch die Kälte wartet, und wie man feiert, wenn die Wärme zurückkehrt.",
+      "text_markdown": "Der Laubwald weiß, wie man durch die Kälte wartet, und wie man feiert, wenn die Wärme zurückkehrt.",
+      "tts": {
+        "text": "Der Laubwald weiß, wie man durch die Kälte wartet, und wie man feiert, wenn die Wärme zurückkehrt.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Land und das Wasser",
+      "text_markdown": "Das Land und das Wasser"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Land unter einem Laubwald ist reich.",
+      "text_markdown": "Das Land unter einem Laubwald ist reich.",
+      "tts": {
+        "text": "Das Land unter einem Laubwald ist reich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Über Tausende von Jahren sind Blätter von den Bäumen gefallen und langsam zu dunkler, weicher Erde geworden.",
+      "text_markdown": "Über Tausende von Jahren sind Blätter von den Bäumen gefallen und langsam zu dunkler, weicher Erde geworden.",
+      "tts": {
+        "text": "Über Tausende von Jahren sind Blätter von den Bäumen gefallen und langsam zu dunkler, weicher Erde geworden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Art von Boden hält Wasser gut, und sie gibt den Bäumen viel Nahrung.",
+      "text_markdown": "Diese Art von Boden hält Wasser gut, und sie gibt den Bäumen viel Nahrung.",
+      "tts": {
+        "text": "Diese Art von Boden hält Wasser gut, und sie gibt den Bäumen viel Nahrung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Waldboden ist bedeckt mit alten Blättern, gebrochenen Zweigen und Flecken aus grünem Moos.",
+      "text_markdown": "Der Waldboden ist bedeckt mit alten Blättern, gebrochenen Zweigen und Flecken aus grünem Moos.",
+      "tts": {
+        "text": "Der Waldboden ist bedeckt mit alten Blättern, gebrochenen Zweigen und Flecken aus grünem Moos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du die Blätter zur Seite schiebst, findest du dunkle Erde voller winziger Lebewesen.",
+      "text_markdown": "Wenn du die Blätter zur Seite schiebst, findest du dunkle Erde voller winziger Lebewesen.",
+      "tts": {
+        "text": "Wenn du die Blätter zur Seite schiebst, findest du dunkle Erde voller winziger Lebewesen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Würmer und Insekten bewegen sich darin.",
+      "text_markdown": "Würmer und Insekten bewegen sich darin.",
+      "tts": {
+        "text": "Würmer und Insekten bewegen sich darin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pilze drücken sich nach einem Regen von unten hervor.",
+      "text_markdown": "Pilze drücken sich nach einem Regen von unten hervor.",
+      "tts": {
+        "text": "Pilze drücken sich nach einem Regen von unten hervor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bäche winden sich durch jeden Laubwald.",
+      "text_markdown": "Bäche winden sich durch jeden Laubwald.",
+      "tts": {
+        "text": "Bäche winden sich durch jeden Laubwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling fließen sie kalt und klar, voller schmelzendem Schnee.",
+      "text_markdown": "Im Frühling fließen sie kalt und klar, voller schmelzendem Schnee.",
+      "tts": {
+        "text": "Im Frühling fließen sie kalt und klar, voller schmelzendem Schnee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer fließen sie langsamer, und Steine schauen aus dem flachen Wasser hervor.",
+      "text_markdown": "Im Sommer fließen sie langsamer, und Steine schauen aus dem flachen Wasser hervor.",
+      "tts": {
+        "text": "Im Sommer fließen sie langsamer, und Steine schauen aus dem flachen Wasser hervor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst treiben goldene Blätter wie kleine Boote auf ihnen dahin.",
+      "text_markdown": "Im Herbst treiben goldene Blätter wie kleine Boote auf ihnen dahin.",
+      "tts": {
+        "text": "Im Herbst treiben goldene Blätter wie kleine Boote auf ihnen dahin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter frieren die kleineren Bäche zu, und das Wasser versteckt sich unter einem Dach aus Eis.",
+      "text_markdown": "Im Winter frieren die kleineren Bäche zu, und das Wasser versteckt sich unter einem Dach aus Eis.",
+      "tts": {
+        "text": "Im Winter frieren die kleineren Bäche zu, und das Wasser versteckt sich unter einem Dach aus Eis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele der großen Flüsse der gemäßigten Welt beginnen in diesen Wäldern.",
+      "text_markdown": "Viele der großen Flüsse der gemäßigten Welt beginnen in diesen Wäldern.",
+      "tts": {
+        "text": "Viele der großen Flüsse der gemäßigten Welt beginnen in diesen Wäldern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume halten den Boden an seinem Platz und speisen die Bäche nach und nach mit etwas Wasser.",
+      "text_markdown": "Die Bäume halten den Boden an seinem Platz und speisen die Bäche nach und nach mit etwas Wasser.",
+      "tts": {
+        "text": "Die Bäume halten den Boden an seinem Platz und speisen die Bäche nach und nach mit etwas Wasser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohne den Wald wären die Flüsse nicht dieselben.",
+      "text_markdown": "Ohne den Wald wären die Flüsse nicht dieselben.",
+      "tts": {
+        "text": "Ohne den Wald wären die Flüsse nicht dieselben.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Pflanzen",
+      "text_markdown": "Die Pflanzen"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume sind das Herz des Laubwaldes.",
+      "text_markdown": "Die Bäume sind das Herz des Laubwaldes.",
+      "tts": {
+        "text": "Die Bäume sind das Herz des Laubwaldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele von ihnen wachsen hoch und stark, mit dicken Stämmen und weiten Ästen.",
+      "text_markdown": "Viele von ihnen wachsen hoch und stark, mit dicken Stämmen und weiten Ästen.",
+      "tts": {
+        "text": "Viele von ihnen wachsen hoch und stark, mit dicken Stämmen und weiten Ästen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihr Holz ist hart, und ein einzelner Baum kann Hunderte von Jahren leben.",
+      "text_markdown": "Ihr Holz ist hart, und ein einzelner Baum kann Hunderte von Jahren leben.",
+      "tts": {
+        "text": "Ihr Holz ist hart, und ein einzelner Baum kann Hunderte von Jahren leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Einige werden sogar noch älter.",
+      "text_markdown": "Einige werden sogar noch älter.",
+      "tts": {
+        "text": "Einige werden sogar noch älter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die bekanntesten Bäume des Laubwaldes sind die Eiche, der Ahorn, die Buche und die Birke.",
+      "text_markdown": "Die bekanntesten Bäume des Laubwaldes sind die Eiche, der Ahorn, die Buche und die Birke.",
+      "tts": {
+        "text": "Die bekanntesten Bäume des Laubwaldes sind die Eiche, der Ahorn, die Buche und die Birke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In verschiedenen Teilen der Welt findet man verschiedene Arten dieser Bäume.",
+      "text_markdown": "In verschiedenen Teilen der Welt findet man verschiedene Arten dieser Bäume.",
+      "tts": {
+        "text": "In verschiedenen Teilen der Welt findet man verschiedene Arten dieser Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber sie teilen dieselbe Form und dieselbe Jahresgeschichte.",
+      "text_markdown": "Aber sie teilen dieselbe Form und dieselbe Jahresgeschichte.",
+      "tts": {
+        "text": "Aber sie teilen dieselbe Form und dieselbe Jahresgeschichte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling öffnen sich an jedem Ast neue Blätter.",
+      "text_markdown": "Im Frühling öffnen sich an jedem Ast neue Blätter.",
+      "tts": {
+        "text": "Im Frühling öffnen sich an jedem Ast neue Blätter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Blätter sind blassgrün und weich.",
+      "text_markdown": "Die Blätter sind blassgrün und weich.",
+      "tts": {
+        "text": "Die Blätter sind blassgrün und weich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den ganzen Sommer über breiten sie sich weit aus, um das Sonnenlicht einzufangen.",
+      "text_markdown": "Den ganzen Sommer über breiten sie sich weit aus, um das Sonnenlicht einzufangen.",
+      "tts": {
+        "text": "Den ganzen Sommer über breiten sie sich weit aus, um das Sonnenlicht einzufangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedes grüne Blatt verwandelt Sonnenlicht, Wasser und Luft in Nahrung für den Baum.",
+      "text_markdown": "Jedes grüne Blatt verwandelt Sonnenlicht, Wasser und Luft in Nahrung für den Baum.",
+      "tts": {
+        "text": "Jedes grüne Blatt verwandelt Sonnenlicht, Wasser und Luft in Nahrung für den Baum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst wechseln die Blätter ihre Farbe, bevor sie fallen.",
+      "text_markdown": "Im Herbst wechseln die Blätter ihre Farbe, bevor sie fallen.",
+      "tts": {
+        "text": "Im Herbst wechseln die Blätter ihre Farbe, bevor sie fallen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche werden leuchtend rot, manche glühen gelb, und manche werden tiefbraun.",
+      "text_markdown": "Manche werden leuchtend rot, manche glühen gelb, und manche werden tiefbraun.",
+      "tts": {
+        "text": "Manche werden leuchtend rot, manche glühen gelb, und manche werden tiefbraun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Farben färben für wenige kurze Wochen ganze Hänge.",
+      "text_markdown": "Die Farben färben für wenige kurze Wochen ganze Hänge.",
+      "tts": {
+        "text": "Die Farben färben für wenige kurze Wochen ganze Hänge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann fallen die Blätter, und der Baum ruht durch die Kälte.",
+      "text_markdown": "Dann fallen die Blätter, und der Baum ruht durch die Kälte.",
+      "tts": {
+        "text": "Dann fallen die Blätter, und der Baum ruht durch die Kälte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Holz des Baumes bewahrt tief im Inneren, was es braucht.",
+      "text_markdown": "Das Holz des Baumes bewahrt tief im Inneren, was es braucht.",
+      "tts": {
+        "text": "Das Holz des Baumes bewahrt tief im Inneren, was es braucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn der Frühling zurückkehrt, beginnt der Baum von Neuem.",
+      "text_markdown": "Wenn der Frühling zurückkehrt, beginnt der Baum von Neuem.",
+      "tts": {
+        "text": "Wenn der Frühling zurückkehrt, beginnt der Baum von Neuem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unter den hohen Bäumen wachsen kleinere Pflanzen.",
+      "text_markdown": "Unter den hohen Bäumen wachsen kleinere Pflanzen.",
+      "tts": {
+        "text": "Unter den hohen Bäumen wachsen kleinere Pflanzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt Sträucher mit Beeren, die Tiere lieben.",
+      "text_markdown": "Es gibt Sträucher mit Beeren, die Tiere lieben.",
+      "tts": {
+        "text": "Es gibt Sträucher mit Beeren, die Tiere lieben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt Farne und weiches Moos auf den Steinen und alten Baumstämmen.",
+      "text_markdown": "Es gibt Farne und weiches Moos auf den Steinen und alten Baumstämmen.",
+      "tts": {
+        "text": "Es gibt Farne und weiches Moos auf den Steinen und alten Baumstämmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im frühen Frühling, bevor die großen Bäume Blätter haben, füllen Wildblumen den Waldboden.",
+      "text_markdown": "Im frühen Frühling, bevor die großen Bäume Blätter haben, füllen Wildblumen den Waldboden.",
+      "tts": {
+        "text": "Im frühen Frühling, bevor die großen Bäume Blätter haben, füllen Wildblumen den Waldboden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Für wenige Wochen ist der Boden mit Hasenglöckchen, Narzissen oder anderen leuchtenden Blumen bedeckt.",
+      "text_markdown": "Für wenige Wochen ist der Boden mit Hasenglöckchen, Narzissen oder anderen leuchtenden Blumen bedeckt.",
+      "tts": {
+        "text": "Für wenige Wochen ist der Boden mit Hasenglöckchen, Narzissen oder anderen leuchtenden Blumen bedeckt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn die Bäume ihre Blätter ausbilden und den Boden beschatten, verblühen die Blumen.",
+      "text_markdown": "Wenn die Bäume ihre Blätter ausbilden und den Boden beschatten, verblühen die Blumen.",
+      "tts": {
+        "text": "Wenn die Bäume ihre Blätter ausbilden und den Boden beschatten, verblühen die Blumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie werden unter der Erde auf den nächsten Frühling warten.",
+      "text_markdown": "Sie werden unter der Erde auf den nächsten Frühling warten.",
+      "tts": {
+        "text": "Sie werden unter der Erde auf den nächsten Frühling warten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Tiere",
+      "text_markdown": "Die Tiere"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Laubwald ist Heimat vieler Tierarten.",
+      "text_markdown": "Der Laubwald ist Heimat vieler Tierarten.",
+      "tts": {
+        "text": "Der Laubwald ist Heimat vieler Tierarten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Bäumen und auf dem Boden haben sie alle Wege gefunden, mit den wechselnden Jahreszeiten zu leben.",
+      "text_markdown": "In den Bäumen und auf dem Boden haben sie alle Wege gefunden, mit den wechselnden Jahreszeiten zu leben.",
+      "tts": {
+        "text": "In den Bäumen und auf dem Boden haben sie alle Wege gefunden, mit den wechselnden Jahreszeiten zu leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hirsche sind in vielen Laubwäldern häufig.",
+      "text_markdown": "Hirsche sind in vielen Laubwäldern häufig.",
+      "tts": {
+        "text": "Hirsche sind in vielen Laubwäldern häufig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie gehen leise durch die Bäume und fressen Blätter, Gras und kleine Pflanzen.",
+      "text_markdown": "Sie gehen leise durch die Bäume und fressen Blätter, Gras und kleine Pflanzen.",
+      "tts": {
+        "text": "Sie gehen leise durch die Bäume und fressen Blätter, Gras und kleine Pflanzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer ist ihr Fell kurz und braun.",
+      "text_markdown": "Im Sommer ist ihr Fell kurz und braun.",
+      "tts": {
+        "text": "Im Sommer ist ihr Fell kurz und braun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter wird ihr Fell dick und grau.",
+      "text_markdown": "Im Winter wird ihr Fell dick und grau.",
+      "tts": {
+        "text": "Im Winter wird ihr Fell dick und grau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch Bären leben in einigen dieser Wälder.",
+      "text_markdown": "Auch Bären leben in einigen dieser Wälder.",
+      "tts": {
+        "text": "Auch Bären leben in einigen dieser Wälder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Bär frisst fast alles: Beeren, Fische, Honig und kleine Tiere.",
+      "text_markdown": "Ein Bär frisst fast alles: Beeren, Fische, Honig und kleine Tiere.",
+      "tts": {
+        "text": "Ein Bär frisst fast alles: Beeren, Fische, Honig und kleine Tiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst frisst ein Bär so viel er kann.",
+      "text_markdown": "Im Herbst frisst ein Bär so viel er kann.",
+      "tts": {
+        "text": "Im Herbst frisst ein Bär so viel er kann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann sucht er einen ruhigen Ort und schläft tief durch den kältesten Teil des Winters.",
+      "text_markdown": "Dann sucht er einen ruhigen Ort und schläft tief durch den kältesten Teil des Winters.",
+      "tts": {
+        "text": "Dann sucht er einen ruhigen Ort und schläft tief durch den kältesten Teil des Winters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wölfe und Füchse jagen im Wald.",
+      "text_markdown": "Wölfe und Füchse jagen im Wald.",
+      "tts": {
+        "text": "Wölfe und Füchse jagen im Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wölfe leben in Familiengruppen und ziehen jeden Tag viele Kilometer weit.",
+      "text_markdown": "Wölfe leben in Familiengruppen und ziehen jeden Tag viele Kilometer weit.",
+      "tts": {
+        "text": "Wölfe leben in Familiengruppen und ziehen jeden Tag viele Kilometer weit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Füchse sind kleiner, und sie jagen allein, oft in der Nacht.",
+      "text_markdown": "Füchse sind kleiner, und sie jagen allein, oft in der Nacht.",
+      "tts": {
+        "text": "Füchse sind kleiner, und sie jagen allein, oft in der Nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eichhörnchen gibt es überall.",
+      "text_markdown": "Eichhörnchen gibt es überall.",
+      "tts": {
+        "text": "Eichhörnchen gibt es überall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst sammeln sie Nüsse und vergraben sie im ganzen Wald.",
+      "text_markdown": "Im Herbst sammeln sie Nüsse und vergraben sie im ganzen Wald.",
+      "tts": {
+        "text": "Im Herbst sammeln sie Nüsse und vergraben sie im ganzen Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter graben sie ihre versteckten Vorräte aus, um sie zu essen.",
+      "text_markdown": "Im Winter graben sie ihre versteckten Vorräte aus, um sie zu essen.",
+      "tts": {
+        "text": "Im Winter graben sie ihre versteckten Vorräte aus, um sie zu essen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manchmal vergessen sie ein paar, und aus diesen Nüssen werden die nächsten Bäume.",
+      "text_markdown": "Manchmal vergessen sie ein paar, und aus diesen Nüssen werden die nächsten Bäume.",
+      "tts": {
+        "text": "Manchmal vergessen sie ein paar, und aus diesen Nüssen werden die nächsten Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaninchen und kleine Mäuse leben in der weichen Erde und unter gefallenen Baumstämmen.",
+      "text_markdown": "Kaninchen und kleine Mäuse leben in der weichen Erde und unter gefallenen Baumstämmen.",
+      "tts": {
+        "text": "Kaninchen und kleine Mäuse leben in der weichen Erde und unter gefallenen Baumstämmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Vogelarten füllen den Laubwald mit Klang.",
+      "text_markdown": "Viele Vogelarten füllen den Laubwald mit Klang.",
+      "tts": {
+        "text": "Viele Vogelarten füllen den Laubwald mit Klang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Vögel bleiben das ganze Jahr, und du kannst sie auf den kahlen Winterästen sehen.",
+      "text_markdown": "Manche Vögel bleiben das ganze Jahr, und du kannst sie auf den kahlen Winterästen sehen.",
+      "tts": {
+        "text": "Manche Vögel bleiben das ganze Jahr, und du kannst sie auf den kahlen Winterästen sehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele andere Vögel fliegen im Winter nach Süden und kommen zurück, wenn der Frühling wiederkehrt.",
+      "text_markdown": "Viele andere Vögel fliegen im Winter nach Süden und kommen zurück, wenn der Frühling wiederkehrt.",
+      "tts": {
+        "text": "Viele andere Vögel fliegen im Winter nach Süden und kommen zurück, wenn der Frühling wiederkehrt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spechte hämmern auf die Stämme der Bäume.",
+      "text_markdown": "Spechte hämmern auf die Stämme der Bäume.",
+      "tts": {
+        "text": "Spechte hämmern auf die Stämme der Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eulen jagen in der Nacht.",
+      "text_markdown": "Eulen jagen in der Nacht.",
+      "tts": {
+        "text": "Eulen jagen in der Nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Teichen und Bächen singen Frösche, und im Winter schwimmen kleine Fische unter dem Eis.",
+      "text_markdown": "In Teichen und Bächen singen Frösche, und im Winter schwimmen kleine Fische unter dem Eis.",
+      "tts": {
+        "text": "In Teichen und Bächen singen Frösche, und im Winter schwimmen kleine Fische unter dem Eis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schmetterlinge und Bienen kommen in den warmen Monaten heraus, wenn die Blumen blühen.",
+      "text_markdown": "Schmetterlinge und Bienen kommen in den warmen Monaten heraus, wenn die Blumen blühen.",
+      "tts": {
+        "text": "Schmetterlinge und Bienen kommen in den warmen Monaten heraus, wenn die Blumen blühen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedes Tier hier kennt die vier Jahreszeiten in seinem Körper.",
+      "text_markdown": "Jedes Tier hier kennt die vier Jahreszeiten in seinem Körper.",
+      "tts": {
+        "text": "Jedes Tier hier kennt die vier Jahreszeiten in seinem Körper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedes weiß, wann es geschäftig sein soll, wann es ruhen soll und wann es wieder erwachen soll.",
+      "text_markdown": "Jedes weiß, wann es geschäftig sein soll, wann es ruhen soll und wann es wieder erwachen soll.",
+      "tts": {
+        "text": "Jedes weiß, wann es geschäftig sein soll, wann es ruhen soll und wann es wieder erwachen soll.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Menschen",
+      "text_markdown": "Die Menschen"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen leben seit vielen Tausenden von Jahren im Laubwald.",
+      "text_markdown": "Menschen leben seit vielen Tausenden von Jahren im Laubwald.",
+      "tts": {
+        "text": "Menschen leben seit vielen Tausenden von Jahren im Laubwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die milden Jahreszeiten und der reiche Boden haben diese Orte schon immer gut für das menschliche Leben gemacht.",
+      "text_markdown": "Die milden Jahreszeiten und der reiche Boden haben diese Orte schon immer gut für das menschliche Leben gemacht.",
+      "tts": {
+        "text": "Die milden Jahreszeiten und der reiche Boden haben diese Orte schon immer gut für das menschliche Leben gemacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vor langer Zeit jagten Menschen in diesen Wäldern Hirsche und kleine Tiere.",
+      "text_markdown": "Vor langer Zeit jagten Menschen in diesen Wäldern Hirsche und kleine Tiere.",
+      "tts": {
+        "text": "Vor langer Zeit jagten Menschen in diesen Wäldern Hirsche und kleine Tiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie sammelten Nüsse, Beeren und Wurzeln vom Waldboden.",
+      "text_markdown": "Sie sammelten Nüsse, Beeren und Wurzeln vom Waldboden.",
+      "tts": {
+        "text": "Sie sammelten Nüsse, Beeren und Wurzeln vom Waldboden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie wussten, welche Pilze ungefährlich waren und welche nicht.",
+      "text_markdown": "Sie wussten, welche Pilze ungefährlich waren und welche nicht.",
+      "tts": {
+        "text": "Sie wussten, welche Pilze ungefährlich waren und welche nicht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie bauten ihre Häuser aus dem Holz der Bäume um sie herum.",
+      "text_markdown": "Sie bauten ihre Häuser aus dem Holz der Bäume um sie herum.",
+      "tts": {
+        "text": "Sie bauten ihre Häuser aus dem Holz der Bäume um sie herum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Haus aus Baumstämmen und ein Dach aus Rinde können eine Familie durch einen langen Winter warm halten.",
+      "text_markdown": "Ein Haus aus Baumstämmen und ein Dach aus Rinde können eine Familie durch einen langen Winter warm halten.",
+      "tts": {
+        "text": "Ein Haus aus Baumstämmen und ein Dach aus Rinde können eine Familie durch einen langen Winter warm halten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling und Sommer bauten sie Nahrung auf kleinen Feldern an, die sie aus dem Wald gerodet hatten.",
+      "text_markdown": "Im Frühling und Sommer bauten sie Nahrung auf kleinen Feldern an, die sie aus dem Wald gerodet hatten.",
+      "tts": {
+        "text": "Im Frühling und Sommer bauten sie Nahrung auf kleinen Feldern an, die sie aus dem Wald gerodet hatten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie pflanzten Getreide, Bohnen und Wurzeln, die im kühlen Wetter gut gedeihen würden.",
+      "text_markdown": "Sie pflanzten Getreide, Bohnen und Wurzeln, die im kühlen Wetter gut gedeihen würden.",
+      "tts": {
+        "text": "Sie pflanzten Getreide, Bohnen und Wurzeln, die im kühlen Wetter gut gedeihen würden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst brachten sie die Ernte ein und lagerten sie für die kalten Monate.",
+      "text_markdown": "Im Herbst brachten sie die Ernte ein und lagerten sie für die kalten Monate.",
+      "tts": {
+        "text": "Im Herbst brachten sie die Ernte ein und lagerten sie für die kalten Monate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter saßen sie an ihren Feuern, flickten ihre Werkzeuge, erzählten Geschichten und warteten auf den Frühling.",
+      "text_markdown": "Im Winter saßen sie an ihren Feuern, flickten ihre Werkzeuge, erzählten Geschichten und warteten auf den Frühling.",
+      "tts": {
+        "text": "Im Winter saßen sie an ihren Feuern, flickten ihre Werkzeuge, erzählten Geschichten und warteten auf den Frühling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wald gab ihnen Holz für Feuer und zum Bauen.",
+      "text_markdown": "Der Wald gab ihnen Holz für Feuer und zum Bauen.",
+      "tts": {
+        "text": "Der Wald gab ihnen Holz für Feuer und zum Bauen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er gab ihnen Rinde und Blätter für Medizin.",
+      "text_markdown": "Er gab ihnen Rinde und Blätter für Medizin.",
+      "tts": {
+        "text": "Er gab ihnen Rinde und Blätter für Medizin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er gab ihnen Farben für Stoffe und Nahrung in jeder Jahreszeit.",
+      "text_markdown": "Er gab ihnen Farben für Stoffe und Nahrung in jeder Jahreszeit.",
+      "tts": {
+        "text": "Er gab ihnen Farben für Stoffe und Nahrung in jeder Jahreszeit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mit der Zeit wurden viele dieser Wälder gerodet, um Felder und Städte zu schaffen.",
+      "text_markdown": "Mit der Zeit wurden viele dieser Wälder gerodet, um Felder und Städte zu schaffen.",
+      "tts": {
+        "text": "Mit der Zeit wurden viele dieser Wälder gerodet, um Felder und Städte zu schaffen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aus den Dörfern wurden Städte, und aus den Städten wurden die großen Metropolen der gemäßigten Welt.",
+      "text_markdown": "Aus den Dörfern wurden Städte, und aus den Städten wurden die großen Metropolen der gemäßigten Welt.",
+      "tts": {
+        "text": "Aus den Dörfern wurden Städte, und aus den Städten wurden die großen Metropolen der gemäßigten Welt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber die Menschen kennen den Wald immer noch aus ihren Geschichten und Liedern.",
+      "text_markdown": "Aber die Menschen kennen den Wald immer noch aus ihren Geschichten und Liedern.",
+      "tts": {
+        "text": "Aber die Menschen kennen den Wald immer noch aus ihren Geschichten und Liedern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele der alten Lieder und Geschichten dieser Länder sind voller Bäume, Wölfe, Hirsche und der langen Winternächte.",
+      "text_markdown": "Viele der alten Lieder und Geschichten dieser Länder sind voller Bäume, Wölfe, Hirsche und der langen Winternächte.",
+      "tts": {
+        "text": "Viele der alten Lieder und Geschichten dieser Länder sind voller Bäume, Wölfe, Hirsche und der langen Winternächte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In jedem Laubwald hat diese Art zu leben ihre eigenen Sprachen, ihre eigenen Speisen und ihre eigenen Weisen, auf den Frühling zu warten.",
+      "text_markdown": "In jedem Laubwald hat diese Art zu leben ihre eigenen Sprachen, ihre eigenen Speisen und ihre eigenen Weisen, auf den Frühling zu warten.",
+      "tts": {
+        "text": "In jedem Laubwald hat diese Art zu leben ihre eigenen Sprachen, ihre eigenen Speisen und ihre eigenen Weisen, auf den Frühling zu warten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Wald heute",
+      "text_markdown": "Der Wald heute"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Laubwald ist eines der wichtigsten Biome für die Menschen.",
+      "text_markdown": "Der Laubwald ist eines der wichtigsten Biome für die Menschen.",
+      "tts": {
+        "text": "Der Laubwald ist eines der wichtigsten Biome für die Menschen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten großen Städte der Welt stehen an Orten, an denen einst Laubwald war.",
+      "text_markdown": "Die meisten großen Städte der Welt stehen an Orten, an denen einst Laubwald war.",
+      "tts": {
+        "text": "Die meisten großen Städte der Welt stehen an Orten, an denen einst Laubwald war.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wälder geben uns Holz zum Bauen, Papier zum Schreiben und sauberes Wasser zum Trinken.",
+      "text_markdown": "Die Wälder geben uns Holz zum Bauen, Papier zum Schreiben und sauberes Wasser zum Trinken.",
+      "tts": {
+        "text": "Die Wälder geben uns Holz zum Bauen, Papier zum Schreiben und sauberes Wasser zum Trinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume nehmen das Gas auf, das wir ausatmen, und nutzen es zum Wachsen.",
+      "text_markdown": "Die Bäume nehmen das Gas auf, das wir ausatmen, und nutzen es zum Wachsen.",
+      "tts": {
+        "text": "Die Bäume nehmen das Gas auf, das wir ausatmen, und nutzen es zum Wachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie geben das Gas zurück, das wir einatmen.",
+      "text_markdown": "Sie geben das Gas zurück, das wir einatmen.",
+      "tts": {
+        "text": "Sie geben das Gas zurück, das wir einatmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst ist der Wald einer der schönsten Anblicke auf der Erde.",
+      "text_markdown": "Im Herbst ist der Wald einer der schönsten Anblicke auf der Erde.",
+      "tts": {
+        "text": "Im Herbst ist der Wald einer der schönsten Anblicke auf der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen reisen weite Strecken, nur um die bunten Blätter zu sehen.",
+      "text_markdown": "Menschen reisen weite Strecken, nur um die bunten Blätter zu sehen.",
+      "tts": {
+        "text": "Menschen reisen weite Strecken, nur um die bunten Blätter zu sehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber der Laubwald hat viel von seinem Land verloren.",
+      "text_markdown": "Aber der Laubwald hat viel von seinem Land verloren.",
+      "tts": {
+        "text": "Aber der Laubwald hat viel von seinem Land verloren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Über Tausende von Jahren wurde ein Großteil des ursprünglichen Waldes gerodet.",
+      "text_markdown": "Über Tausende von Jahren wurde ein Großteil des ursprünglichen Waldes gerodet.",
+      "tts": {
+        "text": "Über Tausende von Jahren wurde ein Großteil des ursprünglichen Waldes gerodet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wo einst endlose Bäume waren, gibt es nun Felder, Städte, Straßen und Großstädte.",
+      "text_markdown": "Wo einst endlose Bäume waren, gibt es nun Felder, Städte, Straßen und Großstädte.",
+      "tts": {
+        "text": "Wo einst endlose Bäume waren, gibt es nun Felder, Städte, Straßen und Großstädte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die verbleibenden Wälder sind kleiner und zerstückelt.",
+      "text_markdown": "Die verbleibenden Wälder sind kleiner und zerstückelt.",
+      "tts": {
+        "text": "Die verbleibenden Wälder sind kleiner und zerstückelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu bewahren, was geblieben ist.",
+      "text_markdown": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu bewahren, was geblieben ist.",
+      "tts": {
+        "text": "Viele Gruppen auf der ganzen Welt arbeiten daran, das zu bewahren, was geblieben ist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie pflanzen neue Bäume, wo alte verloren gingen.",
+      "text_markdown": "Sie pflanzen neue Bäume, wo alte verloren gingen.",
+      "tts": {
+        "text": "Sie pflanzen neue Bäume, wo alte verloren gingen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie schützen alte Wälder vor der Rodung.",
+      "text_markdown": "Sie schützen alte Wälder vor der Rodung.",
+      "tts": {
+        "text": "Sie schützen alte Wälder vor der Rodung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie erforschen den Wald, damit wir ihn besser verstehen können.",
+      "text_markdown": "Sie erforschen den Wald, damit wir ihn besser verstehen können.",
+      "tts": {
+        "text": "Sie erforschen den Wald, damit wir ihn besser verstehen können.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein junger Wald kann in hundert Jahren nachwachsen.",
+      "text_markdown": "Ein junger Wald kann in hundert Jahren nachwachsen.",
+      "tts": {
+        "text": "Ein junger Wald kann in hundert Jahren nachwachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein alter Wald kann lebende Bäume beherbergen, die älter sind als jedes Gebäude in seiner Nähe.",
+      "text_markdown": "Ein alter Wald kann lebende Bäume beherbergen, die älter sind als jedes Gebäude in seiner Nähe.",
+      "tts": {
+        "text": "Ein alter Wald kann lebende Bäume beherbergen, die älter sind als jedes Gebäude in seiner Nähe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Der Wald heute",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist unsere Fürsorge wert.",
+      "text_markdown": "Er ist unsere Fürsorge wert.",
+      "tts": {
+        "text": "Er ist unsere Fürsorge wert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Schluss",
+      "text_markdown": "Schluss"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist der Laubwald.",
+      "text_markdown": "Das ist der Laubwald.",
+      "tts": {
+        "text": "Das ist der Laubwald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine grüne Welt aus hohen Bäumen, kühlen Bächen und vier sehr unterschiedlichen Jahreszeiten.",
+      "text_markdown": "Eine grüne Welt aus hohen Bäumen, kühlen Bächen und vier sehr unterschiedlichen Jahreszeiten.",
+      "tts": {
+        "text": "Eine grüne Welt aus hohen Bäumen, kühlen Bächen und vier sehr unterschiedlichen Jahreszeiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du jemals in einen hineingehst, bleib eine Minute lang still stehen.",
+      "text_markdown": "Wenn du jemals in einen hineingehst, bleib eine Minute lang still stehen.",
+      "tts": {
+        "text": "Wenn du jemals in einen hineingehst, bleib eine Minute lang still stehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Höre auf den Wind in den Blättern über dir.",
+      "text_markdown": "Höre auf den Wind in den Blättern über dir.",
+      "tts": {
+        "text": "Höre auf den Wind in den Blättern über dir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schau auf den weichen Teppich aus alten Blättern unter deinen Füßen.",
+      "text_markdown": "Schau auf den weichen Teppich aus alten Blättern unter deinen Füßen.",
+      "tts": {
+        "text": "Schau auf den weichen Teppich aus alten Blättern unter deinen Füßen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Schluss",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du wirst das Herz des Bioms um dich herum schlagen hören.",
+      "text_markdown": "Du wirst das Herz des Bioms um dich herum schlagen hören.",
+      "tts": {
+        "text": "Du wirst das Herz des Bioms um dich herum schlagen hören.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

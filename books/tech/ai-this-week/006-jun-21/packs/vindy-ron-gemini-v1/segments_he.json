@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "he",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ברוכים הבאים ל-AI השבוע.",
+      "text_markdown": "ברוכים הבאים ל-AI השבוע.",
+      "title": "",
+      "tts": {
+        "text": "ברוכים הבאים ל-AI השבוע.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "וינדי, זאת אני.",
+      "text_markdown": "וינדי, זאת אני.",
+      "title": "",
+      "tts": {
+        "text": "וינדי, זאת אני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "איתי, כרגיל, רון.",
+      "text_markdown": "איתי, כרגיל, רון.",
+      "title": "",
+      "tts": {
+        "text": "איתי, כרגיל, רון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "טוב להיות כאן, וינדי.",
+      "text_markdown": "טוב להיות כאן, וינדי.",
+      "title": "",
+      "tts": {
+        "text": "טוב להיות כאן, וינדי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "היום יום ראשון, 21 ביוני 2026.",
+      "text_markdown": "היום יום ראשון, 21 ביוני 2026.",
+      "title": "",
+      "tts": {
+        "text": "היום יום ראשון, עשרים ואחד ביוני, אלפיים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בשבוע שעבר דיברנו על עצמנו; היום אנחנו הולכים לכיוון השני – כל הדרך אל מוקדי הכוח.",
+      "text_markdown": "בשבוע שעבר דיברנו על עצמנו; היום אנחנו הולכים לכיוון השני – כל הדרך אל מוקדי הכוח.",
+      "title": "",
+      "tts": {
+        "text": "בשבוע שעבר דיברנו על עצמנו; היום אנחנו הולכים לכיוון השני – כל הדרך אל מוקדי הכוח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מי שולט בפריסת AI, מי משלם על ההרחבה, מי הבעלים של הסיליקון.",
+      "text_markdown": "מי שולט בפריסת AI, מי משלם על ההרחבה, מי הבעלים של הסיליקון.",
+      "title": "",
+      "tts": {
+        "text": "מי שולט בפריסת AI, מי משלם על ההרחבה, מי הבעלים של הסיליקון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בהמשך – משרד המסחר האמריקאי משך מודל אמריקאי משימוש ציבורי ביום שישי האחרון, ואנחנו נתחיל שם.",
+      "text_markdown": "בהמשך – משרד המסחר האמריקאי משך מודל אמריקאי משימוש ציבורי ביום שישי האחרון, ואנחנו נתחיל שם.",
+      "title": "",
+      "tts": {
+        "text": "בהמשך – משרד המסחר האמריקאי משך מודל אמריקאי משימוש ציבורי ביום שישי האחרון, ואנחנו נתחיל שם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "לאחר מכן, הרחבת מרכזי הנתונים, שם ההכרזות והמציאות בשטח אינן תואמות.",
+      "text_markdown": "לאחר מכן, הרחבת מרכזי הנתונים, שם ההכרזות והמציאות בשטח אינן תואמות.",
+      "title": "",
+      "tts": {
+        "text": "לאחר מכן, הרחבת מרכזי הנתונים, שם ההכרזות והמציאות בשטח אינן תואמות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "לאחר מכן, ההשוואה בין ארה\"ב לסין, כשהקלישאה מוחלפת באילוץ המגביל האמיתי.",
+      "text_markdown": "לאחר מכן, ההשוואה בין ארה\"ב לסין, כשהקלישאה מוחלפת באילוץ המגביל האמיתי.",
+      "title": "",
+      "tts": {
+        "text": "לאחר מכן, ההשוואה בין ארה\"ב לסין, כשהקלישאה מוחלפת באילוץ המגביל האמיתי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ומושג השבוע – שורה אחת במאזן של אורקל שאומרת לכם כמעט הכל.",
+      "text_markdown": "ומושג השבוע – שורה אחת במאזן של אורקל שאומרת לכם כמעט הכל.",
+      "title": "",
+      "tts": {
+        "text": "ומושג השבוע – שורה אחת במאזן של אורקל שאומרת לכם כמעט הכל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "רון, בואו נתחיל עם Anthropic.",
+      "text_markdown": "רון, בואו נתחיל עם Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "רון, בואו נתחיל עם Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה קרה ב-12 ביוני.",
+      "text_markdown": "מה קרה ב-12 ביוני.",
+      "title": "",
+      "tts": {
+        "text": "מה קרה בשנים עשר ביוני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בשעה 17:21 בערב שעון מזרח ביום שישי, 12 ביוני, Anthropic הורידה את שני המודלים החדשים ביותר שלה – Claude Mythos 5 ו-Claude Fable 5 – מהרשת.",
+      "text_markdown": "בשעה 17:21 בערב שעון מזרח ביום שישי, 12 ביוני, Anthropic הורידה את שני המודלים החדשים ביותר שלה – Claude Mythos 5 ו-Claude Fable 5 – מהרשת.",
+      "title": "",
+      "tts": {
+        "text": "בשעה חמש עשרים ואחת בערב שעון מזרח ביום שישי, שנים עשר ביוני, Anthropic הורידה את שני המודלים החדשים ביותר שלה – Claude Mythos חמש ו-Claude Fable חמש – מהרשת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "לא לצורך תחזוקה, לא לבדיקת בטיחות ביוזמתם.",
+      "text_markdown": "לא לצורך תחזוקה, לא לבדיקת בטיחות ביוזמתם.",
+      "title": "",
+      "tts": {
+        "text": "לא לצורך תחזוקה, לא לבדיקת בטיחות ביוזמתם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הם הורידו אותם מכיוון שמשרד המסחר האמריקאי הוציא הנחיה המצטטת בקרת יצוא.",
+      "text_markdown": "הם הורידו אותם מכיוון שמשרד המסחר האמריקאי הוציא הנחיה המצטטת בקרת יצוא.",
+      "title": "",
+      "tts": {
+        "text": "הם הורידו אותם מכיוון שמשרד המסחר האמריקאי הוציא הנחיה המצטטת בקרת יצוא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה הייתה הסיבה הטכנית.",
+      "text_markdown": "מה הייתה הסיבה הטכנית.",
+      "title": "",
+      "tts": {
+        "text": "מה הייתה הסיבה הטכנית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הודגמה פריצת אבטחה (jailbreak), לכאורה על ידי חברה אחרת, שהפיקה פלט שמשרד המסחר ראה בו כפוף לבקרת יצוא.",
+      "text_markdown": "הודגמה פריצת אבטחה (jailbreak), לכאורה על ידי חברה אחרת, שהפיקה פלט שמשרד המסחר ראה בו כפוף לבקרת יצוא.",
+      "title": "",
+      "tts": {
+        "text": "הודגמה פריצת אבטחה, לכאורה על ידי חברה אחרת, שהפיקה פלט שמשרד המסחר ראה בו כפוף לבקרת יצוא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מגזין Fortune דיווח שאמזון היא זו שהתריעה על כך לבית הלבן.",
+      "text_markdown": "מגזין Fortune דיווח שאמזון היא זו שהתריעה על כך לבית הלבן.",
+      "title": "",
+      "tts": {
+        "text": "מגזין Fortune דיווח שאמזון היא זו שהתריעה על כך לבית הלבן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "וכיצד הגיבה Anthropic.",
+      "text_markdown": "וכיצד הגיבה Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "וכיצד הגיבה Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Anthropic חולקת בפומבי על ההיגיון.",
+      "text_markdown": "Anthropic חולקת בפומבי על ההיגיון.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic חולקת בפומבי על ההיגיון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ההצהרה שלהם כינתה את פריצת האבטחה – ואני מצטט – \"צרה, לא אוניברסלית\", והוסיפה שאותו פלט זמין ממודלים אחרים, כולל GPT-5.5 של OpenAI.",
+      "text_markdown": "ההצהרה שלהם כינתה את פריצת האבטחה – ואני מצטט – \"צרה, לא אוניברסלית\", והוסיפה שאותו פלט זמין ממודלים אחרים, כולל GPT-5.5 של OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "ההצהרה שלהם כינתה את פריצת האבטחה – ואני מצטט – \"צרה, לא אוניברסלית\", והוסיפה שאותו פלט זמין ממודלים אחרים, כולל ג'י-פי-טי חמש נקודה חמש של OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שורת הסיכום שלהם: \"פעולת הממשלה מבוססת על אי הבנה.\"",
+      "text_markdown": "שורת הסיכום שלהם: \"פעולת הממשלה מבוססת על אי הבנה.\"",
+      "title": "",
+      "tts": {
+        "text": "שורת הסיכום שלהם: \"פעולת הממשלה מבוססת על אי הבנה.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "זוהי מחלוקת ישירה באופן יוצא דופן עם ממשלת ארה\"ב עבור מעבדת AI.",
+      "text_markdown": "זוהי מחלוקת ישירה באופן יוצא דופן עם ממשלת ארה\"ב עבור מעבדת AI.",
+      "title": "",
+      "tts": {
+        "text": "זוהי מחלוקת ישירה באופן יוצא דופן עם ממשלת ארה\"ב עבור מעבדת AI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אכן, והעובדה המבנית שמאחוריה היא הכותרת.",
+      "text_markdown": "אכן, והעובדה המבנית שמאחוריה היא הכותרת.",
+      "title": "",
+      "tts": {
+        "text": "אכן, והעובדה המבנית שמאחוריה היא הכותרת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "משרד המסחר יכול כעת להורות למעבדת AI אמריקאית פרטית להוריד מודל מהרשת, תוך ציון בקרת יצוא, וההוראה הזו מגיעה תוך 72 שעות.",
+      "text_markdown": "משרד המסחר יכול כעת להורות למעבדת AI אמריקאית פרטית להוריד מודל מהרשת, תוך ציון בקרת יצוא, וההוראה הזו מגיעה תוך 72 שעות.",
+      "title": "",
+      "tts": {
+        "text": "משרד המסחר יכול כעת להורות למעבדת AI אמריקאית פרטית להוריד מודל מהרשת, תוך ציון בקרת יצוא, וההוראה הזו מגיעה תוך שבעים ושתיים שעות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+      "text_markdown": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+      "title": "",
+      "tts": {
+        "text": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+      "text_markdown": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+      "title": "",
+      "tts": {
+        "text": "בין אם אתם חושבים שההוראה הייתה נכונה ובין אם לא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הסמכות עצמה, המהירות והתקדים הם מה שחשוב.",
+      "text_markdown": "הסמכות עצמה, המהירות והתקדים הם מה שחשוב.",
+      "title": "",
+      "tts": {
+        "text": "הסמכות עצמה, המהירות והתקדים הם מה שחשוב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ותפקידה של אמזון כאן.",
+      "text_markdown": "ותפקידה של אמזון כאן.",
+      "title": "",
+      "tts": {
+        "text": "ותפקידה של אמזון כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זה החלק שצריך לשים לב אליו.",
+      "text_markdown": "זה החלק שצריך לשים לב אליו.",
+      "title": "",
+      "tts": {
+        "text": "זה החלק שצריך לשים לב אליו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אמזון היא משקיעה גדולה באנתרופיק וגם מתחרה באנתרופיק בשוק מודלי היסוד באמצעות עבודתה שלה.",
+      "text_markdown": "אמזון היא משקיעה גדולה באנתרופיק וגם מתחרה באנתרופיק בשוק מודלי היסוד באמצעות עבודתה שלה.",
+      "title": "",
+      "tts": {
+        "text": "אמזון היא משקיעה גדולה באנתרופיק וגם מתחרה באנתרופיק בשוק מודלי היסוד באמצעות עבודתה שלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אם אזהרה של מתחרה לממשלה יכולה להשבית מודל של יריבה בסוף שבוע ארוך, זו צורה חדשה לדינמיקת התעשייה.",
+      "text_markdown": "אם אזהרה של מתחרה לממשלה יכולה להשבית מודל של יריבה בסוף שבוע ארוך, זו צורה חדשה לדינמיקת התעשייה.",
+      "title": "",
+      "tts": {
+        "text": "אם אזהרה של מתחרה לממשלה יכולה להשבית מודל של יריבה בסוף שבוע ארוך, זו צורה חדשה לדינמיקת התעשייה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בואו נעבור לפריסה.",
+      "text_markdown": "בואו נעבור לפריסה.",
+      "title": "",
+      "tts": {
+        "text": "בואו נעבור לפריסה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "סטארגייט — יוזמת מרכזי הנתונים של OpenAI, אורקל וסופטבנק.",
+      "text_markdown": "סטארגייט — יוזמת מרכזי הנתונים של OpenAI, אורקל וסופטבנק.",
+      "title": "",
+      "tts": {
+        "text": "סטארגייט — יוזמת מרכזי הנתונים של OpenAI, אורקל וסופטבנק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מהם המספרים בפועל.",
+      "text_markdown": "מהם המספרים בפועל.",
+      "title": "",
+      "tts": {
+        "text": "מהם המספרים בפועל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "סטארגייט הכריזה על אחד עשר גיגה-וואט של קיבולת בארה\"ב.",
+      "text_markdown": "סטארגייט הכריזה על אחד עשר גיגה-וואט של קיבולת בארה\"ב.",
+      "title": "",
+      "tts": {
+        "text": "סטארגייט הכריזה על אחד עשר גיגה וואט של קיבולת בארצות הברית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "נכון לאמצע יוני, כמאתיים מגה-וואט פעילים, באתר אבילין טקסס, שלב א'.",
+      "text_markdown": "נכון לאמצע יוני, כמאתיים מגה-וואט פעילים, באתר אבילין טקסס, שלב א'.",
+      "title": "",
+      "tts": {
+        "text": "נכון לאמצע יוני, כשתי מאות מגה וואט פעילים, באתר אבילין טקסס, שלב א'.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אחד עשר גיגה-וואט הוכרזו, מאתיים מגה-וואט חוברו.",
+      "text_markdown": "אחד עשר גיגה-וואט הוכרזו, מאתיים מגה-וואט חוברו.",
+      "title": "",
+      "tts": {
+        "text": "אחד עשר גיגה וואט הוכרזו, מאתיים מגה וואט חוברו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "זה כל הפער בשורה אחת.",
+      "text_markdown": "זה כל הפער בשורה אחת.",
+      "title": "",
+      "tts": {
+        "text": "זה כל הפער בשורה אחת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כן, והדוגמה הברורה ביותר נמצאת בניו מקסיקו.",
+      "text_markdown": "כן, והדוגמה הברורה ביותר נמצאת בניו מקסיקו.",
+      "title": "",
+      "tts": {
+        "text": "כן, והדוגמה הברורה ביותר נמצאת בניו מקסיקו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אתר מחוז דוניה אנה הוא קמפוס סטארגייט היחיד הגדול ביותר, המתוכנן לארבעה וחצי גיגה-וואט.",
+      "text_markdown": "אתר מחוז דוניה אנה הוא קמפוס סטארגייט היחיד הגדול ביותר, המתוכנן לארבעה וחצי גיגה-וואט.",
+      "title": "",
+      "tts": {
+        "text": "אתר מחוז דוניה אנה הוא קמפוס סטארגייט היחיד הגדול ביותר, המתוכנן לארבעה וחצי גיגה וואט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שמונה עשר מיליארד דולר של מימון פרויקטים מסונדק כבר קיימים — סומיטומו מיצואי, BNP פריבה, גולדמן זאקס, MUFG — בתוספת שלושה מיליארד דולר הון עצמי מבלו אאול.",
+      "text_markdown": "שמונה עשר מיליארד דולר של מימון פרויקטים מסונדק כבר קיימים — סומיטומו מיצואי, BNP פריבה, גולדמן זאקס, MUFG — בתוספת שלושה מיליארד דולר הון עצמי מבלו אאול.",
+      "title": "",
+      "tts": {
+        "text": "שמונה עשר מיליארד דולר של מימון פרויקטים מסונדק כבר קיימים — סומיטומו מיצואי, בי אן פי פריבה, גולדמן זאקס, אם יו אף ג'י — בתוספת שלושה מיליארד דולר הון עצמי מבלו אאול.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ומה מצב הבנייה בשטח.",
+      "text_markdown": "ומה מצב הבנייה בשטח.",
+      "title": "",
+      "tts": {
+        "text": "ומה מצב הבנייה בשטח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אפס אתים באדמה עד כה.",
+      "text_markdown": "אפס אתים באדמה עד כה.",
+      "title": "",
+      "tts": {
+        "text": "אפס אתים באדמה עד כה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "האתר ממתין להיתר איכות אוויר ממשרד הסביבה של ניו מקסיקו, שצפוי היה במקור לעשרים ושניים באפריל, וכעת נדחה לעשרים ואחד ביולי לאחר יותר משבעת אלפים תגובות ציבוריות.",
+      "text_markdown": "האתר ממתין להיתר איכות אוויר ממשרד הסביבה של ניו מקסיקו, שצפוי היה במקור לעשרים ושניים באפריל, וכעת נדחה לעשרים ואחד ביולי לאחר יותר משבעת אלפים תגובות ציבוריות.",
+      "title": "",
+      "tts": {
+        "text": "האתר ממתין להיתר איכות אוויר ממשרד הסביבה של ניו מקסיקו, שצפוי היה במקור לעשרים ושניים באפריל, וכעת נדחה לעשרים ואחד ביולי לאחר יותר משבעת אלפים תגובות ציבוריות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שמונה עשר מיליארד דולר התחייבו, אפס אתים באדמה, מועד אחרון אחד להיתר איכות אוויר.",
+      "text_markdown": "שמונה עשר מיליארד דולר התחייבו, אפס אתים באדמה, מועד אחרון אחד להיתר איכות אוויר.",
+      "title": "",
+      "tts": {
+        "text": "שמונה עשר מיליארד דולר התחייבו, אפס אתים באדמה, מועד אחרון אחד להיתר איכות אוויר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מי יישא בנטל אם המספרים לא יסתדרו.",
+      "text_markdown": "מי יישא בנטל אם המספרים לא יסתדרו.",
+      "title": "",
+      "tts": {
+        "text": "מי יישא בנטל אם המספרים לא יסתדרו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כאן אורקל נהיית מעניינת.",
+      "text_markdown": "כאן אורקל נהיית מעניינת.",
+      "title": "",
+      "tts": {
+        "text": "כאן אורקל נהיית מעניינת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "התחייבויות הביצוע הנותרות של אורקל — השורה החשבונאית שמתעדת הכנסות שהוזמנו אך טרם סופקו — הגיעו לחמש מאות חמישים ושלושה מיליארד דולר ברבעון השלישי של שנת הכספים עשרים עשרים ושש.",
+      "text_markdown": "התחייבויות הביצוע הנותרות של אורקל — השורה החשבונאית שמתעדת הכנסות שהוזמנו אך טרם סופקו — הגיעו לחמש מאות חמישים ושלושה מיליארד דולר ברבעון השלישי של שנת הכספים עשרים עשרים ושש.",
+      "title": "",
+      "tts": {
+        "text": "התחייבויות הביצוע הנותרות של אורקל — השורה החשבונאית שמתעדת הכנסות שהוזמנו אך טרם סופקו — הגיעו לחמש מאות חמישים ושלושה מיליארד דולר ברבעון השלישי של שנת הכספים עשרים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זהו גידול של שלוש מאות עשרים וחמישה אחוזים משנה לשנה, ורוב הגידול הזה מזוהה בפומבי עם OpenAI וסטארגייט.",
+      "text_markdown": "זהו גידול של שלוש מאות עשרים וחמישה אחוזים משנה לשנה, ורוב הגידול הזה מזוהה בפומבי עם OpenAI וסטארגייט.",
+      "title": "",
+      "tts": {
+        "text": "זהו גידול של שלוש מאות עשרים וחמישה אחוזים משנה לשנה, ורוב הגידול הזה מזוהה בפומבי עם OpenAI וסטארגייט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "וצד החוב.",
+      "text_markdown": "וצד החוב.",
+      "title": "",
+      "tts": {
+        "text": "וצד החוב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "סך ההלוואות הגיע למאה שלושים וארבעה נקודה שישה מיליארד דולר נכון לעשרים ושמונה בפברואר.",
+      "text_markdown": "סך ההלוואות הגיע למאה שלושים וארבעה נקודה שישה מיליארד דולר נכון לעשרים ושמונה בפברואר.",
+      "title": "",
+      "tts": {
+        "text": "סך ההלוואות הגיע למאה שלושים וארבעה נקודה שישה מיליארד דולר נכון לעשרים ושמונה בפברואר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אורקל גייסה שלושים מיליארד בפברואר לבדו — אגרות חוב בדירוג השקעה בתוספת מניות בכורה המירות חובה — והנפיקה ארבעים ושלושה מיליארד דולר של אגרות חוב בכירות חדשות במהלך תקופה של תשעה חודשים.",
+      "text_markdown": "אורקל גייסה שלושים מיליארד בפברואר לבדו — אגרות חוב בדירוג השקעה בתוספת מניות בכורה המירות חובה — והנפיקה ארבעים ושלושה מיליארד דולר של אגרות חוב בכירות חדשות במהלך תקופה של תשעה חודשים.",
+      "title": "",
+      "tts": {
+        "text": "אורקל גייסה שלושים מיליארד בפברואר לבדו — אגרות חוב בדירוג השקעה בתוספת מניות בכורה המירות חובה — והנפיקה ארבעים ושלושה מיליארד דולר של אגרות חוב בכירות חדשות במהלך תקופה של תשעה חודשים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז בואו נסכם את המצב.",
+      "text_markdown": "אז בואו נסכם את המצב.",
+      "title": "",
+      "tts": {
+        "text": "אז בואו נסכם את המצב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "חמש מאות חמישים ושלושה מיליארד דולר בהבטחות, מאה שלושים וארבעה מיליארד דולר בחובות, ולקוח גדול אחד שנושא ברוב הסיכון.",
+      "text_markdown": "חמש מאות חמישים ושלושה מיליארד דולר בהבטחות, מאה שלושים וארבעה מיליארד דולר בחובות, ולקוח גדול אחד שנושא ברוב הסיכון.",
+      "title": "",
+      "tts": {
+        "text": "חמש מאות חמישים ושלושה מיליארד דולר בהבטחות, מאה שלושים וארבעה מיליארד דולר בחובות, ולקוח גדול אחד שנושא ברוב הסיכון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "זוהי מבנה הפריסה במשפט אחד.",
+      "text_markdown": "זוהי מבנה הפריסה במשפט אחד.",
+      "title": "",
+      "tts": {
+        "text": "זוהי מבנה הפריסה במשפט אחד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בואו נעבור להשוואה בין ארה\"ב לסין.",
+      "text_markdown": "בואו נעבור להשוואה בין ארה\"ב לסין.",
+      "title": "",
+      "tts": {
+        "text": "בואו נעבור להשוואה בין ארצות הברית לסין.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "הקלישאה היא שסין מפגרת במספר חודשים.",
+      "text_markdown": "הקלישאה היא שסין מפגרת במספר חודשים.",
+      "title": "",
+      "tts": {
+        "text": "הקלישאה היא שסין מפגרת במספר חודשים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הקלישאה שגויה כי היא מודדת את הדבר הלא נכון.",
+      "text_markdown": "הקלישאה שגויה כי היא מודדת את הדבר הלא נכון.",
+      "title": "",
+      "tts": {
+        "text": "הקלישאה שגויה כי היא מודדת את הדבר הלא נכון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ביום שני, התשיעי ביוני, בלומברג דיווחה על טיוטת תוכנית סינית מהוועדה הלאומית לפיתוח ורפורמה — שני טריליון יואן, כמאתיים תשעים וחמישה מיליארד דולר, עבור רשת מרכזי נתונים ארצית של AI עד שנת עשרים עשרים ושמונה.",
+      "text_markdown": "ביום שני, התשיעי ביוני, בלומברג דיווחה על טיוטת תוכנית סינית מהוועדה הלאומית לפיתוח ורפורמה — שני טריליון יואן, כמאתיים תשעים וחמישה מיליארד דולר, עבור רשת מרכזי נתונים ארצית של AI עד שנת עשרים עשרים ושמונה.",
+      "title": "",
+      "tts": {
+        "text": "ביום שני, התשיעי ביוני, בלומברג דיווחה על טיוטת תוכנית סינית מהוועדה הלאומית לפיתוח ורפורמה — שני טריליון יואן, כמאתיים תשעים וחמישה מיליארד דולר, עבור רשת מרכזי נתונים ארצית של איי איי עד שנת עשרים עשרים ושמונה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "התוכנית מחייבת שמונים אחוז סיליקון מקומי ותופעל כרשת מחשוב מקושרת אחת על ידי צ'יינה מובייל וצ'יינה טלקום.",
+      "text_markdown": "התוכנית מחייבת שמונים אחוז סיליקון מקומי ותופעל כרשת מחשוב מקושרת אחת על ידי צ'יינה מובייל וצ'יינה טלקום.",
+      "title": "",
+      "tts": {
+        "text": "התוכנית מחייבת שמונים אחוז סיליקון מקומי ותופעל כרשת מחשוב מקושרת אחת על ידי צ'יינה מובייל וצ'יינה טלקום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ואיפה הקאץ' בתוכנית הזו.",
+      "text_markdown": "ואיפה הקאץ' בתוכנית הזו.",
+      "title": "",
+      "tts": {
+        "text": "ואיפה הקאץ' בתוכנית הזו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שני טריליון יואן, שמונים אחוז סיליקון מקומי, מועד יעד עשרים עשרים ושמונה — והקאץ' הוא שהאילוץ המגביל אינו שבבי לוגיקה, אלא זיכרון ברוחב פס גבוה.",
+      "text_markdown": "שני טריליון יואן, שמונים אחוז סיליקון מקומי, מועד יעד עשרים עשרים ושמונה — והקאץ' הוא שהאילוץ המגביל אינו שבבי לוגיקה, אלא זיכרון ברוחב פס גבוה.",
+      "title": "",
+      "tts": {
+        "text": "שני טריליון יואן, שמונים אחוז סיליקון מקומי, מועד יעד עשרים עשרים ושמונה — והקאץ' הוא שהאילוץ המגביל אינו שבבי לוגיקה, אלא זיכרון ברוחב פס גבוה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "תסביר לנו את זה.",
+      "text_markdown": "תסביר לנו את זה.",
+      "title": "",
+      "tts": {
+        "text": "תסביר לנו את זה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כל מאיץ AI זקוק לערימות HBM המחוברות למות הלוגיקה.",
+      "text_markdown": "כל מאיץ AI זקוק לערימות HBM המחוברות למות הלוגיקה.",
+      "title": "",
+      "tts": {
+        "text": "כל מאיץ איי איי זקוק לערימות אייץ' בי אם המחוברות למות הלוגיקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ללא HBM, השבב הוא משקולת נייר.",
+      "text_markdown": "ללא HBM, השבב הוא משקולת נייר.",
+      "title": "",
+      "tts": {
+        "text": "ללא אייץ' בי אם, השבב הוא משקולת נייר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "סין צברה במלאי כשלושה עשר מיליון ערימות HBM לפני שנסגרו בקרות הייצוא — אחד עשר נקודה ארבעה מיליון מסמסונג לבדה.",
+      "text_markdown": "סין צברה במלאי כשלושה עשר מיליון ערימות HBM לפני שנסגרו בקרות הייצוא — אחד עשר נקודה ארבעה מיליון מסמסונג לבדה.",
+      "title": "",
+      "tts": {
+        "text": "סין צברה במלאי כשלושה עשר מיליון ערימות אייץ' בי אם לפני שנסגרו בקרות הייצוא — אחד עשר נקודה ארבעה מיליון מסמסונג לבדה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ביחסי אריזה של Huawei Ascend תשע-עשר C, מלאי זה מספיק לכמיליון ושישה מאות אלף שבבים.",
+      "text_markdown": "ביחסי אריזה של Huawei Ascend תשע-עשר C, מלאי זה מספיק לכמיליון ושישה מאות אלף שבבים.",
+      "title": "",
+      "tts": {
+        "text": "ביחסי אריזה של Huawei Ascend תשע עשר סי, מלאי זה מספיק לכמיליון ושישה מאות אלף שבבים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ואז האספקה נגמרת.",
+      "text_markdown": "ואז האספקה נגמרת.",
+      "title": "",
+      "tts": {
+        "text": "ואז האספקה נגמרת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ואז האספקה נגמרת — שלושה עשר מיליון ערימות HBM, מספיק למיליון ושישה מאות אלף שבבים, וזוהי התקרה.",
+      "text_markdown": "ואז האספקה נגמרת — שלושה עשר מיליון ערימות HBM, מספיק למיליון ושישה מאות אלף שבבים, וזוהי התקרה.",
+      "title": "",
+      "tts": {
+        "text": "ואז האספקה נגמרת — שלושה עשר מיליון ערימות אייץ' בי אם, מספיק למיליון ושישה מאות אלף שבבים, וזוהי התקרה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "HBM סיני מקומי, מבית CXMT, צפוי להגיע לכשני מיליון ערימות בשנת עשרים עשרים ושש — מספיק אולי למאתיים חמישים עד שלוש מאות אלף מאיצים.",
+      "text_markdown": "HBM סיני מקומי, מבית CXMT, צפוי להגיע לכשני מיליון ערימות בשנת עשרים עשרים ושש — מספיק אולי למאתיים חמישים עד שלוש מאות אלף מאיצים.",
+      "title": "",
+      "tts": {
+        "text": "אייץ' בי אם סיני מקומי, מבית סי אקס אם טי, צפוי להגיע לכשני מיליון ערימות בשנת עשרים עשרים ושש — מספיק אולי למאתיים חמישים עד שלוש מאות אלף מאיצים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז תוכניות הסיליקון של וואווי נראות איך?",
+      "text_markdown": "אז תוכניות הסיליקון של וואווי נראות איך?",
+      "title": "",
+      "tts": {
+        "text": "אז תוכניות הסיליקון של וואווי נראות איך?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בלומברג, בציטוט תוכניות וואווי, העריכה את התפוקה לשנת עשרים עשרים ושש בשישה מאות אלף שבבי תשע-עשר C, כאשר קו המוצרים הרחב יותר של Ascend מגיע עד למיליון ושישה מאות אלף מות בסך הכל.",
+      "text_markdown": "בלומברג, בציטוט תוכניות וואווי, העריכה את התפוקה לשנת עשרים עשרים ושש בשישה מאות אלף שבבי תשע-עשר C, כאשר קו המוצרים הרחב יותר של Ascend מגיע עד למיליון ושישה מאות אלף מות בסך הכל.",
+      "title": "",
+      "tts": {
+        "text": "בלומברג, בציטוט תוכניות וואווי, העריכה את התפוקה לשנת עשרים עשרים ושש בשישה מאות אלף שבבי תשע עשר סי, כאשר קו המוצרים הרחב יותר של Ascend מגיע עד למיליון ושישה מאות אלף מות בסך הכל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "המספר הזה, שש מאות אלף, הוא יעד, לא תפוקה שנשלחה.",
+      "text_markdown": "המספר הזה, שש מאות אלף, הוא יעד, לא תפוקה שנשלחה.",
+      "title": "",
+      "tts": {
+        "text": "המספר הזה, שש מאות אלף, הוא יעד, לא תפוקה שנשלחה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ובנפרד, לפני שבקרות הייצוא ניתקו אותם, וואווי צברה יותר משני מיליון ותשע מאות אלף מות Ascend שיוצרו ב-TSMC באמצעות חברות קש Sophgo ו-Bitmain.",
+      "text_markdown": "ובנפרד, לפני שבקרות הייצוא ניתקו אותם, וואווי צברה יותר משני מיליון ותשע מאות אלף מות Ascend שיוצרו ב-TSMC באמצעות חברות קש Sophgo ו-Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "ובנפרד, לפני שבקרות הייצוא ניתקו אותם, וואווי צברה יותר משני מיליון ותשע מאות אלף מות Ascend שיוצרו ב-טי אס אם סי באמצעות חברות קש Sophgo ו-Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בנרטיב של עבודת בקרת הייצוא יש חור של שני מיליון ותשע מאות אלף מתים.",
+      "text_markdown": "בנרטיב של עבודת בקרת הייצוא יש חור של שני מיליון ותשע מאות אלף מתים.",
+      "title": "",
+      "tts": {
+        "text": "בנרטיב של עבודת בקרת הייצוא יש חור של שני מיליון ותשע מאות אלף מתים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בואו נעבור על הכותרות, בקליפ מהיר.",
+      "text_markdown": "בואו נעבור על הכותרות, בקליפ מהיר.",
+      "title": "",
+      "tts": {
+        "text": "בואו נעבור על הכותרות, בקליפ מהיר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "הכותרת הראשונה השבוע, ברודקום.",
+      "text_markdown": "הכותרת הראשונה השבוע, ברודקום.",
+      "title": "",
+      "tts": {
+        "text": "הכותרת הראשונה השבוע, ברודקום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שווי השוק של ברודקום עומד על כשני טריליון דולר.",
+      "text_markdown": "שווי השוק של ברודקום עומד על כשני טריליון דולר.",
+      "title": "",
+      "tts": {
+        "text": "שווי השוק של ברודקום עומד על כשני טריליון דולר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מנכ\"ל החברה, הוק טאן, חזר והדגיש יעד הכנסות של 100 מיליארד דולר ממוליכים למחצה של AI לשנת הכספים 2027 בשיחת הרווחים של ה-3 ביוני, מגובה בכ-73 מיליארד דולר בצבר הזמנות של AI ובהסכמים ארוכי טווח עם אלפבית ומטא המשתרעים עד 2031.",
+      "text_markdown": "מנכ\"ל החברה, הוק טאן, חזר והדגיש יעד הכנסות של 100 מיליארד דולר ממוליכים למחצה של AI לשנת הכספים 2027 בשיחת הרווחים של ה-3 ביוני, מגובה בכ-73 מיליארד דולר בצבר הזמנות של AI ובהסכמים ארוכי טווח עם אלפבית ומטא המשתרעים עד 2031.",
+      "title": "",
+      "tts": {
+        "text": "מנכ\"ל החברה, הוק טאן, חזר והדגיש יעד הכנסות של מאה מיליארד דולר ממוליכים למחצה של AI לשנת הכספים אלפיים עשרים ושבע בשיחת הרווחים של השלישי ביוני, מגובה בכשבעים ושלושה מיליארד דולר בצבר הזמנות של AI ובהסכמים ארוכי טווח עם אלפבית ומטא המשתרעים עד אלפיים שלושים ואחת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שווי שוק של שני טריליון דולר, יעד הכנסות של מאה מיליארד דולר מ-A.I., כמעט ללא זיהוי מותג קמעונאי.",
+      "text_markdown": "שווי שוק של שני טריליון דולר, יעד הכנסות של מאה מיליארד דולר מ-A.I., כמעט ללא זיהוי מותג קמעונאי.",
+      "title": "",
+      "tts": {
+        "text": "שווי שוק של שני טריליון דולר, יעד הכנסות של מאה מיליארד דולר מאיי איי, כמעט ללא זיהוי מותג קמעונאי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "הכותרת השנייה השבוע, ASML.",
+      "text_markdown": "הכותרת השנייה השבוע, ASML.",
+      "title": "",
+      "tts": {
+        "text": "הכותרת השנייה השבוע, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ASML, החברה ההולנדית שבּונה את מכונות הליטוגרפיה שכל הלוגיקה המתקדמת תלויה בהן, מוכרת את מערכת ה-High-N.A. E.U.V. שלה בכשלוש מאות ושבעים מיליון דולר.",
+      "text_markdown": "ASML, החברה ההולנדית שבּונה את מכונות הליטוגרפיה שכל הלוגיקה המתקדמת תלויה בהן, מוכרת את מערכת ה-High-N.A. E.U.V. שלה בכשלוש מאות ושבעים מיליון דולר.",
+      "title": "",
+      "tts": {
+        "text": "ASML, החברה ההולנדית שבּונה את מכונות הליטוגרפיה שכל הלוגיקה המתקדמת תלויה בהן, מוכרת את מערכת ה-High-אן איי אי יו וי שלה בכשלוש מאות ושבעים מיליון דולר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כושר הייצור העולמי הוא פחות מעשרים יחידות בשנה.",
+      "text_markdown": "כושר הייצור העולמי הוא פחות מעשרים יחידות בשנה.",
+      "title": "",
+      "tts": {
+        "text": "כושר הייצור העולמי הוא פחות מעשרים יחידות בשנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שלוש מאות ושבעים מיליון דולר למכונה, פחות מעשרים מכונות בשנה, חברה אחת מייצרת אותן — זהו צוואר הבקבוק האמיתי בסיליקון העולמי, לא מדיניות.",
+      "text_markdown": "שלוש מאות ושבעים מיליון דולר למכונה, פחות מעשרים מכונות בשנה, חברה אחת מייצרת אותן — זהו צוואר הבקבוק האמיתי בסיליקון העולמי, לא מדיניות.",
+      "title": "",
+      "tts": {
+        "text": "שלוש מאות ושבעים מיליון דולר למכונה, פחות מעשרים מכונות בשנה, חברה אחת מייצרת אותן — זהו צוואר הבקבוק האמיתי בסיליקון העולמי, לא מדיניות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "הכותרת השלישית השבוע, בקרות ייצוא.",
+      "text_markdown": "הכותרת השלישית השבוע, בקרות ייצוא.",
+      "title": "",
+      "tts": {
+        "text": "הכותרת השלישית השבוע, בקרות ייצוא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "משרד המסחר ביטל את כלל ה-A.I. Diffusion מתקופת ביידן ביום השלושה עשר במאי, עשרים עשרים וחמש, ולא פרסם הבהרה חדשה לאכיפת B.I.S. עד ליום השלושים ואחד במאי, עשרים עשרים ושש.",
+      "text_markdown": "משרד המסחר ביטל את כלל ה-A.I. Diffusion מתקופת ביידן ביום השלושה עשר במאי, עשרים עשרים וחמש, ולא פרסם הבהרה חדשה לאכיפת B.I.S. עד ליום השלושים ואחד במאי, עשרים עשרים ושש.",
+      "title": "",
+      "tts": {
+        "text": "משרד המסחר ביטל את כלל ה-איי איי Diffusion מתקופת ביידן ביום השלושה עשר במאי, עשרים עשרים וחמש, ולא פרסם הבהרה חדשה לאכיפת בי איי אס עד ליום השלושים ואחד במאי, עשרים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זוהי תקופה של כשנה שבה דרישות הרישוי לא נאכפו באופן פעיל.",
+      "text_markdown": "זוהי תקופה של כשנה שבה דרישות הרישוי לא נאכפו באופן פעיל.",
+      "title": "",
+      "tts": {
+        "text": "זוהי תקופה של כשנה שבה דרישות הרישוי לא נאכפו באופן פעיל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז ספרו את הימים.",
+      "text_markdown": "אז ספרו את הימים.",
+      "title": "",
+      "tts": {
+        "text": "אז ספרו את הימים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שבעים ושתיים שעות כדי לכבות מודל אמריקאי, שלוש מאות שמונים יום כדי לאכוף חוק ייצוא שבבים — האסימטריה הזו היא העיקר.",
+      "text_markdown": "שבעים ושתיים שעות כדי לכבות מודל אמריקאי, שלוש מאות שמונים יום כדי לאכוף חוק ייצוא שבבים — האסימטריה הזו היא העיקר.",
+      "title": "",
+      "tts": {
+        "text": "שבעים ושתיים שעות כדי לכבות מודל אמריקאי, שלוש מאות שמונים יום כדי לאכוף חוק ייצוא שבבים — האסימטריה הזו היא העיקר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ולאן הלכו השבבים באותם שלוש מאות שמונים יום.",
+      "text_markdown": "ולאן הלכו השבבים באותם שלוש מאות שמונים יום.",
+      "title": "",
+      "tts": {
+        "text": "ולאן הלכו השבבים באותם שלוש מאות שמונים יום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "לדרום מזרח אסיה הלכו רובם.",
+      "text_markdown": "לדרום מזרח אסיה הלכו רובם.",
+      "title": "",
+      "tts": {
+        "text": "לדרום מזרח אסיה הלכו רובם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "משרד המשפטים חשף כתבי אישום בסוף מרץ בטענה ששבבי Nvidia H-100 ו-A-100 הועברו דרך מתווכים מלזיים וסינגפוריים.",
+      "text_markdown": "משרד המשפטים חשף כתבי אישום בסוף מרץ בטענה ששבבי Nvidia H-100 ו-A-100 הועברו דרך מתווכים מלזיים וסינגפוריים.",
+      "title": "",
+      "tts": {
+        "text": "משרד המשפטים חשף כתבי אישום בסוף מרץ בטענה ששבבי Nvidia אייץ' מאה ו-איי מאה הועברו דרך מתווכים מלזיים וסינגפוריים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "פורצ'ן פרסם טקסטים מוצפנים במאי המציגים את הלוגיסטיקה, וסופר מיקרו מעורבת בתיק חברות קש בשווי שניים וחצי מיליארד דולר.",
+      "text_markdown": "פורצ'ן פרסם טקסטים מוצפנים במאי המציגים את הלוגיסטיקה, וסופר מיקרו מעורבת בתיק חברות קש בשווי שניים וחצי מיליארד דולר.",
+      "title": "",
+      "tts": {
+        "text": "פורצ'ן פרסם טקסטים מוצפנים במאי המציגים את הלוגיסטיקה, וסופר מיקרו מעורבת בתיק חברות קש בשווי שניים וחצי מיליארד דולר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ממשל טראמפ מדווח כי הוא מנסח הגבלות חדשות על ייצוא שבבים המכוונות ספציפית למלזיה ותאילנד.",
+      "text_markdown": "ממשל טראמפ מדווח כי הוא מנסח הגבלות חדשות על ייצוא שבבים המכוונות ספציפית למלזיה ותאילנד.",
+      "title": "",
+      "tts": {
+        "text": "ממשל טראמפ מדווח כי הוא מנסח הגבלות חדשות על ייצוא שבבים המכוונות ספציפית למלזיה ותאילנד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז התמונה בשורה אחת.",
+      "text_markdown": "אז התמונה בשורה אחת.",
+      "title": "",
+      "tts": {
+        "text": "אז התמונה בשורה אחת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "השבבים לא טסים לשנג'ן — הם טסים קודם לפננג וסינגפור.",
+      "text_markdown": "השבבים לא טסים לשנג'ן — הם טסים קודם לפננג וסינגפור.",
+      "title": "",
+      "tts": {
+        "text": "השבבים לא טסים לשנג'ן — הם טסים קודם לפננג וסינגפור.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מושג השבוע — התחייבויות ביצוע נותרות.",
+      "text_markdown": "מושג השבוע — התחייבויות ביצוע נותרות.",
+      "title": "",
+      "tts": {
+        "text": "מושג השבוע — התחייבויות ביצוע נותרות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. הוא שורה חשבונאית שמתעדת את שווי הדולר של חוזים שחברה חתמה עליהם אך טרם ביצעה אותם.",
+      "text_markdown": "R.P.O. הוא שורה חשבונאית שמתעדת את שווי הדולר של חוזים שחברה חתמה עליהם אך טרם ביצעה אותם.",
+      "title": "",
+      "tts": {
+        "text": "אר. פי. או. הוא שורה חשבונאית שמתעדת את שווי הדולר של חוזים שחברה חתמה עליהם אך טרם ביצעה אותם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זה צופה פני עתיד — זה מספר לך על הכנסות עתידיות, לא על כסף בבנק היום.",
+      "text_markdown": "זה צופה פני עתיד — זה מספר לך על הכנסות עתידיות, לא על כסף בבנק היום.",
+      "title": "",
+      "tts": {
+        "text": "זה צופה פני עתיד — זה מספר לך על הכנסות עתידיות, לא על כסף בבנק היום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ולמה זה חשוב לאורקל.",
+      "text_markdown": "ולמה זה חשוב לאורקל.",
+      "title": "",
+      "tts": {
+        "text": "ולמה זה חשוב לאורקל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בגלל חמש מאות חמישים ושלושה מיליארד דולר של R.P.O., המרוכזים במידה רבה בלקוח אחד עבור פריסה אחת, פירושו שאורקל הבטיחה לספק כמות עצומה של compute במהלך השנים הקרובות מול לקוח שמודל ההכנסות שלו עדיין נתון במחלוקת.",
+      "text_markdown": "בגלל חמש מאות חמישים ושלושה מיליארד דולר של R.P.O., המרוכזים במידה רבה בלקוח אחד עבור פריסה אחת, פירושו שאורקל הבטיחה לספק כמות עצומה של compute במהלך השנים הקרובות מול לקוח שמודל ההכנסות שלו עדיין נתון במחלוקת.",
+      "title": "",
+      "tts": {
+        "text": "בגלל חמש מאות חמישים ושלושה מיליארד דולר של אר. פי. או., המרוכזים במידה רבה בלקוח אחד עבור פריסה אחת, פירושו שאורקל הבטיחה לספק כמות עצומה של קומפיוט במהלך השנים הקרובות מול לקוח שמודל ההכנסות שלו עדיין נתון במחלוקת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אם החוזים האלה יתממשו, לאורקל תהיה עסקת העשור.",
+      "text_markdown": "אם החוזים האלה יתממשו, לאורקל תהיה עסקת העשור.",
+      "title": "",
+      "tts": {
+        "text": "אם החוזים האלה יתממשו, לאורקל תהיה עסקת העשור.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אם הם יתעכבו — או יסוכמו מחדש — אורקל נושאת את החוב בזמן שהחוזים מצטמצמים.",
+      "text_markdown": "אם הם יתעכבו — או יסוכמו מחדש — אורקל נושאת את החוב בזמן שהחוזים מצטמצמים.",
+      "title": "",
+      "tts": {
+        "text": "אם הם יתעכבו — או יסוכמו מחדש — אורקל נושאת את החוב בזמן שהחוזים מצטמצמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז כשאתה רואה מספר R.P.O. בדיווח טכנולוגי.",
+      "text_markdown": "אז כשאתה רואה מספר R.P.O. בדיווח טכנולוגי.",
+      "title": "",
+      "tts": {
+        "text": "אז כשאתה רואה מספר R.P.O. בדיווח טכנולוגי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "קרא מי הלקוחות, עד כמה מרוכזות ההתחייבויות, ומה יצטרך לקרות כדי שהחברה אכן תבצע אותן.",
+      "text_markdown": "קרא מי הלקוחות, עד כמה מרוכזות ההתחייבויות, ומה יצטרך לקרות כדי שהחברה אכן תבצע אותן.",
+      "title": "",
+      "tts": {
+        "text": "קרא מי הלקוחות, עד כמה מרוכזות ההתחייבויות, ומה יצטרך לקרות כדי שהחברה אכן תבצע אותן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. הוא המקום שבו המחזיקים בסיכון מופיעים בהערות השוליים.",
+      "text_markdown": "R.P.O. הוא המקום שבו המחזיקים בסיכון מופיעים בהערות השוליים.",
+      "title": "",
+      "tts": {
+        "text": "אר. פי. או. הוא המקום שבו המחזיקים בסיכון מופיעים בהערות השוליים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מקום טוב לנחות בו.",
+      "text_markdown": "מקום טוב לנחות בו.",
+      "title": "",
+      "tts": {
+        "text": "מקום טוב לנחות בו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "רון, תודה על הסקירה.",
+      "text_markdown": "רון, תודה על הסקירה.",
+      "title": "",
+      "tts": {
+        "text": "רון, תודה על הסקירה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בכיף, וינדי — טוב להיות כאן.",
+      "text_markdown": "בכיף, וינדי — טוב להיות כאן.",
+      "title": "",
+      "tts": {
+        "text": "בכיף, וינדי — טוב להיות כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "זה היה AI השבוע ל-21 ביוני, 2026.",
+      "text_markdown": "זה היה AI השבוע ל-21 ביוני, 2026.",
+      "title": "",
+      "tts": {
+        "text": "זה היה AI השבוע לעשרים ואחד ביוני, אלפיים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בשבוע הבא, נחזור לכיסוי של משקלים פתוחים ומעבדות קטנות.",
+      "text_markdown": "בשבוע הבא, נחזור לכיסוי של משקלים פתוחים ומעבדות קטנות.",
+      "title": "",
+      "tts": {
+        "text": "בשבוע הבא, נחזור לכיסוי של משקלים פתוחים ומעבדות קטנות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "עד יום ראשון הבא, שמרו על עצמכם.",
+      "text_markdown": "עד יום ראשון הבא, שמרו על עצמכם.",
+      "title": "",
+      "tts": {
+        "text": "עד יום ראשון הבא, שמרו על עצמכם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

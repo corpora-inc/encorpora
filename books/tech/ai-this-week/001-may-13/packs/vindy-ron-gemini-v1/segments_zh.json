@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "zh",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "欢迎收听《本周AI》。我是Vindy。",
+      "text_markdown": "欢迎收听《本周AI》。我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "欢迎收听《本周AI》。我是Vindy。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "一如既往，Ron和我在一起。",
+      "text_markdown": "一如既往，Ron和我在一起。",
+      "title": "",
+      "tts": {
+        "text": "一如既往，Ron和我在一起。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "很高兴来到这里。",
+      "text_markdown": "很高兴来到这里。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "今天是2026年5月13日星期三。接下来是：本周发布的新模型。排行榜，以及为什么其中一些你不再应该信任。本周概念。以及更宏大的图景——美国刚刚迎来一位新的联邦储备委员会主席，这对AI的影响可能比你想象的要大。",
+      "text_markdown": "今天是2026年5月13日星期三。接下来是：本周发布的新模型。排行榜，以及为什么其中一些你不再应该信任。本周概念。以及更宏大的图景——美国刚刚迎来一位新的联邦储备委员会主席，这对AI的影响可能比你想象的要大。",
+      "title": "",
+      "tts": {
+        "text": "今天是星期三，五月十三日，二零二六年。接下来是：本周发布的新模型。排行榜，以及为什么其中一些你不再应该信任。本周概念。以及更宏大的图景——美国刚刚迎来一位新的联邦储备委员会主席，这对AI的影响可能比你想象的要大。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron，本周最大的模型新闻是什么？",
+      "text_markdown": "Ron，本周最大的模型新闻是什么？",
+      "title": "",
+      "tts": {
+        "text": "Ron，本周最大的模型新闻是什么？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ChatGPT的默认大脑发生了变化。OpenAI上周二，即5月5日，向免费用户推出了一个名为GPT-5.5 Instant的新模型。如果免费的ChatGPT回复感觉更短或表情符号更少，那就是原因。",
+      "text_markdown": "ChatGPT的默认大脑发生了变化。OpenAI上周二，即5月5日，向免费用户推出了一个名为GPT-5.5 Instant的新模型。如果免费的ChatGPT回复感觉更短或表情符号更少，那就是原因。",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT的默认大脑发生了变化。OpenAI上周二，即五月五日，向免费用户推出了一个名为GPT五点五 Instant的新模型。如果免费的ChatGPT回复感觉更短或表情符号更少，那就是原因。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "短了多少？",
+      "text_markdown": "短了多少？",
+      "title": "",
+      "tts": {
+        "text": "短了多少？",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "OpenAI表示，新的默认模型所写的字数和行数比它取代的模型大约减少了30%。他们还声称，在最难的提示上，幻觉性声明减少了50%。例如医疗问题、法律问题和金融问题。",
+      "text_markdown": "OpenAI表示，新的默认模型所写的字数和行数比它取代的模型大约减少了30%。他们还声称，在最难的提示上，幻觉性声明减少了50%。例如医疗问题、法律问题和金融问题。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI表示，新的默认模型所写的字数和行数比它取代的模型大约减少了百分之三十。他们还声称，在最难的提示上，幻觉性声明减少了百分之五十。例如医疗问题、法律问题和金融问题。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "OpenAI之外的任何人验证过这些数字吗？",
+      "text_markdown": "OpenAI之外的任何人验证过这些数字吗？",
+      "title": "",
+      "tts": {
+        "text": "OpenAI之外的任何人验证过这些数字吗？",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "没有大规模验证。像Artificial Analysis这样的独立基准测试机构，将新模型排在其整体智能指数的榜首。但幻觉性声明的验证速度很慢。这些问题往往在使用模型数周后才会浮出水面。",
+      "text_markdown": "没有大规模验证。像Artificial Analysis这样的独立基准测试机构，将新模型排在其整体智能指数的榜首。但幻觉性声明的验证速度很慢。这些问题往往在使用模型数周后才会浮出水面。",
+      "title": "",
+      "tts": {
+        "text": "没有大规模验证。像Artificial Analysis这样的独立基准测试机构，将新模型排在其整体智能指数的榜首。但幻觉性声明的验证速度很慢。这些问题往往在使用模型数周后才会浮出水面。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "那么在开源模型方面呢？",
+      "text_markdown": "那么在开源模型方面呢？",
+      "title": "",
+      "tts": {
+        "text": "那么在开源模型方面呢？",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "两件大事。Kimi模型背后的中国实验室Moonshot，上周5月7日筹集了20亿美元，估值达到200亿美元。他们的最新模型Kimi K 2.6刚刚在OpenRouter上获得了token吞吐量的榜首位置。",
+      "text_markdown": "两件大事。Kimi模型背后的中国实验室Moonshot，上周5月7日筹集了20亿美元，估值达到200亿美元。他们的最新模型Kimi K 2.6刚刚在OpenRouter上获得了token吞吐量的榜首位置。",
+      "title": "",
+      "tts": {
+        "text": "两件大事。Kimi模型背后的中国实验室Moonshot，上周五月七日筹集了二十亿美元，估值达到二百亿美元。他们的最新模型Kimi K二点六刚刚在OpenRouter上获得了token吞吐量的榜首位置。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "榜首？总体的？",
+      "text_markdown": "榜首？总体的？",
+      "title": "",
+      "tts": {
+        "text": "榜首？总体的？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "总体的。这是一个中国开源模型在主要商业路由器上排名第一。六个月前，这还是不可想象的。",
+      "text_markdown": "总体的。这是一个中国开源模型在主要商业路由器上排名第一。六个月前，这还是不可想象的。",
+      "title": "",
+      "tts": {
+        "text": "总体的。这是一个中国开源模型在主要商业路由器上排名第一。六个月前，那还是不可想象的。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "还有其他值得注意的吗？",
+      "text_markdown": "还有其他值得注意的吗？",
+      "title": "",
+      "tts": {
+        "text": "还有其他值得注意的吗？",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "法国实验室Mistral在四月底发布了Medium 3.5。他们正在将聊天模型、推理模型和编码模型之间的旧有划分整合为一个产品。这与OpenAI从GPT-5系列开始的趋势相同。整个行业都在朝着这个方向发展。",
+      "text_markdown": "法国实验室Mistral在四月底发布了Medium 3.5。他们正在将聊天模型、推理模型和编码模型之间的旧有划分整合为一个产品。这与OpenAI从GPT-5系列开始的趋势相同。整个行业都在朝着这个方向发展。",
+      "title": "",
+      "tts": {
+        "text": "法国实验室Mistral在四月底发布了Medium三点五。他们正在将聊天模型、推理模型和编码模型之间的旧有划分整合为一个产品。这与OpenAI从GPT五系列开始的趋势相同。整个行业都在朝着这个方向发展。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "接下来会发生什么？",
+      "text_markdown": "接下来会发生什么？",
+      "title": "",
+      "tts": {
+        "text": "接下来会发生什么？",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Google I/O在周二举行。大家都在期待新的Gemini，并且有可靠传闻称将推出一个名为Gemini Omni的视频生成模型。OpenAI正在测试GPT-5.6。Anthropic有一个名为Mythos的模型正在进行私人预览。下周我们会知道更多。",
+      "text_markdown": "Google I/O在周二举行。大家都在期待新的Gemini，并且有可靠传闻称将推出一个名为Gemini Omni的视频生成模型。OpenAI正在测试GPT-5.6。Anthropic有一个名为Mythos的模型正在进行私人预览。下周我们会知道更多。",
+      "title": "",
+      "tts": {
+        "text": "Google I O在周二举行。大家都在期待新的Gemini，并且有可靠传闻称将推出一个名为Gemini Omni的视频生成模型。OpenAI正在测试GPT五点六。Anthropic有一个名为Mythos的模型正在进行私人预览。下周我们会知道更多。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "好的，我们来看看排行榜。",
+      "text_markdown": "好的，我们来看看排行榜。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来看看排行榜。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron，本周排行榜有什么变化？",
+      "text_markdown": "Ron，本周排行榜有什么变化？",
+      "title": "",
+      "tts": {
+        "text": "Ron，本周排行榜有什么变化？",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "本周真正的故事不是分数。而是你不再应该信任的分数。",
+      "text_markdown": "本周真正的故事不是分数。而是你不再应该信任的分数。",
+      "title": "",
+      "tts": {
+        "text": "本周真正的故事不是分数。而是你不再应该信任的分数。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron，给我们多讲讲这个。",
+      "text_markdown": "Ron，给我们多讲讲这个。",
+      "title": "",
+      "tts": {
+        "text": "Ron，给我们多讲讲这个。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "伯克利的一个团队发表了一篇论文。他们构建了一个自动化扫描器，在所有主要的AI代理基准测试中都获得了近乎满分。而实际上并没有解决任何一个任务。他们利用了基准测试检查自身答案的方式。",
+      "text_markdown": "伯克利的一个团队发表了一篇论文。他们构建了一个自动化扫描器，在所有主要的AI代理基准测试中都获得了近乎满分。而实际上并没有解决任何一个任务。他们利用了基准测试检查自身答案的方式。",
+      "title": "",
+      "tts": {
+        "text": "伯克利的一个团队发表了一篇论文。他们构建了一个自动化扫描器，在所有主要的AI代理基准测试中都获得了近乎满分。而实际上并没有解决任何一个任务。他们利用了基准测试检查自身答案的方式。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "他们作弊了，而基准测试没有发现。",
+      "text_markdown": "他们作弊了，而基准测试没有发现。",
+      "title": "",
+      "tts": {
+        "text": "他们作弊了，而基准测试没有发现。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "没错。同一周，OpenAI宣布他们将停止使用SWE bench Verified上的评估。那是一个他们一直引用的编码基准测试。他们停用它，是因为超过一半的难题被发现测试有问题。",
+      "text_markdown": "没错。同一周，OpenAI宣布他们将停止使用SWE bench Verified上的评估。那是一个他们一直引用的编码基准测试。他们停用它，是因为超过一半的难题被发现测试有问题。",
+      "title": "",
+      "tts": {
+        "text": "没错。同一周，OpenAI宣布他们将停止使用SWE bench Verified上的评估。那是一个他们一直引用的编码基准测试。他们停用它，是因为超过一半的难题被发现测试有问题。",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "所以我们过去一年听到的很多数字都…",
+      "text_markdown": "所以我们过去一年听到的很多数字都…",
+      "title": "",
+      "tts": {
+        "text": "所以我们过去一年听到的很多数字都…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "至少是部分虚高的。并非每个模型。并非每个基准测试。但这个领域正在公开重建其衡量标准。像SWE-bench Pro和名为SWE-rebench的项目等新评估方法正试图通过保密测试代码来解决这个问题。",
+      "text_markdown": "至少是部分虚高的。并非每个模型。并非每个基准测试。但这个领域正在公开重建其衡量标准。像SWE-bench Pro和名为SWE-rebench的项目等新评估方法正试图通过保密测试代码来解决这个问题。",
+      "title": "",
+      "tts": {
+        "text": "至少是部分虚高的。并非每个模型。并非每个基准测试。但这个领域正在公开重建其衡量标准。像SWE bench Pro和名为SWE rebench的项目等新评估方法正试图通过保密测试代码来解决这个问题。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "有任何东西是真正干净利落地提升的吗？",
+      "text_markdown": "有任何东西是真正干净利落地提升的吗？",
+      "title": "",
+      "tts": {
+        "text": "有任何东西是真正干净利落地提升的吗？",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "两件事，在更干净的排行榜上。早在四月中旬，Anthropic的Claude Opus 4.7成为第一个在LM Arena编码排行榜上干净利落地突破1500 Elo分的模型。Opus 4.6在几周前曾达到1500分。截至本周，Opus 4.7仍位居榜首，约为1569分。Anthropic还有一个名为Mythos的独立模型正在进行私人合作伙伴预览，该模型在Anthropic测量的18个代理基准测试中领先17个。",
+      "text_markdown": "两件事，在更干净的排行榜上。早在四月中旬，Anthropic的Claude Opus 4.7成为第一个在LM Arena编码排行榜上干净利落地突破1500 Elo分的模型。Opus 4.6在几周前曾达到1500分。截至本周，Opus 4.7仍位居榜首，约为1569分。Anthropic还有一个名为Mythos的独立模型正在进行私人合作伙伴预览，该模型在Anthropic测量的18个代理基准测试中领先17个。",
+      "title": "",
+      "tts": {
+        "text": "两件事，在更干净的排行榜上。早在四月中旬，Anthropic的Claude Opus四点七成为第一个在LM Arena编码排行榜上干净利落地突破一千五百 Elo分的模型。Opus四点六在几周前曾达到一千五百分。截至本周，Opus四点七仍位居榜首，约为一千五百六十九分。Anthropic还有一个名为Mythos的独立模型正在进行私人合作伙伴预览，该模型在Anthropic测量的十八个代理基准测试中领先十七个。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "一个公众无法使用的模型位居榜首。",
+      "text_markdown": "一个公众无法使用的模型位居榜首。",
+      "title": "",
+      "tts": {
+        "text": "一个公众无法使用的模型位居榜首。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "我们目前就是这样。另一个大趋势是开放与封闭之间的差距。这是有史以来最小的差距。DeepSeek V4 Pro 和 Kimi K 2.6 在交叉评估智能指数上与 GPT-5.5 不相上下。这个差距曾经很大。现在很小。",
+      "text_markdown": "我们目前就是这样。另一个大趋势是开放与封闭之间的差距。这是有史以来最小的差距。DeepSeek V4 Pro 和 Kimi K 2.6 在交叉评估智能指数上与 GPT-5.5 不相上下。这个差距曾经很大。现在很小。",
+      "title": "",
+      "tts": {
+        "text": "我们目前就是这样。另一个大趋势是开放与封闭之间的差距。这是有史以来最小的差距。DeepSeek V 四 Pro 和 Kimi K 二点六 在交叉评估智能指数上与 GPT 五点五 不相上下。这个差距曾经很大。现在很小。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "好的，我们来谈谈本周的概念。",
+      "text_markdown": "好的，我们来谈谈本周的概念。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来谈谈本周的概念。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "罗恩，本周的概念是专家混合模型。我们为什么要关注专家混合模型呢？",
+      "text_markdown": "罗恩，本周的概念是专家混合模型。我们为什么要关注专家混合模型呢？",
+      "title": "",
+      "tts": {
+        "text": "罗恩，本周的概念是专家混合模型。我们为什么要关注专家混合模型呢？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "因为我们刚才谈到的开放权重模型 Kimi K 2.6 总共有 1 万亿个参数。但在任何给定时刻，只有 320 亿个参数在运行。这就是专家混合模型。",
+      "text_markdown": "因为我们刚才谈到的开放权重模型 Kimi K 2.6 总共有 1 万亿个参数。但在任何给定时刻，只有 320 亿个参数在运行。这就是专家混合模型。",
+      "title": "",
+      "tts": {
+        "text": "因为我们刚才谈到的开放权重模型 Kimi K 二点六 总共有 一万亿个参数。但在任何给定时刻，只有 三百二十亿个参数在运行。这就是专家混合模型。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "给正在收听的听众们详细讲解一下。",
+      "text_markdown": "给正在收听的听众们详细讲解一下。",
+      "title": "",
+      "tts": {
+        "text": "给正在收听的听众们详细讲解一下。",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "一个普通的 AI 模型就像一个巨大的大脑。它生成的每个词都使用大脑的每个部分。而专家混合模型更像是一栋住满了专家的建筑，门口有一个接待员。对于每个词，接待员会选择两到三位专家进行咨询，而建筑的其余部分则保持安静。",
+      "text_markdown": "一个普通的 AI 模型就像一个巨大的大脑。它生成的每个词都使用大脑的每个部分。而专家混合模型更像是一栋住满了专家的建筑，门口有一个接待员。对于每个词，接待员会选择两到三位专家进行咨询，而建筑的其余部分则保持安静。",
+      "title": "",
+      "tts": {
+        "text": "一个普通的 AI 模型就像一个巨大的大脑。它生成的每个词都使用大脑的每个部分。而专家混合模型更像是一栋住满了专家的建筑，门口有一个接待员。对于每个词，接待员会选择两到三位专家进行咨询，而建筑的其余部分则保持安静。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "所以这个模型理论上很大，但运行成本很低。",
+      "text_markdown": "所以这个模型理论上很大，但运行成本很低。",
+      "title": "",
+      "tts": {
+        "text": "所以这个模型理论上很大，但运行成本很低。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "没错。1 万亿参数的容量。但每个词的计算量只有 320 亿参数。这就是诀窍。接待员是一小段代码，称为路由器。专家是子网络，称为专家。模型将路由器和专家一起进行端到端训练。",
+      "text_markdown": "没错。1 万亿参数的容量。但每个词的计算量只有 320 亿参数。这就是诀窍。接待员是一小段代码，称为路由器。专家是子网络，称为专家。模型将路由器和专家一起进行端到端训练。",
+      "title": "",
+      "tts": {
+        "text": "没错。一万亿参数的容量。但每个词的计算量只有 三百二十亿参数。这就是诀窍。接待员是一小段代码，称为路由器。专家是子网络，称为专家。模型将路由器和专家一起进行端到端训练。",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "每一个主要的尖端模型都在这样做吗？",
+      "text_markdown": "每一个主要的尖端模型都在这样做吗？",
+      "title": "",
+      "tts": {
+        "text": "每一个主要的尖端模型都在这样做吗？",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "大部分是这样，是的。尽管实验室不总是证实这一点。GPT-4 就是一个专家混合模型。DeepSeek 的旗舰模型也是一个专家混合模型。Mistral 自 2023 年以来一直在推出专家混合模型。来自中国的新浪潮将这种设计推向了极致。",
+      "text_markdown": "大部分是这样，是的。尽管实验室不总是证实这一点。GPT-4 就是一个专家混合模型。DeepSeek 的旗舰模型也是一个专家混合模型。Mistral 自 2023 年以来一直在推出专家混合模型。来自中国的新浪潮将这种设计推向了极致。",
+      "title": "",
+      "tts": {
+        "text": "大部分是这样，是的。尽管实验室不总是证实这一点。GPT 四 就是一个专家混合模型。DeepSeek 的旗舰模型也是一个专家混合模型。Mistral 自 二零二三年 以来一直在推出专家混合模型。来自中国的新浪潮将这种设计推向了极致。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "对于只使用 ChatGPT 的人来说，这有什么关系呢？",
+      "text_markdown": "对于只使用 ChatGPT 的人来说，这有什么关系呢？",
+      "title": "",
+      "tts": {
+        "text": "对于只使用 ChatGPT 的人来说，这有什么关系呢？",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "两个原因。第一。这是中国开放权重实验室能够以一小部分预算运行出尖端水平质量的主要原因。第二。这是单个 API 调用只需几美分而不是几美元的主要原因。当你看到价格下降而质量保持高水平时，通常就是专家混合模型的原因。",
+      "text_markdown": "两个原因。第一。这是中国开放权重实验室能够以一小部分预算运行出尖端水平质量的主要原因。第二。这是单个 API 调用只需几美分而不是几美元的主要原因。当你看到价格下降而质量保持高水平时，通常就是专家混合模型的原因。",
+      "title": "",
+      "tts": {
+        "text": "两个原因。第一。这是中国开放权重实验室能够以一小部分预算运行出尖端水平质量的主要原因。第二。这是单个 API 调用只需几美分而不是几美元的主要原因。当你看到价格下降而质量保持高水平时，通常就是专家混合模型的原因。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "专家混合模型。路由器。专家。稀疏激活。这三个词请记住。现在让我们回到更大的图景。",
+      "text_markdown": "专家混合模型。路由器。专家。稀疏激活。这三个词请记住。现在让我们回到更大的图景。",
+      "title": "",
+      "tts": {
+        "text": "专家混合模型。路由器。专家。稀疏激活。这三个词请记住。现在让我们回到更大的图景。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "罗恩，本周我们领域之外的大新闻是美联储。",
+      "text_markdown": "罗恩，本周我们领域之外的大新闻是美联储。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，本周我们领域之外的大新闻是美联储。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "今天，美国参议院确认凯文·沃什为下一任美联储主席。投票结果是 54 票对 45 票。这是现代美国历史上美联储主席投票中最接近的一次。只有一名民主党人投了反对票。",
+      "text_markdown": "今天，美国参议院确认凯文·沃什为下一任美联储主席。投票结果是 54 票对 45 票。这是现代美国历史上美联储主席投票中最接近的一次。只有一名民主党人投了反对票。",
+      "title": "",
+      "tts": {
+        "text": "今天，美国参议院确认凯文·沃什为下一任美联储主席。投票结果是 五十四 票对 四十五 票。这是现代美国历史上美联储主席投票中最接近的一次。只有一名民主党人投了反对票。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "这对人工智能有什么影响？",
+      "text_markdown": "这对人工智能有什么影响？",
+      "title": "",
+      "tts": {
+        "text": "这对人工智能有什么影响？",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "因为目前人工智能的建设受到两个因素的制约。电力，以及资本成本。美联储设定资本成本。而新任主席曾公开表示，他希望比前任更快地降息。",
+      "text_markdown": "因为目前人工智能的建设受到两个因素的制约。电力，以及资本成本。美联储设定资本成本。而新任主席曾公开表示，他希望比前任更快地降息。",
+      "title": "",
+      "tts": {
+        "text": "因为目前人工智能的建设受到两个因素的制约。电力，以及资本成本。美联储设定资本成本。而新任主席曾公开表示，他希望比前任更快地降息。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "更快的降息使人工智能投资成本更低。",
+      "text_markdown": "更快的降息使人工智能投资成本更低。",
+      "title": "",
+      "tts": {
+        "text": "更快的降息使人工智能投资成本更低。",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "是的。超大规模公司——微软、谷歌、亚马逊、Meta——今年预计将在资本支出上花费约 7000 亿美元。其中大部分是 GPU 和数据中心。较低的贴现率使得这些多年期的建设能够以更高的估值实现。",
+      "text_markdown": "是的。超大规模公司——微软、谷歌、亚马逊、Meta——今年预计将在资本支出上花费约 7000 亿美元。其中大部分是 GPU 和数据中心。较低的贴现率使得这些多年期的建设能够以更高的估值实现。",
+      "title": "",
+      "tts": {
+        "text": "是的。超大规模公司——微软、谷歌、亚马逊、Meta——今年预计将在资本支出上花费约 七千亿 美元。其中大部分是 GPU 和数据中心。较低的贴现率使得这些多年期的建设能够以更高的估值实现。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "那么反过来呢？人工智能如何影响美联储的决策？",
+      "text_markdown": "那么反过来呢？人工智能如何影响美联储的决策？",
+      "title": "",
+      "tts": {
+        "text": "那么反过来呢？人工智能如何影响美联储的决策？",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "这就是有趣的部分。人工智能的资本支出现在已经足够大，成为一个宏观数据。而不是一个行业故事。华尔街分析师表示，过去几个季度，与人工智能相关的建设和设备支出占据了美国经济增长的大部分。",
+      "text_markdown": "这就是有趣的部分。人工智能的资本支出现在已经足够大，成为一个宏观数据。而不是一个行业故事。华尔街分析师表示，过去几个季度，与人工智能相关的建设和设备支出占据了美国经济增长的大部分。",
+      "title": "",
+      "tts": {
+        "text": "这就是有趣的部分。人工智能的资本支出现在已经足够大，成为一个宏观数据。而不是一个行业故事。华尔街分析师表示，过去几个季度，与人工智能相关的建设和设备支出占据了美国经济增长的大部分。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "增长的大部分。",
+      "text_markdown": "增长的大部分。",
+      "title": "",
+      "tts": {
+        "text": "增长的大部分。",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "大部分。而且它对美联储来说是双向影响。长期来看，人工智能是生产力的顺风。这是通货紧缩的。它给了美联储降息的空间。短期来看，它对电力、铜、熟练劳动力、冷却用水造成需求冲击。这是通货膨胀的。尤其是在弗吉尼亚州和德克萨斯州等数据中心集中的地方。",
+      "text_markdown": "大部分。而且它对美联储来说是双向影响。长期来看，人工智能是生产力的顺风。这是通货紧缩的。它给了美联储降息的空间。短期来看，它对电力、铜、熟练劳动力、冷却用水造成需求冲击。这是通货膨胀的。尤其是在弗吉尼亚州和德克萨斯州等数据中心集中的地方。",
+      "title": "",
+      "tts": {
+        "text": "大部分。而且它对美联储来说是双向影响。长期来看，人工智能是生产力的顺风。这是通货紧缩的。它给了美联储降息的空间。短期来看，它对电力、铜、熟练劳动力、冷却用水造成需求冲击。这是通货膨胀的。尤其是在弗吉尼亚州和德克萨斯州等数据中心集中的地方。",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "所以新任主席必须决定人工智能是解决通货膨胀的答案，还是造成通货膨胀的原因。",
+      "text_markdown": "所以新任主席必须决定人工智能是解决通货膨胀的答案，还是造成通货膨胀的原因。",
+      "title": "",
+      "tts": {
+        "text": "所以新任主席必须决定人工智能是解决通货膨胀的答案，还是造成通货膨胀的原因。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "两者兼而有之。而且他在首次公开演讲中说的任何话，都将影响华尔街上每一个人工智能资本支出模型。",
+      "text_markdown": "两者兼而有之。而且他在首次公开演讲中说的任何话，都将影响华尔街上每一个人工智能资本支出模型。",
+      "title": "",
+      "tts": {
+        "text": "两者兼而有之。而且他在首次公开演讲中说的任何话，都将影响华尔街上每一个人工智能资本支出模型。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "微软有 800 亿美元的未完成云订单，原因是电力不足。这个数字对吗？",
+      "text_markdown": "微软有 800 亿美元的未完成云订单，原因是电力不足。这个数字对吗？",
+      "title": "",
+      "tts": {
+        "text": "微软有 八百亿 美元的未完成云订单，原因是电力不足。这个数字对吗？",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "这是微软报告的数字。Azure 客户正在排队等待容量。瓶颈不再是芯片了。而是电网。电力市场无法像数据中心所需的那样快速建设新容量。",
+      "text_markdown": "这是微软报告的数字。Azure 客户正在排队等待容量。瓶颈不再是芯片了。而是电网。电力市场无法像数据中心所需的那样快速建设新容量。",
+      "title": "",
+      "tts": {
+        "text": "这是微软报告的数字。Azure 客户正在排队等待容量。瓶颈不再是芯片了。而是电网。电力市场无法像数据中心所需的那样快速建设新容量。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "沃什的第一次会议是什么时候？",
+      "text_markdown": "沃什的第一次会议是什么时候？",
+      "title": "",
+      "tts": {
+        "text": "沃什的第一次会议是什么时候？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "6 月 16 日和 17 日。之后我们就会对利率路径有更多了解。",
+      "text_markdown": "6 月 16 日和 17 日。之后我们就会对利率路径有更多了解。",
+      "title": "",
+      "tts": {
+        "text": "六月 十六日 和 十七日。之后我们就会对利率路径有更多了解。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "很好的收尾。罗恩，谢谢你。",
+      "text_markdown": "很好的收尾。罗恩，谢谢你。",
+      "title": "",
+      "tts": {
+        "text": "很好的收尾。罗恩，谢谢你。",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "随时，Vindy。",
+      "text_markdown": "随时，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "随时，Vindy。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "以上是2026年5月13日的《本周AI》。新一期下周三见。在此之前，请保重。",
+      "text_markdown": "以上是2026年5月13日的《本周AI》。新一期下周三见。在此之前，请保重。",
+      "title": "",
+      "tts": {
+        "text": "以上是二零二六年五月十三日的《本周AI》。新一期下周三见。在此之前，请保重。",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

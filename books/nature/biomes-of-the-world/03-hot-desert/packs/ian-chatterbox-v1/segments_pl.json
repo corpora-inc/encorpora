@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Gorąca pustynia",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gorąca pustynia",
+      "text_markdown": "Gorąca pustynia"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gdzie są pustynie",
+      "text_markdown": "Gdzie są pustynie"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Witaj na gorącej pustyni.",
+      "text_markdown": "Witaj na gorącej pustyni.",
+      "tts": {
+        "text": "Witaj na gorącej pustyni.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jeden z wielkich biomów świata.",
+      "text_markdown": "To jeden z wielkich biomów świata.",
+      "tts": {
+        "text": "To jeden z wielkich biomów świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "text_markdown": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "tts": {
+        "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gorąca pustynia jest suchym miejscem.",
+      "text_markdown": "Gorąca pustynia jest suchym miejscem.",
+      "tts": {
+        "text": "Gorąca pustynia jest suchym miejscem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tu bardzo mało deszczu.",
+      "text_markdown": "Pada tu bardzo mało deszczu.",
+      "tts": {
+        "text": "Pada tu bardzo mało deszczu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość dni jest bardzo gorąca, a większość nocy chłodna lub zimna.",
+      "text_markdown": "Większość dni jest bardzo gorąca, a większość nocy chłodna lub zimna.",
+      "tts": {
+        "text": "Większość dni jest bardzo gorąca, a większość nocy chłodna lub zimna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Największą gorącą pustynią świata jest Sahara w północnej Afryce.",
+      "text_markdown": "Największą gorącą pustynią świata jest Sahara w północnej Afryce.",
+      "tts": {
+        "text": "Największą gorącą pustynią świata jest Sahara w północnej Afryce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ciągnie się od Oceanu Atlantyckiego niemal aż do Morza Czerwonego.",
+      "text_markdown": "Ciągnie się od Oceanu Atlantyckiego niemal aż do Morza Czerwonego.",
+      "tts": {
+        "text": "Ciągnie się od Oceanu Atlantyckiego niemal aż do Morza Czerwonego.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W środku Arabii leżą wielkie pustynie, takie jak Pusty Kwartał.",
+      "text_markdown": "W środku Arabii leżą wielkie pustynie, takie jak Pusty Kwartał.",
+      "tts": {
+        "text": "W środku Arabii leżą wielkie pustynie, takie jak Pusty Kwartał.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gorące pustynie są w Ameryce Północnej, w takich miejscach jak południowy zachód Stanów Zjednoczonych i północny Meksyk.",
+      "text_markdown": "Gorące pustynie są w Ameryce Północnej, w takich miejscach jak południowy zachód Stanów Zjednoczonych i północny Meksyk.",
+      "tts": {
+        "text": "Gorące pustynie są w Ameryce Północnej, w takich miejscach jak południowy zachód Stanów Zjednoczonych i północny Meksyk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mniejsze pustynie są w Ameryce Południowej, w południowej Afryce, w Indiach i w wielu częściach Australii.",
+      "text_markdown": "Mniejsze pustynie są w Ameryce Południowej, w południowej Afryce, w Indiach i w wielu częściach Australii.",
+      "tts": {
+        "text": "Mniejsze pustynie są w Ameryce Południowej, w południowej Afryce, w Indiach i w wielu częściach Australii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każda z tych pustyń powstała oddzielnie, z dala od innych.",
+      "text_markdown": "Każda z tych pustyń powstała oddzielnie, z dala od innych.",
+      "tts": {
+        "text": "Każda z tych pustyń powstała oddzielnie, z dala od innych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "text_markdown": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "tts": {
+        "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktus, który widzisz na jednej pustyni, nie jest taki sam jak ten, którego widzisz na innej.",
+      "text_markdown": "Kaktus, który widzisz na jednej pustyni, nie jest taki sam jak ten, którego widzisz na innej.",
+      "tts": {
+        "text": "Kaktus, który widzisz na jednej pustyni, nie jest taki sam jak ten, którego widzisz na innej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale wszystkie są częścią tego samego biomu.",
+      "text_markdown": "Ale wszystkie są częścią tego samego biomu.",
+      "tts": {
+        "text": "Ale wszystkie są częścią tego samego biomu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy stoisz na gorącej pustyni, powietrze wydaje się suche.",
+      "text_markdown": "Kiedy stoisz na gorącej pustyni, powietrze wydaje się suche.",
+      "tts": {
+        "text": "Kiedy stoisz na gorącej pustyni, powietrze wydaje się suche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Słońce mocno świeci ci w twarz.",
+      "text_markdown": "Słońce mocno świeci ci w twarz.",
+      "tts": {
+        "text": "Słońce mocno świeci ci w twarz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziemia jest skalista w wielu miejscach, a w innych piaszczysta.",
+      "text_markdown": "Ziemia jest skalista w wielu miejscach, a w innych piaszczysta.",
+      "tts": {
+        "text": "Ziemia jest skalista w wielu miejscach, a w innych piaszczysta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Możesz widzieć bardzo daleko.",
+      "text_markdown": "Możesz widzieć bardzo daleko.",
+      "tts": {
+        "text": "Możesz widzieć bardzo daleko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niebo jest ogromne.",
+      "text_markdown": "Niebo jest ogromne.",
+      "tts": {
+        "text": "Niebo jest ogromne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Możesz nie zobaczyć drugiego człowieka ani innego zwierzęcia przez cały dzień.",
+      "text_markdown": "Możesz nie zobaczyć drugiego człowieka ani innego zwierzęcia przez cały dzień.",
+      "tts": {
+        "text": "Możesz nie zobaczyć drugiego człowieka ani innego zwierzęcia przez cały dzień.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jest gorąca pustynia.",
+      "text_markdown": "To jest gorąca pustynia.",
+      "tts": {
+        "text": "To jest gorąca pustynia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Gdzie są pustynie",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Szeroka, sucha kraina piasku, skał i palącego słońca.",
+      "text_markdown": "Szeroka, sucha kraina piasku, skał i palącego słońca.",
+      "tts": {
+        "text": "Szeroka, sucha kraina piasku, skał i palącego słońca.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pogoda",
+      "text_markdown": "Pogoda"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pogodę na gorącej pustyni kształtują dwie rzeczy.",
+      "text_markdown": "Pogodę na gorącej pustyni kształtują dwie rzeczy.",
+      "tts": {
+        "text": "Pogodę na gorącej pustyni kształtują dwie rzeczy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest za dużo słońca i za mało deszczu.",
+      "text_markdown": "Jest za dużo słońca i za mało deszczu.",
+      "tts": {
+        "text": "Jest za dużo słońca i za mało deszczu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na niektórych pustyniach deszcz pada tylko przez kilka dni w roku.",
+      "text_markdown": "Na niektórych pustyniach deszcz pada tylko przez kilka dni w roku.",
+      "tts": {
+        "text": "Na niektórych pustyniach deszcz pada tylko przez kilka dni w roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W innych miejscach nie pada wcale przez wiele lat.",
+      "text_markdown": "W innych miejscach nie pada wcale przez wiele lat.",
+      "tts": {
+        "text": "W innych miejscach nie pada wcale przez wiele lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dni są bardzo gorące.",
+      "text_markdown": "Dni są bardzo gorące.",
+      "tts": {
+        "text": "Dni są bardzo gorące.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W środku dnia słońce potrafi rozgrzać piasek do temperatury, która poparzyłaby ci stopy.",
+      "text_markdown": "W środku dnia słońce potrafi rozgrzać piasek do temperatury, która poparzyłaby ci stopy.",
+      "tts": {
+        "text": "W środku dnia słońce potrafi rozgrzać piasek do temperatury, która poparzyłaby ci stopy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale noce są zupełnie inne.",
+      "text_markdown": "Ale noce są zupełnie inne.",
+      "tts": {
+        "text": "Ale noce są zupełnie inne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie ma chmur ani drzew, które zatrzymałyby ciepło.",
+      "text_markdown": "Nie ma chmur ani drzew, które zatrzymałyby ciepło.",
+      "tts": {
+        "text": "Nie ma chmur ani drzew, które zatrzymałyby ciepło.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Więc gdy tylko słońce zachodzi, ciepło ucieka w niebo.",
+      "text_markdown": "Więc gdy tylko słońce zachodzi, ciepło ucieka w niebo.",
+      "tts": {
+        "text": "Więc gdy tylko słońce zachodzi, ciepło ucieka w niebo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Do środka nocy może zrobić się chłodno, a nawet zimno.",
+      "text_markdown": "Do środka nocy może zrobić się chłodno, a nawet zimno.",
+      "tts": {
+        "text": "Do środka nocy może zrobić się chłodno, a nawet zimno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rano skały są chłodne w dotyku.",
+      "text_markdown": "Rano skały są chłodne w dotyku.",
+      "tts": {
+        "text": "Rano skały są chłodne w dotyku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem wschodzi słońce i upał zaczyna się od nowa.",
+      "text_markdown": "Potem wschodzi słońce i upał zaczyna się od nowa.",
+      "tts": {
+        "text": "Potem wschodzi słońce i upał zaczyna się od nowa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy nadchodzi deszcz, często spada cały naraz.",
+      "text_markdown": "Gdy nadchodzi deszcz, często spada cały naraz.",
+      "tts": {
+        "text": "Gdy nadchodzi deszcz, często spada cały naraz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nadciąga wielka burza i woda leje się przez godzinę.",
+      "text_markdown": "Nadciąga wielka burza i woda leje się przez godzinę.",
+      "tts": {
+        "text": "Nadciąga wielka burza i woda leje się przez godzinę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suche rzeki napełniają się i woda pędzi po piasku.",
+      "text_markdown": "Suche rzeki napełniają się i woda pędzi po piasku.",
+      "tts": {
+        "text": "Suche rzeki napełniają się i woda pędzi po piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem wraca słońce i w ciągu dnia woda znów znika.",
+      "text_markdown": "Potem wraca słońce i w ciągu dnia woda znów znika.",
+      "tts": {
+        "text": "Potem wraca słońce i w ciągu dnia woda znów znika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dla roślin i zwierząt pustyni liczy się każda kropla tej wody.",
+      "text_markdown": "Dla roślin i zwierząt pustyni liczy się każda kropla tej wody.",
+      "tts": {
+        "text": "Dla roślin i zwierząt pustyni liczy się każda kropla tej wody.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ziemia i woda",
+      "text_markdown": "Ziemia i woda"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość gorącej pustyni nie jest zbudowana z piasku.",
+      "text_markdown": "Większość gorącej pustyni nie jest zbudowana z piasku.",
+      "tts": {
+        "text": "Większość gorącej pustyni nie jest zbudowana z piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większa jej część to skały, żwir i twarda, sucha ziemia.",
+      "text_markdown": "Większa jej część to skały, żwir i twarda, sucha ziemia.",
+      "tts": {
+        "text": "Większa jej część to skały, żwir i twarda, sucha ziemia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są też miejsca z wielkimi morzami wydm.",
+      "text_markdown": "Są też miejsca z wielkimi morzami wydm.",
+      "tts": {
+        "text": "Są też miejsca z wielkimi morzami wydm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiatr powoli przesuwa wydmy po ziemi.",
+      "text_markdown": "Wiatr powoli przesuwa wydmy po ziemi.",
+      "tts": {
+        "text": "Wiatr powoli przesuwa wydmy po ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wydma może być mniejsza niż dom albo wyższa niż wysoki budynek.",
+      "text_markdown": "Wydma może być mniejsza niż dom albo wyższa niż wysoki budynek.",
+      "tts": {
+        "text": "Wydma może być mniejsza niż dom albo wyższa niż wysoki budynek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych miejscach z pustyni wyrastają góry.",
+      "text_markdown": "W niektórych miejscach z pustyni wyrastają góry.",
+      "tts": {
+        "text": "W niektórych miejscach z pustyni wyrastają góry.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiatr i piasek rzeźbią skały w dziwne kształty przez wiele lat.",
+      "text_markdown": "Wiatr i piasek rzeźbią skały w dziwne kształty przez wiele lat.",
+      "tts": {
+        "text": "Wiatr i piasek rzeźbią skały w dziwne kształty przez wiele lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Woda jest najrzadszą i najcenniejszą rzeczą na pustyni.",
+      "text_markdown": "Woda jest najrzadszą i najcenniejszą rzeczą na pustyni.",
+      "tts": {
+        "text": "Woda jest najrzadszą i najcenniejszą rzeczą na pustyni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość rzek płynie tylko po burzy, a potem wysycha.",
+      "text_markdown": "Większość rzek płynie tylko po burzy, a potem wysycha.",
+      "tts": {
+        "text": "Większość rzek płynie tylko po burzy, a potem wysycha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale głęboko pod piaskiem woda może spoczywać w skałach.",
+      "text_markdown": "Ale głęboko pod piaskiem woda może spoczywać w skałach.",
+      "tts": {
+        "text": "Ale głęboko pod piaskiem woda może spoczywać w skałach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych miejscach ta ukryta woda dociera na powierzchnię i tworzy mały zielony zakątek.",
+      "text_markdown": "W niektórych miejscach ta ukryta woda dociera na powierzchnię i tworzy mały zielony zakątek.",
+      "tts": {
+        "text": "W niektórych miejscach ta ukryta woda dociera na powierzchnię i tworzy mały zielony zakątek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nazywa się to oazą.",
+      "text_markdown": "Nazywa się to oazą.",
+      "tts": {
+        "text": "Nazywa się to oazą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W oazie rosną drzewa, śpiewają ptaki, a ludzie zatrzymują się, żeby się napić.",
+      "text_markdown": "W oazie rosną drzewa, śpiewają ptaki, a ludzie zatrzymują się, żeby się napić.",
+      "tts": {
+        "text": "W oazie rosną drzewa, śpiewają ptaki, a ludzie zatrzymują się, żeby się napić.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oaza może być małym kręgiem palm w bezkresnym morzu piasku.",
+      "text_markdown": "Oaza może być małym kręgiem palm w bezkresnym morzu piasku.",
+      "tts": {
+        "text": "Oaza może być małym kręgiem palm w bezkresnym morzu piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bez tych miejsc z wodą nikt nie mógłby w ogóle przejść przez wielkie pustynie.",
+      "text_markdown": "Bez tych miejsc z wodą nikt nie mógłby w ogóle przejść przez wielkie pustynie.",
+      "tts": {
+        "text": "Bez tych miejsc z wodą nikt nie mógłby w ogóle przejść przez wielkie pustynie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rośliny",
+      "text_markdown": "Rośliny"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rośliny gorącej pustyni są mistrzami czekania.",
+      "text_markdown": "Rośliny gorącej pustyni są mistrzami czekania.",
+      "tts": {
+        "text": "Rośliny gorącej pustyni są mistrzami czekania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nauczyły się żyć prawie bez wody.",
+      "text_markdown": "Nauczyły się żyć prawie bez wody.",
+      "tts": {
+        "text": "Nauczyły się żyć prawie bez wody.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre z nich mają długie korzenie, które sięgają głęboko w ziemię.",
+      "text_markdown": "Niektóre z nich mają długie korzenie, które sięgają głęboko w ziemię.",
+      "tts": {
+        "text": "Niektóre z nich mają długie korzenie, które sięgają głęboko w ziemię.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inne rośliny mają szerokie, płytkie korzenie, które rozkładają się blisko powierzchni.",
+      "text_markdown": "Inne rośliny mają szerokie, płytkie korzenie, które rozkładają się blisko powierzchni.",
+      "tts": {
+        "text": "Inne rośliny mają szerokie, płytkie korzenie, które rozkładają się blisko powierzchni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po ulewie te korzenie wypijają każdą kroplę wody, zanim wyschnie.",
+      "text_markdown": "Po ulewie te korzenie wypijają każdą kroplę wody, zanim wyschnie.",
+      "tts": {
+        "text": "Po ulewie te korzenie wypijają każdą kroplę wody, zanim wyschnie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele pustynnych roślin gromadzi wodę w swoich ciałach na długi suchy czas.",
+      "text_markdown": "Wiele pustynnych roślin gromadzi wodę w swoich ciałach na długi suchy czas.",
+      "tts": {
+        "text": "Wiele pustynnych roślin gromadzi wodę w swoich ciałach na długi suchy czas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich grube łodygi i liście potrafią zatrzymać wodę przez miesiące, a nawet lata.",
+      "text_markdown": "Ich grube łodygi i liście potrafią zatrzymać wodę przez miesiące, a nawet lata.",
+      "tts": {
+        "text": "Ich grube łodygi i liście potrafią zatrzymać wodę przez miesiące, a nawet lata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na pustyniach obu Ameryk rosną rośliny zwane kaktusami.",
+      "text_markdown": "Na pustyniach obu Ameryk rosną rośliny zwane kaktusami.",
+      "tts": {
+        "text": "Na pustyniach obu Ameryk rosną rośliny zwane kaktusami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktusy mają grube zielone łodygi pełne wody i ostre kolce zamiast miękkich liści.",
+      "text_markdown": "Kaktusy mają grube zielone łodygi pełne wody i ostre kolce zamiast miękkich liści.",
+      "tts": {
+        "text": "Kaktusy mają grube zielone łodygi pełne wody i ostre kolce zamiast miękkich liści.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolce powstrzymują zwierzęta przed zjadaniem roślin.",
+      "text_markdown": "Kolce powstrzymują zwierzęta przed zjadaniem roślin.",
+      "tts": {
+        "text": "Kolce powstrzymują zwierzęta przed zjadaniem roślin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolce dają też trochę cienia przed mocnym słońcem.",
+      "text_markdown": "Kolce dają też trochę cienia przed mocnym słońcem.",
+      "tts": {
+        "text": "Kolce dają też trochę cienia przed mocnym słońcem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na pustyniach Afryki i Azji inne grube rośliny pełnią tę samą rolę.",
+      "text_markdown": "Na pustyniach Afryki i Azji inne grube rośliny pełnią tę samą rolę.",
+      "tts": {
+        "text": "Na pustyniach Afryki i Azji inne grube rośliny pełnią tę samą rolę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele pustynnych roślin jest szarych lub bladozielonych.",
+      "text_markdown": "Wiele pustynnych roślin jest szarych lub bladozielonych.",
+      "tts": {
+        "text": "Wiele pustynnych roślin jest szarych lub bladozielonych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jasny kolor odbija światło słoneczne.",
+      "text_markdown": "Jasny kolor odbija światło słoneczne.",
+      "tts": {
+        "text": "Jasny kolor odbija światło słoneczne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre rośliny gubią liście, gdy nadchodzi pora sucha.",
+      "text_markdown": "Niektóre rośliny gubią liście, gdy nadchodzi pora sucha.",
+      "tts": {
+        "text": "Niektóre rośliny gubią liście, gdy nadchodzi pora sucha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pozostają przy życiu jako nagie brązowe gałązki aż do następnego deszczu.",
+      "text_markdown": "Pozostają przy życiu jako nagie brązowe gałązki aż do następnego deszczu.",
+      "tts": {
+        "text": "Pozostają przy życiu jako nagie brązowe gałązki aż do następnego deszczu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po ulewnym deszczu pustynia potrafi zmienić się z dnia na dzień.",
+      "text_markdown": "Po ulewnym deszczu pustynia potrafi zmienić się z dnia na dzień.",
+      "tts": {
+        "text": "Po ulewnym deszczu pustynia potrafi zmienić się z dnia na dzień.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maleńkie nasiona, które czekały w glebie przez lata, wybuchają kwiatami.",
+      "text_markdown": "Maleńkie nasiona, które czekały w glebie przez lata, wybuchają kwiatami.",
+      "tts": {
+        "text": "Maleńkie nasiona, które czekały w glebie przez lata, wybuchają kwiatami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez kilka tygodni części pustyni pokrywają się czerwonymi, żółtymi i fioletowymi kwiatami.",
+      "text_markdown": "Przez kilka tygodni części pustyni pokrywają się czerwonymi, żółtymi i fioletowymi kwiatami.",
+      "tts": {
+        "text": "Przez kilka tygodni części pustyni pokrywają się czerwonymi, żółtymi i fioletowymi kwiatami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem kwiaty więdną, nasiona opadają, a pustynia znów czeka.",
+      "text_markdown": "Potem kwiaty więdną, nasiona opadają, a pustynia znów czeka.",
+      "tts": {
+        "text": "Potem kwiaty więdną, nasiona opadają, a pustynia znów czeka.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zwierzęta",
+      "text_markdown": "Zwierzęta"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwierzęta gorącej pustyni mają wiele sprytnych sposobów na przetrwanie.",
+      "text_markdown": "Zwierzęta gorącej pustyni mają wiele sprytnych sposobów na przetrwanie.",
+      "tts": {
+        "text": "Zwierzęta gorącej pustyni mają wiele sprytnych sposobów na przetrwanie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość z nich przesypia gorące środkowe godziny dnia.",
+      "text_markdown": "Większość z nich przesypia gorące środkowe godziny dnia.",
+      "tts": {
+        "text": "Większość z nich przesypia gorące środkowe godziny dnia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wychodzą w chłodzie poranka, wieczoru i nocy.",
+      "text_markdown": "Wychodzą w chłodzie poranka, wieczoru i nocy.",
+      "tts": {
+        "text": "Wychodzą w chłodzie poranka, wieczoru i nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele pustynnych zwierząt kopie nory w piasku lub pod skałami.",
+      "text_markdown": "Wiele pustynnych zwierząt kopie nory w piasku lub pod skałami.",
+      "tts": {
+        "text": "Wiele pustynnych zwierząt kopie nory w piasku lub pod skałami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W norze jest chłodno, kiedy powietrze na zewnątrz jest palące.",
+      "text_markdown": "W norze jest chłodno, kiedy powietrze na zewnątrz jest palące.",
+      "tts": {
+        "text": "W norze jest chłodno, kiedy powietrze na zewnątrz jest palące.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mała mysz może spać cały dzień w swojej norze i nigdy nie poczuć upału.",
+      "text_markdown": "Mała mysz może spać cały dzień w swojej norze i nigdy nie poczuć upału.",
+      "tts": {
+        "text": "Mała mysz może spać cały dzień w swojej norze i nigdy nie poczuć upału.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jaszczurki są bardzo pospolite na gorącej pustyni.",
+      "text_markdown": "Jaszczurki są bardzo pospolite na gorącej pustyni.",
+      "tts": {
+        "text": "Jaszczurki są bardzo pospolite na gorącej pustyni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siedzą na ciepłych kamieniach we wczesnym słońcu.",
+      "text_markdown": "Siedzą na ciepłych kamieniach we wczesnym słońcu.",
+      "tts": {
+        "text": "Siedzą na ciepłych kamieniach we wczesnym słońcu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy dzień robi się zbyt gorący, chowają się w cieniu lub pod skałą.",
+      "text_markdown": "Kiedy dzień robi się zbyt gorący, chowają się w cieniu lub pod skałą.",
+      "tts": {
+        "text": "Kiedy dzień robi się zbyt gorący, chowają się w cieniu lub pod skałą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Węże też są pospolite.",
+      "text_markdown": "Węże też są pospolite.",
+      "tts": {
+        "text": "Węże też są pospolite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sunną po piasku w poszukiwaniu małych zwierząt do zjedzenia.",
+      "text_markdown": "Sunną po piasku w poszukiwaniu małych zwierząt do zjedzenia.",
+      "tts": {
+        "text": "Sunną po piasku w poszukiwaniu małych zwierząt do zjedzenia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre węże mają szczególny sposób poruszania się bokiem po gorącym piasku, by nie dotykać ziemi ciałem.",
+      "text_markdown": "Niektóre węże mają szczególny sposób poruszania się bokiem po gorącym piasku, by nie dotykać ziemi ciałem.",
+      "tts": {
+        "text": "Niektóre węże mają szczególny sposób poruszania się bokiem po gorącym piasku, by nie dotykać ziemi ciałem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skorpiony polują nocą, z ogonami uniesionymi wysoko.",
+      "text_markdown": "Skorpiony polują nocą, z ogonami uniesionymi wysoko.",
+      "tts": {
+        "text": "Skorpiony polują nocą, z ogonami uniesionymi wysoko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pająki i chrząszcze też żyją w każdej części pustyni.",
+      "text_markdown": "Pająki i chrząszcze też żyją w każdej części pustyni.",
+      "tts": {
+        "text": "Pająki i chrząszcze też żyją w każdej części pustyni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele pustynnych chrząszczy potrafi przeżyć, nigdy nie pijąc wody.",
+      "text_markdown": "Wiele pustynnych chrząszczy potrafi przeżyć, nigdy nie pijąc wody.",
+      "tts": {
+        "text": "Wiele pustynnych chrząszczy potrafi przeżyć, nigdy nie pijąc wody.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Całą wodę, której potrzebują, biorą z jedzenia.",
+      "text_markdown": "Całą wodę, której potrzebują, biorą z jedzenia.",
+      "tts": {
+        "text": "Całą wodę, której potrzebują, biorą z jedzenia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Największym zwierzęciem pustyń Afryki i Arabii jest wielbłąd.",
+      "text_markdown": "Największym zwierzęciem pustyń Afryki i Arabii jest wielbłąd.",
+      "tts": {
+        "text": "Największym zwierzęciem pustyń Afryki i Arabii jest wielbłąd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielbłąd potrafi naraz wypić ogromną ilość wody, a potem przez wiele dni obyć się bez picia.",
+      "text_markdown": "Wielbłąd potrafi naraz wypić ogromną ilość wody, a potem przez wiele dni obyć się bez picia.",
+      "tts": {
+        "text": "Wielbłąd potrafi naraz wypić ogromną ilość wody, a potem przez wiele dni obyć się bez picia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jego szerokie miękkie stopy chronią go przed zapadaniem się w piasku.",
+      "text_markdown": "Jego szerokie miękkie stopy chronią go przed zapadaniem się w piasku.",
+      "tts": {
+        "text": "Jego szerokie miękkie stopy chronią go przed zapadaniem się w piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na pustyniach Ameryki Północnej lisy i małe dzikie koty polują nocą.",
+      "text_markdown": "Na pustyniach Ameryki Północnej lisy i małe dzikie koty polują nocą.",
+      "tts": {
+        "text": "Na pustyniach Ameryki Północnej lisy i małe dzikie koty polują nocą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Afryce w piasku żyją małe lisy z bardzo dużymi uszami.",
+      "text_markdown": "W Afryce w piasku żyją małe lisy z bardzo dużymi uszami.",
+      "tts": {
+        "text": "W Afryce w piasku żyją małe lisy z bardzo dużymi uszami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duże uszy pomagają im słyszeć małe zwierzęta poruszające się pod ziemią.",
+      "text_markdown": "Duże uszy pomagają im słyszeć małe zwierzęta poruszające się pod ziemią.",
+      "tts": {
+        "text": "Duże uszy pomagają im słyszeć małe zwierzęta poruszające się pod ziemią.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duże uszy pomagają im też tracić ciepło w chłodzie nocy.",
+      "text_markdown": "Duże uszy pomagają im też tracić ciepło w chłodzie nocy.",
+      "tts": {
+        "text": "Duże uszy pomagają im też tracić ciepło w chłodzie nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wysoko nad głową sępy i orły szybują w ciepłym pustynnym powietrzu.",
+      "text_markdown": "Wysoko nad głową sępy i orły szybują w ciepłym pustynnym powietrzu.",
+      "tts": {
+        "text": "Wysoko nad głową sępy i orły szybują w ciepłym pustynnym powietrzu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wypatrują każdego małego ruchu na ziemi.",
+      "text_markdown": "Wypatrują każdego małego ruchu na ziemi.",
+      "tts": {
+        "text": "Wypatrują każdego małego ruchu na ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każde zwierzę tutaj wie, jak czekać na chłód, jak znaleźć cień i jak sprawić, by każdy łyk wody starczył na długo.",
+      "text_markdown": "Każde zwierzę tutaj wie, jak czekać na chłód, jak znaleźć cień i jak sprawić, by każdy łyk wody starczył na długo.",
+      "tts": {
+        "text": "Każde zwierzę tutaj wie, jak czekać na chłód, jak znaleźć cień i jak sprawić, by każdy łyk wody starczył na długo.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ludzie",
+      "text_markdown": "Ludzie"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie żyją na gorącej pustyni od tysięcy lat.",
+      "text_markdown": "Ludzie żyją na gorącej pustyni od tysięcy lat.",
+      "tts": {
+        "text": "Ludzie żyją na gorącej pustyni od tysięcy lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Znaleźli własne sposoby na życie w krainie słońca i piasku.",
+      "text_markdown": "Znaleźli własne sposoby na życie w krainie słońca i piasku.",
+      "tts": {
+        "text": "Znaleźli własne sposoby na życie w krainie słońca i piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na wielu pustyniach rodziny wędrują z miejsca na miejsce ze swoimi stadami.",
+      "text_markdown": "Na wielu pustyniach rodziny wędrują z miejsca na miejsce ze swoimi stadami.",
+      "tts": {
+        "text": "Na wielu pustyniach rodziny wędrują z miejsca na miejsce ze swoimi stadami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Saharze i pustyniach Arabii ludzie hodują stada wielbłądów, kóz i owiec.",
+      "text_markdown": "Na Saharze i pustyniach Arabii ludzie hodują stada wielbłądów, kóz i owiec.",
+      "tts": {
+        "text": "Na Saharze i pustyniach Arabii ludzie hodują stada wielbłądów, kóz i owiec.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwierzęta potrafią iść długo między jednym pojeniem a drugim.",
+      "text_markdown": "Zwierzęta potrafią iść długo między jednym pojeniem a drugim.",
+      "tts": {
+        "text": "Zwierzęta potrafią iść długo między jednym pojeniem a drugim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie idą za zwierzętami, a zwierzęta prowadzą ich do jedzenia.",
+      "text_markdown": "Ludzie idą za zwierzętami, a zwierzęta prowadzą ich do jedzenia.",
+      "tts": {
+        "text": "Ludzie idą za zwierzętami, a zwierzęta prowadzą ich do jedzenia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich namioty są z tkaniny utkanej z sierści ich zwierząt.",
+      "text_markdown": "Ich namioty są z tkaniny utkanej z sierści ich zwierząt.",
+      "tts": {
+        "text": "Ich namioty są z tkaniny utkanej z sierści ich zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Namiot można rozstawić w godzinę i zwinąć w godzinę.",
+      "text_markdown": "Namiot można rozstawić w godzinę i zwinąć w godzinę.",
+      "tts": {
+        "text": "Namiot można rozstawić w godzinę i zwinąć w godzinę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie wpuszcza palącego słońca, a pozwala chłodnemu nocnemu powietrzu przepływać.",
+      "text_markdown": "Nie wpuszcza palącego słońca, a pozwala chłodnemu nocnemu powietrzu przepływać.",
+      "tts": {
+        "text": "Nie wpuszcza palącego słońca, a pozwala chłodnemu nocnemu powietrzu przepływać.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie pustyni noszą luźne, długie ubrania.",
+      "text_markdown": "Ludzie pustyni noszą luźne, długie ubrania.",
+      "tts": {
+        "text": "Ludzie pustyni noszą luźne, długie ubrania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Długie rękawy i przykryta głowa utrzymują ciało chłodnym i chronią je przed słońcem.",
+      "text_markdown": "Długie rękawy i przykryta głowa utrzymują ciało chłodnym i chronią je przed słońcem.",
+      "tts": {
+        "text": "Długie rękawy i przykryta głowa utrzymują ciało chłodnym i chronią je przed słońcem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jaskrawy wzór tkaniny pomaga przyjacielowi dostrzec cię z daleka.",
+      "text_markdown": "Jaskrawy wzór tkaniny pomaga przyjacielowi dostrzec cię z daleka.",
+      "tts": {
+        "text": "Jaskrawy wzór tkaniny pomaga przyjacielowi dostrzec cię z daleka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektórzy mieszkańcy pustyni żyją w miastach zbudowanych wokół oazy.",
+      "text_markdown": "Niektórzy mieszkańcy pustyni żyją w miastach zbudowanych wokół oazy.",
+      "tts": {
+        "text": "Niektórzy mieszkańcy pustyni żyją w miastach zbudowanych wokół oazy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W zielonym pierścieniu wokół wody uprawiają palmy daktylowe, owoce i zboża.",
+      "text_markdown": "W zielonym pierścieniu wokół wody uprawiają palmy daktylowe, owoce i zboża.",
+      "tts": {
+        "text": "W zielonym pierścieniu wokół wody uprawiają palmy daktylowe, owoce i zboża.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nauczyli się kopać głębokie studnie, żeby znaleźć ukrytą wodę pod piaskiem.",
+      "text_markdown": "Nauczyli się kopać głębokie studnie, żeby znaleźć ukrytą wodę pod piaskiem.",
+      "tts": {
+        "text": "Nauczyli się kopać głębokie studnie, żeby znaleźć ukrytą wodę pod piaskiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wędrowcy z daleka przybywają do oazy, by odpocząć i napełnić bukłaki z wodą.",
+      "text_markdown": "Wędrowcy z daleka przybywają do oazy, by odpocząć i napełnić bukłaki z wodą.",
+      "tts": {
+        "text": "Wędrowcy z daleka przybywają do oazy, by odpocząć i napełnić bukłaki z wodą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie pustyni znają każdą gwiazdę na nocnym niebie.",
+      "text_markdown": "Ludzie pustyni znają każdą gwiazdę na nocnym niebie.",
+      "tts": {
+        "text": "Ludzie pustyni znają każdą gwiazdę na nocnym niebie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Znają imiona każdego wiatru, który wieje.",
+      "text_markdown": "Znają imiona każdego wiatru, który wieje.",
+      "tts": {
+        "text": "Znają imiona każdego wiatru, który wieje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potrafią odczytać ślady każdego zwierzęcia na piasku.",
+      "text_markdown": "Potrafią odczytać ślady każdego zwierzęcia na piasku.",
+      "tts": {
+        "text": "Potrafią odczytać ślady każdego zwierzęcia na piasku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ta wiedza jest przekazywana z rodziców na dzieci, rok po roku.",
+      "text_markdown": "Ta wiedza jest przekazywana z rodziców na dzieci, rok po roku.",
+      "tts": {
+        "text": "Ta wiedza jest przekazywana z rodziców na dzieci, rok po roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na każdej wielkiej pustyni takie życie ma własne języki, pieśni i opowieści.",
+      "text_markdown": "Na każdej wielkiej pustyni takie życie ma własne języki, pieśni i opowieści.",
+      "tts": {
+        "text": "Na każdej wielkiej pustyni takie życie ma własne języki, pieśni i opowieści.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pustynia dzisiaj",
+      "text_markdown": "Pustynia dzisiaj"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gorąca pustynia to piękny i wymagający biom.",
+      "text_markdown": "Gorąca pustynia to piękny i wymagający biom.",
+      "tts": {
+        "text": "Gorąca pustynia to piękny i wymagający biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zajmuje wielką część lądu na Ziemi.",
+      "text_markdown": "Zajmuje wielką część lądu na Ziemi.",
+      "tts": {
+        "text": "Zajmuje wielką część lądu na Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mocne pustynne słońce jest też jednym z naszych największych źródeł czystej energii.",
+      "text_markdown": "Mocne pustynne słońce jest też jednym z naszych największych źródeł czystej energii.",
+      "tts": {
+        "text": "Mocne pustynne słońce jest też jednym z naszych największych źródeł czystej energii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na wielu pustyniach budowane są wielkie pola paneli chwytających słońce.",
+      "text_markdown": "Na wielu pustyniach budowane są wielkie pola paneli chwytających słońce.",
+      "tts": {
+        "text": "Na wielu pustyniach budowane są wielkie pola paneli chwytających słońce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zamieniają pustynne słońce w prąd dla odległych miast.",
+      "text_markdown": "Zamieniają pustynne słońce w prąd dla odległych miast.",
+      "tts": {
+        "text": "Zamieniają pustynne słońce w prąd dla odległych miast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale w niektórych miejscach pustynia ma kłopoty.",
+      "text_markdown": "Ale w niektórych miejscach pustynia ma kłopoty.",
+      "tts": {
+        "text": "Ale w niektórych miejscach pustynia ma kłopoty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych obszarach pustynia się rozrasta, bo ludzie zużyli wodę i trawę na jej brzegach.",
+      "text_markdown": "W niektórych obszarach pustynia się rozrasta, bo ludzie zużyli wodę i trawę na jej brzegach.",
+      "tts": {
+        "text": "W niektórych obszarach pustynia się rozrasta, bo ludzie zużyli wodę i trawę na jej brzegach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa umiera, drzewa znikają, a piasek wkracza.",
+      "text_markdown": "Trawa umiera, drzewa znikają, a piasek wkracza.",
+      "tts": {
+        "text": "Trawa umiera, drzewa znikają, a piasek wkracza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W innych miejscach miasta na skraju pustyni zużywają zbyt dużo ukrytej wody spod ziemi.",
+      "text_markdown": "W innych miejscach miasta na skraju pustyni zużywają zbyt dużo ukrytej wody spod ziemi.",
+      "tts": {
+        "text": "W innych miejscach miasta na skraju pustyni zużywają zbyt dużo ukrytej wody spod ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gdy głęboka woda się kończy, oazy też wysychają.",
+      "text_markdown": "Gdy głęboka woda się kończy, oazy też wysychają.",
+      "tts": {
+        "text": "Gdy głęboka woda się kończy, oazy też wysychają.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele grup na całym świecie pracuje nad ochroną pustyń.",
+      "text_markdown": "Wiele grup na całym świecie pracuje nad ochroną pustyń.",
+      "tts": {
+        "text": "Wiele grup na całym świecie pracuje nad ochroną pustyń.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadzą rzędy drzew i traw, by powstrzymać ruchomy piasek.",
+      "text_markdown": "Sadzą rzędy drzew i traw, by powstrzymać ruchomy piasek.",
+      "tts": {
+        "text": "Sadzą rzędy drzew i traw, by powstrzymać ruchomy piasek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pomagają ludziom mieszkającym na pustyni mądrze gospodarować wodą.",
+      "text_markdown": "Pomagają ludziom mieszkającym na pustyni mądrze gospodarować wodą.",
+      "tts": {
+        "text": "Pomagają ludziom mieszkającym na pustyni mądrze gospodarować wodą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Badają pustynie, żebyśmy mogli je lepiej rozumieć.",
+      "text_markdown": "Badają pustynie, żebyśmy mogli je lepiej rozumieć.",
+      "tts": {
+        "text": "Badają pustynie, żebyśmy mogli je lepiej rozumieć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zdrowa pustynia jest pełna życia, którego byś się nie spodziewał.",
+      "text_markdown": "Zdrowa pustynia jest pełna życia, którego byś się nie spodziewał.",
+      "tts": {
+        "text": "Zdrowa pustynia jest pełna życia, którego byś się nie spodziewał.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Pustynia dzisiaj",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest warta naszej troski.",
+      "text_markdown": "Jest warta naszej troski.",
+      "tts": {
+        "text": "Jest warta naszej troski.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zakończenie",
+      "text_markdown": "Zakończenie"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jest gorąca pustynia.",
+      "text_markdown": "To jest gorąca pustynia.",
+      "tts": {
+        "text": "To jest gorąca pustynia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suchy, słoneczny świat piasku, skał i cierpliwego życia.",
+      "text_markdown": "Suchy, słoneczny świat piasku, skał i cierpliwego życia.",
+      "tts": {
+        "text": "Suchy, słoneczny świat piasku, skał i cierpliwego życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeśli kiedyś na niej staniesz, zatrzymaj się na chwilę w bezruchu.",
+      "text_markdown": "Jeśli kiedyś na niej staniesz, zatrzymaj się na chwilę w bezruchu.",
+      "tts": {
+        "text": "Jeśli kiedyś na niej staniesz, zatrzymaj się na chwilę w bezruchu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Posłuchaj wiatru przesuwającego się po wydmach.",
+      "text_markdown": "Posłuchaj wiatru przesuwającego się po wydmach.",
+      "tts": {
+        "text": "Posłuchaj wiatru przesuwającego się po wydmach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poczuj żar słońca i chłód cienia.",
+      "text_markdown": "Poczuj żar słońca i chłód cienia.",
+      "tts": {
+        "text": "Poczuj żar słońca i chłód cienia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Usłyszysz wokół siebie bijące serce biomu.",
+      "text_markdown": "Usłyszysz wokół siebie bijące serce biomu.",
+      "tts": {
+        "text": "Usłyszysz wokół siebie bijące serce biomu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

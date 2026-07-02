@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den varme ørken",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den varme ørken",
+      "text_markdown": "Den varme ørken"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor ørkenerne ligger",
+      "text_markdown": "Hvor ørkenerne ligger"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til den varme ørken.",
+      "text_markdown": "Velkommen til den varme ørken.",
+      "tts": {
+        "text": "Velkommen til den varme ørken.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er et af verdens store biomer.",
+      "text_markdown": "Dette er et af verdens store biomer.",
+      "tts": {
+        "text": "Dette er et af verdens store biomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+      "text_markdown": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+      "tts": {
+        "text": "Et biom er en del af Jorden med sin egen slags vejr, planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den varme ørken er et tørt sted.",
+      "text_markdown": "Den varme ørken er et tørt sted.",
+      "tts": {
+        "text": "Den varme ørken er et tørt sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der falder meget lidt regn her.",
+      "text_markdown": "Der falder meget lidt regn her.",
+      "tts": {
+        "text": "Der falder meget lidt regn her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste dage er meget varme, og de fleste nætter er kølige eller kolde.",
+      "text_markdown": "De fleste dage er meget varme, og de fleste nætter er kølige eller kolde.",
+      "tts": {
+        "text": "De fleste dage er meget varme, og de fleste nætter er kølige eller kolde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den største varme ørken i verden er Sahara, i det nordlige Afrika.",
+      "text_markdown": "Den største varme ørken i verden er Sahara, i det nordlige Afrika.",
+      "tts": {
+        "text": "Den største varme ørken i verden er Sahara, i det nordlige Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den strækker sig fra Atlanterhavet næsten hele vejen til Det Røde Hav.",
+      "text_markdown": "Den strækker sig fra Atlanterhavet næsten hele vejen til Det Røde Hav.",
+      "tts": {
+        "text": "Den strækker sig fra Atlanterhavet næsten hele vejen til Det Røde Hav.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er store ørkener midt i Arabien, som Den Tomme Fjerdedel.",
+      "text_markdown": "Der er store ørkener midt i Arabien, som Den Tomme Fjerdedel.",
+      "tts": {
+        "text": "Der er store ørkener midt i Arabien, som Den Tomme Fjerdedel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er varme ørkener i Nordamerika, på steder som det sydvestlige Amerikas Forenede Stater og det nordlige Mexico.",
+      "text_markdown": "Der er varme ørkener i Nordamerika, på steder som det sydvestlige Amerikas Forenede Stater og det nordlige Mexico.",
+      "tts": {
+        "text": "Der er varme ørkener i Nordamerika, på steder som det sydvestlige Amerikas Forenede Stater og det nordlige Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er mindre ørkener i Sydamerika, i det sydlige Afrika, i Indien og over store dele af Australien.",
+      "text_markdown": "Der er mindre ørkener i Sydamerika, i det sydlige Afrika, i Indien og over store dele af Australien.",
+      "tts": {
+        "text": "Der er mindre ørkener i Sydamerika, i det sydlige Afrika, i Indien og over store dele af Australien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver af disse ørkener voksede frem på sin egen måde, langt fra de andre.",
+      "text_markdown": "Hver af disse ørkener voksede frem på sin egen måde, langt fra de andre.",
+      "tts": {
+        "text": "Hver af disse ørkener voksede frem på sin egen måde, langt fra de andre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så planterne og dyrene er forskellige i hver del af verden.",
+      "text_markdown": "Så planterne og dyrene er forskellige i hver del af verden.",
+      "tts": {
+        "text": "Så planterne og dyrene er forskellige i hver del af verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kaktus, du ser i én ørken, er ikke den samme som en, du ser i en anden.",
+      "text_markdown": "En kaktus, du ser i én ørken, er ikke den samme som en, du ser i en anden.",
+      "tts": {
+        "text": "En kaktus, du ser i én ørken, er ikke den samme som en, du ser i en anden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de er alle en del af det samme biom.",
+      "text_markdown": "Men de er alle en del af det samme biom.",
+      "tts": {
+        "text": "Men de er alle en del af det samme biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du står i en varm ørken, føles luften tør.",
+      "text_markdown": "Når du står i en varm ørken, føles luften tør.",
+      "tts": {
+        "text": "Når du står i en varm ørken, føles luften tør.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Solen er stærk på dit ansigt.",
+      "text_markdown": "Solen er stærk på dit ansigt.",
+      "tts": {
+        "text": "Solen er stærk på dit ansigt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden er stenet mange steder og sandet andre steder.",
+      "text_markdown": "Jorden er stenet mange steder og sandet andre steder.",
+      "tts": {
+        "text": "Jorden er stenet mange steder og sandet andre steder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kan se meget langt væk.",
+      "text_markdown": "Du kan se meget langt væk.",
+      "tts": {
+        "text": "Du kan se meget langt væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Himlen er enorm.",
+      "text_markdown": "Himlen er enorm.",
+      "tts": {
+        "text": "Himlen er enorm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du ser måske ikke et andet menneske eller et andet dyr en hel dag.",
+      "text_markdown": "Du ser måske ikke et andet menneske eller et andet dyr en hel dag.",
+      "tts": {
+        "text": "Du ser måske ikke et andet menneske eller et andet dyr en hel dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sådan er den varme ørken.",
+      "text_markdown": "Sådan er den varme ørken.",
+      "tts": {
+        "text": "Sådan er den varme ørken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Hvor ørkenerne ligger",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et vidt, tørt land af sand, sten og brændende sol.",
+      "text_markdown": "Et vidt, tørt land af sand, sten og brændende sol.",
+      "tts": {
+        "text": "Et vidt, tørt land af sand, sten og brændende sol.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vejret",
+      "text_markdown": "Vejret"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vejret i den varme ørken er formet af to ting.",
+      "text_markdown": "Vejret i den varme ørken er formet af to ting.",
+      "tts": {
+        "text": "Vejret i den varme ørken er formet af to ting.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er for meget sol, og der er ikke nok regn.",
+      "text_markdown": "Der er for meget sol, og der er ikke nok regn.",
+      "tts": {
+        "text": "Der er for meget sol, og der er ikke nok regn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle ørkener regner det kun nogle få dage hvert år.",
+      "text_markdown": "I nogle ørkener regner det kun nogle få dage hvert år.",
+      "tts": {
+        "text": "I nogle ørkener regner det kun nogle få dage hvert år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre steder regner det slet ikke i mange år.",
+      "text_markdown": "Andre steder regner det slet ikke i mange år.",
+      "tts": {
+        "text": "Andre steder regner det slet ikke i mange år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dagene er meget varme.",
+      "text_markdown": "Dagene er meget varme.",
+      "tts": {
+        "text": "Dagene er meget varme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Midt på dagen kan solen varme sandet op til en temperatur, der ville brænde dine fødder.",
+      "text_markdown": "Midt på dagen kan solen varme sandet op til en temperatur, der ville brænde dine fødder.",
+      "tts": {
+        "text": "Midt på dagen kan solen varme sandet op til en temperatur, der ville brænde dine fødder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men nætterne er meget anderledes.",
+      "text_markdown": "Men nætterne er meget anderledes.",
+      "tts": {
+        "text": "Men nætterne er meget anderledes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er ingen skyer og ingen træer til at holde på varmen.",
+      "text_markdown": "Der er ingen skyer og ingen træer til at holde på varmen.",
+      "tts": {
+        "text": "Der er ingen skyer og ingen træer til at holde på varmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så snart solen går ned, strømmer varmen væk op i himlen.",
+      "text_markdown": "Så snart solen går ned, strømmer varmen væk op i himlen.",
+      "tts": {
+        "text": "Så snart solen går ned, strømmer varmen væk op i himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ved midnat kan det føles køligt eller endda koldt.",
+      "text_markdown": "Ved midnat kan det føles køligt eller endda koldt.",
+      "tts": {
+        "text": "Ved midnat kan det føles køligt eller endda koldt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om morgenen er stenene kølige at røre ved.",
+      "text_markdown": "Om morgenen er stenene kølige at røre ved.",
+      "tts": {
+        "text": "Om morgenen er stenene kølige at røre ved.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så står solen op, og varmen begynder igen.",
+      "text_markdown": "Så står solen op, og varmen begynder igen.",
+      "tts": {
+        "text": "Så står solen op, og varmen begynder igen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når regnen endelig kommer, kommer den ofte hele på én gang.",
+      "text_markdown": "Når regnen endelig kommer, kommer den ofte hele på én gang.",
+      "tts": {
+        "text": "Når regnen endelig kommer, kommer den ofte hele på én gang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En stor storm trækker ind, og vandet styrter ned i en time.",
+      "text_markdown": "En stor storm trækker ind, og vandet styrter ned i en time.",
+      "tts": {
+        "text": "En stor storm trækker ind, og vandet styrter ned i en time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tørre floder fyldes, og vandet fosser hen over sandet.",
+      "text_markdown": "De tørre floder fyldes, og vandet fosser hen over sandet.",
+      "tts": {
+        "text": "De tørre floder fyldes, og vandet fosser hen over sandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så kommer solen tilbage, og inden for en dag er vandet væk igen.",
+      "text_markdown": "Så kommer solen tilbage, og inden for en dag er vandet væk igen.",
+      "tts": {
+        "text": "Så kommer solen tilbage, og inden for en dag er vandet væk igen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For ørkenens planter og dyr tæller hver eneste dråbe af det vand.",
+      "text_markdown": "For ørkenens planter og dyr tæller hver eneste dråbe af det vand.",
+      "tts": {
+        "text": "For ørkenens planter og dyr tæller hver eneste dråbe af det vand.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vandet",
+      "text_markdown": "Landet og vandet"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det meste af den varme ørken er ikke lavet af sand.",
+      "text_markdown": "Det meste af den varme ørken er ikke lavet af sand.",
+      "tts": {
+        "text": "Det meste af den varme ørken er ikke lavet af sand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det meste er sten, grus og hård, tør jord.",
+      "text_markdown": "Det meste er sten, grus og hård, tør jord.",
+      "tts": {
+        "text": "Det meste er sten, grus og hård, tør jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er også steder med store have af klitter.",
+      "text_markdown": "Der er også steder med store have af klitter.",
+      "tts": {
+        "text": "Der er også steder med store have af klitter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden flytter klitterne langsomt hen over landet.",
+      "text_markdown": "Vinden flytter klitterne langsomt hen over landet.",
+      "tts": {
+        "text": "Vinden flytter klitterne langsomt hen over landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En klit kan være mindre end et hus eller højere end en høj bygning.",
+      "text_markdown": "En klit kan være mindre end et hus eller højere end en høj bygning.",
+      "tts": {
+        "text": "En klit kan være mindre end et hus eller højere end en høj bygning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle steder rejser bjerge sig op af ørkenen.",
+      "text_markdown": "Nogle steder rejser bjerge sig op af ørkenen.",
+      "tts": {
+        "text": "Nogle steder rejser bjerge sig op af ørkenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden og sandet former stenene til mærkelige figurer gennem mange år.",
+      "text_markdown": "Vinden og sandet former stenene til mærkelige figurer gennem mange år.",
+      "tts": {
+        "text": "Vinden og sandet former stenene til mærkelige figurer gennem mange år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vand er det sjældneste og mest dyrebare i ørkenen.",
+      "text_markdown": "Vand er det sjældneste og mest dyrebare i ørkenen.",
+      "tts": {
+        "text": "Vand er det sjældneste og mest dyrebare i ørkenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste floder løber kun efter en storm, og så tørrer de ud.",
+      "text_markdown": "De fleste floder løber kun efter en storm, og så tørrer de ud.",
+      "tts": {
+        "text": "De fleste floder løber kun efter en storm, og så tørrer de ud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men dybt nede under sandet kan vandet hvile i stenene.",
+      "text_markdown": "Men dybt nede under sandet kan vandet hvile i stenene.",
+      "tts": {
+        "text": "Men dybt nede under sandet kan vandet hvile i stenene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle steder stiger dette skjulte vand op til overfladen og danner en lille grøn dam.",
+      "text_markdown": "Nogle steder stiger dette skjulte vand op til overfladen og danner en lille grøn dam.",
+      "tts": {
+        "text": "Nogle steder stiger dette skjulte vand op til overfladen og danner en lille grøn dam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette kaldes en oase.",
+      "text_markdown": "Dette kaldes en oase.",
+      "tts": {
+        "text": "Dette kaldes en oase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ved en oase vokser der træer, fugle synger, og folk stopper for at drikke.",
+      "text_markdown": "Ved en oase vokser der træer, fugle synger, og folk stopper for at drikke.",
+      "tts": {
+        "text": "Ved en oase vokser der træer, fugle synger, og folk stopper for at drikke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En oase kan være en lille ring af palmer i et vældigt hav af sand.",
+      "text_markdown": "En oase kan være en lille ring af palmer i et vældigt hav af sand.",
+      "tts": {
+        "text": "En oase kan være en lille ring af palmer i et vældigt hav af sand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uden disse pletter af vand kunne ingen krydse de store ørkener overhovedet.",
+      "text_markdown": "Uden disse pletter af vand kunne ingen krydse de store ørkener overhovedet.",
+      "tts": {
+        "text": "Uden disse pletter af vand kunne ingen krydse de store ørkener overhovedet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Planterne",
+      "text_markdown": "Planterne"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planterne i den varme ørken er mestre i at vente.",
+      "text_markdown": "Planterne i den varme ørken er mestre i at vente.",
+      "tts": {
+        "text": "Planterne i den varme ørken er mestre i at vente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har lært at leve med næsten ingen vand.",
+      "text_markdown": "De har lært at leve med næsten ingen vand.",
+      "tts": {
+        "text": "De har lært at leve med næsten ingen vand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle af dem laver lange rødder, der når langt ned i jorden.",
+      "text_markdown": "Nogle af dem laver lange rødder, der når langt ned i jorden.",
+      "tts": {
+        "text": "Nogle af dem laver lange rødder, der når langt ned i jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre planter har brede, lave rødder, der spreder sig nær overfladen.",
+      "text_markdown": "Andre planter har brede, lave rødder, der spreder sig nær overfladen.",
+      "tts": {
+        "text": "Andre planter har brede, lave rødder, der spreder sig nær overfladen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter en regnstorm drikker disse rødder hver eneste dråbe vand, før det tørrer.",
+      "text_markdown": "Efter en regnstorm drikker disse rødder hver eneste dråbe vand, før det tørrer.",
+      "tts": {
+        "text": "Efter en regnstorm drikker disse rødder hver eneste dråbe vand, før det tørrer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange ørkenplanter gemmer vand inde i deres kroppe til den lange tørre tid.",
+      "text_markdown": "Mange ørkenplanter gemmer vand inde i deres kroppe til den lange tørre tid.",
+      "tts": {
+        "text": "Mange ørkenplanter gemmer vand inde i deres kroppe til den lange tørre tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres tykke stængler og blade kan holde på vand i månedsvis eller endda årevis.",
+      "text_markdown": "Deres tykke stængler og blade kan holde på vand i månedsvis eller endda årevis.",
+      "tts": {
+        "text": "Deres tykke stængler og blade kan holde på vand i månedsvis eller endda årevis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I de amerikanske ørkener er der planter, der kaldes kaktusser.",
+      "text_markdown": "I de amerikanske ørkener er der planter, der kaldes kaktusser.",
+      "tts": {
+        "text": "I de amerikanske ørkener er der planter, der kaldes kaktusser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktusser har tykke grønne stængler fulde af vand og skarpe pigge i stedet for bløde blade.",
+      "text_markdown": "Kaktusser har tykke grønne stængler fulde af vand og skarpe pigge i stedet for bløde blade.",
+      "tts": {
+        "text": "Kaktusser har tykke grønne stængler fulde af vand og skarpe pigge i stedet for bløde blade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piggene forhindrer dyrene i at spise planterne.",
+      "text_markdown": "Piggene forhindrer dyrene i at spise planterne.",
+      "tts": {
+        "text": "Piggene forhindrer dyrene i at spise planterne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piggene laver også lidt skygge mod den stærke sol.",
+      "text_markdown": "Piggene laver også lidt skygge mod den stærke sol.",
+      "tts": {
+        "text": "Piggene laver også lidt skygge mod den stærke sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ørkenerne i Afrika og Asien gør andre tykke planter det samme arbejde.",
+      "text_markdown": "I ørkenerne i Afrika og Asien gør andre tykke planter det samme arbejde.",
+      "tts": {
+        "text": "I ørkenerne i Afrika og Asien gør andre tykke planter det samme arbejde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange ørkenplanter er grå eller lysegrønne.",
+      "text_markdown": "Mange ørkenplanter er grå eller lysegrønne.",
+      "tts": {
+        "text": "Mange ørkenplanter er grå eller lysegrønne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lys farve kaster sollyset væk.",
+      "text_markdown": "En lys farve kaster sollyset væk.",
+      "tts": {
+        "text": "En lys farve kaster sollyset væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle planter taber deres blade, når den tørre årstid kommer.",
+      "text_markdown": "Nogle planter taber deres blade, når den tørre årstid kommer.",
+      "tts": {
+        "text": "Nogle planter taber deres blade, når den tørre årstid kommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De holder sig i live som nøgne brune kviste, indtil næste regn kommer.",
+      "text_markdown": "De holder sig i live som nøgne brune kviste, indtil næste regn kommer.",
+      "tts": {
+        "text": "De holder sig i live som nøgne brune kviste, indtil næste regn kommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter en kraftig regn kan ørkenen forandre sig fra den ene dag til den anden.",
+      "text_markdown": "Efter en kraftig regn kan ørkenen forandre sig fra den ene dag til den anden.",
+      "tts": {
+        "text": "Efter en kraftig regn kan ørkenen forandre sig fra den ene dag til den anden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bittesmå frø, der har ventet i jorden i årevis, springer ud i blomst.",
+      "text_markdown": "Bittesmå frø, der har ventet i jorden i årevis, springer ud i blomst.",
+      "tts": {
+        "text": "Bittesmå frø, der har ventet i jorden i årevis, springer ud i blomst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle få uger er dele af ørkenen dækket af røde, gule og lilla blomster.",
+      "text_markdown": "I nogle få uger er dele af ørkenen dækket af røde, gule og lilla blomster.",
+      "tts": {
+        "text": "I nogle få uger er dele af ørkenen dækket af røde, gule og lilla blomster.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så visner blomsterne, frøene falder, og ørkenen venter igen.",
+      "text_markdown": "Så visner blomsterne, frøene falder, og ørkenen venter igen.",
+      "tts": {
+        "text": "Så visner blomsterne, frøene falder, og ørkenen venter igen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene i den varme ørken har mange snedige måder at overleve på.",
+      "text_markdown": "Dyrene i den varme ørken har mange snedige måder at overleve på.",
+      "tts": {
+        "text": "Dyrene i den varme ørken har mange snedige måder at overleve på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af dem sover gennem dagens hede midte.",
+      "text_markdown": "De fleste af dem sover gennem dagens hede midte.",
+      "tts": {
+        "text": "De fleste af dem sover gennem dagens hede midte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kommer frem i morgenens, aftenens og nattens kølighed.",
+      "text_markdown": "De kommer frem i morgenens, aftenens og nattens kølighed.",
+      "tts": {
+        "text": "De kommer frem i morgenens, aftenens og nattens kølighed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange ørkendyr graver huler i sandet eller under stenene.",
+      "text_markdown": "Mange ørkendyr graver huler i sandet eller under stenene.",
+      "tts": {
+        "text": "Mange ørkendyr graver huler i sandet eller under stenene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En hule forbliver kølig, når luften udenfor brænder.",
+      "text_markdown": "En hule forbliver kølig, når luften udenfor brænder.",
+      "tts": {
+        "text": "En hule forbliver kølig, når luften udenfor brænder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lille mus kan sove hele dagen i sin hule og aldrig mærke varmen.",
+      "text_markdown": "En lille mus kan sove hele dagen i sin hule og aldrig mærke varmen.",
+      "tts": {
+        "text": "En lille mus kan sove hele dagen i sin hule og aldrig mærke varmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Firben er meget almindelige i den varme ørken.",
+      "text_markdown": "Firben er meget almindelige i den varme ørken.",
+      "tts": {
+        "text": "Firben er meget almindelige i den varme ørken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sidder på varme sten i den tidlige sol.",
+      "text_markdown": "De sidder på varme sten i den tidlige sol.",
+      "tts": {
+        "text": "De sidder på varme sten i den tidlige sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når dagen bliver for varm, smutter de ind i skyggen eller under en sten.",
+      "text_markdown": "Når dagen bliver for varm, smutter de ind i skyggen eller under en sten.",
+      "tts": {
+        "text": "Når dagen bliver for varm, smutter de ind i skyggen eller under en sten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slanger er også almindelige.",
+      "text_markdown": "Slanger er også almindelige.",
+      "tts": {
+        "text": "Slanger er også almindelige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De glider hen over sandet på jagt efter små dyr at spise.",
+      "text_markdown": "De glider hen over sandet på jagt efter små dyr at spise.",
+      "tts": {
+        "text": "De glider hen over sandet på jagt efter små dyr at spise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle slanger har en særlig måde at bevæge sig sidelæns over varmt sand på for at holde kroppen væk fra jorden.",
+      "text_markdown": "Nogle slanger har en særlig måde at bevæge sig sidelæns over varmt sand på for at holde kroppen væk fra jorden.",
+      "tts": {
+        "text": "Nogle slanger har en særlig måde at bevæge sig sidelæns over varmt sand på for at holde kroppen væk fra jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skorpioner jager om natten med halerne holdt højt.",
+      "text_markdown": "Skorpioner jager om natten med halerne holdt højt.",
+      "tts": {
+        "text": "Skorpioner jager om natten med halerne holdt højt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Edderkopper og biller lever også i hver del af ørkenen.",
+      "text_markdown": "Edderkopper og biller lever også i hver del af ørkenen.",
+      "tts": {
+        "text": "Edderkopper og biller lever også i hver del af ørkenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange ørkenbiller kan overleve uden nogensinde at drikke vand.",
+      "text_markdown": "Mange ørkenbiller kan overleve uden nogensinde at drikke vand.",
+      "tts": {
+        "text": "Mange ørkenbiller kan overleve uden nogensinde at drikke vand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De får alt det vand, de behøver, fra den mad, de spiser.",
+      "text_markdown": "De får alt det vand, de behøver, fra den mad, de spiser.",
+      "tts": {
+        "text": "De får alt det vand, de behøver, fra den mad, de spiser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det største dyr i de afrikanske og arabiske ørkener er kamelen.",
+      "text_markdown": "Det største dyr i de afrikanske og arabiske ørkener er kamelen.",
+      "tts": {
+        "text": "Det største dyr i de afrikanske og arabiske ørkener er kamelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kamel kan drikke en kæmpe mængde vand på én gang og så klare sig i mange dage uden at drikke igen.",
+      "text_markdown": "En kamel kan drikke en kæmpe mængde vand på én gang og så klare sig i mange dage uden at drikke igen.",
+      "tts": {
+        "text": "En kamel kan drikke en kæmpe mængde vand på én gang og så klare sig i mange dage uden at drikke igen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dens brede bløde fødder forhindrer den i at synke ned i sandet.",
+      "text_markdown": "Dens brede bløde fødder forhindrer den i at synke ned i sandet.",
+      "tts": {
+        "text": "Dens brede bløde fødder forhindrer den i at synke ned i sandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ørkenerne i Nordamerika jager ræve og små vilde katte om natten.",
+      "text_markdown": "I ørkenerne i Nordamerika jager ræve og små vilde katte om natten.",
+      "tts": {
+        "text": "I ørkenerne i Nordamerika jager ræve og små vilde katte om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika lever små ræve med meget store ører i sandet.",
+      "text_markdown": "I Afrika lever små ræve med meget store ører i sandet.",
+      "tts": {
+        "text": "I Afrika lever små ræve med meget store ører i sandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De store ører hjælper dem med at høre små dyr, der bevæger sig under jorden.",
+      "text_markdown": "De store ører hjælper dem med at høre små dyr, der bevæger sig under jorden.",
+      "tts": {
+        "text": "De store ører hjælper dem med at høre små dyr, der bevæger sig under jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De store ører hjælper dem også med at slippe af med varmen i nattens kølighed.",
+      "text_markdown": "De store ører hjælper dem også med at slippe af med varmen i nattens kølighed.",
+      "tts": {
+        "text": "De store ører hjælper dem også med at slippe af med varmen i nattens kølighed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Højt oppe svæver gribbe og ørne på den varme ørkenluft.",
+      "text_markdown": "Højt oppe svæver gribbe og ørne på den varme ørkenluft.",
+      "tts": {
+        "text": "Højt oppe svæver gribbe og ørne på den varme ørkenluft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De holder øje med enhver lille bevægelse på jorden.",
+      "text_markdown": "De holder øje med enhver lille bevægelse på jorden.",
+      "tts": {
+        "text": "De holder øje med enhver lille bevægelse på jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert dyr her ved, hvordan man venter på køligheden, hvordan man finder skygge, og hvordan man får hver eneste slurk vand til at vare.",
+      "text_markdown": "Hvert dyr her ved, hvordan man venter på køligheden, hvordan man finder skygge, og hvordan man får hver eneste slurk vand til at vare.",
+      "tts": {
+        "text": "Hvert dyr her ved, hvordan man venter på køligheden, hvordan man finder skygge, og hvordan man får hver eneste slurk vand til at vare.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Folkene",
+      "text_markdown": "Folkene"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk har boet i den varme ørken i tusindvis af år.",
+      "text_markdown": "Folk har boet i den varme ørken i tusindvis af år.",
+      "tts": {
+        "text": "Folk har boet i den varme ørken i tusindvis af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har fundet deres egne måder at leve på i et land af sol og sand.",
+      "text_markdown": "De har fundet deres egne måder at leve på i et land af sol og sand.",
+      "tts": {
+        "text": "De har fundet deres egne måder at leve på i et land af sol og sand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I mange ørkener rejser familier fra ét sted til et andet med deres flokke.",
+      "text_markdown": "I mange ørkener rejser familier fra ét sted til et andet med deres flokke.",
+      "tts": {
+        "text": "I mange ørkener rejser familier fra ét sted til et andet med deres flokke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Sahara og Arabiens ørkener holder folk flokke af kameler, geder og får.",
+      "text_markdown": "I Sahara og Arabiens ørkener holder folk flokke af kameler, geder og får.",
+      "tts": {
+        "text": "I Sahara og Arabiens ørkener holder folk flokke af kameler, geder og får.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene kan gå længe mellem hver gang de drikker vand.",
+      "text_markdown": "Dyrene kan gå længe mellem hver gang de drikker vand.",
+      "tts": {
+        "text": "Dyrene kan gå længe mellem hver gang de drikker vand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk følger dyrene, og dyrene fører dem til mad.",
+      "text_markdown": "Folk følger dyrene, og dyrene fører dem til mad.",
+      "tts": {
+        "text": "Folk følger dyrene, og dyrene fører dem til mad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres telte er lavet af stof, vævet af håret fra deres dyr.",
+      "text_markdown": "Deres telte er lavet af stof, vævet af håret fra deres dyr.",
+      "tts": {
+        "text": "Deres telte er lavet af stof, vævet af håret fra deres dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et telt kan slås op på en time og tages ned på en time.",
+      "text_markdown": "Et telt kan slås op på en time og tages ned på en time.",
+      "tts": {
+        "text": "Et telt kan slås op på en time og tages ned på en time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det holder den brændende sol ude og lader den kølige natteluft passere igennem.",
+      "text_markdown": "Det holder den brændende sol ude og lader den kølige natteluft passere igennem.",
+      "tts": {
+        "text": "Det holder den brændende sol ude og lader den kølige natteluft passere igennem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ørkenens folk går med løse, lange klæder.",
+      "text_markdown": "Ørkenens folk går med løse, lange klæder.",
+      "tts": {
+        "text": "Ørkenens folk går med løse, lange klæder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange ærmer og et tildækket hoved holder kroppen kølig og beskytter den mod solen.",
+      "text_markdown": "Lange ærmer og et tildækket hoved holder kroppen kølig og beskytter den mod solen.",
+      "tts": {
+        "text": "Lange ærmer og et tildækket hoved holder kroppen kølig og beskytter den mod solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et lyst mønster på stoffet hjælper en ven med at se dig langt borte fra.",
+      "text_markdown": "Et lyst mønster på stoffet hjælper en ven med at se dig langt borte fra.",
+      "tts": {
+        "text": "Et lyst mønster på stoffet hjælper en ven med at se dig langt borte fra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle ørkenfolk bor i byer bygget omkring en oase.",
+      "text_markdown": "Nogle ørkenfolk bor i byer bygget omkring en oase.",
+      "tts": {
+        "text": "Nogle ørkenfolk bor i byer bygget omkring en oase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dyrker daddelpalmer, frugter og korn i den grønne ring omkring vandet.",
+      "text_markdown": "De dyrker daddelpalmer, frugter og korn i den grønne ring omkring vandet.",
+      "tts": {
+        "text": "De dyrker daddelpalmer, frugter og korn i den grønne ring omkring vandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har lært at grave dybe brønde for at finde det skjulte vand under sandet.",
+      "text_markdown": "De har lært at grave dybe brønde for at finde det skjulte vand under sandet.",
+      "tts": {
+        "text": "De har lært at grave dybe brønde for at finde det skjulte vand under sandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rejsende langvejs fra kommer til oasen for at hvile og fylde deres vandsække.",
+      "text_markdown": "Rejsende langvejs fra kommer til oasen for at hvile og fylde deres vandsække.",
+      "tts": {
+        "text": "Rejsende langvejs fra kommer til oasen for at hvile og fylde deres vandsække.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ørkenens folk kender hver stjerne på nattehimlen.",
+      "text_markdown": "Ørkenens folk kender hver stjerne på nattehimlen.",
+      "tts": {
+        "text": "Ørkenens folk kender hver stjerne på nattehimlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kender navnene på hver vind, der blæser.",
+      "text_markdown": "De kender navnene på hver vind, der blæser.",
+      "tts": {
+        "text": "De kender navnene på hver vind, der blæser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kan læse sporene af hvert dyr i sandet.",
+      "text_markdown": "De kan læse sporene af hvert dyr i sandet.",
+      "tts": {
+        "text": "De kan læse sporene af hvert dyr i sandet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne viden gives videre fra forældre til børn, år efter år.",
+      "text_markdown": "Denne viden gives videre fra forældre til børn, år efter år.",
+      "tts": {
+        "text": "Denne viden gives videre fra forældre til børn, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I hver stor ørken har denne form for liv sine egne sprog, sange og fortællinger.",
+      "text_markdown": "I hver stor ørken har denne form for liv sine egne sprog, sange og fortællinger.",
+      "tts": {
+        "text": "I hver stor ørken har denne form for liv sine egne sprog, sange og fortællinger.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ørkenen i dag",
+      "text_markdown": "Ørkenen i dag"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den varme ørken er et smukt og krævende biom.",
+      "text_markdown": "Den varme ørken er et smukt og krævende biom.",
+      "tts": {
+        "text": "Den varme ørken er et smukt og krævende biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dækker en stor del af landjorden på Jorden.",
+      "text_markdown": "Den dækker en stor del af landjorden på Jorden.",
+      "tts": {
+        "text": "Den dækker en stor del af landjorden på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den stærke ørkensol er også en af vores største kilder til ren energi.",
+      "text_markdown": "Den stærke ørkensol er også en af vores største kilder til ren energi.",
+      "tts": {
+        "text": "Den stærke ørkensol er også en af vores største kilder til ren energi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Store marker med solpaneler bygges i mange ørkener.",
+      "text_markdown": "Store marker med solpaneler bygges i mange ørkener.",
+      "tts": {
+        "text": "Store marker med solpaneler bygges i mange ørkener.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De forvandler ørkensolen til elektricitet til byer langt væk.",
+      "text_markdown": "De forvandler ørkensolen til elektricitet til byer langt væk.",
+      "tts": {
+        "text": "De forvandler ørkensolen til elektricitet til byer langt væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men ørkenen er i fare nogle steder.",
+      "text_markdown": "Men ørkenen er i fare nogle steder.",
+      "tts": {
+        "text": "Men ørkenen er i fare nogle steder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle områder vokser ørkenen, fordi mennesker har brugt vandet og græsset op ved dens kanter.",
+      "text_markdown": "I nogle områder vokser ørkenen, fordi mennesker har brugt vandet og græsset op ved dens kanter.",
+      "tts": {
+        "text": "I nogle områder vokser ørkenen, fordi mennesker har brugt vandet og græsset op ved dens kanter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Græsset dør, træerne forsvinder, og sandet rykker ind.",
+      "text_markdown": "Græsset dør, træerne forsvinder, og sandet rykker ind.",
+      "tts": {
+        "text": "Græsset dør, træerne forsvinder, og sandet rykker ind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre steder bruger byerne ved ørkenens kant for meget af det skjulte vand under jorden.",
+      "text_markdown": "Andre steder bruger byerne ved ørkenens kant for meget af det skjulte vand under jorden.",
+      "tts": {
+        "text": "Andre steder bruger byerne ved ørkenens kant for meget af det skjulte vand under jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når det dybe vand er væk, tørrer oaserne også ud.",
+      "text_markdown": "Når det dybe vand er væk, tørrer oaserne også ud.",
+      "tts": {
+        "text": "Når det dybe vand er væk, tørrer oaserne også ud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbejder på at tage vare på ørkenerne.",
+      "text_markdown": "Mange grupper rundt om i verden arbejder på at tage vare på ørkenerne.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbejder på at tage vare på ørkenerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planter rækker af træer og græsser for at holde det bevægelige sand tilbage.",
+      "text_markdown": "De planter rækker af træer og græsser for at holde det bevægelige sand tilbage.",
+      "tts": {
+        "text": "De planter rækker af træer og græsser for at holde det bevægelige sand tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hjælper dem, der bor i ørkenen, med at bruge vandet klogt.",
+      "text_markdown": "De hjælper dem, der bor i ørkenen, med at bruge vandet klogt.",
+      "tts": {
+        "text": "De hjælper dem, der bor i ørkenen, med at bruge vandet klogt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer ørkenerne, så vi kan forstå dem bedre.",
+      "text_markdown": "De studerer ørkenerne, så vi kan forstå dem bedre.",
+      "tts": {
+        "text": "De studerer ørkenerne, så vi kan forstå dem bedre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En sund ørken er fuld af liv, som man ikke ville forvente.",
+      "text_markdown": "En sund ørken er fuld af liv, som man ikke ville forvente.",
+      "tts": {
+        "text": "En sund ørken er fuld af liv, som man ikke ville forvente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Ørkenen i dag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er værd at passe på.",
+      "text_markdown": "Den er værd at passe på.",
+      "tts": {
+        "text": "Den er værd at passe på.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afslutning",
+      "text_markdown": "Afslutning"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sådan er den varme ørken.",
+      "text_markdown": "Sådan er den varme ørken.",
+      "tts": {
+        "text": "Sådan er den varme ørken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tør, solfyldt verden af sand, sten og tålmodigt liv.",
+      "text_markdown": "En tør, solfyldt verden af sand, sten og tålmodigt liv.",
+      "tts": {
+        "text": "En tør, solfyldt verden af sand, sten og tålmodigt liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du nogensinde står i en, så stå stille et minut.",
+      "text_markdown": "Hvis du nogensinde står i en, så stå stille et minut.",
+      "tts": {
+        "text": "Hvis du nogensinde står i en, så stå stille et minut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyt til vinden, der bevæger sig hen over klitterne.",
+      "text_markdown": "Lyt til vinden, der bevæger sig hen over klitterne.",
+      "tts": {
+        "text": "Lyt til vinden, der bevæger sig hen over klitterne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mærk solens varme og skyggens kølighed.",
+      "text_markdown": "Mærk solens varme og skyggens kølighed.",
+      "tts": {
+        "text": "Mærk solens varme og skyggens kølighed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil høre biomets hjerte slå omkring dig.",
+      "text_markdown": "Du vil høre biomets hjerte slå omkring dig.",
+      "tts": {
+        "text": "Du vil høre biomets hjerte slå omkring dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

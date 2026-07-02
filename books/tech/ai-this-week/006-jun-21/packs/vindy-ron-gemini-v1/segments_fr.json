@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "fr",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Bienvenue à AI This Week.",
+      "text_markdown": "Bienvenue à AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Bienvenue à AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Je suis Vindy.",
+      "text_markdown": "Je suis Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Je suis Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Avec moi, comme toujours, Ron.",
+      "text_markdown": "Avec moi, comme toujours, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Avec moi, comme toujours, Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Ravi d'être ici, Vindy.",
+      "text_markdown": "Ravi d'être ici, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ravi d'être ici, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Aujourd'hui, c'est le dimanche 21 juin 2026.",
+      "text_markdown": "Aujourd'hui, c'est le dimanche 21 juin 2026.",
+      "title": "",
+      "tts": {
+        "text": "Aujourd'hui, c'est le dimanche vingt et un juin deux mille vingt-six.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "La semaine dernière, nous avons parlé de nous ; aujourd'hui, nous prenons l'autre direction — jusqu'aux centres du pouvoir.",
+      "text_markdown": "La semaine dernière, nous avons parlé de nous ; aujourd'hui, nous prenons l'autre direction — jusqu'aux centres du pouvoir.",
+      "title": "",
+      "tts": {
+        "text": "La semaine dernière, nous avons parlé de nous ; aujourd'hui, nous prenons l'autre direction — jusqu'aux centres du pouvoir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Qui contrôle le déploiement de l'IA, qui paie pour l'infrastructure, qui possède le silicium.",
+      "text_markdown": "Qui contrôle le déploiement de l'IA, qui paie pour l'infrastructure, qui possède le silicium.",
+      "title": "",
+      "tts": {
+        "text": "Qui contrôle le déploiement de l'IA, qui paie pour l'infrastructure, qui possède le silicium.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "À suivre — le Département du Commerce américain a retiré un modèle américain de l'usage public vendredi dernier, et nous allons commencer par là.",
+      "text_markdown": "À suivre — le Département du Commerce américain a retiré un modèle américain de l'usage public vendredi dernier, et nous allons commencer par là.",
+      "title": "",
+      "tts": {
+        "text": "À suivre — le Département du Commerce américain a retiré un modèle américain de l'usage public vendredi dernier, et nous allons commencer par là.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "Ensuite, l'expansion des centres de données, où les annonces et la réalité du terrain ne correspondent pas.",
+      "text_markdown": "Ensuite, l'expansion des centres de données, où les annonces et la réalité du terrain ne correspondent pas.",
+      "title": "",
+      "tts": {
+        "text": "Ensuite, l'expansion des centres de données, où les annonces et la réalité du terrain ne correspondent pas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "Ensuite, la comparaison entre les États-Unis et la Chine, avec le cliché remplacé par la véritable contrainte limitante.",
+      "text_markdown": "Ensuite, la comparaison entre les États-Unis et la Chine, avec le cliché remplacé par la véritable contrainte limitante.",
+      "title": "",
+      "tts": {
+        "text": "Ensuite, la comparaison entre les États-Unis et la Chine, avec le cliché remplacé par la véritable contrainte limitante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "Et le concept de la semaine — une seule ligne dans le bilan d'Oracle qui vous dit presque tout.",
+      "text_markdown": "Et le concept de la semaine — une seule ligne dans le bilan d'Oracle qui vous dit presque tout.",
+      "title": "",
+      "tts": {
+        "text": "Et le concept de la semaine — une seule ligne dans le bilan d'Oracle qui vous dit presque tout.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Ron, commençons avec Anthropic.",
+      "text_markdown": "Ron, commençons avec Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, commençons avec Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Que s'est-il passé le douze juin.",
+      "text_markdown": "Que s'est-il passé le douze juin.",
+      "title": "",
+      "tts": {
+        "text": "Que s'est-il passé le douze juin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "À dix-sept heures vingt-et-une, heure de l'Est, le vendredi douze juin, Anthropic a mis hors ligne ses deux nouveaux modèles — Claude Mythos cinq et Claude Fable cinq.",
+      "text_markdown": "À dix-sept heures vingt-et-une, heure de l'Est, le vendredi douze juin, Anthropic a mis hors ligne ses deux nouveaux modèles — Claude Mythos cinq et Claude Fable cinq.",
+      "title": "",
+      "tts": {
+        "text": "À dix-sept heures vingt-et-une, heure de l'Est, le vendredi douze juin, Anthropic a mis hors ligne ses deux nouveaux modèles — Claude Mythos cinq et Claude Fable cinq.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Pas pour maintenance, pas pour un examen de sécurité de leur propre initiative.",
+      "text_markdown": "Pas pour maintenance, pas pour un examen de sécurité de leur propre initiative.",
+      "title": "",
+      "tts": {
+        "text": "Pas pour maintenance, pas pour un examen de sécurité de leur propre initiative.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Ils les ont retirés car le Département du Commerce américain a émis une directive citant des contrôles à l'exportation.",
+      "text_markdown": "Ils les ont retirés car le Département du Commerce américain a émis une directive citant des contrôles à l'exportation.",
+      "title": "",
+      "tts": {
+        "text": "Ils les ont retirés car le Département du Commerce américain a émis une directive citant des contrôles à l'exportation.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "Quelle était la raison technique.",
+      "text_markdown": "Quelle était la raison technique.",
+      "title": "",
+      "tts": {
+        "text": "Quelle était la raison technique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Un jailbreak a été démontré, apparemment par une autre entreprise, qui a produit un résultat que le Commerce a considéré comme soumis à des contrôles à l'exportation.",
+      "text_markdown": "Un jailbreak a été démontré, apparemment par une autre entreprise, qui a produit un résultat que le Commerce a considéré comme soumis à des contrôles à l'exportation.",
+      "title": "",
+      "tts": {
+        "text": "Un jailbreak a été démontré, apparemment par une autre entreprise, qui a produit un résultat que le Commerce a considéré comme soumis à des contrôles à l'exportation.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Fortune a rapporté qu'Amazon était celui qui avait alerté la Maison Blanche.",
+      "text_markdown": "Fortune a rapporté qu'Amazon était celui qui avait alerté la Maison Blanche.",
+      "title": "",
+      "tts": {
+        "text": "Fortune a rapporté qu'Amazon était celui qui avait alerté la Maison Blanche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "Et comment Anthropic a-t-il réagi.",
+      "text_markdown": "Et comment Anthropic a-t-il réagi.",
+      "title": "",
+      "tts": {
+        "text": "Et comment Anthropic a-t-il réagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Anthropic conteste publiquement la justification.",
+      "text_markdown": "Anthropic conteste publiquement la justification.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic conteste publiquement la justification.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "Leur déclaration a qualifié le jailbreak — et je cite — de « étroit, non universel », et a ajouté que le même résultat est disponible à partir d'autres modèles, y compris le GPT-cinq-point-cinq d'OpenAI.",
+      "text_markdown": "Leur déclaration a qualifié le jailbreak — et je cite — de « étroit, non universel », et a ajouté que le même résultat est disponible à partir d'autres modèles, y compris le GPT-cinq-point-cinq d'OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Leur déclaration a qualifié le jailbreak — et je cite — de « étroit, non universel », et a ajouté que le même résultat est disponible à partir d'autres modèles, y compris le GPT cinq point cinq d'OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "Leur ligne de résumé : « l'action du gouvernement est basée sur un malentendu. »",
+      "text_markdown": "Leur ligne de résumé : « l'action du gouvernement est basée sur un malentendu. »",
+      "title": "",
+      "tts": {
+        "text": "Leur ligne de résumé : « l'action du gouvernement est basée sur un malentendu. »",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "C'est un désaccord inhabituellement direct avec le gouvernement américain pour un laboratoire d'IA.",
+      "text_markdown": "C'est un désaccord inhabituellement direct avec le gouvernement américain pour un laboratoire d'IA.",
+      "title": "",
+      "tts": {
+        "text": "C'est un désaccord inhabituellement direct avec le gouvernement américain pour un laboratoire d'IA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Oui, et le fait structurel sous-jacent est le titre principal.",
+      "text_markdown": "Oui, et le fait structurel sous-jacent est le titre principal.",
+      "title": "",
+      "tts": {
+        "text": "Oui, et le fait structurel sous-jacent est le titre principal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Le Commerce peut désormais ordonner à un laboratoire d'IA américain privé de mettre un modèle hors ligne, en citant des contrôles à l'exportation, et cet ordre est exécuté dans les soixante-douze heures.",
+      "text_markdown": "Le Commerce peut désormais ordonner à un laboratoire d'IA américain privé de mettre un modèle hors ligne, en citant des contrôles à l'exportation, et cet ordre est exécuté dans les soixante-douze heures.",
+      "title": "",
+      "tts": {
+        "text": "Le Commerce peut désormais ordonner à un laboratoire d'IA américain privé de mettre un modèle hors ligne, en citant des contrôles à l'exportation, et cet ordre est exécuté dans les soixante-douze heures.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Que vous pensiez ou non que l'ordre était juste.",
+      "text_markdown": "Que vous pensiez ou non que l'ordre était juste.",
+      "title": "",
+      "tts": {
+        "text": "Que vous pensiez ou non que l'ordre était juste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "Que vous pensiez ou non que l'ordre était juste.",
+      "text_markdown": "Que vous pensiez ou non que l'ordre était juste.",
+      "title": "",
+      "tts": {
+        "text": "Que vous pensiez ou non que l'ordre était juste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "L'autorité elle-même, la rapidité et le précédent sont ce qui compte.",
+      "text_markdown": "L'autorité elle-même, la rapidité et le précédent sont ce qui compte.",
+      "title": "",
+      "tts": {
+        "text": "L'autorité elle-même, la rapidité et le précédent sont ce qui compte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "Et le rôle d'Amazon ici.",
+      "text_markdown": "Et le rôle d'Amazon ici.",
+      "title": "",
+      "tts": {
+        "text": "Et le rôle d'Amazon ici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "C'est la partie à surveiller.",
+      "text_markdown": "C'est la partie à surveiller.",
+      "title": "",
+      "tts": {
+        "text": "C'est la partie à surveiller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Amazon est un investisseur majeur d'Anthropic et est également en concurrence avec Anthropic sur le marché des modèles de fondation grâce à ses propres travaux.",
+      "text_markdown": "Amazon est un investisseur majeur d'Anthropic et est également en concurrence avec Anthropic sur le marché des modèles de fondation grâce à ses propres travaux.",
+      "title": "",
+      "tts": {
+        "text": "Amazon est un investisseur majeur d'Anthropic et est également en concurrence avec Anthropic sur le marché des modèles de fondation grâce à ses propres travaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "Si l'avertissement d'un concurrent au gouvernement peut mettre hors ligne le modèle d'un rival en un long week-end, cela donne une nouvelle forme aux dynamiques de l'industrie.",
+      "text_markdown": "Si l'avertissement d'un concurrent au gouvernement peut mettre hors ligne le modèle d'un rival en un long week-end, cela donne une nouvelle forme aux dynamiques de l'industrie.",
+      "title": "",
+      "tts": {
+        "text": "Si l'avertissement d'un concurrent au gouvernement peut mettre hors ligne le modèle d'un rival en un long week-end, cela donne une nouvelle forme aux dynamiques de l'industrie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Passons au déploiement.",
+      "text_markdown": "Passons au déploiement.",
+      "title": "",
+      "tts": {
+        "text": "Passons au déploiement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Stargate — l'initiative de centre de données d'OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — l'initiative de centre de données d'OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — l'initiative de centre de données d'OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Quels sont les chiffres réels.",
+      "text_markdown": "Quels sont les chiffres réels.",
+      "title": "",
+      "tts": {
+        "text": "Quels sont les chiffres réels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "Stargate a annoncé onze gigawatts de capacité aux U.S.",
+      "text_markdown": "Stargate a annoncé onze gigawatts de capacité aux U.S.",
+      "title": "",
+      "tts": {
+        "text": "Stargate a annoncé onze gigawatts de capacité aux U.S.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "À la mi-juin, environ deux cents mégawatts sont opérationnels, sur le site d'Abilene au Texas, Phase Un.",
+      "text_markdown": "À la mi-juin, environ deux cents mégawatts sont opérationnels, sur le site d'Abilene au Texas, Phase Un.",
+      "title": "",
+      "tts": {
+        "text": "À la mi-juin, environ deux cents mégawatts sont opérationnels, sur le site d'Abilene au Texas, Phase Un.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Onze gigawatts annoncés, deux cents mégawatts branchés.",
+      "text_markdown": "Onze gigawatts annoncés, deux cents mégawatts branchés.",
+      "title": "",
+      "tts": {
+        "text": "Onze gigawatts annoncés, deux cents mégawatts branchés.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "C'est tout l'écart en une phrase.",
+      "text_markdown": "C'est tout l'écart en une phrase.",
+      "title": "",
+      "tts": {
+        "text": "C'est tout l'écart en une phrase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Oui, et l'exemple le plus clair se trouve au Nouveau-Mexique.",
+      "text_markdown": "Oui, et l'exemple le plus clair se trouve au Nouveau-Mexique.",
+      "title": "",
+      "tts": {
+        "text": "Oui, et l'exemple le plus clair se trouve au Nouveau-Mexique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "Le site du comté de Doña Ana est le plus grand campus Stargate unique, prévu pour quatre virgule cinq gigawatts.",
+      "text_markdown": "Le site du comté de Doña Ana est le plus grand campus Stargate unique, prévu pour quatre virgule cinq gigawatts.",
+      "title": "",
+      "tts": {
+        "text": "Le site du comté de Doña Ana est le plus grand campus Stargate unique, prévu pour quatre virgule cinq gigawatts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "Dix-huit milliards de dollars de financement de projet syndiqué sont en place — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus un chèque de trois milliards de dollars en fonds propres de Blue Owl.",
+      "text_markdown": "Dix-huit milliards de dollars de financement de projet syndiqué sont en place — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus un chèque de trois milliards de dollars en fonds propres de Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Dix-huit milliards de dollars de financement de projet syndiqué sont en place — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, M U F G — plus un chèque de trois milliards de dollars en fonds propres de Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "Et l'état de la construction sur le terrain.",
+      "text_markdown": "Et l'état de la construction sur le terrain.",
+      "title": "",
+      "tts": {
+        "text": "Et l'état de la construction sur le terrain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Zéro coup de pelle donné jusqu'à présent.",
+      "text_markdown": "Zéro coup de pelle donné jusqu'à présent.",
+      "title": "",
+      "tts": {
+        "text": "Zéro coup de pelle donné jusqu'à présent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "Le site attend un permis de qualité de l'air du New Mexico Environment Department, initialement prévu pour le vingt-deux avril, maintenant repoussé au vingt-et-un juillet après plus de sept mille commentaires publics.",
+      "text_markdown": "Le site attend un permis de qualité de l'air du New Mexico Environment Department, initialement prévu pour le vingt-deux avril, maintenant repoussé au vingt-et-un juillet après plus de sept mille commentaires publics.",
+      "title": "",
+      "tts": {
+        "text": "Le site attend un permis de qualité de l'air du New Mexico Environment Department, initialement prévu pour le vingt-deux avril, maintenant repoussé au vingt-et-un juillet après plus de sept mille commentaires publics.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "Dix-huit milliards de dollars engagés, zéro coup de pelle donné, une date limite pour le permis de qualité de l'air.",
+      "text_markdown": "Dix-huit milliards de dollars engagés, zéro coup de pelle donné, une date limite pour le permis de qualité de l'air.",
+      "title": "",
+      "tts": {
+        "text": "Dix-huit milliards de dollars engagés, zéro coup de pelle donné, une date limite pour le permis de qualité de l'air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "Qui est le dindon de la farce si les chiffres ne s'équilibrent pas.",
+      "text_markdown": "Qui est le dindon de la farce si les chiffres ne s'équilibrent pas.",
+      "title": "",
+      "tts": {
+        "text": "Qui est le dindon de la farce si les chiffres ne s'équilibrent pas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "C'est là qu'Oracle devient intéressant.",
+      "text_markdown": "C'est là qu'Oracle devient intéressant.",
+      "title": "",
+      "tts": {
+        "text": "C'est là qu'Oracle devient intéressant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "Les Obligations de Performance Restantes d'Oracle — la ligne comptable qui enregistre les revenus contractuels non encore livrés — ont atteint cinq cent cinquante-trois milliards de dollars au troisième trimestre fiscal deux mille vingt-six.",
+      "text_markdown": "Les Obligations de Performance Restantes d'Oracle — la ligne comptable qui enregistre les revenus contractuels non encore livrés — ont atteint cinq cent cinquante-trois milliards de dollars au troisième trimestre fiscal deux mille vingt-six.",
+      "title": "",
+      "tts": {
+        "text": "Les Obligations de Performance Restantes d'Oracle — la ligne comptable qui enregistre les revenus contractuels non encore livrés — ont atteint cinq cent cinquante-trois milliards de dollars au troisième trimestre fiscal deux mille vingt-six.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "C'est une augmentation de trois cent vingt-cinq pour cent d'une année sur l'autre, et la majeure partie de cette hausse est publiquement identifiée avec OpenAI et Stargate.",
+      "text_markdown": "C'est une augmentation de trois cent vingt-cinq pour cent d'une année sur l'autre, et la majeure partie de cette hausse est publiquement identifiée avec OpenAI et Stargate.",
+      "title": "",
+      "tts": {
+        "text": "C'est une augmentation de trois cent vingt-cinq pour cent d'une année sur l'autre, et la majeure partie de cette hausse est publiquement identifiée avec OpenAI et Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "Et du côté de la dette.",
+      "text_markdown": "Et du côté de la dette.",
+      "title": "",
+      "tts": {
+        "text": "Et du côté de la dette.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "Le total des emprunts a atteint cent trente-quatre virgule six milliards de dollars au vingt-huit février.",
+      "text_markdown": "Le total des emprunts a atteint cent trente-quatre virgule six milliards de dollars au vingt-huit février.",
+      "title": "",
+      "tts": {
+        "text": "Le total des emprunts a atteint cent trente-quatre virgule six milliards de dollars au vingt-huit février.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "Oracle a levé trente milliards en février seulement — obligations de qualité investissement plus actions privilégiées convertibles obligatoirement — et a émis quarante-trois milliards de dollars de nouvelles obligations de premier rang sur la période de neuf mois.",
+      "text_markdown": "Oracle a levé trente milliards en février seulement — obligations de qualité investissement plus actions privilégiées convertibles obligatoirement — et a émis quarante-trois milliards de dollars de nouvelles obligations de premier rang sur la période de neuf mois.",
+      "title": "",
+      "tts": {
+        "text": "Oracle a levé trente milliards en février seulement — obligations de qualité investissement plus actions privilégiées convertibles obligatoirement — et a émis quarante-trois milliards de dollars de nouvelles obligations de premier rang sur la période de neuf mois.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Alors, résumons la situation.",
+      "text_markdown": "Alors, résumons la situation.",
+      "title": "",
+      "tts": {
+        "text": "Alors, résumons la situation.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Cinq cent cinquante-trois milliards de dollars de promesses, cent trente-quatre milliards de dollars de dettes, et un gros client supportant la majeure partie du risque.",
+      "text_markdown": "Cinq cent cinquante-trois milliards de dollars de promesses, cent trente-quatre milliards de dollars de dettes, et un gros client supportant la majeure partie du risque.",
+      "title": "",
+      "tts": {
+        "text": "Cinq cent cinquante-trois milliards de dollars de promesses, cent trente-quatre milliards de dollars de dettes, et un gros client supportant la majeure partie du risque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "C'est la structure du déploiement en une phrase.",
+      "text_markdown": "C'est la structure du déploiement en une phrase.",
+      "title": "",
+      "tts": {
+        "text": "C'est la structure du déploiement en une phrase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "Passons à la comparaison entre les États-Unis et la Chine.",
+      "text_markdown": "Passons à la comparaison entre les États-Unis et la Chine.",
+      "title": "",
+      "tts": {
+        "text": "Passons à la comparaison entre les États-Unis et la Chine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "Le cliché est que la Chine a quelques mois de retard.",
+      "text_markdown": "Le cliché est que la Chine a quelques mois de retard.",
+      "title": "",
+      "tts": {
+        "text": "Le cliché est que la Chine a quelques mois de retard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "Le cliché est faux car il mesure la mauvaise chose.",
+      "text_markdown": "Le cliché est faux car il mesure la mauvaise chose.",
+      "title": "",
+      "tts": {
+        "text": "Le cliché est faux car il mesure la mauvaise chose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Le lundi neuf juin, Bloomberg a rapporté un projet de plan chinois de la Commission nationale du développement et de la réforme — deux mille milliards de yuans, soit environ deux cent quatre-vingt-quinze milliards de dollars, pour un réseau national de centres de données d'IA d'ici deux mille vingt-huit.",
+      "text_markdown": "Le lundi neuf juin, Bloomberg a rapporté un projet de plan chinois de la Commission nationale du développement et de la réforme — deux mille milliards de yuans, soit environ deux cent quatre-vingt-quinze milliards de dollars, pour un réseau national de centres de données d'IA d'ici deux mille vingt-huit.",
+      "title": "",
+      "tts": {
+        "text": "Le lundi neuf juin, Bloomberg a rapporté un projet de plan chinois de la Commission nationale du développement et de la réforme — deux mille milliards de yuans, soit environ deux cent quatre-vingt-quinze milliards de dollars, pour un réseau national de centres de données d'intelligence artificielle d'ici deux mille vingt-huit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "Le plan exige quatre-vingts pour cent de silicium domestique et serait exploité comme un tissu de calcul interconnecté unique par China Mobile et China Telecom.",
+      "text_markdown": "Le plan exige quatre-vingts pour cent de silicium domestique et serait exploité comme un tissu de calcul interconnecté unique par China Mobile et China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Le plan exige quatre-vingts pour cent de silicium domestique et serait exploité comme un tissu de calcul interconnecté unique par China Mobile et China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "Et où est le piège dans ce plan ?",
+      "text_markdown": "Et où est le piège dans ce plan ?",
+      "title": "",
+      "tts": {
+        "text": "Et où est le piège dans ce plan ?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "Deux mille milliards de yuans, quatre-vingts pour cent de silicium domestique, échéance deux mille vingt-huit — et le piège est que la contrainte principale n'est pas les puces logiques, mais la mémoire à large bande passante.",
+      "text_markdown": "Deux mille milliards de yuans, quatre-vingts pour cent de silicium domestique, échéance deux mille vingt-huit — et le piège est que la contrainte principale n'est pas les puces logiques, mais la mémoire à large bande passante.",
+      "title": "",
+      "tts": {
+        "text": "Deux mille milliards de yuans, quatre-vingts pour cent de silicium domestique, échéance deux mille vingt-huit — et le piège est que la contrainte principale n'est pas les puces logiques, mais la mémoire à large bande passante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "Expliquez-nous cela.",
+      "text_markdown": "Expliquez-nous cela.",
+      "title": "",
+      "tts": {
+        "text": "Expliquez-nous cela.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "Chaque accélérateur d'IA a besoin de piles HBM boulonnées sur la puce logique.",
+      "text_markdown": "Chaque accélérateur d'IA a besoin de piles HBM boulonnées sur la puce logique.",
+      "title": "",
+      "tts": {
+        "text": "Chaque accélérateur d'intelligence artificielle a besoin de piles H B M boulonnées sur la puce logique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Sans HBM, la puce est un presse-papier.",
+      "text_markdown": "Sans HBM, la puce est un presse-papier.",
+      "title": "",
+      "tts": {
+        "text": "Sans H B M, la puce est un presse-papier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "La Chine a stocké environ treize millions de piles HBM avant la fermeture des contrôles à l'exportation — onze virgule quatre millions provenant de Samsung seulement.",
+      "text_markdown": "La Chine a stocké environ treize millions de piles HBM avant la fermeture des contrôles à l'exportation — onze virgule quatre millions provenant de Samsung seulement.",
+      "title": "",
+      "tts": {
+        "text": "La Chine a stocké environ treize millions de piles H B M avant la fermeture des contrôles à l'exportation — onze virgule quatre millions provenant de Samsung seulement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Aux ratios d'encapsulation Huawei Ascend neuf cent dix C, ce stock est suffisant pour environ un virgule six million de puces.",
+      "text_markdown": "Aux ratios d'encapsulation Huawei Ascend neuf cent dix C, ce stock est suffisant pour environ un virgule six million de puces.",
+      "title": "",
+      "tts": {
+        "text": "Aux ratios d'encapsulation Huawei Ascend neuf cent dix C, ce stock est suffisant pour environ un virgule six million de puces.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "Et puis l'approvisionnement s'épuise.",
+      "text_markdown": "Et puis l'approvisionnement s'épuise.",
+      "title": "",
+      "tts": {
+        "text": "Et puis l'approvisionnement s'épuise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "Alors l'approvisionnement s'épuise — treize millions de piles HBM, suffisantes pour un virgule six million de puces, et c'est le plafond.",
+      "text_markdown": "Alors l'approvisionnement s'épuise — treize millions de piles HBM, suffisantes pour un virgule six million de puces, et c'est le plafond.",
+      "title": "",
+      "tts": {
+        "text": "Alors l'approvisionnement s'épuise — treize millions de piles H B M, suffisantes pour un virgule six million de puces, et c'est le plafond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "Le HBM chinois domestique, de CXMT, est en bonne voie pour environ deux millions de piles en deux mille vingt-six — suffisant pour peut-être deux cent cinquante à trois cent mille accélérateurs.",
+      "text_markdown": "Le HBM chinois domestique, de CXMT, est en bonne voie pour environ deux millions de piles en deux mille vingt-six — suffisant pour peut-être deux cent cinquante à trois cent mille accélérateurs.",
+      "title": "",
+      "tts": {
+        "text": "Le H B M chinois domestique, de C X M T, est en bonne voie pour environ deux millions de piles en deux mille vingt-six — suffisant pour peut-être deux cent cinquante à trois cent mille accélérateurs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "Alors, à quoi ressemblent les plans de silicium de Huawei ?",
+      "text_markdown": "Alors, à quoi ressemblent les plans de silicium de Huawei ?",
+      "title": "",
+      "tts": {
+        "text": "Alors, à quoi ressemblent les plans de silicium de Huawei ?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "Bloomberg, citant les plans de Huawei, a estimé la production de deux mille vingt-six à six cent mille puces neuf cent dix C, la gamme de produits Ascend plus large atteignant jusqu'à un virgule six million de matrices au total.",
+      "text_markdown": "Bloomberg, citant les plans de Huawei, a estimé la production de deux mille vingt-six à six cent mille puces neuf cent dix C, la gamme de produits Ascend plus large atteignant jusqu'à un virgule six million de matrices au total.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, citant les plans de Huawei, a estimé la production de deux mille vingt-six à six cent mille puces neuf cent dix C, la gamme de produits Ascend plus large atteignant jusqu'à un virgule six million de matrices au total.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "Ce nombre, six cent mille, est un objectif, pas une production livrée.",
+      "text_markdown": "Ce nombre, six cent mille, est un objectif, pas une production livrée.",
+      "title": "",
+      "tts": {
+        "text": "Ce nombre, six cent mille, est un objectif, pas une production livrée.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "Et séparément, avant que les contrôles à l'exportation ne les coupent, Huawei a accumulé plus de deux virgule neuf millions de matrices Ascend fabriquées chez TSMC via les sociétés écrans Sophgo et Bitmain.",
+      "text_markdown": "Et séparément, avant que les contrôles à l'exportation ne les coupent, Huawei a accumulé plus de deux virgule neuf millions de matrices Ascend fabriquées chez TSMC via les sociétés écrans Sophgo et Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "Et séparément, avant que les contrôles à l'exportation ne les coupent, Huawei a accumulé plus de deux virgule neuf millions de matrices Ascend fabriquées chez T S M C via les sociétés écrans Sophgo et Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "Le récit selon lequel les contrôles à l'exportation fonctionnent présente un trou de deux virgule neuf millions de matrices.",
+      "text_markdown": "Le récit selon lequel les contrôles à l'exportation fonctionnent présente un trou de deux virgule neuf millions de matrices.",
+      "title": "",
+      "tts": {
+        "text": "Le récit selon lequel les contrôles à l'exportation fonctionnent présente un trou de deux virgule neuf millions de matrices.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "Passons aux titres, rapidement.",
+      "text_markdown": "Passons aux titres, rapidement.",
+      "title": "",
+      "tts": {
+        "text": "Passons aux titres, rapidement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "Premier titre cette semaine, Broadcom.",
+      "text_markdown": "Premier titre cette semaine, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Premier titre cette semaine, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "La capitalisation boursière de Broadcom est d'environ deux mille milliards de dollars.",
+      "text_markdown": "La capitalisation boursière de Broadcom est d'environ deux mille milliards de dollars.",
+      "title": "",
+      "tts": {
+        "text": "La capitalisation boursière de Broadcom est d'environ deux mille milliards de dollars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "Leur PDG, Hock Tan, a réitéré un objectif de revenus de cent milliards de dollars pour les semi-conducteurs d'IA pour l'exercice deux mille vingt-sept lors de la conférence téléphonique sur les résultats du trois juin, soutenu par environ soixante-treize milliards de dollars de commandes d'IA en attente et d'accords à long terme avec Alphabet et Meta s'étendant jusqu'à deux mille trente et un.",
+      "text_markdown": "Leur PDG, Hock Tan, a réitéré un objectif de revenus de cent milliards de dollars pour les semi-conducteurs d'IA pour l'exercice deux mille vingt-sept lors de la conférence téléphonique sur les résultats du trois juin, soutenu par environ soixante-treize milliards de dollars de commandes d'IA en attente et d'accords à long terme avec Alphabet et Meta s'étendant jusqu'à deux mille trente et un.",
+      "title": "",
+      "tts": {
+        "text": "Leur P D G, Hock Tan, a réitéré un objectif de revenus de cent milliards de dollars pour les semi-conducteurs d'intelligence artificielle pour l'exercice deux mille vingt-sept lors de la conférence téléphonique sur les résultats du trois juin, soutenu par environ soixante-treize milliards de dollars de commandes d'intelligence artificielle en attente et d'accords à long terme avec Alphabet et Meta s'étendant jusqu'à deux mille trente et un.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "Deux mille milliards de dollars de capitalisation boursière, objectif de revenus d'IA de cent milliards de dollars, presque aucune reconnaissance de marque auprès du grand public.",
+      "text_markdown": "Deux mille milliards de dollars de capitalisation boursière, objectif de revenus d'IA de cent milliards de dollars, presque aucune reconnaissance de marque auprès du grand public.",
+      "title": "",
+      "tts": {
+        "text": "Deux mille milliards de dollars de capitalisation boursière, objectif de revenus d'intelligence artificielle de cent milliards de dollars, presque aucune reconnaissance de marque auprès du grand public.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "Deuxième titre cette semaine, ASML.",
+      "text_markdown": "Deuxième titre cette semaine, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Deuxième titre cette semaine, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "ASML, l'entreprise néerlandaise qui construit les machines de lithographie dont dépendent toutes les logiques de pointe, vend son système High-N.A. E.U.V. pour environ trois cent soixante-dix millions de dollars.",
+      "text_markdown": "ASML, l'entreprise néerlandaise qui construit les machines de lithographie dont dépendent toutes les logiques de pointe, vend son système High-N.A. E.U.V. pour environ trois cent soixante-dix millions de dollars.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, l'entreprise néerlandaise qui construit les machines de lithographie dont dépendent toutes les logiques de pointe, vend son système High N A E U V pour environ trois cent soixante-dix millions de dollars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "La capacité de production mondiale est inférieure à vingt unités par an.",
+      "text_markdown": "La capacité de production mondiale est inférieure à vingt unités par an.",
+      "title": "",
+      "tts": {
+        "text": "La capacité de production mondiale est inférieure à vingt unités par an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "Trois cent soixante-dix millions de dollars par machine, moins de vingt machines par an, une seule entreprise les fabrique — c'est le véritable goulot d'étranglement du silicium mondial, pas la politique.",
+      "text_markdown": "Trois cent soixante-dix millions de dollars par machine, moins de vingt machines par an, une seule entreprise les fabrique — c'est le véritable goulot d'étranglement du silicium mondial, pas la politique.",
+      "title": "",
+      "tts": {
+        "text": "Trois cent soixante-dix millions de dollars par machine, moins de vingt machines par an, une seule entreprise les fabrique — c'est le véritable goulot d'étranglement du silicium mondial, pas la politique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "Troisième titre cette semaine, les contrôles à l'exportation.",
+      "text_markdown": "Troisième titre cette semaine, les contrôles à l'exportation.",
+      "title": "",
+      "tts": {
+        "text": "Troisième titre cette semaine, les contrôles à l'exportation.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "Le Commerce a annulé la règle de diffusion de l'IA de l'ère Biden le treize mai deux mille vingt-cinq, et n'a pas publié de nouvelle clarification de l'application du B.I.S. avant le trente et un mai deux mille vingt-six.",
+      "text_markdown": "Le Commerce a annulé la règle de diffusion de l'IA de l'ère Biden le treize mai deux mille vingt-cinq, et n'a pas publié de nouvelle clarification de l'application du B.I.S. avant le trente et un mai deux mille vingt-six.",
+      "title": "",
+      "tts": {
+        "text": "Le Commerce a annulé la règle de diffusion de l'intelligence artificielle de l'ère Biden le treize mai deux mille vingt-cinq, et n'a pas publié de nouvelle clarification de l'application du B I S avant le trente et un mai deux mille vingt-six.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "C'est une fenêtre d'environ un an pendant laquelle les exigences de licence n'ont pas été activement appliquées.",
+      "text_markdown": "C'est une fenêtre d'environ un an pendant laquelle les exigences de licence n'ont pas été activement appliquées.",
+      "title": "",
+      "tts": {
+        "text": "C'est une fenêtre d'environ un an pendant laquelle les exigences de licence n'ont pas été activement appliquées.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "Alors, comptez les jours.",
+      "text_markdown": "Alors, comptez les jours.",
+      "title": "",
+      "tts": {
+        "text": "Alors, comptez les jours.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "Soixante-douze heures pour arrêter un modèle américain, trois cent quatre-vingts jours pour faire appliquer une règle d'exportation de puces — cette asymétrie est le spectacle.",
+      "text_markdown": "Soixante-douze heures pour arrêter un modèle américain, trois cent quatre-vingts jours pour faire appliquer une règle d'exportation de puces — cette asymétrie est le spectacle.",
+      "title": "",
+      "tts": {
+        "text": "Soixante-douze heures pour arrêter un modèle américain, trois cent quatre-vingts jours pour faire appliquer une règle d'exportation de puces — cette asymétrie est le spectacle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "Et où sont allées les puces pendant ces trois cent quatre-vingts jours.",
+      "text_markdown": "Et où sont allées les puces pendant ces trois cent quatre-vingts jours.",
+      "title": "",
+      "tts": {
+        "text": "Et où sont allées les puces pendant ces trois cent quatre-vingts jours.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "L'Asie du Sud-Est est l'endroit où la plupart d'entre elles sont allées.",
+      "text_markdown": "L'Asie du Sud-Est est l'endroit où la plupart d'entre elles sont allées.",
+      "title": "",
+      "tts": {
+        "text": "L'Asie du Sud-Est est l'endroit où la plupart d'entre elles sont allées.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "Le ministère de la Justice a levé le secret sur des actes d'accusation fin mars, alléguant que des puces Nvidia H cent et A cent avaient été acheminées via des intermédiaires malaisiens et singapouriens.",
+      "text_markdown": "Le ministère de la Justice a levé le secret sur des actes d'accusation fin mars, alléguant que des puces Nvidia H cent et A cent avaient été acheminées via des intermédiaires malaisiens et singapouriens.",
+      "title": "",
+      "tts": {
+        "text": "Le ministère de la Justice a levé le secret sur des actes d'accusation fin mars, alléguant que des puces Nvidia H cent et A cent avaient été acheminées via des intermédiaires malaisiens et singapouriens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "Fortune a publié des textes chiffrés en mai montrant la logistique, et Super Micro est impliquée dans une affaire de société écran de deux milliards et demi de dollars.",
+      "text_markdown": "Fortune a publié des textes chiffrés en mai montrant la logistique, et Super Micro est impliquée dans une affaire de société écran de deux milliards et demi de dollars.",
+      "title": "",
+      "tts": {
+        "text": "Fortune a publié des textes chiffrés en mai montrant la logistique, et Super Micro est impliquée dans une affaire de société écran de deux milliards et demi de dollars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "L'administration Trump serait en train d'élaborer de nouvelles restrictions à l'exportation de puces visant spécifiquement la Malaisie et la Thaïlande.",
+      "text_markdown": "L'administration Trump serait en train d'élaborer de nouvelles restrictions à l'exportation de puces visant spécifiquement la Malaisie et la Thaïlande.",
+      "title": "",
+      "tts": {
+        "text": "L'administration Trump serait en train d'élaborer de nouvelles restrictions à l'exportation de puces visant spécifiquement la Malaisie et la Thaïlande.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "Donc, le tableau en une phrase.",
+      "text_markdown": "Donc, le tableau en une phrase.",
+      "title": "",
+      "tts": {
+        "text": "Donc, le tableau en une phrase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Les puces ne s'envolent pas vers Shenzhen — elles s'envolent d'abord vers Penang et Singapour.",
+      "text_markdown": "Les puces ne s'envolent pas vers Shenzhen — elles s'envolent d'abord vers Penang et Singapour.",
+      "title": "",
+      "tts": {
+        "text": "Les puces ne s'envolent pas vers Shenzhen — elles s'envolent d'abord vers Penang et Singapour.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "Concept de la semaine — Obligations de performance restantes.",
+      "text_markdown": "Concept de la semaine — Obligations de performance restantes.",
+      "title": "",
+      "tts": {
+        "text": "Concept de la semaine — Obligations de performance restantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "Les O.P.R. sont une ligne comptable qui enregistre la valeur en dollars des contrats qu'une entreprise a signés mais n'a pas encore exécutés.",
+      "text_markdown": "Les O.P.R. sont une ligne comptable qui enregistre la valeur en dollars des contrats qu'une entreprise a signés mais n'a pas encore exécutés.",
+      "title": "",
+      "tts": {
+        "text": "Les O P R sont une ligne comptable qui enregistre la valeur en dollars des contrats qu'une entreprise a signés mais n'a pas encore exécutés.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "C'est prospectif — cela vous informe sur les revenus futurs, pas sur l'argent en banque aujourd'hui.",
+      "text_markdown": "C'est prospectif — cela vous informe sur les revenus futurs, pas sur l'argent en banque aujourd'hui.",
+      "title": "",
+      "tts": {
+        "text": "C'est prospectif — cela vous informe sur les revenus futurs, pas sur l'argent en banque aujourd'hui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Et pourquoi est-ce important pour Oracle.",
+      "text_markdown": "Et pourquoi est-ce important pour Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Et pourquoi est-ce important pour Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "Parce que cinq cent cinquante-trois milliards de dollars d'O.P.R., fortement concentrés sur un seul client pour un seul déploiement, signifient qu'Oracle a promis de fournir une quantité énorme de puissance de calcul au cours des prochaines années à un client dont le modèle de revenus est encore en discussion.",
+      "text_markdown": "Parce que cinq cent cinquante-trois milliards de dollars d'O.P.R., fortement concentrés sur un seul client pour un seul déploiement, signifient qu'Oracle a promis de fournir une quantité énorme de puissance de calcul au cours des prochaines années à un client dont le modèle de revenus est encore en discussion.",
+      "title": "",
+      "tts": {
+        "text": "Parce que cinq cent cinquante-trois milliards de dollars d'O P R, fortement concentrés sur un seul client pour un seul déploiement, signifient qu'Oracle a promis de fournir une quantité énorme de puissance de calcul au cours des prochaines années à un client dont le modèle de revenus est encore en discussion.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "Si ces contrats sont exécutés, Oracle a l'affaire de la décennie.",
+      "text_markdown": "Si ces contrats sont exécutés, Oracle a l'affaire de la décennie.",
+      "title": "",
+      "tts": {
+        "text": "Si ces contrats sont exécutés, Oracle a l'affaire de la décennie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "S'ils dérapent — ou sont renégociés — Oracle porte la dette pendant que les contrats se réduisent.",
+      "text_markdown": "S'ils dérapent — ou sont renégociés — Oracle porte la dette pendant que les contrats se réduisent.",
+      "title": "",
+      "tts": {
+        "text": "S'ils dérapent — ou sont renégociés — Oracle porte la dette pendant que les contrats se réduisent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "Alors, quand vous voyez un chiffre d'O.P.R. dans un dépôt technologique.",
+      "text_markdown": "Alors, quand vous voyez un chiffre d'O.P.R. dans un dépôt technologique.",
+      "title": "",
+      "tts": {
+        "text": "Alors, quand vous voyez un chiffre d'O P R dans un dépôt technologique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "Lisez qui sont les clients, à quel point les obligations sont concentrées, et ce qui devrait se passer pour que l'entreprise puisse réellement les exécuter.",
+      "text_markdown": "Lisez qui sont les clients, à quel point les obligations sont concentrées, et ce qui devrait se passer pour que l'entreprise puisse réellement les exécuter.",
+      "title": "",
+      "tts": {
+        "text": "Lisez qui sont les clients, à quel point les obligations sont concentrées, et ce qui devrait se passer pour que l'entreprise puisse réellement les exécuter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "Les O.P.R. sont l'endroit où les porteurs de risques apparaissent dans les notes de bas de page.",
+      "text_markdown": "Les O.P.R. sont l'endroit où les porteurs de risques apparaissent dans les notes de bas de page.",
+      "title": "",
+      "tts": {
+        "text": "Les O P R sont l'endroit où les porteurs de risques apparaissent dans les notes de bas de page.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "Bon endroit pour atterrir.",
+      "text_markdown": "Bon endroit pour atterrir.",
+      "title": "",
+      "tts": {
+        "text": "Bon endroit pour atterrir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Ron, merci pour le résumé.",
+      "text_markdown": "Ron, merci pour le résumé.",
+      "title": "",
+      "tts": {
+        "text": "Ron, merci pour le résumé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "De rien, Vindy — ravi d'être ici.",
+      "text_markdown": "De rien, Vindy — ravi d'être ici.",
+      "title": "",
+      "tts": {
+        "text": "De rien, Vindy — ravi d'être ici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "C'était AI This Week pour le vingt et un juin deux mille vingt-six.",
+      "text_markdown": "C'était AI This Week pour le vingt et un juin deux mille vingt-six.",
+      "title": "",
+      "tts": {
+        "text": "C'était AI This Week pour le vingt et un juin deux mille vingt-six.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "La semaine prochaine, retour aux poids ouverts et aux petites structures de recherche.",
+      "text_markdown": "La semaine prochaine, retour aux poids ouverts et aux petites structures de recherche.",
+      "title": "",
+      "tts": {
+        "text": "La semaine prochaine, retour aux poids ouverts et aux petites structures de recherche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "Jusqu'à dimanche prochain, prenez soin de vous.",
+      "text_markdown": "Jusqu'à dimanche prochain, prenez soin de vous.",
+      "title": "",
+      "tts": {
+        "text": "Jusqu'à dimanche prochain, prenez soin de vous.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

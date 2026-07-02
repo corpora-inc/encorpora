@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "nl",
+  "total_segments": 62,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Welkom bij AI This Week. Ik ben Vindy.",
+      "text_markdown": "Welkom bij AI This Week. Ik ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Welkom bij AI This Week. Ik ben Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bij mij, zoals altijd, is Ron.",
+      "text_markdown": "Bij mij, zoals altijd, is Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bij mij, zoals altijd, is Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fijn om hier te zijn.",
+      "text_markdown": "Fijn om hier te zijn.",
+      "title": "",
+      "tts": {
+        "text": "Fijn om hier te zijn.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vandaag is het woensdag 13 mei 2026. Straks: de modellen die deze week zijn uitgebracht. De leaderboards, en waarom je sommige ervan niet meer moet vertrouwen. Ons concept van de week. En het grotere plaatje — de VS heeft net een nieuwe voorzitter van de Federal Reserve gekregen, en dat is belangrijker voor AI dan je misschien denkt.",
+      "text_markdown": "Vandaag is het woensdag 13 mei 2026. Straks: de modellen die deze week zijn uitgebracht. De leaderboards, en waarom je sommige ervan niet meer moet vertrouwen. Ons concept van de week. En het grotere plaatje — de VS heeft net een nieuwe voorzitter van de Federal Reserve gekregen, en dat is belangrijker voor AI dan je misschien denkt.",
+      "title": "",
+      "tts": {
+        "text": "Vandaag is het woensdag dertien mei tweeduizendzesentwintig. Straks: de modellen die deze week zijn uitgebracht. De leaderboards, en waarom je sommige ervan niet meer moet vertrouwen. Ons concept van de week. En het grotere plaatje — de VS heeft net een nieuwe voorzitter van de Federal Reserve gekregen, en dat is belangrijker voor AI dan je misschien denkt.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, wat is het grootste modelnieuws van deze week?",
+      "text_markdown": "Ron, wat is het grootste modelnieuws van deze week?",
+      "title": "",
+      "tts": {
+        "text": "Ron, wat is het grootste modelnieuws van deze week?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Het standaard brein binnen ChatGPT is veranderd. OpenAI heeft vorige week, op dinsdag 5 mei, een nieuw model genaamd GPT-5.5 Instant uitgerold naar de gratis versie. Als een gratis ChatGPT-antwoord korter of minder vol emoji's aanvoelde, dan is dat de reden.",
+      "text_markdown": "Het standaard brein binnen ChatGPT is veranderd. OpenAI heeft vorige week, op dinsdag 5 mei, een nieuw model genaamd GPT-5.5 Instant uitgerold naar de gratis versie. Als een gratis ChatGPT-antwoord korter of minder vol emoji's aanvoelde, dan is dat de reden.",
+      "title": "",
+      "tts": {
+        "text": "Het standaard brein binnen ChatGPT is veranderd. OpenAI heeft vorige week, op dinsdag vijf mei, een nieuw model genaamd GPT vijf punt vijf Instant uitgerold naar de gratis versie. Als een gratis ChatGPT-antwoord korter of minder vol emoji's aanvoelde, dan is dat de reden.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Korter hoe?",
+      "text_markdown": "Korter hoe?",
+      "title": "",
+      "tts": {
+        "text": "Korter hoe?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "OpenAI zegt dat de nieuwe standaard ongeveer 30% minder woorden en 30% minder regels schrijft dan het model dat het verving. Ze claimen ook een daling van 50% in gehallucineerde beweringen bij de moeilijkste prompts. Denk aan medische vragen, juridische vragen en financiële vragen.",
+      "text_markdown": "OpenAI zegt dat de nieuwe standaard ongeveer 30% minder woorden en 30% minder regels schrijft dan het model dat het verving. Ze claimen ook een daling van 50% in gehallucineerde beweringen bij de moeilijkste prompts. Denk aan medische vragen, juridische vragen en financiële vragen.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI zegt dat de nieuwe standaard ongeveer dertig procent minder woorden en dertig procent minder regels schrijft dan het model dat het verving. Ze claimen ook een daling van vijftig procent in gehallucineerde beweringen bij de moeilijkste prompts. Denk aan medische vragen, juridische vragen en financiële vragen.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Heeft iemand buiten OpenAI die cijfers geverifieerd?",
+      "text_markdown": "Heeft iemand buiten OpenAI die cijfers geverifieerd?",
+      "title": "",
+      "tts": {
+        "text": "Heeft iemand buiten OpenAI die cijfers geverifieerd?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Niet op grote schaal. De onafhankelijke benchmark-mensen, zoals Artificial Analysis, hebben het nieuwe model bovenaan hun algemene intelligentie-index staan. Maar beweringen over hallucinaties zijn traag te verifiëren. Die komen meestal pas na weken naar boven, wanneer mensen het model daadwerkelijk gebruiken.",
+      "text_markdown": "Niet op grote schaal. De onafhankelijke benchmark-mensen, zoals Artificial Analysis, hebben het nieuwe model bovenaan hun algemene intelligentie-index staan. Maar beweringen over hallucinaties zijn traag te verifiëren. Die komen meestal pas na weken naar boven, wanneer mensen het model daadwerkelijk gebruiken.",
+      "title": "",
+      "tts": {
+        "text": "Niet op grote schaal. De onafhankelijke benchmark-mensen, zoals Artificial Analysis, hebben het nieuwe model bovenaan hun algemene intelligentie-index staan. Maar beweringen over hallucinaties zijn traag te verifiëren. Die komen meestal pas na weken naar boven, wanneer mensen het model daadwerkelijk gebruiken.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En aan de open weights kant?",
+      "text_markdown": "En aan de open weights kant?",
+      "title": "",
+      "tts": {
+        "text": "En aan de open weights kant?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Twee belangrijke dingen. Moonshot, het Chinese lab achter het Kimi-model, heeft vorige week, op 7 mei, $2 miljard opgehaald tegen een waardering van $20 miljard. En hun nieuwste model, Kimi K 2.6, heeft zojuist de eerste plaats op OpenRouter ingenomen voor tokenvolume.",
+      "text_markdown": "Twee belangrijke dingen. Moonshot, het Chinese lab achter het Kimi-model, heeft vorige week, op 7 mei, $2 miljard opgehaald tegen een waardering van $20 miljard. En hun nieuwste model, Kimi K 2.6, heeft zojuist de eerste plaats op OpenRouter ingenomen voor tokenvolume.",
+      "title": "",
+      "tts": {
+        "text": "Twee belangrijke dingen. Moonshot, het Chinese lab achter het Kimi-model, heeft vorige week, op zeven mei, twee miljard dollar opgehaald tegen een waardering van twintig miljard dollar. En hun nieuwste model, Kimi K twee punt zes, heeft zojuist de eerste plaats op OpenRouter ingenomen voor tokenvolume.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De eerste plaats? Algemeen?",
+      "text_markdown": "De eerste plaats? Algemeen?",
+      "title": "",
+      "tts": {
+        "text": "De eerste plaats? Algemeen?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Algemeen. Dat is een Chinees open weights model op nummer één op een grote commerciële router. Zes maanden geleden zou dat ondenkbaar zijn geweest.",
+      "text_markdown": "Algemeen. Dat is een Chinees open weights model op nummer één op een grote commerciële router. Zes maanden geleden zou dat ondenkbaar zijn geweest.",
+      "title": "",
+      "tts": {
+        "text": "Algemeen. Dat is een Chinees open weights model op nummer één op een grote commerciële router. Zes maanden geleden zou dat ondenkbaar zijn geweest.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nog iets anders om te vermelden?",
+      "text_markdown": "Nog iets anders om te vermelden?",
+      "title": "",
+      "tts": {
+        "text": "Nog iets anders om te vermelden?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mistral, het Franse lab, heeft eind april Medium 3.5 uitgebracht. Ze voegen de oude scheiding tussen een chatmodel, een redeneermodel en een codemodel samen tot één product. Dezelfde trend die OpenAI begon met de GPT-5 familie. De hele industrie beweegt die kant op.",
+      "text_markdown": "Mistral, het Franse lab, heeft eind april Medium 3.5 uitgebracht. Ze voegen de oude scheiding tussen een chatmodel, een redeneermodel en een codemodel samen tot één product. Dezelfde trend die OpenAI begon met de GPT-5 familie. De hele industrie beweegt die kant op.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, het Franse lab, heeft eind april Medium drie punt vijf uitgebracht. Ze voegen de oude scheiding tussen een chatmodel, een redeneermodel en een codemodel samen tot één product. Dezelfde trend die OpenAI begon met de GPT vijf familie. De hele industrie beweegt die kant op.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En wat komt er hierna?",
+      "text_markdown": "En wat komt er hierna?",
+      "title": "",
+      "tts": {
+        "text": "En wat komt er hierna?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Google I/O is op dinsdag. Iedereen verwacht een nieuwe Gemini, en er is geloofwaardig gerucht over een videogeneratiemodel genaamd Gemini Omni. OpenAI heeft GPT-5.6 in testen. Anthropic heeft een model genaamd Mythos in een privé preview. Volgende week weten we veel meer.",
+      "text_markdown": "Google I/O is op dinsdag. Iedereen verwacht een nieuwe Gemini, en er is geloofwaardig gerucht over een videogeneratiemodel genaamd Gemini Omni. OpenAI heeft GPT-5.6 in testen. Anthropic heeft een model genaamd Mythos in een privé preview. Volgende week weten we veel meer.",
+      "title": "",
+      "tts": {
+        "text": "Google I O is op dinsdag. Iedereen verwacht een nieuwe Gemini, en er is geloofwaardig gerucht over een videogeneratiemodel genaamd Gemini Omni. OpenAI heeft GPT vijf punt zes in testen. Anthropic heeft een model genaamd Mythos in een privé preview. Volgende week weten we veel meer.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oké, laten we het over de leaderboards hebben.",
+      "text_markdown": "Oké, laten we het over de leaderboards hebben.",
+      "title": "",
+      "tts": {
+        "text": "Oké, laten we het over de leaderboards hebben.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, wat beweegt er deze week op de boards?",
+      "text_markdown": "Ron, wat beweegt er deze week op de boards?",
+      "title": "",
+      "tts": {
+        "text": "Ron, wat beweegt er deze week op de boards?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Het echte verhaal deze week zijn niet de scores. Het zijn de scores die je niet meer moet vertrouwen.",
+      "text_markdown": "Het echte verhaal deze week zijn niet de scores. Het zijn de scores die je niet meer moet vertrouwen.",
+      "title": "",
+      "tts": {
+        "text": "Het echte verhaal deze week zijn niet de scores. Het zijn de scores die je niet meer moet vertrouwen.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vertel ons daar wat meer over, Ron.",
+      "text_markdown": "Vertel ons daar wat meer over, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Vertel ons daar wat meer over, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Een groep in Berkeley publiceerde een paper. Ze bouwden een geautomatiseerde scanner die bijna perfect scoorde op elke belangrijke AI-agent benchmark. Zonder daadwerkelijk één enkele taak op te lossen. Ze exploiteerden de manier waarop de benchmarks hun eigen antwoorden controleren.",
+      "text_markdown": "Een groep in Berkeley publiceerde een paper. Ze bouwden een geautomatiseerde scanner die bijna perfect scoorde op elke belangrijke AI-agent benchmark. Zonder daadwerkelijk één enkele taak op te lossen. Ze exploiteerden de manier waarop de benchmarks hun eigen antwoorden controleren.",
+      "title": "",
+      "tts": {
+        "text": "Een groep in Berkeley publiceerde een paper. Ze bouwden een geautomatiseerde scanner die bijna perfect scoorde op elke belangrijke AI-agent benchmark. Zonder daadwerkelijk één enkele taak op te lossen. Ze exploiteerden de manier waarop de benchmarks hun eigen antwoorden controleren.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ze hebben valsgespeeld, en de benchmarks hebben het niet opgemerkt.",
+      "text_markdown": "Ze hebben valsgespeeld, en de benchmarks hebben het niet opgemerkt.",
+      "title": "",
+      "tts": {
+        "text": "Ze hebben valsgespeeld, en de benchmarks hebben het niet opgemerkt.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Klopt. En dezelfde week kondigde OpenAI aan dat ze hun evaluaties op SWE bench Verified stopzetten. Dat is een codeerbenchmark die ze altijd citeerden. Ze hebben het stopgezet omdat meer dan de helft van de moeilijke taken gebroken tests bleken te hebben.",
+      "text_markdown": "Klopt. En dezelfde week kondigde OpenAI aan dat ze hun evaluaties op SWE bench Verified stopzetten. Dat is een codeerbenchmark die ze altijd citeerden. Ze hebben het stopgezet omdat meer dan de helft van de moeilijke taken gebroken tests bleken te hebben.",
+      "title": "",
+      "tts": {
+        "text": "Klopt. En dezelfde week kondigde OpenAI aan dat ze hun evaluaties op SWE bench Verified stopzetten. Dat is een codeerbenchmark die ze altijd citeerden. Ze hebben het stopgezet omdat meer dan de helft van de moeilijke taken gebroken tests bleken te hebben.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dus veel van de cijfers die we het afgelopen jaar hebben gehoord, zijn…",
+      "text_markdown": "Dus veel van de cijfers die we het afgelopen jaar hebben gehoord, zijn…",
+      "title": "",
+      "tts": {
+        "text": "Dus veel van de cijfers die we het afgelopen jaar hebben gehoord, zijn…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Op zijn minst deels opgeblazen. Niet elk model. Niet elke benchmark. Maar het vakgebied is bezig zijn meetlint in het openbaar opnieuw op te bouwen. Nieuwere evaluaties zoals SWE-bench Pro en een project genaamd SWE-rebench proberen dit te verhelpen door de testcode privé te houden.",
+      "text_markdown": "Op zijn minst deels opgeblazen. Niet elk model. Niet elke benchmark. Maar het vakgebied is bezig zijn meetlint in het openbaar opnieuw op te bouwen. Nieuwere evaluaties zoals SWE-bench Pro en een project genaamd SWE-rebench proberen dit te verhelpen door de testcode privé te houden.",
+      "title": "",
+      "tts": {
+        "text": "Op zijn minst deels opgeblazen. Niet elk model. Niet elke benchmark. Maar het vakgebied is bezig zijn meetlint in het openbaar opnieuw op te bouwen. Nieuwere evaluaties zoals SWE bench Pro en een project genaamd SWE rebench proberen dit te verhelpen door de testcode privé te houden.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Gaat er iets daadwerkelijk netjes omhoog?",
+      "text_markdown": "Gaat er iets daadwerkelijk netjes omhoog?",
+      "title": "",
+      "tts": {
+        "text": "Gaat er iets daadwerkelijk netjes omhoog?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Twee dingen, op schonere boards. Halverwege april werd Anthropic's Claude Opus 4.7 het eerste model dat een Elo van 1500 op de LM Arena codeer-leaderboard schoon passeerde. Opus 4.6 had 1500 al een paar weken eerder aangetikt. Vanaf deze week staat Opus 4.7 nog steeds bovenaan, rond de 1569. Anthropic heeft ook een apart model genaamd Mythos in een privé partner preview dat 17 van de 18 agent benchmarks die Anthropic heeft gemeten, leidt.",
+      "text_markdown": "Twee dingen, op schonere boards. Halverwege april werd Anthropic's Claude Opus 4.7 het eerste model dat een Elo van 1500 op de LM Arena codeer-leaderboard schoon passeerde. Opus 4.6 had 1500 al een paar weken eerder aangetikt. Vanaf deze week staat Opus 4.7 nog steeds bovenaan, rond de 1569. Anthropic heeft ook een apart model genaamd Mythos in een privé partner preview dat 17 van de 18 agent benchmarks die Anthropic heeft gemeten, leidt.",
+      "title": "",
+      "tts": {
+        "text": "Twee dingen, op schonere boards. Halverwege april werd Anthropic's Claude Opus vier punt zeven het eerste model dat een Elo van vijftienhonderd op de LM Arena codeer-leaderboard schoon passeerde. Opus vier punt zes had vijftienhonderd al een paar weken eerder aangetikt. Vanaf deze week staat Opus vier punt zeven nog steeds bovenaan, rond de vijftienhonderdnegenenzestig. Anthropic heeft ook een apart model genaamd Mythos in een privé partner preview dat zeventien van de achttien agent benchmarks die Anthropic heeft gemeten, leidt.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Een model dat het publiek niet kan gebruiken, staat bovenaan de boards.",
+      "text_markdown": "Een model dat het publiek niet kan gebruiken, staat bovenaan de boards.",
+      "title": "",
+      "tts": {
+        "text": "Een model dat het publiek niet kan gebruiken, staat bovenaan de boards.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dat is waar we staan. De andere grote trend is de kloof tussen open en gesloten. Die is smaller dan ooit tevoren geweest. DeepSeek V4 Pro en Kimi K 2.6 liggen binnen handbereik van GPT-5.5 op de kruis-evaluatie-intelligentie-index. Die kloof was vroeger enorm. Nu is hij klein.",
+      "text_markdown": "Dat is waar we staan. De andere grote trend is de kloof tussen open en gesloten. Die is smaller dan ooit tevoren geweest. DeepSeek V4 Pro en Kimi K 2.6 liggen binnen handbereik van GPT-5.5 op de kruis-evaluatie-intelligentie-index. Die kloof was vroeger enorm. Nu is hij klein.",
+      "title": "",
+      "tts": {
+        "text": "Dat is waar we staan. De andere grote trend is de kloof tussen open en gesloten. Die is smaller dan ooit tevoren geweest. DeepSeek V vier Pro en Kimi K twee punt zes liggen binnen handbereik van GPT vijf punt vijf op de kruis-evaluatie-intelligentie-index. Die kloof was vroeger enorm. Nu is hij klein.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oké, laten we ingaan op het concept van de week.",
+      "text_markdown": "Oké, laten we ingaan op het concept van de week.",
+      "title": "",
+      "tts": {
+        "text": "Oké, laten we ingaan op het concept van de week.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, het concept van deze week is 'mixture of experts'. Waarom richten we ons op 'mixture of experts'?",
+      "text_markdown": "Ron, het concept van deze week is 'mixture of experts'. Waarom richten we ons op 'mixture of experts'?",
+      "title": "",
+      "tts": {
+        "text": "Ron, het concept van deze week is 'mixture of experts'. Waarom richten we ons op 'mixture of experts'?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Omdat het open-weights-model waar we het net over hadden, Kimi K 2.6, in totaal 1 biljoen parameters heeft. Maar slechts 32 miljard van die parameters draaien op een willekeurig moment. Dat is 'mixture of experts'.",
+      "text_markdown": "Omdat het open-weights-model waar we het net over hadden, Kimi K 2.6, in totaal 1 biljoen parameters heeft. Maar slechts 32 miljard van die parameters draaien op een willekeurig moment. Dat is 'mixture of experts'.",
+      "title": "",
+      "tts": {
+        "text": "Omdat het open-weights-model waar we het net over hadden, Kimi K twee punt zes, in totaal één biljoen parameters heeft. Maar slechts tweeëndertig miljard van die parameters draaien op een willekeurig moment. Dat is 'mixture of experts'.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Leg het ons eens uit voor de mensen die luisteren.",
+      "text_markdown": "Leg het ons eens uit voor de mensen die luisteren.",
+      "title": "",
+      "tts": {
+        "text": "Leg het ons eens uit voor de mensen die luisteren.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Een regulier AI-model is als één gigantisch brein. Elk woord dat het genereert, gebruikt elk deel van het brein. Een 'mixture of experts'-model is meer als een gebouw vol specialisten. Met een receptioniste bij de deur. Voor elk woord kiest de receptioniste twee of drie specialisten om te raadplegen, en de rest van het gebouw blijft stil.",
+      "text_markdown": "Een regulier AI-model is als één gigantisch brein. Elk woord dat het genereert, gebruikt elk deel van het brein. Een 'mixture of experts'-model is meer als een gebouw vol specialisten. Met een receptioniste bij de deur. Voor elk woord kiest de receptioniste twee of drie specialisten om te raadplegen, en de rest van het gebouw blijft stil.",
+      "title": "",
+      "tts": {
+        "text": "Een regulier AI-model is als één gigantisch brein. Elk woord dat het genereert, gebruikt elk deel van het brein. Een 'mixture of experts'-model is meer als een gebouw vol specialisten. Met een receptioniste bij de deur. Voor elk woord kiest de receptioniste twee of drie specialisten om te raadplegen, en de rest van het gebouw blijft stil.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dus het model is op papier enorm, maar goedkoop om te draaien.",
+      "text_markdown": "Dus het model is op papier enorm, maar goedkoop om te draaien.",
+      "title": "",
+      "tts": {
+        "text": "Dus het model is op papier enorm, maar goedkoop om te draaien.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Klopt. Eén biljoen parameters aan capaciteit. Maar per woord slechts tweeëndertig miljard parameters aan rekenkracht. Dat is de truc. De receptioniste is een klein stukje code dat de router heet. De specialisten zijn subnetwerken die experts heten. Het model traint de router en de experts samen, van begin tot het einde.",
+      "text_markdown": "Klopt. Eén biljoen parameters aan capaciteit. Maar per woord slechts tweeëndertig miljard parameters aan rekenkracht. Dat is de truc. De receptioniste is een klein stukje code dat de router heet. De specialisten zijn subnetwerken die experts heten. Het model traint de router en de experts samen, van begin tot het einde.",
+      "title": "",
+      "tts": {
+        "text": "Klopt. Eén biljoen parameters aan capaciteit. Maar per woord slechts tweeëndertig miljard parameters aan rekenkracht. Dat is de truc. De receptioniste is een klein stukje code dat de router heet. De specialisten zijn subnetwerken die experts heten. Het model traint de router en de experts samen, van begin tot het einde.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Doet elk groot grensverleggend model dit?",
+      "text_markdown": "Doet elk groot grensverleggend model dit?",
+      "title": "",
+      "tts": {
+        "text": "Doet elk groot grensverleggend model dit?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De meeste wel, ja. Hoewel de laboratoria het niet altijd bevestigen. GPT-4 was een 'mixture of experts'-model. Het vlaggenschip van DeepSeek is een 'mixture of experts'-model. Mistral levert al 'mixture of experts'-modellen sinds 2023. De nieuwe golf uit China heeft dit ontwerp tot het uiterste gedreven.",
+      "text_markdown": "De meeste wel, ja. Hoewel de laboratoria het niet altijd bevestigen. GPT-4 was een 'mixture of experts'-model. Het vlaggenschip van DeepSeek is een 'mixture of experts'-model. Mistral levert al 'mixture of experts'-modellen sinds 2023. De nieuwe golf uit China heeft dit ontwerp tot het uiterste gedreven.",
+      "title": "",
+      "tts": {
+        "text": "De meeste wel, ja. Hoewel de laboratoria het niet altijd bevestigen. GPT vier was een 'mixture of experts'-model. Het vlaggenschip van DeepSeek is een 'mixture of experts'-model. Mistral levert al 'mixture of experts'-modellen sinds tweeduizend drieëntwintig. De nieuwe golf uit China heeft dit ontwerp tot het uiterste gedreven.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Waarom is dit belangrijk voor iemand die gewoon ChatGPT gebruikt?",
+      "text_markdown": "Waarom is dit belangrijk voor iemand die gewoon ChatGPT gebruikt?",
+      "title": "",
+      "tts": {
+        "text": "Waarom is dit belangrijk voor iemand die gewoon ChatGPT gebruikt?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Twee redenen. Eén. Het is de belangrijkste reden waarom een open-weights-lab in China grensverleggende kwaliteit kan leveren met een fractie van het budget. Twee. Het is de belangrijkste reden waarom één enkele API-aanroep centen kost, geen dollars. Wanneer je prijzen ziet dalen en de kwaliteit hoog blijft, is 'mixture of experts' meestal de oorzaak.",
+      "text_markdown": "Twee redenen. Eén. Het is de belangrijkste reden waarom een open-weights-lab in China grensverleggende kwaliteit kan leveren met een fractie van het budget. Twee. Het is de belangrijkste reden waarom één enkele API-aanroep centen kost, geen dollars. Wanneer je prijzen ziet dalen en de kwaliteit hoog blijft, is 'mixture of experts' meestal de oorzaak.",
+      "title": "",
+      "tts": {
+        "text": "Twee redenen. Eén. Het is de belangrijkste reden waarom een open-weights-lab in China grensverleggende kwaliteit kan leveren met een fractie van het budget. Twee. Het is de belangrijkste reden waarom één enkele API-aanroep centen kost, geen dollars. Wanneer je prijzen ziet dalen en de kwaliteit hoog blijft, 'mixture of experts' is meestal de oorzaak.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mixture of experts. Router. Experts. Sparse activation. Drie woorden om mee te nemen. Laten we nu teruggaan naar het grotere plaatje.",
+      "text_markdown": "Mixture of experts. Router. Experts. Sparse activation. Drie woorden om mee te nemen. Laten we nu teruggaan naar het grotere plaatje.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts. Router. Experts. Sparse activation. Drie woorden om mee te nemen. Laten we nu teruggaan naar het grotere plaatje.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, het grote verhaal buiten onze wereld deze week is de Federal Reserve.",
+      "text_markdown": "Ron, het grote verhaal buiten onze wereld deze week is de Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, het grote verhaal buiten onze wereld deze week is de Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vandaag heeft de Amerikaanse Senaat Kevin Warsh bevestigd als de volgende voorzitter van de Federal Reserve. De stemming was 54 tegen 45. De kleinste marge voor een Fed-voorzitter in de moderne Amerikaanse geschiedenis. Slechts één Democraat stemde tegen de partijlijn in.",
+      "text_markdown": "Vandaag heeft de Amerikaanse Senaat Kevin Warsh bevestigd als de volgende voorzitter van de Federal Reserve. De stemming was 54 tegen 45. De kleinste marge voor een Fed-voorzitter in de moderne Amerikaanse geschiedenis. Slechts één Democraat stemde tegen de partijlijn in.",
+      "title": "",
+      "tts": {
+        "text": "Vandaag heeft de Amerikaanse Senaat Kevin Warsh bevestigd als de volgende voorzitter van de Federal Reserve. De stemming was vierenvijftig tegen vijfenveertig. De kleinste marge voor een Fed-voorzitter in de moderne Amerikaanse geschiedenis. Slechts één Democraat stemde tegen de partijlijn in.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Waarom is dat belangrijk voor AI?",
+      "text_markdown": "Waarom is dat belangrijk voor AI?",
+      "title": "",
+      "tts": {
+        "text": "Waarom is dat belangrijk voor AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Omdat de AI-uitbouw op dit moment wordt beperkt door twee dingen. Elektriciteit en de kapitaalkosten. De Fed bepaalt de kapitaalkosten. En de nieuwe voorzitter heeft verklaard dat hij de rentetarieven sneller wil verlagen dan zijn voorganger zou hebben gedaan.",
+      "text_markdown": "Omdat de AI-uitbouw op dit moment wordt beperkt door twee dingen. Elektriciteit en de kapitaalkosten. De Fed bepaalt de kapitaalkosten. En de nieuwe voorzitter heeft verklaard dat hij de rentetarieven sneller wil verlagen dan zijn voorganger zou hebben gedaan.",
+      "title": "",
+      "tts": {
+        "text": "Omdat de AI-uitbouw op dit moment wordt beperkt door twee dingen. Elektriciteit en de kapitaalkosten. De Fed bepaalt de kapitaalkosten. En de nieuwe voorzitter heeft verklaard dat hij de rentetarieven sneller wil verlagen dan zijn voorganger zou hebben gedaan.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Snellere renteverlagingen maken AI-investeringen goedkoper.",
+      "text_markdown": "Snellere renteverlagingen maken AI-investeringen goedkoper.",
+      "title": "",
+      "tts": {
+        "text": "Snellere renteverlagingen maken AI-investeringen goedkoper.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja. De hyperscalers — Microsoft, Google, Amazon, Meta — zijn dit jaar van plan om ongeveer $700 miljard uit te geven aan kapitaaluitgaven. Het grootste deel daarvan bestaat uit GPU's en datacenters. Een lagere disconteringsvoet zorgt ervoor dat die meerjarige uitbreidingen uitkomen op hogere waarderingen.",
+      "text_markdown": "Ja. De hyperscalers — Microsoft, Google, Amazon, Meta — zijn dit jaar van plan om ongeveer $700 miljard uit te geven aan kapitaaluitgaven. Het grootste deel daarvan bestaat uit GPU's en datacenters. Een lagere disconteringsvoet zorgt ervoor dat die meerjarige uitbreidingen uitkomen op hogere waarderingen.",
+      "title": "",
+      "tts": {
+        "text": "Ja. De hyperscalers — Microsoft, Google, Amazon, Meta — zijn dit jaar van plan om ongeveer zevenhonderd miljard dollar uit te geven aan kapitaaluitgaven. Het grootste deel daarvan bestaat uit GPU's en datacenters. Een lagere disconteringsvoet zorgt ervoor dat die meerjarige uitbreidingen uitkomen op hogere waarderingen.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "En de andere kant op. Hoe beïnvloedt AI wat de Fed moet beslissen?",
+      "text_markdown": "En de andere kant op. Hoe beïnvloedt AI wat de Fed moet beslissen?",
+      "title": "",
+      "tts": {
+        "text": "En de andere kant op. Hoe beïnvloedt AI wat de Fed moet beslissen?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dit is het interessante deel. De kapitaaluitgaven voor AI zijn nu zo groot dat het een macro-getal is. Geen sectorverhaal. Analisten van Wall Street zeggen dat AI-gerelateerde bouw- en uitgaven voor apparatuur de meerderheid van de Amerikaanse economische groei van de afgelopen kwartalen hebben gevormd.",
+      "text_markdown": "Dit is het interessante deel. De kapitaaluitgaven voor AI zijn nu zo groot dat het een macro-getal is. Geen sectorverhaal. Analisten van Wall Street zeggen dat AI-gerelateerde bouw- en uitgaven voor apparatuur de meerderheid van de Amerikaanse economische groei van de afgelopen kwartalen hebben gevormd.",
+      "title": "",
+      "tts": {
+        "text": "Dit is het interessante deel. De kapitaaluitgaven voor AI zijn nu zo groot dat het een macro-getal is. Geen sectorverhaal. Analisten van Wall Street zeggen dat AI-gerelateerde bouw- en uitgaven voor apparatuur de meerderheid van de Amerikaanse economische groei van de afgelopen kwartalen hebben gevormd.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De meerderheid van de groei.",
+      "text_markdown": "De meerderheid van de groei.",
+      "title": "",
+      "tts": {
+        "text": "De meerderheid van de groei.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De meerderheid. En het snijdt in twee richtingen voor de Fed. Op lange termijn is AI een productiviteitsimpuls. Dat is deflatoir. Het geeft de Fed ruimte om te verlagen. Op korte termijn is het een vraagschok voor stroom, voor koper, voor geschoolde arbeidskrachten, voor water voor koeling. Dat is inflatoir. Vooral op plaatsen zoals Virginia en Texas, waar de datacenters geconcentreerd zijn.",
+      "text_markdown": "De meerderheid. En het snijdt in twee richtingen voor de Fed. Op lange termijn is AI een productiviteitsimpuls. Dat is deflatoir. Het geeft de Fed ruimte om te verlagen. Op korte termijn is het een vraagschok voor stroom, voor koper, voor geschoolde arbeidskrachten, voor water voor koeling. Dat is inflatoir. Vooral op plaatsen zoals Virginia en Texas, waar de datacenters geconcentreerd zijn.",
+      "title": "",
+      "tts": {
+        "text": "De meerderheid. En het snijdt in twee richtingen voor de Fed. Op lange termijn is AI een productiviteitsimpuls. Dat is deflatoir. Het geeft de Fed ruimte om te verlagen. Op korte termijn is het een vraagschok voor stroom, voor koper, voor geschoolde arbeidskrachten, voor water voor koeling. Dat is inflatoir. Vooral op plaatsen zoals Virginia en Texas, waar de datacenters geconcentreerd zijn.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dus de nieuwe voorzitter moet beslissen of AI het antwoord is op inflatie, of dat AI de oorzaak is van inflatie.",
+      "text_markdown": "Dus de nieuwe voorzitter moet beslissen of AI het antwoord is op inflatie, of dat AI de oorzaak is van inflatie.",
+      "title": "",
+      "tts": {
+        "text": "Dus de nieuwe voorzitter moet beslissen of AI het antwoord is op inflatie, of dat AI de oorzaak is van inflatie.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Beide, tegelijkertijd. En wat hij ook zegt in zijn eerste openbare toespraken, zal elk AI-kapitaaluitgavenmodel op Wall Street beïnvloeden.",
+      "text_markdown": "Beide, tegelijkertijd. En wat hij ook zegt in zijn eerste openbare toespraken, zal elk AI-kapitaaluitgavenmodel op Wall Street beïnvloeden.",
+      "title": "",
+      "tts": {
+        "text": "Beide, tegelijkertijd. En wat hij ook zegt in zijn eerste openbare toespraken, zal elk AI-kapitaaluitgavenmodel op Wall Street beïnvloeden.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Microsoft heeft $80 miljard aan onvervulde cloudbestellingen vanwege stroom. Is dat het juiste getal?",
+      "text_markdown": "Microsoft heeft $80 miljard aan onvervulde cloudbestellingen vanwege stroom. Is dat het juiste getal?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft heeft tachtig miljard dollar aan onvervulde cloudbestellingen vanwege stroom. Is dat het juiste getal?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dat is het getal dat Microsoft heeft gerapporteerd. Azure-klanten staan in de rij voor capaciteit. De bottleneck zijn geen chips meer. Het is het elektriciteitsnet. Energiemarkten kunnen niet zo snel nieuwe capaciteit bouwen als de datacenters willen.",
+      "text_markdown": "Dat is het getal dat Microsoft heeft gerapporteerd. Azure-klanten staan in de rij voor capaciteit. De bottleneck zijn geen chips meer. Het is het elektriciteitsnet. Energiemarkten kunnen niet zo snel nieuwe capaciteit bouwen als de datacenters willen.",
+      "title": "",
+      "tts": {
+        "text": "Dat is het getal dat Microsoft heeft gerapporteerd. Azure-klanten staan in de rij voor capaciteit. De bottleneck zijn geen chips meer. Het is het elektriciteitsnet. Energiemarkten kunnen niet zo snel nieuwe capaciteit bouwen als de datacenters willen.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Wanneer is Warsh's eerste vergadering?",
+      "text_markdown": "Wanneer is Warsh's eerste vergadering?",
+      "title": "",
+      "tts": {
+        "text": "Wanneer is Warsh's eerste vergadering?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "De 16e en 17e juni. Daarna zullen we veel meer weten over het rentepad.",
+      "text_markdown": "De 16e en 17e juni. Daarna zullen we veel meer weten over het rentepad.",
+      "title": "",
+      "tts": {
+        "text": "De zestiende en zeventiende juni. Daarna zullen we veel meer weten over het rentepad.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Een goed punt om te eindigen. Ron, dank je.",
+      "text_markdown": "Een goed punt om te eindigen. Ron, dank je.",
+      "title": "",
+      "tts": {
+        "text": "Een goed punt om te eindigen. Ron, dank je.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Graag gedaan, Vindy.",
+      "text_markdown": "Graag gedaan, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Graag gedaan, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dat was AI This Week voor 13 mei 2026. Volgende week woensdag een nieuwe uitgave. Tot dan, pas goed op.",
+      "text_markdown": "Dat was AI This Week voor 13 mei 2026. Volgende week woensdag een nieuwe uitgave. Tot dan, pas goed op.",
+      "title": "",
+      "tts": {
+        "text": "Dat was AI This Week voor dertien mei tweeduizendzesentwintig. Volgende week woensdag een nieuwe uitgave. Tot dan, pas goed op.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

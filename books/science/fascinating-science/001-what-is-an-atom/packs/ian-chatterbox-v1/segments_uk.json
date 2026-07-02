@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "uk",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p1",
+      "chapter": 1,
+      "block_type": "heading",
+      "text": "Усе складається з атомів",
+      "text_markdown": "Усе складається з атомів",
+      "title": "Усе складається з атомів"
+    },
+    {
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Подивись навколо.",
+      "text_markdown": "Подивись навколо.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Подивись навколо.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Усе, що ти бачиш, складається з атомів.",
+      "text_markdown": "Усе, що ти бачиш, складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Усе, що ти бачиш, складається з атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Повітря, яким ти дихаєш, складається з атомів.",
+      "text_markdown": "Повітря, яким ти дихаєш, складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Повітря, яким ти дихаєш, складається з атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Вода, яку ти п'єш, складається з атомів.",
+      "text_markdown": "Вода, яку ти п'єш, складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Вода, яку ти п'єш, складається з атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Твоє тіло складається з атомів.",
+      "text_markdown": "Твоє тіло складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Твоє тіло складається з атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Земля під твоїми ногами складається з атомів.",
+      "text_markdown": "Земля під твоїми ногами складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Земля під твоїми ногами складається з атомів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атом — це найменша частинка речовини, яка ще зберігає хімічні властивості.",
+      "text_markdown": "Атом — це найменша частинка речовини, яка ще зберігає хімічні властивості.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атом — це найменша частинка речовини, яка ще зберігає хімічні властивості.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ти не можеш побачити окремий атом своїми очима.",
+      "text_markdown": "Ти не можеш побачити окремий атом своїми очима.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Ти не можеш побачити окремий атом своїми очима.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ти не можеш побачити окремий атом навіть у звичайний мікроскоп.",
+      "text_markdown": "Ти не можеш побачити окремий атом навіть у звичайний мікроскоп.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Ти не можеш побачити окремий атом навіть у звичайний мікроскоп.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-011",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ось які маленькі атоми.",
+      "text_markdown": "Ось які маленькі атоми.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Ось які маленькі атоми.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Одна піщинка містить приблизно п'ятдесят квінтильйонів атомів.",
+      "text_markdown": "Одна піщинка містить приблизно п'ятдесят квінтильйонів атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Одна піщинка містить приблизно п'ятдесят квінтильйонів атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Це число п'ятдесят із вісімнадцятьма нулями.",
+      "text_markdown": "Це число п'ятдесят із вісімнадцятьма нулями.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Це число п'ятдесят із вісімнадцятьма нулями.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "В одній піщинці більше атомів, ніж піщинок на пляжі.",
+      "text_markdown": "В одній піщинці більше атомів, ніж піщинок на пляжі.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "В одній піщинці більше атомів, ніж піщинок на пляжі.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атоми — це цеглинки всього у фізичному світі.",
+      "text_markdown": "Атоми — це цеглинки всього у фізичному світі.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атоми — це цеглинки всього у фізичному світі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Стіна складається з цеглин.",
+      "text_markdown": "Стіна складається з цеглин.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Стіна складається з цеглин.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Речення складається зі слів.",
+      "text_markdown": "Речення складається зі слів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Речення складається зі слів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Всесвіт складається з атомів.",
+      "text_markdown": "Всесвіт складається з атомів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Всесвіт складається з атомів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Слово «атом» походить із давньогрецької мови.",
+      "text_markdown": "Слово «атом» походить із давньогрецької мови.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Слово «атом» походить із давньогрецької мови.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Грецьке слово «атомос» означає «неподільний».",
+      "text_markdown": "Грецьке слово «атомос» означає «неподільний».",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Грецьке слово «атомос» означає «неподільний».",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Давньогрецькі філософи вважали, що атоми — це найменші можливі частинки речовини.",
+      "text_markdown": "Давньогрецькі філософи вважали, що атоми — це найменші можливі частинки речовини.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Давньогрецькі філософи вважали, що атоми — це найменші можливі частинки речовини.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Вони були майже праві.",
+      "text_markdown": "Вони були майже праві.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Вони були майже праві.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атоми насправді не є найменшими частинками, але вони є найменшими одиницями, що зберігають свої хімічні властивості.",
+      "text_markdown": "Атоми насправді не є найменшими частинками, але вони є найменшими одиницями, що зберігають свої хімічні властивості.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атоми насправді не є найменшими частинками, але вони є найменшими одиницями, що зберігають свої хімічні властивості.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атоми неймовірно міцні.",
+      "text_markdown": "Атоми неймовірно міцні.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атоми неймовірно міцні.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атомам у твоєму тілі мільярди років.",
+      "text_markdown": "Атомам у твоєму тілі мільярди років.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атомам у твоєму тілі мільярди років.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Деякі атоми водню у воді, яку ти пив сьогодні, виникли у перші хвилини після Великого Вибуху.",
+      "text_markdown": "Деякі атоми водню у воді, яку ти пив сьогодні, виникли у перші хвилини після Великого Вибуху.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Деякі атоми водню у воді, яку ти пив сьогодні, виникли у перші хвилини після Великого Вибуху.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ти складаєшся з найдавніших матеріалів.",
+      "text_markdown": "Ти складаєшся з найдавніших матеріалів.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Ти складаєшся з найдавніших матеріалів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Атоми ніколи не створюються і не зникають у звичайному житті.",
+      "text_markdown": "Атоми ніколи не створюються і не зникають у звичайному житті.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Атоми ніколи не створюються і не зникають у звичайному житті.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Вони перегруповуються.",
+      "text_markdown": "Вони перегруповуються.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Вони перегруповуються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Коли дерево горить, атоми не зникають.",
+      "text_markdown": "Коли дерево горить, атоми не зникають.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Коли дерево горить, атоми не зникають.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Вони перегруповуються в дим, попіл і газ.",
+      "text_markdown": "Вони перегруповуються в дим, попіл і газ.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Вони перегруповуються в дим, попіл і газ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Коли лід тане, атоми залишаються тими самими.",
+      "text_markdown": "Коли лід тане, атоми залишаються тими самими.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Коли лід тане, атоми залишаються тими самими.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-033",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Змінюється лише їхнє розташування.",
+      "text_markdown": "Змінюється лише їхнє розташування.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Змінюється лише їхнє розташування.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Розуміння атомів — це основа хімії.",
+      "text_markdown": "Розуміння атомів — це основа хімії.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Розуміння атомів — це основа хімії.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Хімія — це наука про те, як атоми з'єднуються, перегруповуються та взаємодіють.",
+      "text_markdown": "Хімія — це наука про те, як атоми з'єднуються, перегруповуються та взаємодіють.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Хімія — це наука про те, як атоми з'єднуються, перегруповуються та взаємодіють.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Усе, що відбувається у фізичному світі, зводиться до атомів і того, що вони роблять.",
+      "text_markdown": "Усе, що відбувається у фізичному світі, зводиться до атомів і того, що вони роблять.",
+      "title": "Усе складається з атомів",
+      "tts": {
+        "text": "Усе, що відбувається у фізичному світі, зводиться до атомів і того, що вони роблять.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "block_type": "heading",
+      "text": "Усередині атома",
+      "text_markdown": "Усередині атома",
+      "title": "Усередині атома"
+    },
+    {
+      "id": "ch02-038",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Усередині атома є три типи частинок.",
+      "text_markdown": "Усередині атома є три типи частинок.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Усередині атома є три типи частинок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Протони.",
+      "text_markdown": "Протони.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Протони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Нейтрони.",
+      "text_markdown": "Нейтрони.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Нейтрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електрони.",
+      "text_markdown": "Електрони.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ці три частинки утворюють кожен атом у Всесвіті.",
+      "text_markdown": "Ці три частинки утворюють кожен атом у Всесвіті.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Ці три частинки утворюють кожен атом у Всесвіті.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Центр атома називається ядро.",
+      "text_markdown": "Центр атома називається ядро.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Центр атома називається ядро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-044",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ядро містить протони та нейтрони.",
+      "text_markdown": "Ядро містить протони та нейтрони.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Ядро містить протони та нейтрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ядро крихітне порівняно з усім атомом.",
+      "text_markdown": "Ядро крихітне порівняно з усім атомом.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Ядро крихітне порівняно з усім атомом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-046",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Якби атом був розміром із футбольний стадіон, ядро було б розміром із кульку на середині поля.",
+      "text_markdown": "Якби атом був розміром із футбольний стадіон, ядро було б розміром із кульку на середині поля.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Якби атом був розміром із футбольний стадіон, ядро було б розміром із кульку на середині поля.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch02-047",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Протони несуть позитивний електричний заряд.",
+      "text_markdown": "Протони несуть позитивний електричний заряд.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Протони несуть позитивний електричний заряд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Кожен протон має однакову кількість позитивного заряду.",
+      "text_markdown": "Кожен протон має однакову кількість позитивного заряду.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Кожен протон має однакову кількість позитивного заряду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Кількість протонів в атомі визначає, яким елементом є цей атом.",
+      "text_markdown": "Кількість протонів в атомі визначає, яким елементом є цей атом.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Кількість протонів в атомі визначає, яким елементом є цей атом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-050",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Один протон — це водень.",
+      "text_markdown": "Один протон — це водень.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Один протон — це водень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Шість протонів — це вуглець.",
+      "text_markdown": "Шість протонів — це вуглець.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Шість протонів — це вуглець.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Двадцять шість протонів — це залізо.",
+      "text_markdown": "Двадцять шість протонів — це залізо.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Двадцять шість протонів — це залізо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Кількість протонів — це найважливіший факт про атом.",
+      "text_markdown": "Кількість протонів — це найважливіший факт про атом.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Кількість протонів — це найважливіший факт про атом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Нейтрони не мають електричного заряду.",
+      "text_markdown": "Нейтрони не мають електричного заряду.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Нейтрони не мають електричного заряду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Нейтрони — нейтральні.",
+      "text_markdown": "Нейтрони — нейтральні.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Нейтрони — нейтральні.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Нейтрони знаходяться в ядрі поруч із протонами.",
+      "text_markdown": "Нейтрони знаходяться в ядрі поруч із протонами.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Нейтрони знаходяться в ядрі поруч із протонами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-057",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Нейтрони допомагають утримувати ядро разом.",
+      "text_markdown": "Нейтрони допомагають утримувати ядро разом.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Нейтрони допомагають утримувати ядро разом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Без нейтронів протони відштовхували б один одного, бо всі мають однаковий позитивний заряд.",
+      "text_markdown": "Без нейтронів протони відштовхували б один одного, бо всі мають однаковий позитивний заряд.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Без нейтронів протони відштовхували б один одного, бо всі мають однаковий позитивний заряд.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електрони несуть негативний електричний заряд.",
+      "text_markdown": "Електрони несуть негативний електричний заряд.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електрони несуть негативний електричний заряд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електрони рухаються навколо ядра у хмарі.",
+      "text_markdown": "Електрони рухаються навколо ядра у хмарі.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електрони рухаються навколо ядра у хмарі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Вони не обертаються, як планети навколо сонця.",
+      "text_markdown": "Вони не обертаються, як планети навколо сонця.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Вони не обертаються, як планети навколо сонця.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Вони існують у розмитій області ймовірності навколо ядра.",
+      "text_markdown": "Вони існують у розмитій області ймовірності навколо ядра.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Вони існують у розмитій області ймовірності навколо ядра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електронна хмара — це область, де ти найімовірніше знайдеш електрон у будь-який момент.",
+      "text_markdown": "Електронна хмара — це область, де ти найімовірніше знайдеш електрон у будь-який момент.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електронна хмара — це область, де ти найімовірніше знайдеш електрон у будь-який момент.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електрон має майже нульову масу порівняно з протоном або нейтроном.",
+      "text_markdown": "Електрон має майже нульову масу порівняно з протоном або нейтроном.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електрон має майже нульову масу порівняно з протоном або нейтроном.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Протон приблизно в 1 836 разів важчий за електрон.",
+      "text_markdown": "Протон приблизно в 1 836 разів важчий за електрон.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Протон приблизно в тисячу вісімсот тридцять шість разів важчий за електрон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Майже вся маса атома зосереджена в ядрі.",
+      "text_markdown": "Майже вся маса атома зосереджена в ядрі.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Майже вся маса атома зосереджена в ядрі.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "У нейтральному атомі кількість електронів дорівнює кількості протонів.",
+      "text_markdown": "У нейтральному атомі кількість електронів дорівнює кількості протонів.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "У нейтральному атомі кількість електронів дорівнює кількості протонів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-068",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Позитивні заряди та негативні заряди врівноважують одне одного.",
+      "text_markdown": "Позитивні заряди та негативні заряди врівноважують одне одного.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Позитивні заряди та негативні заряди врівноважують одне одного.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-069",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Атом не має загального заряду.",
+      "text_markdown": "Атом не має загального заряду.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Атом не має загального заряду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Цей баланс — звичайний стан атома.",
+      "text_markdown": "Цей баланс — звичайний стан атома.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Цей баланс — звичайний стан атома.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Більша частина атома — це порожній простір.",
+      "text_markdown": "Більша частина атома — це порожній простір.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Більша частина атома — це порожній простір.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ядро щільне і крихітне.",
+      "text_markdown": "Ядро щільне і крихітне.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Ядро щільне і крихітне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Електронна хмара велика і здебільшого порожня.",
+      "text_markdown": "Електронна хмара велика і здебільшого порожня.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Електронна хмара велика і здебільшого порожня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Якби ти міг прибрати весь порожній простір з кожного атома свого тіла, ти зменшився б до розміру, меншого за крупинку солі.",
+      "text_markdown": "Якби ти міг прибрати весь порожній простір з кожного атома свого тіла, ти зменшився б до розміру, меншого за крупинку солі.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Якби ти міг прибрати весь порожній простір з кожного атома свого тіла, ти зменшився б до розміру, меншого за крупинку солі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-075",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Твоя маса залишилася б такою самою.",
+      "text_markdown": "Твоя маса залишилася б такою самою.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Твоя маса залишилася б такою самою.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ти просто став би неймовірно щільним.",
+      "text_markdown": "Ти просто став би неймовірно щільним.",
+      "title": "Усередині атома",
+      "tts": {
+        "text": "Ти просто став би неймовірно щільним.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-077",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p19",
+      "chapter": 3,
+      "block_type": "heading",
+      "text": "Елементи",
+      "text_markdown": "Елементи",
+      "title": "Елементи"
+    },
+    {
+      "id": "ch03-078",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Елемент — це речовина, що складається лише з одного типу атомів.",
+      "text_markdown": "Елемент — це речовина, що складається лише з одного типу атомів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Елемент — це речовина, що складається лише з одного типу атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-079",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Чисте золото — це елемент.",
+      "text_markdown": "Чисте золото — це елемент.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Чисте золото — це елемент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен атом у зливку чистого золота має сімдесят дев'ять протонів.",
+      "text_markdown": "Кожен атом у зливку чистого золота має сімдесят дев'ять протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен атом у зливку чистого золота має сімдесят дев'ять протонів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Чистий кисень — це елемент.",
+      "text_markdown": "Чистий кисень — це елемент.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Чистий кисень — це елемент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен атом у балоні з чистим киснем має вісім протонів.",
+      "text_markdown": "Кожен атом у балоні з чистим киснем має вісім протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен атом у балоні з чистим киснем має вісім протонів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "У природі на Землі зустрічається приблизно дев'яносто два елементи.",
+      "text_markdown": "У природі на Землі зустрічається приблизно дев'яносто два елементи.",
+      "title": "Елементи",
+      "tts": {
+        "text": "У природі на Землі зустрічається приблизно дев'яносто два елементи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Учені створили додаткові елементи в лабораторіях.",
+      "text_markdown": "Учені створили додаткові елементи в лабораторіях.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Учені створили додаткові елементи в лабораторіях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-085",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Загальна кількість відомих елементів перевищує сто вісімнадцять.",
+      "text_markdown": "Загальна кількість відомих елементів перевищує сто вісімнадцять.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Загальна кількість відомих елементів перевищує сто вісімнадцять.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-086",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен елемент має унікальну кількість протонів.",
+      "text_markdown": "Кожен елемент має унікальну кількість протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен елемент має унікальну кількість протонів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен елемент має назву та символ.",
+      "text_markdown": "Кожен елемент має назву та символ.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен елемент має назву та символ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-088",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Водень — це H. Кисень — це O. Вуглець — це C. Залізо — це Fe.",
+      "text_markdown": "Водень — це H. Кисень — це O. Вуглець — це C. Залізо — це Fe.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Водень — це аш. Кисень — це о. Вуглець — це це. Залізо — це еф е.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-089",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Золото — це Au.",
+      "text_markdown": "Золото — це Au.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Золото — це а у.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-090",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Символи походять від латинських, грецьких або англійських назв.",
+      "text_markdown": "Символи походять від латинських, грецьких або англійських назв.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Символи походять від латинських, грецьких або англійських назв.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-091",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Fe походить від латинського слова ferrum.",
+      "text_markdown": "Fe походить від латинського слова ferrum.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Еф е походить від латинського слова феррум.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-092",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Au походить від латинського слова aurum.",
+      "text_markdown": "Au походить від латинського слова aurum.",
+      "title": "Елементи",
+      "tts": {
+        "text": "А у походить від латинського слова аурум.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-093",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Водень — найпростіший елемент.",
+      "text_markdown": "Водень — найпростіший елемент.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Водень — найпростіший елемент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-094",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Атом водню має один протон і один електрон.",
+      "text_markdown": "Атом водню має один протон і один електрон.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Атом водню має один протон і один електрон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-095",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Водень — найпоширеніший елемент у Всесвіті.",
+      "text_markdown": "Водень — найпоширеніший елемент у Всесвіті.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Водень — найпоширеніший елемент у Всесвіті.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-096",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Зорі складаються здебільшого з водню.",
+      "text_markdown": "Зорі складаються здебільшого з водню.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Зорі складаються здебільшого з водню.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-097",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Вуглець — це елемент життя.",
+      "text_markdown": "Вуглець — це елемент життя.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Вуглець — це елемент життя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-098",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Вуглець має шість протонів.",
+      "text_markdown": "Вуглець має шість протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Вуглець має шість протонів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-099",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Атоми вуглецю можуть одночасно утворювати зв'язки з багатьма іншими атомами.",
+      "text_markdown": "Атоми вуглецю можуть одночасно утворювати зв'язки з багатьма іншими атомами.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Атоми вуглецю можуть одночасно утворювати зв'язки з багатьма іншими атомами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-100",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Ця здатність робить вуглець основою всього живого.",
+      "text_markdown": "Ця здатність робить вуглець основою всього живого.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Ця здатність робить вуглець основою всього живого.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-101",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен білок, кожна нитка ДНК і кожна молекула цукру у твоєму тілі містить вуглець.",
+      "text_markdown": "Кожен білок, кожна нитка ДНК і кожна молекула цукру у твоєму тілі містить вуглець.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен білок, кожна нитка ДНК і кожна молекула цукру у твоєму тілі містить вуглець.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кисень має вісім протонів.",
+      "text_markdown": "Кисень має вісім протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кисень має вісім протонів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кисень — це елемент, яким ти дихаєш.",
+      "text_markdown": "Кисень — це елемент, яким ти дихаєш.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кисень — це елемент, яким ти дихаєш.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-104",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Твої легені витягують кисень із повітря і надсилають його в кров.",
+      "text_markdown": "Твої легені витягують кисень із повітря і надсилають його в кров.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Твої легені витягують кисень із повітря і надсилають його в кров.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-105",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Твої клітини використовують кисень, щоб вивільняти енергію з їжі.",
+      "text_markdown": "Твої клітини використовують кисень, щоб вивільняти енергію з їжі.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Твої клітини використовують кисень, щоб вивільняти енергію з їжі.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Залізо має двадцять шість протонів.",
+      "text_markdown": "Залізо має двадцять шість протонів.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Залізо має двадцять шість протонів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Залізо — це елемент, завдяки якому твоя кров червона.",
+      "text_markdown": "Залізо — це елемент, завдяки якому твоя кров червона.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Залізо — це елемент, завдяки якому твоя кров червона.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-108",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Залізо — основний складник сталі.",
+      "text_markdown": "Залізо — основний складник сталі.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Залізо — основний складник сталі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Ядро Землі складається переважно із заліза.",
+      "text_markdown": "Ядро Землі складається переважно із заліза.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Ядро Землі складається переважно із заліза.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Найлегші елементи — найпоширеніші у Всесвіті.",
+      "text_markdown": "Найлегші елементи — найпоширеніші у Всесвіті.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Найлегші елементи — найпоширеніші у Всесвіті.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-111",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Водень і гелій разом складають приблизно дев'яносто вісім відсотків усіх атомів у Всесвіті.",
+      "text_markdown": "Водень і гелій разом складають приблизно дев'яносто вісім відсотків усіх атомів у Всесвіті.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Водень і гелій разом складають приблизно дев'яносто вісім відсотків усіх атомів у Всесвіті.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-112",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Важчі елементи рідкісні порівняно з ними.",
+      "text_markdown": "Важчі елементи рідкісні порівняно з ними.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Важчі елементи рідкісні порівняно з ними.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-113",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Кожен атом кожного важкого елемента був створений усередині зорі.",
+      "text_markdown": "Кожен атом кожного важкого елемента був створений усередині зорі.",
+      "title": "Елементи",
+      "tts": {
+        "text": "Кожен атом кожного важкого елемента був створений усередині зорі.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-114",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p28",
+      "chapter": 4,
+      "block_type": "heading",
+      "text": "Періодична таблиця",
+      "text_markdown": "Періодична таблиця",
+      "title": "Періодична таблиця"
+    },
+    {
+      "id": "ch04-115",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Періодична таблиця — це таблиця, що впорядковує всі відомі елементи.",
+      "text_markdown": "Періодична таблиця — це таблиця, що впорядковує всі відомі елементи.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Періодична таблиця — це таблиця, що впорядковує всі відомі елементи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-116",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Таблиця розташовує елементи за кількістю протонів — від найменшої до найбільшої.",
+      "text_markdown": "Таблиця розташовує елементи за кількістю протонів — від найменшої до найбільшої.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Таблиця розташовує елементи за кількістю протонів — від найменшої до найбільшої.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-117",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Водень — перший, із одним протоном.",
+      "text_markdown": "Водень — перший, із одним протоном.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Водень — перший, із одним протоном.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-118",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Гелій — другий, із двома протонами.",
+      "text_markdown": "Гелій — другий, із двома протонами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Гелій — другий, із двома протонами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-119",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Таблиця продовжується аж до оганесону зі ста вісімнадцятьма протонами.",
+      "text_markdown": "Таблиця продовжується аж до оганесону зі ста вісімнадцятьма протонами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Таблиця продовжується аж до оганесону зі ста вісімнадцятьма протонами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-120",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Періодична таблиця має рядки та стовпці.",
+      "text_markdown": "Періодична таблиця має рядки та стовпці.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Періодична таблиця має рядки та стовпці.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-121",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Рядки називаються періодами.",
+      "text_markdown": "Рядки називаються періодами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Рядки називаються періодами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-122",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Стовпці називаються групами.",
+      "text_markdown": "Стовпці називаються групами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Стовпці називаються групами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-123",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Елементи в одній групі мають схожі властивості.",
+      "text_markdown": "Елементи в одній групі мають схожі властивості.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Елементи в одній групі мають схожі властивості.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-124",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ось чому таблицю називають періодичною.",
+      "text_markdown": "Ось чому таблицю називають періодичною.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Ось чому таблицю називають періодичною.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-125",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Властивості повторюються за регулярною закономірністю.",
+      "text_markdown": "Властивості повторюються за регулярною закономірністю.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Властивості повторюються за регулярною закономірністю.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-126",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Елементи в лівій частині таблиці — метали.",
+      "text_markdown": "Елементи в лівій частині таблиці — метали.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Елементи в лівій частині таблиці — метали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-127",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Більшість елементів — метали.",
+      "text_markdown": "Більшість елементів — метали.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Більшість елементів — метали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-128",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Метали блискучі.",
+      "text_markdown": "Метали блискучі.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Метали блискучі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-129",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Метали проводять електрику.",
+      "text_markdown": "Метали проводять електрику.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Метали проводять електрику.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-130",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Метали проводять тепло.",
+      "text_markdown": "Метали проводять тепло.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Метали проводять тепло.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-131",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Залізо, мідь, золото та алюміній — усе це метали.",
+      "text_markdown": "Залізо, мідь, золото та алюміній — усе це метали.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Залізо, мідь, золото та алюміній — усе це метали.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-132",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Елементи в правій частині таблиці — неметали.",
+      "text_markdown": "Елементи в правій частині таблиці — неметали.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Елементи в правій частині таблиці — неметали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-133",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "До неметалів належать кисень, азот, вуглець і сірка.",
+      "text_markdown": "До неметалів належать кисень, азот, вуглець і сірка.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "До неметалів належать кисень, азот, вуглець і сірка.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-134",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Неметали погано проводять електрику.",
+      "text_markdown": "Неметали погано проводять електрику.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Неметали погано проводять електрику.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-135",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Неметали — це елементи, з яких складаються повітря, вода та живі організми.",
+      "text_markdown": "Неметали — це елементи, з яких складаються повітря, вода та живі організми.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Неметали — це елементи, з яких складаються повітря, вода та живі організми.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-136",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Кілька елементів знаходяться на межі між металами та неметалами.",
+      "text_markdown": "Кілька елементів знаходяться на межі між металами та неметалами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Кілька елементів знаходяться на межі між металами та неметалами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-137",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ці елементи називаються металоїдами.",
+      "text_markdown": "Ці елементи називаються металоїдами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Ці елементи називаються металоїдами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-138",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Кремній — це металоїд.",
+      "text_markdown": "Кремній — це металоїд.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Кремній — це металоїд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-139",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Кремній трохи проводить електрику, але не так добре, як метал.",
+      "text_markdown": "Кремній трохи проводить електрику, але не так добре, як метал.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Кремній трохи проводить електрику, але не так добре, як метал.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-140",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ця властивість робить кремній корисним для комп'ютерних чипів.",
+      "text_markdown": "Ця властивість робить кремній корисним для комп'ютерних чипів.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Ця властивість робить кремній корисним для комп'ютерних чипів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-141",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Інертні гази знаходяться в останньому стовпці праворуч.",
+      "text_markdown": "Інертні гази знаходяться в останньому стовпці праворуч.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Інертні гази знаходяться в останньому стовпці праворуч.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-142",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Гелій, неон, аргон, криптон, ксенон і радон — це інертні гази.",
+      "text_markdown": "Гелій, неон, аргон, криптон, ксенон і радон — це інертні гази.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Гелій, неон, аргон, криптон, ксенон і радон — це інертні гази.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-143",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Інертні гази майже ніколи не реагують з іншими елементами.",
+      "text_markdown": "Інертні гази майже ніколи не реагують з іншими елементами.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Інертні гази майже ніколи не реагують з іншими елементами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-144",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Їхні електронні оболонки вже стабільні.",
+      "text_markdown": "Їхні електронні оболонки вже стабільні.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Їхні електронні оболонки вже стабільні.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-145",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Їм не потрібно утворювати зв'язки.",
+      "text_markdown": "Їм не потрібно утворювати зв'язки.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Їм не потрібно утворювати зв'язки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-146",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Російський учений на ім'я Дмитро Менделєєв створив першу періодичну таблицю в 1869 році.",
+      "text_markdown": "Російський учений на ім'я Дмитро Менделєєв створив першу періодичну таблицю в 1869 році.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Російський учений на ім'я Дмитро Менделєєв створив першу періодичну таблицю в тисяча вісімсот шістдесят дев'ятому році.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-147",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Менделєєв розташував елементи за їхніми властивостями і помітив закономірність, що повторюється.",
+      "text_markdown": "Менделєєв розташував елементи за їхніми властивостями і помітив закономірність, що повторюється.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Менделєєв розташував елементи за їхніми властивостями і помітив закономірність, що повторюється.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-148",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Він залишив пропуски у своїй таблиці там, де, на його думку, мали бути ще невідомі елементи.",
+      "text_markdown": "Він залишив пропуски у своїй таблиці там, де, на його думку, мали бути ще невідомі елементи.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Він залишив пропуски у своїй таблиці там, де, на його думку, мали бути ще невідомі елементи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-149",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Пізніше вчені відкрили ці елементи.",
+      "text_markdown": "Пізніше вчені відкрили ці елементи.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Пізніше вчені відкрили ці елементи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-150",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Кожне передбачення виявилося правильним.",
+      "text_markdown": "Кожне передбачення виявилося правильним.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Кожне передбачення виявилося правильним.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-151",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Періодична таблиця — один із найпотужніших інструментів у науці.",
+      "text_markdown": "Періодична таблиця — один із найпотужніших інструментів у науці.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Періодична таблиця — один із найпотужніших інструментів у науці.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-152",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Якщо ти знаєш, де елемент розташований у таблиці, ти можеш передбачити, як він буде поводитися.",
+      "text_markdown": "Якщо ти знаєш, де елемент розташований у таблиці, ти можеш передбачити, як він буде поводитися.",
+      "title": "Періодична таблиця",
+      "tts": {
+        "text": "Якщо ти знаєш, де елемент розташований у таблиці, ти можеш передбачити, як він буде поводитися.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-153",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p37",
+      "chapter": 5,
+      "block_type": "heading",
+      "text": "Як атоми з'єднуються",
+      "text_markdown": "Як атоми з'єднуються",
+      "title": "Як атоми з'єднуються"
+    },
+    {
+      "id": "ch05-154",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атоми рідко існують самі по собі.",
+      "text_markdown": "Атоми рідко існують самі по собі.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атоми рідко існують самі по собі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-155",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Більшість атомів з'єднуються з іншими атомами, утворюючи молекули.",
+      "text_markdown": "Більшість атомів з'єднуються з іншими атомами, утворюючи молекули.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Більшість атомів з'єднуються з іншими атомами, утворюючи молекули.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-156",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Молекула — це група атомів, що тримаються разом завдяки хімічним зв'язкам.",
+      "text_markdown": "Молекула — це група атомів, що тримаються разом завдяки хімічним зв'язкам.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Молекула — це група атомів, що тримаються разом завдяки хімічним зв'язкам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-157",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Вода — це молекула.",
+      "text_markdown": "Вода — це молекула.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Вода — це молекула.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-158",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Кисень у повітрі — це молекула.",
+      "text_markdown": "Кисень у повітрі — це молекула.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Кисень у повітрі — це молекула.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-159",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Цукор — це молекула.",
+      "text_markdown": "Цукор — це молекула.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Цукор — це молекула.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-160",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атоми з'єднуються завдяки своїм електронам.",
+      "text_markdown": "Атоми з'єднуються завдяки своїм електронам.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атоми з'єднуються завдяки своїм електронам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-161",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Електрони на зовнішній оболонці атома визначають, як цей атом взаємодіє з іншими атомами.",
+      "text_markdown": "Електрони на зовнішній оболонці атома визначають, як цей атом взаємодіє з іншими атомами.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Електрони на зовнішній оболонці атома визначають, як цей атом взаємодіє з іншими атомами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-162",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ці зовнішні електрони називаються валентними електронами.",
+      "text_markdown": "Ці зовнішні електрони називаються валентними електронами.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Ці зовнішні електрони називаються валентними електронами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-163",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атом із повною зовнішньою оболонкою — стабільний.",
+      "text_markdown": "Атом із повною зовнішньою оболонкою — стабільний.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атом із повною зовнішньою оболонкою — стабільний.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-164",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атом без повної зовнішньої оболонки прагнутиме її заповнити.",
+      "text_markdown": "Атом без повної зовнішньої оболонки прагнутиме її заповнити.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атом без повної зовнішньої оболонки прагнутиме її заповнити.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-165",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Існує два основних типи хімічних зв'язків.",
+      "text_markdown": "Існує два основних типи хімічних зв'язків.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Існує два основних типи хімічних зв'язків.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-166",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ковалентні зв'язки та іонні зв'язки.",
+      "text_markdown": "Ковалентні зв'язки та іонні зв'язки.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Ковалентні зв'язки та іонні зв'язки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-167",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "У ковалентному зв'язку два атоми ділять електрони.",
+      "text_markdown": "У ковалентному зв'язку два атоми ділять електрони.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "У ковалентному зв'язку два атоми ділять електрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-168",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Обидва атоми віддають електрони у спільну пару.",
+      "text_markdown": "Обидва атоми віддають електрони у спільну пару.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Обидва атоми віддають електрони у спільну пару.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-169",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Спільні електрони обертаються навколо обох ядер.",
+      "text_markdown": "Спільні електрони обертаються навколо обох ядер.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Спільні електрони обертаються навколо обох ядер.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-170",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Це спільне використання тримає атоми разом.",
+      "text_markdown": "Це спільне використання тримає атоми разом.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Це спільне використання тримає атоми разом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-171",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Вода тримається разом завдяки ковалентним зв'язкам.",
+      "text_markdown": "Вода тримається разом завдяки ковалентним зв'язкам.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Вода тримається разом завдяки ковалентним зв'язкам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-172",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Кожен атом водню ділить один електрон з атомом кисню.",
+      "text_markdown": "Кожен атом водню ділить один електрон з атомом кисню.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Кожен атом водню ділить один електрон з атомом кисню.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-173",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "В іонному зв'язку один атом віддає електрони іншому атому.",
+      "text_markdown": "В іонному зв'язку один атом віддає електрони іншому атому.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "В іонному зв'язку один атом віддає електрони іншому атому.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-174",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атом, що втрачає електрони, стає позитивно зарядженим.",
+      "text_markdown": "Атом, що втрачає електрони, стає позитивно зарядженим.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атом, що втрачає електрони, стає позитивно зарядженим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-175",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Атом, що отримує електрони, стає негативно зарядженим.",
+      "text_markdown": "Атом, що отримує електрони, стає негативно зарядженим.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Атом, що отримує електрони, стає негативно зарядженим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-176",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Протилежні заряди притягуються.",
+      "text_markdown": "Протилежні заряди притягуються.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Протилежні заряди притягуються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-177",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Це притягання тримає два атоми разом.",
+      "text_markdown": "Це притягання тримає два атоми разом.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Це притягання тримає два атоми разом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-178",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Кухонна сіль тримається разом завдяки іонним зв'язкам.",
+      "text_markdown": "Кухонна сіль тримається разом завдяки іонним зв'язкам.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Кухонна сіль тримається разом завдяки іонним зв'язкам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-179",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Натрій віддає електрон хлору.",
+      "text_markdown": "Натрій віддає електрон хлору.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Натрій віддає електрон хлору.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-180",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Молекула води містить два атоми водню та один атом кисню.",
+      "text_markdown": "Молекула води містить два атоми водню та один атом кисню.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Молекула води містить два атоми водню та один атом кисню.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-181",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Учені записують це як H2O.",
+      "text_markdown": "Учені записують це як H2O.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Учені записують це як аш два о.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-182",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "H означає водень.",
+      "text_markdown": "H означає водень.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Аш означає водень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-183",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "O означає кисень.",
+      "text_markdown": "O означає кисень.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "О означає кисень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-184",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Двійка означає, що є два атоми водню.",
+      "text_markdown": "Двійка означає, що є два атоми водню.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Двійка означає, що є два атоми водню.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-185",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Молекула вуглекислого газу містить один атом вуглецю та два атоми кисню.",
+      "text_markdown": "Молекула вуглекислого газу містить один атом вуглецю та два атоми кисню.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Молекула вуглекислого газу містить один атом вуглецю та два атоми кисню.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-186",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Учені записують це як CO2.",
+      "text_markdown": "Учені записують це як CO2.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Учені записують це як це о два.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-187",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Рослини поглинають вуглекислий газ із повітря і використовують його для побудови молекул цукру.",
+      "text_markdown": "Рослини поглинають вуглекислий газ із повітря і використовують його для побудови молекул цукру.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Рослини поглинають вуглекислий газ із повітря і використовують його для побудови молекул цукру.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-188",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Зв'язки між атомами зберігають енергію.",
+      "text_markdown": "Зв'язки між атомами зберігають енергію.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Зв'язки між атомами зберігають енергію.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-189",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Коли зв'язки розриваються, вивільняється енергія.",
+      "text_markdown": "Коли зв'язки розриваються, вивільняється енергія.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Коли зв'язки розриваються, вивільняється енергія.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-190",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Коли зв'язки утворюються, поглинається енергія.",
+      "text_markdown": "Коли зв'язки утворюються, поглинається енергія.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Коли зв'язки утворюються, поглинається енергія.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-191",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Кожна хімічна реакція у Всесвіті включає розрив старих зв'язків і утворення нових.",
+      "text_markdown": "Кожна хімічна реакція у Всесвіті включає розрив старих зв'язків і утворення нових.",
+      "title": "Як атоми з'єднуються",
+      "tts": {
+        "text": "Кожна хімічна реакція у Всесвіті включає розрив старих зв'язків і утворення нових.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-192",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p46",
+      "chapter": 6,
+      "block_type": "heading",
+      "text": "Атоми в русі",
+      "text_markdown": "Атоми в русі",
+      "title": "Атоми в русі"
+    },
+    {
+      "id": "ch06-193",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Атоми завжди рухаються.",
+      "text_markdown": "Атоми завжди рухаються.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Атоми завжди рухаються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-194",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони ніколи не зупиняються.",
+      "text_markdown": "Вони ніколи не зупиняються.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони ніколи не зупиняються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-195",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "При будь-якій температурі вище абсолютного нуля атоми вібрують, обертаються і переміщуються у просторі.",
+      "text_markdown": "При будь-якій температурі вище абсолютного нуля атоми вібрують, обертаються і переміщуються у просторі.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "При будь-якій температурі вище абсолютного нуля атоми вібрують, обертаються і переміщуються у просторі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-196",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Цей рух ми відчуваємо як тепло.",
+      "text_markdown": "Цей рух ми відчуваємо як тепло.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Цей рух ми відчуваємо як тепло.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-197",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "У твердому тілі атоми вібрують на місці.",
+      "text_markdown": "У твердому тілі атоми вібрують на місці.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "У твердому тілі атоми вібрують на місці.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-198",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони зафіксовані в нерухомій структурі.",
+      "text_markdown": "Вони зафіксовані в нерухомій структурі.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони зафіксовані в нерухомій структурі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-199",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони тремтять туди-сюди, але не покидають своїх місць.",
+      "text_markdown": "Вони тремтять туди-сюди, але не покидають своїх місць.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони тремтять туди-сюди, але не покидають своїх місць.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-200",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ось чому тверді тіла зберігають свою форму.",
+      "text_markdown": "Ось чому тверді тіла зберігають свою форму.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Ось чому тверді тіла зберігають свою форму.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-201",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Атоми в шматку льоду вібрують, але залишаються у жорсткій кристалічній структурі.",
+      "text_markdown": "Атоми в шматку льоду вібрують, але залишаються у жорсткій кристалічній структурі.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Атоми в шматку льоду вібрують, але залишаються у жорсткій кристалічній структурі.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-202",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "У рідині атоми рухаються вільніше.",
+      "text_markdown": "У рідині атоми рухаються вільніше.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "У рідині атоми рухаються вільніше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-203",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони ковзають один повз одного.",
+      "text_markdown": "Вони ковзають один повз одного.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони ковзають один повз одного.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-204",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони тримаються близько одне до одного, але не зафіксовані на місці.",
+      "text_markdown": "Вони тримаються близько одне до одного, але не зафіксовані на місці.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони тримаються близько одне до одного, але не зафіксовані на місці.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-205",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ось чому рідини течуть.",
+      "text_markdown": "Ось чому рідини течуть.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Ось чому рідини течуть.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-206",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Атоми в склянці води постійно рухаються і перегруповуються, але залишаються поблизу одне одного.",
+      "text_markdown": "Атоми в склянці води постійно рухаються і перегруповуються, але залишаються поблизу одне одного.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Атоми в склянці води постійно рухаються і перегруповуються, але залишаються поблизу одне одного.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-207",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "У газі атоми рухаються швидко і розлітаються в різні боки.",
+      "text_markdown": "У газі атоми рухаються швидко і розлітаються в різні боки.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "У газі атоми рухаються швидко і розлітаються в різні боки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-208",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони летять прямолінійно, поки не зіткнуться з іншим атомом або стінкою.",
+      "text_markdown": "Вони летять прямолінійно, поки не зіткнуться з іншим атомом або стінкою.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони летять прямолінійно, поки не зіткнуться з іншим атомом або стінкою.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-209",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Вони відскакують одне від одного і змінюють напрямок.",
+      "text_markdown": "Вони відскакують одне від одного і змінюють напрямок.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Вони відскакують одне від одного і змінюють напрямок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-210",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ось чому газ заповнює будь-яку посудину, в яку ти його помістиш.",
+      "text_markdown": "Ось чому газ заповнює будь-яку посудину, в яку ти його помістиш.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Ось чому газ заповнює будь-яку посудину, в яку ти його помістиш.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-211",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Атоми в кімнаті, повній повітря, мчать у всіх напрямках зі швидкістю сотні метрів на секунду.",
+      "text_markdown": "Атоми в кімнаті, повній повітря, мчать у всіх напрямках зі швидкістю сотні метрів на секунду.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Атоми в кімнаті, повній повітря, мчать у всіх напрямках зі швидкістю сотні метрів на секунду.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-212",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Температура — це міра того, наскільки швидко рухаються атоми.",
+      "text_markdown": "Температура — це міра того, наскільки швидко рухаються атоми.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Температура — це міра того, наскільки швидко рухаються атоми.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-213",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Гаряче означає, що атоми рухаються швидко.",
+      "text_markdown": "Гаряче означає, що атоми рухаються швидко.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Гаряче означає, що атоми рухаються швидко.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-214",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Холодно означає, що атоми рухаються повільно.",
+      "text_markdown": "Холодно означає, що атоми рухаються повільно.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Холодно означає, що атоми рухаються повільно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-215",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Коли ти нагріваєш воду на плиті, ти змушуєш молекули води рухатися швидше.",
+      "text_markdown": "Коли ти нагріваєш воду на плиті, ти змушуєш молекули води рухатися швидше.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Коли ти нагріваєш воду на плиті, ти змушуєш молекули води рухатися швидше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-216",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Коли молекули рухаються достатньо швидко, вони вириваються з рідини і стають парою.",
+      "text_markdown": "Коли молекули рухаються достатньо швидко, вони вириваються з рідини і стають парою.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Коли молекули рухаються достатньо швидко, вони вириваються з рідини і стають парою.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-217",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Абсолютний нуль — це найнижча можлива температура.",
+      "text_markdown": "Абсолютний нуль — це найнижча можлива температура.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Абсолютний нуль — це найнижча можлива температура.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-218",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Це приблизно мінус 273 градуси за Цельсієм.",
+      "text_markdown": "Це приблизно мінус 273 градуси за Цельсієм.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Це приблизно мінус двісті сімдесят три градуси за Цельсієм.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-219",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "При абсолютному нулі атоми мають мінімально можливу енергію.",
+      "text_markdown": "При абсолютному нулі атоми мають мінімально можливу енергію.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "При абсолютному нулі атоми мають мінімально можливу енергію.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-220",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Нічого не може бути холоднішим за абсолютний нуль.",
+      "text_markdown": "Нічого не може бути холоднішим за абсолютний нуль.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Нічого не може бути холоднішим за абсолютний нуль.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-221",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Учені наблизилися дуже близько до абсолютного нуля в лабораторіях, але ніхто ніколи не досяг його точно.",
+      "text_markdown": "Учені наблизилися дуже близько до абсолютного нуля в лабораторіях, але ніхто ніколи не досяг його точно.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Учені наблизилися дуже близько до абсолютного нуля в лабораторіях, але ніхто ніколи не досяг його точно.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-222",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Тиск спричинений ударами атомів по поверхнях.",
+      "text_markdown": "Тиск спричинений ударами атомів по поверхнях.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Тиск спричинений ударами атомів по поверхнях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-223",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Повітря в шині тисне назовні, тому що молекули повітря постійно відскакують від внутрішніх стінок шини.",
+      "text_markdown": "Повітря в шині тисне назовні, тому що молекули повітря постійно відскакують від внутрішніх стінок шини.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Повітря в шині тисне назовні, тому що молекули повітря постійно відскакують від внутрішніх стінок шини.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-224",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Більше молекул або швидші молекули означають більший тиск.",
+      "text_markdown": "Більше молекул або швидші молекули означають більший тиск.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Більше молекул або швидші молекули означають більший тиск.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-225",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ось чому шина стає твердішою, коли повітря гаряче.",
+      "text_markdown": "Ось чому шина стає твердішою, коли повітря гаряче.",
+      "title": "Атоми в русі",
+      "tts": {
+        "text": "Ось чому шина стає твердішою, коли повітря гаряче.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-226",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p54",
+      "chapter": 7,
+      "block_type": "heading",
+      "text": "Звідки беруться атоми",
+      "text_markdown": "Звідки беруться атоми",
+      "title": "Звідки беруться атоми"
+    },
+    {
+      "id": "ch07-227",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Водень і гелій у Всесвіті виникли у перші кілька хвилин після Великого Вибуху.",
+      "text_markdown": "Водень і гелій у Всесвіті виникли у перші кілька хвилин після Великого Вибуху.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Водень і гелій у Всесвіті виникли у перші кілька хвилин після Великого Вибуху.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-228",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Всесвіт почався як неймовірно гаряча, щільна точка приблизно 13,8 мільярда років тому.",
+      "text_markdown": "Всесвіт почався як неймовірно гаряча, щільна точка приблизно 13,8 мільярда років тому.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Всесвіт почався як неймовірно гаряча, щільна точка приблизно тринадцять цілих вісім десятих мільярда років тому.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-229",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Коли він розширювався та охолоджувався, утворилися протони та нейтрони.",
+      "text_markdown": "Коли він розширювався та охолоджувався, утворилися протони та нейтрони.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Коли він розширювався та охолоджувався, утворилися протони та нейтрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-230",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Ці протони та нейтрони з'єдналися у найпростіші ядра.",
+      "text_markdown": "Ці протони та нейтрони з'єдналися у найпростіші ядра.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Ці протони та нейтрони з'єдналися у найпростіші ядра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-231",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Водень і гелій були першими елементами.",
+      "text_markdown": "Водень і гелій були першими елементами.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Водень і гелій були першими елементами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-232",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Мільйони років Всесвіт був хмарою водневого та гелієвого газу.",
+      "text_markdown": "Мільйони років Всесвіт був хмарою водневого та гелієвого газу.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Мільйони років Всесвіт був хмарою водневого та гелієвого газу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-233",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Потім гравітація стягнула газ у згустки.",
+      "text_markdown": "Потім гравітація стягнула газ у згустки.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Потім гравітація стягнула газ у згустки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-234",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Згустки ставали щільнішими і гарячішими.",
+      "text_markdown": "Згустки ставали щільнішими і гарячішими.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Згустки ставали щільнішими і гарячішими.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-235",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Коли центр згустка нагрівся приблизно до десяти мільйонів градусів, запалився термоядерний синтез.",
+      "text_markdown": "Коли центр згустка нагрівся приблизно до десяти мільйонів градусів, запалився термоядерний синтез.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Коли центр згустка нагрівся приблизно до десяти мільйонів градусів, запалився термоядерний синтез.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-236",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Народилася зоря.",
+      "text_markdown": "Народилася зоря.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Народилася зоря.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-237",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Зорі — це фабрики атомів.",
+      "text_markdown": "Зорі — це фабрики атомів.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Зорі — це фабрики атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-238",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Усередині зорі атоми водню зливаються, утворюючи гелій.",
+      "text_markdown": "Усередині зорі атоми водню зливаються, утворюючи гелій.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Усередині зорі атоми водню зливаються, утворюючи гелій.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-239",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Цей синтез вивільняє величезну енергію.",
+      "text_markdown": "Цей синтез вивільняє величезну енергію.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Цей синтез вивільняє величезну енергію.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-240",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Ця енергія змушує зорю сяяти.",
+      "text_markdown": "Ця енергія змушує зорю сяяти.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Ця енергія змушує зорю сяяти.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-241",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Наше Сонце щосекунди перетворює приблизно шістсот мільйонів тонн водню на гелій.",
+      "text_markdown": "Наше Сонце щосекунди перетворює приблизно шістсот мільйонів тонн водню на гелій.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Наше Сонце щосекунди перетворює приблизно шістсот мільйонів тонн водню на гелій.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-242",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Більші зорі синтезують важчі елементи.",
+      "text_markdown": "Більші зорі синтезують важчі елементи.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Більші зорі синтезують важчі елементи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-243",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Коли зоря вичерпує свій водень, вона починає перетворювати гелій на вуглець.",
+      "text_markdown": "Коли зоря вичерпує свій водень, вона починає перетворювати гелій на вуглець.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Коли зоря вичерпує свій водень, вона починає перетворювати гелій на вуглець.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-244",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Потім вуглець — на кисень.",
+      "text_markdown": "Потім вуглець — на кисень.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Потім вуглець — на кисень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-245",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Потім кисень — на кремній.",
+      "text_markdown": "Потім кисень — на кремній.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Потім кисень — на кремній.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-246",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Потім кремній — на залізо.",
+      "text_markdown": "Потім кремній — на залізо.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Потім кремній — на залізо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-247",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Кожен етап створює важчий елемент.",
+      "text_markdown": "Кожен етап створює важчий елемент.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Кожен етап створює важчий елемент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-248",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Залізо — найважчий елемент, який зоря може створити шляхом звичайного синтезу.",
+      "text_markdown": "Залізо — найважчий елемент, який зоря може створити шляхом звичайного синтезу.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Залізо — найважчий елемент, який зоря може створити шляхом звичайного синтезу.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-249",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Елементи важчі за залізо виникають, коли масивні зорі вибухають.",
+      "text_markdown": "Елементи важчі за залізо виникають, коли масивні зорі вибухають.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Елементи важчі за залізо виникають, коли масивні зорі вибухають.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-250",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Ці вибухи називаються наднові.",
+      "text_markdown": "Ці вибухи називаються наднові.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Ці вибухи називаються наднові.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-251",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Наднова за кілька секунд виділяє більше енергії, ніж Сонце випромінить за все своє життя.",
+      "text_markdown": "Наднова за кілька секунд виділяє більше енергії, ніж Сонце випромінить за все своє життя.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Наднова за кілька секунд виділяє більше енергії, ніж Сонце випромінить за все своє життя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-252",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "В екстремальних умовах наднової утворюються такі елементи, як золото, срібло, платина та уран.",
+      "text_markdown": "В екстремальних умовах наднової утворюються такі елементи, як золото, срібло, платина та уран.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "В екстремальних умовах наднової утворюються такі елементи, як золото, срібло, платина та уран.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-253",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Вибух розкидає ці важкі елементи по космосу.",
+      "text_markdown": "Вибух розкидає ці важкі елементи по космосу.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Вибух розкидає ці важкі елементи по космосу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-254",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Елементи змішуються з хмарами водневого та гелієвого газу.",
+      "text_markdown": "Елементи змішуються з хмарами водневого та гелієвого газу.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Елементи змішуються з хмарами водневого та гелієвого газу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-255",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Згодом гравітація стягує збагачений газ і формує нові зорі та планети.",
+      "text_markdown": "Згодом гравітація стягує збагачений газ і формує нові зорі та планети.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Згодом гравітація стягує збагачений газ і формує нові зорі та планети.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-256",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Наша Сонячна система утворилася з однієї з таких збагачених хмар приблизно 4,6 мільярда років тому.",
+      "text_markdown": "Наша Сонячна система утворилася з однієї з таких збагачених хмар приблизно 4,6 мільярда років тому.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Наша Сонячна система утворилася з однієї з таких збагачених хмар приблизно чотири цілих шість десятих мільярда років тому.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-257",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Кожен атом у твоєму тілі, важчий за водень, був створений усередині зорі.",
+      "text_markdown": "Кожен атом у твоєму тілі, важчий за водень, був створений усередині зорі.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Кожен атом у твоєму тілі, важчий за водень, був створений усередині зорі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-258",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Кальцій у твоїх кістках.",
+      "text_markdown": "Кальцій у твоїх кістках.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Кальцій у твоїх кістках.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-259",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Залізо у твоїй крові.",
+      "text_markdown": "Залізо у твоїй крові.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Залізо у твоїй крові.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-260",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Вуглець у твоїй шкірі.",
+      "text_markdown": "Вуглець у твоїй шкірі.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Вуглець у твоїй шкірі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-261",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Ти складаєшся із зоряного пилу.",
+      "text_markdown": "Ти складаєшся із зоряного пилу.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Ти складаєшся із зоряного пилу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-262",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Це не метафора.",
+      "text_markdown": "Це не метафора.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Це не метафора.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-263",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "Це факт ядерної фізики.",
+      "text_markdown": "Це факт ядерної фізики.",
+      "title": "Звідки беруться атоми",
+      "tts": {
+        "text": "Це факт ядерної фізики.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-264",
+      "sentence_index": 0,
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p62",
+      "chapter": 8,
+      "block_type": "heading",
+      "text": "Атоми — це все",
+      "text_markdown": "Атоми — це все",
+      "title": "Атоми — це все"
+    },
+    {
+      "id": "ch08-265",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Тепер ти знаєш основи.",
+      "text_markdown": "Тепер ти знаєш основи.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Тепер ти знаєш основи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-266",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Усе складається з атомів.",
+      "text_markdown": "Усе складається з атомів.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Усе складається з атомів.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-267",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми містять протони, нейтрони та електрони.",
+      "text_markdown": "Атоми містять протони, нейтрони та електрони.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми містять протони, нейтрони та електрони.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-268",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Кількість протонів визначає елемент.",
+      "text_markdown": "Кількість протонів визначає елемент.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Кількість протонів визначає елемент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-269",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми з'єднуються, утворюючи молекули.",
+      "text_markdown": "Атоми з'єднуються, утворюючи молекули.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми з'єднуються, утворюючи молекули.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-270",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми завжди рухаються.",
+      "text_markdown": "Атоми завжди рухаються.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми завжди рухаються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-271",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Зорі створили атоми, з яких складається наш світ.",
+      "text_markdown": "Зорі створили атоми, з яких складається наш світ.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Зорі створили атоми, з яких складається наш світ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-272",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Ці знання є основою хімії, біології, фізики та медицини.",
+      "text_markdown": "Ці знання є основою хімії, біології, фізики та медицини.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Ці знання є основою хімії, біології, фізики та медицини.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-273",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Кожна галузь науки пов'язана з атомами.",
+      "text_markdown": "Кожна галузь науки пов'язана з атомами.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Кожна галузь науки пов'язана з атомами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-274",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Коли лікар прописує ліки, ці ліки — це особливе розташування атомів, призначене для взаємодії з молекулами у твоєму тілі.",
+      "text_markdown": "Коли лікар прописує ліки, ці ліки — це особливе розташування атомів, призначене для взаємодії з молекулами у твоєму тілі.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Коли лікар прописує ліки, ці ліки — це особливе розташування атомів, призначене для взаємодії з молекулами у твоєму тілі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-275",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Коли інженер будує міст, міцність цього мосту залежить від того, як розташовані атоми заліза у сталі.",
+      "text_markdown": "Коли інженер будує міст, міцність цього мосту залежить від того, як розташовані атоми заліза у сталі.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Коли інженер будує міст, міцність цього мосту залежить від того, як розташовані атоми заліза у сталі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-276",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Коли фермер вирощує врожай, рослина росте, тому що атоми вуглецю з повітря поєднуються з водою та сонячним світлом усередині листків.",
+      "text_markdown": "Коли фермер вирощує врожай, рослина росте, тому що атоми вуглецю з повітря поєднуються з водою та сонячним світлом усередині листків.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Коли фермер вирощує врожай, рослина росте, тому що атоми вуглецю з повітря поєднуються з водою та сонячним світлом усередині листків.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-277",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Готування — це хімія.",
+      "text_markdown": "Готування — це хімія.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Готування — це хімія.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-278",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Коли ти печеш хліб, тепло змушує атоми в тісті перегруповуватися.",
+      "text_markdown": "Коли ти печеш хліб, тепло змушує атоми в тісті перегруповуватися.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Коли ти печеш хліб, тепло змушує атоми в тісті перегруповуватися.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-279",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Білки розгортаються.",
+      "text_markdown": "Білки розгортаються.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Білки розгортаються.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-280",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Цукри розпадаються і з'єднуються знову.",
+      "text_markdown": "Цукри розпадаються і з'єднуються знову.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Цукри розпадаються і з'єднуються знову.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-281",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Утворюються нові молекули, що створюють колір, текстуру та смак скоринки.",
+      "text_markdown": "Утворюються нові молекули, що створюють колір, текстуру та смак скоринки.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Утворюються нові молекули, що створюють колір, текстуру та смак скоринки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-282",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Кожен рецепт — це набір інструкцій для перегрупування атомів.",
+      "text_markdown": "Кожен рецепт — це набір інструкцій для перегрупування атомів.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Кожен рецепт — це набір інструкцій для перегрупування атомів.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-283",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Дихання — це хімія.",
+      "text_markdown": "Дихання — це хімія.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Дихання — це хімія.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-284",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Ти вдихаєш молекули кисню.",
+      "text_markdown": "Ти вдихаєш молекули кисню.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Ти вдихаєш молекули кисню.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-285",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Твоя кров переносить ці молекули до клітин.",
+      "text_markdown": "Твоя кров переносить ці молекули до клітин.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Твоя кров переносить ці молекули до клітин.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-286",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Усередині клітин атоми кисню з'єднуються з атомами вуглецю з їжі.",
+      "text_markdown": "Усередині клітин атоми кисню з'єднуються з атомами вуглецю з їжі.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Усередині клітин атоми кисню з'єднуються з атомами вуглецю з їжі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-287",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Реакція вивільняє енергію.",
+      "text_markdown": "Реакція вивільняє енергію.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Реакція вивільняє енергію.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-288",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Ти видихаєш вуглець і кисень у вигляді вуглекислого газу.",
+      "text_markdown": "Ти видихаєш вуглець і кисень у вигляді вуглекислого газу.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Ти видихаєш вуглець і кисень у вигляді вуглекислого газу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-289",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Кожен вдих — це хімічна реакція.",
+      "text_markdown": "Кожен вдих — це хімічна реакція.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Кожен вдих — це хімічна реакція.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-290",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Іржа — це хімія.",
+      "text_markdown": "Іржа — це хімія.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Іржа — це хімія.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-291",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми заліза на поверхні цвяха реагують з атомами кисню в повітрі.",
+      "text_markdown": "Атоми заліза на поверхні цвяха реагують з атомами кисню в повітрі.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми заліза на поверхні цвяха реагують з атомами кисню в повітрі.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-292",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Залізо і кисень з'єднуються, утворюючи нову речовину — оксид заліза.",
+      "text_markdown": "Залізо і кисень з'єднуються, утворюючи нову речовину — оксид заліза.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Залізо і кисень з'єднуються, утворюючи нову речовину — оксид заліза.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-293",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Оксид заліза — це червонувато-коричневий матеріал, який ми називаємо іржею.",
+      "text_markdown": "Оксид заліза — це червонувато-коричневий матеріал, який ми називаємо іржею.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Оксид заліза — це червонувато-коричневий матеріал, який ми називаємо іржею.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-294",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми заліза нікуди не поділися.",
+      "text_markdown": "Атоми заліза нікуди не поділися.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми заліза нікуди не поділися.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-295",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Вони просто з'єдналися з киснем.",
+      "text_markdown": "Вони просто з'єдналися з киснем.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Вони просто з'єдналися з киснем.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-296",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми — не абстракція.",
+      "text_markdown": "Атоми — не абстракція.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми — не абстракція.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-297",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Атоми — це фізична реальність усього, до чого ти торкаєшся, що ти куштуєш, бачиш і відчуваєш на запах.",
+      "text_markdown": "Атоми — це фізична реальність усього, до чого ти торкаєшся, що ти куштуєш, бачиш і відчуваєш на запах.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Атоми — це фізична реальність усього, до чого ти торкаєшся, що ти куштуєш, бачиш і відчуваєш на запах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-298",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Чим більше ти розумієш атоми, тим більше ти розумієш світ.",
+      "text_markdown": "Чим більше ти розумієш атоми, тим більше ти розумієш світ.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Чим більше ти розумієш атоми, тим більше ти розумієш світ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch08-299",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Це лише початок.",
+      "text_markdown": "Це лише початок.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Це лише початок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-300",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "Попереду ще багато цікавого.",
+      "text_markdown": "Попереду ще багато цікавого.",
+      "title": "Атоми — це все",
+      "tts": {
+        "text": "Попереду ще багато цікавого.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

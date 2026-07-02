@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "version": "2.0.0",
+  "language": "zh",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "给读者的话",
+      "text_markdown": "给读者的话"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你好。",
+      "text_markdown": "你好。",
+      "tts": {
+        "text": "你好。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我是 Kym。",
+      "text_markdown": "我是 Kym。",
+      "tts": {
+        "text": "我是凯姆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我很爱吃。",
+      "text_markdown": "我很爱吃。",
+      "tts": {
+        "text": "我很爱吃。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我也喜欢食物背后的故事。",
+      "text_markdown": "我也喜欢食物背后的故事。",
+      "tts": {
+        "text": "我也喜欢食物背后的故事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一本小书，说的却是一种很大的饮食传统。",
+      "text_markdown": "这是一本小书，说的却是一种很大的饮食传统。",
+      "tts": {
+        "text": "这是一本小书，说的却是一种很大的饮食传统。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "说的就是波斯菜。",
+      "text_markdown": "说的就是波斯菜。",
+      "tts": {
+        "text": "说的就是波斯菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它就是伊朗的饭菜。",
+      "text_markdown": "它就是伊朗的饭菜。",
+      "tts": {
+        "text": "它就是伊朗的饭菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它也来自一个更古老的国家，那个国家叫波斯。",
+      "text_markdown": "它也来自一个更古老的国家，那个国家叫波斯。",
+      "tts": {
+        "text": "它也来自一个更古老的国家，那个国家叫波斯。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯是世界上最早主动种植食物的地方之一。",
+      "text_markdown": "波斯是世界上最早主动种植食物的地方之一。",
+      "tts": {
+        "text": "波斯是世界上最早主动种植食物的地方之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小麦、大麦、桃、杏、石榴、菠菜、藏红花，你盘子里的很多东西，都在那里出生。",
+      "text_markdown": "小麦、大麦、桃、杏、石榴、菠菜、藏红花，你盘子里的很多东西，都在那里出生。",
+      "tts": {
+        "text": "小麦、大麦、桃、杏、石榴、菠菜、藏红花，你盘子里的很多东西，都在那里出生。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们先从这片土地说起。",
+      "text_markdown": "我们先从这片土地说起。",
+      "tts": {
+        "text": "我们先从这片土地说起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "再看看那里长出来的东西。",
+      "text_markdown": "再看看那里长出来的东西。",
+      "tts": {
+        "text": "再看看那里长出来的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然后看看米饭、面包、肉，还有炖菜。",
+      "text_markdown": "然后看看米饭、面包、肉，还有炖菜。",
+      "tts": {
+        "text": "然后看看米饭、面包、肉，还有炖菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到最后，你会知道波斯餐桌上有什么，也会知道它从哪里来。",
+      "text_markdown": "到最后，你会知道波斯餐桌上有什么，也会知道它从哪里来。",
+      "tts": {
+        "text": "到最后，你会知道波斯餐桌上有什么，也会知道它从哪里来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "坐下吧。",
+      "text_markdown": "坐下吧。",
+      "tts": {
+        "text": "坐下吧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "倒一杯茶吧。",
+      "text_markdown": "倒一杯茶吧。",
+      "tts": {
+        "text": "倒一杯茶吧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们开始吧。",
+      "text_markdown": "我们开始吧。",
+      "tts": {
+        "text": "我们开始吧。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章：农耕开始的土地",
+      "text_markdown": "第一章：农耕开始的土地"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯是一片高而干的土地。",
+      "text_markdown": "波斯是一片高而干的土地。",
+      "tts": {
+        "text": "波斯是一片高而干的土地。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它北边是里海，南边是波斯湾。",
+      "text_markdown": "它北边是里海，南边是波斯湾。",
+      "tts": {
+        "text": "它北边是里海，南边是波斯湾。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西边是美索不达米亚。",
+      "text_markdown": "西边是美索不达米亚。",
+      "tts": {
+        "text": "西边是美索不达米亚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "东边是印度。",
+      "text_markdown": "东边是印度。",
+      "tts": {
+        "text": "东边是印度。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "中间是山脉和沙漠。",
+      "text_markdown": "中间是山脉和沙漠。",
+      "tts": {
+        "text": "中间是山脉和沙漠。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "就在它旁边，大约一万年前，人们第一次有意种下小麦和大麦。",
+      "text_markdown": "就在它旁边，大约一万年前，人们第一次有意种下小麦和大麦。",
+      "tts": {
+        "text": "就在它旁边，大约一万年前，人们第一次有意种下小麦和大麦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "农业就在那里出生了。",
+      "text_markdown": "农业就在那里出生了。",
+      "tts": {
+        "text": "农业就在那里出生了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波斯也是最早学会它的地方之一。",
+      "text_markdown": "波斯也是最早学会它的地方之一。",
+      "tts": {
+        "text": "波斯也是最早学会它的地方之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这份早早开始的积累，今天还在每一只波斯盘子里。",
+      "text_markdown": "这份早早开始的积累，今天还在每一只波斯盘子里。",
+      "tts": {
+        "text": "这份早早开始的积累，今天还在每一只波斯盘子里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "桃子来自波斯。",
+      "text_markdown": "桃子来自波斯。",
+      "tts": {
+        "text": "桃子来自波斯。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "罗马人把它叫作“佩尔西卡”，意思是“波斯的水果”。英语里桃子的说法，就是从这个名字来的。",
+      "text_markdown": "罗马人把它叫作“佩尔西卡”，意思是“波斯的水果”。英语里桃子的说法，就是从这个名字来的。",
+      "tts": {
+        "text": "罗马人把它叫作“佩尔西卡”，意思是“波斯的水果”。英语里桃子的说法，就是从这个名字来的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "杏也来自那里。",
+      "text_markdown": "杏也来自那里。",
+      "tts": {
+        "text": "杏也来自那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "石榴也是。",
+      "text_markdown": "石榴也是。",
+      "tts": {
+        "text": "石榴也是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "核桃也是。",
+      "text_markdown": "核桃也是。",
+      "tts": {
+        "text": "核桃也是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "酸樱桃也是。",
+      "text_markdown": "酸樱桃也是。",
+      "tts": {
+        "text": "酸樱桃也是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "还有最早的沙拉绿叶菜之一，菠菜。",
+      "text_markdown": "还有最早的沙拉绿叶菜之一，菠菜。",
+      "tts": {
+        "text": "还有最早的沙拉绿叶菜之一，菠菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "英语里“菠菜”这个词，来自波斯语“埃斯法纳吉”。",
+      "text_markdown": "英语里“菠菜”这个词，来自波斯语“埃斯法纳吉”。",
+      "tts": {
+        "text": "英语里“菠菜”这个词，来自波斯语“埃斯法纳吉”。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "连“天堂”这个词，也是波斯语来的。",
+      "text_markdown": "连“天堂”这个词，也是波斯语来的。",
+      "tts": {
+        "text": "连“天堂”这个词，也是波斯语来的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它来自“帕尔迪斯”，意思是有围墙的花园。",
+      "text_markdown": "它来自“帕尔迪斯”，意思是有围墙的花园。",
+      "tts": {
+        "text": "它来自“帕尔迪斯”，意思是有围墙的花园。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最早的“天堂”，其实是波斯果园，里面种满石榴树。",
+      "text_markdown": "最早的“天堂”，其实是波斯果园，里面种满石榴树。",
+      "tts": {
+        "text": "最早的“天堂”，其实是波斯果园，里面种满石榴树。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯不只是自己吃得好。",
+      "text_markdown": "波斯不只是自己吃得好。",
+      "tts": {
+        "text": "波斯不只是自己吃得好。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯还教会世界怎样好好吃饭。",
+      "text_markdown": "波斯还教会世界怎样好好吃饭。",
+      "tts": {
+        "text": "波斯还教会世界怎样好好吃饭。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章：原生食材柜",
+      "text_markdown": "第二章：原生食材柜"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "打开一个波斯食材柜。",
+      "text_markdown": "打开一个波斯食材柜。",
+      "tts": {
+        "text": "打开一个波斯食材柜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "气味会先把故事讲给你听。",
+      "text_markdown": "气味会先把故事讲给你听。",
+      "tts": {
+        "text": "气味会先把故事讲给你听。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一种味道，是藏红花。",
+      "text_markdown": "第一种味道，是藏红花。",
+      "tts": {
+        "text": "第一种味道，是藏红花。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界上大约九成藏红花，都种在伊朗。",
+      "text_markdown": "世界上大约九成藏红花，都种在伊朗。",
+      "tts": {
+        "text": "世界上大约九成藏红花，都种在伊朗。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数来自一个叫呼罗珊的省。",
+      "text_markdown": "大多数来自一个叫呼罗珊的省。",
+      "tts": {
+        "text": "大多数来自一个叫呼罗珊的省。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "做出一克藏红花，农人要从大约两百朵番红花里，手工摘下红色花丝。",
+      "text_markdown": "做出一克藏红花，农人要从大约两百朵番红花里，手工摘下红色花丝。",
+      "tts": {
+        "text": "做出一克藏红花，农人要从大约两百朵番红花里，手工摘下红色花丝。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "这活儿要在寒冷的秋天清晨完成。",
+      "text_markdown": "这活儿要在寒冷的秋天清晨完成。",
+      "tts": {
+        "text": "这活儿要在寒冷的秋天清晨完成。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "藏红花是世界上最贵的香料。",
+      "text_markdown": "藏红花是世界上最贵的香料。",
+      "tts": {
+        "text": "藏红花是世界上最贵的香料。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "只要一小撮，就能把米饭染成金色，也能把清水变成香气。",
+      "text_markdown": "只要一小撮，就能把米饭染成金色，也能把清水变成香气。",
+      "tts": {
+        "text": "只要一小撮，就能把米饭染成金色，也能把清水变成香气。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二种味道，是石榴。",
+      "text_markdown": "第二种味道，是石榴。",
+      "tts": {
+        "text": "第二种味道，是石榴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯人种石榴，已经种了几千年。",
+      "text_markdown": "波斯人种石榴，已经种了几千年。",
+      "tts": {
+        "text": "波斯人种石榴，已经种了几千年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种果子象征爱情，也象征天堂。",
+      "text_markdown": "这种果子象征爱情，也象征天堂。",
+      "tts": {
+        "text": "这种果子象征爱情，也象征天堂。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "石榴汁会挤进炖菜里。",
+      "text_markdown": "石榴汁会挤进炖菜里。",
+      "tts": {
+        "text": "石榴汁会挤进炖菜里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "石榴籽会撒在米饭和沙拉上。",
+      "text_markdown": "石榴籽会撒在米饭和沙拉上。",
+      "tts": {
+        "text": "石榴籽会撒在米饭和沙拉上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接着，就是开心果。",
+      "text_markdown": "接着，就是开心果。",
+      "tts": {
+        "text": "接着，就是开心果。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "伊朗有些开心果园，已经有三千年历史。",
+      "text_markdown": "伊朗有些开心果园，已经有三千年历史。",
+      "tts": {
+        "text": "伊朗有些开心果园，已经有三千年历史。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你在世界上吃到的开心果，很多都能追到波斯祖树。",
+      "text_markdown": "你在世界上吃到的开心果，很多都能追到波斯祖树。",
+      "tts": {
+        "text": "你在世界上吃到的开心果，很多都能追到波斯祖树。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里还有核桃、酸樱桃、榅桲、甜瓜和椰枣。",
+      "text_markdown": "这里还有核桃、酸樱桃、榅桲、甜瓜和椰枣。",
+      "tts": {
+        "text": "这里还有核桃、酸樱桃、榅桲、甜瓜和椰枣。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "还有苏木香，一种来自野生灌木的深红酸香料。",
+      "text_markdown": "还有苏木香，一种来自野生灌木的深红酸香料。",
+      "tts": {
+        "text": "还有苏木香，一种来自野生灌木的深红酸香料。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在柠檬还没到处都有以前，苏木香就让食物亮了起来。",
+      "text_markdown": "在柠檬还没到处都有以前，苏木香就让食物亮了起来。",
+      "tts": {
+        "text": "在柠檬还没到处都有以前，苏木香就让食物亮了起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "现在也是。",
+      "text_markdown": "现在也是。",
+      "tts": {
+        "text": "现在也是。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个波斯食材柜里，装着半部水果史。",
+      "text_markdown": "一个波斯食材柜里，装着半部水果史。",
+      "tts": {
+        "text": "一个波斯食材柜里，装着半部水果史。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章：米饭、面包和神圣锅巴",
+      "text_markdown": "第三章：米饭、面包和神圣锅巴"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约两千五百年前，稻米从印度来到波斯。",
+      "text_markdown": "大约两千五百年前，稻米从印度来到波斯。",
+      "tts": {
+        "text": "大约两千五百年前，稻米从印度来到波斯。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "后来，它成了餐桌的中心。",
+      "text_markdown": "后来，它成了餐桌的中心。",
+      "tts": {
+        "text": "后来，它成了餐桌的中心。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯人做米饭，常有两种办法。",
+      "text_markdown": "波斯人做米饭，常有两种办法。",
+      "tts": {
+        "text": "波斯人做米饭，常有两种办法。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "白饭叫切洛饭。",
+      "text_markdown": "白饭叫切洛饭。",
+      "tts": {
+        "text": "白饭叫切洛饭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "拌了香草、肉或水果的饭，叫波罗饭。",
+      "text_markdown": "拌了香草、肉或水果的饭，叫波罗饭。",
+      "tts": {
+        "text": "拌了香草、肉或水果的饭，叫波罗饭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "两种饭都要细长、松轻，每一粒都分得开。",
+      "text_markdown": "两种饭都要细长、松轻，每一粒都分得开。",
+      "tts": {
+        "text": "两种饭都要细长、松轻，每一粒都分得开。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "可真正神奇的地方，在锅底。",
+      "text_markdown": "可真正神奇的地方，在锅底。",
+      "tts": {
+        "text": "可真正神奇的地方，在锅底。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那叫塔赫底锅巴。",
+      "text_markdown": "那叫塔赫底锅巴。",
+      "tts": {
+        "text": "那叫塔赫底锅巴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "厨师会先在锅底铺薄薄一层，有时是藏红花饭，有时是土豆片，有时是一片面包。",
+      "text_markdown": "厨师会先在锅底铺薄薄一层，有时是藏红花饭，有时是土豆片，有时是一片面包。",
+      "tts": {
+        "text": "厨师会先在锅底铺薄薄一层，有时是藏红花饭，有时是土豆片，有时是一片面包。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "然后再把米饭放上去。",
+      "text_markdown": "然后再把米饭放上去。",
+      "tts": {
+        "text": "然后再把米饭放上去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "再盖上锅盖，外面裹一块茶巾，让蒸汽慢慢做工。",
+      "text_markdown": "再盖上锅盖，外面裹一块茶巾，让蒸汽慢慢做工。",
+      "tts": {
+        "text": "再盖上锅盖，外面裹一块茶巾，让蒸汽慢慢做工。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "一个小时后，底下那层就会变得金黄又酥脆。",
+      "text_markdown": "一个小时后，底下那层就会变得金黄又酥脆。",
+      "tts": {
+        "text": "一个小时后，底下那层就会变得金黄又酥脆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "塔赫底锅巴很神圣。",
+      "text_markdown": "塔赫底锅巴很神圣。",
+      "tts": {
+        "text": "塔赫底锅巴很神圣。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一家人会抢着吃它。",
+      "text_markdown": "一家人会抢着吃它。",
+      "tts": {
+        "text": "一家人会抢着吃它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "伊朗电视里，甚至有整档节目比谁做得最好。",
+      "text_markdown": "伊朗电视里，甚至有整档节目比谁做得最好。",
+      "tts": {
+        "text": "伊朗电视里，甚至有整档节目比谁做得最好。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "完美的塔赫底锅巴，会整整齐齐地从锅里脱出来，像一张漂亮的圆盘。",
+      "text_markdown": "完美的塔赫底锅巴，会整整齐齐地从锅里脱出来，像一张漂亮的圆盘。",
+      "tts": {
+        "text": "完美的塔赫底锅巴，会整整齐齐地从锅里脱出来，像一张漂亮的圆盘。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "再来说面包。",
+      "text_markdown": "再来说面包。",
+      "tts": {
+        "text": "再来说面包。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最有名的，是桑加克。",
+      "text_markdown": "最有名的，是桑加克。",
+      "tts": {
+        "text": "最有名的，是桑加克。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "桑加克烤在一床热鹅卵石上，这种做法已经有五千年了。",
+      "text_markdown": "桑加克烤在一床热鹅卵石上，这种做法已经有五千年了。",
+      "tts": {
+        "text": "桑加克烤在一床热鹅卵石上，这种做法已经有五千年了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "面包里到现在还会带出小石子。",
+      "text_markdown": "面包里到现在还会带出小石子。",
+      "tts": {
+        "text": "面包里到现在还会带出小石子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "你在餐桌边把它们挑出来。",
+      "text_markdown": "你在餐桌边把它们挑出来。",
+      "tts": {
+        "text": "你在餐桌边把它们挑出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "别的面包还有巴巴里、拉瓦什和塔夫通。",
+      "text_markdown": "别的面包还有巴巴里、拉瓦什和塔夫通。",
+      "tts": {
+        "text": "别的面包还有巴巴里、拉瓦什和塔夫通。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一顿波斯早餐，就是面包、茶，还有柔软的白奶酪。",
+      "text_markdown": "一顿波斯早餐，就是面包、茶，还有柔软的白奶酪。",
+      "tts": {
+        "text": "一顿波斯早餐，就是面包、茶，还有柔软的白奶酪。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章：烤肉串和耐心的炖菜",
+      "text_markdown": "第四章：烤肉串和耐心的炖菜"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "“卡巴卜”这个词，本来就是波斯语。",
+      "text_markdown": "“卡巴卜”这个词，本来就是波斯语。",
+      "tts": {
+        "text": "“卡巴卜”这个词，本来就是波斯语。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的意思，就是火上烤的肉。",
+      "text_markdown": "它的意思，就是火上烤的肉。",
+      "tts": {
+        "text": "它的意思，就是火上烤的肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "几千年来，波斯人一直把羊肉串在长长的扁签上来烤。",
+      "text_markdown": "几千年来，波斯人一直把羊肉串在长长的扁签上来烤。",
+      "tts": {
+        "text": "几千年来，波斯人一直把羊肉串在长长的扁签上来烤。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天最受欢迎的烤肉串，是库比代。",
+      "text_markdown": "今天最受欢迎的烤肉串，是库比代。",
+      "tts": {
+        "text": "今天最受欢迎的烤肉串，是库比代。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它用绞羊肉或牛肉，拌上洋葱和盐，压在宽扁铁签上，再放到炭火上烤。",
+      "text_markdown": "它用绞羊肉或牛肉，拌上洋葱和盐，压在宽扁铁签上，再放到炭火上烤。",
+      "tts": {
+        "text": "它用绞羊肉或牛肉，拌上洋葱和盐，压在宽扁铁签上，再放到炭火上烤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它看起来很古老。",
+      "text_markdown": "它看起来很古老。",
+      "tts": {
+        "text": "它看起来很古老。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "其实不是。",
+      "text_markdown": "其实不是。",
+      "tts": {
+        "text": "其实不是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "绞肉机一直到十九世纪晚期，才来到伊朗。",
+      "text_markdown": "绞肉机一直到十九世纪晚期，才来到伊朗。",
+      "tts": {
+        "text": "绞肉机一直到十九世纪晚期，才来到伊朗。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "所以最像波斯的库比代，其实也不过一百多年。",
+      "text_markdown": "所以最像波斯的库比代，其实也不过一百多年。",
+      "tts": {
+        "text": "所以最像波斯的库比代，其实也不过一百多年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "更老的烤肉串，用的是切片肉。",
+      "text_markdown": "更老的烤肉串，用的是切片肉。",
+      "tts": {
+        "text": "更老的烤肉串，用的是切片肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "朱杰，是用藏红花和酸奶腌过的鸡肉串。",
+      "text_markdown": "朱杰，是用藏红花和酸奶腌过的鸡肉串。",
+      "tts": {
+        "text": "朱杰，是用藏红花和酸奶腌过的鸡肉串。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "巴尔格，是薄薄的羊里脊片。",
+      "text_markdown": "巴尔格，是薄薄的羊里脊片。",
+      "tts": {
+        "text": "巴尔格，是薄薄的羊里脊片。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "两种都会放在藏红花米饭上，再配一颗烤番茄。",
+      "text_markdown": "两种都会放在藏红花米饭上，再配一颗烤番茄。",
+      "tts": {
+        "text": "两种都会放在藏红花米饭上，再配一颗烤番茄。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现在来认识一种很有耐心的食物，霍列什炖菜。",
+      "text_markdown": "现在来认识一种很有耐心的食物，霍列什炖菜。",
+      "tts": {
+        "text": "现在来认识一种很有耐心的食物，霍列什炖菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一锅霍列什，要慢慢炖上好几个小时。",
+      "text_markdown": "一锅霍列什，要慢慢炖上好几个小时。",
+      "tts": {
+        "text": "一锅霍列什，要慢慢炖上好几个小时。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最有名的，是费森詹。",
+      "text_markdown": "最有名的，是费森詹。",
+      "tts": {
+        "text": "最有名的，是费森詹。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它用鸡或鸭，放进核桃碎和石榴汁熬成的浓酱里，慢慢煮。",
+      "text_markdown": "它用鸡或鸭，放进核桃碎和石榴汁熬成的浓酱里，慢慢煮。",
+      "tts": {
+        "text": "它用鸡或鸭，放进核桃碎和石榴汁熬成的浓酱里，慢慢煮。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这道做法，是人们找到的最古老炖菜配方之一。",
+      "text_markdown": "这道做法，是人们找到的最古老炖菜配方之一。",
+      "tts": {
+        "text": "这道做法，是人们找到的最古老炖菜配方之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在波斯波利斯遗址出土的楔形文字泥版上，就写着它的一个版本。",
+      "text_markdown": "在波斯波利斯遗址出土的楔形文字泥版上，就写着它的一个版本。",
+      "tts": {
+        "text": "在波斯波利斯遗址出土的楔形文字泥版上，就写着它的一个版本。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "这样算来，它已经有两千五百多年了。",
+      "text_markdown": "这样算来，它已经有两千五百多年了。",
+      "tts": {
+        "text": "这样算来，它已经有两千五百多年了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "人们现在还这样做它。",
+      "text_markdown": "人们现在还这样做它。",
+      "tts": {
+        "text": "人们现在还这样做它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一道经典，是戈尔梅萨布兹，用羊肉、红腰豆和一大堆新鲜香草，再配上干酸橙一起炖。",
+      "text_markdown": "另一道经典，是戈尔梅萨布兹，用羊肉、红腰豆和一大堆新鲜香草，再配上干酸橙一起炖。",
+      "tts": {
+        "text": "另一道经典，是戈尔梅萨布兹，用羊肉、红腰豆和一大堆新鲜香草，再配上干酸橙一起炖。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "很多伊朗人都说，它就是国菜。",
+      "text_markdown": "很多伊朗人都说，它就是国菜。",
+      "tts": {
+        "text": "很多伊朗人都说，它就是国菜。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章：酸奶、茶和最古老的甜食",
+      "text_markdown": "第五章：酸奶、茶和最古老的甜食"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯人吃什么，都能配酸奶。",
+      "text_markdown": "波斯人吃什么，都能配酸奶。",
+      "tts": {
+        "text": "波斯人吃什么，都能配酸奶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "原味酸奶叫马斯特。",
+      "text_markdown": "原味酸奶叫马斯特。",
+      "tts": {
+        "text": "原味酸奶叫马斯特。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "马斯特加黄瓜和干薄荷，叫马斯特欧希亚尔。",
+      "text_markdown": "马斯特加黄瓜和干薄荷，叫马斯特欧希亚尔。",
+      "tts": {
+        "text": "马斯特加黄瓜和干薄荷，叫马斯特欧希亚尔。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "加了薄荷的咸酸奶饮，叫杜格。",
+      "text_markdown": "加了薄荷的咸酸奶饮，叫杜格。",
+      "tts": {
+        "text": "加了薄荷的咸酸奶饮，叫杜格。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "还有卡什克，那是一种味道很重的干乳清，常用在汤里。",
+      "text_markdown": "还有卡什克，那是一种味道很重的干乳清，常用在汤里。",
+      "tts": {
+        "text": "还有卡什克，那是一种味道很重的干乳清，常用在汤里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "再来，就是茶。",
+      "text_markdown": "再来，就是茶。",
+      "tts": {
+        "text": "再来，就是茶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯人早上喝，中午喝，晚上也喝。茶要在萨莫瓦上的高壶里，泡得很浓。",
+      "text_markdown": "波斯人早上喝，中午喝，晚上也喝。茶要在萨莫瓦上的高壶里，泡得很浓。",
+      "tts": {
+        "text": "波斯人早上喝，中午喝，晚上也喝。茶要在萨莫瓦上的高壶里，泡得很浓。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "茶这么重要，所以很多人会惊讶，它其实来得很晚。",
+      "text_markdown": "茶这么重要，所以很多人会惊讶，它其实来得很晚。",
+      "tts": {
+        "text": "茶这么重要，所以很多人会惊讶，它其实来得很晚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在波斯的大部分历史里，人们喝的是咖啡。",
+      "text_markdown": "在波斯的大部分历史里，人们喝的是咖啡。",
+      "tts": {
+        "text": "在波斯的大部分历史里，人们喝的是咖啡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "一直到十九世纪晚期，茶才真正接过来。",
+      "text_markdown": "一直到十九世纪晚期，茶才真正接过来。",
+      "tts": {
+        "text": "一直到十九世纪晚期，茶才真正接过来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "今天，伊朗已经是世界上最爱喝茶的地方之一。",
+      "text_markdown": "今天，伊朗已经是世界上最爱喝茶的地方之一。",
+      "tts": {
+        "text": "今天，伊朗已经是世界上最爱喝茶的地方之一。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "喝茶还有个小小的讲究。",
+      "text_markdown": "喝茶还有个小小的讲究。",
+      "tts": {
+        "text": "喝茶还有个小小的讲究。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你把一块方糖含在牙齿间。",
+      "text_markdown": "你把一块方糖含在牙齿间。",
+      "tts": {
+        "text": "你把一块方糖含在牙齿间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再隔着糖块，小口喝茶。",
+      "text_markdown": "再隔着糖块，小口喝茶。",
+      "tts": {
+        "text": "再隔着糖块，小口喝茶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "糖会慢慢化开一点。",
+      "text_markdown": "糖会慢慢化开一点。",
+      "tts": {
+        "text": "糖会慢慢化开一点。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "茶喝下去的时候，又热，又浓，还带一点甜。",
+      "text_markdown": "茶喝下去的时候，又热，又浓，还带一点甜。",
+      "tts": {
+        "text": "茶喝下去的时候，又热，又浓，还带一点甜。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现在说甜食。",
+      "text_markdown": "现在说甜食。",
+      "tts": {
+        "text": "现在说甜食。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯甜食很古老，很浓郁，也很小巧。",
+      "text_markdown": "波斯甜食很古老，很浓郁，也很小巧。",
+      "tts": {
+        "text": "波斯甜食很古老，很浓郁，也很小巧。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最老的一种，是法鲁代。",
+      "text_markdown": "最老的一种，是法鲁代。",
+      "tts": {
+        "text": "最老的一种，是法鲁代。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是细米粉，冻在玫瑰水糖浆里，再配上青柠汁和开心果。",
+      "text_markdown": "它是细米粉，冻在玫瑰水糖浆里，再配上青柠汁和开心果。",
+      "tts": {
+        "text": "它是细米粉，冻在玫瑰水糖浆里，再配上青柠汁和开心果。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "波斯作家在基督前四百年左右，就写到过它。",
+      "text_markdown": "波斯作家在基督前四百年左右，就写到过它。",
+      "tts": {
+        "text": "波斯作家在基督前四百年左右，就写到过它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "所以法鲁代，是世界上最古老的冷冻甜点之一。",
+      "text_markdown": "所以法鲁代，是世界上最古老的冷冻甜点之一。",
+      "tts": {
+        "text": "所以法鲁代，是世界上最古老的冷冻甜点之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它比冰淇淋，还早两千多年。",
+      "text_markdown": "它比冰淇淋，还早两千多年。",
+      "tts": {
+        "text": "它比冰淇淋，还早两千多年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "别的经典还有，大不里士的果仁蜜饼，比土耳其那种更轻，用核桃和玫瑰水来做。",
+      "text_markdown": "别的经典还有，大不里士的果仁蜜饼，比土耳其那种更轻，用核桃和玫瑰水来做。",
+      "tts": {
+        "text": "别的经典还有，大不里士的果仁蜜饼，比土耳其那种更轻，用核桃和玫瑰水来做。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "还有哈尔瓦，是芝麻或藏红花做成的浓稠甜糕。",
+      "text_markdown": "还有哈尔瓦，是芝麻或藏红花做成的浓稠甜糕。",
+      "tts": {
+        "text": "还有哈尔瓦，是芝麻或藏红花做成的浓稠甜糕。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "还有伊斯法罕的加兹，一种柔软的开心果牛轧糖。",
+      "text_markdown": "还有伊斯法罕的加兹，一种柔软的开心果牛轧糖。",
+      "tts": {
+        "text": "还有伊斯法罕的加兹，一种柔软的开心果牛轧糖。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "还有索汉，一种金黄酥脆的藏红花太妃糖。",
+      "text_markdown": "还有索汉，一种金黄酥脆的藏红花太妃糖。",
+      "tts": {
+        "text": "还有索汉，一种金黄酥脆的藏红花太妃糖。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "还有库姆的诺霍德奇，一种小小的鹰嘴豆饼干。",
+      "text_markdown": "还有库姆的诺霍德奇，一种小小的鹰嘴豆饼干。",
+      "tts": {
+        "text": "还有库姆的诺霍德奇，一种小小的鹰嘴豆饼干。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一小盘甜食，一杯茶，一场慢慢的聊天。",
+      "text_markdown": "一小盘甜食，一杯茶，一场慢慢的聊天。",
+      "tts": {
+        "text": "一小盘甜食，一杯茶，一场慢慢的聊天。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这就是一个波斯下午。",
+      "text_markdown": "这就是一个波斯下午。",
+      "tts": {
+        "text": "这就是一个波斯下午。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章：波斯给出的，波斯吸收的",
+      "text_markdown": "第六章：波斯给出的，波斯吸收的"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯坐在旧世界的正中央。",
+      "text_markdown": "波斯坐在旧世界的正中央。",
+      "tts": {
+        "text": "波斯坐在旧世界的正中央。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "商队穿过它。",
+      "text_markdown": "商队穿过它。",
+      "tts": {
+        "text": "商队穿过它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "帝国在它身上兴起，也在它身上倒下。",
+      "text_markdown": "帝国在它身上兴起，也在它身上倒下。",
+      "tts": {
+        "text": "帝国在它身上兴起，也在它身上倒下。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食物也一样，沿着两边的路来来去去。",
+      "text_markdown": "食物也一样，沿着两边的路来来去去。",
+      "tts": {
+        "text": "食物也一样，沿着两边的路来来去去。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "先看看词语。",
+      "text_markdown": "先看看词语。",
+      "tts": {
+        "text": "先看看词语。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英语从波斯语里，借走了几十个饮食词。",
+      "text_markdown": "英语从波斯语里，借走了几十个饮食词。",
+      "tts": {
+        "text": "英语从波斯语里，借走了几十个饮食词。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "像糖、糖果、柠檬、橙子、茉莉、紫丁香、郁金香、亭子、雪葩，还有天堂，这些词的源头都在波斯语。",
+      "text_markdown": "像糖、糖果、柠檬、橙子、茉莉、紫丁香、郁金香、亭子、雪葩，还有天堂，这些词的源头都在波斯语。",
+      "tts": {
+        "text": "像糖、糖果、柠檬、橙子、茉莉、紫丁香、郁金香、亭子、雪葩，还有天堂，这些词的源头都在波斯语。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "“将死”这个词也一样，来自“沙阿马特”，意思是“国王无助了”。波斯把词语送进了半个世界的嘴里。",
+      "text_markdown": "“将死”这个词也一样，来自“沙阿马特”，意思是“国王无助了”。波斯把词语送进了半个世界的嘴里。",
+      "tts": {
+        "text": "“将死”这个词也一样，来自“沙阿马特”，意思是“国王无助了”。波斯把词语送进了半个世界的嘴里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯煮饭的方法，向东走了。",
+      "text_markdown": "波斯煮饭的方法，向东走了。",
+      "tts": {
+        "text": "波斯煮饭的方法，向东走了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "印度的莫卧儿国王很爱波斯菜，还把波斯厨师带进宫廷。",
+      "text_markdown": "印度的莫卧儿国王很爱波斯菜，还把波斯厨师带进宫廷。",
+      "tts": {
+        "text": "印度的莫卧儿国王很爱波斯菜，还把波斯厨师带进宫廷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些厨师做出了比尔亚尼。",
+      "text_markdown": "这些厨师做出了比尔亚尼。",
+      "tts": {
+        "text": "这些厨师做出了比尔亚尼。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "从地中海到中亚草原，那种长粒又带香料的皮拉夫饭，根子都在波斯的米饭传统里。",
+      "text_markdown": "从地中海到中亚草原，那种长粒又带香料的皮拉夫饭，根子都在波斯的米饭传统里。",
+      "tts": {
+        "text": "从地中海到中亚草原，那种长粒又带香料的皮拉夫饭，根子都在波斯的米饭传统里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯的水果，也向西走了。",
+      "text_markdown": "波斯的水果，也向西走了。",
+      "tts": {
+        "text": "波斯的水果，也向西走了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "罗马人在意大利种桃子，因为他们是从波斯得到它的。",
+      "text_markdown": "罗马人在意大利种桃子，因为他们是从波斯得到它的。",
+      "tts": {
+        "text": "罗马人在意大利种桃子，因为他们是从波斯得到它的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "菠菜是经由西班牙到了欧洲，是波斯世界的商人把它带过去的。",
+      "text_markdown": "菠菜是经由西班牙到了欧洲，是波斯世界的商人把它带过去的。",
+      "tts": {
+        "text": "菠菜是经由西班牙到了欧洲，是波斯世界的商人把它带过去的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "荷兰的象征郁金香，先在波斯和土耳其被种起来，后来才到了荷兰。",
+      "text_markdown": "荷兰的象征郁金香，先在波斯和土耳其被种起来，后来才到了荷兰。",
+      "tts": {
+        "text": "荷兰的象征郁金香，先在波斯和土耳其被种起来，后来才到了荷兰。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯也会把外面的东西收进来。",
+      "text_markdown": "波斯也会把外面的东西收进来。",
+      "tts": {
+        "text": "波斯也会把外面的东西收进来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十三世纪入侵的蒙古人，带来了更浓的烤肉和炙肉口味。",
+      "text_markdown": "十三世纪入侵的蒙古人，带来了更浓的烤肉和炙肉口味。",
+      "tts": {
+        "text": "十三世纪入侵的蒙古人，带来了更浓的烤肉和炙肉口味。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "阿拉伯农业从南边和东边，带来了甘蔗、柑橘和稻米。",
+      "text_markdown": "阿拉伯农业从南边和东边，带来了甘蔗、柑橘和稻米。",
+      "tts": {
+        "text": "阿拉伯农业从南边和东边，带来了甘蔗、柑橘和稻米。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "萨莫瓦是十八世纪从北边来的，是从俄罗斯过来的。",
+      "text_markdown": "萨莫瓦是十八世纪从北边来的，是从俄罗斯过来的。",
+      "tts": {
+        "text": "萨莫瓦是十八世纪从北边来的，是从俄罗斯过来的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两千五百年前，希腊历史学家希罗多德写过，波斯人过生日，比一年里任何一天都更铺张。",
+      "text_markdown": "两千五百年前，希腊历史学家希罗多德写过，波斯人过生日，比一年里任何一天都更铺张。",
+      "tts": {
+        "text": "两千五百年前，希腊历史学家希罗多德写过，波斯人过生日，比一年里任何一天都更铺张。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他说，那一天的餐桌，会摆得比平常更丰盛。",
+      "text_markdown": "他说，那一天的餐桌，会摆得比平常更丰盛。",
+      "tts": {
+        "text": "他说，那一天的餐桌，会摆得比平常更丰盛。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有些事，到现在也没变。",
+      "text_markdown": "有些事，到现在也没变。",
+      "tts": {
+        "text": "有些事，到现在也没变。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章：在波斯餐桌旁",
+      "text_markdown": "第七章：在波斯餐桌旁"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现在，我们坐下。",
+      "text_markdown": "现在，我们坐下。",
+      "tts": {
+        "text": "现在，我们坐下。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯新年从春分开始，时间大约在三月二十一日前后。",
+      "text_markdown": "波斯新年从春分开始，时间大约在三月二十一日前后。",
+      "tts": {
+        "text": "波斯新年从春分开始，时间大约在三月二十一日前后。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个节日叫诺鲁孜，也就是新的一天。",
+      "text_markdown": "这个节日叫诺鲁孜，也就是新的一天。",
+      "tts": {
+        "text": "这个节日叫诺鲁孜，也就是新的一天。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是一年里最重要的节日。",
+      "text_markdown": "它是一年里最重要的节日。",
+      "tts": {
+        "text": "它是一年里最重要的节日。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每个家庭都会摆一张特别的桌子，叫哈夫特辛。",
+      "text_markdown": "每个家庭都会摆一张特别的桌子，叫哈夫特辛。",
+      "tts": {
+        "text": "每个家庭都会摆一张特别的桌子，叫哈夫特辛。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "哈夫特，就是七。",
+      "text_markdown": "哈夫特，就是七。",
+      "tts": {
+        "text": "哈夫特，就是七。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "辛，就是字母 S。桌上要放七样在波斯语里以 S 开头的东西。",
+      "text_markdown": "辛，就是字母 S。桌上要放七样在波斯语里以 S 开头的东西。",
+      "tts": {
+        "text": "辛，就是那个发丝音的字母。桌上要放七样在波斯语里以丝音开头的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "有西布，也就是苹果。",
+      "text_markdown": "有西布，也就是苹果。",
+      "tts": {
+        "text": "有西布，也就是苹果。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "有塞凯，也就是硬币。",
+      "text_markdown": "有塞凯，也就是硬币。",
+      "tts": {
+        "text": "有塞凯，也就是硬币。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "有松博勒，也就是风信子。",
+      "text_markdown": "有松博勒，也就是风信子。",
+      "tts": {
+        "text": "有松博勒，也就是风信子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "有萨马努，一种甜甜的小麦布丁。",
+      "text_markdown": "有萨马努，一种甜甜的小麦布丁。",
+      "tts": {
+        "text": "有萨马努，一种甜甜的小麦布丁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "有森杰德，也就是胡颓子树的干果。",
+      "text_markdown": "有森杰德，也就是胡颓子树的干果。",
+      "tts": {
+        "text": "有森杰德，也就是胡颓子树的干果。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "有索玛格，也就是苏木香。",
+      "text_markdown": "有索玛格，也就是苏木香。",
+      "tts": {
+        "text": "有索玛格，也就是苏木香。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "有塞尔凯，也就是醋。",
+      "text_markdown": "有塞尔凯，也就是醋。",
+      "tts": {
+        "text": "有塞尔凯，也就是醋。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "每一样都代表一件事，健康、财富、美丽、耐心、爱、升起的太阳，还有时间的流逝。",
+      "text_markdown": "每一样都代表一件事，健康、财富、美丽、耐心、爱、升起的太阳，还有时间的流逝。",
+      "tts": {
+        "text": "每一样都代表一件事，健康、财富、美丽、耐心、爱、升起的太阳，还有时间的流逝。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新年那顿饭，常常是香草波罗饭配马希鱼。",
+      "text_markdown": "新年那顿饭，常常是香草波罗饭配马希鱼。",
+      "tts": {
+        "text": "新年那顿饭，常常是香草波罗饭配马希鱼。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这是一盘切碎香草拌成深绿色的米饭，旁边配白鱼。",
+      "text_markdown": "这是一盘切碎香草拌成深绿色的米饭，旁边配白鱼。",
+      "tts": {
+        "text": "这是一盘切碎香草拌成深绿色的米饭，旁边配白鱼。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "春天就在盘子里。",
+      "text_markdown": "春天就在盘子里。",
+      "tts": {
+        "text": "春天就在盘子里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一道经典，是阿什雷什泰，一种浓汤，里面有豆子、香草、炸洋葱、卡什克和面条。",
+      "text_markdown": "另一道经典，是阿什雷什泰，一种浓汤，里面有豆子、香草、炸洋葱、卡什克和面条。",
+      "tts": {
+        "text": "另一道经典，是阿什雷什泰，一种浓汤，里面有豆子、香草、炸洋葱、卡什克和面条。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "波斯人说，在做艰难决定前，你该先吃一碗。",
+      "text_markdown": "波斯人说，在做艰难决定前，你该先吃一碗。",
+      "tts": {
+        "text": "波斯人说，在做艰难决定前，你该先吃一碗。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们说，面条能把命运的线头理开。",
+      "text_markdown": "他们说，面条能把命运的线头理开。",
+      "tts": {
+        "text": "他们说，面条能把命运的线头理开。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "茶馆也是波斯人的发明。",
+      "text_markdown": "茶馆也是波斯人的发明。",
+      "tts": {
+        "text": "茶馆也是波斯人的发明。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它叫卡赫维哈内，字面意思是咖啡馆，虽然现在喝的是茶。",
+      "text_markdown": "它叫卡赫维哈内，字面意思是咖啡馆，虽然现在喝的是茶。",
+      "tts": {
+        "text": "它叫卡赫维哈内，字面意思是咖啡馆，虽然现在喝的是茶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "五百年来，男人和女人都在那里聚在一起，下双陆棋，听诗，也争论世界。",
+      "text_markdown": "五百年来，男人和女人都在那里聚在一起，下双陆棋，听诗，也争论世界。",
+      "tts": {
+        "text": "五百年来，男人和女人都在那里聚在一起，下双陆棋，听诗，也争论世界。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "很多伟大的波斯故事，最早都是在一杯冒着热气的茶边讲出来的。",
+      "text_markdown": "很多伟大的波斯故事，最早都是在一杯冒着热气的茶边讲出来的。",
+      "tts": {
+        "text": "很多伟大的波斯故事，最早都是在一杯冒着热气的茶边讲出来的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一位著名的波斯医生阿维森纳，在一千年前说过，每种食物不是热，就是冷。",
+      "text_markdown": "一位著名的波斯医生阿维森纳，在一千年前说过，每种食物不是热，就是冷。",
+      "tts": {
+        "text": "一位著名的波斯医生阿维森纳，在一千年前说过，每种食物不是热，就是冷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "藏红花、核桃和羊肉，是热的。",
+      "text_markdown": "藏红花、核桃和羊肉，是热的。",
+      "tts": {
+        "text": "藏红花、核桃和羊肉，是热的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "酸奶、黄瓜和西瓜，是冷的。",
+      "text_markdown": "酸奶、黄瓜和西瓜，是冷的。",
+      "tts": {
+        "text": "酸奶、黄瓜和西瓜，是冷的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一顿好饭，要把两边配平。",
+      "text_markdown": "一顿好饭，要把两边配平。",
+      "tts": {
+        "text": "一顿好饭，要把两边配平。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "在很多波斯家庭，这个想法到午饭时还活着。",
+      "text_markdown": "在很多波斯家庭，这个想法到午饭时还活着。",
+      "tts": {
+        "text": "在很多波斯家庭，这个想法到午饭时还活着。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯菜很有耐心。",
+      "text_markdown": "波斯菜很有耐心。",
+      "tts": {
+        "text": "波斯菜很有耐心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它也很大方。",
+      "text_markdown": "它也很大方。",
+      "tts": {
+        "text": "它也很大方。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它很古老。",
+      "text_markdown": "它很古老。",
+      "tts": {
+        "text": "它很古老。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "直到今天，它还在几百万个炉子上，每天继续被做出来。",
+      "text_markdown": "直到今天，它还在几百万个炉子上，每天继续被做出来。",
+      "tts": {
+        "text": "直到今天，它还在几百万个炉子上，每天继续被做出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "再见",
+      "text_markdown": "再见"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们的短短一趟旅行，到这里就结束了。",
+      "text_markdown": "我们的短短一趟旅行，到这里就结束了。",
+      "tts": {
+        "text": "我们的短短一趟旅行，到这里就结束了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "希望你学到了一点东西。",
+      "text_markdown": "希望你学到了一点东西。",
+      "tts": {
+        "text": "希望你学到了一点东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "也希望这几页里，有什么让你饿了。",
+      "text_markdown": "也希望这几页里，有什么让你饿了。",
+      "tts": {
+        "text": "也希望这几页里，有什么让你饿了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "藏红花和米饭。",
+      "text_markdown": "藏红花和米饭。",
+      "tts": {
+        "text": "藏红花和米饭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "石榴和核桃。",
+      "text_markdown": "石榴和核桃。",
+      "tts": {
+        "text": "石榴和核桃。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "小盘子里的一小块甜食。",
+      "text_markdown": "小盘子里的一小块甜食。",
+      "tts": {
+        "text": "小盘子里的一小块甜食。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果可以，就去找一家离你近的波斯餐馆。",
+      "text_markdown": "如果可以，就去找一家离你近的波斯餐馆。",
+      "tts": {
+        "text": "如果可以，就去找一家离你近的波斯餐馆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "或者，翻开一本波斯菜谱。",
+      "text_markdown": "或者，翻开一本波斯菜谱。",
+      "tts": {
+        "text": "或者，翻开一本波斯菜谱。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "试一道炖菜。",
+      "text_markdown": "试一道炖菜。",
+      "tts": {
+        "text": "试一道炖菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "试一杯茶。",
+      "text_markdown": "试一杯茶。",
+      "tts": {
+        "text": "试一杯茶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "这种食物，已经等了几千年。",
+      "text_markdown": "这种食物，已经等了几千年。",
+      "tts": {
+        "text": "这种食物，已经等了几千年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "它也可以等你。",
+      "text_markdown": "它也可以等你。",
+      "tts": {
+        "text": "它也可以等你。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "谢谢你听我讲。",
+      "text_markdown": "谢谢你听我讲。",
+      "tts": {
+        "text": "谢谢你听我讲。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "去做点什么吧。",
+      "text_markdown": "去做点什么吧。",
+      "tts": {
+        "text": "去做点什么吧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "和别人一起吃吧。",
+      "text_markdown": "和别人一起吃吧。",
+      "tts": {
+        "text": "和别人一起吃吧。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我是 Kym。",
+      "text_markdown": "我是 Kym。",
+      "tts": {
+        "text": "我是凯姆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "再见。",
+      "text_markdown": "再见。",
+      "tts": {
+        "text": "再见。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

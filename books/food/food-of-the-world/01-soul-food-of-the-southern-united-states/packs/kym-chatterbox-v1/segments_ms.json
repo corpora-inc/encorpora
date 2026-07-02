@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ms",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Catatan untuk Pembaca",
+      "text_markdown": "Catatan untuk Pembaca"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini sebuah buku kecil tentang satu makanan yang penting.",
+      "text_markdown": "Ini sebuah buku kecil tentang satu makanan yang penting.",
+      "tts": {
+        "text": "Ini sebuah buku kecil tentang satu makanan yang penting.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Makanan itu ialah soul food, dari Selatan Amerika Syarikat.",
+      "text_markdown": "Makanan itu ialah soul food, dari Selatan Amerika Syarikat.",
+      "tts": {
+        "text": "Makanan itu ialah sol fud, dari Selatan Amerika Syarikat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food ialah makanan sebenar.",
+      "text_markdown": "Soul food ialah makanan sebenar.",
+      "tts": {
+        "text": "Sol fud ialah makanan sebenar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang memasaknya di rumah.",
+      "text_markdown": "Orang memasaknya di rumah.",
+      "tts": {
+        "text": "Orang memasaknya di rumah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang memakannya pada hari Ahad.",
+      "text_markdown": "Orang memakannya pada hari Ahad.",
+      "tts": {
+        "text": "Orang memakannya pada hari Ahad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Orang memakannya juga pada hari Selasa.",
+      "text_markdown": "Orang memakannya juga pada hari Selasa.",
+      "tts": {
+        "text": "Orang memakannya juga pada hari Selasa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kita akan bermula dengan namanya.",
+      "text_markdown": "Kita akan bermula dengan namanya.",
+      "tts": {
+        "text": "Kita akan bermula dengan namanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kemudian kita akan lihat tumbuhan dan haiwannya.",
+      "text_markdown": "Kemudian kita akan lihat tumbuhan dan haiwannya.",
+      "tts": {
+        "text": "Kemudian kita akan lihat tumbuhan dan haiwannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemudian kita akan lihat periuk dan kualinya.",
+      "text_markdown": "Kemudian kita akan lihat periuk dan kualinya.",
+      "tts": {
+        "text": "Kemudian kita akan lihat periuk dan kualinya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada akhirnya, anda akan tahu apa yang ada di atas pinggan, dan anda akan tahu dari mana asalnya.",
+      "text_markdown": "Pada akhirnya, anda akan tahu apa yang ada di atas pinggan, dan anda akan tahu dari mana asalnya.",
+      "tts": {
+        "text": "Pada akhirnya, anda akan tahu apa yang ada di atas pinggan, dan anda akan tahu dari mana asalnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nama saya Kym dan saya akan ceritakan kisah ini.",
+      "text_markdown": "Seorang kawan bernama Kym akan ceritakan kisah ini kepada anda.",
+      "tts": {
+        "text": "Nama saya Kym dan saya akan ceritakan kisah ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 1 — Apakah Soul Food",
+      "text_markdown": "Bab 1 — Apakah Soul Food"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food ialah makanan harian keluarga kulit Hitam di Selatan Amerika Syarikat.",
+      "text_markdown": "Soul food ialah makanan harian keluarga kulit Hitam di Selatan Amerika Syarikat.",
+      "tts": {
+        "text": "Sol fud ialah makanan harian keluarga kulit Hitam di Selatan Amerika Syarikat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nama \"soul food\" mula biasa digunakan pada tahun enam puluhan.",
+      "text_markdown": "Nama \"soul food\" mula biasa digunakan pada tahun enam puluhan.",
+      "tts": {
+        "text": "Nama \"sol fud\" mula biasa digunakan pada tahun enam puluhan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perkataan \"soul\" datang daripada muzik dan gereja.",
+      "text_markdown": "Perkataan \"soul\" datang daripada muzik dan gereja.",
+      "tts": {
+        "text": "Perkataan \"soul\" datang daripada muzik dan gereja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia bermaksud sesuatu yang mendalam dan benar.",
+      "text_markdown": "Ia bermaksud sesuatu yang mendalam dan benar.",
+      "tts": {
+        "text": "Ia bermaksud sesuatu yang mendalam dan benar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia bermaksud sesuatu yang beridentiti Hitam dan bangga.",
+      "text_markdown": "Ia bermaksud sesuatu yang beridentiti Hitam dan bangga.",
+      "tts": {
+        "text": "Ia bermaksud sesuatu yang beridentiti Hitam dan bangga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi makanan itu sendiri jauh lebih lama usianya.",
+      "text_markdown": "Tetapi makanan itu sendiri jauh lebih lama usianya.",
+      "tts": {
+        "text": "Tetapi makanan itu sendiri jauh lebih lama usianya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia datang dari dapur ladang besar pada abad kelapan belas dan kesembilan belas.",
+      "text_markdown": "Ia datang dari dapur ladang besar pada abad kelapan belas dan kesembilan belas.",
+      "tts": {
+        "text": "Ia datang dari dapur ladang besar pada abad kelapan belas dan kesembilan belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tukang masak Afrika yang diperhamba mengambil tumbuhan dan haiwan yang mereka ada, lalu menyediakan makan malam.",
+      "text_markdown": "Tukang masak Afrika yang diperhamba mengambil tumbuhan dan haiwan yang mereka ada, lalu menyediakan makan malam.",
+      "tts": {
+        "text": "Tukang masak Afrika yang diperhamba mengambil tumbuhan dan haiwan yang mereka ada, lalu menyediakan makan malam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tukang masak itu sangat hebat.",
+      "text_markdown": "Tukang masak itu sangat hebat.",
+      "tts": {
+        "text": "Tukang masak itu sangat hebat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka bekerja dengan sedikit, dan mereka memberi makan kepada ramai orang.",
+      "text_markdown": "Mereka bekerja dengan sedikit, dan mereka memberi makan kepada ramai orang.",
+      "tts": {
+        "text": "Mereka bekerja dengan sedikit, dan mereka memberi makan kepada ramai orang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka simpan setiap bahagian babi.",
+      "text_markdown": "Mereka simpan setiap bahagian babi.",
+      "tts": {
+        "text": "Mereka simpan setiap bahagian babi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mereka buat sayur hijau itu terasa manis.",
+      "text_markdown": "Mereka buat sayur hijau itu terasa manis.",
+      "tts": {
+        "text": "Mereka buat sayur hijau itu terasa manis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mereka jadikan tepung jagung roti, bubur, dan seratus macam hidangan kecil.",
+      "text_markdown": "Mereka jadikan tepung jagung roti, bubur, dan seratus macam hidangan kecil.",
+      "tts": {
+        "text": "Mereka jadikan tepung jagung roti, bubur, dan seratus macam hidangan kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila keluarga kulit Hitam berpindah ke utara pada abad kedua puluh, mereka membawa makanan itu bersama mereka.",
+      "text_markdown": "Apabila keluarga kulit Hitam berpindah ke utara pada abad kedua puluh, mereka membawa makanan itu bersama mereka.",
+      "tts": {
+        "text": "Apabila keluarga kulit Hitam berpindah ke utara pada abad kedua puluh, mereka membawa makanan itu bersama mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sekarang soul food ada di Chicago, di New York, di Detroit, dan di setiap bandar Selatan.",
+      "text_markdown": "Sekarang soul food ada di Chicago, di New York, di Detroit, dan di setiap bandar Selatan.",
+      "tts": {
+        "text": "Sekarang sol fud ada di Syikago, di Nyu York, di Ditroit, dan di setiap bandar Selatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Apakah Soul Food",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tetapi pusatnya masih di Selatan.",
+      "text_markdown": "Tetapi pusatnya masih di Selatan.",
+      "tts": {
+        "text": "Tetapi pusatnya masih di Selatan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 2 — Bahan-bahan",
+      "text_markdown": "Bab 2 — Bahan-bahan"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food ada dua akar besar.",
+      "text_markdown": "Soul food ada dua akar besar.",
+      "tts": {
+        "text": "Sol fud ada dua akar besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Satu akarnya ialah Afrika Barat.",
+      "text_markdown": "Satu akarnya ialah Afrika Barat.",
+      "tts": {
+        "text": "Satu akarnya ialah Afrika Barat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akar yang satu lagi ialah Benua Amerika.",
+      "text_markdown": "Akar yang satu lagi ialah Benua Amerika.",
+      "tts": {
+        "text": "Akar yang satu lagi ialah Benua Amerika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okra datang dari Afrika Barat.",
+      "text_markdown": "Okra datang dari Afrika Barat.",
+      "tts": {
+        "text": "Okra datang dari Afrika Barat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Okra ialah lenggai hijau.",
+      "text_markdown": "Okra ialah lenggai hijau.",
+      "tts": {
+        "text": "Okra ialah lenggai hijau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia tumbuh pada pokok yang tinggi.",
+      "text_markdown": "Ia tumbuh pada pokok yang tinggi.",
+      "tts": {
+        "text": "Ia tumbuh pada pokok yang tinggi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bila dimasak, ia jadi lembut dan sedikit berlendir.",
+      "text_markdown": "Bila dimasak, ia jadi lembut dan sedikit berlendir.",
+      "tts": {
+        "text": "Bila dimasak, ia jadi lembut dan sedikit berlendir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ia ada dalam gumbo, dan ia juga digoreng dengan tepung jagung.",
+      "text_markdown": "Ia ada dalam gumbo, dan ia juga digoreng dengan tepung jagung.",
+      "tts": {
+        "text": "Ia ada dalam gambo, dan ia juga digoreng dengan tepung jagung.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kacang mata hitam juga datang dari Afrika Barat.",
+      "text_markdown": "Kacang mata hitam juga datang dari Afrika Barat.",
+      "tts": {
+        "text": "Kacang mata hitam juga datang dari Afrika Barat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tembikai juga begitu.",
+      "text_markdown": "Tembikai juga begitu.",
+      "tts": {
+        "text": "Tembikai juga begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Biji bijan juga begitu.",
+      "text_markdown": "Biji bijan juga begitu.",
+      "tts": {
+        "text": "Biji bijan juga begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tukang masak Selatan zaman dulu memanggil bijan \"benne.\" Mereka letakkan benne dalam biskut dan atas roti.",
+      "text_markdown": "Tukang masak Selatan zaman dulu memanggil bijan \"benne.\" Mereka letakkan benne dalam biskut dan atas roti.",
+      "tts": {
+        "text": "Tukang masak Selatan zaman dulu memanggil bijan \"be ni.\" Mereka letakkan be ni dalam biskut dan atas roti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beras juga datang merentasi lautan.",
+      "text_markdown": "Beras juga datang merentasi lautan.",
+      "tts": {
+        "text": "Beras juga datang merentasi lautan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Petani Afrika sudah menanam padi selama seribu tahun.",
+      "text_markdown": "Petani Afrika sudah menanam padi selama seribu tahun.",
+      "tts": {
+        "text": "Petani Afrika sudah menanam padi selama seribu tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di Carolina Selatan, pengetahuan itu membina seluruh pekan.",
+      "text_markdown": "Di Carolina Selatan, pengetahuan itu membina seluruh pekan.",
+      "tts": {
+        "text": "Di Karolina Selatan, pengetahuan itu membina seluruh pekan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jagung datang dari Benua Amerika.",
+      "text_markdown": "Jagung datang dari Benua Amerika.",
+      "tts": {
+        "text": "Jagung datang dari Benua Amerika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jagung berasal dari Mexico.",
+      "text_markdown": "Jagung berasal dari Mexico.",
+      "tts": {
+        "text": "Jagung berasal dari Meksiko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia bergerak ke utara sampai kepada Cherokee dan Choctaw jauh sebelum orang Sepanyol datang.",
+      "text_markdown": "Ia bergerak ke utara sampai kepada Cherokee dan Choctaw jauh sebelum orang Sepanyol datang.",
+      "tts": {
+        "text": "Ia bergerak ke utara sampai kepada Cheroki dan Cokto jauh sebelum orang Sepanyol datang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dari Benua Amerika juga datang keledek, kacang tanah, dan banyak jenis kacang.",
+      "text_markdown": "Dari Benua Amerika juga datang keledek, kacang tanah, dan banyak jenis kacang.",
+      "tts": {
+        "text": "Dari Benua Amerika juga datang keledek, kacang tanah, dan banyak jenis kacang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Bahan-bahan",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food ialah apa yang terjadi apabila dua pantri ini bertemu dalam satu dapur.",
+      "text_markdown": "Soul food ialah apa yang terjadi apabila dua pantri ini bertemu dalam satu dapur.",
+      "tts": {
+        "text": "Sol fud ialah apa yang terjadi apabila dua pantri ini bertemu dalam satu dapur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 3 — Daging dan Ikan",
+      "text_markdown": "Bab 3 — Daging dan Ikan"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daging yang paling penting dalam soul food ialah daging babi.",
+      "text_markdown": "Daging yang paling penting dalam soul food ialah daging babi.",
+      "tts": {
+        "text": "Daging yang paling penting dalam sol fud ialah daging babi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah ladang kecil boleh memelihara seekor babi.",
+      "text_markdown": "Sebuah ladang kecil boleh memelihara seekor babi.",
+      "tts": {
+        "text": "Sebuah ladang kecil boleh memelihara seekor babi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Babi itu makan sisa makanan.",
+      "text_markdown": "Babi itu makan sisa makanan.",
+      "tts": {
+        "text": "Babi itu makan sisa makanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pada musim luruh, keluarga itu menyembelih babi itu, dan mereka guna setiap bahagiannya.",
+      "text_markdown": "Pada musim luruh, keluarga itu menyembelih babi itu, dan mereka guna setiap bahagiannya.",
+      "tts": {
+        "text": "Pada musim luruh, keluarga itu menyembelih babi itu, dan mereka guna setiap bahagiannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mereka salai ham itu.",
+      "text_markdown": "Mereka salai ham itu.",
+      "tts": {
+        "text": "Mereka salai ham itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mereka awetkan bacon itu.",
+      "text_markdown": "Mereka awetkan bacon itu.",
+      "tts": {
+        "text": "Mereka awetkan bekon itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mereka masak kaki babi dalam cuka.",
+      "text_markdown": "Mereka masak kaki babi dalam cuka.",
+      "tts": {
+        "text": "Mereka masak kaki babi dalam cuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Mereka simpan lemaknya untuk biskut.",
+      "text_markdown": "Mereka simpan lemaknya untuk biskut.",
+      "tts": {
+        "text": "Mereka simpan lemaknya untuk biskut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daging besar yang berikutnya ialah ayam.",
+      "text_markdown": "Daging besar yang berikutnya ialah ayam.",
+      "tts": {
+        "text": "Daging besar yang berikutnya ialah ayam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayam hidup di halaman rumah.",
+      "text_markdown": "Ayam hidup di halaman rumah.",
+      "tts": {
+        "text": "Ayam hidup di halaman rumah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ayam bertelur pada waktu pagi, dan juga menjadi hidangan makan malam Ahad.",
+      "text_markdown": "Ayam bertelur pada waktu pagi, dan juga menjadi hidangan makan malam Ahad.",
+      "tts": {
+        "text": "Ayam bertelur pada waktu pagi, dan juga menjadi hidangan makan malam Ahad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayam goreng ialah hidangan Selatan yang paling terkenal.",
+      "text_markdown": "Ayam goreng ialah hidangan Selatan yang paling terkenal.",
+      "tts": {
+        "text": "Ayam goreng ialah hidangan Selatan yang paling terkenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayam itu disalut dengan tepung, garam, dan lada.",
+      "text_markdown": "Ayam itu disalut dengan tepung, garam, dan lada.",
+      "tts": {
+        "text": "Ayam itu disalut dengan tepung, garam, dan lada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemudian ia dimasukkan ke dalam minyak panas.",
+      "text_markdown": "Kemudian ia dimasukkan ke dalam minyak panas.",
+      "tts": {
+        "text": "Kemudian ia dimasukkan ke dalam minyak panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kulitnya jadi rangup dan keemasan.",
+      "text_markdown": "Kulitnya jadi rangup dan keemasan.",
+      "tts": {
+        "text": "Kulitnya jadi rangup dan keemasan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikan keli hidup di sungai dan tasik.",
+      "text_markdown": "Ikan keli hidup di sungai dan tasik.",
+      "tts": {
+        "text": "Ikan keli hidup di sungai dan tasik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tukang masak Selatan menyalut ikan keli dengan tepung jagung dan menggorengnya.",
+      "text_markdown": "Tukang masak Selatan menyalut ikan keli dengan tepung jagung dan menggorengnya.",
+      "tts": {
+        "text": "Tukang masak Selatan menyalut ikan keli dengan tepung jagung dan menggorengnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka memakannya dengan hush puppies, iaitu bebola kecil tepung jagung goreng.",
+      "text_markdown": "Mereka memakannya dengan hush puppies, iaitu bebola kecil tepung jagung goreng.",
+      "tts": {
+        "text": "Mereka memakannya dengan hash papi, iaitu bebola kecil tepung jagung goreng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Daging dan Ikan",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Namanya lucu tetapi makanannya serius.",
+      "text_markdown": "Namanya lucu tetapi makanannya serius.",
+      "tts": {
+        "text": "Namanya lucu tetapi makanannya serius.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 4 — Cara Memasak",
+      "text_markdown": "Bab 4 — Cara Memasak"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tiga cara memasak membawa kebanyakan soul food: menggoreng, mereneh perlahan, dan menyalai.",
+      "text_markdown": "Tiga cara memasak membawa kebanyakan soul food: menggoreng, mereneh perlahan, dan menyalai.",
+      "tts": {
+        "text": "Tiga cara memasak membawa kebanyakan sol fud, menggoreng, mereneh perlahan, dan menyalai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menggoreng dibuat dalam kuali berat yang dipanggil kuali besi tuang.",
+      "text_markdown": "Menggoreng dibuat dalam kuali berat yang dipanggil kuali besi tuang.",
+      "tts": {
+        "text": "Menggoreng dibuat dalam kuali berat yang dipanggil kuali besi tuang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Besi tuang menyimpan haba untuk masa yang lama.",
+      "text_markdown": "Besi tuang menyimpan haba untuk masa yang lama.",
+      "tts": {
+        "text": "Besi tuang menyimpan haba untuk masa yang lama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuali yang baik lebih tua daripada orang yang memasak.",
+      "text_markdown": "Kuali yang baik lebih tua daripada orang yang memasak.",
+      "tts": {
+        "text": "Kuali yang baik lebih tua daripada orang yang memasak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia diwariskan dari ibu kepada anak perempuan.",
+      "text_markdown": "Ia diwariskan dari ibu kepada anak perempuan.",
+      "tts": {
+        "text": "Ia diwariskan dari ibu kepada anak perempuan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereneh perlahan berlaku dalam periuk besar di belakang dapur.",
+      "text_markdown": "Mereneh perlahan berlaku dalam periuk besar di belakang dapur.",
+      "tts": {
+        "text": "Mereneh perlahan berlaku dalam periuk besar di belakang dapur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayur hijau masuk ke dalam periuk selama dua atau tiga jam.",
+      "text_markdown": "Sayur hijau masuk ke dalam periuk selama dua atau tiga jam.",
+      "tts": {
+        "text": "Sayur hijau masuk ke dalam periuk selama dua atau tiga jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sekeping daging babi salai masuk untuk beri rasa.",
+      "text_markdown": "Sekeping daging babi salai masuk untuk beri rasa.",
+      "tts": {
+        "text": "Sekeping daging babi salai masuk untuk beri rasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Air itu menjadi kuah yang gelap dan kaya rasa.",
+      "text_markdown": "Air itu menjadi kuah yang gelap dan kaya rasa.",
+      "tts": {
+        "text": "Air itu menjadi kuah yang gelap dan kaya rasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Orang panggil kuah ini \"pot likker,\" dan mereka tuangkannya ke atas cornbread.",
+      "text_markdown": "Orang panggil kuah ini \"pot likker,\" dan mereka tuangkannya ke atas cornbread.",
+      "tts": {
+        "text": "Orang panggil kuah ini \"pot liker,\" dan mereka tuangkannya ke atas kon bred.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menyalai berlaku di luar, dalam rumah salai atau tong.",
+      "text_markdown": "Menyalai berlaku di luar, dalam rumah salai atau tong.",
+      "tts": {
+        "text": "Menyalai berlaku di luar, dalam rumah salai atau tong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kayu terbakar perlahan di bawah daging itu.",
+      "text_markdown": "Kayu terbakar perlahan di bawah daging itu.",
+      "tts": {
+        "text": "Kayu terbakar perlahan di bawah daging itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kayu hickory ialah pilihan utama.",
+      "text_markdown": "Kayu hickory ialah pilihan utama.",
+      "tts": {
+        "text": "Kayu hikori ialah pilihan utama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Asap itu mewarnakan daging menjadi perang dan memberinya rasa yang mendalam.",
+      "text_markdown": "Asap itu mewarnakan daging menjadi perang dan memberinya rasa yang mendalam.",
+      "tts": {
+        "text": "Asap itu mewarnakan daging menjadi perang dan memberinya rasa yang mendalam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bahu babi disalai selama berjam-jam, kadang-kadang sepanjang sehari.",
+      "text_markdown": "Bahu babi disalai selama berjam-jam, kadang-kadang sepanjang sehari.",
+      "tts": {
+        "text": "Bahu babi disalai selama berjam jam, kadang kadang sepanjang sehari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Cara Memasak",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dapur Selatan yang baik ada api, masa, dan perhatian.",
+      "text_markdown": "Dapur Selatan yang baik ada api, masa, dan perhatian.",
+      "tts": {
+        "text": "Dapur Selatan yang baik ada api, masa, dan perhatian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 5 — Barbeku Mengikut Wilayah",
+      "text_markdown": "Bab 5 — Barbeku Mengikut Wilayah"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Selatan, \"barbeku\" bermaksud daging yang dimasak perlahan di atas asap kayu.",
+      "text_markdown": "Di Selatan, \"barbeku\" bermaksud daging yang dimasak perlahan di atas asap kayu.",
+      "tts": {
+        "text": "Di Selatan, \"barbeku\" bermaksud daging yang dimasak perlahan di atas asap kayu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap wilayah ada caranya sendiri.",
+      "text_markdown": "Setiap wilayah ada caranya sendiri.",
+      "tts": {
+        "text": "Setiap wilayah ada caranya sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di dua Carolina, barbeku ialah daging babi.",
+      "text_markdown": "Di dua Carolina, barbeku ialah daging babi.",
+      "tts": {
+        "text": "Di dua Karolina, barbeku ialah daging babi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di bahagian timur Carolina Utara, sos dibuat daripada cuka dan lada.",
+      "text_markdown": "Di bahagian timur Carolina Utara, sos dibuat daripada cuka dan lada.",
+      "tts": {
+        "text": "Di bahagian timur Karolina Utara, sos dibuat daripada cuka dan lada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia cair dan tajam rasanya.",
+      "text_markdown": "Ia cair dan tajam rasanya.",
+      "tts": {
+        "text": "Ia cair dan tajam rasanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Di Carolina Selatan, sosnya kuning, dibuat daripada mustard.",
+      "text_markdown": "Di Carolina Selatan, sosnya kuning, dibuat daripada mustard.",
+      "tts": {
+        "text": "Di Karolina Selatan, sosnya kuning, dibuat daripada mustard.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Rasanya sedikit manis.",
+      "text_markdown": "Rasanya sedikit manis.",
+      "tts": {
+        "text": "Rasanya sedikit manis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Memphis, di negeri Tennessee, dagingnya ialah tulang rusuk babi.",
+      "text_markdown": "Di Memphis, di negeri Tennessee, dagingnya ialah tulang rusuk babi.",
+      "tts": {
+        "text": "Di Memfis, di negeri Tenesi, dagingnya ialah tulang rusuk babi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tulang rusuk itu disapu dengan campuran kering garam, lada, dan banyak rempah.",
+      "text_markdown": "Tulang rusuk itu disapu dengan campuran kering garam, lada, dan banyak rempah.",
+      "tts": {
+        "text": "Tulang rusuk itu disapu dengan campuran kering garam, lada, dan banyak rempah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daging ialah bintangnya, dan sos cuma sedikit.",
+      "text_markdown": "Daging ialah bintangnya, dan sos cuma sedikit.",
+      "tts": {
+        "text": "Daging ialah bintangnya, dan sos cuma sedikit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Texas, barbeku ialah daging lembu.",
+      "text_markdown": "Di Texas, barbeku ialah daging lembu.",
+      "tts": {
+        "text": "Di Teksas, barbeku ialah daging lembu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Potongan itu dipanggil brisket.",
+      "text_markdown": "Potongan itu dipanggil brisket.",
+      "tts": {
+        "text": "Potongan itu dipanggil brisket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia disalai selama dua belas hingga empat belas jam di atas kayu oak.",
+      "text_markdown": "Ia disalai selama dua belas hingga empat belas jam di atas kayu oak.",
+      "tts": {
+        "text": "Ia disalai selama dua belas hingga empat belas jam di atas kayu ok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bila ia menjadi elok, anda boleh leraikannya dengan jari anda.",
+      "text_markdown": "Bila ia menjadi elok, anda boleh leraikannya dengan jari anda.",
+      "tts": {
+        "text": "Bila ia menjadi elok, anda boleh leraikannya dengan jari anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Kansas City, barbeku ialah pelbagai daging: babi, lembu, ayam, malah sosej.",
+      "text_markdown": "Di Kansas City, barbeku ialah pelbagai daging: babi, lembu, ayam, malah sosej.",
+      "tts": {
+        "text": "Di Kanzas Siti, barbeku ialah pelbagai daging, babi, lembu, ayam, malah sosej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sosnya pekat, manis, dan merah, dibuat daripada tomato dan molases.",
+      "text_markdown": "Sosnya pekat, manis, dan merah, dibuat daripada tomato dan molases.",
+      "tts": {
+        "text": "Sosnya pekat, manis, dan merah, dibuat daripada tomato dan molases.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Barbeku Mengikut Wilayah",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peta barbeku Selatan ialah peta wilayah dan sungai.",
+      "text_markdown": "Peta barbeku Selatan ialah peta wilayah dan sungai.",
+      "tts": {
+        "text": "Peta barbeku Selatan ialah peta wilayah dan sungai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 6 — Hidangan Klasik",
+      "text_markdown": "Bab 6 — Hidangan Klasik"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pinggan makan malam Ahad memang penuh.",
+      "text_markdown": "Pinggan makan malam Ahad memang penuh.",
+      "tts": {
+        "text": "Pinggan makan malam Ahad memang penuh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tengah ada ayam goreng.",
+      "text_markdown": "Di tengah ada ayam goreng.",
+      "tts": {
+        "text": "Di tengah ada ayam goreng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di sebelah ayam ada sesenduk kentang lenyek dengan kuah perang.",
+      "text_markdown": "Di sebelah ayam ada sesenduk kentang lenyek dengan kuah perang.",
+      "tts": {
+        "text": "Di sebelah ayam ada sesenduk kentang lenyek dengan kuah perang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di satu sisi ada timbunan sayur collard, dimasak perlahan dengan daging babi salai.",
+      "text_markdown": "Di satu sisi ada timbunan sayur collard, dimasak perlahan dengan daging babi salai.",
+      "tts": {
+        "text": "Di satu sisi ada timbunan sayur kolerd, dimasak perlahan dengan daging babi salai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayur itu gelap dan lembut.",
+      "text_markdown": "Sayur itu gelap dan lembut.",
+      "tts": {
+        "text": "Sayur itu gelap dan lembut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sisi yang satu lagi ada makaroni dan keju, dibakar sampai bahagian atasnya keemasan dan rangup.",
+      "text_markdown": "Di sisi yang satu lagi ada makaroni dan keju, dibakar sampai bahagian atasnya keemasan dan rangup.",
+      "tts": {
+        "text": "Di sisi yang satu lagi ada makaroni dan keju, dibakar sampai bahagian atasnya keemasan dan rangup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ramai tukang masak tambah satu lapisan keju di atasnya.",
+      "text_markdown": "Ramai tukang masak tambah satu lapisan keju di atasnya.",
+      "tts": {
+        "text": "Ramai tukang masak tambah satu lapisan keju di atasnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada cornbread di atas meja.",
+      "text_markdown": "Ada cornbread di atas meja.",
+      "tts": {
+        "text": "Ada kon bred di atas meja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cornbread dibuat daripada tepung jagung kuning dan dibakar dalam kuali besi tuang yang panas.",
+      "text_markdown": "Cornbread dibuat daripada tepung jagung kuning dan dibakar dalam kuali besi tuang yang panas.",
+      "tts": {
+        "text": "Kon bred dibuat daripada tepung jagung kuning dan dibakar dalam kuali besi tuang yang panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia padat, sedikit manis, dan sempurna dengan mentega.",
+      "text_markdown": "Ia padat, sedikit manis, dan sempurna dengan mentega.",
+      "tts": {
+        "text": "Ia padat, sedikit manis, dan sempurna dengan mentega.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Untuk minum, ada teh manis.",
+      "text_markdown": "Untuk minum, ada teh manis.",
+      "tts": {
+        "text": "Untuk minum, ada teh manis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teh manis ialah teh hitam yang dibancuh pekat dan dicampur gula semasa masih panas.",
+      "text_markdown": "Teh manis ialah teh hitam yang dibancuh pekat dan dicampur gula semasa masih panas.",
+      "tts": {
+        "text": "Teh manis ialah teh hitam yang dibancuh pekat dan dicampur gula semasa masih panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia dihidangkan sejuk dengan ais.",
+      "text_markdown": "Ia dihidangkan sejuk dengan ais.",
+      "tts": {
+        "text": "Ia dihidangkan sejuk dengan ais.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas makan malam, tibalah pai.",
+      "text_markdown": "Selepas makan malam, tibalah pai.",
+      "tts": {
+        "text": "Selepas makan malam, tibalah pai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pai keledek ialah pai yang paling khas dari Selatan.",
+      "text_markdown": "Pai keledek ialah pai yang paling khas dari Selatan.",
+      "tts": {
+        "text": "Pai keledek ialah pai yang paling khas dari Selatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia berwarna perang, halus, dan hangat dengan kayu manis serta buah pala.",
+      "text_markdown": "Ia berwarna perang, halus, dan hangat dengan kayu manis serta buah pala.",
+      "tts": {
+        "text": "Ia berwarna perang, halus, dan hangat dengan kayu manis serta buah pala.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Hidangan Klasik",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inilah hidangan klasik itu.",
+      "text_markdown": "Inilah hidangan klasik itu.",
+      "tts": {
+        "text": "Inilah hidangan klasik itu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 7 — Meja Makan",
+      "text_markdown": "Bab 7 — Meja Makan"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makan malam Selatan berlaku di meja, dengan semua orang bersama-sama.",
+      "text_markdown": "Makan malam Selatan berlaku di meja, dengan semua orang bersama-sama.",
+      "tts": {
+        "text": "Makan malam Selatan berlaku di meja, dengan semua orang bersama sama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makanan dibawa ke meja dalam mangkuk besar dan atas pinggan besar.",
+      "text_markdown": "Makanan dibawa ke meja dalam mangkuk besar dan atas pinggan besar.",
+      "tts": {
+        "text": "Makanan dibawa ke meja dalam mangkuk besar dan atas pinggan besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ini dipanggil \"gaya keluarga.\" Setiap orang hulurkan mangkuk kepada orang seterusnya.",
+      "text_markdown": "Ini dipanggil \"gaya keluarga.\" Setiap orang hulurkan mangkuk kepada orang seterusnya.",
+      "tts": {
+        "text": "Ini dipanggil \"gaya keluarga.\" Setiap orang hulurkan mangkuk kepada orang seterusnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap orang ambil apa yang mereka mahu.",
+      "text_markdown": "Setiap orang ambil apa yang mereka mahu.",
+      "tts": {
+        "text": "Setiap orang ambil apa yang mereka mahu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Garpu dan pisaunya biasa saja.",
+      "text_markdown": "Garpu dan pisaunya biasa saja.",
+      "tts": {
+        "text": "Garpu dan pisaunya biasa saja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tiada aturan khas.",
+      "text_markdown": "Tiada aturan khas.",
+      "tts": {
+        "text": "Tiada aturan khas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anda makan ayam itu dengan garpu, atau anda angkat dengan tangan.",
+      "text_markdown": "Anda makan ayam itu dengan garpu, atau anda angkat dengan tangan.",
+      "tts": {
+        "text": "Anda makan ayam itu dengan garpu, atau anda angkat dengan tangan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kedua-dua cara itu boleh.",
+      "text_markdown": "Kedua-dua cara itu boleh.",
+      "tts": {
+        "text": "Kedua dua cara itu boleh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cornbread dipatahkan dengan tangan, bukan dipotong dengan pisau.",
+      "text_markdown": "Cornbread dipatahkan dengan tangan, bukan dipotong dengan pisau.",
+      "tts": {
+        "text": "Kon bred dipatahkan dengan tangan, bukan dipotong dengan pisau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebelum makan, selalunya ada orang membaca doa pendek.",
+      "text_markdown": "Sebelum makan, selalunya ada orang membaca doa pendek.",
+      "tts": {
+        "text": "Sebelum makan, selalunya ada orang membaca doa pendek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka berterima kasih kepada Tuhan atas makanan itu dan atas orang yang memasaknya.",
+      "text_markdown": "Mereka berterima kasih kepada Tuhan atas makanan itu dan atas orang yang memasaknya.",
+      "tts": {
+        "text": "Mereka berterima kasih kepada Tuhan atas makanan itu dan atas orang yang memasaknya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika anda tetamu, anda akan disuruh ambil lagi, lagi, dan lagi.",
+      "text_markdown": "Jika anda tetamu, anda akan disuruh ambil lagi, lagi, dan lagi.",
+      "tts": {
+        "text": "Jika anda tetamu, anda akan disuruh ambil lagi, lagi, dan lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anda patut kata ya sekurang-kurangnya dua kali.",
+      "text_markdown": "Anda patut kata ya sekurang-kurangnya dua kali.",
+      "tts": {
+        "text": "Anda patut kata ya sekurang kurangnya dua kali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tak boleh balik dalam keadaan lapar.",
+      "text_markdown": "Tak boleh balik dalam keadaan lapar.",
+      "tts": {
+        "text": "Tak boleh balik dalam keadaan lapar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada akhir hidangan, tiada siapa tergesa-gesa untuk bangun.",
+      "text_markdown": "Pada akhir hidangan, tiada siapa tergesa-gesa untuk bangun.",
+      "tts": {
+        "text": "Pada akhir hidangan, tiada siapa tergesa gesa untuk bangun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Meja Makan",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sembang itu separuh daripada makan malam.",
+      "text_markdown": "Sembang itu separuh daripada makan malam.",
+      "tts": {
+        "text": "Sembang itu separuh daripada makan malam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tentang Buku Ini",
+      "text_markdown": "Tentang Buku Ini"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini buku pertama dalam siri Food of the World.",
+      "text_markdown": "Ini buku pertama dalam siri Food of the World.",
+      "tts": {
+        "text": "Ini buku pertama dalam siri Fud ov de Werld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buku ini dibacakan oleh saya, kawan anda Kym.",
+      "text_markdown": "Buku ini dibacakan oleh Kym.",
+      "tts": {
+        "text": "Buku ini dibacakan oleh saya, kawan anda Kym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap ayat pendek dan jelas supaya anda boleh ikut membaca dalam apa-apa bahasa.",
+      "text_markdown": "Setiap ayat pendek dan jelas supaya anda boleh ikut membaca dalam apa-apa bahasa.",
+      "tts": {
+        "text": "Setiap ayat pendek dan jelas supaya anda boleh ikut membaca dalam apa apa bahasa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika anda mahu dengar bagaimana sesuatu ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+      "text_markdown": "Jika anda mahu dengar bagaimana sesuatu ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+      "tts": {
+        "text": "Jika anda mahu dengar bagaimana sesuatu ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perkataan pada halaman akan sepadan dengan apa yang anda dengar.",
+      "text_markdown": "Perkataan pada halaman akan sepadan dengan apa yang anda dengar.",
+      "tts": {
+        "text": "Perkataan pada halaman akan sepadan dengan apa yang anda dengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Begitulah cara anda belajar.",
+      "text_markdown": "Begitulah cara anda belajar.",
+      "tts": {
+        "text": "Begitulah cara anda belajar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang Buku Ini",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekarang carilah makanan yang sedap, dan seorang kawan untuk menikmatinya bersama.",
+      "text_markdown": "Sekarang carilah makanan yang sedap, dan seorang kawan untuk menikmatinya bersama.",
+      "tts": {
+        "text": "Sekarang carilah makanan yang sedap, dan seorang kawan untuk menikmatinya bersama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Het gematigde bos",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het gematigde bos",
+      "text_markdown": "Het gematigde bos"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar gematigde bossen groeien",
+      "text_markdown": "Waar gematigde bossen groeien"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in het gematigde bos.",
+      "text_markdown": "Welkom in het gematigde bos.",
+      "tts": {
+        "text": "Welkom in het gematigde bos.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigde bos is een bos van brede, bladrijke bomen.",
+      "text_markdown": "Het gematigde bos is een bos van brede, bladrijke bomen.",
+      "tts": {
+        "text": "Het gematigde bos is een bos van brede, bladrijke bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste bomen hier verliezen hun bladeren één keer per jaar en laten in de lente nieuwe groeien.",
+      "text_markdown": "De meeste bomen hier verliezen hun bladeren één keer per jaar en laten in de lente nieuwe groeien.",
+      "tts": {
+        "text": "De meeste bomen hier verliezen hun bladeren één keer per jaar en laten in de lente nieuwe groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bomen die zo hun bladeren laten vallen, worden bladverliezende bomen genoemd.",
+      "text_markdown": "Bomen die zo hun bladeren laten vallen, worden bladverliezende bomen genoemd.",
+      "tts": {
+        "text": "Bomen die zo hun bladeren laten vallen, worden bladverliezende bomen genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gematigde bossen groeien in de middelste delen van de wereld, tussen het koude noorden en de warme tropen.",
+      "text_markdown": "Gematigde bossen groeien in de middelste delen van de wereld, tussen het koude noorden en de warme tropen.",
+      "tts": {
+        "text": "Gematigde bossen groeien in de middelste delen van de wereld, tussen het koude noorden en de warme tropen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn grote gematigde bossen in het oostelijke deel van Noord Amerika.",
+      "text_markdown": "Er zijn grote gematigde bossen in het oostelijke deel van Noord Amerika.",
+      "tts": {
+        "text": "Er zijn grote gematigde bossen in het oostelijke deel van Noord Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn gematigde bossen in grote delen van Europa.",
+      "text_markdown": "Er zijn gematigde bossen in grote delen van Europa.",
+      "tts": {
+        "text": "Er zijn gematigde bossen in grote delen van Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn gematigde bossen in Oost Azië, in China, Korea en Japan.",
+      "text_markdown": "Er zijn gematigde bossen in Oost Azië, in China, Korea en Japan.",
+      "tts": {
+        "text": "Er zijn gematigde bossen in Oost Azië, in China, Korea en Japan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn kleinere stukken in het zuiden van Zuid Amerika, in het zuidoosten van Australië en in het zuiden van Nieuw Zeeland.",
+      "text_markdown": "Er zijn kleinere stukken in het zuiden van Zuid Amerika, in het zuidoosten van Australië en in het zuiden van Nieuw Zeeland.",
+      "tts": {
+        "text": "Er zijn kleinere stukken in het zuiden van Zuid Amerika, in het zuidoosten van Australië en in het zuiden van Nieuw Zeeland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+      "text_markdown": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+      "tts": {
+        "text": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom zijn de soorten bomen en dieren in elk deel van de wereld anders.",
+      "text_markdown": "Daarom zijn de soorten bomen en dieren in elk deel van de wereld anders.",
+      "tts": {
+        "text": "Daarom zijn de soorten bomen en dieren in elk deel van de wereld anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze delen allemaal hetzelfde patroon.",
+      "text_markdown": "Maar ze delen allemaal hetzelfde patroon.",
+      "tts": {
+        "text": "Maar ze delen allemaal hetzelfde patroon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bladerdak van bladrijke bomen, een zachte vloer van gevallen bladeren en vier heel verschillende seizoenen.",
+      "text_markdown": "Een bladerdak van bladrijke bomen, een zachte vloer van gevallen bladeren en vier heel verschillende seizoenen.",
+      "tts": {
+        "text": "Een bladerdak van bladrijke bomen, een zachte vloer van gevallen bladeren en vier heel verschillende seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je een gematigd bos in loopt, voelt de lucht koel en zacht aan.",
+      "text_markdown": "Wanneer je een gematigd bos in loopt, voelt de lucht koel en zacht aan.",
+      "tts": {
+        "text": "Wanneer je een gematigd bos in loopt, voelt de lucht koel en zacht aan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer valt het zonlicht in zachte groene plekken door de bladeren.",
+      "text_markdown": "In de zomer valt het zonlicht in zachte groene plekken door de bladeren.",
+      "tts": {
+        "text": "In de zomer valt het zonlicht in zachte groene plekken door de bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst worden de bladeren geel, oranje en rood.",
+      "text_markdown": "In de herfst worden de bladeren geel, oranje en rood.",
+      "tts": {
+        "text": "In de herfst worden de bladeren geel, oranje en rood.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter staan de bomen kaal tegen de hemel.",
+      "text_markdown": "In de winter staan de bomen kaal tegen de hemel.",
+      "tts": {
+        "text": "In de winter staan de bomen kaal tegen de hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente verschijnen kleine groene knoppen, en het hele bos ontwaakt weer.",
+      "text_markdown": "In de lente verschijnen kleine groene knoppen, en het hele bos ontwaakt weer.",
+      "tts": {
+        "text": "In de lente verschijnen kleine groene knoppen, en het hele bos ontwaakt weer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het gematigde bos.",
+      "text_markdown": "Dat is het gematigde bos.",
+      "tts": {
+        "text": "Dat is het gematigde bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar gematigde bossen groeien",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een groene wereld die vier keer per jaar van gezicht verandert.",
+      "text_markdown": "Een groene wereld die vier keer per jaar van gezicht verandert.",
+      "tts": {
+        "text": "Een groene wereld die vier keer per jaar van gezicht verandert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in het gematigde bos verandert in de loop van het jaar enorm.",
+      "text_markdown": "Het weer in het gematigde bos verandert in de loop van het jaar enorm.",
+      "tts": {
+        "text": "Het weer in het gematigde bos verandert in de loop van het jaar enorm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn vier seizoenen, en elk is heel anders.",
+      "text_markdown": "Er zijn vier seizoenen, en elk is heel anders.",
+      "tts": {
+        "text": "Er zijn vier seizoenen, en elk is heel anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer zijn de dagen lang en warm.",
+      "text_markdown": "In de zomer zijn de dagen lang en warm.",
+      "tts": {
+        "text": "In de zomer zijn de dagen lang en warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het regent vaak, en soms trekt er een hevige storm over de bomen.",
+      "text_markdown": "Het regent vaak, en soms trekt er een hevige storm over de bomen.",
+      "tts": {
+        "text": "Het regent vaak, en soms trekt er een hevige storm over de bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het bos zit vol groene bladeren en de liedjes van vogels.",
+      "text_markdown": "Het bos zit vol groene bladeren en de liedjes van vogels.",
+      "tts": {
+        "text": "Het bos zit vol groene bladeren en de liedjes van vogels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst worden de dagen korter, en de lucht wordt koel.",
+      "text_markdown": "In de herfst worden de dagen korter, en de lucht wordt koel.",
+      "tts": {
+        "text": "In de herfst worden de dagen korter, en de lucht wordt koel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bladeren van de bomen veranderen van kleur en vallen op de grond.",
+      "text_markdown": "De bladeren van de bomen veranderen van kleur en vallen op de grond.",
+      "tts": {
+        "text": "De bladeren van de bomen veranderen van kleur en vallen op de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een wandeling in een herfstbos is een wandeling over een zacht, helder tapijt van bladeren.",
+      "text_markdown": "Een wandeling in een herfstbos is een wandeling over een zacht, helder tapijt van bladeren.",
+      "tts": {
+        "text": "Een wandeling in een herfstbos is een wandeling over een zacht, helder tapijt van bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter zijn de dagen kort, en de nachten zijn lang en koud.",
+      "text_markdown": "In de winter zijn de dagen kort, en de nachten zijn lang en koud.",
+      "tts": {
+        "text": "In de winter zijn de dagen kort, en de nachten zijn lang en koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op veel plaatsen bedekt sneeuw het bos wekenlang.",
+      "text_markdown": "Op veel plaatsen bedekt sneeuw het bos wekenlang.",
+      "tts": {
+        "text": "Op veel plaatsen bedekt sneeuw het bos wekenlang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kale takken van de bomen staan stil tegen een grijze hemel.",
+      "text_markdown": "De kale takken van de bomen staan stil tegen een grijze hemel.",
+      "tts": {
+        "text": "De kale takken van de bomen staan stil tegen een grijze hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel dieren slapen door de kou heen of verbergen zich in hun holen.",
+      "text_markdown": "Veel dieren slapen door de kou heen of verbergen zich in hun holen.",
+      "tts": {
+        "text": "Veel dieren slapen door de kou heen of verbergen zich in hun holen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komt de lente.",
+      "text_markdown": "Dan komt de lente.",
+      "tts": {
+        "text": "Dan komt de lente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sneeuw smelt, de regens beginnen opnieuw, en de bodem warmt op.",
+      "text_markdown": "De sneeuw smelt, de regens beginnen opnieuw, en de bodem warmt op.",
+      "tts": {
+        "text": "De sneeuw smelt, de regens beginnen opnieuw, en de bodem warmt op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Groene knoppen openen zich aan de takken, bloemen duwen zich uit de grond omhoog, en het bos vult zich weer met geluid en kleur.",
+      "text_markdown": "Groene knoppen openen zich aan de takken, bloemen duwen zich uit de grond omhoog, en het bos vult zich weer met geluid en kleur.",
+      "tts": {
+        "text": "Groene knoppen openen zich aan de takken, bloemen duwen zich uit de grond omhoog, en het bos vult zich weer met geluid en kleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigde bos weet hoe het door de kou heen moet wachten, en hoe het feest moet vieren wanneer de warmte terugkeert.",
+      "text_markdown": "Het gematigde bos weet hoe het door de kou heen moet wachten, en hoe het feest moet vieren wanneer de warmte terugkeert.",
+      "tts": {
+        "text": "Het gematigde bos weet hoe het door de kou heen moet wachten, en hoe het feest moet vieren wanneer de warmte terugkeert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grond onder een gematigd bos is rijk.",
+      "text_markdown": "De grond onder een gematigd bos is rijk.",
+      "tts": {
+        "text": "De grond onder een gematigd bos is rijk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duizenden jaren lang zijn bladeren van de bomen gevallen en langzaam veranderd in donkere, zachte aarde.",
+      "text_markdown": "Duizenden jaren lang zijn bladeren van de bomen gevallen en langzaam veranderd in donkere, zachte aarde.",
+      "tts": {
+        "text": "Duizenden jaren lang zijn bladeren van de bomen gevallen en langzaam veranderd in donkere, zachte aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit soort grond houdt water goed vast, en geeft de bomen volop voedsel.",
+      "text_markdown": "Dit soort grond houdt water goed vast, en geeft de bomen volop voedsel.",
+      "tts": {
+        "text": "Dit soort grond houdt water goed vast, en geeft de bomen volop voedsel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bosbodem is bedekt met oude bladeren, gebroken takjes en plekken groen mos.",
+      "text_markdown": "De bosbodem is bedekt met oude bladeren, gebroken takjes en plekken groen mos.",
+      "tts": {
+        "text": "De bosbodem is bedekt met oude bladeren, gebroken takjes en plekken groen mos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je de bladeren opzij duwt, vind je donkere aarde vol kleine levende wezens.",
+      "text_markdown": "Wanneer je de bladeren opzij duwt, vind je donkere aarde vol kleine levende wezens.",
+      "tts": {
+        "text": "Wanneer je de bladeren opzij duwt, vind je donkere aarde vol kleine levende wezens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wormen en insecten bewegen erdoorheen.",
+      "text_markdown": "Wormen en insecten bewegen erdoorheen.",
+      "tts": {
+        "text": "Wormen en insecten bewegen erdoorheen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paddenstoelen duwen zich na een regenbui van onderaf omhoog.",
+      "text_markdown": "Paddenstoelen duwen zich na een regenbui van onderaf omhoog.",
+      "tts": {
+        "text": "Paddenstoelen duwen zich na een regenbui van onderaf omhoog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beken kronkelen door elk gematigd bos.",
+      "text_markdown": "Beken kronkelen door elk gematigd bos.",
+      "tts": {
+        "text": "Beken kronkelen door elk gematigd bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze stromen koud en helder in de lente, vol smeltende sneeuw.",
+      "text_markdown": "Ze stromen koud en helder in de lente, vol smeltende sneeuw.",
+      "tts": {
+        "text": "Ze stromen koud en helder in de lente, vol smeltende sneeuw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer stromen ze langzamer, met stenen die uit het ondiepe water steken.",
+      "text_markdown": "In de zomer stromen ze langzamer, met stenen die uit het ondiepe water steken.",
+      "tts": {
+        "text": "In de zomer stromen ze langzamer, met stenen die uit het ondiepe water steken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst drijven gouden bladeren als kleine bootjes naar beneden.",
+      "text_markdown": "In de herfst drijven gouden bladeren als kleine bootjes naar beneden.",
+      "tts": {
+        "text": "In de herfst drijven gouden bladeren als kleine bootjes naar beneden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter bevriezen de kleinere beken, en het water verbergt zich onder een dak van ijs.",
+      "text_markdown": "In de winter bevriezen de kleinere beken, en het water verbergt zich onder een dak van ijs.",
+      "tts": {
+        "text": "In de winter bevriezen de kleinere beken, en het water verbergt zich onder een dak van ijs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van de grote rivieren van de gematigde wereld beginnen in deze bossen.",
+      "text_markdown": "Veel van de grote rivieren van de gematigde wereld beginnen in deze bossen.",
+      "tts": {
+        "text": "Veel van de grote rivieren van de gematigde wereld beginnen in deze bossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen houden de grond op zijn plaats en voeden de beken telkens met een beetje water.",
+      "text_markdown": "De bomen houden de grond op zijn plaats en voeden de beken telkens met een beetje water.",
+      "tts": {
+        "text": "De bomen houden de grond op zijn plaats en voeden de beken telkens met een beetje water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zonder het bos zouden de rivieren niet hetzelfde zijn.",
+      "text_markdown": "Zonder het bos zouden de rivieren niet hetzelfde zijn.",
+      "tts": {
+        "text": "Zonder het bos zouden de rivieren niet hetzelfde zijn.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen zijn het hart van het gematigde bos.",
+      "text_markdown": "De bomen zijn het hart van het gematigde bos.",
+      "tts": {
+        "text": "De bomen zijn het hart van het gematigde bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel ervan groeien hoog en sterk, met dikke stammen en brede takken.",
+      "text_markdown": "Veel ervan groeien hoog en sterk, met dikke stammen en brede takken.",
+      "tts": {
+        "text": "Veel ervan groeien hoog en sterk, met dikke stammen en brede takken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun hout is hard, en één enkele boom kan honderden jaren oud worden.",
+      "text_markdown": "Hun hout is hard, en één enkele boom kan honderden jaren oud worden.",
+      "tts": {
+        "text": "Hun hout is hard, en één enkele boom kan honderden jaren oud worden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige worden nog ouder dan dat.",
+      "text_markdown": "Sommige worden nog ouder dan dat.",
+      "tts": {
+        "text": "Sommige worden nog ouder dan dat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bekendste bomen van het gematigde bos zijn de eik, de esdoorn, de beuk en de berk.",
+      "text_markdown": "De bekendste bomen van het gematigde bos zijn de eik, de esdoorn, de beuk en de berk.",
+      "tts": {
+        "text": "De bekendste bomen van het gematigde bos zijn de eik, de esdoorn, de beuk en de berk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In verschillende delen van de wereld vind je verschillende soorten van deze bomen.",
+      "text_markdown": "In verschillende delen van de wereld vind je verschillende soorten van deze bomen.",
+      "tts": {
+        "text": "In verschillende delen van de wereld vind je verschillende soorten van deze bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze delen dezelfde vorm en hetzelfde jaarlijkse verhaal.",
+      "text_markdown": "Maar ze delen dezelfde vorm en hetzelfde jaarlijkse verhaal.",
+      "tts": {
+        "text": "Maar ze delen dezelfde vorm en hetzelfde jaarlijkse verhaal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente openen zich nieuwe bladeren aan elke tak.",
+      "text_markdown": "In de lente openen zich nieuwe bladeren aan elke tak.",
+      "tts": {
+        "text": "In de lente openen zich nieuwe bladeren aan elke tak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bladeren zijn lichtgroen en zacht.",
+      "text_markdown": "De bladeren zijn lichtgroen en zacht.",
+      "tts": {
+        "text": "De bladeren zijn lichtgroen en zacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Door de zomer heen spreiden ze zich wijd uit om het zonlicht te vangen.",
+      "text_markdown": "Door de zomer heen spreiden ze zich wijd uit om het zonlicht te vangen.",
+      "tts": {
+        "text": "Door de zomer heen spreiden ze zich wijd uit om het zonlicht te vangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk groen blad zet zonlicht, water en lucht om in voedsel voor de boom.",
+      "text_markdown": "Elk groen blad zet zonlicht, water en lucht om in voedsel voor de boom.",
+      "tts": {
+        "text": "Elk groen blad zet zonlicht, water en lucht om in voedsel voor de boom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst veranderen de bladeren van kleur voordat ze vallen.",
+      "text_markdown": "In de herfst veranderen de bladeren van kleur voordat ze vallen.",
+      "tts": {
+        "text": "In de herfst veranderen de bladeren van kleur voordat ze vallen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige worden felrood, sommige gloeien geel, en sommige worden diep bruin.",
+      "text_markdown": "Sommige worden felrood, sommige gloeien geel, en sommige worden diep bruin.",
+      "tts": {
+        "text": "Sommige worden felrood, sommige gloeien geel, en sommige worden diep bruin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kleuren schilderen hele heuvelhellingen voor een paar korte weken.",
+      "text_markdown": "De kleuren schilderen hele heuvelhellingen voor een paar korte weken.",
+      "tts": {
+        "text": "De kleuren schilderen hele heuvelhellingen voor een paar korte weken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarna vallen de bladeren, en de boom rust door de kou heen.",
+      "text_markdown": "Daarna vallen de bladeren, en de boom rust door de kou heen.",
+      "tts": {
+        "text": "Daarna vallen de bladeren, en de boom rust door de kou heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het hout van de boom bewaart diep van binnen wat het nodig heeft.",
+      "text_markdown": "Het hout van de boom bewaart diep van binnen wat het nodig heeft.",
+      "tts": {
+        "text": "Het hout van de boom bewaart diep van binnen wat het nodig heeft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer de lente terugkeert, begint de boom opnieuw.",
+      "text_markdown": "Wanneer de lente terugkeert, begint de boom opnieuw.",
+      "tts": {
+        "text": "Wanneer de lente terugkeert, begint de boom opnieuw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onder de hoge bomen groeien kleinere planten.",
+      "text_markdown": "Onder de hoge bomen groeien kleinere planten.",
+      "tts": {
+        "text": "Onder de hoge bomen groeien kleinere planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn struiken met bessen waar dieren dol op zijn.",
+      "text_markdown": "Er zijn struiken met bessen waar dieren dol op zijn.",
+      "tts": {
+        "text": "Er zijn struiken met bessen waar dieren dol op zijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn varens en zachte mossen op de rotsen en oude boomstammen.",
+      "text_markdown": "Er zijn varens en zachte mossen op de rotsen en oude boomstammen.",
+      "tts": {
+        "text": "Er zijn varens en zachte mossen op de rotsen en oude boomstammen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het vroege voorjaar, voordat de grote bomen bladeren hebben, vullen wilde bloemen de bosbodem.",
+      "text_markdown": "In het vroege voorjaar, voordat de grote bomen bladeren hebben, vullen wilde bloemen de bosbodem.",
+      "tts": {
+        "text": "In het vroege voorjaar, voordat de grote bomen bladeren hebben, vullen wilde bloemen de bosbodem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar weken lang is de grond bedekt met boshyacinten, narcissen of andere felle bloemen.",
+      "text_markdown": "Een paar weken lang is de grond bedekt met boshyacinten, narcissen of andere felle bloemen.",
+      "tts": {
+        "text": "Een paar weken lang is de grond bedekt met boshyacinten, narcissen of andere felle bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer de bomen hun bladeren krijgen en de grond beschaduwen, vervagen de bloemen.",
+      "text_markdown": "Wanneer de bomen hun bladeren krijgen en de grond beschaduwen, vervagen de bloemen.",
+      "tts": {
+        "text": "Wanneer de bomen hun bladeren krijgen en de grond beschaduwen, vervagen de bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze zullen onder de grond wachten op de volgende lente.",
+      "text_markdown": "Ze zullen onder de grond wachten op de volgende lente.",
+      "tts": {
+        "text": "Ze zullen onder de grond wachten op de volgende lente.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigde bos is de thuisbasis van veel soorten dieren.",
+      "text_markdown": "Het gematigde bos is de thuisbasis van veel soorten dieren.",
+      "tts": {
+        "text": "Het gematigde bos is de thuisbasis van veel soorten dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de bomen en op de grond hebben ze allemaal manieren om met de wisselende seizoenen te leven.",
+      "text_markdown": "In de bomen en op de grond hebben ze allemaal manieren om met de wisselende seizoenen te leven.",
+      "tts": {
+        "text": "In de bomen en op de grond hebben ze allemaal manieren om met de wisselende seizoenen te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Herten komen veel voor in veel gematigde bossen.",
+      "text_markdown": "Herten komen veel voor in veel gematigde bossen.",
+      "tts": {
+        "text": "Herten komen veel voor in veel gematigde bossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze lopen zacht tussen de bomen en eten bladeren, gras en kleine planten.",
+      "text_markdown": "Ze lopen zacht tussen de bomen en eten bladeren, gras en kleine planten.",
+      "tts": {
+        "text": "Ze lopen zacht tussen de bomen en eten bladeren, gras en kleine planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer zijn hun vachten kort en bruin.",
+      "text_markdown": "In de zomer zijn hun vachten kort en bruin.",
+      "tts": {
+        "text": "In de zomer zijn hun vachten kort en bruin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter worden hun vachten dik en grijs.",
+      "text_markdown": "In de winter worden hun vachten dik en grijs.",
+      "tts": {
+        "text": "In de winter worden hun vachten dik en grijs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beren leven ook in sommige van deze bossen.",
+      "text_markdown": "Beren leven ook in sommige van deze bossen.",
+      "tts": {
+        "text": "Beren leven ook in sommige van deze bossen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een beer eet bijna alles. Bessen, vis, honing en kleine dieren.",
+      "text_markdown": "Een beer eet bijna alles. Bessen, vis, honing en kleine dieren.",
+      "tts": {
+        "text": "Een beer eet bijna alles. Bessen, vis, honing en kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst eet een beer zoveel het kan.",
+      "text_markdown": "In de herfst eet een beer zoveel het kan.",
+      "tts": {
+        "text": "In de herfst eet een beer zoveel het kan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarna zoekt het een rustige plek en slaapt diep door het koudste deel van de winter heen.",
+      "text_markdown": "Daarna zoekt het een rustige plek en slaapt diep door het koudste deel van de winter heen.",
+      "tts": {
+        "text": "Daarna zoekt het een rustige plek en slaapt diep door het koudste deel van de winter heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolven en vossen jagen in het bos.",
+      "text_markdown": "Wolven en vossen jagen in het bos.",
+      "tts": {
+        "text": "Wolven en vossen jagen in het bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolven leven in familiegroepen en leggen elke dag vele kilometers af.",
+      "text_markdown": "Wolven leven in familiegroepen en leggen elke dag vele kilometers af.",
+      "tts": {
+        "text": "Wolven leven in familiegroepen en leggen elke dag vele kilometers af.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vossen zijn kleiner, en ze jagen alleen, vaak 's nachts.",
+      "text_markdown": "Vossen zijn kleiner, en ze jagen alleen, vaak 's nachts.",
+      "tts": {
+        "text": "Vossen zijn kleiner, en ze jagen alleen, vaak 's nachts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je ziet overal eekhoorns.",
+      "text_markdown": "Je ziet overal eekhoorns.",
+      "tts": {
+        "text": "Je ziet overal eekhoorns.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst verzamelen ze noten en begraven die overal in het bos.",
+      "text_markdown": "In de herfst verzamelen ze noten en begraven die overal in het bos.",
+      "tts": {
+        "text": "In de herfst verzamelen ze noten en begraven die overal in het bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter graven ze hun verborgen voorraden op om te eten.",
+      "text_markdown": "In de winter graven ze hun verborgen voorraden op om te eten.",
+      "tts": {
+        "text": "In de winter graven ze hun verborgen voorraden op om te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soms vergeten ze er een paar, en die noten groeien uit tot de volgende bomen.",
+      "text_markdown": "Soms vergeten ze er een paar, en die noten groeien uit tot de volgende bomen.",
+      "tts": {
+        "text": "Soms vergeten ze er een paar, en die noten groeien uit tot de volgende bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konijnen en kleine muizen wonen in de zachte aarde en onder gevallen boomstammen.",
+      "text_markdown": "Konijnen en kleine muizen wonen in de zachte aarde en onder gevallen boomstammen.",
+      "tts": {
+        "text": "Konijnen en kleine muizen wonen in de zachte aarde en onder gevallen boomstammen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel soorten vogels vullen het gematigde bos met geluid.",
+      "text_markdown": "Veel soorten vogels vullen het gematigde bos met geluid.",
+      "tts": {
+        "text": "Veel soorten vogels vullen het gematigde bos met geluid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige vogels blijven het hele jaar, en je kunt ze zien op de kale wintertakken.",
+      "text_markdown": "Sommige vogels blijven het hele jaar, en je kunt ze zien op de kale wintertakken.",
+      "tts": {
+        "text": "Sommige vogels blijven het hele jaar, en je kunt ze zien op de kale wintertakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel andere vogels vliegen voor de winter naar het zuiden en komen terug wanneer de lente terugkeert.",
+      "text_markdown": "Veel andere vogels vliegen voor de winter naar het zuiden en komen terug wanneer de lente terugkeert.",
+      "tts": {
+        "text": "Veel andere vogels vliegen voor de winter naar het zuiden en komen terug wanneer de lente terugkeert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spechten hameren op de stammen van bomen.",
+      "text_markdown": "Spechten hameren op de stammen van bomen.",
+      "tts": {
+        "text": "Spechten hameren op de stammen van bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uilen jagen in de nacht.",
+      "text_markdown": "Uilen jagen in de nacht.",
+      "tts": {
+        "text": "Uilen jagen in de nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In vijvers en beken zingen kikkers, en kleine vissen zwemmen 's winters onder het ijs.",
+      "text_markdown": "In vijvers en beken zingen kikkers, en kleine vissen zwemmen 's winters onder het ijs.",
+      "tts": {
+        "text": "In vijvers en beken zingen kikkers, en kleine vissen zwemmen 's winters onder het ijs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vlinders en bijen komen tevoorschijn in de warme maanden, wanneer de bloemen opengaan.",
+      "text_markdown": "Vlinders en bijen komen tevoorschijn in de warme maanden, wanneer de bloemen opengaan.",
+      "tts": {
+        "text": "Vlinders en bijen komen tevoorschijn in de warme maanden, wanneer de bloemen opengaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk dier hier kent de vier seizoenen in zijn lichaam.",
+      "text_markdown": "Elk dier hier kent de vier seizoenen in zijn lichaam.",
+      "tts": {
+        "text": "Elk dier hier kent de vier seizoenen in zijn lichaam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk weet wanneer het druk moet zijn, wanneer het moet rusten en wanneer het weer wakker moet worden.",
+      "text_markdown": "Elk weet wanneer het druk moet zijn, wanneer het moet rusten en wanneer het weer wakker moet worden.",
+      "tts": {
+        "text": "Elk weet wanneer het druk moet zijn, wanneer het moet rusten en wanneer het weer wakker moet worden.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen wonen al vele duizenden jaren in het gematigde bos.",
+      "text_markdown": "Mensen wonen al vele duizenden jaren in het gematigde bos.",
+      "tts": {
+        "text": "Mensen wonen al vele duizenden jaren in het gematigde bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De milde seizoenen en de rijke grond hebben deze plaatsen altijd goed gemaakt voor het menselijk leven.",
+      "text_markdown": "De milde seizoenen en de rijke grond hebben deze plaatsen altijd goed gemaakt voor het menselijk leven.",
+      "tts": {
+        "text": "De milde seizoenen en de rijke grond hebben deze plaatsen altijd goed gemaakt voor het menselijk leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang geleden jaagden mensen in deze bossen op herten en kleine dieren.",
+      "text_markdown": "Lang geleden jaagden mensen in deze bossen op herten en kleine dieren.",
+      "tts": {
+        "text": "Lang geleden jaagden mensen in deze bossen op herten en kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze verzamelden noten, bessen en wortels van de bosbodem.",
+      "text_markdown": "Ze verzamelden noten, bessen en wortels van de bosbodem.",
+      "tts": {
+        "text": "Ze verzamelden noten, bessen en wortels van de bosbodem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze wisten welke paddenstoelen veilig waren en welke niet.",
+      "text_markdown": "Ze wisten welke paddenstoelen veilig waren en welke niet.",
+      "tts": {
+        "text": "Ze wisten welke paddenstoelen veilig waren en welke niet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bouwden hun huizen van het hout van de bomen om hen heen.",
+      "text_markdown": "Ze bouwden hun huizen van het hout van de bomen om hen heen.",
+      "tts": {
+        "text": "Ze bouwden hun huizen van het hout van de bomen om hen heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een huis van boomstammen en een dak van schors kan een gezin warm houden door een lange winter heen.",
+      "text_markdown": "Een huis van boomstammen en een dak van schors kan een gezin warm houden door een lange winter heen.",
+      "tts": {
+        "text": "Een huis van boomstammen en een dak van schors kan een gezin warm houden door een lange winter heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente en zomer verbouwden ze voedsel op kleine velden die uit het bos waren vrijgemaakt.",
+      "text_markdown": "In de lente en zomer verbouwden ze voedsel op kleine velden die uit het bos waren vrijgemaakt.",
+      "tts": {
+        "text": "In de lente en zomer verbouwden ze voedsel op kleine velden die uit het bos waren vrijgemaakt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze plantten graan, bonen en wortels die het goed deden in het koele weer.",
+      "text_markdown": "Ze plantten graan, bonen en wortels die het goed deden in het koele weer.",
+      "tts": {
+        "text": "Ze plantten graan, bonen en wortels die het goed deden in het koele weer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst haalden ze de oogst binnen en sloegen die op voor de koude maanden.",
+      "text_markdown": "In de herfst haalden ze de oogst binnen en sloegen die op voor de koude maanden.",
+      "tts": {
+        "text": "In de herfst haalden ze de oogst binnen en sloegen die op voor de koude maanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter zaten ze bij hun vuren, repareerden hun gereedschap, vertelden verhalen en wachtten op de lente.",
+      "text_markdown": "In de winter zaten ze bij hun vuren, repareerden hun gereedschap, vertelden verhalen en wachtten op de lente.",
+      "tts": {
+        "text": "In de winter zaten ze bij hun vuren, repareerden hun gereedschap, vertelden verhalen en wachtten op de lente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het bos gaf hun hout voor vuren en om te bouwen.",
+      "text_markdown": "Het bos gaf hun hout voor vuren en om te bouwen.",
+      "tts": {
+        "text": "Het bos gaf hun hout voor vuren en om te bouwen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gaf hun schors en bladeren voor medicijnen.",
+      "text_markdown": "Het gaf hun schors en bladeren voor medicijnen.",
+      "tts": {
+        "text": "Het gaf hun schors en bladeren voor medicijnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gaf hun verfstoffen voor stof, en voedsel in elk seizoen.",
+      "text_markdown": "Het gaf hun verfstoffen voor stof, en voedsel in elk seizoen.",
+      "tts": {
+        "text": "Het gaf hun verfstoffen voor stof, en voedsel in elk seizoen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de loop der tijd werden veel van deze bossen gekapt om boerderijen en steden te maken.",
+      "text_markdown": "In de loop der tijd werden veel van deze bossen gekapt om boerderijen en steden te maken.",
+      "tts": {
+        "text": "In de loop der tijd werden veel van deze bossen gekapt om boerderijen en steden te maken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dorpen groeiden uit tot stadjes, en de stadjes groeiden uit tot de grote steden van de gematigde wereld.",
+      "text_markdown": "De dorpen groeiden uit tot stadjes, en de stadjes groeiden uit tot de grote steden van de gematigde wereld.",
+      "tts": {
+        "text": "De dorpen groeiden uit tot stadjes, en de stadjes groeiden uit tot de grote steden van de gematigde wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar mensen kennen het bos nog steeds in hun verhalen en liedjes.",
+      "text_markdown": "Maar mensen kennen het bos nog steeds in hun verhalen en liedjes.",
+      "tts": {
+        "text": "Maar mensen kennen het bos nog steeds in hun verhalen en liedjes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van de oude liedjes en verhalen van deze landen zitten vol bomen, wolven, herten en de lange winternachten.",
+      "text_markdown": "Veel van de oude liedjes en verhalen van deze landen zitten vol bomen, wolven, herten en de lange winternachten.",
+      "tts": {
+        "text": "Veel van de oude liedjes en verhalen van deze landen zitten vol bomen, wolven, herten en de lange winternachten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elk gematigd bos heeft dit soort leven zijn eigen talen, zijn eigen voedsel en zijn eigen manieren om op de lente te wachten.",
+      "text_markdown": "In elk gematigd bos heeft dit soort leven zijn eigen talen, zijn eigen voedsel en zijn eigen manieren om op de lente te wachten.",
+      "tts": {
+        "text": "In elk gematigd bos heeft dit soort leven zijn eigen talen, zijn eigen voedsel en zijn eigen manieren om op de lente te wachten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het bos vandaag",
+      "text_markdown": "Het bos vandaag"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigde bos is een van de belangrijkste biomen voor mensen.",
+      "text_markdown": "Het gematigde bos is een van de belangrijkste biomen voor mensen.",
+      "tts": {
+        "text": "Het gematigde bos is een van de belangrijkste biomen voor mensen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste grote steden van de wereld staan op plekken die ooit gematigd bos waren.",
+      "text_markdown": "De meeste grote steden van de wereld staan op plekken die ooit gematigd bos waren.",
+      "tts": {
+        "text": "De meeste grote steden van de wereld staan op plekken die ooit gematigd bos waren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bossen geven ons hout om te bouwen, papier om te schrijven en schoon water om te drinken.",
+      "text_markdown": "De bossen geven ons hout om te bouwen, papier om te schrijven en schoon water om te drinken.",
+      "tts": {
+        "text": "De bossen geven ons hout om te bouwen, papier om te schrijven en schoon water om te drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen nemen het gas op dat wij uitademen en gebruiken het om te groeien.",
+      "text_markdown": "De bomen nemen het gas op dat wij uitademen en gebruiken het om te groeien.",
+      "tts": {
+        "text": "De bomen nemen het gas op dat wij uitademen en gebruiken het om te groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze geven het gas terug dat wij inademen.",
+      "text_markdown": "Ze geven het gas terug dat wij inademen.",
+      "tts": {
+        "text": "Ze geven het gas terug dat wij inademen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst is het bos een van de mooiste taferelen op Aarde.",
+      "text_markdown": "In de herfst is het bos een van de mooiste taferelen op Aarde.",
+      "tts": {
+        "text": "In de herfst is het bos een van de mooiste taferelen op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen reizen lange afstanden alleen maar om de gekleurde bladeren te zien.",
+      "text_markdown": "Mensen reizen lange afstanden alleen maar om de gekleurde bladeren te zien.",
+      "tts": {
+        "text": "Mensen reizen lange afstanden alleen maar om de gekleurde bladeren te zien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het gematigde bos heeft veel van zijn land verloren.",
+      "text_markdown": "Maar het gematigde bos heeft veel van zijn land verloren.",
+      "tts": {
+        "text": "Maar het gematigde bos heeft veel van zijn land verloren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In duizenden jaren is veel van het oorspronkelijke bos gekapt.",
+      "text_markdown": "In duizenden jaren is veel van het oorspronkelijke bos gekapt.",
+      "tts": {
+        "text": "In duizenden jaren is veel van het oorspronkelijke bos gekapt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar ooit eindeloze bomen stonden, zijn nu velden, stadjes, wegen en steden.",
+      "text_markdown": "Waar ooit eindeloze bomen stonden, zijn nu velden, stadjes, wegen en steden.",
+      "tts": {
+        "text": "Waar ooit eindeloze bomen stonden, zijn nu velden, stadjes, wegen en steden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bossen die overblijven zijn kleiner en versnipperd.",
+      "text_markdown": "De bossen die overblijven zijn kleiner en versnipperd.",
+      "tts": {
+        "text": "De bossen die overblijven zijn kleiner en versnipperd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+      "text_markdown": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze planten nieuwe bomen waar oude verloren zijn gegaan.",
+      "text_markdown": "Ze planten nieuwe bomen waar oude verloren zijn gegaan.",
+      "tts": {
+        "text": "Ze planten nieuwe bomen waar oude verloren zijn gegaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze beschermen oude bossen tegen kappen.",
+      "text_markdown": "Ze beschermen oude bossen tegen kappen.",
+      "tts": {
+        "text": "Ze beschermen oude bossen tegen kappen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen het bos zodat we het beter kunnen begrijpen.",
+      "text_markdown": "Ze bestuderen het bos zodat we het beter kunnen begrijpen.",
+      "tts": {
+        "text": "Ze bestuderen het bos zodat we het beter kunnen begrijpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een jong bos kan in honderd jaar terug groeien.",
+      "text_markdown": "Een jong bos kan in honderd jaar terug groeien.",
+      "tts": {
+        "text": "Een jong bos kan in honderd jaar terug groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een oud bos kan levende bomen herbergen die ouder zijn dan welk gebouw in de buurt ook.",
+      "text_markdown": "Een oud bos kan levende bomen herbergen die ouder zijn dan welk gebouw in de buurt ook.",
+      "tts": {
+        "text": "Een oud bos kan levende bomen herbergen die ouder zijn dan welk gebouw in de buurt ook.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Het bos vandaag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is onze zorg waard.",
+      "text_markdown": "Het is onze zorg waard.",
+      "tts": {
+        "text": "Het is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afsluiting",
+      "text_markdown": "Afsluiting"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het gematigde bos.",
+      "text_markdown": "Dat is het gematigde bos.",
+      "tts": {
+        "text": "Dat is het gematigde bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een groene wereld van hoge bomen, koele beken en vier heel verschillende seizoenen.",
+      "text_markdown": "Een groene wereld van hoge bomen, koele beken en vier heel verschillende seizoenen.",
+      "tts": {
+        "text": "Een groene wereld van hoge bomen, koele beken en vier heel verschillende seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit een in loopt, sta dan een minuut stil.",
+      "text_markdown": "Als je er ooit een in loopt, sta dan een minuut stil.",
+      "tts": {
+        "text": "Als je er ooit een in loopt, sta dan een minuut stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de wind in de bladeren boven je.",
+      "text_markdown": "Luister naar de wind in de bladeren boven je.",
+      "tts": {
+        "text": "Luister naar de wind in de bladeren boven je.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk naar het zachte tapijt van oude bladeren onder je voeten.",
+      "text_markdown": "Kijk naar het zachte tapijt van oude bladeren onder je voeten.",
+      "tts": {
+        "text": "Kijk naar het zachte tapijt van oude bladeren onder je voeten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het hart van het bioom om je heen horen kloppen.",
+      "text_markdown": "Je zult het hart van het bioom om je heen horen kloppen.",
+      "tts": {
+        "text": "Je zult het hart van het bioom om je heen horen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

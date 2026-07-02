@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "vi",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Chào mừng đến với AI Tuần Này.",
+      "text_markdown": "Chào mừng đến với AI Tuần Này.",
+      "title": "",
+      "tts": {
+        "text": "Chào mừng đến với AI Tuần Này.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Tôi là Vindy.",
+      "text_markdown": "Tôi là Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Tôi là Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Cùng với tôi, như thường lệ, là Ron.",
+      "text_markdown": "Cùng với tôi, như thường lệ, là Ron.",
+      "title": "",
+      "tts": {
+        "text": "Cùng với tôi, như thường lệ, là Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Rất vui được ở đây, Vindy.",
+      "text_markdown": "Rất vui được ở đây, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Rất vui được ở đây, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Hôm nay là Chủ Nhật, ngày 21 tháng 6 năm 2026.",
+      "text_markdown": "Hôm nay là Chủ Nhật, ngày 21 tháng 6 năm 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hôm nay là Chủ Nhật, ngày hai mươi mốt tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Tuần trước chúng ta đã nói về bản thân; hôm nay chúng ta đi theo hướng khác — vươn ra đến các trung tâm quyền lực.",
+      "text_markdown": "Tuần trước chúng ta đã nói về bản thân; hôm nay chúng ta đi theo hướng khác — vươn ra đến các trung tâm quyền lực.",
+      "title": "",
+      "tts": {
+        "text": "Tuần trước chúng ta đã nói về bản thân; hôm nay chúng ta đi theo hướng khác — vươn ra đến các trung tâm quyền lực.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Ai kiểm soát việc triển khai AI, ai chi trả cho việc xây dựng, ai sở hữu silicon.",
+      "text_markdown": "Ai kiểm soát việc triển khai AI, ai chi trả cho việc xây dựng, ai sở hữu silicon.",
+      "title": "",
+      "tts": {
+        "text": "Ai kiểm soát việc triển khai A I, ai chi trả cho việc xây dựng, ai sở hữu silicon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "Tiếp theo — Bộ Thương mại Hoa Kỳ đã rút một mô hình của Mỹ khỏi sử dụng công khai vào thứ Sáu tuần trước, và chúng ta sẽ bắt đầu từ đó.",
+      "text_markdown": "Tiếp theo — Bộ Thương mại Hoa Kỳ đã rút một mô hình của Mỹ khỏi sử dụng công khai vào thứ Sáu tuần trước, và chúng ta sẽ bắt đầu từ đó.",
+      "title": "",
+      "tts": {
+        "text": "Tiếp theo — Bộ Thương mại Hoa Kỳ đã rút một mô hình của Mỹ khỏi sử dụng công khai vào thứ Sáu tuần trước, và chúng ta sẽ bắt đầu từ đó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Sau đó là việc xây dựng trung tâm dữ liệu, nơi các thông báo và thực tế không khớp nhau.",
+      "text_markdown": "Sau đó là việc xây dựng trung tâm dữ liệu, nơi các thông báo và thực tế không khớp nhau.",
+      "title": "",
+      "tts": {
+        "text": "Sau đó là việc xây dựng trung tâm dữ liệu, nơi các thông báo và thực tế không khớp nhau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "Tiếp theo là so sánh giữa Hoa Kỳ và Trung Quốc, với những lời sáo rỗng được thay thế bằng những ràng buộc thực tế.",
+      "text_markdown": "Tiếp theo là so sánh giữa Hoa Kỳ và Trung Quốc, với những lời sáo rỗng được thay thế bằng những ràng buộc thực tế.",
+      "title": "",
+      "tts": {
+        "text": "Tiếp theo là so sánh giữa Hoa Kỳ và Trung Quốc, với những lời sáo rỗng được thay thế bằng những ràng buộc thực tế.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "Và khái niệm của tuần — một dòng duy nhất trên bảng cân đối kế toán của Oracle nói lên gần như mọi thứ.",
+      "text_markdown": "Và khái niệm của tuần — một dòng duy nhất trên bảng cân đối kế toán của Oracle nói lên gần như mọi thứ.",
+      "title": "",
+      "tts": {
+        "text": "Và khái niệm của tuần — một dòng duy nhất trên bảng cân đối kế toán của Oracle nói lên gần như mọi thứ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Ron, chúng ta hãy bắt đầu với Anthropic.",
+      "text_markdown": "Ron, chúng ta hãy bắt đầu với Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, chúng ta hãy bắt đầu với Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Điều gì đã xảy ra vào ngày mười hai tháng Sáu.",
+      "text_markdown": "Điều gì đã xảy ra vào ngày mười hai tháng Sáu.",
+      "title": "",
+      "tts": {
+        "text": "Điều gì đã xảy ra vào ngày mười hai tháng Sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Vào năm giờ hai mươi mốt chiều Giờ miền Đông vào thứ Sáu, ngày mười hai tháng Sáu, Anthropic đã gỡ bỏ hai mô hình mới nhất của mình — Claude Mythos năm và Claude Fable năm — khỏi mạng.",
+      "text_markdown": "Vào năm giờ hai mươi mốt chiều Giờ miền Đông vào thứ Sáu, ngày mười hai tháng Sáu, Anthropic đã gỡ bỏ hai mô hình mới nhất của mình — Claude Mythos năm và Claude Fable năm — khỏi mạng.",
+      "title": "",
+      "tts": {
+        "text": "Vào năm giờ hai mươi mốt chiều Giờ miền Đông vào thứ Sáu, ngày mười hai tháng Sáu, Anthropic đã gỡ bỏ hai mô hình mới nhất của mình — Claude Mythos năm và Claude Fable năm — khỏi mạng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Không phải để bảo trì, không phải để tự đánh giá an toàn.",
+      "text_markdown": "Không phải để bảo trì, không phải để tự đánh giá an toàn.",
+      "title": "",
+      "tts": {
+        "text": "Không phải để bảo trì, không phải để tự đánh giá an toàn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "Họ gỡ bỏ chúng vì Bộ Thương mại Hoa Kỳ đã ban hành một chỉ thị viện dẫn các biện pháp kiểm soát xuất khẩu.",
+      "text_markdown": "Họ gỡ bỏ chúng vì Bộ Thương mại Hoa Kỳ đã ban hành một chỉ thị viện dẫn các biện pháp kiểm soát xuất khẩu.",
+      "title": "",
+      "tts": {
+        "text": "Họ gỡ bỏ chúng vì Bộ Thương mại Hoa Kỳ đã ban hành một chỉ thị viện dẫn các biện pháp kiểm soát xuất khẩu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "Lý do kỹ thuật là gì.",
+      "text_markdown": "Lý do kỹ thuật là gì.",
+      "title": "",
+      "tts": {
+        "text": "Lý do kỹ thuật là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Một cuộc bẻ khóa đã được chứng minh, theo báo cáo là bởi một công ty khác, tạo ra đầu ra mà Bộ Thương mại coi là thuộc diện kiểm soát xuất khẩu.",
+      "text_markdown": "Một cuộc bẻ khóa đã được chứng minh, theo báo cáo là bởi một công ty khác, tạo ra đầu ra mà Bộ Thương mại coi là thuộc diện kiểm soát xuất khẩu.",
+      "title": "",
+      "tts": {
+        "text": "Một cuộc bẻ khóa đã được chứng minh, theo báo cáo là bởi một công ty khác, tạo ra đầu ra mà Bộ Thương mại coi là thuộc diện kiểm soát xuất khẩu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "Tạp chí Fortune đưa tin rằng Amazon là bên đã cảnh báo Nhà Trắng về việc này.",
+      "text_markdown": "Tạp chí Fortune đưa tin rằng Amazon là bên đã cảnh báo Nhà Trắng về việc này.",
+      "title": "",
+      "tts": {
+        "text": "Tạp chí Fortune đưa tin rằng Amazon là bên đã cảnh báo Nhà Trắng về việc này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "Và Anthropic đã phản ứng như thế nào.",
+      "text_markdown": "Và Anthropic đã phản ứng như thế nào.",
+      "title": "",
+      "tts": {
+        "text": "Và Anthropic đã phản ứng như thế nào.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "Anthropic công khai tranh cãi về lý do này.",
+      "text_markdown": "Anthropic công khai tranh cãi về lý do này.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic công khai tranh cãi về lý do này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Tuyên bố của họ gọi việc bẻ khóa — và tôi xin trích dẫn — là \"hẹp, không phổ quát,\" và nói thêm rằng cùng một đầu ra có sẵn từ các mô hình khác, bao gồm GPT-năm-chấm-năm của OpenAI.",
+      "text_markdown": "Tuyên bố của họ gọi việc bẻ khóa — và tôi xin trích dẫn — là \"hẹp, không phổ quát,\" và nói thêm rằng cùng một đầu ra có sẵn từ các mô hình khác, bao gồm GPT-năm-chấm-năm của OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Tuyên bố của họ gọi việc bẻ khóa — và tôi xin trích dẫn — là \"hẹp, không phổ quát,\" và nói thêm rằng cùng một đầu ra có sẵn từ các mô hình khác, bao gồm GPT năm chấm năm của OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Dòng tóm tắt của họ: \"hành động của chính phủ dựa trên sự hiểu lầm.\"",
+      "text_markdown": "Dòng tóm tắt của họ: \"hành động của chính phủ dựa trên sự hiểu lầm.\"",
+      "title": "",
+      "tts": {
+        "text": "Dòng tóm tắt của họ: \"hành động của chính phủ dựa trên sự hiểu lầm.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Đó là một sự bất đồng trực tiếp bất thường với chính phủ Hoa Kỳ đối với một phòng thí nghiệm AI.",
+      "text_markdown": "Đó là một sự bất đồng trực tiếp bất thường với chính phủ Hoa Kỳ đối với một phòng thí nghiệm AI.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một sự bất đồng trực tiếp bất thường với chính phủ Hoa Kỳ đối với một phòng thí nghiệm A I.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Đúng vậy, và sự thật mang tính cấu trúc ẩn dưới đó chính là tiêu đề.",
+      "text_markdown": "Đúng vậy, và sự thật mang tính cấu trúc ẩn dưới đó chính là tiêu đề.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy, và sự thật mang tính cấu trúc ẩn dưới đó chính là tiêu đề.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "Bộ Thương mại giờ đây có thể ra lệnh cho một phòng thí nghiệm AI tư nhân của Mỹ gỡ bỏ một mô hình khỏi mạng, viện dẫn các biện pháp kiểm soát xuất khẩu, và lệnh đó được thực hiện trong vòng bảy mươi hai giờ.",
+      "text_markdown": "Bộ Thương mại giờ đây có thể ra lệnh cho một phòng thí nghiệm AI tư nhân của Mỹ gỡ bỏ một mô hình khỏi mạng, viện dẫn các biện pháp kiểm soát xuất khẩu, và lệnh đó được thực hiện trong vòng bảy mươi hai giờ.",
+      "title": "",
+      "tts": {
+        "text": "Bộ Thương mại giờ đây có thể ra lệnh cho một phòng thí nghiệm A I tư nhân của Mỹ gỡ bỏ một mô hình khỏi mạng, viện dẫn các biện pháp kiểm soát xuất khẩu, và lệnh đó được thực hiện trong vòng bảy mươi hai giờ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+      "text_markdown": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+      "title": "",
+      "tts": {
+        "text": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+      "text_markdown": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+      "title": "",
+      "tts": {
+        "text": "Dù bạn có nghĩ lệnh đó là đúng hay không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Chính quyền hạn, tốc độ và tiền lệ mới là điều quan trọng.",
+      "text_markdown": "Chính quyền hạn, tốc độ và tiền lệ mới là điều quan trọng.",
+      "title": "",
+      "tts": {
+        "text": "Chính quyền hạn, tốc độ và tiền lệ mới là điều quan trọng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "Và vai trò của Amazon ở đây.",
+      "text_markdown": "Và vai trò của Amazon ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Và vai trò của Amazon ở đây.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Đó là phần đáng xem.",
+      "text_markdown": "Đó là phần đáng xem.",
+      "title": "",
+      "tts": {
+        "text": "Đó là phần đáng xem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "Amazon là một nhà đầu tư lớn của Anthropic và cũng cạnh tranh với Anthropic trong thị trường mô hình nền tảng thông qua công việc của riêng mình.",
+      "text_markdown": "Amazon là một nhà đầu tư lớn của Anthropic và cũng cạnh tranh với Anthropic trong thị trường mô hình nền tảng thông qua công việc của riêng mình.",
+      "title": "",
+      "tts": {
+        "text": "Amazon là một nhà đầu tư lớn của Anthropic và cũng cạnh tranh với Anthropic trong thị trường mô hình nền tảng thông qua công việc của riêng mình.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Nếu cảnh báo của một đối thủ cạnh tranh gửi đến chính phủ có thể khiến mô hình của đối thủ khác ngừng hoạt động chỉ trong một kỳ nghỉ cuối tuần dài, đó là một hình thái mới cho động lực ngành.",
+      "text_markdown": "Nếu cảnh báo của một đối thủ cạnh tranh gửi đến chính phủ có thể khiến mô hình của đối thủ khác ngừng hoạt động chỉ trong một kỳ nghỉ cuối tuần dài, đó là một hình thái mới cho động lực ngành.",
+      "title": "",
+      "tts": {
+        "text": "Nếu cảnh báo của một đối thủ cạnh tranh gửi đến chính phủ có thể khiến mô hình của đối thủ khác ngừng hoạt động chỉ trong một kỳ nghỉ cuối tuần dài, đó là một hình thái mới cho động lực ngành.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Hãy chuyển sang phần xây dựng.",
+      "text_markdown": "Hãy chuyển sang phần xây dựng.",
+      "title": "",
+      "tts": {
+        "text": "Hãy chuyển sang phần xây dựng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "Stargate — sáng kiến trung tâm dữ liệu của OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — sáng kiến trung tâm dữ liệu của OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — sáng kiến trung tâm dữ liệu của OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Những con số thực tế là gì.",
+      "text_markdown": "Những con số thực tế là gì.",
+      "title": "",
+      "tts": {
+        "text": "Những con số thực tế là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "Stargate đã công bố công suất mười một gigawatt tại Hoa Kỳ.",
+      "text_markdown": "Stargate đã công bố công suất mười một gigawatt tại Hoa Kỳ.",
+      "title": "",
+      "tts": {
+        "text": "Stargate đã công bố công suất mười một gigawatt tại Hoa Kỳ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "Tính đến giữa tháng Sáu, khoảng hai trăm megawatt đang hoạt động, tại địa điểm Abilene Texas, Giai đoạn Một.",
+      "text_markdown": "Tính đến giữa tháng Sáu, khoảng hai trăm megawatt đang hoạt động, tại địa điểm Abilene Texas, Giai đoạn Một.",
+      "title": "",
+      "tts": {
+        "text": "Tính đến giữa tháng Sáu, khoảng hai trăm megawatt đang hoạt động, tại địa điểm Abilene Texas, Giai đoạn Một.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "Mười một gigawatt được công bố, hai trăm megawatt đã được kết nối.",
+      "text_markdown": "Mười một gigawatt được công bố, hai trăm megawatt đã được kết nối.",
+      "title": "",
+      "tts": {
+        "text": "Mười một gigawatt được công bố, hai trăm megawatt đã được kết nối.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "Đó là toàn bộ khoảng cách chỉ trong một câu.",
+      "text_markdown": "Đó là toàn bộ khoảng cách chỉ trong một câu.",
+      "title": "",
+      "tts": {
+        "text": "Đó là toàn bộ khoảng cách chỉ trong một câu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Đúng vậy, và ví dụ rõ ràng nhất nằm ở New Mexico.",
+      "text_markdown": "Đúng vậy, và ví dụ rõ ràng nhất nằm ở New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy, và ví dụ rõ ràng nhất nằm ở New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Địa điểm Doña Ana County là khuôn viên Stargate lớn nhất, dự kiến có công suất bốn phẩy năm gigawatt.",
+      "text_markdown": "Địa điểm Doña Ana County là khuôn viên Stargate lớn nhất, dự kiến có công suất bốn phẩy năm gigawatt.",
+      "title": "",
+      "tts": {
+        "text": "Địa điểm Doña Ana County là khuôn viên Stargate lớn nhất, dự kiến có công suất bốn phẩy năm gigawatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "Mười tám tỷ đô la tài trợ dự án hợp vốn đã được triển khai — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — cộng thêm ba tỷ đô la vốn chủ sở hữu từ Blue Owl.",
+      "text_markdown": "Mười tám tỷ đô la tài trợ dự án hợp vốn đã được triển khai — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — cộng thêm ba tỷ đô la vốn chủ sở hữu từ Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Mười tám tỷ đô la tài trợ dự án hợp vốn đã được triển khai — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — cộng thêm ba tỷ đô la vốn chủ sở hữu từ Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "Và tình trạng xây dựng thực tế.",
+      "text_markdown": "Và tình trạng xây dựng thực tế.",
+      "title": "",
+      "tts": {
+        "text": "Và tình trạng xây dựng thực tế.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Cho đến nay chưa có một nhát cuốc nào được thực hiện.",
+      "text_markdown": "Cho đến nay chưa có một nhát cuốc nào được thực hiện.",
+      "title": "",
+      "tts": {
+        "text": "Cho đến nay chưa có một nhát cuốc nào được thực hiện.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "Địa điểm này đang chờ giấy phép chất lượng không khí từ Sở Môi trường New Mexico, ban đầu dự kiến vào ngày hai mươi hai tháng Tư, nay bị đẩy sang ngày hai mươi mốt tháng Bảy sau hơn bảy nghìn bình luận công khai.",
+      "text_markdown": "Địa điểm này đang chờ giấy phép chất lượng không khí từ Sở Môi trường New Mexico, ban đầu dự kiến vào ngày hai mươi hai tháng Tư, nay bị đẩy sang ngày hai mươi mốt tháng Bảy sau hơn bảy nghìn bình luận công khai.",
+      "title": "",
+      "tts": {
+        "text": "Địa điểm này đang chờ giấy phép chất lượng không khí từ Sở Môi trường New Mexico, ban đầu dự kiến vào ngày hai mươi hai tháng Tư, nay bị đẩy sang ngày hai mươi mốt tháng Bảy sau hơn bảy nghìn bình luận công khai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Mười tám tỷ đô la đã cam kết, chưa có một nhát cuốc nào được thực hiện, một hạn chót cho giấy phép chất lượng không khí.",
+      "text_markdown": "Mười tám tỷ đô la đã cam kết, chưa có một nhát cuốc nào được thực hiện, một hạn chót cho giấy phép chất lượng không khí.",
+      "title": "",
+      "tts": {
+        "text": "Mười tám tỷ đô la đã cam kết, chưa có một nhát cuốc nào được thực hiện, một hạn chót cho giấy phép chất lượng không khí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "Ai sẽ là người chịu trách nhiệm nếu các con số không khớp.",
+      "text_markdown": "Ai sẽ là người chịu trách nhiệm nếu các con số không khớp.",
+      "title": "",
+      "tts": {
+        "text": "Ai sẽ là người chịu trách nhiệm nếu các con số không khớp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Đó là lúc Oracle trở nên thú vị.",
+      "text_markdown": "Đó là lúc Oracle trở nên thú vị.",
+      "title": "",
+      "tts": {
+        "text": "Đó là lúc Oracle trở nên thú vị.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "Nghĩa vụ thực hiện còn lại của Oracle (Remaining Performance Obligations) — khoản mục kế toán ghi nhận doanh thu đã ký hợp đồng nhưng chưa được giao — đạt năm trăm năm mươi ba tỷ đô la trong quý ba tài khóa hai nghìn không trăm hai mươi sáu.",
+      "text_markdown": "Nghĩa vụ thực hiện còn lại của Oracle (Remaining Performance Obligations) — khoản mục kế toán ghi nhận doanh thu đã ký hợp đồng nhưng chưa được giao — đạt năm trăm năm mươi ba tỷ đô la trong quý ba tài khóa hai nghìn không trăm hai mươi sáu.",
+      "title": "",
+      "tts": {
+        "text": "Nghĩa vụ thực hiện còn lại của Oracle — khoản mục kế toán ghi nhận doanh thu đã ký hợp đồng nhưng chưa được giao — đạt năm trăm năm mươi ba tỷ đô la trong quý ba tài khóa hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Con số đó tăng ba trăm hai mươi lăm phần trăm so với cùng kỳ năm trước, và phần lớn sự tăng trưởng đó được công khai xác định là liên quan đến OpenAI và Stargate.",
+      "text_markdown": "Con số đó tăng ba trăm hai mươi lăm phần trăm so với cùng kỳ năm trước, và phần lớn sự tăng trưởng đó được công khai xác định là liên quan đến OpenAI và Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Con số đó tăng ba trăm hai mươi lăm phần trăm so với cùng kỳ năm trước, và phần lớn sự tăng trưởng đó được công khai xác định là liên quan đến OpenAI và Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "Và phía nợ.",
+      "text_markdown": "Và phía nợ.",
+      "title": "",
+      "tts": {
+        "text": "Và phía nợ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "Tổng số tiền vay đạt một trăm ba mươi bốn phẩy sáu tỷ đô la tính đến ngày hai mươi tám tháng Hai.",
+      "text_markdown": "Tổng số tiền vay đạt một trăm ba mươi bốn phẩy sáu tỷ đô la tính đến ngày hai mươi tám tháng Hai.",
+      "title": "",
+      "tts": {
+        "text": "Tổng số tiền vay đạt một trăm ba mươi bốn phẩy sáu tỷ đô la tính đến ngày hai mươi tám tháng Hai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "Chỉ riêng trong tháng Hai, Oracle đã huy động ba mươi tỷ đô la — trái phiếu hạng đầu tư cộng với cổ phiếu ưu đãi chuyển đổi bắt buộc — và phát hành bốn mươi ba tỷ đô la trái phiếu cao cấp mới trong giai đoạn chín tháng.",
+      "text_markdown": "Chỉ riêng trong tháng Hai, Oracle đã huy động ba mươi tỷ đô la — trái phiếu hạng đầu tư cộng với cổ phiếu ưu đãi chuyển đổi bắt buộc — và phát hành bốn mươi ba tỷ đô la trái phiếu cao cấp mới trong giai đoạn chín tháng.",
+      "title": "",
+      "tts": {
+        "text": "Chỉ riêng trong tháng Hai, Oracle đã huy động ba mươi tỷ đô la — trái phiếu hạng đầu tư cộng với cổ phiếu ưu đãi chuyển đổi bắt buộc — và phát hành bốn mươi ba tỷ đô la trái phiếu cao cấp mới trong giai đoạn chín tháng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Vậy tóm tắt tình hình.",
+      "text_markdown": "Vậy tóm tắt tình hình.",
+      "title": "",
+      "tts": {
+        "text": "Vậy tóm tắt tình hình.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Năm trăm năm mươi ba tỷ đô la cam kết, một trăm ba mươi bốn tỷ đô la nợ, và một khách hàng lớn chịu phần lớn rủi ro.",
+      "text_markdown": "Năm trăm năm mươi ba tỷ đô la cam kết, một trăm ba mươi bốn tỷ đô la nợ, và một khách hàng lớn chịu phần lớn rủi ro.",
+      "title": "",
+      "tts": {
+        "text": "Năm trăm năm mươi ba tỷ đô la cam kết, một trăm ba mươi bốn tỷ đô la nợ, và một khách hàng lớn chịu phần lớn rủi ro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Đó là cấu trúc của quá trình xây dựng trong một câu.",
+      "text_markdown": "Đó là cấu trúc của quá trình xây dựng trong một câu.",
+      "title": "",
+      "tts": {
+        "text": "Đó là cấu trúc của quá trình xây dựng trong một câu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Hãy chuyển sang so sánh giữa Hoa Kỳ và Trung Quốc.",
+      "text_markdown": "Hãy chuyển sang so sánh giữa Hoa Kỳ và Trung Quốc.",
+      "title": "",
+      "tts": {
+        "text": "Hãy chuyển sang so sánh giữa Hoa Kỳ và Trung Quốc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "Lời sáo rỗng là Trung Quốc đang chậm hơn vài tháng.",
+      "text_markdown": "Lời sáo rỗng là Trung Quốc đang chậm hơn vài tháng.",
+      "title": "",
+      "tts": {
+        "text": "Lời sáo rỗng là Trung Quốc đang chậm hơn vài tháng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "Lời sáo rỗng đó sai vì nó đo lường sai thứ.",
+      "text_markdown": "Lời sáo rỗng đó sai vì nó đo lường sai thứ.",
+      "title": "",
+      "tts": {
+        "text": "Lời sáo rỗng đó sai vì nó đo lường sai thứ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Vào thứ Hai, ngày 9 tháng 6, Bloomberg đưa tin về một dự thảo kế hoạch của Trung Quốc từ Ủy ban Cải cách và Phát triển Quốc gia — hai nghìn tỷ nhân dân tệ, tương đương khoảng 295 tỷ đô la, cho một mạng lưới trung tâm dữ liệu AI toàn quốc vào năm 2028.",
+      "text_markdown": "Vào thứ Hai, ngày 9 tháng 6, Bloomberg đưa tin về một dự thảo kế hoạch của Trung Quốc từ Ủy ban Cải cách và Phát triển Quốc gia — hai nghìn tỷ nhân dân tệ, tương đương khoảng 295 tỷ đô la, cho một mạng lưới trung tâm dữ liệu AI toàn quốc vào năm 2028.",
+      "title": "",
+      "tts": {
+        "text": "Vào thứ Hai, ngày mùng chín tháng sáu, Bloomberg đưa tin về một dự thảo kế hoạch của Trung Quốc từ Ủy ban Cải cách và Phát triển Quốc gia — hai nghìn tỷ nhân dân tệ, tương đương khoảng hai trăm chín mươi lăm tỷ đô la, cho một mạng lưới trung tâm dữ liệu AI toàn quốc vào năm hai không hai tám.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "Kế hoạch yêu cầu 80% silicon sản xuất trong nước và sẽ được vận hành như một mạng lưới điện toán liên kết bởi China Mobile và China Telecom.",
+      "text_markdown": "Kế hoạch yêu cầu 80% silicon sản xuất trong nước và sẽ được vận hành như một mạng lưới điện toán liên kết bởi China Mobile và China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Kế hoạch yêu cầu tám mươi phần trăm silicon sản xuất trong nước và sẽ được vận hành như một mạng lưới điện toán liên kết bởi China Mobile và China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "Và điểm mấu chốt của kế hoạch đó là gì.",
+      "text_markdown": "Và điểm mấu chốt của kế hoạch đó là gì.",
+      "title": "",
+      "tts": {
+        "text": "Và điểm mấu chốt của kế hoạch đó là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "Hai nghìn tỷ nhân dân tệ, 80% silicon sản xuất trong nước, thời hạn năm 2028 — và điểm mấu chốt là yếu tố hạn chế không phải là chip logic, mà là bộ nhớ băng thông cao (HBM).",
+      "text_markdown": "Hai nghìn tỷ nhân dân tệ, 80% silicon sản xuất trong nước, thời hạn năm 2028 — và điểm mấu chốt là yếu tố hạn chế không phải là chip logic, mà là bộ nhớ băng thông cao (HBM).",
+      "title": "",
+      "tts": {
+        "text": "Hai nghìn tỷ nhân dân tệ, tám mươi phần trăm silicon sản xuất trong nước, thời hạn năm hai không hai tám — và điểm mấu chốt là yếu tố hạn chế không phải là chip logic, mà là bộ nhớ băng thông cao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "Hãy giải thích rõ hơn về điều đó.",
+      "text_markdown": "Hãy giải thích rõ hơn về điều đó.",
+      "title": "",
+      "tts": {
+        "text": "Hãy giải thích rõ hơn về điều đó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Mọi bộ tăng tốc AI đều cần các chồng HBM được gắn chặt vào khuôn logic.",
+      "text_markdown": "Mọi bộ tăng tốc AI đều cần các chồng HBM được gắn chặt vào khuôn logic.",
+      "title": "",
+      "tts": {
+        "text": "Mọi bộ tăng tốc AI đều cần các chồng HBM được gắn chặt vào khuôn logic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "Không có HBM, con chip chỉ là một vật chặn giấy.",
+      "text_markdown": "Không có HBM, con chip chỉ là một vật chặn giấy.",
+      "title": "",
+      "tts": {
+        "text": "Không có HBM, con chip chỉ là một vật chặn giấy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "Trung Quốc đã tích trữ khoảng 13 triệu chồng HBM trước khi các biện pháp kiểm soát xuất khẩu được áp dụng — 11,4 triệu từ riêng Samsung.",
+      "text_markdown": "Trung Quốc đã tích trữ khoảng 13 triệu chồng HBM trước khi các biện pháp kiểm soát xuất khẩu được áp dụng — 11,4 triệu từ riêng Samsung.",
+      "title": "",
+      "tts": {
+        "text": "Trung Quốc đã tích trữ khoảng mười ba triệu chồng HBM trước khi các biện pháp kiểm soát xuất khẩu được áp dụng — mười một phẩy bốn triệu từ riêng Samsung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "Với tỷ lệ đóng gói của Huawei Ascend 910C, lượng dự trữ đó đủ cho khoảng 1,6 triệu chip.",
+      "text_markdown": "Với tỷ lệ đóng gói của Huawei Ascend 910C, lượng dự trữ đó đủ cho khoảng 1,6 triệu chip.",
+      "title": "",
+      "tts": {
+        "text": "Với tỷ lệ đóng gói của Huawei Ascend chín một không C, lượng dự trữ đó đủ cho khoảng một phẩy sáu triệu chip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "Và sau đó nguồn cung cạn kiệt.",
+      "text_markdown": "Và sau đó nguồn cung cạn kiệt.",
+      "title": "",
+      "tts": {
+        "text": "Và sau đó nguồn cung cạn kiệt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "Sau đó nguồn cung cạn kiệt — 13 triệu chồng HBM, đủ cho 1,6 triệu chip, và đó là giới hạn.",
+      "text_markdown": "Sau đó nguồn cung cạn kiệt — 13 triệu chồng HBM, đủ cho 1,6 triệu chip, và đó là giới hạn.",
+      "title": "",
+      "tts": {
+        "text": "Sau đó nguồn cung cạn kiệt — mười ba triệu chồng HBM, đủ cho một phẩy sáu triệu chip, và đó là giới hạn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "HBM nội địa Trung Quốc, từ CXMT, đang trên đà đạt khoảng 2 triệu chồng vào năm 2026 — đủ cho khoảng 250 đến 300 nghìn bộ tăng tốc.",
+      "text_markdown": "HBM nội địa Trung Quốc, từ CXMT, đang trên đà đạt khoảng 2 triệu chồng vào năm 2026 — đủ cho khoảng 250 đến 300 nghìn bộ tăng tốc.",
+      "title": "",
+      "tts": {
+        "text": "HBM nội địa Trung Quốc, từ CXMT, đang trên đà đạt khoảng hai triệu chồng vào năm hai không hai sáu — đủ cho khoảng hai trăm năm mươi đến ba trăm nghìn bộ tăng tốc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "Vậy kế hoạch silicon của Huawei trông như thế nào.",
+      "text_markdown": "Vậy kế hoạch silicon của Huawei trông như thế nào.",
+      "title": "",
+      "tts": {
+        "text": "Vậy kế hoạch silicon của Huawei trông như thế nào.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "Bloomberg, trích dẫn kế hoạch của Huawei, đặt sản lượng năm 2026 ở mức 600 nghìn chip 910C, với dòng sản phẩm Ascend rộng hơn đạt tổng cộng 1,6 triệu khuôn.",
+      "text_markdown": "Bloomberg, trích dẫn kế hoạch của Huawei, đặt sản lượng năm 2026 ở mức 600 nghìn chip 910C, với dòng sản phẩm Ascend rộng hơn đạt tổng cộng 1,6 triệu khuôn.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, trích dẫn kế hoạch của Huawei, đặt sản lượng năm hai không hai sáu ở mức sáu trăm nghìn chip chín một không C, với dòng sản phẩm Ascend rộng hơn đạt tổng cộng một phẩy sáu triệu khuôn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "Con số đó, sáu trăm nghìn, là mục tiêu, không phải sản lượng đã xuất xưởng.",
+      "text_markdown": "Con số đó, sáu trăm nghìn, là mục tiêu, không phải sản lượng đã xuất xưởng.",
+      "title": "",
+      "tts": {
+        "text": "Con số đó, sáu trăm nghìn, là mục tiêu, không phải sản lượng đã xuất xưởng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "Và riêng biệt, trước khi các biện pháp kiểm soát xuất khẩu cắt đứt nguồn cung, Huawei đã tích lũy hơn 2,9 triệu khuôn Ascend được sản xuất tại TSMC thông qua các công ty vỏ bọc Sophgo và Bitmain.",
+      "text_markdown": "Và riêng biệt, trước khi các biện pháp kiểm soát xuất khẩu cắt đứt nguồn cung, Huawei đã tích lũy hơn 2,9 triệu khuôn Ascend được sản xuất tại TSMC thông qua các công ty vỏ bọc Sophgo và Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "Và riêng biệt, trước khi các biện pháp kiểm soát xuất khẩu cắt đứt nguồn cung, Huawei đã tích lũy hơn hai phẩy chín triệu khuôn Ascend được sản xuất tại TSMC thông qua các công ty vỏ bọc Sophgo và Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "Luận điểm cho rằng các biện pháp kiểm soát xuất khẩu có hiệu quả có một lỗ hổng 2,9 triệu khuôn.",
+      "text_markdown": "Luận điểm cho rằng các biện pháp kiểm soát xuất khẩu có hiệu quả có một lỗ hổng 2,9 triệu khuôn.",
+      "title": "",
+      "tts": {
+        "text": "Luận điểm cho rằng các biện pháp kiểm soát xuất khẩu có hiệu quả có một lỗ hổng hai phẩy chín triệu khuôn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "Hãy điểm qua các tiêu đề, nhanh chóng.",
+      "text_markdown": "Hãy điểm qua các tiêu đề, nhanh chóng.",
+      "title": "",
+      "tts": {
+        "text": "Hãy điểm qua các tiêu đề, nhanh chóng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "Tiêu đề đầu tiên tuần này, Broadcom.",
+      "text_markdown": "Tiêu đề đầu tiên tuần này, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề đầu tiên tuần này, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "Vốn hóa thị trường của Broadcom hiện vào khoảng hai nghìn tỷ đô la.",
+      "text_markdown": "Vốn hóa thị trường của Broadcom hiện vào khoảng hai nghìn tỷ đô la.",
+      "title": "",
+      "tts": {
+        "text": "Vốn hóa thị trường của Broadcom hiện vào khoảng hai nghìn tỷ đô la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "CEO của họ, Hock Tan, đã nhắc lại mục tiêu doanh thu bán dẫn AI 100 tỷ đô la cho năm tài chính 2027 trong cuộc họp công bố thu nhập ngày 3 tháng 6, được hỗ trợ bởi khoảng 73 tỷ đô la tồn đọng AI và các thỏa thuận dài hạn với Alphabet và Meta kéo dài đến năm 2031.",
+      "text_markdown": "CEO của họ, Hock Tan, đã nhắc lại mục tiêu doanh thu bán dẫn AI 100 tỷ đô la cho năm tài chính 2027 trong cuộc họp công bố thu nhập ngày 3 tháng 6, được hỗ trợ bởi khoảng 73 tỷ đô la tồn đọng AI và các thỏa thuận dài hạn với Alphabet và Meta kéo dài đến năm 2031.",
+      "title": "",
+      "tts": {
+        "text": "CEO của họ, Hock Tan, đã nhắc lại mục tiêu doanh thu bán dẫn AI một trăm tỷ đô la cho năm tài chính hai không hai bảy trong cuộc họp công bố thu nhập ngày mùng ba tháng sáu, được hỗ trợ bởi khoảng bảy mươi ba tỷ đô la tồn đọng AI và các thỏa thuận dài hạn với Alphabet và Meta kéo dài đến năm hai không ba mốt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "Vốn hóa thị trường hai nghìn tỷ đô la, mục tiêu doanh thu AI một trăm tỷ đô la, hầu như không có nhận diện thương hiệu bán lẻ.",
+      "text_markdown": "Vốn hóa thị trường hai nghìn tỷ đô la, mục tiêu doanh thu AI một trăm tỷ đô la, hầu như không có nhận diện thương hiệu bán lẻ.",
+      "title": "",
+      "tts": {
+        "text": "Vốn hóa thị trường hai nghìn tỷ đô la, mục tiêu doanh thu AI một trăm tỷ đô la, hầu như không có nhận diện thương hiệu bán lẻ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "Tiêu đề thứ hai tuần này, ASML.",
+      "text_markdown": "Tiêu đề thứ hai tuần này, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề thứ hai tuần này, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "ASML, công ty Hà Lan chuyên sản xuất các máy quang khắc mà tất cả các công nghệ logic tiên tiến đều phụ thuộc vào, bán hệ thống High-N.A. EUV của mình với giá khoảng 370 triệu đô la.",
+      "text_markdown": "ASML, công ty Hà Lan chuyên sản xuất các máy quang khắc mà tất cả các công nghệ logic tiên tiến đều phụ thuộc vào, bán hệ thống High-N.A. EUV của mình với giá khoảng 370 triệu đô la.",
+      "title": "",
+      "tts": {
+        "text": "ASML, công ty Hà Lan chuyên sản xuất các máy quang khắc mà tất cả các công nghệ logic tiên tiến đều phụ thuộc vào, bán hệ thống High N.A. E U V của mình với giá khoảng ba trăm bảy mươi triệu đô la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "Năng lực sản xuất toàn cầu chưa đến 20 đơn vị mỗi năm.",
+      "text_markdown": "Năng lực sản xuất toàn cầu chưa đến 20 đơn vị mỗi năm.",
+      "title": "",
+      "tts": {
+        "text": "Năng lực sản xuất toàn cầu chưa đến hai mươi đơn vị mỗi năm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "370 triệu đô la một máy, chưa đến 20 máy mỗi năm, chỉ một công ty sản xuất chúng — đó mới là nút thắt cổ chai thực sự đối với silicon toàn cầu, chứ không phải chính sách.",
+      "text_markdown": "370 triệu đô la một máy, chưa đến 20 máy mỗi năm, chỉ một công ty sản xuất chúng — đó mới là nút thắt cổ chai thực sự đối với silicon toàn cầu, chứ không phải chính sách.",
+      "title": "",
+      "tts": {
+        "text": "Ba trăm bảy mươi triệu đô la một máy, chưa đến hai mươi máy mỗi năm, chỉ một công ty sản xuất chúng — đó mới là nút thắt cổ chai thực sự đối với silicon toàn cầu, chứ không phải chính sách.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "Tiêu đề thứ ba tuần này, kiểm soát xuất khẩu.",
+      "text_markdown": "Tiêu đề thứ ba tuần này, kiểm soát xuất khẩu.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề thứ ba tuần này, kiểm soát xuất khẩu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "Bộ Thương mại đã bãi bỏ Quy tắc Phổ biến AI thời Biden vào ngày 13 tháng 5 năm 2025, và không ban hành hướng dẫn thực thi B.I.S. mới cho đến ngày 31 tháng 5 năm 2026.",
+      "text_markdown": "Bộ Thương mại đã bãi bỏ Quy tắc Phổ biến AI thời Biden vào ngày 13 tháng 5 năm 2025, và không ban hành hướng dẫn thực thi B.I.S. mới cho đến ngày 31 tháng 5 năm 2026.",
+      "title": "",
+      "tts": {
+        "text": "Bộ Thương mại đã bãi bỏ Quy tắc Phổ biến AI thời Biden vào ngày mười ba tháng năm, năm hai không hai lăm, và không ban hành hướng dẫn thực thi B I S mới cho đến ngày ba mươi mốt tháng năm, năm hai không hai sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "Đó là một khoảng thời gian kéo dài khoảng một năm mà các yêu cầu cấp phép không được thực thi một cách tích cực.",
+      "text_markdown": "Đó là một khoảng thời gian kéo dài khoảng một năm mà các yêu cầu cấp phép không được thực thi một cách tích cực.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một khoảng thời gian kéo dài khoảng một năm mà các yêu cầu cấp phép không được thực thi một cách tích cực.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "Vậy hãy đếm số ngày.",
+      "text_markdown": "Vậy hãy đếm số ngày.",
+      "title": "",
+      "tts": {
+        "text": "Vậy hãy đếm số ngày.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "Bảy mươi hai giờ để đóng cửa một mô hình của Hoa Kỳ, ba trăm tám mươi ngày để thực thi một quy tắc xuất khẩu chip — sự bất đối xứng đó chính là vấn đề.",
+      "text_markdown": "Bảy mươi hai giờ để đóng cửa một mô hình của Hoa Kỳ, ba trăm tám mươi ngày để thực thi một quy tắc xuất khẩu chip — sự bất đối xứng đó chính là vấn đề.",
+      "title": "",
+      "tts": {
+        "text": "Bảy mươi hai giờ để đóng cửa một mô hình của Hoa Kỳ, ba trăm tám mươi ngày để thực thi một quy tắc xuất khẩu chip — sự bất đối xứng đó chính là vấn đề.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "Và những con chip đó đã đi đâu trong ba trăm tám mươi ngày đó.",
+      "text_markdown": "Và những con chip đó đã đi đâu trong ba trăm tám mươi ngày đó.",
+      "title": "",
+      "tts": {
+        "text": "Và những con chip đó đã đi đâu trong ba trăm tám mươi ngày đó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "Đông Nam Á là nơi hầu hết chúng đã đến.",
+      "text_markdown": "Đông Nam Á là nơi hầu hết chúng đã đến.",
+      "title": "",
+      "tts": {
+        "text": "Đông Nam Á là nơi hầu hết chúng đã đến.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "Bộ Tư pháp đã công bố các bản cáo trạng vào cuối tháng 3, cáo buộc rằng các chip Nvidia H một trăm và A một trăm đã được chuyển qua các trung gian của Malaysia và Singapore.",
+      "text_markdown": "Bộ Tư pháp đã công bố các bản cáo trạng vào cuối tháng 3, cáo buộc rằng các chip Nvidia H một trăm và A một trăm đã được chuyển qua các trung gian của Malaysia và Singapore.",
+      "title": "",
+      "tts": {
+        "text": "Bộ Tư pháp đã công bố các bản cáo trạng vào cuối tháng Ba, cáo buộc rằng các chip Nvidia H một trăm và A một trăm đã được chuyển qua các trung gian của Malaysia và Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "Fortune đã công bố các tin nhắn được mã hóa vào tháng 5 cho thấy hoạt động hậu cần, và Super Micro bị liên lụy trong một vụ án công ty ma trị giá hai tỷ rưỡi đô la.",
+      "text_markdown": "Fortune đã công bố các tin nhắn được mã hóa vào tháng 5 cho thấy hoạt động hậu cần, và Super Micro bị liên lụy trong một vụ án công ty ma trị giá hai tỷ rưỡi đô la.",
+      "title": "",
+      "tts": {
+        "text": "Fortune đã công bố các tin nhắn được mã hóa vào tháng Năm cho thấy hoạt động hậu cần, và Super Micro bị liên lụy trong một vụ án công ty ma trị giá hai tỷ rưỡi đô la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "Chính quyền Trump được cho là đang soạn thảo các biện pháp hạn chế xuất khẩu chip mới nhắm cụ thể vào Malaysia và Thái Lan.",
+      "text_markdown": "Chính quyền Trump được cho là đang soạn thảo các biện pháp hạn chế xuất khẩu chip mới nhắm cụ thể vào Malaysia và Thái Lan.",
+      "title": "",
+      "tts": {
+        "text": "Chính quyền Trump được cho là đang soạn thảo các biện pháp hạn chế xuất khẩu chip mới nhắm cụ thể vào Malaysia và Thái Lan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "Vậy bức tranh tóm gọn trong một câu.",
+      "text_markdown": "Vậy bức tranh tóm gọn trong một câu.",
+      "title": "",
+      "tts": {
+        "text": "Vậy bức tranh tóm gọn trong một câu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "Các con chip không bay đến Thâm Quyến — chúng bay đến Penang và Singapore trước.",
+      "text_markdown": "Các con chip không bay đến Thâm Quyến — chúng bay đến Penang và Singapore trước.",
+      "title": "",
+      "tts": {
+        "text": "Các con chip không bay đến Thâm Quyến — chúng bay đến Penang và Singapore trước.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "Khái niệm của tuần — Nghĩa vụ Thực hiện Còn lại.",
+      "text_markdown": "Khái niệm của tuần — Nghĩa vụ Thực hiện Còn lại.",
+      "title": "",
+      "tts": {
+        "text": "Khái niệm của tuần — Nghĩa vụ Thực hiện Còn lại.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "R.P.O. là một khoản mục kế toán ghi lại giá trị đô la của các hợp đồng mà một công ty đã ký nhưng chưa thực hiện.",
+      "text_markdown": "R.P.O. là một khoản mục kế toán ghi lại giá trị đô la của các hợp đồng mà một công ty đã ký nhưng chưa thực hiện.",
+      "title": "",
+      "tts": {
+        "text": "Rờ Pờ O là một khoản mục kế toán ghi lại giá trị đô la của các hợp đồng mà một công ty đã ký nhưng chưa thực hiện.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "Nó mang tính dự báo — nó cho bạn biết về doanh thu trong tương lai, chứ không phải tiền trong ngân hàng hôm nay.",
+      "text_markdown": "Nó mang tính dự báo — nó cho bạn biết về doanh thu trong tương lai, chứ không phải tiền trong ngân hàng hôm nay.",
+      "title": "",
+      "tts": {
+        "text": "Nó mang tính dự báo — nó cho bạn biết về doanh thu trong tương lai, chứ không phải tiền trong ngân hàng hôm nay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "Và tại sao điều đó lại quan trọng đối với Oracle.",
+      "text_markdown": "Và tại sao điều đó lại quan trọng đối với Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Và tại sao điều đó lại quan trọng đối với Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "Bởi vì năm trăm năm mươi ba tỷ đô la R.P.O., tập trung nặng nề vào một khách hàng cho một dự án xây dựng, có nghĩa là Oracle đã hứa sẽ cung cấp một lượng lớn năng lực tính toán trong vài năm tới cho một khách hàng mà mô hình doanh thu của chính họ vẫn đang được tranh cãi.",
+      "text_markdown": "Bởi vì năm trăm năm mươi ba tỷ đô la R.P.O., tập trung nặng nề vào một khách hàng cho một dự án xây dựng, có nghĩa là Oracle đã hứa sẽ cung cấp một lượng lớn năng lực tính toán trong vài năm tới cho một khách hàng mà mô hình doanh thu của chính họ vẫn đang được tranh cãi.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì năm trăm năm mươi ba tỷ đô la Rờ Pờ O, tập trung nặng nề vào một khách hàng cho một dự án xây dựng, có nghĩa là Oracle đã hứa sẽ cung cấp một lượng lớn năng lực tính toán trong vài năm tới cho một khách hàng mà mô hình doanh thu của chính họ vẫn đang được tranh cãi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "Nếu những hợp đồng đó được thực hiện, Oracle sẽ có thương vụ của thập kỷ.",
+      "text_markdown": "Nếu những hợp đồng đó được thực hiện, Oracle sẽ có thương vụ của thập kỷ.",
+      "title": "",
+      "tts": {
+        "text": "Nếu những hợp đồng đó được thực hiện, Oracle sẽ có thương vụ của thập kỷ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "Nếu chúng bị chậm trễ — hoặc được đàm phán lại — Oracle sẽ phải gánh nợ trong khi các hợp đồng bị thu hẹp.",
+      "text_markdown": "Nếu chúng bị chậm trễ — hoặc được đàm phán lại — Oracle sẽ phải gánh nợ trong khi các hợp đồng bị thu hẹp.",
+      "title": "",
+      "tts": {
+        "text": "Nếu chúng bị chậm trễ — hoặc được đàm phán lại — Oracle sẽ phải gánh nợ trong khi các hợp đồng bị thu hẹp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "Vì vậy, khi bạn thấy một con số R.P.O. trong một hồ sơ công nghệ.",
+      "text_markdown": "Vì vậy, khi bạn thấy một con số R.P.O. trong một hồ sơ công nghệ.",
+      "title": "",
+      "tts": {
+        "text": "Vì vậy, khi bạn thấy một con số Rờ Pờ O trong một hồ sơ công nghệ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "Hãy đọc xem khách hàng là ai, mức độ tập trung của các nghĩa vụ như thế nào, và điều gì sẽ phải xảy ra để công ty thực sự thực hiện chúng.",
+      "text_markdown": "Hãy đọc xem khách hàng là ai, mức độ tập trung của các nghĩa vụ như thế nào, và điều gì sẽ phải xảy ra để công ty thực sự thực hiện chúng.",
+      "title": "",
+      "tts": {
+        "text": "Hãy đọc xem khách hàng là ai, mức độ tập trung của các nghĩa vụ như thế nào, và điều gì sẽ phải xảy ra để công ty thực sự thực hiện chúng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "R.P.O. là nơi những người chịu thiệt hại xuất hiện trong các chú thích.",
+      "text_markdown": "R.P.O. là nơi những người chịu thiệt hại xuất hiện trong các chú thích.",
+      "title": "",
+      "tts": {
+        "text": "Rờ Pờ O là nơi những người chịu thiệt hại xuất hiện trong các chú thích.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "Một điểm dừng chân tốt.",
+      "text_markdown": "Một điểm dừng chân tốt.",
+      "title": "",
+      "tts": {
+        "text": "Một điểm dừng chân tốt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "Ron, cảm ơn bạn đã tóm tắt.",
+      "text_markdown": "Ron, cảm ơn bạn đã tóm tắt.",
+      "title": "",
+      "tts": {
+        "text": "Ron, cảm ơn bạn đã tóm tắt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+      "text_markdown": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "Đó là AI Tuần Này cho ngày hai mươi mốt tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+      "text_markdown": "Đó là AI Tuần Này cho ngày hai mươi mốt tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+      "title": "",
+      "tts": {
+        "text": "Đó là AI Tuần Này cho ngày hai mươi mốt tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "Tuần tới, quay lại với nhịp điệu của các mô hình mã nguồn mở và phòng thí nghiệm nhỏ.",
+      "text_markdown": "Tuần tới, quay lại với nhịp điệu của các mô hình mã nguồn mở và phòng thí nghiệm nhỏ.",
+      "title": "",
+      "tts": {
+        "text": "Tuần tới, quay lại với nhịp điệu của các mô hình mã nguồn mở và phòng thí nghiệm nhỏ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+      "text_markdown": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+      "title": "",
+      "tts": {
+        "text": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

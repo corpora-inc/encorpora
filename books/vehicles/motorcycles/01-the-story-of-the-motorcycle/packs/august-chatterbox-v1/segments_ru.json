@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "ru",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Слово к читателю",
+      "text_markdown": "Слово к читателю"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это история мотоцикла.",
+      "text_markdown": "Это история мотоцикла.",
+      "tts": {
+        "text": "Это история мотоцикла.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это правдивая история.",
+      "text_markdown": "Это правдивая история.",
+      "tts": {
+        "text": "Это правдивая история.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Давным-давно ни у кого не было мотоцикла.",
+      "text_markdown": "Давным-давно ни у кого не было мотоцикла.",
+      "tts": {
+        "text": "Давным давно ни у кого не было мотоцикла.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сейчас их миллионы.",
+      "text_markdown": "Сейчас их миллионы.",
+      "tts": {
+        "text": "Сейчас их миллионы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они громкие, быстрые и блестящие.",
+      "text_markdown": "Они громкие, быстрые и блестящие.",
+      "tts": {
+        "text": "Они громкие, быстрые и блестящие.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мы начнём с самого начала.",
+      "text_markdown": "Мы начнём с самого начала.",
+      "tts": {
+        "text": "Мы начнём с самого начала.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Мы встретим первого изобретателя, первых ездоков и первые гонки.",
+      "text_markdown": "Мы встретим первого изобретателя, первых ездоков и первые гонки.",
+      "tts": {
+        "text": "Мы встретим первого изобретателя, первых ездоков и первые гонки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом посмотрим на мир сегодня.",
+      "text_markdown": "Потом посмотрим на мир сегодня.",
+      "tts": {
+        "text": "Потом посмотрим на мир сегодня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Слово к читателю",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "К концу ты узнаешь, как эта маленькая машина навсегда изменила дорогу.",
+      "text_markdown": "К концу ты узнаешь, как эта маленькая машина навсегда изменила дорогу.",
+      "tts": {
+        "text": "К концу ты узнаешь, как эта маленькая машина навсегда изменила дорогу.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава первая — Первый двухколёсный, который сказал врум",
+      "text_markdown": "Глава первая — Первый двухколёсный, который сказал врум"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мотоцикл — это велосипед с мотором.",
+      "text_markdown": "Мотоцикл — это велосипед с мотором.",
+      "tts": {
+        "text": "Мотоцикл, это велосипед с мотором.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Мотор крутит колёса.",
+      "text_markdown": "Мотор крутит колёса.",
+      "tts": {
+        "text": "Мотор крутит колёса.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ездоку не надо крутить педали.",
+      "text_markdown": "Ездоку не надо крутить педали.",
+      "tts": {
+        "text": "Ездоку не надо крутить педали.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Давным-давно мотоциклов не было.",
+      "text_markdown": "Давным-давно мотоциклов не было.",
+      "tts": {
+        "text": "Давным давно мотоциклов не было.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Люди ездили на лошадях.",
+      "text_markdown": "Люди ездили на лошадях.",
+      "tts": {
+        "text": "Люди ездили на лошадях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Люди ездили на велосипедах.",
+      "text_markdown": "Люди ездили на велосипедах.",
+      "tts": {
+        "text": "Люди ездили на велосипедах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "У велосипеда два колеса и нет мотора.",
+      "text_markdown": "У велосипеда два колеса и нет мотора.",
+      "tts": {
+        "text": "У велосипеда два колеса и нет мотора.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Надо крутить педали ногами.",
+      "text_markdown": "Надо крутить педали ногами.",
+      "tts": {
+        "text": "Надо крутить педали ногами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тысяча восемьсот восемьдесят пятом году у одного человека в Германии появилась большая идея.",
+      "text_markdown": "В тысяча восемьсот восемьдесят пятом году у одного человека в Германии появилась большая идея.",
+      "tts": {
+        "text": "В тысяча восемьсот восемьдесят пятом году у одного человека в Германии появилась большая идея.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его звали Готлиб Даймлер.",
+      "text_markdown": "Его звали Готлиб Даймлер.",
+      "tts": {
+        "text": "Его звали Готлиб Даймлер.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он взял маленький бензиновый мотор и поставил его на деревянный велосипед.",
+      "text_markdown": "Он взял маленький бензиновый мотор и поставил его на деревянный велосипед.",
+      "tts": {
+        "text": "Он взял маленький бензиновый мотор и поставил его на деревянный велосипед.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Свою машину он назвал Райтваген.",
+      "text_markdown": "Свою машину он назвал Райтваген.",
+      "tts": {
+        "text": "Свою машину он назвал Райтваген.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это слово на немецком значит «повозка для езды».",
+      "text_markdown": "Это слово на немецком значит «повозка для езды».",
+      "tts": {
+        "text": "Это слово на немецком значит повозка для езды.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это был первый мотоцикл в мире.",
+      "text_markdown": "Это был первый мотоцикл в мире.",
+      "tts": {
+        "text": "Это был первый мотоцикл в мире.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Райтваген был громким.",
+      "text_markdown": "Райтваген был громким.",
+      "tts": {
+        "text": "Райтваген был громким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он трясся.",
+      "text_markdown": "Он трясся.",
+      "tts": {
+        "text": "Он трясся.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "У него была только одна скорость.",
+      "text_markdown": "У него была только одна скорость.",
+      "tts": {
+        "text": "У него была только одна скорость.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он мог ехать примерно семь миль в час.",
+      "text_markdown": "Он мог ехать примерно семь миль в час.",
+      "tts": {
+        "text": "Он мог ехать примерно семь миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Это медленнее, чем человек на велосипеде сегодня.",
+      "text_markdown": "Это медленнее, чем человек на велосипеде сегодня.",
+      "tts": {
+        "text": "Это медленнее, чем человек на велосипеде сегодня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Но он мог ехать без лошади и мог ехать без педалей.",
+      "text_markdown": "Но он мог ехать без лошади и мог ехать без педалей.",
+      "tts": {
+        "text": "Но он мог ехать без лошади и мог ехать без педалей.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава первая — Первый двухколёсный, который сказал врум",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мотоцикл родился.",
+      "text_markdown": "Мотоцикл родился.",
+      "tts": {
+        "text": "Мотоцикл родился.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава вторая — Первые компании",
+      "text_markdown": "Глава вторая — Первые компании"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После Даймлера и другие захотели делать мотоциклы.",
+      "text_markdown": "После Даймлера и другие захотели делать мотоциклы.",
+      "tts": {
+        "text": "После Даймлера и другие захотели делать мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Скоро по всему миру открылись маленькие мастерские.",
+      "text_markdown": "Скоро по всему миру открылись маленькие мастерские.",
+      "tts": {
+        "text": "Скоро по всему миру открылись маленькие мастерские.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Англии человек по имени Зигфрид Беттманн основал компанию Триумф.",
+      "text_markdown": "В Англии человек по имени Зигфрид Беттманн основал компанию Триумф.",
+      "tts": {
+        "text": "В Англии человек по имени Зигфрид Беттманн основал компанию Триумф.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Первый мотоцикл Триумф был построен в тысяча девятьсот втором году.",
+      "text_markdown": "Первый мотоцикл Триумф был построен в тысяча девятьсот втором году.",
+      "tts": {
+        "text": "Первый мотоцикл Триумф был построен в тысяча девятьсот втором году.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Америке два друга по имени Уильям Харли и Артур Дэвидсон построили свой первый мотоцикл в маленьком деревянном сарае.",
+      "text_markdown": "В Америке два друга по имени Уильям Харли и Артур Дэвидсон построили свой первый мотоцикл в маленьком деревянном сарае.",
+      "tts": {
+        "text": "В Америке два друга по имени Уильям Харли и Артур Дэвидсон построили свой первый мотоцикл в маленьком деревянном сарае.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сарай был в городе Милуоки.",
+      "text_markdown": "Сарай был в городе Милуоки.",
+      "tts": {
+        "text": "Сарай был в городе Милуоки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Шёл тысяча девятьсот третий год.",
+      "text_markdown": "Шёл тысяча девятьсот третий год.",
+      "tts": {
+        "text": "Шёл тысяча девятьсот третий год.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они назвали компанию Харли-Дэвидсон.",
+      "text_markdown": "Они назвали компанию Харли-Дэвидсон.",
+      "tts": {
+        "text": "Они назвали компанию Харли Дэвидсон.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ещё одна американская компания появилась чуть раньше.",
+      "text_markdown": "Ещё одна американская компания появилась чуть раньше.",
+      "tts": {
+        "text": "Ещё одна американская компания появилась чуть раньше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Двое мужчин в Спрингфилде, штат Массачусетс, построили свою первую машину в тысяча девятьсот первом году.",
+      "text_markdown": "Двое мужчин в Спрингфилде, штат Массачусетс, построили свою первую машину в тысяча девятьсот первом году.",
+      "tts": {
+        "text": "Двое мужчин в Спрингфилде, штат Массачусетс, построили свою первую машину в тысяча девятьсот первом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они назвали её Индиан.",
+      "text_markdown": "Они назвали её Индиан.",
+      "tts": {
+        "text": "Они назвали её Индиан.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Индии компания Ройял Энфилд тоже начала делать мотоциклы в тысяча девятьсот первом году.",
+      "text_markdown": "В Индии компания Ройял Энфилд тоже начала делать мотоциклы в тысяча девятьсот первом году.",
+      "tts": {
+        "text": "В Индии компания Ройял Энфилд тоже начала делать мотоциклы в тысяча девятьсот первом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сегодня Ройял Энфилд — самая старая мотоциклетная компания в мире, которая всё ещё делает мотоциклы.",
+      "text_markdown": "Сегодня Ройял Энфилд — самая старая мотоциклетная компания в мире, которая всё ещё делает мотоциклы.",
+      "tts": {
+        "text": "Сегодня Ройял Энфилд, это самая старая мотоциклетная компания в мире, которая всё ещё делает мотоциклы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Германии компания БМВ начала делать мотоциклы немного позже, в тысяча девятьсот двадцать третьем году.",
+      "text_markdown": "В Германии компания БМВ начала делать мотоциклы немного позже, в тысяча девятьсот двадцать третьем году.",
+      "tts": {
+        "text": "В Германии компания Бэ Эм Вэ начала делать мотоциклы немного позже, в тысяча девятьсот двадцать третьем году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "БМВ значит «Баварские моторные заводы» по-немецки.",
+      "text_markdown": "БМВ значит «Баварские моторные заводы» по-немецки.",
+      "tts": {
+        "text": "Бэ Эм Вэ значит Баварские моторные заводы по немецки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "К тысяча девятьсот десятому году мотоциклы были повсюду.",
+      "text_markdown": "К тысяча девятьсот десятому году мотоциклы были повсюду.",
+      "tts": {
+        "text": "К тысяча девятьсот десятому году мотоциклы были повсюду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они ездили по городским улицам и сельским дорогам.",
+      "text_markdown": "Они ездили по городским улицам и сельским дорогам.",
+      "tts": {
+        "text": "Они ездили по городским улицам и сельским дорогам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава вторая — Первые компании",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Век мотоцикла по-настоящему начался.",
+      "text_markdown": "Век мотоцикла по-настоящему начался.",
+      "tts": {
+        "text": "Век мотоцикла по настоящему начался.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава третья — Мотоциклы идут на войну",
+      "text_markdown": "Глава третья — Мотоциклы идут на войну"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мотоциклы быстрые.",
+      "text_markdown": "Мотоциклы быстрые.",
+      "tts": {
+        "text": "Мотоциклы быстрые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они помещаются на узких тропах.",
+      "text_markdown": "Они помещаются на узких тропах.",
+      "tts": {
+        "text": "Они помещаются на узких тропах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они могут возить сообщения между лагерями.",
+      "text_markdown": "Они могут возить сообщения между лагерями.",
+      "tts": {
+        "text": "Они могут возить сообщения между лагерями.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Поэтому, когда пришли войны, армиям понадобились мотоциклы.",
+      "text_markdown": "Поэтому, когда пришли войны, армиям понадобились мотоциклы.",
+      "tts": {
+        "text": "Поэтому, когда пришли войны, армиям понадобились мотоциклы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первая мировая война началась в тысяча девятьсот четырнадцатом году.",
+      "text_markdown": "Первая мировая война началась в тысяча девятьсот четырнадцатом году.",
+      "tts": {
+        "text": "Первая мировая война началась в тысяча девятьсот четырнадцатом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Солдаты возили приказы на мотоциклах Триумф.",
+      "text_markdown": "Солдаты возили приказы на мотоциклах Триумф.",
+      "tts": {
+        "text": "Солдаты возили приказы на мотоциклах Триумф.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Триумф Модель Аш был крепким и тихим.",
+      "text_markdown": "Триумф Модель Аш был крепким и тихим.",
+      "tts": {
+        "text": "Триумф Модель Аш был крепким и тихим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он мог проехать там, где не могли лошади.",
+      "text_markdown": "Он мог проехать там, где не могли лошади.",
+      "tts": {
+        "text": "Он мог проехать там, где не могли лошади.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вторая мировая война началась в тысяча девятьсот тридцать девятом году.",
+      "text_markdown": "Вторая мировая война началась в тысяча девятьсот тридцать девятом году.",
+      "tts": {
+        "text": "Вторая мировая война началась в тысяча девятьсот тридцать девятом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "К тому времени мотоциклы стали быстрее и крепче.",
+      "text_markdown": "К тому времени мотоциклы стали быстрее и крепче.",
+      "tts": {
+        "text": "К тому времени мотоциклы стали быстрее и крепче.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Американские солдаты ездили на Харли-Дэвидсон Вэ Эль А.",
+      "text_markdown": "Американские солдаты ездили на Харли-Дэвидсон Вэ Эль А.",
+      "tts": {
+        "text": "Американские солдаты ездили на Харли Дэвидсон Вэ Эль А.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Немецкие солдаты ездили на БМВ Эр семьдесят пять.",
+      "text_markdown": "Немецкие солдаты ездили на БМВ Эр семьдесят пять.",
+      "tts": {
+        "text": "Немецкие солдаты ездили на Бэ Эм Вэ Эр семьдесят пять.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "У Эр семьдесят пять была коляска с третьим колесом и сиденьем для ещё одного солдата.",
+      "text_markdown": "У Эр семьдесят пять была коляска с третьим колесом и сиденьем для ещё одного солдата.",
+      "tts": {
+        "text": "У Эр семьдесят пять была коляска с третьим колесом и сиденьем для ещё одного солдата.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После войны солдаты вернулись домой.",
+      "text_markdown": "После войны солдаты вернулись домой.",
+      "tts": {
+        "text": "После войны солдаты вернулись домой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они привезли с собой свои мотоциклы.",
+      "text_markdown": "Они привезли с собой свои мотоциклы.",
+      "tts": {
+        "text": "Они привезли с собой свои мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Многие хотели продолжать кататься.",
+      "text_markdown": "Многие хотели продолжать кататься.",
+      "tts": {
+        "text": "Многие хотели продолжать кататься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Некоторые из них основали свои мотоклубы.",
+      "text_markdown": "Некоторые из них основали свои мотоклубы.",
+      "tts": {
+        "text": "Некоторые из них основали свои мотоклубы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Войны прославили мотоцикл.",
+      "text_markdown": "Войны прославили мотоцикл.",
+      "tts": {
+        "text": "Войны прославили мотоцикл.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Миллионы людей увидели его впервые.",
+      "text_markdown": "Миллионы людей увидели его впервые.",
+      "tts": {
+        "text": "Миллионы людей увидели его впервые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава третья — Мотоциклы идут на войну",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Многие захотели иметь свой собственный.",
+      "text_markdown": "Многие захотели иметь свой собственный.",
+      "tts": {
+        "text": "Многие захотели иметь свой собственный.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава четвёртая — Подъём Японии",
+      "text_markdown": "Глава четвёртая — Подъём Японии"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После Второй мировой войны Япония была бедной.",
+      "text_markdown": "После Второй мировой войны Япония была бедной.",
+      "tts": {
+        "text": "После Второй мировой войны Япония была бедной.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Большинство машин были слишком дорогими.",
+      "text_markdown": "Большинство машин были слишком дорогими.",
+      "tts": {
+        "text": "Большинство машин были слишком дорогими.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Людям нужен был маленький, дешёвый способ передвигаться.",
+      "text_markdown": "Людям нужен был маленький, дешёвый способ передвигаться.",
+      "tts": {
+        "text": "Людям нужен был маленький, дешёвый способ передвигаться.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Один молодой японец увидел свой шанс.",
+      "text_markdown": "Один молодой японец увидел свой шанс.",
+      "tts": {
+        "text": "Один молодой японец увидел свой шанс.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его звали Соитиро Хонда.",
+      "text_markdown": "Его звали Соитиро Хонда.",
+      "tts": {
+        "text": "Его звали Соитиро Хонда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он основал маленькую компанию в тысяча девятьсот сорок восьмом году.",
+      "text_markdown": "Он основал маленькую компанию в тысяча девятьсот сорок восьмом году.",
+      "tts": {
+        "text": "Он основал маленькую компанию в тысяча девятьсот сорок восьмом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он назвал её Хонда.",
+      "text_markdown": "Он назвал её Хонда.",
+      "tts": {
+        "text": "Он назвал её Хонда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тысяча девятьсот пятьдесят восьмом году Хонда построила крошечный мотоцикл под названием Супер Каб.",
+      "text_markdown": "В тысяча девятьсот пятьдесят восьмом году Хонда построила крошечный мотоцикл под названием Супер Каб.",
+      "tts": {
+        "text": "В тысяча девятьсот пятьдесят восьмом году Хонда построила крошечный мотоцикл под названием Супер Каб.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "На Супер Каб было легко ездить.",
+      "text_markdown": "На Супер Каб было легко ездить.",
+      "tts": {
+        "text": "На Супер Каб было легко ездить.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Его было легко чинить.",
+      "text_markdown": "Его было легко чинить.",
+      "tts": {
+        "text": "Его было легко чинить.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он был очень, очень дешёвым.",
+      "text_markdown": "Он был очень, очень дешёвым.",
+      "tts": {
+        "text": "Он был очень, очень дешёвым.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди по всему миру покупали Супер Каб.",
+      "text_markdown": "Люди по всему миру покупали Супер Каб.",
+      "tts": {
+        "text": "Люди по всему миру покупали Супер Каб.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сегодня продано больше ста миллионов Супер Кабов.",
+      "text_markdown": "Сегодня продано больше ста миллионов Супер Кабов.",
+      "tts": {
+        "text": "Сегодня продано больше ста миллионов Супер Кабов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это самая продаваемая моторная машина за всё время.",
+      "text_markdown": "Это самая продаваемая моторная машина за всё время.",
+      "tts": {
+        "text": "Это самая продаваемая моторная машина за всё время.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Скоро ещё три японские компании последовали за Хондой.",
+      "text_markdown": "Скоро ещё три японские компании последовали за Хондой.",
+      "tts": {
+        "text": "Скоро ещё три японские компании последовали за Хондой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это были Ямаха, Сузуки и Кавасаки.",
+      "text_markdown": "Это были Ямаха, Сузуки и Кавасаки.",
+      "tts": {
+        "text": "Это были Ямаха, Сузуки и Кавасаки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Вместе с Хондой их называют «Большая четвёрка».",
+      "text_markdown": "Вместе с Хондой их называют «Большая четвёрка».",
+      "tts": {
+        "text": "Вместе с Хондой их называют Большая четвёрка.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большая четвёрка делала мотоциклы быстрые, дешёвые и простые в управлении.",
+      "text_markdown": "Большая четвёрка делала мотоциклы быстрые, дешёвые и простые в управлении.",
+      "tts": {
+        "text": "Большая четвёрка делала мотоциклы быстрые, дешёвые и простые в управлении.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "К шестидесятым годам японские мотоциклы были повсюду.",
+      "text_markdown": "К шестидесятым годам японские мотоциклы были повсюду.",
+      "tts": {
+        "text": "К шестидесятым годам японские мотоциклы были повсюду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава четвёртая — Подъём Японии",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они были новыми королями дороги.",
+      "text_markdown": "Они были новыми королями дороги.",
+      "tts": {
+        "text": "Они были новыми королями дороги.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава пятая — Быстрее, быстрее, быстрее",
+      "text_markdown": "Глава пятая — Быстрее, быстрее, быстрее"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В шестидесятые годы ездоки хотели ездить быстрее.",
+      "text_markdown": "В шестидесятые годы ездоки хотели ездить быстрее.",
+      "tts": {
+        "text": "В шестидесятые годы ездоки хотели ездить быстрее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Производители начали гонку, чтобы сделать самый быстрый мотоцикл в мире.",
+      "text_markdown": "Производители начали гонку, чтобы сделать самый быстрый мотоцикл в мире.",
+      "tts": {
+        "text": "Производители начали гонку, чтобы сделать самый быстрый мотоцикл в мире.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Италии маленькая компания Эм Вэ Агуста делала красивые красные мотоциклы, которые выигрывали гонку за гонкой.",
+      "text_markdown": "В Италии маленькая компания Эм Вэ Агуста делала красивые красные мотоциклы, которые выигрывали гонку за гонкой.",
+      "tts": {
+        "text": "В Италии маленькая компания Эм Вэ Агуста делала красивые красные мотоциклы, которые выигрывали гонку за гонкой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В Англии Триумф и Нортон тоже делали мощные машины.",
+      "text_markdown": "В Англии Триумф и Нортон тоже делали мощные машины.",
+      "tts": {
+        "text": "В Англии Триумф и Нортон тоже делали мощные машины.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А потом, в тысяча девятьсот шестьдесят девятом году, Хонда сделала кое-что удивительное.",
+      "text_markdown": "А потом, в тысяча девятьсот шестьдесят девятом году, Хонда сделала кое-что удивительное.",
+      "tts": {
+        "text": "А потом, в тысяча девятьсот шестьдесят девятом году, Хонда сделала кое что удивительное.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они построили мотоцикл под названием Си Би семьсот пятьдесят.",
+      "text_markdown": "Они построили мотоцикл под названием Си Би семьсот пятьдесят.",
+      "tts": {
+        "text": "Они построили мотоцикл под названием Си Би семьсот пятьдесят.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "У него было четыре цилиндра и большой двигатель.",
+      "text_markdown": "У него было четыре цилиндра и большой двигатель.",
+      "tts": {
+        "text": "У него было четыре цилиндра и большой двигатель.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он мог ехать больше ста двадцати миль в час.",
+      "text_markdown": "Он мог ехать больше ста двадцати миль в час.",
+      "tts": {
+        "text": "Он мог ехать больше ста двадцати миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Это был первый настоящий супербайк.",
+      "text_markdown": "Это был первый настоящий супербайк.",
+      "tts": {
+        "text": "Это был первый настоящий супербайк.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После Си Би семьсот пятьдесят каждая компания захотела построить супербайк.",
+      "text_markdown": "После Си Би семьсот пятьдесят каждая компания захотела построить супербайк.",
+      "tts": {
+        "text": "После Си Би семьсот пятьдесят каждая компания захотела построить супербайк.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Мотоциклы становились всё быстрее и быстрее.",
+      "text_markdown": "Мотоциклы становились всё быстрее и быстрее.",
+      "tts": {
+        "text": "Мотоциклы становились всё быстрее и быстрее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Скоро у них появились яркие обтекатели — гладкие пластиковые щиты, которые рассекают ветер.",
+      "text_markdown": "Скоро у них появились яркие обтекатели — гладкие пластиковые щиты, которые рассекают ветер.",
+      "tts": {
+        "text": "Скоро у них появились яркие обтекатели, гладкие пластиковые щиты, которые рассекают ветер.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тысяча девятьсот девяностом году японский мотоцикл Кавасаки Зэт Икс одиннадцать стал самым быстрым мотоциклом в мире.",
+      "text_markdown": "В тысяча девятьсот девяностом году японский мотоцикл Кавасаки Зэт Икс одиннадцать стал самым быстрым мотоциклом в мире.",
+      "tts": {
+        "text": "В тысяча девятьсот девяностом году японский мотоцикл Кавасаки Зэт Икс одиннадцать стал самым быстрым мотоциклом в мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он мог ехать почти сто семьдесят пять миль в час.",
+      "text_markdown": "Он мог ехать почти сто семьдесят пять миль в час.",
+      "tts": {
+        "text": "Он мог ехать почти сто семьдесят пять миль в час.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Несколько лет спустя Сузуки Хаябуса поехал ещё быстрее.",
+      "text_markdown": "Несколько лет спустя Сузуки Хаябуса поехал ещё быстрее.",
+      "tts": {
+        "text": "Несколько лет спустя Сузуки Хаябуса поехал ещё быстрее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он развил сто девяносто четыре мили в час.",
+      "text_markdown": "Он развил сто девяносто четыре мили в час.",
+      "tts": {
+        "text": "Он развил сто девяносто четыре мили в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава пятая — Быстрее, быстрее, быстрее",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это быстрее, чем большинство машин на дороге сегодня.",
+      "text_markdown": "Это быстрее, чем большинство машин на дороге сегодня.",
+      "tts": {
+        "text": "Это быстрее, чем большинство машин на дороге сегодня.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава шестая — Много видов мотоциклов",
+      "text_markdown": "Глава шестая — Много видов мотоциклов"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня мотоциклы бывают разных форм.",
+      "text_markdown": "Сегодня мотоциклы бывают разных форм.",
+      "tts": {
+        "text": "Сегодня мотоциклы бывают разных форм.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждый вид сделан для своей работы.",
+      "text_markdown": "Каждый вид сделан для своей работы.",
+      "tts": {
+        "text": "Каждый вид сделан для своей работы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Спортбайк сделан, чтобы ехать очень быстро.",
+      "text_markdown": "Спортбайк сделан, чтобы ехать очень быстро.",
+      "tts": {
+        "text": "Спортбайк сделан, чтобы ехать очень быстро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он лёгкий и низкий.",
+      "text_markdown": "Он лёгкий и низкий.",
+      "tts": {
+        "text": "Он лёгкий и низкий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ездок наклоняется вперёд.",
+      "text_markdown": "Ездок наклоняется вперёд.",
+      "tts": {
+        "text": "Ездок наклоняется вперёд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Спортбайки сделаны для гладких дорог и гоночных трасс.",
+      "text_markdown": "Спортбайки сделаны для гладких дорог и гоночных трасс.",
+      "tts": {
+        "text": "Спортбайки сделаны для гладких дорог и гоночных трасс.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Кроссовый мотоцикл сделан для грязи и пыли.",
+      "text_markdown": "Кроссовый мотоцикл сделан для грязи и пыли.",
+      "tts": {
+        "text": "Кроссовый мотоцикл сделан для грязи и пыли.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У него высокие колёса и большие шины.",
+      "text_markdown": "У него высокие колёса и большие шины.",
+      "tts": {
+        "text": "У него высокие колёса и большие шины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Кроссовые мотоциклы могут прыгать через холмы.",
+      "text_markdown": "Кроссовые мотоциклы могут прыгать через холмы.",
+      "tts": {
+        "text": "Кроссовые мотоциклы могут прыгать через холмы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Многие молодые ездоки сначала учатся на кроссовых мотоциклах.",
+      "text_markdown": "Многие молодые ездоки сначала учатся на кроссовых мотоциклах.",
+      "tts": {
+        "text": "Многие молодые ездоки сначала учатся на кроссовых мотоциклах.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Круизер длинный и низкий.",
+      "text_markdown": "Круизер длинный и низкий.",
+      "tts": {
+        "text": "Круизер длинный и низкий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ездок сидит прямо и едет медленно.",
+      "text_markdown": "Ездок сидит прямо и едет медленно.",
+      "tts": {
+        "text": "Ездок сидит прямо и едет медленно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Харли-Дэвидсон знаменит своими круизерами.",
+      "text_markdown": "Харли-Дэвидсон знаменит своими круизерами.",
+      "tts": {
+        "text": "Харли Дэвидсон знаменит своими круизерами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Индиан тоже.",
+      "text_markdown": "Индиан тоже.",
+      "tts": {
+        "text": "Индиан тоже.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Туристический эндуро сделан для долгих путешествий.",
+      "text_markdown": "Туристический эндуро сделан для долгих путешествий.",
+      "tts": {
+        "text": "Туристический эндуро сделан для долгих путешествий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он может ехать по дорогам и по бездорожью.",
+      "text_markdown": "Он может ехать по дорогам и по бездорожью.",
+      "tts": {
+        "text": "Он может ехать по дорогам и по бездорожью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "БМВ Джи Эс — знаменитый туристический эндуро.",
+      "text_markdown": "БМВ Джи Эс — знаменитый туристический эндуро.",
+      "tts": {
+        "text": "Бэ Эм Вэ Джи Эс, знаменитый туристический эндуро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И Ка Тэ Эм тоже.",
+      "text_markdown": "И Ка Тэ Эм тоже.",
+      "tts": {
+        "text": "И Ка Тэ Эм тоже.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть ещё чопперы, скутеры, гоночные мотоциклы и электрические мотоциклы.",
+      "text_markdown": "Есть ещё чопперы, скутеры, гоночные мотоциклы и электрические мотоциклы.",
+      "tts": {
+        "text": "Есть ещё чопперы, скутеры, гоночные мотоциклы и электрические мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Есть мотоцикл почти для каждой дороги.",
+      "text_markdown": "Есть мотоцикл почти для каждой дороги.",
+      "tts": {
+        "text": "Есть мотоцикл почти для каждой дороги.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава шестая — Много видов мотоциклов",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня мотоцикл можно найти в каждой стране мира.",
+      "text_markdown": "Сегодня мотоцикл можно найти в каждой стране мира.",
+      "tts": {
+        "text": "Сегодня мотоцикл можно найти в каждой стране мира.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава седьмая — Новая дорога",
+      "text_markdown": "Глава седьмая — Новая дорога"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня у мотоцикла есть новый вид мотора.",
+      "text_markdown": "Сегодня у мотоцикла есть новый вид мотора.",
+      "tts": {
+        "text": "Сегодня у мотоцикла есть новый вид мотора.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это электрический мотор.",
+      "text_markdown": "Это электрический мотор.",
+      "tts": {
+        "text": "Это электрический мотор.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Электрический мотоцикл тихий.",
+      "text_markdown": "Электрический мотоцикл тихий.",
+      "tts": {
+        "text": "Электрический мотоцикл тихий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ему не нужен бензин.",
+      "text_markdown": "Ему не нужен бензин.",
+      "tts": {
+        "text": "Ему не нужен бензин.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Его просто нужно подключить к зарядке, как телефон.",
+      "text_markdown": "Его просто нужно подключить к зарядке, как телефон.",
+      "tts": {
+        "text": "Его просто нужно подключить к зарядке, как телефон.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Компания Зеро делает электрические мотоциклы в Калифорнии.",
+      "text_markdown": "Компания Зеро делает электрические мотоциклы в Калифорнии.",
+      "tts": {
+        "text": "Компания Зеро делает электрические мотоциклы в Калифорнии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Харли-Дэвидсон теперь делает электрический мотоцикл под названием ЛайвВайр.",
+      "text_markdown": "Харли-Дэвидсон теперь делает электрический мотоцикл под названием ЛайвВайр.",
+      "tts": {
+        "text": "Харли Дэвидсон теперь делает электрический мотоцикл под названием ЛайвВайр.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Итальянская компания Энерджика делает электрические гоночные мотоциклы.",
+      "text_markdown": "Итальянская компания Энерджика делает электрические гоночные мотоциклы.",
+      "tts": {
+        "text": "Итальянская компания Энерджика делает электрические гоночные мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они очень быстрые.",
+      "text_markdown": "Они очень быстрые.",
+      "tts": {
+        "text": "Они очень быстрые.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первый мотоцикл, Райтваген, мог ехать семь миль в час.",
+      "text_markdown": "Первый мотоцикл, Райтваген, мог ехать семь миль в час.",
+      "tts": {
+        "text": "Первый мотоцикл, Райтваген, мог ехать семь миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сегодняшние электрические мотоциклы могут ехать больше двухсот миль в час.",
+      "text_markdown": "Сегодняшние электрические мотоциклы могут ехать больше двухсот миль в час.",
+      "tts": {
+        "text": "Сегодняшние электрические мотоциклы могут ехать больше двухсот миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Вот история мотоцикла на сегодня.",
+      "text_markdown": "Вот история мотоцикла на сегодня.",
+      "tts": {
+        "text": "Вот история мотоцикла на сегодня.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это была большая история.",
+      "text_markdown": "Это была большая история.",
+      "tts": {
+        "text": "Это была большая история.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Следующие одиннадцать книг расскажут маленькие истории.",
+      "text_markdown": "Следующие одиннадцать книг расскажут маленькие истории.",
+      "tts": {
+        "text": "Следующие одиннадцать книг расскажут маленькие истории.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Каждая о своей части мотоциклетного мира.",
+      "text_markdown": "Каждая о своей части мотоциклетного мира.",
+      "tts": {
+        "text": "Каждая о своей части мотоциклетного мира.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Том второй — про Харли-Дэвидсон.",
+      "text_markdown": "Том второй — про Харли-Дэвидсон.",
+      "tts": {
+        "text": "Том второй, про Харли Дэвидсон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Том третий — про Хонду.",
+      "text_markdown": "Том третий — про Хонду.",
+      "tts": {
+        "text": "Том третий, про Хонду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Том четвёртый — про Дукати из Италии.",
+      "text_markdown": "Том четвёртый — про Дукати из Италии.",
+      "tts": {
+        "text": "Том четвёртый, про Дукати из Италии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Том пятый — про БМВ из Германии.",
+      "text_markdown": "Том пятый — про БМВ из Германии.",
+      "tts": {
+        "text": "Том пятый, про Бэ Эм Вэ из Германии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Том шестой — про Триумф из Англии.",
+      "text_markdown": "Том шестой — про Триумф из Англии.",
+      "tts": {
+        "text": "Том шестой, про Триумф из Англии.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Том седьмой — про кроссовые мотоциклы.",
+      "text_markdown": "Том седьмой — про кроссовые мотоциклы.",
+      "tts": {
+        "text": "Том седьмой, про кроссовые мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Том восьмой — про спортбайки.",
+      "text_markdown": "Том восьмой — про спортбайки.",
+      "tts": {
+        "text": "Том восьмой, про спортбайки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Том девятый — про круизеры и чопперы.",
+      "text_markdown": "Том девятый — про круизеры и чопперы.",
+      "tts": {
+        "text": "Том девятый, про круизеры и чопперы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Том десятый — про туристические эндуро.",
+      "text_markdown": "Том десятый — про туристические эндуро.",
+      "tts": {
+        "text": "Том десятый, про туристические эндуро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Том одиннадцатый — про гонки.",
+      "text_markdown": "Том одиннадцатый — про гонки.",
+      "tts": {
+        "text": "Том одиннадцатый, про гонки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Том двенадцатый — про электрические мотоциклы и будущее.",
+      "text_markdown": "Том двенадцатый — про электрические мотоциклы и будущее.",
+      "tts": {
+        "text": "Том двенадцатый, про электрические мотоциклы и будущее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Выбери тот, который кажется самым интересным.",
+      "text_markdown": "Выбери тот, который кажется самым интересным.",
+      "tts": {
+        "text": "Выбери тот, который кажется самым интересным.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава седьмая — Новая дорога",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "И поехали с нами!",
+      "text_markdown": "И поехали с нами!",
+      "tts": {
+        "text": "И поехали с нами!",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Об этой книге",
+      "text_markdown": "Об этой книге"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это первая книга в серии «Мотоциклы».",
+      "text_markdown": "Это первая книга в серии «Мотоциклы».",
+      "tts": {
+        "text": "Это первая книга в серии Мотоциклы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Её читает вслух Август.",
+      "text_markdown": "Её читает вслух Август.",
+      "tts": {
+        "text": "Её читает вслух Август.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Каждое предложение короткое и простое, чтобы ты мог читать вместе на любом языке.",
+      "text_markdown": "Каждое предложение короткое и простое, чтобы ты мог читать вместе на любом языке.",
+      "tts": {
+        "text": "Каждое предложение короткое и простое, чтобы ты мог читать вместе на любом языке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если ты хочешь услышать, как звучит предложение на другом языке, послушай ту же книгу на этом языке.",
+      "text_markdown": "Если ты хочешь услышать, как звучит предложение на другом языке, послушай ту же книгу на этом языке.",
+      "tts": {
+        "text": "Если ты хочешь услышать, как звучит предложение на другом языке, послушай ту же книгу на этом языке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Слова на странице будут совпадать с тем, что ты слышишь.",
+      "text_markdown": "Слова на странице будут совпадать с тем, что ты слышишь.",
+      "tts": {
+        "text": "Слова на странице будут совпадать с тем, что ты слышишь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Так ты учишься.",
+      "text_markdown": "Так ты учишься.",
+      "tts": {
+        "text": "Так ты учишься.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А теперь иди найди мотоцикл и послушай, как он говорит врум.",
+      "text_markdown": "А теперь иди найди мотоцикл и послушай, как он говорит врум.",
+      "tts": {
+        "text": "А теперь иди найди мотоцикл и послушай, как он говорит врум.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

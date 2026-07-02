@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Het tropisch regenwoud",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het tropisch regenwoud",
+      "text_markdown": "Het tropisch regenwoud"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar regenwouden groeien",
+      "text_markdown": "Waar regenwouden groeien"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in het tropisch regenwoud.",
+      "text_markdown": "Welkom in het tropisch regenwoud.",
+      "tts": {
+        "text": "Welkom in het tropisch regenwoud.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het tropisch regenwoud is het hele jaar warm.",
+      "text_markdown": "Het tropisch regenwoud is het hele jaar warm.",
+      "tts": {
+        "text": "Het tropisch regenwoud is het hele jaar warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is het hele jaar nat.",
+      "text_markdown": "Het is het hele jaar nat.",
+      "tts": {
+        "text": "Het is het hele jaar nat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het zit vol leven.",
+      "text_markdown": "Het zit vol leven.",
+      "tts": {
+        "text": "Het zit vol leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste regenwouden groeien dicht bij de evenaar.",
+      "text_markdown": "De meeste regenwouden groeien dicht bij de evenaar.",
+      "tts": {
+        "text": "De meeste regenwouden groeien dicht bij de evenaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De evenaar is de lijn die om het midden van de Aarde loopt.",
+      "text_markdown": "De evenaar is de lijn die om het midden van de Aarde loopt.",
+      "tts": {
+        "text": "De evenaar is de lijn die om het midden van de Aarde loopt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dicht bij de evenaar is de zon elke dag sterk.",
+      "text_markdown": "Dicht bij de evenaar is de zon elke dag sterk.",
+      "tts": {
+        "text": "Dicht bij de evenaar is de zon elke dag sterk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste regenwoud ter wereld is het Amazonewoud, in Zuid-Amerika.",
+      "text_markdown": "Het grootste regenwoud ter wereld is het Amazonewoud, in Zuid-Amerika.",
+      "tts": {
+        "text": "Het grootste regenwoud ter wereld is het Amazonewoud, in Zuid Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn ook grote regenwouden in Afrika, bij de rivier de Congo.",
+      "text_markdown": "Er zijn ook grote regenwouden in Afrika, bij de rivier de Congo.",
+      "tts": {
+        "text": "Er zijn ook grote regenwouden in Afrika, bij de rivier de Congo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn regenwouden in Zuidoost-Azië, op veel eilanden.",
+      "text_markdown": "Er zijn regenwouden in Zuidoost-Azië, op veel eilanden.",
+      "tts": {
+        "text": "Er zijn regenwouden in Zuidoost Azië, op veel eilanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn kleinere regenwouden in Midden-Amerika en op eilanden in de Stille Oceaan.",
+      "text_markdown": "Er zijn kleinere regenwouden in Midden-Amerika en op eilanden in de Stille Oceaan.",
+      "tts": {
+        "text": "Er zijn kleinere regenwouden in Midden Amerika en op eilanden in de Stille Oceaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+      "text_markdown": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+      "tts": {
+        "text": "Elk van deze bossen is op zichzelf gegroeid, ver van de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+      "text_markdown": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+      "tts": {
+        "text": "Daarom zijn de planten en dieren in elk deel van de wereld anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een aap in het Amazonewoud is niet hetzelfde als een aap in Afrika of Azië.",
+      "text_markdown": "Een aap in het Amazonewoud is niet hetzelfde als een aap in Afrika of Azië.",
+      "tts": {
+        "text": "Een aap in het Amazonewoud is niet hetzelfde als een aap in Afrika of Azië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze horen allemaal bij hetzelfde bioom.",
+      "text_markdown": "Maar ze horen allemaal bij hetzelfde bioom.",
+      "tts": {
+        "text": "Maar ze horen allemaal bij hetzelfde bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je in een regenwoud staat, voelt de lucht zwaar en warm.",
+      "text_markdown": "Als je in een regenwoud staat, voelt de lucht zwaar en warm.",
+      "tts": {
+        "text": "Als je in een regenwoud staat, voelt de lucht zwaar en warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het licht is zacht en groen.",
+      "text_markdown": "Het licht is zacht en groen.",
+      "tts": {
+        "text": "Het licht is zacht en groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen zijn zo hoog dat je de lucht nauwelijks kunt zien.",
+      "text_markdown": "De bomen zijn zo hoog dat je de lucht nauwelijks kunt zien.",
+      "tts": {
+        "text": "De bomen zijn zo hoog dat je de lucht nauwelijks kunt zien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort overal om je heen vogels en insecten.",
+      "text_markdown": "Je hoort overal om je heen vogels en insecten.",
+      "tts": {
+        "text": "Je hoort overal om je heen vogels en insecten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort water van de bladeren druppelen.",
+      "text_markdown": "Je hoort water van de bladeren druppelen.",
+      "tts": {
+        "text": "Je hoort water van de bladeren druppelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je voelt je alsof je binnen in een levende kamer staat.",
+      "text_markdown": "Je voelt je alsof je binnen in een levende kamer staat.",
+      "tts": {
+        "text": "Je voelt je alsof je binnen in een levende kamer staat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is wat het regenwoud is.",
+      "text_markdown": "Dat is wat het regenwoud is.",
+      "tts": {
+        "text": "Dat is wat het regenwoud is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Waar regenwouden groeien",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een hele wereld, gebouwd van bomen en regen.",
+      "text_markdown": "Een hele wereld, gebouwd van bomen en regen.",
+      "tts": {
+        "text": "Een hele wereld, gebouwd van bomen en regen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in het tropisch regenwoud is eenvoudig.",
+      "text_markdown": "Het weer in het tropisch regenwoud is eenvoudig.",
+      "tts": {
+        "text": "Het weer in het tropisch regenwoud is eenvoudig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is warm en het regent veel.",
+      "text_markdown": "Het is warm en het regent veel.",
+      "tts": {
+        "text": "Het is warm en het regent veel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De temperatuur blijft het hele jaar ongeveer hetzelfde.",
+      "text_markdown": "De temperatuur blijft het hele jaar ongeveer hetzelfde.",
+      "tts": {
+        "text": "De temperatuur blijft het hele jaar ongeveer hetzelfde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter wordt het niet koud.",
+      "text_markdown": "In de winter wordt het niet koud.",
+      "tts": {
+        "text": "In de winter wordt het niet koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer wordt het niet erg heet.",
+      "text_markdown": "In de zomer wordt het niet erg heet.",
+      "tts": {
+        "text": "In de zomer wordt het niet erg heet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste dagen zijn warm en rustig.",
+      "text_markdown": "De meeste dagen zijn warm en rustig.",
+      "tts": {
+        "text": "De meeste dagen zijn warm en rustig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het regent bijna elke dag.",
+      "text_markdown": "Het regent bijna elke dag.",
+      "tts": {
+        "text": "Het regent bijna elke dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken valt er meer dan twee meter regen per jaar.",
+      "text_markdown": "Op sommige plekken valt er meer dan twee meter regen per jaar.",
+      "tts": {
+        "text": "Op sommige plekken valt er meer dan twee meter regen per jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is meer regen dan de meeste delen van de wereld ooit zien.",
+      "text_markdown": "Dat is meer regen dan de meeste delen van de wereld ooit zien.",
+      "tts": {
+        "text": "Dat is meer regen dan de meeste delen van de wereld ooit zien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De regen komt vaak in de middag.",
+      "text_markdown": "De regen komt vaak in de middag.",
+      "tts": {
+        "text": "De regen komt vaak in de middag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grote wolken pakken zich samen boven de bomen.",
+      "text_markdown": "Grote wolken pakken zich samen boven de bomen.",
+      "tts": {
+        "text": "Grote wolken pakken zich samen boven de bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een zware bui valt een uur of twee lang.",
+      "text_markdown": "Een zware bui valt een uur of twee lang.",
+      "tts": {
+        "text": "Een zware bui valt een uur of twee lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komt de zon weer tevoorschijn.",
+      "text_markdown": "Dan komt de zon weer tevoorschijn.",
+      "tts": {
+        "text": "Dan komt de zon weer tevoorschijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bladeren glanzen en er stijgt damp op uit de grond.",
+      "text_markdown": "De bladeren glanzen en er stijgt damp op uit de grond.",
+      "tts": {
+        "text": "De bladeren glanzen en er stijgt damp op uit de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier bestaan geen vier seizoenen.",
+      "text_markdown": "Hier bestaan geen vier seizoenen.",
+      "tts": {
+        "text": "Hier bestaan geen vier seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is alleen een nattere tijd en een drogere tijd.",
+      "text_markdown": "Er is alleen een nattere tijd en een drogere tijd.",
+      "tts": {
+        "text": "Er is alleen een nattere tijd en een drogere tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zelfs in de drogere tijd regent het nog vaak.",
+      "text_markdown": "Zelfs in de drogere tijd regent het nog vaak.",
+      "tts": {
+        "text": "Zelfs in de drogere tijd regent het nog vaak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor de planten en dieren van het regenwoud voelt elke dag bijna hetzelfde.",
+      "text_markdown": "Voor de planten en dieren van het regenwoud voelt elke dag bijna hetzelfde.",
+      "tts": {
+        "text": "Voor de planten en dieren van het regenwoud voelt elke dag bijna hetzelfde.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bodem van het regenwoud zit vol leven, maar de aarde is dun.",
+      "text_markdown": "De bodem van het regenwoud zit vol leven, maar de aarde is dun.",
+      "tts": {
+        "text": "De bodem van het regenwoud zit vol leven, maar de aarde is dun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het meeste voedsel zit in de bovenste paar centimeter.",
+      "text_markdown": "Het meeste voedsel zit in de bovenste paar centimeter.",
+      "tts": {
+        "text": "Het meeste voedsel zit in de bovenste paar centimeter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als er een blad valt, breken insecten en kleine levende dingen het heel snel af.",
+      "text_markdown": "Als er een blad valt, breken insecten en kleine levende dingen het heel snel af.",
+      "tts": {
+        "text": "Als er een blad valt, breken insecten en kleine levende dingen het heel snel af.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen pakken het voedsel meteen weer op.",
+      "text_markdown": "De bomen pakken het voedsel meteen weer op.",
+      "tts": {
+        "text": "De bomen pakken het voedsel meteen weer op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom is een gekapt regenwoud moeilijk terug te krijgen.",
+      "text_markdown": "Daarom is een gekapt regenwoud moeilijk terug te krijgen.",
+      "tts": {
+        "text": "Daarom is een gekapt regenwoud moeilijk terug te krijgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zonder de bomen spoelt de regen de dunne aarde weg.",
+      "text_markdown": "Zonder de bomen spoelt de regen de dunne aarde weg.",
+      "tts": {
+        "text": "Zonder de bomen spoelt de regen de dunne aarde weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Door elk regenwoud lopen rivieren.",
+      "text_markdown": "Door elk regenwoud lopen rivieren.",
+      "tts": {
+        "text": "Door elk regenwoud lopen rivieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige rivieren zijn enorm.",
+      "text_markdown": "Sommige rivieren zijn enorm.",
+      "tts": {
+        "text": "Sommige rivieren zijn enorm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Amazone draagt meer water dan elke andere rivier ter wereld.",
+      "text_markdown": "De Amazone draagt meer water dan elke andere rivier ter wereld.",
+      "tts": {
+        "text": "De Amazone draagt meer water dan elke andere rivier ter wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de natte tijd lopen de rivieren ver het bos in.",
+      "text_markdown": "In de natte tijd lopen de rivieren ver het bos in.",
+      "tts": {
+        "text": "In de natte tijd lopen de rivieren ver het bos in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen staan maandenlang in het water.",
+      "text_markdown": "De bomen staan maandenlang in het water.",
+      "tts": {
+        "text": "De bomen staan maandenlang in het water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissen glijden tussen de boomstammen door.",
+      "text_markdown": "Vissen glijden tussen de boomstammen door.",
+      "tts": {
+        "text": "Vissen glijden tussen de boomstammen door.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere rivieren zijn klein en helder, met stenen op de bodem.",
+      "text_markdown": "Andere rivieren zijn klein en helder, met stenen op de bodem.",
+      "tts": {
+        "text": "Andere rivieren zijn klein en helder, met stenen op de bodem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het bos zelf groeit in lagen.",
+      "text_markdown": "Het bos zelf groeit in lagen.",
+      "tts": {
+        "text": "Het bos zelf groeit in lagen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog boven staan de hoogste bomen, met hun kruinen wijd in de zon.",
+      "text_markdown": "Hoog boven staan de hoogste bomen, met hun kruinen wijd in de zon.",
+      "tts": {
+        "text": "Hoog boven staan de hoogste bomen, met hun kruinen wijd in de zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daaronder ligt een dik groen dak van bladeren.",
+      "text_markdown": "Daaronder ligt een dik groen dak van bladeren.",
+      "tts": {
+        "text": "Daaronder ligt een dik groen dak van bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onder dat dak is de lucht schaduwrijk en stil.",
+      "text_markdown": "Onder dat dak is de lucht schaduwrijk en stil.",
+      "tts": {
+        "text": "Onder dat dak is de lucht schaduwrijk en stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op de grond komt maar weinig licht door.",
+      "text_markdown": "Op de grond komt maar weinig licht door.",
+      "tts": {
+        "text": "Op de grond komt maar weinig licht door.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elke laag is een ander thuis voor de dieren en planten van het bioom.",
+      "text_markdown": "Elke laag is een ander thuis voor de dieren en planten van het bioom.",
+      "tts": {
+        "text": "Elke laag is een ander thuis voor de dieren en planten van het bioom.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het tropisch regenwoud heeft meer soorten planten dan welk ander bioom op het land ook.",
+      "text_markdown": "Het tropisch regenwoud heeft meer soorten planten dan welk ander bioom op het land ook.",
+      "tts": {
+        "text": "Het tropisch regenwoud heeft meer soorten planten dan welk ander bioom op het land ook.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen zijn het hart ervan.",
+      "text_markdown": "De bomen zijn het hart ervan.",
+      "tts": {
+        "text": "De bomen zijn het hart ervan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige bomen worden heel hoog en reiken naar de zon.",
+      "text_markdown": "Sommige bomen worden heel hoog en reiken naar de zon.",
+      "tts": {
+        "text": "Sommige bomen worden heel hoog en reiken naar de zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun stammen zijn recht en glad.",
+      "text_markdown": "Hun stammen zijn recht en glad.",
+      "tts": {
+        "text": "Hun stammen zijn recht en glad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun wortels spreiden zich wijd uit aan de voet, als muren, om ze rechtop te houden in de dunne aarde.",
+      "text_markdown": "Hun wortels spreiden zich wijd uit aan de voet, als muren, om ze rechtop te houden in de dunne aarde.",
+      "tts": {
+        "text": "Hun wortels spreiden zich wijd uit aan de voet, als muren, om ze rechtop te houden in de dunne aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klimplanten kruipen langs de stammen omhoog, naar het licht toe.",
+      "text_markdown": "Klimplanten kruipen langs de stammen omhoog, naar het licht toe.",
+      "tts": {
+        "text": "Klimplanten kruipen langs de stammen omhoog, naar het licht toe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige klimplanten zijn zo dik als je arm.",
+      "text_markdown": "Sommige klimplanten zijn zo dik als je arm.",
+      "tts": {
+        "text": "Sommige klimplanten zijn zo dik als je arm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze winden zich om de bomen en hangen omlaag uit de takken.",
+      "text_markdown": "Ze winden zich om de bomen en hangen omlaag uit de takken.",
+      "tts": {
+        "text": "Ze winden zich om de bomen en hangen omlaag uit de takken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er groeien planten op de bomen zelf, hoog in de lucht.",
+      "text_markdown": "Er groeien planten op de bomen zelf, hoog in de lucht.",
+      "tts": {
+        "text": "Er groeien planten op de bomen zelf, hoog in de lucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben helemaal geen wortels in de grond.",
+      "text_markdown": "Ze hebben helemaal geen wortels in de grond.",
+      "tts": {
+        "text": "Ze hebben helemaal geen wortels in de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze drinken de regen die langs de bast naar beneden loopt.",
+      "text_markdown": "Ze drinken de regen die langs de bast naar beneden loopt.",
+      "tts": {
+        "text": "Ze drinken de regen die langs de bast naar beneden loopt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op de donkere bosbodem groeien varens en zachte groene planten.",
+      "text_markdown": "Op de donkere bosbodem groeien varens en zachte groene planten.",
+      "tts": {
+        "text": "Op de donkere bosbodem groeien varens en zachte groene planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben brede, platte bladeren om elk druppeltje licht op te vangen.",
+      "text_markdown": "Ze hebben brede, platte bladeren om elk druppeltje licht op te vangen.",
+      "tts": {
+        "text": "Ze hebben brede, platte bladeren om elk druppeltje licht op te vangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er bloeien bloemen in elke kleur die je kunt bedenken.",
+      "text_markdown": "Er bloeien bloemen in elke kleur die je kunt bedenken.",
+      "tts": {
+        "text": "Er bloeien bloemen in elke kleur die je kunt bedenken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige zijn rood, sommige geel en sommige diep paars.",
+      "text_markdown": "Sommige zijn rood, sommige geel en sommige diep paars.",
+      "tts": {
+        "text": "Sommige zijn rood, sommige geel en sommige diep paars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel ervan gaan 's nachts open.",
+      "text_markdown": "Veel ervan gaan 's nachts open.",
+      "tts": {
+        "text": "Veel ervan gaan 's nachts open.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het hele jaar hangen er vruchten aan de takken.",
+      "text_markdown": "Het hele jaar hangen er vruchten aan de takken.",
+      "tts": {
+        "text": "Het hele jaar hangen er vruchten aan de takken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn zoete vruchten, zure vruchten en vruchten met harde schillen.",
+      "text_markdown": "Er zijn zoete vruchten, zure vruchten en vruchten met harde schillen.",
+      "tts": {
+        "text": "Er zijn zoete vruchten, zure vruchten en vruchten met harde schillen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van het eten dat we thuis eten, groeide eerst in het wild in regenwouden.",
+      "text_markdown": "Veel van het eten dat we thuis eten, groeide eerst in het wild in regenwouden.",
+      "tts": {
+        "text": "Veel van het eten dat we thuis eten, groeide eerst in het wild in regenwouden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cacao, de plant die ons chocolade geeft, kwam uit de regenwouden van Zuid-Amerika.",
+      "text_markdown": "Cacao, de plant die ons chocolade geeft, kwam uit de regenwouden van Zuid-Amerika.",
+      "tts": {
+        "text": "Cacao, de plant die ons chocolade geeft, kwam uit de regenwouden van Zuid Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste bananenplanten groeiden in de regenwouden van Zuidoost-Azië.",
+      "text_markdown": "De eerste bananenplanten groeiden in de regenwouden van Zuidoost-Azië.",
+      "tts": {
+        "text": "De eerste bananenplanten groeiden in de regenwouden van Zuidoost Azië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk gerecht dat we lekker vinden, heeft het verhaal van een bos ergens op Aarde.",
+      "text_markdown": "Elk gerecht dat we lekker vinden, heeft het verhaal van een bos ergens op Aarde.",
+      "tts": {
+        "text": "Elk gerecht dat we lekker vinden, heeft het verhaal van een bos ergens op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je naar een regenwoudplant kijkt, heeft die vaak een slimme manier gevonden om te leven.",
+      "text_markdown": "Als je naar een regenwoudplant kijkt, heeft die vaak een slimme manier gevonden om te leven.",
+      "tts": {
+        "text": "Als je naar een regenwoudplant kijkt, heeft die vaak een slimme manier gevonden om te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige bladeren hebben een lange punt aan het einde, zodat de regen er snel afloopt.",
+      "text_markdown": "Sommige bladeren hebben een lange punt aan het einde, zodat de regen er snel afloopt.",
+      "tts": {
+        "text": "Sommige bladeren hebben een lange punt aan het einde, zodat de regen er snel afloopt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige bloemen ruiken alleen 's nachts zoet, om het juiste insect te roepen.",
+      "text_markdown": "Sommige bloemen ruiken alleen 's nachts zoet, om het juiste insect te roepen.",
+      "tts": {
+        "text": "Sommige bloemen ruiken alleen 's nachts zoet, om het juiste insect te roepen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het hele bos is een stille machine, gemaakt van groen.",
+      "text_markdown": "Het hele bos is een stille machine, gemaakt van groen.",
+      "tts": {
+        "text": "Het hele bos is een stille machine, gemaakt van groen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het tropisch regenwoud leven meer soorten dieren dan ergens anders op het land.",
+      "text_markdown": "In het tropisch regenwoud leven meer soorten dieren dan ergens anders op het land.",
+      "tts": {
+        "text": "In het tropisch regenwoud leven meer soorten dieren dan ergens anders op het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste leven hoog in de bomen, niet op de grond.",
+      "text_markdown": "De meeste leven hoog in de bomen, niet op de grond.",
+      "tts": {
+        "text": "De meeste leven hoog in de bomen, niet op de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog in de bomen is meer eten en meer licht.",
+      "text_markdown": "Hoog in de bomen is meer eten en meer licht.",
+      "tts": {
+        "text": "Hoog in de bomen is meer eten en meer licht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In veel regenwouden leven apen.",
+      "text_markdown": "In veel regenwouden leven apen.",
+      "tts": {
+        "text": "In veel regenwouden leven apen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze springen van tak naar tak en roepen elkaar door de bomen heen.",
+      "text_markdown": "Ze springen van tak naar tak en roepen elkaar door de bomen heen.",
+      "tts": {
+        "text": "Ze springen van tak naar tak en roepen elkaar door de bomen heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de regenwouden van Zuid-Amerika hebben sommige apen lange staarten die ze gebruiken als een extra hand.",
+      "text_markdown": "In de regenwouden van Zuid-Amerika hebben sommige apen lange staarten die ze gebruiken als een extra hand.",
+      "tts": {
+        "text": "In de regenwouden van Zuid Amerika hebben sommige apen lange staarten die ze gebruiken als een extra hand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papegaaien en andere felgekleurde vogels vliegen tussen de hoge takken.",
+      "text_markdown": "Papegaaien en andere felgekleurde vogels vliegen tussen de hoge takken.",
+      "tts": {
+        "text": "Papegaaien en andere felgekleurde vogels vliegen tussen de hoge takken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze eten vruchten en zaden.",
+      "text_markdown": "Ze eten vruchten en zaden.",
+      "tts": {
+        "text": "Ze eten vruchten en zaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun veren zijn rood, groen, blauw en geel.",
+      "text_markdown": "Hun veren zijn rood, groen, blauw en geel.",
+      "tts": {
+        "text": "Hun veren zijn rood, groen, blauw en geel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In veel regenwouden jagen grote katten 's nachts op de grond.",
+      "text_markdown": "In veel regenwouden jagen grote katten 's nachts op de grond.",
+      "tts": {
+        "text": "In veel regenwouden jagen grote katten 's nachts op de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Amerika is deze kat de jaguar.",
+      "text_markdown": "In Amerika is deze kat de jaguar.",
+      "tts": {
+        "text": "In Amerika is deze kat de jaguar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Azië is het de tijger.",
+      "text_markdown": "In Azië is het de tijger.",
+      "tts": {
+        "text": "In Azië is het de tijger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika heeft de luipaard.",
+      "text_markdown": "Afrika heeft de luipaard.",
+      "tts": {
+        "text": "Afrika heeft de luipaard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze zijn allemaal sterk en stil, met vlekken of strepen op hun vacht.",
+      "text_markdown": "Ze zijn allemaal sterk en stil, met vlekken of strepen op hun vacht.",
+      "tts": {
+        "text": "Ze zijn allemaal sterk en stil, met vlekken of strepen op hun vacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slangen glijden door de bladeren en de bomen.",
+      "text_markdown": "Slangen glijden door de bladeren en de bomen.",
+      "tts": {
+        "text": "Slangen glijden door de bladeren en de bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige slangen zijn heel klein, en sommige zijn heel lang.",
+      "text_markdown": "Sommige slangen zijn heel klein, en sommige zijn heel lang.",
+      "tts": {
+        "text": "Sommige slangen zijn heel klein, en sommige zijn heel lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste zijn verlegen en blijven uit de buurt van mensen.",
+      "text_markdown": "De meeste zijn verlegen en blijven uit de buurt van mensen.",
+      "tts": {
+        "text": "De meeste zijn verlegen en blijven uit de buurt van mensen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kikkers zingen elke nacht, vooral na de regen.",
+      "text_markdown": "Kikkers zingen elke nacht, vooral na de regen.",
+      "tts": {
+        "text": "Kikkers zingen elke nacht, vooral na de regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige kikkers zijn heel klein en fel gekleurd.",
+      "text_markdown": "Sommige kikkers zijn heel klein en fel gekleurd.",
+      "tts": {
+        "text": "Sommige kikkers zijn heel klein en fel gekleurd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Felle kleuren waarschuwen andere dieren om ze niet op te eten.",
+      "text_markdown": "Felle kleuren waarschuwen andere dieren om ze niet op te eten.",
+      "tts": {
+        "text": "Felle kleuren waarschuwen andere dieren om ze niet op te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insecten vullen elke hoek van het bos.",
+      "text_markdown": "Insecten vullen elke hoek van het bos.",
+      "tts": {
+        "text": "Insecten vullen elke hoek van het bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het regenwoud zijn er meer insecten dan welk ander soort dier ook.",
+      "text_markdown": "In het regenwoud zijn er meer insecten dan welk ander soort dier ook.",
+      "tts": {
+        "text": "In het regenwoud zijn er meer insecten dan welk ander soort dier ook.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mieren lopen in lange rijen over de bosbodem.",
+      "text_markdown": "Mieren lopen in lange rijen over de bosbodem.",
+      "tts": {
+        "text": "Mieren lopen in lange rijen over de bosbodem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kevers klimmen langs de stammen omhoog.",
+      "text_markdown": "Kevers klimmen langs de stammen omhoog.",
+      "tts": {
+        "text": "Kevers klimmen langs de stammen omhoog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vlinders zweven door de lucht op brede, beschilderde vleugels.",
+      "text_markdown": "Vlinders zweven door de lucht op brede, beschilderde vleugels.",
+      "tts": {
+        "text": "Vlinders zweven door de lucht op brede, beschilderde vleugels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de rivieren leven vissen, in veel vormen en maten.",
+      "text_markdown": "In de rivieren leven vissen, in veel vormen en maten.",
+      "tts": {
+        "text": "In de rivieren leven vissen, in veel vormen en maten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige vissen zijn heel klein en zilver, en sommige zijn groter dan een kind.",
+      "text_markdown": "Sommige vissen zijn heel klein en zilver, en sommige zijn groter dan een kind.",
+      "tts": {
+        "text": "Sommige vissen zijn heel klein en zilver, en sommige zijn groter dan een kind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog boven dat alles zweven arenden over het groene dak van het bos.",
+      "text_markdown": "Hoog boven dat alles zweven arenden over het groene dak van het bos.",
+      "tts": {
+        "text": "Hoog boven dat alles zweven arenden over het groene dak van het bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kijken naar beweging beneden.",
+      "text_markdown": "Ze kijken naar beweging beneden.",
+      "tts": {
+        "text": "Ze kijken naar beweging beneden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vleermuizen vliegen bij zonsondergang naar buiten om vruchten en insecten te eten.",
+      "text_markdown": "Vleermuizen vliegen bij zonsondergang naar buiten om vruchten en insecten te eten.",
+      "tts": {
+        "text": "Vleermuizen vliegen bij zonsondergang naar buiten om vruchten en insecten te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In één boom in het regenwoud kun je meer soorten dieren vinden dan in een hele stad ergens anders.",
+      "text_markdown": "In één boom in het regenwoud kun je meer soorten dieren vinden dan in een hele stad ergens anders.",
+      "tts": {
+        "text": "In één boom in het regenwoud kun je meer soorten dieren vinden dan in een hele stad ergens anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het wonder van dit bioom.",
+      "text_markdown": "Dat is het wonder van dit bioom.",
+      "tts": {
+        "text": "Dat is het wonder van dit bioom.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen wonen al heel lang in het tropisch regenwoud.",
+      "text_markdown": "Mensen wonen al heel lang in het tropisch regenwoud.",
+      "tts": {
+        "text": "Mensen wonen al heel lang in het tropisch regenwoud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben geleerd hoe ze goed kunnen leven met de bomen, de regen en de dieren.",
+      "text_markdown": "Ze hebben geleerd hoe ze goed kunnen leven met de bomen, de regen en de dieren.",
+      "tts": {
+        "text": "Ze hebben geleerd hoe ze goed kunnen leven met de bomen, de regen en de dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel mensen van het regenwoud wonen in kleine dorpen.",
+      "text_markdown": "Veel mensen van het regenwoud wonen in kleine dorpen.",
+      "tts": {
+        "text": "Veel mensen van het regenwoud wonen in kleine dorpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De huizen staan vaak op hoge houten palen, om ze boven de natte grond te houden.",
+      "text_markdown": "De huizen staan vaak op hoge houten palen, om ze boven de natte grond te houden.",
+      "tts": {
+        "text": "De huizen staan vaak op hoge houten palen, om ze boven de natte grond te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De daken zijn gemaakt van bladeren, gelegd in dikke rijen.",
+      "text_markdown": "De daken zijn gemaakt van bladeren, gelegd in dikke rijen.",
+      "tts": {
+        "text": "De daken zijn gemaakt van bladeren, gelegd in dikke rijen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een goed bladerdak houdt de zware regen tegen.",
+      "text_markdown": "Een goed bladerdak houdt de zware regen tegen.",
+      "tts": {
+        "text": "Een goed bladerdak houdt de zware regen tegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De muren zijn vaak open, zodat de warme lucht erdoor kan.",
+      "text_markdown": "De muren zijn vaak open, zodat de warme lucht erdoor kan.",
+      "tts": {
+        "text": "De muren zijn vaak open, zodat de warme lucht erdoor kan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen vissen in de rivieren en halen eten uit het bos.",
+      "text_markdown": "De mensen vissen in de rivieren en halen eten uit het bos.",
+      "tts": {
+        "text": "De mensen vissen in de rivieren en halen eten uit het bos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze jagen op kleine dieren met bogen en speren.",
+      "text_markdown": "Ze jagen op kleine dieren met bogen en speren.",
+      "tts": {
+        "text": "Ze jagen op kleine dieren met bogen en speren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze verbouwen eten in kleine tuinen die uit het bos zijn vrijgemaakt.",
+      "text_markdown": "Ze verbouwen eten in kleine tuinen die uit het bos zijn vrijgemaakt.",
+      "tts": {
+        "text": "Ze verbouwen eten in kleine tuinen die uit het bos zijn vrijgemaakt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wat ze verbouwen hangt af van waar ze wonen.",
+      "text_markdown": "Wat ze verbouwen hangt af van waar ze wonen.",
+      "tts": {
+        "text": "Wat ze verbouwen hangt af van waar ze wonen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de regenwouden van Zuid-Amerika verbouwen mensen al duizenden jaren cassave en zoete aardappel.",
+      "text_markdown": "In de regenwouden van Zuid-Amerika verbouwen mensen al duizenden jaren cassave en zoete aardappel.",
+      "tts": {
+        "text": "In de regenwouden van Zuid Amerika verbouwen mensen al duizenden jaren cassave en zoete aardappel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de regenwouden van Afrika verbouwen mensen jam en palmvrucht.",
+      "text_markdown": "In de regenwouden van Afrika verbouwen mensen jam en palmvrucht.",
+      "tts": {
+        "text": "In de regenwouden van Afrika verbouwen mensen jam en palmvrucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de regenwouden van Zuidoost-Azië en de Stille Oceaan verbouwen mensen taro, rijst en broodvrucht.",
+      "text_markdown": "In de regenwouden van Zuidoost-Azië en de Stille Oceaan verbouwen mensen taro, rijst en broodvrucht.",
+      "tts": {
+        "text": "In de regenwouden van Zuidoost Azië en de Stille Oceaan verbouwen mensen taro, rijst en broodvrucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na een paar jaar laten ze de tuin weer bos worden, en maken ze ergens anders een nieuwe.",
+      "text_markdown": "Na een paar jaar laten ze de tuin weer bos worden, en maken ze ergens anders een nieuwe.",
+      "tts": {
+        "text": "Na een paar jaar laten ze de tuin weer bos worden, en maken ze ergens anders een nieuwe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zo blijft het bos gezond.",
+      "text_markdown": "Zo blijft het bos gezond.",
+      "tts": {
+        "text": "Zo blijft het bos gezond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen van het regenwoud kennen duizenden planten.",
+      "text_markdown": "De mensen van het regenwoud kennen duizenden planten.",
+      "tts": {
+        "text": "De mensen van het regenwoud kennen duizenden planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze weten welke eten geven, welke medicijn geven, en welke niet veilig zijn om te eten.",
+      "text_markdown": "Ze weten welke eten geven, welke medicijn geven, en welke niet veilig zijn om te eten.",
+      "tts": {
+        "text": "Ze weten welke eten geven, welke medicijn geven, en welke niet veilig zijn om te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leren de liedjes van de vogels.",
+      "text_markdown": "Ze leren de liedjes van de vogels.",
+      "tts": {
+        "text": "Ze leren de liedjes van de vogels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leren de sporen van de dieren.",
+      "text_markdown": "Ze leren de sporen van de dieren.",
+      "tts": {
+        "text": "Ze leren de sporen van de dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+      "text_markdown": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+      "tts": {
+        "text": "Deze kennis wordt jaar na jaar doorgegeven van ouders aan kinderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elk regenwoud heeft dit soort leven zijn eigen talen, zijn eigen verhalen en zijn eigen muziek.",
+      "text_markdown": "In elk regenwoud heeft dit soort leven zijn eigen talen, zijn eigen verhalen en zijn eigen muziek.",
+      "tts": {
+        "text": "In elk regenwoud heeft dit soort leven zijn eigen talen, zijn eigen verhalen en zijn eigen muziek.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het regenwoud vandaag",
+      "text_markdown": "Het regenwoud vandaag"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het tropisch regenwoud is een van de belangrijkste biomen op Aarde.",
+      "text_markdown": "Het tropisch regenwoud is een van de belangrijkste biomen op Aarde.",
+      "tts": {
+        "text": "Het tropisch regenwoud is een van de belangrijkste biomen op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen trekken water omhoog uit de grond en ademen het de lucht in.",
+      "text_markdown": "De bomen trekken water omhoog uit de grond en ademen het de lucht in.",
+      "tts": {
+        "text": "De bomen trekken water omhoog uit de grond en ademen het de lucht in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wolken die boven het bos ontstaan, brengen regen naar landen ver weg.",
+      "text_markdown": "De wolken die boven het bos ontstaan, brengen regen naar landen ver weg.",
+      "tts": {
+        "text": "De wolken die boven het bos ontstaan, brengen regen naar landen ver weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bomen ademen ook, maar andersom dan wij.",
+      "text_markdown": "De bomen ademen ook, maar andersom dan wij.",
+      "tts": {
+        "text": "De bomen ademen ook, maar andersom dan wij.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze nemen het gas op dat wij uitademen, en gebruiken het om te groeien.",
+      "text_markdown": "Ze nemen het gas op dat wij uitademen, en gebruiken het om te groeien.",
+      "tts": {
+        "text": "Ze nemen het gas op dat wij uitademen, en gebruiken het om te groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ze geven het gas terug dat wij inademen.",
+      "text_markdown": "En ze geven het gas terug dat wij inademen.",
+      "tts": {
+        "text": "En ze geven het gas terug dat wij inademen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het regenwoud is in gevaar.",
+      "text_markdown": "Maar het regenwoud is in gevaar.",
+      "tts": {
+        "text": "Maar het regenwoud is in gevaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op veel plekken hebben mensen de bomen gekapt om gewassen te planten of dieren te houden.",
+      "text_markdown": "Op veel plekken hebben mensen de bomen gekapt om gewassen te planten of dieren te houden.",
+      "tts": {
+        "text": "Op veel plekken hebben mensen de bomen gekapt om gewassen te planten of dieren te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de bomen weg zijn, spoelt de aarde weg en valt de regen niet meer zoals vroeger.",
+      "text_markdown": "Als de bomen weg zijn, spoelt de aarde weg en valt de regen niet meer zoals vroeger.",
+      "tts": {
+        "text": "Als de bomen weg zijn, spoelt de aarde weg en valt de regen niet meer zoals vroeger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren en mensen die er wonen, raken hun huis kwijt.",
+      "text_markdown": "De dieren en mensen die er wonen, raken hun huis kwijt.",
+      "tts": {
+        "text": "De dieren en mensen die er wonen, raken hun huis kwijt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken om te beschermen wat er nog is.",
+      "text_markdown": "Veel groepen over de hele wereld werken om te beschermen wat er nog is.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken om te beschermen wat er nog is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze planten nieuwe bomen.",
+      "text_markdown": "Ze planten nieuwe bomen.",
+      "tts": {
+        "text": "Ze planten nieuwe bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze helpen de mensen die in het bos wonen om er goed voor te zorgen.",
+      "text_markdown": "Ze helpen de mensen die in het bos wonen om er goed voor te zorgen.",
+      "tts": {
+        "text": "Ze helpen de mensen die in het bos wonen om er goed voor te zorgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen het bos, zodat we het beter begrijpen.",
+      "text_markdown": "Ze bestuderen het bos, zodat we het beter begrijpen.",
+      "tts": {
+        "text": "Ze bestuderen het bos, zodat we het beter begrijpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een regenwoud heeft honderden jaren nodig om te groeien.",
+      "text_markdown": "Een regenwoud heeft honderden jaren nodig om te groeien.",
+      "tts": {
+        "text": "Een regenwoud heeft honderden jaren nodig om te groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar een gezond regenwoud kan duizenden jaren blijven groeien.",
+      "text_markdown": "Maar een gezond regenwoud kan duizenden jaren blijven groeien.",
+      "tts": {
+        "text": "Maar een gezond regenwoud kan duizenden jaren blijven groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Het regenwoud vandaag",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is onze zorg waard.",
+      "text_markdown": "Het is onze zorg waard.",
+      "tts": {
+        "text": "Het is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tot slot",
+      "text_markdown": "Tot slot"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het tropisch regenwoud.",
+      "text_markdown": "Dat is het tropisch regenwoud.",
+      "tts": {
+        "text": "Dat is het tropisch regenwoud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een warme, natte, groene wereld vol leven.",
+      "text_markdown": "Een warme, natte, groene wereld vol leven.",
+      "tts": {
+        "text": "Een warme, natte, groene wereld vol leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in loopt, sta dan even stil.",
+      "text_markdown": "Als je er ooit in loopt, sta dan even stil.",
+      "tts": {
+        "text": "Als je er ooit in loopt, sta dan even stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de vogels, de kikkers en de regen op de bladeren.",
+      "text_markdown": "Luister naar de vogels, de kikkers en de regen op de bladeren.",
+      "tts": {
+        "text": "Luister naar de vogels, de kikkers en de regen op de bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Tot slot",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort het hart van het bioom om je heen kloppen.",
+      "text_markdown": "Je hoort het hart van het bioom om je heen kloppen.",
+      "tts": {
+        "text": "Je hoort het hart van het bioom om je heen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

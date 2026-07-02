@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tropiske savannen",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tropiske savannen",
+      "text_markdown": "Den tropiske savannen"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor savannene vokser",
+      "text_markdown": "Hvor savannene vokser"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til den tropiske savannen.",
+      "text_markdown": "Velkommen til den tropiske savannen.",
+      "tts": {
+        "text": "Velkommen til den tropiske savannen.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er et av de store biomene i verden.",
+      "text_markdown": "Dette er et av de store biomene i verden.",
+      "tts": {
+        "text": "Dette er et av de store biomene i verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og dyr.",
+      "text_markdown": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og dyr.",
+      "tts": {
+        "text": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannen er en vid gressmark med spredte trær.",
+      "text_markdown": "Savannen er en vid gressmark med spredte trær.",
+      "tts": {
+        "text": "Savannen er en vid gressmark med spredte trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varmen holder seg året rundt.",
+      "text_markdown": "Varmen holder seg året rundt.",
+      "tts": {
+        "text": "Varmen holder seg året rundt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den har én lang tørketid og én kortere regntid.",
+      "text_markdown": "Den har én lang tørketid og én kortere regntid.",
+      "tts": {
+        "text": "Den har én lang tørketid og én kortere regntid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De største savannene i verden ligger i Afrika.",
+      "text_markdown": "De største savannene i verden ligger i Afrika.",
+      "tts": {
+        "text": "De største savannene i verden ligger i Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De strekker seg over store deler av midten av kontinentet.",
+      "text_markdown": "De strekker seg over store deler av midten av kontinentet.",
+      "tts": {
+        "text": "De strekker seg over store deler av midten av kontinentet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes store savanner i Sør-Amerika også, kalt cerrado.",
+      "text_markdown": "Det finnes store savanner i Sør-Amerika også, kalt cerrado.",
+      "tts": {
+        "text": "Det finnes store savanner i Sør Amerika også, kalt cerrado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes tropiske savanner over hele Nord-Australia.",
+      "text_markdown": "Det finnes tropiske savanner over hele Nord-Australia.",
+      "tts": {
+        "text": "Det finnes tropiske savanner over hele Nord Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes mindre savanner i India og i Sørøst-Asia.",
+      "text_markdown": "Det finnes mindre savanner i India og i Sørøst-Asia.",
+      "tts": {
+        "text": "Det finnes mindre savanner i India og i Sørøst Asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver av disse vokste fram alene, langt fra de andre.",
+      "text_markdown": "Hver av disse vokste fram alene, langt fra de andre.",
+      "tts": {
+        "text": "Hver av disse vokste fram alene, langt fra de andre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+      "text_markdown": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+      "tts": {
+        "text": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et beitedyr i Afrika er ikke det samme som ett i Sør-Amerika eller Australia.",
+      "text_markdown": "Et beitedyr i Afrika er ikke det samme som ett i Sør-Amerika eller Australia.",
+      "tts": {
+        "text": "Et beitedyr i Afrika er ikke det samme som ett i Sør Amerika eller Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de er alle del av det samme biomet.",
+      "text_markdown": "Men de er alle del av det samme biomet.",
+      "tts": {
+        "text": "Men de er alle del av det samme biomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du står på en savanne, kan du se langt.",
+      "text_markdown": "Når du står på en savanne, kan du se langt.",
+      "tts": {
+        "text": "Når du står på en savanne, kan du se langt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset når deg til livet eller høyere.",
+      "text_markdown": "Gresset når deg til livet eller høyere.",
+      "tts": {
+        "text": "Gresset når deg til livet eller høyere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen flattoppede trær rager opp over gresset.",
+      "text_markdown": "Noen flattoppede trær rager opp over gresset.",
+      "tts": {
+        "text": "Noen flattoppede trær rager opp over gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Himmelen er veldig stor.",
+      "text_markdown": "Himmelen er veldig stor.",
+      "tts": {
+        "text": "Himmelen er veldig stor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyset er varmt og gullfarget.",
+      "text_markdown": "Lyset er varmt og gullfarget.",
+      "tts": {
+        "text": "Lyset er varmt og gullfarget.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hører vinden som beveger seg gjennom gresset.",
+      "text_markdown": "Du hører vinden som beveger seg gjennom gresset.",
+      "tts": {
+        "text": "Du hører vinden som beveger seg gjennom gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hører fugler som roper i det fjerne.",
+      "text_markdown": "Du hører fugler som roper i det fjerne.",
+      "tts": {
+        "text": "Du hører fugler som roper i det fjerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er savannen.",
+      "text_markdown": "Det er savannen.",
+      "tts": {
+        "text": "Det er savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Hvor savannene vokser",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et stort, åpent land med gress, spredte trær og vid himmel.",
+      "text_markdown": "Et stort, åpent land med gress, spredte trær og vid himmel.",
+      "tts": {
+        "text": "Et stort, åpent land med gress, spredte trær og vid himmel.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Været",
+      "text_markdown": "Været"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Været på den tropiske savannen er enkelt.",
+      "text_markdown": "Været på den tropiske savannen er enkelt.",
+      "tts": {
+        "text": "Været på den tropiske savannen er enkelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er varmt hele året.",
+      "text_markdown": "Det er varmt hele året.",
+      "tts": {
+        "text": "Det er varmt hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men i motsetning til regnskogen har savannen to svært forskjellige årstider.",
+      "text_markdown": "Men i motsetning til regnskogen har savannen to svært forskjellige årstider.",
+      "tts": {
+        "text": "Men i motsetning til regnskogen har savannen to svært forskjellige årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er en lang tørketid og en kortere regntid.",
+      "text_markdown": "Det er en lang tørketid og en kortere regntid.",
+      "tts": {
+        "text": "Det er en lang tørketid og en kortere regntid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tørketiden er himmelen klar i mange måneder.",
+      "text_markdown": "I tørketiden er himmelen klar i mange måneder.",
+      "tts": {
+        "text": "I tørketiden er himmelen klar i mange måneder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset blir gyllent og sprøtt.",
+      "text_markdown": "Gresset blir gyllent og sprøtt.",
+      "tts": {
+        "text": "Gresset blir gyllent og sprøtt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elvene krymper, og mange små dammer tørker helt ut.",
+      "text_markdown": "Elvene krymper, og mange små dammer tørker helt ut.",
+      "tts": {
+        "text": "Elvene krymper, og mange små dammer tørker helt ut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trærne mister bladene for å spare vann.",
+      "text_markdown": "Trærne mister bladene for å spare vann.",
+      "tts": {
+        "text": "Trærne mister bladene for å spare vann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regntiden begynner med store skyer som tårner seg opp i horisonten.",
+      "text_markdown": "Regntiden begynner med store skyer som tårner seg opp i horisonten.",
+      "tts": {
+        "text": "Regntiden begynner med store skyer som tårner seg opp i horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De første regnskurene faller i kraftige uvær med torden og lyn.",
+      "text_markdown": "De første regnskurene faller i kraftige uvær med torden og lyn.",
+      "tts": {
+        "text": "De første regnskurene faller i kraftige uvær med torden og lyn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når regnet kommer, forandrer savannen seg over natten.",
+      "text_markdown": "Når regnet kommer, forandrer savannen seg over natten.",
+      "tts": {
+        "text": "Når regnet kommer, forandrer savannen seg over natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nytt gress skyter opp av den tørre jorda.",
+      "text_markdown": "Nytt gress skyter opp av den tørre jorda.",
+      "tts": {
+        "text": "Nytt gress skyter opp av den tørre jorda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trær får friske, grønne blader.",
+      "text_markdown": "Trær får friske, grønne blader.",
+      "tts": {
+        "text": "Trær får friske, grønne blader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blomster blomstrer i bølger av farger.",
+      "text_markdown": "Blomster blomstrer i bølger av farger.",
+      "tts": {
+        "text": "Blomster blomstrer i bølger av farger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regntiden er kort, men det er da det meste av livet skjer.",
+      "text_markdown": "Regntiden er kort, men det er da det meste av livet skjer.",
+      "tts": {
+        "text": "Regntiden er kort, men det er da det meste av livet skjer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tørketiden er lang, men savannen er bygd for den.",
+      "text_markdown": "Tørketiden er lang, men savannen er bygd for den.",
+      "tts": {
+        "text": "Tørketiden er lang, men savannen er bygd for den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver plante og hvert dyr her vet hvordan de skal vente på regnet.",
+      "text_markdown": "Hver plante og hvert dyr her vet hvordan de skal vente på regnet.",
+      "tts": {
+        "text": "Hver plante og hvert dyr her vet hvordan de skal vente på regnet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vannet",
+      "text_markdown": "Landet og vannet"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannens land er for det meste flatt og vidt.",
+      "text_markdown": "Savannens land er for det meste flatt og vidt.",
+      "tts": {
+        "text": "Savannens land er for det meste flatt og vidt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen steder reiser lave, bølgende åser seg opp av gresset.",
+      "text_markdown": "Noen steder reiser lave, bølgende åser seg opp av gresset.",
+      "tts": {
+        "text": "Noen steder reiser lave, bølgende åser seg opp av gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Av og til står en stor steinknaus alene på sletten.",
+      "text_markdown": "Av og til står en stor steinknaus alene på sletten.",
+      "tts": {
+        "text": "Av og til står en stor steinknaus alene på sletten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorda under gresset er forskjellig i ulike deler av savannen.",
+      "text_markdown": "Jorda under gresset er forskjellig i ulike deler av savannen.",
+      "tts": {
+        "text": "Jorda under gresset er forskjellig i ulike deler av savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen steder er den mørk og rik.",
+      "text_markdown": "Noen steder er den mørk og rik.",
+      "tts": {
+        "text": "Noen steder er den mørk og rik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre steder er den sandete eller tynn.",
+      "text_markdown": "Andre steder er den sandete eller tynn.",
+      "tts": {
+        "text": "Andre steder er den sandete eller tynn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gressene har lært å vokse i alle slag.",
+      "text_markdown": "Gressene har lært å vokse i alle slag.",
+      "tts": {
+        "text": "Gressene har lært å vokse i alle slag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når regnet kommer, samler vannet seg på lave steder og danner dammer og grunne innsjøer.",
+      "text_markdown": "Når regnet kommer, samler vannet seg på lave steder og danner dammer og grunne innsjøer.",
+      "tts": {
+        "text": "Når regnet kommer, samler vannet seg på lave steder og danner dammer og grunne innsjøer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen av disse varer i månedsvis, og andre tørker ut på noen uker.",
+      "text_markdown": "Noen av disse varer i månedsvis, og andre tørker ut på noen uker.",
+      "tts": {
+        "text": "Noen av disse varer i månedsvis, og andre tørker ut på noen uker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elver snor seg over savannen i lange, langsomme svinger.",
+      "text_markdown": "Elver snor seg over savannen i lange, langsomme svinger.",
+      "tts": {
+        "text": "Elver snor seg over savannen i lange, langsomme svinger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regntiden er de brede og fulle.",
+      "text_markdown": "I regntiden er de brede og fulle.",
+      "tts": {
+        "text": "I regntiden er de brede og fulle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tørketiden krymper de til en tynn sildring i sanden, eller til en rekke stille kulper.",
+      "text_markdown": "I tørketiden krymper de til en tynn sildring i sanden, eller til en rekke stille kulper.",
+      "tts": {
+        "text": "I tørketiden krymper de til en tynn sildring i sanden, eller til en rekke stille kulper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av dyrene på savannen samles ved disse elvene og dammene for å drikke.",
+      "text_markdown": "Mange av dyrene på savannen samles ved disse elvene og dammene for å drikke.",
+      "tts": {
+        "text": "Mange av dyrene på savannen samles ved disse elvene og dammene for å drikke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En dam i tørketiden er et travelt sted.",
+      "text_markdown": "En dam i tørketiden er et travelt sted.",
+      "tts": {
+        "text": "En dam i tørketiden er et travelt sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyr som vanligvis ikke møtes, står ved siden av hverandre for å drikke.",
+      "text_markdown": "Dyr som vanligvis ikke møtes, står ved siden av hverandre for å drikke.",
+      "tts": {
+        "text": "Dyr som vanligvis ikke møtes, står ved siden av hverandre for å drikke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elvene bringer også med seg en stripe av høyere trær.",
+      "text_markdown": "Elvene bringer også med seg en stripe av høyere trær.",
+      "tts": {
+        "text": "Elvene bringer også med seg en stripe av høyere trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs breddene vokser trærne tette og grønne, selv i tørketiden.",
+      "text_markdown": "Langs breddene vokser trærne tette og grønne, selv i tørketiden.",
+      "tts": {
+        "text": "Langs breddene vokser trærne tette og grønne, selv i tørketiden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Disse skogsbåndene krysser den åpne savannen som grønne veier.",
+      "text_markdown": "Disse skogsbåndene krysser den åpne savannen som grønne veier.",
+      "tts": {
+        "text": "Disse skogsbåndene krysser den åpne savannen som grønne veier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De er hjem for dyr som trenger skygge og vann hele året.",
+      "text_markdown": "De er hjem for dyr som trenger skygge og vann hele året.",
+      "tts": {
+        "text": "De er hjem for dyr som trenger skygge og vann hele året.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Plantene",
+      "text_markdown": "Plantene"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjertet i savannen er gresset.",
+      "text_markdown": "Hjertet i savannen er gresset.",
+      "tts": {
+        "text": "Hjertet i savannen er gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Høye gress dekker landet i alle retninger.",
+      "text_markdown": "Høye gress dekker landet i alle retninger.",
+      "tts": {
+        "text": "Høye gress dekker landet i alle retninger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen gress vokser like høyt som et menneske.",
+      "text_markdown": "Noen gress vokser like høyt som et menneske.",
+      "tts": {
+        "text": "Noen gress vokser like høyt som et menneske.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Røttene deres når dypt ned i jorda for å finne vann.",
+      "text_markdown": "Røttene deres når dypt ned i jorda for å finne vann.",
+      "tts": {
+        "text": "Røttene deres når dypt ned i jorda for å finne vann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når ild feier gjennom savannen, brenner toppene av gressene.",
+      "text_markdown": "Når ild feier gjennom savannen, brenner toppene av gressene.",
+      "tts": {
+        "text": "Når ild feier gjennom savannen, brenner toppene av gressene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men røttene holder seg i live under jorda.",
+      "text_markdown": "Men røttene holder seg i live under jorda.",
+      "tts": {
+        "text": "Men røttene holder seg i live under jorda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter neste regn vokser gressene opp igjen, friske og grønne.",
+      "text_markdown": "Etter neste regn vokser gressene opp igjen, friske og grønne.",
+      "tts": {
+        "text": "Etter neste regn vokser gressene opp igjen, friske og grønne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ild er en naturlig del av dette biomet.",
+      "text_markdown": "Ild er en naturlig del av dette biomet.",
+      "tts": {
+        "text": "Ild er en naturlig del av dette biomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av plantene her trenger ild for å holde seg friske.",
+      "text_markdown": "Mange av plantene her trenger ild for å holde seg friske.",
+      "tts": {
+        "text": "Mange av plantene her trenger ild for å holde seg friske.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trær vokser over hele savannen også, men de står spredt.",
+      "text_markdown": "Trær vokser over hele savannen også, men de står spredt.",
+      "tts": {
+        "text": "Trær vokser over hele savannen også, men de står spredt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De står langt fra hverandre, med gress imellom.",
+      "text_markdown": "De står langt fra hverandre, med gress imellom.",
+      "tts": {
+        "text": "De står langt fra hverandre, med gress imellom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste savannetrær er lave, med vide, flate kroner.",
+      "text_markdown": "De fleste savannetrær er lave, med vide, flate kroner.",
+      "tts": {
+        "text": "De fleste savannetrær er lave, med vide, flate kroner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den flate kronen er en vid paraply av blader som fanger hver dråpe lys.",
+      "text_markdown": "Den flate kronen er en vid paraply av blader som fanger hver dråpe lys.",
+      "tts": {
+        "text": "Den flate kronen er en vid paraply av blader som fanger hver dråpe lys.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange savannetrær har torner for å hindre store dyr i å spise dem.",
+      "text_markdown": "Mange savannetrær har torner for å hindre store dyr i å spise dem.",
+      "tts": {
+        "text": "Mange savannetrær har torner for å hindre store dyr i å spise dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den berømte baobaben er et kjempestort savannetre med en tykk, sterk stamme.",
+      "text_markdown": "Den berømte baobaben er et kjempestort savannetre med en tykk, sterk stamme.",
+      "tts": {
+        "text": "Den berømte baobaben er et kjempestort savannetre med en tykk, sterk stamme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det kan lagre vann inne i stammen gjennom den lange tørketiden.",
+      "text_markdown": "Det kan lagre vann inne i stammen gjennom den lange tørketiden.",
+      "tts": {
+        "text": "Det kan lagre vann inne i stammen gjennom den lange tørketiden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen baobaber lever i mer enn tusen år.",
+      "text_markdown": "Noen baobaber lever i mer enn tusen år.",
+      "tts": {
+        "text": "Noen baobaber lever i mer enn tusen år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs elvene vokser høyere trær i et tynt, grønt belte.",
+      "text_markdown": "Langs elvene vokser høyere trær i et tynt, grønt belte.",
+      "tts": {
+        "text": "Langs elvene vokser høyere trær i et tynt, grønt belte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ute på den åpne sletten er gresset og noen spredte trær alt du ser i milevis.",
+      "text_markdown": "Ute på den åpne sletten er gresset og noen spredte trær alt du ser i milevis.",
+      "tts": {
+        "text": "Ute på den åpne sletten er gresset og noen spredte trær alt du ser i milevis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regntiden blomstrer små blomster mellom gressene.",
+      "text_markdown": "I regntiden blomstrer små blomster mellom gressene.",
+      "tts": {
+        "text": "I regntiden blomstrer små blomster mellom gressene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De åpner seg raskt og varer bare noen få uker.",
+      "text_markdown": "De åpner seg raskt og varer bare noen få uker.",
+      "tts": {
+        "text": "De åpner seg raskt og varer bare noen få uker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savannen er en stille maskin, laget av gress, spredte trær, sol og tålmodige røtter.",
+      "text_markdown": "Savannen er en stille maskin, laget av gress, spredte trær, sol og tålmodige røtter.",
+      "tts": {
+        "text": "Savannen er en stille maskin, laget av gress, spredte trær, sol og tålmodige røtter.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiske savannen er kjent over hele verden for dyrene sine.",
+      "text_markdown": "Den tropiske savannen er kjent over hele verden for dyrene sine.",
+      "tts": {
+        "text": "Den tropiske savannen er kjent over hele verden for dyrene sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gressene fôrer enorme flokker av beitedyr.",
+      "text_markdown": "Gressene fôrer enorme flokker av beitedyr.",
+      "tts": {
+        "text": "Gressene fôrer enorme flokker av beitedyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika beveger store flokker av sebraer, antiloper og bøfler seg over slettene.",
+      "text_markdown": "I Afrika beveger store flokker av sebraer, antiloper og bøfler seg over slettene.",
+      "tts": {
+        "text": "I Afrika beveger store flokker av sebraer, antiloper og bøfler seg over slettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De følger regnet fra én del av savannen til en annen.",
+      "text_markdown": "De følger regnet fra én del av savannen til en annen.",
+      "tts": {
+        "text": "De følger regnet fra én del av savannen til en annen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det største landdyret på Jorden, elefanten, lever på den afrikanske savannen.",
+      "text_markdown": "Det største landdyret på Jorden, elefanten, lever på den afrikanske savannen.",
+      "tts": {
+        "text": "Det største landdyret på Jorden, elefanten, lever på den afrikanske savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En elefantfamilie går sakte over gresset, ledet av en gammel mor.",
+      "text_markdown": "En elefantfamilie går sakte over gresset, ledet av en gammel mor.",
+      "tts": {
+        "text": "En elefantfamilie går sakte over gresset, ledet av en gammel mor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sjiraffen går ved siden av og strekker sin lange hals for å spise blader fra trærne.",
+      "text_markdown": "Sjiraffen går ved siden av og strekker sin lange hals for å spise blader fra trærne.",
+      "tts": {
+        "text": "Sjiraffen går ved siden av og strekker sin lange hals for å spise blader fra trærne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der det er mange beitedyr, finnes det også jegere.",
+      "text_markdown": "Der det er mange beitedyr, finnes det også jegere.",
+      "tts": {
+        "text": "Der det er mange beitedyr, finnes det også jegere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Løven er den store jegeren på den afrikanske savannen.",
+      "text_markdown": "Løven er den store jegeren på den afrikanske savannen.",
+      "tts": {
+        "text": "Løven er den store jegeren på den afrikanske savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Løver lever sammen i familiegrupper som kalles flokker.",
+      "text_markdown": "Løver lever sammen i familiegrupper som kalles flokker.",
+      "tts": {
+        "text": "Løver lever sammen i familiegrupper som kalles flokker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geparden er det raskeste dyret på land.",
+      "text_markdown": "Geparden er det raskeste dyret på land.",
+      "tts": {
+        "text": "Geparden er det raskeste dyret på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den løper i korte spurter for å fange antilopene som beiter på slettene.",
+      "text_markdown": "Den løper i korte spurter for å fange antilopene som beiter på slettene.",
+      "tts": {
+        "text": "Den løper i korte spurter for å fange antilopene som beiter på slettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leoparden er en stille jeger som klatrer i trær og drar måltidene sine opp i grenene.",
+      "text_markdown": "Leoparden er en stille jeger som klatrer i trær og drar måltidene sine opp i grenene.",
+      "tts": {
+        "text": "Leoparden er en stille jeger som klatrer i trær og drar måltidene sine opp i grenene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyener jakter i grupper og rydder opp etter det de større jegerne etterlater seg.",
+      "text_markdown": "Hyener jakter i grupper og rydder opp etter det de større jegerne etterlater seg.",
+      "tts": {
+        "text": "Hyener jakter i grupper og rydder opp etter det de større jegerne etterlater seg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mindre dyr finnes også overalt.",
+      "text_markdown": "Mindre dyr finnes også overalt.",
+      "tts": {
+        "text": "Mindre dyr finnes også overalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bavianer reiser i bråkete grupper over gresset og gjennom trærne.",
+      "text_markdown": "Bavianer reiser i bråkete grupper over gresset og gjennom trærne.",
+      "tts": {
+        "text": "Bavianer reiser i bråkete grupper over gresset og gjennom trærne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Store fugler som kalles strutser, løper over den åpne sletten på lange bein.",
+      "text_markdown": "Store fugler som kalles strutser, løper over den åpne sletten på lange bein.",
+      "tts": {
+        "text": "Store fugler som kalles strutser, løper over den åpne sletten på lange bein.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gribber sirkler høyt oppe og speider etter dyr som har dødd.",
+      "text_markdown": "Gribber sirkler høyt oppe og speider etter dyr som har dødd.",
+      "tts": {
+        "text": "Gribber sirkler høyt oppe og speider etter dyr som har dødd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regntiden synger frosker hver natt rundt de nye dammene.",
+      "text_markdown": "I regntiden synger frosker hver natt rundt de nye dammene.",
+      "tts": {
+        "text": "I regntiden synger frosker hver natt rundt de nye dammene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insekter fyller den varme lufta, og sommerfugler svever mellom blomstene.",
+      "text_markdown": "Insekter fyller den varme lufta, og sommerfugler svever mellom blomstene.",
+      "tts": {
+        "text": "Insekter fyller den varme lufta, og sommerfugler svever mellom blomstene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I elvene hviler flodhester i vannet hele dagen, og kommer ut for å beite på gresset om natten.",
+      "text_markdown": "I elvene hviler flodhester i vannet hele dagen, og kommer ut for å beite på gresset om natten.",
+      "tts": {
+        "text": "I elvene hviler flodhester i vannet hele dagen, og kommer ut for å beite på gresset om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den søramerikanske savannen tar store gnagere og store fugler plassen til de afrikanske.",
+      "text_markdown": "På den søramerikanske savannen tar store gnagere og store fugler plassen til de afrikanske.",
+      "tts": {
+        "text": "På den søramerikanske savannen tar store gnagere og store fugler plassen til de afrikanske.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den australske savannen hopper kenguruer over gresset i stedet for at antiloper løper over det.",
+      "text_markdown": "På den australske savannen hopper kenguruer over gresset i stedet for at antiloper løper over det.",
+      "tts": {
+        "text": "På den australske savannen hopper kenguruer over gresset i stedet for at antiloper løper over det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I hvert av disse landene ser dyrene forskjellige ut.",
+      "text_markdown": "I hvert av disse landene ser dyrene forskjellige ut.",
+      "tts": {
+        "text": "I hvert av disse landene ser dyrene forskjellige ut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men mønsteret er det samme.",
+      "text_markdown": "Men mønsteret er det samme.",
+      "tts": {
+        "text": "Men mønsteret er det samme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Store flokker av beitedyr, stille jegere i gresset, og store fugleflokker på himmelen.",
+      "text_markdown": "Store flokker av beitedyr, stille jegere i gresset, og store fugleflokker på himmelen.",
+      "tts": {
+        "text": "Store flokker av beitedyr, stille jegere i gresset, og store fugleflokker på himmelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er savannen.",
+      "text_markdown": "Det er savannen.",
+      "tts": {
+        "text": "Det er savannen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Menneskene",
+      "text_markdown": "Menneskene"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker har levd på den tropiske savannen i svært lang tid.",
+      "text_markdown": "Mennesker har levd på den tropiske savannen i svært lang tid.",
+      "tts": {
+        "text": "Mennesker har levd på den tropiske savannen i svært lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Våre egne forfedre reiste seg faktisk opp og gikk over savanner som disse for første gang.",
+      "text_markdown": "Våre egne forfedre reiste seg faktisk opp og gikk over savanner som disse for første gang.",
+      "tts": {
+        "text": "Våre egne forfedre reiste seg faktisk opp og gikk over savanner som disse for første gang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det åpne gresset og de spredte trærne formet måten kroppene våre beveger seg på.",
+      "text_markdown": "Det åpne gresset og de spredte trærne formet måten kroppene våre beveger seg på.",
+      "tts": {
+        "text": "Det åpne gresset og de spredte trærne formet måten kroppene våre beveger seg på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange folk på savannen holder husdyrflokker.",
+      "text_markdown": "Mange folk på savannen holder husdyrflokker.",
+      "tts": {
+        "text": "Mange folk på savannen holder husdyrflokker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika gjeter familier storfe, geiter og sauer over gressmarkene.",
+      "text_markdown": "I Afrika gjeter familier storfe, geiter og sauer over gressmarkene.",
+      "tts": {
+        "text": "I Afrika gjeter familier storfe, geiter og sauer over gressmarkene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene spiser gresset og gjør det om til melk og kjøtt for menneskene.",
+      "text_markdown": "Dyrene spiser gresset og gjør det om til melk og kjøtt for menneskene.",
+      "tts": {
+        "text": "Dyrene spiser gresset og gjør det om til melk og kjøtt for menneskene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gjeterne flytter seg med dyrene for å følge regnet.",
+      "text_markdown": "Gjeterne flytter seg med dyrene for å følge regnet.",
+      "tts": {
+        "text": "Gjeterne flytter seg med dyrene for å følge regnet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tørketiden drar de mot elvene.",
+      "text_markdown": "I tørketiden drar de mot elvene.",
+      "tts": {
+        "text": "I tørketiden drar de mot elvene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regntiden sprer de seg ut over de grønne slettene.",
+      "text_markdown": "I regntiden sprer de seg ut over de grønne slettene.",
+      "tts": {
+        "text": "I regntiden sprer de seg ut over de grønne slettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjemmene deres er ofte lette å ta fra hverandre og bære med til et nytt sted.",
+      "text_markdown": "Hjemmene deres er ofte lette å ta fra hverandre og bære med til et nytt sted.",
+      "tts": {
+        "text": "Hjemmene deres er ofte lette å ta fra hverandre og bære med til et nytt sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre folk på savannen dyrker mat på små åkre.",
+      "text_markdown": "Andre folk på savannen dyrker mat på små åkre.",
+      "tts": {
+        "text": "Andre folk på savannen dyrker mat på små åkre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der jorda er rik, planter de korn og bønner.",
+      "text_markdown": "Der jorda er rik, planter de korn og bønner.",
+      "tts": {
+        "text": "Der jorda er rik, planter de korn og bønner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bruker ild forsiktig for å rydde nye åkre og for å holde gresset friskt for dyrene sine.",
+      "text_markdown": "De bruker ild forsiktig for å rydde nye åkre og for å holde gresset friskt for dyrene sine.",
+      "tts": {
+        "text": "De bruker ild forsiktig for å rydde nye åkre og for å holde gresset friskt for dyrene sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folkene på savannen kjenner landet i minste detalj.",
+      "text_markdown": "Folkene på savannen kjenner landet i minste detalj.",
+      "tts": {
+        "text": "Folkene på savannen kjenner landet i minste detalj.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vet hvilke planter som er trygge å spise og hvilke som er gode som medisin.",
+      "text_markdown": "De vet hvilke planter som er trygge å spise og hvilke som er gode som medisin.",
+      "tts": {
+        "text": "De vet hvilke planter som er trygge å spise og hvilke som er gode som medisin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kjenner sporene etter hvert dyr i støvet.",
+      "text_markdown": "De kjenner sporene etter hvert dyr i støvet.",
+      "tts": {
+        "text": "De kjenner sporene etter hvert dyr i støvet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vet betydningen av hver slags sky på himmelen.",
+      "text_markdown": "De vet betydningen av hver slags sky på himmelen.",
+      "tts": {
+        "text": "De vet betydningen av hver slags sky på himmelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne kunnskapen blir gitt videre fra foreldre til barn, år etter år.",
+      "text_markdown": "Denne kunnskapen blir gitt videre fra foreldre til barn, år etter år.",
+      "tts": {
+        "text": "Denne kunnskapen blir gitt videre fra foreldre til barn, år etter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På hver savanne har denne måten å leve på sine egne språk, sine egne sanger og sine egne historier.",
+      "text_markdown": "På hver savanne har denne måten å leve på sine egne språk, sine egne sanger og sine egne historier.",
+      "tts": {
+        "text": "På hver savanne har denne måten å leve på sine egne språk, sine egne sanger og sine egne historier.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Savannen i dag",
+      "text_markdown": "Savannen i dag"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiske savannen er en av de store, ville landområdene på Jorden.",
+      "text_markdown": "Den tropiske savannen er en av de store, ville landområdene på Jorden.",
+      "tts": {
+        "text": "Den tropiske savannen er en av de store, ville landområdene på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den fôrer enorme flokker av dyr.",
+      "text_markdown": "Den fôrer enorme flokker av dyr.",
+      "tts": {
+        "text": "Den fôrer enorme flokker av dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den holder oppe gjeterne og bøndene som har levd her i tusenvis av år.",
+      "text_markdown": "Den holder oppe gjeterne og bøndene som har levd her i tusenvis av år.",
+      "tts": {
+        "text": "Den holder oppe gjeterne og bøndene som har levd her i tusenvis av år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gressmarkene lagrer også mye vann og næring i de dype røttene sine.",
+      "text_markdown": "Gressmarkene lagrer også mye vann og næring i de dype røttene sine.",
+      "tts": {
+        "text": "Gressmarkene lagrer også mye vann og næring i de dype røttene sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men savannen er også i trøbbel.",
+      "text_markdown": "Men savannen er også i trøbbel.",
+      "tts": {
+        "text": "Men savannen er også i trøbbel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange steder har folk pløyd opp gresset for å plante avlinger, eller gjerdet det inn for storfe.",
+      "text_markdown": "Mange steder har folk pløyd opp gresset for å plante avlinger, eller gjerdet det inn for storfe.",
+      "tts": {
+        "text": "Mange steder har folk pløyd opp gresset for å plante avlinger, eller gjerdet det inn for storfe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når gresset blir brutt opp, mister flokkene av ville dyr sin åpne vei.",
+      "text_markdown": "Når gresset blir brutt opp, mister flokkene av ville dyr sin åpne vei.",
+      "tts": {
+        "text": "Når gresset blir brutt opp, mister flokkene av ville dyr sin åpne vei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veier og gjerder skjærer over rutene som elefanter og antiloper har fulgt i uminnelige tider.",
+      "text_markdown": "Veier og gjerder skjærer over rutene som elefanter og antiloper har fulgt i uminnelige tider.",
+      "tts": {
+        "text": "Veier og gjerder skjærer over rutene som elefanter og antiloper har fulgt i uminnelige tider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen savannedyr, som neshornet og geparden, har blitt svært sjeldne.",
+      "text_markdown": "Noen savannedyr, som neshornet og geparden, har blitt svært sjeldne.",
+      "tts": {
+        "text": "Noen savannedyr, som neshornet og geparden, har blitt svært sjeldne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbeider for å beskytte det som er igjen.",
+      "text_markdown": "Mange grupper rundt om i verden arbeider for å beskytte det som er igjen.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbeider for å beskytte det som er igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De setter av store parker der de ville dyrene fortsatt kan bevege seg fritt.",
+      "text_markdown": "De setter av store parker der de ville dyrene fortsatt kan bevege seg fritt.",
+      "tts": {
+        "text": "De setter av store parker der de ville dyrene fortsatt kan bevege seg fritt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De samarbeider med folk som bor nær parkene for å dele landet.",
+      "text_markdown": "De samarbeider med folk som bor nær parkene for å dele landet.",
+      "tts": {
+        "text": "De samarbeider med folk som bor nær parkene for å dele landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer gresset, trærne og flokkene slik at vi forstår det bedre.",
+      "text_markdown": "De studerer gresset, trærne og flokkene slik at vi forstår det bedre.",
+      "tts": {
+        "text": "De studerer gresset, trærne og flokkene slik at vi forstår det bedre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En frisk savanne kan holde liv i flere arter enn nesten noe annet landbiom.",
+      "text_markdown": "En frisk savanne kan holde liv i flere arter enn nesten noe annet landbiom.",
+      "tts": {
+        "text": "En frisk savanne kan holde liv i flere arter enn nesten noe annet landbiom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Savannen i dag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er verdt å ta vare på.",
+      "text_markdown": "Den er verdt å ta vare på.",
+      "tts": {
+        "text": "Den er verdt å ta vare på.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tropiske savannen.",
+      "text_markdown": "Det er den tropiske savannen.",
+      "tts": {
+        "text": "Det er den tropiske savannen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et vidt, varmt land av gress, spredte trær og store flokker av dyr.",
+      "text_markdown": "Et vidt, varmt land av gress, spredte trær og store flokker av dyr.",
+      "tts": {
+        "text": "Et vidt, varmt land av gress, spredte trær og store flokker av dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du noen gang står på en, så vær stille et øyeblikk.",
+      "text_markdown": "Hvis du noen gang står på en, så vær stille et øyeblikk.",
+      "tts": {
+        "text": "Hvis du noen gang står på en, så vær stille et øyeblikk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lytt til vinden i gresset og fuglene i det fjerne.",
+      "text_markdown": "Lytt til vinden i gresset og fuglene i det fjerne.",
+      "tts": {
+        "text": "Lytt til vinden i gresset og fuglene i det fjerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ut mot den lange horisonten.",
+      "text_markdown": "Se ut mot den lange horisonten.",
+      "tts": {
+        "text": "Se ut mot den lange horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil kjenne hjertet i biomet slå rundt deg.",
+      "text_markdown": "Du vil kjenne hjertet i biomet slå rundt deg.",
+      "tts": {
+        "text": "Du vil kjenne hjertet i biomet slå rundt deg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ru",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Заметка для читателя",
+      "text_markdown": "Заметка для читателя"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это маленькая книга о большой кухне.",
+      "text_markdown": "Это маленькая книга о большой кухне.",
+      "tts": {
+        "text": "Это маленькая книга о большой кухне.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Эта кухня называется соул-фуд, и родом она с юга Соединенных Штатов.",
+      "text_markdown": "Эта кухня называется соул-фуд, и родом она с юга Соединенных Штатов.",
+      "tts": {
+        "text": "Эта кухня называется соул фуд, и родом она с юга Соединенных Штатов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Соул-фуд — это настоящая еда.",
+      "text_markdown": "Соул-фуд — это настоящая еда.",
+      "tts": {
+        "text": "Соул фуд, это настоящая еда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ее готовят дома.",
+      "text_markdown": "Ее готовят дома.",
+      "tts": {
+        "text": "Ее готовят дома.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ее едят по воскресеньям.",
+      "text_markdown": "Ее едят по воскресеньям.",
+      "tts": {
+        "text": "Ее едят по воскресеньям.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И во вторник ее тоже едят.",
+      "text_markdown": "И во вторник ее тоже едят.",
+      "tts": {
+        "text": "И во вторник ее тоже едят.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Начнем с названия.",
+      "text_markdown": "Начнем с названия.",
+      "tts": {
+        "text": "Начнем с названия.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Потом посмотрим на растения и животных.",
+      "text_markdown": "Потом посмотрим на растения и животных.",
+      "tts": {
+        "text": "Потом посмотрим на растения и животных.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом посмотрим на кастрюли и сковороды.",
+      "text_markdown": "Потом посмотрим на кастрюли и сковороды.",
+      "tts": {
+        "text": "Потом посмотрим на кастрюли и сковороды.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "К концу вы будете знать, что лежит на тарелке и откуда это взялось.",
+      "text_markdown": "К концу вы будете знать, что лежит на тарелке и откуда это взялось.",
+      "tts": {
+        "text": "К концу вы будете знать, что лежит на тарелке и откуда это взялось.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Заметка для читателя",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Меня зовут Kym, и я расскажу вам эту историю.",
+      "text_markdown": "Историю вам расскажет подруга по имени Ким.",
+      "tts": {
+        "text": "Меня зовут Ким, и я расскажу вам эту историю.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 1. Что такое соул-фуд",
+      "text_markdown": "Глава 1. Что такое соул-фуд"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Соул-фуд — повседневная еда черных семей на американском Юге.",
+      "text_markdown": "Соул-фуд — повседневная еда черных семей на американском Юге.",
+      "tts": {
+        "text": "Соул фуд, повседневная еда черных семей на американском Юге.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Название \"соул-фуд\" вошло в широкий обиход в шестидесятые годы двадцатого века.",
+      "text_markdown": "Название \"соул-фуд\" вошло в широкий обиход в шестидесятые годы двадцатого века.",
+      "tts": {
+        "text": "Название \"соул фуд\" вошло в широкий обиход в шестидесятые годы двадцатого века.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Слово \"соул\" пришло из музыки и из церкви.",
+      "text_markdown": "Слово \"соул\" пришло из музыки и из церкви.",
+      "tts": {
+        "text": "Слово \"соул\" пришло из музыки и из церкви.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Оно означало что-то глубокое и настоящее.",
+      "text_markdown": "Оно означало что-то глубокое и настоящее.",
+      "tts": {
+        "text": "Оно означало что то глубокое и настоящее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Оно означало что-то, связанное с черной гордостью.",
+      "text_markdown": "Оно означало что-то, связанное с черной гордостью.",
+      "tts": {
+        "text": "Оно означало что то, связанное с черной гордостью.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но сама эта еда намного старше.",
+      "text_markdown": "Но сама эта еда намного старше.",
+      "tts": {
+        "text": "Но сама эта еда намного старше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она идет от кухонь на плантациях восемнадцатого и девятнадцатого веков.",
+      "text_markdown": "Она идет от кухонь на плантациях восемнадцатого и девятнадцатого веков.",
+      "tts": {
+        "text": "Она идет от кухонь на плантациях восемнадцатого и девятнадцатого веков.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Африканские повара, которых держали в рабстве, брали те растения и тех животных, что у них были, и готовили ужин.",
+      "text_markdown": "Африканские повара, которых держали в рабстве, брали те растения и тех животных, что у них были, и готовили ужин.",
+      "tts": {
+        "text": "Африканские повара, которых держали в рабстве, брали те растения и тех животных, что у них были, и готовили ужин.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эти повара были выдающимися.",
+      "text_markdown": "Эти повара были выдающимися.",
+      "tts": {
+        "text": "Эти повара были выдающимися.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они обходились малым и кормили многих.",
+      "text_markdown": "Они обходились малым и кормили многих.",
+      "tts": {
+        "text": "Они обходились малым и кормили многих.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они использовали каждую часть свиньи.",
+      "text_markdown": "Они использовали каждую часть свиньи.",
+      "tts": {
+        "text": "Они использовали каждую часть свиньи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они делали листовую зелень сладковатой на вкус.",
+      "text_markdown": "Они делали листовую зелень сладковатой на вкус.",
+      "tts": {
+        "text": "Они делали листовую зелень сладковатой на вкус.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Они превращали кукурузную муку в хлеб, в кашу и еще в сотню мелочей.",
+      "text_markdown": "Они превращали кукурузную муку в хлеб, в кашу и еще в сотню мелочей.",
+      "tts": {
+        "text": "Они превращали кукурузную муку в хлеб, в кашу и еще в сотню мелочей.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда черные семьи в двадцатом веке переезжали на север, они брали эту еду с собой.",
+      "text_markdown": "Когда черные семьи в двадцатом веке переезжали на север, они брали эту еду с собой.",
+      "tts": {
+        "text": "Когда черные семьи в двадцатом веке переезжали на север, они брали эту еду с собой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Теперь соул-фуд есть и в Чикаго, и в Нью-Йорке, и в Детройте, и в каждом южном городке.",
+      "text_markdown": "Теперь соул-фуд есть и в Чикаго, и в Нью-Йорке, и в Детройте, и в каждом южном городке.",
+      "tts": {
+        "text": "Теперь соул фуд есть и в Чикаго, и в Нью Йорке, и в Детройте, и в каждом южном городке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Что такое соул-фуд",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Но его сердце все равно на Юге.",
+      "text_markdown": "Но его сердце все равно на Юге.",
+      "tts": {
+        "text": "Но его сердце все равно на Юге.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 2. Ингредиенты",
+      "text_markdown": "Глава 2. Ингредиенты"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У соул-фуда есть два больших корня.",
+      "text_markdown": "У соул-фуда есть два больших корня.",
+      "tts": {
+        "text": "У соул фуда есть два больших корня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Один корень уходит в Западную Африку.",
+      "text_markdown": "Один корень уходит в Западную Африку.",
+      "tts": {
+        "text": "Один корень уходит в Западную Африку.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Другой корень связан с обеими Америками.",
+      "text_markdown": "Другой корень связан с обеими Америками.",
+      "tts": {
+        "text": "Другой корень связан с обеими Америками.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Из Западной Африки пришла окра.",
+      "text_markdown": "Из Западной Африки пришла окра.",
+      "tts": {
+        "text": "Из Западной Африки пришла окра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Окра — это зеленый стручок.",
+      "text_markdown": "Окра — это зеленый стручок.",
+      "tts": {
+        "text": "Окра, это зеленый стручок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она растет на высоком кусте.",
+      "text_markdown": "Она растет на высоком кусте.",
+      "tts": {
+        "text": "Она растет на высоком кусте.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Когда ее готовят, она становится мягкой и немного скользкой.",
+      "text_markdown": "Когда ее готовят, она становится мягкой и немного скользкой.",
+      "tts": {
+        "text": "Когда ее готовят, она становится мягкой и немного скользкой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ее кладут в гамбо, и ее жарят в кукурузной муке.",
+      "text_markdown": "Ее кладут в гамбо, и ее жарят в кукурузной муке.",
+      "tts": {
+        "text": "Ее кладут в гамбо, и ее жарят в кукурузной муке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Черноглазый горох тоже пришел из Западной Африки.",
+      "text_markdown": "Черноглазый горох тоже пришел из Западной Африки.",
+      "tts": {
+        "text": "Черноглазый горох тоже пришел из Западной Африки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Оттуда же пришел и арбуз.",
+      "text_markdown": "Оттуда же пришел и арбуз.",
+      "tts": {
+        "text": "Оттуда же пришел и арбуз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "И кунжут тоже.",
+      "text_markdown": "И кунжут тоже.",
+      "tts": {
+        "text": "И кунжут тоже.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Старые южные повара называли кунжут \"бенне\". Они добавляли бенне в печенье и на хлеб.",
+      "text_markdown": "Старые южные повара называли кунжут \"бенне\". Они добавляли бенне в печенье и на хлеб.",
+      "tts": {
+        "text": "Старые южные повара называли кунжут \"бенне\". Они добавляли бенне в печенье и на хлеб.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Рис тоже пришел через океан.",
+      "text_markdown": "Рис тоже пришел через океан.",
+      "tts": {
+        "text": "Рис тоже пришел через океан.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Африканские земледельцы выращивали рис уже тысячу лет.",
+      "text_markdown": "Африканские земледельцы выращивали рис уже тысячу лет.",
+      "tts": {
+        "text": "Африканские земледельцы выращивали рис уже тысячу лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "В Южной Каролине это знание помогло построить целые города.",
+      "text_markdown": "В Южной Каролине это знание помогло построить целые города.",
+      "tts": {
+        "text": "В Южной Каролине это знание помогло построить целые города.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Из обеих Америк пришла кукуруза.",
+      "text_markdown": "Из обеих Америк пришла кукуруза.",
+      "tts": {
+        "text": "Из обеих Америк пришла кукуруза.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Кукуруза родом из Мексики.",
+      "text_markdown": "Кукуруза родом из Мексики.",
+      "tts": {
+        "text": "Кукуруза родом из Мексики.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она пришла на север к чероки и чокто задолго до прихода испанцев.",
+      "text_markdown": "Она пришла на север к чероки и чокто задолго до прихода испанцев.",
+      "tts": {
+        "text": "Она пришла на север к чероки и чокто задолго до прихода испанцев.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Из обеих Америк также пришли батат, арахис и многие виды фасоли.",
+      "text_markdown": "Из обеих Америк также пришли батат, арахис и многие виды фасоли.",
+      "tts": {
+        "text": "Из обеих Америк также пришли батат, арахис и многие виды фасоли.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Ингредиенты",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Соул-фуд появился, когда эти две кладовые встретились на одной кухне.",
+      "text_markdown": "Соул-фуд появился, когда эти две кладовые встретились на одной кухне.",
+      "tts": {
+        "text": "Соул фуд появился, когда эти две кладовые встретились на одной кухне.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 3. Мясо и рыба",
+      "text_markdown": "Глава 3. Мясо и рыба"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самое важное мясо в соул-фуде — свинина.",
+      "text_markdown": "Самое важное мясо в соул-фуде — свинина.",
+      "tts": {
+        "text": "Самое важное мясо в соул фуде, свинина.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На маленькой ферме можно было держать свинью.",
+      "text_markdown": "На маленькой ферме можно было держать свинью.",
+      "tts": {
+        "text": "На маленькой ферме можно было держать свинью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Свинья ела объедки.",
+      "text_markdown": "Свинья ела объедки.",
+      "tts": {
+        "text": "Свинья ела объедки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Осенью семья забивала свинью и использовала каждую часть.",
+      "text_markdown": "Осенью семья забивала свинью и использовала каждую часть.",
+      "tts": {
+        "text": "Осенью семья забивала свинью и использовала каждую часть.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Окорок коптили.",
+      "text_markdown": "Окорок коптили.",
+      "tts": {
+        "text": "Окорок коптили.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Бекон засаливали.",
+      "text_markdown": "Бекон засаливали.",
+      "tts": {
+        "text": "Бекон засаливали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ножки варили в уксусе.",
+      "text_markdown": "Ножки варили в уксусе.",
+      "tts": {
+        "text": "Ножки варили в уксусе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Жир оставляли для булочек.",
+      "text_markdown": "Жир оставляли для булочек.",
+      "tts": {
+        "text": "Жир оставляли для булочек.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Еще одно важное мясо здесь — курица.",
+      "text_markdown": "Еще одно важное мясо здесь — курица.",
+      "tts": {
+        "text": "Еще одно важное мясо здесь, курица.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Куры жили во дворе.",
+      "text_markdown": "Куры жили во дворе.",
+      "tts": {
+        "text": "Куры жили во дворе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "По утрам они несли яйца, а еще из кур готовили воскресный обед.",
+      "text_markdown": "По утрам они несли яйца, а еще из кур готовили воскресный обед.",
+      "tts": {
+        "text": "По утрам они несли яйца, а еще из кур готовили воскресный обед.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Жареная курица — самое известное блюдо Юга.",
+      "text_markdown": "Жареная курица — самое известное блюдо Юга.",
+      "tts": {
+        "text": "Жареная курица, самое известное блюдо Юга.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Куски курицы обваливают в муке, соли и перце.",
+      "text_markdown": "Куски курицы обваливают в муке, соли и перце.",
+      "tts": {
+        "text": "Куски курицы обваливают в муке, соли и перце.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом их опускают в раскаленное масло.",
+      "text_markdown": "Потом их опускают в раскаленное масло.",
+      "tts": {
+        "text": "Потом их опускают в раскаленное масло.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Кожа становится хрустящей и золотистой.",
+      "text_markdown": "Кожа становится хрустящей и золотистой.",
+      "tts": {
+        "text": "Кожа становится хрустящей и золотистой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сом водится в реках и озерах.",
+      "text_markdown": "Сом водится в реках и озерах.",
+      "tts": {
+        "text": "Сом водится в реках и озерах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Южные повара обваливают сома в кукурузной муке и жарят его.",
+      "text_markdown": "Южные повара обваливают сома в кукурузной муке и жарят его.",
+      "tts": {
+        "text": "Южные повара обваливают сома в кукурузной муке и жарят его.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Его едят с хашпаппи, маленькими шариками из жареной кукурузной муки.",
+      "text_markdown": "Его едят с хашпаппи, маленькими шариками из жареной кукурузной муки.",
+      "tts": {
+        "text": "Его едят с хаш паппи, маленькими шариками из жареной кукурузной муки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Мясо и рыба",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Название смешное, но еда тут серьезная.",
+      "text_markdown": "Название смешное, но еда тут серьезная.",
+      "tts": {
+        "text": "Название смешное, но еда тут серьезная.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 4. Как здесь готовят",
+      "text_markdown": "Глава 4. Как здесь готовят"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почти весь соул-фуд держится на трех способах готовки: жарке, медленном тушении и копчении.",
+      "text_markdown": "Почти весь соул-фуд держится на трех способах готовки: жарке, медленном тушении и копчении.",
+      "tts": {
+        "text": "Почти весь соул фуд держится на трех способах готовки, жарке, медленном тушении и копчении.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Жарят здесь на тяжелой чугунной сковороде.",
+      "text_markdown": "Жарят здесь на тяжелой чугунной сковороде.",
+      "tts": {
+        "text": "Жарят здесь на тяжелой чугунной сковороде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Чугун долго держит тепло.",
+      "text_markdown": "Чугун долго держит тепло.",
+      "tts": {
+        "text": "Чугун долго держит тепло.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Хорошая сковорода старше самого повара.",
+      "text_markdown": "Хорошая сковорода старше самого повара.",
+      "tts": {
+        "text": "Хорошая сковорода старше самого повара.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ее передают от матери к дочери.",
+      "text_markdown": "Ее передают от матери к дочери.",
+      "tts": {
+        "text": "Ее передают от матери к дочери.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Медленное тушение идет в большой кастрюле на задней конфорке плиты.",
+      "text_markdown": "Медленное тушение идет в большой кастрюле на задней конфорке плиты.",
+      "tts": {
+        "text": "Медленное тушение идет в большой кастрюле на задней конфорке плиты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Зелень томится в кастрюле два или три часа.",
+      "text_markdown": "Зелень томится в кастрюле два или три часа.",
+      "tts": {
+        "text": "Зелень томится в кастрюле два или три часа.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Для вкуса туда кладут кусок копченой свинины.",
+      "text_markdown": "Для вкуса туда кладут кусок копченой свинины.",
+      "tts": {
+        "text": "Для вкуса туда кладут кусок копченой свинины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Вода превращается в темный, насыщенный бульон.",
+      "text_markdown": "Вода превращается в темный, насыщенный бульон.",
+      "tts": {
+        "text": "Вода превращается в темный, насыщенный бульон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Этот бульон называют \"пот ликкер\", и его льют на кукурузный хлеб.",
+      "text_markdown": "Этот бульон называют \"пот ликкер\", и его льют на кукурузный хлеб.",
+      "tts": {
+        "text": "Этот бульон называют \"пот ликкер\", и его льют на кукурузный хлеб.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Коптят на улице, в коптильне или в бочке.",
+      "text_markdown": "Коптят на улице, в коптильне или в бочке.",
+      "tts": {
+        "text": "Коптят на улице, в коптильне или в бочке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Дрова медленно горят под мясом.",
+      "text_markdown": "Дрова медленно горят под мясом.",
+      "tts": {
+        "text": "Дрова медленно горят под мясом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Больше всего любят древесину гикори.",
+      "text_markdown": "Больше всего любят древесину гикори.",
+      "tts": {
+        "text": "Больше всего любят древесину гикори.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Дым делает мясо коричневым и дает ему глубокий вкус.",
+      "text_markdown": "Дым делает мясо коричневым и дает ему глубокий вкус.",
+      "tts": {
+        "text": "Дым делает мясо коричневым и дает ему глубокий вкус.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Свиную лопатку коптят много часов, иногда целый день.",
+      "text_markdown": "Свиную лопатку коптят много часов, иногда целый день.",
+      "tts": {
+        "text": "Свиную лопатку коптят много часов, иногда целый день.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Как здесь готовят",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В хорошей южной кухне есть огонь, время и забота.",
+      "text_markdown": "В хорошей южной кухне есть огонь, время и забота.",
+      "tts": {
+        "text": "В хорошей южной кухне есть огонь, время и забота.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 5. Барбекю по регионам",
+      "text_markdown": "Глава 5. Барбекю по регионам"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На Юге \"барбекю\" означает мясо, которое медленно готовят на древесном дыму.",
+      "text_markdown": "На Юге \"барбекю\" означает мясо, которое медленно готовят на древесном дыму.",
+      "tts": {
+        "text": "На Юге \"барбекю\" означает мясо, которое медленно готовят на древесном дыму.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У каждого региона свой способ.",
+      "text_markdown": "У каждого региона свой способ.",
+      "tts": {
+        "text": "У каждого региона свой способ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Каролинах барбекю делают из свинины.",
+      "text_markdown": "В Каролинах барбекю делают из свинины.",
+      "tts": {
+        "text": "В Каролинах барбекю делают из свинины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "На востоке Северной Каролины соус делают из уксуса и перца.",
+      "text_markdown": "На востоке Северной Каролины соус делают из уксуса и перца.",
+      "tts": {
+        "text": "На востоке Северной Каролины соус делают из уксуса и перца.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он жидкий и резкий на вкус.",
+      "text_markdown": "Он жидкий и резкий на вкус.",
+      "tts": {
+        "text": "Он жидкий и резкий на вкус.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "В Южной Каролине соус желтый, на основе горчицы.",
+      "text_markdown": "В Южной Каролине соус желтый, на основе горчицы.",
+      "tts": {
+        "text": "В Южной Каролине соус желтый, на основе горчицы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Он немного сладкий.",
+      "text_markdown": "Он немного сладкий.",
+      "tts": {
+        "text": "Он немного сладкий.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Мемфисе, в штате Теннесси, главное мясо — свиные ребра.",
+      "text_markdown": "В Мемфисе, в штате Теннесси, главное мясо — свиные ребра.",
+      "tts": {
+        "text": "В Мемфисе, в штате Теннесси, главное мясо, свиные ребра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ребра натирают сухой смесью из соли, перца и множества специй.",
+      "text_markdown": "Ребра натирают сухой смесью из соли, перца и множества специй.",
+      "tts": {
+        "text": "Ребра натирают сухой смесью из соли, перца и множества специй.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Здесь главное мясо, а соус на втором плане.",
+      "text_markdown": "Здесь главное мясо, а соус на втором плане.",
+      "tts": {
+        "text": "Здесь главное мясо, а соус на втором плане.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Техасе барбекю делают из говядины.",
+      "text_markdown": "В Техасе барбекю делают из говядины.",
+      "tts": {
+        "text": "В Техасе барбекю делают из говядины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Этот кусок называют брискет.",
+      "text_markdown": "Этот кусок называют брискет.",
+      "tts": {
+        "text": "Этот кусок называют брискет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Его коптят от двенадцати до четырнадцати часов на дубовых дровах.",
+      "text_markdown": "Его коптят от двенадцати до четырнадцати часов на дубовых дровах.",
+      "tts": {
+        "text": "Его коптят от двенадцати до четырнадцати часов на дубовых дровах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Когда он приготовлен как надо, его можно разобрать пальцами.",
+      "text_markdown": "Когда он приготовлен как надо, его можно разобрать пальцами.",
+      "tts": {
+        "text": "Когда он приготовлен как надо, его можно разобрать пальцами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Канзас-Сити барбекю — это много видов мяса: свинина, говядина, курица, даже колбаса.",
+      "text_markdown": "В Канзас-Сити барбекю — это много видов мяса: свинина, говядина, курица, даже колбаса.",
+      "tts": {
+        "text": "В Канзас Сити барбекю, это много видов мяса, свинина, говядина, курица, даже колбаса.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Соус густой, сладкий и красный, его делают из томатов и патоки.",
+      "text_markdown": "Соус густой, сладкий и красный, его делают из томатов и патоки.",
+      "tts": {
+        "text": "Соус густой, сладкий и красный, его делают из томатов и патоки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Барбекю по регионам",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Карта южного барбекю — это карта регионов и рек.",
+      "text_markdown": "Карта южного барбекю — это карта регионов и рек.",
+      "tts": {
+        "text": "Карта южного барбекю, это карта регионов и рек.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 6. Классическая тарелка",
+      "text_markdown": "Глава 6. Классическая тарелка"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тарелка воскресного обеда полна.",
+      "text_markdown": "Тарелка воскресного обеда полна.",
+      "tts": {
+        "text": "Тарелка воскресного обеда полна.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В середине лежит жареная курица.",
+      "text_markdown": "В середине лежит жареная курица.",
+      "tts": {
+        "text": "В середине лежит жареная курица.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Рядом с курицей лежит порция картофельного пюре с коричневой подливкой.",
+      "text_markdown": "Рядом с курицей лежит порция картофельного пюре с коричневой подливкой.",
+      "tts": {
+        "text": "Рядом с курицей лежит порция картофельного пюре с коричневой подливкой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "С одной стороны лежит горка листовой капусты коллард, медленно приготовленной с копченой свининой.",
+      "text_markdown": "С одной стороны лежит горка листовой капусты коллард, медленно приготовленной с копченой свининой.",
+      "tts": {
+        "text": "С одной стороны лежит горка листовой капусты коллард, медленно приготовленной с копченой свининой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Зелень темная и мягкая.",
+      "text_markdown": "Зелень темная и мягкая.",
+      "tts": {
+        "text": "Зелень темная и мягкая.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "С другой стороны лежат макароны с сыром, запеченные до золотистой хрустящей корочки.",
+      "text_markdown": "С другой стороны лежат макароны с сыром, запеченные до золотистой хрустящей корочки.",
+      "tts": {
+        "text": "С другой стороны лежат макароны с сыром, запеченные до золотистой хрустящей корочки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Многие повара добавляют сверху слой сыра.",
+      "text_markdown": "Многие повара добавляют сверху слой сыра.",
+      "tts": {
+        "text": "Многие повара добавляют сверху слой сыра.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На столе стоит кукурузный хлеб.",
+      "text_markdown": "На столе стоит кукурузный хлеб.",
+      "tts": {
+        "text": "На столе стоит кукурузный хлеб.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Кукурузный хлеб делают из желтой кукурузной муки и пекут на горячей чугунной сковороде.",
+      "text_markdown": "Кукурузный хлеб делают из желтой кукурузной муки и пекут на горячей чугунной сковороде.",
+      "tts": {
+        "text": "Кукурузный хлеб делают из желтой кукурузной муки и пекут на горячей чугунной сковороде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он плотный, немного сладкий и отлично идет с маслом.",
+      "text_markdown": "Он плотный, немного сладкий и отлично идет с маслом.",
+      "tts": {
+        "text": "Он плотный, немного сладкий и отлично идет с маслом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А пьют сладкий чай.",
+      "text_markdown": "А пьют сладкий чай.",
+      "tts": {
+        "text": "А пьют сладкий чай.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сладкий чай — это крепко заваренный черный чай, в который сахар добавляют, пока он еще горячий.",
+      "text_markdown": "Сладкий чай — это крепко заваренный черный чай, в который сахар добавляют, пока он еще горячий.",
+      "tts": {
+        "text": "Сладкий чай, это крепко заваренный черный чай, в который сахар добавляют, пока он еще горячий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Его подают холодным, со льдом.",
+      "text_markdown": "Его подают холодным, со льдом.",
+      "tts": {
+        "text": "Его подают холодным, со льдом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После обеда подают пирог.",
+      "text_markdown": "После обеда подают пирог.",
+      "tts": {
+        "text": "После обеда подают пирог.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Пирог из батата считается самым южным пирогом.",
+      "text_markdown": "Пирог из батата считается самым южным пирогом.",
+      "tts": {
+        "text": "Пирог из батата считается самым южным пирогом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он коричневый, гладкий и теплый, с корицей и мускатным орехом.",
+      "text_markdown": "Он коричневый, гладкий и теплый, с корицей и мускатным орехом.",
+      "tts": {
+        "text": "Он коричневый, гладкий и теплый, с корицей и мускатным орехом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Классическая тарелка",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот она, классическая тарелка.",
+      "text_markdown": "Вот она, классическая тарелка.",
+      "tts": {
+        "text": "Вот она, классическая тарелка.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 7. За столом",
+      "text_markdown": "Глава 7. За столом"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Южный обед проходит за столом, когда все собираются вместе.",
+      "text_markdown": "Южный обед проходит за столом, когда все собираются вместе.",
+      "tts": {
+        "text": "Южный обед проходит за столом, когда все собираются вместе.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Еду ставят на стол в больших мисках и на больших блюдах.",
+      "text_markdown": "Еду ставят на стол в больших мисках и на больших блюдах.",
+      "tts": {
+        "text": "Еду ставят на стол в больших мисках и на больших блюдах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это называется \"по-семейному\". Каждый передает миску дальше.",
+      "text_markdown": "Это называется \"по-семейному\". Каждый передает миску дальше.",
+      "tts": {
+        "text": "Это называется \"по семейному\". Каждый передает миску дальше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Каждый берет что хочет.",
+      "text_markdown": "Каждый берет что хочет.",
+      "tts": {
+        "text": "Каждый берет что хочет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вилки и ножи самые обычные.",
+      "text_markdown": "Вилки и ножи самые обычные.",
+      "tts": {
+        "text": "Вилки и ножи самые обычные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Никакого особого порядка нет.",
+      "text_markdown": "Никакого особого порядка нет.",
+      "tts": {
+        "text": "Никакого особого порядка нет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Курицу можно есть вилкой, а можно взять руками.",
+      "text_markdown": "Курицу можно есть вилкой, а можно взять руками.",
+      "tts": {
+        "text": "Курицу можно есть вилкой, а можно взять руками.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И так, и так нормально.",
+      "text_markdown": "И так, и так нормально.",
+      "tts": {
+        "text": "И так, и так нормально.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Кукурузный хлеб ломают рукой, а не режут ножом.",
+      "text_markdown": "Кукурузный хлеб ломают рукой, а не режут ножом.",
+      "tts": {
+        "text": "Кукурузный хлеб ломают рукой, а не режут ножом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Перед едой кто-нибудь часто произносит короткую молитву.",
+      "text_markdown": "Перед едой кто-нибудь часто произносит короткую молитву.",
+      "tts": {
+        "text": "Перед едой кто нибудь часто произносит короткую молитву.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Бога благодарят за еду и за тех, кто ее приготовил.",
+      "text_markdown": "Бога благодарят за еду и за тех, кто ее приготовил.",
+      "tts": {
+        "text": "Бога благодарят за еду и за тех, кто ее приготовил.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если вы гость, вам скажут взять еще, и еще, и еще.",
+      "text_markdown": "Если вы гость, вам скажут взять еще, и еще, и еще.",
+      "tts": {
+        "text": "Если вы гость, вам скажут взять еще, и еще, и еще.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Стоит сказать да хотя бы два раза.",
+      "text_markdown": "Стоит сказать да хотя бы два раза.",
+      "tts": {
+        "text": "Стоит сказать да хотя бы два раза.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Уйти голодным нельзя.",
+      "text_markdown": "Уйти голодным нельзя.",
+      "tts": {
+        "text": "Уйти голодным нельзя.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В конце обеда никто не спешит вставать из-за стола.",
+      "text_markdown": "В конце обеда никто не спешит вставать из-за стола.",
+      "tts": {
+        "text": "В конце обеда никто не спешит вставать из за стола.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. За столом",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Разговоры — это половина обеда.",
+      "text_markdown": "Разговоры — это половина обеда.",
+      "tts": {
+        "text": "Разговоры, это половина обеда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Об этой книге",
+      "text_markdown": "Об этой книге"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это первая книга серии \"Еда мира\".",
+      "text_markdown": "Это первая книга серии \"Еда мира\".",
+      "tts": {
+        "text": "Это первая книга серии \"Еда мира\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ее читаю вслух я, ваша подруга Kym.",
+      "text_markdown": "Ее читает вслух Ким.",
+      "tts": {
+        "text": "Ее читаю вслух я, ваша подруга Ким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Каждое предложение короткое и ясное, чтобы вы могли следить по тексту на любом языке.",
+      "text_markdown": "Каждое предложение короткое и ясное, чтобы вы могли следить по тексту на любом языке.",
+      "tts": {
+        "text": "Каждое предложение короткое и ясное, чтобы вы могли следить по тексту на любом языке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если вы хотите услышать, как звучит предложение на другом языке, послушайте эту же книгу на этом языке.",
+      "text_markdown": "Если вы хотите услышать, как звучит предложение на другом языке, послушайте эту же книгу на этом языке.",
+      "tts": {
+        "text": "Если вы хотите услышать, как звучит предложение на другом языке, послушайте эту же книгу на этом языке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Слова на странице будут совпадать с тем, что вы слышите.",
+      "text_markdown": "Слова на странице будут совпадать с тем, что вы слышите.",
+      "tts": {
+        "text": "Слова на странице будут совпадать с тем, что вы слышите.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Так и учатся.",
+      "text_markdown": "Так и учатся.",
+      "tts": {
+        "text": "Так и учатся.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Об этой книге",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А теперь найдите что-нибудь вкусное и друга, с которым можно это разделить.",
+      "text_markdown": "А теперь найдите что-нибудь вкусное и друга, с которым можно это разделить.",
+      "tts": {
+        "text": "А теперь найдите что нибудь вкусное и друга, с которым можно это разделить.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

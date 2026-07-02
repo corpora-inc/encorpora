@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ur",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اے آئی دس ویک میں آپ کا خیر مقدم ہے۔ میں ونڈی ہوں۔",
+      "text_markdown": "اے آئی دس ویک میں آپ کا خیر مقدم ہے۔ میں ونڈی ہوں۔",
+      "title": "",
+      "tts": {
+        "text": "اے آئی دس ویک میں آپ کا خیر مقدم ہے۔ میں ونڈی ہوں۔",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ہمیشہ کی طرح رون بھی میرے ساتھ موجود ہے۔",
+      "text_markdown": "ہمیشہ کی طرح رون بھی میرے ساتھ موجود ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ہمیشہ کی طرح رون بھی میرے ساتھ موجود ہے۔",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "یہاں آ کر اچھا لگا۔",
+      "text_markdown": "یہاں آ کر اچھا لگا۔",
+      "title": "",
+      "tts": {
+        "text": "یہاں آ کر اچھا لگا۔",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "آج بدھ، 13 مئی، 2026 ہے۔ آئندہ پروگرام میں: اس ہفتے جو ماڈلز آئے۔ لیڈر بورڈز، اور کیوں آپ کو ان میں سے کچھ پر بھروسہ کرنا چھوڑ دینا چاہیے۔ ہمارا ہفتے کا تصور۔ اور بڑی تصویر — امریکہ کو ابھی نیا Federal Reserve چیئر ملا ہے، اور یہ AI کے لیے اتنا اہم ہے جتنا آپ سوچ سکتے ہیں۔",
+      "text_markdown": "آج بدھ، 13 مئی، 2026 ہے۔ آئندہ پروگرام میں: اس ہفتے جو ماڈلز آئے۔ لیڈر بورڈز، اور کیوں آپ کو ان میں سے کچھ پر بھروسہ کرنا چھوڑ دینا چاہیے۔ ہمارا ہفتے کا تصور۔ اور بڑی تصویر — امریکہ کو ابھی نیا Federal Reserve چیئر ملا ہے، اور یہ AI کے لیے اتنا اہم ہے جتنا آپ سوچ سکتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "آج بدھ، تیرہ مئی، دو ہزار چھبیس ہے۔ آئندہ پروگرام میں: اس ہفتے جو ماڈلز آئے۔ لیڈر بورڈز، اور کیوں آپ کو ان میں سے کچھ پر بھروسہ کرنا چھوڑ دینا چاہیے۔ ہمارا ہفتے کا تصور۔ اور بڑی تصویر — امریکہ کو ابھی نیا Federal Reserve چیئر ملا ہے، اور یہ AI کے لیے اتنا اہم ہے جتنا آپ سوچ سکتے ہیں۔",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron، اس ہفتے سب سے بڑی ماڈل خبر کیا ہے؟",
+      "text_markdown": "Ron، اس ہفتے سب سے بڑی ماڈل خبر کیا ہے؟",
+      "title": "",
+      "tts": {
+        "text": "Ron، اس ہفتے سب سے بڑی ماڈل خبر کیا ہے؟",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ChatGPT کے اندر کا ڈیفالٹ دماغ بدل گیا۔ OpenAI نے پچھلے ہفتے، منگل 5 مئی کو، فری ٹیئر میں GPT-5.5 Instant نام کا نیا ماڈل رول آؤٹ کیا۔ اگر مفت ChatGPT جواب چھوٹا یا emojis سے کم بھرا لگ رہا ہے، تو یہی وجہ ہے۔",
+      "text_markdown": "ChatGPT کے اندر کا ڈیفالٹ دماغ بدل گیا۔ OpenAI نے پچھلے ہفتے، منگل 5 مئی کو، فری ٹیئر میں GPT-5.5 Instant نام کا نیا ماڈل رول آؤٹ کیا۔ اگر مفت ChatGPT جواب چھوٹا یا emojis سے کم بھرا لگ رہا ہے، تو یہی وجہ ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT کے اندر کا ڈیفالٹ دماغ بدل گیا۔ OpenAI نے پچھلے ہفتے، منگل پانچ مئی کو، فری ٹیئر میں GPT پانچ اعشاریہ پانچ Instant نام کا نیا ماڈل رول آؤٹ کیا۔ اگر مفت ChatGPT جواب چھوٹا یا emojis سے کم بھرا لگ رہا ہے، تو یہی وجہ ہے۔",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "آخر کتنا چھوٹا؟",
+      "text_markdown": "آخر کتنا چھوٹا؟",
+      "title": "",
+      "tts": {
+        "text": "آخر کتنا چھوٹا؟",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI کا کہنا ہے کہ نیا ڈیفالٹ تقریباً 30% کم الفاظ اور 30% کم لائنیں لکھتا ہے اس ماڈل کے مقابلے میں جس کی جگہ اس نے لی ہے۔ وہ سب سے مشکل prompts پر hallucinated دعووں میں 50% کمی کا بھی دعویٰ کرتے ہیں۔ جیسے طبی سوالات، قانونی سوالات، اور مالی سوالات۔",
+      "text_markdown": "OpenAI کا کہنا ہے کہ نیا ڈیفالٹ تقریباً 30% کم الفاظ اور 30% کم لائنیں لکھتا ہے اس ماڈل کے مقابلے میں جس کی جگہ اس نے لی ہے۔ وہ سب سے مشکل prompts پر hallucinated دعووں میں 50% کمی کا بھی دعویٰ کرتے ہیں۔ جیسے طبی سوالات، قانونی سوالات، اور مالی سوالات۔",
+      "title": "",
+      "tts": {
+        "text": "OpenAI کا کہنا ہے کہ نیا ڈیفالٹ تقریباً تیس فیصد کم الفاظ اور تیس فیصد کم لائنیں لکھتا ہے اس ماڈل کے مقابلے میں جس کی جگہ اس نے لی ہے۔ وہ سب سے مشکل prompts پر hallucinated دعووں میں پچاس فیصد کمی کا بھی دعویٰ کرتے ہیں۔ جیسے طبی سوالات، قانونی سوالات، اور مالی سوالات۔",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کیا OpenAI کے باہر کسی نے ان نمبروں کی تصدیق کی ہے؟",
+      "text_markdown": "کیا OpenAI کے باہر کسی نے ان نمبروں کی تصدیق کی ہے؟",
+      "title": "",
+      "tts": {
+        "text": "کیا OpenAI کے باہر کسی نے ان نمبروں کی تصدیق کی ہے؟",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "بڑے پیمانے پر نہیں۔ آزاد benchmark کے لوگوں، جیسے Artificial Analysis، نے نئے ماڈل کو اپنے مجموعی intelligence index میں سب سے اوپر رکھا ہے۔ لیکن hallucination کے دعووں کی تصدیق میں وقت لگتا ہے۔ وہ ہفتوں میں سامنے آتے ہیں، جیسے لوگ اصل میں ماڈل استعمال کرتے ہیں۔",
+      "text_markdown": "بڑے پیمانے پر نہیں۔ آزاد benchmark کے لوگوں، جیسے Artificial Analysis، نے نئے ماڈل کو اپنے مجموعی intelligence index میں سب سے اوپر رکھا ہے۔ لیکن hallucination کے دعووں کی تصدیق میں وقت لگتا ہے۔ وہ ہفتوں میں سامنے آتے ہیں، جیسے لوگ اصل میں ماڈل استعمال کرتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "بڑے پیمانے پر نہیں۔ آزاد benchmark کے لوگوں، جیسے Artificial Analysis، نے نئے ماڈل کو اپنے مجموعی intelligence index میں سب سے اوپر رکھا ہے۔ لیکن hallucination کے دعووں کی تصدیق میں وقت لگتا ہے۔ وہ ہفتوں میں سامنے آتے ہیں، جیسے لوگ اصل میں ماڈل استعمال کرتے ہیں۔",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اور کھلے وزنوں والے ماڈلوں کے بارے میں آپ کی کیا رائے ہے؟",
+      "text_markdown": "اور کھلے وزنوں والے ماڈلوں کے بارے میں آپ کی کیا رائے ہے؟",
+      "title": "",
+      "tts": {
+        "text": "اور کھلے وزنوں والے ماڈلوں کے بارے میں آپ کی کیا رائے ہے؟",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "دو بڑی چیزیں۔ Moonshot، Kimi ماڈل کے پیچھے چینی lab نے، پچھلے ہفتے 7 مئی کو $20 billion کی valuation پر $2 billion اٹھائے۔ اور ان کا تازہ ترین ماڈل، Kimi K 2.6، ابھی OpenRouter پر token volume کے لیے ٹاپ spot لے گیا ہے۔",
+      "text_markdown": "دو بڑی چیزیں۔ Moonshot، Kimi ماڈل کے پیچھے چینی lab نے، پچھلے ہفتے 7 مئی کو $20 billion کی valuation پر $2 billion اٹھائے۔ اور ان کا تازہ ترین ماڈل، Kimi K 2.6، ابھی OpenRouter پر token volume کے لیے ٹاپ spot لے گیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "دو بڑی چیزیں۔ Moonshot، Kimi ماڈل کے پیچھے چینی lab نے، پچھلے ہفتے سات مئی کو بیس بلین ڈالر کی valuation پر دو بلین ڈالر اٹھائے۔ اور ان کا تازہ ترین ماڈل، Kimi K دو اعشاریہ چھ، ابھی OpenRouter پر token volume کے لیے ٹاپ spot لے گیا ہے۔",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ٹاپ spot? مجموعی طور پر؟",
+      "text_markdown": "ٹاپ spot? مجموعی طور پر؟",
+      "title": "",
+      "tts": {
+        "text": "ٹاپ spot? مجموعی طور پر؟",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "مجموعی طور پر۔ یہ ایک اہم commercial router پر نمبر ون پر چینی open weights ماڈل ہے۔ چھ ماہ پہلے، یہ ناقابل تصور ہوتا۔",
+      "text_markdown": "مجموعی طور پر۔ یہ ایک اہم commercial router پر نمبر ون پر چینی open weights ماڈل ہے۔ چھ ماہ پہلے، یہ ناقابل تصور ہوتا۔",
+      "title": "",
+      "tts": {
+        "text": "مجموعی طور پر۔ یہ ایک اہم commercial router پر نمبر ون پر چینی open weights ماڈل ہے۔ چھ ماہ پہلے، یہ ناقابل تصور ہوتا۔",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کوئی اور چیز قابل ذکر ہے؟",
+      "text_markdown": "کوئی اور چیز قابل ذکر ہے؟",
+      "title": "",
+      "tts": {
+        "text": "کوئی اور چیز قابل ذکر ہے؟",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral، فرانسیسی lab نے، اپریل کے آخر میں Medium 3.5 شپ کیا۔ وہ ایک chat model، reasoning model، اور coding model کے پرانے تقسیم کو ایک پروڈکٹ میں ضم کر رہے ہیں۔ وہی رجحان جو OpenAI نے GPT-5 family کے ساتھ شروع کیا۔ پوری انڈسٹری اس سمت جا رہی ہے۔",
+      "text_markdown": "Mistral، فرانسیسی lab نے، اپریل کے آخر میں Medium 3.5 شپ کیا۔ وہ ایک chat model، reasoning model، اور coding model کے پرانے تقسیم کو ایک پروڈکٹ میں ضم کر رہے ہیں۔ وہی رجحان جو OpenAI نے GPT-5 family کے ساتھ شروع کیا۔ پوری انڈسٹری اس سمت جا رہی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Mistral، فرانسیسی lab نے، اپریل کے آخر میں Medium تین اعشاریہ پانچ شپ کیا۔ وہ ایک chat model، reasoning model، اور coding model کے پرانے تقسیم کو ایک پروڈکٹ میں ضم کر رہے ہیں۔ وہی رجحان جو OpenAI نے GPT پانچ family کے ساتھ شروع کیا۔ پوری انڈسٹری اس سمت جا رہی ہے۔",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اور آگے کیا آ رہا ہے؟",
+      "text_markdown": "اور آگے کیا آ رہا ہے؟",
+      "title": "",
+      "tts": {
+        "text": "اور آگے کیا آ رہا ہے؟",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Google I/O منگل کو ہے۔ سب کو نیا Gemini کی امید ہے، اور Gemini Omni نام کے video generation model کے بارے میں قابل اعتماد بات چیت ہو رہی ہے۔ OpenAI کے پاس GPT-5.6 ٹیسٹنگ میں ہے۔ Anthropic کے پاس Mythos نام کا ماڈل private preview میں ہے۔ ہم اگلے ہفتے کافی کچھ معلوم کر لیں گے۔",
+      "text_markdown": "Google I/O منگل کو ہے۔ سب کو نیا Gemini کی امید ہے، اور Gemini Omni نام کے video generation model کے بارے میں قابل اعتماد بات چیت ہو رہی ہے۔ OpenAI کے پاس GPT-5.6 ٹیسٹنگ میں ہے۔ Anthropic کے پاس Mythos نام کا ماڈل private preview میں ہے۔ ہم اگلے ہفتے کافی کچھ معلوم کر لیں گے۔",
+      "title": "",
+      "tts": {
+        "text": "Google I O منگل کو ہے۔ سب کو نیا Gemini کی امید ہے، اور Gemini Omni نام کے video generation model کے بارے میں قابل اعتماد بات چیت ہو رہی ہے۔ OpenAI کے پاس GPT پانچ اعشاریہ چھ ٹیسٹنگ میں ہے۔ Anthropic کے پاس Mythos نام کا ماڈل private preview میں ہے۔ ہم اگلے ہفتے کافی کچھ معلوم کر لیں گے۔",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ٹھیک ہے، آئیے leaderboards پر آتے ہیں۔",
+      "text_markdown": "ٹھیک ہے، آئیے leaderboards پر آتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "ٹھیک ہے، آئیے leaderboards پر آتے ہیں۔",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اس ہفتے بورڈوں پر کیا کچھ چل رہا ہے، رون؟",
+      "text_markdown": "اس ہفتے بورڈوں پر کیا کچھ چل رہا ہے، رون؟",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے بورڈوں پر کیا کچھ چل رہا ہے، رون؟",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "اس ہفتے اصل کہانی scores نہیں ہے۔ یہ وہ scores ہیں جن پر آپ کو بھروسہ کرنا چھوڑ دینا چاہیے۔",
+      "text_markdown": "اس ہفتے اصل کہانی scores نہیں ہے۔ یہ وہ scores ہیں جن پر آپ کو بھروسہ کرنا چھوڑ دینا چاہیے۔",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے اصل کہانی scores نہیں ہے۔ یہ وہ scores ہیں جن پر آپ کو بھروسہ کرنا چھوڑ دینا چاہیے۔",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "رون، اس بارے میں ہمیں ذرا اور بتائیے۔",
+      "text_markdown": "رون، اس بارے میں ہمیں ذرا اور بتائیے۔",
+      "title": "",
+      "tts": {
+        "text": "رون، اس بارے میں ہمیں ذرا اور بتائیے۔",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Berkeley کے ایک گروپ نے پیپر پبلش کیا۔ انہوں نے ایک خودکار scanner بنایا جس نے ہر بڑے AI agent benchmark پر تقریباً کامل score کیا۔ اصل میں ایک بھی کام حل کیے بغیر۔ انہوں نے benchmarks کے اپنے جوابات چیک کرنے کے طریقے کا فائدہ اٹھایا۔",
+      "text_markdown": "Berkeley کے ایک گروپ نے پیپر پبلش کیا۔ انہوں نے ایک خودکار scanner بنایا جس نے ہر بڑے AI agent benchmark پر تقریباً کامل score کیا۔ اصل میں ایک بھی کام حل کیے بغیر۔ انہوں نے benchmarks کے اپنے جوابات چیک کرنے کے طریقے کا فائدہ اٹھایا۔",
+      "title": "",
+      "tts": {
+        "text": "Berkeley کے ایک گروپ نے پیپر پبلش کیا۔ انہوں نے ایک خودکار scanner بنایا جس نے ہر بڑے AI agent benchmark پر تقریباً کامل score کیا۔ اصل میں ایک بھی کام حل کیے بغیر۔ انہوں نے benchmarks کے اپنے جوابات چیک کرنے کے طریقے کا فائدہ اٹھایا۔",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "انہوں نے دھوکہ دیا، اور benchmarks نے اسے نہیں پکڑا۔",
+      "text_markdown": "انہوں نے دھوکہ دیا، اور benchmarks نے اسے نہیں پکڑا۔",
+      "title": "",
+      "tts": {
+        "text": "انہوں نے دھوکہ دیا، اور benchmarks نے اسے نہیں پکڑا۔",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "صحیح، اور اسی ہفتے اوپن اے آئی نے یہ بھی اعلان کیا کہ وہ ایس ڈبلیو ای بینچ ویریفائیڈ پر اپنی جانچ روک رہے ہیں، جو ایک کوڈنگ معیار تھا جس کا وہ بار بار حوالہ دیتے تھے، کیونکہ مشکل کاموں میں آدھے سے زیادہ میں ٹیسٹ ٹوٹے ہوئے نکلے، یعنی صاف خرابیاں سامنے آئیں",
+      "text_markdown": "صحیح، اور اسی ہفتے اوپن اے آئی نے یہ بھی اعلان کیا کہ وہ ایس ڈبلیو ای بینچ ویریفائیڈ پر اپنی جانچ روک رہے ہیں، جو ایک کوڈنگ معیار تھا جس کا وہ بار بار حوالہ دیتے تھے، کیونکہ مشکل کاموں میں آدھے سے زیادہ میں ٹیسٹ ٹوٹے ہوئے نکلے، یعنی صاف خرابیاں سامنے آئیں",
+      "title": "",
+      "tts": {
+        "text": "صحیح، اور اسی ہفتے اوپن اے آئی نے یہ بھی اعلان کیا کہ وہ ایس ڈبلیو ای بینچ ویریفائیڈ پر اپنی جانچ روک رہے ہیں، جو ایک کوڈنگ معیار تھا جس کا وہ بار بار حوالہ دیتے تھے، کیونکہ مشکل کاموں میں آدھے سے زیادہ میں ٹیسٹ ٹوٹے ہوئے نکلے، یعنی صاف خرابیاں سامنے آئیں",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "تو پچھلے سال سے جو نمبر ہم سن رہے تھے وہ...",
+      "text_markdown": "تو پچھلے سال سے جو نمبر ہم سن رہے تھے وہ...",
+      "title": "",
+      "tts": {
+        "text": "تو پچھلے سال سے جو نمبر ہم سن رہے تھے وہ...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "کم از کم جزوی طور پر بڑھائے گئے ہیں۔ ہر ماڈل نہیں۔ ہر benchmark نہیں۔ لیکن یہ شعبہ اپنا measuring tape عوام میں دوبارہ بنا رہا ہے۔ نئی evaluations جیسے SWE-bench Pro اور SWE-rebench نام کا پروجیکٹ test code کو private رکھ کر اسے ٹھیک کرنے کی کوشش کر رہے ہیں۔",
+      "text_markdown": "کم از کم جزوی طور پر بڑھائے گئے ہیں۔ ہر ماڈل نہیں۔ ہر benchmark نہیں۔ لیکن یہ شعبہ اپنا measuring tape عوام میں دوبارہ بنا رہا ہے۔ نئی evaluations جیسے SWE-bench Pro اور SWE-rebench نام کا پروجیکٹ test code کو private رکھ کر اسے ٹھیک کرنے کی کوشش کر رہے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "کم از کم جزوی طور پر بڑھائے گئے ہیں۔ ہر ماڈل نہیں۔ ہر benchmark نہیں۔ لیکن یہ شعبہ اپنا measuring tape عوام میں دوبارہ بنا رہا ہے۔ نئی evaluations جیسے SWE bench Pro اور SWE rebench نام کا پروجیکٹ test code کو private رکھ کر اسے ٹھیک کرنے کی کوشش کر رہے ہیں۔",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کیا کوئی چیز واقعی صاف طور پر اوپر جا رہی ہے؟",
+      "text_markdown": "کیا کوئی چیز واقعی صاف طور پر اوپر جا رہی ہے؟",
+      "title": "",
+      "tts": {
+        "text": "کیا کوئی چیز واقعی صاف طور پر اوپر جا رہی ہے؟",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "صرف دو باتیں ہیں اور حساب بالکل صاف ہے۔ اپریل کے وسط میں انتھروپک کا کلاڈ اوپس چار اعشاریہ سات وہ پہلا ماڈل بنا جس نے ایل ایم ارینا کی کوڈ لکھنے کی درجہ بندی میں پندرہ سو ایلو کو واضح طور پر پار کیا۔ اس سے چند ہفتے پہلے اوپس چار اعشاریہ چھ پندرہ سو تک پہنچا تھا۔ اس ہفتے تک اوپس چار اعشاریہ سات تقریباً پندرہ سو انہتر ایلو کے ساتھ اب بھی سب سے اوپر ہے۔ انتھروپک کے پاس مائتھوس نام کا ایک الگ ماڈل بھی ہے جو نجی شراکت داروں کے لیے ابتدائی پیش نظارے کے مرحلے میں ہے اور انتھروپک کی اپنی پیمائش کے مطابق اٹھارہ معیاری ایجنٹ آزمائشوں میں سے سترہ میں آگے ہے۔",
+      "text_markdown": "صرف دو باتیں ہیں اور حساب بالکل صاف ہے۔ اپریل کے وسط میں انتھروپک کا کلاڈ اوپس چار اعشاریہ سات وہ پہلا ماڈل بنا جس نے ایل ایم ارینا کی کوڈ لکھنے کی درجہ بندی میں پندرہ سو ایلو کو واضح طور پر پار کیا۔ اس سے چند ہفتے پہلے اوپس چار اعشاریہ چھ پندرہ سو تک پہنچا تھا۔ اس ہفتے تک اوپس چار اعشاریہ سات تقریباً پندرہ سو انہتر ایلو کے ساتھ اب بھی سب سے اوپر ہے۔ انتھروپک کے پاس مائتھوس نام کا ایک الگ ماڈل بھی ہے جو نجی شراکت داروں کے لیے ابتدائی پیش نظارے کے مرحلے میں ہے اور انتھروپک کی اپنی پیمائش کے مطابق اٹھارہ معیاری ایجنٹ آزمائشوں میں سے سترہ میں آگے ہے۔",
+      "title": "",
+      "tts": {
+        "text": "صرف دو باتیں ہیں اور حساب بالکل صاف ہے۔ اپریل کے وسط میں انتھروپک کا کلاڈ اوپس چار اعشاریہ سات وہ پہلا ماڈل بنا جس نے ایل ایم ارینا کی کوڈ لکھنے کی درجہ بندی میں پندرہ سو ایلو کو واضح طور پر پار کیا۔ اس سے چند ہفتے پہلے اوپس چار اعشاریہ چھ پندرہ سو تک پہنچا تھا۔ اس ہفتے تک اوپس چار اعشاریہ سات تقریباً پندرہ سو انہتر ایلو کے ساتھ اب بھی سب سے اوپر ہے۔ انتھروپک کے پاس مائتھوس نام کا ایک الگ ماڈل بھی ہے جو نجی شراکت داروں کے لیے ابتدائی پیش نظارے کے مرحلے میں ہے اور انتھروپک کی اپنی پیمائش کے مطابق اٹھارہ معیاری ایجنٹ آزمائشوں میں سے سترہ میں آگے ہے۔",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ایک ماڈل جسے عوام استعمال نہیں کر سکتے boards پر اوپر ہے۔",
+      "text_markdown": "ایک ماڈل جسے عوام استعمال نہیں کر سکتے boards پر اوپر ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ایک ماڈل جسے عوام استعمال نہیں کر سکتے boards پر اوپر ہے۔",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ہم وہاں ہیں۔ دوسرا بڑا رجحان open اور closed کا فاصلہ ہے۔ یہ اب تک کا سب سے کم ہے۔ DeepSeek V4 Pro اور Kimi K 2.6 cross evaluation intelligence index پر GPT-5.5 کے حملے کی مسافت میں ہیں۔ یہ فاصلہ بہت بڑا ہوا کرتا تھا۔ اب یہ چھوٹا ہے۔",
+      "text_markdown": "ہم وہاں ہیں۔ دوسرا بڑا رجحان open اور closed کا فاصلہ ہے۔ یہ اب تک کا سب سے کم ہے۔ DeepSeek V4 Pro اور Kimi K 2.6 cross evaluation intelligence index پر GPT-5.5 کے حملے کی مسافت میں ہیں۔ یہ فاصلہ بہت بڑا ہوا کرتا تھا۔ اب یہ چھوٹا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ہم وہاں ہیں۔ دوسرا بڑا رجحان open اور closed کا فاصلہ ہے۔ یہ اب تک کا سب سے کم ہے۔ DeepSeek V چار Pro اور Kimi K دو اعشاریہ چھ cross evaluation intelligence index پر GPT پانچ اعشاریہ پانچ کے حملے کی مسافت میں ہیں۔ یہ فاصلہ بہت بڑا ہوا کرتا تھا۔ اب یہ چھوٹا ہے۔",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ٹھیک ہے، آئیے ہفتے کے concept میں جاتے ہیں۔",
+      "text_markdown": "ٹھیک ہے، آئیے ہفتے کے concept میں جاتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "ٹھیک ہے، آئیے ہفتے کے concept میں جاتے ہیں۔",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron، اس ہفتے کا concept mixture of experts ہے۔ ہم mixture of experts پر کیوں توجہ دے رہے ہیں؟",
+      "text_markdown": "Ron، اس ہفتے کا concept mixture of experts ہے۔ ہم mixture of experts پر کیوں توجہ دے رہے ہیں؟",
+      "title": "",
+      "tts": {
+        "text": "Ron، اس ہفتے کا concept mixture of experts ہے۔ ہم mixture of experts پر کیوں توجہ دے رہے ہیں؟",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "کیونکہ جس اوپن ویٹس والے ماڈل کا ہم نے ابھی ذکر کیا، یعنی کیمی دو اعشاریہ چھ، اس میں کل ملا کر دس کھرب پیرامیٹرز ہیں، مگر بیک وقت ان میں سے صرف بتیس ارب پیرامیٹرز ہی کام کرتے ہیں، اور اسی کو ماہرین کی آمیزش کا نظام سمجھیں",
+      "text_markdown": "کیونکہ جس اوپن ویٹس والے ماڈل کا ہم نے ابھی ذکر کیا، یعنی کیمی دو اعشاریہ چھ، اس میں کل ملا کر دس کھرب پیرامیٹرز ہیں، مگر بیک وقت ان میں سے صرف بتیس ارب پیرامیٹرز ہی کام کرتے ہیں، اور اسی کو ماہرین کی آمیزش کا نظام سمجھیں",
+      "title": "",
+      "tts": {
+        "text": "کیونکہ جس اوپن ویٹس والے ماڈل کا ہم نے ابھی ذکر کیا، یعنی کیمی دو اعشاریہ چھ، اس میں کل ملا کر دس کھرب پیرامیٹرز ہیں، مگر بیک وقت ان میں سے صرف بتیس ارب پیرامیٹرز ہی کام کرتے ہیں، اور اسی کو ماہرین کی آمیزش کا نظام سمجھیں",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ہمیں ان لوگوں کے لیے اس کی وضاحت کریں جو سن رہے ہیں۔",
+      "text_markdown": "ہمیں ان لوگوں کے لیے اس کی وضاحت کریں جو سن رہے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "ہمیں ان لوگوں کے لیے اس کی وضاحت کریں جو سن رہے ہیں۔",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ایک عام AI ماڈل ایک بڑے دماغ کی طرح ہے۔ یہ جو بھی لفظ پیدا کرتا ہے دماغ کا ہر حصہ استعمال کرتا ہے۔ Mixture of experts ماڈل ایک عمارت کی طرح ہے جو specialists سے بھری ہو۔ دروازے پر ایک receptionist کے ساتھ۔ ہر لفظ کے لیے، receptionist دو یا تین specialists کو مشورے کے لیے چنتا ہے، اور باقی عمارت خاموش رہتی ہے۔",
+      "text_markdown": "ایک عام AI ماڈل ایک بڑے دماغ کی طرح ہے۔ یہ جو بھی لفظ پیدا کرتا ہے دماغ کا ہر حصہ استعمال کرتا ہے۔ Mixture of experts ماڈل ایک عمارت کی طرح ہے جو specialists سے بھری ہو۔ دروازے پر ایک receptionist کے ساتھ۔ ہر لفظ کے لیے، receptionist دو یا تین specialists کو مشورے کے لیے چنتا ہے، اور باقی عمارت خاموش رہتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ایک عام AI ماڈل ایک بڑے دماغ کی طرح ہے۔ یہ جو بھی لفظ پیدا کرتا ہے دماغ کا ہر حصہ استعمال کرتا ہے۔ Mixture of experts ماڈل ایک عمارت کی طرح ہے جو specialists سے بھری ہو۔ دروازے پر ایک receptionist کے ساتھ۔ ہر لفظ کے لیے، receptionist دو یا تین specialists کو مشورے کے لیے چنتا ہے، اور باقی عمارت خاموش رہتی ہے۔",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "تو ماڈل کاغذ پر بڑا ہے لیکن چلانے میں سستا۔",
+      "text_markdown": "تو ماڈل کاغذ پر بڑا ہے لیکن چلانے میں سستا۔",
+      "title": "",
+      "tts": {
+        "text": "تو ماڈل کاغذ پر بڑا ہے لیکن چلانے میں سستا۔",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "بالکل۔ ایک کھرب وزنی قدروں کی گنجائش۔ مگر ہر لفظ پر حساب صرف بتیس ارب وزنی قدروں کے برابر۔ یہی اصل ترکیب ہے۔ ابتدائی حصہ ضابطے کا ایک چھوٹا سا ٹکڑا ہے جسے رہنما کہتے ہیں۔ ماہر حصے وہ ذیلی جالے ہیں جنہیں ماہرین کہا جاتا ہے۔ یہ ماڈل رہنما اور ماہرین کو ملا کر شروع سے آخر تک تربیت پاتا ہے۔",
+      "text_markdown": "بالکل۔ ایک کھرب وزنی قدروں کی گنجائش۔ مگر ہر لفظ پر حساب صرف بتیس ارب وزنی قدروں کے برابر۔ یہی اصل ترکیب ہے۔ ابتدائی حصہ ضابطے کا ایک چھوٹا سا ٹکڑا ہے جسے رہنما کہتے ہیں۔ ماہر حصے وہ ذیلی جالے ہیں جنہیں ماہرین کہا جاتا ہے۔ یہ ماڈل رہنما اور ماہرین کو ملا کر شروع سے آخر تک تربیت پاتا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "بالکل۔ ایک کھرب وزنی قدروں کی گنجائش۔ مگر ہر لفظ پر حساب صرف بتیس ارب وزنی قدروں کے برابر۔ یہی اصل ترکیب ہے۔ ابتدائی حصہ ضابطے کا ایک چھوٹا سا ٹکڑا ہے جسے رہنما کہتے ہیں۔ ماہر حصے وہ ذیلی جالے ہیں جنہیں ماہرین کہا جاتا ہے۔ یہ ماڈل رہنما اور ماہرین کو ملا کر شروع سے آخر تک تربیت پاتا ہے۔",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کیا ہر بڑا frontier ماڈل یہ کر رہا ہے؟",
+      "text_markdown": "کیا ہر بڑا frontier ماڈل یہ کر رہا ہے؟",
+      "title": "",
+      "tts": {
+        "text": "کیا ہر بڑا frontier ماڈل یہ کر رہا ہے؟",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ان میں سے اکثر، ہاں۔ اگرچہ labs ہمیشہ اس کی تصدیق نہیں کرتے۔ GPT-4 ایک mixture of experts ماڈل تھا۔ DeepSeek کا flagship ایک mixture of experts ماڈل ہے۔ Mistral 2023 سے mixture of experts ماڈلز شپ کر رہا ہے۔ چین سے نئی لہر نے اس ڈیزائن کو حد تک پہنچا دیا ہے۔",
+      "text_markdown": "ان میں سے اکثر، ہاں۔ اگرچہ labs ہمیشہ اس کی تصدیق نہیں کرتے۔ GPT-4 ایک mixture of experts ماڈل تھا۔ DeepSeek کا flagship ایک mixture of experts ماڈل ہے۔ Mistral 2023 سے mixture of experts ماڈلز شپ کر رہا ہے۔ چین سے نئی لہر نے اس ڈیزائن کو حد تک پہنچا دیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ان میں سے اکثر، ہاں۔ اگرچہ labs ہمیشہ اس کی تصدیق نہیں کرتے۔ GPT چار ایک mixture of experts ماڈل تھا۔ DeepSeek کا flagship ایک mixture of experts ماڈل ہے۔ Mistral دو ہزار تیئس سے mixture of experts ماڈلز شپ کر رہا ہے۔ چین سے نئی لہر نے اس ڈیزائن کو حد تک پہنچا دیا ہے۔",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اس سے کسی ایسے شخص کو کیا فرق پڑتا ہے جو صرف ChatGPT استعمال کرتا ہے؟",
+      "text_markdown": "اس سے کسی ایسے شخص کو کیا فرق پڑتا ہے جو صرف ChatGPT استعمال کرتا ہے؟",
+      "title": "",
+      "tts": {
+        "text": "اس سے کسی ایسے شخص کو کیا فرق پڑتا ہے جو صرف ChatGPT استعمال کرتا ہے؟",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "دو وجوہات ہیں۔ پہلی۔ یہی بنیادی وجہ ہے کہ چین میں کوئی اوپن ویٹس لیب بجٹ کے ایک حصے میں فرنٹیئر کلاس کوالٹی پر کام کر سکتی ہے۔ دوسری۔ یہی بنیادی وجہ ہے کہ ایک API کال کی قیمت سینٹس میں ہے، ڈالرز میں نہیں۔ جب آپ قیمتیں گرتے اور کوالٹی اعلیٰ برقرار رہتے دیکھتے ہیں، تو عام طور پر mixture of experts ہی اس کی وجہ ہے۔",
+      "text_markdown": "دو وجوہات ہیں۔ پہلی۔ یہی بنیادی وجہ ہے کہ چین میں کوئی اوپن ویٹس لیب بجٹ کے ایک حصے میں فرنٹیئر کلاس کوالٹی پر کام کر سکتی ہے۔ دوسری۔ یہی بنیادی وجہ ہے کہ ایک API کال کی قیمت سینٹس میں ہے، ڈالرز میں نہیں۔ جب آپ قیمتیں گرتے اور کوالٹی اعلیٰ برقرار رہتے دیکھتے ہیں، تو عام طور پر mixture of experts ہی اس کی وجہ ہے۔",
+      "title": "",
+      "tts": {
+        "text": "دو وجوہات ہیں۔ پہلی۔ یہی بنیادی وجہ ہے کہ چین میں کوئی اوپن ویٹس لیب بجٹ کے ایک حصے میں فرنٹیئر کلاس کوالٹی پر کام کر سکتی ہے۔ دوسری۔ یہی بنیادی وجہ ہے کہ ایک API کال کی قیمت سینٹس میں ہے، ڈالرز میں نہیں۔ جب آپ قیمتیں گرتے اور کوالٹی اعلیٰ برقرار رہتے دیکھتے ہیں، تو عام طور پر mixture of experts ہی اس کی وجہ ہے۔",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mixture of experts۔ Router۔ Experts۔ Sparse activation۔ تین الفاظ جو آپ کو ساتھ لے جانے ہیں۔ اب آئیے بڑی تصویر کی طرف واپس چلتے ہیں۔",
+      "text_markdown": "Mixture of experts۔ Router۔ Experts۔ Sparse activation۔ تین الفاظ جو آپ کو ساتھ لے جانے ہیں۔ اب آئیے بڑی تصویر کی طرف واپس چلتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts۔ Router۔ Experts۔ Sparse activation۔ تین الفاظ جو آپ کو ساتھ لے جانے ہیں۔ اب آئیے بڑی تصویر کی طرف واپس چلتے ہیں۔",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron، ہماری دنیا سے باہر اس ہفتے کی بڑی خبر Federal Reserve ہے۔",
+      "text_markdown": "Ron، ہماری دنیا سے باہر اس ہفتے کی بڑی خبر Federal Reserve ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Ron، ہماری دنیا سے باہر اس ہفتے کی بڑی خبر Federal Reserve ہے۔",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "آج، U.S. Senate نے Kevin Warsh کو Federal Reserve کے اگلے چیئر کے طور پر منظور کر دیا۔ ووٹنگ 54 سے 45 تھی۔ جدید امریکی تاریخ میں Fed چیئر کے لیے یہ سب سے کم ووٹ تھا۔ صرف ایک Democrat نے پارٹی لائن پار کی۔",
+      "text_markdown": "آج، U.S. Senate نے Kevin Warsh کو Federal Reserve کے اگلے چیئر کے طور پر منظور کر دیا۔ ووٹنگ 54 سے 45 تھی۔ جدید امریکی تاریخ میں Fed چیئر کے لیے یہ سب سے کم ووٹ تھا۔ صرف ایک Democrat نے پارٹی لائن پار کی۔",
+      "title": "",
+      "tts": {
+        "text": "آج، یو ایس سینٹ نے کیون وارش کو فیڈرل ریزرو کے اگلے چیئر کے طور پر منظور کر دیا۔ ووٹنگ چوّن سے پینتالیس تھی۔ جدید امریکی تاریخ میں فیڈ چیئر کے لیے یہ سب سے کم ووٹ تھا۔ صرف ایک ڈیموکریٹ نے پارٹی لائن پار کی۔",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اس کا AI کے لیے کیا مطلب ہے؟",
+      "text_markdown": "اس کا AI کے لیے کیا مطلب ہے؟",
+      "title": "",
+      "tts": {
+        "text": "اس کا AI کے لیے کیا مطلب ہے؟",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "کیونکہ فی الوقت AI buildout دو چیزوں سے محدود ہے۔ بجلی، اور سرمائے کی قیمت۔ Fed سرمائے کی قیمت مقرر کرتا ہے۔ اور نئے چیئر نے ریکارڈ پر کہا ہے کہ وہ اپنے پیشرو سے زیادہ تیزی سے شرح میں کمی کرنا چاہتے ہیں۔",
+      "text_markdown": "کیونکہ فی الوقت AI buildout دو چیزوں سے محدود ہے۔ بجلی، اور سرمائے کی قیمت۔ Fed سرمائے کی قیمت مقرر کرتا ہے۔ اور نئے چیئر نے ریکارڈ پر کہا ہے کہ وہ اپنے پیشرو سے زیادہ تیزی سے شرح میں کمی کرنا چاہتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "کیونکہ فی الوقت AI buildout دو چیزوں سے محدود ہے۔ بجلی، اور سرمائے کی قیمت۔ Fed سرمائے کی قیمت مقرر کرتا ہے۔ اور نئے چیئر نے ریکارڈ پر کہا ہے کہ وہ اپنے پیشرو سے زیادہ تیزی سے شرح میں کمی کرنا چاہتے ہیں۔",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "تیز شرح میں کمی AI سرمایہ کاری کو سستا بناتی ہے۔",
+      "text_markdown": "تیز شرح میں کمی AI سرمایہ کاری کو سستا بناتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "تیز شرح میں کمی AI سرمایہ کاری کو سستا بناتی ہے۔",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "جی ہاں۔ hyperscalers — Microsoft، Google، Amazon، Meta — اس سال capital expenditure پر تقریباً $700 بلین خرچ کرنے کے راستے پر ہیں۔ اس کا زیادہ تر حصہ GPUs اور data centers ہے۔ کم discount rate ان کئی سالہ buildouts کو زیادہ valuations پر قابل عمل بناتا ہے۔",
+      "text_markdown": "جی ہاں۔ hyperscalers — Microsoft، Google، Amazon، Meta — اس سال capital expenditure پر تقریباً $700 بلین خرچ کرنے کے راستے پر ہیں۔ اس کا زیادہ تر حصہ GPUs اور data centers ہے۔ کم discount rate ان کئی سالہ buildouts کو زیادہ valuations پر قابل عمل بناتا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "جی ہاں۔ ہائپر اسکیلرز — مائیکروسافٹ، گوگل، ایمیزون، میٹا — اس سال کیپیٹل ایکسپینڈیچر پر تقریباً سات سو ارب ڈالر خرچ کرنے کے راستے پر ہیں۔ اس کا زیادہ تر حصہ جی پی یوز اور ڈیٹا سینٹرز ہے۔ کم ڈسکاؤنٹ ریٹ ان کئی سالہ بلڈ آؤٹس کو زیادہ ویلیویشنز پر قابل عمل بناتا ہے۔",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اور دوسری سمت۔ AI کا Fed کے فیصلوں پر کیا اثر ہے؟",
+      "text_markdown": "اور دوسری سمت۔ AI کا Fed کے فیصلوں پر کیا اثر ہے؟",
+      "title": "",
+      "tts": {
+        "text": "اور دوسری سمت۔ AI کا Fed کے فیصلوں پر کیا اثر ہے؟",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "یہ حصہ واقعی دلچسپ ہے۔ مصنوعی ذہانت پر سرمایہ کاری کے اخراجات اب اتنے بڑھ گئے ہیں کہ وہ پوری معیشت کے لیے ایک بڑا پیمانہ بن چکے ہیں۔ یہ صرف کسی ایک شعبے کی کہانی نہیں ہے۔ سرمایہ بازار کے تجزیہ کاروں کے مطابق مصنوعی ذہانت سے جڑی تعمیرات اور آلات پر خرچ پچھلی کئی سہ ماہیوں سے امریکی معاشی بڑھوتری کا بڑا حصہ رہا ہے۔",
+      "text_markdown": "یہ حصہ واقعی دلچسپ ہے۔ مصنوعی ذہانت پر سرمایہ کاری کے اخراجات اب اتنے بڑھ گئے ہیں کہ وہ پوری معیشت کے لیے ایک بڑا پیمانہ بن چکے ہیں۔ یہ صرف کسی ایک شعبے کی کہانی نہیں ہے۔ سرمایہ بازار کے تجزیہ کاروں کے مطابق مصنوعی ذہانت سے جڑی تعمیرات اور آلات پر خرچ پچھلی کئی سہ ماہیوں سے امریکی معاشی بڑھوتری کا بڑا حصہ رہا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "یہ حصہ واقعی دلچسپ ہے۔ مصنوعی ذہانت پر سرمایہ کاری کے اخراجات اب اتنے بڑھ گئے ہیں کہ وہ پوری معیشت کے لیے ایک بڑا پیمانہ بن چکے ہیں۔ یہ صرف کسی ایک شعبے کی کہانی نہیں ہے۔ سرمایہ بازار کے تجزیہ کاروں کے مطابق مصنوعی ذہانت سے جڑی تعمیرات اور آلات پر خرچ پچھلی کئی سہ ماہیوں سے امریکی معاشی بڑھوتری کا بڑا حصہ رہا ہے۔",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "نمو کا بیشتر حصہ۔",
+      "text_markdown": "نمو کا بیشتر حصہ۔",
+      "title": "",
+      "tts": {
+        "text": "نمو کا بیشتر حصہ۔",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "اصل بات زیادہ تر یہی ہے۔ اور امریکی مرکزی بینک کے لیے اس کے دو اثر ہوتے ہیں۔ طویل مدت میں مصنوعی ذہانت پیداواری صلاحیت کے حق میں ایک سازگار قوت بن جاتی ہے۔ اس کے نتیجے میں افراط زر کم ہوتا ہے۔ اس سے امریکی مرکزی بینک کو شرح سود کم کرنے کی گنجائش ملتی ہے۔ قلیل مدت میں یہ بجلی، تانبے، ہنر مند مزدوری اور ٹھنڈک کے لیے پانی کی مانگ میں اچانک اضافہ کرتی ہے۔ اس کے نتیجے میں مہنگائی بڑھتی ہے۔ خاص طور پر ان جگہوں پر جہاں اعداد و معلومات کے مراکز کا ارتکاز زیادہ ہے، مثلاً ورجینیا اور ٹیکساس۔",
+      "text_markdown": "اصل بات زیادہ تر یہی ہے۔ اور امریکی مرکزی بینک کے لیے اس کے دو اثر ہوتے ہیں۔ طویل مدت میں مصنوعی ذہانت پیداواری صلاحیت کے حق میں ایک سازگار قوت بن جاتی ہے۔ اس کے نتیجے میں افراط زر کم ہوتا ہے۔ اس سے امریکی مرکزی بینک کو شرح سود کم کرنے کی گنجائش ملتی ہے۔ قلیل مدت میں یہ بجلی، تانبے، ہنر مند مزدوری اور ٹھنڈک کے لیے پانی کی مانگ میں اچانک اضافہ کرتی ہے۔ اس کے نتیجے میں مہنگائی بڑھتی ہے۔ خاص طور پر ان جگہوں پر جہاں اعداد و معلومات کے مراکز کا ارتکاز زیادہ ہے، مثلاً ورجینیا اور ٹیکساس۔",
+      "title": "",
+      "tts": {
+        "text": "اصل بات زیادہ تر یہی ہے۔ اور امریکی مرکزی بینک کے لیے اس کے دو اثر ہوتے ہیں۔ طویل مدت میں مصنوعی ذہانت پیداواری صلاحیت کے حق میں ایک سازگار قوت بن جاتی ہے۔ اس کے نتیجے میں افراط زر کم ہوتا ہے۔ اس سے امریکی مرکزی بینک کو شرح سود کم کرنے کی گنجائش ملتی ہے۔ قلیل مدت میں یہ بجلی، تانبے، ہنر مند مزدوری اور ٹھنڈک کے لیے پانی کی مانگ میں اچانک اضافہ کرتی ہے۔ اس کے نتیجے میں مہنگائی بڑھتی ہے۔ خاص طور پر ان جگہوں پر جہاں اعداد و معلومات کے مراکز کا ارتکاز زیادہ ہے، مثلاً ورجینیا اور ٹیکساس۔",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "تو نئے چیئر کو فیصلہ کرنا ہے کہ AI inflation کا حل ہے، یا AI inflation کی وجہ ہے۔",
+      "text_markdown": "تو نئے چیئر کو فیصلہ کرنا ہے کہ AI inflation کا حل ہے، یا AI inflation کی وجہ ہے۔",
+      "title": "",
+      "tts": {
+        "text": "تو نئے چیئر کو فیصلہ کرنا ہے کہ AI inflation کا حل ہے، یا AI inflation کی وجہ ہے۔",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "دونوں، بیک وقت۔ اور جو کچھ وہ اپنی پہلی عوامی تقاریر میں کہیں گے، وہ Wall Street میں ہر AI capital expenditure model کو متحرک کر دے گا۔",
+      "text_markdown": "دونوں، بیک وقت۔ اور جو کچھ وہ اپنی پہلی عوامی تقاریر میں کہیں گے، وہ Wall Street میں ہر AI capital expenditure model کو متحرک کر دے گا۔",
+      "title": "",
+      "tts": {
+        "text": "دونوں، بیک وقت۔ اور جو کچھ وہ اپنی پہلی عوامی تقاریر میں کہیں گے، وہ Wall Street میں ہر AI capital expenditure model کو متحرک کر دے گا۔",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کیا واقعی یہ درست ہے کہ بجلی کی کمی کے باعث مائیکروسافٹ کے پاس اَسّی ارب ڈالر مالیت کے کلاؤڈ کے ادھورے آرڈر موجود ہیں؟",
+      "text_markdown": "کیا واقعی یہ درست ہے کہ بجلی کی کمی کے باعث مائیکروسافٹ کے پاس اَسّی ارب ڈالر مالیت کے کلاؤڈ کے ادھورے آرڈر موجود ہیں؟",
+      "title": "",
+      "tts": {
+        "text": "کیا واقعی یہ درست ہے کہ بجلی کی کمی کے باعث مائیکروسافٹ کے پاس اَسّی ارب ڈالر مالیت کے کلاؤڈ کے ادھورے آرڈر موجود ہیں؟",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "یہ وہی تعداد ہے جو مائیکروسافٹ نے بتائی ہے۔ ایژور استعمال کرنے والے گنجائش کے لیے قطار میں انتظار کر رہے ہیں۔ اب رکاوٹ چپس نہیں رہیں۔ اب مسئلہ بجلی کا نظام ہے۔ بجلی کی منڈیاں نئی گنجائش اتنی تیزی سے پیدا نہیں کر سکتیں جتنی تیزی سے بڑھ رہی ہے ڈیٹا مراکز کی مانگ۔",
+      "text_markdown": "یہ وہی تعداد ہے جو مائیکروسافٹ نے بتائی ہے۔ ایژور استعمال کرنے والے گنجائش کے لیے قطار میں انتظار کر رہے ہیں۔ اب رکاوٹ چپس نہیں رہیں۔ اب مسئلہ بجلی کا نظام ہے۔ بجلی کی منڈیاں نئی گنجائش اتنی تیزی سے پیدا نہیں کر سکتیں جتنی تیزی سے بڑھ رہی ہے ڈیٹا مراکز کی مانگ۔",
+      "title": "",
+      "tts": {
+        "text": "یہ وہی تعداد ہے جو مائیکروسافٹ نے بتائی ہے۔ ایژور استعمال کرنے والے گنجائش کے لیے قطار میں انتظار کر رہے ہیں۔ اب رکاوٹ چپس نہیں رہیں۔ اب مسئلہ بجلی کا نظام ہے۔ بجلی کی منڈیاں نئی گنجائش اتنی تیزی سے پیدا نہیں کر سکتیں جتنی تیزی سے بڑھ رہی ہے ڈیٹا مراکز کی مانگ۔",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "کب ہوگی وارش کی پہلی نشست؟",
+      "text_markdown": "کب ہوگی وارش کی پہلی نشست؟",
+      "title": "",
+      "tts": {
+        "text": "کب ہوگی وارش کی پہلی نشست؟",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "16 اور 17 جون۔ اس کے بعد ہمیں rate path کے بارے میں بہت کچھ معلوم ہو جائے گا۔",
+      "text_markdown": "16 اور 17 جون۔ اس کے بعد ہمیں rate path کے بارے میں بہت کچھ معلوم ہو جائے گا۔",
+      "title": "",
+      "tts": {
+        "text": "سولہ اور سترہ جون۔ اس کے بعد ہمیں ریٹ پاتھ کے بارے میں بہت کچھ معلوم ہو جائے گا۔",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "اختتام کے لیے اچھی جگہ۔ Ron، شکریہ۔",
+      "text_markdown": "اختتام کے لیے اچھی جگہ۔ Ron، شکریہ۔",
+      "title": "",
+      "tts": {
+        "text": "اختتام کے لیے اچھی جگہ۔ Ron، شکریہ۔",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "جب چاہو، ونڈی۔",
+      "text_markdown": "جب چاہو، ونڈی۔",
+      "title": "",
+      "tts": {
+        "text": "جب چاہو، ونڈی۔",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "یہ تھا مصنوعی ذہانت اس ہفتے، تیرہ مئی دو ہزار چھبیس کا شمارہ۔ اگلا شمارہ اگلے بدھ کو ہوگا۔ تب تک، اپنا خیال رکھیں۔",
+      "text_markdown": "یہ تھا مصنوعی ذہانت اس ہفتے، تیرہ مئی دو ہزار چھبیس کا شمارہ۔ اگلا شمارہ اگلے بدھ کو ہوگا۔ تب تک، اپنا خیال رکھیں۔",
+      "title": "",
+      "tts": {
+        "text": "یہ تھا مصنوعی ذہانت اس ہفتے، تیرہ مئی دو ہزار چھبیس کا شمارہ۔ اگلا شمارہ اگلے بدھ کو ہوگا۔ تب تک، اپنا خیال رکھیں۔",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

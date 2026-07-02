@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "fi",
+  "total_segments": 197,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tervetuloa AI This Week -ohjelmaan.",
+      "text_markdown": "Tervetuloa AI This Week -ohjelmaan.",
+      "title": "",
+      "tts": {
+        "text": "Tervetuloa AI This Week -ohjelmaan.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Olen Vindy.",
+      "text_markdown": "Olen Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Olen Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kanssani, kuten aina, on Ron.",
+      "text_markdown": "Kanssani, kuten aina, on Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kanssani, kuten aina, on Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hyvä olla täällä, Vindy.",
+      "text_markdown": "Hyvä olla täällä, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä olla täällä, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tänään on keskiviikko, 3. kesäkuuta 2026.",
+      "text_markdown": "Tänään on keskiviikko, 3. kesäkuuta 2026.",
+      "title": "",
+      "tts": {
+        "text": "Tänään on keskiviikko, kesäkuun kolmas, kaksituhatta kaksikymmentäkuusi.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tämä oli hiljainen viikko markkinoinnille ja äänekäs viikko laitteistoille.",
+      "text_markdown": "Tämä oli hiljainen viikko markkinoinnille ja äänekäs viikko laitteistoille.",
+      "title": "",
+      "tts": {
+        "text": "Tämä oli hiljainen viikko markkinoinnille ja äänekäs viikko laitteistoille.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Otsikoiden muoto oli epätavallinen.",
+      "text_markdown": "Otsikoiden muoto oli epätavallinen.",
+      "title": "",
+      "tts": {
+        "text": "Otsikoiden muoto oli epätavallinen.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Suuren laboratorion pääpuheenvuoro, luottamuksellinen ilmoitus, pieni tietokone, jonka laatikossa on suuri numero.",
+      "text_markdown": "Suuren laboratorion pääpuheenvuoro, luottamuksellinen ilmoitus, pieni tietokone, jonka laatikossa on suuri numero.",
+      "title": "",
+      "tts": {
+        "text": "Suuren laboratorion pääpuheenvuoro, luottamuksellinen ilmoitus, pieni tietokone, jonka laatikossa on suuri numero.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tulossa – mitä tapahtui avoimissa painoissa, uuden huomioarkkitehtuurin ja NVIDIAn avoimen mallin johdolla.",
+      "text_markdown": "Tulossa – mitä tapahtui avoimissa painoissa, uuden huomioarkkitehtuurin ja NVIDIAn avoimen mallin johdolla.",
+      "title": "",
+      "tts": {
+        "text": "Tulossa – mitä tapahtui avoimissa painoissa, uuden huomioarkkitehtuurin ja NVIDIAn avoimen mallin johdolla.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mihin tulostaulut päätyivät, ja niiden takana oleva suurempi tarina siitä, miten ylipäätään luotamme pisteisiin.",
+      "text_markdown": "Mihin tulostaulut päätyivät, ja niiden takana oleva suurempi tarina siitä, miten ylipäätään luotamme pisteisiin.",
+      "title": "",
+      "tts": {
+        "text": "Mihin tulostaulut päätyivät, ja niiden takana oleva suurempi tarina siitä, miten ylipäätään luotamme pisteisiin.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nopea katsaus otsikoihin, joihin voit reagoida tänä viikonloppuna.",
+      "text_markdown": "Nopea katsaus otsikoihin, joihin voit reagoida tänä viikonloppuna.",
+      "title": "",
+      "tts": {
+        "text": "Nopea katsaus otsikoihin, joihin voit reagoida tänä viikonloppuna.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Pääuutisemme: tee-se-itse-kokoonpano kasvoi – rajapäättely on nyt todellisuutta työpöydälläsi.",
+      "text_markdown": "Pääuutisemme: tee-se-itse-kokoonpano kasvoi – rajapäättely on nyt todellisuutta työpöydälläsi.",
+      "title": "",
+      "tts": {
+        "text": "Pääuutisemme: tee-se-itse-kokoonpano kasvoi – rajapäättely on nyt todellisuutta työpöydälläsi.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja viikon konsepti on spekulatiivinen dekoodaus – temppu, joka saa suuren mallin pienellä kortilla tuntumaan nopealta.",
+      "text_markdown": "Ja viikon konsepti on spekulatiivinen dekoodaus – temppu, joka saa suuren mallin pienellä kortilla tuntumaan nopealta.",
+      "title": "",
+      "tts": {
+        "text": "Ja viikon konsepti on spekulatiivinen dekoodaus – temppu, joka saa suuren mallin pienellä kortilla tuntumaan nopealta.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, aloitetaan avoimien painojen maailmasta.",
+      "text_markdown": "Ron, aloitetaan avoimien painojen maailmasta.",
+      "title": "",
+      "tts": {
+        "text": "Ron, aloitetaan avoimien painojen maailmasta.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mihin viikko päätyi?",
+      "text_markdown": "Mihin viikko päätyi?",
+      "title": "",
+      "tts": {
+        "text": "Mihin viikko päätyi?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tällä viikolla avoin tarina koski uusia muotoja, ei uusia kokoja.",
+      "text_markdown": "Tällä viikolla avoin tarina koski uusia muotoja, ei uusia kokoja.",
+      "title": "",
+      "tts": {
+        "text": "Tällä viikolla avoin tarina koski uusia muotoja, ei uusia kokoja.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kaksi arkkitehtonisesti mielenkiintoista mallia julkaistiin samana päivänä, kesäkuun 1.",
+      "text_markdown": "Kaksi arkkitehtonisesti mielenkiintoista mallia julkaistiin samana päivänä, kesäkuun 1.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi arkkitehtonisesti mielenkiintoista mallia julkaistiin samana päivänä, kesäkuun ensimmäisenä.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Käy läpi ensimmäinen.",
+      "text_markdown": "Käy läpi ensimmäinen.",
+      "title": "",
+      "tts": {
+        "text": "Käy läpi ensimmäinen.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax toimitti M3:n.",
+      "text_markdown": "MiniMax toimitti M3:n.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax toimitti Äm kolmen.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se käyttää uutta huomiorakennetta, jota he kutsuvat MSA:ksi, lyhenne sanoista MiniMax Sparse Attention.",
+      "text_markdown": "Se käyttää uutta huomiorakennetta, jota he kutsuvat MSA:ksi, lyhenne sanoista MiniMax Sparse Attention.",
+      "title": "",
+      "tts": {
+        "text": "Se käyttää uutta huomiorakennetta, jota he kutsuvat Äm Äs Aaksi, lyhenne sanoista MiniMax Sparse Attention.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Esitys on miljoonan tokenin konteksti, jossa esitäyttö on noin yhdeksän kertaa ja dekoodaus viisitoista kertaa nopeampaa verrattuna heidän edelliseen malliinsa samalla pituudella.",
+      "text_markdown": "Esitys on miljoonan tokenin konteksti, jossa esitäyttö on noin yhdeksän kertaa ja dekoodaus viisitoista kertaa nopeampaa verrattuna heidän edelliseen malliinsa samalla pituudella.",
+      "title": "",
+      "tts": {
+        "text": "Esitys on yhden miljoonan tokenin konteksti, jossa esitäyttö on noin yhdeksän kertaa ja dekoodaus viisitoista kertaa nopeampaa verrattuna heidän edelliseen malliinsa samalla pituudella.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Selkokielisesti siitä, mitä harva huomio (sparse attention) todella tekee.",
+      "text_markdown": "Selkokielisesti siitä, mitä harva huomio (sparse attention) todella tekee.",
+      "title": "",
+      "tts": {
+        "text": "Selkokielisesti siitä, mitä harva huomio (sparse attention) todella tekee.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tavallinen huomio vertaa jokaista tokenia jokaiseen toiseen tokeniin, mikä tekee pitkästä kontekstista niin kallista.",
+      "text_markdown": "Tavallinen huomio vertaa jokaista tokenia jokaiseen toiseen tokeniin, mikä tekee pitkästä kontekstista niin kallista.",
+      "title": "",
+      "tts": {
+        "text": "Tavallinen huomio vertaa jokaista tokenia jokaiseen toiseen tokeniin, mikä tekee pitkästä kontekstista niin kallista.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Harva huomio esisuodattaa kontekstin lohkoiksi ja tekee täyden vertailun vain niille lohkoille, jotka näyttävät relevantilta nykyiseen kysymykseen.",
+      "text_markdown": "Harva huomio esisuodattaa kontekstin lohkoiksi ja tekee täyden vertailun vain niille lohkoille, jotka näyttävät relevantilta nykyiseen kysymykseen.",
+      "title": "",
+      "tts": {
+        "text": "Harva huomio esisuodattaa kontekstin lohkoiksi ja tekee täyden vertailun vain niille lohkoille, jotka näyttävät relevantilta nykyiseen kysymykseen.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Saat suurimman osan laadusta murto-osalla laskentatehosta.",
+      "text_markdown": "Saat suurimman osan laadusta murto-osalla laskentatehosta.",
+      "title": "",
+      "tts": {
+        "text": "Saat suurimman osan laadusta murto-osalla laskentatehosta.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä vertailuarvoväite?",
+      "text_markdown": "Entä vertailuarvoväite?",
+      "title": "",
+      "tts": {
+        "text": "Entä vertailuarvoväite?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax sanoo 59 prosentin tuloksen SWE-bench Prossa, mikä nostaisi sen GPT-5.5:n ja Gemini 3.5 Pron edelle tällä yhdellä mittarilla.",
+      "text_markdown": "MiniMax sanoo 59 prosentin tuloksen SWE-bench Prossa, mikä nostaisi sen GPT-5.5:n ja Gemini 3.5 Pron edelle tällä yhdellä mittarilla.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax sanoo viisikymmentäyhdeksän prosentin tuloksen SWE-bench Prossa, mikä nostaisi sen GPT viisi piste viiden ja Gemini kolme piste viisi Pron edelle tällä yhdellä mittarilla.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sanon väitteitä – tämä on myyjän oma tuloskortti, ei riippumaton ajo.",
+      "text_markdown": "Sanon väitteitä – tämä on myyjän oma tuloskortti, ei riippumaton ajo.",
+      "title": "",
+      "tts": {
+        "text": "Sanon väitteitä – tämä on myyjän oma tuloskortti, ei riippumaton ajo.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Avoimet painot myös?",
+      "text_markdown": "Avoimet painot myös?",
+      "title": "",
+      "tts": {
+        "text": "Avoimet painot myös?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kyllä, M3 on asemoitu avoimen painon malliksi; API on käytössä heti ensimmäisenä päivänä ja painot julkaistaan Hugging Facessa pian.",
+      "text_markdown": "Kyllä, M3 on asemoitu avoimen painon malliksi; API on käytössä heti ensimmäisenä päivänä ja painot julkaistaan Hugging Facessa pian.",
+      "title": "",
+      "tts": {
+        "text": "Kyllä, Äm kolme on asemoitu avoimen painon malliksi; rajapinta, eli A P I, on käytössä heti ensimmäisenä päivänä ja painot julkaistaan Hugging Facessa pian.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Harrastelijalle mielenkiintoinen veto on arkkitehtuuri enemmän kuin tulos.",
+      "text_markdown": "Harrastelijalle mielenkiintoinen veto on arkkitehtuuri enemmän kuin tulos.",
+      "title": "",
+      "tts": {
+        "text": "Harrastelijalle mielenkiintoinen veto on arkkitehtuuri enemmän kuin tulos.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jos MSA pitää, jokainen muu avoin laboratorio kopioi sen muodon kuukausien sisällä.",
+      "text_markdown": "Jos MSA pitää, jokainen muu avoin laboratorio kopioi sen muodon kuukausien sisällä.",
+      "title": "",
+      "tts": {
+        "text": "Jos äm äs aa pitää, jokainen muu avoin laboratorio kopioi sen muodon kuukausien sisällä.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä toinen malli?",
+      "text_markdown": "Entä toinen malli?",
+      "title": "",
+      "tts": {
+        "text": "Entä toinen malli?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA julkaisi hiljaisesti Nemotron 3 Ultran avoimena lähdekoodina.",
+      "text_markdown": "NVIDIA julkaisi hiljaisesti Nemotron 3 Ultran avoimena lähdekoodina.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA julkaisi hiljaisesti Nemotron kolme Ultran avoimena lähdekoodina.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on viisisataaviisikymmentä miljardin parametrin asiantuntijoiden sekoitus, jossa noin viisikymmentäviisi miljardia on aktiivisia per token.",
+      "text_markdown": "Se on viisisataaviisikymmentä miljardin parametrin asiantuntijoiden sekoitus, jossa noin viisikymmentäviisi miljardia on aktiivisia per token.",
+      "title": "",
+      "tts": {
+        "text": "Se on viisisataaviisikymmentä miljardin parametrin asiantuntijoiden sekoitus, jossa noin viisikymmentäviisi miljardia on aktiivisia per token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Runkona on hybridi Mamba-Transformer, ei puhdas Transformer.",
+      "text_markdown": "Runkona on hybridi Mamba-Transformer, ei puhdas Transformer.",
+      "title": "",
+      "tts": {
+        "text": "Runkona on hybridi Mamba Transformer, ei puhdas Transformer.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Selkokielisesti Mambasta.",
+      "text_markdown": "Selkokielisesti Mambasta.",
+      "title": "",
+      "tts": {
+        "text": "Selkokielisesti Mambasta.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mamba-kerrokset käsittelevät pitkiä sekvenssejä sub-kvadraattisella skaalauksella, mikä on hieno tapa sanoa, että ne tulevat halvemmiksi per token kontekstin kasvaessa.",
+      "text_markdown": "Mamba-kerrokset käsittelevät pitkiä sekvenssejä sub-kvadraattisella skaalauksella, mikä on hieno tapa sanoa, että ne tulevat halvemmiksi per token kontekstin kasvaessa.",
+      "title": "",
+      "tts": {
+        "text": "Mamba-kerrokset käsittelevät pitkiä sekvenssejä sub-kvadraattisella skaalauksella, mikä on hieno tapa sanoa, että ne tulevat halvemmiksi per token kontekstin kasvaessa.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA säilytti muutaman huomiokerroksen pinossa säilyttääkseen tarkan muistamisen esimerkiksi pitkien dokumenttien kysymysvastausjärjestelmissä.",
+      "text_markdown": "NVIDIA säilytti muutaman huomiokerroksen pinossa säilyttääkseen tarkan muistamisen esimerkiksi pitkien dokumenttien kysymysvastausjärjestelmissä.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA säilytti muutaman huomiokerroksen pinossa säilyttääkseen tarkan muistamisen esimerkiksi pitkien dokumenttien kysymysvastausjärjestelmissä.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on sellainen hybridi, joka on voittanut hiljaisesti tutkimuksessa jo vuoden ajan.",
+      "text_markdown": "Se on sellainen hybridi, joka on voittanut hiljaisesti tutkimuksessa jo vuoden ajan.",
+      "title": "",
+      "tts": {
+        "text": "Se on sellainen hybridi, joka on voittanut hiljaisesti tutkimuksessa jo vuoden ajan.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä lisenssi?",
+      "text_markdown": "Entä lisenssi?",
+      "title": "",
+      "tts": {
+        "text": "Entä lisenssi?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIAn oma Open Model License, kaupallinen käyttö sallittu.",
+      "text_markdown": "NVIDIAn oma Open Model License, kaupallinen käyttö sallittu.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIAn oma Open Model License, kaupallinen käyttö sallittu.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kaikki julkaistiin yhdessä, mukaan lukien painot, jälkikoulutetut tarkistuspisteet, NVFP4-kvantisointi ja koulutusreseptit.",
+      "text_markdown": "Kaikki julkaistiin yhdessä, mukaan lukien painot, jälkikoulutetut tarkistuspisteet, NVFP4-kvantisointi ja koulutusreseptit.",
+      "title": "",
+      "tts": {
+        "text": "Kaikki julkaistiin yhdessä, mukaan lukien painot, jälkikoulutetut tarkistuspisteet, en vee eff pee neljä -kvantisointi ja koulutusreseptit.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on anteliaampi paketti kuin useimmat avoimet julkaisut.",
+      "text_markdown": "Se on anteliaampi paketti kuin useimmat avoimet julkaisut.",
+      "title": "",
+      "tts": {
+        "text": "Se on anteliaampi paketti kuin useimmat avoimet julkaisut.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä sijoitus tulostaululla?",
+      "text_markdown": "Entä sijoitus tulostaululla?",
+      "title": "",
+      "tts": {
+        "text": "Entä sijoitus tulostaululla?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Artificial Analysis Intelligence Indexissä Nemotron 3 Ultra sijoittuu sijalle 48.",
+      "text_markdown": "Artificial Analysis Intelligence Indexissä Nemotron 3 Ultra sijoittuu sijalle 48.",
+      "title": "",
+      "tts": {
+        "text": "Artificial Analysis Intelligence Indexissä Nemotron kolme Ultra sijoittuu sijalle neljäkymmentäkahdeksan.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tämä sijoittaa sen yhdeksänneksi heidän seuraamistaan 89 mallista ja kaikkien muiden yhdysvaltalaisten avointen mallien edelle.",
+      "text_markdown": "Tämä sijoittaa sen yhdeksänneksi heidän seuraamistaan 89 mallista ja kaikkien muiden yhdysvaltalaisten avointen mallien edelle.",
+      "title": "",
+      "tts": {
+        "text": "Tämä sijoittaa sen yhdeksänneksi heidän seuraamistaan kahdeksankymmenenyhdeksän mallista ja kaikkien muiden yhdysvaltalaisten avointen mallien edelle.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se jää myös jälkeen Moonshotin Kimi K2.6:sta, joka on sijalla 54.",
+      "text_markdown": "Se jää myös jälkeen Moonshotin Kimi K2.6:sta, joka on sijalla 54.",
+      "title": "",
+      "tts": {
+        "text": "Se jää myös jälkeen Moonshotin Kimi K kaksi piste kuusi:sta, joka on sijalla viisikymmentäneljä.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Joten kaikesta huolimatta Kiina johtaa edelleen avoimessa kategoriassa.",
+      "text_markdown": "Joten kaikesta huolimatta Kiina johtaa edelleen avoimessa kategoriassa.",
+      "title": "",
+      "tts": {
+        "text": "Joten kaikesta huolimatta Kiina johtaa edelleen avoimessa kategoriassa.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tässä yhdessä yhdistelmässä kyllä, kuudella pisteellä.",
+      "text_markdown": "Tässä yhdessä yhdistelmässä kyllä, kuudella pisteellä.",
+      "title": "",
+      "tts": {
+        "text": "Tässä yhdessä yhdistelmässä kyllä, kuudella pisteellä.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on pienempi tarina suuremman alla.",
+      "text_markdown": "Se on pienempi tarina suuremman alla.",
+      "title": "",
+      "tts": {
+        "text": "Se on pienempi tarina suuremman alla.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Onko sisarmalleja?",
+      "text_markdown": "Onko sisarmalleja?",
+      "title": "",
+      "tts": {
+        "text": "Onko sisarmalleja?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kyllä, NVIDIA julkaisi myös Nemotron 3 Nano Omnin.",
+      "text_markdown": "Kyllä, NVIDIA julkaisi myös Nemotron 3 Nano Omnin.",
+      "title": "",
+      "tts": {
+        "text": "Kyllä, NVIDIA julkaisi myös Nemotron kolme Nano Omnin.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on yhtenäinen näkö-, ääni- ja kielimalli, jonka väitetään olevan noin yhdeksän kertaa tehokkaampi kuin vastaavat avoimet omni-mallit.",
+      "text_markdown": "Se on yhtenäinen näkö-, ääni- ja kielimalli, jonka väitetään olevan noin yhdeksän kertaa tehokkaampi kuin vastaavat avoimet omni-mallit.",
+      "title": "",
+      "tts": {
+        "text": "Se on yhtenäinen näkö-, ääni- ja kielimalli, jonka väitetään olevan noin yhdeksän kertaa tehokkaampi kuin vastaavat avoimet omni-mallit.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on suunnattu laitteissa toimiville agenteille – puhelimille, kannettaville tietokoneille, pienille työasemille.",
+      "text_markdown": "Se on suunnattu laitteissa toimiville agenteille – puhelimille, kannettaville tietokoneille, pienille työasemille.",
+      "title": "",
+      "tts": {
+        "text": "Se on suunnattu laitteissa toimiville agenteille – puhelimille, kannettaville tietokoneille, pienille työasemille.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mitä muuta avoimelta puolelta?",
+      "text_markdown": "Mitä muuta avoimelta puolelta?",
+      "title": "",
+      "tts": {
+        "text": "Mitä muuta avoimelta puolelta?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral Medium 3.5 ilmestyi Microsoftin Copilot Studion sisällä toukokuun 28. päivänä.",
+      "text_markdown": "Mistral Medium 3.5 ilmestyi Microsoftin Copilot Studion sisällä toukokuun 28. päivänä.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium kolme piste viisi ilmestyi Microsoftin Copilot Studion sisällä toukokuun kahdentenakymmenentenäkahdeksantena päivänä.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on 128 miljardin parametrin tiheä malli, jonka konteksti on 256 000 tokenia.",
+      "text_markdown": "Se on 128 miljardin parametrin tiheä malli, jonka konteksti on 256 000 tokenia.",
+      "title": "",
+      "tts": {
+        "text": "Se on satakaksikymmentäkahdeksan miljardin parametrin tiheä malli, jonka konteksti on kaksisataaviisikymmentäkuusi tuhatta tokenia.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Miksi tämä sijoitus on mielenkiintoinen?",
+      "text_markdown": "Miksi tämä sijoitus on mielenkiintoinen?",
+      "title": "",
+      "tts": {
+        "text": "Miksi tämä sijoitus on mielenkiintoinen?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Koska Microsoft jakaa nyt muun kuin OpenAI:n eurooppalaisen mallin oman alustansa kautta, ja siinä on sisäänrakennettu EU-datan residenssi.",
+      "text_markdown": "Koska Microsoft jakaa nyt muun kuin OpenAI:n eurooppalaisen mallin oman alustansa kautta, ja siinä on sisäänrakennettu EU-datan residenssi.",
+      "title": "",
+      "tts": {
+        "text": "Koska Microsoft jakaa nyt muun kuin OpenAI:n eurooppalaisen mallin oman alustansa kautta, ja siinä on sisäänrakennettu ee uu -datan residenssi.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kaksi vuotta sitten tuo lause olisi ollut käsittämätön.",
+      "text_markdown": "Kaksi vuotta sitten tuo lause olisi ollut käsittämätön.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi vuotta sitten tuo lause olisi ollut käsittämätön.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä Alibaba?",
+      "text_markdown": "Entä Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "Entä Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen 3.7 Plus julkaistiin 2. kesäkuuta, mutta se on saatavilla vain API-rajapinnan kautta Bailian-alustalla.",
+      "text_markdown": "Qwen 3.7 Plus julkaistiin 2. kesäkuuta, mutta se on saatavilla vain API-rajapinnan kautta Bailian-alustalla.",
+      "title": "",
+      "tts": {
+        "text": "Qwen kolme piste seitsemän Plus julkaistiin toinen kesäkuuta, mutta se on saatavilla vain API-rajapinnan kautta Bailian-alustalla.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Avoin Qwen-sarja pysähtyy edelleen kolmeen piste kuuteen.",
+      "text_markdown": "Avoin Qwen-sarja pysähtyy edelleen kolmeen piste kuuteen.",
+      "title": "",
+      "tts": {
+        "text": "Avoin Qwen-sarja pysähtyy edelleen kolmeen piste kuuteen.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se vahvistaa viime viikolla esiin nostamamme jaon — suljettu lippulaiva, avoin keskiluokka.",
+      "text_markdown": "Se vahvistaa viime viikolla esiin nostamamme jaon — suljettu lippulaiva, avoin keskiluokka.",
+      "title": "",
+      "tts": {
+        "text": "Se vahvistaa viime viikolla esiin nostamamme jaon — suljettu lippulaiva, avoin keskiluokka.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sama toimintatapa, jota Mistral on noudattanut vuoden ajan.",
+      "text_markdown": "Sama toimintatapa, jota Mistral on noudattanut vuoden ajan.",
+      "title": "",
+      "tts": {
+        "text": "Sama toimintatapa, jota Mistral on noudattanut vuoden ajan.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kaksi nopeaa taustatietoa ennen kuin jatkamme?",
+      "text_markdown": "Kaksi nopeaa taustatietoa ennen kuin jatkamme?",
+      "title": "",
+      "tts": {
+        "text": "Kaksi nopeaa taustatietoa ennen kuin jatkamme?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Toki.",
+      "text_markdown": "Toki.",
+      "title": "",
+      "tts": {
+        "text": "Toki.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kiinalaiset avoimet mallit johtavat edelleen OpenRouterin token-volyymia — sama tilanne kuin viime viikolla, ei muutosta.",
+      "text_markdown": "Kiinalaiset avoimet mallit johtavat edelleen OpenRouterin token-volyymia — sama tilanne kuin viime viikolla, ei muutosta.",
+      "title": "",
+      "tts": {
+        "text": "Kiinalaiset avoimet mallit johtavat edelleen OpenRouterin token-volyymia — sama tilanne kuin viime viikolla, ei muutosta.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja DeepSeek V4 julkaistiin Microsoftin Foundry-alustalla 28. toukokuuta, mikä tarkoittaa vain lisää paikkoja kutsua sitä.",
+      "text_markdown": "Ja DeepSeek V4 julkaistiin Microsoftin Foundry-alustalla 28. toukokuuta, mikä tarkoittaa vain lisää paikkoja kutsua sitä.",
+      "title": "",
+      "tts": {
+        "text": "Ja DeepSeek V neljä julkaistiin Microsoftin Foundry-alustalla toukokuun kahdeskymmeneskahdeksas päivä, mikä tarkoittaa vain lisää paikkoja kutsua sitä.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Okei, siirrytään tulostauluihin.",
+      "text_markdown": "Okei, siirrytään tulostauluihin.",
+      "title": "",
+      "tts": {
+        "text": "Okei, siirrytään tulostauluihin.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Oliko tällä viikolla jokin suuri nousija?",
+      "text_markdown": "Oliko tällä viikolla jokin suuri nousija?",
+      "title": "",
+      "tts": {
+        "text": "Oliko tällä viikolla jokin suuri nousija?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Oli, ja se on suljettu — Claude Opus 4.8, jonka Anthropic julkaisi 28. toukokuuta.",
+      "text_markdown": "Oli, ja se on suljettu — Claude Opus 4.8, jonka Anthropic julkaisi 28. toukokuuta.",
+      "title": "",
+      "tts": {
+        "text": "Oli, ja se on suljettu — Claude Opus neljä piste kahdeksan, jonka Anthropic julkaisi toukokuun kahdeskymmeneskahdeksas päivä.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se saavuttaa SWE-bench Verified -testissä 88,6 % ja SWE-bench Pro -testissä 69,2 %.",
+      "text_markdown": "Se saavuttaa SWE-bench Verified -testissä 88,6 % ja SWE-bench Pro -testissä 69,2 %.",
+      "title": "",
+      "tts": {
+        "text": "Se saavuttaa SWE bench Verified testissä kahdeksankymmentäkahdeksan pilkku kuusi prosenttia ja SWE bench Pro testissä kuusikymmentäyhdeksän pilkku kaksi prosenttia.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja se johtaa nyt Artificial Analysis Intelligence Indexiä kokonaispisteissä.",
+      "text_markdown": "Ja se johtaa nyt Artificial Analysis Intelligence Indexiä kokonaispisteissä.",
+      "title": "",
+      "tts": {
+        "text": "Ja se johtaa nyt Artificial Analysis Intelligence Indexiä kokonaispisteissä.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ensimmäistä kertaa Anthropic on johtanut sitä.",
+      "text_markdown": "Ensimmäistä kertaa Anthropic on johtanut sitä.",
+      "title": "",
+      "tts": {
+        "text": "Ensimmäistä kertaa Anthropic on johtanut sitä.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Aivan oikein.",
+      "text_markdown": "Aivan oikein.",
+      "title": "",
+      "tts": {
+        "text": "Aivan oikein.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 on yhden pisteen jäljessä, ja Gemini 3.5 Pro on muutaman pisteen sen takana.",
+      "text_markdown": "GPT-5.5 on yhden pisteen jäljessä, ja Gemini 3.5 Pro on muutaman pisteen sen takana.",
+      "title": "",
+      "tts": {
+        "text": "GPT viisi piste viisi on yhden pisteen jäljessä, ja Gemini kolme piste viisi Pro on muutaman pisteen sen takana.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Erittäin tiukkaa suljetun ryhmän kärjessä.",
+      "text_markdown": "Erittäin tiukkaa suljetun ryhmän kärjessä.",
+      "title": "",
+      "tts": {
+        "text": "Erittäin tiukkaa suljetun ryhmän kärjessä.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mutta todellinen arviointitarina tällä viikolla oli jotain muuta.",
+      "text_markdown": "Mutta todellinen arviointitarina tällä viikolla oli jotain muuta.",
+      "title": "",
+      "tts": {
+        "text": "Mutta todellinen arviointitarina tällä viikolla oli jotain muuta.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Joo, todellinen tarina on eheys.",
+      "text_markdown": "Joo, todellinen tarina on eheys.",
+      "title": "",
+      "tts": {
+        "text": "Joo, todellinen tarina on eheys.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI on käytännössä lopettanut raportoinnin SWE-bench Verifiedistä.",
+      "text_markdown": "OpenAI on käytännössä lopettanut raportoinnin SWE-bench Verifiedistä.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI on käytännössä lopettanut raportoinnin SWE-bench Verifiedistä.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kontaminaatiotarkastus havaitsi, että noin viisikymmentäyhdeksän prosentissa vaikeista tehtävistä on virheellisiä yksikkötestejä, ja mallit voivat palauttaa oikeat korjaukset koulutusdatasta sanasta sanaan.",
+      "text_markdown": "Kontaminaatiotarkastus havaitsi, että noin viisikymmentäyhdeksän prosentissa vaikeista tehtävistä on virheellisiä yksikkötestejä, ja mallit voivat palauttaa oikeat korjaukset koulutusdatasta sanasta sanaan.",
+      "title": "",
+      "tts": {
+        "text": "Kontaminaatiotarkastus havaitsi, että noin viisikymmentäyhdeksän prosentissa vaikeista tehtävistä on virheellisiä yksikkötestejä, ja mallit voivat palauttaa oikeat korjaukset koulutusdatasta sanasta sanaan.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Korkea pistemäärä mittasi siis muistia.",
+      "text_markdown": "Korkea pistemäärä mittasi siis muistia.",
+      "title": "",
+      "tts": {
+        "text": "Korkea pistemäärä mittasi siis muistia.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Usein, kyllä.",
+      "text_markdown": "Usein, kyllä.",
+      "title": "",
+      "tts": {
+        "text": "Usein, kyllä.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro on versio, jossa on uusia tehtäviä ja vaikeampi kehikko — se on uusi signaali.",
+      "text_markdown": "Pro on versio, jossa on uusia tehtäviä ja vaikeampi kehikko — se on uusi signaali.",
+      "title": "",
+      "tts": {
+        "text": "Pro on versio, jossa on uusia tehtäviä ja vaikeampi kehikko — se on uusi signaali.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tämä on institutionaalinen vahvistus kontaminaatiohuolelle, jota varoimme viime viikolla.",
+      "text_markdown": "Tämä on institutionaalinen vahvistus kontaminaatiohuolelle, jota varoimme viime viikolla.",
+      "title": "",
+      "tts": {
+        "text": "Tämä on institutionaalinen vahvistus kontaminaatiohuolelle, jota varoimme viime viikolla.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Oliko myös metodologiapaperi?",
+      "text_markdown": "Oliko myös metodologiapaperi?",
+      "title": "",
+      "tts": {
+        "text": "Oliko myös metodologiapaperi?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kili Technology -nimiseltä ryhmältä tuli terävä raportti.",
+      "text_markdown": "Kili Technology -nimiseltä ryhmältä tuli terävä raportti.",
+      "title": "",
+      "tts": {
+        "text": "Kili Technology -nimiseltä ryhmältä tuli terävä raportti.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "He ajoivat identtiset mallipainot viiden yleisen arviointikehikon läpi.",
+      "text_markdown": "He ajoivat identtiset mallipainot viiden yleisen arviointikehikon läpi.",
+      "title": "",
+      "tts": {
+        "text": "He ajoivat identtiset mallipainot viiden yleisen arviointikehikon läpi.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pisteet poikkesivat kymmenestä kahteenkymmeneen prosenttiyksikköön puhtaasti valjaiden valinnasta.",
+      "text_markdown": "Pisteet poikkesivat kymmenestä kahteenkymmeneen prosenttiyksikköön puhtaasti valjaiden valinnasta.",
+      "title": "",
+      "tts": {
+        "text": "Pisteet poikkesivat kymmenestä kahteenkymmeneen prosenttiyksikköön puhtaasti valjaiden valinnasta.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Samankaltaiset painot, eri luku.",
+      "text_markdown": "Samankaltaiset painot, eri luku.",
+      "title": "",
+      "tts": {
+        "text": "Samankaltaiset painot, eri luku.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Täsmälleen.",
+      "text_markdown": "Täsmälleen.",
+      "title": "",
+      "tts": {
+        "text": "Täsmälleen.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Heidän johtopäätöksensä oli, että tulostaulukon sijoitus ei ole enää ostajatasoinen signaali hankinnoissa.",
+      "text_markdown": "Heidän johtopäätöksensä oli, että tulostaulukon sijoitus ei ole enää ostajatasoinen signaali hankinnoissa.",
+      "title": "",
+      "tts": {
+        "text": "Heidän johtopäätöksensä oli, että tulostaulukon sijoitus ei ole enää ostajatasoinen signaali hankinnoissa.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tee-se-itse-rakentajalle johtopäätös on selkeämpi – suorita omat arviointisi omilla kehotteillasi.",
+      "text_markdown": "Tee-se-itse-rakentajalle johtopäätös on selkeämpi – suorita omat arviointisi omilla kehotteillasi.",
+      "title": "",
+      "tts": {
+        "text": "Tee-se-itse-rakentajalle johtopäätös on selkeämpi – suorita omat arviointisi omilla kehotteillasi.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tämä itse asiassa palaa takaisin MSA:han ja Nemotron Ultraan.",
+      "text_markdown": "Tämä itse asiassa palaa takaisin MSA:han ja Nemotron Ultraan.",
+      "title": "",
+      "tts": {
+        "text": "Tämä itse asiassa palaa takaisin Äm Äs Äähän ja Nemotron Ultraan.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kyllä.",
+      "text_markdown": "Kyllä.",
+      "title": "",
+      "tts": {
+        "text": "Kyllä.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Luota arkkitehtuuriin ja omiin testeihisi, älä jonkun muun kaavioon.",
+      "text_markdown": "Luota arkkitehtuuriin ja omiin testeihisi, älä jonkun muun kaavioon.",
+      "title": "",
+      "tts": {
+        "text": "Luota arkkitehtuuriin ja omiin testeihisi, älä jonkun muun kaavioon.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hyvä paikka jättää taulukot.",
+      "text_markdown": "Hyvä paikka jättää taulukot.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä paikka jättää taulukot.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nyt otsikoihin.",
+      "text_markdown": "Nyt otsikoihin.",
+      "title": "",
+      "tts": {
+        "text": "Nyt otsikoihin.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nopea katsaus, avoimen ekosysteemin näkökulma.",
+      "text_markdown": "Nopea katsaus, avoimen ekosysteemin näkökulma.",
+      "title": "",
+      "tts": {
+        "text": "Nopea katsaus, avoimen ekosysteemin näkökulma.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ensinnäkin, Microsoft Build oli kesäkuun 2. päivänä.",
+      "text_markdown": "Ensinnäkin, Microsoft Build oli kesäkuun 2. päivänä.",
+      "title": "",
+      "tts": {
+        "text": "Ensinnäkin, Microsoft Build oli kesäkuun toisena päivänä.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft esitteli kaksi ensimmäisen osapuolen mallia – MAI-Thinking-1 ja MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft esitteli kaksi ensimmäisen osapuolen mallia – MAI-Thinking-1 ja MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft esitteli kaksi ensimmäisen osapuolen mallia – Äm Aa Ii Thinking yksi ja Äm Aa Ii Code yksi Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mikä niissä on mielenkiintoista?",
+      "text_markdown": "Mikä niissä on mielenkiintoista?",
+      "title": "",
+      "tts": {
+        "text": "Mikä niissä on mielenkiintoista?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 on kolmekymmentäviisi miljardin aktiivisen parametrin harva asiantuntijoiden sekoitus, jossa on kaksisataaviisikymmentäkuusi tuhannen tokenin konteksti-ikkuna.",
+      "text_markdown": "Thinking-1 on kolmekymmentäviisi miljardin aktiivisen parametrin harva asiantuntijoiden sekoitus, jossa on kaksisataaviisikymmentäkuusi tuhannen tokenin konteksti-ikkuna.",
+      "title": "",
+      "tts": {
+        "text": "Thinking yksi on kolmekymmentäviisi miljardin aktiivisen parametrin harva asiantuntijoiden sekoitus, jossa on kaksisataaviisikymmentäkuusi tuhannen tokenin konteksti-ikkuna.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja Microsoft sanoo erikseen, että se on koulutettu kaupallisesti lisensoidulla datalla ilman minkään kolmannen osapuolen mallin tislausta.",
+      "text_markdown": "Ja Microsoft sanoo erikseen, että se on koulutettu kaupallisesti lisensoidulla datalla ilman minkään kolmannen osapuolen mallin tislausta.",
+      "title": "",
+      "tts": {
+        "text": "Ja Microsoft sanoo erikseen, että se on koulutettu kaupallisesti lisensoidulla datalla ilman minkään kolmannen osapuolen mallin tislausta.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Se on epätavallista.",
+      "text_markdown": "Se on epätavallista.",
+      "title": "",
+      "tts": {
+        "text": "Se on epätavallista.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Erittäin epätavallista, ottaen huomioon kuinka paljon muu ala nojaa synteettiseen dataan edelläkävijämalleista.",
+      "text_markdown": "Erittäin epätavallista, ottaen huomioon kuinka paljon muu ala nojaa synteettiseen dataan edelläkävijämalleista.",
+      "title": "",
+      "tts": {
+        "text": "Erittäin epätavallista, ottaen huomioon kuinka paljon muu ala nojaa synteettiseen dataan edelläkävijämalleista.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash on edullisempi – se alkoi levitä kaikkiin GitHub Copilot -tasoihin kesäkuun 2. päivänä.",
+      "text_markdown": "Code-1-Flash on edullisempi – se alkoi levitä kaikkiin GitHub Copilot -tasoihin kesäkuun 2. päivänä.",
+      "title": "",
+      "tts": {
+        "text": "Code yksi Flash on edullisempi – se alkoi levitä kaikkiin GitHub Copilot -tasoihin kesäkuun toisena päivänä.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Joten Microsoft toimittaa nyt Mistralin, DeepSeekin, OpenAI:n ja oman MAI:nsa rinnakkain Copilot Studiossa.",
+      "text_markdown": "Joten Microsoft toimittaa nyt Mistralin, DeepSeekin, OpenAI:n ja oman MAI:nsa rinnakkain Copilot Studiossa.",
+      "title": "",
+      "tts": {
+        "text": "Joten Microsoft toimittaa nyt Mistralin, DeepSeekin, Open Ee Ai:n ja oman Äm Aa Ii:nsa rinnakkain Copilot Studiossa.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Toinen otsikko?",
+      "text_markdown": "Toinen otsikko?",
+      "title": "",
+      "tts": {
+        "text": "Toinen otsikko?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic jätti luottamuksellisesti S-1-lomakkeen SEC:lle kesäkuun 1. päivänä.",
+      "text_markdown": "Anthropic jätti luottamuksellisesti S-1-lomakkeen SEC:lle kesäkuun 1. päivänä.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic jätti luottamuksellisesti Äs yksi -lomakkeen Äs Ee Ceelle kesäkuun ensimmäisenä päivänä.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on paperityö, joka aloittaa tien julkiseen listautumiseen.",
+      "text_markdown": "Se on paperityö, joka aloittaa tien julkiseen listautumiseen.",
+      "title": "",
+      "tts": {
+        "text": "Se on paperityö, joka aloittaa tien julkiseen listautumiseen.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Heidän ilmoitettu liikevaihtonsa on noin neljäkymmentäseitsemän miljardia dollaria, mikä on nousua noin kymmenestä miljardista vuosi sitten.",
+      "text_markdown": "Heidän ilmoitettu liikevaihtonsa on noin neljäkymmentäseitsemän miljardia dollaria, mikä on nousua noin kymmenestä miljardista vuosi sitten.",
+      "title": "",
+      "tts": {
+        "text": "Heidän ilmoitettu liikevaihtonsa on noin neljäkymmentäseitsemän miljardia dollaria, mikä on nousua noin kymmenestä miljardista vuosi sitten.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ei pörssitunnusta, ei hintaluokkaa, ei päivämäärää vielä – vain paperityö.",
+      "text_markdown": "Ei pörssitunnusta, ei hintaluokkaa, ei päivämäärää vielä – vain paperityö.",
+      "title": "",
+      "tts": {
+        "text": "Ei pörssitunnusta, ei hintaluokkaa, ei päivämäärää vielä – vain paperityö.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kolmas.",
+      "text_markdown": "Kolmas.",
+      "title": "",
+      "tts": {
+        "text": "Kolmas.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot siirtyi käyttöperusteiseen laskutukseen kesäkuun 1. päivänä.",
+      "text_markdown": "GitHub Copilot siirtyi käyttöperusteiseen laskutukseen kesäkuun 1. päivänä.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot siirtyi käyttöperusteiseen laskutukseen kesäkuun ensimmäisenä päivänä.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jokainen suunnitelma mittaa nyt syötteen, tulosteen ja välimuistiin tallennetut tokenit samoilla hinnoilla kuin taustalla oleva mallin API.",
+      "text_markdown": "Jokainen suunnitelma mittaa nyt syötteen, tulosteen ja välimuistiin tallennetut tokenit samoilla hinnoilla kuin taustalla oleva mallin API.",
+      "title": "",
+      "tts": {
+        "text": "Jokainen suunnitelma mittaa nyt syötteen, tulosteen ja välimuistiin tallennetut tokenit samoilla hinnoilla kuin taustalla oleva mallin API.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "He pehmensivät laskua myöntämällä hyvityksiä tasoa kohden ja uudella Copilot Max -suunnitelmalla sadalla dollarilla kuukaudessa raskaille agenttisille käyttäjille.",
+      "text_markdown": "He pehmensivät laskua myöntämällä hyvityksiä tasoa kohden ja uudella Copilot Max -suunnitelmalla sadalla dollarilla kuukaudessa raskaille agenttisille käyttäjille.",
+      "title": "",
+      "tts": {
+        "text": "He pehmensivät laskua myöntämällä hyvityksiä tasoa kohden ja uudella Copilot Max -suunnitelmalla sadalla dollarilla kuukaudessa raskaille agenttisille käyttäjille.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja miten kehittäjät suhtautuivat tähän?",
+      "text_markdown": "Ja miten kehittäjät suhtautuivat tähän?",
+      "title": "",
+      "tts": {
+        "text": "Ja miten kehittäjät suhtautuivat tähän?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jotkut näkemykset olivat melko provosoivia.",
+      "text_markdown": "Jotkut näkemykset olivat melko provosoivia.",
+      "title": "",
+      "tts": {
+        "text": "Jotkut näkemykset olivat melko provosoivia.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Agenttisilmukoita käyttävät suurkuluttajat raportoivat ennustetuista laskuista, jotka olivat useita kertoja korkeampia kuin vanha kiinteä maksu.",
+      "text_markdown": "Agenttisilmukoita käyttävät suurkuluttajat raportoivat ennustetuista laskuista, jotka olivat useita kertoja korkeampia kuin vanha kiinteä maksu.",
+      "title": "",
+      "tts": {
+        "text": "Agenttisilmukoita käyttävät suurkuluttajat raportoivat ennustetuista laskuista, jotka olivat useita kertoja korkeampia kuin vanha kiinteä maksu.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tällä on merkitystä pääuutisellemme – pidä tämä mielessä.",
+      "text_markdown": "Tällä on merkitystä pääuutisellemme – pidä tämä mielessä.",
+      "title": "",
+      "tts": {
+        "text": "Tällä on merkitystä pääuutisellemme – pidä tämä mielessä.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Neljänneksi, onko mitään paikattavaa tänä viikonloppuna?",
+      "text_markdown": "Neljänneksi, onko mitään paikattavaa tänä viikonloppuna?",
+      "title": "",
+      "tts": {
+        "text": "Neljänneksi, onko mitään paikattavaa tänä viikonloppuna?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kyllä, SGLang-versioissa aina 0.5.11:een asti on välimuistin palvelunestohaavoittuvuus, joka paljastettiin 3. kesäkuuta.",
+      "text_markdown": "Kyllä, SGLang-versioissa aina 0.5.11:een asti on välimuistin palvelunestohaavoittuvuus, joka paljastettiin 3. kesäkuuta.",
+      "title": "",
+      "tts": {
+        "text": "Kyllä, S G Lang -versioissa aina nolla piste viisi piste yhteentoista asti on välimuistin palvelunestohaavoittuvuus, joka paljastettiin kesäkuun kolmantena.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tunniste on CVE-2026-10775, vakavuus on matala, hyväksikäyttö on vain paikallista – mutta jos käytät SGLangia, paikkaat maanantaina.",
+      "text_markdown": "Tunniste on CVE-2026-10775, vakavuus on matala, hyväksikäyttö on vain paikallista – mutta jos käytät SGLangia, paikkaat maanantaina.",
+      "title": "",
+      "tts": {
+        "text": "Tunniste on C V E kaksituhatta kaksikymmentäkuusi viiva kymmenentuhatta seitsemänsataa seitsemänkymmentäviisi, vakavuus on matala, hyväksikäyttö on vain paikallista – mutta jos käytät S G Langia, paikkaat maanantaina.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-127",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Vielä yksi.",
+      "text_markdown": "Vielä yksi.",
+      "title": "",
+      "tts": {
+        "text": "Vielä yksi.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio julkaisi päivityksen, joka vie täyden hienosäädön suoraan GGUF-muotoon – ei vain sovitinpainoja.",
+      "text_markdown": "Unsloth Studio julkaisi päivityksen, joka vie täyden hienosäädön suoraan GGUF-muotoon – ei vain sovitinpainoja.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio julkaisi päivityksen, joka vie täyden hienosäädön suoraan G G U F -muotoon – ei vain sovitinpainoja.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kahdenkymmenenneljän gigatavun kuluttajakortti riittää nyt hyödyllisiin ajoihin.",
+      "text_markdown": "Kahdenkymmenenneljän gigatavun kuluttajakortti riittää nyt hyödyllisiin ajoihin.",
+      "title": "",
+      "tts": {
+        "text": "Kahdenkymmenenneljän gigatavun kuluttajakortti riittää nyt hyödyllisiin ajoihin.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tämä on se vaivaton putkisto, joka tekee tästä jaksosta totta.",
+      "text_markdown": "Tämä on se vaivaton putkisto, joka tekee tästä jaksosta totta.",
+      "title": "",
+      "tts": {
+        "text": "Tämä on se vaivaton putkisto, joka tekee tästä jaksosta totta.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Palataan nyt pääuutiseen.",
+      "text_markdown": "Palataan nyt pääuutiseen.",
+      "title": "",
+      "tts": {
+        "text": "Palataan nyt pääuutiseen.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Vihjasit laitteistosta.",
+      "text_markdown": "Vihjasit laitteistosta.",
+      "title": "",
+      "tts": {
+        "text": "Vihjasit laitteistosta.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Niin tein, ja sen ydin on tämä – tee-se-itse-laitteisto kasvoi aikuiseksi tällä viikolla.",
+      "text_markdown": "Niin tein, ja sen ydin on tämä – tee-se-itse-laitteisto kasvoi aikuiseksi tällä viikolla.",
+      "title": "",
+      "tts": {
+        "text": "Niin tein, ja sen ydin on tämä – tee se itse -laitteisto kasvoi aikuiseksi tällä viikolla.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Aloitetaan laitteistosta.",
+      "text_markdown": "Aloitetaan laitteistosta.",
+      "title": "",
+      "tts": {
+        "text": "Aloitetaan laitteistosta.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kaksi laitetta on nyt todella saatavilla kuluttajahinnoin.",
+      "text_markdown": "Kaksi laitetta on nyt todella saatavilla kuluttajahinnoin.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi laitetta on nyt todella saatavilla kuluttajahinnoin.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD avasi Ryzen AI Halo -minitietokoneen ennakkotilaukset kesäkuussa 3999 dollarilla.",
+      "text_markdown": "AMD avasi Ryzen AI Halo -minitietokoneen ennakkotilaukset kesäkuussa 3999 dollarilla.",
+      "title": "",
+      "tts": {
+        "text": "A M D avasi Ryzen A I Halo -minitietokoneen ennakkotilaukset kesäkuussa kolmella tuhannella yhdeksälläsadalla yhdeksälläkymmenellä yhdeksällä dollarilla.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se käyttää Ryzen AI Max Plus 395:tä, jossa on 128 gigatavua yhtenäistä LPDDR5x-muistia, ja se on toistaiseksi yksinoikeudella Micro Centerissä.",
+      "text_markdown": "Se käyttää Ryzen AI Max Plus 395:tä, jossa on 128 gigatavua yhtenäistä LPDDR5x-muistia, ja se on toistaiseksi yksinoikeudella Micro Centerissä.",
+      "title": "",
+      "tts": {
+        "text": "Se käyttää Ryzen A I Max Plus kolmesataayhdeksänkymmentäviittä, jossa on satakaksikymmentäkahdeksan gigatavua yhtenäistä L P D D R viisi äks -muistia, ja se on toistaiseksi yksinoikeudella Micro Centerissä.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä NVIDIAn puoli?",
+      "text_markdown": "Entä NVIDIAn puoli?",
+      "title": "",
+      "tts": {
+        "text": "Entä NVIDIAn puoli?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIAn DGX Spark on vastaava laite.",
+      "text_markdown": "NVIDIAn DGX Spark on vastaava laite.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIAn D G X Spark on vastaava laite.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Siinä on GB10 Grace Blackwell -siru ja sama 128 gigatavua yhtenäistä muistia.",
+      "text_markdown": "Siinä on GB10 Grace Blackwell -siru ja sama 128 gigatavua yhtenäistä muistia.",
+      "title": "",
+      "tts": {
+        "text": "Siinä on G B kymmenen Grace Blackwell -siru ja sama satakaksikymmentäkahdeksan gigatavua yhtenäistä muistia.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hinta nousi äskettäin 3999 dollarista 4699 dollariin, syynä globaali muistipula.",
+      "text_markdown": "Hinta nousi äskettäin 3999 dollarista 4699 dollariin, syynä globaali muistipula.",
+      "title": "",
+      "tts": {
+        "text": "Hinta nousi äskettäin kolmestatuhannesta yhdeksästäsadasta yhdeksästäkymmenestäyhdeksästä dollarista neljääntuhanteen kuuteensataan yhdeksäänkymmeneenyhdeksään dollariin, syynä globaali muistipula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kuinka suuren mallin nämä todella pystyvät käsittelemään?",
+      "text_markdown": "Kuinka suuren mallin nämä todella pystyvät käsittelemään?",
+      "title": "",
+      "tts": {
+        "text": "Kuinka suuren mallin nämä todella pystyvät käsittelemään?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Noin 200 miljardiin parametriin asti nelibittisellä kvantisoinnilla, tilaa kontekstille jääden.",
+      "text_markdown": "Noin 200 miljardiin parametriin asti nelibittisellä kvantisoinnilla, tilaa kontekstille jääden.",
+      "title": "",
+      "tts": {
+        "text": "Noin kahteensataan miljardiin parametriin asti nelibittisellä kvantisoinnilla, tilaa kontekstille jääden.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Yhdistä kaksi DGX Sparkia ConnectX-7:n kautta ja pääset noin 400 miljardin parametrin alueelle.",
+      "text_markdown": "Yhdistä kaksi DGX Sparkia ConnectX-7:n kautta ja pääset noin 400 miljardin parametrin alueelle.",
+      "title": "",
+      "tts": {
+        "text": "Yhdistä kaksi D G X Sparkia Connect X seitsemän kautta ja pääset noin neljänsadan miljardin parametrin alueelle.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on aidosti huippuluokan jalanjälki työtasolla.",
+      "text_markdown": "Se on aidosti huippuluokan jalanjälki työtasolla.",
+      "title": "",
+      "tts": {
+        "text": "Se on aidosti huippuluokan jalanjälki työtasolla.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-146",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nyt ohjelmistopino.",
+      "text_markdown": "Nyt ohjelmistopino.",
+      "title": "",
+      "tts": {
+        "text": "Nyt ohjelmistopino.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-147",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tämä on se, mikä muuttui silmiemme edessä.",
+      "text_markdown": "Tämä on se, mikä muuttui silmiemme edessä.",
+      "title": "",
+      "tts": {
+        "text": "Tämä on se, mikä muuttui silmiemme edessä.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Päättelyyn käytössäsi on vLLM, SGLang, llama.cpp, Ollama ja MLX Apple Siliconilla – kaikki ylläpidettyjä, kaikki nopeita.",
+      "text_markdown": "Päättelyyn käytössäsi on vLLM, SGLang, llama.cpp, Ollama ja MLX Apple Siliconilla – kaikki ylläpidettyjä, kaikki nopeita.",
+      "title": "",
+      "tts": {
+        "text": "Päättelyyn käytössäsi on V L L M, S G Lang, llama piste C P P, Ollama ja M L X Apple Siliconilla – kaikki ylläpidettyjä, kaikki nopeita.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Itse mallia varten tällä viikolla on Nemotron 3 Ultra -painot, sekä Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 ja MiniMax M3 -painot tulossa.",
+      "text_markdown": "Itse mallia varten tällä viikolla on Nemotron 3 Ultra -painot, sekä Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 ja MiniMax M3 -painot tulossa.",
+      "title": "",
+      "tts": {
+        "text": "Itse mallia varten tällä viikolla on Nemotron kolme Ultra -painot, sekä Kimi K kaksi piste kuusi, DeepSeek V neljä Flash, G L M viisi piste yksi, ja MiniMax M kolme -painot tulossa.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hienosäätöön Unsloth Studio tarjoaa nyt yhden napsautuksen täyden säädön GGUF-muotoon.",
+      "text_markdown": "Hienosäätöön Unsloth Studio tarjoaa nyt yhden napsautuksen täyden säädön GGUF-muotoon.",
+      "title": "",
+      "tts": {
+        "text": "Hienosäätöön Unsloth Studio tarjoaa nyt yhden napsautuksen täyden säädön G G U F -muotoon.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja agenttien osalta käytössäsi on Aider, Continue ja LangGraphin versio yksi, jotka pyörittävät paikallisesti kolmekymmentäkaksi miljardin parametrin malleja käyttökelpoisella luotettavuudella.",
+      "text_markdown": "Ja agenttien osalta käytössäsi on Aider, Continue ja LangGraphin versio yksi, jotka pyörittävät paikallisesti kolmekymmentäkaksi miljardin parametrin malleja käyttökelpoisella luotettavuudella.",
+      "title": "",
+      "tts": {
+        "text": "Ja agenttien osalta käytössäsi on Aider, Continue ja LangGraphin versio yksi, jotka pyörittävät paikallisesti kolmekymmentäkaksi miljardin parametrin malleja käyttökelpoisella luotettavuudella.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Se on koko silmukka.",
+      "text_markdown": "Se on koko silmukka.",
+      "title": "",
+      "tts": {
+        "text": "Se on koko silmukka.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Se on koko silmukka.",
+      "text_markdown": "Se on koko silmukka.",
+      "title": "",
+      "tts": {
+        "text": "Se on koko silmukka.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Piisiru, moottori, malli, hienosäätö, agentti – jokaisella kerroksella on uskottava avoin vaihtoehto, ja alin kerros on nyt pöydän viereen mahtuva minitietokone.",
+      "text_markdown": "Piisiru, moottori, malli, hienosäätö, agentti – jokaisella kerroksella on uskottava avoin vaihtoehto, ja alin kerros on nyt pöydän viereen mahtuva minitietokone.",
+      "title": "",
+      "tts": {
+        "text": "Piisiru, moottori, malli, hienosäätö, agentti – jokaisella kerroksella on uskottava avoin vaihtoehto, ja alin kerros on nyt pöydän viereen mahtuva minitietokone.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Entä talous?",
+      "text_markdown": "Entä talous?",
+      "title": "",
+      "tts": {
+        "text": "Entä talous?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Talous kääntyi tällä viikolla tavalla, jota on vaikea olla huomaamatta.",
+      "text_markdown": "Talous kääntyi tällä viikolla tavalla, jota on vaikea olla huomaamatta.",
+      "title": "",
+      "tts": {
+        "text": "Talous kääntyi tällä viikolla tavalla, jota on vaikea olla huomaamatta.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tokeneihin perustuva Copilot, Anthropicin S-1, joka ennustaa tulevaa hintapainetta, ja sähköverkon varoitukset Texasista, Virginiasta ja Ohiosta tiukasta kesästä.",
+      "text_markdown": "Tokeneihin perustuva Copilot, Anthropicin S-1, joka ennustaa tulevaa hintapainetta, ja sähköverkon varoitukset Texasista, Virginiasta ja Ohiosta tiukasta kesästä.",
+      "title": "",
+      "tts": {
+        "text": "Tokeneihin perustuva Copilot, Anthropicin S yksi, joka ennustaa tulevaa hintapainetta, ja sähköverkon varoitukset Texasista, Virginiasta ja Ohiosta tiukasta kesästä.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Itseisännöinnin puolesta puhuminen oli ennen ideologista.",
+      "text_markdown": "Itseisännöinnin puolesta puhuminen oli ennen ideologista.",
+      "title": "",
+      "tts": {
+        "text": "Itseisännöinnin puolesta puhuminen oli ennen ideologista.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tällä viikolla siitä tuli laskentataulukkoasia.",
+      "text_markdown": "Tällä viikolla siitä tuli laskentataulukkoasia.",
+      "title": "",
+      "tts": {
+        "text": "Tällä viikolla siitä tuli laskentataulukkoasia.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Olkaa rehellisiä siitä, mikä ei ole muuttunut.",
+      "text_markdown": "Olkaa rehellisiä siitä, mikä ei ole muuttunut.",
+      "title": "",
+      "tts": {
+        "text": "Olkaa rehellisiä siitä, mikä ei ole muuttunut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tärkeä huomio – työtasosi ei voita pilveä laatukärjessä.",
+      "text_markdown": "Tärkeä huomio – työtasosi ei voita pilveä laatukärjessä.",
+      "title": "",
+      "tts": {
+        "text": "Tärkeä huomio – työtasosi ei voita pilveä laatukärjessä.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 johtaa edelleen kokonaisuutta, ja GPT-5.5 omistaa edelleen BrowseCompin.",
+      "text_markdown": "Opus 4.8 johtaa edelleen kokonaisuutta, ja GPT-5.5 omistaa edelleen BrowseCompin.",
+      "title": "",
+      "tts": {
+        "text": "Opus neljä pilkku kahdeksan johtaa edelleen kokonaisuutta, ja GPT viisi pilkku viisi omistaa edelleen BrowseCompin.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tällä viikolla muuttui lattiataso.",
+      "text_markdown": "Tällä viikolla muuttui lattiataso.",
+      "title": "",
+      "tts": {
+        "text": "Tällä viikolla muuttui lattiataso.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kyvykkäät, agenttitason, hienosäädettävät mallit omalla laitteistollasi, avoimilla painoilla.",
+      "text_markdown": "Kyvykkäät, agenttitason, hienosäädettävät mallit omalla laitteistollasi, avoimilla painoilla.",
+      "title": "",
+      "tts": {
+        "text": "Kyvykkäät, agenttitason, hienosäädettävät mallit omalla laitteistollasi, avoimilla painoilla.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Se on tarina.",
+      "text_markdown": "Se on tarina.",
+      "title": "",
+      "tts": {
+        "text": "Se on tarina.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ennen se vaati datakeskuksen.",
+      "text_markdown": "Ennen se vaati datakeskuksen.",
+      "title": "",
+      "tts": {
+        "text": "Ennen se vaati datakeskuksen.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tällä viikolla se vaatii työtason.",
+      "text_markdown": "Tällä viikolla se vaatii työtason.",
+      "title": "",
+      "tts": {
+        "text": "Tällä viikolla se vaatii työtason.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-168",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Käydään läpi viikon konsepti.",
+      "text_markdown": "Käydään läpi viikon konsepti.",
+      "title": "",
+      "tts": {
+        "text": "Käydään läpi viikon konsepti.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-169",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Valitsit spekulatiivisen dekoodauksen.",
+      "text_markdown": "Valitsit spekulatiivisen dekoodauksen.",
+      "title": "",
+      "tts": {
+        "text": "Valitsit spekulatiivisen dekoodauksen.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-170",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Valitsin, koska se on temppu, joka saa kaiken juuri puhumamme tuntumaan nopealta.",
+      "text_markdown": "Valitsin, koska se on temppu, joka saa kaiken juuri puhumamme tuntumaan nopealta.",
+      "title": "",
+      "tts": {
+        "text": "Valitsin, koska se on temppu, joka saa kaiken juuri puhumamme tuntumaan nopealta.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMaxin viisitoistakertainen purkuväite nojaa suhteelliseen.",
+      "text_markdown": "MiniMaxin viisitoistakertainen purkuväite nojaa suhteelliseen.",
+      "title": "",
+      "tts": {
+        "text": "MiniMaxin viisitoista kertaa purkuväite nojaa suhteelliseen.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Llama.cpp:n luonnosmallitila hyödyntää juuri tätä ideaa.",
+      "text_markdown": "Llama.cpp:n luonnosmallitila hyödyntää juuri tätä ideaa.",
+      "title": "",
+      "tts": {
+        "text": "Llama cpp luonnosmallitila hyödyntää juuri tätä ideaa.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-173",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Käy se läpi meille.",
+      "text_markdown": "Käy se läpi meille.",
+      "title": "",
+      "tts": {
+        "text": "Käy se läpi meille.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-174",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Käytät kahta mallia rinnakkain.",
+      "text_markdown": "Käytät kahta mallia rinnakkain.",
+      "title": "",
+      "tts": {
+        "text": "Käytät kahta mallia rinnakkain.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pientä, nopeaa mallia, jota kutsutaan luonnostelijaksi, ja suurta, hidasta mallia, jota kutsutaan tarkistajaksi.",
+      "text_markdown": "Pientä, nopeaa mallia, jota kutsutaan luonnostelijaksi, ja suurta, hidasta mallia, jota kutsutaan tarkistajaksi.",
+      "title": "",
+      "tts": {
+        "text": "Pientä, nopeaa mallia, jota kutsutaan luonnostelijaksi, ja suurta, hidasta mallia, jota kutsutaan tarkistajaksi.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Luonnostelija arvaa, sanotaan, seuraavat neljä tokenia yhdellä kertaa.",
+      "text_markdown": "Luonnostelija arvaa, sanotaan, seuraavat neljä tokenia yhdellä kertaa.",
+      "title": "",
+      "tts": {
+        "text": "Luonnostelija arvaa, sanotaan, seuraavat neljä tokenia yhdellä kertaa.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tarkistaja tarkistaa kaikki neljä rinnakkain.",
+      "text_markdown": "Tarkistaja tarkistaa kaikki neljä rinnakkain.",
+      "title": "",
+      "tts": {
+        "text": "Tarkistaja tarkistaa kaikki neljä rinnakkain.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja sitten mitä tapahtui?",
+      "text_markdown": "Ja sitten mitä tapahtui?",
+      "title": "",
+      "tts": {
+        "text": "Ja sitten mitä tapahtui?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jos tarkistaja on samaa mieltä, pidät kaikki neljä ja jatkat – teit juuri neljä tokenia noin yhden hinnalla.",
+      "text_markdown": "Jos tarkistaja on samaa mieltä, pidät kaikki neljä ja jatkat – teit juuri neljä tokenia noin yhden hinnalla.",
+      "title": "",
+      "tts": {
+        "text": "Jos tarkistaja on samaa mieltä, pidät kaikki neljä ja jatkat – teit juuri neljä tokenia noin yhden hinnalla.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jos se on eri mieltä, hyväksyt ensimmäiseen eroon asti ja annat suuren mallin jatkaa siitä.",
+      "text_markdown": "Jos se on eri mieltä, hyväksyt ensimmäiseen eroon asti ja annat suuren mallin jatkaa siitä.",
+      "title": "",
+      "tts": {
+        "text": "Jos se on eri mieltä, hyväksyt ensimmäiseen eroon asti ja annat suuren mallin jatkaa siitä.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-181",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Joten vastaus on identtinen.",
+      "text_markdown": "Joten vastaus on identtinen.",
+      "title": "",
+      "tts": {
+        "text": "Joten vastaus on identtinen.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-182",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Aivan, se on se elegantti osa.",
+      "text_markdown": "Aivan, se on se elegantti osa.",
+      "title": "",
+      "tts": {
+        "text": "Aivan, se on se elegantti osa.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-183",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tuloste on täsmälleen sitä, mitä suuri malli olisi tuottanut itse.",
+      "text_markdown": "Tuloste on täsmälleen sitä, mitä suuri malli olisi tuottanut itse.",
+      "title": "",
+      "tts": {
+        "text": "Tuloste on täsmälleen sitä, mitä suuri malli olisi tuottanut itse.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-184",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Maksoit vain harvemmista sen eteenpäinsyötöistä.",
+      "text_markdown": "Maksoit vain harvemmista sen eteenpäinsyötöistä.",
+      "title": "",
+      "tts": {
+        "text": "Maksoit vain harvemmista sen eteenpäinsyötöistä.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-185",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Miksi sillä on merkitystä harrastelijalle?",
+      "text_markdown": "Miksi sillä on merkitystä harrastelijalle?",
+      "title": "",
+      "tts": {
+        "text": "Miksi sillä on merkitystä harrastelijalle?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Koska se muuttaa seitsemänkymmenen miljardin parametrin mallin yhdellä kortilla uutuudesta käyttökelpoiseksi keskusteluksi.",
+      "text_markdown": "Koska se muuttaa seitsemänkymmenen miljardin parametrin mallin yhdellä kortilla uutuudesta käyttökelpoiseksi keskusteluksi.",
+      "title": "",
+      "tts": {
+        "text": "Koska se muuttaa seitsemänkymmenen miljardin parametrin mallin yhdellä kortilla uutuudesta käyttökelpoiseksi keskusteluksi.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja puhelimessa se on osa sitä, miten todellinen laitteessa toimiva assistentti tuntuu reagoivalta.",
+      "text_markdown": "Ja puhelimessa se on osa sitä, miten todellinen laitteessa toimiva assistentti tuntuu reagoivalta.",
+      "title": "",
+      "tts": {
+        "text": "Ja puhelimessa se on osa sitä, miten todellinen laitteessa toimiva assistentti tuntuu reagoivalta.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-188",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Viime viikon konsepti, neuro-äänikoodekit, oli ääniversio samasta tempusta – vähemmän kalliita vaiheita samalla laadulla.",
+      "text_markdown": "Viime viikon konsepti, neuro-äänikoodekit, oli ääniversio samasta tempusta – vähemmän kalliita vaiheita samalla laadulla.",
+      "title": "",
+      "tts": {
+        "text": "Viime viikon konsepti, neuro-äänikoodekit, oli ääniversio samasta tempusta – vähemmän kalliita vaiheita samalla laadulla.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-189",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mihin uteliaiden pitäisi mennä tästä eteenpäin?",
+      "text_markdown": "Mihin uteliaiden pitäisi mennä tästä eteenpäin?",
+      "title": "",
+      "tts": {
+        "text": "Mihin uteliaiden pitäisi mennä tästä eteenpäin?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Etsi EAGLE-3, Medusa ja lookahead-dekoodaus.",
+      "text_markdown": "Etsi EAGLE-3, Medusa ja lookahead-dekoodaus.",
+      "title": "",
+      "tts": {
+        "text": "Etsi Eagle kolme, Medusa ja lookahead-dekoodaus.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ne ovat alkuperäisen luonnostelija-tarkistaja-idean moderneja serkkuja, ja ne ovat se, mitä päättelymoottorisi todella pyörittää taustalla.",
+      "text_markdown": "Ne ovat alkuperäisen luonnostelija-tarkistaja-idean moderneja serkkuja, ja ne ovat se, mitä päättelymoottorisi todella pyörittää taustalla.",
+      "title": "",
+      "tts": {
+        "text": "Ne ovat alkuperäisen luonnostelija-tarkistaja-idean moderneja serkkuja, ja ne ovat se, mitä päättelymoottorisi todella pyörittää taustalla.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hyvä paikka laskeutua.",
+      "text_markdown": "Hyvä paikka laskeutua.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä paikka laskeutua.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-193",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, kiitos.",
+      "text_markdown": "Ron, kiitos.",
+      "title": "",
+      "tts": {
+        "text": "Ron, kiitos.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Milloin vain, Vindy.",
+      "text_markdown": "Milloin vain, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Milloin vain, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tämä oli AI This Week 3. kesäkuuta 2026.",
+      "text_markdown": "Tämä oli AI This Week 3. kesäkuuta 2026.",
+      "title": "",
+      "tts": {
+        "text": "Tämä oli AI This Week kolmantena kesäkuuta, kaksituhatta kaksikymmentäkuusi.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-196",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Uusi numero ensi keskiviikkona.",
+      "text_markdown": "Uusi numero ensi keskiviikkona.",
+      "title": "",
+      "tts": {
+        "text": "Uusi numero ensi keskiviikkona.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-197",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Siihen asti, voikaa hyvin.",
+      "text_markdown": "Siihen asti, voikaa hyvin.",
+      "title": "",
+      "tts": {
+        "text": "Siihen asti, voikaa hyvin.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

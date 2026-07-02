@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "pa-Arab",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Everything Is Made of Atoms",
+      "text_markdown": "Everything Is Made of Atoms",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے"
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-002",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اپنے آلے دوالے ویکھو۔",
+      "text_markdown": "Look around you.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اپنے آلے دوالے ویکھو۔",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-003",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہر شے جیڑی تُسی ویکھ سکدے او، ایٹماں دی بنی ہوئی اے۔",
+      "text_markdown": "Everything you can see is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ہر شے جیڑی تُسی ویکھ سکدے او، ایٹماں دی بنی ہوئی اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-004",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ ہوا جیڑی تُسی ساہ لیندے او، ایٹماں دی بنی ہوئی اے۔",
+      "text_markdown": "The air you breathe is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اوہ ہوا جیڑی تُسی ساہ لیندے او، ایٹماں دی بنی ہوئی اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-005",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اوہ پانی جیڑا تُسی پیندے او، ایٹماں دا بنیا ہویا اے۔",
+      "text_markdown": "The water you drink is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اوہ پانی جیڑا تُسی پیندے او، ایٹماں دا بنیا ہویا اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-006",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تہاڈا جسم ایٹماں دا بنیا ہویا اے۔",
+      "text_markdown": "Your body is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تہاڈا جسم ایٹماں دا بنیا ہویا اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-007",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تہاڈے پیراں تھلے دی زمین ایٹماں دی بنی ہوئی اے۔",
+      "text_markdown": "The ground beneath your feet is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تہاڈے پیراں تھلے دی زمین ایٹماں دی بنی ہوئی اے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-008",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک ایٹم مادے دا سبھ توں چھوٹا حصہ اے جیہڑا اجے وی کیمیائی شناخت رکھدا اے۔",
+      "text_markdown": "An atom is the smallest piece of matter that still has a chemical identity.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اک ایٹم مادے دا سبھ توں چھوٹا حصہ اے جیہڑا اجے وی کیمیائی شناخت رکھدا اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-009",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تُسی اپنی اکھاں نال اک ایٹم وی نہیں ویکھ سکدے۔",
+      "text_markdown": "You cannot see a single atom with your eyes.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تُسی اپنی اکھاں نال اک ایٹم وی نہیں ویکھ سکدے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-010",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تُسی اک عام خوردبین نال وی اک ایٹم نہیں ویکھ سکدے۔",
+      "text_markdown": "You cannot see a single atom with a regular microscope.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تُسی اک عام خوردبین نال وی اک ایٹم نہیں ویکھ سکدے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-011",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایٹم اینے چھوٹے ہوندے نیں۔",
+      "text_markdown": "Atoms are that small.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ایٹم اینے چھوٹے ہوندے نیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-012",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ریت دے اک دانے وچ تقریباً پنجاہ کوئنٹلیئن ایٹم ہوندے نیں۔",
+      "text_markdown": "A single grain of sand contains about fifty quintillion atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ریت دے اک دانے وچ تقریباً پنجاہ کوئنٹلیئن ایٹم ہوندے نیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-013",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ گنتی پنجاہ اے جیہدے مگر اٹھارہ صفر نیں۔",
+      "text_markdown": "That number is fifty followed by eighteen zeros.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اوہ گنتی پنجاہ اے جیہدے مگر اٹھارہ صفر نیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ریت دے اک دانے وچ اک ساحل تے موجود ریت دے دانیاں توں وی ودھ ایٹم ہوندے نیں۔",
+      "text_markdown": "There are more atoms in one grain of sand than there are grains of sand on a beach.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ریت دے اک دانے وچ اک ساحل تے موجود ریت دے دانیاں توں وی ودھ ایٹم ہوندے نیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم طبعی دنیا وچ ہر شے دے بنیادی اجزاء نیں۔",
+      "text_markdown": "Atoms are the building blocks of everything in the physical world.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ایٹم طبعی دنیا وچ ہر شے دے بنیادی اجزاء نیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اک کندھ اِٹاں دی بنی ہوندی اے۔",
+      "text_markdown": "A wall is made of bricks.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اک کندھ اِٹاں دی بنی ہوندی اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اک جملہ لفظاں دا بنیا ہوندا اے۔",
+      "text_markdown": "A sentence is made of words.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اک جملہ لفظاں دا بنیا ہوندا اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "کائنات ایٹماں دی بنی ہوئی اے۔",
+      "text_markdown": "The universe is made of atoms.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "کائنات ایٹماں دی بنی ہوئی اے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لفظ \"ایٹم\" پرانی یونانی زبان توں آیا اے۔",
+      "text_markdown": "The word atom comes from ancient Greek.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "لفظ \"ایٹم\" پرانی یونانی زبان توں آیا اے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "یونانی لفظ \"ایٹوموس\" دا مطلب اے \"نہ کٹن والا\"۔",
+      "text_markdown": "The Greek word atomos means uncuttable.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "یونانی لفظ \"ایٹوموس\" دا مطلب اے \"نہ کٹن والا\"۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "پرانے یونانی فلسفیاں دا خیال سی کہ ایٹم مادے دے سبھ توں چھوٹے ممکنہ ٹکڑے نیں۔",
+      "text_markdown": "Ancient Greek philosophers thought atoms were the smallest possible pieces of matter.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "پرانے یونانی فلسفیاں دا خیال سی کہ ایٹم مادے دے سبھ توں چھوٹے ممکنہ ٹکڑے نیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اوہ تقریباً ٹھیک سن۔",
+      "text_markdown": "They were close to right.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اوہ تقریباً ٹھیک سن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایٹم سچ مچ سبھ توں چھوٹے ذرے نہیں ہن، پر اوہ سبھ توں چھوٹیاں اکائیاں ہن جو اپنی کیمیائی خاصیتاں نوں برقرار رکھدیاں ہن۔",
+      "text_markdown": "Atoms are not truly the smallest particles, but they are the smallest units that keep their chemical properties.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ایٹم سچ مچ سبھ توں چھوٹے ذرے نہیں ہن، پر اوہ سبھ توں چھوٹیاں اکائیاں ہن جو اپنی کیمیائی خاصیتاں نوں برقرار رکھدیاں ہن۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم حیرت انگیز طور تے پائیدار ہوندے ہن۔",
+      "text_markdown": "Atoms are incredibly durable.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "ایٹم حیرت انگیز طور تے پائیدار ہوندے ہن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تہاڈے جسم وچلے ایٹم ارباں سال پرانے ہن۔",
+      "text_markdown": "The atoms in your body are billions of years old.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تہاڈے جسم وچلے ایٹم ارباں سال پرانے ہن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اج تہاڈے پیتے ہوئے پانی وچلے کجھ ہائیڈروجن ایٹم بگ بینگ توں بعد پہلے منٹاں وچ بنے سن۔",
+      "text_markdown": "Some of the hydrogen atoms in the water you drank today were created in the first minutes after the Big Bang.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اج تہاڈے پیتے ہوئے پانی وچلے کجھ ہائیڈروجن ایٹم بگ بینگ توں بعد پہلے منٹاں وچ بنے سن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تسی پرانے مادیاں دے بنے ہوئے او۔",
+      "text_markdown": "You are made of ancient materials.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "تسی پرانے مادیاں دے بنے ہوئے او۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عام زندگی وچ ایٹم کدے وی نہ تاں بݨدے ہن اتے نہ ہی ختم ہوندے ہن۔",
+      "text_markdown": "Atoms are never created or destroyed in ordinary life.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "عام زندگی وچ ایٹم کدے وی نہ تاں بݨدے ہن اتے نہ ہی ختم ہوندے ہن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ دوبارہ ترتیب پاندے ہن۔",
+      "text_markdown": "They rearrange.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "اوہ دوبارہ ترتیب پاندے ہن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جدوں لکڑی سڑدی اے، تاں ایٹم غائب نہیں ہوندے۔",
+      "text_markdown": "When wood burns, the atoms do not disappear.",
+      "title": "ہر چیز ایٹماں دی بنی ہوئی اے",
+      "tts": {
+        "text": "جدوں لکڑی سڑدی اے، تاں ایٹم غائب نہیں ہوندے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تُعاد ترتيبها لتصبح دخانًا ورمادًا وغازًا.",
+      "text_markdown": "تُعاد ترتيبها لتصبح دخانًا ورمادًا وغازًا.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "اوہ دھواں، راکھ تے گیس دی نئی ترتیب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "عندما يذوب الجليد، تبقى الذرات كما هي.",
+      "text_markdown": "عندما يذوب الجليد، تبقى الذرات كما هي.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "برف پگھلدی اے تاں وی ایٹم اوہی ذرّات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يتغير ترتيبها فقط.",
+      "text_markdown": "يتغير ترتيبها فقط.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "بدل صرف ترتیب۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فهم الذرات هو أساس الكيمياء.",
+      "text_markdown": "فهم الذرات هو أساس الكيمياء.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "ایٹماں دی سمجھ کیمیا دی بنیاد۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الكيمياء هي علم كيفية اتحاد الذرات، وإعادة ترتيبها، وتفاعلها.",
+      "text_markdown": "الكيمياء هي علم كيفية اتحاد الذرات، وإعادة ترتيبها، وتفاعلها.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "کیمیا ایٹماں دے جُڑن، بکھرن تے ردعمل دا علم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل ما يحدث في العالم المادي يعود إلى الذرات وما تفعله.",
+      "text_markdown": "كل ما يحدث في العالم المادي يعود إلى الذرات وما تفعله.",
+      "title": "كل شيء مصنوع من الذرات",
+      "tts": {
+        "text": "مادی دنیا دا ہر واقعہ ایٹماں دے کَم نال جُڑ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-037",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "داخل الذرة",
+      "text_markdown": "داخل الذرة",
+      "title": "داخل الذرة"
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-038",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحتوي الذرة على ثلاثة أنواع من الجسيمات بداخلها.",
+      "text_markdown": "تحتوي الذرة على ثلاثة أنواع من الجسيمات بداخلها.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "ایٹم دے اندر ذرّات دیاں تین قسماں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-039",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "البروتونات.",
+      "text_markdown": "البروتونات.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "پروٹون ذرّات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-040",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "النيوترونات.",
+      "text_markdown": "النيوترونات.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹران ذرّات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-041",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الإلكترونات.",
+      "text_markdown": "الإلكترونات.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "الیکٹران ذرّات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-042",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تُشكل هذه الجسيمات الثلاثة كل ذرة في الكون.",
+      "text_markdown": "تُشكل هذه الجسيمات الثلاثة كل ذرة في الكون.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "ایہ تینوں ذرّات کائنات دے ہر ایٹم دی بنتر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-043",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُسمى مركز الذرة النواة.",
+      "text_markdown": "يُسمى مركز الذرة النواة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "ایٹم دے مرکز دا ناں نیوکلیئس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-044",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تحتوي النواة على البروتونات والنيوترونات.",
+      "text_markdown": "تحتوي النواة على البروتونات والنيوترونات.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوکلیئس دے اندر پروٹون تے نیوٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-045",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "النواة صغيرة جدًا مقارنة بالذرة بأكملها.",
+      "text_markdown": "النواة صغيرة جدًا مقارنة بالذرة بأكملها.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "پورے ایٹم دے مقابلے وچ نیوکلیئس بے حد چھوٹا مرکز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-046",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إذا كانت الذرة بحجم ملعب كرة قدم، فإن النواة ستكون بحجم كرة رخامية على خط الخمسين ياردة.",
+      "text_markdown": "إذا كانت الذرة بحجم ملعب كرة قدم، فإن النواة ستكون بحجم كرة رخامية على خط الخمسين ياردة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "جے ایٹم فٹبال دے میدان جتنا ہووے، نیوکلیئس پچاس یارڈ لائن اُتے سنگ مرمر دی ننھی گیند۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-047",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل البروتونات شحنة كهربائية موجبة.",
+      "text_markdown": "تحمل البروتونات شحنة كهربائية موجبة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "پروٹون اُتے مثبت برقی چارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-048",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كل بروتون يحمل نفس مقدار الشحنة الموجبة.",
+      "text_markdown": "كل بروتون يحمل نفس مقدار الشحنة الموجبة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "ہر پروٹون اُتے اوہی مثبت برقی چارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-049",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يحدد عدد البروتونات في الذرة نوع العنصر الذي تنتمي إليه الذرة.",
+      "text_markdown": "يحدد عدد البروتونات في الذرة نوع العنصر الذي تنتمي إليه الذرة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "ایٹم وچ پروٹوناں دی گنتی عنصر دا تعین۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-050",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بروتون واحد يعني الهيدروجين.",
+      "text_markdown": "بروتون واحد يعني الهيدروجين.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "اک پروٹون، ہائیڈروجن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-051",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ستة بروتونات تعني الكربون.",
+      "text_markdown": "ستة بروتونات تعني الكربون.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "چھ پروٹون، کاربن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-052",
+      "paragraph_id": "p13",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ستة وعشرون بروتونًا تعني الحديد.",
+      "text_markdown": "ستة وعشرون بروتونًا تعني الحديد.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "چھبّی پروٹون، لوہا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-053",
+      "paragraph_id": "p13",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "عدد البروتونات هو أهم حقيقة عن الذرة.",
+      "text_markdown": "عدد البروتونات هو أهم حقيقة عن الذرة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "پروٹوناں دی گنتی ایٹم بارے سبھ توں اہم حقیقت۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-054",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا تحمل النيوترونات أي شحنة كهربائية.",
+      "text_markdown": "لا تحمل النيوترونات أي شحنة كهربائية.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹران اُتے کوئی برقی چارج نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-055",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "النيوترونات متعادلة.",
+      "text_markdown": "النيوترونات متعادلة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹران مکمل غیر جانبدار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-056",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "توجد النيوترونات في النواة بجانب البروتونات.",
+      "text_markdown": "توجد النيوترونات في النواة بجانب البروتونات.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹران نیوکلیئس وچ پروٹوناں دے نال۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-057",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تساعد النيوترونات في تماسك النواة.",
+      "text_markdown": "تساعد النيوترونات في تماسك النواة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹران نیوکلیئس دے جُڑاؤ وچ مددگار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-058",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "بدون النيوترونات، ستدفع البروتونات بعضها البعض بعيدًا لأنها جميعًا تحمل نفس الشحنة الموجبة.",
+      "text_markdown": "بدون النيوترونات، ستدفع البروتونات بعضها البعض بعيدًا لأنها جميعًا تحمل نفس الشحنة الموجبة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "نیوٹراناں بغیر، پروٹون اک دوجے نوں دور دھکّلن، کیونکہ ساریاں اُتے اکساں مثبت چارج۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-059",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل الإلكترونات شحنة كهربائية سالبة.",
+      "text_markdown": "تحمل الإلكترونات شحنة كهربائية سالبة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "الیکٹران اُتے منفی برقی چارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-060",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تتحرك الإلكترونات حول النواة في سحابة.",
+      "text_markdown": "تتحرك الإلكترونات حول النواة في سحابة.",
+      "title": "داخل الذرة",
+      "tts": {
+        "text": "الیکٹران نیوکلیئس دے گرد اک بادل نما خطے وچ حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-061",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ سورج دے آلے دوالے سیارےآں وانگ مدار وچ نہیں گھمدے.",
+      "text_markdown": "اوہ سورج دے آلے دوالے سیارےآں وانگ مدار وچ نہیں گھمدے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایہ سورج دے گرد سیاریاں ورگے مدار وچ نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اوہ نیوکلیئس دے آلے دوالے امکانیت دے اک دھندلے علاقے وچ موجود ہوندے نیں.",
+      "text_markdown": "اوہ نیوکلیئس دے آلے دوالے امکانیت دے اک دھندلے علاقے وچ موجود ہوندے نیں.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایہ نیوکلیئس دے آلے دوالے امکان دے دھندلے خطے وچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الیکٹران بادل اوہ جگہ اے جتھے تہاڈے لئی کسی وی ویلے اک الیکٹران لبھݨ دا امکان ہوندا اے.",
+      "text_markdown": "الیکٹران بادل اوہ جگہ اے جتھے تہاڈے لئی کسی وی ویلے اک الیکٹران لبھݨ دا امکان ہوندا اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "الیکٹران بادل اوہ خطہ جتھے کسے ویلے الیکٹران ملݨ دا امکان۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک الیکٹران دی کمیت پروٹون یا نیوٹران دے مقابلے وچ تقریباً نہ ہوݨ دے برابر ہوندی اے.",
+      "text_markdown": "اک الیکٹران دی کمیت پروٹون یا نیوٹران دے مقابلے وچ تقریباً نہ ہوݨ دے برابر ہوندی اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "الیکٹران دی کمیت پروٹون یا نیوٹران دے مقابلے وچ نہایت قلیل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اک پروٹون اک الیکٹران نالوں تقریباً 1,836 گنا بھاری ہوندا اے.",
+      "text_markdown": "اک پروٹون اک الیکٹران نالوں تقریباً 1,836 گنا بھاری ہوندا اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "اک پروٹون دا وزن، اک الیکٹران توں تقریباً اک ہزار اٹھ سو چھتی گنا ودھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ایٹم دی تقریباً ساری کمیت نیوکلیئس وچ ہوندی اے.",
+      "text_markdown": "ایٹم دی تقریباً ساری کمیت نیوکلیئس وچ ہوندی اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایٹم دی تقریباً ساری کمیت نیوکلیئس دے اندر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک غیر جانبدار ایٹم وچ، الیکٹراناں دی تعداد پروٹوناں دی تعداد دے برابر ہوندی اے.",
+      "text_markdown": "اک غیر جانبدار ایٹم وچ، الیکٹراناں دی تعداد پروٹوناں دی تعداد دے برابر ہوندی اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "غیر جانبدار ایٹم وچ الیکٹراناں دی گنتی پروٹوناں دے برابر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "مثبت چارج تے منفی چارج متوازن ہو جاندے نیں.",
+      "text_markdown": "مثبت چارج تے منفی چارج متوازن ہو جاندے نیں.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "مثبت تے منفی چارج آپس وچ متوازن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ایٹم دا کوئی مجموعی چارج نہیں ہوندا.",
+      "text_markdown": "ایٹم دا کوئی مجموعی چارج نہیں ہوندا.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایٹم اُتے کوئی مجموعی چارج نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہ توازن اک ایٹم دی بنیادی حالت اے.",
+      "text_markdown": "ایہ توازن اک ایٹم دی بنیادی حالت اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایہ توازن ایٹم دی بنیادی حالت۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم دا زیادہ تر حصہ خالی جگہ ہوندا اے.",
+      "text_markdown": "ایٹم دا زیادہ تر حصہ خالی جگہ ہوندا اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "ایٹم دا وڈا حصہ خالی جگہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "نیوکلیئس گھنا تے چھوٹا ہوندا اے.",
+      "text_markdown": "نیوکلیئس گھنا تے چھوٹا ہوندا اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "نیوکلیئس گھنا تے ننھا مرکز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الیکٹران بادل وڈا تے زیادہ تر خالی ہوندا اے.",
+      "text_markdown": "الیکٹران بادل وڈا تے زیادہ تر خالی ہوندا اے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "الیکٹران بادل وڈا، پر زیادہ تر خالی خطہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "جے تسی اپنے جسم دے ہر ایٹم وچوں ساری خالی جگہ کڈھ سکدے، تے تسی نمک دے دانے نالوں وی چھوٹے سائز تک سکڑ جاؤ گے.",
+      "text_markdown": "جے تسی اپنے جسم دے ہر ایٹم وچوں ساری خالی جگہ کڈھ سکدے، تے تسی نمک دے دانے نالوں وی چھوٹے سائز تک سکڑ جاؤ گے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "جے تسی اپنے جسم دے ہر ایٹم وچوں خالی جگہ کڈھ لو، تہاڈا جسم نمک دے دانے توں وی نِکّے حجم وچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تہاڈی کمیت اوہی رہندی.",
+      "text_markdown": "تہاڈی کمیت اوہی رہندی.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "کمیت پھر وی اوہی۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تسی بس ناقابل یقین حد تک گھنے ہو جاؤ گے.",
+      "text_markdown": "تسی بس ناقابل یقین حد تک گھنے ہو جاؤ گے.",
+      "title": "ایٹم دے اندر",
+      "tts": {
+        "text": "پر گھناپن ناقابل یقین حد تک ودھ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-077",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "عناصر",
+      "text_markdown": "عناصر",
+      "title": "عناصر"
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-078",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک عنصر اک مادہ اے جو صرف اک قسم دے ایٹم نال بنیا ہوندا اے.",
+      "text_markdown": "اک عنصر اک مادہ اے جو صرف اک قسم دے ایٹم نال بنیا ہوندا اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "عنصر اوہ مادہ جیہڑا صرف اک قسم دے ایٹم توں بنتر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-079",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "خالص سونا اک عنصر اے.",
+      "text_markdown": "خالص سونا اک عنصر اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص سونا اک عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-080",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "خالص سونے دی اک سلاخ وچ ہر ایٹم دے ستتر پروٹون ہوندے نیں.",
+      "text_markdown": "خالص سونے دی اک سلاخ وچ ہر ایٹم دے ستتر پروٹون ہوندے نیں.",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص سونے دی سلاخ دے ہر ایٹم وچ ستتر پروٹون۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-081",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "خالص آکسیجن اک عنصر اے.",
+      "text_markdown": "خالص آکسیجن اک عنصر اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص آکسیجن اک عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-082",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "خالص آکسیجن دے اک ٹینک وچ ہر ایٹم دے اٹھ پروٹون ہوندے نیں.",
+      "text_markdown": "خالص آکسیجن دے اک ٹینک وچ ہر ایٹم دے اٹھ پروٹون ہوندے نیں.",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص آکسیجن دے ٹینک دے ہر ایٹم وچ اٹھ پروٹون۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-083",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "زمین تے قدرتی طور تے تقریباً بانوے عناصر پائے جاندے نیں.",
+      "text_markdown": "زمین تے قدرتی طور تے تقریباً بانوے عناصر پائے جاندے نیں.",
+      "title": "عناصر",
+      "tts": {
+        "text": "زمین اُتے قدرتی طور اُتے تقریباً بانوے عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-084",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سائنسداناں نے لیبارٹریاں وچ ہور عناصر بنائے نیں.",
+      "text_markdown": "سائنسداناں نے لیبارٹریاں وچ ہور عناصر بنائے نیں.",
+      "title": "عناصر",
+      "tts": {
+        "text": "سائنسداناں نے لیبارٹری وچ ہور عنصر تیار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-085",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "معلوم عناصر دی کل تعداد اک سو اٹھارہ توں ودھ اے.",
+      "text_markdown": "معلوم عناصر دی کل تعداد اک سو اٹھارہ توں ودھ اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "معلوم عناصر دی کل گنتی اک سو اٹھارہ توں ودھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-086",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ہر عنصر دے پروٹوناں دی اک منفرد تعداد ہوندی اے.",
+      "text_markdown": "ہر عنصر دے پروٹوناں دی اک منفرد تعداد ہوندی اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر عنصر دے پروٹوناں دی اک منفرد گنتی۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-087",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ہر عنصر دا اک ناں تے اک علامت ہوندی اے.",
+      "text_markdown": "ہر عنصر دا اک ناں تے اک علامت ہوندی اے.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر عنصر دا اک ناں تے اک علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-088",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہائیڈروجن H اے۔ آکسیجن O اے۔ کاربن C اے۔ لوہا Fe اے۔",
+      "text_markdown": "ہائیڈروجن H اے۔ آکسیجن O اے۔ کاربن C اے۔ لوہا Fe اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن دی ایچ علامت، آکسیجن دی او علامت، کاربن دی سی علامت، لوہے دی ایف ای علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-089",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سونا Au اے۔",
+      "text_markdown": "سونا Au اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سونے دی اے یو علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-090",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "علامتاں لاطینی، یونانی، یا انگریزی ناواں توں آؤندیاں نیں.",
+      "text_markdown": "علامتاں لاطینی، یونانی، یا انگریزی ناواں توں آؤندیاں نیں.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ایہ علامتاں لاطینی، یونانی یا انگریزی ناواں توں ماخذ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-091",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Fe لاطینی لفظ ferrum توں آیا اے۔",
+      "text_markdown": "Fe لاطینی لفظ ferrum توں آیا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ایف ای لاطینی لفظ فیرم توں ماخذ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-092",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Au لاطینی لفظ aurum توں آیا اے۔",
+      "text_markdown": "Au لاطینی لفظ aurum توں آیا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "اے یو لاطینی لفظ اورم توں ماخذ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-093",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ہائیڈروجن سبھ توں سادہ عنصر اے۔",
+      "text_markdown": "ہائیڈروجن سبھ توں سادہ عنصر اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن سبھ توں سادہ عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-094",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہائیڈروجن دے اک ایٹم وچ اک پروٹون تے اک الیکٹران ہوندا اے۔",
+      "text_markdown": "ہائیڈروجن دے اک ایٹم وچ اک پروٹون تے اک الیکٹران ہوندا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن دے ایٹم وچ اک پروٹون تے اک الیکٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-095",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ہائیڈروجن کائنات وچ سبھ توں عام عنصر اے۔",
+      "text_markdown": "ہائیڈروجن کائنات وچ سبھ توں عام عنصر اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن کائنات دا سبھ توں عام عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-096",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تارے زیادہ تر ہائیڈروجن دے بنے ہوندے نیں۔",
+      "text_markdown": "تارے زیادہ تر ہائیڈروجن دے بنے ہوندے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تارے زیادہ تر ہائیڈروجن دی بنتر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-097",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "کاربن زندگی دا عنصر اے۔",
+      "text_markdown": "کاربن زندگی دا عنصر اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن زندگی دا بنیادی عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-098",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "کاربن وچ چھ پروٹون ہوندے نیں۔",
+      "text_markdown": "کاربن وچ چھ پروٹون ہوندے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن وچ چھ پروٹون۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-099",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "کاربن دے ایٹم اکو ویلے کئی ہور ایٹماں نال بندھن بنا سکدے نیں۔",
+      "text_markdown": "کاربن دے ایٹم اکو ویلے کئی ہور ایٹماں نال بندھن بنا سکدے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن دے ایٹم اک ویلے کئی ہور ایٹماں نال بندھن جوڑ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-100",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہ صلاحیت کاربن نوں ساریاں زندہ شیواں دی بنیاد بناندی اے۔",
+      "text_markdown": "ایہ صلاحیت کاربن نوں ساریاں زندہ شیواں دی بنیاد بناندی اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ایہ صلاحیت کاربن نوں زندہ شےواں دی بنیاد بناؤن والی طاقت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-101",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تہاڈے جسم وچ ہر پروٹین، ڈی این اے دا ہر دھاگا، تے شوگر دا ہر مالیکیول کاربن رکھدا اے۔",
+      "text_markdown": "تہاڈے جسم وچ ہر پروٹین، ڈی این اے دا ہر دھاگا، تے شوگر دا ہر مالیکیول کاربن رکھدا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تہاڈے جسم دے ہر پروٹین، ڈی این اے دے ہر دھاگے تے شوگر دے ہر مالیکیول وچ کاربن۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-102",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "آکسیجن وچ اٹھ پروٹون ہوندے نیں۔",
+      "text_markdown": "آکسیجن وچ اٹھ پروٹون ہوندے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آکسیجن وچ اٹھ پروٹون۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-103",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "آکسیجن اوہ عنصر اے جیہنوں تُسی ساہ لیندے او۔",
+      "text_markdown": "آکسیجن اوہ عنصر اے جیہنوں تُسی ساہ لیندے او۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تُسی ساہ وچ جیہڑا عنصر لیندے او، اوہ آکسیجن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-104",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تہاڈے پھیپھڑے ہوا وچوں آکسیجن کڈھدے نیں تے ایہنوں تہاڈے خون وچ گھلدے نیں۔",
+      "text_markdown": "تہاڈے پھیپھڑے ہوا وچوں آکسیجن کڈھدے نیں تے ایہنوں تہاڈے خون وچ گھلدے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تہاڈے پھیپھڑے ہوا وچوں آکسیجن کڈھ کے خون وچ شامل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-105",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تہاڈے خلیے خوراک توں توانائی چھڈن لئی آکسیجن استعمال کردے نیں۔",
+      "text_markdown": "تہاڈے خلیے خوراک توں توانائی چھڈن لئی آکسیجن استعمال کردے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تہاڈے خلیے خوراک توں توانائی چھڈݨ لئی آکسیجن استعمال۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-106",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لوہے وچ چھوی پروٹون ہوندے نیں۔",
+      "text_markdown": "لوہے وچ چھوی پروٹون ہوندے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "لوہے وچ چھبّی پروٹون۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-107",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لوہا اوہ عنصر اے جیہڑا تہاڈے خون نوں لال کردا اے۔",
+      "text_markdown": "لوہا اوہ عنصر اے جیہڑا تہاڈے خون نوں لال کردا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "تہاڈے خون دے لال رنگ دے پیچھے لوہے دا کردار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-108",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لوہا سٹیل وچ مرکزی جزو اے۔",
+      "text_markdown": "لوہا سٹیل وچ مرکزی جزو اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سٹیل دا مرکزی جز لوہا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-109",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "زمین دا مرکز زیادہ تر لوہے دا بنیا ہویا اے۔",
+      "text_markdown": "زمین دا مرکز زیادہ تر لوہے دا بنیا ہویا اے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "زمین دا مرکز زیادہ تر لوہے دی بنتر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-110",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سبھ توں ہلکے عناصر کائنات وچ سبھ توں عام نیں۔",
+      "text_markdown": "سبھ توں ہلکے عناصر کائنات وچ سبھ توں عام نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سبھ توں ہلکے عنصر کائنات وچ سبھ توں عام۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-111",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہائیڈروجن تے ہیلیئم رل کے کائنات دے سارے ایٹماں دا تقریباً اٹھانوے فیصد بناؤندے نیں۔",
+      "text_markdown": "ہائیڈروجن تے ہیلیئم رل کے کائنات دے سارے ایٹماں دا تقریباً اٹھانوے فیصد بناؤندے نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن تے ہیلیئم رل کے کائنات دے تقریباً اٹھانوے فیصد ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-112",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بھارے عناصر مقابلے وچ نایاب نیں۔",
+      "text_markdown": "بھارے عناصر مقابلے وچ نایاب نیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "بھاری عنصر مقابلے وچ نایاب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "id": "ch03-113",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ہر بھارے عنصر دا ہر ایٹم اک تارے دے اندر بنیا سی۔",
+      "text_markdown": "ہر بھارے عنصر دا ہر ایٹم اک تارے دے اندر بنیا سی۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر بھاری عنصر دا ہر ایٹم، کسی نہ کسی تارے دے اندر جنم۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-114",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "پیریوڈک ٹیبل",
+      "text_markdown": "پیریوڈک ٹیبل",
+      "title": "پیریوڈک ٹیبل"
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-115",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "پیریوڈک ٹیبل اک چارٹ اے جیہڑا ہر معلوم عنصر نوں منظم کردا اے۔",
+      "text_markdown": "پیریوڈک ٹیبل اک چارٹ اے جیہڑا ہر معلوم عنصر نوں منظم کردا اے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "پیریاڈک ٹیبل ہر معلوم عنصر دا منظم چارٹ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-116",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ایہ ٹیبل عناصر نوں اوہناں دے پروٹوناں دی گنتی دے لحاظ نال، سبھ توں چھوٹے توں سبھ توں وڈے تک، ترتیب دیندا اے۔",
+      "text_markdown": "ایہ ٹیبل عناصر نوں اوہناں دے پروٹوناں دی گنتی دے لحاظ نال، سبھ توں چھوٹے توں سبھ توں وڈے تک، ترتیب دیندا اے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ایہ ٹیبل عناصر نوں پروٹوناں دی گنتی دے لحاظ نال، نِکّے توں وڈے تک، ترتیب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-117",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ہائیڈروجن پہلے نمبر تے اے، اک پروٹون دے نال۔",
+      "text_markdown": "ہائیڈروجن پہلے نمبر تے اے، اک پروٹون دے نال۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ہائیڈروجن پہلے نمبر اُتے، اک پروٹون دے نال۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-118",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ہیلیئم دوجے نمبر تے اے، دو پروٹوناں دے نال۔",
+      "text_markdown": "ہیلیئم دوجے نمبر تے اے، دو پروٹوناں دے نال۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ہیلیئم دوجے نمبر اُتے، دو پروٹوناں دے نال۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-119",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایہ ٹیبل اوگانیسن تک جاری رہندا اے، اک سو اٹھارہ پروٹوناں دے نال۔",
+      "text_markdown": "ایہ ٹیبل اوگانیسن تک جاری رہندا اے، اک سو اٹھارہ پروٹوناں دے نال۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ایہ سلسلہ اوگانیسن تک، اک سو اٹھارہ پروٹوناں دے نال۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-120",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "پیریوڈک ٹیبل وچ قطاراں تے کالم ہوندے نیں۔",
+      "text_markdown": "پیریوڈک ٹیبل وچ قطاراں تے کالم ہوندے نیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "پیریاڈک ٹیبل وچ قطاراں تے کالم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-121",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "قطاراں نوں پیریئڈز آکھیا جاندا اے۔",
+      "text_markdown": "قطاراں نوں پیریئڈز آکھیا جاندا اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "قطاراں دا ناں پیریئڈز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-122",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "کالماں نوں گروپس آکھیا جاندا اے۔",
+      "text_markdown": "کالماں نوں گروپس آکھیا جاندا اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "کالماں دا ناں گروپس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-123",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اکو گروپ وچلے عناصر دیاں خصوصیات ملدیاں جلدیاں ہوندیاں نیں۔",
+      "text_markdown": "اکو گروپ وچلے عناصر دیاں خصوصیات ملدیاں جلدیاں ہوندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "اکو گروپ دے عناصر وچ ملدیاں جلدیاں خصوصیات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-124",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایس لئی ایس ٹیبل نوں پیریاڈک آکھیا جاندا اے۔",
+      "text_markdown": "ایس لئی ایس ٹیبل نوں پیریاڈک آکھیا جاندا اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ایس لئی ایس ٹیبل دا ناں پیریاڈک۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-125",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "خصوصیات اک باقاعدہ پیٹرن وچ دہرائیاں جاندیاں نیں۔",
+      "text_markdown": "خصوصیات اک باقاعدہ پیٹرن وچ دہرائیاں جاندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "خصوصیات دا باقاعدہ تکرار۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-126",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ٹیبل دے کھبے پاسے دے عناصر دھاتاں نیں۔",
+      "text_markdown": "ٹیبل دے کھبے پاسے دے عناصر دھاتاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ٹیبل دے کھبے پاسے والے بہتیرے عنصر دھات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-127",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بوہتے عناصر دھاتاں نیں۔",
+      "text_markdown": "بوہتے عناصر دھاتاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "بوہتے عناصر دھات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-128",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "دھاتاں چمکدار ہوندیاں نیں۔",
+      "text_markdown": "دھاتاں چمکدار ہوندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "دھاتاں چمکدار مادہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-129",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "دھاتاں بجلی دیاں موصل ہوندیاں نیں۔",
+      "text_markdown": "دھاتاں بجلی دیاں موصل ہوندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "دھاتاں بجلی دیاں چنگیاں موصل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-130",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "دھاتاں حرارت دیاں موصل ہوندیاں نیں۔",
+      "text_markdown": "دھاتاں حرارت دیاں موصل ہوندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "دھاتاں حرارت دیاں چنگیاں موصل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-131",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لوہا، تانبا، سونا تے ایلومینیم ساریاں دھاتاں نیں۔",
+      "text_markdown": "لوہا، تانبا، سونا تے ایلومینیم ساریاں دھاتاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "لوہا، تانبا، سونا تے ایلومینیم، ساریاں دھات۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-132",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ٹیبل دے سجے پاسے دے عناصر غیر دھاتاں نیں۔",
+      "text_markdown": "ٹیبل دے سجے پاسے دے عناصر غیر دھاتاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ٹیبل دے سجے پاسے والے عنصر غیر دھات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-133",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "غیر دھاتاں وچ آکسیجن، نائٹروجن، کاربن تے سلفر شامل نیں۔",
+      "text_markdown": "غیر دھاتاں وچ آکسیجن، نائٹروجن، کاربن تے سلفر شامل نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتاں وچ آکسیجن، نائٹروجن، کاربن تے سلفر شامل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-134",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "غیر دھاتاں بجلی نوں چنگی طرحاں نہیں لنگھاندیاں۔",
+      "text_markdown": "غیر دھاتاں بجلی نوں چنگی طرحاں نہیں لنگھاندیاں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتاں بجلی دیاں کمزور موصل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-135",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "غیر دھاتاں اوہ عناصر نیں جیہڑے ہوا، پانی تے جاندار شیواں نوں بناؤندے نیں۔",
+      "text_markdown": "غیر دھاتاں اوہ عناصر نیں جیہڑے ہوا، پانی تے جاندار شیواں نوں بناؤندے نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتاں ہوا، پانی تے جاندار شےواں دی بڑی بنتر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-136",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "کجھ عناصر دھاتاں تے غیر دھاتاں دے وچکارلی حد اُتے ہوندے نیں۔",
+      "text_markdown": "کجھ عناصر دھاتاں تے غیر دھاتاں دے وچکارلی حد اُتے ہوندے نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "کجھ عناصر دھات تے غیر دھات دے وچکارلی حد اُتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-137",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ایہناں عناصر نوں میٹالائیڈز آکھیا جاندا اے۔",
+      "text_markdown": "ایہناں عناصر نوں میٹالائیڈز آکھیا جاندا اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ایہناں عناصر دا ناں میٹالائیڈز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-138",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سلیکون اک میٹالائیڈ اے۔",
+      "text_markdown": "سلیکون اک میٹالائیڈ اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "سلیکون اک میٹالائیڈ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-139",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "سلیکون تھوڑی جہی بجلی لنگھاندا اے، پر دھات وانگوں چنگی طرحاں نہیں۔",
+      "text_markdown": "سلیکون تھوڑی جہی بجلی لنگھاندا اے، پر دھات وانگوں چنگی طرحاں نہیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "سلیکون بجلی تھوڑی لنگھاند، دھات ورگی پوری موصلیت توں گھٹ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-140",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایہہ خاصیت سلیکون نوں کمپیوٹر چِپاں وچ مفید بناؤندی اے۔",
+      "text_markdown": "ایہہ خاصیت سلیکون نوں کمپیوٹر چِپاں وچ مفید بناؤندی اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ایس خاصیت کارن سلیکون کمپیوٹر چِپاں وچ مفید۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-141",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نوبل گیساں سجے پاسے دے آخری کالم وچ ہوندیاں نیں۔",
+      "text_markdown": "نوبل گیساں سجے پاسے دے آخری کالم وچ ہوندیاں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "نوبل گیساں سجے پاسے دے آخری کالم وچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-142",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہیلیئم، نیون، آرگن، کرپٹون، زینون تے ریڈون نوبل گیساں نیں۔",
+      "text_markdown": "ہیلیئم، نیون، آرگن، کرپٹون، زینون تے ریڈون نوبل گیساں نیں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ہیلیئم، نیون، آرگن، کرپٹون، زینون تے ریڈون، نوبل گیساں دے نام۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-143",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "نوبل گیساں تقریباً کدی وی دوجے عناصر نال رد عمل نہیں کردیاں۔",
+      "text_markdown": "نوبل گیساں تقریباً کدی وی دوجے عناصر نال رد عمل نہیں کردیاں۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "نوبل گیساں دوجے عناصر نال شاذونادر ردعمل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-144",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اوہناں دے الیکٹراناں دا انتظام پہلاں ای مستحکم ہوندا اے۔",
+      "text_markdown": "اوہناں دے الیکٹراناں دا انتظام پہلاں ای مستحکم ہوندا اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "اوہناں دے الیکٹراناں دا انتظام پہلے توں مستحکم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-145",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "اوہناں نوں بانڈ بناؤن دی لوڑ نہیں پیندی۔",
+      "text_markdown": "اوہناں نوں بانڈ بناؤن دی لوڑ نہیں پیندی۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "اوہناں نوں بانڈ بناؤن دی لوڑ نہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-146",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک روسی سائنسدان جس دا ناں دمتری مینڈلیو سی، نے 1869 وچ پہلا پیریاڈک ٹیبل بنایا۔",
+      "text_markdown": "اک روسی سائنسدان جس دا ناں دمتری مینڈلیو سی، نے 1869 وچ پہلا پیریاڈک ٹیبل بنایا۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "روسی سائنسدان دمتری مینڈلیو نے اٹھاراں سو انہتر وچ پہلا پیریاڈک ٹیبل ترتیب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-147",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "مینڈلیو نے عناصر نوں اوہناں دیاں خصوصیات دے مطابق ترتیب دتا تے دہرائے جان والے پیٹرن نوں ویکھیا۔",
+      "text_markdown": "مینڈلیو نے عناصر نوں اوہناں دیاں خصوصیات دے مطابق ترتیب دتا تے دہرائے جان والے پیٹرن نوں ویکھیا۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "مینڈلیو نے عناصر نوں خصوصیات دے مطابق سجایا تے دہراؤ دا پیٹرن ویکھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-148",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہنے اپنے ٹیبل وچ خالی جگاں چھڈ دتیاں جتھے اوہنے پیش گوئی کیتی سی کہ نامعلوم عناصر ہون گے۔",
+      "text_markdown": "اوہنے اپنے ٹیبل وچ خالی جگاں چھڈ دتیاں جتھے اوہنے پیش گوئی کیتی سی کہ نامعلوم عناصر ہون گے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "اوہنے اپنے ٹیبل وچ خالی جگاں چھڈیاں جتھے اوہنوں نامعلوم عناصر دی توقع۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-149",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "سائنسداناں نے بعد وچ اوہناں عناصر نوں دریافت کیتا۔",
+      "text_markdown": "سائنسداناں نے بعد وچ اوہناں عناصر نوں دریافت کیتا۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "بعد وچ سائنسداناں نے اوہ عنصر دریافت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-150",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ہر پیش گوئی صحیح ثابت ہوئی۔",
+      "text_markdown": "ہر پیش گوئی صحیح ثابت ہوئی۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "ہر پیش گوئی درست۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-151",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "پیریاڈک ٹیبل سائنس دے سبھ توں طاقتور اوزاراں وچوں اک اے۔",
+      "text_markdown": "پیریاڈک ٹیبل سائنس دے سبھ توں طاقتور اوزاراں وچوں اک اے۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "پیریاڈک ٹیبل سائنس دے سبھ توں طاقتور اوزاراں وچوں اک۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "id": "ch04-152",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "جے تُہانوں پتہ ہووے کہ کوئی عنصر ٹیبل اُتے کتھے اے، تے تُسی پیشین گوئی کر سکدے او کہ اوہ کیویں ورتاؤ کرے گا۔",
+      "text_markdown": "جے تُہانوں پتہ ہووے کہ کوئی عنصر ٹیبل اُتے کتھے اے، تے تُسی پیشین گوئی کر سکدے او کہ اوہ کیویں ورتاؤ کرے گا۔",
+      "title": "پیریاڈک ٹیبل",
+      "tts": {
+        "text": "جے تُہانوں ٹیبل اُتے کسے عنصر دی جگہ دا پتہ ہووے، تُسی اوہدے ورتاؤ دا انداز۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-153",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ایٹم کیویں جُڑدے نیں",
+      "text_markdown": "ایٹم کیویں جُڑدے نیں",
+      "title": "ایٹم کیویں جُڑدے نیں"
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-154",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم کدی کدی ہی اکلے موجود ہوندے نیں۔",
+      "text_markdown": "ایٹم کدی کدی ہی اکلے موجود ہوندے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایٹم کم ہی اکلے موجود۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-155",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بہت سارے ایٹم دوجے ایٹماں نال جُڑ کے مالیکیول بݨاؤندے نیں۔",
+      "text_markdown": "بہت سارے ایٹم دوجے ایٹماں نال جُڑ کے مالیکیول بݨاؤندے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "بہت سارے ایٹم دوجے ایٹماں نال جُڑ کے مالیکیول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-156",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اک مالیکیول ایٹماں دا اک گروپ ہوندا اے جیہڑا کیمیائی بندھناں نال جُڑیا ہوندا اے۔",
+      "text_markdown": "اک مالیکیول ایٹماں دا اک گروپ ہوندا اے جیہڑا کیمیائی بندھناں نال جُڑیا ہوندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "مالیکیول ایٹماں دا گروپ، کیمیائی بندھناں نال جُڑت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-157",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "پاݨی اک مالیکیول اے۔",
+      "text_markdown": "پاݨی اک مالیکیول اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "پاݨی اک مالیکیول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-158",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "آکسیجن گیس اک مالیکیول اے۔",
+      "text_markdown": "آکسیجن گیس اک مالیکیول اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "آکسیجن گیس اک مالیکیول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-159",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "چینی اک مالیکیول اے۔",
+      "text_markdown": "چینی اک مالیکیول اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "چینی اک مالیکیول۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-160",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم اپݨے الیکٹراناں دی وجہ توں جُڑدے نیں۔",
+      "text_markdown": "ایٹم اپݨے الیکٹراناں دی وجہ توں جُڑدے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایٹم اپنے الیکٹراناں کر کے جُڑت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-161",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اک ایٹم دے سبھ توں باہرلے خول وچ موجود الیکٹران ایہہ طے کردے نیں کہ اوہ ایٹم دوجے ایٹماں نال کیویں تعامل کردا اے۔",
+      "text_markdown": "اک ایٹم دے سبھ توں باہرلے خول وچ موجود الیکٹران ایہہ طے کردے نیں کہ اوہ ایٹم دوجے ایٹماں نال کیویں تعامل کردا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایٹم دے سبھ توں باہرلے خول دے الیکٹران طے کردے کہ اوہ دوجے ایٹماں نال کیویں تعامل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-162",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ایہناں باہرلے الیکٹراناں نوں ویلینس الیکٹران کہیا جاندا اے۔",
+      "text_markdown": "ایہناں باہرلے الیکٹراناں نوں ویلینس الیکٹران کہیا جاندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایہ باہرلے الیکٹران، ویلینس الیکٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-163",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اک مکمل باہرلے خول والا ایٹم مستحکم ہوندا اے۔",
+      "text_markdown": "اک مکمل باہرلے خول والا ایٹم مستحکم ہوندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "مکمل باہرلے خول والا ایٹم مستحکم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-164",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "اک ایٹم جیہدے وچ مکمل باہرلا خول نہ ہووے، اوہنوں پُورا کرن دی کوشش کرے گا۔",
+      "text_markdown": "اک ایٹم جیہدے وچ مکمل باہرلا خول نہ ہووے، اوہنوں پُورا کرن دی کوشش کرے گا۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "جس ایٹم دا باہرلا خول ادھورا، اوہنوں پُورا کرن دی کوشش۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-165",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "کیمیائی بندھناں دیاں دو مکھ قسماں ہوندیاں نیں۔",
+      "text_markdown": "کیمیائی بندھناں دیاں دو مکھ قسماں ہوندیاں نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "کیمیائی بندھناں دیاں دو مکھ قسماں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-166",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "کوویلنٹ بندھن تے آئونک بندھن۔",
+      "text_markdown": "کوویلنٹ بندھن تے آئونک بندھن۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "کوویلنٹ بندھن تے آئونک بندھن۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-167",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک کوویلنٹ بندھن وچ، دو ایٹم الیکٹران سانجھے کردے نیں۔",
+      "text_markdown": "اک کوویلنٹ بندھن وچ، دو ایٹم الیکٹران سانجھے کردے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "کوویلنٹ بندھن وچ دو ایٹم الیکٹران دی سانجھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-168",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "دونوں ایٹم اک سانجھے جوڑے لئی الیکٹران دیندے نیں۔",
+      "text_markdown": "دونوں ایٹم اک سانجھے جوڑے لئی الیکٹران دیندے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "دونوں ایٹم اک سانجھے جوڑے وچ اپنا الیکٹران جوڑ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-169",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سانجھے کیتے گئے الیکٹران دونوں نیوکلئی دے گِرد گھمدے نیں۔",
+      "text_markdown": "سانجھے کیتے گئے الیکٹران دونوں نیوکلئی دے گِرد گھمدے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "سانجھے الیکٹران دونوں نیوکلیئاں دے گرد حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-170",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہہ سانجھ ایٹماں نوں اکٹھے رکھدی اے۔",
+      "text_markdown": "ایہہ سانجھ ایٹماں نوں اکٹھے رکھدی اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایہ سانجھ ایٹماں نوں اکٹھا رکھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-171",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "پاݨی کوویلنٹ بندھناں نال جُڑیا ہوندا اے۔",
+      "text_markdown": "پاݨی کوویلنٹ بندھناں نال جُڑیا ہوندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "پاݨی کوویلنٹ بندھناں دی جُڑت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-172",
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ہر ہائیڈروجن ایٹم آکسیجن ایٹم نال اک الیکٹران سانجھا کردا اے۔",
+      "text_markdown": "ہر ہائیڈروجن ایٹم آکسیجن ایٹم نال اک الیکٹران سانجھا کردا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ہر ہائیڈروجن ایٹم آکسیجن نال اک الیکٹران دی سانجھ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-173",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک آئونک بندھن وچ، اک ایٹم دوجے ایٹم نوں الیکٹران دیندا اے۔",
+      "text_markdown": "اک آئونک بندھن وچ، اک ایٹم دوجے ایٹم نوں الیکٹران دیندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "آئونک بندھن وچ اک ایٹم دوجے نوں الیکٹران منتقل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-174",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ ایٹم جیہڑا الیکٹران گوا دیندا اے، اوہ مثبت چارج والا ہو جاندا اے۔",
+      "text_markdown": "اوہ ایٹم جیہڑا الیکٹران گوا دیندا اے، اوہ مثبت چارج والا ہو جاندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "جیہڑا ایٹم الیکٹران گوا بیٹھے، اوہ مثبت چارج دا حامل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-175",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ ایٹم جیہڑا الیکٹران حاصل کردا اے، اوہ منفی چارج والا ہو جاندا اے۔",
+      "text_markdown": "اوہ ایٹم جیہڑا الیکٹران حاصل کردا اے، اوہ منفی چارج والا ہو جاندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "جیہڑا ایٹم الیکٹران لے لے، اوہ منفی چارج دا حامل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-176",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "مخالف چارج اک دوجے نوں کھچدے نیں۔",
+      "text_markdown": "مخالف چارج اک دوجے نوں کھچدے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "مخالف چارج اک دوجے نوں کھچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-177",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایہہ کشش دونوں ایٹماں نوں اکٹھے رکھدی اے۔",
+      "text_markdown": "ایہہ کشش دونوں ایٹماں نوں اکٹھے رکھدی اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "ایہ کشش دونوں ایٹماں نوں اکٹھا رکھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-178",
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "کھاݨ والا لوݨ آئونک بندھناں نال جُڑیا ہوندا اے۔",
+      "text_markdown": "کھاݨ والا لوݨ آئونک بندھناں نال جُڑیا ہوندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "کھاݨ والا لوݨ آئونک بندھناں دی جُڑت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-179",
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "سوڈیم کلورین نوں اک الیکٹران دیندا اے۔",
+      "text_markdown": "سوڈیم کلورین نوں اک الیکٹران دیندا اے۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "سوڈیم کلورین نوں اک الیکٹران منتقل۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-180",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک پاݨی دے مالیکیول وچ دو ہائیڈروجن ایٹم تے اک آکسیجن ایٹم ہوندے نیں۔",
+      "text_markdown": "اک پاݨی دے مالیکیول وچ دو ہائیڈروجن ایٹم تے اک آکسیجن ایٹم ہوندے نیں۔",
+      "title": "ایٹم کیویں جُڑدے نیں",
+      "tts": {
+        "text": "پاݨی دے مالیکیول وچ دو ہائیڈروجن ایٹم تے اک آکسیجن ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-181",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سائنسدان اسنو H2O لکھدے نیں۔",
+      "text_markdown": "سائنسدان اسنو H2O لکھدے نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "سائنسدان ایس نوں ایچ ٹو او دے روپ وچ لکھن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-182",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "H ہائیڈروجن لئی اے۔",
+      "text_markdown": "H ہائیڈروجن لئی اے۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "ایچ ہائیڈروجن دی علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-183",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O آکسیجن لئی اے۔",
+      "text_markdown": "O آکسیجن لئی اے۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "او آکسیجن دی علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-184",
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "2 دا مطلب اے کہ دو ہائیڈروجن ایٹم نیں۔",
+      "text_markdown": "2 دا مطلب اے کہ دو ہائیڈروجن ایٹم نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "دو دا مطلب، دو ہائیڈروجن ایٹم۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-185",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "کاربن ڈائی آکسائیڈ دے اک مالیکیول وچ اک کاربن ایٹم تے دو آکسیجن ایٹم ہوندے نیں۔",
+      "text_markdown": "کاربن ڈائی آکسائیڈ دے اک مالیکیول وچ اک کاربن ایٹم تے دو آکسیجن ایٹم ہوندے نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "کاربن ڈائی آکسائیڈ دے مالیکیول وچ اک کاربن تے دو آکسیجن ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-186",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سائنسدان اسنو CO2 لکھدے نیں۔",
+      "text_markdown": "سائنسدان اسنو CO2 لکھدے نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "سائنسدان ایس نوں سی او دو دے روپ وچ لکھن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-187",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "پودے ہوا توں کاربن ڈائی آکسائیڈ جذب کردے نیں تے اسنو چینی دے مالیکیول بناؤن لئی ورتدے نیں۔",
+      "text_markdown": "پودے ہوا توں کاربن ڈائی آکسائیڈ جذب کردے نیں تے اسنو چینی دے مالیکیول بناؤن لئی ورتدے نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "پودے ہوا توں کاربن ڈائی آکسائیڈ جذب کر کے چینی دے مالیکیول تیار۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-188",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹماں دے وچکارلے بند توانائی ذخیرہ کردے نیں۔",
+      "text_markdown": "ایٹماں دے وچکارلے بند توانائی ذخیرہ کردے نیں۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "ایٹماں دے وچکارلے بند توانائی دا ذخیرہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-189",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "جدوں بند ٹُٹدے نیں، توانائی خارج ہوندی اے۔",
+      "text_markdown": "جدوں بند ٹُٹدے نیں، توانائی خارج ہوندی اے۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "بند ٹُٹݨ نال توانائی خارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-190",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جدوں بند بَݨدے نیں، توانائی جذب ہوندی اے۔",
+      "text_markdown": "جدوں بند بَݨدے نیں، توانائی جذب ہوندی اے۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "بند بنݨ نال توانائی جذب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "id": "ch05-191",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "کائنات وچ ہر کیمیائی ردعمل وچ پرانے بند توڑنا تے نویں بَݨاؤنا شامل اے۔",
+      "text_markdown": "کائنات وچ ہر کیمیائی ردعمل وچ پرانے بند توڑنا تے نویں بَݨاؤنا شامل اے۔",
+      "title": "ایٹم کِداں جُڑدے نیں",
+      "tts": {
+        "text": "ہر کیمیائی ردعمل وچ پرانے بند توڑ تے نویں بند جوڑ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-192",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "حرکت وچ ایٹم",
+      "text_markdown": "حرکت وچ ایٹم",
+      "title": "حرکت وچ ایٹم"
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-193",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ایٹم ہمیشہ حرکت وچ رہندے نیں۔",
+      "text_markdown": "ایٹم ہمیشہ حرکت وچ رہندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایٹم ہمیشہ حرکت وچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-194",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ کدی نئیں رُکدے۔",
+      "text_markdown": "اوہ کدی نئیں رُکدے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہناں وچ کدی پورا سکون نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-195",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "مطلق صفر توں اُتے کسے وی درجہ حرارت اُتے، ایٹم کمپن کردے نیں، گھُمدے نیں تے خلا وچ سفر کردے نیں۔",
+      "text_markdown": "مطلق صفر توں اُتے کسے وی درجہ حرارت اُتے، ایٹم کمپن کردے نیں، گھُمدے نیں تے خلا وچ سفر کردے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مطلق صفر توں اُتے ہر درجہ حرارت اُتے ایٹم کمپن، گردش تے سفر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-196",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہ حرکت اوہ اے جیہنو اسیں حرارت دے طور اُتے محسوس کردے آں۔",
+      "text_markdown": "ایہ حرکت اوہ اے جیہنو اسیں حرارت دے طور اُتے محسوس کردے آں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایہ حرکت ہی ساڈے احساس حرارت دا سبب۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-197",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک ٹھوس وچ، ایٹم اپنی جگہ اُتے کمپن کردے نیں۔",
+      "text_markdown": "اک ٹھوس وچ، ایٹم اپنی جگہ اُتے کمپن کردے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ٹھوس وچ ایٹم اپنی جگہ اُتے کمپن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-198",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ اک مقررہ ساخت وچ بندھے ہوندے نیں۔",
+      "text_markdown": "اوہ اک مقررہ ساخت وچ بندھے ہوندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہ اک مقررہ ساخت وچ بندھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-199",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ اگے پِچھے ہِلدے نیں، پر اپنی جگہ نئیں چھڈدے۔",
+      "text_markdown": "اوہ اگے پِچھے ہِلدے نیں، پر اپنی جگہ نئیں چھڈدے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہ اگے پِچھے ہلّن، پر جگہ برقرار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-200",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہی وجہ اے کہ ٹھوس اپنی شکل برقرار رکھدے نیں۔",
+      "text_markdown": "ایہی وجہ اے کہ ٹھوس اپنی شکل برقرار رکھدے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایس لئی ٹھوس اپنی شکل برقرار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-201",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "برف دے اک ٹکڑے وچ ایٹم کمپن کردے نیں، پر اوہ اک سخت کرسٹل پیٹرن وچ رہندے نیں۔",
+      "text_markdown": "برف دے اک ٹکڑے وچ ایٹم کمپن کردے نیں، پر اوہ اک سخت کرسٹل پیٹرن وچ رہندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "برف دے ٹکڑے وچ ایٹم کمپن، پر سخت کرسٹل پیٹرن برقرار۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-202",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک مائع وچ، ایٹم زیادہ آزادانہ طور اُتے حرکت کردے نیں۔",
+      "text_markdown": "اک مائع وچ، ایٹم زیادہ آزادانہ طور اُتے حرکت کردے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مائع وچ ایٹم زیادہ آزاد حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-203",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ اک دوجے دے کولوں لنگھدے نیں۔",
+      "text_markdown": "اوہ اک دوجے دے کولوں لنگھدے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہ اک دوجے دے کولوں لنگھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-204",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ اک دوجے دے نیڑے رہندے نیں، پر اپنی جگہ اُتے بندھے نئیں ہوندے۔",
+      "text_markdown": "اوہ اک دوجے دے نیڑے رہندے نیں، پر اپنی جگہ اُتے بندھے نئیں ہوندے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہ اک دوجے دے نیڑے، پر مقررہ جگہ توں آزاد۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-205",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہی وجہ اے کہ مائع وگدے نیں۔",
+      "text_markdown": "ایہی وجہ اے کہ مائع وگدے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایس لئی مائع وگݨ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-206",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "پاݨی دے اک گلاس وچ ایٹم مسلسل حرکت کردے تے دوبارہ ترتیب پاندے رہندے نیں، پر اوہ اک دوجے دے نیڑے رہندے نیں۔",
+      "text_markdown": "پاݨی دے اک گلاس وچ ایٹم مسلسل حرکت کردے تے دوبارہ ترتیب پاندے رہندے نیں، پر اوہ اک دوجے دے نیڑے رہندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "پاݨی دے گلاس وچ ایٹم لگاتار حرکت تے نئی ترتیب، پر باہمی قرب برقرار۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-207",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اک گیس وچ، ایٹم تیزی نال حرکت کردے نیں تے پھیل جاندے نیں۔",
+      "text_markdown": "اک گیس وچ، ایٹم تیزی نال حرکت کردے نیں تے پھیل جاندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "گیس وچ ایٹم تیز حرکت دے نال دور دور انتشار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-208",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اوہ سِدھیاں لائناں وچ اُڈدے نیں جدوں تک اوہ کسے دوجے ایٹم یا دیوار نال نئیں ٹکراندے۔",
+      "text_markdown": "اوہ سِدھیاں لائناں وچ اُڈدے نیں جدوں تک اوہ کسے دوجے ایٹم یا دیوار نال نئیں ٹکراندے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اوہ سِدھیاں لائناں وچ اڈّݨ، جدوں تک کسے ایٹم یا دیوار نال ٹکر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-209",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اوہ اک دوجے توں ٹکرا کے سمت بدل لیندے نیں۔",
+      "text_markdown": "اوہ اک دوجے توں ٹکرا کے سمت بدل لیندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "اک دوجے نال ٹکرا کے اوہ سمت بدل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-210",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہی وجہ اے کہ گیس کسے وی برتن نوں بھر دیندی اے جیہدے وچ تسیں اسنو پاؤ۔",
+      "text_markdown": "ایہی وجہ اے کہ گیس کسے وی برتن نوں بھر دیندی اے جیہدے وچ تسیں اسنو پاؤ۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایس لئی گیس اپنے برتن دا پورا حجم گھیر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-211",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ہوا نال بھرے کمرے وچ ایٹم ہر پاسے سینکڑیاں میٹر فی سیکنڈ دی رفتار نال گھمدے نیں۔",
+      "text_markdown": "ہوا نال بھرے کمرے وچ ایٹم ہر پاسے سینکڑیاں میٹر فی سیکنڈ دی رفتار نال گھمدے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ہوا والے کمرے وچ ایٹم ہر پاسے سینکڑیاں میٹر فی سیکنڈ دی رفتار نال گردش۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-212",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "درجہ حرارت اس گل دا پیمانہ اے کہ ایٹم کِنّی تیزی نال حرکت کر رہے نیں۔",
+      "text_markdown": "درجہ حرارت اس گل دا پیمانہ اے کہ ایٹم کِنّی تیزی نال حرکت کر رہے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "درجہ حرارت ایہ پیمانہ کہ ایٹم کِنّی تیزی نال حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-213",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "گرم ہون دا مطلب اے کہ ایٹم تیزی نال حرکت کر رہے نیں۔",
+      "text_markdown": "گرم ہون دا مطلب اے کہ ایٹم تیزی نال حرکت کر رہے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "گرمی دا مطلب، ایٹماں دی تیز حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-214",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ٹھنڈا ہون دا مطلب اے کہ ایٹم ہولی ہولی حرکت کر رہے نیں۔",
+      "text_markdown": "ٹھنڈا ہون دا مطلب اے کہ ایٹم ہولی ہولی حرکت کر رہے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ٹھنڈ دا مطلب، ایٹماں دی ہولی حرکت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-215",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "جدوں تُسی چولہے اُتے پانی گرم کردے او، تُسی پانی دے مالیکیولاں نوں تیزی نال حرکت دیندے او۔",
+      "text_markdown": "جدوں تُسی چولہے اُتے پانی گرم کردے او، تُسی پانی دے مالیکیولاں نوں تیزی نال حرکت دیندے او۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "چولہے اُتے پانی گرم کر کے تُسی مالیکیولاں دی رفتار وچ ودھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-216",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "جدوں مالیکیول کافی تیزی نال حرکت کردے نیں، اوہ مائع توں باہر نکل جاندے نیں تے بھاف بن جاندے نیں۔",
+      "text_markdown": "جدوں مالیکیول کافی تیزی نال حرکت کردے نیں، اوہ مائع توں باہر نکل جاندے نیں تے بھاف بن جاندے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مالیکیول جدوں بہت تیز حرکت کرن، اوہ مائع توں نکل کے بھاف۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-217",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مطلق صفر سبھ توں ٹھنڈا ممکنہ درجہ حرارت اے۔",
+      "text_markdown": "مطلق صفر سبھ توں ٹھنڈا ممکنہ درجہ حرارت اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مطلق صفر سبھ توں ٹھنڈا ممکنہ درجہ حرارت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-218",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ایہ تقریباً منفی 273 ڈگری سیلسیس اے۔",
+      "text_markdown": "ایہ تقریباً منفی 273 ڈگری سیلسیس اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایہ تقریباً منفی دو سو تہتر ڈگری سیلسیس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-219",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "مطلق صفر اُتے، ایٹماں وچ گھٹ توں گھٹ ممکنہ توانائی ہوندی اے۔",
+      "text_markdown": "مطلق صفر اُتے، ایٹماں وچ گھٹ توں گھٹ ممکنہ توانائی ہوندی اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مطلق صفر اُتے ایٹماں وچ گھٹ توں گھٹ ممکنہ توانائی۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-220",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "مطلق صفر توں زیادہ ٹھنڈا کجھ وی نہیں ہو سکدا۔",
+      "text_markdown": "مطلق صفر توں زیادہ ٹھنڈا کجھ وی نہیں ہو سکدا۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "مطلق صفر توں ٹھنڈا کجھ وی ناممکن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-221",
+      "paragraph_id": "p52",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "سائنسدان لیبارٹریاں وچ مطلق صفر تک پہنچن دے بہت نیڑے آ گئے نیں، پر کوئی وی کدے وی بالکل اوتھے تک نہیں پہنچ سکیا۔",
+      "text_markdown": "سائنسدان لیبارٹریاں وچ مطلق صفر تک پہنچن دے بہت نیڑے آ گئے نیں، پر کوئی وی کدے وی بالکل اوتھے تک نہیں پہنچ سکیا۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "سائنسدان لیبارٹریاں وچ مطلق صفر دے بہت نیڑے، پر عین اوتھے تک رسائی ناممکن۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-222",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دباؤ ایٹماں دے سطحاں نال ٹکران نال پیدا ہوندا اے۔",
+      "text_markdown": "دباؤ ایٹماں دے سطحاں نال ٹکران نال پیدا ہوندا اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "دباؤ، ایٹماں دے سطحاں نال ٹکراؤ دا نتیجہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-223",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ٹائر وچ ہوا باہر ول دھکیلدی اے کیونکہ ہوا دے مالیکیول مسلسل ٹائر دیاں اندرونی دیواراں نال ٹکرا رہے نیں۔",
+      "text_markdown": "ٹائر وچ ہوا باہر ول دھکیلدی اے کیونکہ ہوا دے مالیکیول مسلسل ٹائر دیاں اندرونی دیواراں نال ٹکرا رہے نیں۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ٹائر وچ ہوا باہر ول اس لئی دھکّدی کہ مالیکیول اندرونی دیواراں نال لگاتار ٹکر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-224",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "زیادہ مالیکیول یا تیز مالیکیول دا مطلب زیادہ دباؤ اے۔",
+      "text_markdown": "زیادہ مالیکیول یا تیز مالیکیول دا مطلب زیادہ دباؤ اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "زیادہ مالیکیول یا زیادہ تیز مالیکیول، زیادہ دباؤ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "id": "ch06-225",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایس لئی جدوں ہوا گرم ہوندی اے تے ٹائر زیادہ سخت محسوس ہوندا اے۔",
+      "text_markdown": "ایس لئی جدوں ہوا گرم ہوندی اے تے ٹائر زیادہ سخت محسوس ہوندا اے۔",
+      "title": "حرکت وچ ایٹم",
+      "tts": {
+        "text": "ایس لئی گرم ہوا نال ٹائر زیادہ سخت محسوس۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-226",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ایٹم کتھوں آؤندے نیں",
+      "text_markdown": "ایٹم کتھوں آؤندے نیں",
+      "title": "ایٹم کتھوں آؤندے نیں"
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-227",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "کائنات وچ ہائیڈروجن تے ہیلیئم بگ بینگ توں بعد پہلے کجھ منٹاں وچ بنے سن۔",
+      "text_markdown": "کائنات وچ ہائیڈروجن تے ہیلیئم بگ بینگ توں بعد پہلے کجھ منٹاں وچ بنے سن۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "کائنات وچ ہائیڈروجن تے ہیلیئم بگ بینگ دے پہلے کجھ منٹاں وچ تشکیل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-228",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "کائنات تقریباً 13.8 ارب سال پہلے اک ناقابل یقین حد تک گرم، گھنے نقطے دے طور اُتے شروع ہوئی سی۔",
+      "text_markdown": "کائنات تقریباً 13.8 ارب سال پہلے اک ناقابل یقین حد تک گرم، گھنے نقطے دے طور اُتے شروع ہوئی سی۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "کائنات تقریباً تیرہ اعشاریہ اٹھ ارب سال پہلے اک نہایت گرم تے گھنے نقطے توں آغاز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-229",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جیویں جیویں ایہ پھیلیا تے ٹھنڈا ہویا، پروٹون تے نیوٹران بنے۔",
+      "text_markdown": "جیویں جیویں ایہ پھیلیا تے ٹھنڈا ہویا، پروٹون تے نیوٹران بنے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "جیویں جیویں ایہ پھیلی تے ٹھنڈی ہوئی، پروٹون تے نیوٹران تشکیل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-230",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اوہ پروٹون تے نیوٹران سبھ توں سادہ نیوکلئی وچ مل گئے۔",
+      "text_markdown": "اوہ پروٹون تے نیوٹران سبھ توں سادہ نیوکلئی وچ مل گئے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "اوہ پروٹون تے نیوٹران مل کے سبھ توں سادے نیوکلیئس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-231",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ہائیڈروجن تے ہیلیئم پہلے عناصر سن۔",
+      "text_markdown": "ہائیڈروجن تے ہیلیئم پہلے عناصر سن۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ہائیڈروجن تے ہیلیئم پہلے عنصر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-232",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لکھاں سالاں تک، کائنات ہائیڈروجن تے ہیلیئم گیس دا اک بدل سی۔",
+      "text_markdown": "لکھاں سالاں تک، کائنات ہائیڈروجن تے ہیلیئم گیس دا اک بدل سی۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "لکھاں سالاں تک کائنات، ہائیڈروجن تے ہیلیئم گیس دا بدل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-233",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فیر کشش ثقل نے گیس نوں اکٹھا کر کے گچھے بنا دتے۔",
+      "text_markdown": "فیر کشش ثقل نے گیس نوں اکٹھا کر کے گچھے بنا دتے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "فیر کشش ثقل نال گیس دے گچھے تشکیل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-234",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "گچھے زیادہ گھنے تے گرم ہو گئے۔",
+      "text_markdown": "گچھے زیادہ گھنے تے گرم ہو گئے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ گچھے ہور گھنے تے ہور گرم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-235",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "جدوں اک گچھے دا مرکز تقریباً دس ملین ڈگری تک پہنچیا، نیوکلیائی فیوژن شروع ہو گیا۔",
+      "text_markdown": "جدوں اک گچھے دا مرکز تقریباً دس ملین ڈگری تک پہنچیا، نیوکلیائی فیوژن شروع ہو گیا۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "جدوں گچھے دا مرکز تقریباً دس ملین ڈگری تک پہنچیا، نیوکلیائی فیوژن دا آغاز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-236",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "اک تارہ پیدا ہویا۔",
+      "text_markdown": "اک تارہ پیدا ہویا۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایس لمحے اک تارہ جنم۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-237",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تارے ایٹم دیاں فیکٹریاں نیں۔",
+      "text_markdown": "تارے ایٹم دیاں فیکٹریاں نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تارے ایٹماں دیاں فیکٹریاں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-238",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اک تارے دے اندر، ہائیڈروجن دے ایٹم آپس وچ جڑ کے ہیلیئم بناؤندے نیں۔",
+      "text_markdown": "اک تارے دے اندر، ہائیڈروجن دے ایٹم آپس وچ جڑ کے ہیلیئم بناؤندے نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تارے دے اندر ہائیڈروجن دے ایٹم جُڑ کے ہیلیئم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-239",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ایہ فیوژن بے پناہ توانائی خارج کردا اے۔",
+      "text_markdown": "ایہ فیوژن بے پناہ توانائی خارج کردا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ فیوژن بے پناہ توانائی خارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-240",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ایہ توانائی ہی اے جو اک تارے نوں چمکاندی اے۔",
+      "text_markdown": "ایہ توانائی ہی اے جو اک تارے نوں چمکاندی اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ توانائی ہی تارے دی چمک دا سبب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-241",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ساڈا سورج ہر سیکنڈ وچ تقریباً چھ سو ملین ٹن ہائیڈروجن نوں ہیلیئم وچ فیوز کردا اے۔",
+      "text_markdown": "ساڈا سورج ہر سیکنڈ وچ تقریباً چھ سو ملین ٹن ہائیڈروجن نوں ہیلیئم وچ فیوز کردا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ساڈا سورج ہر سیکنڈ وچ تقریباً چھ سو ملین ٹن ہائیڈروجن نوں ہیلیئم وچ فیوز۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-242",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وڈے تارے بھاری عناصر نوں فیوز کردے نیں۔",
+      "text_markdown": "وڈے تارے بھاری عناصر نوں فیوز کردے نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "وڈے تارے ہور بھاری عناصر وی فیوز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-243",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اک تارے دے ہائیڈروجن نوں جلاؤن توں بعد، اوہ ہیلیئم نوں کاربن وچ فیوز کرنا شروع کر دیندا اے۔",
+      "text_markdown": "اک تارے دے ہائیڈروجن نوں جلاؤن توں بعد، اوہ ہیلیئم نوں کاربن وچ فیوز کرنا شروع کر دیندا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ہائیڈروجن ختم ہون توں بعد، تارے اندر ہیلیئم دا کاربن وچ فیوژن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-244",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "فیر کاربن نوں آکسیجن وچ۔",
+      "text_markdown": "فیر کاربن نوں آکسیجن وچ۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "فیر کاربن دا آکسیجن وچ فیوژن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-245",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "فیر آکسیجن نوں سلیکون وچ۔",
+      "text_markdown": "فیر آکسیجن نوں سلیکون وچ۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "فیر آکسیجن دا سلیکون وچ فیوژن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-246",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "فیر سلیکون نوں لوہے وچ۔",
+      "text_markdown": "فیر سلیکون نوں لوہے وچ۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "فیر سلیکون دا لوہے وچ فیوژن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-247",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ہر مرحلہ اک بھاری عنصر پیدا کردا اے۔",
+      "text_markdown": "ہر مرحلہ اک بھاری عنصر پیدا کردا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ہر مرحلہ اک نواں بھاری عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-248",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "لوہا سبھ توں بھاری عنصر اے جیہڑا اک تارہ عام فیوژن دے ذریعے پیدا کر سکدا اے۔",
+      "text_markdown": "لوہا سبھ توں بھاری عنصر اے جیہڑا اک تارہ عام فیوژن دے ذریعے پیدا کر سکدا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "لوہا اوہ سبھ توں بھاری عنصر جیہڑا عام تارائی فیوژن دا حاصل۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-249",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لوہے توں بھاری عناصر اودوں پیدا ہوندے نیں جدوں وڈے تارے پھٹدے نیں۔",
+      "text_markdown": "لوہے توں بھاری عناصر اودوں پیدا ہوندے نیں جدوں وڈے تارے پھٹدے نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "لوہے توں بھاری عنصر اوہدوں پیدا، جدوں وڈے تارے پھٹ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-250",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ایہناں دھماکیاں نوں سپرنووا کہیا جاندا اے۔",
+      "text_markdown": "ایہناں دھماکیاں نوں سپرنووا کہیا جاندا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہناں دھماکیاں دا ناں سپرنووا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-251",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اک سپرنووا چند سیکنڈاں وچ اونی توانائی چھڈدا اے جنی سورج اپنی پوری زندگی وچ پیدا کردا اے۔",
+      "text_markdown": "اک سپرنووا چند سیکنڈاں وچ اونی توانائی چھڈدا اے جنی سورج اپنی پوری زندگی وچ پیدا کردا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "اک سپرنووا چند سیکنڈاں وچ اوہنی توانائی خارج، جِنی سورج دی پوری عمر دے برابر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-252",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اک سپرنووا دیاں انتہائی حالتاں سونے، چاندی، پلاٹینم تے یورینیم ورگے عناصر نوں بناندیاں نیں۔",
+      "text_markdown": "اک سپرنووا دیاں انتہائی حالتاں سونے، چاندی، پلاٹینم تے یورینیم ورگے عناصر نوں بناندیاں نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "سپرنووا دیاں انتہائی حالتاں سونا، چاندی، پلاٹینم تے یورینیم ورگے عناصر دی تشکیل۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-253",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دھماکہ ایہناں بھاری عناصر نوں خلا وچ بکھیر دیندا اے۔",
+      "text_markdown": "دھماکہ ایہناں بھاری عناصر نوں خلا وچ بکھیر دیندا اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "دھماکہ ایہ بھاری عناصر خلا وچ بکھیر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-254",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "عناصر ہائیڈروجن تے ہیلیئم گیس دے بدلاں نال رل جاندے نیں۔",
+      "text_markdown": "عناصر ہائیڈروجن تے ہیلیئم گیس دے بدلاں نال رل جاندے نیں۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ عنصر ہائیڈروجن تے ہیلیئم دے گیس بدلاں نال رل مل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-255",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "آخرکار، کشش ثقل افزودہ گیس نوں اکٹھا کر کے نویں تارے تے سیارے بناندی اے۔",
+      "text_markdown": "آخرکار، کشش ثقل افزودہ گیس نوں اکٹھا کر کے نویں تارے تے سیارے بناندی اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "آخرکار کشش ثقل ایس افزودہ گیس نوں اکٹھا کر کے نویں تارے تے سیارے تشکیل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-256",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ساڈا نظام شمسی تقریباً 4.6 ارب سال پہلاں ایہناں افزودہ بدلاں وچوں اک توں بنیا سی۔",
+      "text_markdown": "ساڈا نظام شمسی تقریباً 4.6 ارب سال پہلاں ایہناں افزودہ بدلاں وچوں اک توں بنیا سی۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ساڈا نظام شمسی تقریباً چار اعشاریہ چھ ارب سال پہلے ایس افزودہ بدل وچوں اک توں تشکیل۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-257",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تہاڈے جسم وچ ہائیڈروجن توں بھاری ہر ایٹم اک تارے دے اندر بنیا سی۔",
+      "text_markdown": "تہاڈے جسم وچ ہائیڈروجن توں بھاری ہر ایٹم اک تارے دے اندر بنیا سی۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تہاڈے جسم وچ ہائیڈروجن توں بھاری ہر ایٹم، کسی تارے دے اندر جنم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-258",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تہاڈیاں ہڈیاں وچ کیلشیم۔",
+      "text_markdown": "تہاڈیاں ہڈیاں وچ کیلشیم۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تہاڈیاں ہڈیاں وچ کیلشیم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-259",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تہاڈے خون وچ لوہا۔",
+      "text_markdown": "تہاڈے خون وچ لوہا۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تہاڈے خون وچ لوہا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-260",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تہاڈی جلد وچ کاربن۔",
+      "text_markdown": "تہاڈی جلد وچ کاربن۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تہاڈی جلد وچ کاربن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-261",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تسی تارے دی دھوڑ توں بنے او۔",
+      "text_markdown": "تسی تارے دی دھوڑ توں بنے او۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "تسی تارے دی دھوڑ دی بنتر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-262",
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ایہہ کوئی استعارہ نہیں اے۔",
+      "text_markdown": "ایہہ کوئی استعارہ نہیں اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ محض استعارہ نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "id": "ch07-263",
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ایہہ نیوکلیئر فزکس دا اک حقیقت اے۔",
+      "text_markdown": "ایہہ نیوکلیئر فزکس دا اک حقیقت اے۔",
+      "title": "ایٹم کتھوں آؤندے نیں",
+      "tts": {
+        "text": "ایہ نیوکلیئر فزکس دی ٹھوس حقیقت۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-264",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ایٹم سبھ کچھ نیں",
+      "text_markdown": "ایٹم سبھ کچھ نیں",
+      "title": "ایٹم سبھ کچھ نیں"
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-265",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسی ہن بنیادی گلاں جاندے او۔",
+      "text_markdown": "تسی ہن بنیادی گلاں جاندے او۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "تسی ہن بنیادی گلاں نال واقف۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-266",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ہر چیز ایٹماں توں بنی اے۔",
+      "text_markdown": "ہر چیز ایٹماں توں بنی اے۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "ہر چیز ایٹماں دی بنتر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-267",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ایٹماں وچ پروٹون، نیوٹرون تے الیکٹرون ہوندے نیں۔",
+      "text_markdown": "ایٹماں وچ پروٹون، نیوٹرون تے الیکٹرون ہوندے نیں۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "ایٹماں وچ پروٹون، نیوٹران تے الیکٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-268",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "پروٹوناں دی گنتی عنصر دا تعین کردی اے۔",
+      "text_markdown": "پروٹوناں دی گنتی عنصر دا تعین کردی اے۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "پروٹوناں دی گنتی عنصر دا تعین۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-269",
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ایٹم مالیکیول بناؤن لئی جڑدے نیں۔",
+      "text_markdown": "ایٹم مالیکیول بناؤن لئی جڑدے نیں۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "ایٹم مالیکیول بناؤن لئی جُڑت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-270",
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ایٹم ہمیشہ حرکت وچ ہوندے نیں۔",
+      "text_markdown": "ایٹم ہمیشہ حرکت وچ ہوندے نیں۔",
+      "title": "ایٹم سبھ کچھ نیں",
+      "tts": {
+        "text": "ایٹم ہمیشہ حرکت وچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-271",
+      "paragraph_id": "p63",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ਤਾਰਿਆਂ ਨੇ ਉਹ ਪਰਮਾਣੂ ਬਣਾਏ ਜੋ ਸਾਡੀ ਦੁਨੀਆ ਨੂੰ ਬਣਾਉਂਦੇ ਹਨ।",
+      "text_markdown": "ਤਾਰਿਆਂ ਨੇ ਉਹ ਪਰਮਾਣੂ ਬਣਾਏ ਜੋ ਸਾਡੀ ਦੁਨੀਆ ਨੂੰ ਬਣਾਉਂਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تاریاں نے اوہ ایٹم گھڑے جیہڑے ساڈی دنیا دی بنتر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-272",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਇਹ ਗਿਆਨ ਰਸਾਇਣ ਵਿਗਿਆਨ, ਜੀਵ ਵਿਗਿਆਨ, ਭੌਤਿਕ ਵਿਗਿਆਨ ਅਤੇ ਚਿਕਿਤਸਾ ਦਾ ਆਧਾਰ ਹੈ।",
+      "text_markdown": "ਇਹ ਗਿਆਨ ਰਸਾਇਣ ਵਿਗਿਆਨ, ਜੀਵ ਵਿਗਿਆਨ, ਭੌਤਿਕ ਵਿਗਿਆਨ ਅਤੇ ਚਿਕਿਤਸਾ ਦਾ ਆਧਾਰ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ایہ علم کیمیا، حیاتیات، طبیعیات تے طب دی بنیاد۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-273",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਵਿਗਿਆਨ ਦਾ ਹਰ ਖੇਤਰ ਪਰਮਾਣੂਆਂ ਨਾਲ ਜੁੜਿਆ ਹੋਇਆ ਹੈ।",
+      "text_markdown": "ਵਿਗਿਆਨ ਦਾ ਹਰ ਖੇਤਰ ਪਰਮਾਣੂਆਂ ਨਾਲ ਜੁੜਿਆ ਹੋਇਆ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "سائنس دا ہر شعبہ ایٹماں نال جُڑ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-274",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਜਦੋਂ ਕੋਈ ਡਾਕਟਰ ਦਵਾਈ ਲਿਖਦਾ ਹੈ, ਤਾਂ ਉਹ ਦਵਾਈ ਪਰਮਾਣੂਆਂ ਦਾ ਇੱਕ ਖਾਸ ਪ੍ਰਬੰਧ ਹੁੰਦੀ ਹੈ ਜੋ ਤੁਹਾਡੇ ਸਰੀਰ ਵਿੱਚਲੇ ਅਣੂਆਂ ਨਾਲ ਪ੍ਰਤੀਕਿਰਿਆ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।",
+      "text_markdown": "ਜਦੋਂ ਕੋਈ ਡਾਕਟਰ ਦਵਾਈ ਲਿਖਦਾ ਹੈ, ਤਾਂ ਉਹ ਦਵਾਈ ਪਰਮਾਣੂਆਂ ਦਾ ਇੱਕ ਖਾਸ ਪ੍ਰਬੰਧ ਹੁੰਦੀ ਹੈ ਜੋ ਤੁਹਾਡੇ ਸਰੀਰ ਵਿੱਚਲੇ ਅਣੂਆਂ ਨਾਲ ਪ੍ਰਤੀਕਿਰਿਆ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ڈاکٹر جدوں دوا لکھدا، اوہ دوا ایٹماں دا خاص انتظام، جیہڑا تہاڈے جسم دے مالیکیولاں نال ردعمل لئی تیار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-275",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਜਦੋਂ ਕੋਈ ਇੰਜੀਨੀਅਰ ਪੁਲ ਬਣਾਉਂਦਾ ਹੈ, ਤਾਂ ਉਸ ਪੁਲ ਦੀ ਮਜ਼ਬੂਤੀ ਇਸ ਗੱਲ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ ਕਿ ਸਟੀਲ ਵਿੱਚ ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਕਿਵੇਂ ਵਿਵਸਥਿਤ ਕੀਤੇ ਗਏ ਹਨ।",
+      "text_markdown": "ਜਦੋਂ ਕੋਈ ਇੰਜੀਨੀਅਰ ਪੁਲ ਬਣਾਉਂਦਾ ਹੈ, ਤਾਂ ਉਸ ਪੁਲ ਦੀ ਮਜ਼ਬੂਤੀ ਇਸ ਗੱਲ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ ਕਿ ਸਟੀਲ ਵਿੱਚ ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਕਿਵੇਂ ਵਿਵਸਥਿਤ ਕੀਤੇ ਗਏ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "انجینیئر جدوں پُل بناؤندا، اوہدی مضبوطی ایس گل اُتے نربھر کہ سٹیل وچ لوہے دے ایٹم کیویں ترتیب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-276",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ਜਦੋਂ ਕੋਈ ਕਿਸਾਨ ਫਸਲ ਉਗਾਉਂਦਾ ਹੈ, ਤਾਂ ਫਸਲ ਇਸ ਲਈ ਵਧਦੀ ਹੈ ਕਿਉਂਕਿ ਹਵਾ ਵਿੱਚੋਂ ਕਾਰਬਨ ਪਰਮਾਣੂ ਪੱਤਿਆਂ ਦੇ ਅੰਦਰ ਪਾਣੀ ਅਤੇ ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ ਨਾਲ ਮਿਲ ਜਾਂਦੇ ਹਨ।",
+      "text_markdown": "ਜਦੋਂ ਕੋਈ ਕਿਸਾਨ ਫਸਲ ਉਗਾਉਂਦਾ ਹੈ, ਤਾਂ ਫਸਲ ਇਸ ਲਈ ਵਧਦੀ ਹੈ ਕਿਉਂਕਿ ਹਵਾ ਵਿੱਚੋਂ ਕਾਰਬਨ ਪਰਮਾਣੂ ਪੱਤਿਆਂ ਦੇ ਅੰਦਰ ਪਾਣੀ ਅਤੇ ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ ਨਾਲ ਮਿਲ ਜਾਂਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "کسان جدوں فصل اگاؤندا، اوہ ایس لئی ودھدی کہ ہوا دے کاربن ایٹم پتیاں دے اندر پانی تے سورج دی روشنی نال جُڑ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-277",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਖਾਣਾ ਪਕਾਉਣਾ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "text_markdown": "ਖਾਣਾ ਪਕਾਉਣਾ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "کھانا پکاؤݨا وی کیمیا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-278",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਜਦੋਂ ਤੁਸੀਂ ਰੋਟੀ ਬਣਾਉਂਦੇ ਹੋ, ਤਾਂ ਗਰਮੀ ਆਟੇ ਵਿੱਚਲੇ ਪਰਮਾਣੂਆਂ ਨੂੰ ਮੁੜ ਵਿਵਸਥਿਤ ਕਰਦੀ ਹੈ।",
+      "text_markdown": "ਜਦੋਂ ਤੁਸੀਂ ਰੋਟੀ ਬਣਾਉਂਦੇ ਹੋ, ਤਾਂ ਗਰਮੀ ਆਟੇ ਵਿੱਚਲੇ ਪਰਮਾਣੂਆਂ ਨੂੰ ਮੁੜ ਵਿਵਸਥਿਤ ਕਰਦੀ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تسی جدوں روٹی بناؤندے او، گرمی آٹے دے اندرلے ایٹماں دی نئی ترتیب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-279",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ਪ੍ਰੋਟੀਨ ਖੁੱਲ੍ਹਦੇ ਹਨ।",
+      "text_markdown": "ਪ੍ਰੋਟੀਨ ਖੁੱਲ੍ਹਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "پروٹین کھُلݨ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-280",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ਸ਼ੱਕਰ ਟੁੱਟ ਜਾਂਦੇ ਹਨ ਅਤੇ ਦੁਬਾਰਾ ਜੁੜ ਜਾਂਦੇ ਹਨ।",
+      "text_markdown": "ਸ਼ੱਕਰ ਟੁੱਟ ਜਾਂਦੇ ਹਨ ਅਤੇ ਦੁਬਾਰਾ ਜੁੜ ਜਾਂਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "شکر ٹُٹݨ تے پھر دوبارہ جُڑ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-281",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ਨਵੇਂ ਅਣੂ ਬਣਦੇ ਹਨ ਜੋ ਪਰਤ ਦਾ ਰੰਗ, ਬਣਤਰ ਅਤੇ ਸੁਆਦ ਬਣਾਉਂਦੇ ਹਨ।",
+      "text_markdown": "ਨਵੇਂ ਅਣੂ ਬਣਦੇ ਹਨ ਜੋ ਪਰਤ ਦਾ ਰੰਗ, ਬਣਤਰ ਅਤੇ ਸੁਆਦ ਬਣਾਉਂਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "نویں مالیکیول بنݨ، جیہڑے پرت دے رنگ، بناوٹ تے ذائقے دا سبب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-282",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ਹਰ ਵਿਅੰਜਨ ਪਰਮਾਣੂਆਂ ਨੂੰ ਮੁੜ ਵਿਵਸਥਿਤ ਕਰਨ ਲਈ ਹਦਾਇਤਾਂ ਦਾ ਇੱਕ ਸਮੂਹ ਹੈ।",
+      "text_markdown": "ਹਰ ਵਿਅੰਜਨ ਪਰਮਾਣੂਆਂ ਨੂੰ ਮੁੜ ਵਿਵਸਥਿਤ ਕਰਨ ਲਈ ਹਦਾਇਤਾਂ ਦਾ ਇੱਕ ਸਮੂਹ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ہر وینجن ایٹماں دی نئی ترتیب لئی ہدایتاں دا مجموع۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-283",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਸਾਹ ਲੈਣਾ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "text_markdown": "ਸਾਹ ਲੈਣਾ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ساہ لیݨا وی کیمیا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-284",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਤੁਸੀਂ ਆਕਸੀਜਨ ਦੇ ਅਣੂ ਅੰਦਰ ਲੈਂਦੇ ਹੋ।",
+      "text_markdown": "ਤੁਸੀਂ ਆਕਸੀਜਨ ਦੇ ਅਣੂ ਅੰਦਰ ਲੈਂਦੇ ਹੋ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تسی آکسیجن دے مالیکیول اندر کھچ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-285",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ਤੁਹਾਡਾ ਖੂਨ ਉਹਨਾਂ ਅਣੂਆਂ ਨੂੰ ਤੁਹਾਡੇ ਸੈੱਲਾਂ ਤੱਕ ਪਹੁੰਚਾਉਂਦਾ ਹੈ।",
+      "text_markdown": "ਤੁਹਾਡਾ ਖੂਨ ਉਹਨਾਂ ਅਣੂਆਂ ਨੂੰ ਤੁਹਾਡੇ ਸੈੱਲਾਂ ਤੱਕ ਪਹੁੰਚਾਉਂਦਾ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تہاڈا خون اوہ مالیکیول تہاڈے خلیاں تک رسد۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-286",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ਤੁਹਾਡੇ ਸੈੱਲਾਂ ਦੇ ਅੰਦਰ, ਆਕਸੀਜਨ ਪਰਮਾਣੂ ਭੋਜਨ ਵਿੱਚੋਂ ਕਾਰਬਨ ਪਰਮਾਣੂਆਂ ਨਾਲ ਮਿਲ ਜਾਂਦੇ ਹਨ।",
+      "text_markdown": "ਤੁਹਾਡੇ ਸੈੱਲਾਂ ਦੇ ਅੰਦਰ, ਆਕਸੀਜਨ ਪਰਮਾਣੂ ਭੋਜਨ ਵਿੱਚੋਂ ਕਾਰਬਨ ਪਰਮਾਣੂਆਂ ਨਾਲ ਮਿਲ ਜਾਂਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تہاڈے خلیاں دے اندر آکسیجن دے ایٹم خوراک دے کاربن ایٹماں نال جُڑ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-287",
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ਇਹ ਪ੍ਰਤੀਕਿਰਿਆ ਊਰਜਾ ਛੱਡਦੀ ਹੈ।",
+      "text_markdown": "ਇਹ ਪ੍ਰਤੀਕਿਰਿਆ ਊਰਜਾ ਛੱਡਦੀ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ایہ ردعمل توانائی خارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-288",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ਤੁਸੀਂ ਕਾਰਬਨ ਅਤੇ ਆਕਸੀਜਨ ਨੂੰ ਕਾਰਬਨ ਡਾਈਆਕਸਾਈਡ ਦੇ ਰੂਪ ਵਿੱਚ ਬਾਹਰ ਕੱਢਦੇ ਹੋ।",
+      "text_markdown": "ਤੁਸੀਂ ਕਾਰਬਨ ਅਤੇ ਆਕਸੀਜਨ ਨੂੰ ਕਾਰਬਨ ਡਾਈਆਕਸਾਈਡ ਦੇ ਰੂਪ ਵਿੱਚ ਬਾਹਰ ਕੱਢਦੇ ਹੋ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "تسی کاربن تے آکسیجن نوں کاربن ڈائی آکسائیڈ دے روپ وچ باہر کڈھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-289",
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ਹਰ ਸਾਹ ਇੱਕ ਰਸਾਇਣਕ ਪ੍ਰਤੀਕਿਰਿਆ ਹੈ।",
+      "text_markdown": "ਹਰ ਸਾਹ ਇੱਕ ਰਸਾਇਣਕ ਪ੍ਰਤੀਕਿਰਿਆ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ہر ساہ اک کیمیائی ردعمل۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-290",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਜੰਗਾਲ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "text_markdown": "ਜੰਗਾਲ ਰਸਾਇਣ ਵਿਗਿਆਨ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "زنگ وی کیمیا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-291",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਇੱਕ ਕੀਲ ਦੀ ਸਤ੍ਹਾ 'ਤੇ ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਹਵਾ ਵਿੱਚ ਆਕਸੀਜਨ ਪਰਮਾਣੂਆਂ ਨਾਲ ਪ੍ਰਤੀਕਿਰਿਆ ਕਰਦੇ ਹਨ।",
+      "text_markdown": "ਇੱਕ ਕੀਲ ਦੀ ਸਤ੍ਹਾ 'ਤੇ ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਹਵਾ ਵਿੱਚ ਆਕਸੀਜਨ ਪਰਮਾਣੂਆਂ ਨਾਲ ਪ੍ਰਤੀਕਿਰਿਆ ਕਰਦੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "اک کیل دی سطح اُتے لوہے دے ایٹم ہوا دے آکسیجن ایٹماں نال ردعمل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-292",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ਲੋਹਾ ਅਤੇ ਆਕਸੀਜਨ ਮਿਲ ਕੇ ਇੱਕ ਨਵਾਂ ਪਦਾਰਥ ਬਣਾਉਂਦੇ ਹਨ ਜਿਸਨੂੰ ਆਇਰਨ ਆਕਸਾਈਡ ਕਿਹਾ ਜਾਂਦਾ ਹੈ।",
+      "text_markdown": "ਲੋਹਾ ਅਤੇ ਆਕਸੀਜਨ ਮਿਲ ਕੇ ਇੱਕ ਨਵਾਂ ਪਦਾਰਥ ਬਣਾਉਂਦੇ ਹਨ ਜਿਸਨੂੰ ਆਇਰਨ ਆਕਸਾਈਡ ਕਿਹਾ ਜਾਂਦਾ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "لوہا تے آکسیجن مل کے اک نواں مادہ: آئرن آکسائیڈ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-293",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ਆਇਰਨ ਆਕਸਾਈਡ ਉਹ ਲਾਲ-ਭੂਰਾ ਪਦਾਰਥ ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ ਜੰਗਾਲ ਕਹਿੰਦੇ ਹਾਂ।",
+      "text_markdown": "ਆਇਰਨ ਆਕਸਾਈਡ ਉਹ ਲਾਲ-ਭੂਰਾ ਪਦਾਰਥ ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ ਜੰਗਾਲ ਕਹਿੰਦੇ ਹਾਂ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "آئرن آکسائیڈ اوہ لال بھورا مادہ، ساڈی زبان وچ زنگ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-294",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਅਜੇ ਵੀ ਉੱਥੇ ਹਨ।",
+      "text_markdown": "ਲੋਹੇ ਦੇ ਪਰਮਾਣੂ ਅਜੇ ਵੀ ਉੱਥੇ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "لوہے دے ایٹم ہن وی اوتھے موجود۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-295",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ਉਹ ਸਿਰਫ਼ ਆਕਸੀਜਨ ਨਾਲ ਜੁੜੇ ਹੋਏ ਹਨ।",
+      "text_markdown": "ਉਹ ਸਿਰਫ਼ ਆਕਸੀਜਨ ਨਾਲ ਜੁੜੇ ਹੋਏ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "اوہ صرف آکسیجن نال جُڑے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-296",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ਪਰਮਾਣੂ ਅਮੂਰਤ ਨਹੀਂ ਹਨ।",
+      "text_markdown": "ਪਰਮਾਣੂ ਅਮੂਰਤ ਨਹੀਂ ਹਨ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ایٹم محض خیالی تصور نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-297",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ਪਰਮਾਣੂ ਹਰ ਉਸ ਚੀਜ਼ ਦੀ ਭੌਤਿਕ ਅਸਲੀਅਤ ਹਨ ਜਿਸਨੂੰ ਤੁਸੀਂ ਛੂਹਦੇ ਹੋ, ਸੁਆਦ ਲੈਂਦੇ ਹੋ, ਦੇਖਦੇ ਹੋ ਅਤੇ ਸੁੰਘਦੇ ਹੋ।",
+      "text_markdown": "ਪਰਮਾਣੂ ਹਰ ਉਸ ਚੀਜ਼ ਦੀ ਭੌਤਿਕ ਅਸਲੀਅਤ ਹਨ ਜਿਸਨੂੰ ਤੁਸੀਂ ਛੂਹਦੇ ਹੋ, ਸੁਆਦ ਲੈਂਦੇ ਹੋ, ਦੇਖਦੇ ਹੋ ਅਤੇ ਸੁੰਘਦੇ ਹੋ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ایٹم تہاڈی ہر محسوس شے دی جسمانی حقیقت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-298",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ਜਿੰਨਾ ਜ਼ਿਆਦਾ ਤੁਸੀਂ ਪਰਮਾਣੂਆਂ ਨੂੰ ਸਮਝਦੇ ਹੋ, ਓਨਾ ਹੀ ਜ਼ਿਆਦਾ ਤੁਸੀਂ ਦੁਨੀਆ ਨੂੰ ਸਮਝਦੇ ਹੋ।",
+      "text_markdown": "ਜਿੰਨਾ ਜ਼ਿਆਦਾ ਤੁਸੀਂ ਪਰਮਾਣੂਆਂ ਨੂੰ ਸਮਝਦੇ ਹੋ, ਓਨਾ ਹੀ ਜ਼ਿਆਦਾ ਤੁਸੀਂ ਦੁਨੀਆ ਨੂੰ ਸਮਝਦੇ ਹੋ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "جِنّاں ودھ تُسی ایٹماں نوں سمجھو، اُنّاں ودھ دنیا دی سمجھ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-299",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ਇਹ ਸ਼ੁਰੂਆਤ ਹੈ।",
+      "text_markdown": "ਇਹ ਸ਼ੁਰੂਆਤ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "ایہ صرف شروعات۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "id": "ch08-300",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ਖੋਜਣ ਲਈ ਹੋਰ ਵੀ ਬਹੁਤ ਕੁਝ ਹੈ।",
+      "text_markdown": "ਖੋਜਣ ਲਈ ਹੋਰ ਵੀ ਬਹੁਤ ਕੁਝ ਹੈ।",
+      "title": "ਪਰਮਾਣੂ ਸਭ ਕੁਝ ਹਨ",
+      "tts": {
+        "text": "اگے کھوج لئی ہور وی بہت کجھ۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

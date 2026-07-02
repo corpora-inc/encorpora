@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "version": "2.0.0",
+  "language": "hi",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पाठक के लिए एक बात",
+      "text_markdown": "पाठक के लिए एक बात"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नमस्ते।",
+      "text_markdown": "नमस्ते।",
+      "tts": {
+        "text": "नमस्ते।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मैं Kym हूँ।",
+      "text_markdown": "मैं Kym हूँ।",
+      "tts": {
+        "text": "मैं किम हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मुझे खाना बहुत पसंद है।",
+      "text_markdown": "मुझे खाना बहुत पसंद है।",
+      "tts": {
+        "text": "मुझे खाना बहुत पसंद है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "मुझे खाने की कहानियां भी बहुत पसंद हैं।",
+      "text_markdown": "मुझे खाने की कहानियां भी बहुत पसंद हैं।",
+      "tts": {
+        "text": "मुझे खाने की कहानियां भी बहुत पसंद हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह एक बड़े खानपान पर छोटी सी किताब है।",
+      "text_markdown": "यह एक बड़े खानपान पर छोटी सी किताब है।",
+      "tts": {
+        "text": "यह एक बड़े खानपान पर छोटी सी किताब है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह खाना फारसी खाना है।",
+      "text_markdown": "यह खाना फारसी खाना है।",
+      "tts": {
+        "text": "यह खाना फारसी खाना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह ईरान का खाना है।",
+      "text_markdown": "यह ईरान का खाना है।",
+      "tts": {
+        "text": "यह ईरान का खाना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "यह फारस नाम के एक बहुत पुराने देश का खाना भी है।",
+      "text_markdown": "यह फारस नाम के एक बहुत पुराने देश का खाना भी है।",
+      "tts": {
+        "text": "यह फारस नाम के एक बहुत पुराने देश का खाना भी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारस धरती की सबसे पुरानी जगहों में एक है, जहां लोगों ने जानबूझकर खाना उगाया।",
+      "text_markdown": "फारस धरती की सबसे पुरानी जगहों में एक है, जहां लोगों ने जानबूझकर खाना उगाया।",
+      "tts": {
+        "text": "फारस धरती की सबसे पुरानी जगहों में एक है, जहां लोगों ने जानबूझकर खाना उगाया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "गेहूं, जौ, आड़ू, खुबानी, अनार, पालक, केसर, आपकी थाली की बहुत सी चीजें वहीं जन्मी थीं।",
+      "text_markdown": "गेहूं, जौ, आड़ू, खुबानी, अनार, पालक, केसर, आपकी थाली की बहुत सी चीजें वहीं जन्मी थीं।",
+      "tts": {
+        "text": "गेहूं, जौ, आड़ू, खुबानी, अनार, पालक, केसर, आपकी थाली की बहुत सी चीजें वहीं जन्मी थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हम शुरुआत भूमि से करेंगे।",
+      "text_markdown": "हम शुरुआत भूमि से करेंगे।",
+      "tts": {
+        "text": "हम शुरुआत भूमि से करेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फिर हम वहां उगने वाली चीजों को देखेंगे।",
+      "text_markdown": "फिर हम वहां उगने वाली चीजों को देखेंगे।",
+      "tts": {
+        "text": "फिर हम वहां उगने वाली चीजों को देखेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर हम चावल, रोटी, मांस और शोरबों को देखेंगे।",
+      "text_markdown": "फिर हम चावल, रोटी, मांस और शोरबों को देखेंगे।",
+      "tts": {
+        "text": "फिर हम चावल, रोटी, मांस और शोरबों को देखेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "अंत तक आपको पता होगा कि फारसी मेज पर क्या होता है, और वह कहां से आया।",
+      "text_markdown": "अंत तक आपको पता होगा कि फारसी मेज पर क्या होता है, और वह कहां से आया।",
+      "tts": {
+        "text": "अंत तक आपको पता होगा कि फारसी मेज पर क्या होता है, और वह कहां से आया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बैठ जाइए।",
+      "text_markdown": "बैठ जाइए।",
+      "tts": {
+        "text": "बैठ जाइए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "थोड़ी चाय डालिए।",
+      "text_markdown": "थोड़ी चाय डालिए।",
+      "tts": {
+        "text": "थोड़ी चाय डालिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चलिए शुरू करते हैं।",
+      "text_markdown": "चलिए शुरू करते हैं।",
+      "tts": {
+        "text": "चलिए शुरू करते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय १ — वह भूमि जहां खेती शुरू हुई",
+      "text_markdown": "अध्याय १ — वह भूमि जहां खेती शुरू हुई"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारस ऊंची और सूखी भूमि है।",
+      "text_markdown": "फारस ऊंची और सूखी भूमि है।",
+      "tts": {
+        "text": "फारस ऊंची और सूखी भूमि है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह उत्तर में कैस्पियन सागर और दक्षिण में फारस की खाड़ी के बीच बैठा है।",
+      "text_markdown": "यह उत्तर में कैस्पियन सागर और दक्षिण में फारस की खाड़ी के बीच बैठा है।",
+      "tts": {
+        "text": "यह उत्तर में कैस्पियन सागर और दक्षिण में फारस की खाड़ी के बीच बैठा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पश्चिम में मेसोपोटामिया है।",
+      "text_markdown": "पश्चिम में मेसोपोटामिया है।",
+      "tts": {
+        "text": "पश्चिम में मेसोपोटामिया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पूर्व में भारत है।",
+      "text_markdown": "पूर्व में भारत है।",
+      "tts": {
+        "text": "पूर्व में भारत है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "बीच में पहाड़ और रेगिस्तान हैं।",
+      "text_markdown": "बीच में पहाड़ और रेगिस्तान हैं।",
+      "tts": {
+        "text": "बीच में पहाड़ और रेगिस्तान हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहीं पास में, करीब दस हजार साल पहले, लोगों ने पहली बार गेहूं और जौ जानबूझकर उगाए।",
+      "text_markdown": "यहीं पास में, करीब दस हजार साल पहले, लोगों ने पहली बार गेहूं और जौ जानबूझकर उगाए।",
+      "tts": {
+        "text": "यहीं पास में, करीब दस हजार साल पहले, लोगों ने पहली बार गेहूं और जौ जानबूझकर उगाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "खेती वहीं जन्मी।",
+      "text_markdown": "खेती वहीं जन्मी।",
+      "tts": {
+        "text": "खेती वहीं जन्मी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फारस उन पहली जगहों में था, जिसने इसे सीखा।",
+      "text_markdown": "फारस उन पहली जगहों में था, जिसने इसे सीखा।",
+      "tts": {
+        "text": "फारस उन पहली जगहों में था, जिसने इसे सीखा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उस लंबी बढ़त की छाप हर फारसी थाली में है।",
+      "text_markdown": "उस लंबी बढ़त की छाप हर फारसी थाली में है।",
+      "tts": {
+        "text": "उस लंबी बढ़त की छाप हर फारसी थाली में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आड़ू फारस से आया है।",
+      "text_markdown": "आड़ू फारस से आया है।",
+      "tts": {
+        "text": "आड़ू फारस से आया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "रोमनों ने उसे पर्सिका कहा, यानी फारसी फल। अंग्रेजी का पीच शब्द उसी नाम से आया।",
+      "text_markdown": "रोमनों ने उसे पर्सिका कहा, यानी फारसी फल। अंग्रेजी का पीच शब्द उसी नाम से आया।",
+      "tts": {
+        "text": "रोमनों ने उसे पर्सिका कहा, यानी फारसी फल। अंग्रेजी का पीच शब्द उसी नाम से आया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खुबानी भी वहीं से आई है।",
+      "text_markdown": "खुबानी भी वहीं से आई है।",
+      "tts": {
+        "text": "खुबानी भी वहीं से आई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अनार भी।",
+      "text_markdown": "अनार भी।",
+      "tts": {
+        "text": "अनार भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अखरोट भी।",
+      "text_markdown": "अखरोट भी।",
+      "tts": {
+        "text": "अखरोट भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "खट्टी चेरी भी।",
+      "text_markdown": "खट्टी चेरी भी।",
+      "tts": {
+        "text": "खट्टी चेरी भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "और दुनिया की शुरुआती सलाद पत्तियों में एक, पालक भी।",
+      "text_markdown": "और दुनिया की शुरुआती सलाद पत्तियों में एक, पालक भी।",
+      "tts": {
+        "text": "और दुनिया की शुरुआती सलाद पत्तियों में एक, पालक भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "अंग्रेजी का स्पिनच शब्द फारसी शब्द एस्फनाज से आया है।",
+      "text_markdown": "अंग्रेजी का स्पिनच शब्द फारसी शब्द एस्फनाज से आया है।",
+      "tts": {
+        "text": "अंग्रेजी का स्पिनच शब्द फारसी शब्द एस्फनाज से आया है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहां तक कि पैराडाइज़ शब्द भी फारसी है।",
+      "text_markdown": "यहां तक कि पैराडाइज़ शब्द भी फारसी है।",
+      "tts": {
+        "text": "यहां तक कि पैराडाइज़ शब्द भी फारसी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह पर्दीस से आया है, यानी दीवारों से घिरा बाग।",
+      "text_markdown": "वह पर्दीस से आया है, यानी दीवारों से घिरा बाग।",
+      "tts": {
+        "text": "वह पर्दीस से आया है, यानी दीवारों से घिरा बाग।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पहला स्वर्ग अनार के पेड़ों से भरा एक फारसी बाग था।",
+      "text_markdown": "पहला स्वर्ग अनार के पेड़ों से भरा एक फारसी बाग था।",
+      "tts": {
+        "text": "पहला स्वर्ग अनार के पेड़ों से भरा एक फारसी बाग था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारस सिर्फ अच्छा नहीं खाता था।",
+      "text_markdown": "फारस सिर्फ अच्छा नहीं खाता था।",
+      "tts": {
+        "text": "फारस सिर्फ अच्छा नहीं खाता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारस ने दुनिया को अच्छा खाना सिखाया।",
+      "text_markdown": "फारस ने दुनिया को अच्छा खाना सिखाया।",
+      "tts": {
+        "text": "फारस ने दुनिया को अच्छा खाना सिखाया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय २ — स्थानीय रसोई भंडार",
+      "text_markdown": "अध्याय २ — स्थानीय रसोई भंडार"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक फारसी रसोई भंडार खोलिए।",
+      "text_markdown": "एक फारसी रसोई भंडार खोलिए।",
+      "tts": {
+        "text": "एक फारसी रसोई भंडार खोलिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसकी खुशबू पूरी कहानी कह देती है।",
+      "text_markdown": "उसकी खुशबू पूरी कहानी कह देती है।",
+      "tts": {
+        "text": "उसकी खुशबू पूरी कहानी कह देती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली खुशबू केसर की होती है।",
+      "text_markdown": "पहली खुशबू केसर की होती है।",
+      "tts": {
+        "text": "पहली खुशबू केसर की होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दुनिया का करीब नब्बे प्रतिशत केसर ईरान उगाता है।",
+      "text_markdown": "दुनिया का करीब नब्बे प्रतिशत केसर ईरान उगाता है।",
+      "tts": {
+        "text": "दुनिया का करीब नब्बे प्रतिशत केसर ईरान उगाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसका बड़ा हिस्सा खोरासान नाम के प्रांत से आता है।",
+      "text_markdown": "उसका बड़ा हिस्सा खोरासान नाम के प्रांत से आता है।",
+      "tts": {
+        "text": "उसका बड़ा हिस्सा खोरासान नाम के प्रांत से आता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक ग्राम के लिए किसान करीब दो सौ क्रोकस फूलों से लाल रेशे हाथ से तोड़ता है।",
+      "text_markdown": "एक ग्राम के लिए किसान करीब दो सौ क्रोकस फूलों से लाल रेशे हाथ से तोड़ता है।",
+      "tts": {
+        "text": "एक ग्राम के लिए किसान करीब दो सौ क्रोकस फूलों से लाल रेशे हाथ से तोड़ता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह काम ठंडी पतझड़ की भोर में होता है।",
+      "text_markdown": "यह काम ठंडी पतझड़ की भोर में होता है।",
+      "tts": {
+        "text": "यह काम ठंडी पतझड़ की भोर में होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "केसर दुनिया का सबसे महंगा मसाला है।",
+      "text_markdown": "केसर दुनिया का सबसे महंगा मसाला है।",
+      "tts": {
+        "text": "केसर दुनिया का सबसे महंगा मसाला है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "एक चुटकी चावल को सुनहरा करती है, और पानी को खुशबूदार।",
+      "text_markdown": "एक चुटकी चावल को सुनहरा करती है, और पानी को खुशबूदार।",
+      "tts": {
+        "text": "एक चुटकी चावल को सुनहरा करती है, और पानी को खुशबूदार।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी खुशबू अनार की है।",
+      "text_markdown": "दूसरी खुशबू अनार की है।",
+      "tts": {
+        "text": "दूसरी खुशबू अनार की है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी लोग हजारों साल से अनार उगा रहे हैं।",
+      "text_markdown": "फारसी लोग हजारों साल से अनार उगा रहे हैं।",
+      "tts": {
+        "text": "फारसी लोग हजारों साल से अनार उगा रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह फल प्रेम और स्वर्ग का प्रतीक है।",
+      "text_markdown": "यह फल प्रेम और स्वर्ग का प्रतीक है।",
+      "tts": {
+        "text": "यह फल प्रेम और स्वर्ग का प्रतीक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उसका रस शोरबों के लिए निचोड़ा जाता है।",
+      "text_markdown": "उसका रस शोरबों के लिए निचोड़ा जाता है।",
+      "tts": {
+        "text": "उसका रस शोरबों के लिए निचोड़ा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसके दाने चावल और सलाद पर छिड़के जाते हैं।",
+      "text_markdown": "उसके दाने चावल और सलाद पर छिड़के जाते हैं।",
+      "tts": {
+        "text": "उसके दाने चावल और सलाद पर छिड़के जाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर आते हैं पिस्ते।",
+      "text_markdown": "फिर आते हैं पिस्ते।",
+      "tts": {
+        "text": "फिर आते हैं पिस्ते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ईरान में पिस्ते के ऐसे बाग हैं, जो तीन हजार साल पुराने हैं।",
+      "text_markdown": "ईरान में पिस्ते के ऐसे बाग हैं, जो तीन हजार साल पुराने हैं।",
+      "tts": {
+        "text": "ईरान में पिस्ते के ऐसे बाग हैं, जो तीन हजार साल पुराने हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दुनिया में जो पिस्ता आप खाते हैं, वह अक्सर किसी फारसी पेड़ की संतान है।",
+      "text_markdown": "दुनिया में जो पिस्ता आप खाते हैं, वह अक्सर किसी फारसी पेड़ की संतान है।",
+      "tts": {
+        "text": "दुनिया में जो पिस्ता आप खाते हैं, वह अक्सर किसी फारसी पेड़ की संतान है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहां अखरोट, खट्टी चेरी, बेही, खरबूजे और खजूर भी हैं।",
+      "text_markdown": "यहां अखरोट, खट्टी चेरी, बेही, खरबूजे और खजूर भी हैं।",
+      "tts": {
+        "text": "यहां अखरोट, खट्टी चेरी, बेही, खरबूजे और खजूर भी हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यहां सुमाक भी है, जंगली झाड़ी से मिलने वाला गहरा लाल खट्टा मसाला।",
+      "text_markdown": "यहां सुमाक भी है, जंगली झाड़ी से मिलने वाला गहरा लाल खट्टा मसाला।",
+      "tts": {
+        "text": "यहां सुमाक भी है, जंगली झाड़ी से मिलने वाला गहरा लाल खट्टा मसाला।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "नींबू हर जगह आने से पहले, सुमाक खाने में चमक लाता था।",
+      "text_markdown": "नींबू हर जगह आने से पहले, सुमाक खाने में चमक लाता था।",
+      "tts": {
+        "text": "नींबू हर जगह आने से पहले, सुमाक खाने में चमक लाता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "आज भी वही काम करता है।",
+      "text_markdown": "आज भी वही काम करता है।",
+      "tts": {
+        "text": "आज भी वही काम करता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक फारसी भंडार में फलों के इतिहास का आधा हिस्सा रखा है।",
+      "text_markdown": "एक फारसी भंडार में फलों के इतिहास का आधा हिस्सा रखा है।",
+      "tts": {
+        "text": "एक फारसी भंडार में फलों के इतिहास का आधा हिस्सा रखा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय ३ — चावल, रोटी और पवित्र करारी परत",
+      "text_markdown": "अध्याय ३ — चावल, रोटी और पवित्र करारी परत"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चावल भारत से करीब ढाई हजार साल पहले फारस पहुंचा।",
+      "text_markdown": "चावल भारत से करीब ढाई हजार साल पहले फारस पहुंचा।",
+      "tts": {
+        "text": "चावल भारत से करीब ढाई हजार साल पहले फारस पहुंचा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फिर वही मेज का दिल बन गया।",
+      "text_markdown": "फिर वही मेज का दिल बन गया।",
+      "tts": {
+        "text": "फिर वही मेज का दिल बन गया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी लोग चावल दो तरह से पकाते हैं।",
+      "text_markdown": "फारसी लोग चावल दो तरह से पकाते हैं।",
+      "tts": {
+        "text": "फारसी लोग चावल दो तरह से पकाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सादा चावल चेलो कहलाता है।",
+      "text_markdown": "सादा चावल चेलो कहलाता है।",
+      "tts": {
+        "text": "सादा चावल चेलो कहलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "जड़ी बूटियों, मांस या फल के साथ मिला चावल पोलो कहलाता है।",
+      "text_markdown": "जड़ी बूटियों, मांस या फल के साथ मिला चावल पोलो कहलाता है।",
+      "tts": {
+        "text": "जड़ी बूटियों, मांस या फल के साथ मिला चावल पोलो कहलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "दोनों लंबे, हल्के और अलग अलग होते हैं, हर दाना अपनी जगह रहता है।",
+      "text_markdown": "दोनों लंबे, हल्के और अलग अलग होते हैं, हर दाना अपनी जगह रहता है।",
+      "tts": {
+        "text": "दोनों लंबे, हल्के और अलग अलग होते हैं, हर दाना अपनी जगह रहता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन जादू बर्तन के तल में होता है।",
+      "text_markdown": "लेकिन जादू बर्तन के तल में होता है।",
+      "tts": {
+        "text": "लेकिन जादू बर्तन के तल में होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसे तहदीग कहा जाता है।",
+      "text_markdown": "उसे तहदीग कहा जाता है।",
+      "tts": {
+        "text": "उसे तहदीग कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "रसोइया पतीली के तल में पतली परत रखता है, कभी केसर वाला चावल, कभी आलू की फांक, कभी रोटी का टुकड़ा।",
+      "text_markdown": "रसोइया पतीली के तल में पतली परत रखता है, कभी केसर वाला चावल, कभी आलू की फांक, कभी रोटी का टुकड़ा।",
+      "tts": {
+        "text": "रसोइया पतीली के तल में पतली परत रखता है, कभी केसर वाला चावल, कभी आलू की फांक, कभी रोटी का टुकड़ा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "फिर ऊपर चावल डाला जाता है।",
+      "text_markdown": "फिर ऊपर चावल डाला जाता है।",
+      "tts": {
+        "text": "फिर ऊपर चावल डाला जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "फिर ढक्कन रखा जाता है, उस पर साफ कपड़ा लपेटा जाता है, और बाकी काम भाप करती है।",
+      "text_markdown": "फिर ढक्कन रखा जाता है, उस पर साफ कपड़ा लपेटा जाता है, और बाकी काम भाप करती है।",
+      "tts": {
+        "text": "फिर ढक्कन रखा जाता है, उस पर साफ कपड़ा लपेटा जाता है, और बाकी काम भाप करती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "एक घंटे बाद, वही निचली परत सुनहरी और करारी हो जाती है।",
+      "text_markdown": "एक घंटे बाद, वही निचली परत सुनहरी और करारी हो जाती है।",
+      "tts": {
+        "text": "एक घंटे बाद, वही निचली परत सुनहरी और करारी हो जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तहदीग पवित्र मानी जाती है।",
+      "text_markdown": "तहदीग पवित्र मानी जाती है।",
+      "tts": {
+        "text": "तहदीग पवित्र मानी जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "परिवार उसके लिए झगड़ते हैं।",
+      "text_markdown": "परिवार उसके लिए झगड़ते हैं।",
+      "tts": {
+        "text": "परिवार उसके लिए झगड़ते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ईरानी दूरदर्शन पर यह तक दिखाया जाता है कि सबसे अच्छी तहदीग कौन बनाता है।",
+      "text_markdown": "ईरानी दूरदर्शन पर यह तक दिखाया जाता है कि सबसे अच्छी तहदीग कौन बनाता है।",
+      "tts": {
+        "text": "ईरानी दूरदर्शन पर यह तक दिखाया जाता है कि सबसे अच्छी तहदीग कौन बनाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक उम्दा तहदीग पतीली से एक सुंदर गोल चकती बनकर निकलती है।",
+      "text_markdown": "एक उम्दा तहदीग पतीली से एक सुंदर गोल चकती बनकर निकलती है।",
+      "tts": {
+        "text": "एक उम्दा तहदीग पतीली से एक सुंदर गोल चकती बनकर निकलती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर आती है रोटी।",
+      "text_markdown": "फिर आती है रोटी।",
+      "tts": {
+        "text": "फिर आती है रोटी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सबसे मशहूर संगक है।",
+      "text_markdown": "सबसे मशहूर संगक है।",
+      "tts": {
+        "text": "सबसे मशहूर संगक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "संगक गरम कंकड़ों की तह पर पकती है, यह तरीका पांच हजार साल पुराना है।",
+      "text_markdown": "संगक गरम कंकड़ों की तह पर पकती है, यह तरीका पांच हजार साल पुराना है।",
+      "tts": {
+        "text": "संगक गरम कंकड़ों की तह पर पकती है, यह तरीका पांच हजार साल पुराना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वे कंकड़ आज भी रोटी के साथ बाहर आते हैं।",
+      "text_markdown": "वे कंकड़ आज भी रोटी के साथ बाहर आते हैं।",
+      "tts": {
+        "text": "वे कंकड़ आज भी रोटी के साथ बाहर आते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "आप उन्हें मेज पर बैठकर चुन लेते हैं।",
+      "text_markdown": "आप उन्हें मेज पर बैठकर चुन लेते हैं।",
+      "tts": {
+        "text": "आप उन्हें मेज पर बैठकर चुन लेते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी रोटियां बरबरी, लवाश और तफ्तून हैं।",
+      "text_markdown": "दूसरी रोटियां बरबरी, लवाश और तफ्तून हैं।",
+      "tts": {
+        "text": "दूसरी रोटियां बरबरी, लवाश और तफ्तून हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी नाश्ते में रोटी, चाय और नरम सफेद पनीर होता है।",
+      "text_markdown": "फारसी नाश्ते में रोटी, चाय और नरम सफेद पनीर होता है।",
+      "tts": {
+        "text": "फारसी नाश्ते में रोटी, चाय और नरम सफेद पनीर होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय ४ — कबाब और धैर्य वाला शोरबा",
+      "text_markdown": "अध्याय ४ — कबाब और धैर्य वाला शोरबा"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कबाब शब्द फारसी है।",
+      "text_markdown": "कबाब शब्द फारसी है।",
+      "tts": {
+        "text": "कबाब शब्द फारसी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी में इसे कबाब कहते हैं, यानी आग पर पका मांस।",
+      "text_markdown": "फारसी में इसे कबाब कहते हैं, यानी आग पर पका मांस।",
+      "tts": {
+        "text": "फारसी में इसे कबाब कहते हैं, यानी आग पर पका मांस।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फारसी लोग हजारों साल से लंबे चपटे सीखों पर मेमना पकाते आए हैं।",
+      "text_markdown": "फारसी लोग हजारों साल से लंबे चपटे सीखों पर मेमना पकाते आए हैं।",
+      "tts": {
+        "text": "फारसी लोग हजारों साल से लंबे चपटे सीखों पर मेमना पकाते आए हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज सबसे लोकप्रिय कबाब कूबीदेह है।",
+      "text_markdown": "आज सबसे लोकप्रिय कबाब कूबीदेह है।",
+      "tts": {
+        "text": "आज सबसे लोकप्रिय कबाब कूबीदेह है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह कीमा किया हुआ मेमना या गोमांस होता है, जिसमें प्याज और नमक मिलाकर उसे चौड़ी चपटी सीख पर दबाया जाता है, फिर कोयले पर सेंका जाता है।",
+      "text_markdown": "यह कीमा किया हुआ मेमना या गोमांस होता है, जिसमें प्याज और नमक मिलाकर उसे चौड़ी चपटी सीख पर दबाया जाता है, फिर कोयले पर सेंका जाता है।",
+      "tts": {
+        "text": "यह कीमा किया हुआ मेमना या गोमांस होता है, जिसमें प्याज और नमक मिलाकर उसे चौड़ी चपटी सीख पर दबाया जाता है, फिर कोयले पर सेंका जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह बहुत पुराना दिखता है।",
+      "text_markdown": "यह बहुत पुराना दिखता है।",
+      "tts": {
+        "text": "यह बहुत पुराना दिखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "लेकिन यह उतना पुराना नहीं है।",
+      "text_markdown": "लेकिन यह उतना पुराना नहीं है।",
+      "tts": {
+        "text": "लेकिन यह उतना पुराना नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "मांस पीसने की चक्की ईरान तक उन्नीसवीं सदी के आखिर में ही पहुंची।",
+      "text_markdown": "मांस पीसने की चक्की ईरान तक उन्नीसवीं सदी के आखिर में ही पहुंची।",
+      "tts": {
+        "text": "मांस पीसने की चक्की ईरान तक उन्नीसवीं सदी के आखिर में ही पहुंची।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "कबाबों में सबसे फारसी कूबीदेह मुश्किल से सौ साल से थोड़ा पुराना है।",
+      "text_markdown": "कबाबों में सबसे फारसी कूबीदेह मुश्किल से सौ साल से थोड़ा पुराना है।",
+      "tts": {
+        "text": "कबाबों में सबसे फारसी कूबीदेह मुश्किल से सौ साल से थोड़ा पुराना है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उससे पुराने कबाब मांस की कतरनों से बनते हैं।",
+      "text_markdown": "उससे पुराने कबाब मांस की कतरनों से बनते हैं।",
+      "tts": {
+        "text": "उससे पुराने कबाब मांस की कतरनों से बनते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "जूजेह, केसर और दही में सना चिकन है।",
+      "text_markdown": "जूजेह, केसर और दही में सना चिकन है।",
+      "tts": {
+        "text": "जूजेह, केसर और दही में सना चिकन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "बर्ग मेमने की पतली कतली है।",
+      "text_markdown": "बर्ग मेमने की पतली कतली है।",
+      "tts": {
+        "text": "बर्ग मेमने की पतली कतली है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "दोनों केसर वाले चावल की तह पर, साथ में भुने टमाटर के साथ परोसे जाते हैं।",
+      "text_markdown": "दोनों केसर वाले चावल की तह पर, साथ में भुने टमाटर के साथ परोसे जाते हैं।",
+      "tts": {
+        "text": "दोनों केसर वाले चावल की तह पर, साथ में भुने टमाटर के साथ परोसे जाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब मिलिए धैर्य वाले पकवान से, फारसी शोरबा खोरेश।",
+      "text_markdown": "अब मिलिए धैर्य वाले पकवान से, फारसी शोरबा खोरेश।",
+      "tts": {
+        "text": "अब मिलिए धैर्य वाले पकवान से, फारसी शोरबा खोरेश।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक खोरेश घंटों पकता है।",
+      "text_markdown": "एक खोरेश घंटों पकता है।",
+      "tts": {
+        "text": "एक खोरेश घंटों पकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सबसे मशहूर फेसेनजान है।",
+      "text_markdown": "सबसे मशहूर फेसेनजान है।",
+      "tts": {
+        "text": "सबसे मशहूर फेसेनजान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह चिकन या बतख होता है, जिसे पिसे अखरोट और अनार के रस की गाढ़ी चटनी में धीरे धीरे पकाया जाता है।",
+      "text_markdown": "यह चिकन या बतख होता है, जिसे पिसे अखरोट और अनार के रस की गाढ़ी चटनी में धीरे धीरे पकाया जाता है।",
+      "tts": {
+        "text": "यह चिकन या बतख होता है, जिसे पिसे अखरोट और अनार के रस की गाढ़ी चटनी में धीरे धीरे पकाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह नुस्खा अब तक मिले सबसे पुराने शोरबे के नुस्खों में एक है।",
+      "text_markdown": "यह नुस्खा अब तक मिले सबसे पुराने शोरबे के नुस्खों में एक है।",
+      "tts": {
+        "text": "यह नुस्खा अब तक मिले सबसे पुराने शोरबे के नुस्खों में एक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इसका एक रूप पर्सेपोलिस के खंडहरों से मिली कीलाक्षर पट्टियों पर लिखा मिला है।",
+      "text_markdown": "इसका एक रूप पर्सेपोलिस के खंडहरों से मिली कीलाक्षर पट्टियों पर लिखा मिला है।",
+      "tts": {
+        "text": "इसका एक रूप पर्सेपोलिस के खंडहरों से मिली कीलाक्षर पट्टियों पर लिखा मिला है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "इसका मतलब है कि यह ढाई हजार साल से भी पुराना है।",
+      "text_markdown": "इसका मतलब है कि यह ढाई हजार साल से भी पुराना है।",
+      "tts": {
+        "text": "इसका मतलब है कि यह ढाई हजार साल से भी पुराना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "लोग आज भी इसे लगभग उसी तरह पकाते हैं।",
+      "text_markdown": "लोग आज भी इसे लगभग उसी तरह पकाते हैं।",
+      "tts": {
+        "text": "लोग आज भी इसे लगभग उसी तरह पकाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक और मशहूर पकवान घोर्मे सब्जी है, जिसमें मेमना, राजमा और ताजी जड़ी बूटियों का पहाड़ सूखे नींबू के साथ पकता है।",
+      "text_markdown": "एक और मशहूर पकवान घोर्मे सब्जी है, जिसमें मेमना, राजमा और ताजी जड़ी बूटियों का पहाड़ सूखे नींबू के साथ पकता है।",
+      "tts": {
+        "text": "एक और मशहूर पकवान घोर्मे सब्जी है, जिसमें मेमना, राजमा और ताजी जड़ी बूटियों का पहाड़ सूखे नींबू के साथ पकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बहुत से ईरानी इसे राष्ट्रीय व्यंजन कहते हैं।",
+      "text_markdown": "बहुत से ईरानी इसे राष्ट्रीय व्यंजन कहते हैं।",
+      "tts": {
+        "text": "बहुत से ईरानी इसे राष्ट्रीय व्यंजन कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय ५ — दही, चाय और सबसे पुराने मिष्ठान",
+      "text_markdown": "अध्याय ५ — दही, चाय और सबसे पुराने मिष्ठान"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी लोग दही लगभग हर चीज के साथ खाते हैं।",
+      "text_markdown": "फारसी लोग दही लगभग हर चीज के साथ खाते हैं।",
+      "tts": {
+        "text": "फारसी लोग दही लगभग हर चीज के साथ खाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सादा दही मस्त कहलाता है।",
+      "text_markdown": "सादा दही मस्त कहलाता है।",
+      "tts": {
+        "text": "सादा दही मस्त कहलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "खीरे और सूखे पुदीने के साथ मस्त को मस्त ओ खियार कहते हैं।",
+      "text_markdown": "खीरे और सूखे पुदीने के साथ मस्त को मस्त ओ खियार कहते हैं।",
+      "tts": {
+        "text": "खीरे और सूखे पुदीने के साथ मस्त को मस्त ओ खियार कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पुदीने वाला नमकीन दही पेय दूघ कहलाता है।",
+      "text_markdown": "पुदीने वाला नमकीन दही पेय दूघ कहलाता है।",
+      "tts": {
+        "text": "पुदीने वाला नमकीन दही पेय दूघ कहलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कश्क भी होता है, यह सूखा गाढ़ा मट्ठा है, जिसे शोरबों में डाला जाता है।",
+      "text_markdown": "कश्क भी होता है, यह सूखा गाढ़ा मट्ठा है, जिसे शोरबों में डाला जाता है।",
+      "tts": {
+        "text": "कश्क भी होता है, यह सूखा गाढ़ा मट्ठा है, जिसे शोरबों में डाला जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर आती है चाय।",
+      "text_markdown": "फिर आती है चाय।",
+      "tts": {
+        "text": "फिर आती है चाय।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी लोग सुबह, दोपहर और रात समोवर पर रखे ऊंचे बर्तन की गाढ़ी चाय पीते हैं।",
+      "text_markdown": "फारसी लोग सुबह, दोपहर और रात समोवर पर रखे ऊंचे बर्तन की गाढ़ी चाय पीते हैं।",
+      "tts": {
+        "text": "फारसी लोग सुबह, दोपहर और रात समोवर पर रखे ऊंचे बर्तन की गाढ़ी चाय पीते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चाय इतनी जरूरी है कि लोगों को हैरानी होती है, जब वे सुनते हैं कि यह देर से आई।",
+      "text_markdown": "चाय इतनी जरूरी है कि लोगों को हैरानी होती है, जब वे सुनते हैं कि यह देर से आई।",
+      "tts": {
+        "text": "चाय इतनी जरूरी है कि लोगों को हैरानी होती है, जब वे सुनते हैं कि यह देर से आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "फारस के लंबे इतिहास के ज्यादातर समय में, पीने की चीज कहवा थी।",
+      "text_markdown": "फारस के लंबे इतिहास के ज्यादातर समय में, पीने की चीज कहवा थी।",
+      "tts": {
+        "text": "फारस के लंबे इतिहास के ज्यादातर समय में, पीने की चीज कहवा थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "चाय ने उसकी जगह उन्नीसवीं सदी के आखिर में ली।",
+      "text_markdown": "चाय ने उसकी जगह उन्नीसवीं सदी के आखिर में ली।",
+      "tts": {
+        "text": "चाय ने उसकी जगह उन्नीसवीं सदी के आखिर में ली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "आज ईरान दुनिया के सबसे बड़े चाय पीने वाले देशों में है।",
+      "text_markdown": "आज ईरान दुनिया के सबसे बड़े चाय पीने वाले देशों में है।",
+      "tts": {
+        "text": "आज ईरान दुनिया के सबसे बड़े चाय पीने वाले देशों में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इससे जुड़ी एक छोटी सी रीति भी है।",
+      "text_markdown": "इससे जुड़ी एक छोटी सी रीति भी है।",
+      "tts": {
+        "text": "इससे जुड़ी एक छोटी सी रीति भी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आप दांतों के बीच चीनी का एक टुकड़ा रखते हैं।",
+      "text_markdown": "आप दांतों के बीच चीनी का एक टुकड़ा रखते हैं।",
+      "tts": {
+        "text": "आप दांतों के बीच चीनी का एक टुकड़ा रखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "आप उसी टुकड़े के सहारे चाय की चुस्की लेते हैं।",
+      "text_markdown": "आप उसी टुकड़े के सहारे चाय की चुस्की लेते हैं।",
+      "tts": {
+        "text": "आप उसी टुकड़े के सहारे चाय की चुस्की लेते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह टुकड़ा थोड़ा सा घुल जाता है।",
+      "text_markdown": "वह टुकड़ा थोड़ा सा घुल जाता है।",
+      "tts": {
+        "text": "वह टुकड़ा थोड़ा सा घुल जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "चाय गले से उतरते समय गरम, गहरी और मीठी लगती है।",
+      "text_markdown": "चाय गले से उतरते समय गरम, गहरी और मीठी लगती है।",
+      "tts": {
+        "text": "चाय गले से उतरते समय गरम, गहरी और मीठी लगती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब मिठाइयों की बात।",
+      "text_markdown": "अब मिठाइयों की बात।",
+      "tts": {
+        "text": "अब मिठाइयों की बात।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी मिठाइयां पुरानी, गाढ़ी और छोटी होती हैं।",
+      "text_markdown": "फारसी मिठाइयां पुरानी, गाढ़ी और छोटी होती हैं।",
+      "tts": {
+        "text": "फारसी मिठाइयां पुरानी, गाढ़ी और छोटी होती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सबसे पुरानी फलूदेह है।",
+      "text_markdown": "सबसे पुरानी फलूदेह है।",
+      "tts": {
+        "text": "सबसे पुरानी फलूदेह है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह चावल की पतली सेवइयां होती हैं, जिन्हें गुलाबजल की चाशनी में जमा कर, नींबू के रस और पिस्ते के साथ परोसा जाता है।",
+      "text_markdown": "यह चावल की पतली सेवइयां होती हैं, जिन्हें गुलाबजल की चाशनी में जमा कर, नींबू के रस और पिस्ते के साथ परोसा जाता है।",
+      "tts": {
+        "text": "यह चावल की पतली सेवइयां होती हैं, जिन्हें गुलाबजल की चाशनी में जमा कर, नींबू के रस और पिस्ते के साथ परोसा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फारसी लेखक इसका वर्णन ईसा से करीब चार सौ साल पहले करते हैं।",
+      "text_markdown": "फारसी लेखक इसका वर्णन ईसा से करीब चार सौ साल पहले करते हैं।",
+      "tts": {
+        "text": "फारसी लेखक इसका वर्णन ईसा से करीब चार सौ साल पहले करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इससे फलूदेह दुनिया की सबसे पुरानी जमी मिठाइयों में एक बनती है।",
+      "text_markdown": "इससे फलूदेह दुनिया की सबसे पुरानी जमी मिठाइयों में एक बनती है।",
+      "tts": {
+        "text": "इससे फलूदेह दुनिया की सबसे पुरानी जमी मिठाइयों में एक बनती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह आइसक्रीम से दो हजार साल से भी ज्यादा पुरानी है।",
+      "text_markdown": "यह आइसक्रीम से दो हजार साल से भी ज्यादा पुरानी है।",
+      "tts": {
+        "text": "यह आइसक्रीम से दो हजार साल से भी ज्यादा पुरानी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी मशहूर मिठाइयां हैं, तबरीज की बाकलावा, जो तुर्की किस्म से हल्की है, और उसमें अखरोट व गुलाबजल होता है।",
+      "text_markdown": "दूसरी मशहूर मिठाइयां हैं, तबरीज की बाकलावा, जो तुर्की किस्म से हल्की है, और उसमें अखरोट व गुलाबजल होता है।",
+      "tts": {
+        "text": "दूसरी मशहूर मिठाइयां हैं, तबरीज की बाकलावा, जो तुर्की किस्म से हल्की है, और उसमें अखरोट व गुलाबजल होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हलवा, तिल या केसर की गाढ़ी मिठाई।",
+      "text_markdown": "हलवा, तिल या केसर की गाढ़ी मिठाई।",
+      "tts": {
+        "text": "हलवा, तिल या केसर की गाढ़ी मिठाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इस्फहान का गज, पिस्ते वाली नरम मिठाई।",
+      "text_markdown": "इस्फहान का गज, पिस्ते वाली नरम मिठाई।",
+      "tts": {
+        "text": "इस्फहान का गज, पिस्ते वाली नरम मिठाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "सोहन, केसर की सुनहरी करारी मिठाई।",
+      "text_markdown": "सोहन, केसर की सुनहरी करारी मिठाई।",
+      "tts": {
+        "text": "सोहन, केसर की सुनहरी करारी मिठाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कुम का नोखोदची, चने की नन्ही मीठी टिकिया।",
+      "text_markdown": "कुम का नोखोदची, चने की नन्ही मीठी टिकिया।",
+      "tts": {
+        "text": "कुम का नोखोदची, चने की नन्ही मीठी टिकिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मिठाई की छोटी थाली, चाय का प्याला, और धीमी बातचीत।",
+      "text_markdown": "मिठाई की छोटी थाली, चाय का प्याला, और धीमी बातचीत।",
+      "tts": {
+        "text": "मिठाई की छोटी थाली, चाय का प्याला, और धीमी बातचीत।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यही एक फारसी दोपहर है।",
+      "text_markdown": "यही एक फारसी दोपहर है।",
+      "tts": {
+        "text": "यही एक फारसी दोपहर है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय ६ — फारस ने क्या दिया, फारस ने क्या लिया",
+      "text_markdown": "अध्याय ६ — फारस ने क्या दिया, फारस ने क्या लिया"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारस पुरानी दुनिया के बीचोंबीच बैठा था।",
+      "text_markdown": "फारस पुरानी दुनिया के बीचोंबीच बैठा था।",
+      "tts": {
+        "text": "फारस पुरानी दुनिया के बीचोंबीच बैठा था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कारवां उसे पार करते थे।",
+      "text_markdown": "कारवां उसे पार करते थे।",
+      "tts": {
+        "text": "कारवां उसे पार करते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यहीं साम्राज्य उठे और गिरे।",
+      "text_markdown": "यहीं साम्राज्य उठे और गिरे।",
+      "tts": {
+        "text": "यहीं साम्राज्य उठे और गिरे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "खाना भी दोनों दिशाओं में इसी रास्ते गया।",
+      "text_markdown": "खाना भी दोनों दिशाओं में इसी रास्ते गया।",
+      "tts": {
+        "text": "खाना भी दोनों दिशाओं में इसी रास्ते गया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शब्दों को देखिए।",
+      "text_markdown": "शब्दों को देखिए।",
+      "tts": {
+        "text": "शब्दों को देखिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अंग्रेजी ने फारसी से खाने के दर्जनों शब्द लिए।",
+      "text_markdown": "अंग्रेजी ने फारसी से खाने के दर्जनों शब्द लिए।",
+      "tts": {
+        "text": "अंग्रेजी ने फारसी से खाने के दर्जनों शब्द लिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "शुगर, कैंडी, लेमन, ऑरेंज, जैसमिन, लाइलैक, ट्यूलिप, कियोस्क, शरबत और पैराडाइज़, इन सबकी जड़ फारसी है।",
+      "text_markdown": "शुगर, कैंडी, लेमन, ऑरेंज, जैसमिन, लाइलैक, ट्यूलिप, कियोस्क, शरबत और पैराडाइज़, इन सबकी जड़ फारसी है।",
+      "tts": {
+        "text": "शुगर, कैंडी, लेमन, ऑरेंज, जैसमिन, लाइलैक, ट्यूलिप, कियोस्क, शरबत और पैराडाइज़, इन सबकी जड़ फारसी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "चेकमेट शब्द भी वहीं से आया है, शाह मात से, यानी राजा असहाय है। फारस ने आधी दुनिया की बोली में अपने शब्द डाल दिए।",
+      "text_markdown": "चेकमेट शब्द भी वहीं से आया है, शाह मात से, यानी राजा असहाय है। फारस ने आधी दुनिया की बोली में अपने शब्द डाल दिए।",
+      "tts": {
+        "text": "चेकमेट शब्द भी वहीं से आया है, शाह मात से, यानी राजा असहाय है। फारस ने आधी दुनिया की बोली में अपने शब्द डाल दिए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी चावल पकाने की रीति पूरब की ओर गई।",
+      "text_markdown": "फारसी चावल पकाने की रीति पूरब की ओर गई।",
+      "tts": {
+        "text": "फारसी चावल पकाने की रीति पूरब की ओर गई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "भारत के मुगल बादशाहों को फारसी खाना बहुत प्रिय था, और वे फारसी रसोइयों को अपने दरबार में लाए।",
+      "text_markdown": "भारत के मुगल बादशाहों को फारसी खाना बहुत प्रिय था, और वे फारसी रसोइयों को अपने दरबार में लाए।",
+      "tts": {
+        "text": "भारत के मुगल बादशाहों को फारसी खाना बहुत प्रिय था, और वे फारसी रसोइयों को अपने दरबार में लाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्हीं रसोइयों ने बिरयानी बनाई।",
+      "text_markdown": "उन्हीं रसोइयों ने बिरयानी बनाई।",
+      "tts": {
+        "text": "उन्हीं रसोइयों ने बिरयानी बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पुलाव, यानी लंबे दाने वाला मसालेदार चावल, जो भूमध्य सागर से लेकर मध्य एशिया के मैदानों तक मिलता है, उसकी जड़ फारसी चावल परंपरा में है।",
+      "text_markdown": "पुलाव, यानी लंबे दाने वाला मसालेदार चावल, जो भूमध्य सागर से लेकर मध्य एशिया के मैदानों तक मिलता है, उसकी जड़ फारसी चावल परंपरा में है।",
+      "tts": {
+        "text": "पुलाव, यानी लंबे दाने वाला मसालेदार चावल, जो भूमध्य सागर से लेकर मध्य एशिया के मैदानों तक मिलता है, उसकी जड़ फारसी चावल परंपरा में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी फल पश्चिम की ओर गए।",
+      "text_markdown": "फारसी फल पश्चिम की ओर गए।",
+      "tts": {
+        "text": "फारसी फल पश्चिम की ओर गए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "रोमनों ने इटली में आड़ू उगाया, क्योंकि वह उन्हें फारस से मिला था।",
+      "text_markdown": "रोमनों ने इटली में आड़ू उगाया, क्योंकि वह उन्हें फारस से मिला था।",
+      "tts": {
+        "text": "रोमनों ने इटली में आड़ू उगाया, क्योंकि वह उन्हें फारस से मिला था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पालक स्पेन के रास्ते यूरोप पहुंचा, उसे फारसी दुनिया के व्यापारियों ने पहुंचाया।",
+      "text_markdown": "पालक स्पेन के रास्ते यूरोप पहुंचा, उसे फारसी दुनिया के व्यापारियों ने पहुंचाया।",
+      "tts": {
+        "text": "पालक स्पेन के रास्ते यूरोप पहुंचा, उसे फारसी दुनिया के व्यापारियों ने पहुंचाया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "नीदरलैंड का प्रतीक ट्यूलिप, हॉलैंड पहुंचने से पहले फारस और तुर्की में उगाया जाने लगा था।",
+      "text_markdown": "नीदरलैंड का प्रतीक ट्यूलिप, हॉलैंड पहुंचने से पहले फारस और तुर्की में उगाया जाने लगा था।",
+      "tts": {
+        "text": "नीदरलैंड का प्रतीक ट्यूलिप, हॉलैंड पहुंचने से पहले फारस और तुर्की में उगाया जाने लगा था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारस ने दूसरी चीजें भी अपनाईं।",
+      "text_markdown": "फारस ने दूसरी चीजें भी अपनाईं।",
+      "tts": {
+        "text": "फारस ने दूसरी चीजें भी अपनाईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तेरहवीं सदी में हमला करने वाले मंगोल, भुने और सेंके हुए मांस का ज्यादा गहरा स्वाद साथ लाए।",
+      "text_markdown": "तेरहवीं सदी में हमला करने वाले मंगोल, भुने और सेंके हुए मांस का ज्यादा गहरा स्वाद साथ लाए।",
+      "tts": {
+        "text": "तेरहवीं सदी में हमला करने वाले मंगोल, भुने और सेंके हुए मांस का ज्यादा गहरा स्वाद साथ लाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अरबी खेती दक्षिण और पूरब से गन्ना, खट्टे फल और चावल लाई।",
+      "text_markdown": "अरबी खेती दक्षिण और पूरब से गन्ना, खट्टे फल और चावल लाई।",
+      "tts": {
+        "text": "अरबी खेती दक्षिण और पूरब से गन्ना, खट्टे फल और चावल लाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "समोवर उत्तर से, रूस से, अठारहवीं सदी में आया।",
+      "text_markdown": "समोवर उत्तर से, रूस से, अठारहवीं सदी में आया।",
+      "tts": {
+        "text": "समोवर उत्तर से, रूस से, अठारहवीं सदी में आया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यूनानी इतिहासकार हेरोडोटस ने, जो ढाई हजार साल पहले लिख रहा था, कहा कि फारसी लोग अपने जन्मदिन किसी भी और दिन से ज्यादा धूमधाम से मनाते थे।",
+      "text_markdown": "यूनानी इतिहासकार हेरोडोटस ने, जो ढाई हजार साल पहले लिख रहा था, कहा कि फारसी लोग अपने जन्मदिन किसी भी और दिन से ज्यादा धूमधाम से मनाते थे।",
+      "tts": {
+        "text": "यूनानी इतिहासकार हेरोडोटस ने, जो ढाई हजार साल पहले लिख रहा था, कहा कि फारसी लोग अपने जन्मदिन किसी भी और दिन से ज्यादा धूमधाम से मनाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसने लिखा कि उस दिन मेज रोज से ज्यादा भरपूर सजती है।",
+      "text_markdown": "उसने लिखा कि उस दिन मेज रोज से ज्यादा भरपूर सजती है।",
+      "tts": {
+        "text": "उसने लिखा कि उस दिन मेज रोज से ज्यादा भरपूर सजती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कुछ बातें बदली नहीं हैं।",
+      "text_markdown": "कुछ बातें बदली नहीं हैं।",
+      "tts": {
+        "text": "कुछ बातें बदली नहीं हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय ७ — फारसी मेज पर",
+      "text_markdown": "अध्याय ७ — फारसी मेज पर"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब हम बैठते हैं।",
+      "text_markdown": "अब हम बैठते हैं।",
+      "tts": {
+        "text": "अब हम बैठते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी साल वसंत विषुव से शुरू होता है, करीब इक्कीस मार्च के आसपास।",
+      "text_markdown": "फारसी साल वसंत विषुव से शुरू होता है, करीब इक्कीस मार्च के आसपास।",
+      "tts": {
+        "text": "फारसी साल वसंत विषुव से शुरू होता है, करीब इक्कीस मार्च के आसपास।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इस पर्व को नौरोज कहा जाता है, यानी नया दिन।",
+      "text_markdown": "इस पर्व को नौरोज कहा जाता है, यानी नया दिन।",
+      "tts": {
+        "text": "इस पर्व को नौरोज कहा जाता है, यानी नया दिन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह साल का सबसे महत्वपूर्ण त्योहार है।",
+      "text_markdown": "यह साल का सबसे महत्वपूर्ण त्योहार है।",
+      "tts": {
+        "text": "यह साल का सबसे महत्वपूर्ण त्योहार है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर परिवार हफ्त सीन नाम की एक खास मेज सजाता है।",
+      "text_markdown": "हर परिवार हफ्त सीन नाम की एक खास मेज सजाता है।",
+      "tts": {
+        "text": "हर परिवार हफ्त सीन नाम की एक खास मेज सजाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हफ्त का मतलब सात है।",
+      "text_markdown": "हफ्त का मतलब सात है।",
+      "tts": {
+        "text": "हफ्त का मतलब सात है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "सीन, एस अक्षर है। इस मेज पर फारसी के एस से शुरू होने वाली सात चीजें रखी जाती हैं।",
+      "text_markdown": "सीन, एस अक्षर है। इस मेज पर फारसी के एस से शुरू होने वाली सात चीजें रखी जाती हैं।",
+      "tts": {
+        "text": "सीन, एस अक्षर है। इस मेज पर फारसी के एस से शुरू होने वाली सात चीजें रखी जाती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वहां सीब होता है, यानी एक सेब।",
+      "text_markdown": "वहां सीब होता है, यानी एक सेब।",
+      "tts": {
+        "text": "वहां सीब होता है, यानी एक सेब।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "सेक्केह, यानी सिक्का।",
+      "text_markdown": "सेक्केह, यानी सिक्का।",
+      "tts": {
+        "text": "सेक्केह, यानी सिक्का।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "सोनबोल, यानी हायसिन्थ का फूल।",
+      "text_markdown": "सोनबोल, यानी हायसिन्थ का फूल।",
+      "tts": {
+        "text": "सोनबोल, यानी हायसिन्थ का फूल।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "समनू, यानी गेहूं की मीठी खीर।",
+      "text_markdown": "समनू, यानी गेहूं की मीठी खीर।",
+      "tts": {
+        "text": "समनू, यानी गेहूं की मीठी खीर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "सेनजेद, यानी एक जंगली पेड़ का सूखा फल।",
+      "text_markdown": "सेनजेद, यानी एक जंगली पेड़ का सूखा फल।",
+      "tts": {
+        "text": "सेनजेद, यानी एक जंगली पेड़ का सूखा फल।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "सोमाघ, यानी सुमाक।",
+      "text_markdown": "सोमाघ, यानी सुमाक।",
+      "tts": {
+        "text": "सोमाघ, यानी सुमाक।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "सेरकेह, यानी सिरका।",
+      "text_markdown": "सेरकेह, यानी सिरका।",
+      "tts": {
+        "text": "सेरकेह, यानी सिरका।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "इनमें से हर चीज किसी बात का प्रतीक है, सेहत, धन, सुंदरता, धैर्य, प्रेम, उगता सूरज और बीतता समय।",
+      "text_markdown": "इनमें से हर चीज किसी बात का प्रतीक है, सेहत, धन, सुंदरता, धैर्य, प्रेम, उगता सूरज और बीतता समय।",
+      "tts": {
+        "text": "इनमें से हर चीज किसी बात का प्रतीक है, सेहत, धन, सुंदरता, धैर्य, प्रेम, उगता सूरज और बीतता समय।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नए साल के भोजन में सब्जी पोलो बा माही होता है।",
+      "text_markdown": "नए साल के भोजन में सब्जी पोलो बा माही होता है।",
+      "tts": {
+        "text": "नए साल के भोजन में सब्जी पोलो बा माही होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह चावल होता है, जो कटी ताजी जड़ी बूटियों से गहरा हरा बनता है, और सफेद मछली के साथ परोसा जाता है।",
+      "text_markdown": "यह चावल होता है, जो कटी ताजी जड़ी बूटियों से गहरा हरा बनता है, और सफेद मछली के साथ परोसा जाता है।",
+      "tts": {
+        "text": "यह चावल होता है, जो कटी ताजी जड़ी बूटियों से गहरा हरा बनता है, और सफेद मछली के साथ परोसा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "थाली पर रखा बसंत।",
+      "text_markdown": "थाली पर रखा बसंत।",
+      "tts": {
+        "text": "थाली पर रखा बसंत।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक और प्रिय पकवान आश रेश्तेह है, फलियों, साग पत्तों, तली प्याज, कश्क और सेवइयों का गाढ़ा शोरबा।",
+      "text_markdown": "एक और प्रिय पकवान आश रेश्तेह है, फलियों, साग पत्तों, तली प्याज, कश्क और सेवइयों का गाढ़ा शोरबा।",
+      "tts": {
+        "text": "एक और प्रिय पकवान आश रेश्तेह है, फलियों, साग पत्तों, तली प्याज, कश्क और सेवइयों का गाढ़ा शोरबा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फारसी लोग कहते हैं, इसे किसी कठिन फैसले से पहले खाना चाहिए।",
+      "text_markdown": "फारसी लोग कहते हैं, इसे किसी कठिन फैसले से पहले खाना चाहिए।",
+      "tts": {
+        "text": "फारसी लोग कहते हैं, इसे किसी कठिन फैसले से पहले खाना चाहिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उनके मुताबिक, ये सेवइयां किस्मत की उलझी डोर सुलझा देती हैं।",
+      "text_markdown": "उनके मुताबिक, ये सेवइयां किस्मत की उलझी डोर सुलझा देती हैं।",
+      "tts": {
+        "text": "उनके मुताबिक, ये सेवइयां किस्मत की उलझी डोर सुलझा देती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चायखाना भी फारसी देन है।",
+      "text_markdown": "चायखाना भी फारसी देन है।",
+      "tts": {
+        "text": "चायखाना भी फारसी देन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसे कहवे खानेह कहा जाता है, मतलब कहवा घर, हालांकि अब वहां चाय पी जाती है।",
+      "text_markdown": "इसे कहवे खानेह कहा जाता है, मतलब कहवा घर, हालांकि अब वहां चाय पी जाती है।",
+      "tts": {
+        "text": "इसे कहवे खानेह कहा जाता है, मतलब कहवा घर, हालांकि अब वहां चाय पी जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पांच सौ साल से, औरतें और मर्द वहां चौसर खेलते, कविता सुनते और दुनिया पर बहस करते आए हैं।",
+      "text_markdown": "पांच सौ साल से, औरतें और मर्द वहां चौसर खेलते, कविता सुनते और दुनिया पर बहस करते आए हैं।",
+      "tts": {
+        "text": "पांच सौ साल से, औरतें और मर्द वहां चौसर खेलते, कविता सुनते और दुनिया पर बहस करते आए हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "फारस की कई महान कहानियां पहली बार भाप उठते गिलास के पास सुनाई गई थीं।",
+      "text_markdown": "फारस की कई महान कहानियां पहली बार भाप उठते गिलास के पास सुनाई गई थीं।",
+      "tts": {
+        "text": "फारस की कई महान कहानियां पहली बार भाप उठते गिलास के पास सुनाई गई थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अविसेना नाम के एक मशहूर फारसी वैद्य, जो एक हजार साल पहले रहते थे, सिखाते थे कि हर भोजन गरम होता है या ठंडा।",
+      "text_markdown": "अविसेना नाम के एक मशहूर फारसी वैद्य, जो एक हजार साल पहले रहते थे, सिखाते थे कि हर भोजन गरम होता है या ठंडा।",
+      "tts": {
+        "text": "अविसेना नाम के एक मशहूर फारसी वैद्य, जो एक हजार साल पहले रहते थे, सिखाते थे कि हर भोजन गरम होता है या ठंडा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "केसर, अखरोट और मेमना गरम माने जाते हैं।",
+      "text_markdown": "केसर, अखरोट और मेमना गरम माने जाते हैं।",
+      "tts": {
+        "text": "केसर, अखरोट और मेमना गरम माने जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दही, खीरा और तरबूज ठंडे माने जाते हैं।",
+      "text_markdown": "दही, खीरा और तरबूज ठंडे माने जाते हैं।",
+      "tts": {
+        "text": "दही, खीरा और तरबूज ठंडे माने जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "अच्छा भोजन इन दोनों का संतुलन रखता है।",
+      "text_markdown": "अच्छा भोजन इन दोनों का संतुलन रखता है।",
+      "tts": {
+        "text": "अच्छा भोजन इन दोनों का संतुलन रखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "फारसी घरों में यह विचार आज भी दोपहर के भोजन में जिंदा है।",
+      "text_markdown": "फारसी घरों में यह विचार आज भी दोपहर के भोजन में जिंदा है।",
+      "tts": {
+        "text": "फारसी घरों में यह विचार आज भी दोपहर के भोजन में जिंदा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फारसी खाना धैर्य वाला है।",
+      "text_markdown": "फारसी खाना धैर्य वाला है।",
+      "tts": {
+        "text": "फारसी खाना धैर्य वाला है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह उदार है।",
+      "text_markdown": "यह उदार है।",
+      "tts": {
+        "text": "यह उदार है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह पुराना है।",
+      "text_markdown": "यह पुराना है।",
+      "tts": {
+        "text": "यह पुराना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "और यह आज भी हर दिन लाखों चूल्हों पर पक रहा है।",
+      "text_markdown": "और यह आज भी हर दिन लाखों चूल्हों पर पक रहा है।",
+      "tts": {
+        "text": "और यह आज भी हर दिन लाखों चूल्हों पर पक रहा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "अलविदा",
+      "text_markdown": "अलविदा"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही हमारी छोटी यात्रा का अंत है।",
+      "text_markdown": "यही हमारी छोटी यात्रा का अंत है।",
+      "tts": {
+        "text": "यही हमारी छोटी यात्रा का अंत है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आशा है, आपने कुछ नया सीखा।",
+      "text_markdown": "आशा है, आपने कुछ नया सीखा।",
+      "tts": {
+        "text": "आशा है, आपने कुछ नया सीखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आशा है, इन पन्नों की किसी बात ने आपकी भूख जगाई।",
+      "text_markdown": "आशा है, इन पन्नों की किसी बात ने आपकी भूख जगाई।",
+      "tts": {
+        "text": "आशा है, इन पन्नों की किसी बात ने आपकी भूख जगाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "केसर और चावल।",
+      "text_markdown": "केसर और चावल।",
+      "tts": {
+        "text": "केसर और चावल।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "अनार और अखरोट।",
+      "text_markdown": "अनार और अखरोट।",
+      "tts": {
+        "text": "अनार और अखरोट।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "छोटी थाली में रखी छोटी मिठाई।",
+      "text_markdown": "छोटी थाली में रखी छोटी मिठाई।",
+      "tts": {
+        "text": "छोटी थाली में रखी छोटी मिठाई।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर हो सके, अपने पास कोई फारसी भोजनालय ढूंढिए।",
+      "text_markdown": "अगर हो सके, अपने पास कोई फारसी भोजनालय ढूंढिए।",
+      "tts": {
+        "text": "अगर हो सके, अपने पास कोई फारसी भोजनालय ढूंढिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "या कोई फारसी पाक पुस्तक खोलिए।",
+      "text_markdown": "या कोई फारसी पाक पुस्तक खोलिए।",
+      "tts": {
+        "text": "या कोई फारसी पाक पुस्तक खोलिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक शोरबा आजमाइए।",
+      "text_markdown": "एक शोरबा आजमाइए।",
+      "tts": {
+        "text": "एक शोरबा आजमाइए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक प्याला चाय आजमाइए।",
+      "text_markdown": "एक प्याला चाय आजमाइए।",
+      "tts": {
+        "text": "एक प्याला चाय आजमाइए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह खाना हजारों साल से आपका इंतजार कर रहा है।",
+      "text_markdown": "यह खाना हजारों साल से आपका इंतजार कर रहा है।",
+      "tts": {
+        "text": "यह खाना हजारों साल से आपका इंतजार कर रहा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "यह आपके लिए भी इंतजार कर सकता है।",
+      "text_markdown": "यह आपके लिए भी इंतजार कर सकता है।",
+      "tts": {
+        "text": "यह आपके लिए भी इंतजार कर सकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सुनने के लिए धन्यवाद।",
+      "text_markdown": "सुनने के लिए धन्यवाद।",
+      "tts": {
+        "text": "सुनने के लिए धन्यवाद।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कुछ पकाइए।",
+      "text_markdown": "कुछ पकाइए।",
+      "tts": {
+        "text": "कुछ पकाइए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लोगों के साथ खाइए।",
+      "text_markdown": "लोगों के साथ खाइए।",
+      "tts": {
+        "text": "लोगों के साथ खाइए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मैं Kym हूँ।",
+      "text_markdown": "मैं Kym हूँ।",
+      "tts": {
+        "text": "मैं किम हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अलविदा।",
+      "text_markdown": "अलविदा।",
+      "tts": {
+        "text": "अलविदा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

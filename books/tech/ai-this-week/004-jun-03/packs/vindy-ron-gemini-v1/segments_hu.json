@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "hu",
+  "total_segments": 197,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "text": "Üdvözöljük az AI This Week műsorában.",
+      "text_markdown": "Üdvözöljük az AI This Week műsorában.",
+      "title": "",
+      "tts": {
+        "text": "Üdvözöljük az AI This Week műsorában.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "text": "Vindy vagyok.",
+      "text_markdown": "Vindy vagyok.",
+      "title": "",
+      "tts": {
+        "text": "Vindy vagyok.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "text": "Velem van, mint mindig, Ron.",
+      "text_markdown": "Velem van, mint mindig, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Velem van, mint mindig, Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "text": "Jó itt lenni, Vindy.",
+      "text_markdown": "Jó itt lenni, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jó itt lenni, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "text": "Ma szerda van, 2026. június 3.",
+      "text_markdown": "Ma szerda van, 2026. június 3.",
+      "title": "",
+      "tts": {
+        "text": "Ma szerda van, kétezer-huszonhat június harmadika.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "text": "Ez egy csendes hét volt a marketing, és hangos hét a hardver számára.",
+      "text_markdown": "Ez egy csendes hét volt a marketing, és hangos hét a hardver számára.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy csendes hét volt a marketing, és hangos hét a hardver számára.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "text": "A főcímek formája szokatlan volt.",
+      "text_markdown": "A főcímek formája szokatlan volt.",
+      "title": "",
+      "tts": {
+        "text": "A főcímek formája szokatlan volt.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "text": "Egy nagy laboratóriumi előadás, egy bizalmas bejelentés, egy kis számítógép nagy számmal a dobozon.",
+      "text_markdown": "Egy nagy laboratóriumi előadás, egy bizalmas bejelentés, egy kis számítógép nagy számmal a dobozon.",
+      "title": "",
+      "tts": {
+        "text": "Egy nagy laboratóriumi előadás, egy bizalmas bejelentés, egy kis számítógép nagy számmal a dobozon.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "text": "Következik – mi mozdult a nyílt súlyok területén, egy új figyelemarchitektúra és egy NVIDIA nyílt modell vezetésével.",
+      "text_markdown": "Következik – mi mozdult a nyílt súlyok területén, egy új figyelemarchitektúra és egy NVIDIA nyílt modell vezetésével.",
+      "title": "",
+      "tts": {
+        "text": "Következik – mi mozdult a nyílt súlyok területén, egy új figyelemarchitektúra és egy NVIDIA nyílt modell vezetésével.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "text": "Hová kerültek a ranglisták, és a mögöttük rejlő nagyobb történet arról, hogy egyáltalán hogyan bízunk meg az eredményekben.",
+      "text_markdown": "Hová kerültek a ranglisták, és a mögöttük rejlő nagyobb történet arról, hogy egyáltalán hogyan bízunk meg az eredményekben.",
+      "title": "",
+      "tts": {
+        "text": "Hová kerültek a ranglisták, és a mögöttük rejlő nagyobb történet arról, hogy egyáltalán hogyan bízunk meg az eredményekben.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "text": "Egy gyors összefoglaló a hírekről, amelyekkel ezen a hétvégén foglalkozhat.",
+      "text_markdown": "Egy gyors összefoglaló a hírekről, amelyekkel ezen a hétvégén foglalkozhat.",
+      "title": "",
+      "tts": {
+        "text": "Egy gyors összefoglaló a hírekről, amelyekkel ezen a hétvégén foglalkozhat.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "text": "Fő témánk: a barkács-rig felnőtt – a „frontier inference” most már valóság az asztalán.",
+      "text_markdown": "Fő témánk: a barkács-rig felnőtt – a „frontier inference” most már valóság az asztalán.",
+      "title": "",
+      "tts": {
+        "text": "Fő témánk: a barkács-rig felnőtt – a „frontier inference” most már valóság az asztalán.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "text": "És a hét koncepciója a spekulatív dekódolás – az a trükk, ami egy nagy modellt egy kis kártyán is gyorsnak éreztet.",
+      "text_markdown": "És a hét koncepciója a spekulatív dekódolás – az a trükk, ami egy nagy modellt egy kis kártyán is gyorsnak éreztet.",
+      "title": "",
+      "tts": {
+        "text": "És a hét koncepciója a spekulatív dekódolás – az a trükk, ami egy nagy modellt egy kis kártyán is gyorsnak éreztet.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "text": "Ron, kezdjük a nyílt súlyok világában.",
+      "text_markdown": "Ron, kezdjük a nyílt súlyok világában.",
+      "title": "",
+      "tts": {
+        "text": "Ron, kezdjük a nyílt súlyok világában.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "text": "Hová jutott a hét?",
+      "text_markdown": "Hová jutott a hét?",
+      "title": "",
+      "tts": {
+        "text": "Hová jutott a hét?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "text": "Ezen a héten a nyílt forráskódú történet az új formákról szólt, nem az új méretekről.",
+      "text_markdown": "Ezen a héten a nyílt forráskódú történet az új formákról szólt, nem az új méretekről.",
+      "title": "",
+      "tts": {
+        "text": "Ezen a héten a nyílt forráskódú történet az új formákról szólt, nem az új méretekről.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "text": "Két építészetileg érdekes modell jelent meg ugyanazon a napon, június 1-jén.",
+      "text_markdown": "Két építészetileg érdekes modell jelent meg ugyanazon a napon, június 1-jén.",
+      "title": "",
+      "tts": {
+        "text": "Két építészetileg érdekes modell jelent meg ugyanazon a napon, június elsején.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "host",
+      "text": "Mutasd be az elsőt.",
+      "text_markdown": "Mutasd be az elsőt.",
+      "title": "",
+      "tts": {
+        "text": "Mutasd be az elsőt.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "text": "A MiniMax kiadta az M3-at.",
+      "text_markdown": "A MiniMax kiadta az M3-at.",
+      "title": "",
+      "tts": {
+        "text": "A MiniMax kiadta az M hármat.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "text": "Egy új figyelemtervezést használ, amit MSA-nak neveznek, ami a MiniMax Sparse Attention rövidítése.",
+      "text_markdown": "Egy új figyelemtervezést használ, amit MSA-nak neveznek, ami a MiniMax Sparse Attention rövidítése.",
+      "title": "",
+      "tts": {
+        "text": "Egy új figyelemtervezést használ, amit M S A-nak neveznek, ami a MiniMax Sparse Attention rövidítése.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "text": "Az ígéret egy egymillió tokenes kontextus, körülbelül kilencszer gyorsabb előtöltéssel és tizenötször gyorsabb dekódolással, mint az előző modelljük ugyanezen a hosszon.",
+      "text_markdown": "Az ígéret egy egymillió tokenes kontextus, körülbelül kilencszer gyorsabb előtöltéssel és tizenötször gyorsabb dekódolással, mint az előző modelljük ugyanezen a hosszon.",
+      "title": "",
+      "tts": {
+        "text": "Az ígéret egy egymillió tokenes kontextus, körülbelül kilencszer gyorsabb előtöltéssel és tizenötször gyorsabb dekódolással, mint az előző modelljük ugyanezen a hosszon.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "text": "Közérthetően arról, hogy mit is csinál valójában a ritka figyelem (sparse attention).",
+      "text_markdown": "Közérthetően arról, hogy mit is csinál valójában a ritka figyelem (sparse attention).",
+      "title": "",
+      "tts": {
+        "text": "Közérthetően arról, hogy mit is csinál valójában a ritka figyelem (sparse attention).",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "text": "A hagyományos figyelem minden tokent összehasonlít minden más tokennel, ami a hosszú kontextust olyan drágává teszi.",
+      "text_markdown": "A hagyományos figyelem minden tokent összehasonlít minden más tokennel, ami a hosszú kontextust olyan drágává teszi.",
+      "title": "",
+      "tts": {
+        "text": "A hagyományos figyelem minden tokent összehasonlít minden más tokennel, ami a hosszú kontextust olyan drágává teszi.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "text": "A ritka figyelem előszűri a kontextust blokkokra, és csak azoknál a blokkoknál végzi el a teljes összehasonlítást, amelyek relevánsnak tűnnek az aktuális kérdés szempontjából.",
+      "text_markdown": "A ritka figyelem előszűri a kontextust blokkokra, és csak azoknál a blokkoknál végzi el a teljes összehasonlítást, amelyek relevánsnak tűnnek az aktuális kérdés szempontjából.",
+      "title": "",
+      "tts": {
+        "text": "A ritka figyelem előszűri a kontextust blokkokra, és csak azoknál a blokkoknál végzi el a teljes összehasonlítást, amelyek relevánsnak tűnnek az aktuális kérdés szempontjából.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "text": "A minőség nagy részét a számítási kapacitás töredékéért kapja meg.",
+      "text_markdown": "A minőség nagy részét a számítási kapacitás töredékéért kapja meg.",
+      "title": "",
+      "tts": {
+        "text": "A minőség nagy részét a számítási kapacitás töredékéért kapja meg.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "text": "És a benchmark állítás?",
+      "text_markdown": "És a benchmark állítás?",
+      "title": "",
+      "tts": {
+        "text": "És a benchmark állítás?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "text": "A MiniMax szerint ötvenkilenc százalékot ért el a SWE-bench Pro-n, ami ezen a ranglistán a GPT-5.5 és a Gemini 3.5 Pro elé helyezné.",
+      "text_markdown": "A MiniMax szerint ötvenkilenc százalékot ért el a SWE-bench Pro-n, ami ezen a ranglistán a GPT-5.5 és a Gemini 3.5 Pro elé helyezné.",
+      "title": "",
+      "tts": {
+        "text": "A MiniMax szerint ötvenkilenc százalékot ért el a S V Í benycs Pro-n, ami ezen a ranglistán a G P T öt pont öt és a Gemini három pont öt Pro elé helyezné.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "text": "Azt mondom, állítások – ez az eladó saját értékelése, nem független teszt.",
+      "text_markdown": "Azt mondom, állítások – ez az eladó saját értékelése, nem független teszt.",
+      "title": "",
+      "tts": {
+        "text": "Azt mondom, állítások – ez az eladó saját értékelése, nem független teszt.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "host",
+      "text": "Nyílt súlyok is?",
+      "text_markdown": "Nyílt súlyok is?",
+      "title": "",
+      "tts": {
+        "text": "Nyílt súlyok is?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "text": "Igen, az M3 nyílt súlyozásúként van pozicionálva; az API az első napon éles, és a súlyok hamarosan elérhetőek lesznek a Hugging Face-en.",
+      "text_markdown": "Igen, az M3 nyílt súlyozásúként van pozicionálva; az API az első napon éles, és a súlyok hamarosan elérhetőek lesznek a Hugging Face-en.",
+      "title": "",
+      "tts": {
+        "text": "Igen, az M hármas nyílt súlyozásúként van pozicionálva; az A P I az első napon éles, és a súlyok hamarosan elérhetőek lesznek a Hugging Face-en.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "text": "Egy ezermester számára az érdekes fogadás inkább az architektúra, mint a pontszám.",
+      "text_markdown": "Egy ezermester számára az érdekes fogadás inkább az architektúra, mint a pontszám.",
+      "title": "",
+      "tts": {
+        "text": "Egy ezermester számára az érdekes fogadás inkább az architektúra, mint a pontszám.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "text": "Ha az MSA beválik, minden más nyílt labor hónapokon belül lemásolja a formát.",
+      "text_markdown": "Ha az MSA beválik, minden más nyílt labor hónapokon belül lemásolja a formát.",
+      "title": "",
+      "tts": {
+        "text": "Ha az M S A beválik, minden más nyílt labor hónapokon belül lemásolja a formát.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "text": "És a második modell?",
+      "text_markdown": "És a második modell?",
+      "title": "",
+      "tts": {
+        "text": "És a második modell?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "text": "Az NVIDIA csendben nyílt forráskódúvá tette a Nemotron 3 Ultrát.",
+      "text_markdown": "Az NVIDIA csendben nyílt forráskódúvá tette a Nemotron 3 Ultrát.",
+      "title": "",
+      "tts": {
+        "text": "Az NVIDIA csendben nyílt forráskódúvá tette a Nemotron három Ultrát.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "text": "Ez egy ötszázötvenmilliárd paraméteres szakértői keverék, tokenenként körülbelül ötvenöt milliárd aktív paraméterrel.",
+      "text_markdown": "Ez egy ötszázötvenmilliárd paraméteres szakértői keverék, tokenenként körülbelül ötvenöt milliárd aktív paraméterrel.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy ötszázötvenmilliárd paraméteres szakértői keverék, tokenenként körülbelül ötvenöt milliárd aktív paraméterrel.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "text": "A gerince egy hibrid Mamba-Transformer, nem pedig egy tiszta Transformer.",
+      "text_markdown": "A gerince egy hibrid Mamba-Transformer, nem pedig egy tiszta Transformer.",
+      "title": "",
+      "tts": {
+        "text": "A gerince egy hibrid Mamba Transformer, nem pedig egy tiszta Transformer.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "text": "Közérthetően a Mambáról.",
+      "text_markdown": "Közérthetően a Mambáról.",
+      "title": "",
+      "tts": {
+        "text": "Közérthetően a Mambáról.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "text": "A Mamba rétegek hosszú szekvenciákat kezelnek szubkvadratikus skálázással, ami egy elegáns módja annak, hogy elmondjuk, tokenenként olcsóbbá válnak, ahogy a kontextus növekszik.",
+      "text_markdown": "A Mamba rétegek hosszú szekvenciákat kezelnek szubkvadratikus skálázással, ami egy elegáns módja annak, hogy elmondjuk, tokenenként olcsóbbá válnak, ahogy a kontextus növekszik.",
+      "title": "",
+      "tts": {
+        "text": "A Mamba rétegek hosszú szekvenciákat kezelnek szubkvadratikus skálázással, ami egy elegáns módja annak, hogy elmondjuk, tokenenként olcsóbbá válnak, ahogy a kontextus növekszik.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "text": "Az NVIDIA megtartott néhány attention réteget a stackben, hogy megőrizze a pontos felidézést olyan dolgokhoz, mint a hosszú dokumentumokra vonatkozó kérdés-válasz.",
+      "text_markdown": "Az NVIDIA megtartott néhány attention réteget a stackben, hogy megőrizze a pontos felidézést olyan dolgokhoz, mint a hosszú dokumentumokra vonatkozó kérdés-válasz.",
+      "title": "",
+      "tts": {
+        "text": "Az NVIDIA megtartott néhány attention réteget a stackben, hogy megőrizze a pontos felidézést olyan dolgokhoz, mint a hosszú dokumentumokra vonatkozó kérdés-válasz.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "text": "Ez az a fajta hibrid, amely egy éve csendben nyer a kutatásban.",
+      "text_markdown": "Ez az a fajta hibrid, amely egy éve csendben nyer a kutatásban.",
+      "title": "",
+      "tts": {
+        "text": "Ez az a fajta hibrid, amely egy éve csendben nyer a kutatásban.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "text": "Mi a helyzet a licenccel?",
+      "text_markdown": "Mi a helyzet a licenccel?",
+      "title": "",
+      "tts": {
+        "text": "Mi a helyzet a licenccel?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "text": "Az NVIDIA saját Open Model License-e, kereskedelmi felhasználás engedélyezett.",
+      "text_markdown": "Az NVIDIA saját Open Model License-e, kereskedelmi felhasználás engedélyezett.",
+      "title": "",
+      "tts": {
+        "text": "Az NVIDIA saját Open Model License-e, kereskedelmi felhasználás engedélyezett.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "text": "Mindent együtt tettek közzé, beleértve a súlyokat, az utólag képzett ellenőrzőpontokat, az NVFP4 kvantálást és a képzési recepteket.",
+      "text_markdown": "Mindent együtt tettek közzé, beleértve a súlyokat, az utólag képzett ellenőrzőpontokat, az NVFP4 kvantálást és a képzési recepteket.",
+      "title": "",
+      "tts": {
+        "text": "Mindent együtt tettek közzé, beleértve a súlyokat, az utólag képzett ellenőrzőpontokat, az en vee eff pee négy kvantálást és a képzési recepteket.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "text": "Ez egy nagylelkűbb csomag, mint a legtöbb nyílt kiadás.",
+      "text_markdown": "Ez egy nagylelkűbb csomag, mint a legtöbb nyílt kiadás.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy nagylelkűbb csomag, mint a legtöbb nyílt kiadás.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "host",
+      "text": "És a ranglistás helyezés?",
+      "text_markdown": "És a ranglistás helyezés?",
+      "title": "",
+      "tts": {
+        "text": "És a ranglistás helyezés?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "text": "Az Artificial Analysis Intelligence Indexen a Nemotron 3 Ultra a negyvennyolcadik helyen áll.",
+      "text_markdown": "Az Artificial Analysis Intelligence Indexen a Nemotron 3 Ultra a negyvennyolcadik helyen áll.",
+      "title": "",
+      "tts": {
+        "text": "Az Artificial Analysis Intelligence Indexen a Nemotron három Ultra a negyvennyolcadik helyen áll.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "text": "Ezzel a kilencedik a nyolcvankilenc általuk követett modell közül, és minden más amerikai nyílt modell előtt áll.",
+      "text_markdown": "Ezzel a kilencedik a nyolcvankilenc általuk követett modell közül, és minden más amerikai nyílt modell előtt áll.",
+      "title": "",
+      "tts": {
+        "text": "Ezzel a kilencedik a nyolcvankilenc általuk követett modell közül, és minden más amerikai nyílt modell előtt áll.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "text": "Emellett lemarad a Moonshot Kimi K2.6-os modellje mögött, amely ötvennégyen áll.",
+      "text_markdown": "Emellett lemarad a Moonshot Kimi K2.6-os modellje mögött, amely ötvennégyen áll.",
+      "title": "",
+      "tts": {
+        "text": "Emellett lemarad a Moonshot Kimi K kettő pont hatos modellje mögött, amely ötvennégyen áll.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "text": "Tehát mindezek ellenére Kína még mindig vezet a nyílt forráskódú területen.",
+      "text_markdown": "Tehát mindezek ellenére Kína még mindig vezet a nyílt forráskódú területen.",
+      "title": "",
+      "tts": {
+        "text": "Tehát mindezek ellenére Kína még mindig vezet a nyílt forráskódú területen.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "text": "Azon az egy kompoziton igen, hat ponttal.",
+      "text_markdown": "Azon az egy kompoziton igen, hat ponttal.",
+      "title": "",
+      "tts": {
+        "text": "Azon az egy kompoziton igen, hat ponttal.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "text": "Ez a kisebb történet a nagyobb alatt.",
+      "text_markdown": "Ez a kisebb történet a nagyobb alatt.",
+      "title": "",
+      "tts": {
+        "text": "Ez a kisebb történet a nagyobb alatt.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "text": "Valami testvérmodell?",
+      "text_markdown": "Valami testvérmodell?",
+      "title": "",
+      "tts": {
+        "text": "Valami testvérmodell?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "text": "Igen, az NVIDIA kiadott egy Nemotron 3 Nano Omnit is.",
+      "text_markdown": "Igen, az NVIDIA kiadott egy Nemotron 3 Nano Omnit is.",
+      "title": "",
+      "tts": {
+        "text": "Igen, az NVIDIA kiadott egy Nemotron három Nano Omnit is.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "text": "Ez egy egységes látás-, hang- és nyelvi modell, amely állítólag körülbelül kilencszer hatékonyabb, mint a hasonló nyílt omni modellek.",
+      "text_markdown": "Ez egy egységes látás-, hang- és nyelvi modell, amely állítólag körülbelül kilencszer hatékonyabb, mint a hasonló nyílt omni modellek.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy egységes látás-, hang- és nyelvi modell, amely állítólag körülbelül kilencszer hatékonyabb, mint a hasonló nyílt omni modellek.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "text": "Eszközön futó ügynököket céloz – telefonokat, laptopokat, kis munkaállomásokat.",
+      "text_markdown": "Eszközön futó ügynököket céloz – telefonokat, laptopokat, kis munkaállomásokat.",
+      "title": "",
+      "tts": {
+        "text": "Eszközön futó ügynököket céloz – telefonokat, laptopokat, kis munkaállomásokat.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "text": "Mi még a nyílt oldalról?",
+      "text_markdown": "Mi még a nyílt oldalról?",
+      "title": "",
+      "tts": {
+        "text": "Mi még a nyílt oldalról?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "text": "A Mistral Medium 3.5 május 28-án jelent meg a Microsoft Copilot Studiojában.",
+      "text_markdown": "A Mistral Medium 3.5 május 28-án jelent meg a Microsoft Copilot Studiojában.",
+      "title": "",
+      "tts": {
+        "text": "A Mistral Medium három pont öt május huszonnyolcadikán jelent meg a Microsoft Copilot Studiojában.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "text": "Ez egy százhuszonnyolc milliárd paraméteres sűrű modell, kétszázötvenhatezer token kontextussal.",
+      "text_markdown": "Ez egy százhuszonnyolc milliárd paraméteres sűrű modell, kétszázötvenhatezer token kontextussal.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy százhuszonnyolc milliárd paraméteres sűrű modell, kétszázötvenhatezer token kontextussal.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "text": "Miért érdekes ez az elhelyezés?",
+      "text_markdown": "Miért érdekes ez az elhelyezés?",
+      "title": "",
+      "tts": {
+        "text": "Miért érdekes ez az elhelyezés?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "text": "Mert a Microsoft mostantól egy nem-OpenAI európai modellt terjeszt a saját platformján keresztül, beépített EU adatrezidenciával.",
+      "text_markdown": "Mert a Microsoft mostantól egy nem-OpenAI európai modellt terjeszt a saját platformján keresztül, beépített EU adatrezidenciával.",
+      "title": "",
+      "tts": {
+        "text": "Mert a Microsoft mostantól egy nem OpenAI európai modellt terjeszt a saját platformján keresztül, beépített E U adatrezidenciával.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "text": "Két évvel ezelőtt ez a mondat elképzelhetetlen lett volna.",
+      "text_markdown": "Két évvel ezelőtt ez a mondat elképzelhetetlen lett volna.",
+      "title": "",
+      "tts": {
+        "text": "Két évvel ezelőtt ez a mondat elképzelhetetlen lett volna.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "text": "És az Alibaba?",
+      "text_markdown": "És az Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "És az Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "text": "A Qwen 3.7 Plus június 2-án jelent meg, de csak API-n keresztül érhető el a Bailian platformon.",
+      "text_markdown": "A Qwen 3.7 Plus június 2-án jelent meg, de csak API-n keresztül érhető el a Bailian platformon.",
+      "title": "",
+      "tts": {
+        "text": "A Qwen három pont hét Plus június másodikán jelent meg, de csak API-n keresztül érhető el a Bailian platformon.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "text": "A nyílt Qwen vonal még mindig három pont hatnál áll.",
+      "text_markdown": "A nyílt Qwen vonal még mindig három pont hatnál áll.",
+      "title": "",
+      "tts": {
+        "text": "A nyílt Qwen vonal még mindig három pont hatnál áll.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "text": "Ez megerősíti a múlt héten jelzett megosztottságot — zárt zászlóshajó, nyílt középkategória.",
+      "text_markdown": "Ez megerősíti a múlt héten jelzett megosztottságot — zárt zászlóshajó, nyílt középkategória.",
+      "title": "",
+      "tts": {
+        "text": "Ez megerősíti a múlt héten jelzett megosztottságot — zárt zászlóshajó, nyílt középkategória.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "text": "Ugyanaz a forgatókönyv, amit a Mistral már egy éve futtat.",
+      "text_markdown": "Ugyanaz a forgatókönyv, amit a Mistral már egy éve futtat.",
+      "title": "",
+      "tts": {
+        "text": "Ugyanaz a forgatókönyv, amit a Mistral már egy éve futtat.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "text": "Két gyors kontextusvonal, mielőtt továbbmegyünk?",
+      "text_markdown": "Két gyors kontextusvonal, mielőtt továbbmegyünk?",
+      "title": "",
+      "tts": {
+        "text": "Két gyors kontextusvonal, mielőtt továbbmegyünk?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "text": "Persze.",
+      "text_markdown": "Persze.",
+      "title": "",
+      "tts": {
+        "text": "Persze.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "text": "A kínai nyílt modellek továbbra is vezetik az OpenRouter tokenforgalmát — ugyanaz a ritmus, mint múlt héten, nincs változás.",
+      "text_markdown": "A kínai nyílt modellek továbbra is vezetik az OpenRouter tokenforgalmát — ugyanaz a ritmus, mint múlt héten, nincs változás.",
+      "title": "",
+      "tts": {
+        "text": "A kínai nyílt modellek továbbra is vezetik az OpenRouter tokenforgalmát — ugyanaz a ritmus, mint múlt héten, nincs változás.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "text": "A DeepSeek V4 május 28-án élesedett a Microsoft Foundry platformján, ami egyszerűen csak több helyet jelent a hívására.",
+      "text_markdown": "A DeepSeek V4 május 28-án élesedett a Microsoft Foundry platformján, ami egyszerűen csak több helyet jelent a hívására.",
+      "title": "",
+      "tts": {
+        "text": "A DeepSeek V négy május huszonnyolcadikán élesedett a Microsoft Foundry platformján, ami egyszerűen csak több helyet jelent a hívására.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "text": "Rendben, térjünk rá a ranglistákra.",
+      "text_markdown": "Rendben, térjünk rá a ranglistákra.",
+      "title": "",
+      "tts": {
+        "text": "Rendben, térjünk rá a ranglistákra.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "text": "Volt egy nagy mozgató ezen a héten?",
+      "text_markdown": "Volt egy nagy mozgató ezen a héten?",
+      "title": "",
+      "tts": {
+        "text": "Volt egy nagy mozgató ezen a héten?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "text": "Volt, és zárt — a Claude Opus 4.8, amit az Anthropic május 28-án szállított.",
+      "text_markdown": "Volt, és zárt — a Claude Opus 4.8, amit az Anthropic május 28-án szállított.",
+      "title": "",
+      "tts": {
+        "text": "Volt, és zárt — a Claude Opus négy pont nyolc, amit az Anthropic május huszonnyolcadikán szállított.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "text": "Nyolcvannyolc pont hat százalékot ér el a SWE-bench Verified-en és hatvankilenc pont kettő százalékot a SWE-bench Pro-n.",
+      "text_markdown": "Nyolcvannyolc pont hat százalékot ér el a SWE-bench Verified-en és hatvankilenc pont kettő százalékot a SWE-bench Pro-n.",
+      "title": "",
+      "tts": {
+        "text": "Nyolcvannyolc pont hat százalékot ér el a SWE-bench Verified-en és hatvankilenc pont kettő százalékot a SWE-bench Pro-n.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "text": "És most vezeti az Artificial Analysis Intelligence Indexet az összesített pontszám alapján.",
+      "text_markdown": "És most vezeti az Artificial Analysis Intelligence Indexet az összesített pontszám alapján.",
+      "title": "",
+      "tts": {
+        "text": "És most vezeti az Artificial Analysis Intelligence Indexet az összesített pontszám alapján.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "text": "Először vezeti ezt az Anthropic.",
+      "text_markdown": "Először vezeti ezt az Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Először vezeti ezt az Anthropic.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "text": "Így van.",
+      "text_markdown": "Így van.",
+      "title": "",
+      "tts": {
+        "text": "Így van.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "text": "A GPT-5.5 egy ponttal lemaradva, a Gemini 3.5 Pro pedig néhány ponttal azután.",
+      "text_markdown": "A GPT-5.5 egy ponttal lemaradva, a Gemini 3.5 Pro pedig néhány ponttal azután.",
+      "title": "",
+      "tts": {
+        "text": "A GPT öt pont öt egy ponttal lemaradva, a Gemini három pont öt Pro pedig néhány ponttal azután.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "text": "Nagyon szoros a verseny a zárt mezőny élén.",
+      "text_markdown": "Nagyon szoros a verseny a zárt mezőny élén.",
+      "title": "",
+      "tts": {
+        "text": "Nagyon szoros a verseny a zárt mezőny élén.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "text": "De az igazi értékelési sztori ezen a héten valami más volt.",
+      "text_markdown": "De az igazi értékelési sztori ezen a héten valami más volt.",
+      "title": "",
+      "tts": {
+        "text": "De az igazi értékelési sztori ezen a héten valami más volt.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "text": "Igen, az igazi történet az integritás.",
+      "text_markdown": "Igen, az igazi történet az integritás.",
+      "title": "",
+      "tts": {
+        "text": "Igen, az igazi történet az integritás.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "text": "Az OpenAI gyakorlatilag leállt a SWE-bench Verified-ről szóló jelentésekkel.",
+      "text_markdown": "Az OpenAI gyakorlatilag leállt a SWE-bench Verified-ről szóló jelentésekkel.",
+      "title": "",
+      "tts": {
+        "text": "Az OpenAI gyakorlatilag leállt a SWE-bench Verified-ről szóló jelentésekkel.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "text": "Egy szennyezettségi audit megállapította, hogy a nehéz feladatok körülbelül ötvenkilenc százalékának hibásak az egységtesztjei, és a modellek szó szerint fel tudják idézni a helyes javításokat a képzési adatokból.",
+      "text_markdown": "Egy szennyezettségi audit megállapította, hogy a nehéz feladatok körülbelül ötvenkilenc százalékának hibásak az egységtesztjei, és a modellek szó szerint fel tudják idézni a helyes javításokat a képzési adatokból.",
+      "title": "",
+      "tts": {
+        "text": "Egy szennyezettségi audit megállapította, hogy a nehéz feladatok körülbelül ötvenkilenc százalékának hibásak az egységtesztjei, és a modellek szó szerint fel tudják idézni a helyes javításokat a képzési adatokból.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "host",
+      "text": "Tehát egy magas pontszám a memóriát mérte.",
+      "text_markdown": "Tehát egy magas pontszám a memóriát mérte.",
+      "title": "",
+      "tts": {
+        "text": "Tehát egy magas pontszám a memóriát mérte.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "text": "Gyakran, igen.",
+      "text_markdown": "Gyakran, igen.",
+      "title": "",
+      "tts": {
+        "text": "Gyakran, igen.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "text": "A Pro az a verzió, amely új feladatokat és nehezebb keretrendszert tartalmaz — ez az új jelzés.",
+      "text_markdown": "A Pro az a verzió, amely új feladatokat és nehezebb keretrendszert tartalmaz — ez az új jelzés.",
+      "title": "",
+      "tts": {
+        "text": "A Pro az a verzió, amely új feladatokat és nehezebb keretrendszert tartalmaz — ez az új jelzés.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "text": "Ez a múlt héten óvatosan kezelt szennyezettségi aggály intézményi megerősítése.",
+      "text_markdown": "Ez a múlt héten óvatosan kezelt szennyezettségi aggály intézményi megerősítése.",
+      "title": "",
+      "tts": {
+        "text": "Ez a múlt héten óvatosan kezelt szennyezettségi aggály intézményi megerősítése.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "host",
+      "text": "Volt egy módszertani tanulmány is?",
+      "text_markdown": "Volt egy módszertani tanulmány is?",
+      "title": "",
+      "tts": {
+        "text": "Volt egy módszertani tanulmány is?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "text": "Volt egy éles jelentés egy Kili Technology nevű csoporttól.",
+      "text_markdown": "Volt egy éles jelentés egy Kili Technology nevű csoporttól.",
+      "title": "",
+      "tts": {
+        "text": "Volt egy éles jelentés egy Kili Technology nevű csoporttól.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "text": "Öt azonos modell súlyt futtattak át öt gyakori értékelési kereten.",
+      "text_markdown": "Öt azonos modell súlyt futtattak át öt gyakori értékelési kereten.",
+      "title": "",
+      "tts": {
+        "text": "Öt azonos modell súlyt futtattak át öt gyakori értékelési kereten.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "text": "Az eredmények tíz-húsz százalékponttal eltértek pusztán a heveder választása miatt.",
+      "text_markdown": "Az eredmények tíz-húsz százalékponttal eltértek pusztán a heveder választása miatt.",
+      "title": "",
+      "tts": {
+        "text": "Az eredmények tíz-húsz százalékponttal eltértek pusztán a heveder választása miatt.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "text": "Ugyanazok a súlyok, más szám.",
+      "text_markdown": "Ugyanazok a súlyok, más szám.",
+      "title": "",
+      "tts": {
+        "text": "Ugyanazok a súlyok, más szám.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "text": "Pontosan.",
+      "text_markdown": "Pontosan.",
+      "title": "",
+      "tts": {
+        "text": "Pontosan.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "text": "A lényeg az volt, hogy a ranglistán elfoglalt hely már nem vevői szintű jelzés a beszerzéshez.",
+      "text_markdown": "A lényeg az volt, hogy a ranglistán elfoglalt hely már nem vevői szintű jelzés a beszerzéshez.",
+      "title": "",
+      "tts": {
+        "text": "A lényeg az volt, hogy a ranglistán elfoglalt hely már nem vevői szintű jelzés a beszerzéshez.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "text": "Egy barkácsoló számára a tanulság élesebb – futtassa le saját értékeléseit a saját promptjain.",
+      "text_markdown": "Egy barkácsoló számára a tanulság élesebb – futtassa le saját értékeléseit a saját promptjain.",
+      "title": "",
+      "tts": {
+        "text": "Egy barkácsoló számára a tanulság élesebb – futtassa le saját értékeléseit a saját promptjain.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "text": "Ez valójában visszautal az MSA-ra és a Nemotron Ultrára.",
+      "text_markdown": "Ez valójában visszautal az MSA-ra és a Nemotron Ultrára.",
+      "title": "",
+      "tts": {
+        "text": "Ez valójában visszautal az em es á-ra és a Nemotron Ultrára.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "text": "Igen.",
+      "text_markdown": "Igen.",
+      "title": "",
+      "tts": {
+        "text": "Igen.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "text": "Bízzon az architektúrában és a saját tesztjeiben, ne valaki más diagramjában.",
+      "text_markdown": "Bízzon az architektúrában és a saját tesztjeiben, ne valaki más diagramjában.",
+      "title": "",
+      "tts": {
+        "text": "Bízzon az architektúrában és a saját tesztjeiben, ne valaki más diagramjában.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "text": "Jó helyen hagyjuk a ranglistákat.",
+      "text_markdown": "Jó helyen hagyjuk a ranglistákat.",
+      "title": "",
+      "tts": {
+        "text": "Jó helyen hagyjuk a ranglistákat.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "text": "Most jöjjenek a főcímek.",
+      "text_markdown": "Most jöjjenek a főcímek.",
+      "title": "",
+      "tts": {
+        "text": "Most jöjjenek a főcímek.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "text": "Gyors összefoglaló, nyílt ökoszisztéma szemszögéből.",
+      "text_markdown": "Gyors összefoglaló, nyílt ökoszisztéma szemszögéből.",
+      "title": "",
+      "tts": {
+        "text": "Gyors összefoglaló, nyílt ökoszisztéma szemszögéből.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "text": "Először is, a Microsoft Build június 2-án volt.",
+      "text_markdown": "Először is, a Microsoft Build június 2-án volt.",
+      "title": "",
+      "tts": {
+        "text": "Először is, a Microsoft Build június másodikon volt.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "text": "A Microsoft bemutatott két saját fejlesztésű modellt – a MAI-Thinking-1-et és a MAI-Code-1-Flash-t.",
+      "text_markdown": "A Microsoft bemutatott két saját fejlesztésű modellt – a MAI-Thinking-1-et és a MAI-Code-1-Flash-t.",
+      "title": "",
+      "tts": {
+        "text": "A Microsoft bemutatott két saját fejlesztésű modellt – az em á í Thinking egyet és az em á í Code egy Flash-t.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "text": "Mi az érdekes ezekben?",
+      "text_markdown": "Mi az érdekes ezekben?",
+      "title": "",
+      "tts": {
+        "text": "Mi az érdekes ezekben?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "text": "A Thinking-1 egy harmincöt milliárd aktív paraméteres ritka szakértői keverék, kétszázötvenhatezer tokenes kontextusablakkal.",
+      "text_markdown": "A Thinking-1 egy harmincöt milliárd aktív paraméteres ritka szakértői keverék, kétszázötvenhatezer tokenes kontextusablakkal.",
+      "title": "",
+      "tts": {
+        "text": "A Thinking egy egy harmincöt milliárd aktív paraméteres ritka szakértői keverék, kétszázötvenhatezer tokenes kontextusablakkal.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "text": "A Microsoft kifejezetten azt állítja, hogy kereskedelmi licencű adatokon képezték, harmadik féltől származó modellből történő desztilláció nélkül.",
+      "text_markdown": "A Microsoft kifejezetten azt állítja, hogy kereskedelmi licencű adatokon képezték, harmadik féltől származó modellből történő desztilláció nélkül.",
+      "title": "",
+      "tts": {
+        "text": "A Microsoft kifejezetten azt állítja, hogy kereskedelmi licencű adatokon képezték, harmadik féltől származó modellből történő desztilláció nélkül.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "host",
+      "text": "Ez szokatlan.",
+      "text_markdown": "Ez szokatlan.",
+      "title": "",
+      "tts": {
+        "text": "Ez szokatlan.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "text": "Nagyon szokatlan, tekintve, hogy a terület többi része mennyire támaszkodik a határmodellekből származó szintetikus adatokra.",
+      "text_markdown": "Nagyon szokatlan, tekintve, hogy a terület többi része mennyire támaszkodik a határmodellekből származó szintetikus adatokra.",
+      "title": "",
+      "tts": {
+        "text": "Nagyon szokatlan, tekintve, hogy a terület többi része mennyire támaszkodik a határmodellekből származó szintetikus adatokra.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "text": "A Code-1-Flash az olcsóbb – június 2-án kezdte meg a bevezetését az összes GitHub Copilot szintre.",
+      "text_markdown": "A Code-1-Flash az olcsóbb – június 2-án kezdte meg a bevezetését az összes GitHub Copilot szintre.",
+      "title": "",
+      "tts": {
+        "text": "A Code egy Flash az olcsóbb – június másodikon kezdte meg a bevezetését az összes GitHub Copilot szintre.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "text": "Így a Microsoft mostantól a Mistralt, a DeepSeeket, az OpenAI-t és saját MAI-ját is szállítja egymás mellett a Copilot Studióban.",
+      "text_markdown": "Így a Microsoft mostantól a Mistralt, a DeepSeeket, az OpenAI-t és saját MAI-ját is szállítja egymás mellett a Copilot Studióban.",
+      "title": "",
+      "tts": {
+        "text": "Így a Microsoft mostantól a Mistralt, a DeepSeeket, az OpenAI-t és saját em á í-ját is szállítja egymás mellett a Copilot Studióban.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "text": "Második főcím?",
+      "text_markdown": "Második főcím?",
+      "title": "",
+      "tts": {
+        "text": "Második főcím?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "text": "Az Anthropic bizalmasan benyújtott egy S-1-es beadványt az SEC-hez június 1-jén.",
+      "text_markdown": "Az Anthropic bizalmasan benyújtott egy S-1-es beadványt az SEC-hez június 1-jén.",
+      "title": "",
+      "tts": {
+        "text": "Az Anthropic bizalmasan benyújtott egy es egyes beadványt az esz é cé-hez június elsőjén.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "text": "Ez az a papírmunka, ami megnyitja az utat a nyilvános tőzsdei bevezetéshez.",
+      "text_markdown": "Ez az a papírmunka, ami megnyitja az utat a nyilvános tőzsdei bevezetéshez.",
+      "title": "",
+      "tts": {
+        "text": "Ez az a papírmunka, ami megnyitja az utat a nyilvános tőzsdei bevezetéshez.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "text": "A bevételi rátájuk negyvenhét milliárd dollár körül van, ami tíz milliárd dollárról nőtt egy év alatt.",
+      "text_markdown": "A bevételi rátájuk negyvenhét milliárd dollár körül van, ami tíz milliárd dollárról nőtt egy év alatt.",
+      "title": "",
+      "tts": {
+        "text": "A bevételi rátájuk negyvenhét milliárd dollár körül van, ami tíz milliárd dollárról nőtt egy év alatt.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "text": "Még nincs tőzsdei jel, árkategória, dátum – csak a papírmunka.",
+      "text_markdown": "Még nincs tőzsdei jel, árkategória, dátum – csak a papírmunka.",
+      "title": "",
+      "tts": {
+        "text": "Még nincs tőzsdei jel, árkategória, dátum – csak a papírmunka.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "text": "Harmadik.",
+      "text_markdown": "Harmadik.",
+      "title": "",
+      "tts": {
+        "text": "Harmadik.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "text": "A GitHub Copilot június 1-jén áttért a használatalapú számlázásra.",
+      "text_markdown": "A GitHub Copilot június 1-jén áttért a használatalapú számlázásra.",
+      "title": "",
+      "tts": {
+        "text": "A GitHub Copilot június elsőjén áttért a használatalapú számlázásra.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "text": "Minden terv mostantól méri a bemeneti, kimeneti és gyorsítótárazott tokeneket az alapul szolgáló modell API-jával azonos arányban.",
+      "text_markdown": "Minden terv mostantól méri a bemeneti, kimeneti és gyorsítótárazott tokeneket az alapul szolgáló modell API-jával azonos arányban.",
+      "title": "",
+      "tts": {
+        "text": "Minden terv mostantól méri a bemeneti, kimeneti és gyorsítótárazott tokeneket az alapul szolgáló modell API-jával azonos arányban.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "text": "Enyhítették a bevezetést azáltal, hogy minden szinthez krediteket osztottak ki, és bevezettek egy új Copilot Max csomagot havi száz dollárért a nagy igénybevételű, ügynöki felhasználók számára.",
+      "text_markdown": "Enyhítették a bevezetést azáltal, hogy minden szinthez krediteket osztottak ki, és bevezettek egy új Copilot Max csomagot havi száz dollárért a nagy igénybevételű, ügynöki felhasználók számára.",
+      "title": "",
+      "tts": {
+        "text": "Enyhítették a bevezetést azáltal, hogy minden szinthez krediteket osztottak ki, és bevezettek egy új Copilot Max csomagot havi száz dollárért a nagy igénybevételű, ügynöki felhasználók számára.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "host",
+      "text": "És hogyan fogadták ezt a fejlesztők?",
+      "text_markdown": "És hogyan fogadták ezt a fejlesztők?",
+      "title": "",
+      "tts": {
+        "text": "És hogyan fogadták ezt a fejlesztők?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "text": "Néhány vélemény elég pikáns volt.",
+      "text_markdown": "Néhány vélemény elég pikáns volt.",
+      "title": "",
+      "tts": {
+        "text": "Néhány vélemény elég pikáns volt.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "text": "Az ügynökciklusokat használó nagy felhasználók a régi átalánydíj többszörösét kitevő becsült számlákról számoltak be.",
+      "text_markdown": "Az ügynökciklusokat használó nagy felhasználók a régi átalánydíj többszörösét kitevő becsült számlákról számoltak be.",
+      "title": "",
+      "tts": {
+        "text": "Az ügynökciklusokat használó nagy felhasználók a régi átalánydíj többszörösét kitevő becsült számlákról számoltak be.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "text": "Ez fontos lesz a fő sztorinkhoz – jegyezd meg ezt a gondolatot.",
+      "text_markdown": "Ez fontos lesz a fő sztorinkhoz – jegyezd meg ezt a gondolatot.",
+      "title": "",
+      "tts": {
+        "text": "Ez fontos lesz a fő sztorinkhoz – jegyezd meg ezt a gondolatot.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "text": "Negyedszer, van valami javítanivaló ezen a hétvégén?",
+      "text_markdown": "Negyedszer, van valami javítanivaló ezen a hétvégén?",
+      "title": "",
+      "tts": {
+        "text": "Negyedszer, van valami javítanivaló ezen a hétvégén?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "text": "Igen, az SGLang nullapont-öt-pont-tizenegyig terjedő verziói egy gyorsítótár-szolgáltatásmegtagadási hibát tartalmaznak, amelyet június 3-án hoztak nyilvánosságra.",
+      "text_markdown": "Igen, az SGLang nullapont-öt-pont-tizenegyig terjedő verziói egy gyorsítótár-szolgáltatásmegtagadási hibát tartalmaznak, amelyet június 3-án hoztak nyilvánosságra.",
+      "title": "",
+      "tts": {
+        "text": "Igen, az S G Lang verziói nullapont-öt-pont-tizenegyig egy gyorsítótár-szolgáltatásmegtagadási hibát tartalmaznak, amelyet június harmadikán hoztak nyilvánosságra.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "text": "Az azonosító CVE-2026-10775, a súlyosság alacsony, a kihasználás csak helyi – de ha SGLang-ról szolgáltatsz, hétfőn javítsd.",
+      "text_markdown": "Az azonosító CVE-2026-10775, a súlyosság alacsony, a kihasználás csak helyi – de ha SGLang-ról szolgáltatsz, hétfőn javítsd.",
+      "title": "",
+      "tts": {
+        "text": "Az azonosító C V E kettőezer-huszonhat perjel egy-nulla-hét-hét-öt, a súlyosság alacsony, a kihasználás csak helyi – de ha S G Lang-ról szolgáltatsz, hétfőn javítsd.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-127",
+      "speaker_id": "host",
+      "text": "Még egy.",
+      "text_markdown": "Még egy.",
+      "title": "",
+      "tts": {
+        "text": "Még egy.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "text": "Az Unsloth Studio kiadott egy frissítést, amely egy teljes finomhangolást exportál közvetlenül GGUF-ba – nem csak adapter súlyokat.",
+      "text_markdown": "Az Unsloth Studio kiadott egy frissítést, amely egy teljes finomhangolást exportál közvetlenül GGUF-ba – nem csak adapter súlyokat.",
+      "title": "",
+      "tts": {
+        "text": "Az Unsloth Studio kiadott egy frissítést, amely egy teljes finomhangolást exportál közvetlenül G G U F-ba – nem csak adapter súlyokat.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "text": "Egy huszonnégy gigabájtos fogyasztói kártya most már elegendő hasznos futtatásokhoz.",
+      "text_markdown": "Egy huszonnégy gigabájtos fogyasztói kártya most már elegendő hasznos futtatásokhoz.",
+      "title": "",
+      "tts": {
+        "text": "Egy huszonnégy gigabájtos fogyasztói kártya most már elegendő hasznos futtatásokhoz.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "text": "Ez az a sallangmentes infrastruktúra, ami az epizód többi részét valósággá teszi.",
+      "text_markdown": "Ez az a sallangmentes infrastruktúra, ami az epizód többi részét valósággá teszi.",
+      "title": "",
+      "tts": {
+        "text": "Ez az a sallangmentes infrastruktúra, ami az epizód többi részét valósággá teszi.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "text": "Most térjünk vissza a fő sztorihoz.",
+      "text_markdown": "Most térjünk vissza a fő sztorihoz.",
+      "title": "",
+      "tts": {
+        "text": "Most térjünk vissza a fő sztorihoz.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "text": "Utaltál egy gépre.",
+      "text_markdown": "Utaltál egy gépre.",
+      "title": "",
+      "tts": {
+        "text": "Utaltál egy gépre.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "text": "Igen, és ennek a gerince a következő – a csináld magad gép ezen a héten felnőtt.",
+      "text_markdown": "Igen, és ennek a gerince a következő – a csináld magad gép ezen a héten felnőtt.",
+      "title": "",
+      "tts": {
+        "text": "Igen, és ennek a gerince a következő – a csináld magad gép ezen a héten felnőtt.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "text": "Kezdjük a hardverrel.",
+      "text_markdown": "Kezdjük a hardverrel.",
+      "title": "",
+      "tts": {
+        "text": "Kezdjük a hardverrel.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "text": "Két doboz már ténylegesen szállítódik fogyasztói áron.",
+      "text_markdown": "Két doboz már ténylegesen szállítódik fogyasztói áron.",
+      "title": "",
+      "tts": {
+        "text": "Két doboz már ténylegesen szállítódik fogyasztói áron.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "text": "Az AMD júniusban megnyitotta az előrendeléseket a Ryzen AI Halo mini PC-re háromezer-kilencszázkilencvenkilenc dollárért.",
+      "text_markdown": "Az AMD júniusban megnyitotta az előrendeléseket a Ryzen AI Halo mini PC-re háromezer-kilencszázkilencvenkilenc dollárért.",
+      "title": "",
+      "tts": {
+        "text": "Az A M D júniusban megnyitotta az előrendeléseket a Ryzen A I Halo mini P C-re háromezer-kilencszázkilencvenkilenc dollárért.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "text": "A Ryzen AI Max Plus 395-öt futtatja, százhuszonnyolc gigabájt egyesített LPDDR5x memóriával, és egyelőre kizárólag a Micro Centernél kapható.",
+      "text_markdown": "A Ryzen AI Max Plus 395-öt futtatja, százhuszonnyolc gigabájt egyesített LPDDR5x memóriával, és egyelőre kizárólag a Micro Centernél kapható.",
+      "title": "",
+      "tts": {
+        "text": "A Ryzen A I Max Plus háromszázkilencvenötöt futtatja, százhuszonnyolc gigabájt egyesített L P D D R öt iksz memóriával, és egyelőre kizárólag a Micro Centernél kapható.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "text": "És az NVIDIA oldala?",
+      "text_markdown": "És az NVIDIA oldala?",
+      "title": "",
+      "tts": {
+        "text": "És az NVIDIA oldala?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "text": "Az NVIDIA DGX Spark a hasonló doboz.",
+      "text_markdown": "Az NVIDIA DGX Spark a hasonló doboz.",
+      "title": "",
+      "tts": {
+        "text": "Az N V I D I A D G X Spark a hasonló doboz.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "text": "A GB10 Grace Blackwell chipet tartalmazza, és ugyanazt a százhuszonnyolc gigabájt egyesített memóriát.",
+      "text_markdown": "A GB10 Grace Blackwell chipet tartalmazza, és ugyanazt a százhuszonnyolc gigabájt egyesített memóriát.",
+      "title": "",
+      "tts": {
+        "text": "A G B tíz Grace Blackwell chipet tartalmazza, és ugyanazt a százhuszonnyolc gigabájt egyesített memóriát.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "text": "Az ár nemrég háromezer-kilencszázkilencvenkilencről négyezer-hatszázkilencvenkilencre emelkedett, amit a globális memóriahiányra vezetnek vissza.",
+      "text_markdown": "Az ár nemrég háromezer-kilencszázkilencvenkilencről négyezer-hatszázkilencvenkilencre emelkedett, amit a globális memóriahiányra vezetnek vissza.",
+      "title": "",
+      "tts": {
+        "text": "Az ár nemrég háromezer-kilencszázkilencvenkilencről négyezer-hatszázkilencvenkilencre emelkedett, amit a globális memóriahiányra vezetnek vissza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "text": "Mekkora modellt képesek ezek valójában tárolni?",
+      "text_markdown": "Mekkora modellt képesek ezek valójában tárolni?",
+      "title": "",
+      "tts": {
+        "text": "Mekkora modellt képesek ezek valójában tárolni?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "text": "Körülbelül kétszázmilliárd paraméterig, négybites kvantálással, kontextusra is hagyva helyet.",
+      "text_markdown": "Körülbelül kétszázmilliárd paraméterig, négybites kvantálással, kontextusra is hagyva helyet.",
+      "title": "",
+      "tts": {
+        "text": "Körülbelül kétszázmilliárd paraméterig, négybites kvantálással, kontextusra is hagyva helyet.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "text": "Párosíts össze két DGX Sparkot ConnectX-7-en keresztül, és nagyjából négyszázmilliárdos tartományba jutsz.",
+      "text_markdown": "Párosíts össze két DGX Sparkot ConnectX-7-en keresztül, és nagyjából négyszázmilliárdos tartományba jutsz.",
+      "title": "",
+      "tts": {
+        "text": "Párosíts össze két D G X Sparkot Connect X héten keresztül, és nagyjából négyszázmilliárdos tartományba jutsz.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "text": "Ez valóban egy élvonalbeli, asztali méretű teljesítmény.",
+      "text_markdown": "Ez valóban egy élvonalbeli, asztali méretű teljesítmény.",
+      "title": "",
+      "tts": {
+        "text": "Ez valóban egy élvonalbeli, asztali méretű teljesítmény.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-146",
+      "speaker_id": "host",
+      "text": "Most pedig a szoftveres réteg.",
+      "text_markdown": "Most pedig a szoftveres réteg.",
+      "title": "",
+      "tts": {
+        "text": "Most pedig a szoftveres réteg.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-147",
+      "speaker_id": "analyst",
+      "text": "Ez az, ami megváltozott a lábunk alatt.",
+      "text_markdown": "Ez az, ami megváltozott a lábunk alatt.",
+      "title": "",
+      "tts": {
+        "text": "Ez az, ami megváltozott a lábunk alatt.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "text": "Az inferenciához van vLLM, SGLang, llama.cpp, Ollama és MLX Apple Siliconon – mind karbantartott, mind gyors.",
+      "text_markdown": "Az inferenciához van vLLM, SGLang, llama.cpp, Ollama és MLX Apple Siliconon – mind karbantartott, mind gyors.",
+      "title": "",
+      "tts": {
+        "text": "Az inferenciához van v L L M, S G Lang, llama C P P, Ollama és M L X Apple Siliconon – mind karbantartott, mind gyors.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "text": "Magához a modellhez ezen a héten megvannak a Nemotron 3 Ultra súlyok, plusz Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, és jönnek a MiniMax M3 súlyok.",
+      "text_markdown": "Magához a modellhez ezen a héten megvannak a Nemotron 3 Ultra súlyok, plusz Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, és jönnek a MiniMax M3 súlyok.",
+      "title": "",
+      "tts": {
+        "text": "Magához a modellhez ezen a héten megvannak a Nemotron három Ultra súlyok, plusz Kimi K kettő pont hat, DeepSeek V négy Flash, G L M öt pont egy, és jönnek a MiniMax M három súlyok.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "text": "A finomhangoláshoz az Unsloth Studio mostantól egy kattintásos teljes hangolást kínál GGUF-ba.",
+      "text_markdown": "A finomhangoláshoz az Unsloth Studio mostantól egy kattintásos teljes hangolást kínál GGUF-ba.",
+      "title": "",
+      "tts": {
+        "text": "A finomhangoláshoz az Unsloth Studio mostantól egy kattintásos teljes hangolást kínál G G U F-ba.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "text": "És az ügynökök számára ott van az Aider, a Continue és a LangGraph egyes verziója, amelyek helyben futtatnak harminckétmilliárd paraméteres modelleket, használható megbízhatósággal.",
+      "text_markdown": "És az ügynökök számára ott van az Aider, a Continue és a LangGraph egyes verziója, amelyek helyben futtatnak harminckétmilliárd paraméteres modelleket, használható megbízhatósággal.",
+      "title": "",
+      "tts": {
+        "text": "És az ügynökök számára ott van az Aider, a Continue és a LangGraph egyes verziója, amelyek helyben futtatnak harminckétmilliárd paraméteres modelleket, használható megbízhatósággal.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "text": "Ez a teljes ciklus.",
+      "text_markdown": "Ez a teljes ciklus.",
+      "title": "",
+      "tts": {
+        "text": "Ez a teljes ciklus.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "text": "Ez a teljes ciklus.",
+      "text_markdown": "Ez a teljes ciklus.",
+      "title": "",
+      "tts": {
+        "text": "Ez a teljes ciklus.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "text": "Szilícium, motor, modell, finomhangolás, ügynök – minden rétegnek van egy hiteles nyílt opciója, és az alsó réteg most egy asztali mini PC.",
+      "text_markdown": "Szilícium, motor, modell, finomhangolás, ügynök – minden rétegnek van egy hiteles nyílt opciója, és az alsó réteg most egy asztali mini PC.",
+      "title": "",
+      "tts": {
+        "text": "Szilícium, motor, modell, finomhangolás, ügynök – minden rétegnek van egy hiteles nyílt opciója, és az alsó réteg most egy asztali mini PC.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "text": "És a gazdasági szempontok?",
+      "text_markdown": "És a gazdasági szempontok?",
+      "title": "",
+      "tts": {
+        "text": "És a gazdasági szempontok?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "text": "A gazdasági helyzet ezen a héten megfordult, méghozzá oly módon, amit nehéz nem észrevenni.",
+      "text_markdown": "A gazdasági helyzet ezen a héten megfordult, méghozzá oly módon, amit nehéz nem észrevenni.",
+      "title": "",
+      "tts": {
+        "text": "A gazdasági helyzet ezen a héten megfordult, méghozzá oly módon, amit nehéz nem észrevenni.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "text": "Token-alapú Copilot, egy Anthropic S-1, amely az elkövetkező árnyomásra utal, és hálózati figyelmeztetések Texasból, Virginiából és Ohióból egy szűkös nyárról.",
+      "text_markdown": "Token-alapú Copilot, egy Anthropic S-1, amely az elkövetkező árnyomásra utal, és hálózati figyelmeztetések Texasból, Virginiából és Ohióból egy szűkös nyárról.",
+      "title": "",
+      "tts": {
+        "text": "Token alapú Copilot, egy Anthropic S egy, amely az elkövetkező árnyomásra utal, és hálózati figyelmeztetések Texasból, Virginiából és Ohióból egy szűkös nyárról.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "text": "A saját üzemeltetés melletti érv korábban ideológiai volt.",
+      "text_markdown": "A saját üzemeltetés melletti érv korábban ideológiai volt.",
+      "title": "",
+      "tts": {
+        "text": "A saját üzemeltetés melletti érv korábban ideológiai volt.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "text": "Ezen a héten táblázat lett belőle.",
+      "text_markdown": "Ezen a héten táblázat lett belőle.",
+      "title": "",
+      "tts": {
+        "text": "Ezen a héten táblázat lett belőle.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "text": "Legyünk őszinték azzal kapcsolatban, ami nem változott.",
+      "text_markdown": "Legyünk őszinték azzal kapcsolatban, ami nem változott.",
+      "title": "",
+      "tts": {
+        "text": "Legyünk őszinték azzal kapcsolatban, ami nem változott.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "text": "Fontos megjegyzés: az asztali géped nem múlja felül a felhőt a minőségi ranglista élén.",
+      "text_markdown": "Fontos megjegyzés: az asztali géped nem múlja felül a felhőt a minőségi ranglista élén.",
+      "title": "",
+      "tts": {
+        "text": "Fontos megjegyzés: az asztali géped nem múlja felül a felhőt a minőségi ranglista élén.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "text": "Az Opus 4.8 továbbra is vezeti az összetett rangsort, és a GPT-5.5 továbbra is uralja a BrowseComp-ot.",
+      "text_markdown": "Az Opus 4.8 továbbra is vezeti az összetett rangsort, és a GPT-5.5 továbbra is uralja a BrowseComp-ot.",
+      "title": "",
+      "tts": {
+        "text": "Az Opus négy pont nyolc továbbra is vezeti az összetett rangsort, és a GPT öt pont öt továbbra is uralja a BrowseComp-ot.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "text": "Ami ezen a héten változott, az az alsó határ.",
+      "text_markdown": "Ami ezen a héten változott, az az alsó határ.",
+      "title": "",
+      "tts": {
+        "text": "Ami ezen a héten változott, az az alsó határ.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "text": "Képes, ügynök-szintű, finomhangolható modellek, saját hardveren, nyílt súlyokkal.",
+      "text_markdown": "Képes, ügynök-szintű, finomhangolható modellek, saját hardveren, nyílt súlyokkal.",
+      "title": "",
+      "tts": {
+        "text": "Képes, ügynök szintű, finomhangolható modellek, saját hardveren, nyílt súlyokkal.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "text": "Ez a történet.",
+      "text_markdown": "Ez a történet.",
+      "title": "",
+      "tts": {
+        "text": "Ez a történet.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "text": "Régebben adatközpont kellett hozzá.",
+      "text_markdown": "Régebben adatközpont kellett hozzá.",
+      "title": "",
+      "tts": {
+        "text": "Régebben adatközpont kellett hozzá.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "text": "Ezen a héten egy asztali gép is elég.",
+      "text_markdown": "Ezen a héten egy asztali gép is elég.",
+      "title": "",
+      "tts": {
+        "text": "Ezen a héten egy asztali gép is elég.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-168",
+      "speaker_id": "host",
+      "text": "Nézzük a hét koncepcióját.",
+      "text_markdown": "Nézzük a hét koncepcióját.",
+      "title": "",
+      "tts": {
+        "text": "Nézzük a hét koncepcióját.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-169",
+      "speaker_id": "host",
+      "text": "A spekulatív dekódolást választottad.",
+      "text_markdown": "A spekulatív dekódolást választottad.",
+      "title": "",
+      "tts": {
+        "text": "A spekulatív dekódolást választottad.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-170",
+      "speaker_id": "analyst",
+      "text": "Igen, mert ez az a trükk, ami miatt minden, amiről az imént beszéltünk, gyorsnak tűnik.",
+      "text_markdown": "Igen, mert ez az a trükk, ami miatt minden, amiről az imént beszéltünk, gyorsnak tűnik.",
+      "title": "",
+      "tts": {
+        "text": "Igen, mert ez az a trükk, ami miatt minden, amiről az imént beszéltünk, gyorsnak tűnik.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "text": "A MiniMax tizenötszörös dekódolási állítása egy rokonra támaszkodik.",
+      "text_markdown": "A MiniMax tizenötszörös dekódolási állítása egy rokonra támaszkodik.",
+      "title": "",
+      "tts": {
+        "text": "A MiniMax tizenötszörös dekódolási állítása egy rokonra támaszkodik.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "text": "A Llama.cpp vázlatmodell módja pontosan ez az ötlet.",
+      "text_markdown": "A Llama.cpp vázlatmodell módja pontosan ez az ötlet.",
+      "title": "",
+      "tts": {
+        "text": "A Llama.cpp vázlatmodell módja pontosan ez az ötlet.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-173",
+      "speaker_id": "host",
+      "text": "Magyarázd el nekünk.",
+      "text_markdown": "Magyarázd el nekünk.",
+      "title": "",
+      "tts": {
+        "text": "Magyarázd el nekünk.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-174",
+      "speaker_id": "analyst",
+      "text": "Két modellt futtatsz egymás mellett.",
+      "text_markdown": "Két modellt futtatsz egymás mellett.",
+      "title": "",
+      "tts": {
+        "text": "Két modellt futtatsz egymás mellett.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "text": "Egy kicsi, gyors modell, az úgynevezett vázlatkészítő, és egy nagy, lassú modell, az úgynevezett ellenőrző.",
+      "text_markdown": "Egy kicsi, gyors modell, az úgynevezett vázlatkészítő, és egy nagy, lassú modell, az úgynevezett ellenőrző.",
+      "title": "",
+      "tts": {
+        "text": "Egy kicsi, gyors modell, az úgynevezett vázlatkészítő, és egy nagy, lassú modell, az úgynevezett ellenőrző.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "text": "A vázlatkészítő megtippeli, mondjuk, a következő négy tokent egyetlen lépésben.",
+      "text_markdown": "A vázlatkészítő megtippeli, mondjuk, a következő négy tokent egyetlen lépésben.",
+      "title": "",
+      "tts": {
+        "text": "A vázlatkészítő megtippeli, mondjuk, a következő négy tokent egyetlen lépésben.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "text": "Az ellenőrző mind a négyet párhuzamosan ellenőrzi.",
+      "text_markdown": "Az ellenőrző mind a négyet párhuzamosan ellenőrzi.",
+      "title": "",
+      "tts": {
+        "text": "Az ellenőrző mind a négyet párhuzamosan ellenőrzi.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "text": "És aztán?",
+      "text_markdown": "És aztán?",
+      "title": "",
+      "tts": {
+        "text": "És aztán?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "text": "Ha az ellenőrző egyetért, megtartod mind a négyet és továbbmész – épp most csináltál négy tokent körülbelül egy áráért.",
+      "text_markdown": "Ha az ellenőrző egyetért, megtartod mind a négyet és továbbmész – épp most csináltál négy tokent körülbelül egy áráért.",
+      "title": "",
+      "tts": {
+        "text": "Ha az ellenőrző egyetért, megtartod mind a négyet és továbbmész – épp most csináltál négy tokent körülbelül egy áráért.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "text": "Ha nem ért egyet, elfogadod az első eltérésig, és onnan a nagy modell veszi át a feladatot.",
+      "text_markdown": "Ha nem ért egyet, elfogadod az első eltérésig, és onnan a nagy modell veszi át a feladatot.",
+      "title": "",
+      "tts": {
+        "text": "Ha nem ért egyet, elfogadod az első eltérésig, és onnan a nagy modell veszi át a feladatot.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-181",
+      "speaker_id": "host",
+      "text": "Tehát a válasz azonos.",
+      "text_markdown": "Tehát a válasz azonos.",
+      "title": "",
+      "tts": {
+        "text": "Tehát a válasz azonos.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-182",
+      "speaker_id": "analyst",
+      "text": "Pontosan, ez az elegáns része.",
+      "text_markdown": "Pontosan, ez az elegáns része.",
+      "title": "",
+      "tts": {
+        "text": "Pontosan, ez az elegáns része.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-183",
+      "speaker_id": "analyst",
+      "text": "A kimenet pontosan az, amit a nagy modell önmagában is előállított volna.",
+      "text_markdown": "A kimenet pontosan az, amit a nagy modell önmagában is előállított volna.",
+      "title": "",
+      "tts": {
+        "text": "A kimenet pontosan az, amit a nagy modell önmagában is előállított volna.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-184",
+      "speaker_id": "analyst",
+      "text": "Csak kevesebb előremenő lépéséért fizetett.",
+      "text_markdown": "Csak kevesebb előremenő lépéséért fizetett.",
+      "title": "",
+      "tts": {
+        "text": "Csak kevesebb előremenő lépéséért fizetett.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-185",
+      "speaker_id": "host",
+      "text": "Miért számít ez egy barkácsolónak?",
+      "text_markdown": "Miért számít ez egy barkácsolónak?",
+      "title": "",
+      "tts": {
+        "text": "Miért számít ez egy barkácsolónak?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "text": "Mert egy hetvenmilliárd paraméteres modellt egyetlen kártyán újdonságból használható beszélgetéssé alakít.",
+      "text_markdown": "Mert egy hetvenmilliárd paraméteres modellt egyetlen kártyán újdonságból használható beszélgetéssé alakít.",
+      "title": "",
+      "tts": {
+        "text": "Mert egy hetvenmilliárd paraméteres modellt egyetlen kártyán újdonságból használható beszélgetéssé alakít.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "text": "És telefonon ez része annak, hogy egy igazi, eszközön futó asszisztens mennyire érződik reszponzívnak.",
+      "text_markdown": "És telefonon ez része annak, hogy egy igazi, eszközön futó asszisztens mennyire érződik reszponzívnak.",
+      "title": "",
+      "tts": {
+        "text": "És telefonon ez része annak, hogy egy igazi, eszközön futó asszisztens mennyire érződik reszponzívnak.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-188",
+      "speaker_id": "analyst",
+      "text": "A múlt heti koncepció, a neurális audiokodekek, ugyanezen trükk audio változata volt – kevesebb drága lépés ugyanazért a minőségért.",
+      "text_markdown": "A múlt heti koncepció, a neurális audiokodekek, ugyanezen trükk audio változata volt – kevesebb drága lépés ugyanazért a minőségért.",
+      "title": "",
+      "tts": {
+        "text": "A múlt heti koncepció, a neurális audiokodekek, ugyanezen trükk audio változata volt – kevesebb drága lépés ugyanazért a minőségért.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-189",
+      "speaker_id": "host",
+      "text": "Hová menjen innen a kíváncsi olvasó?",
+      "text_markdown": "Hová menjen innen a kíváncsi olvasó?",
+      "title": "",
+      "tts": {
+        "text": "Hová menjen innen a kíváncsi olvasó?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "text": "Keressen rá az EAGLE-3-ra, a Medusára és a lookahead dekódolásra.",
+      "text_markdown": "Keressen rá az EAGLE-3-ra, a Medusára és a lookahead dekódolásra.",
+      "title": "",
+      "tts": {
+        "text": "Keressen rá az Eagle háromra, a Medusára és a lookahead dekódolásra.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "text": "Ezek az eredeti drafter-verifier ötlet modern unokatestvérei, és ezek futnak valójában a következtető motorja alatt.",
+      "text_markdown": "Ezek az eredeti drafter-verifier ötlet modern unokatestvérei, és ezek futnak valójában a következtető motorja alatt.",
+      "title": "",
+      "tts": {
+        "text": "Ezek az eredeti drafter verifier ötlet modern unokatestvérei, és ezek futnak valójában a következtető motorja alatt.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "text": "Jó helyen járunk.",
+      "text_markdown": "Jó helyen járunk.",
+      "title": "",
+      "tts": {
+        "text": "Jó helyen járunk.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-193",
+      "speaker_id": "host",
+      "text": "Ron, köszönöm.",
+      "text_markdown": "Ron, köszönöm.",
+      "title": "",
+      "tts": {
+        "text": "Ron, köszönöm.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "text": "Szívesen, Vindy.",
+      "text_markdown": "Szívesen, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Szívesen, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "text": "Ez volt az AI This Week 2026. június 3-án.",
+      "text_markdown": "Ez volt az AI This Week 2026. június 3-án.",
+      "title": "",
+      "tts": {
+        "text": "Ez volt az AI This Week kétezerhuszonhat június harmadikán.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-196",
+      "speaker_id": "host",
+      "text": "Új szám jövő szerdán.",
+      "text_markdown": "Új szám jövő szerdán.",
+      "title": "",
+      "tts": {
+        "text": "Új szám jövő szerdán.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-197",
+      "speaker_id": "host",
+      "text": "Addig is vigyázzon magára.",
+      "text_markdown": "Addig is vigyázzon magára.",
+      "title": "",
+      "tts": {
+        "text": "Addig is vigyázzon magára.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

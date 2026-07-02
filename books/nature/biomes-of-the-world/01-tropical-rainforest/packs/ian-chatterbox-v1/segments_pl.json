@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Tropikalny las deszczowy",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tropikalny las deszczowy",
+      "text_markdown": "Tropikalny las deszczowy"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gdzie rosną lasy deszczowe",
+      "text_markdown": "Gdzie rosną lasy deszczowe"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Witaj w tropikalnym lesie deszczowym.",
+      "text_markdown": "Witaj w tropikalnym lesie deszczowym.",
+      "tts": {
+        "text": "Witaj w tropikalnym lesie deszczowym.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jeden z wielkich biomów świata.",
+      "text_markdown": "To jeden z wielkich biomów świata.",
+      "tts": {
+        "text": "To jeden z wielkich biomów świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom to część Ziemi z własną pogodą, własnymi roślinami i własnymi zwierzętami.",
+      "text_markdown": "Biom to część Ziemi z własną pogodą, własnymi roślinami i własnymi zwierzętami.",
+      "tts": {
+        "text": "Biom to część Ziemi z własną pogodą, własnymi roślinami i własnymi zwierzętami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikalny las deszczowy jest ciepły przez cały rok.",
+      "text_markdown": "Tropikalny las deszczowy jest ciepły przez cały rok.",
+      "tts": {
+        "text": "Tropikalny las deszczowy jest ciepły przez cały rok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest wilgotny przez cały rok.",
+      "text_markdown": "Jest wilgotny przez cały rok.",
+      "tts": {
+        "text": "Jest wilgotny przez cały rok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest pełen życia.",
+      "text_markdown": "Jest pełen życia.",
+      "tts": {
+        "text": "Jest pełen życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość lasów deszczowych rośnie blisko równika.",
+      "text_markdown": "Większość lasów deszczowych rośnie blisko równika.",
+      "tts": {
+        "text": "Większość lasów deszczowych rośnie blisko równika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Równik to linia, która biegnie wokół środka Ziemi.",
+      "text_markdown": "Równik to linia, która biegnie wokół środka Ziemi.",
+      "tts": {
+        "text": "Równik to linia, która biegnie wokół środka Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blisko równika słońce jest mocne każdego dnia.",
+      "text_markdown": "Blisko równika słońce jest mocne każdego dnia.",
+      "tts": {
+        "text": "Blisko równika słońce jest mocne każdego dnia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Największy las deszczowy świata to Amazonia, w Ameryce Południowej.",
+      "text_markdown": "Największy las deszczowy świata to Amazonia, w Ameryce Południowej.",
+      "tts": {
+        "text": "Największy las deszczowy świata to Amazonia, w Ameryce Południowej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielkie lasy deszczowe są też w Afryce, blisko rzeki Kongo.",
+      "text_markdown": "Wielkie lasy deszczowe są też w Afryce, blisko rzeki Kongo.",
+      "tts": {
+        "text": "Wielkie lasy deszczowe są też w Afryce, blisko rzeki Kongo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są lasy deszczowe w Azji Południowo-Wschodniej, na wielu wyspach.",
+      "text_markdown": "Są lasy deszczowe w Azji Południowo-Wschodniej, na wielu wyspach.",
+      "tts": {
+        "text": "Są lasy deszczowe w Azji Południowo Wschodniej, na wielu wyspach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są też mniejsze lasy deszczowe w Ameryce Środkowej i na wyspach Pacyfiku.",
+      "text_markdown": "Są też mniejsze lasy deszczowe w Ameryce Środkowej i na wyspach Pacyfiku.",
+      "tts": {
+        "text": "Są też mniejsze lasy deszczowe w Ameryce Środkowej i na wyspach Pacyfiku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+      "text_markdown": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+      "tts": {
+        "text": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "text_markdown": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "tts": {
+        "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Małpa w Amazonii nie jest taka sama jak małpa w Afryce czy w Azji.",
+      "text_markdown": "Małpa w Amazonii nie jest taka sama jak małpa w Afryce czy w Azji.",
+      "tts": {
+        "text": "Małpa w Amazonii nie jest taka sama jak małpa w Afryce czy w Azji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale wszystkie należą do tego samego biomu.",
+      "text_markdown": "Ale wszystkie należą do tego samego biomu.",
+      "tts": {
+        "text": "Ale wszystkie należą do tego samego biomu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy stoisz w lesie deszczowym, powietrze jest ciężkie i ciepłe.",
+      "text_markdown": "Kiedy stoisz w lesie deszczowym, powietrze jest ciężkie i ciepłe.",
+      "tts": {
+        "text": "Kiedy stoisz w lesie deszczowym, powietrze jest ciężkie i ciepłe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Światło jest miękkie i zielone.",
+      "text_markdown": "Światło jest miękkie i zielone.",
+      "tts": {
+        "text": "Światło jest miękkie i zielone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa są tak wysokie, że ledwo widać niebo.",
+      "text_markdown": "Drzewa są tak wysokie, że ledwo widać niebo.",
+      "tts": {
+        "text": "Drzewa są tak wysokie, że ledwo widać niebo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Słyszysz ptaki i owady dookoła siebie.",
+      "text_markdown": "Słyszysz ptaki i owady dookoła siebie.",
+      "tts": {
+        "text": "Słyszysz ptaki i owady dookoła siebie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Słyszysz wodę kapiącą z liści.",
+      "text_markdown": "Słyszysz wodę kapiącą z liści.",
+      "tts": {
+        "text": "Słyszysz wodę kapiącą z liści.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czujesz się jak w żywym pokoju.",
+      "text_markdown": "Czujesz się jak w żywym pokoju.",
+      "tts": {
+        "text": "Czujesz się jak w żywym pokoju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tym właśnie jest las deszczowy.",
+      "text_markdown": "Tym właśnie jest las deszczowy.",
+      "tts": {
+        "text": "Tym właśnie jest las deszczowy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy deszczowe",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cały świat zbudowany z drzew i deszczu.",
+      "text_markdown": "Cały świat zbudowany z drzew i deszczu.",
+      "tts": {
+        "text": "Cały świat zbudowany z drzew i deszczu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pogoda",
+      "text_markdown": "Pogoda"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pogoda w tropikalnym lesie deszczowym jest prosta.",
+      "text_markdown": "Pogoda w tropikalnym lesie deszczowym jest prosta.",
+      "tts": {
+        "text": "Pogoda w tropikalnym lesie deszczowym jest prosta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest ciepło i dużo pada.",
+      "text_markdown": "Jest ciepło i dużo pada.",
+      "tts": {
+        "text": "Jest ciepło i dużo pada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Temperatura jest mniej więcej taka sama przez cały rok.",
+      "text_markdown": "Temperatura jest mniej więcej taka sama przez cały rok.",
+      "tts": {
+        "text": "Temperatura jest mniej więcej taka sama przez cały rok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą nie robi się zimno.",
+      "text_markdown": "Zimą nie robi się zimno.",
+      "tts": {
+        "text": "Zimą nie robi się zimno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem nie robi się bardzo gorąco.",
+      "text_markdown": "Latem nie robi się bardzo gorąco.",
+      "tts": {
+        "text": "Latem nie robi się bardzo gorąco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość dni jest ciepła i spokojna.",
+      "text_markdown": "Większość dni jest ciepła i spokojna.",
+      "tts": {
+        "text": "Większość dni jest ciepła i spokojna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada prawie każdego dnia.",
+      "text_markdown": "Pada prawie każdego dnia.",
+      "tts": {
+        "text": "Pada prawie każdego dnia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych miejscach pada więcej niż dwa metry deszczu w ciągu roku.",
+      "text_markdown": "W niektórych miejscach pada więcej niż dwa metry deszczu w ciągu roku.",
+      "tts": {
+        "text": "W niektórych miejscach pada więcej niż dwa metry deszczu w ciągu roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To więcej deszczu niż widzi większość świata.",
+      "text_markdown": "To więcej deszczu niż widzi większość świata.",
+      "tts": {
+        "text": "To więcej deszczu niż widzi większość świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deszcz często przychodzi po południu.",
+      "text_markdown": "Deszcz często przychodzi po południu.",
+      "tts": {
+        "text": "Deszcz często przychodzi po południu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duże chmury zbierają się nad drzewami.",
+      "text_markdown": "Duże chmury zbierają się nad drzewami.",
+      "tts": {
+        "text": "Duże chmury zbierają się nad drzewami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mocna ulewa pada przez godzinę albo dwie.",
+      "text_markdown": "Mocna ulewa pada przez godzinę albo dwie.",
+      "tts": {
+        "text": "Mocna ulewa pada przez godzinę albo dwie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem słońce znowu wychodzi.",
+      "text_markdown": "Potem słońce znowu wychodzi.",
+      "tts": {
+        "text": "Potem słońce znowu wychodzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liście błyszczą, a z ziemi unosi się para.",
+      "text_markdown": "Liście błyszczą, a z ziemi unosi się para.",
+      "tts": {
+        "text": "Liście błyszczą, a z ziemi unosi się para.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie ma tu czterech pór roku.",
+      "text_markdown": "Nie ma tu czterech pór roku.",
+      "tts": {
+        "text": "Nie ma tu czterech pór roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest tylko czas bardziej mokry i czas bardziej suchy.",
+      "text_markdown": "Jest tylko czas bardziej mokry i czas bardziej suchy.",
+      "tts": {
+        "text": "Jest tylko czas bardziej mokry i czas bardziej suchy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nawet w porze suchszej często pada.",
+      "text_markdown": "Nawet w porze suchszej często pada.",
+      "tts": {
+        "text": "Nawet w porze suchszej często pada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dla roślin i zwierząt lasu deszczowego każdy dzień wydaje się bardzo podobny.",
+      "text_markdown": "Dla roślin i zwierząt lasu deszczowego każdy dzień wydaje się bardzo podobny.",
+      "tts": {
+        "text": "Dla roślin i zwierząt lasu deszczowego każdy dzień wydaje się bardzo podobny.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ziemia i woda",
+      "text_markdown": "Ziemia i woda"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziemia w lesie deszczowym jest pełna życia, ale gleba jest cienka.",
+      "text_markdown": "Ziemia w lesie deszczowym jest pełna życia, ale gleba jest cienka.",
+      "tts": {
+        "text": "Ziemia w lesie deszczowym jest pełna życia, ale gleba jest cienka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość bogactwa jest w górnych kilku centymetrach.",
+      "text_markdown": "Większość bogactwa jest w górnych kilku centymetrach.",
+      "tts": {
+        "text": "Większość bogactwa jest w górnych kilku centymetrach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy spada liść, owady i drobne żyjątka rozkładają go bardzo szybko.",
+      "text_markdown": "Kiedy spada liść, owady i drobne żyjątka rozkładają go bardzo szybko.",
+      "tts": {
+        "text": "Kiedy spada liść, owady i drobne żyjątka rozkładają go bardzo szybko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa od razu odbierają pokarm z powrotem.",
+      "text_markdown": "Drzewa od razu odbierają pokarm z powrotem.",
+      "tts": {
+        "text": "Drzewa od razu odbierają pokarm z powrotem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego wycięty las deszczowy trudno jest przywrócić.",
+      "text_markdown": "Dlatego wycięty las deszczowy trudno jest przywrócić.",
+      "tts": {
+        "text": "Dlatego wycięty las deszczowy trudno jest przywrócić.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bez drzew deszcz wymywa cienką glebę.",
+      "text_markdown": "Bez drzew deszcz wymywa cienką glebę.",
+      "tts": {
+        "text": "Bez drzew deszcz wymywa cienką glebę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez każdy las deszczowy płyną rzeki.",
+      "text_markdown": "Przez każdy las deszczowy płyną rzeki.",
+      "tts": {
+        "text": "Przez każdy las deszczowy płyną rzeki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre rzeki są ogromne.",
+      "text_markdown": "Niektóre rzeki są ogromne.",
+      "tts": {
+        "text": "Niektóre rzeki są ogromne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rzeka Amazonka niesie więcej wody niż jakakolwiek inna rzeka świata.",
+      "text_markdown": "Rzeka Amazonka niesie więcej wody niż jakakolwiek inna rzeka świata.",
+      "tts": {
+        "text": "Rzeka Amazonka niesie więcej wody niż jakakolwiek inna rzeka świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W porze deszczowej rzeki rozlewają się daleko w głąb lasu.",
+      "text_markdown": "W porze deszczowej rzeki rozlewają się daleko w głąb lasu.",
+      "tts": {
+        "text": "W porze deszczowej rzeki rozlewają się daleko w głąb lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa stoją w wodzie przez wiele miesięcy.",
+      "text_markdown": "Drzewa stoją w wodzie przez wiele miesięcy.",
+      "tts": {
+        "text": "Drzewa stoją w wodzie przez wiele miesięcy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ryby pływają między pniami.",
+      "text_markdown": "Ryby pływają między pniami.",
+      "tts": {
+        "text": "Ryby pływają między pniami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inne rzeki są małe i czyste, z kamieniami na dnie.",
+      "text_markdown": "Inne rzeki są małe i czyste, z kamieniami na dnie.",
+      "tts": {
+        "text": "Inne rzeki są małe i czyste, z kamieniami na dnie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sam las rośnie w warstwach.",
+      "text_markdown": "Sam las rośnie w warstwach.",
+      "tts": {
+        "text": "Sam las rośnie w warstwach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wysoko w górze są najwyższe drzewa, z koronami rozpostartymi w słońcu.",
+      "text_markdown": "Wysoko w górze są najwyższe drzewa, z koronami rozpostartymi w słońcu.",
+      "tts": {
+        "text": "Wysoko w górze są najwyższe drzewa, z koronami rozpostartymi w słońcu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pod nimi jest gęsty zielony dach z liści.",
+      "text_markdown": "Pod nimi jest gęsty zielony dach z liści.",
+      "tts": {
+        "text": "Pod nimi jest gęsty zielony dach z liści.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pod tym dachem powietrze jest zacienione i spokojne.",
+      "text_markdown": "Pod tym dachem powietrze jest zacienione i spokojne.",
+      "tts": {
+        "text": "Pod tym dachem powietrze jest zacienione i spokojne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na ziemi dociera tylko trochę światła.",
+      "text_markdown": "Na ziemi dociera tylko trochę światła.",
+      "tts": {
+        "text": "Na ziemi dociera tylko trochę światła.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każda warstwa to inny dom dla zwierząt i roślin tego biomu.",
+      "text_markdown": "Każda warstwa to inny dom dla zwierząt i roślin tego biomu.",
+      "tts": {
+        "text": "Każda warstwa to inny dom dla zwierząt i roślin tego biomu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rośliny",
+      "text_markdown": "Rośliny"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikalny las deszczowy ma więcej rodzajów roślin niż jakikolwiek inny biom na lądzie.",
+      "text_markdown": "Tropikalny las deszczowy ma więcej rodzajów roślin niż jakikolwiek inny biom na lądzie.",
+      "tts": {
+        "text": "Tropikalny las deszczowy ma więcej rodzajów roślin niż jakikolwiek inny biom na lądzie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa są jego sercem.",
+      "text_markdown": "Drzewa są jego sercem.",
+      "tts": {
+        "text": "Drzewa są jego sercem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre drzewa rosną bardzo wysoko, sięgając do słońca.",
+      "text_markdown": "Niektóre drzewa rosną bardzo wysoko, sięgając do słońca.",
+      "tts": {
+        "text": "Niektóre drzewa rosną bardzo wysoko, sięgając do słońca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich pnie są proste i gładkie.",
+      "text_markdown": "Ich pnie są proste i gładkie.",
+      "tts": {
+        "text": "Ich pnie są proste i gładkie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich korzenie rozchodzą się szeroko u dołu, jak ściany, żeby utrzymać je w cienkiej glebie.",
+      "text_markdown": "Ich korzenie rozchodzą się szeroko u dołu, jak ściany, żeby utrzymać je w cienkiej glebie.",
+      "tts": {
+        "text": "Ich korzenie rozchodzą się szeroko u dołu, jak ściany, żeby utrzymać je w cienkiej glebie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liany pną się po pniach w stronę światła.",
+      "text_markdown": "Liany pną się po pniach w stronę światła.",
+      "tts": {
+        "text": "Liany pną się po pniach w stronę światła.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre liany są grube jak twoja ręka.",
+      "text_markdown": "Niektóre liany są grube jak twoja ręka.",
+      "tts": {
+        "text": "Niektóre liany są grube jak twoja ręka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Owijają się wokół drzew i zwisają z gałęzi.",
+      "text_markdown": "Owijają się wokół drzew i zwisają z gałęzi.",
+      "tts": {
+        "text": "Owijają się wokół drzew i zwisają z gałęzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na samych drzewach rosną rośliny, wysoko w powietrzu.",
+      "text_markdown": "Na samych drzewach rosną rośliny, wysoko w powietrzu.",
+      "tts": {
+        "text": "Na samych drzewach rosną rośliny, wysoko w powietrzu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nie mają żadnych korzeni w ziemi.",
+      "text_markdown": "Nie mają żadnych korzeni w ziemi.",
+      "tts": {
+        "text": "Nie mają żadnych korzeni w ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piją deszcz, który spływa po korze.",
+      "text_markdown": "Piją deszcz, który spływa po korze.",
+      "tts": {
+        "text": "Piją deszcz, który spływa po korze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na ciemnym dnie lasu rosną paprocie i miękkie zielone rośliny.",
+      "text_markdown": "Na ciemnym dnie lasu rosną paprocie i miękkie zielone rośliny.",
+      "tts": {
+        "text": "Na ciemnym dnie lasu rosną paprocie i miękkie zielone rośliny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mają szerokie, płaskie liście, żeby łapać każdą kroplę światła.",
+      "text_markdown": "Mają szerokie, płaskie liście, żeby łapać każdą kroplę światła.",
+      "tts": {
+        "text": "Mają szerokie, płaskie liście, żeby łapać każdą kroplę światła.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwiaty kwitną we wszystkich kolorach, jakie sobie wyobrazisz.",
+      "text_markdown": "Kwiaty kwitną we wszystkich kolorach, jakie sobie wyobrazisz.",
+      "tts": {
+        "text": "Kwiaty kwitną we wszystkich kolorach, jakie sobie wyobrazisz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedne są czerwone, inne żółte, a jeszcze inne ciemnofioletowe.",
+      "text_markdown": "Jedne są czerwone, inne żółte, a jeszcze inne ciemnofioletowe.",
+      "tts": {
+        "text": "Jedne są czerwone, inne żółte, a jeszcze inne ciemnofioletowe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele z nich otwiera się w nocy.",
+      "text_markdown": "Wiele z nich otwiera się w nocy.",
+      "tts": {
+        "text": "Wiele z nich otwiera się w nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Owoce wiszą na gałęziach przez cały rok.",
+      "text_markdown": "Owoce wiszą na gałęziach przez cały rok.",
+      "tts": {
+        "text": "Owoce wiszą na gałęziach przez cały rok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są owoce słodkie, kwaśne i takie z twardą skorupą.",
+      "text_markdown": "Są owoce słodkie, kwaśne i takie z twardą skorupą.",
+      "tts": {
+        "text": "Są owoce słodkie, kwaśne i takie z twardą skorupą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele potraw, które jemy w domu, rosło najpierw dziko w lasach deszczowych.",
+      "text_markdown": "Wiele potraw, które jemy w domu, rosło najpierw dziko w lasach deszczowych.",
+      "tts": {
+        "text": "Wiele potraw, które jemy w domu, rosło najpierw dziko w lasach deszczowych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kakao, roślina, z której robimy czekoladę, pochodzi z lasów deszczowych Ameryki Południowej.",
+      "text_markdown": "Kakao, roślina, z której robimy czekoladę, pochodzi z lasów deszczowych Ameryki Południowej.",
+      "tts": {
+        "text": "Kakao, roślina, z której robimy czekoladę, pochodzi z lasów deszczowych Ameryki Południowej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierwsze banany rosły w lasach deszczowych Azji Południowo-Wschodniej.",
+      "text_markdown": "Pierwsze banany rosły w lasach deszczowych Azji Południowo-Wschodniej.",
+      "tts": {
+        "text": "Pierwsze banany rosły w lasach deszczowych Azji Południowo Wschodniej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każde jedzenie, które kochamy, ma swoją historię w jakimś lesie na Ziemi.",
+      "text_markdown": "Każde jedzenie, które kochamy, ma swoją historię w jakimś lesie na Ziemi.",
+      "tts": {
+        "text": "Każde jedzenie, które kochamy, ma swoją historię w jakimś lesie na Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy patrzysz na roślinę z lasu deszczowego, często znalazła ona sprytny sposób na życie.",
+      "text_markdown": "Kiedy patrzysz na roślinę z lasu deszczowego, często znalazła ona sprytny sposób na życie.",
+      "tts": {
+        "text": "Kiedy patrzysz na roślinę z lasu deszczowego, często znalazła ona sprytny sposób na życie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre liście mają długi szpic na końcu, żeby deszcz szybko z nich spływał.",
+      "text_markdown": "Niektóre liście mają długi szpic na końcu, żeby deszcz szybko z nich spływał.",
+      "tts": {
+        "text": "Niektóre liście mają długi szpic na końcu, żeby deszcz szybko z nich spływał.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre kwiaty pachną słodko tylko w nocy, żeby zwabić odpowiedniego owada.",
+      "text_markdown": "Niektóre kwiaty pachną słodko tylko w nocy, żeby zwabić odpowiedniego owada.",
+      "tts": {
+        "text": "Niektóre kwiaty pachną słodko tylko w nocy, żeby zwabić odpowiedniego owada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cały las to cicha maszyna, zrobiona z zieleni.",
+      "text_markdown": "Cały las to cicha maszyna, zrobiona z zieleni.",
+      "tts": {
+        "text": "Cały las to cicha maszyna, zrobiona z zieleni.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zwierzęta",
+      "text_markdown": "Zwierzęta"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W tropikalnym lesie deszczowym żyje więcej rodzajów zwierząt niż gdziekolwiek indziej na lądzie.",
+      "text_markdown": "W tropikalnym lesie deszczowym żyje więcej rodzajów zwierząt niż gdziekolwiek indziej na lądzie.",
+      "tts": {
+        "text": "W tropikalnym lesie deszczowym żyje więcej rodzajów zwierząt niż gdziekolwiek indziej na lądzie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość z nich mieszka wysoko w drzewach, a nie na ziemi.",
+      "text_markdown": "Większość z nich mieszka wysoko w drzewach, a nie na ziemi.",
+      "tts": {
+        "text": "Większość z nich mieszka wysoko w drzewach, a nie na ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na górze jest więcej jedzenia i więcej światła.",
+      "text_markdown": "Na górze jest więcej jedzenia i więcej światła.",
+      "tts": {
+        "text": "Na górze jest więcej jedzenia i więcej światła.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Małpy żyją w wielu lasach deszczowych.",
+      "text_markdown": "Małpy żyją w wielu lasach deszczowych.",
+      "tts": {
+        "text": "Małpy żyją w wielu lasach deszczowych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skaczą z gałęzi na gałąź i wołają do siebie wśród drzew.",
+      "text_markdown": "Skaczą z gałęzi na gałąź i wołają do siebie wśród drzew.",
+      "tts": {
+        "text": "Skaczą z gałęzi na gałąź i wołają do siebie wśród drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W lasach deszczowych Ameryki Południowej niektóre małpy mają długie ogony, których używają jak dodatkowej ręki.",
+      "text_markdown": "W lasach deszczowych Ameryki Południowej niektóre małpy mają długie ogony, których używają jak dodatkowej ręki.",
+      "tts": {
+        "text": "W lasach deszczowych Ameryki Południowej niektóre małpy mają długie ogony, których używają jak dodatkowej ręki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papugi i inne jaskrawe ptaki latają między wysokimi gałęziami.",
+      "text_markdown": "Papugi i inne jaskrawe ptaki latają między wysokimi gałęziami.",
+      "tts": {
+        "text": "Papugi i inne jaskrawe ptaki latają między wysokimi gałęziami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedzą owoce i nasiona.",
+      "text_markdown": "Jedzą owoce i nasiona.",
+      "tts": {
+        "text": "Jedzą owoce i nasiona.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich pióra są czerwone, zielone, niebieskie i żółte.",
+      "text_markdown": "Ich pióra są czerwone, zielone, niebieskie i żółte.",
+      "tts": {
+        "text": "Ich pióra są czerwone, zielone, niebieskie i żółte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W wielu lasach deszczowych wielkie koty polują na ziemi nocą.",
+      "text_markdown": "W wielu lasach deszczowych wielkie koty polują na ziemi nocą.",
+      "tts": {
+        "text": "W wielu lasach deszczowych wielkie koty polują na ziemi nocą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Amerykach tym kotem jest jaguar.",
+      "text_markdown": "W Amerykach tym kotem jest jaguar.",
+      "tts": {
+        "text": "W Amerykach tym kotem jest jaguar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Azji jest to tygrys.",
+      "text_markdown": "W Azji jest to tygrys.",
+      "tts": {
+        "text": "W Azji jest to tygrys.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Afryce jest to lampart.",
+      "text_markdown": "W Afryce jest to lampart.",
+      "tts": {
+        "text": "W Afryce jest to lampart.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wszystkie są silne i ciche, z plamami lub paskami na futrze.",
+      "text_markdown": "Wszystkie są silne i ciche, z plamami lub paskami na futrze.",
+      "tts": {
+        "text": "Wszystkie są silne i ciche, z plamami lub paskami na futrze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Węże prześlizgują się przez liście i drzewa.",
+      "text_markdown": "Węże prześlizgują się przez liście i drzewa.",
+      "tts": {
+        "text": "Węże prześlizgują się przez liście i drzewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre węże są bardzo małe, a inne bardzo długie.",
+      "text_markdown": "Niektóre węże są bardzo małe, a inne bardzo długie.",
+      "tts": {
+        "text": "Niektóre węże są bardzo małe, a inne bardzo długie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość z nich jest płochliwa i trzyma się z dala od ludzi.",
+      "text_markdown": "Większość z nich jest płochliwa i trzyma się z dala od ludzi.",
+      "tts": {
+        "text": "Większość z nich jest płochliwa i trzyma się z dala od ludzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Żaby śpiewają każdej nocy, zwłaszcza po deszczu.",
+      "text_markdown": "Żaby śpiewają każdej nocy, zwłaszcza po deszczu.",
+      "tts": {
+        "text": "Żaby śpiewają każdej nocy, zwłaszcza po deszczu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre żaby są maleńkie i jaskrawe.",
+      "text_markdown": "Niektóre żaby są maleńkie i jaskrawe.",
+      "tts": {
+        "text": "Niektóre żaby są maleńkie i jaskrawe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jaskrawe kolory ostrzegają inne zwierzęta, żeby ich nie zjadały.",
+      "text_markdown": "Jaskrawe kolory ostrzegają inne zwierzęta, żeby ich nie zjadały.",
+      "tts": {
+        "text": "Jaskrawe kolory ostrzegają inne zwierzęta, żeby ich nie zjadały.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Owady wypełniają każdy zakątek lasu.",
+      "text_markdown": "Owady wypełniają każdy zakątek lasu.",
+      "tts": {
+        "text": "Owady wypełniają każdy zakątek lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W lesie deszczowym jest więcej owadów niż jakichkolwiek innych zwierząt.",
+      "text_markdown": "W lesie deszczowym jest więcej owadów niż jakichkolwiek innych zwierząt.",
+      "tts": {
+        "text": "W lesie deszczowym jest więcej owadów niż jakichkolwiek innych zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mrówki maszerują w długich rzędach po dnie lasu.",
+      "text_markdown": "Mrówki maszerują w długich rzędach po dnie lasu.",
+      "tts": {
+        "text": "Mrówki maszerują w długich rzędach po dnie lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chrząszcze wspinają się po pniach.",
+      "text_markdown": "Chrząszcze wspinają się po pniach.",
+      "tts": {
+        "text": "Chrząszcze wspinają się po pniach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motyle unoszą się w powietrzu na szerokich, malowanych skrzydłach.",
+      "text_markdown": "Motyle unoszą się w powietrzu na szerokich, malowanych skrzydłach.",
+      "tts": {
+        "text": "Motyle unoszą się w powietrzu na szerokich, malowanych skrzydłach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W rzekach żyją ryby, w wielu kształtach i rozmiarach.",
+      "text_markdown": "W rzekach żyją ryby, w wielu kształtach i rozmiarach.",
+      "tts": {
+        "text": "W rzekach żyją ryby, w wielu kształtach i rozmiarach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre ryby są maleńkie i srebrne, a inne większe od dziecka.",
+      "text_markdown": "Niektóre ryby są maleńkie i srebrne, a inne większe od dziecka.",
+      "tts": {
+        "text": "Niektóre ryby są maleńkie i srebrne, a inne większe od dziecka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wysoko nad tym wszystkim orły szybują nad zielonym dachem lasu.",
+      "text_markdown": "Wysoko nad tym wszystkim orły szybują nad zielonym dachem lasu.",
+      "tts": {
+        "text": "Wysoko nad tym wszystkim orły szybują nad zielonym dachem lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wypatrują ruchu w dole.",
+      "text_markdown": "Wypatrują ruchu w dole.",
+      "tts": {
+        "text": "Wypatrują ruchu w dole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nietoperze wylatują o zachodzie słońca, żeby jeść owoce i owady.",
+      "text_markdown": "Nietoperze wylatują o zachodzie słońca, żeby jeść owoce i owady.",
+      "tts": {
+        "text": "Nietoperze wylatują o zachodzie słońca, żeby jeść owoce i owady.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na jednym drzewie w lesie deszczowym możesz znaleźć więcej rodzajów zwierząt niż w całym mieście gdzie indziej.",
+      "text_markdown": "Na jednym drzewie w lesie deszczowym możesz znaleźć więcej rodzajów zwierząt niż w całym mieście gdzie indziej.",
+      "tts": {
+        "text": "Na jednym drzewie w lesie deszczowym możesz znaleźć więcej rodzajów zwierząt niż w całym mieście gdzie indziej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taki jest cud tego biomu.",
+      "text_markdown": "Taki jest cud tego biomu.",
+      "tts": {
+        "text": "Taki jest cud tego biomu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ludzie",
+      "text_markdown": "Ludzie"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie mieszkają w tropikalnym lesie deszczowym od bardzo dawna.",
+      "text_markdown": "Ludzie mieszkają w tropikalnym lesie deszczowym od bardzo dawna.",
+      "tts": {
+        "text": "Ludzie mieszkają w tropikalnym lesie deszczowym od bardzo dawna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nauczyli się żyć dobrze z drzewami, deszczem i zwierzętami.",
+      "text_markdown": "Nauczyli się żyć dobrze z drzewami, deszczem i zwierzętami.",
+      "tts": {
+        "text": "Nauczyli się żyć dobrze z drzewami, deszczem i zwierzętami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielu ludzi lasu deszczowego mieszka w małych wioskach.",
+      "text_markdown": "Wielu ludzi lasu deszczowego mieszka w małych wioskach.",
+      "tts": {
+        "text": "Wielu ludzi lasu deszczowego mieszka w małych wioskach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Domy są często zbudowane na wysokich drewnianych palach, żeby były nad mokrą ziemią.",
+      "text_markdown": "Domy są często zbudowane na wysokich drewnianych palach, żeby były nad mokrą ziemią.",
+      "tts": {
+        "text": "Domy są często zbudowane na wysokich drewnianych palach, żeby były nad mokrą ziemią.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dachy są zrobione z liści ułożonych w grubych rzędach.",
+      "text_markdown": "Dachy są zrobione z liści ułożonych w grubych rzędach.",
+      "tts": {
+        "text": "Dachy są zrobione z liści ułożonych w grubych rzędach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dobry dach z liści trzyma mocny deszcz na zewnątrz.",
+      "text_markdown": "Dobry dach z liści trzyma mocny deszcz na zewnątrz.",
+      "tts": {
+        "text": "Dobry dach z liści trzyma mocny deszcz na zewnątrz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ściany są często otwarte, żeby ciepłe powietrze mogło przepływać.",
+      "text_markdown": "Ściany są często otwarte, żeby ciepłe powietrze mogło przepływać.",
+      "tts": {
+        "text": "Ściany są często otwarte, żeby ciepłe powietrze mogło przepływać.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie łowią ryby w rzekach i zbierają jedzenie z lasu.",
+      "text_markdown": "Ludzie łowią ryby w rzekach i zbierają jedzenie z lasu.",
+      "tts": {
+        "text": "Ludzie łowią ryby w rzekach i zbierają jedzenie z lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Polują na małe zwierzęta z łukami i włóczniami.",
+      "text_markdown": "Polują na małe zwierzęta z łukami i włóczniami.",
+      "tts": {
+        "text": "Polują na małe zwierzęta z łukami i włóczniami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uprawiają jedzenie w małych ogrodach wyciętych z drzew.",
+      "text_markdown": "Uprawiają jedzenie w małych ogrodach wyciętych z drzew.",
+      "tts": {
+        "text": "Uprawiają jedzenie w małych ogrodach wyciętych z drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To, co uprawiają, zależy od tego, gdzie mieszkają.",
+      "text_markdown": "To, co uprawiają, zależy od tego, gdzie mieszkają.",
+      "tts": {
+        "text": "To, co uprawiają, zależy od tego, gdzie mieszkają.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W lasach deszczowych Ameryki Południowej ludzie od tysięcy lat uprawiają maniok i bataty.",
+      "text_markdown": "W lasach deszczowych Ameryki Południowej ludzie od tysięcy lat uprawiają maniok i bataty.",
+      "tts": {
+        "text": "W lasach deszczowych Ameryki Południowej ludzie od tysięcy lat uprawiają maniok i bataty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W lasach deszczowych Afryki ludzie uprawiają pochrzyn i owoc palmy.",
+      "text_markdown": "W lasach deszczowych Afryki ludzie uprawiają pochrzyn i owoc palmy.",
+      "tts": {
+        "text": "W lasach deszczowych Afryki ludzie uprawiają pochrzyn i owoc palmy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W lasach deszczowych Azji Południowo-Wschodniej i Pacyfiku ludzie uprawiają taro, ryż i owoc chlebowca.",
+      "text_markdown": "W lasach deszczowych Azji Południowo-Wschodniej i Pacyfiku ludzie uprawiają taro, ryż i owoc chlebowca.",
+      "tts": {
+        "text": "W lasach deszczowych Azji Południowo Wschodniej i Pacyfiku ludzie uprawiają taro, ryż i owoc chlebowca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po kilku latach pozwalają, żeby ogród zarósł lasem, i zakładają nowy gdzie indziej.",
+      "text_markdown": "Po kilku latach pozwalają, żeby ogród zarósł lasem, i zakładają nowy gdzie indziej.",
+      "tts": {
+        "text": "Po kilku latach pozwalają, żeby ogród zarósł lasem, i zakładają nowy gdzie indziej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W ten sposób las pozostaje zdrowy.",
+      "text_markdown": "W ten sposób las pozostaje zdrowy.",
+      "tts": {
+        "text": "W ten sposób las pozostaje zdrowy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie lasu deszczowego znają tysiące roślin.",
+      "text_markdown": "Ludzie lasu deszczowego znają tysiące roślin.",
+      "tts": {
+        "text": "Ludzie lasu deszczowego znają tysiące roślin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiedzą, które dają jedzenie, które dają lekarstwo, a których nie wolno jeść.",
+      "text_markdown": "Wiedzą, które dają jedzenie, które dają lekarstwo, a których nie wolno jeść.",
+      "tts": {
+        "text": "Wiedzą, które dają jedzenie, które dają lekarstwo, a których nie wolno jeść.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uczą się pieśni ptaków.",
+      "text_markdown": "Uczą się pieśni ptaków.",
+      "tts": {
+        "text": "Uczą się pieśni ptaków.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uczą się tropów zwierząt.",
+      "text_markdown": "Uczą się tropów zwierząt.",
+      "tts": {
+        "text": "Uczą się tropów zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ta wiedza jest przekazywana od rodziców do dzieci, rok po roku.",
+      "text_markdown": "Ta wiedza jest przekazywana od rodziców do dzieci, rok po roku.",
+      "tts": {
+        "text": "Ta wiedza jest przekazywana od rodziców do dzieci, rok po roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W każdym lesie deszczowym takie życie ma własne języki, własne opowieści i własną muzykę.",
+      "text_markdown": "W każdym lesie deszczowym takie życie ma własne języki, własne opowieści i własną muzykę.",
+      "tts": {
+        "text": "W każdym lesie deszczowym takie życie ma własne języki, własne opowieści i własną muzykę.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Las deszczowy dzisiaj",
+      "text_markdown": "Las deszczowy dzisiaj"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikalny las deszczowy jest jednym z najważniejszych biomów Ziemi.",
+      "text_markdown": "Tropikalny las deszczowy jest jednym z najważniejszych biomów Ziemi.",
+      "tts": {
+        "text": "Tropikalny las deszczowy jest jednym z najważniejszych biomów Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa wciągają wodę z ziemi i wydychają ją w niebo.",
+      "text_markdown": "Drzewa wciągają wodę z ziemi i wydychają ją w niebo.",
+      "tts": {
+        "text": "Drzewa wciągają wodę z ziemi i wydychają ją w niebo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chmury, które tworzą się nad lasem, niosą deszcz do dalekich krain.",
+      "text_markdown": "Chmury, które tworzą się nad lasem, niosą deszcz do dalekich krain.",
+      "tts": {
+        "text": "Chmury, które tworzą się nad lasem, niosą deszcz do dalekich krain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa też oddychają, ale na odwrót niż my.",
+      "text_markdown": "Drzewa też oddychają, ale na odwrót niż my.",
+      "tts": {
+        "text": "Drzewa też oddychają, ale na odwrót niż my.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wciągają gaz, który my wydychamy, i używają go, żeby rosnąć.",
+      "text_markdown": "Wciągają gaz, który my wydychamy, i używają go, żeby rosnąć.",
+      "tts": {
+        "text": "Wciągają gaz, który my wydychamy, i używają go, żeby rosnąć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I oddają gaz, który my wdychamy.",
+      "text_markdown": "I oddają gaz, który my wdychamy.",
+      "tts": {
+        "text": "I oddają gaz, który my wdychamy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale las deszczowy jest w kłopocie.",
+      "text_markdown": "Ale las deszczowy jest w kłopocie.",
+      "tts": {
+        "text": "Ale las deszczowy jest w kłopocie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W wielu miejscach ludzie wycięli drzewa, żeby sadzić plony albo hodować zwierzęta.",
+      "text_markdown": "W wielu miejscach ludzie wycięli drzewa, żeby sadzić plony albo hodować zwierzęta.",
+      "tts": {
+        "text": "W wielu miejscach ludzie wycięli drzewa, żeby sadzić plony albo hodować zwierzęta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy drzew już nie ma, gleba zostaje wymyta, a deszcz przestaje padać tak, jak kiedyś.",
+      "text_markdown": "Kiedy drzew już nie ma, gleba zostaje wymyta, a deszcz przestaje padać tak, jak kiedyś.",
+      "tts": {
+        "text": "Kiedy drzew już nie ma, gleba zostaje wymyta, a deszcz przestaje padać tak, jak kiedyś.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwierzęta i ludzie, którzy tam mieszkają, tracą swój dom.",
+      "text_markdown": "Zwierzęta i ludzie, którzy tam mieszkają, tracą swój dom.",
+      "tts": {
+        "text": "Zwierzęta i ludzie, którzy tam mieszkają, tracą swój dom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele grup na świecie pracuje, żeby chronić to, co zostało.",
+      "text_markdown": "Wiele grup na świecie pracuje, żeby chronić to, co zostało.",
+      "tts": {
+        "text": "Wiele grup na świecie pracuje, żeby chronić to, co zostało.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadzą nowe drzewa.",
+      "text_markdown": "Sadzą nowe drzewa.",
+      "tts": {
+        "text": "Sadzą nowe drzewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pomagają ludziom, którzy mieszkają w lesie, dbać o niego.",
+      "text_markdown": "Pomagają ludziom, którzy mieszkają w lesie, dbać o niego.",
+      "tts": {
+        "text": "Pomagają ludziom, którzy mieszkają w lesie, dbać o niego.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Badają las, żebyśmy go lepiej rozumieli.",
+      "text_markdown": "Badają las, żebyśmy go lepiej rozumieli.",
+      "tts": {
+        "text": "Badają las, żebyśmy go lepiej rozumieli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las deszczowy potrzebuje setek lat, żeby urosnąć.",
+      "text_markdown": "Las deszczowy potrzebuje setek lat, żeby urosnąć.",
+      "tts": {
+        "text": "Las deszczowy potrzebuje setek lat, żeby urosnąć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale zdrowy las deszczowy może rosnąć tysiące lat.",
+      "text_markdown": "Ale zdrowy las deszczowy może rosnąć tysiące lat.",
+      "tts": {
+        "text": "Ale zdrowy las deszczowy może rosnąć tysiące lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Las deszczowy dzisiaj",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wart jest naszej troski.",
+      "text_markdown": "Wart jest naszej troski.",
+      "tts": {
+        "text": "Wart jest naszej troski.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zakończenie",
+      "text_markdown": "Zakończenie"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jest tropikalny las deszczowy.",
+      "text_markdown": "To jest tropikalny las deszczowy.",
+      "tts": {
+        "text": "To jest tropikalny las deszczowy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ciepły, mokry, zielony świat pełen życia.",
+      "text_markdown": "Ciepły, mokry, zielony świat pełen życia.",
+      "tts": {
+        "text": "Ciepły, mokry, zielony świat pełen życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeśli kiedyś wejdziesz do takiego lasu, stań na chwilę w bezruchu.",
+      "text_markdown": "Jeśli kiedyś wejdziesz do takiego lasu, stań na chwilę w bezruchu.",
+      "tts": {
+        "text": "Jeśli kiedyś wejdziesz do takiego lasu, stań na chwilę w bezruchu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Posłuchaj ptaków, żab i deszczu na liściach.",
+      "text_markdown": "Posłuchaj ptaków, żab i deszczu na liściach.",
+      "tts": {
+        "text": "Posłuchaj ptaków, żab i deszczu na liściach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Usłyszysz, jak serce tego biomu bije wokół ciebie.",
+      "text_markdown": "Usłyszysz, jak serce tego biomu bije wokół ciebie.",
+      "tts": {
+        "text": "Usłyszysz, jak serce tego biomu bije wokół ciebie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

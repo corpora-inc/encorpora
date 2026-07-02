@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "sw",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Neno kwa Msomaji",
+      "text_markdown": "Neno kwa Msomaji"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ni hadithi ya pikipiki.",
+      "text_markdown": "Hii ni hadithi ya pikipiki.",
+      "tts": {
+        "text": "Hii ni hadithi ya pikipiki.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni hadithi ya kweli.",
+      "text_markdown": "Ni hadithi ya kweli.",
+      "tts": {
+        "text": "Ni hadithi ya kweli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zamani sana, hakuna mtu aliyekuwa na pikipiki.",
+      "text_markdown": "Zamani sana, hakuna mtu aliyekuwa na pikipiki.",
+      "tts": {
+        "text": "Zamani sana, hakuna mtu aliyekuwa na pikipiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sasa, kuna mamilioni yake.",
+      "text_markdown": "Sasa, kuna mamilioni yake.",
+      "tts": {
+        "text": "Sasa, kuna mamilioni yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zina kelele, ni za haraka, na zinang'aa.",
+      "text_markdown": "Zina kelele, ni za haraka, na zinang'aa.",
+      "tts": {
+        "text": "Zina kelele, ni za haraka, na zinang'aa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tutaanza kabisa mwanzoni.",
+      "text_markdown": "Tutaanza kabisa mwanzoni.",
+      "tts": {
+        "text": "Tutaanza kabisa mwanzoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tutakutana na mjenzi wa kwanza, waendeshaji wa kwanza, na mashindano ya kwanza.",
+      "text_markdown": "Tutakutana na mjenzi wa kwanza, waendeshaji wa kwanza, na mashindano ya kwanza.",
+      "tts": {
+        "text": "Tutakutana na mjenzi wa kwanza, waendeshaji wa kwanza, na mashindano ya kwanza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kisha tutaangalia ulimwengu wa leo.",
+      "text_markdown": "Kisha tutaangalia ulimwengu wa leo.",
+      "tts": {
+        "text": "Kisha tutaangalia ulimwengu wa leo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Neno kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mwishoni, utajua jinsi mashine hii ndogo ilivyoibadilisha barabara milele.",
+      "text_markdown": "Mwishoni, utajua jinsi mashine hii ndogo ilivyoibadilisha barabara milele.",
+      "tts": {
+        "text": "Mwishoni, utajua jinsi mashine hii ndogo ilivyoibadilisha barabara milele.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "text_markdown": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ni baiskeli yenye injini.",
+      "text_markdown": "Pikipiki ni baiskeli yenye injini.",
+      "tts": {
+        "text": "Pikipiki ni baiskeli yenye injini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Injini inasukuma magurudumu.",
+      "text_markdown": "Injini inasukuma magurudumu.",
+      "tts": {
+        "text": "Injini inasukuma magurudumu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwendeshaji hapigi pedali.",
+      "text_markdown": "Mwendeshaji hapigi pedali.",
+      "tts": {
+        "text": "Mwendeshaji hapigi pedali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zamani sana, hakukuwa na pikipiki.",
+      "text_markdown": "Zamani sana, hakukuwa na pikipiki.",
+      "tts": {
+        "text": "Zamani sana, hakukuwa na pikipiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watu walipanda farasi.",
+      "text_markdown": "Watu walipanda farasi.",
+      "tts": {
+        "text": "Watu walipanda farasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watu walipanda baiskeli.",
+      "text_markdown": "Watu walipanda baiskeli.",
+      "tts": {
+        "text": "Watu walipanda baiskeli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baiskeli ina magurudumu mawili na haina injini.",
+      "text_markdown": "Baiskeli ina magurudumu mawili na haina injini.",
+      "tts": {
+        "text": "Baiskeli ina magurudumu mawili na haina injini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Lazima usukume pedali kwa miguu yako.",
+      "text_markdown": "Lazima usukume pedali kwa miguu yako.",
+      "tts": {
+        "text": "Lazima usukume pedali kwa miguu yako.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1885, mtu mmoja huko Ujerumani alikuwa na wazo kubwa.",
+      "text_markdown": "Mwaka 1885, mtu mmoja huko Ujerumani alikuwa na wazo kubwa.",
+      "tts": {
+        "text": "Mwaka elfu moja mia nane themanini na tano, mtu mmoja huko Ujerumani alikuwa na wazo kubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jina lake lilikuwa Gottlieb Daimler.",
+      "text_markdown": "Jina lake lilikuwa Gottlieb Daimler.",
+      "tts": {
+        "text": "Jina lake lilikuwa Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alichukua injini ndogo ya petroli na kuiweka juu ya baiskeli ya mbao.",
+      "text_markdown": "Alichukua injini ndogo ya petroli na kuiweka juu ya baiskeli ya mbao.",
+      "tts": {
+        "text": "Alichukua injini ndogo ya petroli na kuiweka juu ya baiskeli ya mbao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aliiita mashine yake Reitwagen.",
+      "text_markdown": "Aliiita mashine yake Reitwagen.",
+      "tts": {
+        "text": "Aliiita mashine yake Raiti Vageni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neno hilo linamaanisha \"gari la kuendesha\" kwa Kijerumani.",
+      "text_markdown": "Neno hilo linamaanisha \"gari la kuendesha\" kwa Kijerumani.",
+      "tts": {
+        "text": "Neno hilo linamaanisha gari la kuendesha kwa Kijerumani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilikuwa pikipiki ya kwanza ulimwenguni.",
+      "text_markdown": "Ilikuwa pikipiki ya kwanza ulimwenguni.",
+      "tts": {
+        "text": "Ilikuwa pikipiki ya kwanza ulimwenguni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen ilikuwa na kelele.",
+      "text_markdown": "Reitwagen ilikuwa na kelele.",
+      "tts": {
+        "text": "Raiti Vageni ilikuwa na kelele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilitikisa sana.",
+      "text_markdown": "Ilitikisa sana.",
+      "tts": {
+        "text": "Ilitikisa sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilikuwa na kasi moja tu.",
+      "text_markdown": "Ilikuwa na kasi moja tu.",
+      "tts": {
+        "text": "Ilikuwa na kasi moja tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingeweza kwenda kama maili saba kwa saa.",
+      "text_markdown": "Ingeweza kwenda kama maili saba kwa saa.",
+      "tts": {
+        "text": "Ingeweza kwenda kama maili saba kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hiyo ni polepole kuliko mtu aliye juu ya baiskeli leo.",
+      "text_markdown": "Hiyo ni polepole kuliko mtu aliye juu ya baiskeli leo.",
+      "tts": {
+        "text": "Hiyo ni polepole kuliko mtu aliye juu ya baiskeli leo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Lakini ingeweza kusonga bila farasi, na ingeweza kusonga bila pedali.",
+      "text_markdown": "Lakini ingeweza kusonga bila farasi, na ingeweza kusonga bila pedali.",
+      "tts": {
+        "text": "Lakini ingeweza kusonga bila farasi, na ingeweza kusonga bila pedali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1. Magurudumu Mawili ya Kwanza Yaliyofanya Vrum",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ilikuwa imezaliwa.",
+      "text_markdown": "Pikipiki ilikuwa imezaliwa.",
+      "tts": {
+        "text": "Pikipiki ilikuwa imezaliwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 2. Makampuni ya Kwanza",
+      "text_markdown": "Sura ya 2. Makampuni ya Kwanza"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya Daimler, watu wengine pia walitaka kujenga pikipiki.",
+      "text_markdown": "Baada ya Daimler, watu wengine pia walitaka kujenga pikipiki.",
+      "tts": {
+        "text": "Baada ya Daimler, watu wengine pia walitaka kujenga pikipiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Punde, viwanda vidogo vilifunguliwa duniani kote.",
+      "text_markdown": "Punde, viwanda vidogo vilifunguliwa duniani kote.",
+      "tts": {
+        "text": "Punde, viwanda vidogo vilifunguliwa duniani kote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko Uingereza, mtu mmoja jina lake Siegfried Bettmann alianzisha kampuni iitwayo Triumph.",
+      "text_markdown": "Huko Uingereza, mtu mmoja jina lake Siegfried Bettmann alianzisha kampuni iitwayo Triumph.",
+      "tts": {
+        "text": "Huko Uingereza, mtu mmoja jina lake Siegfried Bettmann alianzisha kampuni iitwayo Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pikipiki ya kwanza ya Triumph ilijengwa mwaka 1902.",
+      "text_markdown": "Pikipiki ya kwanza ya Triumph ilijengwa mwaka 1902.",
+      "tts": {
+        "text": "Pikipiki ya kwanza ya Triumph ilijengwa mwaka elfu moja mia tisa na mbili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko Marekani, marafiki wawili wenye majina William Harley na Arthur Davidson walijenga pikipiki yao ya kwanza ndani ya banda dogo la mbao.",
+      "text_markdown": "Huko Marekani, marafiki wawili wenye majina William Harley na Arthur Davidson walijenga pikipiki yao ya kwanza ndani ya banda dogo la mbao.",
+      "tts": {
+        "text": "Huko Marekani, marafiki wawili wenye majina William Harley na Arthur Davidson walijenga pikipiki yao ya kwanza ndani ya banda dogo la mbao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Banda hilo lilikuwa katika jiji la Milwaukee.",
+      "text_markdown": "Banda hilo lilikuwa katika jiji la Milwaukee.",
+      "tts": {
+        "text": "Banda hilo lilikuwa katika jiji la Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwaka ulikuwa 1903.",
+      "text_markdown": "Mwaka ulikuwa 1903.",
+      "tts": {
+        "text": "Mwaka ulikuwa elfu moja mia tisa na tatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Waliiita kampuni hiyo Harley-Davidson.",
+      "text_markdown": "Waliiita kampuni hiyo Harley-Davidson.",
+      "tts": {
+        "text": "Waliiita kampuni hiyo Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kampuni nyingine ya Marekani ilianza miaka michache mapema.",
+      "text_markdown": "Kampuni nyingine ya Marekani ilianza miaka michache mapema.",
+      "tts": {
+        "text": "Kampuni nyingine ya Marekani ilianza miaka michache mapema.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watu wawili huko Springfield, Massachusetts, walijenga mashine yao ya kwanza mwaka 1901.",
+      "text_markdown": "Watu wawili huko Springfield, Massachusetts, walijenga mashine yao ya kwanza mwaka 1901.",
+      "tts": {
+        "text": "Watu wawili huko Springfield, Massachusetts, walijenga mashine yao ya kwanza mwaka elfu moja mia tisa na moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Waliiita Indian.",
+      "text_markdown": "Waliiita Indian.",
+      "tts": {
+        "text": "Waliiita Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko India, kampuni iitwayo Royal Enfield ilianza kutengeneza pikipiki mwaka 1901 pia.",
+      "text_markdown": "Huko India, kampuni iitwayo Royal Enfield ilianza kutengeneza pikipiki mwaka 1901 pia.",
+      "tts": {
+        "text": "Huko India, kampuni iitwayo Royal Enfield ilianza kutengeneza pikipiki mwaka elfu moja mia tisa na moja pia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leo, Royal Enfield ni kampuni kongwe zaidi ya pikipiki ulimwenguni ambayo bado inajenga pikipiki.",
+      "text_markdown": "Leo, Royal Enfield ni kampuni kongwe zaidi ya pikipiki ulimwenguni ambayo bado inajenga pikipiki.",
+      "tts": {
+        "text": "Leo, Royal Enfield ni kampuni kongwe zaidi ya pikipiki ulimwenguni ambayo bado inajenga pikipiki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko Ujerumani, kampuni ya BMW ilianza kutengeneza pikipiki baadaye kidogo, mwaka 1923.",
+      "text_markdown": "Huko Ujerumani, kampuni ya BMW ilianza kutengeneza pikipiki baadaye kidogo, mwaka 1923.",
+      "tts": {
+        "text": "Huko Ujerumani, kampuni ya Bi Em Dabu ilianza kutengeneza pikipiki baadaye kidogo, mwaka elfu moja mia tisa ishirini na tatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW inamaanisha \"Viwanda vya Magari vya Bavaria\" kwa Kijerumani.",
+      "text_markdown": "BMW inamaanisha \"Viwanda vya Magari vya Bavaria\" kwa Kijerumani.",
+      "tts": {
+        "text": "Bi Em Dabu inamaanisha Viwanda vya Magari vya Bavaria kwa Kijerumani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kufikia mwaka 1910, pikipiki zilikuwa kila mahali.",
+      "text_markdown": "Kufikia mwaka 1910, pikipiki zilikuwa kila mahali.",
+      "tts": {
+        "text": "Kufikia mwaka elfu moja mia tisa na kumi, pikipiki zilikuwa kila mahali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zilikuwa kwenye mitaa ya mijini na barabara za mashambani.",
+      "text_markdown": "Zilikuwa kwenye mitaa ya mijini na barabara za mashambani.",
+      "tts": {
+        "text": "Zilikuwa kwenye mitaa ya mijini na barabara za mashambani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2. Makampuni ya Kwanza",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Enzi ya pikipiki ilikuwa imeanza kweli kweli.",
+      "text_markdown": "Enzi ya pikipiki ilikuwa imeanza kweli kweli.",
+      "tts": {
+        "text": "Enzi ya pikipiki ilikuwa imeanza kweli kweli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "text_markdown": "Sura ya 3. Pikipiki Zinakwenda Vitani"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ni za haraka.",
+      "text_markdown": "Pikipiki ni za haraka.",
+      "tts": {
+        "text": "Pikipiki ni za haraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zinaweza kupita kwenye njia ndogo.",
+      "text_markdown": "Zinaweza kupita kwenye njia ndogo.",
+      "tts": {
+        "text": "Zinaweza kupita kwenye njia ndogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zinaweza kubeba ujumbe kati ya kambi.",
+      "text_markdown": "Zinaweza kubeba ujumbe kati ya kambi.",
+      "tts": {
+        "text": "Zinaweza kubeba ujumbe kati ya kambi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa hiyo, vita vilipokuja, majeshi yalitaka pikipiki.",
+      "text_markdown": "Kwa hiyo, vita vilipokuja, majeshi yalitaka pikipiki.",
+      "tts": {
+        "text": "Kwa hiyo, vita vilipokuja, majeshi yalitaka pikipiki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vya Kwanza vya Dunia vilianza mwaka 1914.",
+      "text_markdown": "Vita vya Kwanza vya Dunia vilianza mwaka 1914.",
+      "tts": {
+        "text": "Vita vya Kwanza vya Dunia vilianza mwaka elfu moja mia tisa na kumi na nne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wanajeshi walitumia pikipiki za Triumph kupeleka amri.",
+      "text_markdown": "Wanajeshi walitumia pikipiki za Triumph kupeleka amri.",
+      "tts": {
+        "text": "Wanajeshi walitumia pikipiki za Triumph kupeleka amri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H ilikuwa imara na ya kimya.",
+      "text_markdown": "Triumph Model H ilikuwa imara na ya kimya.",
+      "tts": {
+        "text": "Triumph Model H ilikuwa imara na ya kimya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingeweza kwenda mahali ambapo farasi hawakuweza.",
+      "text_markdown": "Ingeweza kwenda mahali ambapo farasi hawakuweza.",
+      "tts": {
+        "text": "Ingeweza kwenda mahali ambapo farasi hawakuweza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vya Pili vya Dunia vilianza mwaka 1939.",
+      "text_markdown": "Vita vya Pili vya Dunia vilianza mwaka 1939.",
+      "tts": {
+        "text": "Vita vya Pili vya Dunia vilianza mwaka elfu moja mia tisa thelathini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wakati huo, pikipiki zilikuwa za haraka zaidi na imara zaidi.",
+      "text_markdown": "Wakati huo, pikipiki zilikuwa za haraka zaidi na imara zaidi.",
+      "tts": {
+        "text": "Wakati huo, pikipiki zilikuwa za haraka zaidi na imara zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wanajeshi wa Marekani walipanda Harley-Davidson WLA.",
+      "text_markdown": "Wanajeshi wa Marekani walipanda Harley-Davidson WLA.",
+      "tts": {
+        "text": "Wanajeshi wa Marekani walipanda Harley Davidson Dabu El Ei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wanajeshi wa Ujerumani walipanda BMW R75.",
+      "text_markdown": "Wanajeshi wa Ujerumani walipanda BMW R75.",
+      "tts": {
+        "text": "Wanajeshi wa Ujerumani walipanda Bi Em Dabu R sabini na tano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75 ilikuwa na kibanda cha pembeni chenye gurudumu la tatu na kiti kwa askari mwingine.",
+      "text_markdown": "R75 ilikuwa na kibanda cha pembeni chenye gurudumu la tatu na kiti kwa askari mwingine.",
+      "tts": {
+        "text": "R sabini na tano ilikuwa na kibanda cha pembeni chenye gurudumu la tatu na kiti kwa askari mwingine.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya vita, wanajeshi walirudi nyumbani.",
+      "text_markdown": "Baada ya vita, wanajeshi walirudi nyumbani.",
+      "tts": {
+        "text": "Baada ya vita, wanajeshi walirudi nyumbani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walileta pikipiki zao pamoja nao.",
+      "text_markdown": "Walileta pikipiki zao pamoja nao.",
+      "tts": {
+        "text": "Walileta pikipiki zao pamoja nao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wengi wao walitaka kuendelea kuendesha.",
+      "text_markdown": "Wengi wao walitaka kuendelea kuendesha.",
+      "tts": {
+        "text": "Wengi wao walitaka kuendelea kuendesha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baadhi yao walianzisha vilabu vyao vya pikipiki.",
+      "text_markdown": "Baadhi yao walianzisha vilabu vyao vya pikipiki.",
+      "tts": {
+        "text": "Baadhi yao walianzisha vilabu vyao vya pikipiki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vilifanya pikipiki kuwa maarufu.",
+      "text_markdown": "Vita vilifanya pikipiki kuwa maarufu.",
+      "tts": {
+        "text": "Vita vilifanya pikipiki kuwa maarufu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mamilioni ya watu walikuwa wameiona kwa mara ya kwanza.",
+      "text_markdown": "Mamilioni ya watu walikuwa wameiona kwa mara ya kwanza.",
+      "tts": {
+        "text": "Mamilioni ya watu walikuwa wameiona kwa mara ya kwanza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3. Pikipiki Zinakwenda Vitani",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wengi walitaka kuwa na yao wenyewe.",
+      "text_markdown": "Wengi walitaka kuwa na yao wenyewe.",
+      "tts": {
+        "text": "Wengi walitaka kuwa na yao wenyewe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 4. Kuinuka kwa Japani",
+      "text_markdown": "Sura ya 4. Kuinuka kwa Japani"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya Vita vya Pili vya Dunia, Japani ilikuwa maskini.",
+      "text_markdown": "Baada ya Vita vya Pili vya Dunia, Japani ilikuwa maskini.",
+      "tts": {
+        "text": "Baada ya Vita vya Pili vya Dunia, Japani ilikuwa maskini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Magari mengi yalikuwa ghali sana.",
+      "text_markdown": "Magari mengi yalikuwa ghali sana.",
+      "tts": {
+        "text": "Magari mengi yalikuwa ghali sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watu walihitaji njia ndogo na rahisi ya kusafiria.",
+      "text_markdown": "Watu walihitaji njia ndogo na rahisi ya kusafiria.",
+      "tts": {
+        "text": "Watu walihitaji njia ndogo na rahisi ya kusafiria.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijana mmoja wa Kijapani aliona nafasi.",
+      "text_markdown": "Kijana mmoja wa Kijapani aliona nafasi.",
+      "tts": {
+        "text": "Kijana mmoja wa Kijapani aliona nafasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jina lake lilikuwa Soichiro Honda.",
+      "text_markdown": "Jina lake lilikuwa Soichiro Honda.",
+      "tts": {
+        "text": "Jina lake lilikuwa Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alianzisha kampuni ndogo mwaka 1948.",
+      "text_markdown": "Alianzisha kampuni ndogo mwaka 1948.",
+      "tts": {
+        "text": "Alianzisha kampuni ndogo mwaka elfu moja mia tisa arobaini na nane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aliiita Honda.",
+      "text_markdown": "Aliiita Honda.",
+      "tts": {
+        "text": "Aliiita Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1958, Honda alijenga pikipiki ndogo iitwayo Super Cub.",
+      "text_markdown": "Mwaka 1958, Honda alijenga pikipiki ndogo iitwayo Super Cub.",
+      "tts": {
+        "text": "Mwaka elfu moja mia tisa hamsini na nane, Honda alijenga pikipiki ndogo iitwayo Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub ilikuwa rahisi kuendesha.",
+      "text_markdown": "Super Cub ilikuwa rahisi kuendesha.",
+      "tts": {
+        "text": "Super Cub ilikuwa rahisi kuendesha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilikuwa rahisi kurekebisha.",
+      "text_markdown": "Ilikuwa rahisi kurekebisha.",
+      "tts": {
+        "text": "Ilikuwa rahisi kurekebisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ilikuwa rahisi sana, sana kwa bei.",
+      "text_markdown": "Ilikuwa rahisi sana, sana kwa bei.",
+      "tts": {
+        "text": "Ilikuwa rahisi sana, sana kwa bei.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu duniani kote walinunua Super Cub.",
+      "text_markdown": "Watu duniani kote walinunua Super Cub.",
+      "tts": {
+        "text": "Watu duniani kote walinunua Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leo, zaidi ya Super Cub milioni 100 zimeuzwa.",
+      "text_markdown": "Leo, zaidi ya Super Cub milioni 100 zimeuzwa.",
+      "tts": {
+        "text": "Leo, zaidi ya Super Cub milioni mia moja zimeuzwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ndicho chombo cha moto kinachouzwa zaidi kuliko vyote katika historia.",
+      "text_markdown": "Ndicho chombo cha moto kinachouzwa zaidi kuliko vyote katika historia.",
+      "tts": {
+        "text": "Ndicho chombo cha moto kinachouzwa zaidi kuliko vyote katika historia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Punde, kampuni nyingine tatu za Japani zilifuata Honda.",
+      "text_markdown": "Punde, kampuni nyingine tatu za Japani zilifuata Honda.",
+      "tts": {
+        "text": "Punde, kampuni nyingine tatu za Japani zilifuata Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zilikuwa Yamaha, Suzuki, na Kawasaki.",
+      "text_markdown": "Zilikuwa Yamaha, Suzuki, na Kawasaki.",
+      "tts": {
+        "text": "Zilikuwa Yamaha, Suzuki, na Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pamoja na Honda, zinaitwa Wanne Wakubwa.",
+      "text_markdown": "Pamoja na Honda, zinaitwa Wanne Wakubwa.",
+      "tts": {
+        "text": "Pamoja na Honda, zinaitwa Wanne Wakubwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanne Wakubwa walitengeneza pikipiki za haraka, za bei nafuu, na rahisi kuendesha.",
+      "text_markdown": "Wanne Wakubwa walitengeneza pikipiki za haraka, za bei nafuu, na rahisi kuendesha.",
+      "tts": {
+        "text": "Wanne Wakubwa walitengeneza pikipiki za haraka, za bei nafuu, na rahisi kuendesha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kufikia miaka ya 1960, pikipiki za Kijapani zilikuwa kila mahali.",
+      "text_markdown": "Kufikia miaka ya 1960, pikipiki za Kijapani zilikuwa kila mahali.",
+      "tts": {
+        "text": "Kufikia miaka ya sitini, pikipiki za Kijapani zilikuwa kila mahali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4. Kuinuka kwa Japani",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walikuwa wafalme wapya wa barabara.",
+      "text_markdown": "Walikuwa wafalme wapya wa barabara.",
+      "tts": {
+        "text": "Walikuwa wafalme wapya wa barabara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "text_markdown": "Sura ya 5. Haraka, Haraka, Haraka Zaidi"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika miaka ya 1960, waendeshaji walitaka kwenda haraka zaidi.",
+      "text_markdown": "Katika miaka ya 1960, waendeshaji walitaka kwenda haraka zaidi.",
+      "tts": {
+        "text": "Katika miaka ya sitini, waendeshaji walitaka kwenda haraka zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wajenzi walianza shindano la kutengeneza pikipiki ya haraka zaidi ulimwenguni.",
+      "text_markdown": "Wajenzi walianza shindano la kutengeneza pikipiki ya haraka zaidi ulimwenguni.",
+      "tts": {
+        "text": "Wajenzi walianza shindano la kutengeneza pikipiki ya haraka zaidi ulimwenguni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huko Italia, kampuni ndogo iitwayo MV Agusta ilijenga pikipiki nyekundu nzuri ambazo zilishinda mbio baada ya mbio.",
+      "text_markdown": "Huko Italia, kampuni ndogo iitwayo MV Agusta ilijenga pikipiki nyekundu nzuri ambazo zilishinda mbio baada ya mbio.",
+      "tts": {
+        "text": "Huko Italia, kampuni ndogo iitwayo Em Vi Agusta ilijenga pikipiki nyekundu nzuri ambazo zilishinda mbio baada ya mbio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huko Uingereza, Triumph na Norton pia walijenga mashine zenye nguvu.",
+      "text_markdown": "Huko Uingereza, Triumph na Norton pia walijenga mashine zenye nguvu.",
+      "tts": {
+        "text": "Huko Uingereza, Triumph na Norton pia walijenga mashine zenye nguvu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha, mwaka 1969, Honda alifanya jambo la kushangaza.",
+      "text_markdown": "Kisha, mwaka 1969, Honda alifanya jambo la kushangaza.",
+      "tts": {
+        "text": "Kisha, mwaka elfu moja mia tisa sitini na tisa, Honda alifanya jambo la kushangaza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walijenga pikipiki iitwayo CB 750.",
+      "text_markdown": "Walijenga pikipiki iitwayo CB 750.",
+      "tts": {
+        "text": "Walijenga pikipiki iitwayo C B mia saba na hamsini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilikuwa na silinda nne na injini kubwa.",
+      "text_markdown": "Ilikuwa na silinda nne na injini kubwa.",
+      "tts": {
+        "text": "Ilikuwa na silinda nne na injini kubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingeweza kwenda zaidi ya maili 120 kwa saa.",
+      "text_markdown": "Ingeweza kwenda zaidi ya maili 120 kwa saa.",
+      "tts": {
+        "text": "Ingeweza kwenda zaidi ya maili mia moja na ishirini kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ilikuwa pikipiki kuu ya kweli ya kwanza.",
+      "text_markdown": "Ilikuwa pikipiki kuu ya kweli ya kwanza.",
+      "tts": {
+        "text": "Ilikuwa pikipiki kuu ya kweli ya kwanza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya CB 750, kila kampuni ilitaka kujenga pikipiki kuu.",
+      "text_markdown": "Baada ya CB 750, kila kampuni ilitaka kujenga pikipiki kuu.",
+      "tts": {
+        "text": "Baada ya C B mia saba na hamsini, kila kampuni ilitaka kujenga pikipiki kuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pikipiki zilikuwa za haraka zaidi na zaidi.",
+      "text_markdown": "Pikipiki zilikuwa za haraka zaidi na zaidi.",
+      "tts": {
+        "text": "Pikipiki zilikuwa za haraka zaidi na zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Punde, zilikuwa na vifuniko vyenye rangi, ganda laini la plastiki linalokata upepo.",
+      "text_markdown": "Punde, zilikuwa na vifuniko vyenye rangi, ganda laini la plastiki linalokata upepo.",
+      "tts": {
+        "text": "Punde, zilikuwa na vifuniko vyenye rangi, ganda laini la plastiki linalokata upepo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1990, pikipiki ya Kijapani iitwayo Kawasaki ZX-11 ikawa pikipiki ya haraka zaidi ulimwenguni.",
+      "text_markdown": "Mwaka 1990, pikipiki ya Kijapani iitwayo Kawasaki ZX-11 ikawa pikipiki ya haraka zaidi ulimwenguni.",
+      "tts": {
+        "text": "Mwaka elfu moja mia tisa tisini, pikipiki ya Kijapani iitwayo Kawasaki Z X kumi na moja ikawa pikipiki ya haraka zaidi ulimwenguni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ingeweza kwenda karibu maili 175 kwa saa.",
+      "text_markdown": "Ingeweza kwenda karibu maili 175 kwa saa.",
+      "tts": {
+        "text": "Ingeweza kwenda karibu maili mia moja sabini na tano kwa saa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miaka michache baadaye, Suzuki Hayabusa ilikwenda haraka zaidi.",
+      "text_markdown": "Miaka michache baadaye, Suzuki Hayabusa ilikwenda haraka zaidi.",
+      "tts": {
+        "text": "Miaka michache baadaye, Suzuki Hayabusa ilikwenda haraka zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilifika maili 194 kwa saa.",
+      "text_markdown": "Ilifika maili 194 kwa saa.",
+      "tts": {
+        "text": "Ilifika maili mia moja tisini na nne kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5. Haraka, Haraka, Haraka Zaidi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiyo ni haraka kuliko magari mengi yaliyo barabarani leo.",
+      "text_markdown": "Hiyo ni haraka kuliko magari mengi yaliyo barabarani leo.",
+      "tts": {
+        "text": "Hiyo ni haraka kuliko magari mengi yaliyo barabarani leo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "text_markdown": "Sura ya 6. Aina Nyingi za Pikipiki"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo, pikipiki zinakuja katika maumbo mengi.",
+      "text_markdown": "Leo, pikipiki zinakuja katika maumbo mengi.",
+      "tts": {
+        "text": "Leo, pikipiki zinakuja katika maumbo mengi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila aina imejengwa kwa kazi tofauti.",
+      "text_markdown": "Kila aina imejengwa kwa kazi tofauti.",
+      "tts": {
+        "text": "Kila aina imejengwa kwa kazi tofauti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ya michezo imejengwa ili kwenda haraka sana.",
+      "text_markdown": "Pikipiki ya michezo imejengwa ili kwenda haraka sana.",
+      "tts": {
+        "text": "Pikipiki ya michezo imejengwa ili kwenda haraka sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni nyepesi na fupi.",
+      "text_markdown": "Ni nyepesi na fupi.",
+      "tts": {
+        "text": "Ni nyepesi na fupi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwendeshaji huinama mbele.",
+      "text_markdown": "Mwendeshaji huinama mbele.",
+      "tts": {
+        "text": "Mwendeshaji huinama mbele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pikipiki za michezo zinatengenezwa kwa barabara laini na njia za mashindano.",
+      "text_markdown": "Pikipiki za michezo zinatengenezwa kwa barabara laini na njia za mashindano.",
+      "tts": {
+        "text": "Pikipiki za michezo zinatengenezwa kwa barabara laini na njia za mashindano.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ya barabara ya udongo imejengwa kwa matope na vumbi.",
+      "text_markdown": "Pikipiki ya barabara ya udongo imejengwa kwa matope na vumbi.",
+      "tts": {
+        "text": "Pikipiki ya barabara ya udongo imejengwa kwa matope na vumbi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ina magurudumu marefu na matairi makubwa.",
+      "text_markdown": "Ina magurudumu marefu na matairi makubwa.",
+      "tts": {
+        "text": "Ina magurudumu marefu na matairi makubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pikipiki za udongo zinaweza kuruka juu ya milima.",
+      "text_markdown": "Pikipiki za udongo zinaweza kuruka juu ya milima.",
+      "tts": {
+        "text": "Pikipiki za udongo zinaweza kuruka juu ya milima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Waendeshaji wengi wachanga hujifunza kwanza kwenye pikipiki za udongo.",
+      "text_markdown": "Waendeshaji wengi wachanga hujifunza kwanza kwenye pikipiki za udongo.",
+      "tts": {
+        "text": "Waendeshaji wengi wachanga hujifunza kwanza kwenye pikipiki za udongo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cruiser ni ndefu na fupi.",
+      "text_markdown": "Cruiser ni ndefu na fupi.",
+      "tts": {
+        "text": "Cruiser ni ndefu na fupi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwendeshaji huketi wima na kuendesha polepole.",
+      "text_markdown": "Mwendeshaji huketi wima na kuendesha polepole.",
+      "tts": {
+        "text": "Mwendeshaji huketi wima na kuendesha polepole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson ni maarufu kwa cruisers.",
+      "text_markdown": "Harley-Davidson ni maarufu kwa cruisers.",
+      "tts": {
+        "text": "Harley Davidson ni maarufu kwa cruisers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Indian pia.",
+      "text_markdown": "Indian pia.",
+      "tts": {
+        "text": "Indian pia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ya safari imejengwa kwa safari ndefu.",
+      "text_markdown": "Pikipiki ya safari imejengwa kwa safari ndefu.",
+      "tts": {
+        "text": "Pikipiki ya safari imejengwa kwa safari ndefu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inaweza kuendesha barabarani na kwenye udongo.",
+      "text_markdown": "Inaweza kuendesha barabarani na kwenye udongo.",
+      "tts": {
+        "text": "Inaweza kuendesha barabarani na kwenye udongo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS ni pikipiki ya safari maarufu.",
+      "text_markdown": "BMW GS ni pikipiki ya safari maarufu.",
+      "tts": {
+        "text": "Bi Em Dabu Ji Es ni pikipiki ya safari maarufu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "KTM pia.",
+      "text_markdown": "KTM pia.",
+      "tts": {
+        "text": "Ke Ti Em pia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pia kuna chopper, scooter, pikipiki za mbio, na pikipiki za umeme.",
+      "text_markdown": "Pia kuna chopper, scooter, pikipiki za mbio, na pikipiki za umeme.",
+      "tts": {
+        "text": "Pia kuna chopper, scooter, pikipiki za mbio, na pikipiki za umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuna pikipiki kwa karibu kila aina ya barabara.",
+      "text_markdown": "Kuna pikipiki kwa karibu kila aina ya barabara.",
+      "tts": {
+        "text": "Kuna pikipiki kwa karibu kila aina ya barabara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6. Aina Nyingi za Pikipiki",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo, unaweza kupata pikipiki katika kila nchi ulimwenguni.",
+      "text_markdown": "Leo, unaweza kupata pikipiki katika kila nchi ulimwenguni.",
+      "tts": {
+        "text": "Leo, unaweza kupata pikipiki katika kila nchi ulimwenguni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 7. Barabara Mpya",
+      "text_markdown": "Sura ya 7. Barabara Mpya"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo, pikipiki ina aina mpya ya injini.",
+      "text_markdown": "Leo, pikipiki ina aina mpya ya injini.",
+      "tts": {
+        "text": "Leo, pikipiki ina aina mpya ya injini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni injini ya umeme.",
+      "text_markdown": "Ni injini ya umeme.",
+      "tts": {
+        "text": "Ni injini ya umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pikipiki ya umeme ni kimya.",
+      "text_markdown": "Pikipiki ya umeme ni kimya.",
+      "tts": {
+        "text": "Pikipiki ya umeme ni kimya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haihitaji petroli.",
+      "text_markdown": "Haihitaji petroli.",
+      "tts": {
+        "text": "Haihitaji petroli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Inahitaji tu kuchomekwa kama simu.",
+      "text_markdown": "Inahitaji tu kuchomekwa kama simu.",
+      "tts": {
+        "text": "Inahitaji tu kuchomekwa kama simu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kampuni iitwayo Zero inajenga pikipiki za umeme huko California.",
+      "text_markdown": "Kampuni iitwayo Zero inajenga pikipiki za umeme huko California.",
+      "tts": {
+        "text": "Kampuni iitwayo Zero inajenga pikipiki za umeme huko California.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson sasa inajenga pikipiki ya umeme iitwayo LiveWire.",
+      "text_markdown": "Harley-Davidson sasa inajenga pikipiki ya umeme iitwayo LiveWire.",
+      "tts": {
+        "text": "Harley Davidson sasa inajenga pikipiki ya umeme iitwayo LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kampuni ya Italia iitwayo Energica inajenga pikipiki za mbio za umeme.",
+      "text_markdown": "Kampuni ya Italia iitwayo Energica inajenga pikipiki za mbio za umeme.",
+      "tts": {
+        "text": "Kampuni ya Italia iitwayo Energica inajenga pikipiki za mbio za umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ni za haraka sana.",
+      "text_markdown": "Ni za haraka sana.",
+      "tts": {
+        "text": "Ni za haraka sana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pikipiki ya kwanza, Reitwagen, ingeweza kwenda maili 7 kwa saa.",
+      "text_markdown": "Pikipiki ya kwanza, Reitwagen, ingeweza kwenda maili 7 kwa saa.",
+      "tts": {
+        "text": "Pikipiki ya kwanza, Raiti Vageni, ingeweza kwenda maili saba kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pikipiki za umeme za leo zinaweza kwenda zaidi ya maili 200 kwa saa.",
+      "text_markdown": "Pikipiki za umeme za leo zinaweza kwenda zaidi ya maili 200 kwa saa.",
+      "tts": {
+        "text": "Pikipiki za umeme za leo zinaweza kwenda zaidi ya maili mia mbili kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hiyo ndiyo hadithi ya pikipiki hadi sasa.",
+      "text_markdown": "Hiyo ndiyo hadithi ya pikipiki hadi sasa.",
+      "tts": {
+        "text": "Hiyo ndiyo hadithi ya pikipiki hadi sasa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ilikuwa hadithi kubwa.",
+      "text_markdown": "Hii ilikuwa hadithi kubwa.",
+      "tts": {
+        "text": "Hii ilikuwa hadithi kubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vitabu kumi na moja vijavyo vitasimulia hadithi ndogo.",
+      "text_markdown": "Vitabu kumi na moja vijavyo vitasimulia hadithi ndogo.",
+      "tts": {
+        "text": "Vitabu kumi na moja vijavyo vitasimulia hadithi ndogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila kimoja kinahusu sehemu moja ya ulimwengu wa pikipiki.",
+      "text_markdown": "Kila kimoja kinahusu sehemu moja ya ulimwengu wa pikipiki.",
+      "tts": {
+        "text": "Kila kimoja kinahusu sehemu moja ya ulimwengu wa pikipiki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juzuu ya pili inahusu Harley-Davidson.",
+      "text_markdown": "Juzuu ya pili inahusu Harley-Davidson.",
+      "tts": {
+        "text": "Juzuu ya pili inahusu Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juzuu ya tatu inahusu Honda.",
+      "text_markdown": "Juzuu ya tatu inahusu Honda.",
+      "tts": {
+        "text": "Juzuu ya tatu inahusu Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juzuu ya nne inahusu Ducati kutoka Italia.",
+      "text_markdown": "Juzuu ya nne inahusu Ducati kutoka Italia.",
+      "tts": {
+        "text": "Juzuu ya nne inahusu Ducati kutoka Italia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juzuu ya tano inahusu BMW kutoka Ujerumani.",
+      "text_markdown": "Juzuu ya tano inahusu BMW kutoka Ujerumani.",
+      "tts": {
+        "text": "Juzuu ya tano inahusu Bi Em Dabu kutoka Ujerumani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Juzuu ya sita inahusu Triumph kutoka Uingereza.",
+      "text_markdown": "Juzuu ya sita inahusu Triumph kutoka Uingereza.",
+      "tts": {
+        "text": "Juzuu ya sita inahusu Triumph kutoka Uingereza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juzuu ya saba inahusu pikipiki za udongo.",
+      "text_markdown": "Juzuu ya saba inahusu pikipiki za udongo.",
+      "tts": {
+        "text": "Juzuu ya saba inahusu pikipiki za udongo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juzuu ya nane inahusu pikipiki za michezo.",
+      "text_markdown": "Juzuu ya nane inahusu pikipiki za michezo.",
+      "tts": {
+        "text": "Juzuu ya nane inahusu pikipiki za michezo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juzuu ya tisa inahusu cruiser na chopper.",
+      "text_markdown": "Juzuu ya tisa inahusu cruiser na chopper.",
+      "tts": {
+        "text": "Juzuu ya tisa inahusu cruiser na chopper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juzuu ya kumi inahusu pikipiki za safari.",
+      "text_markdown": "Juzuu ya kumi inahusu pikipiki za safari.",
+      "tts": {
+        "text": "Juzuu ya kumi inahusu pikipiki za safari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Juzuu ya kumi na moja inahusu mbio.",
+      "text_markdown": "Juzuu ya kumi na moja inahusu mbio.",
+      "tts": {
+        "text": "Juzuu ya kumi na moja inahusu mbio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juzuu ya kumi na mbili inahusu pikipiki za umeme na siku zijazo.",
+      "text_markdown": "Juzuu ya kumi na mbili inahusu pikipiki za umeme na siku zijazo.",
+      "tts": {
+        "text": "Juzuu ya kumi na mbili inahusu pikipiki za umeme na siku zijazo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chagua ile inayoonekana kuwa ya kufurahisha zaidi.",
+      "text_markdown": "Chagua ile inayoonekana kuwa ya kufurahisha zaidi.",
+      "tts": {
+        "text": "Chagua ile inayoonekana kuwa ya kufurahisha zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7. Barabara Mpya",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kisha twende nawe pamoja kwenye safari.",
+      "text_markdown": "Kisha twende nawe pamoja kwenye safari.",
+      "tts": {
+        "text": "Kisha twende nawe pamoja kwenye safari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kuhusu Kitabu Hiki",
+      "text_markdown": "Kuhusu Kitabu Hiki"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiki ni kitabu cha kwanza katika mfululizo wa Pikipiki.",
+      "text_markdown": "Hiki ni kitabu cha kwanza katika mfululizo wa Pikipiki.",
+      "tts": {
+        "text": "Hiki ni kitabu cha kwanza katika mfululizo wa Pikipiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kinasomwa kwa sauti na August.",
+      "text_markdown": "Kinasomwa kwa sauti na August.",
+      "tts": {
+        "text": "Kinasomwa kwa sauti na August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila sentensi ni fupi na wazi ili uweze kusoma pamoja katika lugha yoyote.",
+      "text_markdown": "Kila sentensi ni fupi na wazi ili uweze kusoma pamoja katika lugha yoyote.",
+      "tts": {
+        "text": "Kila sentensi ni fupi na wazi ili uweze kusoma pamoja katika lugha yoyote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ukitaka kusikia jinsi sentensi inavyosikika katika lugha nyingine, sikiliza kitabu hicho hicho katika lugha hiyo.",
+      "text_markdown": "Ukitaka kusikia jinsi sentensi inavyosikika katika lugha nyingine, sikiliza kitabu hicho hicho katika lugha hiyo.",
+      "tts": {
+        "text": "Ukitaka kusikia jinsi sentensi inavyosikika katika lugha nyingine, sikiliza kitabu hicho hicho katika lugha hiyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maneno yaliyo ukurasani yatalingana na yale unayosikia.",
+      "text_markdown": "Maneno yaliyo ukurasani yatalingana na yale unayosikia.",
+      "tts": {
+        "text": "Maneno yaliyo ukurasani yatalingana na yale unayosikia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hivyo ndivyo unavyojifunza.",
+      "text_markdown": "Hivyo ndivyo unavyojifunza.",
+      "tts": {
+        "text": "Hivyo ndivyo unavyojifunza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kuhusu Kitabu Hiki",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sasa nenda utafute pikipiki na uisikilize ikifanya vrum.",
+      "text_markdown": "Sasa nenda utafute pikipiki na uisikilize ikifanya vrum.",
+      "tts": {
+        "text": "Sasa nenda utafute pikipiki na uisikilize ikifanya vrum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

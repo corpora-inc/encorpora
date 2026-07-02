@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "language": "fi",
+  "book_id": "book_persian_food",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lukijalle",
+      "text_markdown": "Lukijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hei.",
+      "text_markdown": "Hei.",
+      "tts": {
+        "text": "Hei.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Olen Kym.",
+      "text_markdown": "Olen Kym.",
+      "tts": {
+        "text": "Olen Kym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rakastan ruokaa.",
+      "text_markdown": "Rakastan ruokaa.",
+      "tts": {
+        "text": "Rakastan ruokaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rakastan tarinoita ruoasta.",
+      "text_markdown": "Rakastan tarinoita ruoasta.",
+      "tts": {
+        "text": "Rakastan tarinoita ruoasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on pieni kirja suuresta ruoasta.",
+      "text_markdown": "Tämä on pieni kirja suuresta ruoasta.",
+      "tts": {
+        "text": "Tämä on pieni kirja suuresta ruoasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ruoka on persialainen ruoka.",
+      "text_markdown": "Ruoka on persialainen ruoka.",
+      "tts": {
+        "text": "Ruoka on persialainen ruoka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on Iranin ruokaa.",
+      "text_markdown": "Se on Iranin ruokaa.",
+      "tts": {
+        "text": "Se on Iranin ruokaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se on myös paljon vanhemman maan ruokaa. Sen maan nimi on Persia.",
+      "text_markdown": "Se on myös paljon vanhemman maan ruokaa. Sen maan nimi on Persia.",
+      "tts": {
+        "text": "Se on myös paljon vanhemman maan ruokaa. Sen maan nimi on Persia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persia on yksi maailman vanhimmista paikoista, joissa ihmiset viljelivät ruokaa tarkoituksella.",
+      "text_markdown": "Persia on yksi maailman vanhimmista paikoista, joissa ihmiset viljelivät ruokaa tarkoituksella.",
+      "tts": {
+        "text": "Persia on yksi maailman vanhimmista paikoista, joissa ihmiset viljelivät ruokaa tarkoituksella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vehnä, ohra, persikka, aprikoosi, granaattiomena, pinaatti, sahrami — monet lautasellasi olevat asiat syntyivät siellä.",
+      "text_markdown": "Vehnä, ohra, persikka, aprikoosi, granaattiomena, pinaatti, sahrami — monet lautasellasi olevat asiat syntyivät siellä.",
+      "tts": {
+        "text": "Vehnä, ohra, persikka, aprikoosi, granaattiomena, pinaatti, sahrami, monet lautasellasi olevat asiat syntyivät siellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aloitamme maasta.",
+      "text_markdown": "Aloitamme maasta.",
+      "tts": {
+        "text": "Aloitamme maasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitten katsomme, mitä siellä kasvaa.",
+      "text_markdown": "Sitten katsomme, mitä siellä kasvaa.",
+      "tts": {
+        "text": "Sitten katsomme, mitä siellä kasvaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten katsomme riisiä, leipää, lihaa ja muhennoksia.",
+      "text_markdown": "Sitten katsomme riisiä, leipää, lihaa ja muhennoksia.",
+      "tts": {
+        "text": "Sitten katsomme riisiä, leipää, lihaa ja muhennoksia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lopussa tiedät, mitä persialaisella pöydällä on, ja tiedät mistä se tulee.",
+      "text_markdown": "Lopussa tiedät, mitä persialaisella pöydällä on, ja tiedät mistä se tulee.",
+      "tts": {
+        "text": "Lopussa tiedät, mitä persialaisella pöydällä on, ja tiedät mistä se tulee.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Istu alas.",
+      "text_markdown": "Istu alas.",
+      "tts": {
+        "text": "Istu alas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaada teetä.",
+      "text_markdown": "Kaada teetä.",
+      "tts": {
+        "text": "Kaada teetä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aloitetaan.",
+      "text_markdown": "Aloitetaan.",
+      "tts": {
+        "text": "Aloitetaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 1 — Maa, jossa maanviljely alkoi",
+      "text_markdown": "Luku 1 — Maa, jossa maanviljely alkoi"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persia on korkea ja kuiva maa.",
+      "text_markdown": "Persia on korkea ja kuiva maa.",
+      "tts": {
+        "text": "Persia on korkea ja kuiva maa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se sijaitsee Kaspianmeren pohjoispuolen ja Persianlahdenlahden eteläpuolen välissä.",
+      "text_markdown": "Se sijaitsee Kaspianmeren pohjoispuolen ja Persianlahdenlahden eteläpuolen välissä.",
+      "tts": {
+        "text": "Se sijaitsee Kaspianmeren pohjoispuolen ja Persianlahden eteläpuolen välissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lännessä on Mesopotamia.",
+      "text_markdown": "Lännessä on Mesopotamia.",
+      "tts": {
+        "text": "Lännessä on Mesopotamia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Idässä on Intia.",
+      "text_markdown": "Idässä on Intia.",
+      "tts": {
+        "text": "Idässä on Intia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Keskellä on vuoria ja aavikkoja.",
+      "text_markdown": "Keskellä on vuoria ja aavikkoja.",
+      "tts": {
+        "text": "Keskellä on vuoria ja aavikkoja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aivan naapurissa, noin 10 000 vuotta sitten, ihmiset viljelivät ensi kerran vehnää ja ohraa tarkoituksella.",
+      "text_markdown": "Aivan naapurissa, noin 10 000 vuotta sitten, ihmiset viljelivät ensi kerran vehnää ja ohraa tarkoituksella.",
+      "tts": {
+        "text": "Aivan naapurissa, noin kymmenentuhatta vuotta sitten, ihmiset viljelivät ensi kerran vehnää ja ohraa tarkoituksella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maanviljely syntyi siellä.",
+      "text_markdown": "Maanviljely syntyi siellä.",
+      "tts": {
+        "text": "Maanviljely syntyi siellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persia oli yksi ensimmäisistä paikoista, jotka oppivat sen.",
+      "text_markdown": "Persia oli yksi ensimmäisistä paikoista, jotka oppivat sen.",
+      "tts": {
+        "text": "Persia oli yksi ensimmäisistä paikoista, jotka oppivat sen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuo pitkä etumatka näkyy jokaisella persialaisella lautasella.",
+      "text_markdown": "Tuo pitkä etumatka näkyy jokaisella persialaisella lautasella.",
+      "tts": {
+        "text": "Tuo pitkä etumatka näkyy jokaisella persialaisella lautasella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persikka on kotoisin Persiasta.",
+      "text_markdown": "Persikka on kotoisin Persiasta.",
+      "tts": {
+        "text": "Persikka on kotoisin Persiasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Roomalaiset kutsuivat sitä nimellä Persica, \"persialainen hedelmä\". Suomen sana \"persikka\" tulee tästä nimestä.",
+      "text_markdown": "Roomalaiset kutsuivat sitä nimellä Persica, \"persialainen hedelmä\". Suomen sana \"persikka\" tulee tästä nimestä.",
+      "tts": {
+        "text": "Roomalaiset kutsuivat sitä nimellä Persika, persialainen hedelmä. Suomen sana persikka tulee tästä nimestä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprikoosi on myös sieltä kotoisin.",
+      "text_markdown": "Aprikoosi on myös sieltä kotoisin.",
+      "tts": {
+        "text": "Aprikoosi on myös sieltä kotoisin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Samoin granaattiomena.",
+      "text_markdown": "Samoin granaattiomena.",
+      "tts": {
+        "text": "Samoin granaattiomena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Samoin saksanpähkinä.",
+      "text_markdown": "Samoin saksanpähkinä.",
+      "tts": {
+        "text": "Samoin saksanpähkinä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samoin hapankirsikka.",
+      "text_markdown": "Samoin hapankirsikka.",
+      "tts": {
+        "text": "Samoin hapankirsikka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Samoin yksi maailman ensimmäisistä salaattivihanneksista, pinaatti.",
+      "text_markdown": "Samoin yksi maailman ensimmäisistä salaattivihanneksista, pinaatti.",
+      "tts": {
+        "text": "Samoin yksi maailman ensimmäisistä salaattivihanneksista, pinaatti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Englannin sana \"spinach\" tulee persian sanasta esfanaj.",
+      "text_markdown": "Englannin sana \"spinach\" tulee persian sanasta esfanaj.",
+      "tts": {
+        "text": "Englannin sana spinatsh tulee persian sanasta esfanaadž.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jopa sana \"paratiisi\" on persialainen sana.",
+      "text_markdown": "Jopa sana \"paratiisi\" on persialainen sana.",
+      "tts": {
+        "text": "Jopa sana paratiisi on persialainen sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se tulee sanasta pardis, muurattu puutarha.",
+      "text_markdown": "Se tulee sanasta pardis, muurattu puutarha.",
+      "tts": {
+        "text": "Se tulee sanasta pardis, muurattu puutarha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ensimmäinen paratiisi oli persialainen hedelmätarha, täynnä granaattiomenapuita.",
+      "text_markdown": "Ensimmäinen paratiisi oli persialainen hedelmätarha, täynnä granaattiomenapuita.",
+      "tts": {
+        "text": "Ensimmäinen paratiisi oli persialainen hedelmätarha, täynnä granaattiomenapuita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persia ei vain syönyt hyvin.",
+      "text_markdown": "Persia ei vain syönyt hyvin.",
+      "tts": {
+        "text": "Persia ei vain syönyt hyvin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persia opetti maailman syömään hyvin.",
+      "text_markdown": "Persia opetti maailman syömään hyvin.",
+      "tts": {
+        "text": "Persia opetti maailman syömään hyvin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 2 — Kotimaiset ruokatarvikkeet",
+      "text_markdown": "Luku 2 — Kotimaiset ruokatarvikkeet"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avaa persialainen ruokakomero.",
+      "text_markdown": "Avaa persialainen ruokakomero.",
+      "tts": {
+        "text": "Avaa persialainen ruokakomero.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tuoksut kertovat tarinan.",
+      "text_markdown": "Tuoksut kertovat tarinan.",
+      "tts": {
+        "text": "Tuoksut kertovat tarinan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen tuoksu on sahrami.",
+      "text_markdown": "Ensimmäinen tuoksu on sahrami.",
+      "tts": {
+        "text": "Ensimmäinen tuoksu on sahrami.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran tuottaa noin 90 % maailman sahramista.",
+      "text_markdown": "Iran tuottaa noin 90 % maailman sahramista.",
+      "tts": {
+        "text": "Iran tuottaa noin yhdeksänkymmentä prosenttia maailman sahramista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suurin osa siitä tulee Khorasan-nimisestä maakunnasta.",
+      "text_markdown": "Suurin osa siitä tulee Khorasan-nimisestä maakunnasta.",
+      "tts": {
+        "text": "Suurin osa siitä tulee Horasaan nimisestä maakunnasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yhden gramman tuottamiseksi viljelijä poimii käsin punaiset säikeet noin 200 krokuksen kukasta.",
+      "text_markdown": "Yhden gramman tuottamiseksi viljelijä poimii käsin punaiset säikeet noin 200 krokuksen kukasta.",
+      "tts": {
+        "text": "Yhden gramman tuottamiseksi viljelijä poimii käsin punaiset säikeet noin kahdestasadasta krokuksen kukasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Työ tehdään kylminä syksyn aamuinkoittoina.",
+      "text_markdown": "Työ tehdään kylminä syksyn aamuinkoittoina.",
+      "tts": {
+        "text": "Työ tehdään kylminä syksyn aamuinkoittoina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sahrami on maailman kallein mauste.",
+      "text_markdown": "Sahrami on maailman kallein mauste.",
+      "tts": {
+        "text": "Sahrami on maailman kallein mauste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hyppysellinen tekee riisistä kultaista ja vedestä hajuvettä.",
+      "text_markdown": "Hyppysellinen tekee riisistä kultaista ja vedestä hajuvettä.",
+      "tts": {
+        "text": "Hyppysellinen tekee riisistä kultaista ja vedestä hajuvettä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen tuoksu on granaattiomena.",
+      "text_markdown": "Toinen tuoksu on granaattiomena.",
+      "tts": {
+        "text": "Toinen tuoksu on granaattiomena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persialaiset ovat kasvattaneet granaattiomenoita tuhansia vuosia.",
+      "text_markdown": "Persialaiset ovat kasvattaneet granaattiomenoita tuhansia vuosia.",
+      "tts": {
+        "text": "Persialaiset ovat kasvattaneet granaattiomenoita tuhansia vuosia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hedelmä on rakkauden ja paratiisin symboli.",
+      "text_markdown": "Hedelmä on rakkauden ja paratiisin symboli.",
+      "tts": {
+        "text": "Hedelmä on rakkauden ja paratiisin symboli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mehu puristetaan patoihin.",
+      "text_markdown": "Mehu puristetaan patoihin.",
+      "tts": {
+        "text": "Mehu puristetaan patoihin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Siemeniä ripotellaan riisin ja salaattien päälle.",
+      "text_markdown": "Siemeniä ripotellaan riisin ja salaattien päälle.",
+      "tts": {
+        "text": "Siemeniä ripotellaan riisin ja salaattien päälle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten tulevat pistaasipähkinät.",
+      "text_markdown": "Sitten tulevat pistaasipähkinät.",
+      "tts": {
+        "text": "Sitten tulevat pistaasipähkinät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iranissa on pistaasilehtoja, jotka ovat kolmetuhatta vuotta vanhoja.",
+      "text_markdown": "Iranissa on pistaasilehtoja, jotka ovat kolmetuhatta vuotta vanhoja.",
+      "tts": {
+        "text": "Iranissa on pistaasilehtoja, jotka ovat kolmetuhatta vuotta vanhoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maailmalla syömäsi pistaasipähkinä on usein persialaisen puun jälkeläinen.",
+      "text_markdown": "Maailmalla syömäsi pistaasipähkinä on usein persialaisen puun jälkeläinen.",
+      "tts": {
+        "text": "Maailmalla syömäsi pistaasipähkinä on usein persialaisen puun jälkeläinen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarjolla on saksanpähkinöitä, hapankirsikoita, kvitteniä, meloneita ja taateleita.",
+      "text_markdown": "Tarjolla on saksanpähkinöitä, hapankirsikoita, kvitteniä, meloneita ja taateleita.",
+      "tts": {
+        "text": "Tarjolla on saksanpähkinöitä, hapankirsikoita, kvitteniä, meloneita ja taateleita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On sumakia, tummanpunaista hapanta maustetta villikasvista.",
+      "text_markdown": "On sumakia, tummanpunaista hapanta maustetta villikasvista.",
+      "tts": {
+        "text": "On sumaakia, tummanpunaista hapanta maustetta villikasvista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ennen kuin sitruunat yleistyivät, sumak antoi ruoalle kirpeän maun.",
+      "text_markdown": "Ennen kuin sitruunat yleistyivät, sumak antoi ruoalle kirpeän maun.",
+      "tts": {
+        "text": "Ennen kuin sitruunat yleistyivät, sumaak antoi ruoalle kirpeän maun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se tekee niin edelleen.",
+      "text_markdown": "Se tekee niin edelleen.",
+      "tts": {
+        "text": "Se tekee niin edelleen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialainen ruokakomero pitää sisällään puolet hedelmien historiasta.",
+      "text_markdown": "Persialainen ruokakomero pitää sisällään puolet hedelmien historiasta.",
+      "tts": {
+        "text": "Persialainen ruokakomero pitää sisällään puolet hedelmien historiasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 3 — Riisi, leipä ja pyhä kuori",
+      "text_markdown": "Luku 3 — Riisi, leipä ja pyhä kuori"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Riisi tuli Persiaan Intiasta noin 2 500 vuotta sitten.",
+      "text_markdown": "Riisi tuli Persiaan Intiasta noin 2 500 vuotta sitten.",
+      "tts": {
+        "text": "Riisi tuli Persiaan Intiasta noin kaksituhatta viisisataa vuotta sitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siitä tuli pöydän sydän.",
+      "text_markdown": "Siitä tuli pöydän sydän.",
+      "tts": {
+        "text": "Siitä tuli pöydän sydän.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialaiset keittävät riisin kahdella tavalla.",
+      "text_markdown": "Persialaiset keittävät riisin kahdella tavalla.",
+      "tts": {
+        "text": "Persialaiset keittävät riisin kahdella tavalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pelkkää riisiä kutsutaan cheloksi.",
+      "text_markdown": "Pelkkää riisiä kutsutaan cheloksi.",
+      "tts": {
+        "text": "Pelkkää riisiä kutsutaan tšeloksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yrttien, lihan tai hedelmän kanssa sekoitettua riisiä kutsutaan poloksi.",
+      "text_markdown": "Yrttien, lihan tai hedelmän kanssa sekoitettua riisiä kutsutaan poloksi.",
+      "tts": {
+        "text": "Yrttien, lihan tai hedelmän kanssa sekoitettua riisiä kutsutaan poloksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molemmat ovat pitkiä, kevyitä ja irtonaisia — jokainen jyvä omillaan.",
+      "text_markdown": "Molemmat ovat pitkiä, kevyitä ja irtonaisia — jokainen jyvä omillaan.",
+      "tts": {
+        "text": "Molemmat ovat pitkiä, kevyitä ja irtonaisia, jokainen jyvä omillaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta taika on kattilan pohjalla.",
+      "text_markdown": "Mutta taika on kattilan pohjalla.",
+      "tts": {
+        "text": "Mutta taika on kattilan pohjalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä kutsutaan tahdighiksi.",
+      "text_markdown": "Sitä kutsutaan tahdighiksi.",
+      "tts": {
+        "text": "Sitä kutsutaan tah diikiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kokki laittaa ohuen kerroksen kattilan pohjalle — joskus sahramiiriisiä, joskus perunaviipale, joskus leipäpala.",
+      "text_markdown": "Kokki laittaa ohuen kerroksen kattilan pohjalle — joskus sahramiiriisiä, joskus perunaviipale, joskus leipäpala.",
+      "tts": {
+        "text": "Kokki laittaa ohuen kerroksen kattilan pohjalle, joskus sahramiiriisiä, joskus perunaviipale, joskus leipäpala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sitten riisi menee päälle.",
+      "text_markdown": "Sitten riisi menee päälle.",
+      "tts": {
+        "text": "Sitten riisi menee päälle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sitten kansi pannaan päälle, kiedottuna teeliinaan, ja höyry tekee työn.",
+      "text_markdown": "Sitten kansi pannaan päälle, kiedottuna teeliinaan, ja höyry tekee työn.",
+      "tts": {
+        "text": "Sitten kansi pannaan päälle, kiedottuna teeliinaan, ja höyry tekee työn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tunnin jälkeen pohjakerros on kultainen ja rapea.",
+      "text_markdown": "Tunnin jälkeen pohjakerros on kultainen ja rapea.",
+      "tts": {
+        "text": "Tunnin jälkeen pohjakerros on kultainen ja rapea.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig on pyhä.",
+      "text_markdown": "Tahdig on pyhä.",
+      "tts": {
+        "text": "Tahdigh on pyhä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perheet taistelevat siitä.",
+      "text_markdown": "Perheet taistelevat siitä.",
+      "tts": {
+        "text": "Perheet taistelevat siitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iranilaisessa televisiossa on kokonaisia ohjelmia siitä, kuka tekee parhaan.",
+      "text_markdown": "Iranilaisessa televisiossa on kokonaisia ohjelmia siitä, kuka tekee parhaan.",
+      "tts": {
+        "text": "Iranilaisessa televisiossa on kokonaisia ohjelmia siitä, kuka tekee parhaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Täydellinen tahdig irtoaa pannusta yhtenä kauniina pyöreänä levynä.",
+      "text_markdown": "Täydellinen tahdig irtoaa pannusta yhtenä kauniina pyöreänä levynä.",
+      "tts": {
+        "text": "Täydellinen tahdigh irtoaa pannusta yhtenä kauniina pyöreänä levynä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten on vuorossa leipä.",
+      "text_markdown": "Sitten on vuorossa leipä.",
+      "tts": {
+        "text": "Sitten on vuorossa leipä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuuluisin on sangak.",
+      "text_markdown": "Kuuluisin on sangak.",
+      "tts": {
+        "text": "Kuuluisin on sangak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak leivotaan kuumien kivien päällä, ja menetelmä on viisituhatta vuotta vanha.",
+      "text_markdown": "Sangak leivotaan kuumien kivien päällä, ja menetelmä on viisituhatta vuotta vanha.",
+      "tts": {
+        "text": "Sangak leivotaan kuumien kivien päällä, ja menetelmä on viisituhatta vuotta vanha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kiviä tulee silti mukana leivässä.",
+      "text_markdown": "Kiviä tulee silti mukana leivässä.",
+      "tts": {
+        "text": "Kiviä tulee silti mukana leivässä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Poimit ne pois pöydässä.",
+      "text_markdown": "Poimit ne pois pöydässä.",
+      "tts": {
+        "text": "Poimit ne pois pöydässä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muita leipiä ovat barbari, lavash ja taftoon.",
+      "text_markdown": "Muita leipiä ovat barbari, lavash ja taftoon.",
+      "tts": {
+        "text": "Muita leipiä ovat barbari, laavaš ja taftun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persialainen aamiainen on leipää, teetä ja pehmeää valkoista juustoa.",
+      "text_markdown": "Persialainen aamiainen on leipää, teetä ja pehmeää valkoista juustoa.",
+      "tts": {
+        "text": "Persialainen aamiainen on leipää, teetä ja pehmeää valkoista juustoa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 4 — Kebab ja kärsivällinen muhennos",
+      "text_markdown": "Luku 4 — Kebab ja kärsivällinen muhennos"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sana kebab on persiaa.",
+      "text_markdown": "Sana kebab on persiaa.",
+      "tts": {
+        "text": "Sana kebab on persiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on kabab, eli tulella kypsennettyä lihaa.",
+      "text_markdown": "Se on kabab, eli tulella kypsennettyä lihaa.",
+      "tts": {
+        "text": "Se on kabab, eli tulella kypsennettyä lihaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persialaiset ovat kypsentäneet lammasta pitkillä litteillä vartailla tuhansien vuosien ajan.",
+      "text_markdown": "Persialaiset ovat kypsentäneet lammasta pitkillä litteillä vartailla tuhansien vuosien ajan.",
+      "tts": {
+        "text": "Persialaiset ovat kypsentäneet lammasta pitkillä litteillä vartailla tuhansien vuosien ajan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suosituin kebab nykyään on koobideh.",
+      "text_markdown": "Suosituin kebab nykyään on koobideh.",
+      "tts": {
+        "text": "Suosituin kebab nykyään on kubidee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on jauhettua lammasta tai naudanlihaa, sekoitettu sipulin ja suolan kanssa, puristettu leveälle litteälle vartaalle ja grillattua hiilillä.",
+      "text_markdown": "Se on jauhettua lammasta tai naudanlihaa, sekoitettu sipulin ja suolan kanssa, puristettu leveälle litteälle vartaalle ja grillattua hiilillä.",
+      "tts": {
+        "text": "Se on jauhettua lammasta tai naudanlihaa, sekoitettu sipulin ja suolan kanssa, puristettu leveälle litteälle vartaalle ja grillattua hiilillä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se näyttää muinaiselta.",
+      "text_markdown": "Se näyttää muinaiselta.",
+      "tts": {
+        "text": "Se näyttää muinaiselta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mutta ei se ole.",
+      "text_markdown": "Mutta ei se ole.",
+      "tts": {
+        "text": "Mutta ei se ole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Lihamylly saapui Iraniin vasta 1800-luvun lopulla.",
+      "text_markdown": "Lihamylly saapui Iraniin vasta 1800-luvun lopulla.",
+      "tts": {
+        "text": "Lihamylly saapui Iraniin vasta tuhatyhdeksänsadan luvun lopulla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koobideh, persialaisista kebabeista persialaisin, on vasta hieman yli sata vuotta vanha.",
+      "text_markdown": "Koobideh, persialaisista kebabeista persialaisin, on vasta hieman yli sata vuotta vanha.",
+      "tts": {
+        "text": "Kubidee, persialaisista kebabeista persialaisin, on vasta hieman yli sata vuotta vanha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vanhemmat kebab-lajit valmistetaan viipaloituneesta lihasta.",
+      "text_markdown": "Vanhemmat kebab-lajit valmistetaan viipaloituneesta lihasta.",
+      "tts": {
+        "text": "Vanhemmat kebab lajit valmistetaan viipaloituneesta lihasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joojeh on kanaa sahramissa ja jogurtissa.",
+      "text_markdown": "Joojeh on kanaa sahramissa ja jogurtissa.",
+      "tts": {
+        "text": "Džudžee on kanaa sahramissa ja jogurtissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg on ohut karitsan fileepihvi.",
+      "text_markdown": "Barg on ohut karitsan fileepihvi.",
+      "tts": {
+        "text": "Barg on ohut karitsan fileepihvi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molemmat tarjoillaan sahramiriisin päällä grillatun tomaatin kanssa.",
+      "text_markdown": "Molemmat tarjoillaan sahramiriisin päällä grillatun tomaatin kanssa.",
+      "tts": {
+        "text": "Molemmat tarjoillaan sahramiriisin päällä grillatun tomaatin kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tutustutaan nyt kärsivälliseen ruokaan: khoreshiin, persialaiseen muhennokseen.",
+      "text_markdown": "Tutustutaan nyt kärsivälliseen ruokaan: khoreshiin, persialaiseen muhennokseen.",
+      "tts": {
+        "text": "Tutustutaan nyt kärsivälliseen ruokaan, khoreshiin, persialaiseen muhennokseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Khoresh kypsyy tuntikausia.",
+      "text_markdown": "Khoresh kypsyy tuntikausia.",
+      "tts": {
+        "text": "Khoresh kypsyy tuntikausia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuluisin niistä on fesenjan.",
+      "text_markdown": "Kuuluisin niistä on fesenjan.",
+      "tts": {
+        "text": "Kuuluisin niistä on fesenjan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on kanaa tai ankkaa, hitaasti keitettynä jauhettujen pähkinöiden ja granaattiomenamehu kastikkeessa.",
+      "text_markdown": "Se on kanaa tai ankkaa, hitaasti keitettynä jauhettujen pähkinöiden ja granaattiomenamehu kastikkeessa.",
+      "tts": {
+        "text": "Se on kanaa tai ankkaa, hitaasti keitettynä jauhettujen pähkinöiden ja granaattiomenamehu kastikkeessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Resepti on yksi vanhimmista muhennoksen resepteistä mitä koskaan on löydetty.",
+      "text_markdown": "Resepti on yksi vanhimmista muhennoksen resepteistä mitä koskaan on löydetty.",
+      "tts": {
+        "text": "Resepti on yksi vanhimmista muhennoksen resepteistä mitä koskaan on löydetty.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yksi versio siitä on kirjoitettu nuolenpäätauluihin Persepoliksen raunioilta.",
+      "text_markdown": "Yksi versio siitä on kirjoitettu nuolenpäätauluihin Persepoliksen raunioilta.",
+      "tts": {
+        "text": "Yksi versio siitä on kirjoitettu nuolenpäätauluihin Persepoliksen raunioilta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se tarkoittaa, että se on yli 2500 vuotta vanha.",
+      "text_markdown": "Se tarkoittaa, että se on yli 2500 vuotta vanha.",
+      "tts": {
+        "text": "Se tarkoittaa, että se on yli kaksituhatta viisisataa vuotta vanha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ihmiset valmistavat sen edelleen samalla tavalla.",
+      "text_markdown": "Ihmiset valmistavat sen edelleen samalla tavalla.",
+      "tts": {
+        "text": "Ihmiset valmistavat sen edelleen samalla tavalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen klassikko on ghormeh sabzi: karitsaa, kidney-papuja ja iso kasa tuoreita yrttejä, kaikki keitetty kuivatun limen kanssa.",
+      "text_markdown": "Toinen klassikko on ghormeh sabzi: karitsaa, kidney-papuja ja iso kasa tuoreita yrttejä, kaikki keitetty kuivatun limen kanssa.",
+      "tts": {
+        "text": "Toinen klassikko on gormeh sabzi, karitsaa, kidney papuja ja iso kasa tuoreita yrttejä, kaikki keitetty kuivatun limen kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Monet iranilaiset kutsuvat sitä kansallisruoaksi.",
+      "text_markdown": "Monet iranilaiset kutsuvat sitä kansallisruoaksi.",
+      "tts": {
+        "text": "Monet iranilaiset kutsuvat sitä kansallisruoaksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 5 — Jogurtti, tee ja vanhimmat makeiset",
+      "text_markdown": "Luku 5 — Jogurtti, tee ja vanhimmat makeiset"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialaiset syövät jogurttia kaiken kanssa.",
+      "text_markdown": "Persialaiset syövät jogurttia kaiken kanssa.",
+      "tts": {
+        "text": "Persialaiset syövät jogurttia kaiken kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tavallista jogurttia kutsutaan mastiksi.",
+      "text_markdown": "Tavallista jogurttia kutsutaan mastiksi.",
+      "tts": {
+        "text": "Tavallista jogurttia kutsutaan mastiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast kurkun ja kuivatun mintin kanssa on nimeltään mast o khiar.",
+      "text_markdown": "Mast kurkun ja kuivatun mintin kanssa on nimeltään mast o khiar.",
+      "tts": {
+        "text": "Mast kurkun ja kuivatun mintin kanssa on nimeltään mast o khiar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suolaista jogurttijuomaa mintillä kutsutaan dooghiksi.",
+      "text_markdown": "Suolaista jogurttijuomaa mintillä kutsutaan dooghiksi.",
+      "tts": {
+        "text": "Suolaista jogurttijuomaa mintillä kutsutaan doogiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "On myös kashk, voimakas kuivattu heranjuusto, jota käytetään keitoissa.",
+      "text_markdown": "On myös kashk, voimakas kuivattu heranjuusto, jota käytetään keitoissa.",
+      "tts": {
+        "text": "On myös kashk, voimakas kuivattu heranjuusto, jota käytetään keitoissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten on tee.",
+      "text_markdown": "Sitten on tee.",
+      "tts": {
+        "text": "Sitten on tee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persialaiset juovat sitä aamulla, päivällä ja illalla, vahvana korkeassa padassa samovarin päällä.",
+      "text_markdown": "Persialaiset juovat sitä aamulla, päivällä ja illalla, vahvana korkeassa padassa samovarin päällä.",
+      "tts": {
+        "text": "Persialaiset juovat sitä aamulla, päivällä ja illalla, vahvana korkeassa padassa samovarin päällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tee on niin keskeistä, että ihmisiä yllättää tieto sen myöhäisestä saapumisesta.",
+      "text_markdown": "Tee on niin keskeistä, että ihmisiä yllättää tieto sen myöhäisestä saapumisesta.",
+      "tts": {
+        "text": "Tee on niin keskeistä, että ihmisiä yllättää tieto sen myöhäisestä saapumisesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Suurimman osan Persian historiasta juomana oli kahvi.",
+      "text_markdown": "Suurimman osan Persian historiasta juomana oli kahvi.",
+      "tts": {
+        "text": "Suurimman osan Persian historiasta juomana oli kahvi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tee syrjäytti kahvin vasta 1800-luvun lopulla.",
+      "text_markdown": "Tee syrjäytti kahvin vasta 1800-luvun lopulla.",
+      "tts": {
+        "text": "Tee syrjäytti kahvin vasta tuhatohdeksansadan luvun lopulla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Nykyään Iran on yksi maailman suurimmista teenkuluttajista.",
+      "text_markdown": "Nykyään Iran on yksi maailman suurimmista teenkuluttajista.",
+      "tts": {
+        "text": "Nykyään Iran on yksi maailman suurimmista teenkuluttajista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siihen liittyy pieni rituaali.",
+      "text_markdown": "Siihen liittyy pieni rituaali.",
+      "tts": {
+        "text": "Siihen liittyy pieni rituaali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pidät sokeripalan hampaittesi välissä.",
+      "text_markdown": "Pidät sokeripalan hampaittesi välissä.",
+      "tts": {
+        "text": "Pidät sokeripalan hampaittesi välissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siemailet teetä palan läpi.",
+      "text_markdown": "Siemailet teetä palan läpi.",
+      "tts": {
+        "text": "Siemailet teetä palan läpi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pala sulaa hieman.",
+      "text_markdown": "Pala sulaa hieman.",
+      "tts": {
+        "text": "Pala sulaa hieman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tee on kuumaa, tummaa ja makeaa mennessään alas.",
+      "text_markdown": "Tee on kuumaa, tummaa ja makeaa mennessään alas.",
+      "tts": {
+        "text": "Tee on kuumaa, tummaa ja makeaa mennessään alas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten makeiset.",
+      "text_markdown": "Sitten makeiset.",
+      "tts": {
+        "text": "Sitten makeiset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persialaiset makeiset ovat vanhoja, runsaita ja pieniä.",
+      "text_markdown": "Persialaiset makeiset ovat vanhoja, runsaita ja pieniä.",
+      "tts": {
+        "text": "Persialaiset makeiset ovat vanhoja, runsaita ja pieniä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vanhin on faloodeh.",
+      "text_markdown": "Vanhin on faloodeh.",
+      "tts": {
+        "text": "Vanhin on faluudee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on ohuita riisivermicelleitä, jäädytettynä ruusuvesisiiirapissa, tarjoiltuna limemehun ja pistaasipähkinän kanssa.",
+      "text_markdown": "Se on ohuita riisivermicelleitä, jäädytettynä ruusuvesisiiirapissa, tarjoiltuna limemehun ja pistaasipähkinän kanssa.",
+      "tts": {
+        "text": "Se on ohuita riisivermicelleitä, jäädytettynä ruusuvesisiirappiin, tarjoiltuna limemehun ja pistaasipähkinän kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persialaiset kirjailijat kuvailevat sitä noin 400 vuotta ennen Kristusta.",
+      "text_markdown": "Persialaiset kirjailijat kuvailevat sitä noin 400 vuotta ennen Kristusta.",
+      "tts": {
+        "text": "Persialaiset kirjailijat kuvailevat sitä noin neljäsataa vuotta ennen Kristusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se tekee faloodehista yhden maailman vanhimmista jäädessytetyistä jälkiruoista.",
+      "text_markdown": "Se tekee faloodehista yhden maailman vanhimmista jäädessytetyistä jälkiruoista.",
+      "tts": {
+        "text": "Se tekee faluudeesta yhden maailman vanhimmista jäädytetyistä jälkiruoista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se on yli 2 000 vuotta vanhempi kuin jäätelö.",
+      "text_markdown": "Se on yli 2 000 vuotta vanhempi kuin jäätelö.",
+      "tts": {
+        "text": "Se on yli kaksituhatta vuotta vanhempi kuin jäätelö.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muita klassikkoja: baklava Tabrizista, kevyempää kuin turkkilainen, pähkinällä ja ruusuvedellä.",
+      "text_markdown": "Muita klassikkoja: baklava Tabrizista, kevyempää kuin turkkilainen, pähkinällä ja ruusuvedellä.",
+      "tts": {
+        "text": "Muita klassikkoja. baklava Tabriisista, kevyempää kuin turkkilainen, pähkinällä ja ruusuvedellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, tiheä seesami- tai sahramitahna.",
+      "text_markdown": "Halva, tiheä seesami- tai sahramitahna.",
+      "tts": {
+        "text": "Halva, tiheä seesami tai sahramitahna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz Esfahanista, pehmeä nougat pistaasipähkinällä.",
+      "text_markdown": "Gaz Esfahanista, pehmeä nougat pistaasipähkinällä.",
+      "tts": {
+        "text": "Gaz Esfahaanista, pehmeä nugaa pistaasipähkinällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, rapea ja kultainen sahramitoffee.",
+      "text_markdown": "Sohan, rapea ja kultainen sahramitoffee.",
+      "tts": {
+        "text": "Sohan, rapea ja kultainen sahramitoffee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi Qomista, pieni kikhernekeksi.",
+      "text_markdown": "Nokhodchi Qomista, pieni kikhernekeksi.",
+      "tts": {
+        "text": "Nokhodtshi Qomista, pieni kikhernekeksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieni lautanen makeisia, kuppi teetä, rauhallinen keskustelu.",
+      "text_markdown": "Pieni lautanen makeisia, kuppi teetä, rauhallinen keskustelu.",
+      "tts": {
+        "text": "Pieni lautanen makeisia, kuppi teetä, rauhallinen keskustelu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on persialainen iltapäivä.",
+      "text_markdown": "Se on persialainen iltapäivä.",
+      "tts": {
+        "text": "Se on persialainen iltapäivä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 6 — Mitä Persia antoi, mitä Persia otti",
+      "text_markdown": "Luku 6 — Mitä Persia antoi, mitä Persia otti"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persia sijaitsi vanhan maailman keskellä.",
+      "text_markdown": "Persia sijaitsi vanhan maailman keskellä.",
+      "tts": {
+        "text": "Persia sijaitsi vanhan maailman keskellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karavaanit ylittivät sen.",
+      "text_markdown": "Karavaanit ylittivät sen.",
+      "tts": {
+        "text": "Karavaanit ylittivät sen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imperiumit nousivat ja kaatuivat sen päällä.",
+      "text_markdown": "Imperiumit nousivat ja kaatuivat sen päällä.",
+      "tts": {
+        "text": "Imperiumit nousivat ja kaatuivat sen päällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ruokakin kulki sen läpi, molempiin suuntiin.",
+      "text_markdown": "Ruokakin kulki sen läpi, molempiin suuntiin.",
+      "tts": {
+        "text": "Ruokakin kulki sen läpi, molempiin suuntiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katso sanoja.",
+      "text_markdown": "Katso sanoja.",
+      "tts": {
+        "text": "Katso sanoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Englanti omaksui kymmeniä ruokasanoja persiasta.",
+      "text_markdown": "Englanti omaksui kymmeniä ruokasanoja persiasta.",
+      "tts": {
+        "text": "Englanti omaksui kymmeniä ruokasanoja persiasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sokeri, karkkki, sitruuna, appelsiini, jasmiini, syyreeni, tulppaani, kioski, sorbetti ja paratiisi ovat kaikki persialaista alkuperää.",
+      "text_markdown": "Sokeri, karkkki, sitruuna, appelsiini, jasmiini, syyreeni, tulppaani, kioski, sorbetti ja paratiisi ovat kaikki persialaista alkuperää.",
+      "tts": {
+        "text": "Sokeri, karkki, sitruuna, appelsiini, jasmiini, syyreeni, tulppaani, kioski, sorbetti ja paratiisi ovat kaikki persialaista alkuperää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samoin on sana šakinmatti, persiaksi shah mat, \"kuningas on avuton\". Persia lainasi sanoja puolelle maailmalle.",
+      "text_markdown": "Samoin on sana šakinmatti, persiaksi shah mat, \"kuningas on avuton\". Persia lainasi sanoja puolelle maailmalle.",
+      "tts": {
+        "text": "Samoin on sana shakinmatti, persiaksi shaahmaat, eli kuningas on avuton. Persia lainasi sanoja puolelle maailmalle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialainen riisinkeittotraditio levisi itään.",
+      "text_markdown": "Persialainen riisinkeittotraditio levisi itään.",
+      "tts": {
+        "text": "Persialainen riisinkeittotraditio levisi itään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Intian mogulkuninkaat rakastivat persialaista ruokaa ja toivat persialaisia kokkeja hoviinsa.",
+      "text_markdown": "Intian mogulkuninkaat rakastivat persialaista ruokaa ja toivat persialaisia kokkeja hoviinsa.",
+      "tts": {
+        "text": "Intian mogulkuninkaat rakastivat persialaista ruokaa ja toivat persialaisia kokkeja hoviinsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nämä kokit valmistivat biryania.",
+      "text_markdown": "Nämä kokit valmistivat biryania.",
+      "tts": {
+        "text": "Nämä kokit valmistivat birjaania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaf, se pitkäjyväinen, maustettu riisiruoka Välimereltä Keski-Aasian aroille, juontaa juurensa persialaiseen riisitraditioon.",
+      "text_markdown": "Pilaf, se pitkäjyväinen, maustettu riisiruoka Välimereltä Keski-Aasian aroille, juontaa juurensa persialaiseen riisitraditioon.",
+      "tts": {
+        "text": "Pilaf, se pitkäjyväinen maustettu riisiruoka Välimereltä Keski Aasian aroille, juontaa juurensa persialaiseen riisitraditioon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialaiset hedelmät levisivät länteen.",
+      "text_markdown": "Persialaiset hedelmät levisivät länteen.",
+      "tts": {
+        "text": "Persialaiset hedelmät levisivät länteen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Roomalaiset viljelivät persikkaa Italiassa, koska he saivat sen Persiasta.",
+      "text_markdown": "Roomalaiset viljelivät persikkaa Italiassa, koska he saivat sen Persiasta.",
+      "tts": {
+        "text": "Roomalaiset viljelivät persikkaa Italiassa, koska he saivat sen Persiasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pinaatti saapui Eurooppaan Espanjan kautta, persian maailman kauppiaiden tuomana.",
+      "text_markdown": "Pinaatti saapui Eurooppaan Espanjan kautta, persian maailman kauppiaiden tuomana.",
+      "tts": {
+        "text": "Pinaatti saapui Eurooppaan Espanjan kautta, persialaisen maailman kauppiaiden tuomana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulppaanit, Alankomaiden symboli, viljeltiin ensin Persiassa ja Turkissa, ennen kuin ne koskaan saavuttivat Hollannin.",
+      "text_markdown": "Tulppaanit, Alankomaiden symboli, viljeltiin ensin Persiassa ja Turkissa, ennen kuin ne koskaan saavuttivat Hollannin.",
+      "tts": {
+        "text": "Tulppaanit, Alankomaiden symboli, viljeltiin ensin Persiassa ja Turkissa, ennen kuin ne koskaan saavuttivat Hollannin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persia myös otti vaikutteita vastaan.",
+      "text_markdown": "Persia myös otti vaikutteita vastaan.",
+      "tts": {
+        "text": "Persia myös otti vaikutteita vastaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mongolit, jotka hyökkäsivät maahan 1200-luvulla, toivat mukanaan vahvemman mieltymyksen grillattua ja paistettua lihaa kohtaan.",
+      "text_markdown": "Mongolit, jotka hyökkäsivät maahan 1200-luvulla, toivat mukanaan vahvemman mieltymyksen grillattua ja paistettua lihaa kohtaan.",
+      "tts": {
+        "text": "Mongolit, jotka hyökkäsivät maahan tuhannen kaksisataa luvulla, toivat mukanaan vahvemman mieltymyksen grillattua ja paistettua lihaa kohtaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arabialainen maanviljely toi sokeriruokoa, sitrushededelmiä ja riisiä etelästä ja idästä.",
+      "text_markdown": "Arabialainen maanviljely toi sokeriruokoa, sitrushededelmiä ja riisiä etelästä ja idästä.",
+      "tts": {
+        "text": "Arabialainen maanviljely toi sokeriruokoa, sitrushedelmiä ja riisiä etelästä ja idästä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samovaari tuli pohjoisesta, Venäjältä, 1700-luvulla.",
+      "text_markdown": "Samovaari tuli pohjoisesta, Venäjältä, 1700-luvulla.",
+      "tts": {
+        "text": "Samovaari tuli pohjoisesta, Venäjältä, seitsemäntoista sadan luvulla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kreikkalainen historioitsija Herodotos kirjoitti 2500 vuotta sitten, että persialaiset viettivät syntymäpäiviään ylenpalttisemmin kuin mitään muuta päivää vuodessa.",
+      "text_markdown": "Kreikkalainen historioitsija Herodotos kirjoitti 2500 vuotta sitten, että persialaiset viettivät syntymäpäiviään ylenpalttisemmin kuin mitään muuta päivää vuodessa.",
+      "tts": {
+        "text": "Kreikkalainen historioitsija Herodotos kirjoitti kaksituhatta viisisataa vuotta sitten, että persialaiset viettivät syntymäpäiviään ylenpalttisemmin kuin mitään muuta päivää vuodessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän kirjoitti, että tuona päivänä pöytä katetaan runsaammin kuin tavallisesti.",
+      "text_markdown": "Hän kirjoitti, että tuona päivänä pöytä katetaan runsaammin kuin tavallisesti.",
+      "tts": {
+        "text": "Hän kirjoitti, että tuona päivänä pöytä katetaan runsaammin kuin tavallisesti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jotkut asiat eivät ole muuttuneet.",
+      "text_markdown": "Jotkut asiat eivät ole muuttuneet.",
+      "tts": {
+        "text": "Jotkut asiat eivät ole muuttuneet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 7 — Persialaisella pöydällä",
+      "text_markdown": "Luku 7 — Persialaisella pöydällä"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyt istutaan alas.",
+      "text_markdown": "Nyt istutaan alas.",
+      "tts": {
+        "text": "Nyt istutaan alas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialainen vuosi alkaa kevätpäiväntasauksesta, noin 21. maaliskuuta.",
+      "text_markdown": "Persialainen vuosi alkaa kevätpäiväntasauksesta, noin 21. maaliskuuta.",
+      "tts": {
+        "text": "Persialainen vuosi alkaa kevätpäiväntasauksesta, noin kahdentenakymmenentenäensimmäisenä maaliskuuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juhla on nimeltään Nowruz, Uusi päivä.",
+      "text_markdown": "Juhla on nimeltään Nowruz, Uusi päivä.",
+      "tts": {
+        "text": "Juhla on nimeltään Noruuz, Uusi päivä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on vuoden tärkein juhlapäivä.",
+      "text_markdown": "Se on vuoden tärkein juhlapäivä.",
+      "tts": {
+        "text": "Se on vuoden tärkein juhlapäivä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen perhe kattaa erityisen pöydän nimeltä haft-sin.",
+      "text_markdown": "Jokainen perhe kattaa erityisen pöydän nimeltä haft-sin.",
+      "tts": {
+        "text": "Jokainen perhe kattaa erityisen pöydän nimeltä haftsiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft tarkoittaa seitsemää.",
+      "text_markdown": "Haft tarkoittaa seitsemää.",
+      "tts": {
+        "text": "Haft tarkoittaa seitsemää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin on kirjain S. Pöydällä on seitsemän asiaa, jotka alkavat S-kirjaimella persiaksi.",
+      "text_markdown": "Sin on kirjain S. Pöydällä on seitsemän asiaa, jotka alkavat S-kirjaimella persiaksi.",
+      "tts": {
+        "text": "Siin on kirjain S. Pöydällä on seitsemän asiaa, jotka alkavat S kirjaimella persiaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Siellä on sib, omena.",
+      "text_markdown": "Siellä on sib, omena.",
+      "tts": {
+        "text": "Siellä on siib, omena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, kolikko.",
+      "text_markdown": "Sekkeh, kolikko.",
+      "tts": {
+        "text": "Sekkeh, kolikko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, hyasintinkukka.",
+      "text_markdown": "Sonbol, hyasintinkukka.",
+      "tts": {
+        "text": "Sonbol, hyasintinkukka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, makea vehnävanukas.",
+      "text_markdown": "Samanu, makea vehnävanukas.",
+      "tts": {
+        "text": "Samaanu, makea vehnävanukas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, oleasteripuun kuivattu hedelmä.",
+      "text_markdown": "Senjed, oleasteripuun kuivattu hedelmä.",
+      "tts": {
+        "text": "Senjed, oleasteripuun kuivattu hedelmä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumakki.",
+      "text_markdown": "Somagh, sumakki.",
+      "tts": {
+        "text": "Somaag, sumakki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, etikka.",
+      "text_markdown": "Serkeh, etikka.",
+      "tts": {
+        "text": "Serkeh, etikka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Jokainen symboloi jotain — terveyttä, varallisuutta, kauneutta, kärsivällisyyttä, rakkautta, nousevaa aurinkoa, ajan kulumista.",
+      "text_markdown": "Jokainen symboloi jotain — terveyttä, varallisuutta, kauneutta, kärsivällisyyttä, rakkautta, nousevaa aurinkoa, ajan kulumista.",
+      "tts": {
+        "text": "Jokainen symboloi jotain, terveyttä, varallisuutta, kauneutta, kärsivällisyyttä, rakkautta, nousevaa aurinkoa, ajan kulumista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uudenvuoden ateria on sabzi polo ja mahi.",
+      "text_markdown": "Uudenvuoden ateria on sabzi polo ja mahi.",
+      "tts": {
+        "text": "Uudenvuoden ateria on sabzi polo ja maahi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on riisiä, syvänvihreää tuoreista yrtteistä, tarjoiltuna valkoisen kalan kanssa.",
+      "text_markdown": "Se on riisiä, syvänvihreää tuoreista yrtteistä, tarjoiltuna valkoisen kalan kanssa.",
+      "tts": {
+        "text": "Se on riisiä, syvänvihreää tuoreista yrtteistä, tarjoiltuna valkoisen kalan kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kevät lautasella.",
+      "text_markdown": "Kevät lautasella.",
+      "tts": {
+        "text": "Kevät lautasella.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen klassikko on ash reshteh, paksu keitto pavuista, yrteistä, paistetusta sipulista, kashkista ja nuudeleista.",
+      "text_markdown": "Toinen klassikko on ash reshteh, paksu keitto pavuista, yrteistä, paistetusta sipulista, kashkista ja nuudeleista.",
+      "tts": {
+        "text": "Toinen klassikko on aash reeshteh, paksu keitto pavuista, yrteistä, paistetusta sipulista, kaashkista ja nuudeleista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persialaiset sanovat, että sitä pitää syödä ennen vaikeaa päätöstä.",
+      "text_markdown": "Persialaiset sanovat, että sitä pitää syödä ennen vaikeaa päätöstä.",
+      "tts": {
+        "text": "Persialaiset sanovat, että sitä pitää syödä ennen vaikeaa päätöstä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nuudelien sanotaan selvittävän kohtalon langat.",
+      "text_markdown": "Nuudelien sanotaan selvittävän kohtalon langat.",
+      "tts": {
+        "text": "Nuudelien sanotaan selvittävän kohtalon langat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teehuone on myös persialainen keksintö.",
+      "text_markdown": "Teehuone on myös persialainen keksintö.",
+      "tts": {
+        "text": "Teehuone on myös persialainen keksintö.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä kutsutaan nimellä qahveh khaneh, kirjaimellisesti kahvila, vaikka juoma on nykyään tee.",
+      "text_markdown": "Sitä kutsutaan nimellä qahveh khaneh, kirjaimellisesti kahvila, vaikka juoma on nykyään tee.",
+      "tts": {
+        "text": "Sitä kutsutaan nimellä kaaveh khaaneh, kirjaimellisesti kahvila, vaikka juoma on nykyään tee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viidensadan vuoden ajan miehet ja naiset ovat kokoontuneet sinne pelaamaan backgammonia, kuuntelemaan runoutta ja väittelemään maailmasta.",
+      "text_markdown": "Viidensadan vuoden ajan miehet ja naiset ovat kokoontuneet sinne pelaamaan backgammonia, kuuntelemaan runoutta ja väittelemään maailmasta.",
+      "tts": {
+        "text": "Viidensadan vuoden ajan miehet ja naiset ovat kokoontuneet sinne pelaamaan backgammonia, kuuntelemaan runoutta ja väittelemään maailmasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Monet suuret persialaiset tarinat kerrottiin ensimmäisen kerran höyryävän lasin äärellä.",
+      "text_markdown": "Monet suuret persialaiset tarinat kerrottiin ensimmäisen kerran höyryävän lasin äärellä.",
+      "tts": {
+        "text": "Monet suuret persialaiset tarinat kerrottiin ensimmäisen kerran höyryävän lasin äärellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuluisa persialainen lääkäri Avicenna, joka eli tuhat vuotta sitten, opetti, että jokainen ruoka on joko kuuma tai kylmä.",
+      "text_markdown": "Kuuluisa persialainen lääkäri Avicenna, joka eli tuhat vuotta sitten, opetti, että jokainen ruoka on joko kuuma tai kylmä.",
+      "tts": {
+        "text": "Kuuluisa persialainen lääkäri Aviisenna, joka eli tuhat vuotta sitten, opetti, että jokainen ruoka on joko kuuma tai kylmä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sahrami, pähkinät ja lammas ovat kuumia.",
+      "text_markdown": "Sahrami, pähkinät ja lammas ovat kuumia.",
+      "tts": {
+        "text": "Sahrami, pähkinät ja lammas ovat kuumia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jogurtti, kurkku ja vesimeloni ovat kylmiä.",
+      "text_markdown": "Jogurtti, kurkku ja vesimeloni ovat kylmiä.",
+      "tts": {
+        "text": "Jogurtti, kurkku ja vesimeloni ovat kylmiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hyvä ateria tasapainottaa ne.",
+      "text_markdown": "Hyvä ateria tasapainottaa ne.",
+      "tts": {
+        "text": "Hyvä ateria tasapainottaa ne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Monissa persialaisissa kodeissa tuo ajatus on yhä elossa lounasaikaan.",
+      "text_markdown": "Monissa persialaisissa kodeissa tuo ajatus on yhä elossa lounasaikaan.",
+      "tts": {
+        "text": "Monissa persialaisissa kodeissa tuo ajatus on yhä elossa lounasaikaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persialainen ruoka on kärsivällistä.",
+      "text_markdown": "Persialainen ruoka on kärsivällistä.",
+      "tts": {
+        "text": "Persialainen ruoka on kärsivällistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on anteliasta.",
+      "text_markdown": "Se on anteliasta.",
+      "tts": {
+        "text": "Se on anteliasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on vanha.",
+      "text_markdown": "Se on vanha.",
+      "tts": {
+        "text": "Se on vanha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ja sitä valmistetaan yhä joka päivä miljoonilla liesillä.",
+      "text_markdown": "Ja sitä valmistetaan yhä joka päivä miljoonilla liesillä.",
+      "tts": {
+        "text": "Ja sitä valmistetaan yhä joka päivä miljoonilla liesillä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Näkemiin",
+      "text_markdown": "Näkemiin"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tässä oli lyhyen kierroksemme loppu.",
+      "text_markdown": "Tässä oli lyhyen kierroksemme loppu.",
+      "tts": {
+        "text": "Tässä oli lyhyen kierroksemme loppu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toivottavasti opit jotain uutta.",
+      "text_markdown": "Toivottavasti opit jotain uutta.",
+      "tts": {
+        "text": "Toivottavasti opit jotain uutta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toivottavasti jokin sivuilla teki sinut nälkäiseksi.",
+      "text_markdown": "Toivottavasti jokin sivuilla teki sinut nälkäiseksi.",
+      "tts": {
+        "text": "Toivottavasti jokin sivuilla teki sinut nälkäiseksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sahramia ja riisiä.",
+      "text_markdown": "Sahramia ja riisiä.",
+      "tts": {
+        "text": "Sahramia ja riisiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Granaattiomenaa ja pähkinää.",
+      "text_markdown": "Granaattiomenaa ja pähkinää.",
+      "tts": {
+        "text": "Granaattiomenaa ja pähkinää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pieni makea pala pienellä lautasella.",
+      "text_markdown": "Pieni makea pala pienellä lautasella.",
+      "tts": {
+        "text": "Pieni makea pala pienellä lautasella.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos voit, etsi läheltäsi persialainen ravintola.",
+      "text_markdown": "Jos voit, etsi läheltäsi persialainen ravintola.",
+      "tts": {
+        "text": "Jos voit, etsi läheltäsi persialainen ravintola.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tai avaa persialainen keittokirja.",
+      "text_markdown": "Tai avaa persialainen keittokirja.",
+      "tts": {
+        "text": "Tai avaa persialainen keittokirja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kokeile yhtä muhennosta.",
+      "text_markdown": "Kokeile yhtä muhennosta.",
+      "tts": {
+        "text": "Kokeile yhtä muhennosta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kokeile yhtä kuppia teetä.",
+      "text_markdown": "Kokeile yhtä kuppia teetä.",
+      "tts": {
+        "text": "Kokeile yhtä kuppia teetä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tämä ruoka on odottanut tuhansia vuosia.",
+      "text_markdown": "Tämä ruoka on odottanut tuhansia vuosia.",
+      "tts": {
+        "text": "Tämä ruoka on odottanut tuhansia vuosia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Se voi odottaa myös sinua.",
+      "text_markdown": "Se voi odottaa myös sinua.",
+      "tts": {
+        "text": "Se voi odottaa myös sinua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiitos kun kuuntelit.",
+      "text_markdown": "Kiitos kun kuuntelit.",
+      "tts": {
+        "text": "Kiitos kun kuuntelit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Laita jotain ruokaa.",
+      "text_markdown": "Laita jotain ruokaa.",
+      "tts": {
+        "text": "Laita jotain ruokaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Syö ihmisten kanssa.",
+      "text_markdown": "Syö ihmisten kanssa.",
+      "tts": {
+        "text": "Syö ihmisten kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Minä olen Kym.",
+      "text_markdown": "Minä olen Kym.",
+      "tts": {
+        "text": "Minä olen Kym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Näkemiin.",
+      "text_markdown": "Näkemiin.",
+      "tts": {
+        "text": "Näkemiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

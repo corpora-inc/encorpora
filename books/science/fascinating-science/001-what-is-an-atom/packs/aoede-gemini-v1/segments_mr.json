@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "mr",
+  "total_segments": 300,
+  "segments": [
+    {
+      "chapter": 1,
+      "heading_level": 1,
+      "id": "ch01-001",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p1",
+      "text": "सर्व काही अणूंचे बनलेले आहे",
+      "text_markdown": "सर्व काही अणूंचे बनलेले आहे",
+      "title": "सर्व काही अणूंचे बनलेले आहे"
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुमच्या आजूबाजूला बघा.",
+      "text_markdown": "तुमच्या आजूबाजूला बघा.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुमच्या आजूबाजूला बघा.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-003",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुम्ही जे काही पाहू शकता ते सर्व अणूंचे बनलेले आहे.",
+      "text_markdown": "तुम्ही जे काही पाहू शकता ते सर्व अणूंचे बनलेले आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही जे काही पाहू शकता ते सर्व अणूंचे बनलेले आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-004",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुम्ही जो श्वास घेता ती हवा अणूंची बनलेली आहे.",
+      "text_markdown": "तुम्ही जो श्वास घेता ती हवा अणूंची बनलेली आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही जो श्वास घेता ती हवा अणूंची बनलेली आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-005",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुम्ही जे पाणी पिता ते अणूंचे बनलेले आहे.",
+      "text_markdown": "तुम्ही जे पाणी पिता ते अणूंचे बनलेले आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही जे पाणी पिता ते अणूंचे बनलेले आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-006",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुमचे शरीर अणूंचे बनलेले आहे.",
+      "text_markdown": "तुमचे शरीर अणूंचे बनलेले आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुमचे शरीर अणूंचे बनलेले आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-007",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "तुमच्या पायाखालील जमीन अणूंची बनलेली आहे.",
+      "text_markdown": "तुमच्या पायाखालील जमीन अणूंची बनलेली आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुमच्या पायाखालील जमीन अणूंची बनलेली आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "अणू हा पदार्थाचा सर्वात लहान कण आहे ज्याची रासायनिक ओळख अजूनही कायम आहे.",
+      "text_markdown": "अणू हा पदार्थाचा सर्वात लहान कण आहे ज्याची रासायनिक ओळख अजूनही कायम आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू हा पदार्थाचा सर्वात लहान कण आहे ज्याची रासायनिक ओळख अजूनही कायम आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-009",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "तुम्ही तुमच्या डोळ्यांनी एकही अणू पाहू शकत नाही.",
+      "text_markdown": "तुम्ही तुमच्या डोळ्यांनी एकही अणू पाहू शकत नाही.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही तुमच्या डोळ्यांनी एकही अणू पाहू शकत नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-010",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "तुम्ही सामान्य सूक्ष्मदर्शकाने एकही अणू पाहू शकत नाही.",
+      "text_markdown": "तुम्ही सामान्य सूक्ष्मदर्शकाने एकही अणू पाहू शकत नाही.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही सामान्य सूक्ष्मदर्शकाने एकही अणू पाहू शकत नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-011",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "अणू इतके लहान असतात.",
+      "text_markdown": "अणू इतके लहान असतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू इतके लहान असतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "वाळूच्या एका कणामध्ये सुमारे पन्नास क्विन्टिलीयन्स अणू असतात.",
+      "text_markdown": "वाळूच्या एका कणामध्ये सुमारे पन्नास क्विन्टिलीयन्स अणू असतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "वाळूच्या एका कणामध्ये सुमारे पन्नास क्विन्टिलीयन्स अणू असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-013",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "ती संख्या पन्नास नंतर अठरा शून्य असलेली आहे.",
+      "text_markdown": "ती संख्या पन्नास नंतर अठरा शून्य असलेली आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "ती संख्या पन्नास नंतर अठरा शून्य असलेली आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-014",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "एका वाळूच्या कणामध्ये, समुद्रकिनाऱ्यावरील वाळूच्या कणांपेक्षा जास्त अणू असतात.",
+      "text_markdown": "एका वाळूच्या कणामध्ये, समुद्रकिनाऱ्यावरील वाळूच्या कणांपेक्षा जास्त अणू असतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "एका वाळूच्या कणामध्ये, समुद्रकिनाऱ्यावरील वाळूच्या कणांपेक्षा जास्त अणू असतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "अणू हे भौतिक जगातील प्रत्येक गोष्टीचे मूलभूत घटक आहेत.",
+      "text_markdown": "अणू हे भौतिक जगातील प्रत्येक गोष्टीचे मूलभूत घटक आहेत.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू हे भौतिक जगातील प्रत्येक गोष्टीचे मूलभूत घटक आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "भिंत विटांची बनलेली असते.",
+      "text_markdown": "भिंत विटांची बनलेली असते.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "भिंत विटांची बनलेली असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "वाक्य शब्दांचे बनलेले असते.",
+      "text_markdown": "वाक्य शब्दांचे बनलेले असते.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "वाक्य शब्दांचे बनलेले असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-018",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "विश्व अणूंचे बनलेले आहे.",
+      "text_markdown": "विश्व अणूंचे बनलेले आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "विश्व अणूंचे बनलेले आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "अणू हा शब्द प्राचीन ग्रीक भाषेतून आला आहे.",
+      "text_markdown": "अणू हा शब्द प्राचीन ग्रीक भाषेतून आला आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू हा शब्द प्राचीन ग्रीक भाषेतून आला आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-020",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "ग्रीक शब्द 'अॅटॉमॉस' (atomos) चा अर्थ 'न कापता येण्यासारखे' असा आहे.",
+      "text_markdown": "ग्रीक शब्द 'अॅटॉमॉस' (atomos) चा अर्थ 'न कापता येण्यासारखे' असा आहे.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "ग्रीक शब्द 'अॅटॉमॉस' (atomos) चा अर्थ 'न कापता येण्यासारखे' असा आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-021",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "प्राचीन ग्रीक तत्त्वज्ञांना वाटले की अणू हे पदार्थाचे सर्वात लहान शक्य कण आहेत.",
+      "text_markdown": "प्राचीन ग्रीक तत्त्वज्ञांना वाटले की अणू हे पदार्थाचे सर्वात लहान शक्य कण आहेत.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "प्राचीन ग्रीक तत्त्वज्ञांना वाटले की अणू हे पदार्थाचे सर्वात लहान शक्य कण आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-022",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "ते जवळपास बरोबर होते.",
+      "text_markdown": "ते जवळपास बरोबर होते.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "ते जवळपास बरोबर होते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-023",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "अणू हे खऱ्या अर्थाने सर्वात लहान कण नाहीत, परंतु ते सर्वात लहान एकक आहेत जे त्यांचे रासायनिक गुणधर्म टिकवून ठेवतात.",
+      "text_markdown": "अणू हे खऱ्या अर्थाने सर्वात लहान कण नाहीत, परंतु ते सर्वात लहान एकक आहेत जे त्यांचे रासायनिक गुणधर्म टिकवून ठेवतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू हे खऱ्या अर्थाने सर्वात लहान कण नाहीत, पण रासायनिक गुणधर्म जपणारे सर्वात लहान एकक ठरतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "अणू अविश्वसनीयपणे टिकाऊ असतात.",
+      "text_markdown": "अणू अविश्वसनीयपणे टिकाऊ असतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "अणू अविश्वसनीयपणे टिकाऊ असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "तुमच्या शरीरातील अणू अब्जावधी वर्षांचे जुने आहेत.",
+      "text_markdown": "तुमच्या शरीरातील अणू अब्जावधी वर्षांचे जुने आहेत.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुमच्या शरीरातील अणू अब्जावधी वर्षांचे जुने आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "आज तुम्ही प्यायलेल्या पाण्यातील काही हायड्रोजन अणू बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झाले होते.",
+      "text_markdown": "आज तुम्ही प्यायलेल्या पाण्यातील काही हायड्रोजन अणू बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झाले होते.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "आज तुम्ही प्यायलेल्या पाण्यातील काही हायड्रोजन अणू हे बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झालेले कण.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "तुम्ही प्राचीन पदार्थांचे बनलेले आहात.",
+      "text_markdown": "तुम्ही प्राचीन पदार्थांचे बनलेले आहात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "तुम्ही प्राचीन पदार्थांचे बनलेले आहात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "सामान्य जीवनात अणू कधीही तयार होत नाहीत किंवा नष्ट होत नाहीत.",
+      "text_markdown": "सामान्य जीवनात अणू कधीही तयार होत नाहीत किंवा नष्ट होत नाहीत.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "सामान्य जीवनात अणू कधीही तयार होत नाहीत किंवा नष्ट होत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "ते स्वतःची पुनर्रचना करतात.",
+      "text_markdown": "ते स्वतःची पुनर्रचना करतात.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "ते स्वतःची पुनर्रचना करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "जेव्हा लाकूड जळते, तेव्हा अणू अदृश्य होत नाहीत.",
+      "text_markdown": "जेव्हा लाकूड जळते, तेव्हा अणू अदृश्य होत नाहीत.",
+      "title": "सर्व काही अणूंचे बनलेले आहे",
+      "tts": {
+        "text": "जेव्हा लाकूड जळते, तेव्हा अणू अदृश्य होत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "ते धूर, राख आणि वायूमध्ये पुन्हा व्यवस्थित होतात.",
+      "text_markdown": "They rearrange into smoke, ash, and gas.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "ते धूर, राख आणि वायूमध्ये पुन्हा व्यवस्थित होतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-032",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "जेव्हा बर्फ वितळतो, तेव्हा अणू तसेच राहतात.",
+      "text_markdown": "When ice melts, the atoms stay the same.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "जेव्हा बर्फ वितळतो, तेव्हा अणू तसेच राहतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-033",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "फक्त त्यांची मांडणी बदलते.",
+      "text_markdown": "Only their arrangement changes.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "फक्त त्यांची मांडणी बदलते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "अणू समजून घेणे हे रसायनशास्त्राचा पाया आहे.",
+      "text_markdown": "Understanding atoms is the foundation of chemistry.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "अणू समजून घेणे हे रसायनशास्त्राचा पाया आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-035",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "रसायनशास्त्र हे अणू कसे एकत्र येतात, पुन्हा व्यवस्थित होतात आणि एकमेकांशी संवाद साधतात याचे विज्ञान आहे.",
+      "text_markdown": "Chemistry is the science of how atoms combine, rearrange, and interact.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "रसायनशास्त्र हे अणू कसे एकत्र येतात, पुन्हा व्यवस्थित होतात आणि एकमेकांशी संवाद साधतात याचे विज्ञान आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "id": "ch01-036",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "भौतिक जगात जे काही घडते ते अणू आणि त्यांच्या कार्यावर अवलंबून असते.",
+      "text_markdown": "Everything that happens in the physical world comes down to atoms and what they do.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "भौतिक जगात जे काही घडते ते अणू आणि त्यांच्या कार्यावर अवलंबून असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "heading_level": 1,
+      "id": "ch02-037",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p10",
+      "text": "Inside the Atom",
+      "text_markdown": "Inside the Atom",
+      "title": "Inside the Atom"
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-038",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "अणूमध्ये तीन प्रकारचे कण असतात.",
+      "text_markdown": "An atom has three types of particles inside it.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "अणूमध्ये तीन प्रकारचे कण असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-039",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "प्रोटॉन.",
+      "text_markdown": "Protons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "प्रोटॉन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-040",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "न्यूट्रॉन.",
+      "text_markdown": "Neutrons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-041",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "इलेक्ट्रॉन.",
+      "text_markdown": "Electrons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "इलेक्ट्रॉन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-042",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "हे तीन कण विश्वातील प्रत्येक अणू बनवतात.",
+      "text_markdown": "These three particles make up every atom in the universe.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "हे तीन कण विश्वातील प्रत्येक अणू बनवतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-043",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "अणूच्या मध्यभागाला केंद्रक (न्यूक्लियस) म्हणतात.",
+      "text_markdown": "The center of the atom is called the nucleus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "अणूच्या मध्यभागाला केंद्रक न्यूक्लियस म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-044",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "केंद्रकामध्ये प्रोटॉन आणि न्यूट्रॉन असतात.",
+      "text_markdown": "The nucleus contains the protons and the neutrons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "केंद्रकामध्ये प्रोटॉन आणि न्यूट्रॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-045",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "संपूर्ण अणूच्या तुलनेत केंद्रक खूप लहान असते.",
+      "text_markdown": "The nucleus is tiny compared to the whole atom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "संपूर्ण अणूच्या तुलनेत केंद्रक खूप लहान असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-046",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "जर अणू फुटबॉल स्टेडियमच्या आकाराचा असता, तर केंद्रक पन्नास-यार्ड रेषेवरील गोट्याच्या आकाराचे असते.",
+      "text_markdown": "If the atom were the size of a football stadium, the nucleus would be the size of a marble on the fifty-yard line.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "जर अणू फुटबॉल स्टेडियमच्या आकाराचा असता, तर केंद्रक पन्नास-यार्ड रेषेवरील गोट्याच्या आकाराचे असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-047",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "प्रोटॉनवर धन विद्युत प्रभार असतो.",
+      "text_markdown": "Protons carry a positive electrical charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "प्रोटॉनवर धन विद्युत प्रभार असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-048",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "प्रत्येक प्रोटॉनवर समान प्रमाणात धन प्रभार असतो.",
+      "text_markdown": "Every proton has the same amount of positive charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "प्रत्येक प्रोटॉनवर समान प्रमाणात धन प्रभार असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-049",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "अणूतील प्रोटॉनची संख्या तो अणू कोणत्या मूलद्रव्याचा आहे हे ठरवते.",
+      "text_markdown": "The number of protons in an atom determines what element the atom is.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "अणूतील प्रोटॉनची संख्या तो अणू कोणत्या मूलद्रव्याचा आहे हे ठरवते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-050",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "एक प्रोटॉन म्हणजे हायड्रोजन.",
+      "text_markdown": "One proton means hydrogen.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "एक प्रोटॉन म्हणजे हायड्रोजन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-051",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "सहा प्रोटॉन म्हणजे कार्बन.",
+      "text_markdown": "Six protons means carbon.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "सहा प्रोटॉन म्हणजे कार्बन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-052",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "सव्वीस प्रोटॉन म्हणजे लोह.",
+      "text_markdown": "Twenty-six protons means iron.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "सव्वीस प्रोटॉन म्हणजे लोह.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-053",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "प्रोटॉनची संख्या ही अणूविषयीची सर्वात महत्त्वाची गोष्ट आहे.",
+      "text_markdown": "The number of protons is the most important fact about an atom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "प्रोटॉनची संख्या ही अणूविषयीची सर्वात महत्त्वाची गोष्ट आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "न्यूट्रॉनना कोणताही विद्युत प्रभार नसतो.",
+      "text_markdown": "Neutrons carry no electrical charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉनना कोणताही विद्युत प्रभार नसतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-055",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "न्यूट्रॉन उदासीन असतात.",
+      "text_markdown": "Neutrons are neutral.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉन उदासीन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-056",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "न्यूट्रॉन प्रोटॉनच्या शेजारी केंद्रकात असतात.",
+      "text_markdown": "Neutrons sit in the nucleus next to the protons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉन प्रोटॉनच्या शेजारी केंद्रकात असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-057",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "न्यूट्रॉन केंद्रकाला एकत्र धरून ठेवण्यास मदत करतात.",
+      "text_markdown": "Neutrons help hold the nucleus together.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉन केंद्रकाला एकत्र धरून ठेवण्यास मदत करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-058",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "न्यूट्रॉन नसतील तर, प्रोटॉन एकमेकांना दूर ढकलतील कारण त्या सर्वांवर समान धन प्रभार असतो.",
+      "text_markdown": "Without neutrons, the protons would push each other apart because they all carry the same positive charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "न्यूट्रॉन नसतील तर, प्रोटॉन एकमेकांना दूर ढकलतील कारण त्या सर्वांवर समान धन प्रभार असतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "इलेक्ट्रॉनवर ऋण विद्युत प्रभार असतो.",
+      "text_markdown": "Electrons carry a negative electrical charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "इलेक्ट्रॉनवर ऋण विद्युत प्रभार असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-060",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "इलेक्ट्रॉन केंद्रकाभोवती ढगाच्या स्वरूपात फिरतात.",
+      "text_markdown": "Electrons move around the nucleus in a cloud.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "इलेक्ट्रॉन केंद्रकाभोवती ढगाच्या स्वरूपात फिरतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-061",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "ते सूर्याभोवती ग्रहांप्रमाणे फिरत नाहीत.",
+      "text_markdown": "ते सूर्याभोवती ग्रहांप्रमाणे फिरत नाहीत.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "ते सूर्याभोवती ग्रहांप्रमाणे फिरत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-062",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "ते केंद्रकाभोवती संभाव्यतेच्या एका अस्पष्ट प्रदेशात अस्तित्वात असतात.",
+      "text_markdown": "ते केंद्रकाभोवती संभाव्यतेच्या एका अस्पष्ट प्रदेशात अस्तित्वात असतात.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "ते केंद्रकाभोवती संभाव्यतेच्या एका अस्पष्ट प्रदेशात अस्तित्वात असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-063",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "इलेक्ट्रॉन ढग ही अशी जागा आहे जिथे तुम्हाला कोणत्याही क्षणी इलेक्ट्रॉन मिळण्याची शक्यता असते.",
+      "text_markdown": "इलेक्ट्रॉन ढग ही अशी जागा आहे जिथे तुम्हाला कोणत्याही क्षणी इलेक्ट्रॉन मिळण्याची शक्यता असते.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "इलेक्ट्रॉन ढग ही अशी जागा आहे जिथे तुम्हाला कोणत्याही क्षणी इलेक्ट्रॉन मिळण्याची शक्यता असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "प्रोटॉन किंवा न्यूट्रॉनच्या तुलनेत इलेक्ट्रॉनला जवळजवळ वस्तुमान नसते.",
+      "text_markdown": "प्रोटॉन किंवा न्यूट्रॉनच्या तुलनेत इलेक्ट्रॉनला जवळजवळ वस्तुमान नसते.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "प्रोटॉन किंवा न्यूट्रॉनच्या तुलनेत इलेक्ट्रॉनला जवळजवळ वस्तुमान नसते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-065",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "प्रोटॉन इलेक्ट्रॉनपेक्षा सुमारे 1,836 पट जड असतो.",
+      "text_markdown": "प्रोटॉन इलेक्ट्रॉनपेक्षा सुमारे 1,836 पट जड असतो.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "प्रोटॉन इलेक्ट्रॉनपेक्षा सुमारे एक हजार आठशे छत्तीस पट जड असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-066",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "अणूचे जवळजवळ सर्व वस्तुमान केंद्रकात असते.",
+      "text_markdown": "अणूचे जवळजवळ सर्व वस्तुमान केंद्रकात असते.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "अणूचे जवळजवळ सर्व वस्तुमान केंद्रकात असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "तटस्थ अणूमध्ये, इलेक्ट्रॉनची संख्या प्रोटॉनच्या संख्येइतकी असते.",
+      "text_markdown": "तटस्थ अणूमध्ये, इलेक्ट्रॉनची संख्या प्रोटॉनच्या संख्येइतकी असते.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "तटस्थ अणूमध्ये, इलेक्ट्रॉनची संख्या प्रोटॉनच्या संख्येइतकी असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-068",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "धन आणि ऋण प्रभार संतुलित होतात.",
+      "text_markdown": "धन आणि ऋण प्रभार संतुलित होतात.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "धन आणि ऋण प्रभार संतुलित होतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-069",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "अणूला कोणताही एकूण प्रभार नसतो.",
+      "text_markdown": "अणूला कोणताही एकूण प्रभार नसतो.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "अणूला कोणताही एकूण प्रभार नसतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-070",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "हे संतुलन अणूची पूर्वनिर्धारित अवस्था आहे.",
+      "text_markdown": "हे संतुलन अणूची पूर्वनिर्धारित अवस्था आहे.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "हे संतुलन अणूची पूर्वनिर्धारित अवस्था आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "अणूचा बहुतेक भाग रिकामा असतो.",
+      "text_markdown": "अणूचा बहुतेक भाग रिकामा असतो.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "अणूचा बहुतेक भाग रिकामा असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-072",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "केंद्रक घन आणि लहान असते.",
+      "text_markdown": "केंद्रक घन आणि लहान असते.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "केंद्रक घन आणि लहान असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-073",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "इलेक्ट्रॉन ढग मोठा आणि बहुतेक रिकामा असतो.",
+      "text_markdown": "इलेक्ट्रॉन ढग मोठा आणि बहुतेक रिकामा असतो.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "इलेक्ट्रॉन ढग मोठा आणि बहुतेक रिकामा असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-074",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "जर तुम्ही तुमच्या शरीरातील प्रत्येक अणूमधून सर्व रिकामी जागा काढून टाकली, तर तुम्ही मिठाच्या कणापेक्षा लहान आकारात संकुचित व्हाल.",
+      "text_markdown": "जर तुम्ही तुमच्या शरीरातील प्रत्येक अणूमधून सर्व रिकामी जागा काढून टाकली, तर तुम्ही मिठाच्या कणापेक्षा लहान आकारात संकुचित व्हाल.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "जर तुम्ही तुमच्या शरीरातील प्रत्येक अणूमधून सगळी रिकामी जागा काढून टाकली, तर तुमचे शरीर मिठाच्या कणापेक्षाही लहान होऊन जाईल.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-075",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "तुमचे वस्तुमान तेच राहील.",
+      "text_markdown": "तुमचे वस्तुमान तेच राहील.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "तुमचे वस्तुमान तेच राहील.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "id": "ch02-076",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "तुम्ही फक्त अविश्वसनीयपणे घन असाल.",
+      "text_markdown": "तुम्ही फक्त अविश्वसनीयपणे घन असाल.",
+      "title": "अणूच्या आत",
+      "tts": {
+        "text": "तुम्ही फक्त अविश्वसनीयपणे घन असाल.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "heading_level": 1,
+      "id": "ch03-077",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p19",
+      "text": "मूलद्रव्ये",
+      "text_markdown": "मूलद्रव्ये",
+      "title": "मूलद्रव्ये"
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-078",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "मूलद्रव्य म्हणजे केवळ एका प्रकारच्या अणूपासून बनलेला पदार्थ.",
+      "text_markdown": "मूलद्रव्य म्हणजे केवळ एका प्रकारच्या अणूपासून बनलेला पदार्थ.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "मूलद्रव्य म्हणजे केवळ एका प्रकारच्या अणूपासून बनलेला पदार्थ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-079",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "शुद्ध सोने हे एक मूलद्रव्य आहे.",
+      "text_markdown": "शुद्ध सोने हे एक मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "शुद्ध सोने हे एक मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-080",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "शुद्ध सोन्याच्या एका बारमधील प्रत्येक अणूत एकोणऐंशी प्रोटॉन असतात.",
+      "text_markdown": "शुद्ध सोन्याच्या एका बारमधील प्रत्येक अणूत एकोणऐंशी प्रोटॉन असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "शुद्ध सोन्याच्या एका बारमधील प्रत्येक अणूत एकोणऐंशी प्रोटॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-081",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "शुद्ध ऑक्सिजन हे एक मूलद्रव्य आहे.",
+      "text_markdown": "शुद्ध ऑक्सिजन हे एक मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "शुद्ध ऑक्सिजन हे एक मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-082",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "शुद्ध ऑक्सिजनच्या टाकीतील प्रत्येक अणूत आठ प्रोटॉन असतात.",
+      "text_markdown": "शुद्ध ऑक्सिजनच्या टाकीतील प्रत्येक अणूत आठ प्रोटॉन असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "शुद्ध ऑक्सिजनच्या टाकीतील प्रत्येक अणूत प्रोटॉनांची संख्या आठच.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-083",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "पृथ्वीवर नैसर्गिकरित्या सुमारे ब्याण्णव मूलद्रव्ये आढळतात.",
+      "text_markdown": "पृथ्वीवर नैसर्गिकरित्या सुमारे ब्याण्णव मूलद्रव्ये आढळतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "पृथ्वीवर नैसर्गिकरित्या सुमारे ब्याण्णव मूलद्रव्ये आढळतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-084",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "वैज्ञानिकांनी प्रयोगशाळांमध्ये अतिरिक्त मूलद्रव्ये तयार केली आहेत.",
+      "text_markdown": "वैज्ञानिकांनी प्रयोगशाळांमध्ये अतिरिक्त मूलद्रव्ये तयार केली आहेत.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "वैज्ञानिकांनी प्रयोगशाळेत आणखी मूलद्रव्ये तयार केली आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-085",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "ज्ञात मूलद्रव्यांची एकूण संख्या एकशे अठरापेक्षा जास्त आहे.",
+      "text_markdown": "ज्ञात मूलद्रव्यांची एकूण संख्या एकशे अठरापेक्षा जास्त आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "ज्ञात मूलद्रव्यांची एकूण संख्या एकशे अठरापेक्षा जास्त आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-086",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "प्रत्येक मूलद्रव्यामध्ये प्रोटॉनची एक अद्वितीय संख्या असते.",
+      "text_markdown": "प्रत्येक मूलद्रव्यामध्ये प्रोटॉनची एक अद्वितीय संख्या असते.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "प्रत्येक मूलद्रव्यामध्ये प्रोटॉनची एक अद्वितीय संख्या असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-087",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "प्रत्येक मूलद्रव्याला एक नाव आणि एक चिन्ह असते.",
+      "text_markdown": "प्रत्येक मूलद्रव्याला एक नाव आणि एक चिन्ह असते.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "प्रत्येक मूलद्रव्याला एक नाव आणि एक चिन्ह असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-088",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "हायड्रोजन H आहे. ऑक्सिजन O आहे. कार्बन C आहे. लोह Fe आहे.",
+      "text_markdown": "हायड्रोजन H आहे. ऑक्सिजन O आहे. कार्बन C आहे. लोह Fe आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "हायड्रोजन एच आहे. ऑक्सिजन ओ आहे. कार्बन सी आहे. लोह एफ ई आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-089",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "सोने Au आहे.",
+      "text_markdown": "सोने Au आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "सोने ए यू आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-090",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "ही चिन्हे लॅटिन, ग्रीक किंवा इंग्रजी नावांवरून येतात.",
+      "text_markdown": "ही चिन्हे लॅटिन, ग्रीक किंवा इंग्रजी नावांवरून येतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "ही चिन्हे लॅटिन, ग्रीक किंवा इंग्रजी नावांवरून येतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-091",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "Fe हा लॅटिन शब्द 'फेरम' (ferrum) पासून आला आहे.",
+      "text_markdown": "Fe हा लॅटिन शब्द 'फेरम' (ferrum) पासून आला आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "एफ ई हा लॅटिन शब्द 'फेरम' (ferrum) पासून आला आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-092",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "Au हा लॅटिन शब्द 'ऑरम' (aurum) पासून आला आहे.",
+      "text_markdown": "Au हा लॅटिन शब्द 'ऑरम' (aurum) पासून आला आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "ए यू हा लॅटिन शब्द 'ऑरम' (aurum) पासून आला आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-093",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "हायड्रोजन हे सर्वात सोपे मूलद्रव्य आहे.",
+      "text_markdown": "हायड्रोजन हे सर्वात सोपे मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "हायड्रोजन हे सर्वात सोपे मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-094",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "हायड्रोजनच्या अणूत एक प्रोटॉन आणि एक इलेक्ट्रॉन असतो.",
+      "text_markdown": "हायड्रोजनच्या अणूत एक प्रोटॉन आणि एक इलेक्ट्रॉन असतो.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "हायड्रोजनच्या अणूत एक प्रोटॉन आणि एक इलेक्ट्रॉन असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-095",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "हायड्रोजन हे विश्वातील सर्वात सामान्य मूलद्रव्य आहे.",
+      "text_markdown": "हायड्रोजन हे विश्वातील सर्वात सामान्य मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "हायड्रोजन हे विश्वातील सर्वात सामान्य मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-096",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "तारे मुख्यतः हायड्रोजनचे बनलेले असतात.",
+      "text_markdown": "तारे मुख्यतः हायड्रोजनचे बनलेले असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "तारे मुख्यतः हायड्रोजनचे बनलेले असतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-097",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "कार्बन हे जीवनाचे मूलद्रव्य आहे.",
+      "text_markdown": "कार्बन हे जीवनाचे मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "कार्बन हे जीवनाचे मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-098",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "कार्बनमध्ये सहा प्रोटॉन असतात.",
+      "text_markdown": "कार्बनमध्ये सहा प्रोटॉन असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "कार्बनमध्ये सहा प्रोटॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-099",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "कार्बनचे अणू एकाच वेळी इतर अनेक अणूंशी बंध तयार करू शकतात.",
+      "text_markdown": "कार्बनचे अणू एकाच वेळी इतर अनेक अणूंशी बंध तयार करू शकतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "कार्बनचे अणू एकाच वेळी इतर अनेक अणूंशी बंध तयार करू शकतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-100",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "या क्षमतेमुळे कार्बन सर्व सजीवांचा आधार बनतो.",
+      "text_markdown": "या क्षमतेमुळे कार्बन सर्व सजीवांचा आधार बनतो.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "या क्षमतेमुळे कार्बन सर्व सजीवांचा आधार बनतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-101",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "तुमच्या शरीरातील प्रत्येक प्रथिन, डीएनएचा प्रत्येक धागा आणि प्रत्येक साखरेच्या रेणूमध्ये कार्बन असतो.",
+      "text_markdown": "तुमच्या शरीरातील प्रत्येक प्रथिन, डीएनएचा प्रत्येक धागा आणि प्रत्येक साखरेच्या रेणूमध्ये कार्बन असतो.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "तुमच्या शरीरातील प्रत्येक प्रथिन, डी एन ए चा प्रत्येक धागा आणि प्रत्येक साखरेच्या रेणूमध्ये कार्बन असतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "ऑक्सिजनमध्ये आठ प्रोटॉन असतात.",
+      "text_markdown": "ऑक्सिजनमध्ये आठ प्रोटॉन असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "ऑक्सिजनमध्ये आठ प्रोटॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "ऑक्सिजन हे तुम्ही श्वास घेता ते मूलद्रव्य आहे.",
+      "text_markdown": "ऑक्सिजन हे तुम्ही श्वास घेता ते मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "ऑक्सिजन हे तुम्ही श्वास घेता ते मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "तुमची फुफ्फुसे हवेतून ऑक्सिजन घेतात आणि तो तुमच्या रक्तात पाठवतात.",
+      "text_markdown": "तुमची फुफ्फुसे हवेतून ऑक्सिजन घेतात आणि तो तुमच्या रक्तात पाठवतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "तुमची फुफ्फुसे हवेतून ऑक्सिजन घेतात आणि तो तुमच्या रक्तात पाठवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-105",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "तुमच्या पेशी अन्नातून ऊर्जा मुक्त करण्यासाठी ऑक्सिजनचा वापर करतात.",
+      "text_markdown": "तुमच्या पेशी अन्नातून ऊर्जा मुक्त करण्यासाठी ऑक्सिजनचा वापर करतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "तुमच्या पेशी अन्नातून ऊर्जा मुक्त करण्यासाठी ऑक्सिजनचा वापर करतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "लोहमध्ये सव्वीस प्रोटॉन असतात.",
+      "text_markdown": "लोहमध्ये सव्वीस प्रोटॉन असतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "लोहमध्ये सव्वीस प्रोटॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "लोह हे तुमच्या रक्ताला लाल रंग देणारे मूलद्रव्य आहे.",
+      "text_markdown": "लोह हे तुमच्या रक्ताला लाल रंग देणारे मूलद्रव्य आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "लोह हे तुमच्या रक्ताला लाल रंग देणारे मूलद्रव्य आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-108",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "लोह हे स्टीलमध्ये मुख्य घटक आहे.",
+      "text_markdown": "लोह हे स्टीलमध्ये मुख्य घटक आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "लोह हे स्टीलमध्ये मुख्य घटक आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-109",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "पृथ्वीचा गाभा मुख्यतः लोहाचा बनलेला आहे.",
+      "text_markdown": "पृथ्वीचा गाभा मुख्यतः लोहाचा बनलेला आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "पृथ्वीचा गाभा मुख्यतः लोहाचा बनलेला आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "सर्वात हलकी मूलद्रव्ये विश्वात सर्वात सामान्य आहेत.",
+      "text_markdown": "सर्वात हलकी मूलद्रव्ये विश्वात सर्वात सामान्य आहेत.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "सर्वात हलकी मूलद्रव्ये विश्वात सर्वात सामान्य आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "हायड्रोजन आणि हेलियम मिळून विश्वातील सुमारे अठ्ठ्याण्णव टक्के अणू बनवतात.",
+      "text_markdown": "हायड्रोजन आणि हेलियम मिळून विश्वातील सुमारे अठ्ठ्याण्णव टक्के अणू बनवतात.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "हायड्रोजन आणि हेलियम मिळून विश्वातील सुमारे अठ्ठ्याण्णव टक्के अणू बनवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "त्या तुलनेत जड मूलद्रव्ये दुर्मिळ आहेत.",
+      "text_markdown": "त्या तुलनेत जड मूलद्रव्ये दुर्मिळ आहेत.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "त्या तुलनेत जड मूलद्रव्ये दुर्मिळ आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "id": "ch03-113",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "प्रत्येक जड मूलद्रव्याचा प्रत्येक अणू ताऱ्याच्या आत तयार झाला आहे.",
+      "text_markdown": "प्रत्येक जड मूलद्रव्याचा प्रत्येक अणू ताऱ्याच्या आत तयार झाला आहे.",
+      "title": "मूलद्रव्ये",
+      "tts": {
+        "text": "प्रत्येक जड मूलद्रव्याचा प्रत्येक अणू ताऱ्याच्या आत तयार झाला आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "heading_level": 1,
+      "id": "ch04-114",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p28",
+      "text": "आवर्त सारणी",
+      "text_markdown": "आवर्त सारणी",
+      "title": "आवर्त सारणी"
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "आवर्त सारणी हे एक तक्ता आहे जे प्रत्येक ज्ञात मूलद्रव्याला व्यवस्थित करते.",
+      "text_markdown": "आवर्त सारणी हे एक तक्ता आहे जे प्रत्येक ज्ञात मूलद्रव्याला व्यवस्थित करते.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणी हे एक तक्ता आहे जे प्रत्येक ज्ञात मूलद्रव्याला व्यवस्थित करते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "हा तक्ता मूलद्रव्यांना त्यांच्या प्रोटॉनच्या संख्येनुसार, लहानापासून मोठ्यापर्यंत मांडतो.",
+      "text_markdown": "हा तक्ता मूलद्रव्यांना त्यांच्या प्रोटॉनच्या संख्येनुसार, लहानापासून मोठ्यापर्यंत मांडतो.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हा तक्ता मूलद्रव्यांना त्यांच्या प्रोटॉनच्या संख्येनुसार, लहानापासून मोठ्यापर्यंत मांडतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-117",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "हायड्रोजन एक प्रोटॉनसह पहिल्या क्रमांकावर आहे.",
+      "text_markdown": "हायड्रोजन एक प्रोटॉनसह पहिल्या क्रमांकावर आहे.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हायड्रोजन एक प्रोटॉनसह पहिल्या क्रमांकावर आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-118",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "हेलियम दोन प्रोटॉनसह दुसऱ्या क्रमांकावर आहे.",
+      "text_markdown": "हेलियम दोन प्रोटॉनसह दुसऱ्या क्रमांकावर आहे.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हेलियम दोन प्रोटॉनसह दुसऱ्या क्रमांकावर आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-119",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "हा तक्ता ओगॅनेसॉनपर्यंत, एकशे अठरा प्रोटॉनसह, पुढे जातो.",
+      "text_markdown": "हा तक्ता ओगॅनेसॉनपर्यंत, एकशे अठरा प्रोटॉनसह, पुढे जातो.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हा तक्ता ओगॅनेसॉनपर्यंत, एकशे अठरा प्रोटॉनसह, पुढे जातो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "आवर्त सारणीमध्ये पंक्ती आणि स्तंभ असतात.",
+      "text_markdown": "आवर्त सारणीमध्ये पंक्ती आणि स्तंभ असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणीमध्ये पंक्ती आणि स्तंभ असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "ओळींना आवर्त म्हणतात.",
+      "text_markdown": "ओळींना आवर्त म्हणतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "ओळींना आवर्त म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-122",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "स्तंभांना गट म्हणतात.",
+      "text_markdown": "स्तंभांना गट म्हणतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "स्तंभांना गट म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-123",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "एकाच गटातील मूलद्रव्यांमध्ये समान गुणधर्म असतात.",
+      "text_markdown": "एकाच गटातील मूलद्रव्यांमध्ये समान गुणधर्म असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "एकाच गटातील मूलद्रव्यांमध्ये समान गुणधर्म असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-124",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "यामुळेच या सारणीला आवर्त सारणी म्हणतात.",
+      "text_markdown": "यामुळेच या सारणीला आवर्त सारणी म्हणतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "यामुळेच या सारणीला आवर्त सारणी म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-125",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "गुणधर्म एका नियमित नमुन्यात पुन्हा पुन्हा येतात.",
+      "text_markdown": "गुणधर्म एका नियमित नमुन्यात पुन्हा पुन्हा येतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "गुणधर्म एका नियमित नमुन्यात पुन्हा पुन्हा येतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "सारणीच्या डाव्या बाजूकडील मूलद्रव्ये धातू आहेत.",
+      "text_markdown": "सारणीच्या डाव्या बाजूकडील मूलद्रव्ये धातू आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सारणीच्या डाव्या बाजूकडील मूलद्रव्ये धातू आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-127",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "बहुतेक मूलद्रव्ये धातू आहेत.",
+      "text_markdown": "बहुतेक मूलद्रव्ये धातू आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "बहुतेक मूलद्रव्ये धातू आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-128",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "धातू चमकदार असतात.",
+      "text_markdown": "धातू चमकदार असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातू चमकदार असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-129",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "धातू विद्युत सुवाहक असतात.",
+      "text_markdown": "धातू विद्युत सुवाहक असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातू विद्युत सुवाहक असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-130",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "धातू उष्णता सुवाहक असतात.",
+      "text_markdown": "धातू उष्णता सुवाहक असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातू उष्णता सुवाहक असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-131",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "लोह, तांबे, सोने आणि ॲल्युमिनियम हे सर्व धातू आहेत.",
+      "text_markdown": "लोह, तांबे, सोने आणि ॲल्युमिनियम हे सर्व धातू आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "लोह, तांबे, सोने आणि ॲल्युमिनियम हे सर्व धातू आहेत.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "सारणीच्या उजव्या बाजूकडील मूलद्रव्ये अधातू आहेत.",
+      "text_markdown": "सारणीच्या उजव्या बाजूकडील मूलद्रव्ये अधातू आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सारणीच्या उजव्या बाजूकडील मूलद्रव्ये अधातू आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "अधातूंमध्ये ऑक्सिजन, नायट्रोजन, कार्बन आणि सल्फर यांचा समावेश होतो.",
+      "text_markdown": "अधातूंमध्ये ऑक्सिजन, नायट्रोजन, कार्बन आणि सल्फर यांचा समावेश होतो.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातूंमध्ये ऑक्सिजन, नायट्रोजन, कार्बन आणि सल्फर यांचा समावेश होतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-134",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "अधातूंमधून वीज चांगली वाहत नाही.",
+      "text_markdown": "अधातूंमधून वीज चांगली वाहत नाही.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातूंमधून वीज चांगली वाहत नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-135",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "अधातूंनी हवा, पाणी आणि सजीव वस्तू बनलेल्या आहेत.",
+      "text_markdown": "अधातूंनी हवा, पाणी आणि सजीव वस्तू बनलेल्या आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातूंनी हवा, पाणी आणि सजीव वस्तू बनलेल्या आहेत.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "काही मूलद्रव्ये धातू आणि अधातू यांच्या सीमेवर असतात.",
+      "text_markdown": "काही मूलद्रव्ये धातू आणि अधातू यांच्या सीमेवर असतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "काही मूलद्रव्ये धातू आणि अधातू यांच्या सीमेवर असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "या मूलद्रव्यांना धातूसदृश म्हणतात.",
+      "text_markdown": "या मूलद्रव्यांना धातूसदृश म्हणतात.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "या मूलद्रव्यांना धातूसदृश म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "सिलिकॉन हे धातूसदृश आहे.",
+      "text_markdown": "सिलिकॉन हे धातूसदृश आहे.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सिलिकॉन हे धातूसदृश आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-139",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "सिलिकॉन थोडी वीज वाहून नेते, पण धातूइतकी चांगली नाही.",
+      "text_markdown": "सिलिकॉन थोडी वीज वाहून नेते, पण धातूइतकी चांगली नाही.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सिलिकॉन थोडी वीज वाहून नेते, पण धातूइतकी चांगली नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-140",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "या गुणधर्मामुळे सिलिकॉन संगणकाच्या चिप्समध्ये उपयुक्त ठरते.",
+      "text_markdown": "या गुणधर्मामुळे सिलिकॉन संगणकाच्या चिप्समध्ये उपयुक्त ठरते.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "या गुणधर्मामुळे सिलिकॉन संगणकाच्या चिप्समध्ये उपयुक्त ठरते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "राजवायू उजवीकडील शेवटच्या स्तंभात आहेत.",
+      "text_markdown": "राजवायू उजवीकडील शेवटच्या स्तंभात आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "राजवायू उजव्या टोकाच्या शेवटच्या स्तंभात दिसतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "हेलियम, निऑन, आर्गॉन, क्रिप्टॉन, झेनॉन आणि रेडॉन हे राजवायू आहेत.",
+      "text_markdown": "हेलियम, निऑन, आर्गॉन, क्रिप्टॉन, झेनॉन आणि रेडॉन हे राजवायू आहेत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हेलियम, निऑन, आर्गॉन, क्रिप्टॉन, झेनॉन आणि रेडॉन हे राजवायू आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-143",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "राजवायू इतर मूलद्रव्यांशी जवळजवळ कधीच अभिक्रिया करत नाहीत.",
+      "text_markdown": "राजवायू इतर मूलद्रव्यांशी जवळजवळ कधीच अभिक्रिया करत नाहीत.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "राजवायू इतर मूलद्रव्यांशी जवळजवळ कधीच अभिक्रिया करत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-144",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "त्यांची इलेक्ट्रॉन रचना आधीच स्थिर असते.",
+      "text_markdown": "त्यांची इलेक्ट्रॉन रचना आधीच स्थिर असते.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "त्यांची इलेक्ट्रॉन रचना आधीच स्थिर असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-145",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "त्यांना बंध तयार करण्याची गरज नसते.",
+      "text_markdown": "त्यांना बंध तयार करण्याची गरज नसते.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "त्यांना बंध तयार करण्याची गरज नसते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "दिमित्री मेंडेलीव्ह नावाच्या एका रशियन शास्त्रज्ञाने 1869 मध्ये पहिली आवर्त सारणी तयार केली.",
+      "text_markdown": "दिमित्री मेंडेलीव्ह नावाच्या एका रशियन शास्त्रज्ञाने 1869 मध्ये पहिली आवर्त सारणी तयार केली.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "दिमित्री मेंडेलीव्ह नावाच्या एका रशियन शास्त्रज्ञाने अठराशे एकोणसत्तर मध्ये पहिली आवर्त सारणी तयार केली.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-147",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "मेंडेलीव्हने मूलद्रव्यांची त्यांच्या गुणधर्मानुसार मांडणी केली आणि त्यांना आवर्ती नमुना दिसला.",
+      "text_markdown": "मेंडेलीव्हने मूलद्रव्यांची त्यांच्या गुणधर्मानुसार मांडणी केली आणि त्यांना आवर्ती नमुना दिसला.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "मेंडेलीव्हने मूलद्रव्ये गुणधर्मांनुसार मांडली आणि एक आवर्ती नमुना ओळखला.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "त्याने आपल्या सारणीत अशा जागा रिकाम्या ठेवल्या जिथे त्याने अज्ञात मूलद्रव्ये असावीत असे भाकीत केले होते.",
+      "text_markdown": "त्याने आपल्या सारणीत अशा जागा रिकाम्या ठेवल्या जिथे त्याने अज्ञात मूलद्रव्ये असावीत असे भाकीत केले होते.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "त्याने आपल्या सारणीत अशा जागा रिकाम्या ठेवल्या जिथे त्याने अज्ञात मूलद्रव्ये असावीत असे भाकीत केले होते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-149",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "शास्त्रज्ञांनी नंतर ती मूलद्रव्ये शोधली.",
+      "text_markdown": "शास्त्रज्ञांनी नंतर ती मूलद्रव्ये शोधली.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "शास्त्रज्ञांनी नंतर ती मूलद्रव्ये शोधली.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-150",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "प्रत्येक भाकीत बरोबर ठरले.",
+      "text_markdown": "प्रत्येक भाकीत बरोबर ठरले.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "प्रत्येक भाकीत बरोबर ठरले.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "आवर्त सारणी हे विज्ञानातील सर्वात शक्तिशाली साधनांपैकी एक आहे.",
+      "text_markdown": "आवर्त सारणी हे विज्ञानातील सर्वात शक्तिशाली साधनांपैकी एक आहे.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणी हे विज्ञानातील सर्वात शक्तिशाली साधनांपैकी एक आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "id": "ch04-152",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "एखादे मूलद्रव्य सारणीत कुठे आहे हे तुम्हाला माहीत असल्यास, ते कसे वर्तन करेल याचा तुम्ही अंदाज लावू शकता.",
+      "text_markdown": "एखादे मूलद्रव्य सारणीत कुठे आहे हे तुम्हाला माहीत असल्यास, ते कसे वर्तन करेल याचा तुम्ही अंदाज लावू शकता.",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "एखादे मूलद्रव्य सारणीत कुठे आहे हे तुम्हाला माहीत असल्यास, ते कसे वर्तन करेल याचा तुम्ही अंदाज लावू शकता.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 5,
+      "heading_level": 1,
+      "id": "ch05-153",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p37",
+      "text": "अणू कसे बंध बनवतात",
+      "text_markdown": "अणू कसे बंध बनवतात",
+      "title": "अणू कसे बंध बनवतात"
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "अणू क्वचितच एकटे अस्तित्वात असतात.",
+      "text_markdown": "अणू क्वचितच एकटे अस्तित्वात असतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "अणू क्वचितच एकटे अस्तित्वात असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-155",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "बहुतेक अणू रेणू तयार करण्यासाठी इतर अणूंशी बंध बनवतात.",
+      "text_markdown": "बहुतेक अणू रेणू तयार करण्यासाठी इतर अणूंशी बंध बनवतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "बहुतेक अणू रेणू तयार करण्यासाठी इतर अणूंशी बंध बनवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-156",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "रेणू म्हणजे रासायनिक बंधांनी एकत्र धरलेला अणूंचा समूह.",
+      "text_markdown": "रेणू म्हणजे रासायनिक बंधांनी एकत्र धरलेला अणूंचा समूह.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "रेणू म्हणजे रासायनिक बंधांनी एकत्र धरलेला अणूंचा समूह.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-157",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "पाणी एक रेणू आहे.",
+      "text_markdown": "पाणी एक रेणू आहे.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "पाणी एक रेणू आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-158",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "ऑक्सिजन वायू एक रेणू आहे.",
+      "text_markdown": "ऑक्सिजन वायू एक रेणू आहे.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "ऑक्सिजन वायू एक रेणू आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-159",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "साखर एक रेणू आहे.",
+      "text_markdown": "साखर एक रेणू आहे.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "साखर एक रेणू आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "अणू त्यांच्या इलेक्ट्रॉनमुळे बंध बनवतात.",
+      "text_markdown": "अणू त्यांच्या इलेक्ट्रॉनमुळे बंध बनवतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "अणू त्यांच्या इलेक्ट्रॉनमुळे बंध बनवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-161",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "अणूच्या सर्वात बाहेरील कवचातील इलेक्ट्रॉन तो अणू इतर अणूंशी कसा संवाद साधतो हे ठरवतात.",
+      "text_markdown": "अणूच्या सर्वात बाहेरील कवचातील इलेक्ट्रॉन तो अणू इतर अणूंशी कसा संवाद साधतो हे ठरवतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "अणूच्या सर्वात बाहेरील कवचातील इलेक्ट्रॉन तो अणू इतर अणूंशी कसा संवाद साधतो हे ठरवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-162",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "या बाहेरील इलेक्ट्रॉनना संयुजा इलेक्ट्रॉन म्हणतात.",
+      "text_markdown": "या बाहेरील इलेक्ट्रॉनना संयुजा इलेक्ट्रॉन म्हणतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "या बाहेरील इलेक्ट्रॉनना संयुजा इलेक्ट्रॉन म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-163",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "पूर्ण बाहेरील कवच असलेला अणू स्थिर असतो.",
+      "text_markdown": "पूर्ण बाहेरील कवच असलेला अणू स्थिर असतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "पूर्ण बाहेरील कवच असलेला अणू स्थिर असतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-164",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "पूर्ण बाहेरील कवच नसलेला अणू ते भरण्याचा प्रयत्न करेल.",
+      "text_markdown": "पूर्ण बाहेरील कवच नसलेला अणू ते भरण्याचा प्रयत्न करेल.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "पूर्ण बाहेरील कवच नसलेला अणू ते भरण्याचा प्रयत्न करेल.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "रासायनिक बंधांचे दोन मुख्य प्रकार आहेत.",
+      "text_markdown": "रासायनिक बंधांचे दोन मुख्य प्रकार आहेत.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "रासायनिक बंधांचे दोन मुख्य प्रकार आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-166",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "सहसंयुज बंध आणि आयनिक बंध.",
+      "text_markdown": "सहसंयुज बंध आणि आयनिक बंध.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "सहसंयुज बंध आणि आयनिक बंध.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "सहसंयुज बंधात, दोन अणू इलेक्ट्रॉन सामायिक करतात.",
+      "text_markdown": "सहसंयुज बंधात, दोन अणू इलेक्ट्रॉन सामायिक करतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "सहसंयुज बंधात, दोन अणू इलेक्ट्रॉन सामायिक करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-168",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "दोन्ही अणू सामायिक जोडीसाठी इलेक्ट्रॉनचे योगदान देतात.",
+      "text_markdown": "दोन्ही अणू सामायिक जोडीसाठी इलेक्ट्रॉनचे योगदान देतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "दोन्ही अणू सामायिक जोडीसाठी इलेक्ट्रॉनचे योगदान देतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-169",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "सामायिक इलेक्ट्रॉन दोन्ही केंद्रकांभोवती फिरतात.",
+      "text_markdown": "सामायिक इलेक्ट्रॉन दोन्ही केंद्रकांभोवती फिरतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "सामायिक इलेक्ट्रॉन दोन्ही केंद्रकांभोवती फिरतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-170",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "हे सामायिकरण अणूंना एकत्र धरून ठेवते.",
+      "text_markdown": "हे सामायिकरण अणूंना एकत्र धरून ठेवते.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "हे सामायिकरण अणूंना एकत्र धरून ठेवते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-171",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "पाणी सहसंयुज बंधांनी एकत्र धरले जाते.",
+      "text_markdown": "पाणी सहसंयुज बंधांनी एकत्र धरले जाते.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "पाणी सहसंयुज बंधांनी एकत्र धरले जाते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-172",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "प्रत्येक हायड्रोजन अणू ऑक्सिजन अणूबरोबर एक इलेक्ट्रॉन सामायिक करतो.",
+      "text_markdown": "प्रत्येक हायड्रोजन अणू ऑक्सिजन अणूबरोबर एक इलेक्ट्रॉन सामायिक करतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "प्रत्येक हायड्रोजन अणू ऑक्सिजन अणूबरोबर एक इलेक्ट्रॉन सामायिक करतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "आयनिक बंधात, एक अणू दुसऱ्या अणूला इलेक्ट्रॉन देतो.",
+      "text_markdown": "आयनिक बंधात, एक अणू दुसऱ्या अणूला इलेक्ट्रॉन देतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "आयनिक बंधात, एक अणू दुसऱ्या अणूला इलेक्ट्रॉन देतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-174",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "जो अणू इलेक्ट्रॉन गमावतो तो धनप्रभारित होतो.",
+      "text_markdown": "जो अणू इलेक्ट्रॉन गमावतो तो धनप्रभारित होतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "जो अणू इलेक्ट्रॉन गमावतो तो धनप्रभारित होतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-175",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "जो अणू इलेक्ट्रॉन मिळवतो तो ऋणप्रभारित होतो.",
+      "text_markdown": "जो अणू इलेक्ट्रॉन मिळवतो तो ऋणप्रभारित होतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "जो अणू इलेक्ट्रॉन मिळवतो तो ऋणप्रभारित होतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-176",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "विरुद्ध प्रभार एकमेकांना आकर्षित करतात.",
+      "text_markdown": "विरुद्ध प्रभार एकमेकांना आकर्षित करतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "विरुद्ध प्रभार एकमेकांना आकर्षित करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-177",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "हे आकर्षण दोन अणूंना एकत्र धरून ठेवते.",
+      "text_markdown": "हे आकर्षण दोन अणूंना एकत्र धरून ठेवते.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "हे आकर्षण दोन अणूंना एकत्र धरून ठेवते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-178",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "मीठ आयनिक बंधांनी एकत्र धरले जाते.",
+      "text_markdown": "मीठ आयनिक बंधांनी एकत्र धरले जाते.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "मीठ आयनिक बंधांनी एकत्र धरले जाते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-179",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "सोडियम क्लोरीनला एक इलेक्ट्रॉन देतो.",
+      "text_markdown": "सोडियम क्लोरीनला एक इलेक्ट्रॉन देतो.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "सोडियम क्लोरीनला एक इलेक्ट्रॉन देतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-180",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "एका पाण्याच्या रेणूमध्ये दोन हायड्रोजन अणू आणि एक ऑक्सिजन अणू असतात.",
+      "text_markdown": "एका पाण्याच्या रेणूमध्ये दोन हायड्रोजन अणू आणि एक ऑक्सिजन अणू असतात.",
+      "title": "अणू कसे बंध बनवतात",
+      "tts": {
+        "text": "एका पाण्याच्या रेणूमध्ये दोन हायड्रोजन अणू आणि एक ऑक्सिजन अणू असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-181",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "शास्त्रज्ञ हे H2O असे लिहितात.",
+      "text_markdown": "शास्त्रज्ञ हे H2O असे लिहितात.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "शास्त्रज्ञ हे एच दोन ओ असे लिहितात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-182",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "H म्हणजे हायड्रोजन.",
+      "text_markdown": "H म्हणजे हायड्रोजन.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "एच म्हणजे हायड्रोजन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-183",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "O म्हणजे ऑक्सिजन.",
+      "text_markdown": "O म्हणजे ऑक्सिजन.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "ओ म्हणजे ऑक्सिजन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-184",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "2 म्हणजे दोन हायड्रोजन अणू आहेत.",
+      "text_markdown": "2 म्हणजे दोन हायड्रोजन अणू आहेत.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "दोन म्हणजे दोन हायड्रोजन अणू आहेत.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-185",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "कार्बन डायऑक्साइडच्या एका रेणूमध्ये एक कार्बन अणू आणि दोन ऑक्सिजन अणू असतात.",
+      "text_markdown": "कार्बन डायऑक्साइडच्या एका रेणूमध्ये एक कार्बन अणू आणि दोन ऑक्सिजन अणू असतात.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "कार्बन डायऑक्साइडच्या एका रेणूमध्ये एक कार्बन अणू आणि दोन ऑक्सिजन अणू असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-186",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "शास्त्रज्ञ हे CO2 असे लिहितात.",
+      "text_markdown": "शास्त्रज्ञ हे CO2 असे लिहितात.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "शास्त्रज्ञ हे सी ओ दोन असे लिहितात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-187",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "वनस्पती हवेतून कार्बन डायऑक्साइड शोषून घेतात आणि त्याचा उपयोग साखरेचे रेणू तयार करण्यासाठी करतात.",
+      "text_markdown": "वनस्पती हवेतून कार्बन डायऑक्साइड शोषून घेतात आणि त्याचा उपयोग साखरेचे रेणू तयार करण्यासाठी करतात.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "वनस्पती हवेतून कार्बन डायऑक्साइड शोषून घेतात आणि त्याचा उपयोग साखरेचे रेणू तयार करण्यासाठी करतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-188",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "अणूंमधील बंध ऊर्जा साठवतात.",
+      "text_markdown": "अणूंमधील बंध ऊर्जा साठवतात.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "अणूंमधील बंध ऊर्जा साठवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-189",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "जेव्हा बंध तुटतात, तेव्हा ऊर्जा बाहेर पडते.",
+      "text_markdown": "जेव्हा बंध तुटतात, तेव्हा ऊर्जा बाहेर पडते.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "जेव्हा बंध तुटतात, तेव्हा ऊर्जा बाहेर पडते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-190",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "जेव्हा बंध तयार होतात, तेव्हा ऊर्जा शोषली जाते.",
+      "text_markdown": "जेव्हा बंध तयार होतात, तेव्हा ऊर्जा शोषली जाते.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "जेव्हा बंध तयार होतात, तेव्हा ऊर्जा शोषली जाते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "id": "ch05-191",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "विश्वातील प्रत्येक रासायनिक अभिक्रियेमध्ये जुने बंध तोडणे आणि नवीन बंध तयार करणे समाविष्ट असते.",
+      "text_markdown": "विश्वातील प्रत्येक रासायनिक अभिक्रियेमध्ये जुने बंध तोडणे आणि नवीन बंध तयार करणे समाविष्ट असते.",
+      "title": "अणू कसे जोडले जातात",
+      "tts": {
+        "text": "विश्वातील प्रत्येक रासायनिक अभिक्रियेमध्ये जुने बंध तोडणे आणि नवीन बंध तयार करणे समाविष्ट असते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "heading_level": 1,
+      "id": "ch06-192",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p46",
+      "text": "गतीमधील अणू",
+      "text_markdown": "गतीमधील अणू",
+      "title": "गतीमधील अणू"
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-193",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "अणू नेहमी गतिमान असतात.",
+      "text_markdown": "अणू नेहमी गतिमान असतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "अणू नेहमी गतिमान असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-194",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "ते कधीही थांबत नाहीत.",
+      "text_markdown": "ते कधीही थांबत नाहीत.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते कधीही थांबत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-195",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "निरपेक्ष शून्यापेक्षा जास्त कोणत्याही तापमानावर, अणू कंपन करतात, फिरतात आणि अवकाशातून प्रवास करतात.",
+      "text_markdown": "निरपेक्ष शून्यापेक्षा जास्त कोणत्याही तापमानावर, अणू कंपन करतात, फिरतात आणि अवकाशातून प्रवास करतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "निरपेक्ष शून्यापेक्षा जास्त कोणत्याही तापमानावर अणू कंपन करतात, फिरतात आणि अवकाशातून प्रवास करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-196",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "ही गतीच आपल्याला उष्णता म्हणून जाणवते.",
+      "text_markdown": "ही गतीच आपल्याला उष्णता म्हणून जाणवते.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ही गतीच आपल्याला उष्णता म्हणून जाणवते.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-197",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "स्थायूमध्ये, अणू जागेवर कंपन करतात.",
+      "text_markdown": "स्थायूमध्ये, अणू जागेवर कंपन करतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "स्थायूमध्ये, अणू जागेवर कंपन करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-198",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "ते एका निश्चित संरचनेत बंदिस्त असतात.",
+      "text_markdown": "ते एका निश्चित संरचनेत बंदिस्त असतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते एका निश्चित संरचनेत बंदिस्त असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-199",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "ते पुढे-मागे हलतात, पण त्यांची जागा सोडत नाहीत.",
+      "text_markdown": "ते पुढे-मागे हलतात, पण त्यांची जागा सोडत नाहीत.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते पुढे-मागे हलतात, पण त्यांची जागा सोडत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-200",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "यामुळेच स्थायू त्यांचा आकार टिकवून ठेवतात.",
+      "text_markdown": "यामुळेच स्थायू त्यांचा आकार टिकवून ठेवतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "यामुळेच स्थायू त्यांचा आकार टिकवून ठेवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-201",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "बर्फाच्या तुकड्यातील अणू कंपन करतात, परंतु ते एका कठीण स्फटिक संरचनेत राहतात.",
+      "text_markdown": "बर्फाच्या तुकड्यातील अणू कंपन करतात, परंतु ते एका कठीण स्फटिक संरचनेत राहतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "बर्फाच्या तुकड्यातील अणू कंपन करतात, परंतु ते एका कठीण स्फटिक संरचनेत राहतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-202",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "द्रवामध्ये, अणू अधिक मुक्तपणे फिरतात.",
+      "text_markdown": "द्रवामध्ये, अणू अधिक मुक्तपणे फिरतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "द्रवामध्ये, अणू अधिक मुक्तपणे फिरतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-203",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "ते एकमेकांवरून सरकतात.",
+      "text_markdown": "ते एकमेकांवरून सरकतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते एकमेकांवरून सरकतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-204",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "ते एकमेकांच्या जवळ राहतात, पण ते एका निश्चित स्थितीत बंदिस्त नसतात.",
+      "text_markdown": "ते एकमेकांच्या जवळ राहतात, पण ते एका निश्चित स्थितीत बंदिस्त नसतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते एकमेकांच्या जवळ राहतात, पण ते एका निश्चित स्थितीत बंदिस्त नसतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-205",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "यामुळेच द्रव वाहतात.",
+      "text_markdown": "यामुळेच द्रव वाहतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "यामुळेच द्रव वाहतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-206",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "पाण्याच्या ग्लासमध्ये असलेले अणू सतत फिरत असतात आणि त्यांची पुनर्रचना करत असतात, परंतु ते एकमेकांच्या जवळच राहतात.",
+      "text_markdown": "पाण्याच्या ग्लासमध्ये असलेले अणू सतत फिरत असतात आणि त्यांची पुनर्रचना करत असतात, परंतु ते एकमेकांच्या जवळच राहतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "पाण्याच्या ग्लासमधले अणू सतत फिरतात आणि रचना बदलतात, पण ते एकमेकांच्या अगदी जवळच टिकतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-207",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "वायूमध्ये, अणू वेगाने फिरतात आणि दूर पसरतात.",
+      "text_markdown": "वायूमध्ये, अणू वेगाने फिरतात आणि दूर पसरतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "वायूमध्ये, अणू वेगाने फिरतात आणि दूर पसरतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-208",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "ते सरळ रेषेत उडतात जोपर्यंत ते दुसऱ्या अणूला किंवा भिंतीला आदळत नाहीत.",
+      "text_markdown": "ते सरळ रेषेत उडतात जोपर्यंत ते दुसऱ्या अणूला किंवा भिंतीला आदळत नाहीत.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते सरळ रेषेत उडतात जोपर्यंत ते दुसऱ्या अणूला किंवा भिंतीला आदळत नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-209",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "ते एकमेकांवरून उसळतात आणि दिशा बदलतात.",
+      "text_markdown": "ते एकमेकांवरून उसळतात आणि दिशा बदलतात.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "ते एकमेकांवरून उसळतात आणि दिशा बदलतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-210",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "यामुळेच वायू तुम्ही ज्या भांड्यात ठेवता ते पूर्ण भरून टाकतो.",
+      "text_markdown": "यामुळेच वायू तुम्ही ज्या भांड्यात ठेवता ते पूर्ण भरून टाकतो.",
+      "title": "गतीमधील अणू",
+      "tts": {
+        "text": "यामुळेच वायू तुम्ही ज्या भांड्यात ठेवता ते पूर्ण भरून टाकतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-211",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "एका खोलीतील हवेतील अणू शेकडो मीटर प्रति सेकंद वेगाने प्रत्येक दिशेने फिरत असतात.",
+      "text_markdown": "एका खोलीतील हवेतील अणू शेकडो मीटर प्रति सेकंद वेगाने प्रत्येक दिशेने फिरत असतात.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "एका खोलीतील हवेतील अणू शेकडो मीटर प्रति सेकंद वेगाने प्रत्येक दिशेने फिरत असतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-212",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "तापमान म्हणजे अणू किती वेगाने फिरत आहेत याचे मोजमाप.",
+      "text_markdown": "तापमान म्हणजे अणू किती वेगाने फिरत आहेत याचे मोजमाप.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "तापमान म्हणजे अणू किती वेगाने फिरत आहेत याचे मोजमाप.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-213",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "गरम म्हणजे अणू वेगाने फिरत आहेत.",
+      "text_markdown": "गरम म्हणजे अणू वेगाने फिरत आहेत.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "गरम म्हणजे अणू वेगाने फिरत आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-214",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "थंड म्हणजे अणू हळू फिरत आहेत.",
+      "text_markdown": "थंड म्हणजे अणू हळू फिरत आहेत.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "थंड म्हणजे अणू हळू फिरत आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-215",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "जेव्हा तुम्ही स्टोव्हवर पाणी गरम करता, तेव्हा तुम्ही पाण्याच्या रेणूंना अधिक वेगाने फिरण्यास प्रवृत्त करता.",
+      "text_markdown": "जेव्हा तुम्ही स्टोव्हवर पाणी गरम करता, तेव्हा तुम्ही पाण्याच्या रेणूंना अधिक वेगाने फिरण्यास प्रवृत्त करता.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "जेव्हा तुम्ही स्टोव्हवर पाणी गरम करता, तेव्हा तुम्ही पाण्याच्या रेणूंना अधिक वेगाने फिरण्यास प्रवृत्त करता.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-216",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "जेव्हा रेणू पुरेसे वेगाने फिरतात, तेव्हा ते द्रवातून बाहेर पडतात आणि वाफ बनतात.",
+      "text_markdown": "जेव्हा रेणू पुरेसे वेगाने फिरतात, तेव्हा ते द्रवातून बाहेर पडतात आणि वाफ बनतात.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "जेव्हा रेणू पुरेसे वेगाने फिरतात, तेव्हा ते द्रवातून बाहेर पडतात आणि वाफ बनतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-217",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "परम शून्य तापमान हे सर्वात कमी शक्य तापमान आहे.",
+      "text_markdown": "परम शून्य तापमान हे सर्वात कमी शक्य तापमान आहे.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "परम शून्य तापमान हे सर्वात कमी शक्य तापमान आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-218",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "ते सुमारे उणे 273 अंश सेल्सिअस असते.",
+      "text_markdown": "ते सुमारे उणे 273 अंश सेल्सिअस असते.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "ते सुमारे उणे दोनशे त्र्याहत्तर अंश सेल्सिअस असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-219",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "परम शून्य तापमानावर, अणूंमध्ये किमान शक्य ऊर्जा असते.",
+      "text_markdown": "परम शून्य तापमानावर, अणूंमध्ये किमान शक्य ऊर्जा असते.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "परम शून्य तापमानावर, अणूंमध्ये किमान शक्य ऊर्जा असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-220",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "परम शून्य तापमानापेक्षा थंड काहीही असू शकत नाही.",
+      "text_markdown": "परम शून्य तापमानापेक्षा थंड काहीही असू शकत नाही.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "परम शून्य तापमानापेक्षा थंड काहीही असू शकत नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-221",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "शास्त्रज्ञांनी प्रयोगशाळांमध्ये परम शून्य तापमानाजवळ पोहोचण्याचा प्रयत्न केला आहे, परंतु कोणीही ते नेमके गाठू शकले नाही.",
+      "text_markdown": "शास्त्रज्ञांनी प्रयोगशाळांमध्ये परम शून्य तापमानाजवळ पोहोचण्याचा प्रयत्न केला आहे, परंतु कोणीही ते नेमके गाठू शकले नाही.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "शास्त्रज्ञांनी प्रयोगशाळांमध्ये परम शून्य तापमानाजवळ पोहोचण्याचा प्रयत्न केला आहे, परंतु कोणीही ते नेमके गाठू शकले नाही.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-222",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "अणू पृष्ठभागांवर आदळल्यामुळे दाब निर्माण होतो.",
+      "text_markdown": "अणू पृष्ठभागांवर आदळल्यामुळे दाब निर्माण होतो.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "अणू पृष्ठभागांवर आदळल्यामुळे दाब निर्माण होतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-223",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "टायरमधील हवा बाहेरच्या दिशेने दाबते कारण हवेचे रेणू टायरच्या आतील भिंतींवर सतत आदळत असतात.",
+      "text_markdown": "टायरमधील हवा बाहेरच्या दिशेने दाबते कारण हवेचे रेणू टायरच्या आतील भिंतींवर सतत आदळत असतात.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "टायरमधील हवा बाहेरच्या दिशेने दाबते कारण हवेचे रेणू टायरच्या आतील भिंतींवर सतत आदळत असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-224",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "अधिक रेणू किंवा अधिक वेगाने फिरणारे रेणू म्हणजे अधिक दाब.",
+      "text_markdown": "अधिक रेणू किंवा अधिक वेगाने फिरणारे रेणू म्हणजे अधिक दाब.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "अधिक रेणू किंवा अधिक वेगाने फिरणारे रेणू म्हणजे अधिक दाब.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 6,
+      "id": "ch06-225",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "यामुळेच हवा गरम असताना टायर अधिक कठीण वाटतो.",
+      "text_markdown": "यामुळेच हवा गरम असताना टायर अधिक कठीण वाटतो.",
+      "title": "गतिमान अणू",
+      "tts": {
+        "text": "यामुळेच हवा गरम असताना टायर अधिक कठीण वाटतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 7,
+      "heading_level": 1,
+      "id": "ch07-226",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p54",
+      "text": "अणू कुठून येतात",
+      "text_markdown": "अणू कुठून येतात",
+      "title": "अणू कुठून येतात"
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-227",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "ब्रह्मांडामधील हायड्रोजन आणि हेलियम बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झाले.",
+      "text_markdown": "ब्रह्मांडामधील हायड्रोजन आणि हेलियम बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झाले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ब्रह्मांडामधील हायड्रोजन आणि हेलियम हे बिग बँगनंतरच्या पहिल्या काही मिनिटांत तयार झालेले घटक.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-228",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "सुमारे 13.8 अब्ज वर्षांपूर्वी ब्रह्मांड एका अत्यंत उष्ण, घन बिंदूच्या रूपात सुरू झाले.",
+      "text_markdown": "सुमारे 13.8 अब्ज वर्षांपूर्वी ब्रह्मांड एका अत्यंत उष्ण, घन बिंदूच्या रूपात सुरू झाले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "सुमारे तेरा दशांश आठ अब्ज वर्षांपूर्वी ब्रह्मांड एका अतितप्त, घन बिंदूपासून सुरू झाले.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-229",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "ते विस्तारत आणि थंड होत असताना, प्रोटॉन आणि न्यूट्रॉन तयार झाले.",
+      "text_markdown": "ते विस्तारत आणि थंड होत असताना, प्रोटॉन आणि न्यूट्रॉन तयार झाले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ते विस्तारत आणि थंड होत असताना, प्रोटॉन आणि न्यूट्रॉन तयार झाले.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-230",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "ते प्रोटॉन आणि न्यूट्रॉन एकत्र येऊन सर्वात सोपी केंद्रके बनले.",
+      "text_markdown": "ते प्रोटॉन आणि न्यूट्रॉन एकत्र येऊन सर्वात सोपी केंद्रके बनले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ते प्रोटॉन आणि न्यूट्रॉन एकत्र येऊन सर्वात सोपी केंद्रके बनले.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-231",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "हायड्रोजन आणि हेलियम ही पहिली मूलद्रव्ये होती.",
+      "text_markdown": "हायड्रोजन आणि हेलियम ही पहिली मूलद्रव्ये होती.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "हायड्रोजन आणि हेलियम ही पहिली मूलद्रव्ये होती.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-232",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "लाखो वर्षांपर्यंत, ब्रह्मांड हायड्रोजन आणि हेलियम वायूचा ढग होते.",
+      "text_markdown": "लाखो वर्षांपर्यंत, ब्रह्मांड हायड्रोजन आणि हेलियम वायूचा ढग होते.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "लाखो वर्षांपर्यंत, ब्रह्मांड हायड्रोजन आणि हेलियम वायूचा ढग होते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-233",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "नंतर गुरुत्वाकर्षणामुळे वायू एकत्र येऊन ढिगारे बनले.",
+      "text_markdown": "नंतर गुरुत्वाकर्षणामुळे वायू एकत्र येऊन ढिगारे बनले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "नंतर गुरुत्वाकर्षणामुळे वायू एकत्र येऊन ढिगारे बनले.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-234",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "ते ढिगारे अधिक घन आणि उष्ण होत गेले.",
+      "text_markdown": "ते ढिगारे अधिक घन आणि उष्ण होत गेले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ते ढिगारे अधिक घन आणि उष्ण होत गेले.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-235",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "जेव्हा ढिगाऱ्याच्या केंद्राचे तापमान सुमारे दहा दशलक्ष अंशांपर्यंत पोहोचले, तेव्हा अणुगर्भीय संलयन सुरू झाले.",
+      "text_markdown": "जेव्हा ढिगाऱ्याच्या केंद्राचे तापमान सुमारे दहा दशलक्ष अंशांपर्यंत पोहोचले, तेव्हा अणुगर्भीय संलयन सुरू झाले.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ढिगाऱ्याच्या केंद्राचे तापमान सुमारे एक कोटी अंशांपर्यंत पोहोचताच सुरू झाले अणुगर्भीय संलयन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-236",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "एक तारा जन्माला आला.",
+      "text_markdown": "एक तारा जन्माला आला.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "एक तारा जन्माला आला.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-237",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "तारे हे अणूंचे कारखाने आहेत.",
+      "text_markdown": "तारे हे अणूंचे कारखाने आहेत.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तारे हे अणूंचे कारखाने आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-238",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "ताऱ्याच्या आत, हायड्रोजन अणू एकत्र येऊन हेलियम बनवतात.",
+      "text_markdown": "ताऱ्याच्या आत, हायड्रोजन अणू एकत्र येऊन हेलियम बनवतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ताऱ्याच्या आत, हायड्रोजन अणू एकत्र येऊन हेलियम बनवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-239",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "या संलयनातून प्रचंड ऊर्जा बाहेर पडते.",
+      "text_markdown": "या संलयनातून प्रचंड ऊर्जा बाहेर पडते.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "या संलयनातून प्रचंड ऊर्जा बाहेर पडते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-240",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "या ऊर्जेमुळेच तारा चमकतो.",
+      "text_markdown": "या ऊर्जेमुळेच तारा चमकतो.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "या ऊर्जेमुळेच तारा चमकतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-241",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "आपला सूर्य दर सेकंदाला सुमारे साठ कोटी टन हायड्रोजनचे हेलियममध्ये संमीलन करतो.",
+      "text_markdown": "आपला सूर्य दर सेकंदाला सुमारे साठ कोटी टन हायड्रोजनचे हेलियममध्ये संमीलन करतो.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "आपला सूर्य दर सेकंदाला सुमारे साठ कोटी टन हायड्रोजनचे हेलियममध्ये संमीलन करतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-242",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "मोठे तारे जड मूलद्रव्यांचे संमीलन करतात.",
+      "text_markdown": "मोठे तारे जड मूलद्रव्यांचे संमीलन करतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "मोठे तारे जड मूलद्रव्यांचे संमीलन करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-243",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "एकदा ताऱ्याने आपले हायड्रोजन जाळले की, तो हेलियमचे कार्बनमध्ये संमीलन करण्यास सुरुवात करतो.",
+      "text_markdown": "एकदा ताऱ्याने आपले हायड्रोजन जाळले की, तो हेलियमचे कार्बनमध्ये संमीलन करण्यास सुरुवात करतो.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "एकदा ताऱ्याने आपले हायड्रोजन जाळले की, तो हेलियमचे कार्बनमध्ये संमीलन करण्यास सुरुवात करतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-244",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "नंतर कार्बनचे ऑक्सिजनमध्ये.",
+      "text_markdown": "नंतर कार्बनचे ऑक्सिजनमध्ये.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "नंतर कार्बनचे ऑक्सिजनमध्ये.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-245",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "नंतर ऑक्सिजनचे सिलिकॉनमध्ये.",
+      "text_markdown": "नंतर ऑक्सिजनचे सिलिकॉनमध्ये.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "नंतर ऑक्सिजनचे सिलिकॉनमध्ये.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-246",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "नंतर सिलिकॉनचे लोहमध्ये.",
+      "text_markdown": "नंतर सिलिकॉनचे लोहमध्ये.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "नंतर सिलिकॉनचे लोहमध्ये.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-247",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "प्रत्येक टप्प्यावर एक जड मूलद्रव्य तयार होते.",
+      "text_markdown": "प्रत्येक टप्प्यावर एक जड मूलद्रव्य तयार होते.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "प्रत्येक टप्प्यावर एक जड मूलद्रव्य तयार होते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-248",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "लोह हे सर्वात जड मूलद्रव्य आहे जे तारा सामान्य संमीलनाद्वारे तयार करू शकतो.",
+      "text_markdown": "लोह हे सर्वात जड मूलद्रव्य आहे जे तारा सामान्य संमीलनाद्वारे तयार करू शकतो.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "लोह हे सर्वात जड मूलद्रव्य आहे जे तारा सामान्य संमीलनाद्वारे तयार करू शकतो.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-249",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "लोहपेक्षा जड मूलद्रव्ये तेव्हा तयार होतात जेव्हा प्रचंड तारे स्फोट करतात.",
+      "text_markdown": "लोहपेक्षा जड मूलद्रव्ये तेव्हा तयार होतात जेव्हा प्रचंड तारे स्फोट करतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "लोहपेक्षा जड मूलद्रव्ये तेव्हा तयार होतात जेव्हा प्रचंड तारे स्फोट करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-250",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "या स्फोटांना सुपरनोव्हा म्हणतात.",
+      "text_markdown": "या स्फोटांना सुपरनोव्हा म्हणतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "या स्फोटांना सुपरनोव्हा म्हणतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-251",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "एक सुपरनोव्हा काही सेकंदात इतकी ऊर्जा सोडतो, जेवढी सूर्य त्याच्या संपूर्ण आयुष्यात तयार करेल.",
+      "text_markdown": "एक सुपरनोव्हा काही सेकंदात इतकी ऊर्जा सोडतो, जेवढी सूर्य त्याच्या संपूर्ण आयुष्यात तयार करेल.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "एक सुपरनोव्हा काही सेकंदात इतकी ऊर्जा सोडतो, जेवढी सूर्य त्याच्या संपूर्ण आयुष्यात तयार करेल.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-252",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "सुपरनोव्हाच्या अत्यंत तीव्र परिस्थितीत सोने, चांदी, प्लॅटिनम आणि युरेनियमसारखी मूलद्रव्ये तयार होतात.",
+      "text_markdown": "सुपरनोव्हाच्या अत्यंत तीव्र परिस्थितीत सोने, चांदी, प्लॅटिनम आणि युरेनियमसारखी मूलद्रव्ये तयार होतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "सुपरनोव्हाच्या तीव्र परिस्थितीत सोने, चांदी, प्लॅटिनम आणि युरेनियमसारखी मूलद्रव्ये तयार होतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-253",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "स्फोटामुळे ही जड मूलद्रव्ये अवकाशात विखुरली जातात.",
+      "text_markdown": "स्फोटामुळे ही जड मूलद्रव्ये अवकाशात विखुरली जातात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "स्फोटामुळे ही जड मूलद्रव्ये अवकाशात विखुरली जातात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-254",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "ही मूलद्रव्ये हायड्रोजन आणि हेलियम वायूंच्या ढगांमध्ये मिसळतात.",
+      "text_markdown": "ही मूलद्रव्ये हायड्रोजन आणि हेलियम वायूंच्या ढगांमध्ये मिसळतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "ही मूलद्रव्ये हायड्रोजन आणि हेलियम वायूंच्या ढगांमध्ये मिसळतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-255",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "शेवटी, गुरुत्वाकर्षणामुळे हा समृद्ध वायू एकत्र येऊन नवीन तारे आणि ग्रह तयार होतात.",
+      "text_markdown": "शेवटी, गुरुत्वाकर्षणामुळे हा समृद्ध वायू एकत्र येऊन नवीन तारे आणि ग्रह तयार होतात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "शेवटी, गुरुत्वाकर्षणामुळे हा समृद्ध वायू एकत्र येऊन नवीन तारे आणि ग्रह तयार होतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-256",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "आपली सूर्यमाला सुमारे ४.६ अब्ज वर्षांपूर्वी अशाच एका समृद्ध ढगातून तयार झाली.",
+      "text_markdown": "आपली सूर्यमाला सुमारे ४.६ अब्ज वर्षांपूर्वी अशाच एका समृद्ध ढगातून तयार झाली.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "आपली सूर्यमाला सुमारे चार पूर्णांक सहा अब्ज वर्षांपूर्वी अशाच एका समृद्ध ढगातून तयार झाली.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-257",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "तुमच्या शरीरातील हायड्रोजनपेक्षा जड असलेले प्रत्येक अणू ताऱ्याच्या आत तयार झाले आहे.",
+      "text_markdown": "तुमच्या शरीरातील हायड्रोजनपेक्षा जड असलेले प्रत्येक अणू ताऱ्याच्या आत तयार झाले आहे.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तुमच्या शरीरातील हायड्रोजनपेक्षा जड असलेले प्रत्येक अणू ताऱ्याच्या आत तयार झाले आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-258",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "तुमच्या हाडांमधील कॅल्शियम.",
+      "text_markdown": "तुमच्या हाडांमधील कॅल्शियम.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तुमच्या हाडांमधील कॅल्शियम.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-259",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "तुमच्या रक्तातील लोह.",
+      "text_markdown": "तुमच्या रक्तातील लोह.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तुमच्या रक्तातील लोह.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-260",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "तुमच्या त्वचेतील कार्बन.",
+      "text_markdown": "तुमच्या त्वचेतील कार्बन.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तुमच्या त्वचेतील कार्बन.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-261",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "तुम्ही तारकाधुळीचे बनलेले आहात.",
+      "text_markdown": "तुम्ही तारकाधुळीचे बनलेले आहात.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "तुम्ही तारकाधुळीचे बनलेले आहात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-262",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "हे रूपक नाही.",
+      "text_markdown": "हे रूपक नाही.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "हे रूपक नाही.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "id": "ch07-263",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "हे अणुभौतिकशास्त्राचे एक सत्य आहे.",
+      "text_markdown": "हे अणुभौतिकशास्त्राचे एक सत्य आहे.",
+      "title": "अणू कुठून येतात",
+      "tts": {
+        "text": "हे अणुभौतिकशास्त्राचे एक सत्य आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "heading_level": 1,
+      "id": "ch08-264",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "paragraph_id": "p62",
+      "text": "अणू म्हणजे सर्व काही",
+      "text_markdown": "अणू म्हणजे सर्व काही",
+      "title": "अणू म्हणजे सर्व काही"
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-265",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "तुम्हाला आता मूलभूत गोष्टी माहित आहेत.",
+      "text_markdown": "तुम्हाला आता मूलभूत गोष्टी माहित आहेत.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "तुम्हाला आता मूलभूत गोष्टी माहित आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-266",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "सर्व काही अणूंनी बनलेले आहे.",
+      "text_markdown": "सर्व काही अणूंनी बनलेले आहे.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "सर्व काही अणूंनी बनलेले आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-267",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "अणूंमध्ये प्रोटॉन, न्यूट्रॉन आणि इलेक्ट्रॉन असतात.",
+      "text_markdown": "अणूंमध्ये प्रोटॉन, न्यूट्रॉन आणि इलेक्ट्रॉन असतात.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "अणूंमध्ये प्रोटॉन, न्यूट्रॉन आणि इलेक्ट्रॉन असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-268",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "प्रोटॉनची संख्या मूलद्रव्य निश्चित करते.",
+      "text_markdown": "प्रोटॉनची संख्या मूलद्रव्य निश्चित करते.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "प्रोटॉनची संख्या मूलद्रव्य निश्चित करते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-269",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "अणू एकत्र येऊन रेणू बनवतात.",
+      "text_markdown": "अणू एकत्र येऊन रेणू बनवतात.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "अणू एकत्र येऊन रेणू बनवतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-270",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "अणू नेहमी गतिमान असतात.",
+      "text_markdown": "अणू नेहमी गतिमान असतात.",
+      "title": "अणू म्हणजे सर्व काही",
+      "tts": {
+        "text": "अणू नेहमी गतिमान असतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-271",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "तारे आपल्या जगाला बनवणारे अणू निर्माण करतात.",
+      "text_markdown": "तारे आपल्या जगाला बनवणारे अणू निर्माण करतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तारे आपल्या जगाला बनवणारे अणू निर्माण करतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-272",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p64",
+      "text": "हे ज्ञान रसायनशास्त्र, जीवशास्त्र, भौतिकशास्त्र आणि वैद्यकशास्त्र यांचा आधार आहे.",
+      "text_markdown": "हे ज्ञान रसायनशास्त्र, जीवशास्त्र, भौतिकशास्त्र आणि वैद्यकशास्त्र यांचा आधार आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "हे ज्ञान रसायनशास्त्र, जीवशास्त्र, भौतिकशास्त्र आणि वैद्यकशास्त्र यांचा आधार आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-273",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p64",
+      "text": "विज्ञानाचे प्रत्येक क्षेत्र अणूंशी जोडलेले आहे.",
+      "text_markdown": "विज्ञानाचे प्रत्येक क्षेत्र अणूंशी जोडलेले आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "विज्ञानाचे प्रत्येक क्षेत्र अणूंशी जोडलेले आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-274",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "जेव्हा डॉक्टर औषध लिहून देतात, तेव्हा ते औषध तुमच्या शरीरातील रेणूंशी संवाद साधण्यासाठी तयार केलेल्या अणूंची एक विशिष्ट मांडणी असते.",
+      "text_markdown": "जेव्हा डॉक्टर औषध लिहून देतात, तेव्हा ते औषध तुमच्या शरीरातील रेणूंशी संवाद साधण्यासाठी तयार केलेल्या अणूंची एक विशिष्ट मांडणी असते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "जेव्हा डॉक्टर औषध लिहून देतात, तेव्हा ते औषध तुमच्या शरीरातील रेणूंशी संवाद साधण्यासाठी तयार केलेल्या अणूंची एक विशिष्ट मांडणी असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-275",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "जेव्हा एखादा अभियंता पूल बांधतो, तेव्हा त्या पुलाची ताकद स्टीलमध्ये असलेल्या लोखंडाच्या अणूंची मांडणी कशी आहे यावर अवलंबून असते.",
+      "text_markdown": "जेव्हा एखादा अभियंता पूल बांधतो, तेव्हा त्या पुलाची ताकद स्टीलमध्ये असलेल्या लोखंडाच्या अणूंची मांडणी कशी आहे यावर अवलंबून असते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "जेव्हा एखादा अभियंता पूल बांधतो, तेव्हा त्या पुलाची ताकद स्टीलमध्ये असलेल्या लोखंडाच्या अणूंची मांडणी कशी आहे यावर अवलंबून असते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-276",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "जेव्हा शेतकरी पीक पिकवतो, तेव्हा ते पीक वाढते कारण हवेतील कार्बनचे अणू पानांमध्ये पाणी आणि सूर्यप्रकाशासोबत एकत्र येतात.",
+      "text_markdown": "जेव्हा शेतकरी पीक पिकवतो, तेव्हा ते पीक वाढते कारण हवेतील कार्बनचे अणू पानांमध्ये पाणी आणि सूर्यप्रकाशासोबत एकत्र येतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "जेव्हा शेतकरी पीक पिकवतो, तेव्हा ते पीक वाढते कारण हवेतील कार्बनचे अणू पानांमध्ये पाणी आणि सूर्यप्रकाशासोबत एकत्र येतात.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-277",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "स्वयंपाक हे रसायनशास्त्र आहे.",
+      "text_markdown": "स्वयंपाक हे रसायनशास्त्र आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "स्वयंपाक हे रसायनशास्त्र आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-278",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "जेव्हा तुम्ही ब्रेड भाजता, तेव्हा उष्णतेमुळे पिठातील अणूंची पुनर्रचना होते.",
+      "text_markdown": "जेव्हा तुम्ही ब्रेड भाजता, तेव्हा उष्णतेमुळे पिठातील अणूंची पुनर्रचना होते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "जेव्हा तुम्ही ब्रेड भाजता, तेव्हा उष्णतेमुळे पिठातील अणूंची पुनर्रचना होते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-279",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "प्रथिने उलगडतात.",
+      "text_markdown": "प्रथिने उलगडतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "प्रथिने उलगडतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-280",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "साखर तुटते आणि पुन्हा एकत्र येते.",
+      "text_markdown": "साखर तुटते आणि पुन्हा एकत्र येते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "साखर तुटते आणि पुन्हा एकत्र येते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-281",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "नवीन रेणू तयार होतात जे कवचाचा रंग, पोत आणि चव निर्माण करतात.",
+      "text_markdown": "नवीन रेणू तयार होतात जे कवचाचा रंग, पोत आणि चव निर्माण करतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "नवीन रेणू तयार होतात जे कवचाचा रंग, पोत आणि चव निर्माण करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-282",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "प्रत्येक पाककृती ही अणूंची पुनर्रचना करण्यासाठीच्या सूचनांचा एक संच आहे.",
+      "text_markdown": "प्रत्येक पाककृती ही अणूंची पुनर्रचना करण्यासाठीच्या सूचनांचा एक संच आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "प्रत्येक पाककृती ही अणूंची पुनर्रचना करण्यासाठीच्या सूचनांचा एक संच आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-283",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "श्वास घेणे हे रसायनशास्त्र आहे.",
+      "text_markdown": "श्वास घेणे हे रसायनशास्त्र आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "श्वास घेणे हे रसायनशास्त्र आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-284",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "तुम्ही ऑक्सिजनचे रेणू आत घेता.",
+      "text_markdown": "तुम्ही ऑक्सिजनचे रेणू आत घेता.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुम्ही ऑक्सिजनचे रेणू आत घेता.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-285",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "तुमचे रक्त ते रेणू तुमच्या पेशींपर्यंत पोहोचवते.",
+      "text_markdown": "तुमचे रक्त ते रेणू तुमच्या पेशींपर्यंत पोहोचवते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुमचे रक्त ते रेणू तुमच्या पेशींपर्यंत पोहोचवते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-286",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "तुमच्या पेशींच्या आत, ऑक्सिजनचे अणू अन्नातील कार्बनच्या अणूंशी एकत्र येतात.",
+      "text_markdown": "तुमच्या पेशींच्या आत, ऑक्सिजनचे अणू अन्नातील कार्बनच्या अणूंशी एकत्र येतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुमच्या पेशींच्या आत, ऑक्सिजनचे अणू अन्नातील कार्बनच्या अणूंशी एकत्र येतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-287",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "ही अभिक्रिया ऊर्जा बाहेर टाकते.",
+      "text_markdown": "ही अभिक्रिया ऊर्जा बाहेर टाकते.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "ही अभिक्रिया ऊर्जा बाहेर टाकते.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-288",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "तुम्ही कार्बन आणि ऑक्सिजनला कार्बन डायऑक्साइडच्या रूपात बाहेर सोडता.",
+      "text_markdown": "तुम्ही कार्बन आणि ऑक्सिजनला कार्बन डायऑक्साइडच्या रूपात बाहेर सोडता.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुम्ही कार्बन आणि ऑक्सिजनला कार्बन डायऑक्साइडच्या रूपात बाहेर सोडता.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-289",
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "प्रत्येक श्वास ही एक रासायनिक अभिक्रिया आहे.",
+      "text_markdown": "प्रत्येक श्वास ही एक रासायनिक अभिक्रिया आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "प्रत्येक श्वास ही एक रासायनिक अभिक्रिया आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-290",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "गंज हे रसायनशास्त्र आहे.",
+      "text_markdown": "गंज हे रसायनशास्त्र आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "गंज हे रसायनशास्त्र आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-291",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "खिळ्याच्या पृष्ठभागावरील लोखंडाचे अणू हवेतील ऑक्सिजनच्या अणूंशी अभिक्रिया करतात.",
+      "text_markdown": "खिळ्याच्या पृष्ठभागावरील लोखंडाचे अणू हवेतील ऑक्सिजनच्या अणूंशी अभिक्रिया करतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "खिळ्याच्या पृष्ठभागावरील लोखंडाचे अणू हवेतील ऑक्सिजनच्या अणूंशी अभिक्रिया करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-292",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "लोखंड आणि ऑक्सिजन एकत्र येऊन लोह ऑक्साईड नावाचा एक नवीन पदार्थ तयार करतात.",
+      "text_markdown": "लोखंड आणि ऑक्सिजन एकत्र येऊन लोह ऑक्साईड नावाचा एक नवीन पदार्थ तयार करतात.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "लोखंड आणि ऑक्सिजन एकत्र येऊन लोह ऑक्साईड नावाचा एक नवीन पदार्थ तयार करतात.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-293",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "लोह ऑक्साईड हा तोच लालसर-तपकिरी पदार्थ आहे ज्याला आपण गंज म्हणतो.",
+      "text_markdown": "लोह ऑक्साईड हा तोच लालसर-तपकिरी पदार्थ आहे ज्याला आपण गंज म्हणतो.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "लोह ऑक्साईड हा तोच लालसर-तपकिरी पदार्थ आहे ज्याला आपण गंज म्हणतो.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-294",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "लोखंडाचे अणू अजूनही तिथेच आहेत.",
+      "text_markdown": "लोखंडाचे अणू अजूनही तिथेच आहेत.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "लोखंडाचे अणू अजूनही तिथेच आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-295",
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "ते फक्त ऑक्सिजनशी जोडले गेले आहेत.",
+      "text_markdown": "ते फक्त ऑक्सिजनशी जोडले गेले आहेत.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "ते फक्त ऑक्सिजनशी जोडले गेले आहेत.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-296",
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "अणू अमूर्त नाहीत.",
+      "text_markdown": "अणू अमूर्त नाहीत.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "अणू अमूर्त नाहीत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-297",
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "तुम्ही स्पर्श करता, चव घेता, पाहता आणि वास घेता त्या प्रत्येक गोष्टीची भौतिक वास्तविकता म्हणजे अणू आहेत.",
+      "text_markdown": "तुम्ही स्पर्श करता, चव घेता, पाहता आणि वास घेता त्या प्रत्येक गोष्टीची भौतिक वास्तविकता म्हणजे अणू आहेत.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुम्ही स्पर्श करता, चव घेता, पाहता आणि वास घेता त्या प्रत्येक गोष्टीची भौतिक वास्तविकता म्हणजे अणू आहेत.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-298",
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "तुम्ही अणू जितके जास्त समजून घ्याल, तितकेच तुम्ही जगाला अधिक समजून घ्याल.",
+      "text_markdown": "तुम्ही अणू जितके जास्त समजून घ्याल, तितकेच तुम्ही जगाला अधिक समजून घ्याल.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "तुम्ही अणू जितके जास्त समजून घ्याल, तितकेच तुम्ही जगाला अधिक समजून घ्याल.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-299",
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "ही फक्त सुरुवात आहे.",
+      "text_markdown": "ही फक्त सुरुवात आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "ही फक्त सुरुवात आहे.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "id": "ch08-300",
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "अजून बरेच काही शोधायचे आहे.",
+      "text_markdown": "अजून बरेच काही शोधायचे आहे.",
+      "title": "अणू म्हणजे सर्वकाही",
+      "tts": {
+        "text": "अजून बरेच काही शोधायचे आहे.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

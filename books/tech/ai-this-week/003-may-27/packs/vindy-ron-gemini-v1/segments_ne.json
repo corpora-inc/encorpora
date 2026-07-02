@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "ne",
+  "total_segments": 209,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कृत्रिम बुद्धिमत्ताको यो साप्ताहिक कार्यक्रममा तपाईंलाई हार्दिक तथा आत्मीय स्वागत।",
+      "text_markdown": "कृत्रिम बुद्धिमत्ताको यो साप्ताहिक कार्यक्रममा तपाईंलाई हार्दिक तथा आत्मीय स्वागत।",
+      "title": "",
+      "tts": {
+        "text": "कृत्रिम बुद्धिमत्ताको यो साप्ताहिक कार्यक्रममा तपाईंलाई हार्दिक तथा आत्मीय स्वागत।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मलाई विन्डी भनिन्छ।",
+      "text_markdown": "मलाई विन्डी भनिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "मलाई विन्डी भनिन्छ।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मसँग, सधैं झैं, Ron छन्।",
+      "text_markdown": "मसँग, सधैं झैं, Ron छन्।",
+      "title": "",
+      "tts": {
+        "text": "मसँग, सधैं झैं, Ron छन्।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "विन्डी, यहाँ हुन पाउनु मेरा लागि साँच्चै खुसीको कुरा हो।",
+      "text_markdown": "विन्डी, यहाँ हुन पाउनु मेरा लागि साँच्चै खुसीको कुरा हो।",
+      "title": "",
+      "tts": {
+        "text": "विन्डी, यहाँ हुन पाउनु मेरा लागि साँच्चै खुसीको कुरा हो।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आजको मिति बुधबार, मे 27, 2026 पर्छ।",
+      "text_markdown": "आजको मिति बुधबार, मे 27, 2026 पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "आजको मिति बुधबार, मे सत्ताइस, दुई हजार छब्बीस पर्छ।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र कागजमा हेर्दा, यो हप्ता शान्त नै देखिन्थ्यो।",
+      "text_markdown": "र कागजमा हेर्दा, यो हप्ता शान्त नै देखिन्थ्यो।",
+      "title": "",
+      "tts": {
+        "text": "र कागजमा हेर्दा, यो हप्ता शान्त नै देखिन्थ्यो।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कुनै ठूलो नयाँ खुला मोडेल आएन।",
+      "text_markdown": "कुनै ठूलो नयाँ खुला मोडेल आएन।",
+      "title": "",
+      "tts": {
+        "text": "कुनै ठूलो नयाँ खुला मोडेल आएन।",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तर शान्त हप्ताहरूमा वास्तविक कथा लुकेको हुन्छ।",
+      "text_markdown": "तर शान्त हप्ताहरूमा वास्तविक कथा लुकेको हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तर शान्त हप्ताहरूमा वास्तविक कथा लुकेको हुन्छ।",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले आज हामी keynoteहरू नजाने ठाउँमा पुग्छौं।",
+      "text_markdown": "त्यसैले आज हामी keynoteहरू नजाने ठाउँमा पुग्छौं।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले आज हामी कीनोटहरू नजाने ठाउँमा पुग्छौं।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आउँदैछ — open weights मा वास्तवमा के चल्यो।",
+      "text_markdown": "आउँदैछ — open weights मा वास्तवमा के चल्यो।",
+      "title": "",
+      "tts": {
+        "text": "आउँदैछ — open weights मा वास्तवमा के चल्यो।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "एउटा leaderboard जुन मायने राख्छ, र त्यो quality board होइन।",
+      "text_markdown": "एउटा leaderboard जुन मायने राख्छ, र त्यो quality board होइन।",
+      "title": "",
+      "tts": {
+        "text": "एउटा leaderboard जुन मायने राख्छ, र त्यो quality board होइन।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो सप्ताहन्तमा तपाईंले काम गर्न सक्ने मुख्य समाचारहरूको छिटो अवलोकन।",
+      "text_markdown": "यो सप्ताहन्तमा तपाईंले काम गर्न सक्ने मुख्य समाचारहरूको छिटो अवलोकन।",
+      "title": "",
+      "tts": {
+        "text": "यो सप्ताहन्तमा तपाईंले काम गर्न सक्ने मुख्य समाचारहरूको छिटो अवलोकन।",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हाम्रो मुख्य कथा, वर्ष जब open voice स्वामित्वको लागि पर्याप्त राम्रो भयो।",
+      "text_markdown": "हाम्रो मुख्य कथा, वर्ष जब open voice स्वामित्वको लागि पर्याप्त राम्रो भयो।",
+      "title": "",
+      "tts": {
+        "text": "हाम्रो मुख्य कथा, वर्ष जब open voice स्वामित्वको लागि पर्याप्त राम्रो भयो।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र हप्ताको अवधारणा neural audio codecs हो — कसरी तपाईं सम्पूर्ण आवाजलाई फोनमा मिलाउन दबाउनुहुन्छ।",
+      "text_markdown": "र हप्ताको अवधारणा neural audio codecs हो — कसरी तपाईं सम्पूर्ण आवाजलाई फोनमा मिलाउन दबाउनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "र हप्ताको अवधारणा neural audio codecs हो — कसरी तपाईं सम्पूर्ण आवाजलाई फोनमा मिलाउन दबाउनुहुन्छ।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "रोन, open-weights भएका मोडलहरूको संसारबाट छलफल थालौं।",
+      "text_markdown": "रोन, open-weights भएका मोडलहरूको संसारबाट छलफल थालौं।",
+      "title": "",
+      "tts": {
+        "text": "रोन, खुला भार भएका मोडलहरूको संसारबाट छलफल थालौं।",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो हप्ता के चल्यो?",
+      "text_markdown": "यो हप्ता के चल्यो?",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता के चल्यो?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "इमान्दारीपूर्वक, यो हप्ता कुनै नयाँ frontier open model आएन।",
+      "text_markdown": "इमान्दारीपूर्वक, यो हप्ता कुनै नयाँ frontier open model आएन।",
+      "title": "",
+      "tts": {
+        "text": "इमान्दारीपूर्वक, यो हप्ता कुनै नयाँ frontier open model आएन।",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र त्यो ठीक छ।",
+      "text_markdown": "र त्यो ठीक छ।",
+      "title": "",
+      "tts": {
+        "text": "र त्यो ठीक छ।",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ताको वास्तविक खुला समाचार plumbing र pricing थियो।",
+      "text_markdown": "यो हप्ताको वास्तविक खुला समाचार plumbing र pricing थियो।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ताको वास्तविक खुला समाचार plumbing र pricing थियो।",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "पहिले plumbing — के बिग्रियो वा मर्मत भयो?",
+      "text_markdown": "पहिले plumbing — के बिग्रियो वा मर्मत भयो?",
+      "title": "",
+      "tts": {
+        "text": "पहिले plumbing — के बिग्रियो वा मर्मत भयो?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मे 26 मा, SGLang project ले DeepSeek V4 serve गर्न stability patch पठाएर उपलब्ध गरायो।",
+      "text_markdown": "मे 26 मा, SGLang project ले DeepSeek V4 serve गर्न stability patch पठाएर उपलब्ध गरायो।",
+      "title": "",
+      "tts": {
+        "text": "मे छब्बीसमा, एस जी ल्याङ प्रोजेक्टले डीपसिक भी फोर सर्भ गर्न स्थिरता प्याच पठाएर उपलब्ध गरायो।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "SGLang दुई ठूला खुला engine मध्ये एक हो जुन तपाईंले वास्तवमा आफैं मोडेल चलाउन प्रयोग गर्नुहुन्छ।",
+      "text_markdown": "SGLang दुई ठूला खुला engine मध्ये एक हो जुन तपाईंले वास्तवमा आफैं मोडेल चलाउन प्रयोग गर्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "एस जी ल्याङ दुई ठूला खुला इन्जिन मध्ये एक हो जुन तपाईंले वास्तवमा आफैं मोडेल चलाउन प्रयोग गर्नुहुन्छ।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अर्को विकल्पका रूपमा vLLM पनि प्रयोग गर्न सकिन्छ।",
+      "text_markdown": "अर्को विकल्पका रूपमा vLLM पनि प्रयोग गर्न सकिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "अर्को विकल्पका रूपमा वी एल एल एम पनि प्रयोग गर्न सकिन्छ।",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो patch ले नयाँ card हरूमा garbled output र भारी load अन्तर्गत crash लाई मर्मत गर्यो।",
+      "text_markdown": "यो patch ले नयाँ card हरूमा garbled output र भारी load अन्तर्गत crash लाई मर्मत गर्यो।",
+      "title": "",
+      "tts": {
+        "text": "यो patch ले नयाँ card हरूमा garbled output र भारी load अन्तर्गत crash लाई मर्मत गर्यो।",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "सर्भिङ प्याच किन महत्त्वपूर्ण मानिन्छ?",
+      "text_markdown": "सर्भिङ प्याच किन महत्त्वपूर्ण मानिन्छ?",
+      "title": "",
+      "tts": {
+        "text": "सर्भिङ प्याच किन महत्त्वपूर्ण मानिन्छ?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने यदि तपाईं तिनीहरूलाई भरपर्दो रूपमा serve गर्न सक्नुहुन्न भने open weights बेकार छन्।",
+      "text_markdown": "किनभने यदि तपाईं तिनीहरूलाई भरपर्दो रूपमा serve गर्न सक्नुहुन्न भने open weights बेकार छन्।",
+      "title": "",
+      "tts": {
+        "text": "किनभने यदि तपाईं तिनीहरूलाई भरपर्दो रूपमा serve गर्न सक्नुहुन्न भने open weights बेकार छन्।",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "DeepSeek V4 खुला र MIT-licensed छ, तर यो ठूलो मोडेल मानिन्छ।",
+      "text_markdown": "DeepSeek V4 खुला र MIT-licensed छ, तर यो ठूलो मोडेल मानिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "डिपसिक भी फोर खुला र एम आइ टी लाइसेन्सयुक्त छ, तर यो ठूलो मोडेल मानिन्छ।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसलाई जंगलमा चलाउने engine हरू खुला ecosystem को unglamorous आधा भाग हुन्।",
+      "text_markdown": "यसलाई जंगलमा चलाउने engine हरू खुला ecosystem को unglamorous आधा भाग हुन्।",
+      "title": "",
+      "tts": {
+        "text": "यसलाई जंगलमा चलाउने engine हरू खुला ecosystem को unglamorous आधा भाग हुन्।",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "एउटा नीरस प्याच हप्ता स्वस्थ परियोजनाको संकेतजस्तो देखिन्छ।",
+      "text_markdown": "एउटा नीरस प्याच हप्ता स्वस्थ परियोजनाको संकेतजस्तो देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "एउटा नीरस प्याच हप्ता स्वस्थ परियोजनाको संकेतजस्तो देखिन्छ।",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र मूल्य निर्धारणको पक्ष कस्तो देखिन्छ?",
+      "text_markdown": "र मूल्य निर्धारणको पक्ष कस्तो देखिन्छ?",
+      "title": "",
+      "tts": {
+        "text": "र मूल्य निर्धारणको पक्ष कस्तो देखिन्छ?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो विकल्प झन् रोचक देखिन्छ।",
+      "text_markdown": "यो विकल्प झन् रोचक देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो विकल्प झन् रोचक देखिन्छ।",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मे 22 वरिपरि, DeepSeek ले V4-Pro मा आफ्नो 75% मूल्य कटौती स्थायी रूपमा कायम राख्ने निर्णय सुनायो।",
+      "text_markdown": "मे 22 वरिपरि, DeepSeek ले V4-Pro मा आफ्नो 75% मूल्य कटौती स्थायी रूपमा कायम राख्ने निर्णय सुनायो।",
+      "title": "",
+      "tts": {
+        "text": "मे बाइस वरिपरि, डीपसीकले भी फोर प्रोमा आफ्नो पचहत्तर प्रतिशत मूल्य कटौती स्थायी रूपमा कायम राख्ने निर्णय सुनायो।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "आउटपुटको मूल्य अब प्रति मिलियन टोकन लगभग $0.87 पर्छ।",
+      "text_markdown": "आउटपुटको मूल्य अब प्रति मिलियन टोकन लगभग $0.87 पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "आउटपुटको मूल्य अब प्रति मिलियन टोकन लगभग शून्य दशमलव आठ सात अमेरिकी डलर पर्छ।",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो यो launch भएको समयको लगभग एक चौथाई हो।",
+      "text_markdown": "त्यो यो launch भएको समयको लगभग एक चौथाई हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो यो launch भएको समयको लगभग एक चौथाई हो।",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले खुला मोडेल भाडामा लिन सस्तो भयो।",
+      "text_markdown": "त्यसैले खुला मोडेल भाडामा लिन सस्तो भयो।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले खुला मोडेल भाडामा लिन सस्तो भयो।",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ठीक छ, र त्यसले एक प्रश्नलाई उल्टाउँछ।",
+      "text_markdown": "ठीक छ, र त्यसले एक प्रश्नलाई उल्टाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "ठीक छ, र त्यसले एक प्रश्नलाई उल्टाउँछ।",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हामी सामान्यतया भन्छौं open weights को मतलब तपाईं self-host गर्नुहुन्छ।",
+      "text_markdown": "हामी सामान्यतया भन्छौं open weights को मतलब तपाईं self-host गर्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "हामी सामान्यतया भन्छौं open weights को मतलब तपाईं सेल्फ होस्ट गर्नुहुन्छ।",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तर प्रति मिलियन token एक डलर भन्दा कममा, भाडा तिर्नु प्रायः तपाईंको आफ्नै बिजुली भन्दा सस्तो हुन्छ।",
+      "text_markdown": "तर प्रति मिलियन token एक डलर भन्दा कममा, भाडा तिर्नु प्रायः तपाईंको आफ्नै बिजुली भन्दा सस्तो हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तर प्रति मिलियन token एक डलर भन्दा कममा, भाडा तिर्नु प्रायः तपाईंको आफ्नै बिजुली भन्दा सस्तो हुन्छ।",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसैले नयाँ framing यो छ — गोपनीयता र offline को लागि self-host, सस्तो burst को लागि API भाडामा लिनुहोस्।",
+      "text_markdown": "त्यसैले नयाँ framing यो छ — गोपनीयता र offline को लागि self-host, सस्तो burst को लागि API भाडामा लिनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले नयाँ फ्रेमिङ यो छ — गोपनीयता र अफलाइनको लागि सेल्फ होस्ट, सस्तो बर्स्टको लागि ए पी आइ भाडामा लिनुहोस्।",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उही खुला मोडेल भारहरू, तर तिनलाई प्रयोग गर्नुका दुई निकै फरक कारणहरू।",
+      "text_markdown": "उही खुला मोडेल भारहरू, तर तिनलाई प्रयोग गर्नुका दुई निकै फरक कारणहरू।",
+      "title": "",
+      "tts": {
+        "text": "उही खुला मोडेल भारहरू, तर तिनलाई प्रयोग गर्नुका दुई निकै फरक कारणहरू।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "उपकरणमै चल्ने समुदायको बारेमा के बताइदिनुहुन्छ?",
+      "text_markdown": "उपकरणमै चल्ने समुदायको बारेमा के बताइदिनुहुन्छ?",
+      "title": "",
+      "tts": {
+        "text": "उपकरणमै चल्ने समुदायको बारेमा के बताइदिनुहुन्छ?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "llama.cpp ले हप्ताभर आफ्नो काम निरन्तर गरिरह्यो।",
+      "text_markdown": "llama.cpp ले हप्ताभर आफ्नो काम निरन्तर गरिरह्यो।",
+      "title": "",
+      "tts": {
+        "text": "लामा डट सी पी पी ले हप्ताभर आफ्नो काम निरन्तर गरिरह्यो।",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले वास्तवमा रिलिज गर्दैन — यो लगभग हरेक दिन बिल्डहरू पठाउँछ।",
+      "text_markdown": "यसले वास्तवमा रिलिज गर्दैन — यो लगभग हरेक दिन बिल्डहरू पठाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "यसले वास्तवमा रिलिज गर्दैन — यो लगभग हरेक दिन बिल्डहरू पठाउँछ।",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ता Vulkan, Intel, र फोन-क्लास चिप्समा गति कामको थियो।",
+      "text_markdown": "यो हप्ता Vulkan, Intel, र फोन-क्लास चिप्समा गति कामको थियो।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता Vulkan, Intel, र फोन क्लास चिप्समा गति कामको थियो।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो नै इन्जिन हो जसमा अन-डिभाइस संसार वास्तवमा चलिरहेको छ।",
+      "text_markdown": "त्यो नै इन्जिन हो जसमा अन-डिभाइस संसार वास्तवमा चलिरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो नै इन्जिन हो जसमा अन डिभाइस संसार वास्तवमा चलिरहेको छ।",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कुनै नाटक छैन, केवल छिटो — परिपक्व प्लम्बिङबाट तपाईंले चाहेको कुरा।",
+      "text_markdown": "कुनै नाटक छैन, केवल छिटो — परिपक्व प्लम्बिङबाट तपाईंले चाहेको कुरा।",
+      "title": "",
+      "tts": {
+        "text": "कुनै नाटक छैन, केवल छिटो — परिपक्व प्लम्बिङबाट तपाईंले चाहेको कुरा।",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हाम्रो लागि ठूलो दृश्य सेट गर्नुहोस्।",
+      "text_markdown": "हाम्रो लागि ठूलो दृश्य सेट गर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "हाम्रो लागि ठूलो दृश्य सेट गर्नुहोस्।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खुला फ्रन्टियर अहिले मुख्यतया चिनियाँ-नेतृत्वमा छ।",
+      "text_markdown": "खुला फ्रन्टियर अहिले मुख्यतया चिनियाँ-नेतृत्वमा छ।",
+      "title": "",
+      "tts": {
+        "text": "खुला फ्रन्टियर अहिले मुख्यतया चिनियाँ नेतृत्वमा छ।",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अप्रिलमा एक लहर आएको थियो — DeepSeek V4, Qwen 3.6, Kimi K2.6, र अधिक, सबै लगभग दुई हप्तामा।",
+      "text_markdown": "अप्रिलमा एक लहर आएको थियो — DeepSeek V4, Qwen 3.6, Kimi K2.6, र अधिक, सबै लगभग दुई हप्तामा।",
+      "title": "",
+      "tts": {
+        "text": "अप्रिलमा एक लहर आएको थियो — DeepSeek V चार, Qwen तीन दशमलव छ, Kimi K दुई दशमलव छ, र अधिक, सबै लगभग दुई हप्तामा।",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ता त्यो लहरको शान्त परिणाम देखिन्छ।",
+      "text_markdown": "यो हप्ता त्यो लहरको शान्त परिणाम देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता त्यो लहरको शान्त परिणाम देखिन्छ।",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अनि Qwen को बारेमा कुनै समाचार आएको थिएन?",
+      "text_markdown": "अनि Qwen को बारेमा कुनै समाचार आएको थिएन?",
+      "title": "",
+      "tts": {
+        "text": "अनि क्वेनको बारेमा कुनै समाचार आएको थिएन?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, र त्यो बताउने कुरा हो।",
+      "text_markdown": "हो, र त्यो बताउने कुरा हो।",
+      "title": "",
+      "tts": {
+        "text": "हो, र त्यो बताउने कुरा हो।",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alibaba को नयाँ फ्ल्यागशिप, Qwen 3.7 Max, API-मात्रै छ — कुनै खुला वेटहरू छैन।",
+      "text_markdown": "Alibaba को नयाँ फ्ल्यागशिप, Qwen 3.7 Max, API-मात्रै छ — कुनै खुला वेटहरू छैन।",
+      "title": "",
+      "tts": {
+        "text": "Alibaba को नयाँ फ्ल्यागशिप, Qwen तीन दशमलव सात Max, API मात्रै छ — कुनै खुला वेटहरू छैन।",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खुला Qwen लाइन अझै 3.6 मा रोकिएको छ।",
+      "text_markdown": "खुला Qwen लाइन अझै 3.6 मा रोकिएको छ।",
+      "title": "",
+      "tts": {
+        "text": "खुला Qwen लाइन अझै तीन दशमलव छ मा रोकिएको छ।",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसैले Alibaba बन्द फ्ल्यागशिप र खुला मध्य-तहमा विभाजित भइरहेको छ।",
+      "text_markdown": "त्यसैले Alibaba बन्द फ्ल्यागशिप र खुला मध्य-तहमा विभाजित भइरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले Alibaba बन्द फ्ल्यागशिप र खुला मध्य तहमा विभाजित भइरहेको छ।",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो गत वर्ष Mistral ले चलाएको प्लेबुक नै हो।",
+      "text_markdown": "त्यो गत वर्ष Mistral ले चलाएको प्लेबुक नै हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो गत वर्ष Mistral ले चलाएको प्लेबुक नै हो।",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तब हेर्नै पर्ने कुरा हो।",
+      "text_markdown": "तब हेर्नै पर्ने कुरा हो।",
+      "title": "",
+      "tts": {
+        "text": "तब हेर्नै पर्ने कुरा हो।",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खसाल्नुपर्ने खुला जुत्ता भनेको खुला Qwen 3.7 मध्य-तह हो।",
+      "text_markdown": "खसाल्नुपर्ने खुला जुत्ता भनेको खुला Qwen 3.7 मध्य-तह हो।",
+      "title": "",
+      "tts": {
+        "text": "खसाल्नुपर्ने खुला जुत्ता भनेको खुला Qwen तीन दशमलव सात मध्य तह हो।",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ताको अनुसार, Hugging Face मा अझै केही छैन।",
+      "text_markdown": "यो हप्ताको अनुसार, Hugging Face मा अझै केही छैन।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ताको अनुसार, Hugging Face मा अझै केही छैन।",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ठीक छ, लिडरबोर्डहरूमा जाऔं।",
+      "text_markdown": "ठीक छ, लिडरबोर्डहरूमा जाऔं।",
+      "title": "",
+      "tts": {
+        "text": "ठीक छ, लिडरबोर्डहरूमा जाऔं।",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो हप्ता चीजहरू कहाँ अवतरण भयो?",
+      "text_markdown": "यो हप्ता चीजहरू कहाँ अवतरण भयो?",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता चीजहरू कहाँ अवतरण भयो?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यहाँ शीर्षक छ, र यो अनौठो कुरा हो।",
+      "text_markdown": "यहाँ शीर्षक छ, र यो अनौठो कुरा हो।",
+      "title": "",
+      "tts": {
+        "text": "यहाँ शीर्षक छ, र यो अनौठो कुरा हो।",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ता सरेको लिडरबोर्ड गुणस्तर बोर्ड होइन।",
+      "text_markdown": "यो हप्ता सरेको लिडरबोर्ड गुणस्तर बोर्ड होइन।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता सरेको लिडरबोर्ड गुणस्तर बोर्ड होइन।",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो OpenRouter को उपयोग मिटर हो, मतामतहरूको होइन, वास्तविक मोडेल कलहरूको मापन हो।",
+      "text_markdown": "यो OpenRouter को उपयोग मिटर हो, मतामतहरूको होइन, वास्तविक मोडेल कलहरूको मापन हो।",
+      "title": "",
+      "tts": {
+        "text": "यो ओपनराउटरको उपयोग मिटर हो, मतामतहरूको होइन, वास्तविक मोडेल कलहरूको मापन हो।",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "उपयोग मिटरले के भन्छ?",
+      "text_markdown": "उपयोग मिटरले के भन्छ?",
+      "title": "",
+      "tts": {
+        "text": "उपयोग मिटरले के भन्छ?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मे 18 देखि 24 को हप्तामा, DeepSeek V4-Flash पृथ्वीमा सबैभन्दा बढी प्रयोग हुने मोडेलकै स्थानमा कायम रह्यो।",
+      "text_markdown": "मे 18 देखि 24 को हप्तामा, DeepSeek V4-Flash पृथ्वीमा सबैभन्दा बढी प्रयोग हुने मोडेलकै स्थानमा कायम रह्यो।",
+      "title": "",
+      "tts": {
+        "text": "मे अठार देखि चौबीस को हप्तामा, डीपसीक भी चार फ्ल्यास पृथ्वीमा सबैभन्दा बढी प्रयोग हुने मोडेलकै स्थानमा कायम रह्यो।",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले एक हप्तामा सेवा गरेका टोकनहरूको संख्या लगभग 3.43 ट्रिलियन पुगेको थियो।",
+      "text_markdown": "यसले एक हप्तामा सेवा गरेका टोकनहरूको संख्या लगभग 3.43 ट्रिलियन पुगेको थियो।",
+      "title": "",
+      "tts": {
+        "text": "यसले एक हप्तामा सेवा गरेका टोकनहरूको संख्या लगभग तीन दशमलव चार तीन ट्रिलियन पुगेको थियो।",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यो खुला वेटहरू छ, MIT-लाइसेन्स्ड, केहि जुन तपाईंले डाउनलोड गरेर सेल्फ-होस्ट गर्न सक्नुहुन्छ।",
+      "text_markdown": "र यो खुला वेटहरू छ, MIT-लाइसेन्स्ड, केहि जुन तपाईंले डाउनलोड गरेर सेल्फ-होस्ट गर्न सक्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "र यो खुला वेटहरू छ, एम आई टी लाइसेन्स्ड, केहि जुन तपाईंले डाउनलोड गरेर सेल्फ होस्ट गर्न सक्नुहुन्छ।",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "सबैभन्दा प्रयोग हुने मोडेल खुला छ?",
+      "text_markdown": "सबैभन्दा प्रयोग हुने मोडेल खुला छ?",
+      "title": "",
+      "tts": {
+        "text": "सबैभन्दा प्रयोग हुने मोडेल खुला छ?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उपयोग चार्टको शीर्षमा, हो।",
+      "text_markdown": "उपयोग चार्टको शीर्षमा, हो।",
+      "title": "",
+      "tts": {
+        "text": "उपयोग चार्टको शीर्षमा, हो।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यो नजिक पनि छैन।",
+      "text_markdown": "र यो नजिक पनि छैन।",
+      "title": "",
+      "tts": {
+        "text": "र यो नजिक पनि छैन।",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "चिनियाँ मोडेलहरूले त्यो हप्ता लगभग 9.2 ट्रिलियन टोकनहरू ताने, अमेरिकी मोडेलहरूको लगभग 4.9 ट्रिलियनको विरुद्धमा।",
+      "text_markdown": "चिनियाँ मोडेलहरूले त्यो हप्ता लगभग 9.2 ट्रिलियन टोकनहरू ताने, अमेरिकी मोडेलहरूको लगभग 4.9 ट्रिलियनको विरुद्धमा।",
+      "title": "",
+      "tts": {
+        "text": "चिनियाँ मोडेलहरूले त्यो हप्ता लगभग नौ दशमलव दुई ट्रिलियन टोकनहरू ताने, अमेरिकी मोडेलहरूको लगभग चार दशमलव नौ ट्रिलियनको विरुद्धमा।",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो लगातार चौथो हप्ता हो जब चिनियाँ खुला मोडेलहरूले विश्वव्यापी उपयोगको नेतृत्व गरे।",
+      "text_markdown": "त्यो लगातार चौथो हप्ता हो जब चिनियाँ खुला मोडेलहरूले विश्वव्यापी उपयोगको नेतृत्व गरे।",
+      "title": "",
+      "tts": {
+        "text": "त्यो लगातार चौथो हप्ता हो जब चिनियाँ खुला मोडेलहरूले विश्वव्यापी उपयोगको नेतृत्व गरे।",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "साँच्चिकै, त्यो कुरा उल्टो रहेछ।",
+      "text_markdown": "साँच्चिकै, त्यो कुरा उल्टो रहेछ।",
+      "title": "",
+      "tts": {
+        "text": "साँच्चिकै, त्यो कुरा उल्टो रहेछ।",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो हो — निर्माणकर्ताहरूले वास्तवमा महसुस गर्ने मेट्रिकमा, उत्पादनमा के चलिरहेको छ, खुला शीर्षमा जितिरहेको छ।",
+      "text_markdown": "त्यो हो — निर्माणकर्ताहरूले वास्तवमा महसुस गर्ने मेट्रिकमा, उत्पादनमा के चलिरहेको छ, खुला शीर्षमा जितिरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो हो — निर्माणकर्ताहरूले वास्तवमा महसुस गर्ने मेट्रिकमा, उत्पादनमा के चलिरहेको छ, खुला शीर्षमा जितिरहेको छ।",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तर उपयोग चार्टको बारेमा इमानदार भएर भन्नुहोस्।",
+      "text_markdown": "तर उपयोग चार्टको बारेमा इमानदार भएर भन्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "तर उपयोग चार्टको बारेमा इमानदार भएर भन्नुहोस्।",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "राम्रो वृत्ति, र यो हप्ता एक उत्तम सावधानीका कथा छ।",
+      "text_markdown": "राम्रो वृत्ति, र यो हप्ता एक उत्तम सावधानीका कथा छ।",
+      "title": "",
+      "tts": {
+        "text": "राम्रो वृत्ति, र यो हप्ता एक उत्तम सावधानीका कथा छ।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अर्को मोडेल, Tencent को Hy3, उही उपयोग चार्टमा माथि उक्लियो।",
+      "text_markdown": "अर्को मोडेल, Tencent को Hy3, उही उपयोग चार्टमा माथि उक्लियो।",
+      "title": "",
+      "tts": {
+        "text": "अर्को मोडेल, टेन्सेन्टको एच वाई तीन, उही उपयोग चार्टमा माथि उक्लियो।",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "विश्लेषक Max Woolf ले यसलाई मे 26 मा अलग पारे।",
+      "text_markdown": "विश्लेषक Max Woolf ले यसलाई मे 26 मा अलग पारे।",
+      "title": "",
+      "tts": {
+        "text": "विश्लेषक Max Woolf ले यसलाई मे छब्बीस मा अलग पारे।",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "उनले पत्ता लगाएको कुरा के थियो?",
+      "text_markdown": "उनले पत्ता लगाएको कुरा के थियो?",
+      "title": "",
+      "tts": {
+        "text": "उनले पत्ता लगाएको कुरा के थियो?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो प्रति टोकन सस्तो देखिन्छ, तर यसमा धेरै उच्च क्यास-रिड लागतहरू छन्।",
+      "text_markdown": "यो प्रति टोकन सस्तो देखिन्छ, तर यसमा धेरै उच्च क्यास-रिड लागतहरू छन्।",
+      "title": "",
+      "tts": {
+        "text": "यो प्रति टोकन सस्तो देखिन्छ, तर यसमा धेरै उच्च क्यास रिड लागतहरू छन्।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "एक पटक तपाईंले तिनीहरूलाई गणना गर्नुभयो भने, यो DeepSeek को वास्तविक मूल्य भन्दा झन्डै दोब्बर छ।",
+      "text_markdown": "एक पटक तपाईंले तिनीहरूलाई गणना गर्नुभयो भने, यो DeepSeek को वास्तविक मूल्य भन्दा झन्डै दोब्बर छ।",
+      "title": "",
+      "tts": {
+        "text": "एक पटक तपाईंले तिनीहरूलाई गणना गर्नुभयो भने, यो DeepSeek को वास्तविक मूल्य भन्दा झन्डै दोब्बर छ।",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यो स्पाइक एक विशाल एप जस्तो देखिन्छ, व्यापक माया होइन।",
+      "text_markdown": "र यो स्पाइक एक विशाल एप जस्तो देखिन्छ, व्यापक माया होइन।",
+      "title": "",
+      "tts": {
+        "text": "र यो स्पाइक एक विशाल एप जस्तो देखिन्छ, व्यापक माया होइन।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसैले उपयोग बोर्डले तपाईंलाई कसले खर्च गरिरहेको छ भन्छ, के राम्रो छ भन्ने होइन।",
+      "text_markdown": "त्यसैले उपयोग बोर्डले तपाईंलाई कसले खर्च गरिरहेको छ भन्छ, के राम्रो छ भन्ने होइन।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले उपयोग बोर्डले तपाईंलाई कसले खर्च गरिरहेको छ भन्छ, के राम्रो छ भन्ने होइन।",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ट्रेन्डिङ हुनु र उत्तम हुनु फरक कुरा हुन्, एउटै होइनन्।",
+      "text_markdown": "ट्रेन्डिङ हुनु र उत्तम हुनु फरक कुरा हुन्, एउटै होइनन्।",
+      "title": "",
+      "tts": {
+        "text": "ट्रेन्डिङ हुनु र उत्तम हुनु फरक कुरा हुन्, एउटै होइनन्।",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यही पाठ जस्ताको तस्तै बोक्नुपर्छ।",
+      "text_markdown": "यही पाठ जस्ताको तस्तै बोक्नुपर्छ।",
+      "title": "",
+      "tts": {
+        "text": "यही पाठ जस्ताको तस्तै बोक्नुपर्छ।",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "गुणस्तर बोर्डहरूको बारेमा चाहिँ के भन्न सकिन्छ?",
+      "text_markdown": "गुणस्तर बोर्डहरूको बारेमा चाहिँ के भन्न सकिन्छ?",
+      "title": "",
+      "tts": {
+        "text": "गुणस्तर बोर्डहरूको बारेमा चाहिँ के भन्न सकिन्छ?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सबैभन्दा कठिन बोर्डहरूमा, बन्द मोडेलहरूले अझै पनि नेतृत्व गर्छन्।",
+      "text_markdown": "सबैभन्दा कठिन बोर्डहरूमा, बन्द मोडेलहरूले अझै पनि नेतृत्व गर्छन्।",
+      "title": "",
+      "tts": {
+        "text": "सबैभन्दा कठिन बोर्डहरूमा, बन्द मोडेलहरूले अझै पनि नेतृत्व गर्छन्।",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "च्याट-गुणस्तर र एजेन्ट-टर्मिनल बोर्डहरूको शीर्ष अहिले सबै बन्द छ।",
+      "text_markdown": "च्याट-गुणस्तर र एजेन्ट-टर्मिनल बोर्डहरूको शीर्ष अहिले सबै बन्द छ।",
+      "title": "",
+      "tts": {
+        "text": "च्याट गुणस्तर र एजेन्ट टर्मिनल बोर्डहरूको शीर्ष अहिले सबै बन्द छ।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तर SWE-bench Verified मा, कोडिङ परीक्षणमा, खुला आधारभूत रूपमा बराबरीमा छ।",
+      "text_markdown": "तर SWE-bench Verified मा, कोडिङ परीक्षणमा, खुला आधारभूत रूपमा बराबरीमा छ।",
+      "title": "",
+      "tts": {
+        "text": "तर SWE bench Verified मा, कोडिङ परीक्षणमा, खुला आधारभूत रूपमा बराबरीमा छ।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ट्र्याकरहरूले उत्तम खुला मोडेलहरूलाई 80% वरिपरि राख्छन्।",
+      "text_markdown": "ट्र्याकरहरूले उत्तम खुला मोडेलहरूलाई 80% वरिपरि राख्छन्।",
+      "title": "",
+      "tts": {
+        "text": "ट्र्याकरहरूले उत्तम खुला मोडेलहरूलाई असी प्रतिशत वरिपरि राख्छन्।",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कुन खुला मोडेलहरू?",
+      "text_markdown": "कुन खुला मोडेलहरू?",
+      "title": "",
+      "tts": {
+        "text": "कुन खुला मोडेलहरू?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kimi K2.6 र MiniMax, DeepSeek को सबैभन्दा ठूलो मोडेलले समान दावी गर्दै।",
+      "text_markdown": "Kimi K2.6 र MiniMax, DeepSeek को सबैभन्दा ठूलो मोडेलले समान दावी गर्दै।",
+      "title": "",
+      "tts": {
+        "text": "Kimi K दुई दशमलव छ र MiniMax, DeepSeek को सबैभन्दा ठूलो मोडेलले समान दावी गर्दै।",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "म दावी भन्छु, किनभने ट्र्याकरहरू एकअर्कासँग सहमत छैनन्।",
+      "text_markdown": "म दावी भन्छु, किनभने ट्र्याकरहरू एकअर्कासँग सहमत छैनन्।",
+      "title": "",
+      "tts": {
+        "text": "म दावी भन्छु, किनभने ट्र्याकरहरू एकअर्कासँग सहमत छैनन्।",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कुनै पनि एकल बेन्चमार्क नम्बरलाई दावीको रूपमा लिनुहोस्, तथ्यको रूपमा होइन।",
+      "text_markdown": "कुनै पनि एकल बेन्चमार्क नम्बरलाई दावीको रूपमा लिनुहोस्, तथ्यको रूपमा होइन।",
+      "title": "",
+      "tts": {
+        "text": "कुनै पनि एकल बेन्चमार्क नम्बरलाई दावीको रूपमा लिनुहोस्, तथ्यको रूपमा होइन।",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कुरा गर्दै, बेन्चमार्कमाथिको विश्वासबारे उठेको प्रश्न।",
+      "text_markdown": "कुरा गर्दै, बेन्चमार्कमाथिको विश्वासबारे उठेको प्रश्न।",
+      "title": "",
+      "tts": {
+        "text": "कुरा गर्दै, बेन्चमार्कमाथिको विश्वासबारे उठेको प्रश्न।",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, May 19 मा आएको एउटा तीखो शोधपत्र ठीक त्यसै विषयमा केन्द्रित थियो।",
+      "text_markdown": "हो, May 19 मा आएको एउटा तीखो शोधपत्र ठीक त्यसै विषयमा केन्द्रित थियो।",
+      "title": "",
+      "tts": {
+        "text": "हो, मे उन्नाइसमा आएको एउटा तीखो शोधपत्र ठीक त्यसै विषयमा केन्द्रित थियो।",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तर्क यो छ कि बेन्चमार्कहरू संदूषण-प्रतिरोधी हुनुपर्छ।",
+      "text_markdown": "तर्क यो छ कि बेन्चमार्कहरू संदूषण-प्रतिरोधी हुनुपर्छ।",
+      "title": "",
+      "tts": {
+        "text": "तर्क यो छ कि बेन्चमार्कहरू संदूषण प्रतिरोधी हुनुपर्छ।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसको मतलब परीक्षण प्रशिक्षण डाटामा चुहिनु हुँदैन।",
+      "text_markdown": "यसको मतलब परीक्षण प्रशिक्षण डाटामा चुहिनु हुँदैन।",
+      "title": "",
+      "tts": {
+        "text": "यसको मतलब परीक्षण प्रशिक्षण डाटामा चुहिनु हुँदैन।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अन्यथा उच्च स्कोरले मेमोरी मापन गर्छ, तर्क होइन।",
+      "text_markdown": "अन्यथा उच्च स्कोरले मेमोरी मापन गर्छ, तर्क होइन।",
+      "title": "",
+      "tts": {
+        "text": "अन्यथा उच्च स्कोरले मेमोरी मापन गर्छ, तर्क होइन।",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले बोर्डले झूट बोल्न सक्ने दुई तरिकाहरू।",
+      "text_markdown": "त्यसैले बोर्डले झूट बोल्न सक्ने दुई तरिकाहरू।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले बोर्डले झूट बोल्न सक्ने दुई तरिकाहरू।",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सहि, एक तर्फ गेमिङमा उपयोग, अर्को तर्फ प्रदूषणको समस्या।",
+      "text_markdown": "सहि, एक तर्फ गेमिङमा उपयोग, अर्को तर्फ प्रदूषणको समस्या।",
+      "title": "",
+      "tts": {
+        "text": "सहि, एक तर्फ गेमिङमा उपयोग, अर्को तर्फ प्रदूषणको समस्या।",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उही पाठ: लिडरबोर्ड पढ्नुहोस्, तर यसलाई पूजनीय दर्जा नदिनुहोस्।",
+      "text_markdown": "उही पाठ: लिडरबोर्ड पढ्नुहोस्, तर यसलाई पूजनीय दर्जा नदिनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "उही पाठ, लिडरबोर्ड पढ्नुहोस्, तर यसलाई पूजनीय दर्जा नदिनुहोस्।",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब समाचारका मुख्य शीर्षकहरूतिर लागौँ।",
+      "text_markdown": "अब समाचारका मुख्य शीर्षकहरूतिर लागौँ।",
+      "title": "",
+      "tts": {
+        "text": "अब समाचारका मुख्य शीर्षकहरूतिर लागौँ।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "छिटो क्लिप, तपाईंले वास्तवमा प्रयोग गर्न सक्ने चीजहरू।",
+      "text_markdown": "छिटो क्लिप, तपाईंले वास्तवमा प्रयोग गर्न सक्ने चीजहरू।",
+      "title": "",
+      "tts": {
+        "text": "छिटो क्लिप, तपाईंले वास्तवमा प्रयोग गर्न सक्ने चीजहरू।",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पहिले, त्यो नम्बर-एक मोडेलमा इमानदार सेल्फ-होस्टिङ गणित।",
+      "text_markdown": "पहिले, त्यो नम्बर-एक मोडेलमा इमानदार सेल्फ-होस्टिङ गणित।",
+      "title": "",
+      "tts": {
+        "text": "पहिले, त्यो नम्बर एक मोडेलमा इमानदार सेल्फ होस्टिङ गणित।",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "DeepSeek V4-Flash चलाउन लगभग 170 गिगाबाइट GPU मेमोरी आवश्यक पर्छ।",
+      "text_markdown": "DeepSeek V4-Flash चलाउन लगभग 170 गिगाबाइट GPU मेमोरी आवश्यक पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V चार Flash चलाउन लगभग एक सय सत्तरी गिगाबाइट GPU मेमोरी आवश्यक पर्छ।",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो टप-एन्ड डाटा-सेन्टर कार्डहरूको एक जोडी हो, जसको क्लाउडमा प्रति घण्टा लागत लगभग $7 पर्छ।",
+      "text_markdown": "त्यो टप-एन्ड डाटा-सेन्टर कार्डहरूको एक जोडी हो, जसको क्लाउडमा प्रति घण्टा लागत लगभग $7 पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो टप एन्ड डाटा सेन्टर कार्डहरूको एक जोडी हो, जसको क्लाउडमा प्रति घण्टा लागत लगभग सात डलर पर्छ।",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "धेरै भारी ट्राफिक भन्दा कम, सस्तो API ले अझै जित्छ।",
+      "text_markdown": "धेरै भारी ट्राफिक भन्दा कम, सस्तो API ले अझै जित्छ।",
+      "title": "",
+      "tts": {
+        "text": "धेरै भारी ट्राफिक भन्दा कम, सस्तो API ले अझै जित्छ।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "गोपनीयता र नियन्त्रणको लागि सेल्फ-होस्ट गर्नुहोस्, पैसा बचाउनको लागि होइन — जबसम्म तपाईं ठूलो नहुनुहुन्छ।",
+      "text_markdown": "गोपनीयता र नियन्त्रणको लागि सेल्फ-होस्ट गर्नुहोस्, पैसा बचाउनको लागि होइन — जबसम्म तपाईं ठूलो नहुनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "गोपनीयता र नियन्त्रणको लागि सेल्फ होस्ट गर्नुहोस्, पैसा बचाउनको लागि होइन — जबसम्म तपाईं ठूलो नहुनुहुन्छ।",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "राम्रो, अरू के?",
+      "text_markdown": "राम्रो, अरू के?",
+      "title": "",
+      "tts": {
+        "text": "राम्रो, अरू के?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "दोस्रो, यस वर्ष अन-डिभाइस भाषणले एक छलांग लगायो।",
+      "text_markdown": "दोस्रो, यस वर्ष अन-डिभाइस भाषणले एक छलांग लगायो।",
+      "title": "",
+      "tts": {
+        "text": "दोस्रो, यस वर्ष अन डिभाइस भाषणले एक छलांग लगायो।",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो एउटा खुला टेक्स्ट-टु-स्पीच मोडेल हो, जसलाई GPU नभएको CPU मा पनि चलाउन सकिन्छ।",
+      "text_markdown": "यो एउटा खुला टेक्स्ट-टु-स्पीच मोडेल हो, जसलाई GPU नभएको CPU मा पनि चलाउन सकिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो एउटा खुला टेक्स्ट टु स्पीच मोडेल हो, जसलाई जी पी यू नभएको सी पी यू मा पनि चलाउन सकिन्छ।",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो विचार समात्नुहोस् — यो हाम्रो शीर्ष कथा हो।",
+      "text_markdown": "त्यो विचार समात्नुहोस् — यो हाम्रो शीर्ष कथा हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो विचार समात्नुहोस् — यो हाम्रो शीर्ष कथा हो।",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यसलाई अभिलेखमा राख्ने काम सफलतापूर्वक पूरा गरियो।",
+      "text_markdown": "यसलाई अभिलेखमा राख्ने काम सफलतापूर्वक पूरा गरियो।",
+      "title": "",
+      "tts": {
+        "text": "यसलाई अभिलेखमा राख्ने काम सफलतापूर्वक पूरा गरियो।",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तेस्रो, समुदायिक क्वान्ट लेयरले खुला संसारलाई खुवाइरहन्छ।",
+      "text_markdown": "तेस्रो, समुदायिक क्वान्ट लेयरले खुला संसारलाई खुवाइरहन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तेस्रो, समुदायिक क्वान्ट लेयरले खुला संसारलाई खुवाइरहन्छ।",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth जस्ता समूहहरूले दिनहरूभित्रै नयाँ मोडेलहरूका ट्युन गरिएका, संकुचित संस्करणहरू प्रयोगकर्ताका लागि उपलब्ध गराइदिन्छन्।",
+      "text_markdown": "Unsloth जस्ता समूहहरूले दिनहरूभित्रै नयाँ मोडेलहरूका ट्युन गरिएका, संकुचित संस्करणहरू प्रयोगकर्ताका लागि उपलब्ध गराइदिन्छन्।",
+      "title": "",
+      "tts": {
+        "text": "Unsloth जस्ता समूहहरूले दिनहरूभित्रै नयाँ मोडेलहरूका ट्युन गरिएका, संकुचित संस्करणहरू प्रयोगकर्ताका लागि उपलब्ध गराइदिन्छन्।",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसरी नै एक विशाल मोडेल तपाईंको कार्डमा मिल्ने चीज बन्छ।",
+      "text_markdown": "यसरी नै एक विशाल मोडेल तपाईंको कार्डमा मिल्ने चीज बन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसरी नै एक विशाल मोडेल तपाईंको कार्डमा मिल्ने चीज बन्छ।",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र सुन्ने पक्षमा चाहिँ?",
+      "text_markdown": "र सुन्ने पक्षमा चाहिँ?",
+      "title": "",
+      "tts": {
+        "text": "र सुन्ने पक्षमा चाहिँ?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बोलीलाई लेखाइमा बदल्ने प्रविधिमा पनि प्रगति देखियो।",
+      "text_markdown": "बोलीलाई लेखाइमा बदल्ने प्रविधिमा पनि प्रगति देखियो।",
+      "title": "",
+      "tts": {
+        "text": "बोलीलाई लेखाइमा बदल्ने प्रविधिमा पनि प्रगति देखियो।",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Moonshine v2 एक खुला मोडेल हो जसले Whisper लाई सटीकतामा हराउँछ आकारको केवल एक अंशमा।",
+      "text_markdown": "Moonshine v2 एक खुला मोडेल हो जसले Whisper लाई सटीकतामा हराउँछ आकारको केवल एक अंशमा।",
+      "title": "",
+      "tts": {
+        "text": "Moonshine संस्करण दुई एक खुला मोडेल हो जसले Whisper लाई सटीकतामा हराउँछ आकारको केवल एक अंशमा।",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसको डिजाइन Raspberry Pi वा फोनलाई लक्षित गरेर गरिएको छ।",
+      "text_markdown": "यसको डिजाइन Raspberry Pi वा फोनलाई लक्षित गरेर गरिएको छ।",
+      "title": "",
+      "tts": {
+        "text": "यसको डिजाइन रास्पबेरी पाई वा फोनलाई लक्षित गरेर गरिएको छ।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सर्भरमा बल्क ट्रान्सक्रिप्शन गर्दा, गतिको लागि NVIDIA को Parakeet उत्तम रोजाइ बन्छ।",
+      "text_markdown": "सर्भरमा बल्क ट्रान्सक्रिप्शन गर्दा, गतिको लागि NVIDIA को Parakeet उत्तम रोजाइ बन्छ।",
+      "title": "",
+      "tts": {
+        "text": "सर्भरमा बल्क ट्रान्सक्रिप्शन गर्दा, गतिको लागि एनभिडियाको प्याराकिट उत्तम रोजाइ बन्छ।",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अर्को एउटा चिपको कथा।",
+      "text_markdown": "अर्को एउटा चिपको कथा।",
+      "title": "",
+      "tts": {
+        "text": "अर्को एउटा चिपको कथा।",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले सम्पूर्ण एपिसोडलाई एकै ठाउँमा जोड्छ।",
+      "text_markdown": "यसले सम्पूर्ण एपिसोडलाई एकै ठाउँमा जोड्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले सम्पूर्ण एपिसोडलाई एकै ठाउँमा जोड्छ।",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मे 21 मा, Nvidia का Jensen Huang ले भने कि उनले चीनको चिप बजारलाई Huawei लाई ठूलो मात्रामा छोडिदिएका छन्।",
+      "text_markdown": "मे 21 मा, Nvidia का Jensen Huang ले भने कि उनले चीनको चिप बजारलाई Huawei लाई ठूलो मात्रामा छोडिदिएका छन्।",
+      "title": "",
+      "tts": {
+        "text": "मे एक्काइस मा, Nvidia का Jensen Huang ले भने कि उनले चीनको चिप बजारलाई Huawei लाई ठूलो मात्रामा छोडिदिएका छन्।",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "चीनले आफ्नै सिलिकनलाई धकेल्न अनुमोदित Nvidia आयातहरूलाई पनि रोकिरहेको छ।",
+      "text_markdown": "चीनले आफ्नै सिलिकनलाई धकेल्न अनुमोदित Nvidia आयातहरूलाई पनि रोकिरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "चीनले आफ्नै सिलिकनलाई धकेल्न अनुमोदित Nvidia आयातहरूलाई पनि रोकिरहेको छ।",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-128",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "निर्माणकर्तालाई यसको किन फरक पर्छ?",
+      "text_markdown": "निर्माणकर्तालाई यसको किन फरक पर्छ?",
+      "title": "",
+      "tts": {
+        "text": "निर्माणकर्तालाई यसको किन फरक पर्छ?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने प्रयोग चार्टमा शीर्ष स्थानमा रहेका ती खुला चिनियाँ मोडेलहरू बढ्दो रूपमा Huawei चिपहरूमा तालिम र सेवा दिइन्छ।",
+      "text_markdown": "किनभने प्रयोग चार्टमा शीर्ष स्थानमा रहेका ती खुला चिनियाँ मोडेलहरू बढ्दो रूपमा Huawei चिपहरूमा तालिम र सेवा दिइन्छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने प्रयोग चार्टमा शीर्ष स्थानमा रहेका ती खुला चिनियाँ मोडेलहरू बढ्दो रूपमा Huawei चिपहरूमा तालिम र सेवा दिइन्छ।",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "निर्यात नियन्त्रणहरू चीनको AI लाई ढिलो गर्न बनाइएका थिए।",
+      "text_markdown": "निर्यात नियन्त्रणहरू चीनको AI लाई ढिलो गर्न बनाइएका थिए।",
+      "title": "",
+      "tts": {
+        "text": "निर्यात नियन्त्रणहरू चीनको AI लाई ढिलो गर्न बनाइएका थिए।",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-131",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बरु तिनीहरूले समानान्तर खुला स्ट्याक - चिप र वजन दुवै - बुटस्ट्र्याप गरे।",
+      "text_markdown": "बरु तिनीहरूले समानान्तर खुला स्ट्याक - चिप र वजन दुवै - बुटस्ट्र्याप गरे।",
+      "title": "",
+      "tts": {
+        "text": "बरु तिनीहरूले समानान्तर खुला स्ट्याक - चिप र वजन दुवै - बुटस्ट्र्याप गरे।",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-132",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "लीडरबोर्ड कथा र चिप कथा एउटै कथा हुन्।",
+      "text_markdown": "लीडरबोर्ड कथा र चिप कथा एउटै कथा हुन्।",
+      "title": "",
+      "tts": {
+        "text": "लीडरबोर्ड कथा र चिप कथा एउटै कथा हुन्।",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब मुख्य कथामा फर्कौं।",
+      "text_markdown": "अब मुख्य कथामा फर्कौं।",
+      "title": "",
+      "tts": {
+        "text": "अब मुख्य कथामा फर्कौं।",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तपाईंले हामीलाई खुला आवाजको वाचा गर्नुभयो।",
+      "text_markdown": "तपाईंले हामीलाई खुला आवाजको वाचा गर्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले हामीलाई खुला आवाजको वाचा गर्नुभयो।",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मैले गरें, र यो यस कार्यक्रमको इन्जिन रूम हो।",
+      "text_markdown": "मैले गरें, र यो यस कार्यक्रमको इन्जिन रूम हो।",
+      "title": "",
+      "tts": {
+        "text": "मैले गरें, र यो यस कार्यक्रमको इन्जिन रूम हो।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-136",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यस विषयमा अझ बताउनुहोस्।",
+      "text_markdown": "त्यस विषयमा अझ बताउनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यस विषयमा अझ बताउनुहोस्।",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले सुनिरहनुभएको आवाज खुला र होस्ट गरिएका स्पीच मोडेलहरूको स्ट्याकमा चल्छ।",
+      "text_markdown": "तपाईंले सुनिरहनुभएको आवाज खुला र होस्ट गरिएका स्पीच मोडेलहरूको स्ट्याकमा चल्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले सुनिरहनुभएको आवाज खुला र होस्ट गरिएका स्पीच मोडेलहरूको स्ट्याकमा चल्छ।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र 2026 खुला मोडेलहरू स्वामित्व गर्न पर्याप्त राम्रो भएको वर्ष हो।",
+      "text_markdown": "र 2026 खुला मोडेलहरू स्वामित्व गर्न पर्याप्त राम्रो भएको वर्ष हो।",
+      "title": "",
+      "tts": {
+        "text": "र दुई हजार छब्बीस खुला मोडेलहरू स्वामित्व गर्न पर्याप्त राम्रो भएको वर्ष हो।",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-139",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "घरको सबैभन्दा नजिकको एकबाट सुरु गर्नुहोस्।",
+      "text_markdown": "घरको सबैभन्दा नजिकको एकबाट सुरु गर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "घरको सबैभन्दा नजिकको एकबाट सुरु गर्नुहोस्।",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो त Resemble AI को मोडल हो, जसलाई Chatterbox भनिन्छ।",
+      "text_markdown": "त्यो त Resemble AI को मोडल हो, जसलाई Chatterbox भनिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो त रिजेम्बल एआईको मोडल हो, जसलाई च्याटरबक्स भनिन्छ।",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो MIT लाइसेन्स प्राप्त छ र डिभाइसमा सजिलै चल्ने गरी बनाइएको छ, साथै यसले 23 भाषाहरू समेट्छ।",
+      "text_markdown": "यो MIT लाइसेन्स प्राप्त छ र डिभाइसमा सजिलै चल्ने गरी बनाइएको छ, साथै यसले 23 भाषाहरू समेट्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो एम आई टी अनुमति पत्र प्राप्त छ र उपकरणमा सजिलै चल्ने गरी बनाइएको छ, साथै यसले तेइस भाषाहरू समेट्छ।",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Turbo भनिने एउटा संस्करण मार्चमा बाहिर आयो।",
+      "text_markdown": "Turbo भनिने एउटा संस्करण मार्चमा बाहिर आयो।",
+      "title": "",
+      "tts": {
+        "text": "Turbo भनिने एउटा संस्करण मार्चमा बाहिर आयो।",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले एक चाल प्रयोग गर्छ जसले अडियो डिकोडरलाई दसको सट्टा एकल चरण बनाउँछ।",
+      "text_markdown": "यसले एक चाल प्रयोग गर्छ जसले अडियो डिकोडरलाई दसको सट्टा एकल चरण बनाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "यसले एक चाल प्रयोग गर्छ जसले अडियो डिकोडरलाई दसको सट्टा एकल चरण बनाउँछ।",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-144",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो चालमा सरल भाषा?",
+      "text_markdown": "त्यो चालमा सरल भाषा?",
+      "title": "",
+      "tts": {
+        "text": "त्यो चालमा सरल भाषा?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसको मतलब उही आवाजको लागि धेरै कम कम्प्युट हो।",
+      "text_markdown": "यसको मतलब उही आवाजको लागि धेरै कम कम्प्युट हो।",
+      "title": "",
+      "tts": {
+        "text": "यसको मतलब उही आवाजको लागि धेरै कम कम्प्युट हो।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसैले फोनमा राम्रो आवाज यथार्थपरक बनाउँछ।",
+      "text_markdown": "त्यसैले फोनमा राम्रो आवाज यथार्थपरक बनाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले फोनमा राम्रो आवाज यथार्थपरक बनाउँछ।",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यदि तपाईंलाई थप भाषाहरू चाहिन्छ भने?",
+      "text_markdown": "यदि तपाईंलाई थप भाषाहरू चाहिन्छ भने?",
+      "title": "",
+      "tts": {
+        "text": "यदि तपाईंलाई थप भाषाहरू चाहिन्छ भने?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OmniVoice भनिने एक खुला मोडेल छ।",
+      "text_markdown": "OmniVoice भनिने एक खुला मोडेल छ।",
+      "title": "",
+      "tts": {
+        "text": "Omni Voice भनिने एक खुला मोडेल छ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले 600 भन्दा बढी भाषाहरूको दाबी गर्छ, र यो छिटो छ।",
+      "text_markdown": "यसले 600 भन्दा बढी भाषाहरूको दाबी गर्छ, र यो छिटो छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले छ सय भन्दा बढी भाषाहरूको दाबी गर्छ, र यो छिटो छ।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो Apache-लाइसेन्स प्राप्त छ, त्यसैले यसलाई व्यावसायिक रूपमा प्रयोग गर्न सुरक्षित छ।",
+      "text_markdown": "यो Apache-लाइसेन्स प्राप्त छ, त्यसैले यसलाई व्यावसायिक रूपमा प्रयोग गर्न सुरक्षित छ।",
+      "title": "",
+      "tts": {
+        "text": "यो Apache लाइसेन्स प्राप्त छ, त्यसैले यसलाई व्यावसायिक रूपमा प्रयोग गर्न सुरक्षित छ।",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-151",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "600 भाषाहरू धेरै राम्रो लाग्छ।",
+      "text_markdown": "600 भाषाहरू धेरै राम्रो लाग्छ।",
+      "title": "",
+      "tts": {
+        "text": "छ सय भाषाहरू धेरै राम्रो लाग्छ।",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-152",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसलाई उचित चिन्ता मान्नुपर्छ।",
+      "text_markdown": "यसलाई उचित चिन्ता मान्नुपर्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसलाई उचित चिन्ता मान्नुपर्छ।",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "भाषालाई कभर गर्नु त्यसमा राम्रो सुनिनु जस्तै होइन।",
+      "text_markdown": "भाषालाई कभर गर्नु त्यसमा राम्रो सुनिनु जस्तै होइन।",
+      "title": "",
+      "tts": {
+        "text": "भाषालाई कभर गर्नु त्यसमा राम्रो सुनिनु जस्तै होइन।",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसलाई भरोसा गर्नु अघि तपाईंले अझै भाषा भाषामा सुन्नुपर्छ।",
+      "text_markdown": "यसलाई भरोसा गर्नु अघि तपाईंले अझै भाषा भाषामा सुन्नुपर्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसलाई भरोसा गर्नु अघि तपाईंले अझै भाषा भाषामा सुन्नुपर्छ।",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अनि स्टुडियो गुणस्तरबारे के भन्न सकिन्छ?",
+      "text_markdown": "अनि स्टुडियो गुणस्तरबारे के भन्न सकिन्छ?",
+      "title": "",
+      "tts": {
+        "text": "अनि स्टुडियो गुणस्तरबारे के भन्न सकिन्छ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसको लागि, VoxCPM2 हेरेर जानकारी लिनुहोस्।",
+      "text_markdown": "त्यसको लागि, VoxCPM2 हेरेर जानकारी लिनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यसको लागि, भक्स सी पी एम दुई हेरेर जानकारी लिनुहोस्।",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो लगभग 2 बिलियन प्यारामिटर हो, Apache-लाइसेन्स प्राप्त छ, र उच्च निष्ठामा आउटपुट दिन्छ।",
+      "text_markdown": "यो लगभग 2 बिलियन प्यारामिटर हो, Apache-लाइसेन्स प्राप्त छ, र उच्च निष्ठामा आउटपुट दिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो लगभग दुई बिलियन प्यारामिटर हो, Apache लाइसेन्स प्राप्त छ, र उच्च निष्ठामा आउटपुट दिन्छ।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले 30 भाषाहरू कभर गर्छ र तपाईं यसलाई सानो आवाज नमूनामा फाइन-ट्यून गर्न सक्नुहुन्छ।",
+      "text_markdown": "यसले 30 भाषाहरू कभर गर्छ र तपाईं यसलाई सानो आवाज नमूनामा फाइन-ट्यून गर्न सक्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले तीस भाषाहरू कभर गर्छ र तपाईं यसलाई सानो आवाज नमूनामा फाइन ट्यून गर्न सक्नुहुन्छ।",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो मिश्रणले यसलाई सबैभन्दा उत्पादनयोग्य मध्यम आकारको खुला आवाज बनाउँछ।",
+      "text_markdown": "त्यो मिश्रणले यसलाई सबैभन्दा उत्पादनयोग्य मध्यम आकारको खुला आवाज बनाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो मिश्रणले यसलाई सबैभन्दा उत्पादनयोग्य मध्यम आकारको खुला आवाज बनाउँछ।",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र तपाईंले छेडेको उपकरणमै चल्ने क्षमताको त्यो प्रदर्शन?",
+      "text_markdown": "र तपाईंले छेडेको उपकरणमै चल्ने क्षमताको त्यो प्रदर्शन?",
+      "title": "",
+      "tts": {
+        "text": "र तपाईंले छेडेको उपकरणमै चल्ने क्षमताको त्यो प्रदर्शन?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यही नै हो, MOSS-TTS-Nano भनिने मोडेल।",
+      "text_markdown": "त्यही नै हो, MOSS-TTS-Nano भनिने मोडेल।",
+      "title": "",
+      "tts": {
+        "text": "त्यही नै हो, मोस टिटिएस न्यानो भनिने मोडेल।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो सानो छ, लगभग 100 मिलियन प्यारामिटर।",
+      "text_markdown": "यो सानो छ, लगभग 100 मिलियन प्यारामिटर।",
+      "title": "",
+      "tts": {
+        "text": "यो सानो छ, लगभग एक सय मिलियन प्यारामिटर।",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो GPU बिना CPU मा चल्छ — ल्यापटपमा पनि, एक कोरमा।",
+      "text_markdown": "यो GPU बिना CPU मा चल्छ — ल्यापटपमा पनि, एक कोरमा।",
+      "title": "",
+      "tts": {
+        "text": "यो GPU बिना CPU मा चल्छ — ल्यापटपमा पनि, एक कोरमा।",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "फोनमा आवाज पठाउने जो कोहीको लागि, त्यो सपना हो।",
+      "text_markdown": "फोनमा आवाज पठाउने जो कोहीको लागि, त्यो सपना हो।",
+      "title": "",
+      "tts": {
+        "text": "फोनमा आवाज पठाउने जो कोहीको लागि, त्यो सपना हो।",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए यो सबै सकारात्मक छ?",
+      "text_markdown": "त्यसोभए यो सबै सकारात्मक छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए यो सबै सकारात्मक छ?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "होइन — र यहाँ त्यो जालो छ जुन सबैले छुटाउँछन्।",
+      "text_markdown": "होइन — र यहाँ त्यो जालो छ जुन सबैले छुटाउँछन्।",
+      "title": "",
+      "tts": {
+        "text": "होइन — र यहाँ त्यो जालो छ जुन सबैले छुटाउँछन्।",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral ले Voxtral भन्ने राम्रो आवाज मोडल रिलिज गर्‍यो।",
+      "text_markdown": "Mistral ले Voxtral भन्ने राम्रो आवाज मोडल रिलिज गर्‍यो।",
+      "title": "",
+      "tts": {
+        "text": "Mistral ले Voxtral भन्ने राम्रो आवाज मोडल रिलिज गर्‍यो।",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-168",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "वेटहरू खुला छन् र गुणस्तर उत्कृष्ट छ।",
+      "text_markdown": "वेटहरू खुला छन् र गुणस्तर उत्कृष्ट छ।",
+      "title": "",
+      "tts": {
+        "text": "वेटहरू खुला छन् र गुणस्तर उत्कृष्ट छ।",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-169",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तर लाइसेन्स गैर-व्यापारिक छ।",
+      "text_markdown": "तर लाइसेन्स गैर-व्यापारिक छ।",
+      "title": "",
+      "tts": {
+        "text": "तर लाइसेन्स गैर व्यापारिक छ।",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-170",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मतलब तपाईंले यसलाई पठाउन सक्नुहुन्न।",
+      "text_markdown": "मतलब तपाईंले यसलाई पठाउन सक्नुहुन्न।",
+      "title": "",
+      "tts": {
+        "text": "मतलब तपाईंले यसलाई पठाउन सक्नुहुन्न।",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पेड प्रोडक्टमा होइन, सम्झौता बिना होइन।",
+      "text_markdown": "पेड प्रोडक्टमा होइन, सम्झौता बिना होइन।",
+      "title": "",
+      "tts": {
+        "text": "पेड प्रोडक्टमा होइन, सम्झौता बिना होइन।",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खुला वेटहरूको मतलब सधैं तपाईंलाई तिनीहरू प्रयोग गर्न अनुमति छ भन्ने होइन।",
+      "text_markdown": "खुला वेटहरूको मतलब सधैं तपाईंलाई तिनीहरू प्रयोग गर्न अनुमति छ भन्ने होइन।",
+      "title": "",
+      "tts": {
+        "text": "खुला वेटहरूको मतलब सधैं तपाईंलाई तिनीहरू प्रयोग गर्न अनुमति छ भन्ने होइन।",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-173",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "वास्तविक एपको लागि, तपाईंले प्रेममा पर्नु अघि लाइसेन्स पढ्नुहुन्छ।",
+      "text_markdown": "वास्तविक एपको लागि, तपाईंले प्रेममा पर्नु अघि लाइसेन्स पढ्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "वास्तविक एपको लागि, तपाईंले प्रेममा पर्नु अघि लाइसेन्स पढ्नुहुन्छ।",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-174",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र यिनका बारेमा गरिएका कार्यसम्पादन परीक्षणका दाबीहरू कस्ता छन्?",
+      "text_markdown": "र यिनका बारेमा गरिएका कार्यसम्पादन परीक्षणका दाबीहरू कस्ता छन्?",
+      "title": "",
+      "tts": {
+        "text": "र यिनका बारेमा गरिएका कार्यसम्पादन परीक्षणका दाबीहरू कस्ता छन्?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सजिलै विश्वास नगर्नुहोस्।",
+      "text_markdown": "सजिलै विश्वास नगर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "सजिलै विश्वास नगर्नुहोस्।",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यहाँ हरेक नेता-लाई-हराउने दावी भनेको विक्रेताले आफ्नै अन्धो परीक्षण चलाएको हो।",
+      "text_markdown": "यहाँ हरेक नेता-लाई-हराउने दावी भनेको विक्रेताले आफ्नै अन्धो परीक्षण चलाएको हो।",
+      "title": "",
+      "tts": {
+        "text": "यहाँ हरेक नेता लाई हराउने दावी भनेको विक्रेताले आफ्नै अन्धो परीक्षण चलाएको हो।",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तिनीहरूको चार्टमा होइन, आफ्नै कानमा भर पर्नुहोस्।",
+      "text_markdown": "तिनीहरूको चार्टमा होइन, आफ्नै कानमा भर पर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "तिनीहरूको चार्टमा होइन, आफ्नै कानमा भर पर्नुहोस्।",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए यसले हामीलाई कहाँ छोड्छ?",
+      "text_markdown": "त्यसोभए यसले हामीलाई कहाँ छोड्छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए यसले हामीलाई कहाँ छोड्छ?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले हामीलाई साँच्चै नयाँ ठाउँमा छोड्छ।",
+      "text_markdown": "यसले हामीलाई साँच्चै नयाँ ठाउँमा छोड्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले हामीलाई साँच्चै नयाँ ठाउँमा छोड्छ।",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईं आज आफ्नै उपकरणमा उत्कृष्ट आवाज चलाउन सक्नुहुन्छ।",
+      "text_markdown": "तपाईं आज आफ्नै उपकरणमा उत्कृष्ट आवाज चलाउन सक्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईं आज आफ्नै उपकरणमा उत्कृष्ट आवाज चलाउन सक्नुहुन्छ।",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-181",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कठिन प्रश्न अब तपाईं सक्नुहुन्छ कि सक्नुहुन्न भन्ने होइन — यो कुन लाइसेन्सले तपाईंलाई यो राख्न दिन्छ भन्ने हो।",
+      "text_markdown": "कठिन प्रश्न अब तपाईं सक्नुहुन्छ कि सक्नुहुन्न भन्ने होइन — यो कुन लाइसेन्सले तपाईंलाई यो राख्न दिन्छ भन्ने हो।",
+      "title": "",
+      "tts": {
+        "text": "कठिन प्रश्न अब तपाईं सक्नुहुन्छ कि सक्नुहुन्न भन्ने होइन — यो कुन लाइसेन्सले तपाईंलाई यो राख्न दिन्छ भन्ने हो।",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-182",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो कथालाई अवतरण गराउने राम्रो नोट हो।",
+      "text_markdown": "त्यो कथालाई अवतरण गराउने राम्रो नोट हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो कथालाई अवतरण गराउने राम्रो नोट हो।",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-183",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हामी यो हप्तालाई फर्केर हेरौं।",
+      "text_markdown": "हामी यो हप्तालाई फर्केर हेरौं।",
+      "title": "",
+      "tts": {
+        "text": "हामी यो हप्तालाई फर्केर हेरौं।",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-184",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तपाईंले न्यूरल अडियो कोडेकहरू छनौट गर्नुभयो।",
+      "text_markdown": "तपाईंले न्यूरल अडियो कोडेकहरू छनौट गर्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले न्यूरल अडियो कोडेकहरू छनौट गर्नुभयो।",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-185",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मैले गरें, किनभने यो हरेक ऑन-डिभाइस आवाज पछाडि लुकेको चाल हो।",
+      "text_markdown": "मैले गरें, किनभने यो हरेक ऑन-डिभाइस आवाज पछाडि लुकेको चाल हो।",
+      "title": "",
+      "tts": {
+        "text": "मैले गरें, किनभने यो हरेक ऑन डिभाइस आवाज पछाडि लुकेको चाल हो।",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कच्चा अडियो ठूलो हुन्छ — केही सेकेन्ड लाखौं संख्या हो।",
+      "text_markdown": "कच्चा अडियो ठूलो हुन्छ — केही सेकेन्ड लाखौं संख्या हो।",
+      "title": "",
+      "tts": {
+        "text": "कच्चा अडियो ठूलो हुन्छ — केही सेकेन्ड लाखौं संख्या हो।",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "फोनले त्यो सबै वास्तविक समयमा मोडलमा स्ट्रिम गर्न सक्दैन।",
+      "text_markdown": "फोनले त्यो सबै वास्तविक समयमा मोडलमा स्ट्रिम गर्न सक्दैन।",
+      "title": "",
+      "tts": {
+        "text": "फोनले त्यो सबै वास्तविक समयमा मोडलमा स्ट्रिम गर्न सक्दैन।",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-188",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए कोडेकले के गर्छ?",
+      "text_markdown": "त्यसोभए कोडेकले के गर्छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए कोडेकले के गर्छ?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-189",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले त्यो अडियोलाई टोकनहरूको सानो स्ट्रिममा कुच्न सिक्दै जान्छ।",
+      "text_markdown": "यसले त्यो अडियोलाई टोकनहरूको सानो स्ट्रिममा कुच्न सिक्दै जान्छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले त्यो अडियोलाई टोकनहरूको सानो स्ट्रिममा कुच्न सिक्दै जान्छ।",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसलाई आवाजको लागि स्मार्ट जिप फाइल सम्झनुहोस्।",
+      "text_markdown": "यसलाई आवाजको लागि स्मार्ट जिप फाइल सम्झनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "यसलाई आवाजको लागि स्मार्ट जिप फाइल सम्झनुहोस्।",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mimi भनिने खुला एउटाले प्रति सेकेन्ड लगभग एक किलोबिटसम्म झार्छ।",
+      "text_markdown": "Mimi भनिने खुला एउटाले प्रति सेकेन्ड लगभग एक किलोबिटसम्म झार्छ।",
+      "title": "",
+      "tts": {
+        "text": "Mimi भनिने खुला एउटाले प्रति सेकेन्ड लगभग एक किलोबिटसम्म झार्छ।",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो वास्तवमा कत्ति सानो छ?",
+      "text_markdown": "त्यो वास्तवमा कत्ति सानो छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यो वास्तवमा कत्ति सानो छ?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-193",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "लाखौंको सट्टा, प्रति सेकेन्ड साना संख्याहरू केही सय मात्रै हुन्छन्।",
+      "text_markdown": "लाखौंको सट्टा, प्रति सेकेन्ड साना संख्याहरू केही सय मात्रै हुन्छन्।",
+      "title": "",
+      "tts": {
+        "text": "लाखौंको सट्टा, प्रति सेकेन्ड साना संख्याहरू केही सय मात्रै हुन्छन्।",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यसले अझै पनि आवाजलाई पुनर्निर्माण गर्छ ताकि यो प्राकृतिक लागोस्।",
+      "text_markdown": "र यसले अझै पनि आवाजलाई पुनर्निर्माण गर्छ ताकि यो प्राकृतिक लागोस्।",
+      "title": "",
+      "tts": {
+        "text": "र यसले अझै पनि आवाजलाई पुनर्निर्माण गर्छ ताकि यो प्राकृतिक लागोस्।",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आवाज मोडलको लागि यो किन महत्त्वपूर्ण छ?",
+      "text_markdown": "आवाज मोडलको लागि यो किन महत्त्वपूर्ण छ?",
+      "title": "",
+      "tts": {
+        "text": "आवाज मोडलको लागि यो किन महत्त्वपूर्ण छ?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-196",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने मोडलले कच्चा आवाजमा होइन, ती टोकनहरूमा बोल्छ।",
+      "text_markdown": "किनभने मोडलले कच्चा आवाजमा होइन, ती टोकनहरूमा बोल्छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने मोडलले कच्चा आवाजमा होइन, ती टोकनहरूमा बोल्छ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-197",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कम टोकन हुनुको अर्थ प्रत्येक शब्दका लागि कम गणना आवश्यक पर्छ।",
+      "text_markdown": "कम टोकन हुनुको अर्थ प्रत्येक शब्दका लागि कम गणना आवश्यक पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "कम टोकन हुनुको अर्थ प्रत्येक शब्दका लागि कम गणना आवश्यक पर्छ।",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-198",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यही कुराले राम्रो आवाजलाई फोनमा, अफलाइनमा चलाउन दिन्छ।",
+      "text_markdown": "यही कुराले राम्रो आवाजलाई फोनमा, अफलाइनमा चलाउन दिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यही कुराले राम्रो आवाजलाई फोनमा, अफलाइनमा चलाउन दिन्छ।",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-199",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले कोडेकले फ्लोर सेट गर्छ।",
+      "text_markdown": "त्यसैले कोडेकले फ्लोर सेट गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले कोडेकले फ्लोर सेट गर्छ।",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-200",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बिल्कुल, यसले विलम्बता र बिटरेट सेट गर्छ जुन अन्तर्गत अरू सबै कुरा बस्छ।",
+      "text_markdown": "बिल्कुल, यसले विलम्बता र बिटरेट सेट गर्छ जुन अन्तर्गत अरू सबै कुरा बस्छ।",
+      "title": "",
+      "tts": {
+        "text": "बिल्कुल, यसले विलम्बता र बिटरेट सेट गर्छ जुन अन्तर्गत अरू सबै कुरा बस्छ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-201",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खुला भएकाहरू, मिमी र SNAC भनिने एक काका/काकी, नयाँ वाक् मोडलहरूले निर्माण गर्ने आधार हुन्।",
+      "text_markdown": "खुला भएकाहरू, मिमी र SNAC भनिने एक काका/काकी, नयाँ वाक् मोडलहरूले निर्माण गर्ने आधार हुन्।",
+      "title": "",
+      "tts": {
+        "text": "खुला भएकाहरू, मिमी र SNAC भनिने एक काका/काकी, नयाँ वाक् मोडलहरूले निर्माण गर्ने आधार हुन्।",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-202",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "जब तपाईं सानो उपकरणमा भएको आवाजलाई भेट्नुहुन्छ, त्यस्तो कोडेक त्यसको मुनि हुन्छ।",
+      "text_markdown": "जब तपाईं सानो उपकरणमा भएको आवाजलाई भेट्नुहुन्छ, त्यस्तो कोडेक त्यसको मुनि हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "जब तपाईं सानो उपकरणमा भएको आवाजलाई भेट्नुहुन्छ, त्यस्तो कोडेक त्यसको मुनि हुन्छ।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-203",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले सुन्न सक्ने कम्प्रेसन — त्यो नै मौन सफलता हो।",
+      "text_markdown": "तपाईंले सुन्न सक्ने कम्प्रेसन — त्यो नै मौन सफलता हो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले सुन्न सक्ने कम्प्रेसन — त्यो नै मौन सफलता हो।",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-204",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अवतरण गर्न राम्रो ठाउँ।",
+      "text_markdown": "अवतरण गर्न राम्रो ठाउँ।",
+      "title": "",
+      "tts": {
+        "text": "अवतरण गर्न राम्रो ठाउँ।",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-205",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "रोन, तपाईंलाई धेरै धेरै धन्यवाद भन्न चाहन्छु।",
+      "text_markdown": "रोन, तपाईंलाई धेरै धेरै धन्यवाद भन्न चाहन्छु।",
+      "title": "",
+      "tts": {
+        "text": "रोन, तपाईंलाई धेरै धेरै धन्यवाद भन्न चाहन्छु।",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-206",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "जहिले पनि, भिन्डी।",
+      "text_markdown": "जहिले पनि, भिन्डी।",
+      "title": "",
+      "tts": {
+        "text": "जहिले पनि, भिन्डी।",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-207",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मे 27, 2026 को AI This Week यत्तिमै टुंग्याउँछौँ।",
+      "text_markdown": "मे 27, 2026 को AI This Week यत्तिमै टुंग्याउँछौँ।",
+      "title": "",
+      "tts": {
+        "text": "मे सत्ताईस, दुई हजार छब्बीसको एआई दिस विक यत्तिमै टुंग्याउँछौँ।",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-208",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अर्को बुधबार नयाँ अंक प्रकाशित हुनेछ।",
+      "text_markdown": "अर्को बुधबार नयाँ अंक प्रकाशित हुनेछ।",
+      "title": "",
+      "tts": {
+        "text": "अर्को बुधबार नयाँ अंक प्रकाशित हुनेछ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-209",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यतिन्जेल, ख्याल गर्नुहोस्।",
+      "text_markdown": "त्यतिन्जेल, ख्याल गर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यतिन्जेल, ख्याल गर्नुहोस्।",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

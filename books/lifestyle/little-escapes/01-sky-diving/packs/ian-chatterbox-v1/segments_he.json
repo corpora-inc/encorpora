@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "המשיכה",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הַמְשִׁיכָה",
+      "text_markdown": "המשיכה"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יֵשׁ רֶגַע, מִיָּד אַחֲרֵי שֶׁאַתָּה עוֹזֵב אֶת הַמָּטוֹס, שֶׁאֲנִי הָיִיתִי רוֹצֶה לָתֵת לְךָ בְמַתָּנָה.",
+      "text_markdown": "יש רגע, מיד אחרי שאתה עוזב את המטוס, שאני הייתי רוצה לתת לך במתנה.",
+      "tts": {
+        "text": "יֵשׁ רֶגַע, מִיָּד אַחֲרֵי שֶׁאַתָּה עוֹזֵב אֶת הַמָּטוֹס, שֶׁאֲנִי הָיִיתִי רוֹצֶה לָתֵת לְךָ בְמַתָּנָה.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הָעוֹלָם מַפְסִיק לִהְיוֹת דָּבָר שֶׁאַתָּה חַי בְתוֹכוֹ.",
+      "text_markdown": "העולם מפסיק להיות דבר שאתה חי בתוכו.",
+      "tts": {
+        "text": "הָעוֹלָם מַפְסִיק לִהְיוֹת דָּבָר שֶׁאַתָּה חַי בְתוֹכוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוּא הוֹפֵךְ לְדָבָר שֶׁאַתָּה נוֹפֵל דְרָכוֹ.",
+      "text_markdown": "הוא הופך לדבר שאתה נופל דרכו.",
+      "tts": {
+        "text": "הוּא הוֹפֵךְ לְדָבָר שֶׁאַתָּה נוֹפֵל דְרָכוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "וּבְמֶשֶׁךְ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת, הַשֵּׂכֶל שֶׁלְּךָ לֹא מַמָּשׁ מַסְפִּיק לְהָבִין מָה הַגּוּף שֶׁלְּךָ הַרֶגַע עָשָׂה.",
+      "text_markdown": "ובמשך השניות הראשונות, השכל שלך לא ממש מספיק להבין מה הגוף שלך הרגע עשה.",
+      "tts": {
+        "text": "וּבְמֶשֶׁךְ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת, הַשֵּׂכֶל שֶׁלְּךָ לֹא מַמָּשׁ מַסְפִּיק לְהָבִין מָה הַגּוּף שֶׁלְּךָ הַרֶגַע עָשָׂה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אֲנָשִׁים שׁוֹאֲלִים אוֹתִי לָמָּה אֲנִי קוֹפֵץ.",
+      "text_markdown": "אנשים שואלים אותי למה אני קופץ.",
+      "tts": {
+        "text": "אֲנָשִׁים שׁוֹאֲלִים אוֹתִי לָמָּה אֲנִי קוֹפֵץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הֵם תָּמִיד מְצַפִּים שֶׁאֲנִי אֹמַר שֶׁזֶּה הָאַדְרֵנָלִין.",
+      "text_markdown": "הם תמיד מצפים שאני אגיד שזה האדרנלין.",
+      "tts": {
+        "text": "הֵם תָּמִיד מְצַפִּים שֶׁאֲנִי אֹמַר שֶׁזֶּה הָאַדְרֵנָלִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זֶה לֹא הָאַדְרֵנָלִין.",
+      "text_markdown": "זה לא האדרנלין.",
+      "tts": {
+        "text": "זֶה לֹא הָאַדְרֵנָלִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הָאַדְרֵנָלִין הוּא מָה שֶׁאַתָּה מַרְגִּישׁ בַּחֲמֵשׁ הַקְּפִיצוֹת הָרִאשׁוֹנוֹת שֶׁלְּךָ.",
+      "text_markdown": "האדרנלין הוא מה שאתה מרגיש בחמש הקפיצות הראשונות שלך.",
+      "tts": {
+        "text": "הָאַדְרֵנָלִין הוּא מָה שֶׁאַתָּה מַרְגִּישׁ בַּחֲמֵשׁ הַקְּפִיצוֹת הָרִאשׁוֹנוֹת שֶׁלְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַחֲרֵי זֶה, מִשְׁהוּ שָׁקֵט יוֹתֵר מִשְׁתַּלֵּט.",
+      "text_markdown": "אחרי זה, משהו שקט יותר משתלט.",
+      "tts": {
+        "text": "אַחֲרֵי זֶה, מִשְׁהוּ שָׁקֵט יוֹתֵר מִשְׁתַּלֵּט.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מַה שְׁאֲנִי רוֹדֵף אַחֲרָיו זוֹאת הַצְּלִילוּת.",
+      "text_markdown": "מה שאני רודף אחריו זאת הצלילות.",
+      "tts": {
+        "text": "מָה שֶׁאֲנִי רוֹדֵף אַחֲרָיו זֹאת הַצְּלִילוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בְּמִשְׁךְ שִׁשִּׁים שְׁנִיּוֹת בִּנְפִילָה חוּפְשִׁית, לְשִׂכְלְךָ אֵין שׁוּם דָּבָר אַחֵר לַעֲשׂוֹת.",
+      "text_markdown": "במשך שישים שניות בנפילה חופשית, לשכל שלך אין שום דבר אחר לעשות.",
+      "tts": {
+        "text": "בְּמִשְׁךְ שִׁשִּׁים שְׁנִיּוֹת בִּנְפִילָה חוּפְשִׁית, לְשִׂכְלְךָ אֵין שׁוּם דָּבָר אַחֵר לַעֲשׂוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אֵין טֵלֵפוֹן.",
+      "text_markdown": "אין טלפון.",
+      "tts": {
+        "text": "אֵין טֵלֵפוֹן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אֵין חֶשְׁבּוֹנוֹת.",
+      "text_markdown": "אין חשבונות.",
+      "tts": {
+        "text": "אֵין חֶשְׁבּוֹנוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אֵין דְּאָגָה קְטַנָּה לְגַבֵּי מָחָר.",
+      "text_markdown": "אין דאגה קטנה לגבי מחר.",
+      "tts": {
+        "text": "אֵין דְּאָגָה קְטַנָּה לְגַבֵּי מָחָר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "רַק הָרוּחַ, הַנְּשִׁימָה שְׁלְךָ, וְהָעִקּוּל הָאִיטִי שֶׁל כְּדוּר הָאָרֶץ מִתַּחְתֶּיךָ.",
+      "text_markdown": "רק הרוח, הנשימה שלך, והעיקול האיטי של כדור הארץ מתחתיך.",
+      "tts": {
+        "text": "רַק הָרוּחַ, הַנְּשִׁימָה שְׁלְךָ, וְהָעִקּוּל הָאִיטִי שֶׁל כְּדוּר הָאָרֶץ מִתַּחְתֶּיךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "רוֹב הַחַיִּים רוֹעֲשִׁים.",
+      "text_markdown": "רוב החיים רועשים.",
+      "tts": {
+        "text": "רוֹב הַחַיִּים רוֹעֲשִׁים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "הַדָּקָה הַזֹּאת לֹא.",
+      "text_markdown": "הדקה הזאת לא.",
+      "tts": {
+        "text": "הַדָּקָה הַזֹּאת לֹא.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צַנְחָנִים אֵינָם מְשׁוּגָּעִים.",
+      "text_markdown": "צנחנים אינם משוגעים.",
+      "tts": {
+        "text": "צַנְחָנִים אֵינָם מְשׁוּגָּעִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רוֹבְנוּ אֲנָשִׁים רְגוּעִים שֶׁמָּצְאוּ דֶּרֶךְ לְהַרְגִּישׁ רְגוּעִים מְהַר יוֹתֵר.",
+      "text_markdown": "רובנו אנשים רגועים שמצאו דרך להרגיש רגועים מהר יותר.",
+      "tts": {
+        "text": "רוֹבְנוּ אֲנָשִׁים רְגוּעִים שֶׁמָּצְאוּ דֶּרֶךְ לְהַרְגִּישׁ רְגוּעִים מְהַר יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אָנַחְנוּ קוֹפְצִים מִמְטוּסִים כְּמוֹ שְׁאַחֲרִים מוֹדְטִים.",
+      "text_markdown": "אנחנו קופצים ממטוסים כמו שאחרים מודטים.",
+      "tts": {
+        "text": "אָנַחְנוּ קוֹפְצִים מִמְּטוּסִים כְּמוֹ שְׁאַחֵרִים מוֹדִטִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זֶה מְנַקֶּה מִשְׁהוּ.",
+      "text_markdown": "זה מנקה משהו.",
+      "tts": {
+        "text": "זֶה מְנַקֶּה מִשְׁהוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "וְאָז, בְּכָל סוֹף שָׁבוּעַ, זֶה מְנַקֶּה אֶת זֶה שׁוּב.",
+      "text_markdown": "ואז, בכל סוף שבוע, זה מנקה את זה שוב.",
+      "tts": {
+        "text": "וְאָז, בְּכָל סוֹף שָׁבוּעַ, זֶה מְנַקֶּה אֶת זֶה שׁוּב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בְּפַעַם הָרִאשׁוֹנָה שְׁרָאִיתִי מִצְנָח נִפְתַּח מֵעָלַי, בָּכִיתִי לְתוֹךְ הָרְתָמָה.",
+      "text_markdown": "בפעם הראשונה שראיתי מצנח נפתח מעלי, בכיתי לתוך הרתמה.",
+      "tts": {
+        "text": "בְּפַעַם הָרִאשׁוֹנָה שְׁרָאִיתִי מִצְנָח נִפְתַּח מֵעָלַי, בָּכִיתִי לְתוֹךְ הָרְתָמָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לֹא צִפִּיתִי לָזֶה.",
+      "text_markdown": "לא ציפיתי לזה.",
+      "tts": {
+        "text": "לֹא צִפִּיתִי לָזֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מְבוּגָר, תָּלוּי בַּשָּׁמַיִם מִתַּחַת לִרְבוּעַ שֶׁל בַּד רַךְ, בּוֹכֶה בְּלִי שׁוּם סִבָּה שֶׁיָּכוֹל לְהַסְבִּיר.",
+      "text_markdown": "מבוגר, תלוי בשמיים מתחת לריבוע של בד רך, בוכה בלי שום סיבה שיכול להסביר.",
+      "tts": {
+        "text": "מְבוּגָר, תָּלוּי בַּשָּׁמַיִם מִתַּחַת לִרְבוּעַ שֶׁל בַּד רַךְ, בּוֹכֶה בְּלִי שׁוּם סִבָּה שֶׁיָּכוֹל לְהַסְבִּיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הַמְדַרִּיךְ שֶׁלִּי צָחַק בְּעֲדִינוּת וְטָפַח לִי עַל הַכָּתֵף.",
+      "text_markdown": "המדריך שלי צחק בעדינות וטפח לי על הכתף.",
+      "tts": {
+        "text": "הַמְדַרִּיךְ שֶׁלִּי צָחַק בְּעֲדִינוּת וְטָפַח לִי עַל הַכָּתֵף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוּא רָאָה אֶת זֶה הַרְבֵּה פְּעָמִים.",
+      "text_markdown": "הוא ראה את זה הרבה פעמים.",
+      "tts": {
+        "text": "הוּא רָאָה אֶת זֶה הַרְבֵּה פְּעָמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "זֶה הָיָה הָרֶגַע שְׁבּוֹ יָדַעְתִּי שֶׁאֲנִי אַחְזוֹר.",
+      "text_markdown": "זה היה הרגע שבו ידעתי שאני אחזור.",
+      "tts": {
+        "text": "זֶה הָיָה הָרֶגַע שְׁבּוֹ יָדַעְתִּי שֶׁאֲנִי אַחְזוֹר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צְנִיחָה חוּפְשִׁית לֹא נוֹגַעַת בְּאוּמֶץ.",
+      "text_markdown": "צניחה חופשית לא נוגעת באומץ.",
+      "tts": {
+        "text": "צְנִיחָה חוּפְשִׁית לֹא נוֹגַעַת בְּאוּמֶץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הִיא נוֹגַעַת בִּמְצִיאַת הַמָּקוֹם הַיָּחִיד שֶׁבּוֹ הַשִּׁכֵּל שֶׁלְּךָ מִשְׁתָּתֵּק.",
+      "text_markdown": "היא נוגעת במציאת המקום היחיד שבו השכל שלך משתתק.",
+      "tts": {
+        "text": "הִיא נוֹגַעַת בְּמְצִיאַת הַמָּקוֹם הַיָּחִיד שְׁבּוֹ הַשֵּׂכֶל שֶׁלְּךָ מִשְׁתַּתֵּק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אֶצֶל חֵלֶק מֵהָאֲנָשִׁים, הַמָּקוֹם הַזֶּה הוּא מִזְרַן יוֹגָה.",
+      "text_markdown": "אצל חלק מהאנשים, המקום הזה הוא מזרון יוגה.",
+      "tts": {
+        "text": "אֶצֶל חֵלֶק מֵהָאֲנָשִׁים, הַמָּקוֹם הַזֶּה הוּא מִזְרַן יוֹגָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אֶצֶל חֵלֶק, זֶה רִיצָה אֲרוּכָה עַל כְּבִישׁ רִיק.",
+      "text_markdown": "אצל חלק, זה ריצה ארוכה על כביש ריק.",
+      "tts": {
+        "text": "אֶצֶל חֵלֶק, זֶה רִיצָה אֲרוּכָה עַל כְּבִישׁ רִיק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אֶצֶל חֵלֶק, זֶה חַכַּת דַּיָּג, אוֹ פְּסַנְתֵּר, אוֹ מִטְבַּח בְּשֵׁשׁ בַּבּוֹקֶר.",
+      "text_markdown": "אצל חלק, זה חכת דייג, או פסנתר, או מטבח בשש בבוקר.",
+      "tts": {
+        "text": "אֶצֶל חֵלֶק, זֶה חַכַּת דַּיָּג, אוֹ פְּסַנְתֵּר, אוֹ מִטְבַּח בְּשֵׁשׁ בַּבּוֹקֶר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אֶצְלִי, זֶה שְׁלוֹשָׁה עָשָׂר אֶלֶף רֶגֶל מֵעַל הַקַּרְקַע, בְּלִי שׁוּם דָּבָר לַעֲשׂוֹת חוּץ מִלִּנְשׁוֹם.",
+      "text_markdown": "אצלי, זה שלושה עשר אלף רגל מעל הקרקע, בלי שום דבר לעשות חוץ מלנשום.",
+      "tts": {
+        "text": "אֶצְלִי, זֶה שְׁלוֹשָׁה עָשָׂר אֶלֶף רֶגֶל מֵעַל הַקַּרְקַע, בְּלִי שׁוּם דָּבָר לַעֲשׂוֹת חוּץ מִלִּנְשׁוֹם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמְשִׁיכָה, בְּרֶגַע שֶׁאַתָּה מַרְגִּישׁ אוֹתָהּ, קָשָׁה לְתַאֵר אוֹתָהּ לַחָבֵר בַּאֲרוּחַת עֶרֶב.",
+      "text_markdown": "המשיכה, ברגע שאתה מרגיש אותה, קשה לתאר אותה לחבר בארוחת ערב.",
+      "tts": {
+        "text": "הַמְשִׁיכָה, בְּרֶגַע שֶׁאַתָּה מַרְגִּישׁ אוֹתָהּ, קָשָׁה לְתַאֵר אוֹתָהּ לַחָבֵר בַּאֲרוּחַת עֶרֶב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה תִּנְסֶה, וְהֵם יַחְיִיכוּ בְּנִימּוּס, וְאַתָּה תּוּותֵר.",
+      "text_markdown": "אתה תנסה, והם יחייכו בנימוס, ואתה תוותר.",
+      "tts": {
+        "text": "אַתָּה תִּנְסֶה, וְהֵם יַחְיִיכוּ בְּנִימּוּס, וְאַתָּה תּוּותֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "וְזֶה בְּסֵדֶר.",
+      "text_markdown": "וזה בסדר.",
+      "tts": {
+        "text": "וְזֶה בְּסֵדֶר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "לֹא הִתְחַלְתָּ לִקְפֹּץ כְּדֵי לְהַסְבִּיר אֶת זֶה.",
+      "text_markdown": "לא התחלת לקפוץ כדי להסביר את זה.",
+      "tts": {
+        "text": "לֹא הִתְחַלְתָּ לִקְפֹּץ כְּדֵי לְהַסְבִּיר אֶת זֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הִתְחַלְתָּ לִקְפֹּץ כִּי בְּפַעַם הָרִאשׁוֹנָה שֶׁנִּסִּיתָ, מַשֶּׁהוּ בְּתוֹכְךָ אָמַר, אֶה, הִנֵּה אַתָּה.",
+      "text_markdown": "התחלת לקפוץ כי בפעם הראשונה שניסית, משהו בתוכך אמר, אה, הנה אתה.",
+      "tts": {
+        "text": "הִתְחַלְתָּ לִקְפֹּץ כִּי בְּפַעַם הָרִאשׁוֹנָה שֶׁנִּסִּיתָ, מַשֶּׁהוּ בְּתוֹכְךָ אָמַר, אֶה, הִנֵּה אַתָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַאִם אַי פַּעַם עָמַדְתָּ עַל קְצֵה שֶׁל מָשֶׁהוּ גָּבוֹהַּ וְהִרְגַּשְׁתָּ אֶת הַגּוּף שֶׁלְּךָ נוֹטֶה לְכִיוּן הָאָוִויר הַפָּתוּחַ?",
+      "text_markdown": "האם אי פעם עמדת על קצה של משהו גבוה והרגשת את הגוף שלך נוטה לכיוון האוויר הפתוח?",
+      "tts": {
+        "text": "הַאִם אֵי פַּעַם עָמַדְתָּ עַל קָצֶה שֶׁל מַשֶּׁהוּ גָּבוֹהַּ וְהִרְגַּשְׁתָּ אֶת הַגּוּף שֶׁלְּךָ נוֹטֶה לְכִיוּן הָאֲוִיר הַפָּתוּחַ?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רַק קְצַת, רַק לִשְׁנִיָּה.",
+      "text_markdown": "רק קצת, רק לשנייה.",
+      "tts": {
+        "text": "רַק קְצַת, רַק לִשְׁנִיָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אִם כֵּן, אַתָּה כְּבָר יוֹדֵעַ עַל מָה אֲנִי מְדַבֵּר.",
+      "text_markdown": "אם כן, אתה כבר יודע על מה אני מדבר.",
+      "tts": {
+        "text": "אִם כֵּן, אַתָּה כְּבָר יוֹדֵעַ עַל מָה אֲנִי מְדַבֵּר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "צְנִיחָה חוּפְשִׁית הִיא מָה שֶׁקּוֹרֶה כְּשָׁאַתָּה מַפְסִיק לְהַעֲמִיד פָּנִים שֶׁאַתָּה לֹא נוֹטֶה.",
+      "text_markdown": "צניחה חופשית היא מה שקורה כשאתה מפסיק להעמיד פנים שאתה לא נוטה.",
+      "tts": {
+        "text": "צְנִיחָה חוּפְשִׁית הִיא מָה שֶׁקּוֹרֶה כְּשָׁאַתָּה מַפְסִיק לְהַעֲמִיד פָּנִים שֶׁאַתָּה לֹא נוֹטֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה צוֹעֵד הַחוּצָה, בְּכַוָּנָה, אֶל הַמָּקוֹם שֶׁהַגּוּף שֶׁלְּךָ שׁוֹאֵל עָלָיו בִּשְׁקֵט בְּמִשְׁךְ שָׁנִים.",
+      "text_markdown": "אתה צועד החוצה, בכוונה, אל המקום שהגוף שלך שואל עליו בשקט במשך שנים.",
+      "tts": {
+        "text": "אַתָּה צוֹעֵד הַחוּצָה, בְּכַוָּנָה, אֶל הַמָּקוֹם שֶׁהַגּוּף שֶׁלְּךָ שׁוֹאֵל עָלָיו בִּשְׁקֵט בְּמִשְׁךְ שָׁנִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "וְאָז, מְהִר מְאֹד, אַתָּה לוֹמֵד שֶׁהַפַּחַד מֵעוֹלָם לֹא הָיָה בַּקַּרְקַע.",
+      "text_markdown": "ואז, מהר מאוד, אתה לומד שהפחד מעולם לא היה בקרקע.",
+      "tts": {
+        "text": "וְאָז, מְהִר מְאֹד, אַתָּה לוֹמֵד שֶׁהַפַּחַד מֵעוֹלָם לֹא הָיָה בַּקַּרְקַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַפַּחַד הָיָה בַּנְּטִיָּה.",
+      "text_markdown": "הפחד היה בנטייה.",
+      "tts": {
+        "text": "הַפַּחַד הָיָה בַּנְּטִיָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בְּרֶגַע שֶׁאַתָּה קוֹפֵץ, הַפַּחַד נֶעֱלָם.",
+      "text_markdown": "ברגע שאתה קופץ, הפחד נעלם.",
+      "tts": {
+        "text": "בְּרֶגַע שֶׁאַתָּה קוֹפֵץ, הַפַּחַד נֶעֱלָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "מָה שֶׁנִּשְׁאַר זֶה מָשֶׁהוּ כִּמְעַט כְּמוֹ בַּיִת.",
+      "text_markdown": "מה שנשאר זה משהו כמעט כמו בית.",
+      "tts": {
+        "text": "מָה שֶׁנִּשְׁאַר זֶה מָשֶׁהוּ כִּמְעַט כְּמוֹ בַּיִת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַלֵּב שֶׁלְּךָ מְאַט.",
+      "text_markdown": "הלב שלך מאט.",
+      "tts": {
+        "text": "הַלֵּב שֶׁלְּךָ מְאַט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הַנְּשִׁימָה שֶׁלְּךָ מוֹצָאת קֶצֶב שֶׁהִיא חִפְּשָׁה.",
+      "text_markdown": "הנשימה שלך מוצאת קצב שהיא חיפשה.",
+      "tts": {
+        "text": "הַנְּשִׁימָה שֶׁלְּךָ מוֹצְאָה קֶצֶב שֶׁהִיא חִפְּשָׂה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הָאוֹוִיר אוֹחֵז בָּךְ.",
+      "text_markdown": "האוויר אוחז בך.",
+      "tts": {
+        "text": "הָאוֹוִיר אוֹחֵז בָּךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "וְאַתָּה מַרְגִּישׁ, אוּלַי בַּפַּעַם הָרִאשׁוֹנָה מִזֶּה זְמַן רַב, שְׁאַתָּה בְּדִיוּק הַיכָן שְׁאַתָּה.",
+      "text_markdown": "ואתה מרגיש, אולי בפעם הראשונה מזה זמן רב, שאתה בדיוק היכן שאתה.",
+      "tts": {
+        "text": "וְאַתָּה מַרְגִּישׁ, אוּלַי בַּפַּעַם הָרִאשׁוֹנָה מִזֶּה זְמַן רַב, שְׁאַתָּה בְּדִיוּק הַיכָן שְׁאַתָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זֶה מַה שְׁהָיִיתִי אוֹמֵר לְךָ, אִם הָיִיתָ שׁוֹאֵל אוֹתִי בְּטִיּוּל אָרוּךְ.",
+      "text_markdown": "זה מה שהייתי אומר לך, אם היית שואל אותי בטיול ארוך.",
+      "tts": {
+        "text": "זֶה מַה שְׁהָיִיתִי אוֹמֵר לְךָ, אִם הָיִיתָ שׁוֹאֵל אוֹתִי בְּטִיּוּל אָרוּךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לָמָּה אָדָם רָגוּעַ וְהִגְיוֹנִי מַמְשִׁיךְ לִקְפּוֹץ מִמְּטוּסִים תְּקִינִים לְחַלּוּטִין?",
+      "text_markdown": "למה אדם רגוע והגיוני ממשיך לקפוץ ממטוסים תקינים לחלוטין?",
+      "tts": {
+        "text": "לָמָּה אָדָם רָגוּעַ וְהִגְיוֹנִי מַמְשִׁיךְ לִקְפּוֹץ מִמְּטוּסִים תְּקִינִים לְחַלּוּטִין?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הָיִיתִי אוֹמֵר לְךָ שֶׁזֶּה הַדָּבָר הַכִּי שָׁקֵט שְׁאַנִי עוֹשֶׂה.",
+      "text_markdown": "הייתי אומר לך שזה הדבר הכי שקט שאני עושה.",
+      "tts": {
+        "text": "הָיִיתִי אוֹמֵר לְךָ שֶׁזֶּה הַדָּבָר הַכִּי שָׁקֵט שְׁאַנִי עוֹשֶׂה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "וְהָיִיתִי מִתְכַּוֵּן לְזֶה.",
+      "text_markdown": "והייתי מתכוון לזה.",
+      "tts": {
+        "text": "וְהָיִיתִי מִתְכַּוֵּן לְזֶה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "הפעם הראשונה",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הַפַּעַם הָרִאשׁוֹנָה",
+      "text_markdown": "הפעם הראשונה"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תֵּן לִי לָשִׂים אוֹתְךָ בְּתוֹךְ הַמְּטוּס.",
+      "text_markdown": "תן לי לשים אותך בתוך המטוס.",
+      "tts": {
+        "text": "תֵּן לִי לָשִׂים אוֹתְךָ בְּתוֹךְ הַמְּטוּס.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַתָּה יוֹשֵׁב עַל סַפְסַל מַתֶּכֶת נָמוּךְ, רָתוּם לְמַדְרִיךְ מֵאַחוֹרֶיךָ.",
+      "text_markdown": "אתה יושב על ספסל מתכת נמוך, רתום למדריך מאחוריך.",
+      "tts": {
+        "text": "אַתָּה יוֹשֵׁב עַל סַפְסַל מַתֶּכֶת נָמוּךְ, רָתוּם לְמַדְרִיךְ מֵאַחוֹרֶיךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַמְּטוּס מְטַפֵּס בִּמְעַגְּלִים אִיטִיִּים וְעָצְלָנִים.",
+      "text_markdown": "המטוס מטפס במעגלים איטיים ועצלים.",
+      "tts": {
+        "text": "הַמְּטוּס מְטַפֵּס בִּמְעַגְּלִים אִיטִיִּים וְעָצְלָנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַחַלּוֹן הַמְרֻבָּע הַקָּטָן לִידְךָ נַעֲשָׂה כָּחוֹל וְעוֹד יוֹתֵר כָּחוֹל.",
+      "text_markdown": "החלון המרובע הקטן לידך נעשה כחול ועוד יותר כחול.",
+      "tts": {
+        "text": "הַחַלּוֹן הַמְרֻבָּע הַקָּטָן לִידְךָ נַעֲשָׂה כָּחוֹל וְעוֹד יוֹתֵר כָּחוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מַרְגִּישׁ אֶת הַלֵּב בִּגְרוֹנְךָ, אֲבָל אַתָּה לֹא בְפָאנִיקָה.",
+      "text_markdown": "אתה מרגיש את הלב בגרונך, אבל אתה לא בפאניקה.",
+      "tts": {
+        "text": "אַתָּה מַרְגִּישׁ אֶת הַלֵּב בִּגְרוֹנְךָ, אֲבָל אַתָּה לֹא בְפָאנִיקָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה פָּשׁוּט מְאֹד, מְאֹד עֵרְנִי.",
+      "text_markdown": "אתה פשוט מאוד, מאוד ערני.",
+      "tts": {
+        "text": "אַתָּה פָּשׁוּט מְאֹד, מְאֹד עֵרְנִי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמְדַרִּיךְ מִתְקָרֵב לְאֹזֶן שֶׁלְּךָ.",
+      "text_markdown": "המדריך מתקרב לאוזן שלך.",
+      "tts": {
+        "text": "הַמְדַרִּיךְ מִתְקָרֵב לְאֹזֶן שֶׁלְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוּא אוֹמֵר לְךָ, בִּרְגִיעוּת, שֶׁכָּל מָה שֶׁאַתָּה צָרִיךְ לַעֲשׂוֹת, הוּא יַגִּיד לְךָ מָתַי.",
+      "text_markdown": "הוא אומר לך, ברוגע, שכל מה שאתה צריך לעשות, הוא יגיד לך מתי.",
+      "tts": {
+        "text": "הוּא אוֹמֵר לְךָ, בִּרְגִיעוּת, שֶׁכָּל מָה שֶׁאַתָּה צָרִיךְ לַעֲשׂוֹת, הוּא יַגִּיד לְךָ מָתַי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה מְהַנְהֵן.",
+      "text_markdown": "אתה מהנהן.",
+      "tts": {
+        "text": "אַתָּה מְהַנְהֵן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כְּבָר הִנְהַנְתָּ כָּל כָּךְ הַרְבֵּה פְּעָמִים בַּשָּׁעָה הָאַחֲרוֹנָה שֶׁהַצַּוָּאר שֶׁלְּךָ מִתְחִיל לִכְאֹב.",
+      "text_markdown": "כבר הנהנת כל כך הרבה פעמים בשעה האחרונה שהצוואר שלך מתחיל לכאוב.",
+      "tts": {
+        "text": "כְּבָר הִנְהַנְתָּ כָּל כָּךְ הַרְבֵּה פְּעָמִים בַּשָּׁעָה הָאַחֲרוֹנָה שֶׁהַצַּוָּאר שֶׁלְּךָ מִתְחִיל לִכְאֹב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "וְאָז הַדֶּלֶת נִפְתַּחַת.",
+      "text_markdown": "ואז הדלת נפתחת.",
+      "tts": {
+        "text": "וְאָז הַדֶּלֶת נִפְתַּחַת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הָרוּחַ נִכְנֶסֶת כְּמוֹ קִיר, רוֹעֶשֶׁת וְקָרָה וְחַיָּה, וּפְתָאוֹם הַמָּטוֹס מַרְגִּישׁ מְאֹד קָטָן.",
+      "text_markdown": "הרוח נכנסת כמו קיר, רועשת וקרה וחיה, ופתאום המטוס מרגיש מאוד קטן.",
+      "tts": {
+        "text": "הָרוּחַ נִכְנֶסֶת כְּמוֹ קִיר, רוֹעֶשֶׁת וְקָרָה וְחַיָּה, וּפְתָאוֹם הַמָּטוֹס מַרְגִּישׁ מְאֹד קָטָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה מַחְלִיק לְקָצֶה.",
+      "text_markdown": "אתה מחליק לקצה.",
+      "tts": {
+        "text": "אַתָּה מַחְלִיק לְקָצֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַבְּהוֹנוֹת שְׁלְךָ תְּלוּיוֹת בִּכְלוּם.",
+      "text_markdown": "הבהונות שלך תלויות בכלום.",
+      "tts": {
+        "text": "הַבְּהוֹנוֹת שְׁלְךָ תְּלוּיוֹת בִּכְלוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מִסְתַּכֵּל לְמַטָּה, וְהַקַּרְקַע כָּל כָּךְ רָחוֹקָה שְׁהִיא כְּבָר לֹא נִרְאֵית כְּמוֹ קַרְקַע.",
+      "text_markdown": "אתה מסתכל למטה, והקרקע כל כך רחוקה שהיא כבר לא נראית כמו קרקע.",
+      "tts": {
+        "text": "אַתָּה מִסְתַּכֵּל לְמַטָּה, וְהַקַּרְקַע כָּל כָּךְ רָחוֹקָה שְׁהִיא כְּבָר לֹא נִרְאֵית כְּמוֹ קַרְקַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הִיא נִרְאֵית כְּמוֹ שְׁמִיכַת טְלָאִים.",
+      "text_markdown": "היא נראית כמו שמיכת טלאים.",
+      "tts": {
+        "text": "הִיא נִרְאֵית כְּמוֹ שְׁמִיכַת טְלָאִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "כְּבִישִׁים דַּקִּים כְּמוֹ חוּט.",
+      "text_markdown": "כבישים דקים כמו חוט.",
+      "tts": {
+        "text": "כְּבִישִׁים דַּקִּים כְּמוֹ חוּט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "נָהָר בִּצְבַע כָּסֶף עָמוּם.",
+      "text_markdown": "נהר בצבע כסף עמום.",
+      "tts": {
+        "text": "נָהָר בִּצְבַע כָּסֶף עָמוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "שְׂדוֹת זְעִירִים בִּירוֹק וּבְחוּם, תְּפוּרִים יַחַד עַל יְדֵי גָּדְרוֹת חַיּוֹת.",
+      "text_markdown": "שדות זעירים בירוק ובחום, תפורים יחד על ידי גדרות חיות.",
+      "tts": {
+        "text": "שְׂדוֹת זְעִירִים בִּירוֹק וּבְחוּם, תְּפוּרִים יַחַד עַל יְדֵי גָּדְרוֹת חַיּוֹת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמַּדְרִיךְ שְׁלְךָ סוֹפֵר.",
+      "text_markdown": "המדריך שלך סופר.",
+      "tts": {
+        "text": "הַמַּדְרִיךְ שְׁלְךָ סוֹפֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוּא אוֹמֵר אַחַת.",
+      "text_markdown": "הוא אומר אחת.",
+      "tts": {
+        "text": "הוּא אוֹמֵר אַחַת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוּא אוֹמֵר שְׁתַּיִם.",
+      "text_markdown": "הוא אומר שתיים.",
+      "tts": {
+        "text": "הוּא אוֹמֵר שְׁתַּיִם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בִּשְׁלוֹשׁ, הַמְּטוּס נֶעֱלַם.",
+      "text_markdown": "בשלוש, המטוס נעלם.",
+      "tts": {
+        "text": "בִּשְׁלוֹשׁ, הַמְּטוּס נֶעֱלַם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שָׁלוֹשׁ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת הֵן הַקָּשׁוֹת בְּיוֹתֵר.",
+      "text_markdown": "שלוש השניות הראשונות הן הקשות ביותר.",
+      "tts": {
+        "text": "שָׁלוֹשׁ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת הֵן הַקָּשׁוֹת בְּיוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַגּוּף שֶׁלְּךָ מַאֲמִין שֶׁהוּא נוֹפֵל, כִּי הוּא נוֹפֵל, וּלְגוּף שֶׁלְּךָ מֵעוֹלָם לֹא אָמְרוּ שֶׁזֶּה בְּסֵדֶר.",
+      "text_markdown": "הגוף שלך מאמין שהוא נופל, כי הוא נופל, ולגוף שלך מעולם לא אמרו שזה בסדר.",
+      "tts": {
+        "text": "הַגּוּף שֶׁלְּךָ מַאֲמִין שֶׁהוּא נוֹפֵל, כִּי הוּא נוֹפֵל, וּלְגוּף שֶׁלְּךָ מֵעוֹלָם לֹא אָמְרוּ שֶׁזֶּה בְּסֵדֶר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה מִשְׁמִיעַ קוֹל.",
+      "text_markdown": "אתה משמיע קול.",
+      "tts": {
+        "text": "אַתָּה מִשְׁמִיעַ קוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כֻּלָּם מִשְׁמִיעִים קוֹל.",
+      "text_markdown": "כולם משמיעים קול.",
+      "tts": {
+        "text": "כֻּלָּם מִשְׁמִיעִים קוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אֵין שׁוּם סִיבָּה לְהִתְבַּיֵּשׁ בַּקּוֹל.",
+      "text_markdown": "אין שום סיבה להתבייש בקול.",
+      "tts": {
+        "text": "אֵין שׁוּם סִיבָּה לְהִתְבַּיֵּשׁ בַּקּוֹל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "וְאָז קוֹרֶה מַשְׁהוּ יוֹצֵא דוֹפֶן.",
+      "text_markdown": "ואז קורה משהו יוצא דופן.",
+      "tts": {
+        "text": "וְאָז קוֹרֶה מַשְׁהוּ יוֹצֵא דוֹפֶן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַנְּפִילָה מַפְסִיקָה לְהַרְגִּישׁ כְּמוֹ נְפִילָה.",
+      "text_markdown": "הנפילה מפסיקה להרגיש כמו נפילה.",
+      "tts": {
+        "text": "הַנְּפִילָה מַפְסִיקָה לְהַרְגִּישׁ כְּמוֹ נְפִילָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הָרוּחַ עוֹלָה לִפְגוֹשׁ אוֹתְךָ וְאוֹחֶזֶת בָּךְ, כְּמוֹ שֶׁהַמַּיִם אוֹחֲזִים בָּךְ כְּשָׁאַתָּה צָף עַל הַגַּב.",
+      "text_markdown": "הרוח עולה לפגוש אותך ואוחזת בך, כמו שהמים אוחזים בך כשאתה צף על הגב.",
+      "tts": {
+        "text": "הָרוּחַ עוֹלָה לִפְגוֹשׁ אוֹתְךָ וְאוֹחֶזֶת בָּךְ, כְּמוֹ שֶׁהַמַּיִם אוֹחֲזִים בָּךְ כְּשָׁאַתָּה צָף עַל הַגַּב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הַזְּרוֹעוֹת וְהָרַגְּלַיִם שֶׁלְּךָ נִפְרָשׁוֹת בְּלִי שְׁתְּבַקֵּשׁ מֵהֵן.",
+      "text_markdown": "הזרועות והרגליים שלך נפרשות בלי שתבקש מהן.",
+      "tts": {
+        "text": "הַזְּרוֹעוֹת וְהָרַגְּלַיִם שֶׁלְּךָ נִפְרָשׁוֹת בְּלִי שְׁתְּבַקֵּשׁ מֵהֵן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַפָּנִים שֶׁלְּךָ מַרְגִּישׁוֹת כְּאִלּוּ מוֹשְׁכִים אוֹתָן בְּכַמָּה כִּיוּנִים בּוֹ זְמַנִּית.",
+      "text_markdown": "הפנים שלך מרגישות כאילו מושכים אותן בכמה כיוונים בו זמנית.",
+      "tts": {
+        "text": "הַפָּנִים שֶׁלְּךָ מַרְגִּישׁוֹת כְּאִלּוּ מוֹשְׁכִים אוֹתָן בְּכַמָּה כִּיוּנִים בּוֹ זְמַנִּית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה לֹא יָכוֹל לָדַעַת אִם אַתָּה מְחַיֵּךְ אוֹ צוֹרֵחַ.",
+      "text_markdown": "אתה לא יכול לדעת אם אתה מחייך או צורח.",
+      "tts": {
+        "text": "אַתָּה לֹא יָכוֹל לָדַעַת אִם אַתָּה מְחַיֵּךְ אוֹ צוֹרֵחַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "וְזֶה לֹא מִשְׁנֶה.",
+      "text_markdown": "וזה לא משנה.",
+      "tts": {
+        "text": "וְזֶה לֹא מִשְׁנֶה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַתָּה מִסְתַּכֵּל סְבִיבְךָ.",
+      "text_markdown": "אתה מסתכל סביבך.",
+      "tts": {
+        "text": "אַתָּה מִסְתַּכֵּל סְבִיבְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כְּדוּר הָאָרֶץ עֲדַיִן רָחוֹק מְאֹד מִתַּחְתֶּיךָ, אֲבָל הוּא קָרוֹב יוֹתֵר עַכְשָׁיו, וְאַתָּה רוֹאֶה אֶת הַצְּבָעִים טוֹב יוֹתֵר.",
+      "text_markdown": "כדור הארץ עדיין רחוק מאוד מתחתיך, אבל הוא קרוב יותר עכשיו, ואתה רואה את הצבעים טוב יותר.",
+      "tts": {
+        "text": "כְּדוּר הָאָרֶץ עֲדַיִן רָחוֹק מְאֹד מִתַּחְתֶּיךָ, אֲבָל הוּא קָרוֹב יוֹתֵר עַכְשָׁיו, וְאַתָּה רוֹאֶה אֶת הַצְּבָעִים טוֹב יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מְכוֹנִיּוֹת בִּכְבִישׁ מְהִיר, אִיטִיּוֹת כְּמוֹ נְמָלִים.",
+      "text_markdown": "מכוניות בכביש מהיר, איטיות כמו נמלים.",
+      "tts": {
+        "text": "מְכוֹנִיּוֹת בִּכְבִישׁ מְהִיר, אִיטִיּוֹת כְּמוֹ נְמָלִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אָגַם, דּוּמַם לְחַלּוּטִין.",
+      "text_markdown": "אגם, דומם לחלוטין.",
+      "tts": {
+        "text": "אָגַם, דּוּמַם לְחַלּוּטִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "צֵל שֶׁל עָנָן נָע עַל פְּנֵי יַעַר.",
+      "text_markdown": "צל של ענן נע על פני יער.",
+      "tts": {
+        "text": "צֵל שֶׁל עָנָן נָע עַל פְּנֵי יַעַר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַתָּה עָף.",
+      "text_markdown": "אתה עף.",
+      "tts": {
+        "text": "אַתָּה עָף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לֹא בְמָטוֹס.",
+      "text_markdown": "לא במטוס.",
+      "tts": {
+        "text": "לֹא בְמָטוֹס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה, הַגּוּף שֶׁלְּךָ, עָף.",
+      "text_markdown": "אתה, הגוף שלך, עף.",
+      "tts": {
+        "text": "אַתָּה, הַגּוּף שֶׁלְּךָ, עָף.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמְדַרִיךְ שֶׁלְּךָ טוֹפֵחַ לְךָ עַל הַכָּתֵף.",
+      "text_markdown": "המדריך שלך טופח לך על הכתף.",
+      "tts": {
+        "text": "הַמְדַרִיךְ שֶׁלְּךָ טוֹפֵחַ לְךָ עַל הַכָּתֵף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה מוֹשֵׁךְ אֶת הַיָּדִית.",
+      "text_markdown": "אתה מושך את הידית.",
+      "tts": {
+        "text": "אַתָּה מוֹשֵׁךְ אֶת הַיָּדִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יֵשׁ מְשִׁיכָה רַכָּה, כְּאִילוּ מִישֶׁהוּ תוֹפֵס בְּעַדִּינוּת אֶת הַחֵלֶק הָאָחוֹרִי שֶׁל הַחוּלְצָה שֶׁלְּךָ.",
+      "text_markdown": "יש משיכה רכה, כאילו מישהו תופס בעדינות את החלק האחורי של החולצה שלך.",
+      "tts": {
+        "text": "יֵשׁ מְשִׁיכָה רַכָּה, כְּאִילוּ מִישֶׁהוּ תוֹפֵס בְּעַדִּינוּת אֶת הַחֵלֶק הָאָחוֹרִי שֶׁל הַחוּלְצָה שֶׁלְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "וְאָז מְשִׁיכָה שְׁנִיָּה, חֲזָקָה יוֹתֵר, שְׁמָרִימָה אוֹתְךָ לַעֲמִידָה.",
+      "text_markdown": "ואז משיכה שנייה, חזקה יותר, שמרימה אותך לעמידה.",
+      "tts": {
+        "text": "וְאָז מְשִׁיכָה שְׁנִיָּה, חֲזָקָה יוֹתֵר, שְׁמָרִימָה אוֹתְךָ לַעֲמִידָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הָעוֹלָם מִשְׁתַּתֵּק.",
+      "text_markdown": "העולם משתתק.",
+      "tts": {
+        "text": "הָעוֹלָם מִשְׁתַּתֵּק.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הָרוּחַ נֶעֱלַמָּה.",
+      "text_markdown": "הרוח נעלמה.",
+      "tts": {
+        "text": "הָרוּחַ נֶעֱלַמָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַשְּׁאָגָה נֶעֱלַמָּה.",
+      "text_markdown": "השאגה נעלמה.",
+      "tts": {
+        "text": "הַשְּׁאָגָה נֶעֱלַמָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַנְּפִילָה נֶעֱלַמָּה.",
+      "text_markdown": "הנפילה נעלמה.",
+      "tts": {
+        "text": "הַנְּפִילָה נֶעֱלַמָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה תָּלוּי עַכְשָׁיו, בִּרְתִימָה, מִתַּחַת לִמְלַבֵּן רָחָב שֶׁל בַד.",
+      "text_markdown": "אתה תלוי עכשיו, ברתמה, מתחת למלבן רחב של בד.",
+      "tts": {
+        "text": "אַתָּה תָּלוּי עַכְשָׁיו, בִּרְתִימָה, מִתַּחַת לִמְלַבֵּן רָחָב שֶׁל בַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַשָּׁמַיִם פִּתְאוֹם מְאוֹד, מְאוֹד דּוּמְמִים.",
+      "text_markdown": "השמיים פתאום מאוד, מאוד דוממים.",
+      "tts": {
+        "text": "הַשָּׁמַיִם פִּתְאוֹם מְאוֹד, מְאוֹד דּוּמְמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה שׁוֹמֵעַ אֶת הַצִּיפּוֹר מִתַּחְתֶּיךָ.",
+      "text_markdown": "אתה שומע את הציפור מתחתיך.",
+      "tts": {
+        "text": "אַתָּה שׁוֹמֵעַ אֶת הַצִּיפּוֹר מִתַּחְתֶּיךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "אַתָּה שׁוֹמֵעַ אֶת עַצְמְךָ נוֹשֵׁם.",
+      "text_markdown": "אתה שומע את עצמך נושם.",
+      "tts": {
+        "text": "אַתָּה שׁוֹמֵעַ אֶת עַצְמְךָ נוֹשֵׁם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "הַמְדַרִּיךְ שֶׁלְּךָ צוֹחֵק בְּאָזְנְךָ וְשׁוֹאֵל אוֹתְךָ אֵיךְ אַתָּה מַרְגִּישׁ.",
+      "text_markdown": "המדריך שלך צוחק באוזנך ושואל אותך איך אתה מרגיש.",
+      "tts": {
+        "text": "הַמְדַרִּיךְ שֶׁלְּךָ צוֹחֵק בְּאָזְנְךָ וְשׁוֹאֵל אוֹתְךָ אֵיךְ אַתָּה מַרְגִּישׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "אַתָּה לֹא יָכוֹל לַעֲנוֹת לְרֶגַע, כִּי אַתָּה בוֹכֶה, אוֹ צוֹחֵק, אוֹ שְׁנֵיהֶם.",
+      "text_markdown": "אתה לא יכול לענות לרגע, כי אתה בוכה, או צוחק, או שניהם.",
+      "tts": {
+        "text": "אַתָּה לֹא יָכוֹל לַעֲנוֹת לְרֶגַע, כִּי אַתָּה בוֹכֶה, אוֹ צוֹחֵק, אוֹ שְׁנֵיהֶם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַטִּיסָה תַּחַת הַכִּפָּה אוֹרֶכֶת כַּחֲמֵשׁ דַּקּוֹת.",
+      "text_markdown": "הטיסה תחת הכיפה אורכת כחמש דקות.",
+      "tts": {
+        "text": "הַטִּיסָה תַּחַת הַכִּפָּה אוֹרֶכֶת כַּחֲמֵשׁ דַּקּוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אֵלֶּה חָמֵשׁ מֵהַדַּקּוֹת הַכִּי שְׁלוֹוֹת בַּחַיֶּיךָ.",
+      "text_markdown": "אלה חמש מהדקות הכי שלוות בחייך.",
+      "tts": {
+        "text": "אֵלֶּה חָמֵשׁ מֵהַדַּקּוֹת הַכִּי שְׁלוֹוֹת בַּחַיֶּיךָ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כְּשֶׁהָרַגְלַיִם שֶׁלְּךָ נוֹגְעוֹת בַּקַּרְקַע, אַתָּה עוֹשֶׂה שְׁלוֹשָׁה צַעֲדֵי רִיצָה קְצָרִים וְעוֹצֵר.",
+      "text_markdown": "כשהרגליים שלך נוגעות בקרקע, אתה עושה שלושה צעדי ריצה קצרים ועוצר.",
+      "tts": {
+        "text": "כְּשֶׁהָרַגְלַיִם שֶׁלְּךָ נוֹגְעוֹת בַּקַּרְקַע, אַתָּה עוֹשֶׂה שְׁלוֹשָׁה צַעֲדֵי רִיצָה קְצָרִים וְעוֹצֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַדֶּשֶׁא אֲמִתִּי שׁוּב.",
+      "text_markdown": "הדשא אמיתי שוב.",
+      "tts": {
+        "text": "הַדֶּשֶׁא אֲמִתִּי שׁוּב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הָעוֹלָם מוּצָק שׁוּב.",
+      "text_markdown": "העולם מוצק שוב.",
+      "tts": {
+        "text": "הָעוֹלָם מוּצָק שׁוּב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מִסְתוֹבֵב וּמִסְתַּכֵּל לְמַעְלָה אֶל הַשָּׁמַיִם.",
+      "text_markdown": "אתה מסתובב ומסתכל למעלה אל השמיים.",
+      "tts": {
+        "text": "אַתָּה מִסְתוֹבֵב וּמִסְתַּכֵּל לְמַעְלָה אֶל הַשָּׁמַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "וְאַתָּה מֵבִין, בְּפַעַם הָרִאשׁוֹנָה, מָה הַחָבֵר שְׁלְךָ נִסָּה לוֹמַר לְךָ כָּל הַשָּׁנִים הָאֵלֶּה.",
+      "text_markdown": "ואתה מבין, בפעם הראשונה, מה החבר שלך ניסה לומר לך כל השנים האלה.",
+      "tts": {
+        "text": "וְאַתָּה מֵבִין, בְּפַעַם הָרִאשׁוֹנָה, מָה הַחָבֵר שְׁלְךָ נִסָּה לוֹמַר לְךָ כָּל הַשָּׁנִים הָאֵלֶּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "איך מתחילים",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "אֵיךְ מַתְחִילִים",
+      "text_markdown": "איך מתחילים"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אָז אֵיךְ אַתָּה בֶּאֱמֶת עוֹשֶׂה אֶת זֶה, אִם יוֹם אֶחָד אַתָּה מַחְלִיט שֶׁאַתָּה רוֹצֶה.",
+      "text_markdown": "אז איך אתה באמת עושה את זה, אם יום אחד אתה מחליט שאתה רוצה.",
+      "tts": {
+        "text": "אָז אֵיךְ אַתָּה בֶּאֱמֶת עוֹשֶׂה אֶת זֶה, אִם יוֹם אֶחָד אַתָּה מַחְלִיט שֶׁאַתָּה רוֹצֶה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַתְּשׁוּבָה הַכְּנָה הִיא, קַל יוֹתֵר מִמָּה שֶׁאַתָּה חוֹשֵׁב.",
+      "text_markdown": "התשובה הכנה היא, קל יותר ממה שאתה חושב.",
+      "tts": {
+        "text": "הַתְּשׁוּבָה הַכְּנָה הִיא, קַל יוֹתֵר מִמָּה שֶׁאַתָּה חוֹשֵׁב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כִּמְעַט כָּל אֵזוֹר נְחִיתָה בָּעוֹלָם יִקְבַּל מַתְחִיל מֻחְלָט בָּאוֹתוֹ בּוֹקֶר.",
+      "text_markdown": "כמעט כל אזור נחיתה בעולם יקבל מתחיל מוחלט באותו בוקר.",
+      "tts": {
+        "text": "כִּמְעַט כָּל אֵזוֹר נְחִיתָה בָּעוֹלָם יִקְבַּל מַתְחִיל מֻחְלָט בָּאוֹתוֹ בּוֹקֶר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הֵם מַכְנִיסִים אוֹתְךָ לַשָּׁמַיִם בִּקְפִיצַת טַנְדֶּם, עִם מַדְרִיךְ עַל הַגַּב שְׁלְךָ.",
+      "text_markdown": "הם מכניסים אותך לשמיים בקפיצת טנדם, עם מדריך על הגב שלך.",
+      "tts": {
+        "text": "הֵם מַכְנִיסִים אוֹתְךָ לַשָּׁמַיִם בִּקְפִיצַת טַנְדֶּם, עִם מַדְרִיךְ עַל הַגַּב שְׁלְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מַגִּיעַ, חוֹתֵם עַל הַמְּסִמָּכִים, צוֹפֶה בְּסָרְטוֹן קָצָר, וּפוֹגֵשׁ אֶת הַמַּדְרִיךְ שְׁלְךָ.",
+      "text_markdown": "אתה מגיע, חותם על המסמכים, צופה בסרטון קצר, ופוגש את המדריך שלך.",
+      "tts": {
+        "text": "אַתָּה מַגִּיעַ, חוֹתֵם עַל הַמְּסִמָּכִים, צוֹפֶה בְּסָרְטוֹן קָצָר, וּפוֹגֵשׁ אֶת הַמַּדְרִיךְ שְׁלְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה לוֹבֵשׁ חֲלִיפַת קְפִיצָה וְרִתְמָה.",
+      "text_markdown": "אתה לובש חליפת קפיצה ורתמה.",
+      "tts": {
+        "text": "אַתָּה לוֹבֵשׁ חֲלִיפַת קְפִיצָה וְרִתְמָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה מִטַּפֵּס לִמְטוֹס.",
+      "text_markdown": "אתה מטפס למטוס.",
+      "tts": {
+        "text": "אַתָּה מִטַּפֵּס לִמְטוֹס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "כְּעֶשְׂרִים דָּקוֹת לְאַחַר מִכֵּן, אַתָּה חוֹזֵר עַל פְּנֵי הַדֶּשֶׁא עִם הַחִיּוּךְ הַגָּדוֹל בְּיוֹתֵר בַּחַיִּים שְׁלְךָ.",
+      "text_markdown": "כעשרים דקות לאחר מכן, אתה חוזר על פני הדשא עם החיוך הגדול ביותר בחייך.",
+      "tts": {
+        "text": "כְּעֶשְׂרִים דָּקוֹת לְאַחַר מִכֵּן, אַתָּה חוֹזֵר עַל פְּנֵי הַדֶּשֶׁא עִם הַחִיּוּךְ הַגָּדוֹל בְּיוֹתֵר בַּחַיִּים שְׁלְךָ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לְקַפִּיצָה הָרִאשׁוֹנָה שֶׁלְּךָ, אַתָּה לֹא צָרִיךְ לִהְיוֹת אַמִּיץ.",
+      "text_markdown": "לקפיצה הראשונה שלך, אתה לא צריך להיות אמיץ.",
+      "tts": {
+        "text": "לַקְּפִיצָה הָרִאשׁוֹנָה שְׁלְךָ, אַתָּה לֹא צָרִיךְ לִהְיוֹת אַמִּיץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה רַק צָרִיךְ לִהְיוֹת מוּכָן.",
+      "text_markdown": "אתה רק צריך להיות מוכן.",
+      "tts": {
+        "text": "אַתָּה רַק צָרִיךְ לִהְיוֹת מוּכָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַמְּדַרִּיךְ עוֹשֶׂה הַכֹּל.",
+      "text_markdown": "המדריך עושה הכל.",
+      "tts": {
+        "text": "הַמְּדַרִּיךְ עוֹשֶׂה הַכֹּל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוּא מוֹשֵׁךְ אֶת הַמִּצְנָח.",
+      "text_markdown": "הוא מושך את המצנח.",
+      "tts": {
+        "text": "הוּא מוֹשֵׁךְ אֶת הַמִּצְנָח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוּא מַטִּיס אֶת הַכִּיפָּה.",
+      "text_markdown": "הוא מטיס את הכיפה.",
+      "tts": {
+        "text": "הוּא מַטִּיס אֶת הַכִּיפָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הוּא מַנְחִית אוֹתְךָ.",
+      "text_markdown": "הוא מנחית אותך.",
+      "tts": {
+        "text": "הוּא מַנְחִית אוֹתְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "אַתָּה רַק נוֹסֵעַ, עִם הַמּוֹשָׁב הַכִּי טוֹב בָּעוֹלָם.",
+      "text_markdown": "אתה רק נוסע, עם המושב הכי טוב בעולם.",
+      "tts": {
+        "text": "אַתָּה רַק נוֹסֵעַ, עִם הַמּוֹשָׁב הַכִּי טוֹב בָּעוֹלָם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אִם אַחֲרֵי הַקַּפִּיצָה הָרִאשׁוֹנָה הַזּאֹת מְעַנְיֵן אוֹתְךָ לִקְפֹּץ לְבַד, הַמְּסַלּוּל נִקְרָא צְנִיחָה חוֹפְשִׁית מוּאַצֶּת.",
+      "text_markdown": "אם אחרי הקפיצה הראשונה הזאת מעניין אותך לקפוץ לבד, המסלול נקרא צניחה חופשית מואצת.",
+      "tts": {
+        "text": "אִם אַחֲרֵי הַקַּפִּיצָה הָרִאשׁוֹנָה הַזּאֹת מְעַנְיֵן אוֹתְךָ לִקְפֹּץ לְבַד, הַמְּסַלּוּל נִקְרָא צְנִיחָה חוֹפְשִׁית מוּאַצֶּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זוֹאת תּוֹכְנִית הַכְשָׁרָה, שֶׁמְּלַמְּדִים בְּכָל אֵזוֹר נְחִיתָה, שֶׁמְּלַמֶּדֶת אוֹתְךָ אֵיךְ לִהְיוֹת צַנְחָן אֲמִיתִי.",
+      "text_markdown": "זאת תוכנית הכשרה, שמלמדים בכל אזור נחיתה, שמלמדת אותך איך להיות צנחן אמיתי.",
+      "tts": {
+        "text": "זוֹאת תּוֹכְנִית הַכְשָׁרָה, שֶׁמְּלַמְּדִים בְּכָל אֵזוֹר נְחִיתָה, שֶׁמְּלַמֶּדֶת אוֹתְךָ אֵיךְ לִהְיוֹת צַנְחָן אֲמִיתִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לֹא נוֹסֵעַ.",
+      "text_markdown": "לא נוסע.",
+      "tts": {
+        "text": "לֹא נוֹסֵעַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "טַיִּס שֶׁל הַגּוּף שְׁלְךָ בַּשָּׁמַיִם.",
+      "text_markdown": "טייס של הגוף שלך בשמיים.",
+      "tts": {
+        "text": "טַיָּס שֶׁל הַגּוּף שֶׁלְּךָ בַּשָּׁמַיִם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַשְּׁלָב הָרִאשׁוֹן שֶׁל הַתּוֹכְנִית הוּא יוֹם אָרוּךְ בַּכִּיתָה.",
+      "text_markdown": "השלב הראשון של התוכנית הוא יום ארוך בכיתה.",
+      "tts": {
+        "text": "הַשְּׁלָב הָרִאשׁוֹן שֶׁל הַתּוֹכְנִית הוּא יוֹם אָרוּךְ בַּכִּיתָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד אֵיךְ לִיפּוֹל.",
+      "text_markdown": "אתה לומד איך ליפול.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד אֵיךְ לִיפּוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד אֵיךְ לִקְרוֹא אֶת מַד הַגּוֹבַה שְׁלְךָ.",
+      "text_markdown": "אתה לומד איך לקרוא את מד הגובה שלך.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד אֵיךְ לִקְרוֹא אֶת מַד הַגּוֹבַה שְׁלְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד מָה לַעֲשׂוֹת אִם הַמִּצְנַח הָרָאשִׁי שְׁלְךָ לֹא נִפְתַּח.",
+      "text_markdown": "אתה לומד מה לעשות אם המצנח הראשי שלך לא נפתח.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד מָה לַעֲשׂוֹת אִם הַמִּצְנַח הָרָאשִׁי שְׁלְךָ לֹא נִפְתַּח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "יוֹם הַכִּיתָה אוֹרֵךְ כְּשֵׁשׁ אוֹ שֶׁבַע שָׁעוֹת.",
+      "text_markdown": "יום הכיתה אורך כשש או שבע שעות.",
+      "tts": {
+        "text": "יוֹם הַכִּיתָה אוֹרֵךְ כְּשֵׁשׁ אוֹ שֶׁבַע שָׁעוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "בְּסוֹף הַיּוֹם, אַתָּה יוֹדֵעַ עַל מִצְנָחִים יוֹתֵר מִמָּה שְׁרוֹב הָאֲנָשִׁים לוֹמְדִים בַּחַיִּים שְׁלָמִים.",
+      "text_markdown": "בסוף היום, אתה יודע על מצנחים יותר ממה שרוב האנשים לומדים בחיים שלמים.",
+      "tts": {
+        "text": "בְּסוֹף הַיּוֹם, אַתָּה יוֹדֵעַ עַל מִצְנָחִים יוֹתֵר מִמָּה שְׁרוֹב הָאֲנָשִׁים לוֹמְדִים בַּחַיִּים שְׁלָמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "וְאַז מַגִּיעָה הַקְּפִיצָה הָרִאשׁוֹנָה שְׁלְךָ לְבַד.",
+      "text_markdown": "ואז מגיעה הקפיצה הראשונה שלך לבד.",
+      "tts": {
+        "text": "וְאַז מַגִּיעָה הַקְּפִיצָה הָרִאשׁוֹנָה שְׁלְךָ לְבַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שְׁנֵי מַדְרִיכִים קוֹפְצִים אִיתְּךָ, אֶחָד בְּכָל צַד, אוֹחֲזִים בָּרְתִמָה שְׁלְךָ.",
+      "text_markdown": "שני מדריכים קופצים איתך, אחד בכל צד, אוחזים ברתמה שלך.",
+      "tts": {
+        "text": "שְׁנֵי מַדְרִיכִים קוֹפְצִים אִיתְּךָ, אֶחָד בְּכָל צַד, אוֹחֲזִים בָּרְתִמָה שְׁלְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הֵם מְשַׁחְרְרִים אוֹתְךָ בִּנְפִילָה חוּפְשִׁית בָּרֶגַע שֶׁאַתָּה יָצִיב.",
+      "text_markdown": "הם משחררים אותך בנפילה החופשית ברגע שאתה יציב.",
+      "tts": {
+        "text": "הֵם מְשַׁחְרְרִים אוֹתְךָ בִּנְפִילָה חוּפְשִׁית בָּרֶגַע שֶׁאַתָּה יָצִיב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מוֹשֵׁךְ אֶת הַמִּצְנַח שֶׁלְּךָ בְּעַצְמְךָ.",
+      "text_markdown": "אתה מושך את המצנח שלך בעצמך.",
+      "tts": {
+        "text": "אַתָּה מוֹשֵׁךְ אֶת הַמִּצְנַח שְׁלְךָ בְּעַצְמְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה מַטִּיס אֶת הַכִּיפָּה שֶׁלְּךָ עַד לַקַּרְקַע.",
+      "text_markdown": "אתה מטיס את הכיפה שלך עד לקרקע.",
+      "tts": {
+        "text": "אַתָּה מַטִּיס אֶת הַכִּיפָּה שֶׁלְּךָ עַד לַקַּרְקַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "בַּפַּעַם הָרִאשׁוֹנָה שֶׁאַתָּה עוֹשֶׂה אֶת זֶה, הַפָּנִים שֶׁלְּךָ יִכְאֲבוּ בְּיוֹם לְמָחֳרָת מֵרֹב חִיּוּךְ.",
+      "text_markdown": "בפעם הראשונה שאתה עושה את זה, הפנים שלך יכאבו ביום למחרת מרוב חיוך.",
+      "tts": {
+        "text": "בַּפַּעַם הָרִאשׁוֹנָה שֶׁאַתָּה עוֹשֶׂה אֶת זֶה, הַפָּנִים שֶׁלְּךָ יִכְאֲבוּ בְּיוֹם לְמָחֳרָת מֵרֹב חִיּוּךְ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַתּוֹכְנִית הַמְּלֵאָה מַעֲבִירָה אוֹתְךָ כְּשֶׁבַע קְפִיצוֹת.",
+      "text_markdown": "התוכנית המלאה מעבירה אותך כשבע קפיצות.",
+      "tts": {
+        "text": "הַתּוֹכְנִית הַמְּלֵאָה מַעֲבִירָה אוֹתְךָ כְּשֶׁבַע קְפִיצוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בְּסוֹף, אַתָּה קוֹפֵץ לְבַדְּךָ.",
+      "text_markdown": "בסוף, אתה קופץ לבד.",
+      "tts": {
+        "text": "בְּסוֹף, אַתָּה קוֹפֵץ לְבַדְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מִשָּׁם, צַנְחָנִים בִּדְרֶךְ כְּלָל מְסַיְּמִים אֶת מֵאָה הַקְּפִיצוֹת הָרִאשׁוֹנוֹת שֶׁלָּהֶם בִּמְהַלַּךְ הַשָּׁנָה הַבָּאָה.",
+      "text_markdown": "משם, צנחנים בדרך כלל מסיימים את מאה הקפיצות הראשונות שלהם במהלך השנה הבאה.",
+      "tts": {
+        "text": "מִשָּׁם, צַנְחָנִים בִּדְרֶךְ כְּלָל מְסַיְּמִים אֶת מֵאָה הַקְּפִיצוֹת הָרִאשׁוֹנוֹת שֶׁלָּהֶם בִּמְהַלַּךְ הַשָּׁנָה הַבָּאָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "תּוֹךְ כְּדֵי הַדֶּרֶךְ, הֵם לוֹמְדִים לַעֲפוֹף יַחְסִית לִקְפִיצִים אֲחֵרִים.",
+      "text_markdown": "תוך כדי הדרך, הם לומדים לעוף יחסית לקופצים אחרים.",
+      "tts": {
+        "text": "תּוֹךְ כְּדֵי הַדֶּרֶךְ, הֵם לוֹמְדִים לַעֲפוֹף יַחְסִית לִקְפִיצִים אֲחֵרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הֵם לוֹמְדִים לַעֲקוֹב עַל פְּנֵי הַשָּׁמַיִם.",
+      "text_markdown": "הם לומדים לעקוב על פני השמיים.",
+      "tts": {
+        "text": "הֵם לוֹמְדִים לַעֲקוֹב עַל פְּנֵי הַשָּׁמַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הֵם לוֹמְדִים לִקְפֹּל אֶת הַמִּצְנַח שֶׁלָּהֶם בְּעַצְמָם.",
+      "text_markdown": "הם לומדים לקפל את המצנח שלהם בעצמם.",
+      "tts": {
+        "text": "הֵם לוֹמְדִים לִקְפֹּל אֶת הַמִּצְנַח שֶׁלָּהֶם בְּעַצְמָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הַקְּהִילָה קְטַנָּה, יְדִידוּתִית וְסַבְלָנִית.",
+      "text_markdown": "הקהילה קטנה, ידידותית וסבלנית.",
+      "tts": {
+        "text": "הַקְּהִילָה קְטַנָּה, יְדִידוּתִית וְסַבְלָנִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "אַף אַחַד בְאֵזוֹר נְחִיתָה לְעוֹלָם לֹא יִגְרוֹם לְךָ לְהַרְגִּישׁ טִפֵּשׁ בִּגְלַל שְׁאַתָּה מִתְחִיל.",
+      "text_markdown": "אף אחד באזור נחיתה לעולם לא יגרום לך להרגיש טיפש בגלל שאתה מתחיל.",
+      "tts": {
+        "text": "אַף אֶחָד בַּאֲזוֹר נְחִיתָה לְעוֹלָם לֹא יַגְרוֹם לְךָ לְהַרְגִּישׁ טִיפֵּשׁ בִּגְלַל שֶׁאַתָּה מִתְחִיל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "כֻּלָּנוּ הָיִינוּ פַּעַם מִתְחִילִים.",
+      "text_markdown": "כולנו היינו פעם מתחילים.",
+      "tts": {
+        "text": "כֻּלָּנוּ הָיִינוּ פַּעַם מִתְחִילִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "רֻבָּנוּ עֲדַיִין מַרְגִּישִׁים כְּמוֹ מִתְחִילִים.",
+      "text_markdown": "רובנו עדיין מרגישים כמו מתחילים.",
+      "tts": {
+        "text": "רֻבָּנוּ עֲדַיִין מַרְגִּישִׁים כְּמוֹ מִתְחִילִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מָה לְגַבֵּי בְטִיחוּת.",
+      "text_markdown": "מה לגבי בטיחות.",
+      "tts": {
+        "text": "מָה לְגַבֵּי בְטִיחוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זוֹאת הַשְּׁאֵלָה שֶׁכָּל אָדָם הִגָּיוֹנִי שׁוֹאֵל, וּמְגִיעָה לָהּ תְּשׁוּבָה אֲמִתִּית.",
+      "text_markdown": "זאת השאלה שכל אדם הגיוני שואל, ומגיעה לה תשובה אמיתית.",
+      "tts": {
+        "text": "זוֹאת הַשְּׁאֵלָה שֶׁכָּל אָדָם הִגָּיוֹנִי שׁוֹאֵל, וּמְגִיעָה לָהּ תְּשׁוּבָה אֲמִתִּית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "צְנִיחָה חוּפְשִׁית, לְמַעֲשֶׂה, מְאֹד בְטוּחָה.",
+      "text_markdown": "צניחה חופשית, למעשה, מאוד בטוחה.",
+      "tts": {
+        "text": "צְנִיחָה חוּפְשִׁית, לְמַעֲשֶׂה, מְאֹד בְטוּחָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "לֹא בְטוּחָה כְּמוֹ לָלֶכֶת בְּרַגְלַיִם, אֲבָל בְטוּחָה יוֹתֵר מִנְהִיגָה לְאֵזוֹר הַנְּחִיתָה.",
+      "text_markdown": "לא בטוחה כמו ללכת ברגל, אבל בטוחה יותר מנהיגה לאזור הנחיתה.",
+      "tts": {
+        "text": "לֹא בְטוּחָה כְּמוֹ לָלֶכֶת בְּרַגְלַיִם, אֲבָל בְטוּחָה יוֹתֵר מִנְהִיגָה לְאֵזוֹר הַנְּחִיתָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַצִּיּוּד מְצוּיָּן.",
+      "text_markdown": "הציוד מצוין.",
+      "tts": {
+        "text": "הַצִּיּוּד מְצוּיָּן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "יֵשׁ מִצְנַח רִאשִׁי וּמִצְנַח רִזֶרְבִּי, וּמִכְשִׁיר אוֹטוֹמָטִי שֶׁיַּפְעִיל אֶת הָרִזֶרְבִּי אִם אַתָּה לֹא תוּכַל.",
+      "text_markdown": "יש מצנח ראשי ומצנח רזרבי, ומכשיר אוטומטי שיפעיל את הרזרבי אם אתה לא תוכל.",
+      "tts": {
+        "text": "יֵשׁ מִצְנַח רִאשִׁי וּמִצְנַח רִזֶרְבִּי, וּמִכְשִׁיר אוֹטוֹמָטִי שֶׁיַּפְעִיל אֶת הָרִזֶרְבִּי אִם אַתָּה לֹא תוּכַל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "אֲזוֹרֵי נְחִיתָה מְנוּהָלִים עַל יְדֵי אַנְשֵׁי מִקְצוֹעַ שֶׁאַכְפַּת לָהֶם מִמְּךָ.",
+      "text_markdown": "אזורי נחיתה מנוהלים על ידי אנשי מקצוע שאכפת להם ממך.",
+      "tts": {
+        "text": "אֲזוֹרֵי נְחִיתָה מְנוּהָלִים עַל יְדֵי אַנְשֵׁי מִקְצוֹעַ שֶׁאַכְפַּת לָהֶם מִמְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "לִמְדַרְכִים אַכְפַּת, לְעוּמֶק, מִכְּל קְפִיצָה.",
+      "text_markdown": "למדריכים אכפת, לעומק, מכל קפיצה.",
+      "tts": {
+        "text": "לַמַּדְרִיכִים אַכְפַּת, לַעוּמְקָה, מִכָּל קְפִיצָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מָה הָעֲלוּת.",
+      "text_markdown": "מה העלות.",
+      "tts": {
+        "text": "מָה הָעֲלוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קְפִיצַת טַנְדֶם עוֹלָה כְּמוֹ אֲרוּחַת עֶרֶב נַחְמָדָה לִשְׁנַיִם.",
+      "text_markdown": "קפיצת טנדם עולה כמו ארוחת ערב נחמדה לשניים.",
+      "tts": {
+        "text": "קְפִיצַת טַנְדֶם עוֹלָה כְּמוֹ אֲרוּחַת עֶרֶב נַחְמָדָה לִשְׁנַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "תּוֹכְנִית הַהַכְשָׁרָה עוֹלָה כְּמוֹ חוּפְשָׁה קְטַנָּה.",
+      "text_markdown": "תוכנית ההכשרה עולה כמו חופשה קטנה.",
+      "tts": {
+        "text": "תּוֹכְנִית הַהַכְשָׁרָה עוֹלָה כְּמוֹ חוּפְשָׁה קְטַנָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַחֲרֵי זֶה, כָּל קְפִיצָה עוֹלָה כְּמוֹ כַּרְטִיס סֶרֶט וַאֲרוּחָה.",
+      "text_markdown": "אחרי זה, כל קפיצה עולה כמו כרטיס סרט וארוחה.",
+      "tts": {
+        "text": "אַחֲרֵי זֶה, כָּל קְפִיצָה עוֹלָה כְּמוֹ כַּרְטִיס סֶרֶט וַאֲרוּחָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אֲנָשִׁים עִם עֲבוֹדוֹת רְגִילוֹת וַחַיִּים רְגִילִים עוֹשִׂים אֶת זֶה בְּכָל סוֹף שָׁבוּעַ.",
+      "text_markdown": "אנשים עם עבודות רגילות וחיים רגילים עושים את זה בכל סוף שבוע.",
+      "tts": {
+        "text": "אֲנָשִׁים עִם עֲבוֹדוֹת רְגִילוֹת וַחַיִּים רְגִילִים עוֹשִׂים אֶת זֶה בְּכָל סוֹף שָׁבוּעַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הֵם לֹא עָשִׁירִים.",
+      "text_markdown": "הם לא עשירים.",
+      "tts": {
+        "text": "הֵם לֹא עָשִׁירִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הֵם לֹא יוֹצְאֵי דוֹפֶן.",
+      "text_markdown": "הם לא יוצאי דופן.",
+      "tts": {
+        "text": "הֵם לֹא יוֹצְאֵי דוֹפֶן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "הֵם פָּשׁוּט הֶחְלִיטוּ שֶׁזֶּה הַדָּבָר שֶׁהֵם עוֹשִׂים.",
+      "text_markdown": "הם פשוט החליטו שזה הדבר שהם עושים.",
+      "tts": {
+        "text": "הֵם פָּשׁוּט הֶחְלִיטוּ שֶׁזֶּה הַדָּבָר שֶׁהֵם עוֹשִׂים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אִם אַתָּה חוֹשֵׁב עַל הַקְּפִיצָה הָרִאשׁוֹנָה שְׁלוֹךָ, הִנָּה הָעֵצָה הַיְחִידָה שֶׁחֲשׁוּבָה.",
+      "text_markdown": "אם אתה חושב על הקפיצה הראשונה שלך, הנה העצה היחידה שחשובה.",
+      "tts": {
+        "text": "אִם אַתָּה חוֹשֵׁב עַל הַקְּפִיצָה הָרִאשׁוֹנָה שְׁלוֹךָ, הִנָּה הָעֵצָה הַיְחִידָה שֶׁחֲשׁוּבָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בָּחַר תָּאֲרִיךְ.",
+      "text_markdown": "בחר תאריך.",
+      "tts": {
+        "text": "בְּחַר תָּאֲרִיךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "סַפֵּר לַחֲבֵר אֶחָד.",
+      "text_markdown": "ספר לחבר אחד.",
+      "tts": {
+        "text": "סַפֵּר לַחֲבֵר אֶחָד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוֹפַע.",
+      "text_markdown": "הופע.",
+      "tts": {
+        "text": "הוֹפַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַחֵלֶק הַקָּשֶׁה הוּא לֹא הַנְּפִילָה.",
+      "text_markdown": "החלק הקשה הוא לא הנפילה.",
+      "tts": {
+        "text": "הַחֵלֶק הַקָּשֶׁה הוּא לֹא הַנְּפִילָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הַחֵלֶק הַקָּשֶׁה הוּא הַהַחְלָטָה.",
+      "text_markdown": "החלק הקשה הוא ההחלטה.",
+      "tts": {
+        "text": "הַחֵלֶק הַקָּשֶׁה הוּא הַהַחְלָטָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "בִּרְגַע שְׁאַתָּה מַחְלִיט, הַשָּׁמַיִם כְּבָר שֶׁלְּךָ.",
+      "text_markdown": "ברגע שאתה מחליט, השמיים כבר שלך.",
+      "tts": {
+        "text": "בִּרְגַע שְׁאַתָּה מַחְלִיט, הַשָּׁמַיִם כְּבָר שֶׁלְּךָ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "האומנות",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הָאוּמָּנוּת",
+      "text_markdown": "האומנות"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יֵשׁ אוּמָּנוּת חֲבוּיָה בְּתוֹךְ הַנְּפִילָה, וְזֶה הַחֵלֶק שֶׁל הַצְּנִיחָה הַחוֹפְשִׁית שֶׁשּׁוֹמֵר אוֹתְךָ לְכָל הַחַיִּים.",
+      "text_markdown": "יש אומנות חבויה בתוך הנפילה, וזה החלק של הצניחה החופשית ששומר אותך לכל החיים.",
+      "tts": {
+        "text": "יֵשׁ אוּמָּנוּת חֲבוּיָה בְּתוֹךְ הַנְּפִילָה, וְזֶה הַחֵלֶק שֶׁל הַצְּנִיחָה הַחוֹפְשִׁית שֶׁשּׁוֹמֵר אוֹתְךָ לְכָל הַחַיִּים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כְּשַׁאַתָּה צוֹפֶה בְּצַנְחָן מְנוּסָּה בִּנְפִילָה חוֹפְשִׁית, אַתָּה לֹא רוֹאֶה מִישְׁהוּ שֶׁנוֹפֵל.",
+      "text_markdown": "כשאתה צופה בצנחן מנוסה בנפילה חופשית, אתה לא רואה מישהו שנופל.",
+      "tts": {
+        "text": "כְּשַׁאַתָּה צוֹפֶה בְּצַנְחָן מְנוּסָּה בִּנְפִילָה חוֹפְשִׁית, אַתָּה לֹא רוֹאֶה מִישְׁהוּ שֶׁנוֹפֵל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה רוֹאֶה מִישְׁהוּ שֶׁעָף.",
+      "text_markdown": "אתה רואה מישהו שעף.",
+      "tts": {
+        "text": "אַתָּה רוֹאֶה מִישְׁהוּ שֶׁעָף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הֵם מִסְתּוֹבְּבִים לְאַט, בְּכַוָּנָה, עִם קְצוֹת הָאֶצְבָּעוֹת שֶׁלָּהֶם.",
+      "text_markdown": "הם מסתובבים לאט, בכוונה, עם קצות האצבעות שלהם.",
+      "tts": {
+        "text": "הֵם מִסְתּוֹבְּבִים לְאַט, בְּכַוָּנָה, עִם קְצוֹת הָאֶצְבָּעוֹת שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הֵם מַחְלִיקִים קְדִימָה עַל פְּנֵי הַשָּׁמַיִם חֲצִי מַיִל עַל יְדֵי הַטְיַת הַכְּתֵפַיִם שֶׁלָּהֶם שְׁנֵי אִינְצ'ִים קְדִימָה.",
+      "text_markdown": "הם מחליקים קדימה על פני השמיים חצי מייל על ידי הטיית הכתפיים שלהם שני אינצ'ים קדימה.",
+      "tts": {
+        "text": "הֵם מַחְלִיקִים קְדִימָה עַל פְּנֵי הַשָּׁמַיִם חֲצִי מַיִל עַל יְדֵי הַטְיַת הַכְּתֵפַיִם שֶׁלָּהֶם שְׁנֵי אִינְצ'ִים קְדִימָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הֵם עוֹצְרִים, בְאֶמְצַע הַנְּפִילָה, וְאוֹחְזִים בִּדְמָמָה שֶׁנִּרְאֵית בִּלְתִּי אֶפְשָׁרִית.",
+      "text_markdown": "הם עוצרים, באמצע הנפילה, ואוחזים בדממה שנראית בלתי אפשרית.",
+      "tts": {
+        "text": "הֵם עוֹצְרִים, בְאֶמְצַע הַנְּפִילָה, וְאוֹחְזִים בִּדְמָמָה שֶׁנִּרְאֵית בִּלְתִּי אֶפְשָׁרִית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַגּוּף הוּא הַמְּטוֹס.",
+      "text_markdown": "הגוף הוא המטוס.",
+      "tts": {
+        "text": "הַגּוּף הוּא הַמְּטוֹס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זֶה הַסּוֹד הָרִאשׁוֹן שֶׁל הָאוּמָּנוּת.",
+      "text_markdown": "זה הסוד הראשון של האומנות.",
+      "tts": {
+        "text": "זֶה הַסּוֹד הָרִאשׁוֹן שֶׁל הָאוּמָּנוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בְּרֶגַע שְׁאַתָּה מְבִין אֶת זֶה, כָּל הַשְּׁאָר נוֹבֵעַ.",
+      "text_markdown": "ברגע שאתה מבין את זה, כל השאר נובע.",
+      "tts": {
+        "text": "בְּרֶגַע שְׁאַתָּה מְבִין אֶת זֶה, כָּל הַשְּׁאָר נוֹבֵעַ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַצּוּרָה הַבְּסִיסִית שֶׁל נְפִילָה חוּפְשִׁית יְצִיבָה נִקְרֵאת הַקֶּשֶׁת.",
+      "text_markdown": "הצורה הבסיסית של נפילה חופשית יציבה נקראת הקשת.",
+      "tts": {
+        "text": "הַצּוּרָה הַבְּסִיסִית שֶׁל נְפִילָה חוּפְשִׁית יְצִיבָה נִקְרֵאת הַקֶּשֶׁת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה דוֹחֵף אֶת הָאַגָּן קְדִימָה וְנוֹתֵן לַזְּרוּעוֹת וְלַרְגָּלַיִם לְהִיגָּרֵר מֵאַחוֹר, כְּמוֹ בָּנָנָה.",
+      "text_markdown": "אתה דוחף את האגן קדימה ונותן לזרועות ולרגליים להיגרר מאחור, כמו בננה.",
+      "tts": {
+        "text": "אַתָּה דוֹחֵף אֶת הָאַגָּן קְדִימָה וְנוֹתֵן לַזְּרוּעוֹת וְלַרְגָּלַיִם לְהִיגָּרֵר מֵאַחוֹר, כְּמוֹ בָּנָנָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַקֶּשֶׁת הִיא מַה שֶׁשּׁוֹמֵר אוֹתְךָ עִם הַפָּנִים אֶל הָאָרֶץ בְּלִי שֶׁתִּצְטָרֵךְ לַחֲשׁוֹב עַל זֶה.",
+      "text_markdown": "הקשת היא מה ששומר אותך עם הפנים אל האדמה בלי שתצטרך לחשוב על זה.",
+      "tts": {
+        "text": "הַקֶּשֶׁת הִיא מַה שֶׁשּׁוֹמֵר אוֹתְךָ עִם הַפָּנִים אֶל הָאָרֶץ בְּלִי שֶׁתִּצְטָרֵךְ לַחֲשׁוֹב עַל זֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "קוֹפְצִים חֲדָשִׁים לוֹמְדִים אֶת הַקֶּשֶׁת בְּבוֹר קֶצֶף, אַחַר כָּךְ בִּמְנוּרַת רוּחַ, אַחַר כָּךְ בַּשָּׁמַיִם.",
+      "text_markdown": "קופצים חדשים לומדים את הקשת בבור קצף, אחר כך במנהרת רוח, אחר כך בשמיים.",
+      "tts": {
+        "text": "קוֹפְצִים חֲדָשִׁים לוֹמְדִים אֶת הַקֶּשֶׁת בְּבוֹר קֶצֶף, אַחַר כָּךְ בִּמְנוּרַת רוּחַ, אַחַר כָּךְ בַּשָּׁמַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "קוֹפְצִים וְתִיקִים עֲדַיִן מְדַבְּרִים עַל הַקֶּשֶׁת כְּמוֹ שֶׁרָצִים וְתִיקִים מְדַבְּרִים עַל הַצַּעַד שֶׁלָּהֶם.",
+      "text_markdown": "קופצים ותיקים עדיין מדברים על הקשת כמו שרצים ותיקים מדברים על הצעד שלהם.",
+      "tts": {
+        "text": "קוֹפְצִים וְתִיקִים עֲדַיִן מְדַבְּרִים עַל הַקֶּשֶׁת כְּמוֹ שֶׁרָצִים וְתִיקִים מְדַבְּרִים עַל הַצַּעַד שֶׁלָּהֶם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בִּרְגַע שֶׁיֵּשׁ לְךָ קֶשֶׁת יְצִיבָה, שְׁאַר הַנְּפִילָה הַחוּפְשִׁית נִפְתַּחַת.",
+      "text_markdown": "ברגע שיש לך קשת יציבה, שאר הנפילה החופשית נפתחת.",
+      "tts": {
+        "text": "בִּרְגַע שֶׁיֵּשׁ לְךָ קֶשֶׁת יְצִיבָה, שְׁאַר הַנְּפִילָה הַחוּפְשִׁית נִפְתַּחַת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד לִיפּוֹל לְאַט עַל יְדֵי פְּרִישָׁה רְחָבָה, לְהַפֹּךְ אֶת עַצְמְךָ לְעַפִּיפוֹן.",
+      "text_markdown": "אתה לומד ליפול לאט על ידי פרישה רחבה, להפוך את עצמך לעפיפון.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד לִיפּוֹל לְאַט עַל יְדֵי פְּרִישָׁה רְחָבָה, לְהַפֹּךְ אֶת עַצְמְךָ לְעַפִּיפוֹן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד לִיפּוֹל מְהֵר עַל יְדֵי כִּיווּץ קָטָן, לְהַפֹּךְ אֶת עַצְמְךָ לְאֶבֶן.",
+      "text_markdown": "אתה לומד ליפול מהר על ידי כיווץ קטן, להפוך את עצמך לאבן.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד לִיפּוֹל מְהֵר עַל יְדֵי כִּיווּץ קָטָן, לְהַפֹּךְ אֶת עַצְמְךָ לְאֶבֶן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה לוֹמֵד לַעֲקֹב, וְזֶה הַדָּבָר הַקָּרוֹב בְּיוֹתֵר לַטִּיסָה שֶׁגּוּף אֱנוֹשִׁי יָכוֹל לַעֲשׂוֹת.",
+      "text_markdown": "אתה לומד לעקוב, וזה הדבר הקרוב ביותר לטיסה שגוף אנושי יכול לעשות.",
+      "tts": {
+        "text": "אַתָּה לוֹמֵד לַעֲקֹב, וְזֶה הַדָּבָר הַקָּרוֹב בְּיוֹתֵר לַטִּיסָה שֶׁגּוּף אֱנוֹשִׁי יָכוֹל לַעֲשׂוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "עוֹקֵב טוֹב יָכוֹל לְכַסּוֹת רֶבַע מַיִל עַל פְּנֵי הַשָּׁמַיִם בְּעֶשְׂרִים שְׁנִיּוֹת.",
+      "text_markdown": "עוקב טוב יכול לכסות רבע מייל על פני השמיים בעשרים שניות.",
+      "tts": {
+        "text": "עוֹקֵב טוֹב יָכוֹל לְכַסּוֹת רֶבַע מַיִל עַל פְּנֵי הַשָּׁמַיִם בְּעֶשְׂרִים שְׁנִיּוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "זְרוּעוֹת מְטוּיוֹת לְאָחוֹר, גּוּף בְּזָוִית, נוֹעַ כְּמוֹ מְטוֹס נְיָר שֶׁיוֹדֵעַ לְאָן הוּא הוֹלֵךְ.",
+      "text_markdown": "זרועות מטות לאחור, גוף בזווית, נע כמו מטוס נייר שיודע לאן הוא הולך.",
+      "tts": {
+        "text": "זְרוּעוֹת מְטוּיוֹת לְאָחוֹר, גּוּף בְּזָוִית, נוֹעַ כְּמוֹ מְטוֹס נְיָר שֶׁיוֹדֵעַ לְאָן הוּא הוֹלֵךְ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַחֲצִי הַשֵּׁנִי שֶׁל הָאוּמָּנוּת הוּא הַכִּפָּה.",
+      "text_markdown": "החצי השני של האומנות הוא הכיפה.",
+      "tts": {
+        "text": "הַחֲצִי הַשֵּׁנִי שֶׁל הָאוּמָּנוּת הוּא הַכִּפָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַמִּצְנַח הוּא לֹא דָּבָר פַּסִּיבִי שֶׁמְּרַחֵף אִתְּךָ לְמַטָּה.",
+      "text_markdown": "המצנח הוא לא דבר פסיבי שמרחף איתך למטה.",
+      "tts": {
+        "text": "הַמִּצְנַח הוּא לֹא דָּבָר פַּסִּיבִי שֶׁמְּרַחֵף אִתְּךָ לְמַטָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוּא כָּנָף, וְאַתָּה מַטִּיס אוֹתוֹ.",
+      "text_markdown": "הוא כנף, ואתה מטיס אותו.",
+      "tts": {
+        "text": "הוּא כָּנָף, וְאַתָּה מַטִּיס אוֹתוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "מְשִׁיכַת הַיָּדִית הַיְמָנִית מַטָּה אֶת הַכָּנָף הַיְמָנִית וּמְסוֹבֶּבֶת אוֹתְךָ יָמִינָה.",
+      "text_markdown": "משיכת הידית הימנית מטה את הכנף הימנית ומסובבת אותך ימינה.",
+      "tts": {
+        "text": "מְשִׁיכַת הַיָּדִית הַיְמָנִית מַטָּה אֶת הַכָּנָף הַיְמָנִית וּמְסוֹבֶּבֶת אוֹתְךָ יָמִינָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "מְשִׁיכָה בִשְׁתֵיהֶן בּוֹ זְמַנִּית מַאֲטָה אוֹתְךָ וּמַאֲפְשֶׁרֶת לְךָ לָנְחוֹת רַךְ.",
+      "text_markdown": "משיכה בשתיהן בו זמנית מאטה אותך ומאפשרת לך לנחות רך.",
+      "tts": {
+        "text": "מְשִׁיכָה בִשְׁתֵיהֶן בּוֹ זְמַנִּית מַאֲטָה אוֹתְךָ וּמַאֲפְשֶׁרֶת לְךָ לָנְחוֹת רַךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה קוֹרֵא אֶת הָרוּחַ, בּוֹחֵר אֶת הַנְּקֻדָּה, מִתְכַּנֵּן אֶת הַמְּסִלּוּל שְׁלְךָ.",
+      "text_markdown": "אתה קורא את הרוח, בוחר את הנקודה, מתכנן את המסלול שלך.",
+      "tts": {
+        "text": "אַתָּה קוֹרֵא אֶת הָרוּחַ, בּוֹחֵר אֶת הַנְּקֻדָּה, מִתְכַּנֵּן אֶת הַמְּסִלּוּל שְׁלְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "אַתָּה מִתְלַקַּח בִּשְׁנִיָּה הָאַחֲרוֹנָה, כָּךְ שֶׁהָרְגָּלַיִם שְׁלְךָ מְנַשְּׁקוֹת אֶת הַקַּרְקַע בִּמְקוֹם לְהִתְרַסֵּק עָלֶיהָ.",
+      "text_markdown": "אתה מתלקח בשנייה האחרונה, כך שהרגליים שלך מנשקות את הקרקע במקום להתרסק עליה.",
+      "tts": {
+        "text": "אַתָּה מִתְלַקַּח בִּשְׁנִיָּה הָאַחֲרוֹנָה, כָּךְ שֶׁהָרְגָּלַיִם שְׁלְךָ מְנַשְּׁקוֹת אֶת הַקַּרְקַע בִּמְקוֹם לְהִתְרַסֵּק עָלֶיהָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "כָּל זֶה הוּא טִיסַת כִּיפָּה, וְזֶה תְּחוּם שֶׁלּוֹ.",
+      "text_markdown": "כל זה הוא טיסת כיפה, וזה תחום משלו.",
+      "tts": {
+        "text": "כָּל זֶה הוּא טִיסַת כִּיפָּה, וְזֶה תְּחוּם שֶׁלּוֹ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "וְאַז יֵשׁ אֶת הַקִּיפּוּל.",
+      "text_markdown": "ואז יש את הקיפול.",
+      "tts": {
+        "text": "וְאַז יֵשׁ אֶת הַקִּיפּוּל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כָּל צַנְחָן מְקַפֵּל אֶת הַמְּצַנֵּחַ שְׁלוֹ בְּעַצְמוֹ.",
+      "text_markdown": "כל צנחן מקפל את המצנח שלו בעצמו.",
+      "tts": {
+        "text": "כָּל צַנְחָן מְקַפֵּל אֶת הַמְּצַנֵּחַ שְׁלוֹ בְּעַצְמוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כָּל פַּעַם.",
+      "text_markdown": "כל פעם.",
+      "tts": {
+        "text": "כָּל פַּעַם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה פוֹרֵשׁ אֶת הַכִּיפָּה עַל מִזְרוֹן אָרוּךְ.",
+      "text_markdown": "אתה פורש את הכיפה על מזרון ארוך.",
+      "tts": {
+        "text": "אַתָּה פוֹרֵשׁ אֶת הַכִּיפָּה עַל מִזְרוֹן אָרוּךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה מַחְלִיק אֶת הַחֲבָלִים.",
+      "text_markdown": "אתה מחליק את החבלים.",
+      "tts": {
+        "text": "אַתָּה מַחְלִיק אֶת הַחֲבָלִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה מְקַפֵּל אֶת הַתָּאִים.",
+      "text_markdown": "אתה מקפל את התאים.",
+      "tts": {
+        "text": "אַתָּה מְקַפֵּל אֶת הַתָּאִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה עוֹטֵף אֶת הַבַּד, מַכְנִיס אוֹתוֹ בְעַדִּינוּת לַתִּיק, מְנַתֵּב אֶת הָרְצוּעָה, סוֹגֵר אֶת הַתִּרְמִיל.",
+      "text_markdown": "אתה עוטף את הבד, מכניס אותו בעדינות לתיק, מנתב את הרצועה, סוגר את התרמיל.",
+      "tts": {
+        "text": "אַתָּה עוֹטֵף אֶת הַבַּד, מַכְנִיס אוֹתוֹ בְעַדִּינוּת לַתִּיק, מְנַתֵּב אֶת הָרְצוּעָה, סוֹגֵר אֶת הַתִּרְמִיל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "זֶה לוֹקֵחַ כַּחֲמֵשׁ עֶשְׂרֵה דַקּוֹת, וְאַתָּה עוֹשֶׂה אֶת זֶה לְאַט, כִּי הַחַיִּים שֶׁלְּךָ עוֹמְדִים לִסְמוֹךְ עַל פִּיסַת הַבַּד הַזּאת.",
+      "text_markdown": "זה לוקח כחמש עשרה דקות, ואתה עושה את זה לאט, כי החיים שלך עומדים לסמוך על פיסת הבד הזאת.",
+      "tts": {
+        "text": "זֶה לוֹקֵחַ כַּחֲמֵשׁ עֶשְׂרֵה דַקּוֹת, וְאַתָּה עוֹשֶׂה אֶת זֶה לְאַט, כִּי הַחַיִּים שֶׁלְּךָ עוֹמְדִים לִסְמוֹךְ עַל פִּיסַת הַבַּד הַזּאת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַקִּיפּוּל הוּא מְדִיטַצְיָה.",
+      "text_markdown": "הקיפול הוא מדיטציה.",
+      "tts": {
+        "text": "הַקִּיפּוּל הוּא מְדִיטַצְיָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַרְבֵּה צַנְחָנִים אוֹמְרִים שֶׁזֶּה הַחֵלֶק הָאָהוּב עֲלֵיהֶם בַּיּוֹם.",
+      "text_markdown": "הרבה צנחנים אומרים שזה החלק האהוב עליהם ביום.",
+      "tts": {
+        "text": "הַרְבֵּה צַנְחָנִים אוֹמְרִים שֶׁזֶּה הַחֵלֶק הָאָהוּב עֲלֵיהֶם בַּיּוֹם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַמִּזְרוֹן, הַחֲבָלִים, הַקִּיפּוּל הָאִיטִי.",
+      "text_markdown": "המזרון, החבלים, הקיפול האיטי.",
+      "tts": {
+        "text": "הַמִּזְרוֹן, הַחֲבָלִים, הַקִּיפּוּל הָאִיטִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הַכָּתֵף שֶׁל חָבֵר שֶׁמְּקַפֵּל לְיָדְךָ.",
+      "text_markdown": "הכתף של חבר שמקפל לידך.",
+      "tts": {
+        "text": "הַכָּתֵף שֶׁל חָבֵר שֶׁמְּקַפֵּל לְיָדְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הָרַדְיוֹ בַּפִּינָה מִשְׁמִיעַ שִׁיר שֶׁשָּׁמַעְתָּ יוֹתֵר מִדַּי פְּעָמִים.",
+      "text_markdown": "הרדיו בפינה משמיע שיר ששמעת יותר מדי פעמים.",
+      "tts": {
+        "text": "הָרַדְיוֹ בַּפִּינָה מִשְׁמִיעַ שִׁיר שֶׁשָּׁמַעְתָּ יוֹתֵר מִדַּי פְּעָמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אֵין לְהַאִיץ אֶת הַקִּיפּוּל.",
+      "text_markdown": "אין להאיץ את הקיפול.",
+      "tts": {
+        "text": "אֵין לְהַאִיץ אֶת הַקִּיפּוּל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "לַשָּׁמַיִם לֹא אִכְפַּת מֵהַלּוּחַ זְמָנִים שֶׁלְּךָ.",
+      "text_markdown": "לשמיים לא אכפת מהלוח זמנים שלך.",
+      "tts": {
+        "text": "לַשָּׁמַיִם לֹא אִכְפַּת מֵהַלּוּחַ זְמָנִים שֶׁלְּךָ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמֶּנְטָלִיּוּת שֶׁל הָאוּמָּנוּת הִיא סַבְלָנוּת.",
+      "text_markdown": "המנטליות של האומנות היא סבלנות.",
+      "tts": {
+        "text": "הַמֶּנְטָלִיּוּת שֶׁל הָאוּמָּנוּת הִיא סַבְלָנוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זאת עַנְוָה.",
+      "text_markdown": "זאת ענווה.",
+      "tts": {
+        "text": "זאת עַנְוָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זאת הַנְּכוֹנוּת לִתְחַקֵּר כָּל קְפִיצָה, גַּם אֶת הַמְּשַׁעְמְמוֹת.",
+      "text_markdown": "זאת הנכונות לתחקר כל קפיצה, גם את המשעממות.",
+      "tts": {
+        "text": "זאת הַנְּכוֹנוּת לִתְחַקֵּר כָּל קְפִיצָה, גַּם אֶת הַמְּשַׁעְמְמוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "צַנְחָנִים אוֹהֲבִים לְדַבֵּר אַחֲרֵי קְפִיצָה.",
+      "text_markdown": "צנחנים אוהבים לדבר אחרי קפיצה.",
+      "tts": {
+        "text": "צַנְחָנִים אוֹהֲבִים לְדַבֵּר אַחֲרֵי קְפִיצָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הֵם יָשְׁבוּ עַל שׁוּלְחַן פִּיקְנִיק וְיַעַבְרוּ עַל כָּל שְׁנִיָּה, תְּנוּחַת גּוּף אַחַר תְּנוּחַת גּוּף.",
+      "text_markdown": "הם ישבו על שולחן פיקניק ויעברו על כל שנייה, תנוחת גוף אחר תנוחת גוף.",
+      "tts": {
+        "text": "הֵם יָשְׁבוּ עַל שׁוּלְחַן פִּיקְנִיק וְיַעַבְרוּ עַל כָּל שְׁנִיָּה, תְּנוּחַת גּוּף אַחַר תְּנוּחַת גּוּף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "מָה עָבַד.",
+      "text_markdown": "מה עבד.",
+      "tts": {
+        "text": "מָה עָבַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "מָה הָיָה רָשְׁלָנִי.",
+      "text_markdown": "מה היה רשלני.",
+      "tts": {
+        "text": "מָה הָיָה רָשְׁלָנִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "מָה הֵם רוֹצִים לְנַסּוֹת בַּפַּעַם הַבָּאָה.",
+      "text_markdown": "מה הם רוצים לנסות בפעם הבאה.",
+      "tts": {
+        "text": "מָה הֵם רוֹצִים לְנַסּוֹת בַּפַּעַם הַבָּאָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זאת הַסִּיבָה שֶׁאֲנָשִׁים נִשְׁאָרִים.",
+      "text_markdown": "זאת הסיבה שאנשים נשארים.",
+      "tts": {
+        "text": "זאת הַסִּיבָה שֶׁאֲנָשִׁים נִשְׁאָרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לֹא כִּי הַנְּפִילָה מַרְגִּישָׁה.",
+      "text_markdown": "לא כי הנפילה מרגשת.",
+      "tts": {
+        "text": "לֹא כִּי הַנְּפִילָה מַרְגִּישָׁה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַנְּפִילָה הִיא הַחֵלֶק הַקַּל.",
+      "text_markdown": "הנפילה היא החלק הקל.",
+      "tts": {
+        "text": "הַנְּפִילָה הִיא הַחֵלֶק הַקַּל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אָנָשִׁים נִשְׁאָרִים כִּי תָמִיד יֵשׁ מָה לִלְמוֹד.",
+      "text_markdown": "אנשים נשארים כי תמיד יש מה ללמוד.",
+      "tts": {
+        "text": "אָנָשִׁים נִשְׁאָרִים כִּי תָמִיד יֵשׁ מָה לִלְמוֹד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "תָמִיד יֵשׁ חָבֵר לִלְמוֹד אִתּוֹ.",
+      "text_markdown": "תמיד יש חבר ללמוד איתו.",
+      "tts": {
+        "text": "תָמִיד יֵשׁ חָבֵר לִלְמוֹד אִתּוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "וְיֵשׁ שָׁמַיִם שְׁמַחְכִּים לְךָ בַּצָּהֳרַיִם מָחָר.",
+      "text_markdown": "ויש שמיים שמחכים לך בצהריים מחר.",
+      "tts": {
+        "text": "וְיֵשׁ שָׁמַיִם שְׁמַחְכִּים לְךָ בַּצָּהֳרַיִם מָחָר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "רגעים",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "רְגָעִים.",
+      "text_markdown": "רגעים"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תֵּן לִי לָתֵת לְךָ שְׁלוֹשָׁה.",
+      "text_markdown": "תן לי לתת לך שלושה.",
+      "tts": {
+        "text": "תֵּן לִי לָתֵת לְךָ שְׁלוֹשָׁה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הָרִאשׁוֹן הוּא טִיסַת שְׁקִיעָה.",
+      "text_markdown": "הראשון הוא טיסת שקיעה.",
+      "tts": {
+        "text": "הָרִאשׁוֹן הוּא טִיסַת שְׁקִיעָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַמָּטוֹס מַמְרִיא עֶשְׂרִים דַּקּוֹת לִפְנֵי שֶׁהַשֶּׁמֶשׁ שׁוֹקַעַת.",
+      "text_markdown": "המטוס ממריא עשרים דקות לפני שהשמש שוקעת.",
+      "tts": {
+        "text": "הַמָּטוֹס מַמְרִיא עֶשְׂרִים דַּקּוֹת לִפְנֵי שֶׁהַשֶּׁמֶשׁ שׁוֹקַעַת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה מְטַפֵּס דֶּרֶךְ שִׁכְבוֹת שֶׁל אוֹר כָּתוֹם, הַתָּא חַמִּים, הַחֲבֵרִים שְׁלְךָ שְׁקֵטִים.",
+      "text_markdown": "אתה מטפס דרך שכבות של אור כתום, התא חמים, החברים שלך שקטים.",
+      "tts": {
+        "text": "אַתָּה מְטַפֵּס דֶּרֶךְ שִׁכְבוֹת שֶׁל אוֹר כָּתוֹם, הַתָּא חַמִּים, הַחֲבֵרִים שְׁלְךָ שְׁקֵטִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כְּשֶׁהַדֶּלֶת נִפְתַּחַת הַפַּעַם, הָאָוִיר וָרוֹד.",
+      "text_markdown": "כשהדלת נפתחת הפעם, האוויר ורוד.",
+      "tts": {
+        "text": "כְּשֶׁהַדֶּלֶת נִפְתַּחַת הַפַּעַם, הָאָוִיר וָרוֹד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "כַּדּוּר הָאָרֶץ מִתַּחְתֶּיךָ חֲצִי בְּצֵל, חֲצִי בִּזְהָב.",
+      "text_markdown": "כדור הארץ מתחתיך חצי בצל, חצי בזהב.",
+      "tts": {
+        "text": "כַּדּוּר הָאָרֶץ מִתַּחְתֶּיךָ חֲצִי בְּצֵל, חֲצִי בִּזְהָב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה צוֹעֵד הַחוּצָה, וּבְמִשֶׁךְ שִׁשִּׁים שָׁנִיּוֹת אַתָּה נוֹפֵל בְּתוֹךְ שְׁקִיעָה.",
+      "text_markdown": "אתה צועד החוצה, ובמשך שישים שניות אתה נופל בתוך שקיעה.",
+      "tts": {
+        "text": "אַתָּה צוֹעֵד הַחוּצָה, וּבְמֶשֶׁךְ שִׁשִּׁים שְׁנִיּוֹת אַתָּה נוֹפֵל בְּתוֹךְ שְׁקִיעָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זֶה לֹא נִרְאֶה אֲמִתִּי.",
+      "text_markdown": "זה לא נראה אמיתי.",
+      "tts": {
+        "text": "זֶה לֹא נִרְאֶה אֲמִתִּי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה תִּרְאֶה צְבָעִים שֶׁלֹּא יָדַעְתָּ שֶׁהַעֵינַיִם שֶׁלְּךָ יְכוֹלוֹת לִמְצוֹא.",
+      "text_markdown": "אתה תראה צבעים שלא ידעת שהעיניים שלך יכולות למצוא.",
+      "tts": {
+        "text": "אַתָּה תִּרְאֶה צְבָעִים שֶׁלֹּא יָדַעְתָּ שֶׁהַעֵינַיִם שֶׁלְּךָ יְכוֹלוֹת לִמְצוֹא.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כְּשֶׁהַמִּצְנַח שֶׁלְּךָ נִפְתַּח, אַתָּה מְרַחֵף מֵעַל עוֹלָם שְׁבוֹעֵר לְרֶגַע.",
+      "text_markdown": "כשהמצנח שלך נפתח, אתה מרחף מעל עולם שבוער לרגע.",
+      "tts": {
+        "text": "כְּשֶׁהַמִּצְנַח שֶׁלְּךָ נִפְתַּח, אַתָּה מְרַחֵף מֵעַל עוֹלָם שְׁבוֹעֵר לְרֶגַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הָרוּחַ שָׁכְחָה לַכְּלוּם.",
+      "text_markdown": "הרוח שכחה לכלום.",
+      "tts": {
+        "text": "הָרוּחַ שָׁכְחָה לַכְּלוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אֵזוֹר הַנְּחִיתָה הוּא רִבּוּעַ יָרוֹק זָעִיר מִתַּחְתֶּיךָ, עִם אוֹר חַם אֶחָד דּוֹלֵק.",
+      "text_markdown": "אזור הנחיתה הוא ריבוע ירוק זעיר מתחתיך, עם אור חם אחד דולק.",
+      "tts": {
+        "text": "אֵזוֹר הַנְּחִיתָה הוּא רִבּוּעַ יָרוֹק זָעִיר מִתַּחְתֶּיךָ, עִם אוֹר חַם אֶחָד דּוֹלֵק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה בּוֹחֵר מַעְגָּל אִיטִי וְנוֹתֵן לְעַצְמְךָ לִנְחוֹת אַחֲרוֹן, כִּי אַף אֶחָד לֹא רוֹצֶה שֶׁהַחֵלֶק הַזֶּה יִגָּמֵר.",
+      "text_markdown": "אתה בוחר מעגל איטי ונותן לעצמך לנחות אחרון, כי אף אחד לא רוצה שהחלק הזה ייגמר.",
+      "tts": {
+        "text": "אַתָּה בּוֹחֵר מַעְגָּל אִיטִי וְנוֹתֵן לְעַצְמְךָ לִנְחוֹת אַחֲרוֹן, כִּי אַף אֶחָד לֹא רוֹצֶה שֶׁהַחֵלֶק הַזֶּה יִגָּמֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "כְּשֶׁהָרַגְלַיִם שֶׁלְּךָ נוֹגְעוֹת בַּדֶּשֶׁא, הַשָּׁמַיִם סְגוּלִים.",
+      "text_markdown": "כשהרגליים שלך נוגעות בדשא, השמיים סגולים.",
+      "tts": {
+        "text": "כְּשֶׁהָרַגְלַיִם שֶׁלְּךָ נוֹגְעוֹת בַּדֶּשֶׁא, הַשָּׁמַיִם סְגוּלִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "הַחֲבֵרִים שֶׁלְּךָ הוֹלְכִים מֵהַנְּחִיתוֹת שֶׁלָּהֶם.",
+      "text_markdown": "החברים שלך הולכים מהנחיתות שלהם.",
+      "tts": {
+        "text": "הַחֲבֵרִים שֶׁלְּךָ הוֹלְכִים מֵהַנְּחִיתוֹת שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "אֶחָד מֵהֶם פָּשׁוּט מִסְתַּכֵּל עָלֶיךָ.",
+      "text_markdown": "אחד מהם פשוט מסתכל עליך.",
+      "tts": {
+        "text": "אֶחָד מֵהֶם פָּשׁוּט מִסְתַּכֵּל עָלֶיךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "שְׁנֵיכֶם מְנַעְנְעִים אֶת הָרֹאשׁ.",
+      "text_markdown": "שניכם מנענעים את הראש.",
+      "tts": {
+        "text": "שְׁנֵיכֶם מְנַנְנְעִים אֶת הָרֹאשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "אַף אֶחָד מִכֶּם לֹא מַצְלִיחַ לִמְצֹא מִלָּה.",
+      "text_markdown": "אף אחד מכם לא מצליח למצוא מילה.",
+      "tts": {
+        "text": "אַף אֶחָד מִכֶּם לֹא מַצְלִיחַ לִמְצֹא מִלָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַשְּׁנִי הוּא קְפִיצַת מִבְנֶה.",
+      "text_markdown": "השני הוא קפיצת מבנה.",
+      "tts": {
+        "text": "הַשְּׁנִי הוּא קְפִיצַת מִבְנֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתֶּם שְׁמוֹנָה עַל הַטִּיסָה.",
+      "text_markdown": "אתם שמונה על הטיסה.",
+      "tts": {
+        "text": "אַתֶּם שְׁמוֹנָה עַל הַטִּיסָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה יוֹשֵׁב עַל הַסַּפְסֵל, קָסְדָה עַל הַבִּרְכַּיִם, וְהַקּוֹפֵץ הַמּוֹבִיל מְצַיֵּר אֶת הַקְּפִיצָה עַל לוּחַ לָבָן קָטָן.",
+      "text_markdown": "אתה יושב על הספסל, קסדה על הברכיים, והקופץ המוביל מצייר את הקפיצה על לוח לבן קטן.",
+      "tts": {
+        "text": "אַתָּה יוֹשֵׁב עַל הַסַּפְסֵל, קָסְדָה עַל הַבִּרְכַּיִם, וְהַקּוֹפֵץ הַמּוֹבִיל מְצַיֵּר אֶת הַקְּפִיצָה עַל לוּחַ לָבָן קָטָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתֶּם תַּעֲזֹבוּ אֶת הַמְטוֹס בְּאַשְׁכּוֹל, תִּפְלוּ יַחְדָּו, תִּבְנוּ מַעֲגָל.",
+      "text_markdown": "אתם תעזבו את המטוס באשכול, תיפלו יחד, תבנו מעגל.",
+      "tts": {
+        "text": "אַתֶּם תַּעֲזֹבוּ אֶת הַמְטוֹס בְּאַשְׁכּוֹל, תִּפְלוּ יַחְדָּו, תִּבְנוּ מַעֲגָל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "כּוּלְכֶם יוֹדְעִים אֶת הַמָּקוֹם שֶׁלָּכֶם.",
+      "text_markdown": "כולכם יודעים את המקום שלכם.",
+      "tts": {
+        "text": "כּוּלְכֶם יוֹדְעִים אֶת הַמָּקוֹם שֶׁלָּכֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתֶּם מִתְחַבְּטִים אַגְרוֹפִים, בּוֹדְקִים אֶת הַצִּיּוּד אֶחָד שֶׁל הַשְּׁנִי, צוֹחְקִים בְּעַצְבָּנוּת.",
+      "text_markdown": "אתם מתחבטים אגרופים, בודקים את הציוד אחד של השני, צוחקים בעצבנות.",
+      "tts": {
+        "text": "אַתֶּם מִתְחַבְּטִים אַגְרוֹפִים, בּוֹדְקִים אֶת הַצִּיּוּד אֶחָד שֶׁל הַשְּׁנִי, צוֹחְקִים בְּעַצְבָּנוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "שְׁמוֹנָה מְבוּגָּרִים, מְפוּחָדִים וּשְׂמֵחִים בּוֹ זְמַנִּית, כְּמוֹ יְלָדִים בְּמִסִּיבַת לַיְלָה.",
+      "text_markdown": "שמונה מבוגרים, מפוחדים ושמחים בו זמנית, כמו ילדים במסיבת לילה.",
+      "tts": {
+        "text": "שְׁמוֹנָה מְבוּגָּרִים, מְפוּחָדִים וּשְׂמֵחִים בּוֹ זְמַנִּית, כְּמוֹ יְלָדִים בְּמִסִּיבַת לַיְלָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמְטוֹס מִתְיַשְּׁרֶת.",
+      "text_markdown": "המטוס מתיישר.",
+      "tts": {
+        "text": "הַמְטוֹס מִתְיַשְּׁרֶת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַדֶּלֶת נִפְתַּחַת.",
+      "text_markdown": "הדלת נפתחת.",
+      "tts": {
+        "text": "הַדֶּלֶת נִפְתְּחָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הַמּוֹבִיל שֶׁלְּכֶם צוֹעֵד הַחוּצָה, וּשְׁאָר הַקְּבוּצָה אַחֲרָיו, פְּעִימַת לֵב אַחַת בֵּין כָּל אֶחָד.",
+      "text_markdown": "המוביל שלכם צועד החוצה, ושאר הקבוצה אחריו, פעימת לב אחת בין כל אחד.",
+      "tts": {
+        "text": "הַמּוֹבִיל שֶׁלְּכֶם צוֹעֵד הַחוּצָה, וּשְׁאָר הַקְּבוּצָה אַחֲרָיו, פְּעִימַת לֵב אַחַת בֵּין כָּל אֶחָד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בִּנְפִילָה הַחוּפְשִׁית, אַתֶּם מוֹצְאִים זֶה אֶת זֶה כִּמְעַט בְּלִי לַחֲשוֹב.",
+      "text_markdown": "בנפילה החופשית, אתם מוצאים זה את זה כמעט בלי לחשוב.",
+      "tts": {
+        "text": "בִּנְפִילָה הַחוּפְשִׁית, אַתֶּם מוֹצְאִים זֶה אֶת זֶה כִּמְעַט בְּלִי לַחֲשוֹב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "יָדַיִם פּוֹגְשׁוֹת יָדַיִם.",
+      "text_markdown": "ידיים פוגשות ידיים.",
+      "tts": {
+        "text": "יָדַיִם פּוֹגְשׁוֹת יָדַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הַמַּעֲגָל נוּצַר.",
+      "text_markdown": "המעגל נוצר.",
+      "tts": {
+        "text": "הַמַּעֲגָל נוּצַר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "בְּמֶשֶׁךְ כַּמָּה שְׁנִיּוֹת מֻשְׁלָמוֹת, שְׁמוֹנָה אֲנָשִׁים אוֹחֲזִים זֶה בְּזֶה בַּשָּׁמַיִם.",
+      "text_markdown": "במשך כמה שניות מושלמות, שמונה אנשים אוחזים זה בזה בשמיים.",
+      "tts": {
+        "text": "בְּמֶשֶׁךְ כַּמָּה שְׁנִיּוֹת מֻשְׁלָמוֹת, שְׁמוֹנָה אֲנָשִׁים אוֹחֲזִים זֶה בְּזֶה בַּשָּׁמַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "נוֹפְלִים בָּאוֹתָהּ מְהִירוּת.",
+      "text_markdown": "נופלים באותה מהירות.",
+      "tts": {
+        "text": "נוֹפְלִים בָּאוֹתָהּ מְהִירוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "מִסְתַּכְּלִים זֶה לְזֶה בְּעֵינַיִם.",
+      "text_markdown": "מסתכלים זה לזה בעיניים.",
+      "tts": {
+        "text": "מִסְתַּכְּלִים זֶה לְזֶה בְּעֵינַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "וְאָז מַד הַגּוֹבַה שֶׁלְּךָ אוֹמֵר שֶׁהִגִּיעַ הַזְּמַן.",
+      "text_markdown": "ואז מד הגובה שלך אומר שהגיע הזמן.",
+      "tts": {
+        "text": "וְאָז מַד הַגּוֹבַה שֶׁלְּךָ אוֹמֵר שֶׁהִגִּיעַ הַזְּמַן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "אַתָּה מְרַפֶּה.",
+      "text_markdown": "אתה מרפה.",
+      "tts": {
+        "text": "אַתָּה מְרַפֶּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "אַתֶּם עוֹקְבִים אֶחָד מִן־הַשֵּׁנִי, כְּדֵי לָתֵת לַמְּצַנְּחִים שֶׁלָּכֶם מָקוֹם לְהִפָּתֵחַ.",
+      "text_markdown": "אתם עוקבים אחד מהשני, כדי לתת למצנחים שלכם מקום להיפתח.",
+      "tts": {
+        "text": "אַתֶּם עוֹקְבִים אֶחָד מֵהַשְּׁנִי, כְּדֵי לָתֵת לַמְּצַנְּחִים שֶׁלָּכֶם מָקוֹם לְהִפָּתַח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "עַל־הַקַּרְקַע, אַתֶּם לֹא מַפְסִיקִים לְהִתְחַבֵּק.",
+      "text_markdown": "על הקרקע, אתם לא מפסיקים להתחבק.",
+      "tts": {
+        "text": "עַל־הַקַּרְקַע, אַתֶּם לֹא מַפְסִיקִים לְהִתְחַבֵּק.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַשְּׁלִישִׁי הוּא קְפִיצָה אַחֲרֵי שָׁנָה קָשָׁה.",
+      "text_markdown": "השלישי הוא קפיצה אחרי שנה קשה.",
+      "tts": {
+        "text": "הַשְּׁלִישִׁי הוּא קְפִיצָה אַחֲרֵי שָׁנָה קָשָׁה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוּלַי עָבַרְתָּ מִשְׁהוּ.",
+      "text_markdown": "אולי עברת משהו.",
+      "tts": {
+        "text": "אוּלַי עָבַרְתָּ מִשְׁהוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "עוֹנָה גְּרוּעָה בַּעֲבוֹדָה.",
+      "text_markdown": "עונה גרועה בעבודה.",
+      "tts": {
+        "text": "עוֹנָה גְּרוּעָה בַּעֲבוֹדָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מַעֲרֶכֶת יַחֲסִים שֶׁהִסְתַּיְּמָה.",
+      "text_markdown": "מערכת יחסים שהסתיימה.",
+      "tts": {
+        "text": "מַעֲרֶכֶת יַחֲסִים שֶׁהִסְתַּיְּמָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אֻבְדָן שֶׁגָּרַם לָעוֹלָם הַרְגִּיל לְהַרְגִּישׁ דַּק וְרָחוֹק.",
+      "text_markdown": "אובדן שגרם לעולם הרגיל להרגיש דק ורחוק.",
+      "tts": {
+        "text": "אֻבְדָן שֶׁגָּרַם לָעוֹלָם הַרְגִּיל לְהַרְגִּישׁ דַּק וְרָחוֹק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה לֹא קוֹפֵץ כִּי אַתָּה רוֹצֶה לְהַרְגִּישׁ מִשְׁהוּ.",
+      "text_markdown": "אתה לא קופץ כי אתה רוצה להרגיש משהו.",
+      "tts": {
+        "text": "אַתָּה לֹא קוֹפֵץ כִּי אַתָּה רוֹצֶה לְהַרְגִּישׁ מִשְׁהוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה קוֹפֵץ כִּי לֹא הִצְלַחְתָּ לְהַרְגִּישׁ שׁוּם דָּבָר, וְאַתָּה רוֹצֶה לָדַעַת אִם אַתָּה עֲדַיִן שָׁם.",
+      "text_markdown": "אתה קופץ כי לא הצלחת להרגיש שום דבר, ואתה רוצה לדעת אם אתה עדיין שם.",
+      "tts": {
+        "text": "אַתָּה קוֹפֵץ כִּי לֹא הִצְלַחְתָּ לְהַרְגִּישׁ שׁוּם דָּבָר, וְאַתָּה רוֹצֶה לָדַעַת אִם אַתָּה עֲדַיִן שָׁם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַמְּטוּס מִטַּפֵּס.",
+      "text_markdown": "המטוס מטפס.",
+      "tts": {
+        "text": "הַמְּטוּס מִטַּפֵּס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הַדֶּלֶת נִפְתַּחַת.",
+      "text_markdown": "הדלת נפתחת.",
+      "tts": {
+        "text": "הַדֶּלֶת נִפְתַּחַת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה צוֹעֵד הַחוּצָה.",
+      "text_markdown": "אתה צועד החוצה.",
+      "tts": {
+        "text": "אַתָּה צוֹעֵד הַחוּצָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "וּבִשְׁלוֹשׁ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת, לִפְנֵי שֶׁהָרוּחַ תּוֹפְסֶת אוֹתְךָ, מַשְׁהוּ בְתוֹכְךָ נִסְדַּק וְנִפְתַּח.",
+      "text_markdown": "ובשלוש השניות הראשונות, לפני שהרוח תופסת אותך, משהו בתוכך נסדק ונפתח.",
+      "tts": {
+        "text": "וּבִשְׁלוֹשׁ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת, לִפְנֵי שֶׁהָרוּחַ תּוֹפְסֶת אוֹתְךָ, מַשְׁהוּ בְתוֹכְךָ נִסְדַּק וְנִפְתַּח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "לֹא תִכַּנְתָּ לִבְכּוֹת.",
+      "text_markdown": "לא תכננת לבכות.",
+      "tts": {
+        "text": "לֹא תִכַּנְתָּ לִבְכּוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אַתָּה בוֹכֶה בְכָל זַאת.",
+      "text_markdown": "אתה בוכה בכל זאת.",
+      "tts": {
+        "text": "אַתָּה בוֹכֶה בְכָל זַאת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הַנְּפִילָה הַחוּפְשִׁית עוֹשָׂה אֶת שֶׁלָּהּ.",
+      "text_markdown": "הנפילה החופשית עושה את שלה.",
+      "tts": {
+        "text": "הַנְּפִילָה הַחוּפְשִׁית עוֹשָׂה אֶת שֶׁלָּהּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "שִׁשִּׁים שְׁנִיּוֹת אֲרוּכוֹת שֶׁל רוּחַ וּנְשִׁימָה וּנְפִילָה.",
+      "text_markdown": "שישים שניות ארוכות של רוח ונשימה ונפילה.",
+      "tts": {
+        "text": "שִׁשִּׁים שְׁנִיּוֹת אֲרוּכוֹת שֶׁל רוּחַ וּנְשִׁימָה וּנְפִילָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "וְאֵיפְשְׁהוּ שָׁם, הַחֵלֶק שֶׁלְּךָ שֶׁאוֹחֵז בְּכָל דָּבָר סוּף סוּף מְנִיחַ אֶת זֶה לְדַקָּה.",
+      "text_markdown": "ואיפשהו שם, החלק שלך שאוחז בכל דבר סוף סוף מניח את זה לדקה.",
+      "tts": {
+        "text": "וְאֵיפְשְׁהוּ שָׁם, הַחֵלֶק שֶׁלְּךָ שֶׁאוֹחֵז בְּכָל דָּבָר סוּף סוּף מְנִיחַ אֶת זֶה לְדַקָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "הַמִּצְנָח נִפְתַּח.",
+      "text_markdown": "המצנח נפתח.",
+      "tts": {
+        "text": "הַמִּצְנָח נִפְתַּח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "הָעוֹלָם מִשְׁתַּתֵּק.",
+      "text_markdown": "העולם משתתק.",
+      "tts": {
+        "text": "הָעוֹלָם מִשְׁתַּתֵּק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "אַתָּה תָּלוּי בִּרְתִימָה, וּבוֹכֶה, וְצוֹחֵק, וּבוֹכֶה שׁוּב.",
+      "text_markdown": "אתה תלוי ברתמה, ובוכה, וצוחק, ובוכה שוב.",
+      "tts": {
+        "text": "אַתָּה תָּלוּי בָּרִתְמָה, וּבוֹכֶה, וְצוֹחֵק, וּבוֹכֶה שׁוּב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "אַף אֶחָד לֹא יָכוֹל לִרְאוֹת אוֹתְךָ.",
+      "text_markdown": "אף אחד לא יכול לראות אותך.",
+      "tts": {
+        "text": "אַף אֶחָד לֹא יָכוֹל לִרְאוֹת אוֹתְךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "זוֹאת הַנְּקוּדָה.",
+      "text_markdown": "זאת הנקודה.",
+      "tts": {
+        "text": "זוֹאת הַנְּקוּדָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כְּשַׁאַתָּה נוֹחֵת, אַתָּה לֹא תוּקַּן.",
+      "text_markdown": "כשאתה נוחת, אתה לא תוקן.",
+      "tts": {
+        "text": "כְּשַׁאַתָּה נוֹחֵת, אַתָּה לֹא תוּקַּן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה עֲדַיִן נוֹשֵׂא אֶת כׇּל מַה שֶׁהֵבֵאתָ לְשָׁם לְמַעְלָה.",
+      "text_markdown": "אתה עדיין נושא את כל מה שהבאת לשם למעלה.",
+      "tts": {
+        "text": "אַתָּה עֲדַיִן נוֹשֵׂא אֶת כׇּל מַה שֶׁהֵבֵאתָ לְשָׁם לְמַעְלָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אֲבָל לְשָׁעָה אַחַת מְלֵאָה שָׁם לְמַעְלָה, מַשְׁהוּ בְתוֹכְךָ זָכַר בְּדִיּוּק אֵיךְ זֶה מַרְגִּישׁ לִהְיוֹת חַי.",
+      "text_markdown": "אבל לשעה אחת מלאה שם למעלה, משהו בתוכך זכר בדיוק איך זה מרגיש להיות חי.",
+      "tts": {
+        "text": "אֲבָל לְשָׁעָה אַחַת מְלֵאָה שָׁם לְמַעְלָה, מַשְׁהוּ בְתוֹכְךָ זָכַר בְּדִיּוּק אֵיךְ זֶה מַרְגִּישׁ לִהְיוֹת חַי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "צְנִיחָה חוּפְשִׁית לֹא פָּתְרָה אֶת הַשָּׁנָה שֶׁלְּךָ.",
+      "text_markdown": "צניחה חופשית לא פתרה את השנה שלך.",
+      "tts": {
+        "text": "צְנִיחָה חוּפְשִׁית לֹא פָּתְרָה אֶת הַשָּׁנָה שֶׁלְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הִיא רַק הֶחְזִירָה לְךָ אוֹתָהּ לְשִׁשִּׁים שְׁנִיּוֹת, בַּחֲתִיכוֹת קְטַנּוֹת מַסְפִּיק כְּדֵי לֶאֱחֹז בָּהֶן.",
+      "text_markdown": "היא רק החזירה לך אותה לשישים שניות, בחתיכות קטנות מספיק כדי לאחוז בהן.",
+      "tts": {
+        "text": "הִיא רַק הֶחְזִירָה לְךָ אוֹתָהּ לְשִׁשִּׁים שְׁנִיּוֹת, בַּחֲתִיכוֹת קְטַנּוֹת מַסְפִּיק כְּדֵי לֶאֱחֹז בָּהֶן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "למה זה נשאר",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "לָמָּה זֶה נִשְׁאַר",
+      "text_markdown": "למה זה נשאר"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אֲנִי קוֹפֵץ כְּבָר הַרְבֵּה זְמַן.",
+      "text_markdown": "אני קופץ כבר הרבה זמן.",
+      "tts": {
+        "text": "אֲנִי קוֹפֵץ כְּבָר הַרְבֵּה זְמַן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מַסְפִּיק זְמַן בִּשְׁבִיל שֶׁאֲנִי לֹא זוֹכֵר אֶת הַסְּפִירָה.",
+      "text_markdown": "מספיק זמן בשביל שאני לא זוכר את הספירה.",
+      "tts": {
+        "text": "מַסְפִּיק זְמַן בִּשְׁבִיל שֶׁאֲנִי לֹא זוֹכֵר אֶת הַסְּפִירָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מִסְפִּיק זְמַן בִּשְׁבִיל שֶׁהַשְּׁאֵלָה, לָמָּה אַתָּה עֲדַיִן עוֹשֶׂה אֶת זֶה, הַפְסִיקָה לוֹמַר לִי משְׁהוּ.",
+      "text_markdown": "מספיק זמן בשביל שהשאלה, למה אתה עדיין עושה את זה, הפסיקה לומר לי משהו.",
+      "tts": {
+        "text": "מִסְפִּיק זְמַן בִּשְׁבִיל שֶׁהַשְּׁאֵלָה, לָמָּה אַתָּה עֲדַיִן עוֹשֶׂה אֶת זֶה, הַפְסִיקָה לוֹמַר לִי משְׁהוּ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אֲנִי רוֹצֶה לְהַשְׁאִיר אוֹתְךָ עִם כַּמָּה דְבָרִים.",
+      "text_markdown": "אני רוצה להשאיר אותך עם כמה דברים.",
+      "tts": {
+        "text": "אֲנִי רוֹצֶה לְהַשְׁאִיר אוֹתְךָ עִם כַּמָּה דְבָרִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הָרִאשׁוֹן הוּא שְׁצְנִיחָה חוּפְשִׁית הִיא לֹא שָׁלַב חוֹלֵף.",
+      "text_markdown": "הראשון הוא שצניחה חופשית היא לא שלב חולף.",
+      "tts": {
+        "text": "הָרִאשׁוֹן הוּא שְׁצְנִיחָה חוּפְשִׁית הִיא לֹא שָׁלַב חוֹלֵף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אֲנָשִׁים דּוֹאֲגִים, כְּשֶׁהֵם רוֹאִים חָבֵר מִתְחִיל בְּזֶה.",
+      "text_markdown": "אנשים דואגים, כשהם רואים חבר מתחיל בזה.",
+      "tts": {
+        "text": "אֲנָשִׁים דּוֹאֲגִים, כְּשֶׁהֵם רוֹאִים חָבֵר מִתְחִיל בְּזֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הֵם דּוֹאֲגִים שֶׁזֶּה מֶרֶד, משְׁבַּר אֶמְצַע הַחַיִּים, דֶּרֶךְ לִבְרוֹחַ מִמְּשֶׁהוּ.",
+      "text_markdown": "הם דואגים שזה מרד, משבר אמצע החיים, דרך לברוח ממשהו.",
+      "tts": {
+        "text": "הֵם דּוֹאֲגִים שֶׁזֶּה מֶרֶד, משְׁבַּר אֶמְצַע הַחַיִּים, דֶּרֶךְ לִבְרוֹחַ מִמְּשֶׁהוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זֶה לֹא.",
+      "text_markdown": "זה לא.",
+      "tts": {
+        "text": "זֶה לֹא.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הָאֲנָשִׁים שֶׁנִּשְׁאָרוּ אֵינָם בּוֹרְחִים.",
+      "text_markdown": "האנשים שנשארים אינם בורחים.",
+      "tts": {
+        "text": "הָאֲנָשִׁים שֶׁנִּשְׁאָרוּ אֵינָם בּוֹרְחִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הֵם בָּנוּ, כִּמְעַט בְּלִי כַּוָּנָה, חַיִּים קְטַנִּים בְּתוֹךְ הַשָּׁמַיִם.",
+      "text_markdown": "הם בנו, כמעט בלי כוונה, חיים קטנים בתוך השמיים.",
+      "tts": {
+        "text": "הֵם בָּנוּ, כִּמְעַט בְּלִי כַּוָּנָה, חַיִּים קְטַנִּים בְּתוֹךְ הַשָּׁמַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הֵם מוּפִיעִים בַּשַּׁבָּתוֹת.",
+      "text_markdown": "הם מופיעים בשבתות.",
+      "tts": {
+        "text": "הֵם מוּפִיעִים בַּשַּׁבָּתוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "הֵם מְקַפְּלִים אֶת הַמְּצָנְחִים שֶׁלָּהֶם.",
+      "text_markdown": "הם מקפלים את המצנחים שלהם.",
+      "tts": {
+        "text": "הֵם מְקַפְּלִים אֶת הַמְּצָנְחִים שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "הֵם מְחַבְּקִים אֶת הַחֲבֵרִים שֶׁלָּהֶם.",
+      "text_markdown": "הם מחבקים את החברים שלהם.",
+      "tts": {
+        "text": "הֵם מְחַבְּקִים אֶת הַחֲבֵרִים שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "הֵם הוֹלְכִים הַבַּיְתָה בִּשְׁקִיעָה, עֲיֵפִים בַּדֶּרֶךְ הַטּוֹבָה.",
+      "text_markdown": "הם הולכים הביתה בשקיעה, עייפים בדרך הטובה.",
+      "tts": {
+        "text": "הֵם הוֹלְכִים הַבַּיְתָה בִּשְׁקִיעָה, עֲיֵפִים בַּדֶּרֶךְ הַטּוֹבָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "בְּיוֹם שֵׁנִי הֵם חוֹזְרִים לַעֲבוֹדָה, וְהֵם נִחְמָדִים יוֹתֵר בְּאוֹפֶן נִכָּר מִמָּה שֶׁהָיוּ.",
+      "text_markdown": "ביום שני הם חוזרים לעבודה, והם נחמדים יותר באופן ניכר ממה שהיו.",
+      "tts": {
+        "text": "בְּיוֹם שֵׁנִי הֵם חוֹזְרִים לַעֲבוֹדָה, וְהֵם נִחְמָדִים יוֹתֵר בְּאוֹפֶן נִכָּר מִמָּה שֶׁהָיוּ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הַשָּׁמַיִם מְשַׁנִּים אוֹתְךָ, אֲבָל לְאַט.",
+      "text_markdown": "השמיים משנים אותך, אבל לאט.",
+      "tts": {
+        "text": "הַשָּׁמַיִם מְשַׁנִּים אוֹתְךָ, אֲבָל לְאַט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אַתָּה הוֹפֵךְ נוֹכַח יוֹתֵר.",
+      "text_markdown": "אתה הופך נוכח יותר.",
+      "tts": {
+        "text": "אַתָּה הוֹפֵךְ נוֹכַח יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה הוֹפֵךְ פָּחוֹת פּוֹחֵד מִדְּבָרִים קְטַנִּים, כִּי תִּרְגַּלְתָּ לִהְיוֹת כֵּן עִם דְּבָרִים גְּדוֹלִים יוֹתֵר.",
+      "text_markdown": "אתה הופך פחות פוחד מדברים קטנים, כי תרגלת להיות כן עם דברים גדולים יותר.",
+      "tts": {
+        "text": "אַתָּה הוֹפֵךְ פָּחוֹת פּוֹחֵד מִדְּבָרִים קְטַנִּים, כִּי תִּרְגַּלְתָּ לִהְיוֹת כֵּן עִם דְּבָרִים גְּדוֹלִים יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אַתָּה צוֹחֵק בְּקַלּוּת יוֹתֵר.",
+      "text_markdown": "אתה צוחק בקלות יותר.",
+      "tts": {
+        "text": "אַתָּה צוֹחֵק בְּקַלּוּת יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה אוֹמֵר לְאַנְשִׁים שֶׁאַתָּה אוֹהֵב אוֹתָם לְעִיתִים קְרוֹבוֹת יוֹתֵר.",
+      "text_markdown": "אתה אומר לאנשים שאתה אוהב אותם לעיתים קרובות יותר.",
+      "tts": {
+        "text": "אַתָּה אוֹמֵר לְאַנְשִׁים שֶׁאַתָּה אוֹהֵב אוֹתָם לְעִיתִים קְרוֹבוֹת יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "עָמַדְתָּ בַּפֶּתַח, שְׁנַיִם עָשָׂר אֶלֶף רֶגֶל מֵעַל, וְזָכַרְתָּ שֶׁשּׁוּם דָּבָר לֹא מוּבְטָּח.",
+      "text_markdown": "עמדת בפתח, שניים עשר אלף רגל מעל, וזכרת ששום דבר לא מובטח.",
+      "tts": {
+        "text": "עָמַדְתָּ בַּפֶּתַח, שְׁנַיִם עָשָׂר אֶלֶף רֶגֶל מֵעַל, וְזָכַרְתָּ שֶׁשּׁוּם דָּבָר לֹא מוּבְטָּח.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אִם אַי־פַּעַם תִּמְצָא אֶת עַצְמְךָ בַּאֲרוּחַת עֶרֶב עִם צַנְחָן, הִנֵּה הַדְּבָרִים שֶׁאַתָּה יָכוֹל לִשְׁאוֹל.",
+      "text_markdown": "אם אי פעם תמצא את עצמך בארוחת ערב עם צנחן, הנה הדברים שאתה יכול לשאול.",
+      "tts": {
+        "text": "אִם אַי־פַּעַם תִּמְצָא אֶת עַצְמְךָ בַּאֲרוּחַת עֶרֶב עִם צַנְחָן, הִנֵּה הַדְּבָרִים שֶׁאַתָּה יָכוֹל לִשְׁאוֹל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַתָּה יָכוֹל לִשְׁאוֹל אֵיךְ הוּא נִכְנַס לָזֶה.",
+      "text_markdown": "אתה יכול לשאול איך הוא נכנס לזה.",
+      "tts": {
+        "text": "אַתָּה יָכוֹל לִשְׁאוֹל אֵיךְ הוּא נִכְנַס לָזֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כָּל צַנְחָן זוֹכֵר אֶת הַקְּפִיצָה הָרִאשׁוֹנָה שֶׁלּוֹ בִּפְרָטִים חַיִּים, וְהוּא יִשְׂמַח לְסַפֵּר לָךְ.",
+      "text_markdown": "כל צנחן זוכר את הקפיצה הראשונה שלו בפרטים חיים, והוא ישמח לספר לך.",
+      "tts": {
+        "text": "כָּל צַנְחָן זוֹכֵר אֶת הַקְּפִיצָה הָרִאשׁוֹנָה שֶׁלּוֹ בִּפְרָטִים חַיִּים, וְהוּא יִשְׂמַח לְסַפֵּר לָךְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אַתָּה יָכוֹל לִשְׁאוֹל כַּמָּה קְפִיצוֹת הוּא בִּיצַע.",
+      "text_markdown": "אתה יכול לשאול כמה קפיצות הוא ביצע.",
+      "tts": {
+        "text": "אַתָּה יָכוֹל לִשְׁאוֹל כַּמָּה קְפִיצוֹת הוּא בִּיצַע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוּא יֵדַע אֶת הַמִּסְפָּר, פְּלוּס מִינוּס כַּמָּה, וְהוּא לֹא יַעֲמִיד פָּנִים שֶׁזֶּה יוֹתֵר מִמַּה שֶׁזֶּה.",
+      "text_markdown": "הוא יידע את המספר, פלוס מינוס כמה, והוא לא יעמיד פנים שזה יותר ממה שזה.",
+      "tts": {
+        "text": "הוּא יֵדַע אֶת הַמִּסְפָּר, פְּלוּס מִינוּס כַּמָּה, וְהוּא לֹא יַעֲמִיד פָּנִים שֶׁזֶּה יוֹתֵר מִמַּה שֶׁזֶּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אַתָּה יָכוֹל לִשְׁאוֹל מַה סוּג הַקְּפִיצָה הָאָהוּב עָלָיו.",
+      "text_markdown": "אתה יכול לשאול מה סוג הקפיצה האהוב עליו.",
+      "tts": {
+        "text": "אַתָּה יָכוֹל לִשְׁאוֹל מַה סוּג הַקְּפִיצָה הָאָהוּב עָלָיו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "חֵלֶק יֹאמְרוּ שְׁקִיעָה.",
+      "text_markdown": "חלק יגידו שקיעה.",
+      "tts": {
+        "text": "חֵלֶק יֹאמְרוּ שְׁקִיעָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "חֵלֶק יֹאמְרוּ מִבְנֶה גָּדוֹל.",
+      "text_markdown": "חלק יגידו מבנה גדול.",
+      "tts": {
+        "text": "חֵלֶק יֹאמְרוּ מִבְנֶה גָּדוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "חֵלֶק יֹאמְרוּ קְפִיצַת סוֹלוֹ שְׁקֵטָה בְּעֶרֶב רָגוּעַ.",
+      "text_markdown": "חלק יגידו קפיצת סולו שקטה בערב רגוע.",
+      "tts": {
+        "text": "חֵלֶק יֹאמְרוּ קְפִיצַת סוֹלוֹ שְׁקֵטָה בְּעֶרֶב רָגוּעַ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַתָּה יָכוֹל לִשְׁאוֹל אִם הוּא פָּחַד בַּפַּעַם הָרִאשׁוֹנָה.",
+      "text_markdown": "אתה יכול לשאול אם הוא פחד בפעם הראשונה.",
+      "tts": {
+        "text": "אַתָּה יָכוֹל לִשְׁאוֹל אִם הוּא פָּחַד בַּפַּעַם הָרִאשׁוֹנָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כִּמְבוּשָׁם שֶׁכֵּן.",
+      "text_markdown": "כמובן שכן.",
+      "tts": {
+        "text": "כִּמְבוּשָׁם שֶׁכֵּן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כֻּלָּם פּוֹחֲדִים.",
+      "text_markdown": "כולם פוחדים.",
+      "tts": {
+        "text": "כֻּלָּם פּוֹחֲדִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוּא בְטַח יִזְכִּיר אֶת הָרוּחַ בַּדֶּלֶת, אֶת הַסְּפִירָה, וְאֵיךְ הָעוֹלָם נִרְאָה מַמָּשׁ לִפְנֵי שְׁאַתָּה צוֹעֵד הַחוּצָה.",
+      "text_markdown": "הוא בטח יזכיר את הרוח בדלת, את הספירה, ואיך העולם נראה ממש לפני שאתה צועד החוצה.",
+      "tts": {
+        "text": "הוּא בְטַח יִזְכִּיר אֶת הָרוּחַ בַּדֶּלֶת, אֶת הַסְּפִירָה, וְאֵיךְ הָעוֹלָם נִרְאָה מַמָּשׁ לִפְנֵי שְׁאַתָּה צוֹעֵד הַחוּצָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַקְשֵׁב הֵיטֵב.",
+      "text_markdown": "הקשב היטב.",
+      "tts": {
+        "text": "הַקְשֵׁב הֵיטֵב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הוּא נוֹתֵן לְךָ מַתָּנָה קְטַנָּה.",
+      "text_markdown": "הוא נותן לך מתנה קטנה.",
+      "tts": {
+        "text": "הוּא נוֹתֵן לְךָ מַתָּנָה קְטַנָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אִם אַתָּה רוֹצֶה שְׁצַנְחָן יָאִיר אֶת עֵינָיו, בְקַשׁ מִמֶּנּוּ לְתָאֵר אֶת הָרֶגַע שְׁבּוֹ הַמִּצְנָח נִפְתַּח.",
+      "text_markdown": "אם אתה רוצה שצנחן יאיר את עיניו, בקש ממנו לתאר את הרגע שבו המצנח נפתח.",
+      "tts": {
+        "text": "אִם אַתָּה רוֹצֶה שְׁצַנְחָן יָאִיר אֶת עֵינָיו, בְקַשׁ מִמֶּנּוּ לְתָאֵר אֶת הָרֶגַע שְׁבּוֹ הַמִּצְנָח נִפְתַּח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוּא יַעְצֹם עֵינַיִם לַחֲצִי שְׁנִיָּה.",
+      "text_markdown": "הוא יעצום עיניים לחצי שנייה.",
+      "tts": {
+        "text": "הוּא יַעְצֹם עֵינַיִם לַחֲצִי שְׁנִיָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "וְאַז הוּא יִנְסֶה.",
+      "text_markdown": "ואז הוא ינסה.",
+      "tts": {
+        "text": "וְאַז הוּא יִנְסֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוּא יִשְׁתַּמֵּשׁ בְּמִלָּה אַחֶרֶת בְּכָל פַּעַם.",
+      "text_markdown": "הוא ישתמש במילה אחרת בכל פעם.",
+      "tts": {
+        "text": "הוּא יִשְׁתַּמֵּשׁ בְּמִלָּה אַחֶרֶת בְּכָל פַּעַם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "אוּלַי שָׁקֵט.",
+      "text_markdown": "אולי שקט.",
+      "tts": {
+        "text": "אוּלַי שָׁקֵט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אוּלַי עָדִין.",
+      "text_markdown": "אולי עדין.",
+      "tts": {
+        "text": "אוּלַי עָדִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "כְּמוֹ לְהִתְעוֹרֵר.",
+      "text_markdown": "כמו להתעורר.",
+      "tts": {
+        "text": "כְּמוֹ לְהִתְעוֹרֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "כְּמוֹ לַחֲזוֹר הַבַּיְתָה.",
+      "text_markdown": "כמו לחזור הביתה.",
+      "tts": {
+        "text": "כְּמוֹ לַחֲזוֹר הַבַּיְתָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "אַף אֶחָד לֹא מְתָאֵר אֶת זֶה אוֹתוֹ דָּבָר פַּעֲמַיִם.",
+      "text_markdown": "אף אחד לא מתאר את זה אותו דבר פעמיים.",
+      "tts": {
+        "text": "אַף אֶחָד לֹא מְתָאֵר אֶת זֶה אוֹתוֹ דָּבָר פַּעֲמַיִם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אַל תִּפְחַד לְהוֹדוֹת שֶׁמֵּעוֹלָם לֹא קָפַצְתָּ.",
+      "text_markdown": "אל תפחד להודות שמעולם לא קפצת.",
+      "tts": {
+        "text": "אַל תִּפְחַד לְהוֹדוֹת שֶׁמֵּעוֹלָם לֹא קָפַצְתָּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "צַנְחָנִים אוֹהְבִים אֶת הַשְּׁאֵלָה הַזֹּאת.",
+      "text_markdown": "צנחנים אוהבים את השאלה הזאת.",
+      "tts": {
+        "text": "צַנְחָנִים אוֹהְבִים אֶת הַשְּׁאֵלָה הַזֹּאת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "צַנְחָנִים גַּם אוֹהְבִים לוֹמַר לְךָ שֶׁאַתָּה צָרִיךְ לִנְסוֹת, וְאַז לוֹמַר לְךָ, בְּרִצִינוּת רַבָּה, שֶׁהֵם יֵלְכוּ אִתְּךָ.",
+      "text_markdown": "צנחנים גם אוהבים לומר לך שאתה צריך לנסות, ואז לומר לך, ברצינות רבה, שהם ילכו איתך.",
+      "tts": {
+        "text": "צַנְחָנִים גַּם אוֹהְבִים לוֹמַר לְךָ שֶׁאַתָּה צָרִיךְ לִנְסוֹת, וְאַז לוֹמַר לְךָ, בְּרִצִינוּת רַבָּה, שֶׁהֵם יֵלְכוּ אִתְּךָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "רוֹבֵנוּ הֵבַאנוּ חָבֵר לִקְפִיצָה הָרִאשׁוֹנָה שֶׁלּוֹ.",
+      "text_markdown": "רובנו הבאנו חבר לקפיצה הראשונה שלו.",
+      "tts": {
+        "text": "רוֹבֵנוּ הֵבַאנוּ חָבֵר לִקְפִיצָה הָרִאשׁוֹנָה שֶׁלּוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "זֶה אֶחָד הַתְּעָנוּגוֹת הַגְּדוֹלִים שֶׁל הַסְּפוֹרְט.",
+      "text_markdown": "זה אחד התענוגות הגדולים של הספורט.",
+      "tts": {
+        "text": "זֶה אֶחָד הַתְּעָנוּגוֹת הַגְּדוֹלִים שֶׁל הַסְּפוֹרְט.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אֵין שִׁעוּר גָּדוֹל בְּסוֹף הַסִּיפּוּר הַזֶּה.",
+      "text_markdown": "אין שיעור גדול בסוף הסיפור הזה.",
+      "tts": {
+        "text": "אֵין שִׁעוּר גָּדוֹל בְּסוֹף הַסִּיפּוּר הַזֶּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רַק זֶה.",
+      "text_markdown": "רק זה.",
+      "tts": {
+        "text": "רַק זֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אֵיפְשֶׁהוּ בָּעוֹלָם מַמָּשׁ עַכְשָׁיו, קְבוּצָה קְטַנָּה שֶׁל אֲנָשִׁים רְגוּעִים וְסַבְלָנִים צוֹעֲדִים אֶל מָטוֹס.",
+      "text_markdown": "איפשהו בעולם ממש עכשיו, קבוצה קטנה של אנשים רגועים וסבלנים צועדים אל מטוס.",
+      "tts": {
+        "text": "אֵיפְשֶׁהוּ בָּעוֹלָם מַמָּשׁ עַכְשָׁיו, קְבוּצָה קְטַנָּה שֶׁל אֲנָשִׁים רְגוּעִים וְסַבְלָנִים צוֹעֲדִים אֶל מָטוֹס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הַשָּׂדֶה מוּצַף שֶׁמֶשׁ.",
+      "text_markdown": "השדה מוצף שמש.",
+      "tts": {
+        "text": "הַשָּׂדֶה מוּצַף שֶׁמֶשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הַדֶּשֶׁא חַמִּים.",
+      "text_markdown": "הדשא חמים.",
+      "tts": {
+        "text": "הַדֶּשֶׁא חַמִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הֵם בּוֹדְקִים אֶת הַצִּיּוּד אֶחָד שֶׁל הַשְּׁנִי.",
+      "text_markdown": "הם בודקים את הציוד אחד של השני.",
+      "tts": {
+        "text": "הֵם בּוֹדְקִים אֶת הַצִּיּוּד אֶחָד שֶׁל הַשְּׁנִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הֵם מְחַיְּכִים.",
+      "text_markdown": "הם מחייכים.",
+      "tts": {
+        "text": "הֵם מְחַיְּכִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "בְּעוֹד שְׁלוֹשִׁים דַּקּוֹת, הֵם יִהְיוּ בַּשָּׁמַיִם, עוֹשִׂים אֶת הַדָּבָר הַכִּי שָׁקֵט שֶׁהֵם יוֹדְעִים לַעֲשׂוֹת.",
+      "text_markdown": "בעוד שלושים דקות, הם יהיו בשמיים, עושים את הדבר הכי שקט שהם יודעים לעשות.",
+      "tts": {
+        "text": "בְּעוֹד שְׁלוֹשִׁים דַּקּוֹת, הֵם יִהְיוּ בַּשָּׁמַיִם, עוֹשִׂים אֶת הַדָּבָר הַכִּי שָׁקֵט שֶׁהֵם יוֹדְעִים לַעֲשׂוֹת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוּלַי יוֹם אֶחָד תִּהְיֶה אַחַד מֵהֶם.",
+      "text_markdown": "אולי יום אחד תהיה אחד מהם.",
+      "tts": {
+        "text": "אוּלַי יוֹם אֶחָד תִּהְיֶה אַחַד מֵהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אוּלַי יוֹם אֶחָד לֹא תִּהְיֶה.",
+      "text_markdown": "אולי יום אחד לא תהיה.",
+      "tts": {
+        "text": "אוּלַי יוֹם אֶחָד לֹא תִּהְיֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כָּךְ אוֹ כָּךְ, הַשָּׁמַיִם שָׁם.",
+      "text_markdown": "כך או כך, השמיים שם.",
+      "tts": {
+        "text": "כָּךְ אוֹ כָּךְ, הַשָּׁמַיִם שָׁם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הֵם תָּמִיד הָיוּ שָׁם.",
+      "text_markdown": "הם תמיד היו שם.",
+      "tts": {
+        "text": "הֵם תָּמִיד הָיוּ שָׁם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הֵם מְחַכִּים, בְסַבְלָנוּת, לְמִקְרֶה שְׁאִי פַּעַם תִּרְצֶה לְהִשָּׁעֵן.",
+      "text_markdown": "הם מחכים, בסבלנות, למקרה שאי פעם תרצה להישען.",
+      "tts": {
+        "text": "הֵם מְחַכִּים, בְסַבְלָנוּת, לְמִקְרֶה שְׁאִי פַּעַם תִּרְצֶה לְהִשָּׁעֵן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

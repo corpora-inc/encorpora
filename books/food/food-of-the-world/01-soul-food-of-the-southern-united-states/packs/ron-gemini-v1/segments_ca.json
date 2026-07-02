@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ca",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Una nota per al lector",
+      "text": "Una nota per al lector",
+      "text_markdown": "Una nota per al lector"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Aquest és un llibre petit sobre una cuina molt gran.",
+      "text_markdown": "Aquest és un llibre petit sobre una cuina molt gran.",
+      "tts": {
+        "text": "Aquest és un llibre petit sobre una cuina molt gran.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Aquesta cuina és el soul food, del Sud dels Estats Units.",
+      "text_markdown": "Aquesta cuina és el soul food, del Sud dels Estats Units.",
+      "tts": {
+        "text": "Aquesta cuina és el soul food, del Sud dels Estats Units.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "El soul food és menjar de veritat.",
+      "text_markdown": "El soul food és menjar de veritat.",
+      "tts": {
+        "text": "El soul food és menjar de veritat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "La gent el cuina a casa.",
+      "text_markdown": "La gent el cuina a casa.",
+      "tts": {
+        "text": "La gent el cuina a casa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "La gent en menja els diumenges.",
+      "text_markdown": "La gent en menja els diumenges.",
+      "tts": {
+        "text": "La gent en menja els diumenges.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "I també en menja un dimarts qualsevol.",
+      "text_markdown": "I també en menja un dimarts qualsevol.",
+      "tts": {
+        "text": "I també en menja un dimarts qualsevol.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Començarem pel nom.",
+      "text_markdown": "Començarem pel nom.",
+      "tts": {
+        "text": "Començarem pel nom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Després mirarem les plantes i els animals.",
+      "text_markdown": "Després mirarem les plantes i els animals.",
+      "tts": {
+        "text": "Després mirarem les plantes i els animals.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Després mirarem les olles i les paelles.",
+      "text_markdown": "Després mirarem les olles i les paelles.",
+      "tts": {
+        "text": "Després mirarem les olles i les paelles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Al final, sabràs què hi ha al plat i també d'on ve.",
+      "text_markdown": "Al final, sabràs què hi ha al plat i també d'on ve.",
+      "tts": {
+        "text": "Al final, sabràs què hi ha al plat i també d'on ve.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Una nota per al lector",
+      "text": "Em dic Kym i t'explicaré aquesta història.",
+      "text_markdown": "Em dic Kym i t'explicaré aquesta història.",
+      "tts": {
+        "text": "Em dic Kym i t'explicaré aquesta història.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Capítol 1 — Què és el soul food",
+      "text_markdown": "Capítol 1 — Què és el soul food"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "El soul food és el menjar de cada dia de les famílies negres del Sud dels Estats Units.",
+      "text_markdown": "El soul food és el menjar de cada dia de les famílies negres del Sud dels Estats Units.",
+      "tts": {
+        "text": "El soul food és el menjar de cada dia de les famílies negres del Sud dels Estats Units.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "El nom \"soul food\" es va fer habitual als anys seixanta.",
+      "text_markdown": "El nom \"soul food\" es va fer habitual als anys seixanta.",
+      "tts": {
+        "text": "El nom \"soul food\" es va fer habitual als anys seixanta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "La paraula \"soul\" venia de la música i de l'església.",
+      "text_markdown": "La paraula \"soul\" venia de la música i de l'església.",
+      "tts": {
+        "text": "La paraula \"soul\" venia de la música i de l'església.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Volia dir una cosa fonda i autèntica.",
+      "text_markdown": "Volia dir una cosa fonda i autèntica.",
+      "tts": {
+        "text": "Volia dir una cosa fonda i autèntica.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Volia dir una cosa negra i plena d'orgull.",
+      "text_markdown": "Volia dir una cosa negra i plena d'orgull.",
+      "tts": {
+        "text": "Volia dir una cosa negra i plena d'orgull.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Però aquesta cuina en si és molt més antiga.",
+      "text_markdown": "Però aquesta cuina en si és molt més antiga.",
+      "tts": {
+        "text": "Però aquesta cuina en si és molt més antiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Ve de les cuines de plantació dels segles divuit i dinou.",
+      "text_markdown": "Ve de les cuines de plantació dels segles divuit i dinou.",
+      "tts": {
+        "text": "Ve de les cuines de plantació dels segles divuit i dinou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Els cuiners africans esclavitzats agafaven les plantes i els animals que tenien, i en feien el sopar.",
+      "text_markdown": "Els cuiners africans esclavitzats agafaven les plantes i els animals que tenien, i en feien el sopar.",
+      "tts": {
+        "text": "Els cuiners africans esclavitzats agafaven les plantes i els animals que tenien, i en feien el sopar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Aquells cuiners eren brillants.",
+      "text_markdown": "Aquells cuiners eren brillants.",
+      "tts": {
+        "text": "Aquells cuiners eren brillants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Treballaven amb molt poc i alimentaven molta gent.",
+      "text_markdown": "Treballaven amb molt poc i alimentaven molta gent.",
+      "tts": {
+        "text": "Treballaven amb molt poc i alimentaven molta gent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Aprofitaven cada part del porc.",
+      "text_markdown": "Aprofitaven cada part del porc.",
+      "tts": {
+        "text": "Aprofitaven cada part del porc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Feien que les fulles verdes tinguessin un gust dolç.",
+      "text_markdown": "Feien que les fulles verdes tinguessin un gust dolç.",
+      "tts": {
+        "text": "Feien que les fulles verdes tinguessin un gust dolç.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Convertien la farina de blat de moro en pa, en farinetes i en un centenar de coses petites.",
+      "text_markdown": "Convertien la farina de blat de moro en pa, en farinetes i en un centenar de coses petites.",
+      "tts": {
+        "text": "Convertien la farina de blat de moro en pa, en farinetes i en un centenar de coses petites.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Quan les famílies negres es van traslladar cap al nord al segle vint, es van endur aquesta cuina amb elles.",
+      "text_markdown": "Quan les famílies negres es van traslladar cap al nord al segle vint, es van endur aquesta cuina amb elles.",
+      "tts": {
+        "text": "Quan les famílies negres es van traslladar cap al nord al segle vint, es van endur aquesta cuina amb elles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Ara el soul food és a Chicago, a New York, a Detroit i a cada poble del Sud.",
+      "text_markdown": "Ara el soul food és a Chicago, a New York, a Detroit i a cada poble del Sud.",
+      "tts": {
+        "text": "Ara el soul food és a Chicago, a New York, a Detroit i a cada poble del Sud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 1 — Què és el soul food",
+      "text": "Però el seu centre encara és al Sud.",
+      "text_markdown": "Però el seu centre encara és al Sud.",
+      "tts": {
+        "text": "Però el seu centre encara és al Sud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Capítol 2 — Els ingredients",
+      "text_markdown": "Capítol 2 — Els ingredients"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "El soul food té dues arrels principals.",
+      "text_markdown": "El soul food té dues arrels principals.",
+      "tts": {
+        "text": "El soul food té dues arrels principals.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Una arrel la trobem a l'Àfrica occidental.",
+      "text_markdown": "Una arrel la trobem a l'Àfrica occidental.",
+      "tts": {
+        "text": "Una arrel la trobem a l'Àfrica occidental.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "L'altra arrel són les Amèriques.",
+      "text_markdown": "L'altra arrel són les Amèriques.",
+      "tts": {
+        "text": "L'altra arrel són les Amèriques.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "De l'Àfrica occidental va arribar l'okra.",
+      "text_markdown": "De l'Àfrica occidental va arribar l'okra.",
+      "tts": {
+        "text": "De l'Àfrica occidental va arribar l'okra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Així doncs, el quimbombó és una beina ben verda.",
+      "text_markdown": "Així doncs, el quimbombó és una beina ben verda.",
+      "tts": {
+        "text": "Així doncs, el quimbombó és una beina ben verda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Creix en una planta alta.",
+      "text_markdown": "Creix en una planta alta.",
+      "tts": {
+        "text": "Creix en una planta alta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Quan la cuines, es torna tova i una mica relliscosa.",
+      "text_markdown": "Quan la cuines, es torna tova i una mica relliscosa.",
+      "tts": {
+        "text": "Quan la cuines, es torna tova i una mica relliscosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Es posa al gumbo i també es fregeix arrebossada amb farina de blat de moro.",
+      "text_markdown": "Es posa al gumbo i també es fregeix arrebossada amb farina de blat de moro.",
+      "tts": {
+        "text": "Es posa al gumbo i també es fregeix arrebossada amb farina de blat de moro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Les mongetes d'ull negre també venien de l'Àfrica occidental.",
+      "text_markdown": "Les mongetes d'ull negre també venien de l'Àfrica occidental.",
+      "tts": {
+        "text": "Les mongetes d'ull negre també venien de l'Àfrica occidental.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "La síndria també va fer la mateixa travessia.",
+      "text_markdown": "La síndria també va fer la mateixa travessia.",
+      "tts": {
+        "text": "La síndria també va fer la mateixa travessia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "També n'hi van venir les llavors de sèsam.",
+      "text_markdown": "També n'hi van venir les llavors de sèsam.",
+      "tts": {
+        "text": "També n'hi van venir les llavors de sèsam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Els cuiners del Sud d'abans anomenaven el sèsam \"benne\". Posaven benne a les galetes i damunt del pa.",
+      "text_markdown": "Els cuiners del Sud d'abans anomenaven el sèsam \"benne\". Posaven benne a les galetes i damunt del pa.",
+      "tts": {
+        "text": "Els cuiners del Sud d'abans anomenaven el sèsam \"benne\". Posaven benne a les galetes i damunt del pa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "L'arròs també va creuar l'oceà.",
+      "text_markdown": "L'arròs també va creuar l'oceà.",
+      "tts": {
+        "text": "L'arròs també va creuar l'oceà.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Els pagesos africans feia mil anys que cultivaven arròs.",
+      "text_markdown": "Els pagesos africans feia mil anys que cultivaven arròs.",
+      "tts": {
+        "text": "Els pagesos africans feia mil anys que cultivaven arròs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "A South Carolina, aquell coneixement va aixecar pobles sencers.",
+      "text_markdown": "A South Carolina, aquell coneixement va aixecar pobles sencers.",
+      "tts": {
+        "text": "A South Carolina, aquell coneixement va aixecar pobles sencers.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "De les Amèriques va arribar el blat de moro.",
+      "text_markdown": "De les Amèriques va arribar el blat de moro.",
+      "tts": {
+        "text": "De les Amèriques va arribar el blat de moro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "El blat de moro és originari de Mèxic.",
+      "text_markdown": "El blat de moro és originari de Mèxic.",
+      "tts": {
+        "text": "El blat de moro és originari de Mèxic.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "Va viatjar cap al nord fins als Cherokee i els Choctaw molt abans que hi arribessin els espanyols.",
+      "text_markdown": "Va viatjar cap al nord fins als Cherokee i els Choctaw molt abans que hi arribessin els espanyols.",
+      "tts": {
+        "text": "Va viatjar cap al nord fins als Cherokee i els Choctaw molt abans que hi arribessin els espanyols.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "De les Amèriques també van arribar els moniatos, els cacauets i moltes menes de mongetes.",
+      "text_markdown": "De les Amèriques també van arribar els moniatos, els cacauets i moltes menes de mongetes.",
+      "tts": {
+        "text": "De les Amèriques també van arribar els moniatos, els cacauets i moltes menes de mongetes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 2 — Els ingredients",
+      "text": "El soul food és el que va passar quan aquests dos rebosts es van trobar en una mateixa cuina.",
+      "text_markdown": "El soul food és el que va passar quan aquests dos rebosts es van trobar en una mateixa cuina.",
+      "tts": {
+        "text": "El soul food és el que va passar quan aquests dos rebosts es van trobar en una mateixa cuina.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Capítol 3 — Les carns i el peix",
+      "text_markdown": "Capítol 3 — Les carns i el peix"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "La carn més important del soul food és la de porc.",
+      "text_markdown": "La carn més important del soul food és la de porc.",
+      "tts": {
+        "text": "La carn més important del soul food és la de porc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "En una granja petita es podia criar un porc.",
+      "text_markdown": "En una granja petita es podia criar un porc.",
+      "tts": {
+        "text": "En una granja petita es podia criar un porc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El porc menjava restes.",
+      "text_markdown": "El porc menjava restes.",
+      "tts": {
+        "text": "El porc menjava restes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "A la tardor, la família matava el porc i n'aprofitava cada part.",
+      "text_markdown": "A la tardor, la família matava el porc i n'aprofitava cada part.",
+      "tts": {
+        "text": "A la tardor, la família matava el porc i n'aprofitava cada part.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El pernil, l’afumaven.",
+      "text_markdown": "El pernil, l’afumaven.",
+      "tts": {
+        "text": "El pernil, l’afumaven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Posaven el bacó a curar.",
+      "text_markdown": "Posaven el bacó a curar.",
+      "tts": {
+        "text": "Posaven el bacó a curar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Coïen els peus amb vinagre.",
+      "text_markdown": "Coïen els peus amb vinagre.",
+      "tts": {
+        "text": "Coïen els peus amb vinagre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Guardaven el greix per als panets tous (biscuits).",
+      "text_markdown": "Guardaven el greix per als panets tous (biscuits).",
+      "tts": {
+        "text": "Guardaven el greix per als panets tous (biscuits).",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "L'altra gran carn és el pollastre.",
+      "text_markdown": "L'altra gran carn és el pollastre.",
+      "tts": {
+        "text": "L'altra gran carn és el pollastre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Les gallines corrien pel pati.",
+      "text_markdown": "Les gallines corrien pel pati.",
+      "tts": {
+        "text": "Les gallines corrien pel pati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Posaven ous al matí i també acabaven sent el dinar de diumenge.",
+      "text_markdown": "Posaven ous al matí i també acabaven sent el dinar de diumenge.",
+      "tts": {
+        "text": "Posaven ous al matí i també acabaven sent el dinar de diumenge.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El pollastre fregit és el plat del Sud més famós.",
+      "text_markdown": "El pollastre fregit és el plat del Sud més famós.",
+      "tts": {
+        "text": "El pollastre fregit és el plat del Sud més famós.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El pollastre s'arrebossa amb farina, sal i pebre.",
+      "text_markdown": "El pollastre s'arrebossa amb farina, sal i pebre.",
+      "tts": {
+        "text": "El pollastre s'arrebossa amb farina, sal i pebre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Després es tira a l'oli ben calent.",
+      "text_markdown": "Després es tira a l'oli ben calent.",
+      "tts": {
+        "text": "Després es tira a l'oli ben calent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "La pell queda cruixent i daurada.",
+      "text_markdown": "La pell queda cruixent i daurada.",
+      "tts": {
+        "text": "La pell queda cruixent i daurada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El peix gat viu als rius i als llacs.",
+      "text_markdown": "El peix gat viu als rius i als llacs.",
+      "tts": {
+        "text": "El peix gat viu als rius i als llacs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Els cuiners del Sud arrebossen el peix gat amb farina de blat de moro i el fregeixen.",
+      "text_markdown": "Els cuiners del Sud arrebossen el peix gat amb farina de blat de moro i el fregeixen.",
+      "tts": {
+        "text": "Els cuiners del Sud arrebossen el peix gat amb farina de blat de moro i el fregeixen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "Se'l mengen amb bunyols de blat de moro fregit (hush puppies), que són boletes petites de farina de blat de moro fregida.",
+      "text_markdown": "Se'l mengen amb bunyols de blat de moro fregit (hush puppies), que són boletes petites de farina de blat de moro fregida.",
+      "tts": {
+        "text": "Se'l mengen amb bunyols de blat de moro fregit (hush puppies), que són boletes petites de farina de blat de moro fregida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 3 — Les carns i el peix",
+      "text": "El nom fa riure, però aquest menjar va de debò.",
+      "text_markdown": "El nom fa riure, però aquest menjar va de debò.",
+      "tts": {
+        "text": "El nom fa riure, però aquest menjar va de debò.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Capítol 4 — Les maneres de cuinar",
+      "text_markdown": "Capítol 4 — Les maneres de cuinar"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Tres maneres de cuinar sostenen bona part del soul food: fregir, estofar a foc lent i cuinar al fum.",
+      "text_markdown": "Tres maneres de cuinar sostenen bona part del soul food: fregir, estofar a foc lent i cuinar al fum.",
+      "tts": {
+        "text": "Tres maneres de cuinar sostenen bona part del soul food: fregir, estofar a foc lent i cuinar al fum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Per fregir s'utilitza una paella pesada que es diu paella de ferro colat.",
+      "text_markdown": "Per fregir s'utilitza una paella pesada que es diu paella de ferro colat.",
+      "tts": {
+        "text": "Per fregir s'utilitza una paella pesada que es diu paella de ferro colat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "El ferro colat manté l'escalfor durant molta estona.",
+      "text_markdown": "El ferro colat manté l'escalfor durant molta estona.",
+      "tts": {
+        "text": "El ferro colat manté l'escalfor durant molta estona.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Una bona paella sovint és més antiga que la persona que cuina.",
+      "text_markdown": "Una bona paella sovint és més antiga que la persona que cuina.",
+      "tts": {
+        "text": "Una bona paella sovint és més antiga que la persona que cuina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Va passant de mare a filla.",
+      "text_markdown": "Va passant de mare a filla.",
+      "tts": {
+        "text": "Va passant de mare a filla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "L'estofat lent es fa en una olla grossa al darrere dels fogons.",
+      "text_markdown": "L'estofat lent es fa en una olla grossa al darrere dels fogons.",
+      "tts": {
+        "text": "L'estofat lent es fa en una olla grossa al darrere dels fogons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Les verdures de fulla passen dues o tres hores dins l'olla.",
+      "text_markdown": "Les verdures de fulla passen dues o tres hores dins l'olla.",
+      "tts": {
+        "text": "Les verdures de fulla passen dues o tres hores dins l'olla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "S'hi posa un tros de porc fumat per donar gust.",
+      "text_markdown": "S'hi posa un tros de porc fumat per donar gust.",
+      "tts": {
+        "text": "S'hi posa un tros de porc fumat per donar gust.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "L'aigua es converteix en un brou fosc i ple de sabor.",
+      "text_markdown": "L'aigua es converteix en un brou fosc i ple de sabor.",
+      "tts": {
+        "text": "L'aigua es converteix en un brou fosc i ple de sabor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "La gent anomena aquest brou \"pot likker\" i l'aboquen damunt del pa de blat de moro.",
+      "text_markdown": "La gent anomena aquest brou \"pot likker\" i l'aboquen damunt del pa de blat de moro.",
+      "tts": {
+        "text": "La gent anomena aquest brou \"pot likker\" i l'aboquen damunt del pa de blat de moro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "La cocció al fum es fa a fora, en un fumador o en un bidó.",
+      "text_markdown": "La cocció al fum es fa a fora, en un fumador o en un bidó.",
+      "tts": {
+        "text": "La cocció al fum es fa a fora, en un fumador o en un bidó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "La fusta crema a poc a poc sota la carn.",
+      "text_markdown": "La fusta crema a poc a poc sota la carn.",
+      "tts": {
+        "text": "La fusta crema a poc a poc sota la carn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "La fusta d'hicòria és la que es prefereix.",
+      "text_markdown": "La fusta d'hicòria és la que es prefereix.",
+      "tts": {
+        "text": "La fusta d'hicòria és la que es prefereix.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "El fum tenyeix la carn de marró i li dona un gust fondo.",
+      "text_markdown": "El fum tenyeix la carn de marró i li dona un gust fondo.",
+      "tts": {
+        "text": "El fum tenyeix la carn de marró i li dona un gust fondo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "L'espatlla de porc es cou al fum durant moltes hores, de vegades durant tot un dia.",
+      "text_markdown": "L'espatlla de porc es cou al fum durant moltes hores, de vegades durant tot un dia.",
+      "tts": {
+        "text": "L'espatlla de porc es cou al fum durant moltes hores, de vegades durant tot un dia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 4 — Les maneres de cuinar",
+      "text": "Una bona cuina del Sud té foc, temps i cura.",
+      "text_markdown": "Una bona cuina del Sud té foc, temps i cura.",
+      "tts": {
+        "text": "Una bona cuina del Sud té foc, temps i cura.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Capítol 5 — La barbacoa regional",
+      "text_markdown": "Capítol 5 — La barbacoa regional"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Al Sud, \"barbacoa\" vol dir carn cuita a foc lent sobre fum de fusta.",
+      "text_markdown": "Al Sud, \"barbacoa\" vol dir carn cuita a foc lent sobre fum de fusta.",
+      "tts": {
+        "text": "Al Sud, \"barbacoa\" vol dir carn cuita a foc lent sobre fum de fusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Cada regió té la seva manera de fer.",
+      "text_markdown": "Cada regió té la seva manera de fer.",
+      "tts": {
+        "text": "Cada regió té la seva manera de fer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A les Carolines, la barbacoa és de porc.",
+      "text_markdown": "A les Carolines, la barbacoa és de porc.",
+      "tts": {
+        "text": "A les Carolines, la barbacoa és de porc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A la part oriental de North Carolina, la salsa es fa amb vinagre i pebre.",
+      "text_markdown": "A la part oriental de North Carolina, la salsa es fa amb vinagre i pebre.",
+      "tts": {
+        "text": "A la part oriental de North Carolina, la salsa es fa amb vinagre i pebre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "És lleugera i punyent.",
+      "text_markdown": "És lleugera i punyent.",
+      "tts": {
+        "text": "És lleugera i punyent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A South Carolina, la salsa és groga i es fa amb mostassa.",
+      "text_markdown": "A South Carolina, la salsa és groga i es fa amb mostassa.",
+      "tts": {
+        "text": "A South Carolina, la salsa és groga i es fa amb mostassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Té una lleu dolçor.",
+      "text_markdown": "Té una lleu dolçor.",
+      "tts": {
+        "text": "Té una lleu dolçor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A Memphis, a l'estat de Tennessee, la carn són costelles de porc.",
+      "text_markdown": "A Memphis, a l'estat de Tennessee, la carn són costelles de porc.",
+      "tts": {
+        "text": "A Memphis, a l'estat de Tennessee, la carn són costelles de porc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A les costelles se'ls frega una barreja seca de sal, pebre i moltes espècies.",
+      "text_markdown": "A les costelles se'ls frega una barreja seca de sal, pebre i moltes espècies.",
+      "tts": {
+        "text": "A les costelles se'ls frega una barreja seca de sal, pebre i moltes espècies.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Aquí, la carn porta la veu cantant, i la salsa queda en un paper secundari.",
+      "text_markdown": "Aquí, la carn porta la veu cantant, i la salsa queda en un paper secundari.",
+      "tts": {
+        "text": "Aquí, la carn porta la veu cantant, i la salsa queda en un paper secundari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A l'estat de Texas, la barbacoa és de vedella.",
+      "text_markdown": "A l'estat de Texas, la barbacoa és de vedella.",
+      "tts": {
+        "text": "A l'estat de Texas, la barbacoa és de vedella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Aquest tall s'anomena pit de vedella (brisket).",
+      "text_markdown": "Aquest tall s'anomena pit de vedella (brisket).",
+      "tts": {
+        "text": "Aquest tall s'anomena pit de vedella (brisket).",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Es cou al fum durant dotze a catorze hores amb fusta de roure.",
+      "text_markdown": "Es cou al fum durant dotze a catorze hores amb fusta de roure.",
+      "tts": {
+        "text": "Es cou al fum durant dotze a catorze hores amb fusta de roure.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "Quan surt bé, el pots desfer amb els dits.",
+      "text_markdown": "Quan surt bé, el pots desfer amb els dits.",
+      "tts": {
+        "text": "Quan surt bé, el pots desfer amb els dits.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "A Kansas City, la barbacoa és de moltes carns: porc, vedella, pollastre, fins i tot salsitxa.",
+      "text_markdown": "A Kansas City, la barbacoa és de moltes carns: porc, vedella, pollastre, fins i tot salsitxa.",
+      "tts": {
+        "text": "A Kansas City, la barbacoa és de moltes carns: porc, vedella, pollastre, fins i tot salsitxa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "La salsa és espessa, dolça i vermella, feta amb tomàquet i melassa.",
+      "text_markdown": "La salsa és espessa, dolça i vermella, feta amb tomàquet i melassa.",
+      "tts": {
+        "text": "La salsa és espessa, dolça i vermella, feta amb tomàquet i melassa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 5 — La barbacoa regional",
+      "text": "El mapa de la barbacoa del Sud és també un mapa de regions i rius.",
+      "text_markdown": "El mapa de la barbacoa del Sud és també un mapa de regions i rius.",
+      "tts": {
+        "text": "El mapa de la barbacoa del Sud és també un mapa de regions i rius.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Capítol 6 — El plat clàssic",
+      "text_markdown": "Capítol 6 — El plat clàssic"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "El plat del dinar de diumenge va ben ple.",
+      "text_markdown": "El plat del dinar de diumenge va ben ple.",
+      "tts": {
+        "text": "El plat del dinar de diumenge va ben ple.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Al mig hi ha pollastre fregit.",
+      "text_markdown": "Al mig hi ha pollastre fregit.",
+      "tts": {
+        "text": "Al mig hi ha pollastre fregit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Al costat del pollastre hi ha una cullerada de puré de patates amb salsa bruna.",
+      "text_markdown": "Al costat del pollastre hi ha una cullerada de puré de patates amb salsa bruna.",
+      "tts": {
+        "text": "Al costat del pollastre hi ha una cullerada de puré de patates amb salsa bruna.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "A una banda hi ha un munt de cols verdes americanes (collard greens), cuites a foc lent amb porc fumat.",
+      "text_markdown": "A una banda hi ha un munt de cols verdes americanes (collard greens), cuites a foc lent amb porc fumat.",
+      "tts": {
+        "text": "A una banda hi ha un munt de cols verdes americanes (collard greens), cuites a foc lent amb porc fumat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Les cols són fosques i tendres.",
+      "text_markdown": "Les cols són fosques i tendres.",
+      "tts": {
+        "text": "Les cols són fosques i tendres.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "A l'altra banda hi ha macarrons amb formatge, fornejats fins que la part de dalt queda daurada i cruixent.",
+      "text_markdown": "A l'altra banda hi ha macarrons amb formatge, fornejats fins que la part de dalt queda daurada i cruixent.",
+      "tts": {
+        "text": "A l'altra banda hi ha macarrons amb formatge, fornejats fins que la part de dalt queda daurada i cruixent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Molts cuiners hi afegeixen una capa de formatge per sobre.",
+      "text_markdown": "Molts cuiners hi afegeixen una capa de formatge per sobre.",
+      "tts": {
+        "text": "Molts cuiners hi afegeixen una capa de formatge per sobre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "A taula hi ha pa de blat de moro.",
+      "text_markdown": "A taula hi ha pa de blat de moro.",
+      "tts": {
+        "text": "A taula hi ha pa de blat de moro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "El pa de blat de moro es fa amb farina groga de blat de moro i es forneja en una paella de ferro ben calenta.",
+      "text_markdown": "El pa de blat de moro es fa amb farina groga de blat de moro i es forneja en una paella de ferro ben calenta.",
+      "tts": {
+        "text": "El pa de blat de moro es fa amb farina groga de blat de moro i es forneja en una paella de ferro ben calenta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "És dens, una mica dolç i perfecte amb mantega.",
+      "text_markdown": "És dens, una mica dolç i perfecte amb mantega.",
+      "tts": {
+        "text": "És dens, una mica dolç i perfecte amb mantega.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Per beure, hi ha te dolç.",
+      "text_markdown": "Per beure, hi ha te dolç.",
+      "tts": {
+        "text": "Per beure, hi ha te dolç.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "El te dolç és te negre, preparat ben fort i barrejat amb sucre mentre encara és calent.",
+      "text_markdown": "El te dolç és te negre, preparat ben fort i barrejat amb sucre mentre encara és calent.",
+      "tts": {
+        "text": "El te dolç és te negre, preparat ben fort i barrejat amb sucre mentre encara és calent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Se serveix fred amb gel.",
+      "text_markdown": "Se serveix fred amb gel.",
+      "tts": {
+        "text": "Se serveix fred amb gel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Després del dinar arriba el pastís.",
+      "text_markdown": "Després del dinar arriba el pastís.",
+      "tts": {
+        "text": "Després del dinar arriba el pastís.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "El pastís de moniato és el pastís més propi del Sud.",
+      "text_markdown": "El pastís de moniato és el pastís més propi del Sud.",
+      "tts": {
+        "text": "El pastís de moniato és el pastís més propi del Sud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "És de color marró, suau i calent, amb canyella i nou moscada.",
+      "text_markdown": "És de color marró, suau i calent, amb canyella i nou moscada.",
+      "tts": {
+        "text": "És de color marró, suau i calent, amb canyella i nou moscada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 6 — El plat clàssic",
+      "text": "Aquest és el plat clàssic.",
+      "text_markdown": "Aquest és el plat clàssic.",
+      "tts": {
+        "text": "Aquest és el plat clàssic.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "title": "Capítol 7 — La taula",
+      "text": "Capítol 7 — La taula",
+      "text_markdown": "Capítol 7 — La taula"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Un àpat del Sud es fa a taula, amb tothom plegat.",
+      "text_markdown": "Un àpat del Sud es fa a taula, amb tothom plegat.",
+      "tts": {
+        "text": "Un àpat del Sud es fa a taula, amb tothom plegat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "El menjar es porta a taula en bols grossos i en plats grans.",
+      "text_markdown": "El menjar es porta a taula en bols grossos i en plats grans.",
+      "tts": {
+        "text": "El menjar es porta a taula en bols grossos i en plats grans.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "D'això en diuen servir per compartir. Cada persona passa el bol a la persona del costat.",
+      "text_markdown": "D'això en diuen servir per compartir. Cada persona passa el bol a la persona del costat.",
+      "tts": {
+        "text": "D'això en diuen servir per compartir. Cada persona passa el bol a la persona del costat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Cadascú agafa el que vol.",
+      "text_markdown": "Cadascú agafa el que vol.",
+      "tts": {
+        "text": "Cadascú agafa el que vol.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Les forquilles i els ganivets són ben senzills.",
+      "text_markdown": "Les forquilles i els ganivets són ben senzills.",
+      "tts": {
+        "text": "Les forquilles i els ganivets són ben senzills.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "No segueix cap ordre fix.",
+      "text_markdown": "No segueix cap ordre fix.",
+      "tts": {
+        "text": "No segueix cap ordre fix.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "El pollastre te'l menges amb forquilla o bé l'agafes amb les mans.",
+      "text_markdown": "El pollastre te'l menges amb forquilla o bé l'agafes amb les mans.",
+      "tts": {
+        "text": "El pollastre te'l menges amb forquilla o bé l'agafes amb les mans.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Totes dues opcions són vàlides.",
+      "text_markdown": "Totes dues opcions són vàlides.",
+      "tts": {
+        "text": "Totes dues opcions són vàlides.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "El pa de blat de moro es parteix amb la mà, mai no es talla amb ganivet.",
+      "text_markdown": "El pa de blat de moro es parteix amb la mà, mai no es talla amb ganivet.",
+      "tts": {
+        "text": "El pa de blat de moro es parteix amb la mà, mai no es talla amb ganivet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Abans de menjar, sovint algú fa una pregària curta.",
+      "text_markdown": "Abans de menjar, sovint algú fa una pregària curta.",
+      "tts": {
+        "text": "Abans de menjar, sovint algú fa una pregària curta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "S'agraeix a Déu el menjar i la feina dels cuiners.",
+      "text_markdown": "S'agraeix a Déu el menjar i la feina dels cuiners.",
+      "tts": {
+        "text": "S'agraeix a Déu el menjar i la feina dels cuiners.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Si hi vas de convidat, et diran que en prenguis més, i més, i més.",
+      "text_markdown": "Si hi vas de convidat, et diran que en prenguis més, i més, i més.",
+      "tts": {
+        "text": "Si hi vas de convidat, et diran que en prenguis més, i més, i més.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Com a mínim, has de dir que sí dues vegades.",
+      "text_markdown": "Com a mínim, has de dir que sí dues vegades.",
+      "tts": {
+        "text": "Com a mínim, has de dir que sí dues vegades.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Marxar amb gana no està permès pas.",
+      "text_markdown": "Marxar amb gana no està permès pas.",
+      "tts": {
+        "text": "Marxar amb gana no està permès pas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "Al final de l'àpat, ningú no té pressa per aixecar-se.",
+      "text_markdown": "Al final de l'àpat, ningú no té pressa per aixecar-se.",
+      "tts": {
+        "text": "Al final de l'àpat, ningú no té pressa per aixecar-se.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Capítol 7 — La taula",
+      "text": "La conversa és la meitat de l'àpat.",
+      "text_markdown": "La conversa és la meitat de l'àpat.",
+      "tts": {
+        "text": "La conversa és la meitat de l'àpat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Sobre aquest llibre",
+      "text": "Sobre aquest llibre",
+      "text_markdown": "Sobre aquest llibre"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Aquest és el primer llibre de la sèrie Menjars del Món.",
+      "text_markdown": "Aquest és el primer llibre de la sèrie Menjars del Món.",
+      "tts": {
+        "text": "Aquest és el primer llibre de la sèrie Menjars del Món.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Te'l llegeixo en veu alta jo, la teva amiga Kym.",
+      "text_markdown": "Te'l llegeixo en veu alta jo, la teva amiga Kym.",
+      "tts": {
+        "text": "Te'l llegeixo en veu alta jo, la teva amiga Kym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Cada frase és curta i clara perquè puguis seguir la lectura en qualsevol llengua.",
+      "text_markdown": "Cada frase és curta i clara perquè puguis seguir la lectura en qualsevol llengua.",
+      "tts": {
+        "text": "Cada frase és curta i clara perquè puguis seguir la lectura en qualsevol llengua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Si vols sentir com sona una frase en una altra llengua, escolta aquest mateix llibre en aquella llengua.",
+      "text_markdown": "Si vols sentir com sona una frase en una altra llengua, escolta aquest mateix llibre en aquella llengua.",
+      "tts": {
+        "text": "Si vols sentir com sona una frase en una altra llengua, escolta aquest mateix llibre en aquella llengua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Les paraules de la pàgina coincidiran amb el que sentis.",
+      "text_markdown": "Les paraules de la pàgina coincidiran amb el que sentis.",
+      "tts": {
+        "text": "Les paraules de la pàgina coincidiran amb el que sentis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Així és com s'aprèn.",
+      "text_markdown": "Així és com s'aprèn.",
+      "tts": {
+        "text": "Així és com s'aprèn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Sobre aquest llibre",
+      "text": "Ara, doncs, vés a buscar bon menjar i un amic amb qui compartir-lo.",
+      "text_markdown": "Ara, doncs, vés a buscar bon menjar i un amic amb qui compartir-lo.",
+      "tts": {
+        "text": "Ara, doncs, vés a buscar bon menjar i un amic amb qui compartir-lo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

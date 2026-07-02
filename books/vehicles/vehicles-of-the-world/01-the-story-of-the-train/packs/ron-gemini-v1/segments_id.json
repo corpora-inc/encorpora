@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "id",
+  "total_segments": 154,
+  "segments": [
+    {
+      "block_type": "heading",
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "text": "Catatan untuk Pembaca",
+      "text_markdown": "Catatan untuk Pembaca",
+      "title": "Catatan untuk Pembaca"
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "text": "Selama dua ratus tahun, kereta api telah menjadi jalan besi dunia.",
+      "text_markdown": "Selama dua ratus tahun, kereta api telah menjadi jalan besi dunia.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Selama dua ratus tahun, kereta api telah menjadi jalan besi dunia.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "text": "Kereta api mengangkut orang.",
+      "text_markdown": "Kereta api mengangkut orang.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kereta api mengangkut orang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "text": "Kereta api mengangkut barang.",
+      "text_markdown": "Kereta api mengangkut barang.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kereta api mengangkut barang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "text": "Kereta api yang panjang dapat mengangkut biji-bijian senilai seluruh kota.",
+      "text_markdown": "Kereta api yang panjang dapat mengangkut biji-bijian senilai seluruh kota.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kereta api yang panjang dapat mengangkut biji-bijian senilai seluruh kota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p2",
+      "text": "Kereta api cepat dapat melampaui mobil di jalan raya.",
+      "text_markdown": "Kereta api cepat dapat melampaui mobil di jalan raya.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kereta api cepat dapat melampaui mobil di jalan raya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "text": "Kisah kereta api dimulai di Inggris, hampir dua ratus tahun yang lalu, dengan seorang pria, api, dan ketel berisi air mendidih.",
+      "text_markdown": "Kisah kereta api dimulai di Inggris, hampir dua ratus tahun yang lalu, dengan seorang pria, api, dan ketel berisi air mendidih.",
+      "title": "Catatan untuk Pembaca",
+      "tts": {
+        "text": "Kisah kereta api dimulai di Inggris, hampir dua ratus tahun yang lalu, dengan seorang pria, api, dan ketel berisi air mendidih.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "heading_level": 2,
+      "text": "Bab 1 — Kereta Uap Pertama",
+      "text_markdown": "Bab 1 — Kereta Uap Pertama",
+      "title": "Bab 1 — Kereta Uap Pertama"
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "text": "Kereta api adalah rangkaian gerbong yang berjalan di atas rel besi.",
+      "text_markdown": "Kereta api adalah rangkaian gerbong yang berjalan di atas rel besi.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Kereta api adalah rangkaian gerbong yang berjalan di atas rel besi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "text": "Gerbong pertama adalah lokomotif.",
+      "text_markdown": "Gerbong pertama adalah lokomotif.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Gerbong pertama adalah lokomotif.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "text": "Ia menarik semua gerbong lainnya.",
+      "text_markdown": "Ia menarik semua gerbong lainnya.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Ia menarik semua gerbong lainnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "text": "Kereta api pertama ditenagai oleh uap.",
+      "text_markdown": "Kereta api pertama ditenagai oleh uap.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Kereta api pertama ditenagai oleh uap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "text": "Mesin uap membakar batu bara untuk mendidihkan air.",
+      "text_markdown": "Mesin uap membakar batu bara untuk mendidihkan air.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Mesin uap membakar batu bara untuk mendidihkan air.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "text": "Uap panas mendorong piston.",
+      "text_markdown": "Uap panas mendorong piston.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Uap panas mendorong piston.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "text": "Piston memutar roda.",
+      "text_markdown": "Piston memutar roda.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Piston memutar roda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "text": "Roda berjalan di atas rel.",
+      "text_markdown": "Roda berjalan di atas rel.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Roda berjalan di atas rel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "text": "Kisah ini dimulai di Inggris.",
+      "text_markdown": "Kisah ini dimulai di Inggris.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Kisah ini dimulai di Inggris.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "text": "Pada tahun 1825, jalur kereta api umum pertama dibuka.",
+      "text_markdown": "Pada tahun 1825, jalur kereta api umum pertama dibuka.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus dua puluh lima, jalur kereta api umum pertama dibuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "text": "Itu disebut Stockton and Darlington Railway.",
+      "text_markdown": "Itu disebut Stockton and Darlington Railway.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Itu disebut Stockton and Darlington Railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "text": "Ia mengangkut batu bara dari tambang ke sungai.",
+      "text_markdown": "Ia mengangkut batu bara dari tambang ke sungai.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Ia mengangkut batu bara dari tambang ke sungai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "text": "Seorang pria bernama George Stephenson membangun lokomotif-lokomotif itu.",
+      "text_markdown": "Seorang pria bernama George Stephenson membangun lokomotif-lokomotif itu.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Seorang pria bernama George Stephenson membangun lokomotif-lokomotif itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "text": "Orang-orang memanggilnya Bapak Perkeretaapian.",
+      "text_markdown": "Orang-orang memanggilnya Bapak Perkeretaapian.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Orang-orang memanggilnya Bapak Perkeretaapian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "text": "Pada tahun 1829, putranya Robert Stephenson membangun lokomotif terkenal bernama Rocket.",
+      "text_markdown": "Pada tahun 1829, putranya Robert Stephenson membangun lokomotif terkenal bernama Rocket.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus dua puluh sembilan, putranya Robert Stephenson membangun lokomotif terkenal bernama Rocket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "text": "Ia memenangkan perlombaan untuk kereta api tercepat.",
+      "text_markdown": "Ia memenangkan perlombaan untuk kereta api tercepat.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Ia memenangkan perlombaan untuk kereta api tercepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "text": "Rocket dapat melaju hampir 30 mil per jam.",
+      "text_markdown": "Rocket dapat melaju hampir 30 mil per jam.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Rocket dapat melaju hampir tiga puluh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p9",
+      "text": "Itu lebih cepat dari kuda mana pun.",
+      "text_markdown": "Itu lebih cepat dari kuda mana pun.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Itu lebih cepat dari kuda mana pun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "text": "Era kereta api telah dimulai.",
+      "text_markdown": "Era kereta api telah dimulai.",
+      "title": "Bab 1 — Kereta Uap Pertama",
+      "tts": {
+        "text": "Era kereta api telah dimulai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "heading_level": 2,
+      "text": "Bab 2 — Jalan Besi Menyebar",
+      "text_markdown": "Bab 2 — Jalan Besi Menyebar",
+      "title": "Bab 2 — Jalan Besi Menyebar"
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "text": "Setelah Rocket, jalur kereta api menyebar dengan cepat.",
+      "text_markdown": "Setelah Rocket, jalur kereta api menyebar dengan cepat.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Setelah Rocket, jalur kereta api menyebar dengan cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p12",
+      "text": "Britania Raya membangun ribuan mil rel.",
+      "text_markdown": "Britania Raya membangun ribuan mil rel.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Britania Raya membangun ribuan mil rel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p12",
+      "text": "Kemudian, seluruh dunia mengikuti.",
+      "text_markdown": "Kemudian, seluruh dunia mengikuti.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Kemudian, seluruh dunia mengikuti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "text": "Pada tahun 1830, jalur kereta api besar Amerika pertama dibuka.",
+      "text_markdown": "Pada tahun 1830, jalur kereta api besar Amerika pertama dibuka.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Pada tahun seribu delapan ratus tiga puluh, jalur kereta api besar Amerika pertama dibuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p13",
+      "text": "Jalur itu dinamakan Baltimore dan Ohio.",
+      "text_markdown": "Jalur itu dinamakan Baltimore dan Ohio.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Jalur itu dinamakan Baltimore dan Ohio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p13",
+      "text": "Jalur itu menghubungkan kota Baltimore ke Sungai Ohio.",
+      "text_markdown": "Jalur itu menghubungkan kota Baltimore ke Sungai Ohio.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Jalur itu menghubungkan kota Baltimore ke Sungai Ohio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "text": "Di Prancis, jalur kereta api pertama dibuka pada tahun 1832.",
+      "text_markdown": "Di Prancis, jalur kereta api pertama dibuka pada tahun 1832.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Di Prancis, jalur kereta api pertama dibuka pada tahun seribu delapan ratus tiga puluh dua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "text": "Jalur itu mengangkut batu bara, seperti jalur di Inggris.",
+      "text_markdown": "Jalur itu mengangkut batu bara, seperti jalur di Inggris.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Jalur itu mengangkut batu bara, seperti jalur di Inggris.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "text": "Di Jerman, jalur kereta api panjang pertama dibuka pada tahun 1839.",
+      "text_markdown": "Di Jerman, jalur kereta api panjang pertama dibuka pada tahun 1839.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Di Jerman, jalur kereta api panjang pertama dibuka pada tahun seribu delapan ratus tiga puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "text": "Jalur itu membentang antara dua kota, Leipzig dan Dresden.",
+      "text_markdown": "Jalur itu membentang antara dua kota, Leipzig dan Dresden.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Jalur itu membentang antara dua kota, Leipzig dan Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "text": "Rusia membangun jalur kereta api pertamanya pada tahun 1837.",
+      "text_markdown": "Rusia membangun jalur kereta api pertamanya pada tahun 1837.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Rusia membangun jalur kereta api pertamanya pada tahun seribu delapan ratus tiga puluh tujuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p16",
+      "text": "Jalur itu membentang dari Saint Petersburg ke kota terdekat.",
+      "text_markdown": "Jalur itu membentang dari Saint Petersburg ke kota terdekat.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Jalur itu membentang dari Saint Petersburg ke kota terdekat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "text": "Membangun jalur kereta api adalah pekerjaan yang sulit.",
+      "text_markdown": "Membangun jalur kereta api adalah pekerjaan yang sulit.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Membangun jalur kereta api adalah pekerjaan yang sulit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "text": "Para pekerja menggali terowongan menembus gunung.",
+      "text_markdown": "Para pekerja menggali terowongan menembus gunung.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Para pekerja menggali terowongan menembus gunung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "text": "Mereka membangun jembatan di atas sungai.",
+      "text_markdown": "Mereka membangun jembatan di atas sungai.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Mereka membangun jembatan di atas sungai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "text": "Mereka memasang setiap rel dengan tangan.",
+      "text_markdown": "Mereka memasang setiap rel dengan tangan.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Mereka memasang setiap rel dengan tangan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "text": "Kota-kota tumbuh di sepanjang jalur.",
+      "text_markdown": "Kota-kota tumbuh di sepanjang jalur.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Kota-kota tumbuh di sepanjang jalur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "text": "Sebuah desa kecil dengan stasiun bisa menjadi kota.",
+      "text_markdown": "Sebuah desa kecil dengan stasiun bisa menjadi kota.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Sebuah desa kecil dengan stasiun bisa menjadi kota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "text": "Kereta api membawa orang.",
+      "text_markdown": "Kereta api membawa orang.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Kereta api membawa orang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p18",
+      "text": "Kereta api membawa barang.",
+      "text_markdown": "Kereta api membawa barang.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Kereta api membawa barang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p18",
+      "text": "Kereta api mendekatkan dunia.",
+      "text_markdown": "Kereta api mendekatkan dunia.",
+      "title": "Bab 2 — Jalan Besi Menyebar",
+      "tts": {
+        "text": "Kereta api mendekatkan dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "heading_level": 2,
+      "text": "Bab 3 — Jalur-Jalur Besar",
+      "text_markdown": "Bab 3 — Jalur-Jalur Besar",
+      "title": "Bab 3 — Jalur-Jalur Besar"
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "text": "Beberapa jalur kereta api pendek.",
+      "text_markdown": "Beberapa jalur kereta api pendek.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Beberapa jalur kereta api pendek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "text": "Beberapa sangat panjang.",
+      "text_markdown": "Beberapa sangat panjang.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Beberapa sangat panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "text": "Jalur terpanjang melintasi seluruh benua.",
+      "text_markdown": "Jalur terpanjang melintasi seluruh benua.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Jalur terpanjang melintasi seluruh benua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "text": "Di Amerika Serikat, dua perusahaan membangun jalur kereta api melintasi negara itu.",
+      "text_markdown": "Di Amerika Serikat, dua perusahaan membangun jalur kereta api melintasi negara itu.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Di Amerika Serikat, dua perusahaan membangun jalur kereta api melintasi negara itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "text": "Satu dimulai di California dan bergerak ke timur.",
+      "text_markdown": "Satu dimulai di California dan bergerak ke timur.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Satu dimulai di California dan bergerak ke timur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "text": "Yang lain dimulai di Nebraska dan bergerak ke barat.",
+      "text_markdown": "Yang lain dimulai di Nebraska dan bergerak ke barat.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Yang lain dimulai di Nebraska dan bergerak ke barat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "text": "Mereka bertemu di tempat bernama Promontory Summit, di Utah.",
+      "text_markdown": "Mereka bertemu di tempat bernama Promontory Summit, di Utah.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Mereka bertemu di tempat bernama Promontory Summit, di Utah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "text": "Ini terjadi pada tahun 1869.",
+      "text_markdown": "Ini terjadi pada tahun 1869.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Ini terjadi pada tahun seribu delapan ratus enam puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "text": "Paku terakhir terbuat dari emas.",
+      "text_markdown": "Paku terakhir terbuat dari emas.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Paku terakhir terbuat dari emas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "text": "Orang-orang menyebutnya Paku Emas.",
+      "text_markdown": "Orang-orang menyebutnya Paku Emas.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Orang-orang menyebutnya Paku Emas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "text": "Jalur itu disebut Transcontinental Railroad.",
+      "text_markdown": "Jalur itu disebut Transcontinental Railroad.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Jalur itu disebut Transcontinental Railroad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "text": "Sekarang Anda bisa naik kereta api dari satu samudra ke samudra lain dalam waktu sekitar seminggu.",
+      "text_markdown": "Sekarang Anda bisa naik kereta api dari satu samudra ke samudra lain dalam waktu sekitar seminggu.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Sekarang Anda bisa naik kereta api dari satu samudra ke samudra lain dalam waktu sekitar seminggu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "text": "Rusia membangun jalur yang bahkan lebih panjang.",
+      "text_markdown": "Rusia membangun jalur yang bahkan lebih panjang.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Rusia membangun jalur yang bahkan lebih panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "text": "Jalur itu disebut Trans Siberian Railway.",
+      "text_markdown": "Jalur itu disebut Trans Siberian Railway.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Jalur itu disebut Trans Siberian Railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "text": "Jalur itu membentang dari Moskow di barat hingga Vladivostok di timur.",
+      "text_markdown": "Jalur itu membentang dari Moskow di barat hingga Vladivostok di timur.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Jalur itu membentang dari Moskow di barat hingga Vladivostok di timur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p23",
+      "text": "Jalur itu selesai pada tahun 1916.",
+      "text_markdown": "Jalur itu selesai pada tahun 1916.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Jalur itu selesai pada tahun seribu sembilan ratus enam belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p23",
+      "text": "Panjangnya lebih dari sembilan ribu kilometer.",
+      "text_markdown": "Panjangnya lebih dari sembilan ribu kilometer.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Panjangnya lebih dari sembilan ribu kilometer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 5,
+      "paragraph_id": "p23",
+      "text": "Satu perjalanan penuh memakan waktu sekitar tujuh hari.",
+      "text_markdown": "Satu perjalanan penuh memakan waktu sekitar tujuh hari.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Satu perjalanan penuh memakan waktu sekitar tujuh hari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "sentence_index": 6,
+      "paragraph_id": "p23",
+      "text": "Ini masih merupakan jalur kereta api terpanjang di dunia.",
+      "text_markdown": "Ini masih merupakan jalur kereta api terpanjang di dunia.",
+      "title": "Bab 3 — Jalur-Jalur Besar",
+      "tts": {
+        "text": "Ini masih merupakan jalur kereta api terpanjang di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "heading_level": 2,
+      "text": "Bab 4 — Uap, Diesel, Listrik",
+      "text_markdown": "Bab 4 — Uap, Diesel, Listrik",
+      "title": "Bab 4 — Uap, Diesel, Listrik"
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "text": "Selama sekitar seratus tahun, hampir setiap kereta adalah kereta uap.",
+      "text_markdown": "Selama sekitar seratus tahun, hampir setiap kereta adalah kereta uap.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Selama sekitar seratus tahun, hampir setiap kereta adalah kereta uap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p25",
+      "text": "Lokomotif uap berukuran besar dan berisik.",
+      "text_markdown": "Lokomotif uap berukuran besar dan berisik.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Lokomotif uap berukuran besar dan berisik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p25",
+      "text": "Mereka membakar batu bara.",
+      "text_markdown": "Mereka membakar batu bara.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Mereka membakar batu bara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p25",
+      "text": "Mereka mengeluarkan asap tebal ke langit.",
+      "text_markdown": "Mereka mengeluarkan asap tebal ke langit.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Mereka mengeluarkan asap tebal ke langit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "text": "Kemudian datanglah lokomotif diesel.",
+      "text_markdown": "Kemudian datanglah lokomotif diesel.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Kemudian datanglah lokomotif diesel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "text": "Mesin diesel membakar minyak, bukan batu bara.",
+      "text_markdown": "Mesin diesel membakar minyak, bukan batu bara.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Mesin diesel membakar minyak, bukan batu bara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "text": "Ukurannya lebih kecil dan lebih bersih.",
+      "text_markdown": "Ukurannya lebih kecil dan lebih bersih.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Ukurannya lebih kecil dan lebih bersih.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "text": "Tidak memerlukan api dan tangki air.",
+      "text_markdown": "Tidak memerlukan api dan tangki air.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Tidak memerlukan api dan tangki air.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "text": "Kereta diesel menjadi umum pada tahun 1940-an dan 1950-an.",
+      "text_markdown": "Kereta diesel menjadi umum pada tahun 1940-an dan 1950-an.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Kereta diesel menjadi umum pada tahun seribu sembilan ratus empat puluhan dan seribu sembilan ratus lima puluhan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "text": "Perlahan, lokomotif uap besar dipensiunkan.",
+      "text_markdown": "Perlahan, lokomotif uap besar dipensiunkan.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Perlahan, lokomotif uap besar dipensiunkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p27",
+      "text": "Beberapa di antaranya masih disimpan di museum dan jalur wisata.",
+      "text_markdown": "Beberapa di antaranya masih disimpan di museum dan jalur wisata.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Beberapa di antaranya masih disimpan di museum dan jalur wisata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "text": "Langkah selanjutnya adalah kereta listrik.",
+      "text_markdown": "Langkah selanjutnya adalah kereta listrik.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Langkah selanjutnya adalah kereta listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p28",
+      "text": "Kereta listrik tidak memiliki mesin yang membakar bahan bakar.",
+      "text_markdown": "Kereta listrik tidak memiliki mesin yang membakar bahan bakar.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Kereta listrik tidak memiliki mesin yang membakar bahan bakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p28",
+      "text": "Ia mengambil daya dari kabel di atas rel atau dari rel ketiga di samping rel.",
+      "text_markdown": "Ia mengambil daya dari kabel di atas rel atau dari rel ketiga di samping rel.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Ia mengambil daya dari kabel di atas rel atau dari rel ketiga di samping rel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "text": "Kereta listrik senyap dan sangat bersih.",
+      "text_markdown": "Kereta listrik senyap dan sangat bersih.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Kereta listrik senyap dan sangat bersih.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p29",
+      "text": "Mereka juga sangat kuat.",
+      "text_markdown": "Mereka juga sangat kuat.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Mereka juga sangat kuat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p29",
+      "text": "Sebagian besar kereta di kota-kota dan sebagian besar kereta cepat saat ini adalah listrik.",
+      "text_markdown": "Sebagian besar kereta di kota-kota dan sebagian besar kereta cepat saat ini adalah listrik.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Sebagian besar kereta di kota-kota dan sebagian besar kereta cepat saat ini adalah listrik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "text": "Uap, diesel, listrik.",
+      "text_markdown": "Uap, diesel, listrik.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Uap, diesel, listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p30",
+      "text": "Tiga mesin, tiga era.",
+      "text_markdown": "Tiga mesin, tiga era.",
+      "title": "Bab 4 — Uap, Diesel, Listrik",
+      "tts": {
+        "text": "Tiga mesin, tiga era.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "heading_level": 2,
+      "text": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "text_markdown": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan"
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "text": "Pada tahun 1964, Jepang membuka jalur kereta api baru.",
+      "text_markdown": "Pada tahun 1964, Jepang membuka jalur kereta api baru.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus enam puluh empat, Jepang membuka jalur kereta api baru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "text": "Jalur itu membentang dari Tokyo ke Osaka.",
+      "text_markdown": "Jalur itu membentang dari Tokyo ke Osaka.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Jalur itu membentang dari Tokyo ke Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "text": "Kereta-kereta itu tampak seperti peluru putih panjang.",
+      "text_markdown": "Kereta-kereta itu tampak seperti peluru putih panjang.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Kereta-kereta itu tampak seperti peluru putih panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "text": "Orang-orang menyebutnya kereta peluru.",
+      "text_markdown": "Orang-orang menyebutnya kereta peluru.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Orang-orang menyebutnya kereta peluru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p32",
+      "text": "Nama Jepangnya adalah Shinkansen.",
+      "text_markdown": "Nama Jepangnya adalah Shinkansen.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Nama Jepangnya adalah Shinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "text": "Kereta peluru pertama melaju 130 mil per jam.",
+      "text_markdown": "Kereta peluru pertama melaju 130 mil per jam.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Kereta peluru pertama melaju seratus tiga puluh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "text": "Itu sangat cepat untuk sebuah kereta pada tahun 1964.",
+      "text_markdown": "Itu sangat cepat untuk sebuah kereta pada tahun 1964.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Itu sangat cepat untuk sebuah kereta pada tahun seribu sembilan ratus enam puluh empat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "text": "Jalur itu dibuka tepat waktu untuk Olimpiade Tokyo.",
+      "text_markdown": "Jalur itu dibuka tepat waktu untuk Olimpiade Tokyo.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Jalur itu dibuka tepat waktu untuk Olimpiade Tokyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "text": "Negara-negara lain mengikuti.",
+      "text_markdown": "Negara-negara lain mengikuti.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Negara-negara lain mengikuti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "text": "Prancis membuka jalur kecepatan tingginya pada tahun 1981.",
+      "text_markdown": "Prancis membuka jalur kecepatan tingginya pada tahun 1981.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Prancis membuka jalur kecepatan tingginya pada tahun seribu sembilan ratus delapan puluh satu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "text": "Kereta-kereta itu disebut TGV.",
+      "text_markdown": "Kereta-kereta itu disebut TGV.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Kereta-kereta itu disebut T G V.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "text": "Jerman mengikuti dengan ICE.",
+      "text_markdown": "Jerman mengikuti dengan ICE.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Jerman mengikuti dengan I C E.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "text": "Italia, Spanyol, dan Korea membangun jalur kecepatan tinggi mereka sendiri.",
+      "text_markdown": "Italia, Spanyol, dan Korea membangun jalur kecepatan tinggi mereka sendiri.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Italia, Spanyol, dan Korea membangun jalur kecepatan tinggi mereka sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "text": "Tiongkok adalah yang terakhir memulai, tetapi membangun dengan cepat.",
+      "text_markdown": "Tiongkok adalah yang terakhir memulai, tetapi membangun dengan cepat.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Tiongkok adalah yang terakhir memulai, tetapi membangun dengan cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "text": "Saat ini, Tiongkok memiliki jaringan kecepatan tinggi terbesar di dunia.",
+      "text_markdown": "Saat ini, Tiongkok memiliki jaringan kecepatan tinggi terbesar di dunia.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Saat ini, Tiongkok memiliki jaringan kecepatan tinggi terbesar di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "text": "Ada puluhan ribu kilometer rel.",
+      "text_markdown": "Ada puluhan ribu kilometer rel.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Ada puluhan ribu kilometer rel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "text": "Kereta peluru modern dapat melaju lebih dari 200 mil per jam.",
+      "text_markdown": "Kereta peluru modern dapat melaju lebih dari 200 mil per jam.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Kereta peluru modern dapat melaju lebih dari dua ratus mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "text": "Kereta-kereta itu mulus, senyap, dan hampir selalu tepat waktu.",
+      "text_markdown": "Kereta-kereta itu mulus, senyap, dan hampir selalu tepat waktu.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Kereta-kereta itu mulus, senyap, dan hampir selalu tepat waktu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p36",
+      "text": "Untuk banyak perjalanan, kereta-kereta itu lebih cepat daripada terbang.",
+      "text_markdown": "Untuk banyak perjalanan, kereta-kereta itu lebih cepat daripada terbang.",
+      "title": "Bab 5 — Kereta Peluru dan Perlombaan Kecepatan",
+      "tts": {
+        "text": "Untuk banyak perjalanan, kereta-kereta itu lebih cepat daripada terbang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "heading_level": 2,
+      "text": "Bab 6 — Berbagai Jenis Kereta Api",
+      "text_markdown": "Bab 6 — Berbagai Jenis Kereta Api",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api"
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "text": "Tidak semua kereta api sama.",
+      "text_markdown": "Tidak semua kereta api sama.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Tidak semua kereta api sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "text": "Ada banyak jenis.",
+      "text_markdown": "Ada banyak jenis.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Ada banyak jenis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "text": "Kereta penumpang mengangkut orang.",
+      "text_markdown": "Kereta penumpang mengangkut orang.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Kereta penumpang mengangkut orang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "text": "Kereta itu memiliki kursi, jendela, dan terkadang gerbong makan atau gerbong tidur.",
+      "text_markdown": "Kereta itu memiliki kursi, jendela, dan terkadang gerbong makan atau gerbong tidur.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Kereta itu memiliki kursi, jendela, dan terkadang gerbong makan atau gerbong tidur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "text": "Kereta barang mengangkut barang.",
+      "text_markdown": "Kereta barang mengangkut barang.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Kereta barang mengangkut barang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p40",
+      "text": "Gerbong-gerbong itu disebut gerbong barang.",
+      "text_markdown": "Gerbong-gerbong itu disebut gerbong barang.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Gerbong-gerbong itu disebut gerbong barang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p40",
+      "text": "Beberapa mengangkut biji-bijian.",
+      "text_markdown": "Beberapa mengangkut biji-bijian.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Beberapa mengangkut biji-bijian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p40",
+      "text": "Beberapa mengangkut minyak.",
+      "text_markdown": "Beberapa mengangkut minyak.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Beberapa mengangkut minyak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p40",
+      "text": "Beberapa mengangkut kontainer pengiriman utuh yang ditumpuk dua tingkat.",
+      "text_markdown": "Beberapa mengangkut kontainer pengiriman utuh yang ditumpuk dua tingkat.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Beberapa mengangkut kontainer pengiriman utuh yang ditumpuk dua tingkat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "text": "Subway adalah kereta bawah tanah di kota.",
+      "text_markdown": "Subway adalah kereta bawah tanah di kota.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Subway adalah kereta bawah tanah di kota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p41",
+      "text": "Kereta bawah tanah pertama dibuka di London pada tahun 1863.",
+      "text_markdown": "Kereta bawah tanah pertama dibuka di London pada tahun 1863.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Kereta bawah tanah pertama dibuka di London pada tahun seribu delapan ratus enam puluh tiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p41",
+      "text": "Saat ini, kota-kota besar memiliki jaringan kereta bawah tanah yang sangat besar di bawah jalan-jalan mereka.",
+      "text_markdown": "Saat ini, kota-kota besar memiliki jaringan kereta bawah tanah yang sangat besar di bawah jalan-jalan mereka.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Saat ini, kota-kota besar memiliki jaringan kereta bawah tanah yang sangat besar di bawah jalan-jalan mereka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "text": "Trem atau kereta ringan adalah kereta kecil yang berjalan di jalan-jalan kota.",
+      "text_markdown": "Trem atau kereta ringan adalah kereta kecil yang berjalan di jalan-jalan kota.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Trem atau kereta ringan adalah kereta kecil yang berjalan di jalan-jalan kota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "text": "Seringkali berbagi jalan dengan mobil dan bus.",
+      "text_markdown": "Seringkali berbagi jalan dengan mobil dan bus.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Seringkali berbagi jalan dengan mobil dan bus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "text": "Kereta gunung mendaki bukit-bukit curam.",
+      "text_markdown": "Kereta gunung mendaki bukit-bukit curam.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Kereta gunung mendaki bukit-bukit curam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "text": "Beberapa memiliki rel bergerigi khusus di tengah, yang disebut rel gerigi.",
+      "text_markdown": "Beberapa memiliki rel bergerigi khusus di tengah, yang disebut rel gerigi.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Beberapa memiliki rel bergerigi khusus di tengah, yang disebut rel gerigi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "text": "Lokomotif mencengkeram rel gerigi untuk naik dan turun dengan aman.",
+      "text_markdown": "Lokomotif mencengkeram rel gerigi untuk naik dan turun dengan aman.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Lokomotif mencengkeram rel gerigi untuk naik dan turun dengan aman.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "text": "Beberapa kereta api juga merupakan kereta wisata.",
+      "text_markdown": "Beberapa kereta api juga merupakan kereta wisata.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Beberapa kereta api juga merupakan kereta wisata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "text": "Mereka melaju melintasi hutan dan pegunungan, hanya untuk menikmati pemandangan.",
+      "text_markdown": "Mereka melaju melintasi hutan dan pegunungan, hanya untuk menikmati pemandangan.",
+      "title": "Bab 6 — Berbagai Jenis Kereta Api",
+      "tts": {
+        "text": "Mereka melaju melintasi hutan dan pegunungan, hanya untuk menikmati pemandangan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "heading_level": 2,
+      "text": "Bab 7 — Masa Depan di Atas Rel",
+      "text_markdown": "Bab 7 — Masa Depan di Atas Rel",
+      "title": "Bab 7 — Masa Depan di Atas Rel"
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "text": "Kisah kereta api belum berakhir.",
+      "text_markdown": "Kisah kereta api belum berakhir.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kisah kereta api belum berakhir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p46",
+      "text": "Jenis-jenis kereta api baru sedang dibangun saat ini.",
+      "text_markdown": "Jenis-jenis kereta api baru sedang dibangun saat ini.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Jenis-jenis kereta api baru sedang dibangun saat ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "text": "Yang paling menakjubkan adalah maglev.",
+      "text_markdown": "Yang paling menakjubkan adalah maglev.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Yang paling menakjubkan adalah maglev.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p47",
+      "text": "Kata maglev adalah singkatan dari levitasi magnetik.",
+      "text_markdown": "Kata maglev adalah singkatan dari levitasi magnetik.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kata maglev adalah singkatan dari levitasi magnetik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p47",
+      "text": "Kereta maglev tidak menyentuh relnya.",
+      "text_markdown": "Kereta maglev tidak menyentuh relnya.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kereta maglev tidak menyentuh relnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p47",
+      "text": "Ia mengambang di atas bantalan magnet.",
+      "text_markdown": "Ia mengambang di atas bantalan magnet.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Ia mengambang di atas bantalan magnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p47",
+      "text": "Tidak ada roda yang berputar.",
+      "text_markdown": "Tidak ada roda yang berputar.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Tidak ada roda yang berputar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p47",
+      "text": "Tidak ada gesekan.",
+      "text_markdown": "Tidak ada gesekan.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Tidak ada gesekan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "text": "Pada tahun 2004, jalur maglev dibuka di Shanghai, Tiongkok.",
+      "text_markdown": "Pada tahun 2004, jalur maglev dibuka di Shanghai, Tiongkok.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Pada tahun dua ribu empat, jalur maglev dibuka di Shanghai, Tiongkok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "text": "Kereta ini dapat mencapai lebih dari 250 mil per jam.",
+      "text_markdown": "Kereta ini dapat mencapai lebih dari 250 mil per jam.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kereta ini dapat mencapai lebih dari dua ratus lima puluh mil per jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "text": "Di Jepang, kereta maglev uji coba telah melaju lebih cepat dari 370 mil per jam.",
+      "text_markdown": "Di Jepang, kereta maglev uji coba telah melaju lebih cepat dari 370 mil per jam.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Di Jepang, kereta maglev uji coba telah melaju lebih cepat dari tiga ratus tujuh puluh mil per jam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "text": "Insinyur lain sedang mengerjakan kereta hidrogen.",
+      "text_markdown": "Insinyur lain sedang mengerjakan kereta hidrogen.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Insinyur lain sedang mengerjakan kereta hidrogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "text": "Kereta hidrogen menghasilkan listrik dari sel bahan bakar kecil.",
+      "text_markdown": "Kereta hidrogen menghasilkan listrik dari sel bahan bakar kecil.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kereta hidrogen menghasilkan listrik dari sel bahan bakar kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "text": "Satu-satunya yang keluar dari mesin adalah uap air.",
+      "text_markdown": "Satu-satunya yang keluar dari mesin adalah uap air.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Satu-satunya yang keluar dari mesin adalah uap air.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "text": "Tidak ada asap.",
+      "text_markdown": "Tidak ada asap.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Tidak ada asap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "text": "Tidak ada batu bara.",
+      "text_markdown": "Tidak ada batu bara.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Tidak ada batu bara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p49",
+      "text": "Kereta hidrogen pertama mulai beroperasi di Jerman pada tahun 2018.",
+      "text_markdown": "Kereta hidrogen pertama mulai beroperasi di Jerman pada tahun 2018.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kereta hidrogen pertama mulai beroperasi di Jerman pada tahun dua ribu delapan belas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "text": "Kereta api sangat tua.",
+      "text_markdown": "Kereta api sangat tua.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Kereta api sangat tua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "text": "Mereka juga sangat baru.",
+      "text_markdown": "Mereka juga sangat baru.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Mereka juga sangat baru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "text": "Dua ratus tahun setelah Rocket, rel masih menjadi masa depan.",
+      "text_markdown": "Dua ratus tahun setelah Rocket, rel masih menjadi masa depan.",
+      "title": "Bab 7 — Masa Depan di Atas Rel",
+      "tts": {
+        "text": "Dua ratus tahun setelah Rocket, rel masih menjadi masa depan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "heading_level": 1,
+      "text": "Jalur Besi Terus Melaju",
+      "text_markdown": "Jalur Besi Terus Melaju",
+      "title": "Jalur Besi Terus Melaju"
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "text": "Dari Rocket hingga maglev, kereta api telah membawa dunia maju selama hampir dua ratus tahun.",
+      "text_markdown": "Dari Rocket hingga maglev, kereta api telah membawa dunia maju selama hampir dua ratus tahun.",
+      "title": "Jalur Besi Terus Melaju",
+      "tts": {
+        "text": "Dari Rocket hingga maglev, kereta api telah membawa dunia maju selama hampir dua ratus tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p52",
+      "text": "Jalur-jalur baru sedang dibangun saat ini, di gurun, di pegunungan, dan di bawah kota-kota.",
+      "text_markdown": "Jalur-jalur baru sedang dibangun saat ini, di gurun, di pegunungan, dan di bawah kota-kota.",
+      "title": "Jalur Besi Terus Melaju",
+      "tts": {
+        "text": "Jalur-jalur baru sedang dibangun saat ini, di gurun, di pegunungan, dan di bawah kota-kota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p52",
+      "text": "Stasiun berikutnya selalu ada di depan.",
+      "text_markdown": "Stasiun berikutnya selalu ada di depan.",
+      "title": "Jalur Besi Terus Melaju",
+      "tts": {
+        "text": "Stasiun berikutnya selalu ada di depan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "A Floresta Tropical",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Floresta Tropical",
+      "text_markdown": "A Floresta Tropical"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Onde as Florestas Tropicais Crescem",
+      "text_markdown": "Onde as Florestas Tropicais Crescem"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bem-vindo à floresta tropical.",
+      "text_markdown": "Bem-vindo à floresta tropical.",
+      "tts": {
+        "text": "Bem vindo à floresta tropical.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é um dos grandes biomas do mundo.",
+      "text_markdown": "Este é um dos grandes biomas do mundo.",
+      "tts": {
+        "text": "Este é um dos grandes biomas do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "text_markdown": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "tts": {
+        "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta tropical é quente o ano todo.",
+      "text_markdown": "A floresta tropical é quente o ano todo.",
+      "tts": {
+        "text": "A floresta tropical é quente o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É úmida o ano todo.",
+      "text_markdown": "É úmida o ano todo.",
+      "tts": {
+        "text": "É úmida o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Está cheia de vida.",
+      "text_markdown": "Está cheia de vida.",
+      "tts": {
+        "text": "Está cheia de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria das florestas tropicais cresce perto do equador.",
+      "text_markdown": "A maioria das florestas tropicais cresce perto do equador.",
+      "tts": {
+        "text": "A maioria das florestas tropicais cresce perto do equador.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O equador é a linha que passa pelo meio da Terra.",
+      "text_markdown": "O equador é a linha que passa pelo meio da Terra.",
+      "tts": {
+        "text": "O equador é a linha que passa pelo meio da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perto do equador, o sol é forte todos os dias.",
+      "text_markdown": "Perto do equador, o sol é forte todos os dias.",
+      "tts": {
+        "text": "Perto do equador, o sol é forte todos os dias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maior floresta tropical do mundo é a Amazônia, na América do Sul.",
+      "text_markdown": "A maior floresta tropical do mundo é a Amazônia, na América do Sul.",
+      "tts": {
+        "text": "A maior floresta tropical do mundo é a Amazônia, na América do Sul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há grandes florestas tropicais na África também, perto do rio Congo.",
+      "text_markdown": "Há grandes florestas tropicais na África também, perto do rio Congo.",
+      "tts": {
+        "text": "Há grandes florestas tropicais na África também, perto do rio Congo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há florestas tropicais no Sudeste Asiático, em muitas ilhas.",
+      "text_markdown": "Há florestas tropicais no Sudeste Asiático, em muitas ilhas.",
+      "tts": {
+        "text": "Há florestas tropicais no Sudeste Asiático, em muitas ilhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há florestas tropicais menores na América Central e em ilhas do Pacífico.",
+      "text_markdown": "Há florestas tropicais menores na América Central e em ilhas do Pacífico.",
+      "tts": {
+        "text": "Há florestas tropicais menores na América Central e em ilhas do Pacífico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada uma dessas florestas cresceu por conta própria, longe das outras.",
+      "text_markdown": "Cada uma dessas florestas cresceu por conta própria, longe das outras.",
+      "tts": {
+        "text": "Cada uma dessas florestas cresceu por conta própria, longe das outras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+      "text_markdown": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+      "tts": {
+        "text": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um macaco da Amazônia não é igual a um macaco da África ou da Ásia.",
+      "text_markdown": "Um macaco da Amazônia não é igual a um macaco da África ou da Ásia.",
+      "tts": {
+        "text": "Um macaco da Amazônia não é igual a um macaco da África ou da Ásia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas todos fazem parte do mesmo bioma.",
+      "text_markdown": "Mas todos fazem parte do mesmo bioma.",
+      "tts": {
+        "text": "Mas todos fazem parte do mesmo bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando você está dentro de uma floresta tropical, o ar parece pesado e quente.",
+      "text_markdown": "Quando você está dentro de uma floresta tropical, o ar parece pesado e quente.",
+      "tts": {
+        "text": "Quando você está dentro de uma floresta tropical, o ar parece pesado e quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A luz é suave e verde.",
+      "text_markdown": "A luz é suave e verde.",
+      "tts": {
+        "text": "A luz é suave e verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores são tão altas que quase não dá para ver o céu.",
+      "text_markdown": "As árvores são tão altas que quase não dá para ver o céu.",
+      "tts": {
+        "text": "As árvores são tão altas que quase não dá para ver o céu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você ouve pássaros e insetos por todos os lados.",
+      "text_markdown": "Você ouve pássaros e insetos por todos os lados.",
+      "tts": {
+        "text": "Você ouve pássaros e insetos por todos os lados.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você ouve a água pingando das folhas.",
+      "text_markdown": "Você ouve a água pingando das folhas.",
+      "tts": {
+        "text": "Você ouve a água pingando das folhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você sente como se estivesse dentro de uma sala viva.",
+      "text_markdown": "Você sente como se estivesse dentro de uma sala viva.",
+      "tts": {
+        "text": "Você sente como se estivesse dentro de uma sala viva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É isso que a floresta tropical é.",
+      "text_markdown": "É isso que a floresta tropical é.",
+      "tts": {
+        "text": "É isso que a floresta tropical é.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Onde as Florestas Tropicais Crescem",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um mundo inteiro feito de árvores e chuva.",
+      "text_markdown": "Um mundo inteiro feito de árvores e chuva.",
+      "tts": {
+        "text": "Um mundo inteiro feito de árvores e chuva.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Clima",
+      "text_markdown": "O Clima"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O clima na floresta tropical é simples.",
+      "text_markdown": "O clima na floresta tropical é simples.",
+      "tts": {
+        "text": "O clima na floresta tropical é simples.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É quente, e chove muito.",
+      "text_markdown": "É quente, e chove muito.",
+      "tts": {
+        "text": "É quente, e chove muito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A temperatura fica quase a mesma o ano todo.",
+      "text_markdown": "A temperatura fica quase a mesma o ano todo.",
+      "tts": {
+        "text": "A temperatura fica quase a mesma o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Não faz frio no inverno.",
+      "text_markdown": "Não faz frio no inverno.",
+      "tts": {
+        "text": "Não faz frio no inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Não faz muito calor no verão.",
+      "text_markdown": "Não faz muito calor no verão.",
+      "tts": {
+        "text": "Não faz muito calor no verão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quase todos os dias são quentes e estáveis.",
+      "text_markdown": "Quase todos os dias são quentes e estáveis.",
+      "tts": {
+        "text": "Quase todos os dias são quentes e estáveis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chove quase todos os dias.",
+      "text_markdown": "Chove quase todos os dias.",
+      "tts": {
+        "text": "Chove quase todos os dias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em alguns lugares cai mais de dois metros de chuva por ano.",
+      "text_markdown": "Em alguns lugares cai mais de dois metros de chuva por ano.",
+      "tts": {
+        "text": "Em alguns lugares cai mais de dois metros de chuva por ano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É mais chuva do que a maioria das partes do mundo já viu.",
+      "text_markdown": "É mais chuva do que a maioria das partes do mundo já viu.",
+      "tts": {
+        "text": "É mais chuva do que a maioria das partes do mundo já viu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A chuva muitas vezes vem à tarde.",
+      "text_markdown": "A chuva muitas vezes vem à tarde.",
+      "tts": {
+        "text": "A chuva muitas vezes vem à tarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grandes nuvens se juntam acima das árvores.",
+      "text_markdown": "Grandes nuvens se juntam acima das árvores.",
+      "tts": {
+        "text": "Grandes nuvens se juntam acima das árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma chuva forte cai por uma hora ou duas.",
+      "text_markdown": "Uma chuva forte cai por uma hora ou duas.",
+      "tts": {
+        "text": "Uma chuva forte cai por uma hora ou duas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois o sol volta a aparecer.",
+      "text_markdown": "Depois o sol volta a aparecer.",
+      "tts": {
+        "text": "Depois o sol volta a aparecer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As folhas brilham, e o vapor sobe do chão.",
+      "text_markdown": "As folhas brilham, e o vapor sobe do chão.",
+      "tts": {
+        "text": "As folhas brilham, e o vapor sobe do chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aqui não existem quatro estações.",
+      "text_markdown": "Aqui não existem quatro estações.",
+      "tts": {
+        "text": "Aqui não existem quatro estações.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Existe só uma época mais úmida e uma época mais seca.",
+      "text_markdown": "Existe só uma época mais úmida e uma época mais seca.",
+      "tts": {
+        "text": "Existe só uma época mais úmida e uma época mais seca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mesmo na época mais seca, ainda chove com frequência.",
+      "text_markdown": "Mesmo na época mais seca, ainda chove com frequência.",
+      "tts": {
+        "text": "Mesmo na época mais seca, ainda chove com frequência.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para as plantas e os animais da floresta tropical, cada dia parece quase igual.",
+      "text_markdown": "Para as plantas e os animais da floresta tropical, cada dia parece quase igual.",
+      "tts": {
+        "text": "Para as plantas e os animais da floresta tropical, cada dia parece quase igual.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Terra e a Água",
+      "text_markdown": "A Terra e a Água"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O chão da floresta tropical é cheio de vida, mas o solo é fino.",
+      "text_markdown": "O chão da floresta tropical é cheio de vida, mas o solo é fino.",
+      "tts": {
+        "text": "O chão da floresta tropical é cheio de vida, mas o solo é fino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quase tudo de bom fica nos poucos centímetros do topo.",
+      "text_markdown": "Quase tudo de bom fica nos poucos centímetros do topo.",
+      "tts": {
+        "text": "Quase tudo de bom fica nos poucos centímetros do topo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando uma folha cai, insetos e seres bem pequenos a desfazem muito rápido.",
+      "text_markdown": "Quando uma folha cai, insetos e seres bem pequenos a desfazem muito rápido.",
+      "tts": {
+        "text": "Quando uma folha cai, insetos e seres bem pequenos a desfazem muito rápido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores pegam o alimento de volta quase na mesma hora.",
+      "text_markdown": "As árvores pegam o alimento de volta quase na mesma hora.",
+      "tts": {
+        "text": "As árvores pegam o alimento de volta quase na mesma hora.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É por isso que uma floresta tropical derrubada é difícil de trazer de volta.",
+      "text_markdown": "É por isso que uma floresta tropical derrubada é difícil de trazer de volta.",
+      "tts": {
+        "text": "É por isso que uma floresta tropical derrubada é difícil de trazer de volta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sem as árvores, a chuva leva o solo fino embora.",
+      "text_markdown": "Sem as árvores, a chuva leva o solo fino embora.",
+      "tts": {
+        "text": "Sem as árvores, a chuva leva o solo fino embora.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rios passam por todas as florestas tropicais.",
+      "text_markdown": "Rios passam por todas as florestas tropicais.",
+      "tts": {
+        "text": "Rios passam por todas as florestas tropicais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns rios são enormes.",
+      "text_markdown": "Alguns rios são enormes.",
+      "tts": {
+        "text": "Alguns rios são enormes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O rio Amazonas carrega mais água do que qualquer outro rio do mundo.",
+      "text_markdown": "O rio Amazonas carrega mais água do que qualquer outro rio do mundo.",
+      "tts": {
+        "text": "O rio Amazonas carrega mais água do que qualquer outro rio do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na época de chuva, os rios se espalham fundo pela floresta.",
+      "text_markdown": "Na época de chuva, os rios se espalham fundo pela floresta.",
+      "tts": {
+        "text": "Na época de chuva, os rios se espalham fundo pela floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores ficam dentro da água por meses.",
+      "text_markdown": "As árvores ficam dentro da água por meses.",
+      "tts": {
+        "text": "As árvores ficam dentro da água por meses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os peixes nadam entre os troncos.",
+      "text_markdown": "Os peixes nadam entre os troncos.",
+      "tts": {
+        "text": "Os peixes nadam entre os troncos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outros rios são pequenos e limpos, com pedras no fundo.",
+      "text_markdown": "Outros rios são pequenos e limpos, com pedras no fundo.",
+      "tts": {
+        "text": "Outros rios são pequenos e limpos, com pedras no fundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A própria floresta cresce em camadas.",
+      "text_markdown": "A própria floresta cresce em camadas.",
+      "tts": {
+        "text": "A própria floresta cresce em camadas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lá em cima ficam as árvores mais altas, com as copas abertas ao sol.",
+      "text_markdown": "Lá em cima ficam as árvores mais altas, com as copas abertas ao sol.",
+      "tts": {
+        "text": "Lá em cima ficam as árvores mais altas, com as copas abertas ao sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abaixo delas há um teto verde e grosso de folhas.",
+      "text_markdown": "Abaixo delas há um teto verde e grosso de folhas.",
+      "tts": {
+        "text": "Abaixo delas há um teto verde e grosso de folhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Debaixo desse teto, o ar é sombrio e parado.",
+      "text_markdown": "Debaixo desse teto, o ar é sombrio e parado.",
+      "tts": {
+        "text": "Debaixo desse teto, o ar é sombrio e parado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lá no chão, só um pouco de luz consegue passar.",
+      "text_markdown": "Lá no chão, só um pouco de luz consegue passar.",
+      "tts": {
+        "text": "Lá no chão, só um pouco de luz consegue passar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada camada é uma casa diferente para os animais e plantas do bioma.",
+      "text_markdown": "Cada camada é uma casa diferente para os animais e plantas do bioma.",
+      "tts": {
+        "text": "Cada camada é uma casa diferente para os animais e plantas do bioma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "As Plantas",
+      "text_markdown": "As Plantas"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta tropical tem mais tipos de plantas do que qualquer outro bioma na terra firme.",
+      "text_markdown": "A floresta tropical tem mais tipos de plantas do que qualquer outro bioma na terra firme.",
+      "tts": {
+        "text": "A floresta tropical tem mais tipos de plantas do que qualquer outro bioma na terra firme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores são o coração dela.",
+      "text_markdown": "As árvores são o coração dela.",
+      "tts": {
+        "text": "As árvores são o coração dela.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algumas árvores crescem muito altas, buscando o sol.",
+      "text_markdown": "Algumas árvores crescem muito altas, buscando o sol.",
+      "tts": {
+        "text": "Algumas árvores crescem muito altas, buscando o sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seus troncos são retos e lisos.",
+      "text_markdown": "Seus troncos são retos e lisos.",
+      "tts": {
+        "text": "Seus troncos são retos e lisos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas raízes se abrem largas na base, como muros, para segurá-las no solo fino.",
+      "text_markdown": "Suas raízes se abrem largas na base, como muros, para segurá-las no solo fino.",
+      "tts": {
+        "text": "Suas raízes se abrem largas na base, como muros, para segurá las no solo fino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cipós sobem pelos troncos em direção à luz.",
+      "text_markdown": "Cipós sobem pelos troncos em direção à luz.",
+      "tts": {
+        "text": "Cipós sobem pelos troncos em direção à luz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns cipós são grossos como o seu braço.",
+      "text_markdown": "Alguns cipós são grossos como o seu braço.",
+      "tts": {
+        "text": "Alguns cipós são grossos como o seu braço.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles enrolam nas árvores e descem pendurados dos galhos.",
+      "text_markdown": "Eles enrolam nas árvores e descem pendurados dos galhos.",
+      "tts": {
+        "text": "Eles enrolam nas árvores e descem pendurados dos galhos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há plantas que crescem nas próprias árvores, lá no alto.",
+      "text_markdown": "Há plantas que crescem nas próprias árvores, lá no alto.",
+      "tts": {
+        "text": "Há plantas que crescem nas próprias árvores, lá no alto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elas não têm raízes no chão.",
+      "text_markdown": "Elas não têm raízes no chão.",
+      "tts": {
+        "text": "Elas não têm raízes no chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bebem a chuva que escorre pela casca das árvores.",
+      "text_markdown": "Bebem a chuva que escorre pela casca das árvores.",
+      "tts": {
+        "text": "Bebem a chuva que escorre pela casca das árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No chão escuro da floresta crescem samambaias e plantas verdes e macias.",
+      "text_markdown": "No chão escuro da floresta crescem samambaias e plantas verdes e macias.",
+      "tts": {
+        "text": "No chão escuro da floresta crescem samambaias e plantas verdes e macias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Têm folhas largas e planas para pegar cada gota de luz.",
+      "text_markdown": "Têm folhas largas e planas para pegar cada gota de luz.",
+      "tts": {
+        "text": "Têm folhas largas e planas para pegar cada gota de luz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As flores abrem em todas as cores que você pode imaginar.",
+      "text_markdown": "As flores abrem em todas as cores que você pode imaginar.",
+      "tts": {
+        "text": "As flores abrem em todas as cores que você pode imaginar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algumas são vermelhas, algumas amarelas, algumas roxas escuras.",
+      "text_markdown": "Algumas são vermelhas, algumas amarelas, algumas roxas escuras.",
+      "tts": {
+        "text": "Algumas são vermelhas, algumas amarelas, algumas roxas escuras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitas delas abrem à noite.",
+      "text_markdown": "Muitas delas abrem à noite.",
+      "tts": {
+        "text": "Muitas delas abrem à noite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Frutas ficam penduradas nos galhos o ano todo.",
+      "text_markdown": "Frutas ficam penduradas nos galhos o ano todo.",
+      "tts": {
+        "text": "Frutas ficam penduradas nos galhos o ano todo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há frutas doces, frutas azedas e frutas com casca dura.",
+      "text_markdown": "Há frutas doces, frutas azedas e frutas com casca dura.",
+      "tts": {
+        "text": "Há frutas doces, frutas azedas e frutas com casca dura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos dos alimentos que comemos em casa nasceram livres nas florestas tropicais.",
+      "text_markdown": "Muitos dos alimentos que comemos em casa nasceram livres nas florestas tropicais.",
+      "tts": {
+        "text": "Muitos dos alimentos que comemos em casa nasceram livres nas florestas tropicais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O cacau, a planta que nos dá o chocolate, veio das florestas tropicais da América do Sul.",
+      "text_markdown": "O cacau, a planta que nos dá o chocolate, veio das florestas tropicais da América do Sul.",
+      "tts": {
+        "text": "O cacau, a planta que nos dá o chocolate, veio das florestas tropicais da América do Sul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As primeiras bananeiras cresceram nas florestas tropicais do Sudeste Asiático.",
+      "text_markdown": "As primeiras bananeiras cresceram nas florestas tropicais do Sudeste Asiático.",
+      "tts": {
+        "text": "As primeiras bananeiras cresceram nas florestas tropicais do Sudeste Asiático.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada comida que amamos tem a história de uma floresta em algum lugar da Terra.",
+      "text_markdown": "Cada comida que amamos tem a história de uma floresta em algum lugar da Terra.",
+      "tts": {
+        "text": "Cada comida que amamos tem a história de uma floresta em algum lugar da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando você olha para uma planta da floresta tropical, ela quase sempre achou um jeito esperto de viver.",
+      "text_markdown": "Quando você olha para uma planta da floresta tropical, ela quase sempre achou um jeito esperto de viver.",
+      "tts": {
+        "text": "Quando você olha para uma planta da floresta tropical, ela quase sempre achou um jeito esperto de viver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algumas folhas têm uma ponta longa no fim, para a chuva escorrer rápido.",
+      "text_markdown": "Algumas folhas têm uma ponta longa no fim, para a chuva escorrer rápido.",
+      "tts": {
+        "text": "Algumas folhas têm uma ponta longa no fim, para a chuva escorrer rápido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algumas flores só cheiram doce à noite, para chamar o inseto certo para visitá-las.",
+      "text_markdown": "Algumas flores só cheiram doce à noite, para chamar o inseto certo para visitá-las.",
+      "tts": {
+        "text": "Algumas flores só cheiram doce à noite, para chamar o inseto certo para visitá las.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta inteira é uma máquina silenciosa, feita de verde.",
+      "text_markdown": "A floresta inteira é uma máquina silenciosa, feita de verde.",
+      "tts": {
+        "text": "A floresta inteira é uma máquina silenciosa, feita de verde.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Os Animais",
+      "text_markdown": "Os Animais"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais tipos de animais vivem na floresta tropical do que em qualquer outro lugar da terra firme.",
+      "text_markdown": "Mais tipos de animais vivem na floresta tropical do que em qualquer outro lugar da terra firme.",
+      "tts": {
+        "text": "Mais tipos de animais vivem na floresta tropical do que em qualquer outro lugar da terra firme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria deles vive lá no alto das árvores, não no chão.",
+      "text_markdown": "A maioria deles vive lá no alto das árvores, não no chão.",
+      "tts": {
+        "text": "A maioria deles vive lá no alto das árvores, não no chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lá em cima há mais comida e mais luz.",
+      "text_markdown": "Lá em cima há mais comida e mais luz.",
+      "tts": {
+        "text": "Lá em cima há mais comida e mais luz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Macacos vivem em muitas florestas tropicais.",
+      "text_markdown": "Macacos vivem em muitas florestas tropicais.",
+      "tts": {
+        "text": "Macacos vivem em muitas florestas tropicais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles pulam de galho em galho e chamam uns aos outros entre as árvores.",
+      "text_markdown": "Eles pulam de galho em galho e chamam uns aos outros entre as árvores.",
+      "tts": {
+        "text": "Eles pulam de galho em galho e chamam uns aos outros entre as árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas florestas tropicais da América do Sul, alguns macacos têm caudas longas que usam como uma mão a mais.",
+      "text_markdown": "Nas florestas tropicais da América do Sul, alguns macacos têm caudas longas que usam como uma mão a mais.",
+      "tts": {
+        "text": "Nas florestas tropicais da América do Sul, alguns macacos têm caudas longas que usam como uma mão a mais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papagaios e outros pássaros coloridos voam entre os galhos altos.",
+      "text_markdown": "Papagaios e outros pássaros coloridos voam entre os galhos altos.",
+      "tts": {
+        "text": "Papagaios e outros pássaros coloridos voam entre os galhos altos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles comem frutas e sementes.",
+      "text_markdown": "Eles comem frutas e sementes.",
+      "tts": {
+        "text": "Eles comem frutas e sementes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas penas são vermelhas, verdes, azuis e amarelas.",
+      "text_markdown": "Suas penas são vermelhas, verdes, azuis e amarelas.",
+      "tts": {
+        "text": "Suas penas são vermelhas, verdes, azuis e amarelas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em muitas florestas tropicais, grandes felinos caçam no chão à noite.",
+      "text_markdown": "Em muitas florestas tropicais, grandes felinos caçam no chão à noite.",
+      "tts": {
+        "text": "Em muitas florestas tropicais, grandes felinos caçam no chão à noite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas Américas, esse felino é a onça-pintada.",
+      "text_markdown": "Nas Américas, esse felino é a onça-pintada.",
+      "tts": {
+        "text": "Nas Américas, esse felino é a onça pintada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Ásia, é o tigre.",
+      "text_markdown": "Na Ásia, é o tigre.",
+      "tts": {
+        "text": "Na Ásia, é o tigre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na África, é o leopardo.",
+      "text_markdown": "Na África, é o leopardo.",
+      "tts": {
+        "text": "Na África, é o leopardo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Todos eles são fortes e silenciosos, com pintas ou listras no pelo.",
+      "text_markdown": "Todos eles são fortes e silenciosos, com pintas ou listras no pelo.",
+      "tts": {
+        "text": "Todos eles são fortes e silenciosos, com pintas ou listras no pelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cobras deslizam pelas folhas e pelas árvores.",
+      "text_markdown": "Cobras deslizam pelas folhas e pelas árvores.",
+      "tts": {
+        "text": "Cobras deslizam pelas folhas e pelas árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algumas cobras são bem pequenas, e algumas são bem compridas.",
+      "text_markdown": "Algumas cobras são bem pequenas, e algumas são bem compridas.",
+      "tts": {
+        "text": "Algumas cobras são bem pequenas, e algumas são bem compridas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria é tímida e fica longe das pessoas.",
+      "text_markdown": "A maioria é tímida e fica longe das pessoas.",
+      "tts": {
+        "text": "A maioria é tímida e fica longe das pessoas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os sapos cantam toda noite, principalmente depois da chuva.",
+      "text_markdown": "Os sapos cantam toda noite, principalmente depois da chuva.",
+      "tts": {
+        "text": "Os sapos cantam toda noite, principalmente depois da chuva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns sapos são minúsculos e bem coloridos.",
+      "text_markdown": "Alguns sapos são minúsculos e bem coloridos.",
+      "tts": {
+        "text": "Alguns sapos são minúsculos e bem coloridos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As cores fortes avisam aos outros animais para não comê-los.",
+      "text_markdown": "As cores fortes avisam aos outros animais para não comê-los.",
+      "tts": {
+        "text": "As cores fortes avisam aos outros animais para não comê los.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os insetos preenchem cada canto da floresta.",
+      "text_markdown": "Os insetos preenchem cada canto da floresta.",
+      "tts": {
+        "text": "Os insetos preenchem cada canto da floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há mais insetos na floresta tropical do que qualquer outro tipo de animal.",
+      "text_markdown": "Há mais insetos na floresta tropical do que qualquer outro tipo de animal.",
+      "tts": {
+        "text": "Há mais insetos na floresta tropical do que qualquer outro tipo de animal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Formigas marcham em longas filas pelo chão da floresta.",
+      "text_markdown": "Formigas marcham em longas filas pelo chão da floresta.",
+      "tts": {
+        "text": "Formigas marcham em longas filas pelo chão da floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Besouros sobem pelos troncos.",
+      "text_markdown": "Besouros sobem pelos troncos.",
+      "tts": {
+        "text": "Besouros sobem pelos troncos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Borboletas flutuam no ar com asas largas e pintadas.",
+      "text_markdown": "Borboletas flutuam no ar com asas largas e pintadas.",
+      "tts": {
+        "text": "Borboletas flutuam no ar com asas largas e pintadas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Peixes vivem nos rios, em muitas formas e tamanhos.",
+      "text_markdown": "Peixes vivem nos rios, em muitas formas e tamanhos.",
+      "tts": {
+        "text": "Peixes vivem nos rios, em muitas formas e tamanhos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns peixes são pequenos e prateados, e alguns são maiores do que uma criança.",
+      "text_markdown": "Alguns peixes são pequenos e prateados, e alguns são maiores do que uma criança.",
+      "tts": {
+        "text": "Alguns peixes são pequenos e prateados, e alguns são maiores do que uma criança.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lá no alto, águias planam sobre o teto verde da floresta.",
+      "text_markdown": "Lá no alto, águias planam sobre o teto verde da floresta.",
+      "tts": {
+        "text": "Lá no alto, águias planam sobre o teto verde da floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elas olham se algo se mexe lá embaixo.",
+      "text_markdown": "Elas olham se algo se mexe lá embaixo.",
+      "tts": {
+        "text": "Elas olham se algo se mexe lá embaixo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morcegos saem ao pôr do sol para comer frutas e insetos.",
+      "text_markdown": "Morcegos saem ao pôr do sol para comer frutas e insetos.",
+      "tts": {
+        "text": "Morcegos saem ao pôr do sol para comer frutas e insetos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em uma só árvore da floresta tropical, você pode achar mais tipos de animais do que em uma cidade inteira em outro lugar.",
+      "text_markdown": "Em uma só árvore da floresta tropical, você pode achar mais tipos de animais do que em uma cidade inteira em outro lugar.",
+      "tts": {
+        "text": "Em uma só árvore da floresta tropical, você pode achar mais tipos de animais do que em uma cidade inteira em outro lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa é a maravilha deste bioma.",
+      "text_markdown": "Essa é a maravilha deste bioma.",
+      "tts": {
+        "text": "Essa é a maravilha deste bioma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "As Pessoas",
+      "text_markdown": "As Pessoas"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As pessoas vivem na floresta tropical há muito, muito tempo.",
+      "text_markdown": "As pessoas vivem na floresta tropical há muito, muito tempo.",
+      "tts": {
+        "text": "As pessoas vivem na floresta tropical há muito, muito tempo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elas aprenderam a viver bem com as árvores, a chuva e os animais.",
+      "text_markdown": "Elas aprenderam a viver bem com as árvores, a chuva e os animais.",
+      "tts": {
+        "text": "Elas aprenderam a viver bem com as árvores, a chuva e os animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos povos da floresta tropical vivem em pequenas aldeias.",
+      "text_markdown": "Muitos povos da floresta tropical vivem em pequenas aldeias.",
+      "tts": {
+        "text": "Muitos povos da floresta tropical vivem em pequenas aldeias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As casas são muitas vezes construídas sobre postes altos de madeira, para ficarem acima do chão molhado.",
+      "text_markdown": "As casas são muitas vezes construídas sobre postes altos de madeira, para ficarem acima do chão molhado.",
+      "tts": {
+        "text": "As casas são muitas vezes construídas sobre postes altos de madeira, para ficarem acima do chão molhado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os telhados são feitos de folhas colocadas em fileiras grossas.",
+      "text_markdown": "Os telhados são feitos de folhas colocadas em fileiras grossas.",
+      "tts": {
+        "text": "Os telhados são feitos de folhas colocadas em fileiras grossas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um bom telhado de folhas barra a chuva forte.",
+      "text_markdown": "Um bom telhado de folhas barra a chuva forte.",
+      "tts": {
+        "text": "Um bom telhado de folhas barra a chuva forte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As paredes são muitas vezes abertas para deixar o ar quente passar.",
+      "text_markdown": "As paredes são muitas vezes abertas para deixar o ar quente passar.",
+      "tts": {
+        "text": "As paredes são muitas vezes abertas para deixar o ar quente passar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As pessoas pescam nos rios e colhem comida da floresta.",
+      "text_markdown": "As pessoas pescam nos rios e colhem comida da floresta.",
+      "tts": {
+        "text": "As pessoas pescam nos rios e colhem comida da floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Caçam animais pequenos com arcos e lanças.",
+      "text_markdown": "Caçam animais pequenos com arcos e lanças.",
+      "tts": {
+        "text": "Caçam animais pequenos com arcos e lanças.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Plantam comida em pequenas roças abertas no meio das árvores.",
+      "text_markdown": "Plantam comida em pequenas roças abertas no meio das árvores.",
+      "tts": {
+        "text": "Plantam comida em pequenas roças abertas no meio das árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O que plantam depende de onde vivem.",
+      "text_markdown": "O que plantam depende de onde vivem.",
+      "tts": {
+        "text": "O que plantam depende de onde vivem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas florestas tropicais da América do Sul, as pessoas plantam mandioca e batata-doce há milhares de anos.",
+      "text_markdown": "Nas florestas tropicais da América do Sul, as pessoas plantam mandioca e batata-doce há milhares de anos.",
+      "tts": {
+        "text": "Nas florestas tropicais da América do Sul, as pessoas plantam mandioca e batata doce há milhares de anos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas florestas tropicais da África, as pessoas plantam inhame e fruto da palmeira.",
+      "text_markdown": "Nas florestas tropicais da África, as pessoas plantam inhame e fruto da palmeira.",
+      "tts": {
+        "text": "Nas florestas tropicais da África, as pessoas plantam inhame e fruto da palmeira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nas florestas tropicais do Sudeste Asiático e do Pacífico, as pessoas plantam taro, arroz e fruta-pão.",
+      "text_markdown": "Nas florestas tropicais do Sudeste Asiático e do Pacífico, as pessoas plantam taro, arroz e fruta-pão.",
+      "tts": {
+        "text": "Nas florestas tropicais do Sudeste Asiático e do Pacífico, as pessoas plantam taro, arroz e fruta pão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois de alguns anos, deixam a roça virar floresta de novo, e abrem uma roça nova em outro lugar.",
+      "text_markdown": "Depois de alguns anos, deixam a roça virar floresta de novo, e abrem uma roça nova em outro lugar.",
+      "tts": {
+        "text": "Depois de alguns anos, deixam a roça virar floresta de novo, e abrem uma roça nova em outro lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É assim que a floresta continua sadia.",
+      "text_markdown": "É assim que a floresta continua sadia.",
+      "tts": {
+        "text": "É assim que a floresta continua sadia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os povos da floresta tropical conhecem milhares de plantas.",
+      "text_markdown": "Os povos da floresta tropical conhecem milhares de plantas.",
+      "tts": {
+        "text": "Os povos da floresta tropical conhecem milhares de plantas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles sabem quais servem de comida, quais servem de remédio e quais não são seguras para comer.",
+      "text_markdown": "Eles sabem quais servem de comida, quais servem de remédio e quais não são seguras para comer.",
+      "tts": {
+        "text": "Eles sabem quais servem de comida, quais servem de remédio e quais não são seguras para comer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprendem os cantos dos pássaros.",
+      "text_markdown": "Aprendem os cantos dos pássaros.",
+      "tts": {
+        "text": "Aprendem os cantos dos pássaros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprendem os rastros dos animais.",
+      "text_markdown": "Aprendem os rastros dos animais.",
+      "tts": {
+        "text": "Aprendem os rastros dos animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esse saber passa dos pais para os filhos, ano após ano.",
+      "text_markdown": "Esse saber passa dos pais para os filhos, ano após ano.",
+      "tts": {
+        "text": "Esse saber passa dos pais para os filhos, ano após ano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em cada floresta tropical, essa vida tem suas próprias línguas, suas próprias histórias e sua própria música.",
+      "text_markdown": "Em cada floresta tropical, essa vida tem suas próprias línguas, suas próprias histórias e sua própria música.",
+      "tts": {
+        "text": "Em cada floresta tropical, essa vida tem suas próprias línguas, suas próprias histórias e sua própria música.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Floresta Tropical Hoje",
+      "text_markdown": "A Floresta Tropical Hoje"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floresta tropical é um dos biomas mais importantes da Terra.",
+      "text_markdown": "A floresta tropical é um dos biomas mais importantes da Terra.",
+      "tts": {
+        "text": "A floresta tropical é um dos biomas mais importantes da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores puxam a água do chão e a soltam no céu.",
+      "text_markdown": "As árvores puxam a água do chão e a soltam no céu.",
+      "tts": {
+        "text": "As árvores puxam a água do chão e a soltam no céu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As nuvens que se formam acima da floresta levam chuva para terras bem distantes.",
+      "text_markdown": "As nuvens que se formam acima da floresta levam chuva para terras bem distantes.",
+      "tts": {
+        "text": "As nuvens que se formam acima da floresta levam chuva para terras bem distantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As árvores também respiram, mas ao contrário de nós.",
+      "text_markdown": "As árvores também respiram, mas ao contrário de nós.",
+      "tts": {
+        "text": "As árvores também respiram, mas ao contrário de nós.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elas pegam o gás que soltamos, e usam ele para crescer.",
+      "text_markdown": "Elas pegam o gás que soltamos, e usam ele para crescer.",
+      "tts": {
+        "text": "Elas pegam o gás que soltamos, e usam ele para crescer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "E devolvem o gás que respiramos.",
+      "text_markdown": "E devolvem o gás que respiramos.",
+      "tts": {
+        "text": "E devolvem o gás que respiramos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas a floresta tropical está em apuros.",
+      "text_markdown": "Mas a floresta tropical está em apuros.",
+      "tts": {
+        "text": "Mas a floresta tropical está em apuros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em muitos lugares, as pessoas derrubaram as árvores para plantar lavoura ou criar animais.",
+      "text_markdown": "Em muitos lugares, as pessoas derrubaram as árvores para plantar lavoura ou criar animais.",
+      "tts": {
+        "text": "Em muitos lugares, as pessoas derrubaram as árvores para plantar lavoura ou criar animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando as árvores se vão, o solo é levado embora, e a chuva deixa de cair como caía antes.",
+      "text_markdown": "Quando as árvores se vão, o solo é levado embora, e a chuva deixa de cair como caía antes.",
+      "tts": {
+        "text": "Quando as árvores se vão, o solo é levado embora, e a chuva deixa de cair como caía antes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os animais e as pessoas que vivem ali perdem o seu lar.",
+      "text_markdown": "Os animais e as pessoas que vivem ali perdem o seu lar.",
+      "tts": {
+        "text": "Os animais e as pessoas que vivem ali perdem o seu lar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos grupos pelo mundo todo estão trabalhando para proteger o que restou.",
+      "text_markdown": "Muitos grupos pelo mundo todo estão trabalhando para proteger o que restou.",
+      "tts": {
+        "text": "Muitos grupos pelo mundo todo estão trabalhando para proteger o que restou.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles plantam árvores novas.",
+      "text_markdown": "Eles plantam árvores novas.",
+      "tts": {
+        "text": "Eles plantam árvores novas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ajudam as pessoas que vivem na floresta a cuidar dela.",
+      "text_markdown": "Ajudam as pessoas que vivem na floresta a cuidar dela.",
+      "tts": {
+        "text": "Ajudam as pessoas que vivem na floresta a cuidar dela.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estudam a floresta para a entendermos melhor.",
+      "text_markdown": "Estudam a floresta para a entendermos melhor.",
+      "tts": {
+        "text": "Estudam a floresta para a entendermos melhor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma floresta tropical leva centenas de anos para crescer.",
+      "text_markdown": "Uma floresta tropical leva centenas de anos para crescer.",
+      "tts": {
+        "text": "Uma floresta tropical leva centenas de anos para crescer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas uma floresta tropical sadia pode continuar crescendo por milhares de anos.",
+      "text_markdown": "Mas uma floresta tropical sadia pode continuar crescendo por milhares de anos.",
+      "tts": {
+        "text": "Mas uma floresta tropical sadia pode continuar crescendo por milhares de anos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "A Floresta Tropical Hoje",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ela merece o nosso cuidado.",
+      "text_markdown": "Ela merece o nosso cuidado.",
+      "tts": {
+        "text": "Ela merece o nosso cuidado.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Encerramento",
+      "text_markdown": "Encerramento"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa é a floresta tropical.",
+      "text_markdown": "Essa é a floresta tropical.",
+      "tts": {
+        "text": "Essa é a floresta tropical.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um mundo quente, úmido, verde e cheio de vida.",
+      "text_markdown": "Um mundo quente, úmido, verde e cheio de vida.",
+      "tts": {
+        "text": "Um mundo quente, úmido, verde e cheio de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se um dia você entrar em uma, fique parado por um minuto.",
+      "text_markdown": "Se um dia você entrar em uma, fique parado por um minuto.",
+      "tts": {
+        "text": "Se um dia você entrar em uma, fique parado por um minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Escute os pássaros, os sapos e a chuva nas folhas.",
+      "text_markdown": "Escute os pássaros, os sapos e a chuva nas folhas.",
+      "tts": {
+        "text": "Escute os pássaros, os sapos e a chuva nas folhas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você vai ouvir o coração do bioma batendo ao seu redor.",
+      "text_markdown": "Você vai ouvir o coração do bioma batendo ao seu redor.",
+      "tts": {
+        "text": "Você vai ouvir o coração do bioma batendo ao seu redor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

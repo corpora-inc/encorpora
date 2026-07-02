@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "no",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En beskjed til leseren",
+      "text_markdown": "En beskjed til leseren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er historien om motorsykkelen.",
+      "text_markdown": "Dette er historien om motorsykkelen.",
+      "tts": {
+        "text": "Dette er historien om motorsykkelen.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er en sann historie.",
+      "text_markdown": "Det er en sann historie.",
+      "tts": {
+        "text": "Det er en sann historie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For lenge siden hadde ingen en motorsykkel.",
+      "text_markdown": "For lenge siden hadde ingen en motorsykkel.",
+      "tts": {
+        "text": "For lenge siden hadde ingen en motorsykkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nå finnes det millioner av dem.",
+      "text_markdown": "Nå finnes det millioner av dem.",
+      "tts": {
+        "text": "Nå finnes det millioner av dem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De er bråkete og raske og blanke.",
+      "text_markdown": "De er bråkete og raske og blanke.",
+      "tts": {
+        "text": "De er bråkete og raske og blanke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vi skal starte helt fra begynnelsen.",
+      "text_markdown": "Vi skal starte helt fra begynnelsen.",
+      "tts": {
+        "text": "Vi skal starte helt fra begynnelsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vi skal møte den første som bygde en, de første førerne og de første løpene.",
+      "text_markdown": "Vi skal møte den første som bygde en, de første førerne og de første løpene.",
+      "tts": {
+        "text": "Vi skal møte den første som bygde en, de første førerne og de første løpene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så skal vi se på verden i dag.",
+      "text_markdown": "Så skal vi se på verden i dag.",
+      "tts": {
+        "text": "Så skal vi se på verden i dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "En beskjed til leseren",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Når du er ferdig, vet du hvordan denne lille maskinen forandret veien for alltid.",
+      "text_markdown": "Når du er ferdig, vet du hvordan denne lille maskinen forandret veien for alltid.",
+      "tts": {
+        "text": "Når du er ferdig, vet du hvordan denne lille maskinen forandret veien for alltid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "text_markdown": "Kapittel 1 — Den første tohjulingen som sa vrom"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En motorsykkel er en sykkel med motor.",
+      "text_markdown": "En motorsykkel er en sykkel med motor.",
+      "tts": {
+        "text": "En motorsykkel er en sykkel med motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motoren driver hjulene rundt.",
+      "text_markdown": "Motoren driver hjulene rundt.",
+      "tts": {
+        "text": "Motoren driver hjulene rundt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Føreren trenger ikke å tråkke.",
+      "text_markdown": "Føreren trenger ikke å tråkke.",
+      "tts": {
+        "text": "Føreren trenger ikke å tråkke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For lenge siden fantes det ingen motorsykler.",
+      "text_markdown": "For lenge siden fantes det ingen motorsykler.",
+      "tts": {
+        "text": "For lenge siden fantes det ingen motorsykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk red på hester.",
+      "text_markdown": "Folk red på hester.",
+      "tts": {
+        "text": "Folk red på hester.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk syklet.",
+      "text_markdown": "Folk syklet.",
+      "tts": {
+        "text": "Folk syklet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En sykkel har to hjul og ingen motor.",
+      "text_markdown": "En sykkel har to hjul og ingen motor.",
+      "tts": {
+        "text": "En sykkel har to hjul og ingen motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du må tråkke på pedalene med føttene.",
+      "text_markdown": "Du må tråkke på pedalene med føttene.",
+      "tts": {
+        "text": "Du må tråkke på pedalene med føttene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1885 fikk en mann i Tyskland en stor idé.",
+      "text_markdown": "I 1885 fikk en mann i Tyskland en stor idé.",
+      "tts": {
+        "text": "I atten åttifem fikk en mann i Tyskland en stor idé.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han het Gottlieb Daimler.",
+      "text_markdown": "Han het Gottlieb Daimler.",
+      "tts": {
+        "text": "Han het Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Han tok en liten bensinmotor og satte den på en sykkel av tre.",
+      "text_markdown": "Han tok en liten bensinmotor og satte den på en sykkel av tre.",
+      "tts": {
+        "text": "Han tok en liten bensinmotor og satte den på en sykkel av tre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Han kalte maskinen sin Reitwagen.",
+      "text_markdown": "Han kalte maskinen sin Reitwagen.",
+      "tts": {
+        "text": "Han kalte maskinen sin Rajt Vagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordet betyr «vogn å ri på» på tysk.",
+      "text_markdown": "Ordet betyr «vogn å ri på» på tysk.",
+      "tts": {
+        "text": "Ordet betyr vogn å ri på på tysk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det var verdens første motorsykkel.",
+      "text_markdown": "Det var verdens første motorsykkel.",
+      "tts": {
+        "text": "Det var verdens første motorsykkel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen var bråkete.",
+      "text_markdown": "Reitwagen var bråkete.",
+      "tts": {
+        "text": "Rajt Vagen var bråkete.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den humpet mye.",
+      "text_markdown": "Den humpet mye.",
+      "tts": {
+        "text": "Den humpet mye.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den hadde bare ett gir.",
+      "text_markdown": "Den hadde bare ett gir.",
+      "tts": {
+        "text": "Den hadde bare ett gir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den kunne kjøre rundt 7 miles i timen.",
+      "text_markdown": "Den kunne kjøre rundt 7 miles i timen.",
+      "tts": {
+        "text": "Den kunne kjøre rundt sju engelske mil i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det er tregere enn en person på sykkel i dag.",
+      "text_markdown": "Det er tregere enn en person på sykkel i dag.",
+      "tts": {
+        "text": "Det er tregere enn en person på sykkel i dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Men den kunne bevege seg uten en hest, og den kunne bevege seg uten pedaler.",
+      "text_markdown": "Men den kunne bevege seg uten en hest, og den kunne bevege seg uten pedaler.",
+      "tts": {
+        "text": "Men den kunne bevege seg uten en hest, og den kunne bevege seg uten pedaler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapittel 1 — Den første tohjulingen som sa vrom",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da var motorsykkelen født.",
+      "text_markdown": "Da var motorsykkelen født.",
+      "tts": {
+        "text": "Da var motorsykkelen født.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 2 — De første selskapene",
+      "text_markdown": "Kapittel 2 — De første selskapene"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter Daimler ville andre også bygge motorsykler.",
+      "text_markdown": "Etter Daimler ville andre også bygge motorsykler.",
+      "tts": {
+        "text": "Etter Daimler ville andre også bygge motorsykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Snart åpnet små verksteder over hele verden.",
+      "text_markdown": "Snart åpnet små verksteder over hele verden.",
+      "tts": {
+        "text": "Snart åpnet små verksteder over hele verden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I England startet en mann som het Siegfried Bettmann et selskap som het Triumph.",
+      "text_markdown": "I England startet en mann som het Siegfried Bettmann et selskap som het Triumph.",
+      "tts": {
+        "text": "I England startet en mann som het Siegfried Bettmann et selskap som het Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den første motorsykkelen fra Triumph ble bygget i 1902.",
+      "text_markdown": "Den første motorsykkelen fra Triumph ble bygget i 1902.",
+      "tts": {
+        "text": "Den første motorsykkelen fra Triumph ble bygget i nitten null to.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Amerika bygde to venner som het William Harley og Arthur Davidson sin første motorsykkel i et lite skur av tre.",
+      "text_markdown": "I Amerika bygde to venner som het William Harley og Arthur Davidson sin første motorsykkel i et lite skur av tre.",
+      "tts": {
+        "text": "I Amerika bygde to venner som het William Harley og Arthur Davidson sin første motorsykkel i et lite skur av tre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Skuret stod i byen Milwaukee.",
+      "text_markdown": "Skuret stod i byen Milwaukee.",
+      "tts": {
+        "text": "Skuret stod i byen Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Året var 1903.",
+      "text_markdown": "Året var 1903.",
+      "tts": {
+        "text": "Året var nitten null tre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De kalte selskapet Harley-Davidson.",
+      "text_markdown": "De kalte selskapet Harley-Davidson.",
+      "tts": {
+        "text": "De kalte selskapet Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et annet amerikansk selskap startet noen år tidligere.",
+      "text_markdown": "Et annet amerikansk selskap startet noen år tidligere.",
+      "tts": {
+        "text": "Et annet amerikansk selskap startet noen år tidligere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To menn i Springfield i Massachusetts bygde sin første maskin i 1901.",
+      "text_markdown": "To menn i Springfield i Massachusetts bygde sin første maskin i 1901.",
+      "tts": {
+        "text": "To menn i Springfield i Massachusetts bygde sin første maskin i nitten null en.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De kalte den Indian.",
+      "text_markdown": "De kalte den Indian.",
+      "tts": {
+        "text": "De kalte den Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I India begynte et selskap som het Royal Enfield også å lage motorsykler i 1901.",
+      "text_markdown": "I India begynte et selskap som het Royal Enfield også å lage motorsykler i 1901.",
+      "tts": {
+        "text": "I India begynte et selskap som het Royal Enfield også å lage motorsykler i nitten null en.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I dag er Royal Enfield det eldste motorsykkelselskapet i verden som fortsatt lager motorsykler.",
+      "text_markdown": "I dag er Royal Enfield det eldste motorsykkelselskapet i verden som fortsatt lager motorsykler.",
+      "tts": {
+        "text": "I dag er Royal Enfield det eldste motorsykkelselskapet i verden som fortsatt lager motorsykler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Tyskland begynte selskapet BMW å lage motorsykler litt senere, i 1923.",
+      "text_markdown": "I Tyskland begynte selskapet BMW å lage motorsykler litt senere, i 1923.",
+      "tts": {
+        "text": "I Tyskland begynte selskapet Be Em Ve å lage motorsykler litt senere, i nitten tjuetre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW betyr «Bayerske motorverksteder» på tysk.",
+      "text_markdown": "BMW betyr «Bayerske motorverksteder» på tysk.",
+      "tts": {
+        "text": "Be Em Ve betyr Bayerske motorverksteder på tysk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1910 var motorsykler overalt.",
+      "text_markdown": "I 1910 var motorsykler overalt.",
+      "tts": {
+        "text": "I nitten ti var motorsykler overalt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De var i bygater og på landeveier.",
+      "text_markdown": "De var i bygater og på landeveier.",
+      "tts": {
+        "text": "De var i bygater og på landeveier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapittel 2 — De første selskapene",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nå hadde motorsykkelens tid virkelig begynt.",
+      "text_markdown": "Nå hadde motorsykkelens tid virkelig begynt.",
+      "tts": {
+        "text": "Nå hadde motorsykkelens tid virkelig begynt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 3 — Motorsykler går i krig",
+      "text_markdown": "Kapittel 3 — Motorsykler går i krig"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motorsykler er raske.",
+      "text_markdown": "Motorsykler er raske.",
+      "tts": {
+        "text": "Motorsykler er raske.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kan kjøre på smale stier.",
+      "text_markdown": "De kan kjøre på smale stier.",
+      "tts": {
+        "text": "De kan kjøre på smale stier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De kan frakte beskjeder mellom leirene.",
+      "text_markdown": "De kan frakte beskjeder mellom leirene.",
+      "tts": {
+        "text": "De kan frakte beskjeder mellom leirene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Så da krigene kom, ville hærene ha motorsykler.",
+      "text_markdown": "Så da krigene kom, ville hærene ha motorsykler.",
+      "tts": {
+        "text": "Så da krigene kom, ville hærene ha motorsykler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den første verdenskrigen startet i 1914.",
+      "text_markdown": "Den første verdenskrigen startet i 1914.",
+      "tts": {
+        "text": "Den første verdenskrigen startet i nitten fjorten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soldater brukte Triumph motorsykler til å frakte ordrer.",
+      "text_markdown": "Soldater brukte Triumph motorsykler til å frakte ordrer.",
+      "tts": {
+        "text": "Soldater brukte Triumph motorsykler til å frakte ordrer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H var sterk og stille.",
+      "text_markdown": "Triumph Model H var sterk og stille.",
+      "tts": {
+        "text": "Triumph Model H var sterk og stille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den kunne kjøre der hester ikke kunne.",
+      "text_markdown": "Den kunne kjøre der hester ikke kunne.",
+      "tts": {
+        "text": "Den kunne kjøre der hester ikke kunne.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den andre verdenskrigen startet i 1939.",
+      "text_markdown": "Den andre verdenskrigen startet i 1939.",
+      "tts": {
+        "text": "Den andre verdenskrigen startet i nitten trettini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Da var motorsyklene blitt raskere og sterkere.",
+      "text_markdown": "Da var motorsyklene blitt raskere og sterkere.",
+      "tts": {
+        "text": "Da var motorsyklene blitt raskere og sterkere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikanske soldater kjørte Harley-Davidson WLA.",
+      "text_markdown": "Amerikanske soldater kjørte Harley-Davidson WLA.",
+      "tts": {
+        "text": "Amerikanske soldater kjørte Harley Davidson Ve El Aa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tyske soldater kjørte BMW R75.",
+      "text_markdown": "Tyske soldater kjørte BMW R75.",
+      "tts": {
+        "text": "Tyske soldater kjørte Be Em Ve R syttifem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75 hadde en sidevogn med et tredje hjul og et sete for en annen soldat.",
+      "text_markdown": "R75 hadde en sidevogn med et tredje hjul og et sete for en annen soldat.",
+      "tts": {
+        "text": "R syttifem hadde en sidevogn med et tredje hjul og et sete for en annen soldat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter krigen kom soldatene hjem.",
+      "text_markdown": "Etter krigen kom soldatene hjem.",
+      "tts": {
+        "text": "Etter krigen kom soldatene hjem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De tok motorsyklene sine med seg.",
+      "text_markdown": "De tok motorsyklene sine med seg.",
+      "tts": {
+        "text": "De tok motorsyklene sine med seg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mange av dem ville fortsette å kjøre.",
+      "text_markdown": "Mange av dem ville fortsette å kjøre.",
+      "tts": {
+        "text": "Mange av dem ville fortsette å kjøre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Noen av dem startet sine egne motorsykkelklubber.",
+      "text_markdown": "Noen av dem startet sine egne motorsykkelklubber.",
+      "tts": {
+        "text": "Noen av dem startet sine egne motorsykkelklubber.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Krigene gjorde motorsykkelen berømt.",
+      "text_markdown": "Krigene gjorde motorsykkelen berømt.",
+      "tts": {
+        "text": "Krigene gjorde motorsykkelen berømt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Millioner av mennesker hadde sett en for første gang.",
+      "text_markdown": "Millioner av mennesker hadde sett en for første gang.",
+      "tts": {
+        "text": "Millioner av mennesker hadde sett en for første gang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapittel 3 — Motorsykler går i krig",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mange ville ha sin egen.",
+      "text_markdown": "Mange ville ha sin egen.",
+      "tts": {
+        "text": "Mange ville ha sin egen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 4 — Japan vokser frem",
+      "text_markdown": "Kapittel 4 — Japan vokser frem"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter den andre verdenskrigen var Japan fattig.",
+      "text_markdown": "Etter den andre verdenskrigen var Japan fattig.",
+      "tts": {
+        "text": "Etter den andre verdenskrigen var Japan fattig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De fleste biler var for dyre.",
+      "text_markdown": "De fleste biler var for dyre.",
+      "tts": {
+        "text": "De fleste biler var for dyre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk trengte en liten og billig måte å komme seg rundt på.",
+      "text_markdown": "Folk trengte en liten og billig måte å komme seg rundt på.",
+      "tts": {
+        "text": "Folk trengte en liten og billig måte å komme seg rundt på.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ung japansk mann så sjansen.",
+      "text_markdown": "En ung japansk mann så sjansen.",
+      "tts": {
+        "text": "En ung japansk mann så sjansen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han het Soichiro Honda.",
+      "text_markdown": "Han het Soichiro Honda.",
+      "tts": {
+        "text": "Han het Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Han startet et lite selskap i 1948.",
+      "text_markdown": "Han startet et lite selskap i 1948.",
+      "tts": {
+        "text": "Han startet et lite selskap i nitten førtiåtte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Han kalte det Honda.",
+      "text_markdown": "Han kalte det Honda.",
+      "tts": {
+        "text": "Han kalte det Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1958 bygde Honda en bitte liten motorsykkel som het Super Cub.",
+      "text_markdown": "I 1958 bygde Honda en bitte liten motorsykkel som het Super Cub.",
+      "tts": {
+        "text": "I nitten femtiåtte bygde Honda en bitte liten motorsykkel som het Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub var lett å kjøre.",
+      "text_markdown": "Super Cub var lett å kjøre.",
+      "tts": {
+        "text": "Super Cub var lett å kjøre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den var lett å fikse.",
+      "text_markdown": "Den var lett å fikse.",
+      "tts": {
+        "text": "Den var lett å fikse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den var veldig, veldig billig.",
+      "text_markdown": "Den var veldig, veldig billig.",
+      "tts": {
+        "text": "Den var veldig, veldig billig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk over hele verden kjøpte Super Cub.",
+      "text_markdown": "Folk over hele verden kjøpte Super Cub.",
+      "tts": {
+        "text": "Folk over hele verden kjøpte Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I dag er det solgt mer enn 100 millioner Super Cub.",
+      "text_markdown": "I dag er det solgt mer enn 100 millioner Super Cub.",
+      "tts": {
+        "text": "I dag er det solgt mer enn hundre millioner Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er det mest solgte motorkjøretøyet gjennom tidene.",
+      "text_markdown": "Det er det mest solgte motorkjøretøyet gjennom tidene.",
+      "tts": {
+        "text": "Det er det mest solgte motorkjøretøyet gjennom tidene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snart fulgte tre andre japanske selskaper etter Honda.",
+      "text_markdown": "Snart fulgte tre andre japanske selskaper etter Honda.",
+      "tts": {
+        "text": "Snart fulgte tre andre japanske selskaper etter Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De var Yamaha, Suzuki og Kawasaki.",
+      "text_markdown": "De var Yamaha, Suzuki og Kawasaki.",
+      "tts": {
+        "text": "De var Yamaha, Suzuki og Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sammen med Honda blir de kalt de fire store.",
+      "text_markdown": "Sammen med Honda blir de kalt de fire store.",
+      "tts": {
+        "text": "Sammen med Honda blir de kalt de fire store.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fire store lagde motorsykler som var raske, billige og lette å kjøre.",
+      "text_markdown": "De fire store lagde motorsykler som var raske, billige og lette å kjøre.",
+      "tts": {
+        "text": "De fire store lagde motorsykler som var raske, billige og lette å kjøre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "På 1960-tallet var japanske motorsykler overalt.",
+      "text_markdown": "På 1960-tallet var japanske motorsykler overalt.",
+      "tts": {
+        "text": "På sekstitallet var japanske motorsykler overalt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapittel 4 — Japan vokser frem",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De var de nye kongene på veien.",
+      "text_markdown": "De var de nye kongene på veien.",
+      "tts": {
+        "text": "De var de nye kongene på veien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 5 — Fortere, fortere, fortere",
+      "text_markdown": "Kapittel 5 — Fortere, fortere, fortere"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På 1960-tallet ville førerne kjøre fortere.",
+      "text_markdown": "På 1960-tallet ville førerne kjøre fortere.",
+      "tts": {
+        "text": "På sekstitallet ville førerne kjøre fortere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Produsentene startet et kappløp for å lage verdens raskeste motorsykkel.",
+      "text_markdown": "Produsentene startet et kappløp for å lage verdens raskeste motorsykkel.",
+      "tts": {
+        "text": "Produsentene startet et kappløp for å lage verdens raskeste motorsykkel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Italia bygde et lite selskap som het MV Agusta vakre røde motorsykler som vant løp etter løp.",
+      "text_markdown": "I Italia bygde et lite selskap som het MV Agusta vakre røde motorsykler som vant løp etter løp.",
+      "tts": {
+        "text": "I Italia bygde et lite selskap som het Em Ve Agusta vakre røde motorsykler som vant løp etter løp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I England bygde Triumph og Norton kraftige maskiner også.",
+      "text_markdown": "I England bygde Triumph og Norton kraftige maskiner også.",
+      "tts": {
+        "text": "I England bygde Triumph og Norton kraftige maskiner også.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så, i 1969, gjorde Honda noe fantastisk.",
+      "text_markdown": "Så, i 1969, gjorde Honda noe fantastisk.",
+      "tts": {
+        "text": "Så, i nitten sekstinine, gjorde Honda noe fantastisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De bygde en motorsykkel som het CB 750.",
+      "text_markdown": "De bygde en motorsykkel som het CB 750.",
+      "tts": {
+        "text": "De bygde en motorsykkel som het Se Be sju hundre og femti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den hadde fire sylindre og en stor motor.",
+      "text_markdown": "Den hadde fire sylindre og en stor motor.",
+      "tts": {
+        "text": "Den hadde fire sylindre og en stor motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den kunne kjøre mer enn 120 miles i timen.",
+      "text_markdown": "Den kunne kjøre mer enn 120 miles i timen.",
+      "tts": {
+        "text": "Den kunne kjøre mer enn hundre og tjue engelske mil i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det var den første ekte superbiken.",
+      "text_markdown": "Det var den første ekte superbiken.",
+      "tts": {
+        "text": "Det var den første ekte superbiken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter CB 750 ville alle selskaper bygge en superbike.",
+      "text_markdown": "Etter CB 750 ville alle selskaper bygge en superbike.",
+      "tts": {
+        "text": "Etter Se Be sju hundre og femti ville alle selskaper bygge en superbike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Syklene ble raskere og raskere.",
+      "text_markdown": "Syklene ble raskere og raskere.",
+      "tts": {
+        "text": "Syklene ble raskere og raskere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Snart fikk de lyse kåper, glatte plastskall som skar gjennom vinden.",
+      "text_markdown": "Snart fikk de lyse kåper, glatte plastskall som skar gjennom vinden.",
+      "tts": {
+        "text": "Snart fikk de lyse kåper, glatte plastskall som skar gjennom vinden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1990 ble en japansk motorsykkel som het Kawasaki ZX-11 verdens raskeste motorsykkel.",
+      "text_markdown": "I 1990 ble en japansk motorsykkel som het Kawasaki ZX-11 verdens raskeste motorsykkel.",
+      "tts": {
+        "text": "I nitten nitti ble en japansk motorsykkel som het Kawasaki Z X elleve verdens raskeste motorsykkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kunne kjøre nesten 175 miles i timen.",
+      "text_markdown": "Den kunne kjøre nesten 175 miles i timen.",
+      "tts": {
+        "text": "Den kunne kjøre nesten hundre og syttifem engelske mil i timen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen år senere gikk Suzuki Hayabusa enda fortere.",
+      "text_markdown": "Noen år senere gikk Suzuki Hayabusa enda fortere.",
+      "tts": {
+        "text": "Noen år senere gikk Suzuki Hayabusa enda fortere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den nådde 194 miles i timen.",
+      "text_markdown": "Den nådde 194 miles i timen.",
+      "tts": {
+        "text": "Den nådde hundre og nittifire engelske mil i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapittel 5 — Fortere, fortere, fortere",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er fortere enn de fleste biler på veien i dag.",
+      "text_markdown": "Det er fortere enn de fleste biler på veien i dag.",
+      "tts": {
+        "text": "Det er fortere enn de fleste biler på veien i dag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 6 — Mange typer motorsykler",
+      "text_markdown": "Kapittel 6 — Mange typer motorsykler"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag finnes motorsykler i mange former.",
+      "text_markdown": "I dag finnes motorsykler i mange former.",
+      "tts": {
+        "text": "I dag finnes motorsykler i mange former.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver type er laget for en egen jobb.",
+      "text_markdown": "Hver type er laget for en egen jobb.",
+      "tts": {
+        "text": "Hver type er laget for en egen jobb.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En sportssykkel er laget for å kjøre veldig fort.",
+      "text_markdown": "En sportssykkel er laget for å kjøre veldig fort.",
+      "tts": {
+        "text": "En sportssykkel er laget for å kjøre veldig fort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den er lett og lav.",
+      "text_markdown": "Den er lett og lav.",
+      "tts": {
+        "text": "Den er lett og lav.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Føreren lener seg fremover.",
+      "text_markdown": "Føreren lener seg fremover.",
+      "tts": {
+        "text": "Føreren lener seg fremover.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sportssykler er laget for glatte veier og racerbaner.",
+      "text_markdown": "Sportssykler er laget for glatte veier og racerbaner.",
+      "tts": {
+        "text": "Sportssykler er laget for glatte veier og racerbaner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En crossykkel er laget for gjørme og jord.",
+      "text_markdown": "En crossykkel er laget for gjørme og jord.",
+      "tts": {
+        "text": "En cross sykkel er laget for gjørme og jord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den har høye hjul og store dekk.",
+      "text_markdown": "Den har høye hjul og store dekk.",
+      "tts": {
+        "text": "Den har høye hjul og store dekk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Crossykler kan hoppe over bakker.",
+      "text_markdown": "Crossykler kan hoppe over bakker.",
+      "tts": {
+        "text": "Cross sykler kan hoppe over bakker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mange unge førere lærer først på crossykler.",
+      "text_markdown": "Mange unge førere lærer først på crossykler.",
+      "tts": {
+        "text": "Mange unge førere lærer først på cross sykler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En cruiser er lang og lav.",
+      "text_markdown": "En cruiser er lang og lav.",
+      "tts": {
+        "text": "En cruiser er lang og lav.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Føreren sitter rett opp og kjører rolig.",
+      "text_markdown": "Føreren sitter rett opp og kjører rolig.",
+      "tts": {
+        "text": "Føreren sitter rett opp og kjører rolig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson er kjent for cruisere.",
+      "text_markdown": "Harley-Davidson er kjent for cruisere.",
+      "tts": {
+        "text": "Harley Davidson er kjent for cruisere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det samme gjelder Indian.",
+      "text_markdown": "Det samme gjelder Indian.",
+      "tts": {
+        "text": "Det samme gjelder Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En eventyrsykkel er laget for lange turer.",
+      "text_markdown": "En eventyrsykkel er laget for lange turer.",
+      "tts": {
+        "text": "En eventyrsykkel er laget for lange turer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kan kjøre på veier og i terreng.",
+      "text_markdown": "Den kan kjøre på veier og i terreng.",
+      "tts": {
+        "text": "Den kan kjøre på veier og i terreng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS er en kjent eventyrsykkel.",
+      "text_markdown": "BMW GS er en kjent eventyrsykkel.",
+      "tts": {
+        "text": "Be Em Ve Ge Es er en kjent eventyrsykkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det er KTM også.",
+      "text_markdown": "Det er KTM også.",
+      "tts": {
+        "text": "Det er Ko Te Em også.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes også choppere, scootere, racingsykler og elektriske sykler.",
+      "text_markdown": "Det finnes også choppere, scootere, racingsykler og elektriske sykler.",
+      "tts": {
+        "text": "Det finnes også choppere, scootere, racingsykler og elektriske sykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det finnes en motorsykkel for nesten alle slags veier.",
+      "text_markdown": "Det finnes en motorsykkel for nesten alle slags veier.",
+      "tts": {
+        "text": "Det finnes en motorsykkel for nesten alle slags veier.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapittel 6 — Mange typer motorsykler",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag kan du finne en motorsykkel i alle land i verden.",
+      "text_markdown": "I dag kan du finne en motorsykkel i alle land i verden.",
+      "tts": {
+        "text": "I dag kan du finne en motorsykkel i alle land i verden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 7 — En ny vei",
+      "text_markdown": "Kapittel 7 — En ny vei"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag har motorsykkelen en ny slags motor.",
+      "text_markdown": "I dag har motorsykkelen en ny slags motor.",
+      "tts": {
+        "text": "I dag har motorsykkelen en ny slags motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er den elektriske motoren.",
+      "text_markdown": "Det er den elektriske motoren.",
+      "tts": {
+        "text": "Det er den elektriske motoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En elektrisk motorsykkel er stille.",
+      "text_markdown": "En elektrisk motorsykkel er stille.",
+      "tts": {
+        "text": "En elektrisk motorsykkel er stille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den trenger ikke bensin.",
+      "text_markdown": "Den trenger ikke bensin.",
+      "tts": {
+        "text": "Den trenger ikke bensin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den trenger bare å lades som en telefon.",
+      "text_markdown": "Den trenger bare å lades som en telefon.",
+      "tts": {
+        "text": "Den trenger bare å lades som en telefon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et selskap som heter Zero bygger elektriske motorsykler i California.",
+      "text_markdown": "Et selskap som heter Zero bygger elektriske motorsykler i California.",
+      "tts": {
+        "text": "Et selskap som heter Zero bygger elektriske motorsykler i California.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson lager nå en elektrisk motorsykkel som heter LiveWire.",
+      "text_markdown": "Harley-Davidson lager nå en elektrisk motorsykkel som heter LiveWire.",
+      "tts": {
+        "text": "Harley Davidson lager nå en elektrisk motorsykkel som heter LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Et italiensk selskap som heter Energica lager elektriske racingsykler.",
+      "text_markdown": "Et italiensk selskap som heter Energica lager elektriske racingsykler.",
+      "tts": {
+        "text": "Et italiensk selskap som heter Energica lager elektriske racingsykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De er veldig raske.",
+      "text_markdown": "De er veldig raske.",
+      "tts": {
+        "text": "De er veldig raske.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den første motorsykkelen, Reitwagen, kunne kjøre 7 miles i timen.",
+      "text_markdown": "Den første motorsykkelen, Reitwagen, kunne kjøre 7 miles i timen.",
+      "tts": {
+        "text": "Den første motorsykkelen, Rajt Vagen, kunne kjøre sju engelske mil i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dagens elektriske motorsykler kan kjøre mer enn 200 miles i timen.",
+      "text_markdown": "Dagens elektriske motorsykler kan kjøre mer enn 200 miles i timen.",
+      "tts": {
+        "text": "Dagens elektriske motorsykler kan kjøre mer enn to hundre engelske mil i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er historien om motorsykkelen så langt.",
+      "text_markdown": "Det er historien om motorsykkelen så langt.",
+      "tts": {
+        "text": "Det er historien om motorsykkelen så langt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette var den store historien.",
+      "text_markdown": "Dette var den store historien.",
+      "tts": {
+        "text": "Dette var den store historien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De neste elleve bøkene skal fortelle de små historiene.",
+      "text_markdown": "De neste elleve bøkene skal fortelle de små historiene.",
+      "tts": {
+        "text": "De neste elleve bøkene skal fortelle de små historiene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hver bok handler om en del av motorsykkelverdenen.",
+      "text_markdown": "Hver bok handler om en del av motorsykkelverdenen.",
+      "tts": {
+        "text": "Hver bok handler om en del av motorsykkelverdenen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bok to handler om Harley-Davidson.",
+      "text_markdown": "Bok to handler om Harley-Davidson.",
+      "tts": {
+        "text": "Bok to handler om Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bok tre handler om Honda.",
+      "text_markdown": "Bok tre handler om Honda.",
+      "tts": {
+        "text": "Bok tre handler om Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bok fire handler om Ducati fra Italia.",
+      "text_markdown": "Bok fire handler om Ducati fra Italia.",
+      "tts": {
+        "text": "Bok fire handler om Ducati fra Italia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bok fem handler om BMW fra Tyskland.",
+      "text_markdown": "Bok fem handler om BMW fra Tyskland.",
+      "tts": {
+        "text": "Bok fem handler om Be Em Ve fra Tyskland.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bok seks handler om Triumph fra England.",
+      "text_markdown": "Bok seks handler om Triumph fra England.",
+      "tts": {
+        "text": "Bok seks handler om Triumph fra England.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bok sju handler om crossykler.",
+      "text_markdown": "Bok sju handler om crossykler.",
+      "tts": {
+        "text": "Bok sju handler om cross sykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bok åtte handler om sportssykler.",
+      "text_markdown": "Bok åtte handler om sportssykler.",
+      "tts": {
+        "text": "Bok åtte handler om sportssykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bok ni handler om cruisere og choppere.",
+      "text_markdown": "Bok ni handler om cruisere og choppere.",
+      "tts": {
+        "text": "Bok ni handler om cruisere og choppere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bok ti handler om eventyrsykler.",
+      "text_markdown": "Bok ti handler om eventyrsykler.",
+      "tts": {
+        "text": "Bok ti handler om eventyrsykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bok elleve handler om racing.",
+      "text_markdown": "Bok elleve handler om racing.",
+      "tts": {
+        "text": "Bok elleve handler om racing.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bok tolv handler om elektriske sykler og fremtiden.",
+      "text_markdown": "Bok tolv handler om elektriske sykler og fremtiden.",
+      "tts": {
+        "text": "Bok tolv handler om elektriske sykler og fremtiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Velg den som ser morsomst ut.",
+      "text_markdown": "Velg den som ser morsomst ut.",
+      "tts": {
+        "text": "Velg den som ser morsomst ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapittel 7 — En ny vei",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så blir du med på turen.",
+      "text_markdown": "Så blir du med på turen.",
+      "tts": {
+        "text": "Så blir du med på turen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Om denne boken",
+      "text_markdown": "Om denne boken"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er den første boken i serien Motorsykler.",
+      "text_markdown": "Dette er den første boken i serien Motorsykler.",
+      "tts": {
+        "text": "Dette er den første boken i serien Motorsykler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den blir lest høyt av August.",
+      "text_markdown": "Den blir lest høyt av August.",
+      "tts": {
+        "text": "Den blir lest høyt av August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hver setning er kort og tydelig, så du kan lese med på hvilket som helst språk.",
+      "text_markdown": "Hver setning er kort og tydelig, så du kan lese med på hvilket som helst språk.",
+      "tts": {
+        "text": "Hver setning er kort og tydelig, så du kan lese med på hvilket som helst språk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du vil høre hvordan en setning høres ut på et annet språk, kan du høre på den samme boken på det språket.",
+      "text_markdown": "Hvis du vil høre hvordan en setning høres ut på et annet språk, kan du høre på den samme boken på det språket.",
+      "tts": {
+        "text": "Hvis du vil høre hvordan en setning høres ut på et annet språk, kan du høre på den samme boken på det språket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordene på siden vil stemme med det du hører.",
+      "text_markdown": "Ordene på siden vil stemme med det du hører.",
+      "tts": {
+        "text": "Ordene på siden vil stemme med det du hører.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Slik lærer du.",
+      "text_markdown": "Slik lærer du.",
+      "tts": {
+        "text": "Slik lærer du.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne boken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gå nå og finn en motorsykkel, og hør den si vrom.",
+      "text_markdown": "Gå nå og finn en motorsykkel, og hør den si vrom.",
+      "tts": {
+        "text": "Gå nå og finn en motorsykkel, og hør den si vrom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

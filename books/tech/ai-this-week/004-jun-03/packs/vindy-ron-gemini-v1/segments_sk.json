@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "sk",
+  "total_segments": 197,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "Vitajte v AI Tento Týždeň.",
+      "text_markdown": "Vitajte v AI Tento Týždeň.",
+      "title": "",
+      "tts": {
+        "text": "Vitajte v AI Tento Týždeň.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "Volám sa Vindy.",
+      "text_markdown": "Volám sa Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Volám sa Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "text": "So mnou je, ako vždy, Ron.",
+      "text_markdown": "So mnou je, ako vždy, Ron.",
+      "title": "",
+      "tts": {
+        "text": "So mnou je, ako vždy, Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "text": "Rád som tu, Vindy.",
+      "text_markdown": "Rád som tu, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Rád som tu, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "Dnes je streda, 3. júna 2026.",
+      "text_markdown": "Dnes je streda, 3. júna 2026.",
+      "title": "",
+      "tts": {
+        "text": "Dnes je streda, tretieho júna, dvetisícdvadsaťšesť.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "text": "Bol to tichý týždeň pre marketing a hlučný týždeň pre hardvér.",
+      "text_markdown": "Bol to tichý týždeň pre marketing a hlučný týždeň pre hardvér.",
+      "title": "",
+      "tts": {
+        "text": "Bol to tichý týždeň pre marketing a hlučný týždeň pre hardvér.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "Tvar titulkov bol nezvyčajný.",
+      "text_markdown": "Tvar titulkov bol nezvyčajný.",
+      "title": "",
+      "tts": {
+        "text": "Tvar titulkov bol nezvyčajný.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "text": "Kľúčová prezentácia veľkého laboratória, dôverné podanie, malý počítač s veľkým číslom na krabici.",
+      "text_markdown": "Kľúčová prezentácia veľkého laboratória, dôverné podanie, malý počítač s veľkým číslom na krabici.",
+      "title": "",
+      "tts": {
+        "text": "Kľúčová prezentácia veľkého laboratória, dôverné podanie, malý počítač s veľkým číslom na krabici.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "Ďalej — čo sa pohlo v otvorených váhach, vedené novou architektúrou pozornosti a otvoreným modelom NVIDIA.",
+      "text_markdown": "Ďalej — čo sa pohlo v otvorených váhach, vedené novou architektúrou pozornosti a otvoreným modelom NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Ďalej — čo sa pohlo v otvorených váhach, vedené novou architektúrou pozornosti a otvoreným modelom NVIDIA.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "text": "Kam sa dostali rebríčky a väčší príbeh pod nimi o tom, ako vôbec dôverujeme skóre.",
+      "text_markdown": "Kam sa dostali rebríčky a väčší príbeh pod nimi o tom, ako vôbec dôverujeme skóre.",
+      "title": "",
+      "tts": {
+        "text": "Kam sa dostali rebríčky a väčší príbeh pod nimi o tom, ako vôbec dôverujeme skóre.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "Rýchly prehľad titulkov, na ktoré môžete reagovať tento víkend.",
+      "text_markdown": "Rýchly prehľad titulkov, na ktoré môžete reagovať tento víkend.",
+      "title": "",
+      "tts": {
+        "text": "Rýchly prehľad titulkov, na ktoré môžete reagovať tento víkend.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "text": "Náš hlavný príbeh, DIY zostava dospela — hraničná inferencia je teraz realitou na vašom stole.",
+      "text_markdown": "Náš hlavný príbeh, DIY zostava dospela — hraničná inferencia je teraz realitou na vašom stole.",
+      "title": "",
+      "tts": {
+        "text": "Náš hlavný príbeh, zostava urob si sám dospela — hraničná inferencia je teraz realitou na vašom stole.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "A koncept týždňa je špekulatívne dekódovanie — trik, vďaka ktorému sa veľký model na malej karte zdá rýchly.",
+      "text_markdown": "A koncept týždňa je špekulatívne dekódovanie — trik, vďaka ktorému sa veľký model na malej karte zdá rýchly.",
+      "title": "",
+      "tts": {
+        "text": "A koncept týždňa je špekulatívne dekódovanie — trik, vďaka ktorému sa veľký model na malej karte zdá rýchly.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "text": "Ron, začnime vo svete otvorených váh.",
+      "text_markdown": "Ron, začnime vo svete otvorených váh.",
+      "title": "",
+      "tts": {
+        "text": "Ron, začnime vo svete otvorených váh.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "text": "Kam sa týždeň posunul?",
+      "text_markdown": "Kam sa týždeň posunul?",
+      "title": "",
+      "tts": {
+        "text": "Kam sa týždeň posunul?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "text": "Tento týždeň bol otvorený príbeh o nových tvaroch, nie o nových veľkostiach.",
+      "text_markdown": "Tento týždeň bol otvorený príbeh o nových tvaroch, nie o nových veľkostiach.",
+      "title": "",
+      "tts": {
+        "text": "Tento týždeň bol otvorený príbeh o nových tvaroch, nie o nových veľkostiach.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-017",
+      "text": "Dva architektonicky zaujímavé modely boli vydané v ten istý deň, 1. júna.",
+      "text_markdown": "Dva architektonicky zaujímavé modely boli vydané v ten istý deň, 1. júna.",
+      "title": "",
+      "tts": {
+        "text": "Dva architektonicky zaujímavé modely boli vydané v ten istý deň, prvého júna.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-018",
+      "text": "Prejdite s nami prvý.",
+      "text_markdown": "Prejdite s nami prvý.",
+      "title": "",
+      "tts": {
+        "text": "Prejdite s nami prvý.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "text": "Spoločnosť MiniMax dodala model M3.",
+      "text_markdown": "Spoločnosť MiniMax dodala model M3.",
+      "title": "",
+      "tts": {
+        "text": "Spoločnosť MiniMax dodala model em tri.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "text": "Používa nový dizajn pozornosti, ktorý nazývajú MSA, skratka pre MiniMax Sparse Attention.",
+      "text_markdown": "Používa nový dizajn pozornosti, ktorý nazývajú MSA, skratka pre MiniMax Sparse Attention.",
+      "title": "",
+      "tts": {
+        "text": "Používa nový dizajn pozornosti, ktorý nazývajú M S A, skratka pre MiniMax Sparse Attention.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "text": "Prednosťou je kontext s jedným miliónom tokenov, s približne deväťkrát rýchlejším prefillom a pätnásťkrát rýchlejším dekódovaním oproti ich predchádzajúcemu modelu pri tejto dĺžke.",
+      "text_markdown": "Prednosťou je kontext s jedným miliónom tokenov, s približne deväťkrát rýchlejším prefillom a pätnásťkrát rýchlejším dekódovaním oproti ich predchádzajúcemu modelu pri tejto dĺžke.",
+      "title": "",
+      "tts": {
+        "text": "Prednosťou je kontext s jedným miliónom tokenov, s približne deväťkrát rýchlejším prefillom a pätnásťkrát rýchlejším dekódovaním oproti ich predchádzajúcemu modelu pri tejto dĺžke.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "text": "Jednoduchým jazykom o tom, čo riedka pozornosť (sparse attention) v skutočnosti robí.",
+      "text_markdown": "Jednoduchým jazykom o tom, čo riedka pozornosť (sparse attention) v skutočnosti robí.",
+      "title": "",
+      "tts": {
+        "text": "Jednoduchým jazykom o tom, čo riedka pozornosť v skutočnosti robí.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "Bežná pozornosť porovnáva každý token s každým iným tokenom, čo robí dlhý kontext tak drahým.",
+      "text_markdown": "Bežná pozornosť porovnáva každý token s každým iným tokenom, čo robí dlhý kontext tak drahým.",
+      "title": "",
+      "tts": {
+        "text": "Bežná pozornosť porovnáva každý token s každým iným tokenom, čo robí dlhý kontext tak drahým.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "text": "Riedka pozornosť predfiltruje kontext do blokov a úplné porovnanie vykonáva len pre tie bloky, ktoré sa zdajú relevantné pre aktuálnu otázku.",
+      "text_markdown": "Riedka pozornosť predfiltruje kontext do blokov a úplné porovnanie vykonáva len pre tie bloky, ktoré sa zdajú relevantné pre aktuálnu otázku.",
+      "title": "",
+      "tts": {
+        "text": "Riedka pozornosť predfiltruje kontext do blokov a úplné porovnanie vykonáva len pre tie bloky, ktoré sa zdajú relevantné pre aktuálnu otázku.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "text": "Získate väčšinu kvality za zlomok výpočtového výkonu.",
+      "text_markdown": "Získate väčšinu kvality za zlomok výpočtového výkonu.",
+      "title": "",
+      "tts": {
+        "text": "Získate väčšinu kvality za zlomok výpočtového výkonu.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-026",
+      "text": "A tvrdenie o benchmarku?",
+      "text_markdown": "A tvrdenie o benchmarku?",
+      "title": "",
+      "tts": {
+        "text": "A tvrdenie o benchmarku?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "text": "MiniMax uvádza päťdesiatdeväť percent na SWE-bench Pro, čo by ho umiestnilo pred GPT-5.5 a Gemini 3.5 Pro na tomto jednom rebríčku.",
+      "text_markdown": "MiniMax uvádza päťdesiatdeväť percent na SWE-bench Pro, čo by ho umiestnilo pred GPT-5.5 a Gemini 3.5 Pro na tomto jednom rebríčku.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax uvádza päťdesiatdeväť percent na SWE bench Pro, čo by ho umiestnilo pred G P T päť bodka päť a Gemini tri bodka päť Pro na tomto jednom rebríčku.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "text": "Poviem tvrdenia — toto je vlastná výsledková karta dodávateľa, nie nezávislý test.",
+      "text_markdown": "Poviem tvrdenia — toto je vlastná výsledková karta dodávateľa, nie nezávislý test.",
+      "title": "",
+      "tts": {
+        "text": "Poviem tvrdenia — toto je vlastná výsledková karta dodávateľa, nie nezávislý test.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-029",
+      "text": "A čo modely s otvorenými váhami?",
+      "text_markdown": "A čo modely s otvorenými váhami?",
+      "title": "",
+      "tts": {
+        "text": "A čo modely s otvorenými váhami?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "text": "Áno, M3 je umiestnený ako otvorená váha; API je aktívne od prvého dňa a váhy budú čoskoro dostupné na Hugging Face.",
+      "text_markdown": "Áno, M3 je umiestnený ako otvorená váha; API je aktívne od prvého dňa a váhy budú čoskoro dostupné na Hugging Face.",
+      "title": "",
+      "tts": {
+        "text": "Áno, M tri je umiestnený ako otvorená váha; A P I je aktívne od prvého dňa a váhy budú čoskoro dostupné na Hugging Face.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "text": "Pre kutila je zaujímavou stávkou skôr architektúra než skóre.",
+      "text_markdown": "Pre kutila je zaujímavou stávkou skôr architektúra než skóre.",
+      "title": "",
+      "tts": {
+        "text": "Pre kutila je zaujímavou stávkou skôr architektúra než skóre.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "text": "Ak sa MSA udrží, každé iné otvorené laboratórium skopíruje túto formu do niekoľkých mesiacov.",
+      "text_markdown": "Ak sa MSA udrží, každé iné otvorené laboratórium skopíruje túto formu do niekoľkých mesiacov.",
+      "title": "",
+      "tts": {
+        "text": "Ak sa M S A udrží, každé iné otvorené laboratórium skopíruje túto formu do niekoľkých mesiacov.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-033",
+      "text": "A druhý model?",
+      "text_markdown": "A druhý model?",
+      "title": "",
+      "tts": {
+        "text": "A druhý model?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-034",
+      "text": "NVIDIA potichu sprístupnila Nemotron 3 Ultra ako open-source.",
+      "text_markdown": "NVIDIA potichu sprístupnila Nemotron 3 Ultra ako open-source.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA potichu sprístupnila Nemotron tri Ultra ako open-source.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "text": "Je to zmes expertov s päťsto päťdesiatimi miliardami parametrov, pričom asi päťdesiatpäť miliárd je aktívnych na jeden token.",
+      "text_markdown": "Je to zmes expertov s päťsto päťdesiatimi miliardami parametrov, pričom asi päťdesiatpäť miliárd je aktívnych na jeden token.",
+      "title": "",
+      "tts": {
+        "text": "Je to zmes expertov s päťsto päťdesiatimi miliardami parametrov, pričom asi päťdesiatpäť miliárd je aktívnych na jeden token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "text": "Základom je hybrid Mamba-Transformer, nie čistý Transformer.",
+      "text_markdown": "Základom je hybrid Mamba-Transformer, nie čistý Transformer.",
+      "title": "",
+      "tts": {
+        "text": "Základom je hybrid Mamba Transformer, nie čistý Transformer.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "text": "Jednoducho povedané o Mambe.",
+      "text_markdown": "Jednoducho povedané o Mambe.",
+      "title": "",
+      "tts": {
+        "text": "Jednoducho povedané o Mambe.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "Vrstva Mamba spracováva dlhé sekvencie so subkvadratickým škálovaním, čo je efektný spôsob, ako povedať, že sú lacnejšie na token, keď kontext rastie.",
+      "text_markdown": "Vrstva Mamba spracováva dlhé sekvencie so subkvadratickým škálovaním, čo je efektný spôsob, ako povedať, že sú lacnejšie na token, keď kontext rastie.",
+      "title": "",
+      "tts": {
+        "text": "Vrstva Mamba spracováva dlhé sekvencie so subkvadratickým škálovaním, čo je efektný spôsob, ako povedať, že sú lacnejšie na token, keď kontext rastie.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-039",
+      "text": "NVIDIA ponechala niekoľko attention vrstiev v zásobníku, aby zachovala presné vybavovanie informácií pre veci ako otázky a odpovede na dlhé dokumenty.",
+      "text_markdown": "NVIDIA ponechala niekoľko attention vrstiev v zásobníku, aby zachovala presné vybavovanie informácií pre veci ako otázky a odpovede na dlhé dokumenty.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA ponechala niekoľko attention vrstiev v zásobníku, aby zachovala presné vybavovanie informácií pre veci ako otázky a odpovede na dlhé dokumenty.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "text": "Je to typ hybridu, ktorý už rok potichu víťazí vo výskume.",
+      "text_markdown": "Je to typ hybridu, ktorý už rok potichu víťazí vo výskume.",
+      "title": "",
+      "tts": {
+        "text": "Je to typ hybridu, ktorý už rok potichu víťazí vo výskume.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "text": "Čo licencia?",
+      "text_markdown": "Čo licencia?",
+      "title": "",
+      "tts": {
+        "text": "Čo licencia?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "text": "Vlastná licencia NVIDIA Open Model License, komerčné použitie povolené.",
+      "text_markdown": "Vlastná licencia NVIDIA Open Model License, komerčné použitie povolené.",
+      "title": "",
+      "tts": {
+        "text": "Vlastná licencia NVIDIA Open Model License, komerčné použitie povolené.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "text": "Všetko bolo zverejnené spolu, vrátane váh, post-trénovaných checkpointov, NVFP4 kvantizácie a tréningových receptov.",
+      "text_markdown": "Všetko bolo zverejnené spolu, vrátane váh, post-trénovaných checkpointov, NVFP4 kvantizácie a tréningových receptov.",
+      "title": "",
+      "tts": {
+        "text": "Všetko bolo zverejnené spolu, vrátane váh, post-trénovaných checkpointov, en vee eff pee štyri kvantizácie a tréningových receptov.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "text": "To je štedrejší balík než väčšina otvorených vydaní.",
+      "text_markdown": "To je štedrejší balík než väčšina otvorených vydaní.",
+      "title": "",
+      "tts": {
+        "text": "To je štedrejší balík než väčšina otvorených vydaní.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-045",
+      "text": "A umiestnenie v rebríčku?",
+      "text_markdown": "A umiestnenie v rebríčku?",
+      "title": "",
+      "tts": {
+        "text": "A umiestnenie v rebríčku?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "text": "V indexe Artificial Analysis Intelligence Index sa Nemotron 3 Ultra umiestnil na štyridsiatom ôsmom mieste.",
+      "text_markdown": "V indexe Artificial Analysis Intelligence Index sa Nemotron 3 Ultra umiestnil na štyridsiatom ôsmom mieste.",
+      "title": "",
+      "tts": {
+        "text": "V indexe Artificial Analysis Intelligence Index sa Nemotron tri Ultra umiestnil na štyridsiatom ôsmom mieste.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "text": "To ho radí na deviate miesto z osemdesiatich deviatich modelov, ktoré sledujú, a pred všetky ostatné otvorené modely z USA.",
+      "text_markdown": "To ho radí na deviate miesto z osemdesiatich deviatich modelov, ktoré sledujú, a pred všetky ostatné otvorené modely z USA.",
+      "title": "",
+      "tts": {
+        "text": "To ho radí na deviate miesto z osemdesiatich deviatich modelov, ktoré sledujú, a pred všetky ostatné otvorené modely z USA.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "text": "Zaostáva aj za modelom Kimi K2.6 od Moonshot, ktorý je na päťdesiatom štvrtom mieste.",
+      "text_markdown": "Zaostáva aj za modelom Kimi K2.6 od Moonshot, ktorý je na päťdesiatom štvrtom mieste.",
+      "title": "",
+      "tts": {
+        "text": "Zaostáva aj za modelom Kimi K dva bodka šesť od Moonshot, ktorý je na päťdesiatom štvrtom mieste.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-049",
+      "text": "Takže aj napriek tomu všetkému, Čína stále vedie v otvorenom prístupe.",
+      "text_markdown": "Takže aj napriek tomu všetkému, Čína stále vedie v otvorenom prístupe.",
+      "title": "",
+      "tts": {
+        "text": "Takže aj napriek tomu všetkému, Čína stále vedie v otvorenom prístupe.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "text": "V tom jednom kompozitnom rebríčku áno, o šesť bodov.",
+      "text_markdown": "V tom jednom kompozitnom rebríčku áno, o šesť bodov.",
+      "title": "",
+      "tts": {
+        "text": "V tom jednom kompozitnom rebríčku áno, o šesť bodov.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "To je menší príbeh pod tým väčším.",
+      "text_markdown": "To je menší príbeh pod tým väčším.",
+      "title": "",
+      "tts": {
+        "text": "To je menší príbeh pod tým väčším.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "text": "Niečo súvisiace?",
+      "text_markdown": "Niečo súvisiace?",
+      "title": "",
+      "tts": {
+        "text": "Niečo súvisiace?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "text": "Áno, NVIDIA tiež vydala Nemotron 3 Nano Omni.",
+      "text_markdown": "Áno, NVIDIA tiež vydala Nemotron 3 Nano Omni.",
+      "title": "",
+      "tts": {
+        "text": "Áno, NVIDIA tiež vydala Nemotron tri Nano Omni.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "text": "Ide o jednotný model pre videnie, zvuk a jazyk, o ktorom sa tvrdí, že je asi deväťkrát efektívnejší než podobné otvorené omni modely.",
+      "text_markdown": "Ide o jednotný model pre videnie, zvuk a jazyk, o ktorom sa tvrdí, že je asi deväťkrát efektívnejší než podobné otvorené omni modely.",
+      "title": "",
+      "tts": {
+        "text": "Ide o jednotný model pre videnie, zvuk a jazyk, o ktorom sa tvrdí, že je asi deväťkrát efektívnejší než podobné otvorené omni modely.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "text": "Je zameraný na agentov na zariadeniach — telefóny, laptopy, malé pracovné stanice.",
+      "text_markdown": "Je zameraný na agentov na zariadeniach — telefóny, laptopy, malé pracovné stanice.",
+      "title": "",
+      "tts": {
+        "text": "Je zameraný na agentov na zariadeniach — telefóny, laptopy, malé pracovné stanice.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "text": "Čo ešte z otvorenej strany?",
+      "text_markdown": "Čo ešte z otvorenej strany?",
+      "title": "",
+      "tts": {
+        "text": "Čo ešte z otvorenej strany?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "text": "Mistral Medium 3.5 sa objavil v Microsoft Copilot Studio 28. mája.",
+      "text_markdown": "Mistral Medium 3.5 sa objavil v Microsoft Copilot Studio 28. mája.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium tri bodka päť sa objavil v Microsoft Copilot Studio dvadsiateho ôsmeho mája.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "text": "Je to hustý model so sto dvadsiatimi ôsmimi miliardami parametrov a kontextom dvesto päťdesiatšesťtisíc tokenov.",
+      "text_markdown": "Je to hustý model so sto dvadsiatimi ôsmimi miliardami parametrov a kontextom dvesto päťdesiatšesťtisíc tokenov.",
+      "title": "",
+      "tts": {
+        "text": "Je to hustý model so sto dvadsiatimi ôsmimi miliardami parametrov a kontextom dvesto päťdesiatšesťtisíc tokenov.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "text": "Prečo je toto umiestnenie zaujímavé?",
+      "text_markdown": "Prečo je toto umiestnenie zaujímavé?",
+      "title": "",
+      "tts": {
+        "text": "Prečo je toto umiestnenie zaujímavé?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "text": "Pretože Microsoft teraz distribuuje ne-OpenAI európsky model prostredníctvom vlastnej platformy, so zabudovanou rezidenciou dát v EÚ.",
+      "text_markdown": "Pretože Microsoft teraz distribuuje ne-OpenAI európsky model prostredníctvom vlastnej platformy, so zabudovanou rezidenciou dát v EÚ.",
+      "title": "",
+      "tts": {
+        "text": "Pretože Microsoft teraz distribuuje ne-OpenAI európsky model prostredníctvom vlastnej platformy, so zabudovanou rezidenciou dát v E U.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "Pred dvoma rokmi by bola takáto veta nepredstaviteľná.",
+      "text_markdown": "Pred dvoma rokmi by bola takáto veta nepredstaviteľná.",
+      "title": "",
+      "tts": {
+        "text": "Pred dvoma rokmi by bola takáto veta nepredstaviteľná.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "text": "A Alibaba?",
+      "text_markdown": "A Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "A Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-063",
+      "text": "Qwen 3.7 Plus pristál 2. júna, ale je dostupný len cez API na platforme Bailian.",
+      "text_markdown": "Qwen 3.7 Plus pristál 2. júna, ale je dostupný len cez API na platforme Bailian.",
+      "title": "",
+      "tts": {
+        "text": "Qwen tri bodka sedem Plus pristál druhého júna, ale je dostupný len cez API na platforme Bailian.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "text": "Otvorená línia Qwen sa stále zastavuje pri tri bodka šesť.",
+      "text_markdown": "Otvorená línia Qwen sa stále zastavuje pri tri bodka šesť.",
+      "title": "",
+      "tts": {
+        "text": "Otvorená línia Qwen sa stále zastavuje pri tri bodka šesť.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-065",
+      "text": "To potvrdzuje rozdelenie, na ktoré sme upozornili minulý týždeň — uzavretá vlajková loď, otvorená stredná trieda.",
+      "text_markdown": "To potvrdzuje rozdelenie, na ktoré sme upozornili minulý týždeň — uzavretá vlajková loď, otvorená stredná trieda.",
+      "title": "",
+      "tts": {
+        "text": "To potvrdzuje rozdelenie, na ktoré sme upozornili minulý týždeň — uzavretá vlajková loď, otvorená stredná trieda.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "text": "Rovnaký postup, aký Mistral používa už rok.",
+      "text_markdown": "Rovnaký postup, aký Mistral používa už rok.",
+      "title": "",
+      "tts": {
+        "text": "Rovnaký postup, aký Mistral používa už rok.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-067",
+      "text": "Dve rýchle kontextové poznámky, než pôjdeme ďalej?",
+      "text_markdown": "Dve rýchle kontextové poznámky, než pôjdeme ďalej?",
+      "title": "",
+      "tts": {
+        "text": "Dve rýchle kontextové poznámky, než pôjdeme ďalej?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "text": "Jasne, poďme na to.",
+      "text_markdown": "Jasne, poďme na to.",
+      "title": "",
+      "tts": {
+        "text": "Jasne, poďme na to.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "text": "Čínske otvorené modely stále vedú v objeme tokenov OpenRouter — rovnaký stav ako minulý týždeň, žiadna zmena.",
+      "text_markdown": "Čínske otvorené modely stále vedú v objeme tokenov OpenRouter — rovnaký stav ako minulý týždeň, žiadna zmena.",
+      "title": "",
+      "tts": {
+        "text": "Čínske otvorené modely stále vedú v objeme tokenov OpenRouter — rovnaký stav ako minulý týždeň, žiadna zmena.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "text": "A DeepSeek V4 bol spustený na platforme Microsoft Foundry 28. mája, čo znamená len viac miest, kde ho možno volať.",
+      "text_markdown": "A DeepSeek V4 bol spustený na platforme Microsoft Foundry 28. mája, čo znamená len viac miest, kde ho možno volať.",
+      "title": "",
+      "tts": {
+        "text": "A DeepSeek V štyri bol spustený na platforme Microsoft Foundry dvadsiateho ôsmeho mája, čo znamená len viac miest, kde ho možno volať.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-071",
+      "text": "Dobre, poďme k rebríčkom.",
+      "text_markdown": "Dobre, poďme k rebríčkom.",
+      "title": "",
+      "tts": {
+        "text": "Dobre, poďme k rebríčkom.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "text": "Bol tento týždeň nejaký veľký posun?",
+      "text_markdown": "Bol tento týždeň nejaký veľký posun?",
+      "title": "",
+      "tts": {
+        "text": "Bol tento týždeň nejaký veľký posun?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "text": "Bol, a je uzavretý — Claude Opus 4.8, ktorý Anthropic vydal 28. mája.",
+      "text_markdown": "Bol, a je uzavretý — Claude Opus 4.8, ktorý Anthropic vydal 28. mája.",
+      "title": "",
+      "tts": {
+        "text": "Bol, a je uzavretý — Claude Opus štyri bodka osem, ktorý Anthropic vydal dvadsiateho ôsmeho mája.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "text": "Dosahuje 88.6 percent na SWE-bench Verified a 69.2 percent na SWE-bench Pro.",
+      "text_markdown": "Dosahuje 88.6 percent na SWE-bench Verified a 69.2 percent na SWE-bench Pro.",
+      "title": "",
+      "tts": {
+        "text": "Dosahuje osemdesiatosem bodka šesť percent na SWE-bench Verified a šesťdesiatdeväť bodka dva percent na SWE-bench Pro.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "text": "A teraz vedie Artificial Analysis Intelligence Index v celkovom skóre.",
+      "text_markdown": "A teraz vedie Artificial Analysis Intelligence Index v celkovom skóre.",
+      "title": "",
+      "tts": {
+        "text": "A teraz vedie Artificial Analysis Intelligence Index v celkovom skóre.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-076",
+      "text": "Prvýkrát, čo Anthropic viedol v tomto.",
+      "text_markdown": "Prvýkrát, čo Anthropic viedol v tomto.",
+      "title": "",
+      "tts": {
+        "text": "Prvýkrát, čo Anthropic viedol v tomto.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "text": "Áno, presne tak.",
+      "text_markdown": "Áno, presne tak.",
+      "title": "",
+      "tts": {
+        "text": "Áno, presne tak.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-078",
+      "text": "GPT-5.5 je o jeden bod pozadu a Gemini 3.5 Pro je o pár bodov za ním.",
+      "text_markdown": "GPT-5.5 je o jeden bod pozadu a Gemini 3.5 Pro je o pár bodov za ním.",
+      "title": "",
+      "tts": {
+        "text": "GPT päť bodka päť je o jeden bod pozadu a Gemini tri bodka päť Pro je o pár bodov za ním.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "text": "Veľmi tesné na čele uzavretej skupiny.",
+      "text_markdown": "Veľmi tesné na čele uzavretej skupiny.",
+      "title": "",
+      "tts": {
+        "text": "Veľmi tesné na čele uzavretej skupiny.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "text": "Ale skutočný príbeh hodnotenia tento týždeň bol iný.",
+      "text_markdown": "Ale skutočný príbeh hodnotenia tento týždeň bol iný.",
+      "title": "",
+      "tts": {
+        "text": "Ale skutočný príbeh hodnotenia tento týždeň bol iný.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "text": "Áno, skutočný príbeh je integrita.",
+      "text_markdown": "Áno, skutočný príbeh je integrita.",
+      "title": "",
+      "tts": {
+        "text": "Áno, skutočný príbeh je integrita.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "text": "OpenAI v podstate prestalo podávať správy o SWE-bench Verified.",
+      "text_markdown": "OpenAI v podstate prestalo podávať správy o SWE-bench Verified.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI v podstate prestalo podávať správy o SWE-bench Verified.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-083",
+      "text": "Audit kontaminácie zistil, že približne päťdesiatdeväť percent náročných úloh má chybné unit testy a modely si dokážu doslovne spomenúť na správne záplaty z tréningových dát.",
+      "text_markdown": "Audit kontaminácie zistil, že približne päťdesiatdeväť percent náročných úloh má chybné unit testy a modely si dokážu doslovne spomenúť na správne záplaty z tréningových dát.",
+      "title": "",
+      "tts": {
+        "text": "Audit kontaminácie zistil, že približne päťdesiatdeväť percent náročných úloh má chybné unit testy a modely si dokážu doslovne spomenúť na správne záplaty z tréningových dát.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-084",
+      "text": "Takže vysoké skóre meralo pamäť.",
+      "text_markdown": "Takže vysoké skóre meralo pamäť.",
+      "title": "",
+      "tts": {
+        "text": "Takže vysoké skóre meralo pamäť.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "text": "Často áno.",
+      "text_markdown": "Často áno.",
+      "title": "",
+      "tts": {
+        "text": "Často áno.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "text": "Pro je verzia s novými úlohami a náročnejším scaffoldingom — to je nový signál.",
+      "text_markdown": "Pro je verzia s novými úlohami a náročnejším scaffoldingom — to je nový signál.",
+      "title": "",
+      "tts": {
+        "text": "Pro je verzia s novými úlohami a náročnejším scaffoldingom — to je nový signál.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "text": "Toto je inštitucionálne potvrdenie obáv z kontaminácie, ktoré sme minulý týždeň spomenuli.",
+      "text_markdown": "Toto je inštitucionálne potvrdenie obáv z kontaminácie, ktoré sme minulý týždeň spomenuli.",
+      "title": "",
+      "tts": {
+        "text": "Toto je inštitucionálne potvrdenie obáv z kontaminácie, ktoré sme minulý týždeň spomenuli.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-088",
+      "text": "Bola k tomu aj metodologická štúdia?",
+      "text_markdown": "Bola k tomu aj metodologická štúdia?",
+      "title": "",
+      "tts": {
+        "text": "Bola k tomu aj metodologická štúdia?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "text": "Bola tu ostrá správa od skupiny s názvom Kili Technology.",
+      "text_markdown": "Bola tu ostrá správa od skupiny s názvom Kili Technology.",
+      "title": "",
+      "tts": {
+        "text": "Bola tu ostrá správa od skupiny s názvom Kili Technology.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "text": "Prehnali identické váhy modelov cez päť bežných evaluačných systémov.",
+      "text_markdown": "Prehnali identické váhy modelov cez päť bežných evaluačných systémov.",
+      "title": "",
+      "tts": {
+        "text": "Prehnali identické váhy modelov cez päť bežných evaluačných systémov.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "text": "Skóre sa líšili o desať až dvadsať percentuálnych bodov len na základe výberu postroja.",
+      "text_markdown": "Skóre sa líšili o desať až dvadsať percentuálnych bodov len na základe výberu postroja.",
+      "title": "",
+      "tts": {
+        "text": "Skóre sa líšili o desať až dvadsať percentuálnych bodov len na základe výberu postroja.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "text": "Rovnaká váha, odlišné číslo.",
+      "text_markdown": "Rovnaká váha, odlišné číslo.",
+      "title": "",
+      "tts": {
+        "text": "Rovnaká váha, odlišné číslo.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "text": "Áno, presne tak.",
+      "text_markdown": "Áno, presne tak.",
+      "title": "",
+      "tts": {
+        "text": "Áno, presne tak.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "text": "Ich záver bol, že poradie v rebríčku už nie je signálom pre obstarávanie na úrovni kupujúceho.",
+      "text_markdown": "Ich záver bol, že poradie v rebríčku už nie je signálom pre obstarávanie na úrovni kupujúceho.",
+      "title": "",
+      "tts": {
+        "text": "Ich záver bol, že poradie v rebríčku už nie je signálom pre obstarávanie na úrovni kupujúceho.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "text": "Pre kutila je záver ostrejší — spúšťajte si vlastné hodnotenia na vlastných výzvach.",
+      "text_markdown": "Pre kutila je záver ostrejší — spúšťajte si vlastné hodnotenia na vlastných výzvach.",
+      "title": "",
+      "tts": {
+        "text": "Pre kutila je záver ostrejší — spúšťajte si vlastné hodnotenia na vlastných výzvach.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-096",
+      "text": "To sa v skutočnosti vracia k MSA a Nemotron Ultra.",
+      "text_markdown": "To sa v skutočnosti vracia k MSA a Nemotron Ultra.",
+      "title": "",
+      "tts": {
+        "text": "To sa v skutočnosti vracia k M S A a Nemotron Ultra.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-097",
+      "text": "Áno, je to tak.",
+      "text_markdown": "Áno, je to tak.",
+      "title": "",
+      "tts": {
+        "text": "Áno, je to tak.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "text": "Dôverujte architektúre a vlastným testom, nie cudzej tabuľke.",
+      "text_markdown": "Dôverujte architektúre a vlastným testom, nie cudzej tabuľke.",
+      "title": "",
+      "tts": {
+        "text": "Dôverujte architektúre a vlastným testom, nie cudzej tabuľke.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "text": "Dobré miesto na opustenie rebríčkov.",
+      "text_markdown": "Dobré miesto na opustenie rebríčkov.",
+      "title": "",
+      "tts": {
+        "text": "Dobré miesto na opustenie rebríčkov.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "text": "Teraz prejdime k hlavným správam.",
+      "text_markdown": "Teraz prejdime k hlavným správam.",
+      "title": "",
+      "tts": {
+        "text": "Teraz prejdime k hlavným správam.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-101",
+      "text": "Rýchly prehľad cez optiku otvoreného ekosystému.",
+      "text_markdown": "Rýchly prehľad cez optiku otvoreného ekosystému.",
+      "title": "",
+      "tts": {
+        "text": "Rýchly prehľad cez optiku otvoreného ekosystému.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "text": "Po prvé, Microsoft Build sa konal 2. júna.",
+      "text_markdown": "Po prvé, Microsoft Build sa konal 2. júna.",
+      "title": "",
+      "tts": {
+        "text": "Po prvé, Microsoft Build sa konal druhého júna.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "text": "Microsoft predstavil dva vlastné modely — MAI-Thinking-1 a MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft predstavil dva vlastné modely — MAI-Thinking-1 a MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft predstavil dva vlastné modely — M A I Thinking jedna a M A I Code jedna Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-104",
+      "text": "Čím sú také zaujímavé?",
+      "text_markdown": "Čím sú také zaujímavé?",
+      "title": "",
+      "tts": {
+        "text": "Čím sú také zaujímavé?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "text": "Thinking-1 je riedka zmes expertov s tridsiatimi piatimi miliardami aktívnych parametrov a kontextovým oknom s dvestopäťdesiatšesťtisíc tokenmi.",
+      "text_markdown": "Thinking-1 je riedka zmes expertov s tridsiatimi piatimi miliardami aktívnych parametrov a kontextovým oknom s dvestopäťdesiatšesťtisíc tokenmi.",
+      "title": "",
+      "tts": {
+        "text": "Thinking jedna je riedka zmes expertov s tridsiatimi piatimi miliardami aktívnych parametrov a kontextovým oknom s dvestopäťdesiatšesťtisíc tokenmi.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-106",
+      "text": "A Microsoft konkrétne uvádza, že bol trénovaný na komerčne licencovaných dátach bez destilácie z akéhokoľvek modelu tretej strany.",
+      "text_markdown": "A Microsoft konkrétne uvádza, že bol trénovaný na komerčne licencovaných dátach bez destilácie z akéhokoľvek modelu tretej strany.",
+      "title": "",
+      "tts": {
+        "text": "A Microsoft konkrétne uvádza, že bol trénovaný na komerčne licencovaných dátach bez destilácie z akéhokoľvek modelu tretej strany.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-107",
+      "text": "To je nezvyčajné.",
+      "text_markdown": "To je nezvyčajné.",
+      "title": "",
+      "tts": {
+        "text": "To je nezvyčajné.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "text": "Veľmi nezvyčajné, vzhľadom na to, ako veľmi sa zvyšok odvetvia spolieha na syntetické dáta z prelomových modelov.",
+      "text_markdown": "Veľmi nezvyčajné, vzhľadom na to, ako veľmi sa zvyšok odvetvia spolieha na syntetické dáta z prelomových modelov.",
+      "title": "",
+      "tts": {
+        "text": "Veľmi nezvyčajné, vzhľadom na to, ako veľmi sa zvyšok odvetvia spolieha na syntetické dáta z prelomových modelov.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-109",
+      "text": "Code-1-Flash je ten lacnejší — začal sa zavádzať do všetkých úrovní GitHub Copilot 2. júna.",
+      "text_markdown": "Code-1-Flash je ten lacnejší — začal sa zavádzať do všetkých úrovní GitHub Copilot 2. júna.",
+      "title": "",
+      "tts": {
+        "text": "Code jedna Flash je ten lacnejší — začal sa zavádzať do všetkých úrovní GitHub Copilot druhého júna.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "text": "Takže Microsoft teraz dodáva Mistral, DeepSeek, OpenAI a vlastné MAI vedľa seba v Copilot Studio.",
+      "text_markdown": "Takže Microsoft teraz dodáva Mistral, DeepSeek, OpenAI a vlastné MAI vedľa seba v Copilot Studio.",
+      "title": "",
+      "tts": {
+        "text": "Takže Microsoft teraz dodáva Mistral, DeepSeek, OpenAI a vlastné M A I vedľa seba v Copilot Studio.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-111",
+      "text": "A čo druhá hlavná správa?",
+      "text_markdown": "A čo druhá hlavná správa?",
+      "title": "",
+      "tts": {
+        "text": "A čo druhá hlavná správa?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-112",
+      "text": "Anthropic dôverne podal S-1 na SEC 1. júna.",
+      "text_markdown": "Anthropic dôverne podal S-1 na SEC 1. júna.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic dôverne podal S jedna na S E C prvého júna.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "text": "To sú dokumenty, ktoré začínajú cestu k verejnému kótovaniu.",
+      "text_markdown": "To sú dokumenty, ktoré začínajú cestu k verejnému kótovaniu.",
+      "title": "",
+      "tts": {
+        "text": "To sú dokumenty, ktoré začínajú cestu k verejnému kótovaniu.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "text": "Ich uvádzaný ročný príjem je okolo štyridsaťsedem miliárd dolárov, čo je nárast z približne desiatich miliárd pred rokom.",
+      "text_markdown": "Ich uvádzaný ročný príjem je okolo štyridsaťsedem miliárd dolárov, čo je nárast z približne desiatich miliárd pred rokom.",
+      "title": "",
+      "tts": {
+        "text": "Ich uvádzaný ročný príjem je okolo štyridsaťsedem miliárd dolárov, čo je nárast z približne desiatich miliárd pred rokom.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-115",
+      "text": "Zatiaľ žiadny ticker, žiadne cenové rozpätie, žiadny dátum — len dokumenty.",
+      "text_markdown": "Zatiaľ žiadny ticker, žiadne cenové rozpätie, žiadny dátum — len dokumenty.",
+      "title": "",
+      "tts": {
+        "text": "Zatiaľ žiadny ticker, žiadne cenové rozpätie, žiadny dátum — len dokumenty.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "text": "Tretia.",
+      "text_markdown": "Tretia.",
+      "title": "",
+      "tts": {
+        "text": "Tretia.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "text": "GitHub Copilot prešiel na fakturáciu na základe používania 1. júna.",
+      "text_markdown": "GitHub Copilot prešiel na fakturáciu na základe používania 1. júna.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot prešiel na fakturáciu na základe používania prvého júna.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "text": "Každý plán teraz meria vstupné, výstupné a uložené tokeny rovnakými sadzbami ako základné API modelu.",
+      "text_markdown": "Každý plán teraz meria vstupné, výstupné a uložené tokeny rovnakými sadzbami ako základné API modelu.",
+      "title": "",
+      "tts": {
+        "text": "Každý plán teraz meria vstupné, výstupné a uložené tokeny rovnakými sadzbami ako základné API modelu.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-119",
+      "text": "Pristátie zjemnili pridelením kreditov na úroveň a novým plánom Copilot Max za sto dolárov mesačne pre náročných agentných používateľov.",
+      "text_markdown": "Pristátie zjemnili pridelením kreditov na úroveň a novým plánom Copilot Max za sto dolárov mesačne pre náročných agentných používateľov.",
+      "title": "",
+      "tts": {
+        "text": "Pristátie zjemnili pridelením kreditov na úroveň a novým plánom Copilot Max za sto dolárov mesačne pre náročných agentných používateľov.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-120",
+      "text": "A ako to prijali vývojári?",
+      "text_markdown": "A ako to prijali vývojári?",
+      "title": "",
+      "tts": {
+        "text": "A ako to prijali vývojári?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-121",
+      "text": "Niektoré názory boli dosť pikantné.",
+      "text_markdown": "Niektoré názory boli dosť pikantné.",
+      "title": "",
+      "tts": {
+        "text": "Niektoré názory boli dosť pikantné.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-122",
+      "text": "Nároční používatelia s agentnými slučkami hlásili predpokladané účty niekoľkonásobne vyššie ako starý paušálny poplatok.",
+      "text_markdown": "Nároční používatelia s agentnými slučkami hlásili predpokladané účty niekoľkonásobne vyššie ako starý paušálny poplatok.",
+      "title": "",
+      "tts": {
+        "text": "Nároční používatelia s agentnými slučkami hlásili predpokladané účty niekoľkonásobne vyššie ako starý paušálny poplatok.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "text": "Toto bude dôležité pre náš hlavný príbeh — zapamätajte si to.",
+      "text_markdown": "Toto bude dôležité pre náš hlavný príbeh — zapamätajte si to.",
+      "title": "",
+      "tts": {
+        "text": "Toto bude dôležité pre náš hlavný príbeh — zapamätajte si to.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-124",
+      "text": "Po štvrté, niečo na záplatu tento víkend?",
+      "text_markdown": "Po štvrté, niečo na záplatu tento víkend?",
+      "title": "",
+      "tts": {
+        "text": "Po štvrté, niečo na záplatu tento víkend?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-125",
+      "text": "Áno, verzie SGLang až do nula bod päť bod jedenásť majú chybu odmietnutia služby v cache, ktorá bola zverejnená 3. júna.",
+      "text_markdown": "Áno, verzie SGLang až do nula bod päť bod jedenásť majú chybu odmietnutia služby v cache, ktorá bola zverejnená 3. júna.",
+      "title": "",
+      "tts": {
+        "text": "Áno, S G Lang verzie až do nula bod päť bod jedenásť majú chybu odmietnutia služby v cache, ktorá bola zverejnená tretieho júna.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-126",
+      "text": "Identifikátor je CVE-2026-10775, závažnosť je nízka, zneužitie je len lokálne — ale ak používate SGLang, záplatujte v pondelok.",
+      "text_markdown": "Identifikátor je CVE-2026-10775, závažnosť je nízka, zneužitie je len lokálne — ale ak používate SGLang, záplatujte v pondelok.",
+      "title": "",
+      "tts": {
+        "text": "Identifikátor je C V E dvetisícdvadsaťšesť pomlčka desaťtisíc sedemsto sedemdesiatpäť, závažnosť je nízka, zneužitie je len lokálne — ale ak používate S G Lang, záplatujte v pondelok.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-127",
+      "text": "Ešte jedna.",
+      "text_markdown": "Ešte jedna.",
+      "title": "",
+      "tts": {
+        "text": "Ešte jedna.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-128",
+      "text": "Unsloth Studio vydalo aktualizáciu, ktorá exportuje kompletné doladenie priamo do GGUF — nielen váhy adaptéra.",
+      "text_markdown": "Unsloth Studio vydalo aktualizáciu, ktorá exportuje kompletné doladenie priamo do GGUF — nielen váhy adaptéra.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio vydalo aktualizáciu, ktorá exportuje kompletné doladenie priamo do G G U F — nielen váhy adaptéra.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "text": "Dvadsaťštyri gigabajtová spotrebiteľská karta je teraz dostatočná pre užitočné spustenia.",
+      "text_markdown": "Dvadsaťštyri gigabajtová spotrebiteľská karta je teraz dostatočná pre užitočné spustenia.",
+      "title": "",
+      "tts": {
+        "text": "Dvadsaťštyri gigabajtová spotrebiteľská karta je teraz dostatočná pre užitočné spustenia.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "text": "To je tá nenáročná infraštruktúra, ktorá robí zvyšok tejto epizódy skutočným.",
+      "text_markdown": "To je tá nenáročná infraštruktúra, ktorá robí zvyšok tejto epizódy skutočným.",
+      "title": "",
+      "tts": {
+        "text": "To je tá nenáročná infraštruktúra, ktorá robí zvyšok tejto epizódy skutočným.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "text": "Teraz sa vráťme k hlavnému príbehu.",
+      "text_markdown": "Teraz sa vráťme k hlavnému príbehu.",
+      "title": "",
+      "tts": {
+        "text": "Teraz sa vráťme k hlavnému príbehu.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-132",
+      "text": "Naznačil si zostavu.",
+      "text_markdown": "Naznačil si zostavu.",
+      "title": "",
+      "tts": {
+        "text": "Naznačil si zostavu.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-133",
+      "text": "Áno, a podstatou je toto — zostava pre domácich majstrov tento týždeň dospela.",
+      "text_markdown": "Áno, a podstatou je toto — zostava pre domácich majstrov tento týždeň dospela.",
+      "title": "",
+      "tts": {
+        "text": "Áno, a podstatou je toto — zostava pre domácich majstrov tento týždeň dospela.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "text": "Začnime hardvérom.",
+      "text_markdown": "Začnime hardvérom.",
+      "title": "",
+      "tts": {
+        "text": "Začnime hardvérom.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "text": "Dve krabice sa teraz skutočne dodávajú za spotrebiteľské ceny.",
+      "text_markdown": "Dve krabice sa teraz skutočne dodávajú za spotrebiteľské ceny.",
+      "title": "",
+      "tts": {
+        "text": "Dve krabice sa teraz skutočne dodávajú za spotrebiteľské ceny.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "text": "AMD otvorilo predobjednávky na mini PC Ryzen AI Halo v júni za 3 999 dolárov.",
+      "text_markdown": "AMD otvorilo predobjednávky na mini PC Ryzen AI Halo v júni za 3 999 dolárov.",
+      "title": "",
+      "tts": {
+        "text": "A M D otvorilo predobjednávky na mini P C Ryzen A I Halo v júni za tritisíc deväťsto deväťdesiatdeväť dolárov.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-137",
+      "text": "Beží na ňom Ryzen AI Max Plus 395, so 128 gigabajtmi unifikovanej pamäte LPDDR5x a zatiaľ je exkluzívne dostupný v Micro Center.",
+      "text_markdown": "Beží na ňom Ryzen AI Max Plus 395, so 128 gigabajtmi unifikovanej pamäte LPDDR5x a zatiaľ je exkluzívne dostupný v Micro Center.",
+      "title": "",
+      "tts": {
+        "text": "Beží na ňom Ryzen A I Max Plus tristo deväťdesiatpäť, so sto dvadsiatimi ôsmimi gigabajtmi unifikovanej pamäte L P D D R päť x a zatiaľ je exkluzívne dostupný v Micro Center.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-138",
+      "text": "A čo strana NVIDIA?",
+      "text_markdown": "A čo strana NVIDIA?",
+      "title": "",
+      "tts": {
+        "text": "A čo strana NVIDIA?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "text": "DGX Spark od NVIDIA je porovnateľná krabica.",
+      "text_markdown": "DGX Spark od NVIDIA je porovnateľná krabica.",
+      "title": "",
+      "tts": {
+        "text": "D G X Spark od N V I D I A je porovnateľná krabica.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-140",
+      "text": "Má čip GB10 Grace Blackwell a rovnakých 128 gigabajtov unifikovanej pamäte.",
+      "text_markdown": "Má čip GB10 Grace Blackwell a rovnakých 128 gigabajtov unifikovanej pamäte.",
+      "title": "",
+      "tts": {
+        "text": "Má čip G B desať Grace Blackwell a rovnakých sto dvadsaťosem gigabajtov unifikovanej pamäte.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-141",
+      "text": "Cena nedávno stúpla z 3 999 na 4 699, čo sa pripisuje globálnemu nedostatku pamätí.",
+      "text_markdown": "Cena nedávno stúpla z 3 999 na 4 699, čo sa pripisuje globálnemu nedostatku pamätí.",
+      "title": "",
+      "tts": {
+        "text": "Cena nedávno stúpla z troch tisíc deväťsto deväťdesiatdeväť na štyri tisíc šesťsto deväťdesiatdeväť, čo sa pripisuje globálnemu nedostatku pamätí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-142",
+      "text": "Aký veľký model tieto zariadenia skutočne pojmú?",
+      "text_markdown": "Aký veľký model tieto zariadenia skutočne pojmú?",
+      "title": "",
+      "tts": {
+        "text": "Aký veľký model tieto zariadenia skutočne pojmú?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-143",
+      "text": "Až do približne dvesto miliárd parametrov pri štvorbitovej kvantizácii, s priestorom pre kontext.",
+      "text_markdown": "Až do približne dvesto miliárd parametrov pri štvorbitovej kvantizácii, s priestorom pre kontext.",
+      "title": "",
+      "tts": {
+        "text": "Až do približne dvesto miliárd parametrov pri štvorbitovej kvantizácii, s priestorom pre kontext.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-144",
+      "text": "Spojte dva DGX Sparky cez ConnectX-7 a dostanete sa do teritória približne štyristo miliárd.",
+      "text_markdown": "Spojte dva DGX Sparky cez ConnectX-7 a dostanete sa do teritória približne štyristo miliárd.",
+      "title": "",
+      "tts": {
+        "text": "Spojte dva D G X Sparky cez Connect X sedem a dostanete sa do teritória približne štyristo miliárd.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-145",
+      "text": "To je skutočne výkon hraničnej triedy na kuchynskej linke.",
+      "text_markdown": "To je skutočne výkon hraničnej triedy na kuchynskej linke.",
+      "title": "",
+      "tts": {
+        "text": "To je skutočne výkon hraničnej triedy na kuchynskej linke.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-146",
+      "text": "Teraz sa pozrime na softvérový zásobník.",
+      "text_markdown": "Teraz sa pozrime na softvérový zásobník.",
+      "title": "",
+      "tts": {
+        "text": "Teraz sa pozrime na softvérový zásobník.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-147",
+      "text": "Toto sa zmenilo pod našimi nohami.",
+      "text_markdown": "Toto sa zmenilo pod našimi nohami.",
+      "title": "",
+      "tts": {
+        "text": "Toto sa zmenilo pod našimi nohami.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-148",
+      "text": "Pre inferenciu máte vLLM, SGLang, llama.cpp, Ollama a MLX na Apple Silicon — všetky udržiavané, všetky rýchle.",
+      "text_markdown": "Pre inferenciu máte vLLM, SGLang, llama.cpp, Ollama a MLX na Apple Silicon — všetky udržiavané, všetky rýchle.",
+      "title": "",
+      "tts": {
+        "text": "Pre inferenciu máte vé L L M, S G Lang, llama C P P, Ollama a M L X na Apple Silicon — všetky udržiavané, všetky rýchle.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-149",
+      "text": "Pre samotný model máte tento týždeň váhy Nemotron 3 Ultra, plus Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 a prichádzajú váhy MiniMax M3.",
+      "text_markdown": "Pre samotný model máte tento týždeň váhy Nemotron 3 Ultra, plus Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 a prichádzajú váhy MiniMax M3.",
+      "title": "",
+      "tts": {
+        "text": "Pre samotný model máte tento týždeň váhy Nemotron tri Ultra, plus Kimi K dva bod šesť, DeepSeek V štyri Flash, G L M päť bod jedna a prichádzajú váhy MiniMax M tri.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-150",
+      "text": "Pre doladenie je Unsloth Studio teraz plné doladenie na GGUF jedným kliknutím.",
+      "text_markdown": "Pre doladenie je Unsloth Studio teraz plné doladenie na GGUF jedným kliknutím.",
+      "title": "",
+      "tts": {
+        "text": "Pre doladenie je Unsloth Studio teraz plné doladenie na G G U F jedným kliknutím.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-151",
+      "text": "A pre agentov máte Aider, Continue a LangGraph verziu jedna, ktoré spúšťajú lokálne tridsaťdva miliardy parametrové modely s použiteľnou spoľahlivosťou.",
+      "text_markdown": "A pre agentov máte Aider, Continue a LangGraph verziu jedna, ktoré spúšťajú lokálne tridsaťdva miliardy parametrové modely s použiteľnou spoľahlivosťou.",
+      "title": "",
+      "tts": {
+        "text": "A pre agentov máte Aider, Continue a LangGraph verziu jedna, ktoré spúšťajú lokálne tridsaťdva miliardy parametrové modely s použiteľnou spoľahlivosťou.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-152",
+      "text": "To je celá slučka.",
+      "text_markdown": "To je celá slučka.",
+      "title": "",
+      "tts": {
+        "text": "To je celá slučka.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-153",
+      "text": "To je celá slučka.",
+      "text_markdown": "To je celá slučka.",
+      "title": "",
+      "tts": {
+        "text": "To je celá slučka.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-154",
+      "text": "Kremík, engine, model, dolaďovanie, agent — každá vrstva má dôveryhodnú otvorenú možnosť a spodná vrstva je teraz mini PC na stole.",
+      "text_markdown": "Kremík, engine, model, dolaďovanie, agent — každá vrstva má dôveryhodnú otvorenú možnosť a spodná vrstva je teraz mini PC na stole.",
+      "title": "",
+      "tts": {
+        "text": "Kremík, engine, model, dolaďovanie, agent — každá vrstva má dôveryhodnú otvorenú možnosť a spodná vrstva je teraz mini PC na stole.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-155",
+      "text": "A ekonomika?",
+      "text_markdown": "A ekonomika?",
+      "title": "",
+      "tts": {
+        "text": "A ekonomika?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-156",
+      "text": "Ekonomika sa tento týždeň otočila spôsobom, ktorý je ťažké prehliadnuť.",
+      "text_markdown": "Ekonomika sa tento týždeň otočila spôsobom, ktorý je ťažké prehliadnuť.",
+      "title": "",
+      "tts": {
+        "text": "Ekonomika sa tento týždeň otočila spôsobom, ktorý je ťažké prehliadnuť.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-157",
+      "text": "Copilot s meraním tokenov, Anthropic S-1, ktorý signalizuje nadchádzajúci cenový tlak, a varovania o sieti z Texasu, Virginie a Ohia o náročnom lete.",
+      "text_markdown": "Copilot s meraním tokenov, Anthropic S-1, ktorý signalizuje nadchádzajúci cenový tlak, a varovania o sieti z Texasu, Virginie a Ohia o náročnom lete.",
+      "title": "",
+      "tts": {
+        "text": "Copilot s meraním tokenov, Anthropic S jedna, ktorý signalizuje nadchádzajúci cenový tlak, a varovania o sieti z Texasu, Virginie a Ohia o náročnom lete.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-158",
+      "text": "Dôvod pre self-hosting bol kedysi ideologický.",
+      "text_markdown": "Dôvod pre self-hosting bol kedysi ideologický.",
+      "title": "",
+      "tts": {
+        "text": "Dôvod pre self-hosting bol kedysi ideologický.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-159",
+      "text": "Tento týždeň sa z neho stala tabuľka.",
+      "text_markdown": "Tento týždeň sa z neho stala tabuľka.",
+      "title": "",
+      "tts": {
+        "text": "Tento týždeň sa z neho stala tabuľka.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-160",
+      "text": "Buďte úprimní v tom, čo sa nezmenilo.",
+      "text_markdown": "Buďte úprimní v tom, čo sa nezmenilo.",
+      "title": "",
+      "tts": {
+        "text": "Buďte úprimní v tom, čo sa nezmenilo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-161",
+      "text": "Dôležitá výhrada — váš pult neprekoná cloud na vrchole rebríčka kvality.",
+      "text_markdown": "Dôležitá výhrada — váš pult neprekoná cloud na vrchole rebríčka kvality.",
+      "title": "",
+      "tts": {
+        "text": "Dôležitá výhrada — váš pult neprekoná cloud na vrchole rebríčka kvality.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-162",
+      "text": "Opus 4.8 stále vedie v kompozite a GPT-5.5 stále dominuje v BrowseComp.",
+      "text_markdown": "Opus 4.8 stále vedie v kompozite a GPT-5.5 stále dominuje v BrowseComp.",
+      "title": "",
+      "tts": {
+        "text": "Opus štyri bodka osem stále vedie v kompozite a GPT päť bodka päť stále dominuje v BrowseComp.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-163",
+      "text": "To, čo sa tento týždeň zmenilo, je spodná hranica.",
+      "text_markdown": "To, čo sa tento týždeň zmenilo, je spodná hranica.",
+      "title": "",
+      "tts": {
+        "text": "To, čo sa tento týždeň zmenilo, je spodná hranica.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-164",
+      "text": "Schopné modely agentnej triedy, dolaďovateľné, na vašom vlastnom hardvéri, s otvorenými váhami.",
+      "text_markdown": "Schopné modely agentnej triedy, dolaďovateľné, na vašom vlastnom hardvéri, s otvorenými váhami.",
+      "title": "",
+      "tts": {
+        "text": "Schopné modely agentnej triedy, dolaďovateľné, na vašom vlastnom hardvéri, s otvorenými váhami.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-165",
+      "text": "Taký je ten príbeh.",
+      "text_markdown": "Taký je ten príbeh.",
+      "title": "",
+      "tts": {
+        "text": "Taký je ten príbeh.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-166",
+      "text": "Kedysi to vyžadovalo dátové centrum.",
+      "text_markdown": "Kedysi to vyžadovalo dátové centrum.",
+      "title": "",
+      "tts": {
+        "text": "Kedysi to vyžadovalo dátové centrum.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-167",
+      "text": "Tento týždeň to vyžaduje pult.",
+      "text_markdown": "Tento týždeň to vyžaduje pult.",
+      "title": "",
+      "tts": {
+        "text": "Tento týždeň to vyžaduje pult.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-168",
+      "text": "Poďme na koncept týždňa.",
+      "text_markdown": "Poďme na koncept týždňa.",
+      "title": "",
+      "tts": {
+        "text": "Poďme na koncept týždňa.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-169",
+      "text": "Vy ste si vybrali špekulatívne dekódovanie.",
+      "text_markdown": "Vy ste si vybrali špekulatívne dekódovanie.",
+      "title": "",
+      "tts": {
+        "text": "Vy ste si vybrali špekulatívne dekódovanie.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-170",
+      "text": "Áno, pretože je to trik, vďaka ktorému sa všetko, o čom sme práve hovorili, zdá rýchle.",
+      "text_markdown": "Áno, pretože je to trik, vďaka ktorému sa všetko, o čom sme práve hovorili, zdá rýchle.",
+      "title": "",
+      "tts": {
+        "text": "Áno, pretože je to trik, vďaka ktorému sa všetko, o čom sme práve hovorili, zdá rýchle.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-171",
+      "text": "Tvrdenie MiniMaxu o pätnásťnásobnom dekódovaní sa opiera o príbuzného.",
+      "text_markdown": "Tvrdenie MiniMaxu o pätnásťnásobnom dekódovaní sa opiera o príbuzného.",
+      "title": "",
+      "tts": {
+        "text": "Tvrdenie MiniMaxu o pätnásťnásobnom dekódovaní sa opiera o príbuzného.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-172",
+      "text": "Režim návrhového modelu Llama.cpp je presne táto myšlienka.",
+      "text_markdown": "Režim návrhového modelu Llama.cpp je presne táto myšlienka.",
+      "title": "",
+      "tts": {
+        "text": "Režim návrhového modelu Llama.cpp je presne táto myšlienka.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-173",
+      "text": "Prejdite si to s nami.",
+      "text_markdown": "Prejdite si to s nami.",
+      "title": "",
+      "tts": {
+        "text": "Prejdite si to s nami.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-174",
+      "text": "Spúšťate dva modely vedľa seba.",
+      "text_markdown": "Spúšťate dva modely vedľa seba.",
+      "title": "",
+      "tts": {
+        "text": "Spúšťate dva modely vedľa seba.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-175",
+      "text": "Malý, rýchly model nazývaný navrhovateľ a veľký, pomalý model nazývaný overovateľ.",
+      "text_markdown": "Malý, rýchly model nazývaný navrhovateľ a veľký, pomalý model nazývaný overovateľ.",
+      "title": "",
+      "tts": {
+        "text": "Malý, rýchly model nazývaný navrhovateľ a veľký, pomalý model nazývaný overovateľ.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-176",
+      "text": "Navrhovateľ uhádne, povedzme, ďalšie štyri tokeny naraz.",
+      "text_markdown": "Navrhovateľ uhádne, povedzme, ďalšie štyri tokeny naraz.",
+      "title": "",
+      "tts": {
+        "text": "Navrhovateľ uhádne, povedzme, ďalšie štyri tokeny naraz.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-177",
+      "text": "Overovateľ skontroluje všetky štyri paralelne.",
+      "text_markdown": "Overovateľ skontroluje všetky štyri paralelne.",
+      "title": "",
+      "tts": {
+        "text": "Overovateľ skontroluje všetky štyri paralelne.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-178",
+      "text": "A potom?",
+      "text_markdown": "A potom?",
+      "title": "",
+      "tts": {
+        "text": "A potom?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-179",
+      "text": "Ak overovateľ súhlasí, ponecháte si všetky štyri a pokračujete — práve ste spracovali štyri tokeny za cenu približne jedného.",
+      "text_markdown": "Ak overovateľ súhlasí, ponecháte si všetky štyri a pokračujete — práve ste spracovali štyri tokeny za cenu približne jedného.",
+      "title": "",
+      "tts": {
+        "text": "Ak overovateľ súhlasí, ponecháte si všetky štyri a pokračujete — práve ste spracovali štyri tokeny za cenu približne jedného.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-180",
+      "text": "Ak nesúhlasí, akceptujete prvú nezhodu a necháte veľký model, aby prevzal kontrolu odtiaľ.",
+      "text_markdown": "Ak nesúhlasí, akceptujete prvú nezhodu a necháte veľký model, aby prevzal kontrolu odtiaľ.",
+      "title": "",
+      "tts": {
+        "text": "Ak nesúhlasí, akceptujete prvú nezhodu a necháte veľký model, aby prevzal kontrolu odtiaľ.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-181",
+      "text": "Takže odpoveď je identická.",
+      "text_markdown": "Takže odpoveď je identická.",
+      "title": "",
+      "tts": {
+        "text": "Takže odpoveď je identická.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-182",
+      "text": "Presne tak, to je tá elegantná časť.",
+      "text_markdown": "Presne tak, to je tá elegantná časť.",
+      "title": "",
+      "tts": {
+        "text": "Presne tak, to je tá elegantná časť.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-183",
+      "text": "Výstup je presne to, čo by veľký model vyprodukoval sám.",
+      "text_markdown": "Výstup je presne to, čo by veľký model vyprodukoval sám.",
+      "title": "",
+      "tts": {
+        "text": "Výstup je presne to, čo by veľký model vyprodukoval sám.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-184",
+      "text": "Len ste zaplatili za menej jeho dopredných prechodov.",
+      "text_markdown": "Len ste zaplatili za menej jeho dopredných prechodov.",
+      "title": "",
+      "tts": {
+        "text": "Len ste zaplatili za menej jeho dopredných prechodov.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-185",
+      "text": "Prečo je to dôležité pre kutila?",
+      "text_markdown": "Prečo je to dôležité pre kutila?",
+      "title": "",
+      "tts": {
+        "text": "Prečo je to dôležité pre kutila?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-186",
+      "text": "Pretože premení sedemdesiatmiliardový parametrový model na jednej karte z novinky na použiteľnú konverzáciu.",
+      "text_markdown": "Pretože premení sedemdesiatmiliardový parametrový model na jednej karte z novinky na použiteľnú konverzáciu.",
+      "title": "",
+      "tts": {
+        "text": "Pretože premení sedemdesiatmiliardový parametrový model na jednej karte z novinky na použiteľnú konverzáciu.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-187",
+      "text": "A na telefóne je to súčasť toho, ako sa skutočný asistent na zariadení javí ako responzívny.",
+      "text_markdown": "A na telefóne je to súčasť toho, ako sa skutočný asistent na zariadení javí ako responzívny.",
+      "title": "",
+      "tts": {
+        "text": "A na telefóne je to súčasť toho, ako sa skutočný asistent na zariadení javí ako responzívny.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-188",
+      "text": "Koncept z minulého týždňa, neurálne audio kodeky, bol audio verziou rovnakého triku — menej drahých krokov pre rovnakú kvalitu.",
+      "text_markdown": "Koncept z minulého týždňa, neurálne audio kodeky, bol audio verziou rovnakého triku — menej drahých krokov pre rovnakú kvalitu.",
+      "title": "",
+      "tts": {
+        "text": "Koncept z minulého týždňa, neurálne audio kodeky, bol audio verziou rovnakého triku — menej drahých krokov pre rovnakú kvalitu.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-189",
+      "text": "Kam by sa mal zvedavec vydať ďalej?",
+      "text_markdown": "Kam by sa mal zvedavec vydať ďalej?",
+      "title": "",
+      "tts": {
+        "text": "Kam by sa mal zvedavec vydať ďalej?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-190",
+      "text": "Vyhľadajte EAGLE-3, Medusa a lookahead decoding.",
+      "text_markdown": "Vyhľadajte EAGLE-3, Medusa a lookahead decoding.",
+      "title": "",
+      "tts": {
+        "text": "Vyhľadajte Eagle tri, Medusa a lookahead decoding.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-191",
+      "text": "Sú to moderní bratranci pôvodnej myšlienky drafter-verifier a sú tým, čo váš inferenčný engine skutočne spúšťa pod kapotou.",
+      "text_markdown": "Sú to moderní bratranci pôvodnej myšlienky drafter-verifier a sú tým, čo váš inferenčný engine skutočne spúšťa pod kapotou.",
+      "title": "",
+      "tts": {
+        "text": "Sú to moderní bratranci pôvodnej myšlienky drafter verifier a sú tým, čo váš inferenčný engine skutočne spúšťa pod kapotou.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-192",
+      "text": "Dobré miesto na pristátie.",
+      "text_markdown": "Dobré miesto na pristátie.",
+      "title": "",
+      "tts": {
+        "text": "Dobré miesto na pristátie.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-193",
+      "text": "Ďakujem ti, Ron.",
+      "text_markdown": "Ďakujem ti, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Ďakujem ti, Ron.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-194",
+      "text": "Vždy rada, Vindy.",
+      "text_markdown": "Vždy rada, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Vždy rada, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-195",
+      "text": "To bol AI This Week pre 3. júna 2026.",
+      "text_markdown": "To bol AI This Week pre 3. júna 2026.",
+      "title": "",
+      "tts": {
+        "text": "To bol AI This Week pre tretieho júna dvetisícdvadsaťšesť.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-196",
+      "text": "Nové vydanie budúcu stredu.",
+      "text_markdown": "Nové vydanie budúcu stredu.",
+      "title": "",
+      "tts": {
+        "text": "Nové vydanie budúcu stredu.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-197",
+      "text": "Dovtedy sa majte.",
+      "text_markdown": "Dovtedy sa majte.",
+      "title": "",
+      "tts": {
+        "text": "Dovtedy sa majte.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

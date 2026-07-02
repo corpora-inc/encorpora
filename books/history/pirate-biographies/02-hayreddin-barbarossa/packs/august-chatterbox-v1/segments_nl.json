@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "nl",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord aan de lezer",
+      "text_markdown": "Een woord aan de lezer"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het ware verhaal van Hayreddin Barbarossa, de man die van het Ottomaanse Rijk een maritieme grootmacht maakte.",
+      "text_markdown": "Dit is het ware verhaal van Hayreddin Barbarossa, de man die van het Ottomaanse Rijk een maritieme grootmacht maakte.",
+      "tts": {
+        "text": "Dit is het ware verhaal van Hayreddin Barbarossa, de man die van het Ottomaanse Rijk een maritieme grootmacht maakte.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij begon zijn leven als de zoon van een pottenbakker op een Grieks eiland.",
+      "text_markdown": "Hij begon zijn leven als de zoon van een pottenbakker op een Grieks eiland.",
+      "tts": {
+        "text": "Hij begon zijn leven als de zoon van een pottenbakker op een Grieks eiland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij eindigde het als grootadmiraal van de machtigste vloot op de Middellandse Zee.",
+      "text_markdown": "Hij eindigde het als grootadmiraal van de machtigste vloot op de Middellandse Zee.",
+      "tts": {
+        "text": "Hij eindigde het als grootadmiraal van de machtigste vloot op de Middellandse Zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn verhaal omspant een eeuw van conflict tussen het Ottomaanse Rijk en christelijk Europa.",
+      "text_markdown": "Zijn verhaal omspant een eeuw van conflict tussen het Ottomaanse Rijk en christelijk Europa.",
+      "tts": {
+        "text": "Zijn verhaal omspant een eeuw van conflict tussen het Ottomaanse Rijk en christelijk Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een verhaal van broers, kapers, sultans en de strijd om de heerschappij over zee.",
+      "text_markdown": "Het is een verhaal van broers, kapers, sultans en de strijd om de heerschappij over zee.",
+      "tts": {
+        "text": "Het is een verhaal van broers, kapers, sultans en de strijd om de heerschappij over zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elke veldslag, elk verbond en elk verraad dat in dit boek wordt beschreven, is ontleend aan de historische bronnen.",
+      "text_markdown": "Elke veldslag, elk verbond en elk verraad dat in dit boek wordt beschreven, is ontleend aan de historische bronnen.",
+      "tts": {
+        "text": "Elke veldslag, elk verbond en elk verraad dat in dit boek wordt beschreven, is ontleend aan de historische bronnen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbarossa's carrière veranderde de kaart van de mediterrane wereld.",
+      "text_markdown": "Barbarossa's carrière veranderde de kaart van de mediterrane wereld.",
+      "tts": {
+        "text": "Barbarossa's carrière veranderde de kaart van de mediterrane wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De vloot die hij opbouwde, beheerste de zee nog generaties lang na zijn dood.",
+      "text_markdown": "De vloot die hij opbouwde, beheerste de zee nog generaties lang na zijn dood.",
+      "tts": {
+        "text": "De vloot die hij opbouwde, beheerste de zee nog generaties lang na zijn dood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn nalatenschap vormt vandaag de dag nog steeds de kustlijnen en culturen van Noord-Afrika.",
+      "text_markdown": "Zijn nalatenschap vormt vandaag de dag nog steeds de kustlijnen en culturen van Noord-Afrika.",
+      "tts": {
+        "text": "Zijn nalatenschap vormt vandaag de dag nog steeds de kustlijnen en culturen van Noord Afrika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar de historische bronnen onvolledig zijn, zeggen we dat duidelijk.",
+      "text_markdown": "Waar de historische bronnen onvolledig zijn, zeggen we dat duidelijk.",
+      "tts": {
+        "text": "Waar de historische bronnen onvolledig zijn, zeggen we dat duidelijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waar historici het oneens zijn over data of details, presenteren we het meest algemeen aanvaarde verslag.",
+      "text_markdown": "Waar historici het oneens zijn over data of details, presenteren we het meest algemeen aanvaarde verslag.",
+      "tts": {
+        "text": "Waar historici het oneens zijn over data of details, presenteren we het meest algemeen aanvaarde verslag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord aan de lezer",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dit is geschiedenis, geen legende, en we behandelen haar met de zorg die zij verdient.",
+      "text_markdown": "Dit is geschiedenis, geen legende, en we behandelen haar met de zorg die zij verdient.",
+      "tts": {
+        "text": "Dit is geschiedenis, geen legende, en we behandelen haar met de zorg die zij verdient.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De wereld van de Middellandse Zee",
+      "text_markdown": "De wereld van de Middellandse Zee"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Middellandse Zee ligt op het kruispunt van drie continenten.",
+      "text_markdown": "De Middellandse Zee ligt op het kruispunt van drie continenten.",
+      "tts": {
+        "text": "De Middellandse Zee ligt op het kruispunt van drie continenten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In het noorden ligt Europa, in het zuiden Afrika en in het oosten ligt Azië.",
+      "text_markdown": "In het noorden ligt Europa, in het zuiden Afrika en in het oosten ligt Azië.",
+      "tts": {
+        "text": "In het noorden ligt Europa, in het zuiden Afrika en in het oosten ligt Azië.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Duizenden jaren lang heeft elke grote beschaving langs haar kusten gestreden om haar te beheersen.",
+      "text_markdown": "Duizenden jaren lang heeft elke grote beschaving langs haar kusten gestreden om haar te beheersen.",
+      "tts": {
+        "text": "Duizenden jaren lang heeft elke grote beschaving langs haar kusten gestreden om haar te beheersen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegen het einde van de vijftiende eeuw was de Middellandse Zee een slagveld tussen twee grote mogendheden.",
+      "text_markdown": "Tegen het einde van de vijftiende eeuw was de Middellandse Zee een slagveld tussen twee grote mogendheden.",
+      "tts": {
+        "text": "Tegen het einde van de vijftiende eeuw was de Middellandse Zee een slagveld tussen twee grote mogendheden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In het oosten breidde het Ottomaanse Rijk zich snel uit onder een reeks ambitieuze sultans.",
+      "text_markdown": "In het oosten breidde het Ottomaanse Rijk zich snel uit onder een reeks ambitieuze sultans.",
+      "tts": {
+        "text": "In het oosten breidde het Ottomaanse Rijk zich snel uit onder een reeks ambitieuze sultans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In het westen probeerden de koninkrijken van Spanje en het Heilige Roomse Rijk onder Karel de Vijfde terug te dringen.",
+      "text_markdown": "In het westen probeerden de koninkrijken van Spanje en het Heilige Roomse Rijk onder Karel de Vijfde terug te dringen.",
+      "tts": {
+        "text": "In het westen probeerden de koninkrijken van Spanje en het Heilige Roomse Rijk onder Karel de Vijfde terug te dringen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het Ottomaanse Rijk had Constantinopel in 1453 veroverd.",
+      "text_markdown": "Het Ottomaanse Rijk had Constantinopel in 1453 veroverd.",
+      "tts": {
+        "text": "Het Ottomaanse Rijk had Constantinopel in veertienhonderd drieënvijftig veroverd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die overwinning maakte een einde aan het Byzantijnse Rijk en gaf de Ottomanen de controle over de oostelijke Middellandse Zee.",
+      "text_markdown": "Die overwinning maakte een einde aan het Byzantijnse Rijk en gaf de Ottomanen de controle over de oostelijke Middellandse Zee.",
+      "tts": {
+        "text": "Die overwinning maakte een einde aan het Byzantijnse Rijk en gaf de Ottomanen de controle over de oostelijke Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De stad werd hernoemd tot Istanbul en werd de hoofdstad van een uitgestrekt en groeiend rijk.",
+      "text_markdown": "De stad werd hernoemd tot Istanbul en werd de hoofdstad van een uitgestrekt en groeiend rijk.",
+      "tts": {
+        "text": "De stad werd hernoemd tot Istanbul en werd de hoofdstad van een uitgestrekt en groeiend rijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haar haven, de Gouden Hoorn, werd de thuishaven van de Ottomaanse vloot.",
+      "text_markdown": "Haar haven, de Gouden Hoorn, werd de thuishaven van de Ottomaanse vloot.",
+      "tts": {
+        "text": "Haar haven, de Gouden Hoorn, werd de thuishaven van de Ottomaanse vloot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spanje had ondertussen de Reconquista voltooid.",
+      "text_markdown": "Spanje had ondertussen de Reconquista voltooid.",
+      "tts": {
+        "text": "Spanje had ondertussen de Reconquista voltooid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1492 veroverden de Spaanse vorsten Ferdinand en Isabella Granada, het laatste islamitische koninkrijk op het Iberisch Schiereiland.",
+      "text_markdown": "In 1492 veroverden de Spaanse vorsten Ferdinand en Isabella Granada, het laatste islamitische koninkrijk op het Iberisch Schiereiland.",
+      "tts": {
+        "text": "In veertienhonderd tweeënnegentig veroverden de Spaanse vorsten Ferdinand en Isabella Granada, het laatste islamitische koninkrijk op het Iberisch Schiereiland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Honderdduizenden moslims en joden werden in de jaren daarna uit Spanje verdreven.",
+      "text_markdown": "Honderdduizenden moslims en joden werden in de jaren daarna uit Spanje verdreven.",
+      "tts": {
+        "text": "Honderdduizenden moslims en joden werden in de jaren daarna uit Spanje verdreven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Velen van hen vluchtten naar Noord-Afrika en het Ottomaanse Rijk.",
+      "text_markdown": "Velen van hen vluchtten naar Noord-Afrika en het Ottomaanse Rijk.",
+      "tts": {
+        "text": "Velen van hen vluchtten naar Noord Afrika en het Ottomaanse Rijk.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Noord-Afrikaanse kust, bekend als de Barbarijse Kust, werd een toevluchtsoord voor deze ballingen.",
+      "text_markdown": "De Noord-Afrikaanse kust, bekend als de Barbarijse Kust, werd een toevluchtsoord voor deze ballingen.",
+      "tts": {
+        "text": "De Noord Afrikaanse kust, bekend als de Barbarijse Kust, werd een toevluchtsoord voor deze ballingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Steden als Algiers, Tunis en Tripoli vingen golven vluchtelingen uit Spanje op.",
+      "text_markdown": "Steden als Algiers, Tunis en Tripoli vingen golven vluchtelingen uit Spanje op.",
+      "tts": {
+        "text": "Steden als Algiers, Tunis en Tripoli vingen golven vluchtelingen uit Spanje op.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deze ontheemde gemeenschappen droegen een diepe wrok tegen de Spaanse Kroon met zich mee.",
+      "text_markdown": "Deze ontheemde gemeenschappen droegen een diepe wrok tegen de Spaanse Kroon met zich mee.",
+      "tts": {
+        "text": "Deze ontheemde gemeenschappen droegen een diepe wrok tegen de Spaanse Kroon met zich mee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Velen wendden zich tot het kapersbedrijf, zowel als levensonderhoud als uit wraak.",
+      "text_markdown": "Velen wendden zich tot het kapersbedrijf, zowel als levensonderhoud als uit wraak.",
+      "tts": {
+        "text": "Velen wendden zich tot het kapersbedrijf, zowel als levensonderhoud als uit wraak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een kaper was iets anders dan een gewone piraat.",
+      "text_markdown": "Een kaper was iets anders dan een gewone piraat.",
+      "tts": {
+        "text": "Een kaper was iets anders dan een gewone piraat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapers opereerden met de toestemming van een regering of vorst.",
+      "text_markdown": "Kapers opereerden met de toestemming van een regering of vorst.",
+      "tts": {
+        "text": "Kapers opereerden met de toestemming van een regering of vorst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zij vielen vijandelijke scheepvaart aan en deelden de buit met hun beschermheer.",
+      "text_markdown": "Zij vielen vijandelijke scheepvaart aan en deelden de buit met hun beschermheer.",
+      "tts": {
+        "text": "Zij vielen vijandelijke scheepvaart aan en deelden de buit met hun beschermheer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Op die manier was het kapersbedrijf een vorm van zeeoorlog gevoerd door particulieren.",
+      "text_markdown": "Op die manier was het kapersbedrijf een vorm van zeeoorlog gevoerd door particulieren.",
+      "tts": {
+        "text": "Op die manier was het kapersbedrijf een vorm van zeeoorlog gevoerd door particulieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zowel christelijke als islamitische mogendheden maakten op grote schaal gebruik van kapers.",
+      "text_markdown": "Zowel christelijke als islamitische mogendheden maakten op grote schaal gebruik van kapers.",
+      "tts": {
+        "text": "Zowel christelijke als islamitische mogendheden maakten op grote schaal gebruik van kapers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Ridders van Sint-Jan, gevestigd op de eilanden Rhodos en later Malta, waren christelijke kapers die islamitische scheepvaart aanvielen.",
+      "text_markdown": "De Ridders van Sint-Jan, gevestigd op de eilanden Rhodos en later Malta, waren christelijke kapers die islamitische scheepvaart aanvielen.",
+      "tts": {
+        "text": "De Ridders van Sint Jan, gevestigd op de eilanden Rhodos en later Malta, waren christelijke kapers die islamitische scheepvaart aanvielen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Islamitische kapers met basis in Noord-Afrika vielen op hun beurt christelijke scheepvaart aan.",
+      "text_markdown": "Islamitische kapers met basis in Noord-Afrika vielen op hun beurt christelijke scheepvaart aan.",
+      "tts": {
+        "text": "Islamitische kapers met basis in Noord Afrika vielen op hun beurt christelijke scheepvaart aan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De Middellandse Zee was een zee van voortdurende, laaggradige oorlog.",
+      "text_markdown": "De Middellandse Zee was een zee van voortdurende, laaggradige oorlog.",
+      "tts": {
+        "text": "De Middellandse Zee was een zee van voortdurende, laaggradige oorlog.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Handel was de prijs die dit conflict aandreef.",
+      "text_markdown": "Handel was de prijs die dit conflict aandreef.",
+      "tts": {
+        "text": "Handel was de prijs die dit conflict aandreef.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Over de Middellandse Zee werd zijde uit China, specerijen uit India, graan uit Egypte en wol uit Europa vervoerd.",
+      "text_markdown": "Over de Middellandse Zee werd zijde uit China, specerijen uit India, graan uit Egypte en wol uit Europa vervoerd.",
+      "tts": {
+        "text": "Over de Middellandse Zee werd zijde uit China, specerijen uit India, graan uit Egypte en wol uit Europa vervoerd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De controle over deze handelsroutes betekende enorme rijkdom.",
+      "text_markdown": "De controle over deze handelsroutes betekende enorme rijkdom.",
+      "tts": {
+        "text": "De controle over deze handelsroutes betekende enorme rijkdom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elke havenstad was voor haar voortbestaan afhankelijk van de zee.",
+      "text_markdown": "Elke havenstad was voor haar voortbestaan afhankelijk van de zee.",
+      "tts": {
+        "text": "Elke havenstad was voor haar voortbestaan afhankelijk van de zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eilanden van de Middellandse Zee waren strategische prijzen.",
+      "text_markdown": "De eilanden van de Middellandse Zee waren strategische prijzen.",
+      "tts": {
+        "text": "De eilanden van de Middellandse Zee waren strategische prijzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wie de eilanden beheerste, beheerste de scheepvaartroutes ertussen.",
+      "text_markdown": "Wie de eilanden beheerste, beheerste de scheepvaartroutes ertussen.",
+      "tts": {
+        "text": "Wie de eilanden beheerste, beheerste de scheepvaartroutes ertussen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rhodos, Cyprus, Kreta, Sicilië en Malta wisselden door de eeuwen heen herhaaldelijk van eigenaar.",
+      "text_markdown": "Rhodos, Cyprus, Kreta, Sicilië en Malta wisselden door de eeuwen heen herhaaldelijk van eigenaar.",
+      "tts": {
+        "text": "Rhodos, Cyprus, Kreta, Sicilië en Malta wisselden door de eeuwen heen herhaaldelijk van eigenaar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zeemacht bepaalde welk rijk ze in handen hield.",
+      "text_markdown": "Zeemacht bepaalde welk rijk ze in handen hield.",
+      "tts": {
+        "text": "Zeemacht bepaalde welk rijk ze in handen hield.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Galeien waren in dit tijdperk de oorlogsschepen van de Middellandse Zee.",
+      "text_markdown": "Galeien waren in dit tijdperk de oorlogsschepen van de Middellandse Zee.",
+      "tts": {
+        "text": "Galeien waren in dit tijdperk de oorlogsschepen van de Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een galei was een lang, smal vaartuig aangedreven door riemen en zeilen.",
+      "text_markdown": "Een galei was een lang, smal vaartuig aangedreven door riemen en zeilen.",
+      "tts": {
+        "text": "Een galei was een lang, smal vaartuig aangedreven door riemen en zeilen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elke galei vervoerde honderden roeiers, van wie velen slaven of krijgsgevangenen waren.",
+      "text_markdown": "Elke galei vervoerde honderden roeiers, van wie velen slaven of krijgsgevangenen waren.",
+      "tts": {
+        "text": "Elke galei vervoerde honderden roeiers, van wie velen slaven of krijgsgevangenen waren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In de strijd ramden galeien vijandelijke schepen en stuurden vervolgens gewapende soldaten aan boord om man tegen man te vechten.",
+      "text_markdown": "In de strijd ramden galeien vijandelijke schepen en stuurden vervolgens gewapende soldaten aan boord om man tegen man te vechten.",
+      "tts": {
+        "text": "In de strijd ramden galeien vijandelijke schepen en stuurden vervolgens gewapende soldaten aan boord om man tegen man te vechten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het systeem van galeislaven was wreed zonder weerga.",
+      "text_markdown": "Het systeem van galeislaven was wreed zonder weerga.",
+      "tts": {
+        "text": "Het systeem van galeislaven was wreed zonder weerga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gevangenen uit oorlogen en rooftochten werden aan de riemen geketend en gedwongen te roeien tot zij stierven.",
+      "text_markdown": "Gevangenen uit oorlogen en rooftochten werden aan de riemen geketend en gedwongen te roeien tot zij stierven.",
+      "tts": {
+        "text": "Gevangenen uit oorlogen en rooftochten werden aan de riemen geketend en gedwongen te roeien tot zij stierven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Christenen maakten moslims tot slaaf, en moslims maakten christenen tot slaaf.",
+      "text_markdown": "Christenen maakten moslims tot slaaf, en moslims maakten christenen tot slaaf.",
+      "tts": {
+        "text": "Christenen maakten moslims tot slaaf, en moslims maakten christenen tot slaaf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deze wreedheid was zo gewoon dat beide partijen haar als normaal aanvaardden.",
+      "text_markdown": "Deze wreedheid was zo gewoon dat beide partijen haar als normaal aanvaardden.",
+      "tts": {
+        "text": "Deze wreedheid was zo gewoon dat beide partijen haar als normaal aanvaardden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De paus in Rome probeerde herhaaldelijk de christelijke koninkrijken te verenigen tegen de Ottomaanse dreiging.",
+      "text_markdown": "De paus in Rome probeerde herhaaldelijk de christelijke koninkrijken te verenigen tegen de Ottomaanse dreiging.",
+      "tts": {
+        "text": "De paus in Rome probeerde herhaaldelijk de christelijke koninkrijken te verenigen tegen de Ottomaanse dreiging.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Deze verbonden, Heilige Liga's genoemd, brachten schepen samen uit Spanje, Venetië, Genua en de Pauselijke Staten.",
+      "text_markdown": "Deze verbonden, Heilige Liga's genoemd, brachten schepen samen uit Spanje, Venetië, Genua en de Pauselijke Staten.",
+      "tts": {
+        "text": "Deze verbonden, Heilige Liga's genoemd, brachten schepen samen uit Spanje, Venetië, Genua en de Pauselijke Staten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maar de christelijke koninkrijken wantrouwden elkaar bijna evenzeer als zij de Ottomanen vreesden.",
+      "text_markdown": "Maar de christelijke koninkrijken wantrouwden elkaar bijna evenzeer als zij de Ottomanen vreesden.",
+      "tts": {
+        "text": "Maar de christelijke koninkrijken wantrouwden elkaar bijna evenzeer als zij de Ottomanen vreesden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deze verbonden waren broos en stortten vaak in voordat ze blijvende resultaten konden boeken.",
+      "text_markdown": "Deze verbonden waren broos en stortten vaak in voordat ze blijvende resultaten konden boeken.",
+      "tts": {
+        "text": "Deze verbonden waren broos en stortten vaak in voordat ze blijvende resultaten konden boeken.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In deze gewelddadige en betwiste wereld werden twee broers geboren op een Grieks eiland onder Ottomaans bestuur.",
+      "text_markdown": "In deze gewelddadige en betwiste wereld werden twee broers geboren op een Grieks eiland onder Ottomaans bestuur.",
+      "tts": {
+        "text": "In deze gewelddadige en betwiste wereld werden twee broers geboren op een Grieks eiland onder Ottomaans bestuur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hun namen waren Aruj en Hizir.",
+      "text_markdown": "Hun namen waren Aruj en Hizir.",
+      "tts": {
+        "text": "Hun namen waren Aruj en Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir zou later bij de wereld bekend worden als Hayreddin Barbarossa.",
+      "text_markdown": "Hizir zou later bij de wereld bekend worden als Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir zou later bij de wereld bekend worden als Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "De wereld van de Middellandse Zee",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samen zouden zij het machtsevenwicht van het hele Middellandse Zeegebied opnieuw vormgeven.",
+      "text_markdown": "Samen zouden zij het machtsevenwicht van het hele Middellandse Zeegebied opnieuw vormgeven.",
+      "tts": {
+        "text": "Samen zouden zij het machtsevenwicht van het hele Middellandse Zeegebied opnieuw vormgeven.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Oorsprong",
+      "text_markdown": "Oorsprong"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa werd rond 1478 geboren op het eiland Lesbos.",
+      "text_markdown": "Hayreddin Barbarossa werd rond 1478 geboren op het eiland Lesbos.",
+      "tts": {
+        "text": "Hayreddin Barbarossa werd rond veertienhonderd achtenzeventig geboren op het eiland Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos is een groot Grieks eiland in de noordoostelijke Egeïsche Zee, dicht bij de kust van het huidige Turkije.",
+      "text_markdown": "Lesbos is een groot Grieks eiland in de noordoostelijke Egeïsche Zee, dicht bij de kust van het huidige Turkije.",
+      "tts": {
+        "text": "Lesbos is een groot Grieks eiland in de noordoostelijke Egeïsche Zee, dicht bij de kust van het huidige Turkije.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Op het moment van zijn geboorte was het eiland kort daarvoor onder Ottomaans bestuur gekomen.",
+      "text_markdown": "Op het moment van zijn geboorte was het eiland kort daarvoor onder Ottomaans bestuur gekomen.",
+      "tts": {
+        "text": "Op het moment van zijn geboorte was het eiland kort daarvoor onder Ottomaans bestuur gekomen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn vader was Yakup, een voormalig Ottomaans soldaat die zich na zijn militaire dienst op Lesbos had gevestigd.",
+      "text_markdown": "Zijn vader was Yakup, een voormalig Ottomaans soldaat die zich na zijn militaire dienst op Lesbos had gevestigd.",
+      "tts": {
+        "text": "Zijn vader was Yakup, een voormalig Ottomaans soldaat die zich na zijn militaire dienst op Lesbos had gevestigd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup werkte als pottenbakker en was, volgens de meeste bronnen, een bescheiden ambachtsman.",
+      "text_markdown": "Yakup werkte als pottenbakker en was, volgens de meeste bronnen, een bescheiden ambachtsman.",
+      "tts": {
+        "text": "Yakup werkte als pottenbakker en was, volgens de meeste bronnen, een bescheiden ambachtsman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn moeder was een Griekse vrouw van het eiland, waarschijnlijk van christelijke afkomst, wier naam is overgeleverd als Katerina.",
+      "text_markdown": "Zijn moeder was een Griekse vrouw van het eiland, waarschijnlijk van christelijke afkomst, wier naam is overgeleverd als Katerina.",
+      "tts": {
+        "text": "Zijn moeder was een Griekse vrouw van het eiland, waarschijnlijk van christelijke afkomst, wier naam is overgeleverd als Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het gezin was niet welgesteld, maar evenmin arm.",
+      "text_markdown": "Het gezin was niet welgesteld, maar evenmin arm.",
+      "tts": {
+        "text": "Het gezin was niet welgesteld, maar evenmin arm.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakup en Katerina hadden vier zonen.",
+      "text_markdown": "Yakup en Katerina hadden vier zonen.",
+      "tts": {
+        "text": "Yakup en Katerina hadden vier zonen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De oudste was Ishak, daarna Aruj, dan Hizir en ten slotte Ilyas.",
+      "text_markdown": "De oudste was Ishak, daarna Aruj, dan Hizir en ten slotte Ilyas.",
+      "tts": {
+        "text": "De oudste was Ishak, daarna Aruj, dan Hizir en ten slotte Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De jongen die Hayreddin Barbarossa zou worden, was Hizir.",
+      "text_markdown": "De jongen die Hayreddin Barbarossa zou worden, was Hizir.",
+      "tts": {
+        "text": "De jongen die Hayreddin Barbarossa zou worden, was Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uiteindelijk zouden alle vier de broers de zee opgaan.",
+      "text_markdown": "Uiteindelijk zouden alle vier de broers de zee opgaan.",
+      "tts": {
+        "text": "Uiteindelijk zouden alle vier de broers de zee opgaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De broers groeiden op in een wereld die door de zee was gevormd.",
+      "text_markdown": "De broers groeiden op in een wereld die door de zee was gevormd.",
+      "tts": {
+        "text": "De broers groeiden op in een wereld die door de zee was gevormd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos was voor zijn economie afhankelijk van visserij en zeehandel.",
+      "text_markdown": "Lesbos was voor zijn economie afhankelijk van visserij en zeehandel.",
+      "tts": {
+        "text": "Lesbos was voor zijn economie afhankelijk van visserij en zeehandel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elke jongen op het eiland leerde een boot te besturen voordat hij kon lezen.",
+      "text_markdown": "Elke jongen op het eiland leerde een boot te besturen voordat hij kon lezen.",
+      "tts": {
+        "text": "Elke jongen op het eiland leerde een boot te besturen voordat hij kon lezen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De zee was voor hen geen abstractie; zij was hun dagelijkse werkelijkheid.",
+      "text_markdown": "De zee was voor hen geen abstractie; zij was hun dagelijkse werkelijkheid.",
+      "tts": {
+        "text": "De zee was voor hen geen abstractie; zij was hun dagelijkse werkelijkheid.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als jonge mannen begonnen de broers te werken als zeelieden en handelaren.",
+      "text_markdown": "Als jonge mannen begonnen de broers te werken als zeelieden en handelaren.",
+      "tts": {
+        "text": "Als jonge mannen begonnen de broers te werken als zeelieden en handelaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij vervoerden goederen tussen de Egeïsche eilanden en het Ottomaanse vasteland.",
+      "text_markdown": "Zij vervoerden goederen tussen de Egeïsche eilanden en het Ottomaanse vasteland.",
+      "tts": {
+        "text": "Zij vervoerden goederen tussen de Egeïsche eilanden en het Ottomaanse vasteland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maar handel drijven was een riskante bezigheid in een zee vol kapers.",
+      "text_markdown": "Maar handel drijven was een riskante bezigheid in een zee vol kapers.",
+      "tts": {
+        "text": "Maar handel drijven was een riskante bezigheid in een zee vol kapers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Op een van hun eerste reizen werden de broers aangevallen door de Ridders van Sint-Jan.",
+      "text_markdown": "Op een van hun eerste reizen werden de broers aangevallen door de Ridders van Sint-Jan.",
+      "tts": {
+        "text": "Op een van hun eerste reizen werden de broers aangevallen door de Ridders van Sint Jan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Ridders van Sint-Jan waren een christelijke militaire orde gevestigd op het eiland Rhodos.",
+      "text_markdown": "De Ridders van Sint-Jan waren een christelijke militaire orde gevestigd op het eiland Rhodos.",
+      "tts": {
+        "text": "De Ridders van Sint Jan waren een christelijke militaire orde gevestigd op het eiland Rhodos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij behoorden tot de meest gevreesde kapers van de Middellandse Zee.",
+      "text_markdown": "Zij behoorden tot de meest gevreesde kapers van de Middellandse Zee.",
+      "tts": {
+        "text": "Zij behoorden tot de meest gevreesde kapers van de Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zij vielen onophoudelijk islamitische scheepvaart aan, namen goederen buit en maakten bemanningen tot slaaf.",
+      "text_markdown": "Zij vielen onophoudelijk islamitische scheepvaart aan, namen goederen buit en maakten bemanningen tot slaaf.",
+      "tts": {
+        "text": "Zij vielen onophoudelijk islamitische scheepvaart aan, namen goederen buit en maakten bemanningen tot slaaf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tijdens de aanval op het vaartuig van de broers werd Ilyas, de jongste broer, gedood.",
+      "text_markdown": "Tijdens de aanval op het vaartuig van de broers werd Ilyas, de jongste broer, gedood.",
+      "tts": {
+        "text": "Tijdens de aanval op het vaartuig van de broers werd Ilyas, de jongste broer, gedood.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj, de meest strijdlustige van de broers, werd gevangengenomen en tot slaaf gemaakt.",
+      "text_markdown": "Aruj, de meest strijdlustige van de broers, werd gevangengenomen en tot slaaf gemaakt.",
+      "tts": {
+        "text": "Aruj, de meest strijdlustige van de broers, werd gevangengenomen en tot slaaf gemaakt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij bracht enkele jaren door als galeislaaf, geketend aan de riemen van een christelijk oorlogsschip.",
+      "text_markdown": "Hij bracht enkele jaren door als galeislaaf, geketend aan de riemen van een christelijk oorlogsschip.",
+      "tts": {
+        "text": "Hij bracht enkele jaren door als galeislaaf, geketend aan de riemen van een christelijk oorlogsschip.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De ervaring verhardde hem op manieren die de rest van zijn leven zouden bepalen.",
+      "text_markdown": "De ervaring verhardde hem op manieren die de rest van zijn leven zouden bepalen.",
+      "tts": {
+        "text": "De ervaring verhardde hem op manieren die de rest van zijn leven zouden bepalen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toen hij uiteindelijk werd vrijgekocht of ontsnapte, was hij een door en door veranderd man.",
+      "text_markdown": "Toen hij uiteindelijk werd vrijgekocht of ontsnapte, was hij een door en door veranderd man.",
+      "tts": {
+        "text": "Toen hij uiteindelijk werd vrijgekocht of ontsnapte, was hij een door en door veranderd man.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj besloot zelf kaper te worden.",
+      "text_markdown": "Aruj besloot zelf kaper te worden.",
+      "tts": {
+        "text": "Aruj besloot zelf kaper te worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij verwierf een schip en een bemanning en begon christelijke scheepvaart in de oostelijke Middellandse Zee aan te vallen.",
+      "text_markdown": "Hij verwierf een schip en een bemanning en begon christelijke scheepvaart in de oostelijke Middellandse Zee aan te vallen.",
+      "tts": {
+        "text": "Hij verwierf een schip en een bemanning en begon christelijke scheepvaart in de oostelijke Middellandse Zee aan te vallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn jongere broer Hizir voegde zich bij hem als zijn tweede in bevel.",
+      "text_markdown": "Zijn jongere broer Hizir voegde zich bij hem als zijn tweede in bevel.",
+      "tts": {
+        "text": "Zijn jongere broer Hizir voegde zich bij hem als zijn tweede in bevel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samen bleken zij uitzonderlijk bekwame zeerovers.",
+      "text_markdown": "Samen bleken zij uitzonderlijk bekwame zeerovers.",
+      "tts": {
+        "text": "Samen bleken zij uitzonderlijk bekwame zeerovers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De broers verplaatsten hun operatiebasis naar de westelijke Middellandse Zee.",
+      "text_markdown": "De broers verplaatsten hun operatiebasis naar de westelijke Middellandse Zee.",
+      "tts": {
+        "text": "De broers verplaatsten hun operatiebasis naar de westelijke Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij vestigden zich op het eiland Djerba, voor de kust van het huidige Tunesië.",
+      "text_markdown": "Zij vestigden zich op het eiland Djerba, voor de kust van het huidige Tunesië.",
+      "tts": {
+        "text": "Zij vestigden zich op het eiland Djerba, voor de kust van het huidige Tunesië.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vanaf Djerba konden zij de Spaanse en Italiaanse scheepvaart langs de drukke handelsroutes overvallen.",
+      "text_markdown": "Vanaf Djerba konden zij de Spaanse en Italiaanse scheepvaart langs de drukke handelsroutes overvallen.",
+      "tts": {
+        "text": "Vanaf Djerba konden zij de Spaanse en Italiaanse scheepvaart langs de drukke handelsroutes overvallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hun reputatie groeide snel onder zowel bondgenoten als vijanden.",
+      "text_markdown": "Hun reputatie groeide snel onder zowel bondgenoten als vijanden.",
+      "tts": {
+        "text": "Hun reputatie groeide snel onder zowel bondgenoten als vijanden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj was het publieke gezicht van hun partnerschap.",
+      "text_markdown": "Aruj was het publieke gezicht van hun partnerschap.",
+      "tts": {
+        "text": "Aruj was het publieke gezicht van hun partnerschap.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij was stoutmoedig, charismatisch en lichamelijk imposant.",
+      "text_markdown": "Hij was stoutmoedig, charismatisch en lichamelijk imposant.",
+      "tts": {
+        "text": "Hij was stoutmoedig, charismatisch en lichamelijk imposant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Europese bronnen beschrijven hem met een rode baard, waaraan de broers hun beroemde bijnaam te danken hebben.",
+      "text_markdown": "Europese bronnen beschrijven hem met een rode baard, waaraan de broers hun beroemde bijnaam te danken hebben.",
+      "tts": {
+        "text": "Europese bronnen beschrijven hem met een rode baard, waaraan de broers hun beroemde bijnaam te danken hebben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De naam Barbarossa, wat roodbaard betekent, werd oorspronkelijk aan Aruj gegeven en later op Hayreddin overgedragen.",
+      "text_markdown": "De naam Barbarossa, wat roodbaard betekent, werd oorspronkelijk aan Aruj gegeven en later op Hayreddin overgedragen.",
+      "tts": {
+        "text": "De naam Barbarossa, wat roodbaard betekent, werd oorspronkelijk aan Aruj gegeven en later op Hayreddin overgedragen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir was de strateeg en organisator achter de schermen.",
+      "text_markdown": "Hizir was de strateeg en organisator achter de schermen.",
+      "tts": {
+        "text": "Hizir was de strateeg en organisator achter de schermen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij beheerde de logistiek van hun groeiende vloot en onderhield de bondgenootschappen met lokale heersers.",
+      "text_markdown": "Hij beheerde de logistiek van hun groeiende vloot en onderhield de bondgenootschappen met lokale heersers.",
+      "tts": {
+        "text": "Hij beheerde de logistiek van hun groeiende vloot en onderhield de bondgenootschappen met lokale heersers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Terwijl Aruj persoonlijk de overvallen aanvoerde, zorgde Hizir ervoor dat de onderneming soepel verliep.",
+      "text_markdown": "Terwijl Aruj persoonlijk de overvallen aanvoerde, zorgde Hizir ervoor dat de onderneming soepel verliep.",
+      "tts": {
+        "text": "Terwijl Aruj persoonlijk de overvallen aanvoerde, zorgde Hizir ervoor dat de onderneming soepel verliep.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hun complementaire vaardigheden maakten hen tot een geducht duo.",
+      "text_markdown": "Hun complementaire vaardigheden maakten hen tot een geducht duo.",
+      "tts": {
+        "text": "Hun complementaire vaardigheden maakten hen tot een geducht duo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De overvallen van de broers dienden een doel dat verder ging dan persoonlijk gewin.",
+      "text_markdown": "De overvallen van de broers dienden een doel dat verder ging dan persoonlijk gewin.",
+      "tts": {
+        "text": "De overvallen van de broers dienden een doel dat verder ging dan persoonlijk gewin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij redden islamitische vluchtelingen die de Spaanse Inquisitie ontvluchtten.",
+      "text_markdown": "Zij redden islamitische vluchtelingen die de Spaanse Inquisitie ontvluchtten.",
+      "tts": {
+        "text": "Zij redden islamitische vluchtelingen die de Spaanse Inquisitie ontvluchtten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tussen 1504 en 1510 brachten zij duizenden moslims vanuit Spanje naar Noord-Afrika.",
+      "text_markdown": "Tussen 1504 en 1510 brachten zij duizenden moslims vanuit Spanje naar Noord-Afrika.",
+      "tts": {
+        "text": "Tussen vijftienhonderd vier en vijftienhonderd tien brachten zij duizenden moslims vanuit Spanje naar Noord Afrika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dit bezorgde hun enorm aanzien onder de islamitische gemeenschappen van de Barbarijse Kust.",
+      "text_markdown": "Dit bezorgde hun enorm aanzien onder de islamitische gemeenschappen van de Barbarijse Kust.",
+      "tts": {
+        "text": "Dit bezorgde hun enorm aanzien onder de islamitische gemeenschappen van de Barbarijse Kust.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj richtte zijn blik op een grotere prijs dan plundering.",
+      "text_markdown": "Aruj richtte zijn blik op een grotere prijs dan plundering.",
+      "tts": {
+        "text": "Aruj richtte zijn blik op een grotere prijs dan plundering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij wilde een stad veroveren en een basis vestigen die de Spaanse macht kon weerstaan.",
+      "text_markdown": "Hij wilde een stad veroveren en een basis vestigen die de Spaanse macht kon weerstaan.",
+      "tts": {
+        "text": "Hij wilde een stad veroveren en een basis vestigen die de Spaanse macht kon weerstaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn doelwit was Algiers, een havenstad aan de Noord-Afrikaanse kust met een prachtige natuurlijke haven.",
+      "text_markdown": "Zijn doelwit was Algiers, een havenstad aan de Noord-Afrikaanse kust met een prachtige natuurlijke haven.",
+      "tts": {
+        "text": "Zijn doelwit was Algiers, een havenstad aan de Noord Afrikaanse kust met een prachtige natuurlijke haven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Oorsprong",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het innemen van Algiers zou de broers van kapers in heersers veranderen.",
+      "text_markdown": "Het innemen van Algiers zou de broers van kapers in heersers veranderen.",
+      "tts": {
+        "text": "Het innemen van Algiers zou de broers van kapers in heersers veranderen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Opkomst naar de macht",
+      "text_markdown": "Opkomst naar de macht"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1516 veroverde Aruj de stad Algiers.",
+      "text_markdown": "In 1516 veroverde Aruj de stad Algiers.",
+      "tts": {
+        "text": "In vijftienhonderd zestien veroverde Aruj de stad Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij verdreef de lokale heerser en riep zichzelf uit tot Sultan van Algiers.",
+      "text_markdown": "Hij verdreef de lokale heerser en riep zichzelf uit tot Sultan van Algiers.",
+      "tts": {
+        "text": "Hij verdreef de lokale heerser en riep zichzelf uit tot Sultan van Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het was een gedurfde en brutale zet die het Spaanse Rijk verontrustte.",
+      "text_markdown": "Het was een gedurfde en brutale zet die het Spaanse Rijk verontrustte.",
+      "tts": {
+        "text": "Het was een gedurfde en brutale zet die het Spaanse Rijk verontrustte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algiers was nu in handen van een kaperskrijgsheer.",
+      "text_markdown": "Algiers was nu in handen van een kaperskrijgsheer.",
+      "tts": {
+        "text": "Algiers was nu in handen van een kaperskrijgsheer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj bleek een bekwaam maar meedogenloos heerser.",
+      "text_markdown": "Aruj bleek een bekwaam maar meedogenloos heerser.",
+      "tts": {
+        "text": "Aruj bleek een bekwaam maar meedogenloos heerser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij breidde zijn grondgebied langs de Noord-Afrikaanse kust uit.",
+      "text_markdown": "Hij breidde zijn grondgebied langs de Noord-Afrikaanse kust uit.",
+      "tts": {
+        "text": "Hij breidde zijn grondgebied langs de Noord Afrikaanse kust uit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij smeedde bondgenootschappen met lokale Berberstammen en gemeenschappen van islamitische vluchtelingen.",
+      "text_markdown": "Hij smeedde bondgenootschappen met lokale Berberstammen en gemeenschappen van islamitische vluchtelingen.",
+      "tts": {
+        "text": "Hij smeedde bondgenootschappen met lokale Berberstammen en gemeenschappen van islamitische vluchtelingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maar zijn agressieve expansie bracht hem in een rechtstreeks conflict met Spanje.",
+      "text_markdown": "Maar zijn agressieve expansie bracht hem in een rechtstreeks conflict met Spanje.",
+      "tts": {
+        "text": "Maar zijn agressieve expansie bracht hem in een rechtstreeks conflict met Spanje.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1518 belegerde een groot Spaans leger de stad Tlemcen, waar Aruj zijn basis had.",
+      "text_markdown": "In 1518 belegerde een groot Spaans leger de stad Tlemcen, waar Aruj zijn basis had.",
+      "tts": {
+        "text": "In vijftienhonderd achttien belegerde een groot Spaans leger de stad Tlemcen, waar Aruj zijn basis had.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aruj probeerde met een kleine troepenmacht te ontsnappen.",
+      "text_markdown": "Aruj probeerde met een kleine troepenmacht te ontsnappen.",
+      "tts": {
+        "text": "Aruj probeerde met een kleine troepenmacht te ontsnappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tijdens de terugtocht werd hij door Spaanse soldaten ingehaald en gedood.",
+      "text_markdown": "Tijdens de terugtocht werd hij door Spaanse soldaten ingehaald en gedood.",
+      "tts": {
+        "text": "Tijdens de terugtocht werd hij door Spaanse soldaten ingehaald en gedood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Door zijn dood bleef Hizir als enige overlevende broer achter en als leider van alles wat Aruj had opgebouwd.",
+      "text_markdown": "Door zijn dood bleef Hizir als enige overlevende broer achter en als leider van alles wat Aruj had opgebouwd.",
+      "tts": {
+        "text": "Door zijn dood bleef Hizir als enige overlevende broer achter en als leider van alles wat Aruj had opgebouwd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir, nu begin veertig, bevond zich in een onmogelijke situatie.",
+      "text_markdown": "Hizir, nu begin veertig, bevond zich in een onmogelijke situatie.",
+      "tts": {
+        "text": "Hizir, nu begin veertig, bevond zich in een onmogelijke situatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het Spaanse leger rukte op, zijn broer was dood en zijn troepen waren in de minderheid.",
+      "text_markdown": "Het Spaanse leger rukte op, zijn broer was dood en zijn troepen waren in de minderheid.",
+      "tts": {
+        "text": "Het Spaanse leger rukte op, zijn broer was dood en zijn troepen waren in de minderheid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij had een machtige bondgenoot nodig of hij zou alles verliezen.",
+      "text_markdown": "Hij had een machtige bondgenoot nodig of hij zou alles verliezen.",
+      "tts": {
+        "text": "Hij had een machtige bondgenoot nodig of hij zou alles verliezen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij wendde zich tot de grootste macht in de islamitische wereld: het Ottomaanse Rijk.",
+      "text_markdown": "Hij wendde zich tot de grootste macht in de islamitische wereld: het Ottomaanse Rijk.",
+      "tts": {
+        "text": "Hij wendde zich tot de grootste macht in de islamitische wereld: het Ottomaanse Rijk.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir stuurde gezanten naar Sultan Selim de Eerste in Istanbul.",
+      "text_markdown": "Hizir stuurde gezanten naar Sultan Selim de Eerste in Istanbul.",
+      "tts": {
+        "text": "Hizir stuurde gezanten naar Sultan Selim de Eerste in Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij bood aan Algiers onder Ottomaanse soevereiniteit te plaatsen in ruil voor militaire steun.",
+      "text_markdown": "Hij bood aan Algiers onder Ottomaanse soevereiniteit te plaatsen in ruil voor militaire steun.",
+      "tts": {
+        "text": "Hij bood aan Algiers onder Ottomaanse soevereiniteit te plaatsen in ruil voor militaire steun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Sultan zag in dat een trouwe basis in de westelijke Middellandse Zee van strategisch belang was.",
+      "text_markdown": "De Sultan zag in dat een trouwe basis in de westelijke Middellandse Zee van strategisch belang was.",
+      "tts": {
+        "text": "De Sultan zag in dat een trouwe basis in de westelijke Middellandse Zee van strategisch belang was.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij aanvaardde het aanbod en stuurde soldaten, kanonnen en een vloot galeien om Hizir te ondersteunen.",
+      "text_markdown": "Hij aanvaardde het aanbod en stuurde soldaten, kanonnen en een vloot galeien om Hizir te ondersteunen.",
+      "tts": {
+        "text": "Hij aanvaardde het aanbod en stuurde soldaten, kanonnen en een vloot galeien om Hizir te ondersteunen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vanaf dat moment was Hizir niet langer slechts een kaper.",
+      "text_markdown": "Vanaf dat moment was Hizir niet langer slechts een kaper.",
+      "tts": {
+        "text": "Vanaf dat moment was Hizir niet langer slechts een kaper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij was een Ottomaans gouverneur, die Algiers in naam van de Sultan bestuurde.",
+      "text_markdown": "Hij was een Ottomaans gouverneur, die Algiers in naam van de Sultan bestuurde.",
+      "tts": {
+        "text": "Hij was een Ottomaans gouverneur, die Algiers in naam van de Sultan bestuurde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij nam de eretitel Hayreddin aan, wat goedheid van het geloof betekent.",
+      "text_markdown": "Hij nam de eretitel Hayreddin aan, wat goedheid van het geloof betekent.",
+      "tts": {
+        "text": "Hij nam de eretitel Hayreddin aan, wat goedheid van het geloof betekent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De combinatie van Ottomaanse middelen en zijn eigen maritieme genie maakte hem onstuitbaar.",
+      "text_markdown": "De combinatie van Ottomaanse middelen en zijn eigen maritieme genie maakte hem onstuitbaar.",
+      "tts": {
+        "text": "De combinatie van Ottomaanse middelen en zijn eigen maritieme genie maakte hem onstuitbaar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin bracht het volgende decennium door met het consolideren van de Ottomaanse macht langs de Noord-Afrikaanse kust.",
+      "text_markdown": "Hayreddin bracht het volgende decennium door met het consolideren van de Ottomaanse macht langs de Noord-Afrikaanse kust.",
+      "tts": {
+        "text": "Hayreddin bracht het volgende decennium door met het consolideren van de Ottomaanse macht langs de Noord Afrikaanse kust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij veroverde Tunis, verdreef Spaanse garnizoenen uit belangrijke vestingen en breidde de kapersvloot uit.",
+      "text_markdown": "Hij veroverde Tunis, verdreef Spaanse garnizoenen uit belangrijke vestingen en breidde de kapersvloot uit.",
+      "tts": {
+        "text": "Hij veroverde Tunis, verdreef Spaanse garnizoenen uit belangrijke vestingen en breidde de kapersvloot uit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij leidde een nieuwe generatie vlootcommandanten op die het Ottomaanse Rijk decennialang zou dienen.",
+      "text_markdown": "Hij leidde een nieuwe generatie vlootcommandanten op die het Ottomaanse Rijk decennialang zou dienen.",
+      "tts": {
+        "text": "Hij leidde een nieuwe generatie vlootcommandanten op die het Ottomaanse Rijk decennialang zou dienen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zijn vloot werd de dominante macht in de westelijke Middellandse Zee.",
+      "text_markdown": "Zijn vloot werd de dominante macht in de westelijke Middellandse Zee.",
+      "tts": {
+        "text": "Zijn vloot werd de dominante macht in de westelijke Middellandse Zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1533 ontbood Sultan Süleiman de Prachtlievende Hayreddin naar Istanbul.",
+      "text_markdown": "In 1533 ontbood Sultan Süleiman de Prachtlievende Hayreddin naar Istanbul.",
+      "tts": {
+        "text": "In vijftienhonderd drieëndertig ontbood Sultan Süleiman de Prachtlievende Hayreddin naar Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Süleiman was destijds de machtigste heerser ter wereld.",
+      "text_markdown": "Süleiman was destijds de machtigste heerser ter wereld.",
+      "tts": {
+        "text": "Süleiman was destijds de machtigste heerser ter wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij erkende dat het Ottomaanse Rijk een professionele marine nodig had om zijn legendarische leger te evenaren.",
+      "text_markdown": "Hij erkende dat het Ottomaanse Rijk een professionele marine nodig had om zijn legendarische leger te evenaren.",
+      "tts": {
+        "text": "Hij erkende dat het Ottomaanse Rijk een professionele marine nodig had om zijn legendarische leger te evenaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij benoemde Hayreddin tot Kapudan Pasha, de grootadmiraal van de hele Ottomaanse vloot.",
+      "text_markdown": "Hij benoemde Hayreddin tot Kapudan Pasha, de grootadmiraal van de hele Ottomaanse vloot.",
+      "tts": {
+        "text": "Hij benoemde Hayreddin tot Kapudan Pasha, de grootadmiraal van de hele Ottomaanse vloot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze benoeming was een keerpunt in de geschiedenis van de Middellandse Zee.",
+      "text_markdown": "Deze benoeming was een keerpunt in de geschiedenis van de Middellandse Zee.",
+      "tts": {
+        "text": "Deze benoeming was een keerpunt in de geschiedenis van de Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Ottomaanse marine was bekwaam geweest, maar niet overheersend.",
+      "text_markdown": "De Ottomaanse marine was bekwaam geweest, maar niet overheersend.",
+      "tts": {
+        "text": "De Ottomaanse marine was bekwaam geweest, maar niet overheersend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onder Hayreddins bevel zou zij de meest gevreesde zeemacht ter wereld worden.",
+      "text_markdown": "Onder Hayreddins bevel zou zij de meest gevreesde zeemacht ter wereld worden.",
+      "tts": {
+        "text": "Onder Hayreddins bevel zou zij de meest gevreesde zeemacht ter wereld worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij herbouwde de vloot vanuit de scheepswerven van Istanbul en paste alles toe wat hij in tientallen jaren kapersoorlog had geleerd.",
+      "text_markdown": "Hij herbouwde de vloot vanuit de scheepswerven van Istanbul en paste alles toe wat hij in tientallen jaren kapersoorlog had geleerd.",
+      "tts": {
+        "text": "Hij herbouwde de vloot vanuit de scheepswerven van Istanbul en paste alles toe wat hij in tientallen jaren kapersoorlog had geleerd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin moderniseerde de Ottomaanse scheepsbouwtechnieken.",
+      "text_markdown": "Hayreddin moderniseerde de Ottomaanse scheepsbouwtechnieken.",
+      "tts": {
+        "text": "Hayreddin moderniseerde de Ottomaanse scheepsbouwtechnieken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij ontwierp snellere, wendbaardere galeien gebaseerd op kapersschepen.",
+      "text_markdown": "Hij ontwierp snellere, wendbaardere galeien gebaseerd op kapersschepen.",
+      "tts": {
+        "text": "Hij ontwierp snellere, wendbaardere galeien gebaseerd op kapersschepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij richtte opleidingsprogramma's op voor Ottomaanse marineofficieren.",
+      "text_markdown": "Hij richtte opleidingsprogramma's op voor Ottomaanse marineofficieren.",
+      "tts": {
+        "text": "Hij richtte opleidingsprogramma's op voor Ottomaanse marineofficieren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij ronselde ervaren kapers uit het hele Middellandse Zeegebied om als kapiteins te dienen.",
+      "text_markdown": "Hij ronselde ervaren kapers uit het hele Middellandse Zeegebied om als kapiteins te dienen.",
+      "tts": {
+        "text": "Hij ronselde ervaren kapers uit het hele Middellandse Zeegebied om als kapiteins te dienen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn eerste grote campagne als grootadmiraal richtte zich op de Italiaanse kust.",
+      "text_markdown": "Zijn eerste grote campagne als grootadmiraal richtte zich op de Italiaanse kust.",
+      "tts": {
+        "text": "Zijn eerste grote campagne als grootadmiraal richtte zich op de Italiaanse kust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1534 leidde hij de Ottomaanse vloot bij een verwoestende strooptocht langs de kusten van Zuid-Italië.",
+      "text_markdown": "In 1534 leidde hij de Ottomaanse vloot bij een verwoestende strooptocht langs de kusten van Zuid-Italië.",
+      "tts": {
+        "text": "In vijftienhonderd vierendertig leidde hij de Ottomaanse vloot bij een verwoestende strooptocht langs de kusten van Zuid Italië.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij veroverde de stad Tunis en vestigde haar als Ottomaanse vlootbasis.",
+      "text_markdown": "Hij veroverde de stad Tunis en vestigde haar als Ottomaanse vlootbasis.",
+      "tts": {
+        "text": "Hij veroverde de stad Tunis en vestigde haar als Ottomaanse vlootbasis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De strooptocht zaaide schrik onder de christelijke staten en toonde het bereik van de Ottomaanse zeemacht aan.",
+      "text_markdown": "De strooptocht zaaide schrik onder de christelijke staten en toonde het bereik van de Ottomaanse zeemacht aan.",
+      "tts": {
+        "text": "De strooptocht zaaide schrik onder de christelijke staten en toonde het bereik van de Ottomaanse zeemacht aan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keizer Karel de Vijfde van het Heilige Roomse Rijk antwoordde met een massale tegenaanval.",
+      "text_markdown": "Keizer Karel de Vijfde van het Heilige Roomse Rijk antwoordde met een massale tegenaanval.",
+      "tts": {
+        "text": "Keizer Karel de Vijfde van het Heilige Roomse Rijk antwoordde met een massale tegenaanval.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1535 stelde Karel een van de grootste vloten in de Europese geschiedenis samen om Tunis te heroveren.",
+      "text_markdown": "In 1535 stelde Karel een van de grootste vloten in de Europese geschiedenis samen om Tunis te heroveren.",
+      "tts": {
+        "text": "In vijftienhonderd vijfendertig stelde Karel een van de grootste vloten in de Europese geschiedenis samen om Tunis te heroveren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De vloot omvatte schepen uit Spanje, Italië, Portugal en de Pauselijke Staten.",
+      "text_markdown": "De vloot omvatte schepen uit Spanje, Italië, Portugal en de Pauselijke Staten.",
+      "tts": {
+        "text": "De vloot omvatte schepen uit Spanje, Italië, Portugal en de Pauselijke Staten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Karel slaagde erin Tunis in te nemen, maar Hayreddin ontsnapte met de kern van zijn vloot intact.",
+      "text_markdown": "Karel slaagde erin Tunis in te nemen, maar Hayreddin ontsnapte met de kern van zijn vloot intact.",
+      "tts": {
+        "text": "Karel slaagde erin Tunis in te nemen, maar Hayreddin ontsnapte met de kern van zijn vloot intact.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het verlies van Tunis was een tegenslag, maar niet het einde.",
+      "text_markdown": "Het verlies van Tunis was een tegenslag, maar niet het einde.",
+      "tts": {
+        "text": "Het verlies van Tunis was een tegenslag, maar niet het einde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin trok zich terug naar Algiers en begon zijn troepen onmiddellijk weer op te bouwen.",
+      "text_markdown": "Hayreddin trok zich terug naar Algiers en begon zijn troepen onmiddellijk weer op te bouwen.",
+      "tts": {
+        "text": "Hayreddin trok zich terug naar Algiers en begon zijn troepen onmiddellijk weer op te bouwen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij wist dat het christelijke verbond tijdelijk was en uiteen zou vallen zodra de directe dreiging was geweken.",
+      "text_markdown": "Hij wist dat het christelijke verbond tijdelijk was en uiteen zou vallen zodra de directe dreiging was geweken.",
+      "tts": {
+        "text": "Hij wist dat het christelijke verbond tijdelijk was en uiteen zou vallen zodra de directe dreiging was geweken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij kreeg gelijk, en binnen enkele maanden begon het verbond uiteen te vallen.",
+      "text_markdown": "Hij kreeg gelijk, en binnen enkele maanden begon het verbond uiteen te vallen.",
+      "tts": {
+        "text": "Hij kreeg gelijk, en binnen enkele maanden begon het verbond uiteen te vallen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Binnen twee jaar was Hayreddin gereed voor zijn grootste veldslag.",
+      "text_markdown": "Binnen twee jaar was Hayreddin gereed voor zijn grootste veldslag.",
+      "tts": {
+        "text": "Binnen twee jaar was Hayreddin gereed voor zijn grootste veldslag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De confrontatie die zijn nalatenschap zou bepalen, naderde.",
+      "text_markdown": "De confrontatie die zijn nalatenschap zou bepalen, naderde.",
+      "tts": {
+        "text": "De confrontatie die zijn nalatenschap zou bepalen, naderde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zij zou plaatsvinden in de wateren voor de westkust van Griekenland.",
+      "text_markdown": "Zij zou plaatsvinden in de wateren voor de westkust van Griekenland.",
+      "tts": {
+        "text": "Zij zou plaatsvinden in de wateren voor de westkust van Griekenland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Opkomst naar de macht",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De naam van de slag was Preveza, en hij zou de Middellandse Zee voor altijd veranderen.",
+      "text_markdown": "De naam van de slag was Preveza, en hij zou de Middellandse Zee voor altijd veranderen.",
+      "tts": {
+        "text": "De naam van de slag was Preveza, en hij zou de Middellandse Zee voor altijd veranderen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Op het hoogtepunt",
+      "text_markdown": "Op het hoogtepunt"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Slag bij Preveza vond plaats op 28 september 1538.",
+      "text_markdown": "De Slag bij Preveza vond plaats op 28 september 1538.",
+      "tts": {
+        "text": "De Slag bij Preveza vond plaats op achtentwintig september vijftienhonderd achtendertig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het was de beslissende zeeslag van de zestiende-eeuwse Middellandse Zee.",
+      "text_markdown": "Het was de beslissende zeeslag van de zestiende-eeuwse Middellandse Zee.",
+      "tts": {
+        "text": "Het was de beslissende zeeslag van de zestiende eeuwse Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aan de ene kant stond de Ottomaanse vloot onder Hayreddin Barbarossa.",
+      "text_markdown": "Aan de ene kant stond de Ottomaanse vloot onder Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Aan de ene kant stond de Ottomaanse vloot onder Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aan de andere kant stond de gezamenlijke vloot van de Heilige Liga, een verbond van christelijke staten.",
+      "text_markdown": "Aan de andere kant stond de gezamenlijke vloot van de Heilige Liga, een verbond van christelijke staten.",
+      "tts": {
+        "text": "Aan de andere kant stond de gezamenlijke vloot van de Heilige Liga, een verbond van christelijke staten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vloot van de Heilige Liga werd aangevoerd door de Genuese admiraal Andrea Doria.",
+      "text_markdown": "De vloot van de Heilige Liga werd aangevoerd door de Genuese admiraal Andrea Doria.",
+      "tts": {
+        "text": "De vloot van de Heilige Liga werd aangevoerd door de Genuese admiraal Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij bestond uit ongeveer 300 schepen uit Spanje, Venetië, de Pauselijke Staten en Genua.",
+      "text_markdown": "Zij bestond uit ongeveer 300 schepen uit Spanje, Venetië, de Pauselijke Staten en Genua.",
+      "tts": {
+        "text": "Zij bestond uit ongeveer driehonderd schepen uit Spanje, Venetië, de Pauselijke Staten en Genua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Op papier was de christelijke vloot aanzienlijk groter dan de Ottomaanse troepenmacht.",
+      "text_markdown": "Op papier was de christelijke vloot aanzienlijk groter dan de Ottomaanse troepenmacht.",
+      "tts": {
+        "text": "Op papier was de christelijke vloot aanzienlijk groter dan de Ottomaanse troepenmacht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maar omvang alleen wint geen veldslagen op zee.",
+      "text_markdown": "Maar omvang alleen wint geen veldslagen op zee.",
+      "tts": {
+        "text": "Maar omvang alleen wint geen veldslagen op zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin voerde het bevel over ongeveer 150 galeien, samen met kleinere ondersteuningsvaartuigen.",
+      "text_markdown": "Hayreddin voerde het bevel over ongeveer 150 galeien, samen met kleinere ondersteuningsvaartuigen.",
+      "tts": {
+        "text": "Hayreddin voerde het bevel over ongeveer honderdvijftig galeien, samen met kleinere ondersteuningsvaartuigen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zijn vloot was in de minderheid, maar beter getraind, beter gecoördineerd en beter geleid.",
+      "text_markdown": "Zijn vloot was in de minderheid, maar beter getraind, beter gecoördineerd en beter geleid.",
+      "tts": {
+        "text": "Zijn vloot was in de minderheid, maar beter getraind, beter gecoördineerd en beter geleid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin had decennialang in deze wateren gevochten en kende elke stroming, elk windpatroon en elk tactisch voordeel dat de kustlijn bood.",
+      "text_markdown": "Hayreddin had decennialang in deze wateren gevochten en kende elke stroming, elk windpatroon en elk tactisch voordeel dat de kustlijn bood.",
+      "tts": {
+        "text": "Hayreddin had decennialang in deze wateren gevochten en kende elke stroming, elk windpatroon en elk tactisch voordeel dat de kustlijn bood.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De slag vond plaats nabij de ingang van de Ambracische Golf, voor de westkust van Griekenland.",
+      "text_markdown": "De slag vond plaats nabij de ingang van de Ambracische Golf, voor de westkust van Griekenland.",
+      "tts": {
+        "text": "De slag vond plaats nabij de ingang van de Ambracische Golf, voor de westkust van Griekenland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin positioneerde zijn vloot zo dat hij voordeel haalde uit de heersende winden.",
+      "text_markdown": "Hayreddin positioneerde zijn vloot zo dat hij voordeel haalde uit de heersende winden.",
+      "tts": {
+        "text": "Hayreddin positioneerde zijn vloot zo dat hij voordeel haalde uit de heersende winden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij plaatste zijn galeien in een halvemaanformatie die het mogelijk maakte het vuur op geïsoleerde vijandelijke groepen te concentreren.",
+      "text_markdown": "Hij plaatste zijn galeien in een halvemaanformatie die het mogelijk maakte het vuur op geïsoleerde vijandelijke groepen te concentreren.",
+      "tts": {
+        "text": "Hij plaatste zijn galeien in een halvemaanformatie die het mogelijk maakte het vuur op geïsoleerde vijandelijke groepen te concentreren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zijn tactische opstelling was meesterlijk.",
+      "text_markdown": "Zijn tactische opstelling was meesterlijk.",
+      "tts": {
+        "text": "Zijn tactische opstelling was meesterlijk.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria aarzelde op het beslissende moment.",
+      "text_markdown": "Andrea Doria aarzelde op het beslissende moment.",
+      "tts": {
+        "text": "Andrea Doria aarzelde op het beslissende moment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ondanks zijn numerieke overwicht was hij terughoudend om zijn volledige vloot in een gevecht van dichtbij in te zetten.",
+      "text_markdown": "Ondanks zijn numerieke overwicht was hij terughoudend om zijn volledige vloot in een gevecht van dichtbij in te zetten.",
+      "tts": {
+        "text": "Ondanks zijn numerieke overwicht was hij terughoudend om zijn volledige vloot in een gevecht van dichtbij in te zetten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij hield zijn beste schepen in reserve en probeerde te manoeuvreren voor een betere positie.",
+      "text_markdown": "Hij hield zijn beste schepen in reserve en probeerde te manoeuvreren voor een betere positie.",
+      "tts": {
+        "text": "Hij hield zijn beste schepen in reserve en probeerde te manoeuvreren voor een betere positie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deze voorzichtigheid bleek fataal voor de christelijke zaak.",
+      "text_markdown": "Deze voorzichtigheid bleek fataal voor de christelijke zaak.",
+      "tts": {
+        "text": "Deze voorzichtigheid bleek fataal voor de christelijke zaak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin viel agressief aan en richtte zich op de Venetiaanse en pauselijke schepen die voor de hoofdvloot uit waren gevaren.",
+      "text_markdown": "Hayreddin viel agressief aan en richtte zich op de Venetiaanse en pauselijke schepen die voor de hoofdvloot uit waren gevaren.",
+      "tts": {
+        "text": "Hayreddin viel agressief aan en richtte zich op de Venetiaanse en pauselijke schepen die voor de hoofdvloot uit waren gevaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zijn galeien sloten snel op en gingen het gevecht van dichtbij aan.",
+      "text_markdown": "Zijn galeien sloten snel op en gingen het gevecht van dichtbij aan.",
+      "tts": {
+        "text": "Zijn galeien sloten snel op en gingen het gevecht van dichtbij aan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De strijd was hevig en wreed, met kanonvuur en man-tegen-mangevechten over tientallen schepen.",
+      "text_markdown": "De strijd was hevig en wreed, met kanonvuur en man-tegen-mangevechten over tientallen schepen.",
+      "tts": {
+        "text": "De strijd was hevig en wreed, met kanonvuur en man tegen mangevechten over tientallen schepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De geïsoleerde christelijke eskaders werden één voor één overweldigd.",
+      "text_markdown": "De geïsoleerde christelijke eskaders werden één voor één overweldigd.",
+      "tts": {
+        "text": "De geïsoleerde christelijke eskaders werden één voor één overweldigd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegen het einde van de dag had de Heilige Liga een verwoestende nederlaag geleden.",
+      "text_markdown": "Tegen het einde van de dag had de Heilige Liga een verwoestende nederlaag geleden.",
+      "tts": {
+        "text": "Tegen het einde van de dag had de Heilige Liga een verwoestende nederlaag geleden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De troepen van Hayreddin namen tientallen christelijke oorlogsschepen buit of brachten ze tot zinken.",
+      "text_markdown": "De troepen van Hayreddin namen tientallen christelijke oorlogsschepen buit of brachten ze tot zinken.",
+      "tts": {
+        "text": "De troepen van Hayreddin namen tientallen christelijke oorlogsschepen buit of brachten ze tot zinken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Duizenden christelijke zeelieden en soldaten werden gedood of gevangengenomen.",
+      "text_markdown": "Duizenden christelijke zeelieden en soldaten werden gedood of gevangengenomen.",
+      "tts": {
+        "text": "Duizenden christelijke zeelieden en soldaten werden gedood of gevangengenomen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria trok zich terug met de overblijfselen van zijn vloot en liet de zee aan de Ottomanen.",
+      "text_markdown": "Andrea Doria trok zich terug met de overblijfselen van zijn vloot en liet de zee aan de Ottomanen.",
+      "tts": {
+        "text": "Andrea Doria trok zich terug met de overblijfselen van zijn vloot en liet de zee aan de Ottomanen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Slag bij Preveza vestigde de Ottomaanse zeeheerschappij op de Middellandse Zee.",
+      "text_markdown": "De Slag bij Preveza vestigde de Ottomaanse zeeheerschappij op de Middellandse Zee.",
+      "tts": {
+        "text": "De Slag bij Preveza vestigde de Ottomaanse zeeheerschappij op de Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Decennialang zou geen enkele christelijke vloot de Ottomaanse controle over de oostelijke en centrale zee nog kunnen aanvechten.",
+      "text_markdown": "Decennialang zou geen enkele christelijke vloot de Ottomaanse controle over de oostelijke en centrale zee nog kunnen aanvechten.",
+      "tts": {
+        "text": "Decennialang zou geen enkele christelijke vloot de Ottomaanse controle over de oostelijke en centrale zee nog kunnen aanvechten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het Ottomaanse Rijk kon nu militaire macht uitoefenen langs de gehele Noord-Afrikaanse kust en tegen het Italiaanse schiereiland.",
+      "text_markdown": "Het Ottomaanse Rijk kon nu militaire macht uitoefenen langs de gehele Noord-Afrikaanse kust en tegen het Italiaanse schiereiland.",
+      "tts": {
+        "text": "Het Ottomaanse Rijk kon nu militaire macht uitoefenen langs de gehele Noord Afrikaanse kust en tegen het Italiaanse schiereiland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het was de belangrijkste zeeoverwinning van de zestiende eeuw.",
+      "text_markdown": "Het was de belangrijkste zeeoverwinning van de zestiende eeuw.",
+      "tts": {
+        "text": "Het was de belangrijkste zeeoverwinning van de zestiende eeuw.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin keerde als overwinnaar terug naar Istanbul.",
+      "text_markdown": "Hayreddin keerde als overwinnaar terug naar Istanbul.",
+      "tts": {
+        "text": "Hayreddin keerde als overwinnaar terug naar Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan Süleiman ontving hem met de hoogste eerbewijzen die het rijk kon verlenen.",
+      "text_markdown": "Sultan Süleiman ontving hem met de hoogste eerbewijzen die het rijk kon verlenen.",
+      "tts": {
+        "text": "Sultan Süleiman ontving hem met de hoogste eerbewijzen die het rijk kon verlenen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De grootadmiraal had bereikt wat de Sultan van hem had gevraagd.",
+      "text_markdown": "De grootadmiraal had bereikt wat de Sultan van hem had gevraagd.",
+      "tts": {
+        "text": "De grootadmiraal had bereikt wat de Sultan van hem had gevraagd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij had van de Ottomaanse marine de hoogste macht in de Middellandse Zee gemaakt.",
+      "text_markdown": "Hij had van de Ottomaanse marine de hoogste macht in de Middellandse Zee gemaakt.",
+      "tts": {
+        "text": "Hij had van de Ottomaanse marine de hoogste macht in de Middellandse Zee gemaakt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de jaren na Preveza bleef Hayreddin het bevel voeren over de Ottomaanse vloot.",
+      "text_markdown": "In de jaren na Preveza bleef Hayreddin het bevel voeren over de Ottomaanse vloot.",
+      "tts": {
+        "text": "In de jaren na Preveza bleef Hayreddin het bevel voeren over de Ottomaanse vloot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij voerde overvallen uit op Spaanse en Italiaanse kuststeden.",
+      "text_markdown": "Hij voerde overvallen uit op Spaanse en Italiaanse kuststeden.",
+      "tts": {
+        "text": "Hij voerde overvallen uit op Spaanse en Italiaanse kuststeden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij onderhandelde met de Franse koning Frans de Eerste, die zich met de Ottomanen verbond tegen hun gemeenschappelijke vijand, Karel de Vijfde.",
+      "text_markdown": "Hij onderhandelde met de Franse koning Frans de Eerste, die zich met de Ottomanen verbond tegen hun gemeenschappelijke vijand, Karel de Vijfde.",
+      "tts": {
+        "text": "Hij onderhandelde met de Franse koning Frans de Eerste, die zich met de Ottomanen verbond tegen hun gemeenschappelijke vijand, Karel de Vijfde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dit verbond tussen een islamitisch rijk en een christelijk koninkrijk schokte heel Europa.",
+      "text_markdown": "Dit verbond tussen een islamitisch rijk en een christelijk koninkrijk schokte heel Europa.",
+      "tts": {
+        "text": "Dit verbond tussen een islamitisch rijk en een christelijk koninkrijk schokte heel Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter van 1543 ankerde Hayreddin zijn vloot in de Franse haven van Toulon.",
+      "text_markdown": "In de winter van 1543 ankerde Hayreddin zijn vloot in de Franse haven van Toulon.",
+      "tts": {
+        "text": "In de winter van vijftienhonderd drieënveertig ankerde Hayreddin zijn vloot in de Franse haven van Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Franse koning had de haven aangeboden als basis voor gezamenlijke operaties tegen Spanje.",
+      "text_markdown": "De Franse koning had de haven aangeboden als basis voor gezamenlijke operaties tegen Spanje.",
+      "tts": {
+        "text": "De Franse koning had de haven aangeboden als basis voor gezamenlijke operaties tegen Spanje.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meerdere maanden lang opereerden Ottomaanse oorlogsschepen vanuit een Franse haven.",
+      "text_markdown": "Meerdere maanden lang opereerden Ottomaanse oorlogsschepen vanuit een Franse haven.",
+      "tts": {
+        "text": "Meerdere maanden lang opereerden Ottomaanse oorlogsschepen vanuit een Franse haven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het was een schouwspel dat de christelijke wereld verbijsterde en aantoonde dat machtspolitiek religieuze scheidslijnen kon overstijgen.",
+      "text_markdown": "Het was een schouwspel dat de christelijke wereld verbijsterde en aantoonde dat machtspolitiek religieuze scheidslijnen kon overstijgen.",
+      "tts": {
+        "text": "Het was een schouwspel dat de christelijke wereld verbijsterde en aantoonde dat machtspolitiek religieuze scheidslijnen kon overstijgen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddins bestuur over Algiers zette zich voort naast zijn marinecampagnes.",
+      "text_markdown": "Hayreddins bestuur over Algiers zette zich voort naast zijn marinecampagnes.",
+      "tts": {
+        "text": "Hayreddins bestuur over Algiers zette zich voort naast zijn marinecampagnes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij liet moskeeën, openbare badhuizen en vestingwerken in de stad bouwen.",
+      "text_markdown": "Hij liet moskeeën, openbare badhuizen en vestingwerken in de stad bouwen.",
+      "tts": {
+        "text": "Hij liet moskeeën, openbare badhuizen en vestingwerken in de stad bouwen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij stimuleerde de handel en trok geschoolde ambachtslieden aan uit de hele islamitische wereld.",
+      "text_markdown": "Hij stimuleerde de handel en trok geschoolde ambachtslieden aan uit de hele islamitische wereld.",
+      "tts": {
+        "text": "Hij stimuleerde de handel en trok geschoolde ambachtslieden aan uit de hele islamitische wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onder zijn bewind groeide Algiers van een onbeduidende haven uit tot een van de belangrijkste steden van Noord-Afrika.",
+      "text_markdown": "Onder zijn bewind groeide Algiers van een onbeduidende haven uit tot een van de belangrijkste steden van Noord-Afrika.",
+      "tts": {
+        "text": "Onder zijn bewind groeide Algiers van een onbeduidende haven uit tot een van de belangrijkste steden van Noord Afrika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn vloot beschermde de Ottomaanse handelsroutes die Istanbul met de westelijke Middellandse Zee verbonden.",
+      "text_markdown": "Zijn vloot beschermde de Ottomaanse handelsroutes die Istanbul met de westelijke Middellandse Zee verbonden.",
+      "tts": {
+        "text": "Zijn vloot beschermde de Ottomaanse handelsroutes die Istanbul met de westelijke Middellandse Zee verbonden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koopvaardijschepen met graan, textiel en industriële goederen voeren onder de bescherming van zijn oorlogsschepen.",
+      "text_markdown": "Koopvaardijschepen met graan, textiel en industriële goederen voeren onder de bescherming van zijn oorlogsschepen.",
+      "tts": {
+        "text": "Koopvaardijschepen met graan, textiel en industriële goederen voeren onder de bescherming van zijn oorlogsschepen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De economische welvaart van het Ottomaanse Middellandse Zeegebied hing in hoge mate af van de vloot die Hayreddin had opgebouwd.",
+      "text_markdown": "De economische welvaart van het Ottomaanse Middellandse Zeegebied hing in hoge mate af van de vloot die Hayreddin had opgebouwd.",
+      "tts": {
+        "text": "De economische welvaart van het Ottomaanse Middellandse Zeegebied hing in hoge mate af van de vloot die Hayreddin had opgebouwd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Op het hoogtepunt",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij had het kapen veranderd in een instrument van keizerlijke macht.",
+      "text_markdown": "Hij had het kapen veranderd in een instrument van keizerlijke macht.",
+      "tts": {
+        "text": "Hij had het kapen veranderd in een instrument van keizerlijke macht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het einde",
+      "text_markdown": "Het einde"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegen het begin van de jaren 1540 was Hayreddin Barbarossa halverwege de zestig.",
+      "text_markdown": "Tegen het begin van de jaren 1540 was Hayreddin Barbarossa halverwege de zestig.",
+      "tts": {
+        "text": "Tegen het begin van de jaren vijftienhonderd veertig was Hayreddin Barbarossa halverwege de zestig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij had meer dan vier decennia op zee doorgebracht, vechtend, bouwend en bevelvoerend.",
+      "text_markdown": "Hij had meer dan vier decennia op zee doorgebracht, vechtend, bouwend en bevelvoerend.",
+      "tts": {
+        "text": "Hij had meer dan vier decennia op zee doorgebracht, vechtend, bouwend en bevelvoerend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn lichaam was versleten door decennia van oorlog, ruw weer en de lichamelijke eisen van het leven aan boord.",
+      "text_markdown": "Zijn lichaam was versleten door decennia van oorlog, ruw weer en de lichamelijke eisen van het leven aan boord.",
+      "tts": {
+        "text": "Zijn lichaam was versleten door decennia van oorlog, ruw weer en de lichamelijke eisen van het leven aan boord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maar zijn geest bleef scherp en zijn gezag onbetwist.",
+      "text_markdown": "Maar zijn geest bleef scherp en zijn gezag onbetwist.",
+      "tts": {
+        "text": "Maar zijn geest bleef scherp en zijn gezag onbetwist.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de Toulon-campagne van 1543 keerde Hayreddin terug naar Istanbul.",
+      "text_markdown": "Na de Toulon-campagne van 1543 keerde Hayreddin terug naar Istanbul.",
+      "tts": {
+        "text": "Na de Toulon campagne van vijftienhonderd drieënveertig keerde Hayreddin terug naar Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij had zijn laatste grote marineoperatie afgerond.",
+      "text_markdown": "Hij had zijn laatste grote marineoperatie afgerond.",
+      "tts": {
+        "text": "Hij had zijn laatste grote marineoperatie afgerond.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Sultan vroeg hem niet om nog een veldtocht aan te voeren.",
+      "text_markdown": "De Sultan vroeg hem niet om nog een veldtocht aan te voeren.",
+      "tts": {
+        "text": "De Sultan vroeg hem niet om nog een veldtocht aan te voeren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Op zijn leeftijd en met zijn prestaties was pensioen zowel verdiend als gepast.",
+      "text_markdown": "Op zijn leeftijd en met zijn prestaties was pensioen zowel verdiend als gepast.",
+      "tts": {
+        "text": "Op zijn leeftijd en met zijn prestaties was pensioen zowel verdiend als gepast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin bracht zijn laatste jaren door in Istanbul, in een groots paleis met uitzicht op de Bosporus.",
+      "text_markdown": "Hayreddin bracht zijn laatste jaren door in Istanbul, in een groots paleis met uitzicht op de Bosporus.",
+      "tts": {
+        "text": "Hayreddin bracht zijn laatste jaren door in Istanbul, in een groots paleis met uitzicht op de Bosporus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij dicteerde zijn memoires aan een schrijver en schiep daarmee een van de belangrijkste primaire bronnen voor de geschiedenis van de mediterrane kapers.",
+      "text_markdown": "Hij dicteerde zijn memoires aan een schrijver en schiep daarmee een van de belangrijkste primaire bronnen voor de geschiedenis van de mediterrane kapers.",
+      "tts": {
+        "text": "Hij dicteerde zijn memoires aan een schrijver en schiep daarmee een van de belangrijkste primaire bronnen voor de geschiedenis van de mediterrane kapers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Deze memoires, bekend als de Gazavat-i Hayreddin Pasha, zijn in handschriftvorm bewaard gebleven.",
+      "text_markdown": "Deze memoires, bekend als de Gazavat-i Hayreddin Pasha, zijn in handschriftvorm bewaard gebleven.",
+      "tts": {
+        "text": "Deze memoires, bekend als de Gazavat i Hayreddin Pasha, zijn in handschriftvorm bewaard gebleven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zij zijn eeuwenlang door historici bestudeerd.",
+      "text_markdown": "Zij zijn eeuwenlang door historici bestudeerd.",
+      "tts": {
+        "text": "Zij zijn eeuwenlang door historici bestudeerd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij bleef in een adviserende rol betrokken bij Ottomaanse marinezaken.",
+      "text_markdown": "Hij bleef in een adviserende rol betrokken bij Ottomaanse marinezaken.",
+      "tts": {
+        "text": "Hij bleef in een adviserende rol betrokken bij Ottomaanse marinezaken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jongere admiralen vroegen hem om raad over strategie en scheepsbouw.",
+      "text_markdown": "Jongere admiralen vroegen hem om raad over strategie en scheepsbouw.",
+      "tts": {
+        "text": "Jongere admiralen vroegen hem om raad over strategie en scheepsbouw.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij had een hele generatie marineofficieren opgeleid die zijn werk zou voortzetten.",
+      "text_markdown": "Hij had een hele generatie marineofficieren opgeleid die zijn werk zou voortzetten.",
+      "tts": {
+        "text": "Hij had een hele generatie marineofficieren opgeleid die zijn werk zou voortzetten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De institutionele kennis die hij in de Ottomaanse marine had opgebouwd, was zijn meest blijvende bijdrage.",
+      "text_markdown": "De institutionele kennis die hij in de Ottomaanse marine had opgebouwd, was zijn meest blijvende bijdrage.",
+      "tts": {
+        "text": "De institutionele kennis die hij in de Ottomaanse marine had opgebouwd, was zijn meest blijvende bijdrage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa stierf op 4 juli 1546 in Istanbul.",
+      "text_markdown": "Hayreddin Barbarossa stierf op 4 juli 1546 in Istanbul.",
+      "tts": {
+        "text": "Hayreddin Barbarossa stierf op vier juli vijftienhonderd zesenveertig in Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij was ongeveer achtenzestig jaar oud.",
+      "text_markdown": "Hij was ongeveer achtenzestig jaar oud.",
+      "tts": {
+        "text": "Hij was ongeveer achtenzestig jaar oud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn dood werd betreurd in het hele Ottomaanse Rijk.",
+      "text_markdown": "Zijn dood werd betreurd in het hele Ottomaanse Rijk.",
+      "tts": {
+        "text": "Zijn dood werd betreurd in het hele Ottomaanse Rijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sultan Süleiman liet voor hem een prachtig mausoleum bouwen aan de oevers van de Bosporus, in Besiktas.",
+      "text_markdown": "Sultan Süleiman liet voor hem een prachtig mausoleum bouwen aan de oevers van de Bosporus, in Besiktas.",
+      "tts": {
+        "text": "Sultan Süleiman liet voor hem een prachtig mausoleum bouwen aan de oevers van de Bosporus, in Besiktas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het mausoleum staat vandaag de dag nog steeds in de wijk Besiktas van Istanbul.",
+      "text_markdown": "Het mausoleum staat vandaag de dag nog steeds in de wijk Besiktas van Istanbul.",
+      "tts": {
+        "text": "Het mausoleum staat vandaag de dag nog steeds in de wijk Besiktas van Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een monument van Ottomaanse architectuur, versierd met tegels en kalligrafie.",
+      "text_markdown": "Het is een monument van Ottomaanse architectuur, versierd met tegels en kalligrafie.",
+      "tts": {
+        "text": "Het is een monument van Ottomaanse architectuur, versierd met tegels en kalligrafie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eeuwenlang bezochten Ottomaanse zeelieden het mausoleum voordat zij op reis gingen.",
+      "text_markdown": "Eeuwenlang bezochten Ottomaanse zeelieden het mausoleum voordat zij op reis gingen.",
+      "tts": {
+        "text": "Eeuwenlang bezochten Ottomaanse zeelieden het mausoleum voordat zij op reis gingen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zij baden om een veilige overtocht en om de geest van de grote admiraal om hen te leiden.",
+      "text_markdown": "Zij baden om een veilige overtocht en om de geest van de grote admiraal om hen te leiden.",
+      "tts": {
+        "text": "Zij baden om een veilige overtocht en om de geest van de grote admiraal om hen te leiden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn opvolgers in de Ottomaanse marine onderhielden de vloot die hij had opgebouwd.",
+      "text_markdown": "Zijn opvolgers in de Ottomaanse marine onderhielden de vloot die hij had opgebouwd.",
+      "tts": {
+        "text": "Zijn opvolgers in de Ottomaanse marine onderhielden de vloot die hij had opgebouwd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Admiralen als Turgut Reis en Piyale Pasha zetten de Ottomaanse maritieme overheersing decennialang voort.",
+      "text_markdown": "Admiralen als Turgut Reis en Piyale Pasha zetten de Ottomaanse maritieme overheersing decennialang voort.",
+      "tts": {
+        "text": "Admiralen als Turgut Reis en Piyale Pasha zetten de Ottomaanse maritieme overheersing decennialang voort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zij hadden hun vak onder Hayreddin geleerd en zetten zijn tactische leer voort.",
+      "text_markdown": "Zij hadden hun vak onder Hayreddin geleerd en zetten zijn tactische leer voort.",
+      "tts": {
+        "text": "Zij hadden hun vak onder Hayreddin geleerd en zetten zijn tactische leer voort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De Slag bij Lepanto in 1571 zou uiteindelijk een einde maken aan de Ottomaanse oppermacht op zee, maar zelfs die nederlaag vernietigde niet de vloot die Hayreddin had opgebouwd.",
+      "text_markdown": "De Slag bij Lepanto in 1571 zou uiteindelijk een einde maken aan de Ottomaanse oppermacht op zee, maar zelfs die nederlaag vernietigde niet de vloot die Hayreddin had opgebouwd.",
+      "tts": {
+        "text": "De Slag bij Lepanto in vijftienhonderd eenenzeventig zou uiteindelijk een einde maken aan de Ottomaanse oppermacht op zee, maar zelfs die nederlaag vernietigde niet de vloot die Hayreddin had opgebouwd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Noord-Afrikaanse gebieden die Hayreddin onder Ottomaans bestuur had gebracht, bleven eeuwenlang Ottomaanse provincies.",
+      "text_markdown": "De Noord-Afrikaanse gebieden die Hayreddin onder Ottomaans bestuur had gebracht, bleven eeuwenlang Ottomaanse provincies.",
+      "tts": {
+        "text": "De Noord Afrikaanse gebieden die Hayreddin onder Ottomaans bestuur had gebracht, bleven eeuwenlang Ottomaanse provincies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers, Tunis en Tripoli bleven tot ver in de negentiende eeuw kapersbases.",
+      "text_markdown": "Algiers, Tunis en Tripoli bleven tot ver in de negentiende eeuw kapersbases.",
+      "tts": {
+        "text": "Algiers, Tunis en Tripoli bleven tot ver in de negentiende eeuw kapersbases.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Barbarijse kaperstraditie die Hayreddin mee had helpen vestigen, hield driehonderd jaar stand.",
+      "text_markdown": "De Barbarijse kaperstraditie die Hayreddin mee had helpen vestigen, hield driehonderd jaar stand.",
+      "tts": {
+        "text": "De Barbarijse kaperstraditie die Hayreddin mee had helpen vestigen, hield driehonderd jaar stand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pas de gezamenlijke macht van Frankrijk en Groot-Brittannië zou er uiteindelijk een einde aan maken.",
+      "text_markdown": "Pas de gezamenlijke macht van Frankrijk en Groot-Brittannië zou er uiteindelijk een einde aan maken.",
+      "tts": {
+        "text": "Pas de gezamenlijke macht van Frankrijk en Groot Brittannië zou er uiteindelijk een einde aan maken.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin stierf zoals hij had geleefd: in dienst van de Ottomaanse staat.",
+      "text_markdown": "Hayreddin stierf zoals hij had geleefd: in dienst van de Ottomaanse staat.",
+      "tts": {
+        "text": "Hayreddin stierf zoals hij had geleefd: in dienst van de Ottomaanse staat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij was begonnen als de zoon van een pottenbakker op een Grieks eiland.",
+      "text_markdown": "Hij was begonnen als de zoon van een pottenbakker op een Grieks eiland.",
+      "tts": {
+        "text": "Hij was begonnen als de zoon van een pottenbakker op een Grieks eiland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij eindigde als de meest geroemde admiraal in de geschiedenis van het Ottomaanse Rijk.",
+      "text_markdown": "Hij eindigde als de meest geroemde admiraal in de geschiedenis van het Ottomaanse Rijk.",
+      "tts": {
+        "text": "Hij eindigde als de meest geroemde admiraal in de geschiedenis van het Ottomaanse Rijk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Het einde",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zijn weg van Lesbos naar het grootadmiraalschap is een van de meest opmerkelijke loopbanen in de geschiedenis van de zee.",
+      "text_markdown": "Zijn weg van Lesbos naar het grootadmiraalschap is een van de meest opmerkelijke loopbanen in de geschiedenis van de zee.",
+      "tts": {
+        "text": "Zijn weg van Lesbos naar het grootadmiraalschap is een van de meest opmerkelijke loopbanen in de geschiedenis van de zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nalatenschap",
+      "text_markdown": "Nalatenschap"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa veranderde het Ottomaanse Rijk van een landmacht in een maritieme grootmacht.",
+      "text_markdown": "Hayreddin Barbarossa veranderde het Ottomaanse Rijk van een landmacht in een maritieme grootmacht.",
+      "tts": {
+        "text": "Hayreddin Barbarossa veranderde het Ottomaanse Rijk van een landmacht in een maritieme grootmacht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vóór zijn loopbaan waren de Ottomanen geducht te land, maar marginaal op zee.",
+      "text_markdown": "Vóór zijn loopbaan waren de Ottomanen geducht te land, maar marginaal op zee.",
+      "tts": {
+        "text": "Vóór zijn loopbaan waren de Ottomanen geducht te land, maar marginaal op zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Na zijn loopbaan beheerste de Ottomaanse marine de Middellandse Zee voor generaties.",
+      "text_markdown": "Na zijn loopbaan beheerste de Ottomaanse marine de Middellandse Zee voor generaties.",
+      "tts": {
+        "text": "Na zijn loopbaan beheerste de Ottomaanse marine de Middellandse Zee voor generaties.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deze omwenteling behoort tot de belangrijkste militaire prestaties van de zestiende eeuw.",
+      "text_markdown": "Deze omwenteling behoort tot de belangrijkste militaire prestaties van de zestiende eeuw.",
+      "tts": {
+        "text": "Deze omwenteling behoort tot de belangrijkste militaire prestaties van de zestiende eeuw.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn overwinning bij Preveza wordt tot op de dag van vandaag bestudeerd aan marineacademies over de hele wereld.",
+      "text_markdown": "Zijn overwinning bij Preveza wordt tot op de dag van vandaag bestudeerd aan marineacademies over de hele wereld.",
+      "tts": {
+        "text": "Zijn overwinning bij Preveza wordt tot op de dag van vandaag bestudeerd aan marineacademies over de hele wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zij toont aan hoe superieur leiderschap en superieure tactiek een numeriek nadeel kunnen overwinnen.",
+      "text_markdown": "Zij toont aan hoe superieur leiderschap en superieure tactiek een numeriek nadeel kunnen overwinnen.",
+      "tts": {
+        "text": "Zij toont aan hoe superieur leiderschap en superieure tactiek een numeriek nadeel kunnen overwinnen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De slag liet zien dat een goed gecoördineerde vloot een grotere maar slecht geleide kon verslaan.",
+      "text_markdown": "De slag liet zien dat een goed gecoördineerde vloot een grotere maar slecht geleide kon verslaan.",
+      "tts": {
+        "text": "De slag liet zien dat een goed gecoördineerde vloot een grotere maar slecht geleide kon verslaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vijf eeuwen later blijft zij een schoolvoorbeeld van marinestrategie.",
+      "text_markdown": "Vijf eeuwen later blijft zij een schoolvoorbeeld van marinestrategie.",
+      "tts": {
+        "text": "Vijf eeuwen later blijft zij een schoolvoorbeeld van marinestrategie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddins invloed op Noord-Afrika was even diepgaand.",
+      "text_markdown": "Hayreddins invloed op Noord-Afrika was even diepgaand.",
+      "tts": {
+        "text": "Hayreddins invloed op Noord Afrika was even diepgaand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Door Algiers en andere steden onder Ottomaans bestuur te brengen, schiep hij een politieke structuur die eeuwenlang stand zou houden.",
+      "text_markdown": "Door Algiers en andere steden onder Ottomaans bestuur te brengen, schiep hij een politieke structuur die eeuwenlang stand zou houden.",
+      "tts": {
+        "text": "Door Algiers en andere steden onder Ottomaans bestuur te brengen, schiep hij een politieke structuur die eeuwenlang stand zou houden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De bevolkingen van deze steden werden gevormd door zijn beleid om vluchtelingen uit Spanje te verwelkomen.",
+      "text_markdown": "De bevolkingen van deze steden werden gevormd door zijn beleid om vluchtelingen uit Spanje te verwelkomen.",
+      "tts": {
+        "text": "De bevolkingen van deze steden werden gevormd door zijn beleid om vluchtelingen uit Spanje te verwelkomen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het culturele mengsel van Berberse, Arabische, Turkse en Andalusische invloeden dat de Maghreb vandaag de dag kenmerkt, heeft zijn wortels in de wereld die Hayreddin mee heeft helpen scheppen.",
+      "text_markdown": "Het culturele mengsel van Berberse, Arabische, Turkse en Andalusische invloeden dat de Maghreb vandaag de dag kenmerkt, heeft zijn wortels in de wereld die Hayreddin mee heeft helpen scheppen.",
+      "tts": {
+        "text": "Het culturele mengsel van Berberse, Arabische, Turkse en Andalusische invloeden dat de Maghreb vandaag de dag kenmerkt, heeft zijn wortels in de wereld die Hayreddin mee heeft helpen scheppen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Turkije is Hayreddin Barbarossa een nationale held.",
+      "text_markdown": "In Turkije is Hayreddin Barbarossa een nationale held.",
+      "tts": {
+        "text": "In Turkije is Hayreddin Barbarossa een nationale held.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Turkse marine vernoemde haar eerste onderzeeboot naar hem.",
+      "text_markdown": "De Turkse marine vernoemde haar eerste onderzeeboot naar hem.",
+      "tts": {
+        "text": "De Turkse marine vernoemde haar eerste onderzeeboot naar hem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn beeltenis prijkt op monumenten, postzegels en geldstukken.",
+      "text_markdown": "Zijn beeltenis prijkt op monumenten, postzegels en geldstukken.",
+      "tts": {
+        "text": "Zijn beeltenis prijkt op monumenten, postzegels en geldstukken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Elk Turks schoolkind leert zijn naam en zijn verhaal.",
+      "text_markdown": "Elk Turks schoolkind leert zijn naam en zijn verhaal.",
+      "tts": {
+        "text": "Elk Turks schoolkind leert zijn naam en zijn verhaal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Europese historische herinnering is Barbarossa een complexere figuur.",
+      "text_markdown": "In de Europese historische herinnering is Barbarossa een complexere figuur.",
+      "tts": {
+        "text": "In de Europese historische herinnering is Barbarossa een complexere figuur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Voor de Spanjaarden en Italianen van zijn tijd was hij een gevreesde vijand en een meedogenloze plunderaar.",
+      "text_markdown": "Voor de Spanjaarden en Italianen van zijn tijd was hij een gevreesde vijand en een meedogenloze plunderaar.",
+      "tts": {
+        "text": "Voor de Spanjaarden en Italianen van zijn tijd was hij een gevreesde vijand en een meedogenloze plunderaar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Voor de Fransen was hij een onverwachte bondgenoot tegen hun gemeenschappelijke Spaanse rivaal.",
+      "text_markdown": "Voor de Fransen was hij een onverwachte bondgenoot tegen hun gemeenschappelijke Spaanse rivaal.",
+      "tts": {
+        "text": "Voor de Fransen was hij een onverwachte bondgenoot tegen hun gemeenschappelijke Spaanse rivaal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zijn nalatenschap in Europa weerspiegelt de verdeelde en omstreden aard van de geschiedenis van de Middellandse Zee.",
+      "text_markdown": "Zijn nalatenschap in Europa weerspiegelt de verdeelde en omstreden aard van de geschiedenis van de Middellandse Zee.",
+      "tts": {
+        "text": "Zijn nalatenschap in Europa weerspiegelt de verdeelde en omstreden aard van de geschiedenis van de Middellandse Zee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historici discussiëren over de vraag of Hayreddin überhaupt een piraat genoemd zou moeten worden.",
+      "text_markdown": "Historici discussiëren over de vraag of Hayreddin überhaupt een piraat genoemd zou moeten worden.",
+      "tts": {
+        "text": "Historici discussiëren over de vraag of Hayreddin überhaupt een piraat genoemd zou moeten worden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij opereerde gedurende het grootste deel van zijn loopbaan met de uitdrukkelijke toestemming van de Ottomaanse Sultan.",
+      "text_markdown": "Hij opereerde gedurende het grootste deel van zijn loopbaan met de uitdrukkelijke toestemming van de Ottomaanse Sultan.",
+      "tts": {
+        "text": "Hij opereerde gedurende het grootste deel van zijn loopbaan met de uitdrukkelijke toestemming van de Ottomaanse Sultan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zijn kapersactiviteiten waren een erkende vorm van zeeoorlog in de zestiende-eeuwse Middellandse Zee.",
+      "text_markdown": "Zijn kapersactiviteiten waren een erkende vorm van zeeoorlog in de zestiende-eeuwse Middellandse Zee.",
+      "tts": {
+        "text": "Zijn kapersactiviteiten waren een erkende vorm van zeeoorlog in de zestiende eeuwse Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De grens tussen piraterij en door de staat gesteunde zeeoorlog was vaag, en Hayreddin leefde aan beide zijden ervan.",
+      "text_markdown": "De grens tussen piraterij en door de staat gesteunde zeeoorlog was vaag, en Hayreddin leefde aan beide zijden ervan.",
+      "tts": {
+        "text": "De grens tussen piraterij en door de staat gesteunde zeeoorlog was vaag, en Hayreddin leefde aan beide zijden ervan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wat buiten kijf staat, is de omvang van zijn prestatie.",
+      "text_markdown": "Wat buiten kijf staat, is de omvang van zijn prestatie.",
+      "tts": {
+        "text": "Wat buiten kijf staat, is de omvang van zijn prestatie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een zoon van een pottenbakker van een Grieks eiland bouwde de machtigste vloot van de Middellandse Zee.",
+      "text_markdown": "Een zoon van een pottenbakker van een Grieks eiland bouwde de machtigste vloot van de Middellandse Zee.",
+      "tts": {
+        "text": "Een zoon van een pottenbakker van een Grieks eiland bouwde de machtigste vloot van de Middellandse Zee.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij versloeg de gezamenlijke vloten van de machtigste christelijke staten van Europa.",
+      "text_markdown": "Hij versloeg de gezamenlijke vloten van de machtigste christelijke staten van Europa.",
+      "tts": {
+        "text": "Hij versloeg de gezamenlijke vloten van de machtigste christelijke staten van Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij bestuurde een grote stad, gaf vorm aan de politiek van een continent en stierf, geëerd door het machtigste rijk ter wereld.",
+      "text_markdown": "Hij bestuurde een grote stad, gaf vorm aan de politiek van een continent en stierf, geëerd door het machtigste rijk ter wereld.",
+      "tts": {
+        "text": "Hij bestuurde een grote stad, gaf vorm aan de politiek van een continent en stierf, geëerd door het machtigste rijk ter wereld.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Nalatenschap",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Zijn leven is een bewijs van wat ambitie, vaardigheid en kans samen kunnen voortbrengen, wanneer zij elkaar op het juiste moment in de geschiedenis ontmoeten.",
+      "text_markdown": "Zijn leven is een bewijs van wat ambitie, vaardigheid en kans samen kunnen voortbrengen, wanneer zij elkaar op het juiste moment in de geschiedenis ontmoeten.",
+      "tts": {
+        "text": "Zijn leven is een bewijs van wat ambitie, vaardigheid en kans samen kunnen voortbrengen, wanneer zij elkaar op het juiste moment in de geschiedenis ontmoeten.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

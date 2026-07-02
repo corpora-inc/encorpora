@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tropiska regnskogen",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tropiska regnskogen",
+      "text_markdown": "Den tropiska regnskogen"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Där regnskogar växer",
+      "text_markdown": "Där regnskogar växer"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välkommen till den tropiska regnskogen.",
+      "text_markdown": "Välkommen till den tropiska regnskogen.",
+      "tts": {
+        "text": "Välkommen till den tropiska regnskogen.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det här är ett av världens stora biom.",
+      "text_markdown": "Det här är ett av världens stora biom.",
+      "tts": {
+        "text": "Det här är ett av världens stora biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+      "text_markdown": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+      "tts": {
+        "text": "Ett biom är en del av jorden med sitt eget slags väder, växter och djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiska regnskogen är varm hela året.",
+      "text_markdown": "Den tropiska regnskogen är varm hela året.",
+      "tts": {
+        "text": "Den tropiska regnskogen är varm hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den är blöt hela året.",
+      "text_markdown": "Den är blöt hela året.",
+      "tts": {
+        "text": "Den är blöt hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den är full av liv.",
+      "text_markdown": "Den är full av liv.",
+      "tts": {
+        "text": "Den är full av liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flesta regnskogar växer nära ekvatorn.",
+      "text_markdown": "De flesta regnskogar växer nära ekvatorn.",
+      "tts": {
+        "text": "De flesta regnskogar växer nära ekvatorn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekvatorn är linjen som går runt mitten av jorden.",
+      "text_markdown": "Ekvatorn är linjen som går runt mitten av jorden.",
+      "tts": {
+        "text": "Ekvatorn är linjen som går runt mitten av jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nära ekvatorn är solen stark varje dag.",
+      "text_markdown": "Nära ekvatorn är solen stark varje dag.",
+      "tts": {
+        "text": "Nära ekvatorn är solen stark varje dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den största regnskogen i världen är Amazonas, i Sydamerika.",
+      "text_markdown": "Den största regnskogen i världen är Amazonas, i Sydamerika.",
+      "tts": {
+        "text": "Den största regnskogen i världen är Amazonas, i Sydamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns stora regnskogar i Afrika också, nära Kongofloden.",
+      "text_markdown": "Det finns stora regnskogar i Afrika också, nära Kongofloden.",
+      "tts": {
+        "text": "Det finns stora regnskogar i Afrika också, nära Kongofloden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns regnskogar i Sydostasien, på många öar.",
+      "text_markdown": "Det finns regnskogar i Sydostasien, på många öar.",
+      "tts": {
+        "text": "Det finns regnskogar i Sydostasien, på många öar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns mindre regnskogar i Centralamerika och på öar i Stilla havet.",
+      "text_markdown": "Det finns mindre regnskogar i Centralamerika och på öar i Stilla havet.",
+      "tts": {
+        "text": "Det finns mindre regnskogar i Centralamerika och på öar i Stilla havet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Var och en av dessa skogar växte upp för sig själv, långt från de andra.",
+      "text_markdown": "Var och en av dessa skogar växte upp för sig själv, långt från de andra.",
+      "tts": {
+        "text": "Var och en av dessa skogar växte upp för sig själv, långt från de andra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så växterna och djuren är olika i varje del av världen.",
+      "text_markdown": "Så växterna och djuren är olika i varje del av världen.",
+      "tts": {
+        "text": "Så växterna och djuren är olika i varje del av världen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En apa i Amazonas är inte samma som en apa i Afrika eller Asien.",
+      "text_markdown": "En apa i Amazonas är inte samma som en apa i Afrika eller Asien.",
+      "tts": {
+        "text": "En apa i Amazonas är inte samma som en apa i Afrika eller Asien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de är alla del av samma biom.",
+      "text_markdown": "Men de är alla del av samma biom.",
+      "tts": {
+        "text": "Men de är alla del av samma biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du står inne i en regnskog känns luften tung och varm.",
+      "text_markdown": "När du står inne i en regnskog känns luften tung och varm.",
+      "tts": {
+        "text": "När du står inne i en regnskog känns luften tung och varm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ljuset är mjukt och grönt.",
+      "text_markdown": "Ljuset är mjukt och grönt.",
+      "tts": {
+        "text": "Ljuset är mjukt och grönt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden är så höga att du knappt kan se himlen.",
+      "text_markdown": "Träden är så höga att du knappt kan se himlen.",
+      "tts": {
+        "text": "Träden är så höga att du knappt kan se himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hör fåglar och insekter runt omkring dig.",
+      "text_markdown": "Du hör fåglar och insekter runt omkring dig.",
+      "tts": {
+        "text": "Du hör fåglar och insekter runt omkring dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hör vatten droppa från bladen.",
+      "text_markdown": "Du hör vatten droppa från bladen.",
+      "tts": {
+        "text": "Du hör vatten droppa från bladen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du känner det som om du är inne i ett rum av liv.",
+      "text_markdown": "Du känner det som om du är inne i ett rum av liv.",
+      "tts": {
+        "text": "Du känner det som om du är inne i ett rum av liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är vad regnskogen är.",
+      "text_markdown": "Det är vad regnskogen är.",
+      "tts": {
+        "text": "Det är vad regnskogen är.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Där regnskogar växer",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En hel värld byggd av träd och regn.",
+      "text_markdown": "En hel värld byggd av träd och regn.",
+      "tts": {
+        "text": "En hel värld byggd av träd och regn.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vädret",
+      "text_markdown": "Vädret"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vädret i den tropiska regnskogen är enkelt.",
+      "text_markdown": "Vädret i den tropiska regnskogen är enkelt.",
+      "tts": {
+        "text": "Vädret i den tropiska regnskogen är enkelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är varmt, och det regnar mycket.",
+      "text_markdown": "Det är varmt, och det regnar mycket.",
+      "tts": {
+        "text": "Det är varmt, och det regnar mycket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Temperaturen håller sig ungefär densamma hela året.",
+      "text_markdown": "Temperaturen håller sig ungefär densamma hela året.",
+      "tts": {
+        "text": "Temperaturen håller sig ungefär densamma hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det blir inte kallt på vintern.",
+      "text_markdown": "Det blir inte kallt på vintern.",
+      "tts": {
+        "text": "Det blir inte kallt på vintern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det blir inte särskilt hett på sommaren.",
+      "text_markdown": "Det blir inte särskilt hett på sommaren.",
+      "tts": {
+        "text": "Det blir inte särskilt hett på sommaren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flesta dagar är varma och jämna.",
+      "text_markdown": "De flesta dagar är varma och jämna.",
+      "tts": {
+        "text": "De flesta dagar är varma och jämna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det regnar nästan varje dag.",
+      "text_markdown": "Det regnar nästan varje dag.",
+      "tts": {
+        "text": "Det regnar nästan varje dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa platser får mer än två meter regn på ett år.",
+      "text_markdown": "Vissa platser får mer än två meter regn på ett år.",
+      "tts": {
+        "text": "Vissa platser får mer än två meter regn på ett år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är mer regn än de flesta delar av världen någonsin ser.",
+      "text_markdown": "Det är mer regn än de flesta delar av världen någonsin ser.",
+      "tts": {
+        "text": "Det är mer regn än de flesta delar av världen någonsin ser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regnet kommer ofta på eftermiddagen.",
+      "text_markdown": "Regnet kommer ofta på eftermiddagen.",
+      "tts": {
+        "text": "Regnet kommer ofta på eftermiddagen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stora moln samlas över träden.",
+      "text_markdown": "Stora moln samlas över träden.",
+      "tts": {
+        "text": "Stora moln samlas över träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tung skur faller i en eller två timmar.",
+      "text_markdown": "En tung skur faller i en eller två timmar.",
+      "tts": {
+        "text": "En tung skur faller i en eller två timmar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan kommer solen tillbaka.",
+      "text_markdown": "Sedan kommer solen tillbaka.",
+      "tts": {
+        "text": "Sedan kommer solen tillbaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bladen glänser, och ånga stiger från marken.",
+      "text_markdown": "Bladen glänser, och ånga stiger från marken.",
+      "tts": {
+        "text": "Bladen glänser, och ånga stiger från marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns inga fyra årstider här.",
+      "text_markdown": "Det finns inga fyra årstider här.",
+      "tts": {
+        "text": "Det finns inga fyra årstider här.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns bara en blötare tid och en torrare tid.",
+      "text_markdown": "Det finns bara en blötare tid och en torrare tid.",
+      "tts": {
+        "text": "Det finns bara en blötare tid och en torrare tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Även under den torrare tiden regnar det ofta.",
+      "text_markdown": "Även under den torrare tiden regnar det ofta.",
+      "tts": {
+        "text": "Även under den torrare tiden regnar det ofta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Vädret",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "För växterna och djuren i regnskogen känns varje dag ganska lika.",
+      "text_markdown": "För växterna och djuren i regnskogen känns varje dag ganska lika.",
+      "tts": {
+        "text": "För växterna och djuren i regnskogen känns varje dag ganska lika.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Marken och vattnet",
+      "text_markdown": "Marken och vattnet"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Marken i regnskogen är rik på liv, men jorden är tunn.",
+      "text_markdown": "Marken i regnskogen är rik på liv, men jorden är tunn.",
+      "tts": {
+        "text": "Marken i regnskogen är rik på liv, men jorden är tunn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det mesta av näringen finns i de översta centimetrarna.",
+      "text_markdown": "Det mesta av näringen finns i de översta centimetrarna.",
+      "tts": {
+        "text": "Det mesta av näringen finns i de översta centimetrarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När ett blad faller bryter insekter och små levande varelser ner det väldigt snabbt.",
+      "text_markdown": "När ett blad faller bryter insekter och små levande varelser ner det väldigt snabbt.",
+      "tts": {
+        "text": "När ett blad faller bryter insekter och små levande varelser ner det väldigt snabbt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden tar upp näringen igen nästan direkt.",
+      "text_markdown": "Träden tar upp näringen igen nästan direkt.",
+      "tts": {
+        "text": "Träden tar upp näringen igen nästan direkt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är därför en avverkad regnskog är svår att få tillbaka.",
+      "text_markdown": "Det är därför en avverkad regnskog är svår att få tillbaka.",
+      "tts": {
+        "text": "Det är därför en avverkad regnskog är svår att få tillbaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utan träden sköljer regnet bort den tunna jorden.",
+      "text_markdown": "Utan träden sköljer regnet bort den tunna jorden.",
+      "tts": {
+        "text": "Utan träden sköljer regnet bort den tunna jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Floder rinner genom varje regnskog.",
+      "text_markdown": "Floder rinner genom varje regnskog.",
+      "tts": {
+        "text": "Floder rinner genom varje regnskog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa floder är enorma.",
+      "text_markdown": "Vissa floder är enorma.",
+      "tts": {
+        "text": "Vissa floder är enorma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amazonfloden bär mer vatten än någon annan flod i världen.",
+      "text_markdown": "Amazonfloden bär mer vatten än någon annan flod i världen.",
+      "tts": {
+        "text": "Amazonfloden bär mer vatten än någon annan flod i världen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under regntiden sprider sig floderna långt in i skogen.",
+      "text_markdown": "Under regntiden sprider sig floderna långt in i skogen.",
+      "tts": {
+        "text": "Under regntiden sprider sig floderna långt in i skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden står i vatten i månader.",
+      "text_markdown": "Träden står i vatten i månader.",
+      "tts": {
+        "text": "Träden står i vatten i månader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fiskar simmar mellan stammarna.",
+      "text_markdown": "Fiskar simmar mellan stammarna.",
+      "tts": {
+        "text": "Fiskar simmar mellan stammarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra floder är små och klara, med stenar på botten.",
+      "text_markdown": "Andra floder är små och klara, med stenar på botten.",
+      "tts": {
+        "text": "Andra floder är små och klara, med stenar på botten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Själva skogen växer i lager.",
+      "text_markdown": "Själva skogen växer i lager.",
+      "tts": {
+        "text": "Själva skogen växer i lager.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Högst upp finns de högsta träden, med sina kronor utbredda i solen.",
+      "text_markdown": "Högst upp finns de högsta träden, med sina kronor utbredda i solen.",
+      "tts": {
+        "text": "Högst upp finns de högsta träden, med sina kronor utbredda i solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under dem finns ett tjockt grönt tak av blad.",
+      "text_markdown": "Under dem finns ett tjockt grönt tak av blad.",
+      "tts": {
+        "text": "Under dem finns ett tjockt grönt tak av blad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under det taket är luften skuggig och stilla.",
+      "text_markdown": "Under det taket är luften skuggig och stilla.",
+      "tts": {
+        "text": "Under det taket är luften skuggig och stilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nere på marken kommer bara lite ljus igenom.",
+      "text_markdown": "Nere på marken kommer bara lite ljus igenom.",
+      "tts": {
+        "text": "Nere på marken kommer bara lite ljus igenom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Marken och vattnet",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varje lager är ett eget hem för djuren och växterna i biomet.",
+      "text_markdown": "Varje lager är ett eget hem för djuren och växterna i biomet.",
+      "tts": {
+        "text": "Varje lager är ett eget hem för djuren och växterna i biomet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Växterna",
+      "text_markdown": "Växterna"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiska regnskogen har fler sorters växter än något annat biom på land.",
+      "text_markdown": "Den tropiska regnskogen har fler sorters växter än något annat biom på land.",
+      "tts": {
+        "text": "Den tropiska regnskogen har fler sorters växter än något annat biom på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden är dess hjärta.",
+      "text_markdown": "Träden är dess hjärta.",
+      "tts": {
+        "text": "Träden är dess hjärta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa träd växer sig mycket höga och sträcker sig mot solen.",
+      "text_markdown": "Vissa träd växer sig mycket höga och sträcker sig mot solen.",
+      "tts": {
+        "text": "Vissa träd växer sig mycket höga och sträcker sig mot solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras stammar är raka och släta.",
+      "text_markdown": "Deras stammar är raka och släta.",
+      "tts": {
+        "text": "Deras stammar är raka och släta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras rötter sprider sig brett vid foten, som väggar, för att hålla dem uppe i den tunna jorden.",
+      "text_markdown": "Deras rötter sprider sig brett vid foten, som väggar, för att hålla dem uppe i den tunna jorden.",
+      "tts": {
+        "text": "Deras rötter sprider sig brett vid foten, som väggar, för att hålla dem uppe i den tunna jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lianer klättrar uppför stammarna mot ljuset.",
+      "text_markdown": "Lianer klättrar uppför stammarna mot ljuset.",
+      "tts": {
+        "text": "Lianer klättrar uppför stammarna mot ljuset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa lianer är lika tjocka som din arm.",
+      "text_markdown": "Vissa lianer är lika tjocka som din arm.",
+      "tts": {
+        "text": "Vissa lianer är lika tjocka som din arm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De slingrar sig runt träden och hänger ner från grenarna.",
+      "text_markdown": "De slingrar sig runt träden och hänger ner från grenarna.",
+      "tts": {
+        "text": "De slingrar sig runt träden och hänger ner från grenarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Växter växer på själva träden, högt upp i luften.",
+      "text_markdown": "Växter växer på själva träden, högt upp i luften.",
+      "tts": {
+        "text": "Växter växer på själva träden, högt upp i luften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har inga rötter i marken alls.",
+      "text_markdown": "De har inga rötter i marken alls.",
+      "tts": {
+        "text": "De har inga rötter i marken alls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dricker regnet som rinner ner längs barken.",
+      "text_markdown": "De dricker regnet som rinner ner längs barken.",
+      "tts": {
+        "text": "De dricker regnet som rinner ner längs barken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den mörka skogsbottnen växer ormbunkar och mjuka gröna växter.",
+      "text_markdown": "På den mörka skogsbottnen växer ormbunkar och mjuka gröna växter.",
+      "tts": {
+        "text": "På den mörka skogsbottnen växer ormbunkar och mjuka gröna växter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har breda, platta blad för att fånga varje droppe ljus.",
+      "text_markdown": "De har breda, platta blad för att fånga varje droppe ljus.",
+      "tts": {
+        "text": "De har breda, platta blad för att fånga varje droppe ljus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blommor blommar i alla färger du kan tänka dig.",
+      "text_markdown": "Blommor blommar i alla färger du kan tänka dig.",
+      "tts": {
+        "text": "Blommor blommar i alla färger du kan tänka dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Några är röda, några är gula, några är djupt lila.",
+      "text_markdown": "Några är röda, några är gula, några är djupt lila.",
+      "tts": {
+        "text": "Några är röda, några är gula, några är djupt lila.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många av dem öppnar sig på natten.",
+      "text_markdown": "Många av dem öppnar sig på natten.",
+      "tts": {
+        "text": "Många av dem öppnar sig på natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Frukter hänger från grenarna hela året.",
+      "text_markdown": "Frukter hänger från grenarna hela året.",
+      "tts": {
+        "text": "Frukter hänger från grenarna hela året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns söta frukter, sura frukter och frukter med hårda skal.",
+      "text_markdown": "Det finns söta frukter, sura frukter och frukter med hårda skal.",
+      "tts": {
+        "text": "Det finns söta frukter, sura frukter och frukter med hårda skal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många av de mat vi äter hemma växte först vilt i regnskogar.",
+      "text_markdown": "Många av de mat vi äter hemma växte först vilt i regnskogar.",
+      "tts": {
+        "text": "Många av de mat vi äter hemma växte först vilt i regnskogar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kakao, växten som ger oss choklad, kom från regnskogarna i Sydamerika.",
+      "text_markdown": "Kakao, växten som ger oss choklad, kom från regnskogarna i Sydamerika.",
+      "tts": {
+        "text": "Kakao, växten som ger oss choklad, kom från regnskogarna i Sydamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De första bananväxterna växte i regnskogarna i Sydostasien.",
+      "text_markdown": "De första bananväxterna växte i regnskogarna i Sydostasien.",
+      "tts": {
+        "text": "De första bananväxterna växte i regnskogarna i Sydostasien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varje mat vi älskar har berättelsen om en skog någonstans på jorden.",
+      "text_markdown": "Varje mat vi älskar har berättelsen om en skog någonstans på jorden.",
+      "tts": {
+        "text": "Varje mat vi älskar har berättelsen om en skog någonstans på jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du tittar på en regnskogsväxt har den ofta hittat ett smart sätt att leva.",
+      "text_markdown": "När du tittar på en regnskogsväxt har den ofta hittat ett smart sätt att leva.",
+      "tts": {
+        "text": "När du tittar på en regnskogsväxt har den ofta hittat ett smart sätt att leva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa blad har en lång spets längst ut, så regnet rinner av snabbt.",
+      "text_markdown": "Vissa blad har en lång spets längst ut, så regnet rinner av snabbt.",
+      "tts": {
+        "text": "Vissa blad har en lång spets längst ut, så regnet rinner av snabbt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa blommor doftar sött bara på natten, för att kalla rätt insekt på besök.",
+      "text_markdown": "Vissa blommor doftar sött bara på natten, för att kalla rätt insekt på besök.",
+      "tts": {
+        "text": "Vissa blommor doftar sött bara på natten, för att kalla rätt insekt på besök.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Växterna",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hela skogen är en tyst maskin, gjord av grönt.",
+      "text_markdown": "Hela skogen är en tyst maskin, gjord av grönt.",
+      "tts": {
+        "text": "Hela skogen är en tyst maskin, gjord av grönt.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Djuren",
+      "text_markdown": "Djuren"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fler sorters djur lever i den tropiska regnskogen än någon annanstans på land.",
+      "text_markdown": "Fler sorters djur lever i den tropiska regnskogen än någon annanstans på land.",
+      "tts": {
+        "text": "Fler sorters djur lever i den tropiska regnskogen än någon annanstans på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flesta av dem lever uppe i träden, inte på marken.",
+      "text_markdown": "De flesta av dem lever uppe i träden, inte på marken.",
+      "tts": {
+        "text": "De flesta av dem lever uppe i träden, inte på marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns mer mat och mer ljus där uppe.",
+      "text_markdown": "Det finns mer mat och mer ljus där uppe.",
+      "tts": {
+        "text": "Det finns mer mat och mer ljus där uppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apor lever i många regnskogar.",
+      "text_markdown": "Apor lever i många regnskogar.",
+      "tts": {
+        "text": "Apor lever i många regnskogar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hoppar från gren till gren och ropar till varandra mellan träden.",
+      "text_markdown": "De hoppar från gren till gren och ropar till varandra mellan träden.",
+      "tts": {
+        "text": "De hoppar från gren till gren och ropar till varandra mellan träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskogarna i Sydamerika har vissa apor långa svansar som de använder som en extra hand.",
+      "text_markdown": "I regnskogarna i Sydamerika har vissa apor långa svansar som de använder som en extra hand.",
+      "tts": {
+        "text": "I regnskogarna i Sydamerika har vissa apor långa svansar som de använder som en extra hand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papegojor och andra färgglada fåglar flyger mellan de höga grenarna.",
+      "text_markdown": "Papegojor och andra färgglada fåglar flyger mellan de höga grenarna.",
+      "tts": {
+        "text": "Papegojor och andra färgglada fåglar flyger mellan de höga grenarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De äter frukt och frön.",
+      "text_markdown": "De äter frukt och frön.",
+      "tts": {
+        "text": "De äter frukt och frön.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deras fjädrar är röda, gröna, blå och gula.",
+      "text_markdown": "Deras fjädrar är röda, gröna, blå och gula.",
+      "tts": {
+        "text": "Deras fjädrar är röda, gröna, blå och gula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I många regnskogar jagar stora kattdjur på marken på natten.",
+      "text_markdown": "I många regnskogar jagar stora kattdjur på marken på natten.",
+      "tts": {
+        "text": "I många regnskogar jagar stora kattdjur på marken på natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Amerika är detta kattdjur jaguaren.",
+      "text_markdown": "I Amerika är detta kattdjur jaguaren.",
+      "tts": {
+        "text": "I Amerika är detta kattdjur jaguaren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Asien är det tigern.",
+      "text_markdown": "I Asien är det tigern.",
+      "tts": {
+        "text": "I Asien är det tigern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika är det leoparden.",
+      "text_markdown": "I Afrika är det leoparden.",
+      "tts": {
+        "text": "I Afrika är det leoparden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alla är starka och tysta, med fläckar eller ränder på pälsen.",
+      "text_markdown": "Alla är starka och tysta, med fläckar eller ränder på pälsen.",
+      "tts": {
+        "text": "Alla är starka och tysta, med fläckar eller ränder på pälsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ormar glider genom bladen och träden.",
+      "text_markdown": "Ormar glider genom bladen och träden.",
+      "tts": {
+        "text": "Ormar glider genom bladen och träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa ormar är väldigt små, och vissa är väldigt långa.",
+      "text_markdown": "Vissa ormar är väldigt små, och vissa är väldigt långa.",
+      "tts": {
+        "text": "Vissa ormar är väldigt små, och vissa är väldigt långa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flesta av dem är blyga och håller sig borta från människor.",
+      "text_markdown": "De flesta av dem är blyga och håller sig borta från människor.",
+      "tts": {
+        "text": "De flesta av dem är blyga och håller sig borta från människor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grodor sjunger varje natt, särskilt efter regnet.",
+      "text_markdown": "Grodor sjunger varje natt, särskilt efter regnet.",
+      "tts": {
+        "text": "Grodor sjunger varje natt, särskilt efter regnet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa grodor är pyttesmå och färgglada.",
+      "text_markdown": "Vissa grodor är pyttesmå och färgglada.",
+      "tts": {
+        "text": "Vissa grodor är pyttesmå och färgglada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Starka färger varnar andra djur att inte äta dem.",
+      "text_markdown": "Starka färger varnar andra djur att inte äta dem.",
+      "tts": {
+        "text": "Starka färger varnar andra djur att inte äta dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insekter fyller varje hörn av skogen.",
+      "text_markdown": "Insekter fyller varje hörn av skogen.",
+      "tts": {
+        "text": "Insekter fyller varje hörn av skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns fler insekter i regnskogen än någon annan sorts djur.",
+      "text_markdown": "Det finns fler insekter i regnskogen än någon annan sorts djur.",
+      "tts": {
+        "text": "Det finns fler insekter i regnskogen än någon annan sorts djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myror marscherar i långa led över skogsbottnen.",
+      "text_markdown": "Myror marscherar i långa led över skogsbottnen.",
+      "tts": {
+        "text": "Myror marscherar i långa led över skogsbottnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skalbaggar klättrar uppför stammarna.",
+      "text_markdown": "Skalbaggar klättrar uppför stammarna.",
+      "tts": {
+        "text": "Skalbaggar klättrar uppför stammarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fjärilar svävar genom luften på breda, målade vingar.",
+      "text_markdown": "Fjärilar svävar genom luften på breda, målade vingar.",
+      "tts": {
+        "text": "Fjärilar svävar genom luften på breda, målade vingar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fiskar lever i floderna, i många former och storlekar.",
+      "text_markdown": "Fiskar lever i floderna, i många former och storlekar.",
+      "tts": {
+        "text": "Fiskar lever i floderna, i många former och storlekar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa fiskar är pyttesmå och silverfärgade, och vissa är större än ett barn.",
+      "text_markdown": "Vissa fiskar är pyttesmå och silverfärgade, och vissa är större än ett barn.",
+      "tts": {
+        "text": "Vissa fiskar är pyttesmå och silverfärgade, och vissa är större än ett barn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Högt över alltsammans glider örnar över skogens gröna tak.",
+      "text_markdown": "Högt över alltsammans glider örnar över skogens gröna tak.",
+      "tts": {
+        "text": "Högt över alltsammans glider örnar över skogens gröna tak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De spanar efter rörelse nedanför.",
+      "text_markdown": "De spanar efter rörelse nedanför.",
+      "tts": {
+        "text": "De spanar efter rörelse nedanför.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fladdermöss flyger ut vid solnedgången för att äta frukt och insekter.",
+      "text_markdown": "Fladdermöss flyger ut vid solnedgången för att äta frukt och insekter.",
+      "tts": {
+        "text": "Fladdermöss flyger ut vid solnedgången för att äta frukt och insekter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ett enda regnskogsträd kan du hitta fler sorters djur än i en hel stad någon annanstans.",
+      "text_markdown": "I ett enda regnskogsträd kan du hitta fler sorters djur än i en hel stad någon annanstans.",
+      "tts": {
+        "text": "I ett enda regnskogsträd kan du hitta fler sorters djur än i en hel stad någon annanstans.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Djuren",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är undret med detta biom.",
+      "text_markdown": "Det är undret med detta biom.",
+      "tts": {
+        "text": "Det är undret med detta biom.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Människorna",
+      "text_markdown": "Människorna"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människor har bott i den tropiska regnskogen i mycket lång tid.",
+      "text_markdown": "Människor har bott i den tropiska regnskogen i mycket lång tid.",
+      "tts": {
+        "text": "Människor har bott i den tropiska regnskogen i mycket lång tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har lärt sig att leva bra med träden, regnet och djuren.",
+      "text_markdown": "De har lärt sig att leva bra med träden, regnet och djuren.",
+      "tts": {
+        "text": "De har lärt sig att leva bra med träden, regnet och djuren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många människor i regnskogen bor i små byar.",
+      "text_markdown": "Många människor i regnskogen bor i små byar.",
+      "tts": {
+        "text": "Många människor i regnskogen bor i små byar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Husen byggs ofta på höga trästolpar för att hålla dem ovanför den blöta marken.",
+      "text_markdown": "Husen byggs ofta på höga trästolpar för att hålla dem ovanför den blöta marken.",
+      "tts": {
+        "text": "Husen byggs ofta på höga trästolpar för att hålla dem ovanför den blöta marken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taken är gjorda av blad lagda i tjocka rader.",
+      "text_markdown": "Taken är gjorda av blad lagda i tjocka rader.",
+      "tts": {
+        "text": "Taken är gjorda av blad lagda i tjocka rader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett bra blad tak håller det tunga regnet ute.",
+      "text_markdown": "Ett bra blad tak håller det tunga regnet ute.",
+      "tts": {
+        "text": "Ett bra blad tak håller det tunga regnet ute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Väggarna är ofta öppna för att låta den varma luften passera.",
+      "text_markdown": "Väggarna är ofta öppna för att låta den varma luften passera.",
+      "tts": {
+        "text": "Väggarna är ofta öppna för att låta den varma luften passera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människorna fiskar i floderna och samlar mat från skogen.",
+      "text_markdown": "Människorna fiskar i floderna och samlar mat från skogen.",
+      "tts": {
+        "text": "Människorna fiskar i floderna och samlar mat från skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De jagar små djur med pilbågar och spjut.",
+      "text_markdown": "De jagar små djur med pilbågar och spjut.",
+      "tts": {
+        "text": "De jagar små djur med pilbågar och spjut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De odlar mat i små trädgårdar som röjts bland träden.",
+      "text_markdown": "De odlar mat i små trädgårdar som röjts bland träden.",
+      "tts": {
+        "text": "De odlar mat i små trädgårdar som röjts bland träden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vad de odlar beror på var de bor.",
+      "text_markdown": "Vad de odlar beror på var de bor.",
+      "tts": {
+        "text": "Vad de odlar beror på var de bor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskogarna i Sydamerika har människor odlat kassava och sötpotatis i tusentals år.",
+      "text_markdown": "I regnskogarna i Sydamerika har människor odlat kassava och sötpotatis i tusentals år.",
+      "tts": {
+        "text": "I regnskogarna i Sydamerika har människor odlat kassava och sötpotatis i tusentals år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskogarna i Afrika har människor odlat jams och palmfrukt.",
+      "text_markdown": "I regnskogarna i Afrika har människor odlat jams och palmfrukt.",
+      "tts": {
+        "text": "I regnskogarna i Afrika har människor odlat jams och palmfrukt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskogarna i Sydostasien och Stilla havet har människor odlat taro, ris och brödfrukt.",
+      "text_markdown": "I regnskogarna i Sydostasien och Stilla havet har människor odlat taro, ris och brödfrukt.",
+      "tts": {
+        "text": "I regnskogarna i Sydostasien och Stilla havet har människor odlat taro, ris och brödfrukt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter några år låter de trädgården växa tillbaka till skog, och de gör en ny någon annanstans.",
+      "text_markdown": "Efter några år låter de trädgården växa tillbaka till skog, och de gör en ny någon annanstans.",
+      "tts": {
+        "text": "Efter några år låter de trädgården växa tillbaka till skog, och de gör en ny någon annanstans.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är så skogen håller sig frisk.",
+      "text_markdown": "Det är så skogen håller sig frisk.",
+      "tts": {
+        "text": "Det är så skogen håller sig frisk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Människorna i regnskogen känner tusentals växter.",
+      "text_markdown": "Människorna i regnskogen känner tusentals växter.",
+      "tts": {
+        "text": "Människorna i regnskogen känner tusentals växter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vet vilka som ger mat, vilka som ger medicin och vilka som inte är säkra att äta.",
+      "text_markdown": "De vet vilka som ger mat, vilka som ger medicin och vilka som inte är säkra att äta.",
+      "tts": {
+        "text": "De vet vilka som ger mat, vilka som ger medicin och vilka som inte är säkra att äta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lär sig fåglarnas sånger.",
+      "text_markdown": "De lär sig fåglarnas sånger.",
+      "tts": {
+        "text": "De lär sig fåglarnas sånger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lär sig djurens spår.",
+      "text_markdown": "De lär sig djurens spår.",
+      "tts": {
+        "text": "De lär sig djurens spår.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denna kunskap delas från föräldrar till barn, år efter år.",
+      "text_markdown": "Denna kunskap delas från föräldrar till barn, år efter år.",
+      "tts": {
+        "text": "Denna kunskap delas från föräldrar till barn, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Människorna",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I varje regnskog har detta liv sina egna språk, sina egna berättelser och sin egen musik.",
+      "text_markdown": "I varje regnskog har detta liv sina egna språk, sina egna berättelser och sin egen musik.",
+      "tts": {
+        "text": "I varje regnskog har detta liv sina egna språk, sina egna berättelser och sin egen musik.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Regnskogen idag",
+      "text_markdown": "Regnskogen idag"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiska regnskogen är ett av de viktigaste biomen på jorden.",
+      "text_markdown": "Den tropiska regnskogen är ett av de viktigaste biomen på jorden.",
+      "tts": {
+        "text": "Den tropiska regnskogen är ett av de viktigaste biomen på jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden drar upp vatten ur marken och andas ut det mot himlen.",
+      "text_markdown": "Träden drar upp vatten ur marken och andas ut det mot himlen.",
+      "tts": {
+        "text": "Träden drar upp vatten ur marken och andas ut det mot himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molnen som bildas över skogen bär regn till länder långt bort.",
+      "text_markdown": "Molnen som bildas över skogen bär regn till länder långt bort.",
+      "tts": {
+        "text": "Molnen som bildas över skogen bär regn till länder långt bort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Träden andas också, men tvärtom mot oss.",
+      "text_markdown": "Träden andas också, men tvärtom mot oss.",
+      "tts": {
+        "text": "Träden andas också, men tvärtom mot oss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tar in gasen vi andas ut, och de använder den för att växa.",
+      "text_markdown": "De tar in gasen vi andas ut, och de använder den för att växa.",
+      "tts": {
+        "text": "De tar in gasen vi andas ut, och de använder den för att växa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Och de ger tillbaka gasen vi andas in.",
+      "text_markdown": "Och de ger tillbaka gasen vi andas in.",
+      "tts": {
+        "text": "Och de ger tillbaka gasen vi andas in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men regnskogen är i fara.",
+      "text_markdown": "Men regnskogen är i fara.",
+      "tts": {
+        "text": "Men regnskogen är i fara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På många platser har människor huggit ner träden för att odla grödor eller föda upp djur.",
+      "text_markdown": "På många platser har människor huggit ner träden för att odla grödor eller föda upp djur.",
+      "tts": {
+        "text": "På många platser har människor huggit ner träden för att odla grödor eller föda upp djur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När träden är borta sköljs jorden bort, och regnet slutar falla på det sätt det brukade.",
+      "text_markdown": "När träden är borta sköljs jorden bort, och regnet slutar falla på det sätt det brukade.",
+      "tts": {
+        "text": "När träden är borta sköljs jorden bort, och regnet slutar falla på det sätt det brukade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Djuren och människorna som bor där förlorar sitt hem.",
+      "text_markdown": "Djuren och människorna som bor där förlorar sitt hem.",
+      "tts": {
+        "text": "Djuren och människorna som bor där förlorar sitt hem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Många grupper runt om i världen arbetar för att skydda det som finns kvar.",
+      "text_markdown": "Många grupper runt om i världen arbetar för att skydda det som finns kvar.",
+      "tts": {
+        "text": "Många grupper runt om i världen arbetar för att skydda det som finns kvar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planterar nya träd.",
+      "text_markdown": "De planterar nya träd.",
+      "tts": {
+        "text": "De planterar nya träd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hjälper människorna som bor i skogen att ta hand om den.",
+      "text_markdown": "De hjälper människorna som bor i skogen att ta hand om den.",
+      "tts": {
+        "text": "De hjälper människorna som bor i skogen att ta hand om den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerar skogen så att vi förstår den bättre.",
+      "text_markdown": "De studerar skogen så att vi förstår den bättre.",
+      "tts": {
+        "text": "De studerar skogen så att vi förstår den bättre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En regnskog tar hundratals år att växa upp.",
+      "text_markdown": "En regnskog tar hundratals år att växa upp.",
+      "tts": {
+        "text": "En regnskog tar hundratals år att växa upp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men en frisk regnskog kan fortsätta växa i tusentals år.",
+      "text_markdown": "Men en frisk regnskog kan fortsätta växa i tusentals år.",
+      "tts": {
+        "text": "Men en frisk regnskog kan fortsätta växa i tusentals år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Regnskogen idag",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den är värd vår omsorg.",
+      "text_markdown": "Den är värd vår omsorg.",
+      "tts": {
+        "text": "Den är värd vår omsorg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är den tropiska regnskogen.",
+      "text_markdown": "Det är den tropiska regnskogen.",
+      "tts": {
+        "text": "Det är den tropiska regnskogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En varm, blöt, grön värld full av liv.",
+      "text_markdown": "En varm, blöt, grön värld full av liv.",
+      "tts": {
+        "text": "En varm, blöt, grön värld full av liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du någonsin går in i en, stå stilla en stund.",
+      "text_markdown": "Om du någonsin går in i en, stå stilla en stund.",
+      "tts": {
+        "text": "Om du någonsin går in i en, stå stilla en stund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyssna på fåglarna, grodorna och regnet på bladen.",
+      "text_markdown": "Lyssna på fåglarna, grodorna och regnet på bladen.",
+      "tts": {
+        "text": "Lyssna på fåglarna, grodorna och regnet på bladen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kommer att höra biomets hjärta slå runt omkring dig.",
+      "text_markdown": "Du kommer att höra biomets hjärta slå runt omkring dig.",
+      "tts": {
+        "text": "Du kommer att höra biomets hjärta slå runt omkring dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

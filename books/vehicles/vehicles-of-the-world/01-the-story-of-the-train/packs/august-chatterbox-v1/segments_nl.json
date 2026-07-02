@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord voor de lezer",
+      "text_markdown": "Een woord voor de lezer"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al tweehonderd jaar is de trein de ijzeren weg van de wereld.",
+      "text_markdown": "Al tweehonderd jaar is de trein de ijzeren weg van de wereld.",
+      "tts": {
+        "text": "Al tweehonderd jaar is de trein de ijzeren weg van de wereld.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Treinen vervoeren mensen.",
+      "text_markdown": "Treinen vervoeren mensen.",
+      "tts": {
+        "text": "Treinen vervoeren mensen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treinen vervoeren goederen.",
+      "text_markdown": "Treinen vervoeren goederen.",
+      "tts": {
+        "text": "Treinen vervoeren goederen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een lange trein kan genoeg graan vervoeren voor een hele stad.",
+      "text_markdown": "Een lange trein kan genoeg graan vervoeren voor een hele stad.",
+      "tts": {
+        "text": "Een lange trein kan genoeg graan vervoeren voor een hele stad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Een snelle trein kan op de snelweg sneller zijn dan een auto.",
+      "text_markdown": "Een snelle trein kan op de snelweg sneller zijn dan een auto.",
+      "tts": {
+        "text": "Een snelle trein kan op de snelweg sneller zijn dan een auto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord voor de lezer",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het verhaal van de trein begint in Engeland, bijna tweehonderd jaar geleden, met een man, een vuur en een ketel met kokend water.",
+      "text_markdown": "Het verhaal van de trein begint in Engeland, bijna tweehonderd jaar geleden, met een man, een vuur en een ketel met kokend water.",
+      "tts": {
+        "text": "Het verhaal van de trein begint in Engeland, bijna tweehonderd jaar geleden, met een man, een vuur en een ketel met kokend water.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 1 — De eerste stoomtrein",
+      "text_markdown": "Hoofdstuk 1 — De eerste stoomtrein"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een trein is een rij wagons die over ijzeren rails rijdt.",
+      "text_markdown": "Een trein is een rij wagons die over ijzeren rails rijdt.",
+      "tts": {
+        "text": "Een trein is een rij wagons die over ijzeren rails rijdt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Voorop staat de locomotief.",
+      "text_markdown": "Voorop staat de locomotief.",
+      "tts": {
+        "text": "Voorop staat de locomotief.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die trekt alle andere.",
+      "text_markdown": "Die trekt alle andere.",
+      "tts": {
+        "text": "Die trekt alle andere.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste treinen reden op stoom.",
+      "text_markdown": "De eerste treinen reden op stoom.",
+      "tts": {
+        "text": "De eerste treinen reden op stoom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een stoommachine verbrandt steenkool om water te koken.",
+      "text_markdown": "Een stoommachine verbrandt steenkool om water te koken.",
+      "tts": {
+        "text": "Een stoommachine verbrandt steenkool om water te koken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De hete stoom duwt tegen zuigers.",
+      "text_markdown": "De hete stoom duwt tegen zuigers.",
+      "tts": {
+        "text": "De hete stoom duwt tegen zuigers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De zuigers laten de wielen draaien.",
+      "text_markdown": "De zuigers laten de wielen draaien.",
+      "tts": {
+        "text": "De zuigers laten de wielen draaien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De wielen lopen over de rails.",
+      "text_markdown": "De wielen lopen over de rails.",
+      "tts": {
+        "text": "De wielen lopen over de rails.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het verhaal begint in Engeland.",
+      "text_markdown": "Het verhaal begint in Engeland.",
+      "tts": {
+        "text": "Het verhaal begint in Engeland.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In het jaar 1825 werd de eerste openbare spoorweg geopend.",
+      "text_markdown": "In het jaar 1825 werd de eerste openbare spoorweg geopend.",
+      "tts": {
+        "text": "In het jaar achttienhonderdvijfentwintig werd de eerste openbare spoorweg geopend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die heette de Stockton and Darlington Railway.",
+      "text_markdown": "Die heette de Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Die heette de Stok ton end Dar ling ton riel wee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die vervoerde steenkool van een mijn naar de rivier.",
+      "text_markdown": "Die vervoerde steenkool van een mijn naar de rivier.",
+      "tts": {
+        "text": "Die vervoerde steenkool van een mijn naar de rivier.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een man die George Stephenson heette, bouwde de locomotieven.",
+      "text_markdown": "Een man die George Stephenson heette, bouwde de locomotieven.",
+      "tts": {
+        "text": "Een man die Djoordz Stefenson heette, bouwde de locomotieven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mensen noemden hem de vader van de spoorwegen.",
+      "text_markdown": "Mensen noemden hem de vader van de spoorwegen.",
+      "tts": {
+        "text": "Mensen noemden hem de vader van de spoorwegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1829 bouwde zijn zoon Robert Stephenson een beroemde locomotief die de Rocket heette.",
+      "text_markdown": "In 1829 bouwde zijn zoon Robert Stephenson een beroemde locomotief die de Rocket heette.",
+      "tts": {
+        "text": "In achttienhonderdnegenentwintig bouwde zijn zoon Robbert Stefenson een beroemde locomotief die de Rokkit heette.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die won een wedstrijd voor de snelste trein.",
+      "text_markdown": "Die won een wedstrijd voor de snelste trein.",
+      "tts": {
+        "text": "Die won een wedstrijd voor de snelste trein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Rocket kon bijna 30 mijl per uur halen.",
+      "text_markdown": "De Rocket kon bijna 30 mijl per uur halen.",
+      "tts": {
+        "text": "De Rokkit kon bijna dertig mijl per uur halen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat was sneller dan ieder paard.",
+      "text_markdown": "Dat was sneller dan ieder paard.",
+      "tts": {
+        "text": "Dat was sneller dan ieder paard.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste stoomtrein",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het tijdperk van de trein was begonnen.",
+      "text_markdown": "Het tijdperk van de trein was begonnen.",
+      "tts": {
+        "text": "Het tijdperk van de trein was begonnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "text_markdown": "Hoofdstuk 2 — De ijzeren weg verspreidt zich"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de Rocket verspreidden spoorwegen zich snel.",
+      "text_markdown": "Na de Rocket verspreidden spoorwegen zich snel.",
+      "tts": {
+        "text": "Na de Rokkit verspreidden spoorwegen zich snel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Groot Brittannië legde duizenden mijlen spoor aan.",
+      "text_markdown": "Groot Brittannië legde duizenden mijlen spoor aan.",
+      "tts": {
+        "text": "Groot Brittannië legde duizenden mijlen spoor aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daarna volgde de rest van de wereld.",
+      "text_markdown": "Daarna volgde de rest van de wereld.",
+      "tts": {
+        "text": "Daarna volgde de rest van de wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1830 werd de eerste grote Amerikaanse spoorweg geopend.",
+      "text_markdown": "In 1830 werd de eerste grote Amerikaanse spoorweg geopend.",
+      "tts": {
+        "text": "In achttienhonderddertig werd de eerste grote Amerikaanse spoorweg geopend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die heette de Baltimore and Ohio.",
+      "text_markdown": "Die heette de Baltimore and Ohio.",
+      "tts": {
+        "text": "Die heette de Bolti mor end O haai oo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die verbond de stad Baltimore met de rivier de Ohio.",
+      "text_markdown": "Die verbond de stad Baltimore met de rivier de Ohio.",
+      "tts": {
+        "text": "Die verbond de stad Bolti mor met de rivier de O haai oo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Frankrijk werd in 1832 de eerste spoorweg geopend.",
+      "text_markdown": "In Frankrijk werd in 1832 de eerste spoorweg geopend.",
+      "tts": {
+        "text": "In Frankrijk werd in achttienhonderdtweeëndertig de eerste spoorweg geopend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die vervoerde steenkool, net als de Britse lijn.",
+      "text_markdown": "Die vervoerde steenkool, net als de Britse lijn.",
+      "tts": {
+        "text": "Die vervoerde steenkool, net als de Britse lijn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Duitsland werd in 1839 de eerste lange spoorweg geopend.",
+      "text_markdown": "In Duitsland werd in 1839 de eerste lange spoorweg geopend.",
+      "tts": {
+        "text": "In Duitsland werd in achttienhonderdnegenendertig de eerste lange spoorweg geopend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die liep tussen twee steden, Leipzig en Dresden.",
+      "text_markdown": "Die liep tussen twee steden, Leipzig en Dresden.",
+      "tts": {
+        "text": "Die liep tussen twee steden, Lajptsig en Drezden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusland bouwde zijn eerste spoorweg in 1837.",
+      "text_markdown": "Rusland bouwde zijn eerste spoorweg in 1837.",
+      "tts": {
+        "text": "Rusland bouwde zijn eerste spoorweg in achttienhonderdzevenendertig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De lijn liep van Sint Petersburg naar een stadje in de buurt.",
+      "text_markdown": "De lijn liep van Sint Petersburg naar een stadje in de buurt.",
+      "tts": {
+        "text": "De lijn liep van Sint Petersburg naar een stadje in de buurt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het bouwen van een spoorweg was zwaar werk.",
+      "text_markdown": "Het bouwen van een spoorweg was zwaar werk.",
+      "tts": {
+        "text": "Het bouwen van een spoorweg was zwaar werk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mannen groeven tunnels door bergen.",
+      "text_markdown": "Mannen groeven tunnels door bergen.",
+      "tts": {
+        "text": "Mannen groeven tunnels door bergen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze bouwden bruggen over rivieren.",
+      "text_markdown": "Ze bouwden bruggen over rivieren.",
+      "tts": {
+        "text": "Ze bouwden bruggen over rivieren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze legden elke rail met de hand.",
+      "text_markdown": "Ze legden elke rail met de hand.",
+      "tts": {
+        "text": "Ze legden elke rail met de hand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de lijnen groeiden plaatsen.",
+      "text_markdown": "Langs de lijnen groeiden plaatsen.",
+      "tts": {
+        "text": "Langs de lijnen groeiden plaatsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een klein dorp met een station kon een stad worden.",
+      "text_markdown": "Een klein dorp met een station kon een stad worden.",
+      "tts": {
+        "text": "Een klein dorp met een station kon een stad worden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De trein bracht mensen.",
+      "text_markdown": "De trein bracht mensen.",
+      "tts": {
+        "text": "De trein bracht mensen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De trein bracht goederen.",
+      "text_markdown": "De trein bracht goederen.",
+      "tts": {
+        "text": "De trein bracht goederen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ijzeren weg verspreidt zich",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De trein bracht de wereld een beetje dichterbij.",
+      "text_markdown": "De trein bracht de wereld een beetje dichterbij.",
+      "tts": {
+        "text": "De trein bracht de wereld een beetje dichterbij.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 3 — De grote spoorlijnen",
+      "text_markdown": "Hoofdstuk 3 — De grote spoorlijnen"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige spoorwegen zijn kort.",
+      "text_markdown": "Sommige spoorwegen zijn kort.",
+      "tts": {
+        "text": "Sommige spoorwegen zijn kort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sommige zijn heel lang.",
+      "text_markdown": "Sommige zijn heel lang.",
+      "tts": {
+        "text": "Sommige zijn heel lang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De langste lijnen doorkruisten hele continenten.",
+      "text_markdown": "De langste lijnen doorkruisten hele continenten.",
+      "tts": {
+        "text": "De langste lijnen doorkruisten hele continenten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Verenigde Staten bouwden twee bedrijven een spoorweg dwars door het land.",
+      "text_markdown": "In de Verenigde Staten bouwden twee bedrijven een spoorweg dwars door het land.",
+      "tts": {
+        "text": "In de Verenigde Staten bouwden twee bedrijven een spoorweg dwars door het land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eén begon in Californië en werkte naar het oosten.",
+      "text_markdown": "Eén begon in Californië en werkte naar het oosten.",
+      "tts": {
+        "text": "Eén begon in Californië en werkte naar het oosten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het andere begon in Nebraska en werkte naar het westen.",
+      "text_markdown": "Het andere begon in Nebraska en werkte naar het westen.",
+      "tts": {
+        "text": "Het andere begon in Nebraska en werkte naar het westen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze ontmoetten elkaar op een plek die Promontory Summit heet, in Utah.",
+      "text_markdown": "Ze ontmoetten elkaar op een plek die Promontory Summit heet, in Utah.",
+      "tts": {
+        "text": "Ze ontmoetten elkaar op een plek die Pro mon terie Sammit heet, in Utah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat was in het jaar 1869.",
+      "text_markdown": "Dat was in het jaar 1869.",
+      "tts": {
+        "text": "Dat was in het jaar achttienhonderdnegenenzestig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De laatste spijker was van goud.",
+      "text_markdown": "De laatste spijker was van goud.",
+      "tts": {
+        "text": "De laatste spijker was van goud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen noemden die de Golden Spike.",
+      "text_markdown": "Mensen noemden die de Golden Spike.",
+      "tts": {
+        "text": "Mensen noemden die de Goolden Spaik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De lijn heette de Transcontinental Railroad.",
+      "text_markdown": "De lijn heette de Transcontinental Railroad.",
+      "tts": {
+        "text": "De lijn heette de Trans continen tel Reil rood.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nu kon je in ongeveer een week met de trein van de ene oceaan naar de andere reizen.",
+      "text_markdown": "Nu kon je in ongeveer een week met de trein van de ene oceaan naar de andere reizen.",
+      "tts": {
+        "text": "Nu kon je in ongeveer een week met de trein van de ene oceaan naar de andere reizen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusland bouwde een nog langere lijn.",
+      "text_markdown": "Rusland bouwde een nog langere lijn.",
+      "tts": {
+        "text": "Rusland bouwde een nog langere lijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die heet de Trans Siberian Railway.",
+      "text_markdown": "Die heet de Trans Siberian Railway.",
+      "tts": {
+        "text": "Die heet de Trans Sajbirian riel wee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die loopt van Moskou in het westen naar Vladivostok in het oosten.",
+      "text_markdown": "Die loopt van Moskou in het westen naar Vladivostok in het oosten.",
+      "tts": {
+        "text": "Die loopt van Moskou in het westen naar Vladivostok in het oosten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De lijn werd voltooid in 1916.",
+      "text_markdown": "De lijn werd voltooid in 1916.",
+      "tts": {
+        "text": "De lijn werd voltooid in negentienhonderdzestien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hij is meer dan 9000 kilometer lang.",
+      "text_markdown": "Hij is meer dan 9000 kilometer lang.",
+      "tts": {
+        "text": "Hij is meer dan negenduizend kilometer lang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Een volledige reis duurt ongeveer zeven dagen.",
+      "text_markdown": "Een volledige reis duurt ongeveer zeven dagen.",
+      "tts": {
+        "text": "Een volledige reis duurt ongeveer zeven dagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — De grote spoorlijnen",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Het is nog steeds de langste spoorweg ter wereld.",
+      "text_markdown": "Het is nog steeds de langste spoorweg ter wereld.",
+      "tts": {
+        "text": "Het is nog steeds de langste spoorweg ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "text_markdown": "Hoofdstuk 4 — Stoom, diesel, elektrisch"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ongeveer honderd jaar lang was bijna elke trein een stoomtrein.",
+      "text_markdown": "Ongeveer honderd jaar lang was bijna elke trein een stoomtrein.",
+      "tts": {
+        "text": "Ongeveer honderd jaar lang was bijna elke trein een stoomtrein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Stoomlocomotieven waren groot en luid.",
+      "text_markdown": "Stoomlocomotieven waren groot en luid.",
+      "tts": {
+        "text": "Stoomlocomotieven waren groot en luid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze verbrandden steenkool.",
+      "text_markdown": "Ze verbrandden steenkool.",
+      "tts": {
+        "text": "Ze verbrandden steenkool.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze bliezen dikke rook de lucht in.",
+      "text_markdown": "Ze bliezen dikke rook de lucht in.",
+      "tts": {
+        "text": "Ze bliezen dikke rook de lucht in.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen kwam de diesellocomotief.",
+      "text_markdown": "Toen kwam de diesellocomotief.",
+      "tts": {
+        "text": "Toen kwam de diesellocomotief.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een dieselmotor verbrandt olie in plaats van steenkool.",
+      "text_markdown": "Een dieselmotor verbrandt olie in plaats van steenkool.",
+      "tts": {
+        "text": "Een dieselmotor verbrandt olie in plaats van steenkool.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die is kleiner en schoner.",
+      "text_markdown": "Die is kleiner en schoner.",
+      "tts": {
+        "text": "Die is kleiner en schoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij heeft geen vuur en geen watertank nodig.",
+      "text_markdown": "Hij heeft geen vuur en geen watertank nodig.",
+      "tts": {
+        "text": "Hij heeft geen vuur en geen watertank nodig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieseltreinen werden in de jaren veertig en vijftig heel gewoon.",
+      "text_markdown": "Dieseltreinen werden in de jaren veertig en vijftig heel gewoon.",
+      "tts": {
+        "text": "Dieseltreinen werden in de jaren veertig en vijftig heel gewoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Langzaam werden de grote stoomlocomotieven buiten dienst gesteld.",
+      "text_markdown": "Langzaam werden de grote stoomlocomotieven buiten dienst gesteld.",
+      "tts": {
+        "text": "Langzaam werden de grote stoomlocomotieven buiten dienst gesteld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een paar worden nog bewaard in musea en op toeristische spoorlijnen.",
+      "text_markdown": "Een paar worden nog bewaard in musea en op toeristische spoorlijnen.",
+      "tts": {
+        "text": "Een paar worden nog bewaard in musea en op toeristische spoorlijnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De volgende stap was de elektrische trein.",
+      "text_markdown": "De volgende stap was de elektrische trein.",
+      "tts": {
+        "text": "De volgende stap was de elektrische trein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een elektrische trein heeft geen motor die brandstof verbrandt.",
+      "text_markdown": "Een elektrische trein heeft geen motor die brandstof verbrandt.",
+      "tts": {
+        "text": "Een elektrische trein heeft geen motor die brandstof verbrandt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij haalt stroom uit een draad boven het spoor of uit een derde rail naast het spoor.",
+      "text_markdown": "Hij haalt stroom uit een draad boven het spoor of uit een derde rail naast het spoor.",
+      "tts": {
+        "text": "Hij haalt stroom uit een draad boven het spoor of uit een derde rail naast het spoor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elektrische treinen zijn stil en heel schoon.",
+      "text_markdown": "Elektrische treinen zijn stil en heel schoon.",
+      "tts": {
+        "text": "Elektrische treinen zijn stil en heel schoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze zijn ook heel krachtig.",
+      "text_markdown": "Ze zijn ook heel krachtig.",
+      "tts": {
+        "text": "Ze zijn ook heel krachtig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De meeste stadstreinen en de meeste snelle treinen van nu zijn elektrisch.",
+      "text_markdown": "De meeste stadstreinen en de meeste snelle treinen van nu zijn elektrisch.",
+      "tts": {
+        "text": "De meeste stadstreinen en de meeste snelle treinen van nu zijn elektrisch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stoom, diesel, elektrisch.",
+      "text_markdown": "Stoom, diesel, elektrisch.",
+      "tts": {
+        "text": "Stoom, diesel, elektrisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Stoom, diesel, elektrisch",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drie motoren, drie tijdperken.",
+      "text_markdown": "Drie motoren, drie tijdperken.",
+      "tts": {
+        "text": "Drie motoren, drie tijdperken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "text_markdown": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1964 opende Japan een gloednieuwe spoorlijn.",
+      "text_markdown": "In 1964 opende Japan een gloednieuwe spoorlijn.",
+      "tts": {
+        "text": "In negentienhonderdvierenzestig opende Japan een gloednieuwe spoorlijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die liep van Tokio naar Osaka.",
+      "text_markdown": "Die liep van Tokio naar Osaka.",
+      "tts": {
+        "text": "Die liep van Tokio naar Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De treinen zagen eruit als lange witte kogels.",
+      "text_markdown": "De treinen zagen eruit als lange witte kogels.",
+      "tts": {
+        "text": "De treinen zagen eruit als lange witte kogels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mensen noemden ze kogeltreinen.",
+      "text_markdown": "Mensen noemden ze kogeltreinen.",
+      "tts": {
+        "text": "Mensen noemden ze kogeltreinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De Japanse naam is Shinkansen.",
+      "text_markdown": "De Japanse naam is Shinkansen.",
+      "tts": {
+        "text": "De Japanse naam is sjin kan sen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste kogeltreinen reden 130 mijl per uur.",
+      "text_markdown": "De eerste kogeltreinen reden 130 mijl per uur.",
+      "tts": {
+        "text": "De eerste kogeltreinen reden honderddertig mijl per uur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat was heel snel voor een trein in 1964.",
+      "text_markdown": "Dat was heel snel voor een trein in 1964.",
+      "tts": {
+        "text": "Dat was heel snel voor een trein in negentienhonderdvierenzestig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De lijn ging net op tijd open voor de Olympische Spelen van Tokio.",
+      "text_markdown": "De lijn ging net op tijd open voor de Olympische Spelen van Tokio.",
+      "tts": {
+        "text": "De lijn ging net op tijd open voor de Olympische Spelen van Tokio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere landen volgden.",
+      "text_markdown": "Andere landen volgden.",
+      "tts": {
+        "text": "Andere landen volgden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Frankrijk opende zijn hogesnelheidslijn in 1981.",
+      "text_markdown": "Frankrijk opende zijn hogesnelheidslijn in 1981.",
+      "tts": {
+        "text": "Frankrijk opende zijn hogesnelheidslijn in negentienhonderdeenentachtig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De treinen heten de TGV.",
+      "text_markdown": "De treinen heten de TGV.",
+      "tts": {
+        "text": "De treinen heten de tee gee vee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duitsland volgde met de ICE.",
+      "text_markdown": "Duitsland volgde met de ICE.",
+      "tts": {
+        "text": "Duitsland volgde met de ie see ee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italië, Spanje en Korea bouwden hun eigen hogesnelheidslijnen.",
+      "text_markdown": "Italië, Spanje en Korea bouwden hun eigen hogesnelheidslijnen.",
+      "tts": {
+        "text": "Italië, Spanje en Korea bouwden hun eigen hogesnelheidslijnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "China begon als laatste, maar bouwde snel.",
+      "text_markdown": "China begon als laatste, maar bouwde snel.",
+      "tts": {
+        "text": "China begon als laatste, maar bouwde snel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tegenwoordig heeft China het grootste hogesnelheidsnet ter wereld.",
+      "text_markdown": "Tegenwoordig heeft China het grootste hogesnelheidsnet ter wereld.",
+      "tts": {
+        "text": "Tegenwoordig heeft China het grootste hogesnelheidsnet ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er liggen tienduizenden kilometers spoor.",
+      "text_markdown": "Er liggen tienduizenden kilometers spoor.",
+      "tts": {
+        "text": "Er liggen tienduizenden kilometers spoor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderne kogeltreinen kunnen met meer dan 200 mijl per uur rijden.",
+      "text_markdown": "Moderne kogeltreinen kunnen met meer dan 200 mijl per uur rijden.",
+      "tts": {
+        "text": "Moderne kogeltreinen kunnen met meer dan tweehonderd mijl per uur rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze zijn soepel, stil en bijna altijd op tijd.",
+      "text_markdown": "Ze zijn soepel, stil en bijna altijd op tijd.",
+      "tts": {
+        "text": "Ze zijn soepel, stil en bijna altijd op tijd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Kogeltreinen en de race om snelheid",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Voor veel reizen zijn ze sneller dan vliegen.",
+      "text_markdown": "Voor veel reizen zijn ze sneller dan vliegen.",
+      "tts": {
+        "text": "Voor veel reizen zijn ze sneller dan vliegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 6 — Veel soorten treinen",
+      "text_markdown": "Hoofdstuk 6 — Veel soorten treinen"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niet alle treinen zijn hetzelfde.",
+      "text_markdown": "Niet alle treinen zijn hetzelfde.",
+      "tts": {
+        "text": "Niet alle treinen zijn hetzelfde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er zijn veel soorten.",
+      "text_markdown": "Er zijn veel soorten.",
+      "tts": {
+        "text": "Er zijn veel soorten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een passagierstrein vervoert mensen.",
+      "text_markdown": "Een passagierstrein vervoert mensen.",
+      "tts": {
+        "text": "Een passagierstrein vervoert mensen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die heeft stoelen, ramen en soms een restauratiewagon of een slaapwagon.",
+      "text_markdown": "Die heeft stoelen, ramen en soms een restauratiewagon of een slaapwagon.",
+      "tts": {
+        "text": "Die heeft stoelen, ramen en soms een restauratiewagon of een slaapwagon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een goederentrein vervoert goederen.",
+      "text_markdown": "Een goederentrein vervoert goederen.",
+      "tts": {
+        "text": "Een goederentrein vervoert goederen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die wagens heten wagons.",
+      "text_markdown": "Die wagens heten wagons.",
+      "tts": {
+        "text": "Die wagens heten wagons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sommige vervoeren graan.",
+      "text_markdown": "Sommige vervoeren graan.",
+      "tts": {
+        "text": "Sommige vervoeren graan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sommige vervoeren olie.",
+      "text_markdown": "Sommige vervoeren olie.",
+      "tts": {
+        "text": "Sommige vervoeren olie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sommige vervoeren hele zeecontainers, twee hoog opgestapeld.",
+      "text_markdown": "Sommige vervoeren hele zeecontainers, twee hoog opgestapeld.",
+      "tts": {
+        "text": "Sommige vervoeren hele zeecontainers, twee hoog opgestapeld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een metro is een ondergrondse trein in een stad.",
+      "text_markdown": "Een metro is een ondergrondse trein in een stad.",
+      "tts": {
+        "text": "Een metro is een ondergrondse trein in een stad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De eerste metro werd geopend in Londen in 1863.",
+      "text_markdown": "De eerste metro werd geopend in Londen in 1863.",
+      "tts": {
+        "text": "De eerste metro werd geopend in Londen in achttienhonderddrieënzestig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tegenwoordig hebben grote steden enorme metronetten onder hun straten.",
+      "text_markdown": "Tegenwoordig hebben grote steden enorme metronetten onder hun straten.",
+      "tts": {
+        "text": "Tegenwoordig hebben grote steden enorme metronetten onder hun straten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een tram of sneltram is een kleine trein die door stadsstraten rijdt.",
+      "text_markdown": "Een tram of sneltram is een kleine trein die door stadsstraten rijdt.",
+      "tts": {
+        "text": "Een tram of sneltram is een kleine trein die door stadsstraten rijdt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die deelt vaak de weg met auto's en bussen.",
+      "text_markdown": "Die deelt vaak de weg met auto's en bussen.",
+      "tts": {
+        "text": "Die deelt vaak de weg met auto's en bussen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bergtrein klimt steile heuvels op.",
+      "text_markdown": "Een bergtrein klimt steile heuvels op.",
+      "tts": {
+        "text": "Een bergtrein klimt steile heuvels op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sommige hebben in het midden een speciale getande rail, een tandrad genoemd.",
+      "text_markdown": "Sommige hebben in het midden een speciale getande rail, een tandrad genoemd.",
+      "tts": {
+        "text": "Sommige hebben in het midden een speciale getande rail, een tandrad genoemd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De locomotief grijpt dat tandrad vast om omhoog te gaan en veilig weer naar beneden te komen.",
+      "text_markdown": "De locomotief grijpt dat tandrad vast om omhoog te gaan en veilig weer naar beneden te komen.",
+      "tts": {
+        "text": "De locomotief grijpt dat tandrad vast om omhoog te gaan en veilig weer naar beneden te komen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige treinen zijn ook toeristentreinen.",
+      "text_markdown": "Sommige treinen zijn ook toeristentreinen.",
+      "tts": {
+        "text": "Sommige treinen zijn ook toeristentreinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten treinen",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze rijden door bossen en bergen, alleen voor het uitzicht.",
+      "text_markdown": "Ze rijden door bossen en bergen, alleen voor het uitzicht.",
+      "tts": {
+        "text": "Ze rijden door bossen en bergen, alleen voor het uitzicht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 7 — De toekomst op het spoor",
+      "text_markdown": "Hoofdstuk 7 — De toekomst op het spoor"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het verhaal van de trein is nog niet voorbij.",
+      "text_markdown": "Het verhaal van de trein is nog niet voorbij.",
+      "tts": {
+        "text": "Het verhaal van de trein is nog niet voorbij.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er worden op dit moment nieuwe soorten treinen gebouwd.",
+      "text_markdown": "Er worden op dit moment nieuwe soorten treinen gebouwd.",
+      "tts": {
+        "text": "Er worden op dit moment nieuwe soorten treinen gebouwd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meest verbazingwekkende is de maglev.",
+      "text_markdown": "De meest verbazingwekkende is de maglev.",
+      "tts": {
+        "text": "De meest verbazingwekkende is de meg lef.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het woord maglev is een afkorting van magnetic levitation.",
+      "text_markdown": "Het woord maglev is een afkorting van magnetic levitation.",
+      "tts": {
+        "text": "Het woord meg lef is een afkorting van mag netik levi tee sjun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een maglevtrein raakt zijn spoor niet aan.",
+      "text_markdown": "Een maglevtrein raakt zijn spoor niet aan.",
+      "tts": {
+        "text": "Een meg lef trein raakt zijn spoor niet aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij zweeft op een kussen van magneten.",
+      "text_markdown": "Hij zweeft op een kussen van magneten.",
+      "tts": {
+        "text": "Hij zweeft op een kussen van magneten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Er draaien geen wielen.",
+      "text_markdown": "Er draaien geen wielen.",
+      "tts": {
+        "text": "Er draaien geen wielen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Er is geen wrijving.",
+      "text_markdown": "Er is geen wrijving.",
+      "tts": {
+        "text": "Er is geen wrijving.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 2004 ging in Shanghai, China, een maglevlijn open.",
+      "text_markdown": "In 2004 ging in Shanghai, China, een maglevlijn open.",
+      "tts": {
+        "text": "In tweeduizendvier ging in Sjang hai, China, een meg lef lijn open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De trein kan meer dan 250 mijl per uur halen.",
+      "text_markdown": "De trein kan meer dan 250 mijl per uur halen.",
+      "tts": {
+        "text": "De trein kan meer dan tweehonderdvijftig mijl per uur halen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Japan is een testmaglevtrein sneller gegaan dan 370 mijl per uur.",
+      "text_markdown": "In Japan is een testmaglevtrein sneller gegaan dan 370 mijl per uur.",
+      "tts": {
+        "text": "In Japan is een test meg lef trein sneller gegaan dan driehonderdzeventig mijl per uur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere ingenieurs werken aan de waterstoftrein.",
+      "text_markdown": "Andere ingenieurs werken aan de waterstoftrein.",
+      "tts": {
+        "text": "Andere ingenieurs werken aan de waterstoftrein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een waterstoftrein maakt elektriciteit met een kleine brandstofcel.",
+      "text_markdown": "Een waterstoftrein maakt elektriciteit met een kleine brandstofcel.",
+      "tts": {
+        "text": "Een waterstoftrein maakt elektriciteit met een kleine brandstofcel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het enige wat uit de motor komt, is waterdamp.",
+      "text_markdown": "Het enige wat uit de motor komt, is waterdamp.",
+      "tts": {
+        "text": "Het enige wat uit de motor komt, is waterdamp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Geen rook.",
+      "text_markdown": "Geen rook.",
+      "tts": {
+        "text": "Geen rook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Geen steenkool.",
+      "text_markdown": "Geen steenkool.",
+      "tts": {
+        "text": "Geen steenkool.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De eerste waterstoftreinen gingen in 2018 in Duitsland rijden.",
+      "text_markdown": "De eerste waterstoftreinen gingen in 2018 in Duitsland rijden.",
+      "tts": {
+        "text": "De eerste waterstoftreinen gingen in tweeduizendachttien in Duitsland rijden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treinen zijn heel oud.",
+      "text_markdown": "Treinen zijn heel oud.",
+      "tts": {
+        "text": "Treinen zijn heel oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze zijn ook heel nieuw.",
+      "text_markdown": "Ze zijn ook heel nieuw.",
+      "tts": {
+        "text": "Ze zijn ook heel nieuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — De toekomst op het spoor",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tweehonderd jaar na de Rocket zijn de rails nog steeds de toekomst.",
+      "text_markdown": "Tweehonderd jaar na de Rocket zijn de rails nog steeds de toekomst.",
+      "tts": {
+        "text": "Tweehonderd jaar na de Rokkit zijn de rails nog steeds de toekomst.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "De ijzeren weg gaat verder",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De ijzeren weg gaat verder",
+      "text_markdown": "De ijzeren weg gaat verder"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "De ijzeren weg gaat verder",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Van de Rocket tot de maglev heeft de trein de wereld al bijna tweehonderd jaar vooruitgebracht.",
+      "text_markdown": "Van de Rocket tot de maglev heeft de trein de wereld al bijna tweehonderd jaar vooruitgebracht.",
+      "tts": {
+        "text": "Van de Rokkit tot de meg lef heeft de trein de wereld al bijna tweehonderd jaar vooruitgebracht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "De ijzeren weg gaat verder",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nieuwe lijnen worden nu aangelegd, in woestijnen, in bergen en onder steden.",
+      "text_markdown": "Nieuwe lijnen worden nu aangelegd, in woestijnen, in bergen en onder steden.",
+      "tts": {
+        "text": "Nieuwe lijnen worden nu aangelegd, in woestijnen, in bergen en onder steden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "De ijzeren weg gaat verder",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het volgende station ligt altijd ergens verderop.",
+      "text_markdown": "Het volgende station ligt altijd ergens verderop.",
+      "tts": {
+        "text": "Het volgende station ligt altijd ergens verderop.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "nl"
+}

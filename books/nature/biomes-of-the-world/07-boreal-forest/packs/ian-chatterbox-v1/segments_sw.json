@@ -1,0 +1,2447 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "language": "sw",
+  "total_segments": 165,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 1,
+      "sentence_index": 0,
+      "text": "Msitu wa Boreal",
+      "text_markdown": "Msitu wa Boreal",
+      "title": "Msitu wa Boreal"
+    },
+    {
+      "id": "ch02-002",
+      "paragraph_id": "p2",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Mahali Biome Hili Linakua",
+      "text_markdown": "Mahali Biome Hili Linakua",
+      "title": "Mahali Biome Hili Linakua"
+    },
+    {
+      "id": "ch02-003",
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Karibu kwenye msitu wa boreal.",
+      "text_markdown": "Karibu kwenye msitu wa boreal.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Karibu kwenye msitu wa boreal.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Huu ni mmoja wa biomes kuu za dunia.",
+      "text_markdown": "Huu ni mmoja wa biomes kuu za dunia.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Huu ni mmoja wa biomes kuu za dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Biome ni sehemu ya Dunia yenye hali ya hewa yake, mimea, na wanyama wake.",
+      "text_markdown": "Biome ni sehemu ya Dunia yenye hali ya hewa yake, mimea, na wanyama wake.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Biome ni sehemu ya Dunia yenye hali ya hewa yake, mimea, na wanyama wake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal ni ukanda mpana wa kijani wa miti isiyopukutika majani unaopita juu ya dunia.",
+      "text_markdown": "Msitu wa boreal ni ukanda mpana wa kijani wa miti isiyopukutika majani unaopita juu ya dunia.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Msitu wa boreal ni ukanda mpana wa kijani wa miti isiyopukutika majani unaopita juu ya dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-007",
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Pia huitwa taiga.",
+      "text_markdown": "Pia huitwa taiga.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Pia huitwa taiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal ni biome kubwa zaidi ya nchi kavu Duniani.",
+      "text_markdown": "Msitu wa boreal ni biome kubwa zaidi ya nchi kavu Duniani.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Msitu wa boreal ni biome kubwa zaidi ya nchi kavu Duniani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-009",
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Kama ungeruka juu sana angani, ungeona ukanda huu wa kijani kibichi ukinyooshwa karibu dunia nzima.",
+      "text_markdown": "Kama ungeruka juu sana angani, ungeona ukanda huu wa kijani kibichi ukinyooshwa karibu dunia nzima.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Kama ungeruka juu sana angani, ungeona ukanda huu wa kijani kibichi ukinyooshwa karibu dunia nzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-010",
+      "paragraph_id": "p10",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Inakua katika sehemu kubwa ya Kanada na Alaska, Amerika Kaskazini.",
+      "text_markdown": "Inakua katika sehemu kubwa ya Kanada na Alaska, Amerika Kaskazini.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Inakua katika sehemu kubwa ya Kanada na Alaska, Amerika Kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Inakua kote Norwe, Uswidi, na Ufini, Ulaya kaskazini.",
+      "text_markdown": "Inakua kote Norwe, Uswidi, na Ufini, Ulaya kaskazini.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Inakua kote Norwe, Uswidi, na Ufini, Ulaya kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Inakua kote Urusi, kuanzia Ulaya hadi Bahari ya Pasifiki.",
+      "text_markdown": "Inakua kote Urusi, kuanzia Ulaya hadi Bahari ya Pasifiki.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Inakua kote Urusi, kuanzia Ulaya hadi Bahari ya Pasifiki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-013",
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Katika kila moja ya maeneo haya, msitu unaonekana sawa kabisa.",
+      "text_markdown": "Katika kila moja ya maeneo haya, msitu unaonekana sawa kabisa.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Katika kila moja ya maeneo haya, msitu unaonekana sawa kabisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Miti mirefu yenye ncha kali husimama karibu karibu, ikiwa na fumbwe laini na vichaka vidogo ardhini.",
+      "text_markdown": "Miti mirefu yenye ncha kali husimama karibu karibu, ikiwa na fumbwe laini na vichaka vidogo ardhini.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Miti mirefu yenye ncha kali husimama karibu karibu, ikiwa na fumbwe laini na vichaka vidogo ardhini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Kuna maziwa mengi, mito, na vinamasi kati ya miti.",
+      "text_markdown": "Kuna maziwa mengi, mito, na vinamasi kati ya miti.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Kuna maziwa mengi, mito, na vinamasi kati ya miti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal upo kusini mwa tundra na kaskazini mwa misitu ya wastani.",
+      "text_markdown": "Msitu wa boreal upo kusini mwa tundra na kaskazini mwa misitu ya wastani.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Msitu wa boreal upo kusini mwa tundra na kaskazini mwa misitu ya wastani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-017",
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Sio mahali pa joto.",
+      "text_markdown": "Sio mahali pa joto.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Sio mahali pa joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Majira ya baridi marefu na baridi sana ndiyo kawaida hapa, kukiwa na theluji nyingi ardhini kwa miezi mingi.",
+      "text_markdown": "Majira ya baridi marefu na baridi sana ndiyo kawaida hapa, kukiwa na theluji nyingi ardhini kwa miezi mingi.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Majira ya baridi marefu na baridi sana ndiyo kawaida hapa, kukiwa na theluji nyingi ardhini kwa miezi mingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-019",
+      "paragraph_id": "p19",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Majira ya joto ni mafupi na baridi, yakiwa na siku ndefu na usiku angavu.",
+      "text_markdown": "Majira ya joto ni mafupi na baridi, yakiwa na siku ndefu na usiku angavu.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Majira ya joto ni mafupi na baridi, yakiwa na siku ndefu na usiku angavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-020",
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Watu wachache huishi katika msitu wa boreal, lakini umejaa uhai.",
+      "text_markdown": "Watu wachache huishi katika msitu wa boreal, lakini umejaa uhai.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Watu wachache huishi katika msitu wa boreal, lakini umejaa uhai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Ni makazi ya dubu, mbwa mwitu, moose, bundi, na wanyama wengine wengi.",
+      "text_markdown": "Ni makazi ya dubu, mbwa mwitu, moose, bundi, na wanyama wengine wengi.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Ni makazi ya dubu, mbwa mwitu, moose, bundi, na wanyama wengine wengi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "text": "Na inakua kimya kimya katika ardhi kubwa zaidi kuliko msitu mwingine wowote Duniani.",
+      "text_markdown": "Na inakua kimya kimya katika ardhi kubwa zaidi kuliko msitu mwingine wowote Duniani.",
+      "title": "Mahali Biome Hili Linakua",
+      "tts": {
+        "text": "Na inakua kimya kimya katika ardhi kubwa zaidi kuliko msitu mwingine wowote Duniani.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-023",
+      "paragraph_id": "p23",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Hali ya Hewa",
+      "text_markdown": "Hali ya Hewa",
+      "title": "Hali ya Hewa"
+    },
+    {
+      "id": "ch03-024",
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal una baridi kwa sehemu kubwa ya mwaka.",
+      "text_markdown": "Msitu wa boreal una baridi kwa sehemu kubwa ya mwaka.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Msitu wa boreal una baridi kwa sehemu kubwa ya mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-025",
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Majira ya baridi hapa ni marefu na giza.",
+      "text_markdown": "Majira ya baridi hapa ni marefu na giza.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Majira ya baridi hapa ni marefu na giza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Katika sehemu za kaskazini za msitu, majira ya baridi yanaweza kudumu kwa miezi saba au minane.",
+      "text_markdown": "Katika sehemu za kaskazini za msitu, majira ya baridi yanaweza kudumu kwa miezi saba au minane.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Katika sehemu za kaskazini za msitu, majira ya baridi yanaweza kudumu kwa miezi saba au minane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Hali ya hewa inaweza kushuka hadi nyuzi arobaini chini ya sifuri, iwe Selsiasi au Fahrenhaiti.",
+      "text_markdown": "Hali ya hewa inaweza kushuka hadi nyuzi arobaini chini ya sifuri, iwe Selsiasi au Fahrenhaiti.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Hali ya hewa inaweza kushuka hadi nyuzi arobaini chini ya sifuri, iwe Selsiasi au Fahrenhaiti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "paragraph_id": "p28",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Hayo ni mojawapo ya maeneo baridi zaidi Duniani ambapo miti bado inaweza kukua.",
+      "text_markdown": "Hayo ni mojawapo ya maeneo baridi zaidi Duniani ambapo miti bado inaweza kukua.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Hayo ni mojawapo ya maeneo baridi zaidi Duniani ambapo miti bado inaweza kukua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Theluji nzito hufunika ardhi kuanzia vuli hadi mwishoni mwa masika.",
+      "text_markdown": "Theluji nzito hufunika ardhi kuanzia vuli hadi mwishoni mwa masika.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Theluji nzito hufunika ardhi kuanzia vuli hadi mwishoni mwa masika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Maziwa na mito huganda, wakati mwingine kukiwa na barafu nene kama urefu wa mtu.",
+      "text_markdown": "Maziwa na mito huganda, wakati mwingine kukiwa na barafu nene kama urefu wa mtu.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Maziwa na mito huganda, wakati mwingine kukiwa na barafu nene kama urefu wa mtu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-031",
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Kaskazini mwa mbali, jua huinuka kidogo tu juu ya miti katika siku fupi zaidi za majira ya baridi.",
+      "text_markdown": "Kaskazini mwa mbali, jua huinuka kidogo tu juu ya miti katika siku fupi zaidi za majira ya baridi.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Kaskazini mwa mbali, jua huinuka kidogo tu juu ya miti katika siku fupi zaidi za majira ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Kisha huja kuyeyuka kwa theluji ya masika.",
+      "text_markdown": "Kisha huja kuyeyuka kwa theluji ya masika.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Kisha huja kuyeyuka kwa theluji ya masika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Theluji hugeuka kuwa maji, na mito hujaa na kuwa baridi.",
+      "text_markdown": "Theluji hugeuka kuwa maji, na mito hujaa na kuwa baridi.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Theluji hugeuka kuwa maji, na mito hujaa na kuwa baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-034",
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Udongo hubaki laini na unyevu kwa wiki nyingi.",
+      "text_markdown": "Udongo hubaki laini na unyevu kwa wiki nyingi.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Udongo hubaki laini na unyevu kwa wiki nyingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Majira ya joto ni mafupi, lakini yamejaa uhai.",
+      "text_markdown": "Majira ya joto ni mafupi, lakini yamejaa uhai.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Majira ya joto ni mafupi, lakini yamejaa uhai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-036",
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Mwezi Juni na Julai, jua hubaki angani kwa usiku mwingi.",
+      "text_markdown": "Mwezi Juni na Julai, jua hubaki angani kwa usiku mwingi.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Mwezi Juni na Julai, jua hubaki angani kwa usiku mwingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-037",
+      "paragraph_id": "p37",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Msitu hukua haraka ili kutumia vyema mwanga wa joto.",
+      "text_markdown": "Msitu hukua haraka ili kutumia vyema mwanga wa joto.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Msitu hukua haraka ili kutumia vyema mwanga wa joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Siku za kiangazi zinaweza kuwa joto, lakini usiku huwa baridi.",
+      "text_markdown": "Siku za kiangazi zinaweza kuwa joto, lakini usiku huwa baridi.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Siku za kiangazi zinaweza kuwa joto, lakini usiku huwa baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Kufikia Agosti, baridi huanza kurudi polepole.",
+      "text_markdown": "Kufikia Agosti, baridi huanza kurudi polepole.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Kufikia Agosti, baridi huanza kurudi polepole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Vuli ni fupi na ya dhahabu.",
+      "text_markdown": "Vuli ni fupi na ya dhahabu.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Vuli ni fupi na ya dhahabu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "text": "Kisha theluji hurudi, na majira marefu ya baridi huanza tena.",
+      "text_markdown": "Kisha theluji hurudi, na majira marefu ya baridi huanza tena.",
+      "title": "Hali ya Hewa",
+      "tts": {
+        "text": "Kisha theluji hurudi, na majira marefu ya baridi huanza tena.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-042",
+      "paragraph_id": "p42",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Ardhi na Maji",
+      "text_markdown": "Ardhi na Maji",
+      "title": "Ardhi na Maji"
+    },
+    {
+      "id": "ch04-043",
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal hukua juu ya ardhi ya zamani, tulivu.",
+      "text_markdown": "Msitu wa boreal hukua juu ya ardhi ya zamani, tulivu.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Msitu wa boreal hukua juu ya ardhi ya zamani, tulivu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Zamani sana, tabaka kubwa za barafu zilifunika nchi hii yote.",
+      "text_markdown": "Zamani sana, tabaka kubwa za barafu zilifunika nchi hii yote.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Zamani sana, tabaka kubwa za barafu zilifunika nchi hii yote.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-045",
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Barafu ilikuwa nene kuliko milima mirefu tunayoijua leo.",
+      "text_markdown": "Barafu ilikuwa nene kuliko milima mirefu tunayoijua leo.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Barafu ilikuwa nene kuliko milima mirefu tunayoijua leo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "paragraph_id": "p46",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Barafu ilipoyeyuka, maelfu mengi ya miaka iliyopita, iliacha ardhi ikiwa tambarare, imechanwa na imejaa mashimo.",
+      "text_markdown": "Barafu ilipoyeyuka, maelfu mengi ya miaka iliyopita, iliacha ardhi ikiwa tambarare, imechanwa na imejaa mashimo.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Barafu ilipoyeyuka, maelfu mengi ya miaka iliyopita, iliacha ardhi ikiwa tambarare, imechanwa na imejaa mashimo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-047",
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Mashimo yalijaa maji.",
+      "text_markdown": "Mashimo yalijaa maji.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Mashimo yalijaa maji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Ndiyo maana msitu wa boreal una maziwa mengi sana.",
+      "text_markdown": "Ndiyo maana msitu wa boreal una maziwa mengi sana.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Ndiyo maana msitu wa boreal una maziwa mengi sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Kanada pekee ina maziwa mengi kuliko dunia nzima ikiunganishwa.",
+      "text_markdown": "Kanada pekee ina maziwa mengi kuliko dunia nzima ikiunganishwa.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Kanada pekee ina maziwa mengi kuliko dunia nzima ikiunganishwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-050",
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Mengi kati yao yamo ndani ya msitu wa boreal, yaking'aa kama vioo vyeusi kati ya miti.",
+      "text_markdown": "Mengi kati yao yamo ndani ya msitu wa boreal, yaking'aa kama vioo vyeusi kati ya miti.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Mengi kati yao yamo ndani ya msitu wa boreal, yaking'aa kama vioo vyeusi kati ya miti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-051",
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Mito mipana na yenye mtiririko polepole huvuka msitu, ikibeba maji ya theluji iliyoyeyuka hadi bahari kubwa za kaskazini.",
+      "text_markdown": "Mito mipana na yenye mtiririko polepole huvuka msitu, ikibeba maji ya theluji iliyoyeyuka hadi bahari kubwa za kaskazini.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Mito mipana na yenye mtiririko polepole huvuka msitu, ikibeba maji ya theluji iliyoyeyuka hadi bahari kubwa za kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-052",
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Kati ya maziwa na mito, kuna maeneo laini, yenye unyevu yanayoitwa ardhi oevu.",
+      "text_markdown": "Kati ya maziwa na mito, kuna maeneo laini, yenye unyevu yanayoitwa ardhi oevu.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Kati ya maziwa na mito, kuna maeneo laini, yenye unyevu yanayoitwa ardhi oevu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-053",
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Ardhi oevu ni kipande cha ardhi ambapo maji hukaa juu ya udongo mwaka mzima.",
+      "text_markdown": "Ardhi oevu ni kipande cha ardhi ambapo maji hukaa juu ya udongo mwaka mzima.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Ardhi oevu ni kipande cha ardhi ambapo maji hukaa juu ya udongo mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-054",
+      "paragraph_id": "p54",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Mosi hukua nene kwenye ardhi oevu, laini na yenye kina chini ya miguu.",
+      "text_markdown": "Mosi hukua nene kwenye ardhi oevu, laini na yenye kina chini ya miguu.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Mosi hukua nene kwenye ardhi oevu, laini na yenye kina chini ya miguu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Chini ya uso, maji ya ardhi oevu ni baridi na kahawia.",
+      "text_markdown": "Chini ya uso, maji ya ardhi oevu ni baridi na kahawia.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Chini ya uso, maji ya ardhi oevu ni baridi na kahawia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-056",
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Udongo wa msitu wa boreal ni duni na mwembamba.",
+      "text_markdown": "Udongo wa msitu wa boreal ni duni na mwembamba.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Udongo wa msitu wa boreal ni duni na mwembamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-057",
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Sindano za misonobari na majani yaliyokufa huozeka polepole kwenye baridi.",
+      "text_markdown": "Sindano za misonobari na majani yaliyokufa huozeka polepole kwenye baridi.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Sindano za misonobari na majani yaliyokufa huozeka polepole kwenye baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Virutubisho vizuri kwa mimea huchukua muda mrefu kujijenga.",
+      "text_markdown": "Virutubisho vizuri kwa mimea huchukua muda mrefu kujijenga.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Virutubisho vizuri kwa mimea huchukua muda mrefu kujijenga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Kaskazini mwa mbali ya msitu wa boreal, ardhi yenye kina zaidi ya mita moja au mbili hubaki imeganda mwaka mzima.",
+      "text_markdown": "Kaskazini mwa mbali ya msitu wa boreal, ardhi yenye kina zaidi ya mita moja au mbili hubaki imeganda mwaka mzima.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Kaskazini mwa mbali ya msitu wa boreal, ardhi yenye kina zaidi ya mita moja au mbili hubaki imeganda mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Ardhi hii iliyoganda inaitwa permafrost.",
+      "text_markdown": "Ardhi hii iliyoganda inaitwa permafrost.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Ardhi hii iliyoganda inaitwa permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "text": "Hata katika siku ya joto ya kiangazi, udongo chini ya fani ni baridi ukigusa.",
+      "text_markdown": "Hata katika siku ya joto ya kiangazi, udongo chini ya fani ni baridi ukigusa.",
+      "title": "Ardhi na Maji",
+      "tts": {
+        "text": "Hata katika siku ya joto ya kiangazi, udongo chini ya fani ni baridi ukigusa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-062",
+      "paragraph_id": "p62",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti",
+      "text_markdown": "Miti",
+      "title": "Miti"
+    },
+    {
+      "id": "ch05-063",
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti ya msitu wa boreal kwa kiasi kikubwa ni ya kijani kibichi daima.",
+      "text_markdown": "Miti ya msitu wa boreal kwa kiasi kikubwa ni ya kijani kibichi daima.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti ya msitu wa boreal kwa kiasi kikubwa ni ya kijani kibichi daima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-064",
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Hawadondoshi majani yao yote mwishoni mwa kiangazi.",
+      "text_markdown": "Hawadondoshi majani yao yote mwishoni mwa kiangazi.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Hawadondoshi majani yao yote mwishoni mwa kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Badala yake, huweka sindano ndogo za kijani kibichi mwaka mzima.",
+      "text_markdown": "Badala yake, huweka sindano ndogo za kijani kibichi mwaka mzima.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Badala yake, huweka sindano ndogo za kijani kibichi mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Sindano ni ndogo na ngumu.",
+      "text_markdown": "Sindano ni ndogo na ngumu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Sindano ni ndogo na ngumu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Haipotezi maji mengi kwa upepo, na haivunjiki chini ya theluji.",
+      "text_markdown": "Haipotezi maji mengi kwa upepo, na haivunjiki chini ya theluji.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Haipotezi maji mengi kwa upepo, na haivunjiki chini ya theluji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-068",
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti mingi hukua katika umbo la koni ndefu, nyembamba.",
+      "text_markdown": "Miti mingi hukua katika umbo la koni ndefu, nyembamba.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti mingi hukua katika umbo la koni ndefu, nyembamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-069",
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Theluji nzito inaponyesha kwenye mti wenye umbo la koni, huteleza kwa urahisi.",
+      "text_markdown": "Theluji nzito inaponyesha kwenye mti wenye umbo la koni, huteleza kwa urahisi.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Theluji nzito inaponyesha kwenye mti wenye umbo la koni, huteleza kwa urahisi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "paragraph_id": "p70",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti ya boreal iliyozoeleka zaidi ni spruce, pine, fir, na larch.",
+      "text_markdown": "Miti ya boreal iliyozoeleka zaidi ni spruce, pine, fir, na larch.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti ya boreal iliyozoeleka zaidi ni spruce, pine, fir, na larch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "paragraph_id": "p71",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti ya spruce ina sindano fupi, kali na koni ndogo zinazoning'inia chini.",
+      "text_markdown": "Miti ya spruce ina sindano fupi, kali na koni ndogo zinazoning'inia chini.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti ya spruce ina sindano fupi, kali na koni ndogo zinazoning'inia chini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "paragraph_id": "p72",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti ya pine ina sindano ndefu, laini zinazokua katika vifungu vidogo vya mbili au tatu.",
+      "text_markdown": "Miti ya pine ina sindano ndefu, laini zinazokua katika vifungu vidogo vya mbili au tatu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti ya pine ina sindano ndefu, laini zinazokua katika vifungu vidogo vya mbili au tatu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "paragraph_id": "p73",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Miti ya fir ina sindano bapa, laini na koni ndefu zinazoelekeza juu.",
+      "text_markdown": "Miti ya fir ina sindano bapa, laini na koni ndefu zinazoelekeza juu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Miti ya fir ina sindano bapa, laini na koni ndefu zinazoelekeza juu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "paragraph_id": "p74",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Larch ndio mti pekee wa boreal unaodondosha sindano zake wakati wa vuli.",
+      "text_markdown": "Larch ndio mti pekee wa boreal unaodondosha sindano zake wakati wa vuli.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Larch ndio mti pekee wa boreal unaodondosha sindano zake wakati wa vuli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-075",
+      "paragraph_id": "p75",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Kabla ya kuzidondosha, larch hugeuka dhahabu angavu.",
+      "text_markdown": "Kabla ya kuzidondosha, larch hugeuka dhahabu angavu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Kabla ya kuzidondosha, larch hugeuka dhahabu angavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "paragraph_id": "p76",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Msitu mkubwa wa larch mnamo Oktoba unaonekana kama bahari ya dhahabu kote nchi baridi.",
+      "text_markdown": "Msitu mkubwa wa larch mnamo Oktoba unaonekana kama bahari ya dhahabu kote nchi baridi.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Msitu mkubwa wa larch mnamo Oktoba unaonekana kama bahari ya dhahabu kote nchi baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-077",
+      "paragraph_id": "p77",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Katika misitu hii yote, miti husimama karibu karibu.",
+      "text_markdown": "Katika misitu hii yote, miti husimama karibu karibu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Katika misitu hii yote, miti husimama karibu karibu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "paragraph_id": "p78",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Matawi ni mazito juu na matupu karibu na chini, ambapo jua halifiki.",
+      "text_markdown": "Matawi ni mazito juu na matupu karibu na chini, ambapo jua halifiki.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Matawi ni mazito juu na matupu karibu na chini, ambapo jua halifiki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-079",
+      "paragraph_id": "p79",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Kivuli kati ya miti ni kirefu na kimya.",
+      "text_markdown": "Kivuli kati ya miti ni kirefu na kimya.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Kivuli kati ya miti ni kirefu na kimya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-080",
+      "paragraph_id": "p80",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Kwenye sakafu ya msitu, kijani si katika majani bali katika fani.",
+      "text_markdown": "Kwenye sakafu ya msitu, kijani si katika majani bali katika fani.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Kwenye sakafu ya msitu, kijani si katika majani bali katika fani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-081",
+      "paragraph_id": "p81",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Fani laini nene hufunika ardhi, magogo yaliyoanguka, na miamba.",
+      "text_markdown": "Fani laini nene hufunika ardhi, magogo yaliyoanguka, na miamba.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Fani laini nene hufunika ardhi, magogo yaliyoanguka, na miamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-082",
+      "paragraph_id": "p82",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Uyoga wa maumbo na rangi nyingi huota kupitia fani mwishoni mwa kiangazi.",
+      "text_markdown": "Uyoga wa maumbo na rangi nyingi huota kupitia fani mwishoni mwa kiangazi.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Uyoga wa maumbo na rangi nyingi huota kupitia fani mwishoni mwa kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-083",
+      "paragraph_id": "p83",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Matunda madogo hukua kwenye vichaka vidogo kati ya fani.",
+      "text_markdown": "Matunda madogo hukua kwenye vichaka vidogo kati ya fani.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Matunda madogo hukua kwenye vichaka vidogo kati ya fani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "paragraph_id": "p84",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Blueberries tamu za mwituni, cranberries nyekundu, na crowberries ndogo nyeusi zote hukua hapa.",
+      "text_markdown": "Blueberries tamu za mwituni, cranberries nyekundu, na crowberries ndogo nyeusi zote hukua hapa.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Blueberries tamu za mwituni, cranberries nyekundu, na crowberries ndogo nyeusi zote hukua hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "paragraph_id": "p85",
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "text": "Katika kiangazi kifupi, watu na wanyama wa msitu hukusanya matunda hayo kwa vikapu.",
+      "text_markdown": "Katika kiangazi kifupi, watu na wanyama wa msitu hukusanya matunda hayo kwa vikapu.",
+      "title": "The Trees",
+      "tts": {
+        "text": "Katika kiangazi kifupi, watu na wanyama wa msitu hukusanya matunda hayo kwa vikapu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-086",
+      "paragraph_id": "p86",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Wanyama",
+      "text_markdown": "Wanyama",
+      "title": "Wanyama"
+    },
+    {
+      "id": "ch06-087",
+      "paragraph_id": "p87",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal ni makazi ya wanyama wengi wanaojua kuishi kwenye baridi.",
+      "text_markdown": "Msitu wa boreal ni makazi ya wanyama wengi wanaojua kuishi kwenye baridi.",
+      "title": "The Animals",
+      "tts": {
+        "text": "Msitu wa boreal ni makazi ya wanyama wengi wanaojua kuishi kwenye baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-088",
+      "paragraph_id": "p88",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Wengi wao wana manyoya mazito, mafuta chini ya ngozi zao, au vyote viwili.",
+      "text_markdown": "Wengi wao wana manyoya mazito, mafuta chini ya ngozi zao, au vyote viwili.",
+      "title": "The Animals",
+      "tts": {
+        "text": "Wengi wao wana manyoya mazito, mafuta chini ya ngozi zao, au vyote viwili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "paragraph_id": "p89",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Mnyama mkubwa zaidi wa msitu wa boreal ni moose.",
+      "text_markdown": "Mnyama mkubwa zaidi wa msitu wa boreal ni moose.",
+      "title": "The Animals",
+      "tts": {
+        "text": "Mnyama mkubwa zaidi wa msitu wa boreal ni moose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-090",
+      "paragraph_id": "p90",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Moose ni paa mrefu sana mwenye uso mrefu na mwili mzito.",
+      "text_markdown": "Moose ni paa mrefu sana mwenye uso mrefu na mwili mzito.",
+      "title": "The Animals",
+      "tts": {
+        "text": "Moose ni paa mrefu sana mwenye uso mrefu na mwili mzito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-091",
+      "paragraph_id": "p91",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Moose aliyekomaa anaweza kuwa mrefu kuliko mtu mrefu zaidi, akiwa na pembe kubwa pana kichwani mwake.",
+      "text_markdown": "Moose aliyekomaa anaweza kuwa mrefu kuliko mtu mrefu zaidi, akiwa na pembe kubwa pana kichwani mwake.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Moose aliyekomaa anaweza kuwa mrefu kuliko mtu mrefu zaidi, akiwa na pembe kubwa pana kichwani mwake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "paragraph_id": "p92",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Hula mimea ya majini wakati wa kiangazi na matawi na magome wakati wa baridi.",
+      "text_markdown": "Hula mimea ya majini wakati wa kiangazi na matawi na magome wakati wa baridi.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Hula mimea ya majini wakati wa kiangazi na matawi na magome wakati wa baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-093",
+      "paragraph_id": "p93",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Moose ni mnyama mwenye haya, lakini ukikutana naye, hutamsahau.",
+      "text_markdown": "Moose ni mnyama mwenye haya, lakini ukikutana naye, hutamsahau.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Moose ni mnyama mwenye haya, lakini ukikutana naye, hutamsahau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-094",
+      "paragraph_id": "p94",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Dubu kahawia huishi katika sehemu nyingi za msitu wa boreal.",
+      "text_markdown": "Dubu kahawia huishi katika sehemu nyingi za msitu wa boreal.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Dubu kahawia huishi katika sehemu nyingi za msitu wa boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "paragraph_id": "p95",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Wakati wa kiangazi, dubu kahawia hula matunda, samaki, mizizi, na wanyama wadogo.",
+      "text_markdown": "Wakati wa kiangazi, dubu kahawia hula matunda, samaki, mizizi, na wanyama wadogo.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Wakati wa kiangazi, dubu kahawia hula matunda, samaki, mizizi, na wanyama wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "paragraph_id": "p96",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Wakati wa vuli, hula kadri awezavyo ili kujenga tabaka nene la mafuta.",
+      "text_markdown": "Wakati wa vuli, hula kadri awezavyo ili kujenga tabaka nene la mafuta.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Wakati wa vuli, hula kadri awezavyo ili kujenga tabaka nene la mafuta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "paragraph_id": "p97",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Kisha hulala kwenye pango chini ya theluji majira yote ya baridi.",
+      "text_markdown": "Kisha hulala kwenye pango chini ya theluji majira yote ya baridi.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Kisha hulala kwenye pango chini ya theluji majira yote ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "paragraph_id": "p98",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Mbwa mwitu huwinda msituni katika makundi ya familia yanayoitwa makundi.",
+      "text_markdown": "Mbwa mwitu huwinda msituni katika makundi ya familia yanayoitwa makundi.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Mbwa mwitu huwinda msituni katika makundi ya familia yanayoitwa makundi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "paragraph_id": "p99",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Kundi la mbwa mwitu linaweza kusafiri maili nyingi kwa siku moja.",
+      "text_markdown": "Kundi la mbwa mwitu linaweza kusafiri maili nyingi kwa siku moja.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Kundi la mbwa mwitu linaweza kusafiri maili nyingi kwa siku moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-100",
+      "paragraph_id": "p100",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Mbwa mwitu huwinda moose, kulungu, na wanyama wadogo.",
+      "text_markdown": "Mbwa mwitu huwinda moose, kulungu, na wanyama wadogo.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Mbwa mwitu huwinda moose, kulungu, na wanyama wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "paragraph_id": "p101",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Katika theluji nzito, hutembea kwa mstari, kila mbwa mwitu akikanyaga kwenye nyayo za yule aliye mbele.",
+      "text_markdown": "Katika theluji nzito, hutembea kwa mstari, kila mbwa mwitu akikanyaga kwenye nyayo za yule aliye mbele.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Katika theluji nzito, hutembea kwa mstari, kila mbwa mwitu akikanyaga kwenye nyayo za yule aliye mbele.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-102",
+      "paragraph_id": "p102",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Lynx ni paka wa porini wa msitu wa boreal.",
+      "text_markdown": "Lynx ni paka wa porini wa msitu wa boreal.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Lynx ni paka wa porini wa msitu wa boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-103",
+      "paragraph_id": "p103",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Ana manyoya mazito ya kijivu, mkia mfupi, na vinyweleo vyenye ncha kali kwenye ncha za masikio yake.",
+      "text_markdown": "Ana manyoya mazito ya kijivu, mkia mfupi, na vinyweleo vyenye ncha kali kwenye ncha za masikio yake.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Ana manyoya mazito ya kijivu, mkia mfupi, na vinyweleo vyenye ncha kali kwenye ncha za masikio yake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-104",
+      "paragraph_id": "p104",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Miguu yake mikubwa yenye manyoya hufanya kazi kama viatu vya theluji katika theluji nzito.",
+      "text_markdown": "Miguu yake mikubwa yenye manyoya hufanya kazi kama viatu vya theluji katika theluji nzito.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Miguu yake mikubwa yenye manyoya hufanya kazi kama viatu vya theluji katika theluji nzito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "paragraph_id": "p105",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Lynx huwinda zaidi sungura wa theluji.",
+      "text_markdown": "Lynx huwinda zaidi sungura wa theluji.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Lynx huwinda zaidi sungura wa theluji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "paragraph_id": "p106",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Sungura wa theluji hubadilika kuwa kahawia wakati wa kiangazi na mweupe wakati wa baridi, ili kufanana na ardhi.",
+      "text_markdown": "Sungura wa theluji hubadilika kuwa kahawia wakati wa kiangazi na mweupe wakati wa baridi, ili kufanana na ardhi.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Sungura wa theluji hubadilika kuwa kahawia wakati wa kiangazi na mweupe wakati wa baridi, ili kufanana na ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-107",
+      "paragraph_id": "p107",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Biva huishi katika mito na maziwa ya msitu.",
+      "text_markdown": "Biva huishi katika mito na maziwa ya msitu.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Biva huishi katika mito na maziwa ya msitu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-108",
+      "paragraph_id": "p108",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Biva hukata miti kwa meno yake yenye nguvu na hujenga mabwawa na makazi ya mbao na matope.",
+      "text_markdown": "Biva hukata miti kwa meno yake yenye nguvu na hujenga mabwawa na makazi ya mbao na matope.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Biva hukata miti kwa meno yake yenye nguvu na hujenga mabwawa na makazi ya mbao na matope.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-109",
+      "paragraph_id": "p109",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Bwawa la biva linaweza kubadilisha eneo lote la msitu kuwa dimbwi tulivu lililojaa uhai.",
+      "text_markdown": "Bwawa la biva linaweza kubadilisha eneo lote la msitu kuwa dimbwi tulivu lililojaa uhai.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Bwawa la biva linaweza kubadilisha eneo lote la msitu kuwa dimbwi tulivu lililojaa uhai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-110",
+      "paragraph_id": "p110",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Juu ya miti, squirrels wekundu hupiga kelele kwa sauti kubwa na kukusanya koni za misonobari kwa ajili ya majira ya baridi.",
+      "text_markdown": "Juu ya miti, squirrels wekundu hupiga kelele kwa sauti kubwa na kukusanya koni za misonobari kwa ajili ya majira ya baridi.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Juu ya miti, squirrels wekundu hupiga kelele kwa sauti kubwa na kukusanya koni za misonobari kwa ajili ya majira ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-111",
+      "paragraph_id": "p111",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Wolverines, martens, na minks huteleza kimya kimya kupitia vichaka.",
+      "text_markdown": "Wolverines, martens, na minks huteleza kimya kimya kupitia vichaka.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Wolverines, martens, na minks huteleza kimya kimya kupitia vichaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "paragraph_id": "p112",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Aina nyingi za bundi huwinda usiku.",
+      "text_markdown": "Aina nyingi za bundi huwinda usiku.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Aina nyingi za bundi huwinda usiku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "paragraph_id": "p113",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Bundi mkuu wa kijivu ni mmoja wa bundi warefu zaidi duniani, na huishi katika msitu wa boreal.",
+      "text_markdown": "Bundi mkuu wa kijivu ni mmoja wa bundi warefu zaidi duniani, na huishi katika msitu wa boreal.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Bundi mkuu wa kijivu ni mmoja wa bundi warefu zaidi duniani, na huishi katika msitu wa boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "paragraph_id": "p114",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Kunguru huruka kati ya miti, wakiitana kwa sauti mbalimbali.",
+      "text_markdown": "Kunguru huruka kati ya miti, wakiitana kwa sauti mbalimbali.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Kunguru huruka kati ya miti, wakiitana kwa sauti mbalimbali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "paragraph_id": "p115",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Katika kiangazi kifupi, makundi ya mbu na nzi wadogo hujaza hewa.",
+      "text_markdown": "Katika kiangazi kifupi, makundi ya mbu na nzi wadogo hujaza hewa.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Katika kiangazi kifupi, makundi ya mbu na nzi wadogo hujaza hewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-116",
+      "paragraph_id": "p116",
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "text": "Kwa wiki chache, msitu huwa hai kwa mngurumo wa wadudu, nyimbo za ndege wadogo, na mshindo wa samaki katika maziwa.",
+      "text_markdown": "Kwa wiki chache, msitu huwa hai kwa mngurumo wa wadudu, nyimbo za ndege wadogo, na mshindo wa samaki katika maziwa.",
+      "title": "Wanyama",
+      "tts": {
+        "text": "Kwa wiki chache, msitu huwa hai kwa mngurumo wa wadudu, nyimbo za ndege wadogo, na mshindo wa samaki katika maziwa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-117",
+      "paragraph_id": "p117",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Watu",
+      "text_markdown": "Watu",
+      "title": "Watu"
+    },
+    {
+      "id": "ch07-118",
+      "paragraph_id": "p118",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal ni mojawapo ya maeneo matupu zaidi duniani.",
+      "text_markdown": "Msitu wa boreal ni mojawapo ya maeneo matupu zaidi duniani.",
+      "title": "Watu",
+      "tts": {
+        "text": "Msitu wa boreal ni mojawapo ya maeneo matupu zaidi duniani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-119",
+      "paragraph_id": "p119",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Majira marefu ya baridi na udongo hafifu hufanya iwe vigumu kulima chakula hapa.",
+      "text_markdown": "Majira marefu ya baridi na udongo hafifu hufanya iwe vigumu kulima chakula hapa.",
+      "title": "Watu",
+      "tts": {
+        "text": "Majira marefu ya baridi na udongo hafifu hufanya iwe vigumu kulima chakula hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "paragraph_id": "p120",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Lakini watu wameishi katika msitu huu mkuu kwa maelfu mengi ya miaka.",
+      "text_markdown": "Lakini watu wameishi katika msitu huu mkuu kwa maelfu mengi ya miaka.",
+      "title": "Watu",
+      "tts": {
+        "text": "Lakini watu wameishi katika msitu huu mkuu kwa maelfu mengi ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "paragraph_id": "p121",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Kaskazini mwa Ulaya, Wasami wameishi katika msitu wa boreal na tandra iliyo juu yake kwa muda mrefu sana.",
+      "text_markdown": "Kaskazini mwa Ulaya, Wasami wameishi katika msitu wa boreal na tandra iliyo juu yake kwa muda mrefu sana.",
+      "title": "Watu",
+      "tts": {
+        "text": "Kaskazini mwa Ulaya, Wasami wameishi katika msitu wa boreal na tandra iliyo juu yake kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "paragraph_id": "p122",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Wasami huchunga paa wa kaskazini katika nchi baridi za Norway, Sweden, Finland, na Russia.",
+      "text_markdown": "Wasami huchunga paa wa kaskazini katika nchi baridi za Norway, Sweden, Finland, na Russia.",
+      "title": "Watu",
+      "tts": {
+        "text": "Wasami huchunga paa wa kaskazini katika nchi baridi za Norway, Sweden, Finland, na Russia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "paragraph_id": "p123",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Paa wa kaskazini anaweza kupata chakula kwenye theluji, na huwapa watu nyama, maziwa, na ngozi.",
+      "text_markdown": "Paa wa kaskazini anaweza kupata chakula kwenye theluji, na huwapa watu nyama, maziwa, na ngozi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Paa wa kaskazini anaweza kupata chakula kwenye theluji, na huwapa watu nyama, maziwa, na ngozi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-124",
+      "paragraph_id": "p124",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Paa wa kaskazini pia huvuta sledi kwenye theluji ya majira ya baridi.",
+      "text_markdown": "Paa wa kaskazini pia huvuta sledi kwenye theluji ya majira ya baridi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Paa wa kaskazini pia huvuta sledi kwenye theluji ya majira ya baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "paragraph_id": "p125",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Huko Siberia, kaskazini mwa Russia, vikundi vingi vya watu vimeufanya msitu wa boreal kuwa makazi yao.",
+      "text_markdown": "Huko Siberia, kaskazini mwa Russia, vikundi vingi vya watu vimeufanya msitu wa boreal kuwa makazi yao.",
+      "title": "Watu",
+      "tts": {
+        "text": "Huko Siberia, kaskazini mwa Russia, vikundi vingi vya watu vimeufanya msitu wa boreal kuwa makazi yao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "paragraph_id": "p126",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Evenki, Khanty, Nenets, na wengine wamewinda, kuvua samaki, na kuchunga paa wa kaskazini hapa kwa vizazi vingi.",
+      "text_markdown": "Evenki, Khanty, Nenets, na wengine wamewinda, kuvua samaki, na kuchunga paa wa kaskazini hapa kwa vizazi vingi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Evenki, Khanty, Nenets, na wengine wamewinda, kuvua samaki, na kuchunga paa wa kaskazini hapa kwa vizazi vingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "paragraph_id": "p127",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Huko Canada na Alaska, watu wengi wa First Nations na Dene wameishi katika msitu wa boreal kwa maelfu ya miaka.",
+      "text_markdown": "Huko Canada na Alaska, watu wengi wa First Nations na Dene wameishi katika msitu wa boreal kwa maelfu ya miaka.",
+      "title": "Watu",
+      "tts": {
+        "text": "Huko Canada na Alaska, watu wengi wa First Nations na Dene wameishi katika msitu wa boreal kwa maelfu ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-128",
+      "paragraph_id": "p128",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Wamewinda paa wakubwa na caribou, wamevua samaki katika mito baridi, na kukusanya matunda pori katika majira mafupi ya joto.",
+      "text_markdown": "Wamewinda paa wakubwa na caribou, wamevua samaki katika mito baridi, na kukusanya matunda pori katika majira mafupi ya joto.",
+      "title": "Watu",
+      "tts": {
+        "text": "Wamewinda paa wakubwa na caribou, wamevua samaki katika mito baridi, na kukusanya matunda pori katika majira mafupi ya joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-129",
+      "paragraph_id": "p129",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Katika nchi hizi zote, watu walitengeneza nguo za joto za majira ya baridi kutoka ngozi za wanyama na manyoya.",
+      "text_markdown": "Katika nchi hizi zote, watu walitengeneza nguo za joto za majira ya baridi kutoka ngozi za wanyama na manyoya.",
+      "title": "Watu",
+      "tts": {
+        "text": "Katika nchi hizi zote, watu walitengeneza nguo za joto za majira ya baridi kutoka ngozi za wanyama na manyoya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "paragraph_id": "p130",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Walijenga nyumba za mbao, maganda ya miti, na ngozi, zenye fursa ndogo za kuzuia baridi.",
+      "text_markdown": "Walijenga nyumba za mbao, maganda ya miti, na ngozi, zenye fursa ndogo za kuzuia baridi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Walijenga nyumba za mbao, maganda ya miti, na ngozi, zenye fursa ndogo za kuzuia baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "paragraph_id": "p131",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Walijifunza kusafiri kwa viatu vya theluji na skis ndefu nyembamba, na baadaye kwa sledi za mbwa.",
+      "text_markdown": "Walijifunza kusafiri kwa viatu vya theluji na skis ndefu nyembamba, na baadaye kwa sledi za mbwa.",
+      "title": "Watu",
+      "tts": {
+        "text": "Walijifunza kusafiri kwa viatu vya theluji na skis ndefu nyembamba, na baadaye kwa sledi za mbwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "paragraph_id": "p132",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Katika majira ya joto, walisafiri kwa mtumbwi, kwa mashua ndefu ya maganda ya mibichi, au kwa paa wa kaskazini.",
+      "text_markdown": "Katika majira ya joto, walisafiri kwa mtumbwi, kwa mashua ndefu ya maganda ya mibichi, au kwa paa wa kaskazini.",
+      "title": "Watu",
+      "tts": {
+        "text": "Katika majira ya joto, walisafiri kwa mtumbwi, kwa mashua ndefu ya maganda ya mibichi, au kwa paa wa kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-133",
+      "paragraph_id": "p133",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Watu hawa walijifunza majina ya kila mti na kila mnyama msituni.",
+      "text_markdown": "Watu hawa walijifunza majina ya kila mti na kila mnyama msituni.",
+      "title": "Watu",
+      "tts": {
+        "text": "Watu hawa walijifunza majina ya kila mti na kila mnyama msituni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-134",
+      "paragraph_id": "p134",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Walijifunza mahali palipokuwa na vichaka vya matunda pori, na mahali samaki walipokuwa wengi zaidi.",
+      "text_markdown": "Walijifunza mahali palipokuwa na vichaka vya matunda pori, na mahali samaki walipokuwa wengi zaidi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Walijifunza mahali palipokuwa na vichaka vya matunda pori, na mahali samaki walipokuwa wengi zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-135",
+      "paragraph_id": "p135",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Walijifunza uyoga gani unaweza kuliwa na upi hauwezi.",
+      "text_markdown": "Walijifunza uyoga gani unaweza kuliwa na upi hauwezi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Walijifunza uyoga gani unaweza kuliwa na upi hauwezi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-136",
+      "paragraph_id": "p136",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Walijifunza kusoma theluji kwa ajili ya nyayo za paa mkubwa na dubu.",
+      "text_markdown": "Walijifunza kusoma theluji kwa ajili ya nyayo za paa mkubwa na dubu.",
+      "title": "Watu",
+      "tts": {
+        "text": "Walijifunza kusoma theluji kwa ajili ya nyayo za paa mkubwa na dubu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-137",
+      "paragraph_id": "p137",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Katika nyakati za hivi karibuni, watu wengine wamekuja msituni kukata mbao, kuchimba madini, au kuishi katika miji midogo kando ya mito.",
+      "text_markdown": "Katika nyakati za hivi karibuni, watu wengine wamekuja msituni kukata mbao, kuchimba madini, au kuishi katika miji midogo kando ya mito.",
+      "title": "Watu",
+      "tts": {
+        "text": "Katika nyakati za hivi karibuni, watu wengine wamekuja msituni kukata mbao, kuchimba madini, au kuishi katika miji midogo kando ya mito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-138",
+      "paragraph_id": "p138",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Lakini kwa sehemu kubwa ya historia yake ndefu, msitu wa boreal umekuwa mahali tulivu.",
+      "text_markdown": "Lakini kwa sehemu kubwa ya historia yake ndefu, msitu wa boreal umekuwa mahali tulivu.",
+      "title": "Watu",
+      "tts": {
+        "text": "Lakini kwa sehemu kubwa ya historia yake ndefu, msitu wa boreal umekuwa mahali tulivu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "paragraph_id": "p139",
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "text": "Mahali ambapo vikundi vidogo vya watu hushiriki ardhi na miti, wanyama, na baridi.",
+      "text_markdown": "Mahali ambapo vikundi vidogo vya watu hushiriki ardhi na miti, wanyama, na baridi.",
+      "title": "Watu",
+      "tts": {
+        "text": "Mahali ambapo vikundi vidogo vya watu hushiriki ardhi na miti, wanyama, na baridi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-140",
+      "paragraph_id": "p140",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Bayomu Leo",
+      "text_markdown": "Bayomu Leo",
+      "title": "Bayomu Leo"
+    },
+    {
+      "id": "ch08-141",
+      "paragraph_id": "p141",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal ni mkubwa, lakini haujaguswa kama unavyoonekana.",
+      "text_markdown": "Msitu wa boreal ni mkubwa, lakini haujaguswa kama unavyoonekana.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Msitu wa boreal ni mkubwa, lakini haujaguswa kama unavyoonekana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-142",
+      "paragraph_id": "p142",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Kwa zaidi ya miaka mia moja, watu wamekata kiasi kikubwa cha mbao kutoka msitu huu.",
+      "text_markdown": "Kwa zaidi ya miaka mia moja, watu wamekata kiasi kikubwa cha mbao kutoka msitu huu.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Kwa zaidi ya miaka mia moja, watu wamekata kiasi kikubwa cha mbao kutoka msitu huu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "paragraph_id": "p143",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Miti mirefu iliyonyooka hutengeneza mbao nzuri na karatasi nzuri.",
+      "text_markdown": "Miti mirefu iliyonyooka hutengeneza mbao nzuri na karatasi nzuri.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Miti mirefu iliyonyooka hutengeneza mbao nzuri na karatasi nzuri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-144",
+      "paragraph_id": "p144",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Katika sehemu nyingi za msitu wa boreal, sehemu nzima za miti zimekatwa na polepole zimekua tena.",
+      "text_markdown": "Katika sehemu nyingi za msitu wa boreal, sehemu nzima za miti zimekatwa na polepole zimekua tena.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Katika sehemu nyingi za msitu wa boreal, sehemu nzima za miti zimekatwa na polepole zimekua tena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-145",
+      "paragraph_id": "p145",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal pia una kiasi kikubwa cha kaboni, katika miti na kwenye udongo na vinamasi vilivyo chini.",
+      "text_markdown": "Msitu wa boreal pia una kiasi kikubwa cha kaboni, katika miti na kwenye udongo na vinamasi vilivyo chini.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Msitu wa boreal pia una kiasi kikubwa cha kaboni, katika miti na kwenye udongo na vinamasi vilivyo chini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-146",
+      "paragraph_id": "p146",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Udongo wenye afya wa boreal huweka kaboni hiyo imefungwa salama mbali na hewa.",
+      "text_markdown": "Udongo wenye afya wa boreal huweka kaboni hiyo imefungwa salama mbali na hewa.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Udongo wenye afya wa boreal huweka kaboni hiyo imefungwa salama mbali na hewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "paragraph_id": "p147",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Miti na udongo vinapohifadhiwa vikiwa vizima, msitu husaidia kuweka hewa ya Dunia nzima katika usawa.",
+      "text_markdown": "Miti na udongo vinapohifadhiwa vikiwa vizima, msitu husaidia kuweka hewa ya Dunia nzima katika usawa.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Miti na udongo vinapohifadhiwa vikiwa vizima, msitu husaidia kuweka hewa ya Dunia nzima katika usawa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-148",
+      "paragraph_id": "p148",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Katika miaka ya hivi karibuni, msitu wa boreal umekuwa joto zaidi.",
+      "text_markdown": "Katika miaka ya hivi karibuni, msitu wa boreal umekuwa joto zaidi.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Katika miaka ya hivi karibuni, msitu wa boreal umekuwa joto zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "paragraph_id": "p149",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Majira marefu ya joto yameleta moto mkubwa wa misitu kuliko watu wa kaskazini wanavyokumbuka.",
+      "text_markdown": "Majira marefu ya joto yameleta moto mkubwa wa misitu kuliko watu wa kaskazini wanavyokumbuka.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Majira marefu ya joto yameleta moto mkubwa wa misitu kuliko watu wa kaskazini wanavyokumbuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-150",
+      "paragraph_id": "p150",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Baadhi ya mioto hii sasa hudumu kwa wiki na kuunguza mamilioni ya miti.",
+      "text_markdown": "Baadhi ya mioto hii sasa hudumu kwa wiki na kuunguza mamilioni ya miti.",
+      "title": "Bayomu Leo",
+      "tts": {
+        "text": "Baadhi ya mioto hii sasa hudumu kwa wiki na kuunguza mamilioni ya miti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-151",
+      "paragraph_id": "p151",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Kaskazini mwa mbali, majira ya joto yenye joto zaidi yameanza kulainisha permafrost.",
+      "text_markdown": "Kaskazini mwa mbali, majira ya joto yenye joto zaidi yameanza kulainisha permafrost.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Kaskazini mwa mbali, majira ya joto yenye joto zaidi yameanza kulainisha permafrost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch08-152",
+      "paragraph_id": "p152",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Watu na vikundi vingi leo wanafanya kazi kutunza msitu wa boreal.",
+      "text_markdown": "Watu na vikundi vingi leo wanafanya kazi kutunza msitu wa boreal.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Watu na vikundi vingi leo wanafanya kazi kutunza msitu wa boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "paragraph_id": "p153",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Wanaweka kando mbuga kubwa ambapo msitu unaweza kukua kama ulivyokuwa daima.",
+      "text_markdown": "Wanaweka kando mbuga kubwa ambapo msitu unaweza kukua kama ulivyokuwa daima.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Wanaweka kando mbuga kubwa ambapo msitu unaweza kukua kama ulivyokuwa daima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-154",
+      "paragraph_id": "p154",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Wanawasaidia watu ambao wameishi huko kwa vizazi vingi kutunza ardhi zao wenyewe.",
+      "text_markdown": "Wanawasaidia watu ambao wameishi huko kwa vizazi vingi kutunza ardhi zao wenyewe.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Wanawasaidia watu ambao wameishi huko kwa vizazi vingi kutunza ardhi zao wenyewe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-155",
+      "paragraph_id": "p155",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Wanasoma msitu ili kuelewa jinsi unavyoishi na jinsi ya kuuweka mzima.",
+      "text_markdown": "Wanasoma msitu ili kuelewa jinsi unavyoishi na jinsi ya kuuweka mzima.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Wanasoma msitu ili kuelewa jinsi unavyoishi na jinsi ya kuuweka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-156",
+      "paragraph_id": "p156",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Msitu wa boreal wenye afya ni blanketi kubwa ya kijani kibichi inayosaidia kuweka dunia baridi.",
+      "text_markdown": "Msitu wa boreal wenye afya ni blanketi kubwa ya kijani kibichi inayosaidia kuweka dunia baridi.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Msitu wa boreal wenye afya ni blanketi kubwa ya kijani kibichi inayosaidia kuweka dunia baridi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-157",
+      "paragraph_id": "p157",
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "text": "Inastahili utunzaji wetu.",
+      "text_markdown": "Inastahili utunzaji wetu.",
+      "title": "Biome Leo",
+      "tts": {
+        "text": "Inastahili utunzaji wetu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "paragraph_id": "p158",
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Hitimisho",
+      "text_markdown": "Hitimisho",
+      "title": "Hitimisho"
+    },
+    {
+      "id": "ch09-159",
+      "paragraph_id": "p159",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Huo ndio msitu wa boreal.",
+      "text_markdown": "Huo ndio msitu wa boreal.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Huo ndio msitu wa boreal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-160",
+      "paragraph_id": "p160",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Ukanda mpana wa kijani kibichi wa miti isiyopukutika, maziwa, na theluji tulivu unaozunguka karibu dunia nzima upande wa juu.",
+      "text_markdown": "Ukanda mpana wa kijani kibichi wa miti isiyopukutika, maziwa, na theluji tulivu unaozunguka karibu dunia nzima upande wa juu.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Ukanda mpana wa kijani kibichi wa miti isiyopukutika, maziwa, na theluji tulivu unaozunguka karibu dunia nzima upande wa juu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "paragraph_id": "p161",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Kama utasimama ndani yake, tulia kwa dakika moja.",
+      "text_markdown": "Kama utasimama ndani yake, tulia kwa dakika moja.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Kama utasimama ndani yake, tulia kwa dakika moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "paragraph_id": "p162",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Sikiliza upepo kwenye sindano za miti za juu.",
+      "text_markdown": "Sikiliza upepo kwenye sindano za miti za juu.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Sikiliza upepo kwenye sindano za miti za juu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-163",
+      "paragraph_id": "p163",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Tazama jua likipenya kupitia miti hadi kwenye fani.",
+      "text_markdown": "Tazama jua likipenya kupitia miti hadi kwenye fani.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Tazama jua likipenya kupitia miti hadi kwenye fani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch09-164",
+      "paragraph_id": "p164",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Nusa hewa baridi ya misonobari.",
+      "text_markdown": "Nusa hewa baridi ya misonobari.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Nusa hewa baridi ya misonobari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-165",
+      "paragraph_id": "p165",
+      "block_type": "text",
+      "chapter": 9,
+      "sentence_index": 0,
+      "text": "Utasikia moyo wa polepole, wenye subira wa biome ukidunda kukuzunguka.",
+      "text_markdown": "Utasikia moyo wa polepole, wenye subira wa biome ukidunda kukuzunguka.",
+      "title": "Hitimisho",
+      "tts": {
+        "text": "Utasikia moyo wa polepole, wenye subira wa biome ukidunda kukuzunguka.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

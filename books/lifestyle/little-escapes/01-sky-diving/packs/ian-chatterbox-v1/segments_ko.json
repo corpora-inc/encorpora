@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "끌림",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "끌림",
+      "text_markdown": "끌림"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비행기에서 막 빠져나온 직후, 공짜로 선물해 주고 싶을 만큼 특별한 순간이 하나 있어요.",
+      "text_markdown": "비행기에서 막 빠져나온 직후, 공짜로 선물해 주고 싶을 만큼 특별한 순간이 하나 있어요.",
+      "tts": {
+        "text": "비행기에서 막 빠져나온 직후, 공짜로 선물해 주고 싶을 만큼 특별한 순간이 하나 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세상은 더 이상 우리가 살고 있는 곳이 아니게 돼요.",
+      "text_markdown": "세상은 더 이상 우리가 살고 있는 곳이 아니게 돼요.",
+      "tts": {
+        "text": "세상은 더 이상 우리가 살고 있는 곳이 아니게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "통과해 떨어지는 무언가가 되어 버려요.",
+      "text_markdown": "통과해 떨어지는 무언가가 되어 버려요.",
+      "tts": {
+        "text": "통과해 떨어지는 무언가가 되어 버려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 처음 몇 초 동안은, 방금 몸이 한 일을 머리가 미처 따라잡지 못해요.",
+      "text_markdown": "그리고 처음 몇 초 동안은, 방금 몸이 한 일을 머리가 미처 따라잡지 못해요.",
+      "tts": {
+        "text": "그리고 처음 몇 초 동안은, 방금 몸이 한 일을 머리가 미처 따라잡지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들은 제게 왜 뛰어내리느냐고 물어요.",
+      "text_markdown": "사람들은 제게 왜 뛰어내리느냐고 물어요.",
+      "tts": {
+        "text": "사람들은 제게 왜 뛰어내리느냐고 물어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다들 제가 짜릿함 때문이라고 답할 거라 기대하죠.",
+      "text_markdown": "다들 제가 짜릿함 때문이라고 답할 거라 기대하죠.",
+      "tts": {
+        "text": "다들 제가 짜릿함 때문이라고 답할 거라 기대하죠.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그건 짜릿함이 아니에요.",
+      "text_markdown": "그건 짜릿함이 아니에요.",
+      "tts": {
+        "text": "그건 짜릿함이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "짜릿함은 처음 다섯 번의 점프에서 느끼는 거예요.",
+      "text_markdown": "짜릿함은 처음 다섯 번의 점프에서 느끼는 거예요.",
+      "tts": {
+        "text": "짜릿함은 처음 다섯 번의 점프에서 느끼는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그 뒤에는 더 조용한 무언가가 자리를 잡아요.",
+      "text_markdown": "그 뒤에는 더 조용한 무언가가 자리를 잡아요.",
+      "tts": {
+        "text": "그 뒤에는 더 조용한 무언가가 자리를 잡아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제가 좇는 건 명료함이에요.",
+      "text_markdown": "제가 좇는 건 명료함이에요.",
+      "tts": {
+        "text": "제가 좇는 건 명료함이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자유낙하의 육십 초 동안, 머리는 다른 할 일이 하나도 없어요.",
+      "text_markdown": "자유낙하의 육십 초 동안, 머리는 다른 할 일이 하나도 없어요.",
+      "tts": {
+        "text": "자유낙하의 육십 초 동안, 머리는 다른 할 일이 하나도 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전화도 없어요.",
+      "text_markdown": "전화도 없어요.",
+      "tts": {
+        "text": "전화도 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "고지서도 없어요.",
+      "text_markdown": "고지서도 없어요.",
+      "tts": {
+        "text": "고지서도 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "내일에 대한 자잘한 걱정도 없어요.",
+      "text_markdown": "내일에 대한 자잘한 걱정도 없어요.",
+      "tts": {
+        "text": "내일에 대한 자잘한 걱정도 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "오직 바람과 자신의 숨, 그리고 발 아래로 천천히 휘어져 가는 지구의 곡선뿐이에요.",
+      "text_markdown": "오직 바람과 자신의 숨, 그리고 발 아래로 천천히 휘어져 가는 지구의 곡선뿐이에요.",
+      "tts": {
+        "text": "오직 바람과 자신의 숨, 그리고 발 아래로 천천히 휘어져 가는 지구의 곡선뿐이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "삶의 대부분은 시끄러워요.",
+      "text_markdown": "삶의 대부분은 시끄러워요.",
+      "tts": {
+        "text": "삶의 대부분은 시끄러워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "그 일 분만큼은 그렇지 않아요.",
+      "text_markdown": "그 일 분만큼은 그렇지 않아요.",
+      "tts": {
+        "text": "그 일 분만큼은 그렇지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스카이다이버는 미친 사람이 아니에요.",
+      "text_markdown": "스카이다이버는 미친 사람이 아니에요.",
+      "tts": {
+        "text": "스카이다이버는 미친 사람이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우리 대부분은 차분해지는 더 빠른 길을 찾아낸 차분한 사람들이에요.",
+      "text_markdown": "우리 대부분은 차분해지는 더 빠른 길을 찾아낸 차분한 사람들이에요.",
+      "tts": {
+        "text": "우리 대부분은 차분해지는 더 빠른 길을 찾아낸 차분한 사람들이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 사람들이 명상하듯이, 우리는 비행기에서 뛰어내려요.",
+      "text_markdown": "다른 사람들이 명상하듯이, 우리는 비행기에서 뛰어내려요.",
+      "tts": {
+        "text": "다른 사람들이 명상하듯이, 우리는 비행기에서 뛰어내려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그게 무언가를 깨끗이 비워 줘요.",
+      "text_markdown": "그게 무언가를 깨끗이 비워 줘요.",
+      "tts": {
+        "text": "그게 무언가를 깨끗이 비워 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그리고 매 주말마다, 다시 또 비워 줘요.",
+      "text_markdown": "그리고 매 주말마다, 다시 또 비워 줘요.",
+      "tts": {
+        "text": "그리고 매 주말마다, 다시 또 비워 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음으로 머리 위에서 낙하산이 펼쳐지는 걸 보았을 때, 저는 하네스에 매달린 채 울었어요.",
+      "text_markdown": "처음으로 머리 위에서 낙하산이 펼쳐지는 걸 보았을 때, 저는 하네스에 매달린 채 울었어요.",
+      "tts": {
+        "text": "처음으로 머리 위에서 낙하산이 펼쳐지는 걸 보았을 때, 저는 하네스에 매달린 채 울었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그렇게 될 줄은 몰랐어요.",
+      "text_markdown": "그렇게 될 줄은 몰랐어요.",
+      "tts": {
+        "text": "그렇게 될 줄은 몰랐어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다 큰 어른이, 부드러운 천 한 장 아래 하늘에 매달린 채, 자기도 설명할 수 없는 이유로 흐느끼고 있었던 거예요.",
+      "text_markdown": "다 큰 어른이, 부드러운 천 한 장 아래 하늘에 매달린 채, 자기도 설명할 수 없는 이유로 흐느끼고 있었던 거예요.",
+      "tts": {
+        "text": "다 큰 어른이, 부드러운 천 한 장 아래 하늘에 매달린 채, 자기도 설명할 수 없는 이유로 흐느끼고 있었던 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "강사님은 부드럽게 웃으며 제 어깨를 토닥여 주었어요.",
+      "text_markdown": "강사님은 부드럽게 웃으며 제 어깨를 토닥여 주었어요.",
+      "tts": {
+        "text": "강사님은 부드럽게 웃으며 제 어깨를 토닥여 주었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그분은 그런 모습을 여러 번 보아 왔거든요.",
+      "text_markdown": "그분은 그런 모습을 여러 번 보아 왔거든요.",
+      "tts": {
+        "text": "그분은 그런 모습을 여러 번 보아 왔거든요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그 순간 저는 다시 돌아오리라는 걸 알았어요.",
+      "text_markdown": "그 순간 저는 다시 돌아오리라는 걸 알았어요.",
+      "tts": {
+        "text": "그 순간 저는 다시 돌아오리라는 걸 알았어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스카이다이빙은 용감해지는 일이 아니에요.",
+      "text_markdown": "스카이다이빙은 용감해지는 일이 아니에요.",
+      "tts": {
+        "text": "스카이다이빙은 용감해지는 일이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마음이 조용해지는 단 하나의 자리를 찾는 일이에요.",
+      "text_markdown": "마음이 조용해지는 단 하나의 자리를 찾는 일이에요.",
+      "tts": {
+        "text": "마음이 조용해지는 단 하나의 자리를 찾는 일이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 사람에게 그 자리는 요가 매트예요.",
+      "text_markdown": "어떤 사람에게 그 자리는 요가 매트예요.",
+      "tts": {
+        "text": "어떤 사람에게 그 자리는 요가 매트예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 사람에게는 텅 빈 길 위에서의 긴 달리기예요.",
+      "text_markdown": "어떤 사람에게는 텅 빈 길 위에서의 긴 달리기예요.",
+      "tts": {
+        "text": "어떤 사람에게는 텅 빈 길 위에서의 긴 달리기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "어떤 사람에게는 낚싯줄, 또는 피아노, 또는 새벽 여섯 시의 부엌이에요.",
+      "text_markdown": "어떤 사람에게는 낚싯줄, 또는 피아노, 또는 새벽 여섯 시의 부엌이에요.",
+      "tts": {
+        "text": "어떤 사람에게는 낚싯줄, 또는 피아노, 또는 새벽 여섯 시의 부엌이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "저에게는 지면에서 만 삼천 피트 위, 그저 숨 쉬는 일 말고는 할 일이 없는 곳이에요.",
+      "text_markdown": "저에게는 지면에서 만 삼천 피트 위, 그저 숨 쉬는 일 말고는 할 일이 없는 곳이에요.",
+      "tts": {
+        "text": "저에게는 지면에서 만 삼천 피트 위, 그저 숨 쉬는 일 말고는 할 일이 없는 곳이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한번 그 끌림을 느끼고 나면, 저녁 식사 자리에서 친구에게 설명하기는 무척 어려워요.",
+      "text_markdown": "한번 그 끌림을 느끼고 나면, 저녁 식사 자리에서 친구에게 설명하기는 무척 어려워요.",
+      "tts": {
+        "text": "한번 그 끌림을 느끼고 나면, 저녁 식사 자리에서 친구에게 설명하기는 무척 어려워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분이 애써 보아도, 친구는 예의상 미소만 짓고, 결국 여러분은 포기하게 될 거예요.",
+      "text_markdown": "여러분이 애써 보아도, 친구는 예의상 미소만 짓고, 결국 여러분은 포기하게 될 거예요.",
+      "tts": {
+        "text": "여러분이 애써 보아도, 친구는 예의상 미소만 짓고, 결국 여러분은 포기하게 될 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그래도 괜찮아요.",
+      "text_markdown": "그래도 괜찮아요.",
+      "tts": {
+        "text": "그래도 괜찮아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러분이 점프를 시작한 건 그걸 설명하기 위해서가 아니었으니까요.",
+      "text_markdown": "여러분이 점프를 시작한 건 그걸 설명하기 위해서가 아니었으니까요.",
+      "tts": {
+        "text": "여러분이 점프를 시작한 건 그걸 설명하기 위해서가 아니었으니까요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "처음 시도해 본 그 순간, 안에서 무언가가 아, 너 거기 있었구나, 하고 말했기 때문에 시작한 거예요.",
+      "text_markdown": "처음 시도해 본 그 순간, 안에서 무언가가 아, 너 거기 있었구나, 하고 말했기 때문에 시작한 거예요.",
+      "tts": {
+        "text": "처음 시도해 본 그 순간, 안에서 무언가가 아, 너 거기 있었구나, 하고 말했기 때문에 시작한 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "높은 곳의 가장자리에 서서, 몸이 트인 허공 쪽으로 살짝 기우는 걸 느껴 본 적 있나요?",
+      "text_markdown": "높은 곳의 가장자리에 서서, 몸이 트인 허공 쪽으로 살짝 기우는 걸 느껴 본 적 있나요?",
+      "tts": {
+        "text": "높은 곳의 가장자리에 서서, 몸이 트인 허공 쪽으로 살짝 기우는 걸 느껴 본 적 있나요?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아주 살짝, 단 일 초 동안.",
+      "text_markdown": "아주 살짝, 단 일 초 동안.",
+      "tts": {
+        "text": "아주 살짝, 단 일 초 동안.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그런 적이 있다면, 제가 말하는 게 무엇인지 이미 아는 거예요.",
+      "text_markdown": "그런 적이 있다면, 제가 말하는 게 무엇인지 이미 아는 거예요.",
+      "tts": {
+        "text": "그런 적이 있다면, 제가 말하는 게 무엇인지 이미 아는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스카이다이빙은 우리가 그 기울어짐을 더는 못 본 척하지 않을 때 일어나는 일이에요.",
+      "text_markdown": "스카이다이빙은 우리가 그 기울어짐을 더는 못 본 척하지 않을 때 일어나는 일이에요.",
+      "tts": {
+        "text": "스카이다이빙은 우리가 그 기울어짐을 더는 못 본 척하지 않을 때 일어나는 일이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "여러분의 몸이 오랫동안 조용히 묻고 있던 그 자리로, 일부러 한 걸음 내딛는 거예요.",
+      "text_markdown": "여러분의 몸이 오랫동안 조용히 묻고 있던 그 자리로, 일부러 한 걸음 내딛는 거예요.",
+      "tts": {
+        "text": "여러분의 몸이 오랫동안 조용히 묻고 있던 그 자리로, 일부러 한 걸음 내딛는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그리고 아주 빠르게, 두려움이 있던 곳은 한 번도 땅이 아니었다는 걸 알게 돼요.",
+      "text_markdown": "그리고 아주 빠르게, 두려움이 있던 곳은 한 번도 땅이 아니었다는 걸 알게 돼요.",
+      "tts": {
+        "text": "그리고 아주 빠르게, 두려움이 있던 곳은 한 번도 땅이 아니었다는 걸 알게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "두려움은 그 기울어짐 안에 있었어요.",
+      "text_markdown": "두려움은 그 기울어짐 안에 있었어요.",
+      "tts": {
+        "text": "두려움은 그 기울어짐 안에 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일단 뛰어내리면, 두려움은 사라져요.",
+      "text_markdown": "일단 뛰어내리면, 두려움은 사라져요.",
+      "tts": {
+        "text": "일단 뛰어내리면, 두려움은 사라져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "남는 건 거의 집 같은 무언가예요.",
+      "text_markdown": "남는 건 거의 집 같은 무언가예요.",
+      "tts": {
+        "text": "남는 건 거의 집 같은 무언가예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "심장이 천천히 뛰어요.",
+      "text_markdown": "심장이 천천히 뛰어요.",
+      "tts": {
+        "text": "심장이 천천히 뛰어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "숨이 오랫동안 찾아 헤매던 박자를 찾아내요.",
+      "text_markdown": "숨이 오랫동안 찾아 헤매던 박자를 찾아내요.",
+      "tts": {
+        "text": "숨이 오랫동안 찾아 헤매던 박자를 찾아내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "공기가 여러분을 받쳐 줘요.",
+      "text_markdown": "공기가 여러분을 받쳐 줘요.",
+      "tts": {
+        "text": "공기가 여러분을 받쳐 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "그리고 어쩌면 오랜만에 처음으로, 여러분은 자신이 정확히 있어야 할 곳에 있다는 걸 느껴요.",
+      "text_markdown": "그리고 어쩌면 오랜만에 처음으로, 여러분은 자신이 정확히 있어야 할 곳에 있다는 걸 느껴요.",
+      "tts": {
+        "text": "그리고 어쩌면 오랜만에 처음으로, 여러분은 자신이 정확히 있어야 할 곳에 있다는 걸 느껴요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "긴 산책을 하다가 누가 묻는다면, 저는 이렇게 말해 줄 거예요.",
+      "text_markdown": "긴 산책을 하다가 누가 묻는다면, 저는 이렇게 말해 줄 거예요.",
+      "tts": {
+        "text": "긴 산책을 하다가 누가 묻는다면, 저는 이렇게 말해 줄 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "차분하고 분별 있는 사람이 어째서 멀쩡한 비행기에서 자꾸 뛰어내리는 걸까요?",
+      "text_markdown": "차분하고 분별 있는 사람이 어째서 멀쩡한 비행기에서 자꾸 뛰어내리는 걸까요?",
+      "tts": {
+        "text": "차분하고 분별 있는 사람이 어째서 멀쩡한 비행기에서 자꾸 뛰어내리는 걸까요?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제가 하는 일 중 가장 조용한 일이라고 말해 줄 거예요.",
+      "text_markdown": "제가 하는 일 중 가장 조용한 일이라고 말해 줄 거예요.",
+      "tts": {
+        "text": "제가 하는 일 중 가장 조용한 일이라고 말해 줄 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 그 말은 진심일 거예요.",
+      "text_markdown": "그리고 그 말은 진심일 거예요.",
+      "tts": {
+        "text": "그리고 그 말은 진심일 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "첫 점프",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "첫 점프",
+      "text_markdown": "첫 점프"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비행기 안에 한번 들어가 봐요.",
+      "text_markdown": "비행기 안에 한번 들어가 봐요.",
+      "tts": {
+        "text": "비행기 안에 한번 들어가 봐요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여러분은 낮은 금속 벤치에 앉아, 뒤에 있는 강사와 하네스로 묶여 있어요.",
+      "text_markdown": "여러분은 낮은 금속 벤치에 앉아, 뒤에 있는 강사와 하네스로 묶여 있어요.",
+      "tts": {
+        "text": "여러분은 낮은 금속 벤치에 앉아, 뒤에 있는 강사와 하네스로 묶여 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비행기는 느리고 게으른 원을 그리며 올라가요.",
+      "text_markdown": "비행기는 느리고 게으른 원을 그리며 올라가요.",
+      "tts": {
+        "text": "비행기는 느리고 게으른 원을 그리며 올라가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "옆에 있는 작은 사각 창문이 점점 더 푸르러져요.",
+      "text_markdown": "옆에 있는 작은 사각 창문이 점점 더 푸르러져요.",
+      "tts": {
+        "text": "옆에 있는 작은 사각 창문이 점점 더 푸르러져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장이 목구멍에서 뛰는 게 느껴지지만, 공황 상태는 아니에요.",
+      "text_markdown": "심장이 목구멍에서 뛰는 게 느껴지지만, 공황 상태는 아니에요.",
+      "tts": {
+        "text": "심장이 목구멍에서 뛰는 게 느껴지지만, 공황 상태는 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그저 아주, 아주 또렷이 깨어 있을 뿐이에요.",
+      "text_markdown": "그저 아주, 아주 또렷이 깨어 있을 뿐이에요.",
+      "tts": {
+        "text": "그저 아주, 아주 또렷이 깨어 있을 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강사가 여러분의 귀에 가까이 몸을 기울여요.",
+      "text_markdown": "강사가 여러분의 귀에 가까이 몸을 기울여요.",
+      "tts": {
+        "text": "강사가 여러분의 귀에 가까이 몸을 기울여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "차분하게 말해 줘요. 해야 할 모든 일은 자기가 때맞춰 알려 주겠다고요.",
+      "text_markdown": "차분하게 말해 줘요. 해야 할 모든 일은 자기가 때맞춰 알려 주겠다고요.",
+      "tts": {
+        "text": "차분하게 말해 줘요. 해야 할 모든 일은 자기가 때맞춰 알려 주겠다고요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러분은 고개를 끄덕여요.",
+      "text_markdown": "여러분은 고개를 끄덕여요.",
+      "tts": {
+        "text": "여러분은 고개를 끄덕여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지난 한 시간 동안 너무 많이 끄덕여서 목이 슬슬 아파 오기 시작해요.",
+      "text_markdown": "지난 한 시간 동안 너무 많이 끄덕여서 목이 슬슬 아파 오기 시작해요.",
+      "tts": {
+        "text": "지난 한 시간 동안 너무 많이 끄덕여서 목이 슬슬 아파 오기 시작해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러다 문이 열려요.",
+      "text_markdown": "그러다 문이 열려요.",
+      "tts": {
+        "text": "그러다 문이 열려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바람이 벽처럼 들이쳐요. 시끄럽고 차갑고 살아 있는 바람이, 그리고 갑자기 비행기가 아주 작게 느껴져요.",
+      "text_markdown": "바람이 벽처럼 들이쳐요. 시끄럽고 차갑고 살아 있는 바람이, 그리고 갑자기 비행기가 아주 작게 느껴져요.",
+      "tts": {
+        "text": "바람이 벽처럼 들이쳐요. 시끄럽고 차갑고 살아 있는 바람이, 그리고 갑자기 비행기가 아주 작게 느껴져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분은 가장자리로 엉덩이를 옮겨요.",
+      "text_markdown": "여러분은 가장자리로 엉덩이를 옮겨요.",
+      "tts": {
+        "text": "여러분은 가장자리로 엉덩이를 옮겨요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "발끝이 허공에 매달려요.",
+      "text_markdown": "발끝이 허공에 매달려요.",
+      "tts": {
+        "text": "발끝이 허공에 매달려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아래를 내려다보면, 땅이 너무 멀어서 더 이상 땅처럼 보이지 않아요.",
+      "text_markdown": "아래를 내려다보면, 땅이 너무 멀어서 더 이상 땅처럼 보이지 않아요.",
+      "tts": {
+        "text": "아래를 내려다보면, 땅이 너무 멀어서 더 이상 땅처럼 보이지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "조각보처럼 보여요.",
+      "text_markdown": "조각보처럼 보여요.",
+      "tts": {
+        "text": "조각보처럼 보여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "실처럼 가느다란 길.",
+      "text_markdown": "실처럼 가느다란 길.",
+      "tts": {
+        "text": "실처럼 가느다란 길.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "흐릿한 은빛의 강.",
+      "text_markdown": "흐릿한 은빛의 강.",
+      "tts": {
+        "text": "흐릿한 은빛의 강.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "산울타리로 꿰매 이은 작은 초록과 갈색 들판들.",
+      "text_markdown": "산울타리로 꿰매 이은 작은 초록과 갈색 들판들.",
+      "tts": {
+        "text": "산울타리로 꿰매 이은 작은 초록과 갈색 들판들.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강사가 숫자를 세요.",
+      "text_markdown": "강사가 숫자를 세요.",
+      "tts": {
+        "text": "강사가 숫자를 세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하나, 라고 말해요.",
+      "text_markdown": "하나, 라고 말해요.",
+      "tts": {
+        "text": "하나, 라고 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "둘, 이라고 말해요.",
+      "text_markdown": "둘, 이라고 말해요.",
+      "tts": {
+        "text": "둘, 이라고 말해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "셋에, 비행기는 사라져요.",
+      "text_markdown": "셋에, 비행기는 사라져요.",
+      "tts": {
+        "text": "셋에, 비행기는 사라져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음 삼 초가 가장 힘들어요.",
+      "text_markdown": "처음 삼 초가 가장 힘들어요.",
+      "tts": {
+        "text": "처음 삼 초가 가장 힘들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몸은 자기가 떨어지고 있다고 믿어요. 실제로 떨어지고 있으니까요. 그리고 몸은 이래도 괜찮다는 말을 들어 본 적이 없어요.",
+      "text_markdown": "몸은 자기가 떨어지고 있다고 믿어요. 실제로 떨어지고 있으니까요. 그리고 몸은 이래도 괜찮다는 말을 들어 본 적이 없어요.",
+      "tts": {
+        "text": "몸은 자기가 떨어지고 있다고 믿어요. 실제로 떨어지고 있으니까요. 그리고 몸은 이래도 괜찮다는 말을 들어 본 적이 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러분은 어떤 소리를 내요.",
+      "text_markdown": "여러분은 어떤 소리를 내요.",
+      "tts": {
+        "text": "여러분은 어떤 소리를 내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다들 어떤 소리를 내요.",
+      "text_markdown": "다들 어떤 소리를 내요.",
+      "tts": {
+        "text": "다들 어떤 소리를 내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그 소리에 부끄러워할 필요는 없어요.",
+      "text_markdown": "그 소리에 부끄러워할 필요는 없어요.",
+      "tts": {
+        "text": "그 소리에 부끄러워할 필요는 없어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러다 아주 놀라운 일이 일어나요.",
+      "text_markdown": "그러다 아주 놀라운 일이 일어나요.",
+      "tts": {
+        "text": "그러다 아주 놀라운 일이 일어나요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 떨어짐이 더는 떨어짐처럼 느껴지지 않아요.",
+      "text_markdown": "그 떨어짐이 더는 떨어짐처럼 느껴지지 않아요.",
+      "tts": {
+        "text": "그 떨어짐이 더는 떨어짐처럼 느껴지지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바람이 위로 올라와 여러분을 만나고, 등을 대고 누워 떠 있을 때 물이 받쳐 주듯 받쳐 줘요.",
+      "text_markdown": "바람이 위로 올라와 여러분을 만나고, 등을 대고 누워 떠 있을 때 물이 받쳐 주듯 받쳐 줘요.",
+      "tts": {
+        "text": "바람이 위로 올라와 여러분을 만나고, 등을 대고 누워 떠 있을 때 물이 받쳐 주듯 받쳐 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "팔과 다리가 부탁하지 않았는데도 저절로 활짝 펴져요.",
+      "text_markdown": "팔과 다리가 부탁하지 않았는데도 저절로 활짝 펴져요.",
+      "tts": {
+        "text": "팔과 다리가 부탁하지 않았는데도 저절로 활짝 펴져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "얼굴은 한꺼번에 여러 방향으로 잡아당겨지는 것 같아요.",
+      "text_markdown": "얼굴은 한꺼번에 여러 방향으로 잡아당겨지는 것 같아요.",
+      "tts": {
+        "text": "얼굴은 한꺼번에 여러 방향으로 잡아당겨지는 것 같아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "웃고 있는지 비명을 지르고 있는지조차 분간이 안 돼요.",
+      "text_markdown": "웃고 있는지 비명을 지르고 있는지조차 분간이 안 돼요.",
+      "tts": {
+        "text": "웃고 있는지 비명을 지르고 있는지조차 분간이 안 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "그건 중요하지 않아요.",
+      "text_markdown": "그건 중요하지 않아요.",
+      "tts": {
+        "text": "그건 중요하지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여러분은 주위를 둘러봐요.",
+      "text_markdown": "여러분은 주위를 둘러봐요.",
+      "tts": {
+        "text": "여러분은 주위를 둘러봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지구는 여전히 한참 아래에 있지만, 이제 더 가까워져서 색이 더 잘 보여요.",
+      "text_markdown": "지구는 여전히 한참 아래에 있지만, 이제 더 가까워져서 색이 더 잘 보여요.",
+      "tts": {
+        "text": "지구는 여전히 한참 아래에 있지만, 이제 더 가까워져서 색이 더 잘 보여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고속도로의 자동차들이 개미처럼 느릿느릿해요.",
+      "text_markdown": "고속도로의 자동차들이 개미처럼 느릿느릿해요.",
+      "tts": {
+        "text": "고속도로의 자동차들이 개미처럼 느릿느릿해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "호수 하나가, 완벽하게 잔잔해요.",
+      "text_markdown": "호수 하나가, 완벽하게 잔잔해요.",
+      "tts": {
+        "text": "호수 하나가, 완벽하게 잔잔해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "구름 그림자가 숲 위로 흘러가요.",
+      "text_markdown": "구름 그림자가 숲 위로 흘러가요.",
+      "tts": {
+        "text": "구름 그림자가 숲 위로 흘러가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여러분은 날고 있어요.",
+      "text_markdown": "여러분은 날고 있어요.",
+      "tts": {
+        "text": "여러분은 날고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비행기 안이 아니라요.",
+      "text_markdown": "비행기 안이 아니라요.",
+      "tts": {
+        "text": "비행기 안이 아니라요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러분 자신의 몸이, 지금 날고 있어요.",
+      "text_markdown": "여러분 자신의 몸이, 지금 날고 있어요.",
+      "tts": {
+        "text": "여러분 자신의 몸이, 지금 날고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강사가 어깨를 톡 쳐요.",
+      "text_markdown": "강사가 어깨를 톡 쳐요.",
+      "tts": {
+        "text": "강사가 어깨를 톡 쳐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분이 줄을 당겨요.",
+      "text_markdown": "여러분이 줄을 당겨요.",
+      "tts": {
+        "text": "여러분이 줄을 당겨요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "누가 셔츠 뒷자락을 부드럽게 잡아당기는 듯한, 가벼운 당김이 와요.",
+      "text_markdown": "누가 셔츠 뒷자락을 부드럽게 잡아당기는 듯한, 가벼운 당김이 와요.",
+      "tts": {
+        "text": "누가 셔츠 뒷자락을 부드럽게 잡아당기는 듯한, 가벼운 당김이 와요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그다음 더 강한 두 번째 당김이 와서, 여러분을 똑바로 일으켜 세워요.",
+      "text_markdown": "그다음 더 강한 두 번째 당김이 와서, 여러분을 똑바로 일으켜 세워요.",
+      "tts": {
+        "text": "그다음 더 강한 두 번째 당김이 와서, 여러분을 똑바로 일으켜 세워요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세상이 조용해져요.",
+      "text_markdown": "세상이 조용해져요.",
+      "tts": {
+        "text": "세상이 조용해져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바람이 사라져요.",
+      "text_markdown": "바람이 사라져요.",
+      "tts": {
+        "text": "바람이 사라져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "굉음이 사라져요.",
+      "text_markdown": "굉음이 사라져요.",
+      "tts": {
+        "text": "굉음이 사라져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 떨어짐이 사라져요.",
+      "text_markdown": "그 떨어짐이 사라져요.",
+      "tts": {
+        "text": "그 떨어짐이 사라져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러분은 이제 하네스에 매달려, 넓은 직사각형 천 아래 떠 있어요.",
+      "text_markdown": "여러분은 이제 하네스에 매달려, 넓은 직사각형 천 아래 떠 있어요.",
+      "tts": {
+        "text": "여러분은 이제 하네스에 매달려, 넓은 직사각형 천 아래 떠 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "하늘이 갑자기 아주, 아주 고요해져요.",
+      "text_markdown": "하늘이 갑자기 아주, 아주 고요해져요.",
+      "tts": {
+        "text": "하늘이 갑자기 아주, 아주 고요해져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "발 아래의 새소리가 들려요.",
+      "text_markdown": "발 아래의 새소리가 들려요.",
+      "tts": {
+        "text": "발 아래의 새소리가 들려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "자기가 숨 쉬는 소리가 들려요.",
+      "text_markdown": "자기가 숨 쉬는 소리가 들려요.",
+      "tts": {
+        "text": "자기가 숨 쉬는 소리가 들려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "강사가 귀에 대고 웃으며 어떤지 물어봐요.",
+      "text_markdown": "강사가 귀에 대고 웃으며 어떤지 물어봐요.",
+      "tts": {
+        "text": "강사가 귀에 대고 웃으며 어떤지 물어봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "한참 동안 대답할 수 없어요. 울고 있거나, 웃고 있거나, 둘 다 하고 있으니까요.",
+      "text_markdown": "한참 동안 대답할 수 없어요. 울고 있거나, 웃고 있거나, 둘 다 하고 있으니까요.",
+      "tts": {
+        "text": "한참 동안 대답할 수 없어요. 울고 있거나, 웃고 있거나, 둘 다 하고 있으니까요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "캐노피 라이드는 한 오 분쯤 걸려요.",
+      "text_markdown": "캐노피 라이드는 한 오 분쯤 걸려요.",
+      "tts": {
+        "text": "캐노피 라이드는 한 오 분쯤 걸려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인생에서 가장 평화로운 오 분이에요.",
+      "text_markdown": "인생에서 가장 평화로운 오 분이에요.",
+      "tts": {
+        "text": "인생에서 가장 평화로운 오 분이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "발이 땅에 닿으면, 짧은 뜀걸음 세 발짝을 딛고 멈춰요.",
+      "text_markdown": "발이 땅에 닿으면, 짧은 뜀걸음 세 발짝을 딛고 멈춰요.",
+      "tts": {
+        "text": "발이 땅에 닿으면, 짧은 뜀걸음 세 발짝을 딛고 멈춰요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잔디가 다시 진짜가 돼요.",
+      "text_markdown": "잔디가 다시 진짜가 돼요.",
+      "tts": {
+        "text": "잔디가 다시 진짜가 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세상이 다시 단단해져요.",
+      "text_markdown": "세상이 다시 단단해져요.",
+      "tts": {
+        "text": "세상이 다시 단단해져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러분은 돌아서서 하늘을 올려다봐요.",
+      "text_markdown": "여러분은 돌아서서 하늘을 올려다봐요.",
+      "tts": {
+        "text": "여러분은 돌아서서 하늘을 올려다봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그리고 처음으로 이해해요. 친구가 그 오랜 세월 동안 이야기하려고 애쓰던 것이 무엇이었는지.",
+      "text_markdown": "그리고 처음으로 이해해요. 친구가 그 오랜 세월 동안 이야기하려고 애쓰던 것이 무엇이었는지.",
+      "tts": {
+        "text": "그리고 처음으로 이해해요. 친구가 그 오랜 세월 동안 이야기하려고 애쓰던 것이 무엇이었는지.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "시작하기",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "시작하기",
+      "text_markdown": "시작하기"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 어느 날 정말 해 보고 싶다고 마음먹었다면, 실제로 어떻게 시작할까요.",
+      "text_markdown": "그래서 어느 날 정말 해 보고 싶다고 마음먹었다면, 실제로 어떻게 시작할까요.",
+      "tts": {
+        "text": "그래서 어느 날 정말 해 보고 싶다고 마음먹었다면, 실제로 어떻게 시작할까요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "솔직한 답은, 생각보다 쉽다는 거예요.",
+      "text_markdown": "솔직한 답은, 생각보다 쉽다는 거예요.",
+      "tts": {
+        "text": "솔직한 답은, 생각보다 쉽다는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세계의 거의 모든 드롭존이 그날 아침 바로 완전 초보자를 받아 줘요.",
+      "text_markdown": "세계의 거의 모든 드롭존이 그날 아침 바로 완전 초보자를 받아 줘요.",
+      "tts": {
+        "text": "세계의 거의 모든 드롭존이 그날 아침 바로 완전 초보자를 받아 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "탠덤 점프로 하늘에 올려 주는데, 강사가 등에 붙어 있어요.",
+      "text_markdown": "탠덤 점프로 하늘에 올려 주는데, 강사가 등에 붙어 있어요.",
+      "tts": {
+        "text": "탠덤 점프로 하늘에 올려 주는데, 강사가 등에 붙어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "도착하면, 서류에 서명하고, 짧은 영상을 보고, 강사를 만나요.",
+      "text_markdown": "도착하면, 서류에 서명하고, 짧은 영상을 보고, 강사를 만나요.",
+      "tts": {
+        "text": "도착하면, 서류에 서명하고, 짧은 영상을 보고, 강사를 만나요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "점프수트와 하네스를 착용해요.",
+      "text_markdown": "점프수트와 하네스를 착용해요.",
+      "tts": {
+        "text": "점프수트와 하네스를 착용해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "비행기에 올라타요.",
+      "text_markdown": "비행기에 올라타요.",
+      "tts": {
+        "text": "비행기에 올라타요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "한 이십 분쯤 뒤에는, 인생 최고의 미소를 짓고 잔디밭을 가로질러 걸어 돌아오게 돼요.",
+      "text_markdown": "한 이십 분쯤 뒤에는, 인생 최고의 미소를 짓고 잔디밭을 가로질러 걸어 돌아오게 돼요.",
+      "tts": {
+        "text": "한 이십 분쯤 뒤에는, 인생 최고의 미소를 짓고 잔디밭을 가로질러 걸어 돌아오게 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 점프에는, 용감할 필요가 없어요.",
+      "text_markdown": "첫 점프에는, 용감할 필요가 없어요.",
+      "tts": {
+        "text": "첫 점프에는, 용감할 필요가 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그저 마음만 있으면 돼요.",
+      "text_markdown": "그저 마음만 있으면 돼요.",
+      "tts": {
+        "text": "그저 마음만 있으면 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "강사가 모든 걸 다 해요.",
+      "text_markdown": "강사가 모든 걸 다 해요.",
+      "tts": {
+        "text": "강사가 모든 걸 다 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "낙하산을 펼치는 것도 그분이에요.",
+      "text_markdown": "낙하산을 펼치는 것도 그분이에요.",
+      "tts": {
+        "text": "낙하산을 펼치는 것도 그분이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "캐노피를 조종하는 것도 그분이에요.",
+      "text_markdown": "캐노피를 조종하는 것도 그분이에요.",
+      "tts": {
+        "text": "캐노피를 조종하는 것도 그분이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "착륙시키는 것도 그분이에요.",
+      "text_markdown": "착륙시키는 것도 그분이에요.",
+      "tts": {
+        "text": "착륙시키는 것도 그분이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "여러분은 그저 동승자예요. 세상에서 가장 좋은 자리에 앉은 동승자요.",
+      "text_markdown": "여러분은 그저 동승자예요. 세상에서 가장 좋은 자리에 앉은 동승자요.",
+      "tts": {
+        "text": "여러분은 그저 동승자예요. 세상에서 가장 좋은 자리에 앉은 동승자요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 점프 뒤에 혼자서 뛰어내리고 싶어졌다면, 그 길은 가속 자유낙하라고 불려요.",
+      "text_markdown": "첫 점프 뒤에 혼자서 뛰어내리고 싶어졌다면, 그 길은 가속 자유낙하라고 불려요.",
+      "tts": {
+        "text": "첫 점프 뒤에 혼자서 뛰어내리고 싶어졌다면, 그 길은 가속 자유낙하라고 불려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어느 드롭존에서나 가르치는 훈련 프로그램이고, 진짜 스카이다이버가 되는 법을 가르쳐 줘요.",
+      "text_markdown": "어느 드롭존에서나 가르치는 훈련 프로그램이고, 진짜 스카이다이버가 되는 법을 가르쳐 줘요.",
+      "tts": {
+        "text": "어느 드롭존에서나 가르치는 훈련 프로그램이고, 진짜 스카이다이버가 되는 법을 가르쳐 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "동승자가 아니에요.",
+      "text_markdown": "동승자가 아니에요.",
+      "tts": {
+        "text": "동승자가 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하늘에서 자기 몸을 조종하는 조종사가 되는 거예요.",
+      "text_markdown": "하늘에서 자기 몸을 조종하는 조종사가 되는 거예요.",
+      "tts": {
+        "text": "하늘에서 자기 몸을 조종하는 조종사가 되는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 프로그램의 첫 단계는 긴 강의실 하루예요.",
+      "text_markdown": "이 프로그램의 첫 단계는 긴 강의실 하루예요.",
+      "tts": {
+        "text": "이 프로그램의 첫 단계는 긴 강의실 하루예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "떨어지는 법을 배워요.",
+      "text_markdown": "떨어지는 법을 배워요.",
+      "tts": {
+        "text": "떨어지는 법을 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고도계 읽는 법을 배워요.",
+      "text_markdown": "고도계 읽는 법을 배워요.",
+      "tts": {
+        "text": "고도계 읽는 법을 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "주 낙하산이 펼쳐지지 않을 때 어떻게 해야 하는지 배워요.",
+      "text_markdown": "주 낙하산이 펼쳐지지 않을 때 어떻게 해야 하는지 배워요.",
+      "tts": {
+        "text": "주 낙하산이 펼쳐지지 않을 때 어떻게 해야 하는지 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "강의실 수업은 한 여섯 시간이나 일곱 시간 정도 걸려요.",
+      "text_markdown": "강의실 수업은 한 여섯 시간이나 일곱 시간 정도 걸려요.",
+      "tts": {
+        "text": "강의실 수업은 한 여섯 시간이나 일곱 시간 정도 걸려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "다 끝날 즈음이면, 대부분의 사람이 평생 배우는 것보다 더 많은 낙하산 지식을 알게 돼요.",
+      "text_markdown": "다 끝날 즈음이면, 대부분의 사람이 평생 배우는 것보다 더 많은 낙하산 지식을 알게 돼요.",
+      "tts": {
+        "text": "다 끝날 즈음이면, 대부분의 사람이 평생 배우는 것보다 더 많은 낙하산 지식을 알게 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러고 나면 첫 솔로 점프가 와요.",
+      "text_markdown": "그러고 나면 첫 솔로 점프가 와요.",
+      "tts": {
+        "text": "그러고 나면 첫 솔로 점프가 와요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "강사 두 명이 양쪽에서 함께 뛰어내리며, 여러분의 하네스를 잡고 있어요.",
+      "text_markdown": "강사 두 명이 양쪽에서 함께 뛰어내리며, 여러분의 하네스를 잡고 있어요.",
+      "tts": {
+        "text": "강사 두 명이 양쪽에서 함께 뛰어내리며, 여러분의 하네스를 잡고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러분이 안정되면 자유낙하 중에 손을 놓아 줘요.",
+      "text_markdown": "여러분이 안정되면 자유낙하 중에 손을 놓아 줘요.",
+      "tts": {
+        "text": "여러분이 안정되면 자유낙하 중에 손을 놓아 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러분이 직접 자기 낙하산을 당겨요.",
+      "text_markdown": "여러분이 직접 자기 낙하산을 당겨요.",
+      "tts": {
+        "text": "여러분이 직접 자기 낙하산을 당겨요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "여러분이 직접 자기 캐노피를 조종해서 땅까지 내려와요.",
+      "text_markdown": "여러분이 직접 자기 캐노피를 조종해서 땅까지 내려와요.",
+      "tts": {
+        "text": "여러분이 직접 자기 캐노피를 조종해서 땅까지 내려와요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "처음 이걸 하고 나면, 너무 활짝 웃은 탓에 다음 날 얼굴이 아플 거예요.",
+      "text_markdown": "처음 이걸 하고 나면, 너무 활짝 웃은 탓에 다음 날 얼굴이 아플 거예요.",
+      "tts": {
+        "text": "처음 이걸 하고 나면, 너무 활짝 웃은 탓에 다음 날 얼굴이 아플 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전체 프로그램은 약 일곱 번 정도의 점프로 진행돼요.",
+      "text_markdown": "전체 프로그램은 약 일곱 번 정도의 점프로 진행돼요.",
+      "tts": {
+        "text": "전체 프로그램은 약 일곱 번 정도의 점프로 진행돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "끝날 무렵에는 혼자서 뛰어내리고 있을 거예요.",
+      "text_markdown": "끝날 무렵에는 혼자서 뛰어내리고 있을 거예요.",
+      "tts": {
+        "text": "끝날 무렵에는 혼자서 뛰어내리고 있을 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "거기서부터 스카이다이버들은 보통 다음 일 년 동안 첫 백 번의 점프를 마쳐요.",
+      "text_markdown": "거기서부터 스카이다이버들은 보통 다음 일 년 동안 첫 백 번의 점프를 마쳐요.",
+      "tts": {
+        "text": "거기서부터 스카이다이버들은 보통 다음 일 년 동안 첫 백 번의 점프를 마쳐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 과정에서, 다른 점퍼들과의 상대 위치에서 나는 법을 배워요.",
+      "text_markdown": "그 과정에서, 다른 점퍼들과의 상대 위치에서 나는 법을 배워요.",
+      "tts": {
+        "text": "그 과정에서, 다른 점퍼들과의 상대 위치에서 나는 법을 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "하늘을 가로질러 트래킹하는 법을 배워요.",
+      "text_markdown": "하늘을 가로질러 트래킹하는 법을 배워요.",
+      "tts": {
+        "text": "하늘을 가로질러 트래킹하는 법을 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "자기 낙하산을 직접 패킹하는 법을 배워요.",
+      "text_markdown": "자기 낙하산을 직접 패킹하는 법을 배워요.",
+      "tts": {
+        "text": "자기 낙하산을 직접 패킹하는 법을 배워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "이 커뮤니티는 작고, 다정하고, 인내심이 많아요.",
+      "text_markdown": "이 커뮤니티는 작고, 다정하고, 인내심이 많아요.",
+      "tts": {
+        "text": "이 커뮤니티는 작고, 다정하고, 인내심이 많아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "드롭존에서 누구도 초보자라고 여러분을 한심하게 느끼게 만들지 않아요.",
+      "text_markdown": "드롭존에서 누구도 초보자라고 여러분을 한심하게 느끼게 만들지 않아요.",
+      "tts": {
+        "text": "드롭존에서 누구도 초보자라고 여러분을 한심하게 느끼게 만들지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "우리 모두 한때는 초보자였어요.",
+      "text_markdown": "우리 모두 한때는 초보자였어요.",
+      "tts": {
+        "text": "우리 모두 한때는 초보자였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "사실 우리 대부분은 지금도 자신을 초보자처럼 느껴요.",
+      "text_markdown": "사실 우리 대부분은 지금도 자신을 초보자처럼 느껴요.",
+      "tts": {
+        "text": "사실 우리 대부분은 지금도 자신을 초보자처럼 느껴요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "안전은 어떻냐고요.",
+      "text_markdown": "안전은 어떻냐고요.",
+      "tts": {
+        "text": "안전은 어떻냐고요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "분별 있는 사람이라면 누구나 던지는 질문이고, 진지한 답을 받아야 마땅한 질문이에요.",
+      "text_markdown": "분별 있는 사람이라면 누구나 던지는 질문이고, 진지한 답을 받아야 마땅한 질문이에요.",
+      "tts": {
+        "text": "분별 있는 사람이라면 누구나 던지는 질문이고, 진지한 답을 받아야 마땅한 질문이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스카이다이빙은 사실 매우 안전해요.",
+      "text_markdown": "스카이다이빙은 사실 매우 안전해요.",
+      "tts": {
+        "text": "스카이다이빙은 사실 매우 안전해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "걷기만큼 안전하지는 않지만, 드롭존까지 운전해 가는 것보다는 안전해요.",
+      "text_markdown": "걷기만큼 안전하지는 않지만, 드롭존까지 운전해 가는 것보다는 안전해요.",
+      "tts": {
+        "text": "걷기만큼 안전하지는 않지만, 드롭존까지 운전해 가는 것보다는 안전해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "장비는 훌륭해요.",
+      "text_markdown": "장비는 훌륭해요.",
+      "tts": {
+        "text": "장비는 훌륭해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "주 낙하산과 보조 낙하산이 있고, 여러분이 펼치지 못할 때 보조 낙하산을 자동으로 작동시키는 자동 장치도 있어요.",
+      "text_markdown": "주 낙하산과 보조 낙하산이 있고, 여러분이 펼치지 못할 때 보조 낙하산을 자동으로 작동시키는 자동 장치도 있어요.",
+      "tts": {
+        "text": "주 낙하산과 보조 낙하산이 있고, 여러분이 펼치지 못할 때 보조 낙하산을 자동으로 작동시키는 자동 장치도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "드롭존은 여러분을 진심으로 아끼는 전문가들이 운영해요.",
+      "text_markdown": "드롭존은 여러분을 진심으로 아끼는 전문가들이 운영해요.",
+      "tts": {
+        "text": "드롭존은 여러분을 진심으로 아끼는 전문가들이 운영해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "강사들은 매 점프 하나하나에 깊이 마음을 써요.",
+      "text_markdown": "강사들은 매 점프 하나하나에 깊이 마음을 써요.",
+      "tts": {
+        "text": "강사들은 매 점프 하나하나에 깊이 마음을 써요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비용은 어떻냐고요.",
+      "text_markdown": "비용은 어떻냐고요.",
+      "tts": {
+        "text": "비용은 어떻냐고요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "탠덤 점프는 둘이서 먹는 괜찮은 저녁 식사 한 끼 가격쯤이에요.",
+      "text_markdown": "탠덤 점프는 둘이서 먹는 괜찮은 저녁 식사 한 끼 가격쯤이에요.",
+      "tts": {
+        "text": "탠덤 점프는 둘이서 먹는 괜찮은 저녁 식사 한 끼 가격쯤이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "훈련 프로그램은 짧은 휴가 한 번 가는 가격쯤이에요.",
+      "text_markdown": "훈련 프로그램은 짧은 휴가 한 번 가는 가격쯤이에요.",
+      "tts": {
+        "text": "훈련 프로그램은 짧은 휴가 한 번 가는 가격쯤이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 뒤로는, 매 점프가 영화표 한 장에 식사 한 끼 가격이에요.",
+      "text_markdown": "그 뒤로는, 매 점프가 영화표 한 장에 식사 한 끼 가격이에요.",
+      "tts": {
+        "text": "그 뒤로는, 매 점프가 영화표 한 장에 식사 한 끼 가격이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "평범한 직장과 평범한 삶을 가진 사람들이 매 주말마다 이걸 해요.",
+      "text_markdown": "평범한 직장과 평범한 삶을 가진 사람들이 매 주말마다 이걸 해요.",
+      "tts": {
+        "text": "평범한 직장과 평범한 삶을 가진 사람들이 매 주말마다 이걸 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그분들은 부자가 아니에요.",
+      "text_markdown": "그분들은 부자가 아니에요.",
+      "tts": {
+        "text": "그분들은 부자가 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "그분들은 별난 사람이 아니에요.",
+      "text_markdown": "그분들은 별난 사람이 아니에요.",
+      "tts": {
+        "text": "그분들은 별난 사람이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "그저, 이게 자신이 하는 일이라고 결정했을 뿐이에요.",
+      "text_markdown": "그저, 이게 자신이 하는 일이라고 결정했을 뿐이에요.",
+      "tts": {
+        "text": "그저, 이게 자신이 하는 일이라고 결정했을 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 점프를 고민 중이라면, 정말 중요한 조언은 이거 하나뿐이에요.",
+      "text_markdown": "첫 점프를 고민 중이라면, 정말 중요한 조언은 이거 하나뿐이에요.",
+      "tts": {
+        "text": "첫 점프를 고민 중이라면, 정말 중요한 조언은 이거 하나뿐이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "날짜를 골라요.",
+      "text_markdown": "날짜를 골라요.",
+      "tts": {
+        "text": "날짜를 골라요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "친구 한 명에게 말해요.",
+      "text_markdown": "친구 한 명에게 말해요.",
+      "tts": {
+        "text": "친구 한 명에게 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그날 가요.",
+      "text_markdown": "그날 가요.",
+      "tts": {
+        "text": "그날 가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "어려운 부분은 떨어지는 게 아니에요.",
+      "text_markdown": "어려운 부분은 떨어지는 게 아니에요.",
+      "tts": {
+        "text": "어려운 부분은 떨어지는 게 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "어려운 부분은 결심이에요.",
+      "text_markdown": "어려운 부분은 결심이에요.",
+      "tts": {
+        "text": "어려운 부분은 결심이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "한번 결심하고 나면, 하늘은 이미 여러분의 것이에요.",
+      "text_markdown": "한번 결심하고 나면, 하늘은 이미 여러분의 것이에요.",
+      "tts": {
+        "text": "한번 결심하고 나면, 하늘은 이미 여러분의 것이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "기술",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기술",
+      "text_markdown": "기술"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 떨어짐 안에는 숨겨진 기술이 있고, 바로 그 부분이 평생 여러분을 스카이다이빙에 붙들어 두는 부분이에요.",
+      "text_markdown": "그 떨어짐 안에는 숨겨진 기술이 있고, 바로 그 부분이 평생 여러분을 스카이다이빙에 붙들어 두는 부분이에요.",
+      "tts": {
+        "text": "그 떨어짐 안에는 숨겨진 기술이 있고, 바로 그 부분이 평생 여러분을 스카이다이빙에 붙들어 두는 부분이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "노련한 스카이다이버가 자유낙하하는 모습을 보면, 떨어지는 사람이 보이지 않아요.",
+      "text_markdown": "노련한 스카이다이버가 자유낙하하는 모습을 보면, 떨어지는 사람이 보이지 않아요.",
+      "tts": {
+        "text": "노련한 스카이다이버가 자유낙하하는 모습을 보면, 떨어지는 사람이 보이지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "날고 있는 사람이 보여요.",
+      "text_markdown": "날고 있는 사람이 보여요.",
+      "tts": {
+        "text": "날고 있는 사람이 보여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그분들은 손가락 끝으로 일부러 천천히 회전해요.",
+      "text_markdown": "그분들은 손가락 끝으로 일부러 천천히 회전해요.",
+      "tts": {
+        "text": "그분들은 손가락 끝으로 일부러 천천히 회전해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어깨를 오 센티미터쯤 앞으로 살짝 기울여서, 하늘을 가로질러 약 팔백 미터를 미끄러져 가요.",
+      "text_markdown": "어깨를 오 센티미터쯤 앞으로 살짝 기울여서, 하늘을 가로질러 약 팔백 미터를 미끄러져 가요.",
+      "tts": {
+        "text": "어깨를 오 센티미터쯤 앞으로 살짝 기울여서, 하늘을 가로질러 약 팔백 미터를 미끄러져 가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "낙하 도중에 멈춰서, 불가능해 보이는 정지 상태를 유지해요.",
+      "text_markdown": "낙하 도중에 멈춰서, 불가능해 보이는 정지 상태를 유지해요.",
+      "tts": {
+        "text": "낙하 도중에 멈춰서, 불가능해 보이는 정지 상태를 유지해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몸이 곧 비행기예요.",
+      "text_markdown": "몸이 곧 비행기예요.",
+      "tts": {
+        "text": "몸이 곧 비행기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그게 이 기술의 첫 번째 비밀이에요.",
+      "text_markdown": "그게 이 기술의 첫 번째 비밀이에요.",
+      "tts": {
+        "text": "그게 이 기술의 첫 번째 비밀이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "한번 그걸 이해하면, 나머지는 다 따라와요.",
+      "text_markdown": "한번 그걸 이해하면, 나머지는 다 따라와요.",
+      "tts": {
+        "text": "한번 그걸 이해하면, 나머지는 다 따라와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "안정된 자유낙하의 기본 자세는 아치라고 불러요.",
+      "text_markdown": "안정된 자유낙하의 기본 자세는 아치라고 불러요.",
+      "tts": {
+        "text": "안정된 자유낙하의 기본 자세는 아치라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "엉덩이를 앞으로 밀고, 팔과 다리를 바나나처럼 뒤로 늘어뜨려요.",
+      "text_markdown": "엉덩이를 앞으로 밀고, 팔과 다리를 바나나처럼 뒤로 늘어뜨려요.",
+      "tts": {
+        "text": "엉덩이를 앞으로 밀고, 팔과 다리를 바나나처럼 뒤로 늘어뜨려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 아치 덕분에, 따로 신경 쓰지 않아도 얼굴이 땅을 향한 자세가 유지돼요.",
+      "text_markdown": "이 아치 덕분에, 따로 신경 쓰지 않아도 얼굴이 땅을 향한 자세가 유지돼요.",
+      "tts": {
+        "text": "이 아치 덕분에, 따로 신경 쓰지 않아도 얼굴이 땅을 향한 자세가 유지돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "초보 점퍼들은 폼 핏에서 아치를 익히고, 그다음에는 윈드 터널에서, 그다음에는 하늘에서 익혀요.",
+      "text_markdown": "초보 점퍼들은 폼 핏에서 아치를 익히고, 그다음에는 윈드 터널에서, 그다음에는 하늘에서 익혀요.",
+      "tts": {
+        "text": "초보 점퍼들은 폼 핏에서 아치를 익히고, 그다음에는 윈드 터널에서, 그다음에는 하늘에서 익혀요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "고참 점퍼들은 지금도, 베테랑 러너가 자기 스트라이드를 이야기하듯이 아치를 이야기해요.",
+      "text_markdown": "고참 점퍼들은 지금도, 베테랑 러너가 자기 스트라이드를 이야기하듯이 아치를 이야기해요.",
+      "tts": {
+        "text": "고참 점퍼들은 지금도, 베테랑 러너가 자기 스트라이드를 이야기하듯이 아치를 이야기해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "안정된 아치를 갖추고 나면, 자유낙하의 나머지가 활짝 열려요.",
+      "text_markdown": "안정된 아치를 갖추고 나면, 자유낙하의 나머지가 활짝 열려요.",
+      "tts": {
+        "text": "안정된 아치를 갖추고 나면, 자유낙하의 나머지가 활짝 열려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "넓게 펼쳐서 천천히 떨어지는 법을 배우게 돼요. 자기 자신을 한 마리 연으로 바꾸는 거예요.",
+      "text_markdown": "넓게 펼쳐서 천천히 떨어지는 법을 배우게 돼요. 자기 자신을 한 마리 연으로 바꾸는 거예요.",
+      "tts": {
+        "text": "넓게 펼쳐서 천천히 떨어지는 법을 배우게 돼요. 자기 자신을 한 마리 연으로 바꾸는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "작게 웅크려서 빠르게 떨어지는 법을 배우게 돼요. 자기 자신을 돌멩이로 바꾸는 거예요.",
+      "text_markdown": "작게 웅크려서 빠르게 떨어지는 법을 배우게 돼요. 자기 자신을 돌멩이로 바꾸는 거예요.",
+      "tts": {
+        "text": "작게 웅크려서 빠르게 떨어지는 법을 배우게 돼요. 자기 자신을 돌멩이로 바꾸는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "트래킹을 배워요. 사람의 몸이 할 수 있는 가장 비행에 가까운 일이에요.",
+      "text_markdown": "트래킹을 배워요. 사람의 몸이 할 수 있는 가장 비행에 가까운 일이에요.",
+      "tts": {
+        "text": "트래킹을 배워요. 사람의 몸이 할 수 있는 가장 비행에 가까운 일이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "잘하는 트래커는 이십 초 만에 하늘을 가로질러 약 사백 미터를 이동해요.",
+      "text_markdown": "잘하는 트래커는 이십 초 만에 하늘을 가로질러 약 사백 미터를 이동해요.",
+      "tts": {
+        "text": "잘하는 트래커는 이십 초 만에 하늘을 가로질러 약 사백 미터를 이동해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "팔을 뒤로 쓸어 붙이고, 몸을 비스듬히 기울여, 갈 곳을 아는 종이비행기처럼 움직여요.",
+      "text_markdown": "팔을 뒤로 쓸어 붙이고, 몸을 비스듬히 기울여, 갈 곳을 아는 종이비행기처럼 움직여요.",
+      "tts": {
+        "text": "팔을 뒤로 쓸어 붙이고, 몸을 비스듬히 기울여, 갈 곳을 아는 종이비행기처럼 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 기술의 나머지 절반은 캐노피예요.",
+      "text_markdown": "이 기술의 나머지 절반은 캐노피예요.",
+      "tts": {
+        "text": "이 기술의 나머지 절반은 캐노피예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "낙하산은 여러분을 둥둥 떠서 내려 보내는 수동적인 물건이 아니에요.",
+      "text_markdown": "낙하산은 여러분을 둥둥 떠서 내려 보내는 수동적인 물건이 아니에요.",
+      "tts": {
+        "text": "낙하산은 여러분을 둥둥 떠서 내려 보내는 수동적인 물건이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그건 날개고, 여러분이 그걸 조종해요.",
+      "text_markdown": "그건 날개고, 여러분이 그걸 조종해요.",
+      "tts": {
+        "text": "그건 날개고, 여러분이 그걸 조종해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오른쪽 토글을 당기면 오른쪽 날개가 내려가서 오른쪽으로 돌아요.",
+      "text_markdown": "오른쪽 토글을 당기면 오른쪽 날개가 내려가서 오른쪽으로 돌아요.",
+      "tts": {
+        "text": "오른쪽 토글을 당기면 오른쪽 날개가 내려가서 오른쪽으로 돌아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "양쪽을 동시에 당기면 속도가 줄어들어, 부드럽게 착륙할 수 있어요.",
+      "text_markdown": "양쪽을 동시에 당기면 속도가 줄어들어, 부드럽게 착륙할 수 있어요.",
+      "tts": {
+        "text": "양쪽을 동시에 당기면 속도가 줄어들어, 부드럽게 착륙할 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "바람을 읽고, 자리를 고르고, 진입 코스를 짜요.",
+      "text_markdown": "바람을 읽고, 자리를 고르고, 진입 코스를 짜요.",
+      "tts": {
+        "text": "바람을 읽고, 자리를 고르고, 진입 코스를 짜요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "마지막 순간에 플레어해서, 발이 쾅 부딪히지 않고 땅에 입맞추듯 닿게 해요.",
+      "text_markdown": "마지막 순간에 플레어해서, 발이 쾅 부딪히지 않고 땅에 입맞추듯 닿게 해요.",
+      "tts": {
+        "text": "마지막 순간에 플레어해서, 발이 쾅 부딪히지 않고 땅에 입맞추듯 닿게 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "그 모든 것이 캐노피 비행이고, 그 자체로 하나의 분야예요.",
+      "text_markdown": "그 모든 것이 캐노피 비행이고, 그 자체로 하나의 분야예요.",
+      "tts": {
+        "text": "그 모든 것이 캐노피 비행이고, 그 자체로 하나의 분야예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그리고 패킹이 있어요.",
+      "text_markdown": "그리고 패킹이 있어요.",
+      "tts": {
+        "text": "그리고 패킹이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스카이다이버는 자기 낙하산을 직접 패킹해요.",
+      "text_markdown": "스카이다이버는 자기 낙하산을 직접 패킹해요.",
+      "tts": {
+        "text": "스카이다이버는 자기 낙하산을 직접 패킹해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "단 한 번도 빠짐없이요.",
+      "text_markdown": "단 한 번도 빠짐없이요.",
+      "tts": {
+        "text": "단 한 번도 빠짐없이요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "긴 매트 위에 캐노피를 펼쳐 놓아요.",
+      "text_markdown": "긴 매트 위에 캐노피를 펼쳐 놓아요.",
+      "tts": {
+        "text": "긴 매트 위에 캐노피를 펼쳐 놓아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "줄을 매끄럽게 정돈해요.",
+      "text_markdown": "줄을 매끄럽게 정돈해요.",
+      "tts": {
+        "text": "줄을 매끄럽게 정돈해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "셀을 차곡차곡 접어요.",
+      "text_markdown": "셀을 차곡차곡 접어요.",
+      "tts": {
+        "text": "셀을 차곡차곡 접어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "천을 누에고치처럼 감싸고, 가방 속에 살살 넣고, 브라이들을 정리하고, 컨테이너를 닫아요.",
+      "text_markdown": "천을 누에고치처럼 감싸고, 가방 속에 살살 넣고, 브라이들을 정리하고, 컨테이너를 닫아요.",
+      "tts": {
+        "text": "천을 누에고치처럼 감싸고, 가방 속에 살살 넣고, 브라이들을 정리하고, 컨테이너를 닫아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "한 십오 분 정도 걸리는데, 천천히 해요. 자신의 목숨이 바로 이 한 장의 천에 달려 있을 거니까요.",
+      "text_markdown": "한 십오 분 정도 걸리는데, 천천히 해요. 자신의 목숨이 바로 이 한 장의 천에 달려 있을 거니까요.",
+      "tts": {
+        "text": "한 십오 분 정도 걸리는데, 천천히 해요. 자신의 목숨이 바로 이 한 장의 천에 달려 있을 거니까요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "패킹은 명상이에요.",
+      "text_markdown": "패킹은 명상이에요.",
+      "tts": {
+        "text": "패킹은 명상이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 스카이다이버가 그 시간을 하루 중 가장 사랑한다고 말해요.",
+      "text_markdown": "많은 스카이다이버가 그 시간을 하루 중 가장 사랑한다고 말해요.",
+      "tts": {
+        "text": "많은 스카이다이버가 그 시간을 하루 중 가장 사랑한다고 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 매트, 그 줄, 그 천천한 접기.",
+      "text_markdown": "그 매트, 그 줄, 그 천천한 접기.",
+      "tts": {
+        "text": "그 매트, 그 줄, 그 천천한 접기.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "옆에서 함께 패킹하는 친구의 어깨.",
+      "text_markdown": "옆에서 함께 패킹하는 친구의 어깨.",
+      "tts": {
+        "text": "옆에서 함께 패킹하는 친구의 어깨.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "구석의 라디오가 너무 많이 들었던 노래 한 곡을 흘려요.",
+      "text_markdown": "구석의 라디오가 너무 많이 들었던 노래 한 곡을 흘려요.",
+      "tts": {
+        "text": "구석의 라디오가 너무 많이 들었던 노래 한 곡을 흘려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "패킹은 서두를 수 없어요.",
+      "text_markdown": "패킹은 서두를 수 없어요.",
+      "tts": {
+        "text": "패킹은 서두를 수 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "하늘은 여러분의 일정에 관심이 없어요.",
+      "text_markdown": "하늘은 여러분의 일정에 관심이 없어요.",
+      "tts": {
+        "text": "하늘은 여러분의 일정에 관심이 없어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 기술의 마음가짐은 인내예요.",
+      "text_markdown": "이 기술의 마음가짐은 인내예요.",
+      "tts": {
+        "text": "이 기술의 마음가짐은 인내예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "겸손이에요.",
+      "text_markdown": "겸손이에요.",
+      "tts": {
+        "text": "겸손이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지루한 점프 하나까지도, 매 점프마다 디브리프할 줄 아는 자세예요.",
+      "text_markdown": "지루한 점프 하나까지도, 매 점프마다 디브리프할 줄 아는 자세예요.",
+      "tts": {
+        "text": "지루한 점프 하나까지도, 매 점프마다 디브리프할 줄 아는 자세예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스카이다이버는 점프가 끝난 뒤 이야기하는 걸 무척 좋아해요.",
+      "text_markdown": "스카이다이버는 점프가 끝난 뒤 이야기하는 걸 무척 좋아해요.",
+      "tts": {
+        "text": "스카이다이버는 점프가 끝난 뒤 이야기하는 걸 무척 좋아해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "피크닉 테이블에 앉아, 매 순간을 자세 하나하나까지 짚어 가며 되짚어요.",
+      "text_markdown": "피크닉 테이블에 앉아, 매 순간을 자세 하나하나까지 짚어 가며 되짚어요.",
+      "tts": {
+        "text": "피크닉 테이블에 앉아, 매 순간을 자세 하나하나까지 짚어 가며 되짚어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "뭐가 잘 됐는지.",
+      "text_markdown": "뭐가 잘 됐는지.",
+      "tts": {
+        "text": "뭐가 잘 됐는지.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "뭐가 어설펐는지.",
+      "text_markdown": "뭐가 어설펐는지.",
+      "tts": {
+        "text": "뭐가 어설펐는지.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "다음번에 뭘 시도해 보고 싶은지.",
+      "text_markdown": "다음번에 뭘 시도해 보고 싶은지.",
+      "tts": {
+        "text": "다음번에 뭘 시도해 보고 싶은지.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들이 머무르는 이유는 그래서예요.",
+      "text_markdown": "사람들이 머무르는 이유는 그래서예요.",
+      "tts": {
+        "text": "사람들이 머무르는 이유는 그래서예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "떨어짐이 짜릿해서가 아니에요.",
+      "text_markdown": "떨어짐이 짜릿해서가 아니에요.",
+      "tts": {
+        "text": "떨어짐이 짜릿해서가 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "떨어짐은 쉬운 부분이에요.",
+      "text_markdown": "떨어짐은 쉬운 부분이에요.",
+      "tts": {
+        "text": "떨어짐은 쉬운 부분이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사람들이 머무르는 건, 늘 배울 게 있기 때문이에요.",
+      "text_markdown": "사람들이 머무르는 건, 늘 배울 게 있기 때문이에요.",
+      "tts": {
+        "text": "사람들이 머무르는 건, 늘 배울 게 있기 때문이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그걸 함께 배울 친구가 늘 있기 때문이에요.",
+      "text_markdown": "그걸 함께 배울 친구가 늘 있기 때문이에요.",
+      "tts": {
+        "text": "그걸 함께 배울 친구가 늘 있기 때문이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그리고 내일 정오에, 하늘이 여러분을 기다리고 있기 때문이에요.",
+      "text_markdown": "그리고 내일 정오에, 하늘이 여러분을 기다리고 있기 때문이에요.",
+      "tts": {
+        "text": "그리고 내일 정오에, 하늘이 여러분을 기다리고 있기 때문이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "순간들",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "순간들",
+      "text_markdown": "순간들"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세 가지 이야기를 들려드릴게요.",
+      "text_markdown": "세 가지 이야기를 들려드릴게요.",
+      "tts": {
+        "text": "세 가지 이야기를 들려드릴게요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째는 선셋 로드예요.",
+      "text_markdown": "첫 번째는 선셋 로드예요.",
+      "tts": {
+        "text": "첫 번째는 선셋 로드예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "비행기는 해가 지기 이십 분 전에 이륙해요.",
+      "text_markdown": "비행기는 해가 지기 이십 분 전에 이륙해요.",
+      "tts": {
+        "text": "비행기는 해가 지기 이십 분 전에 이륙해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "주황빛 빛의 켜를 뚫고 올라가요. 기내는 따스하고, 친구들은 조용해요.",
+      "text_markdown": "주황빛 빛의 켜를 뚫고 올라가요. 기내는 따스하고, 친구들은 조용해요.",
+      "tts": {
+        "text": "주황빛 빛의 켜를 뚫고 올라가요. 기내는 따스하고, 친구들은 조용해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이번에 문이 열리면, 공기가 분홍빛이에요.",
+      "text_markdown": "이번에 문이 열리면, 공기가 분홍빛이에요.",
+      "tts": {
+        "text": "이번에 문이 열리면, 공기가 분홍빛이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "발 아래의 지구는 절반은 그늘 속, 절반은 황금빛 속에 있어요.",
+      "text_markdown": "발 아래의 지구는 절반은 그늘 속, 절반은 황금빛 속에 있어요.",
+      "tts": {
+        "text": "발 아래의 지구는 절반은 그늘 속, 절반은 황금빛 속에 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "여러분은 한 발을 내딛고, 육십 초 동안 노을 속을 통과해 떨어지고 있어요.",
+      "text_markdown": "여러분은 한 발을 내딛고, 육십 초 동안 노을 속을 통과해 떨어지고 있어요.",
+      "tts": {
+        "text": "여러분은 한 발을 내딛고, 육십 초 동안 노을 속을 통과해 떨어지고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현실 같지 않아요.",
+      "text_markdown": "현실 같지 않아요.",
+      "tts": {
+        "text": "현실 같지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분의 눈이 찾아낼 수 있는 줄 몰랐던 색깔들을 보게 될 거예요.",
+      "text_markdown": "여러분의 눈이 찾아낼 수 있는 줄 몰랐던 색깔들을 보게 될 거예요.",
+      "tts": {
+        "text": "여러분의 눈이 찾아낼 수 있는 줄 몰랐던 색깔들을 보게 될 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "낙하산이 펼쳐지면, 여러분은 잠시 불타고 있는 세상 위에 떠 있어요.",
+      "text_markdown": "낙하산이 펼쳐지면, 여러분은 잠시 불타고 있는 세상 위에 떠 있어요.",
+      "tts": {
+        "text": "낙하산이 펼쳐지면, 여러분은 잠시 불타고 있는 세상 위에 떠 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "바람은 잦아들어 거의 없는 거나 다름없어요.",
+      "text_markdown": "바람은 잦아들어 거의 없는 거나 다름없어요.",
+      "tts": {
+        "text": "바람은 잦아들어 거의 없는 거나 다름없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "드롭존은 발 아래 작은 초록색 사각형이고, 따뜻한 불빛 하나가 켜져 있어요.",
+      "text_markdown": "드롭존은 발 아래 작은 초록색 사각형이고, 따뜻한 불빛 하나가 켜져 있어요.",
+      "tts": {
+        "text": "드롭존은 발 아래 작은 초록색 사각형이고, 따뜻한 불빛 하나가 켜져 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "여러분은 천천한 원을 그리며, 일부러 마지막에 착륙해요. 이 시간이 끝나길 아무도 원하지 않으니까요.",
+      "text_markdown": "여러분은 천천한 원을 그리며, 일부러 마지막에 착륙해요. 이 시간이 끝나길 아무도 원하지 않으니까요.",
+      "tts": {
+        "text": "여러분은 천천한 원을 그리며, 일부러 마지막에 착륙해요. 이 시간이 끝나길 아무도 원하지 않으니까요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "발이 잔디에 닿을 때, 하늘은 보랏빛이에요.",
+      "text_markdown": "발이 잔디에 닿을 때, 하늘은 보랏빛이에요.",
+      "tts": {
+        "text": "발이 잔디에 닿을 때, 하늘은 보랏빛이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "친구들은 자기 착륙 지점에서 걸어 들어오고 있어요.",
+      "text_markdown": "친구들은 자기 착륙 지점에서 걸어 들어오고 있어요.",
+      "tts": {
+        "text": "친구들은 자기 착륙 지점에서 걸어 들어오고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "그중 한 명이 그저 여러분을 바라봐요.",
+      "text_markdown": "그중 한 명이 그저 여러분을 바라봐요.",
+      "tts": {
+        "text": "그중 한 명이 그저 여러분을 바라봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "둘 다 고개를 절레절레 저어요.",
+      "text_markdown": "둘 다 고개를 절레절레 저어요.",
+      "tts": {
+        "text": "둘 다 고개를 절레절레 저어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "둘 다 어떤 말도 찾지 못해요.",
+      "text_markdown": "둘 다 어떤 말도 찾지 못해요.",
+      "tts": {
+        "text": "둘 다 어떤 말도 찾지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 번째는 포메이션 점프예요.",
+      "text_markdown": "두 번째는 포메이션 점프예요.",
+      "tts": {
+        "text": "두 번째는 포메이션 점프예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이번 로드에는 여러분을 포함해 여덟 명이 있어요.",
+      "text_markdown": "이번 로드에는 여러분을 포함해 여덟 명이 있어요.",
+      "tts": {
+        "text": "이번 로드에는 여러분을 포함해 여덟 명이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벤치에 앉아, 헬멧을 무릎에 얹고, 리드 점퍼가 작은 화이트보드에 다이브를 그려요.",
+      "text_markdown": "벤치에 앉아, 헬멧을 무릎에 얹고, 리드 점퍼가 작은 화이트보드에 다이브를 그려요.",
+      "tts": {
+        "text": "벤치에 앉아, 헬멧을 무릎에 얹고, 리드 점퍼가 작은 화이트보드에 다이브를 그려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러분은 한 무리로 비행기에서 빠져나와, 함께 떨어지면서, 원을 만들 거예요.",
+      "text_markdown": "여러분은 한 무리로 비행기에서 빠져나와, 함께 떨어지면서, 원을 만들 거예요.",
+      "tts": {
+        "text": "여러분은 한 무리로 비행기에서 빠져나와, 함께 떨어지면서, 원을 만들 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "다들 자기 슬롯을 알고 있어요.",
+      "text_markdown": "다들 자기 슬롯을 알고 있어요.",
+      "tts": {
+        "text": "다들 자기 슬롯을 알고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "주먹을 맞대고, 서로의 장비를 점검하고, 긴장된 웃음을 웃어요.",
+      "text_markdown": "주먹을 맞대고, 서로의 장비를 점검하고, 긴장된 웃음을 웃어요.",
+      "tts": {
+        "text": "주먹을 맞대고, 서로의 장비를 점검하고, 긴장된 웃음을 웃어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "다 큰 어른 여덟 명이, 무서워하면서도 들떠 있어요. 마치 친구 집에서 자고 가는 아이들처럼요.",
+      "text_markdown": "다 큰 어른 여덟 명이, 무서워하면서도 들떠 있어요. 마치 친구 집에서 자고 가는 아이들처럼요.",
+      "tts": {
+        "text": "다 큰 어른 여덟 명이, 무서워하면서도 들떠 있어요. 마치 친구 집에서 자고 가는 아이들처럼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비행기가 수평을 잡아요.",
+      "text_markdown": "비행기가 수평을 잡아요.",
+      "tts": {
+        "text": "비행기가 수평을 잡아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "문이 열려요.",
+      "text_markdown": "문이 열려요.",
+      "tts": {
+        "text": "문이 열려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "리드가 먼저 한 발을 내딛고, 나머지 모두가 한 박자 차이로 그 뒤를 따라요.",
+      "text_markdown": "리드가 먼저 한 발을 내딛고, 나머지 모두가 한 박자 차이로 그 뒤를 따라요.",
+      "tts": {
+        "text": "리드가 먼저 한 발을 내딛고, 나머지 모두가 한 박자 차이로 그 뒤를 따라요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자유낙하 중에, 여러분은 거의 생각하지 않고도 서로를 찾아내요.",
+      "text_markdown": "자유낙하 중에, 여러분은 거의 생각하지 않고도 서로를 찾아내요.",
+      "tts": {
+        "text": "자유낙하 중에, 여러분은 거의 생각하지 않고도 서로를 찾아내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "손과 손이 만나요.",
+      "text_markdown": "손과 손이 만나요.",
+      "tts": {
+        "text": "손과 손이 만나요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "원이 만들어져요.",
+      "text_markdown": "원이 만들어져요.",
+      "tts": {
+        "text": "원이 만들어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "완벽한 몇 초 동안, 여덟 사람이 하늘에서 서로를 붙들고 있어요.",
+      "text_markdown": "완벽한 몇 초 동안, 여덟 사람이 하늘에서 서로를 붙들고 있어요.",
+      "tts": {
+        "text": "완벽한 몇 초 동안, 여덟 사람이 하늘에서 서로를 붙들고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "같은 속도로 떨어지면서.",
+      "text_markdown": "같은 속도로 떨어지면서.",
+      "tts": {
+        "text": "같은 속도로 떨어지면서.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "서로의 눈을 들여다보면서.",
+      "text_markdown": "서로의 눈을 들여다보면서.",
+      "tts": {
+        "text": "서로의 눈을 들여다보면서.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "그러다 고도계가 이제 시간이 됐다고 말해요.",
+      "text_markdown": "그러다 고도계가 이제 시간이 됐다고 말해요.",
+      "tts": {
+        "text": "그러다 고도계가 이제 시간이 됐다고 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "여러분은 손을 놓아요.",
+      "text_markdown": "여러분은 손을 놓아요.",
+      "tts": {
+        "text": "여러분은 손을 놓아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "낙하산이 펼쳐질 공간을 주려고, 서로에게서 멀어지는 방향으로 트래킹해요.",
+      "text_markdown": "낙하산이 펼쳐질 공간을 주려고, 서로에게서 멀어지는 방향으로 트래킹해요.",
+      "tts": {
+        "text": "낙하산이 펼쳐질 공간을 주려고, 서로에게서 멀어지는 방향으로 트래킹해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "땅에서, 여러분은 서로를 끌어안기를 멈추지 못해요.",
+      "text_markdown": "땅에서, 여러분은 서로를 끌어안기를 멈추지 못해요.",
+      "tts": {
+        "text": "땅에서, 여러분은 서로를 끌어안기를 멈추지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세 번째는 힘든 한 해를 보낸 뒤의 점프예요.",
+      "text_markdown": "세 번째는 힘든 한 해를 보낸 뒤의 점프예요.",
+      "tts": {
+        "text": "세 번째는 힘든 한 해를 보낸 뒤의 점프예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여러분은 어떤 일을 통과해 왔을지도 몰라요.",
+      "text_markdown": "여러분은 어떤 일을 통과해 왔을지도 몰라요.",
+      "tts": {
+        "text": "여러분은 어떤 일을 통과해 왔을지도 몰라요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "직장에서 좋지 않은 시기.",
+      "text_markdown": "직장에서 좋지 않은 시기.",
+      "tts": {
+        "text": "직장에서 좋지 않은 시기.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "끝나 버린 어떤 관계.",
+      "text_markdown": "끝나 버린 어떤 관계.",
+      "tts": {
+        "text": "끝나 버린 어떤 관계.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여느 세상이 옅고 멀게 느껴지게 만든 어떤 상실.",
+      "text_markdown": "여느 세상이 옅고 멀게 느껴지게 만든 어떤 상실.",
+      "tts": {
+        "text": "여느 세상이 옅고 멀게 느껴지게 만든 어떤 상실.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "여러분이 점프하는 건 무언가를 느끼고 싶어서가 아니에요.",
+      "text_markdown": "여러분이 점프하는 건 무언가를 느끼고 싶어서가 아니에요.",
+      "tts": {
+        "text": "여러분이 점프하는 건 무언가를 느끼고 싶어서가 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "아무것도 느끼지 못하고 있었기 때문에, 자기가 아직 그 안에 있는지 알고 싶어서 점프하는 거예요.",
+      "text_markdown": "아무것도 느끼지 못하고 있었기 때문에, 자기가 아직 그 안에 있는지 알고 싶어서 점프하는 거예요.",
+      "tts": {
+        "text": "아무것도 느끼지 못하고 있었기 때문에, 자기가 아직 그 안에 있는지 알고 싶어서 점프하는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비행기가 올라가요.",
+      "text_markdown": "비행기가 올라가요.",
+      "tts": {
+        "text": "비행기가 올라가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "문이 열려요.",
+      "text_markdown": "문이 열려요.",
+      "tts": {
+        "text": "문이 열려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여러분은 한 발을 내딛어요.",
+      "text_markdown": "여러분은 한 발을 내딛어요.",
+      "tts": {
+        "text": "여러분은 한 발을 내딛어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 처음 삼 초, 바람이 여러분을 받아 안기 전에, 안에서 무언가가 균열을 내며 열려요.",
+      "text_markdown": "그리고 처음 삼 초, 바람이 여러분을 받아 안기 전에, 안에서 무언가가 균열을 내며 열려요.",
+      "tts": {
+        "text": "그리고 처음 삼 초, 바람이 여러분을 받아 안기 전에, 안에서 무언가가 균열을 내며 열려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "울 생각은 없었어요.",
+      "text_markdown": "울 생각은 없었어요.",
+      "tts": {
+        "text": "울 생각은 없었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그래도 어쨌든 울게 돼요.",
+      "text_markdown": "그래도 어쨌든 울게 돼요.",
+      "tts": {
+        "text": "그래도 어쨌든 울게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "자유낙하가 자기 몫을 해 줘요.",
+      "text_markdown": "자유낙하가 자기 몫을 해 줘요.",
+      "tts": {
+        "text": "자유낙하가 자기 몫을 해 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "바람과 숨과 떨어짐 말고는 아무것도 없는 긴 육십 초.",
+      "text_markdown": "바람과 숨과 떨어짐 말고는 아무것도 없는 긴 육십 초.",
+      "tts": {
+        "text": "바람과 숨과 떨어짐 말고는 아무것도 없는 긴 육십 초.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "그리고 어느 순간, 그동안 모든 걸 붙들고 있던 여러분의 한 부분이, 마침내 그것을 잠깐 내려놓아요.",
+      "text_markdown": "그리고 어느 순간, 그동안 모든 걸 붙들고 있던 여러분의 한 부분이, 마침내 그것을 잠깐 내려놓아요.",
+      "tts": {
+        "text": "그리고 어느 순간, 그동안 모든 걸 붙들고 있던 여러분의 한 부분이, 마침내 그것을 잠깐 내려놓아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "낙하산이 펼쳐져요.",
+      "text_markdown": "낙하산이 펼쳐져요.",
+      "tts": {
+        "text": "낙하산이 펼쳐져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "세상이 조용해져요.",
+      "text_markdown": "세상이 조용해져요.",
+      "tts": {
+        "text": "세상이 조용해져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "여러분은 하네스에 매달려서, 흐느끼고, 웃고, 다시 흐느껴요.",
+      "text_markdown": "여러분은 하네스에 매달려서, 흐느끼고, 웃고, 다시 흐느껴요.",
+      "tts": {
+        "text": "여러분은 하네스에 매달려서, 흐느끼고, 웃고, 다시 흐느껴요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "아무도 여러분을 볼 수 없어요.",
+      "text_markdown": "아무도 여러분을 볼 수 없어요.",
+      "tts": {
+        "text": "아무도 여러분을 볼 수 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "바로 그게 핵심이에요.",
+      "text_markdown": "바로 그게 핵심이에요.",
+      "tts": {
+        "text": "바로 그게 핵심이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "착륙했을 때, 여러분이 다 나은 건 아니에요.",
+      "text_markdown": "착륙했을 때, 여러분이 다 나은 건 아니에요.",
+      "tts": {
+        "text": "착륙했을 때, 여러분이 다 나은 건 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여전히 거기까지 가져갔던 무엇이든 그대로 짊어지고 있어요.",
+      "text_markdown": "여전히 거기까지 가져갔던 무엇이든 그대로 짊어지고 있어요.",
+      "tts": {
+        "text": "여전히 거기까지 가져갔던 무엇이든 그대로 짊어지고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 그 위에서 한 시간을 보내는 동안, 여러분 안의 무언가가 살아 있다는 게 어떤 느낌이었는지 정확히 다시 떠올렸어요.",
+      "text_markdown": "하지만 그 위에서 한 시간을 보내는 동안, 여러분 안의 무언가가 살아 있다는 게 어떤 느낌이었는지 정확히 다시 떠올렸어요.",
+      "tts": {
+        "text": "하지만 그 위에서 한 시간을 보내는 동안, 여러분 안의 무언가가 살아 있다는 게 어떤 느낌이었는지 정확히 다시 떠올렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스카이다이빙이 그해를 해결해 주지는 않았어요.",
+      "text_markdown": "스카이다이빙이 그해를 해결해 주지는 않았어요.",
+      "tts": {
+        "text": "스카이다이빙이 그해를 해결해 주지는 않았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "다만 육십 초 동안, 손에 쥘 수 있을 만큼 작은 조각으로, 그 한 해를 다시 돌려줬을 뿐이에요.",
+      "text_markdown": "다만 육십 초 동안, 손에 쥘 수 있을 만큼 작은 조각으로, 그 한 해를 다시 돌려줬을 뿐이에요.",
+      "tts": {
+        "text": "다만 육십 초 동안, 손에 쥘 수 있을 만큼 작은 조각으로, 그 한 해를 다시 돌려줬을 뿐이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "왜 곁에 남는가",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "왜 곁에 남는가",
+      "text_markdown": "왜 곁에 남는가"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "저는 이제 꽤 오래 점프를 해 왔어요.",
+      "text_markdown": "저는 이제 꽤 오래 점프를 해 왔어요.",
+      "tts": {
+        "text": "저는 이제 꽤 오래 점프를 해 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 횟수가 기억나지 않을 만큼 오래요.",
+      "text_markdown": "그 횟수가 기억나지 않을 만큼 오래요.",
+      "tts": {
+        "text": "그 횟수가 기억나지 않을 만큼 오래요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "왜 아직도 이걸 하느냐는 질문이, 제게 더는 아무 의미가 없을 만큼 오래요.",
+      "text_markdown": "왜 아직도 이걸 하느냐는 질문이, 제게 더는 아무 의미가 없을 만큼 오래요.",
+      "tts": {
+        "text": "왜 아직도 이걸 하느냐는 질문이, 제게 더는 아무 의미가 없을 만큼 오래요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여러분께 몇 가지를 남기고 싶어요.",
+      "text_markdown": "여러분께 몇 가지를 남기고 싶어요.",
+      "tts": {
+        "text": "여러분께 몇 가지를 남기고 싶어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫째는, 스카이다이빙은 한때의 유행이 아니라는 거예요.",
+      "text_markdown": "첫째는, 스카이다이빙은 한때의 유행이 아니라는 거예요.",
+      "tts": {
+        "text": "첫째는, 스카이다이빙은 한때의 유행이 아니라는 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "친구가 이 일에 빠져드는 걸 보면, 사람들은 걱정해요.",
+      "text_markdown": "친구가 이 일에 빠져드는 걸 보면, 사람들은 걱정해요.",
+      "tts": {
+        "text": "친구가 이 일에 빠져드는 걸 보면, 사람들은 걱정해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "반항이라거나, 중년의 위기라거나, 무언가에서 도망치는 방식이라고 걱정하죠.",
+      "text_markdown": "반항이라거나, 중년의 위기라거나, 무언가에서 도망치는 방식이라고 걱정하죠.",
+      "tts": {
+        "text": "반항이라거나, 중년의 위기라거나, 무언가에서 도망치는 방식이라고 걱정하죠.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그런 게 아니에요.",
+      "text_markdown": "그런 게 아니에요.",
+      "tts": {
+        "text": "그런 게 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "남는 사람들은 도망치고 있는 게 아니에요.",
+      "text_markdown": "남는 사람들은 도망치고 있는 게 아니에요.",
+      "tts": {
+        "text": "남는 사람들은 도망치고 있는 게 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그분들은 거의 자기도 모르는 사이에, 하늘 안에 작은 삶을 지어 둔 거예요.",
+      "text_markdown": "그분들은 거의 자기도 모르는 사이에, 하늘 안에 작은 삶을 지어 둔 거예요.",
+      "tts": {
+        "text": "그분들은 거의 자기도 모르는 사이에, 하늘 안에 작은 삶을 지어 둔 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "토요일마다 모습을 드러내요.",
+      "text_markdown": "토요일마다 모습을 드러내요.",
+      "tts": {
+        "text": "토요일마다 모습을 드러내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "자기 낙하산을 패킹해요.",
+      "text_markdown": "자기 낙하산을 패킹해요.",
+      "tts": {
+        "text": "자기 낙하산을 패킹해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "친구들을 끌어안아요.",
+      "text_markdown": "친구들을 끌어안아요.",
+      "tts": {
+        "text": "친구들을 끌어안아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "해 질 무렵 집으로 돌아가요. 좋은 의미로 피곤한 채로요.",
+      "text_markdown": "해 질 무렵 집으로 돌아가요. 좋은 의미로 피곤한 채로요.",
+      "tts": {
+        "text": "해 질 무렵 집으로 돌아가요. 좋은 의미로 피곤한 채로요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "월요일에 다시 출근하면, 예전보다 눈에 띄게 더 다정해져 있어요.",
+      "text_markdown": "월요일에 다시 출근하면, 예전보다 눈에 띄게 더 다정해져 있어요.",
+      "tts": {
+        "text": "월요일에 다시 출근하면, 예전보다 눈에 띄게 더 다정해져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하늘은 여러분을 바꿔 놓아요. 천천히요.",
+      "text_markdown": "하늘은 여러분을 바꿔 놓아요. 천천히요.",
+      "tts": {
+        "text": "하늘은 여러분을 바꿔 놓아요. 천천히요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여러분은 더 그 자리에 있게 돼요.",
+      "text_markdown": "여러분은 더 그 자리에 있게 돼요.",
+      "tts": {
+        "text": "여러분은 더 그 자리에 있게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더 큰 일에 정직해지는 연습을 해 왔기에, 작은 일을 덜 두려워하게 돼요.",
+      "text_markdown": "더 큰 일에 정직해지는 연습을 해 왔기에, 작은 일을 덜 두려워하게 돼요.",
+      "tts": {
+        "text": "더 큰 일에 정직해지는 연습을 해 왔기에, 작은 일을 덜 두려워하게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 쉽게 웃게 돼요.",
+      "text_markdown": "더 쉽게 웃게 돼요.",
+      "tts": {
+        "text": "더 쉽게 웃게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "사랑한다고 더 자주 말하게 돼요.",
+      "text_markdown": "사랑한다고 더 자주 말하게 돼요.",
+      "tts": {
+        "text": "사랑한다고 더 자주 말하게 돼요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "여러분은 만 이천 피트 상공의 출입구에 서 본 적이 있고, 그 무엇도 약속되어 있지 않다는 걸 기억하고 있는 거예요.",
+      "text_markdown": "여러분은 만 이천 피트 상공의 출입구에 서 본 적이 있고, 그 무엇도 약속되어 있지 않다는 걸 기억하고 있는 거예요.",
+      "tts": {
+        "text": "여러분은 만 이천 피트 상공의 출입구에 서 본 적이 있고, 그 무엇도 약속되어 있지 않다는 걸 기억하고 있는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혹시 저녁 식사 자리에서 스카이다이버를 마주치게 된다면, 이런 것들을 물어볼 수 있어요.",
+      "text_markdown": "혹시 저녁 식사 자리에서 스카이다이버를 마주치게 된다면, 이런 것들을 물어볼 수 있어요.",
+      "tts": {
+        "text": "혹시 저녁 식사 자리에서 스카이다이버를 마주치게 된다면, 이런 것들을 물어볼 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떻게 시작하게 됐냐고 물어볼 수 있어요.",
+      "text_markdown": "어떻게 시작하게 됐냐고 물어볼 수 있어요.",
+      "tts": {
+        "text": "어떻게 시작하게 됐냐고 물어볼 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스카이다이버라면 누구나 자기 첫 점프를 생생하게 기억하고 있고, 기꺼이 들려줄 거예요.",
+      "text_markdown": "스카이다이버라면 누구나 자기 첫 점프를 생생하게 기억하고 있고, 기꺼이 들려줄 거예요.",
+      "tts": {
+        "text": "스카이다이버라면 누구나 자기 첫 점프를 생생하게 기억하고 있고, 기꺼이 들려줄 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지금까지 몇 번이나 점프했냐고 물어볼 수 있어요.",
+      "text_markdown": "지금까지 몇 번이나 점프했냐고 물어볼 수 있어요.",
+      "tts": {
+        "text": "지금까지 몇 번이나 점프했냐고 물어볼 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그분들은 그 숫자를 어림으로라도 알고 있고, 실제보다 부풀려 말하지도 않을 거예요.",
+      "text_markdown": "그분들은 그 숫자를 어림으로라도 알고 있고, 실제보다 부풀려 말하지도 않을 거예요.",
+      "tts": {
+        "text": "그분들은 그 숫자를 어림으로라도 알고 있고, 실제보다 부풀려 말하지도 않을 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "어떤 종류의 점프를 가장 좋아하느냐고 물어볼 수 있어요.",
+      "text_markdown": "어떤 종류의 점프를 가장 좋아하느냐고 물어볼 수 있어요.",
+      "tts": {
+        "text": "어떤 종류의 점프를 가장 좋아하느냐고 물어볼 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "어떤 사람은 노을 점프라고 답할 거예요.",
+      "text_markdown": "어떤 사람은 노을 점프라고 답할 거예요.",
+      "tts": {
+        "text": "어떤 사람은 노을 점프라고 답할 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "어떤 사람은 큰 포메이션이라고 답할 거예요.",
+      "text_markdown": "어떤 사람은 큰 포메이션이라고 답할 거예요.",
+      "tts": {
+        "text": "어떤 사람은 큰 포메이션이라고 답할 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "어떤 사람은 잔잔한 저녁의 조용한 솔로 점프라고 답할 거예요.",
+      "text_markdown": "어떤 사람은 잔잔한 저녁의 조용한 솔로 점프라고 답할 거예요.",
+      "tts": {
+        "text": "어떤 사람은 잔잔한 저녁의 조용한 솔로 점프라고 답할 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음 뛰었을 때 무서웠냐고 물어볼 수 있어요.",
+      "text_markdown": "처음 뛰었을 때 무서웠냐고 물어볼 수 있어요.",
+      "tts": {
+        "text": "처음 뛰었을 때 무서웠냐고 물어볼 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "당연히 무서웠죠.",
+      "text_markdown": "당연히 무서웠죠.",
+      "tts": {
+        "text": "당연히 무서웠죠.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다들 무서워해요.",
+      "text_markdown": "다들 무서워해요.",
+      "tts": {
+        "text": "다들 무서워해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아마 출입구로 들이치던 바람과, 그 카운트, 그리고 한 발을 내딛기 직전에 보이는 세상의 풍경에 대해 이야기해 줄 거예요.",
+      "text_markdown": "아마 출입구로 들이치던 바람과, 그 카운트, 그리고 한 발을 내딛기 직전에 보이는 세상의 풍경에 대해 이야기해 줄 거예요.",
+      "tts": {
+        "text": "아마 출입구로 들이치던 바람과, 그 카운트, 그리고 한 발을 내딛기 직전에 보이는 세상의 풍경에 대해 이야기해 줄 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "주의 깊게 들어 주세요.",
+      "text_markdown": "주의 깊게 들어 주세요.",
+      "tts": {
+        "text": "주의 깊게 들어 주세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그분들은 여러분에게 작은 선물을 건네고 있는 거예요.",
+      "text_markdown": "그분들은 여러분에게 작은 선물을 건네고 있는 거예요.",
+      "tts": {
+        "text": "그분들은 여러분에게 작은 선물을 건네고 있는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스카이다이버의 얼굴을 환하게 만들고 싶다면, 낙하산이 펼쳐지는 그 순간을 묘사해 달라고 부탁해 보세요.",
+      "text_markdown": "스카이다이버의 얼굴을 환하게 만들고 싶다면, 낙하산이 펼쳐지는 그 순간을 묘사해 달라고 부탁해 보세요.",
+      "tts": {
+        "text": "스카이다이버의 얼굴을 환하게 만들고 싶다면, 낙하산이 펼쳐지는 그 순간을 묘사해 달라고 부탁해 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그분들은 잠깐 눈을 감을 거예요.",
+      "text_markdown": "그분들은 잠깐 눈을 감을 거예요.",
+      "tts": {
+        "text": "그분들은 잠깐 눈을 감을 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러고는 표현해 보려고 애써요.",
+      "text_markdown": "그러고는 표현해 보려고 애써요.",
+      "tts": {
+        "text": "그러고는 표현해 보려고 애써요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "매번 다른 단어를 쓸 거예요.",
+      "text_markdown": "매번 다른 단어를 쓸 거예요.",
+      "tts": {
+        "text": "매번 다른 단어를 쓸 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "어쩌면 고요해.",
+      "text_markdown": "어쩌면 고요해.",
+      "tts": {
+        "text": "어쩌면 고요해.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "어쩌면 부드러워.",
+      "text_markdown": "어쩌면 부드러워.",
+      "tts": {
+        "text": "어쩌면 부드러워.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "잠에서 깨어나는 것처럼.",
+      "text_markdown": "잠에서 깨어나는 것처럼.",
+      "tts": {
+        "text": "잠에서 깨어나는 것처럼.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "집으로 돌아오는 것처럼.",
+      "text_markdown": "집으로 돌아오는 것처럼.",
+      "tts": {
+        "text": "집으로 돌아오는 것처럼.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "누구도 그걸 두 번 똑같이 묘사하지 않아요.",
+      "text_markdown": "누구도 그걸 두 번 똑같이 묘사하지 않아요.",
+      "tts": {
+        "text": "누구도 그걸 두 번 똑같이 묘사하지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한 번도 점프해 본 적이 없다고 말하기를 부끄러워하지 마세요.",
+      "text_markdown": "한 번도 점프해 본 적이 없다고 말하기를 부끄러워하지 마세요.",
+      "tts": {
+        "text": "한 번도 점프해 본 적이 없다고 말하기를 부끄러워하지 마세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스카이다이버는 그 질문을 정말 좋아해요.",
+      "text_markdown": "스카이다이버는 그 질문을 정말 좋아해요.",
+      "tts": {
+        "text": "스카이다이버는 그 질문을 정말 좋아해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스카이다이버는 또 여러분에게 한번 해 봐야 한다고 말하길 좋아해요. 그리고 아주 진지하게, 자기가 함께 가 주겠다고 말하길 좋아해요.",
+      "text_markdown": "스카이다이버는 또 여러분에게 한번 해 봐야 한다고 말하길 좋아해요. 그리고 아주 진지하게, 자기가 함께 가 주겠다고 말하길 좋아해요.",
+      "tts": {
+        "text": "스카이다이버는 또 여러분에게 한번 해 봐야 한다고 말하길 좋아해요. 그리고 아주 진지하게, 자기가 함께 가 주겠다고 말하길 좋아해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "우리 대부분은 친구를 첫 점프에 데려가 본 적이 있어요.",
+      "text_markdown": "우리 대부분은 친구를 첫 점프에 데려가 본 적이 있어요.",
+      "tts": {
+        "text": "우리 대부분은 친구를 첫 점프에 데려가 본 적이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그게 이 스포츠의 큰 즐거움 중 하나예요.",
+      "text_markdown": "그게 이 스포츠의 큰 즐거움 중 하나예요.",
+      "tts": {
+        "text": "그게 이 스포츠의 큰 즐거움 중 하나예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 글의 끝에 거창한 교훈은 없어요.",
+      "text_markdown": "이 글의 끝에 거창한 교훈은 없어요.",
+      "tts": {
+        "text": "이 글의 끝에 거창한 교훈은 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오직 이거예요.",
+      "text_markdown": "오직 이거예요.",
+      "tts": {
+        "text": "오직 이거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "지금 이 순간 세계 어딘가에서, 차분하고 인내심 있는 작은 무리의 사람들이 비행기를 향해 걸어 나가고 있어요.",
+      "text_markdown": "지금 이 순간 세계 어딘가에서, 차분하고 인내심 있는 작은 무리의 사람들이 비행기를 향해 걸어 나가고 있어요.",
+      "tts": {
+        "text": "지금 이 순간 세계 어딘가에서, 차분하고 인내심 있는 작은 무리의 사람들이 비행기를 향해 걸어 나가고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "들판은 햇빛에 젖어 있어요.",
+      "text_markdown": "들판은 햇빛에 젖어 있어요.",
+      "tts": {
+        "text": "들판은 햇빛에 젖어 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "잔디는 따뜻해요.",
+      "text_markdown": "잔디는 따뜻해요.",
+      "tts": {
+        "text": "잔디는 따뜻해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그분들은 서로의 장비를 점검하고 있어요.",
+      "text_markdown": "그분들은 서로의 장비를 점검하고 있어요.",
+      "tts": {
+        "text": "그분들은 서로의 장비를 점검하고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "그분들은 미소 짓고 있어요.",
+      "text_markdown": "그분들은 미소 짓고 있어요.",
+      "tts": {
+        "text": "그분들은 미소 짓고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "삼십 분 뒤면, 그분들은 하늘에 있을 거예요. 자신이 할 줄 아는 가장 조용한 일을 하면서요.",
+      "text_markdown": "삼십 분 뒤면, 그분들은 하늘에 있을 거예요. 자신이 할 줄 아는 가장 조용한 일을 하면서요.",
+      "tts": {
+        "text": "삼십 분 뒤면, 그분들은 하늘에 있을 거예요. 자신이 할 줄 아는 가장 조용한 일을 하면서요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어쩌면 어느 날 여러분도 그중 한 명이 될 거예요.",
+      "text_markdown": "어쩌면 어느 날 여러분도 그중 한 명이 될 거예요.",
+      "tts": {
+        "text": "어쩌면 어느 날 여러분도 그중 한 명이 될 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어쩌면 어느 날에도 그러지 않을 거예요.",
+      "text_markdown": "어쩌면 어느 날에도 그러지 않을 거예요.",
+      "tts": {
+        "text": "어쩌면 어느 날에도 그러지 않을 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어느 쪽이든, 하늘은 거기 있어요.",
+      "text_markdown": "어느 쪽이든, 하늘은 거기 있어요.",
+      "tts": {
+        "text": "어느 쪽이든, 하늘은 거기 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "늘 거기 있었어요.",
+      "text_markdown": "늘 거기 있었어요.",
+      "tts": {
+        "text": "늘 거기 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "혹시 언젠가 그쪽으로 기울고 싶어질 때를 위해, 인내심 있게 기다리고 있어요.",
+      "text_markdown": "혹시 언젠가 그쪽으로 기울고 싶어질 때를 위해, 인내심 있게 기다리고 있어요.",
+      "tts": {
+        "text": "혹시 언젠가 그쪽으로 기울고 싶어질 때를 위해, 인내심 있게 기다리고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

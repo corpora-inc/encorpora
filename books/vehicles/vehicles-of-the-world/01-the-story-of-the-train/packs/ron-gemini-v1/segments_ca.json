@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "ca",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Una nota per al lector",
+      "text_markdown": "Una nota per al lector",
+      "heading_level": 1
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durant dos-cents anys, el tren ha estat el camí de ferro del món.",
+      "text_markdown": "Durant dos-cents anys, el tren ha estat el camí de ferro del món.",
+      "tts": {
+        "text": "Durant dos-cents anys, el tren ha estat el camí de ferro del món.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Els trens porten persones.",
+      "text_markdown": "Els trens porten persones.",
+      "tts": {
+        "text": "Els trens porten persones d'un lloc a un altre, ben lluny.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Els trens porten mercaderies.",
+      "text_markdown": "Els trens porten mercaderies.",
+      "tts": {
+        "text": "Els trens també porten mercaderies ben importants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un tren llarg pot portar prou gra per alimentar tot un poble.",
+      "text_markdown": "Un tren llarg pot portar prou gra per alimentar tot un poble.",
+      "tts": {
+        "text": "Un tren llarg pot portar prou gra per alimentar tot un poble.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Un tren ràpid pot correr més que un cotxe a l'autopista.",
+      "text_markdown": "Un tren ràpid pot correr més que un cotxe a l'autopista.",
+      "tts": {
+        "text": "Un tren ràpid pot correr més que un cotxe a l'autopista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota per al lector",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La història del tren comença a Anglaterra, fa gairebé dos-cents anys, amb un home, un foc i una tetera d'aigua bullent.",
+      "text_markdown": "La història del tren comença a Anglaterra, fa gairebé dos-cents anys, amb un home, un foc i una tetera d'aigua bullent.",
+      "tts": {
+        "text": "La història del tren comença a Anglaterra, fa gairebé dos-cents anys, amb un home, un foc i una tetera d'aigua bullent.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 1 — El primer tren de vapor",
+      "text_markdown": "Capítol 1 — El primer tren de vapor",
+      "heading_level": 2
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un tren és una fila de vagons que circula sobre rails de ferro.",
+      "text_markdown": "Un tren és una fila de vagons que circula sobre rails de ferro.",
+      "tts": {
+        "text": "Un tren és una fila de vagons que circula sobre rails de ferro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El primer vagó és la locomotora.",
+      "text_markdown": "El primer vagó és la locomotora.",
+      "tts": {
+        "text": "El primer vagó del tren és la locomotora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Estira tots els altres.",
+      "text_markdown": "Estira tots els altres.",
+      "tts": {
+        "text": "La locomotora estira tots els altres vagons del tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els primers trens funcionaven amb vapor.",
+      "text_markdown": "Els primers trens funcionaven amb vapor.",
+      "tts": {
+        "text": "Els primers trens funcionaven amb vapor, ben fort i calent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una màquina de vapor crema carbó per bullir aigua.",
+      "text_markdown": "Una màquina de vapor crema carbó per bullir aigua.",
+      "tts": {
+        "text": "Una màquina de vapor crema carbó per fer bullir l'aigua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El vapor calent empeny els pistons.",
+      "text_markdown": "El vapor calent empeny els pistons.",
+      "tts": {
+        "text": "El vapor calent empeny els pistons de la màquina del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Els pistons fan girar les rodes.",
+      "text_markdown": "Els pistons fan girar les rodes.",
+      "tts": {
+        "text": "Els pistons fan girar les rodes del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Les rodes corren sobre els rails.",
+      "text_markdown": "Les rodes corren sobre els rails.",
+      "tts": {
+        "text": "Les rodes del tren corren sobre els rails.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La història comença a Anglaterra.",
+      "text_markdown": "La història comença a Anglaterra.",
+      "tts": {
+        "text": "La història del tren comença a Anglaterra, fa temps.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'any 1825, es va obrir el primer ferrocarril públic.",
+      "text_markdown": "L'any 1825, es va obrir el primer ferrocarril públic.",
+      "tts": {
+        "text": "L'any mil vuit-cents vint-i-cinc, es va obrir el primer ferrocarril públic.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es deia Stockton and Darlington Railway.",
+      "text_markdown": "Es deia Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Aquella via del tren es deia Stockton and Darlington Railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Portava carbó des d'una mina fins al riu.",
+      "text_markdown": "Portava carbó des d'una mina fins al riu.",
+      "tts": {
+        "text": "El tren portava carbó des d'una mina fins al riu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un home anomenat George Stephenson va construir les locomotores.",
+      "text_markdown": "Un home anomenat George Stephenson va construir les locomotores.",
+      "tts": {
+        "text": "Un home anomenat George Stephenson va construir les locomotores del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La gent l'anomenava el Pare dels Ferrocarrils.",
+      "text_markdown": "La gent l'anomenava el Pare dels Ferrocarrils.",
+      "tts": {
+        "text": "La gent l'anomenava el Pare dels Ferrocarrils.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El 1829, el seu fill Robert Stephenson va construir una locomotora famosa anomenada Rocket.",
+      "text_markdown": "El 1829, el seu fill Robert Stephenson va construir una locomotora famosa anomenada Rocket.",
+      "tts": {
+        "text": "El mil vuit-cents vint-i-nou, el seu fill Robert Stephenson va construir una locomotora famosa anomenada Rocket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Va guanyar una cursa pel tren més ràpid.",
+      "text_markdown": "Va guanyar una cursa pel tren més ràpid.",
+      "tts": {
+        "text": "La Rocket va guanyar una cursa pel tren més ràpid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aquesta locomotora, anomenada la Rocket, podia arribar gairebé a 30 milles per hora.",
+      "text_markdown": "Aquesta locomotora, anomenada la Rocket, podia arribar gairebé a 30 milles per hora.",
+      "tts": {
+        "text": "Aquesta locomotora, anomenada la Roquet, podia arribar gairebé a trenta milles per hora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Això era més ràpid que qualsevol cavall.",
+      "text_markdown": "Això era més ràpid que qualsevol cavall.",
+      "tts": {
+        "text": "Això era més ràpid que qualsevol cavall d'aleshores.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítol 1 — El primer tren de vapor",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'era del tren ja havia començat.",
+      "text_markdown": "L'era del tren ja havia començat.",
+      "tts": {
+        "text": "L'era del tren ja havia començat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 2 — El camí de ferro s'escampa",
+      "text_markdown": "Capítol 2 — El camí de ferro s'escampa",
+      "heading_level": 2
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Després de la Rocket, els ferrocarrils es van escampar ràpidament.",
+      "text_markdown": "Després de la Rocket, els ferrocarrils es van escampar ràpidament.",
+      "tts": {
+        "text": "Després de la Rocket, els ferrocarrils es van escampar ràpidament.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Gran Bretanya va posar milers de milles de via.",
+      "text_markdown": "La Gran Bretanya va posar milers de milles de via.",
+      "tts": {
+        "text": "La Gran Bretanya va posar milers de milles de via.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Després la resta del món la va seguir.",
+      "text_markdown": "Després la resta del món la va seguir.",
+      "tts": {
+        "text": "Després, tota la resta del món també va seguir el tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El 1830, es va obrir el primer gran ferrocarril americà.",
+      "text_markdown": "El 1830, es va obrir el primer gran ferrocarril americà.",
+      "tts": {
+        "text": "El mil vuit-cents trenta, es va obrir el primer gran ferrocarril americà.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es deia Baltimore and Ohio.",
+      "text_markdown": "Es deia Baltimore and Ohio.",
+      "tts": {
+        "text": "Aquell ferrocarril del tren es deia Baltimore and Ohio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Connectava la ciutat de Baltimore amb el riu Ohio.",
+      "text_markdown": "Connectava la ciutat de Baltimore amb el riu Ohio.",
+      "tts": {
+        "text": "La via connectava la ciutat de Baltimore amb el riu Ohio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A França, el primer ferrocarril es va obrir el 1832.",
+      "text_markdown": "A França, el primer ferrocarril es va obrir el 1832.",
+      "tts": {
+        "text": "A França, el primer ferrocarril es va obrir el mil vuit-cents trenta-dos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Portava carbó, com la línia britànica.",
+      "text_markdown": "Portava carbó, com la línia britànica.",
+      "tts": {
+        "text": "El tren portava carbó, com la línia britànica.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Alemanya, el primer ferrocarril llarg es va obrir el 1839.",
+      "text_markdown": "A Alemanya, el primer ferrocarril llarg es va obrir el 1839.",
+      "tts": {
+        "text": "A Alemanya, el primer ferrocarril llarg es va obrir el mil vuit-cents trenta-nou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anava entre dues ciutats, Leipzig i Dresden.",
+      "text_markdown": "Anava entre dues ciutats, Leipzig i Dresden.",
+      "tts": {
+        "text": "La via del tren anava entre dues ciutats, Leipzig i Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rússia va construir el seu primer ferrocarril el 1837.",
+      "text_markdown": "Rússia va construir el seu primer ferrocarril el 1837.",
+      "tts": {
+        "text": "Rússia va construir el seu primer ferrocarril el mil vuit-cents trenta-set.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La línia anava de Saint Petersburg a una ciutat propera.",
+      "text_markdown": "La línia anava de Saint Petersburg a una ciutat propera.",
+      "tts": {
+        "text": "La línia anava de Saint Petersburg a una ciutat propera.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Construir un ferrocarril era una feina dura.",
+      "text_markdown": "Construir un ferrocarril era una feina dura.",
+      "tts": {
+        "text": "Construir un ferrocarril era una feina ben dura.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Els homes cavaven túnels a través de les muntanyes.",
+      "text_markdown": "Els homes cavaven túnels a través de les muntanyes.",
+      "tts": {
+        "text": "Els homes cavaven túnels a través de les muntanyes pel tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Construien ponts sobre els rius.",
+      "text_markdown": "Construien ponts sobre els rius.",
+      "tts": {
+        "text": "Els treballadors construïen ponts sobre els rius pel tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Posaven cada rail a mà.",
+      "text_markdown": "Posaven cada rail a mà.",
+      "tts": {
+        "text": "Els treballadors posaven cada rail a mà, ben a poc a poc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els pobles creixien al llarg de les línies.",
+      "text_markdown": "Els pobles creixien al llarg de les línies.",
+      "tts": {
+        "text": "Els pobles creixien al llarg de les línies del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un poblet amb una estació podia convertir-se en una ciutat.",
+      "text_markdown": "Un poblet amb una estació podia convertir-se en una ciutat.",
+      "tts": {
+        "text": "Un poblet amb una estació podia convertir-se en una ciutat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El tren portava persones.",
+      "text_markdown": "El tren portava persones.",
+      "tts": {
+        "text": "El tren portava persones cap a nous llocs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El tren portava mercaderies.",
+      "text_markdown": "El tren portava mercaderies.",
+      "tts": {
+        "text": "El tren també portava mercaderies per tot arreu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítol 2 — El camí de ferro s'escampa",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El tren acostava una mica més el món.",
+      "text_markdown": "El tren acostava una mica més el món.",
+      "tts": {
+        "text": "El tren acostava una mica més el món sencer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 3 — Les grans línies",
+      "text_markdown": "Capítol 3 — Les grans línies",
+      "heading_level": 2
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns ferrocarrils són molt curts.",
+      "text_markdown": "Alguns ferrocarrils són molt curts.",
+      "tts": {
+        "text": "Alguns ferrocarrils són molt curts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns són molt llargs.",
+      "text_markdown": "Alguns són molt llargs.",
+      "tts": {
+        "text": "Alguns ferrocarrils són molt llargs, de debò, ben llargs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Les línies ferroviàries més llargues travessaven continents sencers.",
+      "text_markdown": "Les línies ferroviàries més llargues travessaven continents sencers.",
+      "tts": {
+        "text": "Les línies ferroviàries més llargues travessaven continents sencers.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als Estats Units, dues companyies van construir un ferrocarril a través del país.",
+      "text_markdown": "Als Estats Units, dues companyies van construir un ferrocarril a través del país.",
+      "tts": {
+        "text": "Als Estats Units, dues companyies van construir un ferrocarril a través del país.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una va començar a California i va treballar cap a l'est.",
+      "text_markdown": "Una va començar a California i va treballar cap a l'est.",
+      "tts": {
+        "text": "Una companyia va començar a California i va treballar cap a l'est.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'altra va començar a Nebraska i va treballar cap a l'oest.",
+      "text_markdown": "L'altra va començar a Nebraska i va treballar cap a l'oest.",
+      "tts": {
+        "text": "L'altra companyia va començar a Nebraska i va treballar cap a l'oest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es van trobar en un lloc anomenat Promontory Summit, a Utah.",
+      "text_markdown": "Es van trobar en un lloc anomenat Promontory Summit, a Utah.",
+      "tts": {
+        "text": "Les dues vies es van trobar a Promontory Summit, a Utah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Això va ser l'any 1869.",
+      "text_markdown": "Això va ser l'any 1869.",
+      "tts": {
+        "text": "Això va passar l'any mil vuit-cents seixanta-nou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "L'últim clau era d'or.",
+      "text_markdown": "L'últim clau era d'or.",
+      "tts": {
+        "text": "L'últim clau de la via era d'or.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La gent l'anomenava el Clau d'Or.",
+      "text_markdown": "La gent l'anomenava el Clau d'Or.",
+      "tts": {
+        "text": "La gent l'anomenava el Clau d'Or.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La línia es deia Ferrocarril Transcontinental.",
+      "text_markdown": "La línia es deia Ferrocarril Transcontinental.",
+      "tts": {
+        "text": "La línia del tren es deia Ferrocarril Transcontinental.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ara podies viatjar amb tren d'un oceà a l'altre en aproximadament una setmana.",
+      "text_markdown": "Ara podies viatjar amb tren d'un oceà a l'altre en aproximadament una setmana.",
+      "tts": {
+        "text": "Ara podies viatjar amb tren d'un oceà a l'altre en aproximadament una setmana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rússia va construir una línia encara més llarga.",
+      "text_markdown": "Rússia va construir una línia encara més llarga.",
+      "tts": {
+        "text": "Rússia va construir una línia de tren encara més llarga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es diu Ferrocarril Transsiberià.",
+      "text_markdown": "Es diu Ferrocarril Transsiberià.",
+      "tts": {
+        "text": "Aquesta línia de tren es diu Ferrocarril Transsiberià.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Va de Moscou, a l'oest, fins a Vladivostok, a l'est.",
+      "text_markdown": "Va de Moscou, a l'oest, fins a Vladivostok, a l'est.",
+      "tts": {
+        "text": "Va de Moscou, a l'oest, fins a Vladivostok, a l'est.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La línia es va acabar el 1916.",
+      "text_markdown": "La línia es va acabar el 1916.",
+      "tts": {
+        "text": "La línia del tren es va acabar l'any mil nou-cents setze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Té més de nou mil quilòmetres de llargada.",
+      "text_markdown": "Té més de nou mil quilòmetres de llargada.",
+      "tts": {
+        "text": "Aquesta via té més de nou mil quilòmetres de llargada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Un viatge sencer dura uns set dies.",
+      "text_markdown": "Un viatge sencer dura uns set dies.",
+      "tts": {
+        "text": "Un viatge sencer amb tren dura uns set dies.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítol 3 — Les grans línies",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Encara és el ferrocarril més llarg del món.",
+      "text_markdown": "Encara és el ferrocarril més llarg del món.",
+      "tts": {
+        "text": "Encara és el ferrocarril més llarg del món del tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 4 — Vapor, dièsel, elèctric",
+      "text_markdown": "Capítol 4 — Vapor, dièsel, elèctric",
+      "heading_level": 2
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durant aproximadament cent anys, gairebé tots els trens eren de vapor.",
+      "text_markdown": "Durant aproximadament cent anys, gairebé tots els trens eren de vapor.",
+      "tts": {
+        "text": "Durant aproximadament cent anys, gairebé tots els trens eren de vapor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Les locomotores de vapor eren grans i sorolloses.",
+      "text_markdown": "Les locomotores de vapor eren grans i sorolloses.",
+      "tts": {
+        "text": "Les locomotores de vapor eren grans i sorolloses, ben fortes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cremaven carbó.",
+      "text_markdown": "Cremaven carbó.",
+      "tts": {
+        "text": "Les locomotores cremaven carbó per fer vapor del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Enviaven fum espès cap al cel.",
+      "text_markdown": "Enviaven fum espès cap al cel.",
+      "tts": {
+        "text": "Les locomotores enviaven fum espes cap al cel del tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Després va arribar la locomotora de motor dièsel.",
+      "text_markdown": "Després va arribar la locomotora de motor dièsel.",
+      "tts": {
+        "text": "Després va arribar la locomotora de motor dièsel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un motor dièsel crema oli en lloc de carbó.",
+      "text_markdown": "Un motor dièsel crema oli en lloc de carbó.",
+      "tts": {
+        "text": "Un motor dièsel crema oli en lloc de carbó pel tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "És més petit i més net.",
+      "text_markdown": "És més petit i més net.",
+      "tts": {
+        "text": "És un motor més petit i més net per al tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No necessita foc ni un dipòsit d'aigua.",
+      "text_markdown": "No necessita foc ni un dipòsit d'aigua.",
+      "tts": {
+        "text": "Aquest motor del tren no necessita foc ni un dipòsit d'aigua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els trens dièsel es van fer habituals als anys 1940 i 1950.",
+      "text_markdown": "Els trens dièsel es van fer habituals als anys 1940 i 1950.",
+      "tts": {
+        "text": "Els trens dièsel es van fer habituals als anys quaranta i cinquanta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A poc a poc, les grans locomotores de vapor van ser retirades.",
+      "text_markdown": "A poc a poc, les grans locomotores de vapor van ser retirades.",
+      "tts": {
+        "text": "A poc a poc, les grans locomotores de vapor van ser retirades.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Algunes encara es conserven en museus i línies turístiques.",
+      "text_markdown": "Algunes encara es conserven en museus i línies turístiques.",
+      "tts": {
+        "text": "Algunes encara es conserven en museus i línies turístiques del tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Després va arribar el tren elèctric.",
+      "text_markdown": "Després va arribar el tren elèctric.",
+      "tts": {
+        "text": "Després va arribar el tren elèctric.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un tren elèctric no té cap motor que cremi combustible.",
+      "text_markdown": "Un tren elèctric no té cap motor que cremi combustible.",
+      "tts": {
+        "text": "Un tren elèctric no té cap motor que cremi combustible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Agafa energia d'un cable sobre la via o d'un tercer rail al costat de la via.",
+      "text_markdown": "Agafa energia d'un cable sobre la via o d'un tercer rail al costat de la via.",
+      "tts": {
+        "text": "Agafa energia d'un cable sobre la via o d'un tercer rail al costat de la via.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els trens elèctrics són silenciosos i molt nets.",
+      "text_markdown": "Els trens elèctrics són silenciosos i molt nets.",
+      "tts": {
+        "text": "Els trens elèctrics són silenciosos i molt nets, ben nets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tambe són molt forts.",
+      "text_markdown": "Tambe són molt forts.",
+      "tts": {
+        "text": "Els trens elèctrics també són molt forts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La majoria dels trens de les ciutats i la majoria dels trens ràpids d'avui són elèctrics.",
+      "text_markdown": "La majoria dels trens de les ciutats i la majoria dels trens ràpids d'avui són elèctrics.",
+      "tts": {
+        "text": "La majoria dels trens de les ciutats i dels trens ràpids d'avui són elèctrics.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tracció de vapor, dièsel i elèctrica.",
+      "text_markdown": "Tracció de vapor, dièsel i elèctrica.",
+      "tts": {
+        "text": "Tracció de vapor, dièsel i elèctrica.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítol 4 — Vapor, dièsel, elèctric",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tres motors, tres èpoques.",
+      "text_markdown": "Tres motors, tres èpoques.",
+      "tts": {
+        "text": "Tres motors diferents del tren, i també tres èpoques diferents.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "text_markdown": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "heading_level": 2
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El 1964, el Japó va obrir un ferrocarril completament nou.",
+      "text_markdown": "El 1964, el Japó va obrir un ferrocarril completament nou.",
+      "tts": {
+        "text": "El mil nou-cents seixanta-quatre, el Japó va obrir un ferrocarril completament nou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El tren feia el trajecte de Tòquio fins a Osaka.",
+      "text_markdown": "El tren feia el trajecte de Tòquio fins a Osaka.",
+      "tts": {
+        "text": "El tren feia el trajecte de Tòquio fins a Ossaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Els trens semblaven llargues bales blanques.",
+      "text_markdown": "Els trens semblaven llargues bales blanques.",
+      "tts": {
+        "text": "Els trens semblaven llargues bales blanques, ben brillants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La gent els anomenava trens bala.",
+      "text_markdown": "La gent els anomenava trens bala.",
+      "tts": {
+        "text": "La gent els anomenava trens bala, ben ràpidament.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El nom japonès és Shinkansen.",
+      "text_markdown": "El nom japonès és Shinkansen.",
+      "tts": {
+        "text": "El nom japonès d'aquest tren és Shinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els primers trens bala anaven a 130 milles per hora.",
+      "text_markdown": "Els primers trens bala anaven a 130 milles per hora.",
+      "tts": {
+        "text": "Els primers trens bala anaven a cent trenta milles per hora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Això era molt ràpid per a un tren el 1964.",
+      "text_markdown": "Això era molt ràpid per a un tren el 1964.",
+      "tts": {
+        "text": "Això era molt ràpid per a un tren el mil nou-cents seixanta-quatre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La línia es va obrir just a temps per als Jocs Olímpics de Tokyo.",
+      "text_markdown": "La línia es va obrir just a temps per als Jocs Olímpics de Tokyo.",
+      "tts": {
+        "text": "La línia es va obrir just a temps per als Jocs Olímpics de Tokyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altres països van seguir l'exemple.",
+      "text_markdown": "Altres països van seguir l'exemple.",
+      "tts": {
+        "text": "Altres països també van seguir l'exemple.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "França va obrir la seva línia d'alta velocitat el 1981.",
+      "text_markdown": "França va obrir la seva línia d'alta velocitat el 1981.",
+      "tts": {
+        "text": "França va obrir la seva línia d'alta velocitat el mil nou-cents vuitanta-u.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Els trens s'anomenen TGV.",
+      "text_markdown": "Els trens s'anomenen TGV.",
+      "tts": {
+        "text": "Aquests trens s'anomenen TGV, ben coneguts a França.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alemanya va seguir amb l'ICE.",
+      "text_markdown": "Alemanya va seguir amb l'ICE.",
+      "tts": {
+        "text": "Alemanya també va seguir amb l'ICE.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Itàlia, Espanya i Corea van construir les seves pròpies línies d'alta velocitat.",
+      "text_markdown": "Itàlia, Espanya i Corea van construir les seves pròpies línies d'alta velocitat.",
+      "tts": {
+        "text": "Itàlia, Espanya i Corea van construir les seves pròpies línies d'alta velocitat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La Xina va ser l'última a començar, però va construir de pressa.",
+      "text_markdown": "La Xina va ser l'última a començar, però va construir de pressa.",
+      "tts": {
+        "text": "La Xina va ser l'última a començar, però va construir de pressa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Avui, la Xina té la xarxa d'alta velocitat més gran del món.",
+      "text_markdown": "Avui, la Xina té la xarxa d'alta velocitat més gran del món.",
+      "tts": {
+        "text": "Avui, la Xina té la xarxa d'alta velocitat més gran del món.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hi ha desenes de milers de quilòmetres de via.",
+      "text_markdown": "Hi ha desenes de milers de quilòmetres de via.",
+      "tts": {
+        "text": "Hi ha desenes de milers de quilòmetres de via de tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els trens bala moderns poden viatjar a més de 200 milles per hora.",
+      "text_markdown": "Els trens bala moderns poden viatjar a més de 200 milles per hora.",
+      "tts": {
+        "text": "Els trens bala moderns poden viatjar a més de dues-centes milles per hora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Són suaus, silenciosos i gairebé sempre puntuals.",
+      "text_markdown": "Són suaus, silenciosos i gairebé sempre puntuals.",
+      "tts": {
+        "text": "Són trens suaus, silenciosos i gairebé sempre puntuals.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítol 5 — Trens bala i la cursa per la velocitat",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En molts viatges, són més ràpids que volar.",
+      "text_markdown": "En molts viatges, són més ràpids que volar.",
+      "tts": {
+        "text": "En molts viatges, aquests trens són més ràpids que volar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 6 — Moltes menes de trens",
+      "text_markdown": "Capítol 6 — Moltes menes de trens",
+      "heading_level": 2
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No tots els trens són iguals.",
+      "text_markdown": "No tots els trens són iguals.",
+      "tts": {
+        "text": "No tots els trens són iguals, pas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "N'hi ha de moltes menes.",
+      "text_markdown": "N'hi ha de moltes menes.",
+      "tts": {
+        "text": "N'hi ha de moltes menes diferents de tren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un tren de passatgers porta persones.",
+      "text_markdown": "Un tren de passatgers porta persones.",
+      "tts": {
+        "text": "Un tren de passatgers porta persones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Té seients, finestres i, de vegades, un vagó restaurant o un vagó llit.",
+      "text_markdown": "Té seients, finestres i, de vegades, un vagó restaurant o un vagó llit.",
+      "tts": {
+        "text": "Té seients, finestres i, de vegades, un vagó restaurant o un vagó llit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un tren de càrrega transporta mercaderies.",
+      "text_markdown": "Un tren de càrrega transporta mercaderies.",
+      "tts": {
+        "text": "Un tren de càrrega transporta mercaderies.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Els cotxes s'anomenen vagons.",
+      "text_markdown": "Els cotxes s'anomenen vagons.",
+      "tts": {
+        "text": "Els cotxes d'aquest tren s'anomenen vagons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns porten gra.",
+      "text_markdown": "Alguns porten gra.",
+      "tts": {
+        "text": "Alguns vagons porten gra per menjar al tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alguns porten oli.",
+      "text_markdown": "Alguns porten oli.",
+      "tts": {
+        "text": "Alguns vagons també porten oli dins del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Alguns porten contenidors sencers apilats de dos en dos.",
+      "text_markdown": "Alguns porten contenidors sencers apilats de dos en dos.",
+      "tts": {
+        "text": "Alguns vagons porten contenidors sencers apilats de dos en dos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un metro és un tren subterrani dins d'una ciutat.",
+      "text_markdown": "Un metro és un tren subterrani dins d'una ciutat.",
+      "tts": {
+        "text": "Un metro és un tren subterrani dins d'una ciutat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El primer metro es va obrir a London el 1863.",
+      "text_markdown": "El primer metro es va obrir a London el 1863.",
+      "tts": {
+        "text": "El primer metro es va obrir a London el mil vuit-cents seixanta-tres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avui, les grans ciutats tenen enormes xarxes de metro sota els seus carrers.",
+      "text_markdown": "Avui, les grans ciutats tenen enormes xarxes de metro sota els seus carrers.",
+      "tts": {
+        "text": "Avui, les grans ciutats tenen enormes xarxes de metro sota els seus carrers.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un tramvia o tren lleuger és un tren petit que circula pels carrers de la ciutat.",
+      "text_markdown": "Un tramvia o tren lleuger és un tren petit que circula pels carrers de la ciutat.",
+      "tts": {
+        "text": "Un tramvia o tren lleuger és un tren petit que circula pels carrers de la ciutat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sovint comparteix la carretera amb cotxes i autobusos.",
+      "text_markdown": "Sovint comparteix la carretera amb cotxes i autobusos.",
+      "tts": {
+        "text": "Sovint comparteix la carretera amb cotxes i autobusos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un tren de muntanya puja per turons costeruts.",
+      "text_markdown": "Un tren de muntanya puja per turons costeruts.",
+      "tts": {
+        "text": "Un tren de muntanya puja per turons costeruts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns tenen un rail dentat especial al mig, anomenat cremallera.",
+      "text_markdown": "Alguns tenen un rail dentat especial al mig, anomenat cremallera.",
+      "tts": {
+        "text": "Alguns tenen un rail dentat especial al mig, anomenat cremallera.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La locomotora s'agafa a la cremallera per pujar i baixar amb seguretat.",
+      "text_markdown": "La locomotora s'agafa a la cremallera per pujar i baixar amb seguretat.",
+      "tts": {
+        "text": "La locomotora s'agafa a la cremallera per pujar i baixar amb seguretat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns trens també són turistics.",
+      "text_markdown": "Alguns trens també són turistics.",
+      "tts": {
+        "text": "Alguns trens també són trens turistics.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítol 6 — Moltes menes de trens",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Circulen per boscos i muntanyes, només per gaudir de la vista.",
+      "text_markdown": "Circulen per boscos i muntanyes, només per gaudir de la vista.",
+      "tts": {
+        "text": "Aquests trens circulen per boscos i muntanyes, només per gaudir de la vista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Capítol 7 — El futur sobre els rails",
+      "text_markdown": "Capítol 7 — El futur sobre els rails",
+      "heading_level": 2
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La història del tren no s'ha acabat.",
+      "text_markdown": "La història del tren no s'ha acabat.",
+      "tts": {
+        "text": "La història del tren no s'ha acabat encara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ara mateix s'estan construint nous tipus de trens.",
+      "text_markdown": "Ara mateix s'estan construint nous tipus de trens.",
+      "tts": {
+        "text": "Ara mateix s'estan construint nous tipus de trens.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El més sorprenent és el maglev.",
+      "text_markdown": "El més sorprenent és el maglev.",
+      "tts": {
+        "text": "El tren més sorprenent és el maglev.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La paraula maglev és l'abreviació de levitació magnètica.",
+      "text_markdown": "La paraula maglev és l'abreviació de levitació magnètica.",
+      "tts": {
+        "text": "La paraula maglev és l'abreviació de levitació magnètica.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El tren que levita amb imants no arriba a tocar la seva via.",
+      "text_markdown": "El tren que levita amb imants no arriba a tocar la seva via.",
+      "tts": {
+        "text": "El tren que levita amb imants no arriba a tocar la seva via.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Flota sobre un coixí de magnets.",
+      "text_markdown": "Flota sobre un coixí de magnets.",
+      "tts": {
+        "text": "El tren flota sobre un coixí de magnets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No hi ha rodes girant.",
+      "text_markdown": "No hi ha rodes girant.",
+      "tts": {
+        "text": "No hi ha rodes girant sota el tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "No hi ha cap fregament.",
+      "text_markdown": "No hi ha cap fregament.",
+      "tts": {
+        "text": "No hi ha cap fregament.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El 2004, es va obrir una línia maglev a Shanghai, Xina.",
+      "text_markdown": "El 2004, es va obrir una línia maglev a Shanghai, Xina.",
+      "tts": {
+        "text": "El dos mil quatre, es va obrir una línia maglev a Shanghai, Xina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El tren pot arribar a més de 250 milles per hora.",
+      "text_markdown": "El tren pot arribar a més de 250 milles per hora.",
+      "tts": {
+        "text": "El tren pot arribar a més de dues-centes cinquanta milles per hora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al Japó, un tren maglev de prova ha anat a més de 370 milles per hora.",
+      "text_markdown": "Al Japó, un tren maglev de prova ha anat a més de 370 milles per hora.",
+      "tts": {
+        "text": "Al Japó, un tren maglev de prova ha anat a més de tres-centes setanta milles per hora.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altres enginyers treballen en el tren d'hidrogen.",
+      "text_markdown": "Altres enginyers treballen en el tren d'hidrogen.",
+      "tts": {
+        "text": "Altres enginyers treballen en el tren d'hidrogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un tren d'hidrogen fa electricitat amb una petita pila de combustible.",
+      "text_markdown": "Un tren d'hidrogen fa electricitat amb una petita pila de combustible.",
+      "tts": {
+        "text": "Un tren d'hidrogen fa electricitat amb una petita pila de combustible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "L'única cosa que surt del motor es vapor d'aigua.",
+      "text_markdown": "L'única cosa que surt del motor es vapor d'aigua.",
+      "tts": {
+        "text": "L'única cosa que surt del motor es vapor d'aigua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sense fum.",
+      "text_markdown": "Sense fum.",
+      "tts": {
+        "text": "No hi surt gens de fum del tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sense carbó.",
+      "text_markdown": "Sense carbó.",
+      "tts": {
+        "text": "No hi cal gens de carbó per al tren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Els primers trens d'hidrogen van començar el servei a Alemanya el 2018.",
+      "text_markdown": "Els primers trens d'hidrogen van començar el servei a Alemanya el 2018.",
+      "tts": {
+        "text": "Els primers trens d'hidrogen van començar el servei a Alemanya el dos mil divuit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Els trens són molt antics, de debò.",
+      "text_markdown": "Els trens són molt antics, de debò.",
+      "tts": {
+        "text": "Els trens són molt antics, de debò, ben antics.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tambe són molt nous.",
+      "text_markdown": "Tambe són molt nous.",
+      "tts": {
+        "text": "Els trens també són molt nous.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítol 7 — El futur sobre els rails",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dos-cents anys després de la Rocket, els rails encara són el futur.",
+      "text_markdown": "Dos-cents anys després de la Rocket, els rails encara són el futur.",
+      "tts": {
+        "text": "Dos-cents anys després de la Rocket, els rails encara són el futur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "El camí de ferro continua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "El camí de ferro continua",
+      "text_markdown": "El camí de ferro continua",
+      "heading_level": 1
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "El camí de ferro continua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des de la Rocket fins al maglev, el tren ha portat el món endavant durant gairebé dos-cents anys.",
+      "text_markdown": "Des de la Rocket fins al maglev, el tren ha portat el món endavant durant gairebé dos-cents anys.",
+      "tts": {
+        "text": "Des de la Rocket fins al maglev, el tren ha portat el món endavant durant gairebé dos-cents anys.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "El camí de ferro continua",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ara mateix s'estan posant noves línies, als deserts, a les muntanyes i sota les ciutats.",
+      "text_markdown": "Ara mateix s'estan posant noves línies, als deserts, a les muntanyes i sota les ciutats.",
+      "tts": {
+        "text": "Ara mateix s'estan posant noves línies, als deserts, a les muntanyes i sota les ciutats.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "El camí de ferro continua",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La propera estació sempre és en algun lloc més endavant.",
+      "text_markdown": "La propera estació sempre és en algun lloc més endavant.",
+      "tts": {
+        "text": "La propera estació sempre és en algun lloc més endavant.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Gurun Panas",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gurun Panas",
+      "text_markdown": "Gurun Panas"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Di Mana Gurun Berada",
+      "text_markdown": "Di Mana Gurun Berada"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selamat datang ke gurun panas.",
+      "text_markdown": "Selamat datang ke gurun panas.",
+      "tts": {
+        "text": "Selamat datang ke gurun panas.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inilah salah satu biom hebat di dunia.",
+      "text_markdown": "Inilah salah satu biom hebat di dunia.",
+      "tts": {
+        "text": "Inilah salah satu biom hebat di dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom ialah sebahagian daripada Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+      "text_markdown": "Biom ialah sebahagian daripada Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+      "tts": {
+        "text": "Biom ialah sebahagian daripada Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gurun panas ialah tempat yang kering.",
+      "text_markdown": "Gurun panas ialah tempat yang kering.",
+      "tts": {
+        "text": "Gurun panas ialah tempat yang kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hujan sangat sedikit turun di sini.",
+      "text_markdown": "Hujan sangat sedikit turun di sini.",
+      "tts": {
+        "text": "Hujan sangat sedikit turun di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan siang sangat panas, dan kebanyakan malam adalah sejuk atau dingin.",
+      "text_markdown": "Kebanyakan siang sangat panas, dan kebanyakan malam adalah sejuk atau dingin.",
+      "tts": {
+        "text": "Kebanyakan siang sangat panas, dan kebanyakan malam adalah sejuk atau dingin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gurun panas terbesar di dunia ialah Sahara, di utara Afrika.",
+      "text_markdown": "Gurun panas terbesar di dunia ialah Sahara, di utara Afrika.",
+      "tts": {
+        "text": "Gurun panas terbesar di dunia ialah Sahara, di utara Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia terbentang dari Lautan Atlantik hampir sampai ke Laut Merah.",
+      "text_markdown": "Ia terbentang dari Lautan Atlantik hampir sampai ke Laut Merah.",
+      "tts": {
+        "text": "Ia terbentang dari Lautan Atlantik hampir sampai ke Laut Merah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat gurun yang luas di tengah Tanah Arab, seperti Suku Kosong.",
+      "text_markdown": "Terdapat gurun yang luas di tengah Tanah Arab, seperti Suku Kosong.",
+      "tts": {
+        "text": "Terdapat gurun yang luas di tengah Tanah Arab, seperti Suku Kosong.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat gurun panas di Amerika Utara, di tempat seperti barat daya Amerika Syarikat dan utara Mexico.",
+      "text_markdown": "Terdapat gurun panas di Amerika Utara, di tempat seperti barat daya Amerika Syarikat dan utara Mexico.",
+      "tts": {
+        "text": "Terdapat gurun panas di Amerika Utara, di tempat seperti barat daya Amerika Syarikat dan utara Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat gurun yang lebih kecil di Amerika Selatan, di selatan Afrika, di India, dan merentasi sebahagian besar Australia.",
+      "text_markdown": "Terdapat gurun yang lebih kecil di Amerika Selatan, di selatan Afrika, di India, dan merentasi sebahagian besar Australia.",
+      "tts": {
+        "text": "Terdapat gurun yang lebih kecil di Amerika Selatan, di selatan Afrika, di India, dan merentasi sebahagian besar Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap gurun ini tumbuh dengan sendiri, jauh dari yang lain.",
+      "text_markdown": "Setiap gurun ini tumbuh dengan sendiri, jauh dari yang lain.",
+      "tts": {
+        "text": "Setiap gurun ini tumbuh dengan sendiri, jauh dari yang lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jadi tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+      "text_markdown": "Jadi tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+      "tts": {
+        "text": "Jadi tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktus yang anda lihat di satu gurun tidak sama dengan yang anda lihat di gurun lain.",
+      "text_markdown": "Kaktus yang anda lihat di satu gurun tidak sama dengan yang anda lihat di gurun lain.",
+      "tts": {
+        "text": "Kaktus yang anda lihat di satu gurun tidak sama dengan yang anda lihat di gurun lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+      "text_markdown": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+      "tts": {
+        "text": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila anda berdiri di gurun panas, udara terasa kering.",
+      "text_markdown": "Apabila anda berdiri di gurun panas, udara terasa kering.",
+      "tts": {
+        "text": "Apabila anda berdiri di gurun panas, udara terasa kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matahari terasa kuat di wajah anda.",
+      "text_markdown": "Matahari terasa kuat di wajah anda.",
+      "tts": {
+        "text": "Matahari terasa kuat di wajah anda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanahnya berbatu di banyak tempat, dan berpasir di tempat lain.",
+      "text_markdown": "Tanahnya berbatu di banyak tempat, dan berpasir di tempat lain.",
+      "tts": {
+        "text": "Tanahnya berbatu di banyak tempat, dan berpasir di tempat lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anda boleh melihat sangat jauh.",
+      "text_markdown": "Anda boleh melihat sangat jauh.",
+      "tts": {
+        "text": "Anda boleh melihat sangat jauh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langitnya sangat luas.",
+      "text_markdown": "Langitnya sangat luas.",
+      "tts": {
+        "text": "Langitnya sangat luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anda mungkin tidak melihat orang lain atau haiwan lain sepanjang hari.",
+      "text_markdown": "Anda mungkin tidak melihat orang lain atau haiwan lain sepanjang hari.",
+      "tts": {
+        "text": "Anda mungkin tidak melihat orang lain atau haiwan lain sepanjang hari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah gurun panas.",
+      "text_markdown": "Itulah gurun panas.",
+      "tts": {
+        "text": "Itulah gurun panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Di Mana Gurun Berada",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah luas yang kering, berpasir, berbatu, dan dibakar matahari.",
+      "text_markdown": "Tanah luas yang kering, berpasir, berbatu, dan dibakar matahari.",
+      "tts": {
+        "text": "Tanah luas yang kering, berpasir, berbatu, dan dibakar matahari.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cuaca",
+      "text_markdown": "Cuaca"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuaca di gurun panas dibentuk oleh dua perkara.",
+      "text_markdown": "Cuaca di gurun panas dibentuk oleh dua perkara.",
+      "tts": {
+        "text": "Cuaca di gurun panas dibentuk oleh dua perkara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terlalu banyak matahari, dan tidak cukup hujan.",
+      "text_markdown": "Terlalu banyak matahari, dan tidak cukup hujan.",
+      "tts": {
+        "text": "Terlalu banyak matahari, dan tidak cukup hujan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah gurun, hujan turun hanya beberapa hari setiap tahun.",
+      "text_markdown": "Di sesetengah gurun, hujan turun hanya beberapa hari setiap tahun.",
+      "tts": {
+        "text": "Di sesetengah gurun, hujan turun hanya beberapa hari setiap tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tempat lain, hujan tidak turun langsung selama bertahun-tahun.",
+      "text_markdown": "Di tempat lain, hujan tidak turun langsung selama bertahun-tahun.",
+      "tts": {
+        "text": "Di tempat lain, hujan tidak turun langsung selama bertahun tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siangnya sangat panas.",
+      "text_markdown": "Siangnya sangat panas.",
+      "tts": {
+        "text": "Siangnya sangat panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tengah hari, matahari boleh memanaskan pasir sehingga ke suhu yang boleh membakar kaki anda.",
+      "text_markdown": "Pada tengah hari, matahari boleh memanaskan pasir sehingga ke suhu yang boleh membakar kaki anda.",
+      "tts": {
+        "text": "Pada tengah hari, matahari boleh memanaskan pasir sehingga ke suhu yang boleh membakar kaki anda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi malamnya sangat berbeza.",
+      "text_markdown": "Tetapi malamnya sangat berbeza.",
+      "tts": {
+        "text": "Tetapi malamnya sangat berbeza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tiada awan dan tiada pokok untuk menahan kehangatan.",
+      "text_markdown": "Tiada awan dan tiada pokok untuk menahan kehangatan.",
+      "tts": {
+        "text": "Tiada awan dan tiada pokok untuk menahan kehangatan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jadi sebaik sahaja matahari terbenam, haba terus naik ke langit.",
+      "text_markdown": "Jadi sebaik sahaja matahari terbenam, haba terus naik ke langit.",
+      "tts": {
+        "text": "Jadi sebaik sahaja matahari terbenam, haba terus naik ke langit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menjelang tengah malam, ia boleh terasa sejuk, atau malah dingin.",
+      "text_markdown": "Menjelang tengah malam, ia boleh terasa sejuk, atau malah dingin.",
+      "tts": {
+        "text": "Menjelang tengah malam, ia boleh terasa sejuk, atau malah dingin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada waktu pagi, batu-batu terasa dingin apabila disentuh.",
+      "text_markdown": "Pada waktu pagi, batu-batu terasa dingin apabila disentuh.",
+      "tts": {
+        "text": "Pada waktu pagi, batu batu terasa dingin apabila disentuh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian matahari terbit, dan haba bermula semula.",
+      "text_markdown": "Kemudian matahari terbit, dan haba bermula semula.",
+      "tts": {
+        "text": "Kemudian matahari terbit, dan haba bermula semula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila hujan turun, ia sering turun sekali gus.",
+      "text_markdown": "Apabila hujan turun, ia sering turun sekali gus.",
+      "tts": {
+        "text": "Apabila hujan turun, ia sering turun sekali gus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ribut besar datang, dan air mencurah turun selama sejam.",
+      "text_markdown": "Ribut besar datang, dan air mencurah turun selama sejam.",
+      "tts": {
+        "text": "Ribut besar datang, dan air mencurah turun selama sejam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungai kering dipenuhi, dan air mengalir deras melintasi pasir.",
+      "text_markdown": "Sungai kering dipenuhi, dan air mengalir deras melintasi pasir.",
+      "tts": {
+        "text": "Sungai kering dipenuhi, dan air mengalir deras melintasi pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian matahari kembali, dan dalam sehari air hilang semula.",
+      "text_markdown": "Kemudian matahari kembali, dan dalam sehari air hilang semula.",
+      "tts": {
+        "text": "Kemudian matahari kembali, dan dalam sehari air hilang semula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bagi tumbuhan dan haiwan gurun, setiap titis air itu sangat bermakna.",
+      "text_markdown": "Bagi tumbuhan dan haiwan gurun, setiap titis air itu sangat bermakna.",
+      "tts": {
+        "text": "Bagi tumbuhan dan haiwan gurun, setiap titis air itu sangat bermakna.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tanah dan Air",
+      "text_markdown": "Tanah dan Air"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan gurun panas tidak diperbuat daripada pasir.",
+      "text_markdown": "Kebanyakan gurun panas tidak diperbuat daripada pasir.",
+      "tts": {
+        "text": "Kebanyakan gurun panas tidak diperbuat daripada pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakannya adalah batu, kerikil, dan tanah kering yang keras.",
+      "text_markdown": "Kebanyakannya adalah batu, kerikil, dan tanah kering yang keras.",
+      "tts": {
+        "text": "Kebanyakannya adalah batu, kerikil, dan tanah kering yang keras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat juga tempat dengan lautan bukit pasir yang luas.",
+      "text_markdown": "Terdapat juga tempat dengan lautan bukit pasir yang luas.",
+      "tts": {
+        "text": "Terdapat juga tempat dengan lautan bukit pasir yang luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Angin menggerakkan bukit pasir perlahan-lahan merentasi tanah.",
+      "text_markdown": "Angin menggerakkan bukit pasir perlahan-lahan merentasi tanah.",
+      "tts": {
+        "text": "Angin menggerakkan bukit pasir perlahan lahan merentasi tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bukit pasir boleh lebih kecil daripada rumah, atau lebih tinggi daripada bangunan tinggi.",
+      "text_markdown": "Bukit pasir boleh lebih kecil daripada rumah, atau lebih tinggi daripada bangunan tinggi.",
+      "tts": {
+        "text": "Bukit pasir boleh lebih kecil daripada rumah, atau lebih tinggi daripada bangunan tinggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah tempat, gunung-gunung muncul dari gurun.",
+      "text_markdown": "Di sesetengah tempat, gunung-gunung muncul dari gurun.",
+      "tts": {
+        "text": "Di sesetengah tempat, gunung gunung muncul dari gurun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Angin dan pasir mengukir batu menjadi bentuk yang pelik selama bertahun-tahun.",
+      "text_markdown": "Angin dan pasir mengukir batu menjadi bentuk yang pelik selama bertahun-tahun.",
+      "tts": {
+        "text": "Angin dan pasir mengukir batu menjadi bentuk yang pelik selama bertahun tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Air ialah benda paling jarang dan paling berharga di gurun.",
+      "text_markdown": "Air ialah benda paling jarang dan paling berharga di gurun.",
+      "tts": {
+        "text": "Air ialah benda paling jarang dan paling berharga di gurun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan sungai hanya mengalir selepas ribut, dan kemudian ia kering.",
+      "text_markdown": "Kebanyakan sungai hanya mengalir selepas ribut, dan kemudian ia kering.",
+      "tts": {
+        "text": "Kebanyakan sungai hanya mengalir selepas ribut, dan kemudian ia kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi jauh di bawah pasir, air boleh tersimpan di dalam batu.",
+      "text_markdown": "Tetapi jauh di bawah pasir, air boleh tersimpan di dalam batu.",
+      "tts": {
+        "text": "Tetapi jauh di bawah pasir, air boleh tersimpan di dalam batu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah tempat, air tersembunyi ini naik ke permukaan dan membentuk kolam kecil yang hijau.",
+      "text_markdown": "Di sesetengah tempat, air tersembunyi ini naik ke permukaan dan membentuk kolam kecil yang hijau.",
+      "tts": {
+        "text": "Di sesetengah tempat, air tersembunyi ini naik ke permukaan dan membentuk kolam kecil yang hijau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini dipanggil waha.",
+      "text_markdown": "Ini dipanggil waha.",
+      "tts": {
+        "text": "Ini dipanggil waha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di oasis, pokok tumbuh, burung bernyanyi, dan orang singgah untuk minum.",
+      "text_markdown": "Di oasis, pokok tumbuh, burung bernyanyi, dan orang singgah untuk minum.",
+      "tts": {
+        "text": "Di oasis, pokok tumbuh, burung bernyanyi, dan orang singgah untuk minum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oasis boleh menjadi cincin kecil pokok palma di lautan pasir yang luas.",
+      "text_markdown": "Oasis boleh menjadi cincin kecil pokok palma di lautan pasir yang luas.",
+      "tts": {
+        "text": "Oasis boleh menjadi cincin kecil pokok palma di lautan pasir yang luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanpa titik-titik air ini, tiada siapa yang dapat melintasi gurun yang luas.",
+      "text_markdown": "Tanpa titik-titik air ini, tiada siapa yang dapat melintasi gurun yang luas.",
+      "tts": {
+        "text": "Tanpa titik titik air ini, tiada siapa yang dapat melintasi gurun yang luas.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tumbuhan",
+      "text_markdown": "Tumbuhan"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbuhan di gurun panas ialah pakar menunggu.",
+      "text_markdown": "Tumbuhan di gurun panas ialah pakar menunggu.",
+      "tts": {
+        "text": "Tumbuhan di gurun panas ialah pakar menunggu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka telah belajar untuk hidup dengan hampir tiada air.",
+      "text_markdown": "Mereka telah belajar untuk hidup dengan hampir tiada air.",
+      "tts": {
+        "text": "Mereka telah belajar untuk hidup dengan hampir tiada air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebahagiannya menumbuhkan akar panjang yang mencapai jauh ke dalam tanah.",
+      "text_markdown": "Sebahagiannya menumbuhkan akar panjang yang mencapai jauh ke dalam tanah.",
+      "tts": {
+        "text": "Sebahagiannya menumbuhkan akar panjang yang mencapai jauh ke dalam tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbuhan lain mempunyai akar yang lebar dan cetek yang merebak dekat permukaan.",
+      "text_markdown": "Tumbuhan lain mempunyai akar yang lebar dan cetek yang merebak dekat permukaan.",
+      "tts": {
+        "text": "Tumbuhan lain mempunyai akar yang lebar dan cetek yang merebak dekat permukaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas ribut hujan, akar-akar ini menyerap setiap titis air sebelum ia kering.",
+      "text_markdown": "Selepas ribut hujan, akar-akar ini menyerap setiap titis air sebelum ia kering.",
+      "tts": {
+        "text": "Selepas ribut hujan, akar akar ini menyerap setiap titis air sebelum ia kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak tumbuhan gurun menyimpan air di dalam badan mereka untuk musim kering yang panjang.",
+      "text_markdown": "Banyak tumbuhan gurun menyimpan air di dalam badan mereka untuk musim kering yang panjang.",
+      "tts": {
+        "text": "Banyak tumbuhan gurun menyimpan air di dalam badan mereka untuk musim kering yang panjang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Batang dan daun yang tebal boleh menyimpan air selama berbulan-bulan, atau malah bertahun-tahun.",
+      "text_markdown": "Batang dan daun yang tebal boleh menyimpan air selama berbulan-bulan, atau malah bertahun-tahun.",
+      "tts": {
+        "text": "Batang dan daun yang tebal boleh menyimpan air selama berbulan bulan, atau malah bertahun tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di gurun benua Amerika, terdapat tumbuhan yang dipanggil kaktus.",
+      "text_markdown": "Di gurun benua Amerika, terdapat tumbuhan yang dipanggil kaktus.",
+      "tts": {
+        "text": "Di gurun benua Amerika, terdapat tumbuhan yang dipanggil kaktus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktus mempunyai batang hijau tebal yang penuh dengan air, dan duri tajam menggantikan daun yang lembut.",
+      "text_markdown": "Kaktus mempunyai batang hijau tebal yang penuh dengan air, dan duri tajam menggantikan daun yang lembut.",
+      "tts": {
+        "text": "Kaktus mempunyai batang hijau tebal yang penuh dengan air, dan duri tajam menggantikan daun yang lembut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duri itu menghalang haiwan daripada memakan tumbuhan.",
+      "text_markdown": "Duri itu menghalang haiwan daripada memakan tumbuhan.",
+      "tts": {
+        "text": "Duri itu menghalang haiwan daripada memakan tumbuhan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duri itu juga memberikan sedikit teduhan daripada matahari yang terik.",
+      "text_markdown": "Duri itu juga memberikan sedikit teduhan daripada matahari yang terik.",
+      "tts": {
+        "text": "Duri itu juga memberikan sedikit teduhan daripada matahari yang terik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di gurun Afrika dan Asia, tumbuhan tebal lain melakukan tugas yang sama.",
+      "text_markdown": "Di gurun Afrika dan Asia, tumbuhan tebal lain melakukan tugas yang sama.",
+      "tts": {
+        "text": "Di gurun Afrika dan Asia, tumbuhan tebal lain melakukan tugas yang sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak tumbuhan gurun berwarna kelabu atau hijau pucat.",
+      "text_markdown": "Banyak tumbuhan gurun berwarna kelabu atau hijau pucat.",
+      "tts": {
+        "text": "Banyak tumbuhan gurun berwarna kelabu atau hijau pucat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Warna pucat memantulkan cahaya matahari.",
+      "text_markdown": "Warna pucat memantulkan cahaya matahari.",
+      "tts": {
+        "text": "Warna pucat memantulkan cahaya matahari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah tumbuhan menggugurkan daunnya apabila musim kering tiba.",
+      "text_markdown": "Sesetengah tumbuhan menggugurkan daunnya apabila musim kering tiba.",
+      "tts": {
+        "text": "Sesetengah tumbuhan menggugurkan daunnya apabila musim kering tiba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka kekal hidup sebagai ranting coklat yang gondol sehingga hujan berikutnya.",
+      "text_markdown": "Mereka kekal hidup sebagai ranting coklat yang gondol sehingga hujan berikutnya.",
+      "tts": {
+        "text": "Mereka kekal hidup sebagai ranting coklat yang gondol sehingga hujan berikutnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas hujan lebat, gurun boleh berubah dalam semalam.",
+      "text_markdown": "Selepas hujan lebat, gurun boleh berubah dalam semalam.",
+      "tts": {
+        "text": "Selepas hujan lebat, gurun boleh berubah dalam semalam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biji-biji kecil yang telah menunggu di dalam tanah selama bertahun-tahun pecah menjadi bunga.",
+      "text_markdown": "Biji-biji kecil yang telah menunggu di dalam tanah selama bertahun-tahun pecah menjadi bunga.",
+      "tts": {
+        "text": "Biji biji kecil yang telah menunggu di dalam tanah selama bertahun tahun pecah menjadi bunga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama beberapa minggu, sebahagian gurun diselimuti bunga merah, kuning, dan ungu.",
+      "text_markdown": "Selama beberapa minggu, sebahagian gurun diselimuti bunga merah, kuning, dan ungu.",
+      "tts": {
+        "text": "Selama beberapa minggu, sebahagian gurun diselimuti bunga merah, kuning, dan ungu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian bunga layu, biji jatuh, dan gurun menunggu sekali lagi.",
+      "text_markdown": "Kemudian bunga layu, biji jatuh, dan gurun menunggu sekali lagi.",
+      "tts": {
+        "text": "Kemudian bunga layu, biji jatuh, dan gurun menunggu sekali lagi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Haiwan",
+      "text_markdown": "Haiwan"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan gurun panas mempunyai banyak cara yang bijak untuk bertahan hidup.",
+      "text_markdown": "Haiwan gurun panas mempunyai banyak cara yang bijak untuk bertahan hidup.",
+      "tts": {
+        "text": "Haiwan gurun panas mempunyai banyak cara yang bijak untuk bertahan hidup.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakannya tidur sepanjang tengah hari yang panas.",
+      "text_markdown": "Kebanyakannya tidur sepanjang tengah hari yang panas.",
+      "tts": {
+        "text": "Kebanyakannya tidur sepanjang tengah hari yang panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka keluar pada waktu pagi yang sejuk, petang, dan malam.",
+      "text_markdown": "Mereka keluar pada waktu pagi yang sejuk, petang, dan malam.",
+      "tts": {
+        "text": "Mereka keluar pada waktu pagi yang sejuk, petang, dan malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak haiwan gurun menggali lubang di dalam pasir atau di bawah batu.",
+      "text_markdown": "Banyak haiwan gurun menggali lubang di dalam pasir atau di bawah batu.",
+      "tts": {
+        "text": "Banyak haiwan gurun menggali lubang di dalam pasir atau di bawah batu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lubang itu kekal sejuk apabila udara di luar membakar.",
+      "text_markdown": "Lubang itu kekal sejuk apabila udara di luar membakar.",
+      "tts": {
+        "text": "Lubang itu kekal sejuk apabila udara di luar membakar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tikus kecil boleh tidur sepanjang hari di dalam lubangnya dan tidak pernah merasai haba.",
+      "text_markdown": "Tikus kecil boleh tidur sepanjang hari di dalam lubangnya dan tidak pernah merasai haba.",
+      "tts": {
+        "text": "Tikus kecil boleh tidur sepanjang hari di dalam lubangnya dan tidak pernah merasai haba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cicak sangat biasa di gurun panas.",
+      "text_markdown": "Cicak sangat biasa di gurun panas.",
+      "tts": {
+        "text": "Cicak sangat biasa di gurun panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka duduk di atas batu yang suam pada matahari awal pagi.",
+      "text_markdown": "Mereka duduk di atas batu yang suam pada matahari awal pagi.",
+      "tts": {
+        "text": "Mereka duduk di atas batu yang suam pada matahari awal pagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila hari menjadi terlalu panas, mereka menyelinap ke tempat teduh atau di bawah batu.",
+      "text_markdown": "Apabila hari menjadi terlalu panas, mereka menyelinap ke tempat teduh atau di bawah batu.",
+      "tts": {
+        "text": "Apabila hari menjadi terlalu panas, mereka menyelinap ke tempat teduh atau di bawah batu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ular pun sering ditemui.",
+      "text_markdown": "Ular pun sering ditemui.",
+      "tts": {
+        "text": "Ular pun sering ditemui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka meluncur di atas pasir mencari haiwan kecil untuk dimakan.",
+      "text_markdown": "Mereka meluncur di atas pasir mencari haiwan kecil untuk dimakan.",
+      "tts": {
+        "text": "Mereka meluncur di atas pasir mencari haiwan kecil untuk dimakan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah ular mempunyai cara khas bergerak ke sisi merentasi pasir yang panas untuk mengangkat badan mereka daripada tanah.",
+      "text_markdown": "Sesetengah ular mempunyai cara khas bergerak ke sisi merentasi pasir yang panas untuk mengangkat badan mereka daripada tanah.",
+      "tts": {
+        "text": "Sesetengah ular mempunyai cara khas bergerak ke sisi merentasi pasir yang panas untuk mengangkat badan mereka daripada tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kalajengking memburu pada waktu malam, dengan ekor mereka diangkat tinggi.",
+      "text_markdown": "Kalajengking memburu pada waktu malam, dengan ekor mereka diangkat tinggi.",
+      "tts": {
+        "text": "Kalajengking memburu pada waktu malam, dengan ekor mereka diangkat tinggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Labah-labah dan kumbang juga tinggal di setiap bahagian gurun.",
+      "text_markdown": "Labah-labah dan kumbang juga tinggal di setiap bahagian gurun.",
+      "tts": {
+        "text": "Labah labah dan kumbang juga tinggal di setiap bahagian gurun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak kumbang gurun boleh hidup tanpa pernah meminum air.",
+      "text_markdown": "Banyak kumbang gurun boleh hidup tanpa pernah meminum air.",
+      "tts": {
+        "text": "Banyak kumbang gurun boleh hidup tanpa pernah meminum air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mendapat semua air yang mereka perlukan daripada makanan yang mereka makan.",
+      "text_markdown": "Mereka mendapat semua air yang mereka perlukan daripada makanan yang mereka makan.",
+      "tts": {
+        "text": "Mereka mendapat semua air yang mereka perlukan daripada makanan yang mereka makan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan terbesar di gurun Afrika dan Arab ialah unta.",
+      "text_markdown": "Haiwan terbesar di gurun Afrika dan Arab ialah unta.",
+      "tts": {
+        "text": "Haiwan terbesar di gurun Afrika dan Arab ialah unta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unta boleh meminum air dalam jumlah yang besar sekali gus, dan kemudian boleh bertahan banyak hari tanpa minum lagi.",
+      "text_markdown": "Unta boleh meminum air dalam jumlah yang besar sekali gus, dan kemudian boleh bertahan banyak hari tanpa minum lagi.",
+      "tts": {
+        "text": "Unta boleh meminum air dalam jumlah yang besar sekali gus, dan kemudian boleh bertahan banyak hari tanpa minum lagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kakinya yang lebar dan lembut menghalangnya daripada terbenam ke dalam pasir.",
+      "text_markdown": "Kakinya yang lebar dan lembut menghalangnya daripada terbenam ke dalam pasir.",
+      "tts": {
+        "text": "Kakinya yang lebar dan lembut menghalangnya daripada terbenam ke dalam pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di gurun Amerika Utara, musang dan kucing liar kecil memburu pada waktu malam.",
+      "text_markdown": "Di gurun Amerika Utara, musang dan kucing liar kecil memburu pada waktu malam.",
+      "tts": {
+        "text": "Di gurun Amerika Utara, musang dan kucing liar kecil memburu pada waktu malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Afrika, musang kecil dengan telinga yang sangat besar tinggal di dalam pasir.",
+      "text_markdown": "Di Afrika, musang kecil dengan telinga yang sangat besar tinggal di dalam pasir.",
+      "tts": {
+        "text": "Di Afrika, musang kecil dengan telinga yang sangat besar tinggal di dalam pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Telinga yang besar membantu mereka mendengar haiwan kecil yang bergerak di bawah tanah.",
+      "text_markdown": "Telinga yang besar membantu mereka mendengar haiwan kecil yang bergerak di bawah tanah.",
+      "tts": {
+        "text": "Telinga yang besar membantu mereka mendengar haiwan kecil yang bergerak di bawah tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Telinga yang besar juga membantu mereka melepaskan haba pada waktu malam yang sejuk.",
+      "text_markdown": "Telinga yang besar juga membantu mereka melepaskan haba pada waktu malam yang sejuk.",
+      "tts": {
+        "text": "Telinga yang besar juga membantu mereka melepaskan haba pada waktu malam yang sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tinggi atas, burung hering dan helang melayang di udara gurun yang hangat.",
+      "text_markdown": "Di tinggi atas, burung hering dan helang melayang di udara gurun yang hangat.",
+      "tts": {
+        "text": "Di tinggi atas, burung hering dan helang melayang di udara gurun yang hangat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengawasi sebarang pergerakan kecil di atas tanah.",
+      "text_markdown": "Mereka mengawasi sebarang pergerakan kecil di atas tanah.",
+      "tts": {
+        "text": "Mereka mengawasi sebarang pergerakan kecil di atas tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap haiwan di sini tahu cara menunggu kesejukan, cara mencari teduhan, dan cara menjadikan setiap teguk air bertahan.",
+      "text_markdown": "Setiap haiwan di sini tahu cara menunggu kesejukan, cara mencari teduhan, dan cara menjadikan setiap teguk air bertahan.",
+      "tts": {
+        "text": "Setiap haiwan di sini tahu cara menunggu kesejukan, cara mencari teduhan, dan cara menjadikan setiap teguk air bertahan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Penduduk",
+      "text_markdown": "Penduduk"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang telah tinggal di gurun panas selama ribuan tahun.",
+      "text_markdown": "Orang telah tinggal di gurun panas selama ribuan tahun.",
+      "tts": {
+        "text": "Orang telah tinggal di gurun panas selama ribuan tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka telah menemui cara mereka sendiri untuk hidup di tanah matahari dan pasir.",
+      "text_markdown": "Mereka telah menemui cara mereka sendiri untuk hidup di tanah matahari dan pasir.",
+      "tts": {
+        "text": "Mereka telah menemui cara mereka sendiri untuk hidup di tanah matahari dan pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di banyak gurun, keluarga berpindah dari satu tempat ke tempat lain bersama kawanan ternakan mereka.",
+      "text_markdown": "Di banyak gurun, keluarga berpindah dari satu tempat ke tempat lain bersama kawanan ternakan mereka.",
+      "tts": {
+        "text": "Di banyak gurun, keluarga berpindah dari satu tempat ke tempat lain bersama kawanan ternakan mereka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Sahara dan gurun Tanah Arab, orang memelihara kawanan unta, kambing, dan biri-biri.",
+      "text_markdown": "Di Sahara dan gurun Tanah Arab, orang memelihara kawanan unta, kambing, dan biri-biri.",
+      "tts": {
+        "text": "Di Sahara dan gurun Tanah Arab, orang memelihara kawanan unta, kambing, dan biri biri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan-haiwan ini boleh berjalan untuk masa yang lama antara sesi minum air.",
+      "text_markdown": "Haiwan-haiwan ini boleh berjalan untuk masa yang lama antara sesi minum air.",
+      "tts": {
+        "text": "Haiwan haiwan ini boleh berjalan untuk masa yang lama antara sesi minum air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang mengikut haiwan, dan haiwan membawa mereka ke makanan.",
+      "text_markdown": "Orang mengikut haiwan, dan haiwan membawa mereka ke makanan.",
+      "tts": {
+        "text": "Orang mengikut haiwan, dan haiwan membawa mereka ke makanan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khemah mereka diperbuat daripada kain yang ditenun daripada bulu haiwan mereka.",
+      "text_markdown": "Khemah mereka diperbuat daripada kain yang ditenun daripada bulu haiwan mereka.",
+      "tts": {
+        "text": "Khemah mereka diperbuat daripada kain yang ditenun daripada bulu haiwan mereka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Khemah boleh didirikan dalam sejam dan diturunkan dalam sejam.",
+      "text_markdown": "Khemah boleh didirikan dalam sejam dan diturunkan dalam sejam.",
+      "tts": {
+        "text": "Khemah boleh didirikan dalam sejam dan diturunkan dalam sejam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia menghalang matahari yang terik, dan membenarkan udara malam yang sejuk melalui.",
+      "text_markdown": "Ia menghalang matahari yang terik, dan membenarkan udara malam yang sejuk melalui.",
+      "tts": {
+        "text": "Ia menghalang matahari yang terik, dan membenarkan udara malam yang sejuk melalui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Penduduk gurun memakai pakaian yang longgar dan panjang.",
+      "text_markdown": "Penduduk gurun memakai pakaian yang longgar dan panjang.",
+      "tts": {
+        "text": "Penduduk gurun memakai pakaian yang longgar dan panjang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lengan panjang dan kepala bertutup menjaga badan tetap sejuk dan melindunginya daripada matahari.",
+      "text_markdown": "Lengan panjang dan kepala bertutup menjaga badan tetap sejuk dan melindunginya daripada matahari.",
+      "tts": {
+        "text": "Lengan panjang dan kepala bertutup menjaga badan tetap sejuk dan melindunginya daripada matahari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Corak kain yang terang membantu kawan melihat anda dari jauh.",
+      "text_markdown": "Corak kain yang terang membantu kawan melihat anda dari jauh.",
+      "tts": {
+        "text": "Corak kain yang terang membantu kawan melihat anda dari jauh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah penduduk gurun tinggal di bandar yang dibina di sekeliling oasis.",
+      "text_markdown": "Sesetengah penduduk gurun tinggal di bandar yang dibina di sekeliling oasis.",
+      "tts": {
+        "text": "Sesetengah penduduk gurun tinggal di bandar yang dibina di sekeliling oasis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka menanam pokok kurma, buah-buahan, dan bijirin di cincin hijau di sekeliling air.",
+      "text_markdown": "Mereka menanam pokok kurma, buah-buahan, dan bijirin di cincin hijau di sekeliling air.",
+      "tts": {
+        "text": "Mereka menanam pokok kurma, buah buahan, dan bijirin di cincin hijau di sekeliling air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka telah belajar menggali telaga yang dalam untuk mencari air tersembunyi di bawah pasir.",
+      "text_markdown": "Mereka telah belajar menggali telaga yang dalam untuk mencari air tersembunyi di bawah pasir.",
+      "tts": {
+        "text": "Mereka telah belajar menggali telaga yang dalam untuk mencari air tersembunyi di bawah pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pengembara dari jauh datang ke oasis untuk berehat dan mengisi beg air mereka.",
+      "text_markdown": "Pengembara dari jauh datang ke oasis untuk berehat dan mengisi beg air mereka.",
+      "tts": {
+        "text": "Pengembara dari jauh datang ke oasis untuk berehat dan mengisi beg air mereka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Penduduk gurun mengenali setiap bintang di langit malam.",
+      "text_markdown": "Penduduk gurun mengenali setiap bintang di langit malam.",
+      "tts": {
+        "text": "Penduduk gurun mengenali setiap bintang di langit malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka tahu nama setiap angin yang bertiup.",
+      "text_markdown": "Mereka tahu nama setiap angin yang bertiup.",
+      "tts": {
+        "text": "Mereka tahu nama setiap angin yang bertiup.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka boleh membaca jejak setiap haiwan di atas pasir.",
+      "text_markdown": "Mereka boleh membaca jejak setiap haiwan di atas pasir.",
+      "tts": {
+        "text": "Mereka boleh membaca jejak setiap haiwan di atas pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pengetahuan ini diwariskan daripada ibu bapa kepada anak-anak, tahun demi tahun.",
+      "text_markdown": "Pengetahuan ini diwariskan daripada ibu bapa kepada anak-anak, tahun demi tahun.",
+      "tts": {
+        "text": "Pengetahuan ini diwariskan daripada ibu bapa kepada anak anak, tahun demi tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Penduduk",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di setiap gurun yang luas, cara hidup ini mempunyai bahasa, lagu, dan ceritanya tersendiri.",
+      "text_markdown": "Di setiap gurun yang luas, cara hidup ini mempunyai bahasa, lagu, dan ceritanya tersendiri.",
+      "tts": {
+        "text": "Di setiap gurun yang luas, cara hidup ini mempunyai bahasa, lagu, dan ceritanya tersendiri.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gurun Hari Ini",
+      "text_markdown": "Gurun Hari Ini"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gurun panas ialah biom yang cantik dan mencabar.",
+      "text_markdown": "Gurun panas ialah biom yang cantik dan mencabar.",
+      "tts": {
+        "text": "Gurun panas ialah biom yang cantik dan mencabar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia meliputi sebahagian besar tanah di Bumi.",
+      "text_markdown": "Ia meliputi sebahagian besar tanah di Bumi.",
+      "tts": {
+        "text": "Ia meliputi sebahagian besar tanah di Bumi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matahari gurun yang kuat juga merupakan salah satu sumber tenaga bersih terbesar kita.",
+      "text_markdown": "Matahari gurun yang kuat juga merupakan salah satu sumber tenaga bersih terbesar kita.",
+      "tts": {
+        "text": "Matahari gurun yang kuat juga merupakan salah satu sumber tenaga bersih terbesar kita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ladang besar panel penangkap matahari sedang dibina di banyak gurun.",
+      "text_markdown": "Ladang besar panel penangkap matahari sedang dibina di banyak gurun.",
+      "tts": {
+        "text": "Ladang besar panel penangkap matahari sedang dibina di banyak gurun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia mengubah matahari gurun menjadi tenaga elektrik untuk bandar-bandar yang jauh.",
+      "text_markdown": "Ia mengubah matahari gurun menjadi tenaga elektrik untuk bandar-bandar yang jauh.",
+      "tts": {
+        "text": "Ia mengubah matahari gurun menjadi tenaga elektrik untuk bandar bandar yang jauh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi gurun menghadapi masalah di sesetengah tempat.",
+      "text_markdown": "Tetapi gurun menghadapi masalah di sesetengah tempat.",
+      "tts": {
+        "text": "Tetapi gurun menghadapi masalah di sesetengah tempat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah kawasan, gurun semakin berkembang, kerana orang telah menghabiskan air dan rumput di pinggirnya.",
+      "text_markdown": "Di sesetengah kawasan, gurun semakin berkembang, kerana orang telah menghabiskan air dan rumput di pinggirnya.",
+      "tts": {
+        "text": "Di sesetengah kawasan, gurun semakin berkembang, kerana orang telah menghabiskan air dan rumput di pinggirnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput mati, pokok hilang, dan pasir masuk.",
+      "text_markdown": "Rumput mati, pokok hilang, dan pasir masuk.",
+      "tts": {
+        "text": "Rumput mati, pokok hilang, dan pasir masuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tempat lain, bandar di pinggir gurun menggunakan terlalu banyak air tersembunyi di bawah tanah.",
+      "text_markdown": "Di tempat lain, bandar di pinggir gurun menggunakan terlalu banyak air tersembunyi di bawah tanah.",
+      "tts": {
+        "text": "Di tempat lain, bandar di pinggir gurun menggunakan terlalu banyak air tersembunyi di bawah tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila air dalam hilang, oasis juga kering.",
+      "text_markdown": "Apabila air dalam hilang, oasis juga kering.",
+      "tts": {
+        "text": "Apabila air dalam hilang, oasis juga kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak kumpulan di seluruh dunia sedang berusaha untuk menjaga gurun.",
+      "text_markdown": "Banyak kumpulan di seluruh dunia sedang berusaha untuk menjaga gurun.",
+      "tts": {
+        "text": "Banyak kumpulan di seluruh dunia sedang berusaha untuk menjaga gurun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka menanam baris pokok dan rumput untuk menahan pasir yang bergerak.",
+      "text_markdown": "Mereka menanam baris pokok dan rumput untuk menahan pasir yang bergerak.",
+      "tts": {
+        "text": "Mereka menanam baris pokok dan rumput untuk menahan pasir yang bergerak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka membantu penduduk yang tinggal di gurun untuk menggunakan air dengan bijak.",
+      "text_markdown": "Mereka membantu penduduk yang tinggal di gurun untuk menggunakan air dengan bijak.",
+      "tts": {
+        "text": "Mereka membantu penduduk yang tinggal di gurun untuk menggunakan air dengan bijak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengkaji gurun supaya kita boleh memahaminya dengan lebih baik.",
+      "text_markdown": "Mereka mengkaji gurun supaya kita boleh memahaminya dengan lebih baik.",
+      "tts": {
+        "text": "Mereka mengkaji gurun supaya kita boleh memahaminya dengan lebih baik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gurun yang sihat penuh dengan kehidupan yang anda tidak jangka.",
+      "text_markdown": "Gurun yang sihat penuh dengan kehidupan yang anda tidak jangka.",
+      "tts": {
+        "text": "Gurun yang sihat penuh dengan kehidupan yang anda tidak jangka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Gurun Hari Ini",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia berbaloi untuk kita jaga.",
+      "text_markdown": "Ia berbaloi untuk kita jaga.",
+      "tts": {
+        "text": "Ia berbaloi untuk kita jaga.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Penutup",
+      "text_markdown": "Penutup"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Begitulah keadaan gurun panas ini.",
+      "text_markdown": "Begitulah keadaan gurun panas ini.",
+      "tts": {
+        "text": "Begitulah keadaan gurun panas ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dunia yang kering dan disinari matahari, penuh dengan pasir, batu, dan kehidupan yang sabar.",
+      "text_markdown": "Dunia yang kering dan disinari matahari, penuh dengan pasir, batu, dan kehidupan yang sabar.",
+      "tts": {
+        "text": "Dunia yang kering dan disinari matahari, penuh dengan pasir, batu, dan kehidupan yang sabar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika anda pernah berdiri di salah satunya, diamlah seketika.",
+      "text_markdown": "Jika anda pernah berdiri di salah satunya, diamlah seketika.",
+      "tts": {
+        "text": "Jika anda pernah berdiri di salah satunya, diamlah seketika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dengarkan angin yang bergerak melintasi bukit pasir.",
+      "text_markdown": "Dengarkan angin yang bergerak melintasi bukit pasir.",
+      "tts": {
+        "text": "Dengarkan angin yang bergerak melintasi bukit pasir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rasakan kepanasan matahari dan kesejukan teduhan.",
+      "text_markdown": "Rasakan kepanasan matahari dan kesejukan teduhan.",
+      "tts": {
+        "text": "Rasakan kepanasan matahari dan kesejukan teduhan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anda akan mendengar degupan jantung biom di sekeliling anda.",
+      "text_markdown": "Anda akan mendengar degupan jantung biom di sekeliling anda.",
+      "tts": {
+        "text": "Anda akan mendengar degupan jantung biom di sekeliling anda.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

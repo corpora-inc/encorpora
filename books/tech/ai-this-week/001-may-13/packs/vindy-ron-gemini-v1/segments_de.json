@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "de",
+  "total_segments": 62,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Willkommen bei AI This Week. Ich bin Vindy.",
+      "text_markdown": "Willkommen bei AI This Week. Ich bin Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Willkommen bei AI This Week. Ich bin Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bei mir ist wie immer Ron.",
+      "text_markdown": "Bei mir ist wie immer Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bei mir ist wie immer Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Schön, hier zu sein.",
+      "text_markdown": "Schön, hier zu sein.",
+      "title": "",
+      "tts": {
+        "text": "Schön, hier zu sein.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Heute ist Mittwoch, der 13. Mai 2026. Gleich: die Modelle, die diese Woche ausgeliefert wurden. Die Bestenlisten und warum Sie einigen davon nicht mehr vertrauen sollten. Unser Konzept der Woche. Und das große Ganze – die USA haben gerade einen neuen Vorsitzenden der Federal Reserve bekommen, und das ist für KI wichtiger, als Sie vielleicht denken.",
+      "text_markdown": "Heute ist Mittwoch, der 13. Mai 2026. Gleich: die Modelle, die diese Woche ausgeliefert wurden. Die Bestenlisten und warum Sie einigen davon nicht mehr vertrauen sollten. Unser Konzept der Woche. Und das große Ganze – die USA haben gerade einen neuen Vorsitzenden der Federal Reserve bekommen, und das ist für KI wichtiger, als Sie vielleicht denken.",
+      "title": "",
+      "tts": {
+        "text": "Heute ist Mittwoch, der dreizehnte Mai, zweitausendsechsundzwanzig. Gleich: die Modelle, die diese Woche ausgeliefert wurden. Die Bestenlisten und warum Sie einigen davon nicht mehr vertrauen sollten. Unser Konzept der Woche. Und das große Ganze – die U.S.A. haben gerade einen neuen Vorsitzenden der Federal Reserve bekommen, und das ist für K.I. wichtiger, als Sie vielleicht denken.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, was ist die größte Modell-Nachricht dieser Woche?",
+      "text_markdown": "Ron, was ist die größte Modell-Nachricht dieser Woche?",
+      "title": "",
+      "tts": {
+        "text": "Ron, was ist die größte Modell-Nachricht dieser Woche?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Das Standard-Gehirn in ChatGPT hat sich geändert. OpenAI hat letzte Woche, am Dienstag, dem 5. Mai, ein neues Modell namens GPT-5.5 Instant für die kostenlose Stufe eingeführt. Wenn eine kostenlose ChatGPT-Antwort kürzer oder weniger voller Emojis wirkte, ist das der Grund.",
+      "text_markdown": "Das Standard-Gehirn in ChatGPT hat sich geändert. OpenAI hat letzte Woche, am Dienstag, dem 5. Mai, ein neues Modell namens GPT-5.5 Instant für die kostenlose Stufe eingeführt. Wenn eine kostenlose ChatGPT-Antwort kürzer oder weniger voller Emojis wirkte, ist das der Grund.",
+      "title": "",
+      "tts": {
+        "text": "Das Standard-Gehirn in ChatGPT hat sich geändert. OpenAI hat letzte Woche, am Dienstag, dem fünften Mai, ein neues Modell namens G.P.T. fünf Punkt fünf Instant für die kostenlose Stufe eingeführt. Wenn eine kostenlose ChatGPT-Antwort kürzer oder weniger voller Emojis wirkte, ist das der Grund.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kürzer wie?",
+      "text_markdown": "Kürzer wie?",
+      "title": "",
+      "tts": {
+        "text": "Kürzer wie?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "OpenAI sagt, dass der neue Standard ungefähr 30 % weniger Wörter und 30 % weniger Zeilen schreibt als das Modell, das er ersetzt hat. Sie behaupten auch einen Rückgang von 50 % bei halluzinierten Behauptungen bei den schwierigsten Prompts. Dinge wie medizinische Fragen, rechtliche Fragen und Finanzfragen.",
+      "text_markdown": "OpenAI sagt, dass der neue Standard ungefähr 30 % weniger Wörter und 30 % weniger Zeilen schreibt als das Modell, das er ersetzt hat. Sie behaupten auch einen Rückgang von 50 % bei halluzinierten Behauptungen bei den schwierigsten Prompts. Dinge wie medizinische Fragen, rechtliche Fragen und Finanzfragen.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI sagt, dass der neue Standard ungefähr dreißig Prozent weniger Wörter und dreißig Prozent weniger Zeilen schreibt als das Modell, das er ersetzt hat. Sie behaupten auch einen Rückgang von fünfzig Prozent bei halluzinierten Behauptungen bei den schwierigsten Prompts. Dinge wie medizinische Fragen, rechtliche Fragen und Finanzfragen.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hat jemand außerhalb von OpenAI diese Zahlen überprüft?",
+      "text_markdown": "Hat jemand außerhalb von OpenAI diese Zahlen überprüft?",
+      "title": "",
+      "tts": {
+        "text": "Hat jemand außerhalb von OpenAI diese Zahlen überprüft?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nicht in großem Maßstab. Die unabhängigen Benchmark-Experten, wie Artificial Analysis, haben das neue Modell an der Spitze ihres Gesamtintelligenzindex. Aber Halluzinationsbehauptungen sind langsam zu überprüfen. Diese tauchen tendenziell über Wochen auf, wenn die Leute das Modell tatsächlich nutzen.",
+      "text_markdown": "Nicht in großem Maßstab. Die unabhängigen Benchmark-Experten, wie Artificial Analysis, haben das neue Modell an der Spitze ihres Gesamtintelligenzindex. Aber Halluzinationsbehauptungen sind langsam zu überprüfen. Diese tauchen tendenziell über Wochen auf, wenn die Leute das Modell tatsächlich nutzen.",
+      "title": "",
+      "tts": {
+        "text": "Nicht in großem Maßstab. Die unabhängigen Benchmark-Experten, wie Artificial Analysis, haben das neue Modell an der Spitze ihres Gesamtintelligenzindex. Aber Halluzinationsbehauptungen sind langsam zu überprüfen. Diese tauchen tendenziell über Wochen auf, wenn die Leute das Modell tatsächlich nutzen.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Und auf der Open-Weights-Seite?",
+      "text_markdown": "Und auf der Open-Weights-Seite?",
+      "title": "",
+      "tts": {
+        "text": "Und auf der Open-Weights-Seite?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zwei große Dinge. Moonshot, das chinesische Labor hinter dem Kimi-Modell, hat letzte Woche, am 7. Mai, 2 Milliarden Dollar bei einer Bewertung von 20 Milliarden Dollar eingesammelt. Und ihr neuestes Modell, Kimi K 2.6, hat gerade den ersten Platz auf OpenRouter für das Token-Volumen belegt.",
+      "text_markdown": "Zwei große Dinge. Moonshot, das chinesische Labor hinter dem Kimi-Modell, hat letzte Woche, am 7. Mai, 2 Milliarden Dollar bei einer Bewertung von 20 Milliarden Dollar eingesammelt. Und ihr neuestes Modell, Kimi K 2.6, hat gerade den ersten Platz auf OpenRouter für das Token-Volumen belegt.",
+      "title": "",
+      "tts": {
+        "text": "Zwei große Dinge. Moonshot, das chinesische Labor hinter dem Kimi-Modell, hat letzte Woche, am siebten Mai, zwei Milliarden Dollar bei einer Bewertung von zwanzig Milliarden Dollar eingesammelt. Und ihr neuestes Modell, Kimi K zwei Punkt sechs, hat gerade den ersten Platz auf OpenRouter für das Token-Volumen belegt.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Der erste Platz? Insgesamt?",
+      "text_markdown": "Der erste Platz? Insgesamt?",
+      "title": "",
+      "tts": {
+        "text": "Der erste Platz? Insgesamt?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Insgesamt. Das ist ein chinesisches Open-Weights-Modell auf Platz eins eines großen kommerziellen Routers. Vor sechs Monaten wäre das undenkbar gewesen.",
+      "text_markdown": "Insgesamt. Das ist ein chinesisches Open-Weights-Modell auf Platz eins eines großen kommerziellen Routers. Vor sechs Monaten wäre das undenkbar gewesen.",
+      "title": "",
+      "tts": {
+        "text": "Insgesamt. Das ist ein chinesisches Open-Weights-Modell auf Platz eins eines großen kommerziellen Routers. Vor sechs Monaten wäre das undenkbar gewesen.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Gibt es sonst noch etwas, das erwähnenswert ist?",
+      "text_markdown": "Gibt es sonst noch etwas, das erwähnenswert ist?",
+      "title": "",
+      "tts": {
+        "text": "Gibt es sonst noch etwas, das erwähnenswert ist?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral, das französische Labor, hat Medium 3.5 bereits Ende April ausgeliefert. Sie führen die alte Trennung zwischen einem Chat-Modell, einem Reasoning-Modell und einem Coding-Modell in einem Produkt zusammen. Derselbe Trend, den OpenAI mit der GPT-5-Familie begonnen hat. Die gesamte Branche bewegt sich in diese Richtung.",
+      "text_markdown": "Mistral, das französische Labor, hat Medium 3.5 bereits Ende April ausgeliefert. Sie führen die alte Trennung zwischen einem Chat-Modell, einem Reasoning-Modell und einem Coding-Modell in einem Produkt zusammen. Derselbe Trend, den OpenAI mit der GPT-5-Familie begonnen hat. Die gesamte Branche bewegt sich in diese Richtung.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, das französische Labor, hat Medium drei Punkt fünf bereits Ende April ausgeliefert. Sie führen die alte Trennung zwischen einem Chat-Modell, einem Reasoning-Modell und einem Coding-Modell in einem Produkt zusammen. Derselbe Trend, den OpenAI mit der G.P.T. fünf Familie begonnen hat. Die gesamte Branche bewegt sich in diese Richtung.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Und was kommt als Nächstes?",
+      "text_markdown": "Und was kommt als Nächstes?",
+      "title": "",
+      "tts": {
+        "text": "Und was kommt als Nächstes?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Google I/O ist am Dienstag. Alle erwarten ein neues Gemini, und es gibt glaubwürdige Gerüchte über ein Videogenerierungsmodell namens Gemini Omni. OpenAI hat GPT-5.6 im Test. Anthropic hat ein Modell namens Mythos in einer privaten Vorschau. Nächste Woche werden wir viel mehr wissen.",
+      "text_markdown": "Google I/O ist am Dienstag. Alle erwarten ein neues Gemini, und es gibt glaubwürdige Gerüchte über ein Videogenerierungsmodell namens Gemini Omni. OpenAI hat GPT-5.6 im Test. Anthropic hat ein Modell namens Mythos in einer privaten Vorschau. Nächste Woche werden wir viel mehr wissen.",
+      "title": "",
+      "tts": {
+        "text": "Google I O ist am Dienstag. Alle erwarten ein neues Gemini, und es gibt glaubwürdige Gerüchte über ein Videogenerierungsmodell namens Gemini Omni. OpenAI hat G.P.T. fünf Punkt sechs im Test. Anthropic hat ein Modell namens Mythos in einer privaten Vorschau. Nächste Woche werden wir viel mehr wissen.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Okay, jetzt kommt der Bestenlistenüberblick.",
+      "text_markdown": "Okay, jetzt kommt der Bestenlistenüberblick.",
+      "title": "",
+      "tts": {
+        "text": "Okay, jetzt kommt der Bestenlistenüberblick.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, was bewegt sich diese Woche auf den Bestenlisten?",
+      "text_markdown": "Ron, was bewegt sich diese Woche auf den Bestenlisten?",
+      "title": "",
+      "tts": {
+        "text": "Ron, was bewegt sich diese Woche auf den Bestenlisten?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Die wahre Geschichte dieser Woche sind nicht die Ergebnisse. Es sind die Ergebnisse, denen Sie nicht mehr vertrauen sollten.",
+      "text_markdown": "Die wahre Geschichte dieser Woche sind nicht die Ergebnisse. Es sind die Ergebnisse, denen Sie nicht mehr vertrauen sollten.",
+      "title": "",
+      "tts": {
+        "text": "Die wahre Geschichte dieser Woche sind nicht die Ergebnisse. Es sind die Ergebnisse, denen Sie nicht mehr vertrauen sollten.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Erzählen Sie uns etwas mehr darüber, Ron.",
+      "text_markdown": "Erzählen Sie uns etwas mehr darüber, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Erzählen Sie uns etwas mehr darüber, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Eine Gruppe in Berkeley veröffentlichte ein Paper. Sie bauten einen automatisierten Scanner, der bei jedem wichtigen KI-Agenten-Benchmark nahezu perfekt abschnitt. Ohne tatsächlich eine einzige Aufgabe zu lösen. Sie nutzten die Art und Weise aus, wie die Benchmarks ihre eigenen Antworten überprüfen.",
+      "text_markdown": "Eine Gruppe in Berkeley veröffentlichte ein Paper. Sie bauten einen automatisierten Scanner, der bei jedem wichtigen KI-Agenten-Benchmark nahezu perfekt abschnitt. Ohne tatsächlich eine einzige Aufgabe zu lösen. Sie nutzten die Art und Weise aus, wie die Benchmarks ihre eigenen Antworten überprüfen.",
+      "title": "",
+      "tts": {
+        "text": "Eine Gruppe in Berkeley veröffentlichte ein Paper. Sie bauten einen automatisierten Scanner, der bei jedem wichtigen KI-Agenten-Benchmark nahezu perfekt abschnitt. Ohne tatsächlich eine einzige Aufgabe zu lösen. Sie nutzten die Art und Weise aus, wie die Benchmarks ihre eigenen Antworten überprüfen.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sie haben geschummelt, und die Benchmarks haben es nicht bemerkt.",
+      "text_markdown": "Sie haben geschummelt, und die Benchmarks haben es nicht bemerkt.",
+      "title": "",
+      "tts": {
+        "text": "Sie haben geschummelt, und die Benchmarks haben es nicht bemerkt.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Richtig. Und in derselben Woche gab OpenAI bekannt, dass sie ihre Evaluierungen auf SWE bench Verified einstellen. Das ist ein Coding-Benchmark, den sie ständig zitierten. Sie haben ihn eingestellt, weil sich herausstellte, dass mehr als die Hälfte der schwierigen Aufgaben fehlerhafte Tests hatten.",
+      "text_markdown": "Richtig. Und in derselben Woche gab OpenAI bekannt, dass sie ihre Evaluierungen auf SWE bench Verified einstellen. Das ist ein Coding-Benchmark, den sie ständig zitierten. Sie haben ihn eingestellt, weil sich herausstellte, dass mehr als die Hälfte der schwierigen Aufgaben fehlerhafte Tests hatten.",
+      "title": "",
+      "tts": {
+        "text": "Richtig. Und in derselben Woche gab OpenAI bekannt, dass sie ihre Evaluierungen auf SWE bench Verified einstellen. Das ist ein Coding-Benchmark, den sie ständig zitierten. Sie haben ihn eingestellt, weil sich herausstellte, dass mehr als die Hälfte der schwierigen Aufgaben fehlerhafte Tests hatten.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Also sind viele der Zahlen, die wir im letzten Jahr gehört haben…",
+      "text_markdown": "Also sind viele der Zahlen, die wir im letzten Jahr gehört haben…",
+      "title": "",
+      "tts": {
+        "text": "Also sind viele der Zahlen, die wir im letzten Jahr gehört haben…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zumindest teilweise aufgebläht. Nicht jedes Modell. Nicht jeder Benchmark. Aber das Feld baut sein Maßband in der Öffentlichkeit neu auf. Neuere Evaluierungen wie SWE-bench Pro und ein Projekt namens SWE-rebench versuchen, dies zu beheben, indem sie den Testcode privat halten.",
+      "text_markdown": "Zumindest teilweise aufgebläht. Nicht jedes Modell. Nicht jeder Benchmark. Aber das Feld baut sein Maßband in der Öffentlichkeit neu auf. Neuere Evaluierungen wie SWE-bench Pro und ein Projekt namens SWE-rebench versuchen, dies zu beheben, indem sie den Testcode privat halten.",
+      "title": "",
+      "tts": {
+        "text": "Zumindest teilweise aufgebläht. Nicht jedes Modell. Nicht jeder Benchmark. Aber das Feld baut sein Maßband in der Öffentlichkeit neu auf. Neuere Evaluierungen wie S.W.E. Bench Pro und ein Projekt namens S.W.E. Rebench versuchen, dies zu beheben, indem sie den Testcode privat halten.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bewegt sich tatsächlich etwas sauber nach oben?",
+      "text_markdown": "Bewegt sich tatsächlich etwas sauber nach oben?",
+      "title": "",
+      "tts": {
+        "text": "Bewegt sich tatsächlich etwas sauber nach oben?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zwei Dinge, auf saubereren Bestenlisten. Mitte April wurde Anthropic's Claude Opus 4.7 das erste Modell, das auf der LM Arena Coding-Bestenliste sauber eine Elo-Zahl von 1500 überschritt. Opus 4.6 hatte 1500 einige Wochen zuvor erreicht. Stand dieser Woche ist Opus 4.7 immer noch an der Spitze, bei etwa 1569. Anthropic hat auch ein separates Modell namens Mythos in einer privaten Partner-Vorschau, das 17 der 18 von Anthropic gemessenen Agenten-Benchmarks anführt.",
+      "text_markdown": "Zwei Dinge, auf saubereren Bestenlisten. Mitte April wurde Anthropic's Claude Opus 4.7 das erste Modell, das auf der LM Arena Coding-Bestenliste sauber eine Elo-Zahl von 1500 überschritt. Opus 4.6 hatte 1500 einige Wochen zuvor erreicht. Stand dieser Woche ist Opus 4.7 immer noch an der Spitze, bei etwa 1569. Anthropic hat auch ein separates Modell namens Mythos in einer privaten Partner-Vorschau, das 17 der 18 von Anthropic gemessenen Agenten-Benchmarks anführt.",
+      "title": "",
+      "tts": {
+        "text": "Zwei Dinge, auf saubereren Bestenlisten. Mitte April wurde Anthropic's Claude Opus vier Punkt sieben das erste Modell, das auf der L.M. Arena Coding-Bestenliste sauber eine Elo-Zahl von fünfzehnhundert überschritt. Opus vier Punkt sechs hatte fünfzehnhundert einige Wochen zuvor erreicht. Stand dieser Woche ist Opus vier Punkt sieben immer noch an der Spitze, bei etwa fünfzehnhundertneunundsechzig. Anthropic hat auch ein separates Modell namens Mythos in einer privaten Partner-Vorschau, das siebzehn der achtzehn von Anthropic gemessenen Agenten-Benchmarks anführt.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ein Modell, das die Öffentlichkeit nicht nutzen kann, steht an der Spitze der Bestenlisten.",
+      "text_markdown": "Ein Modell, das die Öffentlichkeit nicht nutzen kann, steht an der Spitze der Bestenlisten.",
+      "title": "",
+      "tts": {
+        "text": "Ein Modell, das die Öffentlichkeit nicht nutzen kann, steht an der Spitze der Bestenlisten.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dort stehen wir. Der andere große Trend ist die Kluft zwischen offen und geschlossen. Sie ist so gering wie nie zuvor. DeepSeek V4 Pro und Kimi K 2.6 sind in Schlagdistanz zu GPT-5.5 auf dem Cross-Evaluation-Intelligenzindex. Diese Kluft war früher riesig. Jetzt ist sie klein.",
+      "text_markdown": "Dort stehen wir. Der andere große Trend ist die Kluft zwischen offen und geschlossen. Sie ist so gering wie nie zuvor. DeepSeek V4 Pro und Kimi K 2.6 sind in Schlagdistanz zu GPT-5.5 auf dem Cross-Evaluation-Intelligenzindex. Diese Kluft war früher riesig. Jetzt ist sie klein.",
+      "title": "",
+      "tts": {
+        "text": "Dort stehen wir. Der andere große Trend ist die Kluft zwischen offen und geschlossen. Sie ist so gering wie nie zuvor. DeepSeek V vier Pro und Kimi K zwei Komma sechs sind in Schlagdistanz zu GPT fünf Komma fünf auf dem Cross-Evaluation-Intelligenzindex. Diese Kluft war früher riesig. Jetzt ist sie klein.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Okay, kommen wir zum Konzept der Woche.",
+      "text_markdown": "Okay, kommen wir zum Konzept der Woche.",
+      "title": "",
+      "tts": {
+        "text": "Okay, kommen wir zum Konzept der Woche.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, das Konzept dieser Woche ist Mixture of Experts. Warum konzentrieren wir uns auf Mixture of Experts?",
+      "text_markdown": "Ron, das Konzept dieser Woche ist Mixture of Experts. Warum konzentrieren wir uns auf Mixture of Experts?",
+      "title": "",
+      "tts": {
+        "text": "Ron, das Konzept dieser Woche ist Mixture of Experts. Warum konzentrieren wir uns auf Mixture of Experts?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Weil das Open-Weights-Modell, über das wir gerade gesprochen haben, Kimi K 2.6, insgesamt 1 Billion Parameter hat. Aber nur 32 Milliarden dieser Parameter laufen zu einem bestimmten Zeitpunkt. Das ist Mixture of Experts.",
+      "text_markdown": "Weil das Open-Weights-Modell, über das wir gerade gesprochen haben, Kimi K 2.6, insgesamt 1 Billion Parameter hat. Aber nur 32 Milliarden dieser Parameter laufen zu einem bestimmten Zeitpunkt. Das ist Mixture of Experts.",
+      "title": "",
+      "tts": {
+        "text": "Weil das Open-Weights-Modell, über das wir gerade gesprochen haben, Kimi K zwei Komma sechs, insgesamt eine Billion Parameter hat. Aber nur zweiunddreißig Milliarden dieser Parameter laufen zu einem bestimmten Zeitpunkt. Das ist Mixture of Experts.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Erklären Sie es uns für die Zuhörer.",
+      "text_markdown": "Erklären Sie es uns für die Zuhörer.",
+      "title": "",
+      "tts": {
+        "text": "Erklären Sie es uns für die Zuhörer.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ein reguläres KI-Modell ist wie ein einziges riesiges Gehirn. Jedes Wort, das es generiert, nutzt jeden Teil des Gehirns. Ein Mixture-of-Experts-Modell ist eher wie ein Gebäude voller Spezialisten. Mit einer Empfangsdame an der Tür. Für jedes Wort wählt die Empfangsdame zwei oder drei Spezialisten zurate, und der Rest des Gebäudes bleibt still.",
+      "text_markdown": "Ein reguläres KI-Modell ist wie ein einziges riesiges Gehirn. Jedes Wort, das es generiert, nutzt jeden Teil des Gehirns. Ein Mixture-of-Experts-Modell ist eher wie ein Gebäude voller Spezialisten. Mit einer Empfangsdame an der Tür. Für jedes Wort wählt die Empfangsdame zwei oder drei Spezialisten zurate, und der Rest des Gebäudes bleibt still.",
+      "title": "",
+      "tts": {
+        "text": "Ein reguläres KI-Modell ist wie ein einziges riesiges Gehirn. Jedes Wort, das es generiert, nutzt jeden Teil des Gehirns. Ein Mixture-of-Experts-Modell ist eher wie ein Gebäude voller Spezialisten. Mit einer Empfangsdame an der Tür. Für jedes Wort wählt die Empfangsdame zwei oder drei Spezialisten zurate, und der Rest des Gebäudes bleibt still.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Das Modell ist also auf dem Papier riesig, aber günstig im Betrieb.",
+      "text_markdown": "Das Modell ist also auf dem Papier riesig, aber günstig im Betrieb.",
+      "title": "",
+      "tts": {
+        "text": "Das Modell ist also auf dem Papier riesig, aber günstig im Betrieb.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Genau. 1 Billion Parameter Kapazität. Aber nur 32 Milliarden Parameter Rechenleistung pro Wort. Das ist der Trick. Die Empfangsdame ist ein winziges Stück Code, ein sogenannter Router. Die Spezialisten sind Subnetzwerke, die Experten genannt werden. Das Modell trainiert den Router und die Experten zusammen, Ende-zu-Ende.",
+      "text_markdown": "Genau. 1 Billion Parameter Kapazität. Aber nur 32 Milliarden Parameter Rechenleistung pro Wort. Das ist der Trick. Die Empfangsdame ist ein winziges Stück Code, ein sogenannter Router. Die Spezialisten sind Subnetzwerke, die Experten genannt werden. Das Modell trainiert den Router und die Experten zusammen, Ende-zu-Ende.",
+      "title": "",
+      "tts": {
+        "text": "Genau. Eine Billion Parameter Kapazität. Aber nur zweiunddreißig Milliarden Parameter Rechenleistung pro Wort. Das ist der Trick. Die Empfangsdame ist ein winziges Stück Code, ein sogenannter Router. Die Spezialisten sind Subnetzwerke, die Experten genannt werden. Das Modell trainiert den Router und die Experten zusammen, Ende-zu-Ende.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Machen das alle großen Frontier-Modelle?",
+      "text_markdown": "Machen das alle großen Frontier-Modelle?",
+      "title": "",
+      "tts": {
+        "text": "Machen das alle großen Frontier-Modelle?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Die meisten davon, ja. Obwohl die Labs es nicht immer bestätigen. GPT-4 war ein Mixture-of-Experts-Modell. Das Flaggschiff von DeepSeek ist ein Mixture-of-Experts-Modell. Mistral liefert seit 2023 Mixture-of-Experts-Modelle aus. Die neue Welle aus China hat dieses Design an die Grenzen getrieben.",
+      "text_markdown": "Die meisten davon, ja. Obwohl die Labs es nicht immer bestätigen. GPT-4 war ein Mixture-of-Experts-Modell. Das Flaggschiff von DeepSeek ist ein Mixture-of-Experts-Modell. Mistral liefert seit 2023 Mixture-of-Experts-Modelle aus. Die neue Welle aus China hat dieses Design an die Grenzen getrieben.",
+      "title": "",
+      "tts": {
+        "text": "Die meisten davon, ja. Obwohl die Labs es nicht immer bestätigen. GPT vier war ein Mixture-of-Experts-Modell. Das Flaggschiff von DeepSeek ist ein Mixture-of-Experts-Modell. Mistral liefert seit zweitausenddreiundzwanzig Mixture-of-Experts-Modelle aus. Die neue Welle aus China hat dieses Design an die Grenzen getrieben.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Warum ist das wichtig für jemanden, der nur ChatGPT nutzt?",
+      "text_markdown": "Warum ist das wichtig für jemanden, der nur ChatGPT nutzt?",
+      "title": "",
+      "tts": {
+        "text": "Warum ist das wichtig für jemanden, der nur ChatGPT nutzt?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Zwei Gründe. Erstens. Es ist der Hauptgrund, warum ein Open-Weights-Lab in China mit Frontier-Class-Qualität zu einem Bruchteil des Budgets arbeiten kann. Zweitens. Es ist der Hauptgrund, warum ein einzelner API-Aufruf Cents kostet, nicht Dollars. Wenn Sie sehen, dass die Preise fallen und die Qualität hoch bleibt, ist Mixture of Experts meist der Grund dafür.",
+      "text_markdown": "Zwei Gründe. Erstens. Es ist der Hauptgrund, warum ein Open-Weights-Lab in China mit Frontier-Class-Qualität zu einem Bruchteil des Budgets arbeiten kann. Zweitens. Es ist der Hauptgrund, warum ein einzelner API-Aufruf Cents kostet, nicht Dollars. Wenn Sie sehen, dass die Preise fallen und die Qualität hoch bleibt, ist Mixture of Experts meist der Grund dafür.",
+      "title": "",
+      "tts": {
+        "text": "Zwei Gründe. Erstens. Es ist der Hauptgrund, warum ein Open-Weights-Lab in China mit Frontier-Class-Qualität zu einem Bruchteil des Budgets arbeiten kann. Zweitens. Es ist der Hauptgrund, warum ein einzelner API-Aufruf Cents kostet, nicht Dollars. Wenn Sie sehen, dass die Preise fallen und die Qualität hoch bleibt, ist Mixture of Experts meist der Grund dafür.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mixture of Experts. Router. Experts. Sparse Activation. Drei Begriffe, die Sie mitnehmen sollten. Nun zurück zum größeren Bild.",
+      "text_markdown": "Mixture of Experts. Router. Experts. Sparse Activation. Drei Begriffe, die Sie mitnehmen sollten. Nun zurück zum größeren Bild.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of Experts. Router. Experts. Sparse Activation. Drei Begriffe, die Sie mitnehmen sollten. Nun zurück zum größeren Bild.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, die große Geschichte außerhalb unserer Welt diese Woche ist die Federal Reserve.",
+      "text_markdown": "Ron, die große Geschichte außerhalb unserer Welt diese Woche ist die Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, die große Geschichte außerhalb unserer Welt diese Woche ist die Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Heute hat der US-Senat Kevin Warsh als nächsten Vorsitzenden der Federal Reserve bestätigt. Die Abstimmung war 54 zu 45. Die knappste Abstimmung für einen Fed-Vorsitzenden in der modernen amerikanischen Geschichte. Nur ein Demokrat wechselte die Seiten.",
+      "text_markdown": "Heute hat der US-Senat Kevin Warsh als nächsten Vorsitzenden der Federal Reserve bestätigt. Die Abstimmung war 54 zu 45. Die knappste Abstimmung für einen Fed-Vorsitzenden in der modernen amerikanischen Geschichte. Nur ein Demokrat wechselte die Seiten.",
+      "title": "",
+      "tts": {
+        "text": "Heute hat der U.S.-Senat Kevin Warsh als nächsten Vorsitzenden der Federal Reserve bestätigt. Die Abstimmung war vierundfünfzig zu fünfundvierzig. Die knappste Abstimmung für einen Fed-Vorsitzenden in der modernen amerikanischen Geschichte. Nur ein Demokrat wechselte die Seiten.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Warum ist das wichtig für KI?",
+      "text_markdown": "Warum ist das wichtig für KI?",
+      "title": "",
+      "tts": {
+        "text": "Warum ist das wichtig für KI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Weil der KI-Ausbau im Moment durch zwei Dinge begrenzt ist. Elektrizität und die Kapitalkosten. Die Fed legt die Kapitalkosten fest. Und der neue Vorsitzende hat öffentlich gesagt, dass er die Zinsen schneller senken will, als es sein Vorgänger getan hätte.",
+      "text_markdown": "Weil der KI-Ausbau im Moment durch zwei Dinge begrenzt ist. Elektrizität und die Kapitalkosten. Die Fed legt die Kapitalkosten fest. Und der neue Vorsitzende hat öffentlich gesagt, dass er die Zinsen schneller senken will, als es sein Vorgänger getan hätte.",
+      "title": "",
+      "tts": {
+        "text": "Weil der KI-Ausbau im Moment durch zwei Dinge begrenzt ist. Elektrizität und die Kapitalkosten. Die Fed legt die Kapitalkosten fest. Und der neue Vorsitzende hat öffentlich gesagt, dass er die Zinsen schneller senken will, als es sein Vorgänger getan hätte.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Schnellere Zinssenkungen machen KI-Investitionen billiger.",
+      "text_markdown": "Schnellere Zinssenkungen machen KI-Investitionen billiger.",
+      "title": "",
+      "tts": {
+        "text": "Schnellere Zinssenkungen machen KI-Investitionen billiger.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ja. Die Hyperscaler – Microsoft, Google, Amazon, Meta – sind auf dem besten Weg, dieses Jahr rund 700 Milliarden Dollar für Investitionsausgaben auszugeben. Das meiste davon sind GPUs und Rechenzentren. Ein niedrigerer Diskontsatz lässt diese mehrjährigen Ausbauten zu höheren Bewertungen rentabel erscheinen.",
+      "text_markdown": "Ja. Die Hyperscaler – Microsoft, Google, Amazon, Meta – sind auf dem besten Weg, dieses Jahr rund 700 Milliarden Dollar für Investitionsausgaben auszugeben. Das meiste davon sind GPUs und Rechenzentren. Ein niedrigerer Diskontsatz lässt diese mehrjährigen Ausbauten zu höheren Bewertungen rentabel erscheinen.",
+      "title": "",
+      "tts": {
+        "text": "Ja. Die Hyperscaler – Microsoft, Google, Amazon, Meta – sind auf dem besten Weg, dieses Jahr rund siebenhundert Milliarden Dollar für Investitionsausgaben auszugeben. Das meiste davon sind GPUs und Rechenzentren. Ein niedrigerer Diskontsatz lässt diese mehrjährigen Ausbauten zu höheren Bewertungen rentabel erscheinen.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Und die andere Richtung. Wie beeinflusst KI die Entscheidungen der Fed?",
+      "text_markdown": "Und die andere Richtung. Wie beeinflusst KI die Entscheidungen der Fed?",
+      "title": "",
+      "tts": {
+        "text": "Und die andere Richtung. Wie beeinflusst KI die Entscheidungen der Fed?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Das ist der interessante Teil. KI-Investitionsausgaben sind inzwischen so groß, dass sie eine Makro-Zahl sind. Keine Sektor-Geschichte. Wall-Street-Analysten sagen, dass KI-bezogene Bau- und Ausrüstungsausgaben in den letzten Quartalen den Großteil des US-Wirtschaftswachstums ausgemacht haben.",
+      "text_markdown": "Das ist der interessante Teil. KI-Investitionsausgaben sind inzwischen so groß, dass sie eine Makro-Zahl sind. Keine Sektor-Geschichte. Wall-Street-Analysten sagen, dass KI-bezogene Bau- und Ausrüstungsausgaben in den letzten Quartalen den Großteil des US-Wirtschaftswachstums ausgemacht haben.",
+      "title": "",
+      "tts": {
+        "text": "Das ist der interessante Teil. KI-Investitionsausgaben sind inzwischen so groß, dass sie eine Makro-Zahl sind. Keine Sektor-Geschichte. Wall-Street-Analysten sagen, dass KI-bezogene Bau- und Ausrüstungsausgaben in den letzten Quartalen den Großteil des US-Wirtschaftswachstums ausgemacht haben.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Der Großteil des Wachstums.",
+      "text_markdown": "Der Großteil des Wachstums.",
+      "title": "",
+      "tts": {
+        "text": "Der Großteil des Wachstums.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Der Großteil. Und es wirkt sich in zwei Richtungen auf die Fed aus. Langfristig ist KI ein Produktivitätsschub. Das ist deflationär. Es gibt der Fed Spielraum für Senkungen. Kurzfristig ist es ein Nachfrageschock bei Strom, Kupfer, Fachkräften, Wasser zur Kühlung. Das ist inflationär. Besonders an Orten wie Virginia und Texas, wo die Rechenzentren konzentriert sind.",
+      "text_markdown": "Der Großteil. Und es wirkt sich in zwei Richtungen auf die Fed aus. Langfristig ist KI ein Produktivitätsschub. Das ist deflationär. Es gibt der Fed Spielraum für Senkungen. Kurzfristig ist es ein Nachfrageschock bei Strom, Kupfer, Fachkräften, Wasser zur Kühlung. Das ist inflationär. Besonders an Orten wie Virginia und Texas, wo die Rechenzentren konzentriert sind.",
+      "title": "",
+      "tts": {
+        "text": "Der Großteil. Und es wirkt sich in zwei Richtungen auf die Fed aus. Langfristig ist KI ein Produktivitätsschub. Das ist deflationär. Es gibt der Fed Spielraum für Senkungen. Kurzfristig ist es ein Nachfrageschock bei Strom, Kupfer, Fachkräften, Wasser zur Kühlung. Das ist inflationär. Besonders an Orten wie Virginia und Texas, wo die Rechenzentren konzentriert sind.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Der neue Vorsitzende muss also entscheiden, ob KI die Antwort auf die Inflation ist oder ob KI die Ursache der Inflation ist.",
+      "text_markdown": "Der neue Vorsitzende muss also entscheiden, ob KI die Antwort auf die Inflation ist oder ob KI die Ursache der Inflation ist.",
+      "title": "",
+      "tts": {
+        "text": "Der neue Vorsitzende muss also entscheiden, ob KI die Antwort auf die Inflation ist oder ob KI die Ursache der Inflation ist.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Beides, gleichzeitig. Und was immer er in seinen ersten öffentlichen Reden sagt, wird jedes KI-Investitionsausgabenmodell an der Wall Street bewegen.",
+      "text_markdown": "Beides, gleichzeitig. Und was immer er in seinen ersten öffentlichen Reden sagt, wird jedes KI-Investitionsausgabenmodell an der Wall Street bewegen.",
+      "title": "",
+      "tts": {
+        "text": "Beides, gleichzeitig. Und was immer er in seinen ersten öffentlichen Reden sagt, wird jedes KI-Investitionsausgabenmodell an der Wall Street bewegen.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Microsoft hat 80 Milliarden Dollar an unerfüllten Cloud-Bestellungen aufgrund von Strommangel. Ist das die richtige Zahl?",
+      "text_markdown": "Microsoft hat 80 Milliarden Dollar an unerfüllten Cloud-Bestellungen aufgrund von Strommangel. Ist das die richtige Zahl?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft hat achtzig Milliarden Dollar an unerfüllten Cloud-Bestellungen aufgrund von Strommangel. Ist das die richtige Zahl?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Das ist die Zahl, die Microsoft gemeldet hat. Azure-Kunden warten auf Kapazität. Der Engpass sind nicht mehr Chips. Es ist das Stromnetz. Strommärkte können keine neue Kapazität so schnell aufbauen, wie die Rechenzentren sie benötigen.",
+      "text_markdown": "Das ist die Zahl, die Microsoft gemeldet hat. Azure-Kunden warten auf Kapazität. Der Engpass sind nicht mehr Chips. Es ist das Stromnetz. Strommärkte können keine neue Kapazität so schnell aufbauen, wie die Rechenzentren sie benötigen.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die Zahl, die Microsoft gemeldet hat. Azure-Kunden warten auf Kapazität. Der Engpass sind nicht mehr Chips. Es ist das Stromnetz. Strommärkte können keine neue Kapazität so schnell aufbauen, wie die Rechenzentren sie benötigen.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Wann ist Warshs erste Sitzung?",
+      "text_markdown": "Wann ist Warshs erste Sitzung?",
+      "title": "",
+      "tts": {
+        "text": "Wann ist Warshs erste Sitzung?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Der 16. und 17. Juni. Danach werden wir viel mehr über den Zinspfad wissen.",
+      "text_markdown": "Der 16. und 17. Juni. Danach werden wir viel mehr über den Zinspfad wissen.",
+      "title": "",
+      "tts": {
+        "text": "Der sechzehnte und siebzehnte Juni. Danach werden wir viel mehr über den Zinspfad wissen.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ein guter Abschluss. Ron, danke.",
+      "text_markdown": "Ein guter Abschluss. Ron, danke.",
+      "title": "",
+      "tts": {
+        "text": "Ein guter Abschluss. Ron, danke.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Jederzeit, Vindy.",
+      "text_markdown": "Jederzeit, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jederzeit, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Das war AI This Week vom 13. Mai 2026. Eine neue Ausgabe gibt es nächsten Mittwoch. Bis dahin, machen Sie es gut.",
+      "text_markdown": "Das war AI This Week vom 13. Mai 2026. Eine neue Ausgabe gibt es nächsten Mittwoch. Bis dahin, machen Sie es gut.",
+      "title": "",
+      "tts": {
+        "text": "Das war AI This Week vom dreizehnten Mai zweitausendsechsundzwanzig. Eine neue Ausgabe gibt es nächsten Mittwoch. Bis dahin, machen Sie es gut.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

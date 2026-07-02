@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "ca",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "text": "Benvinguts a AI This Week.",
+      "text_markdown": "Benvinguts a AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Benvinguts a AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "text": "Sóc la Vindy.",
+      "text_markdown": "Sóc la Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Sóc la Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "block_type": "text",
+      "text": "Amb mi, com sempre, hi ha en Ron.",
+      "text_markdown": "Amb mi, com sempre, hi ha en Ron.",
+      "title": "",
+      "tts": {
+        "text": "Amb mi, com sempre, hi ha en Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "block_type": "text",
+      "text": "És un plaer ser aquí, Vindy.",
+      "text_markdown": "És un plaer ser aquí, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "És un plaer ser aquí, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "text": "Avui és diumenge, 21 de juny de 2026.",
+      "text_markdown": "Avui és diumenge, 21 de juny de 2026.",
+      "title": "",
+      "tts": {
+        "text": "Avui és diumenge, vint-i-u de juny de dos mil vint-i-sis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "block_type": "text",
+      "text": "La setmana passada vam parlar de nosaltres; avui anem en la direcció contrària — fins als centres de poder.",
+      "text_markdown": "La setmana passada vam parlar de nosaltres; avui anem en la direcció contrària — fins als centres de poder.",
+      "title": "",
+      "tts": {
+        "text": "La setmana passada vam parlar de nosaltres; avui anem en la direcció contrària — fins als centres de poder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "text": "Qui controla el desplegament de la IA, qui paga la construcció, qui posseeix el silici.",
+      "text_markdown": "Qui controla el desplegament de la IA, qui paga la construcció, qui posseeix el silici.",
+      "title": "",
+      "tts": {
+        "text": "Qui controla el desplegament de la IA, qui paga la construcció, qui posseeix el silici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "block_type": "text",
+      "text": "A continuació — el Departament de Comerç dels EUA va retirar un model americà de l'ús públic divendres passat, i començarem per aquí.",
+      "text_markdown": "A continuació — el Departament de Comerç dels EUA va retirar un model americà de l'ús públic divendres passat, i començarem per aquí.",
+      "title": "",
+      "tts": {
+        "text": "A continuació — el Departament de Comerç dels EUA va retirar un model americà de l'ús públic divendres passat, i començarem per aquí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "text": "Després, la construcció de centres de dades, on els anuncis i la realitat no coincideixen.",
+      "text_markdown": "Després, la construcció de centres de dades, on els anuncis i la realitat no coincideixen.",
+      "title": "",
+      "tts": {
+        "text": "Després, la construcció de centres de dades, on els anuncis i la realitat no coincideixen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "block_type": "text",
+      "text": "Després, la comparació entre els EUA i la Xina, amb el tòpic substituït per la limitació vinculant real.",
+      "text_markdown": "Després, la comparació entre els EUA i la Xina, amb el tòpic substituït per la limitació vinculant real.",
+      "title": "",
+      "tts": {
+        "text": "Després, la comparació entre els EUA i la Xina, amb el tòpic substituït per la limitació vinculant real.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "text": "I el concepte de la setmana — una sola línia al balanç d'Oracle que t'ho diu gairebé tot.",
+      "text_markdown": "I el concepte de la setmana — una sola línia al balanç d'Oracle que t'ho diu gairebé tot.",
+      "title": "",
+      "tts": {
+        "text": "I el concepte de la setmana — una sola línia al balanç d'Oracle que t'ho diu gairebé tot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "block_type": "text",
+      "text": "Ron, comencem amb Anthropic.",
+      "text_markdown": "Ron, comencem amb Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, comencem amb Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "text": "Què va passar el dotze de juny.",
+      "text_markdown": "Què va passar el dotze de juny.",
+      "title": "",
+      "tts": {
+        "text": "Què va passar el dotze de juny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "text": "A les cinc vint-i-ú de la tarda (hora de l'Est) de divendres, dotze de juny, Anthropic va retirar els seus dos models més nous — Claude Mythos cinc i Claude Fable cinc — de la xarxa.",
+      "text_markdown": "A les cinc vint-i-ú de la tarda (hora de l'Est) de divendres, dotze de juny, Anthropic va retirar els seus dos models més nous — Claude Mythos cinc i Claude Fable cinc — de la xarxa.",
+      "title": "",
+      "tts": {
+        "text": "A les cinc vint-i-ú de la tarda hora de l'Est de divendres, dotze de juny, Anthropic va retirar els seus dos models més nous — Claude Mythos cinc i Claude Fable cinc — de la xarxa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "block_type": "text",
+      "text": "No per manteniment, ni per una revisió de seguretat per iniciativa pròpia.",
+      "text_markdown": "No per manteniment, ni per una revisió de seguretat per iniciativa pròpia.",
+      "title": "",
+      "tts": {
+        "text": "No per manteniment, ni per una revisió de seguretat per iniciativa pròpia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "text": "Els van retirar perquè el Departament de Comerç dels EUA va emetre una directiva citant controls d'exportació.",
+      "text_markdown": "Els van retirar perquè el Departament de Comerç dels EUA va emetre una directiva citant controls d'exportació.",
+      "title": "",
+      "tts": {
+        "text": "Els van retirar perquè el Departament de Comerç dels EUA va emetre una directiva citant controls d'exportació.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "text": "Quina va ser la raó tècnica.",
+      "text_markdown": "Quina va ser la raó tècnica.",
+      "title": "",
+      "tts": {
+        "text": "Quina va ser la raó tècnica.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "text": "Es va demostrar un 'jailbreak', segons s'informa per una altra empresa, que va produir una sortida que el Comerç va considerar controlada per a l'exportació.",
+      "text_markdown": "Es va demostrar un 'jailbreak', segons s'informa per una altra empresa, que va produir una sortida que el Comerç va considerar controlada per a l'exportació.",
+      "title": "",
+      "tts": {
+        "text": "Es va demostrar un 'jailbreak', segons s'informa per una altra empresa, que va produir una sortida que el Comerç va considerar controlada per a l'exportació.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "block_type": "text",
+      "text": "Fortune va informar que Amazon va ser qui va alertar la Casa Blanca.",
+      "text_markdown": "Fortune va informar que Amazon va ser qui va alertar la Casa Blanca.",
+      "title": "",
+      "tts": {
+        "text": "Fortune va informar que Amazon va ser qui va alertar la Casa Blanca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "block_type": "text",
+      "text": "I com va respondre Anthropic.",
+      "text_markdown": "I com va respondre Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "I com va respondre Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "text": "Anthropic disputa públicament la raó.",
+      "text_markdown": "Anthropic disputa públicament la raó.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic disputa públicament la raó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "block_type": "text",
+      "text": "La seva declaració va qualificar el 'jailbreak' — i cito — de \"estret, no universal\", i va afegir que la mateixa sortida està disponible en altres models, inclòs el GPT-cinc-punt-cinc d'OpenAI.",
+      "text_markdown": "La seva declaració va qualificar el 'jailbreak' — i cito — de \"estret, no universal\", i va afegir que la mateixa sortida està disponible en altres models, inclòs el GPT-cinc-punt-cinc d'OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "La seva declaració va qualificar el 'jailbreak' — i cito — de \"estret, no universal\", i va afegir que la mateixa sortida està disponible en altres models, inclòs el GPT cinc punt cinc d'OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "text": "La seva línia de resum: \"l'acció del govern es basa en un malentès.\"",
+      "text_markdown": "La seva línia de resum: \"l'acció del govern es basa en un malentès.\"",
+      "title": "",
+      "tts": {
+        "text": "La seva línia de resum: \"l'acció del govern es basa en un malentès.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "block_type": "text",
+      "text": "Això és un desacord inusualment directe amb el govern dels EUA per part d'un laboratori d'IA.",
+      "text_markdown": "Això és un desacord inusualment directe amb el govern dels EUA per part d'un laboratori d'IA.",
+      "title": "",
+      "tts": {
+        "text": "Això és un desacord inusualment directe amb el govern dels EUA per part d'un laboratori d'IA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "text": "Ho és, i el fet estructural que hi ha al darrere és el titular.",
+      "text_markdown": "Ho és, i el fet estructural que hi ha al darrere és el titular.",
+      "title": "",
+      "tts": {
+        "text": "Ho és, i el fet estructural que hi ha al darrere és el titular.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "block_type": "text",
+      "text": "El Comerç ara pot ordenar a un laboratori d'IA privat americà que retiri un model de la xarxa, citant controls d'exportació, i aquesta ordre arriba en setanta-dues hores.",
+      "text_markdown": "El Comerç ara pot ordenar a un laboratori d'IA privat americà que retiri un model de la xarxa, citant controls d'exportació, i aquesta ordre arriba en setanta-dues hores.",
+      "title": "",
+      "tts": {
+        "text": "El Comerç ara pot ordenar a un laboratori d'IA privat americà que retiri un model de la xarxa, citant controls d'exportació, i aquesta ordre arriba en setanta-dues hores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "block_type": "text",
+      "text": "Tant si creus que l'ordre era correcta com si no.",
+      "text_markdown": "Tant si creus que l'ordre era correcta com si no.",
+      "title": "",
+      "tts": {
+        "text": "Tant si creus que l'ordre era correcta com si no.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "block_type": "text",
+      "text": "Tant si creus que l'ordre era correcta com si no.",
+      "text_markdown": "Tant si creus que l'ordre era correcta com si no.",
+      "title": "",
+      "tts": {
+        "text": "Tant si creus que l'ordre era correcta com si no.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "text": "L'autoritat en si, la velocitat i el precedent són el que importen.",
+      "text_markdown": "L'autoritat en si, la velocitat i el precedent són el que importen.",
+      "title": "",
+      "tts": {
+        "text": "L'autoritat en si, la velocitat i el precedent són el que importen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "block_type": "text",
+      "text": "I el paper d'Amazon aquí.",
+      "text_markdown": "I el paper d'Amazon aquí.",
+      "title": "",
+      "tts": {
+        "text": "I el paper d'Amazon aquí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "text": "Aquesta és la part a observar.",
+      "text_markdown": "Aquesta és la part a observar.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és la part a observar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "block_type": "text",
+      "text": "Amazon és un inversor important d'Anthropic i també competeix amb Anthropic al mercat de models fundacionals a través del seu propi treball.",
+      "text_markdown": "Amazon és un inversor important d'Anthropic i també competeix amb Anthropic al mercat de models fundacionals a través del seu propi treball.",
+      "title": "",
+      "tts": {
+        "text": "Amazon és un inversor important d'Anthropic i també competeix amb Anthropic al mercat de models fundacionals a través del seu propi treball.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "block_type": "text",
+      "text": "Si l'advertència d'un competidor al govern pot deixar fora de servei el model d'un rival en un cap de setmana llarg, això és una nova forma per a la dinàmica de la indústria.",
+      "text_markdown": "Si l'advertència d'un competidor al govern pot deixar fora de servei el model d'un rival en un cap de setmana llarg, això és una nova forma per a la dinàmica de la indústria.",
+      "title": "",
+      "tts": {
+        "text": "Si l'advertència d'un competidor al govern pot deixar fora de servei el model d'un rival en un cap de setmana llarg, això és una nova forma per a la dinàmica de la indústria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "block_type": "text",
+      "text": "Passem a la construcció.",
+      "text_markdown": "Passem a la construcció.",
+      "title": "",
+      "tts": {
+        "text": "Passem a la construcció.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "block_type": "text",
+      "text": "Stargate — la iniciativa de centre de dades d'OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — la iniciativa de centre de dades d'OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — la iniciativa de centre de dades d'OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "block_type": "text",
+      "text": "Quines són les xifres reals.",
+      "text_markdown": "Quines són les xifres reals.",
+      "title": "",
+      "tts": {
+        "text": "Quines són les xifres reals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "block_type": "text",
+      "text": "Stargate ha anunciat onze gigawatts de capacitat als EUA.",
+      "text_markdown": "Stargate ha anunciat onze gigawatts de capacitat als EUA.",
+      "title": "",
+      "tts": {
+        "text": "Stargate ha anunciat onze gigawatts de capacitat als Estats Units.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "text": "A mitjans de juny, uns dos-cents megawatts estan operatius, al lloc d'Abilene, Texas, Fase U.",
+      "text_markdown": "A mitjans de juny, uns dos-cents megawatts estan operatius, al lloc d'Abilene, Texas, Fase U.",
+      "title": "",
+      "tts": {
+        "text": "A mitjans de juny, uns dos-cents megawatts estan operatius, al lloc d'Abilene, Texas, Fase U.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "text": "Onze gigawatts anunciats, dos-cents megawatts connectats.",
+      "text_markdown": "Onze gigawatts anunciats, dos-cents megawatts connectats.",
+      "title": "",
+      "tts": {
+        "text": "Onze gigawatts anunciats, dos-cents megawatts connectats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "block_type": "text",
+      "text": "Aquesta és tota la bretxa en una línia.",
+      "text_markdown": "Aquesta és tota la bretxa en una línia.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és tota la bretxa en una línia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "block_type": "text",
+      "text": "Ho és, i l'exemple més clar es troba a Nou Mèxic.",
+      "text_markdown": "Ho és, i l'exemple més clar es troba a Nou Mèxic.",
+      "title": "",
+      "tts": {
+        "text": "Ho és, i l'exemple més clar es troba a Nou Mèxic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "text": "El lloc del comtat de Doña Ana és el campus Stargate individual més gran, previst per a quatre-coma-cinc gigawatts.",
+      "text_markdown": "El lloc del comtat de Doña Ana és el campus Stargate individual més gran, previst per a quatre-coma-cinc gigawatts.",
+      "title": "",
+      "tts": {
+        "text": "El lloc del comtat de Doña Ana és el campus Stargate individual més gran, previst per a quatre coma cinc gigawatts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "block_type": "text",
+      "text": "Divuit mil milions de dòlars de finançament sindicat de projectes estan en marxa — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — més un xec de capital de tres mil milions de dòlars de Blue Owl.",
+      "text_markdown": "Divuit mil milions de dòlars de finançament sindicat de projectes estan en marxa — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — més un xec de capital de tres mil milions de dòlars de Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Divuit mil milions de dòlars de finançament sindicat de projectes estan en marxa — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — més un xec de capital de tres mil milions de dòlars de Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "block_type": "text",
+      "text": "I l'estat de la construcció sobre el terreny.",
+      "text_markdown": "I l'estat de la construcció sobre el terreny.",
+      "title": "",
+      "tts": {
+        "text": "I l'estat de la construcció sobre el terreny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "text": "Zero pales a terra fins ara.",
+      "text_markdown": "Zero pales a terra fins ara.",
+      "title": "",
+      "tts": {
+        "text": "Zero pales a terra fins ara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "block_type": "text",
+      "text": "El lloc està esperant un permís de qualitat de l'aire del Departament de Medi Ambient de Nou Mèxic, originalment esperat per al vint-i-dos d'abril, ara endarrerit fins al vint-i-u de juliol després de més de set mil comentaris públics.",
+      "text_markdown": "El lloc està esperant un permís de qualitat de l'aire del Departament de Medi Ambient de Nou Mèxic, originalment esperat per al vint-i-dos d'abril, ara endarrerit fins al vint-i-u de juliol després de més de set mil comentaris públics.",
+      "title": "",
+      "tts": {
+        "text": "El lloc està esperant un permís de qualitat de l'aire del Departament de Medi Ambient de Nou Mèxic, originalment esperat per al vint-i-dos d'abril, ara endarrerit fins al vint-i-u de juliol després de més de set mil comentaris públics.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "block_type": "text",
+      "text": "Divuit mil milions de dòlars compromesos, zero pales a terra, una data límit per al permís de qualitat de l'aire.",
+      "text_markdown": "Divuit mil milions de dòlars compromesos, zero pales a terra, una data límit per al permís de qualitat de l'aire.",
+      "title": "",
+      "tts": {
+        "text": "Divuit mil milions de dòlars compromesos, zero pales a terra, una data límit per al permís de qualitat de l'aire.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "text": "Qui és el responsable si els números no quadren.",
+      "text_markdown": "Qui és el responsable si els números no quadren.",
+      "title": "",
+      "tts": {
+        "text": "Qui és el responsable si els números no quadren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "text": "Aquí és on Oracle es posa interessant.",
+      "text_markdown": "Aquí és on Oracle es posa interessant.",
+      "title": "",
+      "tts": {
+        "text": "Aquí és on Oracle es posa interessant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "block_type": "text",
+      "text": "Les Obligacions de Rendiment Restants d'Oracle — la línia comptable que registra els ingressos contractats encara no lliurats — van arribar als cinc-cents cinquanta-tres mil milions de dòlars al tercer trimestre fiscal de dos mil vint-i-sis.",
+      "text_markdown": "Les Obligacions de Rendiment Restants d'Oracle — la línia comptable que registra els ingressos contractats encara no lliurats — van arribar als cinc-cents cinquanta-tres mil milions de dòlars al tercer trimestre fiscal de dos mil vint-i-sis.",
+      "title": "",
+      "tts": {
+        "text": "Les Obligacions de Rendiment Restants d'Oracle — la línia comptable que registra els ingressos contractats encara no lliurats — van arribar als cinc-cents cinquanta-tres mil milions de dòlars al tercer trimestre fiscal de dos mil vint-i-sis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "text": "Això representa un augment del tres-cents vint-i-cinc per cent interanual, i la major part d'aquest augment s'identifica públicament amb OpenAI i Stargate.",
+      "text_markdown": "Això representa un augment del tres-cents vint-i-cinc per cent interanual, i la major part d'aquest augment s'identifica públicament amb OpenAI i Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Això representa un augment del tres-cents vint-i-cinc per cent interanual, i la major part d'aquest augment s'identifica públicament amb OpenAI i Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "block_type": "text",
+      "text": "I el costat del deute.",
+      "text_markdown": "I el costat del deute.",
+      "title": "",
+      "tts": {
+        "text": "I el costat del deute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "text": "El total d'endeutament va arribar als cent trenta-quatre-coma-sis mil milions de dòlars a data de vint-i-vuit de febrer.",
+      "text_markdown": "El total d'endeutament va arribar als cent trenta-quatre-coma-sis mil milions de dòlars a data de vint-i-vuit de febrer.",
+      "title": "",
+      "tts": {
+        "text": "El total d'endeutament va arribar als cent trenta-quatre coma sis mil milions de dòlars a data de vint-i-vuit de febrer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "block_type": "text",
+      "text": "Oracle va recaptar trenta mil milions al febrer només — bons de grau d'inversió més preferents convertibles obligatoris — i va emetre quaranta-tres mil milions de dòlars en nous bons sènior durant el període de nou mesos.",
+      "text_markdown": "Oracle va recaptar trenta mil milions al febrer només — bons de grau d'inversió més preferents convertibles obligatoris — i va emetre quaranta-tres mil milions de dòlars en nous bons sènior durant el període de nou mesos.",
+      "title": "",
+      "tts": {
+        "text": "Oracle va recaptar trenta mil milions al febrer només — bons de grau d'inversió més preferents convertibles obligatoris — i va emetre quaranta-tres mil milions de dòlars en nous bons sènior durant el període de nou mesos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "block_type": "text",
+      "text": "Així que, resumim la posició.",
+      "text_markdown": "Així que, resumim la posició.",
+      "title": "",
+      "tts": {
+        "text": "Així que, resumim la posició.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "block_type": "text",
+      "text": "Parlem de 553 mil milions de dòlars en promeses, 134 mil milions de dòlars en deute, i un gran client assumint la major part del risc.",
+      "text_markdown": "Parlem de 553 mil milions de dòlars en promeses, 134 mil milions de dòlars en deute, i un gran client assumint la major part del risc.",
+      "title": "",
+      "tts": {
+        "text": "Parlem de cinc cents cinquanta tres mil milions de dòlars en promeses, cent trenta quatre mil milions de dòlars en deute, i un gran client assumint la major part del risc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "block_type": "text",
+      "text": "Aquesta és l'estructura de la construcció en una frase.",
+      "text_markdown": "Aquesta és l'estructura de la construcció en una frase.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és l'estructura de la construcció en una frase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "text": "Anem a la comparació entre els EUA i la Xina.",
+      "text_markdown": "Anem a la comparació entre els EUA i la Xina.",
+      "title": "",
+      "tts": {
+        "text": "Anem a la comparació entre els Estats Units i la Xina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "block_type": "text",
+      "text": "El tòpic és que la Xina va uns quants mesos endarrerida.",
+      "text_markdown": "El tòpic és que la Xina va uns quants mesos endarrerida.",
+      "title": "",
+      "tts": {
+        "text": "El tòpic és que la Xina va uns quants mesos endarrerida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "block_type": "text",
+      "text": "El tòpic és erroni perquè mesura la cosa equivocada.",
+      "text_markdown": "El tòpic és erroni perquè mesura la cosa equivocada.",
+      "title": "",
+      "tts": {
+        "text": "El tòpic és erroni perquè mesura la cosa equivocada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "text": "El dilluns nou de juny, Bloomberg va informar d'un esborrany de pla xinès de la Comissió Nacional de Desenvolupament i Reforma — dos bilions de iuan, aproximadament dos-cents noranta-cinc mil milions de dòlars, per a una xarxa nacional de centres de dades d'IA per al dos mil vint-i-vuit.",
+      "text_markdown": "El dilluns nou de juny, Bloomberg va informar d'un esborrany de pla xinès de la Comissió Nacional de Desenvolupament i Reforma — dos bilions de iuan, aproximadament dos-cents noranta-cinc mil milions de dòlars, per a una xarxa nacional de centres de dades d'IA per al dos mil vint-i-vuit.",
+      "title": "",
+      "tts": {
+        "text": "El dilluns nou de juny, Bloomberg va informar d'un esborrany de pla xinès de la Comissió Nacional de Desenvolupament i Reforma — dos bilions de iuan, aproximadament dos-cents noranta-cinc mil milions de dòlars, per a una xarxa nacional de centres de dades d'intel·ligència artificial per al dos mil vint-i-vuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "block_type": "text",
+      "text": "El pla exigeix un vuitanta per cent de silici domèstic i seria operat com una única xarxa de computació interconnectada per China Mobile i China Telecom.",
+      "text_markdown": "El pla exigeix un vuitanta per cent de silici domèstic i seria operat com una única xarxa de computació interconnectada per China Mobile i China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "El pla exigeix un vuitanta per cent de silici domèstic i seria operat com una única xarxa de computació interconnectada per China Mobile i China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "block_type": "text",
+      "text": "I on és la trampa en aquest pla?",
+      "text_markdown": "I on és la trampa en aquest pla?",
+      "title": "",
+      "tts": {
+        "text": "I on és la trampa en aquest pla?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "block_type": "text",
+      "text": "Dos bilions de iuan, vuitanta per cent de silici domèstic, data límit dos mil vint-i-vuit — i la trampa és que la restricció vinculant no són els xips lògics, sinó la memòria d'ample de banda elevat.",
+      "text_markdown": "Dos bilions de iuan, vuitanta per cent de silici domèstic, data límit dos mil vint-i-vuit — i la trampa és que la restricció vinculant no són els xips lògics, sinó la memòria d'ample de banda elevat.",
+      "title": "",
+      "tts": {
+        "text": "Dos bilions de iuan, vuitanta per cent de silici domèstic, data límit dos mil vint-i-vuit — i la trampa és que la restricció vinculant no són els xips lògics, sinó la memòria d'ample de banda elevat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "block_type": "text",
+      "text": "Explica'ns-ho.",
+      "text_markdown": "Explica'ns-ho.",
+      "title": "",
+      "tts": {
+        "text": "Explica'ns-ho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "block_type": "text",
+      "text": "Cada accelerador d'IA necessita piles d'HBM muntades al dau lògic.",
+      "text_markdown": "Cada accelerador d'IA necessita piles d'HBM muntades al dau lògic.",
+      "title": "",
+      "tts": {
+        "text": "Cada accelerador d'intel·ligència artificial necessita piles d'H B M muntades al dau lògic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "block_type": "text",
+      "text": "Sense HBM, el xip és un pisapapers.",
+      "text_markdown": "Sense HBM, el xip és un pisapapers.",
+      "title": "",
+      "tts": {
+        "text": "Sense H B M, el xip és un pisapapers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "block_type": "text",
+      "text": "La Xina va acumular uns tretze milions de piles d'HBM abans que es tanquessin els controls d'exportació — onze milions quatre-centes mil de Samsung només.",
+      "text_markdown": "La Xina va acumular uns tretze milions de piles d'HBM abans que es tanquessin els controls d'exportació — onze milions quatre-centes mil de Samsung només.",
+      "title": "",
+      "tts": {
+        "text": "La Xina va acumular uns tretze milions de piles d'H B M abans que es tanquessin els controls d'exportació — onze milions quatre-centes mil de Samsung només.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "block_type": "text",
+      "text": "Amb les ràtios d'encapsulat Huawei Ascend nou-deu C, aquesta reserva és suficient per a aproximadament un milió sis-cents mil xips.",
+      "text_markdown": "Amb les ràtios d'encapsulat Huawei Ascend nou-deu C, aquesta reserva és suficient per a aproximadament un milió sis-cents mil xips.",
+      "title": "",
+      "tts": {
+        "text": "Amb les ràtios d'encapsulat Huawei Ascend nou deu C, aquesta reserva és suficient per a aproximadament un milió sis-cents mil xips.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "block_type": "text",
+      "text": "I llavors s'acaba el subministrament.",
+      "text_markdown": "I llavors s'acaba el subministrament.",
+      "title": "",
+      "tts": {
+        "text": "I llavors s'acaba el subministrament.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "block_type": "text",
+      "text": "Llavors s'acaba el subministrament — tretze milions de piles d'HBM, suficients per a un milió sis-cents mil xips, i aquest és el límit.",
+      "text_markdown": "Llavors s'acaba el subministrament — tretze milions de piles d'HBM, suficients per a un milió sis-cents mil xips, i aquest és el límit.",
+      "title": "",
+      "tts": {
+        "text": "Llavors s'acaba el subministrament — tretze milions de piles d'H B M, suficients per a un milió sis-cents mil xips, i aquest és el límit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "block_type": "text",
+      "text": "L'HBM xinès domèstic, de CXMT, té un ritme d'uns dos milions de piles el dos mil vint-i-sis — suficient per a potser dos-cents cinquanta mil a tres-cents mil acceleradors.",
+      "text_markdown": "L'HBM xinès domèstic, de CXMT, té un ritme d'uns dos milions de piles el dos mil vint-i-sis — suficient per a potser dos-cents cinquanta mil a tres-cents mil acceleradors.",
+      "title": "",
+      "tts": {
+        "text": "L'H B M xinès domèstic, de C X M T, té un ritme d'uns dos milions de piles el dos mil vint-i-sis — suficient per a potser dos-cents cinquanta mil a tres-cents mil acceleradors.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "block_type": "text",
+      "text": "Així que els plans de silici de Huawei com són?",
+      "text_markdown": "Així que els plans de silici de Huawei com són?",
+      "title": "",
+      "tts": {
+        "text": "Així que els plans de silici de Huawei com són?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "block_type": "text",
+      "text": "Bloomberg, citant els plans de Huawei, va situar la producció del dos mil vint-i-sis en sis-cents mil xips nou-deu C, amb la línia de productes Ascend més àmplia arribant fins a un milió sis-cents mil daus en total.",
+      "text_markdown": "Bloomberg, citant els plans de Huawei, va situar la producció del dos mil vint-i-sis en sis-cents mil xips nou-deu C, amb la línia de productes Ascend més àmplia arribant fins a un milió sis-cents mil daus en total.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, citant els plans de Huawei, va situar la producció del dos mil vint-i-sis en sis-cents mil xips nou deu C, amb la línia de productes Ascend més àmplia arribant fins a un milió sis-cents mil daus en total.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "block_type": "text",
+      "text": "Aquest nombre, sis-cents mil, és un objectiu, no una producció enviada.",
+      "text_markdown": "Aquest nombre, sis-cents mil, és un objectiu, no una producció enviada.",
+      "title": "",
+      "tts": {
+        "text": "Aquest nombre, sis-cents mil, és un objectiu, no una producció enviada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "block_type": "text",
+      "text": "I per separat, abans que els controls d'exportació els tallessin, Huawei va acumular més de dos milions nou-cents mil daus Ascend fabricats a TSMC a través de les empreses pantalla Sophgo i Bitmain.",
+      "text_markdown": "I per separat, abans que els controls d'exportació els tallessin, Huawei va acumular més de dos milions nou-cents mil daus Ascend fabricats a TSMC a través de les empreses pantalla Sophgo i Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "I per separat, abans que els controls d'exportació els tallessin, Huawei va acumular més de dos milions nou-cents mil daus Ascend fabricats a T S M C a través de les empreses pantalla Sophgo i Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "block_type": "text",
+      "text": "La narrativa que els controls d'exportació funcionen té un forat de dos milions nou-cents mil daus.",
+      "text_markdown": "La narrativa que els controls d'exportació funcionen té un forat de dos milions nou-cents mil daus.",
+      "title": "",
+      "tts": {
+        "text": "La narrativa que els controls d'exportació funcionen té un forat de dos milions nou-cents mil daus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "block_type": "text",
+      "text": "Repassem els titulars, ràpidament.",
+      "text_markdown": "Repassem els titulars, ràpidament.",
+      "title": "",
+      "tts": {
+        "text": "Repassem els titulars, ràpidament.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "block_type": "text",
+      "text": "Primer titular d'aquesta setmana, Broadcom.",
+      "text_markdown": "Primer titular d'aquesta setmana, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Primer titular d'aquesta setmana, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "block_type": "text",
+      "text": "La capitalització de mercat de Broadcom és d'uns dos bilions de dòlars.",
+      "text_markdown": "La capitalització de mercat de Broadcom és d'uns dos bilions de dòlars.",
+      "title": "",
+      "tts": {
+        "text": "La capitalització de mercat de Broadcom és d'uns dos bilions de dòlars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "block_type": "text",
+      "text": "El seu CEO, Hock Tan, va reiterar un objectiu d'ingressos de cent mil milions de dòlars en semiconductors d'IA per a l'exercici fiscal dos mil vint-i-set en la trucada de resultats del tres de juny, recolzat per uns setanta-tres mil milions de dòlars en cartera d'IA i acords a llarg termini amb Alphabet i Meta que s'estenen fins al dos mil trenta-u.",
+      "text_markdown": "El seu CEO, Hock Tan, va reiterar un objectiu d'ingressos de cent mil milions de dòlars en semiconductors d'IA per a l'exercici fiscal dos mil vint-i-set en la trucada de resultats del tres de juny, recolzat per uns setanta-tres mil milions de dòlars en cartera d'IA i acords a llarg termini amb Alphabet i Meta que s'estenen fins al dos mil trenta-u.",
+      "title": "",
+      "tts": {
+        "text": "El seu C E O, Hock Tan, va reiterar un objectiu d'ingressos de cent mil milions de dòlars en semiconductors d'intel·ligència artificial per a l'exercici fiscal dos mil vint-i-set en la trucada de resultats del tres de juny, recolzat per uns setanta-tres mil milions de dòlars en cartera d'intel·ligència artificial i acords a llarg termini amb Alphabet i Meta que s'estenen fins al dos mil trenta-u.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "block_type": "text",
+      "text": "Dos bilions de dòlars de capitalització de mercat, objectiu d'ingressos d'IA de cent mil milions de dòlars, gairebé cap reconeixement de marca al detall.",
+      "text_markdown": "Dos bilions de dòlars de capitalització de mercat, objectiu d'ingressos d'IA de cent mil milions de dòlars, gairebé cap reconeixement de marca al detall.",
+      "title": "",
+      "tts": {
+        "text": "Dos bilions de dòlars de capitalització de mercat, objectiu d'ingressos d'intel·ligència artificial de cent mil milions de dòlars, gairebé cap reconeixement de marca al detall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "block_type": "text",
+      "text": "ASML és el segon titular d'aquesta setmana.",
+      "text_markdown": "ASML és el segon titular d'aquesta setmana.",
+      "title": "",
+      "tts": {
+        "text": "a essa ema ela és el segon titular d'aquesta setmana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "block_type": "text",
+      "text": "ASML, l'empresa holandesa que construeix les màquines de litografia de les quals depèn tota la lògica d'avantguarda, ven el seu sistema High-N.A. E.U.V. per uns tres-cents setanta milions de dòlars.",
+      "text_markdown": "ASML, l'empresa holandesa que construeix les màquines de litografia de les quals depèn tota la lògica d'avantguarda, ven el seu sistema High-N.A. E.U.V. per uns tres-cents setanta milions de dòlars.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, l'empresa holandesa que construeix les màquines de litografia de les quals depèn tota la lògica d'avantguarda, ven el seu sistema High N A E U V per uns tres-cents setanta milions de dòlars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "block_type": "text",
+      "text": "La capacitat de producció global és inferior a vint unitats per any.",
+      "text_markdown": "La capacitat de producció global és inferior a vint unitats per any.",
+      "title": "",
+      "tts": {
+        "text": "La capacitat de producció global és inferior a vint unitats per any.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "block_type": "text",
+      "text": "Tres-cents setanta milions de dòlars per màquina, menys de vint màquines a l'any, una sola empresa les fabrica — aquest és el veritable punt d'estrangulació del silici global, no la política.",
+      "text_markdown": "Tres-cents setanta milions de dòlars per màquina, menys de vint màquines a l'any, una sola empresa les fabrica — aquest és el veritable punt d'estrangulació del silici global, no la política.",
+      "title": "",
+      "tts": {
+        "text": "Tres-cents setanta milions de dòlars per màquina, menys de vint màquines a l'any, una sola empresa les fabrica — aquest és el veritable punt d'estrangulació del silici global, no la política.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "block_type": "text",
+      "text": "Tercer titular d'aquesta setmana, controls d'exportació.",
+      "text_markdown": "Tercer titular d'aquesta setmana, controls d'exportació.",
+      "title": "",
+      "tts": {
+        "text": "Tercer titular d'aquesta setmana, controls d'exportació.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "block_type": "text",
+      "text": "El Departament de Comerç va rescindir la Regla de Difusió d'IA de l'era Biden el tretze de maig del dos mil vint-i-cinc, i no va emetre una nova aclaració d'aplicació de B.I.S. fins al trenta-u de maig del dos mil vint-i-sis.",
+      "text_markdown": "El Departament de Comerç va rescindir la Regla de Difusió d'IA de l'era Biden el tretze de maig del dos mil vint-i-cinc, i no va emetre una nova aclaració d'aplicació de B.I.S. fins al trenta-u de maig del dos mil vint-i-sis.",
+      "title": "",
+      "tts": {
+        "text": "El Departament de Comerç va rescindir la Regla de Difusió d'intel·ligència artificial de l'era Biden el tretze de maig del dos mil vint-i-cinc, i no va emetre una nova aclaració d'aplicació de B I S fins al trenta-u de maig del dos mil vint-i-sis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "block_type": "text",
+      "text": "Això és una finestra d'aproximadament un any on els requisits de llicència no es van aplicar activament.",
+      "text_markdown": "Això és una finestra d'aproximadament un any on els requisits de llicència no es van aplicar activament.",
+      "title": "",
+      "tts": {
+        "text": "Això és una finestra d'aproximadament un any on els requisits de llicència no es van aplicar activament.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "block_type": "text",
+      "text": "Així que compte els dies.",
+      "text_markdown": "Així que compte els dies.",
+      "title": "",
+      "tts": {
+        "text": "Així que compte els dies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "block_type": "text",
+      "text": "Setanta-dues hores per tancar un model dels EUA, tres-cents vuitanta dies per fer complir una norma d'exportació de xips — aquesta asimetria és l'espectacle.",
+      "text_markdown": "Setanta-dues hores per tancar un model dels EUA, tres-cents vuitanta dies per fer complir una norma d'exportació de xips — aquesta asimetria és l'espectacle.",
+      "title": "",
+      "tts": {
+        "text": "Setanta-dues hores per tancar un model dels Estats Units, tres-cents vuitanta dies per fer complir una norma d'exportació de xips — aquesta asimetria és l'espectacle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "block_type": "text",
+      "text": "I on van anar els xips en aquells tres-cents vuitanta dies.",
+      "text_markdown": "I on van anar els xips en aquells tres-cents vuitanta dies.",
+      "title": "",
+      "tts": {
+        "text": "I on van anar els xips en aquells tres-cents vuitanta dies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "block_type": "text",
+      "text": "El sud-est asiàtic és on van anar la majoria.",
+      "text_markdown": "El sud-est asiàtic és on van anar la majoria.",
+      "title": "",
+      "tts": {
+        "text": "El sud-est asiàtic és on van anar la majoria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "block_type": "text",
+      "text": "El Departament de Justícia va desclassificar acusacions a finals de març al·legant que xips Nvidia H-100 i A-100 van ser desviats a través d'intermediaris malaisis i singapuresos.",
+      "text_markdown": "El Departament de Justícia va desclassificar acusacions a finals de març al·legant que xips Nvidia H-100 i A-100 van ser desviats a través d'intermediaris malaisis i singapuresos.",
+      "title": "",
+      "tts": {
+        "text": "El Departament de Justícia va desclassificar acusacions a finals de març al·legant que xips Nvidia H cent i A cent van ser desviats a través d'intermediaris malaisis i singapuresos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "block_type": "text",
+      "text": "Fortune va publicar textos xifrats al maig que mostraven la logística, i Super Micro està implicada en un cas de companyia fantasma de dos mil cinc-cents milions de dòlars.",
+      "text_markdown": "Fortune va publicar textos xifrats al maig que mostraven la logística, i Super Micro està implicada en un cas de companyia fantasma de dos mil cinc-cents milions de dòlars.",
+      "title": "",
+      "tts": {
+        "text": "Fortune va publicar textos xifrats al maig que mostraven la logística, i Super Micro està implicada en un cas de companyia fantasma de dos mil cinc-cents milions de dòlars.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "block_type": "text",
+      "text": "L'administració Trump estaria redactant noves restriccions a l'exportació de xips dirigides específicament a Malàisia i Tailàndia.",
+      "text_markdown": "L'administració Trump estaria redactant noves restriccions a l'exportació de xips dirigides específicament a Malàisia i Tailàndia.",
+      "title": "",
+      "tts": {
+        "text": "L'administració Trump estaria redactant noves restriccions a l'exportació de xips dirigides específicament a Malàisia i Tailàndia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "block_type": "text",
+      "text": "Així que la imatge en una línia.",
+      "text_markdown": "Així que la imatge en una línia.",
+      "title": "",
+      "tts": {
+        "text": "Així que la imatge en una línia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "block_type": "text",
+      "text": "Els xips no volen a Shenzhen — volen primer a Penang i Singapur.",
+      "text_markdown": "Els xips no volen a Shenzhen — volen primer a Penang i Singapur.",
+      "title": "",
+      "tts": {
+        "text": "Els xips no volen a Shenzhen — volen primer a Penang i Singapur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "block_type": "text",
+      "text": "Concepte de la setmana — Obligacions de Rendiment Restants.",
+      "text_markdown": "Concepte de la setmana — Obligacions de Rendiment Restants.",
+      "title": "",
+      "tts": {
+        "text": "Concepte de la setmana — Obligacions de Rendiment Restants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "block_type": "text",
+      "text": "L'O.R.P. és una línia comptable que registra el valor en dòlars dels contractes que una empresa ha signat però que encara no ha complert.",
+      "text_markdown": "L'O.R.P. és una línia comptable que registra el valor en dòlars dels contractes que una empresa ha signat però que encara no ha complert.",
+      "title": "",
+      "tts": {
+        "text": "L'O Erre Pe és una línia comptable que registra el valor en dòlars dels contractes que una empresa ha signat però que encara no ha complert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "block_type": "text",
+      "text": "És prospectiu — t'informa sobre ingressos futurs, no sobre diners al banc avui.",
+      "text_markdown": "És prospectiu — t'informa sobre ingressos futurs, no sobre diners al banc avui.",
+      "title": "",
+      "tts": {
+        "text": "És prospectiu — t'informa sobre ingressos futurs, no sobre diners al banc avui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "block_type": "text",
+      "text": "I per què és important per a Oracle.",
+      "text_markdown": "I per què és important per a Oracle.",
+      "title": "",
+      "tts": {
+        "text": "I per què és important per a Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "block_type": "text",
+      "text": "Perquè cinc-cents cinquanta-tres mil milions de dòlars d'O.R.P., concentrats en gran mesura en un sol client per a una única construcció, significa que Oracle ha promès lliurar una quantitat enorme de computació durant els propers anys a un client el model d'ingressos del qual encara s'està discutint.",
+      "text_markdown": "Perquè cinc-cents cinquanta-tres mil milions de dòlars d'O.R.P., concentrats en gran mesura en un sol client per a una única construcció, significa que Oracle ha promès lliurar una quantitat enorme de computació durant els propers anys a un client el model d'ingressos del qual encara s'està discutint.",
+      "title": "",
+      "tts": {
+        "text": "Perquè cinc-cents cinquanta-tres mil milions de dòlars d'O Erre Pe, concentrats en gran mesura en un sol client per a una única construcció, significa que Oracle ha promès lliurar una quantitat enorme de computació durant els propers anys a un client el model d'ingressos del qual encara s'està discutint.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "block_type": "text",
+      "text": "Si aquests contractes es compleixen, Oracle té l'acord de la dècada.",
+      "text_markdown": "Si aquests contractes es compleixen, Oracle té l'acord de la dècada.",
+      "title": "",
+      "tts": {
+        "text": "Si aquests contractes es compleixen, Oracle té l'acord de la dècada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "block_type": "text",
+      "text": "Si es retarden — o es renegocien — Oracle està assumint el deute mentre els contractes es redueixen.",
+      "text_markdown": "Si es retarden — o es renegocien — Oracle està assumint el deute mentre els contractes es redueixen.",
+      "title": "",
+      "tts": {
+        "text": "Si es retarden — o es renegocien — Oracle està assumint el deute mentre els contractes es redueixen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "block_type": "text",
+      "text": "Així que quan vegis un número d'O.R.P. en un informe tecnològic.",
+      "text_markdown": "Així que quan vegis un número d'O.R.P. en un informe tecnològic.",
+      "title": "",
+      "tts": {
+        "text": "Així que quan vegis un número d'O Erre Pe en un informe tecnològic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "block_type": "text",
+      "text": "Llegeix qui són els clients, com de concentrades estan les obligacions i què hauria de passar perquè l'empresa les complís realment.",
+      "text_markdown": "Llegeix qui són els clients, com de concentrades estan les obligacions i què hauria de passar perquè l'empresa les complís realment.",
+      "title": "",
+      "tts": {
+        "text": "Llegeix qui són els clients, com de concentrades estan les obligacions i què hauria de passar perquè l'empresa les complís realment.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "block_type": "text",
+      "text": "L'O.R.P. és on apareixen els inversors perjudicats a les notes a peu de pàgina.",
+      "text_markdown": "L'O.R.P. és on apareixen els inversors perjudicats a les notes a peu de pàgina.",
+      "title": "",
+      "tts": {
+        "text": "L'O Erre Pe és on apareixen els inversors perjudicats a les notes a peu de pàgina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "block_type": "text",
+      "text": "Bon lloc per acabar.",
+      "text_markdown": "Bon lloc per acabar.",
+      "title": "",
+      "tts": {
+        "text": "Bon lloc per acabar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "block_type": "text",
+      "text": "Ron, gràcies pel resum.",
+      "text_markdown": "Ron, gràcies pel resum.",
+      "title": "",
+      "tts": {
+        "text": "Ron, gràcies pel resum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "block_type": "text",
+      "text": "Quan vulguis, Vindy — és un plaer ser aquí.",
+      "text_markdown": "Quan vulguis, Vindy — és un plaer ser aquí.",
+      "title": "",
+      "tts": {
+        "text": "Quan vulguis, Vindy — és un plaer ser aquí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "block_type": "text",
+      "text": "Això ha estat AI This Week del vint-i-u de juny de dos mil vint-i-sis.",
+      "text_markdown": "Això ha estat AI This Week del vint-i-u de juny de dos mil vint-i-sis.",
+      "title": "",
+      "tts": {
+        "text": "Això ha estat AI This Week del vint-i-u de juny de dos mil vint-i-sis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "block_type": "text",
+      "text": "La setmana que ve, tornem a la secció de pesos oberts i petits laboratoris.",
+      "text_markdown": "La setmana que ve, tornem a la secció de pesos oberts i petits laboratoris.",
+      "title": "",
+      "tts": {
+        "text": "La setmana que ve, tornem a la secció de pesos oberts i petits laboratoris.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "block_type": "text",
+      "text": "Fins diumenge que ve, cuideu-vos.",
+      "text_markdown": "Fins diumenge que ve, cuideu-vos.",
+      "title": "",
+      "tts": {
+        "text": "Fins diumenge que ve, cuideu-vos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

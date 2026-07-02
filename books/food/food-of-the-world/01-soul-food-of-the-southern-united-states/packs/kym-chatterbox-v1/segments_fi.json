@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "fi",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lukijalle",
+      "text_markdown": "Lukijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on pieni kirja suuresta ruoasta.",
+      "text_markdown": "Tämä on pieni kirja suuresta ruoasta.",
+      "tts": {
+        "text": "Tämä on pieni kirja suuresta ruoasta.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ruoka on soul foodia Yhdysvaltain etelästä.",
+      "text_markdown": "Ruoka on soul foodia Yhdysvaltain etelästä.",
+      "tts": {
+        "text": "Ruoka on soul fuudia Yhdysvaltain etelästä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food on oikeaa ruokaa.",
+      "text_markdown": "Soul food on oikeaa ruokaa.",
+      "tts": {
+        "text": "Soul fuud on oikeaa ruokaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä tehdään kotona.",
+      "text_markdown": "Sitä tehdään kotona.",
+      "tts": {
+        "text": "Sitä tehdään kotona.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitä syödään sunnuntaisin.",
+      "text_markdown": "Sitä syödään sunnuntaisin.",
+      "tts": {
+        "text": "Sitä syödään sunnuntaisin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sitä syödään myös tiistaisin.",
+      "text_markdown": "Sitä syödään myös tiistaisin.",
+      "tts": {
+        "text": "Sitä syödään myös tiistaisin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aloitamme nimestä.",
+      "text_markdown": "Aloitamme nimestä.",
+      "tts": {
+        "text": "Aloitamme nimestä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitten katsomme kasveja ja eläimiä.",
+      "text_markdown": "Sitten katsomme kasveja ja eläimiä.",
+      "tts": {
+        "text": "Sitten katsomme kasveja ja eläimiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten katsomme kattiloita ja pannuja.",
+      "text_markdown": "Sitten katsomme kattiloita ja pannuja.",
+      "tts": {
+        "text": "Sitten katsomme kattiloita ja pannuja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lopussa tiedät, mitä lautasella on, ja mistä se on tullut.",
+      "text_markdown": "Lopussa tiedät, mitä lautasella on, ja mistä se on tullut.",
+      "tts": {
+        "text": "Lopussa tiedät, mitä lautasella on, ja mistä se on tullut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Minun nimeni on Kym, ja minä aion kertoa sinulle tämän tarinan.",
+      "text_markdown": "Ystävä nimeltä Kym kertoo sinulle tarinan.",
+      "tts": {
+        "text": "Minun nimeni on Kim, ja minä aion kertoa sinulle tämän tarinan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 1 — Mitä soul food on",
+      "text_markdown": "Luku 1 — Mitä soul food on"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food on Yhdysvaltain etelän mustien perheiden arkiruokaa.",
+      "text_markdown": "Soul food on Yhdysvaltain etelän mustien perheiden arkiruokaa.",
+      "tts": {
+        "text": "Soul fuud on Yhdysvaltain etelän mustien perheiden arkiruokaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nimi \"soul food\" yleistyi kuusikymmentäluvulla.",
+      "text_markdown": "Nimi \"soul food\" yleistyi kuusikymmentäluvulla.",
+      "tts": {
+        "text": "Nimi \"soul fuud\" yleistyi kuusikymmentäluvulla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sana \"soul\" tuli musiikista ja kirkosta.",
+      "text_markdown": "Sana \"soul\" tuli musiikista ja kirkosta.",
+      "tts": {
+        "text": "Sana \"soul\" tuli musiikista ja kirkosta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se tarkoitti jotain syvää ja totta.",
+      "text_markdown": "Se tarkoitti jotain syvää ja totta.",
+      "tts": {
+        "text": "Se tarkoitti jotain syvää ja totta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se tarkoitti jotain mustaa ja ylpeää.",
+      "text_markdown": "Se tarkoitti jotain mustaa ja ylpeää.",
+      "tts": {
+        "text": "Se tarkoitti jotain mustaa ja ylpeää.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta ruoka itse on paljon vanhempaa.",
+      "text_markdown": "Mutta ruoka itse on paljon vanhempaa.",
+      "tts": {
+        "text": "Mutta ruoka itse on paljon vanhempaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on peräisin kahdeksannentoista ja yhdeksännentoista vuosisadan plantaasien keittiöistä.",
+      "text_markdown": "Se on peräisin kahdeksannentoista ja yhdeksännentoista vuosisadan plantaasien keittiöistä.",
+      "tts": {
+        "text": "Se on peräisin kahdeksannentoista ja yhdeksännentoista vuosisadan plantaasien keittiöistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orjuutetut afrikkalaiset kokit ottivat kasvit ja eläimet, joita heillä oli, ja laittoivat niistä ruoan.",
+      "text_markdown": "Orjuutetut afrikkalaiset kokit ottivat kasvit ja eläimet, joita heillä oli, ja laittoivat niistä ruoan.",
+      "tts": {
+        "text": "Orjuutetut afrikkalaiset kokit ottivat kasvit ja eläimet, joita heillä oli, ja laittoivat niistä ruoan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kokit olivat loistavia.",
+      "text_markdown": "Kokit olivat loistavia.",
+      "tts": {
+        "text": "Kokit olivat loistavia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He tekivät vähänkin riittämään, ja ruokkivat paljon väkeä.",
+      "text_markdown": "He tekivät vähänkin riittämään, ja ruokkivat paljon väkeä.",
+      "tts": {
+        "text": "He tekivät vähänkin riittämään, ja ruokkivat paljon väkeä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He käyttivät sian jokaisen osan.",
+      "text_markdown": "He käyttivät sian jokaisen osan.",
+      "tts": {
+        "text": "He käyttivät sian jokaisen osan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He saivat vihreät lehdet maistumaan makeilta.",
+      "text_markdown": "He saivat vihreät lehdet maistumaan makeilta.",
+      "tts": {
+        "text": "He saivat vihreät lehdet maistumaan makeilta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "He tekivät maissijauhosta leipää, puuroa ja sataa muuta pientä ruokaa.",
+      "text_markdown": "He tekivät maissijauhosta leipää, puuroa ja sataa muuta pientä ruokaa.",
+      "tts": {
+        "text": "He tekivät maissijauhosta leipää, puuroa ja sataa muuta pientä ruokaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun mustat perheet muuttivat pohjoiseen viime vuosisadalla, he ottivat ruoan mukaansa.",
+      "text_markdown": "Kun mustat perheet muuttivat pohjoiseen viime vuosisadalla, he ottivat ruoan mukaansa.",
+      "tts": {
+        "text": "Kun mustat perheet muuttivat pohjoiseen viime vuosisadalla, he ottivat ruoan mukaansa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nyt soul foodia on Chicagossa, New Yorkissa, Detroitissa ja jokaisessa etelän kaupungissa.",
+      "text_markdown": "Nyt soul foodia on Chicagossa, New Yorkissa, Detroitissa ja jokaisessa etelän kaupungissa.",
+      "tts": {
+        "text": "Nyt soul fuudia on Tsikagossa, Nju Jorkissa, Ditroitissa ja jokaisessa etelän kaupungissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Mitä soul food on",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mutta sen ydin on yhä etelässä.",
+      "text_markdown": "Mutta sen ydin on yhä etelässä.",
+      "tts": {
+        "text": "Mutta sen ydin on yhä etelässä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 2 — Raaka-aineet",
+      "text_markdown": "Luku 2 — Raaka-aineet"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul foodilla on kaksi suurta juurta.",
+      "text_markdown": "Soul foodilla on kaksi suurta juurta.",
+      "tts": {
+        "text": "Soul fuudilla on kaksi suurta juurta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yksi juuri on Länsi-Afrikka.",
+      "text_markdown": "Yksi juuri on Länsi-Afrikka.",
+      "tts": {
+        "text": "Yksi juuri on Länsi Afrikka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toinen juuri on Amerikat.",
+      "text_markdown": "Toinen juuri on Amerikat.",
+      "tts": {
+        "text": "Toinen juuri on Amerikat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okra tuli Länsi-Afrikasta.",
+      "text_markdown": "Okra tuli Länsi-Afrikasta.",
+      "tts": {
+        "text": "Okra tuli Länsi Afrikasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Okra on vihreä palko.",
+      "text_markdown": "Okra on vihreä palko.",
+      "tts": {
+        "text": "Okra on vihreä palko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se kasvaa korkeassa varressa.",
+      "text_markdown": "Se kasvaa korkeassa varressa.",
+      "tts": {
+        "text": "Se kasvaa korkeassa varressa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kun sen kypsentää, siitä tulee pehmeää ja vähän limaista.",
+      "text_markdown": "Kun sen kypsentää, siitä tulee pehmeää ja vähän limaista.",
+      "tts": {
+        "text": "Kun sen kypsentää, siitä tulee pehmeää ja vähän limaista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sitä on gumbossa, ja sitä paistetaan maissijauhokuoressa.",
+      "text_markdown": "Sitä on gumbossa, ja sitä paistetaan maissijauhokuoressa.",
+      "tts": {
+        "text": "Sitä on gumbossa, ja sitä paistetaan maissijauhokuoressa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myös mustasilmäpavut tulivat Länsi-Afrikasta.",
+      "text_markdown": "Myös mustasilmäpavut tulivat Länsi-Afrikasta.",
+      "tts": {
+        "text": "Myös mustasilmäpavut tulivat Länsi Afrikasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Samoin vesimeloni.",
+      "text_markdown": "Samoin vesimeloni.",
+      "tts": {
+        "text": "Samoin vesimeloni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Samoin seesaminsiemenet.",
+      "text_markdown": "Samoin seesaminsiemenet.",
+      "tts": {
+        "text": "Samoin seesaminsiemenet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vanhat etelän kokit kutsuivat seesamia nimellä \"benne\". He laittoivat benneä kekseihin ja leivän päälle.",
+      "text_markdown": "Vanhat etelän kokit kutsuivat seesamia nimellä \"benne\". He laittoivat benneä kekseihin ja leivän päälle.",
+      "tts": {
+        "text": "Vanhat etelän kokit kutsuivat seesamia nimellä \"benne\". He laittoivat benneä kekseihin ja leivän päälle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myös riisi tuli meren yli.",
+      "text_markdown": "Myös riisi tuli meren yli.",
+      "tts": {
+        "text": "Myös riisi tuli meren yli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrikkalaiset viljelijät olivat kasvattaneet riisiä jo tuhat vuotta.",
+      "text_markdown": "Afrikkalaiset viljelijät olivat kasvattaneet riisiä jo tuhat vuotta.",
+      "tts": {
+        "text": "Afrikkalaiset viljelijät olivat kasvattaneet riisiä jo tuhat vuotta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Etelä-Carolinassa tuo tieto rakensi kokonaisia kaupunkeja.",
+      "text_markdown": "Etelä-Carolinassa tuo tieto rakensi kokonaisia kaupunkeja.",
+      "tts": {
+        "text": "Etelä Karolainassa tuo tieto rakensi kokonaisia kaupunkeja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerikoista tuli maissi.",
+      "text_markdown": "Amerikoista tuli maissi.",
+      "tts": {
+        "text": "Amerikoista tuli maissi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maissi on kotoisin Meksikosta.",
+      "text_markdown": "Maissi on kotoisin Meksikosta.",
+      "tts": {
+        "text": "Maissi on kotoisin Meksikosta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se kulki pohjoiseen tšerokeille ja tšoktawille kauan ennen kuin espanjalaiset tulivat.",
+      "text_markdown": "Se kulki pohjoiseen tšerokeille ja tšoktawille kauan ennen kuin espanjalaiset tulivat.",
+      "tts": {
+        "text": "Se kulki pohjoiseen tšerokeille ja tšoktawille kauan ennen kuin espanjalaiset tulivat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerikoista tulivat myös bataatit, maapähkinät ja monet papulajit.",
+      "text_markdown": "Amerikoista tulivat myös bataatit, maapähkinät ja monet papulajit.",
+      "tts": {
+        "text": "Amerikoista tulivat myös bataatit, maapähkinät ja monet papulajit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Raaka-aineet",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food syntyi, kun nämä kaksi ruokakomeroa kohtasivat samassa keittiössä.",
+      "text_markdown": "Soul food syntyi, kun nämä kaksi ruokakomeroa kohtasivat samassa keittiössä.",
+      "tts": {
+        "text": "Soul fuud syntyi, kun nämä kaksi ruokakomeroa kohtasivat samassa keittiössä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 3 — Liha ja kala",
+      "text_markdown": "Luku 3 — Liha ja kala"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul foodin tärkein liha on sianliha.",
+      "text_markdown": "Soul foodin tärkein liha on sianliha.",
+      "tts": {
+        "text": "Soul fuudin tärkein liha on sianliha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieni maatila pystyi pitämään sian.",
+      "text_markdown": "Pieni maatila pystyi pitämään sian.",
+      "tts": {
+        "text": "Pieni maatila pystyi pitämään sian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sika söi tähteitä.",
+      "text_markdown": "Sika söi tähteitä.",
+      "tts": {
+        "text": "Sika söi tähteitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Syksyllä perhe teurasti sian ja käytti siitä kaiken.",
+      "text_markdown": "Syksyllä perhe teurasti sian ja käytti siitä kaiken.",
+      "tts": {
+        "text": "Syksyllä perhe teurasti sian ja käytti siitä kaiken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He savustivat kinkun.",
+      "text_markdown": "He savustivat kinkun.",
+      "tts": {
+        "text": "He savustivat kinkun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "He suolasivat pekonin.",
+      "text_markdown": "He suolasivat pekonin.",
+      "tts": {
+        "text": "He suolasivat pekonin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "He keittivät sorkat etikassa.",
+      "text_markdown": "He keittivät sorkat etikassa.",
+      "tts": {
+        "text": "He keittivät sorkat etikassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "He säästivät rasvan biscuitteja varten.",
+      "text_markdown": "He säästivät rasvan biscuitteja varten.",
+      "tts": {
+        "text": "He säästivät rasvan biskitteja varten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seuraava tärkeä liha on kana.",
+      "text_markdown": "Seuraava tärkeä liha on kana.",
+      "tts": {
+        "text": "Seuraava tärkeä liha on kana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanat elivät pihalla.",
+      "text_markdown": "Kanat elivät pihalla.",
+      "tts": {
+        "text": "Kanat elivät pihalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne munivat aamulla, ja niistä tehtiin sunnuntaipäivällinen.",
+      "text_markdown": "Ne munivat aamulla, ja niistä tehtiin sunnuntaipäivällinen.",
+      "tts": {
+        "text": "Ne munivat aamulla, ja niistä tehtiin sunnuntaipäivällinen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paistettu kana on etelän kuuluisin ruoka.",
+      "text_markdown": "Paistettu kana on etelän kuuluisin ruoka.",
+      "tts": {
+        "text": "Paistettu kana on etelän kuuluisin ruoka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kana kieritellään jauhoissa, suolassa ja pippurissa.",
+      "text_markdown": "Kana kieritellään jauhoissa, suolassa ja pippurissa.",
+      "tts": {
+        "text": "Kana kieritellään jauhoissa, suolassa ja pippurissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten se lasketaan kuumaan öljyyn.",
+      "text_markdown": "Sitten se lasketaan kuumaan öljyyn.",
+      "tts": {
+        "text": "Sitten se lasketaan kuumaan öljyyn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nahasta tulee rapea ja kullanruskea.",
+      "text_markdown": "Nahasta tulee rapea ja kullanruskea.",
+      "tts": {
+        "text": "Nahasta tulee rapea ja kullanruskea.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monni elää joissa ja järvissä.",
+      "text_markdown": "Monni elää joissa ja järvissä.",
+      "tts": {
+        "text": "Monni elää joissa ja järvissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etelän kokit kierittävät monnin maissijauhossa ja paistavat sen.",
+      "text_markdown": "Etelän kokit kierittävät monnin maissijauhossa ja paistavat sen.",
+      "tts": {
+        "text": "Etelän kokit kierittävät monnin maissijauhossa ja paistavat sen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitä syödään hush puppyjen kanssa, jotka ovat pieniä friteerattuja maissitaikinapalloja.",
+      "text_markdown": "Sitä syödään hush puppyjen kanssa, jotka ovat pieniä friteerattuja maissitaikinapalloja.",
+      "tts": {
+        "text": "Sitä syödään hash papijen kanssa, jotka ovat pieniä friteerattuja maissitaikinapalloja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Liha ja kala",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nimi on hauska, mutta ruoka on vakavaa asiaa.",
+      "text_markdown": "Nimi on hauska, mutta ruoka on vakavaa asiaa.",
+      "tts": {
+        "text": "Nimi on hauska, mutta ruoka on vakavaa asiaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 4 — Ruoanlaiton tavat",
+      "text_markdown": "Luku 4 — Ruoanlaiton tavat"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurin osa soul foodista valmistuu kolmella tavalla, paistamalla, hitaasti hauduttamalla ja savustamalla.",
+      "text_markdown": "Suurin osa soul foodista valmistuu kolmella tavalla, paistamalla, hitaasti hauduttamalla ja savustamalla.",
+      "tts": {
+        "text": "Suurin osa soul fuudista valmistuu kolmella tavalla, paistamalla, hitaasti hauduttamalla ja savustamalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paistaminen tapahtuu raskaassa pannussa, jota kutsutaan valurautapannuksi.",
+      "text_markdown": "Paistaminen tapahtuu raskaassa pannussa, jota kutsutaan valurautapannuksi.",
+      "tts": {
+        "text": "Paistaminen tapahtuu raskaassa pannussa, jota kutsutaan valurautapannuksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valurauta pitää lämmön pitkään.",
+      "text_markdown": "Valurauta pitää lämmön pitkään.",
+      "tts": {
+        "text": "Valurauta pitää lämmön pitkään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hyvä pannu on kokkia vanhempi.",
+      "text_markdown": "Hyvä pannu on kokkia vanhempi.",
+      "tts": {
+        "text": "Hyvä pannu on kokkia vanhempi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se siirtyy äidiltä tyttärelle.",
+      "text_markdown": "Se siirtyy äidiltä tyttärelle.",
+      "tts": {
+        "text": "Se siirtyy äidiltä tyttärelle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hidas haudutus tapahtuu isossa kattilassa lieden takalevyllä.",
+      "text_markdown": "Hidas haudutus tapahtuu isossa kattilassa lieden takalevyllä.",
+      "tts": {
+        "text": "Hidas haudutus tapahtuu isossa kattilassa lieden takalevyllä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lehtivihannekset ovat kattilassa kaksi tai kolme tuntia.",
+      "text_markdown": "Lehtivihannekset ovat kattilassa kaksi tai kolme tuntia.",
+      "tts": {
+        "text": "Lehtivihannekset ovat kattilassa kaksi tai kolme tuntia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maun vuoksi mukaan pannaan pala savustettua sianlihaa.",
+      "text_markdown": "Maun vuoksi mukaan pannaan pala savustettua sianlihaa.",
+      "tts": {
+        "text": "Maun vuoksi mukaan pannaan pala savustettua sianlihaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vedestä tulee tumma ja täyteläinen liemi.",
+      "text_markdown": "Vedestä tulee tumma ja täyteläinen liemi.",
+      "tts": {
+        "text": "Vedestä tulee tumma ja täyteläinen liemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tätä lientä kutsutaan nimellä \"pot likker\", ja sitä kaadetaan maissileivän päälle.",
+      "text_markdown": "Tätä lientä kutsutaan nimellä \"pot likker\", ja sitä kaadetaan maissileivän päälle.",
+      "tts": {
+        "text": "Tätä lientä kutsutaan nimellä \"pat liker\", ja sitä kaadetaan maissileivän päälle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savustus tapahtuu ulkona, savustamossa tai tynnyrissä.",
+      "text_markdown": "Savustus tapahtuu ulkona, savustamossa tai tynnyrissä.",
+      "tts": {
+        "text": "Savustus tapahtuu ulkona, savustamossa tai tynnyrissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Puu palaa hitaasti lihan alla.",
+      "text_markdown": "Puu palaa hitaasti lihan alla.",
+      "tts": {
+        "text": "Puu palaa hitaasti lihan alla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hikkoripuu on suosituin.",
+      "text_markdown": "Hikkoripuu on suosituin.",
+      "tts": {
+        "text": "Hikkoripuu on suosituin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savu värjää lihan ruskeaksi ja antaa sille syvän maun.",
+      "text_markdown": "Savu värjää lihan ruskeaksi ja antaa sille syvän maun.",
+      "tts": {
+        "text": "Savu värjää lihan ruskeaksi ja antaa sille syvän maun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sian lapaa savustetaan monta tuntia, joskus koko päivän.",
+      "text_markdown": "Sian lapaa savustetaan monta tuntia, joskus koko päivän.",
+      "tts": {
+        "text": "Sian lapaa savustetaan monta tuntia, joskus koko päivän.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Ruoanlaiton tavat",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyvässä etelän keittiössä on tulta, aikaa ja huolellisuutta.",
+      "text_markdown": "Hyvässä etelän keittiössä on tulta, aikaa ja huolellisuutta.",
+      "tts": {
+        "text": "Hyvässä etelän keittiössä on tulta, aikaa ja huolellisuutta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 5 — Barbecue alueittain",
+      "text_markdown": "Luku 5 — Barbecue alueittain"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etelässä \"barbecue\" tarkoittaa puunsavussa hitaasti kypsennettyä lihaa.",
+      "text_markdown": "Etelässä \"barbecue\" tarkoittaa puunsavussa hitaasti kypsennettyä lihaa.",
+      "tts": {
+        "text": "Etelässä \"baarbekjuu\" tarkoittaa puunsavussa hitaasti kypsennettyä lihaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokaisella alueella on oma tapansa.",
+      "text_markdown": "Jokaisella alueella on oma tapansa.",
+      "tts": {
+        "text": "Jokaisella alueella on oma tapansa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois-Carolinassa ja Etelä-Carolinassa barbecue on sianlihaa.",
+      "text_markdown": "Pohjois-Carolinassa ja Etelä-Carolinassa barbecue on sianlihaa.",
+      "tts": {
+        "text": "Pohjois Karolainassa ja Etelä Karolainassa baarbekjuu on sianlihaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pohjois-Carolinan itäosassa kastike tehdään etikasta ja pippurista.",
+      "text_markdown": "Pohjois-Carolinan itäosassa kastike tehdään etikasta ja pippurista.",
+      "tts": {
+        "text": "Pohjois Karolainan itäosassa kastike tehdään etikasta ja pippurista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on ohut ja kirpeä.",
+      "text_markdown": "Se on ohut ja kirpeä.",
+      "tts": {
+        "text": "Se on ohut ja kirpeä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Etelä-Carolinassa kastike on keltainen ja tehty sinapista.",
+      "text_markdown": "Etelä-Carolinassa kastike on keltainen ja tehty sinapista.",
+      "tts": {
+        "text": "Etelä Karolainassa kastike on keltainen ja tehty sinapista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se on vähän makea.",
+      "text_markdown": "Se on vähän makea.",
+      "tts": {
+        "text": "Se on vähän makea.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Memphisissä, Tennesseessä, liha on porsaan kylkiluita.",
+      "text_markdown": "Memphisissä, Tennesseessä, liha on porsaan kylkiluita.",
+      "tts": {
+        "text": "Memfisissä, Tennesiissä, liha on porsaan kylkiluita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kylkiluut hierotaan kuivalla seoksella, jossa on suolaa, pippuria ja paljon mausteita.",
+      "text_markdown": "Kylkiluut hierotaan kuivalla seoksella, jossa on suolaa, pippuria ja paljon mausteita.",
+      "tts": {
+        "text": "Kylkiluut hierotaan kuivalla seoksella, jossa on suolaa, pippuria ja paljon mausteita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Liha on tähti, ja kastike on vain sivuasia.",
+      "text_markdown": "Liha on tähti, ja kastike on vain sivuasia.",
+      "tts": {
+        "text": "Liha on tähti, ja kastike on vain sivuasia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Texasissa barbecue on naudanlihaa.",
+      "text_markdown": "Texasissa barbecue on naudanlihaa.",
+      "tts": {
+        "text": "Teksasissa baarbekjuu on naudanlihaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leikettä kutsutaan brisketiksi.",
+      "text_markdown": "Leikettä kutsutaan brisketiksi.",
+      "tts": {
+        "text": "Leikettä kutsutaan brisketiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitä savustetaan tammen puulla kaksitoista tai neljätoista tuntia.",
+      "text_markdown": "Sitä savustetaan tammen puulla kaksitoista tai neljätoista tuntia.",
+      "tts": {
+        "text": "Sitä savustetaan tammen puulla kaksitoista tai neljätoista tuntia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kun se on juuri oikein, sen voi repiä sormilla.",
+      "text_markdown": "Kun se on juuri oikein, sen voi repiä sormilla.",
+      "tts": {
+        "text": "Kun se on juuri oikein, sen voi repiä sormilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kansas Cityssä barbecue on monia lihoja: sianlihaa, naudanlihaa, kanaa, jopa makkaraa.",
+      "text_markdown": "Kansas Cityssä barbecue on monia lihoja: sianlihaa, naudanlihaa, kanaa, jopa makkaraa.",
+      "tts": {
+        "text": "Känsas Sitissä baarbekjuu on monia lihoja: sianlihaa, naudanlihaa, kanaa, jopa makkaraa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kastike on paksua, makeaa ja punaista, ja se tehdään tomaatista ja melassista.",
+      "text_markdown": "Kastike on paksua, makeaa ja punaista, ja se tehdään tomaatista ja melassista.",
+      "tts": {
+        "text": "Kastike on paksua, makeaa ja punaista, ja se tehdään tomaatista ja melassista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Barbecue alueittain",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etelän barbecuen kartta on alueiden ja jokien kartta.",
+      "text_markdown": "Etelän barbecuen kartta on alueiden ja jokien kartta.",
+      "tts": {
+        "text": "Etelän baarbekjuun kartta on alueiden ja jokien kartta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 6 — Klassinen annos",
+      "text_markdown": "Luku 6 — Klassinen annos"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sunnuntaipäivällisen lautanen on täynnä.",
+      "text_markdown": "Sunnuntaipäivällisen lautanen on täynnä.",
+      "tts": {
+        "text": "Sunnuntaipäivällisen lautanen on täynnä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keskellä on paistettua kanaa.",
+      "text_markdown": "Keskellä on paistettua kanaa.",
+      "tts": {
+        "text": "Keskellä on paistettua kanaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanan vieressä on kauhallinen perunamuusia ruskean kastikkeen kanssa.",
+      "text_markdown": "Kanan vieressä on kauhallinen perunamuusia ruskean kastikkeen kanssa.",
+      "tts": {
+        "text": "Kanan vieressä on kauhallinen perunamuusia ruskean kastikkeen kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisella puolella on kasa collard greensiä, jotka on kypsennetty hitaasti savustetun sianlihan kanssa.",
+      "text_markdown": "Toisella puolella on kasa collard greensiä, jotka on kypsennetty hitaasti savustetun sianlihan kanssa.",
+      "tts": {
+        "text": "Toisella puolella on kasa kollard griinsiä, jotka on kypsennetty hitaasti savustetun sianlihan kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vihreät lehdet ovat tummia ja pehmeitä.",
+      "text_markdown": "Vihreät lehdet ovat tummia ja pehmeitä.",
+      "tts": {
+        "text": "Vihreät lehdet ovat tummia ja pehmeitä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisella puolella on makaroni ja juusto, joka on paistettu niin, että pinta on kullanruskea ja rapea.",
+      "text_markdown": "Toisella puolella on makaroni ja juusto, joka on paistettu niin, että pinta on kullanruskea ja rapea.",
+      "tts": {
+        "text": "Toisella puolella on makaroni ja juusto, joka on paistettu niin, että pinta on kullanruskea ja rapea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Moni kokki lisää päälle juustokerroksen.",
+      "text_markdown": "Moni kokki lisää päälle juustokerroksen.",
+      "tts": {
+        "text": "Moni kokki lisää päälle juustokerroksen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pöydässä on maissileipää.",
+      "text_markdown": "Pöydässä on maissileipää.",
+      "tts": {
+        "text": "Pöydässä on maissileipää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maissileipä tehdään keltaisesta maissijauhosta ja paistetaan kuumassa valurautapannussa.",
+      "text_markdown": "Maissileipä tehdään keltaisesta maissijauhosta ja paistetaan kuumassa valurautapannussa.",
+      "tts": {
+        "text": "Maissileipä tehdään keltaisesta maissijauhosta ja paistetaan kuumassa valurautapannussa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on tuhtia, vähän makeaa ja täydellistä voin kanssa.",
+      "text_markdown": "Se on tuhtia, vähän makeaa ja täydellistä voin kanssa.",
+      "tts": {
+        "text": "Se on tuhtia, vähän makeaa ja täydellistä voin kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juomana on makeaa teetä.",
+      "text_markdown": "Juomana on makeaa teetä.",
+      "tts": {
+        "text": "Juomana on makeaa teetä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Makea tee on vahvaksi haudutettua mustaa teetä, johon sekoitetaan sokeria sen ollessa vielä kuumaa.",
+      "text_markdown": "Makea tee on vahvaksi haudutettua mustaa teetä, johon sekoitetaan sokeria sen ollessa vielä kuumaa.",
+      "tts": {
+        "text": "Makea tee on vahvaksi haudutettua mustaa teetä, johon sekoitetaan sokeria sen ollessa vielä kuumaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se tarjoillaan kylmänä jääpalojen kanssa.",
+      "text_markdown": "Se tarjoillaan kylmänä jääpalojen kanssa.",
+      "tts": {
+        "text": "Se tarjoillaan kylmänä jääpalojen kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Päivällisen jälkeen tulee piirakka.",
+      "text_markdown": "Päivällisen jälkeen tulee piirakka.",
+      "tts": {
+        "text": "Päivällisen jälkeen tulee piirakka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bataattipiirakka on etelän piirakoista tyypillisin.",
+      "text_markdown": "Bataattipiirakka on etelän piirakoista tyypillisin.",
+      "tts": {
+        "text": "Bataattipiirakka on etelän piirakoista tyypillisin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on ruskea, sileä ja lämmin, ja siinä maistuvat kaneli ja muskottipähkinä.",
+      "text_markdown": "Se on ruskea, sileä ja lämmin, ja siinä maistuvat kaneli ja muskottipähkinä.",
+      "tts": {
+        "text": "Se on ruskea, sileä ja lämmin, ja siinä maistuvat kaneli ja muskottipähkinä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Klassinen annos",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on klassinen annos.",
+      "text_markdown": "Tämä on klassinen annos.",
+      "tts": {
+        "text": "Tämä on klassinen annos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 7 — Pöydässä",
+      "text_markdown": "Luku 7 — Pöydässä"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etelän päivällinen syödään pöydässä, kaikki yhdessä.",
+      "text_markdown": "Etelän päivällinen syödään pöydässä, kaikki yhdessä.",
+      "tts": {
+        "text": "Etelän päivällinen syödään pöydässä, kaikki yhdessä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoka tuodaan pöytään isoissa kulhoissa ja isoilla vadeilla.",
+      "text_markdown": "Ruoka tuodaan pöytään isoissa kulhoissa ja isoilla vadeilla.",
+      "tts": {
+        "text": "Ruoka tuodaan pöytään isoissa kulhoissa ja isoilla vadeilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tätä kutsutaan nimellä \"family-style\". Jokainen ojentaa kulhon seuraavalle.",
+      "text_markdown": "Tätä kutsutaan nimellä \"family-style\". Jokainen ojentaa kulhon seuraavalle.",
+      "tts": {
+        "text": "Tätä kutsutaan nimellä \"fämili stail\". Jokainen ojentaa kulhon seuraavalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen ottaa sitä, mitä haluaa.",
+      "text_markdown": "Jokainen ottaa sitä, mitä haluaa.",
+      "tts": {
+        "text": "Jokainen ottaa sitä, mitä haluaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haarukat ja veitset ovat tavallisia.",
+      "text_markdown": "Haarukat ja veitset ovat tavallisia.",
+      "tts": {
+        "text": "Haarukat ja veitset ovat tavallisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Erityistä järjestystä ei ole.",
+      "text_markdown": "Erityistä järjestystä ei ole.",
+      "tts": {
+        "text": "Erityistä järjestystä ei ole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanaa syödään haarukalla, tai sen voi ottaa käsiin.",
+      "text_markdown": "Kanaa syödään haarukalla, tai sen voi ottaa käsiin.",
+      "tts": {
+        "text": "Kanaa syödään haarukalla, tai sen voi ottaa käsiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Molemmat käyvät.",
+      "text_markdown": "Molemmat käyvät.",
+      "tts": {
+        "text": "Molemmat käyvät.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maissileipä murretaan käsin, sitä ei koskaan leikata veitsellä.",
+      "text_markdown": "Maissileipä murretaan käsin, sitä ei koskaan leikata veitsellä.",
+      "tts": {
+        "text": "Maissileipä murretaan käsin, sitä ei koskaan leikata veitsellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ennen ateriaa joku lausuu usein lyhyen rukouksen.",
+      "text_markdown": "Ennen ateriaa joku lausuu usein lyhyen rukouksen.",
+      "tts": {
+        "text": "Ennen ateriaa joku lausuu usein lyhyen rukouksen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siinä kiitetään Jumalaa ruoasta ja kokeista.",
+      "text_markdown": "Siinä kiitetään Jumalaa ruoasta ja kokeista.",
+      "tts": {
+        "text": "Siinä kiitetään Jumalaa ruoasta ja kokeista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos olet vieras, sinua kehotetaan ottamaan lisää, ja vielä lisää, ja vielä lisää.",
+      "text_markdown": "Jos olet vieras, sinua kehotetaan ottamaan lisää, ja vielä lisää, ja vielä lisää.",
+      "tts": {
+        "text": "Jos olet vieras, sinua kehotetaan ottamaan lisää, ja vielä lisää, ja vielä lisää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kannattaa sanoa kyllä ainakin kaksi kertaa.",
+      "text_markdown": "Kannattaa sanoa kyllä ainakin kaksi kertaa.",
+      "tts": {
+        "text": "Kannattaa sanoa kyllä ainakin kaksi kertaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nälkäisenä ei sovi lähteä.",
+      "text_markdown": "Nälkäisenä ei sovi lähteä.",
+      "tts": {
+        "text": "Nälkäisenä ei sovi lähteä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aterian lopussa kenelläkään ei ole kiire nousta.",
+      "text_markdown": "Aterian lopussa kenelläkään ei ole kiire nousta.",
+      "tts": {
+        "text": "Aterian lopussa kenelläkään ei ole kiire nousta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Pöydässä",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Puhuminen on puolet päivällisestä.",
+      "text_markdown": "Puhuminen on puolet päivällisestä.",
+      "tts": {
+        "text": "Puhuminen on puolet päivällisestä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tästä kirjasta",
+      "text_markdown": "Tästä kirjasta"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on ensimmäinen kirja sarjassa Ruokaa maailmalta.",
+      "text_markdown": "Tämä on ensimmäinen kirja sarjassa Ruokaa maailmalta.",
+      "tts": {
+        "text": "Tämä on ensimmäinen kirja sarjassa Ruokaa maailmalta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Minä, ystäväsi Kym, luen sen ääneen.",
+      "text_markdown": "Sen lukee ääneen Kym.",
+      "tts": {
+        "text": "Minä, ystäväsi Kim, luen sen ääneen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen lause on lyhyt ja selkeä, jotta voit seurata mukana millä tahansa kielellä.",
+      "text_markdown": "Jokainen lause on lyhyt ja selkeä, jotta voit seurata mukana millä tahansa kielellä.",
+      "tts": {
+        "text": "Jokainen lause on lyhyt ja selkeä, jotta voit seurata mukana millä tahansa kielellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+      "text_markdown": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+      "tts": {
+        "text": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sivun sanat vastaavat sitä, mitä kuulet.",
+      "text_markdown": "Sivun sanat vastaavat sitä, mitä kuulet.",
+      "tts": {
+        "text": "Sivun sanat vastaavat sitä, mitä kuulet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sillä tavalla oppii.",
+      "text_markdown": "Sillä tavalla oppii.",
+      "tts": {
+        "text": "Sillä tavalla oppii.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tästä kirjasta",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lähde nyt etsimään hyvää ruokaa ja ystävää, jonka kanssa jakaa se.",
+      "text_markdown": "Lähde nyt etsimään hyvää ruokaa ja ystävää, jonka kanssa jakaa se.",
+      "tts": {
+        "text": "Lähde nyt etsimään hyvää ruokaa ja ystävää, jonka kanssa jakaa se.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

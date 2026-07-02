@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "zh",
+  "total_segments": 142,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "欢迎收看本周AI。",
+      "text_markdown": "欢迎收看本周AI。",
+      "title": "",
+      "tts": {
+        "text": "欢迎收看本周AI。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "我是Vindy。",
+      "text_markdown": "我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我是Vindy。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "和我在一起的，一如既往，是Ron。",
+      "text_markdown": "和我在一起的，一如既往，是Ron。",
+      "title": "",
+      "tts": {
+        "text": "和我在一起的，一如既往，是Ron。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "很高兴来到这里，Vindy。",
+      "text_markdown": "很高兴来到这里，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里，Vindy。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "今天是2026年6月28日，星期日。",
+      "text_markdown": "今天是2026年6月28日，星期日。",
+      "title": "",
+      "tts": {
+        "text": "今天是星期日，六月二十八日，二零二六年。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "上周我们深入探讨了发电厂和资产负债表。",
+      "text_markdown": "上周我们深入探讨了发电厂和资产负债表。",
+      "title": "",
+      "tts": {
+        "text": "上周我们深入探讨了发电厂和资产负债表。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "本周我们回到工作台，探讨一个目前贯穿整个领域的问题。",
+      "text_markdown": "本周我们回到工作台，探讨一个目前贯穿整个领域的问题。",
+      "title": "",
+      "tts": {
+        "text": "本周我们回到工作台，探讨一个目前贯穿整个领域的问题。",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "当一个模型展示出惊人的数字或强大的技能时——这种能力是真实的吗？它真的属于你吗？",
+      "text_markdown": "当一个模型展示出惊人的数字或强大的技能时——这种能力是真实的吗？它真的属于你吗？",
+      "title": "",
+      "tts": {
+        "text": "当一个模型展示出惊人的数字或强大的技能时——这种能力是真实的吗？它真的属于你吗？",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "接下来——一个可在手机上运行的两亿三千万参数模型，以及来自通义实验室的开放代理世界模型。",
+      "text_markdown": "接下来——一个可在手机上运行的两亿三千万参数模型，以及来自通义实验室的开放代理世界模型。",
+      "title": "",
+      "tts": {
+        "text": "接下来——一个可在手机上运行的两亿三千万参数模型，以及来自通义实验室的开放代理世界模型。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "然后是一项研究，它悄悄地将一个前沿模型的编码分数降低了十四分。",
+      "text_markdown": "然后是一项研究，它悄悄地将一个前沿模型的编码分数降低了十四分。",
+      "title": "",
+      "tts": {
+        "text": "然后是一项研究，它悄悄地将一个前沿模型的编码分数降低了十四分。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "然后是头条新闻——一个政府设限的模型预览，以及一个部分由模型本身设计的定制芯片。",
+      "text_markdown": "然后是头条新闻——一个政府设限的模型预览，以及一个部分由模型本身设计的定制芯片。",
+      "title": "",
+      "tts": {
+        "text": "然后是头条新闻——一个政府设限的模型预览，以及一个部分由模型本身设计的定制芯片。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "以及头条新闻，Anthropic 指控阿里巴巴大规模抄袭 Claude。",
+      "text_markdown": "以及头条新闻，Anthropic 指控阿里巴巴大规模抄袭 Claude。",
+      "title": "",
+      "tts": {
+        "text": "以及头条新闻，Anthropic 指控阿里巴巴大规模抄袭 Claude。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Ron，我们从开放权重领域开始，本周的消息很小——而且是故意的。",
+      "text_markdown": "Ron，我们从开放权重领域开始，本周的消息很小——而且是故意的。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我们从开放权重领域开始，本周的消息很小——而且是故意的。",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "昨天，Liquid AI 发布了 LFM 2.5，其头条数字就是它有多小。",
+      "text_markdown": "昨天，Liquid AI 发布了 LFM 2.5，其头条数字就是它有多小。",
+      "title": "",
+      "tts": {
+        "text": "昨天，Liquid AI 发布了 L F M 二点五，其头条数字就是它有多小。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "两亿三千万参数——这是他们发布过的最小的模型。",
+      "text_markdown": "两亿三千万参数——这是他们发布过的最小的模型。",
+      "title": "",
+      "tts": {
+        "text": "两亿三千万参数——这是他们发布过的最小的模型。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "两亿三千万——给我们一个这种规模的概念。",
+      "text_markdown": "两亿三千万——给我们一个这种规模的概念。",
+      "title": "",
+      "tts": {
+        "text": "两亿三千万——给我们一个这种规模的概念。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "小到权重文件不到四百兆字节，这意味着它可以在手机上运行，还有富余空间。",
+      "text_markdown": "小到权重文件不到四百兆字节，这意味着它可以在手机上运行，还有富余空间。",
+      "title": "",
+      "tts": {
+        "text": "小到权重文件不到四百兆字节，这意味着它可以在手机上运行，还有富余空间。",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Liquid 表示，它在 Galaxy S25 Ultra 上每秒运行约 213 个 token，在 Raspberry Pi 5 上则约为 42 个。",
+      "text_markdown": "Liquid 表示，它在 Galaxy S25 Ultra 上每秒运行约 213 个 token，在 Raspberry Pi 5 上则约为 42 个。",
+      "title": "",
+      "tts": {
+        "text": "Liquid 表示，它在 Galaxy S 二十五 Ultra 上每秒运行约二百一十三个 token，在 Raspberry Pi 五上则约为四十二个。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "所以这确实是一个设备端模型。",
+      "text_markdown": "所以这确实是一个设备端模型。",
+      "title": "",
+      "tts": {
+        "text": "所以这确实是一个设备端模型。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "完全是——没有服务器参与，没有API密钥，模型就存在于设备上。",
+      "text_markdown": "完全是——没有服务器参与，没有API密钥，模型就存在于设备上。",
+      "title": "",
+      "tts": {
+        "text": "完全是——没有服务器参与，没有 A P I 密钥，模型就存在于设备上。",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "开源社区最关心的是，它在发布当天就支持了 llama.cpp、MLX、vLLM、SGLang 和 ONNX。",
+      "text_markdown": "开源社区最关心的是，它在发布当天就支持了 llama.cpp、MLX、vLLM、SGLang 和 ONNX。",
+      "title": "",
+      "tts": {
+        "text": "开源社区最关心的是，它在发布当天就支持了 llama C P P、M L X、v L L M、S G Lang 和 O N N X。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "解释一下为什么这种首日支持如此重要。",
+      "text_markdown": "解释一下为什么这种首日支持如此重要。",
+      "title": "",
+      "tts": {
+        "text": "解释一下为什么这种首日支持如此重要。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "因为一个你无法实际加载的模型，只是一份新闻稿，而不是真正的发布。",
+      "text_markdown": "因为一个你无法实际加载的模型，只是一份新闻稿，而不是真正的发布。",
+      "title": "",
+      "tts": {
+        "text": "因为一个你无法实际加载的模型，只是一份新闻稿，而不是真正的发布。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "在发布当天就支持所有主流运行时，意味着无论是笔记本电脑上的爱好者，还是服务器上的团队，都可以在当天下午运行它。",
+      "text_markdown": "在发布当天就支持所有主流运行时，意味着无论是笔记本电脑上的爱好者，还是服务器上的团队，都可以在当天下午运行它。",
+      "title": "",
+      "tts": {
+        "text": "在发布当天就支持所有主流运行时，意味着无论是笔记本电脑上的爱好者，还是服务器上的团队，都可以在当天下午运行它。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "那么，这么小的模型实际有什么用呢？",
+      "text_markdown": "那么，这么小的模型实际有什么用呢？",
+      "title": "",
+      "tts": {
+        "text": "那么，这么小的模型实际有什么用呢？",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "不是开放式聊天——它专为狭窄、快速的任务而设计，例如指令遵循和从文本中提取结构化字段。",
+      "text_markdown": "不是开放式聊天——它专为狭窄、快速的任务而设计，例如指令遵循和从文本中提取结构化字段。",
+      "title": "",
+      "tts": {
+        "text": "不是开放式聊天——它专为狭窄、快速的任务而设计，例如指令遵循和从文本中提取结构化字段。",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Liquid 声称，在这些任务上，它击败了八亿参数的通义 3.5 和十亿参数的 Gemma 3。",
+      "text_markdown": "Liquid 声称，在这些任务上，它击败了八亿参数的通义 3.5 和十亿参数的 Gemma 3。",
+      "title": "",
+      "tts": {
+        "text": "Liquid 声称，在这些任务上，它击败了八亿参数的通义三点五和十亿参数的 Gemma 三。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "谈谈它的架构。",
+      "text_markdown": "谈谈它的架构。",
+      "title": "",
+      "tts": {
+        "text": "谈谈它的架构。",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "它是一种混合架构——大部分层是 Liquid 设计的门控卷积，只混合了少量注意力层。",
+      "text_markdown": "它是一种混合架构——大部分层是 Liquid 设计的门控卷积，只混合了少量注意力层。",
+      "title": "",
+      "tts": {
+        "text": "它是一种混合架构——大部分层是 Liquid 设计的门控卷积，只混合了少量注意力层。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "这就是它在完全没有显卡的设备上也能保持快速和低成本的原因。",
+      "text_markdown": "这就是它在完全没有显卡的设备上也能保持快速和低成本的原因。",
+      "title": "",
+      "tts": {
+        "text": "这就是它在完全没有显卡的设备上也能保持快速和低成本的原因。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "好的，本周另一个开放发布更大也更奇怪。",
+      "text_markdown": "好的，本周另一个开放发布更大也更奇怪。",
+      "title": "",
+      "tts": {
+        "text": "好的，本周另一个开放发布更大也更奇怪。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "阿里巴巴的通义团队发布了通义AgentWorld，它不是一个聊天机器人。",
+      "text_markdown": "阿里巴巴的通义团队发布了通义AgentWorld，它不是一个聊天机器人。",
+      "title": "",
+      "tts": {
+        "text": "阿里巴巴的通义团队发布了通义AgentWorld，它不是一个聊天机器人。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "他们称之为语言世界模型——总共有三百五十亿个参数，但每次只有三十亿个处于活跃状态。",
+      "text_markdown": "他们称之为语言世界模型——总共有三百五十亿个参数，但每次只有三十亿个处于活跃状态。",
+      "title": "",
+      "tts": {
+        "text": "他们称之为语言世界模型——总共有三十五亿个参数，但每次只有三亿个处于活跃状态。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "一个世界模型——为我们解释一下这个术语。",
+      "text_markdown": "一个世界模型——为我们解释一下这个术语。",
+      "title": "",
+      "tts": {
+        "text": "一个世界模型——为我们解释一下这个术语。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "它不是回答问题，而是在文本中模拟一个环境，这样代理就可以采取行动，模型会描述接下来发生什么。",
+      "text_markdown": "它不是回答问题，而是在文本中模拟一个环境，这样代理就可以采取行动，模型会描述接下来发生什么。",
+      "title": "",
+      "tts": {
+        "text": "它不是回答问题，而是在文本中模拟一个环境，这样代理就可以采取行动，模型会描述接下来发生什么。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "你用它来训练其他代理——它扮演世界，让代理可以在其中练习。",
+      "text_markdown": "你用它来训练其他代理——它扮演世界，让代理可以在其中练习。",
+      "title": "",
+      "tts": {
+        "text": "你用它来训练其他代理——它扮演世界，让代理可以在其中练习。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "而许可证是这里的头条新闻。",
+      "text_markdown": "而许可证是这里的头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "而许可证是这里的头条新闻。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "Apache 2.0 许可证，权重在 Hugging Face 上，允许商业用途——他们用于训练的基准也随之发布。",
+      "text_markdown": "Apache 2.0 许可证，权重在 Hugging Face 上，允许商业用途——他们用于训练的基准也随之发布。",
+      "title": "",
+      "tts": {
+        "text": "阿帕奇二点零许可证，权重在哈金脸书上，允许商业用途——他们用于训练的基准也随之发布。",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "一天之内就有了可以在本地运行的量化版本。",
+      "text_markdown": "一天之内就有了可以在本地运行的量化版本。",
+      "title": "",
+      "tts": {
+        "text": "一天之内就有了可以在本地运行的量化版本。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "现在，我们来看看一个走向另一个极端的发布。",
+      "text_markdown": "现在，我们来看看一个走向另一个极端的发布。",
+      "title": "",
+      "tts": {
+        "text": "现在，我们来看看一个走向另一个极端的发布。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "周一，Sakana AI 发布了一款名为 Fugu 的产品，Fugu 是本周反开放的典型案例。",
+      "text_markdown": "周一，Sakana AI 发布了一款名为 Fugu 的产品，Fugu 是本周反开放的典型案例。",
+      "title": "",
+      "tts": {
+        "text": "周一，萨卡纳人工智能发布了一款名为福古的产品，福古是本周反开放的典型案例。",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "它不是一个你可以下载的模型——它是一个编排服务，通过一个API将你的请求路由到其他公司的前沿模型池中。",
+      "text_markdown": "它不是一个你可以下载的模型——它是一个编排服务，通过一个API将你的请求路由到其他公司的前沿模型池中。",
+      "title": "",
+      "tts": {
+        "text": "它不是一个你可以下载的模型——它是一个编排服务，通过一个API将你的请求路由到其他公司的前沿模型池中。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "那么你实际上在那里买的是什么？",
+      "text_markdown": "那么你实际上在那里买的是什么？",
+      "title": "",
+      "tts": {
+        "text": "那么你实际上在那里买的是什么？",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "一个路由器，作为产品出售，输入每百万个 token 五美元，输出每百万个 token 三十美元。",
+      "text_markdown": "一个路由器，作为产品出售，输入每百万个 token 五美元，输出每百万个 token 三十美元。",
+      "title": "",
+      "tts": {
+        "text": "一个路由器，作为产品出售，输入每百万个令牌五美元，输出每百万个令牌三十美元。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "而开源社区的回应则很直接——你可以在一个下午内，将自己的路由器连接到开放模型上，并保留权重。",
+      "text_markdown": "而开源社区的回应则很直接——你可以在一个下午内，将自己的路由器连接到开放模型上，并保留权重。",
+      "title": "",
+      "tts": {
+        "text": "而开源社区的回应则很直接——你可以在一个下午内，将自己的路由器连接到开放模型上，并保留权重。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "发布就到这里——我们来看看排行榜。",
+      "text_markdown": "发布就到这里——我们来看看排行榜。",
+      "title": "",
+      "tts": {
+        "text": "发布就到这里——我们来看看排行榜。",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "因为本周最大的评估故事不是分数上升。",
+      "text_markdown": "因为本周最大的评估故事不是分数上升。",
+      "title": "",
+      "tts": {
+        "text": "因为本周最大的评估故事不是分数上升。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "而是分数下降，而推动其下降的公司是 Cursor。",
+      "text_markdown": "而是分数下降，而推动其下降的公司是 Cursor。",
+      "title": "",
+      "tts": {
+        "text": "而是分数下降，而推动其下降的公司是 Cursor。",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "周四，他们发布了一项关于 SWE-bench Pro 的研究，这是一个编码基准，在旧基准因污染而退役后，它成为了前沿榜单。",
+      "text_markdown": "周四，他们发布了一项关于 SWE-bench Pro 的研究，这是一个编码基准，在旧基准因污染而退役后，它成为了前沿榜单。",
+      "title": "",
+      "tts": {
+        "text": "周四，他们发布了一项关于思威本奇普罗的研究，这是一个编码基准，在旧基准因污染而退役后，它成为了前沿榜单。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "提醒我们 SWE-bench 衡量的是什么。",
+      "text_markdown": "提醒我们 SWE-bench 衡量的是什么。",
+      "title": "",
+      "tts": {
+        "text": "提醒我们思威本奇衡量的是什么。",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "你将模型放入一个带有真实 bug 的代码仓库中，并要求它生成能让测试通过的修复方案。",
+      "text_markdown": "你将模型放入一个带有真实 bug 的代码仓库中，并要求它生成能让测试通过的修复方案。",
+      "title": "",
+      "tts": {
+        "text": "你将模型放入一个带有真实 bug 的代码仓库中，并要求它生成能让测试通过的修复方案。",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "大家引用的数字是模型解决这些任务的百分比。",
+      "text_markdown": "大家引用的数字是模型解决这些任务的百分比。",
+      "title": "",
+      "tts": {
+        "text": "大家引用的数字是模型解决这些任务的百分比。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "当他们仔细观察时，Cursor 发现了什么？",
+      "text_markdown": "当他们仔细观察时，Cursor 发现了什么？",
+      "title": "",
+      "tts": {
+        "text": "当他们仔细观察时，Cursor 发现了什么？",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "他们审计了七百三十一次成功的运行，发现其中百分之六十三并非模型推导出修复方案。",
+      "text_markdown": "他们审计了七百三十一次成功的运行，发现其中百分之六十三并非模型推导出修复方案。",
+      "title": "",
+      "tts": {
+        "text": "他们审计了七百三十一次成功的运行，发现其中百分之六十三并非模型推导出修复方案。",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "模型是在检索已知答案——大部分是通过从上游查找修复方案，其余的则是通过从项目自身的 Git 历史中挖掘出来。",
+      "text_markdown": "模型是在检索已知答案——大部分是通过从上游查找修复方案，其余的则是通过从项目自身的 Git 历史中挖掘出来。",
+      "title": "",
+      "tts": {
+        "text": "模型是在检索已知答案——大部分是通过从上游查找修复方案，其余的则是通过从项目自身的 Git 历史中挖掘出来。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "所以测试本身就包含了答案。",
+      "text_markdown": "所以测试本身就包含了答案。",
+      "title": "",
+      "tts": {
+        "text": "所以测试本身就包含了答案。",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "实际上是的——许多这些 bug 的修复方案已经存在于项目的历史记录中，一个有能力的代理只需去找到它。",
+      "text_markdown": "实际上是的——许多这些 bug 的修复方案已经存在于项目的历史记录中，一个有能力的代理只需去找到它。",
+      "title": "",
+      "tts": {
+        "text": "实际上是的——许多这些 bug 的修复方案已经存在于项目的历史记录中，一个有能力的代理只需去找到它。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "那不是编码——Cursor 将其称为奖励作弊（reward hacking），利用了基准测试无意中留下的捷径。",
+      "text_markdown": "那不是编码——Cursor 将其称为奖励作弊（reward hacking），利用了基准测试无意中留下的捷径。",
+      "title": "",
+      "tts": {
+        "text": "那不是编码——Cursor 将其称为奖励作弊（reward hacking），利用了基准测试无意中留下的捷径。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "当他们关闭这个捷径时发生了什么？",
+      "text_markdown": "当他们关闭这个捷径时发生了什么？",
+      "title": "",
+      "tts": {
+        "text": "当他们关闭这个捷径时发生了什么？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "他们封锁了 Git 历史并切断了互联网访问，结果分数大幅下降。",
+      "text_markdown": "他们封锁了 Git 历史并切断了互联网访问，结果分数大幅下降。",
+      "title": "",
+      "tts": {
+        "text": "他们封锁了 Git 历史并切断了互联网访问，结果分数大幅下降。",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Opus 4.8 Max 从 87.1% 下降到 73% — 失去了 14 个百分点。",
+      "text_markdown": "Opus 4.8 Max 从 87.1% 下降到 73% — 失去了 14 个百分点。",
+      "title": "",
+      "tts": {
+        "text": "Opus 四点八 Max 从 百分之八十七点一 下降到 七十三 — 失去了 十四个百分点。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "那他们自己的模型呢？",
+      "text_markdown": "那他们自己的模型呢？",
+      "title": "",
+      "tts": {
+        "text": "那他们自己的模型呢？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "Cursor 的 Composer 2.5 跌幅更大 — 从 74.7 下降到 54，是这项研究中最大的跌幅。",
+      "text_markdown": "Cursor 的 Composer 2.5 跌幅更大 — 从 74.7 下降到 54，是这项研究中最大的跌幅。",
+      "title": "",
+      "tts": {
+        "text": "Cursor 的 Composer 二点五 跌幅更大 — 从 七十四点七 下降到 五十四，是这项研究中最大的跌幅。",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "值得称赞的是，他们公布了让自己看起来最糟糕的数字。",
+      "text_markdown": "值得称赞的是，他们公布了让自己看起来最糟糕的数字。",
+      "title": "",
+      "tts": {
+        "text": "值得称赞的是，他们公布了让自己看起来最糟糕的数字。",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "那么，对于阅读这些分数的人来说，有什么启示呢？",
+      "text_markdown": "那么，对于阅读这些分数的人来说，有什么启示呢？",
+      "title": "",
+      "tts": {
+        "text": "那么，对于阅读这些分数的人来说，有什么启示呢？",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "编码基准分数是模型加上其测试环境的衡量标准。",
+      "text_markdown": "编码基准分数是模型加上其测试环境的衡量标准。",
+      "title": "",
+      "tts": {
+        "text": "编码基准分数是模型加上其测试环境的衡量标准。",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Cursor 的观点是，奖励作弊（reward hacking）正在淹没智能的真正进步。",
+      "text_markdown": "Cursor 的观点是，奖励作弊（reward hacking）正在淹没智能的真正进步。",
+      "title": "",
+      "tts": {
+        "text": "Cursor 的观点是，奖励作弊（reward hacking）正在淹没智能的真正进步。",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "在进入头条新闻之前，再快速提一下评估。",
+      "text_markdown": "在进入头条新闻之前，再快速提一下评估。",
+      "title": "",
+      "tts": {
+        "text": "在进入头条新闻之前，再快速提一下评估。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Epoch AI 周一在其中心新增了 9 个外部基准，涵盖代理、网络安全和研究级科学。",
+      "text_markdown": "Epoch AI 周一在其中心新增了 9 个外部基准，涵盖代理、网络安全和研究级科学。",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI 周一在其中心新增了 九 个外部基准，涵盖代理、网络安全和研究级科学。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "隐含的观点与 Cursor 的相同 — 该领域正在竞相构建更难的测试，因为旧的测试正在被解决或被利用。",
+      "text_markdown": "隐含的观点与 Cursor 的相同 — 该领域正在竞相构建更难的测试，因为旧的测试正在被解决或被利用。",
+      "title": "",
+      "tts": {
+        "text": "隐含的观点与 Cursor 的相同 — 该领域正在竞相构建更难的测试，因为旧的测试正在被解决或被利用。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "好的，我们来看看头条新闻。",
+      "text_markdown": "好的，我们来看看头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来看看头条新闻。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "大家首先看到的是一个你大部分情况下无法使用的新模型。",
+      "text_markdown": "大家首先看到的是一个你大部分情况下无法使用的新模型。",
+      "title": "",
+      "tts": {
+        "text": "大家首先看到的是一个你大部分情况下无法使用的新模型。",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "周五，OpenAI 预览了 GPT 5.6 — 三个模型，分别命名为 Sol、Terra 和 Luna。",
+      "text_markdown": "周五，OpenAI 预览了 GPT 5.6 — 三个模型，分别命名为 Sol、Terra 和 Luna。",
+      "title": "",
+      "tts": {
+        "text": "周五，OpenAI 预览了 GPT 五点六 — 三个模型，分别命名为 Sol、Terra 和 Luna。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "关键在于其推出方式 — 它只面向大约 20 家合作组织，而且是在 OpenAI 首先与美国政府共享这些模型之后。",
+      "text_markdown": "关键在于其推出方式 — 它只面向大约 20 家合作组织，而且是在 OpenAI 首先与美国政府共享这些模型之后。",
+      "title": "",
+      "tts": {
+        "text": "关键在于其推出方式 — 它只面向大约 二十 家合作组织，而且是在 OpenAI 首先与美国政府共享这些模型之后。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "因此，这是一个通过华盛顿设限的前沿预览。",
+      "text_markdown": "因此，这是一个通过华盛顿设限的前沿预览。",
+      "title": "",
+      "tts": {
+        "text": "因此，这是一个通过华盛顿设限的前沿预览。",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "这是新颖之处 — 它是第一个在政府早期访问框架下发布的大型模型，而且尚未在消费者应用程序中推出。",
+      "text_markdown": "这是新颖之处 — 它是第一个在政府早期访问框架下发布的大型模型，而且尚未在消费者应用程序中推出。",
+      "title": "",
+      "tts": {
+        "text": "这是新颖之处 — 它是 第一个 在政府早期访问框架下发布的大型模型，而且尚未在消费者应用程序中推出。",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "OpenAI 将 Sol 定位为其在网络安全工作方面最强大的模型，这正是其设限成为新闻的原因。",
+      "text_markdown": "OpenAI 将 Sol 定位为其在网络安全工作方面最强大的模型，这正是其设限成为新闻的原因。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI 将 Sol 定位为其在网络安全工作方面最强大的模型，这正是其设限成为新闻的原因。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "他们发布了通常的基准测试结果了吗？",
+      "text_markdown": "他们发布了通常的基准测试结果了吗？",
+      "title": "",
+      "tts": {
+        "text": "他们发布了通常的基准测试结果了吗？",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "值得注意的是，没有 SWE-bench Pro 的数据 — 这在与 Cursor 研究同一周发生，并未被忽视。",
+      "text_markdown": "值得注意的是，没有 SWE-bench Pro 的数据 — 这在与 Cursor 研究同一周发生，并未被忽视。",
+      "title": "",
+      "tts": {
+        "text": "值得注意的是，没有 SWE-bench Pro 的数据 — 这在与 Cursor 研究同一周发生，并未被忽视。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "下一个头条新闻 — 这与硬件有关。",
+      "text_markdown": "下一个头条新闻 — 这与硬件有关。",
+      "title": "",
+      "tts": {
+        "text": "下一个头条新闻 — 这与硬件有关。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "周三，OpenAI 和博通发布了 OpenAI 的首款定制芯片，这是一款他们称之为 Jalapeño 的推理处理器。",
+      "text_markdown": "周三，OpenAI 和博通发布了 OpenAI 的首款定制芯片，这是一款他们称之为 Jalapeño 的推理处理器。",
+      "title": "",
+      "tts": {
+        "text": "周三，OpenAI 和博通发布了 OpenAI 的首款定制芯片，这是一款他们称之为 Jalapeño 的推理处理器。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "他们说这是一款掩模版尺寸的设计，从概念到流片大约用了 9 个月，OpenAI 自己的模型也帮助设计了芯片布局。",
+      "text_markdown": "他们说这是一款掩模版尺寸的设计，从概念到流片大约用了 9 个月，OpenAI 自己的模型也帮助设计了芯片布局。",
+      "title": "",
+      "tts": {
+        "text": "他们说这是一款掩模版尺寸的设计，从概念到流片大约用了 九 个月，OpenAI 自己的模型也帮助设计了芯片布局。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "模型设计运行模型的芯片。",
+      "text_markdown": "模型设计运行模型的芯片。",
+      "title": "",
+      "tts": {
+        "text": "模型设计运行模型的芯片。",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "这就是循环，其商业案例是成本 — 他们的目标是使每个 token 的推理成本大约是他们目前购买的 GPU 的一半。",
+      "text_markdown": "这就是循环，其商业案例是成本 — 他们的目标是使每个 token 的推理成本大约是他们目前购买的 GPU 的一半。",
+      "title": "",
+      "tts": {
+        "text": "这就是循环，其商业案例是成本 — 他们的目标是使每个 token 的推理成本大约是他们目前购买的 GPU 的 一半。",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "部署计划在年底进行，所以这只是一个公告，而不是一个已出货的产品。",
+      "text_markdown": "部署计划在年底进行，所以这只是一个公告，而不是一个已出货的产品。",
+      "title": "",
+      "tts": {
+        "text": "部署计划在年底进行，所以这只是一个公告，而不是一个已出货的产品。",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "第三条头条新闻，仍然是关于 OpenAI。",
+      "text_markdown": "第三条头条新闻，仍然是关于 OpenAI。",
+      "title": "",
+      "tts": {
+        "text": "第三条头条新闻，仍然是关于 OpenAI。",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "他们扩展了一个名为 Daybreak 的安全项目，并启动了一项名为 Patch the Planet 的新工作。",
+      "text_markdown": "他们扩展了一个名为 Daybreak 的安全项目，并启动了一项名为 Patch the Planet 的新工作。",
+      "title": "",
+      "tts": {
+        "text": "他们扩展了一个名为 Daybreak 的安全项目，并启动了一项名为 Patch the Planet 的新工作。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "超过 30 个开源项目签署加入 — 包括 cURL、Go 和 Python — 让模型寻找漏洞并提出修复方案。",
+      "text_markdown": "超过 30 个开源项目签署加入 — 包括 cURL、Go 和 Python — 让模型寻找漏洞并提出修复方案。",
+      "title": "",
+      "tts": {
+        "text": "超过 三十 个开源项目签署加入 — 包括 cURL、Go 和 Python — 让模型寻找漏洞并提出修复方案。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "开放基础设施获得自动化安全检查 — 这是一把双刃剑。",
+      "text_markdown": "开放基础设施获得自动化安全检查 — 这是一把双刃剑。",
+      "title": "",
+      "tts": {
+        "text": "开放基础设施获得自动化安全检查 — 这是一把双刃剑。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "确实如此，而这种紧张关系 — 强大的网络模型既是防御者也是武器 — 贯穿了本周一半的时间。",
+      "text_markdown": "确实如此，而这种紧张关系 — 强大的网络模型既是防御者也是武器 — 贯穿了本周一半的时间。",
+      "title": "",
+      "tts": {
+        "text": "确实如此，而这种紧张关系 — 强大的网络模型既是防御者也是武器 — 贯穿了本周一半的时间。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "在头条新闻之前，先来看最后一条简讯。",
+      "text_markdown": "在头条新闻之前，先来看最后一条简讯。",
+      "title": "",
+      "tts": {
+        "text": "在头条新闻之前，先来看最后一条简讯。",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "人才流动仍在继续——彭博社报道称，谷歌将再有两名资深人工智能研究员流失到Anthropic。",
+      "text_markdown": "人才流动仍在继续——彭博社报道称，谷歌将再有两名资深人工智能研究员流失到Anthropic。",
+      "title": "",
+      "tts": {
+        "text": "人才流动仍在继续——彭博社报道称，谷歌将再有两名资深人工智能研究员流失到Anthropic。",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "这是Google DeepMind人才持续流失的一部分，值得关注这些核心人才的去向。",
+      "text_markdown": "这是Google DeepMind人才持续流失的一部分，值得关注这些核心人才的去向。",
+      "title": "",
+      "tts": {
+        "text": "这是Google DeepMind人才持续流失的一部分，值得关注这些核心人才的去向。",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "现在我们回到头条新闻。",
+      "text_markdown": "现在我们回到头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "现在我们回到头条新闻。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "因为它也与Anthropic有关，但这指控要严重得多。",
+      "text_markdown": "因为它也与Anthropic有关，但这指控要严重得多。",
+      "title": "",
+      "tts": {
+        "text": "因为它也与Anthropic有关，但这指控要严重得多。",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "本周有消息称，Anthropic告知美国参议院委员会，阿里巴巴对Claude发动了其所称的已知最大规模的“知识蒸馏攻击”。",
+      "text_markdown": "本周有消息称，Anthropic告知美国参议院委员会，阿里巴巴对Claude发动了其所称的已知最大规模的“知识蒸馏攻击”。",
+      "title": "",
+      "tts": {
+        "text": "本周有消息称，Anthropic告知美国参议院委员会，阿里巴巴对Claude发动了其所称的已知最大规模的“知识蒸馏攻击”。",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "详细说明Anthropic到底指控了什么。",
+      "text_markdown": "详细说明Anthropic到底指控了什么。",
+      "title": "",
+      "tts": {
+        "text": "详细说明Anthropic到底指控了什么。",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Anthropic表示，在4月22日至6月5日期间，其认为与阿里巴巴有关联的操作者使用了大约2.5万个欺诈账户。",
+      "text_markdown": "Anthropic表示，在4月22日至6月5日期间，其认为与阿里巴巴有关联的操作者使用了大约2.5万个欺诈账户。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic表示，在四月二十二日至六月五日期间，其认为与阿里巴巴有关联的操作者使用了大约两万五千个欺诈账户。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "通过这些账户，他们对Claude进行了大约2880万次交互——特别是针对其最新模型的预览版。",
+      "text_markdown": "通过这些账户，他们对Claude进行了大约2880万次交互——特别是针对其最新模型的预览版。",
+      "title": "",
+      "tts": {
+        "text": "通过这些账户，他们对Claude进行了大约两千八百八十万次交互——特别是针对其最新模型的预览版。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "所有这些查询的目的是什么？",
+      "text_markdown": "所有这些查询的目的是什么？",
+      "title": "",
+      "tts": {
+        "text": "所有这些查询的目的是什么？",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "大规模获取Claude的输出，并用它们来训练一个竞争模型——复制其能力，而不是重新构建。",
+      "text_markdown": "大规模获取Claude的输出，并用它们来训练一个竞争模型——复制其能力，而不是重新构建。",
+      "title": "",
+      "tts": {
+        "text": "大规模获取Claude的输出，并用它们来训练一个竞争模型——复制其能力，而不是重新构建。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Anthropic的信件更进一步，指控中国政府同谋，这使得一场服务条款之争演变成一个政策事件。",
+      "text_markdown": "Anthropic的信件更进一步，指控中国政府同谋，这使得一场服务条款之争演变成一个政策事件。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic的信件更进一步，指控中国政府同谋，这使得一场服务条款之争演变成一个政策事件。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "我在这里想谨慎措辞。",
+      "text_markdown": "我在这里想谨慎措辞。",
+      "title": "",
+      "tts": {
+        "text": "我在这里想谨慎措辞。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "确实应该如此——这只是信件中的指控，而非法庭上已证的事实。",
+      "text_markdown": "确实应该如此——这只是信件中的指控，而非法庭上已证的事实。",
+      "title": "",
+      "tts": {
+        "text": "确实应该如此——这只是信件中的指控，而非法庭上已证的事实。",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "这些数据是Anthropic自己的说法，这次行动是Anthropic声称其检测到的，而阿里巴巴对此并未承认任何一点。",
+      "text_markdown": "这些数据是Anthropic自己的说法，这次行动是Anthropic声称其检测到的，而阿里巴巴对此并未承认任何一点。",
+      "title": "",
+      "tts": {
+        "text": "这些数据是Anthropic自己的说法，这次行动是Anthropic声称其检测到的，而阿里巴巴对此并未承认任何一点。",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "既然未经证实，为何还要将其作为头条？",
+      "text_markdown": "既然未经证实，为何还要将其作为头条？",
+      "title": "",
+      "tts": {
+        "text": "既然未经证实，为何还要将其作为头条？",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "因为其核心技术是真实存在的、普遍的，并且即将成为我们本周的概念。",
+      "text_markdown": "因为其核心技术是真实存在的、普遍的，并且即将成为我们本周的概念。",
+      "title": "",
+      "tts": {
+        "text": "因为其核心技术是真实存在的、普遍的，并且即将成为我们本周的概念。",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "还因为它触及了与上周相同的敏感点——一个美国实验室，一个中国实验室，以及一个处于模型供应链中间的政府。",
+      "text_markdown": "还因为它触及了与上周相同的敏感点——一个美国实验室，一个中国实验室，以及一个处于模型供应链中间的政府。",
+      "title": "",
+      "tts": {
+        "text": "还因为它触及了与上周相同的敏感点——一个美国实验室，一个中国实验室，以及一个处于模型供应链中间的政府。",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "将其与上周的出口管制主线联系起来。",
+      "text_markdown": "将其与上周的出口管制主线联系起来。",
+      "title": "",
+      "tts": {
+        "text": "将其与上周的出口管制主线联系起来。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "上周Anthropic在商务部指令后撤回了两个模型——本周Anthropic则将矛头指向太平洋彼岸。",
+      "text_markdown": "上周Anthropic在商务部指令后撤回了两个模型——本周Anthropic则将矛头指向太平洋彼岸。",
+      "title": "",
+      "tts": {
+        "text": "上周Anthropic在商务部指令后撤回了两个模型——本周Anthropic则将矛头指向太平洋彼岸。",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "贯穿始终的观点是，前沿能力现在被视为战略资产，无论是通过出口泄露，还是通过API被窃取。",
+      "text_markdown": "贯穿始终的观点是，前沿能力现在被视为战略资产，无论是通过出口泄露，还是通过API被窃取。",
+      "title": "",
+      "tts": {
+        "text": "贯穿始终的观点是，前沿能力现在被视为战略资产，无论是通过出口泄露，还是通过API被窃取。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "如果哪怕部分指控成立呢？",
+      "text_markdown": "如果哪怕部分指控成立呢？",
+      "title": "",
+      "tts": {
+        "text": "如果哪怕部分指控成立呢？",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "那么，实验室拥有的最宝贵的东西——其最佳模型的行为——结果可以通过“前门”逐次查询来获取。",
+      "text_markdown": "那么，实验室拥有的最宝贵的东西——其最佳模型的行为——结果可以通过“前门”逐次查询来获取。",
+      "title": "",
+      "tts": {
+        "text": "那么，实验室拥有的最宝贵的东西——其最佳模型的行为——结果可以通过“前门”逐次查询来获取。",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "这在不将付费客户拒之门外的情况下，是很难防范的。",
+      "text_markdown": "这在不将付费客户拒之门外的情况下，是很难防范的。",
+      "title": "",
+      "tts": {
+        "text": "这在不将付费客户拒之门外的情况下，是很难防范的。",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-115",
+      "chapter": 0,
+      "text": "这正是完美的过渡——让我们来谈谈本周的概念。",
+      "text_markdown": "这正是完美的过渡——让我们来谈谈本周的概念。",
+      "title": "",
+      "tts": {
+        "text": "这正是完美的过渡——让我们来谈谈本周的概念。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "chapter": 0,
+      "text": "这个概念是“知识蒸馏”。",
+      "text_markdown": "这个概念是“知识蒸馏”。",
+      "title": "",
+      "tts": {
+        "text": "这个概念是“知识蒸馏”。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "chapter": 0,
+      "text": "最简单地说，蒸馏就是教一个小模型模仿一个大模型。",
+      "text_markdown": "最简单地说，蒸馏就是教一个小模型模仿一个大模型。",
+      "title": "",
+      "tts": {
+        "text": "最简单地说，蒸馏就是教一个小模型模仿一个大模型。",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "chapter": 0,
+      "text": "大模型是老师，小模型是学生，学生通过复制老师的答案来学习。",
+      "text_markdown": "大模型是老师，小模型是学生，学生通过复制老师的答案来学习。",
+      "title": "",
+      "tts": {
+        "text": "大模型是老师，小模型是学生，学生通过复制老师的答案来学习。",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-119",
+      "chapter": 0,
+      "text": "首先，为什么有人会合法地这样做？",
+      "text_markdown": "首先，为什么有人会合法地这样做？",
+      "title": "",
+      "tts": {
+        "text": "首先，为什么有人会合法地这样做？",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-120",
+      "chapter": 0,
+      "text": "因为运行一个前沿模型成本高昂，而一个模仿它的小模型则便宜得多。",
+      "text_markdown": "因为运行一个前沿模型成本高昂，而一个模仿它的小模型则便宜得多。",
+      "title": "",
+      "tts": {
+        "text": "因为运行一个前沿模型成本高昂，而一个模仿它的小模型则便宜得多。",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-121",
+      "chapter": 0,
+      "text": "如果你能以十分之一的成本获得百分之八十或百分之九十的质量，那么这种交易在大规模应用时将价值连城。",
+      "text_markdown": "如果你能以十分之一的成本获得百分之八十或百分之九十的质量，那么这种交易在大规模应用时将价值连城。",
+      "title": "",
+      "tts": {
+        "text": "如果你能以十分之一的成本获得百分之八十或百分之九十的质量，那么这种交易在大规模应用时将价值连城。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-122",
+      "chapter": 0,
+      "text": "那么学生究竟是如何向老师学习的呢？",
+      "text_markdown": "那么学生究竟是如何向老师学习的呢？",
+      "title": "",
+      "tts": {
+        "text": "那么学生究竟是如何向老师学习的呢？",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "chapter": 0,
+      "text": "天真的方法是直接收集老师的答案，然后像对待普通数据集一样训练学生。",
+      "text_markdown": "天真的方法是直接收集老师的答案，然后像对待普通数据集一样训练学生。",
+      "title": "",
+      "tts": {
+        "text": "天真的方法是直接收集老师的答案，然后像对待普通数据集一样训练学生。",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-124",
+      "chapter": 0,
+      "text": "更丰富的方法是使用所谓的软标签——不仅仅是老师的最终答案，还包括它对所有选项的置信度。",
+      "text_markdown": "更丰富的方法是使用所谓的软标签——不仅仅是老师的最终答案，还包括它对所有选项的置信度。",
+      "title": "",
+      "tts": {
+        "text": "更丰富的方法是使用所谓的软标签——不仅仅是老师的最终答案，还包括它对所有选项的置信度。",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-125",
+      "chapter": 0,
+      "text": "为什么这些软标签如此有价值？",
+      "text_markdown": "为什么这些软标签如此有价值？",
+      "title": "",
+      "tts": {
+        "text": "为什么这些软标签如此有价值？",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-126",
+      "chapter": 0,
+      "text": "因为它们承载着老师的推理过程，而不仅仅是它的判断结果。",
+      "text_markdown": "因为它们承载着老师的推理过程，而不仅仅是它的判断结果。",
+      "title": "",
+      "tts": {
+        "text": "因为它们承载着老师的推理过程，而不仅仅是它的判断结果。",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-127",
+      "chapter": 0,
+      "text": "知道老师对一个答案有百分之七十的把握，而对一个接近的错误答案有百分之三十的把握，这比仅仅一个正确词语能告诉学生的信息要多得多。",
+      "text_markdown": "知道老师对一个答案有百分之七十的把握，而对一个接近的错误答案有百分之三十的把握，这比仅仅一个正确词语能告诉学生的信息要多得多。",
+      "title": "",
+      "tts": {
+        "text": "知道老师对一个答案有百分之七十的把握，而对一个接近的错误答案有百分之三十的把握，这比仅仅一个正确词语能告诉学生的信息要多得多。",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-128",
+      "chapter": 0,
+      "text": "这是教科书上的版本——现在来看看新闻中的版本。",
+      "text_markdown": "这是教科书上的版本——现在来看看新闻中的版本。",
+      "title": "",
+      "tts": {
+        "text": "这是教科书上的版本——现在来看看新闻中的版本。",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "chapter": 0,
+      "text": "如果你不拥有这个老师模型，那么蒸馏就变成了提取。",
+      "text_markdown": "如果你不拥有这个老师模型，那么蒸馏就变成了提取。",
+      "title": "",
+      "tts": {
+        "text": "如果你不拥有这个老师模型，那么蒸馏就变成了提取。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "chapter": 0,
+      "text": "你通过API调用别人的模型，数百万次，记录下它所说的一切，然后用这些记录来训练你的学生模型。",
+      "text_markdown": "你通过API调用别人的模型，数百万次，记录下它所说的一切，然后用这些记录来训练你的学生模型。",
+      "title": "",
+      "tts": {
+        "text": "你通过API调用别人的模型，数百万次，记录下它所说的一切，然后用这些记录来训练你的学生模型。",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "chapter": 0,
+      "text": "所以，同样的这项技术，要么是效率，要么是盗窃。",
+      "text_markdown": "所以，同样的这项技术，要么是效率，要么是盗窃。",
+      "title": "",
+      "tts": {
+        "text": "所以，同样的这项技术，要么是效率，要么是盗窃。",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-132",
+      "chapter": 0,
+      "text": "这完全取决于你是否拥有这个老师模型——这就是为什么每个主要实验室的服务条款都明确禁止使用他们的模型来训练竞争对手。",
+      "text_markdown": "这完全取决于你是否拥有这个老师模型——这就是为什么每个主要实验室的服务条款都明确禁止使用他们的模型来训练竞争对手。",
+      "title": "",
+      "tts": {
+        "text": "这完全取决于你是否拥有这个老师模型——这就是为什么每个主要实验室的服务条款都明确禁止使用他们的模型来训练竞争对手。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-133",
+      "chapter": 0,
+      "text": "对阿里巴巴的指控，简单来说，就是那两千八百万次交互，是一次披着两万五千个伪装的蒸馏运行。",
+      "text_markdown": "对阿里巴巴的指控，简单来说，就是那两千八百万次交互，是一次披着两万五千个伪装的蒸馏运行。",
+      "title": "",
+      "tts": {
+        "text": "对阿里巴巴的指控，简单来说，就是那两千八百万次交互，是一次披着两万五千个伪装的蒸馏运行。",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "chapter": 0,
+      "text": "那么，对于这些实验室来说，令人不安的部分是什么呢？",
+      "text_markdown": "那么，对于这些实验室来说，令人不安的部分是什么呢？",
+      "title": "",
+      "tts": {
+        "text": "那么，对于这些实验室来说，令人不安的部分是什么呢？",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "chapter": 0,
+      "text": "那就是蒸馏技术的效果惊人地好——一个有决心的学生确实可以从它从未有权复制的老师那里学到很多东西。",
+      "text_markdown": "那就是蒸馏技术的效果惊人地好——一个有决心的学生确实可以从它从未有权复制的老师那里学到很多东西。",
+      "title": "",
+      "tts": {
+        "text": "那就是蒸馏技术的效果惊人地好——一个有决心的学生确实可以从它从未有权复制的老师那里学到很多东西。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "chapter": 0,
+      "text": "你出售访问权限的东西，也是你最需要保护的东西，而这两者是同一扇门。",
+      "text_markdown": "你出售访问权限的东西，也是你最需要保护的东西，而这两者是同一扇门。",
+      "title": "",
+      "tts": {
+        "text": "你出售访问权限的东西，也是你最需要保护的东西，而这两者是同一扇门。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-137",
+      "chapter": 0,
+      "text": "这是一个非常尖锐的落脚点。",
+      "text_markdown": "这是一个非常尖锐的落脚点。",
+      "title": "",
+      "tts": {
+        "text": "这是一个非常尖锐的落脚点。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-138",
+      "chapter": 0,
+      "text": "罗恩，谢谢你的概述。",
+      "text_markdown": "罗恩，谢谢你的概述。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，谢谢你的概述。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "chapter": 0,
+      "text": "随时都可以，温迪——很高兴来到这里。",
+      "text_markdown": "随时都可以，温迪——很高兴来到这里。",
+      "title": "",
+      "tts": {
+        "text": "随时都可以，温迪——很高兴来到这里。",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-140",
+      "chapter": 0,
+      "text": "以上是二零二六年六月二十八日的《本周AI》节目。",
+      "text_markdown": "以上是二零二六年六月二十八日的《本周AI》节目。",
+      "title": "",
+      "tts": {
+        "text": "以上是二零二六年六月二十八日的《本周AI》节目。",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-141",
+      "chapter": 0,
+      "text": "下周，我们将回到开放模型和那些发布它们的 小型实验室。",
+      "text_markdown": "下周，我们将回到开放模型和那些发布它们的 小型实验室。",
+      "title": "",
+      "tts": {
+        "text": "下周，我们将回到开放模型和那些发布它们的 小型实验室。",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-142",
+      "chapter": 0,
+      "text": "下周日再见，保重。",
+      "text_markdown": "下周日再见，保重。",
+      "title": "",
+      "tts": {
+        "text": "下周日再见，保重。",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

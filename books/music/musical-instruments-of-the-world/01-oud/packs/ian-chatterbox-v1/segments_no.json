@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "language": "no",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Et ord til lytteren",
+      "text_markdown": "Et ord til lytteren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er en bok om ouden, et musikkinstrument av tre med strenger.",
+      "text_markdown": "Dette er en bok om ouden, et musikkinstrument av tre med strenger.",
+      "tts": {
+        "text": "Dette er en bok om uden, et musikkinstrument av tre med strenger.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk har spilt på den i mer enn tusen år.",
+      "text_markdown": "Folk har spilt på den i mer enn tusen år.",
+      "tts": {
+        "text": "Folk har spilt på den i mer enn tusen år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kan høre ouden i byer ved havet og i landsbyer i fjellene.",
+      "text_markdown": "Du kan høre ouden i byer ved havet og i landsbyer i fjellene.",
+      "tts": {
+        "text": "Du kan høre uden i byer ved havet og i landsbyer i fjellene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du kan høre den i gamle palasser og på små trescener.",
+      "text_markdown": "Du kan høre den i gamle palasser og på små trescener.",
+      "tts": {
+        "text": "Du kan høre den i gamle palasser og på små trescener.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I denne boken skal vi lære hvordan ouden ser ut, hvordan den bygges, og navnene på menneskene som formet historien dens.",
+      "text_markdown": "I denne boken skal vi lære hvordan ouden ser ut, hvordan den bygges, og navnene på menneskene som formet historien dens.",
+      "tts": {
+        "text": "I denne boken skal vi lære hvordan uden ser ut, hvordan den bygges, og navnene på menneskene som formet historien dens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Til slutt vil du vite hvorfor ouden noen ganger kalles kongen over alle strengene.",
+      "text_markdown": "Til slutt vil du vite hvorfor ouden noen ganger kalles kongen over alle strengene.",
+      "tts": {
+        "text": "Til slutt vil du vite hvorfor uden noen ganger kalles kongen over alle strengene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 1 - Hva er en oud?",
+      "text_markdown": "Kapittel 1 - Hva er en oud?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En oud er et strengeinstrument.",
+      "text_markdown": "En oud er et strengeinstrument.",
+      "tts": {
+        "text": "En ud er et strengeinstrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er en type lutt, med en kropp som har en todelt pæreform.",
+      "text_markdown": "Det er en type lutt, med en kropp som har en todelt pæreform.",
+      "tts": {
+        "text": "Det er en type lutt, med en kropp som har en todelt pæreform.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baksiden på ouden er rund og dyp, som en treskål.",
+      "text_markdown": "Baksiden på ouden er rund og dyp, som en treskål.",
+      "tts": {
+        "text": "Baksiden på uden er rund og dyp, som en treskål.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Forsiden er flat.",
+      "text_markdown": "Forsiden er flat.",
+      "tts": {
+        "text": "Forsiden er flat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den flate forsiden kaller vi klangbunnen.",
+      "text_markdown": "Den flate forsiden kaller vi klangbunnen.",
+      "tts": {
+        "text": "Den flate forsiden kaller vi klangbunnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Halsen på ouden er kort, og den har ingen bånd.",
+      "text_markdown": "Halsen på ouden er kort, og den har ingen bånd.",
+      "tts": {
+        "text": "Halsen på uden er kort, og den har ingen bånd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bånd er de små metallstripene du ser på en gitar.",
+      "text_markdown": "Bånd er de små metallstripene du ser på en gitar.",
+      "tts": {
+        "text": "Bånd er de små metallstripene du ser på en gitar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uten dem kan spilleren gli veldig mykt mellom tonene.",
+      "text_markdown": "Uten dem kan spilleren gli veldig mykt mellom tonene.",
+      "tts": {
+        "text": "Uten dem kan spilleren gli veldig mykt mellom tonene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste oud har elleve strenger, gruppert i seks par.",
+      "text_markdown": "De fleste oud har elleve strenger, gruppert i seks par.",
+      "tts": {
+        "text": "De fleste ud har elleve strenger, gruppert i seks par.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hvert par kaller vi et kor.",
+      "text_markdown": "Hvert par kaller vi et kor.",
+      "tts": {
+        "text": "Hvert par kaller vi et kor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fem av korene har to strenger som er stemt likt.",
+      "text_markdown": "Fem av korene har to strenger som er stemt likt.",
+      "tts": {
+        "text": "Fem av korene har to strenger som er stemt likt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det sjette koret har bare én streng.",
+      "text_markdown": "Det sjette koret har bare én streng.",
+      "tts": {
+        "text": "Det sjette koret har bare en streng.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Slik blir det elleve.",
+      "text_markdown": "Slik blir det elleve.",
+      "tts": {
+        "text": "Slik blir det elleve.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spilleren holder ouden på tvers over fanget.",
+      "text_markdown": "Spilleren holder ouden på tvers over fanget.",
+      "tts": {
+        "text": "Spilleren holder uden på tvers over fanget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den ene hånden trykker strengene ned på halsen.",
+      "text_markdown": "Den ene hånden trykker strengene ned på halsen.",
+      "tts": {
+        "text": "Den ene hånden trykker strengene ned på halsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den andre hånden plukker dem med en risja, et tynt plekter.",
+      "text_markdown": "Den andre hånden plukker dem med en risja, et tynt plekter.",
+      "tts": {
+        "text": "Den andre hånden plukker dem med en risja, et tynt plekter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyden er varm og dyp.",
+      "text_markdown": "Lyden er varm og dyp.",
+      "tts": {
+        "text": "Lyden er varm og dyp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den er litt trist og litt søt på samme tid.",
+      "text_markdown": "Den er litt trist og litt søt på samme tid.",
+      "tts": {
+        "text": "Den er litt trist og litt søt på samme tid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 2 - Hvor navnet kommer fra",
+      "text_markdown": "Kapittel 2 - Hvor navnet kommer fra"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Navnet oud er et arabisk ord som betyr tre.",
+      "text_markdown": "Navnet oud er et arabisk ord som betyr tre.",
+      "tts": {
+        "text": "Navnet ud er et arabisk ord som betyr tre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Instrumentet er oppkalt etter det det er laget av.",
+      "text_markdown": "Instrumentet er oppkalt etter det det er laget av.",
+      "tts": {
+        "text": "Instrumentet er oppkalt etter det det er laget av.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lenge før ouden fantes en eldre slektning som het barbat.",
+      "text_markdown": "Lenge før ouden fantes en eldre slektning som het barbat.",
+      "tts": {
+        "text": "Lenge før uden fantes en eldre slektning som het barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbaten ble spilt i oldtidens Persia for mer enn to tusen år siden.",
+      "text_markdown": "Barbaten ble spilt i oldtidens Persia for mer enn to tusen år siden.",
+      "tts": {
+        "text": "Barbaten ble spilt i oldtidens Persia for mer enn to tusen år siden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbaten hadde en kropp av tre og strenger av silke.",
+      "text_markdown": "Barbaten hadde en kropp av tre og strenger av silke.",
+      "tts": {
+        "text": "Barbaten hadde en kropp av tre og strenger av silke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lyden var lang og myk.",
+      "text_markdown": "Lyden var lang og myk.",
+      "tts": {
+        "text": "Lyden var lang og myk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk ved kongenes hoff spilte på den.",
+      "text_markdown": "Folk ved kongenes hoff spilte på den.",
+      "tts": {
+        "text": "Folk ved kongenes hoff spilte på den.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langsomt endret barbaten seg.",
+      "text_markdown": "Langsomt endret barbaten seg.",
+      "tts": {
+        "text": "Langsomt endret barbaten seg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kroppen ble rundere, strengene ble doble i par, og halsen ble kortere.",
+      "text_markdown": "Kroppen ble rundere, strengene ble doble i par, og halsen ble kortere.",
+      "tts": {
+        "text": "Kroppen ble rundere, strengene ble doble i par, og halsen ble kortere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rundt år 700 spilte folk i den arabiske verden det vi nå kaller oud.",
+      "text_markdown": "Rundt år 700 spilte folk i den arabiske verden det vi nå kaller oud.",
+      "tts": {
+        "text": "Rundt år sju hundre spilte folk i den arabiske verden det vi nå kaller ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Derfra reiste ouden videre.",
+      "text_markdown": "Derfra reiste ouden videre.",
+      "tts": {
+        "text": "Derfra reiste uden videre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kom til Egypt og Nord-Afrika.",
+      "text_markdown": "Den kom til Egypt og Nord-Afrika.",
+      "tts": {
+        "text": "Den kom til Egypt og Nord Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den krysset havet til Spania.",
+      "text_markdown": "Den krysset havet til Spania.",
+      "tts": {
+        "text": "Den krysset havet til Spania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den gikk nordover til Tyrkia og Hellas.",
+      "text_markdown": "Den gikk nordover til Tyrkia og Hellas.",
+      "tts": {
+        "text": "Den gikk nordover til Tyrkia og Hellas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hvert sted ga ouden litt av sin egen stemme.",
+      "text_markdown": "Hvert sted ga ouden litt av sin egen stemme.",
+      "tts": {
+        "text": "Hvert sted ga uden litt av sin egen stemme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men navnet forble det samme.",
+      "text_markdown": "Men navnet forble det samme.",
+      "tts": {
+        "text": "Men navnet forble det samme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uansett hvor den kom, var instrumentet av tre fortsatt ouden.",
+      "text_markdown": "Uansett hvor den kom, var instrumentet av tre fortsatt ouden.",
+      "tts": {
+        "text": "Uansett hvor den kom, var instrumentet av tre fortsatt uden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 3 - Hvordan en oud bygges",
+      "text_markdown": "Kapittel 3 - Hvordan en oud bygges"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Å bygge en ud tar lang tid.",
+      "text_markdown": "Å bygge en ud tar lang tid.",
+      "tts": {
+        "text": "Å bygge en ud tar lang tid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En god bygger kan bruke mange uker på ett eneste instrument.",
+      "text_markdown": "En god bygger kan bruke mange uker på ett eneste instrument.",
+      "tts": {
+        "text": "En god bygger kan bruke mange uker på ett eneste instrument.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bollen er laget av tynne strimler av tre, vanligvis mellom 15 og 25 stykker.",
+      "text_markdown": "Bollen er laget av tynne strimler av tre, vanligvis mellom 15 og 25 stykker.",
+      "tts": {
+        "text": "Bollen er laget av tynne strimler av tre, vanligvis mellom femten og tjuefem stykker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver strimmel bøyes og limes til den neste.",
+      "text_markdown": "Hver strimmel bøyes og limes til den neste.",
+      "tts": {
+        "text": "Hver strimmel bøyes og limes til den neste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sammen danner de den dype, runde baksiden på ouden.",
+      "text_markdown": "Sammen danner de den dype, runde baksiden på ouden.",
+      "tts": {
+        "text": "Sammen danner de den dype, runde baksiden på uden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treslaget betyr mye.",
+      "text_markdown": "Treslaget betyr mye.",
+      "tts": {
+        "text": "Treslaget betyr mye.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valnøtt gir en varm lyd, mahogni gir en mørkere lyd, og morbær gir en lys og klingende lyd.",
+      "text_markdown": "Valnøtt gir en varm lyd, mahogni gir en mørkere lyd, og morbær gir en lys og klingende lyd.",
+      "tts": {
+        "text": "Valnøtt gir en varm lyd, mahogni gir en mørkere lyd, og morbær gir en lys og klingende lyd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Byggeren velger tre etter stemmen de vil ha.",
+      "text_markdown": "Byggeren velger tre etter stemmen de vil ha.",
+      "tts": {
+        "text": "Byggeren velger tre etter stemmen de vil ha.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den flate forsiden, klangbunnen, er laget av gran.",
+      "text_markdown": "Den flate forsiden, klangbunnen, er laget av gran.",
+      "tts": {
+        "text": "Den flate forsiden, klangbunnen, er laget av gran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gran er lett og sterk, og den lar treet vibrere lett.",
+      "text_markdown": "Gran er lett og sterk, og den lar treet vibrere lett.",
+      "tts": {
+        "text": "Gran er lett og sterk, og den lar treet vibrere lett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den vibrasjonen er det vi hører som musikk.",
+      "text_markdown": "Den vibrasjonen er det vi hører som musikk.",
+      "tts": {
+        "text": "Den vibrasjonen er det vi hører som musikk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I klangbunnen er det små runde hull som kalles rosetter.",
+      "text_markdown": "I klangbunnen er det små runde hull som kalles rosetter.",
+      "tts": {
+        "text": "I klangbunnen er det små runde hull som kalles rosetter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De er ofte skåret ut i vakre mønstre.",
+      "text_markdown": "De er ofte skåret ut i vakre mønstre.",
+      "tts": {
+        "text": "De er ofte skåret ut i vakre mønstre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rosettene slipper lyden ut av bollen.",
+      "text_markdown": "Rosettene slipper lyden ut av bollen.",
+      "tts": {
+        "text": "Rosettene slipper lyden ut av bollen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Strengene pleide å være laget av tarm, en slags tørket dyresene.",
+      "text_markdown": "Strengene pleide å være laget av tarm, en slags tørket dyresene.",
+      "tts": {
+        "text": "Strengene pleide å være laget av tarm, en slags tørket dyresene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I dag er de fleste strengene laget av nylon, med en tynn metalltråd surret rundt de dypeste.",
+      "text_markdown": "I dag er de fleste strengene laget av nylon, med en tynn metalltråd surret rundt de dypeste.",
+      "tts": {
+        "text": "I dag er de fleste strengene laget av nylon, med en tynn metalltråd surret rundt de dypeste.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spilleren plukker strengene med en risha.",
+      "text_markdown": "Spilleren plukker strengene med en risha.",
+      "tts": {
+        "text": "Spilleren plukker strengene med en risja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordet risha betyr fjær.",
+      "text_markdown": "Ordet risha betyr fjær.",
+      "tts": {
+        "text": "Ordet risja betyr fjær.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De første plekterne ble laget av ørnefjær.",
+      "text_markdown": "De første plekterne ble laget av ørnefjær.",
+      "tts": {
+        "text": "De første plekterne ble laget av ørnefjær.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I dag lages de av plast, bein eller skilpaddeskall.",
+      "text_markdown": "I dag lages de av plast, bein eller skilpaddeskall.",
+      "tts": {
+        "text": "I dag lages de av plast, bein eller skilpaddeskall.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 4 - Hvor ouden spilles",
+      "text_markdown": "Kapittel 4 - Hvor ouden spilles"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden spilles over hele den arabiske verden.",
+      "text_markdown": "Ouden spilles over hele den arabiske verden.",
+      "tts": {
+        "text": "Uden spilles over hele den arabiske verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du kan høre den i Egypt, Syria, Irak, Libanon, Golfen og Nord-Afrika.",
+      "text_markdown": "Du kan høre den i Egypt, Syria, Irak, Libanon, Golfen og Nord-Afrika.",
+      "tts": {
+        "text": "Du kan høre den i Egypt, Syria, Irak, Libanon, Golfen og Nord Afrika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den spilles også utenfor den arabiske verden.",
+      "text_markdown": "Den spilles også utenfor den arabiske verden.",
+      "tts": {
+        "text": "Den spilles også utenfor den arabiske verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tyrkerne har sin egen oud.",
+      "text_markdown": "Tyrkerne har sin egen oud.",
+      "tts": {
+        "text": "Tyrkerne har sin egen ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Grekerne har sin egen oud.",
+      "text_markdown": "Grekerne har sin egen oud.",
+      "tts": {
+        "text": "Grekerne har sin egen ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Armenere og iranere spiller slektninger av den.",
+      "text_markdown": "Armenere og iranere spiller slektninger av den.",
+      "tts": {
+        "text": "Armenere og iranere spiller slektninger av den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I Spania ble den spilt i hundrevis av år.",
+      "text_markdown": "I Spania ble den spilt i hundrevis av år.",
+      "tts": {
+        "text": "I Spania ble den spilt i hundrevis av år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes tre hovedtyper av oud i dag.",
+      "text_markdown": "Det finnes tre hovedtyper av oud i dag.",
+      "tts": {
+        "text": "Det finnes tre hovedtyper av ud i dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den arabiske ouden er stor og dyp, med en full og langsom lyd.",
+      "text_markdown": "Den arabiske ouden er stor og dyp, med en full og langsom lyd.",
+      "tts": {
+        "text": "Den arabiske uden er stor og dyp, med en full og langsom lyd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er ouden fra Egypt og Levanten.",
+      "text_markdown": "Det er ouden fra Egypt og Levanten.",
+      "tts": {
+        "text": "Det er uden fra Egypt og Levanten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tyrkiske uden er mindre og lysere, og den er stemt litt høyere enn den arabiske varianten.",
+      "text_markdown": "Den tyrkiske uden er mindre og lysere, og den er stemt litt høyere enn den arabiske varianten.",
+      "tts": {
+        "text": "Den tyrkiske uden er mindre og lysere, og den er stemt litt høyere enn den arabiske varianten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den persiske slektningen kalles barbat.",
+      "text_markdown": "Den persiske slektningen kalles barbat.",
+      "tts": {
+        "text": "Den persiske slektningen kalles barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den er liten og skarp, og den bruker et annet sett med toner.",
+      "text_markdown": "Den er liten og skarp, og den bruker et annet sett med toner.",
+      "tts": {
+        "text": "Den er liten og skarp, og den bruker et annet sett med toner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden er hjertet i klassisk arabisk musikk og i tyrkisk makam-musikk.",
+      "text_markdown": "Ouden er hjertet i klassisk arabisk musikk og i tyrkisk makam-musikk.",
+      "tts": {
+        "text": "Uden er hjertet i klassisk arabisk musikk og i tyrkisk makam musikk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den spiller i bryllup og begravelser, i konserthus og i stuer med venner.",
+      "text_markdown": "Den spiller i bryllup og begravelser, i konserthus og i stuer med venner.",
+      "tts": {
+        "text": "Den spiller i bryllup og begravelser, i konserthus og i stuer med venner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der folk samles og vil ha musikk med sjel, kan noen ta fram en oud.",
+      "text_markdown": "Der folk samles og vil ha musikk med sjel, kan noen ta fram en oud.",
+      "tts": {
+        "text": "Der folk samles og vil ha musikk med sjel, kan noen ta fram en ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 5 - Makam",
+      "text_markdown": "Kapittel 5 - Makam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du spiller piano, trykker du på hvite og svarte tangenter.",
+      "text_markdown": "Når du spiller piano, trykker du på hvite og svarte tangenter.",
+      "tts": {
+        "text": "Når du spiller piano, trykker du på hvite og svarte tangenter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er tolv toner i hver oktav, og hvert trinn er like stort.",
+      "text_markdown": "Det er tolv toner i hver oktav, og hvert trinn er like stort.",
+      "tts": {
+        "text": "Det er tolv toner i hver oktav, og hvert trinn er like stort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vi kaller dette liktemperering.",
+      "text_markdown": "Vi kaller dette liktemperering.",
+      "tts": {
+        "text": "Vi kaller dette liktemperering.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden virker ikke slik.",
+      "text_markdown": "Ouden virker ikke slik.",
+      "tts": {
+        "text": "Uden virker ikke slik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ouden bruker et mye eldre system som kalles makam.",
+      "text_markdown": "Ouden bruker et mye eldre system som kalles makam.",
+      "tts": {
+        "text": "Uden bruker et mye eldre system som kalles makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En makam er en måte å velge toner på, og det finnes mange makamat.",
+      "text_markdown": "En makam er en måte å velge toner på, og det finnes mange makamat.",
+      "tts": {
+        "text": "En makam er en måte å velge toner på, og det finnes mange makamat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver av dem har sin egen stemning.",
+      "text_markdown": "Hver av dem har sin egen stemning.",
+      "tts": {
+        "text": "Hver av dem har sin egen stemning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Noen er glade, noen er triste, og noen høres litt gåtefulle ut.",
+      "text_markdown": "Noen er glade, noen er triste, og noen høres litt gåtefulle ut.",
+      "tts": {
+        "text": "Noen er glade, noen er triste, og noen høres litt gåtefulle ut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den store hemmeligheten med makam er at det har flere toner enn et piano.",
+      "text_markdown": "Den store hemmeligheten med makam er at det har flere toner enn et piano.",
+      "tts": {
+        "text": "Den store hemmeligheten med makam er at det har flere toner enn et piano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mellom de hvite tangentene og de svarte finnes det mindre trinn som vi kaller kvarttoner.",
+      "text_markdown": "Mellom de hvite tangentene og de svarte finnes det mindre trinn som vi kaller kvarttoner.",
+      "tts": {
+        "text": "Mellom de hvite tangentene og de svarte finnes det mindre trinn som vi kaller kvarttoner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kvarttone er halvparten av et halvtonetrinn.",
+      "text_markdown": "En kvarttone er halvparten av et halvtonetrinn.",
+      "tts": {
+        "text": "En kvarttone er halvparten av et halvtonetrinn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er en liten tone som lever mellom tonene du kjenner.",
+      "text_markdown": "Det er en liten tone som lever mellom tonene du kjenner.",
+      "tts": {
+        "text": "Det er en liten tone som lever mellom tonene du kjenner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "På et piano kan du ikke spille den.",
+      "text_markdown": "På et piano kan du ikke spille den.",
+      "tts": {
+        "text": "På et piano kan du ikke spille den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "På en oud glir du med fingeren for å finne den.",
+      "text_markdown": "På en oud glir du med fingeren for å finne den.",
+      "tts": {
+        "text": "På en ud glir du med fingeren for å finne den.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En makam bygges av små grupper med toner.",
+      "text_markdown": "En makam bygges av små grupper med toner.",
+      "tts": {
+        "text": "En makam bygges av små grupper med toner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver liten gruppe kalles en jins.",
+      "text_markdown": "Hver liten gruppe kalles en jins.",
+      "tts": {
+        "text": "Hver liten gruppe kalles en djins.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De fleste ajnas har fire toner.",
+      "text_markdown": "De fleste ajnas har fire toner.",
+      "tts": {
+        "text": "De fleste adjnas har fire toner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du kan tenke på en jins som en liten Lego-kloss av musikk, og du stabler dem for å bygge en makam.",
+      "text_markdown": "Du kan tenke på en jins som en liten Lego-kloss av musikk, og du stabler dem for å bygge en makam.",
+      "tts": {
+        "text": "Du kan tenke på en djins som en liten legokloss av musikk, og du stabler dem for å bygge en makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam er melodisk, ikke harmonisk.",
+      "text_markdown": "Makam er melodisk, ikke harmonisk.",
+      "tts": {
+        "text": "Makam er melodisk, ikke harmonisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det betyr at musikken går én tone om gangen, i stedet for å stable toner i akkorder som på en gitar.",
+      "text_markdown": "Det betyr at musikken går én tone om gangen, i stedet for å stable toner i akkorder som på en gitar.",
+      "tts": {
+        "text": "Det betyr at musikken går en tone om gangen, i stedet for å stable toner i akkorder som på en gitar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når en oud spiller en langsom og slyngende solo, beveger spilleren seg inne i en makam.",
+      "text_markdown": "Når en oud spiller en langsom og slyngende solo, beveger spilleren seg inne i en makam.",
+      "tts": {
+        "text": "Når en ud spiller en langsom og slyngende solo, beveger spilleren seg inne i en makam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De velger toner fra klossen og glir så til den neste.",
+      "text_markdown": "De velger toner fra klossen og glir så til den neste.",
+      "tts": {
+        "text": "De velger toner fra klossen og glir så til den neste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den soloen har et navn.",
+      "text_markdown": "Den soloen har et navn.",
+      "tts": {
+        "text": "Den soloen har et navn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vi kaller den en taksim.",
+      "text_markdown": "Vi kaller den en taksim.",
+      "tts": {
+        "text": "Vi kaller den en taksim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En god taksim kan få deg til å le, og den kan få deg til å gråte.",
+      "text_markdown": "En god taksim kan få deg til å le, og den kan få deg til å gråte.",
+      "tts": {
+        "text": "En god taksim kan få deg til å le, og den kan få deg til å gråte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Da er ouden på sitt vakreste.",
+      "text_markdown": "Da er ouden på sitt vakreste.",
+      "tts": {
+        "text": "Da er uden på sitt vakreste.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 6 - De store mestrene",
+      "text_markdown": "Kapittel 6 - De store mestrene"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden har blitt spilt i over tusen år.",
+      "text_markdown": "Ouden har blitt spilt i over tusen år.",
+      "tts": {
+        "text": "Uden har blitt spilt i over tusen år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I all den tiden har noen få mennesker endret den for alltid.",
+      "text_markdown": "I all den tiden har noen få mennesker endret den for alltid.",
+      "tts": {
+        "text": "I all den tiden har noen få mennesker endret den for alltid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den første var mer en tenker enn en spiller, og han het al-Farabi.",
+      "text_markdown": "Den første var mer en tenker enn en spiller, og han het al-Farabi.",
+      "tts": {
+        "text": "Den første var mer en tenker enn en spiller, og han het al Farabi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han levde fra rundt år 872 til år 950 og arbeidet i den store byen Bagdad.",
+      "text_markdown": "Han levde fra rundt år 872 til år 950 og arbeidet i den store byen Bagdad.",
+      "tts": {
+        "text": "Han levde fra rundt år åtte hundre og syttito til år ni hundre og femti og arbeidet i den store byen Bagdad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Farabi skrev en stor bok om musikk.",
+      "text_markdown": "Al-Farabi skrev en stor bok om musikk.",
+      "tts": {
+        "text": "Al Farabi skrev en stor bok om musikk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han forklarte hvordan strenger vibrerer.",
+      "text_markdown": "Han forklarte hvordan strenger vibrerer.",
+      "tts": {
+        "text": "Han forklarte hvordan strenger vibrerer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Han forklarte hvorfor noen toner klinger godt sammen.",
+      "text_markdown": "Han forklarte hvorfor noen toner klinger godt sammen.",
+      "tts": {
+        "text": "Han forklarte hvorfor noen toner klinger godt sammen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Han forklarte hvorfor musikk kan endre hvordan en person føler seg.",
+      "text_markdown": "Han forklarte hvorfor musikk kan endre hvordan en person føler seg.",
+      "tts": {
+        "text": "Han forklarte hvorfor musikk kan endre hvordan en person føler seg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Boken hans ble lest på arabisk og latin i århundrer.",
+      "text_markdown": "Boken hans ble lest på arabisk og latin i århundrer.",
+      "tts": {
+        "text": "Boken hans ble lest på arabisk og latin i århundrer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den andre store oudmesteren var en sanger som het Ziryab, født i Irak rundt år 789.",
+      "text_markdown": "Den andre store oudmesteren var en sanger som het Ziryab, født i Irak rundt år 789.",
+      "tts": {
+        "text": "Den andre store udmesteren var en sanger som het Sirjab, født i Irak rundt år sju hundre og åttini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Som ung mann måtte han forlate Bagdad i all hast.",
+      "text_markdown": "Som ung mann måtte han forlate Bagdad i all hast.",
+      "tts": {
+        "text": "Som ung mann måtte han forlate Bagdad i all hast.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab reiste vestover gjennom hele Nord-Afrika.",
+      "text_markdown": "Ziryab reiste vestover gjennom hele Nord-Afrika.",
+      "tts": {
+        "text": "Sirjab reiste vestover gjennom hele Nord Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han kom til byen Córdoba i Spania i år 822.",
+      "text_markdown": "Han kom til byen Córdoba i Spania i år 822.",
+      "tts": {
+        "text": "Han kom til byen Kordoba i Spania i år åtte hundre og tjueto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kongen i Córdoba elsket musikken hans og ga ham et hus, lønn og tid til å undervise.",
+      "text_markdown": "Kongen i Córdoba elsket musikken hans og ga ham et hus, lønn og tid til å undervise.",
+      "tts": {
+        "text": "Kongen i Kordoba elsket musikken hans og ga ham et hus, lønn og tid til å undervise.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Spania åpnet Ziryab en musikkskole.",
+      "text_markdown": "I Spania åpnet Ziryab en musikkskole.",
+      "tts": {
+        "text": "I Spania åpnet Sirjab en musikkskole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Noen sier at det var verdens første konservatorium.",
+      "text_markdown": "Noen sier at det var verdens første konservatorium.",
+      "tts": {
+        "text": "Noen sier at det var verdens første konservatorium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Han la til et femte kor med strenger på ouden, og han endret hvordan plektere ble laget.",
+      "text_markdown": "Han la til et femte kor med strenger på ouden, og han endret hvordan plektere ble laget.",
+      "tts": {
+        "text": "Han la til et femte kor med strenger på uden, og han endret hvordan plektere ble laget.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lenge etter Ziryab, i vår egen tid, løftet en spiller fra Irak ouden til et nytt nivå.",
+      "text_markdown": "Lenge etter Ziryab, i vår egen tid, løftet en spiller fra Irak ouden til et nytt nivå.",
+      "tts": {
+        "text": "Lenge etter Sirjab, i vår egen tid, løftet en spiller fra Irak uden til et nytt nivå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han het Munir Bashir, og folk kalte ham kongen av ouden.",
+      "text_markdown": "Han het Munir Bashir, og folk kalte ham kongen av ouden.",
+      "tts": {
+        "text": "Han het Munir Basjir, og folk kalte ham kongen av uden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Før Bashir spilte ouden vanligvis sammen med andre instrumenter.",
+      "text_markdown": "Før Bashir spilte ouden vanligvis sammen med andre instrumenter.",
+      "tts": {
+        "text": "Før Basjir spilte uden vanligvis sammen med andre instrumenter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir satte den alene på scenen, og han spilte lange, stille og dype soloer.",
+      "text_markdown": "Bashir satte den alene på scenen, og han spilte lange, stille og dype soloer.",
+      "tts": {
+        "text": "Basjir satte den alene på scenen, og han spilte lange, stille og dype soloer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk over hele verden hørte ham og forelsket seg i ouden på nytt.",
+      "text_markdown": "Folk over hele verden hørte ham og forelsket seg i ouden på nytt.",
+      "tts": {
+        "text": "Folk over hele verden hørte ham og forelsket seg i uden på nytt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det fantes mange andre.",
+      "text_markdown": "Det fantes mange andre.",
+      "tts": {
+        "text": "Det fantes mange andre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al-Atrash gjorde ouden til stemmen i egyptiske filmer.",
+      "text_markdown": "Farid al-Atrash gjorde ouden til stemmen i egyptiske filmer.",
+      "tts": {
+        "text": "Farid al Atrash gjorde uden til stemmen i egyptiske filmer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anouar Brahem fra Tunisia spiller oud sammen med jazzmusikere fra Europa og Amerika.",
+      "text_markdown": "Anouar Brahem fra Tunisia spiller oud sammen med jazzmusikere fra Europa og Amerika.",
+      "tts": {
+        "text": "Anouar Brahem fra Tunisia spiller ud sammen med jazzmusikere fra Europa og Amerika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden lever fortsatt.",
+      "text_markdown": "Ouden lever fortsatt.",
+      "tts": {
+        "text": "Uden lever fortsatt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hvert år blir en ny mester født et sted i verden.",
+      "text_markdown": "Hvert år blir en ny mester født et sted i verden.",
+      "tts": {
+        "text": "Hvert år blir en ny mester født et sted i verden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapittel 7 - Ouden og verden",
+      "text_markdown": "Kapittel 7 - Ouden og verden"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden ble ikke værende i den arabiske verden.",
+      "text_markdown": "Ouden ble ikke værende i den arabiske verden.",
+      "tts": {
+        "text": "Uden ble ikke værende i den arabiske verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Da den reiste, endret den form, navn og sanger.",
+      "text_markdown": "Da den reiste, endret den form, navn og sanger.",
+      "tts": {
+        "text": "Da den reiste, endret den form, navn og sanger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da ouden nådde middelalderens Spania, likte europeiske spillere treskålen og den dype lyden.",
+      "text_markdown": "Da ouden nådde middelalderens Spania, likte europeiske spillere treskålen og den dype lyden.",
+      "tts": {
+        "text": "Da uden nådde middelalderens Spania, likte europeiske spillere treskålen og den dype lyden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Men de ville ha bånd, som på de små instrumentene de allerede kjente.",
+      "text_markdown": "Men de ville ha bånd, som på de små instrumentene de allerede kjente.",
+      "tts": {
+        "text": "Men de ville ha bånd, som på de små instrumentene de allerede kjente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så de la til bånd, gjorde baksiden litt flatere og kalte det nye instrumentet for lutt.",
+      "text_markdown": "Så de la til bånd, gjorde baksiden litt flatere og kalte det nye instrumentet for lutt.",
+      "tts": {
+        "text": "Så de la til bånd, gjorde baksiden litt flatere og kalte det nye instrumentet for lutt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fem hundre år var lutten Europas favorittinstrument.",
+      "text_markdown": "I fem hundre år var lutten Europas favorittinstrument.",
+      "tts": {
+        "text": "I fem hundre år var lutten Europas favorittinstrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konger spilte på den.",
+      "text_markdown": "Konger spilte på den.",
+      "tts": {
+        "text": "Konger spilte på den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poeter spilte på den.",
+      "text_markdown": "Poeter spilte på den.",
+      "tts": {
+        "text": "Poeter spilte på den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De største komponistene skrev stykker for den.",
+      "text_markdown": "De største komponistene skrev stykker for den.",
+      "tts": {
+        "text": "De største komponistene skrev stykker for den.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så endret lutten seg igjen.",
+      "text_markdown": "Så endret lutten seg igjen.",
+      "tts": {
+        "text": "Så endret lutten seg igjen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spillere la til flere strenger, gjorde baksiden enda flatere og ga den en mindre og lettere kropp.",
+      "text_markdown": "Spillere la til flere strenger, gjorde baksiden enda flatere og ga den en mindre og lettere kropp.",
+      "tts": {
+        "text": "Spillere la til flere strenger, gjorde baksiden enda flatere og ga den en mindre og lettere kropp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rundt år 1800, i Spania, hadde dette nye instrumentet fått et navn vi alle kjenner.",
+      "text_markdown": "Rundt år 1800, i Spania, hadde dette nye instrumentet fått et navn vi alle kjenner.",
+      "tts": {
+        "text": "Rundt år atten hundre, i Spania, hadde dette nye instrumentet fått et navn vi alle kjenner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det var gitaren.",
+      "text_markdown": "Det var gitaren.",
+      "tts": {
+        "text": "Det var gitaren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så ouden, lutten og gitaren er alle medlemmer av samme familie.",
+      "text_markdown": "Så ouden, lutten og gitaren er alle medlemmer av samme familie.",
+      "tts": {
+        "text": "Så uden, lutten og gitaren er alle medlemmer av samme familie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De er slektninger, og de deler en bestefar.",
+      "text_markdown": "De er slektninger, og de deler en bestefar.",
+      "tts": {
+        "text": "De er slektninger, og de deler en bestefar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den bestefaren er ouden.",
+      "text_markdown": "Den bestefaren er ouden.",
+      "tts": {
+        "text": "Den bestefaren er uden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag spiller ouden og gitaren sammen.",
+      "text_markdown": "I dag spiller ouden og gitaren sammen.",
+      "tts": {
+        "text": "I dag spiller uden og gitaren sammen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anouar Brahem spiller oud med jazzgitarister.",
+      "text_markdown": "Anouar Brahem spiller oud med jazzgitarister.",
+      "tts": {
+        "text": "Anouar Brahem spiller ud med jazzgitarister.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir spilte for orkestre.",
+      "text_markdown": "Munir Bashir spilte for orkestre.",
+      "tts": {
+        "text": "Munir Basjir spilte for orkestre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unge spillere i Beirut, Istanbul, Paris og New York blander oud med rock, hiphop og filmmusikk.",
+      "text_markdown": "Unge spillere i Beirut, Istanbul, Paris og New York blander oud med rock, hiphop og filmmusikk.",
+      "tts": {
+        "text": "Unge spillere i Beirut, Istanbul, Paris og New York blander ud med rock, hiphop og filmmusikk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ouden er mer enn et instrument.",
+      "text_markdown": "Ouden er mer enn et instrument.",
+      "tts": {
+        "text": "Uden er mer enn et instrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den er en bro.",
+      "text_markdown": "Den er en bro.",
+      "tts": {
+        "text": "Den er en bro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den bærer en fortelling fra Mesopotamia, gjennom Persia, gjennom den arabiske verden, inn i Spania, inn i Europa og tilbake ut til alle verdens land.",
+      "text_markdown": "Den bærer en fortelling fra Mesopotamia, gjennom Persia, gjennom den arabiske verden, inn i Spania, inn i Europa og tilbake ut til alle verdens land.",
+      "tts": {
+        "text": "Den bærer en fortelling fra Mesopotamia, gjennom Persia, gjennom den arabiske verden, inn i Spania, inn i Europa og tilbake ut til alle verdens land.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver gang du hører en gitar, kan du langt der inne høre den myke og dype stemmen til ouden.",
+      "text_markdown": "Hver gang du hører en gitar, kan du langt der inne høre den myke og dype stemmen til ouden.",
+      "tts": {
+        "text": "Hver gang du hører en gitar, kan du langt der inne høre den myke og dype stemmen til uden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Om denne boken",
+      "text_markdown": "Om denne boken"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er første bind i Musikkinstrumenter fra hele verden.",
+      "text_markdown": "Dette er første bind i Musikkinstrumenter fra hele verden.",
+      "tts": {
+        "text": "Dette er første bind i Musikkinstrumenter fra hele verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver bok i denne serien forteller historien om ett instrument.",
+      "text_markdown": "Hver bok i denne serien forteller historien om ett instrument.",
+      "tts": {
+        "text": "Hver bok i denne serien forteller historien om ett instrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hver bok er kort, og hver bok er sann.",
+      "text_markdown": "Hver bok er kort, og hver bok er sann.",
+      "tts": {
+        "text": "Hver bok er kort, og hver bok er sann.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den neste boken handler om sitaren, den store langhalsede lutten fra India, med mange strenger og en dyp, klingende stemme.",
+      "text_markdown": "Den neste boken handler om sitaren, den store langhalsede lutten fra India, med mange strenger og en dyp, klingende stemme.",
+      "tts": {
+        "text": "Den neste boken handler om sitaren, den store langhalsede lutten fra India, med mange strenger og en dyp, klingende stemme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Etter sitaren reiser vi til Vest-Afrika for koraen, og så til Japan for shakuhachi.",
+      "text_markdown": "Etter sitaren reiser vi til Vest-Afrika for koraen, og så til Japan for shakuhachi.",
+      "tts": {
+        "text": "Etter sitaren reiser vi til Vest Afrika for koraen, og så til Japan for sjakuhatsji.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Takk for at du lyttet.",
+      "text_markdown": "Takk for at du lyttet.",
+      "tts": {
+        "text": "Takk for at du lyttet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Finn en oud, på nettet eller i byen din, og la den spille for deg.",
+      "text_markdown": "Finn en oud, på nettet eller i byen din, og la den spille for deg.",
+      "tts": {
+        "text": "Finn en ud, på nettet eller i byen din, og la den spille for deg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 170,
+  "version": "2.0.0"
+}

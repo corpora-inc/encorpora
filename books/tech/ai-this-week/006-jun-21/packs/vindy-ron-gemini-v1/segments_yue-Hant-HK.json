@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "yue-Hant-HK",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "歡迎收睇《今個星期人工智能》呢個節目。",
+      "text_markdown": "歡迎收睇《今個星期人工智能》呢個節目。",
+      "title": "",
+      "tts": {
+        "text": "歡迎收睇今個星期人工智能呢個節目。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "我係你嘅主持 Vindy，雲迪。",
+      "text_markdown": "我係你嘅主持 Vindy，雲迪。",
+      "title": "",
+      "tts": {
+        "text": "我係你嘅主持雲迪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "一如以往，Ron 都會同我一齊做今集拍檔。",
+      "text_markdown": "一如以往，Ron 都會同我一齊做今集拍檔。",
+      "title": "",
+      "tts": {
+        "text": "一如以往，阿朗都會同我一齊做今集拍檔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "雲迪，我真係好開心可以嚟到呢個地方。",
+      "text_markdown": "雲迪，我真係好開心可以嚟到呢個地方。",
+      "title": "",
+      "tts": {
+        "text": "雲迪，我真係好開心可以嚟到呢個地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "今日係2026年6月21號，禮拜日。",
+      "text_markdown": "今日係2026年6月21號，禮拜日。",
+      "title": "",
+      "tts": {
+        "text": "今日係二零二六年六月二十一號，禮拜日。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "上個禮拜我哋講返自己，今日就轉一轉方向，望吓權力核心嗰邊。",
+      "text_markdown": "上個禮拜我哋講返自己，今日就轉一轉方向，望吓權力核心嗰邊。",
+      "title": "",
+      "tts": {
+        "text": "上個禮拜我哋講返自己，今日就轉一轉方向，望吓權力核心嗰邊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "邊個話事，決定人工智能點樣真正用落去，邊個負責出錢起基建，邊個手上揸住啲晶片資源。",
+      "text_markdown": "邊個話事，決定人工智能點樣真正用落去，邊個負責出錢起基建，邊個手上揸住啲晶片資源。",
+      "title": "",
+      "tts": {
+        "text": "邊個話事，決定人工智能點樣真正用落去，邊個負責出錢起基建，邊個手上揸住啲晶片資源。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "稍後會再講，美國商務部上星期五將一個美國製模型撤出公開使用，我哋就由呢件事講起。",
+      "text_markdown": "稍後會再講，美國商務部上星期五將一個美國製模型撤出公開使用，我哋就由呢件事講起。",
+      "title": "",
+      "tts": {
+        "text": "稍後會再講，美國商務部上星期五將一個美國製模型撤出公開使用，我哋就由呢件事講起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "跟住講到數據中心嘅建設，公佈出嚟嘅內容同現實情況其實有啲出入。",
+      "text_markdown": "跟住講到數據中心嘅建設，公佈出嚟嘅內容同現實情況其實有啲出入。",
+      "title": "",
+      "tts": {
+        "text": "跟住講到數據中心點樣起，公佈出嚟嗰啲內容，同現實情況其實有啲出入。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "跟住講美國同中國點樣比，唔再講老生常談，而係睇現實有咩掣肘。",
+      "text_markdown": "跟住講美國同中國點樣比，唔再講老生常談，而係睇現實有咩掣肘。",
+      "title": "",
+      "tts": {
+        "text": "跟住講美國同中國點樣比，唔再講老生常談，而係睇現實有咩掣肘。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "仲有，今個星期個概念就係，Oracle份資產負債表嗰一行，差唔多講晒成件事畀你知。",
+      "text_markdown": "仲有，今個星期個概念就係，Oracle份資產負債表嗰一行，差唔多講晒成件事畀你知。",
+      "title": "",
+      "tts": {
+        "text": "仲有，今個星期個概念就係，甲骨文公司份資產負債表嗰一行，差唔多講晒成件事畀你知。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Ron，我哋先由 Anthropic 呢間公司講起。",
+      "text_markdown": "Ron，我哋先由 Anthropic 呢間公司講起。",
+      "title": "",
+      "tts": {
+        "text": "朗呀，我哋先由安索匹克呢間公司講起啦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "咁6月12號嗰日，究竟出咗咩事呀？",
+      "text_markdown": "咁6月12號嗰日，究竟出咗咩事呀？",
+      "title": "",
+      "tts": {
+        "text": "咁六月十二號嗰日，究竟出咗咩事呀？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "喺東部時間6月12號星期五下午5點21分，Anthropic正式將最新兩個模型，Claude Mythos 5同Claude Fable 5，作出下架處理。",
+      "text_markdown": "喺東部時間6月12號星期五下午5點21分，Anthropic正式將最新兩個模型，Claude Mythos 5同Claude Fable 5，作出下架處理。",
+      "title": "",
+      "tts": {
+        "text": "喺東部時間六月十二號星期五下午五點二十一分，安思羅匹克正式將最新兩個模型，克勞德神話五號同克勞德寓言五號，作出下架處理。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "唔係因為要整，亦都唔係佢哋自己走去查吓安唔安全。",
+      "text_markdown": "唔係因為要整，亦都唔係佢哋自己走去查吓安唔安全。",
+      "title": "",
+      "tts": {
+        "text": "唔係因為要整，亦都唔係佢哋自己走去查吓安唔安全。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "佢哋因為美國商務部發出命令，並以出口管制做理據，所以將個模型下架。",
+      "text_markdown": "佢哋因為美國商務部發出命令，並以出口管制做理據，所以將個模型下架。",
+      "title": "",
+      "tts": {
+        "text": "佢哋因為美國商務部發出命令，並以出口管制做理據，所以將個模型下架。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "用工程角度睇，背後原因係乜嘢呢？",
+      "text_markdown": "用工程角度睇，背後原因係乜嘢呢？",
+      "title": "",
+      "tts": {
+        "text": "用工程角度睇，背後原因係乜嘢呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "有報道話，另一間公司展示咗一種越獄手法，整出咗商務部認為屬於出口管制嘅內容。",
+      "text_markdown": "有報道話，另一間公司展示咗一種越獄手法，整出咗商務部認為屬於出口管制嘅內容。",
+      "title": "",
+      "tts": {
+        "text": "有報道話，另一間公司展示咗一種越獄手法，整出咗商務部認為屬於出口管制嘅內容。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "據美國《財富》雜誌報道，向白宮發出警告嘅，其實就係亞馬遜公司。",
+      "text_markdown": "據美國《財富》雜誌報道，向白宮發出警告嘅，其實就係亞馬遜公司。",
+      "title": "",
+      "tts": {
+        "text": "據美國財富雜誌報道，向白宮發出警告嘅，其實就係亞馬遜公司。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "咁 Anthropic 點樣回應？",
+      "text_markdown": "咁 Anthropic 點樣回應？",
+      "title": "",
+      "tts": {
+        "text": "咁呢間公司點樣回應呀？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Anthropic 呢間人工智能公司公開質疑呢個理由。",
+      "text_markdown": "Anthropic 呢間人工智能公司公開質疑呢個理由。",
+      "title": "",
+      "tts": {
+        "text": "安思羅匹克呢間人工智能公司公開質疑呢個理由。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "佢哋喺聲明入面，按原話將呢次越獄稱為「狹窄、非普遍性」，仲補充話，同樣嘅輸出亦可以喺其他模型搵到，包括 OpenAI 嘅 GPT-5.5 等模型系統。",
+      "text_markdown": "佢哋喺聲明入面，按原話將呢次越獄稱為「狹窄、非普遍性」，仲補充話，同樣嘅輸出亦可以喺其他模型搵到，包括 OpenAI 嘅 GPT-5.5 等模型系統。",
+      "title": "",
+      "tts": {
+        "text": "佢哋喺聲明入面，按原話將呢次越獄稱為狹窄、非普遍性，仲補充話，同樣嘅輸出亦可以喺其他模型搵到，包括 OpenAI 嘅 GPT 五點五 等模型系統。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "佢哋嘅結論係，政府咁樣做係源於誤解。",
+      "text_markdown": "佢哋嘅結論係，政府咁樣做係源於誤解。",
+      "title": "",
+      "tts": {
+        "text": "佢哋嘅結論係，政府咁樣做係源於誤解。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "對一間人工智能實驗室嚟講，今次咁直接向美國政府講明反對，真係相當少見。",
+      "text_markdown": "對一間人工智能實驗室嚟講，今次咁直接向美國政府講明反對，真係相當少見。",
+      "title": "",
+      "tts": {
+        "text": "對一間人工智能實驗室嚟講，今次咁直接向美國政府講明反對，真係相當少見。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "冇錯，而背後嗰個結構上嘅事實，先係真正重點。",
+      "text_markdown": "冇錯，而背後嗰個結構上嘅事實，先係真正重點。",
+      "title": "",
+      "tts": {
+        "text": "冇錯，而背後嗰個結構上嘅事實，先係真正重點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "商務部而家可引用出口管制，命令一間美國私營人工智能實驗室下架模型，指令喺72小時內生效。",
+      "text_markdown": "商務部而家可引用出口管制，命令一間美國私營人工智能實驗室下架模型，指令喺72小時內生效。",
+      "title": "",
+      "tts": {
+        "text": "商務部而家可引用出口管制，命令一間美國私營人工智能實驗室下架模型，指令喺七十二小時內生效。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "無論你覺得呢個指令啱唔啱。",
+      "text_markdown": "無論你覺得呢個指令啱唔啱。",
+      "title": "",
+      "tts": {
+        "text": "無論你覺得呢個指令啱唔啱。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "唔理你覺得呢個指令係啱定錯。",
+      "text_markdown": "唔理你覺得呢個指令係啱定錯。",
+      "title": "",
+      "tts": {
+        "text": "唔理你覺得呢個指令係啱定錯。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "真正要緊嘅，其實係權力本身、推進速度有幾快，同埋開咗先例呢幾點。",
+      "text_markdown": "真正要緊嘅，其實係權力本身、推進速度有幾快，同埋開咗先例呢幾點。",
+      "title": "",
+      "tts": {
+        "text": "真正要緊嘅，其實係權力本身，推進速度有幾快，同埋開咗先例呢幾點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "另外，亞馬遜喺呢件事入面亦都有參與。",
+      "text_markdown": "另外，亞馬遜喺呢件事入面亦都有參與。",
+      "title": "",
+      "tts": {
+        "text": "另外，亞馬遜喺呢件事入面亦都有參與。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "呢度就係真正要留意嘅重點。",
+      "text_markdown": "呢度就係真正要留意嘅重點。",
+      "title": "",
+      "tts": {
+        "text": "呢度就係真正要留意嘅重點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "亞馬遜既係 Anthropic 嘅主要投資者，亦都透過自家業務，喺基礎模型市場直接同 Anthropic 競爭。",
+      "text_markdown": "亞馬遜既係 Anthropic 嘅主要投資者，亦都透過自家業務，喺基礎模型市場直接同 Anthropic 競爭。",
+      "title": "",
+      "tts": {
+        "text": "亞馬遜既係呢間人工智能公司嘅主要投資者，亦都透過自家業務，喺基礎模型市場直接同呢間公司競爭。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "如果對家只係向政府發出一個警告，就可以喺一個長週末之內令對方個模型停用，成個業界格局就會改變。",
+      "text_markdown": "如果對家只係向政府發出一個警告，就可以喺一個長週末之內令對方個模型停用，成個業界格局就會改變。",
+      "title": "",
+      "tts": {
+        "text": "如果對家只係向政府發出一個警告，就可以喺一個長週末之內令對方個模型停用，成個業界格局就會改變。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "跟住我哋講吓起樓設計嗰方面。",
+      "text_markdown": "跟住我哋講吓起樓設計嗰方面。",
+      "title": "",
+      "tts": {
+        "text": "跟住我哋講吓起樓設計嗰方面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Stargate 計劃係 OpenAI、Oracle 同 SoftBank 三方合作嘅數據中心項目。",
+      "text_markdown": "Stargate 計劃係 OpenAI、Oracle 同 SoftBank 三方合作嘅數據中心項目。",
+      "title": "",
+      "tts": {
+        "text": "星門計劃係開放人工智能公司、甲骨文同軟銀三方合作嘅數據中心項目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "咁實際有幾多呢？",
+      "text_markdown": "咁實際有幾多呢？",
+      "title": "",
+      "tts": {
+        "text": "咁實際有幾多呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "星際之門公布咗，喺美國嘅電力容量達到11吉瓦規模。",
+      "text_markdown": "星際之門公布咗，喺美國嘅電力容量達到11吉瓦規模。",
+      "title": "",
+      "tts": {
+        "text": "星際之門公布咗，喺美國嘅電力容量達到十一吉瓦規模。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "到咗6月中旬，德州阿比林第一階段已有約200兆瓦投入營運。",
+      "text_markdown": "到咗6月中旬，德州阿比林第一階段已有約200兆瓦投入營運。",
+      "title": "",
+      "tts": {
+        "text": "到咗六月中旬，德州阿比林第一階段已經有大約二百兆瓦投入營運。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "公布出嚟嘅裝機容量係 11 吉瓦，但目前已經駁入電網嘅，其實只有 200 兆瓦可以供電。",
+      "text_markdown": "公布出嚟嘅裝機容量係 11 吉瓦，但目前已經駁入電網嘅，其實只有 200 兆瓦可以供電。",
+      "title": "",
+      "tts": {
+        "text": "公布出嚟嘅裝機容量係十一吉瓦，但目前已經駁入電網嘅，其實只有二百兆瓦可以供電。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "呢一點已經足夠講清楚成個分別。",
+      "text_markdown": "呢一點已經足夠講清楚成個分別。",
+      "title": "",
+      "tts": {
+        "text": "呢一點已經足夠講清楚成個分別。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "啱，最清楚嘅例子，就係美國嗰個叫做新墨西哥嘅州份。",
+      "text_markdown": "啱，最清楚嘅例子，就係美國嗰個叫做新墨西哥嘅州份。",
+      "title": "",
+      "tts": {
+        "text": "啱，最清楚嘅例子，就係美國嗰個叫做新墨西哥嘅州份。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "位於新墨西哥州多納安娜縣嘅呢個場地，是星門計劃最大嘅單一園區，預計容量達 4.5 吉瓦。",
+      "text_markdown": "位於新墨西哥州多納安娜縣嘅呢個場地，是星門計劃最大嘅單一園區，預計容量達 4.5 吉瓦。",
+      "title": "",
+      "tts": {
+        "text": "位於新墨西哥州多納安娜縣嘅呢個場地，係星門計劃最大嘅單一園區，預計容量達到四點五吉瓦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "$180億美元銀團項目融資已到位，參與銀行包括三井住友銀行、法國巴黎銀行、高盛同三菱日聯金融集團，Blue Owl另外提供$30億美元股權注資。",
+      "text_markdown": "$180億美元銀團項目融資已到位，參與銀行包括三井住友銀行、法國巴黎銀行、高盛同三菱日聯金融集團，Blue Owl另外提供$30億美元股權注資。",
+      "title": "",
+      "tts": {
+        "text": "一百八十億美元銀團項目融資已經到位，參與銀行包括三井住友銀行、法國巴黎銀行、高盛同三菱日聯金融集團，布魯奧爾另外提供三十億美元股權注資。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "同埋工地現場嘅施工情況。",
+      "text_markdown": "同埋工地現場嘅施工情況。",
+      "title": "",
+      "tts": {
+        "text": "同埋工地現場嘅施工情況。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "到目前為止，工程都仲未正式動工。",
+      "text_markdown": "到目前為止，工程都仲未正式動工。",
+      "title": "",
+      "tts": {
+        "text": "到目前為止，工程都仲未正式動工。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "該場地仍在等待新墨西哥州環境部批出空氣質素許可證，原定 4月22日 發出，但在收到 7,000 多條公眾意見後，許可證延至 7月21日 才正式批出。",
+      "text_markdown": "該場地仍在等待新墨西哥州環境部批出空氣質素許可證，原定 4月22日 發出，但在收到 7,000 多條公眾意見後，許可證延至 7月21日 才正式批出。",
+      "title": "",
+      "tts": {
+        "text": "該場地仍然等緊新墨西哥州環境部批出空氣質素許可證，原定四月二十二號發出，但係收到七千多條公眾意見之後，許可證延遲到七月二十一號先正式批出。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "180億美元已經承諾咗，但第一鏟都未落地，仲有個空氣質素許可證嘅限期。",
+      "text_markdown": "180億美元已經承諾咗，但第一鏟都未落地，仲有個空氣質素許可證嘅限期。",
+      "title": "",
+      "tts": {
+        "text": "一百八十億美元已經承諾咗，但第一鏟都未落地，仲有個空氣質素許可證嘅限期。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "如果條數計錯咗，邊個要承擔呢筆損失呀？",
+      "text_markdown": "如果條數計錯咗，邊個要承擔呢筆損失呀？",
+      "title": "",
+      "tts": {
+        "text": "如果條數計錯咗，邊個要承擔呢筆損失呀？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "呢度正正係 Oracle 開始變得有趣嘅重點。",
+      "text_markdown": "呢度正正係 Oracle 開始變得有趣嘅重點。",
+      "title": "",
+      "tts": {
+        "text": "呢度正正係甲骨文開始變得有趣嘅重點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "甲骨文嘅剩餘履約義務，即係已簽約但未交付收入嘅會計項目，到2026財年第三季去到5,530億美元。",
+      "text_markdown": "甲骨文嘅剩餘履約義務，即係已簽約但未交付收入嘅會計項目，到2026財年第三季去到5,530億美元。",
+      "title": "",
+      "tts": {
+        "text": "甲骨文嘅剩餘履約義務，即係已簽約但未交付收入嘅會計項目，到二零二六財年第三季去到五千五百三十億美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "呢個按年升咗325%，大部分增幅已公開確認同OpenAI同Stargate計劃有關。",
+      "text_markdown": "呢個按年升咗325%，大部分增幅已公開確認同OpenAI同Stargate計劃有關。",
+      "title": "",
+      "tts": {
+        "text": "呢個按年升咗百分之三百二十五，大部分增幅已公開確認同開放人工智能公司同星際之門計劃有關。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "同埋講到欠人錢呢類問題。",
+      "text_markdown": "同埋講到欠人錢呢類問題。",
+      "title": "",
+      "tts": {
+        "text": "同埋講到欠人錢呢類問題。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "截至2月28日，總借款額已經去到1,346億美元。",
+      "text_markdown": "截至2月28日，總借款額已經去到1,346億美元。",
+      "title": "",
+      "tts": {
+        "text": "截至二月二十八號，總借款額已經去到一千三百四十六億美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "甲骨文單是在2月已籌集300億美元，包括投資級債券和強制可轉換優先股，並在9個月內發行430億美元的新高級票據。",
+      "text_markdown": "甲骨文單是在2月已籌集300億美元，包括投資級債券和強制可轉換優先股，並在9個月內發行430億美元的新高級票據。",
+      "title": "",
+      "tts": {
+        "text": "甲骨文單係二月已經籌到三百億美元，包括投資級債券同強制可轉換優先股，仲喺九個月內發行四百三十億美元嘅新高級票據。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "好啦，我哋而家簡單咁梳理一下個局面。",
+      "text_markdown": "好啦，我哋而家簡單咁梳理一下個局面。",
+      "title": "",
+      "tts": {
+        "text": "好啦，我哋而家簡單咁梳理一下個局面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "5,530億美金嘅承諾，1,340億美金嘅債務，仲有一個大客戶，承擔咗大部分風險。",
+      "text_markdown": "5,530億美金嘅承諾，1,340億美金嘅債務，仲有一個大客戶，承擔咗大部分風險。",
+      "title": "",
+      "tts": {
+        "text": "五千五百三十億美金嘅承諾，一千三百四十億美金嘅債務，仲有一個大客戶，承擔咗大部分風險。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "呢個就係點樣砌起個架構嘅總結。",
+      "text_markdown": "呢個就係點樣砌起個架構嘅總結。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係點樣砌起個架構嘅總結。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "而家我哋用美國同中國做個比較。",
+      "text_markdown": "而家我哋用美國同中國做個比較。",
+      "title": "",
+      "tts": {
+        "text": "而家我哋用美國同中國做個比較。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "成日都聽人講，中國嗰邊慢咗幾個月。",
+      "text_markdown": "成日都聽人講，中國嗰邊慢咗幾個月。",
+      "title": "",
+      "tts": {
+        "text": "成日都聽人講，中國嗰邊慢咗幾個月。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "呢種舊式講法其實唔啱，因為佢根本量錯咗對象。",
+      "text_markdown": "呢種舊式講法其實唔啱，因為佢根本量錯咗對象。",
+      "title": "",
+      "tts": {
+        "text": "呢種舊式講法其實唔啱，因為佢根本量錯咗對象。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "週一，6月9日，彭博社話，國家發改委一份中國計劃草案建議投入2萬億人民幣，約2950億美元，喺2028年前建成全國人工智能數據中心網絡。",
+      "text_markdown": "週一，6月9日，彭博社話，國家發改委一份中國計劃草案建議投入2萬億人民幣，約2950億美元，喺2028年前建成全國人工智能數據中心網絡。",
+      "title": "",
+      "tts": {
+        "text": "週一，六月九日，彭博社話，國家發改委一份中國計劃草案建議投入兩萬億人民幣，約二千九百五十億美元，喺二零二八年之前建成全國人工智能數據中心網絡。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "呢項計劃要求，所用矽晶片80%係國產，並由中國移動同中國電信營運互聯計算網絡。",
+      "text_markdown": "呢項計劃要求，所用矽晶片80%係國產，並由中國移動同中國電信營運互聯計算網絡。",
+      "title": "",
+      "tts": {
+        "text": "呢項計劃要求，所用矽晶片八成係國產，並由中國移動同中國電信營運互聯計算網絡。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "噉，呢個計劃最棘手嘅地方係乜嘢呢？",
+      "text_markdown": "噉，呢個計劃最棘手嘅地方係乜嘢呢？",
+      "title": "",
+      "tts": {
+        "text": "噉，呢個計劃最棘手嘅地方係乜嘢呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "2萬億人民幣、80%國產矽晶片、2028年期限，關鍵唔係邏輯晶片，而係高頻寬記憶體。",
+      "text_markdown": "2萬億人民幣、80%國產矽晶片、2028年期限，關鍵唔係邏輯晶片，而係高頻寬記憶體。",
+      "title": "",
+      "tts": {
+        "text": "兩萬億人民幣，八成國產矽晶片，二零二八年期限，關鍵唔係邏輯晶片，而係高頻寬記憶體。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "你可唔可以再講清楚少少畀我哋聽呀？",
+      "text_markdown": "你可唔可以再講清楚少少畀我哋聽呀？",
+      "title": "",
+      "tts": {
+        "text": "你可唔可以再講清楚少少畀我哋聽呀？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "每一粒人工智能加速器，都要將一疊疊高頻寬記憶體，焊到邏輯晶片上面。",
+      "text_markdown": "每一粒人工智能加速器，都要將一疊疊高頻寬記憶體，焊到邏輯晶片上面。",
+      "title": "",
+      "tts": {
+        "text": "每一粒人工智能加速器，都要將一疊疊高頻寬記憶體，焊到邏輯晶片上面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "冇 HBM，粒晶片就只係一嚿廢鐵。",
+      "text_markdown": "冇 HBM，粒晶片就只係一嚿廢鐵。",
+      "title": "",
+      "tts": {
+        "text": "冇高頻寬記憶體，粒晶片就只係一嚿廢鐵。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "喺出口管制生效前，中國囤咗約1,300萬個HBM堆疊，當中1,140萬個嚟自三星。",
+      "text_markdown": "喺出口管制生效前，中國囤咗約1,300萬個HBM堆疊，當中1,140萬個嚟自三星。",
+      "title": "",
+      "tts": {
+        "text": "喺出口管制生效前，中國囤咗約千三萬個高頻寬記憶體堆疊，當中千一百四十萬個嚟自三星。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "以華為昇騰910C的封裝比例計算，這批庫存足夠生產約160萬個晶片。",
+      "text_markdown": "以華為昇騰910C的封裝比例計算，這批庫存足夠生產約160萬個晶片。",
+      "title": "",
+      "tts": {
+        "text": "以華為昇騰九一零C型嘅封裝比例嚟計，呢批庫存足夠生產大約一百六十萬粒晶片。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "之後供應就會畀人用清晒。",
+      "text_markdown": "之後供應就會畀人用清晒。",
+      "title": "",
+      "tts": {
+        "text": "之後供應就會畀人用清晒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "然後供應量就見底，只得1,300萬個HBM堆疊，夠生產160萬個晶片，呢個就係上限。",
+      "text_markdown": "然後供應量就見底，只得1,300萬個HBM堆疊，夠生產160萬個晶片，呢個就係上限。",
+      "title": "",
+      "tts": {
+        "text": "然後供應量就見底，只得一千三百萬個高頻寬記憶體堆疊，夠生產一百六十萬個晶片，呢個就係上限。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "呢批由長鑫存儲（CXMT）推出嘅國產 HBM，預計到 2026 年可以做到大約 200 萬個堆疊，足夠供應大約 25 萬到 30 萬個加速器使用。",
+      "text_markdown": "呢批由長鑫存儲（CXMT）推出嘅國產 HBM，預計到 2026 年可以做到大約 200 萬個堆疊，足夠供應大約 25 萬到 30 萬個加速器使用。",
+      "title": "",
+      "tts": {
+        "text": "呢批由長鑫存儲推出嘅國產高頻寬記憶體，預計到二零二六年可以做到大約二百萬個堆疊，足夠供應大約二十五萬到三十萬個加速器使用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "咁講到華為嘅晶片部署，成件事大概係點樣呢？",
+      "text_markdown": "咁講到華為嘅晶片部署，成件事大概係點樣呢？",
+      "title": "",
+      "tts": {
+        "text": "咁講到華為嘅晶片部署，成件事大概係點樣呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "彭博社引述華為計劃指，2026年910C晶片產量為60萬個，整條昇騰產品線合共有160萬個晶粒。",
+      "text_markdown": "彭博社引述華為計劃指，2026年910C晶片產量為60萬個，整條昇騰產品線合共有160萬個晶粒。",
+      "title": "",
+      "tts": {
+        "text": "彭博社引述華為計劃話，二零二六年九一零 C 晶片產量係六十萬個，整條昇騰產品線合共有一百六十萬個晶粒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "呢個60萬部嘅數字，只係一個目標，唔係實際付運嘅數量。",
+      "text_markdown": "呢個60萬部嘅數字，只係一個目標，唔係實際付運嘅數量。",
+      "title": "",
+      "tts": {
+        "text": "呢個六十萬部嘅數字，只係一個目標，唔係實際付運嘅數量。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "另外，在出口管制斷供前，華為經由算能和比特大陸的空殼公司，在台積電生產了超過290萬個昇騰晶粒。",
+      "text_markdown": "另外，在出口管制斷供前，華為經由算能和比特大陸的空殼公司，在台積電生產了超過290萬個昇騰晶粒。",
+      "title": "",
+      "tts": {
+        "text": "另外，喺出口管制斷供前，華為經由算能同比特大陸嘅空殼公司，喺台積電生產咗超過二百九十萬個昇騰晶粒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "出口管制好有效呢個講法，其實有個大到等於290萬塊未封裝晶片嘅漏洞。",
+      "text_markdown": "出口管制好有效呢個講法，其實有個大到等於290萬塊未封裝晶片嘅漏洞。",
+      "title": "",
+      "tts": {
+        "text": "出口管制好有效呢個講法，其實有個大到等於二百九十萬塊未封裝晶片嘅漏洞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "我哋而家即刻睇吓今日嘅新聞重點啦。",
+      "text_markdown": "我哋而家即刻睇吓今日嘅新聞重點啦。",
+      "title": "",
+      "tts": {
+        "text": "我哋而家即刻睇吓今日嘅新聞重點啦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "今個星期頭一單重點新聞，就係講博通公司。",
+      "text_markdown": "今個星期頭一單重點新聞，就係講博通公司。",
+      "title": "",
+      "tts": {
+        "text": "今個星期頭一單重點新聞，就係講博通公司。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "博通而家市值大概係2萬億美金。",
+      "text_markdown": "博通而家市值大概係2萬億美金。",
+      "title": "",
+      "tts": {
+        "text": "博通而家市值大概係兩萬億美金。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "行政總裁陳福陽在6月3日財報會上重申，2027財年人工智能半導體收入目標是1,000億美元，由約730億美元人工智能積壓訂單，以及Alphabet和Meta延至2031年的長期協議支持。",
+      "text_markdown": "行政總裁陳福陽在6月3日財報會上重申，2027財年人工智能半導體收入目標是1,000億美元，由約730億美元人工智能積壓訂單，以及Alphabet和Meta延至2031年的長期協議支持。",
+      "title": "",
+      "tts": {
+        "text": "行政總裁陳福陽喺六月三號財報會上重申，二零二七財年人工智能半導體收入目標係一千億美元，由大約七百三十億美元人工智能積壓訂單，以及谷歌母公司同面書母公司延到二零三一年嘅長期協議支持。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "2萬億美金嘅市值，1千億美金嘅人工智能收入目標，但喺零售市場，品牌知名度幾乎係零。",
+      "text_markdown": "2萬億美金嘅市值，1千億美金嘅人工智能收入目標，但喺零售市場，品牌知名度幾乎係零。",
+      "title": "",
+      "tts": {
+        "text": "兩萬億美金嘅市值，一千億美金嘅人工智能收入目標，但喺零售市場，品牌知名度幾乎係零。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "今個星期第二個頭條，輪到荷蘭光刻機大廠 ASML 阿斯麥。",
+      "text_markdown": "今個星期第二個頭條，輪到荷蘭光刻機大廠 ASML 阿斯麥。",
+      "title": "",
+      "tts": {
+        "text": "今個星期第二個頭條，輪到荷蘭嗰間光刻機大廠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "荷蘭公司 ASML 製造嘅光刻機，係所有尖端邏輯晶片都要依靠嘅設備，而佢嘅 High-NA EUV 系統，售價大約 3.7億美元。",
+      "text_markdown": "荷蘭公司 ASML 製造嘅光刻機，係所有尖端邏輯晶片都要依靠嘅設備，而佢嘅 High-NA EUV 系統，售價大約 3.7億美元。",
+      "title": "",
+      "tts": {
+        "text": "荷蘭公司阿斯麥製造嘅光刻機，係所有尖端邏輯晶片都要依靠嘅設備，而佢嘅高數值孔徑嘅極紫外光系統，售價大約三億七千萬美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "全世界一年都造唔夠20部。",
+      "text_markdown": "全世界一年都造唔夠20部。",
+      "title": "",
+      "tts": {
+        "text": "全世界一年都造唔夠二十部。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "每部機3.7億美元，一年唔夠20部，得一間公司造，呢個先係全球晶片真瓶頸，唔係政策。",
+      "text_markdown": "每部機3.7億美元，一年唔夠20部，得一間公司造，呢個先係全球晶片真瓶頸，唔係政策。",
+      "title": "",
+      "tts": {
+        "text": "每部機三億七千萬美元，一年唔夠二十部，得一間公司造，呢個先係全球晶片真瓶頸，唔係政策。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "今個星期第三條頭條，講嘅係出口管制呢回事。",
+      "text_markdown": "今個星期第三條頭條，講嘅係出口管制呢回事。",
+      "title": "",
+      "tts": {
+        "text": "今個星期第三條頭條，講嘅係出口管制呢回事。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "商務部於2025年5月13日撤回拜登時代的人工智能擴散規則，直到2026年5月31日才發布新的工業與安全局執法澄清。",
+      "text_markdown": "商務部於2025年5月13日撤回拜登時代的人工智能擴散規則，直到2026年5月31日才發布新的工業與安全局執法澄清。",
+      "title": "",
+      "tts": {
+        "text": "商務部喺二零二五年五月十三號撤回拜登年代嘅人工智能擴散規則，直到二零二六年五月三十一號先發布新嘅工業及安全局執法澄清。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "差唔多有一年時間做過渡，嗰陣當局未有主動執行要攞牌嘅規定。",
+      "text_markdown": "差唔多有一年時間做過渡，嗰陣當局未有主動執行要攞牌嘅規定。",
+      "title": "",
+      "tts": {
+        "text": "差唔多有一年時間做過渡，嗰陣當局未有主動執行要攞牌嘅規定。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "所以，計一計日子就清楚晒。",
+      "text_markdown": "所以，計一計日子就清楚晒。",
+      "title": "",
+      "tts": {
+        "text": "所以，計一計日子就清楚晒。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "停用一個美國模型，72小時就做到，但真正執行一條晶片出口規定，卻要380日，問題核心正正係呢個落差。",
+      "text_markdown": "停用一個美國模型，72小時就做到，但真正執行一條晶片出口規定，卻要380日，問題核心正正係呢個落差。",
+      "title": "",
+      "tts": {
+        "text": "停用一個美國模型，七十二小時就做到，但真正執行一條晶片出口規定，卻要三百八十日，問題核心正正係呢個落差。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "咁喺嗰380日入面，嗰批晶片到底去咗邊呢？",
+      "text_markdown": "咁喺嗰380日入面，嗰批晶片到底去咗邊呢？",
+      "title": "",
+      "tts": {
+        "text": "咁喺嗰三百八十日入面，嗰批晶片到底去咗邊呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "多數其實都去咗東南亞一帶。",
+      "text_markdown": "多數其實都去咗東南亞一帶。",
+      "title": "",
+      "tts": {
+        "text": "多數其實都去咗東南亞一帶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "司法部喺3月底解封起訴書，指控英偉達H100同A100晶片透過馬來西亞同新加坡嘅中間人轉運。",
+      "text_markdown": "司法部喺3月底解封起訴書，指控英偉達H100同A100晶片透過馬來西亞同新加坡嘅中間人轉運。",
+      "title": "",
+      "tts": {
+        "text": "司法部喺三月底解封起訴書，指控英偉達嘅艾尺一百同欸一百晶片，透過馬來西亞同新加坡嘅中間人轉運。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "《財富》雜誌5月公開一批加密訊息，披露物流安排嘅細節，超微電腦 Super Micro 亦都被捲入一宗25億美元嘅空殼公司案件入面。",
+      "text_markdown": "《財富》雜誌5月公開一批加密訊息，披露物流安排嘅細節，超微電腦 Super Micro 亦都被捲入一宗25億美元嘅空殼公司案件入面。",
+      "title": "",
+      "tts": {
+        "text": "財富雜誌五月公開一批加密訊息，披露物流安排嘅細節，超微電腦亦都被捲入一宗二十五億美元嘅空殼公司案件入面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "有傳媒報道指，美國特朗普政府而家正起草一套新嘅晶片出口限制，重點針對馬來西亞同泰國。",
+      "text_markdown": "有傳媒報道指，美國特朗普政府而家正起草一套新嘅晶片出口限制，重點針對馬來西亞同泰國。",
+      "title": "",
+      "tts": {
+        "text": "有傳媒報道指，美國特朗普政府而家正起草一套新嘅晶片出口限制，重點針對馬來西亞同泰國。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "簡單講，成件事就係呢個情況。",
+      "text_markdown": "簡單講，成件事就係呢個情況。",
+      "title": "",
+      "tts": {
+        "text": "簡單講，成件事就係呢個情況。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "呢批晶片唔會直飛深圳，而係會先飛去檳城同新加坡。",
+      "text_markdown": "呢批晶片唔會直飛深圳，而係會先飛去檳城同新加坡。",
+      "title": "",
+      "tts": {
+        "text": "呢批晶片唔會直飛深圳，而係會先飛去檳城同新加坡。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "今個星期要講嘅概念，就係仲未完成嘅合約責任。",
+      "text_markdown": "今個星期要講嘅概念，就係仲未完成嘅合約責任。",
+      "title": "",
+      "tts": {
+        "text": "今個星期要講嘅概念，就係仲未完成嘅合約責任。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "未完成合約責任係一個會計項目，用嚟記低公司已經簽咗、但仲未做完嘅合約金額。",
+      "text_markdown": "未完成合約責任係一個會計項目，用嚟記低公司已經簽咗、但仲未做完嘅合約金額。",
+      "title": "",
+      "tts": {
+        "text": "未完成合約責任係一個會計項目，用嚟記低公司已經簽咗，但仲未做完嘅合約金額。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "佢係用嚟睇前景嘅一個信號，話畀你知之後大概會有幾多收入，而唔係睇你而家銀行戶口有幾多錢。",
+      "text_markdown": "佢係用嚟睇前景嘅一個信號，話畀你知之後大概會有幾多收入，而唔係睇你而家銀行戶口有幾多錢。",
+      "title": "",
+      "tts": {
+        "text": "佢係用嚟睇前景嘅一個信號，話畀你知之後大概會有幾多收入，而唔係睇你而家銀行戶口有幾多錢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "咁講返轉頭，點解呢件事對甲骨文呢間公司嚟講會咁關鍵呢？",
+      "text_markdown": "咁講返轉頭，點解呢件事對甲骨文呢間公司嚟講會咁關鍵呢？",
+      "title": "",
+      "tts": {
+        "text": "咁講返轉頭，點解呢件事對甲骨文呢間公司嚟講會咁關鍵呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "呢5530億美元嘅剩餘履約責任，主要集中喺一個客戶同一個建設項目上，即係甲骨文承諾未來幾年，會向呢位收入模式仍有爭議嘅客戶提供大量算力。",
+      "text_markdown": "呢5530億美元嘅剩餘履約責任，主要集中喺一個客戶同一個建設項目上，即係甲骨文承諾未來幾年，會向呢位收入模式仍有爭議嘅客戶提供大量算力。",
+      "title": "",
+      "tts": {
+        "text": "呢五千五百三十億美元嘅剩餘履約責任，主要集中喺一個客戶同一個建設項目上，即係甲骨文承諾未來幾年，會向呢位收入模式仍有爭議嘅客戶提供大量算力。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "如果呢啲合約最後全部順利簽得成，甲骨文就會完成佢過去十年入面最大嘅一單交易。",
+      "text_markdown": "如果呢啲合約最後全部順利簽得成，甲骨文就會完成佢過去十年入面最大嘅一單交易。",
+      "title": "",
+      "tts": {
+        "text": "如果呢啲合約最後全部順利簽得成，甲骨文就會完成佢過去十年入面最大嘅一單交易。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "如果對方拖延，或者要求重新傾合約條款，甲骨文公司就要揹住債務，份合約嘅價值亦都會縮水。",
+      "text_markdown": "如果對方拖延，或者要求重新傾合約條款，甲骨文公司就要揹住債務，份合約嘅價值亦都會縮水。",
+      "title": "",
+      "tts": {
+        "text": "如果對方拖延，或者要求重新傾合約條款，甲骨文公司就要揹住債務，份合約嘅價值亦都會縮水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "所以當你喺科技公司文件入面，見到仲未交付嘅合約承諾（RPO）嗰個數字嗰陣。",
+      "text_markdown": "所以當你喺科技公司文件入面，見到仲未交付嘅合約承諾（RPO）嗰個數字嗰陣。",
+      "title": "",
+      "tts": {
+        "text": "所以當你喺科技公司文件入面，見到仲未交付嘅合約承諾嗰個數字嗰陣。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "所以一定要搞清楚，邊個先至係客戶，啲責任集中到咩程度，仲有公司點樣做，先算係真真正正履行咗呢啲義務。",
+      "text_markdown": "所以一定要搞清楚，邊個先至係客戶，啲責任集中到咩程度，仲有公司點樣做，先算係真真正正履行咗呢啲義務。",
+      "title": "",
+      "tts": {
+        "text": "所以一定要搞清楚，邊個先至係客戶，啲責任集中到咩程度，仲有公司點樣做，先算係真真正正履行咗呢啲義務。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "註腳入面，用到「蝕本貨持有者」呢個講法嘅位置，就係 R.P.O. 呢一項。",
+      "text_markdown": "註腳入面，用到「蝕本貨持有者」呢個講法嘅位置，就係 R.P.O. 呢一項。",
+      "title": "",
+      "tts": {
+        "text": "註腳入面，用到蝕本貨持有者呢個講法嘅位置，就係嗰個英文縮寫項目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "喺呢度收尾，啱啱好。",
+      "text_markdown": "喺呢度收尾，啱啱好。",
+      "title": "",
+      "tts": {
+        "text": "喺呢度收尾，啱啱好。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Ron，多謝你嘅匯報呀。",
+      "text_markdown": "Ron，多謝你嘅匯報呀。",
+      "title": "",
+      "tts": {
+        "text": "阿朗，多謝你嘅匯報呀。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "冇問題，Vindy，我好開心可以喺度。",
+      "text_markdown": "冇問題，Vindy，我好開心可以喺度。",
+      "title": "",
+      "tts": {
+        "text": "冇問題，雲迪，我好開心可以喺度。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "呢集就係 2026 年 6 月 21 日嘅《今週人工智能》節目。",
+      "text_markdown": "呢集就係 2026 年 6 月 21 日嘅《今週人工智能》節目。",
+      "title": "",
+      "tts": {
+        "text": "呢集就係二零二六年六月二十一號嘅今週人工智能節目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "下星期，我哋會返嚟，再睇吓開源模型嗰啲權重檔案，同埋小型實驗室嗰邊嘅動向。",
+      "text_markdown": "下星期，我哋會返嚟，再睇吓開源模型嗰啲權重檔案，同埋小型實驗室嗰邊嘅動向。",
+      "title": "",
+      "tts": {
+        "text": "下星期，我哋會返嚟，再睇吓開源模型嗰啲權重檔案，同埋小型實驗室嗰邊嘅動向。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "我哋下個星期日再見，大家記得保重。",
+      "text_markdown": "我哋下個星期日再見，大家記得保重。",
+      "title": "",
+      "tts": {
+        "text": "我哋下個星期日再見，大家記得保重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

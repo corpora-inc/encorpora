@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "fi",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lukijalle",
+      "text_markdown": "Lukijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on tarina moottoripyörästä.",
+      "text_markdown": "Tämä on tarina moottoripyörästä.",
+      "tts": {
+        "text": "Tämä on tarina moottoripyörästä.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on tosi tarina.",
+      "text_markdown": "Se on tosi tarina.",
+      "tts": {
+        "text": "Se on tosi tarina.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kauan sitten kenelläkään ei ollut moottoripyörää.",
+      "text_markdown": "Kauan sitten kenelläkään ei ollut moottoripyörää.",
+      "tts": {
+        "text": "Kauan sitten kenelläkään ei ollut moottoripyörää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nyt niitä on miljoonia.",
+      "text_markdown": "Nyt niitä on miljoonia.",
+      "tts": {
+        "text": "Nyt niitä on miljoonia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne ovat äänekkäitä, nopeita ja kiiltäviä.",
+      "text_markdown": "Ne ovat äänekkäitä, nopeita ja kiiltäviä.",
+      "tts": {
+        "text": "Ne ovat äänekkäitä, nopeita ja kiiltäviä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aloitamme aivan alusta.",
+      "text_markdown": "Aloitamme aivan alusta.",
+      "tts": {
+        "text": "Aloitamme aivan alusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tapaamme ensimmäisen rakentajan, ensimmäiset kuljettajat ja ensimmäiset kilpailut.",
+      "text_markdown": "Tapaamme ensimmäisen rakentajan, ensimmäiset kuljettajat ja ensimmäiset kilpailut.",
+      "tts": {
+        "text": "Tapaamme ensimmäisen rakentajan, ensimmäiset kuljettajat ja ensimmäiset kilpailut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten katsomme nykyajan maailmaa.",
+      "text_markdown": "Sitten katsomme nykyajan maailmaa.",
+      "tts": {
+        "text": "Sitten katsomme nykyajan maailmaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lopussa tiedät, miten tämä pieni kone muutti tien ikuisesti.",
+      "text_markdown": "Lopussa tiedät, miten tämä pieni kone muutti tien ikuisesti.",
+      "tts": {
+        "text": "Lopussa tiedät, miten tämä pieni kone muutti tien ikuisesti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "text_markdown": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moottoripyörä on pyörä, jossa on moottori.",
+      "text_markdown": "Moottoripyörä on pyörä, jossa on moottori.",
+      "tts": {
+        "text": "Moottoripyörä on pyörä, jossa on moottori.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Moottori työntää pyöriä.",
+      "text_markdown": "Moottori työntää pyöriä.",
+      "tts": {
+        "text": "Moottori työntää pyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuljettaja ei polje.",
+      "text_markdown": "Kuljettaja ei polje.",
+      "tts": {
+        "text": "Kuljettaja ei polje.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kauan sitten ei ollut moottoripyöriä.",
+      "text_markdown": "Kauan sitten ei ollut moottoripyöriä.",
+      "tts": {
+        "text": "Kauan sitten ei ollut moottoripyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihmiset ratsastivat hevosilla.",
+      "text_markdown": "Ihmiset ratsastivat hevosilla.",
+      "tts": {
+        "text": "Ihmiset ratsastivat hevosilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihmiset ajoivat polkupyörillä.",
+      "text_markdown": "Ihmiset ajoivat polkupyörillä.",
+      "tts": {
+        "text": "Ihmiset ajoivat polkupyörillä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Polkupyörässä on kaksi pyörää eikä moottoria.",
+      "text_markdown": "Polkupyörässä on kaksi pyörää eikä moottoria.",
+      "tts": {
+        "text": "Polkupyörässä on kaksi pyörää eikä moottoria.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sinun täytyy painaa polkimia jaloillasi.",
+      "text_markdown": "Sinun täytyy painaa polkimia jaloillasi.",
+      "tts": {
+        "text": "Sinun täytyy painaa polkimia jaloillasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1885 yhdellä saksalaisella miehellä oli iso idea.",
+      "text_markdown": "Vuonna 1885 yhdellä saksalaisella miehellä oli iso idea.",
+      "tts": {
+        "text": "Vuonna tuhat kahdeksansataa kahdeksankymmentäviisi yhdellä saksalaisella miehellä oli iso idea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen nimensä oli Gottlieb Daimler.",
+      "text_markdown": "Hänen nimensä oli Gottlieb Daimler.",
+      "tts": {
+        "text": "Hänen nimensä oli Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän otti pienen bensiinimoottorin ja laittoi sen puiselle polkupyörälle.",
+      "text_markdown": "Hän otti pienen bensiinimoottorin ja laittoi sen puiselle polkupyörälle.",
+      "tts": {
+        "text": "Hän otti pienen bensiinimoottorin ja laittoi sen puiselle polkupyörälle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hän kutsui konettaan nimellä Reitwagen.",
+      "text_markdown": "Hän kutsui konettaan nimellä Reitwagen.",
+      "tts": {
+        "text": "Hän kutsui konettaan nimellä Raitvagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sana tarkoittaa saksaksi \"ratsastusvaunua\".",
+      "text_markdown": "Sana tarkoittaa saksaksi \"ratsastusvaunua\".",
+      "tts": {
+        "text": "Sana tarkoittaa saksaksi \"ratsastusvaunua\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se oli maailman ensimmäinen moottoripyörä.",
+      "text_markdown": "Se oli maailman ensimmäinen moottoripyörä.",
+      "tts": {
+        "text": "Se oli maailman ensimmäinen moottoripyörä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen oli äänekäs.",
+      "text_markdown": "Reitwagen oli äänekäs.",
+      "tts": {
+        "text": "Raitvagen oli äänekäs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se hyppi ja tärisi.",
+      "text_markdown": "Se hyppi ja tärisi.",
+      "tts": {
+        "text": "Se hyppi ja tärisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siinä oli vain yksi nopeus.",
+      "text_markdown": "Siinä oli vain yksi nopeus.",
+      "tts": {
+        "text": "Siinä oli vain yksi nopeus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se pystyi kulkemaan noin 7 mailia tunnissa.",
+      "text_markdown": "Se pystyi kulkemaan noin 7 mailia tunnissa.",
+      "tts": {
+        "text": "Se pystyi kulkemaan noin seitsemän mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se on hitaampi kuin pyöräilijä tänään.",
+      "text_markdown": "Se on hitaampi kuin pyöräilijä tänään.",
+      "tts": {
+        "text": "Se on hitaampi kuin pyöräilijä tänään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mutta se pystyi liikkumaan ilman hevosta, ja se pystyi liikkumaan ilman polkimia.",
+      "text_markdown": "Mutta se pystyi liikkumaan ilman hevosta, ja se pystyi liikkumaan ilman polkimia.",
+      "tts": {
+        "text": "Mutta se pystyi liikkumaan ilman hevosta, ja se pystyi liikkumaan ilman polkimia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1 — Ensimmäinen kaksipyöräinen, joka teki vroom",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moottoripyörä oli syntynyt.",
+      "text_markdown": "Moottoripyörä oli syntynyt.",
+      "tts": {
+        "text": "Moottoripyörä oli syntynyt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 2 — Ensimmäiset yhtiöt",
+      "text_markdown": "Luku 2 — Ensimmäiset yhtiöt"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daimlerin jälkeen muutkin halusivat rakentaa moottoripyöriä.",
+      "text_markdown": "Daimlerin jälkeen muutkin halusivat rakentaa moottoripyöriä.",
+      "tts": {
+        "text": "Daimlerin jälkeen muutkin halusivat rakentaa moottoripyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pian pieniä työpajoja avattiin ympäri maailmaa.",
+      "text_markdown": "Pian pieniä työpajoja avattiin ympäri maailmaa.",
+      "tts": {
+        "text": "Pian pieniä työpajoja avattiin ympäri maailmaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Englannissa Siegfried Bettmann perusti yhtiön nimeltä Triumph.",
+      "text_markdown": "Englannissa Siegfried Bettmann perusti yhtiön nimeltä Triumph.",
+      "tts": {
+        "text": "Englannissa Siegfried Bettmann perusti yhtiön nimeltä Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ensimmäinen Triumph-moottoripyörä rakennettiin vuonna 1902.",
+      "text_markdown": "Ensimmäinen Triumph-moottoripyörä rakennettiin vuonna 1902.",
+      "tts": {
+        "text": "Ensimmäinen Triumph moottoripyörä rakennettiin vuonna tuhat yhdeksänsataa kaksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerikassa kaksi ystävää, William Harley ja Arthur Davidson, rakensivat ensimmäisen pyöränsä pienessä puuvajassa.",
+      "text_markdown": "Amerikassa kaksi ystävää, William Harley ja Arthur Davidson, rakensivat ensimmäisen pyöränsä pienessä puuvajassa.",
+      "tts": {
+        "text": "Amerikassa kaksi ystävää, William Harley ja Arthur Davidson, rakensivat ensimmäisen pyöränsä pienessä puuvajassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vaja oli Milwaukeen kaupungissa.",
+      "text_markdown": "Vaja oli Milwaukeen kaupungissa.",
+      "tts": {
+        "text": "Vaja oli Milwaukeen kaupungissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vuosi oli 1903.",
+      "text_markdown": "Vuosi oli 1903.",
+      "tts": {
+        "text": "Vuosi oli tuhat yhdeksänsataa kolme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He kutsuivat yhtiötä nimellä Harley-Davidson.",
+      "text_markdown": "He kutsuivat yhtiötä nimellä Harley-Davidson.",
+      "tts": {
+        "text": "He kutsuivat yhtiötä nimellä Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen amerikkalainen yhtiö oli alkanut muutamaa vuotta aiemmin.",
+      "text_markdown": "Toinen amerikkalainen yhtiö oli alkanut muutamaa vuotta aiemmin.",
+      "tts": {
+        "text": "Toinen amerikkalainen yhtiö oli alkanut muutamaa vuotta aiemmin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaksi miestä Springfieldissä, Massachusettsissa, rakensivat ensimmäisen koneensa vuonna 1901.",
+      "text_markdown": "Kaksi miestä Springfieldissä, Massachusettsissa, rakensivat ensimmäisen koneensa vuonna 1901.",
+      "tts": {
+        "text": "Kaksi miestä Springfieldissä, Massachusettsissa, rakensivat ensimmäisen koneensa vuonna tuhat yhdeksänsataa yksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He kutsuivat sitä nimellä Indian.",
+      "text_markdown": "He kutsuivat sitä nimellä Indian.",
+      "tts": {
+        "text": "He kutsuivat sitä nimellä Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Intiassa yhtiö nimeltä Royal Enfield alkoi tehdä moottoripyöriä myös vuonna 1901.",
+      "text_markdown": "Intiassa yhtiö nimeltä Royal Enfield alkoi tehdä moottoripyöriä myös vuonna 1901.",
+      "tts": {
+        "text": "Intiassa yhtiö nimeltä Royal Enfield alkoi tehdä moottoripyöriä myös vuonna tuhat yhdeksänsataa yksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tänään Royal Enfield on maailman vanhin moottoripyöräyhtiö, joka yhä rakentaa pyöriä.",
+      "text_markdown": "Tänään Royal Enfield on maailman vanhin moottoripyöräyhtiö, joka yhä rakentaa pyöriä.",
+      "tts": {
+        "text": "Tänään Royal Enfield on maailman vanhin moottoripyöräyhtiö, joka yhä rakentaa pyöriä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saksassa BMW-yhtiö alkoi tehdä moottoripyöriä hieman myöhemmin, vuonna 1923.",
+      "text_markdown": "Saksassa BMW-yhtiö alkoi tehdä moottoripyöriä hieman myöhemmin, vuonna 1923.",
+      "tts": {
+        "text": "Saksassa Bee Em Vee yhtiö alkoi tehdä moottoripyöriä hieman myöhemmin, vuonna tuhat yhdeksänsataa kaksikymmentäkolme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW tarkoittaa saksaksi \"Baijerin moottoritehtaita\".",
+      "text_markdown": "BMW tarkoittaa saksaksi \"Baijerin moottoritehtaita\".",
+      "tts": {
+        "text": "Bee Em Vee tarkoittaa saksaksi \"Baijerin moottoritehtaita\".",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuoteen 1910 mennessä moottoripyöriä oli kaikkialla.",
+      "text_markdown": "Vuoteen 1910 mennessä moottoripyöriä oli kaikkialla.",
+      "tts": {
+        "text": "Vuoteen tuhat yhdeksänsataakymmenen mennessä moottoripyöriä oli kaikkialla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niitä oli kaupungin kaduilla ja maaseudun teillä.",
+      "text_markdown": "Niitä oli kaupungin kaduilla ja maaseudun teillä.",
+      "tts": {
+        "text": "Niitä oli kaupungin kaduilla ja maaseudun teillä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2 — Ensimmäiset yhtiöt",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Moottoripyörän aika oli todella alkanut.",
+      "text_markdown": "Moottoripyörän aika oli todella alkanut.",
+      "tts": {
+        "text": "Moottoripyörän aika oli todella alkanut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 3 — Moottoripyörät sotaan",
+      "text_markdown": "Luku 3 — Moottoripyörät sotaan"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moottoripyörät ovat nopeita.",
+      "text_markdown": "Moottoripyörät ovat nopeita.",
+      "tts": {
+        "text": "Moottoripyörät ovat nopeita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne mahtuvat pienille poluille.",
+      "text_markdown": "Ne mahtuvat pienille poluille.",
+      "tts": {
+        "text": "Ne mahtuvat pienille poluille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne voivat viedä viestejä leirien välillä.",
+      "text_markdown": "Ne voivat viedä viestejä leirien välillä.",
+      "tts": {
+        "text": "Ne voivat viedä viestejä leirien välillä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Joten kun sodat tulivat, armeijat halusivat moottoripyöriä.",
+      "text_markdown": "Joten kun sodat tulivat, armeijat halusivat moottoripyöriä.",
+      "tts": {
+        "text": "Joten kun sodat tulivat, armeijat halusivat moottoripyöriä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen maailmansota alkoi vuonna 1914.",
+      "text_markdown": "Ensimmäinen maailmansota alkoi vuonna 1914.",
+      "tts": {
+        "text": "Ensimmäinen maailmansota alkoi vuonna tuhat yhdeksänsataa neljätoista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sotilaat käyttivät Triumph-moottoripyöriä viestien viemiseen.",
+      "text_markdown": "Sotilaat käyttivät Triumph-moottoripyöriä viestien viemiseen.",
+      "tts": {
+        "text": "Sotilaat käyttivät Triumph moottoripyöriä viestien viemiseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H oli vahva ja hiljainen.",
+      "text_markdown": "Triumph Model H oli vahva ja hiljainen.",
+      "tts": {
+        "text": "Triumph Model H oli vahva ja hiljainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se pystyi kulkemaan paikkoihin, joihin hevoset eivät päässeet.",
+      "text_markdown": "Se pystyi kulkemaan paikkoihin, joihin hevoset eivät päässeet.",
+      "tts": {
+        "text": "Se pystyi kulkemaan paikkoihin, joihin hevoset eivät päässeet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen maailmansota alkoi vuonna 1939.",
+      "text_markdown": "Toinen maailmansota alkoi vuonna 1939.",
+      "tts": {
+        "text": "Toinen maailmansota alkoi vuonna tuhat yhdeksänsataa kolmekymmentäyhdeksän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siihen mennessä moottoripyörät olivat nopeampia ja vahvempia.",
+      "text_markdown": "Siihen mennessä moottoripyörät olivat nopeampia ja vahvempia.",
+      "tts": {
+        "text": "Siihen mennessä moottoripyörät olivat nopeampia ja vahvempia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikkalaiset sotilaat ajoivat Harley-Davidson WLA -mallilla.",
+      "text_markdown": "Amerikkalaiset sotilaat ajoivat Harley-Davidson WLA -mallilla.",
+      "tts": {
+        "text": "Amerikkalaiset sotilaat ajoivat Harley Davidson Vee El Aa mallilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saksalaiset sotilaat ajoivat BMW R75 -mallilla.",
+      "text_markdown": "Saksalaiset sotilaat ajoivat BMW R75 -mallilla.",
+      "tts": {
+        "text": "Saksalaiset sotilaat ajoivat Bee Em Vee R seitsemänkymmentäviisi mallilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75:ssä oli sivuvaunu, kolmas pyörä ja istuin toiselle sotilaalle.",
+      "text_markdown": "R75:ssä oli sivuvaunu, kolmas pyörä ja istuin toiselle sotilaalle.",
+      "tts": {
+        "text": "R seitsemänkymmentäviisissä oli sivuvaunu, kolmas pyörä ja istuin toiselle sotilaalle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sodan jälkeen sotilaat tulivat kotiin.",
+      "text_markdown": "Sodan jälkeen sotilaat tulivat kotiin.",
+      "tts": {
+        "text": "Sodan jälkeen sotilaat tulivat kotiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He toivat moottoripyöränsä mukanaan.",
+      "text_markdown": "He toivat moottoripyöränsä mukanaan.",
+      "tts": {
+        "text": "He toivat moottoripyöränsä mukanaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Monet heistä halusivat jatkaa ajamista.",
+      "text_markdown": "Monet heistä halusivat jatkaa ajamista.",
+      "tts": {
+        "text": "Monet heistä halusivat jatkaa ajamista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jotkut heistä perustivat omia moottoripyöräkerhoja.",
+      "text_markdown": "Jotkut heistä perustivat omia moottoripyöräkerhoja.",
+      "tts": {
+        "text": "Jotkut heistä perustivat omia moottoripyöräkerhoja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sodat tekivät moottoripyörästä kuuluisan.",
+      "text_markdown": "Sodat tekivät moottoripyörästä kuuluisan.",
+      "tts": {
+        "text": "Sodat tekivät moottoripyörästä kuuluisan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miljoonat ihmiset olivat nähneet sellaisen ensimmäistä kertaa.",
+      "text_markdown": "Miljoonat ihmiset olivat nähneet sellaisen ensimmäistä kertaa.",
+      "tts": {
+        "text": "Miljoonat ihmiset olivat nähneet sellaisen ensimmäistä kertaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3 — Moottoripyörät sotaan",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Monet halusivat oman moottoripyörän.",
+      "text_markdown": "Monet halusivat oman moottoripyörän.",
+      "tts": {
+        "text": "Monet halusivat oman moottoripyörän.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 4 — Japanin nousu",
+      "text_markdown": "Luku 4 — Japanin nousu"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisen maailmansodan jälkeen Japani oli köyhä.",
+      "text_markdown": "Toisen maailmansodan jälkeen Japani oli köyhä.",
+      "tts": {
+        "text": "Toisen maailmansodan jälkeen Japani oli köyhä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Useimmat autot olivat liian kalliita.",
+      "text_markdown": "Useimmat autot olivat liian kalliita.",
+      "tts": {
+        "text": "Useimmat autot olivat liian kalliita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihmiset tarvitsivat pienen ja halvan tavan liikkua.",
+      "text_markdown": "Ihmiset tarvitsivat pienen ja halvan tavan liikkua.",
+      "tts": {
+        "text": "Ihmiset tarvitsivat pienen ja halvan tavan liikkua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yksi nuori japanilainen mies näki tilaisuuden.",
+      "text_markdown": "Yksi nuori japanilainen mies näki tilaisuuden.",
+      "tts": {
+        "text": "Yksi nuori japanilainen mies näki tilaisuuden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen nimensä oli Soichiro Honda.",
+      "text_markdown": "Hänen nimensä oli Soichiro Honda.",
+      "tts": {
+        "text": "Hänen nimensä oli Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän perusti pienen yhtiön vuonna 1948.",
+      "text_markdown": "Hän perusti pienen yhtiön vuonna 1948.",
+      "tts": {
+        "text": "Hän perusti pienen yhtiön vuonna tuhat yhdeksänsataa neljäkymmentäkahdeksan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän kutsui sitä nimellä Honda.",
+      "text_markdown": "Hän kutsui sitä nimellä Honda.",
+      "tts": {
+        "text": "Hän kutsui sitä nimellä Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1958 Honda rakensi pienen moottoripyörän nimeltä Super Cub.",
+      "text_markdown": "Vuonna 1958 Honda rakensi pienen moottoripyörän nimeltä Super Cub.",
+      "tts": {
+        "text": "Vuonna tuhat yhdeksänsataa viisikymmentäkahdeksan Honda rakensi pienen moottoripyörän nimeltä Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cubilla oli helppo ajaa.",
+      "text_markdown": "Super Cubilla oli helppo ajaa.",
+      "tts": {
+        "text": "Super Cubilla oli helppo ajaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitä oli helppo korjata.",
+      "text_markdown": "Sitä oli helppo korjata.",
+      "tts": {
+        "text": "Sitä oli helppo korjata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se oli todella, todella halpa.",
+      "text_markdown": "Se oli todella, todella halpa.",
+      "tts": {
+        "text": "Se oli todella, todella halpa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset ympäri maailmaa ostivat Super Cubin.",
+      "text_markdown": "Ihmiset ympäri maailmaa ostivat Super Cubin.",
+      "tts": {
+        "text": "Ihmiset ympäri maailmaa ostivat Super Cubin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tänään Super Cubeja on myyty yli 100 miljoonaa.",
+      "text_markdown": "Tänään Super Cubeja on myyty yli 100 miljoonaa.",
+      "tts": {
+        "text": "Tänään Super Cubeja on myyty yli sata miljoonaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on kaikkien aikojen myydyin moottoriajoneuvo.",
+      "text_markdown": "Se on kaikkien aikojen myydyin moottoriajoneuvo.",
+      "tts": {
+        "text": "Se on kaikkien aikojen myydyin moottoriajoneuvo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pian kolme muuta japanilaista yhtiötä seurasi Hondan perässä.",
+      "text_markdown": "Pian kolme muuta japanilaista yhtiötä seurasi Hondan perässä.",
+      "tts": {
+        "text": "Pian kolme muuta japanilaista yhtiötä seurasi Hondan perässä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne olivat Yamaha, Suzuki ja Kawasaki.",
+      "text_markdown": "Ne olivat Yamaha, Suzuki ja Kawasaki.",
+      "tts": {
+        "text": "Ne olivat Yamaha, Suzuki ja Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yhdessä Hondan kanssa niitä kutsutaan nimellä Big Four.",
+      "text_markdown": "Yhdessä Hondan kanssa niitä kutsutaan nimellä Big Four.",
+      "tts": {
+        "text": "Yhdessä Hondan kanssa niitä kutsutaan nimellä Big Four.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Big Four teki moottoripyöriä, jotka olivat nopeita, halpoja ja helppoja ajaa.",
+      "text_markdown": "Big Four teki moottoripyöriä, jotka olivat nopeita, halpoja ja helppoja ajaa.",
+      "tts": {
+        "text": "Big Four teki moottoripyöriä, jotka olivat nopeita, halpoja ja helppoja ajaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuusikymmentäluvulla japanilaisia moottoripyöriä oli kaikkialla.",
+      "text_markdown": "Kuusikymmentäluvulla japanilaisia moottoripyöriä oli kaikkialla.",
+      "tts": {
+        "text": "Kuusikymmentäluvulla japanilaisia moottoripyöriä oli kaikkialla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4 — Japanin nousu",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Niistä tuli tien uusia kuninkaita.",
+      "text_markdown": "Niistä tuli tien uusia kuninkaita.",
+      "tts": {
+        "text": "Niistä tuli tien uusia kuninkaita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "text_markdown": "Luku 5 — Nopeammin, nopeammin, nopeammin"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuusikymmentäluvulla kuljettajat halusivat ajaa nopeammin.",
+      "text_markdown": "Kuusikymmentäluvulla kuljettajat halusivat ajaa nopeammin.",
+      "tts": {
+        "text": "Kuusikymmentäluvulla kuljettajat halusivat ajaa nopeammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rakentajat aloittivat kilpailun maailman nopeimmasta moottoripyörästä.",
+      "text_markdown": "Rakentajat aloittivat kilpailun maailman nopeimmasta moottoripyörästä.",
+      "tts": {
+        "text": "Rakentajat aloittivat kilpailun maailman nopeimmasta moottoripyörästä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Italiassa pieni yhtiö nimeltä MV Agusta rakensi kauniita punaisia pyöriä, jotka voittivat kilpailun toisensa jälkeen.",
+      "text_markdown": "Italiassa pieni yhtiö nimeltä MV Agusta rakensi kauniita punaisia pyöriä, jotka voittivat kilpailun toisensa jälkeen.",
+      "tts": {
+        "text": "Italiassa pieni yhtiö nimeltä Em Vee Agusta rakensi kauniita punaisia pyöriä, jotka voittivat kilpailun toisensa jälkeen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Englannissa Triumph ja Norton rakensivat myös voimakkaita koneita.",
+      "text_markdown": "Englannissa Triumph ja Norton rakensivat myös voimakkaita koneita.",
+      "tts": {
+        "text": "Englannissa Triumph ja Norton rakensivat myös voimakkaita koneita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten vuonna 1969 Honda teki jotain hämmästyttävää.",
+      "text_markdown": "Sitten vuonna 1969 Honda teki jotain hämmästyttävää.",
+      "tts": {
+        "text": "Sitten vuonna tuhat yhdeksänsataa kuusikymmentäyhdeksän Honda teki jotain hämmästyttävää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He rakensivat moottoripyörän nimeltä CB 750.",
+      "text_markdown": "He rakensivat moottoripyörän nimeltä CB 750.",
+      "tts": {
+        "text": "He rakensivat moottoripyörän nimeltä C B seitsemänsataaviisikymmentä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siinä oli neljä sylinteriä ja iso moottori.",
+      "text_markdown": "Siinä oli neljä sylinteriä ja iso moottori.",
+      "tts": {
+        "text": "Siinä oli neljä sylinteriä ja iso moottori.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se pystyi kulkemaan yli 120 mailia tunnissa.",
+      "text_markdown": "Se pystyi kulkemaan yli 120 mailia tunnissa.",
+      "tts": {
+        "text": "Se pystyi kulkemaan yli satakaksikymmentä mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se oli ensimmäinen oikea superpyörä.",
+      "text_markdown": "Se oli ensimmäinen oikea superpyörä.",
+      "tts": {
+        "text": "Se oli ensimmäinen oikea superpyörä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "CB 750:n jälkeen jokainen yhtiö halusi rakentaa superpyörän.",
+      "text_markdown": "CB 750:n jälkeen jokainen yhtiö halusi rakentaa superpyörän.",
+      "tts": {
+        "text": "C B seitsemänsataaviisikymmentän jälkeen jokainen yhtiö halusi rakentaa superpyörän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pyörät tulivat nopeammiksi ja nopeammiksi.",
+      "text_markdown": "Pyörät tulivat nopeammiksi ja nopeammiksi.",
+      "tts": {
+        "text": "Pyörät tulivat nopeammiksi ja nopeammiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pian niissä oli kirkkaita kuoria, sileitä muovikuoria, jotka leikkasivat tuulen läpi.",
+      "text_markdown": "Pian niissä oli kirkkaita kuoria, sileitä muovikuoria, jotka leikkasivat tuulen läpi.",
+      "tts": {
+        "text": "Pian niissä oli kirkkaita kuoria, sileitä muovikuoria, jotka leikkasivat tuulen läpi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1990 japanilainen moottoripyörä nimeltä Kawasaki ZX-11 oli maailman nopein moottoripyörä.",
+      "text_markdown": "Vuonna 1990 japanilainen moottoripyörä nimeltä Kawasaki ZX-11 oli maailman nopein moottoripyörä.",
+      "tts": {
+        "text": "Vuonna tuhat yhdeksänsataa yhdeksänkymmentä japanilainen moottoripyörä nimeltä Kawasaki Zee X yksitoista oli maailman nopein moottoripyörä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se pystyi kulkemaan lähes 175 mailia tunnissa.",
+      "text_markdown": "Se pystyi kulkemaan lähes 175 mailia tunnissa.",
+      "tts": {
+        "text": "Se pystyi kulkemaan lähes sataseitsemänkymmentäviisi mailia tunnissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muutamaa vuotta myöhemmin Suzuki Hayabusa kulki vielä nopeammin.",
+      "text_markdown": "Muutamaa vuotta myöhemmin Suzuki Hayabusa kulki vielä nopeammin.",
+      "tts": {
+        "text": "Muutamaa vuotta myöhemmin Suzuki Hayabusa kulki vielä nopeammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se ylsi 194 mailiin tunnissa.",
+      "text_markdown": "Se ylsi 194 mailiin tunnissa.",
+      "tts": {
+        "text": "Se ylsi satayhdeksänkymmentäneljään mailiin tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5 — Nopeammin, nopeammin, nopeammin",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on nopeampi kuin useimmat autot tien päällä tänään.",
+      "text_markdown": "Se on nopeampi kuin useimmat autot tien päällä tänään.",
+      "tts": {
+        "text": "Se on nopeampi kuin useimmat autot tien päällä tänään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 6 — Monenlaisia moottoripyöriä",
+      "text_markdown": "Luku 6 — Monenlaisia moottoripyöriä"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tänään moottoripyöriä on monen muotoisia.",
+      "text_markdown": "Tänään moottoripyöriä on monen muotoisia.",
+      "tts": {
+        "text": "Tänään moottoripyöriä on monen muotoisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokainen tyyppi on rakennettu eri tehtävään.",
+      "text_markdown": "Jokainen tyyppi on rakennettu eri tehtävään.",
+      "tts": {
+        "text": "Jokainen tyyppi on rakennettu eri tehtävään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Urheilupyörä on rakennettu kulkemaan hyvin nopeasti.",
+      "text_markdown": "Urheilupyörä on rakennettu kulkemaan hyvin nopeasti.",
+      "tts": {
+        "text": "Urheilupyörä on rakennettu kulkemaan hyvin nopeasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on kevyt ja matala.",
+      "text_markdown": "Se on kevyt ja matala.",
+      "tts": {
+        "text": "Se on kevyt ja matala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuljettaja nojaa eteenpäin.",
+      "text_markdown": "Kuljettaja nojaa eteenpäin.",
+      "tts": {
+        "text": "Kuljettaja nojaa eteenpäin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Urheilupyörät on tehty sileille teille ja kilparadoille.",
+      "text_markdown": "Urheilupyörät on tehty sileille teille ja kilparadoille.",
+      "tts": {
+        "text": "Urheilupyörät on tehty sileille teille ja kilparadoille.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maastopyörä on rakennettu mutaa ja maata varten.",
+      "text_markdown": "Maastopyörä on rakennettu mutaa ja maata varten.",
+      "tts": {
+        "text": "Maastopyörä on rakennettu mutaa ja maata varten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siinä on korkeat pyörät ja isot renkaat.",
+      "text_markdown": "Siinä on korkeat pyörät ja isot renkaat.",
+      "tts": {
+        "text": "Siinä on korkeat pyörät ja isot renkaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maastopyörät voivat hypätä mäkien yli.",
+      "text_markdown": "Maastopyörät voivat hypätä mäkien yli.",
+      "tts": {
+        "text": "Maastopyörät voivat hypätä mäkien yli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Monet nuoret kuljettajat opettelevat ensin maastopyörillä.",
+      "text_markdown": "Monet nuoret kuljettajat opettelevat ensin maastopyörillä.",
+      "tts": {
+        "text": "Monet nuoret kuljettajat opettelevat ensin maastopyörillä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kruisseri on pitkä ja matala.",
+      "text_markdown": "Kruisseri on pitkä ja matala.",
+      "tts": {
+        "text": "Kruisseri on pitkä ja matala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuljettaja istuu suorana ja ajaa hitaasti.",
+      "text_markdown": "Kuljettaja istuu suorana ja ajaa hitaasti.",
+      "tts": {
+        "text": "Kuljettaja istuu suorana ja ajaa hitaasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson on kuuluisa kruissereistaan.",
+      "text_markdown": "Harley-Davidson on kuuluisa kruissereistaan.",
+      "tts": {
+        "text": "Harley Davidson on kuuluisa kruissereistaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niin on Indiankin.",
+      "text_markdown": "Niin on Indiankin.",
+      "tts": {
+        "text": "Niin on Indiankin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seikkailupyörä on rakennettu pitkille matkoille.",
+      "text_markdown": "Seikkailupyörä on rakennettu pitkille matkoille.",
+      "tts": {
+        "text": "Seikkailupyörä on rakennettu pitkille matkoille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se voi ajaa teillä ja maastossa.",
+      "text_markdown": "Se voi ajaa teillä ja maastossa.",
+      "tts": {
+        "text": "Se voi ajaa teillä ja maastossa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS on kuuluisa seikkailupyörä.",
+      "text_markdown": "BMW GS on kuuluisa seikkailupyörä.",
+      "tts": {
+        "text": "Bee Em Vee Jee Es on kuuluisa seikkailupyörä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niin on KTM:kin.",
+      "text_markdown": "Niin on KTM:kin.",
+      "tts": {
+        "text": "Niin on Koo Tee Em myös.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On myös chopper-pyöriä, skoottereita, kilpapyöriä ja sähköpyöriä.",
+      "text_markdown": "On myös chopper-pyöriä, skoottereita, kilpapyöriä ja sähköpyöriä.",
+      "tts": {
+        "text": "On myös chopper pyöriä, skoottereita, kilpapyöriä ja sähköpyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lähes jokaiselle tielle on oma moottoripyörä.",
+      "text_markdown": "Lähes jokaiselle tielle on oma moottoripyörä.",
+      "tts": {
+        "text": "Lähes jokaiselle tielle on oma moottoripyörä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6 — Monenlaisia moottoripyöriä",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tänään löydät moottoripyörän jokaisesta maailman maasta.",
+      "text_markdown": "Tänään löydät moottoripyörän jokaisesta maailman maasta.",
+      "tts": {
+        "text": "Tänään löydät moottoripyörän jokaisesta maailman maasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 7 — Uusi tie",
+      "text_markdown": "Luku 7 — Uusi tie"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tänään moottoripyörässä on uudenlainen moottori.",
+      "text_markdown": "Tänään moottoripyörässä on uudenlainen moottori.",
+      "tts": {
+        "text": "Tänään moottoripyörässä on uudenlainen moottori.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on sähkömoottori.",
+      "text_markdown": "Se on sähkömoottori.",
+      "tts": {
+        "text": "Se on sähkömoottori.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sähkömoottoripyörä on hiljainen.",
+      "text_markdown": "Sähkömoottoripyörä on hiljainen.",
+      "tts": {
+        "text": "Sähkömoottoripyörä on hiljainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se ei tarvitse bensiiniä.",
+      "text_markdown": "Se ei tarvitse bensiiniä.",
+      "tts": {
+        "text": "Se ei tarvitse bensiiniä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se täytyy vain kytkeä pistorasiaan kuin puhelin.",
+      "text_markdown": "Se täytyy vain kytkeä pistorasiaan kuin puhelin.",
+      "tts": {
+        "text": "Se täytyy vain kytkeä pistorasiaan kuin puhelin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yhtiö nimeltä Zero rakentaa sähkömoottoripyöriä Kaliforniassa.",
+      "text_markdown": "Yhtiö nimeltä Zero rakentaa sähkömoottoripyöriä Kaliforniassa.",
+      "tts": {
+        "text": "Yhtiö nimeltä Zero rakentaa sähkömoottoripyöriä Kaliforniassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson rakentaa nyt sähköpyörää nimeltä LiveWire.",
+      "text_markdown": "Harley-Davidson rakentaa nyt sähköpyörää nimeltä LiveWire.",
+      "tts": {
+        "text": "Harley Davidson rakentaa nyt sähköpyörää nimeltä LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Italialainen yhtiö nimeltä Energica rakentaa sähköisiä kilpapyöriä.",
+      "text_markdown": "Italialainen yhtiö nimeltä Energica rakentaa sähköisiä kilpapyöriä.",
+      "tts": {
+        "text": "Italialainen yhtiö nimeltä Energica rakentaa sähköisiä kilpapyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ne ovat hyvin nopeita.",
+      "text_markdown": "Ne ovat hyvin nopeita.",
+      "tts": {
+        "text": "Ne ovat hyvin nopeita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen moottoripyörä, Reitwagen, pystyi kulkemaan 7 mailia tunnissa.",
+      "text_markdown": "Ensimmäinen moottoripyörä, Reitwagen, pystyi kulkemaan 7 mailia tunnissa.",
+      "tts": {
+        "text": "Ensimmäinen moottoripyörä, Raitvagen, pystyi kulkemaan seitsemän mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tämän päivän sähkömoottoripyörät pystyvät kulkemaan yli 200 mailia tunnissa.",
+      "text_markdown": "Tämän päivän sähkömoottoripyörät pystyvät kulkemaan yli 200 mailia tunnissa.",
+      "tts": {
+        "text": "Tämän päivän sähkömoottoripyörät pystyvät kulkemaan yli kaksisataa mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tämä on moottoripyörän tarina tähän asti.",
+      "text_markdown": "Tämä on moottoripyörän tarina tähän asti.",
+      "tts": {
+        "text": "Tämä on moottoripyörän tarina tähän asti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä oli iso tarina.",
+      "text_markdown": "Tämä oli iso tarina.",
+      "tts": {
+        "text": "Tämä oli iso tarina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seuraavat yksitoista kirjaa kertovat pieniä tarinoita.",
+      "text_markdown": "Seuraavat yksitoista kirjaa kertovat pieniä tarinoita.",
+      "tts": {
+        "text": "Seuraavat yksitoista kirjaa kertovat pieniä tarinoita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen niistä kertoo yhdestä moottoripyörämaailman osasta.",
+      "text_markdown": "Jokainen niistä kertoo yhdestä moottoripyörämaailman osasta.",
+      "tts": {
+        "text": "Jokainen niistä kertoo yhdestä moottoripyörämaailman osasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen osa kertoo Harley-Davidsonista.",
+      "text_markdown": "Toinen osa kertoo Harley-Davidsonista.",
+      "tts": {
+        "text": "Toinen osa kertoo Harley Davidsonista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kolmas osa kertoo Hondasta.",
+      "text_markdown": "Kolmas osa kertoo Hondasta.",
+      "tts": {
+        "text": "Kolmas osa kertoo Hondasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Neljäs osa kertoo Ducatista Italiasta.",
+      "text_markdown": "Neljäs osa kertoo Ducatista Italiasta.",
+      "tts": {
+        "text": "Neljäs osa kertoo Ducatista Italiasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Viides osa kertoo BMW:stä Saksasta.",
+      "text_markdown": "Viides osa kertoo BMW:stä Saksasta.",
+      "tts": {
+        "text": "Viides osa kertoo Bee Em Veestä Saksasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kuudes osa kertoo Triumphista Englannista.",
+      "text_markdown": "Kuudes osa kertoo Triumphista Englannista.",
+      "tts": {
+        "text": "Kuudes osa kertoo Triumphista Englannista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seitsemäs osa kertoo maastopyöristä.",
+      "text_markdown": "Seitsemäs osa kertoo maastopyöristä.",
+      "tts": {
+        "text": "Seitsemäs osa kertoo maastopyöristä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kahdeksas osa kertoo urheilupyöristä.",
+      "text_markdown": "Kahdeksas osa kertoo urheilupyöristä.",
+      "tts": {
+        "text": "Kahdeksas osa kertoo urheilupyöristä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yhdeksäs osa kertoo kruissereista ja choppereista.",
+      "text_markdown": "Yhdeksäs osa kertoo kruissereista ja choppereista.",
+      "tts": {
+        "text": "Yhdeksäs osa kertoo kruissereista ja choppereista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kymmenes osa kertoo seikkailupyöristä.",
+      "text_markdown": "Kymmenes osa kertoo seikkailupyöristä.",
+      "tts": {
+        "text": "Kymmenes osa kertoo seikkailupyöristä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Yhdestoista osa kertoo kilpa-ajosta.",
+      "text_markdown": "Yhdestoista osa kertoo kilpa-ajosta.",
+      "tts": {
+        "text": "Yhdestoista osa kertoo kilpa ajosta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kahdestoista osa kertoo sähköpyöristä ja tulevaisuudesta.",
+      "text_markdown": "Kahdestoista osa kertoo sähköpyöristä ja tulevaisuudesta.",
+      "tts": {
+        "text": "Kahdestoista osa kertoo sähköpyöristä ja tulevaisuudesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valitse se, joka näyttää hauskimmalta.",
+      "text_markdown": "Valitse se, joka näyttää hauskimmalta.",
+      "tts": {
+        "text": "Valitse se, joka näyttää hauskimmalta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7 — Uusi tie",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tule sitten kyytiin.",
+      "text_markdown": "Tule sitten kyytiin.",
+      "tts": {
+        "text": "Tule sitten kyytiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tietoa tästä kirjasta",
+      "text_markdown": "Tietoa tästä kirjasta"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on ensimmäinen kirja Moottoripyörät-sarjassa.",
+      "text_markdown": "Tämä on ensimmäinen kirja Moottoripyörät-sarjassa.",
+      "tts": {
+        "text": "Tämä on ensimmäinen kirja Moottoripyörät sarjassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sen lukee ääneen August.",
+      "text_markdown": "Sen lukee ääneen August.",
+      "tts": {
+        "text": "Sen lukee ääneen August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen lause on lyhyt ja selkeä, jotta voit lukea mukana millä tahansa kielellä.",
+      "text_markdown": "Jokainen lause on lyhyt ja selkeä, jotta voit lukea mukana millä tahansa kielellä.",
+      "tts": {
+        "text": "Jokainen lause on lyhyt ja selkeä, jotta voit lukea mukana millä tahansa kielellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+      "text_markdown": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+      "tts": {
+        "text": "Jos haluat kuulla, miltä lause kuulostaa toisella kielellä, kuuntele sama kirja sillä kielellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sivun sanat täsmäävät siihen, mitä kuulet.",
+      "text_markdown": "Sivun sanat täsmäävät siihen, mitä kuulet.",
+      "tts": {
+        "text": "Sivun sanat täsmäävät siihen, mitä kuulet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Näin opit.",
+      "text_markdown": "Näin opit.",
+      "tts": {
+        "text": "Näin opit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tietoa tästä kirjasta",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mene nyt etsimään moottoripyörä ja kuuntele, kun se sanoo vroom.",
+      "text_markdown": "Mene nyt etsimään moottoripyörä ja kuuntele, kun se sanoo vroom.",
+      "tts": {
+        "text": "Mene nyt etsimään moottoripyörä ja kuuntele, kun se sanoo vroom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

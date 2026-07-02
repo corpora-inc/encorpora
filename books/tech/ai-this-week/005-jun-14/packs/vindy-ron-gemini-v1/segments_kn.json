@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "kn",
+  "total_segments": 121,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "AI This Week ಗೆ ನಿಮಗೆ ಸುಸ್ವಾಗತ.",
+      "text_markdown": "AI This Week ಗೆ ನಿಮಗೆ ಸುಸ್ವಾಗತ.",
+      "title": "",
+      "tts": {
+        "text": "ಎಐ ದಿಸ್ ವೀಕ್ ಗೆ ನಿಮಗೆ ಸುಸ್ವಾಗತ.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನಾನು Vindy.",
+      "text_markdown": "ನಾನು Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ನಾನು Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+      "text_markdown": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನನ್ನೊಂದಿಗೆ, ಎಂದಿನಂತೆ, Ron ಇದ್ದಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+      "text_markdown": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ 14, 2026.",
+      "text_markdown": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ 14, 2026.",
+      "title": "",
+      "tts": {
+        "text": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ ಹದಿನಾಲ್ಕು, ಎರಡು ಸಾವಿರ ಇಪ್ಪತ್ತಾರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇಂದಿನ ಬಗ್ಗೆ ಎರಡು ವಿಷಯಗಳು ವಿಭಿನ್ನವಾಗಿವೆ.",
+      "text_markdown": "ಇಂದಿನ ಬಗ್ಗೆ ಎರಡು ವಿಷಯಗಳು ವಿಭಿನ್ನವಾಗಿವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇಂದಿನ ಬಗ್ಗೆ ಎರಡು ವಿಷಯಗಳು ವಿಭಿನ್ನವಾಗಿವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನಾವು ಭಾನುವಾರಗಳಿಗೆ ಮಾರ್ಪಡಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ನಿಜವಾಗಿ ತಯಾರಿಸುತ್ತಾರೆ ಎಂದು ನಿಮಗೆ ಹೇಳಲಿದ್ದೇವೆ.",
+      "text_markdown": "ನಾವು ಭಾನುವಾರಗಳಿಗೆ ಮಾರ್ಪಡಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ನಿಜವಾಗಿ ತಯಾರಿಸುತ್ತಾರೆ ಎಂದು ನಿಮಗೆ ಹೇಳಲಿದ್ದೇವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನಾವು ಭಾನುವಾರಗಳಿಗೆ ಮಾರ್ಪಡಿಸುತ್ತಿದ್ದೇವೆ, ಮತ್ತು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ನಿಜವಾಗಿ ತಯಾರಿಸುತ್ತಾರೆ ಎಂದು ನಿಮಗೆ ಹೇಳಲಿದ್ದೇವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನಂತರ ಸಾಮಾನ್ಯ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಹಿಂತಿರುಗುವುದು — open weights, ಸಣ್ಣ labs, ಮತ್ತು ವಿಶಾಲವಾದ AI ವಾರ.",
+      "text_markdown": "ನಂತರ ಸಾಮಾನ್ಯ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಹಿಂತಿರುಗುವುದು — open weights, ಸಣ್ಣ labs, ಮತ್ತು ವಿಶಾಲವಾದ AI ವಾರ.",
+      "title": "",
+      "tts": {
+        "text": "ನಂತರ ಸಾಮಾನ್ಯ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಹಿಂತಿರುಗುವುದು — open weights, ಸಣ್ಣ labs, ಮತ್ತು ವಿಶಾಲವಾದ AI ವಾರ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ವೇಳಾಪಟ್ಟಿ ಬದಲಾವಣೆ ಮತ್ತು ಏಕೆ.",
+      "text_markdown": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ವೇಳಾಪಟ್ಟಿ ಬದಲಾವಣೆ ಮತ್ತು ಏಕೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದೆ ಬರುತ್ತಿದೆ — ವೇಳಾಪಟ್ಟಿ ಬದಲಾವಣೆ ಮತ್ತು ಏಕೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Corpora Inc. ಬಗ್ಗೆ ಮೊದಲ ನೋಟ, Corpán app ಮತ್ತು ಈ podcast ಹಿಂದಿನ ಸಣ್ಣ ತಂಡ.",
+      "text_markdown": "Corpora Inc. ಬಗ್ಗೆ ಮೊದಲ ನೋಟ, Corpán app ಮತ್ತು ಈ podcast ಹಿಂದಿನ ಸಣ್ಣ ತಂಡ.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc. ಬಗ್ಗೆ ಮೊದಲ ನೋಟ, Corpán app ಮತ್ತು ಈ podcast ಹಿಂದಿನ ಸಣ್ಣ ತಂಡ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "beatlounge ಮೇಲಿನ ಪ್ರಮುಖ ಸುದ್ದಿ, ನಮ್ಮ ಹೊಸ music pack Corpán 0.18.0 ನಲ್ಲಿ launch ಆಗುತ್ತಿದೆ.",
+      "text_markdown": "beatlounge ಮೇಲಿನ ಪ್ರಮುಖ ಸುದ್ದಿ, ನಮ್ಮ ಹೊಸ music pack Corpán 0.18.0 ನಲ್ಲಿ launch ಆಗುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge ಮೇಲಿನ ಪ್ರಮುಖ ಸುದ್ದಿ, ನಮ್ಮ ಹೊಸ music pack Corpán ಶೂನ್ಯ ಪಾಯಿಂಟ್ ಒಂದು ಎಂಟು ಪಾಯಿಂಟ್ ಶೂನ್ಯ ನಲ್ಲಿ launch ಆಗುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ Open weights ಗೆ Google ನ ಮೊದಲ open diffusion text model ನೇತೃತ್ವ ನೀಡುತ್ತಿದೆ.",
+      "text_markdown": "ಈ ವಾರದ Open weights ಗೆ Google ನ ಮೊದಲ open diffusion text model ನೇತೃತ್ವ ನೀಡುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಓಪನ್ ವೇಟ್ಸ್ ಗೆ ಗೂಗಲ್ ನ ಮೊದಲ ಓಪನ್ ಡಿಫ್ಯೂಷನ್ ಟೆಕ್ಸ್ಟ್ ಮಾದರಿ ನೇತೃತ್ವ ನೀಡುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Open ecosystem ದೃಷ್ಟಿಕೋನದ ಮೂಲಕ headlines ನ ವೇಗದ clip.",
+      "text_markdown": "Open ecosystem ದೃಷ್ಟಿಕೋನದ ಮೂಲಕ headlines ನ ವೇಗದ clip.",
+      "title": "",
+      "tts": {
+        "text": "Open ecosystem ದೃಷ್ಟಿಕೋನದ ಮೂಲಕ headlines ನ ವೇಗದ clip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ವಾರದ ಸಣ್ಣ lab — Paris ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು AMD silicon ಮೇಲೆ contrarian bet ಮಾಡುತ್ತಿದ್ದಾರೆ.",
+      "text_markdown": "ವಾರದ ಸಣ್ಣ lab — Paris ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು AMD silicon ಮೇಲೆ contrarian bet ಮಾಡುತ್ತಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ವಾರದ ಸಣ್ಣ lab — Paris ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು AMD silicon ಮೇಲೆ contrarian bet ಮಾಡುತ್ತಿದ್ದಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು ನಮ್ಮ ವಾರದ ಪರಿಕಲ್ಪನೆ — diffusion versus autoregressive, ಈ ವಾರದ lead release ಹಿಂದಿನ trick.",
+      "text_markdown": "ಮತ್ತು ನಮ್ಮ ವಾರದ ಪರಿಕಲ್ಪನೆ — diffusion versus autoregressive, ಈ ವಾರದ lead release ಹಿಂದಿನ trick.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ನಮ್ಮ ವಾರದ ಪರಿಕಲ್ಪನೆ — diffusion versus autoregressive, ಈ ವಾರದ lead release ಹಿಂದಿನ trick.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, ವೇಳಾಪಟ್ಟಿಯೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸೋಣ.",
+      "text_markdown": "Ron, ವೇಳಾಪಟ್ಟಿಯೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "Ron, ವೇಳಾಪಟ್ಟಿಯೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸೋಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನಾವು ಬುಧವಾರಗಳನ್ನು ಏಕೆ ಬಿಡುತ್ತಿದ್ದೇವೆ?",
+      "text_markdown": "ನಾವು ಬುಧವಾರಗಳನ್ನು ಏಕೆ ಬಿಡುತ್ತಿದ್ದೇವೆ?",
+      "title": "",
+      "tts": {
+        "text": "ನಾವು ಬುಧವಾರಗಳನ್ನು ಏಕೆ ಬಿಡುತ್ತಿದ್ದೇವೆ?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಬುಧವಾರ Odin ನ ದಿನವಾಗಿತ್ತು, ಮತ್ತು Odin Asgard ನ್ನು ಆಳುವುದರಲ್ಲಿ ಬ್ಯುಸಿಯಾಗಿದ್ದ.",
+      "text_markdown": "ಬುಧವಾರ Odin ನ ದಿನವಾಗಿತ್ತು, ಮತ್ತು Odin Asgard ನ್ನು ಆಳುವುದರಲ್ಲಿ ಬ್ಯುಸಿಯಾಗಿದ್ದ.",
+      "title": "",
+      "tts": {
+        "text": "ಬುಧವಾರ Odin ನ ದಿನವಾಗಿತ್ತು, ಮತ್ತು Odin Asgard ನ್ನು ಆಳುವುದರಲ್ಲಿ ಬ್ಯುಸಿಯಾಗಿದ್ದ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ನಾವು ದಿನದ ಕೆಲಸಗಳಿರುವ ಸಣ್ಣ ತಂಡ, ಮತ್ತು ವಾರದ ಮಧ್ಯದ cut ನಿಜವಾಗಿಯೂ ಸರಿಯಾಗಿ land ಆಗಲಿಲ್ಲ.",
+      "text_markdown": "ನಾವು ದಿನದ ಕೆಲಸಗಳಿರುವ ಸಣ್ಣ ತಂಡ, ಮತ್ತು ವಾರದ ಮಧ್ಯದ cut ನಿಜವಾಗಿಯೂ ಸರಿಯಾಗಿ land ಆಗಲಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ನಾವು ದಿನದ ಕೆಲಸಗಳಿರುವ ಸಣ್ಣ ತಂಡ, ಮತ್ತು ವಾರದ ಮಧ್ಯದ cut ನಿಜವಾಗಿಯೂ ಸರಿಯಾಗಿ land ಆಗಲಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಭಾನುವಾರಗಳು ವಾರವನ್ನು ಮುಗಿಸಿ ಮುಂದಿನದನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತವೆ, ಇದು ಸುದ್ದಿ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಸರಿಯಾದ rhythm ಅನಿಸಿತು.",
+      "text_markdown": "ಭಾನುವಾರಗಳು ವಾರವನ್ನು ಮುಗಿಸಿ ಮುಂದಿನದನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತವೆ, ಇದು ಸುದ್ದಿ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಸರಿಯಾದ rhythm ಅನಿಸಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಭಾನುವಾರಗಳು ವಾರವನ್ನು ಮುಗಿಸಿ ಮುಂದಿನದನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತವೆ, ಇದು ಸುದ್ದಿ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ಸರಿಯಾದ rhythm ಅನಿಸಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Rollout ನಿಜವಾಗಿ ಹೇಗೆ ಕಾಣುತ್ತದೆ?",
+      "text_markdown": "Rollout ನಿಜವಾಗಿ ಹೇಗೆ ಕಾಣುತ್ತದೆ?",
+      "title": "",
+      "tts": {
+        "text": "Rollout ನಿಜವಾಗಿ ಹೇಗೆ ಕಾಣುತ್ತದೆ?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಶನಿವಾರ ಪ್ರಾರಂಭವಾಗಿ ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆಯವರೆಗೆ, ಪ್ರತಿ translation ಮತ್ತು audio pass ಮುಗಿಯುವಂತೆ, ಭಾಷೆ ಭಾಷೆಯಾಗಿ roll ಆಗುತ್ತದೆ.",
+      "text_markdown": "ಇದು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಶನಿವಾರ ಪ್ರಾರಂಭವಾಗಿ ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆಯವರೆಗೆ, ಪ್ರತಿ translation ಮತ್ತು audio pass ಮುಗಿಯುವಂತೆ, ಭಾಷೆ ಭಾಷೆಯಾಗಿ roll ಆಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಶನಿವಾರ ಪ್ರಾರಂಭವಾಗಿ ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆಯವರೆಗೆ, ಪ್ರತಿ translation ಮತ್ತು audio pass ಮುಗಿಯುವಂತೆ, ಭಾಷೆ ಭಾಷೆಯಾಗಿ roll ಆಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಸೋಮವಾರ coffee ವೇಳೆಗೆ, ನಾವು ಐವತ್ತು ಭಾಷೆಗಳ ಸಮೀಪದಲ್ಲಿರಬೇಕು.",
+      "text_markdown": "ಸೋಮವಾರ coffee ವೇಳೆಗೆ, ನಾವು ಐವತ್ತು ಭಾಷೆಗಳ ಸಮೀಪದಲ್ಲಿರಬೇಕು.",
+      "title": "",
+      "tts": {
+        "text": "ಸೋಮವಾರ coffee ವೇಳೆಗೆ, ನಾವು ಐವತ್ತು ಭಾಷೆಗಳ ಸಮೀಪದಲ್ಲಿರಬೇಕು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇದು ನಮ್ಮನ್ನು ಎರಡನೇ ಹೊಸ ವಿಷಯಕ್ಕೆ ತರುತ್ತದೆ.",
+      "text_markdown": "ಇದು ನಮ್ಮನ್ನು ಎರಡನೇ ಹೊಸ ವಿಷಯಕ್ಕೆ ತರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ನಮ್ಮನ್ನು ಎರಡನೇ ಹೊಸ ವಿಷಯಕ್ಕೆ ತರುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ತಯಾರಿಸುತ್ತಾರೆ.",
+      "text_markdown": "ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ತಯಾರಿಸುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ಕಾರ್ಯಕ್ರಮವನ್ನು ಯಾರು ತಯಾರಿಸುತ್ತಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Corpora Inc., ಒಂದು ಸಣ್ಣ independent ತಂಡ, Corpán app ನ್ನು build ಮಾಡುತ್ತದೆ ಮತ್ತು ಈ podcast ನ್ನು produce ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "Corpora Inc., ಒಂದು ಸಣ್ಣ independent ತಂಡ, Corpán app ನ್ನು build ಮಾಡುತ್ತದೆ ಮತ್ತು ಈ podcast ನ್ನು produce ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., ಒಂದು ಸಣ್ಣ independent ತಂಡ, Corpán app ನ್ನು build ಮಾಡುತ್ತದೆ ಮತ್ತು ಈ podcast ನ್ನು produce ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಕೋರ್ಪಾನ್ ಎಂದರೆ ಏನು ಎಂಬುದು.",
+      "text_markdown": "ಕೋರ್ಪಾನ್ ಎಂದರೆ ಏನು ಎಂಬುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಕೋರ್ಪಾನ್ ಎಂದರೆ ಏನು ಎಂಬುದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "On-device-first ಮೇಲೆ build ಮಾಡಿದ ಒಂದು language, music, ಮತ್ತು learning playground.",
+      "text_markdown": "On-device-first ಮೇಲೆ build ಮಾಡಿದ ಒಂದು language, music, ಮತ್ತು learning playground.",
+      "title": "",
+      "tts": {
+        "text": "On device first ಮೇಲೆ build ಮಾಡಿದ ಒಂದು language, music, ಮತ್ತು learning playground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "On-device-first ಅನ್ನು ವಿವರಿಸಿ — ಇದು ಪ್ರಾಯೋಗಿಕವಾಗಿ ಏನು ಅರ್ಥ.",
+      "text_markdown": "On-device-first ಅನ್ನು ವಿವರಿಸಿ — ಇದು ಪ್ರಾಯೋಗಿಕವಾಗಿ ಏನು ಅರ್ಥ.",
+      "title": "",
+      "tts": {
+        "text": "On device first ಅನ್ನು ವಿವರಿಸಿ — ಇದು ಪ್ರಾಯೋಗಿಕವಾಗಿ ಏನು ಅರ್ಥ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದರ ಅರ್ಥ feature ಅನುಮತಿಸಿದಾಗಲೆಲ್ಲಾ ನಾವು locally run ಮಾಡುವುದನ್ನು prioritize ಮಾಡುತ್ತೇವೆ.",
+      "text_markdown": "ಇದರ ಅರ್ಥ feature ಅನುಮತಿಸಿದಾಗಲೆಲ್ಲಾ ನಾವು locally run ಮಾಡುವುದನ್ನು prioritize ಮಾಡುತ್ತೇವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದರ ಅರ್ಥ feature ಅನುಮತಿಸಿದಾಗಲೆಲ್ಲಾ ನಾವು locally run ಮಾಡುವುದನ್ನು prioritize ಮಾಡುತ್ತೇವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Assistant ಗಾಗಿ Qwen3-4B, speech recognition ಗಾಗಿ Whisper large-v3, voice synthesis ಗಾಗಿ Chatterbox, images ಗಾಗಿ Stable Diffusion 3.5, character tutors ಗಾಗಿ LoRA pipelines.",
+      "text_markdown": "Assistant ಗಾಗಿ Qwen3-4B, speech recognition ಗಾಗಿ Whisper large-v3, voice synthesis ಗಾಗಿ Chatterbox, images ಗಾಗಿ Stable Diffusion 3.5, character tutors ಗಾಗಿ LoRA pipelines.",
+      "title": "",
+      "tts": {
+        "text": "Assistant ಗಾಗಿ Qwen ಮೂರು ನಾಲ್ಕು B, speech recognition ಗಾಗಿ Whisper large v ಮೂರು, voice synthesis ಗಾಗಿ Chatterbox, images ಗಾಗಿ Stable Diffusion ಮೂರು ಪಾಯಿಂಟ್ ಐದು, character tutors ಗಾಗಿ LoRA pipelines.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದೆಲ್ಲವೂ ನಿಮ್ಮ phone ಅಥವಾ tablet ನಲ್ಲಿ, offline ನಲ್ಲಿ, airplane mode ನಲ್ಲಿ, ಎಲ್ಲೂ ಇಲ್ಲದ ಸ್ಥಳದಲ್ಲಿ run ಆಗುತ್ತದೆ.",
+      "text_markdown": "ಇದೆಲ್ಲವೂ ನಿಮ್ಮ phone ಅಥವಾ tablet ನಲ್ಲಿ, offline ನಲ್ಲಿ, airplane mode ನಲ್ಲಿ, ಎಲ್ಲೂ ಇಲ್ಲದ ಸ್ಥಳದಲ್ಲಿ run ಆಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದೆಲ್ಲವೂ ನಿಮ್ಮ phone ಅಥವಾ tablet ನಲ್ಲಿ, offline ನಲ್ಲಿ, airplane mode ನಲ್ಲಿ, ಎಲ್ಲೂ ಇಲ್ಲದ ಸ್ಥಳದಲ್ಲಿ run ಆಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ನಿಜವಾಗಿಯೂ network ಬೇಕಾದ features — world radio, multiplayer — network ಬಳಸುತ್ತವೆ, ಮತ್ತು ನಾವು ಇಲ್ಲದಂತೆ ನಟಿಸುವುದಿಲ್ಲ.",
+      "text_markdown": "ನಿಜವಾಗಿಯೂ network ಬೇಕಾದ features — world radio, multiplayer — network ಬಳಸುತ್ತವೆ, ಮತ್ತು ನಾವು ಇಲ್ಲದಂತೆ ನಟಿಸುವುದಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ನಿಜವಾಗಿಯೂ network ಬೇಕಾದ features — world radio, multiplayer — network ಬಳಸುತ್ತವೆ, ಮತ್ತು ನಾವು ಇಲ್ಲದಂತೆ ನಟಿಸುವುದಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು ವ್ಯವಹಾರದ ಅಂಶವೂ ಇದೆ.",
+      "text_markdown": "ಮತ್ತು ವ್ಯವಹಾರದ ಅಂಶವೂ ಇದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ವ್ಯವಹಾರದ ಅಂಶವೂ ಇದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Lean independent ತಂಡ, ನಮ್ಮ ಹಿಂದೆ ಒಂದು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬಂಡವಾಳವಿಲ್ಲ, ಇಂದು app ನಲ್ಲಿ ad-free, ಉದಾರ free tier ಮತ್ತು ಕೆಲಸವನ್ನು support ಮಾಡಲು ಬಯಸುವ ಜನರಿಗಾಗಿ optional premium subscription ಇದೆ.",
+      "text_markdown": "Lean independent ತಂಡ, ನಮ್ಮ ಹಿಂದೆ ಒಂದು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬಂಡವಾಳವಿಲ್ಲ, ಇಂದು app ನಲ್ಲಿ ad-free, ಉದಾರ free tier ಮತ್ತು ಕೆಲಸವನ್ನು support ಮಾಡಲು ಬಯಸುವ ಜನರಿಗಾಗಿ optional premium subscription ಇದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Lean independent ತಂಡ, ನಮ್ಮ ಹಿಂದೆ ಒಂದು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬಂಡವಾಳವಿಲ್ಲ, ಇಂದು app ನಲ್ಲಿ ad free, ಉದಾರ free tier ಮತ್ತು ಕೆಲಸವನ್ನು support ಮಾಡಲು ಬಯಸುವ ಜನರಿಗಾಗಿ optional premium subscription ಇದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ ad-free ಆಗಿರಲು ಇಚ್ಛಿಸುತ್ತೇವೆ — ಶಾಶ್ವತವಾಗಿ ಯಾವುದೇ ಭರವಸೆಗಳಿಲ್ಲ, ಆದರೆ ಅದು ದಿಕ್ಕು.",
+      "text_markdown": "ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ ad-free ಆಗಿರಲು ಇಚ್ಛಿಸುತ್ತೇವೆ — ಶಾಶ್ವತವಾಗಿ ಯಾವುದೇ ಭರವಸೆಗಳಿಲ್ಲ, ಆದರೆ ಅದು ದಿಕ್ಕು.",
+      "title": "",
+      "tts": {
+        "text": "ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ ad free ಆಗಿರಲು ಇಚ್ಛಿಸುತ್ತೇವೆ — ಶಾಶ್ವತವಾಗಿ ಯಾವುದೇ ಭರವಸೆಗಳಿಲ್ಲ, ಆದರೆ ಅದು ದಿಕ್ಕು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ನೀವು ನಿಜವಾಗಿಯೂ ship ಮಾಡುತ್ತೀರಿ ಎಂಬುದಕ್ಕೆ ಪುರಾವೆ ಏನು.",
+      "text_markdown": "ನೀವು ನಿಜವಾಗಿಯೂ ship ಮಾಡುತ್ತೀರಿ ಎಂಬುದಕ್ಕೆ ಪುರಾವೆ ಏನು.",
+      "title": "",
+      "tts": {
+        "text": "ನೀವು ನಿಜವಾಗಿಯೂ ship ಮಾಡುತ್ತೀರಿ ಎಂಬುದಕ್ಕೆ ಪುರಾವೆ ಏನು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಹೆಚ್ಚಿನ ವಾರಗಳಲ್ಲಿ ನಾವು ಏನಾದರೂ ship ಮಾಡುತ್ತೇವೆ — ಒಂದು book narration, ಒಂದು pack, ಒಂದು app release, ಈ show — ಇಂದು ಮೂವತ್ತೈದು-ಪ್ಲಸ್ ಭಾಷೆಗಳಲ್ಲಿ, ಮತ್ತು ಹೆಚ್ಚುತ್ತಿದೆ.",
+      "text_markdown": "ಹೆಚ್ಚಿನ ವಾರಗಳಲ್ಲಿ ನಾವು ಏನಾದರೂ ship ಮಾಡುತ್ತೇವೆ — ಒಂದು book narration, ಒಂದು pack, ಒಂದು app release, ಈ show — ಇಂದು ಮೂವತ್ತೈದು-ಪ್ಲಸ್ ಭಾಷೆಗಳಲ್ಲಿ, ಮತ್ತು ಹೆಚ್ಚುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹೆಚ್ಚಿನ ವಾರಗಳಲ್ಲಿ ನಾವು ಏನಾದರೂ ship ಮಾಡುತ್ತೇವೆ — ಒಂದು book narration, ಒಂದು pack, ಒಂದು app release, ಈ show — ಇಂದು ಮೂವತ್ತೈದು ಪ್ಲಸ್ ಭಾಷೆಗಳಲ್ಲಿ, ಮತ್ತು ಹೆಚ್ಚುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇದನ್ನೇ ಏಕೆ ಮಾಡುವುದು.",
+      "text_markdown": "ಇದನ್ನೇ ಏಕೆ ಮಾಡುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದನ್ನೇ ಏಕೆ ಮಾಡುವುದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಅದೇ pitch — frontier-quality, on-device-first, multilingual learning experience ಒಂದು ಸಣ್ಣ ತಂಡದಿಂದ ದೊಡ್ಡ ಬಂಡವಾಳವಿಲ್ಲದೆ ಬರಬಹುದು ಎಂದು ಸಾಬೀತುಪಡಿಸುವುದು, ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ app ಅನ್ನು ad-free ಇಟ್ಟುಕೊಂಡು.",
+      "text_markdown": "ಅದೇ pitch — frontier-quality, on-device-first, multilingual learning experience ಒಂದು ಸಣ್ಣ ತಂಡದಿಂದ ದೊಡ್ಡ ಬಂಡವಾಳವಿಲ್ಲದೆ ಬರಬಹುದು ಎಂದು ಸಾಬೀತುಪಡಿಸುವುದು, ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ app ಅನ್ನು ad-free ಇಟ್ಟುಕೊಂಡು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ pitch — frontier quality, on device first, multilingual learning experience ಒಂದು ಸಣ್ಣ ತಂಡದಿಂದ ದೊಡ್ಡ ಬಂಡವಾಳವಿಲ್ಲದೆ ಬರಬಹುದು ಎಂದು ಸಾಬೀತುಪಡಿಸುವುದು, ನಾವು ಎಷ್ಟು ಸಾಧ್ಯವೋ ಅಷ್ಟು ಕಾಲ app ಅನ್ನು ad free ಇಟ್ಟುಕೊಂಡು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇದು ನಮ್ಮನ್ನು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ತರುತ್ತದೆ — beatlounge.",
+      "text_markdown": "ಇದು ನಮ್ಮನ್ನು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ತರುತ್ತದೆ — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ನಮ್ಮನ್ನು ಪ್ರಮುಖ ಸುದ್ದಿಗೆ ತರುತ್ತದೆ — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಇದು ಈ ವಾರ Corpán 0.18.0 ನಲ್ಲಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+      "text_markdown": "ಇದು ಈ ವಾರ Corpán 0.18.0 ನಲ್ಲಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಈ ವಾರ Corpán ಶೂನ್ಯ ಪಾಯಿಂಟ್ ಒಂದು ಎಂಟು.ಶೂನ್ಯ ನಲ್ಲಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "beatlounge ಒಂದು beat sequencer ಮತ್ತು ಒಂದು ಭಾಷಾ ಸಾಧನವಾಗಿ ಒಂದೇ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿದೆ.",
+      "text_markdown": "beatlounge ಒಂದು beat sequencer ಮತ್ತು ಒಂದು ಭಾಷಾ ಸಾಧನವಾಗಿ ಒಂದೇ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge ಒಂದು beat sequencer ಮತ್ತು ಒಂದು ಭಾಷಾ ಸಾಧನವಾಗಿ ಒಂದೇ ಪೆಟ್ಟಿಗೆಯಲ್ಲಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಪ್ರತಿ ಕ್ವಾರ್ಟರ್‌ಗೆ ಒಂಬೈನೂರ ಅರವತ್ತು pulse ಗಳಲ್ಲಿ tick-addressed sequencer, ಪಶ್ಚಿಮೀ modes, ಭಾರತೀಯ thaats, ಕರ್ನಾಟಕ melakartas, ಮತ್ತು ಅರಬಿಕ್ maqamat ಗಳನ್ನು ಮಾತನಾಡುವ harmony engine, ಮತ್ತು ಐವತ್ತಕ್ಕಿಂತ ಹೆಚ್ಚು ಭಾಷೆಗಳಲ್ಲಿ ಹತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು ನೈಜ ಭಾಷಾ ನುಡಿಗಟ್ಟುಗಳ phrase corpus.",
+      "text_markdown": "ಪ್ರತಿ ಕ್ವಾರ್ಟರ್‌ಗೆ ಒಂಬೈನೂರ ಅರವತ್ತು pulse ಗಳಲ್ಲಿ tick-addressed sequencer, ಪಶ್ಚಿಮೀ modes, ಭಾರತೀಯ thaats, ಕರ್ನಾಟಕ melakartas, ಮತ್ತು ಅರಬಿಕ್ maqamat ಗಳನ್ನು ಮಾತನಾಡುವ harmony engine, ಮತ್ತು ಐವತ್ತಕ್ಕಿಂತ ಹೆಚ್ಚು ಭಾಷೆಗಳಲ್ಲಿ ಹತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು ನೈಜ ಭಾಷಾ ನುಡಿಗಟ್ಟುಗಳ phrase corpus.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ರತಿ ಕ್ವಾರ್ಟರ್‌ಗೆ ಒಂಬೈನೂರ ಅರವತ್ತು pulse ಗಳಲ್ಲಿ tick addressed sequencer, ಪಶ್ಚಿಮೀ modes, ಭಾರತೀಯ thaats, ಕರ್ನಾಟಕ melakartas, ಮತ್ತು ಅರಬಿಕ್ maqamat ಗಳನ್ನು ಮಾತನಾಡುವ harmony engine, ಮತ್ತು ಐವತ್ತಕ್ಕಿಂತ ಹೆಚ್ಚು ಭಾಷೆಗಳಲ್ಲಿ ಹತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು ನೈಜ ಭಾಷಾ ನುಡಿಗಟ್ಟುಗಳ phrase corpus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಎಲ್ಲಾ pitch-performable, ಮತ್ತು pack ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಒಮ್ಮೆ ಇದ್ದ ಮೇಲೆ offline ನಲ್ಲಿ playable.",
+      "text_markdown": "ಎಲ್ಲಾ pitch-performable, ಮತ್ತು pack ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಒಮ್ಮೆ ಇದ್ದ ಮೇಲೆ offline ನಲ್ಲಿ playable.",
+      "title": "",
+      "tts": {
+        "text": "ಎಲ್ಲಾ pitch performable, ಮತ್ತು pack ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಒಮ್ಮೆ ಇದ್ದ ಮೇಲೆ offline ನಲ್ಲಿ playable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಆದ್ದರಿಂದ ವಾದ್ಯವೇ ಭಾಷೆಯಾಗಿದೆ.",
+      "text_markdown": "ಆದ್ದರಿಂದ ವಾದ್ಯವೇ ಭಾಷೆಯಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದ್ದರಿಂದ ವಾದ್ಯವೇ ಭಾಷೆಯಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ನೀವು notes ಬಾರಿಸುವ ರೀತಿಯಲ್ಲಿ phrases ಬಾರಿಸುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು notes ಬಾರಿಸುವ ರೀತಿಯಲ್ಲಿ phrases ಬಾರಿಸುತ್ತೀರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ನೀವು notes ಬಾರಿಸುವ ರೀತಿಯಲ್ಲಿ phrases ಬಾರಿಸುತ್ತೀರಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಬೀಟ್ ಒಂದರಲ್ಲಿ ಹಿಂದಿ phrase, ಎರಡರ ಹಿಂಭಾಗದಲ್ಲಿ ಅರಬಿಕ್ interjection, ribbon swell ನಂತೆ ಮ್ಯಾಂಡರಿನ್ syllable.",
+      "text_markdown": "ಬೀಟ್ ಒಂದರಲ್ಲಿ ಹಿಂದಿ phrase, ಎರಡರ ಹಿಂಭಾಗದಲ್ಲಿ ಅರಬಿಕ್ interjection, ribbon swell ನಂತೆ ಮ್ಯಾಂಡರಿನ್ syllable.",
+      "title": "",
+      "tts": {
+        "text": "ಬೀಟ್ ಒಂದರಲ್ಲಿ ಹಿಂದಿ phrase, ಎರಡರ ಹಿಂಭಾಗದಲ್ಲಿ ಅರಬಿಕ್ interjection, ribbon swell ನಂತೆ ಮ್ಯಾಂಡರಿನ್ syllable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದು ಒಂದು DAW ಆಗಿದೆ ಅಲ್ಲಿ samples ವಾಕ್ಯಗಳಾಗಿದ್ದು, on-device TTS ನಿಂದ ಧ್ವನಿಯಾಗಿದೆ.",
+      "text_markdown": "ಇದು ಒಂದು DAW ಆಗಿದೆ ಅಲ್ಲಿ samples ವಾಕ್ಯಗಳಾಗಿದ್ದು, on-device TTS ನಿಂದ ಧ್ವನಿಯಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಒಂದು DAW ಆಗಿದೆ ಅಲ್ಲಿ samples ವಾಕ್ಯಗಳಾಗಿದ್ದು, on device ಟಿ ಟಿ ಎಸ್ ನಿಂದ ಧ್ವನಿಯಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಸಂಗೀತ ಸಿದ್ಧಾಂತದ ಅಗತ್ಯವಿಲ್ಲ.",
+      "text_markdown": "ಸಂಗೀತ ಸಿದ್ಧಾಂತದ ಅಗತ್ಯವಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಸಂಗೀತ ಸಿದ್ಧಾಂತದ ಅಗತ್ಯವಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಯಾವುದೂ ಬೇಕಾಗಿಲ್ಲ.",
+      "text_markdown": "ಯಾವುದೂ ಬೇಕಾಗಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಯಾವುದೂ ಬೇಕಾಗಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Harmony engine ನಿಯಮಗಳನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ; ನೀವು ಇಷ್ಟವಾದ ಶಬ್ದಗಳನ್ನು ಸೂಚಿಸುತ್ತೀರಿ ಮತ್ತು modes ಶುದ್ಧವಾಗಿ ಉಳಿಯುತ್ತವೆ.",
+      "text_markdown": "Harmony engine ನಿಯಮಗಳನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ; ನೀವು ಇಷ್ಟವಾದ ಶಬ್ದಗಳನ್ನು ಸೂಚಿಸುತ್ತೀರಿ ಮತ್ತು modes ಶುದ್ಧವಾಗಿ ಉಳಿಯುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "Harmony engine ನಿಯಮಗಳನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ; ನೀವು ಇಷ್ಟವಾದ ಶಬ್ದಗಳನ್ನು ಸೂಚಿಸುತ್ತೀರಿ ಮತ್ತು modes ಶುದ್ಧವಾಗಿ ಉಳಿಯುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "0.18.0 ನಲ್ಲಿ ಇನ್ನೇನು ಇದೆ.",
+      "text_markdown": "0.18.0 ನಲ್ಲಿ ಇನ್ನೇನು ಇದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಶೂನ್ಯ ಪಾಯಿಂಟ್ ಒಂದು ಎಂಟು.ಶೂನ್ಯ ನಲ್ಲಿ ಇನ್ನೇನು ಇದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಹುಡ್‌ನ ಅಡಿಯಲ್ಲಿ ಮೂರು engineering ಭಾಗಗಳು — content packs ಗಾಗಿ host seams beatlounge ಅನ್ನು pilot ಆಗಿ ಹೊಂದಿ ಲೈವ್ ಆಯಿತು.",
+      "text_markdown": "ಹುಡ್‌ನ ಅಡಿಯಲ್ಲಿ ಮೂರು engineering ಭಾಗಗಳು — content packs ಗಾಗಿ host seams beatlounge ಅನ್ನು pilot ಆಗಿ ಹೊಂದಿ ಲೈವ್ ಆಯಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಹುಡ್‌ನ ಅಡಿಯಲ್ಲಿ ಮೂರು engineering ಭಾಗಗಳು — content packs ಗಾಗಿ host seams beatlounge ಅನ್ನು pilot ಆಗಿ ಹೊಂದಿ ಲೈವ್ ಆಯಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Android ಈಗ native-fault breadcrumbs ಅನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ ಆದ್ದರಿಂದ llama ಮತ್ತು ggml crashes ಸರಿಯಾಗಿ diagnose ಆಗುತ್ತವೆ.",
+      "text_markdown": "Android ಈಗ native-fault breadcrumbs ಅನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ ಆದ್ದರಿಂದ llama ಮತ್ತು ggml crashes ಸರಿಯಾಗಿ diagnose ಆಗುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "Android ಈಗ native fault breadcrumbs ಅನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ ಆದ್ದರಿಂದ llama ಮತ್ತು ggml crashes ಸರಿಯಾಗಿ diagnose ಆಗುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಮತ್ತು ನಾವು iOS ನಲ್ಲಿ OOM ಆಗುತ್ತಿದ್ದ multi-gigabyte model install ಅನ್ನು ಸರಿಪಡಿಸಿದ್ದೇವೆ — ಈಗ ಇದು RAM ನಲ್ಲಿ Qwen3-4B ದ ಎರಡೂವರೆ gigabytes ಅನ್ನು buffer ಮಾಡುವ ಬದಲು disk ಗೆ stream ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಮತ್ತು ನಾವು iOS ನಲ್ಲಿ OOM ಆಗುತ್ತಿದ್ದ multi-gigabyte model install ಅನ್ನು ಸರಿಪಡಿಸಿದ್ದೇವೆ — ಈಗ ಇದು RAM ನಲ್ಲಿ Qwen3-4B ದ ಎರಡೂವರೆ gigabytes ಅನ್ನು buffer ಮಾಡುವ ಬದಲು disk ಗೆ stream ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ನಾವು iOS ನಲ್ಲಿ OOM ಆಗುತ್ತಿದ್ದ multi gigabyte model install ಅನ್ನು ಸರಿಪಡಿಸಿದ್ದೇವೆ — ಈಗ ಇದು RAM ನಲ್ಲಿ Qwen ಮೂರು ನಾಲ್ಕು ಬಿ ದ ಎರಡು ಮತ್ತು ಅರ್ಧ gigabytes ಅನ್ನು buffer ಮಾಡುವ ಬದಲು disk ಗೆ stream ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಕೆಳಗೆ ಬೇಸರದ, ಮೇಲೆ ಮೋಜಿನ.",
+      "text_markdown": "ಕೆಳಗೆ ಬೇಸರದ, ಮೇಲೆ ಮೋಜಿನ.",
+      "title": "",
+      "tts": {
+        "text": "ಕೆಳಗೆ ಬೇಸರದ, ಮೇಲೆ ಮೋಜಿನ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದು ಸರಿಯಾಗಿ ಸಂಪೂರ್ಣ ಕಂಪೆನಿಯ brief.",
+      "text_markdown": "ಇದು ಸರಿಯಾಗಿ ಸಂಪೂರ್ಣ ಕಂಪೆನಿಯ brief.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಸರಿಯಾಗಿ ಸಂಪೂರ್ಣ ಕಂಪೆನಿಯ brief.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಸರಿ, open weights ಕಡೆಗೆ ಮುಂದುವರಿಯೋಣ.",
+      "text_markdown": "ಸರಿ, open weights ಕಡೆಗೆ ಮುಂದುವರಿಯೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಸರಿ, ಓಪನ್ ವೇಯಿಟ್ಸ್ ಕಡೆಗೆ ಮುಂದುವರಿಯೋಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ದೊಡ್ಡದು ಏನಾಗಿತ್ತು.",
+      "text_markdown": "ಈ ವಾರದ ದೊಡ್ಡದು ಏನಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ದೊಡ್ಡದು ಏನಾಗಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Google DiffusionGemma ಅನ್ನು ಕಳುಹಿಸಿತು.",
+      "text_markdown": "Google DiffusionGemma ಅನ್ನು ಕಳುಹಿಸಿತು.",
+      "title": "",
+      "tts": {
+        "text": "Google DiffusionGemma ಅನ್ನು ಕಳುಹಿಸಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಮೂವತ್ತಾರು ಬಿಲಿಯನ್ parameter mixture of experts ಮೂರು ಪಾಯಿಂಟ್ ಎಂಟು ಬಿಲಿಯನ್ active ಸಹಿತ, Hugging Face ನಲ್ಲಿ Apache 2.0, ಇದು autoregression ಬದಲಿಗೆ diffusion ಮೂಲಕ text ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+      "text_markdown": "ಮೂವತ್ತಾರು ಬಿಲಿಯನ್ parameter mixture of experts ಮೂರು ಪಾಯಿಂಟ್ ಎಂಟು ಬಿಲಿಯನ್ active ಸಹಿತ, Hugging Face ನಲ್ಲಿ Apache 2.0, ಇದು autoregression ಬದಲಿಗೆ diffusion ಮೂಲಕ text ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇಪ್ಪತ್ತಾರು ಬಿಲಿಯನ್ parameter mixture of experts ಮೂರು ಪಾಯಿಂಟ್ ಎಂಟು ಬಿಲಿಯನ್ active ಸಹಿತ, Hugging Face ನಲ್ಲಿ Apache ಎರಡು ಪಾಯಿಂಟ್ ಶೂನ್ಯ, ಇದು autoregression ಬದಲಿಗೆ diffusion ಮೂಲಕ text ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಸರಳ ಭಾಷೆಯಲ್ಲಿ — text ಗಾಗಿ diffusion ಎಂಬುದು ನಿಜವಾಗಿ ಏನು ಅರ್ಥ.",
+      "text_markdown": "ಸರಳ ಭಾಷೆಯಲ್ಲಿ — text ಗಾಗಿ diffusion ಎಂಬುದು ನಿಜವಾಗಿ ಏನು ಅರ್ಥ.",
+      "title": "",
+      "tts": {
+        "text": "ಸರಳ ಭಾಷೆಯಲ್ಲಿ — text ಗಾಗಿ diffusion ಎಂಬುದು ನಿಜವಾಗಿ ಏನು ಅರ್ಥ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು token ಅನ್ನು predict ಮಾಡುವ ಬದಲು, ಇದು parallel ನಲ್ಲಿ ಎರಡು ನೂರ ಐವತ್ತಾರು token block ಅನ್ನು denoise ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು token ಅನ್ನು predict ಮಾಡುವ ಬದಲು, ಇದು parallel ನಲ್ಲಿ ಎರಡು ನೂರ ಐವತ್ತಾರು token block ಅನ್ನು denoise ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು token ಅನ್ನು predict ಮಾಡುವ ಬದಲು, ಇದು parallel ನಲ್ಲಿ ಎರಡು ನೂರ ಐವತ್ತಾರು token block ಅನ್ನು denoise ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಒಂದೇ H100 ನಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಸಾವಿರಕ್ಕಿಂತ ಹೆಚ್ಚು tokens, ಹೋಲಿಸಬಹುದಾದ autoregressive Gemma ಗಿಂತ ಸುಮಾರು ನಾಲ್ಕು ಪಟ್ಟು ವೇಗವಾಗಿ.",
+      "text_markdown": "ಒಂದೇ H100 ನಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಸಾವಿರಕ್ಕಿಂತ ಹೆಚ್ಚು tokens, ಹೋಲಿಸಬಹುದಾದ autoregressive Gemma ಗಿಂತ ಸುಮಾರು ನಾಲ್ಕು ಪಟ್ಟು ವೇಗವಾಗಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದೇ ಎಚ್ ನೂರು ನಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಸಾವಿರಕ್ಕಿಂತ ಹೆಚ್ಚು tokens, ಹೋಲಿಸಬಹುದಾದ autoregressive Gemma ಗಿಂತ ಸುಮಾರು ನಾಲ್ಕು ಪಟ್ಟು ವೇಗವಾಗಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಹಿಡಿಯುವುದು.",
+      "text_markdown": "ಮತ್ತು ಹಿಡಿಯುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಹಿಡಿಯುವುದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MMLU ಮತ್ತು coding ನಲ್ಲಿ ಕಡಿಮೆ scores — Google ಸ್ವತಃ ಹೇಳುತ್ತದೆ; ಈ release speed-critical work ಗಾಗಿ, leaderboard climbing ಗಾಗಿ ಅಲ್ಲ.",
+      "text_markdown": "MMLU ಮತ್ತು coding ನಲ್ಲಿ ಕಡಿಮೆ scores — Google ಸ್ವತಃ ಹೇಳುತ್ತದೆ; ಈ release speed-critical work ಗಾಗಿ, leaderboard climbing ಗಾಗಿ ಅಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "MMLU ಮತ್ತು coding ನಲ್ಲಿ ಕಡಿಮೆ scores — Google ಸ್ವತಃ ಹೇಳುತ್ತದೆ; ಈ release speed critical work ಗಾಗಿ, leaderboard climbing ಗಾಗಿ ಅಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು open voice models — ಏನಾದರೂ.",
+      "text_markdown": "ಮತ್ತು open voice models — ಏನಾದರೂ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು open voice models — ಏನಾದರೂ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಅದೇ ವಾರದಲ್ಲಿ ಎರಡು dropped.",
+      "text_markdown": "ಅದೇ ವಾರದಲ್ಲಿ ಎರಡು dropped.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ವಾರದಲ್ಲಿ ಎರಡು dropped.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಚೀನಾದ ಸಾಮಾಜಿಕ ನೆಟ್‌ವರ್ಕ್ RedNote, dots-dot-tts ಅನ್ನು open-source ಮಾಡಿದೆ — ಎರಡು ಬಿಲಿಯನ್ parameters, pipeline ನಲ್ಲಿ ಎಲ್ಲಿಯೂ discrete tokens ಇಲ್ಲದೆ ಸಂಪೂರ್ಣ continuous, ಐವತ್ತಾಲ್ಕು millisecond first-token latency, Apache 2.0.",
+      "text_markdown": "ಚೀನಾದ ಸಾಮಾಜಿಕ ನೆಟ್‌ವರ್ಕ್ RedNote, dots-dot-tts ಅನ್ನು open-source ಮಾಡಿದೆ — ಎರಡು ಬಿಲಿಯನ್ parameters, pipeline ನಲ್ಲಿ ಎಲ್ಲಿಯೂ discrete tokens ಇಲ್ಲದೆ ಸಂಪೂರ್ಣ continuous, ಐವತ್ತಾಲ್ಕು millisecond first-token latency, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "ಚೀನಾದ ಸಾಮಾಜಿಕ ನೆಟ್‌ವರ್ಕ್ RedNote, dots dot tts ಅನ್ನು open source ಮಾಡಿದೆ — ಎರಡು ಬಿಲಿಯನ್ parameters, pipeline ನಲ್ಲಿ ಎಲ್ಲಿಯೂ discrete tokens ಇಲ್ಲದೆ ಸಂಪೂರ್ಣ continuous, ಐವತ್ತಾಲ್ಕು millisecond first token latency, Apache ಎರಡು ಪಾಯಿಂಟ್ ಶೂನ್ಯ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಮತ್ತು Boson AI Higgs Audio version ಮೂರು ಅನ್ನು ಕಳುಹಿಸಿದೆ — ನಾಲ್ಕು ಬಿಲಿಯನ್ parameters, ನೂರೆರಡು ಭಾಷೆಗಳು, ಇಪ್ಪತ್ತೊಂದು emotion control tokens, streaming output, non-commercial license; ಆ ಕೊನೆಯ ಭಾಗವೇ asterisk.",
+      "text_markdown": "ಮತ್ತು Boson AI Higgs Audio version ಮೂರು ಅನ್ನು ಕಳುಹಿಸಿದೆ — ನಾಲ್ಕು ಬಿಲಿಯನ್ parameters, ನೂರೆರಡು ಭಾಷೆಗಳು, ಇಪ್ಪತ್ತೊಂದು emotion control tokens, streaming output, non-commercial license; ಆ ಕೊನೆಯ ಭಾಗವೇ asterisk.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು Boson AI Higgs Audio version ಮೂರು ಅನ್ನು ಕಳುಹಿಸಿದೆ — ನಾಲ್ಕು ಬಿಲಿಯನ್ parameters, ನೂರೆರಡು ಭಾಷೆಗಳು, ಇಪ್ಪತ್ತೊಂದು emotion control tokens, streaming output, non commercial license; ಆ ಕೊನೆಯ ಭಾಗವೇ asterisk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Voice cloning ಅಧಿಕೃತವಾಗಿ commodity ಆಗಿದೆ.",
+      "text_markdown": "Voice cloning ಅಧಿಕೃತವಾಗಿ commodity ಆಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Voice cloning ಅಧಿಕೃತವಾಗಿ commodity ಆಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಹೌದು.",
+      "text_markdown": "ಹೌದು.",
+      "title": "",
+      "tts": {
+        "text": "ಹೌದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Open ಬದಿಯಲ್ಲಿ ಇನ್ನೊಂದು.",
+      "text_markdown": "Open ಬದಿಯಲ್ಲಿ ಇನ್ನೊಂದು.",
+      "title": "",
+      "tts": {
+        "text": "Open ಬದಿಯಲ್ಲಿ ಇನ್ನೊಂದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA ಮೌನವಾಗಿ Nemotron 3 Ultra ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದೆ — ಐದು ನೂರ ಐವತ್ತು ಬಿಲಿಯನ್ parameter hybrid Mamba-attention model.",
+      "text_markdown": "NVIDIA ಮೌನವಾಗಿ Nemotron 3 Ultra ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದೆ — ಐದು ನೂರ ಐವತ್ತು ಬಿಲಿಯನ್ parameter hybrid Mamba-attention model.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA ಮೌನವಾಗಿ Nemotron ಮೂರು Ultra ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದೆ — ಐದು ನೂರ ಐವತ್ತು ಬಿಲಿಯನ್ parameter hybrid Mamba attention model.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Linux Foundation OpenMDW license ಅಡಿಯಲ್ಲಿ weights ಮತ್ತು ಸಂಪೂರ್ಣ training recipe — ತಿಂಗಳ ಅತ್ಯಂತ actually-open release.",
+      "text_markdown": "Linux Foundation OpenMDW license ಅಡಿಯಲ್ಲಿ weights ಮತ್ತು ಸಂಪೂರ್ಣ training recipe — ತಿಂಗಳ ಅತ್ಯಂತ actually-open release.",
+      "title": "",
+      "tts": {
+        "text": "Linux Foundation OpenMDW license ಅಡಿಯಲ್ಲಿ weights ಮತ್ತು ಸಂಪೂರ್ಣ training recipe — ತಿಂಗಳ ಅತ್ಯಂತ actually open release.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಯಾರೂ ಇದನ್ನು cover ಮಾಡಲಿಲ್ಲ.",
+      "text_markdown": "ಮತ್ತು ಯಾರೂ ಇದನ್ನು cover ಮಾಡಲಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಯಾರೂ ಇದನ್ನು cover ಮಾಡಲಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಏಕೆಂದರೆ ನಾವು NVIDIA ಅನ್ನು silicon ಅಡಿಯಲ್ಲಿ file ಮಾಡುತ್ತೇವೆ, lab ಅಲ್ಲ.",
+      "text_markdown": "ಏಕೆಂದರೆ ನಾವು NVIDIA ಅನ್ನು silicon ಅಡಿಯಲ್ಲಿ file ಮಾಡುತ್ತೇವೆ, lab ಅಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಏಕೆಂದರೆ ನಾವು NVIDIA ಅನ್ನು silicon ಅಡಿಯಲ್ಲಿ file ಮಾಡುತ್ತೇವೆ, lab ಅಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಆದರೆ ಈ ವಾರ ಅವರು frontier scale ನಲ್ಲಿ reproducible-open ಅನ್ನು ship ಮಾಡಿದರು.",
+      "text_markdown": "ಆದರೆ ಈ ವಾರ ಅವರು frontier scale ನಲ್ಲಿ reproducible-open ಅನ್ನು ship ಮಾಡಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಆದರೆ ಈ ವಾರ ಅವರು frontier scale ನಲ್ಲಿ reproducible open ಅನ್ನು ship ಮಾಡಿದರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮುಖ್ಯಾಂಶಗಳು, ವೇಗದ ತುಣುಕು.",
+      "text_markdown": "ಮುಖ್ಯಾಂಶಗಳು, ವೇಗದ ತುಣುಕು.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಖ್ಯಾಂಶಗಳು, ವೇಗದ ತುಣುಕು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮೊದಲು, ಮೊತ್ತಮೊದಲಿಗೆ.",
+      "text_markdown": "ಮೊದಲು, ಮೊತ್ತಮೊದಲಿಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮೊದಲು, ಮೊತ್ತಮೊದಲಿಗೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Moonshot ಬಿಡುಗಡೆ ಮಾಡಿದೆ Kimi K2.7-Code — ಒಂದು ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು, ಮೂವತ್ತೆರಡು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Moonshot ಅವರದೇ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ನಲ್ಲಿ Claude Opus 4.8 ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದೆ.",
+      "text_markdown": "Moonshot ಬಿಡುಗಡೆ ಮಾಡಿದೆ Kimi K2.7-Code — ಒಂದು ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು, ಮೂವತ್ತೆರಡು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Moonshot ಅವರದೇ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ನಲ್ಲಿ Claude Opus 4.8 ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot ಬಿಡುಗಡೆ ಮಾಡಿದೆ Kimi K ಎರಡು ಪಾಯಿಂಟ್ ಏಳು Code — ಒಂದು ಟ್ರಿಲಿಯನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು, ಮೂವತ್ತೆರಡು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Moonshot ಅವರದೇ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ನಲ್ಲಿ Claude Opus ನಾಲ್ಕು ಪಾಯಿಂಟ್ ಎಂಟು ಅನ್ನು ಸೋಲಿಸುತ್ತದೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಅಭ್ಯಾಸಿಗಳು ಸಂಖ್ಯೆಗಳನ್ನು ಚಾಲನೆ ಮಾಡಿದರು ಮತ್ತು ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಸರಿಯಾಗಿಲ್ಲ ಎಂದು ಹೇಳುತ್ತಾರೆ; ಸ್ವಯಂ-ಹೋಸ್ಟ್ ಮಾಡಿದ ತೂಕಗಳು 595 ಗಿಗಾಬೈಟ್‌ಗಳು, ಚಿಂತನೆ ಮೋಡ್ ಅನ್ನು ಆಫ್ ಮಾಡಲು ಆಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ಅಭ್ಯಾಸಿಗಳು ಸಂಖ್ಯೆಗಳನ್ನು ಚಾಲನೆ ಮಾಡಿದರು ಮತ್ತು ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಸರಿಯಾಗಿಲ್ಲ ಎಂದು ಹೇಳುತ್ತಾರೆ; ಸ್ವಯಂ-ಹೋಸ್ಟ್ ಮಾಡಿದ ತೂಕಗಳು 595 ಗಿಗಾಬೈಟ್‌ಗಳು, ಚಿಂತನೆ ಮೋಡ್ ಅನ್ನು ಆಫ್ ಮಾಡಲು ಆಗುವುದಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಅಭ್ಯಾಸಿಗಳು ಸಂಖ್ಯೆಗಳನ್ನು ಚಾಲನೆ ಮಾಡಿದರು ಮತ್ತು ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಸರಿಯಾಗಿಲ್ಲ ಎಂದು ಹೇಳುತ್ತಾರೆ; ಸ್ವಯಂ ಹೋಸ್ಟ್ ಮಾಡಿದ ತೂಕಗಳು ಐದು ನೂರ ತೊಂಬತ್ತೈದು ಗಿಗಾಬೈಟ್‌ಗಳು, ಚಿಂತನೆ ಮೋಡ್ ಅನ್ನು ಆಫ್ ಮಾಡಲು ಆಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಓಪನ್ ಆ ವಾಕ್ಯದಲ್ಲಿ ಬಹಳ ಕೆಲಸ ಮಾಡುತ್ತಿದೆ.",
+      "text_markdown": "ಓಪನ್ ಆ ವಾಕ್ಯದಲ್ಲಿ ಬಹಳ ಕೆಲಸ ಮಾಡುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಓಪನ್ ಆ ವಾಕ್ಯದಲ್ಲಿ ಬಹಳ ಕೆಲಸ ಮಾಡುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಎರಡನೆಯದು.",
+      "text_markdown": "ಎರಡನೆಯದು.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡನೆಯದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Cohere, ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ ಇದು ಬಹುತೇಕ ಎಂದಿಗೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡುವುದಿಲ್ಲ, ನಿಜವಾಗಿಯೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — North Mini Code, ಮೂವತ್ತು ಶತಕೋಟಿ ಒಟ್ಟು, ಮೂರು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Apache 2.0, ಒಂದೇ H100 ನಲ್ಲಿ 4-bit ನಲ್ಲಿ ಚಾಲನೆ ಆಗುತ್ತದೆ.",
+      "text_markdown": "Cohere, ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ ಇದು ಬಹುತೇಕ ಎಂದಿಗೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡುವುದಿಲ್ಲ, ನಿಜವಾಗಿಯೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — North Mini Code, ಮೂವತ್ತು ಶತಕೋಟಿ ಒಟ್ಟು, ಮೂರು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Apache 2.0, ಒಂದೇ H100 ನಲ್ಲಿ 4-bit ನಲ್ಲಿ ಚಾಲನೆ ಆಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ ಇದು ಬಹುತೇಕ ಎಂದಿಗೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡುವುದಿಲ್ಲ, ನಿಜವಾಗಿಯೂ ತೂಕಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — North Mini Code, ಮೂವತ್ತು ಶತಕೋಟಿ ಒಟ್ಟು, ಮೂರು ಶತಕೋಟಿ ಸಕ್ರಿಯ, Apache ಎರಡು ಪಾಯಿಂಟ್ ಶೂನ್ಯ, ಒಂದೇ H ಒಂದು ನೂರು ನಲ್ಲಿ ನಾಲ್ಕು ಬಿಟ್ ನಲ್ಲಿ ಚಾಲನೆ ಆಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ 2026 ರಲ್ಲಿ ನಿಜವಾದ Apache 2.0 ಅನ್ನು ಶಿಪ್ ಮಾಡುವುದು ಸ್ವತಃ ಸುದ್ದಿ.",
+      "text_markdown": "ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ 2026 ರಲ್ಲಿ ನಿಜವಾದ Apache 2.0 ಅನ್ನು ಶಿಪ್ ಮಾಡುವುದು ಸ್ವತಃ ಸುದ್ದಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಪಶ್ಚಿಮದ ಲ್ಯಾಬ್ ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತಾರು ರಲ್ಲಿ ನಿಜವಾದ Apache ಎರಡು ಪಾಯಿಂಟ್ ಶೂನ್ಯ ಅನ್ನು ಶಿಪ್ ಮಾಡುವುದು ಸ್ವತಃ ಸುದ್ದಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮೂರನೆಯದು.",
+      "text_markdown": "ಮೂರನೆಯದು.",
+      "title": "",
+      "tts": {
+        "text": "ಮೂರನೆಯದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Apple WWDC ನಲ್ಲಿ ಆನ್-ಡಿವೈಸ್ AI ಯನ್ನು ಕಾರ್ಯತಂತ್ರದ ಕಥೆಯಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಒತ್ತಿ ಹೇಳಿತು.",
+      "text_markdown": "Apple WWDC ನಲ್ಲಿ ಆನ್-ಡಿವೈಸ್ AI ಯನ್ನು ಕಾರ್ಯತಂತ್ರದ ಕಥೆಯಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಒತ್ತಿ ಹೇಳಿತು.",
+      "title": "",
+      "tts": {
+        "text": "Apple WWDC ನಲ್ಲಿ ಆನ್ ಡಿವೈಸ್ AI ಯನ್ನು ಕಾರ್ಯತಂತ್ರದ ಕಥೆಯಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಒತ್ತಿ ಹೇಳಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಆದರೆ ಹೊಸ Siri ಮಾಡೆಲ್ ವರದಿಯ ಪ್ರಕಾರ Google ನ Gemini ನ ಡಿಸ್ಟಿಲ್ಲೇಶನ್ ಆಗಿದೆ ಅದನ್ನು Apple ಲೈಸೆನ್ಸ್ ಮಾಡುತ್ತದೆ ಮತ್ತು ಚಿಕ್ಕದಾಗಿ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಆದರೆ ಹೊಸ Siri ಮಾಡೆಲ್ ವರದಿಯ ಪ್ರಕಾರ Google ನ Gemini ನ ಡಿಸ್ಟಿಲ್ಲೇಶನ್ ಆಗಿದೆ ಅದನ್ನು Apple ಲೈಸೆನ್ಸ್ ಮಾಡುತ್ತದೆ ಮತ್ತು ಚಿಕ್ಕದಾಗಿ ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದರೆ ಹೊಸ Siri ಮಾಡೆಲ್ ವರದಿಯ ಪ್ರಕಾರ Google ನ Gemini ನ ಡಿಸ್ಟಿಲ್ಲೇಶನ್ ಆಗಿದೆ ಅದನ್ನು Apple ಲೈಸೆನ್ಸ್ ಮಾಡುತ್ತದೆ ಮತ್ತು ಚಿಕ್ಕದಾಗಿ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಸ್ಥಳೀಯ ಇನ್‌ಫರೆನ್ಸ್, ಸಂಕೀರ್ಣ ಸರಬರಾಜು ಸರಪಳಿ ವ್ಯವಸ್ಥೆ.",
+      "text_markdown": "ಸ್ಥಳೀಯ ಇನ್‌ಫರೆನ್ಸ್, ಸಂಕೀರ್ಣ ಸರಬರಾಜು ಸರಪಳಿ ವ್ಯವಸ್ಥೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಸ್ಥಳೀಯ ಇನ್ ಫರೆನ್ಸ್, ಸಂಕೀರ್ಣ ಸರಬರಾಜು ಸರಪಳಿ ವ್ಯವಸ್ಥೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮತ್ತು ನಾಲ್ಕನೆಯದು.",
+      "text_markdown": "ಮತ್ತು ನಾಲ್ಕನೆಯದು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ನಾಲ್ಕನೆಯದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Alibaba Qwen 3.7-Plus ಅನ್ನು ಸಾಮಾನ್ಯ ಲಭ್ಯತೆಗೆ ತಂದಿತು — ಮಲ್ಟಿಮೋಡಲ್, ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳಿಂದ GUI ಗಳನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತದೆ, ಸುಮಾರು ನಲವತ್ತು ಸೆಂಟ್ ಪ್ರತಿ ಮಿಲಿಯನ್ ಇನ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳಿಗೆ.",
+      "text_markdown": "Alibaba Qwen 3.7-Plus ಅನ್ನು ಸಾಮಾನ್ಯ ಲಭ್ಯತೆಗೆ ತಂದಿತು — ಮಲ್ಟಿಮೋಡಲ್, ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳಿಂದ GUI ಗಳನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತದೆ, ಸುಮಾರು ನಲವತ್ತು ಸೆಂಟ್ ಪ್ರತಿ ಮಿಲಿಯನ್ ಇನ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳಿಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba Qwen ಮೂರು ಪಾಯಿಂಟ್ ಏಳು Plus ಅನ್ನು ಸಾಮಾನ್ಯ ಲಭ್ಯತೆಗೆ ತಂದಿತು — ಮಲ್ಟಿಮೋಡಲ್, ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳಿಂದ GUI ಗಳನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತದೆ, ಸುಮಾರು ನಲವತ್ತು ಸೆಂಟ್ ಪ್ರತಿ ಮಿಲಿಯನ್ ಇನ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳಿಗೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Qwen ಬ್ರ್ಯಾಂಡ್ ಆಗಿದ್ದರೂ, ಇದು API-ಮಾತ್ರ, ಓಪನ್ ತೂಕಗಳಲ್ಲ.",
+      "text_markdown": "Qwen ಬ್ರ್ಯಾಂಡ್ ಆಗಿದ್ದರೂ, ಇದು API-ಮಾತ್ರ, ಓಪನ್ ತೂಕಗಳಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "Qwen ಬ್ರ್ಯಾಂಡ್ ಆಗಿದ್ದರೂ, ಇದು API ಮಾತ್ರ, ಓಪನ್ ತೂಕಗಳಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ತಿಳಿದುಕೊಳ್ಳುವ ಮಾನಿನ್ದು, ಏಕೆಂದರೆ ಲಿಸನರ್‌ಗಳು Qwen ಅನ್ನು ಓಪನ್ ನೊಂದಿಗೆ ಗೊಂದಲಗೊಳಿಸುತ್ತಾರೆ; ಇದು ಅಲ್ಲ.",
+      "text_markdown": "ತಿಳಿದುಕೊಳ್ಳುವ ಮಾನಿನ್ದು, ಏಕೆಂದರೆ ಲಿಸನರ್‌ಗಳು Qwen ಅನ್ನು ಓಪನ್ ನೊಂದಿಗೆ ಗೊಂದಲಗೊಳಿಸುತ್ತಾರೆ; ಇದು ಅಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ತಿಳಿದುಕೊಳ್ಳುವ ಮಾನಿನ್ದು, ಏಕೆಂದರೆ ಲಿಸನರ್‌ಗಳು Qwen ಅನ್ನು ಓಪನ್ ನೊಂದಿಗೆ ಗೊಂದಲಗೊಳಿಸುತ್ತಾರೆ; ಇದು ಅಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಸಣ್ಣ ಲ್ಯಾಬ್.",
+      "text_markdown": "ಈ ವಾರದ ಸಣ್ಣ ಲ್ಯಾಬ್.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಸಣ್ಣ ಲ್ಯಾಬ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಇದನ್ನು Kog ಎಂದು ಕರೆಯುತ್ತಾರೆ.",
+      "text_markdown": "ಇದನ್ನು Kog ಎಂದು ಕರೆಯುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದನ್ನು Kog ಎಂದು ಕರೆಯುತ್ತಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಪ್ಯಾರಿಸ್‌ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು, ಎಂಟು AMD MI300X GPU ಗಳಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಮೂರು ಸಾವಿರ ಔಟ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳು ಪ್ರತಿ ವಿನಂತಿಗೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ.",
+      "text_markdown": "ಪ್ಯಾರಿಸ್‌ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು, ಎಂಟು AMD MI300X GPU ಗಳಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಮೂರು ಸಾವಿರ ಔಟ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳು ಪ್ರತಿ ವಿನಂತಿಗೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ಯಾರಿಸ್‌ನಲ್ಲಿ ಹನ್ನೊಂದು ಜನರು, ಎಂಟು AMD M I ಮೂರು ನೂರು X GPU ಗಳಲ್ಲಿ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಮೂರು ಸಾವಿರ ಔಟ್‌ಪುಟ್ ಟೋಕನ್‌ಗಳು ಪ್ರತಿ ವಿನಂತಿಗೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಅವರ ಪಿಚ್ — ಇಂಡಸ್ಟ್ರಿ ಕಸ್ಟಮ್ ಇನ್‌ಫರೆನ್ಸ್ ಸಿಲಿಕಾನ್‌ನಲ್ಲಿ ಅತಿಯಾಗಿ ಖರ್ಚು ಮಾಡಿತು ಬಾಟಲ್‌ನೆಕ್ ಇಡೀ ಸಮಯ ಸಾಫ್ಟ್‌ವೇರ್ ಆಗಿದ್ದಾಗ.",
+      "text_markdown": "ಅವರ ಪಿಚ್ — ಇಂಡಸ್ಟ್ರಿ ಕಸ್ಟಮ್ ಇನ್‌ಫರೆನ್ಸ್ ಸಿಲಿಕಾನ್‌ನಲ್ಲಿ ಅತಿಯಾಗಿ ಖರ್ಚು ಮಾಡಿತು ಬಾಟಲ್‌ನೆಕ್ ಇಡೀ ಸಮಯ ಸಾಫ್ಟ್‌ವೇರ್ ಆಗಿದ್ದಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಪಿಚ್ — ಇಂಡಸ್ಟ್ರಿ ಕಸ್ಟಮ್ ಇನ್‌ಫರೆನ್ಸ್ ಸಿಲಿಕಾನ್‌ನಲ್ಲಿ ಅತಿಯಾಗಿ ಖರ್ಚು ಮಾಡಿತು ಬಾಟಲ್‌ನೆಕ್ ಇಡೀ ಸಮಯ ಸಾಫ್ಟ್‌ವೇರ್ ಆಗಿದ್ದಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಹನ್ನೊಂದು ಜನರು, ಮತ್ತು NVIDIA ಬದಲು AMD.",
+      "text_markdown": "ಹನ್ನೊಂದು ಜನರು, ಮತ್ತು NVIDIA ಬದಲು AMD.",
+      "title": "",
+      "tts": {
+        "text": "ಹನ್ನೊಂದು ಜನರು, ಮತ್ತು NVIDIA ಬದಲು AMD.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಕಸ್ಟಮ್ ಸಿಲಿಕಾನ್ IPO ಬಳಿಕ, ಪರ್ಫೆಕ್ಟ್ ಕಾಂಟ್ರೇರಿಯನ್ ಟೈಮಿಂಗ್ ಸರಿಯಾಗಿ ಕೂಡಿ ಬಂದಿದೆ.",
+      "text_markdown": "ಕಸ್ಟಮ್ ಸಿಲಿಕಾನ್ IPO ಬಳಿಕ, ಪರ್ಫೆಕ್ಟ್ ಕಾಂಟ್ರೇರಿಯನ್ ಟೈಮಿಂಗ್ ಸರಿಯಾಗಿ ಕೂಡಿ ಬಂದಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಕಸ್ಟಮ್ ಸಿಲಿಕಾನ್ ಐಪಿಒ ಬಳಿಕ, ಪರ್ಫೆಕ್ಟ್ ಕಾಂಟ್ರೇರಿಯನ್ ಟೈಮಿಂಗ್ ಸರಿಯಾಗಿ ಕೂಡಿ ಬಂದಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಬೆಂಚ್‌ನಲ್ಲಿ ಹಾರ್ಡ್‌ವೇರ್ ಬಗ್ಗೆ ಏನು.",
+      "text_markdown": "ಬೆಂಚ್‌ನಲ್ಲಿ ಹಾರ್ಡ್‌ವೇರ್ ಬಗ್ಗೆ ಏನು.",
+      "title": "",
+      "tts": {
+        "text": "ಬೆಂಚ್‌ನಲ್ಲಿ ಹಾರ್ಡ್‌ವೇರ್ ಬಗ್ಗೆ ಏನು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Raspberry Pi AI HAT+ 2 ಅನ್ನು ಶಿಪ್ ಮಾಡಿತು — Pi 5 ಮೇಲೆ ಬೋಲ್ಟ್ ಮಾಡಿದ ನಲವತ್ತು TOPS.",
+      "text_markdown": "Raspberry Pi AI HAT+ 2 ಅನ್ನು ಶಿಪ್ ಮಾಡಿತು — Pi 5 ಮೇಲೆ ಬೋಲ್ಟ್ ಮಾಡಿದ ನಲವತ್ತು TOPS.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi AI HAT+ ಎರಡು ಅನ್ನು ಶಿಪ್ ಮಾಡಿತು — Pi ಐದು ಮೇಲೆ ಬೋಲ್ಟ್ ಮಾಡಿದ ನಲವತ್ತು TOPS.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA ನ Jetson Orin Nano Super ಮೂರು ನೂರು ಡಾಲರ್‌ಗಳ ಕೆಳಗೆ ಅರವತ್ತೇಳು TOPS ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "NVIDIA ನ Jetson Orin Nano Super ಮೂರು ನೂರು ಡಾಲರ್‌ಗಳ ಕೆಳಗೆ ಅರವತ್ತೇಳು TOPS ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA ನ Jetson Orin Nano Super ಮೂರು ನೂರು ಡಾಲರ್‌ಗಳ ಕೆಳಗೆ ಅರವತ್ತೇಳು TOPS ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಆನ್-ಡಿವೈಸ್ ಎಂದರೆ Mac ಎಂದರ್ಥ ಆಗಿತ್ತು.",
+      "text_markdown": "ಆನ್-ಡಿವೈಸ್ ಎಂದರೆ Mac ಎಂದರ್ಥ ಆಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಆನ್ ಡಿವೈಸ್ ಎಂದರೆ Mac ಎಂದರ್ಥ ಆಗಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಈಗ ಇದರರ್ಥ ನೀವು ಡ್ರಾವರ್‌ನಲ್ಲಿ ಮರೆಮಾಡಬಹುದಾದ ಬೋರ್ಡ್.",
+      "text_markdown": "ಈಗ ಇದರರ್ಥ ನೀವು ಡ್ರಾವರ್‌ನಲ್ಲಿ ಮರೆಮಾಡಬಹುದಾದ ಬೋರ್ಡ್.",
+      "title": "",
+      "tts": {
+        "text": "ಈಗ ಇದರರ್ಥ ನೀವು ಡ್ರಾವರ್‌ನಲ್ಲಿ ಮರೆಮಾಡಬಹುದಾದ ಬೋರ್ಡ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ: diffusion ಮತ್ತು autoregressive ವಿಧಾನಗಳ ಹೋಲಿಕೆ.",
+      "text_markdown": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ: diffusion ಮತ್ತು autoregressive ವಿಧಾನಗಳ ಹೋಲಿಕೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ, ಡಿಫ್ಯೂಷನ್ ಮತ್ತು ಆಟೋರೆಗ್ರೆಸಿವ್ ವಿಧಾನಗಳ ಹೋಲಿಕೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಅದೇ ಗಮ್ಯಸ್ಥಾನ, ವಿಭಿನ್ನ ಮಾರ್ಗಗಳು.",
+      "text_markdown": "ಅದೇ ಗಮ್ಯಸ್ಥಾನ, ವಿಭಿನ್ನ ಮಾರ್ಗಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಗಮ್ಯಸ್ಥಾನ, ವಿಭಿನ್ನ ಮಾರ್ಗಗಳು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Autoregressive ಮಾಡೆಲ್‌ಗಳು, ನಿಮಗೆ ತಿಳಿದಿರುವ ಹೆಚ್ಚಿನ LLM ಗಳು, ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು ಟೋಕನ್ ಉತ್ಪಾದಿಸುತ್ತವೆ, ಅದರ ಮೇಲೆ ಕಂಡಿಶನ್ ಮಾಡುತ್ತವೆ, ಮುಂದಿನದನ್ನು ಉತ್ಪಾದಿಸುತ್ತವೆ, ಪುನರಾವರ್ತನೆ — ವಿನ್ಯಾಸದ ಪ್ರಕಾರ ಸೀಕ್ವೆನ್ಷಿಯಲ್.",
+      "text_markdown": "Autoregressive ಮಾಡೆಲ್‌ಗಳು, ನಿಮಗೆ ತಿಳಿದಿರುವ ಹೆಚ್ಚಿನ LLM ಗಳು, ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು ಟೋಕನ್ ಉತ್ಪಾದಿಸುತ್ತವೆ, ಅದರ ಮೇಲೆ ಕಂಡಿಶನ್ ಮಾಡುತ್ತವೆ, ಮುಂದಿನದನ್ನು ಉತ್ಪಾದಿಸುತ್ತವೆ, ಪುನರಾವರ್ತನೆ — ವಿನ್ಯಾಸದ ಪ್ರಕಾರ ಸೀಕ್ವೆನ್ಷಿಯಲ್.",
+      "title": "",
+      "tts": {
+        "text": "Autoregressive ಮಾಡೆಲ್‌ಗಳು, ನಿಮಗೆ ತಿಳಿದಿರುವ ಹೆಚ್ಚಿನ LLM ಗಳು, ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು ಟೋಕನ್ ಉತ್ಪಾದಿಸುತ್ತವೆ, ಅದರ ಮೇಲೆ ಕಂಡಿಶನ್ ಮಾಡುತ್ತವೆ, ಮುಂದಿನದನ್ನು ಉತ್ಪಾದಿಸುತ್ತವೆ, ಪುನರಾವರ್ತನೆ — ವಿನ್ಯಾಸದ ಪ್ರಕಾರ ಸೀಕ್ವೆನ್ಷಿಯಲ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Diffusion ಮಾಡೆಲ್‌ಗಳು ಶುದ್ಧ ಶಬ್ದದ ಬ್ಲಾಕ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತವೆ ಮತ್ತು ಅದನ್ನು ನಿಗದಿತ ಸಂಖ್ಯೆಯ ಹಂತಗಳಲ್ಲಿ ಎಲ್ಲಾ ಒಮ್ಮೆಗೆ ಡಿನಾಯ್ಸ್ ಮಾಡುತ್ತವೆ.",
+      "text_markdown": "Diffusion ಮಾಡೆಲ್‌ಗಳು ಶುದ್ಧ ಶಬ್ದದ ಬ್ಲಾಕ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತವೆ ಮತ್ತು ಅದನ್ನು ನಿಗದಿತ ಸಂಖ್ಯೆಯ ಹಂತಗಳಲ್ಲಿ ಎಲ್ಲಾ ಒಮ್ಮೆಗೆ ಡಿನಾಯ್ಸ್ ಮಾಡುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "Diffusion ಮಾಡೆಲ್‌ಗಳು ಶುದ್ಧ ಶಬ್ದದ ಬ್ಲಾಕ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತವೆ ಮತ್ತು ಅದನ್ನು ನಿಗದಿತ ಸಂಖ್ಯೆಯ ಹಂತಗಳಲ್ಲಿ ಎಲ್ಲಾ ಒಮ್ಮೆಗೆ ಡಿನಾಯ್ಸ್ ಮಾಡುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ನೀವು ಪ್ಯಾರಾಲಲಿಸಂಗೆ ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟವನ್ನು ವ್ಯಾಪಾರ ಮಾಡುತ್ತೀರಿ, ಮತ್ತು ಸಣ್ಣ ಸ್ಟೆಪ್ ಕೌಂಟ್‌ಗಳಲ್ಲಿ ನಿಮಗೆ ಆ ಕಣ್ಣಿಗೆ ಸಿಕ್ಕದೇ ಹೋಗುವ ಥ್ರೂಪುಟ್ ಸಂಖ್ಯೆಗಳು ಸಿಗುತ್ತವೆ.",
+      "text_markdown": "ನೀವು ಪ್ಯಾರಾಲಲಿಸಂಗೆ ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟವನ್ನು ವ್ಯಾಪಾರ ಮಾಡುತ್ತೀರಿ, ಮತ್ತು ಸಣ್ಣ ಸ್ಟೆಪ್ ಕೌಂಟ್‌ಗಳಲ್ಲಿ ನಿಮಗೆ ಆ ಕಣ್ಣಿಗೆ ಸಿಕ್ಕದೇ ಹೋಗುವ ಥ್ರೂಪುಟ್ ಸಂಖ್ಯೆಗಳು ಸಿಗುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನೀವು ಪ್ಯಾರಾಲಲಿಸಂಗೆ ಸ್ವಲ್ಪ ಗುಣಮಟ್ಟವನ್ನು ವ್ಯಾಪಾರ ಮಾಡುತ್ತೀರಿ, ಮತ್ತು ಸಣ್ಣ ಸ್ಟೆಪ್ ಕೌಂಟ್‌ಗಳಲ್ಲಿ ನಿಮಗೆ ಆ ಕಣ್ಣಿಗೆ ಸಿಕ್ಕದೇ ಹೋಗುವ ಥ್ರೂಪುಟ್ ಸಂಖ್ಯೆಗಳು ಸಿಗುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಆದ್ದರಿಂದ DiffusionGemma ಇದು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ನಿಜವಾಗಿಯೂ ವ್ಯತ್ಯಾಸವನ್ನು ಅನುಭವಿಸಲು ಓಪನ್ ತೂಕಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ.",
+      "text_markdown": "ಆದ್ದರಿಂದ DiffusionGemma ಇದು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ನಿಜವಾಗಿಯೂ ವ್ಯತ್ಯಾಸವನ್ನು ಅನುಭವಿಸಲು ಓಪನ್ ತೂಕಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದ್ದರಿಂದ DiffusionGemma ಇದು ಮೊದಲ ಬಾರಿಗೆ ನಾವು ನಿಜವಾಗಿಯೂ ವ್ಯತ್ಯಾಸವನ್ನು ಅನುಭವಿಸಲು ಓಪನ್ ತೂಕಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಈ ಮಟ್ಟದಲ್ಲಿ ಮೊದಲ ಬಾರಿ, ಹೌದು.",
+      "text_markdown": "ಈ ಮಟ್ಟದಲ್ಲಿ ಮೊದಲ ಬಾರಿ, ಹೌದು.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ಮಟ್ಟದಲ್ಲಿ ಮೊದಲ ಬಾರಿ, ಹೌದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಅದೇ ಕಾರಣಕ್ಕೆ ಈ ವಾರ ಓಪನ್-ಸೋರ್ಸ್ ಇನ್‌ಫರೆನ್ಸ್ ತಂಡಗಳು ಮುಖ್ಯ — llama.cpp, vLLM, MLX — ಅವರೇ ನಿಜವಾದ ಹಾರ್ಡ್‌ವೇರ್‌ನಲ್ಲಿ ಅದನ್ನು ಹಾಡಿಸುವುದನ್ನು ಕಲಿಯುತ್ತಾರೆ.",
+      "text_markdown": "ಮತ್ತು ಅದೇ ಕಾರಣಕ್ಕೆ ಈ ವಾರ ಓಪನ್-ಸೋರ್ಸ್ ಇನ್‌ಫರೆನ್ಸ್ ತಂಡಗಳು ಮುಖ್ಯ — llama.cpp, vLLM, MLX — ಅವರೇ ನಿಜವಾದ ಹಾರ್ಡ್‌ವೇರ್‌ನಲ್ಲಿ ಅದನ್ನು ಹಾಡಿಸುವುದನ್ನು ಕಲಿಯುತ್ತಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಅದೇ ಕಾರಣಕ್ಕೆ ಈ ವಾರ ಓಪನ್ ಸೋರ್ಸ್ ಇನ್‌ಫರೆನ್ಸ್ ತಂಡಗಳು ಮುಖ್ಯ — llama ಡಾಟ್ cpp, v L L M, MLX — ಅವರೇ ನಿಜವಾದ ಹಾರ್ಡ್‌ವೇರ್‌ನಲ್ಲಿ ಅದನ್ನು ಹಾಡಿಸುವುದನ್ನು ಕಲಿಯುತ್ತಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಲ್ಯಾಂಡ್ ಆಗಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+      "text_markdown": "ಲ್ಯಾಂಡ್ ಆಗಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+      "title": "",
+      "tts": {
+        "text": "ಲ್ಯಾಂಡ್ ಆಗಲು ಒಳ್ಳೆಯ ಸ್ಥಳ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಧನ್ಯವಾದಗಳು, ರಾನ್.",
+      "text_markdown": "ಧನ್ಯವಾದಗಳು, ರಾನ್.",
+      "title": "",
+      "tts": {
+        "text": "ಧನ್ಯವಾದಗಳು, ರಾನ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy.",
+      "text_markdown": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಅದು ಜೂನ್ 14, 2026 ಕ್ಕೆ AI This Week ಆಗಿತ್ತು.",
+      "text_markdown": "ಅದು ಜೂನ್ 14, 2026 ಕ್ಕೆ AI This Week ಆಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಅದು ಜೂನ್ ಹದಿನಾಲ್ಕು, ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತಾರು ಕ್ಕೆ AI This Week ಆಗಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಅದೇ ಚುರುಕು ಕಾರ್ಯಕ್ರಮ, ಭಾನುವಾರದ ಹೊಸ ಪ್ರಸಾರ ವೇಳಾಪಟ್ಟಿ.",
+      "text_markdown": "ಅದೇ ಚುರುಕು ಕಾರ್ಯಕ್ರಮ, ಭಾನುವಾರದ ಹೊಸ ಪ್ರಸಾರ ವೇಳಾಪಟ್ಟಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಚುರುಕು ಕಾರ್ಯಕ್ರಮ, ಭಾನುವಾರದ ಹೊಸ ಪ್ರಸಾರ ವೇಳಾಪಟ್ಟಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಭಾಷೆಗಳು ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆ ತನಕ ಬೀಳುತ್ತಲೇ ಇರುತ್ತವೆ; Corpán 0.18.0 ಇದು ನೀವು ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಎಲ್ಲೆಂದರಲ್ಲಿ — beatlounge ಅನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
+      "text_markdown": "ಭಾಷೆಗಳು ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆ ತನಕ ಬೀಳುತ್ತಲೇ ಇರುತ್ತವೆ; Corpán 0.18.0 ಇದು ನೀವು ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಎಲ್ಲೆಂದರಲ್ಲಿ — beatlounge ಅನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಭಾಷೆಗಳು ಸೋಮವಾರ ಬೆಳಿಗ್ಗೆ ತನಕ ಬೀಳುತ್ತಲೇ ಇರುತ್ತವೆ; Corpán ಶೂನ್ಯ ಪಾಯಿಂಟ್ ಒಂದು ಎಂಟು.ಶೂನ್ಯ ಇದು ನೀವು ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಎಲ್ಲೆಂದರಲ್ಲಿ — beatlounge ಅನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಜಾಗರೂಕರಾಗಿರಿ.",
+      "text_markdown": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಜಾಗರೂಕರಾಗಿರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಜಾಗರೂಕರಾಗಿರಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

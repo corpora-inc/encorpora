@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tundra",
+      "text_markdown": "Tundra"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Di Mana Biom Ini Berada",
+      "text_markdown": "Di Mana Biom Ini Berada"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selamat datang ke tundra.",
+      "text_markdown": "Selamat datang ke tundra.",
+      "tts": {
+        "text": "Selamat datang ke tundra.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini salah satu biom besar di dunia.",
+      "text_markdown": "Ini salah satu biom besar di dunia.",
+      "tts": {
+        "text": "Ini salah satu biom besar di dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom ialah sebahagian Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+      "text_markdown": "Biom ialah sebahagian Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+      "tts": {
+        "text": "Biom ialah sebahagian Bumi dengan cuaca, tumbuhan, dan haiwannya yang tersendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ialah tanah lapang yang sejuk, terlalu sejuk untuk pokok tumbuh.",
+      "text_markdown": "Tundra ialah tanah lapang yang sejuk, terlalu sejuk untuk pokok tumbuh.",
+      "tts": {
+        "text": "Tundra ialah tanah lapang yang sejuk, terlalu sejuk untuk pokok tumbuh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perkataan tundra berasal daripada kata lama yang bermaksud dataran tanpa pokok.",
+      "text_markdown": "Perkataan tundra berasal daripada kata lama yang bermaksud dataran tanpa pokok.",
+      "tts": {
+        "text": "Perkataan tundra berasal daripada kata lama yang bermaksud dataran tanpa pokok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ialah biom paling sejuk di daratan.",
+      "text_markdown": "Tundra ialah biom paling sejuk di daratan.",
+      "tts": {
+        "text": "Tundra ialah biom paling sejuk di daratan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan tundra terletak dalam lingkaran luas di puncak dunia.",
+      "text_markdown": "Kebanyakan tundra terletak dalam lingkaran luas di puncak dunia.",
+      "tts": {
+        "text": "Kebanyakan tundra terletak dalam lingkaran luas di puncak dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia meliputi utara Kanada, Alaska, dan Greenland, di Amerika Utara.",
+      "text_markdown": "Ia meliputi utara Kanada, Alaska, dan Greenland, di Amerika Utara.",
+      "tts": {
+        "text": "Ia meliputi utara Kanada, Alaska, dan Greenland, di Amerika Utara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia meliputi utara jauh Norway, Sweden, dan Finland, di utara Eropah.",
+      "text_markdown": "Ia meliputi utara jauh Norway, Sweden, dan Finland, di utara Eropah.",
+      "tts": {
+        "text": "Ia meliputi utara jauh Norway, Sweden, dan Finland, di utara Eropah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia meliputi pantai utara Rusia yang panjang, merentasi puncak Asia.",
+      "text_markdown": "Ia meliputi pantai utara Rusia yang panjang, merentasi puncak Asia.",
+      "tts": {
+        "text": "Ia meliputi pantai utara Rusia yang panjang, merentasi puncak Asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lingkaran tanah sejuk ini berada di utara hutan boreal dan sekeliling laut beku.",
+      "text_markdown": "Lingkaran tanah sejuk ini berada di utara hutan boreal dan sekeliling laut beku.",
+      "tts": {
+        "text": "Lingkaran tanah sejuk ini berada di utara hutan boreal dan sekeliling laut beku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada juga satu lagi jenis tundra.",
+      "text_markdown": "Ada juga satu lagi jenis tundra.",
+      "tts": {
+        "text": "Ada juga satu lagi jenis tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tinggi di gunung, di atas pokok terakhir, muncul tanah sejuk dan lapang yang sama.",
+      "text_markdown": "Tinggi di gunung, di atas pokok terakhir, muncul tanah sejuk dan lapang yang sama.",
+      "tts": {
+        "text": "Tinggi di gunung, di atas pokok terakhir, muncul tanah sejuk dan lapang yang sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra gunung ini terdapat di puncak tinggi seluruh dunia, malah dekat tengah Bumi yang panas.",
+      "text_markdown": "Tundra gunung ini terdapat di puncak tinggi seluruh dunia, malah dekat tengah Bumi yang panas.",
+      "tts": {
+        "text": "Tundra gunung ini terdapat di puncak tinggi seluruh dunia, malah dekat tengah Bumi yang panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di mana sahaja, tundra ialah tanah tumbuhan rendah, angin sejuk, dan langit terbuka luas.",
+      "text_markdown": "Di mana sahaja, tundra ialah tanah tumbuhan rendah, angin sejuk, dan langit terbuka luas.",
+      "tts": {
+        "text": "Di mana sahaja, tundra ialah tanah tumbuhan rendah, angin sejuk, dan langit terbuka luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tiada hutan di sini.",
+      "text_markdown": "Tiada hutan di sini.",
+      "tts": {
+        "text": "Tiada hutan di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanahnya beku keras sepanjang kebanyakan tahun.",
+      "text_markdown": "Tanahnya beku keras sepanjang kebanyakan tahun.",
+      "tts": {
+        "text": "Tanahnya beku keras sepanjang kebanyakan tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Namun di tempat sejuk ini pun, kehidupan tetap mencari jalan.",
+      "text_markdown": "Namun di tempat sejuk ini pun, kehidupan tetap mencari jalan.",
+      "tts": {
+        "text": "Namun di tempat sejuk ini pun, kehidupan tetap mencari jalan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cuaca",
+      "text_markdown": "Cuaca"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra sejuk, kering, dan berangin sepanjang kebanyakan tahun.",
+      "text_markdown": "Tundra sejuk, kering, dan berangin sepanjang kebanyakan tahun.",
+      "tts": {
+        "text": "Tundra sejuk, kering, dan berangin sepanjang kebanyakan tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musim sejuknya panjang, gelap, dan amat sejuk.",
+      "text_markdown": "Musim sejuknya panjang, gelap, dan amat sejuk.",
+      "tts": {
+        "text": "Musim sejuknya panjang, gelap, dan amat sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di utara jauh, musim sejuk boleh bertahan lapan atau sembilan bulan.",
+      "text_markdown": "Di utara jauh, musim sejuk boleh bertahan lapan atau sembilan bulan.",
+      "tts": {
+        "text": "Di utara jauh, musim sejuk boleh bertahan lapan atau sembilan bulan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Udara boleh jatuh jauh di bawah takat beku, lebih sejuk daripada peti sejuk rumah.",
+      "text_markdown": "Udara boleh jatuh jauh di bawah takat beku, lebih sejuk daripada peti sejuk rumah.",
+      "tts": {
+        "text": "Udara boleh jatuh jauh di bawah takat beku, lebih sejuk daripada peti sejuk rumah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama berminggu-minggu di kemuncak musim sejuk, matahari langsung tidak terbit.",
+      "text_markdown": "Selama berminggu-minggu di kemuncak musim sejuk, matahari langsung tidak terbit.",
+      "tts": {
+        "text": "Selama berminggu minggu di kemuncak musim sejuk, matahari langsung tidak terbit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah terbaring dalam senja biru gelap yang panjang, hari demi hari.",
+      "text_markdown": "Tanah terbaring dalam senja biru gelap yang panjang, hari demi hari.",
+      "tts": {
+        "text": "Tanah terbaring dalam senja biru gelap yang panjang, hari demi hari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Angin kencang bertiup merentasi tanah lapang, tanpa pokok untuk memperlahankannya.",
+      "text_markdown": "Angin kencang bertiup merentasi tanah lapang, tanpa pokok untuk memperlahankannya.",
+      "tts": {
+        "text": "Angin kencang bertiup merentasi tanah lapang, tanpa pokok untuk memperlahankannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Angin mengangkat salji kering dan menghalaunya di atas tanah.",
+      "text_markdown": "Angin mengangkat salji kering dan menghalaunya di atas tanah.",
+      "tts": {
+        "text": "Angin mengangkat salji kering dan menghalaunya di atas tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sangat sedikit salji atau hujan turun di sini.",
+      "text_markdown": "Sangat sedikit salji atau hujan turun di sini.",
+      "tts": {
+        "text": "Sangat sedikit salji atau hujan turun di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra begitu kering sehingga kadangkala disebut gurun sejuk.",
+      "text_markdown": "Tundra begitu kering sehingga kadangkala disebut gurun sejuk.",
+      "tts": {
+        "text": "Tundra begitu kering sehingga kadangkala disebut gurun sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Namun air yang turun tidak dapat meresap ke dalam tanah beku.",
+      "text_markdown": "Namun air yang turun tidak dapat meresap ke dalam tanah beku.",
+      "tts": {
+        "text": "Namun air yang turun tidak dapat meresap ke dalam tanah beku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jadi ia bertakung di atas, dan tanah dipenuhi kolam cetek serta tanah basah.",
+      "text_markdown": "Jadi ia bertakung di atas, dan tanah dipenuhi kolam cetek serta tanah basah.",
+      "tts": {
+        "text": "Jadi ia bertakung di atas, dan tanah dipenuhi kolam cetek serta tanah basah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musim panasnya pendek dan sejuk.",
+      "text_markdown": "Musim panasnya pendek dan sejuk.",
+      "tts": {
+        "text": "Musim panasnya pendek dan sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama beberapa minggu, matahari kekal di langit hampir sepanjang siang dan malam.",
+      "text_markdown": "Selama beberapa minggu, matahari kekal di langit hampir sepanjang siang dan malam.",
+      "tts": {
+        "text": "Selama beberapa minggu, matahari kekal di langit hampir sepanjang siang dan malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lapisan atas tanah beku melembut, dan tanah bertukar hijau dan cerah.",
+      "text_markdown": "Lapisan atas tanah beku melembut, dan tanah bertukar hijau dan cerah.",
+      "tts": {
+        "text": "Lapisan atas tanah beku melembut, dan tanah bertukar hijau dan cerah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Walaupun musim panas, udara kekal sejuk, dan fros boleh kembali pada mana-mana malam.",
+      "text_markdown": "Walaupun musim panas, udara kekal sejuk, dan fros boleh kembali pada mana-mana malam.",
+      "tts": {
+        "text": "Walaupun musim panas, udara kekal sejuk, dan fros boleh kembali pada mana mana malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian musim panas pendek berakhir, matahari turun rendah, dan musim sejuk panjang bermula semula.",
+      "text_markdown": "Kemudian musim panas pendek berakhir, matahari turun rendah, dan musim sejuk panjang bermula semula.",
+      "tts": {
+        "text": "Kemudian musim panas pendek berakhir, matahari turun rendah, dan musim sejuk panjang bermula semula.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tanah dan Air",
+      "text_markdown": "Tanah dan Air"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perkara paling penting tentang tundra terletak di bawah kaki anda.",
+      "text_markdown": "Perkara paling penting tentang tundra terletak di bawah kaki anda.",
+      "tts": {
+        "text": "Perkara paling penting tentang tundra terletak di bawah kaki anda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di bawah permukaan, tanah beku pejal sepanjang tahun.",
+      "text_markdown": "Di bawah permukaan, tanah beku pejal sepanjang tahun.",
+      "tts": {
+        "text": "Di bawah permukaan, tanah beku pejal sepanjang tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah beku ini dipanggil permafros.",
+      "text_markdown": "Tanah beku ini dipanggil permafros.",
+      "tts": {
+        "text": "Tanah beku ini dipanggil permafros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah tempat, permafros mencapai lebih dalam daripada bangunan tertinggi.",
+      "text_markdown": "Di sesetengah tempat, permafros mencapai lebih dalam daripada bangunan tertinggi.",
+      "tts": {
+        "text": "Di sesetengah tempat, permafros mencapai lebih dalam daripada bangunan tertinggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia telah beku selama beribu-ribu tahun.",
+      "text_markdown": "Ia telah beku selama beribu-ribu tahun.",
+      "tts": {
+        "text": "Ia telah beku selama beribu ribu tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim panas, hanya lapisan paling atas tanah mencair.",
+      "text_markdown": "Pada musim panas, hanya lapisan paling atas tanah mencair.",
+      "tts": {
+        "text": "Pada musim panas, hanya lapisan paling atas tanah mencair.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lapisan nipis yang mencair inilah tempat semua tumbuhan mesti hidup.",
+      "text_markdown": "Lapisan nipis yang mencair inilah tempat semua tumbuhan mesti hidup.",
+      "tts": {
+        "text": "Lapisan nipis yang mencair inilah tempat semua tumbuhan mesti hidup.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akarnya tidak boleh menjalar dalam, kerana tepat di bawahnya tanah keras seperti batu.",
+      "text_markdown": "Akarnya tidak boleh menjalar dalam, kerana tepat di bawahnya tanah keras seperti batu.",
+      "tts": {
+        "text": "Akarnya tidak boleh menjalar dalam, kerana tepat di bawahnya tanah keras seperti batu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah beku juga memerangkap air di permukaan.",
+      "text_markdown": "Tanah beku juga memerangkap air di permukaan.",
+      "tts": {
+        "text": "Tanah beku juga memerangkap air di permukaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hujan dan salji cair tidak dapat mengalir keluar menembusi permafros.",
+      "text_markdown": "Hujan dan salji cair tidak dapat mengalir keluar menembusi permafros.",
+      "tts": {
+        "text": "Hujan dan salji cair tidak dapat mengalir keluar menembusi permafros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maka pada musim panas tundra menjadi tanah kolam cetek, paya, dan anak sungai perlahan.",
+      "text_markdown": "Maka pada musim panas tundra menjadi tanah kolam cetek, paya, dan anak sungai perlahan.",
+      "tts": {
+        "text": "Maka pada musim panas tundra menjadi tanah kolam cetek, paya, dan anak sungai perlahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dari atas, tundra musim panas berkilau dengan beribu kolam kecil.",
+      "text_markdown": "Dari atas, tundra musim panas berkilau dengan beribu kolam kecil.",
+      "tts": {
+        "text": "Dari atas, tundra musim panas berkilau dengan beribu kolam kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanahnya sendiri kebanyakannya rata atau beralun lembut.",
+      "text_markdown": "Tanahnya sendiri kebanyakannya rata atau beralun lembut.",
+      "tts": {
+        "text": "Tanahnya sendiri kebanyakannya rata atau beralun lembut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di banyak tempat, tanah terpecah menjadi bentuk pelik akibat pembekuan dan pencairan.",
+      "text_markdown": "Di banyak tempat, tanah terpecah menjadi bentuk pelik akibat pembekuan dan pencairan.",
+      "tts": {
+        "text": "Di banyak tempat, tanah terpecah menjadi bentuk pelik akibat pembekuan dan pencairan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah membeku dan terangkat, kemudian mencair dan mendap, tahun demi tahun.",
+      "text_markdown": "Tanah membeku dan terangkat, kemudian mencair dan mendap, tahun demi tahun.",
+      "tts": {
+        "text": "Tanah membeku dan terangkat, kemudian mencair dan mendap, tahun demi tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pergerakan perlahan ini meretakkan tanah menjadi bulatan, jalur, dan busut rendah.",
+      "text_markdown": "Pergerakan perlahan ini meretakkan tanah menjadi bulatan, jalur, dan busut rendah.",
+      "tts": {
+        "text": "Pergerakan perlahan ini meretakkan tanah menjadi bulatan, jalur, dan busut rendah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah tundra nipis, tandus, dan sejuk.",
+      "text_markdown": "Tanah tundra nipis, tandus, dan sejuk.",
+      "tts": {
+        "text": "Tanah tundra nipis, tandus, dan sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbuhan mati mereput sangat perlahan dalam sejuk, jadi tanah subur terbentuk perlahan.",
+      "text_markdown": "Tumbuhan mati mereput sangat perlahan dalam sejuk, jadi tanah subur terbentuk perlahan.",
+      "tts": {
+        "text": "Tumbuhan mati mereput sangat perlahan dalam sejuk, jadi tanah subur terbentuk perlahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia tanah yang keras, beku dan basah dan gondol, tetapi diam-diam penuh kehidupan.",
+      "text_markdown": "Ia tanah yang keras, beku dan basah dan gondol, tetapi diam-diam penuh kehidupan.",
+      "tts": {
+        "text": "Ia tanah yang keras, beku dan basah dan gondol, tetapi diam diam penuh kehidupan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tumbuhan",
+      "text_markdown": "Tumbuhan"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbuhan tundra kecil, liat, dan rendah ke tanah.",
+      "text_markdown": "Tumbuhan tundra kecil, liat, dan rendah ke tanah.",
+      "tts": {
+        "text": "Tumbuhan tundra kecil, liat, dan rendah ke tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tiada pokok di sini, kerana pokok tidak dapat hidup dalam tanah beku dan angin sejuk.",
+      "text_markdown": "Tiada pokok di sini, kerana pokok tidak dapat hidup dalam tanah beku dan angin sejuk.",
+      "tts": {
+        "text": "Tiada pokok di sini, kerana pokok tidak dapat hidup dalam tanah beku dan angin sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebaliknya, tundra diselaputi hamparan rendah tumbuhan kecil.",
+      "text_markdown": "Sebaliknya, tundra diselaputi hamparan rendah tumbuhan kecil.",
+      "tts": {
+        "text": "Sebaliknya, tundra diselaputi hamparan rendah tumbuhan kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kekal rendah ialah rahsia untuk hidup di sini.",
+      "text_markdown": "Kekal rendah ialah rahsia untuk hidup di sini.",
+      "tts": {
+        "text": "Kekal rendah ialah rahsia untuk hidup di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dekat tanah, angin lebih lemah dan udara sedikit lebih panas.",
+      "text_markdown": "Dekat tanah, angin lebih lemah dan udara sedikit lebih panas.",
+      "tts": {
+        "text": "Dekat tanah, angin lebih lemah dan udara sedikit lebih panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak tumbuhan tundra tumbuh sebagai gumpalan padat atau hamparan tebal untuk menyimpan kehangatan.",
+      "text_markdown": "Banyak tumbuhan tundra tumbuh sebagai gumpalan padat atau hamparan tebal untuk menyimpan kehangatan.",
+      "tts": {
+        "text": "Banyak tumbuhan tundra tumbuh sebagai gumpalan padat atau hamparan tebal untuk menyimpan kehangatan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lumut tumbuh tebal dan lembut di kebanyakan tanah.",
+      "text_markdown": "Lumut tumbuh tebal dan lembut di kebanyakan tanah.",
+      "tts": {
+        "text": "Lumut tumbuh tebal dan lembut di kebanyakan tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liken tumbuh pada batu gondol dan tanah dalam tompok kelabu, hijau, dan kuning.",
+      "text_markdown": "Liken tumbuh pada batu gondol dan tanah dalam tompok kelabu, hijau, dan kuning.",
+      "tts": {
+        "text": "Liken tumbuh pada batu gondol dan tanah dalam tompok kelabu, hijau, dan kuning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liken bukan satu tumbuhan tetapi dua jenis hidupan yang hidup bersama sebagai satu.",
+      "text_markdown": "Liken bukan satu tumbuhan tetapi dua jenis hidupan yang hidup bersama sebagai satu.",
+      "tts": {
+        "text": "Liken bukan satu tumbuhan tetapi dua jenis hidupan yang hidup bersama sebagai satu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liken boleh hidup di tempat yang hampir tiada apa lain mampu, dan ia tumbuh sangat perlahan.",
+      "text_markdown": "Liken boleh hidup di tempat yang hampir tiada apa lain mampu, dan ia tumbuh sangat perlahan.",
+      "tts": {
+        "text": "Liken boleh hidup di tempat yang hampir tiada apa lain mampu, dan ia tumbuh sangat perlahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah liken di tundra berusia beratus tahun.",
+      "text_markdown": "Sesetengah liken di tundra berusia beratus tahun.",
+      "tts": {
+        "text": "Sesetengah liken di tundra berusia beratus tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput kecil dan tumbuhan berbunga rendah tumbuh di celah lumut.",
+      "text_markdown": "Rumput kecil dan tumbuhan berbunga rendah tumbuh di celah lumut.",
+      "tts": {
+        "text": "Rumput kecil dan tumbuhan berbunga rendah tumbuh di celah lumut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim panas yang pendek, tundra merekah mekar.",
+      "text_markdown": "Pada musim panas yang pendek, tundra merekah mekar.",
+      "tts": {
+        "text": "Pada musim panas yang pendek, tundra merekah mekar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama beberapa minggu yang cerah, tanah dipenuhi bunga-bunga kecil.",
+      "text_markdown": "Selama beberapa minggu yang cerah, tanah dipenuhi bunga-bunga kecil.",
+      "tts": {
+        "text": "Selama beberapa minggu yang cerah, tanah dipenuhi bunga bunga kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada bunga kecil kuning, putih, merah jambu, dan ungu di merata tempat.",
+      "text_markdown": "Ada bunga kecil kuning, putih, merah jambu, dan ungu di merata tempat.",
+      "tts": {
+        "text": "Ada bunga kecil kuning, putih, merah jambu, dan ungu di merata tempat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbuhan mesti berbunga, menghasilkan biji, dan menyimpan makanan dengan cepat sebelum sejuk kembali.",
+      "text_markdown": "Tumbuhan mesti berbunga, menghasilkan biji, dan menyimpan makanan dengan cepat sebelum sejuk kembali.",
+      "tts": {
+        "text": "Tumbuhan mesti berbunga, menghasilkan biji, dan menyimpan makanan dengan cepat sebelum sejuk kembali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beberapa pokok renek kecil tumbuh di sini juga, seperti willow kerdil dan birch kerdil.",
+      "text_markdown": "Beberapa pokok renek kecil tumbuh di sini juga, seperti willow kerdil dan birch kerdil.",
+      "tts": {
+        "text": "Beberapa pokok renek kecil tumbuh di sini juga, seperti willow kerdil dan birch kerdil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inilah jenis pokok yang sama yang tumbuh tinggi di tanah lebih panas.",
+      "text_markdown": "Inilah jenis pokok yang sama yang tumbuh tinggi di tanah lebih panas.",
+      "tts": {
+        "text": "Inilah jenis pokok yang sama yang tumbuh tinggi di tanah lebih panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi di sini ia tumbuh sebagai semak kecil, setinggi buku lali sahaja, menjalar di atas tanah.",
+      "text_markdown": "Tetapi di sini ia tumbuh sebagai semak kecil, setinggi buku lali sahaja, menjalar di atas tanah.",
+      "tts": {
+        "text": "Tetapi di sini ia tumbuh sebagai semak kecil, setinggi buku lali sahaja, menjalar di atas tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beri kecil masak pada sesetengah tumbuhan rendah ini di hujung musim panas.",
+      "text_markdown": "Beri kecil masak pada sesetengah tumbuhan rendah ini di hujung musim panas.",
+      "tts": {
+        "text": "Beri kecil masak pada sesetengah tumbuhan rendah ini di hujung musim panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan dan penduduk tundra mengutipnya selagi boleh.",
+      "text_markdown": "Haiwan dan penduduk tundra mengutipnya selagi boleh.",
+      "tts": {
+        "text": "Haiwan dan penduduk tundra mengutipnya selagi boleh.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Haiwan",
+      "text_markdown": "Haiwan"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan tundra terbentuk untuk hidup dengan sejuk dan angin.",
+      "text_markdown": "Haiwan tundra terbentuk untuk hidup dengan sejuk dan angin.",
+      "tts": {
+        "text": "Haiwan tundra terbentuk untuk hidup dengan sejuk dan angin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakannya berbulu tebal atau berbulu pelepah tebal, dan lapisan lemak untuk menghangatkan diri.",
+      "text_markdown": "Kebanyakannya berbulu tebal atau berbulu pelepah tebal, dan lapisan lemak untuk menghangatkan diri.",
+      "tts": {
+        "text": "Kebanyakannya berbulu tebal atau berbulu pelepah tebal, dan lapisan lemak untuk menghangatkan diri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan terbesar di tundra ialah karibu, yang juga dipanggil rusa kutub.",
+      "text_markdown": "Haiwan terbesar di tundra ialah karibu, yang juga dipanggil rusa kutub.",
+      "tts": {
+        "text": "Haiwan terbesar di tundra ialah karibu, yang juga dipanggil rusa kutub.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu hidup dalam kawanan besar dan mengembara jauh merentasi tanah lapang.",
+      "text_markdown": "Karibu hidup dalam kawanan besar dan mengembara jauh merentasi tanah lapang.",
+      "tts": {
+        "text": "Karibu hidup dalam kawanan besar dan mengembara jauh merentasi tanah lapang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim panas ia makan tumbuhan tundra, dan musim sejuk ia menggali salji mencari liken.",
+      "text_markdown": "Pada musim panas ia makan tumbuhan tundra, dan musim sejuk ia menggali salji mencari liken.",
+      "tts": {
+        "text": "Pada musim panas ia makan tumbuhan tundra, dan musim sejuk ia menggali salji mencari liken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lembu kasturi ialah satu lagi haiwan besar tundra.",
+      "text_markdown": "Lembu kasturi ialah satu lagi haiwan besar tundra.",
+      "tts": {
+        "text": "Lembu kasturi ialah satu lagi haiwan besar tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lembu kasturi bertubuh berat dan berbulu panjang tebal yang hampir mencecah tanah.",
+      "text_markdown": "Lembu kasturi bertubuh berat dan berbulu panjang tebal yang hampir mencecah tanah.",
+      "tts": {
+        "text": "Lembu kasturi bertubuh berat dan berbulu panjang tebal yang hampir mencecah tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila serigala mendekat, lembu kasturi berdiri melingkar, menghadap keluar, untuk melindungi yang muda.",
+      "text_markdown": "Apabila serigala mendekat, lembu kasturi berdiri melingkar, menghadap keluar, untuk melindungi yang muda.",
+      "tts": {
+        "text": "Apabila serigala mendekat, lembu kasturi berdiri melingkar, menghadap keluar, untuk melindungi yang muda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Serigala mengikuti kawanan merentasi tundra, memburu yang tua dan yang lemah.",
+      "text_markdown": "Serigala mengikuti kawanan merentasi tundra, memburu yang tua dan yang lemah.",
+      "tts": {
+        "text": "Serigala mengikuti kawanan merentasi tundra, memburu yang tua dan yang lemah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musang artik kecil, berbulu tebal yang bertukar putih di musim sejuk dan perang di musim panas.",
+      "text_markdown": "Musang artik kecil, berbulu tebal yang bertukar putih di musim sejuk dan perang di musim panas.",
+      "tts": {
+        "text": "Musang artik kecil, berbulu tebal yang bertukar putih di musim sejuk dan perang di musim panas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia mengikuti haiwan lebih besar dan makan sisa mereka, dan ia turut memburu haiwan kecil.",
+      "text_markdown": "Ia mengikuti haiwan lebih besar dan makan sisa mereka, dan ia turut memburu haiwan kecil.",
+      "tts": {
+        "text": "Ia mengikuti haiwan lebih besar dan makan sisa mereka, dan ia turut memburu haiwan kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arnab artik berwarna putih di musim sejuk dan bertelinga pendek untuk menyimpan kehangatannya.",
+      "text_markdown": "Arnab artik berwarna putih di musim sejuk dan bertelinga pendek untuk menyimpan kehangatannya.",
+      "tts": {
+        "text": "Arnab artik berwarna putih di musim sejuk dan bertelinga pendek untuk menyimpan kehangatannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di bawah salji, haiwan kecil bernama leming menggali terowong dan sibuk sepanjang musim sejuk.",
+      "text_markdown": "Di bawah salji, haiwan kecil bernama leming menggali terowong dan sibuk sepanjang musim sejuk.",
+      "tts": {
+        "text": "Di bawah salji, haiwan kecil bernama leming menggali terowong dan sibuk sepanjang musim sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leming menjadi makanan bagi musang, burung hantu, dan banyak pemburu lain.",
+      "text_markdown": "Leming menjadi makanan bagi musang, burung hantu, dan banyak pemburu lain.",
+      "tts": {
+        "text": "Leming menjadi makanan bagi musang, burung hantu, dan banyak pemburu lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burung hantu salji ialah burung hantu putih besar yang memburu merentasi tundra lapang siang dan malam.",
+      "text_markdown": "Burung hantu salji ialah burung hantu putih besar yang memburu merentasi tundra lapang siang dan malam.",
+      "tts": {
+        "text": "Burung hantu salji ialah burung hantu putih besar yang memburu merentasi tundra lapang siang dan malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia mengintai dari tanah tinggi rendah dan menerkam senyap ke atas leming dan haiwan kecil lain.",
+      "text_markdown": "Ia mengintai dari tanah tinggi rendah dan menerkam senyap ke atas leming dan haiwan kecil lain.",
+      "tts": {
+        "text": "Ia mengintai dari tanah tinggi rendah dan menerkam senyap ke atas leming dan haiwan kecil lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim panas yang pendek, kawanan besar burung tiba dari selatan.",
+      "text_markdown": "Pada musim panas yang pendek, kawanan besar burung tiba dari selatan.",
+      "tts": {
+        "text": "Pada musim panas yang pendek, kawanan besar burung tiba dari selatan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Angsa, itik, dan banyak burung kecil datang bersarang di tundra basah penuh serangga.",
+      "text_markdown": "Angsa, itik, dan banyak burung kecil datang bersarang di tundra basah penuh serangga.",
+      "tts": {
+        "text": "Angsa, itik, dan banyak burung kecil datang bersarang di tundra basah penuh serangga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia datang kerana siang panjang musim panas dan serangga yang banyak bermakna makanan berlimpah.",
+      "text_markdown": "Ia datang kerana siang panjang musim panas dan serangga yang banyak bermakna makanan berlimpah.",
+      "tts": {
+        "text": "Ia datang kerana siang panjang musim panas dan serangga yang banyak bermakna makanan berlimpah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selama beberapa minggu, gumpalan nyamuk dan lalat kecil memenuhi udara.",
+      "text_markdown": "Selama beberapa minggu, gumpalan nyamuk dan lalat kecil memenuhi udara.",
+      "tts": {
+        "text": "Selama beberapa minggu, gumpalan nyamuk dan lalat kecil memenuhi udara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian burung membesarkan anak dengan cepat dan terbang ke selatan semula sebelum sejuk kembali.",
+      "text_markdown": "Kemudian burung membesarkan anak dengan cepat dan terbang ke selatan semula sebelum sejuk kembali.",
+      "tts": {
+        "text": "Kemudian burung membesarkan anak dengan cepat dan terbang ke selatan semula sebelum sejuk kembali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di pinggir utara, tempat tundra bertemu laut beku, beruang kutub memburu di atas ais.",
+      "text_markdown": "Di pinggir utara, tempat tundra bertemu laut beku, beruang kutub memburu di atas ais.",
+      "tts": {
+        "text": "Di pinggir utara, tempat tundra bertemu laut beku, beruang kutub memburu di atas ais.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Penduduk",
+      "text_markdown": "Penduduk"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manusia telah hidup di tundra selama beribu tahun.",
+      "text_markdown": "Manusia telah hidup di tundra selama beribu tahun.",
+      "tts": {
+        "text": "Manusia telah hidup di tundra selama beribu tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Untuk hidup di sini memerlukan pengetahuan mendalam tentang tanah sejuk dan haiwannya.",
+      "text_markdown": "Untuk hidup di sini memerlukan pengetahuan mendalam tentang tanah sejuk dan haiwannya.",
+      "tts": {
+        "text": "Untuk hidup di sini memerlukan pengetahuan mendalam tentang tanah sejuk dan haiwannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Amerika Utara, orang Inuit dan penduduk utara lain telah hidup di tundra dan pantai beku sejak sangat lama.",
+      "text_markdown": "Di Amerika Utara, orang Inuit dan penduduk utara lain telah hidup di tundra dan pantai beku sejak sangat lama.",
+      "tts": {
+        "text": "Di Amerika Utara, orang Inuit dan penduduk utara lain telah hidup di tundra dan pantai beku sejak sangat lama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka memburu karibu, menangkap ikan di sungai dan laut, serta memburu anjing laut di sepanjang ais.",
+      "text_markdown": "Mereka memburu karibu, menangkap ikan di sungai dan laut, serta memburu anjing laut di sepanjang ais.",
+      "tts": {
+        "text": "Mereka memburu karibu, menangkap ikan di sungai dan laut, serta memburu anjing laut di sepanjang ais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka membuat pakaian panas daripada kulit dan bulu haiwan, dijahit untuk menghalang angin.",
+      "text_markdown": "Mereka membuat pakaian panas daripada kulit dan bulu haiwan, dijahit untuk menghalang angin.",
+      "tts": {
+        "text": "Mereka membuat pakaian panas daripada kulit dan bulu haiwan, dijahit untuk menghalang angin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka membina rumah daripada apa yang tanah beri, dan mengembara dengan giring merentasi salji.",
+      "text_markdown": "Mereka membina rumah daripada apa yang tanah beri, dan mengembara dengan giring merentasi salji.",
+      "tts": {
+        "text": "Mereka membina rumah daripada apa yang tanah beri, dan mengembara dengan giring merentasi salji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di utara Eropah, orang Sami telah mengikuti rusa kutub merentasi tundra selama banyak generasi.",
+      "text_markdown": "Di utara Eropah, orang Sami telah mengikuti rusa kutub merentasi tundra selama banyak generasi.",
+      "tts": {
+        "text": "Di utara Eropah, orang Sami telah mengikuti rusa kutub merentasi tundra selama banyak generasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusa kutub memberi mereka daging, susu, kulit untuk pakaian, dan cara menarik giring.",
+      "text_markdown": "Rusa kutub memberi mereka daging, susu, kulit untuk pakaian, dan cara menarik giring.",
+      "tts": {
+        "text": "Rusa kutub memberi mereka daging, susu, kulit untuk pakaian, dan cara menarik giring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di utara Rusia, banyak kaum telah menjadikan tundra rumah mereka.",
+      "text_markdown": "Di utara Rusia, banyak kaum telah menjadikan tundra rumah mereka.",
+      "tts": {
+        "text": "Di utara Rusia, banyak kaum telah menjadikan tundra rumah mereka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang Nenets, Chukchi, dan yang lain telah mengembala rusa kutub merentasi tanah sejuk ini sejak sangat lama.",
+      "text_markdown": "Orang Nenets, Chukchi, dan yang lain telah mengembala rusa kutub merentasi tanah sejuk ini sejak sangat lama.",
+      "tts": {
+        "text": "Orang Nenets, Chukchi, dan yang lain telah mengembala rusa kutub merentasi tanah sejuk ini sejak sangat lama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebahagian mereka masih mengembara bersama kawanan hari ini, bergerak mengikut musim.",
+      "text_markdown": "Sebahagian mereka masih mengembara bersama kawanan hari ini, bergerak mengikut musim.",
+      "tts": {
+        "text": "Sebahagian mereka masih mengembara bersama kawanan hari ini, bergerak mengikut musim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim panas mereka mengikuti rusa kutub ke utara menuju pantai.",
+      "text_markdown": "Pada musim panas mereka mengikuti rusa kutub ke utara menuju pantai.",
+      "tts": {
+        "text": "Pada musim panas mereka mengikuti rusa kutub ke utara menuju pantai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim sejuk mereka bergerak ke selatan menuju perlindungan pinggir hutan.",
+      "text_markdown": "Pada musim sejuk mereka bergerak ke selatan menuju perlindungan pinggir hutan.",
+      "tts": {
+        "text": "Pada musim sejuk mereka bergerak ke selatan menuju perlindungan pinggir hutan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di seluruh tanah ini, penduduk belajar membaca cuaca, salji, dan ais.",
+      "text_markdown": "Di seluruh tanah ini, penduduk belajar membaca cuaca, salji, dan ais.",
+      "tts": {
+        "text": "Di seluruh tanah ini, penduduk belajar membaca cuaca, salji, dan ais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mempelajari laluan karibu dan rusa kutub.",
+      "text_markdown": "Mereka mempelajari laluan karibu dan rusa kutub.",
+      "tts": {
+        "text": "Mereka mempelajari laluan karibu dan rusa kutub.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengetahui tempat ikan berkumpul dan bila burung akan datang.",
+      "text_markdown": "Mereka mengetahui tempat ikan berkumpul dan bila burung akan datang.",
+      "tts": {
+        "text": "Mereka mengetahui tempat ikan berkumpul dan bila burung akan datang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka belajar menyimpan makanan dari musim panas pendek untuk bertahan sepanjang musim sejuk panjang.",
+      "text_markdown": "Mereka belajar menyimpan makanan dari musim panas pendek untuk bertahan sepanjang musim sejuk panjang.",
+      "tts": {
+        "text": "Mereka belajar menyimpan makanan dari musim panas pendek untuk bertahan sepanjang musim sejuk panjang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra memberi sedikit, dan menuntut banyak, tetapi manusia telah hidup baik di sini sejak sangat lama.",
+      "text_markdown": "Tundra memberi sedikit, dan menuntut banyak, tetapi manusia telah hidup baik di sini sejak sangat lama.",
+      "tts": {
+        "text": "Tundra memberi sedikit, dan menuntut banyak, tetapi manusia telah hidup baik di sini sejak sangat lama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lagu, cerita, dan bahasa mereka tumbuh bersama angin sejuk dan tanah terbuka luas.",
+      "text_markdown": "Lagu, cerita, dan bahasa mereka tumbuh bersama angin sejuk dan tanah terbuka luas.",
+      "tts": {
+        "text": "Lagu, cerita, dan bahasa mereka tumbuh bersama angin sejuk dan tanah terbuka luas.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biom Ini Hari Ini",
+      "text_markdown": "Biom Ini Hari Ini"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ialah salah satu biom paling liar dan lengang, tetapi ia berubah dengan pantas.",
+      "text_markdown": "Tundra ialah salah satu biom paling liar dan lengang, tetapi ia berubah dengan pantas.",
+      "tts": {
+        "text": "Tundra ialah salah satu biom paling liar dan lengang, tetapi ia berubah dengan pantas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daripada semua biom, tundra memanas paling cepat.",
+      "text_markdown": "Daripada semua biom, tundra memanas paling cepat.",
+      "tts": {
+        "text": "Daripada semua biom, tundra memanas paling cepat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utara jauh semakin panas tahun demi tahun.",
+      "text_markdown": "Utara jauh semakin panas tahun demi tahun.",
+      "tts": {
+        "text": "Utara jauh semakin panas tahun demi tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila udara memanas, tanah beku mula mencair.",
+      "text_markdown": "Apabila udara memanas, tanah beku mula mencair.",
+      "tts": {
+        "text": "Apabila udara memanas, tanah beku mula mencair.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila permafros mencair, tanah boleh mendap, retak, dan menjadi lumpur.",
+      "text_markdown": "Apabila permafros mencair, tanah boleh mendap, retak, dan menjadi lumpur.",
+      "tts": {
+        "text": "Apabila permafros mencair, tanah boleh mendap, retak, dan menjadi lumpur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalan, rumah, dan saluran paip yang dibina di tanah beku boleh bengkok dan patah.",
+      "text_markdown": "Jalan, rumah, dan saluran paip yang dibina di tanah beku boleh bengkok dan patah.",
+      "tts": {
+        "text": "Jalan, rumah, dan saluran paip yang dibina di tanah beku boleh bengkok dan patah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah yang mencair juga membebaskan gas yang terkurung dalam tanah beku sejak sangat lama.",
+      "text_markdown": "Tanah yang mencair juga membebaskan gas yang terkurung dalam tanah beku sejak sangat lama.",
+      "tts": {
+        "text": "Tanah yang mencair juga membebaskan gas yang terkurung dalam tanah beku sejak sangat lama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gas ini naik ke udara dan boleh menjadikan seluruh Bumi sedikit lebih panas lagi.",
+      "text_markdown": "Gas ini naik ke udara dan boleh menjadikan seluruh Bumi sedikit lebih panas lagi.",
+      "tts": {
+        "text": "Gas ini naik ke udara dan boleh menjadikan seluruh Bumi sedikit lebih panas lagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila tundra memanas, pokok renek dan pokok kecil perlahan-lahan merebak ke utara ke dalamnya.",
+      "text_markdown": "Apabila tundra memanas, pokok renek dan pokok kecil perlahan-lahan merebak ke utara ke dalamnya.",
+      "tts": {
+        "text": "Apabila tundra memanas, pokok renek dan pokok kecil perlahan lahan merebak ke utara ke dalamnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah haiwan dari selatan yang lebih panas turut bergerak ke utara.",
+      "text_markdown": "Sesetengah haiwan dari selatan yang lebih panas turut bergerak ke utara.",
+      "tts": {
+        "text": "Sesetengah haiwan dari selatan yang lebih panas turut bergerak ke utara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manusia juga datang ke tundra mencari minyak, gas, dan logam dalam tanah.",
+      "text_markdown": "Manusia juga datang ke tundra mencari minyak, gas, dan logam dalam tanah.",
+      "tts": {
+        "text": "Manusia juga datang ke tundra mencari minyak, gas, dan logam dalam tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalan dan mesin mereka boleh meninggalkan kesan di tanah yang pulih sangat perlahan dalam sejuk.",
+      "text_markdown": "Jalan dan mesin mereka boleh meninggalkan kesan di tanah yang pulih sangat perlahan dalam sejuk.",
+      "tts": {
+        "text": "Jalan dan mesin mereka boleh meninggalkan kesan di tanah yang pulih sangat perlahan dalam sejuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ramai orang dan kumpulan hari ini berusaha menjaga tundra.",
+      "text_markdown": "Ramai orang dan kumpulan hari ini berusaha menjaga tundra.",
+      "tts": {
+        "text": "Ramai orang dan kumpulan hari ini berusaha menjaga tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka menyediakan taman besar tempat karibu dan burung masih boleh menjelajah.",
+      "text_markdown": "Mereka menyediakan taman besar tempat karibu dan burung masih boleh menjelajah.",
+      "tts": {
+        "text": "Mereka menyediakan taman besar tempat karibu dan burung masih boleh menjelajah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka bekerjasama dengan penduduk yang telah tinggal di sini selama banyak generasi untuk melindungi tanah.",
+      "text_markdown": "Mereka bekerjasama dengan penduduk yang telah tinggal di sini selama banyak generasi untuk melindungi tanah.",
+      "tts": {
+        "text": "Mereka bekerjasama dengan penduduk yang telah tinggal di sini selama banyak generasi untuk melindungi tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengkaji tundra untuk memahami bagaimana ia berubah dan cara mengekalkannya sihat.",
+      "text_markdown": "Mereka mengkaji tundra untuk memahami bagaimana ia berubah dan cara mengekalkannya sihat.",
+      "tts": {
+        "text": "Mereka mengkaji tundra untuk memahami bagaimana ia berubah dan cara mengekalkannya sihat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra rapuh dan lambat pulih, dan ia menyimpan gedung karbon beku yang amat besar.",
+      "text_markdown": "Tundra rapuh dan lambat pulih, dan ia menyimpan gedung karbon beku yang amat besar.",
+      "tts": {
+        "text": "Tundra rapuh dan lambat pulih, dan ia menyimpan gedung karbon beku yang amat besar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia berbaloi untuk kita jaga.",
+      "text_markdown": "Ia berbaloi untuk kita jaga.",
+      "tts": {
+        "text": "Ia berbaloi untuk kita jaga.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Penutup",
+      "text_markdown": "Penutup"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah tundra.",
+      "text_markdown": "Itulah tundra.",
+      "tts": {
+        "text": "Itulah tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah sejuk, lapang, tanpa pokok, dengan tanah beku, tumbuhan rendah, dan langit cerah luas di puncak dunia.",
+      "text_markdown": "Tanah sejuk, lapang, tanpa pokok, dengan tanah beku, tumbuhan rendah, dan langit cerah luas di puncak dunia.",
+      "tts": {
+        "text": "Tanah sejuk, lapang, tanpa pokok, dengan tanah beku, tumbuhan rendah, dan langit cerah luas di puncak dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika anda pernah berdiri di sana, berdiam diri sebentar.",
+      "text_markdown": "Jika anda pernah berdiri di sana, berdiam diri sebentar.",
+      "tts": {
+        "text": "Jika anda pernah berdiri di sana, berdiam diri sebentar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rasakan angin sejuk bergerak merentasi tanah lapang.",
+      "text_markdown": "Rasakan angin sejuk bergerak merentasi tanah lapang.",
+      "tts": {
+        "text": "Rasakan angin sejuk bergerak merentasi tanah lapang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pandang ke bawah pada bunga kecil dan lumut lembut di bawah kaki anda.",
+      "text_markdown": "Pandang ke bawah pada bunga kecil dan lumut lembut di bawah kaki anda.",
+      "tts": {
+        "text": "Pandang ke bawah pada bunga kecil dan lumut lembut di bawah kaki anda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pandang ke atas pada langit yang luas dan lengang.",
+      "text_markdown": "Pandang ke atas pada langit yang luas dan lengang.",
+      "tts": {
+        "text": "Pandang ke atas pada langit yang luas dan lengang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anda akan merasai jantung biom yang tenang dan sabar berdegup di sekeliling anda.",
+      "text_markdown": "Anda akan merasai jantung biom yang tenang dan sabar berdegup di sekeliling anda.",
+      "tts": {
+        "text": "Anda akan merasai jantung biom yang tenang dan sabar berdegup di sekeliling anda.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

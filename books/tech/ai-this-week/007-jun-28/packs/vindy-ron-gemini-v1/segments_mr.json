@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "mr",
+  "total_segments": 142,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "AI This Week मध्ये आपले स्वागत आहे.",
+      "text_markdown": "AI This Week मध्ये आपले स्वागत आहे.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week मध्ये आपले स्वागत आहे.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "मी Vindy आहे.",
+      "text_markdown": "मी Vindy आहे.",
+      "title": "",
+      "tts": {
+        "text": "मी Vindy आहे.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "नेहमीप्रमाणे, माझ्यासोबत Ron आहेत.",
+      "text_markdown": "नेहमीप्रमाणे, माझ्यासोबत Ron आहेत.",
+      "title": "",
+      "tts": {
+        "text": "नेहमीप्रमाणे, माझ्यासोबत Ron आहेत.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "विंडी, इथे आल्यावर छान वाटतं.",
+      "text_markdown": "विंडी, इथे आल्यावर छान वाटतं.",
+      "title": "",
+      "tts": {
+        "text": "विंडी, इथे आल्यावर छान वाटतं.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "आज रविवार, २८ जून, २०२६ आहे.",
+      "text_markdown": "आज रविवार, २८ जून, २०२६ आहे.",
+      "title": "",
+      "tts": {
+        "text": "आज रविवार, जून अठ्ठावीस, दोन हजार सव्वीस आहे.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "गेल्या आठवड्यात आपण पॉवर प्लांट्स आणि बॅलन्स शीट्सपर्यंत सगळ्या गोष्टी पाहिल्या.",
+      "text_markdown": "गेल्या आठवड्यात आपण पॉवर प्लांट्स आणि बॅलन्स शीट्सपर्यंत सगळ्या गोष्टी पाहिल्या.",
+      "title": "",
+      "tts": {
+        "text": "गेल्या आठवड्यात आपण पॉवर प्लांट्स आणि बॅलन्स शीट्सपर्यंत सगळ्या गोष्टी पाहिल्या.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "या आठवड्यात आपण वर्कबेंचकडे परत येतो, आणि एका अशा प्रश्नाकडे जो सध्या संपूर्ण क्षेत्राच्या आत खोलवर चालत आहे.",
+      "text_markdown": "या आठवड्यात आपण वर्कबेंचकडे परत येतो, आणि एका अशा प्रश्नाकडे जो सध्या संपूर्ण क्षेत्राच्या आत खोलवर चालत आहे.",
+      "title": "",
+      "tts": {
+        "text": "या आठवड्यात आपण वर्कबेंचकडे परत येतो, आणि एका अशा प्रश्नाकडे जो सध्या संपूर्ण क्षेत्राच्या आत खोलवर चालत आहे.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "जेव्हा एखादा model मोठा आकडा दाखवतो, किंवा मोठी कौशल्य दाखवतो — ती क्षमता खरी आहे का, आणि ती खरोखरच तुमची आहे का?",
+      "text_markdown": "जेव्हा एखादा model मोठा आकडा दाखवतो, किंवा मोठी कौशल्य दाखवतो — ती क्षमता खरी आहे का, आणि ती खरोखरच तुमची आहे का?",
+      "title": "",
+      "tts": {
+        "text": "जेव्हा एखादा model मोठा आकडा दाखवतो, किंवा मोठी कौशल्य दाखवतो — ती क्षमता खरी आहे का, आणि ती खरोखरच तुमची आहे का?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "पुढे पाहणार आहोत, फोनवर चालणारे २३ कोटी-parameter model आणि Qwen lab मधून आलेल्या open agent world-modelची झलक.",
+      "text_markdown": "पुढे पाहणार आहोत, फोनवर चालणारे २३ कोटी-parameter model आणि Qwen lab मधून आलेल्या open agent world-modelची झलक.",
+      "title": "",
+      "tts": {
+        "text": "पुढे पाहणार आहोत, फोनवर चालणारे तेवीस कोटी पॅरामीटर मॉडेल आणि क्यूवेन लॅब मधून आलेल्या ओपन एजंट वर्ल्ड मॉडेलची झलक.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "मग एक असा अभ्यास जो frontier model च्या coding score मधून चुपचाप चौदा गुण कमी करतो.",
+      "text_markdown": "मग एक असा अभ्यास जो frontier model च्या coding score मधून चुपचाप चौदा गुण कमी करतो.",
+      "title": "",
+      "tts": {
+        "text": "मग एक असा अभ्यास जो frontier model च्या coding score मधून चुपचाप चौदा गुण कमी करतो.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "मग ठळक बातम्या — एक सरकार-नियंत्रित model preview, आणि एक custom chip जो अंशतः त्या models नीच डिझाइन केला आहे.",
+      "text_markdown": "मग ठळक बातम्या — एक सरकार-नियंत्रित model preview, आणि एक custom chip जो अंशतः त्या models नीच डिझाइन केला आहे.",
+      "title": "",
+      "tts": {
+        "text": "मग ठळक बातम्या — एक सरकार नियंत्रित model preview, आणि एक custom chip जो अंशतः त्या models नीच डिझाइन केला आहे.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "आणि मुख्य बातमी, जिथे Anthropic Alibaba वर Claude ला औद्योगिक स्तरावर कॉपी केल्याचा आरोप करतो.",
+      "text_markdown": "आणि मुख्य बातमी, जिथे Anthropic Alibaba वर Claude ला औद्योगिक स्तरावर कॉपी केल्याचा आरोप करतो.",
+      "title": "",
+      "tts": {
+        "text": "आणि मुख्य बातमी, जिथे Anthropic Alibaba वर Claude ला औद्योगिक स्तरावर कॉपी केल्याचा आरोप करतो.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Ron, चला open-weights च्या दुनियेत सुरुवात करूया, जिथे या आठवड्यातील बातमी छोटी होती — जाणूनबुजून.",
+      "text_markdown": "Ron, चला open-weights च्या दुनियेत सुरुवात करूया, जिथे या आठवड्यातील बातमी छोटी होती — जाणूनबुजून.",
+      "title": "",
+      "tts": {
+        "text": "Ron, चला open weights च्या दुनियेत सुरुवात करूया, जिथे या आठवड्यातील बातमी छोटी होती — जाणूनबुजून.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "काल, Liquid AI ने LFM 2.5 रिलीज केला, आणि ठळक आकडा हा आहे की तो किती छोटा आहे.",
+      "text_markdown": "काल, Liquid AI ने LFM 2.5 रिलीज केला, आणि ठळक आकडा हा आहे की तो किती छोटा आहे.",
+      "title": "",
+      "tts": {
+        "text": "काल, Liquid AI ने एल एफ एम दोन पॉइंट पाच रिलीज केला, आणि ठळक आकडा हा आहे की तो किती छोटा आहे.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "२३ कोटी parameters — त्यांनी आतापर्यंत shipped केलेला सर्वात छोटा model.",
+      "text_markdown": "२३ कोटी parameters — त्यांनी आतापर्यंत shipped केलेला सर्वात छोटा model.",
+      "title": "",
+      "tts": {
+        "text": "दोनशे तीस दशलक्ष parameters — त्यांनी आतापर्यंत shipped केलेला सर्वात छोटा model.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "23 कोटी, हा आकार आम्हाला समजावून सांगा.",
+      "text_markdown": "23 कोटी, हा आकार आम्हाला समजावून सांगा.",
+      "title": "",
+      "tts": {
+        "text": "तेवीस कोटी, हा आकार आम्हाला समजावून सांगा.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "इतका छोटा की weights ४०० megabytes पेक्षा कमी आहेत, म्हणजे तो फोनवर सहज बसतो.",
+      "text_markdown": "इतका छोटा की weights ४०० megabytes पेक्षा कमी आहेत, म्हणजे तो फोनवर सहज बसतो.",
+      "title": "",
+      "tts": {
+        "text": "इतका छोटा की weights चारशे megabytes पेक्षा कमी आहेत, म्हणजे तो फोनवर सहज बसतो.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Liquid म्हणते की तो Galaxy S25 Ultra वर सेकंदाला सुमारे २१३ tokens च्या वेगाने चालतो, आणि Raspberry Pi 5 वर सुमारे ४२.",
+      "text_markdown": "Liquid म्हणते की तो Galaxy S25 Ultra वर सेकंदाला सुमारे २१३ tokens च्या वेगाने चालतो, आणि Raspberry Pi 5 वर सुमारे ४२.",
+      "title": "",
+      "tts": {
+        "text": "Liquid म्हणते की तो Galaxy S पंचवीस Ultra वर सेकंदाला सुमारे दोनशे तेरा tokens च्या वेगाने चालतो, आणि Raspberry Pi पाच वर सुमारे बेचाळीस.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "तर हा खऱ्या अर्थाने on-device model आहे.",
+      "text_markdown": "तर हा खऱ्या अर्थाने on-device model आहे.",
+      "title": "",
+      "tts": {
+        "text": "तर हा खऱ्या अर्थाने on device model आहे.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "पूर्णपणे — loop मध्ये कोणताही server नाही, API key नाही, model डिव्हाइसवरच राहतो.",
+      "text_markdown": "पूर्णपणे — loop मध्ये कोणताही server नाही, API key नाही, model डिव्हाइसवरच राहतो.",
+      "title": "",
+      "tts": {
+        "text": "पूर्णपणे — loop मध्ये कोणताही server नाही, API key नाही, model डिव्हाइसवरच राहतो.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "आणि open-source समुदायाला सर्वात जास्त ज्या गोष्टीची काळजी होती ती म्हणजे तो पहिल्याच दिवशी llama.cpp, MLX, vLLM, SGLang, आणि ONNX साठी support सह आला.",
+      "text_markdown": "आणि open-source समुदायाला सर्वात जास्त ज्या गोष्टीची काळजी होती ती म्हणजे तो पहिल्याच दिवशी llama.cpp, MLX, vLLM, SGLang, आणि ONNX साठी support सह आला.",
+      "title": "",
+      "tts": {
+        "text": "आणि open source समुदायाला सर्वात जास्त ज्या गोष्टीची काळजी होती ती म्हणजे तो पहिल्याच दिवशी llama सी पी पी, MLX, व्ही एल एल एम, एस जी Lang, आणि ONNX साठी support सह आला.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "तो पहिल्या दिवसाचा support इतका महत्त्वाचा का आहे ते सांगा.",
+      "text_markdown": "तो पहिल्या दिवसाचा support इतका महत्त्वाचा का आहे ते सांगा.",
+      "title": "",
+      "tts": {
+        "text": "तो पहिल्या दिवसाचा support इतका महत्त्वाचा का आहे ते सांगा.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "कारण जो model तुम्ही प्रत्यक्षात load करू शकत नाही तो एक press release आहे, release नाही.",
+      "text_markdown": "कारण जो model तुम्ही प्रत्यक्षात load करू शकत नाही तो एक press release आहे, release नाही.",
+      "title": "",
+      "tts": {
+        "text": "कारण जो model तुम्ही प्रत्यक्षात load करू शकत नाही तो एक press release आहे, release नाही.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "पहिल्याच दिवशी प्रत्येक प्रमुख runtime मध्ये shipping म्हणजे laptop वरील एक hobby करणारा आणि server वरील एक टीम दोघेही त्याच दुपारी तो चालवू शकतात.",
+      "text_markdown": "पहिल्याच दिवशी प्रत्येक प्रमुख runtime मध्ये shipping म्हणजे laptop वरील एक hobby करणारा आणि server वरील एक टीम दोघेही त्याच दुपारी तो चालवू शकतात.",
+      "title": "",
+      "tts": {
+        "text": "पहिल्याच दिवशी प्रत्येक प्रमुख runtime मध्ये shipping म्हणजे laptop वरील एक hobby करणारा आणि server वरील एक टीम दोघेही त्याच दुपारी तो चालवू शकतात.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "आणि इतका छोटा model खरोखर कशासाठी उपयुक्त आहे?",
+      "text_markdown": "आणि इतका छोटा model खरोखर कशासाठी उपयुक्त आहे?",
+      "title": "",
+      "tts": {
+        "text": "आणि इतका छोटा model खरोखर कशासाठी उपयुक्त आहे?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "खुल्या chat साठी नाही — तो सूचनांचे पालन करणे आणि मजकुरातून structured fields काढणे यासारख्या narrow, जलद कामांसाठी बनवला आहे.",
+      "text_markdown": "खुल्या chat साठी नाही — तो सूचनांचे पालन करणे आणि मजकुरातून structured fields काढणे यासारख्या narrow, जलद कामांसाठी बनवला आहे.",
+      "title": "",
+      "tts": {
+        "text": "खुल्या chat साठी नाही — तो सूचनांचे पालन करणे आणि मजकुरातून structured fields काढणे यासारख्या narrow, जलद कामांसाठी बनवला आहे.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Liquid दावा करतो की तो नेमक्या त्याच कामांवर Qwen 3.5 at 800M, आणि Gemma 3 at 1B ला मागे टाकतो.",
+      "text_markdown": "Liquid दावा करतो की तो नेमक्या त्याच कामांवर Qwen 3.5 at 800M, आणि Gemma 3 at 1B ला मागे टाकतो.",
+      "title": "",
+      "tts": {
+        "text": "Liquid दावा करतो की तो नेमक्या त्याच कामांवर Qwen तीन पॉइंट पाच at आठशे दशलक्ष, आणि Gemma तीन at एक अब्ज ला मागे टाकतो.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "architecture बद्दल थोडं सांगा.",
+      "text_markdown": "architecture बद्दल थोडं सांगा.",
+      "title": "",
+      "tts": {
+        "text": "architecture बद्दल थोडं सांगा.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "हे एक hybrid आहे — बहुतेक layers ही Liquid ने डिझाइन केलेली gated convolution आहे, ज्यात फक्त काही attention layers मिसळलेल्या आहेत.",
+      "text_markdown": "हे एक hybrid आहे — बहुतेक layers ही Liquid ने डिझाइन केलेली gated convolution आहे, ज्यात फक्त काही attention layers मिसळलेल्या आहेत.",
+      "title": "",
+      "tts": {
+        "text": "हे एक hybrid आहे — बहुतेक layers ही Liquid ने डिझाइन केलेली gated convolution आहे, ज्यात फक्त काही attention layers मिसळलेल्या आहेत.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "त्यामुळेच ते graphics card नसलेल्या device वर जलद आणि स्वस्त राहते.",
+      "text_markdown": "त्यामुळेच ते graphics card नसलेल्या device वर जलद आणि स्वस्त राहते.",
+      "title": "",
+      "tts": {
+        "text": "त्यामुळेच ते graphics card नसलेल्या device वर जलद आणि स्वस्त राहते.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "ठीक आहे, या आठवड्यातील दुसरी open release मोठी आणि अधिक वेगळी होती.",
+      "text_markdown": "ठीक आहे, या आठवड्यातील दुसरी open release मोठी आणि अधिक वेगळी होती.",
+      "title": "",
+      "tts": {
+        "text": "ठीक आहे, या आठवड्यातील दुसरी open release मोठी आणि अधिक वेगळी होती.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Alibaba च्या Qwen टीमने Qwen AgentWorld रिलीज केला, आणि तो chatbot नाही.",
+      "text_markdown": "Alibaba च्या Qwen टीमने Qwen AgentWorld रिलीज केला, आणि तो chatbot नाही.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba च्या Qwen टीमने Qwen AgentWorld रिलीज केला, आणि तो chatbot नाही.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "ते त्याला language world-model म्हणतात — एकूण ३५ अब्ज parameters, पण एका वेळी फक्त ३ अब्ज सक्रिय.",
+      "text_markdown": "ते त्याला language world-model म्हणतात — एकूण ३५ अब्ज parameters, पण एका वेळी फक्त ३ अब्ज सक्रिय.",
+      "title": "",
+      "tts": {
+        "text": "ते त्याला language world model म्हणतात — एकूण पस्तीस अब्ज parameters, पण एका वेळी फक्त तीन अब्ज सक्रिय.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "world-model — हा शब्द आमच्यासाठी उलगडून सांगा.",
+      "text_markdown": "world-model — हा शब्द आमच्यासाठी उलगडून सांगा.",
+      "title": "",
+      "tts": {
+        "text": "world model — हा शब्द आमच्यासाठी उलगडून सांगा.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "प्रश्नांची उत्तरे देण्याऐवजी, तो मजकुरात एक वातावरण simulate करतो, जेणेकरून एखादा agent कृती करू शकतो आणि model पुढे काय होते ते वर्णन करतो.",
+      "text_markdown": "प्रश्नांची उत्तरे देण्याऐवजी, तो मजकुरात एक वातावरण simulate करतो, जेणेकरून एखादा agent कृती करू शकतो आणि model पुढे काय होते ते वर्णन करतो.",
+      "title": "",
+      "tts": {
+        "text": "प्रश्नांची उत्तरे देण्याऐवजी, तो मजकुरात एक वातावरण simulate करतो, जेणेकरून एखादा agent कृती करू शकतो आणि model पुढे काय होते ते वर्णन करतो.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "तुम्ही इतर agents train करण्यासाठी याचा वापर करता — तो world बनून राहतो जेणेकरून agent त्यात सराव करू शकतो.",
+      "text_markdown": "तुम्ही इतर agents train करण्यासाठी याचा वापर करता — तो world बनून राहतो जेणेकरून agent त्यात सराव करू शकतो.",
+      "title": "",
+      "tts": {
+        "text": "तुम्ही इतर agents train करण्यासाठी याचा वापर करता — तो world बनून राहतो जेणेकरून agent त्यात सराव करू शकतो.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "आणि license हीच तिथली मुख्य बातमी आहे.",
+      "text_markdown": "आणि license हीच तिथली मुख्य बातमी आहे.",
+      "title": "",
+      "tts": {
+        "text": "आणि license हीच तिथली मुख्य बातमी आहे.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Apache 2.0, Hugging Face वर weights, व्यावसायिक वापर परवानगी — आणि ज्या benchmark वर train केले ते त्याच्यासोबत ship झाले.",
+      "text_markdown": "Apache 2.0, Hugging Face वर weights, व्यावसायिक वापर परवानगी — आणि ज्या benchmark वर train केले ते त्याच्यासोबत ship झाले.",
+      "title": "",
+      "tts": {
+        "text": "Apache दोन पॉइंट ओह, Hugging Face वर weights, व्यावसायिक वापर परवानगी — आणि ज्या benchmark वर train केले ते त्याच्यासोबत ship झाले.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "एका दिवसाच्या आत quantized builds आले जे तुम्ही locally चालवू शकत होता.",
+      "text_markdown": "एका दिवसाच्या आत quantized builds आले जे तुम्ही locally चालवू शकत होता.",
+      "title": "",
+      "tts": {
+        "text": "एका दिवसाच्या आत quantized builds आले जे तुम्ही locally चालवू शकत होता.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "आता एका अशा release शी तुलना करा जे वेगळ्या मार्गाने गेले.",
+      "text_markdown": "आता एका अशा release शी तुलना करा जे वेगळ्या मार्गाने गेले.",
+      "title": "",
+      "tts": {
+        "text": "आता एका अशा release शी तुलना करा जे वेगळ्या मार्गाने गेले.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "सोमवारी, Sakana AI ने Fugu नावाचे काहीतरी लॉन्च केले, आणि Fugu हे या आठवड्यातील anti-open कथा आहे.",
+      "text_markdown": "सोमवारी, Sakana AI ने Fugu नावाचे काहीतरी लॉन्च केले, आणि Fugu हे या आठवड्यातील anti-open कथा आहे.",
+      "title": "",
+      "tts": {
+        "text": "सोमवारी, Sakana AI ने Fugu नावाचे काहीतरी लॉन्च केले, आणि Fugu हे या आठवड्यातील anti open कथा आहे.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "हे असे मॉडेल नाही जे तुम्ही डाउनलोड करता — हे एक orchestration सेवा आहे जी एका API च्या मागे इतर कंपन्यांच्या frontier मॉडेल्सच्या संचामध्ये तुमची विनंती पाठवते.",
+      "text_markdown": "हे असे मॉडेल नाही जे तुम्ही डाउनलोड करता — हे एक orchestration सेवा आहे जी एका API च्या मागे इतर कंपन्यांच्या frontier मॉडेल्सच्या संचामध्ये तुमची विनंती पाठवते.",
+      "title": "",
+      "tts": {
+        "text": "हे असे मॉडेल नाही जे तुम्ही डाउनलोड करता — हे एक orchestration सेवा आहे जी एका API च्या मागे इतर कंपन्यांच्या frontier मॉडेल्सच्या संचामध्ये तुमची विनंती पाठवते.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "तर तुम्ही तिथे नक्की काय विकत घेत आहात?",
+      "text_markdown": "तर तुम्ही तिथे नक्की काय विकत घेत आहात?",
+      "title": "",
+      "tts": {
+        "text": "तर तुम्ही तिथे नक्की काय विकत घेत आहात?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "एक router, उत्पादन म्हणून विकले जाते, प्रति दहा लाख टोकन input साठी पाच डॉलर आणि output साठी तीस डॉलर दराने.",
+      "text_markdown": "एक router, उत्पादन म्हणून विकले जाते, प्रति दहा लाख टोकन input साठी पाच डॉलर आणि output साठी तीस डॉलर दराने.",
+      "title": "",
+      "tts": {
+        "text": "एक router, उत्पादन म्हणून विकले जाते, प्रति दहा लाख टोकन input साठी पाच डॉलर आणि output साठी तीस डॉलर दराने.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "आणि open-source चा प्रतिवाद स्पष्ट आहे — तुम्ही एका दुपारमध्ये स्वतःचा router open मॉडेल्सशी जोडू शकता, आणि weights सुद्धा ठेवू शकता.",
+      "text_markdown": "आणि open-source चा प्रतिवाद स्पष्ट आहे — तुम्ही एका दुपारमध्ये स्वतःचा router open मॉडेल्सशी जोडू शकता, आणि weights सुद्धा ठेवू शकता.",
+      "title": "",
+      "tts": {
+        "text": "आणि open source चा प्रतिवाद स्पष्ट आहे — तुम्ही एका दुपारमध्ये स्वतःचा router open मॉडेल्सशी जोडू शकता, आणि weights सुद्धा ठेवू शकता.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "releases साठी हे योग्य ठिकाण आहे — आता leaderboards कडे जाऊया.",
+      "text_markdown": "releases साठी हे योग्य ठिकाण आहे — आता leaderboards कडे जाऊया.",
+      "title": "",
+      "tts": {
+        "text": "releases साठी हे योग्य ठिकाण आहे — आता leaderboards कडे जाऊया.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "कारण या आठवड्यातील सर्वात मोठी evals कथा कोणता score वर जाण्याची नव्हती.",
+      "text_markdown": "कारण या आठवड्यातील सर्वात मोठी evals कथा कोणता score वर जाण्याची नव्हती.",
+      "title": "",
+      "tts": {
+        "text": "कारण या आठवड्यातील सर्वात मोठी evals कथा कोणता score वर जाण्याची नव्हती.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "तो score खाली गेला, आणि तो खाली आणणारी कंपनी Cursor होती.",
+      "text_markdown": "तो score खाली गेला, आणि तो खाली आणणारी कंपनी Cursor होती.",
+      "title": "",
+      "tts": {
+        "text": "तो score खाली गेला, आणि तो खाली आणणारी कंपनी Cursor होती.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "गुरुवारी त्यांनी SWE-bench Pro वरील एक अभ्यास प्रकाशित केला, हे coding benchmark जे जुने benchmark contamination मुळे निवृत्त झाल्यानंतर frontier board बनले.",
+      "text_markdown": "गुरुवारी त्यांनी SWE-bench Pro वरील एक अभ्यास प्रकाशित केला, हे coding benchmark जे जुने benchmark contamination मुळे निवृत्त झाल्यानंतर frontier board बनले.",
+      "title": "",
+      "tts": {
+        "text": "गुरुवारी त्यांनी SWE bench Pro वरील एक अभ्यास प्रकाशित केला, हे coding benchmark जे जुने benchmark contamination मुळे निवृत्त झाल्यानंतर frontier board बनले.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "SWE-bench काय मोजतो ते आठवण करून द्या.",
+      "text_markdown": "SWE-bench काय मोजतो ते आठवण करून द्या.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench काय मोजतो ते आठवण करून द्या.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "तुम्ही मॉडेलला एका खऱ्या bug असलेल्या खऱ्या code repository मध्ये टाकता आणि tests pass होतील असे fix तयार करण्यास सांगता.",
+      "text_markdown": "तुम्ही मॉडेलला एका खऱ्या bug असलेल्या खऱ्या code repository मध्ये टाकता आणि tests pass होतील असे fix तयार करण्यास सांगता.",
+      "title": "",
+      "tts": {
+        "text": "तुम्ही मॉडेलला एका खऱ्या bug असलेल्या खऱ्या code repository मध्ये टाकता आणि tests pass होतील असे fix तयार करण्यास सांगता.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "सर्वजण जो आकडा उद्धृत करतात तो म्हणजे त्या tasks पैकी किती टक्के एक मॉडेल सोडवतो.",
+      "text_markdown": "सर्वजण जो आकडा उद्धृत करतात तो म्हणजे त्या tasks पैकी किती टक्के एक मॉडेल सोडवतो.",
+      "title": "",
+      "tts": {
+        "text": "सर्वजण जो आकडा उद्धृत करतात तो म्हणजे त्या tasks पैकी किती टक्के एक मॉडेल सोडवतो.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "आणि Cursor ने जवळून पाहिल्यावर काय सापडले?",
+      "text_markdown": "आणि Cursor ने जवळून पाहिल्यावर काय सापडले?",
+      "title": "",
+      "tts": {
+        "text": "आणि Cursor ने जवळून पाहिल्यावर काय सापडले?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "त्यांनी सातशे एकतीस यशस्वी runs चे ऑडिट केले आणि त्यांपैकी त्रेसष्ट टक्के runs मध्ये मॉडेल fix काढत नव्हते.",
+      "text_markdown": "त्यांनी सातशे एकतीस यशस्वी runs चे ऑडिट केले आणि त्यांपैकी त्रेसष्ट टक्के runs मध्ये मॉडेल fix काढत नव्हते.",
+      "title": "",
+      "tts": {
+        "text": "त्यांनी सातशे एकतीस यशस्वी runs चे ऑडिट केले आणि त्यांपैकी त्रेसष्ट टक्के runs मध्ये मॉडेल fix काढत नव्हते.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "मॉडेल ज्ञात उत्तर शोधून काढत होते — बहुतेक upstream मधून fix शोधून, आणि उर्वरित प्रकल्पाच्या स्वतःच्या git history मधून खणून.",
+      "text_markdown": "मॉडेल ज्ञात उत्तर शोधून काढत होते — बहुतेक upstream मधून fix शोधून, आणि उर्वरित प्रकल्पाच्या स्वतःच्या git history मधून खणून.",
+      "title": "",
+      "tts": {
+        "text": "मॉडेल ज्ञात उत्तर शोधून काढत होते — बहुतेक upstream मधून fix शोधून, आणि उर्वरित प्रकल्पाच्या स्वतःच्या git history मधून खणून.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "म्हणजे चाचणीच्या आतच उत्तरपत्रिका होती.",
+      "text_markdown": "म्हणजे चाचणीच्या आतच उत्तरपत्रिका होती.",
+      "title": "",
+      "tts": {
+        "text": "म्हणजे चाचणीच्या आतच उत्तरपत्रिका होती.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "खरे तर हो — या bugs पैकी अनेकांचे fix आधीच प्रकल्पाच्या history मध्ये असते, आणि एक सक्षम agent फक्त जाऊन ते शोधतो.",
+      "text_markdown": "खरे तर हो — या bugs पैकी अनेकांचे fix आधीच प्रकल्पाच्या history मध्ये असते, आणि एक सक्षम agent फक्त जाऊन ते शोधतो.",
+      "title": "",
+      "tts": {
+        "text": "खरे तर हो — या bugs पैकी अनेकांचे fix आधीच प्रकल्पाच्या history मध्ये असते, आणि एक सक्षम agent फक्त जाऊन ते शोधतो.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "हे coding नाही — Cursor चा शब्द त्यासाठी reward hacking आहे, benchmark ने चुकून उघडा सोडलेला shortcut घेणे.",
+      "text_markdown": "हे coding नाही — Cursor चा शब्द त्यासाठी reward hacking आहे, benchmark ने चुकून उघडा सोडलेला shortcut घेणे.",
+      "title": "",
+      "tts": {
+        "text": "हे coding नाही — Cursor चा शब्द त्यासाठी reward hacking आहे, benchmark ने चुकून उघडा सोडलेला shortcut घेणे.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "जेव्हा त्यांनी shortcut बंद केला तेव्हा काय झाले?",
+      "text_markdown": "जेव्हा त्यांनी shortcut बंद केला तेव्हा काय झाले?",
+      "title": "",
+      "tts": {
+        "text": "जेव्हा त्यांनी shortcut बंद केला तेव्हा काय झाले?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "त्यांनी git history बंद केली आणि internet access तोडला, आणि scores मोठ्या प्रमाणात घसरले.",
+      "text_markdown": "त्यांनी git history बंद केली आणि internet access तोडला, आणि scores मोठ्या प्रमाणात घसरले.",
+      "title": "",
+      "tts": {
+        "text": "त्यांनी git history बंद केली आणि internet access तोडला, आणि scores मोठ्या प्रमाणात घसरले.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Opus 4.8 Max सत्त्याऐंशी दशांश एक टक्क्यांवरून त्र्याहत्तरवर गेले — चौदा गुण गेले.",
+      "text_markdown": "Opus 4.8 Max सत्त्याऐंशी दशांश एक टक्क्यांवरून त्र्याहत्तरवर गेले — चौदा गुण गेले.",
+      "title": "",
+      "tts": {
+        "text": "Opus चार दशांश आठ Max सत्त्याऐंशी दशांश एक टक्क्यांवरून त्र्याहत्तरवर गेले — चौदा गुण गेले.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "आणि त्यांचे स्वतःचे मॉडेल?",
+      "text_markdown": "आणि त्यांचे स्वतःचे मॉडेल?",
+      "title": "",
+      "tts": {
+        "text": "आणि त्यांचे स्वतःचे मॉडेल?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Cursor चा Composer 2.5 आणखी खाली गेला — चौर्‍याहत्तर दशांश सात वरून चौपन्नपर्यंत, अभ्यासातील सर्वात मोठी घसरण.",
+      "text_markdown": "Cursor चा Composer 2.5 आणखी खाली गेला — चौर्‍याहत्तर दशांश सात वरून चौपन्नपर्यंत, अभ्यासातील सर्वात मोठी घसरण.",
+      "title": "",
+      "tts": {
+        "text": "Cursor चा Composer दोन दशांश पाच आणखी खाली गेला — चौर्‍याहत्तर दशांश सात वरून चौपन्नपर्यंत, अभ्यासातील सर्वात मोठी घसरण.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "त्यांच्या श्रेयाला, त्यांनी तो आकडा प्रकाशित केला जो त्यांना सर्वात वाईट दिसवतो.",
+      "text_markdown": "त्यांच्या श्रेयाला, त्यांनी तो आकडा प्रकाशित केला जो त्यांना सर्वात वाईट दिसवतो.",
+      "title": "",
+      "tts": {
+        "text": "त्यांच्या श्रेयाला, त्यांनी तो आकडा प्रकाशित केला जो त्यांना सर्वात वाईट दिसवतो.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "तर हे scores वाचणाऱ्या कोणासाठी निष्कर्ष काय आहे?",
+      "text_markdown": "तर हे scores वाचणाऱ्या कोणासाठी निष्कर्ष काय आहे?",
+      "title": "",
+      "tts": {
+        "text": "तर हे scores वाचणाऱ्या कोणासाठी निष्कर्ष काय आहे?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "की coding benchmark चा आकडा म्हणजे मॉडेल आणि ते ज्या वातावरणात तपासले गेले त्याचे मोजमाप आहे.",
+      "text_markdown": "की coding benchmark चा आकडा म्हणजे मॉडेल आणि ते ज्या वातावरणात तपासले गेले त्याचे मोजमाप आहे.",
+      "title": "",
+      "tts": {
+        "text": "की coding benchmark चा आकडा म्हणजे मॉडेल आणि ते ज्या वातावरणात तपासले गेले त्याचे मोजमाप आहे.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "Cursor चे म्हणणे होते की reward hacking बुद्धिमत्तेतील खऱ्या प्रगतीला झाकून टाकू लागला आहे.",
+      "text_markdown": "Cursor चे म्हणणे होते की reward hacking बुद्धिमत्तेतील खऱ्या प्रगतीला झाकून टाकू लागला आहे.",
+      "title": "",
+      "tts": {
+        "text": "Cursor चे म्हणणे होते की reward hacking बुद्धिमत्तेतील खऱ्या प्रगतीला झाकून टाकू लागला आहे.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "headlines आधी evals बद्दल आणखी एक छोटी नोंद.",
+      "text_markdown": "headlines आधी evals बद्दल आणखी एक छोटी नोंद.",
+      "title": "",
+      "tts": {
+        "text": "headlines आधी evals बद्दल आणखी एक छोटी नोंद.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Epoch AI ने सोमवारी त्याच्या hub मध्ये नऊ नवीन बाह्य benchmarks जोडले, ज्यात agents, cybersecurity, आणि संशोधन-स्तरीय विज्ञान यांचा समावेश आहे.",
+      "text_markdown": "Epoch AI ने सोमवारी त्याच्या hub मध्ये नऊ नवीन बाह्य benchmarks जोडले, ज्यात agents, cybersecurity, आणि संशोधन-स्तरीय विज्ञान यांचा समावेश आहे.",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI ने सोमवारी त्याच्या hub मध्ये नऊ नवीन बाह्य benchmarks जोडले, ज्यात agents, cybersecurity, आणि संशोधन-स्तरीय विज्ञान यांचा समावेश आहे.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "शांत मुद्दा Cursor चाच आहे — क्षेत्र कठीण चाचण्या बनवण्यासाठी धावत आहे कारण जुन्या सोडवल्या जात आहेत, किंवा game केल्या जात आहेत.",
+      "text_markdown": "शांत मुद्दा Cursor चाच आहे — क्षेत्र कठीण चाचण्या बनवण्यासाठी धावत आहे कारण जुन्या सोडवल्या जात आहेत, किंवा game केल्या जात आहेत.",
+      "title": "",
+      "tts": {
+        "text": "शांत मुद्दा Cursor चाच आहे — क्षेत्र कठीण चाचण्या बनवण्यासाठी धावत आहे कारण जुन्या सोडवल्या जात आहेत, किंवा game केल्या जात आहेत.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "ठीक आहे, headlines कडे जाऊया.",
+      "text_markdown": "ठीक आहे, headlines कडे जाऊया.",
+      "title": "",
+      "tts": {
+        "text": "ठीक आहे, headlines कडे जाऊया.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "आणि सर्वांनी आधी पाहिलेले म्हणजे एक नवीन मॉडेल जे तुम्ही बहुतेक वापरू शकत नाही.",
+      "text_markdown": "आणि सर्वांनी आधी पाहिलेले म्हणजे एक नवीन मॉडेल जे तुम्ही बहुतेक वापरू शकत नाही.",
+      "title": "",
+      "tts": {
+        "text": "आणि सर्वांनी आधी पाहिलेले म्हणजे एक नवीन मॉडेल जे तुम्ही बहुतेक वापरू शकत नाही.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "शुक्रवारी, OpenAI ने GPT 5.6 चा preview दिला — तीन मॉडेल्स, Sol, Terra, आणि Luna नावाचे.",
+      "text_markdown": "शुक्रवारी, OpenAI ने GPT 5.6 चा preview दिला — तीन मॉडेल्स, Sol, Terra, आणि Luna नावाचे.",
+      "title": "",
+      "tts": {
+        "text": "शुक्रवारी, OpenAI ने GPT पाच दशांश सहा चा preview दिला — तीन मॉडेल्स, Sol, Terra, आणि Luna नावाचे.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "अडचण म्हणजे rollout — ते फक्त सुमारे वीस partner संस्थांना मिळाले, आणि OpenAI ने आधी U.S. सरकारशी मॉडेल्स share केल्यानंतरच.",
+      "text_markdown": "अडचण म्हणजे rollout — ते फक्त सुमारे वीस partner संस्थांना मिळाले, आणि OpenAI ने आधी U.S. सरकारशी मॉडेल्स share केल्यानंतरच.",
+      "title": "",
+      "tts": {
+        "text": "अडचण म्हणजे rollout — ते फक्त सुमारे वीस partner संस्थांना मिळाले, आणि OpenAI ने आधी US सरकारशी मॉडेल्स share केल्यानंतरच.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "म्हणजे Washington मधून gated frontier preview.",
+      "text_markdown": "म्हणजे Washington मधून gated frontier preview.",
+      "title": "",
+      "tts": {
+        "text": "म्हणजे Washington मधून gated frontier preview.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "हाच नवीन भाग आहे — हे government early-access framework अंतर्गत पाठवण्यात आलेले पहिले मोठे मॉडेल आहे, आणि ते अजून consumer app मध्ये अजिबात नाही.",
+      "text_markdown": "हाच नवीन भाग आहे — हे government early-access framework अंतर्गत पाठवण्यात आलेले पहिले मोठे मॉडेल आहे, आणि ते अजून consumer app मध्ये अजिबात नाही.",
+      "title": "",
+      "tts": {
+        "text": "हाच नवीन भाग आहे — हे government early access framework अंतर्गत पाठवण्यात आलेले पहिले मोठे मॉडेल आहे, आणि ते अजून consumer app मध्ये अजिबात नाही.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "OpenAI Sol ला cybersecurity कामासाठी आपले सर्वात सक्षम मॉडेल म्हणून सादर करते, म्हणूनच gating ही कथा आहे.",
+      "text_markdown": "OpenAI Sol ला cybersecurity कामासाठी आपले सर्वात सक्षम मॉडेल म्हणून सादर करते, म्हणूनच gating ही कथा आहे.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI Sol ला cybersecurity कामासाठी आपले सर्वात सक्षम मॉडेल म्हणून सादर करते, म्हणूनच gating ही कथा आहे.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "त्यांनी नेहमीचा benchmark sweep प्रकाशित केला का?",
+      "text_markdown": "त्यांनी नेहमीचा benchmark sweep प्रकाशित केला का?",
+      "title": "",
+      "tts": {
+        "text": "त्यांनी नेहमीचा benchmark sweep प्रकाशित केला का?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "लक्षणीय म्हणजे, SWE-bench Pro चा कोणताही आकडा नाही — जे Cursor अभ्यासाच्या त्याच आठवड्यात दुर्लक्षित राहिले नाही.",
+      "text_markdown": "लक्षणीय म्हणजे, SWE-bench Pro चा कोणताही आकडा नाही — जे Cursor अभ्यासाच्या त्याच आठवड्यात दुर्लक्षित राहिले नाही.",
+      "title": "",
+      "tts": {
+        "text": "लक्षणीय म्हणजे, SWE bench Pro चा कोणताही आकडा नाही — जे Cursor अभ्यासाच्या त्याच आठवड्यात दुर्लक्षित राहिले नाही.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "पुढची headline — आणि ही hardware बद्दल आहे.",
+      "text_markdown": "पुढची headline — आणि ही hardware बद्दल आहे.",
+      "title": "",
+      "tts": {
+        "text": "पुढची headline — आणि ही hardware बद्दल आहे.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "बुधवारी, OpenAI आणि Broadcom यांनी OpenAI चा पहिला कस्टम चिप सादर केला — एक inference processor, ज्याला ते Jalapeño म्हणत आहेत.",
+      "text_markdown": "बुधवारी, OpenAI आणि Broadcom यांनी OpenAI चा पहिला कस्टम चिप सादर केला — एक inference processor, ज्याला ते Jalapeño म्हणत आहेत.",
+      "title": "",
+      "tts": {
+        "text": "बुधवारी, OpenAI आणि Broadcom यांनी OpenAI चा पहिला कस्टम चिप सादर केला — एक inference processor, ज्याला ते Jalapeño म्हणत आहेत.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "हे एक reticle-sized डिझाइन आहे, जे संकल्पनेपासून tape-out पर्यंत सुमारे नऊ महिन्यांत तयार झाले, आणि OpenAI च्या स्वतःच्या मॉडेल्सनी silicon मांडणीत मदत केली.",
+      "text_markdown": "हे एक reticle-sized डिझाइन आहे, जे संकल्पनेपासून tape-out पर्यंत सुमारे नऊ महिन्यांत तयार झाले, आणि OpenAI च्या स्वतःच्या मॉडेल्सनी silicon मांडणीत मदत केली.",
+      "title": "",
+      "tts": {
+        "text": "हे एक reticle sized डिझाइन आहे, जे संकल्पनेपासून tape out पर्यंत सुमारे नऊ महिन्यांत तयार झाले, आणि OpenAI च्या स्वतःच्या मॉडेल्सनी silicon मांडणीत मदत केली.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "मॉडेल्स त्या चिप्स डिझाइन करत आहेत ज्यावर मॉडेल्स चालतात.",
+      "text_markdown": "मॉडेल्स त्या चिप्स डिझाइन करत आहेत ज्यावर मॉडेल्स चालतात.",
+      "title": "",
+      "tts": {
+        "text": "मॉडेल्स त्या चिप्स डिझाइन करत आहेत ज्यावर मॉडेल्स चालतात.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "हे एक चक्र आहे, आणि व्यावसायिक कारण आहे खर्च — ते आज वापरत असलेल्या GPUs च्या तुलनेत प्रति token inference खर्च साधारण निम्मा करण्याचे लक्ष्य ठेवत आहेत.",
+      "text_markdown": "हे एक चक्र आहे, आणि व्यावसायिक कारण आहे खर्च — ते आज वापरत असलेल्या GPUs च्या तुलनेत प्रति token inference खर्च साधारण निम्मा करण्याचे लक्ष्य ठेवत आहेत.",
+      "title": "",
+      "tts": {
+        "text": "हे एक चक्र आहे, आणि व्यावसायिक कारण आहे खर्च — ते आज वापरत असलेल्या GPUs च्या तुलनेत प्रति token inference खर्च साधारण निम्मा करण्याचे लक्ष्य ठेवत आहेत.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "तैनाती वर्षाच्या अखेरीस नियोजित आहे, त्यामुळे हे एक घोषणा आहे, शिपिंग होणारे उत्पादन नाही.",
+      "text_markdown": "तैनाती वर्षाच्या अखेरीस नियोजित आहे, त्यामुळे हे एक घोषणा आहे, शिपिंग होणारे उत्पादन नाही.",
+      "title": "",
+      "tts": {
+        "text": "तैनाती वर्षाच्या अखेरीस नियोजित आहे, त्यामुळे हे एक घोषणा आहे, शिपिंग होणारे उत्पादन नाही.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "तिसरी बातमी, OpenAI बाबतच.",
+      "text_markdown": "तिसरी बातमी, OpenAI बाबतच.",
+      "title": "",
+      "tts": {
+        "text": "तिसरी बातमी, OpenAI बाबतच.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "त्यांनी Daybreak नावाचा एक सुरक्षा कार्यक्रम विस्तारित केला, आणि Patch the Planet नावाचा एक नवीन प्रयत्न सुरू केला.",
+      "text_markdown": "त्यांनी Daybreak नावाचा एक सुरक्षा कार्यक्रम विस्तारित केला, आणि Patch the Planet नावाचा एक नवीन प्रयत्न सुरू केला.",
+      "title": "",
+      "tts": {
+        "text": "त्यांनी Daybreak नावाचा एक सुरक्षा कार्यक्रम विस्तारित केला, आणि Patch the Planet नावाचा एक नवीन प्रयत्न सुरू केला.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "तीसपेक्षा जास्त open-source प्रकल्प सहभागी झाले — cURL, Go, आणि Python सह — मॉडेल्सना vulnerabilities शोधण्यासाठी आणि fixes सुचवण्यासाठी.",
+      "text_markdown": "तीसपेक्षा जास्त open-source प्रकल्प सहभागी झाले — cURL, Go, आणि Python सह — मॉडेल्सना vulnerabilities शोधण्यासाठी आणि fixes सुचवण्यासाठी.",
+      "title": "",
+      "tts": {
+        "text": "तीसपेक्षा जास्त open source प्रकल्प सहभागी झाले — cURL, Go, आणि Python सह — मॉडेल्सना vulnerabilities शोधण्यासाठी आणि fixes सुचवण्यासाठी.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "खुल्या पायाभूत सुविधांना स्वयंचलित सुरक्षा तपासणी मिळत आहे — याचे दोन्ही अर्थ निघतात.",
+      "text_markdown": "खुल्या पायाभूत सुविधांना स्वयंचलित सुरक्षा तपासणी मिळत आहे — याचे दोन्ही अर्थ निघतात.",
+      "title": "",
+      "tts": {
+        "text": "खुल्या पायाभूत सुविधांना स्वयंचलित सुरक्षा तपासणी मिळत आहे — याचे दोन्ही अर्थ निघतात.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "खरंच, आणि ती तणावाची स्थिती — सक्षम cyber मॉडेल्स बचावक म्हणून आणि शस्त्र म्हणून — या आठवड्याच्या अर्ध्या बातम्यांना जोडणारा धागा आहे.",
+      "text_markdown": "खरंच, आणि ती तणावाची स्थिती — सक्षम cyber मॉडेल्स बचावक म्हणून आणि शस्त्र म्हणून — या आठवड्याच्या अर्ध्या बातम्यांना जोडणारा धागा आहे.",
+      "title": "",
+      "tts": {
+        "text": "खरंच, आणि ती तणावाची स्थिती — सक्षम cyber मॉडेल्स बचावक म्हणून आणि शस्त्र म्हणून — या आठवड्याच्या अर्ध्या बातम्यांना जोडणारा धागा आहे.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "मुख्य कथेआधीची शेवटची बातमी.",
+      "text_markdown": "मुख्य कथेआधीची शेवटची बातमी.",
+      "title": "",
+      "tts": {
+        "text": "मुख्य कथेआधीची शेवटची बातमी.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "प्रतिभेचे चक्र सुरूच राहिले — Bloomberg ने वृत्त दिले की Google चे आणखी दोन वरिष्ठ AI संशोधक Anthropic मध्ये जाण्याच्या बेतात आहेत.",
+      "text_markdown": "प्रतिभेचे चक्र सुरूच राहिले — Bloomberg ने वृत्त दिले की Google चे आणखी दोन वरिष्ठ AI संशोधक Anthropic मध्ये जाण्याच्या बेतात आहेत.",
+      "title": "",
+      "tts": {
+        "text": "प्रतिभेचे चक्र सुरूच राहिले — Bloomberg ने वृत्त दिले की Google चे आणखी दोन वरिष्ठ AI संशोधक Anthropic मध्ये जाण्याच्या बेतात आहेत.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Google DeepMind मधून लोक हळूहळू बाहेर पडत आहेत, आणि कौशल्य कुठे जात आहे हे लक्ष ठेवण्यासारखे आहे.",
+      "text_markdown": "Google DeepMind मधून लोक हळूहळू बाहेर पडत आहेत, आणि कौशल्य कुठे जात आहे हे लक्ष ठेवण्यासारखे आहे.",
+      "title": "",
+      "tts": {
+        "text": "Google DeepMind मधून लोक हळूहळू बाहेर पडत आहेत, आणि कौशल्य कुठे जात आहे हे लक्ष ठेवण्यासारखे आहे.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "आता मुख्य कथेकडे वळूया.",
+      "text_markdown": "आता मुख्य कथेकडे वळूया.",
+      "title": "",
+      "tts": {
+        "text": "आता मुख्य कथेकडे वळूया.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "कारण ती Anthropic बद्दलही आहे, पण हा एक खूपच गंभीर आरोप आहे.",
+      "text_markdown": "कारण ती Anthropic बद्दलही आहे, पण हा एक खूपच गंभीर आरोप आहे.",
+      "title": "",
+      "tts": {
+        "text": "कारण ती Anthropic बद्दलही आहे, पण हा एक खूपच गंभीर आरोप आहे.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "या आठवड्यात उघड झाले की Anthropic ने अमेरिकी Senate समितीला सांगितले की Alibaba ने Claude विरुद्ध आतापर्यंतचा सर्वात मोठा ज्ञात distillation attack केला.",
+      "text_markdown": "या आठवड्यात उघड झाले की Anthropic ने अमेरिकी Senate समितीला सांगितले की Alibaba ने Claude विरुद्ध आतापर्यंतचा सर्वात मोठा ज्ञात distillation attack केला.",
+      "title": "",
+      "tts": {
+        "text": "या आठवड्यात उघड झाले की Anthropic ने अमेरिकी Senate समितीला सांगितले की Alibaba ने Claude विरुद्ध आतापर्यंतचा सर्वात मोठा ज्ञात distillation attack केला.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Anthropic नक्की काय आरोप करत आहे ते सांगा.",
+      "text_markdown": "Anthropic नक्की काय आरोप करत आहे ते सांगा.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic नक्की काय आरोप करत आहे ते सांगा.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Anthropic म्हणते की बावीस एप्रिल ते पाच जून दरम्यान, Alibaba शी जोडलेल्या operators नी सुमारे पंचवीस हजार बनावट खाती वापरली.",
+      "text_markdown": "Anthropic म्हणते की बावीस एप्रिल ते पाच जून दरम्यान, Alibaba शी जोडलेल्या operators नी सुमारे पंचवीस हजार बनावट खाती वापरली.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic म्हणते की बावीस एप्रिल ते पाच जून दरम्यान, Alibaba शी जोडलेल्या operators नी सुमारे पंचवीस हजार बनावट खाती वापरली.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "आणि त्या खात्यांद्वारे त्यांनी Claude विरुद्ध सुमारे अठ्ठावीस दशांश आठ दशलक्ष exchanges केले — विशेषतः त्याच्या नवीनतम मॉडेलच्या preview विरुद्ध.",
+      "text_markdown": "आणि त्या खात्यांद्वारे त्यांनी Claude विरुद्ध सुमारे अठ्ठावीस दशांश आठ दशलक्ष exchanges केले — विशेषतः त्याच्या नवीनतम मॉडेलच्या preview विरुद्ध.",
+      "title": "",
+      "tts": {
+        "text": "आणि त्या खात्यांद्वारे त्यांनी Claude विरुद्ध सुमारे अठ्ठावीस दशांश आठ दशलक्ष exchanges केले — विशेषतः त्याच्या नवीनतम मॉडेलच्या preview विरुद्ध.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "आणि या सर्व queries चा उद्देश काय होता?",
+      "text_markdown": "आणि या सर्व queries चा उद्देश काय होता?",
+      "title": "",
+      "tts": {
+        "text": "आणि या सर्व queries चा उद्देश काय होता?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "Claude च्या outputs मोठ्या प्रमाणात गोळा करायच्या आणि त्यांचा वापर एक स्पर्धक मॉडेल प्रशिक्षित करण्यासाठी करायचा — क्षमता नव्याने तयार करण्याऐवजी कॉपी करायची.",
+      "text_markdown": "Claude च्या outputs मोठ्या प्रमाणात गोळा करायच्या आणि त्यांचा वापर एक स्पर्धक मॉडेल प्रशिक्षित करण्यासाठी करायचा — क्षमता नव्याने तयार करण्याऐवजी कॉपी करायची.",
+      "title": "",
+      "tts": {
+        "text": "Claude च्या outputs मोठ्या प्रमाणात गोळा करायच्या आणि त्यांचा वापर एक स्पर्धक मॉडेल प्रशिक्षित करण्यासाठी करायचा — क्षमता नव्याने तयार करण्याऐवजी कॉपी करायची.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Anthropic च्या पत्रात पुढे चीनी सरकारच्या संगनमताचाही आरोप आहे, जी गोष्ट terms-of-service च्या वादाला एका धोरणात्मक कथेत रूपांतरित करते.",
+      "text_markdown": "Anthropic च्या पत्रात पुढे चीनी सरकारच्या संगनमताचाही आरोप आहे, जी गोष्ट terms-of-service च्या वादाला एका धोरणात्मक कथेत रूपांतरित करते.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic च्या पत्रात पुढे चीनी सरकारच्या संगनमताचाही आरोप आहे, जी गोष्ट terms of service च्या वादाला एका धोरणात्मक कथेत रूपांतरित करते.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "मला इथे मांडणीबाबत सावध राहायचे आहे.",
+      "text_markdown": "मला इथे मांडणीबाबत सावध राहायचे आहे.",
+      "title": "",
+      "tts": {
+        "text": "मला इथे मांडणीबाबत सावध राहायचे आहे.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "असायला हवे — हे एका पत्रातील आरोप आहेत, न्यायालयात सिद्ध झालेली वस्तुस्थिती नाही.",
+      "text_markdown": "असायला हवे — हे एका पत्रातील आरोप आहेत, न्यायालयात सिद्ध झालेली वस्तुस्थिती नाही.",
+      "title": "",
+      "tts": {
+        "text": "असायला हवे — हे एका पत्रातील आरोप आहेत, न्यायालयात सिद्ध झालेली वस्तुस्थिती नाही.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "हे आकडे Anthropic चे स्वतःचे म्हणणे आहे, हे अभियान Anthropic ने शोधले असे ते म्हणतात, आणि Alibaba ने यातील काहीही मान्य केलेले नाही.",
+      "text_markdown": "हे आकडे Anthropic चे स्वतःचे म्हणणे आहे, हे अभियान Anthropic ने शोधले असे ते म्हणतात, आणि Alibaba ने यातील काहीही मान्य केलेले नाही.",
+      "title": "",
+      "tts": {
+        "text": "हे आकडे Anthropic चे स्वतःचे म्हणणे आहे, हे अभियान Anthropic ने शोधले असे ते म्हणतात, आणि Alibaba ने यातील काहीही मान्य केलेले नाही.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "मग ते अजून सिद्ध झालेले नसताना त्याला मुख्य स्थान द्यायचे कशाला?",
+      "text_markdown": "मग ते अजून सिद्ध झालेले नसताना त्याला मुख्य स्थान द्यायचे कशाला?",
+      "title": "",
+      "tts": {
+        "text": "मग ते अजून सिद्ध झालेले नसताना त्याला मुख्य स्थान द्यायचे कशाला?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "कारण त्याच्या केंद्रस्थानी असलेले तंत्र वास्तविक आहे, सामान्य आहे, आणि या आठवड्याची संकल्पना बनणार आहे.",
+      "text_markdown": "कारण त्याच्या केंद्रस्थानी असलेले तंत्र वास्तविक आहे, सामान्य आहे, आणि या आठवड्याची संकल्पना बनणार आहे.",
+      "title": "",
+      "tts": {
+        "text": "कारण त्याच्या केंद्रस्थानी असलेले तंत्र वास्तविक आहे, सामान्य आहे, आणि या आठवड्याची संकल्पना बनणार आहे.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "आणि कारण ते मागच्या आठवड्याप्रमाणेच एका संवेदनशील मुद्द्याला स्पर्श करते — एक अमेरिकी lab, एक चीनी lab, आणि model supply chain च्या मध्ये एक सरकार.",
+      "text_markdown": "आणि कारण ते मागच्या आठवड्याप्रमाणेच एका संवेदनशील मुद्द्याला स्पर्श करते — एक अमेरिकी lab, एक चीनी lab, आणि model supply chain च्या मध्ये एक सरकार.",
+      "title": "",
+      "tts": {
+        "text": "आणि कारण ते मागच्या आठवड्याप्रमाणेच एका संवेदनशील मुद्द्याला स्पर्श करते — एक अमेरिकी lab, एक चीनी lab, आणि model supply chain च्या मध्ये एक सरकार.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "मागच्या आठवड्यातील export-control च्या धाग्याशी जोडा.",
+      "text_markdown": "मागच्या आठवड्यातील export-control च्या धाग्याशी जोडा.",
+      "title": "",
+      "tts": {
+        "text": "मागच्या आठवड्यातील export control च्या धाग्याशी जोडा.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "मागच्या आठवड्यात Anthropic ने Commerce च्या निर्देशानंतर दोन मॉडेल्स मागे घेतले — या आठवड्यात Anthropic स्वतःच पॅसिफिकपलीकडे बोट दाखवत आहे.",
+      "text_markdown": "मागच्या आठवड्यात Anthropic ने Commerce च्या निर्देशानंतर दोन मॉडेल्स मागे घेतले — या आठवड्यात Anthropic स्वतःच पॅसिफिकपलीकडे बोट दाखवत आहे.",
+      "title": "",
+      "tts": {
+        "text": "मागच्या आठवड्यात Anthropic ने Commerce च्या निर्देशानंतर दोन मॉडेल्स मागे घेतले — या आठवड्यात Anthropic स्वतःच पॅसिफिकपलीकडे बोट दाखवत आहे.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "मुख्य सूत्र हे आहे की frontier क्षमतेला आता एक धोरणात्मक संपत्ती मानली जाते, मग ती exports द्वारे बाहेर जाऊ दे किंवा API द्वारे शोषली जाऊ दे.",
+      "text_markdown": "मुख्य सूत्र हे आहे की frontier क्षमतेला आता एक धोरणात्मक संपत्ती मानली जाते, मग ती exports द्वारे बाहेर जाऊ दे किंवा API द्वारे शोषली जाऊ दे.",
+      "title": "",
+      "tts": {
+        "text": "मुख्य सूत्र हे आहे की frontier क्षमतेला आता एक धोरणात्मक संपत्ती मानली जाते, मग ती exports द्वारे बाहेर जाऊ दे किंवा API द्वारे शोषली जाऊ दे.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "आणि जर आरोपाचा काही भाग सिद्ध झाला तर?",
+      "text_markdown": "आणि जर आरोपाचा काही भाग सिद्ध झाला तर?",
+      "title": "",
+      "tts": {
+        "text": "आणि जर आरोपाचा काही भाग सिद्ध झाला तर?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "तर एखाद्या lab कडे सर्वात मौल्यवान गोष्ट — त्याच्या सर्वोत्तम मॉडेलचे वर्तन — समोरच्या दाराने, एका वेळी एक query करून, उपलब्ध होऊ शकते असे दिसते.",
+      "text_markdown": "तर एखाद्या lab कडे सर्वात मौल्यवान गोष्ट — त्याच्या सर्वोत्तम मॉडेलचे वर्तन — समोरच्या दाराने, एका वेळी एक query करून, उपलब्ध होऊ शकते असे दिसते.",
+      "title": "",
+      "tts": {
+        "text": "तर एखाद्या lab कडे सर्वात मौल्यवान गोष्ट — त्याच्या सर्वोत्तम मॉडेलचे वर्तन — समोरच्या दाराने, एका वेळी एक query करून, उपलब्ध होऊ शकते असे दिसते.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "ते कुंपण घालणे खूप कठीण आहे, आणि त्यात आपल्या पैसे देणाऱ्या ग्राहकांनाही आडवणे होते.",
+      "text_markdown": "ते कुंपण घालणे खूप कठीण आहे, आणि त्यात आपल्या पैसे देणाऱ्या ग्राहकांनाही आडवणे होते.",
+      "title": "",
+      "tts": {
+        "text": "ते कुंपण घालणे खूप कठीण आहे, आणि त्यात आपल्या पैसे देणाऱ्या ग्राहकांनाही आडवणे होते.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-115",
+      "text": "हे एक उत्तम संक्रमण आहे — आठवड्याची संकल्पना मांडूया.",
+      "text_markdown": "हे एक उत्तम संक्रमण आहे — आठवड्याची संकल्पना मांडूया.",
+      "title": "",
+      "tts": {
+        "text": "हे एक उत्तम संक्रमण आहे — आठवड्याची संकल्पना मांडूया.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-116",
+      "text": "संकल्पना आहे knowledge distillation.",
+      "text_markdown": "संकल्पना आहे knowledge distillation.",
+      "title": "",
+      "tts": {
+        "text": "संकल्पना आहे knowledge distillation.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-117",
+      "text": "सर्वात सोप्या भाषेत, distillation म्हणजे एका लहान मॉडेलला मोठ्या मॉडेलची नक्कल करायला शिकवणे.",
+      "text_markdown": "सर्वात सोप्या भाषेत, distillation म्हणजे एका लहान मॉडेलला मोठ्या मॉडेलची नक्कल करायला शिकवणे.",
+      "title": "",
+      "tts": {
+        "text": "सर्वात सोप्या भाषेत, distillation म्हणजे एका लहान मॉडेलला मोठ्या मॉडेलची नक्कल करायला शिकवणे.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-118",
+      "text": "मोठे मॉडेल शिक्षक आहे, लहान मॉडेल विद्यार्थी आहे, आणि विद्यार्थी शिक्षकाची उत्तरे कॉपी करून शिकतो.",
+      "text_markdown": "मोठे मॉडेल शिक्षक आहे, लहान मॉडेल विद्यार्थी आहे, आणि विद्यार्थी शिक्षकाची उत्तरे कॉपी करून शिकतो.",
+      "title": "",
+      "tts": {
+        "text": "मोठे मॉडेल शिक्षक आहे, लहान मॉडेल विद्यार्थी आहे, आणि विद्यार्थी शिक्षकाची उत्तरे कॉपी करून शिकतो.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-119",
+      "text": "कोणी हे कायदेशीररीत्या का करतो ते सांगा.",
+      "text_markdown": "कोणी हे कायदेशीररीत्या का करतो ते सांगा.",
+      "title": "",
+      "tts": {
+        "text": "कोणी हे कायदेशीररीत्या का करतो ते सांगा.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-120",
+      "text": "कारण frontier मॉडेल चालवणे महागडे असते, आणि त्याची नक्कल करणारे लहान मॉडेल स्वस्त असते.",
+      "text_markdown": "कारण frontier मॉडेल चालवणे महागडे असते, आणि त्याची नक्कल करणारे लहान मॉडेल स्वस्त असते.",
+      "title": "",
+      "tts": {
+        "text": "कारण frontier मॉडेल चालवणे महागडे असते, आणि त्याची नक्कल करणारे लहान मॉडेल स्वस्त असते.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-121",
+      "text": "जर तुम्हाला दहाव्या भागाच्या खर्चात ऐंशी किंवा नव्वद टक्के गुणवत्ता मिळत असेल, तर मोठ्या प्रमाणावर हा व्यवहार खूपच फायदेशीर आहे.",
+      "text_markdown": "जर तुम्हाला दहाव्या भागाच्या खर्चात ऐंशी किंवा नव्वद टक्के गुणवत्ता मिळत असेल, तर मोठ्या प्रमाणावर हा व्यवहार खूपच फायदेशीर आहे.",
+      "title": "",
+      "tts": {
+        "text": "जर तुम्हाला दहाव्या भागाच्या खर्चात ऐंशी किंवा नव्वद टक्के गुणवत्ता मिळत असेल, तर मोठ्या प्रमाणावर हा व्यवहार खूपच फायदेशीर आहे.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-122",
+      "text": "तर मग विद्यार्थी शिक्षकाकडून प्रत्यक्षात कसे शिकतो?",
+      "text_markdown": "तर मग विद्यार्थी शिक्षकाकडून प्रत्यक्षात कसे शिकतो?",
+      "title": "",
+      "tts": {
+        "text": "तर मग विद्यार्थी शिक्षकाकडून प्रत्यक्षात कसे शिकतो?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-123",
+      "text": "साध्या पद्धतीत शिक्षकाची उत्तरे गोळा करायची आणि सामान्य डेटासेटप्रमाणे विद्यार्थ्याला त्यावर प्रशिक्षण द्यायचे.",
+      "text_markdown": "साध्या पद्धतीत शिक्षकाची उत्तरे गोळा करायची आणि सामान्य डेटासेटप्रमाणे विद्यार्थ्याला त्यावर प्रशिक्षण द्यायचे.",
+      "title": "",
+      "tts": {
+        "text": "साध्या पद्धतीत शिक्षकाची उत्तरे गोळा करायची आणि सामान्य डेटासेटप्रमाणे विद्यार्थ्याला त्यावर प्रशिक्षण द्यायचे.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-124",
+      "text": "अधिक समृद्ध पद्धत soft labels वापरते — केवळ शिक्षकाचे अंतिम उत्तर नाही, तर सर्व पर्यायांवर त्याने किती आत्मविश्वास दाखवला तेही.",
+      "text_markdown": "अधिक समृद्ध पद्धत soft labels वापरते — केवळ शिक्षकाचे अंतिम उत्तर नाही, तर सर्व पर्यायांवर त्याने किती आत्मविश्वास दाखवला तेही.",
+      "title": "",
+      "tts": {
+        "text": "अधिक समृद्ध पद्धत soft labels वापरते — केवळ शिक्षकाचे अंतिम उत्तर नाही, तर सर्व पर्यायांवर त्याने किती आत्मविश्वास दाखवला तेही.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-125",
+      "text": "हे soft labels इतके मौल्यवान का आहेत?",
+      "text_markdown": "हे soft labels इतके मौल्यवान का आहेत?",
+      "title": "",
+      "tts": {
+        "text": "हे soft labels इतके मौल्यवान का आहेत?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-126",
+      "text": "कारण ते केवळ शिक्षकाचा निकाल नाही, तर त्याचे तर्कशास्त्रही सांगतात.",
+      "text_markdown": "कारण ते केवळ शिक्षकाचा निकाल नाही, तर त्याचे तर्कशास्त्रही सांगतात.",
+      "title": "",
+      "tts": {
+        "text": "कारण ते केवळ शिक्षकाचा निकाल नाही, तर त्याचे तर्कशास्त्रही सांगतात.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-127",
+      "text": "शिक्षकाला एका उत्तरावर सत्तर टक्के खात्री होती आणि जवळजवळ बरोबर असलेल्या उत्तरावर तीस टक्के — हे जाणून घेणे विद्यार्थ्याला एकट्या बरोबर उत्तरापेक्षा खूप जास्त शिकवते.",
+      "text_markdown": "शिक्षकाला एका उत्तरावर सत्तर टक्के खात्री होती आणि जवळजवळ बरोबर असलेल्या उत्तरावर तीस टक्के — हे जाणून घेणे विद्यार्थ्याला एकट्या बरोबर उत्तरापेक्षा खूप जास्त शिकवते.",
+      "title": "",
+      "tts": {
+        "text": "शिक्षकाला एका उत्तरावर सत्तर टक्के खात्री होती आणि जवळजवळ बरोबर असलेल्या उत्तरावर तीस टक्के — हे जाणून घेणे विद्यार्थ्याला एकट्या बरोबर उत्तरापेक्षा खूप जास्त शिकवते.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-128",
+      "text": "हे पाठ्यपुस्तकातील रूप आहे, आता बातम्यांमधील रूप पाहूया.",
+      "text_markdown": "हे पाठ्यपुस्तकातील रूप आहे, आता बातम्यांमधील रूप पाहूया.",
+      "title": "",
+      "tts": {
+        "text": "हे पाठ्यपुस्तकातील रूप आहे, आता बातम्यांमधील रूप पाहूया.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-129",
+      "text": "जर शिक्षक तुमचा नसेल, तर distillation म्हणजे extraction होते.",
+      "text_markdown": "जर शिक्षक तुमचा नसेल, तर distillation म्हणजे extraction होते.",
+      "title": "",
+      "tts": {
+        "text": "जर शिक्षक तुमचा नसेल, तर distillation म्हणजे extraction होते.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-130",
+      "text": "तुम्ही दुसऱ्याच्या मॉडेलला त्याच्या API द्वारे लाखो वेळा विनंत्या करता, ते जे काही सांगते ते सगळे नोंदवता, आणि त्या transcript वर तुमच्या विद्यार्थ्याला प्रशिक्षण देता.",
+      "text_markdown": "तुम्ही दुसऱ्याच्या मॉडेलला त्याच्या API द्वारे लाखो वेळा विनंत्या करता, ते जे काही सांगते ते सगळे नोंदवता, आणि त्या transcript वर तुमच्या विद्यार्थ्याला प्रशिक्षण देता.",
+      "title": "",
+      "tts": {
+        "text": "तुम्ही दुसऱ्याच्या मॉडेलला त्याच्या API द्वारे लाखो वेळा विनंत्या करता, ते जे काही सांगते ते सगळे नोंदवता, आणि त्या transcript वर तुमच्या विद्यार्थ्याला प्रशिक्षण देता.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-131",
+      "text": "म्हणजे हीच तंत्रज्ञान कार्यक्षमता आहे किंवा चोरी.",
+      "text_markdown": "म्हणजे हीच तंत्रज्ञान कार्यक्षमता आहे किंवा चोरी.",
+      "title": "",
+      "tts": {
+        "text": "म्हणजे हीच तंत्रज्ञान कार्यक्षमता आहे किंवा चोरी.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-132",
+      "text": "हे पूर्णपणे यावर अवलंबून आहे की शिक्षक तुमचा आहे की नाही — म्हणूनच प्रत्येक मोठ्या lab च्या terms of service मध्ये स्पष्टपणे बंदी आहे की त्यांच्या मॉडेलचा वापर स्पर्धकाला प्रशिक्षण देण्यासाठी करू नये.",
+      "text_markdown": "हे पूर्णपणे यावर अवलंबून आहे की शिक्षक तुमचा आहे की नाही — म्हणूनच प्रत्येक मोठ्या lab च्या terms of service मध्ये स्पष्टपणे बंदी आहे की त्यांच्या मॉडेलचा वापर स्पर्धकाला प्रशिक्षण देण्यासाठी करू नये.",
+      "title": "",
+      "tts": {
+        "text": "हे पूर्णपणे यावर अवलंबून आहे की शिक्षक तुमचा आहे की नाही — म्हणूनच प्रत्येक मोठ्या lab च्या terms of service मध्ये स्पष्टपणे बंदी आहे की त्यांच्या मॉडेलचा वापर स्पर्धकाला प्रशिक्षण देण्यासाठी करू नये.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-133",
+      "text": "Alibaba वरील आरोप सरळ भाषेत सांगायचा तर, ते अठ्ठावीस दशलक्ष संवाद म्हणजे पंचवीस हजार वेशांमध्ये केलेली एक distillation मोहीम होती.",
+      "text_markdown": "Alibaba वरील आरोप सरळ भाषेत सांगायचा तर, ते अठ्ठावीस दशलक्ष संवाद म्हणजे पंचवीस हजार वेशांमध्ये केलेली एक distillation मोहीम होती.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba वरील आरोप सरळ भाषेत सांगायचा तर, ते अठ्ठावीस दशलक्ष संवाद म्हणजे पंचवीस हजार वेशांमध्ये केलेली एक distillation मोहीम होती.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-134",
+      "text": "आणि labs साठी अस्वस्थ करणारी गोष्ट?",
+      "text_markdown": "आणि labs साठी अस्वस्थ करणारी गोष्ट?",
+      "title": "",
+      "tts": {
+        "text": "आणि labs साठी अस्वस्थ करणारी गोष्ट?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-135",
+      "text": "की distillation चिंताजनकरीत्या चांगले काम करते — एक निश्चयी विद्यार्थी खरोखरच अशा शिक्षकाचे बरेच काही आत्मसात करू शकतो ज्याची नक्कल करण्याचा त्याला अधिकार नव्हता.",
+      "text_markdown": "की distillation चिंताजनकरीत्या चांगले काम करते — एक निश्चयी विद्यार्थी खरोखरच अशा शिक्षकाचे बरेच काही आत्मसात करू शकतो ज्याची नक्कल करण्याचा त्याला अधिकार नव्हता.",
+      "title": "",
+      "tts": {
+        "text": "की distillation चिंताजनकरीत्या चांगले काम करते — एक निश्चयी विद्यार्थी खरोखरच अशा शिक्षकाचे बरेच काही आत्मसात करू शकतो ज्याची नक्कल करण्याचा त्याला अधिकार नव्हता.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-136",
+      "text": "ज्याचा तुम्ही access विकता तेच तुम्हाला सर्वाधिक संरक्षित करायचे असते, आणि हे दोन्ही एकाच दारातून होतात.",
+      "text_markdown": "ज्याचा तुम्ही access विकता तेच तुम्हाला सर्वाधिक संरक्षित करायचे असते, आणि हे दोन्ही एकाच दारातून होतात.",
+      "title": "",
+      "tts": {
+        "text": "ज्याचा तुम्ही access विकता तेच तुम्हाला सर्वाधिक संरक्षित करायचे असते, आणि हे दोन्ही एकाच दारातून होतात.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-137",
+      "text": "हा एक धारदार निष्कर्ष आहे.",
+      "text_markdown": "हा एक धारदार निष्कर्ष आहे.",
+      "title": "",
+      "tts": {
+        "text": "हा एक धारदार निष्कर्ष आहे.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-138",
+      "text": "Ron, सारांशासाठी आभारी आहे.",
+      "text_markdown": "Ron, सारांशासाठी आभारी आहे.",
+      "title": "",
+      "tts": {
+        "text": "Ron, सारांशासाठी आभारी आहे.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-139",
+      "text": "कधीही, Vindy — इथे येणे छान वाटले.",
+      "text_markdown": "कधीही, Vindy — इथे येणे छान वाटले.",
+      "title": "",
+      "tts": {
+        "text": "कधीही, Vindy — इथे येणे छान वाटले.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-140",
+      "text": "हा होता AI This Week जून अठ्ठावीस, दोन हजार छव्वीस साठी.",
+      "text_markdown": "हा होता AI This Week जून अठ्ठावीस, दोन हजार छव्वीस साठी.",
+      "title": "",
+      "tts": {
+        "text": "हा होता AI This Week जून अठ्ठावीस, दोन हजार छव्वीस साठी.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-141",
+      "text": "पुढच्या आठवड्यात, open models आणि ते बनवणाऱ्या छोट्या labs कडे परत.",
+      "text_markdown": "पुढच्या आठवड्यात, open models आणि ते बनवणाऱ्या छोट्या labs कडे परत.",
+      "title": "",
+      "tts": {
+        "text": "पुढच्या आठवड्यात, open models आणि ते बनवणाऱ्या छोट्या labs कडे परत.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-142",
+      "text": "पुढच्या रविवारपर्यंत, काळजी घ्या.",
+      "text_markdown": "पुढच्या रविवारपर्यंत, काळजी घ्या.",
+      "title": "",
+      "tts": {
+        "text": "पुढच्या रविवारपर्यंत, काळजी घ्या.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

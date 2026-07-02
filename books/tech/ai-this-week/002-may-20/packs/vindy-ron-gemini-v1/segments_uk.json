@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "uk",
+  "total_segments": 167,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Ласкаво просимо до AI This Week.",
+      "text_markdown": "Ласкаво просимо до AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Ласкаво просимо до AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Мене звати Вінді.",
+      "text_markdown": "Мене звати Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Мене звати Вінді.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Зі мною, як завжди, Рон.",
+      "text_markdown": "Зі мною, як завжди, Рон.",
+      "title": "",
+      "tts": {
+        "text": "Зі мною, як завжди, Рон.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Радий бути тут, Вінді.",
+      "text_markdown": "Радий бути тут, Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Радий бути тут, Вінді.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Сьогодні середа, 20 травня 2026 року.",
+      "text_markdown": "Сьогодні середа, 20 травня 2026 року.",
+      "title": "",
+      "tts": {
+        "text": "Сьогодні середа, двадцяте травня дві тисячі двадцять шостого року.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "Це був насичений тиждень.",
+      "text_markdown": "Це був насичений тиждень.",
+      "title": "",
+      "tts": {
+        "text": "Це був насичений тиждень.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Google провів свою конференцію розробників, Папа завершив енцикліку про штучний інтелект, а світ відкритих ваг продовжував працювати, поки всі інші мали сцени.",
+      "text_markdown": "Google провів свою конференцію розробників, Папа завершив енцикліку про штучний інтелект, а світ відкритих ваг продовжував працювати, поки всі інші мали сцени.",
+      "title": "",
+      "tts": {
+        "text": "Google провів свою конференцію розробників, Папа завершив енцикліку про штучний інтелект, а світ відкритих ваг продовжував працювати, поки всі інші мали сцени.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "Далі — що рухалося у відкритих вагах цього тижня.",
+      "text_markdown": "Далі — що рухалося у відкритих вагах цього тижня.",
+      "title": "",
+      "tts": {
+        "text": "Далі — що рухалося у відкритих вагах цього тижня.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "Де зупинилися таблиці лідерів.",
+      "text_markdown": "Де зупинилися таблиці лідерів.",
+      "title": "",
+      "tts": {
+        "text": "Де зупинилися таблиці лідерів.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "Швидкий огляд заголовків від більших лабораторій.",
+      "text_markdown": "Швидкий огляд заголовків від більших лабораторій.",
+      "title": "",
+      "tts": {
+        "text": "Швидкий огляд заголовків від більших лабораторій.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "Наша головна історія — перша енцикліка Ватикану про штучний інтелект.",
+      "text_markdown": "Наша головна історія — перша енцикліка Ватикану про штучний інтелект.",
+      "title": "",
+      "tts": {
+        "text": "Наша головна історія — перша енцикліка Ватикану про штучний інтелект.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "І концепція тижня — квантування — як модель з 7 мільярдами параметрів поміщається у ваш телефон.",
+      "text_markdown": "І концепція тижня — квантування — як модель з 7 мільярдами параметрів поміщається у ваш телефон.",
+      "title": "",
+      "tts": {
+        "text": "І концепція тижня — квантування — як модель з сімома мільярдами параметрів поміщається у ваш телефон.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Роне, давайте почнемо з відкритих ваг.",
+      "text_markdown": "Роне, давайте почнемо з відкритих ваг.",
+      "title": "",
+      "tts": {
+        "text": "Роне, давайте почнемо з відкритих ваг.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "Що рухається в спільноті цього тижня?",
+      "text_markdown": "Що рухається в спільноті цього тижня?",
+      "title": "",
+      "tts": {
+        "text": "Що рухається в спільноті цього тижня?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Найбільша історія відкритих ваг зараз — це хто де тренується.",
+      "text_markdown": "Найбільша історія відкритих ваг зараз — це хто де тренується.",
+      "title": "",
+      "tts": {
+        "text": "Найбільша історія відкритих ваг зараз — це хто де тренується.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Два з найцікавіших нещодавніх відкритих релізів тренувалися на не-NVIDIA кремнії.",
+      "text_markdown": "Два з найцікавіших нещодавніх відкритих релізів тренувалися на не-NVIDIA кремнії.",
+      "title": "",
+      "tts": {
+        "text": "Два з найцікавіших нещодавніх відкритих релізів тренувалися на не NVIDIA кремнії.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "Розкажи нам докладніше.",
+      "text_markdown": "Розкажи нам докладніше.",
+      "title": "",
+      "tts": {
+        "text": "Розкажи нам докладніше.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Zhipu AI в Пекіні випустив сімейство GLM-5 раніше цього року — GLM-5 в лютому та оновлення під назвою GLM-5.1 в квітні.",
+      "text_markdown": "Zhipu AI в Пекіні випустив сімейство GLM-5 раніше цього року — GLM-5 в лютому та оновлення під назвою GLM-5.1 в квітні.",
+      "title": "",
+      "tts": {
+        "text": "Zhipu AI в Пекіні випустив сімейство GLM п'ять раніше цього року — GLM п'ять в лютому та оновлення під назвою GLM п'ять крапка один в квітні.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Вся сімейка GLM-5 була натренована приблизно на 100,000 чіпах Huawei Ascend 910B, використовуючи фреймворк MindSpore, з нулем GPU NVIDIA в циклі.",
+      "text_markdown": "Вся сімейка GLM-5 була натренована приблизно на 100,000 чіпах Huawei Ascend 910B, використовуючи фреймворк MindSpore, з нулем GPU NVIDIA в циклі.",
+      "title": "",
+      "tts": {
+        "text": "Вся сімейка GLM п'ять була натренована приблизно на ста тисячах чіпах Huawei Ascend дев'ятсот десять B, використовуючи фреймворк MindSpore, з нулем GPU NVIDIA в циклі.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "А Zyphra, американська лабораторія, випустила модель під назвою ZAYA1-8B раніше цього місяця, попередньо натреновану на кластері вузлів AMD MI300x, побудованому з IBM.",
+      "text_markdown": "А Zyphra, американська лабораторія, випустила модель під назвою ZAYA1-8B раніше цього місяця, попередньо натреновану на кластері вузлів AMD MI300x, побудованому з IBM.",
+      "title": "",
+      "tts": {
+        "text": "А Zyphra, американська лабораторія, випустила модель під назвою ZAYA один вісім B раніше цього місяця, попередньо натреновану на кластері вузлів AMD MI триста x, побудованому з IBM.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Чому кремній має значення?",
+      "text_markdown": "Чому кремній має значення?",
+      "title": "",
+      "tts": {
+        "text": "Чому кремній має значення?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "Дві причини.",
+      "text_markdown": "Дві причини.",
+      "title": "",
+      "tts": {
+        "text": "Дві причини.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "Перша — протягом останніх трьох років кожен серйозний фронтірний тренувальний запуск потребував NVIDIA H100 або H200.",
+      "text_markdown": "Перша — протягом останніх трьох років кожен серйозний фронтірний тренувальний запуск потребував NVIDIA H100 або H200.",
+      "title": "",
+      "tts": {
+        "text": "Перша, протягом останніх трьох років кожен серйозний фронтірний тренувальний запуск потребував NVIDIA ейч сто або ейч двісті.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "Друга — цей запас був вузьким місцем, і припущення було, що відкритий і китайський фронтір відставали на покоління через це.",
+      "text_markdown": "Друга — цей запас був вузьким місцем, і припущення було, що відкритий і китайський фронтір відставали на покоління через це.",
+      "title": "",
+      "tts": {
+        "text": "Друга — цей запас був вузьким місцем, і припущення було, що відкритий і китайський фронтір відставали на покоління через це.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Як тільки фронтірний клас запускається на Huawei Ascend або AMD, кожна інша відкрита лабораторія може скопіювати рецепт.",
+      "text_markdown": "Як тільки фронтірний клас запускається на Huawei Ascend або AMD, кожна інша відкрита лабораторія може скопіювати рецепт.",
+      "title": "",
+      "tts": {
+        "text": "Як тільки фронтірний клас запускається на Huawei Ascend або AMD, кожна інша відкрита лабораторія може скопіювати рецепт.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Ось що відбувається цього року.",
+      "text_markdown": "Ось що відбувається цього року.",
+      "title": "",
+      "tts": {
+        "text": "Ось що відбувається цього року.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Ще щось з відкритої сторони цього тижня?",
+      "text_markdown": "Ще щось з відкритої сторони цього тижня?",
+      "title": "",
+      "tts": {
+        "text": "Ще щось з відкритої сторони цього тижня?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "Так, три речі, які варто відзначити.",
+      "text_markdown": "Так, три речі, які варто відзначити.",
+      "title": "",
+      "tts": {
+        "text": "Так, три речі, які варто відзначити.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "Moonshot's Kimi K2.6, випущений ще в кінці квітня, досі в топ-рівні на OpenRouter за обсягом токенів — він очолив чарт у свій перший тиждень з 1.88 трильйонами обслужених токенів.",
+      "text_markdown": "Moonshot's Kimi K2.6, випущений ще в кінці квітня, досі в топ-рівні на OpenRouter за обсягом токенів — він очолив чарт у свій перший тиждень з 1.88 трильйонами обслужених токенів.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot's Kimi K два крапка шість, випущений ще в кінці квітня, досі в топ-рівні на OpenRouter за обсягом токенів — він очолив чарт у свій перший тиждень з один крапка вісімдесят вісім трільйонами обслужених токенів.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "Це був перший раз, коли китайська модель відкритих ваг випередила Claude Sonnet та DeepSeek на основному комерційному роутері.",
+      "text_markdown": "Це був перший раз, коли китайська модель відкритих ваг випередила Claude Sonnet та DeepSeek на основному комерційному роутері.",
+      "title": "",
+      "tts": {
+        "text": "Це був перший раз, коли китайська модель відкритих ваг випередила Claude Sonnet та DeepSeek на основному комерційному роутері.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "DeepSeek V4-Pro має 1.6 трильйона загальних параметрів з 49 мільярдами активних.",
+      "text_markdown": "DeepSeek V4-Pro має 1.6 трильйона загальних параметрів з 49 мільярдами активних.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V чотири Pro має один крапка шість трільйона загальних параметрів з сорока дев'ятьма мільярдами активних.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Їхній дешевший побратим, V4-Flash, має 284 мільярди загальних з 13 мільярдами активних.",
+      "text_markdown": "Їхній дешевший побратим, V4-Flash, має 284 мільярди загальних з 13 мільярдами активних.",
+      "title": "",
+      "tts": {
+        "text": "Їхній дешевший побратим, V чотири Flash, має двісті вісімдесят чотири мільярди загальних з тринадцятьма мільярдами активних.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "Обидва є відкритими вагами під ліцензією MIT.",
+      "text_markdown": "Обидва є відкритими вагами під ліцензією MIT.",
+      "title": "",
+      "tts": {
+        "text": "Обидва є відкритими вагами під ліцензією MIT.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Розкажи більше про ZAYA1-8B конкретно.",
+      "text_markdown": "Розкажи більше про ZAYA1-8B конкретно.",
+      "title": "",
+      "tts": {
+        "text": "Розкажи більше про ZAYA один вісім B конкретно.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Це невелика модель суміші експертів — 8.4 мільярда загальних параметрів, з лише близько 760 мільйонами активними на токен.",
+      "text_markdown": "Це невелика модель суміші експертів — 8.4 мільярда загальних параметрів, з лише близько 760 мільйонами активними на токен.",
+      "title": "",
+      "tts": {
+        "text": "Це невелика модель суміші експертів — вісім крапка чотири мільярда загальних параметрів, з лише близько сімсот шістдесятьма мільйонами активними на токен.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Ліцензія Apache 2.0, тому ви можете використовувати її комерційно.",
+      "text_markdown": "Ліцензія Apache 2.0, тому ви можете використовувати її комерційно.",
+      "title": "",
+      "tts": {
+        "text": "Ліцензія Apache два крапка нуль, тому ви можете використовувати її комерційно.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "Попередньо натренована на кластері приблизно з 1,024 вузлів AMD MI300x, без жодного залучення обладнання NVIDIA.",
+      "text_markdown": "Попередньо натренована на кластері приблизно з 1,024 вузлів AMD MI300x, без жодного залучення обладнання NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Попередньо натренована на кластері приблизно з однієї тисячі двадцяти чотирьох вузлів AMD MI триста x, без жодного залучення обладнання NVIDIA.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "Вона набирає 89.1 на AIME, бенчмарку математичної олімпіади, перемагаючи набагато більші моделі в математиці та програмуванні, працюючи з бюджетом менше 1 мільярда активних параметрів.",
+      "text_markdown": "Вона набирає 89.1 на AIME, бенчмарку математичної олімпіади, перемагаючи набагато більші моделі в математиці та програмуванні, працюючи з бюджетом менше 1 мільярда активних параметрів.",
+      "title": "",
+      "tts": {
+        "text": "Вона набирає вісімдесят дев'ять крапка один на AIME, бенчмарку математичної олімпіади, перемагаючи набагато більші моделі в математиці та програмуванні, працюючи з бюджетом менше одного мільярда активних параметрів.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Дві лабораторії відкритих ваг тренуються без NVIDIA протягом двох місяців.",
+      "text_markdown": "Дві лабораторії відкритих ваг тренуються без NVIDIA протягом двох місяців.",
+      "title": "",
+      "tts": {
+        "text": "Дві лабораторії відкритих ваг тренуються без NVIDIA протягом двох місяців.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "Не збіг.",
+      "text_markdown": "Не збіг.",
+      "title": "",
+      "tts": {
+        "text": "Не збіг.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Водопровід нарешті наздогнав — AMD ROCm і Huawei CANN стали придатними для використання в 2025 році, а 2026 — це рік, коли відкрита спільнота запускає справжні прикордонні обчислення на них.",
+      "text_markdown": "Водопровід нарешті наздогнав — AMD ROCm і Huawei CANN стали придатними для використання в 2025 році, а 2026 — це рік, коли відкрита спільнота запускає справжні прикордонні обчислення на них.",
+      "title": "",
+      "tts": {
+        "text": "Водопровід нарешті наздогнав — AMD ROCm і Huawei CANN стали придатними для використання в дві тисячі двадцять п'ятому році, а дві тисячі двадцять шостий — це рік, коли відкрита спільнота запускає справжні прикордонні обчислення на них.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "А що з інфраструктурною стороною?",
+      "text_markdown": "А що з інфраструктурною стороною?",
+      "title": "",
+      "tts": {
+        "text": "А що з інфраструктурною стороною?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "vLLM v0.21 вийшов у п'ятницю, 15 травня.",
+      "text_markdown": "vLLM v0.21 вийшов у п'ятницю, 15 травня.",
+      "title": "",
+      "tts": {
+        "text": "v L L M версія нуль крапка двадцять один вийшов у п'ятницю, п'ятнадцятого травня.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "vLLM — це відкритий стек обслуговування — те, що ви фактично запускаєте, коли хочете самостійно розміщувати модель.",
+      "text_markdown": "vLLM — це відкритий стек обслуговування — те, що ви фактично запускаєте, коли хочете самостійно розміщувати модель.",
+      "title": "",
+      "tts": {
+        "text": "v L L M — це відкритий стек обслуговування — те, що ви фактично запускаєте, коли хочете самостійно розміщувати модель.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Він обробляє пакетування, пейджинг і повторне використання KV кешу, і зараз це стандарт у продакшені для всіх, хто не використовує закритий API.",
+      "text_markdown": "Він обробляє пакетування, пейджинг і повторне використання KV кешу, і зараз це стандарт у продакшені для всіх, хто не використовує закритий API.",
+      "title": "",
+      "tts": {
+        "text": "Він обробляє пакетування, пейджинг і повторне використання KV кешу, і зараз це стандарт у продакшені для всіх, хто не використовує закритий API.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "Цей реліз додає розвантаження KV з гібридним алокатором пам'яті та новий backend уваги, налаштований для DeepSeek-R1 і Kimi K2.5 prefill на GPU Blackwell.",
+      "text_markdown": "Цей реліз додає розвантаження KV з гібридним алокатором пам'яті та новий backend уваги, налаштований для DeepSeek-R1 і Kimi K2.5 prefill на GPU Blackwell.",
+      "title": "",
+      "tts": {
+        "text": "Цей реліз додає розвантаження KV з гібридним алокатором пам'яті та новий backend уваги, налаштований для DeepSeek R один і Kimi K два крапка п'ять prefill на GPU Blackwell.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "Відкритий стек обслуговування продовжує постачати, поки великі лабораторії роблять основні доповіді.",
+      "text_markdown": "Відкритий стек обслуговування продовжує постачати, поки великі лабораторії роблять основні доповіді.",
+      "title": "",
+      "tts": {
+        "text": "Відкритий стек обслуговування продовжує постачати, поки великі лабораторії роблять основні доповіді.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "Добре, перейдімо до рейтингів.",
+      "text_markdown": "Добре, перейдімо до рейтингів.",
+      "title": "",
+      "tts": {
+        "text": "Добре, перейдімо до рейтингів.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "Роне, що утримується і що змінилося?",
+      "text_markdown": "Роне, що утримується і що змінилося?",
+      "title": "",
+      "tts": {
+        "text": "Роне, що утримується і що змінилося?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "Переважно утримується.",
+      "text_markdown": "Переважно утримується.",
+      "title": "",
+      "tts": {
+        "text": "Переважно утримується.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "Claude Opus 4.7 від Anthropic все ще номер один у рейтингу кодування LM Arena з Elo близько 1569.",
+      "text_markdown": "Claude Opus 4.7 від Anthropic все ще номер один у рейтингу кодування LM Arena з Elo близько 1569.",
+      "title": "",
+      "tts": {
+        "text": "Claude Opus чотири крапка сім від Anthropic все ще номер один у рейтингу кодування LM Arena з Elo близько тисяча п'ятсот шістдесят дев'ять.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "GPT-5.5 від OpenAI у режимі високого міркування займає сьоме місце в тому самому рейтингу.",
+      "text_markdown": "GPT-5.5 від OpenAI у режимі високого міркування займає сьоме місце в тому самому рейтингу.",
+      "title": "",
+      "tts": {
+        "text": "GPT п'ять крапка п'ять від OpenAI у режимі високого міркування займає сьоме місце в тому самому рейтингу.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "А в під-рейтингу кодування WebDev GPT-5.5 займає дев'яте місце.",
+      "text_markdown": "А в під-рейтингу кодування WebDev GPT-5.5 займає дев'яте місце.",
+      "title": "",
+      "tts": {
+        "text": "А в під-рейтингу кодування WebDev GPT п'ять крапка п'ять займає дев'яте місце.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "Де опиняється нова модель Google?",
+      "text_markdown": "Де опиняється нова модель Google?",
+      "title": "",
+      "tts": {
+        "text": "Де опиняється нова модель Google?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Gemini 3.5 Flash вийшов у вівторок на Google I/O, тому його ще немає в рейтингах.",
+      "text_markdown": "Gemini 3.5 Flash вийшов у вівторок на Google I/O, тому його ще немає в рейтингах.",
+      "title": "",
+      "tts": {
+        "text": "Gemini три крапка п'ять Flash вийшов у вівторок на Google I O, тому його ще немає в рейтингах.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Arena потребує кілька тисяч голосів віч-на-віч, перш ніж модель отримає стабільний Elo.",
+      "text_markdown": "Arena потребує кілька тисяч голосів віч-на-віч, перш ніж модель отримає стабільний Elo.",
+      "title": "",
+      "tts": {
+        "text": "Arena потребує кілька тисяч голосів віч на віч, перш ніж модель отримає стабільний Elo.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "Очікуйте, що Gemini 3.5 Flash з'явиться наступного тижня, а Gemini 3.5 Pro прибуде в червні.",
+      "text_markdown": "Очікуйте, що Gemini 3.5 Flash з'явиться наступного тижня, а Gemini 3.5 Pro прибуде в червні.",
+      "title": "",
+      "tts": {
+        "text": "Очікуйте, що Gemini три крапка п'ять Flash з'явиться наступного тижня, а Gemini три крапка п'ять Pro прибуде в червні.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "Щось щодо якості оцінювання?",
+      "text_markdown": "Щось щодо якості оцінювання?",
+      "title": "",
+      "tts": {
+        "text": "Щось щодо якості оцінювання?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "Так, відсилка до минулого тижня.",
+      "text_markdown": "Так, відсилка до минулого тижня.",
+      "title": "",
+      "tts": {
+        "text": "Так, відсилка до минулого тижня.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "SWE-bench Verified все ще виведений з експлуатації — бенчмарк кодування, на який посилався OpenAI, де більше половини складних завдань мали зламані тести.",
+      "text_markdown": "SWE-bench Verified все ще виведений з експлуатації — бенчмарк кодування, на який посилався OpenAI, де більше половини складних завдань мали зламані тести.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench Verified все ще виведений з експлуатації — бенчмарк кодування, на який посилався OpenAI, де більше половини складних завдань мали зламані тести.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Рейтинги, за якими варто стежити зараз, — це SWE-bench Pro і проект під назвою SWE-rebench.",
+      "text_markdown": "Рейтинги, за якими варто стежити зараз, — це SWE-bench Pro і проект під назвою SWE-rebench.",
+      "title": "",
+      "tts": {
+        "text": "Рейтинги, за якими варто стежити зараз, — це SWE bench Pro і проект під назвою SWE rebench.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "Обидва тримають тестовий код приватним, щоб моделі не могли навчатися на ньому.",
+      "text_markdown": "Обидва тримають тестовий код приватним, щоб моделі не могли навчатися на ньому.",
+      "title": "",
+      "tts": {
+        "text": "Обидва тримають тестовий код приватним, щоб моделі не могли навчатися на ньому.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "А розрив між відкритими та закритими моделями?",
+      "text_markdown": "А розрив між відкритими та закритими моделями?",
+      "title": "",
+      "tts": {
+        "text": "А розрив між відкритими та закритими моделями?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "За даними Artificial Analysis, розрив зараз становить 5-15 балів за індексом інтелекту перехресного оцінювання.",
+      "text_markdown": "За даними Artificial Analysis, розрив зараз становить 5-15 балів за індексом інтелекту перехресного оцінювання.",
+      "title": "",
+      "tts": {
+        "text": "За даними Artificial Analysis, розрив зараз становить п'ять — п'ятнадцять балів за індексом інтелекту перехресного оцінювання.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "18 місяців тому це було 30-40 балів.",
+      "text_markdown": "18 місяців тому це було 30-40 балів.",
+      "title": "",
+      "tts": {
+        "text": "Вісімнадцять місяців тому це було тридцять — сорок балів.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "Kimi K2.6 і DeepSeek V4-Pro знаходяться в цьому діапазоні порівняно з GPT-5.5 і Opus 4.7.",
+      "text_markdown": "Kimi K2.6 і DeepSeek V4-Pro знаходяться в цьому діапазоні порівняно з GPT-5.5 і Opus 4.7.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K два крапка шість і DeepSeek V чотири Pro знаходяться в цьому діапазоні порівняно з GPT п'ять крапка п'ять і Opus чотири крапка сім.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Тепер перейдімо до заголовків.",
+      "text_markdown": "Тепер перейдімо до заголовків.",
+      "title": "",
+      "tts": {
+        "text": "Тепер перейдімо до заголовків.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "Роне, що у швидкому огляді цього тижня?",
+      "text_markdown": "Роне, що у швидкому огляді цього тижня?",
+      "title": "",
+      "tts": {
+        "text": "Роне, що у швидкому огляді цього тижня?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Google I/O відбулося у вівторок і середу.",
+      "text_markdown": "Google I/O відбулося у вівторок і середу.",
+      "title": "",
+      "tts": {
+        "text": "Google I O відбулося у вівторок і середу.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "Головними новинками стали Gemini 3.5 Flash, Gemini Omni для розмовного редагування відео та Gemini Spark — агент, який працює 24/7 на хмарній віртуальній машині, якою ви не володієте.",
+      "text_markdown": "Головними новинками стали Gemini 3.5 Flash, Gemini Omni для розмовного редагування відео та Gemini Spark — агент, який працює 24/7 на хмарній віртуальній машині, якою ви не володієте.",
+      "title": "",
+      "tts": {
+        "text": "Головними новинками стали Gemini три крапка п'ять Flash, Gemini Omni для розмовного редагування відео та Gemini Spark — агент, який працює двадцять чотири сім на хмарній віртуальній машині, якою ви не володієте.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "Варто зазначити, що той самий шаблон — агент, який працює на власній машині та виконує багатокрокову роботу — це те, що ви вже можете робити сьогодні з відкритими інструментами як Aider або OpenCode, спрямованими на локальну модель.",
+      "text_markdown": "Варто зазначити, що той самий шаблон — агент, який працює на власній машині та виконує багатокрокову роботу — це те, що ви вже можете робити сьогодні з відкритими інструментами як Aider або OpenCode, спрямованими на локальну модель.",
+      "title": "",
+      "tts": {
+        "text": "Варто зазначити, що той самий шаблон — агент, який працює на власній машині та виконує багато крокову роботу — це те, що ви вже можете робити сьогодні з відкритими інструментами як Aider або OpenCode, спрямованими на локальну модель.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "Google AI Ultra знизив початковий тариф з $250 на місяць до $100 на місяць, а Samsung анонсував окуляри розширеної реальності з вбудованим Gemini.",
+      "text_markdown": "Google AI Ultra знизив початковий тариф з $250 на місяць до $100 на місяць, а Samsung анонсував окуляри розширеної реальності з вбудованим Gemini.",
+      "title": "",
+      "tts": {
+        "text": "Google AI Ultra знизив початковий тариф з двохсот п'ятдесяти доларів на місяць до ста доларів на місяць, а Samsung анонсував окуляри розширеної реальності з вбудованим Gemini.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "Щоденні ліміти запитів замінили бюджетом обчислень, який оновлюється кожні п'ять годин.",
+      "text_markdown": "Щоденні ліміти запитів замінили бюджетом обчислень, який оновлюється кожні п'ять годин.",
+      "title": "",
+      "tts": {
+        "text": "Щоденні ліміти запитів замінили бюджетом обчислень, який оновлюється кожні п'ять годин.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "А щодо кадрових змін?",
+      "text_markdown": "А щодо кадрових змін?",
+      "title": "",
+      "tts": {
+        "text": "А щодо кадрових змін?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "Андрій Карпаті приєднався до Anthropic у вівторок.",
+      "text_markdown": "Андрій Карпаті приєднався до Anthropic у вівторок.",
+      "title": "",
+      "tts": {
+        "text": "Андрій Карпаті приєднався до Anthropic у вівторок.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "Він у команді попереднього навчання, очолює групу, зосереджену на використанні Claude для прискорення досліджень попереднього навчання.",
+      "text_markdown": "Він у команді попереднього навчання, очолює групу, зосереджену на використанні Claude для прискорення досліджень попереднього навчання.",
+      "title": "",
+      "tts": {
+        "text": "Він у команді попереднього навчання, очолює групу, зосереджену на використанні Claude для прискорення досліджень попереднього навчання.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "Карпаті був засновником OpenAI, потім керував роботою зі штучного інтелекту в Tesla, потім заснував Eureka Labs для освіти зі штучного інтелекту.",
+      "text_markdown": "Карпаті був засновником OpenAI, потім керував роботою зі штучного інтелекту в Tesla, потім заснував Eureka Labs для освіти зі штучного інтелекту.",
+      "title": "",
+      "tts": {
+        "text": "Карпаті був засновником OpenAI, потім керував роботою зі штучного інтелекту в Tesla, потім заснував Eureka Labs для освіти зі штучного інтелекту.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "Тоді що відбувається з Apple?",
+      "text_markdown": "Тоді що відбувається з Apple?",
+      "title": "",
+      "tts": {
+        "text": "Тоді що відбувається з Епл?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "Генеральний директор Google Cloud Томас Куріан підтвердив цього тижня, що Gemini буде живити версію Siri пізніше в 2026 році.",
+      "text_markdown": "Генеральний директор Google Cloud Томас Куріан підтвердив цього тижня, що Gemini буде живити версію Siri пізніше в 2026 році.",
+      "title": "",
+      "tts": {
+        "text": "Генеральний директор Google Cloud Томас Куріан підтвердив цього тижня, що Gemini буде живити версію Siri пізніше в дві тисячі двадцять шостому році.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "Угода працює через фреймворк Foundation Models від Apple, тому Apple все ще володіє шаром інтеграції.",
+      "text_markdown": "Угода працює через фреймворк Foundation Models від Apple, тому Apple все ще володіє шаром інтеграції.",
+      "title": "",
+      "tts": {
+        "text": "Угода працює через фреймворк Foundation Models від Apple, тому Apple все ще володіє шаром інтеграції.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "А як щодо позову Маска?",
+      "text_markdown": "А як щодо позову Маска?",
+      "title": "",
+      "tts": {
+        "text": "А як щодо позову Маска?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "Дев'ятичленне журі Каліфорнії відхилило позов Ілона Маска проти OpenAI в понеділок, 18 травня.",
+      "text_markdown": "Дев'ятичленне журі Каліфорнії відхилило позов Ілона Маска проти OpenAI в понеділок, 18 травня.",
+      "title": "",
+      "tts": {
+        "text": "Дев'ятичленне журі Каліфорнії відхилило позов Ілона Маска проти OpenAI в понеділок, вісімнадцятого травня.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "Вони обговорювали менше ніж дві години.",
+      "text_markdown": "Вони обговорювали менше ніж дві години.",
+      "title": "",
+      "tts": {
+        "text": "Вони обговорювали менше ніж дві години.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "Журі визнало, що Маск подав позов після закінчення терміну давності, і суддя відхилив справу.",
+      "text_markdown": "Журі визнало, що Маск подав позов після закінчення терміну давності, і суддя відхилив справу.",
+      "title": "",
+      "tts": {
+        "text": "Журі визнало, що Маск подав позов після закінчення терміну давності, і суддя відхилив справу.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "Щось із політики?",
+      "text_markdown": "Щось із політики?",
+      "title": "",
+      "tts": {
+        "text": "Щось із політики?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "Міністр фінансів Скотт Бессент оголосив на саміті Трампа й Сі в Пекіні 14 травня, що США і Китай створять для ШІ формальний протокол безпеки.",
+      "text_markdown": "Міністр фінансів Скотт Бессент оголосив на саміті Трампа й Сі в Пекіні 14 травня, що США і Китай створять для ШІ формальний протокол безпеки.",
+      "title": "",
+      "tts": {
+        "text": "Міністр фінансів Скотт Бессент оголосив на саміті Трампа й Сі в Пекіні чотирнадцятого травня, що США і Китай створять для штучного інтелекту формальний протокол безпеки.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "Це представлено як найкращі практики, щоб утримати передові моделі від недержавних акторів — не обов'язковий режим, лише угода про діалог.",
+      "text_markdown": "Це представлено як найкращі практики, щоб утримати передові моделі від недержавних акторів — не обов'язковий режим, лише угода про діалог.",
+      "title": "",
+      "tts": {
+        "text": "Це представлено як найкращі практики, щоб утримати передові моделі від недержавних акторів — не обов'язковий режим, лише угода про діалог.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "Вперше обидві сторони представили безпеку ШІ як двосторонню замість чистої конкуренції.",
+      "text_markdown": "Вперше обидві сторони представили безпеку ШІ як двосторонню замість чистої конкуренції.",
+      "title": "",
+      "tts": {
+        "text": "Вперше обидві сторони представили безпеку ШІ як двосторонню замість чистої конкуренції.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "Тепер повернемося до головної історії.",
+      "text_markdown": "Тепер повернемося до головної історії.",
+      "title": "",
+      "tts": {
+        "text": "Тепер повернемося до головної історії.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "Роне, Папа написав про нас минулого тижня.",
+      "text_markdown": "Роне, Папа написав про нас минулого тижня.",
+      "title": "",
+      "tts": {
+        "text": "Роне, Папа написав про нас минулого тижня.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "Папа Лев XIV завершив свою першу енцикліку.",
+      "text_markdown": "Папа Лев XIV завершив свою першу енцикліку.",
+      "title": "",
+      "tts": {
+        "text": "Папа Лев чотирнадцятий завершив свою першу енцикліку.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "Вона має назву Magnifica Humanitas.",
+      "text_markdown": "Вона має назву Magnifica Humanitas.",
+      "title": "",
+      "tts": {
+        "text": "Вона має назву Magnifica Humanitas.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "Це перекладається як \"велич людяності\".",
+      "text_markdown": "Це перекладається як \"велич людяності\".",
+      "title": "",
+      "tts": {
+        "text": "Це перекладається як \"велич людяності\".",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "Ватикан опублікує її в понеділок, 25 травня.",
+      "text_markdown": "Ватикан опублікує її в понеділок, 25 травня.",
+      "title": "",
+      "tts": {
+        "text": "Ватикан опублікує її в понеділок, двадцять п'ятого травня.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "Вона стосується штучного інтелекту та захисту людської гідності.",
+      "text_markdown": "Вона стосується штучного інтелекту та захисту людської гідності.",
+      "title": "",
+      "tts": {
+        "text": "Вона стосується штучного інтелекту та захисту людської гідності.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "Коли Папа її підписав?",
+      "text_markdown": "Коли Папа її підписав?",
+      "title": "",
+      "tts": {
+        "text": "Коли Папа її підписав?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "15 травня.",
+      "text_markdown": "15 травня.",
+      "title": "",
+      "tts": {
+        "text": "П'ятнадцятого травня.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Цю дату обрали навмисне.",
+      "text_markdown": "Цю дату обрали навмисне.",
+      "title": "",
+      "tts": {
+        "text": "Цю дату обрали навмисне.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "Це точно 135 років день у день після того, як Папа Лев XIII підписав Rerum Novarum.",
+      "text_markdown": "Це точно 135 років день у день після того, як Папа Лев XIII підписав Rerum Novarum.",
+      "title": "",
+      "tts": {
+        "text": "Це точно сто тридцять п'ять років день у день після того, як Папа Лев тринадцятий підписав Rerum Novarum.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "Що таке Rerum Novarum?",
+      "text_markdown": "Що таке Rerum Novarum?",
+      "title": "",
+      "tts": {
+        "text": "Що таке Rerum Novarum?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "Rerum Novarum була основоположним католицьким вченням про працю і капітал.",
+      "text_markdown": "Rerum Novarum була основоположним католицьким вченням про працю і капітал.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum була основоположним католицьким вченням про працю і капітал.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Вона вийшла в 1891 році, посеред промислової революції.",
+      "text_markdown": "Вона вийшла в 1891 році, посеред промислової революції.",
+      "title": "",
+      "tts": {
+        "text": "Вона вийшла в тисяча вісімсот дев'яносто першому році, посеред промислової революції.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "Вона визначила, як Церква думає про робітників, власників, зарплати та гідність праці — і це бачення тримається вже понад століття.",
+      "text_markdown": "Вона визначила, як Церква думає про робітників, власників, зарплати та гідність праці — і це бачення тримається вже понад століття.",
+      "title": "",
+      "tts": {
+        "text": "Вона визначила, як Церква думає про робітників, власників, зарплати та гідність праці — і це бачення тримається вже понад століття.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "Папа Лев XIV позиціонує штучний інтелект як такий самий епохальний виклик для нашого покоління.",
+      "text_markdown": "Папа Лев XIV позиціонує штучний інтелект як такий самий епохальний виклик для нашого покоління.",
+      "title": "",
+      "tts": {
+        "text": "Папа Лев чотирнадцятий позиціонує штучний інтелект як такий самий епохальний виклик для нашого покоління.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "Це навмисне відлуння.",
+      "text_markdown": "Це навмисне відлуння.",
+      "title": "",
+      "tts": {
+        "text": "Це навмисне відлуння.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "Дуже навмисне.",
+      "text_markdown": "Дуже навмисне.",
+      "title": "",
+      "tts": {
+        "text": "Дуже навмисне.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "Навіть вибір папського імені — Лев — сигналізує про це.",
+      "text_markdown": "Навіть вибір папського імені — Лев — сигналізує про це.",
+      "title": "",
+      "tts": {
+        "text": "Навіть вибір папського імені — Лев — сигналізує про це.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "Цей Папа відкрито каже, що ШІ для нашого століття — це те ж саме, чим була індустріалізація для дев'ятнадцятого.",
+      "text_markdown": "Цей Папа відкрито каже, що ШІ для нашого століття — це те ж саме, чим була індустріалізація для дев'ятнадцятого.",
+      "title": "",
+      "tts": {
+        "text": "Цей Папа відкрито каже, що ШІ для нашого століття — це те ж саме, чим була індустріалізація для дев'ятнадцятого.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "Хто виступатиме разом із ним?",
+      "text_markdown": "Хто виступатиме разом із ним?",
+      "title": "",
+      "tts": {
+        "text": "Хто виступатиме разом із ним?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Кріс Ола, співзасновник Anthropic, буде на сцені в Синодальному залі Ватикану.",
+      "text_markdown": "Кріс Ола, співзасновник Anthropic, буде на сцені в Синодальному залі Ватикану.",
+      "title": "",
+      "tts": {
+        "text": "Кріс Ола, співзасновник Anthropic, буде на сцені в Синодальному залі Ватикану.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "Ола керує дослідженнями інтерпретованості в Anthropic.",
+      "text_markdown": "Ола керує дослідженнями інтерпретованості в Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ола керує дослідженнями інтерпретованості в Anthropic.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "Це сфера, яка намагається з'ясувати, що насправді відбувається всередині нейронної мережі.",
+      "text_markdown": "Це сфера, яка намагається з'ясувати, що насправді відбувається всередині нейронної мережі.",
+      "title": "",
+      "tts": {
+        "text": "Це сфера, яка намагається з'ясувати, що насправді відбувається всередині нейронної мережі.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "Чому дослідника інтерпретованості, а не керівника?",
+      "text_markdown": "Чому дослідника інтерпретованості, а не керівника?",
+      "title": "",
+      "tts": {
+        "text": "Чому дослідника інтерпретованості, а не керівника?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "Тому що центральне питання енцикліки — \"що це за річ, яку ми будуємо, і чи можемо ми її зрозуміти?\"",
+      "text_markdown": "Тому що центральне питання енцикліки — \"що це за річ, яку ми будуємо, і чи можемо ми її зрозуміти?\"",
+      "title": "",
+      "tts": {
+        "text": "Тому що центральне питання енцикліки — \"що це за річ, яку ми будуємо, і чи можемо ми її зрозуміти?\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-115",
+      "chapter": 0,
+      "text": "Це точно питання інтерпретованості, перенесене в моральну площину.",
+      "text_markdown": "Це точно питання інтерпретованості, перенесене в моральну площину.",
+      "title": "",
+      "tts": {
+        "text": "Це точно питання інтерпретованості, перенесене в моральну площину.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-116",
+      "chapter": 0,
+      "text": "Це не рекламна презентація, і вони не обрали рекламника.",
+      "text_markdown": "Це не рекламна презентація, і вони не обрали рекламника.",
+      "title": "",
+      "tts": {
+        "text": "Це не рекламна презентація, і вони не обрали рекламника.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-117",
+      "chapter": 0,
+      "text": "Хто ще на сцені?",
+      "text_markdown": "Хто ще на сцені?",
+      "title": "",
+      "tts": {
+        "text": "Хто ще на сцені?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "chapter": 0,
+      "text": "Кардинал П'єтро Паролін виголосить заключні зауваження.",
+      "text_markdown": "Кардинал П'єтро Паролін виголосить заключні зауваження.",
+      "title": "",
+      "tts": {
+        "text": "Кардинал П'єтро Паролін виголосить заключні зауваження.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-119",
+      "chapter": 0,
+      "text": "Також виступатимуть: кардинал Віктор Мануель Фернандес і кардинал Майкл Черні.",
+      "text_markdown": "Також виступатимуть: кардинал Віктор Мануель Фернандес і кардинал Майкл Черні.",
+      "title": "",
+      "tts": {
+        "text": "Також виступатимуть: кардинал Віктор Мануель Фернандес і кардинал Майкл Черні.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-120",
+      "chapter": 0,
+      "text": "І двоє професорів теології — Анна Роулендс з Університету Дарема у Великій Британії та Леокаді Лушомбо з Єзуїтської школи теології Університету Санта-Клари — будуть у панелі.",
+      "text_markdown": "І двоє професорів теології — Анна Роулендс з Університету Дарема у Великій Британії та Леокаді Лушомбо з Єзуїтської школи теології Університету Санта-Клари — будуть у панелі.",
+      "title": "",
+      "tts": {
+        "text": "І двоє професорів теології — Анна Роулендс з Університету Дарема у Великій Британії та Леокаді Лушомбо з Єзуїтської школи теології Університету Санта-Клари — будуть у панелі.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-121",
+      "chapter": 0,
+      "text": "Чому це має значення за межами кімнати?",
+      "text_markdown": "Чому це має значення за межами кімнати?",
+      "title": "",
+      "tts": {
+        "text": "Чому це має значення за межами кімнати?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-122",
+      "chapter": 0,
+      "text": "Тому що у світі є 1,4 мільярда католиків.",
+      "text_markdown": "Тому що у світі є 1,4 мільярда католиків.",
+      "title": "",
+      "tts": {
+        "text": "Тому що у світі є один кома чотири мільярда католиків.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "chapter": 0,
+      "text": "Коли Папа пише енцикліку, це формує те, як величезна кількість населення думає про тему протягом покоління.",
+      "text_markdown": "Коли Папа пише енцикліку, це формує те, як величезна кількість населення думає про тему протягом покоління.",
+      "title": "",
+      "tts": {
+        "text": "Коли Папа пише енцикліку, це формує те, як величезна кількість населення думає про тему протягом покоління.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-124",
+      "chapter": 0,
+      "text": "Rerum Novarum досі формує католицьку соціальну політику щодо праці, 135 років потому.",
+      "text_markdown": "Rerum Novarum досі формує католицьку соціальну політику щодо праці, 135 років потому.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum досі формує католицьку соціальну політику щодо праці, сто тридцять п'ять років потому.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-125",
+      "chapter": 0,
+      "text": "Magnifica Humanitas готова зробити те саме щодо ШІ.",
+      "text_markdown": "Magnifica Humanitas готова зробити те саме щодо ШІ.",
+      "title": "",
+      "tts": {
+        "text": "Magnifica Humanitas готова зробити те саме щодо ШІ.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-126",
+      "chapter": 0,
+      "text": "А кут з іншого боку?",
+      "text_markdown": "А кут з іншого боку?",
+      "title": "",
+      "tts": {
+        "text": "А кут з іншого боку?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-127",
+      "chapter": 0,
+      "text": "Інституція поза індустрією ШІ займає серйозну навчальну позицію щодо того, що ми будуємо.",
+      "text_markdown": "Інституція поза індустрією ШІ займає серйозну навчальну позицію щодо того, що ми будуємо.",
+      "title": "",
+      "tts": {
+        "text": "Інституція поза індустрією ШІ займає серйозну навчальну позицію щодо того, що ми будуємо.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-128",
+      "chapter": 0,
+      "text": "А сторона індустрії з'являється за столом з правильним типом дослідника.",
+      "text_markdown": "А сторона індустрії з'являється за столом з правильним типом дослідника.",
+      "title": "",
+      "tts": {
+        "text": "А сторона індустрії з'являється за столом з правильним типом дослідника.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "chapter": 0,
+      "text": "Це не звичайна позиція — зазвичай це або \"ми знаємо краще, залиште нас у спокої\" або лобістська позиція.",
+      "text_markdown": "Це не звичайна позиція — зазвичай це або \"ми знаємо краще, залиште нас у спокої\" або лобістська позиція.",
+      "title": "",
+      "tts": {
+        "text": "Це не звичайна позиція — зазвичай це або \"ми знаємо краще, залиште нас у спокої\" або лобістська позиція.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "chapter": 0,
+      "text": "Це інша позиція.",
+      "text_markdown": "Це інша позиція.",
+      "title": "",
+      "tts": {
+        "text": "Це інша позиція.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "chapter": 0,
+      "text": "Гарний час, щоб завершити розділ.",
+      "text_markdown": "Гарний час, щоб завершити розділ.",
+      "title": "",
+      "tts": {
+        "text": "Гарний час, щоб завершити розділ.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-132",
+      "chapter": 0,
+      "text": "Тепер перейдемо до концепції тижня.",
+      "text_markdown": "Тепер перейдемо до концепції тижня.",
+      "title": "",
+      "tts": {
+        "text": "Тепер перейдемо до концепції тижня.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-133",
+      "chapter": 0,
+      "text": "Концепція цього тижня — квантування.",
+      "text_markdown": "Концепція цього тижня — квантування.",
+      "title": "",
+      "tts": {
+        "text": "Концепція цього тижня — квантування.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "chapter": 0,
+      "text": "Роне, проведи нас через це.",
+      "text_markdown": "Роне, проведи нас через це.",
+      "title": "",
+      "tts": {
+        "text": "Роне, проведи нас через це.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "chapter": 0,
+      "text": "Квантування — це те, як модель з 7 мільярдів параметрів поміщається на вашому телефоні.",
+      "text_markdown": "Квантування — це те, як модель з 7 мільярдів параметрів поміщається на вашому телефоні.",
+      "title": "",
+      "tts": {
+        "text": "Квантування — це те, як модель з сьоми мільярдів параметрів поміщається на вашому телефоні.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "chapter": 0,
+      "text": "Почнемо з основної проблеми.",
+      "text_markdown": "Почнемо з основної проблеми.",
+      "title": "",
+      "tts": {
+        "text": "Почнемо з основної проблеми.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-137",
+      "chapter": 0,
+      "text": "Кожна вага в моделі зазвичай є 16-бітним числом з плаваючою точкою.",
+      "text_markdown": "Кожна вага в моделі зазвичай є 16-бітним числом з плаваючою точкою.",
+      "title": "",
+      "tts": {
+        "text": "Кожна вага в моделі зазвичай є шістнадцятибітним числом з плаваючою точкою.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-138",
+      "chapter": 0,
+      "text": "Модель з 7 мільярдів параметрів у 16-бітному форматі займає близько 14 гігабайт на диску.",
+      "text_markdown": "Модель з 7 мільярдів параметрів у 16-бітному форматі займає близько 14 гігабайт на диску.",
+      "title": "",
+      "tts": {
+        "text": "Модель з сьоми мільярдів параметрів у шістнадцятибітному форматі займає близько чотирнадцяти гігабайт на диску.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "chapter": 0,
+      "text": "Це не поміщається на телефоні.",
+      "text_markdown": "Це не поміщається на телефоні.",
+      "title": "",
+      "tts": {
+        "text": "Це не поміщається на телефоні.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-140",
+      "chapter": 0,
+      "text": "Тож ви стискаєте числа.",
+      "text_markdown": "Тож ви стискаєте числа.",
+      "title": "",
+      "tts": {
+        "text": "Тож ви стискаєте числа.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-141",
+      "chapter": 0,
+      "text": "Правильно.",
+      "text_markdown": "Правильно.",
+      "title": "",
+      "tts": {
+        "text": "Правильно.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-142",
+      "chapter": 0,
+      "text": "Ви округляєте кожну вагу до меншої кількості бітів.",
+      "text_markdown": "Ви округляєте кожну вагу до меншої кількості бітів.",
+      "title": "",
+      "tts": {
+        "text": "Ви округляєте кожну вагу до меншої кількості бітів.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-143",
+      "chapter": 0,
+      "text": "Вісім бітів на вагу скорочує модель навпіл.",
+      "text_markdown": "Вісім бітів на вагу скорочує модель навпіл.",
+      "title": "",
+      "tts": {
+        "text": "Вісім бітів на вагу скорочує модель навпіл.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-144",
+      "chapter": 0,
+      "text": "Чотири біти на вагу скорочують її до четверті.",
+      "text_markdown": "Чотири біти на вагу скорочують її до четверті.",
+      "title": "",
+      "tts": {
+        "text": "Чотири біти на вагу скорочують її до четверті.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-145",
+      "chapter": 0,
+      "text": "Та сама модель з 7 мільярдів параметрів у 4 бітах займає 3,5 гігабайта.",
+      "text_markdown": "Та сама модель з 7 мільярдів параметрів у 4 бітах займає 3,5 гігабайта.",
+      "title": "",
+      "tts": {
+        "text": "Та сама модель з сьоми мільярдів параметрів у чотири бітах займає три кома п'ять гігабайта.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-146",
+      "chapter": 0,
+      "text": "Тепер вона поміщається.",
+      "text_markdown": "Тепер вона поміщається.",
+      "title": "",
+      "tts": {
+        "text": "Тепер вона поміщається.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-147",
+      "chapter": 0,
+      "text": "Чи працює модель досі?",
+      "text_markdown": "Чи працює модель досі?",
+      "title": "",
+      "tts": {
+        "text": "Чи працює модель досі?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-148",
+      "chapter": 0,
+      "text": "Зазвичай так, з невеликим зниженням якості.",
+      "text_markdown": "Зазвичай так, з невеликим зниженням якості.",
+      "title": "",
+      "tts": {
+        "text": "Зазвичай так, з невеликим зниженням якості.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-149",
+      "chapter": 0,
+      "text": "Хитрість полягає у виборі того, де в моделі втратити точність.",
+      "text_markdown": "Хитрість полягає у виборі того, де в моделі втратити точність.",
+      "title": "",
+      "tts": {
+        "text": "Хитрість полягає у виборі того, де в моделі втратити точність.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-150",
+      "chapter": 0,
+      "text": "AWQ — квантування ваг з урахуванням активації — залишає канали, які найбільш важливі, у вищій точності і стискає решту.",
+      "text_markdown": "AWQ — квантування ваг з урахуванням активації — залишає канали, які найбільш важливі, у вищій точності і стискає решту.",
+      "title": "",
+      "tts": {
+        "text": "AWQ — квантування ваг з урахуванням активації — залишає канали, які найбільш важливі, у вищій точності і стискає решту.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-151",
+      "chapter": 0,
+      "text": "GGUF, який використовує llama.cpp, має формати як Q4_K_M, які змішують точності всередині одного файлу моделі.",
+      "text_markdown": "GGUF, який використовує llama.cpp, має формати як Q4_K_M, які змішують точності всередині одного файлу моделі.",
+      "title": "",
+      "tts": {
+        "text": "GGUF, який використовує llama.cpp, має формати як Q чотири K M, які змішують точності всередині одного файлу моделі.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-152",
+      "chapter": 0,
+      "text": "Наскільки малою можна зробити?",
+      "text_markdown": "Наскільки малою можна зробити?",
+      "title": "",
+      "tts": {
+        "text": "Наскільки малою можна зробити?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-153",
+      "chapter": 0,
+      "text": "Базова модель Apple на пристрої використовує 2 біти на вагу.",
+      "text_markdown": "Базова модель Apple на пристрої використовує 2 біти на вагу.",
+      "title": "",
+      "tts": {
+        "text": "Базова модель Apple на пристрої використовує два біти на вагу.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-154",
+      "chapter": 0,
+      "text": "Вони використовують Quantization-Aware Training, де модель навчається з самого початку, знаючи, що вона буде 2-бітною під час інференції.",
+      "text_markdown": "Вони використовують Quantization-Aware Training, де модель навчається з самого початку, знаючи, що вона буде 2-бітною під час інференції.",
+      "title": "",
+      "tts": {
+        "text": "Вони використовують Quantization-Aware Training, де модель навчається з самого початку, знаючи, що вона буде двобітною під час інференції.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-155",
+      "chapter": 0,
+      "text": "Це набагато кращий результат, ніж наївне округлення після факту.",
+      "text_markdown": "Це набагато кращий результат, ніж наївне округлення після факту.",
+      "title": "",
+      "tts": {
+        "text": "Це набагато кращий результат, ніж наївне округлення після факту.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-156",
+      "chapter": 0,
+      "text": "Близько 3 мільярдів параметрів у 2 бітах виходить приблизно 750 мегабайт.",
+      "text_markdown": "Близько 3 мільярдів параметрів у 2 бітах виходить приблизно 750 мегабайт.",
+      "title": "",
+      "tts": {
+        "text": "Близько трьох мільярдів параметрів у два бітах виходить приблизно сімсот п'ятдесят мегабайт.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-157",
+      "chapter": 0,
+      "text": "Це поміщається на телефоні з запасом.",
+      "text_markdown": "Це поміщається на телефоні з запасом.",
+      "title": "",
+      "tts": {
+        "text": "Це поміщається на телефоні з запасом.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-158",
+      "chapter": 0,
+      "text": "Ось чому ШІ на пристрої нарешті став придатним для використання цього року.",
+      "text_markdown": "Ось чому ШІ на пристрої нарешті став придатним для використання цього року.",
+      "title": "",
+      "tts": {
+        "text": "Ось чому ШІ на пристрої нарешті став придатним для використання цього року.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-159",
+      "chapter": 0,
+      "text": "Це основна причина.",
+      "text_markdown": "Це основна причина.",
+      "title": "",
+      "tts": {
+        "text": "Це основна причина.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-160",
+      "chapter": 0,
+      "text": "Три слова, які треба запам'ятати — AWQ, GGUF та Quantization-Aware Training.",
+      "text_markdown": "Три слова, які треба запам'ятати — AWQ, GGUF та Quantization-Aware Training.",
+      "title": "",
+      "tts": {
+        "text": "Три слова, які треба запам'ятати — AWQ, GGUF та Quantization-Aware Training.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-161",
+      "chapter": 0,
+      "text": "Якщо модель постачає ці три речі, вона постачається на телефони.",
+      "text_markdown": "Якщо модель постачає ці три речі, вона постачається на телефони.",
+      "title": "",
+      "tts": {
+        "text": "Якщо модель постачає ці три речі, вона постачається на телефони.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-162",
+      "chapter": 0,
+      "text": "Гарне місце для посадки.",
+      "text_markdown": "Гарне місце для посадки.",
+      "title": "",
+      "tts": {
+        "text": "Гарне місце для посадки.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-163",
+      "chapter": 0,
+      "text": "Рон, дякую.",
+      "text_markdown": "Рон, дякую.",
+      "title": "",
+      "tts": {
+        "text": "Рон, дякую.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-164",
+      "chapter": 0,
+      "text": "Завжди будь ласка, Вінді.",
+      "text_markdown": "Завжди будь ласка, Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Завжди будь ласка, Вінді.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-165",
+      "chapter": 0,
+      "text": "Це був AI This Week за 20 травня 2026 року.",
+      "text_markdown": "Це був AI This Week за 20 травня 2026 року.",
+      "title": "",
+      "tts": {
+        "text": "Це був АЙ Діс Вік за двадцяте травня дві тисячі двадцять шостого року.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-166",
+      "chapter": 0,
+      "text": "Новий випуск наступної середи.",
+      "text_markdown": "Новий випуск наступної середи.",
+      "title": "",
+      "tts": {
+        "text": "Новий випуск наступної середи.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-167",
+      "chapter": 0,
+      "text": "До тих пір бережіть себе.",
+      "text_markdown": "До тих пір бережіть себе.",
+      "title": "",
+      "tts": {
+        "text": "До тих пір бережіть себе.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

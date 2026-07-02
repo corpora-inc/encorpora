@@ -1,0 +1,2447 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "language": "de",
+  "total_segments": 165,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Der boreale Wald",
+      "text_markdown": "Der boreale Wald",
+      "title": "Der boreale Wald"
+    },
+    {
+      "id": "ch02-002",
+      "paragraph_id": "p2",
+      "heading_level": 1,
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Wo dieses Biom wächst",
+      "text_markdown": "Wo dieses Biom wächst",
+      "title": "Wo dieses Biom wächst"
+    },
+    {
+      "id": "ch02-003",
+      "paragraph_id": "p3",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Willkommen im borealen Wald.",
+      "text_markdown": "Willkommen im borealen Wald.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Willkommen im borealen Wald.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "paragraph_id": "p4",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist eines der großen Biome der Welt.",
+      "text_markdown": "Dies ist eines der großen Biome der Welt.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Dies ist eines der großen Biome der Welt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "paragraph_id": "p5",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biom ist ein Teil der Erde mit seiner eigenen Art von Wetter, Pflanzen und Tieren.",
+      "text_markdown": "Ein Biom ist ein Teil der Erde mit seiner eigenen Art von Wetter, Pflanzen und Tieren.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Ein Biom ist ein Teil der Erde mit seiner eigenen Art von Wetter, Pflanzen und Tieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "paragraph_id": "p6",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald ist ein breiter grüner Gürtel aus immergrünen Bäumen, der sich über den oberen Teil der Welt erstreckt.",
+      "text_markdown": "Der boreale Wald ist ein breiter grüner Gürtel aus immergrünen Bäumen, der sich über den oberen Teil der Welt erstreckt.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Der boreale Wald ist ein breiter grüner Gürtel aus immergrünen Bäumen, der sich über den oberen Teil der Welt erstreckt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-007",
+      "paragraph_id": "p7",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er wird auch Taiga genannt.",
+      "text_markdown": "Er wird auch Taiga genannt.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Er wird auch Taiga genannt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "paragraph_id": "p8",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald ist das größte Landbiom der Erde.",
+      "text_markdown": "Der boreale Wald ist das größte Landbiom der Erde.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Der boreale Wald ist das größte Landbiom der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-009",
+      "paragraph_id": "p9",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn Sie hoch über die Welt fliegen würden, sähen Sie diesen dunkelgrünen Gürtel, der sich fast einmal um die ganze Erde zieht.",
+      "text_markdown": "Wenn Sie hoch über die Welt fliegen würden, sähen Sie diesen dunkelgrünen Gürtel, der sich fast einmal um die ganze Erde zieht.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Wenn Sie hoch über die Welt fliegen würden, sähen Sie diesen dunkelgrünen Gürtel, der sich fast einmal um die ganze Erde zieht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-010",
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er wächst über den größten Teil Kanadas und Alaskas in Nordamerika.",
+      "text_markdown": "Er wächst über den größten Teil Kanadas und Alaskas in Nordamerika.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Er wächst über den größten Teil Kanadas und Alaskas in Nordamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er wächst über Norwegen, Schweden und Finnland in Nordeuropa.",
+      "text_markdown": "Er wächst über Norwegen, Schweden und Finnland in Nordeuropa.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Er wächst über Norwegen, Schweden und Finnland in Nordeuropa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er wächst über Russland, von Europa bis zum Pazifischen Ozean.",
+      "text_markdown": "Er wächst über Russland, von Europa bis zum Pazifischen Ozean.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Er wächst über Russland, von Europa bis zum Pazifischen Ozean.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-013",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An jedem dieser Orte sieht der Wald sehr ähnlich aus.",
+      "text_markdown": "An jedem dieser Orte sieht der Wald sehr ähnlich aus.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "An jedem dieser Orte sieht der Wald sehr ähnlich aus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hohe, spitz zulaufende Bäume stehen dicht beieinander, mit weichem Moos und kleinen Büschen auf dem Boden.",
+      "text_markdown": "Hohe, spitz zulaufende Bäume stehen dicht beieinander, mit weichem Moos und kleinen Büschen auf dem Boden.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Hohe, spitz zulaufende Bäume stehen dicht beieinander, mit weichem Moos und kleinen Büschen auf dem Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwischen den Bäumen gibt es viele Seen, Flüsse und Moore.",
+      "text_markdown": "Zwischen den Bäumen gibt es viele Seen, Flüsse und Moore.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Zwischen den Bäumen gibt es viele Seen, Flüsse und Moore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald liegt direkt südlich der Tundra und direkt nördlich der gemäßigten Wälder.",
+      "text_markdown": "Der boreale Wald liegt direkt südlich der Tundra und direkt nördlich der gemäßigten Wälder.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Der boreale Wald liegt direkt südlich der Tundra und direkt nördlich der gemäßigten Wälder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-017",
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es ist kein warmer Ort.",
+      "text_markdown": "Es ist kein warmer Ort.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Es ist kein warmer Ort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange, sehr kalte Winter sind hier die Regel, mit tiefem Schnee auf dem Boden für viele Monate.",
+      "text_markdown": "Lange, sehr kalte Winter sind hier die Regel, mit tiefem Schnee auf dem Boden für viele Monate.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Lange, sehr kalte Winter sind hier die Regel, mit tiefem Schnee auf dem Boden für viele Monate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-019",
+      "paragraph_id": "p19",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Sommer sind kurz und kühl, mit langen Tagen und hellen Nächten.",
+      "text_markdown": "Die Sommer sind kurz und kühl, mit langen Tagen und hellen Nächten.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Die Sommer sind kurz und kühl, mit langen Tagen und hellen Nächten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-020",
+      "paragraph_id": "p20",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenige Menschen leben im borealen Wald, aber er ist voller Leben.",
+      "text_markdown": "Wenige Menschen leben im borealen Wald, aber er ist voller Leben.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Wenige Menschen leben im borealen Wald, aber er ist voller Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "paragraph_id": "p21",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist die Heimat von Bären, Wölfen, Elchen, Eulen und vielen anderen Tieren.",
+      "text_markdown": "Er ist die Heimat von Bären, Wölfen, Elchen, Eulen und vielen anderen Tieren.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Er ist die Heimat von Bären, Wölfen, Elchen, Eulen und vielen anderen Tieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "paragraph_id": "p22",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Und er wächst stillschweigend über mehr Land als jeder andere Wald auf der Erde.",
+      "text_markdown": "Und er wächst stillschweigend über mehr Land als jeder andere Wald auf der Erde.",
+      "title": "Wo dieses Biom wächst",
+      "tts": {
+        "text": "Und er wächst stillschweigend über mehr Land als jeder andere Wald auf der Erde.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-023",
+      "paragraph_id": "p23",
+      "heading_level": 1,
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Das Wetter",
+      "text_markdown": "Das Wetter",
+      "title": "Das Wetter"
+    },
+    {
+      "id": "ch03-024",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald ist die meiste Zeit des Jahres kalt.",
+      "text_markdown": "Der boreale Wald ist die meiste Zeit des Jahres kalt.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der boreale Wald ist die meiste Zeit des Jahres kalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-025",
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Winter ist hier lang und dunkel.",
+      "text_markdown": "Der Winter ist hier lang und dunkel.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Winter ist hier lang und dunkel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den nördlichen Teilen des Waldes kann der Winter sieben oder acht Monate dauern.",
+      "text_markdown": "In den nördlichen Teilen des Waldes kann der Winter sieben oder acht Monate dauern.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "In den nördlichen Teilen des Waldes kann der Winter sieben oder acht Monate dauern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Luft kann auf vierzig Grad unter Null fallen, sowohl in Celsius als auch in Fahrenheit.",
+      "text_markdown": "Die Luft kann auf vierzig Grad unter Null fallen, sowohl in Celsius als auch in Fahrenheit.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Die Luft kann auf vierzig Grad unter Null fallen, sowohl in Celsius als auch in Fahrenheit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "paragraph_id": "p28",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist einer der kältesten Orte der Erde, an dem Bäume noch wachsen können.",
+      "text_markdown": "Das ist einer der kältesten Orte der Erde, an dem Bäume noch wachsen können.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Das ist einer der kältesten Orte der Erde, an dem Bäume noch wachsen können.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "paragraph_id": "p29",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dicker Schnee bedeckt den Boden vom Herbst bis zum späten Frühling.",
+      "text_markdown": "Dicker Schnee bedeckt den Boden vom Herbst bis zum späten Frühling.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Dicker Schnee bedeckt den Boden vom Herbst bis zum späten Frühling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "paragraph_id": "p30",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Seen und Flüsse frieren zu, manchmal mit Eis, das so dick ist wie ein Mensch groß.",
+      "text_markdown": "Die Seen und Flüsse frieren zu, manchmal mit Eis, das so dick ist wie ein Mensch groß.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Die Seen und Flüsse frieren zu, manchmal mit Eis, das so dick ist wie ein Mensch groß.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-031",
+      "paragraph_id": "p31",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im tiefen Norden steigt die Sonne an den kürzesten Wintertagen kaum über die Bäume.",
+      "text_markdown": "Im tiefen Norden steigt die Sonne an den kürzesten Wintertagen kaum über die Bäume.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Im tiefen Norden steigt die Sonne an den kürzesten Wintertagen kaum über die Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "paragraph_id": "p32",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann kommt die Frühlingsschmelze.",
+      "text_markdown": "Dann kommt die Frühlingsschmelze.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Dann kommt die Frühlingsschmelze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "paragraph_id": "p33",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Schnee wird zu Wasser, und die Flüsse führen viel und kaltes Wasser.",
+      "text_markdown": "Der Schnee wird zu Wasser, und die Flüsse führen viel und kaltes Wasser.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Schnee wird zu Wasser, und die Flüsse führen viel und kaltes Wasser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-034",
+      "paragraph_id": "p34",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Boden bleibt viele Wochen lang weich und feucht.",
+      "text_markdown": "Der Boden bleibt viele Wochen lang weich und feucht.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Boden bleibt viele Wochen lang weich und feucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "paragraph_id": "p35",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Sommer ist kurz, aber voller Leben.",
+      "text_markdown": "Der Sommer ist kurz, aber voller Leben.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Sommer ist kurz, aber voller Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-036",
+      "paragraph_id": "p36",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Juni und Juli bleibt die Sonne die meiste Zeit der Nacht am Himmel.",
+      "text_markdown": "Im Juni und Juli bleibt die Sonne die meiste Zeit der Nacht am Himmel.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Im Juni und Juli bleibt die Sonne die meiste Zeit der Nacht am Himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-037",
+      "paragraph_id": "p37",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wald wächst schnell, um das warme Licht optimal zu nutzen.",
+      "text_markdown": "Der Wald wächst schnell, um das warme Licht optimal zu nutzen.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Wald wächst schnell, um das warme Licht optimal zu nutzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "paragraph_id": "p38",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommertage können warm sein, aber die Nächte sind meist kühl.",
+      "text_markdown": "Sommertage können warm sein, aber die Nächte sind meist kühl.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Sommertage können warm sein, aber die Nächte sind meist kühl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "paragraph_id": "p39",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im August beginnt die Kälte wieder einzukehren.",
+      "text_markdown": "Im August beginnt die Kälte wieder einzukehren.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Im August beginnt die Kälte wieder einzukehren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "paragraph_id": "p40",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Herbst ist kurz und golden.",
+      "text_markdown": "Der Herbst ist kurz und golden.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Der Herbst ist kurz und golden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "paragraph_id": "p41",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann kehrt der Schnee zurück, und der lange Winter beginnt von Neuem.",
+      "text_markdown": "Dann kehrt der Schnee zurück, und der lange Winter beginnt von Neuem.",
+      "title": "Das Wetter",
+      "tts": {
+        "text": "Dann kehrt der Schnee zurück, und der lange Winter beginnt von Neuem.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-042",
+      "paragraph_id": "p42",
+      "heading_level": 1,
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Das Land und das Wasser",
+      "text_markdown": "Das Land und das Wasser",
+      "title": "Das Land und das Wasser"
+    },
+    {
+      "id": "ch04-043",
+      "paragraph_id": "p43",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald wächst auf altem, ruhigem Land.",
+      "text_markdown": "Der boreale Wald wächst auf altem, ruhigem Land.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Der boreale Wald wächst auf altem, ruhigem Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "paragraph_id": "p44",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vor langer Zeit bedeckten große Eisschichten dieses ganze Land.",
+      "text_markdown": "Vor langer Zeit bedeckten große Eisschichten dieses ganze Land.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Vor langer Zeit bedeckten große Eisschichten dieses ganze Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-045",
+      "paragraph_id": "p45",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Eis war dicker als die höchsten Berge, die wir heute kennen.",
+      "text_markdown": "Das Eis war dicker als die höchsten Berge, die wir heute kennen.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Das Eis war dicker als die höchsten Berge, die wir heute kennen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "paragraph_id": "p46",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als das Eis vor vielen tausend Jahren schmolz, hinterließ es das Land flach, zerkratzt und voller Löcher.",
+      "text_markdown": "Als das Eis vor vielen tausend Jahren schmolz, hinterließ es das Land flach, zerkratzt und voller Löcher.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Als das Eis vor vielen tausend Jahren schmolz, hinterließ es das Land flach, zerkratzt und voller Löcher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-047",
+      "paragraph_id": "p47",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Löcher füllten sich mit Wasser.",
+      "text_markdown": "Die Löcher füllten sich mit Wasser.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Die Löcher füllten sich mit Wasser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "paragraph_id": "p48",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deshalb hat der boreale Wald so viele Seen.",
+      "text_markdown": "Deshalb hat der boreale Wald so viele Seen.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Deshalb hat der boreale Wald so viele Seen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "paragraph_id": "p49",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanada allein hat mehr Seen als der Rest der Welt zusammen.",
+      "text_markdown": "Kanada allein hat mehr Seen als der Rest der Welt zusammen.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Kanada allein hat mehr Seen als der Rest der Welt zusammen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-050",
+      "paragraph_id": "p50",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele von ihnen liegen im borealen Wald und glänzen wie dunkle Spiegel zwischen den Bäumen.",
+      "text_markdown": "Viele von ihnen liegen im borealen Wald und glänzen wie dunkle Spiegel zwischen den Bäumen.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Viele von ihnen liegen im borealen Wald und glänzen wie dunkle Spiegel zwischen den Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-051",
+      "paragraph_id": "p51",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Breite, langsame Flüsse durchqueren den Wald und tragen Schmelzwasser zu den großen nördlichen Meeren.",
+      "text_markdown": "Breite, langsame Flüsse durchqueren den Wald und tragen Schmelzwasser zu den großen nördlichen Meeren.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Breite, langsame Flüsse durchqueren den Wald und tragen Schmelzwasser zu den großen nördlichen Meeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-052",
+      "paragraph_id": "p52",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwischen den Seen und Flüssen gibt es weiche, feuchte Orte, die Moore genannt werden.",
+      "text_markdown": "Zwischen den Seen und Flüssen gibt es weiche, feuchte Orte, die Moore genannt werden.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Zwischen den Seen und Flüssen gibt es weiche, feuchte Orte, die Moore genannt werden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-053",
+      "paragraph_id": "p53",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Moor ist ein Stück Land, auf dem das ganze Jahr über Wasser auf dem Boden steht.",
+      "text_markdown": "Ein Moor ist ein Stück Land, auf dem das ganze Jahr über Wasser auf dem Boden steht.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Ein Moor ist ein Stück Land, auf dem das ganze Jahr über Wasser auf dem Boden steht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-054",
+      "paragraph_id": "p54",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf dem Moor wachsen dichte Moose, weich und tief unter den Füßen.",
+      "text_markdown": "Auf dem Moor wachsen dichte Moose, weich und tief unter den Füßen.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Auf dem Moor wachsen dichte Moose, weich und tief unter den Füßen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "paragraph_id": "p55",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unter der Oberfläche ist das Moorwasser kalt und braun.",
+      "text_markdown": "Unter der Oberfläche ist das Moorwasser kalt und braun.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Unter der Oberfläche ist das Moorwasser kalt und braun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-056",
+      "paragraph_id": "p56",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Boden des borealen Waldes ist arm und dünn.",
+      "text_markdown": "Der Boden des borealen Waldes ist arm und dünn.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Der Boden des borealen Waldes ist arm und dünn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-057",
+      "paragraph_id": "p57",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiefernadeln und abgestorbene Blätter zersetzen sich in der Kälte langsam.",
+      "text_markdown": "Kiefernadeln und abgestorbene Blätter zersetzen sich in der Kälte langsam.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Kiefernadeln und abgestorbene Blätter zersetzen sich in der Kälte langsam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "paragraph_id": "p58",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die guten Nährstoffe für Pflanzen brauchen lange, um sich anzusammeln.",
+      "text_markdown": "Die guten Nährstoffe für Pflanzen brauchen lange, um sich anzusammeln.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Die guten Nährstoffe für Pflanzen brauchen lange, um sich anzusammeln.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "paragraph_id": "p59",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im hohen Norden des borealen Waldes bleibt der Boden tiefer als ein Meter oder zwei Meter das ganze Jahr über gefroren.",
+      "text_markdown": "Im hohen Norden des borealen Waldes bleibt der Boden tiefer als ein oder zwei Meter das ganze Jahr über gefroren.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Im hohen Norden des borealen Waldes bleibt der Boden tiefer als ein Meter oder zwei Meter das ganze Jahr über gefroren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "paragraph_id": "p60",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieser gefrorene Boden wird Permafrost genannt.",
+      "text_markdown": "Dieser gefrorene Boden wird Permafrost genannt.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Dieser gefrorene Boden wird Permafrost genannt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "paragraph_id": "p61",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selbst an einem heißen Sommertag ist der Boden unter dem Moos kalt beim Berühren.",
+      "text_markdown": "Selbst an einem heißen Sommertag ist der Boden unter dem Moos kalt beim Berühren.",
+      "title": "Das Land und das Wasser",
+      "tts": {
+        "text": "Selbst an einem heißen Sommertag ist der Boden unter dem Moos kalt beim Berühren.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-062",
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Die Bäume",
+      "text_markdown": "Die Bäume",
+      "title": "Die Bäume"
+    },
+    {
+      "id": "ch05-063",
+      "paragraph_id": "p63",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Bäume des borealen Nadelwaldes sind größtenteils immergrün.",
+      "text_markdown": "Die Bäume des borealen Nadelwaldes sind größtenteils immergrün.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Die Bäume des borealen Nadelwaldes sind größtenteils immergrün.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-064",
+      "paragraph_id": "p64",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie werfen nicht alle ihre Blätter am Ende des Sommers ab.",
+      "text_markdown": "Sie werfen nicht alle ihre Blätter am Ende des Sommers ab.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Sie werfen nicht alle ihre Blätter am Ende des Sommers ab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "paragraph_id": "p65",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stattdessen tragen sie das ganze Jahr über winzige grüne Nadeln.",
+      "text_markdown": "Stattdessen tragen sie das ganze Jahr über winzige grüne Nadeln.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Stattdessen tragen sie das ganze Jahr über winzige grüne Nadeln.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "paragraph_id": "p66",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Nadel ist klein und zäh.",
+      "text_markdown": "Eine Nadel ist klein und zäh.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Eine Nadel ist klein und zäh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "paragraph_id": "p67",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie verliert nicht viel Wasser an den Wind und bricht nicht unter dem Schnee.",
+      "text_markdown": "Sie verliert nicht viel Wasser an den Wind und bricht nicht unter dem Schnee.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Sie verliert nicht viel Wasser an den Wind und bricht nicht unter dem Schnee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-068",
+      "paragraph_id": "p68",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele der Bäume wachsen in Form eines hohen, schmalen Kegels.",
+      "text_markdown": "Viele der Bäume wachsen in Form eines hohen, schmalen Kegels.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Viele der Bäume wachsen in Form eines hohen, schmalen Kegels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-069",
+      "paragraph_id": "p69",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn starker Schnee auf einen kegelförmigen Baum fällt, gleitet er leicht ab.",
+      "text_markdown": "Wenn starker Schnee auf einen kegelförmigen Baum fällt, gleitet er leicht ab.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Wenn starker Schnee auf einen kegelförmigen Baum fällt, gleitet er leicht ab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "paragraph_id": "p70",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die häufigsten borealen Bäume sind Fichte, Kiefer, Tanne und Lärche.",
+      "text_markdown": "Die häufigsten borealen Bäume sind Fichte, Kiefer, Tanne und Lärche.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Die häufigsten borealen Bäume sind Fichte, Kiefer, Tanne und Lärche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "paragraph_id": "p71",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fichten haben kurze, spitze Nadeln und kleine, herabhängende Zapfen.",
+      "text_markdown": "Fichten haben kurze, spitze Nadeln und kleine, herabhängende Zapfen.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Fichten haben kurze, spitze Nadeln und kleine, herabhängende Zapfen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "paragraph_id": "p72",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiefern haben lange, weiche Nadeln, die in kleinen Bündeln von zwei oder drei wachsen.",
+      "text_markdown": "Kiefern haben lange, weiche Nadeln, die in kleinen Bündeln von zwei oder drei wachsen.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Kiefern haben lange, weiche Nadeln, die in kleinen Bündeln von zwei oder drei wachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "paragraph_id": "p73",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tannen haben flache, weiche Nadeln und hohe Zapfen, die gerade nach oben zeigen.",
+      "text_markdown": "Tannen haben flache, weiche Nadeln und hohe Zapfen, die gerade nach oben zeigen.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Tannen haben flache, weiche Nadeln und hohe Zapfen, die gerade nach oben zeigen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "paragraph_id": "p74",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Lärche ist der einzige häufige boreale Baum, der seine Nadeln im Herbst abwirft.",
+      "text_markdown": "Die Lärche ist der einzige häufige boreale Baum, der seine Nadeln im Herbst abwirft.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Die Lärche ist der einzige häufige boreale Baum, der seine Nadeln im Herbst abwirft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-075",
+      "paragraph_id": "p75",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bevor sie sie abwirft, wird die Lärche leuchtend goldfarben.",
+      "text_markdown": "Bevor sie sie abwirft, wird die Lärche leuchtend goldfarben.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Bevor sie sie abwirft, wird die Lärche leuchtend goldfarben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "paragraph_id": "p76",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein großer Lärchenwald im Oktober sieht aus wie ein Meer aus Gold über dem kalten Land.",
+      "text_markdown": "Ein großer Lärchenwald im Oktober sieht aus wie ein Meer aus Gold über dem kalten Land.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Ein großer Lärchenwald im Oktober sieht aus wie ein Meer aus Gold über dem kalten Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-077",
+      "paragraph_id": "p77",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In all diesen Wäldern stehen die Bäume dicht beieinander.",
+      "text_markdown": "In all diesen Wäldern stehen die Bäume dicht beieinander.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "In all diesen Wäldern stehen die Bäume dicht beieinander.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "paragraph_id": "p78",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Äste sind oben dicht und unten kahl, wo die Sonne nicht hinkommt.",
+      "text_markdown": "Die Äste sind oben dicht und unten kahl, wo die Sonne nicht hinkommt.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Die Äste sind oben dicht und unten kahl, wo die Sonne nicht hinkommt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-079",
+      "paragraph_id": "p79",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Schatten zwischen den Bäumen ist tief und still.",
+      "text_markdown": "Der Schatten zwischen den Bäumen ist tief und still.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Der Schatten zwischen den Bäumen ist tief und still.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-080",
+      "paragraph_id": "p80",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf dem Waldboden ist das Grün nicht in den Blättern, sondern im Moos.",
+      "text_markdown": "Auf dem Waldboden ist das Grün nicht in den Blättern, sondern im Moos.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Auf dem Waldboden ist das Grün nicht in den Blättern, sondern im Moos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-081",
+      "paragraph_id": "p81",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Weiches, dickes Moos bedeckt den Boden, die umgestürzten Baumstämme und die Felsen.",
+      "text_markdown": "Weiches, dickes Moos bedeckt den Boden, die umgestürzten Baumstämme und die Felsen.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Weiches, dickes Moos bedeckt den Boden, die umgestürzten Baumstämme und die Felsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-082",
+      "paragraph_id": "p82",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pilze vieler Formen und Farben drängen sich im Spätsommer durch das Moos.",
+      "text_markdown": "Pilze vieler Formen und Farben drängen sich im Spätsommer durch das Moos.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Pilze vieler Formen und Farben drängen sich im Spätsommer durch das Moos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-083",
+      "paragraph_id": "p83",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleine Beeren wachsen auf winzigen Büschen zwischen dem Moos.",
+      "text_markdown": "Kleine Beeren wachsen auf winzigen Büschen zwischen dem Moos.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Kleine Beeren wachsen auf winzigen Büschen zwischen dem Moos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "paragraph_id": "p84",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Süße wilde Heidelbeeren, rote Preiselbeeren und kleine schwarze Krähenbeeren wachsen hier alle.",
+      "text_markdown": "Süße wilde Heidelbeeren, rote Preiselbeeren und kleine schwarze Krähenbeeren wachsen hier alle.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Süße wilde Heidelbeeren, rote Preiselbeeren und kleine schwarze Krähenbeeren wachsen hier alle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "paragraph_id": "p85",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im kurzen Sommer sammeln die Menschen und Tiere des Waldes sie korbweise.",
+      "text_markdown": "Im kurzen Sommer sammeln die Menschen und Tiere des Waldes sie korbweise.",
+      "title": "Die Bäume",
+      "tts": {
+        "text": "Im kurzen Sommer sammeln die Menschen und Tiere des Waldes sie korbweise.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-086",
+      "paragraph_id": "p86",
+      "heading_level": 1,
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Die Tiere",
+      "text_markdown": "Die Tiere",
+      "title": "Die Tiere"
+    },
+    {
+      "id": "ch06-087",
+      "paragraph_id": "p87",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Nadelwald ist die Heimat vieler Tiere, die wissen, wie man in der Kälte lebt.",
+      "text_markdown": "Der boreale Nadelwald ist die Heimat vieler Tiere, die wissen, wie man in der Kälte lebt.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Der boreale Nadelwald ist die Heimat vieler Tiere, die wissen, wie man in der Kälte lebt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-088",
+      "paragraph_id": "p88",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten von ihnen haben dickes Fell, Fett unter der Haut oder beides.",
+      "text_markdown": "Die meisten von ihnen haben dickes Fell, Fett unter der Haut oder beides.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Die meisten von ihnen haben dickes Fell, Fett unter der Haut oder beides.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "paragraph_id": "p89",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das größte Tier des borealen Nadelwaldes ist der Elch.",
+      "text_markdown": "Das größte Tier des borealen Nadelwaldes ist der Elch.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Das größte Tier des borealen Nadelwaldes ist der Elch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-090",
+      "paragraph_id": "p90",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Elch ist ein sehr großes Hirschtier mit einem langen Gesicht und einem schweren Körper.",
+      "text_markdown": "Ein Elch ist ein sehr großes Hirschtier mit einem langen Gesicht und einem schweren Körper.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein Elch ist ein sehr großes Hirschtier mit einem langen Gesicht und einem schweren Körper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-091",
+      "paragraph_id": "p91",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein ausgewachsener Elch kann größer sein als der größte Mensch, mit großen, breiten Geweihen auf dem Kopf.",
+      "text_markdown": "Ein ausgewachsener Elch kann größer sein als der größte Mensch, mit großen, breiten Geweihen auf dem Kopf.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein ausgewachsener Elch kann größer sein als der größte Mensch, mit großen, breiten Geweihen auf dem Kopf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "paragraph_id": "p92",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer ernährt er sich von Wasserpflanzen und im Winter von Zweigen und Rinde.",
+      "text_markdown": "Im Sommer ernährt er sich von Wasserpflanzen und im Winter von Zweigen und Rinde.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Im Sommer ernährt er sich von Wasserpflanzen und im Winter von Zweigen und Rinde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-093",
+      "paragraph_id": "p93",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Elch ist scheu, aber wenn man einem begegnet, wird man es nicht vergessen.",
+      "text_markdown": "Ein Elch ist scheu, aber wenn man einem begegnet, wird man es nicht vergessen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein Elch ist scheu, aber wenn man einem begegnet, wird man es nicht vergessen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-094",
+      "paragraph_id": "p94",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Braunbären leben in vielen Teilen des borealen Waldes.",
+      "text_markdown": "Braunbären leben in vielen Teilen des borealen Waldes.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Braunbären leben in vielen Teilen des borealen Waldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "paragraph_id": "p95",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer frisst ein Braunbär Beeren, Fisch, Wurzeln und kleine Tiere.",
+      "text_markdown": "Im Sommer frisst ein Braunbär Beeren, Fisch, Wurzeln und kleine Tiere.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Im Sommer frisst ein Braunbär Beeren, Fisch, Wurzeln und kleine Tiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "paragraph_id": "p96",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst frisst er so viel wie möglich, um eine dicke Fettschicht anzulegen.",
+      "text_markdown": "Im Herbst frisst er so viel wie möglich, um eine dicke Fettschicht anzulegen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Im Herbst frisst er so viel wie möglich, um eine dicke Fettschicht anzulegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "paragraph_id": "p97",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann schläft er den ganzen Winter über in einer Höhle unter dem Schnee.",
+      "text_markdown": "Dann schläft er den ganzen Winter über in einer Höhle unter dem Schnee.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Dann schläft er den ganzen Winter über in einer Höhle unter dem Schnee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "paragraph_id": "p98",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wölfe jagen in Familiengruppen, die Rudel genannt werden, durch den Wald.",
+      "text_markdown": "Wölfe jagen in Familiengruppen, die Rudel genannt werden, durch den Wald.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Wölfe jagen in Familiengruppen, die Rudel genannt werden, durch den Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "paragraph_id": "p99",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Wolfsrudel kann an einem einzigen Tag viele Meilen zurücklegen.",
+      "text_markdown": "Ein Wolfsrudel kann an einem einzigen Tag viele Meilen zurücklegen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein Wolfsrudel kann an einem einzigen Tag viele Meilen zurücklegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-100",
+      "paragraph_id": "p100",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wölfe jagen Elche, Hirsche und kleinere Tiere.",
+      "text_markdown": "Die Wölfe jagen Elche, Hirsche und kleinere Tiere.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Die Wölfe jagen Elche, Hirsche und kleinere Tiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "paragraph_id": "p101",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im tiefen Schnee gehen sie in einer Reihe, wobei jeder Wolf in die Spuren des vorderen tritt.",
+      "text_markdown": "Im tiefen Schnee gehen sie in einer Reihe, wobei jeder Wolf in die Spuren des vorderen tritt.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Im tiefen Schnee gehen sie in einer Reihe, wobei jeder Wolf in die Spuren des vorderen tritt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-102",
+      "paragraph_id": "p102",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Luchs ist eine Wildkatze des borealen Waldes.",
+      "text_markdown": "Der Luchs ist eine Wildkatze des borealen Waldes.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Der Luchs ist eine Wildkatze des borealen Waldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-103",
+      "paragraph_id": "p103",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er hat dickes graues Fell, einen kurzen Schwanz und spitze Haarbüschel an den Ohrspitzen.",
+      "text_markdown": "Er hat dickes graues Fell, einen kurzen Schwanz und spitze Haarbüschel an den Ohrspitzen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Er hat dickes graues Fell, einen kurzen Schwanz und spitze Haarbüschel an den Ohrspitzen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-104",
+      "paragraph_id": "p104",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine großen, behaarten Pfoten wirken im tiefen Schnee wie Schneeschuhe.",
+      "text_markdown": "Seine großen, behaarten Pfoten wirken im tiefen Schnee wie Schneeschuhe.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Seine großen, behaarten Pfoten wirken im tiefen Schnee wie Schneeschuhe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "paragraph_id": "p105",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Luchs jagt hauptsächlich den Schneeschuhhasen.",
+      "text_markdown": "Der Luchs jagt hauptsächlich den Schneeschuhhasen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Der Luchs jagt hauptsächlich den Schneeschuhhasen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "paragraph_id": "p106",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Schneeschuhhase wird im Sommer braun und im Winter weiß, um sich dem Boden anzupassen.",
+      "text_markdown": "Der Schneeschuhhase wird im Sommer braun und im Winter weiß, um sich dem Boden anzupassen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Der Schneeschuhhase wird im Sommer braun und im Winter weiß, um sich dem Boden anzupassen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-107",
+      "paragraph_id": "p107",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biber leben in den Flüssen und Seen des Waldes.",
+      "text_markdown": "Biber leben in den Flüssen und Seen des Waldes.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Biber leben in den Flüssen und Seen des Waldes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-108",
+      "paragraph_id": "p108",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biber fällt Bäume mit seinen starken Zähnen und baut Dämme und Biberburgen aus Holz und Schlamm.",
+      "text_markdown": "Ein Biber fällt Bäume mit seinen starken Zähnen und baut Dämme und Biberburgen aus Holz und Schlamm.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein Biber fällt Bäume mit seinen starken Zähnen und baut Dämme und Biberburgen aus Holz und Schlamm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-109",
+      "paragraph_id": "p109",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biberteich kann einen ganzen Waldabschnitt in ein ruhiges, lebendiges Gewässer verwandeln.",
+      "text_markdown": "Ein Biberteich kann einen ganzen Waldabschnitt in ein ruhiges, lebendiges Gewässer verwandeln.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Ein Biberteich kann einen ganzen Waldabschnitt in ein ruhiges, lebendiges Gewässer verwandeln.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-110",
+      "paragraph_id": "p110",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoch in den Bäumen zwitschern Eichhörnchen laut und sammeln Tannenzapfen für den Winter.",
+      "text_markdown": "Hoch in den Bäumen zwitschern Eichhörnchen laut und sammeln Tannenzapfen für den Winter.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Hoch in den Bäumen zwitschern Eichhörnchen laut und sammeln Tannenzapfen für den Winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-111",
+      "paragraph_id": "p111",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vielfraße, Marder und Nerze gleiten lautlos durch das Unterholz.",
+      "text_markdown": "Vielfraße, Marder und Nerze gleiten lautlos durch das Unterholz.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Vielfraße, Marder und Nerze gleiten lautlos durch das Unterholz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "paragraph_id": "p112",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Eulenarten jagen nachts.",
+      "text_markdown": "Viele Eulenarten jagen nachts.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Viele Eulenarten jagen nachts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "paragraph_id": "p113",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Bartkauz ist eine der größten Eulen der Welt und lebt im borealen Wald.",
+      "text_markdown": "Der Bartkauz ist eine der größten Eulen der Welt und lebt im borealen Wald.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Der Bartkauz ist eine der größten Eulen der Welt und lebt im borealen Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "paragraph_id": "p114",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Raben fliegen zwischen den Bäumen und rufen einander mit vielen verschiedenen Stimmen zu.",
+      "text_markdown": "Raben fliegen zwischen den Bäumen und rufen einander mit vielen verschiedenen Stimmen zu.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Raben fliegen zwischen den Bäumen und rufen einander mit vielen verschiedenen Stimmen zu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "paragraph_id": "p115",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im kurzen Sommer füllen Schwärme von Mücken und kleinen Fliegen die Luft.",
+      "text_markdown": "Im kurzen Sommer füllen Schwärme von Mücken und kleinen Fliegen die Luft.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Im kurzen Sommer füllen Schwärme von Mücken und kleinen Fliegen die Luft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-116",
+      "paragraph_id": "p116",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Für ein paar Wochen ist der Wald lebendig vom Summen der Insekten, dem Gesang kleiner Vögel und dem Plätschern der Fische in den Seen.",
+      "text_markdown": "Für ein paar Wochen ist der Wald lebendig vom Summen der Insekten, dem Gesang kleiner Vögel und dem Plätschern der Fische in den Seen.",
+      "title": "Die Tiere",
+      "tts": {
+        "text": "Für ein paar Wochen ist der Wald lebendig vom Summen der Insekten, dem Gesang kleiner Vögel und dem Plätschern der Fische in den Seen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-117",
+      "paragraph_id": "p117",
+      "heading_level": 1,
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Die Menschen",
+      "text_markdown": "Die Menschen",
+      "title": "Die Menschen"
+    },
+    {
+      "id": "ch07-118",
+      "paragraph_id": "p118",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald ist einer der leersten Orte der Erde.",
+      "text_markdown": "Der boreale Wald ist einer der leersten Orte der Erde.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Der boreale Wald ist einer der leersten Orte der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-119",
+      "paragraph_id": "p119",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange Winter und dünner Boden machen es schwierig, hier Nahrung anzubauen.",
+      "text_markdown": "Lange Winter und dünner Boden machen es schwierig, hier Nahrung anzubauen.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Lange Winter und dünner Boden machen es schwierig, hier Nahrung anzubauen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "paragraph_id": "p120",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doch seit vielen Tausenden von Jahren leben Menschen in diesem großen Wald.",
+      "text_markdown": "Doch seit vielen Tausenden von Jahren leben Menschen in diesem großen Wald.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Doch seit vielen Tausenden von Jahren leben Menschen in diesem großen Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "paragraph_id": "p121",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Nordeuropa leben die Sami seit sehr langer Zeit im borealen Wald und in der darüber liegenden Tundra.",
+      "text_markdown": "In Nordeuropa leben die Sami seit sehr langer Zeit im borealen Wald und in der darüber liegenden Tundra.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "In Nordeuropa leben die Sami seit sehr langer Zeit im borealen Wald und in der darüber liegenden Tundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "paragraph_id": "p122",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Sami hüten Rentiere in den kalten Ländern Norwegens, Schwedens, Finnlands und Russlands.",
+      "text_markdown": "Die Sami hüten Rentiere in den kalten Ländern Norwegens, Schwedens, Finnlands und Russlands.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Die Sami hüten Rentiere in den kalten Ländern Norwegens, Schwedens, Finnlands und Russlands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "paragraph_id": "p123",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Rentier kann im Schnee Nahrung finden und versorgt die Menschen mit Fleisch, Milch und Fellen.",
+      "text_markdown": "Ein Rentier kann im Schnee Nahrung finden und versorgt die Menschen mit Fleisch, Milch und Fellen.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Ein Rentier kann im Schnee Nahrung finden und versorgt die Menschen mit Fleisch, Milch und Fellen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-124",
+      "paragraph_id": "p124",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Rentier zieht auch Schlitten durch den Winterschnee.",
+      "text_markdown": "Das Rentier zieht auch Schlitten durch den Winterschnee.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Das Rentier zieht auch Schlitten durch den Winterschnee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "paragraph_id": "p125",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Sibirien, im Norden Russlands, haben viele Volksgruppen den borealen Wald zu ihrer Heimat gemacht.",
+      "text_markdown": "In Sibirien, im Norden Russlands, haben viele Volksgruppen den borealen Wald zu ihrer Heimat gemacht.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "In Sibirien, im Norden Russlands, haben viele Volksgruppen den borealen Wald zu ihrer Heimat gemacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "paragraph_id": "p126",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Evenki, die Khanty, die Nenets und andere haben hier seit vielen Generationen gejagt, gefischt und Rentiere gehütet.",
+      "text_markdown": "Die Evenki, die Khanty, die Nenets und andere haben hier seit vielen Generationen gejagt, gefischt und Rentiere gehütet.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Die Evenki, die Khanty, die Nenets und andere haben hier seit vielen Generationen gejagt, gefischt und Rentiere gehütet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "paragraph_id": "p127",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Kanada und Alaska leben viele First Nations Völker und die Dene seit Tausenden von Jahren im borealen Wald.",
+      "text_markdown": "In Kanada und Alaska leben viele First Nations Völker und die Dene seit Tausenden von Jahren im borealen Wald.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "In Kanada und Alaska leben viele First Nations Völker und die Dene seit Tausenden von Jahren im borealen Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-128",
+      "paragraph_id": "p128",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie haben Elche und Karibus gejagt, in den kalten Flüssen gefischt und im kurzen Sommer Beeren gesammelt.",
+      "text_markdown": "Sie haben Elche und Karibus gejagt, in den kalten Flüssen gefischt und im kurzen Sommer Beeren gesammelt.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie haben Elche und Karibus gejagt, in den kalten Flüssen gefischt und im kurzen Sommer Beeren gesammelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-129",
+      "paragraph_id": "p129",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In all diesen Ländern stellten die Menschen warme Winterkleidung aus Tierhäuten und Pelz her.",
+      "text_markdown": "In all diesen Ländern stellten die Menschen warme Winterkleidung aus Tierhäuten und Pelz her.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "In all diesen Ländern stellten die Menschen warme Winterkleidung aus Tierhäuten und Pelz her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "paragraph_id": "p130",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie bauten Häuser aus Holz, Rinde und Fell, mit kleinen Öffnungen, um die Kälte fernzuhalten.",
+      "text_markdown": "Sie bauten Häuser aus Holz, Rinde und Fell, mit kleinen Öffnungen, um die Kälte fernzuhalten.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie bauten Häuser aus Holz, Rinde und Fell, mit kleinen Öffnungen, um die Kälte fernzuhalten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "paragraph_id": "p131",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie lernten, auf Schneeschuhen und langen dünnen Skiern zu reisen, und später mit Hundeschlitten.",
+      "text_markdown": "Sie lernten, auf Schneeschuhen und langen dünnen Skiern zu reisen, und später mit Hundeschlitten.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie lernten, auf Schneeschuhen und langen dünnen Skiern zu reisen, und später mit Hundeschlitten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "paragraph_id": "p132",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer reisten sie mit dem Kanu, mit langen Birkenrindenbooten oder mit Rentieren.",
+      "text_markdown": "Im Sommer reisten sie mit dem Kanu, mit langen Birkenrindenbooten oder mit Rentieren.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Im Sommer reisten sie mit dem Kanu, mit langen Birkenrindenbooten oder mit Rentieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-133",
+      "paragraph_id": "p133",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Menschen kannten die Namen jedes Baumes und jedes Tieres im Wald.",
+      "text_markdown": "Diese Menschen kannten die Namen jedes Baumes und jedes Tieres im Wald.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Diese Menschen kannten die Namen jedes Baumes und jedes Tieres im Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-134",
+      "paragraph_id": "p134",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie wussten, wo die Beerensträucher waren und wo die Fische am dichtesten vorkamen.",
+      "text_markdown": "Sie wussten, wo die Beerensträucher waren und wo die Fische am dichtesten vorkamen.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie wussten, wo die Beerensträucher waren und wo die Fische am dichtesten vorkamen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-135",
+      "paragraph_id": "p135",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie lernten, welche Pilze essbar waren und welche nicht.",
+      "text_markdown": "Sie lernten, welche Pilze essbar waren und welche nicht.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie lernten, welche Pilze essbar waren und welche nicht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-136",
+      "paragraph_id": "p136",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie lernten, im Schnee die Spuren von Elchen und Bären zu lesen.",
+      "text_markdown": "Sie lernten, im Schnee die Spuren von Elchen und Bären zu lesen.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Sie lernten, im Schnee die Spuren von Elchen und Bären zu lesen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-137",
+      "paragraph_id": "p137",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In jüngerer Zeit kamen andere Menschen in den Wald, um Holz zu schlagen, nach Erz zu graben oder in kleinen Städten entlang der Flüsse zu leben.",
+      "text_markdown": "In jüngerer Zeit kamen andere Menschen in den Wald, um Holz zu schlagen, nach Erz zu graben oder in kleinen Städten entlang der Flüsse zu leben.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "In jüngerer Zeit kamen andere Menschen in den Wald, um Holz zu schlagen, nach Erz zu graben oder in kleinen Städten entlang der Flüsse zu leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-138",
+      "paragraph_id": "p138",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Doch die meiste Zeit seiner langen Geschichte war der boreale Wald ein ruhiger Ort.",
+      "text_markdown": "Doch die meiste Zeit seiner langen Geschichte war der boreale Wald ein ruhiger Ort.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Doch die meiste Zeit seiner langen Geschichte war der boreale Wald ein ruhiger Ort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "paragraph_id": "p139",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Ort, an dem kleine Gruppen von Menschen das Land mit den Bäumen, den Tieren und der Kälte teilten.",
+      "text_markdown": "Ein Ort, an dem kleine Gruppen von Menschen das Land mit den Bäumen, den Tieren und der Kälte teilten.",
+      "title": "Die Menschen",
+      "tts": {
+        "text": "Ein Ort, an dem kleine Gruppen von Menschen das Land mit den Bäumen, den Tieren und der Kälte teilten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-140",
+      "paragraph_id": "p140",
+      "heading_level": 1,
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Das Biom heute",
+      "text_markdown": "Das Biom heute",
+      "title": "Das Biom heute"
+    },
+    {
+      "id": "ch08-141",
+      "paragraph_id": "p141",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald ist riesig, aber nicht so unberührt, wie er aussieht.",
+      "text_markdown": "Der boreale Wald ist riesig, aber nicht so unberührt, wie er aussieht.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Der boreale Wald ist riesig, aber nicht so unberührt, wie er aussieht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-142",
+      "paragraph_id": "p142",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seit mehr als einhundert Jahren schlagen Menschen große Mengen Holz aus diesem Wald.",
+      "text_markdown": "Seit mehr als einhundert Jahren schlagen Menschen große Mengen Holz aus diesem Wald.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Seit mehr als einhundert Jahren schlagen Menschen große Mengen Holz aus diesem Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "paragraph_id": "p143",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die hohen, geraden Bäume liefern gutes Bauholz und gutes Papier.",
+      "text_markdown": "Die hohen, geraden Bäume liefern gutes Bauholz und gutes Papier.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Die hohen, geraden Bäume liefern gutes Bauholz und gutes Papier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-144",
+      "paragraph_id": "p144",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In vielen Teilen des borealen Waldes wurden ganze Abschnitte von Bäumen gefällt und sind langsam wieder nachgewachsen.",
+      "text_markdown": "In vielen Teilen des borealen Waldes wurden ganze Abschnitte von Bäumen gefällt und sind langsam wieder nachgewachsen.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "In vielen Teilen des borealen Waldes wurden ganze Abschnitte von Bäumen gefällt und sind langsam wieder nachgewachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-145",
+      "paragraph_id": "p145",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der boreale Wald speichert auch eine enorme Menge Kohlenstoff, in den Bäumen sowie im Boden und in den Mooren darunter.",
+      "text_markdown": "Der boreale Wald speichert auch eine enorme Menge Kohlenstoff, in den Bäumen sowie im Boden und in den Mooren darunter.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Der boreale Wald speichert auch eine enorme Menge Kohlenstoff, in den Bäumen sowie im Boden und in den Mooren darunter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-146",
+      "paragraph_id": "p146",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gesunder borealer Boden hält diesen Kohlenstoff sicher von der Luft fern.",
+      "text_markdown": "Gesunder borealer Boden hält diesen Kohlenstoff sicher von der Luft fern.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Gesunder borealer Boden hält diesen Kohlenstoff sicher von der Luft fern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "paragraph_id": "p147",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn die Bäume und der Boden intakt bleiben, hilft der Wald, die Luft der gesamten Erde im Gleichgewicht zu halten.",
+      "text_markdown": "Wenn die Bäume und der Boden intakt bleiben, hilft der Wald, die Luft der gesamten Erde im Gleichgewicht zu halten.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Wenn die Bäume und der Boden intakt bleiben, hilft der Wald, die Luft der gesamten Erde im Gleichgewicht zu halten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-148",
+      "paragraph_id": "p148",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den letzten Jahren ist der boreale Wald wärmer geworden.",
+      "text_markdown": "In den letzten Jahren ist der boreale Wald wärmer geworden.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "In den letzten Jahren ist der boreale Wald wärmer geworden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "paragraph_id": "p149",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange, warme Sommer haben größere Waldbrände mit sich gebracht, als sich die Menschen des Nordens erinnern können.",
+      "text_markdown": "Lange, warme Sommer haben größere Waldbrände mit sich gebracht, als sich die Menschen des Nordens erinnern können.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Lange, warme Sommer haben größere Waldbrände mit sich gebracht, als sich die Menschen des Nordens erinnern können.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-150",
+      "paragraph_id": "p150",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Einige dieser Brände dauern jetzt wochenlang und vernichten Millionen von Bäumen.",
+      "text_markdown": "Einige dieser Brände dauern jetzt wochenlang und vernichten Millionen von Bäumen.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Einige dieser Brände dauern jetzt wochenlang und vernichten Millionen von Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-151",
+      "paragraph_id": "p151",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im hohen Norden haben die wärmeren Sommer begonnen, den Permafrost aufzuweichen.",
+      "text_markdown": "Im hohen Norden haben die wärmeren Sommer begonnen, den Permafrost aufzuweichen.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Im hohen Norden haben die wärmeren Sommer begonnen, den Permafrost aufzuweichen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch08-152",
+      "paragraph_id": "p152",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Menschen und Gruppen arbeiten heute daran, den borealen Wald zu schützen.",
+      "text_markdown": "Viele Menschen und Gruppen arbeiten heute daran, den borealen Wald zu schützen.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Viele Menschen und Gruppen arbeiten heute daran, den borealen Wald zu schützen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "paragraph_id": "p153",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie legen große Parks an, in denen der Wald so wachsen kann, wie er es schon immer getan hat.",
+      "text_markdown": "Sie legen große Parks an, in denen der Wald so wachsen kann, wie er es schon immer getan hat.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Sie legen große Parks an, in denen der Wald so wachsen kann, wie er es schon immer getan hat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-154",
+      "paragraph_id": "p154",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie helfen den Menschen, die dort seit vielen Generationen leben, ihr eigenes Land zu pflegen.",
+      "text_markdown": "Sie helfen den Menschen, die dort seit vielen Generationen leben, ihr eigenes Land zu pflegen.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Sie helfen den Menschen, die dort seit vielen Generationen leben, ihr eigenes Land zu pflegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-155",
+      "paragraph_id": "p155",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie erforschen den Wald, um zu verstehen, wie er lebt und wie er intakt gehalten werden kann.",
+      "text_markdown": "Sie erforschen den Wald, um zu verstehen, wie er lebt und wie er intakt gehalten werden kann.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Sie erforschen den Wald, um zu verstehen, wie er lebt und wie er intakt gehalten werden kann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch08-156",
+      "paragraph_id": "p156",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein gesunder borealer Wald ist eine große grüne Decke, die dazu beiträgt, die Welt kühl zu halten.",
+      "text_markdown": "Ein gesunder borealer Wald ist eine große grüne Decke, die dazu beiträgt, die Welt kühl zu halten.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Ein gesunder borealer Wald ist eine große grüne Decke, die dazu beiträgt, die Welt kühl zu halten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-157",
+      "paragraph_id": "p157",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er ist unsere Fürsorge wert.",
+      "text_markdown": "Er ist unsere Fürsorge wert.",
+      "title": "Das Biom heute",
+      "tts": {
+        "text": "Er ist unsere Fürsorge wert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "paragraph_id": "p158",
+      "heading_level": 1,
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "text": "Abschluss",
+      "text_markdown": "Abschluss",
+      "title": "Abschluss"
+    },
+    {
+      "id": "ch09-159",
+      "paragraph_id": "p159",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist der boreale Wald.",
+      "text_markdown": "Das ist der boreale Wald.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Das ist der boreale Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-160",
+      "paragraph_id": "p160",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein breiter grüner Gürtel aus immergrünen Bäumen, Seen und stillem Schnee, der sich fast um die ganze Spitze der Welt zieht.",
+      "text_markdown": "Ein breiter grüner Gürtel aus immergrünen Bäumen, Seen und stillem Schnee, der sich fast um die ganze Spitze der Welt zieht.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Ein breiter grüner Gürtel aus immergrünen Bäumen, Seen und stillem Schnee, der sich fast um die ganze Spitze der Welt zieht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "paragraph_id": "p161",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du jemals in einem stehst, sei eine Minute lang still.",
+      "text_markdown": "Wenn du jemals in einem stehst, sei eine Minute lang still.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Wenn du jemals in einem stehst, sei eine Minute lang still.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "paragraph_id": "p162",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lausche dem Wind in den hohen Nadeln.",
+      "text_markdown": "Lausche dem Wind in den hohen Nadeln.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Lausche dem Wind in den hohen Nadeln.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-163",
+      "paragraph_id": "p163",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beobachte, wie die Sonne durch die Bäume auf das Moos fällt.",
+      "text_markdown": "Beobachte, wie die Sonne durch die Bäume auf das Moos fällt.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Beobachte, wie die Sonne durch die Bäume auf das Moos fällt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch09-164",
+      "paragraph_id": "p164",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rieche die kalte Kiefernluft.",
+      "text_markdown": "Rieche die kalte Kiefernluft.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Rieche die kalte Kiefernluft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-165",
+      "paragraph_id": "p165",
+      "chapter": 9,
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du wirst das langsame, geduldige Herz des Bioms um dich herum schlagen fühlen.",
+      "text_markdown": "Du wirst das langsame, geduldige Herz des Bioms um dich herum schlagen fühlen.",
+      "title": "Abschluss",
+      "tts": {
+        "text": "Du wirst das langsame, geduldige Herz des Bioms um dich herum schlagen fühlen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

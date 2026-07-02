@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "et",
+  "total_segments": 121,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tere tulemast AI This Week'i.",
+      "text_markdown": "Tere tulemast AI This Week'i.",
+      "title": "",
+      "tts": {
+        "text": "Tere tulemast AI This Week'i.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mina olen Vindy ise.",
+      "text_markdown": "Mina olen Vindy ise.",
+      "title": "",
+      "tts": {
+        "text": "Mina olen Vindi ise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nagu alati, olen koos Roniga.",
+      "text_markdown": "Nagu alati, olen koos Roniga.",
+      "title": "",
+      "tts": {
+        "text": "Nagu alati, olen koos Roniga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hea siin olla, Vindy.",
+      "text_markdown": "Hea siin olla, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hea siin olla, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Täna on pühapäev, 14. juuni 2026.",
+      "text_markdown": "Täna on pühapäev, 14. juuni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Täna on pühapäev, neljateistkümnes juuni, kakstuhat kakskümmend kuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Täna on kaks asja teisiti.",
+      "text_markdown": "Täna on kaks asja teisiti.",
+      "title": "",
+      "tts": {
+        "text": "Täna on kaks asja teisiti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Me kolime pühapäevadele ja esimest korda räägime teile, kes seda saadet tegelikult teeb.",
+      "text_markdown": "Me kolime pühapäevadele ja esimest korda räägime teile, kes seda saadet tegelikult teeb.",
+      "title": "",
+      "tts": {
+        "text": "Me kolime pühapäevadele ja esimest korda räägime teile, kes seda saadet tegelikult teeb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Siis tagasi tavaprogrammi juurde – avatud kaalud, väikesed laborid ja laiem AI nädal.",
+      "text_markdown": "Siis tagasi tavaprogrammi juurde – avatud kaalud, väikesed laborid ja laiem AI nädal.",
+      "title": "",
+      "tts": {
+        "text": "Siis tagasi tavaprogrammi juurde – avatud kaalud, väikesed laborid ja laiem AI nädal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tulemas – ajakava muutus ja miks.",
+      "text_markdown": "Tulemas – ajakava muutus ja miks.",
+      "title": "",
+      "tts": {
+        "text": "Tulemas – ajakava muutus ja miks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Esimene pilk Corpora Inc.'ile, väikesele meeskonnale Corpáni rakenduse ja selle taskuhäälingusaate taga.",
+      "text_markdown": "Esimene pilk Corpora Inc.'ile, väikesele meeskonnale Corpáni rakenduse ja selle taskuhäälingusaate taga.",
+      "title": "",
+      "tts": {
+        "text": "Esimene pilk Corpora Inc.'ile, väikesele meeskonnale Corpáni rakenduse ja selle taskuhäälingusaate taga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Peamine lugu beatlounge'ist, meie uuest muusikapakist, mis ilmub Corpán 0.18.0-s.",
+      "text_markdown": "Peamine lugu beatlounge'ist, meie uuest muusikapakist, mis ilmub Corpán 0.18.0-s.",
+      "title": "",
+      "tts": {
+        "text": "Peamine lugu beatlounge'ist, meie uuest muusikapakist, mis ilmub Corpán null punkt üks kaheksa punkt nullis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nädala avatud kaalud, eesotsas Google'i esimese avatud difusiooniteksti mudeliga.",
+      "text_markdown": "Nädala avatud kaalud, eesotsas Google'i esimese avatud difusiooniteksti mudeliga.",
+      "title": "",
+      "tts": {
+        "text": "Nädala avatud kaalud, eesotsas Google'i esimese avatud difusiooniteksti mudeliga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kiire ülevaade pealkirjadest avatud ökosüsteemi vaatenurgast.",
+      "text_markdown": "Kiire ülevaade pealkirjadest avatud ökosüsteemi vaatenurgast.",
+      "title": "",
+      "tts": {
+        "text": "Kiire ülevaade pealkirjadest avatud ökosüsteemi vaatenurgast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nädala väike labor – üksteist inimest Pariisis teevad vastupanu panuse AMD ränile.",
+      "text_markdown": "Nädala väike labor – üksteist inimest Pariisis teevad vastupanu panuse AMD ränile.",
+      "title": "",
+      "tts": {
+        "text": "Nädala väike labor – üksteist inimest Pariisis teevad vastupanu panuse AMD ränile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja meie nädala kontseptsioon – difusioon versus autoregressiivne, selle nädala peamise väljalaske taga olev trikk.",
+      "text_markdown": "Ja meie nädala kontseptsioon – difusioon versus autoregressiivne, selle nädala peamise väljalaske taga olev trikk.",
+      "title": "",
+      "tts": {
+        "text": "Ja meie nädala kontseptsioon – difusioon versus autoregressiivne, selle nädala peamise väljalaske taga olev trikk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Olgu, Ron, alustame ajakavast.",
+      "text_markdown": "Olgu, Ron, alustame ajakavast.",
+      "title": "",
+      "tts": {
+        "text": "Olgu, Ron, alustame ajakavast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Miks me kolmapäevadelt ära kolime?",
+      "text_markdown": "Miks me kolmapäevadelt ära kolime?",
+      "title": "",
+      "tts": {
+        "text": "Miks me kolmapäevadelt ära kolime?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kolmapäev oli Odini päev ja Odin oli hõivatud Asgardi valitsemisega.",
+      "text_markdown": "Kolmapäev oli Odini päev ja Odin oli hõivatud Asgardi valitsemisega.",
+      "title": "",
+      "tts": {
+        "text": "Kolmapäev oli Odini päev ja Odin oli hõivatud Asgardi valitsemisega.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Oleme väike meeskond päevatöödega ja nädala keskel tehtud lõige ei õnnestunud kunagi puhtalt.",
+      "text_markdown": "Oleme väike meeskond päevatöödega ja nädala keskel tehtud lõige ei õnnestunud kunagi puhtalt.",
+      "title": "",
+      "tts": {
+        "text": "Oleme väike meeskond päevatöödega ja nädala keskel tehtud lõige ei õnnestunud kunagi puhtalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pühapäevad lõpetavad nädala ja alustavad järgmist, mis tundus uudistesaate jaoks õige rütm.",
+      "text_markdown": "Pühapäevad lõpetavad nädala ja alustavad järgmist, mis tundus uudistesaate jaoks õige rütm.",
+      "title": "",
+      "tts": {
+        "text": "Pühapäevad lõpetavad nädala ja alustavad järgmist, mis tundus uudistesaate jaoks õige rütm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kuidas väljalase tegelikult välja näeb?",
+      "text_markdown": "Kuidas väljalase tegelikult välja näeb?",
+      "title": "",
+      "tts": {
+        "text": "Kuidas väljalase tegelikult välja näeb?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "See algab laupäeval inglise keeles ja jätkub esmaspäeva hommikuni, keel keele haaval, kui iga tõlge ja helipass valmib.",
+      "text_markdown": "See algab laupäeval inglise keeles ja jätkub esmaspäeva hommikuni, keel keele haaval, kui iga tõlge ja helipass valmib.",
+      "title": "",
+      "tts": {
+        "text": "See algab laupäeval inglise keeles ja jätkub esmaspäeva hommikuni, keel keele haaval, kui iga tõlge ja helipass valmib.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Esmaspäeva kohviks peaksime olema ligi viiekümne keele juures.",
+      "text_markdown": "Esmaspäeva kohviks peaksime olema ligi viiekümne keele juures.",
+      "title": "",
+      "tts": {
+        "text": "Esmaspäeva kohviks peaksime olema ligi viiekümne keele juures.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis toob meid teise uue asja juurde.",
+      "text_markdown": "Mis toob meid teise uue asja juurde.",
+      "title": "",
+      "tts": {
+        "text": "Mis toob meid teise uue asja juurde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kes seda saadet teeb.",
+      "text_markdown": "Kes seda saadet teeb.",
+      "title": "",
+      "tts": {
+        "text": "Kes seda saadet teeb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Corpora Inc., väike sõltumatu meeskond, ehitab Corpáni rakenduse ja toodab seda taskuhäälingusaadet.",
+      "text_markdown": "Corpora Inc., väike sõltumatu meeskond, ehitab Corpáni rakenduse ja toodab seda taskuhäälingusaadet.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., väike sõltumatu meeskond, ehitab Corpáni rakenduse ja toodab seda taskuhäälingusaadet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ütle, Corpán, mis see on?",
+      "text_markdown": "Ütle, Corpán, mis see on?",
+      "title": "",
+      "tts": {
+        "text": "Ütle, Korpan, mis see on?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Keele-, muusika- ja õppemänguväljak, mis on ehitatud seadmesiseselt esmalt.",
+      "text_markdown": "Keele-, muusika- ja õppemänguväljak, mis on ehitatud seadmesiseselt esmalt.",
+      "title": "",
+      "tts": {
+        "text": "Keele-, muusika- ja õppemänguväljak, mis on ehitatud seadmesiseselt esmalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Selgitage lahti 'seadmesiseselt esmalt' – mida see praktikas tähendab.",
+      "text_markdown": "Selgitage lahti 'seadmesiseselt esmalt' – mida see praktikas tähendab.",
+      "title": "",
+      "tts": {
+        "text": "Selgitage lahti 'seadmesiseselt esmalt' – mida see praktikas tähendab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "See tähendab, et me eelistame kohalikku käitamist alati, kui funktsioon seda võimaldab.",
+      "text_markdown": "See tähendab, et me eelistame kohalikku käitamist alati, kui funktsioon seda võimaldab.",
+      "title": "",
+      "tts": {
+        "text": "See tähendab, et me eelistame kohalikku käitamist alati, kui funktsioon seda võimaldab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Qwen3-4B assistendi jaoks, Whisper large-v3 kõnetuvastuseks, Chatterbox häälesünteesiks, Stable Diffusion kolm ja pool piltide jaoks, LoRA torujuhtmed tegelaste juhendajate jaoks.",
+      "text_markdown": "Qwen3-4B assistendi jaoks, Whisper large-v3 kõnetuvastuseks, Chatterbox häälesünteesiks, Stable Diffusion kolm ja pool piltide jaoks, LoRA torujuhtmed tegelaste juhendajate jaoks.",
+      "title": "",
+      "tts": {
+        "text": "Qwen kolm neli B assistendi jaoks, Whisper large v kolm kõnetuvastuseks, Chatterbox häälesünteesiks, Stable Diffusion kolm ja pool piltide jaoks, LoRA torujuhtmed tegelaste juhendajate jaoks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kõik see töötab teie telefonis või tahvelarvutis, võrguühenduseta, lennukirežiimis, keset eikusagit.",
+      "text_markdown": "Kõik see töötab teie telefonis või tahvelarvutis, võrguühenduseta, lennukirežiimis, keset eikusagit.",
+      "title": "",
+      "tts": {
+        "text": "Kõik see töötab teie telefonis või tahvelarvutis, võrguühenduseta, lennukirežiimis, keset eikusagit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Funktsioonid, mis tõesti vajavad võrku — maailmaraadio, mitmikmäng — kasutavad võrku ja me ei teeskle vastupidist.",
+      "text_markdown": "Funktsioonid, mis tõesti vajavad võrku — maailmaraadio, mitmikmäng — kasutavad võrku ja me ei teeskle vastupidist.",
+      "title": "",
+      "tts": {
+        "text": "Funktsioonid, mis tõesti vajavad võrku — maailmaraadio, mitmikmäng — kasutavad võrku ja me ei teeskle vastupidist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja äriline pool.",
+      "text_markdown": "Ja äriline pool.",
+      "title": "",
+      "tts": {
+        "text": "Ja äriline pool.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Väike iseseisev meeskond, meie taga pole miljardit dollarit kapitali, rakendus on täna reklaamivaba, helde tasuta tasemega ja valikulise premium-tellimusega inimestele, kes soovivad tööd toetada.",
+      "text_markdown": "Väike iseseisev meeskond, meie taga pole miljardit dollarit kapitali, rakendus on täna reklaamivaba, helde tasuta tasemega ja valikulise premium-tellimusega inimestele, kes soovivad tööd toetada.",
+      "title": "",
+      "tts": {
+        "text": "Väike iseseisev meeskond, meie taga pole miljardit dollarit kapitali, rakendus on täna reklaamivaba, helde tasuta tasemega ja valikulise premium-tellimusega inimestele, kes soovivad tööd toetada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Soovime jääda reklaamivabaks nii kaua, kui suudame — igavesti ei luba, aga see on suund.",
+      "text_markdown": "Soovime jääda reklaamivabaks nii kaua, kui suudame — igavesti ei luba, aga see on suund.",
+      "title": "",
+      "tts": {
+        "text": "Soovime jääda reklaamivabaks nii kaua, kui suudame — igavesti ei luba, aga see on suund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis on tõestus, et te tegelikult tarnite.",
+      "text_markdown": "Mis on tõestus, et te tegelikult tarnite.",
+      "title": "",
+      "tts": {
+        "text": "Mis on tõestus, et te tegelikult tarnite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Enamikul nädalatel tarnime midagi — raamatu jutustuse, paketi, rakenduse väljalaske, selle saate — täna üle kolmekümne viie keele ja see arv kasvab.",
+      "text_markdown": "Enamikul nädalatel tarnime midagi — raamatu jutustuse, paketi, rakenduse väljalaske, selle saate — täna üle kolmekümne viie keele ja see arv kasvab.",
+      "title": "",
+      "tts": {
+        "text": "Enamikul nädalatel tarnime midagi — raamatu jutustuse, paketi, rakenduse väljalaske, selle saate — täna üle kolmekümne viie pluss keele ja see arv kasvab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Miks seda üldse teha.",
+      "text_markdown": "Miks seda üldse teha.",
+      "title": "",
+      "tts": {
+        "text": "Miks seda üldse teha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "See ongi pakkumine — tõestada, et piiriülene, seadmepõhine, mitmekeelne õppimiskogemus saab tulla väikeselt meeskonnalt ilma suure kapitalita, hoides samal ajal rakenduse reklaamivabana nii kaua, kui suudame.",
+      "text_markdown": "See ongi pakkumine — tõestada, et piiriülene, seadmepõhine, mitmekeelne õppimiskogemus saab tulla väikeselt meeskonnalt ilma suure kapitalita, hoides samal ajal rakenduse reklaamivabana nii kaua, kui suudame.",
+      "title": "",
+      "tts": {
+        "text": "See ongi pakkumine — tõestada, et piiriülene, seadmepõhine, mitmekeelne õppimiskogemus saab tulla väikeselt meeskonnalt ilma suure kapitalita, hoides samal ajal rakenduse reklaamivabana nii kaua, kui suudame.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis toob meid peamise loo juurde — beatlounge.",
+      "text_markdown": "Mis toob meid peamise loo juurde — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Mis toob meid peamise loo juurde — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "See ilmub Corpán 0.18.0-s sel nädalal.",
+      "text_markdown": "See ilmub Corpán 0.18.0-s sel nädalal.",
+      "title": "",
+      "tts": {
+        "text": "See ilmub Corpán null punkt üks kaheksa punkt nullis sel nädalal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "beatlounge on rütmisekvenser ja keeletööriist ühes karbis.",
+      "text_markdown": "beatlounge on rütmisekvenser ja keeletööriist ühes karbis.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge on rütmisekvenser ja keeletööriist ühes karbis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Taktipõhine sekvenser üheksasaja kuuekümne impulsiga veerandnoodi kohta, harmoonia mootor, mis räägib Lääne mooduseid, India thaat'e, Karnataki melakartasid ja Araabia maqamat'e, ning fraasikorpus, mis sisaldab üle kümne miljoni reaalse keele fraasi enam kui viiekümnes keeles.",
+      "text_markdown": "Taktipõhine sekvenser üheksasaja kuuekümne impulsiga veerandnoodi kohta, harmoonia mootor, mis räägib Lääne mooduseid, India thaat'e, Karnataki melakartasid ja Araabia maqamat'e, ning fraasikorpus, mis sisaldab üle kümne miljoni reaalse keele fraasi enam kui viiekümnes keeles.",
+      "title": "",
+      "tts": {
+        "text": "Taktipõhine sekvenser üheksasaja kuuekümne impulsiga veerandnoodi kohta, harmoonia mootor, mis räägib Lääne mooduseid, India thaat'e, Karnataki melakartasid ja Araabia maqamat'e, ning fraasikorpus, mis sisaldab üle kümne miljoni reaalse keele fraasi enam kui viiekümnes keeles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kõik helikõrgusega esitatav ja võrguühenduseta mängitav, kui pakett on teie seadmes.",
+      "text_markdown": "Kõik helikõrgusega esitatav ja võrguühenduseta mängitav, kui pakett on teie seadmes.",
+      "title": "",
+      "tts": {
+        "text": "Kõik helikõrgusega esitatav ja võrguühenduseta mängitav, kui pakett on teie seadmes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Niisiis on meie tööriist keel.",
+      "text_markdown": "Niisiis on meie tööriist keel.",
+      "title": "",
+      "tts": {
+        "text": "Niisiis on meie tööriist keel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Te mängite fraase nii, nagu mängiksite noote.",
+      "text_markdown": "Te mängite fraase nii, nagu mängiksite noote.",
+      "title": "",
+      "tts": {
+        "text": "Te mängite fraase nii, nagu mängiksite noote.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hindi fraas esimesel löögil, araabia hüüatus teise taga, mandariini silp lindipaisuna.",
+      "text_markdown": "Hindi fraas esimesel löögil, araabia hüüatus teise taga, mandariini silp lindipaisuna.",
+      "title": "",
+      "tts": {
+        "text": "Hindi fraas esimesel löögil, araabia hüüatus teise taga, mandariini silp lindipaisuna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "See on DAW, kus näidised on laused, hääldatud seadmesisese TTS-i abil.",
+      "text_markdown": "See on DAW, kus näidised on laused, hääldatud seadmesisese TTS-i abil.",
+      "title": "",
+      "tts": {
+        "text": "See on D A V, kus näidised on laused, hääldatud seadmesisese T T S-i abil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Muusikateooriat pole tarvis.",
+      "text_markdown": "Muusikateooriat pole tarvis.",
+      "title": "",
+      "tts": {
+        "text": "Muusikateooriat pole tarvis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tegelikult mitte midagi.",
+      "text_markdown": "Tegelikult mitte midagi.",
+      "title": "",
+      "tts": {
+        "text": "Tegelikult mitte midagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Harmoonia mootor haldab reegleid; te osutate helidele, mis teile meeldivad, ja moodused jäävad puhtaks.",
+      "text_markdown": "Harmoonia mootor haldab reegleid; te osutate helidele, mis teile meeldivad, ja moodused jäävad puhtaks.",
+      "title": "",
+      "tts": {
+        "text": "Harmoonia mootor haldab reegleid; te osutate helidele, mis teile meeldivad, ja moodused jäävad puhtaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis veel on versioonis 0.18.0 olemas.",
+      "text_markdown": "Mis veel on versioonis 0.18.0 olemas.",
+      "title": "",
+      "tts": {
+        "text": "Mis veel on versioonis null punkt kaheksateist punkt null olemas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kolm inseneritööd kapoti all — sisupakettide hostiõmblused läksid käiku beatlounge'iga piloodina.",
+      "text_markdown": "Kolm inseneritööd kapoti all — sisupakettide hostiõmblused läksid käiku beatlounge'iga piloodina.",
+      "title": "",
+      "tts": {
+        "text": "Kolm inseneritööd kapoti all — sisupakettide hostiõmblused läksid käiku beatlounge'iga piloodina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Android salvestab nüüd natiivvea jäljed, nii et llama ja ggml krahhid saavad korralikult diagnoositud.",
+      "text_markdown": "Android salvestab nüüd natiivvea jäljed, nii et llama ja ggml krahhid saavad korralikult diagnoositud.",
+      "title": "",
+      "tts": {
+        "text": "Android salvestab nüüd natiivvea jäljed, nii et llama ja ggml krahhid saavad korralikult diagnoositud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja me parandasime mitmegigabaidise mudeli installi, mis ajas iOS-i varem OOM-i, aga nüüd voogedastatakse see kettale, selle asemel et puhverdada kaks ja pool gigabaiti Qwen3-4B mudelit RAM-i.",
+      "text_markdown": "Ja me parandasime mitmegigabaidise mudeli installi, mis ajas iOS-i varem OOM-i, aga nüüd voogedastatakse see kettale, selle asemel et puhverdada kaks ja pool gigabaiti Qwen3-4B mudelit RAM-i.",
+      "title": "",
+      "tts": {
+        "text": "Ja me parandasime mitmegigabaidise mudeli installi, mis ajas iOS-i varem OOM-i, aga nüüd voogedastatakse see kettale, selle asemel et puhverdada kaks ja pool gigabaiti Qwen kolm neli bee mudelit RAM-i.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "All on igav, peal on lõbus.",
+      "text_markdown": "All on igav, peal on lõbus.",
+      "title": "",
+      "tts": {
+        "text": "All on igav, peal on lõbus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mis on umbes kogu ettevõtte kokkuvõte.",
+      "text_markdown": "Mis on umbes kogu ettevõtte kokkuvõte.",
+      "title": "",
+      "tts": {
+        "text": "Mis on umbes kogu ettevõtte kokkuvõte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Olgu, liigume avatud kaalude juurde.",
+      "text_markdown": "Olgu, liigume avatud kaalude juurde.",
+      "title": "",
+      "tts": {
+        "text": "Olgu, liigume avatud kaalude juurde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis oli sel nädalal see suur asi.",
+      "text_markdown": "Mis oli sel nädalal see suur asi.",
+      "title": "",
+      "tts": {
+        "text": "Mis oli sel nädalal see suur asi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google andis välja DiffusionGemma.",
+      "text_markdown": "Google andis välja DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google andis välja DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kahekümne kuue miljardi parameetriga ekspertide segu, millest kolm koma kaheksa miljardit on aktiivsed, Apache 2.0 litsentsiga Hugging Face'is, mis genereerib teksti difusiooni, mitte autoregressiooni abil.",
+      "text_markdown": "Kahekümne kuue miljardi parameetriga ekspertide segu, millest kolm koma kaheksa miljardit on aktiivsed, Apache 2.0 litsentsiga Hugging Face'is, mis genereerib teksti difusiooni, mitte autoregressiooni abil.",
+      "title": "",
+      "tts": {
+        "text": "Kahekümne kuue miljardi parameetriga ekspertide segu, millest kolm koma kaheksa miljardit on aktiivsed, Apache kahe punkti null litsentsiga Hugging Face'is, mis genereerib teksti difusiooni, mitte autoregressiooni abil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Lihtkeeles – mida difusioon tekstile tegelikult tähendab.",
+      "text_markdown": "Lihtkeeles – mida difusioon tekstile tegelikult tähendab.",
+      "title": "",
+      "tts": {
+        "text": "Lihtkeeles – mida difusioon tekstile tegelikult tähendab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ühe märgi korraga ennustamise asemel eemaldab see paralleelselt müra kahesaja viiekümne kuue märgi plokist.",
+      "text_markdown": "Ühe märgi korraga ennustamise asemel eemaldab see paralleelselt müra kahesaja viiekümne kuue märgi plokist.",
+      "title": "",
+      "tts": {
+        "text": "Ühe märgi korraga ennustamise asemel eemaldab see paralleelselt müra kahesaja viiekümne kuue märgi plokist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Üle tuhande märgi sekundis ühel H100-l, umbes neli korda kiirem kui võrreldav autoregressiivne Gemma.",
+      "text_markdown": "Üle tuhande märgi sekundis ühel H100-l, umbes neli korda kiirem kui võrreldav autoregressiivne Gemma.",
+      "title": "",
+      "tts": {
+        "text": "Üle tuhande märgi sekundis ühel H ühel sajal, umbes neli korda kiirem kui võrreldav autoregressiivne Gemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja lisaks konks.",
+      "text_markdown": "Ja lisaks konks.",
+      "title": "",
+      "tts": {
+        "text": "Ja lisaks konks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Madalamad tulemused MMLU-s ja kodeerimises – Google ütleb seda ise; see väljalase on mõeldud kiirust nõudvaks tööks, mitte edetabelite vallutamiseks.",
+      "text_markdown": "Madalamad tulemused MMLU-s ja kodeerimises – Google ütleb seda ise; see väljalase on mõeldud kiirust nõudvaks tööks, mitte edetabelite vallutamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Madalamad tulemused M M L U-s ja kodeerimises — Google ütleb seda ise; see väljalase on mõeldud kiirust nõudvaks tööks, mitte edetabelite vallutamiseks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja avatud häälemudelid – kõike.",
+      "text_markdown": "Ja avatud häälemudelid – kõike.",
+      "title": "",
+      "tts": {
+        "text": "Ja avatud häälemudelid – kõike.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kaks ilmusid samal nädalal.",
+      "text_markdown": "Kaks ilmusid samal nädalal.",
+      "title": "",
+      "tts": {
+        "text": "Kaks ilmusid samal nädalal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hiina sotsiaalvõrgustik RedNote avas dots-dot-tts koodi – kaks miljardit parameetrit, täielikult pidev, ilma diskreetsete märkideta kogu ahelas, viiekümne nelja millisekundi esimese märgi latentsus, Apache 2.0.",
+      "text_markdown": "Hiina sotsiaalvõrgustik RedNote avas dots-dot-tts koodi – kaks miljardit parameetrit, täielikult pidev, ilma diskreetsete märkideta kogu ahelas, viiekümne nelja millisekundi esimese märgi latentsus, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "Hiina sotsiaalvõrgustik RedNote avas dots dot tts koodi – kaks miljardit parameetrit, täielikult pidev, ilma diskreetsete märkideta kogu ahelas, viiekümne nelja millisekundi esimese märgi latentsus, Apache kahe punkti null.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja Boson AI andis välja Higgs Audio versiooni kolm – neli miljardit parameetrit, sada kaks keelt, kakskümmend üks emotsioonikontrolli märki, voogedastuse väljund, mitteäriline litsents; see viimane osa on tärn.",
+      "text_markdown": "Ja Boson AI andis välja Higgs Audio versiooni kolm – neli miljardit parameetrit, sada kaks keelt, kakskümmend üks emotsioonikontrolli märki, voogedastuse väljund, mitteäriline litsents; see viimane osa on tärn.",
+      "title": "",
+      "tts": {
+        "text": "Ja Boson AI andis välja Higgs Audio versiooni kolm – neli miljardit parameetrit, sada kaks keelt, kakskümmend üks emotsioonikontrolli märki, voogedastuse väljund, mitteäriline litsents; see viimane osa on tärn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hääle kloonimine on ametlikult kaup.",
+      "text_markdown": "Hääle kloonimine on ametlikult kaup.",
+      "title": "",
+      "tts": {
+        "text": "Hääle kloonimine on ametlikult kaup.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "See on tõesti nii.",
+      "text_markdown": "See on tõesti nii.",
+      "title": "",
+      "tts": {
+        "text": "See on tõesti nii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Veel üks avatud poolelt.",
+      "text_markdown": "Veel üks avatud poolelt.",
+      "title": "",
+      "tts": {
+        "text": "Veel üks avatud poolelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "NVIDIA andis vaikselt välja Nemotron 3 Ultra – viiesaja viiekümne miljardi parameetriga hübriidse Mamba-tähelepanu mudeli.",
+      "text_markdown": "NVIDIA andis vaikselt välja Nemotron 3 Ultra – viiesaja viiekümne miljardi parameetriga hübriidse Mamba-tähelepanu mudeli.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA andis vaikselt välja Nemotron kolm Ultra – viiesaja viiekümne miljardi parameetriga hübriidse Mamba-tähelepanu mudeli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kaalud ja täielik treeningretsept Linux Foundation OpenMDW litsentsi all – kuu kõige tegelikult avatum väljalase.",
+      "text_markdown": "Kaalud ja täielik treeningretsept Linux Foundation OpenMDW litsentsi all – kuu kõige tegelikult avatum väljalase.",
+      "title": "",
+      "tts": {
+        "text": "Kaalud ja täielik treeningretsept Linux Foundation Open M D W litsentsi all – kuu kõige tegelikult avatum väljalase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja keegi seda ei kajastanud.",
+      "text_markdown": "Ja keegi seda ei kajastanud.",
+      "title": "",
+      "tts": {
+        "text": "Ja keegi seda ei kajastanud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sest me liigitame NVIDIA räni, mitte labori alla.",
+      "text_markdown": "Sest me liigitame NVIDIA räni, mitte labori alla.",
+      "title": "",
+      "tts": {
+        "text": "Sest me liigitame NVIDIA räni, mitte labori alla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kuid sel nädalal andsid nad välja reprodutseeritava avatud lahenduse piiriskaalal.",
+      "text_markdown": "Kuid sel nädalal andsid nad välja reprodutseeritava avatud lahenduse piiriskaalal.",
+      "title": "",
+      "tts": {
+        "text": "Kuid sel nädalal andsid nad välja reprodutseeritava avatud lahenduse piiriskaalal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pealkirjad, kiire ülevaade.",
+      "text_markdown": "Pealkirjad, kiire ülevaade.",
+      "title": "",
+      "tts": {
+        "text": "Pealkirjad, kiire ülevaade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Esiteks.",
+      "text_markdown": "Esiteks.",
+      "title": "",
+      "tts": {
+        "text": "Esiteks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Moonshot andis välja Kimi K2.7-Code – ühe triljoni parameetriga, kolmkümmend kaks miljardit aktiivset, väidab, et edestab Claude Opus 4.8 Moonshot'i enda võrdlusalusel.",
+      "text_markdown": "Moonshot andis välja Kimi K2.7-Code – ühe triljoni parameetriga, kolmkümmend kaks miljardit aktiivset, väidab, et edestab Claude Opus 4.8 Moonshot'i enda võrdlusalusel.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot andis välja Kimi K kahe punkti seitse Code – ühe triljoni parameetriga, kolmkümmend kaks miljardit aktiivset, väidab, et edestab Claude Opus nelja punkti kaheksa Moonshot'i enda võrdlusalusel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Praktikud analüüsisid numbreid ja ütlevad, et võrdlusalused ei pea paika; iseseisvalt majutatud kaalud on viissada üheksakümmend viis gigabaiti, mõtlemisrežiimi ei saa välja lülitada.",
+      "text_markdown": "Praktikud analüüsisid numbreid ja ütlevad, et võrdlusalused ei pea paika; iseseisvalt majutatud kaalud on viissada üheksakümmend viis gigabaiti, mõtlemisrežiimi ei saa välja lülitada.",
+      "title": "",
+      "tts": {
+        "text": "Praktikud analüüsisid numbreid ja ütlevad, et võrdlusalused ei pea paika; iseseisvalt majutatud kaalud on viissada üheksakümmend viis gigabaiti, mõtlemisrežiimi ei saa välja lülitada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sõna \"avatud\" teeb selles lauses palju tööd.",
+      "text_markdown": "Sõna \"avatud\" teeb selles lauses palju tööd.",
+      "title": "",
+      "tts": {
+        "text": "Sõna \"avatud\" teeb selles lauses palju tööd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Teiseks.",
+      "text_markdown": "Teiseks.",
+      "title": "",
+      "tts": {
+        "text": "Teiseks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Cohere, lääne labor, mis peaaegu kunagi kaalusid ei avalda, avaldas tegelikult kaalud — North Mini Code, kokku kolmkümmend miljardit, kolm miljardit aktiivset, Apache 2.0, töötab ühel H100-l nelja bitiga.",
+      "text_markdown": "Cohere, lääne labor, mis peaaegu kunagi kaalusid ei avalda, avaldas tegelikult kaalud — North Mini Code, kokku kolmkümmend miljardit, kolm miljardit aktiivset, Apache 2.0, töötab ühel H100-l nelja bitiga.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, lääne labor, mis peaaegu kunagi kaalusid ei avalda, avaldas tegelikult kaalud — North Mini Code, kokku kolmkümmend miljardit, kolm miljardit aktiivset, Apache kahe punkti null, töötab ühel H ühel sajal nelja bitiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Lääne labori poolt tõelise Apache 2.0 väljastamine 2026. aastal on iseenesest uudis.",
+      "text_markdown": "Lääne labori poolt tõelise Apache 2.0 väljastamine 2026. aastal on iseenesest uudis.",
+      "title": "",
+      "tts": {
+        "text": "Lääne labori poolt tõelise Apache kahe punkti null väljastamine kahekümne kahekümne kuuendal aastal on iseenesest uudis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kolmandaks.",
+      "text_markdown": "Kolmandaks.",
+      "title": "",
+      "tts": {
+        "text": "Kolmandaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Apple rõhutas WWDC-l tugevalt seadmesisese tehisintellekti kui strateegilist lugu.",
+      "text_markdown": "Apple rõhutas WWDC-l tugevalt seadmesisese tehisintellekti kui strateegilist lugu.",
+      "title": "",
+      "tts": {
+        "text": "Apple rõhutas V V D C-l tugevalt seadmesisese tehisintellekti kui strateegilist lugu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kuid uus Siri mudel on väidetavalt Google'i Gemini destillaat, millele Apple omab litsentsi ja mida ta kahandab.",
+      "text_markdown": "Kuid uus Siri mudel on väidetavalt Google'i Gemini destillaat, millele Apple omab litsentsi ja mida ta kahandab.",
+      "title": "",
+      "tts": {
+        "text": "Kuid uus Siri mudel on väidetavalt Google'i Gemini destillaat, millele Apple omab litsentsi ja mida ta kahandab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kohalik järeldamine, keeruline tarneahel.",
+      "text_markdown": "Kohalik järeldamine, keeruline tarneahel.",
+      "title": "",
+      "tts": {
+        "text": "Kohalik järeldamine, keeruline tarneahel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ja neljandaks.",
+      "text_markdown": "Ja neljandaks.",
+      "title": "",
+      "tts": {
+        "text": "Ja neljandaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Alibaba tõi Qwen 3.7-Plusi üldkättesaadavaks — multimodaalne, juhib GUI-sid ekraanipiltide põhjal, umbes nelikümmend senti miljoni sisendtokeni eest.",
+      "text_markdown": "Alibaba tõi Qwen 3.7-Plusi üldkättesaadavaks — multimodaalne, juhib GUI-sid ekraanipiltide põhjal, umbes nelikümmend senti miljoni sisendtokeni eest.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba tõi Qwen kolm punkti seitse Plusi üldkättesaadavaks — multimodaalne, juhib graafilisi kasutajaliideseid ekraanipiltide põhjal, umbes nelikümmend senti miljoni sisendtokeni eest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hoolimata Qweni kaubamärgist on see ainult API-põhine, mitte avatud kaaludega.",
+      "text_markdown": "Hoolimata Qweni kaubamärgist on see ainult API-põhine, mitte avatud kaaludega.",
+      "title": "",
+      "tts": {
+        "text": "Hoolimata Qweni kaubamärgist on see ainult A P I-põhine, mitte avatud kaaludega.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tasub teada, sest kuulajad seostavad Qweni avatusega; see aga ei ole.",
+      "text_markdown": "Tasub teada, sest kuulajad seostavad Qweni avatusega; see aga ei ole.",
+      "title": "",
+      "tts": {
+        "text": "Tasub teada, sest kuulajad seostavad Qweni avatusega; see aga ei ole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nädala väike labor.",
+      "text_markdown": "Nädala väike labor.",
+      "title": "",
+      "tts": {
+        "text": "Nädala väike labor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Selle nimi on Kog.",
+      "text_markdown": "Selle nimi on Kog.",
+      "title": "",
+      "tts": {
+        "text": "Selle nimi on Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Üksteist inimest Pariisis, väites kolm tuhat väljundtokenit sekundis päringu kohta kaheksal AMD MI300X GPU-l.",
+      "text_markdown": "Üksteist inimest Pariisis, väites kolm tuhat väljundtokenit sekundis päringu kohta kaheksal AMD MI300X GPU-l.",
+      "title": "",
+      "tts": {
+        "text": "Üksteist inimest Pariisis, väites kolm tuhat väljundtokenit sekundis päringu kohta kaheksal A M D M I kolmsada X G P U-l.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nende ettepanek — tööstus kulutas liiga palju kohandatud järeldussilikoonile, kui kitsaskohaks oli kogu aeg tarkvara.",
+      "text_markdown": "Nende ettepanek — tööstus kulutas liiga palju kohandatud järeldussilikoonile, kui kitsaskohaks oli kogu aeg tarkvara.",
+      "title": "",
+      "tts": {
+        "text": "Nende ettepanek — tööstus kulutas liiga palju kohandatud järeldussilikoonile, kui kitsaskohaks oli kogu aeg tarkvara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Üksteist inimest ja AMD NVIDIA asemel.",
+      "text_markdown": "Üksteist inimest ja AMD NVIDIA asemel.",
+      "title": "",
+      "tts": {
+        "text": "Üksteist inimest ja AMD NVIDIA asemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kohe pärast kohandatud räni IPO-t, täiuslik vastupidine ajastus.",
+      "text_markdown": "Kohe pärast kohandatud räni IPO-t, täiuslik vastupidine ajastus.",
+      "title": "",
+      "tts": {
+        "text": "Kohe pärast kohandatud räni I P O-t, täiuslik vastupidine ajastus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mis puutub riistvarasse pingil.",
+      "text_markdown": "Mis puutub riistvarasse pingil.",
+      "title": "",
+      "tts": {
+        "text": "Mis puutub riistvarasse pingil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Raspberry Pi tarnis AI HAT+ 2 — nelikümmend TOPS-i, mis on kinnitatud Pi 5 külge.",
+      "text_markdown": "Raspberry Pi tarnis AI HAT+ 2 — nelikümmend TOPS-i, mis on kinnitatud Pi 5 külge.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi tarnis A I H A T pluss kaks — nelikümmend T O P S-i, mis on kinnitatud Pi viie külge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "NVIDIA Jetson Orin Nano Super teeb kuuskümmend seitse TOPS-i alla kolmesaja dollari eest.",
+      "text_markdown": "NVIDIA Jetson Orin Nano Super teeb kuuskümmend seitse TOPS-i alla kolmesaja dollari eest.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA Jetson Orin Nano Super teeb kuuskümmend seitse T O P S-i alla kolmesaja dollari eest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Seadmesisene tähendas varem Maci.",
+      "text_markdown": "Seadmesisene tähendas varem Maci.",
+      "title": "",
+      "tts": {
+        "text": "Seadmesisene tähendas varem Maci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nüüd tähendab see plaati, mille saab sahtlisse peita.",
+      "text_markdown": "Nüüd tähendab see plaati, mille saab sahtlisse peita.",
+      "title": "",
+      "tts": {
+        "text": "Nüüd tähendab see plaati, mille saab sahtlisse peita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nädala kontseptsioon — difusioon versus autoregressiivne.",
+      "text_markdown": "Nädala kontseptsioon — difusioon versus autoregressiivne.",
+      "title": "",
+      "tts": {
+        "text": "Nädala kontseptsioon — difusioon versus autoregressiivne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sama sihtkoht, erinevad teed.",
+      "text_markdown": "Sama sihtkoht, erinevad teed.",
+      "title": "",
+      "tts": {
+        "text": "Sama sihtkoht, erinevad teed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Autoregressiivsed mudelid, enamik tuntud LLM-e, genereerivad ühe tokeni korraga, tingivad sellele, genereerivad järgmise, kordavad — disaini poolest järjestikused.",
+      "text_markdown": "Autoregressiivsed mudelid, enamik tuntud LLM-e, genereerivad ühe tokeni korraga, tingivad sellele, genereerivad järgmise, kordavad — disaini poolest järjestikused.",
+      "title": "",
+      "tts": {
+        "text": "Autoregressiivsed mudelid, enamik tuntud L L M-e, genereerivad ühe tokeni korraga, tingivad sellele, genereerivad järgmise, kordavad — disaini poolest järjestikused.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Difusioonimudelid alustavad puhta müra plokist ja eemaldavad müra kõik korraga kindla arvu sammude jooksul.",
+      "text_markdown": "Difusioonimudelid alustavad puhta müra plokist ja eemaldavad müra kõik korraga kindla arvu sammude jooksul.",
+      "title": "",
+      "tts": {
+        "text": "Difusioonimudelid alustavad puhta müra plokist ja eemaldavad müra kõik korraga kindla arvu sammude jooksul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vahetate osa kvaliteedist paralleelsuse vastu ja väikeste sammude arvude korral saate need silmapaistvad läbilaskevõime numbrid.",
+      "text_markdown": "Vahetate osa kvaliteedist paralleelsuse vastu ja väikeste sammude arvude korral saate need silmapaistvad läbilaskevõime numbrid.",
+      "title": "",
+      "tts": {
+        "text": "Vahetate osa kvaliteedist paralleelsuse vastu ja väikeste sammude arvude korral saate need silmapaistvad läbilaskevõime numbrid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nii et DiffusionGemma on esimene kord, kui meil on avatud kaalud, et tegelikult erinevust tunda.",
+      "text_markdown": "Nii et DiffusionGemma on esimene kord, kui meil on avatud kaalud, et tegelikult erinevust tunda.",
+      "title": "",
+      "tts": {
+        "text": "Nii et DiffusionGemma on esimene kord, kui meil on avatud kaalud, et tegelikult erinevust tunda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Esimest korda sellises ulatuses, jah.",
+      "text_markdown": "Esimest korda sellises ulatuses, jah.",
+      "title": "",
+      "tts": {
+        "text": "Esimest korda sellises ulatuses, jah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja seepärast on avatud lähtekoodiga järeldustiimid sel nädalal olulised — llama-dot-cpp, vLLM, MLX — nemad õpivad seda päris riistvaral laulma panema.",
+      "text_markdown": "Ja seepärast on avatud lähtekoodiga järeldustiimid sel nädalal olulised — llama-dot-cpp, vLLM, MLX — nemad õpivad seda päris riistvaral laulma panema.",
+      "title": "",
+      "tts": {
+        "text": "Ja seepärast on avatud lähtekoodiga järeldustiimid sel nädalal olulised — llama dot c p p, v L L M, M L X — nemad õpivad seda päris riistvaral laulma panema.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hea koht maandumiseks.",
+      "text_markdown": "Hea koht maandumiseks.",
+      "title": "",
+      "tts": {
+        "text": "Hea koht maandumiseks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Aitäh sulle, Ron.",
+      "text_markdown": "Aitäh sulle, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Aitäh sulle, Ronn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Igal ajal, Vindy.",
+      "text_markdown": "Igal ajal, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Igal ajal, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "See oli AI This Week 14. juuniks 2026.",
+      "text_markdown": "See oli AI This Week 14. juuniks 2026.",
+      "title": "",
+      "tts": {
+        "text": "See oli A I This Week neljateistkümnendaks juuniks kakskümmend kakskümmend kuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sama särtsakas saade, uus pühapäevane aeg.",
+      "text_markdown": "Sama särtsakas saade, uus pühapäevane aeg.",
+      "title": "",
+      "tts": {
+        "text": "Sama särtsakas saade, uus pühapäevane aeg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Keeled ilmuvad jätkuvalt esmaspäeva hommikuni; Corpán 0.18.0 on saadaval kõikjal, kust rakendusi hangite — proovige beatlounge'i.",
+      "text_markdown": "Keeled ilmuvad jätkuvalt esmaspäeva hommikuni; Corpán 0.18.0 on saadaval kõikjal, kust rakendusi hangite — proovige beatlounge'i.",
+      "title": "",
+      "tts": {
+        "text": "Keeled ilmuvad jätkuvalt esmaspäeva hommikuni; Corpán null punkt üks kaheksa punkt null on saadaval kõikjal, kust rakendusi hangite — proovige beatlounge'i.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Järgmise pühapäevani, hoidke end.",
+      "text_markdown": "Järgmise pühapäevani, hoidke end.",
+      "title": "",
+      "tts": {
+        "text": "Järgmise pühapäevani, hoidke end.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

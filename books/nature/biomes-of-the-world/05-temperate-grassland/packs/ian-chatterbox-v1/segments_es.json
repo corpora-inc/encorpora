@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "La pradera templada",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La pradera templada",
+      "text_markdown": "La pradera templada"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dónde crecen las praderas templadas",
+      "text_markdown": "Dónde crecen las praderas templadas"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bienvenido a la pradera templada.",
+      "text_markdown": "Bienvenido a la pradera templada.",
+      "tts": {
+        "text": "Bienvenido a la pradera templada.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este es uno de los grandes biomas del mundo.",
+      "text_markdown": "Este es uno de los grandes biomas del mundo.",
+      "tts": {
+        "text": "Este es uno de los grandes biomas del mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma es una parte de la Tierra con su propio clima, plantas y animales.",
+      "text_markdown": "Un bioma es una parte de la Tierra con su propio clima, plantas y animales.",
+      "tts": {
+        "text": "Un bioma es una parte de la Tierra con su propio clima, plantas y animales.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pradera templada es una tierra amplia de hierba con muy pocos árboles.",
+      "text_markdown": "La pradera templada es una tierra amplia de hierba con muy pocos árboles.",
+      "tts": {
+        "text": "La pradera templada es una tierra amplia de hierba con muy pocos árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se encuentra en las partes medias del mundo, entre el norte frío y los trópicos cálidos.",
+      "text_markdown": "Se encuentra en las partes medias del mundo, entre el norte frío y los trópicos cálidos.",
+      "tts": {
+        "text": "Se encuentra en las partes medias del mundo, entre el norte frío y los trópicos cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A diferencia de la sabana tropical, esta tierra tiene inviernos fríos y veranos cálidos.",
+      "text_markdown": "A diferencia de la sabana tropical, esta tierra tiene inviernos fríos y veranos cálidos.",
+      "tts": {
+        "text": "A diferencia de la sabana tropical, esta tierra tiene inviernos fríos y veranos cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las praderas templadas más grandes del mundo están en América del Norte y en Eurasia.",
+      "text_markdown": "Las praderas templadas más grandes del mundo están en América del Norte y en Eurasia.",
+      "tts": {
+        "text": "Las praderas templadas más grandes del mundo están en América del Norte y en Eurasia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En América del Norte, las grandes llanuras centrales se llaman las praderas.",
+      "text_markdown": "En América del Norte, las grandes llanuras centrales se llaman las praderas.",
+      "tts": {
+        "text": "En América del Norte, las grandes llanuras centrales se llaman las praderas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Rusia, Ucrania, Kazajistán y Mongolia, se llaman las estepas.",
+      "text_markdown": "En Rusia, Ucrania, Kazajistán y Mongolia, se llaman las estepas.",
+      "tts": {
+        "text": "En Rusia, Ucrania, Kazajistán y Mongolia, se llaman las estepas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Argentina y Uruguay, se llaman las pampas.",
+      "text_markdown": "En Argentina y Uruguay, se llaman las pampas.",
+      "tts": {
+        "text": "En Argentina y Uruguay, se llaman las pampas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay praderas templadas más pequeñas en el sur de África y en partes de Australia.",
+      "text_markdown": "Hay praderas templadas más pequeñas en el sur de África y en partes de Australia.",
+      "tts": {
+        "text": "Hay praderas templadas más pequeñas en el sur de África y en partes de Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada una de estas praderas creció por su cuenta.",
+      "text_markdown": "Cada una de estas praderas creció por su cuenta.",
+      "tts": {
+        "text": "Cada una de estas praderas creció por su cuenta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Así que las plantas y los animales son diferentes en cada parte del mundo.",
+      "text_markdown": "Así que las plantas y los animales son diferentes en cada parte del mundo.",
+      "tts": {
+        "text": "Así que las plantas y los animales son diferentes en cada parte del mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero todas comparten el mismo patrón.",
+      "text_markdown": "Pero todas comparten el mismo patrón.",
+      "tts": {
+        "text": "Pero todas comparten el mismo patrón.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mar de hierba, un gran cielo abierto, vientos fuertes y solo unos pocos árboles a lo largo de los ríos.",
+      "text_markdown": "Un mar de hierba, un gran cielo abierto, vientos fuertes y solo unos pocos árboles a lo largo de los ríos.",
+      "tts": {
+        "text": "Un mar de hierba, un gran cielo abierto, vientos fuertes y solo unos pocos árboles a lo largo de los ríos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando estás de pie en una pradera templada, el viento casi siempre está soplando.",
+      "text_markdown": "Cuando estás de pie en una pradera templada, el viento casi siempre está soplando.",
+      "tts": {
+        "text": "Cuando estás de pie en una pradera templada, el viento casi siempre está soplando.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La hierba se mueve como la superficie del mar.",
+      "text_markdown": "La hierba se mueve como la superficie del mar.",
+      "tts": {
+        "text": "La hierba se mueve como la superficie del mar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puedes ver por kilómetros en todas las direcciones.",
+      "text_markdown": "Puedes ver por kilómetros en todas las direcciones.",
+      "tts": {
+        "text": "Puedes ver por kilómetros en todas las direcciones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El cielo se siente el doble de grande que en cualquier bosque.",
+      "text_markdown": "El cielo se siente el doble de grande que en cualquier bosque.",
+      "tts": {
+        "text": "El cielo se siente el doble de grande que en cualquier bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, la hierba es alta y verde.",
+      "text_markdown": "En el verano, la hierba es alta y verde.",
+      "tts": {
+        "text": "En el verano, la hierba es alta y verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, se vuelve de un dorado pardo.",
+      "text_markdown": "En el otoño, se vuelve de un dorado pardo.",
+      "tts": {
+        "text": "En el otoño, se vuelve de un dorado pardo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, está parda y rígida bajo la nieve.",
+      "text_markdown": "En el invierno, está parda y rígida bajo la nieve.",
+      "tts": {
+        "text": "En el invierno, está parda y rígida bajo la nieve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la primavera, vuelve a crecer fresca y brillante.",
+      "text_markdown": "En la primavera, vuelve a crecer fresca y brillante.",
+      "tts": {
+        "text": "En la primavera, vuelve a crecer fresca y brillante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esa es la pradera templada.",
+      "text_markdown": "Esa es la pradera templada.",
+      "tts": {
+        "text": "Esa es la pradera templada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Dónde crecen las praderas templadas",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mundo amplio y ventoso de hierba, cielo y estaciones que cambian.",
+      "text_markdown": "Un mundo amplio y ventoso de hierba, cielo y estaciones que cambian.",
+      "tts": {
+        "text": "Un mundo amplio y ventoso de hierba, cielo y estaciones que cambian.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El clima",
+      "text_markdown": "El clima"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El clima en la pradera templada está formado por el cielo abierto.",
+      "text_markdown": "El clima en la pradera templada está formado por el cielo abierto.",
+      "tts": {
+        "text": "El clima en la pradera templada está formado por el cielo abierto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay muy pocos árboles y pocas colinas para frenar el viento.",
+      "text_markdown": "Hay muy pocos árboles y pocas colinas para frenar el viento.",
+      "tts": {
+        "text": "Hay muy pocos árboles y pocas colinas para frenar el viento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay cuatro estaciones, y cada una es fuerte.",
+      "text_markdown": "Hay cuatro estaciones, y cada una es fuerte.",
+      "tts": {
+        "text": "Hay cuatro estaciones, y cada una es fuerte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los veranos son calurosos y brillantes.",
+      "text_markdown": "Los veranos son calurosos y brillantes.",
+      "tts": {
+        "text": "Los veranos son calurosos y brillantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El sol cae sobre la hierba abierta, y los días son largos.",
+      "text_markdown": "El sol cae sobre la hierba abierta, y los días son largos.",
+      "tts": {
+        "text": "El sol cae sobre la hierba abierta, y los días son largos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En una sola tarde, una enorme tormenta puede llegar desde el horizonte.",
+      "text_markdown": "En una sola tarde, una enorme tormenta puede llegar desde el horizonte.",
+      "tts": {
+        "text": "En una sola tarde, una enorme tormenta puede llegar desde el horizonte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los relámpagos brillan a lo lejos, y la lluvia fuerte cae de golpe.",
+      "text_markdown": "Los relámpagos brillan a lo lejos, y la lluvia fuerte cae de golpe.",
+      "tts": {
+        "text": "Los relámpagos brillan a lo lejos, y la lluvia fuerte cae de golpe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los inviernos son fríos.",
+      "text_markdown": "Los inviernos son fríos.",
+      "tts": {
+        "text": "Los inviernos son fríos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En algunas praderas, la temperatura puede bajar muy por debajo del punto de congelación durante semanas seguidas.",
+      "text_markdown": "En algunas praderas, la temperatura puede bajar muy por debajo del punto de congelación durante semanas seguidas.",
+      "tts": {
+        "text": "En algunas praderas, la temperatura puede bajar muy por debajo del punto de congelación durante semanas seguidas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La nieve sopla a través de la tierra abierta y se acumula en largos ventisqueros.",
+      "text_markdown": "La nieve sopla a través de la tierra abierta y se acumula en largos ventisqueros.",
+      "tts": {
+        "text": "La nieve sopla a través de la tierra abierta y se acumula en largos ventisqueros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El viento en invierno es fuerte y cortante.",
+      "text_markdown": "El viento en invierno es fuerte y cortante.",
+      "tts": {
+        "text": "El viento en invierno es fuerte y cortante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la primavera, la nieve se derrite, y los ríos corren crecidos.",
+      "text_markdown": "En la primavera, la nieve se derrite, y los ríos corren crecidos.",
+      "tts": {
+        "text": "En la primavera, la nieve se derrite, y los ríos corren crecidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La hierba se vuelve verde casi de la noche a la mañana.",
+      "text_markdown": "La hierba se vuelve verde casi de la noche a la mañana.",
+      "tts": {
+        "text": "La hierba se vuelve verde casi de la noche a la mañana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las aves regresan de tierras más cálidas y llenan el aire de sonido.",
+      "text_markdown": "Las aves regresan de tierras más cálidas y llenan el aire de sonido.",
+      "tts": {
+        "text": "Las aves regresan de tierras más cálidas y llenan el aire de sonido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, la hierba se vuelve dorada, el viento se enfría, y los rebaños se mueven hacia el refugio.",
+      "text_markdown": "En el otoño, la hierba se vuelve dorada, el viento se enfría, y los rebaños se mueven hacia el refugio.",
+      "tts": {
+        "text": "En el otoño, la hierba se vuelve dorada, el viento se enfría, y los rebaños se mueven hacia el refugio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pradera recibe justo la lluvia suficiente para alimentar la hierba.",
+      "text_markdown": "La pradera recibe justo la lluvia suficiente para alimentar la hierba.",
+      "tts": {
+        "text": "La pradera recibe justo la lluvia suficiente para alimentar la hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No es suficiente lluvia para hacer crecer grandes bosques, pero es mucha para la hierba y los animales que la necesitan.",
+      "text_markdown": "No es suficiente lluvia para hacer crecer grandes bosques, pero es mucha para la hierba y los animales que la necesitan.",
+      "tts": {
+        "text": "No es suficiente lluvia para hacer crecer grandes bosques, pero es mucha para la hierba y los animales que la necesitan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La tierra y el agua",
+      "text_markdown": "La tierra y el agua"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tierra de la pradera templada es en su mayoría plana o de suaves ondulaciones.",
+      "text_markdown": "La tierra de la pradera templada es en su mayoría plana o de suaves ondulaciones.",
+      "tts": {
+        "text": "La tierra de la pradera templada es en su mayoría plana o de suaves ondulaciones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En algunos lugares, colinas bajas se levantan de la hierba.",
+      "text_markdown": "En algunos lugares, colinas bajas se levantan de la hierba.",
+      "tts": {
+        "text": "En algunos lugares, colinas bajas se levantan de la hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En otros, la tierra es tan plana que puedes ver el horizonte como una línea recta perfecta.",
+      "text_markdown": "En otros, la tierra es tan plana que puedes ver el horizonte como una línea recta perfecta.",
+      "tts": {
+        "text": "En otros, la tierra es tan plana que puedes ver el horizonte como una línea recta perfecta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El suelo aquí es uno de los suelos más ricos de la Tierra.",
+      "text_markdown": "El suelo aquí es uno de los suelos más ricos de la Tierra.",
+      "tts": {
+        "text": "El suelo aquí es uno de los suelos más ricos de la Tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante miles de años, las hierbas han crecido, han muerto y se han descompuesto en el suelo.",
+      "text_markdown": "Durante miles de años, las hierbas han crecido, han muerto y se han descompuesto en el suelo.",
+      "tts": {
+        "text": "Durante miles de años, las hierbas han crecido, han muerto y se han descompuesto en el suelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esto ha formado un suelo grueso y oscuro que está lleno de alimento para las plantas.",
+      "text_markdown": "Esto ha formado un suelo grueso y oscuro que está lleno de alimento para las plantas.",
+      "tts": {
+        "text": "Esto ha formado un suelo grueso y oscuro que está lleno de alimento para las plantas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por eso muchas de estas tierras se han convertido en grandes granjas de trigo y maíz.",
+      "text_markdown": "Por eso muchas de estas tierras se han convertido en grandes granjas de trigo y maíz.",
+      "tts": {
+        "text": "Por eso muchas de estas tierras se han convertido en grandes granjas de trigo y maíz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los ríos serpentean por las praderas en largas y lentas curvas.",
+      "text_markdown": "Los ríos serpentean por las praderas en largas y lentas curvas.",
+      "tts": {
+        "text": "Los ríos serpentean por las praderas en largas y lentas curvas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los ríos llevan agua desde montañas lejanas y desde la nieve derretida a través de la tierra abierta.",
+      "text_markdown": "Los ríos llevan agua desde montañas lejanas y desde la nieve derretida a través de la tierra abierta.",
+      "tts": {
+        "text": "Los ríos llevan agua desde montañas lejanas y desde la nieve derretida a través de la tierra abierta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lo largo de las orillas de los ríos, encuentras una delgada línea de árboles.",
+      "text_markdown": "A lo largo de las orillas de los ríos, encuentras una delgada línea de árboles.",
+      "tts": {
+        "text": "A lo largo de las orillas de los ríos, encuentras una delgada línea de árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estos árboles siguen el agua y se destacan como cintas verdes en el amplio mar de hierba.",
+      "text_markdown": "Estos árboles siguen el agua y se destacan como cintas verdes en el amplio mar de hierba.",
+      "tts": {
+        "text": "Estos árboles siguen el agua y se destacan como cintas verdes en el amplio mar de hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lejos de los ríos, hay muy pocos árboles.",
+      "text_markdown": "Lejos de los ríos, hay muy pocos árboles.",
+      "tts": {
+        "text": "Lejos de los ríos, hay muy pocos árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El viento, los inviernos fríos y los veranos secos impiden que la mayoría de los árboles crezcan aquí.",
+      "text_markdown": "El viento, los inviernos fríos y los veranos secos impiden que la mayoría de los árboles crezcan aquí.",
+      "tts": {
+        "text": "El viento, los inviernos fríos y los veranos secos impiden que la mayoría de los árboles crezcan aquí.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero la hierba no necesita mucho.",
+      "text_markdown": "Pero la hierba no necesita mucho.",
+      "tts": {
+        "text": "Pero la hierba no necesita mucho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sus largas raíces llegan profundo en el suelo rico, y vuelve cada primavera.",
+      "text_markdown": "Sus largas raíces llegan profundo en el suelo rico, y vuelve cada primavera.",
+      "tts": {
+        "text": "Sus largas raíces llegan profundo en el suelo rico, y vuelve cada primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El fuego también pasa por estas tierras de vez en cuando.",
+      "text_markdown": "El fuego también pasa por estas tierras de vez en cuando.",
+      "tts": {
+        "text": "El fuego también pasa por estas tierras de vez en cuando.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La hierba se quema rápido, pero las raíces profundas siguen vivas.",
+      "text_markdown": "La hierba se quema rápido, pero las raíces profundas siguen vivas.",
+      "tts": {
+        "text": "La hierba se quema rápido, pero las raíces profundas siguen vivas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Después de una lluvia, la hierba vuelve a crecer más verde y más fuerte que antes.",
+      "text_markdown": "Después de una lluvia, la hierba vuelve a crecer más verde y más fuerte que antes.",
+      "tts": {
+        "text": "Después de una lluvia, la hierba vuelve a crecer más verde y más fuerte que antes.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Las plantas",
+      "text_markdown": "Las plantas"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las hierbas son el corazón de este bioma.",
+      "text_markdown": "Las hierbas son el corazón de este bioma.",
+      "tts": {
+        "text": "Las hierbas son el corazón de este bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay muchas clases distintas de hierba en una pradera templada.",
+      "text_markdown": "Hay muchas clases distintas de hierba en una pradera templada.",
+      "tts": {
+        "text": "Hay muchas clases distintas de hierba en una pradera templada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algunas hierbas crecen solo hasta el tobillo.",
+      "text_markdown": "Algunas hierbas crecen solo hasta el tobillo.",
+      "tts": {
+        "text": "Algunas hierbas crecen solo hasta el tobillo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Otras son tan altas como una persona.",
+      "text_markdown": "Otras son tan altas como una persona.",
+      "tts": {
+        "text": "Otras son tan altas como una persona.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada clase de hierba tiene una espiga larga y suave llena de semillas en la parte de arriba.",
+      "text_markdown": "Cada clase de hierba tiene una espiga larga y suave llena de semillas en la parte de arriba.",
+      "tts": {
+        "text": "Cada clase de hierba tiene una espiga larga y suave llena de semillas en la parte de arriba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, el viento lleva olas de espigas de semillas por la tierra.",
+      "text_markdown": "En el verano, el viento lleva olas de espigas de semillas por la tierra.",
+      "tts": {
+        "text": "En el verano, el viento lleva olas de espigas de semillas por la tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La hierba tiene raíces muy largas que llegan profundo en el suelo oscuro.",
+      "text_markdown": "La hierba tiene raíces muy largas que llegan profundo en el suelo oscuro.",
+      "tts": {
+        "text": "La hierba tiene raíces muy largas que llegan profundo en el suelo oscuro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las raíces pueden ser más largas bajo tierra de lo que la hierba es alta sobre el suelo.",
+      "text_markdown": "Las raíces pueden ser más largas bajo tierra de lo que la hierba es alta sobre el suelo.",
+      "tts": {
+        "text": "Las raíces pueden ser más largas bajo tierra de lo que la hierba es alta sobre el suelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Así es como la hierba sobrevive a los tiempos secos y a los inviernos fríos.",
+      "text_markdown": "Así es como la hierba sobrevive a los tiempos secos y a los inviernos fríos.",
+      "tts": {
+        "text": "Así es como la hierba sobrevive a los tiempos secos y a los inviernos fríos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "También es como la hierba vuelve rápido después de un incendio.",
+      "text_markdown": "También es como la hierba vuelve rápido después de un incendio.",
+      "tts": {
+        "text": "También es como la hierba vuelve rápido después de un incendio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entre las hierbas, pequeñas flores brotan en los meses cálidos.",
+      "text_markdown": "Entre las hierbas, pequeñas flores brotan en los meses cálidos.",
+      "tts": {
+        "text": "Entre las hierbas, pequeñas flores brotan en los meses cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los girasoles silvestres y muchas otras flores brillantes llenan la pradera en verano.",
+      "text_markdown": "Los girasoles silvestres y muchas otras flores brillantes llenan la pradera en verano.",
+      "tts": {
+        "text": "Los girasoles silvestres y muchas otras flores brillantes llenan la pradera en verano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las abejas y las mariposas se mueven de una flor a otra.",
+      "text_markdown": "Las abejas y las mariposas se mueven de una flor a otra.",
+      "tts": {
+        "text": "Las abejas y las mariposas se mueven de una flor a otra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay muy pocos árboles en la mayor parte de la pradera.",
+      "text_markdown": "Hay muy pocos árboles en la mayor parte de la pradera.",
+      "tts": {
+        "text": "Hay muy pocos árboles en la mayor parte de la pradera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donde sí crecen, suelen ser pequeños y resistentes.",
+      "text_markdown": "Donde sí crecen, suelen ser pequeños y resistentes.",
+      "tts": {
+        "text": "Donde sí crecen, suelen ser pequeños y resistentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Crecen a lo largo de los ríos, donde hay más agua, o en lugares bajos donde se acumula la nieve en invierno.",
+      "text_markdown": "Crecen a lo largo de los ríos, donde hay más agua, o en lugares bajos donde se acumula la nieve en invierno.",
+      "tts": {
+        "text": "Crecen a lo largo de los ríos, donde hay más agua, o en lugares bajos donde se acumula la nieve en invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Allá afuera en la llanura abierta, la hierba está sola.",
+      "text_markdown": "Allá afuera en la llanura abierta, la hierba está sola.",
+      "tts": {
+        "text": "Allá afuera en la llanura abierta, la hierba está sola.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es la alfombra verde, dorada y plateada que sostiene a todo el bioma.",
+      "text_markdown": "Es la alfombra verde, dorada y plateada que sostiene a todo el bioma.",
+      "tts": {
+        "text": "Es la alfombra verde, dorada y plateada que sostiene a todo el bioma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Los animales",
+      "text_markdown": "Los animales"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los animales de la pradera templada están hechos para un mundo abierto y ventoso.",
+      "text_markdown": "Los animales de la pradera templada están hechos para un mundo abierto y ventoso.",
+      "tts": {
+        "text": "Los animales de la pradera templada están hechos para un mundo abierto y ventoso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los animales más grandes de aquí son grandes herbívoros.",
+      "text_markdown": "Los animales más grandes de aquí son grandes herbívoros.",
+      "tts": {
+        "text": "Los animales más grandes de aquí son grandes herbívoros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Comen la hierba y se mueven en grandes rebaños por la tierra abierta.",
+      "text_markdown": "Comen la hierba y se mueven en grandes rebaños por la tierra abierta.",
+      "tts": {
+        "text": "Comen la hierba y se mueven en grandes rebaños por la tierra abierta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En América del Norte, el más famoso de estos es el bisonte.",
+      "text_markdown": "En América del Norte, el más famoso de estos es el bisonte.",
+      "tts": {
+        "text": "En América del Norte, el más famoso de estos es el bisonte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bisonte es enorme, pesado y peludo, con una gran cabeza marrón.",
+      "text_markdown": "Un bisonte es enorme, pesado y peludo, con una gran cabeza marrón.",
+      "tts": {
+        "text": "Un bisonte es enorme, pesado y peludo, con una gran cabeza marrón.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los bisontes alguna vez se movieron por las llanuras en rebaños de millones.",
+      "text_markdown": "Los bisontes alguna vez se movieron por las llanuras en rebaños de millones.",
+      "tts": {
+        "text": "Los bisontes alguna vez se movieron por las llanuras en rebaños de millones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Eurasia, los caballos salvajes alguna vez se movieron de la misma manera por las estepas.",
+      "text_markdown": "En Eurasia, los caballos salvajes alguna vez se movieron de la misma manera por las estepas.",
+      "tts": {
+        "text": "En Eurasia, los caballos salvajes alguna vez se movieron de la misma manera por las estepas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En las pampas de América del Sur, ciervos más pequeños y otros animales que pastan tomaron su lugar.",
+      "text_markdown": "En las pampas de América del Sur, ciervos más pequeños y otros animales que pastan tomaron su lugar.",
+      "tts": {
+        "text": "En las pampas de América del Sur, ciervos más pequeños y otros animales que pastan tomaron su lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos animales más pequeños viven bajo la hierba.",
+      "text_markdown": "Muchos animales más pequeños viven bajo la hierba.",
+      "tts": {
+        "text": "Muchos animales más pequeños viven bajo la hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los perritos de las praderas, las ardillas terrestres y otros animales pequeños cavan largos túneles y cámaras en el suelo.",
+      "text_markdown": "Los perritos de las praderas, las ardillas terrestres y otros animales pequeños cavan largos túneles y cámaras en el suelo.",
+      "tts": {
+        "text": "Los perritos de las praderas, las ardillas terrestres y otros animales pequeños cavan largos túneles y cámaras en el suelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Salen a alimentarse durante el día y se zambullen de regreso en sus madrigueras para estar seguros.",
+      "text_markdown": "Salen a alimentarse durante el día y se zambullen de regreso en sus madrigueras para estar seguros.",
+      "tts": {
+        "text": "Salen a alimentarse durante el día y se zambullen de regreso en sus madrigueras para estar seguros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una pradera llena de estos pequeños animales está llena de pequeños agujeros en el suelo.",
+      "text_markdown": "Una pradera llena de estos pequeños animales está llena de pequeños agujeros en el suelo.",
+      "tts": {
+        "text": "Una pradera llena de estos pequeños animales está llena de pequeños agujeros en el suelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los lobos, los zorros y los pequeños gatos salvajes cazan por la hierba.",
+      "text_markdown": "Los lobos, los zorros y los pequeños gatos salvajes cazan por la hierba.",
+      "tts": {
+        "text": "Los lobos, los zorros y los pequeños gatos salvajes cazan por la hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El lobo es el gran cazador de las llanuras abiertas.",
+      "text_markdown": "El lobo es el gran cazador de las llanuras abiertas.",
+      "tts": {
+        "text": "El lobo es el gran cazador de las llanuras abiertas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los cazadores más pequeños como el zorro y el gato salvaje atrapan ratones, conejos y aves.",
+      "text_markdown": "Los cazadores más pequeños como el zorro y el gato salvaje atrapan ratones, conejos y aves.",
+      "tts": {
+        "text": "Los cazadores más pequeños como el zorro y el gato salvaje atrapan ratones, conejos y aves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lo alto del cielo, los halcones y las águilas dan vueltas lentamente.",
+      "text_markdown": "En lo alto del cielo, los halcones y las águilas dan vueltas lentamente.",
+      "tts": {
+        "text": "En lo alto del cielo, los halcones y las águilas dan vueltas lentamente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vigilan cualquier movimiento en la hierba abajo.",
+      "text_markdown": "Vigilan cualquier movimiento en la hierba abajo.",
+      "tts": {
+        "text": "Vigilan cualquier movimiento en la hierba abajo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchas clases de aves anidan justo en el suelo, escondidas en la hierba alta.",
+      "text_markdown": "Muchas clases de aves anidan justo en el suelo, escondidas en la hierba alta.",
+      "tts": {
+        "text": "Muchas clases de aves anidan justo en el suelo, escondidas en la hierba alta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, el aire está lleno de insectos.",
+      "text_markdown": "En el verano, el aire está lleno de insectos.",
+      "tts": {
+        "text": "En el verano, el aire está lleno de insectos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los saltamontes hacen clic y saltan en el viento cálido.",
+      "text_markdown": "Los saltamontes hacen clic y saltan en el viento cálido.",
+      "tts": {
+        "text": "Los saltamontes hacen clic y saltan en el viento cálido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las mariposas y las abejas van de flor en flor.",
+      "text_markdown": "Las mariposas y las abejas van de flor en flor.",
+      "tts": {
+        "text": "Las mariposas y las abejas van de flor en flor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las serpientes se deslizan por la hierba, buscando ratones y huevos de aves.",
+      "text_markdown": "Las serpientes se deslizan por la hierba, buscando ratones y huevos de aves.",
+      "tts": {
+        "text": "Las serpientes se deslizan por la hierba, buscando ratones y huevos de aves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada animal aquí conoce las mismas lecciones.",
+      "text_markdown": "Cada animal aquí conoce las mismas lecciones.",
+      "tts": {
+        "text": "Cada animal aquí conoce las mismas lecciones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muévete con las estaciones.",
+      "text_markdown": "Muévete con las estaciones.",
+      "tts": {
+        "text": "Muévete con las estaciones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Escóndete del sol caliente.",
+      "text_markdown": "Escóndete del sol caliente.",
+      "tts": {
+        "text": "Escóndete del sol caliente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huye del viento frío.",
+      "text_markdown": "Huye del viento frío.",
+      "tts": {
+        "text": "Huye del viento frío.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bebe del río cuando lo puedas encontrar.",
+      "text_markdown": "Bebe del río cuando lo puedas encontrar.",
+      "tts": {
+        "text": "Bebe del río cuando lo puedas encontrar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La gente",
+      "text_markdown": "La gente"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente ha vivido en la pradera templada durante muchos miles de años.",
+      "text_markdown": "La gente ha vivido en la pradera templada durante muchos miles de años.",
+      "tts": {
+        "text": "La gente ha vivido en la pradera templada durante muchos miles de años.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La amplia tierra abierta, los rebaños de animales y el suelo rico han formado su modo de vida.",
+      "text_markdown": "La amplia tierra abierta, los rebaños de animales y el suelo rico han formado su modo de vida.",
+      "tts": {
+        "text": "La amplia tierra abierta, los rebaños de animales y el suelo rico han formado su modo de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hace mucho tiempo, la gente de las estepas de Asia domesticó al caballo salvaje.",
+      "text_markdown": "Hace mucho tiempo, la gente de las estepas de Asia domesticó al caballo salvaje.",
+      "tts": {
+        "text": "Hace mucho tiempo, la gente de las estepas de Asia domesticó al caballo salvaje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sobre el lomo de un caballo, una persona podía cruzar las llanuras abiertas mucho más rápido que a pie.",
+      "text_markdown": "Sobre el lomo de un caballo, una persona podía cruzar las llanuras abiertas mucho más rápido que a pie.",
+      "tts": {
+        "text": "Sobre el lomo de un caballo, una persona podía cruzar las llanuras abiertas mucho más rápido que a pie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El caballo cambió todo para la gente de las praderas.",
+      "text_markdown": "El caballo cambió todo para la gente de las praderas.",
+      "tts": {
+        "text": "El caballo cambió todo para la gente de las praderas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cambió cómo cazaban, cómo viajaban y cómo peleaban.",
+      "text_markdown": "Cambió cómo cazaban, cómo viajaban y cómo peleaban.",
+      "tts": {
+        "text": "Cambió cómo cazaban, cómo viajaban y cómo peleaban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos de los antiguos pueblos de las estepas eran nómadas.",
+      "text_markdown": "Muchos de los antiguos pueblos de las estepas eran nómadas.",
+      "tts": {
+        "text": "Muchos de los antiguos pueblos de las estepas eran nómadas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Movían sus rebaños de caballos, ganado, ovejas y cabras de una parte de la pradera a otra.",
+      "text_markdown": "Movían sus rebaños de caballos, ganado, ovejas y cabras de una parte de la pradera a otra.",
+      "tts": {
+        "text": "Movían sus rebaños de caballos, ganado, ovejas y cabras de una parte de la pradera a otra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, viajaban a las llanuras altas y frescas.",
+      "text_markdown": "En el verano, viajaban a las llanuras altas y frescas.",
+      "tts": {
+        "text": "En el verano, viajaban a las llanuras altas y frescas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, bajaban a valles más bajos y cálidos.",
+      "text_markdown": "En el invierno, bajaban a valles más bajos y cálidos.",
+      "tts": {
+        "text": "En el invierno, bajaban a valles más bajos y cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sus hogares eran tiendas redondas hechas de fieltro y madera.",
+      "text_markdown": "Sus hogares eran tiendas redondas hechas de fieltro y madera.",
+      "tts": {
+        "text": "Sus hogares eran tiendas redondas hechas de fieltro y madera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una tienda redonda como esta se puede desarmar en una hora, cargar sobre el lomo de un animal y volver a armar en otro lugar.",
+      "text_markdown": "Una tienda redonda como esta se puede desarmar en una hora, cargar sobre el lomo de un animal y volver a armar en otro lugar.",
+      "tts": {
+        "text": "Una tienda redonda como esta se puede desarmar en una hora, cargar sobre el lomo de un animal y volver a armar en otro lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En América del Norte, la gente de las llanuras vivió durante miles de años junto a los grandes rebaños de bisontes.",
+      "text_markdown": "En América del Norte, la gente de las llanuras vivió durante miles de años junto a los grandes rebaños de bisontes.",
+      "tts": {
+        "text": "En América del Norte, la gente de las llanuras vivió durante miles de años junto a los grandes rebaños de bisontes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seguían a los rebaños por la tierra abierta.",
+      "text_markdown": "Seguían a los rebaños por la tierra abierta.",
+      "tts": {
+        "text": "Seguían a los rebaños por la tierra abierta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sus hogares eran tiendas altas de piel estiradas sobre postes de madera.",
+      "text_markdown": "Sus hogares eran tiendas altas de piel estiradas sobre postes de madera.",
+      "tts": {
+        "text": "Sus hogares eran tiendas altas de piel estiradas sobre postes de madera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando el caballo llegó a las llanuras, el modo de vida allí también cambió profundamente.",
+      "text_markdown": "Cuando el caballo llegó a las llanuras, el modo de vida allí también cambió profundamente.",
+      "tts": {
+        "text": "Cuando el caballo llegó a las llanuras, el modo de vida allí también cambió profundamente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En las pampas de América del Sur, los pastores a caballo también se volvieron parte de la tierra.",
+      "text_markdown": "En las pampas de América del Sur, los pastores a caballo también se volvieron parte de la tierra.",
+      "tts": {
+        "text": "En las pampas de América del Sur, los pastores a caballo también se volvieron parte de la tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En los últimos cientos de años, gran parte de la pradera templada ha cambiado de nuevo.",
+      "text_markdown": "En los últimos cientos de años, gran parte de la pradera templada ha cambiado de nuevo.",
+      "tts": {
+        "text": "En los últimos cientos de años, gran parte de la pradera templada ha cambiado de nuevo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El suelo profundo y rico ha sido arado para sembrar trigo, maíz y otros granos.",
+      "text_markdown": "El suelo profundo y rico ha sido arado para sembrar trigo, maíz y otros granos.",
+      "tts": {
+        "text": "El suelo profundo y rico ha sido arado para sembrar trigo, maíz y otros granos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoy, gran parte del grano que alimenta al mundo viene de estas tierras.",
+      "text_markdown": "Hoy, gran parte del grano que alimenta al mundo viene de estas tierras.",
+      "tts": {
+        "text": "Hoy, gran parte del grano que alimenta al mundo viene de estas tierras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La vieja costumbre de moverse con los rebaños ya no existe en muchos lugares.",
+      "text_markdown": "La vieja costumbre de moverse con los rebaños ya no existe en muchos lugares.",
+      "tts": {
+        "text": "La vieja costumbre de moverse con los rebaños ya no existe en muchos lugares.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero las canciones, las historias y el amor por el cielo abierto siguen vivos.",
+      "text_markdown": "Pero las canciones, las historias y el amor por el cielo abierto siguen vivos.",
+      "tts": {
+        "text": "Pero las canciones, las historias y el amor por el cielo abierto siguen vivos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En cada gran pradera, la gente que creció allí lleva el viento en el corazón.",
+      "text_markdown": "En cada gran pradera, la gente que creció allí lleva el viento en el corazón.",
+      "tts": {
+        "text": "En cada gran pradera, la gente que creció allí lleva el viento en el corazón.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La pradera hoy",
+      "text_markdown": "La pradera hoy"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pradera templada es uno de los biomas más importantes para la gente.",
+      "text_markdown": "La pradera templada es uno de los biomas más importantes para la gente.",
+      "tts": {
+        "text": "La pradera templada es uno de los biomas más importantes para la gente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El suelo profundo y rico la hace perfecta para cultivar alimentos.",
+      "text_markdown": "El suelo profundo y rico la hace perfecta para cultivar alimentos.",
+      "tts": {
+        "text": "El suelo profundo y rico la hace perfecta para cultivar alimentos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gran parte del pan, la pasta y el maíz que come el mundo viene de estas tierras.",
+      "text_markdown": "Gran parte del pan, la pasta y el maíz que come el mundo viene de estas tierras.",
+      "tts": {
+        "text": "Gran parte del pan, la pasta y el maíz que come el mundo viene de estas tierras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero el costo ha sido alto.",
+      "text_markdown": "Pero el costo ha sido alto.",
+      "tts": {
+        "text": "Pero el costo ha sido alto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mayoría de las praderas originales del mundo han sido aradas.",
+      "text_markdown": "La mayoría de las praderas originales del mundo han sido aradas.",
+      "tts": {
+        "text": "La mayoría de las praderas originales del mundo han sido aradas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los grandes rebaños de bisontes y de caballos salvajes en su mayoría han desaparecido.",
+      "text_markdown": "Los grandes rebaños de bisontes y de caballos salvajes en su mayoría han desaparecido.",
+      "tts": {
+        "text": "Los grandes rebaños de bisontes y de caballos salvajes en su mayoría han desaparecido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los pequeños animales que cavan madrigueras tienen menos lugares donde vivir.",
+      "text_markdown": "Los pequeños animales que cavan madrigueras tienen menos lugares donde vivir.",
+      "tts": {
+        "text": "Los pequeños animales que cavan madrigueras tienen menos lugares donde vivir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La hierba que antes se extendía hasta el horizonte ahora solo crece en pequeños parches.",
+      "text_markdown": "La hierba que antes se extendía hasta el horizonte ahora solo crece en pequeños parches.",
+      "tts": {
+        "text": "La hierba que antes se extendía hasta el horizonte ahora solo crece en pequeños parches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En algunos lugares, cuando la hierba ya no está y el suelo queda desnudo, el viento se lleva la tierra oscura.",
+      "text_markdown": "En algunos lugares, cuando la hierba ya no está y el suelo queda desnudo, el viento se lleva la tierra oscura.",
+      "tts": {
+        "text": "En algunos lugares, cuando la hierba ya no está y el suelo queda desnudo, el viento se lleva la tierra oscura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos grupos alrededor del mundo trabajan para cuidar lo que queda.",
+      "text_markdown": "Muchos grupos alrededor del mundo trabajan para cuidar lo que queda.",
+      "tts": {
+        "text": "Muchos grupos alrededor del mundo trabajan para cuidar lo que queda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apartan parques donde la hierba puede volver a crecer alta.",
+      "text_markdown": "Apartan parques donde la hierba puede volver a crecer alta.",
+      "tts": {
+        "text": "Apartan parques donde la hierba puede volver a crecer alta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayudan a los bisontes y a otros animales a volver a tierras que antes habitaban.",
+      "text_markdown": "Ayudan a los bisontes y a otros animales a volver a tierras que antes habitaban.",
+      "tts": {
+        "text": "Ayudan a los bisontes y a otros animales a volver a tierras que antes habitaban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estudian el suelo profundo para que podamos usarlo sin perderlo.",
+      "text_markdown": "Estudian el suelo profundo para que podamos usarlo sin perderlo.",
+      "tts": {
+        "text": "Estudian el suelo profundo para que podamos usarlo sin perderlo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una pradera saludable es uno de los lugares más vivos de la Tierra.",
+      "text_markdown": "Una pradera saludable es uno de los lugares más vivos de la Tierra.",
+      "tts": {
+        "text": "Una pradera saludable es uno de los lugares más vivos de la Tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "La pradera hoy",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vale la pena cuidarla.",
+      "text_markdown": "Vale la pena cuidarla.",
+      "tts": {
+        "text": "Vale la pena cuidarla.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cierre",
+      "text_markdown": "Cierre"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esa es la pradera templada.",
+      "text_markdown": "Esa es la pradera templada.",
+      "tts": {
+        "text": "Esa es la pradera templada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mundo amplio y ventoso de hierba, gran cielo y estaciones que cambian.",
+      "text_markdown": "Un mundo amplio y ventoso de hierba, gran cielo y estaciones que cambian.",
+      "tts": {
+        "text": "Un mundo amplio y ventoso de hierba, gran cielo y estaciones que cambian.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si alguna vez estás de pie en una, quédate quieto por un minuto.",
+      "text_markdown": "Si alguna vez estás de pie en una, quédate quieto por un minuto.",
+      "tts": {
+        "text": "Si alguna vez estás de pie en una, quédate quieto por un minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Escucha el viento moviéndose por la hierba.",
+      "text_markdown": "Escucha el viento moviéndose por la hierba.",
+      "tts": {
+        "text": "Escucha el viento moviéndose por la hierba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mira hacia el horizonte largo.",
+      "text_markdown": "Mira hacia el horizonte largo.",
+      "tts": {
+        "text": "Mira hacia el horizonte largo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentirás el corazón del bioma latiendo a tu alrededor.",
+      "text_markdown": "Sentirás el corazón del bioma latiendo a tu alrededor.",
+      "tts": {
+        "text": "Sentirás el corazón del bioma latiendo a tu alrededor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

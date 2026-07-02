@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ta",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI This Week-க்கு வரவேற்கிறோம். நான் Vindy.",
+      "text_markdown": "AI This Week-க்கு வரவேற்கிறோம். நான் Vindy.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week-க்கு வரவேற்கிறோம். நான் Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "எப்போதும் போல என்னுடன், Ron.",
+      "text_markdown": "எப்போதும் போல என்னுடன், Ron.",
+      "title": "",
+      "tts": {
+        "text": "எப்போதும் போல என்னுடன், Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இங்கே இருப்பது நல்லது.",
+      "text_markdown": "இங்கே இருப்பது நல்லது.",
+      "title": "",
+      "tts": {
+        "text": "இங்கே இருப்பது நல்லது.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "இன்று புதன்கிழமை, மே 13, 2026. வரவிருப்பவை: இந்த வாரம் வெளியான மாடல்கள். லீடர்போர்டுகள், அதில் எதை நீங்கள் நம்புவதை நிறுத்த வேண்டும். எங்கள் இந்த வார கான்செப்ட். மற்றும் பெரிய படம் — அமெரிக்காவுக்கு புதிய Federal Reserve தலைவர் கிடைத்துள்ளார், இது நீங்கள் நினைப்பதை விட AI-க்கு அதிகம் முக்கியம்.",
+      "text_markdown": "இன்று புதன்கிழமை, மே 13, 2026. வரவிருப்பவை: இந்த வாரம் வெளியான மாடல்கள். லீடர்போர்டுகள், அதில் எதை நீங்கள் நம்புவதை நிறுத்த வேண்டும். எங்கள் இந்த வார கான்செப்ட். மற்றும் பெரிய படம் — அமெரிக்காவுக்கு புதிய Federal Reserve தலைவர் கிடைத்துள்ளார், இது நீங்கள் நினைப்பதை விட AI-க்கு அதிகம் முக்கியம்.",
+      "title": "",
+      "tts": {
+        "text": "இன்று புதன்கிழமை, மே பதின்மூன்று, இரண்டாயிரத்து இருபத்தாறு. வரவிருப்பவை: இந்த வாரம் வெளியான மாடல்கள். லீடர்போர்டுகள், அதில் எதை நீங்கள் நம்புவதை நிறுத்த வேண்டும். எங்கள் இந்த வார கான்செப்ட். மற்றும் பெரிய படம் — அமெரிக்காவுக்கு புதிய Federal Reserve தலைவர் கிடைத்துள்ளார், இது நீங்கள் நினைப்பதை விட AI-க்கு அதிகம் முக்கியம்.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, இந்த வாரத்தின் மிகப்பெரிய மாடல் செய்தி என்ன?",
+      "text_markdown": "Ron, இந்த வாரத்தின் மிகப்பெரிய மாடல் செய்தி என்ன?",
+      "title": "",
+      "tts": {
+        "text": "Ron, இந்த வாரத்தின் மிகப்பெரிய மாடல் செய்தி என்ன?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ChatGPT-ன் உள்ளே உள்ள default brain மாறிவிட்டது. OpenAI ஒரு புதிய மாடலான GPT-5.5 Instant-ஐ free tier-க்கு கடந்த வாரம், மே 5 செவ்வாய்க்கிழமை வெளியிட்டது. ஒரு இலவச ChatGPT பதில் குறைவாகவோ அல்லது emoji-கள் குறைவாகவோ இருப்பது போல் உணர்ந்தால், அதுதான் காரணம்.",
+      "text_markdown": "ChatGPT-ன் உள்ளே உள்ள default brain மாறிவிட்டது. OpenAI ஒரு புதிய மாடலான GPT-5.5 Instant-ஐ free tier-க்கு கடந்த வாரம், மே 5 செவ்வாய்க்கிழமை வெளியிட்டது. ஒரு இலவச ChatGPT பதில் குறைவாகவோ அல்லது emoji-கள் குறைவாகவோ இருப்பது போல் உணர்ந்தால், அதுதான் காரணம்.",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT-ன் உள்ளே உள்ள default brain மாறிவிட்டது. OpenAI ஒரு புதிய மாடலான GPT ஐந்து புள்ளி ஐந்து Instant-ஐ free tier-க்கு கடந்த வாரம், மே ஐந்து செவ்வாய்க்கிழமை வெளியிட்டது. ஒரு இலவச ChatGPT பதில் குறைவாகவோ அல்லது emoji-கள் குறைவாகவோ இருப்பது போல் உணர்ந்தால், அதுதான் காரணம்.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "எப்படி குறைவாக?",
+      "text_markdown": "எப்படி குறைவாக?",
+      "title": "",
+      "tts": {
+        "text": "எப்படி குறைவாக?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI கூறுகிறது புதிய default தாம்ப திருப்பியமைத்த மாடலைவிட தோராயமாக 30% குறைவான வார்த்தைகளும் 30% குறைவான வரிகளும் எழுதுகிறது என்று. மிகவும் கடினமான prompts-ல் hallucinated claims-ல் 50% குறைவு என்றும் அவர்கள் கூறுகிறார்கள். மருத்துவ கேள்விகள், சட்ட கேள்விகள், நிதி கேள்விகள் போன்றவை.",
+      "text_markdown": "OpenAI கூறுகிறது புதிய default தாம்ப திருப்பியமைத்த மாடலைவிட தோராயமாக 30% குறைவான வார்த்தைகளும் 30% குறைவான வரிகளும் எழுதுகிறது என்று. மிகவும் கடினமான prompts-ல் hallucinated claims-ல் 50% குறைவு என்றும் அவர்கள் கூறுகிறார்கள். மருத்துவ கேள்விகள், சட்ட கேள்விகள், நிதி கேள்விகள் போன்றவை.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI கூறுகிறது புதிய default தாம்ப திருப்பியமைத்த மாடலைவிட தோராயமாக முப்பது விழுக்காடு குறைவான வார்த்தைகளும் முப்பது விழுக்காடு குறைவான வரிகளும் எழுதுகிறது என்று. மிகவும் கடினமான prompts-ல் hallucinated claims-ல் ஐம்பது விழுக்காடு குறைவு என்றும் அவர்கள் கூறுகிறார்கள். மருத்துவ கேள்விகள், சட்ட கேள்விகள், நிதி கேள்விகள் போன்றவை.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "OpenAI-க்கு வெளியே யாராவது அந்த எண்களை சரிபார்த்தார்களா?",
+      "text_markdown": "OpenAI-க்கு வெளியே யாராவது அந்த எண்களை சரிபார்த்தார்களா?",
+      "title": "",
+      "tts": {
+        "text": "OpenAI-க்கு வெளியே யாராவது அந்த எண்களை சரிபார்த்தார்களா?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "பெரிய அளவில் இல்லை. Artificial Analysis போன்ற independent benchmark மக்கள், புதிய மாடலை தங்கள் overall intelligence index-ல் முதலிடத்தில் வைத்துள்ளனர். ஆனால் hallucination claims சரிபார்க்க நேரம் எடுக்கும். மக்கள் உண்மையில் மாடலைப் பயன்படுத்தும்போது, அது வாரங்களில் தெரியவரும்.",
+      "text_markdown": "பெரிய அளவில் இல்லை. Artificial Analysis போன்ற independent benchmark மக்கள், புதிய மாடலை தங்கள் overall intelligence index-ல் முதலிடத்தில் வைத்துள்ளனர். ஆனால் hallucination claims சரிபார்க்க நேரம் எடுக்கும். மக்கள் உண்மையில் மாடலைப் பயன்படுத்தும்போது, அது வாரங்களில் தெரியவரும்.",
+      "title": "",
+      "tts": {
+        "text": "பெரிய அளவில் இல்லை. Artificial Analysis போன்ற independent benchmark மக்கள், புதிய மாடலை தங்கள் overall intelligence index-ல் முதலிடத்தில் வைத்துள்ளனர். ஆனால் hallucination claims சரிபார்க்க நேரம் எடுக்கும். மக்கள் உண்மையில் மாடலைப் பயன்படுத்தும்போது, அது வாரங்களில் தெரியவரும்.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Open weights பக்கத்தில் என்ன?",
+      "text_markdown": "Open weights பக்கத்தில் என்ன?",
+      "title": "",
+      "tts": {
+        "text": "Open weights பக்கத்தில் என்ன?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இரண்டு பெரிய விஷயங்கள். Kimi மாடலின் பின்னால் உள்ள சீன ஆய்வகமான Moonshot, கடந்த வாரம் மே 7-ல் $20 billion மதிப்பீட்டில் $2 billion திரட்டியது. அவர்களின் சமீபத்திய மாடலான Kimi K 2.6, token volume-க்கு OpenRouter-ல் முதல் இடத்தை எடுத்தது.",
+      "text_markdown": "இரண்டு பெரிய விஷயங்கள். Kimi மாடலின் பின்னால் உள்ள சீன ஆய்வகமான Moonshot, கடந்த வாரம் மே 7-ல் $20 billion மதிப்பீட்டில் $2 billion திரட்டியது. அவர்களின் சமீபத்திய மாடலான Kimi K 2.6, token volume-க்கு OpenRouter-ல் முதல் இடத்தை எடுத்தது.",
+      "title": "",
+      "tts": {
+        "text": "இரண்டு பெரிய விஷயங்கள். Kimi மாடலின் பின்னால் உள்ள சீன ஆய்வகமான Moonshot, கடந்த வாரம் மே ஏழு-ல் இருபது பில்லியன் டாலர் மதிப்பீட்டில் இரண்டு பில்லியன் டாலர் திரட்டியது. அவர்களின் சமீபத்திய மாடலான Kimi K இரண்டு புள்ளி ஆறு, token volume-க்கு OpenRouter-ல் முதல் இடத்தை எடுத்தது.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "முதல் இடமா? ஒட்டுமொத்தமாக?",
+      "text_markdown": "முதல் இடமா? ஒட்டுமொத்தமாக?",
+      "title": "",
+      "tts": {
+        "text": "முதல் இடமா? ஒட்டுமொத்தமாக?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஒட்டுமொத்தமாக. ஒரு முக்கிய வணிக router-ல் ஒரு சீன open weights மாடல் முதல் இடத்தில் இருக்கிறது. ஆறு மாதங்களுக்கு முன்பு, அது நினைத்துக்கூட பார்க்க முடியாததாக இருந்திருக்கும்.",
+      "text_markdown": "ஒட்டுமொத்தமாக. ஒரு முக்கிய வணிக router-ல் ஒரு சீன open weights மாடல் முதல் இடத்தில் இருக்கிறது. ஆறு மாதங்களுக்கு முன்பு, அது நினைத்துக்கூட பார்க்க முடியாததாக இருந்திருக்கும்.",
+      "title": "",
+      "tts": {
+        "text": "ஒட்டுமொத்தமாக. ஒரு முக்கிய வணிக router-ல் ஒரு சீன open weights மாடல் முதல் இடத்தில் இருக்கிறது. ஆறு மாதங்களுக்கு முன்பு, அது நினைத்துக்கூட பார்க்க முடியாததாக இருந்திருக்கும்.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "வேறு குறிப்பிடத்தக்க ஏதாவது உண்டா?",
+      "text_markdown": "வேறு குறிப்பிடத்தக்க ஏதாவது உண்டா?",
+      "title": "",
+      "tts": {
+        "text": "வேறு குறிப்பிடத்தக்க ஏதாவது உண்டா?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "பிரெஞ்சு ஆய்வகமான Mistral, ஏப்ரல் இறுதியில் Medium 3.5-ஐ அனுப்பியது. அவர்கள் ஒரு chat மாடல், ஒரு reasoning மாடல், மற்றும் ஒரு coding மாடல் என்ற பழைய பிரிவினையை ஒரு தயாரிப்பாக சேர்க்கிறார்கள். OpenAI GPT-5 குடும்பத்துடன் தொடங்கிய அதே trend. முழு துறையும் அந்த திசையில் நகர்கிறது.",
+      "text_markdown": "பிரெஞ்சு ஆய்வகமான Mistral, ஏப்ரல் இறுதியில் Medium 3.5-ஐ அனுப்பியது. அவர்கள் ஒரு chat மாடல், ஒரு reasoning மாடல், மற்றும் ஒரு coding மாடல் என்ற பழைய பிரிவினையை ஒரு தயாரிப்பாக சேர்க்கிறார்கள். OpenAI GPT-5 குடும்பத்துடன் தொடங்கிய அதே trend. முழு துறையும் அந்த திசையில் நகர்கிறது.",
+      "title": "",
+      "tts": {
+        "text": "பிரெஞ்சு ஆய்வகமான Mistral, ஏப்ரல் இறுதியில் Medium மூன்று புள்ளி ஐந்தை அனுப்பியது. அவர்கள் ஒரு chat மாடல், ஒரு reasoning மாடல், மற்றும் ஒரு coding மாடல் என்ற பழைய பிரிவினையை ஒரு தயாரிப்பாக சேர்க்கிறார்கள். OpenAI GPT ஐந்து குடும்பத்துடன் தொடங்கிய அதே trend. முழு துறையும் அந்த திசையில் நகர்கிறது.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அடுத்து என்ன வருகிறது?",
+      "text_markdown": "அடுத்து என்ன வருகிறது?",
+      "title": "",
+      "tts": {
+        "text": "அடுத்து என்ன வருகிறது?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Google I/O செவ்வாய்க்கிழமை. அனைவரும் புதிய Gemini-ஐ எதிர்பார்க்கிறார்கள், மற்றும் Gemini Omni என்ற video generation மாடல் பற்றி நம்பகமான பேச்சுகள் உள்ளன. OpenAI GPT-5.6-ஐ testing-ல் வைத்துள்ளது. Anthropic-கில் Mythos என்ற மாடல் private preview-ல் உள்ளது. அடுத்த வாரம் நிறைய தெரியும்.",
+      "text_markdown": "Google I/O செவ்வாய்க்கிழமை. அனைவரும் புதிய Gemini-ஐ எதிர்பார்க்கிறார்கள், மற்றும் Gemini Omni என்ற video generation மாடல் பற்றி நம்பகமான பேச்சுகள் உள்ளன. OpenAI GPT-5.6-ஐ testing-ல் வைத்துள்ளது. Anthropic-கில் Mythos என்ற மாடல் private preview-ல் உள்ளது. அடுத்த வாரம் நிறைய தெரியும்.",
+      "title": "",
+      "tts": {
+        "text": "Google I O செவ்வாய்க்கிழமை. அனைவரும் புதிய Gemini-ஐ எதிர்பார்க்கிறார்கள், மற்றும் Gemini Omni என்ற video generation மாடல் பற்றி நம்பகமான பேச்சுகள் உள்ளன. OpenAI GPT ஐந்து புள்ளி ஆறு testing-ல் வைத்துள்ளது. Anthropic-கில் Mythos என்ற மாடல் private preview-ல் உள்ளது. அடுத்த வாரம் நிறைய தெரியும்.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "சரி, leaderboards-க்கு போவோம்.",
+      "text_markdown": "சரி, leaderboards-க்கு போவோம்.",
+      "title": "",
+      "tts": {
+        "text": "சரி, leaderboards-க்கு போவோம்.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, இந்த வாரம் boards-ல் என்ன நகர்கிறது?",
+      "text_markdown": "Ron, இந்த வாரம் boards-ல் என்ன நகர்கிறது?",
+      "title": "",
+      "tts": {
+        "text": "Ron, இந்த வாரம் boards-ல் என்ன நகர்கிறது?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இந்த வாரத்தின் உண்மையான கதை scores அல்ல. நீங்கள் நம்புவதை நிறுத்த வேண்டிய scores.",
+      "text_markdown": "இந்த வாரத்தின் உண்மையான கதை scores அல்ல. நீங்கள் நம்புவதை நிறுத்த வேண்டிய scores.",
+      "title": "",
+      "tts": {
+        "text": "இந்த வாரத்தின் உண்மையான கதை scores அல்ல. நீங்கள் நம்புவதை நிறுத்த வேண்டிய scores.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அதைப் பற்றி கொஞ்சம் விளக்கமாக சொல்லுங்கள், Ron.",
+      "text_markdown": "அதைப் பற்றி கொஞ்சம் விளக்கமாக சொல்லுங்கள், Ron.",
+      "title": "",
+      "tts": {
+        "text": "அதைப் பற்றி கொஞ்சம் விளக்கமாக சொல்லுங்கள், Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Berkeley-யில் ஒரு குழு ஒரு paper வெளியிட்டது. அவர்கள் ஒரு automated scanner உருவாக்கினர், அது ஒரு task-கையும் உண்மையில் தீர்க்காமல் ஒவ்வொரு முக்கிய AI agent benchmark-லும் கிட்டத்தட்ட perfect score பெற்றது. அவர்கள் benchmarks தங்கள் பதில்களை check செய்யும் வழியை exploit செய்தனர்.",
+      "text_markdown": "Berkeley-யில் ஒரு குழு ஒரு paper வெளியிட்டது. அவர்கள் ஒரு automated scanner உருவாக்கினர், அது ஒரு task-கையும் உண்மையில் தீர்க்காமல் ஒவ்வொரு முக்கிய AI agent benchmark-லும் கிட்டத்தட்ட perfect score பெற்றது. அவர்கள் benchmarks தங்கள் பதில்களை check செய்யும் வழியை exploit செய்தனர்.",
+      "title": "",
+      "tts": {
+        "text": "Berkeley-யில் ஒரு குழு ஒரு paper வெளியிட்டது. அவர்கள் ஒரு automated scanner உருவாக்கினர், அது ஒரு task-கையும் உண்மையில் தீர்க்காமல் ஒவ்வொரு முக்கிய AI agent benchmark-லும் கிட்டத்தட்ட perfect score பெற்றது. அவர்கள் benchmarks தங்கள் பதில்களை check செய்யும் வழியை exploit செய்தனர்.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அவர்கள் cheating செய்தார்கள், benchmarks அதை கண்டுபிடிக்கவில்லை.",
+      "text_markdown": "அவர்கள் cheating செய்தார்கள், benchmarks அதை கண்டுபிடிக்கவில்லை.",
+      "title": "",
+      "tts": {
+        "text": "அவர்கள் cheating செய்தார்கள், benchmarks அதை கண்டுபிடிக்கவில்லை.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "சரி. அதே வாரத்தில், OpenAI தாங்கள் SWE bench Verified-ல் தங்கள் evaluations-ஐ retire செய்வதாக அறிவித்தது. அது ஒரு coding benchmark அவர்கள் எப்போதும் cite செய்வார்கள். அவர்கள் அதை retire செய்தது ஏனென்றால் கடினமான tasks-ல் பாதிக்கு மேல் broken tests இருந்தன.",
+      "text_markdown": "சரி. அதே வாரத்தில், OpenAI தாங்கள் SWE bench Verified-ல் தங்கள் evaluations-ஐ retire செய்வதாக அறிவித்தது. அது ஒரு coding benchmark அவர்கள் எப்போதும் cite செய்வார்கள். அவர்கள் அதை retire செய்தது ஏனென்றால் கடினமான tasks-ல் பாதிக்கு மேல் broken tests இருந்தன.",
+      "title": "",
+      "tts": {
+        "text": "சரி. அதே வாரத்தில், OpenAI தாங்கள் SWE bench Verified-ல் தங்கள் evaluations-ஐ retire செய்வதாக அறிவித்தது. அது ஒரு coding benchmark அவர்கள் எப்போதும் cite செய்வார்கள். அவர்கள் அதை retire செய்தது ஏனென்றால் கடினமான tasks-ல் பாதிக்கு மேல் broken tests இருந்தன.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அப்படியென்றால் கடந்த ஒரு வருடமாக நாம் கேட்டுக்கொண்டிருந்த எண்கள் நிறைய...",
+      "text_markdown": "அப்படியென்றால் கடந்த ஒரு வருடமாக நாம் கேட்டுக்கொண்டிருந்த எண்கள் நிறைய...",
+      "title": "",
+      "tts": {
+        "text": "அப்படியென்றால் கடந்த ஒரு வருடமாக நாம் கேட்டுக்கொண்டிருந்த எண்கள் நிறைய...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "குறைந்தபட்சம் ஓரளவு inflate ஆனவை. எல்லா மாடலும் இல்லை. எல்லா benchmark-ம் இல்லை. ஆனால் துறையானது தன் measuring tape-ஐ பொதுவில் rebuild செய்துகொண்டிருக்கிறது. SWE-bench Pro மற்றும் SWE-rebench என்ற project போன்ற புதிய evaluations test code-ஐ private-ஆக வைத்து இதை சரி செய்ய முயற்சிக்கின்றன.",
+      "text_markdown": "குறைந்தபட்சம் ஓரளவு inflate ஆனவை. எல்லா மாடலும் இல்லை. எல்லா benchmark-ம் இல்லை. ஆனால் துறையானது தன் measuring tape-ஐ பொதுவில் rebuild செய்துகொண்டிருக்கிறது. SWE-bench Pro மற்றும் SWE-rebench என்ற project போன்ற புதிய evaluations test code-ஐ private-ஆக வைத்து இதை சரி செய்ய முயற்சிக்கின்றன.",
+      "title": "",
+      "tts": {
+        "text": "குறைந்தபட்சம் ஓரளவு inflate ஆனவை. எல்லா மாடலும் இல்லை. எல்லா benchmark-ம் இல்லை. ஆனால் துறையானது தன் measuring tape-ஐ பொதுவில் rebuild செய்துகொண்டிருக்கிறது. SWE bench Pro மற்றும் SWE rebench என்ற project போன்ற புதிய evaluations test code-ஐ private-ஆக வைத்து இதை சரி செய்ய முயற்சிக்கின்றன.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ஏதாவது உண்மையில் தெளிவாக மேலே நகர்கிறதா?",
+      "text_markdown": "ஏதாவது உண்மையில் தெளிவாக மேலே நகர்கிறதா?",
+      "title": "",
+      "tts": {
+        "text": "ஏதாவது உண்மையில் தெளிவாக மேலே நகர்கிறதா?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இரண்டு விஷயங்கள், தெளிவான boards-ல். ஏப்ரல் நடுப்பகுதியில், Anthropic-ன் Claude Opus 4.7 LM Arena coding leaderboard-ல் 1500 Elo-வை தெளிவாக கடந்த முதல் மாடல் ஆனது. Opus 4.6 ஓரிரு வாரங்களுக்கு முன்பு 1500-ஐ தொட்டிருந்தது. இந்த வாரம் வரை, Opus 4.7 இன்னும் மேலே உள்ளது, சுமார் 1569. Anthropic-கில் Mythos என்ற தனி மாடலும் private partner preview-ல் உள்ளது, அது Anthropic அளந்த 18 agent benchmarks-ல் 17-ல் முதலிடத்தில் உள்ளது.",
+      "text_markdown": "இரண்டு விஷயங்கள், தெளிவான boards-ல். ஏப்ரல் நடுப்பகுதியில், Anthropic-ன் Claude Opus 4.7 LM Arena coding leaderboard-ல் 1500 Elo-வை தெளிவாக கடந்த முதல் மாடல் ஆனது. Opus 4.6 ஓரிரு வாரங்களுக்கு முன்பு 1500-ஐ தொட்டிருந்தது. இந்த வாரம் வரை, Opus 4.7 இன்னும் மேலே உள்ளது, சுமார் 1569. Anthropic-கில் Mythos என்ற தனி மாடலும் private partner preview-ல் உள்ளது, அது Anthropic அளந்த 18 agent benchmarks-ல் 17-ல் முதலிடத்தில் உள்ளது.",
+      "title": "",
+      "tts": {
+        "text": "இரண்டு விஷயங்கள், தெளிவான boards-ல். ஏப்ரல் நடுப்பகுதியில், Anthropic-ன் Claude Opus நான்கு புள்ளி ஏழு LM Arena coding leaderboard-ல் ஆயிரத்து ஐந்நூறு Elo-வை தெளிவாக கடந்த முதல் மாடல் ஆனது. Opus நான்கு புள்ளி ஆறு ஓரிரு வாரங்களுக்கு முன்பு ஆயிரத்து ஐந்நூறு-ஐ தொட்டிருந்தது. இந்த வாரம் வரை, Opus நான்கு புள்ளி ஏழு இன்னும் மேலே உள்ளது, சுமார் ஆயிரத்து ஐந்நூற்று அறுபத்தொன்பது. Anthropic-கில் Mythos என்ற தனி மாடலும் private partner preview-ல் உள்ளது, அது Anthropic அளந்த பதினெட்டு agent benchmarks-ல் பதினேழு-ல் முதலிடத்தில் உள்ளது.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "மக்கள் பயன்படுத்த முடியாத ஒரு மாடல் boards-ன் மேலே உள்ளது.",
+      "text_markdown": "மக்கள் பயன்படுத்த முடியாத ஒரு மாடல் boards-ன் மேலே உள்ளது.",
+      "title": "",
+      "tts": {
+        "text": "மக்கள் பயன்படுத்த முடியாத ஒரு மாடல் boards-ன் மேலே உள்ளது.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "அதுதான் நம்முடைய நிலைமை. மற்ற பெரிய trend open versus closed gap. அது எப்போதும் இல்லாத அளவுக்கு குறைவாக உள்ளது. DeepSeek V4 Pro மற்றும் Kimi K 2.6 cross evaluation intelligence index-ல் GPT-5.5-ன் striking distance-ல் உள்ளன. அந்த gap மிகப்பெரியதாக இருந்தது. இப்போது சிறியது.",
+      "text_markdown": "அதுதான் நம்முடைய நிலைமை. மற்ற பெரிய trend open versus closed gap. அது எப்போதும் இல்லாத அளவுக்கு குறைவாக உள்ளது. DeepSeek V4 Pro மற்றும் Kimi K 2.6 cross evaluation intelligence index-ல் GPT-5.5-ன் striking distance-ல் உள்ளன. அந்த gap மிகப்பெரியதாக இருந்தது. இப்போது சிறியது.",
+      "title": "",
+      "tts": {
+        "text": "அதுதான் நம்முடைய நிலைமை. மற்ற பெரிய trend open versus closed gap. அது எப்போதும் இல்லாத அளவுக்கு குறைவாக உள்ளது. DeepSeek V நான்கு Pro மற்றும் Kimi K இரண்டு புள்ளி ஆறு cross evaluation intelligence index-ல் GPT ஐந்து புள்ளி ஐந்து-ன் striking distance-ல் உள்ளன. அந்த gap மிகப்பெரியதாக இருந்தது. இப்போது சிறியது.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "சரி, இந்த வார concept-க்குள் போவோம்.",
+      "text_markdown": "சரி, இந்த வார concept-க்குள் போவோம்.",
+      "title": "",
+      "tts": {
+        "text": "சரி, இந்த வார concept-க்குள் போவோம்.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, இந்த வார concept mixture of experts. நாம் ஏன் mixture of experts-ல் கவனம் செலுத்துகிறோம்?",
+      "text_markdown": "Ron, இந்த வார concept mixture of experts. நாம் ஏன் mixture of experts-ல் கவனம் செலுத்துகிறோம்?",
+      "title": "",
+      "tts": {
+        "text": "Ron, இந்த வார concept mixture of experts. நாம் ஏன் mixture of experts-ல் கவனம் செலுத்துகிறோம்?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஏனென்றால் நாம் இப்போதுதான் பேசின open weights மாடலான Kimi K 2.6-ல் மொத்தம் 1 trillion parameters உள்ளன. ஆனால் எந்த ஒரு தருணத்திலும் அந்த parameters-ல் 32 billion மட்டுமே இயங்குகின்றன. அதுதான் mixture of experts.",
+      "text_markdown": "ஏனென்றால் நாம் இப்போதுதான் பேசின open weights மாடலான Kimi K 2.6-ல் மொத்தம் 1 trillion parameters உள்ளன. ஆனால் எந்த ஒரு தருணத்திலும் அந்த parameters-ல் 32 billion மட்டுமே இயங்குகின்றன. அதுதான் mixture of experts.",
+      "title": "",
+      "tts": {
+        "text": "ஏனென்றால் நாம் இப்போதுதான் பேசின open weights மாடலான Kimi K இரண்டு புள்ளி ஆறு-ல் மொத்தம் ஒரு ட்ரில்லியன் parameters உள்ளன. ஆனால் எந்த ஒரு தருணத்திலும் அந்த parameters-ல் முப்பத்திரண்டு பில்லியன் மட்டுமே இயங்குகின்றன. அதுதான் mixture of experts.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "கேட்டுக்கொண்டிருக்கும் மக்களுக்கு அதை விளக்குங்கள்.",
+      "text_markdown": "கேட்டுக்கொண்டிருக்கும் மக்களுக்கு அதை விளக்குங்கள்.",
+      "title": "",
+      "tts": {
+        "text": "கேட்டுக்கொண்டிருக்கும் மக்களுக்கு அதை விளக்குங்கள்.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஒரு வழக்கமான ஏஐ மாடல் ஒரே பெரிய மூளை போல இருக்கும். அது உருவாக்கும் ஒவ்வொரு சொல்லுக்கும் மூளையின் எல்லாப் பகுதிகளும் சேர்ந்து வேலை செய்கின்றன. மிக்சர் ஆஃப் எக்ஸ்பெர்ட்ஸ் மாடல், வாசலில் ஒரு வரவேற்பாளர் இருக்கும் நிபுணர்கள் நிறைந்த கட்டடம் போன்றது. ஒவ்வொரு சொல்லுக்கும் அந்த வரவேற்பாளர் இரண்டு அல்லது மூன்று நிபுணர்களை மட்டும் ஆலோசனைக்கு அழைப்பார், கட்டடத்தின் மீதமுள்ள பகுதி முழுக்க அமைதியிலேயே நின்றுகொண்டிருக்கும்.",
+      "text_markdown": "ஒரு வழக்கமான ஏஐ மாடல் ஒரே பெரிய மூளை போல இருக்கும். அது உருவாக்கும் ஒவ்வொரு சொல்லுக்கும் மூளையின் எல்லாப் பகுதிகளும் சேர்ந்து வேலை செய்கின்றன. மிக்சர் ஆஃப் எக்ஸ்பெர்ட்ஸ் மாடல், வாசலில் ஒரு வரவேற்பாளர் இருக்கும் நிபுணர்கள் நிறைந்த கட்டடம் போன்றது. ஒவ்வொரு சொல்லுக்கும் அந்த வரவேற்பாளர் இரண்டு அல்லது மூன்று நிபுணர்களை மட்டும் ஆலோசனைக்கு அழைப்பார், கட்டடத்தின் மீதமுள்ள பகுதி முழுக்க அமைதியிலேயே நின்றுகொண்டிருக்கும்.",
+      "title": "",
+      "tts": {
+        "text": "ஒரு வழக்கமான ஏஐ மாடல் ஒரே பெரிய மூளை போல இருக்கும். அது உருவாக்கும் ஒவ்வொரு சொல்லுக்கும் மூளையின் எல்லாப் பகுதிகளும் சேர்ந்து வேலை செய்கின்றன. மிக்சர் ஆஃப் எக்ஸ்பெர்ட்ஸ் மாடல், வாசலில் ஒரு வரவேற்பாளர் இருக்கும் நிபுணர்கள் நிறைந்த கட்டடம் போன்றது. ஒவ்வொரு சொல்லுக்கும் அந்த வரவேற்பாளர் இரண்டு அல்லது மூன்று நிபுணர்களை மட்டும் ஆலோசனைக்கு அழைப்பார், கட்டடத்தின் மீதமுள்ள பகுதி முழுக்க அமைதியிலேயே நின்றுகொண்டிருக்கும்.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அப்படியென்றால் மாடல் காகிதத்தில் பெரியது ஆனால் run செய்ய மலிவானது.",
+      "text_markdown": "அப்படியென்றால் மாடல் காகிதத்தில் பெரியது ஆனால் run செய்ய மலிவானது.",
+      "title": "",
+      "tts": {
+        "text": "அப்படியென்றால் மாடல் காகிதத்தில் பெரியது ஆனால் run செய்ய மலிவானது.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "சரியாகப் பார்த்தால், இது 1 டிரில்லியன் பாராமீட்டர்கள் கொள்ளளவு கொண்டது, ஆனால் ஒவ்வொரு சொல்லுக்கும் 32 பில்லியன் பாராமீட்டர்களுக்கான கணக்கீட்டையே பயன்படுத்துகிறது, அதுதான் இங்கே தந்திரம், ரிசப்ஷனிஸ்ட் ரவுட்டர் என்ற ஒரு சிறிய குறியீட்டு துணுக்கு எக்ஸ்பெர்ட்ஸ் எனப்படும் துணை வலையமைப்புகளுக்கு வழி காட்டுகிறது, மேலும் மாடல் தொடக்கம் முதல் முடிவு வரை ரவுட்டரையும் எக்ஸ்பெர்ட்ஸையும் ஒன்றாகவே பயிற்சியடைகிறது.",
+      "text_markdown": "சரியாகப் பார்த்தால், இது 1 டிரில்லியன் பாராமீட்டர்கள் கொள்ளளவு கொண்டது, ஆனால் ஒவ்வொரு சொல்லுக்கும் 32 பில்லியன் பாராமீட்டர்களுக்கான கணக்கீட்டையே பயன்படுத்துகிறது, அதுதான் இங்கே தந்திரம், ரிசப்ஷனிஸ்ட் ரவுட்டர் என்ற ஒரு சிறிய குறியீட்டு துணுக்கு எக்ஸ்பெர்ட்ஸ் எனப்படும் துணை வலையமைப்புகளுக்கு வழி காட்டுகிறது, மேலும் மாடல் தொடக்கம் முதல் முடிவு வரை ரவுட்டரையும் எக்ஸ்பெர்ட்ஸையும் ஒன்றாகவே பயிற்சியடைகிறது.",
+      "title": "",
+      "tts": {
+        "text": "சரியாகப் பார்த்தால், இது ஒரு டிரில்லியன் பாராமீட்டர்கள் கொள்ளளவு கொண்டது, ஆனால் ஒவ்வொரு சொல்லுக்கும் முப்பத்திரண்டு பில்லியன் பாராமீட்டர்களுக்கான கணக்கீட்டையே பயன்படுத்துகிறது, அதுதான் இங்கே தந்திரம், ரிசப்ஷனிஸ்ட் ரவுட்டர் என்ற ஒரு சிறிய குறியீட்டு துணுக்கு எக்ஸ்பெர்ட்ஸ் எனப்படும் துணை வலையமைப்புகளுக்கு வழி காட்டுகிறது, மேலும் மாடல் தொடக்கம் முதல் முடிவு வரை ரவுட்டரையும் எக்ஸ்பெர்ட்ஸையும் ஒன்றாகவே பயிற்சியடைகிறது.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "எல்லா முக்கிய frontier மாடலும் இதை செய்கிறதா?",
+      "text_markdown": "எல்லா முக்கிய frontier மாடலும் இதை செய்கிறதா?",
+      "title": "",
+      "tts": {
+        "text": "எல்லா முக்கிய frontier மாடலும் இதை செய்கிறதா?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "அவற்றில் பெரும்பாலானவை, ஆம். labs எப்போதும் அதை confirm செய்வதில்லை என்றாலும். GPT-4 ஒரு mixture of experts மாடல் இருந்தது. DeepSeek-ன் flagship ஒரு mixture of experts மாடல். Mistral 2023-லிருந்து mixture of experts மாடல்களை அனுப்பிக்கொண்டிருக்கிறது. சீனாவிலிருந்து வரும் புதிய அலை இந்த design-ஐ எல்லையிற்கு தள்ளியுள்ளது.",
+      "text_markdown": "அவற்றில் பெரும்பாலானவை, ஆம். labs எப்போதும் அதை confirm செய்வதில்லை என்றாலும். GPT-4 ஒரு mixture of experts மாடல் இருந்தது. DeepSeek-ன் flagship ஒரு mixture of experts மாடல். Mistral 2023-லிருந்து mixture of experts மாடல்களை அனுப்பிக்கொண்டிருக்கிறது. சீனாவிலிருந்து வரும் புதிய அலை இந்த design-ஐ எல்லையிற்கு தள்ளியுள்ளது.",
+      "title": "",
+      "tts": {
+        "text": "அவற்றில் பெரும்பாலானவை, ஆம். labs எப்போதும் அதை confirm செய்வதில்லை என்றாலும். GPT நான்கு ஒரு mixture of experts மாடல் இருந்தது. DeepSeek-ன் flagship ஒரு mixture of experts மாடல். Mistral இரண்டாயிரத்து இருபத்தி மூன்று-லிருந்து mixture of experts மாடல்களை அனுப்பிக்கொண்டிருக்கிறது. சீனாவிலிருந்து வரும் புதிய அலை இந்த design-ஐ எல்லையிற்கு தள்ளியுள்ளது.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ChatGPT மட்டும் பயன்படுத்துபவருக்கு இது ஏன் முக்கியம்?",
+      "text_markdown": "ChatGPT மட்டும் பயன்படுத்துபவருக்கு இது ஏன் முக்கியம்?",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT மட்டும் பயன்படுத்துபவருக்கு இது ஏன் முக்கியம்?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இரண்டு காரணங்கள். ஒன்று. சீனாவில் உள்ள ஒரு திறந்த எடைகள் ஆய்வகம் பட்ஜெட்டில் ஒரு பகுதியில் frontier வகுப்பு தரத்தில் இயங்க இதுவே முக்கிய காரணம். இரண்டு. ஒரே ஒரு API அழைப்பு டாலர்கள் அல்ல, சென்ட்களே செலவாக இதுவே முக்கிய காரணம். விலை குறைந்து தரம் உயர்வாக இருப்பதைப் பார்க்கும்போது, mixture of experts பொதுவாக அதற்குக் காரணம்.",
+      "text_markdown": "இரண்டு காரணங்கள். ஒன்று. சீனாவில் உள்ள ஒரு திறந்த எடைகள் ஆய்வகம் பட்ஜெட்டில் ஒரு பகுதியில் frontier வகுப்பு தரத்தில் இயங்க இதுவே முக்கிய காரணம். இரண்டு. ஒரே ஒரு API அழைப்பு டாலர்கள் அல்ல, சென்ட்களே செலவாக இதுவே முக்கிய காரணம். விலை குறைந்து தரம் உயர்வாக இருப்பதைப் பார்க்கும்போது, mixture of experts பொதுவாக அதற்குக் காரணம்.",
+      "title": "",
+      "tts": {
+        "text": "இரண்டு காரணங்கள். ஒன்று. சீனாவில் உள்ள ஒரு திறந்த எடைகள் ஆய்வகம் பட்ஜெட்டில் ஒரு பகுதியில் frontier வகுப்பு தரத்தில் இயங்க இதுவே முக்கிய காரணம். இரண்டு. ஒரே ஒரு API அழைப்பு டாலர்கள் அல்ல, சென்ட்களே செலவாக இதுவே முக்கிய காரணம். விலை குறைந்து தரம் உயர்வாக இருப்பதைப் பார்க்கும்போது, mixture of experts பொதுவாக அதற்குக் காரணம்.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mixture of experts. Router. Experts. Sparse activation. உங்களுடன் எடுத்துச் செல்ல வேண்டிய மூன்று வார்த்தைகள். இப்போது பெரிய படத்திற்குத் திரும்புவோம்.",
+      "text_markdown": "Mixture of experts. Router. Experts. Sparse activation. உங்களுடன் எடுத்துச் செல்ல வேண்டிய மூன்று வார்த்தைகள். இப்போது பெரிய படத்திற்குத் திரும்புவோம்.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts. Router. Experts. Sparse activation. உங்களுடன் எடுத்துச் செல்ல வேண்டிய மூன்று வார்த்தைகள். இப்போது பெரிய படத்திற்குத் திரும்புவோம்.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, இந்த வாரம் நமது உலகத்திற்கு வெளியே பெரிய செய்தி Federal Reserve.",
+      "text_markdown": "Ron, இந்த வாரம் நமது உலகத்திற்கு வெளியே பெரிய செய்தி Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, இந்த வாரம் நமது உலகத்திற்கு வெளியே பெரிய செய்தி Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இன்று, அமெரிக்க செனட் Kevin Warsh-ஐ Federal Reserve-இன் அடுத்த தலைவராக உறுதிப்படுத்தியது. வாக்கெடுப்பு 54க்கு 45. நவீன அமெரிக்க வரலாற்றில் Fed தலைவருக்கான மிகக் குறுகிய வாக்கெடுப்பு. ஒரே ஒரு Democrat மட்டும் எதிர்க்கட்சியை ஆதரித்தார்.",
+      "text_markdown": "இன்று, அமெரிக்க செனட் Kevin Warsh-ஐ Federal Reserve-இன் அடுத்த தலைவராக உறுதிப்படுத்தியது. வாக்கெடுப்பு 54க்கு 45. நவீன அமெரிக்க வரலாற்றில் Fed தலைவருக்கான மிகக் குறுகிய வாக்கெடுப்பு. ஒரே ஒரு Democrat மட்டும் எதிர்க்கட்சியை ஆதரித்தார்.",
+      "title": "",
+      "tts": {
+        "text": "இன்று, அமெரிக்க செனட் Kevin Warsh-ஐ Federal Reserve-இன் அடுத்த தலைவராக உறுதிப்படுத்தியது. வாக்கெடுப்பு ஐம்பத்து நான்குக்கு நாற்பத்து ஐந்து. நவீன அமெரிக்க வரலாற்றில் Fed தலைவருக்கான மிகக் குறுகிய வாக்கெடுப்பு. ஒரே ஒரு Democrat மட்டும் எதிர்க்கட்சியை ஆதரித்தார்.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI-க்கு அது ஏன் முக்கியம்?",
+      "text_markdown": "AI-க்கு அது ஏன் முக்கியம்?",
+      "title": "",
+      "tts": {
+        "text": "AI-க்கு அது ஏன் முக்கியம்?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஏனெனில் இப்போது AI buildout இரண்டு விஷயங்களால் கட்டுப்படுத்தப்படுகிறது. மின்சாரம், மற்றும் மூலதனத்தின் செலவு. Fed மூலதனத்தின் செலவை நிர்ணயிக்கிறது. மேலும் புதிய தலைவர் தனது முன்னோடி செய்திருப்பதை விட வேகமாக வட்டி விகிதங்களை குறைக்க விரும்புவதாக பதிவு செய்யப்பட்டுள்ளது.",
+      "text_markdown": "ஏனெனில் இப்போது AI buildout இரண்டு விஷயங்களால் கட்டுப்படுத்தப்படுகிறது. மின்சாரம், மற்றும் மூலதனத்தின் செலவு. Fed மூலதனத்தின் செலவை நிர்ணயிக்கிறது. மேலும் புதிய தலைவர் தனது முன்னோடி செய்திருப்பதை விட வேகமாக வட்டி விகிதங்களை குறைக்க விரும்புவதாக பதிவு செய்யப்பட்டுள்ளது.",
+      "title": "",
+      "tts": {
+        "text": "ஏனெனில் இப்போது AI buildout இரண்டு விஷயங்களால் கட்டுப்படுத்தப்படுகிறது. மின்சாரம், மற்றும் மூலதனத்தின் செலவு. Fed மூலதனத்தின் செலவை நிர்ணயிக்கிறது. மேலும் புதிய தலைவர் தனது முன்னோடி செய்திருப்பதை விட வேகமாக வட்டி விகிதங்களை குறைக்க விரும்புவதாக பதிவு செய்யப்பட்டுள்ளது.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "வேகமான வட்டி வெட்டுக்கள் AI முதலீட்டை மலிவாக்குகின்றன.",
+      "text_markdown": "வேகமான வட்டி வெட்டுக்கள் AI முதலீட்டை மலிவாக்குகின்றன.",
+      "title": "",
+      "tts": {
+        "text": "வேகமான வட்டி வெட்டுக்கள் AI முதலீட்டை மலிவாக்குகின்றன.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஆம். Hyperscalers — Microsoft, Google, Amazon, Meta — இந்த வருடம் தோராயமாக $700 billion மூலதன செலவில் செலவழிக்க உள்ளன. அதில் பெரும்பாலானவை GPU-கள் மற்றும் தரவு மையங்கள். குறைந்த தள்ளுபடி விகிதம் அந்த பல வருட buildout-களை அதிக மதிப்பீடுகளில் கணக்கிட வைக்கிறது.",
+      "text_markdown": "ஆம். Hyperscalers — Microsoft, Google, Amazon, Meta — இந்த வருடம் தோராயமாக $700 billion மூலதன செலவில் செலவழிக்க உள்ளன. அதில் பெரும்பாலானவை GPU-கள் மற்றும் தரவு மையங்கள். குறைந்த தள்ளுபடி விகிதம் அந்த பல வருட buildout-களை அதிக மதிப்பீடுகளில் கணக்கிட வைக்கிறது.",
+      "title": "",
+      "tts": {
+        "text": "ஆம். Hyperscalers — Microsoft, Google, Amazon, Meta — இந்த வருடம் தோராயமாக எழுநூறு பில்லியன் டாலர்கள் மூலதன செலவில் செலவழிக்க உள்ளன. அதில் பெரும்பாலானவை GPU-கள் மற்றும் தரவு மையங்கள். குறைந்த தள்ளுபடி விகிதம் அந்த பல வருட buildout-களை அதிக மதிப்பீடுகளில் கணக்கிட வைக்கிறது.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "மற்றும் எதிர் திசையில். Fed என்ன முடிவு செய்ய வேண்டும் என்பதை AI எவ்வாறு பாதிக்கிறது?",
+      "text_markdown": "மற்றும் எதிர் திசையில். Fed என்ன முடிவு செய்ய வேண்டும் என்பதை AI எவ்வாறு பாதிக்கிறது?",
+      "title": "",
+      "tts": {
+        "text": "மற்றும் எதிர் திசையில். Fed என்ன முடிவு செய்ய வேண்டும் என்பதை AI எவ்வாறு பாதிக்கிறது?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இதுதான் சுவாரஸ்யமான பகுதி. AI மூலதன செலவு இப்போது ஒரு macro எண்ணாக இருக்கும் அளவுக்கு பெரிதாகிவிட்டது. ஒரு sector கதை அல்ல. Wall Street ஆய்வாளர்கள் AI தொடர்பான கட்டுமானம் மற்றும் உபகரண செலவுகள் கடந்த பல காலாண்டுகளில் அமெரிக்க பொருளாதார வளர்ச்சியின் பெரும்பான்மையாக இருந்திருக்கிறது என்று கூறுகின்றனர்.",
+      "text_markdown": "இதுதான் சுவாரஸ்யமான பகுதி. AI மூலதன செலவு இப்போது ஒரு macro எண்ணாக இருக்கும் அளவுக்கு பெரிதாகிவிட்டது. ஒரு sector கதை அல்ல. Wall Street ஆய்வாளர்கள் AI தொடர்பான கட்டுமானம் மற்றும் உபகரண செலவுகள் கடந்த பல காலாண்டுகளில் அமெரிக்க பொருளாதார வளர்ச்சியின் பெரும்பான்மையாக இருந்திருக்கிறது என்று கூறுகின்றனர்.",
+      "title": "",
+      "tts": {
+        "text": "இதுதான் சுவாரஸ்யமான பகுதி. AI மூலதன செலவு இப்போது ஒரு macro எண்ணாக இருக்கும் அளவுக்கு பெரிதாகிவிட்டது. ஒரு sector கதை அல்ல. Wall Street ஆய்வாளர்கள் AI தொடர்பான கட்டுமானம் மற்றும் உபகரண செலவுகள் கடந்த பல காலாண்டுகளில் அமெரிக்க பொருளாதார வளர்ச்சியின் பெரும்பான்மையாக இருந்திருக்கிறது என்று கூறுகின்றனர்.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "வளர்ச்சியின் பெரும்பான்மை.",
+      "text_markdown": "வளர்ச்சியின் பெரும்பான்மை.",
+      "title": "",
+      "tts": {
+        "text": "வளர்ச்சியின் பெரும்பான்மை.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "பெரும்பான்மை. மேலும் இது Fed-க்கு இரண்டு திசைகளில் பாதிக்கிறது. நீண்ட காலத்தில், AI ஒரு உற்பத்தித்திறன் tailwind. அது deflationary. அது Fed-க்கு குறைக்க இடம் கொடுக்கிறது. குறுகிய காலத்தில், அது மின்சாரம், தாமிரம், திறமையான தொழிலாளர்கள், குளிர்வித்தலுக்கான தண்ணீர் மீது ஒரு demand shock. அது inflationary. குறிப்பாக Virginia மற்றும் Texas போன்ற இடங்களில், தரவு மையங்கள் குவிக்கப்பட்டுள்ள இடங்களில்.",
+      "text_markdown": "பெரும்பான்மை. மேலும் இது Fed-க்கு இரண்டு திசைகளில் பாதிக்கிறது. நீண்ட காலத்தில், AI ஒரு உற்பத்தித்திறன் tailwind. அது deflationary. அது Fed-க்கு குறைக்க இடம் கொடுக்கிறது. குறுகிய காலத்தில், அது மின்சாரம், தாமிரம், திறமையான தொழிலாளர்கள், குளிர்வித்தலுக்கான தண்ணீர் மீது ஒரு demand shock. அது inflationary. குறிப்பாக Virginia மற்றும் Texas போன்ற இடங்களில், தரவு மையங்கள் குவிக்கப்பட்டுள்ள இடங்களில்.",
+      "title": "",
+      "tts": {
+        "text": "பெரும்பான்மை. மேலும் இது Fed-க்கு இரண்டு திசைகளில் பாதிக்கிறது. நீண்ட காலத்தில், AI ஒரு உற்பத்தித்திறன் tailwind. அது deflationary. அது Fed-க்கு குறைக்க இடம் கொடுக்கிறது. குறுகிய காலத்தில், அது மின்சாரம், தாமிரம், திறமையான தொழிலாளர்கள், குளிர்வித்தலுக்கான தண்ணீர் மீது ஒரு demand shock. அது inflationary. குறிப்பாக Virginia மற்றும் Texas போன்ற இடங்களில், தரவு மையங்கள் குவிக்கப்பட்டுள்ள இடங்களில்.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "எனவே புதிய தலைவர் AI பணவீக்கத்திற்கான பதில் என்பதா, அல்லது AI பணவீக்கத்தின் காரணம் என்பதா என்று முடிவு செய்ய வேண்டும்.",
+      "text_markdown": "எனவே புதிய தலைவர் AI பணவீக்கத்திற்கான பதில் என்பதா, அல்லது AI பணவீக்கத்தின் காரணம் என்பதா என்று முடிவு செய்ய வேண்டும்.",
+      "title": "",
+      "tts": {
+        "text": "எனவே புதிய தலைவர் AI பணவீக்கத்திற்கான பதில் என்பதா, அல்லது AI பணவீக்கத்தின் காரணம் என்பதா என்று முடிவு செய்ய வேண்டும்.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "இரண்டும், ஒரே நேரத்தில். மேலும் அவர் தனது முதல் பொது உரைகளில் என்ன சொல்கிறார் என்பது Wall Street-இல் உள்ள ஒவ்வொரு AI மூலதன செலவு மாதிரியையும் நகர்த்தப் போகிறது.",
+      "text_markdown": "இரண்டும், ஒரே நேரத்தில். மேலும் அவர் தனது முதல் பொது உரைகளில் என்ன சொல்கிறார் என்பது Wall Street-இல் உள்ள ஒவ்வொரு AI மூலதன செலவு மாதிரியையும் நகர்த்தப் போகிறது.",
+      "title": "",
+      "tts": {
+        "text": "இரண்டும், ஒரே நேரத்தில். மேலும் அவர் தனது முதல் பொது உரைகளில் என்ன சொல்கிறார் என்பது Wall Street-இல் உள்ள ஒவ்வொரு AI மூலதன செலவு மாதிரியையும் நகர்த்தப் போகிறது.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Microsoft-இடம் மின்சாரம் காரணமாக $80 billion நிறைவேற்றப்படாத cloud ஆர்டர்கள் உள்ளன. அது சரியான எண்ணா?",
+      "text_markdown": "Microsoft-இடம் மின்சாரம் காரணமாக $80 billion நிறைவேற்றப்படாத cloud ஆர்டர்கள் உள்ளன. அது சரியான எண்ணா?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft-இடம் மின்சாரம் காரணமாக எண்பது பில்லியன் டாலர்கள் நிறைவேற்றப்படாத cloud ஆர்டர்கள் உள்ளன. அது சரியான எண்ணா?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "அதுதான் Microsoft அறிக்கை செய்திருக்கும் எண். Azure வாடிக்கையாளர்கள் திறனுக்காக வரிசையில் காத்திருக்கின்றனர். தடைக்கல் இனி சிப்கள் அல்ல. அது மின் கிரிட். மின்சார சந்தைகள் தரவு மையங்கள் விரும்பும் வேகத்தில் புதிய திறனை உருவாக்க முடியவில்லை.",
+      "text_markdown": "அதுதான் Microsoft அறிக்கை செய்திருக்கும் எண். Azure வாடிக்கையாளர்கள் திறனுக்காக வரிசையில் காத்திருக்கின்றனர். தடைக்கல் இனி சிப்கள் அல்ல. அது மின் கிரிட். மின்சார சந்தைகள் தரவு மையங்கள் விரும்பும் வேகத்தில் புதிய திறனை உருவாக்க முடியவில்லை.",
+      "title": "",
+      "tts": {
+        "text": "அதுதான் Microsoft அறிக்கை செய்திருக்கும் எண். Azure வாடிக்கையாளர்கள் திறனுக்காக வரிசையில் காத்திருக்கின்றனர். தடைக்கல் இனி சிப்கள் அல்ல. அது மின் கிரிட். மின்சார சந்தைகள் தரவு மையங்கள் விரும்பும் வேகத்தில் புதிய திறனை உருவாக்க முடியவில்லை.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Warsh-இன் முதல் கூட்டம் எப்போது?",
+      "text_markdown": "Warsh-இன் முதல் கூட்டம் எப்போது?",
+      "title": "",
+      "tts": {
+        "text": "Warsh-இன் முதல் கூட்டம் எப்போது?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ஜூன் 16 மற்றும் 17. அதன் பிறகு rate path பற்றி நாம் நிறைய அறிந்திருப்போம்.",
+      "text_markdown": "ஜூன் 16 மற்றும் 17. அதன் பிறகு rate path பற்றி நாம் நிறைய அறிந்திருப்போம்.",
+      "title": "",
+      "tts": {
+        "text": "ஜூன் பதினாறு மற்றும் பதினேழு. அதன் பிறகு rate path பற்றி நாம் நிறைய அறிந்திருப்போம்.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "நல்ல இடத்தில் முடிவு. Ron, நன்றி.",
+      "text_markdown": "நல்ல இடத்தில் முடிவு. Ron, நன்றி.",
+      "title": "",
+      "tts": {
+        "text": "நல்ல இடத்தில் முடிவு. Ron, நன்றி.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "விண்டி உனக்கு எப்போது வேண்டுமானாலும் சரி.",
+      "text_markdown": "விண்டி உனக்கு எப்போது வேண்டுமானாலும் சரி.",
+      "title": "",
+      "tts": {
+        "text": "விண்டி உனக்கு எப்போது வேண்டுமானாலும் சரி.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "அது மே 13, 2026-க்கான AI This Week. அடுத்த வியாழன் புதிய இதழ். அதுவரை, கவனமாக இருங்கள்.",
+      "text_markdown": "அது மே 13, 2026-க்கான AI This Week. அடுத்த வியாழன் புதிய இதழ். அதுவரை, கவனமாக இருங்கள்.",
+      "title": "",
+      "tts": {
+        "text": "அது மே பதிமூன்று, இரண்டாயிரத்து இருபத்து ஆறுக்கான AI This Week. அடுத்த வியாழன் புதிய இதழ். அதுவரை, கவனமாக இருங்கள்.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

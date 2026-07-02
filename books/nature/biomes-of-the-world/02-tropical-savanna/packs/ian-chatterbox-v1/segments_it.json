@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "La savana tropicale",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La savana tropicale",
+      "text_markdown": "La savana tropicale"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dove crescono le savane",
+      "text_markdown": "Dove crescono le savane"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benvenuti nella savana tropicale.",
+      "text_markdown": "Benvenuti nella savana tropicale.",
+      "tts": {
+        "text": "Benvenuti nella savana tropicale.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo è uno dei grandi biomi del mondo.",
+      "text_markdown": "Questo è uno dei grandi biomi del mondo.",
+      "tts": {
+        "text": "Questo è uno dei grandi biomi del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma è una parte della Terra con il suo clima, le sue piante e i suoi animali.",
+      "text_markdown": "Un bioma è una parte della Terra con il suo clima, le sue piante e i suoi animali.",
+      "tts": {
+        "text": "Un bioma è una parte della Terra con il suo clima, le sue piante e i suoi animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La savana è un'ampia prateria con alberi sparsi.",
+      "text_markdown": "La savana è un'ampia prateria con alberi sparsi.",
+      "tts": {
+        "text": "La savana è un'ampia prateria con alberi sparsi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fa caldo tutto l'anno.",
+      "text_markdown": "Fa caldo tutto l'anno.",
+      "tts": {
+        "text": "Fa caldo tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ha una lunga stagione secca e una stagione umida più breve.",
+      "text_markdown": "Ha una lunga stagione secca e una stagione umida più breve.",
+      "tts": {
+        "text": "Ha una lunga stagione secca e una stagione umida più breve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le savane più grandi del mondo si trovano in Africa.",
+      "text_markdown": "Le savane più grandi del mondo si trovano in Africa.",
+      "tts": {
+        "text": "Le savane più grandi del mondo si trovano in Africa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si estendono per gran parte del centro del continente.",
+      "text_markdown": "Si estendono per gran parte del centro del continente.",
+      "tts": {
+        "text": "Si estendono per gran parte del centro del continente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono grandi savane anche in Sud America, chiamate cerrado.",
+      "text_markdown": "Ci sono grandi savane anche in Sud America, chiamate cerrado.",
+      "tts": {
+        "text": "Ci sono grandi savane anche in Sud America, chiamate cerrado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono savane tropicali in tutto il nord dell'Australia.",
+      "text_markdown": "Ci sono savane tropicali in tutto il nord dell'Australia.",
+      "tts": {
+        "text": "Ci sono savane tropicali in tutto il nord dell'Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono savane più piccole in India e nel Sud-est asiatico.",
+      "text_markdown": "Ci sono savane più piccole in India e nel Sud-est asiatico.",
+      "tts": {
+        "text": "Ci sono savane più piccole in India e nel Sud est asiatico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuna di queste è nata da sola, lontana dalle altre.",
+      "text_markdown": "Ognuna di queste è nata da sola, lontana dalle altre.",
+      "tts": {
+        "text": "Ognuna di queste è nata da sola, lontana dalle altre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per questo le piante e gli animali sono diversi in ogni parte del mondo.",
+      "text_markdown": "Per questo le piante e gli animali sono diversi in ogni parte del mondo.",
+      "tts": {
+        "text": "Per questo le piante e gli animali sono diversi in ogni parte del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un animale che pascola in Africa non è lo stesso di uno in Sud America o in Australia.",
+      "text_markdown": "Un animale che pascola in Africa non è lo stesso di uno in Sud America o in Australia.",
+      "tts": {
+        "text": "Un animale che pascola in Africa non è lo stesso di uno in Sud America o in Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma fanno tutti parte dello stesso bioma.",
+      "text_markdown": "Ma fanno tutti parte dello stesso bioma.",
+      "tts": {
+        "text": "Ma fanno tutti parte dello stesso bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando ti trovi in una savana, puoi vedere molto lontano.",
+      "text_markdown": "Quando ti trovi in una savana, puoi vedere molto lontano.",
+      "tts": {
+        "text": "Quando ti trovi in una savana, puoi vedere molto lontano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'erba ti arriva alla vita o più in alto.",
+      "text_markdown": "L'erba ti arriva alla vita o più in alto.",
+      "tts": {
+        "text": "L'erba ti arriva alla vita o più in alto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qualche albero dalla chioma piatta si alza sopra l'erba.",
+      "text_markdown": "Qualche albero dalla chioma piatta si alza sopra l'erba.",
+      "tts": {
+        "text": "Qualche albero dalla chioma piatta si alza sopra l'erba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il cielo è immenso.",
+      "text_markdown": "Il cielo è immenso.",
+      "tts": {
+        "text": "Il cielo è immenso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La luce è dorata.",
+      "text_markdown": "La luce è dorata.",
+      "tts": {
+        "text": "La luce è dorata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senti il vento che si muove fra l'erba.",
+      "text_markdown": "Senti il vento che si muove fra l'erba.",
+      "tts": {
+        "text": "Senti il vento che si muove fra l'erba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senti gli uccelli che cantano in lontananza.",
+      "text_markdown": "Senti gli uccelli che cantano in lontananza.",
+      "tts": {
+        "text": "Senti gli uccelli che cantano in lontananza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la savana.",
+      "text_markdown": "Questa è la savana.",
+      "tts": {
+        "text": "Questa è la savana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Dove crescono le savane",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una grande terra aperta di erba, alberi sparsi e cieli ampi.",
+      "text_markdown": "Una grande terra aperta di erba, alberi sparsi e cieli ampi.",
+      "tts": {
+        "text": "Una grande terra aperta di erba, alberi sparsi e cieli ampi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il clima",
+      "text_markdown": "Il clima"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il clima della savana tropicale è semplice.",
+      "text_markdown": "Il clima della savana tropicale è semplice.",
+      "tts": {
+        "text": "Il clima della savana tropicale è semplice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fa caldo tutto l'anno.",
+      "text_markdown": "Fa caldo tutto l'anno.",
+      "tts": {
+        "text": "Fa caldo tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma a differenza della foresta pluviale, la savana ha due stagioni molto diverse.",
+      "text_markdown": "Ma a differenza della foresta pluviale, la savana ha due stagioni molto diverse.",
+      "tts": {
+        "text": "Ma a differenza della foresta pluviale, la savana ha due stagioni molto diverse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'è una lunga stagione secca e una stagione umida più breve.",
+      "text_markdown": "C'è una lunga stagione secca e una stagione umida più breve.",
+      "tts": {
+        "text": "C'è una lunga stagione secca e una stagione umida più breve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione secca, il cielo resta limpido per molti mesi.",
+      "text_markdown": "Nella stagione secca, il cielo resta limpido per molti mesi.",
+      "tts": {
+        "text": "Nella stagione secca, il cielo resta limpido per molti mesi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'erba diventa dorata e fragile.",
+      "text_markdown": "L'erba diventa dorata e fragile.",
+      "tts": {
+        "text": "L'erba diventa dorata e fragile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiumi si riducono e molti piccoli stagni si seccano del tutto.",
+      "text_markdown": "I fiumi si riducono e molti piccoli stagni si seccano del tutto.",
+      "tts": {
+        "text": "I fiumi si riducono e molti piccoli stagni si seccano del tutto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi perdono le foglie per risparmiare acqua.",
+      "text_markdown": "Gli alberi perdono le foglie per risparmiare acqua.",
+      "tts": {
+        "text": "Gli alberi perdono le foglie per risparmiare acqua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La stagione umida comincia con grandi nuvole che si accumulano all'orizzonte.",
+      "text_markdown": "La stagione umida comincia con grandi nuvole che si accumulano all'orizzonte.",
+      "tts": {
+        "text": "La stagione umida comincia con grandi nuvole che si accumulano all'orizzonte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le prime piogge cadono in forti temporali con tuoni e lampi.",
+      "text_markdown": "Le prime piogge cadono in forti temporali con tuoni e lampi.",
+      "tts": {
+        "text": "Le prime piogge cadono in forti temporali con tuoni e lampi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando arriva la pioggia, la savana cambia in una sola notte.",
+      "text_markdown": "Quando arriva la pioggia, la savana cambia in una sola notte.",
+      "tts": {
+        "text": "Quando arriva la pioggia, la savana cambia in una sola notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nuova erba spunta dalla terra secca.",
+      "text_markdown": "Nuova erba spunta dalla terra secca.",
+      "tts": {
+        "text": "Nuova erba spunta dalla terra secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi mettono foglie nuove e verdi.",
+      "text_markdown": "Gli alberi mettono foglie nuove e verdi.",
+      "tts": {
+        "text": "Gli alberi mettono foglie nuove e verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiori sbocciano in ondate di colori.",
+      "text_markdown": "I fiori sbocciano in ondate di colori.",
+      "tts": {
+        "text": "I fiori sbocciano in ondate di colori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La stagione umida è breve, ma è quando accade gran parte della vita.",
+      "text_markdown": "La stagione umida è breve, ma è quando accade gran parte della vita.",
+      "tts": {
+        "text": "La stagione umida è breve, ma è quando accade gran parte della vita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La stagione secca è lunga, ma la savana è fatta apposta per questo.",
+      "text_markdown": "La stagione secca è lunga, ma la savana è fatta apposta per questo.",
+      "tts": {
+        "text": "La stagione secca è lunga, ma la savana è fatta apposta per questo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni pianta e ogni animale qui sa come aspettare la pioggia.",
+      "text_markdown": "Ogni pianta e ogni animale qui sa come aspettare la pioggia.",
+      "tts": {
+        "text": "Ogni pianta e ogni animale qui sa come aspettare la pioggia.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terra e l'acqua",
+      "text_markdown": "La terra e l'acqua"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La terra della savana è per lo più piatta e ampia.",
+      "text_markdown": "La terra della savana è per lo più piatta e ampia.",
+      "tts": {
+        "text": "La terra della savana è per lo più piatta e ampia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alcuni luoghi, basse colline ondulate si alzano dall'erba.",
+      "text_markdown": "In alcuni luoghi, basse colline ondulate si alzano dall'erba.",
+      "tts": {
+        "text": "In alcuni luoghi, basse colline ondulate si alzano dall'erba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni tanto un grande sperone roccioso si erge solitario sulla pianura.",
+      "text_markdown": "Ogni tanto un grande sperone roccioso si erge solitario sulla pianura.",
+      "tts": {
+        "text": "Ogni tanto un grande sperone roccioso si erge solitario sulla pianura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suolo sotto l'erba è diverso nelle diverse parti della savana.",
+      "text_markdown": "Il suolo sotto l'erba è diverso nelle diverse parti della savana.",
+      "tts": {
+        "text": "Il suolo sotto l'erba è diverso nelle diverse parti della savana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alcuni luoghi è scuro e ricco.",
+      "text_markdown": "In alcuni luoghi è scuro e ricco.",
+      "tts": {
+        "text": "In alcuni luoghi è scuro e ricco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In altri luoghi è sabbioso o sottile.",
+      "text_markdown": "In altri luoghi è sabbioso o sottile.",
+      "tts": {
+        "text": "In altri luoghi è sabbioso o sottile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le erbe hanno imparato a crescere in tutti loro.",
+      "text_markdown": "Le erbe hanno imparato a crescere in tutti loro.",
+      "tts": {
+        "text": "Le erbe hanno imparato a crescere in tutti loro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando arrivano le piogge, l'acqua si raccoglie nei luoghi bassi e forma stagni e laghi poco profondi.",
+      "text_markdown": "Quando arrivano le piogge, l'acqua si raccoglie nei luoghi bassi e forma stagni e laghi poco profondi.",
+      "tts": {
+        "text": "Quando arrivano le piogge, l'acqua si raccoglie nei luoghi bassi e forma stagni e laghi poco profondi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni di questi durano mesi, altri si seccano in poche settimane.",
+      "text_markdown": "Alcuni di questi durano mesi, altri si seccano in poche settimane.",
+      "tts": {
+        "text": "Alcuni di questi durano mesi, altri si seccano in poche settimane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiumi serpeggiano attraverso la savana in curve lunghe e lente.",
+      "text_markdown": "I fiumi serpeggiano attraverso la savana in curve lunghe e lente.",
+      "tts": {
+        "text": "I fiumi serpeggiano attraverso la savana in curve lunghe e lente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione umida sono larghi e pieni.",
+      "text_markdown": "Nella stagione umida sono larghi e pieni.",
+      "tts": {
+        "text": "Nella stagione umida sono larghi e pieni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione secca si riducono a un filo sottile nella sabbia, o a una fila di pozze silenziose.",
+      "text_markdown": "Nella stagione secca si riducono a un filo sottile nella sabbia, o a una fila di pozze silenziose.",
+      "tts": {
+        "text": "Nella stagione secca si riducono a un filo sottile nella sabbia, o a una fila di pozze silenziose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti animali della savana si radunano presso questi fiumi e stagni per bere.",
+      "text_markdown": "Molti animali della savana si radunano presso questi fiumi e stagni per bere.",
+      "tts": {
+        "text": "Molti animali della savana si radunano presso questi fiumi e stagni per bere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uno stagno nella stagione secca è un luogo molto animato.",
+      "text_markdown": "Uno stagno nella stagione secca è un luogo molto animato.",
+      "tts": {
+        "text": "Uno stagno nella stagione secca è un luogo molto animato.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Animali che di solito non si incontrano stanno vicini per bere.",
+      "text_markdown": "Animali che di solito non si incontrano stanno vicini per bere.",
+      "tts": {
+        "text": "Animali che di solito non si incontrano stanno vicini per bere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiumi portano anche con sé una striscia di alberi più alti.",
+      "text_markdown": "I fiumi portano anche con sé una striscia di alberi più alti.",
+      "tts": {
+        "text": "I fiumi portano anche con sé una striscia di alberi più alti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lungo le rive, gli alberi crescono fitti e verdi anche nella stagione secca.",
+      "text_markdown": "Lungo le rive, gli alberi crescono fitti e verdi anche nella stagione secca.",
+      "tts": {
+        "text": "Lungo le rive, gli alberi crescono fitti e verdi anche nella stagione secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questi nastri di foresta attraversano la savana aperta come strade verdi.",
+      "text_markdown": "Questi nastri di foresta attraversano la savana aperta come strade verdi.",
+      "tts": {
+        "text": "Questi nastri di foresta attraversano la savana aperta come strade verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sono la casa di animali che hanno bisogno di ombra e acqua tutto l'anno.",
+      "text_markdown": "Sono la casa di animali che hanno bisogno di ombra e acqua tutto l'anno.",
+      "tts": {
+        "text": "Sono la casa di animali che hanno bisogno di ombra e acqua tutto l'anno.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le piante",
+      "text_markdown": "Le piante"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il cuore della savana è l'erba.",
+      "text_markdown": "Il cuore della savana è l'erba.",
+      "tts": {
+        "text": "Il cuore della savana è l'erba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Erbe alte coprono la terra in ogni direzione.",
+      "text_markdown": "Erbe alte coprono la terra in ogni direzione.",
+      "tts": {
+        "text": "Erbe alte coprono la terra in ogni direzione.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune erbe crescono alte come una persona.",
+      "text_markdown": "Alcune erbe crescono alte come una persona.",
+      "tts": {
+        "text": "Alcune erbe crescono alte come una persona.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le loro radici scendono in profondità nel suolo per trovare acqua.",
+      "text_markdown": "Le loro radici scendono in profondità nel suolo per trovare acqua.",
+      "tts": {
+        "text": "Le loro radici scendono in profondità nel suolo per trovare acqua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando il fuoco attraversa la savana, le cime delle erbe bruciano.",
+      "text_markdown": "Quando il fuoco attraversa la savana, le cime delle erbe bruciano.",
+      "tts": {
+        "text": "Quando il fuoco attraversa la savana, le cime delle erbe bruciano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma le radici restano vive sottoterra.",
+      "text_markdown": "Ma le radici restano vive sottoterra.",
+      "tts": {
+        "text": "Ma le radici restano vive sottoterra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dopo la pioggia successiva, le erbe ricrescono, fresche e verdi.",
+      "text_markdown": "Dopo la pioggia successiva, le erbe ricrescono, fresche e verdi.",
+      "tts": {
+        "text": "Dopo la pioggia successiva, le erbe ricrescono, fresche e verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il fuoco è una parte naturale di questo bioma.",
+      "text_markdown": "Il fuoco è una parte naturale di questo bioma.",
+      "tts": {
+        "text": "Il fuoco è una parte naturale di questo bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molte piante qui hanno bisogno del fuoco per restare sane.",
+      "text_markdown": "Molte piante qui hanno bisogno del fuoco per restare sane.",
+      "tts": {
+        "text": "Molte piante qui hanno bisogno del fuoco per restare sane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche gli alberi crescono nella savana, ma sono sparsi.",
+      "text_markdown": "Anche gli alberi crescono nella savana, ma sono sparsi.",
+      "tts": {
+        "text": "Anche gli alberi crescono nella savana, ma sono sparsi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stanno lontani uno dall'altro, con l'erba in mezzo.",
+      "text_markdown": "Stanno lontani uno dall'altro, con l'erba in mezzo.",
+      "tts": {
+        "text": "Stanno lontani uno dall'altro, con l'erba in mezzo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte degli alberi della savana è bassa, con chiome larghe e piatte.",
+      "text_markdown": "La maggior parte degli alberi della savana è bassa, con chiome larghe e piatte.",
+      "tts": {
+        "text": "La maggior parte degli alberi della savana è bassa, con chiome larghe e piatte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La chioma piatta è un ampio ombrello di foglie che cattura ogni goccia di luce.",
+      "text_markdown": "La chioma piatta è un ampio ombrello di foglie che cattura ogni goccia di luce.",
+      "tts": {
+        "text": "La chioma piatta è un ampio ombrello di foglie che cattura ogni goccia di luce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti alberi della savana hanno spine per impedire ai grandi animali di mangiarli.",
+      "text_markdown": "Molti alberi della savana hanno spine per impedire ai grandi animali di mangiarli.",
+      "tts": {
+        "text": "Molti alberi della savana hanno spine per impedire ai grandi animali di mangiarli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il famoso baobab è un gigantesco albero della savana con un tronco spesso e robusto.",
+      "text_markdown": "Il famoso baobab è un gigantesco albero della savana con un tronco spesso e robusto.",
+      "tts": {
+        "text": "Il famoso baobab è un gigantesco albero della savana con un tronco spesso e robusto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Può conservare acqua dentro il suo tronco per la lunga stagione secca.",
+      "text_markdown": "Può conservare acqua dentro il suo tronco per la lunga stagione secca.",
+      "tts": {
+        "text": "Può conservare acqua dentro il suo tronco per la lunga stagione secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni baobab vivono per più di mille anni.",
+      "text_markdown": "Alcuni baobab vivono per più di mille anni.",
+      "tts": {
+        "text": "Alcuni baobab vivono per più di mille anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lungo i fiumi, alberi più alti crescono in una sottile fascia verde.",
+      "text_markdown": "Lungo i fiumi, alberi più alti crescono in una sottile fascia verde.",
+      "tts": {
+        "text": "Lungo i fiumi, alberi più alti crescono in una sottile fascia verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella pianura aperta, l'erba e pochi alberi sparsi sono tutto ciò che si vede per chilometri.",
+      "text_markdown": "Nella pianura aperta, l'erba e pochi alberi sparsi sono tutto ciò che si vede per chilometri.",
+      "tts": {
+        "text": "Nella pianura aperta, l'erba e pochi alberi sparsi sono tutto ciò che si vede per chilometri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione umida, piccoli fiori sbocciano tra le erbe.",
+      "text_markdown": "Nella stagione umida, piccoli fiori sbocciano tra le erbe.",
+      "tts": {
+        "text": "Nella stagione umida, piccoli fiori sbocciano tra le erbe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si aprono in fretta e durano solo poche settimane.",
+      "text_markdown": "Si aprono in fretta e durano solo poche settimane.",
+      "tts": {
+        "text": "Si aprono in fretta e durano solo poche settimane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La savana è una macchina silenziosa, fatta di erba, alberi sparsi, sole e radici pazienti.",
+      "text_markdown": "La savana è una macchina silenziosa, fatta di erba, alberi sparsi, sole e radici pazienti.",
+      "tts": {
+        "text": "La savana è una macchina silenziosa, fatta di erba, alberi sparsi, sole e radici pazienti.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gli animali",
+      "text_markdown": "Gli animali"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La savana tropicale è famosa in tutto il mondo per i suoi animali.",
+      "text_markdown": "La savana tropicale è famosa in tutto il mondo per i suoi animali.",
+      "tts": {
+        "text": "La savana tropicale è famosa in tutto il mondo per i suoi animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le erbe nutrono enormi mandrie di animali che pascolano.",
+      "text_markdown": "Le erbe nutrono enormi mandrie di animali che pascolano.",
+      "tts": {
+        "text": "Le erbe nutrono enormi mandrie di animali che pascolano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Africa, grandi mandrie di zebre, antilopi e bufali si spostano attraverso le pianure.",
+      "text_markdown": "In Africa, grandi mandrie di zebre, antilopi e bufali si spostano attraverso le pianure.",
+      "tts": {
+        "text": "In Africa, grandi mandrie di zebre, antilopi e bufali si spostano attraverso le pianure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seguono le piogge da una parte all'altra della savana.",
+      "text_markdown": "Seguono le piogge da una parte all'altra della savana.",
+      "tts": {
+        "text": "Seguono le piogge da una parte all'altra della savana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il più grande animale terrestre della Terra, l'elefante, vive nella savana africana.",
+      "text_markdown": "Il più grande animale terrestre della Terra, l'elefante, vive nella savana africana.",
+      "tts": {
+        "text": "Il più grande animale terrestre della Terra, l'elefante, vive nella savana africana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una famiglia di elefanti cammina lentamente attraverso l'erba, guidata da una vecchia madre.",
+      "text_markdown": "Una famiglia di elefanti cammina lentamente attraverso l'erba, guidata da una vecchia madre.",
+      "tts": {
+        "text": "Una famiglia di elefanti cammina lentamente attraverso l'erba, guidata da una vecchia madre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La giraffa cammina accanto, allungando il lungo collo per mangiare le foglie degli alberi.",
+      "text_markdown": "La giraffa cammina accanto, allungando il lungo collo per mangiare le foglie degli alberi.",
+      "tts": {
+        "text": "La giraffa cammina accanto, allungando il lungo collo per mangiare le foglie degli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dove ci sono molti animali che pascolano, ci sono anche cacciatori.",
+      "text_markdown": "Dove ci sono molti animali che pascolano, ci sono anche cacciatori.",
+      "tts": {
+        "text": "Dove ci sono molti animali che pascolano, ci sono anche cacciatori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il leone è il grande cacciatore della savana africana.",
+      "text_markdown": "Il leone è il grande cacciatore della savana africana.",
+      "tts": {
+        "text": "Il leone è il grande cacciatore della savana africana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I leoni vivono insieme in gruppi familiari chiamati branchi.",
+      "text_markdown": "I leoni vivono insieme in gruppi familiari chiamati branchi.",
+      "tts": {
+        "text": "I leoni vivono insieme in gruppi familiari chiamati branchi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il ghepardo è l'animale più veloce sulla terra.",
+      "text_markdown": "Il ghepardo è l'animale più veloce sulla terra.",
+      "tts": {
+        "text": "Il ghepardo è l'animale più veloce sulla terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Corre in brevi scatti per catturare le antilopi che pascolano nelle pianure.",
+      "text_markdown": "Corre in brevi scatti per catturare le antilopi che pascolano nelle pianure.",
+      "tts": {
+        "text": "Corre in brevi scatti per catturare le antilopi che pascolano nelle pianure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il leopardo è un cacciatore silenzioso che si arrampica sugli alberi e tira i suoi pasti su tra i rami.",
+      "text_markdown": "Il leopardo è un cacciatore silenzioso che si arrampica sugli alberi e tira i suoi pasti su tra i rami.",
+      "tts": {
+        "text": "Il leopardo è un cacciatore silenzioso che si arrampica sugli alberi e tira i suoi pasti su tra i rami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le iene cacciano in gruppo e ripuliscono ciò che i cacciatori più grandi lasciano.",
+      "text_markdown": "Le iene cacciano in gruppo e ripuliscono ciò che i cacciatori più grandi lasciano.",
+      "tts": {
+        "text": "Le iene cacciano in gruppo e ripuliscono ciò che i cacciatori più grandi lasciano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche gli animali più piccoli sono ovunque.",
+      "text_markdown": "Anche gli animali più piccoli sono ovunque.",
+      "tts": {
+        "text": "Anche gli animali più piccoli sono ovunque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I babbuini si muovono in gruppi rumorosi attraverso l'erba e tra gli alberi.",
+      "text_markdown": "I babbuini si muovono in gruppi rumorosi attraverso l'erba e tra gli alberi.",
+      "tts": {
+        "text": "I babbuini si muovono in gruppi rumorosi attraverso l'erba e tra gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grandi uccelli chiamati struzzi corrono attraverso la pianura aperta sulle lunghe zampe.",
+      "text_markdown": "Grandi uccelli chiamati struzzi corrono attraverso la pianura aperta sulle lunghe zampe.",
+      "tts": {
+        "text": "Grandi uccelli chiamati struzzi corrono attraverso la pianura aperta sulle lunghe zampe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli avvoltoi volteggiano in alto, in attesa di animali morti.",
+      "text_markdown": "Gli avvoltoi volteggiano in alto, in attesa di animali morti.",
+      "tts": {
+        "text": "Gli avvoltoi volteggiano in alto, in attesa di animali morti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione umida, le rane cantano ogni notte intorno ai nuovi stagni.",
+      "text_markdown": "Nella stagione umida, le rane cantano ogni notte intorno ai nuovi stagni.",
+      "tts": {
+        "text": "Nella stagione umida, le rane cantano ogni notte intorno ai nuovi stagni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli insetti riempiono l'aria calda e le farfalle volano tra i fiori.",
+      "text_markdown": "Gli insetti riempiono l'aria calda e le farfalle volano tra i fiori.",
+      "tts": {
+        "text": "Gli insetti riempiono l'aria calda e le farfalle volano tra i fiori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nei fiumi, gli ippopotami riposano nell'acqua tutto il giorno ed escono a brucare l'erba di notte.",
+      "text_markdown": "Nei fiumi, gli ippopotami riposano nell'acqua tutto il giorno ed escono a brucare l'erba di notte.",
+      "tts": {
+        "text": "Nei fiumi, gli ippopotami riposano nell'acqua tutto il giorno ed escono a brucare l'erba di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella savana del Sud America, grandi roditori e grandi uccelli prendono il posto di quelli africani.",
+      "text_markdown": "Nella savana del Sud America, grandi roditori e grandi uccelli prendono il posto di quelli africani.",
+      "tts": {
+        "text": "Nella savana del Sud America, grandi roditori e grandi uccelli prendono il posto di quelli africani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella savana dell'Australia, i canguri saltano sull'erba invece delle antilopi che corrono.",
+      "text_markdown": "Nella savana dell'Australia, i canguri saltano sull'erba invece delle antilopi che corrono.",
+      "tts": {
+        "text": "Nella savana dell'Australia, i canguri saltano sull'erba invece delle antilopi che corrono.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ognuna di queste terre, gli animali hanno un aspetto diverso.",
+      "text_markdown": "In ognuna di queste terre, gli animali hanno un aspetto diverso.",
+      "tts": {
+        "text": "In ognuna di queste terre, gli animali hanno un aspetto diverso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma lo schema è lo stesso.",
+      "text_markdown": "Ma lo schema è lo stesso.",
+      "tts": {
+        "text": "Ma lo schema è lo stesso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grandi mandrie di erbivori, cacciatori silenziosi nell'erba e grandi stormi di uccelli nel cielo.",
+      "text_markdown": "Grandi mandrie di erbivori, cacciatori silenziosi nell'erba e grandi stormi di uccelli nel cielo.",
+      "tts": {
+        "text": "Grandi mandrie di erbivori, cacciatori silenziosi nell'erba e grandi stormi di uccelli nel cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la savana.",
+      "text_markdown": "Questa è la savana.",
+      "tts": {
+        "text": "Questa è la savana.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le persone",
+      "text_markdown": "Le persone"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone hanno vissuto nella savana tropicale per molto tempo.",
+      "text_markdown": "Le persone hanno vissuto nella savana tropicale per molto tempo.",
+      "tts": {
+        "text": "Le persone hanno vissuto nella savana tropicale per molto tempo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anzi, i nostri antenati si sono alzati in piedi e hanno camminato per la prima volta attraverso savane come queste.",
+      "text_markdown": "Anzi, i nostri antenati si sono alzati in piedi e hanno camminato per la prima volta attraverso savane come queste.",
+      "tts": {
+        "text": "Anzi, i nostri antenati si sono alzati in piedi e hanno camminato per la prima volta attraverso savane come queste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'erba aperta e gli alberi sparsi hanno plasmato il modo in cui si muovono i nostri corpi.",
+      "text_markdown": "L'erba aperta e gli alberi sparsi hanno plasmato il modo in cui si muovono i nostri corpi.",
+      "tts": {
+        "text": "L'erba aperta e gli alberi sparsi hanno plasmato il modo in cui si muovono i nostri corpi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti abitanti della savana allevano mandrie di animali.",
+      "text_markdown": "Molti abitanti della savana allevano mandrie di animali.",
+      "tts": {
+        "text": "Molti abitanti della savana allevano mandrie di animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Africa, le famiglie pascolano bestiame, capre e pecore attraverso le praterie.",
+      "text_markdown": "In Africa, le famiglie pascolano bestiame, capre e pecore attraverso le praterie.",
+      "tts": {
+        "text": "In Africa, le famiglie pascolano bestiame, capre e pecore attraverso le praterie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli animali mangiano l'erba e la trasformano in latte e carne per le persone.",
+      "text_markdown": "Gli animali mangiano l'erba e la trasformano in latte e carne per le persone.",
+      "tts": {
+        "text": "Gli animali mangiano l'erba e la trasformano in latte e carne per le persone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pastori si spostano con i loro animali per seguire le piogge.",
+      "text_markdown": "I pastori si spostano con i loro animali per seguire le piogge.",
+      "tts": {
+        "text": "I pastori si spostano con i loro animali per seguire le piogge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione secca viaggiano verso i fiumi.",
+      "text_markdown": "Nella stagione secca viaggiano verso i fiumi.",
+      "tts": {
+        "text": "Nella stagione secca viaggiano verso i fiumi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella stagione umida si spargono nelle verdi pianure.",
+      "text_markdown": "Nella stagione umida si spargono nelle verdi pianure.",
+      "tts": {
+        "text": "Nella stagione umida si spargono nelle verdi pianure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le loro case sono spesso facili da smontare e portare in un nuovo luogo.",
+      "text_markdown": "Le loro case sono spesso facili da smontare e portare in un nuovo luogo.",
+      "tts": {
+        "text": "Le loro case sono spesso facili da smontare e portare in un nuovo luogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altri abitanti della savana coltivano cibo in piccoli campi.",
+      "text_markdown": "Altri abitanti della savana coltivano cibo in piccoli campi.",
+      "tts": {
+        "text": "Altri abitanti della savana coltivano cibo in piccoli campi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dove il suolo è ricco, piantano cereali e fagioli.",
+      "text_markdown": "Dove il suolo è ricco, piantano cereali e fagioli.",
+      "tts": {
+        "text": "Dove il suolo è ricco, piantano cereali e fagioli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Usano il fuoco con cura per ripulire nuovi campi e per mantenere fresca l'erba per i loro animali.",
+      "text_markdown": "Usano il fuoco con cura per ripulire nuovi campi e per mantenere fresca l'erba per i loro animali.",
+      "tts": {
+        "text": "Usano il fuoco con cura per ripulire nuovi campi e per mantenere fresca l'erba per i loro animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli abitanti della savana conoscono la terra nei minimi dettagli.",
+      "text_markdown": "Gli abitanti della savana conoscono la terra nei minimi dettagli.",
+      "tts": {
+        "text": "Gli abitanti della savana conoscono la terra nei minimi dettagli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sanno quali piante si possono mangiare e quali sono buone per la medicina.",
+      "text_markdown": "Sanno quali piante si possono mangiare e quali sono buone per la medicina.",
+      "tts": {
+        "text": "Sanno quali piante si possono mangiare e quali sono buone per la medicina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Conoscono le tracce di ogni animale nella polvere.",
+      "text_markdown": "Conoscono le tracce di ogni animale nella polvere.",
+      "tts": {
+        "text": "Conoscono le tracce di ogni animale nella polvere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Conoscono il significato di ogni tipo di nuvola nel cielo.",
+      "text_markdown": "Conoscono il significato di ogni tipo di nuvola nel cielo.",
+      "tts": {
+        "text": "Conoscono il significato di ogni tipo di nuvola nel cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa conoscenza viene tramandata dai genitori ai figli, anno dopo anno.",
+      "text_markdown": "Questa conoscenza viene tramandata dai genitori ai figli, anno dopo anno.",
+      "tts": {
+        "text": "Questa conoscenza viene tramandata dai genitori ai figli, anno dopo anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ogni savana, questo tipo di vita ha le sue lingue, i suoi canti e le sue storie.",
+      "text_markdown": "In ogni savana, questo tipo di vita ha le sue lingue, i suoi canti e le sue storie.",
+      "tts": {
+        "text": "In ogni savana, questo tipo di vita ha le sue lingue, i suoi canti e le sue storie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La savana oggi",
+      "text_markdown": "La savana oggi"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La savana tropicale è una delle grandi terre selvagge della Terra.",
+      "text_markdown": "La savana tropicale è una delle grandi terre selvagge della Terra.",
+      "tts": {
+        "text": "La savana tropicale è una delle grandi terre selvagge della Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nutre enormi mandrie di animali.",
+      "text_markdown": "Nutre enormi mandrie di animali.",
+      "tts": {
+        "text": "Nutre enormi mandrie di animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sostiene i pastori e gli agricoltori che vivono qui da migliaia di anni.",
+      "text_markdown": "Sostiene i pastori e gli agricoltori che vivono qui da migliaia di anni.",
+      "tts": {
+        "text": "Sostiene i pastori e gli agricoltori che vivono qui da migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le praterie conservano anche molta acqua e cibo nelle loro radici profonde.",
+      "text_markdown": "Le praterie conservano anche molta acqua e cibo nelle loro radici profonde.",
+      "tts": {
+        "text": "Le praterie conservano anche molta acqua e cibo nelle loro radici profonde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma anche la savana è in difficoltà.",
+      "text_markdown": "Ma anche la savana è in difficoltà.",
+      "tts": {
+        "text": "Ma anche la savana è in difficoltà.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molti luoghi, le persone hanno arato l'erba per piantare colture o l'hanno recintata per il bestiame.",
+      "text_markdown": "In molti luoghi, le persone hanno arato l'erba per piantare colture o l'hanno recintata per il bestiame.",
+      "tts": {
+        "text": "In molti luoghi, le persone hanno arato l'erba per piantare colture o l'hanno recintata per il bestiame.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando l'erba viene divisa, le mandrie di animali selvatici perdono il loro percorso aperto.",
+      "text_markdown": "Quando l'erba viene divisa, le mandrie di animali selvatici perdono il loro percorso aperto.",
+      "tts": {
+        "text": "Quando l'erba viene divisa, le mandrie di animali selvatici perdono il loro percorso aperto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Strade e recinti tagliano le rotte che gli elefanti e le antilopi hanno seguito per ere.",
+      "text_markdown": "Strade e recinti tagliano le rotte che gli elefanti e le antilopi hanno seguito per ere.",
+      "tts": {
+        "text": "Strade e recinti tagliano le rotte che gli elefanti e le antilopi hanno seguito per ere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni animali della savana, come il rinoceronte e il ghepardo, sono diventati molto rari.",
+      "text_markdown": "Alcuni animali della savana, come il rinoceronte e il ghepardo, sono diventati molto rari.",
+      "tts": {
+        "text": "Alcuni animali della savana, come il rinoceronte e il ghepardo, sono diventati molto rari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti gruppi in tutto il mondo lavorano per proteggere ciò che resta.",
+      "text_markdown": "Molti gruppi in tutto il mondo lavorano per proteggere ciò che resta.",
+      "tts": {
+        "text": "Molti gruppi in tutto il mondo lavorano per proteggere ciò che resta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Riservano grandi parchi dove gli animali selvatici possono ancora muoversi liberamente.",
+      "text_markdown": "Riservano grandi parchi dove gli animali selvatici possono ancora muoversi liberamente.",
+      "tts": {
+        "text": "Riservano grandi parchi dove gli animali selvatici possono ancora muoversi liberamente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Collaborano con le persone che vivono vicino ai parchi per condividere la terra.",
+      "text_markdown": "Collaborano con le persone che vivono vicino ai parchi per condividere la terra.",
+      "tts": {
+        "text": "Collaborano con le persone che vivono vicino ai parchi per condividere la terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Studiano l'erba, gli alberi e le mandrie per capirla meglio.",
+      "text_markdown": "Studiano l'erba, gli alberi e le mandrie per capirla meglio.",
+      "tts": {
+        "text": "Studiano l'erba, gli alberi e le mandrie per capirla meglio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una savana in salute può sostenere più vita di quasi ogni altro bioma terrestre.",
+      "text_markdown": "Una savana in salute può sostenere più vita di quasi ogni altro bioma terrestre.",
+      "tts": {
+        "text": "Una savana in salute può sostenere più vita di quasi ogni altro bioma terrestre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "La savana oggi",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merita la nostra cura.",
+      "text_markdown": "Merita la nostra cura.",
+      "tts": {
+        "text": "Merita la nostra cura.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Conclusione",
+      "text_markdown": "Conclusione"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la savana tropicale.",
+      "text_markdown": "Questa è la savana tropicale.",
+      "tts": {
+        "text": "Questa è la savana tropicale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una terra ampia e calda di erba, alberi sparsi e grandi mandrie di animali.",
+      "text_markdown": "Una terra ampia e calda di erba, alberi sparsi e grandi mandrie di animali.",
+      "tts": {
+        "text": "Una terra ampia e calda di erba, alberi sparsi e grandi mandrie di animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se mai ti trovassi in una, resta fermo per un minuto.",
+      "text_markdown": "Se mai ti trovassi in una, resta fermo per un minuto.",
+      "tts": {
+        "text": "Se mai ti trovassi in una, resta fermo per un minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ascolta il vento nell'erba e gli uccelli in lontananza.",
+      "text_markdown": "Ascolta il vento nell'erba e gli uccelli in lontananza.",
+      "tts": {
+        "text": "Ascolta il vento nell'erba e gli uccelli in lontananza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guarda al lungo orizzonte.",
+      "text_markdown": "Guarda al lungo orizzonte.",
+      "tts": {
+        "text": "Guarda al lungo orizzonte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentirai il cuore del bioma battere intorno a te.",
+      "text_markdown": "Sentirai il cuore del bioma battere intorno a te.",
+      "tts": {
+        "text": "Sentirai il cuore del bioma battere intorno a te.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

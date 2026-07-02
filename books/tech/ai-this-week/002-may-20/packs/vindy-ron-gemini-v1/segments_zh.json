@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "zh",
+  "total_segments": 167,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "欢迎来到本周AI。",
+      "text_markdown": "欢迎来到本周AI。",
+      "title": "",
+      "tts": {
+        "text": "欢迎来到本周AI。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "我是Vindy。",
+      "text_markdown": "我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我是Vindy。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "一如既往，Ron也在我身边。",
+      "text_markdown": "一如既往，Ron也在我身边。",
+      "title": "",
+      "tts": {
+        "text": "一如既往，Ron也在我身边。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "很高兴来到这里，Vindy。",
+      "text_markdown": "很高兴来到这里，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里，Vindy。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "今天是2026年5月20日，星期三。",
+      "text_markdown": "今天是2026年5月20日，星期三。",
+      "title": "",
+      "tts": {
+        "text": "今天是二零二六年五月二十日，星期三。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "这是忙碌的一周。",
+      "text_markdown": "这是忙碌的一周。",
+      "title": "",
+      "tts": {
+        "text": "这是忙碌的一周。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "谷歌举办了开发者大会，教皇完成了一份关于人工智能的通谕，而开放权重领域则持续推出新产品，而其他人则忙于舞台展示。",
+      "text_markdown": "谷歌举办了开发者大会，教皇完成了一份关于人工智能的通谕，而开放权重领域则持续推出新产品，而其他人则忙于舞台展示。",
+      "title": "",
+      "tts": {
+        "text": "谷歌举办了开发者大会，教皇完成了一份关于人工智能的通谕，而开放权重领域则持续推出新产品，而其他人则忙于舞台展示。",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "接下来——本周开放权重领域有哪些新进展。",
+      "text_markdown": "接下来——本周开放权重领域有哪些新进展。",
+      "title": "",
+      "tts": {
+        "text": "接下来——本周开放权重领域有哪些新进展。",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "排行榜的最新情况。",
+      "text_markdown": "排行榜的最新情况。",
+      "title": "",
+      "tts": {
+        "text": "排行榜的最新情况。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "快速浏览各大实验室的头条新闻。",
+      "text_markdown": "快速浏览各大实验室的头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "快速浏览各大实验室的头条新闻。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "我们的头条新闻，梵蒂冈首份关于人工智能的通谕。",
+      "text_markdown": "我们的头条新闻，梵蒂冈首份关于人工智能的通谕。",
+      "title": "",
+      "tts": {
+        "text": "我们的头条新闻，梵蒂冈首份关于人工智能的通谕。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "本周概念是量化——一个70亿参数模型如何适配你的手机。",
+      "text_markdown": "本周概念是量化——一个70亿参数模型如何适配你的手机。",
+      "title": "",
+      "tts": {
+        "text": "本周概念是量化——一个七十亿参数模型如何适配你的手机。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Ron，我们从开放权重开始吧。",
+      "text_markdown": "Ron，我们从开放权重开始吧。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我们从开放权重开始吧。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "本周社区有什么新动态？",
+      "text_markdown": "本周社区有什么新动态？",
+      "title": "",
+      "tts": {
+        "text": "本周社区有什么新动态？",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "目前最大的开放权重新闻是谁在哪里进行训练。",
+      "text_markdown": "目前最大的开放权重新闻是谁在哪里进行训练。",
+      "title": "",
+      "tts": {
+        "text": "目前最大的开放权重新闻是谁在哪里进行训练。",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "最近两个最有趣的开放发布是在非NVIDIA芯片上训练的。",
+      "text_markdown": "最近两个最有趣的开放发布是在非NVIDIA芯片上训练的。",
+      "title": "",
+      "tts": {
+        "text": "最近两个最有趣的开放发布是在非英伟达芯片上训练的。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "给我们讲讲吧。",
+      "text_markdown": "给我们讲讲吧。",
+      "title": "",
+      "tts": {
+        "text": "给我们讲讲吧。",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "北京的智谱AI在今年早些时候发布了GLM-5系列——GLM-5于二月发布，名为GLM-5.1的更新于四月发布。",
+      "text_markdown": "北京的智谱AI在今年早些时候发布了GLM-5系列——GLM-5于二月发布，名为GLM-5.1的更新于四月发布。",
+      "title": "",
+      "tts": {
+        "text": "北京的智谱AI在今年早些时候发布了GLM五系列——GLM五于二月发布，名为GLM五点一的更新于四月发布。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "整个GLM-5系列在大约10万个华为昇腾910B芯片上训练，使用了MindSpore框架，完全没有使用NVIDIA GPU。",
+      "text_markdown": "整个GLM-5系列在大约10万个华为昇腾910B芯片上训练，使用了MindSpore框架，完全没有使用NVIDIA GPU。",
+      "title": "",
+      "tts": {
+        "text": "整个GLM五系列在大约十万个华为昇腾九一零B芯片上训练，使用了MindSpore框架，完全没有使用英伟达GPU。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "而美国实验室Zyphra本月早些时候发布了一款名为ZAYA1-8B的模型，该模型是在与IBM合作构建的AMD MI300x节点集群上预训练的。",
+      "text_markdown": "而美国实验室Zyphra本月早些时候发布了一款名为ZAYA1-8B的模型，该模型是在与IBM合作构建的AMD MI300x节点集群上预训练的。",
+      "title": "",
+      "tts": {
+        "text": "而美国实验室Zyphra本月早些时候发布了一款名为ZAYA一八B的模型，该模型是在与IBM合作构建的AMD MI三零零X节点集群上预训练的。",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "为什么芯片很重要？",
+      "text_markdown": "为什么芯片很重要？",
+      "title": "",
+      "tts": {
+        "text": "为什么芯片很重要？",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "两个原因。",
+      "text_markdown": "两个原因。",
+      "title": "",
+      "tts": {
+        "text": "两个原因。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "第一——在过去三年里，每一次重要的前沿训练都需要NVIDIA H100或H200。",
+      "text_markdown": "第一——在过去三年里，每一次重要的前沿训练都需要NVIDIA H100或H200。",
+      "title": "",
+      "tts": {
+        "text": "第一——在过去三年里，每一次重要的前沿训练都需要英伟达H一百或H二百。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "第二——这种供应一直是瓶颈，人们曾认为开放和中国的前沿技术因此落后了一代。",
+      "text_markdown": "第二——这种供应一直是瓶颈，人们曾认为开放和中国的前沿技术因此落后了一代。",
+      "title": "",
+      "tts": {
+        "text": "第二——这种供应一直是瓶颈，人们曾认为开放和中国的前沿技术因此落后了一代。",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "一旦前沿级别的运行在华为昇腾或AMD上实现，其他所有开放实验室都可以复制这个方法。",
+      "text_markdown": "一旦前沿级别的运行在华为昇腾或AMD上实现，其他所有开放实验室都可以复制这个方法。",
+      "title": "",
+      "tts": {
+        "text": "一旦前沿级别的运行在华为昇腾或AMD上实现，其他所有开放实验室都可以复制这个方法。",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "这就是今年正在发生的事情。",
+      "text_markdown": "这就是今年正在发生的事情。",
+      "title": "",
+      "tts": {
+        "text": "这就是今年正在发生的事情。",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "本周开放领域还有其他消息吗？",
+      "text_markdown": "本周开放领域还有其他消息吗？",
+      "title": "",
+      "tts": {
+        "text": "本周开放领域还有其他消息吗？",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "是的，有三件事值得关注。",
+      "text_markdown": "是的，有三件事值得关注。",
+      "title": "",
+      "tts": {
+        "text": "是的，有三件事值得关注。",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "月之暗面的Kimi K2.6于四月底发布，在OpenRouter上的token吞吐量仍位居前列——它在发布的第一周就以1.88万亿token的服务量登顶榜首。",
+      "text_markdown": "月之暗面的Kimi K2.6于四月底发布，在OpenRouter上的token吞吐量仍位居前列——它在发布的第一周就以1.88万亿token的服务量登顶榜首。",
+      "title": "",
+      "tts": {
+        "text": "月之暗面的Kimi K二点六于四月底发布，在OpenRouter上的token吞吐量仍位居前列——它在发布的第一周就以一点八八万亿token的服务量登顶榜首。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "这是中国开放权重模型首次在主要商业路由器上超越Claude Sonnet和DeepSeek。",
+      "text_markdown": "这是中国开放权重模型首次在主要商业路由器上超越Claude Sonnet和DeepSeek。",
+      "title": "",
+      "tts": {
+        "text": "这是中国开放权重模型首次在主要商业路由器上超越Claude Sonnet和DeepSeek。",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "DeepSeek V4-Pro 的总参数为 1.6 万亿，其中 490 亿为活跃参数。",
+      "text_markdown": "DeepSeek V4-Pro 的总参数为 1.6 万亿，其中 490 亿为活跃参数。",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V 四 Pro 的总参数为 一点六万亿，其中 四百九十亿为活跃参数。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "它们的廉价版 V4-Flash 总参数为 2840 亿，其中 130 亿为活跃参数。",
+      "text_markdown": "它们的廉价版 V4-Flash 总参数为 2840 亿，其中 130 亿为活跃参数。",
+      "title": "",
+      "tts": {
+        "text": "它们的廉价版 V 四 Flash 总参数为 两千八百四十亿，其中 一百三十亿为活跃参数。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "两者都是在 MIT 许可证下的开放权重模型。",
+      "text_markdown": "两者都是在 MIT 许可证下的开放权重模型。",
+      "title": "",
+      "tts": {
+        "text": "两者都是在 MIT 许可证下的开放权重模型。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "具体介绍一下 ZAYA1-8B。",
+      "text_markdown": "具体介绍一下 ZAYA1-8B。",
+      "title": "",
+      "tts": {
+        "text": "具体介绍一下 ZAYA 一 八 B。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "它是一个小型专家混合模型——总参数为 84 亿，每个 token 只有大约 7.6 亿活跃参数。",
+      "text_markdown": "它是一个小型专家混合模型——总参数为 84 亿，每个 token 只有大约 7.6 亿活跃参数。",
+      "title": "",
+      "tts": {
+        "text": "它是一个小型专家混合模型——总参数为 八十四亿，每个 token 只有大约 七点六亿活跃参数。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Apache 2.0 许可证，因此你可以将其用于商业用途。",
+      "text_markdown": "Apache 2.0 许可证，因此你可以将其用于商业用途。",
+      "title": "",
+      "tts": {
+        "text": "Apache 二点零 许可证，因此你可以将其用于商业用途。",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "预训练是在一个大约由 1024 个 AMD MI300x 节点组成的集群上完成的，没有涉及任何 NVIDIA 硬件。",
+      "text_markdown": "预训练是在一个大约由 1024 个 AMD MI300x 节点组成的集群上完成的，没有涉及任何 NVIDIA 硬件。",
+      "title": "",
+      "tts": {
+        "text": "预训练是在一个大约由一千零二十四个 AMD MI三百X 节点组成的集群上完成的，没有涉及任何 NVIDIA 硬件。",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "它在数学奥林匹克竞赛基准 AIME 上得分 89.1，在数学和编码方面击败了许多更大的模型，同时在低于 10 亿活跃参数的预算下运行。",
+      "text_markdown": "它在数学奥林匹克竞赛基准 AIME 上得分 89.1，在数学和编码方面击败了许多更大的模型，同时在低于 10 亿活跃参数的预算下运行。",
+      "title": "",
+      "tts": {
+        "text": "它在数学奥林匹克竞赛基准 AIME 上得分 八十九点一，在数学和编码方面击败了许多更大的模型，同时在低于 十亿 活跃参数的预算下运行。",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "两个开放权重实验室在两个月内，在没有 NVIDIA 的情况下进行训练。",
+      "text_markdown": "两个开放权重实验室在两个月内，在没有 NVIDIA 的情况下进行训练。",
+      "title": "",
+      "tts": {
+        "text": "两个开放权重实验室在两个月内，在没有 NVIDIA 的情况下进行训练。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "这并非巧合。",
+      "text_markdown": "这并非巧合。",
+      "title": "",
+      "tts": {
+        "text": "这并非巧合。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "基础设施终于跟上了——AMD ROCm 和华为 CANN 都在 2025 年变得可用，而 2026 年是开放社区在其上运行真正的前沿级任务的时候。",
+      "text_markdown": "基础设施终于跟上了——AMD ROCm 和华为 CANN 都在 2025 年变得可用，而 2026 年是开放社区在其上运行真正的前沿级任务的时候。",
+      "title": "",
+      "tts": {
+        "text": "基础设施终于跟上了——AMD ROCm 和华为 CANN 都在 二零二五年 变得可用，而 二零二六年 是开放社区在其上运行真正的前沿级任务的时候。",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "基础设施方面呢？",
+      "text_markdown": "基础设施方面呢？",
+      "title": "",
+      "tts": {
+        "text": "基础设施方面呢？",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "vLLM v0.21 于 5 月 15 日星期五发布。",
+      "text_markdown": "vLLM v0.21 于 5 月 15 日星期五发布。",
+      "title": "",
+      "tts": {
+        "text": "v L L M v 零点二一 于 五月十五日星期五发布。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "vLLM 是开放服务堆栈——当你想要自己托管模型时实际运行的东西。",
+      "text_markdown": "vLLM 是开放服务堆栈——当你想要自己托管模型时实际运行的东西。",
+      "title": "",
+      "tts": {
+        "text": "v L L M 是开放服务堆栈——当你想要自己托管模型时实际运行的东西。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "它处理批处理、分页和 KV 缓存重用，现在是所有不使用封闭 API 的人在生产环境中的默认选择。",
+      "text_markdown": "它处理批处理、分页和 KV 缓存重用，现在是所有不使用封闭 API 的人在生产环境中的默认选择。",
+      "title": "",
+      "tts": {
+        "text": "它处理批处理、分页和 KV 缓存重用，现在是所有不使用封闭 API 的人在生产环境中的默认选择。",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "此版本增加了带有混合内存分配器的 KV 卸载，以及一个针对 Blackwell GPU 上的 DeepSeek-R1 和 Kimi K2.5 预填充进行优化的新注意力后端。",
+      "text_markdown": "此版本增加了带有混合内存分配器的 KV 卸载，以及一个针对 Blackwell GPU 上的 DeepSeek-R1 和 Kimi K2.5 预填充进行优化的新注意力后端。",
+      "title": "",
+      "tts": {
+        "text": "此版本增加了带有混合内存分配器的 KV 卸载，以及一个针对 Blackwell GPU 上的 DeepSeek R 一 和 Kimi K 二点五 预填充进行优化的新注意力后端。",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "开放服务堆栈持续发布，而大型实验室则在做主题演讲。",
+      "text_markdown": "开放服务堆栈持续发布，而大型实验室则在做主题演讲。",
+      "title": "",
+      "tts": {
+        "text": "开放服务堆栈持续发布，而大型实验室则在做主题演讲。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "好的，我们来看看排行榜。",
+      "text_markdown": "好的，我们来看看排行榜。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来看看排行榜。",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "罗恩，什么保持不变，什么有所变动？",
+      "text_markdown": "罗恩，什么保持不变，什么有所变动？",
+      "title": "",
+      "tts": {
+        "text": "罗恩，什么保持不变，什么有所变动？",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "大部分保持不变。",
+      "text_markdown": "大部分保持不变。",
+      "title": "",
+      "tts": {
+        "text": "大部分保持不变。",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Anthropic 的 Claude Opus 4.7 在 LM Arena 编码排行榜上仍以约 1569 的 Elo 分数排名第一，并继续保持榜首位置。",
+      "text_markdown": "Anthropic 的 Claude Opus 4.7 在 LM Arena 编码排行榜上仍以约 1569 的 Elo 分数排名第一，并继续保持榜首位置。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic 的 Claude Opus 四点七 在 LM Arena 编码排行榜上仍以约一千五百六十九的 Elo 分数排名第一，并继续保持榜首位置。",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "OpenAI 的 GPT-5.5 在高推理模式下，在同一榜单上排名第七。",
+      "text_markdown": "OpenAI 的 GPT-5.5 在高推理模式下，在同一榜单上排名第七。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI 的 GPT 五点五 在高推理模式下，在同一榜单上排名第七。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "而在 WebDev 编码子榜单上，GPT-5.5 排名第九。",
+      "text_markdown": "而在 WebDev 编码子榜单上，GPT-5.5 排名第九。",
+      "title": "",
+      "tts": {
+        "text": "而在 WebDev 编码子榜单上，GPT 五点五 排名第九。",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "新的 Google 模型排名如何？",
+      "text_markdown": "新的 Google 模型排名如何？",
+      "title": "",
+      "tts": {
+        "text": "新的 Google 模型排名如何？",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Gemini 3.5 Flash 于周二在 Google I/O 大会上发布，所以它还没有上榜。",
+      "text_markdown": "Gemini 3.5 Flash 于周二在 Google I/O 大会上发布，所以它还没有上榜。",
+      "title": "",
+      "tts": {
+        "text": "Gemini 三点五 Flash 于周二在 Google I O 大会上发布，所以它还没有上榜。",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Arena 需要几千次头对头投票，一个模型才能获得稳定的 Elo 分数。",
+      "text_markdown": "Arena 需要几千次头对头投票，一个模型才能获得稳定的 Elo 分数。",
+      "title": "",
+      "tts": {
+        "text": "Arena 需要几千次头对头投票，一个模型才能获得稳定的 Elo 分数。",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "预计 Gemini 3.5 Flash 将于下周出现，而 Gemini 3.5 Pro 将于 6 月发布。",
+      "text_markdown": "预计 Gemini 3.5 Flash 将于下周出现，而 Gemini 3.5 Pro 将于 6 月发布。",
+      "title": "",
+      "tts": {
+        "text": "预计 Gemini 三点五 Flash 将于下周出现，而 Gemini 三点五 Pro 将于 六月 发布。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "评估质量方面有什么吗？",
+      "text_markdown": "评估质量方面有什么吗？",
+      "title": "",
+      "tts": {
+        "text": "评估质量方面有什么吗？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "是的，回顾一下上周。",
+      "text_markdown": "是的，回顾一下上周。",
+      "title": "",
+      "tts": {
+        "text": "是的，回顾一下上周。",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "SWE-bench Verified 仍然退役——这是 OpenAI 曾经引用的编码基准，其中超过一半的困难任务测试已损坏。",
+      "text_markdown": "SWE-bench Verified 仍然退役——这是 OpenAI 曾经引用的编码基准，其中超过一半的困难任务测试已损坏。",
+      "title": "",
+      "tts": {
+        "text": "S W E bench Verified 仍然退役——这是 OpenAI 曾经引用的编码基准，其中超过一半的困难任务测试已损坏。",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "现在值得关注的榜单是SWE-bench Pro和一个名为SWE-rebench的项目。",
+      "text_markdown": "现在值得关注的榜单是SWE-bench Pro和一个名为SWE-rebench的项目。",
+      "title": "",
+      "tts": {
+        "text": "现在值得关注的榜单是SWE bench Pro和一个名为SWE rebench的项目。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "两者都将测试代码保密，这样模型就无法针对其进行训练。",
+      "text_markdown": "两者都将测试代码保密，这样模型就无法针对其进行训练。",
+      "title": "",
+      "tts": {
+        "text": "两者都将测试代码保密，这样模型就无法针对其进行训练。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "那么开放与封闭之间的差距呢？",
+      "text_markdown": "那么开放与封闭之间的差距呢？",
+      "title": "",
+      "tts": {
+        "text": "那么开放与封闭之间的差距呢？",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "根据Artificial Analysis的数据，在交叉评估智能指数上，这一差距现在是5到15分。",
+      "text_markdown": "根据Artificial Analysis的数据，在交叉评估智能指数上，这一差距现在是5到15分。",
+      "title": "",
+      "tts": {
+        "text": "根据Artificial Analysis的数据，在交叉评估智能指数上，这一差距现在是五到十五分。",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "18个月前，这个差距是30到40分。",
+      "text_markdown": "18个月前，这个差距是30到40分。",
+      "title": "",
+      "tts": {
+        "text": "十八个月前，这个差距是三十到四十分。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Kimi K2.6和DeepSeek V4-Pro与GPT-5.5和Opus 4.7相比，都处于这个范围内。",
+      "text_markdown": "Kimi K2.6和DeepSeek V4-Pro与GPT-5.5和Opus 4.7相比，都处于这个范围内。",
+      "title": "",
+      "tts": {
+        "text": "Kimi K二点六和DeepSeek V四 Pro与GPT五点五和Opus四点七相比，都处于这个范围内。",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "现在我们来看头条新闻。",
+      "text_markdown": "现在我们来看头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "现在我们来看头条新闻。",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "罗恩，本周的快速简报有什么内容？",
+      "text_markdown": "罗恩，本周的快速简报有什么内容？",
+      "title": "",
+      "tts": {
+        "text": "罗恩，本周的快速简报有什么内容？",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "谷歌I/O大会在周二和周三举行。",
+      "text_markdown": "谷歌I/O大会在周二和周三举行。",
+      "title": "",
+      "tts": {
+        "text": "谷歌I O大会在周二和周三举行。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "主要发布包括Gemini 3.5 Flash、用于对话式视频编辑的Gemini Omni，以及Gemini Spark——一个在你未拥有的云虚拟机上全天候运行的代理。",
+      "text_markdown": "主要发布包括Gemini 3.5 Flash、用于对话式视频编辑的Gemini Omni，以及Gemini Spark——一个在你未拥有的云虚拟机上全天候运行的代理。",
+      "title": "",
+      "tts": {
+        "text": "主要发布包括Gemini 三点五 Flash、用于对话式视频编辑的Gemini Omni，以及Gemini Spark——一个在你未拥有的云虚拟机上二十四小时不间断运行的代理。",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "值得注意的是，这种模式——一个在自己的机器上运行并执行多步骤工作的代理——今天已经可以通过Aider或OpenCode等开源工具指向本地模型来实现。",
+      "text_markdown": "值得注意的是，这种模式——一个在自己的机器上运行并执行多步骤工作的代理——今天已经可以通过Aider或OpenCode等开源工具指向本地模型来实现。",
+      "title": "",
+      "tts": {
+        "text": "值得注意的是，这种模式——一个在自己的机器上运行并执行多步骤工作的代理——今天已经可以通过Aider或OpenCode等开源工具指向本地模型来实现。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "Google AI Ultra将其入门级套餐从每月250美元降至每月100美元，三星也发布了内置Gemini的扩展现实眼镜。",
+      "text_markdown": "Google AI Ultra将其入门级套餐从每月250美元降至每月100美元，三星也发布了内置Gemini的扩展现实眼镜。",
+      "title": "",
+      "tts": {
+        "text": "Google AI Ultra将其入门级套餐从每月二百五十美元降至每月一百美元，三星也发布了内置Gemini的扩展现实眼镜。",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "每日提示限制被计算预算取代，该预算每五小时刷新一次。",
+      "text_markdown": "每日提示限制被计算预算取代，该预算每五小时刷新一次。",
+      "title": "",
+      "tts": {
+        "text": "每日提示限制被计算预算取代，该预算每五小时刷新一次。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "那么人事方面呢？",
+      "text_markdown": "那么人事方面呢？",
+      "title": "",
+      "tts": {
+        "text": "那么人事方面呢？",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "安德烈·卡帕西于周二加入了Anthropic。",
+      "text_markdown": "安德烈·卡帕西于周二加入了Anthropic。",
+      "title": "",
+      "tts": {
+        "text": "安德烈·卡帕西于周二加入了Anthropic。",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "他加入了预训练团队，领导一个专注于利用Claude加速预训练研究的小组。",
+      "text_markdown": "他加入了预训练团队，领导一个专注于利用Claude加速预训练研究的小组。",
+      "title": "",
+      "tts": {
+        "text": "他加入了预训练团队，领导一个专注于利用Claude加速预训练研究的小组。",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "卡帕西是OpenAI的创始成员之一，随后负责特斯拉的AI工作，之后创办了Eureka Labs进行AI教育。",
+      "text_markdown": "卡帕西是OpenAI的创始成员之一，随后负责特斯拉的AI工作，之后创办了Eureka Labs进行AI教育。",
+      "title": "",
+      "tts": {
+        "text": "卡帕西是OpenAI的创始成员之一，随后负责特斯拉的AI工作，之后创办了Eureka Labs进行AI教育。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "那苹果呢？",
+      "text_markdown": "那苹果呢？",
+      "title": "",
+      "tts": {
+        "text": "那苹果呢？",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "谷歌云首席执行官托马斯·库里安本周证实，Gemini将在2026年晚些时候为Siri的一个版本提供支持。",
+      "text_markdown": "谷歌云首席执行官托马斯·库里安本周证实，Gemini将在2026年晚些时候为Siri的一个版本提供支持。",
+      "title": "",
+      "tts": {
+        "text": "谷歌云首席执行官托马斯·库里安本周证实，Gemini将在二零二六年晚些时候为Siri的一个版本提供支持。",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "这项交易通过苹果的基础模型框架进行，因此苹果仍然拥有集成层。",
+      "text_markdown": "这项交易通过苹果的基础模型框架进行，因此苹果仍然拥有集成层。",
+      "title": "",
+      "tts": {
+        "text": "这项交易通过苹果的基础模型框架进行，因此苹果仍然拥有集成层。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "那马斯克的诉讼呢？",
+      "text_markdown": "那马斯克的诉讼呢？",
+      "title": "",
+      "tts": {
+        "text": "那马斯克的诉讼呢？",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "由九名成员组成的加州陪审团于5月18日星期一驳回了埃隆·马斯克对OpenAI的诉讼。",
+      "text_markdown": "由九名成员组成的加州陪审团于5月18日星期一驳回了埃隆·马斯克对OpenAI的诉讼。",
+      "title": "",
+      "tts": {
+        "text": "由九名成员组成的加州陪审团于五月十八日星期一驳回了埃隆·马斯克对OpenAI的诉讼。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "他们审议了不到两小时。",
+      "text_markdown": "他们审议了不到两小时。",
+      "title": "",
+      "tts": {
+        "text": "他们审议了不到两小时。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "陪审团认定马斯克已超过诉讼时效，法官驳回了此案。",
+      "text_markdown": "陪审团认定马斯克已超过诉讼时效，法官驳回了此案。",
+      "title": "",
+      "tts": {
+        "text": "陪审团认定马斯克已超过诉讼时效，法官驳回了此案。",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "政策方面有什么消息吗？",
+      "text_markdown": "政策方面有什么消息吗？",
+      "title": "",
+      "tts": {
+        "text": "政策方面有什么消息吗？",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "财政部长斯科特·贝森特于5月14日在北京举行的特朗普-习主席峰会上宣布，美国和中国将就AI安全问题建立正式协议。",
+      "text_markdown": "财政部长斯科特·贝森特于5月14日在北京举行的特朗普-习主席峰会上宣布，美国和中国将就AI安全问题建立正式协议。",
+      "title": "",
+      "tts": {
+        "text": "财政部长斯科特·贝森特于五月十四日在北京举行的特朗普-习主席峰会上宣布，美国和中国将就AI安全问题建立正式协议。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "这被框定为防止前沿模型落入非国家行为者手中的最佳实践——不是一项具有约束力的制度，仅仅是对话协议。",
+      "text_markdown": "这被框定为防止前沿模型落入非国家行为者手中的最佳实践——不是一项具有约束力的制度，仅仅是对话协议。",
+      "title": "",
+      "tts": {
+        "text": "这被框定为防止前沿模型落入非国家行为者手中的最佳实践——不是一项具有约束力的制度，仅仅是对话协议。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "这是双方首次将AI安全视为双边问题，而非纯粹的竞争。",
+      "text_markdown": "这是双方首次将AI安全视为双边问题，而非纯粹的竞争。",
+      "title": "",
+      "tts": {
+        "text": "这是双方首次将AI安全视为双边问题，而非纯粹的竞争。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "现在我们回到头条新闻。",
+      "text_markdown": "现在我们回到头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "现在我们回到头条新闻。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "罗恩，教皇上周写了关于我们的文章。",
+      "text_markdown": "罗恩，教皇上周写了关于我们的文章。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，教皇上周写了关于我们的文章。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "教宗利奥十四世已完成他的第一份通谕。",
+      "text_markdown": "教宗利奥十四世已完成他的第一份通谕。",
+      "title": "",
+      "tts": {
+        "text": "教宗利奥十四世已完成他的第一份通谕。",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "其标题为《Magnifica Humanitas》。",
+      "text_markdown": "其标题为《Magnifica Humanitas》。",
+      "title": "",
+      "tts": {
+        "text": "其标题为《Magnifica Humanitas》。",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "这翻译过来就是“人类的辉煌”。",
+      "text_markdown": "这翻译过来就是“人类的辉煌”。",
+      "title": "",
+      "tts": {
+        "text": "这翻译过来就是“人类的辉煌”。",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "梵蒂冈将于5月25日（周一）发布它。",
+      "text_markdown": "梵蒂冈将于5月25日（周一）发布它。",
+      "title": "",
+      "tts": {
+        "text": "梵蒂冈将于五月二十五日（周一）发布它。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "它探讨了人工智能和人类尊严的保护问题。",
+      "text_markdown": "它探讨了人工智能和人类尊严的保护问题。",
+      "title": "",
+      "tts": {
+        "text": "它探讨了人工智能和人类尊严的保护问题。",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "教宗何时签署的？",
+      "text_markdown": "教宗何时签署的？",
+      "title": "",
+      "tts": {
+        "text": "教宗何时签署的？",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "5月15日。",
+      "text_markdown": "5月15日。",
+      "title": "",
+      "tts": {
+        "text": "五月十五日。",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "这个日期是特意选择的。",
+      "text_markdown": "这个日期是特意选择的。",
+      "title": "",
+      "tts": {
+        "text": "这个日期是特意选择的。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "它正好是教宗利奥十三世签署《Rerum Novarum》135年后的同一天。",
+      "text_markdown": "它正好是教宗利奥十三世签署《Rerum Novarum》135年后的同一天。",
+      "title": "",
+      "tts": {
+        "text": "它正好是教宗利奥十三世签署《Rerum Novarum》一百三十五年后的同一天。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "《Rerum Novarum》是什么？",
+      "text_markdown": "《Rerum Novarum》是什么？",
+      "title": "",
+      "tts": {
+        "text": "《Rerum Novarum》是什么？",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "《Rerum Novarum》是天主教关于劳资关系的奠基性教义。",
+      "text_markdown": "《Rerum Novarum》是天主教关于劳资关系的奠基性教义。",
+      "title": "",
+      "tts": {
+        "text": "《Rerum Novarum》是天主教关于劳资关系的奠基性教义。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "它于1891年工业革命中期发布。",
+      "text_markdown": "它于1891年工业革命中期发布。",
+      "title": "",
+      "tts": {
+        "text": "它于一八九一年工业革命中期发布。",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "它定义了教会如何看待工人、雇主、工资和工作的尊严——这一框架已沿用了一个多世纪。",
+      "text_markdown": "它定义了教会如何看待工人、雇主、工资和工作的尊严——这一框架已沿用了一个多世纪。",
+      "title": "",
+      "tts": {
+        "text": "它定义了教会如何看待工人、雇主、工资和工作的尊严——这一框架已沿用了一个多世纪。",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "教宗利奥十四世将人工智能定位为我们这一代人面临的同等重要的划时代问题。",
+      "text_markdown": "教宗利奥十四世将人工智能定位为我们这一代人面临的同等重要的划时代问题。",
+      "title": "",
+      "tts": {
+        "text": "教宗利奥十四世将人工智能定位为我们这一代人面临的同等重要的划时代问题。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "这是一个刻意的呼应。",
+      "text_markdown": "这是一个刻意的呼应。",
+      "title": "",
+      "tts": {
+        "text": "这是一个刻意的呼应。",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "非常刻意。",
+      "text_markdown": "非常刻意。",
+      "title": "",
+      "tts": {
+        "text": "非常刻意。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "甚至连教宗名号——利奥——的选择都表明了这一点。",
+      "text_markdown": "甚至连教宗名号——利奥——的选择都表明了这一点。",
+      "title": "",
+      "tts": {
+        "text": "甚至连教宗名号——利奥——的选择都表明了这一点。",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "这位教宗明确表示，人工智能之于我们这个世纪，正如工业化之于十九世纪。",
+      "text_markdown": "这位教宗明确表示，人工智能之于我们这个世纪，正如工业化之于十九世纪。",
+      "title": "",
+      "tts": {
+        "text": "这位教宗明确表示，人工智能之于我们这个世纪，正如工业化之于十九世纪。",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "谁将与他一同出席？",
+      "text_markdown": "谁将与他一同出席？",
+      "title": "",
+      "tts": {
+        "text": "谁将与他一同出席？",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "Anthropic的联合创始人Chris Olah将在梵蒂冈世界主教会议厅的舞台上发表演讲。",
+      "text_markdown": "Anthropic的联合创始人Chris Olah将在梵蒂冈世界主教会议厅的舞台上发表演讲。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic的联合创始人克里斯·奥拉将在梵蒂冈世界主教会议厅的舞台上发表演讲。",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "Olah负责Anthropic的可解释性研究。",
+      "text_markdown": "Olah负责Anthropic的可解释性研究。",
+      "title": "",
+      "tts": {
+        "text": "Olah负责Anthropic的可解释性研究。",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "这个领域致力于弄清神经网络内部实际发生的情况。",
+      "text_markdown": "这个领域致力于弄清神经网络内部实际发生的情况。",
+      "title": "",
+      "tts": {
+        "text": "这个领域致力于弄清神经网络内部实际发生的情况。",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "为什么是可解释性研究员而不是高管？",
+      "text_markdown": "为什么是可解释性研究员而不是高管？",
+      "title": "",
+      "tts": {
+        "text": "为什么是可解释性研究员而不是高管？",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "因为通谕的核心问题是“我们正在建造的这个东西是什么，我们能理解它吗？”",
+      "text_markdown": "因为通谕的核心问题是“我们正在建造的这个东西是什么，我们能理解它吗？”",
+      "title": "",
+      "tts": {
+        "text": "因为通谕的核心问题是“我们正在建造的这个东西是什么，我们能理解它吗？”",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "text": "这正是可解释性问题，映射到了道德框架上。",
+      "text_markdown": "这正是可解释性问题，映射到了道德框架上。",
+      "title": "",
+      "tts": {
+        "text": "这正是可解释性问题，映射到了道德框架上。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "text": "这不是一场推销，他们也没有选择一个推销员。",
+      "text_markdown": "这不是一场推销，他们也没有选择一个推销员。",
+      "title": "",
+      "tts": {
+        "text": "这不是一场推销，他们也没有选择一个推销员。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "text": "还有谁在台上？",
+      "text_markdown": "还有谁在台上？",
+      "title": "",
+      "tts": {
+        "text": "还有谁在台上？",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "text": "枢机主教Pietro Parolin将做总结发言。",
+      "text_markdown": "枢机主教Pietro Parolin将做总结发言。",
+      "title": "",
+      "tts": {
+        "text": "枢机主教Pietro Parolin将做总结发言。",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "text": "一同出席的还有：枢机主教Víctor Manuel Fernández和枢机主教Michael Czerny。",
+      "text_markdown": "一同出席的还有：枢机主教Víctor Manuel Fernández和枢机主教Michael Czerny。",
+      "title": "",
+      "tts": {
+        "text": "一同出席的还有：枢机主教Víctor Manuel Fernández和枢机主教Michael Czerny。",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "text": "以及两位神学教授——来自英国杜伦大学的Anna Rowlands和来自圣克拉拉大学耶稣会神学院的Léocadie Lushombo——将加入专题讨论小组。",
+      "text_markdown": "以及两位神学教授——来自英国杜伦大学的Anna Rowlands和来自圣克拉拉大学耶稣会神学院的Léocadie Lushombo——将加入专题讨论小组。",
+      "title": "",
+      "tts": {
+        "text": "以及两位神学教授——来自英国杜伦大学的Anna Rowlands和来自圣克拉拉大学耶稣会神学院的Léocadie Lushombo——将加入专题讨论小组。",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "text": "这件事为何在会议室之外也如此重要？",
+      "text_markdown": "这件事为何在会议室之外也如此重要？",
+      "title": "",
+      "tts": {
+        "text": "这件事为何在会议室之外也如此重要？",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-122",
+      "text": "因为世界上有14亿天主教徒。",
+      "text_markdown": "因为世界上有14亿天主教徒。",
+      "title": "",
+      "tts": {
+        "text": "因为世界上有十四亿天主教徒。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-123",
+      "text": "当教皇撰写通谕时，它会影响一代人对某个主题的看法。",
+      "text_markdown": "当教皇撰写通谕时，它会影响一代人对某个主题的看法。",
+      "title": "",
+      "tts": {
+        "text": "当教皇撰写通谕时，它会影响一代人对某个主题的看法。",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-124",
+      "text": "《新事》通谕在135年后仍然影响着天主教关于劳工的社会政策。",
+      "text_markdown": "《新事》通谕在135年后仍然影响着天主教关于劳工的社会政策。",
+      "title": "",
+      "tts": {
+        "text": "《新事》通谕在一百三十五年后仍然影响着天主教关于劳工的社会政策。",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-125",
+      "text": "《崇高人性》旨在对人工智能产生同样的影响。",
+      "text_markdown": "《崇高人性》旨在对人工智能产生同样的影响。",
+      "title": "",
+      "tts": {
+        "text": "《崇高人性》旨在对人工智能产生同样的影响。",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-126",
+      "text": "那么，从另一个角度来看呢？",
+      "text_markdown": "那么，从另一个角度来看呢？",
+      "title": "",
+      "tts": {
+        "text": "那么，从另一个角度来看呢？",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-127",
+      "text": "一个来自人工智能行业之外的机构，正在对我们正在构建的东西采取严肃的指导立场。",
+      "text_markdown": "一个来自人工智能行业之外的机构，正在对我们正在构建的东西采取严肃的指导立场。",
+      "title": "",
+      "tts": {
+        "text": "一个来自人工智能行业之外的机构，正在对我们正在构建的东西采取严肃的指导立场。",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-128",
+      "text": "而行业方面也派出了合适的科研人员参与其中。",
+      "text_markdown": "而行业方面也派出了合适的科研人员参与其中。",
+      "title": "",
+      "tts": {
+        "text": "而行业方面也派出了合适的科研人员参与其中。",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-129",
+      "text": "这不是通常的立场——通常要么是“我们最懂，别管我们”，要么是游说姿态。",
+      "text_markdown": "这不是通常的立场——通常要么是“我们最懂，别管我们”，要么是游说姿态。",
+      "title": "",
+      "tts": {
+        "text": "这不是通常的立场——通常要么是“我们最懂，别管我们”，要么是游说姿态。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-130",
+      "text": "这是一种不同的姿态。",
+      "text_markdown": "这是一种不同的姿态。",
+      "title": "",
+      "tts": {
+        "text": "这是一种不同的姿态。",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-131",
+      "text": "是时候结束这一部分了。",
+      "text_markdown": "是时候结束这一部分了。",
+      "title": "",
+      "tts": {
+        "text": "是时候结束这一部分了。",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-132",
+      "text": "现在我们来谈谈本周的概念。",
+      "text_markdown": "现在我们来谈谈本周的概念。",
+      "title": "",
+      "tts": {
+        "text": "现在我们来谈谈本周的概念。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-133",
+      "text": "本周的概念是量化。",
+      "text_markdown": "本周的概念是量化。",
+      "title": "",
+      "tts": {
+        "text": "本周的概念是量化。",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-134",
+      "text": "罗恩，给我们讲讲吧。",
+      "text_markdown": "罗恩，给我们讲讲吧。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，给我们讲讲吧。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-135",
+      "text": "量化是如何让一个70亿参数模型装进你的手机的。",
+      "text_markdown": "量化是如何让一个70亿参数模型装进你的手机的。",
+      "title": "",
+      "tts": {
+        "text": "量化是如何让一个七十亿参数模型装进你的手机的。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-136",
+      "text": "从基本问题开始。",
+      "text_markdown": "从基本问题开始。",
+      "title": "",
+      "tts": {
+        "text": "从基本问题开始。",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-137",
+      "text": "模型中的每个权重通常是一个16位浮点数。",
+      "text_markdown": "模型中的每个权重通常是一个16位浮点数。",
+      "title": "",
+      "tts": {
+        "text": "模型中的每个权重通常是一个十六位浮点数。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-138",
+      "text": "一个16位的70亿参数模型在磁盘上大约是14GB。",
+      "text_markdown": "一个16位的70亿参数模型在磁盘上大约是14GB。",
+      "title": "",
+      "tts": {
+        "text": "一个十六位的七十亿参数模型在磁盘上大约是十四吉字节。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-139",
+      "text": "这无法装进手机。",
+      "text_markdown": "这无法装进手机。",
+      "title": "",
+      "tts": {
+        "text": "这无法装进手机。",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-140",
+      "text": "所以你要缩小这些数字。",
+      "text_markdown": "所以你要缩小这些数字。",
+      "title": "",
+      "tts": {
+        "text": "所以你要缩小这些数字。",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-141",
+      "text": "对。",
+      "text_markdown": "对。",
+      "title": "",
+      "tts": {
+        "text": "对。",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-142",
+      "text": "你将每个权重四舍五入到更少的位数。",
+      "text_markdown": "你将每个权重四舍五入到更少的位数。",
+      "title": "",
+      "tts": {
+        "text": "你将每个权重四舍五入到更少的位数。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-143",
+      "text": "每个权重八位可以将模型大小减半。",
+      "text_markdown": "每个权重八位可以将模型大小减半。",
+      "title": "",
+      "tts": {
+        "text": "每个权重八位可以将模型大小减半。",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-144",
+      "text": "每个权重四位可以将其减至四分之一。",
+      "text_markdown": "每个权重四位可以将其减至四分之一。",
+      "title": "",
+      "tts": {
+        "text": "每个权重四位可以将其减至四分之一。",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-145",
+      "text": "同样是那个70亿参数模型，如果用四位，就是3.5GB。",
+      "text_markdown": "同样是那个70亿参数模型，如果用四位，就是3.5GB。",
+      "title": "",
+      "tts": {
+        "text": "同样是那个七十亿参数模型，如果用四位，就是三点五吉字节。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-146",
+      "text": "现在它能装下了。",
+      "text_markdown": "现在它能装下了。",
+      "title": "",
+      "tts": {
+        "text": "现在它能装下了。",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-147",
+      "text": "模型还能工作吗？",
+      "text_markdown": "模型还能工作吗？",
+      "title": "",
+      "tts": {
+        "text": "模型还能工作吗？",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-148",
+      "text": "通常可以，但质量会略有下降。",
+      "text_markdown": "通常可以，但质量会略有下降。",
+      "title": "",
+      "tts": {
+        "text": "通常可以，但质量会略有下降。",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-149",
+      "text": "诀窍在于选择模型中哪些地方可以损失精度。",
+      "text_markdown": "诀窍在于选择模型中哪些地方可以损失精度。",
+      "title": "",
+      "tts": {
+        "text": "诀窍在于选择模型中哪些地方可以损失精度。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-150",
+      "text": "AWQ——激活感知权重量化——将最重要的通道保持在更高精度，并压缩其余部分。",
+      "text_markdown": "AWQ——激活感知权重量化——将最重要的通道保持在更高精度，并压缩其余部分。",
+      "title": "",
+      "tts": {
+        "text": "AWQ——激活感知权重量化——将最重要的通道保持在更高精度，并压缩其余部分。",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-151",
+      "text": "GGUF，也就是llama.cpp所使用的格式，拥有像Q4_K_M这样在单个模型文件中混合精度的格式。",
+      "text_markdown": "GGUF，也就是llama.cpp所使用的格式，拥有像Q4_K_M这样在单个模型文件中混合精度的格式。",
+      "title": "",
+      "tts": {
+        "text": "GGUF，也就是llama.cpp所使用的格式，拥有像Q四K M这样在单个模型文件中混合精度的格式。",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-152",
+      "text": "你能做到多小？",
+      "text_markdown": "你能做到多小？",
+      "title": "",
+      "tts": {
+        "text": "你能做到多小？",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-153",
+      "text": "苹果的端侧基础模型达到了每权重2比特。",
+      "text_markdown": "苹果的端侧基础模型达到了每权重2比特。",
+      "title": "",
+      "tts": {
+        "text": "苹果的端侧基础模型达到了每权重两比特。",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-154",
+      "text": "他们使用量化感知训练，模型从一开始就经过训练，知道在推理时将是2比特。",
+      "text_markdown": "他们使用量化感知训练，模型从一开始就经过训练，知道在推理时将是2比特。",
+      "title": "",
+      "tts": {
+        "text": "他们使用量化感知训练，模型从一开始就经过训练，知道在推理时将是两比特。",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-155",
+      "text": "这比事后简单舍入的结果要好得多。",
+      "text_markdown": "这比事后简单舍入的结果要好得多。",
+      "title": "",
+      "tts": {
+        "text": "这比事后简单舍入的结果要好得多。",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-156",
+      "text": "大约30亿参数以2比特存储，大约是750兆字节。",
+      "text_markdown": "大约30亿参数以2比特存储，大约是750兆字节。",
+      "title": "",
+      "tts": {
+        "text": "大约三十亿参数以两比特存储，大约是七百五十兆字节。",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-157",
+      "text": "这可以在手机上运行，而且绰绰有余。",
+      "text_markdown": "这可以在手机上运行，而且绰绰有余。",
+      "title": "",
+      "tts": {
+        "text": "这可以在手机上运行，而且绰绰有余。",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-158",
+      "text": "所以这就是为什么端侧AI今年终于可以使用的原因。",
+      "text_markdown": "所以这就是为什么端侧AI今年终于可以使用的原因。",
+      "title": "",
+      "tts": {
+        "text": "所以这就是为什么端侧AI今年终于可以使用的原因。",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-159",
+      "text": "这是主要原因。",
+      "text_markdown": "这是主要原因。",
+      "title": "",
+      "tts": {
+        "text": "这是主要原因。",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-160",
+      "text": "有三个词要记住——AWQ、GGUF和量化感知训练。",
+      "text_markdown": "有三个词要记住——AWQ、GGUF和量化感知训练。",
+      "title": "",
+      "tts": {
+        "text": "有三个词要记住——AWQ、GGUF和量化感知训练。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-161",
+      "text": "如果一个模型具备这三样东西，它就能在手机上运行。",
+      "text_markdown": "如果一个模型具备这三样东西，它就能在手机上运行。",
+      "title": "",
+      "tts": {
+        "text": "如果一个模型具备这三样东西，它就能在手机上运行。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-162",
+      "text": "一个很好的收尾。",
+      "text_markdown": "一个很好的收尾。",
+      "title": "",
+      "tts": {
+        "text": "一个很好的收尾。",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-163",
+      "text": "罗恩，谢谢你。",
+      "text_markdown": "罗恩，谢谢你。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，谢谢你。",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-164",
+      "text": "随时奉陪，温迪。",
+      "text_markdown": "随时奉陪，温迪。",
+      "title": "",
+      "tts": {
+        "text": "随时奉陪，温迪。",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-165",
+      "text": "以上是2026年5月20日的《本周AI》。",
+      "text_markdown": "以上是2026年5月20日的《本周AI》。",
+      "title": "",
+      "tts": {
+        "text": "以上是二零二六年五月二十日的《本周AI》。",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-166",
+      "text": "下周三发布新一期。",
+      "text_markdown": "下周三发布新一期。",
+      "title": "",
+      "tts": {
+        "text": "下周三发布新一期。",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-167",
+      "text": "在此之前，请保重。",
+      "text_markdown": "在此之前，请保重。",
+      "title": "",
+      "tts": {
+        "text": "在此之前，请保重。",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

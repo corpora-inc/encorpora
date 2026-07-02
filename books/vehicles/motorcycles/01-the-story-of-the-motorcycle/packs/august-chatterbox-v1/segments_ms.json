@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "ms",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nota untuk pembaca",
+      "text_markdown": "Nota untuk pembaca"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini ialah kisah motosikal.",
+      "text_markdown": "Ini ialah kisah motosikal.",
+      "tts": {
+        "text": "Ini ialah kisah motosikal.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia kisah benar.",
+      "text_markdown": "Ia kisah benar.",
+      "tts": {
+        "text": "Ia kisah benar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dahulu kala, tiada siapa yang ada motosikal.",
+      "text_markdown": "Dahulu kala, tiada siapa yang ada motosikal.",
+      "tts": {
+        "text": "Dahulu kala, tiada siapa yang ada motosikal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kini, ada berjuta-juta motosikal.",
+      "text_markdown": "Kini, ada berjuta-juta motosikal.",
+      "tts": {
+        "text": "Kini, ada berjuta juta motosikal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia bising, laju dan berkilat.",
+      "text_markdown": "Ia bising, laju dan berkilat.",
+      "tts": {
+        "text": "Ia bising, laju dan berkilat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kita akan mula dari awal sekali.",
+      "text_markdown": "Kita akan mula dari awal sekali.",
+      "tts": {
+        "text": "Kita akan mula dari awal sekali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kita akan jumpa pembina pertama, penunggang pertama, dan perlumbaan pertama.",
+      "text_markdown": "Kita akan jumpa pembina pertama, penunggang pertama, dan perlumbaan pertama.",
+      "tts": {
+        "text": "Kita akan jumpa pembina pertama, penunggang pertama, dan perlumbaan pertama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemudian kita akan tengok dunia hari ini.",
+      "text_markdown": "Kemudian kita akan tengok dunia hari ini.",
+      "tts": {
+        "text": "Kemudian kita akan tengok dunia hari ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Nota untuk pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada akhirnya, kamu akan tahu bagaimana mesin kecil ini mengubah jalan raya selama-lamanya.",
+      "text_markdown": "Pada akhirnya, kamu akan tahu bagaimana mesin kecil ini mengubah jalan raya selama-lamanya.",
+      "tts": {
+        "text": "Pada akhirnya, kamu akan tahu bagaimana mesin kecil ini mengubah jalan raya selama lamanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "text_markdown": "Bab 1 — Dua roda pertama yang berbunyi vroom"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosikal ialah basikal yang ada enjin.",
+      "text_markdown": "Motosikal ialah basikal yang ada enjin.",
+      "tts": {
+        "text": "Motosikal ialah basikal yang ada enjin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Enjin menolak roda.",
+      "text_markdown": "Enjin menolak roda.",
+      "tts": {
+        "text": "Enjin menolak roda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penunggang tidak perlu mengayuh.",
+      "text_markdown": "Penunggang tidak perlu mengayuh.",
+      "tts": {
+        "text": "Penunggang tidak perlu mengayuh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dahulu kala, tiada motosikal.",
+      "text_markdown": "Dahulu kala, tiada motosikal.",
+      "tts": {
+        "text": "Dahulu kala, tiada motosikal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang menunggang kuda.",
+      "text_markdown": "Orang menunggang kuda.",
+      "tts": {
+        "text": "Orang menunggang kuda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang menunggang basikal.",
+      "text_markdown": "Orang menunggang basikal.",
+      "tts": {
+        "text": "Orang menunggang basikal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Basikal ada dua roda dan tiada enjin.",
+      "text_markdown": "Basikal ada dua roda dan tiada enjin.",
+      "tts": {
+        "text": "Basikal ada dua roda dan tiada enjin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kamu kena tolak pedal dengan kaki.",
+      "text_markdown": "Kamu kena tolak pedal dengan kaki.",
+      "tts": {
+        "text": "Kamu kena tolak pedal dengan kaki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1885, seorang lelaki di Jerman mendapat satu idea besar.",
+      "text_markdown": "Pada tahun 1885, seorang lelaki di Jerman mendapat satu idea besar.",
+      "tts": {
+        "text": "Pada tahun seribu lapan ratus lapan puluh lima, seorang lelaki di Jerman mendapat satu idea besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Namanya Gottlieb Daimler.",
+      "text_markdown": "Namanya Gottlieb Daimler.",
+      "tts": {
+        "text": "Namanya Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia ambil enjin petrol kecil dan letakkannya pada basikal kayu.",
+      "text_markdown": "Dia ambil enjin petrol kecil dan letakkannya pada basikal kayu.",
+      "tts": {
+        "text": "Dia ambil enjin petrol kecil dan letakkannya pada basikal kayu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dia memanggil mesinnya Reitwagen.",
+      "text_markdown": "Dia memanggil mesinnya Reitwagen.",
+      "tts": {
+        "text": "Dia memanggil mesinnya Rait Vagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perkataan itu bermaksud \"kereta tunggangan\" dalam bahasa Jerman.",
+      "text_markdown": "Perkataan itu bermaksud \"kereta tunggangan\" dalam bahasa Jerman.",
+      "tts": {
+        "text": "Perkataan itu bermaksud kereta tunggangan dalam bahasa Jerman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Itulah motosikal pertama di dunia.",
+      "text_markdown": "Itulah motosikal pertama di dunia.",
+      "tts": {
+        "text": "Itulah motosikal pertama di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen itu bising.",
+      "text_markdown": "Reitwagen itu bising.",
+      "tts": {
+        "text": "Rait Vagen itu bising.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia bergegar.",
+      "text_markdown": "Ia bergegar.",
+      "tts": {
+        "text": "Ia bergegar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia hanya ada satu kelajuan.",
+      "text_markdown": "Ia hanya ada satu kelajuan.",
+      "tts": {
+        "text": "Ia hanya ada satu kelajuan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia boleh bergerak kira-kira 7 batu sejam.",
+      "text_markdown": "Ia boleh bergerak kira-kira 7 batu sejam.",
+      "tts": {
+        "text": "Ia boleh bergerak kira kira tujuh batu sejam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Itu lebih perlahan daripada orang yang menunggang basikal hari ini.",
+      "text_markdown": "Itu lebih perlahan daripada orang yang menunggang basikal hari ini.",
+      "tts": {
+        "text": "Itu lebih perlahan daripada orang yang menunggang basikal hari ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tetapi ia boleh bergerak tanpa kuda, dan ia boleh bergerak tanpa pedal.",
+      "text_markdown": "Tetapi ia boleh bergerak tanpa kuda, dan ia boleh bergerak tanpa pedal.",
+      "tts": {
+        "text": "Tetapi ia boleh bergerak tanpa kuda, dan ia boleh bergerak tanpa pedal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bab 1 — Dua roda pertama yang berbunyi vroom",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosikal pun lahir.",
+      "text_markdown": "Motosikal pun lahir.",
+      "tts": {
+        "text": "Motosikal pun lahir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 2 — Syarikat-syarikat pertama",
+      "text_markdown": "Bab 2 — Syarikat-syarikat pertama"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas Daimler, orang lain pun nak buat motosikal juga.",
+      "text_markdown": "Selepas Daimler, orang lain pun nak buat motosikal juga.",
+      "tts": {
+        "text": "Selepas Daimler, orang lain pun nak buat motosikal juga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tidak lama kemudian, bengkel kecil dibuka di seluruh dunia.",
+      "text_markdown": "Tidak lama kemudian, bengkel kecil dibuka di seluruh dunia.",
+      "tts": {
+        "text": "Tidak lama kemudian, bengkel kecil dibuka di seluruh dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di England, seorang lelaki bernama Siegfried Bettmann menubuhkan syarikat bernama Triumph.",
+      "text_markdown": "Di England, seorang lelaki bernama Siegfried Bettmann menubuhkan syarikat bernama Triumph.",
+      "tts": {
+        "text": "Di England, seorang lelaki bernama Siegfried Bettmann menubuhkan syarikat bernama Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motosikal Triumph pertama dibuat pada tahun 1902.",
+      "text_markdown": "Motosikal Triumph pertama dibuat pada tahun 1902.",
+      "tts": {
+        "text": "Motosikal Triumph pertama dibuat pada tahun seribu sembilan ratus dua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Amerika, dua kawan bernama William Harley dan Arthur Davidson membina basikal pertama mereka di sebuah bangsal kayu kecil.",
+      "text_markdown": "Di Amerika, dua kawan bernama William Harley dan Arthur Davidson membina basikal pertama mereka di sebuah bangsal kayu kecil.",
+      "tts": {
+        "text": "Di Amerika, dua kawan bernama William Harley dan Arthur Davidson membina basikal pertama mereka di sebuah bangsal kayu kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bangsal itu di bandar Milwaukee.",
+      "text_markdown": "Bangsal itu di bandar Milwaukee.",
+      "tts": {
+        "text": "Bangsal itu di bandar Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tahun itu ialah 1903.",
+      "text_markdown": "Tahun itu ialah 1903.",
+      "tts": {
+        "text": "Tahun itu ialah seribu sembilan ratus tiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mereka menamakan syarikat itu Harley-Davidson.",
+      "text_markdown": "Mereka menamakan syarikat itu Harley-Davidson.",
+      "tts": {
+        "text": "Mereka menamakan syarikat itu Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah lagi syarikat Amerika bermula beberapa tahun lebih awal.",
+      "text_markdown": "Sebuah lagi syarikat Amerika bermula beberapa tahun lebih awal.",
+      "tts": {
+        "text": "Sebuah lagi syarikat Amerika bermula beberapa tahun lebih awal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dua orang lelaki di Springfield, Massachusetts, membina mesin pertama mereka pada tahun 1901.",
+      "text_markdown": "Dua orang lelaki di Springfield, Massachusetts, membina mesin pertama mereka pada tahun 1901.",
+      "tts": {
+        "text": "Dua orang lelaki di Springfield, Massachusetts, membina mesin pertama mereka pada tahun seribu sembilan ratus satu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka memanggilnya Indian.",
+      "text_markdown": "Mereka memanggilnya Indian.",
+      "tts": {
+        "text": "Mereka memanggilnya Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di India, sebuah syarikat bernama Royal Enfield mula membuat motosikal pada tahun 1901 juga.",
+      "text_markdown": "Di India, sebuah syarikat bernama Royal Enfield mula membuat motosikal pada tahun 1901 juga.",
+      "tts": {
+        "text": "Di India, sebuah syarikat bernama Royal Enfield mula membuat motosikal pada tahun seribu sembilan ratus satu juga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hari ini, Royal Enfield ialah syarikat motosikal tertua di dunia yang masih membuat basikal.",
+      "text_markdown": "Hari ini, Royal Enfield ialah syarikat motosikal tertua di dunia yang masih membuat basikal.",
+      "tts": {
+        "text": "Hari ini, Royal Enfield ialah syarikat motosikal tertua di dunia yang masih membuat basikal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Jerman, syarikat BMW mula membuat motosikal sedikit kemudian, pada tahun 1923.",
+      "text_markdown": "Di Jerman, syarikat BMW mula membuat motosikal sedikit kemudian, pada tahun 1923.",
+      "tts": {
+        "text": "Di Jerman, syarikat Bee Em Dabel Yu mula membuat motosikal sedikit kemudian, pada tahun seribu sembilan ratus dua puluh tiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW bermaksud \"Bavarian Motor Works\" dalam bahasa Jerman.",
+      "text_markdown": "BMW bermaksud \"Bavarian Motor Works\" dalam bahasa Jerman.",
+      "tts": {
+        "text": "Bee Em Dabel Yu bermaksud Bavarian Motor Works dalam bahasa Jerman.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menjelang tahun 1910, motosikal sudah ada di mana-mana.",
+      "text_markdown": "Menjelang tahun 1910, motosikal sudah ada di mana-mana.",
+      "tts": {
+        "text": "Menjelang tahun seribu sembilan ratus sepuluh, motosikal sudah ada di mana mana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ada di jalan-jalan bandar dan jalan luar bandar.",
+      "text_markdown": "Ia ada di jalan-jalan bandar dan jalan luar bandar.",
+      "tts": {
+        "text": "Ia ada di jalan jalan bandar dan jalan luar bandar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bab 2 — Syarikat-syarikat pertama",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zaman motosikal sudah benar-benar bermula.",
+      "text_markdown": "Zaman motosikal sudah benar-benar bermula.",
+      "tts": {
+        "text": "Zaman motosikal sudah benar benar bermula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 3 — Motosikal pergi berperang",
+      "text_markdown": "Bab 3 — Motosikal pergi berperang"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosikal laju.",
+      "text_markdown": "Motosikal laju.",
+      "tts": {
+        "text": "Motosikal laju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia boleh muat di lorong-lorong kecil.",
+      "text_markdown": "Ia boleh muat di lorong-lorong kecil.",
+      "tts": {
+        "text": "Ia boleh muat di lorong lorong kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia boleh membawa pesanan antara kem.",
+      "text_markdown": "Ia boleh membawa pesanan antara kem.",
+      "tts": {
+        "text": "Ia boleh membawa pesanan antara kem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jadi apabila perang datang, tentera mahukan motosikal.",
+      "text_markdown": "Jadi apabila perang datang, tentera mahukan motosikal.",
+      "tts": {
+        "text": "Jadi apabila perang datang, tentera mahukan motosikal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perang Dunia Pertama bermula pada tahun 1914.",
+      "text_markdown": "Perang Dunia Pertama bermula pada tahun 1914.",
+      "tts": {
+        "text": "Perang Dunia Pertama bermula pada tahun seribu sembilan ratus empat belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Askar menggunakan motosikal Triumph untuk membawa arahan.",
+      "text_markdown": "Askar menggunakan motosikal Triumph untuk membawa arahan.",
+      "tts": {
+        "text": "Askar menggunakan motosikal Triumph untuk membawa arahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H kuat dan senyap.",
+      "text_markdown": "Triumph Model H kuat dan senyap.",
+      "tts": {
+        "text": "Triumph Model H kuat dan senyap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia boleh pergi ke tempat yang kuda tak boleh sampai.",
+      "text_markdown": "Ia boleh pergi ke tempat yang kuda tak boleh sampai.",
+      "tts": {
+        "text": "Ia boleh pergi ke tempat yang kuda tak boleh sampai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perang Dunia Kedua bermula pada tahun 1939.",
+      "text_markdown": "Perang Dunia Kedua bermula pada tahun 1939.",
+      "tts": {
+        "text": "Perang Dunia Kedua bermula pada tahun seribu sembilan ratus tiga puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada masa itu, motosikal sudah lebih laju dan lebih kuat.",
+      "text_markdown": "Pada masa itu, motosikal sudah lebih laju dan lebih kuat.",
+      "tts": {
+        "text": "Pada masa itu, motosikal sudah lebih laju dan lebih kuat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Askar Amerika menunggang Harley-Davidson WLA.",
+      "text_markdown": "Askar Amerika menunggang Harley-Davidson WLA.",
+      "tts": {
+        "text": "Askar Amerika menunggang Harley Davidson Dabel Yu El A.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Askar Jerman menunggang BMW R75.",
+      "text_markdown": "Askar Jerman menunggang BMW R75.",
+      "tts": {
+        "text": "Askar Jerman menunggang Bee Em Dabel Yu R tujuh puluh lima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75 ada sidecar dengan roda ketiga dan tempat duduk untuk askar lain.",
+      "text_markdown": "R75 ada sidecar dengan roda ketiga dan tempat duduk untuk askar lain.",
+      "tts": {
+        "text": "R tujuh puluh lima ada sidecar dengan roda ketiga dan tempat duduk untuk askar lain.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas perang, askar pulang ke rumah.",
+      "text_markdown": "Selepas perang, askar pulang ke rumah.",
+      "tts": {
+        "text": "Selepas perang, askar pulang ke rumah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka membawa motosikal mereka pulang.",
+      "text_markdown": "Mereka membawa motosikal mereka pulang.",
+      "tts": {
+        "text": "Mereka membawa motosikal mereka pulang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ramai daripada mereka mahu terus menunggang.",
+      "text_markdown": "Ramai daripada mereka mahu terus menunggang.",
+      "tts": {
+        "text": "Ramai daripada mereka mahu terus menunggang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sebahagian daripada mereka memulakan kelab motosikal sendiri.",
+      "text_markdown": "Sebahagian daripada mereka memulakan kelab motosikal sendiri.",
+      "tts": {
+        "text": "Sebahagian daripada mereka memulakan kelab motosikal sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perang menjadikan motosikal terkenal.",
+      "text_markdown": "Perang menjadikan motosikal terkenal.",
+      "tts": {
+        "text": "Perang menjadikan motosikal terkenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Berjuta-juta orang telah melihat motosikal buat kali pertama.",
+      "text_markdown": "Berjuta-juta orang telah melihat motosikal buat kali pertama.",
+      "tts": {
+        "text": "Berjuta juta orang telah melihat motosikal buat kali pertama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bab 3 — Motosikal pergi berperang",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ramai mahu memiliki sebuah.",
+      "text_markdown": "Ramai mahu memiliki sebuah.",
+      "tts": {
+        "text": "Ramai mahu memiliki sebuah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 4 — Kebangkitan Jepun",
+      "text_markdown": "Bab 4 — Kebangkitan Jepun"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas Perang Dunia Kedua, Jepun miskin.",
+      "text_markdown": "Selepas Perang Dunia Kedua, Jepun miskin.",
+      "tts": {
+        "text": "Selepas Perang Dunia Kedua, Jepun miskin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kebanyakan kereta terlalu mahal.",
+      "text_markdown": "Kebanyakan kereta terlalu mahal.",
+      "tts": {
+        "text": "Kebanyakan kereta terlalu mahal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang ramai memerlukan cara yang kecil dan murah untuk bergerak.",
+      "text_markdown": "Orang ramai memerlukan cara yang kecil dan murah untuk bergerak.",
+      "tts": {
+        "text": "Orang ramai memerlukan cara yang kecil dan murah untuk bergerak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seorang lelaki muda Jepun nampak peluang.",
+      "text_markdown": "Seorang lelaki muda Jepun nampak peluang.",
+      "tts": {
+        "text": "Seorang lelaki muda Jepun nampak peluang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Namanya Soichiro Honda.",
+      "text_markdown": "Namanya Soichiro Honda.",
+      "tts": {
+        "text": "Namanya Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menubuhkan syarikat kecil pada tahun 1948.",
+      "text_markdown": "Dia menubuhkan syarikat kecil pada tahun 1948.",
+      "tts": {
+        "text": "Dia menubuhkan syarikat kecil pada tahun seribu sembilan ratus empat puluh lapan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia menamakannya Honda.",
+      "text_markdown": "Dia menamakannya Honda.",
+      "tts": {
+        "text": "Dia menamakannya Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1958, Honda membina sebuah motosikal kecil bernama Super Cub.",
+      "text_markdown": "Pada tahun 1958, Honda membina sebuah motosikal kecil bernama Super Cub.",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus lima puluh lapan, Honda membina sebuah motosikal kecil bernama Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub mudah ditunggang.",
+      "text_markdown": "Super Cub mudah ditunggang.",
+      "tts": {
+        "text": "Super Cub mudah ditunggang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia mudah dibaiki.",
+      "text_markdown": "Ia mudah dibaiki.",
+      "tts": {
+        "text": "Ia mudah dibaiki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia sangat-sangat murah.",
+      "text_markdown": "Ia sangat-sangat murah.",
+      "tts": {
+        "text": "Ia sangat sangat murah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang di seluruh dunia membeli Super Cub.",
+      "text_markdown": "Orang di seluruh dunia membeli Super Cub.",
+      "tts": {
+        "text": "Orang di seluruh dunia membeli Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hari ini, lebih daripada 100 juta Super Cub telah dijual.",
+      "text_markdown": "Hari ini, lebih daripada 100 juta Super Cub telah dijual.",
+      "tts": {
+        "text": "Hari ini, lebih daripada seratus juta Super Cub telah dijual.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia kenderaan bermotor terlaris sepanjang zaman.",
+      "text_markdown": "Ia kenderaan bermotor terlaris sepanjang zaman.",
+      "tts": {
+        "text": "Ia kenderaan bermotor terlaris sepanjang zaman.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tidak lama kemudian, tiga lagi syarikat Jepun mengikut Honda.",
+      "text_markdown": "Tidak lama kemudian, tiga lagi syarikat Jepun mengikut Honda.",
+      "tts": {
+        "text": "Tidak lama kemudian, tiga lagi syarikat Jepun mengikut Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka ialah Yamaha, Suzuki, dan Kawasaki.",
+      "text_markdown": "Mereka ialah Yamaha, Suzuki, dan Kawasaki.",
+      "tts": {
+        "text": "Mereka ialah Yamaha, Suzuki, dan Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bersama Honda, mereka dipanggil Empat Besar.",
+      "text_markdown": "Bersama Honda, mereka dipanggil Empat Besar.",
+      "tts": {
+        "text": "Bersama Honda, mereka dipanggil Empat Besar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Empat Besar membuat motosikal yang laju, murah, dan mudah ditunggang.",
+      "text_markdown": "Empat Besar membuat motosikal yang laju, murah, dan mudah ditunggang.",
+      "tts": {
+        "text": "Empat Besar membuat motosikal yang laju, murah, dan mudah ditunggang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Menjelang tahun 1960-an, motosikal Jepun sudah ada di mana-mana.",
+      "text_markdown": "Menjelang tahun 1960-an, motosikal Jepun sudah ada di mana-mana.",
+      "tts": {
+        "text": "Menjelang tahun enam puluhan, motosikal Jepun sudah ada di mana mana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bab 4 — Kebangkitan Jepun",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka menjadi raja baru di jalan raya.",
+      "text_markdown": "Mereka menjadi raja baru di jalan raya.",
+      "tts": {
+        "text": "Mereka menjadi raja baru di jalan raya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "text_markdown": "Bab 5 — Lebih laju, lebih laju, lebih laju"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1960-an, penunggang mahu pergi lebih laju.",
+      "text_markdown": "Pada tahun 1960-an, penunggang mahu pergi lebih laju.",
+      "tts": {
+        "text": "Pada tahun enam puluhan, penunggang mahu pergi lebih laju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pembina memulakan perlumbaan untuk membuat motosikal terpantas di dunia.",
+      "text_markdown": "Pembina memulakan perlumbaan untuk membuat motosikal terpantas di dunia.",
+      "tts": {
+        "text": "Pembina memulakan perlumbaan untuk membuat motosikal terpantas di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Itali, sebuah syarikat kecil bernama MV Agusta membina basikal merah cantik yang menang perlumbaan demi perlumbaan.",
+      "text_markdown": "Di Itali, sebuah syarikat kecil bernama MV Agusta membina basikal merah cantik yang menang perlumbaan demi perlumbaan.",
+      "tts": {
+        "text": "Di Itali, sebuah syarikat kecil bernama Em Vee Agusta membina basikal merah cantik yang menang perlumbaan demi perlumbaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di England, Triumph dan Norton juga membina mesin yang kuat.",
+      "text_markdown": "Di England, Triumph dan Norton juga membina mesin yang kuat.",
+      "tts": {
+        "text": "Di England, Triumph dan Norton juga membina mesin yang kuat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian, pada tahun 1969, Honda melakukan sesuatu yang menakjubkan.",
+      "text_markdown": "Kemudian, pada tahun 1969, Honda melakukan sesuatu yang menakjubkan.",
+      "tts": {
+        "text": "Kemudian, pada tahun seribu sembilan ratus enam puluh sembilan, Honda melakukan sesuatu yang menakjubkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka membina motosikal bernama CB 750.",
+      "text_markdown": "Mereka membina motosikal bernama CB 750.",
+      "tts": {
+        "text": "Mereka membina motosikal bernama C B tujuh ratus lima puluh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia ada empat silinder dan enjin yang besar.",
+      "text_markdown": "Ia ada empat silinder dan enjin yang besar.",
+      "tts": {
+        "text": "Ia ada empat silinder dan enjin yang besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia boleh pergi lebih daripada 120 batu sejam.",
+      "text_markdown": "Ia boleh pergi lebih daripada 120 batu sejam.",
+      "tts": {
+        "text": "Ia boleh pergi lebih daripada seratus dua puluh batu sejam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Itulah superbike sejati yang pertama.",
+      "text_markdown": "Itulah superbike sejati yang pertama.",
+      "tts": {
+        "text": "Itulah superbike sejati yang pertama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas CB 750, setiap syarikat mahu membina superbike.",
+      "text_markdown": "Selepas CB 750, setiap syarikat mahu membina superbike.",
+      "tts": {
+        "text": "Selepas C B tujuh ratus lima puluh, setiap syarikat mahu membina superbike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motosikal jadi semakin laju dan semakin laju.",
+      "text_markdown": "Motosikal jadi semakin laju dan semakin laju.",
+      "tts": {
+        "text": "Motosikal jadi semakin laju dan semakin laju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tidak lama kemudian, ia ada fairing yang terang, iaitu cengkerang plastik licin yang memotong angin.",
+      "text_markdown": "Tidak lama kemudian, ia ada fairing yang terang, iaitu cengkerang plastik licin yang memotong angin.",
+      "tts": {
+        "text": "Tidak lama kemudian, ia ada fairing yang terang, iaitu cengkerang plastik licin yang memotong angin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1990, sebuah motosikal Jepun bernama Kawasaki ZX-11 menjadi motosikal terpantas di dunia.",
+      "text_markdown": "Pada tahun 1990, sebuah motosikal Jepun bernama Kawasaki ZX-11 menjadi motosikal terpantas di dunia.",
+      "tts": {
+        "text": "Pada tahun seribu sembilan ratus sembilan puluh, sebuah motosikal Jepun bernama Kawasaki Z X sebelas menjadi motosikal terpantas di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia boleh pergi hampir 175 batu sejam.",
+      "text_markdown": "Ia boleh pergi hampir 175 batu sejam.",
+      "tts": {
+        "text": "Ia boleh pergi hampir seratus tujuh puluh lima batu sejam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beberapa tahun kemudian, Suzuki Hayabusa lebih laju lagi.",
+      "text_markdown": "Beberapa tahun kemudian, Suzuki Hayabusa lebih laju lagi.",
+      "tts": {
+        "text": "Beberapa tahun kemudian, Suzuki Hayabusa lebih laju lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia mencapai 194 batu sejam.",
+      "text_markdown": "Ia mencapai 194 batu sejam.",
+      "tts": {
+        "text": "Ia mencapai seratus sembilan puluh empat batu sejam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bab 5 — Lebih laju, lebih laju, lebih laju",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Itu lebih laju daripada kebanyakan kereta di jalan raya hari ini.",
+      "text_markdown": "Itu lebih laju daripada kebanyakan kereta di jalan raya hari ini.",
+      "tts": {
+        "text": "Itu lebih laju daripada kebanyakan kereta di jalan raya hari ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 6 — Pelbagai jenis motosikal",
+      "text_markdown": "Bab 6 — Pelbagai jenis motosikal"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hari ini, motosikal datang dalam banyak bentuk.",
+      "text_markdown": "Hari ini, motosikal datang dalam banyak bentuk.",
+      "tts": {
+        "text": "Hari ini, motosikal datang dalam banyak bentuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Setiap jenis dibina untuk kerja yang berbeza.",
+      "text_markdown": "Setiap jenis dibina untuk kerja yang berbeza.",
+      "tts": {
+        "text": "Setiap jenis dibina untuk kerja yang berbeza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sport bike dibina untuk pergi sangat laju.",
+      "text_markdown": "Sport bike dibina untuk pergi sangat laju.",
+      "tts": {
+        "text": "Sport bike dibina untuk pergi sangat laju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ringan dan rendah.",
+      "text_markdown": "Ia ringan dan rendah.",
+      "tts": {
+        "text": "Ia ringan dan rendah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penunggang condong ke depan.",
+      "text_markdown": "Penunggang condong ke depan.",
+      "tts": {
+        "text": "Penunggang condong ke depan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sport bike dibuat untuk jalan licin dan litar lumba.",
+      "text_markdown": "Sport bike dibuat untuk jalan licin dan litar lumba.",
+      "tts": {
+        "text": "Sport bike dibuat untuk jalan licin dan litar lumba.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dirt bike dibina untuk lumpur dan tanah.",
+      "text_markdown": "Dirt bike dibina untuk lumpur dan tanah.",
+      "tts": {
+        "text": "Dirt bike dibina untuk lumpur dan tanah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ada roda yang tinggi dan tayar yang besar.",
+      "text_markdown": "Ia ada roda yang tinggi dan tayar yang besar.",
+      "tts": {
+        "text": "Ia ada roda yang tinggi dan tayar yang besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dirt bike boleh melompat di atas bukit.",
+      "text_markdown": "Dirt bike boleh melompat di atas bukit.",
+      "tts": {
+        "text": "Dirt bike boleh melompat di atas bukit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ramai penunggang muda mula belajar dengan dirt bike dahulu.",
+      "text_markdown": "Ramai penunggang muda mula belajar dengan dirt bike dahulu.",
+      "tts": {
+        "text": "Ramai penunggang muda mula belajar dengan dirt bike dahulu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cruiser ialah motosikal yang panjang dan rendah.",
+      "text_markdown": "Cruiser ialah motosikal yang panjang dan rendah.",
+      "tts": {
+        "text": "Cruiser ialah motosikal yang panjang dan rendah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Penunggang duduk tegak dan menunggang dengan perlahan.",
+      "text_markdown": "Penunggang duduk tegak dan menunggang dengan perlahan.",
+      "tts": {
+        "text": "Penunggang duduk tegak dan menunggang dengan perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson terkenal dengan cruiser.",
+      "text_markdown": "Harley-Davidson terkenal dengan cruiser.",
+      "tts": {
+        "text": "Harley Davidson terkenal dengan cruiser.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begitu juga Indian.",
+      "text_markdown": "Begitu juga Indian.",
+      "tts": {
+        "text": "Begitu juga Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adventure bike dibina untuk perjalanan jauh.",
+      "text_markdown": "Adventure bike dibina untuk perjalanan jauh.",
+      "tts": {
+        "text": "Adventure bike dibina untuk perjalanan jauh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia boleh menunggang di jalan raya dan tanah.",
+      "text_markdown": "Ia boleh menunggang di jalan raya dan tanah.",
+      "tts": {
+        "text": "Ia boleh menunggang di jalan raya dan tanah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS ialah adventure bike yang terkenal.",
+      "text_markdown": "BMW GS ialah adventure bike yang terkenal.",
+      "tts": {
+        "text": "Bee Em Dabel Yu Ji Es ialah adventure bike yang terkenal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begitu juga KTM.",
+      "text_markdown": "Begitu juga KTM.",
+      "tts": {
+        "text": "Begitu juga Ka Te Em.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada juga chopper, skuter, basikal lumba, dan basikal elektrik.",
+      "text_markdown": "Ada juga chopper, skuter, basikal lumba, dan basikal elektrik.",
+      "tts": {
+        "text": "Ada juga chopper, skuter, basikal lumba, dan basikal elektrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ada motosikal untuk hampir setiap jenis jalan.",
+      "text_markdown": "Ada motosikal untuk hampir setiap jenis jalan.",
+      "tts": {
+        "text": "Ada motosikal untuk hampir setiap jenis jalan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bab 6 — Pelbagai jenis motosikal",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hari ini, kamu boleh jumpa motosikal di setiap negara di dunia.",
+      "text_markdown": "Hari ini, kamu boleh jumpa motosikal di setiap negara di dunia.",
+      "tts": {
+        "text": "Hari ini, kamu boleh jumpa motosikal di setiap negara di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 7 — Jalan baru",
+      "text_markdown": "Bab 7 — Jalan baru"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hari ini, motosikal ada jenis enjin baru.",
+      "text_markdown": "Hari ini, motosikal ada jenis enjin baru.",
+      "tts": {
+        "text": "Hari ini, motosikal ada jenis enjin baru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah enjin elektrik.",
+      "text_markdown": "Ia ialah enjin elektrik.",
+      "tts": {
+        "text": "Ia ialah enjin elektrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Motosikal elektrik senyap.",
+      "text_markdown": "Motosikal elektrik senyap.",
+      "tts": {
+        "text": "Motosikal elektrik senyap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia tidak perlukan petrol.",
+      "text_markdown": "Ia tidak perlukan petrol.",
+      "tts": {
+        "text": "Ia tidak perlukan petrol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ia hanya perlu dipalamkan seperti telefon.",
+      "text_markdown": "Ia hanya perlu dipalamkan seperti telefon.",
+      "tts": {
+        "text": "Ia hanya perlu dipalamkan seperti telefon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah syarikat bernama Zero membina motosikal elektrik di California.",
+      "text_markdown": "Sebuah syarikat bernama Zero membina motosikal elektrik di California.",
+      "tts": {
+        "text": "Sebuah syarikat bernama Zero membina motosikal elektrik di California.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson kini membina basikal elektrik bernama LiveWire.",
+      "text_markdown": "Harley-Davidson kini membina basikal elektrik bernama LiveWire.",
+      "tts": {
+        "text": "Harley Davidson kini membina basikal elektrik bernama LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sebuah syarikat Itali bernama Energica membina basikal lumba elektrik.",
+      "text_markdown": "Sebuah syarikat Itali bernama Energica membina basikal lumba elektrik.",
+      "tts": {
+        "text": "Sebuah syarikat Itali bernama Energica membina basikal lumba elektrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia sangat laju.",
+      "text_markdown": "Ia sangat laju.",
+      "tts": {
+        "text": "Ia sangat laju.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosikal pertama, Reitwagen, boleh pergi 7 batu sejam.",
+      "text_markdown": "Motosikal pertama, Reitwagen, boleh pergi 7 batu sejam.",
+      "tts": {
+        "text": "Motosikal pertama, Rait Vagen, boleh pergi tujuh batu sejam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motosikal elektrik hari ini boleh pergi lebih daripada 200 batu sejam.",
+      "text_markdown": "Motosikal elektrik hari ini boleh pergi lebih daripada 200 batu sejam.",
+      "tts": {
+        "text": "Motosikal elektrik hari ini boleh pergi lebih daripada dua ratus batu sejam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Itulah kisah motosikal setakat ini.",
+      "text_markdown": "Itulah kisah motosikal setakat ini.",
+      "tts": {
+        "text": "Itulah kisah motosikal setakat ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini cerita yang besar.",
+      "text_markdown": "Ini cerita yang besar.",
+      "tts": {
+        "text": "Ini cerita yang besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sebelas buku berikutnya akan menceritakan cerita-cerita kecil.",
+      "text_markdown": "Sebelas buku berikutnya akan menceritakan cerita-cerita kecil.",
+      "tts": {
+        "text": "Sebelas buku berikutnya akan menceritakan cerita cerita kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap satu adalah tentang satu bahagian dunia motosikal.",
+      "text_markdown": "Setiap satu adalah tentang satu bahagian dunia motosikal.",
+      "tts": {
+        "text": "Setiap satu adalah tentang satu bahagian dunia motosikal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buku kedua adalah tentang Harley-Davidson.",
+      "text_markdown": "Buku kedua adalah tentang Harley-Davidson.",
+      "tts": {
+        "text": "Buku kedua adalah tentang Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buku ketiga adalah tentang Honda.",
+      "text_markdown": "Buku ketiga adalah tentang Honda.",
+      "tts": {
+        "text": "Buku ketiga adalah tentang Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buku keempat adalah tentang Ducati dari Itali.",
+      "text_markdown": "Buku keempat adalah tentang Ducati dari Itali.",
+      "tts": {
+        "text": "Buku keempat adalah tentang Ducati dari Itali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Buku kelima adalah tentang BMW dari Jerman.",
+      "text_markdown": "Buku kelima adalah tentang BMW dari Jerman.",
+      "tts": {
+        "text": "Buku kelima adalah tentang Bee Em Dabel Yu dari Jerman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Buku keenam adalah tentang Triumph dari England.",
+      "text_markdown": "Buku keenam adalah tentang Triumph dari England.",
+      "tts": {
+        "text": "Buku keenam adalah tentang Triumph dari England.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buku ketujuh adalah tentang dirt bike.",
+      "text_markdown": "Buku ketujuh adalah tentang dirt bike.",
+      "tts": {
+        "text": "Buku ketujuh adalah tentang dirt bike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buku kelapan adalah tentang sport bike.",
+      "text_markdown": "Buku kelapan adalah tentang sport bike.",
+      "tts": {
+        "text": "Buku kelapan adalah tentang sport bike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buku kesembilan adalah tentang cruiser dan chopper.",
+      "text_markdown": "Buku kesembilan adalah tentang cruiser dan chopper.",
+      "tts": {
+        "text": "Buku kesembilan adalah tentang cruiser dan chopper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Buku kesepuluh adalah tentang adventure bike.",
+      "text_markdown": "Buku kesepuluh adalah tentang adventure bike.",
+      "tts": {
+        "text": "Buku kesepuluh adalah tentang adventure bike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Buku kesebelas adalah tentang perlumbaan.",
+      "text_markdown": "Buku kesebelas adalah tentang perlumbaan.",
+      "tts": {
+        "text": "Buku kesebelas adalah tentang perlumbaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buku kedua belas adalah tentang basikal elektrik dan masa depan.",
+      "text_markdown": "Buku kedua belas adalah tentang basikal elektrik dan masa depan.",
+      "tts": {
+        "text": "Buku kedua belas adalah tentang basikal elektrik dan masa depan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pilih yang nampak paling seronok.",
+      "text_markdown": "Pilih yang nampak paling seronok.",
+      "tts": {
+        "text": "Pilih yang nampak paling seronok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bab 7 — Jalan baru",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemudian ikut serta dalam perjalanan ini.",
+      "text_markdown": "Kemudian ikut serta dalam perjalanan ini.",
+      "tts": {
+        "text": "Kemudian ikut serta dalam perjalanan ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tentang buku ini",
+      "text_markdown": "Tentang buku ini"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini ialah buku pertama dalam siri Motosikal.",
+      "text_markdown": "Ini ialah buku pertama dalam siri Motosikal.",
+      "tts": {
+        "text": "Ini ialah buku pertama dalam siri Motosikal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia dibaca dengan kuat oleh August.",
+      "text_markdown": "Ia dibaca dengan kuat oleh August.",
+      "tts": {
+        "text": "Ia dibaca dengan kuat oleh August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap ayat pendek dan jelas supaya kamu boleh baca bersama dalam mana-mana bahasa.",
+      "text_markdown": "Setiap ayat pendek dan jelas supaya kamu boleh baca bersama dalam mana-mana bahasa.",
+      "tts": {
+        "text": "Setiap ayat pendek dan jelas supaya kamu boleh baca bersama dalam mana mana bahasa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika kamu mahu dengar bagaimana ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+      "text_markdown": "Jika kamu mahu dengar bagaimana ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+      "tts": {
+        "text": "Jika kamu mahu dengar bagaimana ayat berbunyi dalam bahasa lain, dengar buku yang sama dalam bahasa itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perkataan di halaman akan sepadan dengan apa yang kamu dengar.",
+      "text_markdown": "Perkataan di halaman akan sepadan dengan apa yang kamu dengar.",
+      "tts": {
+        "text": "Perkataan di halaman akan sepadan dengan apa yang kamu dengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Itulah cara kamu belajar.",
+      "text_markdown": "Itulah cara kamu belajar.",
+      "tts": {
+        "text": "Itulah cara kamu belajar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Tentang buku ini",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekarang pergi cari motosikal dan dengar bunyinya vroom.",
+      "text_markdown": "Sekarang pergi cari motosikal dan dengar bunyinya vroom.",
+      "tts": {
+        "text": "Sekarang pergi cari motosikal dan dengar bunyinya vroom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

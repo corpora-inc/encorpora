@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "et",
+  "total_segments": 209,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Tere tulemast AI This Week'i.",
+      "text_markdown": "Tere tulemast AI This Week'i.",
+      "title": "",
+      "tts": {
+        "text": "Tere tulemast AI This Week'i.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Minu nimi on Vindy.",
+      "text_markdown": "Minu nimi on Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Minu nimi on Vindi.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nagu ikka, on minuga kaasas Ron.",
+      "text_markdown": "Nagu ikka, on minuga kaasas Ron.",
+      "title": "",
+      "tts": {
+        "text": "Nagu ikka, on minuga kaasas Ronn.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hea siin olla, Vindy.",
+      "text_markdown": "Hea siin olla, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hea siin olla, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Täna on kolmapäev, 27. mai 2026.",
+      "text_markdown": "Täna on kolmapäev, 27. mai 2026.",
+      "title": "",
+      "tts": {
+        "text": "Täna on kolmapäev, kahekümne seitsmes mai, kakstuhat kakskümmend kuus.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja paberil oli see vaikne nädal.",
+      "text_markdown": "Ja paberil oli see vaikne nädal.",
+      "title": "",
+      "tts": {
+        "text": "Ja paberil oli see vaikne nädal.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ühtegi suurt uut avatud mudelit ei ilmunud.",
+      "text_markdown": "Ühtegi suurt uut avatud mudelit ei ilmunud.",
+      "title": "",
+      "tts": {
+        "text": "Ühtegi suurt uut avatud mudelit ei ilmunud.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kuid vaiksetes nädalates peitub tõeline lugu.",
+      "text_markdown": "Kuid vaiksetes nädalates peitub tõeline lugu.",
+      "title": "",
+      "tts": {
+        "text": "Kuid vaiksetes nädalates peitub tõeline lugu.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nii et täna läheme sinna, kuhu peaettekanded ei jõua.",
+      "text_markdown": "Nii et täna läheme sinna, kuhu peaettekanded ei jõua.",
+      "title": "",
+      "tts": {
+        "text": "Nii et täna läheme sinna, kuhu peaettekanded ei jõua.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Järgmiseks — mis tegelikult avatud kaaludes liikus.",
+      "text_markdown": "Järgmiseks — mis tegelikult avatud kaaludes liikus.",
+      "title": "",
+      "tts": {
+        "text": "Järgmiseks — mis tegelikult avatud kaaludes liikus.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "See üks edetabel, mis loeb, ja see ei ole kvaliteeditabel.",
+      "text_markdown": "See üks edetabel, mis loeb, ja see ei ole kvaliteeditabel.",
+      "title": "",
+      "tts": {
+        "text": "See üks edetabel, mis loeb, ja see ei ole kvaliteeditabel.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kiire ülevaade pealkirjadest, millega saate sel nädalavahetusel tegeleda.",
+      "text_markdown": "Kiire ülevaade pealkirjadest, millega saate sel nädalavahetusel tegeleda.",
+      "title": "",
+      "tts": {
+        "text": "Kiire ülevaade pealkirjadest, millega saate sel nädalavahetusel tegeleda.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Meie peamine lugu: aasta, mil avatud hääl sai piisavalt heaks, et seda omada.",
+      "text_markdown": "Meie peamine lugu: aasta, mil avatud hääl sai piisavalt heaks, et seda omada.",
+      "title": "",
+      "tts": {
+        "text": "Meie peamine lugu: aasta, mil avatud hääl sai piisavalt heaks, et seda omada.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja nädala kontseptsioon on neuraalsed audiokoodekid — kuidas suruda terve hääl kokku, et see telefoni mahuks.",
+      "text_markdown": "Ja nädala kontseptsioon on neuraalsed audiokoodekid — kuidas suruda terve hääl kokku, et see telefoni mahuks.",
+      "title": "",
+      "tts": {
+        "text": "Ja nädala kontseptsioon on neuraalsed audiokoodekid — kuidas suruda terve hääl kokku, et see telefoni mahuks.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, alustame avatud kaalude maailmast.",
+      "text_markdown": "Ron, alustame avatud kaalude maailmast.",
+      "title": "",
+      "tts": {
+        "text": "Ron, alustame avatud kaalude maailmast.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mis sel nädalal liikus?",
+      "text_markdown": "Mis sel nädalal liikus?",
+      "title": "",
+      "tts": {
+        "text": "Mis sel nädalal liikus?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ausalt öeldes ei ilmunud sel nädalal ühtegi uut piiriülest avatud mudelit.",
+      "text_markdown": "Ausalt öeldes ei ilmunud sel nädalal ühtegi uut piiriülest avatud mudelit.",
+      "title": "",
+      "tts": {
+        "text": "Ausalt öeldes ei ilmunud sel nädalal ühtegi uut piiriülest avatud mudelit.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See uudis on ju rõõmustav.",
+      "text_markdown": "See uudis on ju rõõmustav.",
+      "title": "",
+      "tts": {
+        "text": "See uudis on ju rõõmustav.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tõeline avatud uudis sel nädalal oli torustik ja hinnakujundus.",
+      "text_markdown": "Tõeline avatud uudis sel nädalal oli torustik ja hinnakujundus.",
+      "title": "",
+      "tts": {
+        "text": "Tõeline avatud uudis sel nädalal oli torustik ja hinnakujundus.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Esmalt torustik — mis katki läks või parandati?",
+      "text_markdown": "Esmalt torustik — mis katki läks või parandati?",
+      "title": "",
+      "tts": {
+        "text": "Esmalt torustik — mis katki läks või parandati?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "26. mail avaldas SGLang projekt stabiilsusparanduse DeepSeek V4 teenindamiseks.",
+      "text_markdown": "26. mail avaldas SGLang projekt stabiilsusparanduse DeepSeek V4 teenindamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Kahekümne kuuendal mail avaldas S G Lang projekt stabiilsusparanduse DeepSeek V nelja teenindamiseks.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "SGLang on üks kahest suurest avatud mootorist, mida kasutate mudeli ise käitamiseks.",
+      "text_markdown": "SGLang on üks kahest suurest avatud mootorist, mida kasutate mudeli ise käitamiseks.",
+      "title": "",
+      "tts": {
+        "text": "S G Lang on üks kahest suurest avatud mootorist, mida kasutate mudeli ise käitamiseks.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Teine on vLLM.",
+      "text_markdown": "Teine on vLLM.",
+      "title": "",
+      "tts": {
+        "text": "Teine on v L L M.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See parandus lahendas moonutatud väljundi uusimatel kaartidel ja krahhi suure koormuse all.",
+      "text_markdown": "See parandus lahendas moonutatud väljundi uusimatel kaartidel ja krahhi suure koormuse all.",
+      "title": "",
+      "tts": {
+        "text": "See parandus lahendas moonutatud väljundi uusimatel kaartidel ja krahhi suure koormuse all.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Miks on teenindusparandus oluline?",
+      "text_markdown": "Miks on teenindusparandus oluline?",
+      "title": "",
+      "tts": {
+        "text": "Miks on teenindusparandus oluline?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sest avatud kaalud on kasutud, kui te ei saa neid usaldusväärselt teenindada.",
+      "text_markdown": "Sest avatud kaalud on kasutud, kui te ei saa neid usaldusväärselt teenindada.",
+      "title": "",
+      "tts": {
+        "text": "Sest avatud kaalud on kasutud, kui te ei saa neid usaldusväärselt teenindada.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "DeepSeek V4 on avatud ja MIT-litsentsiga, kuid see on tohutu mudel.",
+      "text_markdown": "DeepSeek V4 on avatud ja MIT-litsentsiga, kuid see on tohutu mudel.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V neli on avatud ja M I T litsentsiga, kuid see on tohutu mudel.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mootorid, mis panevad selle looduses tööle, on avatud ökosüsteemi vähem glamuurne pool.",
+      "text_markdown": "Mootorid, mis panevad selle looduses tööle, on avatud ökosüsteemi vähem glamuurne pool.",
+      "title": "",
+      "tts": {
+        "text": "Mootorid, mis panevad selle looduses tööle, on avatud ökosüsteemi vähem glamuurne pool.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Igav parandusnädal on see, kuidas näeb välja terve projekt.",
+      "text_markdown": "Igav parandusnädal on see, kuidas näeb välja terve projekt.",
+      "title": "",
+      "tts": {
+        "text": "Igav parandusnädal on see, kuidas näeb välja terve projekt.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja hinnakujunduse pool?",
+      "text_markdown": "Ja hinnakujunduse pool?",
+      "title": "",
+      "tts": {
+        "text": "Ja hinnakujunduse pool?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See pakub rohkem huvi.",
+      "text_markdown": "See pakub rohkem huvi.",
+      "title": "",
+      "tts": {
+        "text": "See pakub rohkem huvi.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Umbes 22. mail muutis DeepSeek oma V4-Pro 75% hinnakärpe püsivaks.",
+      "text_markdown": "Umbes 22. mail muutis DeepSeek oma V4-Pro 75% hinnakärpe püsivaks.",
+      "title": "",
+      "tts": {
+        "text": "Umbes kahekümne teisel mail muutis DeepSeek oma V neli Pro seitsmekümne viie protsendise hinnakärpe püsivaks.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Väljundhind on nüüd umbes 0,87 dollarit miljoni märgi kohta.",
+      "text_markdown": "Väljundhind on nüüd umbes 0,87 dollarit miljoni märgi kohta.",
+      "title": "",
+      "tts": {
+        "text": "Väljundhind on nüüd umbes null koma kaheksakümmend seitse dollarit miljoni märgi kohta.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on umbes veerand sellest, millega see turule tuli.",
+      "text_markdown": "See on umbes veerand sellest, millega see turule tuli.",
+      "title": "",
+      "tts": {
+        "text": "See on umbes veerand sellest, millega see turule tuli.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nii et avatud mudeli rentimine muutus odavamaks.",
+      "text_markdown": "Nii et avatud mudeli rentimine muutus odavamaks.",
+      "title": "",
+      "tts": {
+        "text": "Nii et avatud mudeli rentimine muutus odavamaks.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Õige, ja see pöörab küsimuse pea peale.",
+      "text_markdown": "Õige, ja see pöörab küsimuse pea peale.",
+      "title": "",
+      "tts": {
+        "text": "Õige, ja see pöörab küsimuse pea peale.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tavaliselt ütleme, et avatud kaalud tähendavad ise majutamist.",
+      "text_markdown": "Tavaliselt ütleme, et avatud kaalud tähendavad ise majutamist.",
+      "title": "",
+      "tts": {
+        "text": "Tavaliselt ütleme, et avatud kaalud tähendavad ise majutamist.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kuid alla dollari miljoni märgi eest, on rentimine sageli odavam kui teie enda elekter.",
+      "text_markdown": "Kuid alla dollari miljoni märgi eest, on rentimine sageli odavam kui teie enda elekter.",
+      "title": "",
+      "tts": {
+        "text": "Kuid alla ühe dollari miljoni märgi eest, on rentimine sageli odavam kui teie enda elekter.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nii et uus lähenemine on – ise majutamine privaatsuse ja võrguühenduseta kasutamiseks, API rentimine odavateks pursketeks.",
+      "text_markdown": "Nii et uus lähenemine on – ise majutamine privaatsuse ja võrguühenduseta kasutamiseks, API rentimine odavateks pursketeks.",
+      "title": "",
+      "tts": {
+        "text": "Nii et uus lähenemine on – ise majutamine privaatsuse ja võrguühenduseta kasutamiseks, API rentimine odavateks pursketeks.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Samad avatud kaalud, kaks väga erinevat põhjust nende kasutamiseks.",
+      "text_markdown": "Samad avatud kaalud, kaks väga erinevat põhjust nende kasutamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Samad avatud kaalud, kaks väga erinevat põhjust nende kasutamiseks.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mis puutub seadmesiseste kasutajate hulka?",
+      "text_markdown": "Mis puutub seadmesiseste kasutajate hulka?",
+      "title": "",
+      "tts": {
+        "text": "Mis puutub seadmesiseste kasutajate hulka?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "llama.cpp jätkas oma tegemisi kogu nädala.",
+      "text_markdown": "llama.cpp jätkas oma tegemisi kogu nädala.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P jätkas oma tegemisi kogu nädala.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See ei tee tegelikult väljalaseid – see tarnib ehitisi peaaegu iga päev.",
+      "text_markdown": "See ei tee tegelikult väljalaseid – see tarnib ehitisi peaaegu iga päev.",
+      "title": "",
+      "tts": {
+        "text": "See ei tee tegelikult väljalaseid – see tarnib ehitisi peaaegu iga päev.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sel nädalal tehti kiirustööd Vulkani, Inteli ja telefoniklassi kiipidega.",
+      "text_markdown": "Sel nädalal tehti kiirustööd Vulkani, Inteli ja telefoniklassi kiipidega.",
+      "title": "",
+      "tts": {
+        "text": "Sel nädalal tehti kiirustööd Vulkani, Inteli ja telefoniklassi kiipidega.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on mootor, millel seadmesisene maailm tegelikult töötab.",
+      "text_markdown": "See on mootor, millel seadmesisene maailm tegelikult töötab.",
+      "title": "",
+      "tts": {
+        "text": "See on mootor, millel seadmesisene maailm tegelikult töötab.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ei mingit draamat, lihtsalt kiirem – täpselt see, mida küpselt torustikult oodata.",
+      "text_markdown": "Ei mingit draamat, lihtsalt kiirem – täpselt see, mida küpselt torustikult oodata.",
+      "title": "",
+      "tts": {
+        "text": "Ei mingit draamat, lihtsalt kiirem – täpselt see, mida küpselt torustikult oodata.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kirjelda meile laiemat pilti.",
+      "text_markdown": "Kirjelda meile laiemat pilti.",
+      "title": "",
+      "tts": {
+        "text": "Kirjelda meile laiemat pilti.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Avatud piir on praegu enamasti Hiina juhitud.",
+      "text_markdown": "Avatud piir on praegu enamasti Hiina juhitud.",
+      "title": "",
+      "tts": {
+        "text": "Avatud piir on praegu enamasti Hiina juhitud.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Aprillis oli laine – DeepSeek V4, Qwen 3.6, Kimi K2.6 ja palju muud, kõik umbes kahe nädala jooksul.",
+      "text_markdown": "Aprillis oli laine – DeepSeek V4, Qwen 3.6, Kimi K2.6 ja palju muud, kõik umbes kahe nädala jooksul.",
+      "title": "",
+      "tts": {
+        "text": "Aprillis oli laine – DeepSeek V neli, Qwen kolm punkt kuus, Kimi K kaks punkt kuus ja palju muud, kõik umbes kahe nädala jooksul.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See nädal on selle laine vaikne järelkaja.",
+      "text_markdown": "See nädal on selle laine vaikne järelkaja.",
+      "title": "",
+      "tts": {
+        "text": "See nädal on selle laine vaikne järelkaja.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja Qwen – kas neil polnud uudiseid?",
+      "text_markdown": "Ja Qwen – kas neil polnud uudiseid?",
+      "title": "",
+      "tts": {
+        "text": "Ja Qwen – kas neil polnud uudiseid?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Jah, ja see on kõnekas.",
+      "text_markdown": "Jah, ja see on kõnekas.",
+      "title": "",
+      "tts": {
+        "text": "Jah, ja see on kõnekas.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Alibaba uus lipulaev, Qwen 3.7 Max, on ainult API-põhine – avatud kaalusid pole.",
+      "text_markdown": "Alibaba uus lipulaev, Qwen 3.7 Max, on ainult API-põhine – avatud kaalusid pole.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba uus lipulaev, Qwen kolm punkt seitse Max, on ainult API-põhine – avatud kaalusid pole.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Avatud Qweni liin peatub endiselt 3.6 juures.",
+      "text_markdown": "Avatud Qweni liin peatub endiselt 3.6 juures.",
+      "title": "",
+      "tts": {
+        "text": "Avatud Qweni liin peatub endiselt kolm punkt kuus juures.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nii et Alibaba jaguneb suletud lipulaevaks ja avatud keskklassiks.",
+      "text_markdown": "Nii et Alibaba jaguneb suletud lipulaevaks ja avatud keskklassiks.",
+      "title": "",
+      "tts": {
+        "text": "Nii et Alibaba jaguneb suletud lipulaevaks ja avatud keskklassiks.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on sama strateegia, mida Mistral eelmisel aastal kasutas.",
+      "text_markdown": "See on sama strateegia, mida Mistral eelmisel aastal kasutas.",
+      "title": "",
+      "tts": {
+        "text": "See on sama strateegia, mida Mistral eelmisel aastal kasutas.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Tasub siis jälgida.",
+      "text_markdown": "Tasub siis jälgida.",
+      "title": "",
+      "tts": {
+        "text": "Tasub siis jälgida.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Järgmine avatud samm on avatud Qwen 3.7 keskklass.",
+      "text_markdown": "Järgmine avatud samm on avatud Qwen 3.7 keskklass.",
+      "title": "",
+      "tts": {
+        "text": "Järgmine avatud samm on avatud Qwen kolm punkt seitse keskklass.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Selle nädala seisuga pole Hugging Face'is veel midagi.",
+      "text_markdown": "Selle nädala seisuga pole Hugging Face'is veel midagi.",
+      "title": "",
+      "tts": {
+        "text": "Selle nädala seisuga pole Hugging Face'is veel midagi.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Okei, liigume edetabelite juurde.",
+      "text_markdown": "Okei, liigume edetabelite juurde.",
+      "title": "",
+      "tts": {
+        "text": "Okei, liigume edetabelite juurde.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kuhu asjad sel nädalal jõudsid?",
+      "text_markdown": "Kuhu asjad sel nädalal jõudsid?",
+      "title": "",
+      "tts": {
+        "text": "Kuhu asjad sel nädalal jõudsid?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Siin on pealkiri, ja see on kummaline.",
+      "text_markdown": "Siin on pealkiri, ja see on kummaline.",
+      "title": "",
+      "tts": {
+        "text": "Siin on pealkiri, ja see on kummaline.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Edetabel, mis sel nädalal liikus, ei ole kvaliteeditabel.",
+      "text_markdown": "Edetabel, mis sel nädalal liikus, ei ole kvaliteeditabel.",
+      "title": "",
+      "tts": {
+        "text": "Edetabel, mis sel nädalal liikus, ei ole kvaliteeditabel.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on OpenRouteri kasutusmõõtur – tegelikud mudelikutsed, mitte arvamused.",
+      "text_markdown": "See on OpenRouteri kasutusmõõtur – tegelikud mudelikutsed, mitte arvamused.",
+      "title": "",
+      "tts": {
+        "text": "See on OpenRouteri kasutusmõõtur – tegelikud mudelikutsed, mitte arvamused.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mida kasutusmõõtur ütleb?",
+      "text_markdown": "Mida kasutusmõõtur ütleb?",
+      "title": "",
+      "tts": {
+        "text": "Mida kasutusmõõtur ütleb?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "18. kuni 24. mai nädalal oli Maal kõige enam kasutatud mudel DeepSeek V4-Flash.",
+      "text_markdown": "18. kuni 24. mai nädalal oli Maal kõige enam kasutatud mudel DeepSeek V4-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Kaheksateistkümnenda kuni kahekümne neljanda mai nädalal oli Maal kõige enam kasutatud mudel DeepSeek V neli Flash.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See teenindas umbes 3,43 triljonit tokenit ühe nädalaga.",
+      "text_markdown": "See teenindas umbes 3,43 triljonit tokenit ühe nädalaga.",
+      "title": "",
+      "tts": {
+        "text": "See teenindas umbes kolm koma nelikümmend kolm triljonit tokenit ühe nädalaga.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja see on avatud kaaludega, MIT-litsentsiga, midagi, mida saate alla laadida ja ise majutada.",
+      "text_markdown": "Ja see on avatud kaaludega, MIT-litsentsiga, midagi, mida saate alla laadida ja ise majutada.",
+      "title": "",
+      "tts": {
+        "text": "Ja see on avatud kaaludega, M I T litsentsiga, midagi, mida saate alla laadida ja ise majutada.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kõige enam kasutatud mudel on avatud?",
+      "text_markdown": "Kõige enam kasutatud mudel on avatud?",
+      "title": "",
+      "tts": {
+        "text": "Kõige enam kasutatud mudel on avatud?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kasutustabeli tipus, jah.",
+      "text_markdown": "Kasutustabeli tipus, jah.",
+      "title": "",
+      "tts": {
+        "text": "Kasutustabeli tipus, jah.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja see ei ole ligilähedanegi.",
+      "text_markdown": "Ja see ei ole ligilähedanegi.",
+      "title": "",
+      "tts": {
+        "text": "Ja see ei ole ligilähedanegi.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hiina mudelid töötlesid sel nädalal umbes 9,2 triljonit tokenit, võrreldes Ameerika mudelite umbes 4,9 triljoniga.",
+      "text_markdown": "Hiina mudelid töötlesid sel nädalal umbes 9,2 triljonit tokenit, võrreldes Ameerika mudelite umbes 4,9 triljoniga.",
+      "title": "",
+      "tts": {
+        "text": "Hiina mudelid töötlesid sel nädalal umbes üheksa koma kaks triljonit tokenit, võrreldes Ameerika mudelite umbes neli koma üheksa triljoniga.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on neljas järjestikune nädal, mil Hiina avatud mudelid juhtisid globaalset kasutust.",
+      "text_markdown": "See on neljas järjestikune nädal, mil Hiina avatud mudelid juhtisid globaalset kasutust.",
+      "title": "",
+      "tts": {
+        "text": "See on neljas järjestikune nädal, mil Hiina avatud mudelid juhtisid globaalset kasutust.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "See on tõeline kannapööre.",
+      "text_markdown": "See on tõeline kannapööre.",
+      "title": "",
+      "tts": {
+        "text": "See on tõeline kannapööre.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on – mõõdiku järgi, mida arendajad tegelikult tunnevad, mis on tootmises, võidab avatud mudel tipus.",
+      "text_markdown": "See on – mõõdiku järgi, mida arendajad tegelikult tunnevad, mis on tootmises, võidab avatud mudel tipus.",
+      "title": "",
+      "tts": {
+        "text": "See on – mõõdiku järgi, mida arendajad tegelikult tunnevad, mis on tootmises, võidab avatud mudel tipus.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Aga olge ausad kasutustabelite suhtes.",
+      "text_markdown": "Aga olge ausad kasutustabelite suhtes.",
+      "title": "",
+      "tts": {
+        "text": "Aga olge ausad kasutustabelite suhtes.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hea instinkt, ja sel nädalal on täiuslik hoiatav lugu.",
+      "text_markdown": "Hea instinkt, ja sel nädalal on täiuslik hoiatav lugu.",
+      "title": "",
+      "tts": {
+        "text": "Hea instinkt, ja sel nädalal on täiuslik hoiatav lugu.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Teine mudel, Tencenti Hy3, tõusis samas kasutustabelis.",
+      "text_markdown": "Teine mudel, Tencenti Hy3, tõusis samas kasutustabelis.",
+      "title": "",
+      "tts": {
+        "text": "Teine mudel, Tencenti H Y kolm, tõusis samas kasutustabelis.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Analüütik Max Woolf võttis selle lahti 26. mail.",
+      "text_markdown": "Analüütik Max Woolf võttis selle lahti 26. mail.",
+      "title": "",
+      "tts": {
+        "text": "Analüütik Max Woolf võttis selle lahti kahekümne kuuendal mail.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mida ta leidis?",
+      "text_markdown": "Mida ta leidis?",
+      "title": "",
+      "tts": {
+        "text": "Mida ta leidis?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See tundub tokeni kohta odav, kuid sellel on väga kõrged vahemälu lugemise kulud.",
+      "text_markdown": "See tundub tokeni kohta odav, kuid sellel on väga kõrged vahemälu lugemise kulud.",
+      "title": "",
+      "tts": {
+        "text": "See tundub tokeni kohta odav, kuid sellel on väga kõrged vahemälu lugemise kulud.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kui need kokku lugeda, on see peaaegu kaks korda DeepSeeki tegelikust hinnast kallim.",
+      "text_markdown": "Kui need kokku lugeda, on see peaaegu kaks korda DeepSeeki tegelikust hinnast kallim.",
+      "title": "",
+      "tts": {
+        "text": "Kui need kokku lugeda, on see peaaegu kaks korda DeepSeeki tegelikust hinnast kallim.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja see hüpe näib olevat ühe hiiglasliku rakenduse, mitte laialdase populaarsuse tulemus.",
+      "text_markdown": "Ja see hüpe näib olevat ühe hiiglasliku rakenduse, mitte laialdase populaarsuse tulemus.",
+      "title": "",
+      "tts": {
+        "text": "Ja see hüpe näib olevat ühe hiiglasliku rakenduse, mitte laialdase populaarsuse tulemus.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Seega näitab kasutustabel, kes kulutab, mitte mis on hea.",
+      "text_markdown": "Seega näitab kasutustabel, kes kulutab, mitte mis on hea.",
+      "title": "",
+      "tts": {
+        "text": "Seega näitab kasutustabel, kes kulutab, mitte mis on hea.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Trendimine ei ole sama mis parim.",
+      "text_markdown": "Trendimine ei ole sama mis parim.",
+      "title": "",
+      "tts": {
+        "text": "Trendimine ei ole sama mis parim.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on täpselt see õppetund, mida meeles pidada.",
+      "text_markdown": "See on täpselt see õppetund, mida meeles pidada.",
+      "title": "",
+      "tts": {
+        "text": "See on täpselt see õppetund, mida meeles pidada.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kuidas on lood kvaliteeditabelitega?",
+      "text_markdown": "Kuidas on lood kvaliteeditabelitega?",
+      "title": "",
+      "tts": {
+        "text": "Kuidas on lood kvaliteeditabelitega?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kõige raskemates tabelites juhivad endiselt suletud mudelid.",
+      "text_markdown": "Kõige raskemates tabelites juhivad endiselt suletud mudelid.",
+      "title": "",
+      "tts": {
+        "text": "Kõige raskemates tabelites juhivad endiselt suletud mudelid.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Vestluskvaliteedi ja agendi-terminali tabelite tipus on praegu kõik suletud mudelid.",
+      "text_markdown": "Vestluskvaliteedi ja agendi-terminali tabelite tipus on praegu kõik suletud mudelid.",
+      "title": "",
+      "tts": {
+        "text": "Vestluskvaliteedi ja agendi-terminali tabelite tipus on praegu kõik suletud mudelid.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kuid SWE-bench Verified'is, kodeerimistestis, on avatud mudelid põhimõtteliselt võrdsed.",
+      "text_markdown": "Kuid SWE-bench Verified'is, kodeerimistestis, on avatud mudelid põhimõtteliselt võrdsed.",
+      "title": "",
+      "tts": {
+        "text": "Kuid S V E bench Verified'is, kodeerimistestis, on avatud mudelid põhimõtteliselt võrdsed.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Jälgijate hinnangul on parimad avatud mudelid umbes 80% juures.",
+      "text_markdown": "Jälgijate hinnangul on parimad avatud mudelid umbes 80% juures.",
+      "title": "",
+      "tts": {
+        "text": "Jälgijate hinnangul on parimad avatud mudelid umbes kaheksakümmend protsenti juures.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Millised avatud mudelid?",
+      "text_markdown": "Millised avatud mudelid?",
+      "title": "",
+      "tts": {
+        "text": "Millised avatud mudelid?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kimi K2.6 ja MiniMax, DeepSeeki suurim mudel väidab sarnast.",
+      "text_markdown": "Kimi K2.6 ja MiniMax, DeepSeeki suurim mudel väidab sarnast.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K kaks koma kuus ja MiniMax, DeepSeeki suurim mudel väidab sarnast.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ma ütlen väidab, sest jälgijad on omavahel eri meelt.",
+      "text_markdown": "Ma ütlen väidab, sest jälgijad on omavahel eri meelt.",
+      "title": "",
+      "tts": {
+        "text": "Ma ütlen väidab, sest jälgijad on omavahel eri meelt.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Käsitsege iga üksikut võrdlusnäitaja numbrit väitena, mitte faktina.",
+      "text_markdown": "Käsitsege iga üksikut võrdlusnäitaja numbrit väitena, mitte faktina.",
+      "title": "",
+      "tts": {
+        "text": "Käsitsege iga üksikut võrdlusnäitaja numbrit väitena, mitte faktina.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sellest rääkides – võrdlusnäitajate usaldusväärsuse probleem.",
+      "text_markdown": "Sellest rääkides – võrdlusnäitajate usaldusväärsuse probleem.",
+      "title": "",
+      "tts": {
+        "text": "Sellest rääkides – võrdlusnäitajate usaldusväärsuse probleem.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Jah, terav artikkel ilmus 19. mail just sellel teemal.",
+      "text_markdown": "Jah, terav artikkel ilmus 19. mail just sellel teemal.",
+      "title": "",
+      "tts": {
+        "text": "Jah, terav artikkel ilmus üheksateistkümnendal mail just sellel teemal.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Väide on, et võrdlusnäitajad peaksid olema saastumiskindlad.",
+      "text_markdown": "Väide on, et võrdlusnäitajad peaksid olema saastumiskindlad.",
+      "title": "",
+      "tts": {
+        "text": "Väide on, et võrdlusnäitajad peaksid olema saastumiskindlad.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See tähendab, et test ei tohi lekkida treeningandmetesse.",
+      "text_markdown": "See tähendab, et test ei tohi lekkida treeningandmetesse.",
+      "title": "",
+      "tts": {
+        "text": "See tähendab, et test ei tohi lekkida treeningandmetesse.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Vastasel juhul mõõdab kõrge tulemus mälu, mitte arutlusvõimet.",
+      "text_markdown": "Vastasel juhul mõõdab kõrge tulemus mälu, mitte arutlusvõimet.",
+      "title": "",
+      "tts": {
+        "text": "Vastasel juhul mõõdab kõrge tulemus mälu, mitte arutlusvõimet.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nii et kaks viisi, kuidas edetabel saab valetada.",
+      "text_markdown": "Nii et kaks viisi, kuidas edetabel saab valetada.",
+      "title": "",
+      "tts": {
+        "text": "Nii et kaks viisi, kuidas edetabel saab valetada.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Õige – kasutusmängimine ühel pool, saastumine teisel.",
+      "text_markdown": "Õige – kasutusmängimine ühel pool, saastumine teisel.",
+      "title": "",
+      "tts": {
+        "text": "Õige – kasutusmängimine ühel pool, saastumine teisel.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sama õppetund – lugege edetabelit, ärge kummardage seda.",
+      "text_markdown": "Sama õppetund – lugege edetabelit, ärge kummardage seda.",
+      "title": "",
+      "tts": {
+        "text": "Sama õppetund – lugege edetabelit, ärge kummardage seda.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Vaatame nüüd üle pealkirjad.",
+      "text_markdown": "Vaatame nüüd üle pealkirjad.",
+      "title": "",
+      "tts": {
+        "text": "Vaatame nüüd üle pealkirjad.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kiire ülevaade, asjad, mida saate tegelikult kasutada.",
+      "text_markdown": "Kiire ülevaade, asjad, mida saate tegelikult kasutada.",
+      "title": "",
+      "tts": {
+        "text": "Kiire ülevaade, asjad, mida saate tegelikult kasutada.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Esiteks, aus isemajutamise matemaatika selle esinumbri mudeli kohta.",
+      "text_markdown": "Esiteks, aus isemajutamise matemaatika selle esinumbri mudeli kohta.",
+      "title": "",
+      "tts": {
+        "text": "Esiteks, aus isemajutamise matemaatika selle number üks mudeli kohta.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "DeepSeek V4-Flash vajab umbes 170 gigabaiti GPU mälu.",
+      "text_markdown": "DeepSeek V4-Flash vajab umbes 170 gigabaiti GPU mälu.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V neli Flash vajab umbes ükssada seitsekümmend gigabaiti G P U mälu.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on paar tipptasemel andmekeskuse kaarti, umbes seitse dollarit tunnis pilves.",
+      "text_markdown": "See on paar tipptasemel andmekeskuse kaarti, umbes seitse dollarit tunnis pilves.",
+      "title": "",
+      "tts": {
+        "text": "See on paar tipptasemel andmekeskuse kaarti, umbes seitse dollarit tunnis pilves.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Väga suure liikluse korral võidab odav API ikkagi.",
+      "text_markdown": "Väga suure liikluse korral võidab odav API ikkagi.",
+      "title": "",
+      "tts": {
+        "text": "Väga suure liikluse korral võidab odav API ikkagi.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Majuta ise privaatsuse ja kontrolli pärast, mitte raha säästmiseks – välja arvatud juhul, kui oled tohutu.",
+      "text_markdown": "Majuta ise privaatsuse ja kontrolli pärast, mitte raha säästmiseks – välja arvatud juhul, kui oled tohutu.",
+      "title": "",
+      "tts": {
+        "text": "Majuta ise privaatsuse ja kontrolli pärast, mitte raha säästmiseks – välja arvatud juhul, kui oled tohutu.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hea, mis veel?",
+      "text_markdown": "Hea, mis veel?",
+      "title": "",
+      "tts": {
+        "text": "Hea, mis veel?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Teiseks, seadmesisene kõne tegi sel aastal hüppe.",
+      "text_markdown": "Teiseks, seadmesisene kõne tegi sel aastal hüppe.",
+      "title": "",
+      "tts": {
+        "text": "Teiseks, seadmesisene kõne tegi sel aastal hüppe.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "On olemas avatud tekstist kõneks mudel, mis töötab CPU-l ilma GPU-ta üldse.",
+      "text_markdown": "On olemas avatud tekstist kõneks mudel, mis töötab CPU-l ilma GPU-ta üldse.",
+      "title": "",
+      "tts": {
+        "text": "On olemas avatud tekstist kõneks mudel, mis töötab C P U-l ilma G P U-ta üldse.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hoidke seda mõtet – see on meie peamine lugu.",
+      "text_markdown": "Hoidke seda mõtet – see on meie peamine lugu.",
+      "title": "",
+      "tts": {
+        "text": "Hoidke seda mõtet – see on meie peamine lugu.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Vihje sai märgitud.",
+      "text_markdown": "Vihje sai märgitud.",
+      "title": "",
+      "tts": {
+        "text": "Vihje sai märgitud.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kolmandaks, kogukonna kvantifitseerimise kiht hoiab avatud maailma toidetuna.",
+      "text_markdown": "Kolmandaks, kogukonna kvantifitseerimise kiht hoiab avatud maailma toidetuna.",
+      "title": "",
+      "tts": {
+        "text": "Kolmandaks, kogukonna kvantifitseerimise kiht hoiab avatud maailma toidetuna.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Grupid nagu Unsloth tarnivad uute mudelite häälestatud, kokku tõmmatud versioone päevade jooksul.",
+      "text_markdown": "Grupid nagu Unsloth tarnivad uute mudelite häälestatud, kokku tõmmatud versioone päevade jooksul.",
+      "title": "",
+      "tts": {
+        "text": "Grupid nagu Unsloth tarnivad uute mudelite häälestatud, kokku tõmmatud versioone päevade jooksul.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nii saab hiiglaslikust mudelist midagi, mis sobib teie kaardile.",
+      "text_markdown": "Nii saab hiiglaslikust mudelist midagi, mis sobib teie kaardile.",
+      "title": "",
+      "tts": {
+        "text": "Nii saab hiiglaslikust mudelist midagi, mis sobib teie kaardile.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja kuulamise poolel?",
+      "text_markdown": "Ja kuulamise poolel?",
+      "title": "",
+      "tts": {
+        "text": "Ja kuulamise poolel?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kõnest tekstiks liikus ka.",
+      "text_markdown": "Kõnest tekstiks liikus ka.",
+      "title": "",
+      "tts": {
+        "text": "Kõnest tekstiks liikus ka.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Moonshine v2 on avatud mudel, mis edestab Whisperit täpsuse poolest murdosana selle suurusest.",
+      "text_markdown": "Moonshine v2 on avatud mudel, mis edestab Whisperit täpsuse poolest murdosana selle suurusest.",
+      "title": "",
+      "tts": {
+        "text": "Moonshine versioon kaks on avatud mudel, mis edestab Whisperit täpsuse poolest murdosana selle suurusest.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on ehitatud Raspberry Pi või telefoni jaoks.",
+      "text_markdown": "See on ehitatud Raspberry Pi või telefoni jaoks.",
+      "title": "",
+      "tts": {
+        "text": "See on ehitatud Raspberry Pi või telefoni jaoks.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Serveris hulgitranskriptsiooni jaoks on NVIDIA Parakeet kiiruse valik.",
+      "text_markdown": "Serveris hulgitranskriptsiooni jaoks on NVIDIA Parakeet kiiruse valik.",
+      "title": "",
+      "tts": {
+        "text": "Serveris hulgitranskriptsiooni jaoks on NVIDIA Parakeet kiiruse valik.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Veel üks – kiibilugu.",
+      "text_markdown": "Veel üks – kiibilugu.",
+      "title": "",
+      "tts": {
+        "text": "Veel üks – kiibilugu.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See seob kogu episoodi kokku.",
+      "text_markdown": "See seob kogu episoodi kokku.",
+      "title": "",
+      "tts": {
+        "text": "See seob kogu episoodi kokku.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "21. mail ütles Nvidia Jensen Huang, et ta on Hiina kiibituru suures osas Huaweile loovutanud.",
+      "text_markdown": "21. mail ütles Nvidia Jensen Huang, et ta on Hiina kiibituru suures osas Huaweile loovutanud.",
+      "title": "",
+      "tts": {
+        "text": "Kahekümne esimesel mail ütles Nvidia Jensen Huang, et ta on Hiina kiibituru suures osas Huaweile loovutanud.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hiina blokeerib isegi heakskiidetud Nvidia impordi, et oma räni edendada.",
+      "text_markdown": "Hiina blokeerib isegi heakskiidetud Nvidia impordi, et oma räni edendada.",
+      "title": "",
+      "tts": {
+        "text": "Hiina blokeerib isegi heakskiidetud Nvidia impordi, et oma räni edendada.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Miks see ehitajale oluline on?",
+      "text_markdown": "Miks see ehitajale oluline on?",
+      "title": "",
+      "tts": {
+        "text": "Miks see ehitajale oluline on?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sest need avatud Hiina mudelid, mis kasutustabelis esikohal on, on üha enam treenitud ja teenindatud Huawei kiipidel.",
+      "text_markdown": "Sest need avatud Hiina mudelid, mis kasutustabelis esikohal on, on üha enam treenitud ja teenindatud Huawei kiipidel.",
+      "title": "",
+      "tts": {
+        "text": "Sest need avatud Hiina mudelid, mis kasutustabelis esikohal on, on üha enam treenitud ja teenindatud Huawei kiipidel.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ekspordikontrolli eesmärk oli aeglustada Hiina tehisintellekti.",
+      "text_markdown": "Ekspordikontrolli eesmärk oli aeglustada Hiina tehisintellekti.",
+      "title": "",
+      "tts": {
+        "text": "Ekspordikontrolli eesmärk oli aeglustada Hiina tehisintellekti.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Selle asemel käivitasid nad paralleelse avatud virna – nii kiibid kui ka kaalud.",
+      "text_markdown": "Selle asemel käivitasid nad paralleelse avatud virna – nii kiibid kui ka kaalud.",
+      "title": "",
+      "tts": {
+        "text": "Selle asemel käivitasid nad paralleelse avatud virna – nii kiibid kui ka kaalud.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Edetabeli lugu ja kiibilugu on sama lugu.",
+      "text_markdown": "Edetabeli lugu ja kiibilugu on sama lugu.",
+      "title": "",
+      "tts": {
+        "text": "Edetabeli lugu ja kiibilugu on sama lugu.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nüüd pöördume tagasi peamise loo juurde.",
+      "text_markdown": "Nüüd pöördume tagasi peamise loo juurde.",
+      "title": "",
+      "tts": {
+        "text": "Nüüd pöördume tagasi peamise loo juurde.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sa lubasid meile avatud häält.",
+      "text_markdown": "Sa lubasid meile avatud häält.",
+      "title": "",
+      "tts": {
+        "text": "Sa lubasid meile avatud häält.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tegin, ja see on selle saate mootoriruum.",
+      "text_markdown": "Tegin, ja see on selle saate mootoriruum.",
+      "title": "",
+      "tts": {
+        "text": "Tegin, ja see on selle saate mootoriruum.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Räägi sellest lähemalt.",
+      "text_markdown": "Räägi sellest lähemalt.",
+      "title": "",
+      "tts": {
+        "text": "Räägi sellest lähemalt.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Hääl, mida kuulete, töötab avatud ja hostitud kõnemudelite virnal.",
+      "text_markdown": "Hääl, mida kuulete, töötab avatud ja hostitud kõnemudelite virnal.",
+      "title": "",
+      "tts": {
+        "text": "Hääl, mida kuulete, töötab avatud ja hostitud kõnemudelite virnal.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja 2026 on aasta, mil avatud mudelid said piisavalt heaks, et neid omada.",
+      "text_markdown": "Ja 2026 on aasta, mil avatud mudelid said piisavalt heaks, et neid omada.",
+      "title": "",
+      "tts": {
+        "text": "Ja kakstuhat kakskümmend kuus on aasta, mil avatud mudelid said piisavalt heaks, et neid omada.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Alustame sellest, mis on kodule kõige lähemal.",
+      "text_markdown": "Alustame sellest, mis on kodule kõige lähemal.",
+      "title": "",
+      "tts": {
+        "text": "Alustame sellest, mis on kodule kõige lähemal.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on Chatterbox, firmalt Resemble AI.",
+      "text_markdown": "See on Chatterbox, firmalt Resemble AI.",
+      "title": "",
+      "tts": {
+        "text": "See on Chatterbox, firmalt Resemble AI.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on MIT-litsentsiga, see katab 23 keelt ja töötab seadmes.",
+      "text_markdown": "See on MIT-litsentsiga, see katab 23 keelt ja töötab seadmes.",
+      "title": "",
+      "tts": {
+        "text": "See on M I T litsentsiga, see katab kakskümmend kolm keelt ja töötab seadmes.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Märtsis ilmus versioon nimega Turbo.",
+      "text_markdown": "Märtsis ilmus versioon nimega Turbo.",
+      "title": "",
+      "tts": {
+        "text": "Märtsis ilmus versioon nimega Turbo.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See kasutab nippi, mis muudab helidekoodri üheks sammuks kümne asemel.",
+      "text_markdown": "See kasutab nippi, mis muudab helidekoodri üheks sammuks kümne asemel.",
+      "title": "",
+      "tts": {
+        "text": "See kasutab nippi, mis muudab helidekoodri üheks sammuks kümne asemel.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Selle nipi lihtsas keeles?",
+      "text_markdown": "Selle nipi lihtsas keeles?",
+      "title": "",
+      "tts": {
+        "text": "Selle nipi lihtsas keeles?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See tähendab palju vähem arvutusvõimsust sama hääle jaoks.",
+      "text_markdown": "See tähendab palju vähem arvutusvõimsust sama hääle jaoks.",
+      "title": "",
+      "tts": {
+        "text": "See tähendab palju vähem arvutusvõimsust sama hääle jaoks.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See teebki hea hääle telefonis realistlikuks.",
+      "text_markdown": "See teebki hea hääle telefonis realistlikuks.",
+      "title": "",
+      "tts": {
+        "text": "See teebki hea hääle telefonis realistlikuks.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mis siis, kui vajate rohkem keeli?",
+      "text_markdown": "Mis siis, kui vajate rohkem keeli?",
+      "title": "",
+      "tts": {
+        "text": "Mis siis, kui vajate rohkem keeli?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "On olemas avatud mudel nimega OmniVoice.",
+      "text_markdown": "On olemas avatud mudel nimega OmniVoice.",
+      "title": "",
+      "tts": {
+        "text": "On olemas avatud mudel nimega Omni Voice.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See väidab end toetavat üle 600 keele ja on kiire.",
+      "text_markdown": "See väidab end toetavat üle 600 keele ja on kiire.",
+      "title": "",
+      "tts": {
+        "text": "See väidab end toetavat üle kuuesaja keele ja on kiire.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on Apache-litsentsiga, seega on seda ohutu kaubanduslikult kasutada.",
+      "text_markdown": "See on Apache-litsentsiga, seega on seda ohutu kaubanduslikult kasutada.",
+      "title": "",
+      "tts": {
+        "text": "See on Apache litsentsiga, seega on seda ohutu kaubanduslikult kasutada.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "600 keelt kõlab liiga hästi.",
+      "text_markdown": "600 keelt kõlab liiga hästi.",
+      "title": "",
+      "tts": {
+        "text": "kuussada keelt kõlab liiga hästi.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on õigustatud mure.",
+      "text_markdown": "See on õigustatud mure.",
+      "title": "",
+      "tts": {
+        "text": "See on õigustatud mure.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Keele katmine ei ole sama, mis selles hästi kõlamine.",
+      "text_markdown": "Keele katmine ei ole sama, mis selles hästi kõlamine.",
+      "title": "",
+      "tts": {
+        "text": "Keele katmine ei ole sama, mis selles hästi kõlamine.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Peate siiski kuulama, keel keele haaval, enne kui seda usaldate.",
+      "text_markdown": "Peate siiski kuulama, keel keele haaval, enne kui seda usaldate.",
+      "title": "",
+      "tts": {
+        "text": "Peate siiski kuulama, keel keele haaval, enne kui seda usaldate.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kuidas on lood stuudiokvaliteediga?",
+      "text_markdown": "Kuidas on lood stuudiokvaliteediga?",
+      "title": "",
+      "tts": {
+        "text": "Kuidas on lood stuudiokvaliteediga?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Selleks vaadake VoxCPM2.",
+      "text_markdown": "Selleks vaadake VoxCPM2.",
+      "title": "",
+      "tts": {
+        "text": "Selleks vaadake Vox C P M kahte.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on umbes 2 miljardit parameetrit, Apache-litsentsiga ja väljastab kõrge truudusega heli.",
+      "text_markdown": "See on umbes 2 miljardit parameetrit, Apache-litsentsiga ja väljastab kõrge truudusega heli.",
+      "title": "",
+      "tts": {
+        "text": "See on umbes kaks miljardit parameetrit, Apache litsentsiga ja väljastab kõrge truudusega heli.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See katab 30 keelt ja seda saab peenhäälestada väikese häälenäidise põhjal.",
+      "text_markdown": "See katab 30 keelt ja seda saab peenhäälestada väikese häälenäidise põhjal.",
+      "title": "",
+      "tts": {
+        "text": "See katab kolmkümmend keelt ja seda saab peenhäälestada väikese häälenäidise põhjal.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See segu teeb sellest kõige tootestatavama keskmise suurusega avatud hääle.",
+      "text_markdown": "See segu teeb sellest kõige tootestatavama keskmise suurusega avatud hääle.",
+      "title": "",
+      "tts": {
+        "text": "See segu teeb sellest kõige tootestatavama keskmise suurusega avatud hääle.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja see seadmesisene paindlikkus, mida sa vihjasid?",
+      "text_markdown": "Ja see seadmesisene paindlikkus, mida sa vihjasid?",
+      "title": "",
+      "tts": {
+        "text": "Ja see seadmesisene paindlikkus, mida sa vihjasid?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on mudel nimega MOSS-TTS-Nano.",
+      "text_markdown": "See on mudel nimega MOSS-TTS-Nano.",
+      "title": "",
+      "tts": {
+        "text": "See on mudel nimega MOSS tee tee ess Nano.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on pisike, umbes 100 miljonit parameetrit.",
+      "text_markdown": "See on pisike, umbes 100 miljonit parameetrit.",
+      "title": "",
+      "tts": {
+        "text": "See on pisike, umbes sada miljonit parameetrit.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See töötab CPU-l ilma GPU-ta — isegi sülearvutil, ühel tuumal.",
+      "text_markdown": "See töötab CPU-l ilma GPU-ta — isegi sülearvutil, ühel tuumal.",
+      "title": "",
+      "tts": {
+        "text": "See töötab CPU-l ilma GPU-ta — isegi sülearvutil, ühel tuumal.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Igaühele, kes häält telefoni tarnib, on see unistus.",
+      "text_markdown": "Igaühele, kes häält telefoni tarnib, on see unistus.",
+      "title": "",
+      "tts": {
+        "text": "Igaühele, kes häält telefoni tarnib, on see unistus.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nii et kõik on ainult positiivne?",
+      "text_markdown": "Nii et kõik on ainult positiivne?",
+      "title": "",
+      "tts": {
+        "text": "Nii et kõik on ainult positiivne?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ei — ja siin on lõks, millest kõik mööda vaatavad.",
+      "text_markdown": "Ei — ja siin on lõks, millest kõik mööda vaatavad.",
+      "title": "",
+      "tts": {
+        "text": "Ei — ja siin on lõks, millest kõik mööda vaatavad.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mistral avaldas armsa häälemudeli nimega Voxtral.",
+      "text_markdown": "Mistral avaldas armsa häälemudeli nimega Voxtral.",
+      "title": "",
+      "tts": {
+        "text": "Mistral avaldas armsa häälemudeli nimega Voxtral.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kaalud on avatud ja kvaliteet on suurepärane.",
+      "text_markdown": "Kaalud on avatud ja kvaliteet on suurepärane.",
+      "title": "",
+      "tts": {
+        "text": "Kaalud on avatud ja kvaliteet on suurepärane.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kuid litsents on mitteäriline.",
+      "text_markdown": "Kuid litsents on mitteäriline.",
+      "title": "",
+      "tts": {
+        "text": "Kuid litsents on mitteäriline.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "See tähendab, et te ei saa seda tarnida.",
+      "text_markdown": "See tähendab, et te ei saa seda tarnida.",
+      "title": "",
+      "tts": {
+        "text": "See tähendab, et te ei saa seda tarnida.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mitte tasulises tootes, mitte ilma kokkuleppeta.",
+      "text_markdown": "Mitte tasulises tootes, mitte ilma kokkuleppeta.",
+      "title": "",
+      "tts": {
+        "text": "Mitte tasulises tootes, mitte ilma kokkuleppeta.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Avatud kaalud ei tähenda alati, et teil on lubatud neid kasutada.",
+      "text_markdown": "Avatud kaalud ei tähenda alati, et teil on lubatud neid kasutada.",
+      "title": "",
+      "tts": {
+        "text": "Avatud kaalud ei tähenda alati, et teil on lubatud neid kasutada.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tõelise rakenduse puhul loete litsentsi enne, kui armute.",
+      "text_markdown": "Tõelise rakenduse puhul loete litsentsi enne, kui armute.",
+      "title": "",
+      "tts": {
+        "text": "Tõelise rakenduse puhul loete litsentsi enne, kui armute.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ja nende ümber olevad võrdlusuuringute väited?",
+      "text_markdown": "Ja nende ümber olevad võrdlusuuringute väited?",
+      "title": "",
+      "tts": {
+        "text": "Ja nende ümber olevad võrdlusuuringute väited?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Olge skeptiline.",
+      "text_markdown": "Olge skeptiline.",
+      "title": "",
+      "tts": {
+        "text": "Olge skeptiline.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Iga siinne väide liidri alistamisest on müüja, kes viib läbi oma pimekatset.",
+      "text_markdown": "Iga siinne väide liidri alistamisest on müüja, kes viib läbi oma pimekatset.",
+      "title": "",
+      "tts": {
+        "text": "Iga siinne väide liidri alistamisest on müüja, kes viib läbi oma pimekatset.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Usaldage oma kõrvu, mitte nende graafikut.",
+      "text_markdown": "Usaldage oma kõrvu, mitte nende graafikut.",
+      "title": "",
+      "tts": {
+        "text": "Usaldage oma kõrvu, mitte nende graafikut.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kuhu see meid siis jätab?",
+      "text_markdown": "Kuhu see meid siis jätab?",
+      "title": "",
+      "tts": {
+        "text": "Kuhu see meid siis jätab?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See jätab meid kuhugi tõeliselt uude kohta.",
+      "text_markdown": "See jätab meid kuhugi tõeliselt uude kohta.",
+      "title": "",
+      "tts": {
+        "text": "See jätab meid kuhugi tõeliselt uude kohta.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Saate täna oma seadmes suurepärase hääle käivitada.",
+      "text_markdown": "Saate täna oma seadmes suurepärase hääle käivitada.",
+      "title": "",
+      "tts": {
+        "text": "Saate täna oma seadmes suurepärase hääle käivitada.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Raske küsimus ei ole enam, kas sa saad — vaid see, milline litsents laseb sul seda hoida.",
+      "text_markdown": "Raske küsimus ei ole enam, kas sa saad — vaid see, milline litsents laseb sul seda hoida.",
+      "title": "",
+      "tts": {
+        "text": "Raske küsimus ei ole enam, kas sa saad — vaid see, milline litsents laseb sul seda hoida.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "See on hea noot, millega lugu lõpetada.",
+      "text_markdown": "See on hea noot, millega lugu lõpetada.",
+      "title": "",
+      "tts": {
+        "text": "See on hea noot, millega lugu lõpetada.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Teeme nädala kontseptsiooni.",
+      "text_markdown": "Teeme nädala kontseptsiooni.",
+      "title": "",
+      "tts": {
+        "text": "Teeme nädala kontseptsiooni.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sa valisid närviaudio koodekid.",
+      "text_markdown": "Sa valisid närviaudio koodekid.",
+      "title": "",
+      "tts": {
+        "text": "Sa valisid närviaudio koodekid.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Tegin, sest see on peidetud trikk iga seadmesisese hääle taga.",
+      "text_markdown": "Tegin, sest see on peidetud trikk iga seadmesisese hääle taga.",
+      "title": "",
+      "tts": {
+        "text": "Tegin, sest see on peidetud trikk iga seadmesisese hääle taga.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Toores heli on tohutu — paar sekundit on miljoneid numbreid.",
+      "text_markdown": "Toores heli on tohutu — paar sekundit on miljoneid numbreid.",
+      "title": "",
+      "tts": {
+        "text": "Toores heli on tohutu — paar sekundit on miljoneid numbreid.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Telefon ei saa seda kõike mudelile reaalajas voogedastada.",
+      "text_markdown": "Telefon ei saa seda kõike mudelile reaalajas voogedastada.",
+      "title": "",
+      "tts": {
+        "text": "Telefon ei saa seda kõike mudelile reaalajas voogedastada.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Mida koodek siis teeb?",
+      "text_markdown": "Mida koodek siis teeb?",
+      "title": "",
+      "tts": {
+        "text": "Mida koodek siis teeb?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See õpib seda heli kokku suruma pisikeseks tokenite vooguks.",
+      "text_markdown": "See õpib seda heli kokku suruma pisikeseks tokenite vooguks.",
+      "title": "",
+      "tts": {
+        "text": "See õpib seda heli kokku suruma pisikeseks tokenite vooguks.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mõtle sellest kui nutikast zip-failist heli jaoks.",
+      "text_markdown": "Mõtle sellest kui nutikast zip-failist heli jaoks.",
+      "title": "",
+      "tts": {
+        "text": "Mõtle sellest kui nutikast zip-failist heli jaoks.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Avatud versioon nimega Mimi jõuab umbes 1 kilobitini sekundis.",
+      "text_markdown": "Avatud versioon nimega Mimi jõuab umbes 1 kilobitini sekundis.",
+      "title": "",
+      "tts": {
+        "text": "Avatud versioon nimega Mimi jõuab umbes ühele kilobitile sekundis.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kui väike see tegelikult on?",
+      "text_markdown": "Kui väike see tegelikult on?",
+      "title": "",
+      "tts": {
+        "text": "Kui väike see tegelikult on?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Paarsada väikest numbrit sekundis, miljonite asemel.",
+      "text_markdown": "Paarsada väikest numbrit sekundis, miljonite asemel.",
+      "title": "",
+      "tts": {
+        "text": "Paarsada väikest numbrit sekundis, miljonite asemel.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja see taastab hääle ikkagi nii, et see kõlab loomulikult.",
+      "text_markdown": "Ja see taastab hääle ikkagi nii, et see kõlab loomulikult.",
+      "title": "",
+      "tts": {
+        "text": "Ja see taastab hääle ikkagi nii, et see kõlab loomulikult.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Miks see häälemudeli jaoks oluline on?",
+      "text_markdown": "Miks see häälemudeli jaoks oluline on?",
+      "title": "",
+      "tts": {
+        "text": "Miks see häälemudeli jaoks oluline on?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Sest mudel räägib nende tokenite, mitte toore heli kaudu.",
+      "text_markdown": "Sest mudel räägib nende tokenite, mitte toore heli kaudu.",
+      "title": "",
+      "tts": {
+        "text": "Sest mudel räägib nende tokenite, mitte toore heli kaudu.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Vähem tokeneid tähendab vähem arvutusvõimsust iga sõna kohta.",
+      "text_markdown": "Vähem tokeneid tähendab vähem arvutusvõimsust iga sõna kohta.",
+      "title": "",
+      "tts": {
+        "text": "Vähem tokeneid tähendab vähem arvutusvõimsust iga sõna kohta.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-198",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "See on see, mis laseb heal häälel telefonis võrguühenduseta töötada.",
+      "text_markdown": "See on see, mis laseb heal häälel telefonis võrguühenduseta töötada.",
+      "title": "",
+      "tts": {
+        "text": "See on see, mis laseb heal häälel telefonis võrguühenduseta töötada.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-199",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nii et koodek seab piiri.",
+      "text_markdown": "Nii et koodek seab piiri.",
+      "title": "",
+      "tts": {
+        "text": "Nii et koodek seab piiri.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-200",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Täpselt, see seab latentsuse ja bitikiiruse, mille all kõik muu elab.",
+      "text_markdown": "Täpselt, see seab latentsuse ja bitikiiruse, mille all kõik muu elab.",
+      "title": "",
+      "tts": {
+        "text": "Täpselt, see seab latentsuse ja bitikiiruse, mille all kõik muu elab.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-201",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Avatud versioonid, Mimi ja sugulane nimega SNAC, on need, millele uued kõnemudelid tuginevad.",
+      "text_markdown": "Avatud versioonid, Mimi ja sugulane nimega SNAC, on need, millele uued kõnemudelid tuginevad.",
+      "title": "",
+      "tts": {
+        "text": "Avatud versioonid, Mimi ja sugulane nimega SNAC, on need, millele uued kõnemudelid tuginevad.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-202",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kui kohtate pisikest seadmesisest häält, on selle all selline koodek.",
+      "text_markdown": "Kui kohtate pisikest seadmesisest häält, on selle all selline koodek.",
+      "title": "",
+      "tts": {
+        "text": "Kui kohtate pisikest seadmesisest häält, on selle all selline koodek.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-203",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Pakkimine, millest saab läbi kuulda — see on vaikne läbimurre.",
+      "text_markdown": "Pakkimine, millest saab läbi kuulda — see on vaikne läbimurre.",
+      "title": "",
+      "tts": {
+        "text": "Pakkimine, millest saab läbi kuulda — see on vaikne läbimurre.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-204",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hea koht lõpetamiseks.",
+      "text_markdown": "Hea koht lõpetamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Hea koht lõpetamiseks.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-205",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Suur tänu sulle, Ron.",
+      "text_markdown": "Suur tänu sulle, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Suur tänu sulle, Ronn.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-206",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Igal ajal, Vindy.",
+      "text_markdown": "Igal ajal, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Igal ajal, Vindy.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-207",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "See oli AI This Week 27. maiks 2026.",
+      "text_markdown": "See oli AI This Week 27. maiks 2026.",
+      "title": "",
+      "tts": {
+        "text": "See oli AI This Week kahekümne seitsmendaks maiks kaks tuhat kakskümmend kuus.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-208",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Uus number järgmisel kolmapäeval.",
+      "text_markdown": "Uus number järgmisel kolmapäeval.",
+      "title": "",
+      "tts": {
+        "text": "Uus number järgmisel kolmapäeval.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-209",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Seniks, olge tubli.",
+      "text_markdown": "Seniks, olge tubli.",
+      "title": "",
+      "tts": {
+        "text": "Seniks, olge tubli.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

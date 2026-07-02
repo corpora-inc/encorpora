@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "hi",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पाठक के लिए एक बात",
+      "text_markdown": "पाठक के लिए एक बात"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह एक बड़े खाने के बारे में छोटी सी किताब है।",
+      "text_markdown": "यह एक बड़े खाने के बारे में छोटी सी किताब है।",
+      "tts": {
+        "text": "यह एक बड़े खाने के बारे में छोटी सी किताब है।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह खाना अमेरिका के दक्षिणी राज्यों का सोल फूड है।",
+      "text_markdown": "यह खाना अमेरिका के दक्षिणी राज्यों का सोल फूड है।",
+      "tts": {
+        "text": "यह खाना अमेरिका के दक्षिणी राज्यों का सोल फूड है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड असली खाना है।",
+      "text_markdown": "सोल फूड असली खाना है।",
+      "tts": {
+        "text": "सोल फूड असली खाना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोग इसे घर पर पकाते हैं।",
+      "text_markdown": "लोग इसे घर पर पकाते हैं।",
+      "tts": {
+        "text": "लोग इसे घर पर पकाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लोग इसे रविवार को खाते हैं।",
+      "text_markdown": "लोग इसे रविवार को खाते हैं।",
+      "tts": {
+        "text": "लोग इसे रविवार को खाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "लोग इसे मंगलवार को भी खाते हैं।",
+      "text_markdown": "लोग इसे मंगलवार को भी खाते हैं।",
+      "tts": {
+        "text": "लोग इसे मंगलवार को भी खाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हम शुरुआत इसके नाम से करेंगे।",
+      "text_markdown": "हम शुरुआत इसके नाम से करेंगे।",
+      "tts": {
+        "text": "हम शुरुआत इसके नाम से करेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फिर हम पौधों और जानवरों को देखेंगे।",
+      "text_markdown": "फिर हम पौधों और जानवरों को देखेंगे।",
+      "tts": {
+        "text": "फिर हम पौधों और जानवरों को देखेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर हम हांडियों और कड़ाहियों को देखेंगे।",
+      "text_markdown": "फिर हम हांडियों और कड़ाहियों को देखेंगे।",
+      "tts": {
+        "text": "फिर हम हांडियों और कड़ाहियों को देखेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "अंत तक आते आते, आप जान जाएंगे कि प्लेट में क्या है, और यह भी कि वह कहां से आया।",
+      "text_markdown": "अंत तक आते आते, आप जान जाएंगे कि प्लेट में क्या है, और यह भी कि वह कहां से आया।",
+      "tts": {
+        "text": "अंत तक आते आते, आप जान जाएंगे कि प्लेट में क्या है, और यह भी कि वह कहां से आया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मेरा नाम Kym है और मैं आपको यह कहानी सुनाने जा रही हूँ।",
+      "text_markdown": "किम नाम की एक दोस्त आपको यह कहानी सुनाने वाली है।",
+      "tts": {
+        "text": "मेरा नाम किम है और मैं आपको यह कहानी सुनाने जा रही हूँ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 1 — सोल फूड क्या है",
+      "text_markdown": "अध्याय 1 — सोल फूड क्या है"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड अमेरिका के दक्षिण में रहने वाले अश्वेत परिवारों का रोजमर्रा का खाना है।",
+      "text_markdown": "सोल फूड अमेरिका के दक्षिण में रहने वाले अश्वेत परिवारों का रोजमर्रा का खाना है।",
+      "tts": {
+        "text": "सोल फूड अमेरिका के दक्षिण में रहने वाले अश्वेत परिवारों का रोजमर्रा का खाना है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नाम \"सोल फूड\" उन्नीस सौ साठ के दशक में आम हुआ।",
+      "text_markdown": "नाम \"सोल फूड\" उन्नीस सौ साठ के दशक में आम हुआ।",
+      "tts": {
+        "text": "नाम \"सोल फूड\" उन्नीस सौ साठ के दशक में आम हुआ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "शब्द \"सोल\" संगीत और चर्च से आया।",
+      "text_markdown": "शब्द \"सोल\" संगीत और चर्च से आया।",
+      "tts": {
+        "text": "शब्द \"सोल\" संगीत और चर्च से आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसका मतलब कुछ गहरा और सच्चा था।",
+      "text_markdown": "इसका मतलब कुछ गहरा और सच्चा था।",
+      "tts": {
+        "text": "इसका मतलब कुछ गहरा और सच्चा था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इसका मतलब कुछ ऐसा था जो अश्वेत था और गर्व से भरा था।",
+      "text_markdown": "इसका मतलब कुछ ऐसा था जो अश्वेत था और गर्व से भरा था।",
+      "tts": {
+        "text": "इसका मतलब कुछ ऐसा था जो अश्वेत था और गर्व से भरा था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन यह खाना खुद उससे बहुत पुराना है।",
+      "text_markdown": "लेकिन यह खाना खुद उससे बहुत पुराना है।",
+      "tts": {
+        "text": "लेकिन यह खाना खुद उससे बहुत पुराना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह अठारहवीं और उन्नीसवीं सदी के बागानों की रसोइयों से आया है।",
+      "text_markdown": "यह अठारहवीं और उन्नीसवीं सदी के बागानों की रसोइयों से आया है।",
+      "tts": {
+        "text": "यह अठारहवीं और उन्नीसवीं सदी के बागानों की रसोइयों से आया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "गुलाम बनाए गए अफ्रीकी रसोइयों ने अपने पास मौजूद पौधों और जानवरों से रात का खाना बनाया।",
+      "text_markdown": "गुलाम बनाए गए अफ्रीकी रसोइयों ने अपने पास मौजूद पौधों और जानवरों से रात का खाना बनाया।",
+      "tts": {
+        "text": "गुलाम बनाए गए अफ्रीकी रसोइयों ने अपने पास मौजूद पौधों और जानवरों से रात का खाना बनाया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे रसोइये कमाल के थे।",
+      "text_markdown": "वे रसोइये कमाल के थे।",
+      "tts": {
+        "text": "वे रसोइये कमाल के थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उनके पास थोड़ा था, और उन्होंने बहुतों का पेट भरा।",
+      "text_markdown": "उनके पास थोड़ा था, और उन्होंने बहुतों का पेट भरा।",
+      "tts": {
+        "text": "उनके पास थोड़ा था, और उन्होंने बहुतों का पेट भरा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्होंने सूअर का हर हिस्सा बचाकर रखा।",
+      "text_markdown": "उन्होंने सूअर का हर हिस्सा बचाकर रखा।",
+      "tts": {
+        "text": "उन्होंने सूअर का हर हिस्सा बचाकर रखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उन्होंने साग में भी मिठास ला दी।",
+      "text_markdown": "उन्होंने साग में भी मिठास ला दी।",
+      "tts": {
+        "text": "उन्होंने साग में भी मिठास ला दी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उन्होंने मकई के आटे से रोटी बनाई, दलिया बनाया, और सौ छोटी छोटी चीजें बनाईं।",
+      "text_markdown": "उन्होंने मकई के आटे से रोटी बनाई, दलिया बनाया, और सौ छोटी छोटी चीजें बनाईं।",
+      "tts": {
+        "text": "उन्होंने मकई के आटे से रोटी बनाई, दलिया बनाया, और सौ छोटी छोटी चीजें बनाईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब बीसवीं सदी में अश्वेत परिवार उत्तर की ओर गए, तो यह खाना भी उनके साथ गया।",
+      "text_markdown": "जब बीसवीं सदी में अश्वेत परिवार उत्तर की ओर गए, तो यह खाना भी उनके साथ गया।",
+      "tts": {
+        "text": "जब बीसवीं सदी में अश्वेत परिवार उत्तर की ओर गए, तो यह खाना भी उनके साथ गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अब सोल फूड शिकागो, न्यू यॉर्क, डेट्रॉइट, और दक्षिण के हर कस्बे में है।",
+      "text_markdown": "अब सोल फूड शिकागो, न्यू यॉर्क, डेट्रॉइट, और दक्षिण के हर कस्बे में है।",
+      "tts": {
+        "text": "अब सोल फूड शिकागो, न्यू यॉर्क, डेट्रॉइट, और दक्षिण के हर कस्बे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — सोल फूड क्या है",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लेकिन इसका दिल अब भी दक्षिण में है।",
+      "text_markdown": "लेकिन इसका दिल अब भी दक्षिण में है।",
+      "tts": {
+        "text": "लेकिन इसका दिल अब भी दक्षिण में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 2 — सामग्री",
+      "text_markdown": "अध्याय 2 — सामग्री"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड की दो बड़ी जड़ें हैं।",
+      "text_markdown": "सोल फूड की दो बड़ी जड़ें हैं।",
+      "tts": {
+        "text": "सोल फूड की दो बड़ी जड़ें हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक जड़ पश्चिमी अफ्रीका है।",
+      "text_markdown": "एक जड़ पश्चिमी अफ्रीका है।",
+      "tts": {
+        "text": "एक जड़ पश्चिमी अफ्रीका है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दूसरी जड़ अमेरिकी महाद्वीप हैं।",
+      "text_markdown": "दूसरी जड़ अमेरिकी महाद्वीप हैं।",
+      "tts": {
+        "text": "दूसरी जड़ अमेरिकी महाद्वीप हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पश्चिमी अफ्रीका से भिंडी आई।",
+      "text_markdown": "पश्चिमी अफ्रीका से भिंडी आई।",
+      "tts": {
+        "text": "पश्चिमी अफ्रीका से भिंडी आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "भिंडी एक हरी फली है।",
+      "text_markdown": "भिंडी एक हरी फली है।",
+      "tts": {
+        "text": "भिंडी एक हरी फली है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह लंबे पौधे पर उगती है।",
+      "text_markdown": "यह लंबे पौधे पर उगती है।",
+      "tts": {
+        "text": "यह लंबे पौधे पर उगती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इसे पकाने पर यह मुलायम और थोड़ी चिपचिपी हो जाती है।",
+      "text_markdown": "इसे पकाने पर यह मुलायम और थोड़ी चिपचिपी हो जाती है।",
+      "tts": {
+        "text": "इसे पकाने पर यह मुलायम और थोड़ी चिपचिपी हो जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह गंबो में भी होती है, और मकई के आटे में लपेट कर तली भी जाती है।",
+      "text_markdown": "यह गंबो में भी होती है, और मकई के आटे में लपेट कर तली भी जाती है।",
+      "tts": {
+        "text": "यह गंबो में भी होती है, और मकई के आटे में लपेट कर तली भी जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोबिया भी पश्चिमी अफ्रीका से आया।",
+      "text_markdown": "लोबिया भी पश्चिमी अफ्रीका से आया।",
+      "tts": {
+        "text": "लोबिया भी पश्चिमी अफ्रीका से आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तरबूज भी वहीं से आया।",
+      "text_markdown": "तरबूज भी वहीं से आया।",
+      "tts": {
+        "text": "तरबूज भी वहीं से आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तिल के बीज भी वहीं से आए।",
+      "text_markdown": "तिल के बीज भी वहीं से आए।",
+      "tts": {
+        "text": "तिल के बीज भी वहीं से आए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पुराने दक्षिणी रसोइये तिल को \"बेनी\" कहते थे। वे बेनी को कुकीज़ में और ब्रेड पर डालते थे।",
+      "text_markdown": "पुराने दक्षिणी रसोइये तिल को \"बेनी\" कहते थे। वे बेनी को कुकीज़ में और ब्रेड पर डालते थे।",
+      "tts": {
+        "text": "पुराने दक्षिणी रसोइये तिल को \"बेनी\" कहते थे। वे बेनी को कुकीज़ में और ब्रेड पर डालते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चावल भी समुद्र पार करके आया।",
+      "text_markdown": "चावल भी समुद्र पार करके आया।",
+      "tts": {
+        "text": "चावल भी समुद्र पार करके आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अफ्रीकी किसान हजार साल से चावल उगाते आ रहे थे।",
+      "text_markdown": "अफ्रीकी किसान हजार साल से चावल उगाते आ रहे थे।",
+      "tts": {
+        "text": "अफ्रीकी किसान हजार साल से चावल उगाते आ रहे थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "साउथ कैरोलाइना में उसी ज्ञान ने पूरे पूरे कस्बे खड़े कर दिए।",
+      "text_markdown": "साउथ कैरोलाइना में उसी ज्ञान ने पूरे पूरे कस्बे खड़े कर दिए।",
+      "tts": {
+        "text": "साउथ कैरोलाइना में उसी ज्ञान ने पूरे पूरे कस्बे खड़े कर दिए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेरिकी महाद्वीपों से मकई आई।",
+      "text_markdown": "अमेरिकी महाद्वीपों से मकई आई।",
+      "tts": {
+        "text": "अमेरिकी महाद्वीपों से मकई आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मकई की मूल जड़ मेक्सिको में है।",
+      "text_markdown": "मकई की मूल जड़ मेक्सिको में है।",
+      "tts": {
+        "text": "मकई की मूल जड़ मेक्सिको में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "स्पेनियों के आने से बहुत पहले यह उत्तर की ओर चेरोकी और चॉकटॉ लोगों तक पहुंच गई थी।",
+      "text_markdown": "स्पेनियों के आने से बहुत पहले यह उत्तर की ओर चेरोकी और चॉकटॉ लोगों तक पहुंच गई थी।",
+      "tts": {
+        "text": "स्पेनियों के आने से बहुत पहले यह उत्तर की ओर चेरोकी और चॉकटॉ लोगों तक पहुंच गई थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेरिकी महाद्वीपों से शकरकंद, मूंगफली, और कई तरह की फलियां भी आईं।",
+      "text_markdown": "अमेरिकी महाद्वीपों से शकरकंद, मूंगफली, और कई तरह की फलियां भी आईं।",
+      "tts": {
+        "text": "अमेरिकी महाद्वीपों से शकरकंद, मूंगफली, और कई तरह की फलियां भी आईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — सामग्री",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड वही है जो तब बना जब खाने के ये दो भंडार एक ही रसोई में मिले।",
+      "text_markdown": "सोल फूड वही है जो तब बना जब खाने के ये दो भंडार एक ही रसोई में मिले।",
+      "tts": {
+        "text": "सोल फूड वही है जो तब बना जब खाने के ये दो भंडार एक ही रसोई में मिले।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 3 — मांस और मछली",
+      "text_markdown": "अध्याय 3 — मांस और मछली"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड में सबसे अहम मांस सूअर का होता है।",
+      "text_markdown": "सोल फूड में सबसे अहम मांस सूअर का होता है।",
+      "tts": {
+        "text": "सोल फूड में सबसे अहम मांस सूअर का होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक छोटा खेत भी एक सूअर पाल सकता था।",
+      "text_markdown": "एक छोटा खेत भी एक सूअर पाल सकता था।",
+      "tts": {
+        "text": "एक छोटा खेत भी एक सूअर पाल सकता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सूअर बचा खुचा खाता था।",
+      "text_markdown": "सूअर बचा खुचा खाता था।",
+      "tts": {
+        "text": "सूअर बचा खुचा खाता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पतझड़ में परिवार सूअर काटता था, और उसका हर हिस्सा काम में लेता था।",
+      "text_markdown": "पतझड़ में परिवार सूअर काटता था, और उसका हर हिस्सा काम में लेता था।",
+      "tts": {
+        "text": "पतझड़ में परिवार सूअर काटता था, और उसका हर हिस्सा काम में लेता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वे हैम को धुएं में पकाकर सहेजते थे।",
+      "text_markdown": "वे हैम को धुएं में पकाकर सहेजते थे।",
+      "tts": {
+        "text": "वे हैम को धुएं में पकाकर सहेजते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वे बेकन को नमक लगाकर सहेजते थे।",
+      "text_markdown": "वे बेकन को नमक लगाकर सहेजते थे।",
+      "tts": {
+        "text": "वे बेकन को नमक लगाकर सहेजते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वे पैरों को सिरके में पकाते थे।",
+      "text_markdown": "वे पैरों को सिरके में पकाते थे।",
+      "tts": {
+        "text": "वे पैरों को सिरके में पकाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "वे बिस्किट के लिए चर्बी बचाकर रखते थे।",
+      "text_markdown": "वे बिस्किट के लिए चर्बी बचाकर रखते थे।",
+      "tts": {
+        "text": "वे बिस्किट के लिए चर्बी बचाकर रखते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसके बाद सबसे अहम मांस चिकन है।",
+      "text_markdown": "इसके बाद सबसे अहम मांस चिकन है।",
+      "tts": {
+        "text": "इसके बाद सबसे अहम मांस चिकन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मुर्गियां आंगन में रहती थीं।",
+      "text_markdown": "मुर्गियां आंगन में रहती थीं।",
+      "tts": {
+        "text": "मुर्गियां आंगन में रहती थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे सुबह अंडे देती थीं, और रविवार का खाना भी बनती थीं।",
+      "text_markdown": "वे सुबह अंडे देती थीं, और रविवार का खाना भी बनती थीं।",
+      "tts": {
+        "text": "वे सुबह अंडे देती थीं, और रविवार का खाना भी बनती थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तला हुआ चिकन दक्षिण का सबसे मशहूर पकवान है।",
+      "text_markdown": "तला हुआ चिकन दक्षिण का सबसे मशहूर पकवान है।",
+      "tts": {
+        "text": "तला हुआ चिकन दक्षिण का सबसे मशहूर पकवान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "चिकन को आटे, नमक, और काली मिर्च में लपेटा जाता है।",
+      "text_markdown": "चिकन को आटे, नमक, और काली मिर्च में लपेटा जाता है।",
+      "tts": {
+        "text": "चिकन को आटे, नमक, और काली मिर्च में लपेटा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर उसे गरम तेल में डाल दिया जाता है।",
+      "text_markdown": "फिर उसे गरम तेल में डाल दिया जाता है।",
+      "tts": {
+        "text": "फिर उसे गरम तेल में डाल दिया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उसकी परत कुरकुरी और सुनहरी हो जाती है।",
+      "text_markdown": "उसकी परत कुरकुरी और सुनहरी हो जाती है।",
+      "tts": {
+        "text": "उसकी परत कुरकुरी और सुनहरी हो जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कैटफ़िश नदियों और झीलों में रहती है।",
+      "text_markdown": "कैटफ़िश नदियों और झीलों में रहती है।",
+      "tts": {
+        "text": "कैटफ़िश नदियों और झीलों में रहती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दक्षिणी रसोइये कैटफ़िश को मकई के आटे में लपेट कर तलते हैं।",
+      "text_markdown": "दक्षिणी रसोइये कैटफ़िश को मकई के आटे में लपेट कर तलते हैं।",
+      "tts": {
+        "text": "दक्षिणी रसोइये कैटफ़िश को मकई के आटे में लपेट कर तलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे उसे हश पपीज़ के साथ खाते हैं, जो तले हुए मकई के आटे के छोटे गोले होते हैं।",
+      "text_markdown": "वे उसे हश पपीज़ के साथ खाते हैं, जो तले हुए मकई के आटे के छोटे गोले होते हैं।",
+      "tts": {
+        "text": "वे उसे हश पपीज़ के साथ खाते हैं, जो तले हुए मकई के आटे के छोटे गोले होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मांस और मछली",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "नाम मजेदार है, लेकिन खाना बिल्कुल गंभीर है।",
+      "text_markdown": "नाम मजेदार है, लेकिन खाना बिल्कुल गंभीर है।",
+      "tts": {
+        "text": "नाम मजेदार है, लेकिन खाना बिल्कुल गंभीर है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 4 — पकाने के तरीके",
+      "text_markdown": "अध्याय 4 — पकाने के तरीके"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सोल फूड को मुख्य रूप से पकाने के तीन तरीके हैं, तलना, धीमी आंच पर पकाना, और धुएं में पकाना।",
+      "text_markdown": "सोल फूड को मुख्य रूप से पकाने के तीन तरीके हैं, तलना, धीमी आंच पर पकाना, और धुएं में पकाना।",
+      "tts": {
+        "text": "सोल फूड को मुख्य रूप से पकाने के तीन तरीके हैं, तलना, धीमी आंच पर पकाना, और धुएं में पकाना।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तलना लोहे की भारी कड़ाही में होता है, जिसे कास्ट आयरन स्किलेट कहते हैं।",
+      "text_markdown": "तलना लोहे की भारी कड़ाही में होता है, जिसे कास्ट आयरन स्किलेट कहते हैं।",
+      "tts": {
+        "text": "तलना लोहे की भारी कड़ाही में होता है, जिसे कास्ट आयरन स्किलेट कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कास्ट आयरन बहुत देर तक गरमी संभाल कर रखता है।",
+      "text_markdown": "कास्ट आयरन बहुत देर तक गरमी संभाल कर रखता है।",
+      "tts": {
+        "text": "कास्ट आयरन बहुत देर तक गरमी संभाल कर रखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अच्छी स्किलेट रसोइये से भी पुरानी होती है।",
+      "text_markdown": "अच्छी स्किलेट रसोइये से भी पुरानी होती है।",
+      "tts": {
+        "text": "अच्छी स्किलेट रसोइये से भी पुरानी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "यह मां से बेटी को मिलती चली जाती है।",
+      "text_markdown": "यह मां से बेटी को मिलती चली जाती है।",
+      "tts": {
+        "text": "यह मां से बेटी को मिलती चली जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धीमी आंच पर पकाना चूल्हे के पीछे रखे बड़े बर्तन में होता है।",
+      "text_markdown": "धीमी आंच पर पकाना चूल्हे के पीछे रखे बड़े बर्तन में होता है।",
+      "tts": {
+        "text": "धीमी आंच पर पकाना चूल्हे के पीछे रखे बड़े बर्तन में होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "साग दो या तीन घंटे तक बर्तन में पकता है।",
+      "text_markdown": "साग दो या तीन घंटे तक बर्तन में पकता है।",
+      "tts": {
+        "text": "साग दो या तीन घंटे तक बर्तन में पकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "स्वाद के लिए उसमें धुएं में पके सूअर के मांस का एक टुकड़ा डाला जाता है।",
+      "text_markdown": "स्वाद के लिए उसमें धुएं में पके सूअर के मांस का एक टुकड़ा डाला जाता है।",
+      "tts": {
+        "text": "स्वाद के लिए उसमें धुएं में पके सूअर के मांस का एक टुकड़ा डाला जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पानी गहरा और भरपूर शोरबा बन जाता है।",
+      "text_markdown": "पानी गहरा और भरपूर शोरबा बन जाता है।",
+      "tts": {
+        "text": "पानी गहरा और भरपूर शोरबा बन जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "लोग इस शोरबे को \"पॉट लिकर\" कहते हैं, और इसे कॉर्नब्रेड पर डालते हैं।",
+      "text_markdown": "लोग इस शोरबे को \"पॉट लिकर\" कहते हैं, और इसे कॉर्नब्रेड पर डालते हैं।",
+      "tts": {
+        "text": "लोग इस शोरबे को \"पॉट लिकर\" कहते हैं, और इसे कॉर्नब्रेड पर डालते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धुएं में पकाना बाहर होता है, किसी स्मोकहाउस या बैरल में।",
+      "text_markdown": "धुएं में पकाना बाहर होता है, किसी स्मोकहाउस या बैरल में।",
+      "tts": {
+        "text": "धुएं में पकाना बाहर होता है, किसी स्मोकहाउस या बैरल में।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मांस के नीचे लकड़ी धीरे धीरे जलती है।",
+      "text_markdown": "मांस के नीचे लकड़ी धीरे धीरे जलती है।",
+      "tts": {
+        "text": "मांस के नीचे लकड़ी धीरे धीरे जलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हिकरी की लकड़ी सबसे पसंद की जाती है।",
+      "text_markdown": "हिकरी की लकड़ी सबसे पसंद की जाती है।",
+      "tts": {
+        "text": "हिकरी की लकड़ी सबसे पसंद की जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "धुआं मांस को भूरा रंग देता है और गहरा स्वाद भी।",
+      "text_markdown": "धुआं मांस को भूरा रंग देता है और गहरा स्वाद भी।",
+      "tts": {
+        "text": "धुआं मांस को भूरा रंग देता है और गहरा स्वाद भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "सूअर का कंधा कई घंटों तक धुएं में पकता है, कभी कभी पूरे दिन।",
+      "text_markdown": "सूअर का कंधा कई घंटों तक धुएं में पकता है, कभी कभी पूरे दिन।",
+      "tts": {
+        "text": "सूअर का कंधा कई घंटों तक धुएं में पकता है, कभी कभी पूरे दिन।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — पकाने के तरीके",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक अच्छी दक्षिणी रसोई में आग, समय, और देखभाल होती है।",
+      "text_markdown": "एक अच्छी दक्षिणी रसोई में आग, समय, और देखभाल होती है।",
+      "tts": {
+        "text": "एक अच्छी दक्षिणी रसोई में आग, समय, और देखभाल होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "text_markdown": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण में \"बारबेक्यू\" का मतलब है लकड़ी के धुएं पर धीरे धीरे पका मांस।",
+      "text_markdown": "दक्षिण में \"बारबेक्यू\" का मतलब है लकड़ी के धुएं पर धीरे धीरे पका मांस।",
+      "tts": {
+        "text": "दक्षिण में \"बारबेक्यू\" का मतलब है लकड़ी के धुएं पर धीरे धीरे पका मांस।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर इलाके का अपना तरीका है।",
+      "text_markdown": "हर इलाके का अपना तरीका है।",
+      "tts": {
+        "text": "हर इलाके का अपना तरीका है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कैरोलाइना में बारबेक्यू का मतलब सूअर का मांस है।",
+      "text_markdown": "कैरोलाइना में बारबेक्यू का मतलब सूअर का मांस है।",
+      "tts": {
+        "text": "कैरोलाइना में बारबेक्यू का मतलब सूअर का मांस है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "नॉर्थ कैरोलाइना के पूर्वी हिस्से में सॉस सिरके और मिर्च से बनता है।",
+      "text_markdown": "नॉर्थ कैरोलाइना के पूर्वी हिस्से में सॉस सिरके और मिर्च से बनता है।",
+      "tts": {
+        "text": "नॉर्थ कैरोलाइना के पूर्वी हिस्से में सॉस सिरके और मिर्च से बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वह पतला और तेज होता है।",
+      "text_markdown": "वह पतला और तेज होता है।",
+      "tts": {
+        "text": "वह पतला और तेज होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "साउथ कैरोलाइना में सॉस पीला होता है, और सरसों से बनता है।",
+      "text_markdown": "साउथ कैरोलाइना में सॉस पीला होता है, और सरसों से बनता है।",
+      "tts": {
+        "text": "साउथ कैरोलाइना में सॉस पीला होता है, और सरसों से बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसमें हल्की मिठास होती है।",
+      "text_markdown": "उसमें हल्की मिठास होती है।",
+      "tts": {
+        "text": "उसमें हल्की मिठास होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टेनेसी राज्य के मेम्फिस में मांस सूअर की पसलियां होती हैं।",
+      "text_markdown": "टेनेसी राज्य के मेम्फिस में मांस सूअर की पसलियां होती हैं।",
+      "tts": {
+        "text": "टेनेसी राज्य के मेम्फिस में मांस सूअर की पसलियां होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पसलियों पर नमक, काली मिर्च, और कई मसालों का सूखा मिश्रण रगड़ा जाता है।",
+      "text_markdown": "पसलियों पर नमक, काली मिर्च, और कई मसालों का सूखा मिश्रण रगड़ा जाता है।",
+      "tts": {
+        "text": "पसलियों पर नमक, काली मिर्च, और कई मसालों का सूखा मिश्रण रगड़ा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यहां असली सितारा मांस है, और सॉस पीछे रहता है।",
+      "text_markdown": "यहां असली सितारा मांस है, और सॉस पीछे रहता है।",
+      "tts": {
+        "text": "यहां असली सितारा मांस है, और सॉस पीछे रहता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "टेक्सास में बारबेक्यू का मतलब बीफ़ है।",
+      "text_markdown": "टेक्सास में बारबेक्यू का मतलब बीफ़ है।",
+      "tts": {
+        "text": "टेक्सास में बारबेक्यू का मतलब बीफ़ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इस कट को ब्रिस्केट कहते हैं।",
+      "text_markdown": "इस कट को ब्रिस्केट कहते हैं।",
+      "tts": {
+        "text": "इस कट को ब्रिस्केट कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसे ओक की लकड़ी पर बारह से चौदह घंटे तक धुएं में पकाया जाता है।",
+      "text_markdown": "इसे ओक की लकड़ी पर बारह से चौदह घंटे तक धुएं में पकाया जाता है।",
+      "tts": {
+        "text": "इसे ओक की लकड़ी पर बारह से चौदह घंटे तक धुएं में पकाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "जब यह ठीक बनता है, तो आप इसे उंगलियों से अलग कर सकते हैं।",
+      "text_markdown": "जब यह ठीक बनता है, तो आप इसे उंगलियों से अलग कर सकते हैं।",
+      "tts": {
+        "text": "जब यह ठीक बनता है, तो आप इसे उंगलियों से अलग कर सकते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कैनसस सिटी में बारबेक्यू कई तरह के मांस का होता है, सूअर, बीफ़, चिकन, यहां तक कि सॉसेज भी।",
+      "text_markdown": "कैनसस सिटी में बारबेक्यू कई तरह के मांस का होता है, सूअर, बीफ़, चिकन, यहां तक कि सॉसेज भी।",
+      "tts": {
+        "text": "कैनसस सिटी में बारबेक्यू कई तरह के मांस का होता है, सूअर, बीफ़, चिकन, यहां तक कि सॉसेज भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सॉस गाढ़ा, मीठा, और लाल होता है, टमाटर और शीरे से बना हुआ।",
+      "text_markdown": "सॉस गाढ़ा, मीठा, और लाल होता है, टमाटर और शीरे से बना हुआ।",
+      "tts": {
+        "text": "सॉस गाढ़ा, मीठा, और लाल होता है, टमाटर और शीरे से बना हुआ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — अलग अलग इलाकों का बारबेक्यू",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिणी बारबेक्यू का नक्शा दरअसल इलाकों और नदियों का नक्शा है।",
+      "text_markdown": "दक्षिणी बारबेक्यू का नक्शा दरअसल इलाकों और नदियों का नक्शा है।",
+      "tts": {
+        "text": "दक्षिणी बारबेक्यू का नक्शा दरअसल इलाकों और नदियों का नक्शा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 6 — पारंपरिक प्लेट",
+      "text_markdown": "अध्याय 6 — पारंपरिक प्लेट"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रविवार के खाने की प्लेट भरी हुई होती है।",
+      "text_markdown": "रविवार के खाने की प्लेट भरी हुई होती है।",
+      "tts": {
+        "text": "रविवार के खाने की प्लेट भरी हुई होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बीच में तला हुआ चिकन होता है।",
+      "text_markdown": "बीच में तला हुआ चिकन होता है।",
+      "tts": {
+        "text": "बीच में तला हुआ चिकन होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "चिकन के बगल में मसले हुए आलू का एक भरपूर हिस्सा होता है, ऊपर भूरी ग्रेवी के साथ।",
+      "text_markdown": "चिकन के बगल में मसले हुए आलू का एक भरपूर हिस्सा होता है, ऊपर भूरी ग्रेवी के साथ।",
+      "tts": {
+        "text": "चिकन के बगल में मसले हुए आलू का एक भरपूर हिस्सा होता है, ऊपर भूरी ग्रेवी के साथ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक तरफ कोलार्ड साग का ढेर होता है, जिसे धुएं में पके सूअर के मांस के साथ धीरे धीरे पकाया गया होता है।",
+      "text_markdown": "एक तरफ कोलार्ड साग का ढेर होता है, जिसे धुएं में पके सूअर के मांस के साथ धीरे धीरे पकाया गया होता है।",
+      "tts": {
+        "text": "एक तरफ कोलार्ड साग का ढेर होता है, जिसे धुएं में पके सूअर के मांस के साथ धीरे धीरे पकाया गया होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "साग गहरा और मुलायम होता है।",
+      "text_markdown": "साग गहरा और मुलायम होता है।",
+      "tts": {
+        "text": "साग गहरा और मुलायम होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी तरफ मैकरोनी और चीज़ होता है, जिसे ऊपर से सुनहरा और कुरकुरा होने तक बेक किया जाता है।",
+      "text_markdown": "दूसरी तरफ मैकरोनी और चीज़ होता है, जिसे ऊपर से सुनहरा और कुरकुरा होने तक बेक किया जाता है।",
+      "tts": {
+        "text": "दूसरी तरफ मैकरोनी और चीज़ होता है, जिसे ऊपर से सुनहरा और कुरकुरा होने तक बेक किया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बहुत से रसोइये ऊपर चीज़ की एक और परत डालते हैं।",
+      "text_markdown": "बहुत से रसोइये ऊपर चीज़ की एक और परत डालते हैं।",
+      "tts": {
+        "text": "बहुत से रसोइये ऊपर चीज़ की एक और परत डालते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मेज़ पर कॉर्नब्रेड होता है।",
+      "text_markdown": "मेज़ पर कॉर्नब्रेड होता है।",
+      "tts": {
+        "text": "मेज़ पर कॉर्नब्रेड होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कॉर्नब्रेड पीले मकई के आटे से बनता है और गरम लोहे की कड़ाही में बेक होता है।",
+      "text_markdown": "कॉर्नब्रेड पीले मकई के आटे से बनता है और गरम लोहे की कड़ाही में बेक होता है।",
+      "tts": {
+        "text": "कॉर्नब्रेड पीले मकई के आटे से बनता है और गरम लोहे की कड़ाही में बेक होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह भारी होता है, थोड़ा मीठा, और मक्खन के साथ बिल्कुल सही लगता है।",
+      "text_markdown": "यह भारी होता है, थोड़ा मीठा, और मक्खन के साथ बिल्कुल सही लगता है।",
+      "tts": {
+        "text": "यह भारी होता है, थोड़ा मीठा, और मक्खन के साथ बिल्कुल सही लगता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पीने के लिए मीठी चाय होती है।",
+      "text_markdown": "पीने के लिए मीठी चाय होती है।",
+      "tts": {
+        "text": "पीने के लिए मीठी चाय होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मीठी चाय काली चाय होती है, जिसे गाढ़ा उबाला जाता है और गरम रहते हुए चीनी मिलाई जाती है।",
+      "text_markdown": "मीठी चाय काली चाय होती है, जिसे गाढ़ा उबाला जाता है और गरम रहते हुए चीनी मिलाई जाती है।",
+      "tts": {
+        "text": "मीठी चाय काली चाय होती है, जिसे गाढ़ा उबाला जाता है और गरम रहते हुए चीनी मिलाई जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसे बर्फ के ऊपर ठंडा परोसा जाता है।",
+      "text_markdown": "इसे बर्फ के ऊपर ठंडा परोसा जाता है।",
+      "tts": {
+        "text": "इसे बर्फ के ऊपर ठंडा परोसा जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खाने के बाद पाई आती है।",
+      "text_markdown": "खाने के बाद पाई आती है।",
+      "tts": {
+        "text": "खाने के बाद पाई आती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "शकरकंद की पाई दक्षिण की सबसे खास पाई है।",
+      "text_markdown": "शकरकंद की पाई दक्षिण की सबसे खास पाई है।",
+      "tts": {
+        "text": "शकरकंद की पाई दक्षिण की सबसे खास पाई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह भूरी, चिकनी, और दालचीनी और जायफल की गरम खुशबू से भरी होती है।",
+      "text_markdown": "यह भूरी, चिकनी, और दालचीनी और जायफल की गरम खुशबू से भरी होती है।",
+      "tts": {
+        "text": "यह भूरी, चिकनी, और दालचीनी और जायफल की गरम खुशबू से भरी होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — पारंपरिक प्लेट",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही वह पारंपरिक प्लेट है।",
+      "text_markdown": "यही वह पारंपरिक प्लेट है।",
+      "tts": {
+        "text": "यही वह पारंपरिक प्लेट है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 7 — खाने की मेज़",
+      "text_markdown": "अध्याय 7 — खाने की मेज़"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण में रात का खाना मेज़ पर होता है, सबके साथ बैठकर।",
+      "text_markdown": "दक्षिण में रात का खाना मेज़ पर होता है, सबके साथ बैठकर।",
+      "tts": {
+        "text": "दक्षिण में रात का खाना मेज़ पर होता है, सबके साथ बैठकर।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खाना बड़े कटोरों और बड़ी प्लेटों में मेज़ पर लाया जाता है।",
+      "text_markdown": "खाना बड़े कटोरों और बड़ी प्लेटों में मेज़ पर लाया जाता है।",
+      "tts": {
+        "text": "खाना बड़े कटोरों और बड़ी प्लेटों में मेज़ पर लाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसे \"फैमिली स्टाइल\" कहते हैं। हर व्यक्ति कटोरा अगले को बढ़ाता है।",
+      "text_markdown": "इसे \"फैमिली स्टाइल\" कहते हैं। हर व्यक्ति कटोरा अगले को बढ़ाता है।",
+      "tts": {
+        "text": "इसे \"फैमिली स्टाइल\" कहते हैं। हर व्यक्ति कटोरा अगले को बढ़ाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर व्यक्ति उतना लेता है जितना वह चाहता है।",
+      "text_markdown": "हर व्यक्ति उतना लेता है जितना वह चाहता है।",
+      "tts": {
+        "text": "हर व्यक्ति उतना लेता है जितना वह चाहता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कांटे और चाकू साधारण होते हैं।",
+      "text_markdown": "कांटे और चाकू साधारण होते हैं।",
+      "tts": {
+        "text": "कांटे और चाकू साधारण होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यहां कोई खास क्रम नहीं होता।",
+      "text_markdown": "यहां कोई खास क्रम नहीं होता।",
+      "tts": {
+        "text": "यहां कोई खास क्रम नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "आप चिकन को कांटे से खाइए, या हाथ से उठाइए।",
+      "text_markdown": "आप चिकन को कांटे से खाइए, या हाथ से उठाइए।",
+      "tts": {
+        "text": "आप चिकन को कांटे से खाइए, या हाथ से उठाइए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "दोनों ठीक हैं।",
+      "text_markdown": "दोनों ठीक हैं।",
+      "tts": {
+        "text": "दोनों ठीक हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कॉर्नब्रेड हाथ से तोड़ा जाता है, चाकू से कभी नहीं काटा जाता।",
+      "text_markdown": "कॉर्नब्रेड हाथ से तोड़ा जाता है, चाकू से कभी नहीं काटा जाता।",
+      "tts": {
+        "text": "कॉर्नब्रेड हाथ से तोड़ा जाता है, चाकू से कभी नहीं काटा जाता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खाने से पहले, अक्सर कोई छोटी सी प्रार्थना करता है।",
+      "text_markdown": "खाने से पहले, अक्सर कोई छोटी सी प्रार्थना करता है।",
+      "tts": {
+        "text": "खाने से पहले, अक्सर कोई छोटी सी प्रार्थना करता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे खाने के लिए और रसोइयों के लिए भगवान को धन्यवाद देते हैं।",
+      "text_markdown": "वे खाने के लिए और रसोइयों के लिए भगवान को धन्यवाद देते हैं।",
+      "tts": {
+        "text": "वे खाने के लिए और रसोइयों के लिए भगवान को धन्यवाद देते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप मेहमान हैं, तो आपसे और लेने को कहा जाएगा, फिर और, फिर और।",
+      "text_markdown": "अगर आप मेहमान हैं, तो आपसे और लेने को कहा जाएगा, फिर और, फिर और।",
+      "tts": {
+        "text": "अगर आप मेहमान हैं, तो आपसे और लेने को कहा जाएगा, फिर और, फिर और।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आपको कम से कम दो बार हां कहना चाहिए।",
+      "text_markdown": "आपको कम से कम दो बार हां कहना चाहिए।",
+      "tts": {
+        "text": "आपको कम से कम दो बार हां कहना चाहिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "भूखे उठना मंजूर नहीं है।",
+      "text_markdown": "भूखे उठना मंजूर नहीं है।",
+      "tts": {
+        "text": "भूखे उठना मंजूर नहीं है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खाने के अंत में, कोई भी तुरंत उठने की जल्दी में नहीं होता।",
+      "text_markdown": "खाने के अंत में, कोई भी तुरंत उठने की जल्दी में नहीं होता।",
+      "tts": {
+        "text": "खाने के अंत में, कोई भी तुरंत उठने की जल्दी में नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — खाने की मेज़",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बातचीत ही खाने का आधा हिस्सा है।",
+      "text_markdown": "बातचीत ही खाने का आधा हिस्सा है।",
+      "tts": {
+        "text": "बातचीत ही खाने का आधा हिस्सा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "इस किताब के बारे में",
+      "text_markdown": "इस किताब के बारे में"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह फूड ऑफ द वर्ल्ड श्रृंखला की पहली किताब है।",
+      "text_markdown": "यह फूड ऑफ द वर्ल्ड श्रृंखला की पहली किताब है।",
+      "tts": {
+        "text": "यह फूड ऑफ द वर्ल्ड श्रृंखला की पहली किताब है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसे मैं, आपकी दोस्त Kym, पढ़कर सुना रही हूँ।",
+      "text_markdown": "इसे किम पढ़कर सुनाती हैं।",
+      "tts": {
+        "text": "इसे मैं, आपकी दोस्त किम, पढ़कर सुना रही हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर वाक्य छोटा और साफ है, ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+      "text_markdown": "हर वाक्य छोटा और साफ है, ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+      "tts": {
+        "text": "हर वाक्य छोटा और साफ है, ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो यही किताब उस भाषा में सुनिए।",
+      "text_markdown": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो यही किताब उस भाषा में सुनिए।",
+      "tts": {
+        "text": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो यही किताब उस भाषा में सुनिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+      "text_markdown": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+      "tts": {
+        "text": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यही सीखने का तरीका है।",
+      "text_markdown": "यही सीखने का तरीका है।",
+      "tts": {
+        "text": "यही सीखने का तरीका है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब जाइए, कुछ अच्छा खाना ढूंढिए, और उसे बांटने के लिए एक दोस्त भी।",
+      "text_markdown": "अब जाइए, कुछ अच्छा खाना ढूंढिए, और उसे बांटने के लिए एक दोस्त भी।",
+      "tts": {
+        "text": "अब जाइए, कुछ अच्छा खाना ढूंढिए, और उसे बांटने के लिए एक दोस्त भी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "ro",
+  "total_segments": 114,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Bun venit la AI Săptămâna Aceasta.",
+      "text_markdown": "Bun venit la AI Săptămâna Aceasta.",
+      "title": "",
+      "tts": {
+        "text": "Bun venit la AI Săptămâna Aceasta.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Eu sunt Vindy.",
+      "text_markdown": "Eu sunt Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Eu sunt Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Alături de mine, ca întotdeauna, este Ron.",
+      "text_markdown": "Alături de mine, ca întotdeauna, este Ron.",
+      "title": "",
+      "tts": {
+        "text": "Alături de mine, ca întotdeauna, este Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mă bucur să fiu aici, Vindy.",
+      "text_markdown": "Mă bucur să fiu aici, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mă bucur să fiu aici, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Astăzi este duminică, 21 iunie 2026.",
+      "text_markdown": "Astăzi este duminică, 21 iunie 2026.",
+      "title": "",
+      "tts": {
+        "text": "Astăzi este duminică, douăzeci și unu iunie, două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Săptămâna trecută am vorbit despre noi înșine; astăzi mergem în direcția opusă — până la centrele de putere.",
+      "text_markdown": "Săptămâna trecută am vorbit despre noi înșine; astăzi mergem în direcția opusă — până la centrele de putere.",
+      "title": "",
+      "tts": {
+        "text": "Săptămâna trecută am vorbit despre noi înșine; astăzi mergem în direcția opusă — până la centrele de putere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Cine controlează implementarea AI, cine plătește pentru dezvoltare, cine deține siliciul.",
+      "text_markdown": "Cine controlează implementarea AI, cine plătește pentru dezvoltare, cine deține siliciul.",
+      "title": "",
+      "tts": {
+        "text": "Cine controlează implementarea AI, cine plătește pentru dezvoltare, cine deține siliciul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Urmează — Departamentul de Comerț al SUA a retras un model american din uz public vinerea trecută, și vom începe de acolo.",
+      "text_markdown": "Urmează — Departamentul de Comerț al SUA a retras un model american din uz public vinerea trecută, și vom începe de acolo.",
+      "title": "",
+      "tts": {
+        "text": "Urmează — Departamentul de Comerț al SUA a retras un model american din uz public vinerea trecută, și vom începe de acolo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Apoi, dezvoltarea centrelor de date, unde anunțurile și realitatea nu se potrivesc.",
+      "text_markdown": "Apoi, dezvoltarea centrelor de date, unde anunțurile și realitatea nu se potrivesc.",
+      "title": "",
+      "tts": {
+        "text": "Apoi, dezvoltarea centrelor de date, unde anunțurile și realitatea nu se potrivesc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Apoi, comparația dintre SUA și China, cu clișeul înlocuit de constrângerea reală.",
+      "text_markdown": "Apoi, comparația dintre SUA și China, cu clișeul înlocuit de constrângerea reală.",
+      "title": "",
+      "tts": {
+        "text": "Apoi, comparația dintre SUA și China, cu clișeul înlocuit de constrângerea reală.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și conceptul săptămânii — o singură linie din bilanțul Oracle care îți spune aproape totul.",
+      "text_markdown": "Și conceptul săptămânii — o singură linie din bilanțul Oracle care îți spune aproape totul.",
+      "title": "",
+      "tts": {
+        "text": "Și conceptul săptămânii — o singură linie din bilanțul Oracle care îți spune aproape totul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, să începem cu Anthropic.",
+      "text_markdown": "Ron, să începem cu Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, să începem cu Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ce s-a întâmplat pe doisprezece iunie.",
+      "text_markdown": "Ce s-a întâmplat pe doisprezece iunie.",
+      "title": "",
+      "tts": {
+        "text": "Ce s-a întâmplat pe doisprezece iunie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vineri, doisprezece iunie, la ora cinci douăzeci și unu p.m. Ora de Est, Anthropic și-a scos offline cele două cele mai noi modele — Claude Mythos cinci și Claude Fable cinci.",
+      "text_markdown": "Vineri, doisprezece iunie, la ora cinci douăzeci și unu p.m. Ora de Est, Anthropic și-a scos offline cele două cele mai noi modele — Claude Mythos cinci și Claude Fable cinci.",
+      "title": "",
+      "tts": {
+        "text": "Vineri, doisprezece iunie, la ora cinci douăzeci și unu p.m. Ora de Est, Anthropic și-a scos offline cele două cele mai noi modele — Claude Mythos cinci și Claude Fable cinci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nu pentru mentenanță, nu pentru o revizuire de siguranță din proprie inițiativă.",
+      "text_markdown": "Nu pentru mentenanță, nu pentru o revizuire de siguranță din proprie inițiativă.",
+      "title": "",
+      "tts": {
+        "text": "Nu pentru mentenanță, nu pentru o revizuire de siguranță din proprie inițiativă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Le-au scos offline pentru că Departamentul de Comerț al SUA a emis o directivă invocând controalele la export.",
+      "text_markdown": "Le-au scos offline pentru că Departamentul de Comerț al SUA a emis o directivă invocând controalele la export.",
+      "title": "",
+      "tts": {
+        "text": "Le-au scos offline pentru că Departamentul de Comerț al SUA a emis o directivă invocând controalele la export.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Care a fost motivul tehnic.",
+      "text_markdown": "Care a fost motivul tehnic.",
+      "title": "",
+      "tts": {
+        "text": "Care a fost motivul tehnic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "A fost demonstrat un jailbreak, se pare de către o altă companie, care a produs un rezultat considerat de Comerț ca fiind supus controlului la export.",
+      "text_markdown": "A fost demonstrat un jailbreak, se pare de către o altă companie, care a produs un rezultat considerat de Comerț ca fiind supus controlului la export.",
+      "title": "",
+      "tts": {
+        "text": "A fost demonstrat un jailbreak, se pare de către o altă companie, care a produs un rezultat considerat de Comerț ca fiind supus controlului la export.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fortune a raportat că Amazon a fost cel care a alertat Casa Albă în legătură cu aceasta.",
+      "text_markdown": "Fortune a raportat că Amazon a fost cel care a alertat Casa Albă în legătură cu aceasta.",
+      "title": "",
+      "tts": {
+        "text": "Fortune a raportat că Amazon a fost cel care a alertat Casa Albă în legătură cu aceasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și cum a răspuns Anthropic.",
+      "text_markdown": "Și cum a răspuns Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Și cum a răspuns Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic contestă public raționamentul.",
+      "text_markdown": "Anthropic contestă public raționamentul.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic contestă public raționamentul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Declarația lor a numit jailbreak-ul — și citez — „îngust, non-universal” și a adăugat că același rezultat este disponibil de la alte modele, inclusiv GPT-cinci-punct-cinci de la OpenAI.",
+      "text_markdown": "Declarația lor a numit jailbreak-ul — și citez — „îngust, non-universal” și a adăugat că același rezultat este disponibil de la alte modele, inclusiv GPT-cinci-punct-cinci de la OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Declarația lor a numit jailbreak-ul — și citez — „îngust, non-universal” și a adăugat că același rezultat este disponibil de la alte modele, inclusiv GPT cinci punct cinci de la OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Linia lor de rezumat: „acțiunea guvernului se bazează pe o neînțelegere.”",
+      "text_markdown": "Linia lor de rezumat: „acțiunea guvernului se bazează pe o neînțelegere.”",
+      "title": "",
+      "tts": {
+        "text": "Linia lor de rezumat: „acțiunea guvernului se bazează pe o neînțelegere.”",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Aceasta este o neînțelegere neobișnuit de directă cu guvernul SUA pentru un laborator de AI.",
+      "text_markdown": "Aceasta este o neînțelegere neobișnuit de directă cu guvernul SUA pentru un laborator de AI.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta este o neînțelegere neobișnuit de directă cu guvernul SUA pentru un laborator de AI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Așa este, iar faptul structural care stă la baza acestuia este titlul principal.",
+      "text_markdown": "Așa este, iar faptul structural care stă la baza acestuia este titlul principal.",
+      "title": "",
+      "tts": {
+        "text": "Așa este, iar faptul structural care stă la baza acestuia este titlul principal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Comerțul poate acum ordona unui laborator privat american de AI să scoată un model offline, invocând controalele la export, iar acea ordine ajunge în șaptezeci și două de ore.",
+      "text_markdown": "Comerțul poate acum ordona unui laborator privat american de AI să scoată un model offline, invocând controalele la export, iar acea ordine ajunge în șaptezeci și două de ore.",
+      "title": "",
+      "tts": {
+        "text": "Comerțul poate acum ordona unui laborator privat american de AI să scoată un model offline, invocând controalele la export, iar acea ordine ajunge în șaptezeci și două de ore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+      "text_markdown": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+      "title": "",
+      "tts": {
+        "text": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+      "text_markdown": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+      "title": "",
+      "tts": {
+        "text": "Indiferent dacă crezi sau nu că ordinul a fost corect.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Autoritatea în sine, viteza și precedentul sunt cele care contează.",
+      "text_markdown": "Autoritatea în sine, viteza și precedentul sunt cele care contează.",
+      "title": "",
+      "tts": {
+        "text": "Autoritatea în sine, viteza și precedentul sunt cele care contează.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și rolul Amazon aici.",
+      "text_markdown": "Și rolul Amazon aici.",
+      "title": "",
+      "tts": {
+        "text": "Și rolul Amazon aici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Aceea este partea de urmărit.",
+      "text_markdown": "Aceea este partea de urmărit.",
+      "title": "",
+      "tts": {
+        "text": "Aceea este partea de urmărit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Amazon este un investitor major în Anthropic și, de asemenea, concurează cu Anthropic pe piața modelelor fundamentale prin propria sa activitate.",
+      "text_markdown": "Amazon este un investitor major în Anthropic și, de asemenea, concurează cu Anthropic pe piața modelelor fundamentale prin propria sa activitate.",
+      "title": "",
+      "tts": {
+        "text": "Amazon este un investitor major în Anthropic și, de asemenea, concurează cu Anthropic pe piața modelelor fundamentale prin propria sa activitate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dacă avertismentul unui concurent către guvern poate scoate din funcțiune modelul unui rival într-un weekend prelungit, aceasta este o nouă formă pentru dinamica industriei.",
+      "text_markdown": "Dacă avertismentul unui concurent către guvern poate scoate din funcțiune modelul unui rival într-un weekend prelungit, aceasta este o nouă formă pentru dinamica industriei.",
+      "title": "",
+      "tts": {
+        "text": "Dacă avertismentul unui concurent către guvern poate scoate din funcțiune modelul unui rival într-un weekend prelungit, aceasta este o nouă formă pentru dinamica industriei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Să trecem la dezvoltare.",
+      "text_markdown": "Să trecem la dezvoltare.",
+      "title": "",
+      "tts": {
+        "text": "Să trecem la dezvoltare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Stargate — inițiativa de centre de date OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — inițiativa de centre de date OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — inițiativa de centre de date OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Care sunt cifrele reale.",
+      "text_markdown": "Care sunt cifrele reale.",
+      "title": "",
+      "tts": {
+        "text": "Care sunt cifrele reale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Stargate a anunțat unsprezece gigawați de capacitate în S.U.A.",
+      "text_markdown": "Stargate a anunțat unsprezece gigawați de capacitate în S.U.A.",
+      "title": "",
+      "tts": {
+        "text": "Stargate a anunțat unsprezece gigawați de capacitate în Statele Unite ale Americii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Începând cu jumătatea lunii iunie, aproximativ două sute de megawați sunt operaționali, la situl Abilene Texas, Faza Unu.",
+      "text_markdown": "Începând cu jumătatea lunii iunie, aproximativ două sute de megawați sunt operaționali, la situl Abilene Texas, Faza Unu.",
+      "title": "",
+      "tts": {
+        "text": "Începând cu jumătatea lunii iunie, aproximativ două sute de megawați sunt operaționali, la situl Abilene Texas, Faza Unu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Unsprezece gigawați anunțați, două sute de megawați conectați.",
+      "text_markdown": "Unsprezece gigawați anunțați, două sute de megawați conectați.",
+      "title": "",
+      "tts": {
+        "text": "Unsprezece gigawați anunțați, două sute de megawați conectați.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Acesta este întregul decalaj într-o singură frază.",
+      "text_markdown": "Acesta este întregul decalaj într-o singură frază.",
+      "title": "",
+      "tts": {
+        "text": "Acesta este întregul decalaj într-o singură frază.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Așa este, iar cel mai clar exemplu se află în New Mexico.",
+      "text_markdown": "Așa este, iar cel mai clar exemplu se află în New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Așa este, iar cel mai clar exemplu se află în New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Situl din comitatul Doña Ana este cel mai mare campus Stargate individual, planificat la patru virgulă cinci gigawați.",
+      "text_markdown": "Situl din comitatul Doña Ana este cel mai mare campus Stargate individual, planificat la patru virgulă cinci gigawați.",
+      "title": "",
+      "tts": {
+        "text": "Situl din comitatul Doña Ana este cel mai mare campus Stargate individual, planificat la patru virgulă cinci gigawați.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Optsprezece miliarde de dolari de finanțare sindicalizată a proiectului sunt în vigoare — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus o injecție de capital de trei miliarde de dolari de la Blue Owl.",
+      "text_markdown": "Optsprezece miliarde de dolari de finanțare sindicalizată a proiectului sunt în vigoare — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus o injecție de capital de trei miliarde de dolari de la Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Optsprezece miliarde de dolari de finanțare sindicalizată a proiectului sunt în vigoare — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus o injecție de capital de trei miliarde de dolari de la Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și stadiul construcției la fața locului.",
+      "text_markdown": "Și stadiul construcției la fața locului.",
+      "title": "",
+      "tts": {
+        "text": "Și stadiul construcției la fața locului.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Zero lopeți în pământ până acum.",
+      "text_markdown": "Zero lopeți în pământ până acum.",
+      "title": "",
+      "tts": {
+        "text": "Zero lopeți în pământ până acum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Situl așteaptă o autorizație de calitate a aerului de la Departamentul de Mediu din New Mexico, inițial așteptată pe douăzeci și doi aprilie, acum amânată pentru douăzeci și unu iulie după mai mult de șapte mii de comentarii publice.",
+      "text_markdown": "Situl așteaptă o autorizație de calitate a aerului de la Departamentul de Mediu din New Mexico, inițial așteptată pe douăzeci și doi aprilie, acum amânată pentru douăzeci și unu iulie după mai mult de șapte mii de comentarii publice.",
+      "title": "",
+      "tts": {
+        "text": "Situl așteaptă o autorizație de calitate a aerului de la Departamentul de Mediu din New Mexico, inițial așteptată pe douăzeci și doi aprilie, acum amânată pentru douăzeci și unu iulie după mai mult de șapte mii de comentarii publice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Optsprezece miliarde de dolari angajați, zero lopeți în pământ, un termen limită pentru autorizația de calitate a aerului.",
+      "text_markdown": "Optsprezece miliarde de dolari angajați, zero lopeți în pământ, un termen limită pentru autorizația de calitate a aerului.",
+      "title": "",
+      "tts": {
+        "text": "Optsprezece miliarde de dolari angajați, zero lopeți în pământ, un termen limită pentru autorizația de calitate a aerului.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Cine este cel care pierde dacă cifrele nu se justifică.",
+      "text_markdown": "Cine este cel care pierde dacă cifrele nu se justifică.",
+      "title": "",
+      "tts": {
+        "text": "Cine este cel care pierde dacă cifrele nu se justifică.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Acolo devine Oracle interesant.",
+      "text_markdown": "Acolo devine Oracle interesant.",
+      "title": "",
+      "tts": {
+        "text": "Acolo devine Oracle interesant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Obligațiile de Performanță Rămase ale Oracle — linia contabilă care înregistrează veniturile contractate încă nelivrate — au atins cinci sute cincizeci și trei de miliarde de dolari în trimestrul trei fiscal două mii douăzeci și șase.",
+      "text_markdown": "Obligațiile de Performanță Rămase ale Oracle — linia contabilă care înregistrează veniturile contractate încă nelivrate — au atins cinci sute cincizeci și trei de miliarde de dolari în trimestrul trei fiscal două mii douăzeci și șase.",
+      "title": "",
+      "tts": {
+        "text": "Obligațiile de Performanță Rămase ale Oracle — linia contabilă care înregistrează veniturile contractate încă nelivrate — au atins cinci sute cincizeci și trei de miliarde de dolari în trimestrul trei fiscal două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Aceasta reprezintă o creștere de trei sute douăzeci și cinci la sută de la an la an, iar majoritatea acestei creșteri este identificată public cu OpenAI și Stargate.",
+      "text_markdown": "Aceasta reprezintă o creștere de trei sute douăzeci și cinci la sută de la an la an, iar majoritatea acestei creșteri este identificată public cu OpenAI și Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta reprezintă o creștere de trei sute douăzeci și cinci la sută de la an la an, iar majoritatea acestei creșteri este identificată public cu OpenAI și Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și partea de datorii.",
+      "text_markdown": "Și partea de datorii.",
+      "title": "",
+      "tts": {
+        "text": "Și partea de datorii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Împrumuturile totale au atins o sută treizeci și patru virgulă șase miliarde de dolari la data de douăzeci și opt februarie.",
+      "text_markdown": "Împrumuturile totale au atins o sută treizeci și patru virgulă șase miliarde de dolari la data de douăzeci și opt februarie.",
+      "title": "",
+      "tts": {
+        "text": "Împrumuturile totale au atins o sută treizeci și patru virgulă șase miliarde de dolari la data de douăzeci și opt februarie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Oracle a strâns treizeci de miliarde în februarie singur — obligațiuni de grad investițional plus acțiuni preferențiale convertibile obligatoriu — și a emis patruzeci și trei de miliarde de dolari de noi obligațiuni senior pe parcursul perioadei de nouă luni.",
+      "text_markdown": "Oracle a strâns treizeci de miliarde în februarie singur — obligațiuni de grad investițional plus acțiuni preferențiale convertibile obligatoriu — și a emis patruzeci și trei de miliarde de dolari de noi obligațiuni senior pe parcursul perioadei de nouă luni.",
+      "title": "",
+      "tts": {
+        "text": "Oracle a strâns treizeci de miliarde în februarie singur — obligațiuni de grad investițional plus acțiuni preferențiale convertibile obligatoriu — și a emis patruzeci și trei de miliarde de dolari de noi obligațiuni senior pe parcursul perioadei de nouă luni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Deci, să rezumăm situația.",
+      "text_markdown": "Deci, să rezumăm situația.",
+      "title": "",
+      "tts": {
+        "text": "Deci, să rezumăm situația.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cinci sute cincizeci și trei de miliarde de dolari în promisiuni, o sută treizeci și patru de miliarde de dolari în datorii și un client mare care poartă cea mai mare parte a riscului.",
+      "text_markdown": "Cinci sute cincizeci și trei de miliarde de dolari în promisiuni, o sută treizeci și patru de miliarde de dolari în datorii și un client mare care poartă cea mai mare parte a riscului.",
+      "title": "",
+      "tts": {
+        "text": "Cinci sute cincizeci și trei de miliarde de dolari în promisiuni, o sută treizeci și patru de miliarde de dolari în datorii și un client mare care poartă cea mai mare parte a riscului.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Aceasta este structura dezvoltării într-o singură propoziție.",
+      "text_markdown": "Aceasta este structura dezvoltării într-o singură propoziție.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta este structura dezvoltării într-o singură propoziție.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Să trecem la comparația dintre S.U.A. și China.",
+      "text_markdown": "Să trecem la comparația dintre S.U.A. și China.",
+      "title": "",
+      "tts": {
+        "text": "Să trecem la comparația dintre Statele Unite ale Americii și China.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Clișeul este că China este în urmă cu un anumit număr de luni.",
+      "text_markdown": "Clișeul este că China este în urmă cu un anumit număr de luni.",
+      "title": "",
+      "tts": {
+        "text": "Clișeul este că China este în urmă cu un anumit număr de luni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Clișeul este greșit pentru că măsoară lucrul greșit.",
+      "text_markdown": "Clișeul este greșit pentru că măsoară lucrul greșit.",
+      "title": "",
+      "tts": {
+        "text": "Clișeul este greșit pentru că măsoară lucrul greșit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Luni, nouă iunie, Bloomberg a raportat un proiect de plan chinezesc de la Comisia Națională pentru Dezvoltare și Reformă — două trilioane de yuani, aproximativ două sute nouăzeci și cinci de miliarde de dolari, pentru o rețea națională de centre de date AI până în două mii douăzeci și opt.",
+      "text_markdown": "Luni, nouă iunie, Bloomberg a raportat un proiect de plan chinezesc de la Comisia Națională pentru Dezvoltare și Reformă — două trilioane de yuani, aproximativ două sute nouăzeci și cinci de miliarde de dolari, pentru o rețea națională de centre de date AI până în două mii douăzeci și opt.",
+      "title": "",
+      "tts": {
+        "text": "Luni, nouă iunie, Bloomberg a raportat un proiect de plan chinezesc de la Comisia Națională pentru Dezvoltare și Reformă — două trilioane de yuani, aproximativ două sute nouăzeci și cinci de miliarde de dolari, pentru o rețea națională de centre de date AI până în două mii douăzeci și opt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Planul impune optzeci la sută siliciu autohton și ar urma să fie operat ca o singură rețea de calcul interconectată de către China Mobile și China Telecom.",
+      "text_markdown": "Planul impune optzeci la sută siliciu autohton și ar urma să fie operat ca o singură rețea de calcul interconectată de către China Mobile și China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Planul impune optzeci la sută siliciu autohton și ar urma să fie operat ca o singură rețea de calcul interconectată de către China Mobile și China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și unde este capcana în acest plan.",
+      "text_markdown": "Și unde este capcana în acest plan.",
+      "title": "",
+      "tts": {
+        "text": "Și unde este capcana în acest plan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Două trilioane de yuani, optzeci la sută siliciu autohton, termen limită două mii douăzeci și opt — iar capcana este că restricția principală nu sunt cipurile logice, ci memoria cu lățime de bandă mare.",
+      "text_markdown": "Două trilioane de yuani, optzeci la sută siliciu autohton, termen limită două mii douăzeci și opt — iar capcana este că restricția principală nu sunt cipurile logice, ci memoria cu lățime de bandă mare.",
+      "title": "",
+      "tts": {
+        "text": "Două trilioane de yuani, optzeci la sută siliciu autohton, termen limită două mii douăzeci și opt — iar capcana este că restricția principală nu sunt cipurile logice, ci memoria cu lățime de bandă mare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Explicați-ne asta.",
+      "text_markdown": "Explicați-ne asta.",
+      "title": "",
+      "tts": {
+        "text": "Explicați-ne asta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fiecare accelerator AI are nevoie de stive HBM fixate pe matricea logică.",
+      "text_markdown": "Fiecare accelerator AI are nevoie de stive HBM fixate pe matricea logică.",
+      "title": "",
+      "tts": {
+        "text": "Fiecare accelerator AI are nevoie de stive HBM fixate pe matricea logică.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fără HBM, cipul este o greutate de hârtie.",
+      "text_markdown": "Fără HBM, cipul este o greutate de hârtie.",
+      "title": "",
+      "tts": {
+        "text": "Fără HBM, cipul este o greutate de hârtie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "China a stocat aproximativ treisprezece milioane de stive HBM înainte ca controalele la export să se închidă — unsprezece virgulă patru milioane numai de la Samsung.",
+      "text_markdown": "China a stocat aproximativ treisprezece milioane de stive HBM înainte ca controalele la export să se închidă — unsprezece virgulă patru milioane numai de la Samsung.",
+      "title": "",
+      "tts": {
+        "text": "China a stocat aproximativ treisprezece milioane de stive HBM înainte ca controalele la export să se închidă — unsprezece virgulă patru milioane numai de la Samsung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "La rapoartele de ambalare Huawei Ascend nouă zece C, acest stoc este suficient pentru aproximativ un virgulă șase milioane de cipuri.",
+      "text_markdown": "La rapoartele de ambalare Huawei Ascend nouă zece C, acest stoc este suficient pentru aproximativ un virgulă șase milioane de cipuri.",
+      "title": "",
+      "tts": {
+        "text": "La rapoartele de ambalare Huawei Ascend nouă zece C, acest stoc este suficient pentru aproximativ un virgulă șase milioane de cipuri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și apoi se termină aprovizionarea.",
+      "text_markdown": "Și apoi se termină aprovizionarea.",
+      "title": "",
+      "tts": {
+        "text": "Și apoi se termină aprovizionarea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Apoi se termină aprovizionarea — treisprezece milioane de stive HBM, suficiente pentru un virgulă șase milioane de cipuri, și acesta este plafonul.",
+      "text_markdown": "Apoi se termină aprovizionarea — treisprezece milioane de stive HBM, suficiente pentru un virgulă șase milioane de cipuri, și acesta este plafonul.",
+      "title": "",
+      "tts": {
+        "text": "Apoi se termină aprovizionarea — treisprezece milioane de stive HBM, suficiente pentru un virgulă șase milioane de cipuri, și acesta este plafonul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "HBM-ul chinezesc autohton, de la CXMT, este pe cale să atingă aproximativ două milioane de stive în două mii douăzeci și șase — suficient pentru poate două sute cincizeci până la trei sute de mii de acceleratoare.",
+      "text_markdown": "HBM-ul chinezesc autohton, de la CXMT, este pe cale să atingă aproximativ două milioane de stive în două mii douăzeci și șase — suficient pentru poate două sute cincizeci până la trei sute de mii de acceleratoare.",
+      "title": "",
+      "tts": {
+        "text": "HBM-ul chinezesc autohton, de la CXMT, este pe cale să atingă aproximativ două milioane de stive în două mii douăzeci și șase — suficient pentru poate două sute cincizeci până la trei sute de mii de acceleratoare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Deci, cum arată planurile Huawei pentru siliciu?",
+      "text_markdown": "Deci, cum arată planurile Huawei pentru siliciu?",
+      "title": "",
+      "tts": {
+        "text": "Deci, cum arată planurile Huawei pentru siliciu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Bloomberg, citând planurile Huawei, a estimat producția pentru două mii douăzeci și șase la șase sute de mii de cipuri nouă zece C, linia de produse Ascend mai largă ajungând la un total de un virgulă șase milioane de matrice.",
+      "text_markdown": "Bloomberg, citând planurile Huawei, a estimat producția pentru două mii douăzeci și șase la șase sute de mii de cipuri nouă zece C, linia de produse Ascend mai largă ajungând la un total de un virgulă șase milioane de matrice.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, citând planurile Huawei, a estimat producția pentru două mii douăzeci și șase la șase sute de mii de cipuri nouă zece C, linia de produse Ascend mai largă ajungând la un total de un virgulă șase milioane de matrice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Acest număr, șase sute de mii, este o țintă, nu o producție livrată.",
+      "text_markdown": "Acest număr, șase sute de mii, este o țintă, nu o producție livrată.",
+      "title": "",
+      "tts": {
+        "text": "Acest număr, șase sute de mii, este o țintă, nu o producție livrată.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Și separat, înainte ca controalele la export să le oprească, Huawei a acumulat peste două virgulă nouă milioane de matrice Ascend fabricate la TSMC prin companiile-paravan Sophgo și Bitmain.",
+      "text_markdown": "Și separat, înainte ca controalele la export să le oprească, Huawei a acumulat peste două virgulă nouă milioane de matrice Ascend fabricate la TSMC prin companiile-paravan Sophgo și Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "Și separat, înainte ca controalele la export să le oprească, Huawei a acumulat peste două virgulă nouă milioane de matrice Ascend fabricate la TSMC prin companiile-paravan Sophgo și Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Narațiunea conform căreia controalele la export funcționează are o gaură de două virgulă nouă milioane de matrice în ea.",
+      "text_markdown": "Narațiunea conform căreia controalele la export funcționează are o gaură de două virgulă nouă milioane de matrice în ea.",
+      "title": "",
+      "tts": {
+        "text": "Narațiunea conform căreia controalele la export funcționează are o gaură de două virgulă nouă milioane de matrice în ea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Să trecem prin titluri, rapid.",
+      "text_markdown": "Să trecem prin titluri, rapid.",
+      "title": "",
+      "tts": {
+        "text": "Să trecem prin titluri, rapid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Primul titlu din această săptămână, Broadcom.",
+      "text_markdown": "Primul titlu din această săptămână, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Primul titlu din această săptămână, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Capitalizarea de piață a Broadcom este în jur de două trilioane de dolari.",
+      "text_markdown": "Capitalizarea de piață a Broadcom este în jur de două trilioane de dolari.",
+      "title": "",
+      "tts": {
+        "text": "Capitalizarea de piață a Broadcom este în jur de două trilioane de dolari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "CEO-ul lor, Hock Tan, a reiterat o țintă de venituri de o sută de miliarde de dolari din semiconductori AI pentru anul fiscal două mii douăzeci și șapte în cadrul apelului de câștiguri din trei iunie, susținută de aproximativ șaptezeci și trei de miliarde de dolari în restanțe AI și acorduri pe termen lung cu Alphabet și Meta, extinzându-se până în două mii treizeci și unu.",
+      "text_markdown": "CEO-ul lor, Hock Tan, a reiterat o țintă de venituri de o sută de miliarde de dolari din semiconductori AI pentru anul fiscal două mii douăzeci și șapte în cadrul apelului de câștiguri din trei iunie, susținută de aproximativ șaptezeci și trei de miliarde de dolari în restanțe AI și acorduri pe termen lung cu Alphabet și Meta, extinzându-se până în două mii treizeci și unu.",
+      "title": "",
+      "tts": {
+        "text": "CEO-ul lor, Hock Tan, a reiterat o țintă de venituri de o sută de miliarde de dolari din semiconductori AI pentru anul fiscal două mii douăzeci și șapte în cadrul apelului de câștiguri din trei iunie, susținută de aproximativ șaptezeci și trei de miliarde de dolari în restanțe AI și acorduri pe termen lung cu Alphabet și Meta, extinzându-se până în două mii treizeci și unu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Capitalizare de piață de două trilioane de dolari, țintă de venituri AI de o sută de miliarde de dolari, aproape nicio recunoaștere a mărcii la nivel de consumator.",
+      "text_markdown": "Capitalizare de piață de două trilioane de dolari, țintă de venituri AI de o sută de miliarde de dolari, aproape nicio recunoaștere a mărcii la nivel de consumator.",
+      "title": "",
+      "tts": {
+        "text": "Capitalizare de piață de două trilioane de dolari, țintă de venituri AI de o sută de miliarde de dolari, aproape nicio recunoaștere a mărcii la nivel de consumator.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Al doilea titlu din această săptămână, ASML.",
+      "text_markdown": "Al doilea titlu din această săptămână, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Al doilea titlu din această săptămână, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ASML, compania olandeză care construiește mașinile de litografie de care depinde toată logica de vârf, vinde sistemul său High-N.A. E.U.V. pentru aproximativ trei sute șaptezeci de milioane de dolari.",
+      "text_markdown": "ASML, compania olandeză care construiește mașinile de litografie de care depinde toată logica de vârf, vinde sistemul său High-N.A. E.U.V. pentru aproximativ trei sute șaptezeci de milioane de dolari.",
+      "title": "",
+      "tts": {
+        "text": "ASML, compania olandeză care construiește mașinile de litografie de care depinde toată logica de vârf, vinde sistemul său High N.A. E.U.V. pentru aproximativ trei sute șaptezeci de milioane de dolari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Capacitatea globală de producție este mai mică de douăzeci de unități pe an.",
+      "text_markdown": "Capacitatea globală de producție este mai mică de douăzeci de unități pe an.",
+      "title": "",
+      "tts": {
+        "text": "Capacitatea globală de producție este mai mică de douăzeci de unități pe an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Trei sute șaptezeci de milioane de dolari o mașină, mai puțin de douăzeci de mașini pe an, o singură companie le produce — acesta este adevăratul punct de blocaj al siliciului global, nu politica.",
+      "text_markdown": "Trei sute șaptezeci de milioane de dolari o mașină, mai puțin de douăzeci de mașini pe an, o singură companie le produce — acesta este adevăratul punct de blocaj al siliciului global, nu politica.",
+      "title": "",
+      "tts": {
+        "text": "Trei sute șaptezeci de milioane de dolari o mașină, mai puțin de douăzeci de mașini pe an, o singură companie le produce — acesta este adevăratul punct de blocaj al siliciului global, nu politica.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Al treilea titlu din această săptămână, controalele la export.",
+      "text_markdown": "Al treilea titlu din această săptămână, controalele la export.",
+      "title": "",
+      "tts": {
+        "text": "Al treilea titlu din această săptămână, controalele la export.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Departamentul de Comerț a anulat Regula de Difuzie AI din era Biden pe treisprezece mai, două mii douăzeci și cinci, și nu a emis o nouă clarificare de aplicare B.I.S. până pe treizeci și unu mai, două mii douăzeci și șase.",
+      "text_markdown": "Departamentul de Comerț a anulat Regula de Difuzie AI din era Biden pe treisprezece mai, două mii douăzeci și cinci, și nu a emis o nouă clarificare de aplicare B.I.S. până pe treizeci și unu mai, două mii douăzeci și șase.",
+      "title": "",
+      "tts": {
+        "text": "Departamentul de Comerț a anulat Regula de Difuzie AI din era Biden pe treisprezece mai, două mii douăzeci și cinci, și nu a emis o nouă clarificare de aplicare B.I.S. până pe treizeci și unu mai, două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Aceasta este o fereastră de aproximativ un an în care cerințele de licențiere nu au fost aplicate activ.",
+      "text_markdown": "Aceasta este o fereastră de aproximativ un an în care cerințele de licențiere nu au fost aplicate activ.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta este o fereastră de aproximativ un an în care cerințele de licențiere nu au fost aplicate activ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Deci, numărați zilele.",
+      "text_markdown": "Deci, numărați zilele.",
+      "title": "",
+      "tts": {
+        "text": "Deci, numărați zilele.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Șaptezeci și două de ore pentru a opri un model american, trei sute optzeci de zile pentru a aplica o regulă de export de cipuri — această asimetrie este spectacolul.",
+      "text_markdown": "Șaptezeci și două de ore pentru a opri un model american, trei sute optzeci de zile pentru a aplica o regulă de export de cipuri — această asimetrie este spectacolul.",
+      "title": "",
+      "tts": {
+        "text": "Șaptezeci și două de ore pentru a opri un model american, trei sute optzeci de zile pentru a aplica o regulă de export de cipuri — această asimetrie este spectacolul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și unde au ajuns cipurile în acele trei sute optzeci de zile.",
+      "text_markdown": "Și unde au ajuns cipurile în acele trei sute optzeci de zile.",
+      "title": "",
+      "tts": {
+        "text": "Și unde au ajuns cipurile în acele trei sute optzeci de zile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Asia de Sud-Est este locul unde au ajuns majoritatea.",
+      "text_markdown": "Asia de Sud-Est este locul unde au ajuns majoritatea.",
+      "title": "",
+      "tts": {
+        "text": "Asia de Sud-Est este locul unde au ajuns majoritatea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Departamentul de Justiție a desigilat rechizitorii la sfârșitul lunii martie, susținând că cipurile Nvidia H o sută și A o sută au fost dirijate prin intermediari malaysieni și singaporezi.",
+      "text_markdown": "Departamentul de Justiție a desigilat rechizitorii la sfârșitul lunii martie, susținând că cipurile Nvidia H o sută și A o sută au fost dirijate prin intermediari malaysieni și singaporezi.",
+      "title": "",
+      "tts": {
+        "text": "Departamentul de Justiție a desigilat rechizitorii la sfârșitul lunii martie, susținând că cipurile Nvidia H o sută și A o sută au fost dirijate prin intermediari malaysieni și singaporezi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fortune a publicat texte criptate în mai, arătând logistica, iar Super Micro este implicată într-un caz de companie-fantomă de două miliarde și jumătate de dolari.",
+      "text_markdown": "Fortune a publicat texte criptate în mai, arătând logistica, iar Super Micro este implicată într-un caz de companie-fantomă de două miliarde și jumătate de dolari.",
+      "title": "",
+      "tts": {
+        "text": "Fortune a publicat texte criptate în mai, arătând logistica, iar Super Micro este implicată într-un caz de companie-fantomă de două miliarde și jumătate de dolari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Administrația Trump ar pregăti noi restricții la exportul de cipuri, vizând în mod specific Malaezia și Thailanda.",
+      "text_markdown": "Administrația Trump ar pregăti noi restricții la exportul de cipuri, vizând în mod specific Malaezia și Thailanda.",
+      "title": "",
+      "tts": {
+        "text": "Administrația Trump ar pregăti noi restricții la exportul de cipuri, vizând în mod specific Malaezia și Thailanda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Deci, imaginea într-o singură frază.",
+      "text_markdown": "Deci, imaginea într-o singură frază.",
+      "title": "",
+      "tts": {
+        "text": "Deci, imaginea într-o singură frază.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cipurile nu zboară la Shenzhen — ele zboară mai întâi la Penang și Singapore.",
+      "text_markdown": "Cipurile nu zboară la Shenzhen — ele zboară mai întâi la Penang și Singapore.",
+      "title": "",
+      "tts": {
+        "text": "Cipurile nu zboară la Shenzhen — ele zboară mai întâi la Penang și Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Conceptul săptămânii — Obligații de Performanță Rămase.",
+      "text_markdown": "Conceptul săptămânii — Obligații de Performanță Rămase.",
+      "title": "",
+      "tts": {
+        "text": "Conceptul săptămânii — Obligații de Performanță Rămase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "R.P.O. este o linie contabilă care înregistrează valoarea în dolari a contractelor pe care o companie le-a semnat, dar pentru care nu a livrat încă.",
+      "text_markdown": "R.P.O. este o linie contabilă care înregistrează valoarea în dolari a contractelor pe care o companie le-a semnat, dar pentru care nu a livrat încă.",
+      "title": "",
+      "tts": {
+        "text": "Er pe o este o linie contabilă care înregistrează valoarea în dolari a contractelor pe care o companie le-a semnat, dar pentru care nu a livrat încă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Este orientat spre viitor — îți spune despre veniturile viitoare, nu despre banii din bancă de astăzi.",
+      "text_markdown": "Este orientat spre viitor — îți spune despre veniturile viitoare, nu despre banii din bancă de astăzi.",
+      "title": "",
+      "tts": {
+        "text": "Este orientat spre viitor — îți spune despre veniturile viitoare, nu despre banii din bancă de astăzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Și de ce contează pentru Oracle.",
+      "text_markdown": "Și de ce contează pentru Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Și de ce contează pentru Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Deoarece cinci sute cincizeci și trei de miliarde de dolari de R.P.O., concentrate puternic într-un singur client pentru o singură construcție, înseamnă că Oracle a promis să livreze o cantitate enormă de putere de calcul în următorii câțiva ani unui client al cărui model de venituri este încă în discuție.",
+      "text_markdown": "Deoarece cinci sute cincizeci și trei de miliarde de dolari de R.P.O., concentrate puternic într-un singur client pentru o singură construcție, înseamnă că Oracle a promis să livreze o cantitate enormă de putere de calcul în următorii câțiva ani unui client al cărui model de venituri este încă în discuție.",
+      "title": "",
+      "tts": {
+        "text": "Deoarece cinci sute cincizeci și trei de miliarde de dolari de er pe o, concentrate puternic într-un singur client pentru o singură construcție, înseamnă că Oracle a promis să livreze o cantitate enormă de putere de calcul în următorii câțiva ani unui client al cărui model de venituri este încă în discuție.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dacă acele contracte se materializează, Oracle are afacerea deceniului.",
+      "text_markdown": "Dacă acele contracte se materializează, Oracle are afacerea deceniului.",
+      "title": "",
+      "tts": {
+        "text": "Dacă acele contracte se materializează, Oracle are afacerea deceniului.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dacă acestea întârzie — sau sunt renegociate — Oracle poartă datoria în timp ce contractele se micșorează.",
+      "text_markdown": "Dacă acestea întârzie — sau sunt renegociate — Oracle poartă datoria în timp ce contractele se micșorează.",
+      "title": "",
+      "tts": {
+        "text": "Dacă acestea întârzie — sau sunt renegociate — Oracle poartă datoria în timp ce contractele se micșorează.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Deci, când vezi un număr R.P.O. într-un raport tehnic.",
+      "text_markdown": "Deci, când vezi un număr R.P.O. într-un raport tehnic.",
+      "title": "",
+      "tts": {
+        "text": "Deci, când vezi un număr er pe o într-un raport tehnic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Citește cine sunt clienții, cât de concentrate sunt obligațiile și ce ar trebui să se întâmple pentru ca firma să le livreze efectiv.",
+      "text_markdown": "Citește cine sunt clienții, cât de concentrate sunt obligațiile și ce ar trebui să se întâmple pentru ca firma să le livreze efectiv.",
+      "title": "",
+      "tts": {
+        "text": "Citește cine sunt clienții, cât de concentrate sunt obligațiile și ce ar trebui să se întâmple pentru ca firma să le livreze efectiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "R.P.O. este locul unde apar deținătorii de acțiuni în notele de subsol.",
+      "text_markdown": "R.P.O. este locul unde apar deținătorii de acțiuni în notele de subsol.",
+      "title": "",
+      "tts": {
+        "text": "Er pe o este locul unde apar deținătorii de acțiuni în notele de subsol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Un loc bun de aterizat.",
+      "text_markdown": "Un loc bun de aterizat.",
+      "title": "",
+      "tts": {
+        "text": "Un loc bun de aterizat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, mulțumesc pentru rezumat.",
+      "text_markdown": "Ron, mulțumesc pentru rezumat.",
+      "title": "",
+      "tts": {
+        "text": "Ron, mulțumesc pentru rezumat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Oricând, Vindy — mă bucur să fiu aici.",
+      "text_markdown": "Oricând, Vindy — mă bucur să fiu aici.",
+      "title": "",
+      "tts": {
+        "text": "Oricând, Vindy — mă bucur să fiu aici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Acesta a fost AI This Week pentru douăzeci și unu iunie, două mii douăzeci și șase.",
+      "text_markdown": "Acesta a fost AI This Week pentru douăzeci și unu iunie, două mii douăzeci și șase.",
+      "title": "",
+      "tts": {
+        "text": "Acesta a fost AI This Week pentru douăzeci și unu iunie, două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Săptămâna viitoare, înapoi la știrile despre modelele open-weight și laboratoarele mici.",
+      "text_markdown": "Săptămâna viitoare, înapoi la știrile despre modelele open-weight și laboratoarele mici.",
+      "title": "",
+      "tts": {
+        "text": "Săptămâna viitoare, înapoi la știrile despre modelele open-weight și laboratoarele mici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Până duminica viitoare, aveți grijă.",
+      "text_markdown": "Până duminica viitoare, aveți grijă.",
+      "title": "",
+      "tts": {
+        "text": "Până duminica viitoare, aveți grijă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

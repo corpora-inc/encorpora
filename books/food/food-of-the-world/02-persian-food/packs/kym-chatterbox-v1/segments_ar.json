@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "language": "ar",
+  "book_id": "book_persian_food",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ملاحظة للقارئ",
+      "text_markdown": "ملاحظة للقارئ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مرحباً.",
+      "text_markdown": "مرحباً.",
+      "tts": {
+        "text": "مرحباً.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أنا Kym.",
+      "text_markdown": "أنا Kym.",
+      "tts": {
+        "text": "أنا كيم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أنا أحب الطعام.",
+      "text_markdown": "أنا أحب الطعام.",
+      "tts": {
+        "text": "أنا أحب الطعام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أنا أحب القصص عن الطعام.",
+      "text_markdown": "أنا أحب القصص عن الطعام.",
+      "tts": {
+        "text": "أنا أحب القصص عن الطعام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا كتاب صغير عن طعام كبير.",
+      "text_markdown": "هذا كتاب صغير عن طعام كبير.",
+      "tts": {
+        "text": "هذا كتاب صغير عن طعام كبير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الطعام هو الطعام الفارسي.",
+      "text_markdown": "هذا الطعام هو الطعام الفارسي.",
+      "tts": {
+        "text": "هذا الطعام هو الطعام الفارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنه طعام إيران.",
+      "text_markdown": "إنه طعام إيران.",
+      "tts": {
+        "text": "إنه طعام إيران.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وهو أيضاً طعام بلد أقدم بكثير يُسمى بلاد فارس.",
+      "text_markdown": "وهو أيضاً طعام بلد أقدم بكثير يُسمى بلاد فارس.",
+      "tts": {
+        "text": "وهو أيضاً طعام بلد أقدم بكثير يُسمى بلاد فارس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بلاد فارس من أقدم الأماكن على الأرض حيث زرع الناس الطعام بقصد.",
+      "text_markdown": "بلاد فارس من أقدم الأماكن على الأرض حيث زرع الناس الطعام بقصد.",
+      "tts": {
+        "text": "بلاد فارس من أقدم الأماكن على الأرض حيث زرع الناس الطعام بقصد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "القمح، والشعير، والخوخ، والمشمش، والرمان، والسبانخ، والزعفران — كثير من الأشياء على طبقك وُلدت هناك.",
+      "text_markdown": "القمح، والشعير، والخوخ، والمشمش، والرمان، والسبانخ، والزعفران — كثير من الأشياء على طبقك وُلدت هناك.",
+      "tts": {
+        "text": "القمح والشعير والخوخ والمشمش والرمان والسبانخ والزعفران، كثير من الأشياء على طبقك وُلدت هناك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سنبدأ بالأرض.",
+      "text_markdown": "سنبدأ بالأرض.",
+      "tts": {
+        "text": "سنبدأ بالأرض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ثم سننظر في الأشياء التي تنمو هناك.",
+      "text_markdown": "ثم سننظر في الأشياء التي تنمو هناك.",
+      "tts": {
+        "text": "ثم سننظر في الأشياء التي تنمو هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم سننظر في الأرز، والخبز، واللحم، واليخنات.",
+      "text_markdown": "ثم سننظر في الأرز، والخبز، واللحم، واليخنات.",
+      "tts": {
+        "text": "ثم سننظر في الأرز والخبز واللحم واليخنات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في النهاية، ستعرف ما هو على المائدة الفارسية، وستعرف من أين جاء.",
+      "text_markdown": "في النهاية، ستعرف ما هو على المائدة الفارسية، وستعرف من أين جاء.",
+      "tts": {
+        "text": "في النهاية ستعرف ما هو على المائدة الفارسية وستعرف من أين جاء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اجلس.",
+      "text_markdown": "اجلس.",
+      "tts": {
+        "text": "اجلس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اسكب بعض الشاي.",
+      "text_markdown": "اسكب بعض الشاي.",
+      "tts": {
+        "text": "اسكب بعض الشاي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لنبدأ.",
+      "text_markdown": "لنبدأ.",
+      "tts": {
+        "text": "لنبدأ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الأول — الأرض التي بدأت فيها الزراعة",
+      "text_markdown": "الفصل الأول — الأرض التي بدأت فيها الزراعة"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بلاد فارس أرض مرتفعة وجافة.",
+      "text_markdown": "بلاد فارس أرض مرتفعة وجافة.",
+      "tts": {
+        "text": "بلاد فارس أرض مرتفعة وجافة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تقع بين بحر قزوين في الشمال والخليج الفارسي في الجنوب.",
+      "text_markdown": "تقع بين بحر قزوين في الشمال والخليج الفارسي في الجنوب.",
+      "tts": {
+        "text": "تقع بين بحر قزوين في الشمال والخليج الفارسي في الجنوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إلى الغرب توجد بلاد ما بين النهرين.",
+      "text_markdown": "إلى الغرب توجد بلاد ما بين النهرين.",
+      "tts": {
+        "text": "إلى الغرب توجد بلاد ما بين النهرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إلى الشرق توجد الهند.",
+      "text_markdown": "إلى الشرق توجد الهند.",
+      "tts": {
+        "text": "إلى الشرق توجد الهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "في الوسط توجد الجبال والصحاري.",
+      "text_markdown": "في الوسط توجد الجبال والصحاري.",
+      "tts": {
+        "text": "في الوسط توجد الجبال والصحاري.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على بُعد خطوات، منذ نحو 10,000 سنة، زرع الناس القمح والشعير لأول مرة بقصد.",
+      "text_markdown": "على بُعد خطوات، منذ نحو 10,000 سنة، زرع الناس القمح والشعير لأول مرة بقصد.",
+      "tts": {
+        "text": "على بُعد خطوات، منذ نحو عشرة آلاف سنة، زرع الناس القمح والشعير لأول مرة بقصد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الزراعة وُلدت هناك.",
+      "text_markdown": "الزراعة وُلدت هناك.",
+      "tts": {
+        "text": "الزراعة وُلدت هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "فارس كانت من أوائل الأماكن التي تعلّمتها.",
+      "text_markdown": "فارس كانت من أوائل الأماكن التي تعلّمتها.",
+      "tts": {
+        "text": "فارس كانت من أوائل الأماكن التي تعلّمتها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه البداية الطويلة موجودة في كل طبق فارسي.",
+      "text_markdown": "هذه البداية الطويلة موجودة في كل طبق فارسي.",
+      "tts": {
+        "text": "هذه البداية الطويلة موجودة في كل طبق فارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الخوخ أصله من فارس.",
+      "text_markdown": "الخوخ أصله من فارس.",
+      "tts": {
+        "text": "الخوخ أصله من فارس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سمّاه الرومان Persica، أي \"الثمرة الفارسية\". وكلمة \"peach\" الإنجليزية مشتقة من هذا الاسم.",
+      "text_markdown": "سمّاه الرومان Persica، أي \"الثمرة الفارسية\". وكلمة \"peach\" الإنجليزية مشتقة من هذا الاسم.",
+      "tts": {
+        "text": "سمّاه الرومان بيرسيكا، أي الثمرة الفارسية. وكلمة بيتش الإنجليزية مشتقة من هذا الاسم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المشمش أيضاً أصله من هناك.",
+      "text_markdown": "المشمش أيضاً أصله من هناك.",
+      "tts": {
+        "text": "المشمش أيضاً أصله من هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والرمان كذلك.",
+      "text_markdown": "والرمان كذلك.",
+      "tts": {
+        "text": "والرمان كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والجوز كذلك.",
+      "text_markdown": "والجوز كذلك.",
+      "tts": {
+        "text": "والجوز كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "والكرز الحامض كذلك.",
+      "text_markdown": "والكرز الحامض كذلك.",
+      "tts": {
+        "text": "والكرز الحامض كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وكذلك السبانخ، وهي من أوائل خضروات السلطة في العالم.",
+      "text_markdown": "وكذلك السبانخ، وهي من أوائل خضروات السلطة في العالم.",
+      "tts": {
+        "text": "وكذلك السبانخ، وهي من أوائل خضروات السلطة في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الكلمة الإنجليزية \"spinach\" مأخوذة من الكلمة الفارسية إسفناج.",
+      "text_markdown": "الكلمة الإنجليزية \"spinach\" مأخوذة من الكلمة الفارسية إسفناج.",
+      "tts": {
+        "text": "الكلمة الإنجليزية سبانخ مأخوذة من الكلمة الفارسية إسفاناج.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حتى كلمة \"paradise\" أي الفردوس هي كلمة فارسية.",
+      "text_markdown": "حتى كلمة \"paradise\" أي الفردوس هي كلمة فارسية.",
+      "tts": {
+        "text": "حتى كلمة باراداييس أي الفردوس هي كلمة فارسية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "مشتقة من بارديس، وتعني الحديقة المسوّرة.",
+      "text_markdown": "مشتقة من بارديس، وتعني الحديقة المسوّرة.",
+      "tts": {
+        "text": "مشتقة من بارديس، وتعني الحديقة المسوّرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أول فردوس كان بستاناً فارسياً مليئاً بأشجار الرمان.",
+      "text_markdown": "أول فردوس كان بستاناً فارسياً مليئاً بأشجار الرمان.",
+      "tts": {
+        "text": "أول فردوس كان بستاناً فارسياً مليئاً بأشجار الرمان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فارس لم تكتفِ بالأكل الجيد.",
+      "text_markdown": "فارس لم تكتفِ بالأكل الجيد.",
+      "tts": {
+        "text": "فارس لم تكتفِ بالأكل الجيد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فارس علّمت العالم كيف يأكل جيداً.",
+      "text_markdown": "فارس علّمت العالم كيف يأكل جيداً.",
+      "tts": {
+        "text": "فارس علّمت العالم كيف يأكل جيداً.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثاني — مخزن المكونات الأصيلة",
+      "text_markdown": "الفصل الثاني — مخزن المكونات الأصيلة"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "افتح مخزن المطبخ الفارسي.",
+      "text_markdown": "افتح مخزن المطبخ الفارسي.",
+      "tts": {
+        "text": "افتح مخزن المطبخ الفارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الروائح تحكي القصة.",
+      "text_markdown": "الروائح تحكي القصة.",
+      "tts": {
+        "text": "الروائح تحكي القصة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أول رائحة هي الزعفران.",
+      "text_markdown": "أول رائحة هي الزعفران.",
+      "tts": {
+        "text": "أول رائحة هي الزعفران.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إيران تنتج حوالي 90% من زعفران العالم.",
+      "text_markdown": "إيران تنتج حوالي 90% من زعفران العالم.",
+      "tts": {
+        "text": "إيران تنتج حوالي تسعين بالمئة من زعفران العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "معظمه يأتي من مقاطعة تُسمى خراسان.",
+      "text_markdown": "معظمه يأتي من مقاطعة تُسمى خراسان.",
+      "tts": {
+        "text": "معظمه يأتي من مقاطعة تُسمى خوراسان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لإنتاج غرام واحد، يقطف المزارع بيده الخيوط الحمراء من حوالي 200 زهرة كروكس.",
+      "text_markdown": "لإنتاج غرام واحد، يقطف المزارع بيده الخيوط الحمراء من حوالي 200 زهرة كروكس.",
+      "tts": {
+        "text": "لإنتاج غرام واحد، يقطف المزارع بيده الخيوط الحمراء من حوالي مئتي زهرة كروكس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يتم هذا العمل في فجرات الخريف الباردة.",
+      "text_markdown": "يتم هذا العمل في فجرات الخريف الباردة.",
+      "tts": {
+        "text": "يتم هذا العمل في فجرات الخريف الباردة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الزعفران هو أغلى بهار في العالم.",
+      "text_markdown": "الزعفران هو أغلى بهار في العالم.",
+      "tts": {
+        "text": "الزعفران هو أغلى بهار في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "قرصة صغيرة تحوّل الأرز إلى ذهب والماء إلى عطر.",
+      "text_markdown": "قرصة صغيرة تحوّل الأرز إلى ذهب والماء إلى عطر.",
+      "tts": {
+        "text": "قرصة صغيرة تحوّل الأرز إلى ذهب والماء إلى عطر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرائحة الثانية هي الرمان.",
+      "text_markdown": "الرائحة الثانية هي الرمان.",
+      "tts": {
+        "text": "الرائحة الثانية هي الرمان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "زرع الفرس الرمان منذ آلاف السنين.",
+      "text_markdown": "زرع الفرس الرمان منذ آلاف السنين.",
+      "tts": {
+        "text": "زرع الفرس الرمان منذ آلاف السنين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هذه الفاكهة رمز للحب والجنة.",
+      "text_markdown": "هذه الفاكهة رمز للحب والجنة.",
+      "tts": {
+        "text": "هذه الفاكهة رمز للحب والجنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يُعصر عصيره لإضافته إلى اليخنات.",
+      "text_markdown": "يُعصر عصيره لإضافته إلى اليخنات.",
+      "tts": {
+        "text": "يُعصر عصيره لإضافته إلى اليخنات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وتُرشّ بذوره على الأرز والسلطات.",
+      "text_markdown": "وتُرشّ بذوره على الأرز والسلطات.",
+      "tts": {
+        "text": "وتُرشّ بذوره على الأرز والسلطات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تأتي الفستق.",
+      "text_markdown": "ثم تأتي الفستق.",
+      "tts": {
+        "text": "ثم تأتي الفستق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في إيران بساتين فستق عمرها ثلاثة آلاف سنة.",
+      "text_markdown": "في إيران بساتين فستق عمرها ثلاثة آلاف سنة.",
+      "tts": {
+        "text": "في إيران بساتين فستق عمرها ثلاثة آلاف سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الفستق الذي تأكله في العالم كثيراً ما يكون سليل شجرة فارسية.",
+      "text_markdown": "الفستق الذي تأكله في العالم كثيراً ما يكون سليل شجرة فارسية.",
+      "tts": {
+        "text": "الفستق الذي تأكله في العالم كثيراً ما يكون سليل شجرة فارسية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك الجوز، والكرز الحامض، والسفرجل، والبطيخ، والتمر.",
+      "text_markdown": "هناك الجوز، والكرز الحامض، والسفرجل، والبطيخ، والتمر.",
+      "tts": {
+        "text": "هناك الجوز، والكرز الحامض، والسفرجل، والبطيخ، والتمر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهناك السماق، وهو بهار أحمر داكن وحامض من شجيرة برية.",
+      "text_markdown": "وهناك السماق، وهو بهار أحمر داكن وحامض من شجيرة برية.",
+      "tts": {
+        "text": "وهناك السوماق، وهو بهار أحمر داكن وحامض من شجيرة برية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "قبل أن ينتشر الليمون في كل مكان، كان السماق يمنح الطعام نكهة منعشة.",
+      "text_markdown": "قبل أن ينتشر الليمون في كل مكان، كان السماق يمنح الطعام نكهة منعشة.",
+      "tts": {
+        "text": "قبل أن ينتشر الليمون في كل مكان، كان السوماق يمنح الطعام نكهة منعشة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ولا يزال يفعل ذلك.",
+      "text_markdown": "ولا يزال يفعل ذلك.",
+      "tts": {
+        "text": "ولا يزال يفعل ذلك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مخزن المطبخ الفارسي يحمل نصف تاريخ الفاكهة.",
+      "text_markdown": "مخزن المطبخ الفارسي يحمل نصف تاريخ الفاكهة.",
+      "tts": {
+        "text": "مخزن المطبخ الفارسي يحمل نصف تاريخ الفاكهة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثالث — الأرز والخبز والقشرة المقدسة",
+      "text_markdown": "الفصل الثالث — الأرز والخبز والقشرة المقدسة"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وصل الأرز إلى بلاد فارس من الهند منذ نحو ألفين وخمسمائة سنة.",
+      "text_markdown": "وصل الأرز إلى بلاد فارس من الهند منذ نحو ألفين وخمسمائة سنة.",
+      "tts": {
+        "text": "وصل الأرز إلى بلاد فارس من الهند منذ نحو ألفين وخمسمائة سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وأصبح قلب المائدة.",
+      "text_markdown": "وأصبح قلب المائدة.",
+      "tts": {
+        "text": "وأصبح قلب المائدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يطهو الفرس الأرز بطريقتين.",
+      "text_markdown": "يطهو الفرس الأرز بطريقتين.",
+      "tts": {
+        "text": "يطهو الفرس الأرز بطريقتين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الأرز السادة يُسمى تشيلو.",
+      "text_markdown": "الأرز السادة يُسمى تشيلو.",
+      "tts": {
+        "text": "الأرز السادة يُسمى تشيلو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والأرز الممزوج بالأعشاب أو اللحم أو الفاكهة يُسمى بولو.",
+      "text_markdown": "والأرز الممزوج بالأعشاب أو اللحم أو الفاكهة يُسمى بولو.",
+      "tts": {
+        "text": "والأرز الممزوج بالأعشاب أو اللحم أو الفاكهة يُسمى بولو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كلاهما طويل الحبة وخفيف ومتفصّل، كل حبة لوحدها.",
+      "text_markdown": "كلاهما طويل الحبة وخفيف ومتفصّل، كل حبة لوحدها.",
+      "tts": {
+        "text": "كلاهما طويل الحبة وخفيف ومتفصّل، كل حبة لوحدها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن السحر يكمن في قاع القدر.",
+      "text_markdown": "لكن السحر يكمن في قاع القدر.",
+      "tts": {
+        "text": "لكن السحر يكمن في قاع القدر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُسمى ته‌ديگ.",
+      "text_markdown": "يُسمى ته‌ديگ.",
+      "tts": {
+        "text": "يُسمى تاه ديگ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تضع الطاهية طبقة رفيعة في قاع الإناء، أحياناً أرز بالزعفران، وأحياناً شريحة بطاطا، وأحياناً قطعة خبز.",
+      "text_markdown": "تضع الطاهية طبقة رفيعة في قاع الإناء، أحياناً أرز بالزعفران، وأحياناً شريحة بطاطا، وأحياناً قطعة خبز.",
+      "tts": {
+        "text": "تضع الطاهية طبقة رفيعة في قاع الإناء، أحياناً أرز بالزعفران، وأحياناً شريحة بطاطا، وأحياناً قطعة خبز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ثم يوضع الأرز فوقها.",
+      "text_markdown": "ثم يوضع الأرز فوقها.",
+      "tts": {
+        "text": "ثم يوضع الأرز فوقها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ثم يُوضع الغطاء، ملفوفاً بفوطة شاي، ويقوم البخار بالعمل.",
+      "text_markdown": "ثم يُوضع الغطاء، ملفوفاً بفوطة شاي، ويقوم البخار بالعمل.",
+      "tts": {
+        "text": "ثم يوضع الغطاء ملفوفاً بفوطة شاي ويقوم البخار بالعمل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "بعد ساعة، تصبح الطبقة السفلى ذهبية ومقرمشة.",
+      "text_markdown": "بعد ساعة، تصبح الطبقة السفلى ذهبية ومقرمشة.",
+      "tts": {
+        "text": "بعد ساعة تصبح الطبقة السفلى ذهبية ومقرمشة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التاه ديغ شيء مقدس.",
+      "text_markdown": "التاه ديغ شيء مقدس.",
+      "tts": {
+        "text": "التاه ديغ شيء مقدس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "العائلات تتشاجر من أجله.",
+      "text_markdown": "العائلات تتشاجر من أجله.",
+      "tts": {
+        "text": "العائلات تتشاجر من أجله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "التلفزيون الإيراني يعرض برامج كاملة عن من يصنع أفضل تاه ديغ.",
+      "text_markdown": "التلفزيون الإيراني يعرض برامج كاملة عن من يصنع أفضل تاه ديغ.",
+      "tts": {
+        "text": "التلفزيون الإيراني يعرض برامج كاملة عن من يصنع أفضل تاه ديغ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "التاه ديغ المثالي يخرج من القدر كقرص دائري جميل واحد.",
+      "text_markdown": "التاه ديغ المثالي يخرج من القدر كقرص دائري جميل واحد.",
+      "tts": {
+        "text": "التاه ديغ المثالي يخرج من القدر كقرص دائري جميل واحد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم هناك الخبز.",
+      "text_markdown": "ثم هناك الخبز.",
+      "tts": {
+        "text": "ثم هناك الخبز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أشهرها هو السنغك.",
+      "text_markdown": "أشهرها هو السنغك.",
+      "tts": {
+        "text": "أشهرها هو السنغك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يُخبز السنغك فوق طبقة من الحصى الساخنة، وهي طريقة عمرها خمسة آلاف سنة.",
+      "text_markdown": "يُخبز السنغك فوق طبقة من الحصى الساخنة، وهي طريقة عمرها خمسة آلاف سنة.",
+      "tts": {
+        "text": "يُخبز السنغك فوق طبقة من الحصى الساخنة وهي طريقة عمرها خمسة آلاف سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بعض الحصى لا يزال يخرج مع الخبز.",
+      "text_markdown": "بعض الحصى لا يزال يخرج مع الخبز.",
+      "tts": {
+        "text": "بعض الحصى لا يزال يخرج مع الخبز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تلتقطها من الخبز على المائدة.",
+      "text_markdown": "تلتقطها من الخبز على المائدة.",
+      "tts": {
+        "text": "تلتقطها من الخبز على المائدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من الخبز الآخر: البربري، واللافاش، والتافتون.",
+      "text_markdown": "من الخبز الآخر: البربري، واللافاش، والتافتون.",
+      "tts": {
+        "text": "من الخبز الآخر البرباري واللافاش والتافتون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فطور الإيراني عادةً خبز وشاي وجبن أبيض طري.",
+      "text_markdown": "فطور الإيراني عادةً خبز وشاي وجبن أبيض طري.",
+      "tts": {
+        "text": "فطور الإيراني عادةً خبز وشاي وجبن أبيض طري.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الرابع — الكباب واليخنة الصبورة",
+      "text_markdown": "الفصل الرابع — الكباب واليخنة الصبورة"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كلمة كباب أصلها فارسي.",
+      "text_markdown": "كلمة كباب أصلها فارسي.",
+      "tts": {
+        "text": "كلمة كباب أصلها فارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هي كَباب، وتعني اللحم المطبوخ على النار.",
+      "text_markdown": "هي كَباب، وتعني اللحم المطبوخ على النار.",
+      "tts": {
+        "text": "هي كَباب وتعني اللحم المطبوخ على النار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الفرس يشوون لحم الضأن على أسياخ طويلة مسطحة منذ آلاف السنين.",
+      "text_markdown": "الفرس يشوون لحم الضأن على أسياخ طويلة مسطحة منذ آلاف السنين.",
+      "tts": {
+        "text": "الفرس يشوون لحم الضأن على أسياخ طويلة مسطحة منذ آلاف السنين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أشهر كباب اليوم هو الكوبيدة.",
+      "text_markdown": "أشهر كباب اليوم هو الكوبيدة.",
+      "tts": {
+        "text": "أشهر كباب اليوم هو الكوبيدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هو لحم ضأن أو بقر مفروم، مخلوط بالبصل والملح، يُضغط على سيخ مسطح عريض، ويُشوى على الفحم.",
+      "text_markdown": "هو لحم ضأن أو بقر مفروم، مخلوط بالبصل والملح، يُضغط على سيخ مسطح عريض، ويُشوى على الفحم.",
+      "tts": {
+        "text": "هو لحم ضأن أو بقر مفروم مخلوط بالبصل والملح يُضغط على سيخ مسطح عريض ويُشوى على الفحم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يبدو قديماً جداً.",
+      "text_markdown": "يبدو قديماً جداً.",
+      "tts": {
+        "text": "يبدو قديماً جداً.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لكنه ليس كذلك.",
+      "text_markdown": "لكنه ليس كذلك.",
+      "tts": {
+        "text": "لكنه ليس كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وصلت آلة طحن اللحم إلى إيران في أواخر القرن التاسع عشر فقط.",
+      "text_markdown": "وصلت آلة طحن اللحم إلى إيران في أواخر القرن التاسع عشر فقط.",
+      "tts": {
+        "text": "وصلت آلة طحن اللحم إلى إيران في أواخر القرن التاسع عشر فقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الكوبيدة، أكثر الكبابات إيرانيةً، عمره أقل من مئة سنة بقليل.",
+      "text_markdown": "الكوبيدة، أكثر الكبابات إيرانيةً، عمره أقل من مئة سنة بقليل.",
+      "tts": {
+        "text": "الكوبيدة أكثر الكبابات إيرانيةً عمره أقل من مئة سنة بقليل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الكبابات الأقدم تُصنع من اللحم المقطّع.",
+      "text_markdown": "الكبابات الأقدم تُصنع من اللحم المقطّع.",
+      "tts": {
+        "text": "الكبابات الأقدم تُصنع من اللحم المقطّع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الجوجه هو دجاج في الزعفران واللبن.",
+      "text_markdown": "الجوجه هو دجاج في الزعفران واللبن.",
+      "tts": {
+        "text": "الجوجه هو دجاج في الزعفران واللبن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "البَرْج هو شريحة رفيعة من لحم الضأن.",
+      "text_markdown": "البَرْج هو شريحة رفيعة من لحم الضأن.",
+      "tts": {
+        "text": "البَرْج هو شريحة رفيعة من لحم الضأن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يُقدَّم كلاهما على سرير من أرز الزعفران مع طماطم مشوية.",
+      "text_markdown": "يُقدَّم كلاهما على سرير من أرز الزعفران مع طماطم مشوية.",
+      "tts": {
+        "text": "يُقدَّم كلاهما على سرير من أرز الزعفران مع طماطم مشوية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الآن تعرَّف على الطعام الصبور: الخورِش، اليخنة الفارسية.",
+      "text_markdown": "الآن تعرَّف على الطعام الصبور: الخورِش، اليخنة الفارسية.",
+      "tts": {
+        "text": "الآن تعرَّف على الطعام الصبور: الخورِش، اليخنة الفارسية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُطهى الخورِش لساعات طويلة.",
+      "text_markdown": "يُطهى الخورِش لساعات طويلة.",
+      "tts": {
+        "text": "يُطهى الخورِش لساعات طويلة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أشهرها هو الفِسِنْجان.",
+      "text_markdown": "أشهرها هو الفِسِنْجان.",
+      "tts": {
+        "text": "أشهرها هو الفِسِنْجان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هو دجاج أو بط، يُطهى ببطء في صلصة كثيفة من الجوز المطحون وعصير الرمان.",
+      "text_markdown": "هو دجاج أو بط، يُطهى ببطء في صلصة كثيفة من الجوز المطحون وعصير الرمان.",
+      "tts": {
+        "text": "هو دجاج أو بط، يُطهى ببطء في صلصة كثيفة من الجوز المطحون وعصير الرمان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وصفته من أقدم وصفات اليخنة التي وُجدت على الإطلاق.",
+      "text_markdown": "وصفته من أقدم وصفات اليخنة التي وُجدت على الإطلاق.",
+      "tts": {
+        "text": "وصفته من أقدم وصفات اليخنة التي وُجدت على الإطلاق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "نسخة منها مكتوبة على ألواح مسمارية من أطلال برسيبوليس.",
+      "text_markdown": "نسخة منها مكتوبة على ألواح مسمارية من أطلال برسيبوليس.",
+      "tts": {
+        "text": "نسخة منها مكتوبة على ألواح مسمارية من أطلال بيرسيبوليس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذا يجعلها أقدم من ألفين وخمسمائة سنة.",
+      "text_markdown": "هذا يجعلها أقدم من ألفين وخمسمائة سنة.",
+      "tts": {
+        "text": "هذا يجعلها أقدم من ألفين وخمسمائة سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ولا يزال الناس يطهونها بنفس الطريقة.",
+      "text_markdown": "ولا يزال الناس يطهونها بنفس الطريقة.",
+      "tts": {
+        "text": "ولا يزال الناس يطهونها بنفس الطريقة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن الكلاسيكيات أيضاً الغورمة سبزي: لحم ضأن وفاصوليا حمراء وكمية كبيرة من الأعشاب الطازجة، كلها تُطهى مع الليمون المجفف.",
+      "text_markdown": "ومن الكلاسيكيات أيضاً الغورمة سبزي: لحم ضأن وفاصوليا حمراء وكمية كبيرة من الأعشاب الطازجة، كلها تُطهى مع الليمون المجفف.",
+      "tts": {
+        "text": "ومن الكلاسيكيات أيضاً الغورمه سبزي: لحم ضأن وفاصوليا حمراء وكمية كبيرة من الأعشاب الطازجة، كلها تُطهى مع الليمون المجفف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كثير من الإيرانيين يسمونه الطبق الوطني.",
+      "text_markdown": "كثير من الإيرانيين يسمونه الطبق الوطني.",
+      "tts": {
+        "text": "كثير من الإيرانيين يسمونه الطبق الوطني.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الخامس — الزبادي والشاي وأقدم الحلويات",
+      "text_markdown": "الفصل الخامس — الزبادي والشاي وأقدم الحلويات"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الفرس يأكلون الزبادي مع كل شيء.",
+      "text_markdown": "الفرس يأكلون الزبادي مع كل شيء.",
+      "tts": {
+        "text": "الفرس يأكلون الزبادي مع كل شيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الزبادي العادي يُسمى ماست.",
+      "text_markdown": "الزبادي العادي يُسمى ماست.",
+      "tts": {
+        "text": "الزبادي العادي يُسمى ماست.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الماست مع الخيار والنعناع المجفف يُسمى ماست أو خيار.",
+      "text_markdown": "الماست مع الخيار والنعناع المجفف يُسمى ماست أو خيار.",
+      "tts": {
+        "text": "الماست مع الخيار والنعناع المجفف يُسمى ماست أو خيار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "مشروب الزبادي المالح بالنعناع يُسمى دوغ.",
+      "text_markdown": "مشروب الزبادي المالح بالنعناع يُسمى دوغ.",
+      "tts": {
+        "text": "مشروب الزبادي المالح بالنعناع يُسمى دوغ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وهناك أيضاً الكَشك، وهو مصل اللبن المجفف القوي، يُستخدم في الشوربات.",
+      "text_markdown": "وهناك أيضاً الكَشك، وهو مصل اللبن المجفف القوي، يُستخدم في الشوربات.",
+      "tts": {
+        "text": "وهناك أيضاً الكَشك، وهو مصل اللبن المجفف القوي، يُستخدم في الشوربات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم هناك الشاي.",
+      "text_markdown": "ثم هناك الشاي.",
+      "tts": {
+        "text": "ثم هناك الشاي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يشربه الفرس صباحاً وظهراً وليلاً، مُعداً بقوة في إبريق طويل على السَّماوار.",
+      "text_markdown": "يشربه الفرس صباحاً وظهراً وليلاً، مُعداً بقوة في إبريق طويل على السَّماوار.",
+      "tts": {
+        "text": "يشربه الفرس صباحاً وظهراً وليلاً، مُعداً بقوة في إبريق طويل على السَّماوار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الشاي محوري جداً لدرجة أن الناس يتفاجأون حين يعرفون أنه وصل متأخراً.",
+      "text_markdown": "الشاي محوري جداً لدرجة أن الناس يتفاجأون حين يعرفون أنه وصل متأخراً.",
+      "tts": {
+        "text": "الشاي محوري جداً لدرجة أن الناس يتفاجأون حين يعرفون أنه وصل متأخراً.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في معظم التاريخ الفارسي، كان المشروب هو القهوة.",
+      "text_markdown": "في معظم التاريخ الفارسي، كان المشروب هو القهوة.",
+      "tts": {
+        "text": "في معظم التاريخ الفارسي، كان المشروب هو القهوة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "انتشر الشاي فقط في أواخر القرن التاسع عشر.",
+      "text_markdown": "انتشر الشاي فقط في أواخر القرن التاسع عشر.",
+      "tts": {
+        "text": "انتشر الشاي فقط في أواخر القرن التاسع عشر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "اليوم إيران من أكثر دول العالم استهلاكاً للشاي.",
+      "text_markdown": "اليوم إيران من أكثر دول العالم استهلاكاً للشاي.",
+      "tts": {
+        "text": "اليوم إيران من أكثر دول العالم استهلاكاً للشاي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لتناوله طقوس صغيرة خاصة به.",
+      "text_markdown": "لتناوله طقوس صغيرة خاصة به.",
+      "tts": {
+        "text": "لتناوله طقوس صغيرة خاصة به.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تضع مكعب سكر بين أسنانك.",
+      "text_markdown": "تضع مكعب سكر بين أسنانك.",
+      "tts": {
+        "text": "تضع مكعب سكر بين أسنانك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تشرب الشاي من خلال المكعب.",
+      "text_markdown": "تشرب الشاي من خلال المكعب.",
+      "tts": {
+        "text": "تشرب الشاي من خلال المكعب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يذوب المكعب قليلاً.",
+      "text_markdown": "يذوب المكعب قليلاً.",
+      "tts": {
+        "text": "يذوب المكعب قليلاً.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الشاي ساخن وداكن وحلو وهو ينزل.",
+      "text_markdown": "الشاي ساخن وداكن وحلو وهو ينزل.",
+      "tts": {
+        "text": "الشاي ساخن وداكن وحلو وهو ينزل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الآن الحلويات.",
+      "text_markdown": "الآن الحلويات.",
+      "tts": {
+        "text": "الآن الحلويات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الحلويات الفارسية قديمة وغنية وصغيرة الحجم.",
+      "text_markdown": "الحلويات الفارسية قديمة وغنية وصغيرة الحجم.",
+      "tts": {
+        "text": "الحلويات الفارسية قديمة وغنية وصغيرة الحجم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأقدم بينها هو الفالوده.",
+      "text_markdown": "الأقدم بينها هو الفالوده.",
+      "tts": {
+        "text": "الأقدم بينها هو الفالوده.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هو شعيرية رز رفيعة مجمدة في شراب ماء الورد، تُقدَّم مع عصير الليمون والفستق.",
+      "text_markdown": "هو شعيرية رز رفيعة مجمدة في شراب ماء الورد، تُقدَّم مع عصير الليمون والفستق.",
+      "tts": {
+        "text": "هو شعيرية رز رفيعة مجمدة في شراب ماء الورد، تقدم مع عصير الليمون والفستق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يصفه الكتّاب الفارسيون من حوالي أربعمائة سنة قبل الميلاد.",
+      "text_markdown": "يصفه الكتّاب الفارسيون من حوالي أربعمائة سنة قبل الميلاد.",
+      "tts": {
+        "text": "يصفه الكتاب الفارسيون من حوالي أربعمائة سنة قبل الميلاد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هذا يجعل الفالوده من أقدم الحلويات المجمدة في العالم.",
+      "text_markdown": "هذا يجعل الفالوده من أقدم الحلويات المجمدة في العالم.",
+      "tts": {
+        "text": "هذا يجعل الفالوده من أقدم الحلويات المجمدة في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هو أقدم من الآيس كريم بأكثر من ألفَي سنة.",
+      "text_markdown": "هو أقدم من الآيس كريم بأكثر من ألفَي سنة.",
+      "tts": {
+        "text": "هو أقدم من الآيس كريم بأكثر من ألفَي سنة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من الكلاسيكيات الأخرى: البقلاوة من تبريز، أخف من النوع التركي، بالجوز وماء الورد.",
+      "text_markdown": "من الكلاسيكيات الأخرى: البقلاوة من تبريز، أخف من النوع التركي، بالجوز وماء الورد.",
+      "tts": {
+        "text": "من الكلاسيكيات الأخرى، البقلاوة من تبريز، أخف من النوع التركي، بالجوز وماء الورد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الحلوى، عجينة كثيفة من السمسم أو الزعفران.",
+      "text_markdown": "الحلوى، عجينة كثيفة من السمسم أو الزعفران.",
+      "tts": {
+        "text": "الحلوى، عجينة كثيفة من السمسم أو الزعفران.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الكاز من أصفهان، نوغا طري بالفستق.",
+      "text_markdown": "الكاز من أصفهان، نوغا طري بالفستق.",
+      "tts": {
+        "text": "الكاز من أصفهان، نوغا طري بالفستق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "السوهان، توفي زعفراني ذهبي هش.",
+      "text_markdown": "السوهان، توفي زعفراني ذهبي هش.",
+      "tts": {
+        "text": "السوهان، توفي زعفراني ذهبي هش.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "النخودچي من قم، بسكويت صغير من دقيق الحمص.",
+      "text_markdown": "النخودچي من قم، بسكويت صغير من دقيق الحمص.",
+      "tts": {
+        "text": "النخودچي من قم، بسكويت صغير من دقيق الحمص.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "طبق صغير من الحلويات، وكوب شاي، وحديث هادئ طويل.",
+      "text_markdown": "طبق صغير من الحلويات، وكوب شاي، وحديث هادئ طويل.",
+      "tts": {
+        "text": "طبق صغير من الحلويات، وكوب شاي، وحديث هادئ طويل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا هو عصر بعد الظهر الفارسي.",
+      "text_markdown": "هذا هو عصر بعد الظهر الفارسي.",
+      "tts": {
+        "text": "هذا هو عصر بعد الظهر الفارسي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السادس — ما أعطته فارس وما أخذته",
+      "text_markdown": "الفصل السادس — ما أعطته فارس وما أخذته"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت فارس تقع في وسط العالم القديم.",
+      "text_markdown": "كانت فارس تقع في وسط العالم القديم.",
+      "tts": {
+        "text": "كانت فارس تقع في وسط العالم القديم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت القوافل تعبرها.",
+      "text_markdown": "كانت القوافل تعبرها.",
+      "tts": {
+        "text": "كانت القوافل تعبرها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "قامت عليها إمبراطوريات وسقطت.",
+      "text_markdown": "قامت عليها إمبراطوريات وسقطت.",
+      "tts": {
+        "text": "قامت عليها إمبراطوريات وسقطت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكذلك الطعام عبرها في كلا الاتجاهين.",
+      "text_markdown": "وكذلك الطعام عبرها في كلا الاتجاهين.",
+      "tts": {
+        "text": "وكذلك الطعام عبرها في كلا الاتجاهين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انظر إلى الكلمات.",
+      "text_markdown": "انظر إلى الكلمات.",
+      "tts": {
+        "text": "انظر إلى الكلمات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أخذت اللغة الإنجليزية عشرات المفردات الغذائية من الفارسية.",
+      "text_markdown": "أخذت اللغة الإنجليزية عشرات المفردات الغذائية من الفارسية.",
+      "tts": {
+        "text": "أخذت اللغة الإنجليزية عشرات المفردات الغذائية من الفارسية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "السكر، والحلوى، والليمون، والبرتقال، والياسمين، والليلك، والتوليب، والكشك، والشربات، والجنة — كلها كلمات فارسية الأصل.",
+      "text_markdown": "السكر، والحلوى، والليمون، والبرتقال، والياسمين، والليلك، والتوليب، والكشك، والشربات، والجنة — كلها كلمات فارسية الأصل.",
+      "tts": {
+        "text": "السكر والحلوى والليمون والبرتقال والياسمين والليلك والتوليب والكشك والشربات والجنة، كلها كلمات فارسية الأصل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكذلك كلمة \"كش ملك\" في الشطرنج، من \"شاه مات\"، أي \"الملك عاجز\". فارس وضعت كلماتها على ألسنة نصف العالم.",
+      "text_markdown": "وكذلك كلمة \"كش ملك\" في الشطرنج، من \"شاه مات\"، أي \"الملك عاجز\". فارس وضعت كلماتها على ألسنة نصف العالم.",
+      "tts": {
+        "text": "وكذلك كلمة كش ملك في الشطرنج، من شاه مات، أي الملك عاجز. فارس وضعت كلماتها على ألسنة نصف العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انتشر فن طهي الأرز الفارسي نحو الشرق.",
+      "text_markdown": "انتشر فن طهي الأرز الفارسي نحو الشرق.",
+      "tts": {
+        "text": "انتشر فن طهي الأرز الفارسي نحو الشرق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أحب ملوك المغول في الهند الطعام الفارسي، فأحضروا طهاة فارسيين إلى بلاطهم.",
+      "text_markdown": "أحب ملوك المغول في الهند الطعام الفارسي، فأحضروا طهاة فارسيين إلى بلاطهم.",
+      "tts": {
+        "text": "أحب ملوك الموغال في الهند الطعام الفارسي، فأحضروا طهاة فارسيين إلى بلاطهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هؤلاء الطهاة صنعوا البيرياني.",
+      "text_markdown": "هؤلاء الطهاة صنعوا البيرياني.",
+      "tts": {
+        "text": "هؤلاء الطهاة صنعوا البيرياني.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "البلاف، ذلك الطبق من الأرز طويل الحبة والمتبل، المنتشر من البحر المتوسط إلى سهول آسيا الوسطى، جذوره في تقاليد الأرز الفارسي.",
+      "text_markdown": "البلاف، ذلك الطبق من الأرز طويل الحبة والمتبل، المنتشر من البحر المتوسط إلى سهول آسيا الوسطى، جذوره في تقاليد الأرز الفارسي.",
+      "tts": {
+        "text": "البلاف، ذلك الطبق من الأرز طويل الحبة والمتبل، المنتشر من البحر المتوسط إلى سهول آسيا الوسطى، جذوره في تقاليد الأرز الفارسي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انتشرت فاكهة فارس نحو الغرب.",
+      "text_markdown": "انتشرت فاكهة فارس نحو الغرب.",
+      "tts": {
+        "text": "انتشرت فاكهة فارس نحو الغرب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "زرع الرومان الخوخ في إيطاليا لأنهم أخذوه من فارس.",
+      "text_markdown": "زرع الرومان الخوخ في إيطاليا لأنهم أخذوه من فارس.",
+      "tts": {
+        "text": "زرع الرومان الخوخ في إيطاليا لأنهم أخذوه من فارس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وصل السبانخ إلى أوروبا عبر إسبانيا، على يد تجار من العالم الفارسي.",
+      "text_markdown": "وصل السبانخ إلى أوروبا عبر إسبانيا، على يد تجار من العالم الفارسي.",
+      "tts": {
+        "text": "وصل السبانخ إلى أوروبا عبر إسبانيا، على يد تجار من العالم الفارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "التوليب، رمز هولندا، زُرع أولاً في فارس وتركيا قبل أن يصل إلى هولندا.",
+      "text_markdown": "التوليب، رمز هولندا، زُرع أولاً في فارس وتركيا قبل أن يصل إلى هولندا.",
+      "tts": {
+        "text": "التوليب، رمز هولندا، زُرع أولاً في فارس وتركيا قبل أن يصل إلى هولندا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن فارس أيضاً أخذت من غيرها.",
+      "text_markdown": "لكن فارس أيضاً أخذت من غيرها.",
+      "tts": {
+        "text": "لكن فارس أيضاً أخذت من غيرها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "المغول الذين غزوا فارس في القرن الثالث عشر أحضروا معهم شغفاً أقوى باللحوم المشوية.",
+      "text_markdown": "المغول الذين غزوا فارس في القرن الثالث عشر أحضروا معهم شغفاً أقوى باللحوم المشوية.",
+      "tts": {
+        "text": "المغول الذين غزوا فارس في القرن الثالث عشر أحضروا معهم شغفاً أقوى باللحوم المشوية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الزراعة العربية أدخلت قصب السكر والحمضيات والأرز من الجنوب والشرق.",
+      "text_markdown": "الزراعة العربية أدخلت قصب السكر والحمضيات والأرز من الجنوب والشرق.",
+      "tts": {
+        "text": "الزراعة العربية أدخلت قصب السكر والحمضيات والأرز من الجنوب والشرق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "جاء السماور من الشمال، من روسيا، في القرن الثامن عشر.",
+      "text_markdown": "جاء السماور من الشمال، من روسيا، في القرن الثامن عشر.",
+      "tts": {
+        "text": "جاء السامافار من الشمال، من روسيا، في القرن الثامن عشر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قال المؤرخ الإغريقي هيرودوت، الذي كتب منذ ألفين وخمسمئة عام، إن الفرس كانوا يحتفلون بأعياد ميلادهم بأبهى مما يحتفلون بأي يوم آخر في السنة.",
+      "text_markdown": "قال المؤرخ الإغريقي هيرودوت، الذي كتب منذ ألفين وخمسمئة عام، إن الفرس كانوا يحتفلون بأعياد ميلادهم بأبهى مما يحتفلون بأي يوم آخر في السنة.",
+      "tts": {
+        "text": "قال المؤرخ الإغريقي هيرودوت، الذي كتب منذ ألفين وخمسمئة عام، إن الفرس كانوا يحتفلون بأعياد ميلادهم بأبهى مما يحتفلون بأي يوم آخر في السنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كتب أنه في ذلك اليوم تُعدّ المائدة بشكل أوفر من المعتاد.",
+      "text_markdown": "كتب أنه في ذلك اليوم تُعدّ المائدة بشكل أوفر من المعتاد.",
+      "tts": {
+        "text": "كتب أنه في ذلك اليوم تُعدّ المائدة بشكل أوفر من المعتاد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بعض الأشياء لم تتغير.",
+      "text_markdown": "بعض الأشياء لم تتغير.",
+      "tts": {
+        "text": "بعض الأشياء لم تتغير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السابع — على المائدة الفارسية",
+      "text_markdown": "الفصل السابع — على المائدة الفارسية"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الآن نجلس إلى الطاولة.",
+      "text_markdown": "الآن نجلس إلى الطاولة.",
+      "tts": {
+        "text": "الآن نجلس إلى الطاولة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبدأ السنة الفارسية عند الاعتدال الربيعي، حوالي الحادي والعشرين من مارس.",
+      "text_markdown": "تبدأ السنة الفارسية عند الاعتدال الربيعي، حوالي الحادي والعشرين من مارس.",
+      "tts": {
+        "text": "تبدأ السنة الفارسية عند الاعتدال الربيعي، حوالي الحادي والعشرين من مارس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُسمى هذا العيد نوروز، أي اليوم الجديد.",
+      "text_markdown": "يُسمى هذا العيد نوروز، أي اليوم الجديد.",
+      "tts": {
+        "text": "يُسمى هذا العيد نوروز، أي اليوم الجديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهو أهم عطلة في العام.",
+      "text_markdown": "وهو أهم عطلة في العام.",
+      "tts": {
+        "text": "وهو أهم عطلة في العام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُعدّ كل عائلة مائدة خاصة تُسمى هفت سين.",
+      "text_markdown": "تُعدّ كل عائلة مائدة خاصة تُسمى هفت سين.",
+      "tts": {
+        "text": "تُعدّ كل عائلة مائدة خاصة تُسمى هفت سين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هفت تعني سبعة.",
+      "text_markdown": "هفت تعني سبعة.",
+      "tts": {
+        "text": "هفت تعني سبعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سين هي حرف السين. وتضم المائدة سبعة أشياء تبدأ بحرف السين في اللغة الفارسية.",
+      "text_markdown": "سين هي حرف السين. وتضم المائدة سبعة أشياء تبدأ بحرف السين في اللغة الفارسية.",
+      "tts": {
+        "text": "سين هي حرف السين. وتضم المائدة سبعة أشياء تبدأ بحرف السين في اللغة الفارسية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هناك سيب، وهو التفاح.",
+      "text_markdown": "هناك سيب، وهو التفاح.",
+      "tts": {
+        "text": "هناك سيب، وهو التفاح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "سِكّة، وهي العملة المعدنية.",
+      "text_markdown": "سِكّة، وهي العملة المعدنية.",
+      "tts": {
+        "text": "سِكّة، وهي العملة المعدنية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "سُنبُل، وهي زهرة الياسمين البري.",
+      "text_markdown": "سُنبُل، وهي زهرة الياسمين البري.",
+      "tts": {
+        "text": "سُنبُل، وهي زهرة الياسمين البري.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "سَمَنو، وهو حلوى القمح الحلوة.",
+      "text_markdown": "سَمَنو، وهو حلوى القمح الحلوة.",
+      "tts": {
+        "text": "سَمَنو، وهو حلوى القمح الحلوة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "سَنجَد، وهو ثمر شجرة الزيزفون المجفف.",
+      "text_markdown": "سَنجَد، وهو ثمر شجرة الزيزفون المجفف.",
+      "tts": {
+        "text": "سَنجَد، وهو ثمر شجرة الزيزفون المجفف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "سُماق، وهو توابل السماق المعروفة.",
+      "text_markdown": "سُماق، وهو توابل السماق المعروفة.",
+      "tts": {
+        "text": "سوماغ، وهو توابل السماق المعروفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "سِركه، وهو الخل.",
+      "text_markdown": "سِركه، وهو الخل.",
+      "tts": {
+        "text": "سِركه، وهو الخل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "كل واحدة ترمز إلى شيء — الصحة، والثروة، والجمال، والصبر، والحب، وشروق الشمس، ومرور الوقت.",
+      "text_markdown": "كل واحدة ترمز إلى شيء — الصحة، والثروة، والجمال، والصبر، والحب، وشروق الشمس، ومرور الوقت.",
+      "tts": {
+        "text": "كل واحدة ترمز إلى شيء، الصحة، والثروة، والجمال، والصبر، والحب، وشروق الشمس، ومرور الوقت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وجبة رأس السنة هي سبزي بولو مع ماهي.",
+      "text_markdown": "وجبة رأس السنة هي سبزي بولو مع ماهي.",
+      "tts": {
+        "text": "وجبة رأس السنة هي سَبزي بولو مع ماهي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه أرز باللون الأخضر الداكن من الأعشاب الطازجة المفرومة، يُقدَّم مع السمك الأبيض.",
+      "text_markdown": "إنه أرز باللون الأخضر الداكن من الأعشاب الطازجة المفرومة، يُقدَّم مع السمك الأبيض.",
+      "tts": {
+        "text": "إنه أرز باللون الأخضر الداكن من الأعشاب الطازجة المفرومة، يُقدَّم مع السمك الأبيض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الربيع في طبق.",
+      "text_markdown": "الربيع في طبق.",
+      "tts": {
+        "text": "الربيع في طبق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن الأطباق الكلاسيكية الأخرى آش رِشته، وهو شوربة كثيفة من الفاصولياء والأعشاب والبصل المقلي والكشك والمعكرونة.",
+      "text_markdown": "ومن الأطباق الكلاسيكية الأخرى آش رِشته، وهو شوربة كثيفة من الفاصولياء والأعشاب والبصل المقلي والكشك والمعكرونة.",
+      "tts": {
+        "text": "ومن الأطباق الكلاسيكية الأخرى آش رِشتِه، وهو شوربة كثيفة من الفاصولياء والأعشاب والبصل المقلي والكاشك والمعكرونة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقول الفرس إنه يجب أن تأكله قبل اتخاذ قرار صعب.",
+      "text_markdown": "يقول الفرس إنه يجب أن تأكله قبل اتخاذ قرار صعب.",
+      "tts": {
+        "text": "يقول الفرس إنه يجب أن تأكله قبل اتخاذ قرار صعب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "المعكرونة، كما يقولون، تفك خيوط القدر.",
+      "text_markdown": "المعكرونة، كما يقولون، تفك خيوط القدر.",
+      "tts": {
+        "text": "المعكرونة، كما يقولون، تفك خيوط القدر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بيت الشاي أيضاً اختراع فارسي.",
+      "text_markdown": "بيت الشاي أيضاً اختراع فارسي.",
+      "tts": {
+        "text": "بيت الشاي أيضاً اختراع فارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُسمى القهوة خانه، أي بيت القهوة حرفياً، رغم أن المشروب أصبح الشاي الآن.",
+      "text_markdown": "يُسمى القهوة خانه، أي بيت القهوة حرفياً، رغم أن المشروب أصبح الشاي الآن.",
+      "tts": {
+        "text": "يُسمى القهوة خانه، أي بيت القهوة حرفياً، رغم أن المشروب أصبح الشاي الآن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "منذ خمسمائة عام، يجتمع الرجال والنساء هناك للعب الطاولة والاستماع إلى الشعر والنقاش في أمور الدنيا.",
+      "text_markdown": "منذ خمسمائة عام، يجتمع الرجال والنساء هناك للعب الطاولة والاستماع إلى الشعر والنقاش في أمور الدنيا.",
+      "tts": {
+        "text": "منذ خمسمائة عام، يجتمع الرجال والنساء هناك للعب الطاولة والاستماع إلى الشعر والنقاش في أمور الدنيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كثير من القصص الفارسية العظيمة رُويت لأول مرة على كأس بخار.",
+      "text_markdown": "كثير من القصص الفارسية العظيمة رُويت لأول مرة على كأس بخار.",
+      "tts": {
+        "text": "كثير من القصص الفارسية العظيمة رُويت لأول مرة على كأس بخار.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "طبيب فارسي شهير هو ابن سينا، الذي عاش منذ ألف سنة، علّم أن كل طعام إما حار أو بارد.",
+      "text_markdown": "طبيب فارسي شهير هو ابن سينا، الذي عاش منذ ألف سنة، علّم أن كل طعام إما حار أو بارد.",
+      "tts": {
+        "text": "طبيب فارسي شهير هو ابن سينا، الذي عاش منذ ألف سنة، علّم أن كل طعام إما حار أو بارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الزعفران والجوز ولحم الضأن من الأطعمة الحارة.",
+      "text_markdown": "الزعفران والجوز ولحم الضأن من الأطعمة الحارة.",
+      "tts": {
+        "text": "الزعفران والجوز ولحم الضأن من الأطعمة الحارة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الزبادي والخيار والبطيخ من الأطعمة الباردة.",
+      "text_markdown": "الزبادي والخيار والبطيخ من الأطعمة الباردة.",
+      "tts": {
+        "text": "الزبادي والخيار والبطيخ من الأطعمة الباردة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الوجبة الجيدة توازن بينها.",
+      "text_markdown": "الوجبة الجيدة توازن بينها.",
+      "tts": {
+        "text": "الوجبة الجيدة توازن بينها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "في كثير من البيوت الفارسية، لا تزال هذه الفكرة حية وقت الغداء.",
+      "text_markdown": "في كثير من البيوت الفارسية، لا تزال هذه الفكرة حية وقت الغداء.",
+      "tts": {
+        "text": "في كثير من البيوت الفارسية، لا تزال هذه الفكرة حية وقت الغداء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الطعام الفارسي صبور.",
+      "text_markdown": "الطعام الفارسي صبور.",
+      "tts": {
+        "text": "الطعام الفارسي صبور.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهو كريم.",
+      "text_markdown": "وهو كريم.",
+      "tts": {
+        "text": "وهو كريم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنه قديم.",
+      "text_markdown": "إنه قديم.",
+      "tts": {
+        "text": "إنه قديم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ولا يزال يُطهى كل يوم على ملايين الموقد.",
+      "text_markdown": "ولا يزال يُطهى كل يوم على ملايين الموقد.",
+      "tts": {
+        "text": "ولا يزال يُطهى كل يوم على ملايين الموقد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "وداعاً",
+      "text_markdown": "وداعاً"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه نهاية جولتنا القصيرة.",
+      "text_markdown": "هذه نهاية جولتنا القصيرة.",
+      "tts": {
+        "text": "هذه نهاية جولتنا القصيرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أتمنى أن تكون قد تعلمت شيئاً.",
+      "text_markdown": "أتمنى أن تكون قد تعلمت شيئاً.",
+      "tts": {
+        "text": "أتمنى أن تكون قد تعلمت شيئاً.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أتمنى أن يكون شيء في الصفحة قد أشعرك بالجوع.",
+      "text_markdown": "أتمنى أن يكون شيء في الصفحة قد أشعرك بالجوع.",
+      "tts": {
+        "text": "أتمنى أن يكون شيء في الصفحة قد أشعرك بالجوع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الزعفران والأرز.",
+      "text_markdown": "الزعفران والأرز.",
+      "tts": {
+        "text": "الزعفران والأرز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الرمان والجوز.",
+      "text_markdown": "الرمان والجوز.",
+      "tts": {
+        "text": "الرمان والجوز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "حلوى صغيرة على طبق صغير.",
+      "text_markdown": "حلوى صغيرة على طبق صغير.",
+      "tts": {
+        "text": "حلوى صغيرة على طبق صغير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن استطعت، ابحث عن مطعم فارسي قريب منك.",
+      "text_markdown": "إن استطعت، ابحث عن مطعم فارسي قريب منك.",
+      "tts": {
+        "text": "إن استطعت، ابحث عن مطعم فارسي قريب منك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أو افتح كتاب طبخ فارسي.",
+      "text_markdown": "أو افتح كتاب طبخ فارسي.",
+      "tts": {
+        "text": "أو افتح كتاب طبخ فارسي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جرب يخنة واحدة.",
+      "text_markdown": "جرب يخنة واحدة.",
+      "tts": {
+        "text": "جرب يخنة واحدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "جرب كوباً واحداً من الشاي.",
+      "text_markdown": "جرب كوباً واحداً من الشاي.",
+      "tts": {
+        "text": "جرب كوباً واحداً من الشاي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذا الطعام ينتظر منذ آلاف السنين.",
+      "text_markdown": "هذا الطعام ينتظر منذ آلاف السنين.",
+      "tts": {
+        "text": "هذا الطعام ينتظر منذ آلاف السنين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "بإمكانه أن ينتظرك أيضاً.",
+      "text_markdown": "بإمكانه أن ينتظرك أيضاً.",
+      "tts": {
+        "text": "بإمكانه أن ينتظرك أيضاً.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "شكراً لاستماعك.",
+      "text_markdown": "شكراً لاستماعك.",
+      "tts": {
+        "text": "شكراً لاستماعك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اطبخ شيئاً.",
+      "text_markdown": "اطبخ شيئاً.",
+      "tts": {
+        "text": "اطبخ شيئاً.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تناول الطعام مع الناس.",
+      "text_markdown": "تناول الطعام مع الناس.",
+      "tts": {
+        "text": "تناول الطعام مع الناس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أنا Kym.",
+      "text_markdown": "أنا Kym.",
+      "tts": {
+        "text": "أنا كيم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وداعاً.",
+      "text_markdown": "وداعاً.",
+      "tts": {
+        "text": "وداعاً.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

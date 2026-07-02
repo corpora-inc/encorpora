@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La toundra",
+      "text_markdown": "La toundra"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Où pousse ce biome",
+      "text_markdown": "Où pousse ce biome"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bienvenue dans la toundra.",
+      "text_markdown": "Bienvenue dans la toundra.",
+      "tts": {
+        "text": "Bienvenue dans la toundra.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est l'un des grands biomes du monde.",
+      "text_markdown": "C'est l'un des grands biomes du monde.",
+      "tts": {
+        "text": "C'est l'un des grands biomes du monde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un biome est une partie de la Terre avec son propre climat, ses plantes et ses animaux.",
+      "text_markdown": "Un biome est une partie de la Terre avec son propre climat, ses plantes et ses animaux.",
+      "tts": {
+        "text": "Un biome est une partie de la Terre avec son propre climat, ses plantes et ses animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est une terre froide et ouverte, trop froide pour que les arbres y poussent.",
+      "text_markdown": "La toundra est une terre froide et ouverte, trop froide pour que les arbres y poussent.",
+      "tts": {
+        "text": "La toundra est une terre froide et ouverte, trop froide pour que les arbres y poussent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le mot toundra vient d'un ancien mot qui signifie une plaine sans arbres.",
+      "text_markdown": "Le mot toundra vient d'un ancien mot qui signifie une plaine sans arbres.",
+      "tts": {
+        "text": "Le mot toundra vient d'un ancien mot qui signifie une plaine sans arbres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est le biome le plus froid sur la terre ferme.",
+      "text_markdown": "La toundra est le biome le plus froid sur la terre ferme.",
+      "tts": {
+        "text": "La toundra est le biome le plus froid sur la terre ferme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La majeure partie de la toundra forme un large anneau autour du sommet du monde.",
+      "text_markdown": "La majeure partie de la toundra forme un large anneau autour du sommet du monde.",
+      "tts": {
+        "text": "La majeure partie de la toundra forme un large anneau autour du sommet du monde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle couvre les bords nord du Canada, de l'Alaska et du Groenland, en Amérique du Nord.",
+      "text_markdown": "Elle couvre les bords nord du Canada, de l'Alaska et du Groenland, en Amérique du Nord.",
+      "tts": {
+        "text": "Elle couvre les bords nord du Canada, de l'Alaska et du Groenland, en Amérique du Nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle couvre l'extrême nord de la Norvège, de la Suède et de la Finlande, en Europe du Nord.",
+      "text_markdown": "Elle couvre l'extrême nord de la Norvège, de la Suède et de la Finlande, en Europe du Nord.",
+      "tts": {
+        "text": "Elle couvre l'extrême nord de la Norvège, de la Suède et de la Finlande, en Europe du Nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle couvre la longue côte nord de la Russie, tout en haut de l'Asie.",
+      "text_markdown": "Elle couvre la longue côte nord de la Russie, tout en haut de l'Asie.",
+      "tts": {
+        "text": "Elle couvre la longue côte nord de la Russie, tout en haut de l'Asie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cet anneau de terre froide se trouve au nord de la forêt boréale et autour de la mer gelée.",
+      "text_markdown": "Cet anneau de terre froide se trouve au nord de la forêt boréale et autour de la mer gelée.",
+      "tts": {
+        "text": "Cet anneau de terre froide se trouve au nord de la forêt boréale et autour de la mer gelée.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il existe aussi un autre type de toundra.",
+      "text_markdown": "Il existe aussi un autre type de toundra.",
+      "tts": {
+        "text": "Il existe aussi un autre type de toundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haut sur les grandes montagnes, plus haut que les derniers arbres, la même terre froide et ouverte apparaît.",
+      "text_markdown": "Haut sur les grandes montagnes, plus haut que les derniers arbres, la même terre froide et ouverte apparaît.",
+      "tts": {
+        "text": "Haut sur les grandes montagnes, plus haut que les derniers arbres, la même terre froide et ouverte apparaît.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cette toundra de montagne se trouve sur les hauts sommets du monde entier, même près du milieu chaud de la Terre.",
+      "text_markdown": "Cette toundra de montagne se trouve sur les hauts sommets du monde entier, même près du milieu chaud de la Terre.",
+      "tts": {
+        "text": "Cette toundra de montagne se trouve sur les hauts sommets du monde entier, même près du milieu chaud de la Terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Partout où elle s'étend, la toundra est une terre de plantes basses, de vent froid et de vaste ciel ouvert.",
+      "text_markdown": "Partout où elle s'étend, la toundra est une terre de plantes basses, de vent froid et de vaste ciel ouvert.",
+      "tts": {
+        "text": "Partout où elle s'étend, la toundra est une terre de plantes basses, de vent froid et de vaste ciel ouvert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il n'y a pas de forêts ici.",
+      "text_markdown": "Il n'y a pas de forêts ici.",
+      "tts": {
+        "text": "Il n'y a pas de forêts ici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol est gelé dur pendant la plus grande partie de l'année.",
+      "text_markdown": "Le sol est gelé dur pendant la plus grande partie de l'année.",
+      "tts": {
+        "text": "Le sol est gelé dur pendant la plus grande partie de l'année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais même dans ce lieu froid, la vie trouve un chemin.",
+      "text_markdown": "Mais même dans ce lieu froid, la vie trouve un chemin.",
+      "tts": {
+        "text": "Mais même dans ce lieu froid, la vie trouve un chemin.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le climat",
+      "text_markdown": "Le climat"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est froide, sèche et venteuse pendant la plus grande partie de l'année.",
+      "text_markdown": "La toundra est froide, sèche et venteuse pendant la plus grande partie de l'année.",
+      "tts": {
+        "text": "La toundra est froide, sèche et venteuse pendant la plus grande partie de l'année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'hiver est long, sombre et glacial.",
+      "text_markdown": "L'hiver est long, sombre et glacial.",
+      "tts": {
+        "text": "L'hiver est long, sombre et glacial.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans l'extrême nord, l'hiver peut durer huit ou neuf mois.",
+      "text_markdown": "Dans l'extrême nord, l'hiver peut durer huit ou neuf mois.",
+      "tts": {
+        "text": "Dans l'extrême nord, l'hiver peut durer huit ou neuf mois.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'air peut descendre bien en dessous de zéro, plus froid qu'un congélateur de maison.",
+      "text_markdown": "L'air peut descendre bien en dessous de zéro, plus froid qu'un congélateur de maison.",
+      "tts": {
+        "text": "L'air peut descendre bien en dessous de zéro, plus froid qu'un congélateur de maison.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant de nombreuses semaines au cœur de l'hiver, le soleil ne se lève pas du tout.",
+      "text_markdown": "Pendant de nombreuses semaines au cœur de l'hiver, le soleil ne se lève pas du tout.",
+      "tts": {
+        "text": "Pendant de nombreuses semaines au cœur de l'hiver, le soleil ne se lève pas du tout.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La terre baigne dans un long crépuscule bleu et sombre, jour après jour.",
+      "text_markdown": "La terre baigne dans un long crépuscule bleu et sombre, jour après jour.",
+      "tts": {
+        "text": "La terre baigne dans un long crépuscule bleu et sombre, jour après jour.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des vents forts balaient la terre ouverte, sans arbres pour les ralentir.",
+      "text_markdown": "Des vents forts balaient la terre ouverte, sans arbres pour les ralentir.",
+      "tts": {
+        "text": "Des vents forts balaient la terre ouverte, sans arbres pour les ralentir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le vent soulève la neige sèche et la pousse le long du sol.",
+      "text_markdown": "Le vent soulève la neige sèche et la pousse le long du sol.",
+      "tts": {
+        "text": "Le vent soulève la neige sèche et la pousse le long du sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il tombe très peu de neige ou de pluie ici.",
+      "text_markdown": "Il tombe très peu de neige ou de pluie ici.",
+      "tts": {
+        "text": "Il tombe très peu de neige ou de pluie ici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est si sèche qu'on l'appelle parfois un désert froid.",
+      "text_markdown": "La toundra est si sèche qu'on l'appelle parfois un désert froid.",
+      "tts": {
+        "text": "La toundra est si sèche qu'on l'appelle parfois un désert froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais l'eau qui tombe ne peut pas pénétrer dans le sol gelé.",
+      "text_markdown": "Mais l'eau qui tombe ne peut pas pénétrer dans le sol gelé.",
+      "tts": {
+        "text": "Mais l'eau qui tombe ne peut pas pénétrer dans le sol gelé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle reste donc en surface, et la terre est parsemée de mares peu profondes et de sol humide.",
+      "text_markdown": "Elle reste donc en surface, et la terre est parsemée de mares peu profondes et de sol humide.",
+      "tts": {
+        "text": "Elle reste donc en surface, et la terre est parsemée de mares peu profondes et de sol humide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'été est court et frais.",
+      "text_markdown": "L'été est court et frais.",
+      "tts": {
+        "text": "L'été est court et frais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant quelques semaines, le soleil reste dans le ciel presque tout le jour et toute la nuit.",
+      "text_markdown": "Pendant quelques semaines, le soleil reste dans le ciel presque tout le jour et toute la nuit.",
+      "tts": {
+        "text": "Pendant quelques semaines, le soleil reste dans le ciel presque tout le jour et toute la nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le dessus du sol gelé s'amollit, et la terre devient verte et lumineuse.",
+      "text_markdown": "Le dessus du sol gelé s'amollit, et la terre devient verte et lumineuse.",
+      "tts": {
+        "text": "Le dessus du sol gelé s'amollit, et la terre devient verte et lumineuse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Même en été, l'air reste frais, et le gel peut revenir n'importe quelle nuit.",
+      "text_markdown": "Même en été, l'air reste frais, et le gel peut revenir n'importe quelle nuit.",
+      "tts": {
+        "text": "Même en été, l'air reste frais, et le gel peut revenir n'importe quelle nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis le court été se termine, le soleil descend bas, et le long hiver recommence.",
+      "text_markdown": "Puis le court été se termine, le soleil descend bas, et le long hiver recommence.",
+      "tts": {
+        "text": "Puis le court été se termine, le soleil descend bas, et le long hiver recommence.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terre et l'eau",
+      "text_markdown": "La terre et l'eau"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La chose la plus importante de la toundra se trouve sous vos pieds.",
+      "text_markdown": "La chose la plus importante de la toundra se trouve sous vos pieds.",
+      "tts": {
+        "text": "La chose la plus importante de la toundra se trouve sous vos pieds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sous la surface, le sol est gelé solidement toute l'année.",
+      "text_markdown": "Sous la surface, le sol est gelé solidement toute l'année.",
+      "tts": {
+        "text": "Sous la surface, le sol est gelé solidement toute l'année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce sol gelé s'appelle le pergélisol.",
+      "text_markdown": "Ce sol gelé s'appelle le pergélisol.",
+      "tts": {
+        "text": "Ce sol gelé s'appelle le pergélisol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À certains endroits, le pergélisol descend plus profond que le plus haut bâtiment.",
+      "text_markdown": "À certains endroits, le pergélisol descend plus profond que le plus haut bâtiment.",
+      "tts": {
+        "text": "À certains endroits, le pergélisol descend plus profond que le plus haut bâtiment.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il est gelé depuis des milliers d'années.",
+      "text_markdown": "Il est gelé depuis des milliers d'années.",
+      "tts": {
+        "text": "Il est gelé depuis des milliers d'années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En été, seule la toute première couche du sol dégèle.",
+      "text_markdown": "En été, seule la toute première couche du sol dégèle.",
+      "tts": {
+        "text": "En été, seule la toute première couche du sol dégèle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est dans cette mince couche dégelée que toutes les plantes doivent vivre.",
+      "text_markdown": "C'est dans cette mince couche dégelée que toutes les plantes doivent vivre.",
+      "tts": {
+        "text": "C'est dans cette mince couche dégelée que toutes les plantes doivent vivre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leurs racines ne peuvent pas s'enfoncer, car juste en dessous le sol est dur comme la pierre.",
+      "text_markdown": "Leurs racines ne peuvent pas s'enfoncer, car juste en dessous le sol est dur comme la pierre.",
+      "tts": {
+        "text": "Leurs racines ne peuvent pas s'enfoncer, car juste en dessous le sol est dur comme la pierre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol gelé retient aussi l'eau à la surface.",
+      "text_markdown": "Le sol gelé retient aussi l'eau à la surface.",
+      "tts": {
+        "text": "Le sol gelé retient aussi l'eau à la surface.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pluie et la neige fondue ne peuvent pas s'écouler à travers le pergélisol.",
+      "text_markdown": "La pluie et la neige fondue ne peuvent pas s'écouler à travers le pergélisol.",
+      "tts": {
+        "text": "La pluie et la neige fondue ne peuvent pas s'écouler à travers le pergélisol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alors en été la toundra devient une terre de mares peu profondes, de tourbières et de ruisseaux lents.",
+      "text_markdown": "Alors en été la toundra devient une terre de mares peu profondes, de tourbières et de ruisseaux lents.",
+      "tts": {
+        "text": "Alors en été la toundra devient une terre de mares peu profondes, de tourbières et de ruisseaux lents.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vue d'en haut, la toundra d'été brille de milliers de petits étangs.",
+      "text_markdown": "Vue d'en haut, la toundra d'été brille de milliers de petits étangs.",
+      "tts": {
+        "text": "Vue d'en haut, la toundra d'été brille de milliers de petits étangs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La terre est surtout plate ou doucement vallonnée.",
+      "text_markdown": "La terre est surtout plate ou doucement vallonnée.",
+      "tts": {
+        "text": "La terre est surtout plate ou doucement vallonnée.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À de nombreux endroits, le sol est brisé en formes étranges par le gel et le dégel.",
+      "text_markdown": "À de nombreux endroits, le sol est brisé en formes étranges par le gel et le dégel.",
+      "tts": {
+        "text": "À de nombreux endroits, le sol est brisé en formes étranges par le gel et le dégel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol gèle et se soulève, puis dégèle et se tasse, année après année.",
+      "text_markdown": "Le sol gèle et se soulève, puis dégèle et se tasse, année après année.",
+      "tts": {
+        "text": "Le sol gèle et se soulève, puis dégèle et se tasse, année après année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce lent mouvement fissure le sol en anneaux, en bandes et en petites buttes.",
+      "text_markdown": "Ce lent mouvement fissure le sol en anneaux, en bandes et en petites buttes.",
+      "tts": {
+        "text": "Ce lent mouvement fissure le sol en anneaux, en bandes et en petites buttes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol de la toundra est mince, pauvre et froid.",
+      "text_markdown": "Le sol de la toundra est mince, pauvre et froid.",
+      "tts": {
+        "text": "Le sol de la toundra est mince, pauvre et froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plantes mortes se décomposent très lentement dans le froid, alors la bonne terre se forme lentement.",
+      "text_markdown": "Les plantes mortes se décomposent très lentement dans le froid, alors la bonne terre se forme lentement.",
+      "tts": {
+        "text": "Les plantes mortes se décomposent très lentement dans le froid, alors la bonne terre se forme lentement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est une terre rude, gelée, humide et nue, mais elle est discrètement pleine de vie.",
+      "text_markdown": "C'est une terre rude, gelée, humide et nue, mais elle est discrètement pleine de vie.",
+      "tts": {
+        "text": "C'est une terre rude, gelée, humide et nue, mais elle est discrètement pleine de vie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les plantes",
+      "text_markdown": "Les plantes"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plantes de la toundra sont petites, résistantes et basses sur le sol.",
+      "text_markdown": "Les plantes de la toundra sont petites, résistantes et basses sur le sol.",
+      "tts": {
+        "text": "Les plantes de la toundra sont petites, résistantes et basses sur le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il n'y a pas d'arbres ici, car les arbres ne peuvent pas vivre dans le sol gelé et le vent froid.",
+      "text_markdown": "Il n'y a pas d'arbres ici, car les arbres ne peuvent pas vivre dans le sol gelé et le vent froid.",
+      "tts": {
+        "text": "Il n'y a pas d'arbres ici, car les arbres ne peuvent pas vivre dans le sol gelé et le vent froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À la place, la toundra est couverte de tapis bas de petites plantes.",
+      "text_markdown": "À la place, la toundra est couverte de tapis bas de petites plantes.",
+      "tts": {
+        "text": "À la place, la toundra est couverte de tapis bas de petites plantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rester bas est le secret pour vivre ici.",
+      "text_markdown": "Rester bas est le secret pour vivre ici.",
+      "tts": {
+        "text": "Rester bas est le secret pour vivre ici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Près du sol, le vent est plus faible et l'air est un peu plus chaud.",
+      "text_markdown": "Près du sol, le vent est plus faible et l'air est un peu plus chaud.",
+      "tts": {
+        "text": "Près du sol, le vent est plus faible et l'air est un peu plus chaud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup de plantes de la toundra poussent en coussins serrés ou en tapis épais pour garder leur chaleur.",
+      "text_markdown": "Beaucoup de plantes de la toundra poussent en coussins serrés ou en tapis épais pour garder leur chaleur.",
+      "tts": {
+        "text": "Beaucoup de plantes de la toundra poussent en coussins serrés ou en tapis épais pour garder leur chaleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les mousses poussent épaisses et douces sur une grande partie du sol.",
+      "text_markdown": "Les mousses poussent épaisses et douces sur une grande partie du sol.",
+      "tts": {
+        "text": "Les mousses poussent épaisses et douces sur une grande partie du sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les lichens poussent sur les roches nues et sur le sol en taches grises, vertes et jaunes.",
+      "text_markdown": "Les lichens poussent sur les roches nues et sur le sol en taches grises, vertes et jaunes.",
+      "tts": {
+        "text": "Les lichens poussent sur les roches nues et sur le sol en taches grises, vertes et jaunes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un lichen n'est pas une seule plante mais deux formes de vie qui vivent ensemble comme une seule.",
+      "text_markdown": "Un lichen n'est pas une seule plante mais deux formes de vie qui vivent ensemble comme une seule.",
+      "tts": {
+        "text": "Un lichen n'est pas une seule plante mais deux formes de vie qui vivent ensemble comme une seule.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les lichens peuvent vivre là où presque rien d'autre ne le peut, et ils poussent très lentement.",
+      "text_markdown": "Les lichens peuvent vivre là où presque rien d'autre ne le peut, et ils poussent très lentement.",
+      "tts": {
+        "text": "Les lichens peuvent vivre là où presque rien d'autre ne le peut, et ils poussent très lentement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains lichens de la toundra ont des centaines d'années.",
+      "text_markdown": "Certains lichens de la toundra ont des centaines d'années.",
+      "tts": {
+        "text": "Certains lichens de la toundra ont des centaines d'années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De petites herbes et des plantes à fleurs basses poussent entre les mousses.",
+      "text_markdown": "De petites herbes et des plantes à fleurs basses poussent entre les mousses.",
+      "tts": {
+        "text": "De petites herbes et des plantes à fleurs basses poussent entre les mousses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant le court été, la toundra éclate de fleurs.",
+      "text_markdown": "Pendant le court été, la toundra éclate de fleurs.",
+      "tts": {
+        "text": "Pendant le court été, la toundra éclate de fleurs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant quelques semaines lumineuses, le sol est couvert de minuscules fleurs.",
+      "text_markdown": "Pendant quelques semaines lumineuses, le sol est couvert de minuscules fleurs.",
+      "tts": {
+        "text": "Pendant quelques semaines lumineuses, le sol est couvert de minuscules fleurs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a de petites fleurs jaunes, blanches, roses et violettes partout.",
+      "text_markdown": "Il y a de petites fleurs jaunes, blanches, roses et violettes partout.",
+      "tts": {
+        "text": "Il y a de petites fleurs jaunes, blanches, roses et violettes partout.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plantes doivent fleurir, faire des graines et stocker de la nourriture très vite avant le retour du froid.",
+      "text_markdown": "Les plantes doivent fleurir, faire des graines et stocker de la nourriture très vite avant le retour du froid.",
+      "tts": {
+        "text": "Les plantes doivent fleurir, faire des graines et stocker de la nourriture très vite avant le retour du froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quelques petits arbustes poussent ici aussi, comme le saule nain et le bouleau nain.",
+      "text_markdown": "Quelques petits arbustes poussent ici aussi, comme le saule nain et le bouleau nain.",
+      "tts": {
+        "text": "Quelques petits arbustes poussent ici aussi, comme le saule nain et le bouleau nain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce sont les mêmes sortes d'arbres qui poussent haut dans les terres plus chaudes.",
+      "text_markdown": "Ce sont les mêmes sortes d'arbres qui poussent haut dans les terres plus chaudes.",
+      "tts": {
+        "text": "Ce sont les mêmes sortes d'arbres qui poussent haut dans les terres plus chaudes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais ici ils poussent comme de minuscules buissons, hauts comme votre cheville, rampant le long du sol.",
+      "text_markdown": "Mais ici ils poussent comme de minuscules buissons, hauts comme votre cheville, rampant le long du sol.",
+      "tts": {
+        "text": "Mais ici ils poussent comme de minuscules buissons, hauts comme votre cheville, rampant le long du sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De petites baies mûrissent sur certaines de ces plantes basses à la fin de l'été.",
+      "text_markdown": "De petites baies mûrissent sur certaines de ces plantes basses à la fin de l'été.",
+      "tts": {
+        "text": "De petites baies mûrissent sur certaines de ces plantes basses à la fin de l'été.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les animaux et les habitants de la toundra les récoltent tant qu'ils le peuvent.",
+      "text_markdown": "Les animaux et les habitants de la toundra les récoltent tant qu'ils le peuvent.",
+      "tts": {
+        "text": "Les animaux et les habitants de la toundra les récoltent tant qu'ils le peuvent.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les animaux",
+      "text_markdown": "Les animaux"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les animaux de la toundra sont faits pour vivre avec le froid et le vent.",
+      "text_markdown": "Les animaux de la toundra sont faits pour vivre avec le froid et le vent.",
+      "tts": {
+        "text": "Les animaux de la toundra sont faits pour vivre avec le froid et le vent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup d'entre eux ont une fourrure épaisse ou des plumes épaisses, et une couche de graisse pour rester au chaud.",
+      "text_markdown": "Beaucoup d'entre eux ont une fourrure épaisse ou des plumes épaisses, et une couche de graisse pour rester au chaud.",
+      "tts": {
+        "text": "Beaucoup d'entre eux ont une fourrure épaisse ou des plumes épaisses, et une couche de graisse pour rester au chaud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plus grands animaux de la toundra sont les caribous, aussi appelés rennes.",
+      "text_markdown": "Les plus grands animaux de la toundra sont les caribous, aussi appelés rennes.",
+      "tts": {
+        "text": "Les plus grands animaux de la toundra sont les caribous, aussi appelés rennes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les caribous vivent en grands troupeaux et parcourent de longues distances à travers la terre ouverte.",
+      "text_markdown": "Les caribous vivent en grands troupeaux et parcourent de longues distances à travers la terre ouverte.",
+      "tts": {
+        "text": "Les caribous vivent en grands troupeaux et parcourent de longues distances à travers la terre ouverte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En été ils se nourrissent des plantes de la toundra, et en hiver ils creusent la neige pour trouver des lichens.",
+      "text_markdown": "En été ils se nourrissent des plantes de la toundra, et en hiver ils creusent la neige pour trouver des lichens.",
+      "tts": {
+        "text": "En été ils se nourrissent des plantes de la toundra, et en hiver ils creusent la neige pour trouver des lichens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le bœuf musqué est un autre grand animal de la toundra.",
+      "text_markdown": "Le bœuf musqué est un autre grand animal de la toundra.",
+      "tts": {
+        "text": "Le bœuf musqué est un autre grand animal de la toundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le bœuf musqué a un corps lourd et un épais pelage de longs poils qui pend presque jusqu'au sol.",
+      "text_markdown": "Le bœuf musqué a un corps lourd et un épais pelage de longs poils qui pend presque jusqu'au sol.",
+      "tts": {
+        "text": "Le bœuf musqué a un corps lourd et un épais pelage de longs poils qui pend presque jusqu'au sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand les loups approchent, les bœufs musqués se placent en cercle, tournés vers l'extérieur, pour protéger les petits.",
+      "text_markdown": "Quand les loups approchent, les bœufs musqués se placent en cercle, tournés vers l'extérieur, pour protéger les petits.",
+      "tts": {
+        "text": "Quand les loups approchent, les bœufs musqués se placent en cercle, tournés vers l'extérieur, pour protéger les petits.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les loups suivent les troupeaux à travers la toundra, chassant les vieux et les faibles.",
+      "text_markdown": "Les loups suivent les troupeaux à travers la toundra, chassant les vieux et les faibles.",
+      "tts": {
+        "text": "Les loups suivent les troupeaux à travers la toundra, chassant les vieux et les faibles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le renard arctique est petit, avec une fourrure épaisse qui devient blanche en hiver et brune en été.",
+      "text_markdown": "Le renard arctique est petit, avec une fourrure épaisse qui devient blanche en hiver et brune en été.",
+      "tts": {
+        "text": "Le renard arctique est petit, avec une fourrure épaisse qui devient blanche en hiver et brune en été.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suit les plus grands animaux et mange ce qu'ils laissent derrière eux, et il chasse aussi de petits animaux.",
+      "text_markdown": "Il suit les plus grands animaux et mange ce qu'ils laissent derrière eux, et il chasse aussi de petits animaux.",
+      "tts": {
+        "text": "Il suit les plus grands animaux et mange ce qu'ils laissent derrière eux, et il chasse aussi de petits animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le lièvre arctique est blanc en hiver et a de courtes oreilles pour garder sa chaleur.",
+      "text_markdown": "Le lièvre arctique est blanc en hiver et a de courtes oreilles pour garder sa chaleur.",
+      "tts": {
+        "text": "Le lièvre arctique est blanc en hiver et a de courtes oreilles pour garder sa chaleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sous la neige, de petits animaux appelés lemmings creusent des tunnels et s'affairent tout l'hiver.",
+      "text_markdown": "Sous la neige, de petits animaux appelés lemmings creusent des tunnels et s'affairent tout l'hiver.",
+      "tts": {
+        "text": "Sous la neige, de petits animaux appelés lemmings creusent des tunnels et s'affairent tout l'hiver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les lemmings sont la nourriture du renard, du hibou et de beaucoup d'autres chasseurs.",
+      "text_markdown": "Les lemmings sont la nourriture du renard, du hibou et de beaucoup d'autres chasseurs.",
+      "tts": {
+        "text": "Les lemmings sont la nourriture du renard, du hibou et de beaucoup d'autres chasseurs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le harfang des neiges est un grand hibou blanc qui chasse à travers la toundra ouverte, de jour comme de nuit.",
+      "text_markdown": "Le harfang des neiges est un grand hibou blanc qui chasse à travers la toundra ouverte, de jour comme de nuit.",
+      "tts": {
+        "text": "Le harfang des neiges est un grand hibou blanc qui chasse à travers la toundra ouverte, de jour comme de nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il guette depuis une petite hauteur et fond en silence sur les lemmings et d'autres petits animaux.",
+      "text_markdown": "Il guette depuis une petite hauteur et fond en silence sur les lemmings et d'autres petits animaux.",
+      "tts": {
+        "text": "Il guette depuis une petite hauteur et fond en silence sur les lemmings et d'autres petits animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant le court été, d'immenses volées d'oiseaux arrivent du sud.",
+      "text_markdown": "Pendant le court été, d'immenses volées d'oiseaux arrivent du sud.",
+      "tts": {
+        "text": "Pendant le court été, d'immenses volées d'oiseaux arrivent du sud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des oies, des canards et beaucoup de petits oiseaux viennent nicher sur la toundra humide et pleine d'insectes.",
+      "text_markdown": "Des oies, des canards et beaucoup de petits oiseaux viennent nicher sur la toundra humide et pleine d'insectes.",
+      "tts": {
+        "text": "Des oies, des canards et beaucoup de petits oiseaux viennent nicher sur la toundra humide et pleine d'insectes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils viennent parce que les longues journées d'été et les nombreux insectes offrent beaucoup de nourriture.",
+      "text_markdown": "Ils viennent parce que les longues journées d'été et les nombreux insectes offrent beaucoup de nourriture.",
+      "tts": {
+        "text": "Ils viennent parce que les longues journées d'été et les nombreux insectes offrent beaucoup de nourriture.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant quelques semaines, des nuages de moustiques et de petites mouches remplissent l'air.",
+      "text_markdown": "Pendant quelques semaines, des nuages de moustiques et de petites mouches remplissent l'air.",
+      "tts": {
+        "text": "Pendant quelques semaines, des nuages de moustiques et de petites mouches remplissent l'air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis les oiseaux élèvent vite leurs petits et repartent vers le sud avant le retour du froid.",
+      "text_markdown": "Puis les oiseaux élèvent vite leurs petits et repartent vers le sud avant le retour du froid.",
+      "tts": {
+        "text": "Puis les oiseaux élèvent vite leurs petits et repartent vers le sud avant le retour du froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le long du bord nord, là où la toundra rencontre la mer gelée, l'ours polaire chasse sur la glace.",
+      "text_markdown": "Le long du bord nord, là où la toundra rencontre la mer gelée, l'ours polaire chasse sur la glace.",
+      "tts": {
+        "text": "Le long du bord nord, là où la toundra rencontre la mer gelée, l'ours polaire chasse sur la glace.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les peuples",
+      "text_markdown": "Les peuples"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des gens vivent sur la toundra depuis de nombreux milliers d'années.",
+      "text_markdown": "Des gens vivent sur la toundra depuis de nombreux milliers d'années.",
+      "tts": {
+        "text": "Des gens vivent sur la toundra depuis de nombreux milliers d'années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vivre ici demande une connaissance profonde de la terre froide et de ses animaux.",
+      "text_markdown": "Vivre ici demande une connaissance profonde de la terre froide et de ses animaux.",
+      "tts": {
+        "text": "Vivre ici demande une connaissance profonde de la terre froide et de ses animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Amérique du Nord, les Inuits et d'autres peuples du Nord vivent sur la toundra et la côte gelée depuis très longtemps.",
+      "text_markdown": "En Amérique du Nord, les Inuits et d'autres peuples du Nord vivent sur la toundra et la côte gelée depuis très longtemps.",
+      "tts": {
+        "text": "En Amérique du Nord, les Inuits et d'autres peuples du Nord vivent sur la toundra et la côte gelée depuis très longtemps.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils chassaient le caribou, pêchaient dans les rivières et la mer, et chassaient les phoques le long de la glace.",
+      "text_markdown": "Ils chassaient le caribou, pêchaient dans les rivières et la mer, et chassaient les phoques le long de la glace.",
+      "tts": {
+        "text": "Ils chassaient le caribou, pêchaient dans les rivières et la mer, et chassaient les phoques le long de la glace.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils fabriquaient des vêtements chauds avec des peaux et de la fourrure d'animaux, cousus pour arrêter le vent.",
+      "text_markdown": "Ils fabriquaient des vêtements chauds avec des peaux et de la fourrure d'animaux, cousus pour arrêter le vent.",
+      "tts": {
+        "text": "Ils fabriquaient des vêtements chauds avec des peaux et de la fourrure d'animaux, cousus pour arrêter le vent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils construisaient leurs maisons avec ce que la terre leur donnait, et voyageaient en traîneau sur la neige.",
+      "text_markdown": "Ils construisaient leurs maisons avec ce que la terre leur donnait, et voyageaient en traîneau sur la neige.",
+      "tts": {
+        "text": "Ils construisaient leurs maisons avec ce que la terre leur donnait, et voyageaient en traîneau sur la neige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Europe du Nord, le peuple sami suit les rennes à travers la toundra depuis de nombreuses générations.",
+      "text_markdown": "En Europe du Nord, le peuple sami suit les rennes à travers la toundra depuis de nombreuses générations.",
+      "tts": {
+        "text": "En Europe du Nord, le peuple sami suit les rennes à travers la toundra depuis de nombreuses générations.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les rennes leur donnaient de la viande, du lait, des peaux pour les vêtements, et un moyen de tirer les traîneaux.",
+      "text_markdown": "Les rennes leur donnaient de la viande, du lait, des peaux pour les vêtements, et un moyen de tirer les traîneaux.",
+      "tts": {
+        "text": "Les rennes leur donnaient de la viande, du lait, des peaux pour les vêtements, et un moyen de tirer les traîneaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans le nord de la Russie, de nombreux peuples ont fait de la toundra leur foyer.",
+      "text_markdown": "Dans le nord de la Russie, de nombreux peuples ont fait de la toundra leur foyer.",
+      "tts": {
+        "text": "Dans le nord de la Russie, de nombreux peuples ont fait de la toundra leur foyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les Nénètses, les Tchouktches et d'autres élèvent des rennes à travers ces terres froides depuis très longtemps.",
+      "text_markdown": "Les Nénètses, les Tchouktches et d'autres élèvent des rennes à travers ces terres froides depuis très longtemps.",
+      "tts": {
+        "text": "Les Nénètses, les Tchouktches et d'autres élèvent des rennes à travers ces terres froides depuis très longtemps.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains d'entre eux voyagent encore avec leurs troupeaux aujourd'hui, se déplaçant au rythme des saisons.",
+      "text_markdown": "Certains d'entre eux voyagent encore avec leurs troupeaux aujourd'hui, se déplaçant au rythme des saisons.",
+      "tts": {
+        "text": "Certains d'entre eux voyagent encore avec leurs troupeaux aujourd'hui, se déplaçant au rythme des saisons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En été ils suivent les rennes vers le nord, en direction de la côte.",
+      "text_markdown": "En été ils suivent les rennes vers le nord, en direction de la côte.",
+      "tts": {
+        "text": "En été ils suivent les rennes vers le nord, en direction de la côte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En hiver ils se déplacent vers le sud, vers l'abri de la lisière de la forêt.",
+      "text_markdown": "En hiver ils se déplacent vers le sud, vers l'abri de la lisière de la forêt.",
+      "tts": {
+        "text": "En hiver ils se déplacent vers le sud, vers l'abri de la lisière de la forêt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À travers toutes ces terres, les gens ont appris à lire le temps, la neige et la glace.",
+      "text_markdown": "À travers toutes ces terres, les gens ont appris à lire le temps, la neige et la glace.",
+      "tts": {
+        "text": "À travers toutes ces terres, les gens ont appris à lire le temps, la neige et la glace.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils ont appris les chemins des caribous et des rennes.",
+      "text_markdown": "Ils ont appris les chemins des caribous et des rennes.",
+      "tts": {
+        "text": "Ils ont appris les chemins des caribous et des rennes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils ont appris où les poissons se rassemblaient et quand les oiseaux allaient venir.",
+      "text_markdown": "Ils ont appris où les poissons se rassemblaient et quand les oiseaux allaient venir.",
+      "tts": {
+        "text": "Ils ont appris où les poissons se rassemblaient et quand les oiseaux allaient venir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils ont appris à conserver la nourriture du court été pour tenir tout le long hiver.",
+      "text_markdown": "Ils ont appris à conserver la nourriture du court été pour tenir tout le long hiver.",
+      "tts": {
+        "text": "Ils ont appris à conserver la nourriture du court été pour tenir tout le long hiver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra donne peu et demande beaucoup, mais les gens y mènent de belles vies depuis très longtemps.",
+      "text_markdown": "La toundra donne peu et demande beaucoup, mais les gens y mènent de belles vies depuis très longtemps.",
+      "tts": {
+        "text": "La toundra donne peu et demande beaucoup, mais les gens y mènent de belles vies depuis très longtemps.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leurs chants, leurs récits et leurs langues ont grandi avec le vent froid et la vaste terre ouverte.",
+      "text_markdown": "Leurs chants, leurs récits et leurs langues ont grandi avec le vent froid et la vaste terre ouverte.",
+      "tts": {
+        "text": "Leurs chants, leurs récits et leurs langues ont grandi avec le vent froid et la vaste terre ouverte.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le biome aujourd'hui",
+      "text_markdown": "Le biome aujourd'hui"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est l'un des biomes les plus sauvages et les plus vides, mais elle change vite.",
+      "text_markdown": "La toundra est l'un des biomes les plus sauvages et les plus vides, mais elle change vite.",
+      "tts": {
+        "text": "La toundra est l'un des biomes les plus sauvages et les plus vides, mais elle change vite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tous les biomes, la toundra est celle qui se réchauffe le plus vite.",
+      "text_markdown": "De tous les biomes, la toundra est celle qui se réchauffe le plus vite.",
+      "tts": {
+        "text": "De tous les biomes, la toundra est celle qui se réchauffe le plus vite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'extrême nord devient plus chaud année après année.",
+      "text_markdown": "L'extrême nord devient plus chaud année après année.",
+      "tts": {
+        "text": "L'extrême nord devient plus chaud année après année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À mesure que l'air se réchauffe, le sol gelé commence à dégeler.",
+      "text_markdown": "À mesure que l'air se réchauffe, le sol gelé commence à dégeler.",
+      "tts": {
+        "text": "À mesure que l'air se réchauffe, le sol gelé commence à dégeler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand le pergélisol dégèle, la terre peut s'affaisser, se fissurer et se transformer en boue.",
+      "text_markdown": "Quand le pergélisol dégèle, la terre peut s'affaisser, se fissurer et se transformer en boue.",
+      "tts": {
+        "text": "Quand le pergélisol dégèle, la terre peut s'affaisser, se fissurer et se transformer en boue.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les routes, les maisons et les oléoducs construits sur le sol gelé peuvent se déformer et se briser.",
+      "text_markdown": "Les routes, les maisons et les oléoducs construits sur le sol gelé peuvent se déformer et se briser.",
+      "tts": {
+        "text": "Les routes, les maisons et les oléoducs construits sur le sol gelé peuvent se déformer et se briser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol qui dégèle libère aussi des gaz qui étaient enfermés dans la terre gelée depuis très longtemps.",
+      "text_markdown": "Le sol qui dégèle libère aussi des gaz qui étaient enfermés dans la terre gelée depuis très longtemps.",
+      "tts": {
+        "text": "Le sol qui dégèle libère aussi des gaz qui étaient enfermés dans la terre gelée depuis très longtemps.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ces gaz montent dans l'air et peuvent rendre toute la Terre encore un peu plus chaude.",
+      "text_markdown": "Ces gaz montent dans l'air et peuvent rendre toute la Terre encore un peu plus chaude.",
+      "tts": {
+        "text": "Ces gaz montent dans l'air et peuvent rendre toute la Terre encore un peu plus chaude.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À mesure que la toundra se réchauffe, des arbustes et de petits arbres s'y étendent lentement vers le nord.",
+      "text_markdown": "À mesure que la toundra se réchauffe, des arbustes et de petits arbres s'y étendent lentement vers le nord.",
+      "tts": {
+        "text": "À mesure que la toundra se réchauffe, des arbustes et de petits arbres s'y étendent lentement vers le nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains animaux du sud plus chaud remontent eux aussi vers le nord.",
+      "text_markdown": "Certains animaux du sud plus chaud remontent eux aussi vers le nord.",
+      "tts": {
+        "text": "Certains animaux du sud plus chaud remontent eux aussi vers le nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des gens viennent aussi sur la toundra pour chercher du pétrole, du gaz et du métal dans le sol.",
+      "text_markdown": "Des gens viennent aussi sur la toundra pour chercher du pétrole, du gaz et du métal dans le sol.",
+      "tts": {
+        "text": "Des gens viennent aussi sur la toundra pour chercher du pétrole, du gaz et du métal dans le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leurs routes et leurs machines peuvent laisser sur la terre des marques qui guérissent très lentement dans le froid.",
+      "text_markdown": "Leurs routes et leurs machines peuvent laisser sur la terre des marques qui guérissent très lentement dans le froid.",
+      "tts": {
+        "text": "Leurs routes et leurs machines peuvent laisser sur la terre des marques qui guérissent très lentement dans le froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aujourd'hui, beaucoup de gens et de groupes travaillent à prendre soin de la toundra.",
+      "text_markdown": "Aujourd'hui, beaucoup de gens et de groupes travaillent à prendre soin de la toundra.",
+      "tts": {
+        "text": "Aujourd'hui, beaucoup de gens et de groupes travaillent à prendre soin de la toundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils créent de grands parcs où les caribous et les oiseaux peuvent encore circuler librement.",
+      "text_markdown": "Ils créent de grands parcs où les caribous et les oiseaux peuvent encore circuler librement.",
+      "tts": {
+        "text": "Ils créent de grands parcs où les caribous et les oiseaux peuvent encore circuler librement.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils travaillent avec les gens qui vivent ici depuis de nombreuses générations pour protéger la terre.",
+      "text_markdown": "Ils travaillent avec les gens qui vivent ici depuis de nombreuses générations pour protéger la terre.",
+      "tts": {
+        "text": "Ils travaillent avec les gens qui vivent ici depuis de nombreuses générations pour protéger la terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils étudient la toundra pour comprendre comment elle change et comment la garder en bonne santé.",
+      "text_markdown": "Ils étudient la toundra pour comprendre comment elle change et comment la garder en bonne santé.",
+      "tts": {
+        "text": "Ils étudient la toundra pour comprendre comment elle change et comment la garder en bonne santé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La toundra est fragile et lente à guérir, et elle renferme une énorme réserve de carbone gelé.",
+      "text_markdown": "La toundra est fragile et lente à guérir, et elle renferme une énorme réserve de carbone gelé.",
+      "tts": {
+        "text": "La toundra est fragile et lente à guérir, et elle renferme une énorme réserve de carbone gelé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle mérite qu'on en prenne soin.",
+      "text_markdown": "Elle mérite qu'on en prenne soin.",
+      "tts": {
+        "text": "Elle mérite qu'on en prenne soin.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Conclusion",
+      "text_markdown": "Conclusion"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voilà la toundra.",
+      "text_markdown": "Voilà la toundra.",
+      "tts": {
+        "text": "Voilà la toundra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une terre froide, ouverte et sans arbres, faite de sol gelé, de plantes basses et d'un vaste ciel lumineux, au sommet du monde.",
+      "text_markdown": "Une terre froide, ouverte et sans arbres, faite de sol gelé, de plantes basses et d'un vaste ciel lumineux, au sommet du monde.",
+      "tts": {
+        "text": "Une terre froide, ouverte et sans arbres, faite de sol gelé, de plantes basses et d'un vaste ciel lumineux, au sommet du monde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si vous vous y trouvez un jour, restez immobile une minute.",
+      "text_markdown": "Si vous vous y trouvez un jour, restez immobile une minute.",
+      "tts": {
+        "text": "Si vous vous y trouvez un jour, restez immobile une minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentez le vent froid parcourir la terre ouverte.",
+      "text_markdown": "Sentez le vent froid parcourir la terre ouverte.",
+      "tts": {
+        "text": "Sentez le vent froid parcourir la terre ouverte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baissez les yeux vers les minuscules fleurs et la mousse douce sous vos pieds.",
+      "text_markdown": "Baissez les yeux vers les minuscules fleurs et la mousse douce sous vos pieds.",
+      "tts": {
+        "text": "Baissez les yeux vers les minuscules fleurs et la mousse douce sous vos pieds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Levez les yeux vers le ciel immense et vide.",
+      "text_markdown": "Levez les yeux vers le ciel immense et vide.",
+      "tts": {
+        "text": "Levez les yeux vers le ciel immense et vide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vous sentirez le cœur calme et patient du biome battre autour de vous.",
+      "text_markdown": "Vous sentirez le cœur calme et patient du biome battre autour de vous.",
+      "tts": {
+        "text": "Vous sentirez le cœur calme et patient du biome battre autour de vous.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

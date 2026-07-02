@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "version": "2.0.0",
+  "language": "nl",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord vooraf voor de lezer",
+      "text_markdown": "Een woord vooraf voor de lezer"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoi.",
+      "text_markdown": "Hoi.",
+      "tts": {
+        "text": "Hoi.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ik ben Kym.",
+      "text_markdown": "Ik ben Kym.",
+      "tts": {
+        "text": "Ik ben Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ik hou van eten.",
+      "text_markdown": "Ik hou van eten.",
+      "tts": {
+        "text": "Ik hou van eten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ik hou van verhalen over eten.",
+      "text_markdown": "Ik hou van verhalen over eten.",
+      "tts": {
+        "text": "Ik hou van verhalen over eten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een klein boek over een grote keuken.",
+      "text_markdown": "Dit is een klein boek over een grote keuken.",
+      "tts": {
+        "text": "Dit is een klein boek over een grote keuken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die keuken is de Perzische keuken.",
+      "text_markdown": "Die keuken is de Perzische keuken.",
+      "tts": {
+        "text": "Die keuken is de Perzische keuken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is de keuken van Iran.",
+      "text_markdown": "Het is de keuken van Iran.",
+      "tts": {
+        "text": "Het is de keuken van Iran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het is ook de keuken van een veel ouder land, Perzië.",
+      "text_markdown": "Het is ook de keuken van een veel ouder land, Perzië.",
+      "tts": {
+        "text": "Het is ook de keuken van een veel ouder land, Perzië.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzië is een van de oudste plekken op aarde waar mensen bewust voedsel verbouwden.",
+      "text_markdown": "Perzië is een van de oudste plekken op aarde waar mensen bewust voedsel verbouwden.",
+      "tts": {
+        "text": "Perzië is een van de oudste plekken op aarde waar mensen bewust voedsel verbouwden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarwe, gerst, perzik, abrikoos, granaatappel, spinazie en saffraan kwamen daar vandaan.",
+      "text_markdown": "Tarwe, gerst, perzik, abrikoos, granaatappel, spinazie en saffraan kwamen daar vandaan.",
+      "tts": {
+        "text": "Tarwe, gerst, perzik, abrikoos, granaatappel, spinazie en saffraan kwamen daar vandaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We beginnen met het land.",
+      "text_markdown": "We beginnen met het land.",
+      "tts": {
+        "text": "We beginnen met het land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daarna kijken we naar wat daar groeit.",
+      "text_markdown": "Daarna kijken we naar wat daar groeit.",
+      "tts": {
+        "text": "Daarna kijken we naar wat daar groeit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daarna kijken we naar rijst, brood, vlees en stoofgerechten.",
+      "text_markdown": "Daarna kijken we naar rijst, brood, vlees en stoofgerechten.",
+      "tts": {
+        "text": "Daarna kijken we naar rijst, brood, vlees en stoofgerechten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aan het eind weet je wat op een Perzische tafel staat, en waar het vandaan komt.",
+      "text_markdown": "Aan het eind weet je wat op een Perzische tafel staat, en waar het vandaan komt.",
+      "tts": {
+        "text": "Aan het eind weet je wat op een Perzische tafel staat, en waar het vandaan komt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ga zitten.",
+      "text_markdown": "Ga zitten.",
+      "tts": {
+        "text": "Ga zitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Schenk wat thee in.",
+      "text_markdown": "Schenk wat thee in.",
+      "tts": {
+        "text": "Schenk wat thee in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Laten we beginnen.",
+      "text_markdown": "Laten we beginnen.",
+      "tts": {
+        "text": "Laten we beginnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 1 — Het land waar de landbouw begon",
+      "text_markdown": "Hoofdstuk 1 — Het land waar de landbouw begon"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzië is een hoog en droog land.",
+      "text_markdown": "Perzië is een hoog en droog land.",
+      "tts": {
+        "text": "Perzië is een hoog en droog land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het ligt tussen de Kaspische Zee in het noorden en de Perzische Golf in het zuiden.",
+      "text_markdown": "Het ligt tussen de Kaspische Zee in het noorden en de Perzische Golf in het zuiden.",
+      "tts": {
+        "text": "Het ligt tussen de Kaspische Zee in het noorden en de Perzische Golf in het zuiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In het westen ligt Mesopotamië.",
+      "text_markdown": "In het westen ligt Mesopotamië.",
+      "tts": {
+        "text": "In het westen ligt Mesopotamië.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In het oosten ligt India.",
+      "text_markdown": "In het oosten ligt India.",
+      "tts": {
+        "text": "In het oosten ligt India.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "In het midden liggen bergen en woestijnen.",
+      "text_markdown": "In het midden liggen bergen en woestijnen.",
+      "tts": {
+        "text": "In het midden liggen bergen en woestijnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vlak daarnaast, zo'n tienduizend jaar geleden, verbouwden mensen voor het eerst bewust tarwe en gerst.",
+      "text_markdown": "Vlak daarnaast, zo'n tienduizend jaar geleden, verbouwden mensen voor het eerst bewust tarwe en gerst.",
+      "tts": {
+        "text": "Vlak daarnaast, zo'n tienduizend jaar geleden, verbouwden mensen voor het eerst bewust tarwe en gerst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daar werd de landbouw geboren.",
+      "text_markdown": "Daar werd de landbouw geboren.",
+      "tts": {
+        "text": "Daar werd de landbouw geboren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Perzië was een van de eerste plekken waar men dat leerde.",
+      "text_markdown": "Perzië was een van de eerste plekken waar men dat leerde.",
+      "tts": {
+        "text": "Perzië was een van de eerste plekken waar men dat leerde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die lange voorsprong zie je op elk Perzisch bord.",
+      "text_markdown": "Die lange voorsprong zie je op elk Perzisch bord.",
+      "tts": {
+        "text": "Die lange voorsprong zie je op elk Perzisch bord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De perzik komt uit Perzië.",
+      "text_markdown": "De perzik komt uit Perzië.",
+      "tts": {
+        "text": "De perzik komt uit Perzië.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Romeinen noemden hem Persica, de Perzische vrucht. Ons woord perzik komt van die naam.",
+      "text_markdown": "De Romeinen noemden hem Persica, de Perzische vrucht. Ons woord perzik komt van die naam.",
+      "tts": {
+        "text": "De Romeinen noemden hem Persika, de Perzische vrucht. Ons woord perzik komt van die naam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De abrikoos komt daar ook vandaan.",
+      "text_markdown": "De abrikoos komt daar ook vandaan.",
+      "tts": {
+        "text": "De abrikoos komt daar ook vandaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De granaatappel ook.",
+      "text_markdown": "De granaatappel ook.",
+      "tts": {
+        "text": "De granaatappel ook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De walnoot ook.",
+      "text_markdown": "De walnoot ook.",
+      "tts": {
+        "text": "De walnoot ook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De zure kers ook.",
+      "text_markdown": "De zure kers ook.",
+      "tts": {
+        "text": "De zure kers ook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ook spinazie, een van de eerste bladgroenten ter wereld.",
+      "text_markdown": "Ook spinazie, een van de eerste bladgroenten ter wereld.",
+      "tts": {
+        "text": "Ook spinazie, een van de eerste bladgroenten ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Het Engelse woord spinach komt van het Perzische woord esfanaj.",
+      "text_markdown": "Het Engelse woord spinach komt van het Perzische woord esfanaj.",
+      "tts": {
+        "text": "Het Engelse woord spinach komt van het Perzische woord es fa nadj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zelfs het woord paradijs is Perzisch.",
+      "text_markdown": "Zelfs het woord paradijs is Perzisch.",
+      "tts": {
+        "text": "Zelfs het woord paradijs is Perzisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het komt van pardis, een ommuurde tuin.",
+      "text_markdown": "Het komt van pardis, een ommuurde tuin.",
+      "tts": {
+        "text": "Het komt van par dies, een ommuurde tuin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het eerste paradijs was een Perzische boomgaard vol granaatappelbomen.",
+      "text_markdown": "Het eerste paradijs was een Perzische boomgaard vol granaatappelbomen.",
+      "tts": {
+        "text": "Het eerste paradijs was een Perzische boomgaard vol granaatappelbomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzië at niet alleen goed.",
+      "text_markdown": "Perzië at niet alleen goed.",
+      "tts": {
+        "text": "Perzië at niet alleen goed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perzië leerde de wereld hoe je goed eet.",
+      "text_markdown": "Perzië leerde de wereld hoe je goed eet.",
+      "tts": {
+        "text": "Perzië leerde de wereld hoe je goed eet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 2 — De voorraadkast van eigen bodem",
+      "text_markdown": "Hoofdstuk 2 — De voorraadkast van eigen bodem"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Open een Perzische voorraadkast.",
+      "text_markdown": "Open een Perzische voorraadkast.",
+      "tts": {
+        "text": "Open een Perzische voorraadkast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De geuren vertellen het verhaal.",
+      "text_markdown": "De geuren vertellen het verhaal.",
+      "tts": {
+        "text": "De geuren vertellen het verhaal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste geur is saffraan.",
+      "text_markdown": "De eerste geur is saffraan.",
+      "tts": {
+        "text": "De eerste geur is saffraan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran verbouwt ongeveer negentig procent van alle saffraan ter wereld.",
+      "text_markdown": "Iran verbouwt ongeveer negentig procent van alle saffraan ter wereld.",
+      "tts": {
+        "text": "Iran verbouwt ongeveer negentig procent van alle saffraan ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het meeste komt uit een provincie die Khorasan heet.",
+      "text_markdown": "Het meeste komt uit een provincie die Khorasan heet.",
+      "tts": {
+        "text": "Het meeste komt uit een provincie die Cho ra saan heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Voor een gram plukt een boer met de hand de rode draadjes uit ongeveer tweehonderd krokusbloemen.",
+      "text_markdown": "Voor een gram plukt een boer met de hand de rode draadjes uit ongeveer tweehonderd krokusbloemen.",
+      "tts": {
+        "text": "Voor een gram plukt een boer met de hand de rode draadjes uit ongeveer tweehonderd krokusbloemen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dat werk gebeurt op koude herfstochtenden bij dageraad.",
+      "text_markdown": "Dat werk gebeurt op koude herfstochtenden bij dageraad.",
+      "tts": {
+        "text": "Dat werk gebeurt op koude herfstochtenden bij dageraad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Saffraan is de duurste specerij ter wereld.",
+      "text_markdown": "Saffraan is de duurste specerij ter wereld.",
+      "tts": {
+        "text": "Saffraan is de duurste specerij ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Een snufje maakt rijst goud en water tot parfum.",
+      "text_markdown": "Een snufje maakt rijst goud en water tot parfum.",
+      "tts": {
+        "text": "Een snufje maakt rijst goud en water tot parfum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tweede geur is granaatappel.",
+      "text_markdown": "De tweede geur is granaatappel.",
+      "tts": {
+        "text": "De tweede geur is granaatappel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perzen verbouwen al duizenden jaren granaatappels.",
+      "text_markdown": "Perzen verbouwen al duizenden jaren granaatappels.",
+      "tts": {
+        "text": "Perzen verbouwen al duizenden jaren granaatappels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De vrucht is het symbool van liefde en paradijs.",
+      "text_markdown": "De vrucht is het symbool van liefde en paradijs.",
+      "tts": {
+        "text": "De vrucht is het symbool van liefde en paradijs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het sap wordt uitgeperst voor stoofgerechten.",
+      "text_markdown": "Het sap wordt uitgeperst voor stoofgerechten.",
+      "tts": {
+        "text": "Het sap wordt uitgeperst voor stoofgerechten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De pitjes gaan over rijst en salades.",
+      "text_markdown": "De pitjes gaan over rijst en salades.",
+      "tts": {
+        "text": "De pitjes gaan over rijst en salades.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komen de pistachenoten.",
+      "text_markdown": "Dan komen de pistachenoten.",
+      "tts": {
+        "text": "Dan komen de pistachenoten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran heeft pistacheboomgaarden van drieduizend jaar oud.",
+      "text_markdown": "Iran heeft pistacheboomgaarden van drieduizend jaar oud.",
+      "tts": {
+        "text": "Iran heeft pistacheboomgaarden van drieduizend jaar oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De pistache die jij ergens ter wereld eet, stamt vaak af van een Perzische boom.",
+      "text_markdown": "De pistache die jij ergens ter wereld eet, stamt vaak af van een Perzische boom.",
+      "tts": {
+        "text": "De pistache die jij ergens ter wereld eet, stamt vaak af van een Perzische boom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn walnoten, zure kersen, kweeperen, meloenen en dadels.",
+      "text_markdown": "Er zijn walnoten, zure kersen, kweeperen, meloenen en dadels.",
+      "tts": {
+        "text": "Er zijn walnoten, zure kersen, kweeperen, meloenen en dadels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er is sumak, een donkerrode, zure specerij van een wilde struik.",
+      "text_markdown": "Er is sumak, een donkerrode, zure specerij van een wilde struik.",
+      "tts": {
+        "text": "Er is sumak, een donkerrode, zure specerij van een wilde struik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Voordat citroenen overal waren, gaf sumak eten een frisse smaak.",
+      "text_markdown": "Voordat citroenen overal waren, gaf sumak eten een frisse smaak.",
+      "tts": {
+        "text": "Voordat citroenen overal waren, gaf sumak eten een frisse smaak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat doet het nog steeds.",
+      "text_markdown": "Dat doet het nog steeds.",
+      "tts": {
+        "text": "Dat doet het nog steeds.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een Perzische voorraadkast bewaart de halve geschiedenis van fruit.",
+      "text_markdown": "Een Perzische voorraadkast bewaart de halve geschiedenis van fruit.",
+      "tts": {
+        "text": "Een Perzische voorraadkast bewaart de halve geschiedenis van fruit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 3 — Rijst, brood en de heilige korst",
+      "text_markdown": "Hoofdstuk 3 — Rijst, brood en de heilige korst"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rijst kwam ongeveer tweeduizendvijfhonderd jaar geleden vanuit India naar Perzië.",
+      "text_markdown": "Rijst kwam ongeveer tweeduizendvijfhonderd jaar geleden vanuit India naar Perzië.",
+      "tts": {
+        "text": "Rijst kwam ongeveer tweeduizendvijfhonderd jaar geleden vanuit India naar Perzië.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het werd het hart van de tafel.",
+      "text_markdown": "Het werd het hart van de tafel.",
+      "tts": {
+        "text": "Het werd het hart van de tafel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzen koken rijst op twee manieren.",
+      "text_markdown": "Perzen koken rijst op twee manieren.",
+      "tts": {
+        "text": "Perzen koken rijst op twee manieren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gewone rijst heet chelo.",
+      "text_markdown": "Gewone rijst heet chelo.",
+      "tts": {
+        "text": "Gewone rijst heet tsjelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rijst met kruiden, vlees of fruit heet polo.",
+      "text_markdown": "Rijst met kruiden, vlees of fruit heet polo.",
+      "tts": {
+        "text": "Rijst met kruiden, vlees of fruit heet polo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beide zijn lang, licht en los, elke korrel op zichzelf.",
+      "text_markdown": "Beide zijn lang, licht en los, elke korrel op zichzelf.",
+      "tts": {
+        "text": "Beide zijn lang, licht en los, elke korrel op zichzelf.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de magie zit onder in de pan.",
+      "text_markdown": "Maar de magie zit onder in de pan.",
+      "tts": {
+        "text": "Maar de magie zit onder in de pan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat heet tahdig.",
+      "text_markdown": "Dat heet tahdig.",
+      "tts": {
+        "text": "Dat heet tah dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De kok legt onder in de pan een dunne laag, soms saffraanrijst, soms een plak aardappel, soms een stuk brood.",
+      "text_markdown": "De kok legt onder in de pan een dunne laag, soms saffraanrijst, soms een plak aardappel, soms een stuk brood.",
+      "tts": {
+        "text": "De kok legt onder in de pan een dunne laag, soms saffraanrijst, soms een plak aardappel, soms een stuk brood.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daarboven komt de rijst.",
+      "text_markdown": "Daarboven komt de rijst.",
+      "tts": {
+        "text": "Daarboven komt de rijst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dan gaat het deksel erop, in een theedoek gewikkeld, en doet de stoom het werk.",
+      "text_markdown": "Dan gaat het deksel erop, in een theedoek gewikkeld, en doet de stoom het werk.",
+      "tts": {
+        "text": "Dan gaat het deksel erop, in een theedoek gewikkeld, en doet de stoom het werk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Na een uur is die onderste laag goudgeel en knapperig.",
+      "text_markdown": "Na een uur is die onderste laag goudgeel en knapperig.",
+      "tts": {
+        "text": "Na een uur is die onderste laag goudgeel en knapperig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig is heilig.",
+      "text_markdown": "Tahdig is heilig.",
+      "tts": {
+        "text": "Tah dig is heilig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Families vechten erom.",
+      "text_markdown": "Families vechten erom.",
+      "tts": {
+        "text": "Families vechten erom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Op de Iraanse televisie zijn hele programma's over wie de beste maakt.",
+      "text_markdown": "Op de Iraanse televisie zijn hele programma's over wie de beste maakt.",
+      "tts": {
+        "text": "Op de Iraanse televisie zijn hele programma's over wie de beste maakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een perfecte tahdig komt als een mooie ronde schijf uit de pan.",
+      "text_markdown": "Een perfecte tahdig komt als een mooie ronde schijf uit de pan.",
+      "tts": {
+        "text": "Een perfecte tah dig komt als een mooie ronde schijf uit de pan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan is er nog brood.",
+      "text_markdown": "Dan is er nog brood.",
+      "tts": {
+        "text": "Dan is er nog brood.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het bekendste is sangak.",
+      "text_markdown": "Het bekendste is sangak.",
+      "tts": {
+        "text": "Het bekendste is san gak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak wordt gebakken op een bed van hete steentjes, een methode van vijfduizend jaar oud.",
+      "text_markdown": "Sangak wordt gebakken op een bed van hete steentjes, een methode van vijfduizend jaar oud.",
+      "tts": {
+        "text": "San gak wordt gebakken op een bed van hete steentjes, een methode van vijfduizend jaar oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De steentjes zitten nog steeds in het brood.",
+      "text_markdown": "De steentjes zitten nog steeds in het brood.",
+      "tts": {
+        "text": "De steentjes zitten nog steeds in het brood.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je haalt ze er aan tafel uit.",
+      "text_markdown": "Je haalt ze er aan tafel uit.",
+      "tts": {
+        "text": "Je haalt ze er aan tafel uit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere broden zijn barbari, lavash en taftoon.",
+      "text_markdown": "Andere broden zijn barbari, lavash en taftoon.",
+      "tts": {
+        "text": "Andere broden zijn bar ba rie, la vasj en taf toen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een Perzisch ontbijt is brood, thee en een zachte witte kaas.",
+      "text_markdown": "Een Perzisch ontbijt is brood, thee en een zachte witte kaas.",
+      "tts": {
+        "text": "Een Perzisch ontbijt is brood, thee en een zachte witte kaas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 4 — De kebab en het geduldige stoofgerecht",
+      "text_markdown": "Hoofdstuk 4 — De kebab en het geduldige stoofgerecht"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het woord kebab is Perzisch.",
+      "text_markdown": "Het woord kebab is Perzisch.",
+      "tts": {
+        "text": "Het woord kebab is Perzisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is kabab, en het betekent vlees dat boven vuur gaart.",
+      "text_markdown": "Het is kabab, en het betekent vlees dat boven vuur gaart.",
+      "tts": {
+        "text": "Het is kabab, en het betekent vlees dat boven vuur gaart.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Perzen bereiden al duizenden jaren lam aan lange platte spiesen.",
+      "text_markdown": "Perzen bereiden al duizenden jaren lam aan lange platte spiesen.",
+      "tts": {
+        "text": "Perzen bereiden al duizenden jaren lam aan lange platte spiesen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De populairste kebab van nu is koobideh.",
+      "text_markdown": "De populairste kebab van nu is koobideh.",
+      "tts": {
+        "text": "De populairste kebab van nu is koe bie deh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is gemalen lam of rund, gemengd met ui en zout, op een brede platte spies gedrukt en boven houtskool gegrild.",
+      "text_markdown": "Dat is gemalen lam of rund, gemengd met ui en zout, op een brede platte spies gedrukt en boven houtskool gegrild.",
+      "tts": {
+        "text": "Dat is gemalen lam of rund, gemengd met ui en zout, op een brede platte spies gedrukt en boven houtskool gegrild.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het lijkt oeroud.",
+      "text_markdown": "Het lijkt oeroud.",
+      "tts": {
+        "text": "Het lijkt oeroud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat is het niet.",
+      "text_markdown": "Dat is het niet.",
+      "tts": {
+        "text": "Dat is het niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De vleesmolen bereikte Iran pas laat in de negentiende eeuw.",
+      "text_markdown": "De vleesmolen bereikte Iran pas laat in de negentiende eeuw.",
+      "tts": {
+        "text": "De vleesmolen bereikte Iran pas laat in de negentiende eeuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koobideh, de meest Perzische kebab, is amper iets meer dan honderd jaar oud.",
+      "text_markdown": "Koobideh, de meest Perzische kebab, is amper iets meer dan honderd jaar oud.",
+      "tts": {
+        "text": "Koe bie deh, de meest Perzische kebab, is amper iets meer dan honderd jaar oud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oudere kebabs worden van plakken vlees gemaakt.",
+      "text_markdown": "Oudere kebabs worden van plakken vlees gemaakt.",
+      "tts": {
+        "text": "Oudere kebabs worden van plakken vlees gemaakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joojeh is kip in saffraan en yoghurt.",
+      "text_markdown": "Joojeh is kip in saffraan en yoghurt.",
+      "tts": {
+        "text": "Djoe djeh is kip in saffraan en yoghurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg is een dunne lamsfilet.",
+      "text_markdown": "Barg is een dunne lamsfilet.",
+      "tts": {
+        "text": "Barg is een dunne lamsfilet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beide worden geserveerd op een bed van saffraanrijst met een gegrilde tomaat.",
+      "text_markdown": "Beide worden geserveerd op een bed van saffraanrijst met een gegrilde tomaat.",
+      "tts": {
+        "text": "Beide worden geserveerd op een bed van saffraanrijst met een gegrilde tomaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maak nu kennis met geduldig eten: khoresh, het Perzische stoofgerecht.",
+      "text_markdown": "Maak nu kennis met geduldig eten: khoresh, het Perzische stoofgerecht.",
+      "tts": {
+        "text": "Maak nu kennis met geduldig eten, cho resj, het Perzische stoofgerecht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een khoresh gaart urenlang.",
+      "text_markdown": "Een khoresh gaart urenlang.",
+      "tts": {
+        "text": "Een cho resj gaart urenlang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bekendste is fesenjan.",
+      "text_markdown": "De bekendste is fesenjan.",
+      "tts": {
+        "text": "De bekendste is fe sen djan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is kip of eend, langzaam gegaard in een dikke saus van gemalen walnoten en granaatappelsap.",
+      "text_markdown": "Dat is kip of eend, langzaam gegaard in een dikke saus van gemalen walnoten en granaatappelsap.",
+      "tts": {
+        "text": "Dat is kip of eend, langzaam gegaard in een dikke saus van gemalen walnoten en granaatappelsap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het recept is een van de oudste recepten voor stoofgerechten die ooit zijn gevonden.",
+      "text_markdown": "Het recept is een van de oudste recepten voor stoofgerechten die ooit zijn gevonden.",
+      "tts": {
+        "text": "Het recept is een van de oudste recepten voor stoofgerechten die ooit zijn gevonden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een versie ervan staat op spijkerschrifttabletten uit de ruïnes van Persepolis.",
+      "text_markdown": "Een versie ervan staat op spijkerschrifttabletten uit de ruïnes van Persepolis.",
+      "tts": {
+        "text": "Een versie ervan staat op spijkerschrifttabletten uit de ruïnes van Persee polis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dat maakt het meer dan tweeduizendvijfhonderd jaar oud.",
+      "text_markdown": "Dat maakt het meer dan tweeduizendvijfhonderd jaar oud.",
+      "tts": {
+        "text": "Dat maakt het meer dan tweeduizendvijfhonderd jaar oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mensen koken het nog steeds op dezelfde manier.",
+      "text_markdown": "Mensen koken het nog steeds op dezelfde manier.",
+      "tts": {
+        "text": "Mensen koken het nog steeds op dezelfde manier.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een andere klassieker is ghormeh sabzi: lam, nierbonen en een berg verse kruiden, samen gestoofd met gedroogde limoen.",
+      "text_markdown": "Een andere klassieker is ghormeh sabzi: lam, nierbonen en een berg verse kruiden, samen gestoofd met gedroogde limoen.",
+      "tts": {
+        "text": "Een andere klassieker is gor meh sab zie, lam, nierbonen en een berg verse kruiden, samen gestoofd met gedroogde limoen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Veel Iraniërs noemen het het nationale gerecht.",
+      "text_markdown": "Veel Iraniërs noemen het het nationale gerecht.",
+      "tts": {
+        "text": "Veel Iraniërs noemen het het nationale gerecht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 5 — Yoghurt, thee en de oudste zoetigheden",
+      "text_markdown": "Hoofdstuk 5 — Yoghurt, thee en de oudste zoetigheden"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzen eten yoghurt bij alles.",
+      "text_markdown": "Perzen eten yoghurt bij alles.",
+      "tts": {
+        "text": "Perzen eten yoghurt bij alles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gewone yoghurt heet mast.",
+      "text_markdown": "Gewone yoghurt heet mast.",
+      "tts": {
+        "text": "Gewone yoghurt heet mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast met komkommer en gedroogde munt heet mast o khiar.",
+      "text_markdown": "Mast met komkommer en gedroogde munt heet mast o khiar.",
+      "tts": {
+        "text": "Mast met komkommer en gedroogde munt heet mast o chie jaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een zoute yoghurtdrank met munt heet doogh.",
+      "text_markdown": "Een zoute yoghurtdrank met munt heet doogh.",
+      "tts": {
+        "text": "Een zoute yoghurtdrank met munt heet doeg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Er is ook kashk, een sterke gedroogde wei die in soepen gaat.",
+      "text_markdown": "Er is ook kashk, een sterke gedroogde wei die in soepen gaat.",
+      "tts": {
+        "text": "Er is ook kasjk, een sterke gedroogde wei die in soepen gaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan is er thee.",
+      "text_markdown": "Dan is er thee.",
+      "tts": {
+        "text": "Dan is er thee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perzen drinken die 's ochtends, 's middags en 's avonds, sterk gezet in een hoge pot op een samowar.",
+      "text_markdown": "Perzen drinken die 's ochtends, 's middags en 's avonds, sterk gezet in een hoge pot op een samowar.",
+      "tts": {
+        "text": "Perzen drinken die 's ochtends, 's middags en 's avonds, sterk gezet in een hoge pot op een samo war.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thee staat zo centraal dat mensen verbaasd zijn als ze horen dat die laat kwam.",
+      "text_markdown": "Thee staat zo centraal dat mensen verbaasd zijn als ze horen dat die laat kwam.",
+      "tts": {
+        "text": "Thee staat zo centraal dat mensen verbaasd zijn als ze horen dat die laat kwam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In het grootste deel van de Perzische geschiedenis was koffie de drank.",
+      "text_markdown": "In het grootste deel van de Perzische geschiedenis was koffie de drank.",
+      "tts": {
+        "text": "In het grootste deel van de Perzische geschiedenis was koffie de drank.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Thee nam het pas laat in de negentiende eeuw over.",
+      "text_markdown": "Thee nam het pas laat in de negentiende eeuw over.",
+      "tts": {
+        "text": "Thee nam het pas laat in de negentiende eeuw over.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tegenwoordig is Iran een van de grootste theedrinkers ter wereld.",
+      "text_markdown": "Tegenwoordig is Iran een van de grootste theedrinkers ter wereld.",
+      "tts": {
+        "text": "Tegenwoordig is Iran een van de grootste theedrinkers ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daar hoort een klein ritueel bij.",
+      "text_markdown": "Daar hoort een klein ritueel bij.",
+      "tts": {
+        "text": "Daar hoort een klein ritueel bij.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je houdt een suikerklontje tussen je tanden.",
+      "text_markdown": "Je houdt een suikerklontje tussen je tanden.",
+      "tts": {
+        "text": "Je houdt een suikerklontje tussen je tanden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je neemt een slok thee door het klontje heen.",
+      "text_markdown": "Je neemt een slok thee door het klontje heen.",
+      "tts": {
+        "text": "Je neemt een slok thee door het klontje heen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het klontje smelt een beetje.",
+      "text_markdown": "Het klontje smelt een beetje.",
+      "tts": {
+        "text": "Het klontje smelt een beetje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De thee is heet, donker en zoet als hij naar binnen gaat.",
+      "text_markdown": "De thee is heet, donker en zoet als hij naar binnen gaat.",
+      "tts": {
+        "text": "De thee is heet, donker en zoet als hij naar binnen gaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu het zoet.",
+      "text_markdown": "Nu het zoet.",
+      "tts": {
+        "text": "Nu het zoet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perzische zoetigheden zijn oud, rijk en klein.",
+      "text_markdown": "Perzische zoetigheden zijn oud, rijk en klein.",
+      "tts": {
+        "text": "Perzische zoetigheden zijn oud, rijk en klein.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oudste is faloodeh.",
+      "text_markdown": "De oudste is faloodeh.",
+      "tts": {
+        "text": "De oudste is fa loe deh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat zijn dunne rijstnoedels, bevroren in rozenwatersiroop, geserveerd met limoensap en pistache.",
+      "text_markdown": "Dat zijn dunne rijstnoedels, bevroren in rozenwatersiroop, geserveerd met limoensap en pistache.",
+      "tts": {
+        "text": "Dat zijn dunne rijstnoedels, bevroren in rozenwatersiroop, geserveerd met limoensap en pistache.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Perzische schrijvers beschrijven het al rond vierhonderd jaar voor Christus.",
+      "text_markdown": "Perzische schrijvers beschrijven het al rond vierhonderd jaar voor Christus.",
+      "tts": {
+        "text": "Perzische schrijvers beschrijven het al rond vierhonderd jaar voor Christus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daardoor is faloodeh een van de oudste bevroren nagerechten ter wereld.",
+      "text_markdown": "Daardoor is faloodeh een van de oudste bevroren nagerechten ter wereld.",
+      "tts": {
+        "text": "Daardoor is fa loe deh een van de oudste bevroren nagerechten ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het is meer dan tweeduizend jaar ouder dan ijs.",
+      "text_markdown": "Het is meer dan tweeduizend jaar ouder dan ijs.",
+      "tts": {
+        "text": "Het is meer dan tweeduizend jaar ouder dan ijs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere klassiekers: baklava uit Tabriz, lichter dan de Turkse soort, met walnoot en rozenwater.",
+      "text_markdown": "Andere klassiekers: baklava uit Tabriz, lichter dan de Turkse soort, met walnoot en rozenwater.",
+      "tts": {
+        "text": "Andere klassiekers, baklava uit Ta briez, lichter dan de Turkse soort, met walnoot en rozenwater.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, een dichte pasta van sesam of saffraan.",
+      "text_markdown": "Halva, een dichte pasta van sesam of saffraan.",
+      "tts": {
+        "text": "Halva, een dichte pasta van sesam of saffraan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz uit Esfahan, zachte nougat met pistache.",
+      "text_markdown": "Gaz uit Esfahan, zachte nougat met pistache.",
+      "tts": {
+        "text": "Gazz uit Es fa haan, zachte nougat met pistache.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, een brosse, goudkleurige saffraantoffee.",
+      "text_markdown": "Sohan, een brosse, goudkleurige saffraantoffee.",
+      "tts": {
+        "text": "So han, een brosse, goudkleurige saffraantoffee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi uit Qom, een klein koekje van kikkererwtenmeel.",
+      "text_markdown": "Nokhodchi uit Qom, een klein koekje van kikkererwtenmeel.",
+      "tts": {
+        "text": "No chod sjie uit Kom, een klein koekje van kikkererwtenmeel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een klein bordje zoet, een kop thee, een langzaam gesprek.",
+      "text_markdown": "Een klein bordje zoet, een kop thee, een langzaam gesprek.",
+      "tts": {
+        "text": "Een klein bordje zoet, een kop thee, een langzaam gesprek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is een Perzische middag.",
+      "text_markdown": "Dat is een Perzische middag.",
+      "tts": {
+        "text": "Dat is een Perzische middag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 6 — Wat Perzië gaf, en wat Perzië nam",
+      "text_markdown": "Hoofdstuk 6 — Wat Perzië gaf, en wat Perzië nam"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzië lag midden in de oude wereld.",
+      "text_markdown": "Perzië lag midden in de oude wereld.",
+      "tts": {
+        "text": "Perzië lag midden in de oude wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karavanen trokken erdoorheen.",
+      "text_markdown": "Karavanen trokken erdoorheen.",
+      "tts": {
+        "text": "Karavanen trokken erdoorheen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rijken rezen op en vielen er.",
+      "text_markdown": "Rijken rezen op en vielen er.",
+      "tts": {
+        "text": "Rijken rezen op en vielen er.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eten trok er ook doorheen, in beide richtingen.",
+      "text_markdown": "Eten trok er ook doorheen, in beide richtingen.",
+      "tts": {
+        "text": "Eten trok er ook doorheen, in beide richtingen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk naar de woorden.",
+      "text_markdown": "Kijk naar de woorden.",
+      "tts": {
+        "text": "Kijk naar de woorden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het Engels nam tientallen woorden voor eten over uit het Perzisch.",
+      "text_markdown": "Het Engels nam tientallen woorden voor eten over uit het Perzisch.",
+      "tts": {
+        "text": "Het Engels nam tientallen woorden voor eten over uit het Perzisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet en paradise komen allemaal uit het Perzisch.",
+      "text_markdown": "Sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet en paradise komen allemaal uit het Perzisch.",
+      "tts": {
+        "text": "Sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet en paradise komen allemaal uit het Perzisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat geldt ook voor checkmate, van shah mat, de koning is hulpeloos. Perzië legde woorden in de mond van de halve wereld.",
+      "text_markdown": "Dat geldt ook voor checkmate, van shah mat, de koning is hulpeloos. Perzië legde woorden in de mond van de halve wereld.",
+      "tts": {
+        "text": "Dat geldt ook voor checkmate, van sja mat, de koning is hulpeloos. Perzië legde woorden in de mond van de halve wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Perzische manier van rijst koken ging oostwaarts.",
+      "text_markdown": "De Perzische manier van rijst koken ging oostwaarts.",
+      "tts": {
+        "text": "De Perzische manier van rijst koken ging oostwaarts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Mogolkoningen van India hielden van Perzisch eten en haalden Perzische koks naar hun hof.",
+      "text_markdown": "De Mogolkoningen van India hielden van Perzisch eten en haalden Perzische koks naar hun hof.",
+      "tts": {
+        "text": "De Mogolkoningen van India hielden van Perzisch eten en haalden Perzische koks naar hun hof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die koks maakten biryani.",
+      "text_markdown": "Die koks maakten biryani.",
+      "tts": {
+        "text": "Die koks maakten bir ja nie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaf, dat lange gekruide rijstgerecht van de Middellandse Zee tot de steppen van Centraal-Azië, wortelt in de Perzische rijsttraditie.",
+      "text_markdown": "Pilaf, dat lange gekruide rijstgerecht van de Middellandse Zee tot de steppen van Centraal-Azië, wortelt in de Perzische rijsttraditie.",
+      "tts": {
+        "text": "Pilaf, dat lange gekruide rijstgerecht van de Middellandse Zee tot de steppen van Centraal Azië, wortelt in de Perzische rijsttraditie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzisch fruit ging naar het westen.",
+      "text_markdown": "Perzisch fruit ging naar het westen.",
+      "tts": {
+        "text": "Perzisch fruit ging naar het westen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Romeinen teelden perziken in Italië omdat ze die uit Perzië kregen.",
+      "text_markdown": "De Romeinen teelden perziken in Italië omdat ze die uit Perzië kregen.",
+      "tts": {
+        "text": "De Romeinen teelden perziken in Italië omdat ze die uit Perzië kregen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spinazie bereikte Europa via Spanje, meegebracht door handelaren uit de Perzische wereld.",
+      "text_markdown": "Spinazie bereikte Europa via Spanje, meegebracht door handelaren uit de Perzische wereld.",
+      "tts": {
+        "text": "Spinazie bereikte Europa via Spanje, meegebracht door handelaren uit de Perzische wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulpen, het symbool van Nederland, werden eerst geteeld in Perzië en Turkije, lang voordat ze Holland bereikten.",
+      "text_markdown": "Tulpen, het symbool van Nederland, werden eerst geteeld in Perzië en Turkije, lang voordat ze Holland bereikten.",
+      "tts": {
+        "text": "Tulpen, het symbool van Nederland, werden eerst geteeld in Perzië en Turkije, lang voordat ze Holland bereikten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzië nam ook dingen over.",
+      "text_markdown": "Perzië nam ook dingen over.",
+      "tts": {
+        "text": "Perzië nam ook dingen over.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Mongolen, die in de dertiende eeuw binnenvielen, brachten een sterkere smaak voor gegrild en geroosterd vlees mee.",
+      "text_markdown": "De Mongolen, die in de dertiende eeuw binnenvielen, brachten een sterkere smaak voor gegrild en geroosterd vlees mee.",
+      "tts": {
+        "text": "De Mongolen, die in de dertiende eeuw binnenvielen, brachten een sterkere smaak voor gegrild en geroosterd vlees mee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Arabische landbouw bracht suikerriet, citrus en rijst uit het zuiden en oosten mee.",
+      "text_markdown": "De Arabische landbouw bracht suikerriet, citrus en rijst uit het zuiden en oosten mee.",
+      "tts": {
+        "text": "De Arabische landbouw bracht suikerriet, citrus en rijst uit het zuiden en oosten mee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De samowar kwam in de achttiende eeuw uit het noorden, uit Rusland.",
+      "text_markdown": "De samowar kwam in de achttiende eeuw uit het noorden, uit Rusland.",
+      "tts": {
+        "text": "De samo war kwam in de achttiende eeuw uit het noorden, uit Rusland.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Griekse geschiedschrijver Herodotus schreef, tweeduizendvijfhonderd jaar geleden, dat Perzen hun verjaardagen uitbundiger vierden dan elke andere dag van het jaar.",
+      "text_markdown": "De Griekse geschiedschrijver Herodotus schreef, tweeduizendvijfhonderd jaar geleden, dat Perzen hun verjaardagen uitbundiger vierden dan elke andere dag van het jaar.",
+      "tts": {
+        "text": "De Griekse geschiedschrijver He ro do tus schreef, tweeduizendvijfhonderd jaar geleden, dat Perzen hun verjaardagen uitbundiger vierden dan elke andere dag van het jaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Op die dag, schreef hij, staat er meer op tafel dan anders.",
+      "text_markdown": "Op die dag, schreef hij, staat er meer op tafel dan anders.",
+      "tts": {
+        "text": "Op die dag, schreef hij, staat er meer op tafel dan anders.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sommige dingen zijn niet veranderd.",
+      "text_markdown": "Sommige dingen zijn niet veranderd.",
+      "tts": {
+        "text": "Sommige dingen zijn niet veranderd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 7 — Aan de Perzische tafel",
+      "text_markdown": "Hoofdstuk 7 — Aan de Perzische tafel"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu gaan we zitten.",
+      "text_markdown": "Nu gaan we zitten.",
+      "tts": {
+        "text": "Nu gaan we zitten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het Perzische jaar begint bij het begin van de lente, rond eenentwintig maart.",
+      "text_markdown": "Het Perzische jaar begint bij het begin van de lente, rond eenentwintig maart.",
+      "tts": {
+        "text": "Het Perzische jaar begint bij het begin van de lente, rond eenentwintig maart.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het feest heet Nowruz, de nieuwe dag.",
+      "text_markdown": "Het feest heet Nowruz, de nieuwe dag.",
+      "tts": {
+        "text": "Het feest heet Nou roez, de nieuwe dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is de belangrijkste feestdag van het jaar.",
+      "text_markdown": "Het is de belangrijkste feestdag van het jaar.",
+      "tts": {
+        "text": "Het is de belangrijkste feestdag van het jaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elke familie dekt een bijzondere tafel die de haft-sin heet.",
+      "text_markdown": "Elke familie dekt een bijzondere tafel die de haft-sin heet.",
+      "tts": {
+        "text": "Elke familie dekt een bijzondere tafel die de haft sin heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft betekent zeven.",
+      "text_markdown": "Haft betekent zeven.",
+      "tts": {
+        "text": "Haft betekent zeven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin is de letter S. Op tafel staan zeven dingen die in het Perzisch met een S beginnen.",
+      "text_markdown": "Sin is de letter S. Op tafel staan zeven dingen die in het Perzisch met een S beginnen.",
+      "tts": {
+        "text": "Sin is de letter S. Op tafel staan zeven dingen die in het Perzisch met een S beginnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er is sib, een appel.",
+      "text_markdown": "Er is sib, een appel.",
+      "tts": {
+        "text": "Er is sib, een appel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, een munt.",
+      "text_markdown": "Sekkeh, een munt.",
+      "tts": {
+        "text": "Sekkeh, een munt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, een hyacint.",
+      "text_markdown": "Sonbol, een hyacint.",
+      "tts": {
+        "text": "Sonbol, een hyacint.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, een zoete pudding van tarwe.",
+      "text_markdown": "Samanu, een zoete pudding van tarwe.",
+      "tts": {
+        "text": "Sama noe, een zoete pudding van tarwe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, de gedroogde vrucht van de olijfwilg.",
+      "text_markdown": "Senjed, de gedroogde vrucht van de olijfwilg.",
+      "tts": {
+        "text": "Sen dzjed, de gedroogde vrucht van de olijfwilg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumak.",
+      "text_markdown": "Somagh, sumak.",
+      "tts": {
+        "text": "So maag, sumak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, azijn.",
+      "text_markdown": "Serkeh, azijn.",
+      "tts": {
+        "text": "Serkeh, azijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Elk ding staat voor iets: gezondheid, rijkdom, schoonheid, geduld, liefde, de opgaande zon en het verstrijken van de tijd.",
+      "text_markdown": "Elk ding staat voor iets: gezondheid, rijkdom, schoonheid, geduld, liefde, de opgaande zon en het verstrijken van de tijd.",
+      "tts": {
+        "text": "Elk ding staat voor iets, gezondheid, rijkdom, schoonheid, geduld, liefde, de opgaande zon en het verstrijken van de tijd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De maaltijd van het nieuwe jaar is sabzi polo met mahi.",
+      "text_markdown": "De maaltijd van het nieuwe jaar is sabzi polo met mahi.",
+      "tts": {
+        "text": "De maaltijd van het nieuwe jaar is sab zie polo met ma hie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is rijst, diepgroen van fijngehakte verse kruiden, geserveerd met witte vis.",
+      "text_markdown": "Dat is rijst, diepgroen van fijngehakte verse kruiden, geserveerd met witte vis.",
+      "tts": {
+        "text": "Dat is rijst, diepgroen van fijngehakte verse kruiden, geserveerd met witte vis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lente op een bord.",
+      "text_markdown": "Lente op een bord.",
+      "tts": {
+        "text": "Lente op een bord.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een andere klassieker is ash reshteh, een dikke soep van bonen, kruiden, gebakken ui, kashk en noedels.",
+      "text_markdown": "Een andere klassieker is ash reshteh, een dikke soep van bonen, kruiden, gebakken ui, kashk en noedels.",
+      "tts": {
+        "text": "Een andere klassieker is asj resjteh, een dikke soep van bonen, kruiden, gebakken ui, kasjk en noedels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perzen zeggen dat je die eet voor een moeilijke beslissing.",
+      "text_markdown": "Perzen zeggen dat je die eet voor een moeilijke beslissing.",
+      "tts": {
+        "text": "Perzen zeggen dat je die eet voor een moeilijke beslissing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De noedels, zeggen ze, ontwarren de draden van het lot.",
+      "text_markdown": "De noedels, zeggen ze, ontwarren de draden van het lot.",
+      "tts": {
+        "text": "De noedels, zeggen ze, ontwarren de draden van het lot.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ook het theehuis is een Perzische uitvinding.",
+      "text_markdown": "Ook het theehuis is een Perzische uitvinding.",
+      "tts": {
+        "text": "Ook het theehuis is een Perzische uitvinding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het heet de qahveh-khaneh, letterlijk het koffiehuis, ook al is de drank nu thee.",
+      "text_markdown": "Het heet de qahveh-khaneh, letterlijk het koffiehuis, ook al is de drank nu thee.",
+      "tts": {
+        "text": "Het heet de kah veh chaneh, letterlijk het koffiehuis, ook al is de drank nu thee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al vijfhonderd jaar komen mannen en vrouwen daar samen om backgammon te spelen, naar poëzie te luisteren en over de wereld te discussiëren.",
+      "text_markdown": "Al vijfhonderd jaar komen mannen en vrouwen daar samen om backgammon te spelen, naar poëzie te luisteren en over de wereld te discussiëren.",
+      "tts": {
+        "text": "Al vijfhonderd jaar komen mannen en vrouwen daar samen om backgammon te spelen, naar poëzie te luisteren en over de wereld te discussiëren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Veel grote Perzische verhalen werden eerst verteld boven een dampend glas.",
+      "text_markdown": "Veel grote Perzische verhalen werden eerst verteld boven een dampend glas.",
+      "tts": {
+        "text": "Veel grote Perzische verhalen werden eerst verteld boven een dampend glas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een beroemde Perzische arts, Avicenna, die duizend jaar geleden leefde, leerde dat elk voedsel heet of koud is.",
+      "text_markdown": "Een beroemde Perzische arts, Avicenna, die duizend jaar geleden leefde, leerde dat elk voedsel heet of koud is.",
+      "tts": {
+        "text": "Een beroemde Perzische arts, Avi senna, die duizend jaar geleden leefde, leerde dat elk voedsel heet of koud is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saffraan, walnoten en lam zijn heet.",
+      "text_markdown": "Saffraan, walnoten en lam zijn heet.",
+      "tts": {
+        "text": "Saffraan, walnoten en lam zijn heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoghurt, komkommer en watermeloen zijn koud.",
+      "text_markdown": "Yoghurt, komkommer en watermeloen zijn koud.",
+      "tts": {
+        "text": "Yoghurt, komkommer en watermeloen zijn koud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een goede maaltijd houdt ze in evenwicht.",
+      "text_markdown": "Een goede maaltijd houdt ze in evenwicht.",
+      "tts": {
+        "text": "Een goede maaltijd houdt ze in evenwicht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "In veel Perzische huizen leeft dat idee nog steeds bij de lunch.",
+      "text_markdown": "In veel Perzische huizen leeft dat idee nog steeds bij de lunch.",
+      "tts": {
+        "text": "In veel Perzische huizen leeft dat idee nog steeds bij de lunch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perzisch eten is geduldig.",
+      "text_markdown": "Perzisch eten is geduldig.",
+      "tts": {
+        "text": "Perzisch eten is geduldig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is gul.",
+      "text_markdown": "Het is gul.",
+      "tts": {
+        "text": "Het is gul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is oud.",
+      "text_markdown": "Het is oud.",
+      "tts": {
+        "text": "Het is oud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En het wordt nog elke dag gekookt, op miljoenen fornuizen.",
+      "text_markdown": "En het wordt nog elke dag gekookt, op miljoenen fornuizen.",
+      "tts": {
+        "text": "En het wordt nog elke dag gekookt, op miljoenen fornuizen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tot ziens",
+      "text_markdown": "Tot ziens"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het einde van onze korte rondreis.",
+      "text_markdown": "Dat is het einde van onze korte rondreis.",
+      "tts": {
+        "text": "Dat is het einde van onze korte rondreis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ik hoop dat je iets hebt geleerd.",
+      "text_markdown": "Ik hoop dat je iets hebt geleerd.",
+      "tts": {
+        "text": "Ik hoop dat je iets hebt geleerd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ik hoop dat iets op de pagina je hongerig maakte.",
+      "text_markdown": "Ik hoop dat iets op de pagina je hongerig maakte.",
+      "tts": {
+        "text": "Ik hoop dat iets op de pagina je hongerig maakte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saffraan en rijst.",
+      "text_markdown": "Saffraan en rijst.",
+      "tts": {
+        "text": "Saffraan en rijst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Granaatappel en walnoot.",
+      "text_markdown": "Granaatappel en walnoot.",
+      "tts": {
+        "text": "Granaatappel en walnoot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Een klein zoet hapje op een klein bordje.",
+      "text_markdown": "Een klein zoet hapje op een klein bordje.",
+      "tts": {
+        "text": "Een klein zoet hapje op een klein bordje.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als het kan, zoek dan een Perzisch restaurant bij jou in de buurt.",
+      "text_markdown": "Als het kan, zoek dan een Perzisch restaurant bij jou in de buurt.",
+      "tts": {
+        "text": "Als het kan, zoek dan een Perzisch restaurant bij jou in de buurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Of sla een Perzisch kookboek open.",
+      "text_markdown": "Of sla een Perzisch kookboek open.",
+      "tts": {
+        "text": "Of sla een Perzisch kookboek open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Probeer een stoofgerecht.",
+      "text_markdown": "Probeer een stoofgerecht.",
+      "tts": {
+        "text": "Probeer een stoofgerecht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Probeer een kop thee.",
+      "text_markdown": "Probeer een kop thee.",
+      "tts": {
+        "text": "Probeer een kop thee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het eten heeft duizenden jaren gewacht.",
+      "text_markdown": "Het eten heeft duizenden jaren gewacht.",
+      "tts": {
+        "text": "Het eten heeft duizenden jaren gewacht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Het kan ook op jou wachten.",
+      "text_markdown": "Het kan ook op jou wachten.",
+      "tts": {
+        "text": "Het kan ook op jou wachten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dank je voor het luisteren.",
+      "text_markdown": "Dank je voor het luisteren.",
+      "tts": {
+        "text": "Dank je voor het luisteren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kook iets.",
+      "text_markdown": "Kook iets.",
+      "tts": {
+        "text": "Kook iets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eet met mensen.",
+      "text_markdown": "Eet met mensen.",
+      "tts": {
+        "text": "Eet met mensen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ik ben Kym.",
+      "text_markdown": "Ik ben Kym.",
+      "tts": {
+        "text": "Ik ben Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tot ziens.",
+      "text_markdown": "Tot ziens.",
+      "tts": {
+        "text": "Tot ziens.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

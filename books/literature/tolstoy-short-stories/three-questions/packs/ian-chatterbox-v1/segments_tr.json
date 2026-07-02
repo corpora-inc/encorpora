@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "tr",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Üç Soru",
+      "text_markdown": "Üç Soru",
+      "title": "Üç Soru"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Bir kral, eğer her zaman hangi zamanın her iş için en önemli olduğunu bilseydi, hangi insanların en gerekli olduğunu bilseydi ve en önemlisi de her zaman hangi işin diğer tüm işlerden en önemli olduğunu bilseydi, hiçbir şeyde asla başarısız olmayacağını düşündü.",
+      "text_markdown": "Bir kral, eğer her zaman hangi zamanın her iş için en önemli olduğunu bilseydi, hangi insanların en gerekli olduğunu bilseydi ve en önemlisi de her zaman hangi işin diğer tüm işlerden en önemli olduğunu bilseydi, hiçbir şeyde asla başarısız olmayacağını düşündü.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bir kral, eğer her zaman hangi zamanın her iş için en önemli olduğunu bilseydi, hangi insanların en gerekli olduğunu bilseydi ve en önemlisi de her zaman hangi işin diğer tüm işlerden en önemli olduğunu bilseydi, hiçbir şeyde asla başarısız olmayacağını düşündü.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Bunu düşünen kral, krallığında ilan etti ki, ona her iş için doğru zamanı nasıl bileceğini, hangi insanların en gerekli olduğunu ve hangi işin diğer tüm işlerden en önemli olduğunu anlamada yanılmamanın yolunu öğreten kişiye büyük bir ödül vereceğini açıkladı.",
+      "text_markdown": "Bunu düşünen kral, krallığında ilan etti ki, ona her iş için doğru zamanı nasıl bileceğini, hangi insanların en gerekli olduğunu ve hangi işin diğer tüm işlerden en önemli olduğunu anlamada yanılmamanın yolunu öğreten kişiye büyük bir ödül vereceğini açıkladı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bunu düşünen kral, krallığında ilan etti ki, ona her iş için doğru zamanı nasıl bileceğini, hangi insanların en gerekli olduğunu ve hangi işin diğer tüm işlerden en önemli olduğunu anlamada yanılmamanın yolunu öğreten kişiye büyük bir ödül vereceğini açıkladı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Krala bilgin insanlar gelmeye başladı ve onun sorularını çeşitli şekillerde yanıtladılar.",
+      "text_markdown": "Krala bilgin insanlar gelmeye başladı ve onun sorularını çeşitli şekillerde yanıtladılar.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Krala bilgin insanlar gelmeye başladı ve onun sorularını çeşitli şekillerde yanıtladılar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "İlk soruya kimisi, her iş için doğru zamanı bilmek için önceden günlerin, ayların ve yılların programını yapmalı ve ona sıkıca uymalı dediler.",
+      "text_markdown": "İlk soruya kimisi, her iş için doğru zamanı bilmek için önceden günlerin, ayların ve yılların programını yapmalı ve ona sıkıca uymalı dediler.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "İlk soruya kimisi, her iş için doğru zamanı bilmek için önceden günlerin, ayların ve yılların programını yapmalı ve ona sıkıca uymalı dediler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Ancak o zaman, dediler, her iş kendi zamanında yapılır.",
+      "text_markdown": "Ancak o zaman, dediler, her iş kendi zamanında yapılır.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ancak o zaman, dediler, her iş kendi zamanında yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Başkaları ise, hangi zamanın hangi iş için doğru olacağına önceden karar verilemeyeceğini, boş eğlencelerle dikkati dağıtmadan, her zaman olan biten her şeye dikkat etmeli ve o zaman her zaman en gerekli olanı yapmalı dediler.",
+      "text_markdown": "Başkaları ise, hangi zamanın hangi iş için doğru olacağına önceden karar verilemeyeceğini, boş eğlencelerle dikkati dağıtmadan, her zaman olan biten her şeye dikkat etmeli ve o zaman her zaman en gerekli olanı yapmalı dediler.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Başkaları ise, hangi zamanın hangi iş için doğru olacağına önceden karar verilemeyeceğini, boş eğlencelerle dikkati dağıtmadan, her zaman olan biten her şeye dikkat etmeli ve o zaman her zaman en gerekli olanı yapmalı dediler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Üçüncüler, kral olan biten her şeye ne kadar dikkat etse de, bir insanın her iş için ne zaman doğru olduğunu her zaman doğru bir şekilde karar veremeyeceğini, bilgelerin öğütlerine ihtiyaç duyulduğunu ve onların öğütleriyle her iş için zamanı belirlenmesi gerektiğini söylediler.",
+      "text_markdown": "Üçüncüler, kral olan biten her şeye ne kadar dikkat etse de, bir insanın her iş için ne zaman doğru olduğunu her zaman doğru bir şekilde karar veremeyeceğini, bilgelerin öğütlerine ihtiyaç duyulduğunu ve onların öğütleriyle her iş için zamanı belirlenmesi gerektiğini söylediler.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Üçüncüler, kral olan biten her şeye ne kadar dikkat etse de, bir insanın her iş için ne zaman doğru olduğunu her zaman doğru bir şekilde karar veremeyeceğini, bilgelerin öğütlerine ihtiyaç duyulduğunu ve onların öğütleriyle her iş için zamanı belirlenmesi gerektiğini söylediler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Dördüncüler ise, danışma beklemeden hemen karar verilmesi gereken işler olduğunu ve bunların tam olarak ne zaman gerekeceğini bilmek için gelecekte ne olacağını bilmek gerektiğini söylediler.",
+      "text_markdown": "Dördüncüler ise, danışma beklemeden hemen karar verilmesi gereken işler olduğunu ve bunların tam olarak ne zaman gerekeceğini bilmek için gelecekte ne olacağını bilmek gerektiğini söylediler.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Dördüncüler ise, danışma beklemeden hemen karar verilmesi gereken işler olduğunu ve bunların tam olarak ne zaman gerekeceğini bilmek için gelecekte ne olacağını bilmek gerektiğini söylediler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Bunu ise sadece büyücüler bilebilir.",
+      "text_markdown": "Bunu ise sadece büyücüler bilebilir.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bunu ise sadece büyücüler bilebilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Bu nedenle, her iş için doğru zamanı bilmek için büyücülara sormak gerekir.",
+      "text_markdown": "Bu nedenle, her iş için doğru zamanı bilmek için büyücülara sormak gerekir.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bu nedenle, her iş için doğru zamanı bilmek için büyücülara sormak gerekir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "İkinci soruya da çeşitli şekillerde yanıt verdiler.",
+      "text_markdown": "İkinci soruya da çeşitli şekillerde yanıt verdiler.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "İkinci soruya da çeşitli şekillerde yanıt verdiler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Kimisi kral için en gerekli insanların yöneticiler olduğunu söyledi, diğerleri din adamları, üçüncüler doktorlar, dördüncüler ise savaşçılar dedi.",
+      "text_markdown": "Kimisi kral için en gerekli insanların yöneticiler olduğunu söyledi, diğerleri din adamları, üçüncüler doktorlar, dördüncüler ise savaşçılar dedi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kimisi kral için en gerekli insanların yöneticiler olduğunu söyledi, diğerleri din adamları, üçüncüler doktorlar, dördüncüler ise savaşçılar dedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Üçüncü soruya — hangi iş en önemli? — kimisi dünyada en önemli şeyin bilim olduğunu söyledi; diğerleri askeri işler, üçüncüler ise dindarlık dedi.",
+      "text_markdown": "Üçüncü soruya — hangi iş en önemli? — kimisi dünyada en önemli şeyin bilim olduğunu söyledi; diğerleri askeri işler, üçüncüler ise dindarlık dedi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Üçüncü soruya — hangi iş en önemli? — kimisi dünyada en önemli şeyin bilim olduğunu söyledi; diğerleri askeri işler, üçüncüler ise dindarlık dedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Tüm yanıtlar farklıydı ve bu nedenle kral hiçbiriyle hemfikir olmadı ve kimseye ödül vermedi.",
+      "text_markdown": "Tüm yanıtlar farklıydı ve bu nedenle kral hiçbiriyle hemfikir olmadı ve kimseye ödül vermedi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Tüm yanıtlar farklıydı ve bu nedenle kral hiçbiriyle hemfikir olmadı ve kimseye ödül vermedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Sorularının yanıtlarını daha iyi öğrenmek için ise, bilge bir insan olduğu söylenen bir münzevi sormaya karar verdi.",
+      "text_markdown": "Sorularının yanıtlarını daha iyi öğrenmek için ise, bilge bir insan olduğu söylenen bir münzevi sormaya karar verdi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Sorularının yanıtlarını daha iyi öğrenmek için ise, bilge bir insan olduğu söylenen bir münzevi sormaya karar verdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Münzevi ormanda yaşıyor ve oradan hiç çıkmıyordu.",
+      "text_markdown": "Münzevi ormanda yaşıyor ve oradan hiç çıkmıyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzevi ormanda yaşıyor ve oradan hiç çıkmıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Sadece sade insanları kabul ediyordu ve bu nedenle kral sade giyindi ve münzevinin evine varmadan atından indi ve tek başına ona doğru yürüdü.",
+      "text_markdown": "Sadece sade insanları kabul ediyordu ve bu nedenle kral sade giyindi ve münzevinin evine varmadan atından indi ve tek başına ona doğru yürüdü.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Sadece sade insanları kabul ediyordu ve bu nedenle kral sade giyindi ve münzevinin evine varmadan atından indi ve tek başına ona doğru yürüdü.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Kral ona yaklaştığında, münzevi kulübesinin önünde tarla kazıyordu.",
+      "text_markdown": "Kral ona yaklaştığında, münzevi kulübesinin önünde tarla kazıyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral ona yaklaştığında, münzevi kulübesinin önünde tarla kazıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Kralı görünce, münzevi ona başıyla selam verdi ve kazmaya devam etti.",
+      "text_markdown": "Kralı görünce, münzevi ona başıyla selam verdi ve kazmaya devam etti.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kralı görünce, münzevi ona başıyla selam verdi ve kazmaya devam etti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Münzevi zayıf ve güçsüzdü ve küreği toprağa sokup küçük toprak parçalarını çevirerek ağır ağır soluyordu.",
+      "text_markdown": "Münzevi zayıf ve güçsüzdü ve küreği toprağa sokup küçük toprak parçalarını çevirerek ağır ağır soluyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzevi zayıf ve güçsüzdü ve küreği toprağa sokup küçük toprak parçalarını çevirerek ağır ağır soluyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Kral ona yaklaşıp şöyle dedi:",
+      "text_markdown": "Kral ona yaklaşıp şöyle dedi:",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral ona yaklaşıp şöyle dedi:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Sana geldim, bilge münzevi, bana üç soruyu yanıtlamanı rica etmek için: hangi zamanı hatırlamalı ve kaçırmamalı ki sonra pişman olmayalım?",
+      "text_markdown": "— Sana geldim, bilge münzevi, bana üç soruyu yanıtlamanı rica etmek için: hangi zamanı hatırlamalı ve kaçırmamalı ki sonra pişman olmayalım?",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Sana geldim, bilge münzevi, bana üç soruyu yanıtlamanı rica etmek için: hangi zamanı hatırlamalı ve kaçırmamalı ki sonra pişman olmayalım?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Hangi insanlar en gerekli?",
+      "text_markdown": "Hangi insanlar en gerekli?",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Hangi insanlar en gerekli?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Ve hangi iş en önemli?",
+      "text_markdown": "Ve hangi iş en önemli?",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ve hangi iş en önemli?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Münzevi kralı dinledi ama hiçbir şey yanıtlamadı, eline tükürdü ve yeniden kazmaya başladı.",
+      "text_markdown": "Münzevi kralı dinledi ama hiçbir şey yanıtlamadı, eline tükürdü ve yeniden kazmaya başladı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzevi kralı dinledi ama hiçbir şey yanıtlamadı, eline tükürdü ve yeniden kazmaya başladı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Yoruldun, — dedi kral.",
+      "text_markdown": "— Yoruldun, — dedi kral.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Yoruldun, — dedi kral.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Bırak sana yardım edeyim.",
+      "text_markdown": "— Bırak sana yardım edeyim.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Bırak sana yardım edeyim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Teşekkürler, — dedi münzevi ve küreği krala verip yere oturdu.",
+      "text_markdown": "— Teşekkürler, — dedi münzevi ve küreği krala verip yere oturdu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Teşekkürler, — dedi münzevi ve küreği krala verip yere oturdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "İki tarla kazdıktan sonra kral durdu ve sorularını tekrarladı.",
+      "text_markdown": "İki tarla kazdıktan sonra kral durdu ve sorularını tekrarladı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "İki tarla kazdıktan sonra kral durdu ve sorularını tekrarladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Münzevi yine yanıtlamadı, ayağa kalkıp küreğe doğru elini uzattı:",
+      "text_markdown": "Münzevi yine yanıtlamadı, ayağa kalkıp küreğe doğru elini uzattı:",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzevi yine yanıtlamadı, ayağa kalkıp küreğe doğru elini uzattı:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Şimdi dinlen, bırak ben yapayım, — dedi.",
+      "text_markdown": "— Şimdi dinlen, bırak ben yapayım, — dedi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Şimdi dinlen, bırak ben yapayım, — dedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Ama kral küreği vermedi ve kazmaya devam etti.",
+      "text_markdown": "Ama kral küreği vermedi ve kazmaya devam etti.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ama kral küreği vermedi ve kazmaya devam etti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Bir saat geçti, bir saat daha geçti.",
+      "text_markdown": "Bir saat geçti, bir saat daha geçti.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bir saat geçti, bir saat daha geçti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Güneş ağaçların arkasına battı.",
+      "text_markdown": "Güneş ağaçların arkasına battı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Güneş ağaçların arkasına battı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Kral küreği toprağa sapladı ve dedi:",
+      "text_markdown": "Kral küreği toprağa sapladı ve dedi:",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral küreği toprağa sapladı ve dedi:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Sana geldim, bilge, sorularımın yanıtı için.",
+      "text_markdown": "— Sana geldim, bilge, sorularımın yanıtı için.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Sana geldim, bilge, sorularımın yanıtı için.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Eğer bana yanıt veremiyorsan, bunu söyle, ben de eve gideyim.",
+      "text_markdown": "Eğer bana yanıt veremiyorsan, bunu söyle, ben de eve gideyim.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Eğer bana yanıt veremiyorsan, bunu söyle, ben de eve gideyim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— İşte birisi koşuyor, — dedi münzevi.",
+      "text_markdown": "— İşte birisi koşuyor, — dedi münzevi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— İşte birisi koşuyor, — dedi münzevi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Bakalım kim bu.",
+      "text_markdown": "— Bakalım kim bu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Bakalım kim bu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Kral arkasını döndü ve gördü — ormandan sakallı bir adam koşuyordu.",
+      "text_markdown": "Kral arkasını döndü ve gördü — ormandan sakallı bir adam koşuyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral arkasını döndü ve gördü — ormandan sakallı bir adam koşuyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Bu adam ellerini karnındaki yaraya bastırıyordu, ellerinin altından kan akıyordu.",
+      "text_markdown": "Bu adam ellerini karnındaki yaraya bastırıyordu, ellerinin altından kan akıyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bu adam ellerini karnındaki yaraya bastırıyordu, ellerinin altından kan akıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Krala kadar koştuktan sonra, adam bayılarak yere düştü ve sessizce inleyerek yattı.",
+      "text_markdown": "Krala kadar koştuktan sonra, adam bayılarak yere düştü ve sessizce inleyerek yattı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Krala kadar koştuktan sonra, adam bayılarak yere düştü ve sessizce inleyerek yattı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Kral münzeviyle birlikte adamın giysilerini çıkarıp açtı.",
+      "text_markdown": "Kral münzeviyle birlikte adamın giysilerini çıkarıp açtı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral münzeviyle birlikte adamın giysilerini çıkarıp açtı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Karnında büyük bir yara vardı.",
+      "text_markdown": "Karnında büyük bir yara vardı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Karnında büyük bir yara vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Kral, elinden geldiğince yarayı yıkadı ve kendi mendili ile münzevinin havlusuyla sardı.",
+      "text_markdown": "Kral, elinden geldiğince yarayı yıkadı ve kendi mendili ile münzevinin havlusuyla sardı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral, elinden geldiğince yarayı yıkadı ve kendi mendili ile münzevinin havlusuyla sardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Ama kan durmuyordu.",
+      "text_markdown": "Ama kan durmuyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ama kan durmuyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Kral birkaç kez bandajı çıkardı, yarayı yeniden yıkadı ve sardı.",
+      "text_markdown": "Kral birkaç kez bandajı çıkardı, yarayı yeniden yıkadı ve sardı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral birkaç kez bandajı çıkardı, yarayı yeniden yıkadı ve sardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Sonunda kan durduğunda, adam kendine geldi ve içmek istedi.",
+      "text_markdown": "Sonunda kan durduğunda, adam kendine geldi ve içmek istedi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Sonunda kan durduğunda, adam kendine geldi ve içmek istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Kral ona taze su getirip içirdi.",
+      "text_markdown": "Kral ona taze su getirip içirdi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral ona taze su getirip içirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Bu arada güneş tamamen battı ve hava soğudu.",
+      "text_markdown": "Bu arada güneş tamamen battı ve hava soğudu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Bu arada güneş tamamen battı ve hava soğudu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Kral münzevinin yardımıyla yaralıyı kulübeye taşıyıp yatağa yatırdı.",
+      "text_markdown": "Kral münzevinin yardımıyla yaralıyı kulübeye taşıyıp yatağa yatırdı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral münzevinin yardımıyla yaralıyı kulübeye taşıyıp yatağa yatırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Yaralı gözlerini kapatıp sessizleşti.",
+      "text_markdown": "Yaralı gözlerini kapatıp sessizleşti.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Yaralı gözlerini kapatıp sessizleşti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Kral yürüyüş ve çalışmaktan o kadar yorulmuştu ki, hemen orada, eşikte uzanıp uyudu — o kadar derin uyudu ki kısa yaz gecesini boyunca uyudu ve sabah uyandığında uzun süre nerede olduğunu ve yatakta yatan, parlak gözlerle ona inatla bakan bu tuhaf sakallı adamın kim olduğunu anlayamadı.",
+      "text_markdown": "Kral yürüyüş ve çalışmaktan o kadar yorulmuştu ki, hemen orada, eşikte uzanıp uyudu — o kadar derin uyudu ki kısa yaz gecesini boyunca uyudu ve sabah uyandığında uzun süre nerede olduğunu ve yatakta yatan, parlak gözlerle ona inatla bakan bu tuhaf sakallı adamın kim olduğunu anlayamadı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral yürüyüş ve çalışmaktan o kadar yorulmuştu ki, hemen orada, eşikte uzanıp uyudu — o kadar derin uyudu ki kısa yaz gecesini boyunca uyudu ve sabah uyandığında uzun süre nerede olduğunu ve yatakta yatan, parlak gözlerle ona inatla bakan bu tuhaf sakallı adamın kim olduğunu anlayamadı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Beni bağışla, — dedi sakallı adam zayıf bir sesle, kralın uyandığını ve ona baktığını görünce.",
+      "text_markdown": "— Beni bağışla, — dedi sakallı adam zayıf bir sesle, kralın uyandığını ve ona baktığını görünce.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Beni bağışla, — dedi sakallı adam zayıf bir sesle, kralın uyandığını ve ona baktığını görünce.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Seni tanımıyorum ve seni bağışlayacak bir nedenim yok, — dedi kral.",
+      "text_markdown": "— Seni tanımıyorum ve seni bağışlayacak bir nedenim yok, — dedi kral.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Seni tanımıyorum ve seni bağışlayacak bir nedenim yok, — dedi kral.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Sen beni tanımıyorsun, ama ben seni tanıyorum.",
+      "text_markdown": "— Sen beni tanımıyorsun, ama ben seni tanıyorum.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Sen beni tanımıyorsun, ama ben seni tanıyorum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Ben senin düşmanınım, kardeşimi idam ettirdiğin ve mülkümü elimden aldığın için senden intikam almaya yemin eden o kişi.",
+      "text_markdown": "Ben senin düşmanınım, kardeşimi idam ettirdiğin ve mülkümü elimden aldığın için senden intikam almaya yemin eden o kişi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ben senin düşmanınım, kardeşimi idam ettirdiğin ve mülkümü elimden aldığın için senden intikam almaya yemin eden o kişi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Münzeviye tek başına gittiğini biliyordum ve dönüş yolunda seni öldürmeye karar verdim.",
+      "text_markdown": "Münzeviye tek başına gittiğini biliyordum ve dönüş yolunda seni öldürmeye karar verdim.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzeviye tek başına gittiğini biliyordum ve dönüş yolunda seni öldürmeye karar verdim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Ama bütün gün geçti ve sen hâlâ gelmiyordun.",
+      "text_markdown": "Ama bütün gün geçti ve sen hâlâ gelmiyordun.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ama bütün gün geçti ve sen hâlâ gelmiyordun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "O zaman seni aramak için pusumdan çıktım ve muhafızlarına rastladım.",
+      "text_markdown": "O zaman seni aramak için pusumdan çıktım ve muhafızlarına rastladım.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "O zaman seni aramak için pusumdan çıktım ve muhafızlarına rastladım.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Beni tanıdılar ve yaraladılar.",
+      "text_markdown": "Beni tanıdılar ve yaraladılar.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Beni tanıdılar ve yaraladılar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Onlardan kaçtım, ama yaramı sarmamış olsaydın ölmüş olurdum.",
+      "text_markdown": "Onlardan kaçtım, ama yaramı sarmamış olsaydın ölmüş olurdum.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Onlardan kaçtım, ama yaramı sarmamış olsaydın ölmüş olurdum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Seni öldürmek istiyordum, sen ise hayatımı kurtardın.",
+      "text_markdown": "Seni öldürmek istiyordum, sen ise hayatımı kurtardın.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Seni öldürmek istiyordum, sen ise hayatımı kurtardın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Şimdi, eğer yaşarsam ve sen istersen, en sadık kölen gibi sana hizmet edeceğim ve aynısını yapmalarını oğullarıma da emredeceğim.",
+      "text_markdown": "Şimdi, eğer yaşarsam ve sen istersen, en sadık kölen gibi sana hizmet edeceğim ve aynısını yapmalarını oğullarıma da emredeceğim.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Şimdi, eğer yaşarsam ve sen istersen, en sadık kölen gibi sana hizmet edeceğim ve aynısını yapmalarını oğullarıma da emredeceğim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Beni bağışla.",
+      "text_markdown": "Beni bağışla.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Beni bağışla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Kral düşmanıyla bu kadar kolay barışabildiğine ve bir dost kazandığına çok sevindi, onu bağışladı ve mülkünü geri vereceğine, onunla ilgilenmesi için doktorlarını ve hizmetçilerini göndereceğine söz verdi.",
+      "text_markdown": "Kral düşmanıyla bu kadar kolay barışabildiğine ve bir dost kazandığına çok sevindi, onu bağışladı ve mülkünü geri vereceğine, onunla ilgilenmesi için doktorlarını ve hizmetçilerini göndereceğine söz verdi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral düşmanıyla bu kadar kolay barışabildiğine ve bir dost kazandığına çok sevindi, onu bağışladı ve mülkünü geri vereceğine, onunla ilgilenmesi için doktorlarını ve hizmetçilerini göndereceğine söz verdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Yaralıyla vedalaştıktan sonra, kral balkona çıktı ve münzeviyi gözleriyle aramaya başladı.",
+      "text_markdown": "Yaralıyla vedalaştıktan sonra, kral balkona çıktı ve münzeviyi gözleriyle aramaya başladı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Yaralıyla vedalaştıktan sonra, kral balkona çıktı ve münzeviyi gözleriyle aramaya başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Gitmeden önce sorularına cevap almak için ondan bir kez daha rica etmek istiyordu.",
+      "text_markdown": "Gitmeden önce sorularına cevap almak için ondan bir kez daha rica etmek istiyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Gitmeden önce sorularına cevap almak için ondan bir kez daha rica etmek istiyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Münzevi bahçedeydi ve diz çökerek, dün kazılan tarhları tohum ekiyordu.",
+      "text_markdown": "Münzevi bahçedeydi ve diz çökerek, dün kazılan tarhları tohum ekiyordu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Münzevi bahçedeydi ve diz çökerek, dün kazılan tarhları tohum ekiyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Kral ona yaklaştı.",
+      "text_markdown": "Kral ona yaklaştı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Kral ona yaklaştı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Bilge insan, son kez senden rica ediyorum: sorularımı cevapla.",
+      "text_markdown": "— Bilge insan, son kez senden rica ediyorum: sorularımı cevapla.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Bilge insan, son kez senden rica ediyorum: sorularımı cevapla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Sen zaten cevabını aldın, — dedi münzevi, ince bacakları üzerinde çömelerek ve önünde duran krala aşağıdan bakarak.",
+      "text_markdown": "— Sen zaten cevabını aldın, — dedi münzevi, ince bacakları üzerinde çömelerek ve önünde duran krala aşağıdan bakarak.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Sen zaten cevabını aldın, — dedi münzevi, ince bacakları üzerinde çömelerek ve önünde duran krala aşağıdan bakarak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Nasıl cevap aldım? — diye sordu kral.",
+      "text_markdown": "— Nasıl cevap aldım? — diye sordu kral.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Nasıl cevap aldım? — diye sordu kral.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Nasıl mı? — dedi münzevi.",
+      "text_markdown": "— Nasıl mı? — dedi münzevi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Nasıl mı? — dedi münzevi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Eğer dün bana acımamış ve benim yerime bu tarhaları kazmamış olsaydın, geri gitmiş olsaydın, o adam seni öldürmüş olurdu.",
+      "text_markdown": "— Eğer dün bana acımamış ve benim yerime bu tarhaları kazmamış olsaydın, geri gitmiş olsaydın, o adam seni öldürmüş olurdu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Eğer dün bana acımamış ve benim yerime bu tarhaları kazmamış olsaydın, geri gitmiş olsaydın, o adam seni öldürmüş olurdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Ve bu nedenle en önemli zaman tarhaları kazdığın zamandı.",
+      "text_markdown": "Ve bu nedenle en önemli zaman tarhaları kazdığın zamandı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ve bu nedenle en önemli zaman tarhaları kazdığın zamandı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Ve en gerekli kişi bendim.",
+      "text_markdown": "Ve en gerekli kişi bendim.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ve en gerekli kişi bendim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Ve en önemli iş — bana iyilik yapmaktı.",
+      "text_markdown": "Ve en önemli iş — bana iyilik yapmaktı.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ve en önemli iş — bana iyilik yapmaktı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Sonra o adam geldiğinde, en önemli zaman onunla ilgilendiğin zamandı, çünkü yarasını yıkamamış olsaydın, seninle barışmadan ölmüş olurdu.",
+      "text_markdown": "Sonra o adam geldiğinde, en önemli zaman onunla ilgilendiğin zamandı, çünkü yarasını yıkamamış olsaydın, seninle barışmadan ölmüş olurdu.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Sonra o adam geldiğinde, en önemli zaman onunla ilgilendiğin zamandı, çünkü yarasını yıkamamış olsaydın, seninle barışmadan ölmüş olurdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Ve bu nedenle en gerekli kişi oydu ve en önemli iş de ona yaptığın şeydi.",
+      "text_markdown": "Ve bu nedenle en gerekli kişi oydu ve en önemli iş de ona yaptığın şeydi.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "Ve bu nedenle en gerekli kişi oydu ve en önemli iş de ona yaptığın şeydi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Öyleyse şunu unutma, — dedi münzevi, — en önemli zaman tek bir tanedir: şimdi, — ve bu en önemli zamandır çünkü yalnızca bu anda kendimize hakim olabiliriz; en gerekli kişi ise şu anda işin olduğun kişidir, çünkü kimse başka bir insanla daha işinin olup olmayacağını bilemez; en önemli iş ise ona iyilik yapmaktır, çünkü insan hayata yalnızca bunun için gönderilmiştir.",
+      "text_markdown": "— Öyleyse şunu unutma, — dedi münzevi, — en önemli zaman tek bir tanedir: şimdi, — ve bu en önemli zamandır çünkü yalnızca bu anda kendimize hakim olabiliriz; en gerekli kişi ise şu anda işin olduğun kişidir, çünkü kimse başka bir insanla daha işinin olup olmayacağını bilemez; en önemli iş ise ona iyilik yapmaktır, çünkü insan hayata yalnızca bunun için gönderilmiştir.",
+      "title": "Üç Soru",
+      "tts": {
+        "text": "— Öyleyse şunu unutma, — dedi münzevi, — en önemli zaman tek bir tanedir: şimdi, — ve bu en önemli zamandır çünkü yalnızca bu anda kendimize hakim olabiliriz; en gerekli kişi ise şu anda işin olduğun kişidir, çünkü kimse başka bir insanla daha işinin olup olmayacağını bilemez; en önemli iş ise ona iyilik yapmaktır, çünkü insan hayata yalnızca bunun için gönderilmiştir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tundra",
+      "text_markdown": "Tundra"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bu Biyom Nerede Bulunur",
+      "text_markdown": "Bu Biyom Nerede Bulunur"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundraya hoş geldiniz.",
+      "text_markdown": "Tundraya hoş geldiniz.",
+      "tts": {
+        "text": "Tundraya hoş geldiniz.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burası dünyanın büyük biyomlarından biridir.",
+      "text_markdown": "Burası dünyanın büyük biyomlarından biridir.",
+      "tts": {
+        "text": "Burası dünyanın büyük biyomlarından biridir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biyom, kendine özgü havası, bitkileri ve hayvanları olan bir Dünya parçasıdır.",
+      "text_markdown": "Biyom, kendine özgü havası, bitkileri ve hayvanları olan bir Dünya parçasıdır.",
+      "tts": {
+        "text": "Biyom, kendine özgü havası, bitkileri ve hayvanları olan bir Dünya parçasıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra, ağaçların yetişemeyeceği kadar soğuk, açık bir topraktır.",
+      "text_markdown": "Tundra, ağaçların yetişemeyeceği kadar soğuk, açık bir topraktır.",
+      "tts": {
+        "text": "Tundra, ağaçların yetişemeyeceği kadar soğuk, açık bir topraktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra sözcüğü, ağaçsız ova anlamına gelen eski bir sözcükten gelir.",
+      "text_markdown": "Tundra sözcüğü, ağaçsız ova anlamına gelen eski bir sözcükten gelir.",
+      "tts": {
+        "text": "Tundra sözcüğü, ağaçsız ova anlamına gelen eski bir sözcükten gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra, karadaki en soğuk biyomdur.",
+      "text_markdown": "Tundra, karadaki en soğuk biyomdur.",
+      "tts": {
+        "text": "Tundra, karadaki en soğuk biyomdur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın çoğu, dünyanın tepesinde geniş bir halka gibi uzanır.",
+      "text_markdown": "Tundranın çoğu, dünyanın tepesinde geniş bir halka gibi uzanır.",
+      "tts": {
+        "text": "Tundranın çoğu, dünyanın tepesinde geniş bir halka gibi uzanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Amerika'da Kanada, Alaska ve Grönland'ın kuzey kıyılarını kaplar.",
+      "text_markdown": "Kuzey Amerika'da Kanada, Alaska ve Grönland'ın kuzey kıyılarını kaplar.",
+      "tts": {
+        "text": "Kuzey Amerika'da Kanada, Alaska ve Grönland'ın kuzey kıyılarını kaplar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Avrupa'da Norveç, İsveç ve Finlandiya'nın en kuzeyini kaplar.",
+      "text_markdown": "Kuzey Avrupa'da Norveç, İsveç ve Finlandiya'nın en kuzeyini kaplar.",
+      "tts": {
+        "text": "Kuzey Avrupa'da Norveç, İsveç ve Finlandiya'nın en kuzeyini kaplar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Asya'nın tepesi boyunca Rusya'nın uzun kuzey kıyısını kaplar.",
+      "text_markdown": "Asya'nın tepesi boyunca Rusya'nın uzun kuzey kıyısını kaplar.",
+      "tts": {
+        "text": "Asya'nın tepesi boyunca Rusya'nın uzun kuzey kıyısını kaplar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu soğuk toprak halkası, boreal ormanın kuzeyinde ve donmuş denizin çevresinde uzanır.",
+      "text_markdown": "Bu soğuk toprak halkası, boreal ormanın kuzeyinde ve donmuş denizin çevresinde uzanır.",
+      "tts": {
+        "text": "Bu soğuk toprak halkası, boreal ormanın kuzeyinde ve donmuş denizin çevresinde uzanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir başka tundra türü daha vardır.",
+      "text_markdown": "Bir başka tundra türü daha vardır.",
+      "tts": {
+        "text": "Bir başka tundra türü daha vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüksek dağlarda, son ağaçların üstünde, aynı soğuk ve açık toprak görünür.",
+      "text_markdown": "Yüksek dağlarda, son ağaçların üstünde, aynı soğuk ve açık toprak görünür.",
+      "tts": {
+        "text": "Yüksek dağlarda, son ağaçların üstünde, aynı soğuk ve açık toprak görünür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu dağ tundrası, dünyanın her yerindeki yüksek doruklarda, hatta Dünya'nın sıcak ortasına yakın yerlerde bulunur.",
+      "text_markdown": "Bu dağ tundrası, dünyanın her yerindeki yüksek doruklarda, hatta Dünya'nın sıcak ortasına yakın yerlerde bulunur.",
+      "tts": {
+        "text": "Bu dağ tundrası, dünyanın her yerindeki yüksek doruklarda, hatta Dünya'nın sıcak ortasına yakın yerlerde bulunur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nerede olursa olsun tundra, alçak bitkilerin, soğuk rüzgârın ve geniş açık göğün toprağıdır.",
+      "text_markdown": "Nerede olursa olsun tundra, alçak bitkilerin, soğuk rüzgârın ve geniş açık göğün toprağıdır.",
+      "tts": {
+        "text": "Nerede olursa olsun tundra, alçak bitkilerin, soğuk rüzgârın ve geniş açık göğün toprağıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada orman yoktur.",
+      "text_markdown": "Burada orman yoktur.",
+      "tts": {
+        "text": "Burada orman yoktur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprak, yılın çoğunda sertçe donmuştur.",
+      "text_markdown": "Toprak, yılın çoğunda sertçe donmuştur.",
+      "tts": {
+        "text": "Toprak, yılın çoğunda sertçe donmuştur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama bu soğuk yerde bile hayat bir yol bulur.",
+      "text_markdown": "Ama bu soğuk yerde bile hayat bir yol bulur.",
+      "tts": {
+        "text": "Ama bu soğuk yerde bile hayat bir yol bulur.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hava",
+      "text_markdown": "Hava"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra, yılın çoğunda soğuk, kuru ve rüzgârlıdır.",
+      "text_markdown": "Tundra, yılın çoğunda soğuk, kuru ve rüzgârlıdır.",
+      "tts": {
+        "text": "Tundra, yılın çoğunda soğuk, kuru ve rüzgârlıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kış uzun, karanlık ve dondurucu soğuktur.",
+      "text_markdown": "Kış uzun, karanlık ve dondurucu soğuktur.",
+      "tts": {
+        "text": "Kış uzun, karanlık ve dondurucu soğuktur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kuzeyde kış, sekiz ya da dokuz ay sürebilir.",
+      "text_markdown": "En kuzeyde kış, sekiz ya da dokuz ay sürebilir.",
+      "tts": {
+        "text": "En kuzeyde kış, sekiz ya da dokuz ay sürebilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hava, donma noktasının çok altına, ev dondurucusundan bile soğuğa iner.",
+      "text_markdown": "Hava, donma noktasının çok altına, ev dondurucusundan bile soğuğa iner.",
+      "tts": {
+        "text": "Hava, donma noktasının çok altına, ev dondurucusundan bile soğuğa iner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kışın en derin haftalarında güneş hiç doğmaz.",
+      "text_markdown": "Kışın en derin haftalarında güneş hiç doğmaz.",
+      "tts": {
+        "text": "Kışın en derin haftalarında güneş hiç doğmaz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprak, gün be gün uzun, mavi ve karanlık bir alacakaranlıkta uzanır.",
+      "text_markdown": "Toprak, gün be gün uzun, mavi ve karanlık bir alacakaranlıkta uzanır.",
+      "tts": {
+        "text": "Toprak, gün be gün uzun, mavi ve karanlık bir alacakaranlıkta uzanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Açık toprakta, onları yavaşlatacak ağaç olmadan güçlü rüzgârlar eser.",
+      "text_markdown": "Açık toprakta, onları yavaşlatacak ağaç olmadan güçlü rüzgârlar eser.",
+      "tts": {
+        "text": "Açık toprakta, onları yavaşlatacak ağaç olmadan güçlü rüzgârlar eser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rüzgâr, kuru karı kaldırır ve yer boyunca sürükler.",
+      "text_markdown": "Rüzgâr, kuru karı kaldırır ve yer boyunca sürükler.",
+      "tts": {
+        "text": "Rüzgâr, kuru karı kaldırır ve yer boyunca sürükler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada çok az kar ya da yağmur yağar.",
+      "text_markdown": "Burada çok az kar ya da yağmur yağar.",
+      "tts": {
+        "text": "Burada çok az kar ya da yağmur yağar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra o kadar kurudur ki bazen soğuk çöl denir.",
+      "text_markdown": "Tundra o kadar kurudur ki bazen soğuk çöl denir.",
+      "tts": {
+        "text": "Tundra o kadar kurudur ki bazen soğuk çöl denir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama yağan su, donmuş toprağa sızamaz.",
+      "text_markdown": "Ama yağan su, donmuş toprağa sızamaz.",
+      "tts": {
+        "text": "Ama yağan su, donmuş toprağa sızamaz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yüzden üstte kalır ve toprak, sığ su birikintileri ve ıslak zeminle beneklenir.",
+      "text_markdown": "Bu yüzden üstte kalır ve toprak, sığ su birikintileri ve ıslak zeminle beneklenir.",
+      "tts": {
+        "text": "Bu yüzden üstte kalır ve toprak, sığ su birikintileri ve ıslak zeminle beneklenir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaz kısa ve serindir.",
+      "text_markdown": "Yaz kısa ve serindir.",
+      "tts": {
+        "text": "Yaz kısa ve serindir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birkaç hafta boyunca güneş, neredeyse tüm gün ve tüm gece gökte kalır.",
+      "text_markdown": "Birkaç hafta boyunca güneş, neredeyse tüm gün ve tüm gece gökte kalır.",
+      "tts": {
+        "text": "Birkaç hafta boyunca güneş, neredeyse tüm gün ve tüm gece gökte kalır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donmuş toprağın üstü yumuşar ve toprak yeşerip parlar.",
+      "text_markdown": "Donmuş toprağın üstü yumuşar ve toprak yeşerip parlar.",
+      "tts": {
+        "text": "Donmuş toprağın üstü yumuşar ve toprak yeşerip parlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yazın bile hava serin kalır ve herhangi bir gece don geri dönebilir.",
+      "text_markdown": "Yazın bile hava serin kalır ve herhangi bir gece don geri dönebilir.",
+      "tts": {
+        "text": "Yazın bile hava serin kalır ve herhangi bir gece don geri dönebilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra kısa yaz biter, güneş alçalır ve uzun kış yeniden başlar.",
+      "text_markdown": "Sonra kısa yaz biter, güneş alçalır ve uzun kış yeniden başlar.",
+      "tts": {
+        "text": "Sonra kısa yaz biter, güneş alçalır ve uzun kış yeniden başlar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Toprak ve Su",
+      "text_markdown": "Toprak ve Su"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundrayla ilgili en önemli şey, ayaklarınızın altında yatar.",
+      "text_markdown": "Tundrayla ilgili en önemli şey, ayaklarınızın altında yatar.",
+      "tts": {
+        "text": "Tundrayla ilgili en önemli şey, ayaklarınızın altında yatar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yüzeyin altında toprak, yıl boyunca katı biçimde donmuştur.",
+      "text_markdown": "Yüzeyin altında toprak, yıl boyunca katı biçimde donmuştur.",
+      "tts": {
+        "text": "Yüzeyin altında toprak, yıl boyunca katı biçimde donmuştur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu donmuş toprağa permafrost denir.",
+      "text_markdown": "Bu donmuş toprağa permafrost denir.",
+      "tts": {
+        "text": "Bu donmuş toprağa permafrost denir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı yerlerde permafrost, en yüksek binadan daha derine iner.",
+      "text_markdown": "Bazı yerlerde permafrost, en yüksek binadan daha derine iner.",
+      "tts": {
+        "text": "Bazı yerlerde permafrost, en yüksek binadan daha derine iner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Binlerce yıldır donmuş durumdadır.",
+      "text_markdown": "Binlerce yıldır donmuş durumdadır.",
+      "tts": {
+        "text": "Binlerce yıldır donmuş durumdadır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yazın, toprağın yalnızca en üst katmanı çözülür.",
+      "text_markdown": "Yazın, toprağın yalnızca en üst katmanı çözülür.",
+      "tts": {
+        "text": "Yazın, toprağın yalnızca en üst katmanı çözülür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ince çözülmüş katman, tüm bitkilerin yaşamak zorunda olduğu yerdir.",
+      "text_markdown": "Bu ince çözülmüş katman, tüm bitkilerin yaşamak zorunda olduğu yerdir.",
+      "tts": {
+        "text": "Bu ince çözülmüş katman, tüm bitkilerin yaşamak zorunda olduğu yerdir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kökleri derine inemez, çünkü hemen altlarında toprak kaya kadar serttir.",
+      "text_markdown": "Kökleri derine inemez, çünkü hemen altlarında toprak kaya kadar serttir.",
+      "tts": {
+        "text": "Kökleri derine inemez, çünkü hemen altlarında toprak kaya kadar serttir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donmuş toprak, suyu da yüzeyde hapseder.",
+      "text_markdown": "Donmuş toprak, suyu da yüzeyde hapseder.",
+      "tts": {
+        "text": "Donmuş toprak, suyu da yüzeyde hapseder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ve eriyen kar, permafrostun içinden akıp gidemez.",
+      "text_markdown": "Yağmur ve eriyen kar, permafrostun içinden akıp gidemez.",
+      "tts": {
+        "text": "Yağmur ve eriyen kar, permafrostun içinden akıp gidemez.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Böylece yazın tundra, sığ birikintilerin, bataklıkların ve yavaş derelerin toprağı olur.",
+      "text_markdown": "Böylece yazın tundra, sığ birikintilerin, bataklıkların ve yavaş derelerin toprağı olur.",
+      "tts": {
+        "text": "Böylece yazın tundra, sığ birikintilerin, bataklıkların ve yavaş derelerin toprağı olur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yukarıdan bakıldığında yaz tundrası, binlerce küçük gölcükle parlar.",
+      "text_markdown": "Yukarıdan bakıldığında yaz tundrası, binlerce küçük gölcükle parlar.",
+      "tts": {
+        "text": "Yukarıdan bakıldığında yaz tundrası, binlerce küçük gölcükle parlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprağın kendisi çoğunlukla düz ya da hafifçe dalgalıdır.",
+      "text_markdown": "Toprağın kendisi çoğunlukla düz ya da hafifçe dalgalıdır.",
+      "tts": {
+        "text": "Toprağın kendisi çoğunlukla düz ya da hafifçe dalgalıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok yerde toprak, donma ve çözülmeyle tuhaf şekillere ayrılır.",
+      "text_markdown": "Birçok yerde toprak, donma ve çözülmeyle tuhaf şekillere ayrılır.",
+      "tts": {
+        "text": "Birçok yerde toprak, donma ve çözülmeyle tuhaf şekillere ayrılır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprak donar ve kabarır, sonra çözülüp çöker, yıl be yıl.",
+      "text_markdown": "Toprak donar ve kabarır, sonra çözülüp çöker, yıl be yıl.",
+      "tts": {
+        "text": "Toprak donar ve kabarır, sonra çözülüp çöker, yıl be yıl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yavaş hareket, toprağı halkalara, çizgilere ve alçak tümseklere ayırır.",
+      "text_markdown": "Bu yavaş hareket, toprağı halkalara, çizgilere ve alçak tümseklere ayırır.",
+      "tts": {
+        "text": "Bu yavaş hareket, toprağı halkalara, çizgilere ve alçak tümseklere ayırır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın toprağı ince, verimsiz ve soğuktur.",
+      "text_markdown": "Tundranın toprağı ince, verimsiz ve soğuktur.",
+      "tts": {
+        "text": "Tundranın toprağı ince, verimsiz ve soğuktur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ölü bitkiler soğukta çok yavaş çürür, bu yüzden iyi toprak yavaş oluşur.",
+      "text_markdown": "Ölü bitkiler soğukta çok yavaş çürür, bu yüzden iyi toprak yavaş oluşur.",
+      "tts": {
+        "text": "Ölü bitkiler soğukta çok yavaş çürür, bu yüzden iyi toprak yavaş oluşur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burası zorlu bir toprak; donmuş, ıslak ve çıplak, ama sessizce yaşam doludur.",
+      "text_markdown": "Burası zorlu bir toprak; donmuş, ıslak ve çıplak, ama sessizce yaşam doludur.",
+      "tts": {
+        "text": "Burası zorlu bir toprak; donmuş, ıslak ve çıplak, ama sessizce yaşam doludur.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bitkiler",
+      "text_markdown": "Bitkiler"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın bitkileri küçük, dayanıklı ve yere yakındır.",
+      "text_markdown": "Tundranın bitkileri küçük, dayanıklı ve yere yakındır.",
+      "tts": {
+        "text": "Tundranın bitkileri küçük, dayanıklı ve yere yakındır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada ağaç yoktur, çünkü ağaçlar donmuş toprakta ve soğuk rüzgârda yaşayamaz.",
+      "text_markdown": "Burada ağaç yoktur, çünkü ağaçlar donmuş toprakta ve soğuk rüzgârda yaşayamaz.",
+      "tts": {
+        "text": "Burada ağaç yoktur, çünkü ağaçlar donmuş toprakta ve soğuk rüzgârda yaşayamaz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunun yerine tundra, küçük bitkilerin alçak örtüleriyle kaplıdır.",
+      "text_markdown": "Bunun yerine tundra, küçük bitkilerin alçak örtüleriyle kaplıdır.",
+      "tts": {
+        "text": "Bunun yerine tundra, küçük bitkilerin alçak örtüleriyle kaplıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alçakta kalmak, burada yaşamanın sırrıdır.",
+      "text_markdown": "Alçakta kalmak, burada yaşamanın sırrıdır.",
+      "tts": {
+        "text": "Alçakta kalmak, burada yaşamanın sırrıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yere yakın yerde rüzgâr daha zayıftır ve hava biraz daha ılıktır.",
+      "text_markdown": "Yere yakın yerde rüzgâr daha zayıftır ve hava biraz daha ılıktır.",
+      "tts": {
+        "text": "Yere yakın yerde rüzgâr daha zayıftır ve hava biraz daha ılıktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok tundra bitkisi, sıcaklığını tutmak için sıkı yastıklar ya da kalın örtüler halinde büyür.",
+      "text_markdown": "Birçok tundra bitkisi, sıcaklığını tutmak için sıkı yastıklar ya da kalın örtüler halinde büyür.",
+      "tts": {
+        "text": "Birçok tundra bitkisi, sıcaklığını tutmak için sıkı yastıklar ya da kalın örtüler halinde büyür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yosunlar, toprağın çoğunda kalın ve yumuşak biçimde büyür.",
+      "text_markdown": "Yosunlar, toprağın çoğunda kalın ve yumuşak biçimde büyür.",
+      "tts": {
+        "text": "Yosunlar, toprağın çoğunda kalın ve yumuşak biçimde büyür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Likenler, çıplak kayalarda ve toprakta gri, yeşil ve sarı lekeler halinde büyür.",
+      "text_markdown": "Likenler, çıplak kayalarda ve toprakta gri, yeşil ve sarı lekeler halinde büyür.",
+      "tts": {
+        "text": "Likenler, çıplak kayalarda ve toprakta gri, yeşil ve sarı lekeler halinde büyür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir liken tek bir bitki değil, birlikte tek bir varlık gibi yaşayan iki tür canlıdır.",
+      "text_markdown": "Bir liken tek bir bitki değil, birlikte tek bir varlık gibi yaşayan iki tür canlıdır.",
+      "tts": {
+        "text": "Bir liken tek bir bitki değil, birlikte tek bir varlık gibi yaşayan iki tür canlıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Likenler, başka neredeyse hiçbir şeyin yaşayamadığı yerde yaşar ve çok yavaş büyür.",
+      "text_markdown": "Likenler, başka neredeyse hiçbir şeyin yaşayamadığı yerde yaşar ve çok yavaş büyür.",
+      "tts": {
+        "text": "Likenler, başka neredeyse hiçbir şeyin yaşayamadığı yerde yaşar ve çok yavaş büyür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundradaki bazı likenler yüzlerce yaşındadır.",
+      "text_markdown": "Tundradaki bazı likenler yüzlerce yaşındadır.",
+      "tts": {
+        "text": "Tundradaki bazı likenler yüzlerce yaşındadır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yosunların arasında küçük otlar ve alçak çiçekli bitkiler büyür.",
+      "text_markdown": "Yosunların arasında küçük otlar ve alçak çiçekli bitkiler büyür.",
+      "tts": {
+        "text": "Yosunların arasında küçük otlar ve alçak çiçekli bitkiler büyür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kısa yazda tundra, birden çiçeğe durur.",
+      "text_markdown": "Kısa yazda tundra, birden çiçeğe durur.",
+      "tts": {
+        "text": "Kısa yazda tundra, birden çiçeğe durur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birkaç parlak hafta boyunca toprak, minik çiçeklerle kaplanır.",
+      "text_markdown": "Birkaç parlak hafta boyunca toprak, minik çiçeklerle kaplanır.",
+      "tts": {
+        "text": "Birkaç parlak hafta boyunca toprak, minik çiçeklerle kaplanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her yerde küçük sarı, beyaz, pembe ve mor çiçekler vardır.",
+      "text_markdown": "Her yerde küçük sarı, beyaz, pembe ve mor çiçekler vardır.",
+      "tts": {
+        "text": "Her yerde küçük sarı, beyaz, pembe ve mor çiçekler vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bitkiler, soğuk geri gelmeden önce çok hızlıca çiçek açmalı, tohum yapmalı ve besin depolamalıdır.",
+      "text_markdown": "Bitkiler, soğuk geri gelmeden önce çok hızlıca çiçek açmalı, tohum yapmalı ve besin depolamalıdır.",
+      "tts": {
+        "text": "Bitkiler, soğuk geri gelmeden önce çok hızlıca çiçek açmalı, tohum yapmalı ve besin depolamalıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada birkaç küçük çalı da büyür, cüce söğüt ve cüce huş gibi.",
+      "text_markdown": "Burada birkaç küçük çalı da büyür, cüce söğüt ve cüce huş gibi.",
+      "tts": {
+        "text": "Burada birkaç küçük çalı da büyür, cüce söğüt ve cüce huş gibi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunlar, daha ılık topraklarda uzun büyüyen ağaçların aynı türleridir.",
+      "text_markdown": "Bunlar, daha ılık topraklarda uzun büyüyen ağaçların aynı türleridir.",
+      "tts": {
+        "text": "Bunlar, daha ılık topraklarda uzun büyüyen ağaçların aynı türleridir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama burada minik çalılar gibi, ancak ayak bileğiniz kadar boyla, yere sürünerek büyürler.",
+      "text_markdown": "Ama burada minik çalılar gibi, ancak ayak bileğiniz kadar boyla, yere sürünerek büyürler.",
+      "tts": {
+        "text": "Ama burada minik çalılar gibi, ancak ayak bileğiniz kadar boyla, yere sürünerek büyürler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaz sonunda bu alçak bitkilerin bazılarında küçük meyveler olgunlaşır.",
+      "text_markdown": "Yaz sonunda bu alçak bitkilerin bazılarında küçük meyveler olgunlaşır.",
+      "tts": {
+        "text": "Yaz sonunda bu alçak bitkilerin bazılarında küçük meyveler olgunlaşır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın hayvanları ve insanları, fırsat buldukça onları toplar.",
+      "text_markdown": "Tundranın hayvanları ve insanları, fırsat buldukça onları toplar.",
+      "tts": {
+        "text": "Tundranın hayvanları ve insanları, fırsat buldukça onları toplar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hayvanlar",
+      "text_markdown": "Hayvanlar"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın hayvanları, soğuk ve rüzgârla yaşamak için yaratılmıştır.",
+      "text_markdown": "Tundranın hayvanları, soğuk ve rüzgârla yaşamak için yaratılmıştır.",
+      "tts": {
+        "text": "Tundranın hayvanları, soğuk ve rüzgârla yaşamak için yaratılmıştır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğunun kalın kürkü ya da kalın tüyleri, bir de ısınmak için bir yağ katmanı vardır.",
+      "text_markdown": "Çoğunun kalın kürkü ya da kalın tüyleri, bir de ısınmak için bir yağ katmanı vardır.",
+      "tts": {
+        "text": "Çoğunun kalın kürkü ya da kalın tüyleri, bir de ısınmak için bir yağ katmanı vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundranın en büyük hayvanları, ren geyiği de denen karibulardır.",
+      "text_markdown": "Tundranın en büyük hayvanları, ren geyiği de denen karibulardır.",
+      "tts": {
+        "text": "Tundranın en büyük hayvanları, ren geyiği de denen karibulardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibular büyük sürüler halinde yaşar ve açık toprakta uzun mesafeler kat eder.",
+      "text_markdown": "Karibular büyük sürüler halinde yaşar ve açık toprakta uzun mesafeler kat eder.",
+      "tts": {
+        "text": "Karibular büyük sürüler halinde yaşar ve açık toprakta uzun mesafeler kat eder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yazın tundra bitkileriyle beslenir, kışın liken bulmak için karı eşerler.",
+      "text_markdown": "Yazın tundra bitkileriyle beslenir, kışın liken bulmak için karı eşerler.",
+      "tts": {
+        "text": "Yazın tundra bitkileriyle beslenir, kışın liken bulmak için karı eşerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misk öküzü, tundranın bir başka büyük hayvanıdır.",
+      "text_markdown": "Misk öküzü, tundranın bir başka büyük hayvanıdır.",
+      "tts": {
+        "text": "Misk öküzü, tundranın bir başka büyük hayvanıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misk öküzünün ağır bir gövdesi ve neredeyse yere sarkan uzun kıllı kalın bir postu vardır.",
+      "text_markdown": "Misk öküzünün ağır bir gövdesi ve neredeyse yere sarkan uzun kıllı kalın bir postu vardır.",
+      "tts": {
+        "text": "Misk öküzünün ağır bir gövdesi ve neredeyse yere sarkan uzun kıllı kalın bir postu vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurtlar yaklaştığında misk öküzleri, yavruları korumak için dışa dönük bir halka oluşturur.",
+      "text_markdown": "Kurtlar yaklaştığında misk öküzleri, yavruları korumak için dışa dönük bir halka oluşturur.",
+      "tts": {
+        "text": "Kurtlar yaklaştığında misk öküzleri, yavruları korumak için dışa dönük bir halka oluşturur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurtlar, sürüleri tundra boyunca izler; yaşlıları ve güçsüzleri avlar.",
+      "text_markdown": "Kurtlar, sürüleri tundra boyunca izler; yaşlıları ve güçsüzleri avlar.",
+      "tts": {
+        "text": "Kurtlar, sürüleri tundra boyunca izler; yaşlıları ve güçsüzleri avlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutup tilkisi küçüktür; kışın beyaza, yazın kahverengiye dönen kalın bir kürkü vardır.",
+      "text_markdown": "Kutup tilkisi küçüktür; kışın beyaza, yazın kahverengiye dönen kalın bir kürkü vardır.",
+      "tts": {
+        "text": "Kutup tilkisi küçüktür; kışın beyaza, yazın kahverengiye dönen kalın bir kürkü vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha büyük hayvanları izler, artıklarını yer ve küçük hayvanları da avlar.",
+      "text_markdown": "Daha büyük hayvanları izler, artıklarını yer ve küçük hayvanları da avlar.",
+      "tts": {
+        "text": "Daha büyük hayvanları izler, artıklarını yer ve küçük hayvanları da avlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutup tavşanı kışın beyazdır ve sıcaklığını tutmak için kısa kulakları vardır.",
+      "text_markdown": "Kutup tavşanı kışın beyazdır ve sıcaklığını tutmak için kısa kulakları vardır.",
+      "tts": {
+        "text": "Kutup tavşanı kışın beyazdır ve sıcaklığını tutmak için kısa kulakları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karın altında, leming denen küçük hayvanlar tüneller kazar ve tüm kış meşgul kalır.",
+      "text_markdown": "Karın altında, leming denen küçük hayvanlar tüneller kazar ve tüm kış meşgul kalır.",
+      "tts": {
+        "text": "Karın altında, leming denen küçük hayvanlar tüneller kazar ve tüm kış meşgul kalır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lemingler; tilkinin, baykuşun ve birçok başka avcının besinidir.",
+      "text_markdown": "Lemingler; tilkinin, baykuşun ve birçok başka avcının besinidir.",
+      "tts": {
+        "text": "Lemingler; tilkinin, baykuşun ve birçok başka avcının besinidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kar baykuşu, açık tundrada gece gündüz avlanan büyük beyaz bir baykuştur.",
+      "text_markdown": "Kar baykuşu, açık tundrada gece gündüz avlanan büyük beyaz bir baykuştur.",
+      "tts": {
+        "text": "Kar baykuşu, açık tundrada gece gündüz avlanan büyük beyaz bir baykuştur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alçak bir tümsekten izler ve leminglerin ve başka küçük hayvanların üstüne sessizce iner.",
+      "text_markdown": "Alçak bir tümsekten izler ve leminglerin ve başka küçük hayvanların üstüne sessizce iner.",
+      "tts": {
+        "text": "Alçak bir tümsekten izler ve leminglerin ve başka küçük hayvanların üstüne sessizce iner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kısa yazda, güneyden kocaman kuş sürüleri gelir.",
+      "text_markdown": "Kısa yazda, güneyden kocaman kuş sürüleri gelir.",
+      "tts": {
+        "text": "Kısa yazda, güneyden kocaman kuş sürüleri gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kazlar, ördekler ve birçok küçük kuş, ıslak ve böcek dolu tundraya yuva yapmaya gelir.",
+      "text_markdown": "Kazlar, ördekler ve birçok küçük kuş, ıslak ve böcek dolu tundraya yuva yapmaya gelir.",
+      "tts": {
+        "text": "Kazlar, ördekler ve birçok küçük kuş, ıslak ve böcek dolu tundraya yuva yapmaya gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gelirler, çünkü uzun yaz günleri ve bol böcek, bol besin demektir.",
+      "text_markdown": "Gelirler, çünkü uzun yaz günleri ve bol böcek, bol besin demektir.",
+      "tts": {
+        "text": "Gelirler, çünkü uzun yaz günleri ve bol böcek, bol besin demektir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birkaç hafta boyunca sivrisinek ve küçük sinek bulutları havayı doldurur.",
+      "text_markdown": "Birkaç hafta boyunca sivrisinek ve küçük sinek bulutları havayı doldurur.",
+      "tts": {
+        "text": "Birkaç hafta boyunca sivrisinek ve küçük sinek bulutları havayı doldurur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra kuşlar yavrularını hızla büyütür ve soğuk gelmeden yine güneye uçar.",
+      "text_markdown": "Sonra kuşlar yavrularını hızla büyütür ve soğuk gelmeden yine güneye uçar.",
+      "tts": {
+        "text": "Sonra kuşlar yavrularını hızla büyütür ve soğuk gelmeden yine güneye uçar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey kıyısında, tundranın donmuş denizle buluştuğu yerde, kutup ayısı buzda avlanır.",
+      "text_markdown": "Kuzey kıyısında, tundranın donmuş denizle buluştuğu yerde, kutup ayısı buzda avlanır.",
+      "tts": {
+        "text": "Kuzey kıyısında, tundranın donmuş denizle buluştuğu yerde, kutup ayısı buzda avlanır.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İnsanlar",
+      "text_markdown": "İnsanlar"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar, binlerce yıldır tundrada yaşamaktadır.",
+      "text_markdown": "İnsanlar, binlerce yıldır tundrada yaşamaktadır.",
+      "tts": {
+        "text": "İnsanlar, binlerce yıldır tundrada yaşamaktadır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada yaşamak, soğuk toprağın ve hayvanlarının derin bilgisini gerektirir.",
+      "text_markdown": "Burada yaşamak, soğuk toprağın ve hayvanlarının derin bilgisini gerektirir.",
+      "tts": {
+        "text": "Burada yaşamak, soğuk toprağın ve hayvanlarının derin bilgisini gerektirir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Amerika'da İnuitler ve başka kuzey halkları, tundrada ve donmuş kıyıda çok uzun zamandır yaşar.",
+      "text_markdown": "Kuzey Amerika'da İnuitler ve başka kuzey halkları, tundrada ve donmuş kıyıda çok uzun zamandır yaşar.",
+      "tts": {
+        "text": "Kuzey Amerika'da İnuitler ve başka kuzey halkları, tundrada ve donmuş kıyıda çok uzun zamandır yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu avladılar, nehirlerde ve denizde balık tuttular ve buz boyunca fok avladılar.",
+      "text_markdown": "Karibu avladılar, nehirlerde ve denizde balık tuttular ve buz boyunca fok avladılar.",
+      "tts": {
+        "text": "Karibu avladılar, nehirlerde ve denizde balık tuttular ve buz boyunca fok avladılar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayvan derilerinden ve kürkten, rüzgârı kesecek biçimde dikilmiş sıcak giysiler yaptılar.",
+      "text_markdown": "Hayvan derilerinden ve kürkten, rüzgârı kesecek biçimde dikilmiş sıcak giysiler yaptılar.",
+      "tts": {
+        "text": "Hayvan derilerinden ve kürkten, rüzgârı kesecek biçimde dikilmiş sıcak giysiler yaptılar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprağın verdiğinden evler kurdular ve kar üstünde kızakla yolculuk ettiler.",
+      "text_markdown": "Toprağın verdiğinden evler kurdular ve kar üstünde kızakla yolculuk ettiler.",
+      "tts": {
+        "text": "Toprağın verdiğinden evler kurdular ve kar üstünde kızakla yolculuk ettiler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Avrupa'da Sami halkı, nesillerdir tundra boyunca ren geyiğini izler.",
+      "text_markdown": "Kuzey Avrupa'da Sami halkı, nesillerdir tundra boyunca ren geyiğini izler.",
+      "tts": {
+        "text": "Kuzey Avrupa'da Sami halkı, nesillerdir tundra boyunca ren geyiğini izler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ren geyiği onlara et, süt, giysilik deri ve kızak çekecek bir güç verdi.",
+      "text_markdown": "Ren geyiği onlara et, süt, giysilik deri ve kızak çekecek bir güç verdi.",
+      "tts": {
+        "text": "Ren geyiği onlara et, süt, giysilik deri ve kızak çekecek bir güç verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuzey Rusya'da birçok halk, tundrayı yurt edindi.",
+      "text_markdown": "Kuzey Rusya'da birçok halk, tundrayı yurt edindi.",
+      "tts": {
+        "text": "Kuzey Rusya'da birçok halk, tundrayı yurt edindi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nenetsler, Çukçiler ve başkaları, çok uzun zamandır bu soğuk topraklarda ren geyiği güder.",
+      "text_markdown": "Nenetsler, Çukçiler ve başkaları, çok uzun zamandır bu soğuk topraklarda ren geyiği güder.",
+      "tts": {
+        "text": "Nenetsler, Çukçiler ve başkaları, çok uzun zamandır bu soğuk topraklarda ren geyiği güder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazıları bugün hâlâ sürüleriyle, mevsimlere göre göç ederek yolculuk eder.",
+      "text_markdown": "Bazıları bugün hâlâ sürüleriyle, mevsimlere göre göç ederek yolculuk eder.",
+      "tts": {
+        "text": "Bazıları bugün hâlâ sürüleriyle, mevsimlere göre göç ederek yolculuk eder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yazın ren geyiğini kuzeye, kıyıya doğru izlerler.",
+      "text_markdown": "Yazın ren geyiğini kuzeye, kıyıya doğru izlerler.",
+      "tts": {
+        "text": "Yazın ren geyiğini kuzeye, kıyıya doğru izlerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kışın orman kıyısının sığınağına doğru güneye inerler.",
+      "text_markdown": "Kışın orman kıyısının sığınağına doğru güneye inerler.",
+      "tts": {
+        "text": "Kışın orman kıyısının sığınağına doğru güneye inerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm bu topraklarda insanlar; havayı, karı ve buzu okumayı öğrendi.",
+      "text_markdown": "Tüm bu topraklarda insanlar; havayı, karı ve buzu okumayı öğrendi.",
+      "tts": {
+        "text": "Tüm bu topraklarda insanlar; havayı, karı ve buzu okumayı öğrendi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibunun ve ren geyiğinin yollarını öğrendiler.",
+      "text_markdown": "Karibunun ve ren geyiğinin yollarını öğrendiler.",
+      "tts": {
+        "text": "Karibunun ve ren geyiğinin yollarını öğrendiler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Balıkların nerede toplandığını ve kuşların ne zaman geleceğini öğrendiler.",
+      "text_markdown": "Balıkların nerede toplandığını ve kuşların ne zaman geleceğini öğrendiler.",
+      "tts": {
+        "text": "Balıkların nerede toplandığını ve kuşların ne zaman geleceğini öğrendiler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kısa yazdan besin depolayıp uzun kış boyunca yetirmeyi öğrendiler.",
+      "text_markdown": "Kısa yazdan besin depolayıp uzun kış boyunca yetirmeyi öğrendiler.",
+      "tts": {
+        "text": "Kısa yazdan besin depolayıp uzun kış boyunca yetirmeyi öğrendiler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra az verir ve çok ister, ama insanlar çok uzun zamandır burada güzel hayatlar kurdu.",
+      "text_markdown": "Tundra az verir ve çok ister, ama insanlar çok uzun zamandır burada güzel hayatlar kurdu.",
+      "tts": {
+        "text": "Tundra az verir ve çok ister, ama insanlar çok uzun zamandır burada güzel hayatlar kurdu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şarkıları, öyküleri ve dilleri, soğuk rüzgârla ve geniş açık toprakla birlikte büyüdü.",
+      "text_markdown": "Şarkıları, öyküleri ve dilleri, soğuk rüzgârla ve geniş açık toprakla birlikte büyüdü.",
+      "tts": {
+        "text": "Şarkıları, öyküleri ve dilleri, soğuk rüzgârla ve geniş açık toprakla birlikte büyüdü.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Günümüzde Biyom",
+      "text_markdown": "Günümüzde Biyom"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra, en yabanıl ve en ıssız biyomlardan biridir, ama hızla değişiyor.",
+      "text_markdown": "Tundra, en yabanıl ve en ıssız biyomlardan biridir, ama hızla değişiyor.",
+      "tts": {
+        "text": "Tundra, en yabanıl ve en ıssız biyomlardan biridir, ama hızla değişiyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm biyomlar arasında en hızlı ısınan tundradır.",
+      "text_markdown": "Tüm biyomlar arasında en hızlı ısınan tundradır.",
+      "tts": {
+        "text": "Tüm biyomlar arasında en hızlı ısınan tundradır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kuzey, yıldan yıla daha ılık oluyor.",
+      "text_markdown": "En kuzey, yıldan yıla daha ılık oluyor.",
+      "tts": {
+        "text": "En kuzey, yıldan yıla daha ılık oluyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hava ısındıkça donmuş toprak çözülmeye başlar.",
+      "text_markdown": "Hava ısındıkça donmuş toprak çözülmeye başlar.",
+      "tts": {
+        "text": "Hava ısındıkça donmuş toprak çözülmeye başlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Permafrost çözüldüğünde toprak çökebilir, çatlayabilir ve çamura dönebilir.",
+      "text_markdown": "Permafrost çözüldüğünde toprak çökebilir, çatlayabilir ve çamura dönebilir.",
+      "tts": {
+        "text": "Permafrost çözüldüğünde toprak çökebilir, çatlayabilir ve çamura dönebilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donmuş toprağa kurulmuş yollar, evler ve boru hatları eğilip kırılabilir.",
+      "text_markdown": "Donmuş toprağa kurulmuş yollar, evler ve boru hatları eğilip kırılabilir.",
+      "tts": {
+        "text": "Donmuş toprağa kurulmuş yollar, evler ve boru hatları eğilip kırılabilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çözülen toprak, donmuş zeminde çok uzun zamandır kilitli kalmış gazları da salar.",
+      "text_markdown": "Çözülen toprak, donmuş zeminde çok uzun zamandır kilitli kalmış gazları da salar.",
+      "tts": {
+        "text": "Çözülen toprak, donmuş zeminde çok uzun zamandır kilitli kalmış gazları da salar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu gazlar havaya yükselir ve tüm Dünya'yı biraz daha ısıtabilir.",
+      "text_markdown": "Bu gazlar havaya yükselir ve tüm Dünya'yı biraz daha ısıtabilir.",
+      "tts": {
+        "text": "Bu gazlar havaya yükselir ve tüm Dünya'yı biraz daha ısıtabilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra ısındıkça çalılar ve küçük ağaçlar yavaşça kuzeye, içine doğru yayılıyor.",
+      "text_markdown": "Tundra ısındıkça çalılar ve küçük ağaçlar yavaşça kuzeye, içine doğru yayılıyor.",
+      "tts": {
+        "text": "Tundra ısındıkça çalılar ve küçük ağaçlar yavaşça kuzeye, içine doğru yayılıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha ılık güneyin bazı hayvanları da kuzeye ilerliyor.",
+      "text_markdown": "Daha ılık güneyin bazı hayvanları da kuzeye ilerliyor.",
+      "tts": {
+        "text": "Daha ılık güneyin bazı hayvanları da kuzeye ilerliyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar da toprakta petrol, gaz ve maden aramak için tundraya gelir.",
+      "text_markdown": "İnsanlar da toprakta petrol, gaz ve maden aramak için tundraya gelir.",
+      "tts": {
+        "text": "İnsanlar da toprakta petrol, gaz ve maden aramak için tundraya gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yolları ve makineleri, toprakta soğukta çok yavaş iyileşen izler bırakabilir.",
+      "text_markdown": "Yolları ve makineleri, toprakta soğukta çok yavaş iyileşen izler bırakabilir.",
+      "tts": {
+        "text": "Yolları ve makineleri, toprakta soğukta çok yavaş iyileşen izler bırakabilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün birçok insan ve topluluk, tundraya bakmak için çalışıyor.",
+      "text_markdown": "Bugün birçok insan ve topluluk, tundraya bakmak için çalışıyor.",
+      "tts": {
+        "text": "Bugün birçok insan ve topluluk, tundraya bakmak için çalışıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibunun ve kuşların hâlâ dolaşabileceği büyük parklar ayırıyorlar.",
+      "text_markdown": "Karibunun ve kuşların hâlâ dolaşabileceği büyük parklar ayırıyorlar.",
+      "tts": {
+        "text": "Karibunun ve kuşların hâlâ dolaşabileceği büyük parklar ayırıyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprağı korumak için, nesillerdir burada yaşayan insanlarla birlikte çalışıyorlar.",
+      "text_markdown": "Toprağı korumak için, nesillerdir burada yaşayan insanlarla birlikte çalışıyorlar.",
+      "tts": {
+        "text": "Toprağı korumak için, nesillerdir burada yaşayan insanlarla birlikte çalışıyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nasıl değiştiğini ve sağlıklı tutulacağını anlamak için tundrayı inceliyorlar.",
+      "text_markdown": "Nasıl değiştiğini ve sağlıklı tutulacağını anlamak için tundrayı inceliyorlar.",
+      "tts": {
+        "text": "Nasıl değiştiğini ve sağlıklı tutulacağını anlamak için tundrayı inceliyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tundra kırılgandır ve yavaş iyileşir, ayrıca kocaman bir donmuş karbon deposu barındırır.",
+      "text_markdown": "Tundra kırılgandır ve yavaş iyileşir, ayrıca kocaman bir donmuş karbon deposu barındırır.",
+      "tts": {
+        "text": "Tundra kırılgandır ve yavaş iyileşir, ayrıca kocaman bir donmuş karbon deposu barındırır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Özenimize değer.",
+      "text_markdown": "Özenimize değer.",
+      "tts": {
+        "text": "Özenimize değer.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kapanış",
+      "text_markdown": "Kapanış"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşte tundra budur.",
+      "text_markdown": "İşte tundra budur.",
+      "tts": {
+        "text": "İşte tundra budur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dünyanın tepesinde; donmuş toprağı, alçak bitkileri ve geniş parlak göğü olan soğuk, açık, ağaçsız bir topraktır.",
+      "text_markdown": "Dünyanın tepesinde; donmuş toprağı, alçak bitkileri ve geniş parlak göğü olan soğuk, açık, ağaçsız bir topraktır.",
+      "tts": {
+        "text": "Dünyanın tepesinde; donmuş toprağı, alçak bitkileri ve geniş parlak göğü olan soğuk, açık, ağaçsız bir topraktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir gün böyle bir yerde durursanız, bir dakika kıpırdamadan bekleyin.",
+      "text_markdown": "Bir gün böyle bir yerde durursanız, bir dakika kıpırdamadan bekleyin.",
+      "tts": {
+        "text": "Bir gün böyle bir yerde durursanız, bir dakika kıpırdamadan bekleyin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Açık toprakta esen soğuk rüzgârı hissedin.",
+      "text_markdown": "Açık toprakta esen soğuk rüzgârı hissedin.",
+      "tts": {
+        "text": "Açık toprakta esen soğuk rüzgârı hissedin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayaklarınızın altındaki minik çiçeklere ve yumuşak yosuna bakın.",
+      "text_markdown": "Ayaklarınızın altındaki minik çiçeklere ve yumuşak yosuna bakın.",
+      "tts": {
+        "text": "Ayaklarınızın altındaki minik çiçeklere ve yumuşak yosuna bakın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yukarıdaki kocaman ve boş göğe bakın.",
+      "text_markdown": "Yukarıdaki kocaman ve boş göğe bakın.",
+      "tts": {
+        "text": "Yukarıdaki kocaman ve boş göğe bakın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biyomun sessiz, sabırlı kalbinin çevrenizde attığını hissedeceksiniz.",
+      "text_markdown": "Biyomun sessiz, sabırlı kalbinin çevrenizde attığını hissedeceksiniz.",
+      "tts": {
+        "text": "Biyomun sessiz, sabırlı kalbinin çevrenizde attığını hissedeceksiniz.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "温帯草原",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "温帯草原",
+      "text_markdown": "温帯草原"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "温帯草原が広がる場所",
+      "text_markdown": "温帯草原が広がる場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原へようこそ。",
+      "text_markdown": "温帯草原へようこそ。",
+      "tts": {
+        "text": "温帯草原へようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは世界の大きなバイオームの一つです。",
+      "text_markdown": "ここは世界の大きなバイオームの一つです。",
+      "tts": {
+        "text": "ここは世界の大きなバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、独自の天気や植物や動物を持つ地球の一部分です。",
+      "text_markdown": "バイオームとは、独自の天気や植物や動物を持つ地球の一部分です。",
+      "tts": {
+        "text": "バイオームとは、独自の天気や植物や動物を持つ地球の一部分です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原は、木がとても少ない広い草の土地です。",
+      "text_markdown": "温帯草原は、木がとても少ない広い草の土地です。",
+      "tts": {
+        "text": "温帯草原は、木がとても少ない広い草の土地です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "寒い北と暖かい熱帯の間、世界の中ほどに広がります。",
+      "text_markdown": "寒い北と暖かい熱帯の間、世界の中ほどに広がります。",
+      "tts": {
+        "text": "寒い北と暖かい熱帯の間、世界の中ほどに広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯のサバンナと違い、この土地は冬が寒くて夏が暖かいです。",
+      "text_markdown": "熱帯のサバンナと違い、この土地は冬が寒くて夏が暖かいです。",
+      "tts": {
+        "text": "熱帯のサバンナと違い、この土地は冬が寒くて夏が暖かいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界で最も大きい温帯草原は、北アメリカとユーラシアにあります。",
+      "text_markdown": "世界で最も大きい温帯草原は、北アメリカとユーラシアにあります。",
+      "tts": {
+        "text": "世界で最も大きい温帯草原は、北アメリカとユーラシアにあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカでは、広い中央平原はプレーリーと呼ばれます。",
+      "text_markdown": "北アメリカでは、広い中央平原はプレーリーと呼ばれます。",
+      "tts": {
+        "text": "北アメリカでは、広い中央平原はプレーリーと呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロシア、ウクライナ、カザフスタン、モンゴルでは、ステップと呼ばれます。",
+      "text_markdown": "ロシア、ウクライナ、カザフスタン、モンゴルでは、ステップと呼ばれます。",
+      "tts": {
+        "text": "ロシア、ウクライナ、カザフスタン、モンゴルでは、ステップと呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルゼンチンとウルグアイでは、パンパと呼ばれます。",
+      "text_markdown": "アルゼンチンとウルグアイでは、パンパと呼ばれます。",
+      "tts": {
+        "text": "アルゼンチンとウルグアイでは、パンパと呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南部のアフリカやオーストラリアの一部にも、小さな温帯草原があります。",
+      "text_markdown": "南部のアフリカやオーストラリアの一部にも、小さな温帯草原があります。",
+      "tts": {
+        "text": "南部のアフリカやオーストラリアの一部にも、小さな温帯草原があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの草原はそれぞれ独自に育ちました。",
+      "text_markdown": "これらの草原はそれぞれ独自に育ちました。",
+      "tts": {
+        "text": "これらの草原はそれぞれ独自に育ちました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ですから世界の場所ごとに植物や動物は違います。",
+      "text_markdown": "ですから世界の場所ごとに植物や動物は違います。",
+      "tts": {
+        "text": "ですから世界の場所ごとに植物や動物は違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、どれも同じ形を持っています。",
+      "text_markdown": "でも、どれも同じ形を持っています。",
+      "tts": {
+        "text": "でも、どれも同じ形を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草の海、広い空、強い風、そして川沿いのわずかな木々です。",
+      "text_markdown": "草の海、広い空、強い風、そして川沿いのわずかな木々です。",
+      "tts": {
+        "text": "草の海、広い空、強い風、そして川沿いのわずかな木々です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原に立つと、風はほとんどいつも吹いています。",
+      "text_markdown": "温帯草原に立つと、風はほとんどいつも吹いています。",
+      "tts": {
+        "text": "温帯草原に立つと、風はほとんどいつも吹いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は海の表面のように揺れます。",
+      "text_markdown": "草は海の表面のように揺れます。",
+      "tts": {
+        "text": "草は海の表面のように揺れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あらゆる方向に遠くまで見渡せます。",
+      "text_markdown": "あらゆる方向に遠くまで見渡せます。",
+      "tts": {
+        "text": "あらゆる方向に遠くまで見渡せます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空はどの森にいる時よりも二倍も大きく感じます。",
+      "text_markdown": "空はどの森にいる時よりも二倍も大きく感じます。",
+      "tts": {
+        "text": "空はどの森にいる時よりも二倍も大きく感じます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、草は高く緑になります。",
+      "text_markdown": "夏には、草は高く緑になります。",
+      "tts": {
+        "text": "夏には、草は高く緑になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、黄金色の茶色になります。",
+      "text_markdown": "秋には、黄金色の茶色になります。",
+      "tts": {
+        "text": "秋には、黄金色の茶色になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、雪の下で茶色く硬くなります。",
+      "text_markdown": "冬には、雪の下で茶色く硬くなります。",
+      "tts": {
+        "text": "冬には、雪の下で茶色く硬くなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、また新しく明るく生え戻ります。",
+      "text_markdown": "春には、また新しく明るく生え戻ります。",
+      "tts": {
+        "text": "春には、また新しく明るく生え戻ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが温帯草原です。",
+      "text_markdown": "それが温帯草原です。",
+      "tts": {
+        "text": "それが温帯草原です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "温帯草原が広がる場所",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草と空と移り変わる季節の、広く風の吹く世界です。",
+      "text_markdown": "草と空と移り変わる季節の、広く風の吹く世界です。",
+      "tts": {
+        "text": "草と空と移り変わる季節の、広く風の吹く世界です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天気",
+      "text_markdown": "天気"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原の天気は、広い空によって形づくられます。",
+      "text_markdown": "温帯草原の天気は、広い空によって形づくられます。",
+      "tts": {
+        "text": "温帯草原の天気は、広い空によって形づくられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風を弱める木や丘がとても少ないのです。",
+      "text_markdown": "風を弱める木や丘がとても少ないのです。",
+      "tts": {
+        "text": "風を弱める木や丘がとても少ないのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四つの季節があり、それぞれが強いです。",
+      "text_markdown": "四つの季節があり、それぞれが強いです。",
+      "tts": {
+        "text": "四つの季節があり、それぞれが強いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏は暑く明るいです。",
+      "text_markdown": "夏は暑く明るいです。",
+      "tts": {
+        "text": "夏は暑く明るいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽は広い草に照りつけ、日は長いです。",
+      "text_markdown": "太陽は広い草に照りつけ、日は長いです。",
+      "tts": {
+        "text": "太陽は広い草に照りつけ、日は長いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一つの午後に、大きな嵐が地平線から押し寄せることもあります。",
+      "text_markdown": "一つの午後に、大きな嵐が地平線から押し寄せることもあります。",
+      "tts": {
+        "text": "一つの午後に、大きな嵐が地平線から押し寄せることもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遠くで稲妻が光り、激しい雨が一度に降ります。",
+      "text_markdown": "遠くで稲妻が光り、激しい雨が一度に降ります。",
+      "tts": {
+        "text": "遠くで稲妻が光り、激しい雨が一度に降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬は寒いです。",
+      "text_markdown": "冬は寒いです。",
+      "tts": {
+        "text": "冬は寒いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原によっては、何週間も気温が氷点下までずっと下がります。",
+      "text_markdown": "草原によっては、何週間も気温が氷点下までずっと下がります。",
+      "tts": {
+        "text": "草原によっては、何週間も気温が氷点下までずっと下がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪は広い土地を吹き渡り、長い吹きだまりに集まります。",
+      "text_markdown": "雪は広い土地を吹き渡り、長い吹きだまりに集まります。",
+      "tts": {
+        "text": "雪は広い土地を吹き渡り、長い吹きだまりに集まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬の風は強く鋭いです。",
+      "text_markdown": "冬の風は強く鋭いです。",
+      "tts": {
+        "text": "冬の風は強く鋭いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には雪が溶けて、川は高く流れます。",
+      "text_markdown": "春には雪が溶けて、川は高く流れます。",
+      "tts": {
+        "text": "春には雪が溶けて、川は高く流れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草はほとんど一晩で緑になります。",
+      "text_markdown": "草はほとんど一晩で緑になります。",
+      "tts": {
+        "text": "草はほとんど一晩で緑になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鳥は暖かい土地から戻り、空を声で満たします。",
+      "text_markdown": "鳥は暖かい土地から戻り、空を声で満たします。",
+      "tts": {
+        "text": "鳥は暖かい土地から戻り、空を声で満たします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には草が黄金色になり、風は冷たくなり、群れは隠れ場所へ移ります。",
+      "text_markdown": "秋には草が黄金色になり、風は冷たくなり、群れは隠れ場所へ移ります。",
+      "tts": {
+        "text": "秋には草が黄金色になり、風は冷たくなり、群れは隠れ場所へ移ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原には草を育てるのにちょうど足りる雨が降ります。",
+      "text_markdown": "草原には草を育てるのにちょうど足りる雨が降ります。",
+      "tts": {
+        "text": "草原には草を育てるのにちょうど足りる雨が降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな森を育てるには足りませんが、草とそれを必要とする動物には十分です。",
+      "text_markdown": "大きな森を育てるには足りませんが、草とそれを必要とする動物には十分です。",
+      "tts": {
+        "text": "大きな森を育てるには足りませんが、草とそれを必要とする動物には十分です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地と水",
+      "text_markdown": "土地と水"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原の土地はほとんど平らか、ゆるやかに起伏しています。",
+      "text_markdown": "温帯草原の土地はほとんど平らか、ゆるやかに起伏しています。",
+      "tts": {
+        "text": "温帯草原の土地はほとんど平らか、ゆるやかに起伏しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある場所では、低い丘が草の中から立ち上がります。",
+      "text_markdown": "ある場所では、低い丘が草の中から立ち上がります。",
+      "tts": {
+        "text": "ある場所では、低い丘が草の中から立ち上がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "別の場所では、地平線が完全な直線に見えるほど平らです。",
+      "text_markdown": "別の場所では、地平線が完全な直線に見えるほど平らです。",
+      "tts": {
+        "text": "別の場所では、地平線が完全な直線に見えるほど平らです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの土は地球で最も豊かな土の一つです。",
+      "text_markdown": "ここの土は地球で最も豊かな土の一つです。",
+      "tts": {
+        "text": "ここの土は地球で最も豊かな土の一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間、草は育ち、枯れ、土に還ってきました。",
+      "text_markdown": "何千年もの間、草は育ち、枯れ、土に還ってきました。",
+      "tts": {
+        "text": "何千年もの間、草は育ち、枯れ、土に還ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これが植物の栄養に満ちた厚く黒い土を作りました。",
+      "text_markdown": "これが植物の栄養に満ちた厚く黒い土を作りました。",
+      "tts": {
+        "text": "これが植物の栄養に満ちた厚く黒い土を作りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だからこれらの土地の多くが、大きな小麦やトウモロコシの畑に変えられたのです。",
+      "text_markdown": "だからこれらの土地の多くが、大きな小麦やトウモロコシの畑に変えられたのです。",
+      "tts": {
+        "text": "だからこれらの土地の多くが、大きな小麦やトウモロコシの畑に変えられたのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川は長くゆるやかな曲線を描いて草原を流れます。",
+      "text_markdown": "川は長くゆるやかな曲線を描いて草原を流れます。",
+      "tts": {
+        "text": "川は長くゆるやかな曲線を描いて草原を流れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川は遠い山々や雪解けの水を、広い土地に運びます。",
+      "text_markdown": "川は遠い山々や雪解けの水を、広い土地に運びます。",
+      "tts": {
+        "text": "川は遠い山々や雪解けの水を、広い土地に運びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川岸に沿って、細い木々の列が見られます。",
+      "text_markdown": "川岸に沿って、細い木々の列が見られます。",
+      "tts": {
+        "text": "川岸に沿って、細い木々の列が見られます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの木は水に沿い、広い草の海の中で緑のリボンのように目立ちます。",
+      "text_markdown": "これらの木は水に沿い、広い草の海の中で緑のリボンのように目立ちます。",
+      "tts": {
+        "text": "これらの木は水に沿い、広い草の海の中で緑のリボンのように目立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川から離れると、木はとても少ないです。",
+      "text_markdown": "川から離れると、木はとても少ないです。",
+      "tts": {
+        "text": "川から離れると、木はとても少ないです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風や寒い冬や乾いた夏が、ほとんどの木がここで育つのを妨げます。",
+      "text_markdown": "風や寒い冬や乾いた夏が、ほとんどの木がここで育つのを妨げます。",
+      "tts": {
+        "text": "風や寒い冬や乾いた夏が、ほとんどの木がここで育つのを妨げます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも草はあまり必要としません。",
+      "text_markdown": "でも草はあまり必要としません。",
+      "tts": {
+        "text": "でも草はあまり必要としません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い根が豊かな土の深くまで伸び、毎年春に戻ってきます。",
+      "text_markdown": "長い根が豊かな土の深くまで伸び、毎年春に戻ってきます。",
+      "tts": {
+        "text": "長い根が豊かな土の深くまで伸び、毎年春に戻ってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火もときどきこの土地を駆け抜けます。",
+      "text_markdown": "火もときどきこの土地を駆け抜けます。",
+      "tts": {
+        "text": "火もときどきこの土地を駆け抜けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草はすぐに燃えますが、深い根は生き残ります。",
+      "text_markdown": "草はすぐに燃えますが、深い根は生き残ります。",
+      "tts": {
+        "text": "草はすぐに燃えますが、深い根は生き残ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の後、草は前よりも緑で強く生え戻ります。",
+      "text_markdown": "雨の後、草は前よりも緑で強く生え戻ります。",
+      "tts": {
+        "text": "雨の後、草は前よりも緑で強く生え戻ります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草はこのバイオームの中心です。",
+      "text_markdown": "草はこのバイオームの中心です。",
+      "tts": {
+        "text": "草はこのバイオームの中心です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原にはたくさんの種類の草があります。",
+      "text_markdown": "温帯草原にはたくさんの種類の草があります。",
+      "tts": {
+        "text": "温帯草原にはたくさんの種類の草があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "足首までしか伸びない草もあります。",
+      "text_markdown": "足首までしか伸びない草もあります。",
+      "tts": {
+        "text": "足首までしか伸びない草もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人と同じくらい高くなる草もあります。",
+      "text_markdown": "人と同じくらい高くなる草もあります。",
+      "tts": {
+        "text": "人と同じくらい高くなる草もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれの草には、上に種の詰まった長く柔らかい穂があります。",
+      "text_markdown": "それぞれの草には、上に種の詰まった長く柔らかい穂があります。",
+      "tts": {
+        "text": "それぞれの草には、上に種の詰まった長く柔らかい穂があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には風が、種の穂の波を土地一面に運びます。",
+      "text_markdown": "夏には風が、種の穂の波を土地一面に運びます。",
+      "tts": {
+        "text": "夏には風が、種の穂の波を土地一面に運びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は黒い土の深くまで伸びる、とても長い根を持っています。",
+      "text_markdown": "草は黒い土の深くまで伸びる、とても長い根を持っています。",
+      "tts": {
+        "text": "草は黒い土の深くまで伸びる、とても長い根を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根は地上の草の高さよりも、地下で長くなることがあります。",
+      "text_markdown": "根は地上の草の高さよりも、地下で長くなることがあります。",
+      "tts": {
+        "text": "根は地上の草の高さよりも、地下で長くなることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうして草は乾いた時期や寒い冬を生き抜きます。",
+      "text_markdown": "こうして草は乾いた時期や寒い冬を生き抜きます。",
+      "tts": {
+        "text": "こうして草は乾いた時期や寒い冬を生き抜きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火事の後にすぐ草が戻ってくるのもこのためです。",
+      "text_markdown": "火事の後にすぐ草が戻ってくるのもこのためです。",
+      "tts": {
+        "text": "火事の後にすぐ草が戻ってくるのもこのためです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草の間には、暖かい月に小さな花が咲きます。",
+      "text_markdown": "草の間には、暖かい月に小さな花が咲きます。",
+      "tts": {
+        "text": "草の間には、暖かい月に小さな花が咲きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には野生のひまわりや色鮮やかな花々が草原を満たします。",
+      "text_markdown": "夏には野生のひまわりや色鮮やかな花々が草原を満たします。",
+      "tts": {
+        "text": "夏には野生のひまわりや色鮮やかな花々が草原を満たします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハチやチョウは花から花へと飛び回ります。",
+      "text_markdown": "ハチやチョウは花から花へと飛び回ります。",
+      "tts": {
+        "text": "ハチやチョウは花から花へと飛び回ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原のほとんどには木がとても少ないです。",
+      "text_markdown": "草原のほとんどには木がとても少ないです。",
+      "tts": {
+        "text": "草原のほとんどには木がとても少ないです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "育つ所では、木は小さくて丈夫な傾向があります。",
+      "text_markdown": "育つ所では、木は小さくて丈夫な傾向があります。",
+      "tts": {
+        "text": "育つ所では、木は小さくて丈夫な傾向があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木は水の多い川沿いや、冬に雪がたまる低い場所に育ちます。",
+      "text_markdown": "木は水の多い川沿いや、冬に雪がたまる低い場所に育ちます。",
+      "tts": {
+        "text": "木は水の多い川沿いや、冬に雪がたまる低い場所に育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "広い平原では、草だけがあります。",
+      "text_markdown": "広い平原では、草だけがあります。",
+      "tts": {
+        "text": "広い平原では、草だけがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは、バイオーム全体をつなぐ緑と黄金と銀のじゅうたんです。",
+      "text_markdown": "それは、バイオーム全体をつなぐ緑と黄金と銀のじゅうたんです。",
+      "tts": {
+        "text": "それは、バイオーム全体をつなぐ緑と黄金と銀のじゅうたんです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原の動物は、広く風の吹く世界に合うように作られています。",
+      "text_markdown": "温帯草原の動物は、広く風の吹く世界に合うように作られています。",
+      "tts": {
+        "text": "温帯草原の動物は、広く風の吹く世界に合うように作られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここで一番大きい動物は、大きな草食動物です。",
+      "text_markdown": "ここで一番大きい動物は、大きな草食動物です。",
+      "tts": {
+        "text": "ここで一番大きい動物は、大きな草食動物です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草を食べ、広い土地を大きな群れで移動します。",
+      "text_markdown": "草を食べ、広い土地を大きな群れで移動します。",
+      "tts": {
+        "text": "草を食べ、広い土地を大きな群れで移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカで最も有名なのはバイソンです。",
+      "text_markdown": "北アメリカで最も有名なのはバイソンです。",
+      "tts": {
+        "text": "北アメリカで最も有名なのはバイソンです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイソンは大きくて重く毛深く、茶色い大きな頭を持っています。",
+      "text_markdown": "バイソンは大きくて重く毛深く、茶色い大きな頭を持っています。",
+      "tts": {
+        "text": "バイソンは大きくて重く毛深く、茶色い大きな頭を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "かつてバイソンは何百万もの群れで平原を移動しました。",
+      "text_markdown": "かつてバイソンは何百万もの群れで平原を移動しました。",
+      "tts": {
+        "text": "かつてバイソンは何百万もの群れで平原を移動しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ユーラシアでは、野生の馬がかつて同じようにステップを移動しました。",
+      "text_markdown": "ユーラシアでは、野生の馬がかつて同じようにステップを移動しました。",
+      "tts": {
+        "text": "ユーラシアでは、野生の馬がかつて同じようにステップを移動しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカのパンパでは、小さなシカや他の草食動物がその役を担いました。",
+      "text_markdown": "南アメリカのパンパでは、小さなシカや他の草食動物がその役を担いました。",
+      "tts": {
+        "text": "南アメリカのパンパでは、小さなシカや他の草食動物がその役を担いました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "たくさんの小さな動物が草の下に住んでいます。",
+      "text_markdown": "たくさんの小さな動物が草の下に住んでいます。",
+      "tts": {
+        "text": "たくさんの小さな動物が草の下に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プレーリードッグやジリスや他の小動物は、土に長いトンネルや部屋を掘ります。",
+      "text_markdown": "プレーリードッグやジリスや他の小動物は、土に長いトンネルや部屋を掘ります。",
+      "tts": {
+        "text": "プレーリードッグやジリスや他の小動物は、土に長いトンネルや部屋を掘ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昼間に出てきて食事をし、安全のため巣穴に戻ります。",
+      "text_markdown": "昼間に出てきて食事をし、安全のため巣穴に戻ります。",
+      "tts": {
+        "text": "昼間に出てきて食事をし、安全のため巣穴に戻ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの小動物がいる草原は、地面にたくさんの小さな穴があいています。",
+      "text_markdown": "これらの小動物がいる草原は、地面にたくさんの小さな穴があいています。",
+      "tts": {
+        "text": "これらの小動物がいる草原は、地面にたくさんの小さな穴があいています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミ、キツネ、小さなヤマネコが草原を狩ります。",
+      "text_markdown": "オオカミ、キツネ、小さなヤマネコが草原を狩ります。",
+      "tts": {
+        "text": "オオカミ、キツネ、小さなヤマネコが草原を狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミは広い平原の大きな狩人です。",
+      "text_markdown": "オオカミは広い平原の大きな狩人です。",
+      "tts": {
+        "text": "オオカミは広い平原の大きな狩人です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キツネやヤマネコのような小さな狩人は、ネズミやウサギや鳥を捕まえます。",
+      "text_markdown": "キツネやヤマネコのような小さな狩人は、ネズミやウサギや鳥を捕まえます。",
+      "tts": {
+        "text": "キツネやヤマネコのような小さな狩人は、ネズミやウサギや鳥を捕まえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空の高くでは、タカやワシがゆっくり旋回します。",
+      "text_markdown": "空の高くでは、タカやワシがゆっくり旋回します。",
+      "tts": {
+        "text": "空の高くでは、タカやワシがゆっくり旋回します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下の草の中の動きを見張っています。",
+      "text_markdown": "下の草の中の動きを見張っています。",
+      "tts": {
+        "text": "下の草の中の動きを見張っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "たくさんの鳥は、長い草に隠れて地面に巣を作ります。",
+      "text_markdown": "たくさんの鳥は、長い草に隠れて地面に巣を作ります。",
+      "tts": {
+        "text": "たくさんの鳥は、長い草に隠れて地面に巣を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には空気は虫でいっぱいです。",
+      "text_markdown": "夏には空気は虫でいっぱいです。",
+      "tts": {
+        "text": "夏には空気は虫でいっぱいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バッタが暖かい風の中で音を立てて跳ねます。",
+      "text_markdown": "バッタが暖かい風の中で音を立てて跳ねます。",
+      "tts": {
+        "text": "バッタが暖かい風の中で音を立てて跳ねます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チョウやハチが花から花へと飛び回ります。",
+      "text_markdown": "チョウやハチが花から花へと飛び回ります。",
+      "tts": {
+        "text": "チョウやハチが花から花へと飛び回ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘビは草の中を滑り、ネズミや鳥の卵を探します。",
+      "text_markdown": "ヘビは草の中を滑り、ネズミや鳥の卵を探します。",
+      "tts": {
+        "text": "ヘビは草の中を滑り、ネズミや鳥の卵を探します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここのすべての動物は同じ教えを知っています。",
+      "text_markdown": "ここのすべての動物は同じ教えを知っています。",
+      "tts": {
+        "text": "ここのすべての動物は同じ教えを知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "季節と共に動きなさい。",
+      "text_markdown": "季節と共に動きなさい。",
+      "tts": {
+        "text": "季節と共に動きなさい。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暑い太陽から隠れなさい。",
+      "text_markdown": "暑い太陽から隠れなさい。",
+      "tts": {
+        "text": "暑い太陽から隠れなさい。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冷たい風から逃げなさい。",
+      "text_markdown": "冷たい風から逃げなさい。",
+      "tts": {
+        "text": "冷たい風から逃げなさい。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川を見つけたら水を飲みなさい。",
+      "text_markdown": "川を見つけたら水を飲みなさい。",
+      "tts": {
+        "text": "川を見つけたら水を飲みなさい。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は何千年もの間、温帯草原に住んできました。",
+      "text_markdown": "人々は何千年もの間、温帯草原に住んできました。",
+      "tts": {
+        "text": "人々は何千年もの間、温帯草原に住んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "広い土地と動物の群れと豊かな土が、彼らの暮らしを形づくりました。",
+      "text_markdown": "広い土地と動物の群れと豊かな土が、彼らの暮らしを形づくりました。",
+      "tts": {
+        "text": "広い土地と動物の群れと豊かな土が、彼らの暮らしを形づくりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昔、アジアのステップの人々が野生の馬を飼いならしました。",
+      "text_markdown": "昔、アジアのステップの人々が野生の馬を飼いならしました。",
+      "tts": {
+        "text": "昔、アジアのステップの人々が野生の馬を飼いならしました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "馬の背に乗れば、人は徒歩よりもずっと速く平原を渡れました。",
+      "text_markdown": "馬の背に乗れば、人は徒歩よりもずっと速く平原を渡れました。",
+      "tts": {
+        "text": "馬の背に乗れば、人は徒歩よりもずっと速く平原を渡れました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "馬は草原の人々のすべてを変えました。",
+      "text_markdown": "馬は草原の人々のすべてを変えました。",
+      "tts": {
+        "text": "馬は草原の人々のすべてを変えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狩りの仕方も、旅の仕方も、戦い方も変わりました。",
+      "text_markdown": "狩りの仕方も、旅の仕方も、戦い方も変わりました。",
+      "tts": {
+        "text": "狩りの仕方も、旅の仕方も、戦い方も変わりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ステップの古い人々の多くは遊牧民でした。",
+      "text_markdown": "ステップの古い人々の多くは遊牧民でした。",
+      "tts": {
+        "text": "ステップの古い人々の多くは遊牧民でした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "馬や牛や羊やヤギの群れを、草原のあちこちに移動させました。",
+      "text_markdown": "馬や牛や羊やヤギの群れを、草原のあちこちに移動させました。",
+      "tts": {
+        "text": "馬や牛や羊やヤギの群れを、草原のあちこちに移動させました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には涼しい高い平原へ移りました。",
+      "text_markdown": "夏には涼しい高い平原へ移りました。",
+      "tts": {
+        "text": "夏には涼しい高い平原へ移りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には低く暖かい谷へ下りました。",
+      "text_markdown": "冬には低く暖かい谷へ下りました。",
+      "tts": {
+        "text": "冬には低く暖かい谷へ下りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らの家はフェルトと木で作られた丸いテントでした。",
+      "text_markdown": "彼らの家はフェルトと木で作られた丸いテントでした。",
+      "tts": {
+        "text": "彼らの家はフェルトと木で作られた丸いテントでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このような丸いテントは一時間で分解でき、動物の背に積んで、別の場所でまた組み立てられます。",
+      "text_markdown": "このような丸いテントは一時間で分解でき、動物の背に積んで、別の場所でまた組み立てられます。",
+      "tts": {
+        "text": "このような丸いテントは一時間で分解でき、動物の背に積んで、別の場所でまた組み立てられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカでは、平原の人々が何千年もバイソンの大群と共に暮らしました。",
+      "text_markdown": "北アメリカでは、平原の人々が何千年もバイソンの大群と共に暮らしました。",
+      "tts": {
+        "text": "北アメリカでは、平原の人々が何千年もバイソンの大群と共に暮らしました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "群れを追って広い土地を移動しました。",
+      "text_markdown": "群れを追って広い土地を移動しました。",
+      "tts": {
+        "text": "群れを追って広い土地を移動しました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らの家は、木の柱に皮を張った背の高いテントでした。",
+      "text_markdown": "彼らの家は、木の柱に皮を張った背の高いテントでした。",
+      "tts": {
+        "text": "彼らの家は、木の柱に皮を張った背の高いテントでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "馬が平原に来た時、そこの暮らしも深く変わりました。",
+      "text_markdown": "馬が平原に来た時、そこの暮らしも深く変わりました。",
+      "tts": {
+        "text": "馬が平原に来た時、そこの暮らしも深く変わりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカのパンパでは、馬に乗った牧人もこの土地の一部となりました。",
+      "text_markdown": "南アメリカのパンパでは、馬に乗った牧人もこの土地の一部となりました。",
+      "tts": {
+        "text": "南アメリカのパンパでは、馬に乗った牧人もこの土地の一部となりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここ数百年で、温帯草原の多くがまた変わりました。",
+      "text_markdown": "ここ数百年で、温帯草原の多くがまた変わりました。",
+      "tts": {
+        "text": "ここ数百年で、温帯草原の多くがまた変わりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深く豊かな土は耕され、小麦やトウモロコシや他の穀物が育てられています。",
+      "text_markdown": "深く豊かな土は耕され、小麦やトウモロコシや他の穀物が育てられています。",
+      "tts": {
+        "text": "深く豊かな土は耕され、小麦やトウモロコシや他の穀物が育てられています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日、世界を養う穀物の多くがこれらの土地から来ます。",
+      "text_markdown": "今日、世界を養う穀物の多くがこれらの土地から来ます。",
+      "tts": {
+        "text": "今日、世界を養う穀物の多くがこれらの土地から来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "群れと共に移動する昔の暮らしは、多くの場所で消えました。",
+      "text_markdown": "群れと共に移動する昔の暮らしは、多くの場所で消えました。",
+      "tts": {
+        "text": "群れと共に移動する昔の暮らしは、多くの場所で消えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも歌や物語、そして広い空への愛は生き続けています。",
+      "text_markdown": "でも歌や物語、そして広い空への愛は生き続けています。",
+      "tts": {
+        "text": "でも歌や物語、そして広い空への愛は生き続けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの大きな草原でも、そこで育った人々は風を心に抱いています。",
+      "text_markdown": "どの大きな草原でも、そこで育った人々は風を心に抱いています。",
+      "tts": {
+        "text": "どの大きな草原でも、そこで育った人々は風を心に抱いています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日の草原",
+      "text_markdown": "今日の草原"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯草原は、人々にとって最も大切なバイオームの一つです。",
+      "text_markdown": "温帯草原は、人々にとって最も大切なバイオームの一つです。",
+      "tts": {
+        "text": "温帯草原は、人々にとって最も大切なバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深く豊かな土が、食べ物を育てるのに最適です。",
+      "text_markdown": "深く豊かな土が、食べ物を育てるのに最適です。",
+      "tts": {
+        "text": "深く豊かな土が、食べ物を育てるのに最適です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界が食べるパンやパスタやトウモロコシの多くがこの土地から来ます。",
+      "text_markdown": "世界が食べるパンやパスタやトウモロコシの多くがこの土地から来ます。",
+      "tts": {
+        "text": "世界が食べるパンやパスタやトウモロコシの多くがこの土地から来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも代償は大きいのです。",
+      "text_markdown": "でも代償は大きいのです。",
+      "tts": {
+        "text": "でも代償は大きいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の元々の草原のほとんどは耕されてしまいました。",
+      "text_markdown": "世界の元々の草原のほとんどは耕されてしまいました。",
+      "tts": {
+        "text": "世界の元々の草原のほとんどは耕されてしまいました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイソンや野生の馬の大群は、ほとんどいなくなりました。",
+      "text_markdown": "バイソンや野生の馬の大群は、ほとんどいなくなりました。",
+      "tts": {
+        "text": "バイソンや野生の馬の大群は、ほとんどいなくなりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "穴を掘る小さな動物たちも住む場所が減りました。",
+      "text_markdown": "穴を掘る小さな動物たちも住む場所が減りました。",
+      "tts": {
+        "text": "穴を掘る小さな動物たちも住む場所が減りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "かつて地平線まで広がっていた草は、今では小さな区画にしか生えていません。",
+      "text_markdown": "かつて地平線まで広がっていた草は、今では小さな区画にしか生えていません。",
+      "tts": {
+        "text": "かつて地平線まで広がっていた草は、今では小さな区画にしか生えていません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "場所によっては、草がなくなり土がむき出しになると、風が黒い土を吹き飛ばします。",
+      "text_markdown": "場所によっては、草がなくなり土がむき出しになると、風が黒い土を吹き飛ばします。",
+      "tts": {
+        "text": "場所によっては、草がなくなり土がむき出しになると、風が黒い土を吹き飛ばします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の多くの団体が、残されたものを守るために働いています。",
+      "text_markdown": "世界中の多くの団体が、残されたものを守るために働いています。",
+      "tts": {
+        "text": "世界中の多くの団体が、残されたものを守るために働いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草が再び高く育つ公園を作っています。",
+      "text_markdown": "草が再び高く育つ公園を作っています。",
+      "tts": {
+        "text": "草が再び高く育つ公園を作っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイソンや他の動物が、かつて満ちていた土地に戻るのを助けています。",
+      "text_markdown": "バイソンや他の動物が、かつて満ちていた土地に戻るのを助けています。",
+      "tts": {
+        "text": "バイソンや他の動物が、かつて満ちていた土地に戻るのを助けています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深い土を失わずに使えるよう、土の研究もしています。",
+      "text_markdown": "深い土を失わずに使えるよう、土の研究もしています。",
+      "tts": {
+        "text": "深い土を失わずに使えるよう、土の研究もしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健康な草原は、地球で最も生命に満ちた場所の一つです。",
+      "text_markdown": "健康な草原は、地球で最も生命に満ちた場所の一つです。",
+      "tts": {
+        "text": "健康な草原は、地球で最も生命に満ちた場所の一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今日の草原",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私たちの保護に値します。",
+      "text_markdown": "私たちの保護に値します。",
+      "tts": {
+        "text": "私たちの保護に値します。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが温帯草原です。",
+      "text_markdown": "それが温帯草原です。",
+      "tts": {
+        "text": "それが温帯草原です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草と大きな空と移り変わる季節の、広く風の吹く世界です。",
+      "text_markdown": "草と大きな空と移り変わる季節の、広く風の吹く世界です。",
+      "tts": {
+        "text": "草と大きな空と移り変わる季節の、広く風の吹く世界です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もし草原に立つことがあれば、しばらく静かにしてみてください。",
+      "text_markdown": "もし草原に立つことがあれば、しばらく静かにしてみてください。",
+      "tts": {
+        "text": "もし草原に立つことがあれば、しばらく静かにしてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草を渡る風の音を聞いてください。",
+      "text_markdown": "草を渡る風の音を聞いてください。",
+      "tts": {
+        "text": "草を渡る風の音を聞いてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遠い地平線を見てください。",
+      "text_markdown": "遠い地平線を見てください。",
+      "tts": {
+        "text": "遠い地平線を見てください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたのまわりでバイオームの鼓動を感じるでしょう。",
+      "text_markdown": "あなたのまわりでバイオームの鼓動を感じるでしょう。",
+      "tts": {
+        "text": "あなたのまわりでバイオームの鼓動を感じるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

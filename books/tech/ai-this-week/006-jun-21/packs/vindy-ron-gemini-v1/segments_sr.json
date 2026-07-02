@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "sr",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Dobrodošli u ovonedeljni pregled sveta veštačke inteligencije.",
+      "text_markdown": "Dobrodošli u ovonedeljni pregled sveta veštačke inteligencije.",
+      "title": "",
+      "tts": {
+        "text": "Dobrodošli u ovonedeljni pregled sveta veštačke inteligencije.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Vindy je moje ime.",
+      "text_markdown": "Vindy je moje ime.",
+      "title": "",
+      "tts": {
+        "text": "Vindi je moje ime.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Kao i uvek, Ron je ovde sa mnom.",
+      "text_markdown": "Kao i uvek, Ron je ovde sa mnom.",
+      "title": "",
+      "tts": {
+        "text": "Kao i uvek Ron je ovde sa mnom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Drago mi je što sam ovde, Vindy.",
+      "text_markdown": "Drago mi je što sam ovde, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Drago mi je što sam ovde, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Danas je nedelja, 21. jun 2026. godine.",
+      "text_markdown": "Danas je nedelja, 21. jun 2026. godine.",
+      "title": "",
+      "tts": {
+        "text": "Danas je nedelja, dvadeset prvi dan juna dve hiljade dvadeset šeste godine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "Prošle nedelje pričali smo o nama samima, a danas idemo u sasvim drugom pravcu, pravo prema centrima moći.",
+      "text_markdown": "Prošle nedelje pričali smo o nama samima, a danas idemo u sasvim drugom pravcu, pravo prema centrima moći.",
+      "title": "",
+      "tts": {
+        "text": "Prošle nedelje pričali smo o nama samima, a danas idemo u sasvim drugom pravcu, pravo prema centrima moći.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Pitanje je ko nadzire uvođenje veštačke inteligencije, ko plaća tu izgradnju i ko drži silicijum u svojim rukama.",
+      "text_markdown": "Pitanje je ko nadzire uvođenje veštačke inteligencije, ko plaća tu izgradnju i ko drži silicijum u svojim rukama.",
+      "title": "",
+      "tts": {
+        "text": "Pitanje je ko nadzire uvođenje veštačke inteligencije, ko plaća tu izgradnju i ko drži silicijum u svojim rukama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "Sledi vest da je američko Ministarstvo trgovine prošlog petka povuklo američki model iz javne upotrebe, i počećemo upravo tom temom.",
+      "text_markdown": "Sledi vest da je američko Ministarstvo trgovine prošlog petka povuklo američki model iz javne upotrebe, i počećemo upravo tom temom.",
+      "title": "",
+      "tts": {
+        "text": "Sledi vest da je američko Ministarstvo trgovine prošlog petka povuklo američki model iz javne upotrebe, i počećemo upravo tom temom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "Zatim dolazi gradnja računarskih centara, gde se najave i stvarno stanje jednostavno ne poklapaju.",
+      "text_markdown": "Zatim dolazi gradnja računarskih centara, gde se najave i stvarno stanje jednostavno ne poklapaju.",
+      "title": "",
+      "tts": {
+        "text": "Zatim dolazi gradnja računarskih centara, gde se najave i stvarno stanje jednostavno ne poklapaju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "Zatim dolazi poređenje Amerike i Kine, gde se opšte mesto zamenjuje stvarnim ograničenjem.",
+      "text_markdown": "Zatim dolazi poređenje Amerike i Kine, gde se opšte mesto zamenjuje stvarnim ograničenjem.",
+      "title": "",
+      "tts": {
+        "text": "Zatim dolazi poređenje Amerike i Kine, gde se opšte mesto zamenjuje stvarnim ograničenjem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "Tema nedelje je jedna stavka iz bilansa stanja Oraclea, koja vam govori gotovo sve.",
+      "text_markdown": "Tema nedelje je jedna stavka iz bilansa stanja Oraclea, koja vam govori gotovo sve.",
+      "title": "",
+      "tts": {
+        "text": "Tema nedelje je jedna stavka iz bilansa stanja Orakla, koja vam govori gotovo sve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Rone, krenimo od kompanije Anthropic.",
+      "text_markdown": "Rone, krenimo od kompanije Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Rone, krenimo od Antropika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Da vidimo šta se tog 12. juna dogodilo.",
+      "text_markdown": "Da vidimo šta se tog 12. juna dogodilo.",
+      "title": "",
+      "tts": {
+        "text": "Da vidimo šta se tog dvanaestog juna dogodilo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "Tačno u 5:21 popodne po istočnom vremenu u petak, 12. juna, Anthropic je povukao iz javne dostupnosti svoja dva najnovija modela, Claude Mythos 5 i Claude Fable 5.",
+      "text_markdown": "Tačno u 5:21 popodne po istočnom vremenu u petak, 12. juna, Anthropic je povukao iz javne dostupnosti svoja dva najnovija modela, Claude Mythos 5 i Claude Fable 5.",
+      "title": "",
+      "tts": {
+        "text": "Tačno u pet sati i dvadeset jedan minut posle podne po istočnom vremenu u petak, dvanaestog juna, kompanija Antropik je povukla iz javne dostupnosti svoja dva najnovija modela, Klod Mitos broj pet i Klod Fejbl broj pet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Uzrok nije bilo održavanje, niti bezbednosna provera koju je sam pokrenuo.",
+      "text_markdown": "Uzrok nije bilo održavanje, niti bezbednosna provera koju je sam pokrenuo.",
+      "title": "",
+      "tts": {
+        "text": "Uzrok nije bilo održavanje, niti bezbednosna provera koju je sam pokrenuo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Povukli su ih zato što je američko Ministarstvo trgovine izdalo direktivu pozivajući se na kontrolu izvoza.",
+      "text_markdown": "Povukli su ih zato što je američko Ministarstvo trgovine izdalo direktivu pozivajući se na kontrolu izvoza.",
+      "title": "",
+      "tts": {
+        "text": "Povukli su ih zato što je američko Ministarstvo trgovine izdalo direktivu pozivajući se na kontrolu izvoza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "Ostaje pitanje kakav se tehnički razlog krio iza toga.",
+      "text_markdown": "Ostaje pitanje kakav se tehnički razlog krio iza toga.",
+      "title": "",
+      "tts": {
+        "text": "Ostaje pitanje kakav se tehnički razlog krio iza toga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Prikazan je navodni način na koji je druga kompanija zaobišla zaštitne mere i dobila rezultat koji je Ministarstvo trgovine smatralo materijalom pod izvoznom kontrolom.",
+      "text_markdown": "Prikazan je navodni način na koji je druga kompanija zaobišla zaštitne mere i dobila rezultat koji je Ministarstvo trgovine smatralo materijalom pod izvoznom kontrolom.",
+      "title": "",
+      "tts": {
+        "text": "Prikazan je navodni način na koji je druga kompanija zaobišla zaštitne mere i dobila rezultat koji je Ministarstvo trgovine smatralo materijalom pod izvoznom kontrolom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Poslovni magazin Forčun objavio je da je upravo kompanija Amazon na to upozorila Belu kuću.",
+      "text_markdown": "Poslovni magazin Forčun objavio je da je upravo kompanija Amazon na to upozorila Belu kuću.",
+      "title": "",
+      "tts": {
+        "text": "Пословни магазин Форчун објавио је да је управо компанија Амазон на то упозорила Белу кућу.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "Ovako je kompanija reagovala.",
+      "text_markdown": "Ovako je kompanija reagovala.",
+      "title": "",
+      "tts": {
+        "text": "Ovako je kompanija reagovala.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Iz te kompanije javno osporavaju to obrazloženje.",
+      "text_markdown": "Iz te kompanije javno osporavaju to obrazloženje.",
+      "title": "",
+      "tts": {
+        "text": "Iz te kompanije javno osporavaju to obrazloženje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "U saopštenju su taj proboj zaštite nazvali, citiram, „uskim i neuniverzalnim“, i dodali da isti izlaz, uključujući GPT-5.5 kompanije OpenAI, postoji i kod drugih modela.",
+      "text_markdown": "U saopštenju su taj proboj zaštite nazvali, citiram, „uskim i neuniverzalnim“, i dodali da isti izlaz, uključujući GPT-5.5 kompanije OpenAI, postoji i kod drugih modela.",
+      "title": "",
+      "tts": {
+        "text": "U saopštenju su taj proboj zaštite nazvali, citiram, uskim i neuniverzalnim, i dodali da isti izlaz, uključujući dži pi ti pet tačka pet kompanije Open ej aj, postoji i kod drugih modela.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "Njihova kratka poruka bila je da je postupanje vlade počivalo na pogrešnom razumevanju.",
+      "text_markdown": "Njihova kratka poruka bila je da je postupanje vlade počivalo na pogrešnom razumevanju.",
+      "title": "",
+      "tts": {
+        "text": "Njihova kratka poruka bila je da je postupanje vlade počivalo na pogrešnom razumevanju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "Ovakvo otvoreno neslaganje sa američkom vladom neobično je direktno za laboratoriju veštačke inteligencije.",
+      "text_markdown": "Ovakvo otvoreno neslaganje sa američkom vladom neobično je direktno za laboratoriju veštačke inteligencije.",
+      "title": "",
+      "tts": {
+        "text": "Ovakvo otvoreno neslaganje sa američkom vladom neobično je direktno za laboratoriju veštačke inteligencije.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Tako je, a osnovna činjenica o strukturi u pozadini je upravo sam naslov.",
+      "text_markdown": "Tako je, a osnovna činjenica o strukturi u pozadini je upravo sam naslov.",
+      "title": "",
+      "tts": {
+        "text": "Tako je, a osnovna činjenica o strukturi u pozadini je upravo sam naslov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Ministarstvo trgovine sada može privatnoj američkoj laboratoriji za veštačku inteligenciju da naredi da povuče model sa mreže, pozivajući se na kontrolu izvoza, a u roku od sedamdeset dva sata laboratorija dobija tu naredbu.",
+      "text_markdown": "Ministarstvo trgovine sada može privatnoj američkoj laboratoriji za veštačku inteligenciju da naredi da povuče model sa mreže, pozivajući se na kontrolu izvoza, a u roku od sedamdeset dva sata laboratorija dobija tu naredbu.",
+      "title": "",
+      "tts": {
+        "text": "Ministarstvo trgovine sada može privatnoj američkoj laboratoriji za veštačku inteligenciju da naredi da povuče model sa mreže, pozivajući se na kontrolu izvoza, a u roku od sedamdeset dva sata laboratorija dobija tu naredbu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Šta god mislili o tome da li je naredba bila ispravna.",
+      "text_markdown": "Šta god mislili o tome da li je naredba bila ispravna.",
+      "title": "",
+      "tts": {
+        "text": "Šta god mislili o tome da li je naredba bila ispravna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "Nezavisno od toga da li smatrate da je ta naredba bila ispravna.",
+      "text_markdown": "Nezavisno od toga da li smatrate da je ta naredba bila ispravna.",
+      "title": "",
+      "tts": {
+        "text": "Nezavisno od toga da li smatrate da je ta naredba bila ispravna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "Suština su baš ta ovlašćenja, brzina i presedan.",
+      "text_markdown": "Suština su baš ta ovlašćenja, brzina i presedan.",
+      "title": "",
+      "tts": {
+        "text": "Suština su baš ta ovlašćenja, brzina i presedan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "Amazonova uloga je takođe prisutna.",
+      "text_markdown": "Amazonova uloga je takođe prisutna.",
+      "title": "",
+      "tts": {
+        "text": "Amazonova uloga je takođe prisutna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "Ovaj deo zaslužuje punu pažnju.",
+      "text_markdown": "Ovaj deo zaslužuje punu pažnju.",
+      "title": "",
+      "tts": {
+        "text": "Ovaj deo zaslužuje punu pažnju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Amazon je veliki ulagač u kompaniju Antropik, ali joj istovremeno konkuriše na tržištu osnovnih AI modela kroz sopstveni razvoj.",
+      "text_markdown": "Amazon je veliki ulagač u kompaniju Antropik, ali joj istovremeno konkuriše na tržištu osnovnih AI modela kroz sopstveni razvoj.",
+      "title": "",
+      "tts": {
+        "text": "Amazon je veliki ulagač u kompaniju Antropik, ali joj istovremeno konkuriše na tržištu osnovnih veštačko inteligentnih modela kroz sopstveni razvoj.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "Kada upozorenje koje konkurent pošalje vladi može tokom produženog vikenda da zaustavi rivalski model, to postaje sasvim nova vrsta industrijskog nadmetanja.",
+      "text_markdown": "Kada upozorenje koje konkurent pošalje vladi može tokom produženog vikenda da zaustavi rivalski model, to postaje sasvim nova vrsta industrijskog nadmetanja.",
+      "title": "",
+      "tts": {
+        "text": "Kada upozorenje koje konkurent pošalje vladi može tokom produženog vikenda da zaustavi rivalski model, to postaje sasvim nova vrsta industrijskog nadmetanja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Sad počinjemo sa gradnjom.",
+      "text_markdown": "Sad počinjemo sa gradnjom.",
+      "title": "",
+      "tts": {
+        "text": "Sad počinjemo sa gradnjom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Inicijativa Stargate okuplja OpenAI, Oracle i SoftBank oko izgradnje centara podataka.",
+      "text_markdown": "Inicijativa Stargate okuplja OpenAI, Oracle i SoftBank oko izgradnje centara podataka.",
+      "title": "",
+      "tts": {
+        "text": "Inicijativa Stargejt okuplja Oupen ejaj, Orakl i Softbank oko izgradnje centara podataka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Realni brojevi, šta oni zapravo predstavljaju?",
+      "text_markdown": "Realni brojevi, šta oni zapravo predstavljaju?",
+      "title": "",
+      "tts": {
+        "text": "Realni brojevi, šta oni zapravo predstavljaju?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "Projekat je najavljen sa kapacitetom od 11 gigavata u Sjedinjenim Američkim Državama.",
+      "text_markdown": "Projekat je najavljen sa kapacitetom od 11 gigavata u Sjedinjenim Američkim Državama.",
+      "title": "",
+      "tts": {
+        "text": "Projekat je najavljen sa kapacitetom od jedanaest gigavata u Sjedinjenim Američkim Državama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "Sredinom juna, oko dvesta megavata već radi u prvoj fazi lokacije u teksaškom gradu Abilinu.",
+      "text_markdown": "Sredinom juna, oko dvesta megavata već radi u prvoj fazi lokacije u teksaškom gradu Abilinu.",
+      "title": "",
+      "tts": {
+        "text": "Sredinom juna, oko dvesta megavata već radi u prvoj fazi lokacije u teksaškom gradu Ebilinu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Najavljeno je ukupno 11 gigavata, a priključeno je 200 megavata.",
+      "text_markdown": "Najavljeno je ukupno 11 gigavata, a priključeno je 200 megavata.",
+      "title": "",
+      "tts": {
+        "text": "Najavljeno je ukupno jedanaest gigavata, a priključeno je dvesta megavata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "Cela razlika staje u jednu rečenicu.",
+      "text_markdown": "Cela razlika staje u jednu rečenicu.",
+      "title": "",
+      "tts": {
+        "text": "Cela razlika staje u jednu rečenicu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Baš tako, najjasniji primer nalazi se u američkoj saveznoj državi Novi Meksiko.",
+      "text_markdown": "Baš tako, najjasniji primer nalazi se u američkoj saveznoj državi Novi Meksiko.",
+      "title": "",
+      "tts": {
+        "text": "Баш тако, најјаснији пример налази се у америчкој савезној држави Нови Мексико.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "Najveći pojedinačni kampus u okviru projekta Stargejt smešten je u okrugu Donja Ana, a planiran je kapacitet od 4,5 gigavata.",
+      "text_markdown": "Najveći pojedinačni kampus u okviru projekta Stargejt smešten je u okrugu Donja Ana, a planiran je kapacitet od 4,5 gigavata.",
+      "title": "",
+      "tts": {
+        "text": "Najveći pojedinačni kampus u okviru projekta Stargejt smešten je u okrugu Donja Ana, a planiran je kapacitet od četiri i po gigavata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "Osamnaest milijardi dolara sindiciranog projektnog finansiranja obezbeđeno je preko Sumitomo Mitsui, BNP Paribas, Goldman Sachs i MUFG, uz još tri milijarde dolara kapitalnog uloga od Blue Owl-a.",
+      "text_markdown": "Osamnaest milijardi dolara sindiciranog projektnog finansiranja obezbeđeno je preko Sumitomo Mitsui, BNP Paribas, Goldman Sachs i MUFG, uz još tri milijarde dolara kapitalnog uloga od Blue Owl-a.",
+      "title": "",
+      "tts": {
+        "text": "Осамнаест милијарди долара синдицираног пројектног финансирања обезбеђено је преко Сумитомо Мицуи, бе ен пе Париба, Голдман Сакс и ем у еф џи, уз још три милијарде долара капиталног улога од Блу Аула.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "Kako ide izgradnja na samom terenu?",
+      "text_markdown": "Kako ide izgradnja na samom terenu?",
+      "title": "",
+      "tts": {
+        "text": "Kako ide izgradnja na samom terenu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Još nije počelo ni prvo kopanje na terenu.",
+      "text_markdown": "Još nije počelo ni prvo kopanje na terenu.",
+      "title": "",
+      "tts": {
+        "text": "Još nije počelo ni prvo kopanje na terenu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "To mesto i dalje čeka dozvolu za kvalitet vazduha od odeljenja za zaštitu životne sredine u Novom Meksiku, koja se prvobitno očekivala 22. aprila, a sada je pomerena na 21. jul posle više od 7.000 javnih komentara.",
+      "text_markdown": "To mesto i dalje čeka dozvolu za kvalitet vazduha od odeljenja za zaštitu životne sredine u Novom Meksiku, koja se prvobitno očekivala 22. aprila, a sada je pomerena na 21. jul posle više od 7.000 javnih komentara.",
+      "title": "",
+      "tts": {
+        "text": "To mesto i dalje čeka dozvolu za kvalitet vazduha od odeljenja za zaštitu životne sredine u Novom Meksiku, koja se prvobitno očekivala dvadeset drugog aprila, a sada je pomerena na dvadeset prvi jul posle više od sedam hiljada javnih komentara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "18 milijardi dolara je već namenjeno, nijedna lopata još nije zabodena u zemlju, a pred njima je rok da obezbede potrebnu dozvolu za kvalitet vazduha.",
+      "text_markdown": "18 milijardi dolara je već namenjeno, nijedna lopata još nije zabodena u zemlju, a pred njima je rok da obezbede potrebnu dozvolu za kvalitet vazduha.",
+      "title": "",
+      "tts": {
+        "text": "Osamnaest milijardi dolara je već namenjeno, nijedna lopata još nije zabodena u zemlju, a pred njima je rok da obezbede potrebnu dozvolu za kvalitet vazduha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "I dalje se pitamo ko će najviše stradati ako se ta procena pokaže pogrešnom.",
+      "text_markdown": "I dalje se pitamo ko će najviše stradati ako se ta procena pokaže pogrešnom.",
+      "title": "",
+      "tts": {
+        "text": "I dalje se pitamo ko će najviše stradati ako se ta procena pokaže pogrešnom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "Baš tu priča o Oracleu postaje stvarno zanimljiva.",
+      "text_markdown": "Baš tu priča o Oracleu postaje stvarno zanimljiva.",
+      "title": "",
+      "tts": {
+        "text": "Baš tu priča o Oraklu postaje stvarno zanimljiva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "Oracle-ove preostale obaveze po osnovu performansi — računovodstvena stavka koja beleži ugovorene prihode koji još nisu isporučeni — dostigle su petsto pedeset tri milijarde dolara u trećem kvartalu fiskalne dve hiljade dvadeset šeste.",
+      "text_markdown": "Oracle-ove preostale obaveze po osnovu performansi — računovodstvena stavka koja beleži ugovorene prihode koji još nisu isporučeni — dostigle su petsto pedeset tri milijarde dolara u trećem kvartalu fiskalne dve hiljade dvadeset šeste.",
+      "title": "",
+      "tts": {
+        "text": "Oracle-ove preostale obaveze po osnovu performansi — računovodstvena stavka koja beleži ugovorene prihode koji još nisu isporučeni — dostigle su petsto pedeset tri milijarde dolara u trećem kvartalu fiskalne dve hiljade dvadeset šeste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "To je porast od 325% u odnosu na prethodnu godinu, a većina tog skoka javno se povezuje sa kompanijom OpenAI i projektom Stargate.",
+      "text_markdown": "To je porast od 325% u odnosu na prethodnu godinu, a većina tog skoka javno se povezuje sa kompanijom OpenAI i projektom Stargate.",
+      "title": "",
+      "tts": {
+        "text": "To je porast od trista dvadeset pet procenata u odnosu na prethodnu godinu, a većina tog skoka javno se povezuje sa kompanijom OpenAI i projektom Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "Kakva je situacija sa spoljnim dugom?",
+      "text_markdown": "Kakva je situacija sa spoljnim dugom?",
+      "title": "",
+      "tts": {
+        "text": "Kakva je situacija sa spoljnim dugom?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "Zaključno sa 28. februarom, ukupna zaduženja iznosila su 134,6 milijardi američkih dolara.",
+      "text_markdown": "Zaključno sa 28. februarom, ukupna zaduženja iznosila su 134,6 milijardi američkih dolara.",
+      "title": "",
+      "tts": {
+        "text": "Zaključno sa dvadeset osmim februarom, ukupna zaduženja iznosila su sto trideset četiri zarez šest milijardi američkih dolara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "Oracle je samo u februaru prikupio trideset milijardi — obveznice investicionog ranga plus obavezne konvertibilne preferencijalne akcije — i izdao četrdeset tri milijarde dolara novih seniorskih obveznica tokom devetomesečnog perioda.",
+      "text_markdown": "Oracle je samo u februaru prikupio trideset milijardi — obveznice investicionog ranga plus obavezne konvertibilne preferencijalne akcije — i izdao četrdeset tri milijarde dolara novih seniorskih obveznica tokom devetomesečnog perioda.",
+      "title": "",
+      "tts": {
+        "text": "Oracle je samo u februaru prikupio trideset milijardi — obveznice investicionog ranga plus obavezne konvertibilne preferencijalne akcije — i izdao četrdeset tri milijarde dolara novih seniorskih obveznica tokom devetomesečnog perioda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Сада укратко сумирајмо став.",
+      "text_markdown": "Сада укратко сумирајмо став.",
+      "title": "",
+      "tts": {
+        "text": "Сада укратко сумирајмо став.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Kad se sve sabere, to je 553 milijarde dolara obećanih ulaganja, 134 milijarde dolara duga i jedan veliki kupac koji većinu rizika nosi na svojim leđima.",
+      "text_markdown": "Kad se sve sabere, to je 553 milijarde dolara obećanih ulaganja, 134 milijarde dolara duga i jedan veliki kupac koji većinu rizika nosi na svojim leđima.",
+      "title": "",
+      "tts": {
+        "text": "Kad se sve sabere, to je petsto pedeset i tri milijarde dolara obećanih ulaganja, sto trideset i četiri milijarde dolara duga i jedan veliki kupac koji većinu rizika nosi na svojim leđima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "Ovako taj obrazac građenja izgleda u jednoj rečenici.",
+      "text_markdown": "Ovako taj obrazac građenja izgleda u jednoj rečenici.",
+      "title": "",
+      "tts": {
+        "text": "Ovako taj obrazac građenja izgleda u jednoj rečenici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "Sada da vidimo kako se upoređuju Sjedinjene Države i Kina.",
+      "text_markdown": "Sada da vidimo kako se upoređuju Sjedinjene Države i Kina.",
+      "title": "",
+      "tts": {
+        "text": "Sada da vidimo kako se upoređuju Sjedinjene Države i Kina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "Kliše je da Kina zaostaje nekoliko meseci.",
+      "text_markdown": "Kliše je da Kina zaostaje nekoliko meseci.",
+      "title": "",
+      "tts": {
+        "text": "Kliše je da Kina zaostaje nekoliko meseci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "Ta otrcana tvrdnja nije tačna, jer meri ono što ne treba.",
+      "text_markdown": "Ta otrcana tvrdnja nije tačna, jer meri ono što ne treba.",
+      "title": "",
+      "tts": {
+        "text": "Ta otrcana tvrdnja nije tačna, jer meri ono što ne treba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "U ponedeljak, devetog juna, Bloomberg je izvestio o nacrtu kineskog plana Nacionalne komisije za razvoj i reforme — dva biliona juana, otprilike dvesta devedeset pet milijardi dolara, za nacionalnu mrežu AI data centara do dve hiljade dvadeset osme.",
+      "text_markdown": "U ponedeljak, devetog juna, Bloomberg je izvestio o nacrtu kineskog plana Nacionalne komisije za razvoj i reforme — dva biliona juana, otprilike dvesta devedeset pet milijardi dolara, za nacionalnu mrežu AI data centara do dve hiljade dvadeset osme.",
+      "title": "",
+      "tts": {
+        "text": "U ponedeljak, devetog juna, Bloomberg je izvestio o nacrtu kineskog plana Nacionalne komisije za razvoj i reforme — dva biliona juana, otprilike dvesta devedeset pet milijardi dolara, za nacionalnu mrežu A I data centara do dve hiljade dvadeset osme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "Plan nalaže osamdeset procenata domaćeg silicijuma i njime bi upravljali China Mobile i China Telecom kao jednom međusobno povezanom računarskom mrežom.",
+      "text_markdown": "Plan nalaže osamdeset procenata domaćeg silicijuma i njime bi upravljali China Mobile i China Telecom kao jednom međusobno povezanom računarskom mrežom.",
+      "title": "",
+      "tts": {
+        "text": "Plan nalaže osamdeset procenata domaćeg silicijuma i njime bi upravljali China Mobile i China Telecom kao jednom međusobno povezanom računarskom mrežom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "Gde se onda u tom planu krije prava klopka?",
+      "text_markdown": "Gde se onda u tom planu krije prava klopka?",
+      "title": "",
+      "tts": {
+        "text": "Gde se onda u tom planu krije prava klopka?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "2 biliona juana, 80% domaćeg silicijuma i rok do 2028, a fora je u tome da usko grlo nisu procesorski čipovi nego memorija velike propusnosti.",
+      "text_markdown": "2 biliona juana, 80% domaćeg silicijuma i rok do 2028, a fora je u tome da usko grlo nisu procesorski čipovi nego memorija velike propusnosti.",
+      "title": "",
+      "tts": {
+        "text": "Dva biliona juana, osamdeset odsto domaćeg silicijuma i rok do dve hiljade dvadeset osme godine, a fora je u tome da usko grlo nisu procesorski čipovi nego memorija velike propusnosti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "Molim vas, pojasnite nam tu zamisao.",
+      "text_markdown": "Molim vas, pojasnite nam tu zamisao.",
+      "title": "",
+      "tts": {
+        "text": "Molim vas, pojasnite nam tu zamisao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "Svaki ubrzivač za veštačku inteligenciju zahteva naslaganu memoriju velikog propusnog opsega, pričvršćenu uz logičku silicijumsku pločicu.",
+      "text_markdown": "Svaki ubrzivač za veštačku inteligenciju zahteva naslaganu memoriju velikog propusnog opsega, pričvršćenu uz logičku silicijumsku pločicu.",
+      "title": "",
+      "tts": {
+        "text": "Svaki ubrzivač za veštačku inteligenciju zahteva naslaganu memoriju velikog propusnog opsega, pričvršćenu uz logičku silicijumsku pločicu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Kada nema HBM memorije, čip služi samo kao tegić za papire.",
+      "text_markdown": "Kada nema HBM memorije, čip služi samo kao tegić za papire.",
+      "title": "",
+      "tts": {
+        "text": "Kada nema memorije velike propusnosti, čip služi samo kao tegić za papire.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "Pre nego što su kontrole izvoza zatvorile prolaz, Kina je nagomilala oko trinaest miliona HBM stekova, od toga jedanaest zarez četiri miliona samo od Samsunga.",
+      "text_markdown": "Pre nego što su kontrole izvoza zatvorile prolaz, Kina je nagomilala oko trinaest miliona HBM stekova, od toga jedanaest zarez četiri miliona samo od Samsunga.",
+      "title": "",
+      "tts": {
+        "text": "Pre nego što su kontrole izvoza zatvorile prolaz, Kina je nagomilala oko trinaest miliona stekova memorije velike propusnosti, od toga jedanaest zarez četiri miliona samo od Samsunga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Ako se primene odnosi pakovanja za Huawei Ascend 910C, te zalihe su dovoljne za oko 1,6 miliona čipova.",
+      "text_markdown": "Ako se primene odnosi pakovanja za Huawei Ascend 910C, te zalihe su dovoljne za oko 1,6 miliona čipova.",
+      "title": "",
+      "tts": {
+        "text": "Ako se primene odnosi pakovanja za Huavej Asend devetsto deset ce, te zalihe su dovoljne za oko jedan zarez šest miliona čipova.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "Tada zalihe ponestaju.",
+      "text_markdown": "Tada zalihe ponestaju.",
+      "title": "",
+      "tts": {
+        "text": "Tada zalihe ponestaju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "Onda zalihe presuše: 13 miliona naslaganih memorijskih modula velike propusnosti, dovoljno za 1,6 miliona čipova, i to je čvrst maksimum.",
+      "text_markdown": "Onda zalihe presuše: 13 miliona naslaganih memorijskih modula velike propusnosti, dovoljno za 1,6 miliona čipova, i to je čvrst maksimum.",
+      "title": "",
+      "tts": {
+        "text": "Onda zalihe presuše, trinaest miliona naslaganih memorijskih modula velike propusnosti, dovoljno za jedan zarez šest miliona čipova, i to je čvrst maksimum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "Procene kažu da će domaća kineska HBM memorija iz CXMT-a 2026. dostići oko 2 miliona paketa, dovoljno za možda 250.000 do 300.000 akceleratora.",
+      "text_markdown": "Procene kažu da će domaća kineska HBM memorija iz CXMT-a 2026. dostići oko 2 miliona paketa, dovoljno za možda 250.000 do 300.000 akceleratora.",
+      "title": "",
+      "tts": {
+        "text": "Procene kažu da će domaća kineska memorija velikog propusnog opsega tog proizvođača dve hiljade dvadeset šeste dostići oko dva miliona paketa, dovoljno za možda dvesta pedeset hiljada do trista hiljada akceleratora.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "Sada pogledajmo Huaweijeve planove za silicijum.",
+      "text_markdown": "Sada pogledajmo Huaweijeve planove za silicijum.",
+      "title": "",
+      "tts": {
+        "text": "Sada pogledajmo Huavejeve planove za silicijum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "Bloomberg je na osnovu Huaweijevih planova procenio da će proizvodnja čipova 910C u 2026. godini dostići 600.000 komada, dok bi cela linija Ascend ukupno mogla da dođe do 1,6 miliona čipova.",
+      "text_markdown": "Bloomberg je na osnovu Huaweijevih planova procenio da će proizvodnja čipova 910C u 2026. godini dostići 600.000 komada, dok bi cela linija Ascend ukupno mogla da dođe do 1,6 miliona čipova.",
+      "title": "",
+      "tts": {
+        "text": "Blumberg je na osnovu Huavejevih planova procenio da će proizvodnja čipova modela devetsto deset ce u dve hiljade dvadeset šestoj godini dostići šest stotina hiljada komada, dok bi cela linija Asend ukupno mogla da dođe do jedan zarez šest miliona čipova.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "Broj od 600.000 je cilj, a ne količina koja je već proizvedena.",
+      "text_markdown": "Broj od 600.000 je cilj, a ne količina koja je već proizvedena.",
+      "title": "",
+      "tts": {
+        "text": "Broj od šest stotina hiljada je cilj, a ne količina koja je već proizvedena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "Tačnije, pre nego što su izvozne kontrole zaustavile snabdevanje, Huawei je nagomilao više od 2,9 miliona Ascend čipova koje je TSMC proizveo preko Sophgoa i Bitmaina, kompanija koje su nastupale kao fiktivni posrednici.",
+      "text_markdown": "Tačnije, pre nego što su izvozne kontrole zaustavile snabdevanje, Huawei je nagomilao više od 2,9 miliona Ascend čipova koje je TSMC proizveo preko Sophgoa i Bitmaina, kompanija koje su nastupale kao fiktivni posrednici.",
+      "title": "",
+      "tts": {
+        "text": "Tačnije, pre nego što su izvozne kontrole zaustavile snabdevanje, Huavej je nagomilao više od dva zarez devet miliona Asend čipova koje je te es em ce proizveo preko Sofgoa i Bitmejna, kompanija koje su nastupale kao fiktivni posrednici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "Narativ o tome da kontrole izvoza funkcionišu ima rupu od dva zarez devet miliona čipova.",
+      "text_markdown": "Narativ o tome da kontrole izvoza funkcionišu ima rupu od dva zarez devet miliona čipova.",
+      "title": "",
+      "tts": {
+        "text": "Narativ o tome da kontrole izvoza funkcionišu ima rupu od dva zarez devet miliona čipova.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "Sada ćemo ukratko proći kroz naslove.",
+      "text_markdown": "Sada ćemo ukratko proći kroz naslove.",
+      "title": "",
+      "tts": {
+        "text": "Sada ćemo ukratko proći kroz naslove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "Ove nedelje, prva vest je o kompaniji Broadcom.",
+      "text_markdown": "Ove nedelje, prva vest je o kompaniji Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Ove nedelje, prva vest je o kompaniji Braudkom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "Tržišna vrednost kompanije Broadcom iznosi oko dva biliona dolara.",
+      "text_markdown": "Tržišna vrednost kompanije Broadcom iznosi oko dva biliona dolara.",
+      "title": "",
+      "tts": {
+        "text": "Tržišna vrednost kompanije Brodkom iznosi oko dva biliona dolara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "Njihov izvršni direktor, Hock Tan, ponovio je cilj prihoda od sto milijardi dolara od AI poluprovodnika za fiskalnu dve hiljade dvadeset sedmu godinu na pozivu za zaradu trećeg juna, potkrepljen sa oko sedamdeset tri milijarde dolara u zaostalim narudžbinama AI proizvoda i dugoročnim ugovorima sa Alphabetom i Metom koji se protežu do dve hiljade trideset prve.",
+      "text_markdown": "Njihov izvršni direktor, Hock Tan, ponovio je cilj prihoda od sto milijardi dolara od AI poluprovodnika za fiskalnu dve hiljade dvadeset sedmu godinu na pozivu za zaradu trećeg juna, potkrepljen sa oko sedamdeset tri milijarde dolara u zaostalim narudžbinama AI proizvoda i dugoročnim ugovorima sa Alphabetom i Metom koji se protežu do dve hiljade trideset prve.",
+      "title": "",
+      "tts": {
+        "text": "Njihov izvršni direktor, Hock Tan, ponovio je cilj prihoda od sto milijardi dolara od A I poluprovodnika za fiskalnu dve hiljade dvadeset sedmu godinu na pozivu za zaradu trećeg juna, potkrepljen sa oko sedamdeset tri milijarde dolara u zaostalim narudžbinama A I proizvoda i dugoročnim ugovorima sa Alphabetom i Metom koji se protežu do dve hiljade trideset prve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "Kompanija na tržištu vredi 2 biliona dolara, cilja 100 milijardi dolara prihoda od veštačke inteligencije, a u maloprodaji joj brend ostaje skoro neprepoznatljiv široj publici.",
+      "text_markdown": "Kompanija na tržištu vredi 2 biliona dolara, cilja 100 milijardi dolara prihoda od veštačke inteligencije, a u maloprodaji joj brend ostaje skoro neprepoznatljiv široj publici.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija na tržištu vredi dva biliona dolara, cilja sto milijardi dolara prihoda od veštačke inteligencije, a u maloprodaji joj brend ostaje skoro neprepoznatljiv široj publici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "Drugi naslov ove nedelje je kompanija ASML.",
+      "text_markdown": "Drugi naslov ove nedelje je kompanija ASML.",
+      "title": "",
+      "tts": {
+        "text": "Drugi naslov ove nedelje je kompanija Asmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "Kompanija ASML iz Holandije, koja proizvodi litografske mašine od kojih zavisi sva vrhunska logika, prodaje svoj High-NA EUV sistem za oko 370 miliona dolara.",
+      "text_markdown": "Kompanija ASML iz Holandije, koja proizvodi litografske mašine od kojih zavisi sva vrhunska logika, prodaje svoj High-NA EUV sistem za oko 370 miliona dolara.",
+      "title": "",
+      "tts": {
+        "text": "Kompanija A Es Em El iz Holandije, koja proizvodi litografske mašine od kojih zavisi sva vrhunska logika, prodaje svoj sistem za ekstremno ultraljubičastu litografiju sa visokom numeričkom aperturom za oko trista sedamdeset miliona dolara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "U celom svetu ukupno se može proizvesti manje od dvadeset jedinica godišnje.",
+      "text_markdown": "U celom svetu ukupno se može proizvesti manje od dvadeset jedinica godišnje.",
+      "title": "",
+      "tts": {
+        "text": "U celom svetu ukupno se može proizvesti manje od dvadeset jedinica godišnje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "Cena jedne mašine je 370 miliona dolara, godišnje ih bude manje od 20, pravi ih samo jedna kompanija, i baš tu nastaje usko grlo u svetskom lancu poluprovodnika, a ne u politici.",
+      "text_markdown": "Cena jedne mašine je 370 miliona dolara, godišnje ih bude manje od 20, pravi ih samo jedna kompanija, i baš tu nastaje usko grlo u svetskom lancu poluprovodnika, a ne u politici.",
+      "title": "",
+      "tts": {
+        "text": "Cena jedne mašine je trista sedamdeset miliona dolara, godišnje ih bude manje od dvadeset, pravi ih samo jedna kompanija, i baš tu nastaje usko grlo u svetskom lancu poluprovodnika, a ne u politici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "Na trećoj poziciji ove nedelje nalaze se kontrole izvoza.",
+      "text_markdown": "Na trećoj poziciji ove nedelje nalaze se kontrole izvoza.",
+      "title": "",
+      "tts": {
+        "text": "Na trećoj poziciji ove nedelje nalaze se kontrole izvoza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "Ministarstvo trgovine ukinulo je Bidenovo pravilo o širenju AI-ja trinaestog maja dve hiljade dvadeset pete, i nije izdalo novo B.I.S. pojašnjenje sprovođenja do trideset prvog maja dve hiljade dvadeset šeste.",
+      "text_markdown": "Ministarstvo trgovine ukinulo je Bidenovo pravilo o širenju AI-ja trinaestog maja dve hiljade dvadeset pete, i nije izdalo novo B.I.S. pojašnjenje sprovođenja do trideset prvog maja dve hiljade dvadeset šeste.",
+      "title": "",
+      "tts": {
+        "text": "Ministarstvo trgovine ukinulo je Bidenovo pravilo o širenju A I-ja trinaestog maja dve hiljade dvadeset pete, i nije izdalo novo Be I Es pojašnjenje sprovođenja do trideset prvog maja dve hiljade dvadeset šeste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "Otprilike, bio je to period od godinu dana tokom kojeg zahtevi za izdavanje licenci u praksi nisu bili stvarno primenjivani.",
+      "text_markdown": "Otprilike, bio je to period od godinu dana tokom kojeg zahtevi za izdavanje licenci u praksi nisu bili stvarno primenjivani.",
+      "title": "",
+      "tts": {
+        "text": "Otprilike, bio je to period od godinu dana tokom kojeg zahtevi za izdavanje licenci u praksi nisu bili stvarno primenjivani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "Samo prebrojte sve dane.",
+      "text_markdown": "Samo prebrojte sve dane.",
+      "title": "",
+      "tts": {
+        "text": "Samo prebrojte sve dane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "Rok od 72 sata za gašenje američkog modela i rok od 380 dana za primenu pravila o izvozu poluprovodnika, upravo ta nesrazmera je ključna suština.",
+      "text_markdown": "Rok od 72 sata za gašenje američkog modela i rok od 380 dana za primenu pravila o izvozu poluprovodnika, upravo ta nesrazmera je ključna suština.",
+      "title": "",
+      "tts": {
+        "text": "Rok od sedamdeset dva sata za gašenje američkog modela i rok od trista osamdeset dana za primenu pravila o izvozu poluprovodnika, upravo ta nesrazmera je ključna suština.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "Tokom tih 380 dana, gde su čipovi zapravo završili.",
+      "text_markdown": "Tokom tih 380 dana, gde su čipovi zapravo završili.",
+      "title": "",
+      "tts": {
+        "text": "Tokom tih trista osamdeset dana, gde su čipovi zapravo završili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "Većina je otišla u zemlje jugoistočne Azije.",
+      "text_markdown": "Većina je otišla u zemlje jugoistočne Azije.",
+      "title": "",
+      "tts": {
+        "text": "Većina je otišla u zemlje jugoistočne Azije.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "Ministarstvo pravde je krajem marta objavilo optužnice u kojima se navodi da su Nvidia H-sto i A-sto čipovi preusmeravani preko malezijskih i singapurskih posrednika.",
+      "text_markdown": "Ministarstvo pravde je krajem marta objavilo optužnice u kojima se navodi da su Nvidia H-sto i A-sto čipovi preusmeravani preko malezijskih i singapurskih posrednika.",
+      "title": "",
+      "tts": {
+        "text": "Ministarstvo pravde je krajem marta objavilo optužnice u kojima se navodi da su Nvidia H sto i A sto čipovi preusmeravani preko malezijskih i singapurskih posrednika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "Časopis Fortune je u maju objavio šifrovane poruke koje prikazuju logistiku, a Super Micro je umešan u slučaj fiktivnih kompanija vredan dve i po milijarde dolara.",
+      "text_markdown": "Časopis Fortune je u maju objavio šifrovane poruke koje prikazuju logistiku, a Super Micro je umešan u slučaj fiktivnih kompanija vredan dve i po milijarde dolara.",
+      "title": "",
+      "tts": {
+        "text": "Časopis Fortune je u maju objavio šifrovane poruke koje prikazuju logistiku, a Super Micro je umešan u slučaj fiktivnih kompanija vredan dve i po milijarde dolara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "Prema izveštajima, Trampova administracija sprema nova pravila koja ograničavaju izvoz čipova, posebno ka Maleziji i Tajlandu.",
+      "text_markdown": "Prema izveštajima, Trampova administracija sprema nova pravila koja ograničavaju izvoz čipova, posebno ka Maleziji i Tajlandu.",
+      "title": "",
+      "tts": {
+        "text": "Prema izveštajima, Trampova administracija sprema nova pravila koja ograničavaju izvoz čipova, posebno ka Maleziji i Tajlandu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "Čitava slika može stati u jednu rečenicu.",
+      "text_markdown": "Čitava slika može stati u jednu rečenicu.",
+      "title": "",
+      "tts": {
+        "text": "Čitava slika može stati u jednu rečenicu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Čipovi ne lete pravo za Šendžen, nego prvo lete za Penang i Singapur.",
+      "text_markdown": "Čipovi ne lete pravo za Šendžen, nego prvo lete za Penang i Singapur.",
+      "title": "",
+      "tts": {
+        "text": "Čipovi ne lete pravo za Šendžen, nego prvo lete za Penang i Singapur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "Današnji pojam nedelje je: preostale obaveze izvršenja.",
+      "text_markdown": "Današnji pojam nedelje je: preostale obaveze izvršenja.",
+      "title": "",
+      "tts": {
+        "text": "Današnji pojam nedelje je preostale obaveze izvršenja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "U računovodstvu, stavka preostalih obaveza za izvršenje prikazuje vrednost ugovora u američkim dolarima koje je kompanija potpisala, ali ih još nije realizovala.",
+      "text_markdown": "U računovodstvu, stavka preostalih obaveza za izvršenje prikazuje vrednost ugovora u američkim dolarima koje je kompanija potpisala, ali ih još nije realizovala.",
+      "title": "",
+      "tts": {
+        "text": "U računovodstvu, stavka preostalih obaveza za izvršenje prikazuje vrednost ugovora u američkim dolarima koje je kompanija potpisala, ali ih još nije realizovala.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "Ona se bavi budućnošću, govori vam kakve prihode možete da očekujete, a ne koliko novca trenutno imate na računu u banci.",
+      "text_markdown": "Ona se bavi budućnošću, govori vam kakve prihode možete da očekujete, a ne koliko novca trenutno imate na računu u banci.",
+      "title": "",
+      "tts": {
+        "text": "Ona se bavi budućnošću, govori vam kakve prihode možete da očekujete, a ne koliko novca trenutno imate na računu u banci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Zašto je to važno za Oracle kao firmu?",
+      "text_markdown": "Zašto je to važno za Oracle kao firmu?",
+      "title": "",
+      "tts": {
+        "text": "Zašto je to važno za Orakl kao firmu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "Jer 553 milijarde dolara preostalih ugovorenih obaveza za buduće isporuke, snažno vezanih za jednog kupca i jedan projekat izgradnje, znači da je Oracle obećao da će tokom narednih nekoliko godina isporučiti ogromnu količinu računarske snage kupcu čiji model prihoda i dalje ostaje veoma neizvestan.",
+      "text_markdown": "Jer 553 milijarde dolara preostalih ugovorenih obaveza za buduće isporuke, snažno vezanih za jednog kupca i jedan projekat izgradnje, znači da je Oracle obećao da će tokom narednih nekoliko godina isporučiti ogromnu količinu računarske snage kupcu čiji model prihoda i dalje ostaje veoma neizvestan.",
+      "title": "",
+      "tts": {
+        "text": "Jer petsto pedeset tri milijarde dolara preostalih ugovorenih obaveza za buduće isporuke, snažno vezanih za jednog kupca i jedan projekat izgradnje, znači da je Orakl obećao da će tokom narednih nekoliko godina isporučiti ogromnu količinu računarske snage kupcu čiji model prihoda i dalje ostaje veoma neizvestan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "Ukoliko se ti ugovori ostvare, tu kompaniju čeka posao decenije.",
+      "text_markdown": "Ukoliko se ti ugovori ostvare, tu kompaniju čeka posao decenije.",
+      "title": "",
+      "tts": {
+        "text": "Ukoliko se ti ugovori ostvare, tu kompaniju čeka posao decenije.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "Ako ti ugovori propadnu ili budu ponovo ugovoreni, Orakl ostaje zadužen, dok vrednost ugovora opada.",
+      "text_markdown": "Ako ti ugovori propadnu ili budu ponovo ugovoreni, Orakl ostaje zadužen, dok vrednost ugovora opada.",
+      "title": "",
+      "tts": {
+        "text": "Ako ti ugovori propadnu ili budu ponovo ugovoreni, Orakl ostaje zadužen, dok vrednost ugovora opada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "Obratite pažnju kada u tehnološkom podnesku vidite RPO broj.",
+      "text_markdown": "Obratite pažnju kada u tehnološkom podnesku vidite RPO broj.",
+      "title": "",
+      "tts": {
+        "text": "Obratite pažnju kada u tehnološkom podnesku vidite er pe o broj.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "Pogledajte ko su kupci, koliko te obaveze zavise od malog broja kupaca i šta bi moralo da se dogodi da ih preduzeće zaista ispuni.",
+      "text_markdown": "Pogledajte ko su kupci, koliko te obaveze zavise od malog broja kupaca i šta bi moralo da se dogodi da ih preduzeće zaista ispuni.",
+      "title": "",
+      "tts": {
+        "text": "Pogledajte ko su kupci, koliko te obaveze zavise od malog broja kupaca i šta bi moralo da se dogodi da ih preduzeće zaista ispuni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "Konkretno, R.P.O. označava mesto gde se nosioci gubitaka pojavljuju u fusnotama.",
+      "text_markdown": "Konkretno, R.P.O. označava mesto gde se nosioci gubitaka pojavljuju u fusnotama.",
+      "title": "",
+      "tts": {
+        "text": "Konkretno, er pe o označava mesto gde se nosioci gubitaka pojavljuju u fusnotama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "Sjajan zaključak za završnicu.",
+      "text_markdown": "Sjajan zaključak za završnicu.",
+      "title": "",
+      "tts": {
+        "text": "Sjajan zaključak za završnicu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Rone, iskreno ti hvala na ovom pregledu.",
+      "text_markdown": "Rone, iskreno ti hvala na ovom pregledu.",
+      "title": "",
+      "tts": {
+        "text": "Rone, iskreno ti hvala na ovom pregledu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "Naravno, Vindi, baš mi je drago što sam ovde.",
+      "text_markdown": "Naravno, Vindi, baš mi je drago što sam ovde.",
+      "title": "",
+      "tts": {
+        "text": "Naravno, Vindi, baš mi je drago što sam ovde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "Ovo je bilo izdanje naše ovonedeljne emisije o veštačkoj inteligenciji za 21. jun 2026. godine.",
+      "text_markdown": "Ovo je bilo izdanje naše ovonedeljne emisije o veštačkoj inteligenciji za 21. jun 2026. godine.",
+      "title": "",
+      "tts": {
+        "text": "Ovo je bilo izdanje naše ovonedeljne emisije o veštačkoj inteligenciji za dvadeset prvi jun dve hiljade dvadeset šeste godine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "Sledeće nedelje vraćamo se modelima čije su težine javno dostupne, kao i malim laboratorijama.",
+      "text_markdown": "Sledeće nedelje vraćamo se modelima čije su težine javno dostupne, kao i malim laboratorijama.",
+      "title": "",
+      "tts": {
+        "text": "Sledeće nedelje vraćamo se modelima čije su težine javno dostupne, kao i malim laboratorijama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "Vidimo se sledeće nedelje, čuvajte se.",
+      "text_markdown": "Vidimo se sledeće nedelje, čuvajte se.",
+      "title": "",
+      "tts": {
+        "text": "Vidimo se sledeće nedelje, čuvajte se.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

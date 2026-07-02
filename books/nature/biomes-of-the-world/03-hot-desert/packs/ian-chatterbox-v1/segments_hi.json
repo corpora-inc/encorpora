@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "गर्म रेगिस्तान",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "गर्म रेगिस्तान",
+      "text_markdown": "गर्म रेगिस्तान"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "रेगिस्तान कहाँ हैं",
+      "text_markdown": "रेगिस्तान कहाँ हैं"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान में आपका स्वागत है।",
+      "text_markdown": "गर्म रेगिस्तान में आपका स्वागत है।",
+      "tts": {
+        "text": "गर्म रेगिस्तान में आपका स्वागत है।",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "text_markdown": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "tts": {
+        "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जैव क्षेत्र पृथ्वी का एक हिस्सा होता है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "text_markdown": "जैव क्षेत्र पृथ्वी का एक हिस्सा होता है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+      "tts": {
+        "text": "जैव क्षेत्र पृथ्वी का एक हिस्सा होता है जिसका अपना मौसम, अपने पौधे और अपने जानवर होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान एक सूखी जगह है।",
+      "text_markdown": "गर्म रेगिस्तान एक सूखी जगह है।",
+      "tts": {
+        "text": "गर्म रेगिस्तान एक सूखी जगह है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ बहुत कम बारिश होती है।",
+      "text_markdown": "यहाँ बहुत कम बारिश होती है।",
+      "tts": {
+        "text": "यहाँ बहुत कम बारिश होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर दिन बहुत गर्म होते हैं, और ज़्यादातर रातें ठंडी या सर्द होती हैं।",
+      "text_markdown": "ज़्यादातर दिन बहुत गर्म होते हैं, और ज़्यादातर रातें ठंडी या सर्द होती हैं।",
+      "tts": {
+        "text": "ज़्यादातर दिन बहुत गर्म होते हैं, और ज़्यादातर रातें ठंडी या सर्द होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया का सबसे बड़ा गर्म रेगिस्तान सहारा है, जो उत्तरी अफ़्रीका में है।",
+      "text_markdown": "दुनिया का सबसे बड़ा गर्म रेगिस्तान सहारा है, जो उत्तरी अफ़्रीका में है।",
+      "tts": {
+        "text": "दुनिया का सबसे बड़ा गर्म रेगिस्तान सहारा है, जो उत्तरी अफ़्रीका में है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह अटलांटिक महासागर से लगभग लाल सागर तक फैला हुआ है।",
+      "text_markdown": "यह अटलांटिक महासागर से लगभग लाल सागर तक फैला हुआ है।",
+      "tts": {
+        "text": "यह अटलांटिक महासागर से लगभग लाल सागर तक फैला हुआ है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अरब के बीच में बड़े रेगिस्तान हैं, जैसे रब अल-ख़ाली।",
+      "text_markdown": "अरब के बीच में बड़े रेगिस्तान हैं, जैसे रब अल-ख़ाली।",
+      "tts": {
+        "text": "अरब के बीच में बड़े रेगिस्तान हैं, जैसे रब अल ख़ाली।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी अमेरिका में भी गर्म रेगिस्तान हैं, जैसे संयुक्त राज्य अमेरिका के दक्षिण-पश्चिम और उत्तरी मैक्सिको में।",
+      "text_markdown": "उत्तरी अमेरिका में भी गर्म रेगिस्तान हैं, जैसे संयुक्त राज्य अमेरिका के दक्षिण-पश्चिम और उत्तरी मैक्सिको में।",
+      "tts": {
+        "text": "उत्तरी अमेरिका में भी गर्म रेगिस्तान हैं, जैसे संयुक्त राज्य अमेरिका के दक्षिण पश्चिम और उत्तरी मैक्सिको में।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण अमेरिका, दक्षिणी अफ़्रीका, भारत और ऑस्ट्रेलिया के बहुत बड़े हिस्से में छोटे रेगिस्तान भी हैं।",
+      "text_markdown": "दक्षिण अमेरिका, दक्षिणी अफ़्रीका, भारत और ऑस्ट्रेलिया के बहुत बड़े हिस्से में छोटे रेगिस्तान भी हैं।",
+      "tts": {
+        "text": "दक्षिण अमेरिका, दक्षिणी अफ़्रीका, भारत और ऑस्ट्रेलिया के बहुत बड़े हिस्से में छोटे रेगिस्तान भी हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से हर एक रेगिस्तान अपने आप बना है, दूसरों से बहुत दूर।",
+      "text_markdown": "इनमें से हर एक रेगिस्तान अपने आप बना है, दूसरों से बहुत दूर।",
+      "tts": {
+        "text": "इनमें से हर एक रेगिस्तान अपने आप बना है, दूसरों से बहुत दूर।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग-अलग होते हैं।",
+      "text_markdown": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग-अलग होते हैं।",
+      "tts": {
+        "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग अलग होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक रेगिस्तान में जो नागफनी आप देखते हैं, वह दूसरे रेगिस्तान की नागफनी जैसी नहीं होती।",
+      "text_markdown": "एक रेगिस्तान में जो नागफनी आप देखते हैं, वह दूसरे रेगिस्तान की नागफनी जैसी नहीं होती।",
+      "tts": {
+        "text": "एक रेगिस्तान में जो नागफनी आप देखते हैं, वह दूसरे रेगिस्तान की नागफनी जैसी नहीं होती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "text_markdown": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "tts": {
+        "text": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आप गर्म रेगिस्तान में खड़े होते हैं, तो हवा सूखी लगती है।",
+      "text_markdown": "जब आप गर्म रेगिस्तान में खड़े होते हैं, तो हवा सूखी लगती है।",
+      "tts": {
+        "text": "जब आप गर्म रेगिस्तान में खड़े होते हैं, तो हवा सूखी लगती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूरज आपके चेहरे पर तेज़ चमकता है।",
+      "text_markdown": "सूरज आपके चेहरे पर तेज़ चमकता है।",
+      "tts": {
+        "text": "सूरज आपके चेहरे पर तेज़ चमकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़मीन कई जगह चट्टानी है, और कहीं रेतीली।",
+      "text_markdown": "ज़मीन कई जगह चट्टानी है, और कहीं रेतीली।",
+      "tts": {
+        "text": "ज़मीन कई जगह चट्टानी है, और कहीं रेतीली।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप बहुत दूर तक देख सकते हैं।",
+      "text_markdown": "आप बहुत दूर तक देख सकते हैं।",
+      "tts": {
+        "text": "आप बहुत दूर तक देख सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आसमान बहुत बड़ा है।",
+      "text_markdown": "आसमान बहुत बड़ा है।",
+      "tts": {
+        "text": "आसमान बहुत बड़ा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हो सकता है कि पूरे दिन आपको दूसरा कोई इंसान या जानवर न दिखे।",
+      "text_markdown": "हो सकता है कि पूरे दिन आपको दूसरा कोई इंसान या जानवर न दिखे।",
+      "tts": {
+        "text": "हो सकता है कि पूरे दिन आपको दूसरा कोई इंसान या जानवर न दिखे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही है गर्म रेगिस्तान।",
+      "text_markdown": "यही है गर्म रेगिस्तान।",
+      "tts": {
+        "text": "यही है गर्म रेगिस्तान।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "रेगिस्तान कहाँ हैं",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेत, चट्टान और जलते सूरज की एक चौड़ी, सूखी ज़मीन।",
+      "text_markdown": "रेत, चट्टान और जलते सूरज की एक चौड़ी, सूखी ज़मीन।",
+      "tts": {
+        "text": "रेत, चट्टान और जलते सूरज की एक चौड़ी, सूखी ज़मीन।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "मौसम",
+      "text_markdown": "मौसम"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान का मौसम दो चीज़ों से बनता है।",
+      "text_markdown": "गर्म रेगिस्तान का मौसम दो चीज़ों से बनता है।",
+      "tts": {
+        "text": "गर्म रेगिस्तान का मौसम दो चीज़ों से बनता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ सूरज बहुत ज़्यादा है, और बारिश बहुत कम।",
+      "text_markdown": "यहाँ सूरज बहुत ज़्यादा है, और बारिश बहुत कम।",
+      "tts": {
+        "text": "यहाँ सूरज बहुत ज़्यादा है, और बारिश बहुत कम।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ रेगिस्तानों में, साल में सिर्फ़ कुछ ही दिन बारिश होती है।",
+      "text_markdown": "कुछ रेगिस्तानों में, साल में सिर्फ़ कुछ ही दिन बारिश होती है।",
+      "tts": {
+        "text": "कुछ रेगिस्तानों में, साल में सिर्फ़ कुछ ही दिन बारिश होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और कुछ जगहों पर, कई सालों तक बिल्कुल भी बारिश नहीं होती।",
+      "text_markdown": "और कुछ जगहों पर, कई सालों तक बिल्कुल भी बारिश नहीं होती।",
+      "tts": {
+        "text": "और कुछ जगहों पर, कई सालों तक बिल्कुल भी बारिश नहीं होती।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दिन बहुत गर्म होते हैं।",
+      "text_markdown": "दिन बहुत गर्म होते हैं।",
+      "tts": {
+        "text": "दिन बहुत गर्म होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दिन के बीच में, सूरज रेत को इतना गरम कर सकता है कि वह आपके पैर जला दे।",
+      "text_markdown": "दिन के बीच में, सूरज रेत को इतना गरम कर सकता है कि वह आपके पैर जला दे।",
+      "tts": {
+        "text": "दिन के बीच में, सूरज रेत को इतना गरम कर सकता है कि वह आपके पैर जला दे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन रातें बहुत अलग होती हैं।",
+      "text_markdown": "लेकिन रातें बहुत अलग होती हैं।",
+      "tts": {
+        "text": "लेकिन रातें बहुत अलग होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्मी को रोकने के लिए न कोई बादल होते हैं, न कोई पेड़।",
+      "text_markdown": "गर्मी को रोकने के लिए न कोई बादल होते हैं, न कोई पेड़।",
+      "tts": {
+        "text": "गर्मी को रोकने के लिए न कोई बादल होते हैं, न कोई पेड़।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए जैसे ही सूरज ढलता है, गर्मी जल्दी से आसमान में उड़ जाती है।",
+      "text_markdown": "इसलिए जैसे ही सूरज ढलता है, गर्मी जल्दी से आसमान में उड़ जाती है।",
+      "tts": {
+        "text": "इसलिए जैसे ही सूरज ढलता है, गर्मी जल्दी से आसमान में उड़ जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आधी रात तक, यह ठंडी, या बहुत सर्द भी लग सकती है।",
+      "text_markdown": "आधी रात तक, यह ठंडी, या बहुत सर्द भी लग सकती है।",
+      "tts": {
+        "text": "आधी रात तक, यह ठंडी, या बहुत सर्द भी लग सकती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सुबह को, चट्टानें छूने पर ठंडी लगती हैं।",
+      "text_markdown": "सुबह को, चट्टानें छूने पर ठंडी लगती हैं।",
+      "tts": {
+        "text": "सुबह को, चट्टानें छूने पर ठंडी लगती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर सूरज निकलता है, और गर्मी फिर से शुरू हो जाती है।",
+      "text_markdown": "फिर सूरज निकलता है, और गर्मी फिर से शुरू हो जाती है।",
+      "tts": {
+        "text": "फिर सूरज निकलता है, और गर्मी फिर से शुरू हो जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब बारिश आती है, तो अक्सर एक ही बार में आ जाती है।",
+      "text_markdown": "जब बारिश आती है, तो अक्सर एक ही बार में आ जाती है।",
+      "tts": {
+        "text": "जब बारिश आती है, तो अक्सर एक ही बार में आ जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक बड़ा तूफ़ान आता है, और एक घंटे तक पानी बरसता है।",
+      "text_markdown": "एक बड़ा तूफ़ान आता है, और एक घंटे तक पानी बरसता है।",
+      "tts": {
+        "text": "एक बड़ा तूफ़ान आता है, और एक घंटे तक पानी बरसता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखी नदियाँ भर जाती हैं, और पानी रेत के ऊपर बहने लगता है।",
+      "text_markdown": "सूखी नदियाँ भर जाती हैं, और पानी रेत के ऊपर बहने लगता है।",
+      "tts": {
+        "text": "सूखी नदियाँ भर जाती हैं, और पानी रेत के ऊपर बहने लगता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर सूरज वापस आता है, और एक दिन के अंदर पानी फिर से ग़ायब हो जाता है।",
+      "text_markdown": "फिर सूरज वापस आता है, और एक दिन के अंदर पानी फिर से ग़ायब हो जाता है।",
+      "tts": {
+        "text": "फिर सूरज वापस आता है, और एक दिन के अंदर पानी फिर से ग़ायब हो जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के पौधों और जानवरों के लिए, उस पानी की हर बूँद कीमती होती है।",
+      "text_markdown": "रेगिस्तान के पौधों और जानवरों के लिए, उस पानी की हर बूँद कीमती होती है।",
+      "tts": {
+        "text": "रेगिस्तान के पौधों और जानवरों के लिए, उस पानी की हर बूँद कीमती होती है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ज़मीन और पानी",
+      "text_markdown": "ज़मीन और पानी"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान का ज़्यादातर हिस्सा रेत से नहीं बना है।",
+      "text_markdown": "गर्म रेगिस्तान का ज़्यादातर हिस्सा रेत से नहीं बना है।",
+      "tts": {
+        "text": "गर्म रेगिस्तान का ज़्यादातर हिस्सा रेत से नहीं बना है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर हिस्सा चट्टान, बजरी और सख़्त सूखी ज़मीन का होता है।",
+      "text_markdown": "ज़्यादातर हिस्सा चट्टान, बजरी और सख़्त सूखी ज़मीन का होता है।",
+      "tts": {
+        "text": "ज़्यादातर हिस्सा चट्टान, बजरी और सख़्त सूखी ज़मीन का होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऐसी जगहें भी हैं जहाँ रेत के टीलों के बड़े समुद्र हैं।",
+      "text_markdown": "ऐसी जगहें भी हैं जहाँ रेत के टीलों के बड़े समुद्र हैं।",
+      "tts": {
+        "text": "ऐसी जगहें भी हैं जहाँ रेत के टीलों के बड़े समुद्र हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा रेत के टीलों को धीरे-धीरे ज़मीन पर सरकाती रहती है।",
+      "text_markdown": "हवा रेत के टीलों को धीरे-धीरे ज़मीन पर सरकाती रहती है।",
+      "tts": {
+        "text": "हवा रेत के टीलों को धीरे धीरे ज़मीन पर सरकाती रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक रेत का टीला घर से छोटा भी हो सकता है, या किसी ऊँची इमारत से भी ऊँचा।",
+      "text_markdown": "एक रेत का टीला घर से छोटा भी हो सकता है, या किसी ऊँची इमारत से भी ऊँचा।",
+      "tts": {
+        "text": "एक रेत का टीला घर से छोटा भी हो सकता है, या किसी ऊँची इमारत से भी ऊँचा।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर, रेगिस्तान के बीच से पहाड़ उठते हैं।",
+      "text_markdown": "कुछ जगहों पर, रेगिस्तान के बीच से पहाड़ उठते हैं।",
+      "tts": {
+        "text": "कुछ जगहों पर, रेगिस्तान के बीच से पहाड़ उठते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा और रेत कई सालों में चट्टानों को अजीब-अजीब आकार दे देती हैं।",
+      "text_markdown": "हवा और रेत कई सालों में चट्टानों को अजीब-अजीब आकार दे देती हैं।",
+      "tts": {
+        "text": "हवा और रेत कई सालों में चट्टानों को अजीब अजीब आकार दे देती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान में पानी है, सबसे दुर्लभ और सबसे कीमती संसाधन।",
+      "text_markdown": "रेगिस्तान में पानी है, सबसे दुर्लभ और सबसे कीमती संसाधन।",
+      "tts": {
+        "text": "रेगिस्तान में पानी है, सबसे दुर्लभ और सबसे कीमती संसाधन।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर नदियाँ सिर्फ़ तूफ़ान के बाद बहती हैं, और फिर सूख जाती हैं।",
+      "text_markdown": "ज़्यादातर नदियाँ सिर्फ़ तूफ़ान के बाद बहती हैं, और फिर सूख जाती हैं।",
+      "tts": {
+        "text": "ज़्यादातर नदियाँ सिर्फ़ तूफ़ान के बाद बहती हैं, और फिर सूख जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन रेत के बहुत नीचे, पानी चट्टानों में छिपा हो सकता है।",
+      "text_markdown": "लेकिन रेत के बहुत नीचे, पानी चट्टानों में छिपा हो सकता है।",
+      "tts": {
+        "text": "लेकिन रेत के बहुत नीचे, पानी चट्टानों में छिपा हो सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर, यह छुपा हुआ पानी ऊपर आ जाता है और हरियाली का एक छोटा-सा तालाब बना देता है।",
+      "text_markdown": "कुछ जगहों पर, यह छुपा हुआ पानी ऊपर आ जाता है और हरियाली का एक छोटा-सा तालाब बना देता है।",
+      "tts": {
+        "text": "कुछ जगहों पर, यह छुपा हुआ पानी ऊपर आ जाता है और हरियाली का एक छोटा सा तालाब बना देता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इस जगह का नाम है नख़लिस्तान।",
+      "text_markdown": "इस जगह का नाम है नख़लिस्तान।",
+      "tts": {
+        "text": "इस जगह का नाम है नखलिस्तान।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नख़लिस्तान में पेड़ उगते हैं, चिड़ियाँ गाती हैं, और लोग पानी पीने रुकते हैं।",
+      "text_markdown": "नख़लिस्तान में पेड़ उगते हैं, चिड़ियाँ गाती हैं, और लोग पानी पीने रुकते हैं।",
+      "tts": {
+        "text": "नख़लिस्तान में पेड़ उगते हैं, चिड़ियाँ गाती हैं, और लोग पानी पीने रुकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक नख़लिस्तान रेत के विशाल समुद्र के बीच ताड़ के पेड़ों का एक छोटा-सा घेरा हो सकता है।",
+      "text_markdown": "एक नख़लिस्तान रेत के विशाल समुद्र के बीच ताड़ के पेड़ों का एक छोटा-सा घेरा हो सकता है।",
+      "tts": {
+        "text": "एक नख़लिस्तान रेत के विशाल समुद्र के बीच ताड़ के पेड़ों का एक छोटा सा घेरा हो सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर पानी के ये धब्बे न हों, तो कोई भी बड़े रेगिस्तानों को पार नहीं कर सकता।",
+      "text_markdown": "अगर पानी के ये धब्बे न हों, तो कोई भी बड़े रेगिस्तानों को पार नहीं कर सकता।",
+      "tts": {
+        "text": "अगर पानी के ये धब्बे न हों, तो कोई भी बड़े रेगिस्तानों को पार नहीं कर सकता।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पौधे",
+      "text_markdown": "पौधे"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान के पौधे इंतज़ार करने में माहिर हैं।",
+      "text_markdown": "गर्म रेगिस्तान के पौधे इंतज़ार करने में माहिर हैं।",
+      "tts": {
+        "text": "गर्म रेगिस्तान के पौधे इंतज़ार करने में माहिर हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने बिना पानी के लगभग जीना सीख लिया है।",
+      "text_markdown": "उन्होंने बिना पानी के लगभग जीना सीख लिया है।",
+      "tts": {
+        "text": "उन्होंने बिना पानी के लगभग जीना सीख लिया है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से कुछ की लंबी जड़ें होती हैं जो ज़मीन में बहुत नीचे तक पहुँचती हैं।",
+      "text_markdown": "इनमें से कुछ की लंबी जड़ें होती हैं जो ज़मीन में बहुत नीचे तक पहुँचती हैं।",
+      "tts": {
+        "text": "इनमें से कुछ की लंबी जड़ें होती हैं जो ज़मीन में बहुत नीचे तक पहुँचती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरे पौधों की जड़ें चौड़ी और छिछली होती हैं जो सतह के पास फैली होती हैं।",
+      "text_markdown": "दूसरे पौधों की जड़ें चौड़ी और छिछली होती हैं जो सतह के पास फैली होती हैं।",
+      "tts": {
+        "text": "दूसरे पौधों की जड़ें चौड़ी और छिछली होती हैं जो सतह के पास फैली होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारिश के बाद, ये जड़ें पानी की हर बूँद को सूखने से पहले पी लेती हैं।",
+      "text_markdown": "बारिश के बाद, ये जड़ें पानी की हर बूँद को सूखने से पहले पी लेती हैं।",
+      "tts": {
+        "text": "बारिश के बाद, ये जड़ें पानी की हर बूँद को सूखने से पहले पी लेती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के बहुत से पौधे लंबे सूखे समय के लिए अपने अंदर पानी जमा कर लेते हैं।",
+      "text_markdown": "रेगिस्तान के बहुत से पौधे लंबे सूखे समय के लिए अपने अंदर पानी जमा कर लेते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के बहुत से पौधे लंबे सूखे समय के लिए अपने अंदर पानी जमा कर लेते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके मोटे तने और पत्ते महीनों, या कई सालों तक भी पानी रोक सकते हैं।",
+      "text_markdown": "उनके मोटे तने और पत्ते महीनों, या कई सालों तक भी पानी रोक सकते हैं।",
+      "tts": {
+        "text": "उनके मोटे तने और पत्ते महीनों, या कई सालों तक भी पानी रोक सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेरिका के रेगिस्तानों में ऐसे पौधे होते हैं, जिनका नाम है नागफनी।",
+      "text_markdown": "अमेरिका के रेगिस्तानों में ऐसे पौधे होते हैं, जिनका नाम है नागफनी।",
+      "tts": {
+        "text": "अमेरिका के रेगिस्तानों में ऐसे पौधे होते हैं, जिनका नाम है नागफनी।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नागफनी के मोटे हरे तने पानी से भरे होते हैं, और नरम पत्तियों की जगह उसमें तेज़ काँटे होते हैं।",
+      "text_markdown": "नागफनी के मोटे हरे तने पानी से भरे होते हैं, और नरम पत्तियों की जगह उसमें तेज़ काँटे होते हैं।",
+      "tts": {
+        "text": "नागफनी के मोटे हरे तने पानी से भरे होते हैं, और नरम पत्तियों की जगह उसमें तेज़ काँटे होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "काँटे जानवरों को इन पौधों को खाने से रोकते हैं।",
+      "text_markdown": "काँटे जानवरों को इन पौधों को खाने से रोकते हैं।",
+      "tts": {
+        "text": "काँटे जानवरों को इन पौधों को खाने से रोकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "काँटे तेज़ धूप के सामने थोड़ी छाया भी बना देते हैं।",
+      "text_markdown": "काँटे तेज़ धूप के सामने थोड़ी छाया भी बना देते हैं।",
+      "tts": {
+        "text": "काँटे तेज़ धूप के सामने थोड़ी छाया भी बना देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका और एशिया के रेगिस्तानों में, दूसरे मोटे पौधे यही काम करते हैं।",
+      "text_markdown": "अफ़्रीका और एशिया के रेगिस्तानों में, दूसरे मोटे पौधे यही काम करते हैं।",
+      "tts": {
+        "text": "अफ़्रीका और एशिया के रेगिस्तानों में, दूसरे मोटे पौधे यही काम करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के बहुत से पौधे भूरे या हल्के हरे होते हैं।",
+      "text_markdown": "रेगिस्तान के बहुत से पौधे भूरे या हल्के हरे होते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के बहुत से पौधे भूरे या हल्के हरे होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हल्का रंग धूप को वापस लौटा देता है।",
+      "text_markdown": "हल्का रंग धूप को वापस लौटा देता है।",
+      "tts": {
+        "text": "हल्का रंग धूप को वापस लौटा देता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ पौधे सूखे मौसम में अपनी पत्तियाँ गिरा देते हैं।",
+      "text_markdown": "कुछ पौधे सूखे मौसम में अपनी पत्तियाँ गिरा देते हैं।",
+      "tts": {
+        "text": "कुछ पौधे सूखे मौसम में अपनी पत्तियाँ गिरा देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे अगली बारिश तक नंगी भूरी टहनियों की तरह ज़िंदा रहते हैं।",
+      "text_markdown": "वे अगली बारिश तक नंगी भूरी टहनियों की तरह ज़िंदा रहते हैं।",
+      "tts": {
+        "text": "वे अगली बारिश तक नंगी भूरी टहनियों की तरह ज़िंदा रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तेज़ बारिश के बाद, रेगिस्तान एक रात में बदल सकता है।",
+      "text_markdown": "तेज़ बारिश के बाद, रेगिस्तान एक रात में बदल सकता है।",
+      "tts": {
+        "text": "तेज़ बारिश के बाद, रेगिस्तान एक रात में बदल सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "छोटे बीज जो सालों से मिट्टी में इंतज़ार कर रहे थे, फूलों में फूट पड़ते हैं।",
+      "text_markdown": "छोटे बीज जो सालों से मिट्टी में इंतज़ार कर रहे थे, फूलों में फूट पड़ते हैं।",
+      "tts": {
+        "text": "छोटे बीज जो सालों से मिट्टी में इंतज़ार कर रहे थे, फूलों में फूट पड़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ हफ़्तों के लिए, रेगिस्तान के हिस्से लाल, पीले और बैंगनी फूलों से ढक जाते हैं।",
+      "text_markdown": "कुछ हफ़्तों के लिए, रेगिस्तान के हिस्से लाल, पीले और बैंगनी फूलों से ढक जाते हैं।",
+      "tts": {
+        "text": "कुछ हफ़्तों के लिए, रेगिस्तान के हिस्से लाल, पीले और बैंगनी फूलों से ढक जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर फूल मुरझा जाते हैं, बीज गिर जाते हैं, और रेगिस्तान फिर से इंतज़ार करता है।",
+      "text_markdown": "फिर फूल मुरझा जाते हैं, बीज गिर जाते हैं, और रेगिस्तान फिर से इंतज़ार करता है।",
+      "tts": {
+        "text": "फिर फूल मुरझा जाते हैं, बीज गिर जाते हैं, और रेगिस्तान फिर से इंतज़ार करता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "जानवर",
+      "text_markdown": "जानवर"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान के जानवर ज़िंदा रहने के लिए काम में लाते हैं कई चतुर उपाय।",
+      "text_markdown": "गर्म रेगिस्तान के जानवर ज़िंदा रहने के लिए काम में लाते हैं कई चतुर उपाय।",
+      "tts": {
+        "text": "गर्म रेगिस्तान के जानवर ज़िंदा रहने के लिए काम में लाते हैं कई चतुर उपाय।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनमें से ज़्यादातर दिन के गर्म बीच के समय में सो जाते हैं।",
+      "text_markdown": "उनमें से ज़्यादातर दिन के गर्म बीच के समय में सो जाते हैं।",
+      "tts": {
+        "text": "उनमें से ज़्यादातर दिन के गर्म बीच के समय में सो जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे ठंडी सुबह, शाम और रात को बाहर निकलते हैं।",
+      "text_markdown": "वे ठंडी सुबह, शाम और रात को बाहर निकलते हैं।",
+      "tts": {
+        "text": "वे ठंडी सुबह, शाम और रात को बाहर निकलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के बहुत से जानवर रेत में या चट्टानों के नीचे बिल खोदते हैं।",
+      "text_markdown": "रेगिस्तान के बहुत से जानवर रेत में या चट्टानों के नीचे बिल खोदते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के बहुत से जानवर रेत में या चट्टानों के नीचे बिल खोदते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब बाहर की हवा जल रही होती है, तब बिल ठंडा रहता है।",
+      "text_markdown": "जब बाहर की हवा जल रही होती है, तब बिल ठंडा रहता है।",
+      "tts": {
+        "text": "जब बाहर की हवा जल रही होती है, तब बिल ठंडा रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक छोटा चूहा अपने बिल में पूरा दिन सो सकता है, गर्मी के एहसास से बिल्कुल बेखबर।",
+      "text_markdown": "एक छोटा चूहा अपने बिल में पूरा दिन सो सकता है, गर्मी के एहसास से बिल्कुल बेखबर।",
+      "tts": {
+        "text": "एक छोटा चूहा अपने बिल में पूरा दिन सो सकता है, गर्मी के एहसास से बिल्कुल बेखबर।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान में छिपकलियाँ बहुत आम हैं।",
+      "text_markdown": "गर्म रेगिस्तान में छिपकलियाँ बहुत आम हैं।",
+      "tts": {
+        "text": "गर्म रेगिस्तान में छिपकलियाँ बहुत आम हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे सुबह की धूप में गरम पत्थरों पर बैठती हैं।",
+      "text_markdown": "वे सुबह की धूप में गरम पत्थरों पर बैठती हैं।",
+      "tts": {
+        "text": "वे सुबह की धूप में गरम पत्थरों पर बैठती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब दिन बहुत गरम हो जाता है, तो वे छाया में या किसी चट्टान के नीचे चली जाती हैं।",
+      "text_markdown": "जब दिन बहुत गरम हो जाता है, तो वे छाया में या किसी चट्टान के नीचे चली जाती हैं।",
+      "tts": {
+        "text": "जब दिन बहुत गरम हो जाता है, तो वे छाया में या किसी चट्टान के नीचे चली जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साँप भी आम हैं।",
+      "text_markdown": "साँप भी आम हैं।",
+      "tts": {
+        "text": "साँप भी आम हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे रेत पर सरकते हुए छोटे जानवरों को खाने के लिए ढूँढते हैं।",
+      "text_markdown": "वे रेत पर सरकते हुए छोटे जानवरों को खाने के लिए ढूँढते हैं।",
+      "tts": {
+        "text": "वे रेत पर सरकते हुए छोटे जानवरों को खाने के लिए ढूँढते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ साँपों के पास तपती रेत के पार बग़ल में चलने का एक ख़ास तरीक़ा होता है ताकि उनका शरीर ज़मीन को न छुए।",
+      "text_markdown": "कुछ साँपों के पास तपती रेत के पार बग़ल में चलने का एक ख़ास तरीक़ा होता है ताकि उनका शरीर ज़मीन को न छुए।",
+      "tts": {
+        "text": "कुछ साँपों के पास तपती रेत के पार बग़ल में चलने का एक ख़ास तरीक़ा होता है ताकि उनका शरीर ज़मीन को न छुए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बिच्छू अपनी पूँछ ऊँची उठाकर रात को शिकार करते हैं।",
+      "text_markdown": "बिच्छू अपनी पूँछ ऊँची उठाकर रात को शिकार करते हैं।",
+      "tts": {
+        "text": "बिच्छू अपनी पूँछ ऊँची उठाकर रात को शिकार करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मकड़ियाँ और भृंग भी रेगिस्तान के हर हिस्से में रहते हैं।",
+      "text_markdown": "मकड़ियाँ और भृंग भी रेगिस्तान के हर हिस्से में रहते हैं।",
+      "tts": {
+        "text": "मकड़ियाँ और भृंग भी रेगिस्तान के हर हिस्से में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के बहुत से भृंग बिना पानी पिए भी ज़िंदा रह सकते हैं।",
+      "text_markdown": "रेगिस्तान के बहुत से भृंग बिना पानी पिए भी ज़िंदा रह सकते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के बहुत से भृंग बिना पानी पिए भी ज़िंदा रह सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जो खाना खाते हैं, उसी से अपना सारा पानी पा लेते हैं।",
+      "text_markdown": "वे जो खाना खाते हैं, उसी से अपना सारा पानी पा लेते हैं।",
+      "tts": {
+        "text": "वे जो खाना खाते हैं, उसी से अपना सारा पानी पा लेते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीकी और अरब रेगिस्तानों का सबसे बड़ा जानवर ऊँट है।",
+      "text_markdown": "अफ़्रीकी और अरब रेगिस्तानों का सबसे बड़ा जानवर ऊँट है।",
+      "tts": {
+        "text": "अफ़्रीकी और अरब रेगिस्तानों का सबसे बड़ा जानवर ऊँट है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक ऊँट एक ही बार में बहुत सारा पानी पी सकता है, और फिर कई दिनों तक बिना पानी पिए चल सकता है।",
+      "text_markdown": "एक ऊँट एक ही बार में बहुत सारा पानी पी सकता है, और फिर कई दिनों तक बिना पानी पिए चल सकता है।",
+      "tts": {
+        "text": "एक ऊँट एक ही बार में बहुत सारा पानी पी सकता है, और फिर कई दिनों तक बिना पानी पिए चल सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उसके चौड़े और नरम पैर उसे रेत में धँसने से रोकते हैं।",
+      "text_markdown": "उसके चौड़े और नरम पैर उसे रेत में धँसने से रोकते हैं।",
+      "tts": {
+        "text": "उसके चौड़े और नरम पैर उसे रेत में धँसने से रोकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उत्तरी अमेरिका के रेगिस्तानों में, लोमड़ियाँ और छोटी जंगली बिल्लियाँ रात को शिकार करती हैं।",
+      "text_markdown": "उत्तरी अमेरिका के रेगिस्तानों में, लोमड़ियाँ और छोटी जंगली बिल्लियाँ रात को शिकार करती हैं।",
+      "tts": {
+        "text": "उत्तरी अमेरिका के रेगिस्तानों में, लोमड़ियाँ और छोटी जंगली बिल्लियाँ रात को शिकार करती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में, बहुत बड़े कानों वाली छोटी लोमड़ियाँ रेत में रहती हैं।",
+      "text_markdown": "अफ़्रीका में, बहुत बड़े कानों वाली छोटी लोमड़ियाँ रेत में रहती हैं।",
+      "tts": {
+        "text": "अफ़्रीका में, बहुत बड़े कानों वाली छोटी लोमड़ियाँ रेत में रहती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बड़े कान उन्हें ज़मीन के नीचे चलते छोटे जानवरों की आवाज़ सुनने में मदद करते हैं।",
+      "text_markdown": "बड़े कान उन्हें ज़मीन के नीचे चलते छोटे जानवरों की आवाज़ सुनने में मदद करते हैं।",
+      "tts": {
+        "text": "बड़े कान उन्हें ज़मीन के नीचे चलते छोटे जानवरों की आवाज़ सुनने में मदद करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बड़े कान उन्हें ठंडी रात में गर्मी छोड़ने में भी मदद करते हैं।",
+      "text_markdown": "बड़े कान उन्हें ठंडी रात में गर्मी छोड़ने में भी मदद करते हैं।",
+      "tts": {
+        "text": "बड़े कान उन्हें ठंडी रात में गर्मी छोड़ने में भी मदद करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊपर ऊँचाई पर, गिद्ध और गरुड़ रेगिस्तान की गरम हवा पर तैरते हैं।",
+      "text_markdown": "ऊपर ऊँचाई पर, गिद्ध और गरुड़ रेगिस्तान की गरम हवा पर तैरते हैं।",
+      "tts": {
+        "text": "ऊपर ऊँचाई पर, गिद्ध और गरुड़ रेगिस्तान की गरम हवा पर तैरते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे ज़मीन पर किसी भी छोटी हलचल की ताक में रहते हैं।",
+      "text_markdown": "वे ज़मीन पर किसी भी छोटी हलचल की ताक में रहते हैं।",
+      "tts": {
+        "text": "वे ज़मीन पर किसी भी छोटी हलचल की ताक में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ का हर जानवर ठंड का इंतज़ार करना जानता है, छाया ढूँढना जानता है, और पानी की हर घूँट को कैसे लंबे समय तक चलाना है, यह जानता है।",
+      "text_markdown": "यहाँ का हर जानवर ठंड का इंतज़ार करना जानता है, छाया ढूँढना जानता है, और पानी की हर घूँट को कैसे लंबे समय तक चलाना है, यह जानता है।",
+      "tts": {
+        "text": "यहाँ का हर जानवर ठंड का इंतज़ार करना जानता है, छाया ढूँढना जानता है, और पानी की हर घूँट को कैसे लंबे समय तक चलाना है, यह जानता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लोग",
+      "text_markdown": "लोग"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग हज़ारों सालों से गर्म रेगिस्तान में रहते आ रहे हैं।",
+      "text_markdown": "लोग हज़ारों सालों से गर्म रेगिस्तान में रहते आ रहे हैं।",
+      "tts": {
+        "text": "लोग हज़ारों सालों से गर्म रेगिस्तान में रहते आ रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने सूरज और रेत की ज़मीन पर जीने के अपने तरीक़े खोज लिए हैं।",
+      "text_markdown": "उन्होंने सूरज और रेत की ज़मीन पर जीने के अपने तरीक़े खोज लिए हैं।",
+      "tts": {
+        "text": "उन्होंने सूरज और रेत की ज़मीन पर जीने के अपने तरीक़े खोज लिए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बहुत से रेगिस्तानों में, परिवार अपने झुंडों के साथ एक जगह से दूसरी जगह जाते रहते हैं।",
+      "text_markdown": "बहुत से रेगिस्तानों में, परिवार अपने झुंडों के साथ एक जगह से दूसरी जगह जाते रहते हैं।",
+      "tts": {
+        "text": "बहुत से रेगिस्तानों में, परिवार अपने झुंडों के साथ एक जगह से दूसरी जगह जाते रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सहारा और अरब के रेगिस्तानों में, लोग ऊँटों, बकरियों और भेड़ों के झुंड रखते हैं।",
+      "text_markdown": "सहारा और अरब के रेगिस्तानों में, लोग ऊँटों, बकरियों और भेड़ों के झुंड रखते हैं।",
+      "tts": {
+        "text": "सहारा और अरब के रेगिस्तानों में, लोग ऊँटों, बकरियों और भेड़ों के झुंड रखते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये जानवर पानी पीने के बीच बहुत देर तक चल सकते हैं।",
+      "text_markdown": "ये जानवर पानी पीने के बीच बहुत देर तक चल सकते हैं।",
+      "tts": {
+        "text": "ये जानवर पानी पीने के बीच बहुत देर तक चल सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग जानवरों के पीछे चलते हैं, और जानवर उन्हें खाने तक ले जाते हैं।",
+      "text_markdown": "लोग जानवरों के पीछे चलते हैं, और जानवर उन्हें खाने तक ले जाते हैं।",
+      "tts": {
+        "text": "लोग जानवरों के पीछे चलते हैं, और जानवर उन्हें खाने तक ले जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके तंबू कपड़े के बने होते हैं, जो उनके जानवरों के बालों से बुना जाता है।",
+      "text_markdown": "उनके तंबू कपड़े के बने होते हैं, जो उनके जानवरों के बालों से बुना जाता है।",
+      "tts": {
+        "text": "उनके तंबू कपड़े के बने होते हैं, जो उनके जानवरों के बालों से बुना जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक तंबू एक घंटे में लगाया जा सकता है और एक घंटे में उतारा जा सकता है।",
+      "text_markdown": "एक तंबू एक घंटे में लगाया जा सकता है और एक घंटे में उतारा जा सकता है।",
+      "tts": {
+        "text": "एक तंबू एक घंटे में लगाया जा सकता है और एक घंटे में उतारा जा सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह जलते सूरज को बाहर रखता है, और ठंडी रात की हवा को अंदर आने देता है।",
+      "text_markdown": "यह जलते सूरज को बाहर रखता है, और ठंडी रात की हवा को अंदर आने देता है।",
+      "tts": {
+        "text": "यह जलते सूरज को बाहर रखता है, और ठंडी रात की हवा को अंदर आने देता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के लोग ढीले, लंबे कपड़े पहनते हैं।",
+      "text_markdown": "रेगिस्तान के लोग ढीले, लंबे कपड़े पहनते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के लोग ढीले, लंबे कपड़े पहनते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लंबी बाँहें और ढका हुआ सिर शरीर को ठंडा रखते हैं और सूरज से बचाते हैं।",
+      "text_markdown": "लंबी बाँहें और ढका हुआ सिर शरीर को ठंडा रखते हैं और सूरज से बचाते हैं।",
+      "tts": {
+        "text": "लंबी बाँहें और ढका हुआ सिर शरीर को ठंडा रखते हैं और सूरज से बचाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कपड़े की चमकीली डिज़ाइन से कोई दोस्त आपको दूर से ही देख लेता है।",
+      "text_markdown": "कपड़े की चमकीली डिज़ाइन से कोई दोस्त आपको दूर से ही देख लेता है।",
+      "tts": {
+        "text": "कपड़े की चमकीली डिज़ाइन से कोई दोस्त आपको दूर से ही देख लेता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ रेगिस्तानी लोग नख़लिस्तान के चारों ओर बसे शहरों में रहते हैं।",
+      "text_markdown": "कुछ रेगिस्तानी लोग नख़लिस्तान के चारों ओर बसे शहरों में रहते हैं।",
+      "tts": {
+        "text": "कुछ रेगिस्तानी लोग नख़लिस्तान के चारों ओर बसे शहरों में रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे पानी के चारों ओर के हरे घेरे में खजूर के पेड़, फल और अनाज उगाते हैं।",
+      "text_markdown": "वे पानी के चारों ओर के हरे घेरे में खजूर के पेड़, फल और अनाज उगाते हैं।",
+      "tts": {
+        "text": "वे पानी के चारों ओर के हरे घेरे में खजूर के पेड़, फल और अनाज उगाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्होंने रेत के नीचे छुपे पानी को पाने के लिए गहरे कुएँ खोदना सीख लिया है।",
+      "text_markdown": "उन्होंने रेत के नीचे छुपे पानी को पाने के लिए गहरे कुएँ खोदना सीख लिया है।",
+      "tts": {
+        "text": "उन्होंने रेत के नीचे छुपे पानी को पाने के लिए गहरे कुएँ खोदना सीख लिया है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूर से आए यात्री नख़लिस्तान में आराम करने और अपने पानी के थैले भरने आते हैं।",
+      "text_markdown": "दूर से आए यात्री नख़लिस्तान में आराम करने और अपने पानी के थैले भरने आते हैं।",
+      "tts": {
+        "text": "दूर से आए यात्री नख़लिस्तान में आराम करने और अपने पानी के थैले भरने आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान के लोग रात के आसमान का हर तारा जानते हैं।",
+      "text_markdown": "रेगिस्तान के लोग रात के आसमान का हर तारा जानते हैं।",
+      "tts": {
+        "text": "रेगिस्तान के लोग रात के आसमान का हर तारा जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे चलने वाली हर हवा के नाम जानते हैं।",
+      "text_markdown": "वे चलने वाली हर हवा के नाम जानते हैं।",
+      "tts": {
+        "text": "वे चलने वाली हर हवा के नाम जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेत में हर जानवर के पैरों के निशान पढ़ने में वे माहिर।",
+      "text_markdown": "रेत में हर जानवर के पैरों के निशान पढ़ने में वे माहिर।",
+      "tts": {
+        "text": "रेत में हर जानवर के पैरों के निशान पढ़ने में वे माहिर।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह ज्ञान साल-दर-साल माता-पिता से बच्चों को दिया जाता है।",
+      "text_markdown": "यह ज्ञान साल-दर-साल माता-पिता से बच्चों को दिया जाता है।",
+      "tts": {
+        "text": "यह ज्ञान साल दर साल माता पिता से बच्चों को दिया जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर बड़े रेगिस्तान में, इस तरह की ज़िंदगी की अपनी भाषाएँ, गीत और कहानियाँ होती हैं।",
+      "text_markdown": "हर बड़े रेगिस्तान में, इस तरह की ज़िंदगी की अपनी भाषाएँ, गीत और कहानियाँ होती हैं।",
+      "tts": {
+        "text": "हर बड़े रेगिस्तान में, इस तरह की ज़िंदगी की अपनी भाषाएँ, गीत और कहानियाँ होती हैं।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "आज का रेगिस्तान",
+      "text_markdown": "आज का रेगिस्तान"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गर्म रेगिस्तान एक सुंदर और कठिन जैव क्षेत्र है।",
+      "text_markdown": "गर्म रेगिस्तान एक सुंदर और कठिन जैव क्षेत्र है।",
+      "tts": {
+        "text": "गर्म रेगिस्तान एक सुंदर और कठिन जैव क्षेत्र है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह पृथ्वी की ज़मीन के एक बहुत बड़े हिस्से को ढकने वाला क्षेत्र है।",
+      "text_markdown": "यह पृथ्वी की ज़मीन के एक बहुत बड़े हिस्से को ढकने वाला क्षेत्र है।",
+      "tts": {
+        "text": "यह पृथ्वी की ज़मीन के एक बहुत बड़े हिस्से को ढकने वाला क्षेत्र है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेगिस्तान का तेज़ सूरज भी हमारी साफ़ ऊर्जा के सबसे बड़े स्रोतों में से एक है।",
+      "text_markdown": "रेगिस्तान का तेज़ सूरज भी हमारी साफ़ ऊर्जा के सबसे बड़े स्रोतों में से एक है।",
+      "tts": {
+        "text": "रेगिस्तान का तेज़ सूरज भी हमारी साफ़ ऊर्जा के सबसे बड़े स्रोतों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बहुत से रेगिस्तानों में सूरज पकड़ने वाले पैनलों के बड़े मैदान बनाए जा रहे हैं।",
+      "text_markdown": "बहुत से रेगिस्तानों में सूरज पकड़ने वाले पैनलों के बड़े मैदान बनाए जा रहे हैं।",
+      "tts": {
+        "text": "बहुत से रेगिस्तानों में सूरज पकड़ने वाले पैनलों के बड़े मैदान बनाए जा रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे रेगिस्तान के सूरज को दूर के शहरों के लिए बिजली में बदल देते हैं।",
+      "text_markdown": "वे रेगिस्तान के सूरज को दूर के शहरों के लिए बिजली में बदल देते हैं।",
+      "tts": {
+        "text": "वे रेगिस्तान के सूरज को दूर के शहरों के लिए बिजली में बदल देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन कुछ जगहों पर रेगिस्तान मुसीबत में है।",
+      "text_markdown": "लेकिन कुछ जगहों पर रेगिस्तान मुसीबत में है।",
+      "tts": {
+        "text": "लेकिन कुछ जगहों पर रेगिस्तान मुसीबत में है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ इलाक़ों में, रेगिस्तान बढ़ रहा है, क्योंकि लोगों ने उसके किनारों का पानी और घास ख़त्म कर दी है।",
+      "text_markdown": "कुछ इलाक़ों में, रेगिस्तान बढ़ रहा है, क्योंकि लोगों ने उसके किनारों का पानी और घास ख़त्म कर दी है।",
+      "tts": {
+        "text": "कुछ इलाक़ों में, रेगिस्तान बढ़ रहा है, क्योंकि लोगों ने उसके किनारों का पानी और घास ख़त्म कर दी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास सूख जाती है, पेड़ चले जाते हैं, और रेत अंदर आ जाती है।",
+      "text_markdown": "घास सूख जाती है, पेड़ चले जाते हैं, और रेत अंदर आ जाती है।",
+      "tts": {
+        "text": "घास सूख जाती है, पेड़ चले जाते हैं, और रेत अंदर आ जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी जगहों पर, रेगिस्तान के किनारे के शहर ज़मीन के नीचे छिपे पानी का बहुत ज़्यादा इस्तेमाल कर रहे हैं।",
+      "text_markdown": "दूसरी जगहों पर, रेगिस्तान के किनारे के शहर ज़मीन के नीचे छिपे पानी का बहुत ज़्यादा इस्तेमाल कर रहे हैं।",
+      "tts": {
+        "text": "दूसरी जगहों पर, रेगिस्तान के किनारे के शहर ज़मीन के नीचे छिपे पानी का बहुत ज़्यादा इस्तेमाल कर रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब गहरा पानी ख़त्म हो जाता है, तो नख़लिस्तान भी सूख जाते हैं।",
+      "text_markdown": "जब गहरा पानी ख़त्म हो जाता है, तो नख़लिस्तान भी सूख जाते हैं।",
+      "tts": {
+        "text": "जब गहरा पानी ख़त्म हो जाता है, तो नख़लिस्तान भी सूख जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया भर में बहुत से समूह रेगिस्तानों की देखभाल के लिए काम कर रहे हैं।",
+      "text_markdown": "दुनिया भर में बहुत से समूह रेगिस्तानों की देखभाल के लिए काम कर रहे हैं।",
+      "tts": {
+        "text": "दुनिया भर में बहुत से समूह रेगिस्तानों की देखभाल के लिए काम कर रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बढ़ती रेत को रोकने का उनका तरीका है पेड़ों और घास की कतारें लगाकर उसे थामना।",
+      "text_markdown": "बढ़ती रेत को रोकने का उनका तरीका है पेड़ों और घास की कतारें लगाकर उसे थामना।",
+      "tts": {
+        "text": "बढ़ती रेत को रोकने का उनका तरीका है पेड़ों और घास की कतारें लगाकर उसे थामना।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे रेगिस्तान में रहने वाले लोगों को पानी का समझदारी से इस्तेमाल करने में मदद करते हैं।",
+      "text_markdown": "वे रेगिस्तान में रहने वाले लोगों को पानी का समझदारी से इस्तेमाल करने में मदद करते हैं।",
+      "tts": {
+        "text": "वे रेगिस्तान में रहने वाले लोगों को पानी का समझदारी से इस्तेमाल करने में मदद करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे रेगिस्तानों का अध्ययन करते हैं ताकि हम उन्हें बेहतर तरीक़े से समझ सकें।",
+      "text_markdown": "वे रेगिस्तानों का अध्ययन करते हैं ताकि हम उन्हें बेहतर तरीक़े से समझ सकें।",
+      "tts": {
+        "text": "वे रेगिस्तानों का अध्ययन करते हैं ताकि हम उन्हें बेहतर तरीक़े से समझ सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक स्वस्थ रेगिस्तान ऐसी ज़िंदगी से भरा होता है जिसकी आप उम्मीद भी नहीं करेंगे।",
+      "text_markdown": "एक स्वस्थ रेगिस्तान ऐसी ज़िंदगी से भरा होता है जिसकी आप उम्मीद भी नहीं करेंगे।",
+      "tts": {
+        "text": "एक स्वस्थ रेगिस्तान ऐसी ज़िंदगी से भरा होता है जिसकी आप उम्मीद भी नहीं करेंगे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "आज का रेगिस्तान",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह हमारी देखभाल के योग्य है।",
+      "text_markdown": "यह हमारी देखभाल के योग्य है।",
+      "tts": {
+        "text": "यह हमारी देखभाल के योग्य है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "समापन",
+      "text_markdown": "समापन"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही है गर्म रेगिस्तान।",
+      "text_markdown": "यही है गर्म रेगिस्तान।",
+      "tts": {
+        "text": "यही है गर्म रेगिस्तान।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेत, चट्टान और धैर्यवान जीवन की एक सूखी, धूप वाली दुनिया।",
+      "text_markdown": "रेत, चट्टान और धैर्यवान जीवन की एक सूखी, धूप वाली दुनिया।",
+      "tts": {
+        "text": "रेत, चट्टान और धैर्यवान जीवन की एक सूखी, धूप वाली दुनिया।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप कभी किसी रेगिस्तान में खड़े हों, तो एक मिनट के लिए शांत हो जाइए।",
+      "text_markdown": "अगर आप कभी किसी रेगिस्तान में खड़े हों, तो एक मिनट के लिए शांत हो जाइए।",
+      "tts": {
+        "text": "अगर आप कभी किसी रेगिस्तान में खड़े हों, तो एक मिनट के लिए शांत हो जाइए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेत के टीलों के पार बहती हवा को सुनिए।",
+      "text_markdown": "रेत के टीलों के पार बहती हवा को सुनिए।",
+      "tts": {
+        "text": "रेत के टीलों के पार बहती हवा को सुनिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूरज की गर्मी और छाया की ठंडक महसूस कीजिए।",
+      "text_markdown": "सूरज की गर्मी और छाया की ठंडक महसूस कीजिए।",
+      "tts": {
+        "text": "सूरज की गर्मी और छाया की ठंडक महसूस कीजिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप अपने चारों ओर जैव क्षेत्र की धड़कन सुनेंगे।",
+      "text_markdown": "आप अपने चारों ओर जैव क्षेत्र की धड़कन सुनेंगे।",
+      "tts": {
+        "text": "आप अपने चारों ओर जैव क्षेत्र की धड़कन सुनेंगे।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

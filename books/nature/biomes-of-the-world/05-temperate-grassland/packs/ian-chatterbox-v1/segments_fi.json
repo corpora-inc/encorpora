@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Lauhkea ruohotasanko",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lauhkea ruohotasanko",
+      "text_markdown": "Lauhkea ruohotasanko"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Missä lauhkeat ruohotasangot kasvavat",
+      "text_markdown": "Missä lauhkeat ruohotasangot kasvavat"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tervetuloa lauhkealle ruohotasangolle.",
+      "text_markdown": "Tervetuloa lauhkealle ruohotasangolle.",
+      "tts": {
+        "text": "Tervetuloa lauhkealle ruohotasangolle.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on yksi maailman suurista biomeista.",
+      "text_markdown": "Tämä on yksi maailman suurista biomeista.",
+      "tts": {
+        "text": "Tämä on yksi maailman suurista biomeista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomi on Maan osa, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "text_markdown": "Biomi on Maan osa, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "tts": {
+        "text": "Biomi on Maan osa, jolla on oma säänsä, kasvinsa ja eläimensä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkea ruohotasanko on laaja ruohomaa, jossa on hyvin vähän puita.",
+      "text_markdown": "Lauhkea ruohotasanko on laaja ruohomaa, jossa on hyvin vähän puita.",
+      "tts": {
+        "text": "Lauhkea ruohotasanko on laaja ruohomaa, jossa on hyvin vähän puita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se sijaitsee maailman keskiosissa, kylmän pohjoisen ja lämpimien tropiikkien välissä.",
+      "text_markdown": "Se sijaitsee maailman keskiosissa, kylmän pohjoisen ja lämpimien tropiikkien välissä.",
+      "tts": {
+        "text": "Se sijaitsee maailman keskiosissa, kylmän pohjoisen ja lämpimien tropiikkien välissä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisin kuin trooppisella savannilla, tällä maalla on kylmät talvet ja lämpimät kesät.",
+      "text_markdown": "Toisin kuin trooppisella savannilla, tällä maalla on kylmät talvet ja lämpimät kesät.",
+      "tts": {
+        "text": "Toisin kuin trooppisella savannilla, tällä maalla on kylmät talvet ja lämpimät kesät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maailman suurimmat lauhkeat ruohotasangot ovat Pohjois Amerikassa ja Euraasiassa.",
+      "text_markdown": "Maailman suurimmat lauhkeat ruohotasangot ovat Pohjois Amerikassa ja Euraasiassa.",
+      "tts": {
+        "text": "Maailman suurimmat lauhkeat ruohotasangot ovat Pohjois Amerikassa ja Euraasiassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois Amerikassa suuria keskitasankoja kutsutaan preerioiksi.",
+      "text_markdown": "Pohjois Amerikassa suuria keskitasankoja kutsutaan preerioiksi.",
+      "tts": {
+        "text": "Pohjois Amerikassa suuria keskitasankoja kutsutaan preerioiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Venäjällä, Ukrainassa, Kazakstanissa ja Mongoliassa niitä kutsutaan stepeiksi.",
+      "text_markdown": "Venäjällä, Ukrainassa, Kazakstanissa ja Mongoliassa niitä kutsutaan stepeiksi.",
+      "tts": {
+        "text": "Venäjällä, Ukrainassa, Kazakstanissa ja Mongoliassa niitä kutsutaan stepeiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Argentiinassa ja Uruguayssa niitä kutsutaan pampoiksi.",
+      "text_markdown": "Argentiinassa ja Uruguayssa niitä kutsutaan pampoiksi.",
+      "tts": {
+        "text": "Argentiinassa ja Uruguayssa niitä kutsutaan pampoiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pienempiä lauhkeita ruohotasankoja on eteläisessä Afrikassa ja osissa Australiaa.",
+      "text_markdown": "Pienempiä lauhkeita ruohotasankoja on eteläisessä Afrikassa ja osissa Australiaa.",
+      "tts": {
+        "text": "Pienempiä lauhkeita ruohotasankoja on eteläisessä Afrikassa ja osissa Australiaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen näistä ruohotasangoista on kasvanut omillaan.",
+      "text_markdown": "Jokainen näistä ruohotasangoista on kasvanut omillaan.",
+      "tts": {
+        "text": "Jokainen näistä ruohotasangoista on kasvanut omillaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+      "text_markdown": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+      "tts": {
+        "text": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta kaikki jakavat saman kaavan.",
+      "text_markdown": "Mutta kaikki jakavat saman kaavan.",
+      "tts": {
+        "text": "Mutta kaikki jakavat saman kaavan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruohomeri, suuri avoin taivas, voimakkaat tuulet ja vain muutamia puita jokien varsilla.",
+      "text_markdown": "Ruohomeri, suuri avoin taivas, voimakkaat tuulet ja vain muutamia puita jokien varsilla.",
+      "tts": {
+        "text": "Ruohomeri, suuri avoin taivas, voimakkaat tuulet ja vain muutamia puita jokien varsilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun seisot lauhkealla ruohotasangolla, tuuli puhaltaa lähes aina.",
+      "text_markdown": "Kun seisot lauhkealla ruohotasangolla, tuuli puhaltaa lähes aina.",
+      "tts": {
+        "text": "Kun seisot lauhkealla ruohotasangolla, tuuli puhaltaa lähes aina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoho liikkuu kuin meren pinta.",
+      "text_markdown": "Ruoho liikkuu kuin meren pinta.",
+      "tts": {
+        "text": "Ruoho liikkuu kuin meren pinta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Näet kilometrien päähän joka suuntaan.",
+      "text_markdown": "Näet kilometrien päähän joka suuntaan.",
+      "tts": {
+        "text": "Näet kilometrien päähän joka suuntaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taivas tuntuu kaksi kertaa suuremmalta kuin missään metsässä.",
+      "text_markdown": "Taivas tuntuu kaksi kertaa suuremmalta kuin missään metsässä.",
+      "tts": {
+        "text": "Taivas tuntuu kaksi kertaa suuremmalta kuin missään metsässä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesällä ruoho on pitkää ja vihreää.",
+      "text_markdown": "Kesällä ruoho on pitkää ja vihreää.",
+      "tts": {
+        "text": "Kesällä ruoho on pitkää ja vihreää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Syksyllä se muuttuu kullanruskeaksi.",
+      "text_markdown": "Syksyllä se muuttuu kullanruskeaksi.",
+      "tts": {
+        "text": "Syksyllä se muuttuu kullanruskeaksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvella se on ruskeaa ja jäykkää lumen alla.",
+      "text_markdown": "Talvella se on ruskeaa ja jäykkää lumen alla.",
+      "tts": {
+        "text": "Talvella se on ruskeaa ja jäykkää lumen alla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keväällä se kasvaa takaisin tuoreena ja kirkkaana.",
+      "text_markdown": "Keväällä se kasvaa takaisin tuoreena ja kirkkaana.",
+      "tts": {
+        "text": "Keväällä se kasvaa takaisin tuoreena ja kirkkaana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sellainen on lauhkea ruohotasanko.",
+      "text_markdown": "Sellainen on lauhkea ruohotasanko.",
+      "tts": {
+        "text": "Sellainen on lauhkea ruohotasanko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Missä lauhkeat ruohotasangot kasvavat",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laaja, tuulinen ruohon, taivaan ja vaihtuvien vuodenaikojen maailma.",
+      "text_markdown": "Laaja, tuulinen ruohon, taivaan ja vaihtuvien vuodenaikojen maailma.",
+      "tts": {
+        "text": "Laaja, tuulinen ruohon, taivaan ja vaihtuvien vuodenaikojen maailma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Sää",
+      "text_markdown": "Sää"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkean ruohotasangon säätä muovaa avoin taivas.",
+      "text_markdown": "Lauhkean ruohotasangon säätä muovaa avoin taivas.",
+      "tts": {
+        "text": "Lauhkean ruohotasangon säätä muovaa avoin taivas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puita on hyvin vähän ja kukkuloita vain harvoja hidastamassa tuulta.",
+      "text_markdown": "Puita on hyvin vähän ja kukkuloita vain harvoja hidastamassa tuulta.",
+      "tts": {
+        "text": "Puita on hyvin vähän ja kukkuloita vain harvoja hidastamassa tuulta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuodenaikoja on neljä, ja jokainen niistä on voimakas.",
+      "text_markdown": "Vuodenaikoja on neljä, ja jokainen niistä on voimakas.",
+      "tts": {
+        "text": "Vuodenaikoja on neljä, ja jokainen niistä on voimakas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesät ovat kuumia ja kirkkaita.",
+      "text_markdown": "Kesät ovat kuumia ja kirkkaita.",
+      "tts": {
+        "text": "Kesät ovat kuumia ja kirkkaita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurinko paahtaa avoimelle ruoholle, ja päivät ovat pitkiä.",
+      "text_markdown": "Aurinko paahtaa avoimelle ruoholle, ja päivät ovat pitkiä.",
+      "tts": {
+        "text": "Aurinko paahtaa avoimelle ruoholle, ja päivät ovat pitkiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yhden iltapäivän aikana valtava myrsky voi vyöryä horisontista.",
+      "text_markdown": "Yhden iltapäivän aikana valtava myrsky voi vyöryä horisontista.",
+      "tts": {
+        "text": "Yhden iltapäivän aikana valtava myrsky voi vyöryä horisontista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Salama välähtää kaukana, ja raskas sade lankeaa kerralla.",
+      "text_markdown": "Salama välähtää kaukana, ja raskas sade lankeaa kerralla.",
+      "tts": {
+        "text": "Salama välähtää kaukana, ja raskas sade lankeaa kerralla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvet ovat kylmiä.",
+      "text_markdown": "Talvet ovat kylmiä.",
+      "tts": {
+        "text": "Talvet ovat kylmiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joillakin ruohotasangoilla lämpötila voi laskea kauas pakkasen puolelle viikoiksi kerrallaan.",
+      "text_markdown": "Joillakin ruohotasangoilla lämpötila voi laskea kauas pakkasen puolelle viikoiksi kerrallaan.",
+      "tts": {
+        "text": "Joillakin ruohotasangoilla lämpötila voi laskea kauas pakkasen puolelle viikoiksi kerrallaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lumi pyryää avoimen maan yli ja kasaantuu pitkiksi kinoksiksi.",
+      "text_markdown": "Lumi pyryää avoimen maan yli ja kasaantuu pitkiksi kinoksiksi.",
+      "tts": {
+        "text": "Lumi pyryää avoimen maan yli ja kasaantuu pitkiksi kinoksiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvituuli on voimakas ja terävä.",
+      "text_markdown": "Talvituuli on voimakas ja terävä.",
+      "tts": {
+        "text": "Talvituuli on voimakas ja terävä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keväällä lumi sulaa, ja joet juoksevat korkealla.",
+      "text_markdown": "Keväällä lumi sulaa, ja joet juoksevat korkealla.",
+      "tts": {
+        "text": "Keväällä lumi sulaa, ja joet juoksevat korkealla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoho muuttuu vihreäksi melkein yhdessä yössä.",
+      "text_markdown": "Ruoho muuttuu vihreäksi melkein yhdessä yössä.",
+      "tts": {
+        "text": "Ruoho muuttuu vihreäksi melkein yhdessä yössä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Linnut palaavat lämpimämmiltä mailta ja täyttävät ilman äänellään.",
+      "text_markdown": "Linnut palaavat lämpimämmiltä mailta ja täyttävät ilman äänellään.",
+      "tts": {
+        "text": "Linnut palaavat lämpimämmiltä mailta ja täyttävät ilman äänellään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Syksyllä ruoho muuttuu kullankeltaiseksi, tuuli viilenee, ja laumat liikkuvat kohti suojaa.",
+      "text_markdown": "Syksyllä ruoho muuttuu kullankeltaiseksi, tuuli viilenee, ja laumat liikkuvat kohti suojaa.",
+      "tts": {
+        "text": "Syksyllä ruoho muuttuu kullankeltaiseksi, tuuli viilenee, ja laumat liikkuvat kohti suojaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruohotasanko saa juuri tarpeeksi sadetta ruoaksi ruoholle.",
+      "text_markdown": "Ruohotasanko saa juuri tarpeeksi sadetta ruoaksi ruoholle.",
+      "tts": {
+        "text": "Ruohotasanko saa juuri tarpeeksi sadetta ruoaksi ruoholle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ei riitä suurten metsien kasvattamiseen, mutta riittää hyvin ruoholle ja sitä tarvitseville eläimille.",
+      "text_markdown": "Se ei riitä suurten metsien kasvattamiseen, mutta riittää hyvin ruoholle ja sitä tarvitseville eläimille.",
+      "tts": {
+        "text": "Se ei riitä suurten metsien kasvattamiseen, mutta riittää hyvin ruoholle ja sitä tarvitseville eläimille.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Maa ja vesi",
+      "text_markdown": "Maa ja vesi"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkean ruohotasangon maa on enimmäkseen tasaista tai loivasti aaltoilevaa.",
+      "text_markdown": "Lauhkean ruohotasangon maa on enimmäkseen tasaista tai loivasti aaltoilevaa.",
+      "tts": {
+        "text": "Lauhkean ruohotasangon maa on enimmäkseen tasaista tai loivasti aaltoilevaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin paikoissa matalat kukkulat nousevat ruohosta.",
+      "text_markdown": "Joissakin paikoissa matalat kukkulat nousevat ruohosta.",
+      "tts": {
+        "text": "Joissakin paikoissa matalat kukkulat nousevat ruohosta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisissa maa on niin tasaista, että näet horisontin täydellisen suorana viivana.",
+      "text_markdown": "Toisissa maa on niin tasaista, että näet horisontin täydellisen suorana viivana.",
+      "tts": {
+        "text": "Toisissa maa on niin tasaista, että näet horisontin täydellisen suorana viivana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Täällä oleva maaperä on yksi Maan rikkaimmista.",
+      "text_markdown": "Täällä oleva maaperä on yksi Maan rikkaimmista.",
+      "tts": {
+        "text": "Täällä oleva maaperä on yksi Maan rikkaimmista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuhansien vuosien ajan ruoho on kasvanut, kuollut ja mädäntynyt maahan.",
+      "text_markdown": "Tuhansien vuosien ajan ruoho on kasvanut, kuollut ja mädäntynyt maahan.",
+      "tts": {
+        "text": "Tuhansien vuosien ajan ruoho on kasvanut, kuollut ja mädäntynyt maahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on muodostanut paksun, tumman maaperän, joka on täynnä ravintoa kasveille.",
+      "text_markdown": "Tämä on muodostanut paksun, tumman maaperän, joka on täynnä ravintoa kasveille.",
+      "tts": {
+        "text": "Tämä on muodostanut paksun, tumman maaperän, joka on täynnä ravintoa kasveille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi niin moni näistä maista on muutettu suuriksi vehnä ja maissipelloiksi.",
+      "text_markdown": "Siksi niin moni näistä maista on muutettu suuriksi vehnä ja maissipelloiksi.",
+      "tts": {
+        "text": "Siksi niin moni näistä maista on muutettu suuriksi vehnä ja maissipelloiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joet mutkittelevat ruohotasankojen halki pitkinä, hitaina kaarteina.",
+      "text_markdown": "Joet mutkittelevat ruohotasankojen halki pitkinä, hitaina kaarteina.",
+      "tts": {
+        "text": "Joet mutkittelevat ruohotasankojen halki pitkinä, hitaina kaarteina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joet kuljettavat vettä kaukaisilta vuorilta ja lumen sulamisesta avoimen maan halki.",
+      "text_markdown": "Joet kuljettavat vettä kaukaisilta vuorilta ja lumen sulamisesta avoimen maan halki.",
+      "tts": {
+        "text": "Joet kuljettavat vettä kaukaisilta vuorilta ja lumen sulamisesta avoimen maan halki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokien rantojen varrella näet ohuen puuriviin.",
+      "text_markdown": "Jokien rantojen varrella näet ohuen puuriviin.",
+      "tts": {
+        "text": "Jokien rantojen varrella näet ohuen puuriviin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nämä puut seuraavat vettä ja erottuvat vihreinä nauhoina laajassa ruohomeressä.",
+      "text_markdown": "Nämä puut seuraavat vettä ja erottuvat vihreinä nauhoina laajassa ruohomeressä.",
+      "tts": {
+        "text": "Nämä puut seuraavat vettä ja erottuvat vihreinä nauhoina laajassa ruohomeressä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaukana joista puita on hyvin vähän.",
+      "text_markdown": "Kaukana joista puita on hyvin vähän.",
+      "tts": {
+        "text": "Kaukana joista puita on hyvin vähän.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuuli, kylmät talvet ja kuivat kesät estävät useimpia puita kasvamasta täällä.",
+      "text_markdown": "Tuuli, kylmät talvet ja kuivat kesät estävät useimpia puita kasvamasta täällä.",
+      "tts": {
+        "text": "Tuuli, kylmät talvet ja kuivat kesät estävät useimpia puita kasvamasta täällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta ruoho ei tarvitse paljoa.",
+      "text_markdown": "Mutta ruoho ei tarvitse paljoa.",
+      "tts": {
+        "text": "Mutta ruoho ei tarvitse paljoa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sen pitkät juuret ulottuvat syvälle rikkaaseen maaperään, ja se tulee takaisin joka kevät.",
+      "text_markdown": "Sen pitkät juuret ulottuvat syvälle rikkaaseen maaperään, ja se tulee takaisin joka kevät.",
+      "tts": {
+        "text": "Sen pitkät juuret ulottuvat syvälle rikkaaseen maaperään, ja se tulee takaisin joka kevät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myös tuli liikkuu näiden maiden halki aika ajoin.",
+      "text_markdown": "Myös tuli liikkuu näiden maiden halki aika ajoin.",
+      "tts": {
+        "text": "Myös tuli liikkuu näiden maiden halki aika ajoin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoho palaa nopeasti, mutta syvät juuret jäävät eloon.",
+      "text_markdown": "Ruoho palaa nopeasti, mutta syvät juuret jäävät eloon.",
+      "tts": {
+        "text": "Ruoho palaa nopeasti, mutta syvät juuret jäävät eloon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sateen jälkeen ruoho kasvaa takaisin vihreämpänä ja vahvempana kuin ennen.",
+      "text_markdown": "Sateen jälkeen ruoho kasvaa takaisin vihreämpänä ja vahvempana kuin ennen.",
+      "tts": {
+        "text": "Sateen jälkeen ruoho kasvaa takaisin vihreämpänä ja vahvempana kuin ennen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kasvit",
+      "text_markdown": "Kasvit"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruohot ovat tämän biomin sydän.",
+      "text_markdown": "Ruohot ovat tämän biomin sydän.",
+      "tts": {
+        "text": "Ruohot ovat tämän biomin sydän.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkealla ruohotasangolla on monenlaisia ruoholajeja.",
+      "text_markdown": "Lauhkealla ruohotasangolla on monenlaisia ruoholajeja.",
+      "tts": {
+        "text": "Lauhkealla ruohotasangolla on monenlaisia ruoholajeja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkut ruohot kasvavat vain nilkkaan asti.",
+      "text_markdown": "Jotkut ruohot kasvavat vain nilkkaan asti.",
+      "tts": {
+        "text": "Jotkut ruohot kasvavat vain nilkkaan asti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toiset ovat ihmisen pituisia.",
+      "text_markdown": "Toiset ovat ihmisen pituisia.",
+      "tts": {
+        "text": "Toiset ovat ihmisen pituisia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisella ruoholajilla on pitkä, pehmeä siemenistä täynnä oleva tähkä latvassa.",
+      "text_markdown": "Jokaisella ruoholajilla on pitkä, pehmeä siemenistä täynnä oleva tähkä latvassa.",
+      "tts": {
+        "text": "Jokaisella ruoholajilla on pitkä, pehmeä siemenistä täynnä oleva tähkä latvassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesällä tuuli kuljettaa siementähkien aaltoja maan yli.",
+      "text_markdown": "Kesällä tuuli kuljettaa siementähkien aaltoja maan yli.",
+      "tts": {
+        "text": "Kesällä tuuli kuljettaa siementähkien aaltoja maan yli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoholla on hyvin pitkät juuret, jotka ulottuvat syvälle tummaan maaperään.",
+      "text_markdown": "Ruoholla on hyvin pitkät juuret, jotka ulottuvat syvälle tummaan maaperään.",
+      "tts": {
+        "text": "Ruoholla on hyvin pitkät juuret, jotka ulottuvat syvälle tummaan maaperään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juuret voivat olla maan alla pidempiä kuin ruoho on pitkä maan päällä.",
+      "text_markdown": "Juuret voivat olla maan alla pidempiä kuin ruoho on pitkä maan päällä.",
+      "tts": {
+        "text": "Juuret voivat olla maan alla pidempiä kuin ruoho on pitkä maan päällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Näin ruoho selviää kuivista ajoista ja kylmistä talvista.",
+      "text_markdown": "Näin ruoho selviää kuivista ajoista ja kylmistä talvista.",
+      "tts": {
+        "text": "Näin ruoho selviää kuivista ajoista ja kylmistä talvista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Näin ruoho myös tulee nopeasti takaisin tulipalon jälkeen.",
+      "text_markdown": "Näin ruoho myös tulee nopeasti takaisin tulipalon jälkeen.",
+      "tts": {
+        "text": "Näin ruoho myös tulee nopeasti takaisin tulipalon jälkeen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruohojen välissä pienet kukat kukkivat lämpiminä kuukausina.",
+      "text_markdown": "Ruohojen välissä pienet kukat kukkivat lämpiminä kuukausina.",
+      "tts": {
+        "text": "Ruohojen välissä pienet kukat kukkivat lämpiminä kuukausina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Villiauringonkukat ja monet muut kirkkaat kukat täyttävät ruohotasangon kesällä.",
+      "text_markdown": "Villiauringonkukat ja monet muut kirkkaat kukat täyttävät ruohotasangon kesällä.",
+      "tts": {
+        "text": "Villiauringonkukat ja monet muut kirkkaat kukat täyttävät ruohotasangon kesällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mehiläiset ja perhoset liikkuvat kukasta toiseen.",
+      "text_markdown": "Mehiläiset ja perhoset liikkuvat kukasta toiseen.",
+      "tts": {
+        "text": "Mehiläiset ja perhoset liikkuvat kukasta toiseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurimmassa osassa ruohotasankoa on hyvin vähän puita.",
+      "text_markdown": "Suurimmassa osassa ruohotasankoa on hyvin vähän puita.",
+      "tts": {
+        "text": "Suurimmassa osassa ruohotasankoa on hyvin vähän puita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siellä missä niitä kasvaa, ne ovat yleensä pieniä ja sitkeitä.",
+      "text_markdown": "Siellä missä niitä kasvaa, ne ovat yleensä pieniä ja sitkeitä.",
+      "tts": {
+        "text": "Siellä missä niitä kasvaa, ne ovat yleensä pieniä ja sitkeitä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne kasvavat jokien varsilla, missä on enemmän vettä, tai matalissa paikoissa, joihin lumi kasaantuu talvella.",
+      "text_markdown": "Ne kasvavat jokien varsilla, missä on enemmän vettä, tai matalissa paikoissa, joihin lumi kasaantuu talvella.",
+      "tts": {
+        "text": "Ne kasvavat jokien varsilla, missä on enemmän vettä, tai matalissa paikoissa, joihin lumi kasaantuu talvella.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avoimella tasangolla ruoho on yksin.",
+      "text_markdown": "Avoimella tasangolla ruoho on yksin.",
+      "tts": {
+        "text": "Avoimella tasangolla ruoho on yksin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on vihreä, kultainen ja hopeinen matto, joka pitää koko biomin koossa.",
+      "text_markdown": "Se on vihreä, kultainen ja hopeinen matto, joka pitää koko biomin koossa.",
+      "tts": {
+        "text": "Se on vihreä, kultainen ja hopeinen matto, joka pitää koko biomin koossa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eläimet",
+      "text_markdown": "Eläimet"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkean ruohotasangon eläimet on rakennettu avointa, tuulista maailmaa varten.",
+      "text_markdown": "Lauhkean ruohotasangon eläimet on rakennettu avointa, tuulista maailmaa varten.",
+      "tts": {
+        "text": "Lauhkean ruohotasangon eläimet on rakennettu avointa, tuulista maailmaa varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurimmat eläimet täällä ovat isoja laiduntajia.",
+      "text_markdown": "Suurimmat eläimet täällä ovat isoja laiduntajia.",
+      "tts": {
+        "text": "Suurimmat eläimet täällä ovat isoja laiduntajia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne syövät ruohoa ja liikkuvat suurissa laumoissa avoimen maan halki.",
+      "text_markdown": "Ne syövät ruohoa ja liikkuvat suurissa laumoissa avoimen maan halki.",
+      "tts": {
+        "text": "Ne syövät ruohoa ja liikkuvat suurissa laumoissa avoimen maan halki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois Amerikassa kuuluisin näistä on biisoni.",
+      "text_markdown": "Pohjois Amerikassa kuuluisin näistä on biisoni.",
+      "tts": {
+        "text": "Pohjois Amerikassa kuuluisin näistä on biisoni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biisoni on valtava, raskas ja takkuinen, ja sillä on suuri ruskea pää.",
+      "text_markdown": "Biisoni on valtava, raskas ja takkuinen, ja sillä on suuri ruskea pää.",
+      "tts": {
+        "text": "Biisoni on valtava, raskas ja takkuinen, ja sillä on suuri ruskea pää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biisonit liikkuivat ennen tasankojen halki miljoonien laumoissa.",
+      "text_markdown": "Biisonit liikkuivat ennen tasankojen halki miljoonien laumoissa.",
+      "tts": {
+        "text": "Biisonit liikkuivat ennen tasankojen halki miljoonien laumoissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Euraasiassa villihevoset liikkuivat ennen samalla tavalla steppien halki.",
+      "text_markdown": "Euraasiassa villihevoset liikkuivat ennen samalla tavalla steppien halki.",
+      "tts": {
+        "text": "Euraasiassa villihevoset liikkuivat ennen samalla tavalla steppien halki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etelä Amerikan pampoilla pienemmät peurat ja muut laiduneläimet ottivat niiden paikan.",
+      "text_markdown": "Etelä Amerikan pampoilla pienemmät peurat ja muut laiduneläimet ottivat niiden paikan.",
+      "tts": {
+        "text": "Etelä Amerikan pampoilla pienemmät peurat ja muut laiduneläimet ottivat niiden paikan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet pienemmät eläimet elävät ruohon alla.",
+      "text_markdown": "Monet pienemmät eläimet elävät ruohon alla.",
+      "tts": {
+        "text": "Monet pienemmät eläimet elävät ruohon alla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Preeriakoirat, maaoravat ja muut pienet eläimet kaivavat pitkiä tunneleita ja huoneita maaperään.",
+      "text_markdown": "Preeriakoirat, maaoravat ja muut pienet eläimet kaivavat pitkiä tunneleita ja huoneita maaperään.",
+      "tts": {
+        "text": "Preeriakoirat, maaoravat ja muut pienet eläimet kaivavat pitkiä tunneleita ja huoneita maaperään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne tulevat ylös syömään päivällä ja sukeltavat takaisin koloihinsa turvaan.",
+      "text_markdown": "Ne tulevat ylös syömään päivällä ja sukeltavat takaisin koloihinsa turvaan.",
+      "tts": {
+        "text": "Ne tulevat ylös syömään päivällä ja sukeltavat takaisin koloihinsa turvaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruohotasanko, joka on täynnä näitä pieniä eläimiä, on täynnä pieniä reikiä maassa.",
+      "text_markdown": "Ruohotasanko, joka on täynnä näitä pieniä eläimiä, on täynnä pieniä reikiä maassa.",
+      "tts": {
+        "text": "Ruohotasanko, joka on täynnä näitä pieniä eläimiä, on täynnä pieniä reikiä maassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sudet, ketut ja pienet villikissat metsästävät ruohon halki.",
+      "text_markdown": "Sudet, ketut ja pienet villikissat metsästävät ruohon halki.",
+      "tts": {
+        "text": "Sudet, ketut ja pienet villikissat metsästävät ruohon halki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Susi on avoimien tasankojen suuri metsästäjä.",
+      "text_markdown": "Susi on avoimien tasankojen suuri metsästäjä.",
+      "tts": {
+        "text": "Susi on avoimien tasankojen suuri metsästäjä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pienemmät metsästäjät kuten kettu ja villikissa pyydystävät hiiriä, kaneja ja lintuja.",
+      "text_markdown": "Pienemmät metsästäjät kuten kettu ja villikissa pyydystävät hiiriä, kaneja ja lintuja.",
+      "tts": {
+        "text": "Pienemmät metsästäjät kuten kettu ja villikissa pyydystävät hiiriä, kaneja ja lintuja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korkealla taivaalla haukat ja kotkat kiertävät hitaasti.",
+      "text_markdown": "Korkealla taivaalla haukat ja kotkat kiertävät hitaasti.",
+      "tts": {
+        "text": "Korkealla taivaalla haukat ja kotkat kiertävät hitaasti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne tarkkailevat liikettä alapuolella olevassa ruohossa.",
+      "text_markdown": "Ne tarkkailevat liikettä alapuolella olevassa ruohossa.",
+      "tts": {
+        "text": "Ne tarkkailevat liikettä alapuolella olevassa ruohossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet lintulajit pesivät suoraan maassa, kätkettyinä pitkään ruohoon.",
+      "text_markdown": "Monet lintulajit pesivät suoraan maassa, kätkettyinä pitkään ruohoon.",
+      "tts": {
+        "text": "Monet lintulajit pesivät suoraan maassa, kätkettyinä pitkään ruohoon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesällä ilma on täynnä hyönteisiä.",
+      "text_markdown": "Kesällä ilma on täynnä hyönteisiä.",
+      "tts": {
+        "text": "Kesällä ilma on täynnä hyönteisiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heinäsirkat naksuvat ja hyppivät lämpimässä tuulessa.",
+      "text_markdown": "Heinäsirkat naksuvat ja hyppivät lämpimässä tuulessa.",
+      "tts": {
+        "text": "Heinäsirkat naksuvat ja hyppivät lämpimässä tuulessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perhoset ja mehiläiset liikkuvat kukasta kukkaan.",
+      "text_markdown": "Perhoset ja mehiläiset liikkuvat kukasta kukkaan.",
+      "tts": {
+        "text": "Perhoset ja mehiläiset liikkuvat kukasta kukkaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Käärmeet liukuvat ruohon halki etsien hiiriä ja lintujen munia.",
+      "text_markdown": "Käärmeet liukuvat ruohon halki etsien hiiriä ja lintujen munia.",
+      "tts": {
+        "text": "Käärmeet liukuvat ruohon halki etsien hiiriä ja lintujen munia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen eläin täällä tietää samat opetukset.",
+      "text_markdown": "Jokainen eläin täällä tietää samat opetukset.",
+      "tts": {
+        "text": "Jokainen eläin täällä tietää samat opetukset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liiku vuodenaikojen mukana.",
+      "text_markdown": "Liiku vuodenaikojen mukana.",
+      "tts": {
+        "text": "Liiku vuodenaikojen mukana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piiloudu kuumalta auringolta.",
+      "text_markdown": "Piiloudu kuumalta auringolta.",
+      "tts": {
+        "text": "Piiloudu kuumalta auringolta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pakene kylmää tuulta.",
+      "text_markdown": "Pakene kylmää tuulta.",
+      "tts": {
+        "text": "Pakene kylmää tuulta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juo joesta, kun voit löytää sen.",
+      "text_markdown": "Juo joesta, kun voit löytää sen.",
+      "tts": {
+        "text": "Juo joesta, kun voit löytää sen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ihmiset",
+      "text_markdown": "Ihmiset"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset ovat eläneet lauhkealla ruohotasangolla monia tuhansia vuosia.",
+      "text_markdown": "Ihmiset ovat eläneet lauhkealla ruohotasangolla monia tuhansia vuosia.",
+      "tts": {
+        "text": "Ihmiset ovat eläneet lauhkealla ruohotasangolla monia tuhansia vuosia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laaja avoin maa, eläinlaumat ja rikas maaperä ovat muovanneet heidän elämäntapaansa.",
+      "text_markdown": "Laaja avoin maa, eläinlaumat ja rikas maaperä ovat muovanneet heidän elämäntapaansa.",
+      "tts": {
+        "text": "Laaja avoin maa, eläinlaumat ja rikas maaperä ovat muovanneet heidän elämäntapaansa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kauan sitten Aasian steppien ihmiset kesyttivät villihevosen.",
+      "text_markdown": "Kauan sitten Aasian steppien ihmiset kesyttivät villihevosen.",
+      "tts": {
+        "text": "Kauan sitten Aasian steppien ihmiset kesyttivät villihevosen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hevosen selässä ihminen pystyi ylittämään avoimet tasangot paljon nopeammin kuin jalan.",
+      "text_markdown": "Hevosen selässä ihminen pystyi ylittämään avoimet tasangot paljon nopeammin kuin jalan.",
+      "tts": {
+        "text": "Hevosen selässä ihminen pystyi ylittämään avoimet tasangot paljon nopeammin kuin jalan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hevonen muutti kaiken ruohotasankojen ihmisille.",
+      "text_markdown": "Hevonen muutti kaiken ruohotasankojen ihmisille.",
+      "tts": {
+        "text": "Hevonen muutti kaiken ruohotasankojen ihmisille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se muutti sitä, miten he metsästivät, miten he matkustivat ja miten he sotivat.",
+      "text_markdown": "Se muutti sitä, miten he metsästivät, miten he matkustivat ja miten he sotivat.",
+      "tts": {
+        "text": "Se muutti sitä, miten he metsästivät, miten he matkustivat ja miten he sotivat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet steppien vanhoista kansoista olivat paimentolaisia.",
+      "text_markdown": "Monet steppien vanhoista kansoista olivat paimentolaisia.",
+      "tts": {
+        "text": "Monet steppien vanhoista kansoista olivat paimentolaisia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He siirsivät hevosten, nautakarjan, lampaiden ja vuohien laumojaan ruohotasangon osasta toiseen.",
+      "text_markdown": "He siirsivät hevosten, nautakarjan, lampaiden ja vuohien laumojaan ruohotasangon osasta toiseen.",
+      "tts": {
+        "text": "He siirsivät hevosten, nautakarjan, lampaiden ja vuohien laumojaan ruohotasangon osasta toiseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesällä he matkustivat viileille korkeille tasangoille.",
+      "text_markdown": "Kesällä he matkustivat viileille korkeille tasangoille.",
+      "tts": {
+        "text": "Kesällä he matkustivat viileille korkeille tasangoille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvella he tulivat alas matalampiin, lämpimämpiin laaksoihin.",
+      "text_markdown": "Talvella he tulivat alas matalampiin, lämpimämpiin laaksoihin.",
+      "tts": {
+        "text": "Talvella he tulivat alas matalampiin, lämpimämpiin laaksoihin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heidän kotinsa olivat huovasta ja puusta tehtyjä pyöreitä jurttoja.",
+      "text_markdown": "Heidän kotinsa olivat huovasta ja puusta tehtyjä pyöreitä jurttoja.",
+      "tts": {
+        "text": "Heidän kotinsa olivat huovasta ja puusta tehtyjä pyöreitä jurttoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tällainen pyöreä jurtta voidaan purkaa tunnissa, pakata eläimen selkään ja pystyttää uudelleen jossakin muualla.",
+      "text_markdown": "Tällainen pyöreä jurtta voidaan purkaa tunnissa, pakata eläimen selkään ja pystyttää uudelleen jossakin muualla.",
+      "tts": {
+        "text": "Tällainen pyöreä jurtta voidaan purkaa tunnissa, pakata eläimen selkään ja pystyttää uudelleen jossakin muualla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois Amerikassa tasankojen ihmiset elivät tuhansia vuosia suurten biisonilaumojen rinnalla.",
+      "text_markdown": "Pohjois Amerikassa tasankojen ihmiset elivät tuhansia vuosia suurten biisonilaumojen rinnalla.",
+      "tts": {
+        "text": "Pohjois Amerikassa tasankojen ihmiset elivät tuhansia vuosia suurten biisonilaumojen rinnalla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He seurasivat laumoja avoimen maan halki.",
+      "text_markdown": "He seurasivat laumoja avoimen maan halki.",
+      "tts": {
+        "text": "He seurasivat laumoja avoimen maan halki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heidän kotinsa olivat korkeita telttoja, joiden nahka oli pingotettu puutankojen päälle.",
+      "text_markdown": "Heidän kotinsa olivat korkeita telttoja, joiden nahka oli pingotettu puutankojen päälle.",
+      "tts": {
+        "text": "Heidän kotinsa olivat korkeita telttoja, joiden nahka oli pingotettu puutankojen päälle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun hevonen saapui tasangoille, myös siellä elämäntapa muuttui syvällisesti.",
+      "text_markdown": "Kun hevonen saapui tasangoille, myös siellä elämäntapa muuttui syvällisesti.",
+      "tts": {
+        "text": "Kun hevonen saapui tasangoille, myös siellä elämäntapa muuttui syvällisesti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etelä Amerikan pampoilla myös hevosen selässä ratsastavista paimenista tuli osa maata.",
+      "text_markdown": "Etelä Amerikan pampoilla myös hevosen selässä ratsastavista paimenista tuli osa maata.",
+      "tts": {
+        "text": "Etelä Amerikan pampoilla myös hevosen selässä ratsastavista paimenista tuli osa maata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viime vuosisatojen aikana suuri osa lauhkeasta ruohotasangosta on muuttunut taas.",
+      "text_markdown": "Viime vuosisatojen aikana suuri osa lauhkeasta ruohotasangosta on muuttunut taas.",
+      "tts": {
+        "text": "Viime vuosisatojen aikana suuri osa lauhkeasta ruohotasangosta on muuttunut taas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Syvä, rikas maaperä on kynnetty vehnän, maissin ja muiden viljojen kasvattamista varten.",
+      "text_markdown": "Syvä, rikas maaperä on kynnetty vehnän, maissin ja muiden viljojen kasvattamista varten.",
+      "tts": {
+        "text": "Syvä, rikas maaperä on kynnetty vehnän, maissin ja muiden viljojen kasvattamista varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nykyään suuri osa maailmaa ruokkivasta viljasta tulee näiltä mailta.",
+      "text_markdown": "Nykyään suuri osa maailmaa ruokkivasta viljasta tulee näiltä mailta.",
+      "tts": {
+        "text": "Nykyään suuri osa maailmaa ruokkivasta viljasta tulee näiltä mailta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vanha tapa liikkua laumojen mukana on poissa monista paikoista.",
+      "text_markdown": "Vanha tapa liikkua laumojen mukana on poissa monista paikoista.",
+      "tts": {
+        "text": "Vanha tapa liikkua laumojen mukana on poissa monista paikoista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta laulut, tarinat ja rakkaus avointa taivasta kohtaan elävät edelleen.",
+      "text_markdown": "Mutta laulut, tarinat ja rakkaus avointa taivasta kohtaan elävät edelleen.",
+      "tts": {
+        "text": "Mutta laulut, tarinat ja rakkaus avointa taivasta kohtaan elävät edelleen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisella suurella ruohotasangolla siellä kasvaneet ihmiset kantavat tuulta sydämessään.",
+      "text_markdown": "Jokaisella suurella ruohotasangolla siellä kasvaneet ihmiset kantavat tuulta sydämessään.",
+      "tts": {
+        "text": "Jokaisella suurella ruohotasangolla siellä kasvaneet ihmiset kantavat tuulta sydämessään.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ruohotasanko tänään",
+      "text_markdown": "Ruohotasanko tänään"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lauhkea ruohotasanko on yksi ihmisille tärkeimmistä biomeista.",
+      "text_markdown": "Lauhkea ruohotasanko on yksi ihmisille tärkeimmistä biomeista.",
+      "tts": {
+        "text": "Lauhkea ruohotasanko on yksi ihmisille tärkeimmistä biomeista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Syvä, rikas maaperä tekee siitä täydellisen ruoan kasvattamiseen.",
+      "text_markdown": "Syvä, rikas maaperä tekee siitä täydellisen ruoan kasvattamiseen.",
+      "tts": {
+        "text": "Syvä, rikas maaperä tekee siitä täydellisen ruoan kasvattamiseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suuri osa leivästä, pastasta ja maissista, jota maailma syö, tulee näiltä mailta.",
+      "text_markdown": "Suuri osa leivästä, pastasta ja maissista, jota maailma syö, tulee näiltä mailta.",
+      "tts": {
+        "text": "Suuri osa leivästä, pastasta ja maissista, jota maailma syö, tulee näiltä mailta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta hinta on ollut korkea.",
+      "text_markdown": "Mutta hinta on ollut korkea.",
+      "tts": {
+        "text": "Mutta hinta on ollut korkea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurin osa maailman alkuperäisistä ruohotasangoista on kynnetty.",
+      "text_markdown": "Suurin osa maailman alkuperäisistä ruohotasangoista on kynnetty.",
+      "tts": {
+        "text": "Suurin osa maailman alkuperäisistä ruohotasangoista on kynnetty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suuret biisoni ja villihevoslaumat ovat suurelta osin poissa.",
+      "text_markdown": "Suuret biisoni ja villihevoslaumat ovat suurelta osin poissa.",
+      "tts": {
+        "text": "Suuret biisoni ja villihevoslaumat ovat suurelta osin poissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pienillä kolossa asuvilla eläimillä on vähemmän paikkoja elää.",
+      "text_markdown": "Pienillä kolossa asuvilla eläimillä on vähemmän paikkoja elää.",
+      "tts": {
+        "text": "Pienillä kolossa asuvilla eläimillä on vähemmän paikkoja elää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoho, joka kerran ulottui horisonttiin asti, kasvaa nyt vain pieninä laikkuina.",
+      "text_markdown": "Ruoho, joka kerran ulottui horisonttiin asti, kasvaa nyt vain pieninä laikkuina.",
+      "tts": {
+        "text": "Ruoho, joka kerran ulottui horisonttiin asti, kasvaa nyt vain pieninä laikkuina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin paikoissa, kun ruoho on poissa ja maaperä jää paljaaksi, tuuli puhaltaa tumman mullan pois.",
+      "text_markdown": "Joissakin paikoissa, kun ruoho on poissa ja maaperä jää paljaaksi, tuuli puhaltaa tumman mullan pois.",
+      "tts": {
+        "text": "Joissakin paikoissa, kun ruoho on poissa ja maaperä jää paljaaksi, tuuli puhaltaa tumman mullan pois.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+      "text_markdown": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+      "tts": {
+        "text": "Monet ryhmät ympäri maailmaa työskentelevät huolehtiakseen siitä, mitä on jäljellä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He varaavat puistoja, joissa ruoho voi taas kasvaa korkeaksi.",
+      "text_markdown": "He varaavat puistoja, joissa ruoho voi taas kasvaa korkeaksi.",
+      "tts": {
+        "text": "He varaavat puistoja, joissa ruoho voi taas kasvaa korkeaksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He auttavat biisoneita ja muita eläimiä palaamaan maille, joilla ne kerran asuivat.",
+      "text_markdown": "He auttavat biisoneita ja muita eläimiä palaamaan maille, joilla ne kerran asuivat.",
+      "tts": {
+        "text": "He auttavat biisoneita ja muita eläimiä palaamaan maille, joilla ne kerran asuivat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He tutkivat syvää maaperää, jotta voimme käyttää sitä menettämättä sitä.",
+      "text_markdown": "He tutkivat syvää maaperää, jotta voimme käyttää sitä menettämättä sitä.",
+      "tts": {
+        "text": "He tutkivat syvää maaperää, jotta voimme käyttää sitä menettämättä sitä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terve ruohotasanko on yksi Maan elävimmistä paikoista.",
+      "text_markdown": "Terve ruohotasanko on yksi Maan elävimmistä paikoista.",
+      "tts": {
+        "text": "Terve ruohotasanko on yksi Maan elävimmistä paikoista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Ruohotasanko tänään",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on huolenpitomme arvoinen.",
+      "text_markdown": "Se on huolenpitomme arvoinen.",
+      "tts": {
+        "text": "Se on huolenpitomme arvoinen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lopuksi",
+      "text_markdown": "Lopuksi"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sellainen on lauhkea ruohotasanko.",
+      "text_markdown": "Sellainen on lauhkea ruohotasanko.",
+      "tts": {
+        "text": "Sellainen on lauhkea ruohotasanko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laaja, tuulinen ruohon, suuren taivaan ja vaihtuvien vuodenaikojen maailma.",
+      "text_markdown": "Laaja, tuulinen ruohon, suuren taivaan ja vaihtuvien vuodenaikojen maailma.",
+      "tts": {
+        "text": "Laaja, tuulinen ruohon, suuren taivaan ja vaihtuvien vuodenaikojen maailma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos joskus seisot sellaisella, ole hiljaa hetken aikaa.",
+      "text_markdown": "Jos joskus seisot sellaisella, ole hiljaa hetken aikaa.",
+      "tts": {
+        "text": "Jos joskus seisot sellaisella, ole hiljaa hetken aikaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuntele tuulta, joka liikkuu ruohon yllä.",
+      "text_markdown": "Kuuntele tuulta, joka liikkuu ruohon yllä.",
+      "tts": {
+        "text": "Kuuntele tuulta, joka liikkuu ruohon yllä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katso kauas pitkään horisonttiin.",
+      "text_markdown": "Katso kauas pitkään horisonttiin.",
+      "tts": {
+        "text": "Katso kauas pitkään horisonttiin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tunnet biomin sydämen sykkivän ympärilläsi.",
+      "text_markdown": "Tunnet biomin sydämen sykkivän ympärilläsi.",
+      "tts": {
+        "text": "Tunnet biomin sydämen sykkivän ympärilläsi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

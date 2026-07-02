@@ -1,0 +1,2447 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_boreal_forest",
+  "language": "ar",
+  "total_segments": 165,
+  "segments": [
+    {
+      "paragraph_id": "p1",
+      "chapter": 1,
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الغابة الشمالية",
+      "text_markdown": "الغابة الشمالية",
+      "title": "الغابة الشمالية"
+    },
+    {
+      "paragraph_id": "p2",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-002",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "أين تنمو هذه المنطقة الأحيائية",
+      "text_markdown": "أين تنمو هذه المنطقة الأحيائية",
+      "title": "أين تنمو هذه المنطقة الأحيائية"
+    },
+    {
+      "paragraph_id": "p3",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-003",
+      "block_type": "text",
+      "text": "مرحباً بكم في الغابة الشمالية.",
+      "text_markdown": "مرحباً بكم في الغابة الشمالية.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "مرحباً بكم في الغابة الشمالية.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-004",
+      "block_type": "text",
+      "text": "هذه إحدى المناطق الأحيائية العظيمة في العالم.",
+      "text_markdown": "هذه إحدى المناطق الأحيائية العظيمة في العالم.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "هذه إحدى المناطق الأحيائية العظيمة في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-005",
+      "block_type": "text",
+      "text": "المنطقة الأحيائية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "text_markdown": "المنطقة الأحيائية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "المنطقة الأحيائية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-006",
+      "block_type": "text",
+      "text": "الغابة الشمالية هي حزام أخضر واسع من الأشجار دائمة الخضرة يمتد عبر قمة العالم.",
+      "text_markdown": "الغابة الشمالية هي حزام أخضر واسع من الأشجار دائمة الخضرة يمتد عبر قمة العالم.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "الغابة الشمالية هي حزام أخضر واسع من الأشجار دائمة الخضرة يمتد عبر قمة العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-007",
+      "block_type": "text",
+      "text": "تُعرف أيضاً باسم التايغا.",
+      "text_markdown": "تُعرف أيضاً باسم التايغا.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تُعرف أيضاً باسم التايغا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-008",
+      "block_type": "text",
+      "text": "الغابة الشمالية هي أكبر منطقة أحيائية برية على وجه الأرض.",
+      "text_markdown": "الغابة الشمالية هي أكبر منطقة أحيائية برية على وجه الأرض.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "الغابة الشمالية هي أكبر منطقة أحيائية برية على وجه الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-009",
+      "block_type": "text",
+      "text": "إذا حلقت عالياً فوق العالم، سترى هذا الحزام الأخضر الداكن يمتد تقريباً حوله بالكامل.",
+      "text_markdown": "إذا حلقت عالياً فوق العالم، سترى هذا الحزام الأخضر الداكن يمتد تقريباً حوله بالكامل.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "إذا حلقت عالياً فوق العالم، سترى هذا الحزام الأخضر الداكن يمتد تقريباً حوله بالكامل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-010",
+      "block_type": "text",
+      "text": "تنمو عبر معظم كندا وألاسكا، في أمريكا الشمالية.",
+      "text_markdown": "تنمو عبر معظم كندا وألاسكا، في أمريكا الشمالية.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تنمو عبر معظم كندا وألاسكا، في أمريكا الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-011",
+      "block_type": "text",
+      "text": "تنمو عبر النرويج والسويد وفنلندا، في شمال أوروبا.",
+      "text_markdown": "تنمو عبر النرويج والسويد وفنلندا، في شمال أوروبا.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تنمو عبر النرويج والسويد وفنلندا، في شمال أوروبا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-012",
+      "block_type": "text",
+      "text": "تنمو عبر روسيا، على طول الطريق من أوروبا إلى المحيط الهادئ.",
+      "text_markdown": "تنمو عبر روسيا، على طول الطريق من أوروبا إلى المحيط الهادئ.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تنمو عبر روسيا، على طول الطريق من أوروبا إلى المحيط الهادئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-013",
+      "block_type": "text",
+      "text": "في كل من هذه الأماكن، تبدو الغابة متشابهة إلى حد كبير.",
+      "text_markdown": "في كل من هذه الأماكن، تبدو الغابة متشابهة إلى حد كبير.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "في كل من هذه الأماكن، تبدو الغابة متشابهة إلى حد كبير.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-014",
+      "block_type": "text",
+      "text": "تقف الأشجار الطويلة المدببة متقاربة، مع طحالب ناعمة وشجيرات صغيرة على الأرض.",
+      "text_markdown": "تقف الأشجار الطويلة المدببة متقاربة، مع طحالب ناعمة وشجيرات صغيرة على الأرض.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تقف الأشجار الطويلة المدببة متقاربة، مع طحالب ناعمة وشجيرات صغيرة على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-015",
+      "block_type": "text",
+      "text": "توجد العديد من البحيرات والأنهار والمستنقعات بين الأشجار.",
+      "text_markdown": "توجد العديد من البحيرات والأنهار والمستنقعات بين الأشجار.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "توجد العديد من البحيرات والأنهار والمستنقعات بين الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-016",
+      "block_type": "text",
+      "text": "تقع الغابة الشمالية جنوب التندرا مباشرة وشمال الغابات المعتدلة مباشرة.",
+      "text_markdown": "تقع الغابة الشمالية جنوب التندرا مباشرة وشمال الغابات المعتدلة مباشرة.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "تقع الغابة الشمالية جنوب التندرا مباشرة وشمال الغابات المعتدلة مباشرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-017",
+      "block_type": "text",
+      "text": "إنه ليس مكاناً دافئاً.",
+      "text_markdown": "إنه ليس مكاناً دافئاً.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "إنه ليس مكاناً دافئاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-018",
+      "block_type": "text",
+      "text": "الشتاء الطويل شديد البرودة هو القاعدة هنا، مع ثلوج عميقة على الأرض لعدة أشهر.",
+      "text_markdown": "الشتاء الطويل شديد البرودة هو القاعدة هنا، مع ثلوج عميقة على الأرض لعدة أشهر.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "الشتاء الطويل شديد البرودة هو القاعدة هنا، مع ثلوج عميقة على الأرض لعدة أشهر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-019",
+      "block_type": "text",
+      "text": "الصيف قصير وبارد، مع أيام طويلة وليالٍ مشرقة.",
+      "text_markdown": "الصيف قصير وبارد، مع أيام طويلة وليالٍ مشرقة.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "الصيف قصير وبارد، مع أيام طويلة وليالٍ مشرقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-020",
+      "block_type": "text",
+      "text": "قليل من الناس يعيشون في الغابة الشمالية، لكنها مليئة بالحياة.",
+      "text_markdown": "قليل من الناس يعيشون في الغابة الشمالية، لكنها مليئة بالحياة.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "قليل من الناس يعيشون في الغابة الشمالية، لكنها مليئة بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-021",
+      "block_type": "text",
+      "text": "إنها موطن للدببة والذئاب والموظ والبوم والعديد من الحيوانات الأخرى.",
+      "text_markdown": "إنها موطن للدببة والذئاب والموظ والبوم والعديد من الحيوانات الأخرى.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "إنها موطن للدببة والذئاب والموظ والبوم والعديد من الحيوانات الأخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "chapter": 2,
+      "sentence_index": 0,
+      "id": "ch02-022",
+      "block_type": "text",
+      "text": "وتنمو بهدوء عبر مساحة من الأرض أكبر من أي غابة أخرى على وجه الأرض.",
+      "text_markdown": "وتنمو بهدوء عبر مساحة من الأرض أكبر من أي غابة أخرى على وجه الأرض.",
+      "title": "أين تنمو هذه المنطقة الأحيائية",
+      "tts": {
+        "text": "وتنمو بهدوء عبر مساحة من الأرض أكبر من أي غابة أخرى على وجه الأرض.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-023",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الطقس",
+      "text_markdown": "الطقس",
+      "title": "الطقس"
+    },
+    {
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-024",
+      "block_type": "text",
+      "text": "الغابة الشمالية باردة لمعظم أوقات السنة.",
+      "text_markdown": "الغابة الشمالية باردة لمعظم أوقات السنة.",
+      "title": "الطقس",
+      "tts": {
+        "text": "الغابة الشمالية باردة لمعظم أوقات السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-025",
+      "block_type": "text",
+      "text": "الشتاء هنا طويل ومظلم.",
+      "text_markdown": "الشتاء هنا طويل ومظلم.",
+      "title": "الطقس",
+      "tts": {
+        "text": "الشتاء هنا طويل ومظلم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-026",
+      "block_type": "text",
+      "text": "في الأجزاء الشمالية من الغابة، يمكن أن يستمر الشتاء لسبعة أو ثمانية أشهر.",
+      "text_markdown": "في الأجزاء الشمالية من الغابة، يمكن أن يستمر الشتاء لسبعة أو ثمانية أشهر.",
+      "title": "الطقس",
+      "tts": {
+        "text": "في الأجزاء الشمالية من الغابة، يمكن أن يستمر الشتاء لسبعة أو ثمانية أشهر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-027",
+      "block_type": "text",
+      "text": "يمكن أن تنخفض درجة حرارة الهواء إلى أربعين تحت الصفر، سواء بالدرجة المئوية أو الفهرنهايتية.",
+      "text_markdown": "يمكن أن تنخفض درجة حرارة الهواء إلى أربعين تحت الصفر، سواء بالدرجة المئوية أو الفهرنهايتية.",
+      "title": "الطقس",
+      "tts": {
+        "text": "يمكن أن تنخفض درجة حرارة الهواء إلى أربعين تحت الصفر، سواء بالدرجة المئوية أو الفهرنهايتية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-028",
+      "block_type": "text",
+      "text": "هذا أحد أبرد الأماكن على وجه الأرض حيث لا تزال الأشجار تنمو.",
+      "text_markdown": "هذا أحد أبرد الأماكن على وجه الأرض حيث لا تزال الأشجار تنمو.",
+      "title": "الطقس",
+      "tts": {
+        "text": "هذا أحد أبرد الأماكن على وجه الأرض حيث لا تزال الأشجار تنمو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-029",
+      "block_type": "text",
+      "text": "تغطي الثلوج الكثيفة الأرض من الخريف إلى أواخر الربيع.",
+      "text_markdown": "تغطي الثلوج الكثيفة الأرض من الخريف إلى أواخر الربيع.",
+      "title": "الطقس",
+      "tts": {
+        "text": "تغطي الثلوج الكثيفة الأرض من الخريف إلى أواخر الربيع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-030",
+      "block_type": "text",
+      "text": "تتجمد البحيرات والأنهار، أحياناً بطبقة جليد سميكة بطول قامة الإنسان.",
+      "text_markdown": "تتجمد البحيرات والأنهار، أحياناً بطبقة جليد سميكة بطول قامة الإنسان.",
+      "title": "الطقس",
+      "tts": {
+        "text": "تتجمد البحيرات والأنهار، أحياناً بطبقة جليد سميكة بطول قامة الإنسان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-031",
+      "block_type": "text",
+      "text": "في أقصى الشمال، بالكاد ترتفع الشمس فوق الأشجار في أقصر أيام الشتاء.",
+      "text_markdown": "في أقصى الشمال، بالكاد ترتفع الشمس فوق الأشجار في أقصر أيام الشتاء.",
+      "title": "الطقس",
+      "tts": {
+        "text": "في أقصى الشمال، بالكاد ترتفع الشمس فوق الأشجار في أقصر أيام الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-032",
+      "block_type": "text",
+      "text": "ثم يأتي ذوبان الربيع.",
+      "text_markdown": "ثم يأتي ذوبان الربيع.",
+      "title": "الطقس",
+      "tts": {
+        "text": "ثم يأتي ذوبان الربيع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-033",
+      "block_type": "text",
+      "text": "يتحول الثلج إلى ماء، وتجري الأنهار عالية وباردة.",
+      "text_markdown": "يتحول الثلج إلى ماء، وتجري الأنهار عالية وباردة.",
+      "title": "الطقس",
+      "tts": {
+        "text": "يتحول الثلج إلى ماء، وتجري الأنهار عالية وباردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-034",
+      "block_type": "text",
+      "text": "تبقى الأرض ناعمة ورطبة لأسابيع عديدة.",
+      "text_markdown": "تبقى الأرض ناعمة ورطبة لأسابيع عديدة.",
+      "title": "الطقس",
+      "tts": {
+        "text": "تبقى الأرض ناعمة ورطبة لأسابيع عديدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-035",
+      "block_type": "text",
+      "text": "الصيف قصير، لكنه مليء بالحياة.",
+      "text_markdown": "الصيف قصير، لكنه مليء بالحياة.",
+      "title": "الطقس",
+      "tts": {
+        "text": "الصيف قصير، لكنه مليء بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-036",
+      "block_type": "text",
+      "text": "في يونيو ويوليو، تبقى الشمس في السماء معظم الليل.",
+      "text_markdown": "في يونيو ويوليو، تبقى الشمس في السماء معظم الليل.",
+      "title": "الطقس",
+      "tts": {
+        "text": "في يونيو ويوليو، تبقى الشمس في السماء معظم الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-037",
+      "block_type": "text",
+      "text": "تنمو الغابة بسرعة للاستفادة القصوى من الضوء الدافئ.",
+      "text_markdown": "تنمو الغابة بسرعة للاستفادة القصوى من الضوء الدافئ.",
+      "title": "الطقس",
+      "tts": {
+        "text": "تنمو الغابة بسرعة للاستفادة القصوى من الضوء الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-038",
+      "block_type": "text",
+      "text": "يمكن أن تكون أيام الصيف دافئة، لكن الليالي عادة ما تكون باردة.",
+      "text_markdown": "يمكن أن تكون أيام الصيف دافئة، لكن الليالي عادة ما تكون باردة.",
+      "title": "الطقس",
+      "tts": {
+        "text": "يمكن أن تكون أيام الصيف دافئة، لكن الليالي عادة ما تكون باردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-039",
+      "block_type": "text",
+      "text": "بحلول أغسطس، يبدأ البرد في الزحف مرة أخرى.",
+      "text_markdown": "بحلول أغسطس، يبدأ البرد في الزحف مرة أخرى.",
+      "title": "الطقس",
+      "tts": {
+        "text": "بحلول أغسطس، يبدأ البرد في الزحف مرة أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-040",
+      "block_type": "text",
+      "text": "الخريف قصير وذهبي.",
+      "text_markdown": "الخريف قصير وذهبي.",
+      "title": "الطقس",
+      "tts": {
+        "text": "الخريف قصير وذهبي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "chapter": 3,
+      "sentence_index": 0,
+      "id": "ch03-041",
+      "block_type": "text",
+      "text": "ثم يعود الثلج، ويبدأ الشتاء الطويل من جديد.",
+      "text_markdown": "ثم يعود الثلج، ويبدأ الشتاء الطويل من جديد.",
+      "title": "الطقس",
+      "tts": {
+        "text": "ثم يعود الثلج، ويبدأ الشتاء الطويل من جديد.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-042",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء",
+      "title": "الأرض والماء"
+    },
+    {
+      "paragraph_id": "p43",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-043",
+      "block_type": "text",
+      "text": "تنمو الغابة الشمالية فوق أرض قديمة وهادئة.",
+      "text_markdown": "تنمو الغابة الشمالية فوق أرض قديمة وهادئة.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تنمو الغابة الشمالية فوق أرض قديمة وهادئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-044",
+      "block_type": "text",
+      "text": "منذ زمن بعيد، غطت صفائح جليدية ضخمة كل هذه البلاد.",
+      "text_markdown": "منذ زمن بعيد، غطت صفائح جليدية ضخمة كل هذه البلاد.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "منذ زمن بعيد، غطت صفائح جليدية ضخمة كل هذه البلاد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-045",
+      "block_type": "text",
+      "text": "كان الجليد أكثر سمكًا من أطول الجبال التي نعرفها اليوم.",
+      "text_markdown": "كان الجليد أكثر سمكًا من أطول الجبال التي نعرفها اليوم.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "كان الجليد أكثر سمكًا من أطول الجبال التي نعرفها اليوم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-046",
+      "block_type": "text",
+      "text": "عندما ذاب الجليد، منذ آلاف السنين، ترك الأرض مسطحة ومخدوشة ومليئة بالثقوب.",
+      "text_markdown": "عندما ذاب الجليد، منذ آلاف السنين، ترك الأرض مسطحة ومخدوشة ومليئة بالثقوب.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "عندما ذاب الجليد، منذ آلاف السنين، ترك الأرض مسطحة ومخدوشة ومليئة بالثقوب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-047",
+      "block_type": "text",
+      "text": "امتلأت الثقوب بالماء.",
+      "text_markdown": "امتلأت الثقوب بالماء.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "امتلأت الثقوب بالماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-048",
+      "block_type": "text",
+      "text": "لهذا السبب تحتوي الغابة الشمالية على العديد من البحيرات.",
+      "text_markdown": "لهذا السبب تحتوي الغابة الشمالية على العديد من البحيرات.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "لهذا السبب تحتوي الغابة الشمالية على العديد من البحيرات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-049",
+      "block_type": "text",
+      "text": "كندا وحدها لديها بحيرات أكثر من بقية العالم مجتمعة.",
+      "text_markdown": "كندا وحدها لديها بحيرات أكثر من بقية العالم مجتمعة.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "كندا وحدها لديها بحيرات أكثر من بقية العالم مجتمعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-050",
+      "block_type": "text",
+      "text": "العديد منها يقع داخل الغابة الشمالية، يلمع كالمرايا الداكنة بين الأشجار.",
+      "text_markdown": "العديد منها يقع داخل الغابة الشمالية، يلمع كالمرايا الداكنة بين الأشجار.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "العديد منها يقع داخل الغابة الشمالية، يلمع كالمرايا الداكنة بين الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-051",
+      "block_type": "text",
+      "text": "أنهار واسعة وبطيئة تعبر الغابة، حاملة مياه الذوبان إلى البحار الشمالية الكبرى.",
+      "text_markdown": "أنهار واسعة وبطيئة تعبر الغابة، حاملة مياه الذوبان إلى البحار الشمالية الكبرى.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "أنهار واسعة وبطيئة تعبر الغابة، حاملة مياه الذوبان إلى البحار الشمالية الكبرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-052",
+      "block_type": "text",
+      "text": "بين البحيرات والأنهار، توجد أماكن ناعمة ورطبة تسمى المستنقعات الخثية (bogs).",
+      "text_markdown": "بين البحيرات والأنهار، توجد أماكن ناعمة ورطبة تسمى المستنقعات الخثية (bogs).",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "بين البحيرات والأنهار، توجد أماكن ناعمة ورطبة تسمى المستنقعات الخثية (bogs).",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-053",
+      "block_type": "text",
+      "text": "المستنقع الخثي هو قطعة أرض يبقى الماء فيها فوق التربة طوال العام.",
+      "text_markdown": "المستنقع الخثي هو قطعة أرض يبقى الماء فيها فوق التربة طوال العام.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "المستنقع الخثي هو قطعة أرض يبقى الماء فيها فوق التربة طوال العام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-054",
+      "block_type": "text",
+      "text": "تنمو الطحالب بكثافة على المستنقع الخثي، ناعمة وعميقة تحت الأقدام.",
+      "text_markdown": "تنمو الطحالب بكثافة على المستنقع الخثي، ناعمة وعميقة تحت الأقدام.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تنمو الطحالب بكثافة على المستنقع الخثي، ناعمة وعميقة تحت الأقدام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-055",
+      "block_type": "text",
+      "text": "تحت السطح، يكون ماء المستنقع الخثي باردًا وبنيًا.",
+      "text_markdown": "تحت السطح، يكون ماء المستنقع الخثي باردًا وبنيًا.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تحت السطح، يكون ماء المستنقع الخثي باردًا وبنيًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-056",
+      "block_type": "text",
+      "text": "تربة الغابة الشمالية فقيرة ورقيقة.",
+      "text_markdown": "تربة الغابة الشمالية فقيرة ورقيقة.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تربة الغابة الشمالية فقيرة ورقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-057",
+      "block_type": "text",
+      "text": "تتحلل إبر الصنوبر والأوراق الميتة ببطء في البرد.",
+      "text_markdown": "تتحلل إبر الصنوبر والأوراق الميتة ببطء في البرد.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تتحلل إبر الصنوبر والأوراق الميتة ببطء في البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-058",
+      "block_type": "text",
+      "text": "يستغرق الغذاء الجيد للنباتات وقتًا طويلاً ليتراكم.",
+      "text_markdown": "يستغرق الغذاء الجيد للنباتات وقتًا طويلاً ليتراكم.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "يستغرق الغذاء الجيد للنباتات وقتًا طويلاً ليتراكم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-059",
+      "block_type": "text",
+      "text": "في أقصى شمال الغابة الشمالية، تبقى الأرض التي يزيد عمقها عن متر أو مترين متجمدة طوال العام.",
+      "text_markdown": "في أقصى شمال الغابة الشمالية، تبقى الأرض التي يزيد عمقها عن متر أو مترين متجمدة طوال العام.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "في أقصى شمال الغابة الشمالية، تبقى الأرض التي يزيد عمقها عن متر أو مترين متجمدة طوال العام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-060",
+      "block_type": "text",
+      "text": "تسمى هذه الأرض المتجمدة بالتربة الصقيعية الدائمة (permafrost).",
+      "text_markdown": "تسمى هذه الأرض المتجمدة بالتربة الصقيعية الدائمة (permafrost).",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "تسمى هذه الأرض المتجمدة بالتربة الصقيعية الدائمة (permafrost).",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "chapter": 4,
+      "sentence_index": 0,
+      "id": "ch04-061",
+      "block_type": "text",
+      "text": "حتى في يوم صيفي حار، تكون التربة تحت الطحالب باردة الملمس.",
+      "text_markdown": "حتى في يوم صيفي حار، تكون التربة تحت الطحالب باردة الملمس.",
+      "title": "الأرض والماء",
+      "tts": {
+        "text": "حتى في يوم صيفي حار، تكون التربة تحت الطحالب باردة الملمس.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-062",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الأشجار",
+      "text_markdown": "الأشجار",
+      "title": "الأشجار"
+    },
+    {
+      "paragraph_id": "p63",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-063",
+      "block_type": "text",
+      "text": "أشجار الغابة الشمالية دائمة الخضرة في معظمها.",
+      "text_markdown": "أشجار الغابة الشمالية دائمة الخضرة في معظمها.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "أشجار الغابة الشمالية دائمة الخضرة في معظمها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-064",
+      "block_type": "text",
+      "text": "لا تسقط جميع أوراقها في نهاية الصيف.",
+      "text_markdown": "لا تسقط جميع أوراقها في نهاية الصيف.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "لا تسقط جميع أوراقها في نهاية الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-065",
+      "block_type": "text",
+      "text": "بدلاً من ذلك، تحتفظ بإبرها الخضراء الصغيرة طوال العام.",
+      "text_markdown": "بدلاً من ذلك، تحتفظ بإبرها الخضراء الصغيرة طوال العام.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "بدلاً من ذلك، تحتفظ بإبرها الخضراء الصغيرة طوال العام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-066",
+      "block_type": "text",
+      "text": "الإبرة صغيرة وقوية.",
+      "text_markdown": "الإبرة صغيرة وقوية.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "الإبرة صغيرة وقوية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-067",
+      "block_type": "text",
+      "text": "لا تفقد الكثير من الماء بسبب الرياح، ولا تنكسر تحت الثلج.",
+      "text_markdown": "لا تفقد الكثير من الماء بسبب الرياح، ولا تنكسر تحت الثلج.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "لا تفقد الكثير من الماء بسبب الرياح، ولا تنكسر تحت الثلج.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-068",
+      "block_type": "text",
+      "text": "تنمو العديد من الأشجار على شكل مخروط طويل وضيق.",
+      "text_markdown": "تنمو العديد من الأشجار على شكل مخروط طويل وضيق.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تنمو العديد من الأشجار على شكل مخروط طويل وضيق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-069",
+      "block_type": "text",
+      "text": "عندما يتساقط الثلج الكثيف على شجرة مخروطية الشكل، ينزلق عنها بسهولة.",
+      "text_markdown": "عندما يتساقط الثلج الكثيف على شجرة مخروطية الشكل، ينزلق عنها بسهولة.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "عندما يتساقط الثلج الكثيف على شجرة مخروطية الشكل، ينزلق عنها بسهولة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p70",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-070",
+      "block_type": "text",
+      "text": "أكثر الأشجار الشمالية شيوعًا هي التنوب، الصنوبر، الشوح، واللاركس.",
+      "text_markdown": "أكثر الأشجار الشمالية شيوعًا هي التنوب، الصنوبر، الشوح، واللاركس.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "أكثر الأشجار الشمالية شيوعًا هي التنوب، الصنوبر، الشوح، واللاركس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p71",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-071",
+      "block_type": "text",
+      "text": "أشجار التنوب لها إبر قصيرة وحادة ومخاريط صغيرة تتدلى إلى الأسفل.",
+      "text_markdown": "أشجار التنوب لها إبر قصيرة وحادة ومخاريط صغيرة تتدلى إلى الأسفل.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "أشجار التنوب لها إبر قصيرة وحادة ومخاريط صغيرة تتدلى إلى الأسفل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p72",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-072",
+      "block_type": "text",
+      "text": "أشجار الصنوبر لها إبر طويلة وناعمة تنمو في حزم صغيرة من اثنتين أو ثلاث.",
+      "text_markdown": "أشجار الصنوبر لها إبر طويلة وناعمة تنمو في حزم صغيرة من اثنتين أو ثلاث.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "أشجار الصنوبر لها إبر طويلة وناعمة تنمو في حزم صغيرة من اثنتين أو ثلاث.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p73",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-073",
+      "block_type": "text",
+      "text": "أشجار الشوح لها إبر مسطحة وناعمة ومخاريط طويلة تتجه إلى الأعلى مباشرة.",
+      "text_markdown": "أشجار الشوح لها إبر مسطحة وناعمة ومخاريط طويلة تتجه إلى الأعلى مباشرة.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "أشجار الشوح لها إبر مسطحة وناعمة ومخاريط طويلة تتجه إلى الأعلى مباشرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p74",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-074",
+      "block_type": "text",
+      "text": "اللاركس هو الشجرة الشمالية الشائعة الوحيدة التي تسقط إبرها في الخريف.",
+      "text_markdown": "اللاركس هو الشجرة الشمالية الشائعة الوحيدة التي تسقط إبرها في الخريف.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "اللاركس هو الشجرة الشمالية الشائعة الوحيدة التي تسقط إبرها في الخريف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p75",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-075",
+      "block_type": "text",
+      "text": "قبل أن تسقطها، يتحول اللاركس إلى اللون الذهبي الزاهي.",
+      "text_markdown": "قبل أن تسقطها، يتحول اللاركس إلى اللون الذهبي الزاهي.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "قبل أن تسقطها، يتحول اللاركس إلى اللون الذهبي الزاهي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p76",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-076",
+      "block_type": "text",
+      "text": "تبدو غابة لاركس عظيمة في أكتوبر كبحر من الذهب يمتد عبر الأرض الباردة.",
+      "text_markdown": "تبدو غابة لاركس عظيمة في أكتوبر كبحر من الذهب يمتد عبر الأرض الباردة.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تبدو غابة لاركس عظيمة في أكتوبر كبحر من الذهب يمتد عبر الأرض الباردة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p77",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-077",
+      "block_type": "text",
+      "text": "في كل هذه الغابات، تقف الأشجار متقاربة.",
+      "text_markdown": "في كل هذه الغابات، تقف الأشجار متقاربة.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "في كل هذه الغابات، تقف الأشجار متقاربة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p78",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-078",
+      "block_type": "text",
+      "text": "الأغصان كثيفة في الأعلى وعارية بالقرب من الأسفل، حيث لا تصل الشمس.",
+      "text_markdown": "الأغصان كثيفة في الأعلى وعارية بالقرب من الأسفل، حيث لا تصل الشمس.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "الأغصان كثيفة في الأعلى وعارية بالقرب من الأسفل، حيث لا تصل الشمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p79",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-079",
+      "block_type": "text",
+      "text": "الظل بين الأشجار عميق وهادئ.",
+      "text_markdown": "الظل بين الأشجار عميق وهادئ.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "الظل بين الأشجار عميق وهادئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p80",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-080",
+      "block_type": "text",
+      "text": "على أرضية الغابة، اللون الأخضر ليس في الأوراق بل في الطحالب.",
+      "text_markdown": "على أرضية الغابة، اللون الأخضر ليس في الأوراق بل في الطحالب.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "على أرضية الغابة، اللون الأخضر ليس في الأوراق بل في الطحالب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "paragraph_id": "p81",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-081",
+      "block_type": "text",
+      "text": "تغطي الطحالب الناعمة الكثيفة الأرض، جذوع الأشجار المتساقطة، والصخور.",
+      "text_markdown": "تغطي الطحالب الناعمة الكثيفة الأرض، جذوع الأشجار المتساقطة، والصخور.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تغطي الطحالب الناعمة الكثيفة الأرض، جذوع الأشجار المتساقطة، والصخور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p82",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-082",
+      "block_type": "text",
+      "text": "تنمو الفطر بأشكال وألوان عديدة عبر الطحالب في أواخر الصيف.",
+      "text_markdown": "تنمو الفطر بأشكال وألوان عديدة عبر الطحالب في أواخر الصيف.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تنمو الفطر بأشكال وألوان عديدة عبر الطحالب في أواخر الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p83",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-083",
+      "block_type": "text",
+      "text": "تنمو التوت الصغير على شجيرات ضئيلة بين الطحالب.",
+      "text_markdown": "تنمو التوت الصغير على شجيرات ضئيلة بين الطحالب.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تنمو التوت الصغير على شجيرات ضئيلة بين الطحالب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p84",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-084",
+      "block_type": "text",
+      "text": "تنمو هنا جميع أنواع التوت البري الحلو، والتوت البري الأحمر، والتوت الغراب الأسود الصغير.",
+      "text_markdown": "تنمو هنا جميع أنواع التوت البري الحلو، والتوت البري الأحمر، والتوت الغراب الأسود الصغير.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "تنمو هنا جميع أنواع التوت البري الحلو، والتوت البري الأحمر، والتوت الغراب الأسود الصغير.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p85",
+      "chapter": 5,
+      "sentence_index": 0,
+      "id": "ch05-085",
+      "block_type": "text",
+      "text": "في الصيف القصير، يجمعها سكان الغابة وحيواناتها بالسلال.",
+      "text_markdown": "في الصيف القصير، يجمعها سكان الغابة وحيواناتها بالسلال.",
+      "title": "الأشجار",
+      "tts": {
+        "text": "في الصيف القصير، يجمعها سكان الغابة وحيواناتها بالسلال.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "paragraph_id": "p86",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-086",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات",
+      "title": "الحيوانات"
+    },
+    {
+      "paragraph_id": "p87",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-087",
+      "block_type": "text",
+      "text": "الغابة الشمالية هي موطن للعديد من الحيوانات التي تعرف كيف تعيش في البرد.",
+      "text_markdown": "الغابة الشمالية هي موطن للعديد من الحيوانات التي تعرف كيف تعيش في البرد.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "الغابة الشمالية هي موطن للعديد من الحيوانات التي تعرف كيف تعيش في البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p88",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-088",
+      "block_type": "text",
+      "text": "معظمها يمتلك فراءً سميكًا، أو دهونًا تحت جلده، أو كليهما.",
+      "text_markdown": "معظمها يمتلك فراءً سميكًا، أو دهونًا تحت جلده، أو كليهما.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "معظمها يمتلك فراءً سميكًا، أو دهونًا تحت جلده، أو كليهما.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p89",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-089",
+      "block_type": "text",
+      "text": "أكبر حيوان في الغابة الشمالية هو الموظ.",
+      "text_markdown": "أكبر حيوان في الغابة الشمالية هو الموظ.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "أكبر حيوان في الغابة الشمالية هو الموظ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p90",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-090",
+      "block_type": "text",
+      "text": "الموظ هو غزال طويل جدًا ذو وجه طويل وجسم ثقيل.",
+      "text_markdown": "الموظ هو غزال طويل جدًا ذو وجه طويل وجسم ثقيل.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "الموظ هو غزال طويل جدًا ذو وجه طويل وجسم ثقيل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p91",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-091",
+      "block_type": "text",
+      "text": "يمكن أن يكون الموظ البالغ أطول من أطول شخص، وله قرون عريضة وكبيرة على رأسه.",
+      "text_markdown": "يمكن أن يكون الموظ البالغ أطول من أطول شخص، وله قرون عريضة وكبيرة على رأسه.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يمكن أن يكون الموظ البالغ أطول من أطول شخص، وله قرون عريضة وكبيرة على رأسه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p92",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-092",
+      "block_type": "text",
+      "text": "يتغذى على النباتات المائية في الصيف وعلى الأغصان واللحاء في الشتاء.",
+      "text_markdown": "يتغذى على النباتات المائية في الصيف وعلى الأغصان واللحاء في الشتاء.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يتغذى على النباتات المائية في الصيف وعلى الأغصان واللحاء في الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p93",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-093",
+      "block_type": "text",
+      "text": "الموظ خجول، ولكن إذا قابلت واحدًا، فلن تنساه.",
+      "text_markdown": "الموظ خجول، ولكن إذا قابلت واحدًا، فلن تنساه.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "الموظ خجول، ولكن إذا قابلت واحدًا، فلن تنساه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p94",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-094",
+      "block_type": "text",
+      "text": "تعيش الدببة البنية في أجزاء كثيرة من الغابة الشمالية.",
+      "text_markdown": "تعيش الدببة البنية في أجزاء كثيرة من الغابة الشمالية.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تعيش الدببة البنية في أجزاء كثيرة من الغابة الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p95",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-095",
+      "block_type": "text",
+      "text": "في الصيف، يأكل الدب البني التوت والأسماك والجذور والحيوانات الصغيرة.",
+      "text_markdown": "في الصيف، يأكل الدب البني التوت والأسماك والجذور والحيوانات الصغيرة.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "في الصيف، يأكل الدب البني التوت والأسماك والجذور والحيوانات الصغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p96",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-096",
+      "block_type": "text",
+      "text": "في الخريف، يأكل قدر الإمكان لتكوين طبقة سميكة من الدهون.",
+      "text_markdown": "في الخريف، يأكل قدر الإمكان لتكوين طبقة سميكة من الدهون.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "في الخريف، يأكل قدر الإمكان لتكوين طبقة سميكة من الدهون.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p97",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-097",
+      "block_type": "text",
+      "text": "ثم ينام في عرين تحت الثلج طوال فصل الشتاء.",
+      "text_markdown": "ثم ينام في عرين تحت الثلج طوال فصل الشتاء.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "ثم ينام في عرين تحت الثلج طوال فصل الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p98",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-098",
+      "block_type": "text",
+      "text": "تصطاد الذئاب في جميع أنحاء الغابة في مجموعات عائلية تسمى قطعانًا.",
+      "text_markdown": "تصطاد الذئاب في جميع أنحاء الغابة في مجموعات عائلية تسمى قطعانًا.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تصطاد الذئاب في جميع أنحاء الغابة في مجموعات عائلية تسمى قطعانًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p99",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-099",
+      "block_type": "text",
+      "text": "يمكن لقطيع الذئاب أن يقطع أميالاً عديدة في يوم واحد.",
+      "text_markdown": "يمكن لقطيع الذئاب أن يقطع أميالاً عديدة في يوم واحد.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يمكن لقطيع الذئاب أن يقطع أميالاً عديدة في يوم واحد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p100",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-100",
+      "block_type": "text",
+      "text": "تصطاد الذئاب الموظ والغزلان والحيوانات الأصغر حجمًا.",
+      "text_markdown": "تصطاد الذئاب الموظ والغزلان والحيوانات الأصغر حجمًا.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تصطاد الذئاب الموظ والغزلان والحيوانات الأصغر حجمًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p101",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-101",
+      "block_type": "text",
+      "text": "في الثلج العميق، تسير في صف واحد، يتبع كل ذئب آثار الذي أمامه.",
+      "text_markdown": "في الثلج العميق، تسير في صف واحد، يتبع كل ذئب آثار الذي أمامه.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "في الثلج العميق، تسير في صف واحد، يتبع كل ذئب آثار الذي أمامه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p102",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-102",
+      "block_type": "text",
+      "text": "الوشق قط بري من الغابة الشمالية.",
+      "text_markdown": "الوشق قط بري من الغابة الشمالية.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "الوشق قط بري من الغابة الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p103",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-103",
+      "block_type": "text",
+      "text": "له فراء رمادي سميك، وذيل قصير، وخصلات شعر مدببة عند أطراف أذنيه.",
+      "text_markdown": "له فراء رمادي سميك، وذيل قصير، وخصلات شعر مدببة عند أطراف أذنيه.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "له فراء رمادي سميك، وذيل قصير، وخصلات شعر مدببة عند أطراف أذنيه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "paragraph_id": "p104",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-104",
+      "block_type": "text",
+      "text": "تعمل أقدامه الكبيرة المغطاة بالفراء كأحذية ثلج في الثلج العميق.",
+      "text_markdown": "تعمل أقدامه الكبيرة المغطاة بالفراء كأحذية ثلج في الثلج العميق.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تعمل أقدامه الكبيرة المغطاة بالفراء كأحذية ثلج في الثلج العميق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p105",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-105",
+      "block_type": "text",
+      "text": "يصطاد الوشق في الغالب أرنب الثلج.",
+      "text_markdown": "يصطاد الوشق في الغالب أرنب الثلج.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يصطاد الوشق في الغالب أرنب الثلج.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p106",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-106",
+      "block_type": "text",
+      "text": "يتحول لون أرنب الثلج إلى البني في الصيف والأبيض في الشتاء، ليتناسب مع الأرض.",
+      "text_markdown": "يتحول لون أرنب الثلج إلى البني في الصيف والأبيض في الشتاء، ليتناسب مع الأرض.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يتحول لون أرنب الثلج إلى البني في الصيف والأبيض في الشتاء، ليتناسب مع الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p107",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-107",
+      "block_type": "text",
+      "text": "تعيش القنادس في أنهار وبحيرات الغابة.",
+      "text_markdown": "تعيش القنادس في أنهار وبحيرات الغابة.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تعيش القنادس في أنهار وبحيرات الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p108",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-108",
+      "block_type": "text",
+      "text": "يقطع القندس الأشجار بأسنانه القوية ويبني السدود والأكواخ من الخشب والطين.",
+      "text_markdown": "يقطع القندس الأشجار بأسنانه القوية ويبني السدود والأكواخ من الخشب والطين.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يقطع القندس الأشجار بأسنانه القوية ويبني السدود والأكواخ من الخشب والطين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p109",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-109",
+      "block_type": "text",
+      "text": "يمكن لبركة القندس أن تحول مساحة كاملة من الغابة إلى بركة هادئة مليئة بالحياة.",
+      "text_markdown": "يمكن لبركة القندس أن تحول مساحة كاملة من الغابة إلى بركة هادئة مليئة بالحياة.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "يمكن لبركة القندس أن تحول مساحة كاملة من الغابة إلى بركة هادئة مليئة بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "paragraph_id": "p110",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-110",
+      "block_type": "text",
+      "text": "عاليًا في الأشجار، تثرثر السناجب الحمراء بصوت عالٍ وتجمع أكواز الصنوبر لفصل الشتاء.",
+      "text_markdown": "عاليًا في الأشجار، تثرثر السناجب الحمراء بصوت عالٍ وتجمع أكواز الصنوبر لفصل الشتاء.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "عاليًا في الأشجار، تثرثر السناجب الحمراء بصوت عالٍ وتجمع أكواز الصنوبر لفصل الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p111",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-111",
+      "block_type": "text",
+      "text": "تتسلل الولفيرين والدلق والمنك بصمت عبر الشجيرات السفلية.",
+      "text_markdown": "تتسلل الولفيرين والدلق والمنك بصمت عبر الشجيرات السفلية.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تتسلل الولفيرين والدلق والمنك بصمت عبر الشجيرات السفلية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p112",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-112",
+      "block_type": "text",
+      "text": "تصطاد أنواع عديدة من البوم ليلاً.",
+      "text_markdown": "تصطاد أنواع عديدة من البوم ليلاً.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تصطاد أنواع عديدة من البوم ليلاً.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p113",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-113",
+      "block_type": "text",
+      "text": "البومة الرمادية الكبيرة هي واحدة من أطول البوم في العالم، وتعيش في الغابة الشمالية.",
+      "text_markdown": "البومة الرمادية الكبيرة هي واحدة من أطول البوم في العالم، وتعيش في الغابة الشمالية.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "البومة الرمادية الكبيرة هي واحدة من أطول البوم في العالم، وتعيش في الغابة الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p114",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-114",
+      "block_type": "text",
+      "text": "تحلق الغربان بين الأشجار، تنادي بعضها البعض بأصوات مختلفة كثيرة.",
+      "text_markdown": "تحلق الغربان بين الأشجار، تنادي بعضها البعض بأصوات مختلفة كثيرة.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "تحلق الغربان بين الأشجار، تنادي بعضها البعض بأصوات مختلفة كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p115",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-115",
+      "block_type": "text",
+      "text": "في الصيف القصير، تملأ أسراب البعوض والذباب الصغير الهواء.",
+      "text_markdown": "في الصيف القصير، تملأ أسراب البعوض والذباب الصغير الهواء.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "في الصيف القصير، تملأ أسراب البعوض والذباب الصغير الهواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p116",
+      "chapter": 6,
+      "sentence_index": 0,
+      "id": "ch06-116",
+      "block_type": "text",
+      "text": "لبضعة أسابيع، تكون الغابة حية بطنين الحشرات، وأغاني الطيور الصغيرة، ورشيش الأسماك في البحيرات.",
+      "text_markdown": "لبضعة أسابيع، تكون الغابة حية بطنين الحشرات، وأغاني الطيور الصغيرة، ورشيش الأسماك في البحيرات.",
+      "title": "الحيوانات",
+      "tts": {
+        "text": "لبضعة أسابيع، تكون الغابة حية بطنين الحشرات، وأغاني الطيور الصغيرة، ورشيش الأسماك في البحيرات.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p117",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-117",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "الناس",
+      "text_markdown": "الناس",
+      "title": "الناس"
+    },
+    {
+      "paragraph_id": "p118",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-118",
+      "block_type": "text",
+      "text": "الغابة الشمالية هي واحدة من أكثر الأماكن خلوًا من السكان على وجه الأرض.",
+      "text_markdown": "الغابة الشمالية هي واحدة من أكثر الأماكن خلوًا من السكان على وجه الأرض.",
+      "title": "الناس",
+      "tts": {
+        "text": "الغابة الشمالية هي واحدة من أكثر الأماكن خلوًا من السكان على وجه الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p119",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-119",
+      "block_type": "text",
+      "text": "الشتاء الطويل والتربة الرقيقة يجعلان من الصعب زراعة الطعام هنا.",
+      "text_markdown": "الشتاء الطويل والتربة الرقيقة يجعلان من الصعب زراعة الطعام هنا.",
+      "title": "الناس",
+      "tts": {
+        "text": "الشتاء الطويل والتربة الرقيقة يجعلان من الصعب زراعة الطعام هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p120",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-120",
+      "block_type": "text",
+      "text": "لكن الناس عاشوا في هذه الغابة العظيمة لآلاف السنين.",
+      "text_markdown": "لكن الناس عاشوا في هذه الغابة العظيمة لآلاف السنين.",
+      "title": "الناس",
+      "tts": {
+        "text": "لكن الناس عاشوا في هذه الغابة العظيمة لآلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p121",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-121",
+      "block_type": "text",
+      "text": "في شمال أوروبا، عاش شعب السامي في الغابة الشمالية والتندرا التي تعلوها لفترة طويلة جدًا.",
+      "text_markdown": "في شمال أوروبا، عاش شعب السامي في الغابة الشمالية والتندرا التي تعلوها لفترة طويلة جدًا.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في شمال أوروبا، عاش شعب السامي في الغابة الشمالية والتندرا التي تعلوها لفترة طويلة جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p122",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-122",
+      "block_type": "text",
+      "text": "يرعى شعب السامي الرنة عبر الأراضي الباردة في النرويج والسويد وفنلندا وروسيا.",
+      "text_markdown": "يرعى شعب السامي الرنة عبر الأراضي الباردة في النرويج والسويد وفنلندا وروسيا.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "يرعى شعب السامي الرنة عبر الأراضي الباردة في النرويج والسويد وفنلندا وروسيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p123",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-123",
+      "block_type": "text",
+      "text": "يمكن للرنة أن تجد الطعام في الثلج، وتوفر للناس اللحم والحليب والجلود.",
+      "text_markdown": "يمكن للرنة أن تجد الطعام في الثلج، وتوفر للناس اللحم والحليب والجلود.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "يمكن للرنة أن تجد الطعام في الثلج، وتوفر للناس اللحم والحليب والجلود.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p124",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-124",
+      "block_type": "text",
+      "text": "تسحب الرنة أيضًا الزلاجات عبر ثلوج الشتاء.",
+      "text_markdown": "تسحب الرنة أيضًا الزلاجات عبر ثلوج الشتاء.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تسحب الرنة أيضًا الزلاجات عبر ثلوج الشتاء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p125",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-125",
+      "block_type": "text",
+      "text": "في سيبيريا، شمال روسيا، اتخذت العديد من المجموعات البشرية الغابة الشمالية موطنًا لها.",
+      "text_markdown": "في سيبيريا، شمال روسيا، اتخذت العديد من المجموعات البشرية الغابة الشمالية موطنًا لها.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في سيبيريا، شمال روسيا، اتخذت العديد من المجموعات البشرية الغابة الشمالية موطنًا لها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p126",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-126",
+      "block_type": "text",
+      "text": "لقد قام الإيفينكي والخانتس والننتس وغيرهم بالصيد وصيد الأسماك ورعي الرنة هنا لأجيال عديدة.",
+      "text_markdown": "لقد قام الإيفينكي والخانتس والننتس وغيرهم بالصيد وصيد الأسماك ورعي الرنة هنا لأجيال عديدة.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "لقد قام الإيفينكي والخانتس والننتس وغيرهم بالصيد وصيد الأسماك ورعي الرنة هنا لأجيال عديدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p127",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-127",
+      "block_type": "text",
+      "text": "في كندا وألاسكا، عاش العديد من شعوب الأمم الأولى والديني في الغابة الشمالية لآلاف السنين.",
+      "text_markdown": "في كندا وألاسكا، عاش العديد من شعوب الأمم الأولى والديني في الغابة الشمالية لآلاف السنين.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في كندا وألاسكا، عاش العديد من شعوب الأمم الأولى والديني في الغابة الشمالية لآلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p128",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-128",
+      "block_type": "text",
+      "text": "لقد اصطادوا الموظ والكاريبو، وصادوا الأسماك في الأنهار الباردة، وجمعوا التوت في الصيف القصير.",
+      "text_markdown": "لقد اصطادوا الموظ والكاريبو، وصادوا الأسماك في الأنهار الباردة، وجمعوا التوت في الصيف القصير.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "لقد اصطادوا الموظ والكاريبو، وصادوا الأسماك في الأنهار الباردة، وجمعوا التوت في الصيف القصير.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p129",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-129",
+      "block_type": "text",
+      "text": "في جميع هذه الأراضي، صنع الناس ملابس شتوية دافئة من جلود الحيوانات والفراء.",
+      "text_markdown": "في جميع هذه الأراضي، صنع الناس ملابس شتوية دافئة من جلود الحيوانات والفراء.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في جميع هذه الأراضي، صنع الناس ملابس شتوية دافئة من جلود الحيوانات والفراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p130",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-130",
+      "block_type": "text",
+      "text": "بنوا منازل من الخشب واللحاء والجلد، بفتحات صغيرة لمنع دخول البرد.",
+      "text_markdown": "بنوا منازل من الخشب واللحاء والجلد، بفتحات صغيرة لمنع دخول البرد.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "بنوا منازل من الخشب واللحاء والجلد، بفتحات صغيرة لمنع دخول البرد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p131",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-131",
+      "block_type": "text",
+      "text": "تعلموا السفر بأحذية الثلج وعلى الزلاجات الطويلة الرفيعة، ولاحقًا باستخدام زلاجات الكلاب.",
+      "text_markdown": "تعلموا السفر بأحذية الثلج وعلى الزلاجات الطويلة الرفيعة، ولاحقًا باستخدام زلاجات الكلاب.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تعلموا السفر بأحذية الثلج وعلى الزلاجات الطويلة الرفيعة، ولاحقًا باستخدام زلاجات الكلاب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p132",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-132",
+      "block_type": "text",
+      "text": "في الصيف، سافروا بالزورق، أو بقارب طويل من لحاء البتولا، أو بالرنة.",
+      "text_markdown": "في الصيف، سافروا بالزورق، أو بقارب طويل من لحاء البتولا، أو بالرنة.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في الصيف، سافروا بالزورق، أو بقارب طويل من لحاء البتولا، أو بالرنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p133",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-133",
+      "block_type": "text",
+      "text": "تعلم هؤلاء الناس أسماء كل شجرة وكل حيوان في الغابة.",
+      "text_markdown": "تعلم هؤلاء الناس أسماء كل شجرة وكل حيوان في الغابة.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تعلم هؤلاء الناس أسماء كل شجرة وكل حيوان في الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p134",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-134",
+      "block_type": "text",
+      "text": "تعلموا أماكن تجمعات التوت، وأين كانت الأسماك أكثر وفرة.",
+      "text_markdown": "تعلموا أماكن تجمعات التوت، وأين كانت الأسماك أكثر وفرة.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تعلموا أماكن تجمعات التوت، وأين كانت الأسماك أكثر وفرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p135",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-135",
+      "block_type": "text",
+      "text": "تعلموا أي أنواع الفطر يمكن أكلها وأيها لا يمكن.",
+      "text_markdown": "تعلموا أي أنواع الفطر يمكن أكلها وأيها لا يمكن.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تعلموا أي أنواع الفطر يمكن أكلها وأيها لا يمكن.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p136",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-136",
+      "block_type": "text",
+      "text": "تعلموا كيف يقرأون الثلج لتعقب آثار الموظ والدببة.",
+      "text_markdown": "تعلموا كيف يقرأون الثلج لتعقب آثار الموظ والدببة.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "تعلموا كيف يقرأون الثلج لتعقب آثار الموظ والدببة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p137",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-137",
+      "block_type": "text",
+      "text": "في الآونة الأخيرة، جاء أناس آخرون إلى الغابة لقطع الأخشاب، أو للتنقيب عن الخام، أو للعيش في بلدات صغيرة على طول الأنهار.",
+      "text_markdown": "في الآونة الأخيرة، جاء أناس آخرون إلى الغابة لقطع الأخشاب، أو للتنقيب عن الخام، أو للعيش في بلدات صغيرة على طول الأنهار.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "في الآونة الأخيرة، جاء أناس آخرون إلى الغابة لقطع الأخشاب، أو للتنقيب عن الخام، أو للعيش في بلدات صغيرة على طول الأنهار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p138",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-138",
+      "block_type": "text",
+      "text": "ولكن طوال معظم تاريخها الطويل، كانت الغابة الشمالية مكانًا هادئًا.",
+      "text_markdown": "ولكن طوال معظم تاريخها الطويل، كانت الغابة الشمالية مكانًا هادئًا.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "ولكن طوال معظم تاريخها الطويل، كانت الغابة الشمالية مكانًا هادئًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p139",
+      "chapter": 7,
+      "sentence_index": 0,
+      "id": "ch07-139",
+      "block_type": "text",
+      "text": "مكان تشارك فيه مجموعات صغيرة من الناس الأرض مع الأشجار والحيوانات والبرد.",
+      "text_markdown": "مكان تشارك فيه مجموعات صغيرة من الناس الأرض مع الأشجار والحيوانات والبرد.",
+      "title": "الشعوب",
+      "tts": {
+        "text": "مكان تشارك فيه مجموعات صغيرة من الناس الأرض مع الأشجار والحيوانات والبرد.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p140",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-140",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "المنطقة الأحيائية اليوم",
+      "text_markdown": "المنطقة الأحيائية اليوم",
+      "title": "المنطقة الأحيائية اليوم"
+    },
+    {
+      "paragraph_id": "p141",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-141",
+      "block_type": "text",
+      "text": "الغابة الشمالية ضخمة، لكنها ليست بكرًا كما تبدو.",
+      "text_markdown": "الغابة الشمالية ضخمة، لكنها ليست بكرًا كما تبدو.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "الغابة الشمالية ضخمة، لكنها ليست بكرًا كما تبدو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "paragraph_id": "p142",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-142",
+      "block_type": "text",
+      "text": "لأكثر من مائة عام، قطع الناس كميات كبيرة من الأخشاب من هذه الغابة.",
+      "text_markdown": "لأكثر من مائة عام، قطع الناس كميات كبيرة من الأخشاب من هذه الغابة.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "لأكثر من مائة عام، قطع الناس كميات كبيرة من الأخشاب من هذه الغابة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p143",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-143",
+      "block_type": "text",
+      "text": "الأشجار الطويلة المستقيمة تصنع أخشابًا جيدة وورقًا جيدًا.",
+      "text_markdown": "الأشجار الطويلة المستقيمة تصنع أخشابًا جيدة وورقًا جيدًا.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "الأشجار الطويلة المستقيمة تصنع أخشابًا جيدة وورقًا جيدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p144",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-144",
+      "block_type": "text",
+      "text": "في أجزاء كثيرة من الغابة الشمالية، تم قطع أقسام كاملة من الأشجار ونمت ببطء مرة أخرى.",
+      "text_markdown": "في أجزاء كثيرة من الغابة الشمالية، تم قطع أقسام كاملة من الأشجار ونمت ببطء مرة أخرى.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "في أجزاء كثيرة من الغابة الشمالية، تم قطع أقسام كاملة من الأشجار ونمت ببطء مرة أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "paragraph_id": "p145",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-145",
+      "block_type": "text",
+      "text": "تحتوي الغابة الشمالية أيضًا على كمية هائلة من الكربون، في الأشجار وفي التربة والمستنقعات أدناه.",
+      "text_markdown": "تحتوي الغابة الشمالية أيضًا على كمية هائلة من الكربون، في الأشجار وفي التربة والمستنقعات أدناه.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "تحتوي الغابة الشمالية أيضًا على كمية هائلة من الكربون، في الأشجار وفي التربة والمستنقعات أدناه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p146",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-146",
+      "block_type": "text",
+      "text": "التربة الشمالية الصحية تحافظ على هذا الكربون محبوسًا بأمان بعيدًا عن الهواء.",
+      "text_markdown": "التربة الشمالية الصحية تحافظ على هذا الكربون محبوسًا بأمان بعيدًا عن الهواء.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "التربة الشمالية الصحية تحافظ على هذا الكربون محبوسًا بأمان بعيدًا عن الهواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p147",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-147",
+      "block_type": "text",
+      "text": "عندما تُحفظ الأشجار والتربة سليمة، تساعد الغابة في الحفاظ على توازن هواء الأرض بأكملها.",
+      "text_markdown": "عندما تُحفظ الأشجار والتربة سليمة، تساعد الغابة في الحفاظ على توازن هواء الأرض بأكملها.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "عندما تُحفظ الأشجار والتربة سليمة، تساعد الغابة في الحفاظ على توازن هواء الأرض بأكملها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p148",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-148",
+      "block_type": "text",
+      "text": "في السنوات الأخيرة، أصبحت الغابة الشمالية أكثر دفئًا.",
+      "text_markdown": "في السنوات الأخيرة، أصبحت الغابة الشمالية أكثر دفئًا.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "في السنوات الأخيرة، أصبحت الغابة الشمالية أكثر دفئًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p149",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-149",
+      "block_type": "text",
+      "text": "جلبت فصول الصيف الطويلة الدافئة حرائق غابات أكبر مما يتذكره سكان الشمال.",
+      "text_markdown": "جلبت فصول الصيف الطويلة الدافئة حرائق غابات أكبر مما يتذكره سكان الشمال.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "جلبت فصول الصيف الطويلة الدافئة حرائق غابات أكبر مما يتذكره سكان الشمال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p150",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-150",
+      "block_type": "text",
+      "text": "تستمر بعض هذه الحرائق الآن لأسابيع وتحرق ملايين الأشجار.",
+      "text_markdown": "تستمر بعض هذه الحرائق الآن لأسابيع وتحرق ملايين الأشجار.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "تستمر بعض هذه الحرائق الآن لأسابيع وتحرق ملايين الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p151",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-151",
+      "block_type": "text",
+      "text": "في أقصى الشمال، بدأت فصول الصيف الأكثر دفئًا في تليين التربة الصقيعية.",
+      "text_markdown": "في أقصى الشمال، بدأت فصول الصيف الأكثر دفئًا في تليين التربة الصقيعية.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "في أقصى الشمال، بدأت فصول الصيف الأكثر دفئًا في تليين التربة الصقيعية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p152",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-152",
+      "block_type": "text",
+      "text": "يعمل العديد من الأفراد والجماعات اليوم على رعاية الغابة الشمالية.",
+      "text_markdown": "يعمل العديد من الأفراد والجماعات اليوم على رعاية الغابة الشمالية.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "يعمل العديد من الأفراد والجماعات اليوم على رعاية الغابة الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p153",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-153",
+      "block_type": "text",
+      "text": "لقد خصصوا حدائق كبيرة حيث يمكن للغابة أن تنمو كما كانت دائمًا.",
+      "text_markdown": "لقد خصصوا حدائق كبيرة حيث يمكن للغابة أن تنمو كما كانت دائمًا.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "لقد خصصوا حدائق كبيرة حيث يمكن للغابة أن تنمو كما كانت دائمًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p154",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-154",
+      "block_type": "text",
+      "text": "إنهم يساعدون الأشخاص الذين عاشوا هناك لأجيال عديدة على رعاية أراضيهم.",
+      "text_markdown": "إنهم يساعدون الأشخاص الذين عاشوا هناك لأجيال عديدة على رعاية أراضيهم.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "إنهم يساعدون الأشخاص الذين عاشوا هناك لأجيال عديدة على رعاية أراضيهم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p155",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-155",
+      "block_type": "text",
+      "text": "إنهم يدرسون الغابة لفهم كيفية عيشها وكيفية الحفاظ عليها سليمة.",
+      "text_markdown": "إنهم يدرسون الغابة لفهم كيفية عيشها وكيفية الحفاظ عليها سليمة.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "إنهم يدرسون الغابة لفهم كيفية عيشها وكيفية الحفاظ عليها سليمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p156",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-156",
+      "block_type": "text",
+      "text": "الغابة الشمالية الصحية هي غطاء أخضر عظيم يساعد في الحفاظ على برودة العالم.",
+      "text_markdown": "الغابة الشمالية الصحية هي غطاء أخضر عظيم يساعد في الحفاظ على برودة العالم.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "الغابة الشمالية الصحية هي غطاء أخضر عظيم يساعد في الحفاظ على برودة العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p157",
+      "chapter": 8,
+      "sentence_index": 0,
+      "id": "ch08-157",
+      "block_type": "text",
+      "text": "إنها تستحق رعايتنا.",
+      "text_markdown": "إنها تستحق رعايتنا.",
+      "title": "المنطقة الأحيائية اليوم",
+      "tts": {
+        "text": "إنها تستحق رعايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p158",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-158",
+      "heading_level": 1,
+      "block_type": "heading",
+      "text": "خاتمة",
+      "text_markdown": "خاتمة",
+      "title": "خاتمة"
+    },
+    {
+      "paragraph_id": "p159",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-159",
+      "block_type": "text",
+      "text": "هذه هي الغابة الشمالية.",
+      "text_markdown": "هذه هي الغابة الشمالية.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "هذه هي الغابة الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p160",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-160",
+      "block_type": "text",
+      "text": "حزام أخضر واسع من الأشجار دائمة الخضرة والبحيرات والثلوج الهادئة يمتد تقريبًا حول قمة العالم بأكملها.",
+      "text_markdown": "حزام أخضر واسع من الأشجار دائمة الخضرة والبحيرات والثلوج الهادئة يمتد تقريبًا حول قمة العالم بأكملها.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "حزام أخضر واسع من الأشجار دائمة الخضرة والبحيرات والثلوج الهادئة يمتد تقريبًا حول قمة العالم بأكملها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p161",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-161",
+      "block_type": "text",
+      "text": "إذا وقفت يومًا في إحداها، فابقَ ساكنًا لدقيقة.",
+      "text_markdown": "إذا وقفت يومًا في إحداها، فابقَ ساكنًا لدقيقة.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "إذا وقفت يومًا في إحداها، فابقَ ساكنًا لدقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p162",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-162",
+      "block_type": "text",
+      "text": "استمع إلى الرياح في الإبر العالية.",
+      "text_markdown": "استمع إلى الرياح في الإبر العالية.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "استمع إلى الرياح في الإبر العالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p163",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-163",
+      "block_type": "text",
+      "text": "شاهد الشمس وهي تخترق الأشجار لتصل إلى الطحالب.",
+      "text_markdown": "شاهد الشمس وهي تخترق الأشجار لتصل إلى الطحالب.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "شاهد الشمس وهي تخترق الأشجار لتصل إلى الطحالب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p164",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-164",
+      "block_type": "text",
+      "text": "اشتم رائحة هواء الصنوبر البارد.",
+      "text_markdown": "اشتم رائحة هواء الصنوبر البارد.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "اشتم رائحة هواء الصنوبر البارد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p165",
+      "chapter": 9,
+      "sentence_index": 0,
+      "id": "ch09-165",
+      "block_type": "text",
+      "text": "ستشعر بالقلب البطيء والصابر للمنطقة الأحيائية ينبض من حولك.",
+      "text_markdown": "ستشعر بالقلب البطيء والصابر للمنطقة الأحيائية ينبض من حولك.",
+      "title": "خاتمة",
+      "tts": {
+        "text": "ستشعر بالقلب البطيء والصابر للمنطقة الأحيائية ينبض من حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "fil",
+  "total_segments": 114,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "text": "Maligayang pagdating sa AI This Week.",
+      "text_markdown": "Maligayang pagdating sa AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Maligayang pagdating sa AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "text": "Ako si Vindy.",
+      "text_markdown": "Ako si Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ako si Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "text": "Kasama ko, gaya ng dati, si Ron.",
+      "text_markdown": "Kasama ko, gaya ng dati, si Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kasama ko, gaya ng dati, si Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "text": "Masarap maging nandito, Vindy.",
+      "text_markdown": "Masarap maging nandito, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Masarap maging nandito, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "text": "Ngayon ay Linggo, Hunyo 21, 2026.",
+      "text_markdown": "Ngayon ay Linggo, Hunyo 21, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon ay Linggo, Hunyo dalawampu't isa, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "text": "Noong nakaraang linggo, pinag-usapan natin ang tungkol sa ating sarili; ngayon, pupunta tayo sa kabilang direksyon — hanggang sa mga sentro ng kapangyarihan.",
+      "text_markdown": "Noong nakaraang linggo, pinag-usapan natin ang tungkol sa ating sarili; ngayon, pupunta tayo sa kabilang direksyon — hanggang sa mga sentro ng kapangyarihan.",
+      "title": "",
+      "tts": {
+        "text": "Noong nakaraang linggo, pinag-usapan natin ang tungkol sa ating sarili; ngayon, pupunta tayo sa kabilang direksyon — hanggang sa mga sentro ng kapangyarihan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "text": "Sino ang kumokontrol sa pag-deploy ng AI, sino ang nagbabayad para sa pagtatayo, sino ang nagmamay-ari ng silicon.",
+      "text_markdown": "Sino ang kumokontrol sa pag-deploy ng AI, sino ang nagbabayad para sa pagtatayo, sino ang nagmamay-ari ng silicon.",
+      "title": "",
+      "tts": {
+        "text": "Sino ang kumokontrol sa pag-deploy ng AI, sino ang nagbabayad para sa pagtatayo, sino ang nagmamay-ari ng silicon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "text": "Paparating — binawi ng U.S. Commerce Department ang isang American model mula sa pampublikong paggamit noong nakaraang Biyernes, at doon tayo magsisimula.",
+      "text_markdown": "Paparating — binawi ng U.S. Commerce Department ang isang American model mula sa pampublikong paggamit noong nakaraang Biyernes, at doon tayo magsisimula.",
+      "title": "",
+      "tts": {
+        "text": "Paparating — binawi ng United States Commerce Department ang isang American model mula sa pampublikong paggamit noong nakaraang Biyernes, at doon tayo magsisimula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "text": "Pagkatapos, ang pagtatayo ng data center, kung saan hindi tugma ang mga anunsyo at ang katotohanan sa lupa.",
+      "text_markdown": "Pagkatapos, ang pagtatayo ng data center, kung saan hindi tugma ang mga anunsyo at ang katotohanan sa lupa.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos, ang pagtatayo ng data center, kung saan hindi tugma ang mga anunsyo at ang katotohanan sa lupa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "text": "Pagkatapos, ang paghahambing ng U.S. at China, kung saan ang cliché ay pinalitan ng aktwal na nagbubuklod na hadlang.",
+      "text_markdown": "Pagkatapos, ang paghahambing ng U.S. at China, kung saan ang cliché ay pinalitan ng aktwal na nagbubuklod na hadlang.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos, ang paghahambing ng United States at China, kung saan ang cliché ay pinalitan ng aktwal na nagbubuklod na hadlang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "text": "At ang konsepto ng linggo — isang linya sa balance sheet ng Oracle na nagsasabi sa iyo ng halos lahat.",
+      "text_markdown": "At ang konsepto ng linggo — isang linya sa balance sheet ng Oracle na nagsasabi sa iyo ng halos lahat.",
+      "title": "",
+      "tts": {
+        "text": "At ang konsepto ng linggo — isang linya sa balance sheet ng Oracle na nagsasabi sa iyo ng halos lahat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "text": "Ron, simulan natin sa Anthropic.",
+      "text_markdown": "Ron, simulan natin sa Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, simulan natin sa Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "text": "Ano ang nangyari noong Hunyo dose.",
+      "text_markdown": "Ano ang nangyari noong Hunyo dose.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang nangyari noong Hunyo dose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "text": "Alas singko beynte-uno ng hapon Eastern noong Biyernes, Hunyo dose, inalis ng Anthropic ang dalawa nitong pinakabagong modelo — ang Claude Mythos five at Claude Fable five — sa serbisyo.",
+      "text_markdown": "Alas singko beynte-uno ng hapon Eastern noong Biyernes, Hunyo dose, inalis ng Anthropic ang dalawa nitong pinakabagong modelo — ang Claude Mythos five at Claude Fable five — sa serbisyo.",
+      "title": "",
+      "tts": {
+        "text": "Alas singko beynte-uno ng hapon Eastern noong Biyernes, Hunyo dose, inalis ng Anthropic ang dalawa nitong pinakabagong modelo — ang Claude Mythos lima at Claude Fable lima — sa serbisyo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "text": "Hindi para sa maintenance, hindi para sa isang safety review na sarili nilang inisyatiba.",
+      "text_markdown": "Hindi para sa maintenance, hindi para sa isang safety review na sarili nilang inisyatiba.",
+      "title": "",
+      "tts": {
+        "text": "Hindi para sa maintenance, hindi para sa isang safety review na sarili nilang inisyatiba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "text": "Inalis nila ang mga ito dahil naglabas ang U.S. Commerce Department ng direktiba na binabanggit ang mga kontrol sa pag-export.",
+      "text_markdown": "Inalis nila ang mga ito dahil naglabas ang U.S. Commerce Department ng direktiba na binabanggit ang mga kontrol sa pag-export.",
+      "title": "",
+      "tts": {
+        "text": "Inalis nila ang mga ito dahil naglabas ang United States Commerce Department ng direktiba na binabanggit ang mga kontrol sa pag-export.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "text": "Ano ang teknikal na dahilan.",
+      "text_markdown": "Ano ang teknikal na dahilan.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang teknikal na dahilan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "text": "Isang jailbreak ang naipakita, iniulat ng ibang kumpanya, na naglabas ng output na itinuring ng Commerce na kontrolado sa pag-export.",
+      "text_markdown": "Isang jailbreak ang naipakita, iniulat ng ibang kumpanya, na naglabas ng output na itinuring ng Commerce na kontrolado sa pag-export.",
+      "title": "",
+      "tts": {
+        "text": "Isang jailbreak ang naipakita, iniulat ng ibang kumpanya, na naglabas ng output na itinuring ng Commerce na kontrolado sa pag-export.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "text": "Iniulat ng Fortune na ang Amazon ang nag-alerto sa White House tungkol dito.",
+      "text_markdown": "Iniulat ng Fortune na ang Amazon ang nag-alerto sa White House tungkol dito.",
+      "title": "",
+      "tts": {
+        "text": "Iniulat ng Fortune na ang Amazon ang nag-alerto sa White House tungkol dito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "text": "At paano tumugon ang Anthropic.",
+      "text_markdown": "At paano tumugon ang Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "At paano tumugon ang Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "text": "Pampublikong pinagtatalunan ng Anthropic ang rasyonal.",
+      "text_markdown": "Pampublikong pinagtatalunan ng Anthropic ang rasyonal.",
+      "title": "",
+      "tts": {
+        "text": "Pampublikong pinagtatalunan ng Anthropic ang rasyonal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "text": "Tinawag ng kanilang pahayag ang jailbreak — at sinisipi ko — \"makitid, hindi unibersal,\" at idinagdag na ang parehong output ay available mula sa ibang mga modelo, kabilang ang GPT-5.5 ng OpenAI.",
+      "text_markdown": "Tinawag ng kanilang pahayag ang jailbreak — at sinisipi ko — \"makitid, hindi unibersal,\" at idinagdag na ang parehong output ay available mula sa ibang mga modelo, kabilang ang GPT-5.5 ng OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Tinawag ng kanilang pahayag ang jailbreak — at sinisipi ko — \"makitid, hindi unibersal,\" at idinagdag na ang parehong output ay available mula sa ibang mga modelo, kabilang ang GPT five point five ng OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "text": "Ang kanilang buod na linya: \"ang aksyon ng gobyerno ay batay sa isang hindi pagkakaunawaan.\"",
+      "text_markdown": "Ang kanilang buod na linya: \"ang aksyon ng gobyerno ay batay sa isang hindi pagkakaunawaan.\"",
+      "title": "",
+      "tts": {
+        "text": "Ang kanilang buod na linya: \"ang aksyon ng gobyerno ay batay sa isang hindi pagkakaunawaan.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "text": "Iyan ay isang hindi pangkaraniwang direktang hindi pagkakasundo sa gobyerno ng U.S. para sa isang AI lab.",
+      "text_markdown": "Iyan ay isang hindi pangkaraniwang direktang hindi pagkakasundo sa gobyerno ng U.S. para sa isang AI lab.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ay isang hindi pangkaraniwang direktang hindi pagkakasundo sa gobyerno ng United States para sa isang AI lab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "text": "Oo, at ang istrukturang katotohanan sa ilalim nito ang siyang pangunahing balita.",
+      "text_markdown": "Oo, at ang istrukturang katotohanan sa ilalim nito ang siyang pangunahing balita.",
+      "title": "",
+      "tts": {
+        "text": "Oo, at ang istrukturang katotohanan sa ilalim nito ang siyang pangunahing balita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "text": "Maaari na ngayong utusan ng Commerce ang isang pribadong American AI lab na alisin ang isang modelo sa serbisyo, binabanggit ang mga kontrol sa pag-export, at ang utos na iyon ay dumarating sa loob ng 72 oras.",
+      "text_markdown": "Maaari na ngayong utusan ng Commerce ang isang pribadong American AI lab na alisin ang isang modelo sa serbisyo, binabanggit ang mga kontrol sa pag-export, at ang utos na iyon ay dumarating sa loob ng 72 oras.",
+      "title": "",
+      "tts": {
+        "text": "Maaari na ngayong utusan ng Commerce ang isang pribadong American AI lab na alisin ang isang modelo sa serbisyo, binabanggit ang mga kontrol sa pag-export, at ang utos na iyon ay dumarating sa loob ng pitumpu't dalawang oras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "text": "Tama man o hindi ang tingin mo sa utos.",
+      "text_markdown": "Tama man o hindi ang tingin mo sa utos.",
+      "title": "",
+      "tts": {
+        "text": "Tama man o hindi ang tingin mo sa utos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "text": "Tama man o hindi ang tingin mo sa utos.",
+      "text_markdown": "Tama man o hindi ang tingin mo sa utos.",
+      "title": "",
+      "tts": {
+        "text": "Tama man o hindi ang tingin mo sa utos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "text": "Ang mismong awtoridad, ang bilis, at ang precedent ang mahalaga.",
+      "text_markdown": "Ang mismong awtoridad, ang bilis, at ang precedent ang mahalaga.",
+      "title": "",
+      "tts": {
+        "text": "Ang mismong awtoridad, ang bilis, at ang precedent ang mahalaga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "text": "At ang papel ng Amazon dito.",
+      "text_markdown": "At ang papel ng Amazon dito.",
+      "title": "",
+      "tts": {
+        "text": "At ang papel ng Amazon dito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "text": "Iyan ang bahaging dapat bantayan.",
+      "text_markdown": "Iyan ang bahaging dapat bantayan.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang bahaging dapat bantayan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "text": "Ang Amazon ay isang pangunahing mamumuhunan ng Anthropic at nakikipagkumpitensya rin sa Anthropic sa merkado ng foundation model sa pamamagitan ng sarili nitong trabaho.",
+      "text_markdown": "Ang Amazon ay isang pangunahing mamumuhunan ng Anthropic at nakikipagkumpitensya rin sa Anthropic sa merkado ng foundation model sa pamamagitan ng sarili nitong trabaho.",
+      "title": "",
+      "tts": {
+        "text": "Ang Amazon ay isang pangunahing mamumuhunan ng Anthropic at nakikipagkumpitensya rin sa Anthropic sa merkado ng foundation model sa pamamagitan ng sarili nitong trabaho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "text": "Kung ang babala ng isang kakumpitensya sa gobyerno ay kayang magpatigil sa modelo ng kalaban sa loob ng isang mahabang weekend, iyan ay isang bagong hugis para sa dinamika ng industriya.",
+      "text_markdown": "Kung ang babala ng isang kakumpitensya sa gobyerno ay kayang magpatigil sa modelo ng kalaban sa loob ng isang mahabang weekend, iyan ay isang bagong hugis para sa dinamika ng industriya.",
+      "title": "",
+      "tts": {
+        "text": "Kung ang babala ng isang kakumpitensya sa gobyerno ay kayang magpatigil sa modelo ng kalaban sa loob ng isang mahabang weekend, iyan ay isang bagong hugis para sa dinamika ng industriya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "text": "Dumako tayo sa pagtatayo.",
+      "text_markdown": "Dumako tayo sa pagtatayo.",
+      "title": "",
+      "tts": {
+        "text": "Dumako tayo sa pagtatayo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "text": "Stargate — ang inisyatiba ng data center ng OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — ang inisyatiba ng data center ng OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — ang inisyatiba ng data center ng OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "text": "Ano ang mga aktwal na numero.",
+      "text_markdown": "Ano ang mga aktwal na numero.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang mga aktwal na numero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "text": "Inanunsyo ng Stargate ang labing-isang gigawatts ng kapasidad sa U.S.",
+      "text_markdown": "Inanunsyo ng Stargate ang labing-isang gigawatts ng kapasidad sa U.S.",
+      "title": "",
+      "tts": {
+        "text": "Inanunsyo ng Stargate ang labing-isang gigawatts ng kapasidad sa Estados Unidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "text": "Simula kalagitnaan ng Hunyo, humigit-kumulang dalawang daang megawatts ang operational, sa Abilene Texas site, Phase One.",
+      "text_markdown": "Simula kalagitnaan ng Hunyo, humigit-kumulang dalawang daang megawatts ang operational, sa Abilene Texas site, Phase One.",
+      "title": "",
+      "tts": {
+        "text": "Simula kalagitnaan ng Hunyo, humigit-kumulang dalawang daang megawatts ang operational, sa Abilene Texas site, Phase One.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "text": "Labing-isang gigawatts ang inanunsyo, dalawang daang megawatts ang nakakonekta.",
+      "text_markdown": "Labing-isang gigawatts ang inanunsyo, dalawang daang megawatts ang nakakonekta.",
+      "title": "",
+      "tts": {
+        "text": "Labing-isang gigawatts ang inanunsyo, dalawang daang megawatts ang nakakonekta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "text": "Iyan ang buong agwat sa isang linya.",
+      "text_markdown": "Iyan ang buong agwat sa isang linya.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang buong agwat sa isang linya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "text": "Oo, at ang pinakamalinaw na halimbawa ay nasa New Mexico.",
+      "text_markdown": "Oo, at ang pinakamalinaw na halimbawa ay nasa New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Oo, at ang pinakamalinaw na halimbawa ay nasa New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "text": "Ang site ng Doña Ana County ang pinakamalaking solong kampus ng Stargate, na nakatakda sa apat-puntong-limang gigawatts.",
+      "text_markdown": "Ang site ng Doña Ana County ang pinakamalaking solong kampus ng Stargate, na nakatakda sa apat-puntong-limang gigawatts.",
+      "title": "",
+      "tts": {
+        "text": "Ang site ng Doña Ana County ang pinakamalaking solong kampus ng Stargate, na nakatakda sa apat na punto limang gigawatts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "text": "Labing-walong bilyong dolyar ng syndicated project financing ang nakalagay na — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — kasama ang tatlong bilyong dolyar na equity check mula sa Blue Owl.",
+      "text_markdown": "Labing-walong bilyong dolyar ng syndicated project financing ang nakalagay na — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — kasama ang tatlong bilyong dolyar na equity check mula sa Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Labing-walong bilyong dolyar ng syndicated project financing ang nakalagay na — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — kasama ang tatlong bilyong dolyar na equity check mula sa Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "text": "At ang estado ng konstruksyon sa lupa.",
+      "text_markdown": "At ang estado ng konstruksyon sa lupa.",
+      "title": "",
+      "tts": {
+        "text": "At ang estado ng konstruksyon sa lupa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "text": "Wala pang pala na nakabaon sa lupa sa ngayon.",
+      "text_markdown": "Wala pang pala na nakabaon sa lupa sa ngayon.",
+      "title": "",
+      "tts": {
+        "text": "Wala pang pala na nakabaon sa lupa sa ngayon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "text": "Ang site ay naghihintay ng permit sa kalidad ng hangin mula sa New Mexico Environment Department, na orihinal na inaasahan sa Abril beynte-dos, ngayon ay itinulak sa Hulyo beynte-uno matapos ang mahigit pitong libong pampublikong komento.",
+      "text_markdown": "Ang site ay naghihintay ng permit sa kalidad ng hangin mula sa New Mexico Environment Department, na orihinal na inaasahan sa Abril beynte-dos, ngayon ay itinulak sa Hulyo beynte-uno matapos ang mahigit pitong libong pampublikong komento.",
+      "title": "",
+      "tts": {
+        "text": "Ang site ay naghihintay ng permit sa kalidad ng hangin mula sa New Mexico Environment Department, na orihinal na inaasahan sa Abril beynte dos, ngayon ay itinulak sa Hulyo beynte uno matapos ang mahigit pitong libong pampublikong komento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "text": "Labing-walong bilyong dolyar ang nakatuon, wala pang pala na nakabaon sa lupa, isang deadline para sa permit sa kalidad ng hangin.",
+      "text_markdown": "Labing-walong bilyong dolyar ang nakatuon, wala pang pala na nakabaon sa lupa, isang deadline para sa permit sa kalidad ng hangin.",
+      "title": "",
+      "tts": {
+        "text": "Labing-walong bilyong dolyar ang nakatuon, wala pang pala na nakabaon sa lupa, isang deadline para sa permit sa kalidad ng hangin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "text": "Sino ang magiging bag-holder kung hindi magkatugma ang mga numero.",
+      "text_markdown": "Sino ang magiging bag-holder kung hindi magkatugma ang mga numero.",
+      "title": "",
+      "tts": {
+        "text": "Sino ang magiging bag holder kung hindi magkatugma ang mga numero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "text": "Doon nagiging interesante ang Oracle.",
+      "text_markdown": "Doon nagiging interesante ang Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Doon nagiging interesante ang Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "text": "Ang Remaining Performance Obligations ng Oracle — ang linya ng accounting na nagtatala ng kinontratang kita na hindi pa naihahatid — ay umabot sa limang daan limampu't tatlong bilyong dolyar sa Q three fiscal twenty-twenty-six.",
+      "text_markdown": "Ang Remaining Performance Obligations ng Oracle — ang linya ng accounting na nagtatala ng kinontratang kita na hindi pa naihahatid — ay umabot sa limang daan limampu't tatlong bilyong dolyar sa Q three fiscal twenty-twenty-six.",
+      "title": "",
+      "tts": {
+        "text": "Ang Remaining Performance Obligations ng Oracle — ang linya ng accounting na nagtatala ng kinontratang kita na hindi pa naihahatid — ay umabot sa limang daan limampu't tatlong bilyong dolyar sa Q three fiscal twenty twenty six.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "text": "Ito ay tumaas ng tatlong daan dalawampu't limang porsyento taon-sa-taon, at ang karamihan ng pagtaas na iyon ay pampublikong kinikilala sa OpenAI at Stargate.",
+      "text_markdown": "Ito ay tumaas ng tatlong daan dalawampu't limang porsyento taon-sa-taon, at ang karamihan ng pagtaas na iyon ay pampublikong kinikilala sa OpenAI at Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay tumaas ng tatlong daan dalawampu't limang porsyento taon-sa-taon, at ang karamihan ng pagtaas na iyon ay pampublikong kinikilala sa OpenAI at Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "text": "At ang panig ng utang.",
+      "text_markdown": "At ang panig ng utang.",
+      "title": "",
+      "tts": {
+        "text": "At ang panig ng utang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "text": "Umabot ang kabuuang paghiram sa isang daan tatlumpu't apat-puntong-anim na bilyong dolyar noong Pebrero beynte-otso.",
+      "text_markdown": "Umabot ang kabuuang paghiram sa isang daan tatlumpu't apat-puntong-anim na bilyong dolyar noong Pebrero beynte-otso.",
+      "title": "",
+      "tts": {
+        "text": "Umabot ang kabuuang paghiram sa isang daan tatlumpu't apat na punto anim na bilyong dolyar noong Pebrero beynte otso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "text": "Nagtaas ang Oracle ng tatlumpung bilyon noong Pebrero pa lamang — investment-grade bonds kasama ang mandatory convertible preferred — at naglabas ng apatnapu't tatlong bilyong dolyar ng bagong senior notes sa loob ng siyam na buwan.",
+      "text_markdown": "Nagtaas ang Oracle ng tatlumpung bilyon noong Pebrero pa lamang — investment-grade bonds kasama ang mandatory convertible preferred — at naglabas ng apatnapu't tatlong bilyong dolyar ng bagong senior notes sa loob ng siyam na buwan.",
+      "title": "",
+      "tts": {
+        "text": "Nagtaas ang Oracle ng tatlumpung bilyon noong Pebrero pa lamang — investment grade bonds kasama ang mandatory convertible preferred — at naglabas ng apatnapu't tatlong bilyong dolyar ng bagong senior notes sa loob ng siyam na buwan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "text": "Kaya buod ng posisyon.",
+      "text_markdown": "Kaya buod ng posisyon.",
+      "title": "",
+      "tts": {
+        "text": "Kaya buod ng posisyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "text": "Limang daan limampu't tatlong bilyong dolyar sa mga pangako, isang daan tatlumpu't apat na bilyong dolyar sa utang, at isang malaking customer ang nagdadala ng karamihan sa panganib.",
+      "text_markdown": "Limang daan limampu't tatlong bilyong dolyar sa mga pangako, isang daan tatlumpu't apat na bilyong dolyar sa utang, at isang malaking customer ang nagdadala ng karamihan sa panganib.",
+      "title": "",
+      "tts": {
+        "text": "Limang daan limampu't tatlong bilyong dolyar sa mga pangako, isang daan tatlumpu't apat na bilyong dolyar sa utang, at isang malaking customer ang nagdadala ng karamihan sa panganib.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "text": "Iyan ang istraktura ng pagtatayo sa isang pangungusap.",
+      "text_markdown": "Iyan ang istraktura ng pagtatayo sa isang pangungusap.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang istraktura ng pagtatayo sa isang pangungusap.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "text": "Dumako tayo sa paghahambing ng U.S. at China.",
+      "text_markdown": "Dumako tayo sa paghahambing ng U.S. at China.",
+      "title": "",
+      "tts": {
+        "text": "Dumako tayo sa paghahambing ng Estados Unidos at China.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "text": "Ang cliché ay ilang buwan ang nahuhuli ang China.",
+      "text_markdown": "Ang cliché ay ilang buwan ang nahuhuli ang China.",
+      "title": "",
+      "tts": {
+        "text": "Ang cliché ay ilang buwan ang nahuhuli ang China.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "text": "Mali ang cliché dahil maling bagay ang sinusukat nito.",
+      "text_markdown": "Mali ang cliché dahil maling bagay ang sinusukat nito.",
+      "title": "",
+      "tts": {
+        "text": "Mali ang cliché dahil maling bagay ang sinusukat nito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "text": "Noong Lunes, ika-siyam ng Hunyo, iniulat ng Bloomberg ang isang draft na planong Tsino mula sa National Development and Reform Commission — dalawang trilyong yuan, humigit-kumulang 295 bilyong dolyar, para sa isang pambansang AI data center grid pagsapit ng 2028.",
+      "text_markdown": "Noong Lunes, ika-siyam ng Hunyo, iniulat ng Bloomberg ang isang draft na planong Tsino mula sa National Development and Reform Commission — dalawang trilyong yuan, humigit-kumulang 295 bilyong dolyar, para sa isang pambansang AI data center grid pagsapit ng 2028.",
+      "title": "",
+      "tts": {
+        "text": "Noong Lunes, ika-siyam ng Hunyo, iniulat ng Bloomberg ang isang draft na planong Tsino mula sa National Development and Reform Commission — dalawang trilyong yuan, humigit-kumulang dalawang daan siyamnapu't limang bilyong dolyar, para sa isang pambansang A.I. data center grid pagsapit ng dalawang libo dalawampu't walo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "text": "Ang plano ay nagtatakda ng 80 porsiyentong domestic silicon at patatakbuhin bilang isang magkakaugnay na compute fabric ng China Mobile at China Telecom.",
+      "text_markdown": "Ang plano ay nagtatakda ng 80 porsiyentong domestic silicon at patatakbuhin bilang isang magkakaugnay na compute fabric ng China Mobile at China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Ang plano ay nagtatakda ng 80 porsiyentong domestic silicon at patatakbuhin bilang isang magkakaugnay na compute fabric ng China Mobile at China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-063",
+      "block_type": "text",
+      "text": "At nasaan ang bitag sa planong iyon?",
+      "text_markdown": "At nasaan ang bitag sa planong iyon?",
+      "title": "",
+      "tts": {
+        "text": "At nasaan ang bitag sa planong iyon?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-064",
+      "block_type": "text",
+      "text": "Dalawang trilyong yuan, 80 porsiyentong domestic silicon, deadline sa 2028 — at ang bitag ay hindi logic chips ang naglilimita, kundi high-bandwidth memory.",
+      "text_markdown": "Dalawang trilyong yuan, 80 porsiyentong domestic silicon, deadline sa 2028 — at ang bitag ay hindi logic chips ang naglilimita, kundi high-bandwidth memory.",
+      "title": "",
+      "tts": {
+        "text": "Dalawang trilyong yuan, walumpung porsiyentong domestic silicon, deadline sa dalawang libo dalawampu't walo — at ang bitag ay hindi logic chips ang naglilimita, kundi high-bandwidth memory.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-065",
+      "block_type": "text",
+      "text": "Ipaliwanag mo sa amin iyan.",
+      "text_markdown": "Ipaliwanag mo sa amin iyan.",
+      "title": "",
+      "tts": {
+        "text": "Ipaliwanag mo sa amin iyan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-066",
+      "block_type": "text",
+      "text": "Bawat AI accelerator ay nangangailangan ng HBM stacks na nakakabit sa logic die.",
+      "text_markdown": "Bawat AI accelerator ay nangangailangan ng HBM stacks na nakakabit sa logic die.",
+      "title": "",
+      "tts": {
+        "text": "Bawat A.I. accelerator ay nangangailangan ng H.B.M. stacks na nakakabit sa logic die.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-067",
+      "block_type": "text",
+      "text": "Kung walang HBM, ang chip ay isang paperweight.",
+      "text_markdown": "Kung walang HBM, ang chip ay isang paperweight.",
+      "title": "",
+      "tts": {
+        "text": "Kung walang HBM, ang chip ay isang paperweight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-068",
+      "block_type": "text",
+      "text": "Nag-imbak ang China ng humigit-kumulang 13 milyong HBM stacks bago magsara ang export controls — 11.4 milyon mula sa Samsung lamang.",
+      "text_markdown": "Nag-imbak ang China ng humigit-kumulang 13 milyong HBM stacks bago magsara ang export controls — 11.4 milyon mula sa Samsung lamang.",
+      "title": "",
+      "tts": {
+        "text": "Nag-imbak ang China ng humigit-kumulang labintatlong milyong H.B.M. stacks bago magsara ang export controls — labing-isang punto apat na milyon mula sa Samsung lamang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-069",
+      "block_type": "text",
+      "text": "Sa Huawei Ascend 910C packaging ratios, ang imbak na iyon ay sapat para sa humigit-kumulang 1.6 milyong chips.",
+      "text_markdown": "Sa Huawei Ascend 910C packaging ratios, ang imbak na iyon ay sapat para sa humigit-kumulang 1.6 milyong chips.",
+      "title": "",
+      "tts": {
+        "text": "Sa Huawei Ascend siyam sampu C packaging ratios, ang imbak na iyon ay sapat para sa humigit-kumulang isang punto anim na milyong chips.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-070",
+      "block_type": "text",
+      "text": "At pagkatapos ay mauubos ang suplay.",
+      "text_markdown": "At pagkatapos ay mauubos ang suplay.",
+      "title": "",
+      "tts": {
+        "text": "At pagkatapos ay mauubos ang suplay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-071",
+      "block_type": "text",
+      "text": "Pagkatapos ay mauubos ang suplay — 13 milyong HBM stacks, sapat para sa 1.6 milyong chips, at iyon ang limitasyon.",
+      "text_markdown": "Pagkatapos ay mauubos ang suplay — 13 milyong HBM stacks, sapat para sa 1.6 milyong chips, at iyon ang limitasyon.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos ay mauubos ang suplay — labintatlong milyong H.B.M. stacks, sapat para sa isang punto anim na milyong chips, at iyon ang limitasyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-072",
+      "block_type": "text",
+      "text": "Ang domestic Chinese HBM, mula sa CXMT, ay inaasahang aabot sa humigit-kumulang 2 milyong stacks sa 2026 — sapat para sa marahil 250 hanggang 300 libong accelerators.",
+      "text_markdown": "Ang domestic Chinese HBM, mula sa CXMT, ay inaasahang aabot sa humigit-kumulang 2 milyong stacks sa 2026 — sapat para sa marahil 250 hanggang 300 libong accelerators.",
+      "title": "",
+      "tts": {
+        "text": "Ang domestic Chinese H.B.M., mula sa C.X.M.T., ay inaasahang aabot sa humigit-kumulang dalawang milyong stacks sa dalawang libo dalawampu't anim — sapat para sa marahil dalawang daan limampu hanggang tatlong daang libong accelerators.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-073",
+      "block_type": "text",
+      "text": "Kaya, ano ang hitsura ng mga plano ng Huawei para sa silicon?",
+      "text_markdown": "Kaya, ano ang hitsura ng mga plano ng Huawei para sa silicon?",
+      "title": "",
+      "tts": {
+        "text": "Kaya, ano ang hitsura ng mga plano ng Huawei para sa silicon?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-074",
+      "block_type": "text",
+      "text": "Ang Bloomberg, na binabanggit ang mga plano ng Huawei, ay nagtakda ng output sa 2026 sa 600 libong 910C chips, na ang mas malawak na linya ng produkto ng Ascend ay umaabot sa kabuuang 1.6 milyong dies.",
+      "text_markdown": "Ang Bloomberg, na binabanggit ang mga plano ng Huawei, ay nagtakda ng output sa 2026 sa 600 libong 910C chips, na ang mas malawak na linya ng produkto ng Ascend ay umaabot sa kabuuang 1.6 milyong dies.",
+      "title": "",
+      "tts": {
+        "text": "Ang Bloomberg, na binabanggit ang mga plano ng Huawei, ay nagtakda ng output sa dalawang libo dalawampu't anim sa anim na raang libong siyam sampu C chips, na ang mas malawak na linya ng produkto ng Ascend ay umaabot sa kabuuang isang punto anim na milyong dies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-075",
+      "block_type": "text",
+      "text": "Ang bilang na iyon, 600 libo, ay isang target, hindi naipadala na output.",
+      "text_markdown": "Ang bilang na iyon, 600 libo, ay isang target, hindi naipadala na output.",
+      "title": "",
+      "tts": {
+        "text": "Ang bilang na iyon, 600 libo, ay isang target, hindi naipadala na output.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-076",
+      "block_type": "text",
+      "text": "At hiwalay, bago putulin ng export controls ang kanilang koneksyon, nakapag-ipon ang Huawei ng mahigit 2.9 milyong Ascend dies na ginawa sa TSMC sa pamamagitan ng Sophgo at Bitmain shell companies.",
+      "text_markdown": "At hiwalay, bago putulin ng export controls ang kanilang koneksyon, nakapag-ipon ang Huawei ng mahigit 2.9 milyong Ascend dies na ginawa sa TSMC sa pamamagitan ng Sophgo at Bitmain shell companies.",
+      "title": "",
+      "tts": {
+        "text": "At hiwalay, bago putulin ng export controls ang kanilang koneksyon, nakapag-ipon ang Huawei ng mahigit dalawang punto siyam na milyong Ascend dies na ginawa sa T.S.M.C. sa pamamagitan ng Sophgo at Bitmain shell companies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-077",
+      "block_type": "text",
+      "text": "Ang naratibo na gumagana ang export controls ay may 2.9 milyong die na butas.",
+      "text_markdown": "Ang naratibo na gumagana ang export controls ay may 2.9 milyong die na butas.",
+      "title": "",
+      "tts": {
+        "text": "Ang naratibo na gumagana ang export controls ay may dalawang punto siyam na milyong die na butas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-078",
+      "block_type": "text",
+      "text": "Suriin natin ang mga headline, mabilis.",
+      "text_markdown": "Suriin natin ang mga headline, mabilis.",
+      "title": "",
+      "tts": {
+        "text": "Suriin natin ang mga headline, mabilis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-079",
+      "block_type": "text",
+      "text": "Unang headline ngayong linggo, Broadcom.",
+      "text_markdown": "Unang headline ngayong linggo, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Unang headline ngayong linggo, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-080",
+      "block_type": "text",
+      "text": "Ang market capitalization ng Broadcom ay nasa humigit-kumulang 2 trilyong dolyar.",
+      "text_markdown": "Ang market capitalization ng Broadcom ay nasa humigit-kumulang 2 trilyong dolyar.",
+      "title": "",
+      "tts": {
+        "text": "Ang market capitalization ng Broadcom ay nasa humigit-kumulang 2 trilyong dolyar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-081",
+      "block_type": "text",
+      "text": "Ang kanilang CEO, si Hock Tan, ay muling binanggit ang target na 100 bilyong dolyar na kita sa A.I. semiconductor para sa fiscal 2027 sa earnings call noong ika-3 ng Hunyo, na sinusuportahan ng humigit-kumulang 73 bilyong dolyar sa A.I. backlog at pangmatagalang kasunduan sa Alphabet at Meta na umaabot hanggang 2031.",
+      "text_markdown": "Ang kanilang CEO, si Hock Tan, ay muling binanggit ang target na 100 bilyong dolyar na kita sa A.I. semiconductor para sa fiscal 2027 sa earnings call noong ika-3 ng Hunyo, na sinusuportahan ng humigit-kumulang 73 bilyong dolyar sa A.I. backlog at pangmatagalang kasunduan sa Alphabet at Meta na umaabot hanggang 2031.",
+      "title": "",
+      "tts": {
+        "text": "Ang kanilang C.E.O., si Hock Tan, ay muling binanggit ang target na isang daang bilyong dolyar na kita sa A.I. semiconductor para sa fiscal dalawang libo dalawampu't pito sa earnings call noong ika-tatlo ng Hunyo, na sinusuportahan ng humigit-kumulang pitumpu't tatlong bilyong dolyar sa A.I. backlog at pangmatagalang kasunduan sa Alphabet at Meta na umaabot hanggang dalawang libo tatlumpu't isa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-082",
+      "block_type": "text",
+      "text": "2 trilyong dolyar na market cap, 100 bilyong dolyar na target sa kita ng A.I., halos walang retail brand recognition.",
+      "text_markdown": "2 trilyong dolyar na market cap, 100 bilyong dolyar na target sa kita ng A.I., halos walang retail brand recognition.",
+      "title": "",
+      "tts": {
+        "text": "Dalawang trilyong dolyar na market cap, isang daang bilyong dolyar na target sa kita ng A.I., halos walang retail brand recognition.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-083",
+      "block_type": "text",
+      "text": "Pangalawang headline ngayong linggo, ASML.",
+      "text_markdown": "Pangalawang headline ngayong linggo, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Pangalawang headline ngayong linggo, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-084",
+      "block_type": "text",
+      "text": "Ang ASML, ang kumpanyang Dutch na gumagawa ng mga lithography machine na pinagbabatayan ng lahat ng leading-edge logic, ay nagbebenta ng High-N.A. E.U.V. system nito sa humigit-kumulang 370 milyong dolyar.",
+      "text_markdown": "Ang ASML, ang kumpanyang Dutch na gumagawa ng mga lithography machine na pinagbabatayan ng lahat ng leading-edge logic, ay nagbebenta ng High-N.A. E.U.V. system nito sa humigit-kumulang 370 milyong dolyar.",
+      "title": "",
+      "tts": {
+        "text": "Ang A.S.M.L., ang kumpanyang Dutch na gumagawa ng mga lithography machine na pinagbabatayan ng lahat ng leading-edge logic, ay nagbebenta ng High N.A. E.U.V. system nito sa humigit-kumulang tatlong daan pitumpung milyong dolyar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-085",
+      "block_type": "text",
+      "text": "Ang pandaigdigang kapasidad ng produksyon ay mas mababa sa 20 unit bawat taon.",
+      "text_markdown": "Ang pandaigdigang kapasidad ng produksyon ay mas mababa sa 20 unit bawat taon.",
+      "title": "",
+      "tts": {
+        "text": "Ang pandaigdigang kapasidad ng produksyon ay mas mababa sa 20 unit bawat taon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-086",
+      "block_type": "text",
+      "text": "370 milyong dolyar bawat makina, mas mababa sa 20 makina bawat taon, isang kumpanya ang gumagawa nito — iyan ang tunay na chokepoint sa pandaigdigang silicon, hindi patakaran.",
+      "text_markdown": "370 milyong dolyar bawat makina, mas mababa sa 20 makina bawat taon, isang kumpanya ang gumagawa nito — iyan ang tunay na chokepoint sa pandaigdigang silicon, hindi patakaran.",
+      "title": "",
+      "tts": {
+        "text": "Tatlong daan pitumpung milyong dolyar bawat makina, mas mababa sa dalawampung makina bawat taon, isang kumpanya ang gumagawa nito — iyan ang tunay na chokepoint sa pandaigdigang silicon, hindi patakaran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-087",
+      "block_type": "text",
+      "text": "Ikatlong headline ngayong linggo, export controls.",
+      "text_markdown": "Ikatlong headline ngayong linggo, export controls.",
+      "title": "",
+      "tts": {
+        "text": "Ikatlong headline ngayong linggo, export controls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-088",
+      "block_type": "text",
+      "text": "Binawi ng Commerce ang Biden-era A.I. Diffusion Rule noong ika-13 ng Mayo, 2025, at hindi naglabas ng bagong B.I.S. enforcement clarification hanggang ika-31 ng Mayo, 2026.",
+      "text_markdown": "Binawi ng Commerce ang Biden-era A.I. Diffusion Rule noong ika-13 ng Mayo, 2025, at hindi naglabas ng bagong B.I.S. enforcement clarification hanggang ika-31 ng Mayo, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Binawi ng Commerce ang Biden-era A.I. Diffusion Rule noong ika-labintatlo ng Mayo, dalawang libo dalawampu't lima, at hindi naglabas ng bagong B.I.S. enforcement clarification hanggang ika-tatlumpu't isa ng Mayo, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-089",
+      "block_type": "text",
+      "text": "Iyan ay humigit-kumulang isang taong bintana kung saan ang mga kinakailangan sa paglilisensya ay hindi aktibong ipinatupad.",
+      "text_markdown": "Iyan ay humigit-kumulang isang taong bintana kung saan ang mga kinakailangan sa paglilisensya ay hindi aktibong ipinatupad.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ay humigit-kumulang isang taong bintana kung saan ang mga kinakailangan sa paglilisensya ay hindi aktibong ipinatupad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-090",
+      "block_type": "text",
+      "text": "Kaya, bilangin ang mga araw.",
+      "text_markdown": "Kaya, bilangin ang mga araw.",
+      "title": "",
+      "tts": {
+        "text": "Kaya, bilangin ang mga araw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-091",
+      "block_type": "text",
+      "text": "Pitumpu't dalawang oras upang isara ang isang modelo ng U.S., tatlong daan at walumpung araw upang ipatupad ang isang panuntunan sa pag-export ng chip — iyon ang nagpapakita ng kawalan ng simetriya.",
+      "text_markdown": "Pitumpu't dalawang oras upang isara ang isang modelo ng U.S., tatlong daan at walumpung araw upang ipatupad ang isang panuntunan sa pag-export ng chip — iyon ang nagpapakita ng kawalan ng simetriya.",
+      "title": "",
+      "tts": {
+        "text": "Pitumpu't dalawang oras upang isara ang isang modelo ng U.S., tatlong daan at walumpung araw upang ipatupad ang isang panuntunan sa pag-export ng chip — iyon ang nagpapakita ng kawalan ng simetriya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-092",
+      "block_type": "text",
+      "text": "At saan napunta ang mga chip sa loob ng tatlong daan at walumpung araw na iyon.",
+      "text_markdown": "At saan napunta ang mga chip sa loob ng tatlong daan at walumpung araw na iyon.",
+      "title": "",
+      "tts": {
+        "text": "At saan napunta ang mga chip sa loob ng tatlong daan at walumpung araw na iyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-093",
+      "block_type": "text",
+      "text": "Ang Timog-Silangang Asya ang kung saan napunta ang karamihan sa kanila.",
+      "text_markdown": "Ang Timog-Silangang Asya ang kung saan napunta ang karamihan sa kanila.",
+      "title": "",
+      "tts": {
+        "text": "Ang Timog-Silangang Asya ang kung saan napunta ang karamihan sa kanila.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-094",
+      "block_type": "text",
+      "text": "Ang Kagawaran ng Hustisya ay naglabas ng mga akusasyon noong huling bahagi ng Marso na nagsasaad na ang mga chip ng Nvidia H-100 at A-100 ay ipinadaan sa mga intermediaryong Malaysian at Singaporean.",
+      "text_markdown": "Ang Kagawaran ng Hustisya ay naglabas ng mga akusasyon noong huling bahagi ng Marso na nagsasaad na ang mga chip ng Nvidia H-100 at A-100 ay ipinadaan sa mga intermediaryong Malaysian at Singaporean.",
+      "title": "",
+      "tts": {
+        "text": "Ang Kagawaran ng Hustisya ay naglabas ng mga akusasyon noong huling bahagi ng Marso na nagsasaad na ang mga chip ng Nvidia H isan daan at A isan daan ay ipinadaan sa mga intermediaryong Malaysian at Singaporean.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-095",
+      "block_type": "text",
+      "text": "Inilathala ng Fortune ang mga naka-encrypt na text noong Mayo na nagpapakita ng logistik, at ang Super Micro ay sangkot sa isang kaso ng shell company na nagkakahalaga ng dalawa't kalahating bilyong dolyar.",
+      "text_markdown": "Inilathala ng Fortune ang mga naka-encrypt na text noong Mayo na nagpapakita ng logistik, at ang Super Micro ay sangkot sa isang kaso ng shell company na nagkakahalaga ng dalawa't kalahating bilyong dolyar.",
+      "title": "",
+      "tts": {
+        "text": "Inilathala ng Fortune ang mga naka-encrypt na text noong Mayo na nagpapakita ng logistik, at ang Super Micro ay sangkot sa isang kaso ng shell company na nagkakahalaga ng dalawa't kalahating bilyong dolyar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-096",
+      "block_type": "text",
+      "text": "Ang administrasyong Trump ay iniulat na naghahanda ng mga bagong paghihigpit sa pag-export ng chip na partikular na naglalayon sa Malaysia at Thailand.",
+      "text_markdown": "Ang administrasyong Trump ay iniulat na naghahanda ng mga bagong paghihigpit sa pag-export ng chip na partikular na naglalayon sa Malaysia at Thailand.",
+      "title": "",
+      "tts": {
+        "text": "Ang administrasyong Trump ay iniulat na naghahanda ng mga bagong paghihigpit sa pag-export ng chip na partikular na naglalayon sa Malaysia at Thailand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-097",
+      "block_type": "text",
+      "text": "Kaya ang larawan sa isang linya.",
+      "text_markdown": "Kaya ang larawan sa isang linya.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ang larawan sa isang linya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-098",
+      "block_type": "text",
+      "text": "Ang mga chip ay hindi lumilipad patungong Shenzhen — lumilipad muna sila patungong Penang at Singapore.",
+      "text_markdown": "Ang mga chip ay hindi lumilipad patungong Shenzhen — lumilipad muna sila patungong Penang at Singapore.",
+      "title": "",
+      "tts": {
+        "text": "Ang mga chip ay hindi lumilipad patungong Shenzhen — lumilipad muna sila patungong Penang at Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-099",
+      "block_type": "text",
+      "text": "Konsepto ng linggo — Mga Natitirang Obligasyon sa Pagganap.",
+      "text_markdown": "Konsepto ng linggo — Mga Natitirang Obligasyon sa Pagganap.",
+      "title": "",
+      "tts": {
+        "text": "Konsepto ng linggo — Mga Natitirang Obligasyon sa Pagganap.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-100",
+      "block_type": "text",
+      "text": "Ang R.P.O. ay isang linya ng accounting na nagtatala ng halaga ng dolyar ng mga kontrata na nilagdaan ng isang kumpanya ngunit hindi pa naihahatid.",
+      "text_markdown": "Ang R.P.O. ay isang linya ng accounting na nagtatala ng halaga ng dolyar ng mga kontrata na nilagdaan ng isang kumpanya ngunit hindi pa naihahatid.",
+      "title": "",
+      "tts": {
+        "text": "Ang R. P. O. ay isang linya ng accounting na nagtatala ng halaga ng dolyar ng mga kontrata na nilagdaan ng isang kumpanya ngunit hindi pa naihahatid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-101",
+      "block_type": "text",
+      "text": "Ito ay nakatuon sa hinaharap — sinasabi nito sa iyo ang tungkol sa kita sa hinaharap, hindi pera sa bangko ngayon.",
+      "text_markdown": "Ito ay nakatuon sa hinaharap — sinasabi nito sa iyo ang tungkol sa kita sa hinaharap, hindi pera sa bangko ngayon.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay nakatuon sa hinaharap — sinasabi nito sa iyo ang tungkol sa kita sa hinaharap, hindi pera sa bangko ngayon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-102",
+      "block_type": "text",
+      "text": "At bakit ito mahalaga para sa Oracle.",
+      "text_markdown": "At bakit ito mahalaga para sa Oracle.",
+      "title": "",
+      "tts": {
+        "text": "At bakit ito mahalaga para sa Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-103",
+      "block_type": "text",
+      "text": "Dahil ang limang daan at limampu't tatlong bilyong dolyar ng R.P.O., na lubhang nakatuon sa isang customer para sa isang buildout, ay nangangahulugang nangako ang Oracle na maghahatid ng napakalaking dami ng compute sa susunod na ilang taon laban sa isang customer na ang sariling modelo ng kita ay pinagtatalunan pa rin.",
+      "text_markdown": "Dahil ang limang daan at limampu't tatlong bilyong dolyar ng R.P.O., na lubhang nakatuon sa isang customer para sa isang buildout, ay nangangahulugang nangako ang Oracle na maghahatid ng napakalaking dami ng compute sa susunod na ilang taon laban sa isang customer na ang sariling modelo ng kita ay pinagtatalunan pa rin.",
+      "title": "",
+      "tts": {
+        "text": "Dahil ang limang daan at limampu't tatlong bilyong dolyar ng R. P. O., na lubhang nakatuon sa isang customer para sa isang buildout, ay nangangahulugang nangako ang Oracle na maghahatid ng napakalaking dami ng compute sa susunod na ilang taon laban sa isang customer na ang sariling modelo ng kita ay pinagtatalunan pa rin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-104",
+      "block_type": "text",
+      "text": "Kung matupad ang mga kontratang iyon, nasa Oracle ang kasunduan ng dekada.",
+      "text_markdown": "Kung matupad ang mga kontratang iyon, nasa Oracle ang kasunduan ng dekada.",
+      "title": "",
+      "tts": {
+        "text": "Kung matupad ang mga kontratang iyon, nasa Oracle ang kasunduan ng dekada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-105",
+      "block_type": "text",
+      "text": "Kung magkamali sila — o muling pag-usapan — dinadala ng Oracle ang utang habang lumiliit ang mga kontrata.",
+      "text_markdown": "Kung magkamali sila — o muling pag-usapan — dinadala ng Oracle ang utang habang lumiliit ang mga kontrata.",
+      "title": "",
+      "tts": {
+        "text": "Kung magkamali sila — o muling pag-usapan — dinadala ng Oracle ang utang habang lumiliit ang mga kontrata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-106",
+      "block_type": "text",
+      "text": "Kaya kapag nakakita ka ng numero ng R.P.O. sa isang tech filing.",
+      "text_markdown": "Kaya kapag nakakita ka ng numero ng R.P.O. sa isang tech filing.",
+      "title": "",
+      "tts": {
+        "text": "Kaya kapag nakakita ka ng numero ng R. P. O. sa isang tech filing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-107",
+      "block_type": "text",
+      "text": "Basahin kung sino ang mga customer, gaano kalaki ang konsentrasyon ng mga obligasyon, at kung ano ang kailangang mangyari upang talagang maihatid ng kumpanya ang mga ito.",
+      "text_markdown": "Basahin kung sino ang mga customer, gaano kalaki ang konsentrasyon ng mga obligasyon, at kung ano ang kailangang mangyari upang talagang maihatid ng kumpanya ang mga ito.",
+      "title": "",
+      "tts": {
+        "text": "Basahin kung sino ang mga customer, gaano kalaki ang konsentrasyon ng mga obligasyon, at kung ano ang kailangang mangyari upang talagang maihatid ng kumpanya ang mga ito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-108",
+      "block_type": "text",
+      "text": "Ang R.P.O. ay kung saan lumalabas ang mga bag-holder sa mga footnote.",
+      "text_markdown": "Ang R.P.O. ay kung saan lumalabas ang mga bag-holder sa mga footnote.",
+      "title": "",
+      "tts": {
+        "text": "Ang R. P. O. ay kung saan lumalabas ang mga bag-holder sa mga footnote.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-109",
+      "block_type": "text",
+      "text": "Magandang lugar upang lumapag.",
+      "text_markdown": "Magandang lugar upang lumapag.",
+      "title": "",
+      "tts": {
+        "text": "Magandang lugar upang lumapag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-110",
+      "block_type": "text",
+      "text": "Ron, salamat sa paglalahad.",
+      "text_markdown": "Ron, salamat sa paglalahad.",
+      "title": "",
+      "tts": {
+        "text": "Ron, salamat sa paglalahad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-111",
+      "block_type": "text",
+      "text": "Anumang oras, Vindy — masarap narito.",
+      "text_markdown": "Anumang oras, Vindy — masarap narito.",
+      "title": "",
+      "tts": {
+        "text": "Anumang oras, Vindy — masarap narito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-112",
+      "block_type": "text",
+      "text": "Iyon ang AI This Week para sa Hunyo beynte-uno, dalawang libo dalawampu't anim.",
+      "text_markdown": "Iyon ang AI This Week para sa Hunyo beynte-uno, dalawang libo dalawampu't anim.",
+      "title": "",
+      "tts": {
+        "text": "Iyon ang AI This Week para sa Hunyo beynte uno, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-113",
+      "block_type": "text",
+      "text": "Sa susunod na linggo, balik sa open-weights at small-lab beat.",
+      "text_markdown": "Sa susunod na linggo, balik sa open-weights at small-lab beat.",
+      "title": "",
+      "tts": {
+        "text": "Sa susunod na linggo, balik sa open-weights at small-lab beat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-114",
+      "block_type": "text",
+      "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "text_markdown": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "title": "",
+      "tts": {
+        "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

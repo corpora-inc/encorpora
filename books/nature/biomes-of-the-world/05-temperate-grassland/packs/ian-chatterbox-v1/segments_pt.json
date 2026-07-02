@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "O Campo Temperado",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Campo Temperado",
+      "text_markdown": "O Campo Temperado"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Onde Crescem os Campos Temperados",
+      "text_markdown": "Onde Crescem os Campos Temperados"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bem-vindo ao campo temperado.",
+      "text_markdown": "Bem-vindo ao campo temperado.",
+      "tts": {
+        "text": "Bem vindo ao campo temperado.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é um dos grandes biomas do mundo.",
+      "text_markdown": "Este é um dos grandes biomas do mundo.",
+      "tts": {
+        "text": "Este é um dos grandes biomas do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "text_markdown": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+      "tts": {
+        "text": "Um bioma é uma parte da Terra com seu próprio tipo de clima, plantas e animais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O campo temperado é uma terra ampla de capim com pouquíssimas árvores.",
+      "text_markdown": "O campo temperado é uma terra ampla de capim com pouquíssimas árvores.",
+      "tts": {
+        "text": "O campo temperado é uma terra ampla de capim com pouquíssimas árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ele fica nas partes do meio do mundo, entre o norte frio e os trópicos quentes.",
+      "text_markdown": "Ele fica nas partes do meio do mundo, entre o norte frio e os trópicos quentes.",
+      "tts": {
+        "text": "Ele fica nas partes do meio do mundo, entre o norte frio e os trópicos quentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diferente da savana tropical, esta terra tem invernos frios e verões quentes.",
+      "text_markdown": "Diferente da savana tropical, esta terra tem invernos frios e verões quentes.",
+      "tts": {
+        "text": "Diferente da savana tropical, esta terra tem invernos frios e verões quentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os maiores campos temperados do mundo estão na América do Norte e na Eurásia.",
+      "text_markdown": "Os maiores campos temperados do mundo estão na América do Norte e na Eurásia.",
+      "tts": {
+        "text": "Os maiores campos temperados do mundo estão na América do Norte e na Eurásia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na América do Norte, as grandes planícies centrais são chamadas de pradarias.",
+      "text_markdown": "Na América do Norte, as grandes planícies centrais são chamadas de pradarias.",
+      "tts": {
+        "text": "Na América do Norte, as grandes planícies centrais são chamadas de pradarias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Rússia, Ucrânia, Cazaquistão e Mongólia, são chamadas de estepes.",
+      "text_markdown": "Na Rússia, Ucrânia, Cazaquistão e Mongólia, são chamadas de estepes.",
+      "tts": {
+        "text": "Na Rússia, Ucrânia, Cazaquistão e Mongólia, são chamadas de estepes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Argentina e no Uruguai, são chamadas de pampas.",
+      "text_markdown": "Na Argentina e no Uruguai, são chamadas de pampas.",
+      "tts": {
+        "text": "Na Argentina e no Uruguai, são chamadas de pampas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há campos temperados menores no sul da África e em partes da Austrália.",
+      "text_markdown": "Há campos temperados menores no sul da África e em partes da Austrália.",
+      "tts": {
+        "text": "Há campos temperados menores no sul da África e em partes da Austrália.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada um desses campos cresceu por conta própria.",
+      "text_markdown": "Cada um desses campos cresceu por conta própria.",
+      "tts": {
+        "text": "Cada um desses campos cresceu por conta própria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+      "text_markdown": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+      "tts": {
+        "text": "Por isso as plantas e os animais são diferentes em cada parte do mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas todos compartilham o mesmo padrão.",
+      "text_markdown": "Mas todos compartilham o mesmo padrão.",
+      "tts": {
+        "text": "Mas todos compartilham o mesmo padrão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um mar de capim, um grande céu aberto, ventos fortes e apenas algumas árvores ao longo dos rios.",
+      "text_markdown": "Um mar de capim, um grande céu aberto, ventos fortes e apenas algumas árvores ao longo dos rios.",
+      "tts": {
+        "text": "Um mar de capim, um grande céu aberto, ventos fortes e apenas algumas árvores ao longo dos rios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando você está em um campo temperado, o vento quase sempre está soprando.",
+      "text_markdown": "Quando você está em um campo temperado, o vento quase sempre está soprando.",
+      "tts": {
+        "text": "Quando você está em um campo temperado, o vento quase sempre está soprando.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capim se move como a superfície do mar.",
+      "text_markdown": "O capim se move como a superfície do mar.",
+      "tts": {
+        "text": "O capim se move como a superfície do mar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você consegue enxergar por quilômetros em todas as direções.",
+      "text_markdown": "Você consegue enxergar por quilômetros em todas as direções.",
+      "tts": {
+        "text": "Você consegue enxergar por quilômetros em todas as direções.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O céu parece duas vezes maior do que em qualquer floresta.",
+      "text_markdown": "O céu parece duas vezes maior do que em qualquer floresta.",
+      "tts": {
+        "text": "O céu parece duas vezes maior do que em qualquer floresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, o capim é alto e verde.",
+      "text_markdown": "No verão, o capim é alto e verde.",
+      "tts": {
+        "text": "No verão, o capim é alto e verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No outono, ele fica marrom dourado.",
+      "text_markdown": "No outono, ele fica marrom dourado.",
+      "tts": {
+        "text": "No outono, ele fica marrom dourado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No inverno, ele fica marrom e duro sob a neve.",
+      "text_markdown": "No inverno, ele fica marrom e duro sob a neve.",
+      "tts": {
+        "text": "No inverno, ele fica marrom e duro sob a neve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na primavera, ele cresce de novo, fresco e brilhante.",
+      "text_markdown": "Na primavera, ele cresce de novo, fresco e brilhante.",
+      "tts": {
+        "text": "Na primavera, ele cresce de novo, fresco e brilhante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esse é o campo temperado.",
+      "text_markdown": "Esse é o campo temperado.",
+      "tts": {
+        "text": "Esse é o campo temperado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Onde Crescem os Campos Temperados",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um mundo amplo e ventoso de capim, céu e estações que mudam.",
+      "text_markdown": "Um mundo amplo e ventoso de capim, céu e estações que mudam.",
+      "tts": {
+        "text": "Um mundo amplo e ventoso de capim, céu e estações que mudam.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Clima",
+      "text_markdown": "O Clima"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O clima no campo temperado é moldado pelo céu aberto.",
+      "text_markdown": "O clima no campo temperado é moldado pelo céu aberto.",
+      "tts": {
+        "text": "O clima no campo temperado é moldado pelo céu aberto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há pouquíssimas árvores e poucos morros para frear o vento.",
+      "text_markdown": "Há pouquíssimas árvores e poucos morros para frear o vento.",
+      "tts": {
+        "text": "Há pouquíssimas árvores e poucos morros para frear o vento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Existem quatro estações, e cada uma é intensa.",
+      "text_markdown": "Existem quatro estações, e cada uma é intensa.",
+      "tts": {
+        "text": "Existem quatro estações, e cada uma é intensa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os verões são quentes e brilhantes.",
+      "text_markdown": "Os verões são quentes e brilhantes.",
+      "tts": {
+        "text": "Os verões são quentes e brilhantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O sol bate forte sobre o capim aberto, e os dias são longos.",
+      "text_markdown": "O sol bate forte sobre o capim aberto, e os dias são longos.",
+      "tts": {
+        "text": "O sol bate forte sobre o capim aberto, e os dias são longos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em uma única tarde, uma enorme tempestade pode chegar do horizonte.",
+      "text_markdown": "Em uma única tarde, uma enorme tempestade pode chegar do horizonte.",
+      "tts": {
+        "text": "Em uma única tarde, uma enorme tempestade pode chegar do horizonte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Relâmpagos brilham bem longe, e uma chuva pesada cai de uma só vez.",
+      "text_markdown": "Relâmpagos brilham bem longe, e uma chuva pesada cai de uma só vez.",
+      "tts": {
+        "text": "Relâmpagos brilham bem longe, e uma chuva pesada cai de uma só vez.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os invernos são frios.",
+      "text_markdown": "Os invernos são frios.",
+      "tts": {
+        "text": "Os invernos são frios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em alguns campos, a temperatura pode cair muito abaixo de zero por semanas inteiras.",
+      "text_markdown": "Em alguns campos, a temperatura pode cair muito abaixo de zero por semanas inteiras.",
+      "tts": {
+        "text": "Em alguns campos, a temperatura pode cair muito abaixo de zero por semanas inteiras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A neve sopra pela terra aberta e se acumula em longos montes.",
+      "text_markdown": "A neve sopra pela terra aberta e se acumula em longos montes.",
+      "tts": {
+        "text": "A neve sopra pela terra aberta e se acumula em longos montes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O vento no inverno é forte e cortante.",
+      "text_markdown": "O vento no inverno é forte e cortante.",
+      "tts": {
+        "text": "O vento no inverno é forte e cortante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na primavera, a neve derrete e os rios correm cheios.",
+      "text_markdown": "Na primavera, a neve derrete e os rios correm cheios.",
+      "tts": {
+        "text": "Na primavera, a neve derrete e os rios correm cheios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capim fica verde quase da noite para o dia.",
+      "text_markdown": "O capim fica verde quase da noite para o dia.",
+      "tts": {
+        "text": "O capim fica verde quase da noite para o dia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As aves voltam de terras mais quentes e enchem o ar de som.",
+      "text_markdown": "As aves voltam de terras mais quentes e enchem o ar de som.",
+      "tts": {
+        "text": "As aves voltam de terras mais quentes e enchem o ar de som.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No outono, o capim fica dourado, o vento esfria e as manadas seguem em busca de abrigo.",
+      "text_markdown": "No outono, o capim fica dourado, o vento esfria e as manadas seguem em busca de abrigo.",
+      "tts": {
+        "text": "No outono, o capim fica dourado, o vento esfria e as manadas seguem em busca de abrigo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O campo recebe apenas a chuva suficiente para alimentar o capim.",
+      "text_markdown": "O campo recebe apenas a chuva suficiente para alimentar o capim.",
+      "tts": {
+        "text": "O campo recebe apenas a chuva suficiente para alimentar o capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "O Clima",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Não é chuva suficiente para criar grandes florestas, mas é bastante para o capim e os animais que precisam dele.",
+      "text_markdown": "Não é chuva suficiente para criar grandes florestas, mas é bastante para o capim e os animais que precisam dele.",
+      "tts": {
+        "text": "Não é chuva suficiente para criar grandes florestas, mas é bastante para o capim e os animais que precisam dele.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Terra e a Água",
+      "text_markdown": "A Terra e a Água"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A terra do campo temperado é, em sua maior parte, plana ou suavemente ondulada.",
+      "text_markdown": "A terra do campo temperado é, em sua maior parte, plana ou suavemente ondulada.",
+      "tts": {
+        "text": "A terra do campo temperado é, em sua maior parte, plana ou suavemente ondulada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em alguns lugares, morros baixos se erguem do meio do capim.",
+      "text_markdown": "Em alguns lugares, morros baixos se erguem do meio do capim.",
+      "tts": {
+        "text": "Em alguns lugares, morros baixos se erguem do meio do capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em outros, a terra é tão plana que você vê o horizonte como uma linha reta perfeita.",
+      "text_markdown": "Em outros, a terra é tão plana que você vê o horizonte como uma linha reta perfeita.",
+      "tts": {
+        "text": "Em outros, a terra é tão plana que você vê o horizonte como uma linha reta perfeita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo aqui está entre os mais ricos da Terra.",
+      "text_markdown": "O solo aqui está entre os mais ricos da Terra.",
+      "tts": {
+        "text": "O solo aqui está entre os mais ricos da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por milhares de anos, os capins cresceram, morreram e apodreceram no chão.",
+      "text_markdown": "Por milhares de anos, os capins cresceram, morreram e apodreceram no chão.",
+      "tts": {
+        "text": "Por milhares de anos, os capins cresceram, morreram e apodreceram no chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Isso formou um solo grosso e escuro, cheio de alimento para as plantas.",
+      "text_markdown": "Isso formou um solo grosso e escuro, cheio de alimento para as plantas.",
+      "tts": {
+        "text": "Isso formou um solo grosso e escuro, cheio de alimento para as plantas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por isso tantas dessas terras foram transformadas em grandes fazendas de trigo e milho.",
+      "text_markdown": "Por isso tantas dessas terras foram transformadas em grandes fazendas de trigo e milho.",
+      "tts": {
+        "text": "Por isso tantas dessas terras foram transformadas em grandes fazendas de trigo e milho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os rios serpenteiam pelos campos em curvas longas e lentas.",
+      "text_markdown": "Os rios serpenteiam pelos campos em curvas longas e lentas.",
+      "tts": {
+        "text": "Os rios serpenteiam pelos campos em curvas longas e lentas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os rios levam água de montanhas distantes e do degelo pela terra aberta.",
+      "text_markdown": "Os rios levam água de montanhas distantes e do degelo pela terra aberta.",
+      "tts": {
+        "text": "Os rios levam água de montanhas distantes e do degelo pela terra aberta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ao longo das margens dos rios, você encontra uma fina linha de árvores.",
+      "text_markdown": "Ao longo das margens dos rios, você encontra uma fina linha de árvores.",
+      "tts": {
+        "text": "Ao longo das margens dos rios, você encontra uma fina linha de árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essas árvores acompanham a água e se destacam como fitas verdes no amplo mar de capim.",
+      "text_markdown": "Essas árvores acompanham a água e se destacam como fitas verdes no amplo mar de capim.",
+      "tts": {
+        "text": "Essas árvores acompanham a água e se destacam como fitas verdes no amplo mar de capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Longe dos rios, há pouquíssimas árvores.",
+      "text_markdown": "Longe dos rios, há pouquíssimas árvores.",
+      "tts": {
+        "text": "Longe dos rios, há pouquíssimas árvores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O vento, os invernos frios e os verões secos impedem que a maioria das árvores cresça aqui.",
+      "text_markdown": "O vento, os invernos frios e os verões secos impedem que a maioria das árvores cresça aqui.",
+      "tts": {
+        "text": "O vento, os invernos frios e os verões secos impedem que a maioria das árvores cresça aqui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas o capim não precisa de muito.",
+      "text_markdown": "Mas o capim não precisa de muito.",
+      "tts": {
+        "text": "Mas o capim não precisa de muito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas longas raízes vão fundo no solo rico, e ele volta toda primavera.",
+      "text_markdown": "Suas longas raízes vão fundo no solo rico, e ele volta toda primavera.",
+      "tts": {
+        "text": "Suas longas raízes vão fundo no solo rico, e ele volta toda primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O fogo também passa por estas terras de tempos em tempos.",
+      "text_markdown": "O fogo também passa por estas terras de tempos em tempos.",
+      "tts": {
+        "text": "O fogo também passa por estas terras de tempos em tempos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capim queima rápido, mas as raízes profundas continuam vivas.",
+      "text_markdown": "O capim queima rápido, mas as raízes profundas continuam vivas.",
+      "tts": {
+        "text": "O capim queima rápido, mas as raízes profundas continuam vivas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "A Terra e a Água",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois de uma chuva, o capim volta a crescer mais verde e mais forte do que antes.",
+      "text_markdown": "Depois de uma chuva, o capim volta a crescer mais verde e mais forte do que antes.",
+      "tts": {
+        "text": "Depois de uma chuva, o capim volta a crescer mais verde e mais forte do que antes.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "As Plantas",
+      "text_markdown": "As Plantas"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os capins são o coração deste bioma.",
+      "text_markdown": "Os capins são o coração deste bioma.",
+      "tts": {
+        "text": "Os capins são o coração deste bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Existem muitos tipos diferentes de capim em um campo temperado.",
+      "text_markdown": "Existem muitos tipos diferentes de capim em um campo temperado.",
+      "tts": {
+        "text": "Existem muitos tipos diferentes de capim em um campo temperado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alguns capins crescem só até a altura do tornozelo.",
+      "text_markdown": "Alguns capins crescem só até a altura do tornozelo.",
+      "tts": {
+        "text": "Alguns capins crescem só até a altura do tornozelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outros ficam altos como uma pessoa.",
+      "text_markdown": "Outros ficam altos como uma pessoa.",
+      "tts": {
+        "text": "Outros ficam altos como uma pessoa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada tipo de capim tem uma espiga longa e macia, cheia de sementes no topo.",
+      "text_markdown": "Cada tipo de capim tem uma espiga longa e macia, cheia de sementes no topo.",
+      "tts": {
+        "text": "Cada tipo de capim tem uma espiga longa e macia, cheia de sementes no topo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, o vento leva ondas de espigas pela terra.",
+      "text_markdown": "No verão, o vento leva ondas de espigas pela terra.",
+      "tts": {
+        "text": "No verão, o vento leva ondas de espigas pela terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capim tem raízes muito longas que vão fundo no solo escuro.",
+      "text_markdown": "O capim tem raízes muito longas que vão fundo no solo escuro.",
+      "tts": {
+        "text": "O capim tem raízes muito longas que vão fundo no solo escuro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As raízes podem ser mais longas debaixo da terra do que o capim é alto acima do chão.",
+      "text_markdown": "As raízes podem ser mais longas debaixo da terra do que o capim é alto acima do chão.",
+      "tts": {
+        "text": "As raízes podem ser mais longas debaixo da terra do que o capim é alto acima do chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É assim que o capim sobrevive aos tempos secos e aos invernos frios.",
+      "text_markdown": "É assim que o capim sobrevive aos tempos secos e aos invernos frios.",
+      "tts": {
+        "text": "É assim que o capim sobrevive aos tempos secos e aos invernos frios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "É também como o capim volta rápido depois de um fogo.",
+      "text_markdown": "É também como o capim volta rápido depois de um fogo.",
+      "tts": {
+        "text": "É também como o capim volta rápido depois de um fogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entre os capins, pequenas flores desabrocham nos meses quentes.",
+      "text_markdown": "Entre os capins, pequenas flores desabrocham nos meses quentes.",
+      "tts": {
+        "text": "Entre os capins, pequenas flores desabrocham nos meses quentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Girassóis selvagens e muitas outras flores brilhantes enchem o campo no verão.",
+      "text_markdown": "Girassóis selvagens e muitas outras flores brilhantes enchem o campo no verão.",
+      "tts": {
+        "text": "Girassóis selvagens e muitas outras flores brilhantes enchem o campo no verão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abelhas e borboletas vão de uma flor para outra.",
+      "text_markdown": "Abelhas e borboletas vão de uma flor para outra.",
+      "tts": {
+        "text": "Abelhas e borboletas vão de uma flor para outra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há pouquíssimas árvores na maior parte do campo.",
+      "text_markdown": "Há pouquíssimas árvores na maior parte do campo.",
+      "tts": {
+        "text": "Há pouquíssimas árvores na maior parte do campo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onde elas crescem, costumam ser pequenas e resistentes.",
+      "text_markdown": "Onde elas crescem, costumam ser pequenas e resistentes.",
+      "tts": {
+        "text": "Onde elas crescem, costumam ser pequenas e resistentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Crescem ao longo dos rios, onde há mais água, ou em locais baixos onde a neve se acumula no inverno.",
+      "text_markdown": "Crescem ao longo dos rios, onde há mais água, ou em locais baixos onde a neve se acumula no inverno.",
+      "tts": {
+        "text": "Crescem ao longo dos rios, onde há mais água, ou em locais baixos onde a neve se acumula no inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na planície aberta, o capim está sozinho.",
+      "text_markdown": "Na planície aberta, o capim está sozinho.",
+      "tts": {
+        "text": "Na planície aberta, o capim está sozinho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "As Plantas",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ele é o tapete verde, dourado e prateado que mantém todo o bioma unido.",
+      "text_markdown": "Ele é o tapete verde, dourado e prateado que mantém todo o bioma unido.",
+      "tts": {
+        "text": "Ele é o tapete verde, dourado e prateado que mantém todo o bioma unido.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Os Animais",
+      "text_markdown": "Os Animais"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os animais do campo temperado são feitos para um mundo aberto e ventoso.",
+      "text_markdown": "Os animais do campo temperado são feitos para um mundo aberto e ventoso.",
+      "tts": {
+        "text": "Os animais do campo temperado são feitos para um mundo aberto e ventoso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os maiores animais daqui são grandes herbívoros.",
+      "text_markdown": "Os maiores animais daqui são grandes herbívoros.",
+      "tts": {
+        "text": "Os maiores animais daqui são grandes herbívoros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles comem o capim e se movem em grandes manadas pela terra aberta.",
+      "text_markdown": "Eles comem o capim e se movem em grandes manadas pela terra aberta.",
+      "tts": {
+        "text": "Eles comem o capim e se movem em grandes manadas pela terra aberta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na América do Norte, o mais famoso deles é o bisão.",
+      "text_markdown": "Na América do Norte, o mais famoso deles é o bisão.",
+      "tts": {
+        "text": "Na América do Norte, o mais famoso deles é o bisão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O bisão é enorme, pesado e peludo, com uma grande cabeça marrom.",
+      "text_markdown": "O bisão é enorme, pesado e peludo, com uma grande cabeça marrom.",
+      "tts": {
+        "text": "O bisão é enorme, pesado e peludo, com uma grande cabeça marrom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os bisões já se moveram pelas planícies em manadas de milhões.",
+      "text_markdown": "Os bisões já se moveram pelas planícies em manadas de milhões.",
+      "tts": {
+        "text": "Os bisões já se moveram pelas planícies em manadas de milhões.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Eurásia, cavalos selvagens já se moveram da mesma forma pelas estepes.",
+      "text_markdown": "Na Eurásia, cavalos selvagens já se moveram da mesma forma pelas estepes.",
+      "tts": {
+        "text": "Na Eurásia, cavalos selvagens já se moveram da mesma forma pelas estepes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos pampas da América do Sul, cervos menores e outros animais que pastam ocuparam esse lugar.",
+      "text_markdown": "Nos pampas da América do Sul, cervos menores e outros animais que pastam ocuparam esse lugar.",
+      "tts": {
+        "text": "Nos pampas da América do Sul, cervos menores e outros animais que pastam ocuparam esse lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos animais menores vivem debaixo do capim.",
+      "text_markdown": "Muitos animais menores vivem debaixo do capim.",
+      "tts": {
+        "text": "Muitos animais menores vivem debaixo do capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cães-de-pradaria, esquilos-terrestres e outros pequenos animais cavam longos túneis e câmaras no solo.",
+      "text_markdown": "Cães-de-pradaria, esquilos-terrestres e outros pequenos animais cavam longos túneis e câmaras no solo.",
+      "tts": {
+        "text": "Cães de pradaria, esquilos terrestres e outros pequenos animais cavam longos túneis e câmaras no solo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles sobem para comer de dia e mergulham de volta em suas tocas em busca de segurança.",
+      "text_markdown": "Eles sobem para comer de dia e mergulham de volta em suas tocas em busca de segurança.",
+      "tts": {
+        "text": "Eles sobem para comer de dia e mergulham de volta em suas tocas em busca de segurança.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um campo cheio desses pequenos animais é cheio de pequenos buracos no chão.",
+      "text_markdown": "Um campo cheio desses pequenos animais é cheio de pequenos buracos no chão.",
+      "tts": {
+        "text": "Um campo cheio desses pequenos animais é cheio de pequenos buracos no chão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lobos, raposas e pequenos gatos selvagens caçam pelo capim.",
+      "text_markdown": "Lobos, raposas e pequenos gatos selvagens caçam pelo capim.",
+      "tts": {
+        "text": "Lobos, raposas e pequenos gatos selvagens caçam pelo capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O lobo é o grande caçador das planícies abertas.",
+      "text_markdown": "O lobo é o grande caçador das planícies abertas.",
+      "tts": {
+        "text": "O lobo é o grande caçador das planícies abertas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Caçadores menores como a raposa e o gato selvagem pegam camundongos, coelhos e aves.",
+      "text_markdown": "Caçadores menores como a raposa e o gato selvagem pegam camundongos, coelhos e aves.",
+      "tts": {
+        "text": "Caçadores menores como a raposa e o gato selvagem pegam camundongos, coelhos e aves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lá no alto do céu, falcões e águias planam devagar.",
+      "text_markdown": "Lá no alto do céu, falcões e águias planam devagar.",
+      "tts": {
+        "text": "Lá no alto do céu, falcões e águias planam devagar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles observam qualquer movimento no capim lá embaixo.",
+      "text_markdown": "Eles observam qualquer movimento no capim lá embaixo.",
+      "tts": {
+        "text": "Eles observam qualquer movimento no capim lá embaixo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos tipos de aves fazem ninho direto no chão, escondidos no capim alto.",
+      "text_markdown": "Muitos tipos de aves fazem ninho direto no chão, escondidos no capim alto.",
+      "tts": {
+        "text": "Muitos tipos de aves fazem ninho direto no chão, escondidos no capim alto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, o ar está cheio de insetos.",
+      "text_markdown": "No verão, o ar está cheio de insetos.",
+      "tts": {
+        "text": "No verão, o ar está cheio de insetos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gafanhotos estalam e saltam no vento quente.",
+      "text_markdown": "Gafanhotos estalam e saltam no vento quente.",
+      "tts": {
+        "text": "Gafanhotos estalam e saltam no vento quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Borboletas e abelhas voam de flor em flor.",
+      "text_markdown": "Borboletas e abelhas voam de flor em flor.",
+      "tts": {
+        "text": "Borboletas e abelhas voam de flor em flor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cobras deslizam pelo capim, procurando camundongos e ovos de aves.",
+      "text_markdown": "Cobras deslizam pelo capim, procurando camundongos e ovos de aves.",
+      "tts": {
+        "text": "Cobras deslizam pelo capim, procurando camundongos e ovos de aves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Todo animal aqui conhece as mesmas lições.",
+      "text_markdown": "Todo animal aqui conhece as mesmas lições.",
+      "tts": {
+        "text": "Todo animal aqui conhece as mesmas lições.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mover-se com as estações.",
+      "text_markdown": "Mover-se com as estações.",
+      "tts": {
+        "text": "Mover se com as estações.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esconder-se do sol quente.",
+      "text_markdown": "Esconder-se do sol quente.",
+      "tts": {
+        "text": "Esconder se do sol quente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fugir do vento frio.",
+      "text_markdown": "Fugir do vento frio.",
+      "tts": {
+        "text": "Fugir do vento frio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Os Animais",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beber no rio quando o encontrar.",
+      "text_markdown": "Beber no rio quando o encontrar.",
+      "tts": {
+        "text": "Beber no rio quando o encontrar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "As Pessoas",
+      "text_markdown": "As Pessoas"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As pessoas vivem no campo temperado há muitos milhares de anos.",
+      "text_markdown": "As pessoas vivem no campo temperado há muitos milhares de anos.",
+      "tts": {
+        "text": "As pessoas vivem no campo temperado há muitos milhares de anos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A terra ampla, as manadas de animais e o solo rico moldaram o seu modo de vida.",
+      "text_markdown": "A terra ampla, as manadas de animais e o solo rico moldaram o seu modo de vida.",
+      "tts": {
+        "text": "A terra ampla, as manadas de animais e o solo rico moldaram o seu modo de vida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há muito tempo, o povo das estepes da Ásia domesticou o cavalo selvagem.",
+      "text_markdown": "Há muito tempo, o povo das estepes da Ásia domesticou o cavalo selvagem.",
+      "tts": {
+        "text": "Há muito tempo, o povo das estepes da Ásia domesticou o cavalo selvagem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sobre o lombo de um cavalo, uma pessoa podia atravessar as planícies abertas muito mais rápido do que a pé.",
+      "text_markdown": "Sobre o lombo de um cavalo, uma pessoa podia atravessar as planícies abertas muito mais rápido do que a pé.",
+      "tts": {
+        "text": "Sobre o lombo de um cavalo, uma pessoa podia atravessar as planícies abertas muito mais rápido do que a pé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O cavalo mudou tudo para o povo dos campos.",
+      "text_markdown": "O cavalo mudou tudo para o povo dos campos.",
+      "tts": {
+        "text": "O cavalo mudou tudo para o povo dos campos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mudou como caçavam, como viajavam e como guerreavam.",
+      "text_markdown": "Mudou como caçavam, como viajavam e como guerreavam.",
+      "tts": {
+        "text": "Mudou como caçavam, como viajavam e como guerreavam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos dos antigos povos das estepes eram nômades.",
+      "text_markdown": "Muitos dos antigos povos das estepes eram nômades.",
+      "tts": {
+        "text": "Muitos dos antigos povos das estepes eram nômades.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles moviam suas manadas de cavalos, gado, ovelhas e cabras de uma parte do campo para outra.",
+      "text_markdown": "Eles moviam suas manadas de cavalos, gado, ovelhas e cabras de uma parte do campo para outra.",
+      "tts": {
+        "text": "Eles moviam suas manadas de cavalos, gado, ovelhas e cabras de uma parte do campo para outra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No verão, viajavam até as planícies altas e frescas.",
+      "text_markdown": "No verão, viajavam até as planícies altas e frescas.",
+      "tts": {
+        "text": "No verão, viajavam até as planícies altas e frescas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No inverno, desciam para vales mais baixos e quentes.",
+      "text_markdown": "No inverno, desciam para vales mais baixos e quentes.",
+      "tts": {
+        "text": "No inverno, desciam para vales mais baixos e quentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas casas eram tendas redondas feitas de feltro e madeira.",
+      "text_markdown": "Suas casas eram tendas redondas feitas de feltro e madeira.",
+      "tts": {
+        "text": "Suas casas eram tendas redondas feitas de feltro e madeira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma tenda redonda dessas pode ser desmontada em uma hora, carregada nas costas de um animal e montada de novo em outro lugar.",
+      "text_markdown": "Uma tenda redonda dessas pode ser desmontada em uma hora, carregada nas costas de um animal e montada de novo em outro lugar.",
+      "tts": {
+        "text": "Uma tenda redonda dessas pode ser desmontada em uma hora, carregada nas costas de um animal e montada de novo em outro lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na América do Norte, o povo das planícies viveu por milhares de anos ao lado das grandes manadas de bisões.",
+      "text_markdown": "Na América do Norte, o povo das planícies viveu por milhares de anos ao lado das grandes manadas de bisões.",
+      "tts": {
+        "text": "Na América do Norte, o povo das planícies viveu por milhares de anos ao lado das grandes manadas de bisões.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles seguiam as manadas pela terra aberta.",
+      "text_markdown": "Eles seguiam as manadas pela terra aberta.",
+      "tts": {
+        "text": "Eles seguiam as manadas pela terra aberta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suas casas eram tendas altas de couro esticado sobre estacas de madeira.",
+      "text_markdown": "Suas casas eram tendas altas de couro esticado sobre estacas de madeira.",
+      "tts": {
+        "text": "Suas casas eram tendas altas de couro esticado sobre estacas de madeira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando o cavalo chegou às planícies, o modo de vida ali também mudou profundamente.",
+      "text_markdown": "Quando o cavalo chegou às planícies, o modo de vida ali também mudou profundamente.",
+      "tts": {
+        "text": "Quando o cavalo chegou às planícies, o modo de vida ali também mudou profundamente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos pampas da América do Sul, peões a cavalo também se tornaram parte da terra.",
+      "text_markdown": "Nos pampas da América do Sul, peões a cavalo também se tornaram parte da terra.",
+      "tts": {
+        "text": "Nos pampas da América do Sul, peões a cavalo também se tornaram parte da terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos últimos séculos, grande parte do campo temperado mudou de novo.",
+      "text_markdown": "Nos últimos séculos, grande parte do campo temperado mudou de novo.",
+      "tts": {
+        "text": "Nos últimos séculos, grande parte do campo temperado mudou de novo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo profundo e rico foi arado para plantar trigo, milho e outros grãos.",
+      "text_markdown": "O solo profundo e rico foi arado para plantar trigo, milho e outros grãos.",
+      "tts": {
+        "text": "O solo profundo e rico foi arado para plantar trigo, milho e outros grãos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoje, grande parte do grão que alimenta o mundo vem destas terras.",
+      "text_markdown": "Hoje, grande parte do grão que alimenta o mundo vem destas terras.",
+      "tts": {
+        "text": "Hoje, grande parte do grão que alimenta o mundo vem destas terras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O antigo modo de seguir as manadas se perdeu em muitos lugares.",
+      "text_markdown": "O antigo modo de seguir as manadas se perdeu em muitos lugares.",
+      "tts": {
+        "text": "O antigo modo de seguir as manadas se perdeu em muitos lugares.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas as canções, as histórias e o amor pelo céu aberto continuam vivos.",
+      "text_markdown": "Mas as canções, as histórias e o amor pelo céu aberto continuam vivos.",
+      "tts": {
+        "text": "Mas as canções, as histórias e o amor pelo céu aberto continuam vivos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "As Pessoas",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em todo grande campo, as pessoas que cresceram ali levam o vento no coração.",
+      "text_markdown": "Em todo grande campo, as pessoas que cresceram ali levam o vento no coração.",
+      "tts": {
+        "text": "Em todo grande campo, as pessoas que cresceram ali levam o vento no coração.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O Campo Hoje",
+      "text_markdown": "O Campo Hoje"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O campo temperado é um dos biomas mais importantes para as pessoas.",
+      "text_markdown": "O campo temperado é um dos biomas mais importantes para as pessoas.",
+      "tts": {
+        "text": "O campo temperado é um dos biomas mais importantes para as pessoas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O solo profundo e rico o torna perfeito para o cultivo de alimentos.",
+      "text_markdown": "O solo profundo e rico o torna perfeito para o cultivo de alimentos.",
+      "tts": {
+        "text": "O solo profundo e rico o torna perfeito para o cultivo de alimentos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grande parte do pão, da massa e do milho que o mundo come vem destas terras.",
+      "text_markdown": "Grande parte do pão, da massa e do milho que o mundo come vem destas terras.",
+      "tts": {
+        "text": "Grande parte do pão, da massa e do milho que o mundo come vem destas terras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas o custo foi alto.",
+      "text_markdown": "Mas o custo foi alto.",
+      "tts": {
+        "text": "Mas o custo foi alto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria dos campos originais do mundo foi arada.",
+      "text_markdown": "A maioria dos campos originais do mundo foi arada.",
+      "tts": {
+        "text": "A maioria dos campos originais do mundo foi arada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As grandes manadas de bisões e cavalos selvagens estão, em sua maioria, desaparecidas.",
+      "text_markdown": "As grandes manadas de bisões e cavalos selvagens estão, em sua maioria, desaparecidas.",
+      "tts": {
+        "text": "As grandes manadas de bisões e cavalos selvagens estão, em sua maioria, desaparecidas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os pequenos animais que cavam tocas têm cada vez menos lugares para viver.",
+      "text_markdown": "Os pequenos animais que cavam tocas têm cada vez menos lugares para viver.",
+      "tts": {
+        "text": "Os pequenos animais que cavam tocas têm cada vez menos lugares para viver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O capim que um dia se estendia até o horizonte agora cresce só em pequenas manchas.",
+      "text_markdown": "O capim que um dia se estendia até o horizonte agora cresce só em pequenas manchas.",
+      "tts": {
+        "text": "O capim que um dia se estendia até o horizonte agora cresce só em pequenas manchas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em alguns lugares, quando o capim desaparece e o solo fica nu, o vento leva a terra escura embora.",
+      "text_markdown": "Em alguns lugares, quando o capim desaparece e o solo fica nu, o vento leva a terra escura embora.",
+      "tts": {
+        "text": "Em alguns lugares, quando o capim desaparece e o solo fica nu, o vento leva a terra escura embora.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muitos grupos pelo mundo trabalham para cuidar do que restou.",
+      "text_markdown": "Muitos grupos pelo mundo trabalham para cuidar do que restou.",
+      "tts": {
+        "text": "Muitos grupos pelo mundo trabalham para cuidar do que restou.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eles reservam parques onde o capim pode crescer alto de novo.",
+      "text_markdown": "Eles reservam parques onde o capim pode crescer alto de novo.",
+      "tts": {
+        "text": "Eles reservam parques onde o capim pode crescer alto de novo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ajudam bisões e outros animais a voltarem para terras que um dia ocuparam.",
+      "text_markdown": "Ajudam bisões e outros animais a voltarem para terras que um dia ocuparam.",
+      "tts": {
+        "text": "Ajudam bisões e outros animais a voltarem para terras que um dia ocuparam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estudam o solo profundo para que possamos usá-lo sem perdê-lo.",
+      "text_markdown": "Estudam o solo profundo para que possamos usá-lo sem perdê-lo.",
+      "tts": {
+        "text": "Estudam o solo profundo para que possamos usá lo sem perdê lo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um campo saudável é um dos lugares mais vivos da Terra.",
+      "text_markdown": "Um campo saudável é um dos lugares mais vivos da Terra.",
+      "tts": {
+        "text": "Um campo saudável é um dos lugares mais vivos da Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "O Campo Hoje",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vale o nosso cuidado.",
+      "text_markdown": "Vale o nosso cuidado.",
+      "tts": {
+        "text": "Vale o nosso cuidado.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Encerramento",
+      "text_markdown": "Encerramento"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esse é o campo temperado.",
+      "text_markdown": "Esse é o campo temperado.",
+      "tts": {
+        "text": "Esse é o campo temperado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um mundo amplo e ventoso de capim, céu enorme e estações que mudam.",
+      "text_markdown": "Um mundo amplo e ventoso de capim, céu enorme e estações que mudam.",
+      "tts": {
+        "text": "Um mundo amplo e ventoso de capim, céu enorme e estações que mudam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se um dia você estiver em um, fique parado por um minuto.",
+      "text_markdown": "Se um dia você estiver em um, fique parado por um minuto.",
+      "tts": {
+        "text": "Se um dia você estiver em um, fique parado por um minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Escute o vento passando pelo capim.",
+      "text_markdown": "Escute o vento passando pelo capim.",
+      "tts": {
+        "text": "Escute o vento passando pelo capim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olhe para o horizonte longo.",
+      "text_markdown": "Olhe para o horizonte longo.",
+      "tts": {
+        "text": "Olhe para o horizonte longo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Encerramento",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Você sentirá o coração do bioma batendo ao seu redor.",
+      "text_markdown": "Você sentirá o coração do bioma batendo ao seu redor.",
+      "tts": {
+        "text": "Você sentirá o coração do bioma batendo ao seu redor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

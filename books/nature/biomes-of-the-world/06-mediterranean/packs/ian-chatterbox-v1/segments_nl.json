@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Het mediterrane bioom",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het mediterrane bioom",
+      "text_markdown": "Het mediterrane bioom"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar dit bioom groeit",
+      "text_markdown": "Waar dit bioom groeit"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in het mediterrane bioom.",
+      "text_markdown": "Welkom in het mediterrane bioom.",
+      "tts": {
+        "text": "Welkom in het mediterrane bioom.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het mediterrane bioom is genoemd naar de landen rond de Middellandse Zee.",
+      "text_markdown": "Het mediterrane bioom is genoemd naar de landen rond de Middellandse Zee.",
+      "tts": {
+        "text": "Het mediterrane bioom is genoemd naar de landen rond de Middellandse Zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het groeit daar niet alleen.",
+      "text_markdown": "Maar het groeit daar niet alleen.",
+      "tts": {
+        "text": "Maar het groeit daar niet alleen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het mediterrane bioom verschijnt in vijf kleine delen van de wereld.",
+      "text_markdown": "Het mediterrane bioom verschijnt in vijf kleine delen van de wereld.",
+      "tts": {
+        "text": "Het mediterrane bioom verschijnt in vijf kleine delen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het groeit in de landen rond de Middellandse Zee, in zuidelijk Europa en langs de kust van Noord-Afrika.",
+      "text_markdown": "Het groeit in de landen rond de Middellandse Zee, in zuidelijk Europa en langs de kust van Noord-Afrika.",
+      "tts": {
+        "text": "Het groeit in de landen rond de Middellandse Zee, in zuidelijk Europa en langs de kust van Noord Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het groeit in Californië, in het westelijke deel van Noord-Amerika.",
+      "text_markdown": "Het groeit in Californië, in het westelijke deel van Noord-Amerika.",
+      "tts": {
+        "text": "Het groeit in Californië, in het westelijke deel van Noord Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het groeit langs het midden van de kust van Chili, in Zuid-Amerika.",
+      "text_markdown": "Het groeit langs het midden van de kust van Chili, in Zuid-Amerika.",
+      "tts": {
+        "text": "Het groeit langs het midden van de kust van Chili, in Zuid Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het groeit bij de zuidelijke punt van Afrika, rond de Kaap.",
+      "text_markdown": "Het groeit bij de zuidelijke punt van Afrika, rond de Kaap.",
+      "tts": {
+        "text": "Het groeit bij de zuidelijke punt van Afrika, rond de Kaap.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het groeit in het zuidwesten en de zuidelijke delen van Australië.",
+      "text_markdown": "Het groeit in het zuidwesten en de zuidelijke delen van Australië.",
+      "tts": {
+        "text": "Het groeit in het zuidwesten en de zuidelijke delen van Australië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze plekken ligt ver van de andere.",
+      "text_markdown": "Elk van deze plekken ligt ver van de andere.",
+      "tts": {
+        "text": "Elk van deze plekken ligt ver van de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze delen allemaal hetzelfde bijzondere weer.",
+      "text_markdown": "Maar ze delen allemaal hetzelfde bijzondere weer.",
+      "tts": {
+        "text": "Maar ze delen allemaal hetzelfde bijzondere weer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zomers zijn heet en droog, en de winters zijn zacht en nat.",
+      "text_markdown": "De zomers zijn heet en droog, en de winters zijn zacht en nat.",
+      "tts": {
+        "text": "De zomers zijn heet en droog, en de winters zijn zacht en nat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is zeldzaam op Aarde.",
+      "text_markdown": "Dat is zeldzaam op Aarde.",
+      "tts": {
+        "text": "Dat is zeldzaam op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste biomen hebben hun regentijd in de warme maanden.",
+      "text_markdown": "De meeste biomen hebben hun regentijd in de warme maanden.",
+      "tts": {
+        "text": "De meeste biomen hebben hun regentijd in de warme maanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier valt de regen juist in de koele maanden.",
+      "text_markdown": "Hier valt de regen juist in de koele maanden.",
+      "tts": {
+        "text": "Hier valt de regen juist in de koele maanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze vijf plekken heeft zijn eigen planten en dieren.",
+      "text_markdown": "Elk van deze vijf plekken heeft zijn eigen planten en dieren.",
+      "tts": {
+        "text": "Elk van deze vijf plekken heeft zijn eigen planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de vormen zijn hetzelfde.",
+      "text_markdown": "Maar de vormen zijn hetzelfde.",
+      "tts": {
+        "text": "Maar de vormen zijn hetzelfde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lage taaie struiken, verspreide bomen, geurige kruiden en kale rotsachtige heuvels.",
+      "text_markdown": "Lage taaie struiken, verspreide bomen, geurige kruiden en kale rotsachtige heuvels.",
+      "tts": {
+        "text": "Lage taaie struiken, verspreide bomen, geurige kruiden en kale rotsachtige heuvels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je in een mediterraan land in de zomer staat, ruikt de lucht naar droge kruiden en warme steen.",
+      "text_markdown": "Als je in een mediterraan land in de zomer staat, ruikt de lucht naar droge kruiden en warme steen.",
+      "tts": {
+        "text": "Als je in een mediterraan land in de zomer staat, ruikt de lucht naar droge kruiden en warme steen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het licht is sterk en goudkleurig.",
+      "text_markdown": "Het licht is sterk en goudkleurig.",
+      "tts": {
+        "text": "Het licht is sterk en goudkleurig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De heuvels zijn bezaaid met lage zilvergroene struiken.",
+      "text_markdown": "De heuvels zijn bezaaid met lage zilvergroene struiken.",
+      "tts": {
+        "text": "De heuvels zijn bezaaid met lage zilvergroene struiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het mediterrane bioom.",
+      "text_markdown": "Dat is het mediterrane bioom.",
+      "tts": {
+        "text": "Dat is het mediterrane bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Waar dit bioom groeit",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een heldere, droge, geurige wereld die in vijf kleine hoeken van de Aarde groeit.",
+      "text_markdown": "Een heldere, droge, geurige wereld die in vijf kleine hoeken van de Aarde groeit.",
+      "tts": {
+        "text": "Een heldere, droge, geurige wereld die in vijf kleine hoeken van de Aarde groeit.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in het mediterrane bioom is ongewoon.",
+      "text_markdown": "Het weer in het mediterrane bioom is ongewoon.",
+      "tts": {
+        "text": "Het weer in het mediterrane bioom is ongewoon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn twee duidelijke seizoenen.",
+      "text_markdown": "Er zijn twee duidelijke seizoenen.",
+      "tts": {
+        "text": "Er zijn twee duidelijke seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is een lange, hete, droge zomer.",
+      "text_markdown": "Er is een lange, hete, droge zomer.",
+      "tts": {
+        "text": "Er is een lange, hete, droge zomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is een kortere, zachte, natte winter.",
+      "text_markdown": "Er is een kortere, zachte, natte winter.",
+      "tts": {
+        "text": "Er is een kortere, zachte, natte winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer is de lucht weken aan een stuk blauw.",
+      "text_markdown": "In de zomer is de lucht weken aan een stuk blauw.",
+      "tts": {
+        "text": "In de zomer is de lucht weken aan een stuk blauw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zon is sterk, en de lucht is droog.",
+      "text_markdown": "De zon is sterk, en de lucht is droog.",
+      "tts": {
+        "text": "De zon is sterk, en de lucht is droog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bijna geen regen valt er vele maanden lang.",
+      "text_markdown": "Bijna geen regen valt er vele maanden lang.",
+      "tts": {
+        "text": "Bijna geen regen valt er vele maanden lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegen het einde van de zomer is het gras bruin en krimpen de beken tot een paar stille poelen.",
+      "text_markdown": "Tegen het einde van de zomer is het gras bruin en krimpen de beken tot een paar stille poelen.",
+      "tts": {
+        "text": "Tegen het einde van de zomer is het gras bruin en krimpen de beken tot een paar stille poelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst komen de eerste koele winden van de zee.",
+      "text_markdown": "In de herfst komen de eerste koele winden van de zee.",
+      "tts": {
+        "text": "In de herfst komen de eerste koele winden van de zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wolken pakken zich samen, en de eerste zware regens vallen op de droge aarde.",
+      "text_markdown": "De wolken pakken zich samen, en de eerste zware regens vallen op de droge aarde.",
+      "tts": {
+        "text": "De wolken pakken zich samen, en de eerste zware regens vallen op de droge aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land drinkt het water op, en het gras wordt weer groen.",
+      "text_markdown": "Het land drinkt het water op, en het gras wordt weer groen.",
+      "tts": {
+        "text": "Het land drinkt het water op, en het gras wordt weer groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Winters zijn niet erg koud.",
+      "text_markdown": "Winters zijn niet erg koud.",
+      "tts": {
+        "text": "Winters zijn niet erg koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het sneeuwt zelden, behalve hoog in de bergen.",
+      "text_markdown": "Het sneeuwt zelden, behalve hoog in de bergen.",
+      "tts": {
+        "text": "Het sneeuwt zelden, behalve hoog in de bergen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De regen valt in lange, zachte buien en de rivieren stromen vol.",
+      "text_markdown": "De regen valt in lange, zachte buien en de rivieren stromen vol.",
+      "tts": {
+        "text": "De regen valt in lange, zachte buien en de rivieren stromen vol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente is de lucht warm en zijn de heuvels groen.",
+      "text_markdown": "In de lente is de lucht warm en zijn de heuvels groen.",
+      "tts": {
+        "text": "In de lente is de lucht warm en zijn de heuvels groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor een paar korte weken bedekken wilde bloemen iedere helling.",
+      "text_markdown": "Voor een paar korte weken bedekken wilde bloemen iedere helling.",
+      "tts": {
+        "text": "Voor een paar korte weken bedekken wilde bloemen iedere helling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan begint de zomer weer, en de kringloop start opnieuw.",
+      "text_markdown": "Dan begint de zomer weer, en de kringloop start opnieuw.",
+      "tts": {
+        "text": "Dan begint de zomer weer, en de kringloop start opnieuw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuur is ook een deel van dit bioom.",
+      "text_markdown": "Vuur is ook een deel van dit bioom.",
+      "tts": {
+        "text": "Vuur is ook een deel van dit bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lange droge zomer kan bliksem of een onvoorzichtige vonk het droge struikgewas in brand zetten.",
+      "text_markdown": "In de lange droge zomer kan bliksem of een onvoorzichtige vonk het droge struikgewas in brand zetten.",
+      "tts": {
+        "text": "In de lange droge zomer kan bliksem of een onvoorzichtige vonk het droge struikgewas in brand zetten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van de planten hier hebben geleerd om met vuur te leven en snel weer terug te groeien wanneer het voorbij is.",
+      "text_markdown": "Veel van de planten hier hebben geleerd om met vuur te leven en snel weer terug te groeien wanneer het voorbij is.",
+      "tts": {
+        "text": "Veel van de planten hier hebben geleerd om met vuur te leven en snel weer terug te groeien wanneer het voorbij is.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land van het mediterrane bioom is vaak heuvelachtig.",
+      "text_markdown": "Het land van het mediterrane bioom is vaak heuvelachtig.",
+      "tts": {
+        "text": "Het land van het mediterrane bioom is vaak heuvelachtig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bergen rijzen dicht bij de kust op in veel van deze streken.",
+      "text_markdown": "Bergen rijzen dicht bij de kust op in veel van deze streken.",
+      "tts": {
+        "text": "Bergen rijzen dicht bij de kust op in veel van deze streken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hellingen zijn rotsachtig, en de bodem is vaak dun.",
+      "text_markdown": "De hellingen zijn rotsachtig, en de bodem is vaak dun.",
+      "tts": {
+        "text": "De hellingen zijn rotsachtig, en de bodem is vaak dun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zeeën en oceanen in de buurt vormen het weer.",
+      "text_markdown": "De zeeën en oceanen in de buurt vormen het weer.",
+      "tts": {
+        "text": "De zeeën en oceanen in de buurt vormen het weer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het koele water houdt de zomers ervan af zo heet te worden als een woestijn, en de winters ervan af zo koud te worden als de landen verder landinwaarts.",
+      "text_markdown": "Het koele water houdt de zomers ervan af zo heet te worden als een woestijn, en de winters ervan af zo koud te worden als de landen verder landinwaarts.",
+      "tts": {
+        "text": "Het koele water houdt de zomers ervan af zo heet te worden als een woestijn, en de winters ervan af zo koud te worden als de landen verder landinwaarts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Water is hier kostbaar.",
+      "text_markdown": "Water is hier kostbaar.",
+      "tts": {
+        "text": "Water is hier kostbaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste rivieren krimpen tegen het einde van de zomer tot een straaltje.",
+      "text_markdown": "De meeste rivieren krimpen tegen het einde van de zomer tot een straaltje.",
+      "tts": {
+        "text": "De meeste rivieren krimpen tegen het einde van de zomer tot een straaltje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige kleinere beken verdwijnen helemaal.",
+      "text_markdown": "Sommige kleinere beken verdwijnen helemaal.",
+      "tts": {
+        "text": "Sommige kleinere beken verdwijnen helemaal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer de winterregens terugkomen, vullen de rivieren zich snel en stromen ze de heuvels af naar de zee.",
+      "text_markdown": "Wanneer de winterregens terugkomen, vullen de rivieren zich snel en stromen ze de heuvels af naar de zee.",
+      "tts": {
+        "text": "Wanneer de winterregens terugkomen, vullen de rivieren zich snel en stromen ze de heuvels af naar de zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plaatsen stijgt diep grondwater op tot een bron.",
+      "text_markdown": "Op sommige plaatsen stijgt diep grondwater op tot een bron.",
+      "tts": {
+        "text": "Op sommige plaatsen stijgt diep grondwater op tot een bron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bron is een kleine poel zoet water die het hele jaar uit de rots stroomt.",
+      "text_markdown": "Een bron is een kleine poel zoet water die het hele jaar uit de rots stroomt.",
+      "tts": {
+        "text": "Een bron is een kleine poel zoet water die het hele jaar uit de rots stroomt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duizenden jaren lang hebben mensen, dieren en bomen zich rond deze bronnen verzameld.",
+      "text_markdown": "Duizenden jaren lang hebben mensen, dieren en bomen zich rond deze bronnen verzameld.",
+      "tts": {
+        "text": "Duizenden jaren lang hebben mensen, dieren en bomen zich rond deze bronnen verzameld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de kust ontmoet het land de zee in kliffen, stranden en kleine baaien.",
+      "text_markdown": "Langs de kust ontmoet het land de zee in kliffen, stranden en kleine baaien.",
+      "tts": {
+        "text": "Langs de kust ontmoet het land de zee in kliffen, stranden en kleine baaien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zee zit vol leven.",
+      "text_markdown": "De zee zit vol leven.",
+      "tts": {
+        "text": "De zee zit vol leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissen, octopussen en zeevogels vinden voedsel in het warme, zoute water.",
+      "text_markdown": "Vissen, octopussen en zeevogels vinden voedsel in het warme, zoute water.",
+      "tts": {
+        "text": "Vissen, octopussen en zeevogels vinden voedsel in het warme, zoute water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het bioom leeft tussen het land, de zee en de lange blauwe zomerlucht.",
+      "text_markdown": "Het bioom leeft tussen het land, de zee en de lange blauwe zomerlucht.",
+      "tts": {
+        "text": "Het bioom leeft tussen het land, de zee en de lange blauwe zomerlucht.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planten van het mediterrane bioom zijn taai en slim.",
+      "text_markdown": "De planten van het mediterrane bioom zijn taai en slim.",
+      "tts": {
+        "text": "De planten van het mediterrane bioom zijn taai en slim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben geleerd om door een lange, droge zomer heen te leven.",
+      "text_markdown": "Ze hebben geleerd om door een lange, droge zomer heen te leven.",
+      "tts": {
+        "text": "Ze hebben geleerd om door een lange, droge zomer heen te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste van hen zijn niet hoog.",
+      "text_markdown": "De meeste van hen zijn niet hoog.",
+      "tts": {
+        "text": "De meeste van hen zijn niet hoog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze groeien als lage struiken, met dikke, leerachtige bladeren.",
+      "text_markdown": "Ze groeien als lage struiken, met dikke, leerachtige bladeren.",
+      "tts": {
+        "text": "Ze groeien als lage struiken, met dikke, leerachtige bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bladeren zijn klein en glanzend, soms zilver of grijsgroen.",
+      "text_markdown": "De bladeren zijn klein en glanzend, soms zilver of grijsgroen.",
+      "tts": {
+        "text": "De bladeren zijn klein en glanzend, soms zilver of grijsgroen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een klein, glanzend blad verliest minder water aan de zon.",
+      "text_markdown": "Een klein, glanzend blad verliest minder water aan de zon.",
+      "tts": {
+        "text": "Een klein, glanzend blad verliest minder water aan de zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bleek blad weerkaatst meer van het zonlicht.",
+      "text_markdown": "Een bleek blad weerkaatst meer van het zonlicht.",
+      "tts": {
+        "text": "Een bleek blad weerkaatst meer van het zonlicht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van de planten geven een sterke, zoete geur af wanneer je ertegenaan strijkt.",
+      "text_markdown": "Veel van de planten geven een sterke, zoete geur af wanneer je ertegenaan strijkt.",
+      "tts": {
+        "text": "Veel van de planten geven een sterke, zoete geur af wanneer je ertegenaan strijkt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die geur komt van oliën in de bladeren.",
+      "text_markdown": "Die geur komt van oliën in de bladeren.",
+      "tts": {
+        "text": "Die geur komt van oliën in de bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oliën vertragen het waterverlies en helpen de plant de hitte te overleven.",
+      "text_markdown": "De oliën vertragen het waterverlies en helpen de plant de hitte te overleven.",
+      "tts": {
+        "text": "De oliën vertragen het waterverlies en helpen de plant de hitte te overleven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom komen zo veel van onze favoriete keukenkruiden uit deze landen.",
+      "text_markdown": "Daarom komen zo veel van onze favoriete keukenkruiden uit deze landen.",
+      "tts": {
+        "text": "Daarom komen zo veel van onze favoriete keukenkruiden uit deze landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planten zoals rozemarijn, salie, tijm, lavendel, munt en oregano groeien allemaal wild in het mediterrane bioom.",
+      "text_markdown": "Planten zoals rozemarijn, salie, tijm, lavendel, munt en oregano groeien allemaal wild in het mediterrane bioom.",
+      "tts": {
+        "text": "Planten zoals rozemarijn, salie, tijm, lavendel, munt en oregano groeien allemaal wild in het mediterrane bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De beroemdste boom van dit bioom is de olijfboom.",
+      "text_markdown": "De beroemdste boom van dit bioom is de olijfboom.",
+      "tts": {
+        "text": "De beroemdste boom van dit bioom is de olijfboom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een olijfboom heeft een dikke, gedraaide stam en kleine, zilvergrijze bladeren.",
+      "text_markdown": "Een olijfboom heeft een dikke, gedraaide stam en kleine, zilvergrijze bladeren.",
+      "tts": {
+        "text": "Een olijfboom heeft een dikke, gedraaide stam en kleine, zilvergrijze bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige olijfbomen leven meer dan duizend jaar.",
+      "text_markdown": "Sommige olijfbomen leven meer dan duizend jaar.",
+      "tts": {
+        "text": "Sommige olijfbomen leven meer dan duizend jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere veelvoorkomende bomen zijn lage groenblijvende eiken, pijnbomen en kurkeiken.",
+      "text_markdown": "Andere veelvoorkomende bomen zijn lage groenblijvende eiken, pijnbomen en kurkeiken.",
+      "tts": {
+        "text": "Andere veelvoorkomende bomen zijn lage groenblijvende eiken, pijnbomen en kurkeiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wilde wijnrank begon ook in deze landen en klom omhoog uit de struiken.",
+      "text_markdown": "De wilde wijnrank begon ook in deze landen en klom omhoog uit de struiken.",
+      "tts": {
+        "text": "De wilde wijnrank begon ook in deze landen en klom omhoog uit de struiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de kust kun je hoge bossen van bamboe, vijgenbomen en amandelbomen vinden.",
+      "text_markdown": "Langs de kust kun je hoge bossen van bamboe, vijgenbomen en amandelbomen vinden.",
+      "tts": {
+        "text": "Langs de kust kun je hoge bossen van bamboe, vijgenbomen en amandelbomen vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste planten hier houden hun bladeren het hele jaar, in plaats van ze in de herfst te laten vallen.",
+      "text_markdown": "De meeste planten hier houden hun bladeren het hele jaar, in plaats van ze in de herfst te laten vallen.",
+      "tts": {
+        "text": "De meeste planten hier houden hun bladeren het hele jaar, in plaats van ze in de herfst te laten vallen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kunnen het zich niet veroorloven om elke lente nieuwe bladeren te laten groeien.",
+      "text_markdown": "Ze kunnen het zich niet veroorloven om elke lente nieuwe bladeren te laten groeien.",
+      "tts": {
+        "text": "Ze kunnen het zich niet veroorloven om elke lente nieuwe bladeren te laten groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus houden ze het hele jaar lang kleine, taaie bladeren vast.",
+      "text_markdown": "Dus houden ze het hele jaar lang kleine, taaie bladeren vast.",
+      "tts": {
+        "text": "Dus houden ze het hele jaar lang kleine, taaie bladeren vast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat geeft het mediterrane bioom zijn stoffige, groenblijvende uiterlijk.",
+      "text_markdown": "Dat geeft het mediterrane bioom zijn stoffige, groenblijvende uiterlijk.",
+      "tts": {
+        "text": "Dat geeft het mediterrane bioom zijn stoffige, groenblijvende uiterlijk.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren van het mediterrane bioom hebben veel manieren om met de hitte en de droge zomer te leven.",
+      "text_markdown": "De dieren van het mediterrane bioom hebben veel manieren om met de hitte en de droge zomer te leven.",
+      "tts": {
+        "text": "De dieren van het mediterrane bioom hebben veel manieren om met de hitte en de droge zomer te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste van hen zijn klein en snel.",
+      "text_markdown": "De meeste van hen zijn klein en snel.",
+      "tts": {
+        "text": "De meeste van hen zijn klein en snel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een klein dier kan zich makkelijk verbergen onder een struik of in een spleet tussen rotsen.",
+      "text_markdown": "Een klein dier kan zich makkelijk verbergen onder een struik of in een spleet tussen rotsen.",
+      "tts": {
+        "text": "Een klein dier kan zich makkelijk verbergen onder een struik of in een spleet tussen rotsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van hen rusten door het hete midden van de dag en komen tevoorschijn in de koelte van de ochtend en de avond.",
+      "text_markdown": "Veel van hen rusten door het hete midden van de dag en komen tevoorschijn in de koelte van de ochtend en de avond.",
+      "tts": {
+        "text": "Veel van hen rusten door het hete midden van de dag en komen tevoorschijn in de koelte van de ochtend en de avond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Konijnen en hazen leven in veel van deze landen.",
+      "text_markdown": "Konijnen en hazen leven in veel van deze landen.",
+      "tts": {
+        "text": "Konijnen en hazen leven in veel van deze landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze eten in de schemering en bij dageraad, en ze brengen de dag door in een verborgen hol onder een struik.",
+      "text_markdown": "Ze eten in de schemering en bij dageraad, en ze brengen de dag door in een verborgen hol onder een struik.",
+      "tts": {
+        "text": "Ze eten in de schemering en bij dageraad, en ze brengen de dag door in een verborgen hol onder een struik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vossen jagen op konijnen en andere kleine dieren.",
+      "text_markdown": "Vossen jagen op konijnen en andere kleine dieren.",
+      "tts": {
+        "text": "Vossen jagen op konijnen en andere kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een vos kent elk pad door het struikgewas.",
+      "text_markdown": "Een vos kent elk pad door het struikgewas.",
+      "tts": {
+        "text": "Een vos kent elk pad door het struikgewas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilde zwijnen graven in de zachte bodem naar wortels, noten en kleine dieren.",
+      "text_markdown": "Wilde zwijnen graven in de zachte bodem naar wortels, noten en kleine dieren.",
+      "tts": {
+        "text": "Wilde zwijnen graven in de zachte bodem naar wortels, noten en kleine dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze zijn sterk en schuw, en ze bewegen zich in kleine familiegroepen.",
+      "text_markdown": "Ze zijn sterk en schuw, en ze bewegen zich in kleine familiegroepen.",
+      "tts": {
+        "text": "Ze zijn sterk en schuw, en ze bewegen zich in kleine familiegroepen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In sommige mediterrane landen jagen kleine wilde katten 's nachts.",
+      "text_markdown": "In sommige mediterrane landen jagen kleine wilde katten 's nachts.",
+      "tts": {
+        "text": "In sommige mediterrane landen jagen kleine wilde katten 's nachts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lynx is een van deze katten, met een korte staart en getufte oren.",
+      "text_markdown": "De lynx is een van deze katten, met een korte staart en getufte oren.",
+      "tts": {
+        "text": "De lynx is een van deze katten, met een korte staart en getufte oren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij is nu zeldzaam en leeft in slechts een paar wilde hoeken.",
+      "text_markdown": "Hij is nu zeldzaam en leeft in slechts een paar wilde hoeken.",
+      "tts": {
+        "text": "Hij is nu zeldzaam en leeft in slechts een paar wilde hoeken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Herten leven ook in de bossen aan de rand van het bioom.",
+      "text_markdown": "Herten leven ook in de bossen aan de rand van het bioom.",
+      "tts": {
+        "text": "Herten leven ook in de bossen aan de rand van het bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slangen en hagedissen zijn overal.",
+      "text_markdown": "Slangen en hagedissen zijn overal.",
+      "tts": {
+        "text": "Slangen en hagedissen zijn overal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een hagedis die op een warme rots zit, is een vertrouwd beeld in de zomer.",
+      "text_markdown": "Een hagedis die op een warme rots zit, is een vertrouwd beeld in de zomer.",
+      "tts": {
+        "text": "Een hagedis die op een warme rots zit, is een vertrouwd beeld in de zomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landschildpadden bewegen langzaam door het struikgewas, etend van bladeren en gras.",
+      "text_markdown": "Landschildpadden bewegen langzaam door het struikgewas, etend van bladeren en gras.",
+      "tts": {
+        "text": "Landschildpadden bewegen langzaam door het struikgewas, etend van bladeren en gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mediterrane landschildpad kan vele tientallen jaren leven.",
+      "text_markdown": "De mediterrane landschildpad kan vele tientallen jaren leven.",
+      "tts": {
+        "text": "De mediterrane landschildpad kan vele tientallen jaren leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel vogels leven hier.",
+      "text_markdown": "Veel vogels leven hier.",
+      "tts": {
+        "text": "Veel vogels leven hier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mussen, roodborstjes en grasmussen vullen de struiken met geluid.",
+      "text_markdown": "Mussen, roodborstjes en grasmussen vullen de struiken met geluid.",
+      "tts": {
+        "text": "Mussen, roodborstjes en grasmussen vullen de struiken met geluid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog boven drijven arenden en andere grote vogels op de warme middaglucht.",
+      "text_markdown": "Hoog boven drijven arenden en andere grote vogels op de warme middaglucht.",
+      "tts": {
+        "text": "Hoog boven drijven arenden en andere grote vogels op de warme middaglucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente dansen vlinders van bloem naar bloem.",
+      "text_markdown": "In de lente dansen vlinders van bloem naar bloem.",
+      "tts": {
+        "text": "In de lente dansen vlinders van bloem naar bloem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Krekels en sprinkhanen zingen in de warme zomeravonden.",
+      "text_markdown": "Krekels en sprinkhanen zingen in de warme zomeravonden.",
+      "tts": {
+        "text": "Krekels en sprinkhanen zingen in de warme zomeravonden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bij de zee nestelen meeuwen en andere zeevogels op de kliffen en rotsachtige eilanden.",
+      "text_markdown": "Bij de zee nestelen meeuwen en andere zeevogels op de kliffen en rotsachtige eilanden.",
+      "tts": {
+        "text": "Bij de zee nestelen meeuwen en andere zeevogels op de kliffen en rotsachtige eilanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk dier hier weet hoe het schaduw moet vinden in de zomer, hoe het bij de bron moet drinken, en hoe het moet wachten op de koelte van de winterregens.",
+      "text_markdown": "Elk dier hier weet hoe het schaduw moet vinden in de zomer, hoe het bij de bron moet drinken, en hoe het moet wachten op de koelte van de winterregens.",
+      "tts": {
+        "text": "Elk dier hier weet hoe het schaduw moet vinden in de zomer, hoe het bij de bron moet drinken, en hoe het moet wachten op de koelte van de winterregens.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het mediterrane bioom is al heel lang een thuis voor mensen.",
+      "text_markdown": "Het mediterrane bioom is al heel lang een thuis voor mensen.",
+      "tts": {
+        "text": "Het mediterrane bioom is al heel lang een thuis voor mensen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enkele van de oudste steden en boerderijen ter wereld zijn hier begonnen.",
+      "text_markdown": "Enkele van de oudste steden en boerderijen ter wereld zijn hier begonnen.",
+      "tts": {
+        "text": "Enkele van de oudste steden en boerderijen ter wereld zijn hier begonnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duizenden jaren lang hebben mensen aan de kusten van de Middellandse Zee drie planten samen geteeld.",
+      "text_markdown": "Duizenden jaren lang hebben mensen aan de kusten van de Middellandse Zee drie planten samen geteeld.",
+      "tts": {
+        "text": "Duizenden jaren lang hebben mensen aan de kusten van de Middellandse Zee drie planten samen geteeld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze telen olijfbomen voor olie.",
+      "text_markdown": "Ze telen olijfbomen voor olie.",
+      "tts": {
+        "text": "Ze telen olijfbomen voor olie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze telen wijnranken voor vruchten en wijn.",
+      "text_markdown": "Ze telen wijnranken voor vruchten en wijn.",
+      "tts": {
+        "text": "Ze telen wijnranken voor vruchten en wijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze telen tarwe en andere granen voor brood.",
+      "text_markdown": "Ze telen tarwe en andere granen voor brood.",
+      "tts": {
+        "text": "Ze telen tarwe en andere granen voor brood.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samen worden deze drie soms het hart van de mediterrane keuken genoemd.",
+      "text_markdown": "Samen worden deze drie soms het hart van de mediterrane keuken genoemd.",
+      "tts": {
+        "text": "Samen worden deze drie soms het hart van de mediterrane keuken genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daaraan voegden de mensen groenten, fruit en de wilde kruiden van de heuvels toe.",
+      "text_markdown": "Daaraan voegden de mensen groenten, fruit en de wilde kruiden van de heuvels toe.",
+      "tts": {
+        "text": "Daaraan voegden de mensen groenten, fruit en de wilde kruiden van de heuvels toe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen houden in deze landen ook al vele duizenden jaren kuddes schapen en geiten.",
+      "text_markdown": "Mensen houden in deze landen ook al vele duizenden jaren kuddes schapen en geiten.",
+      "tts": {
+        "text": "Mensen houden in deze landen ook al vele duizenden jaren kuddes schapen en geiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren kunnen voedsel vinden op de rotsachtige hellingen waar het moeilijk is om gewassen te verbouwen.",
+      "text_markdown": "De dieren kunnen voedsel vinden op de rotsachtige hellingen waar het moeilijk is om gewassen te verbouwen.",
+      "tts": {
+        "text": "De dieren kunnen voedsel vinden op de rotsachtige hellingen waar het moeilijk is om gewassen te verbouwen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze geven melk voor kaas en yoghurt, wol voor kleding en vlees.",
+      "text_markdown": "Ze geven melk voor kaas en yoghurt, wol voor kleding en vlees.",
+      "tts": {
+        "text": "Ze geven melk voor kaas en yoghurt, wol voor kleding en vlees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Omdat de zeeën en oceanen dichtbij zijn, zijn de mensen van dit bioom altijd vissers en zeelui geweest.",
+      "text_markdown": "Omdat de zeeën en oceanen dichtbij zijn, zijn de mensen van dit bioom altijd vissers en zeelui geweest.",
+      "tts": {
+        "text": "Omdat de zeeën en oceanen dichtbij zijn, zijn de mensen van dit bioom altijd vissers en zeelui geweest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Houten boten varen bij dageraad uit en komen terug met vis, octopus en ander zeefruit.",
+      "text_markdown": "Houten boten varen bij dageraad uit en komen terug met vis, octopus en ander zeefruit.",
+      "tts": {
+        "text": "Houten boten varen bij dageraad uit en komen terug met vis, octopus en ander zeefruit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de andere mediterrane landen van de wereld, in Californië, Chili, zuidelijk Afrika en Australië, gebruikten de mensen die er duizenden jaren woonden dezelfde wilde planten en dieren op hun eigen manieren.",
+      "text_markdown": "In de andere mediterrane landen van de wereld, in Californië, Chili, zuidelijk Afrika en Australië, gebruikten de mensen die er duizenden jaren woonden dezelfde wilde planten en dieren op hun eigen manieren.",
+      "tts": {
+        "text": "In de andere mediterrane landen van de wereld, in Californië, Chili, zuidelijk Afrika en Australië, gebruikten de mensen die er duizenden jaren woonden dezelfde wilde planten en dieren op hun eigen manieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen boeren uit de landen rond de Middellandse Zee veel later naar die plekken kwamen, brachten ze hun olijven, hun wijnranken en hun tarwe met zich mee.",
+      "text_markdown": "Toen boeren uit de landen rond de Middellandse Zee veel later naar die plekken kwamen, brachten ze hun olijven, hun wijnranken en hun tarwe met zich mee.",
+      "tts": {
+        "text": "Toen boeren uit de landen rond de Middellandse Zee veel later naar die plekken kwamen, brachten ze hun olijven, hun wijnranken en hun tarwe met zich mee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vandaag de dag verbouwen alle vijf mediterrane streken van de wereld dezelfde soorten voedsel.",
+      "text_markdown": "Vandaag de dag verbouwen alle vijf mediterrane streken van de wereld dezelfde soorten voedsel.",
+      "tts": {
+        "text": "Vandaag de dag verbouwen alle vijf mediterrane streken van de wereld dezelfde soorten voedsel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land lijkt erom te vragen.",
+      "text_markdown": "Het land lijkt erom te vragen.",
+      "tts": {
+        "text": "Het land lijkt erom te vragen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De keukens van elke mediterrane streek delen dezelfde basisgaven.",
+      "text_markdown": "De keukens van elke mediterrane streek delen dezelfde basisgaven.",
+      "tts": {
+        "text": "De keukens van elke mediterrane streek delen dezelfde basisgaven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brood, kaas, olijfolie, verse tomaten, vis, fruit en wijn.",
+      "text_markdown": "Brood, kaas, olijfolie, verse tomaten, vis, fruit en wijn.",
+      "tts": {
+        "text": "Brood, kaas, olijfolie, verse tomaten, vis, fruit en wijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen van deze landen hebben altijd geweten hoe ze het meeste uit een lange, droge zomer kunnen halen.",
+      "text_markdown": "De mensen van deze landen hebben altijd geweten hoe ze het meeste uit een lange, droge zomer kunnen halen.",
+      "tts": {
+        "text": "De mensen van deze landen hebben altijd geweten hoe ze het meeste uit een lange, droge zomer kunnen halen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze eten vers in de warme maanden.",
+      "text_markdown": "Ze eten vers in de warme maanden.",
+      "tts": {
+        "text": "Ze eten vers in de warme maanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leggen voedsel weg in olie, in zout en in potten voor de regenachtige winter.",
+      "text_markdown": "Ze leggen voedsel weg in olie, in zout en in potten voor de regenachtige winter.",
+      "tts": {
+        "text": "Ze leggen voedsel weg in olie, in zout en in potten voor de regenachtige winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elke mediterrane streek heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+      "text_markdown": "In elke mediterrane streek heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+      "tts": {
+        "text": "In elke mediterrane streek heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het bioom vandaag",
+      "text_markdown": "Het bioom vandaag"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het mediterrane bioom is klein maar heel belangrijk.",
+      "text_markdown": "Het mediterrane bioom is klein maar heel belangrijk.",
+      "tts": {
+        "text": "Het mediterrane bioom is klein maar heel belangrijk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoewel het slechts een klein deel van de Aarde beslaat, herbergt het een enorm aantal planten en dieren die nergens anders te vinden zijn.",
+      "text_markdown": "Hoewel het slechts een klein deel van de Aarde beslaat, herbergt het een enorm aantal planten en dieren die nergens anders te vinden zijn.",
+      "tts": {
+        "text": "Hoewel het slechts een klein deel van de Aarde beslaat, herbergt het een enorm aantal planten en dieren die nergens anders te vinden zijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor mensen is dit bioom al duizenden jaren de bakermat van voedsel en landbouw geweest.",
+      "text_markdown": "Voor mensen is dit bioom al duizenden jaren de bakermat van voedsel en landbouw geweest.",
+      "tts": {
+        "text": "Voor mensen is dit bioom al duizenden jaren de bakermat van voedsel en landbouw geweest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het bioom is op veel plaatsen in moeilijkheden.",
+      "text_markdown": "Maar het bioom is op veel plaatsen in moeilijkheden.",
+      "tts": {
+        "text": "Maar het bioom is op veel plaatsen in moeilijkheden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Steden en dorpen zijn gegroeid langs de kusten waar het weer zacht is en de zee dichtbij.",
+      "text_markdown": "Steden en dorpen zijn gegroeid langs de kusten waar het weer zacht is en de zee dichtbij.",
+      "tts": {
+        "text": "Steden en dorpen zijn gegroeid langs de kusten waar het weer zacht is en de zee dichtbij.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wegen, huizen, hotels en boerderijen hebben veel van de wilde struiken en bomen vervangen.",
+      "text_markdown": "Wegen, huizen, hotels en boerderijen hebben veel van de wilde struiken en bomen vervangen.",
+      "tts": {
+        "text": "Wegen, huizen, hotels en boerderijen hebben veel van de wilde struiken en bomen vervangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange droge zomers, heter dan voorheen, maken de branden groter en gevaarlijker.",
+      "text_markdown": "Lange droge zomers, heter dan voorheen, maken de branden groter en gevaarlijker.",
+      "tts": {
+        "text": "Lange droge zomers, heter dan voorheen, maken de branden groter en gevaarlijker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige dieren, zoals de lynx en de mediterrane landschildpad, zijn heel zeldzaam geworden.",
+      "text_markdown": "Sommige dieren, zoals de lynx en de mediterrane landschildpad, zijn heel zeldzaam geworden.",
+      "tts": {
+        "text": "Sommige dieren, zoals de lynx en de mediterrane landschildpad, zijn heel zeldzaam geworden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+      "text_markdown": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er over is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leggen parken aan waar de wilde planten en dieren nog kunnen leven.",
+      "text_markdown": "Ze leggen parken aan waar de wilde planten en dieren nog kunnen leven.",
+      "tts": {
+        "text": "Ze leggen parken aan waar de wilde planten en dieren nog kunnen leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze planten nieuwe olijfbomen en beschermen oude.",
+      "text_markdown": "Ze planten nieuwe olijfbomen en beschermen oude.",
+      "tts": {
+        "text": "Ze planten nieuwe olijfbomen en beschermen oude.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze helpen boeren voedsel te verbouwen op manieren die vriendelijk zijn voor het land.",
+      "text_markdown": "Ze helpen boeren voedsel te verbouwen op manieren die vriendelijk zijn voor het land.",
+      "tts": {
+        "text": "Ze helpen boeren voedsel te verbouwen op manieren die vriendelijk zijn voor het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen het bioom zodat we het beter kunnen begrijpen.",
+      "text_markdown": "Ze bestuderen het bioom zodat we het beter kunnen begrijpen.",
+      "tts": {
+        "text": "Ze bestuderen het bioom zodat we het beter kunnen begrijpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een gezond mediterraan bioom is een stille, geurige, prachtige plek.",
+      "text_markdown": "Een gezond mediterraan bioom is een stille, geurige, prachtige plek.",
+      "tts": {
+        "text": "Een gezond mediterraan bioom is een stille, geurige, prachtige plek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Het bioom vandaag",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is onze zorg waard.",
+      "text_markdown": "Het is onze zorg waard.",
+      "tts": {
+        "text": "Het is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afsluiting",
+      "text_markdown": "Afsluiting"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het mediterrane bioom.",
+      "text_markdown": "Dat is het mediterrane bioom.",
+      "tts": {
+        "text": "Dat is het mediterrane bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een heldere, droge, geurige wereld van olijfbomen, lage struiken en warme zomeravonden.",
+      "text_markdown": "Een heldere, droge, geurige wereld van olijfbomen, lage struiken en warme zomeravonden.",
+      "tts": {
+        "text": "Een heldere, droge, geurige wereld van olijfbomen, lage struiken en warme zomeravonden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in staat, sta dan een minuut stil.",
+      "text_markdown": "Als je er ooit in staat, sta dan een minuut stil.",
+      "tts": {
+        "text": "Als je er ooit in staat, sta dan een minuut stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruik de warme kruiden in de lucht.",
+      "text_markdown": "Ruik de warme kruiden in de lucht.",
+      "tts": {
+        "text": "Ruik de warme kruiden in de lucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de krekels in het droge gras.",
+      "text_markdown": "Luister naar de krekels in het droge gras.",
+      "tts": {
+        "text": "Luister naar de krekels in het droge gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk uit naar de zee.",
+      "text_markdown": "Kijk uit naar de zee.",
+      "tts": {
+        "text": "Kijk uit naar de zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "text_markdown": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "tts": {
+        "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

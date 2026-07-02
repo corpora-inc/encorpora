@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "hu",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Üdvözöljük az AI This Week-ben.",
+      "text_markdown": "Üdvözöljük az AI This Week-ben.",
+      "title": "",
+      "tts": {
+        "text": "Üdvözöljük az AI This Week-ben.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Vindy vagyok.",
+      "text_markdown": "Vindy vagyok.",
+      "title": "",
+      "tts": {
+        "text": "Vindy vagyok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Velem van, mint mindig, Ron.",
+      "text_markdown": "Velem van, mint mindig, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Velem van, mint mindig, Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Jó itt lenni, Vindy.",
+      "text_markdown": "Jó itt lenni, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jó itt lenni, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Ma vasárnap van, 2026. június 21.",
+      "text_markdown": "Ma vasárnap van, 2026. június 21.",
+      "title": "",
+      "tts": {
+        "text": "Ma vasárnap van, kétezerhuszonhat június huszonegyedikén.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Múlt héten magunkról beszéltünk; ma ellenkező irányba indulunk – egészen a hatalmi központokig.",
+      "text_markdown": "Múlt héten magunkról beszéltünk; ma ellenkező irányba indulunk – egészen a hatalmi központokig.",
+      "title": "",
+      "tts": {
+        "text": "Múlt héten magunkról beszéltünk; ma ellenkező irányba indulunk – egészen a hatalmi központokig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Ki irányítja az AI telepítését, ki fizeti a kiépítést, kié a szilícium.",
+      "text_markdown": "Ki irányítja az AI telepítését, ki fizeti a kiépítést, kié a szilícium.",
+      "title": "",
+      "tts": {
+        "text": "Ki irányítja az AI telepítését, ki fizeti a kiépítést, kié a szilícium.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "Következik – az Egyesült Államok Kereskedelmi Minisztériuma múlt pénteken kivont egy amerikai modellt a nyilvános használatból, és ott fogjuk kezdeni.",
+      "text_markdown": "Következik – az Egyesült Államok Kereskedelmi Minisztériuma múlt pénteken kivont egy amerikai modellt a nyilvános használatból, és ott fogjuk kezdeni.",
+      "title": "",
+      "tts": {
+        "text": "Következik – az Egyesült Államok Kereskedelmi Minisztériuma múlt pénteken kivont egy amerikai modellt a nyilvános használatból, és ott fogjuk kezdeni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Aztán az adatközpontok kiépítése, ahol a bejelentések és a valóság nem egyeznek.",
+      "text_markdown": "Aztán az adatközpontok kiépítése, ahol a bejelentések és a valóság nem egyeznek.",
+      "title": "",
+      "tts": {
+        "text": "Aztán az adatközpontok kiépítése, ahol a bejelentések és a valóság nem egyeznek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "Aztán az Egyesült Államok és Kína összehasonlítása, ahol a klisét a tényleges korlátozó tényező váltja fel.",
+      "text_markdown": "Aztán az Egyesült Államok és Kína összehasonlítása, ahol a klisét a tényleges korlátozó tényező váltja fel.",
+      "title": "",
+      "tts": {
+        "text": "Aztán az Egyesült Államok és Kína összehasonlítása, ahol a klisét a tényleges korlátozó tényező váltja fel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "És a hét koncepciója – egyetlen sor az Oracle mérlegén, ami szinte mindent elmond.",
+      "text_markdown": "És a hét koncepciója – egyetlen sor az Oracle mérlegén, ami szinte mindent elmond.",
+      "title": "",
+      "tts": {
+        "text": "És a hét koncepciója – egyetlen sor az Oracle mérlegén, ami szinte mindent elmond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Ron, kezdjük az Anthropic-kal.",
+      "text_markdown": "Ron, kezdjük az Anthropic-kal.",
+      "title": "",
+      "tts": {
+        "text": "Ron, kezdjük az Anthropic-kal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Mi történt június tizenkettedikén.",
+      "text_markdown": "Mi történt június tizenkettedikén.",
+      "title": "",
+      "tts": {
+        "text": "Mi történt június tizenkettedikén.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Pénteken, június tizenkettedikén, keleti idő szerint délután öt óra huszonegy perckor az Anthropic offline állapotba helyezte két legújabb modelljét – a Claude Mythos ötöt és a Claude Fable ötöt.",
+      "text_markdown": "Pénteken, június tizenkettedikén, keleti idő szerint délután öt óra huszonegy perckor az Anthropic offline állapotba helyezte két legújabb modelljét – a Claude Mythos ötöt és a Claude Fable ötöt.",
+      "title": "",
+      "tts": {
+        "text": "Pénteken, június tizenkettedikén, keleti idő szerint délután öt óra huszonegy perckor az Anthropic offline állapotba helyezte két legújabb modelljét – a Claude Mythos ötöt és a Claude Fable ötöt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Nem karbantartás miatt, nem is saját kezdeményezésű biztonsági felülvizsgálat miatt.",
+      "text_markdown": "Nem karbantartás miatt, nem is saját kezdeményezésű biztonsági felülvizsgálat miatt.",
+      "title": "",
+      "tts": {
+        "text": "Nem karbantartás miatt, nem is saját kezdeményezésű biztonsági felülvizsgálat miatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "Azért vették le őket, mert az Egyesült Államok Kereskedelmi Minisztériuma exportellenőrzésre hivatkozva irányelvet adott ki.",
+      "text_markdown": "Azért vették le őket, mert az Egyesült Államok Kereskedelmi Minisztériuma exportellenőrzésre hivatkozva irányelvet adott ki.",
+      "title": "",
+      "tts": {
+        "text": "Azért vették le őket, mert az Egyesült Államok Kereskedelmi Minisztériuma exportellenőrzésre hivatkozva irányelvet adott ki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "Mi volt a technikai ok.",
+      "text_markdown": "Mi volt a technikai ok.",
+      "title": "",
+      "tts": {
+        "text": "Mi volt a technikai ok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Egy jailbreaket mutattak be, állítólag egy másik cég, amely olyan kimenetet produkált, amelyet a Kereskedelmi Minisztérium exportellenőrzés alá tartozónak ítélt.",
+      "text_markdown": "Egy jailbreaket mutattak be, állítólag egy másik cég, amely olyan kimenetet produkált, amelyet a Kereskedelmi Minisztérium exportellenőrzés alá tartozónak ítélt.",
+      "title": "",
+      "tts": {
+        "text": "Egy jailbreaket mutattak be, állítólag egy másik cég, amely olyan kimenetet produkált, amelyet a Kereskedelmi Minisztérium exportellenőrzés alá tartozónak ítélt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "A Fortune arról számolt be, hogy az Amazon volt az, aki figyelmeztette a Fehér Házat.",
+      "text_markdown": "A Fortune arról számolt be, hogy az Amazon volt az, aki figyelmeztette a Fehér Házat.",
+      "title": "",
+      "tts": {
+        "text": "A Fortune arról számolt be, hogy az Amazon volt az, aki figyelmeztette a Fehér Házat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "És hogyan reagált az Anthropic.",
+      "text_markdown": "És hogyan reagált az Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "És hogyan reagált az Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "Az Anthropic nyilvánosan vitatja az indoklást.",
+      "text_markdown": "Az Anthropic nyilvánosan vitatja az indoklást.",
+      "title": "",
+      "tts": {
+        "text": "Az Anthropic nyilvánosan vitatja az indoklást.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Nyilatkozatuk a jailbreaket – és idézem – „szűk, nem univerzális” jelzővel illette, és hozzátette, hogy ugyanez a kimenet más modellekből is elérhető, beleértve az OpenAI GPT-öt-pont-ötöt is.",
+      "text_markdown": "Nyilatkozatuk a jailbreaket – és idézem – „szűk, nem univerzális” jelzővel illette, és hozzátette, hogy ugyanez a kimenet más modellekből is elérhető, beleértve az OpenAI GPT-öt-pont-ötöt is.",
+      "title": "",
+      "tts": {
+        "text": "Nyilatkozatuk a jailbreaket – és idézem – „szűk, nem univerzális” jelzővel illette, és hozzátette, hogy ugyanez a kimenet más modellekből is elérhető, beleértve az OpenAI GPT öt pont ötöt is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Összefoglaló mondatuk: „a kormány intézkedése félreértésen alapul.”",
+      "text_markdown": "Összefoglaló mondatuk: „a kormány intézkedése félreértésen alapul.”",
+      "title": "",
+      "tts": {
+        "text": "Összefoglaló mondatuk: „a kormány intézkedése félreértésen alapul.”",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Ez szokatlanul közvetlen nézeteltérés az Egyesült Államok kormányával egy AI labor részéről.",
+      "text_markdown": "Ez szokatlanul közvetlen nézeteltérés az Egyesült Államok kormányával egy AI labor részéről.",
+      "title": "",
+      "tts": {
+        "text": "Ez szokatlanul közvetlen nézeteltérés az Egyesült Államok kormányával egy mesterséges intelligencia labor részéről.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Igen, és az alatta rejlő strukturális tény a főcím.",
+      "text_markdown": "Igen, és az alatta rejlő strukturális tény a főcím.",
+      "title": "",
+      "tts": {
+        "text": "Igen, és az alatta rejlő strukturális tény a főcím.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "A Kereskedelmi Minisztérium mostantól elrendelheti egy magánkézben lévő amerikai AI labor számára, hogy exportellenőrzésre hivatkozva vegyen le egy modellt az internetről, és ez a parancs hetvenkét órán belül érvénybe lép.",
+      "text_markdown": "A Kereskedelmi Minisztérium mostantól elrendelheti egy magánkézben lévő amerikai AI labor számára, hogy exportellenőrzésre hivatkozva vegyen le egy modellt az internetről, és ez a parancs hetvenkét órán belül érvénybe lép.",
+      "title": "",
+      "tts": {
+        "text": "A Kereskedelmi Minisztérium mostantól elrendelheti egy magánkézben lévő amerikai mesterséges intelligencia labor számára, hogy exportellenőrzésre hivatkozva vegyen le egy modellt az internetről, és ez a parancs hetvenkét órán belül érvénybe lép.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Akár helyesnek tartja a rendeletet, akár nem.",
+      "text_markdown": "Akár helyesnek tartja a rendeletet, akár nem.",
+      "title": "",
+      "tts": {
+        "text": "Akár helyesnek tartja a rendeletet, akár nem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Akár helyesnek tartja a rendeletet, akár nem.",
+      "text_markdown": "Akár helyesnek tartja a rendeletet, akár nem.",
+      "title": "",
+      "tts": {
+        "text": "Akár helyesnek tartja a rendeletet, akár nem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Maga a hatáskör, a sebesség és a precedens a fontos.",
+      "text_markdown": "Maga a hatáskör, a sebesség és a precedens a fontos.",
+      "title": "",
+      "tts": {
+        "text": "Maga a hatáskör, a sebesség és a precedens a fontos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "És az Amazon szerepe itt.",
+      "text_markdown": "És az Amazon szerepe itt.",
+      "title": "",
+      "tts": {
+        "text": "És az Amazon szerepe itt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Ez az a rész, amit figyelni kell.",
+      "text_markdown": "Ez az a rész, amit figyelni kell.",
+      "title": "",
+      "tts": {
+        "text": "Ez az a rész, amit figyelni kell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "Az Amazon az Anthropic egyik fő befektetője, és saját munkája révén versenyez is az Anthropic-kal az alapmodell-piacon.",
+      "text_markdown": "Az Amazon az Anthropic egyik fő befektetője, és saját munkája révén versenyez is az Anthropic-kal az alapmodell-piacon.",
+      "title": "",
+      "tts": {
+        "text": "Az Amazon az Anthropic egyik fő befektetője, és saját munkája révén versenyez is az Anthropic-kal az alapmodell-piacon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Ha egy versenytárs kormányhoz intézett figyelmeztetése egy hosszú hétvége alatt leállíthatja egy rivális modelljét, az új formát ad az iparági dinamikának.",
+      "text_markdown": "Ha egy versenytárs kormányhoz intézett figyelmeztetése egy hosszú hétvége alatt leállíthatja egy rivális modelljét, az új formát ad az iparági dinamikának.",
+      "title": "",
+      "tts": {
+        "text": "Ha egy versenytárs kormányhoz intézett figyelmeztetése egy hosszú hétvége alatt leállíthatja egy rivális modelljét, az új formát ad az iparági dinamikának.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Térjünk át a kiépítésre.",
+      "text_markdown": "Térjünk át a kiépítésre.",
+      "title": "",
+      "tts": {
+        "text": "Térjünk át a kiépítésre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "Stargate — az OpenAI, Oracle, SoftBank adatközpont-kezdeményezése.",
+      "text_markdown": "Stargate — az OpenAI, Oracle, SoftBank adatközpont-kezdeményezése.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — az OpenAI, Oracle, SoftBank adatközpont-kezdeményezése.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Mik a tényleges számok?",
+      "text_markdown": "Mik a tényleges számok?",
+      "title": "",
+      "tts": {
+        "text": "Mik a tényleges számok?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "A Stargate tizenegy gigawatt amerikai kapacitást jelentett be.",
+      "text_markdown": "A Stargate tizenegy gigawatt amerikai kapacitást jelentett be.",
+      "title": "",
+      "tts": {
+        "text": "A Stargate tizenegy gigawatt amerikai kapacitást jelentett be.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "Június közepéig körülbelül kétszáz megawatt üzemel az Abilene Texas-i telephelyen, az első fázisban.",
+      "text_markdown": "Június közepéig körülbelül kétszáz megawatt üzemel az Abilene Texas-i telephelyen, az első fázisban.",
+      "title": "",
+      "tts": {
+        "text": "Június közepéig körülbelül kétszáz megawatt üzemel az Abilene Texas-i telephelyen, az első fázisban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "Tizenegy gigawatt bejelentve, kétszáz megawatt bekapcsolva.",
+      "text_markdown": "Tizenegy gigawatt bejelentve, kétszáz megawatt bekapcsolva.",
+      "title": "",
+      "tts": {
+        "text": "Tizenegy gigawatt bejelentve, kétszáz megawatt bekapcsolva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "Ez a teljes szakadék egy mondatban.",
+      "text_markdown": "Ez a teljes szakadék egy mondatban.",
+      "title": "",
+      "tts": {
+        "text": "Ez a teljes szakadék egy mondatban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Igen, és a legtisztább példa Új-Mexikóban található.",
+      "text_markdown": "Igen, és a legtisztább példa Új-Mexikóban található.",
+      "title": "",
+      "tts": {
+        "text": "Igen, és a legtisztább példa Új-Mexikóban található.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "A Doña Ana megyei telephely a legnagyobb önálló Stargate kampusz, amelyet négy és fél gigawattra terveztek.",
+      "text_markdown": "A Doña Ana megyei telephely a legnagyobb önálló Stargate kampusz, amelyet négy és fél gigawattra terveztek.",
+      "title": "",
+      "tts": {
+        "text": "A Doña Ana megyei telephely a legnagyobb önálló Stargate kampusz, amelyet négy és fél gigawattra terveztek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "Tizennyolc milliárd dollárnyi szindikált projektfinanszírozás áll rendelkezésre — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plusz egy hárommilliárd dolláros tőkeinjekció a Blue Owltól.",
+      "text_markdown": "Tizennyolc milliárd dollárnyi szindikált projektfinanszírozás áll rendelkezésre — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plusz egy hárommilliárd dolláros tőkeinjekció a Blue Owltól.",
+      "title": "",
+      "tts": {
+        "text": "Tizennyolc milliárd dollárnyi szindikált projektfinanszírozás áll rendelkezésre — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plusz egy hárommilliárd dolláros tőkeinjekció a Blue Owltól.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "És a helyszíni építkezés állapota.",
+      "text_markdown": "És a helyszíni építkezés állapota.",
+      "title": "",
+      "tts": {
+        "text": "És a helyszíni építkezés állapota.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Eddig nulla kapavágás történt.",
+      "text_markdown": "Eddig nulla kapavágás történt.",
+      "title": "",
+      "tts": {
+        "text": "Eddig nulla kapavágás történt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "A telephely az Új-Mexikói Környezetvédelmi Minisztérium levegőminőségi engedélyére vár, amelyet eredetileg április huszonkettedikére vártak, de most július huszonegyedikére halasztották, több mint hétezer nyilvános hozzászólás után.",
+      "text_markdown": "A telephely az Új-Mexikói Környezetvédelmi Minisztérium levegőminőségi engedélyére vár, amelyet eredetileg április huszonkettedikére vártak, de most július huszonegyedikére halasztották, több mint hétezer nyilvános hozzászólás után.",
+      "title": "",
+      "tts": {
+        "text": "A telephely az Új-Mexikói Környezetvédelmi Minisztérium levegőminőségi engedélyére vár, amelyet eredetileg április huszonkettedikére vártak, de most július huszonegyedikére halasztották, több mint hétezer nyilvános hozzászólás után.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Tizennyolc milliárd dollár lekötve, nulla kapavágás, egy levegőminőségi engedély határideje.",
+      "text_markdown": "Tizennyolc milliárd dollár lekötve, nulla kapavágás, egy levegőminőségi engedély határideje.",
+      "title": "",
+      "tts": {
+        "text": "Tizennyolc milliárd dollár lekötve, nulla kapavágás, egy levegőminőségi engedély határideje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "Ki a vesztes, ha a számok nem jönnek ki?",
+      "text_markdown": "Ki a vesztes, ha a számok nem jönnek ki?",
+      "title": "",
+      "tts": {
+        "text": "Ki a vesztes, ha a számok nem jönnek ki?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Itt válik érdekessé az Oracle.",
+      "text_markdown": "Itt válik érdekessé az Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Itt válik érdekessé az Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "Az Oracle fennmaradó teljesítési kötelezettségei — az a számviteli tétel, amely a még nem teljesített szerződéses bevételeket rögzíti — ötszázötvenhárom milliárd dollárt értek el a 2026-os pénzügyi év harmadik negyedévében.",
+      "text_markdown": "Az Oracle fennmaradó teljesítési kötelezettségei — az a számviteli tétel, amely a még nem teljesített szerződéses bevételeket rögzíti — ötszázötvenhárom milliárd dollárt értek el a 2026-os pénzügyi év harmadik negyedévében.",
+      "title": "",
+      "tts": {
+        "text": "Az Oracle fennmaradó teljesítési kötelezettségei — az a számviteli tétel, amely a még nem teljesített szerződéses bevételeket rögzíti — ötszázötvenhárom milliárd dollárt értek el a kétezerhuszonhatos pénzügyi év harmadik negyedévében.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Ez háromszázhuszonöt százalékos növekedés éves szinten, és ennek a növekedésnek a többsége nyilvánosan az OpenAI-hoz és a Stargate-hez köthető.",
+      "text_markdown": "Ez háromszázhuszonöt százalékos növekedés éves szinten, és ennek a növekedésnek a többsége nyilvánosan az OpenAI-hoz és a Stargate-hez köthető.",
+      "title": "",
+      "tts": {
+        "text": "Ez háromszázhuszonöt százalékos növekedés éves szinten, és ennek a növekedésnek a többsége nyilvánosan az OpenAI-hoz és a Stargate-hez köthető.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "És az adósság oldala.",
+      "text_markdown": "És az adósság oldala.",
+      "title": "",
+      "tts": {
+        "text": "És az adósság oldala.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "A teljes hitelállomány február huszonnyolcadikán elérte a százharmincnégy és hat tized milliárd dollárt.",
+      "text_markdown": "A teljes hitelállomány február huszonnyolcadikán elérte a százharmincnégy és hat tized milliárd dollárt.",
+      "title": "",
+      "tts": {
+        "text": "A teljes hitelállomány február huszonnyolcadikán elérte a százharmincnégy és hat tized milliárd dollárt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "Az Oracle csak februárban harminc milliárd dollárt vont be — befektetési minőségű kötvények és kötelezően átváltható elsőbbségi részvények formájában — és negyvenhárom milliárd dollár értékben bocsátott ki új elsőbbségi kötvényeket a kilenc hónapos időszak alatt.",
+      "text_markdown": "Az Oracle csak februárban harminc milliárd dollárt vont be — befektetési minőségű kötvények és kötelezően átváltható elsőbbségi részvények formájában — és negyvenhárom milliárd dollár értékben bocsátott ki új elsőbbségi kötvényeket a kilenc hónapos időszak alatt.",
+      "title": "",
+      "tts": {
+        "text": "Az Oracle csak februárban harminc milliárd dollárt vont be — befektetési minőségű kötvények és kötelezően átváltható elsőbbségi részvények formájában — és negyvenhárom milliárd dollár értékben bocsátott ki új elsőbbségi kötvényeket a kilenc hónapos időszak alatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Összegezzük tehát a helyzetet.",
+      "text_markdown": "Összegezzük tehát a helyzetet.",
+      "title": "",
+      "tts": {
+        "text": "Összegezzük tehát a helyzetet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Ötszázötvenhárom milliárd dollár ígéret, százharmincnégy milliárd dollár adósság, és egy nagy ügyfél viseli a kockázat nagy részét.",
+      "text_markdown": "Ötszázötvenhárom milliárd dollár ígéret, százharmincnégy milliárd dollár adósság, és egy nagy ügyfél viseli a kockázat nagy részét.",
+      "title": "",
+      "tts": {
+        "text": "Ötszázötvenhárom milliárd dollár ígéret, százharmincnégy milliárd dollár adósság, és egy nagy ügyfél viseli a kockázat nagy részét.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Ez a kiépítés szerkezete egy mondatban.",
+      "text_markdown": "Ez a kiépítés szerkezete egy mondatban.",
+      "title": "",
+      "tts": {
+        "text": "Ez a kiépítés szerkezete egy mondatban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Térjünk át az Egyesült Államok és Kína összehasonlítására.",
+      "text_markdown": "Térjünk át az Egyesült Államok és Kína összehasonlítására.",
+      "title": "",
+      "tts": {
+        "text": "Térjünk át az Egyesült Államok és Kína összehasonlítására.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "A klisé az, hogy Kína néhány hónappal le van maradva.",
+      "text_markdown": "A klisé az, hogy Kína néhány hónappal le van maradva.",
+      "title": "",
+      "tts": {
+        "text": "A klisé az, hogy Kína néhány hónappal le van maradva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "A klisé téves, mert rossz dolgot mér.",
+      "text_markdown": "A klisé téves, mert rossz dolgot mér.",
+      "title": "",
+      "tts": {
+        "text": "A klisé téves, mert rossz dolgot mér.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Június kilencedikén, hétfőn a Bloomberg arról számolt be, hogy a Nemzeti Fejlesztési és Reformbizottság egy kínai tervezetén dolgozik — két billió jüan, körülbelül kétszázkilencvenöt milliárd dollár értékben, egy országos mesterséges intelligencia adatközpont-hálózat létrehozására kétezer-huszonnyolcra.",
+      "text_markdown": "Június kilencedikén, hétfőn a Bloomberg arról számolt be, hogy a Nemzeti Fejlesztési és Reformbizottság egy kínai tervezetén dolgozik — két billió jüan, körülbelül kétszázkilencvenöt milliárd dollár értékben, egy országos mesterséges intelligencia adatközpont-hálózat létrehozására kétezer-huszonnyolcra.",
+      "title": "",
+      "tts": {
+        "text": "Június kilencedikén, hétfőn a Bloomberg arról számolt be, hogy a Nemzeti Fejlesztési és Reformbizottság egy kínai tervezetén dolgozik — két billió jüan, körülbelül kétszázkilencvenöt milliárd dollár értékben, egy országos A. I. adatközpont-hálózat létrehozására kétezer-huszonnyolcra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "A terv nyolcvan százalék hazai szilíciumot ír elő, és egyetlen összekapcsolt számítási hálózatként üzemeltetné a China Mobile és a China Telecom.",
+      "text_markdown": "A terv nyolcvan százalék hazai szilíciumot ír elő, és egyetlen összekapcsolt számítási hálózatként üzemeltetné a China Mobile és a China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "A terv nyolcvan százalék hazai szilíciumot ír elő, és egyetlen összekapcsolt számítási hálózatként üzemeltetné a China Mobile és a China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "És hol van a csapda ebben a tervben?",
+      "text_markdown": "És hol van a csapda ebben a tervben?",
+      "title": "",
+      "tts": {
+        "text": "És hol van a csapda ebben a tervben?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "Két billió jüan, nyolcvan százalék hazai szilícium, kétezer-huszonnyolcas határidő — és a csapda az, hogy a korlátozó tényező nem a logikai chipek, hanem a nagy sávszélességű memória.",
+      "text_markdown": "Két billió jüan, nyolcvan százalék hazai szilícium, kétezer-huszonnyolcas határidő — és a csapda az, hogy a korlátozó tényező nem a logikai chipek, hanem a nagy sávszélességű memória.",
+      "title": "",
+      "tts": {
+        "text": "Két billió jüan, nyolcvan százalék hazai szilícium, kétezer-huszonnyolc határidő — és a csapda az, hogy a korlátozó tényező nem a logikai chipek, hanem a nagy sávszélességű memória.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "Magyarázza el nekünk.",
+      "text_markdown": "Magyarázza el nekünk.",
+      "title": "",
+      "tts": {
+        "text": "Magyarázza el nekünk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Minden mesterséges intelligencia gyorsítónak HBM-stackekre van szüksége, amelyek a logikai lapkára vannak rögzítve.",
+      "text_markdown": "Minden mesterséges intelligencia gyorsítónak HBM-stackekre van szüksége, amelyek a logikai lapkára vannak rögzítve.",
+      "title": "",
+      "tts": {
+        "text": "Minden A. I. gyorsítónak H. B. M. stackekre van szüksége, amelyek a logikai lapkára vannak rögzítve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "HBM nélkül a chip csak egy papírnehezék.",
+      "text_markdown": "HBM nélkül a chip csak egy papírnehezék.",
+      "title": "",
+      "tts": {
+        "text": "H. B. M. nélkül a chip csak egy papírnehezék.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "Kína körülbelül tizenhárom millió HBM-stacket halmozott fel, mielőtt az exportellenőrzések életbe léptek — tizenegy-pont-négy millió csak a Samsungtól.",
+      "text_markdown": "Kína körülbelül tizenhárom millió HBM-stacket halmozott fel, mielőtt az exportellenőrzések életbe léptek — tizenegy-pont-négy millió csak a Samsungtól.",
+      "title": "",
+      "tts": {
+        "text": "Kína körülbelül tizenhárom millió H. B. M. stacket halmozott fel, mielőtt az exportellenőrzések életbe léptek — tizenegy pont négy millió csak a Samsungtól.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "A Huawei Ascend kilenc-tíz C csomagolási arányai mellett ez a készlet nagyjából egy-pont-hat millió chipre elegendő.",
+      "text_markdown": "A Huawei Ascend kilenc-tíz C csomagolási arányai mellett ez a készlet nagyjából egy-pont-hat millió chipre elegendő.",
+      "title": "",
+      "tts": {
+        "text": "A Huawei Ascend kilenc tíz C csomagolási arányai mellett ez a készlet nagyjából egy pont hat millió chipre elegendő.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "És aztán elfogy a készlet.",
+      "text_markdown": "És aztán elfogy a készlet.",
+      "title": "",
+      "tts": {
+        "text": "És aztán elfogy a készlet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "Aztán elfogy a készlet — tizenhárom millió HBM-stack, ami egy-pont-hat millió chipre elegendő, és ez a plafon.",
+      "text_markdown": "Aztán elfogy a készlet — tizenhárom millió HBM-stack, ami egy-pont-hat millió chipre elegendő, és ez a plafon.",
+      "title": "",
+      "tts": {
+        "text": "Aztán elfogy a készlet — tizenhárom millió H. B. M. stack, ami egy pont hat millió chipre elegendő, és ez a plafon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "A hazai kínai HBM, a CXMT-től, várhatóan körülbelül két millió stacket fog termelni kétezer-huszonhatban — ami talán kétszázötvenezer-háromszázezer gyorsítóra elegendő.",
+      "text_markdown": "A hazai kínai HBM, a CXMT-től, várhatóan körülbelül két millió stacket fog termelni kétezer-huszonhatban — ami talán kétszázötvenezer-háromszázezer gyorsítóra elegendő.",
+      "title": "",
+      "tts": {
+        "text": "A hazai kínai H. B. M., a C. X. M. T.-től, várhatóan körülbelül két millió stacket fog termelni kétezer-huszonhatban — ami talán kétszázötvenezertől háromszázezerig gyorsítóra elegendő.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "Szóval hogyan néznek ki a Huawei szilícium tervei?",
+      "text_markdown": "Szóval hogyan néznek ki a Huawei szilícium tervei?",
+      "title": "",
+      "tts": {
+        "text": "Szóval hogyan néznek ki a Huawei szilícium tervei?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "A Bloomberg, a Huawei terveire hivatkozva, a kétezer-huszonhatos termelést hatszázezer kilenc-tíz C chipre becsülte, az Ascend termékcsalád pedig összesen akár egy-pont-hat millió lapkát is elérhet.",
+      "text_markdown": "A Bloomberg, a Huawei terveire hivatkozva, a kétezer-huszonhatos termelést hatszázezer kilenc-tíz C chipre becsülte, az Ascend termékcsalád pedig összesen akár egy-pont-hat millió lapkát is elérhet.",
+      "title": "",
+      "tts": {
+        "text": "A Bloomberg, a Huawei terveire hivatkozva, a kétezer-huszonhatos termelést hatszázezer kilenc tíz C chipre becsülte, az Ascend termékcsalád pedig összesen akár egy pont hat millió lapkát is elérhet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "Ez a szám, hatszázezer, egy cél, nem pedig leszállított mennyiség.",
+      "text_markdown": "Ez a szám, hatszázezer, egy cél, nem pedig leszállított mennyiség.",
+      "title": "",
+      "tts": {
+        "text": "Ez a szám, hatszázezer, egy cél, nem pedig leszállított mennyiség.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "És külön, mielőtt az exportellenőrzések elvágták volna őket, a Huawei több mint két-pont-kilenc millió Ascend lapkát halmozott fel, amelyeket a TSMC gyártott a Sophgo és a Bitmain fedőcégeken keresztül.",
+      "text_markdown": "És külön, mielőtt az exportellenőrzések elvágták volna őket, a Huawei több mint két-pont-kilenc millió Ascend lapkát halmozott fel, amelyeket a TSMC gyártott a Sophgo és a Bitmain fedőcégeken keresztül.",
+      "title": "",
+      "tts": {
+        "text": "És külön, mielőtt az exportellenőrzések elvágták volna őket, a Huawei több mint két pont kilenc millió Ascend lapkát halmozott fel, amelyeket a T. S. M. C. gyártott a Sophgo és a Bitmain fedőcégeken keresztül.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "Az exportellenőrzések működnek narratívában van egy két-pont-kilenc millió lapkás lyuk.",
+      "text_markdown": "Az exportellenőrzések működnek narratívában van egy két-pont-kilenc millió lapkás lyuk.",
+      "title": "",
+      "tts": {
+        "text": "Az exportellenőrzések működnek narratívában van egy két pont kilenc millió lapkás lyuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "Nézzük a főcímeket, gyorsan.",
+      "text_markdown": "Nézzük a főcímeket, gyorsan.",
+      "title": "",
+      "tts": {
+        "text": "Nézzük a főcímeket, gyorsan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "Az első főcím ezen a héten: Broadcom.",
+      "text_markdown": "Az első főcím ezen a héten: Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Az első főcím ezen a héten: Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "A Broadcom piaci kapitalizációja körülbelül két billió dollár.",
+      "text_markdown": "A Broadcom piaci kapitalizációja körülbelül két billió dollár.",
+      "title": "",
+      "tts": {
+        "text": "A Broadcom piaci kapitalizációja körülbelül két billió dollár.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "Vezérigazgatójuk, Hock Tan, a június harmadikai eredménybeszámolón megismételte a száz milliárd dolláros mesterséges intelligencia félvezető bevételi célt a kétezer-huszonhetes pénzügyi évre, amit körülbelül hetvenhárom milliárd dollárnyi mesterséges intelligencia megrendelés és az Alphabet-tel és a Metával kötött, kétezer-harmincegyig tartó hosszú távú megállapodások támasztanak alá.",
+      "text_markdown": "Vezérigazgatójuk, Hock Tan, a június harmadikai eredménybeszámolón megismételte a száz milliárd dolláros mesterséges intelligencia félvezető bevételi célt a kétezer-huszonhetes pénzügyi évre, amit körülbelül hetvenhárom milliárd dollárnyi mesterséges intelligencia megrendelés és az Alphabet-tel és a Metával kötött, kétezer-harmincegyig tartó hosszú távú megállapodások támasztanak alá.",
+      "title": "",
+      "tts": {
+        "text": "Vezérigazgatójuk, Hock Tan, a június harmadikai eredménybeszámolón megismételte a száz milliárd dolláros A. I. félvezető bevételi célt a kétezer-huszonhetes pénzügyi évre, amit körülbelül hetvenhárom milliárd dollárnyi A. I. megrendelés és az Alphabet-tel és a Metával kötött, kétezer-harmincegyig tartó hosszú távú megállapodások támasztanak alá.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "Két billió dolláros piaci kapitalizáció, száz milliárd dolláros mesterséges intelligencia bevételi cél, szinte nulla kiskereskedelmi márkafelismerés.",
+      "text_markdown": "Két billió dolláros piaci kapitalizáció, száz milliárd dolláros mesterséges intelligencia bevételi cél, szinte nulla kiskereskedelmi márkafelismerés.",
+      "title": "",
+      "tts": {
+        "text": "Két billió dolláros piaci kapitalizáció, száz milliárd dolláros A. I. bevételi cél, szinte nulla kiskereskedelmi márkafelismerés.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "A második főcím ezen a héten: ASML.",
+      "text_markdown": "A második főcím ezen a héten: ASML.",
+      "title": "",
+      "tts": {
+        "text": "A második főcím ezen a héten: ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "Az ASML, a holland cég, amely az összes élvonalbeli logikai chip gyártásához szükséges litográfiai gépeket építi, körülbelül háromszázhetven millió dollárért adja el High-N.A. E.U.V. rendszerét.",
+      "text_markdown": "Az ASML, a holland cég, amely az összes élvonalbeli logikai chip gyártásához szükséges litográfiai gépeket építi, körülbelül háromszázhetven millió dollárért adja el High-N.A. E.U.V. rendszerét.",
+      "title": "",
+      "tts": {
+        "text": "Az A. S. M. L., a holland cég, amely az összes élvonalbeli logikai chip gyártásához szükséges litográfiai gépeket építi, körülbelül háromszázhetven millió dollárért adja el High N. A. E. U. V. rendszerét.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "A globális termelési kapacitás kevesebb, mint húsz egység évente.",
+      "text_markdown": "A globális termelési kapacitás kevesebb, mint húsz egység évente.",
+      "title": "",
+      "tts": {
+        "text": "A globális termelési kapacitás kevesebb, mint húsz egység évente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "Háromszázhetven millió dollár egy gép, kevesebb, mint húsz gép évente, egyetlen cég gyártja őket – ez a globális szilícium tényleges szűk keresztmetszete, nem a politika.",
+      "text_markdown": "Háromszázhetven millió dollár egy gép, kevesebb, mint húsz gép évente, egyetlen cég gyártja őket – ez a globális szilícium tényleges szűk keresztmetszete, nem a politika.",
+      "title": "",
+      "tts": {
+        "text": "Háromszázhetven millió dollár egy gép, kevesebb, mint húsz gép évente, egyetlen cég gyártja őket – ez a globális szilícium tényleges szűk keresztmetszete, nem a politika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "A harmadik főcím ezen a héten: exportellenőrzések.",
+      "text_markdown": "A harmadik főcím ezen a héten: exportellenőrzések.",
+      "title": "",
+      "tts": {
+        "text": "A harmadik főcím ezen a héten: exportellenőrzések.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "A Kereskedelmi Minisztérium visszavonta a Biden-korszakbeli mesterséges intelligencia diffúziós szabályt kétezer-huszonöt május tizenharmadikán, és nem adott ki új B.I.S. végrehajtási pontosítást kétezer-huszonhat május harmincegyedikéig.",
+      "text_markdown": "A Kereskedelmi Minisztérium visszavonta a Biden-korszakbeli mesterséges intelligencia diffúziós szabályt kétezer-huszonöt május tizenharmadikán, és nem adott ki új B.I.S. végrehajtási pontosítást kétezer-huszonhat május harmincegyedikéig.",
+      "title": "",
+      "tts": {
+        "text": "A Kereskedelmi Minisztérium visszavonta a Biden-korszakbeli A. I. diffúziós szabályt május tizenharmadikán, kétezer-huszonötben, és nem adott ki új B. I. S. végrehajtási pontosítást május harmincegyedikéig, kétezer-huszonhatban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "Ez egy körülbelül egyéves időszak, amikor az engedélyezési követelményeket nem hajtották végre aktívan.",
+      "text_markdown": "Ez egy körülbelül egyéves időszak, amikor az engedélyezési követelményeket nem hajtották végre aktívan.",
+      "title": "",
+      "tts": {
+        "text": "Ez egy körülbelül egy év hosszú időszak, amikor az engedélyezési követelményeket nem hajtották végre aktívan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "Szóval számolja a napokat.",
+      "text_markdown": "Szóval számolja a napokat.",
+      "title": "",
+      "tts": {
+        "text": "Szóval számolja a napokat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "Hetvenkét óra egy amerikai modell leállítására, háromszáznyolcvan nap egy chip-export szabály érvényesítésére – ez az aszimmetria a lényeg.",
+      "text_markdown": "Hetvenkét óra egy amerikai modell leállítására, háromszáznyolcvan nap egy chip-export szabály érvényesítésére – ez az aszimmetria a lényeg.",
+      "title": "",
+      "tts": {
+        "text": "Hetvenkét óra egy Egyesült Államok-beli modell leállítására, háromszáznyolcvan nap egy chip-export szabály érvényesítésére – ez az aszimmetria a lényeg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "És hová kerültek a chipek abban a háromszáznyolcvan napban?",
+      "text_markdown": "És hová kerültek a chipek abban a háromszáznyolcvan napban?",
+      "title": "",
+      "tts": {
+        "text": "És hová kerültek a chipek abban a háromszáznyolcvan napban?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "Délkelet-Ázsiába került a legtöbbjük.",
+      "text_markdown": "Délkelet-Ázsiába került a legtöbbjük.",
+      "title": "",
+      "tts": {
+        "text": "Délkelet-Ázsiába került a legtöbbjük.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "Az Igazságügyi Minisztérium március végén feloldotta a titkosítást a vádiratokon, amelyek szerint az Nvidia H százas és A százas chipjeit malajziai és szingapúri közvetítőkön keresztül irányították.",
+      "text_markdown": "Az Igazságügyi Minisztérium március végén feloldotta a titkosítást a vádiratokon, amelyek szerint az Nvidia H százas és A százas chipjeit malajziai és szingapúri közvetítőkön keresztül irányították.",
+      "title": "",
+      "tts": {
+        "text": "Az Igazságügyi Minisztérium március végén feloldotta a titkosítást a vádiratokon, amelyek szerint az Nvidia H százas és A százas chipjeit malajziai és szingapúri közvetítőkön keresztül irányították.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "A Fortune májusban titkosított szövegeket tett közzé, amelyek a logisztikát mutatták be, és a Super Micro egy két és fél milliárd dolláros fedőcég-ügybe keveredett.",
+      "text_markdown": "A Fortune májusban titkosított szövegeket tett közzé, amelyek a logisztikát mutatták be, és a Super Micro egy két és fél milliárd dolláros fedőcég-ügybe keveredett.",
+      "title": "",
+      "tts": {
+        "text": "A Fortune májusban titkosított szövegeket tett közzé, amelyek a logisztikát mutatták be, és a Super Micro egy két és fél milliárd dolláros fedőcég-ügybe keveredett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "A Trump-adminisztráció állítólag új chip-export korlátozásokat készít elő, amelyek kifejezetten Malajziát és Thaiföldet célozzák.",
+      "text_markdown": "A Trump-adminisztráció állítólag új chip-export korlátozásokat készít elő, amelyek kifejezetten Malajziát és Thaiföldet célozzák.",
+      "title": "",
+      "tts": {
+        "text": "A Trump-adminisztráció állítólag új chip-export korlátozásokat készít elő, amelyek kifejezetten Malajziát és Thaiföldet célozzák.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "Tehát a kép egy mondatban.",
+      "text_markdown": "Tehát a kép egy mondatban.",
+      "title": "",
+      "tts": {
+        "text": "Tehát a kép egy mondatban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "A chipek nem Sencsenbe repülnek – először Penangba és Szingapúrba mennek.",
+      "text_markdown": "A chipek nem Sencsenbe repülnek – először Penangba és Szingapúrba mennek.",
+      "title": "",
+      "tts": {
+        "text": "A chipek nem Sencsenbe repülnek – először Penangba és Szingapúrba mennek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "A hét fogalma – Fennmaradó Teljesítési Kötelezettségek.",
+      "text_markdown": "A hét fogalma – Fennmaradó Teljesítési Kötelezettségek.",
+      "title": "",
+      "tts": {
+        "text": "A hét fogalma – Fennmaradó Teljesítési Kötelezettségek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "Az R.P.O. egy számviteli tétel, amely rögzíti azon szerződések dollárban kifejezett értékét, amelyeket egy vállalat aláírt, de még nem teljesített.",
+      "text_markdown": "Az R.P.O. egy számviteli tétel, amely rögzíti azon szerződések dollárban kifejezett értékét, amelyeket egy vállalat aláírt, de még nem teljesített.",
+      "title": "",
+      "tts": {
+        "text": "Az R. P. O. egy számviteli tétel, amely rögzíti azon szerződések dollárban kifejezett értékét, amelyeket egy vállalat aláírt, de még nem teljesített.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "Előretekintő – a jövőbeli bevételekről szól, nem a mai bankszámlán lévő pénzről.",
+      "text_markdown": "Előretekintő – a jövőbeli bevételekről szól, nem a mai bankszámlán lévő pénzről.",
+      "title": "",
+      "tts": {
+        "text": "Előretekintő – a jövőbeli bevételekről szól, nem a mai bankszámlán lévő pénzről.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "És miért fontos ez az Oracle számára?",
+      "text_markdown": "És miért fontos ez az Oracle számára?",
+      "title": "",
+      "tts": {
+        "text": "És miért fontos ez az Oracle számára?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "Mert ötszázötvenhárom milliárd dollárnyi R.P.O., amely nagyrészt egyetlen ügyfélre koncentrálódik egyetlen kiépítésre, azt jelenti, hogy az Oracle hatalmas mennyiségű számítási kapacitás szállítását ígérte a következő néhány évben egy olyan ügyfélnek, akinek a saját bevételi modelljéről még mindig vitatkoznak.",
+      "text_markdown": "Mert ötszázötvenhárom milliárd dollárnyi R.P.O., amely nagyrészt egyetlen ügyfélre koncentrálódik egyetlen kiépítésre, azt jelenti, hogy az Oracle hatalmas mennyiségű számítási kapacitás szállítását ígérte a következő néhány évben egy olyan ügyfélnek, akinek a saját bevételi modelljéről még mindig vitatkoznak.",
+      "title": "",
+      "tts": {
+        "text": "Mert ötszázötvenhárom milliárd dollárnyi R. P. O., amely nagyrészt egyetlen ügyfélre koncentrálódik egyetlen kiépítésre, azt jelenti, hogy az Oracle hatalmas mennyiségű számítási kapacitás szállítását ígérte a következő néhány évben egy olyan ügyfélnek, akinek a saját bevételi modelljéről még mindig vitatkoznak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "Ha ezek a szerződések teljesülnek, az Oracle megköti az évtized üzletét.",
+      "text_markdown": "Ha ezek a szerződések teljesülnek, az Oracle megköti az évtized üzletét.",
+      "title": "",
+      "tts": {
+        "text": "Ha ezek a szerződések teljesülnek, az Oracle megköti az évtized üzletét.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "Ha csúsznak – vagy újratárgyalják őket – az Oracle viseli az adósságot, miközben a szerződések zsugorodnak.",
+      "text_markdown": "Ha csúsznak – vagy újratárgyalják őket – az Oracle viseli az adósságot, miközben a szerződések zsugorodnak.",
+      "title": "",
+      "tts": {
+        "text": "Ha csúsznak – vagy újratárgyalják őket – az Oracle viseli az adósságot, miközben a szerződések zsugorodnak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "Tehát amikor egy R.P.O. számot lát egy technológiai beadványban.",
+      "text_markdown": "Tehát amikor egy R.P.O. számot lát egy technológiai beadványban.",
+      "title": "",
+      "tts": {
+        "text": "Tehát amikor egy R.P.O. számot lát egy technológiai beadványban.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "Olvassa el, kik az ügyfelek, mennyire koncentráltak a kötelezettségek, és mi kellene ahhoz, hogy a vállalat ténylegesen teljesítse őket.",
+      "text_markdown": "Olvassa el, kik az ügyfelek, mennyire koncentráltak a kötelezettségek, és mi kellene ahhoz, hogy a vállalat ténylegesen teljesítse őket.",
+      "title": "",
+      "tts": {
+        "text": "Olvassa el, kik az ügyfelek, mennyire koncentráltak a kötelezettségek, és mi kellene ahhoz, hogy a vállalat ténylegesen teljesítse őket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "Az R.P.O. az, ahol a pórul jártak megjelennek a lábjegyzetekben.",
+      "text_markdown": "Az R.P.O. az, ahol a pórul jártak megjelennek a lábjegyzetekben.",
+      "title": "",
+      "tts": {
+        "text": "Az R. P. O. az, ahol a pórul jártak megjelennek a lábjegyzetekben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "Jó helyen járunk.",
+      "text_markdown": "Jó helyen járunk.",
+      "title": "",
+      "tts": {
+        "text": "Jó helyen járunk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "Ron, köszönöm az összefoglalót.",
+      "text_markdown": "Ron, köszönöm az összefoglalót.",
+      "title": "",
+      "tts": {
+        "text": "Ron, köszönöm az összefoglalót.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "Bármikor, Vindy – jó itt lenni.",
+      "text_markdown": "Bármikor, Vindy – jó itt lenni.",
+      "title": "",
+      "tts": {
+        "text": "Bármikor, Vindy – jó itt lenni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "Ez volt az AI This Week június huszonegyedikére, kétezerhuszonhatra.",
+      "text_markdown": "Ez volt az AI This Week június huszonegyedikére, kétezerhuszonhatra.",
+      "title": "",
+      "tts": {
+        "text": "Ez volt az AI This Week június huszonegyedikére, kétezerhuszonhatra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "Jövő héten visszatérünk a nyílt súlyok és a kis laborok témájához.",
+      "text_markdown": "Jövő héten visszatérünk a nyílt súlyok és a kis laborok témájához.",
+      "title": "",
+      "tts": {
+        "text": "Jövő héten visszatérünk a nyílt súlyok és a kis laborok témájához.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "Jövő vasárnapig, vigyázzatok magatokra.",
+      "text_markdown": "Jövő vasárnapig, vigyázzatok magatokra.",
+      "title": "",
+      "tts": {
+        "text": "Jövő vasárnapig, vigyázzatok magatokra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

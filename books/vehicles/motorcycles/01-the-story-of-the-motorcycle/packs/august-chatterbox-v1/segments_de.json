@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "de",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eine Anmerkung an den Leser",
+      "text_markdown": "Eine Anmerkung an den Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist die Geschichte des Motorrads.",
+      "text_markdown": "Das ist die Geschichte des Motorrads.",
+      "tts": {
+        "text": "Das ist die Geschichte des Motorrads.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es ist eine wahre Geschichte.",
+      "text_markdown": "Es ist eine wahre Geschichte.",
+      "tts": {
+        "text": "Es ist eine wahre Geschichte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vor langer Zeit hatte niemand ein Motorrad.",
+      "text_markdown": "Vor langer Zeit hatte niemand ein Motorrad.",
+      "tts": {
+        "text": "Vor langer Zeit hatte niemand ein Motorrad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heute gibt es Millionen davon.",
+      "text_markdown": "Heute gibt es Millionen davon.",
+      "tts": {
+        "text": "Heute gibt es Millionen davon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie sind laut und schnell und glänzend.",
+      "text_markdown": "Sie sind laut und schnell und glänzend.",
+      "tts": {
+        "text": "Sie sind laut und schnell und glänzend.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wir fangen ganz am Anfang an.",
+      "text_markdown": "Wir fangen ganz am Anfang an.",
+      "tts": {
+        "text": "Wir fangen ganz am Anfang an.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wir lernen den ersten Erbauer kennen, die ersten Fahrer und die ersten Rennen.",
+      "text_markdown": "Wir lernen den ersten Erbauer kennen, die ersten Fahrer und die ersten Rennen.",
+      "tts": {
+        "text": "Wir lernen den ersten Erbauer kennen, die ersten Fahrer und die ersten Rennen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dann schauen wir uns die Welt von heute an.",
+      "text_markdown": "Dann schauen wir uns die Welt von heute an.",
+      "tts": {
+        "text": "Dann schauen wir uns die Welt von heute an.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Eine Anmerkung an den Leser",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Am Ende weißt du, wie diese kleine Maschine die Straße für immer verändert hat.",
+      "text_markdown": "Am Ende weißt du, wie diese kleine Maschine die Straße für immer verändert hat.",
+      "tts": {
+        "text": "Am Ende weißt du, wie diese kleine Maschine die Straße für immer verändert hat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "text_markdown": "Kapitel 1 — Das erste Zweirad, das Brumm machte"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Motorrad ist ein Rad mit einem Motor.",
+      "text_markdown": "Ein Motorrad ist ein Rad mit einem Motor.",
+      "tts": {
+        "text": "Ein Motorrad ist ein Rad mit einem Motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Motor treibt die Räder an.",
+      "text_markdown": "Der Motor treibt die Räder an.",
+      "tts": {
+        "text": "Der Motor treibt die Räder an.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Fahrer muss nicht treten.",
+      "text_markdown": "Der Fahrer muss nicht treten.",
+      "tts": {
+        "text": "Der Fahrer muss nicht treten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vor langer Zeit gab es keine Motorräder.",
+      "text_markdown": "Vor langer Zeit gab es keine Motorräder.",
+      "tts": {
+        "text": "Vor langer Zeit gab es keine Motorräder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Menschen ritten auf Pferden.",
+      "text_markdown": "Die Menschen ritten auf Pferden.",
+      "tts": {
+        "text": "Die Menschen ritten auf Pferden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Menschen fuhren Fahrrad.",
+      "text_markdown": "Die Menschen fuhren Fahrrad.",
+      "tts": {
+        "text": "Die Menschen fuhren Fahrrad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein Fahrrad hat zwei Räder und keinen Motor.",
+      "text_markdown": "Ein Fahrrad hat zwei Räder und keinen Motor.",
+      "tts": {
+        "text": "Ein Fahrrad hat zwei Räder und keinen Motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du musst die Pedale mit deinen Füßen treten.",
+      "text_markdown": "Du musst die Pedale mit deinen Füßen treten.",
+      "tts": {
+        "text": "Du musst die Pedale mit deinen Füßen treten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1885 hatte ein Mann in Deutschland eine große Idee.",
+      "text_markdown": "Im Jahr 1885 hatte ein Mann in Deutschland eine große Idee.",
+      "tts": {
+        "text": "Im Jahr achtzehn hundert fünf und achtzig hatte ein Mann in Deutschland eine große Idee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er hieß Gottlieb Daimler.",
+      "text_markdown": "Er hieß Gottlieb Daimler.",
+      "tts": {
+        "text": "Er hieß Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er nahm einen kleinen Benzinmotor und setzte ihn auf ein Fahrrad aus Holz.",
+      "text_markdown": "Er nahm einen kleinen Benzinmotor und setzte ihn auf ein Fahrrad aus Holz.",
+      "tts": {
+        "text": "Er nahm einen kleinen Benzinmotor und setzte ihn auf ein Fahrrad aus Holz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er nannte seine Maschine Reitwagen.",
+      "text_markdown": "Er nannte seine Maschine Reitwagen.",
+      "tts": {
+        "text": "Er nannte seine Maschine Reitwagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Wort bedeutet auf Deutsch ein Wagen zum Reiten.",
+      "text_markdown": "Das Wort bedeutet auf Deutsch ein Wagen zum Reiten.",
+      "tts": {
+        "text": "Das Wort bedeutet auf Deutsch ein Wagen zum Reiten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es war das erste Motorrad der Welt.",
+      "text_markdown": "Es war das erste Motorrad der Welt.",
+      "tts": {
+        "text": "Es war das erste Motorrad der Welt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Reitwagen war laut.",
+      "text_markdown": "Der Reitwagen war laut.",
+      "tts": {
+        "text": "Der Reitwagen war laut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er war holprig.",
+      "text_markdown": "Er war holprig.",
+      "tts": {
+        "text": "Er war holprig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er hatte nur einen Gang.",
+      "text_markdown": "Er hatte nur einen Gang.",
+      "tts": {
+        "text": "Er hatte nur einen Gang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er fuhr etwa 7 Meilen pro Stunde.",
+      "text_markdown": "Er fuhr etwa 7 Meilen pro Stunde.",
+      "tts": {
+        "text": "Er fuhr etwa sieben Meilen pro Stunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das ist langsamer als ein Mensch heute auf dem Fahrrad.",
+      "text_markdown": "Das ist langsamer als ein Mensch heute auf dem Fahrrad.",
+      "tts": {
+        "text": "Das ist langsamer als ein Mensch heute auf dem Fahrrad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Aber er konnte sich ohne Pferd bewegen, und er konnte sich ohne Pedale bewegen.",
+      "text_markdown": "Aber er konnte sich ohne Pferd bewegen, und er konnte sich ohne Pedale bewegen.",
+      "tts": {
+        "text": "Aber er konnte sich ohne Pferd bewegen, und er konnte sich ohne Pedale bewegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Das erste Zweirad, das Brumm machte",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Motorrad war geboren.",
+      "text_markdown": "Das Motorrad war geboren.",
+      "tts": {
+        "text": "Das Motorrad war geboren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 — Die ersten Firmen",
+      "text_markdown": "Kapitel 2 — Die ersten Firmen"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach Daimler wollten auch andere Menschen Motorräder bauen.",
+      "text_markdown": "Nach Daimler wollten auch andere Menschen Motorräder bauen.",
+      "tts": {
+        "text": "Nach Daimler wollten auch andere Menschen Motorräder bauen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bald öffneten überall auf der Welt kleine Werkstätten.",
+      "text_markdown": "Bald öffneten überall auf der Welt kleine Werkstätten.",
+      "tts": {
+        "text": "Bald öffneten überall auf der Welt kleine Werkstätten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In England gründete ein Mann namens Siegfried Bettmann eine Firma namens Triumph.",
+      "text_markdown": "In England gründete ein Mann namens Siegfried Bettmann eine Firma namens Triumph.",
+      "tts": {
+        "text": "In England gründete ein Mann namens Siegfried Bettmann eine Firma namens Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das erste Triumph-Motorrad wurde im Jahr 1902 gebaut.",
+      "text_markdown": "Das erste Triumph-Motorrad wurde im Jahr 1902 gebaut.",
+      "tts": {
+        "text": "Das erste Triumph Motorrad wurde im Jahr neunzehn hundert zwei gebaut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Amerika bauten zwei Freunde namens William Harley und Arthur Davidson ihr erstes Rad in einem kleinen Holzschuppen.",
+      "text_markdown": "In Amerika bauten zwei Freunde namens William Harley und Arthur Davidson ihr erstes Rad in einem kleinen Holzschuppen.",
+      "tts": {
+        "text": "In Amerika bauten zwei Freunde namens William Harley und Arthur Davidson ihr erstes Rad in einem kleinen Holzschuppen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Schuppen stand in der Stadt Milwaukee.",
+      "text_markdown": "Der Schuppen stand in der Stadt Milwaukee.",
+      "tts": {
+        "text": "Der Schuppen stand in der Stadt Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Jahr war 1903.",
+      "text_markdown": "Das Jahr war 1903.",
+      "tts": {
+        "text": "Das Jahr war neunzehn hundert drei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie nannten die Firma Harley-Davidson.",
+      "text_markdown": "Sie nannten die Firma Harley-Davidson.",
+      "tts": {
+        "text": "Sie nannten die Firma Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine andere amerikanische Firma fing ein paar Jahre früher an.",
+      "text_markdown": "Eine andere amerikanische Firma fing ein paar Jahre früher an.",
+      "tts": {
+        "text": "Eine andere amerikanische Firma fing ein paar Jahre früher an.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zwei Männer in Springfield, Massachusetts, bauten ihre erste Maschine im Jahr 1901.",
+      "text_markdown": "Zwei Männer in Springfield, Massachusetts, bauten ihre erste Maschine im Jahr 1901.",
+      "tts": {
+        "text": "Zwei Männer in Springfield, Massachusetts, bauten ihre erste Maschine im Jahr neunzehn hundert eins.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie nannten sie die Indian.",
+      "text_markdown": "Sie nannten sie die Indian.",
+      "tts": {
+        "text": "Sie nannten sie die Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Indien begann eine Firma namens Royal Enfield ebenfalls 1901, Motorräder zu bauen.",
+      "text_markdown": "In Indien begann eine Firma namens Royal Enfield ebenfalls 1901, Motorräder zu bauen.",
+      "tts": {
+        "text": "In Indien begann eine Firma namens Royal Enfield ebenfalls neunzehn hundert eins, Motorräder zu bauen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heute ist Royal Enfield die älteste Motorradfirma der Welt, die immer noch Räder baut.",
+      "text_markdown": "Heute ist Royal Enfield die älteste Motorradfirma der Welt, die immer noch Räder baut.",
+      "tts": {
+        "text": "Heute ist Royal Enfield die älteste Motorradfirma der Welt, die immer noch Räder baut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Deutschland fing die Firma BMW etwas später an, Motorräder zu bauen, im Jahr 1923.",
+      "text_markdown": "In Deutschland fing die Firma BMW etwas später an, Motorräder zu bauen, im Jahr 1923.",
+      "tts": {
+        "text": "In Deutschland fing die Firma Bay Em Vay etwas später an, Motorräder zu bauen, im Jahr neunzehn hundert drei und zwanzig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW bedeutet auf Deutsch Bayerische Motoren Werke.",
+      "text_markdown": "BMW bedeutet auf Deutsch Bayerische Motoren Werke.",
+      "tts": {
+        "text": "Bay Em Vay bedeutet auf Deutsch Bayerische Motoren Werke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bis zum Jahr 1910 gab es überall Motorräder.",
+      "text_markdown": "Bis zum Jahr 1910 gab es überall Motorräder.",
+      "tts": {
+        "text": "Bis zum Jahr neunzehn hundert zehn gab es überall Motorräder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie waren in den Stadtstraßen und auf den Landstraßen.",
+      "text_markdown": "Sie waren in den Stadtstraßen und auf den Landstraßen.",
+      "tts": {
+        "text": "Sie waren in den Stadtstraßen und auf den Landstraßen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Die ersten Firmen",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Zeitalter des Motorrads hatte wirklich begonnen.",
+      "text_markdown": "Das Zeitalter des Motorrads hatte wirklich begonnen.",
+      "tts": {
+        "text": "Das Zeitalter des Motorrads hatte wirklich begonnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "text_markdown": "Kapitel 3 — Motorräder ziehen in den Krieg"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motorräder sind schnell.",
+      "text_markdown": "Motorräder sind schnell.",
+      "tts": {
+        "text": "Motorräder sind schnell.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie passen auf kleine Pfade.",
+      "text_markdown": "Sie passen auf kleine Pfade.",
+      "tts": {
+        "text": "Sie passen auf kleine Pfade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie können Nachrichten zwischen Lagern bringen.",
+      "text_markdown": "Sie können Nachrichten zwischen Lagern bringen.",
+      "tts": {
+        "text": "Sie können Nachrichten zwischen Lagern bringen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Als die Kriege kamen, wollten die Armeen also Motorräder.",
+      "text_markdown": "Als die Kriege kamen, wollten die Armeen also Motorräder.",
+      "tts": {
+        "text": "Als die Kriege kamen, wollten die Armeen also Motorräder.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Erste Weltkrieg begann 1914.",
+      "text_markdown": "Der Erste Weltkrieg begann 1914.",
+      "tts": {
+        "text": "Der Erste Weltkrieg begann neunzehn hundert vierzehn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soldaten benutzten Triumph-Motorräder, um Befehle zu überbringen.",
+      "text_markdown": "Soldaten benutzten Triumph-Motorräder, um Befehle zu überbringen.",
+      "tts": {
+        "text": "Soldaten benutzten Triumph Motorräder, um Befehle zu überbringen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Triumph Model H war stark und leise.",
+      "text_markdown": "Das Triumph Model H war stark und leise.",
+      "tts": {
+        "text": "Das Triumph Model H war stark und leise.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es kam dorthin, wo Pferde nicht hinkamen.",
+      "text_markdown": "Es kam dorthin, wo Pferde nicht hinkamen.",
+      "tts": {
+        "text": "Es kam dorthin, wo Pferde nicht hinkamen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Zweite Weltkrieg begann 1939.",
+      "text_markdown": "Der Zweite Weltkrieg begann 1939.",
+      "tts": {
+        "text": "Der Zweite Weltkrieg begann neunzehn hundert neun und dreißig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Da waren die Motorräder schon schneller und stärker.",
+      "text_markdown": "Da waren die Motorräder schon schneller und stärker.",
+      "tts": {
+        "text": "Da waren die Motorräder schon schneller und stärker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikanische Soldaten fuhren die Harley-Davidson WLA.",
+      "text_markdown": "Amerikanische Soldaten fuhren die Harley-Davidson WLA.",
+      "tts": {
+        "text": "Amerikanische Soldaten fuhren die Harley Davidson Vay Ell Ah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deutsche Soldaten fuhren die BMW R75.",
+      "text_markdown": "Deutsche Soldaten fuhren die BMW R75.",
+      "tts": {
+        "text": "Deutsche Soldaten fuhren die Bay Em Vay R fünf und siebzig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die R75 hatte einen Beiwagen mit einem dritten Rad und einem Sitz für einen weiteren Soldaten.",
+      "text_markdown": "Die R75 hatte einen Beiwagen mit einem dritten Rad und einem Sitz für einen weiteren Soldaten.",
+      "tts": {
+        "text": "Die R fünf und siebzig hatte einen Beiwagen mit einem dritten Rad und einem Sitz für einen weiteren Soldaten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach dem Krieg kamen die Soldaten nach Hause.",
+      "text_markdown": "Nach dem Krieg kamen die Soldaten nach Hause.",
+      "tts": {
+        "text": "Nach dem Krieg kamen die Soldaten nach Hause.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie brachten ihre Motorräder mit.",
+      "text_markdown": "Sie brachten ihre Motorräder mit.",
+      "tts": {
+        "text": "Sie brachten ihre Motorräder mit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viele von ihnen wollten weiter fahren.",
+      "text_markdown": "Viele von ihnen wollten weiter fahren.",
+      "tts": {
+        "text": "Viele von ihnen wollten weiter fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Manche von ihnen gründeten ihre eigenen Motorradklubs.",
+      "text_markdown": "Manche von ihnen gründeten ihre eigenen Motorradklubs.",
+      "tts": {
+        "text": "Manche von ihnen gründeten ihre eigenen Motorradklubs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Kriege machten das Motorrad berühmt.",
+      "text_markdown": "Die Kriege machten das Motorrad berühmt.",
+      "tts": {
+        "text": "Die Kriege machten das Motorrad berühmt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Millionen Menschen hatten zum ersten Mal eines gesehen.",
+      "text_markdown": "Millionen Menschen hatten zum ersten Mal eines gesehen.",
+      "tts": {
+        "text": "Millionen Menschen hatten zum ersten Mal eines gesehen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Motorräder ziehen in den Krieg",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viele wollten ein eigenes haben.",
+      "text_markdown": "Viele wollten ein eigenes haben.",
+      "tts": {
+        "text": "Viele wollten ein eigenes haben.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 — Der Aufstieg Japans",
+      "text_markdown": "Kapitel 4 — Der Aufstieg Japans"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach dem Zweiten Weltkrieg war Japan arm.",
+      "text_markdown": "Nach dem Zweiten Weltkrieg war Japan arm.",
+      "tts": {
+        "text": "Nach dem Zweiten Weltkrieg war Japan arm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die meisten Autos waren zu teuer.",
+      "text_markdown": "Die meisten Autos waren zu teuer.",
+      "tts": {
+        "text": "Die meisten Autos waren zu teuer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Menschen brauchten eine kleine, billige Art, sich zu bewegen.",
+      "text_markdown": "Die Menschen brauchten eine kleine, billige Art, sich zu bewegen.",
+      "tts": {
+        "text": "Die Menschen brauchten eine kleine, billige Art, sich zu bewegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein junger Japaner sah die Chance.",
+      "text_markdown": "Ein junger Japaner sah die Chance.",
+      "tts": {
+        "text": "Ein junger Japaner sah die Chance.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er hieß Soichiro Honda.",
+      "text_markdown": "Er hieß Soichiro Honda.",
+      "tts": {
+        "text": "Er hieß Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er gründete 1948 eine kleine Firma.",
+      "text_markdown": "Er gründete 1948 eine kleine Firma.",
+      "tts": {
+        "text": "Er gründete neunzehn hundert acht und vierzig eine kleine Firma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er nannte sie Honda.",
+      "text_markdown": "Er nannte sie Honda.",
+      "tts": {
+        "text": "Er nannte sie Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1958 baute Honda ein winziges Motorrad namens Super Cub.",
+      "text_markdown": "1958 baute Honda ein winziges Motorrad namens Super Cub.",
+      "tts": {
+        "text": "Neunzehn hundert acht und fünfzig baute Honda ein winziges Motorrad namens Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Super Cub war einfach zu fahren.",
+      "text_markdown": "Die Super Cub war einfach zu fahren.",
+      "tts": {
+        "text": "Die Super Cub war einfach zu fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie war einfach zu reparieren.",
+      "text_markdown": "Sie war einfach zu reparieren.",
+      "tts": {
+        "text": "Sie war einfach zu reparieren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie war sehr, sehr billig.",
+      "text_markdown": "Sie war sehr, sehr billig.",
+      "tts": {
+        "text": "Sie war sehr, sehr billig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen auf der ganzen Welt kauften die Super Cub.",
+      "text_markdown": "Menschen auf der ganzen Welt kauften die Super Cub.",
+      "tts": {
+        "text": "Menschen auf der ganzen Welt kauften die Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heute wurden mehr als 100 Millionen Super Cubs verkauft.",
+      "text_markdown": "Heute wurden mehr als 100 Millionen Super Cubs verkauft.",
+      "tts": {
+        "text": "Heute wurden mehr als ein hundert Millionen Super Cubs verkauft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie ist das meistverkaufte Kraftfahrzeug aller Zeiten.",
+      "text_markdown": "Sie ist das meistverkaufte Kraftfahrzeug aller Zeiten.",
+      "tts": {
+        "text": "Sie ist das meistverkaufte Kraftfahrzeug aller Zeiten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bald folgten Honda drei weitere japanische Firmen.",
+      "text_markdown": "Bald folgten Honda drei weitere japanische Firmen.",
+      "tts": {
+        "text": "Bald folgten Honda drei weitere japanische Firmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es waren Yamaha, Suzuki und Kawasaki.",
+      "text_markdown": "Es waren Yamaha, Suzuki und Kawasaki.",
+      "tts": {
+        "text": "Es waren Yamaha, Suzuki und Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zusammen mit Honda werden sie die Big Four genannt.",
+      "text_markdown": "Zusammen mit Honda werden sie die Big Four genannt.",
+      "tts": {
+        "text": "Zusammen mit Honda werden sie die Big Four genannt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Big Four bauten Motorräder, die schnell, billig und einfach zu fahren waren.",
+      "text_markdown": "Die Big Four bauten Motorräder, die schnell, billig und einfach zu fahren waren.",
+      "tts": {
+        "text": "Die Big Four bauten Motorräder, die schnell, billig und einfach zu fahren waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In den 1960er Jahren waren japanische Motorräder überall.",
+      "text_markdown": "In den 1960er Jahren waren japanische Motorräder überall.",
+      "tts": {
+        "text": "In den neunzehn hundert sechziger Jahren waren japanische Motorräder überall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Der Aufstieg Japans",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie waren die neuen Könige der Straße.",
+      "text_markdown": "Sie waren die neuen Könige der Straße.",
+      "tts": {
+        "text": "Sie waren die neuen Könige der Straße.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 — Schneller, schneller, schneller",
+      "text_markdown": "Kapitel 5 — Schneller, schneller, schneller"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den 1960er Jahren wollten die Fahrer schneller fahren.",
+      "text_markdown": "In den 1960er Jahren wollten die Fahrer schneller fahren.",
+      "tts": {
+        "text": "In den neunzehn hundert sechziger Jahren wollten die Fahrer schneller fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Erbauer begannen ein Rennen, um das schnellste Motorrad der Welt zu bauen.",
+      "text_markdown": "Die Erbauer begannen ein Rennen, um das schnellste Motorrad der Welt zu bauen.",
+      "tts": {
+        "text": "Die Erbauer begannen ein Rennen, um das schnellste Motorrad der Welt zu bauen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Italien baute eine kleine Firma namens MV Agusta wunderschöne rote Räder, die ein Rennen nach dem anderen gewannen.",
+      "text_markdown": "In Italien baute eine kleine Firma namens MV Agusta wunderschöne rote Räder, die ein Rennen nach dem anderen gewannen.",
+      "tts": {
+        "text": "In Italien baute eine kleine Firma namens MV Agusta wunderschöne rote Räder, die ein Rennen nach dem anderen gewannen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In England bauten Triumph und Norton auch starke Maschinen.",
+      "text_markdown": "In England bauten Triumph und Norton auch starke Maschinen.",
+      "tts": {
+        "text": "In England bauten Triumph und Norton auch starke Maschinen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann, im Jahr 1969, machte Honda etwas Erstaunliches.",
+      "text_markdown": "Dann, im Jahr 1969, machte Honda etwas Erstaunliches.",
+      "tts": {
+        "text": "Dann, im Jahr neunzehn hundert neun und sechzig, machte Honda etwas Erstaunliches.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie bauten ein Motorrad namens CB 750.",
+      "text_markdown": "Sie bauten ein Motorrad namens CB 750.",
+      "tts": {
+        "text": "Sie bauten ein Motorrad namens C B sieben hundert fünfzig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es hatte vier Zylinder und einen großen Motor.",
+      "text_markdown": "Es hatte vier Zylinder und einen großen Motor.",
+      "tts": {
+        "text": "Es hatte vier Zylinder und einen großen Motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es konnte mehr als 120 Meilen pro Stunde fahren.",
+      "text_markdown": "Es konnte mehr als 120 Meilen pro Stunde fahren.",
+      "tts": {
+        "text": "Es konnte mehr als ein hundert zwanzig Meilen pro Stunde fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es war das erste echte Superbike.",
+      "text_markdown": "Es war das erste echte Superbike.",
+      "tts": {
+        "text": "Es war das erste echte Superbike.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach der CB 750 wollte jede Firma ein Superbike bauen.",
+      "text_markdown": "Nach der CB 750 wollte jede Firma ein Superbike bauen.",
+      "tts": {
+        "text": "Nach der C B sieben hundert fünfzig wollte jede Firma ein Superbike bauen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Räder wurden schneller und schneller.",
+      "text_markdown": "Die Räder wurden schneller und schneller.",
+      "tts": {
+        "text": "Die Räder wurden schneller und schneller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bald hatten sie helle Verkleidungen, die glatten Plastikschalen, die durch den Wind schneiden.",
+      "text_markdown": "Bald hatten sie helle Verkleidungen, die glatten Plastikschalen, die durch den Wind schneiden.",
+      "tts": {
+        "text": "Bald hatten sie helle Verkleidungen, die glatten Plastikschalen, die durch den Wind schneiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1990 wurde ein japanisches Motorrad namens Kawasaki ZX-11 das schnellste Motorrad der Welt.",
+      "text_markdown": "1990 wurde ein japanisches Motorrad namens Kawasaki ZX-11 das schnellste Motorrad der Welt.",
+      "tts": {
+        "text": "Neunzehn hundert neunzig wurde ein japanisches Motorrad namens Kawasaki Z X elf das schnellste Motorrad der Welt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es konnte fast 175 Meilen pro Stunde fahren.",
+      "text_markdown": "Es konnte fast 175 Meilen pro Stunde fahren.",
+      "tts": {
+        "text": "Es konnte fast ein hundert fünf und siebzig Meilen pro Stunde fahren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein paar Jahre später fuhr die Suzuki Hayabusa noch schneller.",
+      "text_markdown": "Ein paar Jahre später fuhr die Suzuki Hayabusa noch schneller.",
+      "tts": {
+        "text": "Ein paar Jahre später fuhr die Suzuki Hayabusa noch schneller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie schaffte 194 Meilen pro Stunde.",
+      "text_markdown": "Sie schaffte 194 Meilen pro Stunde.",
+      "tts": {
+        "text": "Sie schaffte ein hundert vier und neunzig Meilen pro Stunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Schneller, schneller, schneller",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das ist schneller als die meisten Autos auf der Straße heute.",
+      "text_markdown": "Das ist schneller als die meisten Autos auf der Straße heute.",
+      "tts": {
+        "text": "Das ist schneller als die meisten Autos auf der Straße heute.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 — Viele Arten von Motorrädern",
+      "text_markdown": "Kapitel 6 — Viele Arten von Motorrädern"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute gibt es Motorräder in vielen Formen.",
+      "text_markdown": "Heute gibt es Motorräder in vielen Formen.",
+      "tts": {
+        "text": "Heute gibt es Motorräder in vielen Formen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jede Art ist für eine andere Aufgabe gebaut.",
+      "text_markdown": "Jede Art ist für eine andere Aufgabe gebaut.",
+      "tts": {
+        "text": "Jede Art ist für eine andere Aufgabe gebaut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Sportrad ist gebaut, um sehr schnell zu fahren.",
+      "text_markdown": "Ein Sportrad ist gebaut, um sehr schnell zu fahren.",
+      "tts": {
+        "text": "Ein Sportrad ist gebaut, um sehr schnell zu fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es ist leicht und niedrig.",
+      "text_markdown": "Es ist leicht und niedrig.",
+      "tts": {
+        "text": "Es ist leicht und niedrig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Fahrer beugt sich nach vorn.",
+      "text_markdown": "Der Fahrer beugt sich nach vorn.",
+      "tts": {
+        "text": "Der Fahrer beugt sich nach vorn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sporträder sind für glatte Straßen und Rennstrecken gemacht.",
+      "text_markdown": "Sporträder sind für glatte Straßen und Rennstrecken gemacht.",
+      "tts": {
+        "text": "Sporträder sind für glatte Straßen und Rennstrecken gemacht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Geländerad ist für Schlamm und Erde gebaut.",
+      "text_markdown": "Ein Geländerad ist für Schlamm und Erde gebaut.",
+      "tts": {
+        "text": "Ein Geländerad ist für Schlamm und Erde gebaut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es hat hohe Räder und große Reifen.",
+      "text_markdown": "Es hat hohe Räder und große Reifen.",
+      "tts": {
+        "text": "Es hat hohe Räder und große Reifen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geländeräder können über Hügel springen.",
+      "text_markdown": "Geländeräder können über Hügel springen.",
+      "tts": {
+        "text": "Geländeräder können über Hügel springen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Viele junge Fahrer lernen zuerst auf Geländerädern.",
+      "text_markdown": "Viele junge Fahrer lernen zuerst auf Geländerädern.",
+      "tts": {
+        "text": "Viele junge Fahrer lernen zuerst auf Geländerädern.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Cruiser ist lang und niedrig.",
+      "text_markdown": "Ein Cruiser ist lang und niedrig.",
+      "tts": {
+        "text": "Ein Cruiser ist lang und niedrig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Fahrer sitzt aufrecht und fährt langsam.",
+      "text_markdown": "Der Fahrer sitzt aufrecht und fährt langsam.",
+      "tts": {
+        "text": "Der Fahrer sitzt aufrecht und fährt langsam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson ist berühmt für Cruiser.",
+      "text_markdown": "Harley-Davidson ist berühmt für Cruiser.",
+      "tts": {
+        "text": "Harley Davidson ist berühmt für Cruiser.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Indian auch.",
+      "text_markdown": "Die Indian auch.",
+      "tts": {
+        "text": "Die Indian auch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Abenteuerrad ist für lange Reisen gebaut.",
+      "text_markdown": "Ein Abenteuerrad ist für lange Reisen gebaut.",
+      "tts": {
+        "text": "Ein Abenteuerrad ist für lange Reisen gebaut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es kann auf Straßen und Erde fahren.",
+      "text_markdown": "Es kann auf Straßen und Erde fahren.",
+      "tts": {
+        "text": "Es kann auf Straßen und Erde fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die BMW GS ist ein berühmtes Abenteuerrad.",
+      "text_markdown": "Die BMW GS ist ein berühmtes Abenteuerrad.",
+      "tts": {
+        "text": "Die Bay Em Vay Jay Ess ist ein berühmtes Abenteuerrad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die KTM auch.",
+      "text_markdown": "Die KTM auch.",
+      "tts": {
+        "text": "Die Ka Tay Em auch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt auch Chopper, Roller, Rennräder und Elektroräder.",
+      "text_markdown": "Es gibt auch Chopper, Roller, Rennräder und Elektroräder.",
+      "tts": {
+        "text": "Es gibt auch Chopper, Roller, Rennräder und Elektroräder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es gibt ein Motorrad für fast jede Art von Straße.",
+      "text_markdown": "Es gibt ein Motorrad für fast jede Art von Straße.",
+      "tts": {
+        "text": "Es gibt ein Motorrad für fast jede Art von Straße.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Motorrädern",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute findest du in jedem Land der Welt ein Motorrad.",
+      "text_markdown": "Heute findest du in jedem Land der Welt ein Motorrad.",
+      "tts": {
+        "text": "Heute findest du in jedem Land der Welt ein Motorrad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 — Eine neue Straße",
+      "text_markdown": "Kapitel 7 — Eine neue Straße"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute hat das Motorrad eine neue Art von Motor.",
+      "text_markdown": "Heute hat das Motorrad eine neue Art von Motor.",
+      "tts": {
+        "text": "Heute hat das Motorrad eine neue Art von Motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es ist der Elektromotor.",
+      "text_markdown": "Es ist der Elektromotor.",
+      "tts": {
+        "text": "Es ist der Elektromotor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Elektromotorrad ist leise.",
+      "text_markdown": "Ein Elektromotorrad ist leise.",
+      "tts": {
+        "text": "Ein Elektromotorrad ist leise.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es braucht kein Benzin.",
+      "text_markdown": "Es braucht kein Benzin.",
+      "tts": {
+        "text": "Es braucht kein Benzin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es muss nur eingesteckt werden, wie ein Telefon.",
+      "text_markdown": "Es muss nur eingesteckt werden, wie ein Telefon.",
+      "tts": {
+        "text": "Es muss nur eingesteckt werden, wie ein Telefon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Firma namens Zero baut Elektromotorräder in Kalifornien.",
+      "text_markdown": "Eine Firma namens Zero baut Elektromotorräder in Kalifornien.",
+      "tts": {
+        "text": "Eine Firma namens Zero baut Elektromotorräder in Kalifornien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson baut jetzt ein Elektrorad namens LiveWire.",
+      "text_markdown": "Harley-Davidson baut jetzt ein Elektrorad namens LiveWire.",
+      "tts": {
+        "text": "Harley Davidson baut jetzt ein Elektrorad namens LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eine italienische Firma namens Energica baut elektrische Rennräder.",
+      "text_markdown": "Eine italienische Firma namens Energica baut elektrische Rennräder.",
+      "tts": {
+        "text": "Eine italienische Firma namens Energica baut elektrische Rennräder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie sind sehr schnell.",
+      "text_markdown": "Sie sind sehr schnell.",
+      "tts": {
+        "text": "Sie sind sehr schnell.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das erste Motorrad, der Reitwagen, fuhr 7 Meilen pro Stunde.",
+      "text_markdown": "Das erste Motorrad, der Reitwagen, fuhr 7 Meilen pro Stunde.",
+      "tts": {
+        "text": "Das erste Motorrad, der Reitwagen, fuhr sieben Meilen pro Stunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heutige Elektromotorräder fahren mehr als 200 Meilen pro Stunde.",
+      "text_markdown": "Heutige Elektromotorräder fahren mehr als 200 Meilen pro Stunde.",
+      "tts": {
+        "text": "Heutige Elektromotorräder fahren mehr als zwei hundert Meilen pro Stunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das ist die Geschichte des Motorrads bis jetzt.",
+      "text_markdown": "Das ist die Geschichte des Motorrads bis jetzt.",
+      "tts": {
+        "text": "Das ist die Geschichte des Motorrads bis jetzt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das war die große Geschichte.",
+      "text_markdown": "Das war die große Geschichte.",
+      "tts": {
+        "text": "Das war die große Geschichte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die nächsten elf Bücher erzählen die kleinen Geschichten.",
+      "text_markdown": "Die nächsten elf Bücher erzählen die kleinen Geschichten.",
+      "tts": {
+        "text": "Die nächsten elf Bücher erzählen die kleinen Geschichten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jedes handelt von einem Teil der Motorradwelt.",
+      "text_markdown": "Jedes handelt von einem Teil der Motorradwelt.",
+      "tts": {
+        "text": "Jedes handelt von einem Teil der Motorradwelt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Band zwei handelt von Harley-Davidson.",
+      "text_markdown": "Band zwei handelt von Harley-Davidson.",
+      "tts": {
+        "text": "Band zwei handelt von Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Band drei handelt von Honda.",
+      "text_markdown": "Band drei handelt von Honda.",
+      "tts": {
+        "text": "Band drei handelt von Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Band vier handelt von Ducati aus Italien.",
+      "text_markdown": "Band vier handelt von Ducati aus Italien.",
+      "tts": {
+        "text": "Band vier handelt von Ducati aus Italien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Band fünf handelt von BMW aus Deutschland.",
+      "text_markdown": "Band fünf handelt von BMW aus Deutschland.",
+      "tts": {
+        "text": "Band fünf handelt von Bay Em Vay aus Deutschland.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Band sechs handelt von Triumph aus England.",
+      "text_markdown": "Band sechs handelt von Triumph aus England.",
+      "tts": {
+        "text": "Band sechs handelt von Triumph aus England.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Band sieben handelt von Geländerädern.",
+      "text_markdown": "Band sieben handelt von Geländerädern.",
+      "tts": {
+        "text": "Band sieben handelt von Geländerädern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Band acht handelt von Sporträdern.",
+      "text_markdown": "Band acht handelt von Sporträdern.",
+      "tts": {
+        "text": "Band acht handelt von Sporträdern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Band neun handelt von Cruisern und Choppern.",
+      "text_markdown": "Band neun handelt von Cruisern und Choppern.",
+      "tts": {
+        "text": "Band neun handelt von Cruisern und Choppern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Band zehn handelt von Abenteuerrädern.",
+      "text_markdown": "Band zehn handelt von Abenteuerrädern.",
+      "tts": {
+        "text": "Band zehn handelt von Abenteuerrädern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Band elf handelt vom Rennsport.",
+      "text_markdown": "Band elf handelt vom Rennsport.",
+      "tts": {
+        "text": "Band elf handelt vom Rennsport.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Band zwölf handelt von Elektrorädern und der Zukunft.",
+      "text_markdown": "Band zwölf handelt von Elektrorädern und der Zukunft.",
+      "tts": {
+        "text": "Band zwölf handelt von Elektrorädern und der Zukunft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Such dir das aus, was am meisten Spaß zu machen scheint.",
+      "text_markdown": "Such dir das aus, was am meisten Spaß zu machen scheint.",
+      "tts": {
+        "text": "Such dir das aus, was am meisten Spaß zu machen scheint.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Eine neue Straße",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dann komm mit auf die Fahrt.",
+      "text_markdown": "Dann komm mit auf die Fahrt.",
+      "tts": {
+        "text": "Dann komm mit auf die Fahrt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Über dieses Buch",
+      "text_markdown": "Über dieses Buch"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist das erste Buch der Motorrad-Reihe.",
+      "text_markdown": "Das ist das erste Buch der Motorrad-Reihe.",
+      "tts": {
+        "text": "Das ist das erste Buch der Motorrad Reihe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es wird von August vorgelesen.",
+      "text_markdown": "Es wird von August vorgelesen.",
+      "tts": {
+        "text": "Es wird von August vorgelesen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeder Satz ist kurz und klar, damit du in jeder Sprache mitlesen kannst.",
+      "text_markdown": "Jeder Satz ist kurz und klar, damit du in jeder Sprache mitlesen kannst.",
+      "tts": {
+        "text": "Jeder Satz ist kurz und klar, damit du in jeder Sprache mitlesen kannst.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du hören willst, wie ein Satz in einer anderen Sprache klingt, hör dir das gleiche Buch in dieser Sprache an.",
+      "text_markdown": "Wenn du hören willst, wie ein Satz in einer anderen Sprache klingt, hör dir das gleiche Buch in dieser Sprache an.",
+      "tts": {
+        "text": "Wenn du hören willst, wie ein Satz in einer anderen Sprache klingt, hör dir das gleiche Buch in dieser Sprache an.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Wörter auf der Seite passen zu dem, was du hörst.",
+      "text_markdown": "Die Wörter auf der Seite passen zu dem, was du hörst.",
+      "tts": {
+        "text": "Die Wörter auf der Seite passen zu dem, was du hörst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "So lernst du.",
+      "text_markdown": "So lernst du.",
+      "tts": {
+        "text": "So lernst du.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Über dieses Buch",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Geh jetzt ein Motorrad finden und hör zu, wie es Brumm macht.",
+      "text_markdown": "Geh jetzt ein Motorrad finden und hör zu, wie es Brumm macht.",
+      "tts": {
+        "text": "Geh jetzt ein Motorrad finden und hör zu, wie es Brumm macht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

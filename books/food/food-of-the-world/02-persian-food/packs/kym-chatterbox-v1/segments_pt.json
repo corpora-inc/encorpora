@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "language": "pt",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma nota para o leitor",
+      "text_markdown": "Uma nota para o leitor"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olá.",
+      "text_markdown": "Olá.",
+      "tts": {
+        "text": "Olá.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eu sou a Kym.",
+      "text_markdown": "Eu sou a Kym.",
+      "tts": {
+        "text": "Eu sou a Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adoro comida.",
+      "text_markdown": "Adoro comida.",
+      "tts": {
+        "text": "Adoro comida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adoro histórias sobre comida.",
+      "text_markdown": "Adoro histórias sobre comida.",
+      "tts": {
+        "text": "Adoro histórias sobre comida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é um pequeno livro sobre uma cozinha imensa.",
+      "text_markdown": "Este é um pequeno livro sobre uma cozinha imensa.",
+      "tts": {
+        "text": "Este é um pequeno livro sobre uma cozinha imensa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A comida é persa.",
+      "text_markdown": "A comida é persa.",
+      "tts": {
+        "text": "A comida é persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É a comida do Irão.",
+      "text_markdown": "É a comida do Irão.",
+      "tts": {
+        "text": "É a comida do Irão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Também é a comida de um país muito mais antigo, chamado Pérsia.",
+      "text_markdown": "Também é a comida de um país muito mais antigo, chamado Pérsia.",
+      "tts": {
+        "text": "Também é a comida de um país muito mais antigo, chamado Pérsia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Pérsia é um dos lugares mais antigos da Terra onde as pessoas cultivaram alimentos de propósito.",
+      "text_markdown": "A Pérsia é um dos lugares mais antigos da Terra onde as pessoas cultivaram alimentos de propósito.",
+      "tts": {
+        "text": "A Pérsia é um dos lugares mais antigos da Terra onde as pessoas cultivaram alimentos de propósito.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trigo, cevada, pêssego, alperce, romã, espinafre, açafrão: muitas coisas do seu prato nasceram lá.",
+      "text_markdown": "Trigo, cevada, pêssego, alperce, romã, espinafre, açafrão: muitas coisas do seu prato nasceram lá.",
+      "tts": {
+        "text": "Trigo, cevada, pêssego, alperce, romã, espinafre, açafrão, muitas coisas do seu prato nasceram lá.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vamos começar pela terra.",
+      "text_markdown": "Vamos começar pela terra.",
+      "tts": {
+        "text": "Vamos começar pela terra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Depois vamos olhar para as coisas que lá crescem.",
+      "text_markdown": "Depois vamos olhar para as coisas que lá crescem.",
+      "tts": {
+        "text": "Depois vamos olhar para as coisas que lá crescem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Depois vamos olhar para o arroz, o pão, a carne e os guisados.",
+      "text_markdown": "Depois vamos olhar para o arroz, o pão, a carne e os guisados.",
+      "tts": {
+        "text": "Depois vamos olhar para o arroz, o pão, a carne e os guisados.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No fim, vai saber o que há numa mesa persa e de onde isso veio.",
+      "text_markdown": "No fim, vai saber o que há numa mesa persa e de onde isso veio.",
+      "tts": {
+        "text": "No fim, vai saber o que há numa mesa persa e de onde isso veio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sente-se.",
+      "text_markdown": "Sente-se.",
+      "tts": {
+        "text": "Sente se.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sirva um pouco de chá.",
+      "text_markdown": "Sirva um pouco de chá.",
+      "tts": {
+        "text": "Sirva um pouco de chá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vamos começar.",
+      "text_markdown": "Vamos começar.",
+      "tts": {
+        "text": "Vamos começar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 1 — A Terra Onde a Agricultura Começou",
+      "text_markdown": "Capítulo 1 — A Terra Onde a Agricultura Começou"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Pérsia é uma terra alta e seca.",
+      "text_markdown": "A Pérsia é uma terra alta e seca.",
+      "tts": {
+        "text": "A Pérsia é uma terra alta e seca.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fica entre o Mar Cáspio, a norte, e o Golfo Pérsico, a sul.",
+      "text_markdown": "Fica entre o Mar Cáspio, a norte, e o Golfo Pérsico, a sul.",
+      "tts": {
+        "text": "Fica entre o Mar Cáspio, a norte, e o Golfo Pérsico, a sul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A oeste fica a Mesopotâmia.",
+      "text_markdown": "A oeste fica a Mesopotâmia.",
+      "tts": {
+        "text": "A oeste fica a Mesopotâmia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A leste fica a Índia.",
+      "text_markdown": "A leste fica a Índia.",
+      "tts": {
+        "text": "A leste fica a Índia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No meio há montanhas e desertos.",
+      "text_markdown": "No meio há montanhas e desertos.",
+      "tts": {
+        "text": "No meio há montanhas e desertos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mesmo ao lado, há cerca de dez mil anos, as pessoas começaram a cultivar trigo e cevada de propósito.",
+      "text_markdown": "Mesmo ao lado, há cerca de dez mil anos, as pessoas começaram a cultivar trigo e cevada de propósito.",
+      "tts": {
+        "text": "Mesmo ao lado, há cerca de dez mil anos, as pessoas começaram a cultivar trigo e cevada de propósito.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi ali que a agricultura nasceu.",
+      "text_markdown": "Foi ali que a agricultura nasceu.",
+      "tts": {
+        "text": "Foi ali que a agricultura nasceu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A Pérsia foi um dos primeiros lugares a aprendê-la.",
+      "text_markdown": "A Pérsia foi um dos primeiros lugares a aprendê-la.",
+      "tts": {
+        "text": "A Pérsia foi um dos primeiros lugares a aprendê la.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Essa longa vantagem está em cada prato persa.",
+      "text_markdown": "Essa longa vantagem está em cada prato persa.",
+      "tts": {
+        "text": "Essa longa vantagem está em cada prato persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O pêssego vem da Pérsia.",
+      "text_markdown": "O pêssego vem da Pérsia.",
+      "tts": {
+        "text": "O pêssego vem da Pérsia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os Romanos chamavam-lhe Persica, \"o fruto persa\". A nossa palavra \"pêssego\" vem desse nome.",
+      "text_markdown": "Os Romanos chamavam-lhe Persica, \"o fruto persa\". A nossa palavra \"pêssego\" vem desse nome.",
+      "tts": {
+        "text": "Os Romanos chamavam lhe Per si ca, o fruto persa. A nossa palavra pêssego vem desse nome.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O alperce também vem de lá.",
+      "text_markdown": "O alperce também vem de lá.",
+      "tts": {
+        "text": "O alperce também vem de lá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A romã também.",
+      "text_markdown": "A romã também.",
+      "tts": {
+        "text": "A romã também.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A noz também.",
+      "text_markdown": "A noz também.",
+      "tts": {
+        "text": "A noz também.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A ginja também.",
+      "text_markdown": "A ginja também.",
+      "tts": {
+        "text": "A ginja também.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "E também uma das primeiras folhas de salada do mundo, o espinafre.",
+      "text_markdown": "E também uma das primeiras folhas de salada do mundo, o espinafre.",
+      "tts": {
+        "text": "E também uma das primeiras folhas de salada do mundo, o espinafre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "A palavra inglesa \"spinach\" vem da palavra persa esfanaj.",
+      "text_markdown": "A palavra inglesa \"spinach\" vem da palavra persa esfanaj.",
+      "tts": {
+        "text": "A palavra inglesa spinach vem da palavra persa es fa naj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Até a palavra \"paraíso\" é persa.",
+      "text_markdown": "Até a palavra \"paraíso\" é persa.",
+      "tts": {
+        "text": "Até a palavra paraíso é persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vem de pardis, um jardim murado.",
+      "text_markdown": "Vem de pardis, um jardim murado.",
+      "tts": {
+        "text": "Vem de par dis, um jardim murado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O primeiro paraíso era um pomar persa, cheio de romãzeiras.",
+      "text_markdown": "O primeiro paraíso era um pomar persa, cheio de romãzeiras.",
+      "tts": {
+        "text": "O primeiro paraíso era um pomar persa, cheio de romãzeiras.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Pérsia não só comia bem.",
+      "text_markdown": "A Pérsia não só comia bem.",
+      "tts": {
+        "text": "A Pérsia não só comia bem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Pérsia ensinou o mundo a comer bem.",
+      "text_markdown": "A Pérsia ensinou o mundo a comer bem.",
+      "tts": {
+        "text": "A Pérsia ensinou o mundo a comer bem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 2 — A Despensa Nativa",
+      "text_markdown": "Capítulo 2 — A Despensa Nativa"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abra uma despensa persa.",
+      "text_markdown": "Abra uma despensa persa.",
+      "tts": {
+        "text": "Abra uma despensa persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os cheiros contam a história.",
+      "text_markdown": "Os cheiros contam a história.",
+      "tts": {
+        "text": "Os cheiros contam a história.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O primeiro cheiro é o açafrão.",
+      "text_markdown": "O primeiro cheiro é o açafrão.",
+      "tts": {
+        "text": "O primeiro cheiro é o açafrão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O Irão produz cerca de noventa por cento do açafrão do mundo.",
+      "text_markdown": "O Irão produz cerca de noventa por cento do açafrão do mundo.",
+      "tts": {
+        "text": "O Irão produz cerca de noventa por cento do açafrão do mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A maior parte vem de uma província chamada Khorasan.",
+      "text_markdown": "A maior parte vem de uma província chamada Khorasan.",
+      "tts": {
+        "text": "A maior parte vem de uma província chamada Co ra san.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para fazer um grama, um agricultor apanha à mão os fios vermelhos de cerca de duzentas flores de croco.",
+      "text_markdown": "Para fazer um grama, um agricultor apanha à mão os fios vermelhos de cerca de duzentas flores de croco.",
+      "tts": {
+        "text": "Para fazer um grama, um agricultor apanha à mão os fios vermelhos de cerca de duzentas flores de croco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O trabalho é feito nas madrugadas frias de outono.",
+      "text_markdown": "O trabalho é feito nas madrugadas frias de outono.",
+      "tts": {
+        "text": "O trabalho é feito nas madrugadas frias de outono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "O açafrão é a especiaria mais cara do mundo.",
+      "text_markdown": "O açafrão é a especiaria mais cara do mundo.",
+      "tts": {
+        "text": "O açafrão é a especiaria mais cara do mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Uma pitada torna o arroz dourado e a água perfume.",
+      "text_markdown": "Uma pitada torna o arroz dourado e a água perfume.",
+      "tts": {
+        "text": "Uma pitada torna o arroz dourado e a água perfume.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O segundo cheiro é a romã.",
+      "text_markdown": "O segundo cheiro é a romã.",
+      "tts": {
+        "text": "O segundo cheiro é a romã.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Persas cultivam romãs há milhares de anos.",
+      "text_markdown": "Os Persas cultivam romãs há milhares de anos.",
+      "tts": {
+        "text": "Os Persas cultivam romãs há milhares de anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A fruta é símbolo do amor e do paraíso.",
+      "text_markdown": "A fruta é símbolo do amor e do paraíso.",
+      "tts": {
+        "text": "A fruta é símbolo do amor e do paraíso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O sumo é espremido para os guisados.",
+      "text_markdown": "O sumo é espremido para os guisados.",
+      "tts": {
+        "text": "O sumo é espremido para os guisados.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "As sementes são salpicadas sobre o arroz e as saladas.",
+      "text_markdown": "As sementes são salpicadas sobre o arroz e as saladas.",
+      "tts": {
+        "text": "As sementes são salpicadas sobre o arroz e as saladas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois vêm os pistácios.",
+      "text_markdown": "Depois vêm os pistácios.",
+      "tts": {
+        "text": "Depois vêm os pistácios.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No Irão há pomares de pistácio com três mil anos.",
+      "text_markdown": "No Irão há pomares de pistácio com três mil anos.",
+      "tts": {
+        "text": "No Irão há pomares de pistácio com três mil anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O pistácio que se come pelo mundo é, muitas vezes, descendente de uma árvore persa.",
+      "text_markdown": "O pistácio que se come pelo mundo é, muitas vezes, descendente de uma árvore persa.",
+      "tts": {
+        "text": "O pistácio que se come pelo mundo é, muitas vezes, descendente de uma árvore persa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há nozes, ginjas, marmelos, melões e tâmaras.",
+      "text_markdown": "Há nozes, ginjas, marmelos, melões e tâmaras.",
+      "tts": {
+        "text": "Há nozes, ginjas, marmelos, melões e tâmaras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Há sumagre, uma especiaria vermelho-escura e ácida, de um arbusto selvagem.",
+      "text_markdown": "Há sumagre, uma especiaria vermelho-escura e ácida, de um arbusto selvagem.",
+      "tts": {
+        "text": "Há sumagre, uma especiaria vermelho escura e ácida, de um arbusto selvagem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Antes de os limões estarem por toda a parte, o sumagre dava brilho à comida.",
+      "text_markdown": "Antes de os limões estarem por toda a parte, o sumagre dava brilho à comida.",
+      "tts": {
+        "text": "Antes de os limões estarem por toda a parte, o sumagre dava brilho à comida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "E ainda dá.",
+      "text_markdown": "E ainda dá.",
+      "tts": {
+        "text": "E ainda dá.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uma despensa persa guarda metade da história da fruta.",
+      "text_markdown": "Uma despensa persa guarda metade da história da fruta.",
+      "tts": {
+        "text": "Uma despensa persa guarda metade da história da fruta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 3 — Arroz, Pão e a Crosta Sagrada",
+      "text_markdown": "Capítulo 3 — Arroz, Pão e a Crosta Sagrada"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O arroz chegou à Pérsia vindo da Índia há cerca de dois mil e quinhentos anos.",
+      "text_markdown": "O arroz chegou à Pérsia vindo da Índia há cerca de dois mil e quinhentos anos.",
+      "tts": {
+        "text": "O arroz chegou à Pérsia vindo da Índia há cerca de dois mil e quinhentos anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tornou-se o coração da mesa.",
+      "text_markdown": "Tornou-se o coração da mesa.",
+      "tts": {
+        "text": "Tornou se o coração da mesa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os Persas cozinham o arroz de duas formas.",
+      "text_markdown": "Os Persas cozinham o arroz de duas formas.",
+      "tts": {
+        "text": "Os Persas cozinham o arroz de duas formas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O arroz simples chama-se chelo.",
+      "text_markdown": "O arroz simples chama-se chelo.",
+      "tts": {
+        "text": "O arroz simples chama se chelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O arroz misturado com ervas, carne ou fruta chama-se polo.",
+      "text_markdown": "O arroz misturado com ervas, carne ou fruta chama-se polo.",
+      "tts": {
+        "text": "O arroz misturado com ervas, carne ou fruta chama se polo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ambos ficam longos, leves e soltos, cada grão no seu lugar.",
+      "text_markdown": "Ambos ficam longos, leves e soltos, cada grão no seu lugar.",
+      "tts": {
+        "text": "Ambos ficam longos, leves e soltos, cada grão no seu lugar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas a magia está no fundo da panela.",
+      "text_markdown": "Mas a magia está no fundo da panela.",
+      "tts": {
+        "text": "Mas a magia está no fundo da panela.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chama-se tahdig.",
+      "text_markdown": "Chama-se tahdig.",
+      "tts": {
+        "text": "Chama se ta dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Quem cozinha põe uma camada fina no fundo da panela — às vezes arroz com açafrão, às vezes uma rodela de batata, às vezes um pedaço de pão.",
+      "text_markdown": "Quem cozinha põe uma camada fina no fundo da panela — às vezes arroz com açafrão, às vezes uma rodela de batata, às vezes um pedaço de pão.",
+      "tts": {
+        "text": "Quem cozinha põe uma camada fina no fundo da panela, às vezes arroz com açafrão, às vezes uma rodela de batata, às vezes um pedaço de pão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Depois o arroz vai por cima.",
+      "text_markdown": "Depois o arroz vai por cima.",
+      "tts": {
+        "text": "Depois o arroz vai por cima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Depois vai a tampa, embrulhada num pano de cozinha, e o vapor faz o resto.",
+      "text_markdown": "Depois vai a tampa, embrulhada num pano de cozinha, e o vapor faz o resto.",
+      "tts": {
+        "text": "Depois vai a tampa, embrulhada num pano de cozinha, e o vapor faz o resto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ao fim de uma hora, essa camada do fundo está dourada e estaladiça.",
+      "text_markdown": "Ao fim de uma hora, essa camada do fundo está dourada e estaladiça.",
+      "tts": {
+        "text": "Ao fim de uma hora, essa camada do fundo está dourada e estaladiça.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O tahdig é sagrado.",
+      "text_markdown": "O tahdig é sagrado.",
+      "tts": {
+        "text": "O ta dig é sagrado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As famílias discutem por causa dele.",
+      "text_markdown": "As famílias discutem por causa dele.",
+      "tts": {
+        "text": "As famílias discutem por causa dele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A televisão iraniana tem programas inteiros sobre quem faz o melhor.",
+      "text_markdown": "A televisão iraniana tem programas inteiros sobre quem faz o melhor.",
+      "tts": {
+        "text": "A televisão iraniana tem programas inteiros sobre quem faz o melhor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Um tahdig perfeito sai da panela num belo disco redondo.",
+      "text_markdown": "Um tahdig perfeito sai da panela num belo disco redondo.",
+      "tts": {
+        "text": "Um ta dig perfeito sai da panela num belo disco redondo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois há o pão.",
+      "text_markdown": "Depois há o pão.",
+      "tts": {
+        "text": "Depois há o pão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O mais famoso é o sangak.",
+      "text_markdown": "O mais famoso é o sangak.",
+      "tts": {
+        "text": "O mais famoso é o san gak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O sangak coze sobre uma cama de seixos quentes, um método com cinco mil anos.",
+      "text_markdown": "O sangak coze sobre uma cama de seixos quentes, um método com cinco mil anos.",
+      "tts": {
+        "text": "O san gak coze sobre uma cama de seixos quentes, um método com cinco mil anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os seixos ainda saem no pão.",
+      "text_markdown": "Os seixos ainda saem no pão.",
+      "tts": {
+        "text": "Os seixos ainda saem no pão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tira-os à mesa.",
+      "text_markdown": "Tira-os à mesa.",
+      "tts": {
+        "text": "Tira os à mesa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outros pães são barbari, lavash e taftoon.",
+      "text_markdown": "Outros pães são barbari, lavash e taftoon.",
+      "tts": {
+        "text": "Outros pães são bar ba ri, la vash e taf tun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um pequeno-almoço persa é pão, chá e um queijo branco macio.",
+      "text_markdown": "Um pequeno-almoço persa é pão, chá e um queijo branco macio.",
+      "tts": {
+        "text": "Um pequeno almoço persa é pão, chá e um queijo branco macio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 4 — O Kebab e o Guisado Paciente",
+      "text_markdown": "Capítulo 4 — O Kebab e o Guisado Paciente"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A palavra kebab é persa.",
+      "text_markdown": "A palavra kebab é persa.",
+      "tts": {
+        "text": "A palavra kebab é persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É kabab, e quer dizer carne cozinhada sobre o fogo.",
+      "text_markdown": "É kabab, e quer dizer carne cozinhada sobre o fogo.",
+      "tts": {
+        "text": "É ca bab, e quer dizer carne cozinhada sobre o fogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os Persas cozinham borrego em espetos longos e chatos há milhares de anos.",
+      "text_markdown": "Os Persas cozinham borrego em espetos longos e chatos há milhares de anos.",
+      "tts": {
+        "text": "Os Persas cozinham borrego em espetos longos e chatos há milhares de anos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O kebab mais popular hoje é o kubideh.",
+      "text_markdown": "O kebab mais popular hoje é o kubideh.",
+      "tts": {
+        "text": "O kebab mais popular hoje é o cu bi dê.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É borrego ou vaca picados, misturados com cebola e sal, prensados num espeto largo e chato, e grelhados sobre carvão.",
+      "text_markdown": "É borrego ou vaca picados, misturados com cebola e sal, prensados num espeto largo e chato, e grelhados sobre carvão.",
+      "tts": {
+        "text": "É borrego ou vaca picados, misturados com cebola e sal, prensados num espeto largo e chato, e grelhados sobre carvão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Parece antigo.",
+      "text_markdown": "Parece antigo.",
+      "tts": {
+        "text": "Parece antigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Não é.",
+      "text_markdown": "Não é.",
+      "tts": {
+        "text": "Não é.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A máquina de picar carne só chegou ao Irão no fim do século dezenove.",
+      "text_markdown": "A máquina de picar carne só chegou ao Irão no fim do século dezenove.",
+      "tts": {
+        "text": "A máquina de picar carne só chegou ao Irão no fim do século dezenove.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "O kubideh, o mais persa dos kebabs, mal tem mais de cem anos.",
+      "text_markdown": "O kubideh, o mais persa dos kebabs, mal tem mais de cem anos.",
+      "tts": {
+        "text": "O cu bi dê, o mais persa dos kebabs, mal tem mais de cem anos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os kebabs mais antigos são feitos com carne fatiada.",
+      "text_markdown": "Os kebabs mais antigos são feitos com carne fatiada.",
+      "tts": {
+        "text": "Os kebabs mais antigos são feitos com carne fatiada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jujeh é frango em açafrão e iogurte.",
+      "text_markdown": "Jujeh é frango em açafrão e iogurte.",
+      "tts": {
+        "text": "Ju jê é frango em açafrão e iogurte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg é um filete fino de borrego.",
+      "text_markdown": "Barg é um filete fino de borrego.",
+      "tts": {
+        "text": "Barg é um filete fino de borrego.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ambos são servidos sobre uma cama de arroz com açafrão e um tomate grelhado.",
+      "text_markdown": "Ambos são servidos sobre uma cama de arroz com açafrão e um tomate grelhado.",
+      "tts": {
+        "text": "Ambos são servidos sobre uma cama de arroz com açafrão e um tomate grelhado.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Agora conheça a comida paciente: khoresh, o guisado persa.",
+      "text_markdown": "Agora conheça a comida paciente: khoresh, o guisado persa.",
+      "tts": {
+        "text": "Agora conheça a comida paciente, co rex, o guisado persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um khoresh cozinha durante horas.",
+      "text_markdown": "Um khoresh cozinha durante horas.",
+      "tts": {
+        "text": "Um co rex cozinha durante horas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O mais famoso é o fesenjan.",
+      "text_markdown": "O mais famoso é o fesenjan.",
+      "tts": {
+        "text": "O mais famoso é o fe sen jan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É galinha ou pato, cozinhados lentamente num molho espesso de nozes moídas e sumo de romã.",
+      "text_markdown": "É galinha ou pato, cozinhados lentamente num molho espesso de nozes moídas e sumo de romã.",
+      "tts": {
+        "text": "É galinha ou pato, cozinhados lentamente num molho espesso de nozes moídas e sumo de romã.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A receita é uma das receitas de guisado mais antigas já encontradas.",
+      "text_markdown": "A receita é uma das receitas de guisado mais antigas já encontradas.",
+      "tts": {
+        "text": "A receita é uma das receitas de guisado mais antigas já encontradas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uma versão dela está escrita em tábuas cuneiformes das ruínas de Persépolis.",
+      "text_markdown": "Uma versão dela está escrita em tábuas cuneiformes das ruínas de Persépolis.",
+      "tts": {
+        "text": "Uma versão dela está escrita em tábuas cuneiformes das ruínas de Persépolis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Isso dá-lhe mais de dois mil e quinhentos anos.",
+      "text_markdown": "Isso dá-lhe mais de dois mil e quinhentos anos.",
+      "tts": {
+        "text": "Isso dá lhe mais de dois mil e quinhentos anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "E as pessoas ainda o cozinham da mesma maneira.",
+      "text_markdown": "E as pessoas ainda o cozinham da mesma maneira.",
+      "tts": {
+        "text": "E as pessoas ainda o cozinham da mesma maneira.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outro clássico é o gorme sabzi: borrego, feijão vermelho e uma montanha de ervas frescas, tudo cozido com lima seca.",
+      "text_markdown": "Outro clássico é o gorme sabzi: borrego, feijão vermelho e uma montanha de ervas frescas, tudo cozido com lima seca.",
+      "tts": {
+        "text": "Outro clássico é o gor me sabzi, borrego, feijão vermelho e uma montanha de ervas frescas, tudo cozido com lima seca.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muitos iranianos chamam-lhe o prato nacional.",
+      "text_markdown": "Muitos iranianos chamam-lhe o prato nacional.",
+      "tts": {
+        "text": "Muitos iranianos chamam lhe o prato nacional.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 5 — Iogurte, Chá e os Doces Mais Antigos",
+      "text_markdown": "Capítulo 5 — Iogurte, Chá e os Doces Mais Antigos"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Os Persas comem iogurte com tudo.",
+      "text_markdown": "Os Persas comem iogurte com tudo.",
+      "tts": {
+        "text": "Os Persas comem iogurte com tudo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O iogurte simples chama-se mast.",
+      "text_markdown": "O iogurte simples chama-se mast.",
+      "tts": {
+        "text": "O iogurte simples chama se mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O mast com pepino e hortelã seca chama-se mast o khiar.",
+      "text_markdown": "O mast com pepino e hortelã seca chama-se mast o khiar.",
+      "tts": {
+        "text": "O mast com pepino e hortelã seca chama se mast o quiar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uma bebida salgada de iogurte com hortelã chama-se dugh.",
+      "text_markdown": "Uma bebida salgada de iogurte com hortelã chama-se dugh.",
+      "tts": {
+        "text": "Uma bebida salgada de iogurte com hortelã chama se dug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Também há kashk, um soro de leite seco, de sabor forte, usado em sopas.",
+      "text_markdown": "Também há kashk, um soro de leite seco, de sabor forte, usado em sopas.",
+      "tts": {
+        "text": "Também há caxque, um soro de leite seco, de sabor forte, usado em sopas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois há o chá.",
+      "text_markdown": "Depois há o chá.",
+      "tts": {
+        "text": "Depois há o chá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Persas bebem-no de manhã, ao meio-dia e à noite, bem forte, feito num bule alto sobre um samovar.",
+      "text_markdown": "Os Persas bebem-no de manhã, ao meio-dia e à noite, bem forte, feito num bule alto sobre um samovar.",
+      "tts": {
+        "text": "Os Persas bebem no de manhã, ao meio dia e à noite, bem forte, feito num bule alto sobre um samo var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O chá é tão central que surpreende saber que chegou tarde.",
+      "text_markdown": "O chá é tão central que surpreende saber que chegou tarde.",
+      "tts": {
+        "text": "O chá é tão central que surpreende saber que chegou tarde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Durante a maior parte da história persa, a bebida era café.",
+      "text_markdown": "Durante a maior parte da história persa, a bebida era café.",
+      "tts": {
+        "text": "Durante a maior parte da história persa, a bebida era café.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O chá só tomou conta de tudo no fim do século dezenove.",
+      "text_markdown": "O chá só tomou conta de tudo no fim do século dezenove.",
+      "tts": {
+        "text": "O chá só tomou conta de tudo no fim do século dezenove.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hoje, o Irão está entre os maiores consumidores de chá do mundo.",
+      "text_markdown": "Hoje, o Irão está entre os maiores consumidores de chá do mundo.",
+      "tts": {
+        "text": "Hoje, o Irão está entre os maiores consumidores de chá do mundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Há um pequeno ritual.",
+      "text_markdown": "Há um pequeno ritual.",
+      "tts": {
+        "text": "Há um pequeno ritual.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Segura-se um cubo de açúcar entre os dentes.",
+      "text_markdown": "Segura-se um cubo de açúcar entre os dentes.",
+      "tts": {
+        "text": "Segura se um cubo de açúcar entre os dentes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bebe-se o chá através do cubo.",
+      "text_markdown": "Bebe-se o chá através do cubo.",
+      "tts": {
+        "text": "Bebe se o chá através do cubo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O cubo derrete um pouco.",
+      "text_markdown": "O cubo derrete um pouco.",
+      "tts": {
+        "text": "O cubo derrete um pouco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O chá desce quente, escuro e doce.",
+      "text_markdown": "O chá desce quente, escuro e doce.",
+      "tts": {
+        "text": "O chá desce quente, escuro e doce.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Agora os doces.",
+      "text_markdown": "Agora os doces.",
+      "tts": {
+        "text": "Agora os doces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os doces persas são antigos, ricos e pequenos.",
+      "text_markdown": "Os doces persas são antigos, ricos e pequenos.",
+      "tts": {
+        "text": "Os doces persas são antigos, ricos e pequenos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O mais antigo é o faludeh.",
+      "text_markdown": "O mais antigo é o faludeh.",
+      "tts": {
+        "text": "O mais antigo é o fa lu dê.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "São fios finos de arroz, gelados em xarope de água de rosas, servidos com sumo de lima e pistácio.",
+      "text_markdown": "São fios finos de arroz, gelados em xarope de água de rosas, servidos com sumo de lima e pistácio.",
+      "tts": {
+        "text": "São fios finos de arroz, gelados em xarope de água de rosas, servidos com sumo de lima e pistácio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os escritores persas descrevem-no desde cerca de quatrocentos anos antes de Cristo.",
+      "text_markdown": "Os escritores persas descrevem-no desde cerca de quatrocentos anos antes de Cristo.",
+      "tts": {
+        "text": "Os escritores persas descrevem no desde cerca de quatrocentos anos antes de Cristo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Isso faz do faludeh uma das sobremesas geladas mais antigas do mundo.",
+      "text_markdown": "Isso faz do faludeh uma das sobremesas geladas mais antigas do mundo.",
+      "tts": {
+        "text": "Isso faz do fa lu dê uma das sobremesas geladas mais antigas do mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "É mais de dois mil anos mais antigo do que o gelado.",
+      "text_markdown": "É mais de dois mil anos mais antigo do que o gelado.",
+      "tts": {
+        "text": "É mais de dois mil anos mais antigo do que o gelado.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outros clássicos: baklava de Tabriz, mais leve do que a turca, com noz e água de rosas.",
+      "text_markdown": "Outros clássicos: baklava de Tabriz, mais leve do que a turca, com noz e água de rosas.",
+      "tts": {
+        "text": "Outros clássicos, ba cla va de Ta briz, mais leve do que a turca, com noz e água de rosas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, uma pasta densa de sésamo ou açafrão.",
+      "text_markdown": "Halva, uma pasta densa de sésamo ou açafrão.",
+      "tts": {
+        "text": "Halva, uma pasta densa de sésamo ou açafrão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz de Esfahan, um torrão macio com pistácio.",
+      "text_markdown": "Gaz de Esfahan, um torrão macio com pistácio.",
+      "tts": {
+        "text": "Gáz de Es fa han, um torrão macio com pistácio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, um caramelo quebradiço, dourado e com açafrão.",
+      "text_markdown": "Sohan, um caramelo quebradiço, dourado e com açafrão.",
+      "tts": {
+        "text": "So han, um caramelo quebradiço, dourado e com açafrão.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi de Qom, uma bolachinha de grão-de-bico.",
+      "text_markdown": "Nokhodchi de Qom, uma bolachinha de grão-de-bico.",
+      "tts": {
+        "text": "No rod chi de Com, uma bolachinha de grão de bico.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um prato pequeno de doces, uma chávena de chá, uma conversa demorada.",
+      "text_markdown": "Um prato pequeno de doces, uma chávena de chá, uma conversa demorada.",
+      "tts": {
+        "text": "Um prato pequeno de doces, uma chávena de chá, uma conversa demorada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta é uma tarde persa.",
+      "text_markdown": "Esta é uma tarde persa.",
+      "tts": {
+        "text": "Esta é uma tarde persa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 6 — O Que a Pérsia Deu, o Que a Pérsia Recebeu",
+      "text_markdown": "Capítulo 6 — O Que a Pérsia Deu, o Que a Pérsia Recebeu"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Pérsia estava no meio do mundo antigo.",
+      "text_markdown": "A Pérsia estava no meio do mundo antigo.",
+      "tts": {
+        "text": "A Pérsia estava no meio do mundo antigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As caravanas cruzavam-na.",
+      "text_markdown": "As caravanas cruzavam-na.",
+      "tts": {
+        "text": "As caravanas cruzavam na.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Impérios erguiam-se e caíam sobre ela.",
+      "text_markdown": "Impérios erguiam-se e caíam sobre ela.",
+      "tts": {
+        "text": "Impérios erguiam se e caíam sobre ela.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A comida também a cruzava, nos dois sentidos.",
+      "text_markdown": "A comida também a cruzava, nos dois sentidos.",
+      "tts": {
+        "text": "A comida também a cruzava, nos dois sentidos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olhe para as palavras.",
+      "text_markdown": "Olhe para as palavras.",
+      "tts": {
+        "text": "Olhe para as palavras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O inglês tomou do persa dezenas de palavras ligadas à comida.",
+      "text_markdown": "O inglês tomou do persa dezenas de palavras ligadas à comida.",
+      "tts": {
+        "text": "O inglês tomou do persa dezenas de palavras ligadas à comida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Açúcar, rebuçado, limão, laranja, jasmim, lilás, tulipa, quiosque, sorvete e paraíso têm origem persa.",
+      "text_markdown": "Açúcar, rebuçado, limão, laranja, jasmim, lilás, tulipa, quiosque, sorvete e paraíso têm origem persa.",
+      "tts": {
+        "text": "Açúcar, rebuçado, limão, laranja, jasmim, lilás, tulipa, quiosque, sorvete e paraíso têm origem persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Também a palavra xeque-mate, de xá mat, \"o rei está indefeso\". A Pérsia pôs palavras na boca de metade do mundo.",
+      "text_markdown": "Também a palavra xeque-mate, de xá mat, \"o rei está indefeso\". A Pérsia pôs palavras na boca de metade do mundo.",
+      "tts": {
+        "text": "Também a palavra xeque mate, de xá mat, o rei está indefeso. A Pérsia pôs palavras na boca de metade do mundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cozinha persa do arroz foi para leste.",
+      "text_markdown": "A cozinha persa do arroz foi para leste.",
+      "tts": {
+        "text": "A cozinha persa do arroz foi para leste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os reis mogóis da Índia adoravam comida persa e levaram cozinheiros persas para a corte.",
+      "text_markdown": "Os reis mogóis da Índia adoravam comida persa e levaram cozinheiros persas para a corte.",
+      "tts": {
+        "text": "Os reis mogóis da Índia adoravam comida persa e levaram cozinheiros persas para a corte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esses cozinheiros fizeram biryani.",
+      "text_markdown": "Esses cozinheiros fizeram biryani.",
+      "tts": {
+        "text": "Esses cozinheiros fizeram bi ri a ni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O pilaf, esse prato de arroz longo e temperado, do Mediterrâneo às estepes da Ásia Central, tem raízes na tradição persa do arroz.",
+      "text_markdown": "O pilaf, esse prato de arroz longo e temperado, do Mediterrâneo às estepes da Ásia Central, tem raízes na tradição persa do arroz.",
+      "tts": {
+        "text": "O pi laf, esse prato de arroz longo e temperado, do Mediterrâneo às estepes da Ásia Central, tem raízes na tradição persa do arroz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As frutas persas foram para oeste.",
+      "text_markdown": "As frutas persas foram para oeste.",
+      "tts": {
+        "text": "As frutas persas foram para oeste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Romanos cultivaram o pêssego em Itália porque o receberam da Pérsia.",
+      "text_markdown": "Os Romanos cultivaram o pêssego em Itália porque o receberam da Pérsia.",
+      "tts": {
+        "text": "Os Romanos cultivaram o pêssego em Itália porque o receberam da Pérsia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O espinafre chegou à Europa pela Espanha, levado por mercadores do mundo persa.",
+      "text_markdown": "O espinafre chegou à Europa pela Espanha, levado por mercadores do mundo persa.",
+      "tts": {
+        "text": "O espinafre chegou à Europa pela Espanha, levado por mercadores do mundo persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "As tulipas, símbolo dos Países Baixos, foram primeiro cultivadas na Pérsia e na Turquia antes de chegarem à Holanda.",
+      "text_markdown": "As tulipas, símbolo dos Países Baixos, foram primeiro cultivadas na Pérsia e na Turquia antes de chegarem à Holanda.",
+      "tts": {
+        "text": "As tulipas, símbolo dos Países Baixos, foram primeiro cultivadas na Pérsia e na Turquia antes de chegarem à Holanda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Pérsia também recebia coisas.",
+      "text_markdown": "A Pérsia também recebia coisas.",
+      "tts": {
+        "text": "A Pérsia também recebia coisas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Mongóis, que invadiram no século treze, trouxeram um gosto mais forte por carne grelhada e assada.",
+      "text_markdown": "Os Mongóis, que invadiram no século treze, trouxeram um gosto mais forte por carne grelhada e assada.",
+      "tts": {
+        "text": "Os Mongóis, que invadiram no século treze, trouxeram um gosto mais forte por carne grelhada e assada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A agricultura árabe trouxe cana-de-açúcar, citrinos e arroz do sul e do leste.",
+      "text_markdown": "A agricultura árabe trouxe cana-de-açúcar, citrinos e arroz do sul e do leste.",
+      "tts": {
+        "text": "A agricultura árabe trouxe cana de açúcar, citrinos e arroz do sul e do leste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "O samovar veio do norte, da Rússia, no século dezoito.",
+      "text_markdown": "O samovar veio do norte, da Rússia, no século dezoito.",
+      "tts": {
+        "text": "O samo var veio do norte, da Rússia, no século dezoito.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O historiador grego Heródoto, a escrever há dois mil e quinhentos anos, disse que os Persas celebravam os aniversários com mais luxo do que qualquer outro dia do ano.",
+      "text_markdown": "O historiador grego Heródoto, a escrever há dois mil e quinhentos anos, disse que os Persas celebravam os aniversários com mais luxo do que qualquer outro dia do ano.",
+      "tts": {
+        "text": "O historiador grego Heródoto, a escrever há dois mil e quinhentos anos, disse que os Persas celebravam os aniversários com mais luxo do que qualquer outro dia do ano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nesse dia, escreveu ele, a mesa é posta com mais abundância do que de costume.",
+      "text_markdown": "Nesse dia, escreveu ele, a mesa é posta com mais abundância do que de costume.",
+      "tts": {
+        "text": "Nesse dia, escreveu ele, a mesa é posta com mais abundância do que de costume.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Algumas coisas não mudaram.",
+      "text_markdown": "Algumas coisas não mudaram.",
+      "tts": {
+        "text": "Algumas coisas não mudaram.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 7 — À Mesa Persa",
+      "text_markdown": "Capítulo 7 — À Mesa Persa"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Agora sentamo-nos.",
+      "text_markdown": "Agora sentamo-nos.",
+      "tts": {
+        "text": "Agora sentamo nos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ano persa começa no equinócio da primavera, por volta de vinte e um de março.",
+      "text_markdown": "O ano persa começa no equinócio da primavera, por volta de vinte e um de março.",
+      "tts": {
+        "text": "O ano persa começa no equinócio da primavera, por volta de vinte e um de março.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O festival chama-se Nowruz, o Novo Dia.",
+      "text_markdown": "O festival chama-se Nowruz, o Novo Dia.",
+      "tts": {
+        "text": "O festival chama se Nou ruz, o Novo Dia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É o feriado mais importante do ano.",
+      "text_markdown": "É o feriado mais importante do ano.",
+      "tts": {
+        "text": "É o feriado mais importante do ano.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada família põe uma mesa especial chamada haft-sin.",
+      "text_markdown": "Cada família põe uma mesa especial chamada haft-sin.",
+      "tts": {
+        "text": "Cada família põe uma mesa especial chamada haft sin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft quer dizer sete.",
+      "text_markdown": "Haft quer dizer sete.",
+      "tts": {
+        "text": "Haft quer dizer sete.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin é a letra S. A mesa tem sete coisas que começam por S em persa.",
+      "text_markdown": "Sin é a letra S. A mesa tem sete coisas que começam por S em persa.",
+      "tts": {
+        "text": "Sin é a letra S. A mesa tem sete coisas que começam por S em persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Há sib, uma maçã.",
+      "text_markdown": "Há sib, uma maçã.",
+      "tts": {
+        "text": "Há sib, uma maçã.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, uma moeda.",
+      "text_markdown": "Sekkeh, uma moeda.",
+      "tts": {
+        "text": "Se ke, uma moeda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, uma flor de jacinto.",
+      "text_markdown": "Sonbol, uma flor de jacinto.",
+      "tts": {
+        "text": "Son bol, uma flor de jacinto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, um pudim doce de trigo.",
+      "text_markdown": "Samanu, um pudim doce de trigo.",
+      "tts": {
+        "text": "Sa ma nu, um pudim doce de trigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, o fruto seco do oleastro.",
+      "text_markdown": "Senjed, o fruto seco do oleastro.",
+      "tts": {
+        "text": "Sen jed, o fruto seco do oleastro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumagre.",
+      "text_markdown": "Somagh, sumagre.",
+      "tts": {
+        "text": "So mag, sumagre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, vinagre.",
+      "text_markdown": "Serkeh, vinagre.",
+      "tts": {
+        "text": "Ser ke, vinagre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Cada uma representa alguma coisa — saúde, riqueza, beleza, paciência, amor, o sol a nascer, a passagem do tempo.",
+      "text_markdown": "Cada uma representa alguma coisa — saúde, riqueza, beleza, paciência, amor, o sol a nascer, a passagem do tempo.",
+      "tts": {
+        "text": "Cada uma representa alguma coisa, saúde, riqueza, beleza, paciência, amor, o sol a nascer, a passagem do tempo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A refeição do ano novo é sabzi polo com mahi.",
+      "text_markdown": "A refeição do ano novo é sabzi polo com mahi.",
+      "tts": {
+        "text": "A refeição do ano novo é sabzi po lo com ma hi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É arroz, verde escuro de ervas frescas picadas, servido com peixe branco.",
+      "text_markdown": "É arroz, verde escuro de ervas frescas picadas, servido com peixe branco.",
+      "tts": {
+        "text": "É arroz, verde escuro de ervas frescas picadas, servido com peixe branco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Primavera num prato.",
+      "text_markdown": "Primavera num prato.",
+      "tts": {
+        "text": "Primavera num prato.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Outro clássico é ash reshteh, uma sopa espessa de feijão, ervas, cebola frita, kashk e massa.",
+      "text_markdown": "Outro clássico é ash reshteh, uma sopa espessa de feijão, ervas, cebola frita, kashk e massa.",
+      "tts": {
+        "text": "Outro clássico é ax rex te, uma sopa espessa de feijão, ervas, cebola frita, caxque e massa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os Persas dizem que se deve comer antes de uma decisão difícil.",
+      "text_markdown": "Os Persas dizem que se deve comer antes de uma decisão difícil.",
+      "tts": {
+        "text": "Os Persas dizem que se deve comer antes de uma decisão difícil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dizem que a massa desembaraça os fios do destino.",
+      "text_markdown": "Dizem que a massa desembaraça os fios do destino.",
+      "tts": {
+        "text": "Dizem que a massa desembaraça os fios do destino.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A casa de chá também é uma invenção persa.",
+      "text_markdown": "A casa de chá também é uma invenção persa.",
+      "tts": {
+        "text": "A casa de chá também é uma invenção persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chama-se qahveh-khaneh, literalmente casa do café, embora agora a bebida seja chá.",
+      "text_markdown": "Chama-se qahveh-khaneh, literalmente casa do café, embora agora a bebida seja chá.",
+      "tts": {
+        "text": "Chama se ca vê ha nê, literalmente casa do café, embora agora a bebida seja chá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Há quinhentos anos, homens e mulheres reúnem-se ali para jogar gamão, ouvir poesia e discutir o mundo.",
+      "text_markdown": "Há quinhentos anos, homens e mulheres reúnem-se ali para jogar gamão, ouvir poesia e discutir o mundo.",
+      "tts": {
+        "text": "Há quinhentos anos, homens e mulheres reúnem se ali para jogar gamão, ouvir poesia e discutir o mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muitas grandes histórias persas foram contadas primeiro sobre um copo fumegante.",
+      "text_markdown": "Muitas grandes histórias persas foram contadas primeiro sobre um copo fumegante.",
+      "tts": {
+        "text": "Muitas grandes histórias persas foram contadas primeiro sobre um copo fumegante.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um famoso médico persa, Avicena, que viveu há mil anos, ensinava que cada alimento é quente ou frio.",
+      "text_markdown": "Um famoso médico persa, Avicena, que viveu há mil anos, ensinava que cada alimento é quente ou frio.",
+      "tts": {
+        "text": "Um famoso médico persa, A vi se na, que viveu há mil anos, ensinava que cada alimento é quente ou frio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O açafrão, as nozes e o borrego são quentes.",
+      "text_markdown": "O açafrão, as nozes e o borrego são quentes.",
+      "tts": {
+        "text": "O açafrão, as nozes e o borrego são quentes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O iogurte, o pepino e a melancia são frios.",
+      "text_markdown": "O iogurte, o pepino e a melancia são frios.",
+      "tts": {
+        "text": "O iogurte, o pepino e a melancia são frios.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uma boa refeição equilibra-os.",
+      "text_markdown": "Uma boa refeição equilibra-os.",
+      "tts": {
+        "text": "Uma boa refeição equilibra os.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Em muitas casas persas, essa ideia ainda vive ao almoço.",
+      "text_markdown": "Em muitas casas persas, essa ideia ainda vive ao almoço.",
+      "tts": {
+        "text": "Em muitas casas persas, essa ideia ainda vive ao almoço.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A comida persa é paciente.",
+      "text_markdown": "A comida persa é paciente.",
+      "tts": {
+        "text": "A comida persa é paciente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É generosa.",
+      "text_markdown": "É generosa.",
+      "tts": {
+        "text": "É generosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É antiga.",
+      "text_markdown": "É antiga.",
+      "tts": {
+        "text": "É antiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "E ainda hoje é cozinhada, todos os dias, em milhões de fogões.",
+      "text_markdown": "E ainda hoje é cozinhada, todos os dias, em milhões de fogões.",
+      "tts": {
+        "text": "E ainda hoje é cozinhada, todos os dias, em milhões de fogões.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Adeus",
+      "text_markdown": "Adeus"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é o fim da nossa pequena viagem.",
+      "text_markdown": "Este é o fim da nossa pequena viagem.",
+      "tts": {
+        "text": "Este é o fim da nossa pequena viagem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Espero que tenhas aprendido alguma coisa.",
+      "text_markdown": "Espero que tenhas aprendido alguma coisa.",
+      "tts": {
+        "text": "Espero que tenhas aprendido alguma coisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Espero que alguma coisa nestas páginas te tenha dado fome.",
+      "text_markdown": "Espero que alguma coisa nestas páginas te tenha dado fome.",
+      "tts": {
+        "text": "Espero que alguma coisa nestas páginas te tenha dado fome.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Açafrão e arroz.",
+      "text_markdown": "Açafrão e arroz.",
+      "tts": {
+        "text": "Açafrão e arroz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Romã e noz.",
+      "text_markdown": "Romã e noz.",
+      "tts": {
+        "text": "Romã e noz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Um doce pequeno num prato pequeno.",
+      "text_markdown": "Um doce pequeno num prato pequeno.",
+      "tts": {
+        "text": "Um doce pequeno num prato pequeno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se puderes, encontra um restaurante persa perto de ti.",
+      "text_markdown": "Se puderes, encontra um restaurante persa perto de ti.",
+      "tts": {
+        "text": "Se puderes, encontra um restaurante persa perto de ti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ou abre um livro de receitas persa.",
+      "text_markdown": "Ou abre um livro de receitas persa.",
+      "tts": {
+        "text": "Ou abre um livro de receitas persa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prova um guisado.",
+      "text_markdown": "Prova um guisado.",
+      "tts": {
+        "text": "Prova um guisado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Prova uma chávena de chá.",
+      "text_markdown": "Prova uma chávena de chá.",
+      "tts": {
+        "text": "Prova uma chávena de chá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A comida tem estado à tua espera há milhares de anos.",
+      "text_markdown": "A comida tem estado à tua espera há milhares de anos.",
+      "tts": {
+        "text": "A comida tem estado à tua espera há milhares de anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Também pode esperar por ti.",
+      "text_markdown": "Também pode esperar por ti.",
+      "tts": {
+        "text": "Também pode esperar por ti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Obrigada por ouvires.",
+      "text_markdown": "Obrigada por ouvires.",
+      "tts": {
+        "text": "Obrigada por ouvires.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cozinha alguma coisa.",
+      "text_markdown": "Cozinha alguma coisa.",
+      "tts": {
+        "text": "Cozinha alguma coisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Come com outras pessoas.",
+      "text_markdown": "Come com outras pessoas.",
+      "tts": {
+        "text": "Come com outras pessoas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eu sou a Kym.",
+      "text_markdown": "Eu sou a Kym.",
+      "tts": {
+        "text": "Eu sou a Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adeus.",
+      "text_markdown": "Adeus.",
+      "tts": {
+        "text": "Adeus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 220,
+  "version": "2.0.0"
+}

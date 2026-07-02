@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Il bioma mediterraneo",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il bioma mediterraneo",
+      "text_markdown": "Il bioma mediterraneo"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dove cresce questo bioma",
+      "text_markdown": "Dove cresce questo bioma"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benvenuti nel bioma mediterraneo.",
+      "text_markdown": "Benvenuti nel bioma mediterraneo.",
+      "tts": {
+        "text": "Benvenuti nel bioma mediterraneo.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "È uno dei grandi biomi del mondo.",
+      "text_markdown": "È uno dei grandi biomi del mondo.",
+      "tts": {
+        "text": "È uno dei grandi biomi del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma è una parte della Terra con un proprio tipo di clima, piante e animali.",
+      "text_markdown": "Un bioma è una parte della Terra con un proprio tipo di clima, piante e animali.",
+      "tts": {
+        "text": "Un bioma è una parte della Terra con un proprio tipo di clima, piante e animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bioma mediterraneo prende il nome dalle terre che circondano il mar Mediterraneo.",
+      "text_markdown": "Il bioma mediterraneo prende il nome dalle terre che circondano il mar Mediterraneo.",
+      "tts": {
+        "text": "Il bioma mediterraneo prende il nome dalle terre che circondano il mar Mediterraneo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma non cresce soltanto lì.",
+      "text_markdown": "Ma non cresce soltanto lì.",
+      "tts": {
+        "text": "Ma non cresce soltanto lì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bioma mediterraneo compare in cinque piccole zone del mondo.",
+      "text_markdown": "Il bioma mediterraneo compare in cinque piccole zone del mondo.",
+      "tts": {
+        "text": "Il bioma mediterraneo compare in cinque piccole zone del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cresce nelle terre intorno al mar Mediterraneo, nell'Europa meridionale e lungo le coste del Nord Africa.",
+      "text_markdown": "Cresce nelle terre intorno al mar Mediterraneo, nell'Europa meridionale e lungo le coste del Nord Africa.",
+      "tts": {
+        "text": "Cresce nelle terre intorno al mar Mediterraneo, nell'Europa meridionale e lungo le coste del Nord Africa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cresce in California, nella parte occidentale dell'America del Nord.",
+      "text_markdown": "Cresce in California, nella parte occidentale dell'America del Nord.",
+      "tts": {
+        "text": "Cresce in California, nella parte occidentale dell'America del Nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cresce lungo la fascia centrale della costa del Cile, in America del Sud.",
+      "text_markdown": "Cresce lungo la fascia centrale della costa del Cile, in America del Sud.",
+      "tts": {
+        "text": "Cresce lungo la fascia centrale della costa del Cile, in America del Sud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cresce vicino alla punta meridionale dell'Africa, intorno al Capo.",
+      "text_markdown": "Cresce vicino alla punta meridionale dell'Africa, intorno al Capo.",
+      "tts": {
+        "text": "Cresce vicino alla punta meridionale dell'Africa, intorno al Capo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cresce nelle regioni sud-occidentali e meridionali dell'Australia.",
+      "text_markdown": "Cresce nelle regioni sud-occidentali e meridionali dell'Australia.",
+      "tts": {
+        "text": "Cresce nelle regioni sud occidentali e meridionali dell'Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuno di questi luoghi è lontano dagli altri.",
+      "text_markdown": "Ognuno di questi luoghi è lontano dagli altri.",
+      "tts": {
+        "text": "Ognuno di questi luoghi è lontano dagli altri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma condividono tutti lo stesso clima particolare.",
+      "text_markdown": "Ma condividono tutti lo stesso clima particolare.",
+      "tts": {
+        "text": "Ma condividono tutti lo stesso clima particolare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le estati sono calde e secche, e gli inverni sono miti e umidi.",
+      "text_markdown": "Le estati sono calde e secche, e gli inverni sono miti e umidi.",
+      "tts": {
+        "text": "Le estati sono calde e secche, e gli inverni sono miti e umidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "È una cosa rara sulla Terra.",
+      "text_markdown": "È una cosa rara sulla Terra.",
+      "tts": {
+        "text": "È una cosa rara sulla Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella maggior parte dei biomi la stagione delle piogge cade nei mesi caldi.",
+      "text_markdown": "Nella maggior parte dei biomi la stagione delle piogge cade nei mesi caldi.",
+      "tts": {
+        "text": "Nella maggior parte dei biomi la stagione delle piogge cade nei mesi caldi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qui, invece, la pioggia cade nei mesi freschi.",
+      "text_markdown": "Qui, invece, la pioggia cade nei mesi freschi.",
+      "tts": {
+        "text": "Qui, invece, la pioggia cade nei mesi freschi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuno di questi cinque luoghi ha le proprie piante e i propri animali.",
+      "text_markdown": "Ognuno di questi cinque luoghi ha le proprie piante e i propri animali.",
+      "tts": {
+        "text": "Ognuno di questi cinque luoghi ha le proprie piante e i propri animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma le forme sono le stesse.",
+      "text_markdown": "Ma le forme sono le stesse.",
+      "tts": {
+        "text": "Ma le forme sono le stesse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arbusti bassi e coriacei, alberi sparsi, erbe aromatiche profumate e colline rocciose e spoglie.",
+      "text_markdown": "Arbusti bassi e coriacei, alberi sparsi, erbe aromatiche profumate e colline rocciose e spoglie.",
+      "tts": {
+        "text": "Arbusti bassi e coriacei, alberi sparsi, erbe aromatiche profumate e colline rocciose e spoglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando ti trovi in una terra mediterranea d'estate, l'aria sa di erbe aromatiche secche e di pietra calda.",
+      "text_markdown": "Quando ti trovi in una terra mediterranea d'estate, l'aria sa di erbe aromatiche secche e di pietra calda.",
+      "tts": {
+        "text": "Quando ti trovi in una terra mediterranea d'estate, l'aria sa di erbe aromatiche secche e di pietra calda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La luce è forte e dorata.",
+      "text_markdown": "La luce è forte e dorata.",
+      "tts": {
+        "text": "La luce è forte e dorata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le colline sono punteggiate di cespugli bassi color verde argento.",
+      "text_markdown": "Le colline sono punteggiate di cespugli bassi color verde argento.",
+      "tts": {
+        "text": "Le colline sono punteggiate di cespugli bassi color verde argento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo è il bioma mediterraneo.",
+      "text_markdown": "Questo è il bioma mediterraneo.",
+      "tts": {
+        "text": "Questo è il bioma mediterraneo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Dove cresce questo bioma",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo luminoso, secco e profumato che cresce in cinque piccoli angoli della Terra.",
+      "text_markdown": "Un mondo luminoso, secco e profumato che cresce in cinque piccoli angoli della Terra.",
+      "tts": {
+        "text": "Un mondo luminoso, secco e profumato che cresce in cinque piccoli angoli della Terra.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il clima",
+      "text_markdown": "Il clima"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il clima del bioma mediterraneo è insolito.",
+      "text_markdown": "Il clima del bioma mediterraneo è insolito.",
+      "tts": {
+        "text": "Il clima del bioma mediterraneo è insolito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono due stagioni ben distinte.",
+      "text_markdown": "Ci sono due stagioni ben distinte.",
+      "tts": {
+        "text": "Ci sono due stagioni ben distinte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'è una lunga estate calda e asciutta.",
+      "text_markdown": "C'è una lunga estate calda e asciutta.",
+      "tts": {
+        "text": "C'è una lunga estate calda e asciutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'è un inverno più breve, mite e piovoso.",
+      "text_markdown": "C'è un inverno più breve, mite e piovoso.",
+      "tts": {
+        "text": "C'è un inverno più breve, mite e piovoso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "D'estate il cielo resta azzurro per settimane intere.",
+      "text_markdown": "D'estate il cielo resta azzurro per settimane intere.",
+      "tts": {
+        "text": "D'estate il cielo resta azzurro per settimane intere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il sole è forte e l'aria è secca.",
+      "text_markdown": "Il sole è forte e l'aria è secca.",
+      "tts": {
+        "text": "Il sole è forte e l'aria è secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per molti mesi non cade quasi pioggia.",
+      "text_markdown": "Per molti mesi non cade quasi pioggia.",
+      "tts": {
+        "text": "Per molti mesi non cade quasi pioggia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alla fine dell'estate l'erba è bruna e i torrenti si riducono a pochi pozzi silenziosi.",
+      "text_markdown": "Alla fine dell'estate l'erba è bruna e i torrenti si riducono a pochi pozzi silenziosi.",
+      "tts": {
+        "text": "Alla fine dell'estate l'erba è bruna e i torrenti si riducono a pochi pozzi silenziosi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno arrivano dal mare i primi venti freschi.",
+      "text_markdown": "In autunno arrivano dal mare i primi venti freschi.",
+      "tts": {
+        "text": "In autunno arrivano dal mare i primi venti freschi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le nuvole si addensano e le prime piogge intense cadono sulla terra arida.",
+      "text_markdown": "Le nuvole si addensano e le prime piogge intense cadono sulla terra arida.",
+      "tts": {
+        "text": "Le nuvole si addensano e le prime piogge intense cadono sulla terra arida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La terra beve l'acqua e l'erba torna verde.",
+      "text_markdown": "La terra beve l'acqua e l'erba torna verde.",
+      "tts": {
+        "text": "La terra beve l'acqua e l'erba torna verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli inverni non sono molto freddi.",
+      "text_markdown": "Gli inverni non sono molto freddi.",
+      "tts": {
+        "text": "Gli inverni non sono molto freddi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nevica raramente, tranne in alta montagna.",
+      "text_markdown": "Nevica raramente, tranne in alta montagna.",
+      "tts": {
+        "text": "Nevica raramente, tranne in alta montagna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pioggia cade in lunghi e leggeri rovesci e i fiumi scorrono pieni.",
+      "text_markdown": "La pioggia cade in lunghi e leggeri rovesci e i fiumi scorrono pieni.",
+      "tts": {
+        "text": "La pioggia cade in lunghi e leggeri rovesci e i fiumi scorrono pieni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In primavera l'aria è tiepida e le colline sono verdi.",
+      "text_markdown": "In primavera l'aria è tiepida e le colline sono verdi.",
+      "tts": {
+        "text": "In primavera l'aria è tiepida e le colline sono verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per poche brevi settimane i fiori di campo coprono ogni pendio.",
+      "text_markdown": "Per poche brevi settimane i fiori di campo coprono ogni pendio.",
+      "tts": {
+        "text": "Per poche brevi settimane i fiori di campo coprono ogni pendio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poi ricomincia l'estate e il ciclo riparte.",
+      "text_markdown": "Poi ricomincia l'estate e il ciclo riparte.",
+      "tts": {
+        "text": "Poi ricomincia l'estate e il ciclo riparte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche il fuoco fa parte di questo bioma.",
+      "text_markdown": "Anche il fuoco fa parte di questo bioma.",
+      "tts": {
+        "text": "Anche il fuoco fa parte di questo bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella lunga estate asciutta un fulmine o una scintilla incauta possono incendiare la sterpaglia secca.",
+      "text_markdown": "Nella lunga estate asciutta un fulmine o una scintilla incauta possono incendiare la sterpaglia secca.",
+      "tts": {
+        "text": "Nella lunga estate asciutta un fulmine o una scintilla incauta possono incendiare la sterpaglia secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molte delle piante di qui hanno imparato a convivere con il fuoco e a ricrescere in fretta quando passa.",
+      "text_markdown": "Molte delle piante di qui hanno imparato a convivere con il fuoco e a ricrescere in fretta quando passa.",
+      "tts": {
+        "text": "Molte delle piante di qui hanno imparato a convivere con il fuoco e a ricrescere in fretta quando passa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terra e l'acqua",
+      "text_markdown": "La terra e l'acqua"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il territorio del bioma mediterraneo è spesso collinare.",
+      "text_markdown": "Il territorio del bioma mediterraneo è spesso collinare.",
+      "tts": {
+        "text": "Il territorio del bioma mediterraneo è spesso collinare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molte di queste regioni le montagne si innalzano vicino alla costa.",
+      "text_markdown": "In molte di queste regioni le montagne si innalzano vicino alla costa.",
+      "tts": {
+        "text": "In molte di queste regioni le montagne si innalzano vicino alla costa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pendii sono rocciosi e il terreno è spesso sottile.",
+      "text_markdown": "I pendii sono rocciosi e il terreno è spesso sottile.",
+      "tts": {
+        "text": "I pendii sono rocciosi e il terreno è spesso sottile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I mari e gli oceani vicini modellano il clima.",
+      "text_markdown": "I mari e gli oceani vicini modellano il clima.",
+      "tts": {
+        "text": "I mari e gli oceani vicini modellano il clima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'acqua fresca impedisce alle estati di diventare calde come un deserto e agli inverni di diventare freddi come nelle terre più interne.",
+      "text_markdown": "L'acqua fresca impedisce alle estati di diventare calde come un deserto e agli inverni di diventare freddi come nelle terre più interne.",
+      "tts": {
+        "text": "L'acqua fresca impedisce alle estati di diventare calde come un deserto e agli inverni di diventare freddi come nelle terre più interne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qui l'acqua è preziosa.",
+      "text_markdown": "Qui l'acqua è preziosa.",
+      "tts": {
+        "text": "Qui l'acqua è preziosa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte dei fiumi si riduce a un filo d'acqua alla fine dell'estate.",
+      "text_markdown": "La maggior parte dei fiumi si riduce a un filo d'acqua alla fine dell'estate.",
+      "tts": {
+        "text": "La maggior parte dei fiumi si riduce a un filo d'acqua alla fine dell'estate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni torrenti più piccoli scompaiono del tutto.",
+      "text_markdown": "Alcuni torrenti più piccoli scompaiono del tutto.",
+      "tts": {
+        "text": "Alcuni torrenti più piccoli scompaiono del tutto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando tornano le piogge invernali, i fiumi si riempiono rapidamente e scendono impetuosi dalle colline verso il mare.",
+      "text_markdown": "Quando tornano le piogge invernali, i fiumi si riempiono rapidamente e scendono impetuosi dalle colline verso il mare.",
+      "tts": {
+        "text": "Quando tornano le piogge invernali, i fiumi si riempiono rapidamente e scendono impetuosi dalle colline verso il mare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In certi luoghi l'acqua sotterranea profonda riaffiora e forma una sorgente.",
+      "text_markdown": "In certi luoghi l'acqua sotterranea profonda riaffiora e forma una sorgente.",
+      "tts": {
+        "text": "In certi luoghi l'acqua sotterranea profonda riaffiora e forma una sorgente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una sorgente è una piccola pozza d'acqua dolce che sgorga dalla roccia tutto l'anno.",
+      "text_markdown": "Una sorgente è una piccola pozza d'acqua dolce che sgorga dalla roccia tutto l'anno.",
+      "tts": {
+        "text": "Una sorgente è una piccola pozza d'acqua dolce che sgorga dalla roccia tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da migliaia di anni persone, animali e alberi si radunano attorno a queste sorgenti.",
+      "text_markdown": "Da migliaia di anni persone, animali e alberi si radunano attorno a queste sorgenti.",
+      "tts": {
+        "text": "Da migliaia di anni persone, animali e alberi si radunano attorno a queste sorgenti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lungo la costa, la terra incontra il mare in scogliere, spiagge e piccole baie.",
+      "text_markdown": "Lungo la costa, la terra incontra il mare in scogliere, spiagge e piccole baie.",
+      "tts": {
+        "text": "Lungo la costa, la terra incontra il mare in scogliere, spiagge e piccole baie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mare è pieno di vita.",
+      "text_markdown": "Il mare è pieno di vita.",
+      "tts": {
+        "text": "Il mare è pieno di vita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pesci, polpi e uccelli marini trovano cibo nell'acqua calda e salata.",
+      "text_markdown": "Pesci, polpi e uccelli marini trovano cibo nell'acqua calda e salata.",
+      "tts": {
+        "text": "Pesci, polpi e uccelli marini trovano cibo nell'acqua calda e salata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bioma vive tra la terra, il mare e il lungo cielo azzurro dell'estate.",
+      "text_markdown": "Il bioma vive tra la terra, il mare e il lungo cielo azzurro dell'estate.",
+      "tts": {
+        "text": "Il bioma vive tra la terra, il mare e il lungo cielo azzurro dell'estate.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le piante",
+      "text_markdown": "Le piante"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le piante del bioma mediterraneo sono resistenti e ingegnose.",
+      "text_markdown": "Le piante del bioma mediterraneo sono resistenti e ingegnose.",
+      "tts": {
+        "text": "Le piante del bioma mediterraneo sono resistenti e ingegnose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hanno imparato a sopravvivere a una lunga estate asciutta.",
+      "text_markdown": "Hanno imparato a sopravvivere a una lunga estate asciutta.",
+      "tts": {
+        "text": "Hanno imparato a sopravvivere a una lunga estate asciutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte di esse non è alta.",
+      "text_markdown": "La maggior parte di esse non è alta.",
+      "tts": {
+        "text": "La maggior parte di esse non è alta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Crescono come arbusti bassi, con foglie spesse e coriacee.",
+      "text_markdown": "Crescono come arbusti bassi, con foglie spesse e coriacee.",
+      "tts": {
+        "text": "Crescono come arbusti bassi, con foglie spesse e coriacee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foglie sono piccole e lucide, a volte argentee o verde-grigio.",
+      "text_markdown": "Le foglie sono piccole e lucide, a volte argentee o verde-grigio.",
+      "tts": {
+        "text": "Le foglie sono piccole e lucide, a volte argentee o verde grigio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una foglia piccola e lucida perde meno acqua al sole.",
+      "text_markdown": "Una foglia piccola e lucida perde meno acqua al sole.",
+      "tts": {
+        "text": "Una foglia piccola e lucida perde meno acqua al sole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una foglia chiara riflette via più luce solare.",
+      "text_markdown": "Una foglia chiara riflette via più luce solare.",
+      "tts": {
+        "text": "Una foglia chiara riflette via più luce solare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molte piante emanano un profumo intenso e dolce quando le sfiori.",
+      "text_markdown": "Molte piante emanano un profumo intenso e dolce quando le sfiori.",
+      "tts": {
+        "text": "Molte piante emanano un profumo intenso e dolce quando le sfiori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quel profumo viene dagli oli contenuti nelle foglie.",
+      "text_markdown": "Quel profumo viene dagli oli contenuti nelle foglie.",
+      "tts": {
+        "text": "Quel profumo viene dagli oli contenuti nelle foglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli oli rallentano la perdita d'acqua e aiutano la pianta a sopportare il caldo.",
+      "text_markdown": "Gli oli rallentano la perdita d'acqua e aiutano la pianta a sopportare il caldo.",
+      "tts": {
+        "text": "Gli oli rallentano la perdita d'acqua e aiutano la pianta a sopportare il caldo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ecco perché tante delle nostre erbe aromatiche preferite in cucina vengono da queste terre.",
+      "text_markdown": "Ecco perché tante delle nostre erbe aromatiche preferite in cucina vengono da queste terre.",
+      "tts": {
+        "text": "Ecco perché tante delle nostre erbe aromatiche preferite in cucina vengono da queste terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piante come rosmarino, salvia, timo, lavanda, menta e origano crescono spontanee nel bioma mediterraneo.",
+      "text_markdown": "Piante come rosmarino, salvia, timo, lavanda, menta e origano crescono spontanee nel bioma mediterraneo.",
+      "tts": {
+        "text": "Piante come rosmarino, salvia, timo, lavanda, menta e origano crescono spontanee nel bioma mediterraneo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'albero più famoso di questo bioma è l'olivo.",
+      "text_markdown": "L'albero più famoso di questo bioma è l'olivo.",
+      "tts": {
+        "text": "L'albero più famoso di questo bioma è l'olivo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un olivo ha un tronco spesso e contorto e foglie piccole color grigio-argento.",
+      "text_markdown": "Un olivo ha un tronco spesso e contorto e foglie piccole color grigio-argento.",
+      "tts": {
+        "text": "Un olivo ha un tronco spesso e contorto e foglie piccole color grigio argento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni olivi vivono per più di mille anni.",
+      "text_markdown": "Alcuni olivi vivono per più di mille anni.",
+      "tts": {
+        "text": "Alcuni olivi vivono per più di mille anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altri alberi comuni sono querce sempreverdi basse, pini e sughere.",
+      "text_markdown": "Altri alberi comuni sono querce sempreverdi basse, pini e sughere.",
+      "tts": {
+        "text": "Altri alberi comuni sono querce sempreverdi basse, pini e sughere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche la vite selvatica ha avuto origine in queste terre, arrampicandosi tra i cespugli.",
+      "text_markdown": "Anche la vite selvatica ha avuto origine in queste terre, arrampicandosi tra i cespugli.",
+      "tts": {
+        "text": "Anche la vite selvatica ha avuto origine in queste terre, arrampicandosi tra i cespugli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lungo la costa puoi trovare folti boschetti di bambù, fichi e mandorli.",
+      "text_markdown": "Lungo la costa puoi trovare folti boschetti di bambù, fichi e mandorli.",
+      "tts": {
+        "text": "Lungo la costa puoi trovare folti boschetti di bambù, fichi e mandorli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte delle piante di qui conserva le foglie tutto l'anno, invece di perderle in autunno.",
+      "text_markdown": "La maggior parte delle piante di qui conserva le foglie tutto l'anno, invece di perderle in autunno.",
+      "tts": {
+        "text": "La maggior parte delle piante di qui conserva le foglie tutto l'anno, invece di perderle in autunno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non possono permettersi di mettere foglie nuove ogni primavera.",
+      "text_markdown": "Non possono permettersi di mettere foglie nuove ogni primavera.",
+      "tts": {
+        "text": "Non possono permettersi di mettere foglie nuove ogni primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Così conservano foglie piccole e resistenti tutto l'anno.",
+      "text_markdown": "Così conservano foglie piccole e resistenti tutto l'anno.",
+      "tts": {
+        "text": "Così conservano foglie piccole e resistenti tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo dà al bioma mediterraneo il suo aspetto polveroso e sempreverde.",
+      "text_markdown": "Questo dà al bioma mediterraneo il suo aspetto polveroso e sempreverde.",
+      "tts": {
+        "text": "Questo dà al bioma mediterraneo il suo aspetto polveroso e sempreverde.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gli animali",
+      "text_markdown": "Gli animali"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli animali del bioma mediterraneo hanno molti modi per convivere con il caldo e con l'estate asciutta.",
+      "text_markdown": "Gli animali del bioma mediterraneo hanno molti modi per convivere con il caldo e con l'estate asciutta.",
+      "tts": {
+        "text": "Gli animali del bioma mediterraneo hanno molti modi per convivere con il caldo e con l'estate asciutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte di loro è piccola e veloce.",
+      "text_markdown": "La maggior parte di loro è piccola e veloce.",
+      "tts": {
+        "text": "La maggior parte di loro è piccola e veloce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un animale piccolo può nascondersi facilmente sotto un cespuglio o in una fessura tra le rocce.",
+      "text_markdown": "Un animale piccolo può nascondersi facilmente sotto un cespuglio o in una fessura tra le rocce.",
+      "tts": {
+        "text": "Un animale piccolo può nascondersi facilmente sotto un cespuglio o in una fessura tra le rocce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti riposano nelle ore più calde del giorno ed escono nel fresco del mattino e della sera.",
+      "text_markdown": "Molti riposano nelle ore più calde del giorno ed escono nel fresco del mattino e della sera.",
+      "tts": {
+        "text": "Molti riposano nelle ore più calde del giorno ed escono nel fresco del mattino e della sera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molte di queste terre vivono conigli e lepri.",
+      "text_markdown": "In molte di queste terre vivono conigli e lepri.",
+      "tts": {
+        "text": "In molte di queste terre vivono conigli e lepri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si nutrono al tramonto e all'alba, e passano la giornata in una tana nascosta sotto un cespuglio.",
+      "text_markdown": "Si nutrono al tramonto e all'alba, e passano la giornata in una tana nascosta sotto un cespuglio.",
+      "tts": {
+        "text": "Si nutrono al tramonto e all'alba, e passano la giornata in una tana nascosta sotto un cespuglio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le volpi cacciano conigli e altri piccoli animali.",
+      "text_markdown": "Le volpi cacciano conigli e altri piccoli animali.",
+      "tts": {
+        "text": "Le volpi cacciano conigli e altri piccoli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una volpe conosce ogni sentiero nella macchia.",
+      "text_markdown": "Una volpe conosce ogni sentiero nella macchia.",
+      "tts": {
+        "text": "Una volpe conosce ogni sentiero nella macchia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I cinghiali scavano nel terreno morbido in cerca di radici, ghiande e piccoli animali.",
+      "text_markdown": "I cinghiali scavano nel terreno morbido in cerca di radici, ghiande e piccoli animali.",
+      "tts": {
+        "text": "I cinghiali scavano nel terreno morbido in cerca di radici, ghiande e piccoli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sono forti e schivi, e si muovono in piccoli gruppi familiari.",
+      "text_markdown": "Sono forti e schivi, e si muovono in piccoli gruppi familiari.",
+      "tts": {
+        "text": "Sono forti e schivi, e si muovono in piccoli gruppi familiari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alcune terre mediterranee, piccoli gatti selvatici cacciano di notte.",
+      "text_markdown": "In alcune terre mediterranee, piccoli gatti selvatici cacciano di notte.",
+      "tts": {
+        "text": "In alcune terre mediterranee, piccoli gatti selvatici cacciano di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La lince è uno di questi gatti, con la coda corta e i ciuffi sulle orecchie.",
+      "text_markdown": "La lince è uno di questi gatti, con la coda corta e i ciuffi sulle orecchie.",
+      "tts": {
+        "text": "La lince è uno di questi gatti, con la coda corta e i ciuffi sulle orecchie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oggi è rara e vive solo in pochi angoli ancora selvaggi.",
+      "text_markdown": "Oggi è rara e vive solo in pochi angoli ancora selvaggi.",
+      "tts": {
+        "text": "Oggi è rara e vive solo in pochi angoli ancora selvaggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche i cervi vivono nei boschi ai margini del bioma.",
+      "text_markdown": "Anche i cervi vivono nei boschi ai margini del bioma.",
+      "tts": {
+        "text": "Anche i cervi vivono nei boschi ai margini del bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Serpenti e lucertole sono ovunque.",
+      "text_markdown": "Serpenti e lucertole sono ovunque.",
+      "tts": {
+        "text": "Serpenti e lucertole sono ovunque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una lucertola posata su una pietra calda è una scena comune in estate.",
+      "text_markdown": "Una lucertola posata su una pietra calda è una scena comune in estate.",
+      "tts": {
+        "text": "Una lucertola posata su una pietra calda è una scena comune in estate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le tartarughe si muovono lentamente nella macchia, mangiando foglie ed erba.",
+      "text_markdown": "Le tartarughe si muovono lentamente nella macchia, mangiando foglie ed erba.",
+      "tts": {
+        "text": "Le tartarughe si muovono lentamente nella macchia, mangiando foglie ed erba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tartaruga mediterranea può vivere molti decenni.",
+      "text_markdown": "La tartaruga mediterranea può vivere molti decenni.",
+      "tts": {
+        "text": "La tartaruga mediterranea può vivere molti decenni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qui vivono molti uccelli.",
+      "text_markdown": "Qui vivono molti uccelli.",
+      "tts": {
+        "text": "Qui vivono molti uccelli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Passeri, pettirossi e silvie riempiono i cespugli di suoni.",
+      "text_markdown": "Passeri, pettirossi e silvie riempiono i cespugli di suoni.",
+      "tts": {
+        "text": "Passeri, pettirossi e silvie riempiono i cespugli di suoni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alto, le aquile e altri grandi uccelli si lasciano portare dall'aria calda del pomeriggio.",
+      "text_markdown": "In alto, le aquile e altri grandi uccelli si lasciano portare dall'aria calda del pomeriggio.",
+      "tts": {
+        "text": "In alto, le aquile e altri grandi uccelli si lasciano portare dall'aria calda del pomeriggio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In primavera le farfalle danzano di fiore in fiore.",
+      "text_markdown": "In primavera le farfalle danzano di fiore in fiore.",
+      "tts": {
+        "text": "In primavera le farfalle danzano di fiore in fiore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I grilli e le cavallette cantano nelle calde sere d'estate.",
+      "text_markdown": "I grilli e le cavallette cantano nelle calde sere d'estate.",
+      "tts": {
+        "text": "I grilli e le cavallette cantano nelle calde sere d'estate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In riva al mare, i gabbiani e altri uccelli marini nidificano sulle scogliere e sugli isolotti rocciosi.",
+      "text_markdown": "In riva al mare, i gabbiani e altri uccelli marini nidificano sulle scogliere e sugli isolotti rocciosi.",
+      "tts": {
+        "text": "In riva al mare, i gabbiani e altri uccelli marini nidificano sulle scogliere e sugli isolotti rocciosi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni animale qui sa come trovare ombra d'estate, come bere alla sorgente e come aspettare il fresco delle piogge invernali.",
+      "text_markdown": "Ogni animale qui sa come trovare ombra d'estate, come bere alla sorgente e come aspettare il fresco delle piogge invernali.",
+      "tts": {
+        "text": "Ogni animale qui sa come trovare ombra d'estate, come bere alla sorgente e come aspettare il fresco delle piogge invernali.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le persone",
+      "text_markdown": "Le persone"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bioma mediterraneo è abitato dall'uomo da moltissimo tempo.",
+      "text_markdown": "Il bioma mediterraneo è abitato dall'uomo da moltissimo tempo.",
+      "tts": {
+        "text": "Il bioma mediterraneo è abitato dall'uomo da moltissimo tempo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune delle città e delle fattorie più antiche del mondo sono nate qui.",
+      "text_markdown": "Alcune delle città e delle fattorie più antiche del mondo sono nate qui.",
+      "tts": {
+        "text": "Alcune delle città e delle fattorie più antiche del mondo sono nate qui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per migliaia di anni la gente delle rive del mar Mediterraneo ha coltivato insieme tre piante.",
+      "text_markdown": "Per migliaia di anni la gente delle rive del mar Mediterraneo ha coltivato insieme tre piante.",
+      "tts": {
+        "text": "Per migliaia di anni la gente delle rive del mar Mediterraneo ha coltivato insieme tre piante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Coltivano olivi per ricavarne l'olio.",
+      "text_markdown": "Coltivano olivi per ricavarne l'olio.",
+      "tts": {
+        "text": "Coltivano olivi per ricavarne l'olio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Coltivano viti per ottenere uva e vino.",
+      "text_markdown": "Coltivano viti per ottenere uva e vino.",
+      "tts": {
+        "text": "Coltivano viti per ottenere uva e vino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Coltivano grano e altri cereali per fare il pane.",
+      "text_markdown": "Coltivano grano e altri cereali per fare il pane.",
+      "tts": {
+        "text": "Coltivano grano e altri cereali per fare il pane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insieme, queste tre coltivazioni vengono talvolta chiamate il cuore della cucina mediterranea.",
+      "text_markdown": "Insieme, queste tre coltivazioni vengono talvolta chiamate il cuore della cucina mediterranea.",
+      "tts": {
+        "text": "Insieme, queste tre coltivazioni vengono talvolta chiamate il cuore della cucina mediterranea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A queste, le persone hanno aggiunto verdure, frutta e le erbe aromatiche selvatiche delle colline.",
+      "text_markdown": "A queste, le persone hanno aggiunto verdure, frutta e le erbe aromatiche selvatiche delle colline.",
+      "tts": {
+        "text": "A queste, le persone hanno aggiunto verdure, frutta e le erbe aromatiche selvatiche delle colline.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente ha anche allevato greggi di pecore e capre in queste terre da molte migliaia di anni.",
+      "text_markdown": "La gente ha anche allevato greggi di pecore e capre in queste terre da molte migliaia di anni.",
+      "tts": {
+        "text": "La gente ha anche allevato greggi di pecore e capre in queste terre da molte migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questi animali trovano cibo sui pendii rocciosi dove è difficile coltivare.",
+      "text_markdown": "Questi animali trovano cibo sui pendii rocciosi dove è difficile coltivare.",
+      "tts": {
+        "text": "Questi animali trovano cibo sui pendii rocciosi dove è difficile coltivare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Danno il latte per formaggio e yogurt, la lana per i vestiti e la carne.",
+      "text_markdown": "Danno il latte per formaggio e yogurt, la lana per i vestiti e la carne.",
+      "tts": {
+        "text": "Danno il latte per formaggio e yogurt, la lana per i vestiti e la carne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poiché i mari e gli oceani sono vicini, gli abitanti di questo bioma sono da sempre pescatori e marinai.",
+      "text_markdown": "Poiché i mari e gli oceani sono vicini, gli abitanti di questo bioma sono da sempre pescatori e marinai.",
+      "tts": {
+        "text": "Poiché i mari e gli oceani sono vicini, gli abitanti di questo bioma sono da sempre pescatori e marinai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le barche di legno salpano all'alba e tornano con pesci, polpi e altri frutti di mare.",
+      "text_markdown": "Le barche di legno salpano all'alba e tornano con pesci, polpi e altri frutti di mare.",
+      "tts": {
+        "text": "Le barche di legno salpano all'alba e tornano con pesci, polpi e altri frutti di mare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle altre terre mediterranee del mondo, in California, in Cile, nell'Africa meridionale e in Australia, le popolazioni che vi hanno vissuto per migliaia di anni usavano a modo loro le stesse piante e gli stessi animali selvatici.",
+      "text_markdown": "Nelle altre terre mediterranee del mondo, in California, in Cile, nell'Africa meridionale e in Australia, le popolazioni che vi hanno vissuto per migliaia di anni usavano a modo loro le stesse piante e gli stessi animali selvatici.",
+      "tts": {
+        "text": "Nelle altre terre mediterranee del mondo, in California, in Cile, nell'Africa meridionale e in Australia, le popolazioni che vi hanno vissuto per migliaia di anni usavano a modo loro le stesse piante e gli stessi animali selvatici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando, molto più tardi, i contadini delle terre intorno al mar Mediterraneo arrivarono in quei luoghi, portarono con sé i loro olivi, le loro viti e il loro grano.",
+      "text_markdown": "Quando, molto più tardi, i contadini delle terre intorno al mar Mediterraneo arrivarono in quei luoghi, portarono con sé i loro olivi, le loro viti e il loro grano.",
+      "tts": {
+        "text": "Quando, molto più tardi, i contadini delle terre intorno al mar Mediterraneo arrivarono in quei luoghi, portarono con sé i loro olivi, le loro viti e il loro grano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oggi, tutte e cinque le regioni mediterranee del mondo coltivano gli stessi tipi di cibo.",
+      "text_markdown": "Oggi, tutte e cinque le regioni mediterranee del mondo coltivano gli stessi tipi di cibo.",
+      "tts": {
+        "text": "Oggi, tutte e cinque le regioni mediterranee del mondo coltivano gli stessi tipi di cibo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sembra che la terra stessa lo inviti.",
+      "text_markdown": "Sembra che la terra stessa lo inviti.",
+      "tts": {
+        "text": "Sembra che la terra stessa lo inviti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le cucine di tutte le regioni mediterranee condividono gli stessi doni di base.",
+      "text_markdown": "Le cucine di tutte le regioni mediterranee condividono gli stessi doni di base.",
+      "tts": {
+        "text": "Le cucine di tutte le regioni mediterranee condividono gli stessi doni di base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pane, formaggio, olio d'oliva, pomodori freschi, pesce, frutta e vino.",
+      "text_markdown": "Pane, formaggio, olio d'oliva, pomodori freschi, pesce, frutta e vino.",
+      "tts": {
+        "text": "Pane, formaggio, olio d'oliva, pomodori freschi, pesce, frutta e vino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli abitanti di queste terre hanno sempre saputo trarre il meglio da una lunga estate asciutta.",
+      "text_markdown": "Gli abitanti di queste terre hanno sempre saputo trarre il meglio da una lunga estate asciutta.",
+      "tts": {
+        "text": "Gli abitanti di queste terre hanno sempre saputo trarre il meglio da una lunga estate asciutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nei mesi caldi mangiano cibo fresco.",
+      "text_markdown": "Nei mesi caldi mangiano cibo fresco.",
+      "tts": {
+        "text": "Nei mesi caldi mangiano cibo fresco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Conservano il cibo sotto olio, sotto sale e in vasetti per l'inverno piovoso.",
+      "text_markdown": "Conservano il cibo sotto olio, sotto sale e in vasetti per l'inverno piovoso.",
+      "tts": {
+        "text": "Conservano il cibo sotto olio, sotto sale e in vasetti per l'inverno piovoso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ogni regione mediterranea questo modo di vivere ha le proprie lingue, le proprie canzoni e le proprie storie.",
+      "text_markdown": "In ogni regione mediterranea questo modo di vivere ha le proprie lingue, le proprie canzoni e le proprie storie.",
+      "tts": {
+        "text": "In ogni regione mediterranea questo modo di vivere ha le proprie lingue, le proprie canzoni e le proprie storie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il bioma oggi",
+      "text_markdown": "Il bioma oggi"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il bioma mediterraneo è piccolo, ma molto importante.",
+      "text_markdown": "Il bioma mediterraneo è piccolo, ma molto importante.",
+      "tts": {
+        "text": "Il bioma mediterraneo è piccolo, ma molto importante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche se occupa solo una piccola parte della Terra, ospita un enorme numero di piante e animali che non si trovano da nessun'altra parte.",
+      "text_markdown": "Anche se occupa solo una piccola parte della Terra, ospita un enorme numero di piante e animali che non si trovano da nessun'altra parte.",
+      "tts": {
+        "text": "Anche se occupa solo una piccola parte della Terra, ospita un enorme numero di piante e animali che non si trovano da nessun'altra parte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per gli esseri umani, questo bioma è stato la culla del cibo e dell'agricoltura per migliaia di anni.",
+      "text_markdown": "Per gli esseri umani, questo bioma è stato la culla del cibo e dell'agricoltura per migliaia di anni.",
+      "tts": {
+        "text": "Per gli esseri umani, questo bioma è stato la culla del cibo e dell'agricoltura per migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma in molti luoghi il bioma è in difficoltà.",
+      "text_markdown": "Ma in molti luoghi il bioma è in difficoltà.",
+      "tts": {
+        "text": "Ma in molti luoghi il bioma è in difficoltà.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Città e paesi sono cresciuti lungo le coste, dove il clima è mite e il mare è vicino.",
+      "text_markdown": "Città e paesi sono cresciuti lungo le coste, dove il clima è mite e il mare è vicino.",
+      "tts": {
+        "text": "Città e paesi sono cresciuti lungo le coste, dove il clima è mite e il mare è vicino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Strade, case, alberghi e coltivazioni hanno preso il posto di molti cespugli e alberi selvatici.",
+      "text_markdown": "Strade, case, alberghi e coltivazioni hanno preso il posto di molti cespugli e alberi selvatici.",
+      "tts": {
+        "text": "Strade, case, alberghi e coltivazioni hanno preso il posto di molti cespugli e alberi selvatici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le lunghe estati asciutte, più calde che in passato, rendono gli incendi più grandi e più pericolosi.",
+      "text_markdown": "Le lunghe estati asciutte, più calde che in passato, rendono gli incendi più grandi e più pericolosi.",
+      "tts": {
+        "text": "Le lunghe estati asciutte, più calde che in passato, rendono gli incendi più grandi e più pericolosi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni animali, come la lince e la tartaruga mediterranea, sono diventati molto rari.",
+      "text_markdown": "Alcuni animali, come la lince e la tartaruga mediterranea, sono diventati molto rari.",
+      "tts": {
+        "text": "Alcuni animali, come la lince e la tartaruga mediterranea, sono diventati molto rari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che resta.",
+      "text_markdown": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che resta.",
+      "tts": {
+        "text": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che resta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Creano parchi dove le piante e gli animali selvatici possono ancora vivere.",
+      "text_markdown": "Creano parchi dove le piante e gli animali selvatici possono ancora vivere.",
+      "tts": {
+        "text": "Creano parchi dove le piante e gli animali selvatici possono ancora vivere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piantano nuovi olivi e proteggono quelli antichi.",
+      "text_markdown": "Piantano nuovi olivi e proteggono quelli antichi.",
+      "tts": {
+        "text": "Piantano nuovi olivi e proteggono quelli antichi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aiutano i contadini a coltivare in modi rispettosi della terra.",
+      "text_markdown": "Aiutano i contadini a coltivare in modi rispettosi della terra.",
+      "tts": {
+        "text": "Aiutano i contadini a coltivare in modi rispettosi della terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Studiano il bioma per poterlo comprendere meglio.",
+      "text_markdown": "Studiano il bioma per poterlo comprendere meglio.",
+      "tts": {
+        "text": "Studiano il bioma per poterlo comprendere meglio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma mediterraneo in salute è un luogo silenzioso, profumato, di grande bellezza.",
+      "text_markdown": "Un bioma mediterraneo in salute è un luogo silenzioso, profumato, di grande bellezza.",
+      "tts": {
+        "text": "Un bioma mediterraneo in salute è un luogo silenzioso, profumato, di grande bellezza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Il bioma oggi",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merita la nostra cura.",
+      "text_markdown": "Merita la nostra cura.",
+      "tts": {
+        "text": "Merita la nostra cura.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Conclusione",
+      "text_markdown": "Conclusione"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo è il bioma mediterraneo.",
+      "text_markdown": "Questo è il bioma mediterraneo.",
+      "tts": {
+        "text": "Questo è il bioma mediterraneo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo luminoso, secco e profumato di olivi, arbusti bassi e calde sere d'estate.",
+      "text_markdown": "Un mondo luminoso, secco e profumato di olivi, arbusti bassi e calde sere d'estate.",
+      "tts": {
+        "text": "Un mondo luminoso, secco e profumato di olivi, arbusti bassi e calde sere d'estate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se mai ti capiterà di trovartici, fermati un minuto in silenzio.",
+      "text_markdown": "Se mai ti capiterà di trovartici, fermati un minuto in silenzio.",
+      "tts": {
+        "text": "Se mai ti capiterà di trovartici, fermati un minuto in silenzio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senti il profumo delle erbe aromatiche calde nell'aria.",
+      "text_markdown": "Senti il profumo delle erbe aromatiche calde nell'aria.",
+      "tts": {
+        "text": "Senti il profumo delle erbe aromatiche calde nell'aria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ascolta i grilli nell'erba secca.",
+      "text_markdown": "Ascolta i grilli nell'erba secca.",
+      "tts": {
+        "text": "Ascolta i grilli nell'erba secca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guarda lontano, verso il mare.",
+      "text_markdown": "Guarda lontano, verso il mare.",
+      "tts": {
+        "text": "Guarda lontano, verso il mare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Conclusione",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentirai il cuore del bioma battere intorno a te.",
+      "text_markdown": "Sentirai il cuore del bioma battere intorno a te.",
+      "tts": {
+        "text": "Sentirai il cuore del bioma battere intorno a te.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

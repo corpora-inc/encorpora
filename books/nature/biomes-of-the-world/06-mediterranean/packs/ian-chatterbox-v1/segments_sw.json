@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Biomu ya Mediterania",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomu ya Mediterania",
+      "text_markdown": "Biomu ya Mediterania"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mahali Biomu Hii Inakua",
+      "text_markdown": "Mahali Biomu Hii Inakua"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu kwenye biomu ya Mediterania.",
+      "text_markdown": "Karibu kwenye biomu ya Mediterania.",
+      "tts": {
+        "text": "Karibu kwenye biomu ya Mediterania.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ni mojawapo ya biomu kubwa za dunia.",
+      "text_markdown": "Hii ni mojawapo ya biomu kubwa za dunia.",
+      "tts": {
+        "text": "Hii ni mojawapo ya biomu kubwa za dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ni sehemu ya Dunia yenye hali ya hewa, mimea, na wanyama wake wa pekee.",
+      "text_markdown": "Biomu ni sehemu ya Dunia yenye hali ya hewa, mimea, na wanyama wake wa pekee.",
+      "tts": {
+        "text": "Biomu ni sehemu ya Dunia yenye hali ya hewa, mimea, na wanyama wake wa pekee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ya Mediterania imepewa jina la nchi zinazozunguka Bahari ya Mediterania.",
+      "text_markdown": "Biomu ya Mediterania imepewa jina la nchi zinazozunguka Bahari ya Mediterania.",
+      "tts": {
+        "text": "Biomu ya Mediterania imepewa jina la nchi zinazozunguka Bahari ya Mediterania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini haikui huko tu.",
+      "text_markdown": "Lakini haikui huko tu.",
+      "tts": {
+        "text": "Lakini haikui huko tu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ya Mediterania inajitokeza katika sehemu tano ndogo za dunia.",
+      "text_markdown": "Biomu ya Mediterania inajitokeza katika sehemu tano ndogo za dunia.",
+      "tts": {
+        "text": "Biomu ya Mediterania inajitokeza katika sehemu tano ndogo za dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua katika nchi zinazozunguka Bahari ya Mediterania, kusini mwa Ulaya na pwani ya Afrika Kaskazini.",
+      "text_markdown": "Inakua katika nchi zinazozunguka Bahari ya Mediterania, kusini mwa Ulaya na pwani ya Afrika Kaskazini.",
+      "tts": {
+        "text": "Inakua katika nchi zinazozunguka Bahari ya Mediterania, kusini mwa Ulaya na pwani ya Afrika Kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua Kalifornia, katika upande wa magharibi wa Amerika Kaskazini.",
+      "text_markdown": "Inakua Kalifornia, katika upande wa magharibi wa Amerika Kaskazini.",
+      "tts": {
+        "text": "Inakua Kalifornia, katika upande wa magharibi wa Amerika Kaskazini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua katikati ya pwani ya Chile, Amerika Kusini.",
+      "text_markdown": "Inakua katikati ya pwani ya Chile, Amerika Kusini.",
+      "tts": {
+        "text": "Inakua katikati ya pwani ya Chile, Amerika Kusini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua karibu na ncha ya kusini ya Afrika, kuzunguka Rasi.",
+      "text_markdown": "Inakua karibu na ncha ya kusini ya Afrika, kuzunguka Rasi.",
+      "tts": {
+        "text": "Inakua karibu na ncha ya kusini ya Afrika, kuzunguka Rasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua katika sehemu za kusini magharibi na kusini mwa Australia.",
+      "text_markdown": "Inakua katika sehemu za kusini magharibi na kusini mwa Australia.",
+      "tts": {
+        "text": "Inakua katika sehemu za kusini magharibi na kusini mwa Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila moja ya maeneo haya iko mbali na mengine.",
+      "text_markdown": "Kila moja ya maeneo haya iko mbali na mengine.",
+      "tts": {
+        "text": "Kila moja ya maeneo haya iko mbali na mengine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini yote yanashiriki hali ya hewa ile ile ya pekee.",
+      "text_markdown": "Lakini yote yanashiriki hali ya hewa ile ile ya pekee.",
+      "tts": {
+        "text": "Lakini yote yanashiriki hali ya hewa ile ile ya pekee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majira ya kiangazi ni ya joto na kavu, na majira ya baridi ni ya wastani na mvua.",
+      "text_markdown": "Majira ya kiangazi ni ya joto na kavu, na majira ya baridi ni ya wastani na mvua.",
+      "tts": {
+        "text": "Majira ya kiangazi ni ya joto na kavu, na majira ya baridi ni ya wastani na mvua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hilo ni nadra duniani.",
+      "text_markdown": "Hilo ni nadra duniani.",
+      "tts": {
+        "text": "Hilo ni nadra duniani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu nyingi zina msimu wao wa mvua katika miezi ya joto.",
+      "text_markdown": "Biomu nyingi zina msimu wao wa mvua katika miezi ya joto.",
+      "tts": {
+        "text": "Biomu nyingi zina msimu wao wa mvua katika miezi ya joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hapa, mvua inanyesha katika miezi ya baridi badala yake.",
+      "text_markdown": "Hapa, mvua inanyesha katika miezi ya baridi badala yake.",
+      "tts": {
+        "text": "Hapa, mvua inanyesha katika miezi ya baridi badala yake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila moja ya maeneo haya matano ina mimea na wanyama wake.",
+      "text_markdown": "Kila moja ya maeneo haya matano ina mimea na wanyama wake.",
+      "tts": {
+        "text": "Kila moja ya maeneo haya matano ina mimea na wanyama wake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini umbo lake ni lile lile.",
+      "text_markdown": "Lakini umbo lake ni lile lile.",
+      "tts": {
+        "text": "Lakini umbo lake ni lile lile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vichaka vifupi vigumu, miti iliyotapakaa, mimea ya viungo yenye harufu nzuri, na vilima vya miamba.",
+      "text_markdown": "Vichaka vifupi vigumu, miti iliyotapakaa, mimea ya viungo yenye harufu nzuri, na vilima vya miamba.",
+      "tts": {
+        "text": "Vichaka vifupi vigumu, miti iliyotapakaa, mimea ya viungo yenye harufu nzuri, na vilima vya miamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaposimama katika nchi ya Mediterania wakati wa kiangazi, hewa inanukia mimea kavu ya viungo na mawe ya joto.",
+      "text_markdown": "Unaposimama katika nchi ya Mediterania wakati wa kiangazi, hewa inanukia mimea kavu ya viungo na mawe ya joto.",
+      "tts": {
+        "text": "Unaposimama katika nchi ya Mediterania wakati wa kiangazi, hewa inanukia mimea kavu ya viungo na mawe ya joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwanga ni mkali na wa dhahabu.",
+      "text_markdown": "Mwanga ni mkali na wa dhahabu.",
+      "tts": {
+        "text": "Mwanga ni mkali na wa dhahabu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vilima vimejaa vichaka vifupi vya rangi ya kijani fedha.",
+      "text_markdown": "Vilima vimejaa vichaka vifupi vya rangi ya kijani fedha.",
+      "tts": {
+        "text": "Vilima vimejaa vichaka vifupi vya rangi ya kijani fedha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiyo ndiyo biomu ya Mediterania.",
+      "text_markdown": "Hiyo ndiyo biomu ya Mediterania.",
+      "tts": {
+        "text": "Hiyo ndiyo biomu ya Mediterania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Mahali Biomu Hii Inakua",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulimwengu mkali, mkavu, wenye harufu nzuri unaokua katika pembe tano ndogo za Dunia.",
+      "text_markdown": "Ulimwengu mkali, mkavu, wenye harufu nzuri unaokua katika pembe tano ndogo za Dunia.",
+      "tts": {
+        "text": "Ulimwengu mkali, mkavu, wenye harufu nzuri unaokua katika pembe tano ndogo za Dunia.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hali ya Hewa",
+      "text_markdown": "Hali ya Hewa"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hali ya hewa katika biomu ya Mediterania ni ya kipekee.",
+      "text_markdown": "Hali ya hewa katika biomu ya Mediterania ni ya kipekee.",
+      "tts": {
+        "text": "Hali ya hewa katika biomu ya Mediterania ni ya kipekee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna misimu miwili wazi.",
+      "text_markdown": "Kuna misimu miwili wazi.",
+      "tts": {
+        "text": "Kuna misimu miwili wazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna kiangazi kirefu, cha joto, na kikavu.",
+      "text_markdown": "Kuna kiangazi kirefu, cha joto, na kikavu.",
+      "tts": {
+        "text": "Kuna kiangazi kirefu, cha joto, na kikavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna baridi fupi, ya wastani, na yenye mvua.",
+      "text_markdown": "Kuna baridi fupi, ya wastani, na yenye mvua.",
+      "tts": {
+        "text": "Kuna baridi fupi, ya wastani, na yenye mvua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kiangazi, anga ni la buluu kwa wiki nyingi mfululizo.",
+      "text_markdown": "Katika kiangazi, anga ni la buluu kwa wiki nyingi mfululizo.",
+      "tts": {
+        "text": "Katika kiangazi, anga ni la buluu kwa wiki nyingi mfululizo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jua ni kali, na hewa ni kavu.",
+      "text_markdown": "Jua ni kali, na hewa ni kavu.",
+      "tts": {
+        "text": "Jua ni kali, na hewa ni kavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu hakuna mvua inayonyesha kwa miezi mingi.",
+      "text_markdown": "Karibu hakuna mvua inayonyesha kwa miezi mingi.",
+      "tts": {
+        "text": "Karibu hakuna mvua inayonyesha kwa miezi mingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwisho wa kiangazi, majani ni ya kahawia na vijito vinakauka kuwa madimbwi machache tulivu.",
+      "text_markdown": "Mwisho wa kiangazi, majani ni ya kahawia na vijito vinakauka kuwa madimbwi machache tulivu.",
+      "tts": {
+        "text": "Mwisho wa kiangazi, majani ni ya kahawia na vijito vinakauka kuwa madimbwi machache tulivu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika msimu wa pukutiko, upepo wa kwanza wa baridi unakuja kutoka baharini.",
+      "text_markdown": "Katika msimu wa pukutiko, upepo wa kwanza wa baridi unakuja kutoka baharini.",
+      "tts": {
+        "text": "Katika msimu wa pukutiko, upepo wa kwanza wa baridi unakuja kutoka baharini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mawingu yanakusanyika, na mvua za kwanza nzito zinanyesha juu ya ardhi kavu.",
+      "text_markdown": "Mawingu yanakusanyika, na mvua za kwanza nzito zinanyesha juu ya ardhi kavu.",
+      "tts": {
+        "text": "Mawingu yanakusanyika, na mvua za kwanza nzito zinanyesha juu ya ardhi kavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi inakunywa maji, na majani yanageuka kijani tena.",
+      "text_markdown": "Ardhi inakunywa maji, na majani yanageuka kijani tena.",
+      "tts": {
+        "text": "Ardhi inakunywa maji, na majani yanageuka kijani tena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majira ya baridi siyo baridi sana.",
+      "text_markdown": "Majira ya baridi siyo baridi sana.",
+      "tts": {
+        "text": "Majira ya baridi siyo baridi sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Theluji ni nadra kunyesha, isipokuwa juu milimani.",
+      "text_markdown": "Theluji ni nadra kunyesha, isipokuwa juu milimani.",
+      "tts": {
+        "text": "Theluji ni nadra kunyesha, isipokuwa juu milimani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mvua inanyesha kwa manyunyu ya muda mrefu na laini, na mito inajaa.",
+      "text_markdown": "Mvua inanyesha kwa manyunyu ya muda mrefu na laini, na mito inajaa.",
+      "tts": {
+        "text": "Mvua inanyesha kwa manyunyu ya muda mrefu na laini, na mito inajaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya kuchipua, hewa ni ya joto na vilima ni vya kijani.",
+      "text_markdown": "Katika majira ya kuchipua, hewa ni ya joto na vilima ni vya kijani.",
+      "tts": {
+        "text": "Katika majira ya kuchipua, hewa ni ya joto na vilima ni vya kijani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa wiki chache fupi, maua ya pori yanafunika kila mteremko.",
+      "text_markdown": "Kwa wiki chache fupi, maua ya pori yanafunika kila mteremko.",
+      "tts": {
+        "text": "Kwa wiki chache fupi, maua ya pori yanafunika kila mteremko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha kiangazi kinaanza tena, na mzunguko unaanza upya.",
+      "text_markdown": "Kisha kiangazi kinaanza tena, na mzunguko unaanza upya.",
+      "tts": {
+        "text": "Kisha kiangazi kinaanza tena, na mzunguko unaanza upya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moto pia ni sehemu ya biomu hii.",
+      "text_markdown": "Moto pia ni sehemu ya biomu hii.",
+      "tts": {
+        "text": "Moto pia ni sehemu ya biomu hii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kiangazi kirefu kavu, radi au cheche ya uzembe inaweza kuwasha vichaka kavu kuanza kuungua.",
+      "text_markdown": "Katika kiangazi kirefu kavu, radi au cheche ya uzembe inaweza kuwasha vichaka kavu kuanza kuungua.",
+      "tts": {
+        "text": "Katika kiangazi kirefu kavu, radi au cheche ya uzembe inaweza kuwasha vichaka kavu kuanza kuungua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "Hali ya Hewa",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea mingi hapa imejifunza kuishi na moto na kuota tena haraka unapopita.",
+      "text_markdown": "Mimea mingi hapa imejifunza kuishi na moto na kuota tena haraka unapopita.",
+      "tts": {
+        "text": "Mimea mingi hapa imejifunza kuishi na moto na kuota tena haraka unapopita.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ardhi na Maji",
+      "text_markdown": "Ardhi na Maji"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi ya biomu ya Mediterania mara nyingi ina vilima.",
+      "text_markdown": "Ardhi ya biomu ya Mediterania mara nyingi ina vilima.",
+      "tts": {
+        "text": "Ardhi ya biomu ya Mediterania mara nyingi ina vilima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Milima inainuka karibu na pwani katika mengi ya maeneo haya.",
+      "text_markdown": "Milima inainuka karibu na pwani katika mengi ya maeneo haya.",
+      "tts": {
+        "text": "Milima inainuka karibu na pwani katika mengi ya maeneo haya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miteremko ni ya miamba, na udongo mara nyingi ni mwembamba.",
+      "text_markdown": "Miteremko ni ya miamba, na udongo mara nyingi ni mwembamba.",
+      "tts": {
+        "text": "Miteremko ni ya miamba, na udongo mara nyingi ni mwembamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahari na maji makubwa yaliyo karibu yanaunda hali ya hewa.",
+      "text_markdown": "Bahari na maji makubwa yaliyo karibu yanaunda hali ya hewa.",
+      "tts": {
+        "text": "Bahari na maji makubwa yaliyo karibu yanaunda hali ya hewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maji baridi yanazuia kiangazi kisiwe na joto kama jangwa, na baridi isiwe baridi kama nchi za ndani zaidi.",
+      "text_markdown": "Maji baridi yanazuia kiangazi kisiwe na joto kama jangwa, na baridi isiwe baridi kama nchi za ndani zaidi.",
+      "tts": {
+        "text": "Maji baridi yanazuia kiangazi kisiwe na joto kama jangwa, na baridi isiwe baridi kama nchi za ndani zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maji ni ya thamani hapa.",
+      "text_markdown": "Maji ni ya thamani hapa.",
+      "tts": {
+        "text": "Maji ni ya thamani hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mito mingi inapungua kuwa kijito kidogo mwisho wa kiangazi.",
+      "text_markdown": "Mito mingi inapungua kuwa kijito kidogo mwisho wa kiangazi.",
+      "tts": {
+        "text": "Mito mingi inapungua kuwa kijito kidogo mwisho wa kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vijito vingine vidogo vinatoweka kabisa.",
+      "text_markdown": "Vijito vingine vidogo vinatoweka kabisa.",
+      "tts": {
+        "text": "Vijito vingine vidogo vinatoweka kabisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mvua za baridi zinaporejea, mito inajaa haraka na kushuka kwa kasi kutoka vilimani kuelekea baharini.",
+      "text_markdown": "Mvua za baridi zinaporejea, mito inajaa haraka na kushuka kwa kasi kutoka vilimani kuelekea baharini.",
+      "tts": {
+        "text": "Mvua za baridi zinaporejea, mito inajaa haraka na kushuka kwa kasi kutoka vilimani kuelekea baharini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika maeneo mengine, maji ya chini ya ardhi yanapanda juu kutengeneza chemchemi.",
+      "text_markdown": "Katika maeneo mengine, maji ya chini ya ardhi yanapanda juu kutengeneza chemchemi.",
+      "tts": {
+        "text": "Katika maeneo mengine, maji ya chini ya ardhi yanapanda juu kutengeneza chemchemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chemchemi ni dimbwi dogo la maji safi linalotiririka kutoka mwambani mwaka mzima.",
+      "text_markdown": "Chemchemi ni dimbwi dogo la maji safi linalotiririka kutoka mwambani mwaka mzima.",
+      "tts": {
+        "text": "Chemchemi ni dimbwi dogo la maji safi linalotiririka kutoka mwambani mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa maelfu ya miaka, watu, wanyama, na miti wamekusanyika kuzunguka chemchemi hizi.",
+      "text_markdown": "Kwa maelfu ya miaka, watu, wanyama, na miti wamekusanyika kuzunguka chemchemi hizi.",
+      "tts": {
+        "text": "Kwa maelfu ya miaka, watu, wanyama, na miti wamekusanyika kuzunguka chemchemi hizi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pwani, ardhi inakutana na bahari kupitia majabali, fukwe, na ghuba ndogo.",
+      "text_markdown": "Pwani, ardhi inakutana na bahari kupitia majabali, fukwe, na ghuba ndogo.",
+      "tts": {
+        "text": "Pwani, ardhi inakutana na bahari kupitia majabali, fukwe, na ghuba ndogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahari imejaa uhai.",
+      "text_markdown": "Bahari imejaa uhai.",
+      "tts": {
+        "text": "Bahari imejaa uhai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Samaki, pweza, na ndege wa baharini wanapata chakula katika maji ya joto, ya chumvi.",
+      "text_markdown": "Samaki, pweza, na ndege wa baharini wanapata chakula katika maji ya joto, ya chumvi.",
+      "tts": {
+        "text": "Samaki, pweza, na ndege wa baharini wanapata chakula katika maji ya joto, ya chumvi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Ardhi na Maji",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu inaishi kati ya ardhi, bahari, na anga refu la buluu la kiangazi.",
+      "text_markdown": "Biomu inaishi kati ya ardhi, bahari, na anga refu la buluu la kiangazi.",
+      "tts": {
+        "text": "Biomu inaishi kati ya ardhi, bahari, na anga refu la buluu la kiangazi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mimea",
+      "text_markdown": "Mimea"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea ya biomu ya Mediterania ni migumu na yenye busara.",
+      "text_markdown": "Mimea ya biomu ya Mediterania ni migumu na yenye busara.",
+      "tts": {
+        "text": "Mimea ya biomu ya Mediterania ni migumu na yenye busara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Imejifunza jinsi ya kuishi kupitia kiangazi kirefu na kikavu.",
+      "text_markdown": "Imejifunza jinsi ya kuishi kupitia kiangazi kirefu na kikavu.",
+      "tts": {
+        "text": "Imejifunza jinsi ya kuishi kupitia kiangazi kirefu na kikavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mingi yake siyo mirefu.",
+      "text_markdown": "Mingi yake siyo mirefu.",
+      "tts": {
+        "text": "Mingi yake siyo mirefu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inakua kama vichaka vifupi, vyenye majani manene na magumu kama ngozi.",
+      "text_markdown": "Inakua kama vichaka vifupi, vyenye majani manene na magumu kama ngozi.",
+      "tts": {
+        "text": "Inakua kama vichaka vifupi, vyenye majani manene na magumu kama ngozi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majani ni madogo na yanang'aa, mara nyingine ya rangi ya fedha au kijani kijivu.",
+      "text_markdown": "Majani ni madogo na yanang'aa, mara nyingine ya rangi ya fedha au kijani kijivu.",
+      "tts": {
+        "text": "Majani ni madogo na yanang'aa, mara nyingine ya rangi ya fedha au kijani kijivu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jani dogo lenye kung'aa linapoteza maji machache kwa jua.",
+      "text_markdown": "Jani dogo lenye kung'aa linapoteza maji machache kwa jua.",
+      "tts": {
+        "text": "Jani dogo lenye kung'aa linapoteza maji machache kwa jua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jani lenye rangi iliyo nyepesi linarudisha nyuma mwanga zaidi wa jua.",
+      "text_markdown": "Jani lenye rangi iliyo nyepesi linarudisha nyuma mwanga zaidi wa jua.",
+      "tts": {
+        "text": "Jani lenye rangi iliyo nyepesi linarudisha nyuma mwanga zaidi wa jua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea mingi inatoa harufu kali na tamu unapoigusa.",
+      "text_markdown": "Mimea mingi inatoa harufu kali na tamu unapoigusa.",
+      "tts": {
+        "text": "Mimea mingi inatoa harufu kali na tamu unapoigusa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Harufu hiyo inatoka katika mafuta ndani ya majani.",
+      "text_markdown": "Harufu hiyo inatoka katika mafuta ndani ya majani.",
+      "tts": {
+        "text": "Harufu hiyo inatoka katika mafuta ndani ya majani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mafuta hayo yanapunguza upotevu wa maji na kusaidia mmea kuvumilia joto.",
+      "text_markdown": "Mafuta hayo yanapunguza upotevu wa maji na kusaidia mmea kuvumilia joto.",
+      "tts": {
+        "text": "Mafuta hayo yanapunguza upotevu wa maji na kusaidia mmea kuvumilia joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndio sababu mimea mingi ya viungo tunayopenda kupika inatoka katika nchi hizi.",
+      "text_markdown": "Ndio sababu mimea mingi ya viungo tunayopenda kupika inatoka katika nchi hizi.",
+      "tts": {
+        "text": "Ndio sababu mimea mingi ya viungo tunayopenda kupika inatoka katika nchi hizi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea kama roozmari, salvia, kekik, lavanda, mnanaa, na oregano yote inakua porini katika biomu ya Mediterania.",
+      "text_markdown": "Mimea kama roozmari, salvia, kekik, lavanda, mnanaa, na oregano yote inakua porini katika biomu ya Mediterania.",
+      "tts": {
+        "text": "Mimea kama roozmari, salvia, kekik, lavanda, mnanaa, na oregano yote inakua porini katika biomu ya Mediterania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mti maarufu zaidi wa biomu hii ni mzeituni.",
+      "text_markdown": "Mti maarufu zaidi wa biomu hii ni mzeituni.",
+      "tts": {
+        "text": "Mti maarufu zaidi wa biomu hii ni mzeituni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mzeituni una shina nene na lililojikunja, na majani madogo ya rangi ya fedha kijivu.",
+      "text_markdown": "Mzeituni una shina nene na lililojikunja, na majani madogo ya rangi ya fedha kijivu.",
+      "tts": {
+        "text": "Mzeituni una shina nene na lililojikunja, na majani madogo ya rangi ya fedha kijivu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya mizeituni inaishi kwa zaidi ya miaka elfu moja.",
+      "text_markdown": "Baadhi ya mizeituni inaishi kwa zaidi ya miaka elfu moja.",
+      "tts": {
+        "text": "Baadhi ya mizeituni inaishi kwa zaidi ya miaka elfu moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miti mingine ya kawaida ni mialoni mifupi ya kijani kibichi mwaka mzima, misonobari, na mialoni ya kizibo.",
+      "text_markdown": "Miti mingine ya kawaida ni mialoni mifupi ya kijani kibichi mwaka mzima, misonobari, na mialoni ya kizibo.",
+      "tts": {
+        "text": "Miti mingine ya kawaida ni mialoni mifupi ya kijani kibichi mwaka mzima, misonobari, na mialoni ya kizibo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mzabibu wa pori pia ulianza katika nchi hizi na ukapanda juu kutoka katika vichaka.",
+      "text_markdown": "Mzabibu wa pori pia ulianza katika nchi hizi na ukapanda juu kutoka katika vichaka.",
+      "tts": {
+        "text": "Mzabibu wa pori pia ulianza katika nchi hizi na ukapanda juu kutoka katika vichaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pwani, unaweza kupata mashamba marefu ya mwanzi, mitini, na mlozi.",
+      "text_markdown": "Pwani, unaweza kupata mashamba marefu ya mwanzi, mitini, na mlozi.",
+      "tts": {
+        "text": "Pwani, unaweza kupata mashamba marefu ya mwanzi, mitini, na mlozi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimea mingi hapa inashikilia majani yake mwaka mzima, badala ya kuyaangusha katika msimu wa pukutiko.",
+      "text_markdown": "Mimea mingi hapa inashikilia majani yake mwaka mzima, badala ya kuyaangusha katika msimu wa pukutiko.",
+      "tts": {
+        "text": "Mimea mingi hapa inashikilia majani yake mwaka mzima, badala ya kuyaangusha katika msimu wa pukutiko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwezi kumudu kuota majani mapya kila majira ya kuchipua.",
+      "text_markdown": "Haiwezi kumudu kuota majani mapya kila majira ya kuchipua.",
+      "tts": {
+        "text": "Haiwezi kumudu kuota majani mapya kila majira ya kuchipua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hivyo inashikilia majani madogo na magumu mwaka mzima.",
+      "text_markdown": "Hivyo inashikilia majani madogo na magumu mwaka mzima.",
+      "tts": {
+        "text": "Hivyo inashikilia majani madogo na magumu mwaka mzima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Mimea",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hilo linaipa biomu ya Mediterania mwonekano wake wa vumbi, wa kijani kibichi mwaka mzima.",
+      "text_markdown": "Hilo linaipa biomu ya Mediterania mwonekano wake wa vumbi, wa kijani kibichi mwaka mzima.",
+      "tts": {
+        "text": "Hilo linaipa biomu ya Mediterania mwonekano wake wa vumbi, wa kijani kibichi mwaka mzima.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Wanyama",
+      "text_markdown": "Wanyama"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanyama wa biomu ya Mediterania wana njia nyingi za kuishi na joto na kiangazi kikavu.",
+      "text_markdown": "Wanyama wa biomu ya Mediterania wana njia nyingi za kuishi na joto na kiangazi kikavu.",
+      "tts": {
+        "text": "Wanyama wa biomu ya Mediterania wana njia nyingi za kuishi na joto na kiangazi kikavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wengi wao ni wadogo na wepesi.",
+      "text_markdown": "Wengi wao ni wadogo na wepesi.",
+      "tts": {
+        "text": "Wengi wao ni wadogo na wepesi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mnyama mdogo anaweza kujificha kwa urahisi chini ya kichaka au katika ufa kati ya miamba.",
+      "text_markdown": "Mnyama mdogo anaweza kujificha kwa urahisi chini ya kichaka au katika ufa kati ya miamba.",
+      "tts": {
+        "text": "Mnyama mdogo anaweza kujificha kwa urahisi chini ya kichaka au katika ufa kati ya miamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wengi wao wanapumzika wakati wa joto la katikati ya mchana na kutoka katika ubaridi wa asubuhi na jioni.",
+      "text_markdown": "Wengi wao wanapumzika wakati wa joto la katikati ya mchana na kutoka katika ubaridi wa asubuhi na jioni.",
+      "tts": {
+        "text": "Wengi wao wanapumzika wakati wa joto la katikati ya mchana na kutoka katika ubaridi wa asubuhi na jioni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungura na sungura wa porini wanaishi katika nchi nyingi hizi.",
+      "text_markdown": "Sungura na sungura wa porini wanaishi katika nchi nyingi hizi.",
+      "tts": {
+        "text": "Sungura na sungura wa porini wanaishi katika nchi nyingi hizi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanakula wakati wa machweo na alfajiri, na wanatumia mchana katika shimo lililofichika chini ya kichaka.",
+      "text_markdown": "Wanakula wakati wa machweo na alfajiri, na wanatumia mchana katika shimo lililofichika chini ya kichaka.",
+      "tts": {
+        "text": "Wanakula wakati wa machweo na alfajiri, na wanatumia mchana katika shimo lililofichika chini ya kichaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mbweha wanawinda sungura na wanyama wengine wadogo.",
+      "text_markdown": "Mbweha wanawinda sungura na wanyama wengine wadogo.",
+      "tts": {
+        "text": "Mbweha wanawinda sungura na wanyama wengine wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mbweha anajua kila njia kupitia vichaka.",
+      "text_markdown": "Mbweha anajua kila njia kupitia vichaka.",
+      "tts": {
+        "text": "Mbweha anajua kila njia kupitia vichaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nguruwe mwitu wanachimba katika udongo laini kutafuta mizizi, karanga, na wanyama wadogo.",
+      "text_markdown": "Nguruwe mwitu wanachimba katika udongo laini kutafuta mizizi, karanga, na wanyama wadogo.",
+      "tts": {
+        "text": "Nguruwe mwitu wanachimba katika udongo laini kutafuta mizizi, karanga, na wanyama wadogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wana nguvu na wana haya, na wanatembea katika makundi madogo ya familia.",
+      "text_markdown": "Wana nguvu na wana haya, na wanatembea katika makundi madogo ya familia.",
+      "tts": {
+        "text": "Wana nguvu na wana haya, na wanatembea katika makundi madogo ya familia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika baadhi ya nchi za Mediterania, paka wadogo wa mwituni wanawinda usiku.",
+      "text_markdown": "Katika baadhi ya nchi za Mediterania, paka wadogo wa mwituni wanawinda usiku.",
+      "tts": {
+        "text": "Katika baadhi ya nchi za Mediterania, paka wadogo wa mwituni wanawinda usiku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paka mkubwa wa mwituni ni mmoja wa paka hawa, mwenye mkia mfupi na masikio yenye manyoya.",
+      "text_markdown": "Paka mkubwa wa mwituni ni mmoja wa paka hawa, mwenye mkia mfupi na masikio yenye manyoya.",
+      "tts": {
+        "text": "Paka mkubwa wa mwituni ni mmoja wa paka hawa, mwenye mkia mfupi na masikio yenye manyoya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sasa ni nadra na anaishi katika pembe chache tu za pori.",
+      "text_markdown": "Sasa ni nadra na anaishi katika pembe chache tu za pori.",
+      "tts": {
+        "text": "Sasa ni nadra na anaishi katika pembe chache tu za pori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kulungu pia wanaishi katika misitu pembezoni mwa biomu.",
+      "text_markdown": "Kulungu pia wanaishi katika misitu pembezoni mwa biomu.",
+      "tts": {
+        "text": "Kulungu pia wanaishi katika misitu pembezoni mwa biomu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyoka na mjusi wako kila mahali.",
+      "text_markdown": "Nyoka na mjusi wako kila mahali.",
+      "tts": {
+        "text": "Nyoka na mjusi wako kila mahali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mjusi akiwa amekaa juu ya jiwe la joto ni mwonekano wa kawaida wakati wa kiangazi.",
+      "text_markdown": "Mjusi akiwa amekaa juu ya jiwe la joto ni mwonekano wa kawaida wakati wa kiangazi.",
+      "tts": {
+        "text": "Mjusi akiwa amekaa juu ya jiwe la joto ni mwonekano wa kawaida wakati wa kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kobe wanatembea polepole kupitia vichaka, wakila majani na nyasi.",
+      "text_markdown": "Kobe wanatembea polepole kupitia vichaka, wakila majani na nyasi.",
+      "tts": {
+        "text": "Kobe wanatembea polepole kupitia vichaka, wakila majani na nyasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kobe wa Mediterania anaweza kuishi kwa miongo mingi.",
+      "text_markdown": "Kobe wa Mediterania anaweza kuishi kwa miongo mingi.",
+      "tts": {
+        "text": "Kobe wa Mediterania anaweza kuishi kwa miongo mingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndege wengi wanaishi hapa.",
+      "text_markdown": "Ndege wengi wanaishi hapa.",
+      "tts": {
+        "text": "Ndege wengi wanaishi hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Shomoro, robin, na ndege wa kuimba wanajaza vichaka sauti.",
+      "text_markdown": "Shomoro, robin, na ndege wa kuimba wanajaza vichaka sauti.",
+      "tts": {
+        "text": "Shomoro, robin, na ndege wa kuimba wanajaza vichaka sauti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juu angani, tai na ndege wengine wakubwa wanaelea juu ya hewa ya joto ya alasiri.",
+      "text_markdown": "Juu angani, tai na ndege wengine wakubwa wanaelea juu ya hewa ya joto ya alasiri.",
+      "tts": {
+        "text": "Juu angani, tai na ndege wengine wakubwa wanaelea juu ya hewa ya joto ya alasiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika majira ya kuchipua, vipepeo wanacheza kutoka ua hadi ua.",
+      "text_markdown": "Katika majira ya kuchipua, vipepeo wanacheza kutoka ua hadi ua.",
+      "tts": {
+        "text": "Katika majira ya kuchipua, vipepeo wanacheza kutoka ua hadi ua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyenze na panzi wanaimba katika jioni za joto za kiangazi.",
+      "text_markdown": "Nyenze na panzi wanaimba katika jioni za joto za kiangazi.",
+      "tts": {
+        "text": "Nyenze na panzi wanaimba katika jioni za joto za kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu na bahari, shakwe na ndege wengine wa baharini wanatengeneza viota juu ya majabali na visiwa vya miamba.",
+      "text_markdown": "Karibu na bahari, shakwe na ndege wengine wa baharini wanatengeneza viota juu ya majabali na visiwa vya miamba.",
+      "tts": {
+        "text": "Karibu na bahari, shakwe na ndege wengine wa baharini wanatengeneza viota juu ya majabali na visiwa vya miamba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Wanyama",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila mnyama hapa anajua jinsi ya kupata kivuli wakati wa kiangazi, jinsi ya kunywa kwenye chemchemi, na jinsi ya kusubiri ubaridi wa mvua za baridi.",
+      "text_markdown": "Kila mnyama hapa anajua jinsi ya kupata kivuli wakati wa kiangazi, jinsi ya kunywa kwenye chemchemi, na jinsi ya kusubiri ubaridi wa mvua za baridi.",
+      "tts": {
+        "text": "Kila mnyama hapa anajua jinsi ya kupata kivuli wakati wa kiangazi, jinsi ya kunywa kwenye chemchemi, na jinsi ya kusubiri ubaridi wa mvua za baridi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Watu",
+      "text_markdown": "Watu"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ya Mediterania imekuwa nyumbani kwa watu kwa muda mrefu sana.",
+      "text_markdown": "Biomu ya Mediterania imekuwa nyumbani kwa watu kwa muda mrefu sana.",
+      "tts": {
+        "text": "Biomu ya Mediterania imekuwa nyumbani kwa watu kwa muda mrefu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya miji na mashamba ya zamani zaidi duniani ilianza hapa.",
+      "text_markdown": "Baadhi ya miji na mashamba ya zamani zaidi duniani ilianza hapa.",
+      "tts": {
+        "text": "Baadhi ya miji na mashamba ya zamani zaidi duniani ilianza hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa maelfu ya miaka, watu kwenye fukwe za Bahari ya Mediterania wamekuza mimea mitatu pamoja.",
+      "text_markdown": "Kwa maelfu ya miaka, watu kwenye fukwe za Bahari ya Mediterania wamekuza mimea mitatu pamoja.",
+      "tts": {
+        "text": "Kwa maelfu ya miaka, watu kwenye fukwe za Bahari ya Mediterania wamekuza mimea mitatu pamoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanakuza mizeituni kwa ajili ya mafuta.",
+      "text_markdown": "Wanakuza mizeituni kwa ajili ya mafuta.",
+      "tts": {
+        "text": "Wanakuza mizeituni kwa ajili ya mafuta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanakuza mizabibu kwa ajili ya matunda na divai.",
+      "text_markdown": "Wanakuza mizabibu kwa ajili ya matunda na divai.",
+      "tts": {
+        "text": "Wanakuza mizabibu kwa ajili ya matunda na divai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanakuza ngano na nafaka nyingine kwa ajili ya mkate.",
+      "text_markdown": "Wanakuza ngano na nafaka nyingine kwa ajili ya mkate.",
+      "tts": {
+        "text": "Wanakuza ngano na nafaka nyingine kwa ajili ya mkate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa pamoja, mitatu hii mara nyingine huitwa moyo wa chakula cha Mediterania.",
+      "text_markdown": "Kwa pamoja, mitatu hii mara nyingine huitwa moyo wa chakula cha Mediterania.",
+      "tts": {
+        "text": "Kwa pamoja, mitatu hii mara nyingine huitwa moyo wa chakula cha Mediterania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juu yake, watu waliongeza mboga, matunda, na mimea ya viungo ya mwituni ya vilimani.",
+      "text_markdown": "Juu yake, watu waliongeza mboga, matunda, na mimea ya viungo ya mwituni ya vilimani.",
+      "tts": {
+        "text": "Juu yake, watu waliongeza mboga, matunda, na mimea ya viungo ya mwituni ya vilimani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu pia wamefuga makundi ya kondoo na mbuzi katika nchi hizi kwa maelfu mengi ya miaka.",
+      "text_markdown": "Watu pia wamefuga makundi ya kondoo na mbuzi katika nchi hizi kwa maelfu mengi ya miaka.",
+      "tts": {
+        "text": "Watu pia wamefuga makundi ya kondoo na mbuzi katika nchi hizi kwa maelfu mengi ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanyama wanaweza kupata chakula kwenye miteremko ya miamba ambapo ni vigumu kulima mazao.",
+      "text_markdown": "Wanyama wanaweza kupata chakula kwenye miteremko ya miamba ambapo ni vigumu kulima mazao.",
+      "tts": {
+        "text": "Wanyama wanaweza kupata chakula kwenye miteremko ya miamba ambapo ni vigumu kulima mazao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanatoa maziwa kwa ajili ya jibini na maziwa mgando, sufu kwa ajili ya nguo, na nyama.",
+      "text_markdown": "Wanatoa maziwa kwa ajili ya jibini na maziwa mgando, sufu kwa ajili ya nguo, na nyama.",
+      "tts": {
+        "text": "Wanatoa maziwa kwa ajili ya jibini na maziwa mgando, sufu kwa ajili ya nguo, na nyama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa sababu bahari na maji makubwa yapo karibu, watu wa biomu hii daima wamekuwa wavuvi na mabaharia.",
+      "text_markdown": "Kwa sababu bahari na maji makubwa yapo karibu, watu wa biomu hii daima wamekuwa wavuvi na mabaharia.",
+      "tts": {
+        "text": "Kwa sababu bahari na maji makubwa yapo karibu, watu wa biomu hii daima wamekuwa wavuvi na mabaharia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mashua za mbao zinatoka alfajiri na kurudi na samaki, pweza, na vyakula vingine vya baharini.",
+      "text_markdown": "Mashua za mbao zinatoka alfajiri na kurudi na samaki, pweza, na vyakula vingine vya baharini.",
+      "tts": {
+        "text": "Mashua za mbao zinatoka alfajiri na kurudi na samaki, pweza, na vyakula vingine vya baharini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika nchi nyingine za Mediterania duniani, Kalifornia, Chile, kusini mwa Afrika, na Australia, watu walioishi huko kwa maelfu ya miaka walitumia mimea na wanyama wale wale wa mwituni kwa njia zao wenyewe.",
+      "text_markdown": "Katika nchi nyingine za Mediterania duniani, Kalifornia, Chile, kusini mwa Afrika, na Australia, watu walioishi huko kwa maelfu ya miaka walitumia mimea na wanyama wale wale wa mwituni kwa njia zao wenyewe.",
+      "tts": {
+        "text": "Katika nchi nyingine za Mediterania duniani, Kalifornia, Chile, kusini mwa Afrika, na Australia, watu walioishi huko kwa maelfu ya miaka walitumia mimea na wanyama wale wale wa mwituni kwa njia zao wenyewe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wakulima kutoka nchi zinazozunguka Bahari ya Mediterania walipokuja katika maeneo hayo baadaye sana, walileta zeituni zao, mizabibu yao, na ngano yao pamoja nao.",
+      "text_markdown": "Wakulima kutoka nchi zinazozunguka Bahari ya Mediterania walipokuja katika maeneo hayo baadaye sana, walileta zeituni zao, mizabibu yao, na ngano yao pamoja nao.",
+      "tts": {
+        "text": "Wakulima kutoka nchi zinazozunguka Bahari ya Mediterania walipokuja katika maeneo hayo baadaye sana, walileta zeituni zao, mizabibu yao, na ngano yao pamoja nao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leo, maeneo yote matano ya Mediterania duniani yanalima aina zile zile za chakula.",
+      "text_markdown": "Leo, maeneo yote matano ya Mediterania duniani yanalima aina zile zile za chakula.",
+      "tts": {
+        "text": "Leo, maeneo yote matano ya Mediterania duniani yanalima aina zile zile za chakula.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ardhi inaonekana kuialika.",
+      "text_markdown": "Ardhi inaonekana kuialika.",
+      "tts": {
+        "text": "Ardhi inaonekana kuialika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jikoni za kila eneo la Mediterania zinashiriki zawadi zile zile za msingi.",
+      "text_markdown": "Jikoni za kila eneo la Mediterania zinashiriki zawadi zile zile za msingi.",
+      "tts": {
+        "text": "Jikoni za kila eneo la Mediterania zinashiriki zawadi zile zile za msingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mkate, jibini, mafuta ya zeituni, nyanya bichi, samaki, matunda, na divai.",
+      "text_markdown": "Mkate, jibini, mafuta ya zeituni, nyanya bichi, samaki, matunda, na divai.",
+      "tts": {
+        "text": "Mkate, jibini, mafuta ya zeituni, nyanya bichi, samaki, matunda, na divai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu wa nchi hizi daima wamejua jinsi ya kufaidi zaidi kiangazi kirefu na kikavu.",
+      "text_markdown": "Watu wa nchi hizi daima wamejua jinsi ya kufaidi zaidi kiangazi kirefu na kikavu.",
+      "tts": {
+        "text": "Watu wa nchi hizi daima wamejua jinsi ya kufaidi zaidi kiangazi kirefu na kikavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanakula chakula kibichi katika miezi ya joto.",
+      "text_markdown": "Wanakula chakula kibichi katika miezi ya joto.",
+      "tts": {
+        "text": "Wanakula chakula kibichi katika miezi ya joto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanahifadhi chakula katika mafuta, katika chumvi, na katika mitungi kwa ajili ya baridi yenye mvua.",
+      "text_markdown": "Wanahifadhi chakula katika mafuta, katika chumvi, na katika mitungi kwa ajili ya baridi yenye mvua.",
+      "tts": {
+        "text": "Wanahifadhi chakula katika mafuta, katika chumvi, na katika mitungi kwa ajili ya baridi yenye mvua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Watu",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kila eneo la Mediterania, aina hii ya maisha ina lugha, nyimbo, na hadithi zake.",
+      "text_markdown": "Katika kila eneo la Mediterania, aina hii ya maisha ina lugha, nyimbo, na hadithi zake.",
+      "tts": {
+        "text": "Katika kila eneo la Mediterania, aina hii ya maisha ina lugha, nyimbo, na hadithi zake.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomu Leo",
+      "text_markdown": "Biomu Leo"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ya Mediterania ni ndogo lakini muhimu sana.",
+      "text_markdown": "Biomu ya Mediterania ni ndogo lakini muhimu sana.",
+      "tts": {
+        "text": "Biomu ya Mediterania ni ndogo lakini muhimu sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ingawa inafunika sehemu ndogo tu ya Dunia, ina idadi kubwa sana ya mimea na wanyama wasiopatikana popote pengine.",
+      "text_markdown": "Ingawa inafunika sehemu ndogo tu ya Dunia, ina idadi kubwa sana ya mimea na wanyama wasiopatikana popote pengine.",
+      "tts": {
+        "text": "Ingawa inafunika sehemu ndogo tu ya Dunia, ina idadi kubwa sana ya mimea na wanyama wasiopatikana popote pengine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa watu, biomu hii imekuwa chimbuko la chakula na ukulima kwa maelfu ya miaka.",
+      "text_markdown": "Kwa watu, biomu hii imekuwa chimbuko la chakula na ukulima kwa maelfu ya miaka.",
+      "tts": {
+        "text": "Kwa watu, biomu hii imekuwa chimbuko la chakula na ukulima kwa maelfu ya miaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini biomu iko hatarini katika maeneo mengi.",
+      "text_markdown": "Lakini biomu iko hatarini katika maeneo mengi.",
+      "tts": {
+        "text": "Lakini biomu iko hatarini katika maeneo mengi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miji na vijiji vimekua kando ya fukwe ambapo hali ya hewa ni ya wastani na bahari iko karibu.",
+      "text_markdown": "Miji na vijiji vimekua kando ya fukwe ambapo hali ya hewa ni ya wastani na bahari iko karibu.",
+      "tts": {
+        "text": "Miji na vijiji vimekua kando ya fukwe ambapo hali ya hewa ni ya wastani na bahari iko karibu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barabara, nyumba, hoteli, na mashamba vimebadilisha vichaka na miti mingi ya mwituni.",
+      "text_markdown": "Barabara, nyumba, hoteli, na mashamba vimebadilisha vichaka na miti mingi ya mwituni.",
+      "tts": {
+        "text": "Barabara, nyumba, hoteli, na mashamba vimebadilisha vichaka na miti mingi ya mwituni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vyangazi virefu vikavu, vyenye joto zaidi kuliko hapo awali, vinafanya mioto kuwa mikubwa zaidi na yenye hatari zaidi.",
+      "text_markdown": "Vyangazi virefu vikavu, vyenye joto zaidi kuliko hapo awali, vinafanya mioto kuwa mikubwa zaidi na yenye hatari zaidi.",
+      "tts": {
+        "text": "Vyangazi virefu vikavu, vyenye joto zaidi kuliko hapo awali, vinafanya mioto kuwa mikubwa zaidi na yenye hatari zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya wanyama, kama paka mkubwa wa mwituni na kobe wa Mediterania, wamekuwa nadra sana.",
+      "text_markdown": "Baadhi ya wanyama, kama paka mkubwa wa mwituni na kobe wa Mediterania, wamekuwa nadra sana.",
+      "tts": {
+        "text": "Baadhi ya wanyama, kama paka mkubwa wa mwituni na kobe wa Mediterania, wamekuwa nadra sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vikundi vingi duniani vinafanya kazi kutunza kile kilichobakia.",
+      "text_markdown": "Vikundi vingi duniani vinafanya kazi kutunza kile kilichobakia.",
+      "tts": {
+        "text": "Vikundi vingi duniani vinafanya kazi kutunza kile kilichobakia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanatenga bustani ambapo mimea na wanyama wa mwituni bado wanaweza kuishi.",
+      "text_markdown": "Wanatenga bustani ambapo mimea na wanyama wa mwituni bado wanaweza kuishi.",
+      "tts": {
+        "text": "Wanatenga bustani ambapo mimea na wanyama wa mwituni bado wanaweza kuishi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanapanda mizeituni mipya na kulinda ile ya zamani.",
+      "text_markdown": "Wanapanda mizeituni mipya na kulinda ile ya zamani.",
+      "tts": {
+        "text": "Wanapanda mizeituni mipya na kulinda ile ya zamani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanasaidia wakulima kulima chakula kwa njia zinazoifaa ardhi.",
+      "text_markdown": "Wanasaidia wakulima kulima chakula kwa njia zinazoifaa ardhi.",
+      "tts": {
+        "text": "Wanasaidia wakulima kulima chakula kwa njia zinazoifaa ardhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanachunguza biomu ili tuweze kuielewa vizuri zaidi.",
+      "text_markdown": "Wanachunguza biomu ili tuweze kuielewa vizuri zaidi.",
+      "tts": {
+        "text": "Wanachunguza biomu ili tuweze kuielewa vizuri zaidi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomu ya Mediterania yenye afya ni mahali patulivu, penye harufu nzuri, na pazuri.",
+      "text_markdown": "Biomu ya Mediterania yenye afya ni mahali patulivu, penye harufu nzuri, na pazuri.",
+      "tts": {
+        "text": "Biomu ya Mediterania yenye afya ni mahali patulivu, penye harufu nzuri, na pazuri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Biomu Leo",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inastahili utunzaji wetu.",
+      "text_markdown": "Inastahili utunzaji wetu.",
+      "tts": {
+        "text": "Inastahili utunzaji wetu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hitimisho",
+      "text_markdown": "Hitimisho"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiyo ndiyo biomu ya Mediterania.",
+      "text_markdown": "Hiyo ndiyo biomu ya Mediterania.",
+      "tts": {
+        "text": "Hiyo ndiyo biomu ya Mediterania.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulimwengu mkali, mkavu, wenye harufu nzuri wa mizeituni, vichaka vifupi, na jioni za joto za kiangazi.",
+      "text_markdown": "Ulimwengu mkali, mkavu, wenye harufu nzuri wa mizeituni, vichaka vifupi, na jioni za joto za kiangazi.",
+      "tts": {
+        "text": "Ulimwengu mkali, mkavu, wenye harufu nzuri wa mizeituni, vichaka vifupi, na jioni za joto za kiangazi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikiwa utawahi kusimama katika moja, kaa kimya kwa dakika moja.",
+      "text_markdown": "Ikiwa utawahi kusimama katika moja, kaa kimya kwa dakika moja.",
+      "tts": {
+        "text": "Ikiwa utawahi kusimama katika moja, kaa kimya kwa dakika moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nusa mimea ya viungo yenye joto hewani.",
+      "text_markdown": "Nusa mimea ya viungo yenye joto hewani.",
+      "tts": {
+        "text": "Nusa mimea ya viungo yenye joto hewani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sikiliza nyenze katika nyasi kavu.",
+      "text_markdown": "Sikiliza nyenze katika nyasi kavu.",
+      "tts": {
+        "text": "Sikiliza nyenze katika nyasi kavu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tazama kuelekea baharini.",
+      "text_markdown": "Tazama kuelekea baharini.",
+      "tts": {
+        "text": "Tazama kuelekea baharini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Hitimisho",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utahisi moyo wa biomu ukidunda karibu nawe.",
+      "text_markdown": "Utahisi moyo wa biomu ukidunda karibu nawe.",
+      "tts": {
+        "text": "Utahisi moyo wa biomu ukidunda karibu nawe.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

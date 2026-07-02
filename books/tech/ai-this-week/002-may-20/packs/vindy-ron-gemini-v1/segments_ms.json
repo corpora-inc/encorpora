@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "ms",
+  "total_segments": 167,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "text": "Selamat datang ke AI This Week.",
+      "text_markdown": "Selamat datang ke AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Selamat datang ke AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "text": "Saya Vindy.",
+      "text_markdown": "Saya Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Saya Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "block_type": "text",
+      "text": "Bersama saya, seperti biasa, ialah Ron.",
+      "text_markdown": "Bersama saya, seperti biasa, ialah Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bersama saya, seperti biasa, ialah Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "block_type": "text",
+      "text": "Saya sangat gembira dapat bersama awak di sini, Vindy.",
+      "text_markdown": "Saya sangat gembira dapat bersama awak di sini, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Saya sangat gembira dapat bersama awak di sini, Vindi.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "text": "Hari ini ialah Rabu, 20 Mei 2026.",
+      "text_markdown": "Hari ini ialah Rabu, 20 Mei 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini ialah Rabu, dua puluh Mei dua ribu dua puluh enam.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "block_type": "text",
+      "text": "Minggu ini memang padat.",
+      "text_markdown": "Minggu ini memang padat.",
+      "title": "",
+      "tts": {
+        "text": "Minggu ini memang padat.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "text": "Google mengadakan persidangan pembangunnya, Paus menyelesaikan ensiklik tentang kecerdasan buatan, dan dunia open-weights terus menghantar sambil yang lain ada pentas.",
+      "text_markdown": "Google mengadakan persidangan pembangunnya, Paus menyelesaikan ensiklik tentang kecerdasan buatan, dan dunia open-weights terus menghantar sambil yang lain ada pentas.",
+      "title": "",
+      "tts": {
+        "text": "Google mengadakan persidangan pembangunnya, Paus menyelesaikan ensiklik tentang kecerdasan buatan, dan dunia open weights terus menghantar sambil yang lain ada pentas.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "block_type": "text",
+      "text": "Akan datang — apa yang bergerak dalam open weights minggu ini.",
+      "text_markdown": "Akan datang — apa yang bergerak dalam open weights minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Akan datang — apa yang bergerak dalam open weights minggu ini.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "text": "Di mana papan pendahulu mendarat.",
+      "text_markdown": "Di mana papan pendahulu mendarat.",
+      "title": "",
+      "tts": {
+        "text": "Di mana papan pendahulu mendarat.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "block_type": "text",
+      "text": "Sekilas pantas melalui tajuk berita dari makmal yang lebih besar.",
+      "text_markdown": "Sekilas pantas melalui tajuk berita dari makmal yang lebih besar.",
+      "title": "",
+      "tts": {
+        "text": "Sekilas pantas melalui tajuk berita dari makmal yang lebih besar.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "text": "Cerita utama kami, ensiklik pertama Vatican tentang kecerdasan buatan.",
+      "text_markdown": "Cerita utama kami, ensiklik pertama Vatican tentang kecerdasan buatan.",
+      "title": "",
+      "tts": {
+        "text": "Cerita utama kami, ensiklik pertama Vatican tentang kecerdasan buatan.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "block_type": "text",
+      "text": "Dan konsep minggu ini ialah quantization — bagaimana model 7-bilion-parameter muat dalam telefon anda.",
+      "text_markdown": "Dan konsep minggu ini ialah quantization — bagaimana model 7-bilion-parameter muat dalam telefon anda.",
+      "title": "",
+      "tts": {
+        "text": "Dan konsep minggu ini ialah quantization — bagaimana model tujuh bilion parameter muat dalam telefon anda.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "text": "Ron, mari kita mulakan dengan open weights.",
+      "text_markdown": "Ron, mari kita mulakan dengan open weights.",
+      "title": "",
+      "tts": {
+        "text": "Ron, mari kita mulakan dengan open weights.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "block_type": "text",
+      "text": "Apa yang bergerak dalam komuniti minggu ini?",
+      "text_markdown": "Apa yang bergerak dalam komuniti minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Apa yang bergerak dalam komuniti minggu ini?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "block_type": "text",
+      "text": "Cerita open-weights terbesar sekarang ialah siapa yang melatih di mana.",
+      "text_markdown": "Cerita open-weights terbesar sekarang ialah siapa yang melatih di mana.",
+      "title": "",
+      "tts": {
+        "text": "Cerita open weights terbesar sekarang ialah siapa yang melatih di mana.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "text": "Dua daripada keluaran terbuka terkini yang paling menarik dilatih pada silikon bukan-NVIDIA.",
+      "text_markdown": "Dua daripada keluaran terbuka terkini yang paling menarik dilatih pada silikon bukan-NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Dua daripada keluaran terbuka terkini yang paling menarik dilatih pada silikon bukan NVIDIA.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "text": "Terangkan kepada kami.",
+      "text_markdown": "Terangkan kepada kami.",
+      "title": "",
+      "tts": {
+        "text": "Terangkan kepada kami.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "text": "Zhipu AI di Beijing menghantar keluarga GLM-5 awal tahun ini — GLM-5 pada Februari dan kemas kini yang dipanggil GLM-5.1 pada April.",
+      "text_markdown": "Zhipu AI di Beijing menghantar keluarga GLM-5 awal tahun ini — GLM-5 pada Februari dan kemas kini yang dipanggil GLM-5.1 pada April.",
+      "title": "",
+      "tts": {
+        "text": "Zhipu AI di Beijing menghantar keluarga GLM lima awal tahun ini — GLM lima pada Februari dan kemas kini yang dipanggil GLM lima titik satu pada April.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "block_type": "text",
+      "text": "Seluruh keluarga GLM-5 dilatih pada kira-kira 100,000 cip Huawei Ascend 910B, menggunakan rangka kerja MindSpore, dengan sifar GPU NVIDIA dalam gelung.",
+      "text_markdown": "Seluruh keluarga GLM-5 dilatih pada kira-kira 100,000 cip Huawei Ascend 910B, menggunakan rangka kerja MindSpore, dengan sifar GPU NVIDIA dalam gelung.",
+      "title": "",
+      "tts": {
+        "text": "Seluruh keluarga GLM lima dilatih pada kira-kira seratus ribu cip Huawei Ascend sembilan satu kosong B, menggunakan rangka kerja MindSpore, dengan sifar GPU NVIDIA dalam gelung.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "block_type": "text",
+      "text": "Dan Zyphra, makmal Amerika, menghantar model yang dipanggil ZAYA1-8B awal bulan ini, pra-dilatih pada kluster nod AMD MI300x yang dibina dengan IBM.",
+      "text_markdown": "Dan Zyphra, makmal Amerika, menghantar model yang dipanggil ZAYA1-8B awal bulan ini, pra-dilatih pada kluster nod AMD MI300x yang dibina dengan IBM.",
+      "title": "",
+      "tts": {
+        "text": "Dan Zyphra, makmal Amerika, menghantar model yang dipanggil ZAYA satu lapan B awal bulan ini, pra dilatih pada kluster nod AMD MI tiga ratus x yang dibina dengan IBM.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-021",
+      "block_type": "text",
+      "text": "Mengapa silikon itu penting?",
+      "text_markdown": "Mengapa silikon itu penting?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa silikon itu penting?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "block_type": "text",
+      "text": "Dua sebab.",
+      "text_markdown": "Dua sebab.",
+      "title": "",
+      "tts": {
+        "text": "Dua sebab.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "text": "Sebagai perkara pertama, selama tiga tahun lalu, setiap larian latihan sempadan yang serius memerlukan pemecut H100 atau H200 daripada NVIDIA.",
+      "text_markdown": "Sebagai perkara pertama, selama tiga tahun lalu, setiap larian latihan sempadan yang serius memerlukan pemecut H100 atau H200 daripada NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Sebagai perkara pertama, selama tiga tahun lalu, setiap larian latihan sempadan yang serius memerlukan pemecut H seratus atau H dua ratus daripada en vi di ya.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "block_type": "text",
+      "text": "Dua — bekalan itu telah menjadi kekangan, dan andaian ialah sempadan terbuka dan Cina ketinggalan satu generasi kerananya.",
+      "text_markdown": "Dua — bekalan itu telah menjadi kekangan, dan andaian ialah sempadan terbuka dan Cina ketinggalan satu generasi kerananya.",
+      "title": "",
+      "tts": {
+        "text": "Dua — bekalan itu telah menjadi kekangan, dan andaian ialah sempadan terbuka dan Cina ketinggalan satu generasi kerananya.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "text": "Sebaik sahaja larian kelas-sempadan mendarat pada Huawei Ascend atau AMD, setiap makmal terbuka lain boleh menyalin resipinya.",
+      "text_markdown": "Sebaik sahaja larian kelas-sempadan mendarat pada Huawei Ascend atau AMD, setiap makmal terbuka lain boleh menyalin resipinya.",
+      "title": "",
+      "tts": {
+        "text": "Sebaik sahaja larian kelas sempadan mendarat pada Huawei Ascend atau AMD, setiap makmal terbuka lain boleh menyalin resipinya.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "block_type": "text",
+      "text": "Demikianlah perkara yang berlaku pada tahun ini.",
+      "text_markdown": "Demikianlah perkara yang berlaku pada tahun ini.",
+      "title": "",
+      "tts": {
+        "text": "Demikianlah perkara yang berlaku pada tahun ini.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "block_type": "text",
+      "text": "Ada lagi daripada pihak terbuka minggu ini?",
+      "text_markdown": "Ada lagi daripada pihak terbuka minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ada lagi daripada pihak terbuka minggu ini?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "block_type": "text",
+      "text": "Ya, ada tiga perkara yang wajar kita beri perhatian.",
+      "text_markdown": "Ya, ada tiga perkara yang wajar kita beri perhatian.",
+      "title": "",
+      "tts": {
+        "text": "Ya, ada tiga perkara yang wajar kita beri perhatian.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "text": "Model Kimi K2.6 Moonshot, yang dikeluarkan pada akhir April, masih berada di kedudukan teratas OpenRouter dari segi jumlah token, setelah mendahului carta pada minggu pertamanya dengan 1.88 trilion token yang disajikan.",
+      "text_markdown": "Model Kimi K2.6 Moonshot, yang dikeluarkan pada akhir April, masih berada di kedudukan teratas OpenRouter dari segi jumlah token, setelah mendahului carta pada minggu pertamanya dengan 1.88 trilion token yang disajikan.",
+      "title": "",
+      "tts": {
+        "text": "Model Kimi K dua perpuluhan enam Moonshot, yang dikeluarkan pada akhir April, masih berada di kedudukan teratas Open Router dari segi jumlah token, setelah mendahului carta pada minggu pertamanya dengan satu perpuluhan lapan lapan trilion token yang disajikan.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "block_type": "text",
+      "text": "Untuk kali pertama, model Cina dengan pemberat terbuka mengatasi Claude Sonnet dan DeepSeek pada penghala komersial utama.",
+      "text_markdown": "Untuk kali pertama, model Cina dengan pemberat terbuka mengatasi Claude Sonnet dan DeepSeek pada penghala komersial utama.",
+      "title": "",
+      "tts": {
+        "text": "Untuk kali pertama, model Cina dengan pemberat terbuka mengatasi Klod Sonet dan Dip Seek pada penghala komersial utama.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "text": "DeepSeek V4-Pro berada pada 1.6 trilion parameter jumlah dengan 49 bilion aktif.",
+      "text_markdown": "DeepSeek V4-Pro berada pada 1.6 trilion parameter jumlah dengan 49 bilion aktif.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V empat Pro berada pada satu titik enam trilion parameter jumlah dengan empat puluh sembilan bilion aktif.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "block_type": "text",
+      "text": "Adik beradik mereka yang lebih murah, V4-Flash, ialah 284 bilion jumlah dengan 13 bilion aktif.",
+      "text_markdown": "Adik beradik mereka yang lebih murah, V4-Flash, ialah 284 bilion jumlah dengan 13 bilion aktif.",
+      "title": "",
+      "tts": {
+        "text": "Adik beradik mereka yang lebih murah, V empat Flash, ialah dua ratus lapan puluh empat bilion jumlah dengan tiga belas bilion aktif.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "block_type": "text",
+      "text": "Kedua-duanya tersedia sebagai wajaran terbuka di bawah lesen MIT.",
+      "text_markdown": "Kedua-duanya tersedia sebagai wajaran terbuka di bawah lesen MIT.",
+      "title": "",
+      "tts": {
+        "text": "Kedua-duanya tersedia sebagai wajaran terbuka di bawah lesen M I T.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "block_type": "text",
+      "text": "Katakan lebih lanjut tentang ZAYA1-8B khususnya.",
+      "text_markdown": "Katakan lebih lanjut tentang ZAYA1-8B khususnya.",
+      "title": "",
+      "tts": {
+        "text": "Katakan lebih lanjut tentang ZAYA satu lapan B khususnya.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "block_type": "text",
+      "text": "Ia adalah model mixture-of-experts kecil — 8.4 bilion parameter jumlah, dengan hanya kira-kira 760 juta aktif setiap token.",
+      "text_markdown": "Ia adalah model mixture-of-experts kecil — 8.4 bilion parameter jumlah, dengan hanya kira-kira 760 juta aktif setiap token.",
+      "title": "",
+      "tts": {
+        "text": "Ia adalah model mixture of experts kecil — lapan titik empat bilion parameter jumlah, dengan hanya kira-kira tujuh ratus enam puluh juta aktif setiap token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "block_type": "text",
+      "text": "Lesen Apache 2.0, jadi anda boleh menggunakannya secara komersial.",
+      "text_markdown": "Lesen Apache 2.0, jadi anda boleh menggunakannya secara komersial.",
+      "title": "",
+      "tts": {
+        "text": "Lesen Apache dua titik kosong, jadi anda boleh menggunakannya secara komersial.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "block_type": "text",
+      "text": "Pra-dilatih pada kluster kira-kira 1,024 nod AMD MI300x, tanpa perkakasan NVIDIA terlibat.",
+      "text_markdown": "Pra-dilatih pada kluster kira-kira 1,024 nod AMD MI300x, tanpa perkakasan NVIDIA terlibat.",
+      "title": "",
+      "tts": {
+        "text": "Pra dilatih pada kluster kira-kira seribu dua puluh empat nod AMD MI tiga ratus x, tanpa perkakasan NVIDIA terlibat.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "text": "Ia mencapai 89.1 pada AIME, penanda aras olimpiad matematik, mengalahkan model yang jauh lebih besar pada matematik dan pengekodan sambil berjalan pada belanjawan parameter aktif sub-1-bilion.",
+      "text_markdown": "Ia mencapai 89.1 pada AIME, penanda aras olimpiad matematik, mengalahkan model yang jauh lebih besar pada matematik dan pengekodan sambil berjalan pada belanjawan parameter aktif sub-1-bilion.",
+      "title": "",
+      "tts": {
+        "text": "Ia mencapai lapan puluh sembilan titik satu pada AIME, penanda aras olimpiad matematik, mengalahkan model yang jauh lebih besar pada matematik dan pengekodan sambil berjalan pada belanjawan parameter aktif sub satu bilion.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "text": "Dua makmal open-weights melatih tanpa NVIDIA dalam dua bulan.",
+      "text_markdown": "Dua makmal open-weights melatih tanpa NVIDIA dalam dua bulan.",
+      "title": "",
+      "tts": {
+        "text": "Dua makmal open weights melatih tanpa NVIDIA dalam dua bulan.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "block_type": "text",
+      "text": "Ini bukan perkara yang berlaku secara rawak.",
+      "text_markdown": "Ini bukan perkara yang berlaku secara rawak.",
+      "title": "",
+      "tts": {
+        "text": "Ini bukan perkara yang berlaku secara rawak.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "block_type": "text",
+      "text": "Kerja-kerja paip akhirnya menyusul — AMD ROCm dan Huawei CANN kedua-duanya menjadi boleh digunakan pada 2025, dan 2026 adalah ketika komuniti terbuka menghantar operasi kelas hadapan sebenar pada platform tersebut.",
+      "text_markdown": "Kerja-kerja paip akhirnya menyusul — AMD ROCm dan Huawei CANN kedua-duanya menjadi boleh digunakan pada 2025, dan 2026 adalah ketika komuniti terbuka menghantar operasi kelas hadapan sebenar pada platform tersebut.",
+      "title": "",
+      "tts": {
+        "text": "Kerja-kerja paip akhirnya menyusul — AMD ROCm dan Huawei CANN kedua-duanya menjadi boleh digunakan pada dua ribu dua puluh lima, dan dua ribu dua puluh enam adalah ketika komuniti terbuka menghantar operasi kelas hadapan sebenar pada platform tersebut.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-042",
+      "block_type": "text",
+      "text": "Bagaimana pula dengan bahagian infrastruktur?",
+      "text_markdown": "Bagaimana pula dengan bahagian infrastruktur?",
+      "title": "",
+      "tts": {
+        "text": "Bagaimana pula dengan bahagian infrastruktur?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "block_type": "text",
+      "text": "vLLM v0.21 dilancarkan pada Jumaat, 15 Mei.",
+      "text_markdown": "vLLM v0.21 dilancarkan pada Jumaat, 15 Mei.",
+      "title": "",
+      "tts": {
+        "text": "v L L M versi kosong titik dua puluh satu dilancarkan pada Jumaat, lima belas Mei.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "block_type": "text",
+      "text": "Sistem vLLM ialah tumpukan pelayan terbuka, iaitu perkara yang benar-benar anda jalankan apabila mahu mengehos model sendiri.",
+      "text_markdown": "Sistem vLLM ialah tumpukan pelayan terbuka, iaitu perkara yang benar-benar anda jalankan apabila mahu mengehos model sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Sistem vi el el em ialah tumpukan pelayan terbuka, iaitu perkara yang benar-benar anda jalankan apabila mahu mengehos model sendiri.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "text": "Ia mengendalikan batching, paging, dan penggunaan semula cache KV, dan ia kini menjadi lalai dalam pengeluaran untuk semua orang yang tidak menggunakan API tertutup.",
+      "text_markdown": "Ia mengendalikan batching, paging, dan penggunaan semula cache KV, dan ia kini menjadi lalai dalam pengeluaran untuk semua orang yang tidak menggunakan API tertutup.",
+      "title": "",
+      "tts": {
+        "text": "Ia mengendalikan batching, paging, dan penggunaan semula cache KV, dan ia kini menjadi lalai dalam pengeluaran untuk semua orang yang tidak menggunakan API tertutup.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "block_type": "text",
+      "text": "Keluaran ini menambah offload KV dengan pengumpuk memori hibrid, dan backend perhatian baharu yang diselaraskan untuk prefill DeepSeek-R1 dan Kimi K2.5 pada GPU Blackwell.",
+      "text_markdown": "Keluaran ini menambah offload KV dengan pengumpuk memori hibrid, dan backend perhatian baharu yang diselaraskan untuk prefill DeepSeek-R1 dan Kimi K2.5 pada GPU Blackwell.",
+      "title": "",
+      "tts": {
+        "text": "Keluaran ini menambah offload KV dengan pengumpuk memori hibrid, dan backend perhatian baharu yang diselaraskan untuk prefill DeepSeek R satu dan Kimi K dua titik lima pada GPU Blackwell.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "block_type": "text",
+      "text": "Susunan pelayan terbuka terus mengeluarkan hasil, sementara makmal besar menyampaikan ucapan utama.",
+      "text_markdown": "Susunan pelayan terbuka terus mengeluarkan hasil, sementara makmal besar menyampaikan ucapan utama.",
+      "title": "",
+      "tts": {
+        "text": "Susunan pelayan terbuka terus mengeluarkan hasil, sementara makmal besar menyampaikan ucapan utama.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "text": "Baiklah, mari kita beralih ke papan pendahulu.",
+      "text_markdown": "Baiklah, mari kita beralih ke papan pendahulu.",
+      "title": "",
+      "tts": {
+        "text": "Baiklah, mari kita beralih ke papan pendahulu.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-049",
+      "block_type": "text",
+      "text": "Ron, apa yang kekal dan apa yang berubah?",
+      "text_markdown": "Ron, apa yang kekal dan apa yang berubah?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apa yang kekal dan apa yang berubah?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "block_type": "text",
+      "text": "Kebanyakannya kekal.",
+      "text_markdown": "Kebanyakannya kekal.",
+      "title": "",
+      "tts": {
+        "text": "Kebanyakannya kekal.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "text": "Claude Opus 4.7 daripada Anthropic masih nombor satu di papan pendahulu pengkodan LM Arena, sekitar Elo 1569.",
+      "text_markdown": "Claude Opus 4.7 daripada Anthropic masih nombor satu di papan pendahulu pengkodan LM Arena, sekitar Elo 1569.",
+      "title": "",
+      "tts": {
+        "text": "Claude Opus empat titik tujuh daripada Anthropic masih nombor satu di papan pendahulu pengkodan LM Arena, sekitar Elo seribu lima ratus enam puluh sembilan.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "block_type": "text",
+      "text": "GPT-5.5 OpenAI dalam mod penaakulan tinggi berada di nombor tujuh di papan yang sama.",
+      "text_markdown": "GPT-5.5 OpenAI dalam mod penaakulan tinggi berada di nombor tujuh di papan yang sama.",
+      "title": "",
+      "tts": {
+        "text": "GPT lima titik lima OpenAI dalam mod penaakulan tinggi berada di nombor tujuh di papan yang sama.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "text": "Dan di sub-papan pengkodan pembangunan web, GPT-5.5 berada di kedudukan kesembilan.",
+      "text_markdown": "Dan di sub-papan pengkodan pembangunan web, GPT-5.5 berada di kedudukan kesembilan.",
+      "title": "",
+      "tts": {
+        "text": "Dan di sub-papan pengkodan pembangunan web, ji pi ti lima perpuluhan lima berada di kedudukan kesembilan.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-054",
+      "block_type": "text",
+      "text": "Di manakah model Google yang baharu mendarat?",
+      "text_markdown": "Di manakah model Google yang baharu mendarat?",
+      "title": "",
+      "tts": {
+        "text": "Di manakah model Google yang baharu mendarat?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "block_type": "text",
+      "text": "Gemini 3.5 Flash dilancarkan pada Selasa di Google I/O, jadi ia belum berada di papan lagi.",
+      "text_markdown": "Gemini 3.5 Flash dilancarkan pada Selasa di Google I/O, jadi ia belum berada di papan lagi.",
+      "title": "",
+      "tts": {
+        "text": "Gemini tiga titik lima Flash dilancarkan pada Selasa di Google I O, jadi ia belum berada di papan lagi.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "block_type": "text",
+      "text": "Arena memerlukan beberapa ribu undian perbandingan langsung sebelum model memperoleh skor Elo yang betul-betul mantap.",
+      "text_markdown": "Arena memerlukan beberapa ribu undian perbandingan langsung sebelum model memperoleh skor Elo yang betul-betul mantap.",
+      "title": "",
+      "tts": {
+        "text": "Arena memerlukan beberapa ribu undian perbandingan langsung sebelum model memperoleh skor i lo yang betul betul mantap.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "block_type": "text",
+      "text": "Jangkakan Gemini 3.5 Flash muncul minggu depan dan Gemini 3.5 Pro mendarat pada Jun.",
+      "text_markdown": "Jangkakan Gemini 3.5 Flash muncul minggu depan dan Gemini 3.5 Pro mendarat pada Jun.",
+      "title": "",
+      "tts": {
+        "text": "Jangkakan Gemini tiga titik lima Flash muncul minggu depan dan Gemini tiga titik lima Pro mendarat pada Jun.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "text": "Ada apa-apa di bahagian kualiti eval?",
+      "text_markdown": "Ada apa-apa di bahagian kualiti eval?",
+      "title": "",
+      "tts": {
+        "text": "Ada apa-apa di bahagian kualiti eval?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-059",
+      "block_type": "text",
+      "text": "Ya, rujuk kembali minggu lepas.",
+      "text_markdown": "Ya, rujuk kembali minggu lepas.",
+      "title": "",
+      "tts": {
+        "text": "Ya, rujuk kembali minggu lepas.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "block_type": "text",
+      "text": "SWE-bench Verified masih dihentikan, iaitu penanda aras pengekodan yang digunakan oleh OpenAI untuk rujukan, kerana lebih separuh daripada tugasan sukarnya mempunyai ujian yang rosak.",
+      "text_markdown": "SWE-bench Verified masih dihentikan, iaitu penanda aras pengekodan yang digunakan oleh OpenAI untuk rujukan, kerana lebih separuh daripada tugasan sukarnya mempunyai ujian yang rosak.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench Verified masih dihentikan, iaitu penanda aras pengekodan yang digunakan oleh OpenAI untuk rujukan, kerana lebih separuh daripada tugasan sukarnya mempunyai ujian yang rosak.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "text": "Papan yang perlu diperhatikan sekarang adalah SWE-bench Pro dan projek yang dipanggil SWE-rebench.",
+      "text_markdown": "Papan yang perlu diperhatikan sekarang adalah SWE-bench Pro dan projek yang dipanggil SWE-rebench.",
+      "title": "",
+      "tts": {
+        "text": "Papan yang perlu diperhatikan sekarang adalah SWE-bench Pro dan projek yang dipanggil SWE-rebench.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "block_type": "text",
+      "text": "Mereka berdua merahsiakan kod ujian supaya model tidak dapat dilatih menggunakan kod itu.",
+      "text_markdown": "Mereka berdua merahsiakan kod ujian supaya model tidak dapat dilatih menggunakan kod itu.",
+      "title": "",
+      "tts": {
+        "text": "Mereka berdua merahsiakan kod ujian supaya model tidak dapat dilatih menggunakan kod itu.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "block_type": "text",
+      "text": "Dan jurang terbuka berbanding tertutup?",
+      "text_markdown": "Dan jurang terbuka berbanding tertutup?",
+      "title": "",
+      "tts": {
+        "text": "Dan jurang terbuka berbanding tertutup?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "block_type": "text",
+      "text": "Menurut firma penanda aras itu, dalam ukuran kecerdasan penilaian silang, jurangnya kini berada antara 5 dengan 15 mata.",
+      "text_markdown": "Menurut firma penanda aras itu, dalam ukuran kecerdasan penilaian silang, jurangnya kini berada antara 5 dengan 15 mata.",
+      "title": "",
+      "tts": {
+        "text": "Menurut firma penanda aras itu, dalam ukuran kecerdasan penilaian silang, jurangnya kini berada antara lima dengan lima belas mata.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-065",
+      "block_type": "text",
+      "text": "Itu antara 30 dengan 40 mata, 18 bulan lalu.",
+      "text_markdown": "Itu antara 30 dengan 40 mata, 18 bulan lalu.",
+      "title": "",
+      "tts": {
+        "text": "Itu antara tiga puluh dengan empat puluh mata, lapan belas bulan lalu.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "block_type": "text",
+      "text": "Model Kimi K2.6 dan DeepSeek V4-Pro berada dalam jalur tersebut, berbanding GPT-5.5 dan Opus 4.7.",
+      "text_markdown": "Model Kimi K2.6 dan DeepSeek V4-Pro berada dalam jalur tersebut, berbanding GPT-5.5 dan Opus 4.7.",
+      "title": "",
+      "tts": {
+        "text": "Model Kimi K versi dua perpuluhan enam dan DeepSeek V versi empat Pro berada dalam jalur tersebut, berbanding GPT versi lima perpuluhan lima dan Opus versi empat perpuluhan tujuh.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-067",
+      "block_type": "text",
+      "text": "Sekarang mari kita beralih ke tajuk berita.",
+      "text_markdown": "Sekarang mari kita beralih ke tajuk berita.",
+      "title": "",
+      "tts": {
+        "text": "Sekarang mari kita beralih ke tajuk berita.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "block_type": "text",
+      "text": "Ron, apa yang ada dalam klip pantas minggu ini?",
+      "text_markdown": "Ron, apa yang ada dalam klip pantas minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apa yang ada dalam klip pantas minggu ini?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "block_type": "text",
+      "text": "Persidangan pembangun Google berlangsung pada hari Selasa dan Rabu.",
+      "text_markdown": "Persidangan pembangun Google berlangsung pada hari Selasa dan Rabu.",
+      "title": "",
+      "tts": {
+        "text": "Persidangan pembangun Gugel berlangsung pada hari Selasa dan Rabu.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "block_type": "text",
+      "text": "Pelancaran utama adalah Gemini 3.5 Flash, Gemini Omni untuk penyuntingan video perbualan, dan Gemini Spark, agen yang berjalan 24/7 pada mesin maya awan yang bukan milik anda.",
+      "text_markdown": "Pelancaran utama adalah Gemini 3.5 Flash, Gemini Omni untuk penyuntingan video perbualan, dan Gemini Spark, agen yang berjalan 24/7 pada mesin maya awan yang bukan milik anda.",
+      "title": "",
+      "tts": {
+        "text": "Pelancaran utama adalah Gemini tiga titik lima Flash, Gemini Omni untuk penyuntingan video perbualan, dan Gemini Spark, agen yang berjalan dua puluh empat tujuh pada mesin maya awan yang bukan milik anda.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "block_type": "text",
+      "text": "Perlu diperhatikan bahawa corak yang sama — agen yang berjalan pada mesinnya sendiri dan melakukan kerja berbilang langkah — adalah sesuatu yang anda sudah boleh lakukan hari ini dengan alat terbuka seperti Aider atau OpenCode yang dihala ke model tempatan.",
+      "text_markdown": "Perlu diperhatikan bahawa corak yang sama — agen yang berjalan pada mesinnya sendiri dan melakukan kerja berbilang langkah — adalah sesuatu yang anda sudah boleh lakukan hari ini dengan alat terbuka seperti Aider atau OpenCode yang dihala ke model tempatan.",
+      "title": "",
+      "tts": {
+        "text": "Perlu diperhatikan bahawa corak yang sama — agen yang berjalan pada mesinnya sendiri dan melakukan kerja berbilang langkah — adalah sesuatu yang anda sudah boleh lakukan hari ini dengan alat terbuka seperti Aider atau OpenCode yang dihala ke model tempatan.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "block_type": "text",
+      "text": "Pakej Google AI Ultra menurunkan harga peringkat permulaannya daripada $250 sebulan kepada $100 sebulan, dan Samsung mengumumkan cermin mata realiti lanjutan dengan Gemini terbina masuk.",
+      "text_markdown": "Pakej Google AI Ultra menurunkan harga peringkat permulaannya daripada $250 sebulan kepada $100 sebulan, dan Samsung mengumumkan cermin mata realiti lanjutan dengan Gemini terbina masuk.",
+      "title": "",
+      "tts": {
+        "text": "Pakej Gugel A I Ultra menurunkan harga peringkat permulaannya daripada dua ratus lima puluh dolar sebulan kepada seratus dolar sebulan, dan Semsang mengumumkan cermin mata realiti lanjutan dengan Jemini terbina masuk.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "block_type": "text",
+      "text": "Had prompt harian telah diganti dengan belanjawan pengiraan yang disegarkan setiap lima jam.",
+      "text_markdown": "Had prompt harian telah diganti dengan belanjawan pengiraan yang disegarkan setiap lima jam.",
+      "title": "",
+      "tts": {
+        "text": "Had prompt harian telah diganti dengan belanjawan pengiraan yang disegarkan setiap lima jam.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-074",
+      "block_type": "text",
+      "text": "Dan di bahagian kakitangan?",
+      "text_markdown": "Dan di bahagian kakitangan?",
+      "title": "",
+      "tts": {
+        "text": "Dan di bahagian kakitangan?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "block_type": "text",
+      "text": "Andrej Karpathy menyertai Anthropic pada Selasa.",
+      "text_markdown": "Andrej Karpathy menyertai Anthropic pada Selasa.",
+      "title": "",
+      "tts": {
+        "text": "Andrej Karpathy menyertai Anthropic pada Selasa.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "block_type": "text",
+      "text": "Dia berada dalam pasukan pre-training, mengetuai kumpulan yang tertumpu pada menggunakan Claude untuk mempercepatkan penyelidikan pre-training.",
+      "text_markdown": "Dia berada dalam pasukan pre-training, mengetuai kumpulan yang tertumpu pada menggunakan Claude untuk mempercepatkan penyelidikan pre-training.",
+      "title": "",
+      "tts": {
+        "text": "Dia berada dalam pasukan pre-training, mengetuai kumpulan yang tertumpu pada menggunakan Claude untuk mempercepatkan penyelidikan pre-training.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "block_type": "text",
+      "text": "Karpathy adalah ahli pengasas OpenAI, kemudian menjalankan kerja AI Tesla, kemudian memulakan Eureka Labs untuk pendidikan AI.",
+      "text_markdown": "Karpathy adalah ahli pengasas OpenAI, kemudian menjalankan kerja AI Tesla, kemudian memulakan Eureka Labs untuk pendidikan AI.",
+      "title": "",
+      "tts": {
+        "text": "Karpathy adalah ahli pengasas OpenAI, kemudian menjalankan kerja AI Tesla, kemudian memulakan Eureka Labs untuk pendidikan AI.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "block_type": "text",
+      "text": "Bagaimana pula dengan Apple?",
+      "text_markdown": "Bagaimana pula dengan Apple?",
+      "title": "",
+      "tts": {
+        "text": "Bagaimana pula dengan Apple?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "block_type": "text",
+      "text": "Ketua Pegawai Eksekutif Google Cloud, Thomas Kurian, mengesahkan minggu ini bahawa Gemini akan menggerakkan versi Siri menjelang penghujung 2026 nanti.",
+      "text_markdown": "Ketua Pegawai Eksekutif Google Cloud, Thomas Kurian, mengesahkan minggu ini bahawa Gemini akan menggerakkan versi Siri menjelang penghujung 2026 nanti.",
+      "title": "",
+      "tts": {
+        "text": "Ketua Pegawai Eksekutif Gugel Klaud, Tomas Kurian, mengesahkan minggu ini bahawa Gemini akan menggerakkan versi Siri menjelang penghujung dua ribu dua puluh enam nanti.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "block_type": "text",
+      "text": "Perjanjian itu dilaksanakan melalui kerangka model asas milik Apple, jadi Apple masih mengekalkan lapisan integrasinya.",
+      "text_markdown": "Perjanjian itu dilaksanakan melalui kerangka model asas milik Apple, jadi Apple masih mengekalkan lapisan integrasinya.",
+      "title": "",
+      "tts": {
+        "text": "Perjanjian itu dilaksanakan melalui kerangka model asas milik Apple, jadi Apple masih mengekalkan lapisan integrasinya.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-081",
+      "block_type": "text",
+      "text": "Bagaimana pula dengan saman terhadap Musk?",
+      "text_markdown": "Bagaimana pula dengan saman terhadap Musk?",
+      "title": "",
+      "tts": {
+        "text": "Bagaimana pula dengan saman terhadap Mask?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "block_type": "text",
+      "text": "Sembilan orang juri California menolak saman Elon Musk terhadap OpenAI pada hari Isnin, 18 Mei.",
+      "text_markdown": "Sembilan orang juri California menolak saman Elon Musk terhadap OpenAI pada hari Isnin, 18 Mei.",
+      "title": "",
+      "tts": {
+        "text": "Sembilan orang juri California menolak saman Elon Musk terhadap OpenAI pada hari Isnin, lapan belas Mei.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-083",
+      "block_type": "text",
+      "text": "Mereka berunding kurang daripada dua jam.",
+      "text_markdown": "Mereka berunding kurang daripada dua jam.",
+      "title": "",
+      "tts": {
+        "text": "Mereka berunding kurang daripada dua jam.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "block_type": "text",
+      "text": "Juri mendapati Musk telah memfailkan melepasi had masa statut, dan hakim menolak kes tersebut.",
+      "text_markdown": "Juri mendapati Musk telah memfailkan melepasi had masa statut, dan hakim menolak kes tersebut.",
+      "title": "",
+      "tts": {
+        "text": "Juri mendapati Musk telah memfailkan melepasi had masa statut, dan hakim menolak kes tersebut.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-085",
+      "block_type": "text",
+      "text": "Apa-apa daripada dasar?",
+      "text_markdown": "Apa-apa daripada dasar?",
+      "title": "",
+      "tts": {
+        "text": "Apa-apa daripada dasar?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "block_type": "text",
+      "text": "Setiausaha Perbendaharaan Scott Bessent mengumumkan di sidang kemuncak Trump-Xi di Beijing pada 14 Mei bahawa AS dan China akan menubuhkan protokol rasmi mengenai keselamatan AI.",
+      "text_markdown": "Setiausaha Perbendaharaan Scott Bessent mengumumkan di sidang kemuncak Trump-Xi di Beijing pada 14 Mei bahawa AS dan China akan menubuhkan protokol rasmi mengenai keselamatan AI.",
+      "title": "",
+      "tts": {
+        "text": "Setiausaha Perbendaharaan Scott Bessent mengumumkan di sidang kemuncak Trump Xi di Beijing pada empat belas Mei bahawa AS dan China akan menubuhkan protokol rasmi mengenai keselamatan AI.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "block_type": "text",
+      "text": "Langkah itu disifatkan sebagai amalan terbaik untuk menghalang sistem kecerdasan buatan paling maju daripada jatuh ke tangan pelaku bukan negara, bukan sebagai peraturan wajib, tetapi sebagai persetujuan untuk terus berbincang.",
+      "text_markdown": "Langkah itu disifatkan sebagai amalan terbaik untuk menghalang sistem kecerdasan buatan paling maju daripada jatuh ke tangan pelaku bukan negara, bukan sebagai peraturan wajib, tetapi sebagai persetujuan untuk terus berbincang.",
+      "title": "",
+      "tts": {
+        "text": "Langkah itu disifatkan sebagai amalan terbaik untuk menghalang sistem kecerdasan buatan paling maju daripada jatuh ke tangan pelaku bukan negara, bukan sebagai peraturan wajib, tetapi sebagai persetujuan untuk terus berbincang.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "block_type": "text",
+      "text": "Kali pertama kedua-dua pihak membingkai keselamatan AI sebagai dua hala dan bukannya persaingan tulen.",
+      "text_markdown": "Kali pertama kedua-dua pihak membingkai keselamatan AI sebagai dua hala dan bukannya persaingan tulen.",
+      "title": "",
+      "tts": {
+        "text": "Kali pertama kedua-dua pihak membingkai keselamatan AI sebagai dua hala dan bukannya persaingan tulen.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-089",
+      "block_type": "text",
+      "text": "Sekarang mari kita kembali kepada cerita utama.",
+      "text_markdown": "Sekarang mari kita kembali kepada cerita utama.",
+      "title": "",
+      "tts": {
+        "text": "Sekarang mari kita kembali kepada cerita utama.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "block_type": "text",
+      "text": "Ron, Pope menulis tentang kita minggu lepas.",
+      "text_markdown": "Ron, Pope menulis tentang kita minggu lepas.",
+      "title": "",
+      "tts": {
+        "text": "Ron, Pope menulis tentang kita minggu lepas.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "block_type": "text",
+      "text": "Pope Leo XIV telah menamatkan ensiklik pertamanya.",
+      "text_markdown": "Pope Leo XIV telah menamatkan ensiklik pertamanya.",
+      "title": "",
+      "tts": {
+        "text": "Pope Leo keempat belas telah menamatkan ensiklik pertamanya.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-092",
+      "block_type": "text",
+      "text": "Magnifica Humanitas ialah tajuknya.",
+      "text_markdown": "Magnifica Humanitas ialah tajuknya.",
+      "title": "",
+      "tts": {
+        "text": "Mag ni fi ka Hu ma ni tas ialah tajuknya.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "block_type": "text",
+      "text": "Ungkapan itu dialih bahasa menjadi frasa “kemegahan umat manusia”.",
+      "text_markdown": "Ungkapan itu dialih bahasa menjadi frasa “kemegahan umat manusia”.",
+      "title": "",
+      "tts": {
+        "text": "Ungkapan itu dialih bahasa menjadi frasa kemegahan umat manusia.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "block_type": "text",
+      "text": "Vatican menerbitkannya pada hari Isnin, 25 Mei.",
+      "text_markdown": "Vatican menerbitkannya pada hari Isnin, 25 Mei.",
+      "title": "",
+      "tts": {
+        "text": "Vatican menerbitkannya pada hari Isnin, dua puluh lima Mei.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "block_type": "text",
+      "text": "Bahagian ini mengupas kepintaran buatan serta perlindungan maruah manusia.",
+      "text_markdown": "Bahagian ini mengupas kepintaran buatan serta perlindungan maruah manusia.",
+      "title": "",
+      "tts": {
+        "text": "Bahagian ini mengupas kepintaran buatan serta perlindungan maruah manusia.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-096",
+      "block_type": "text",
+      "text": "Bila Pope menandatanganinya?",
+      "text_markdown": "Bila Pope menandatanganinya?",
+      "title": "",
+      "tts": {
+        "text": "Bila Pope menandatanganinya?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-097",
+      "block_type": "text",
+      "text": "Tanggal 15 Mei tercatat dalam takwim.",
+      "text_markdown": "Tanggal 15 Mei tercatat dalam takwim.",
+      "title": "",
+      "tts": {
+        "text": "Tanggal lima belas Mei tercatat dalam takwim.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "block_type": "text",
+      "text": "Tarikh itu dipilih dengan sengaja.",
+      "text_markdown": "Tarikh itu dipilih dengan sengaja.",
+      "title": "",
+      "tts": {
+        "text": "Tarikh itu dipilih dengan sengaja.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "block_type": "text",
+      "text": "Tarikh itu jatuh tepat 135 tahun selepas Paus Leo XIII menandatangani ensiklik Rerum Novarum pada hari yang sama.",
+      "text_markdown": "Tarikh itu jatuh tepat 135 tahun selepas Paus Leo XIII menandatangani ensiklik Rerum Novarum pada hari yang sama.",
+      "title": "",
+      "tts": {
+        "text": "Tarikh itu jatuh tepat seratus tiga puluh lima tahun selepas Paus Leo ketiga belas menandatangani ensiklik Re rum No va rum pada hari yang sama.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "block_type": "text",
+      "text": "Apa itu Rerum Novarum?",
+      "text_markdown": "Apa itu Rerum Novarum?",
+      "title": "",
+      "tts": {
+        "text": "Apa itu Rerum Novarum?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "block_type": "text",
+      "text": "Ensiklik Rerum Novarum ialah ajaran asas Katolik tentang buruh dan modal.",
+      "text_markdown": "Ensiklik Rerum Novarum ialah ajaran asas Katolik tentang buruh dan modal.",
+      "title": "",
+      "tts": {
+        "text": "Surat pekeliling paus tentang perkara baharu ialah ajaran asas Katolik tentang buruh dan modal.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "block_type": "text",
+      "text": "Ia keluar pada 1891, di tengah-tengah revolusi industri.",
+      "text_markdown": "Ia keluar pada 1891, di tengah-tengah revolusi industri.",
+      "title": "",
+      "tts": {
+        "text": "Ia keluar pada lapan belas sembilan puluh satu, di tengah-tengah revolusi industri.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "block_type": "text",
+      "text": "Ia mentakrifkan bagaimana Gereja berfikir tentang pekerja, pemilik, gaji, dan maruah kerja — dan kerangka itu telah bertahan lebih daripada satu abad.",
+      "text_markdown": "Ia mentakrifkan bagaimana Gereja berfikir tentang pekerja, pemilik, gaji, dan maruah kerja — dan kerangka itu telah bertahan lebih daripada satu abad.",
+      "title": "",
+      "tts": {
+        "text": "Ia mentakrifkan bagaimana Gereja berfikir tentang pekerja, pemilik, gaji, dan maruah kerja — dan kerangka itu telah bertahan lebih daripada satu abad.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "block_type": "text",
+      "text": "Paus Leo Keempat Belas meletakkan kecerdasan buatan sebagai persoalan zaman kita untuk generasi ini.",
+      "text_markdown": "Paus Leo Keempat Belas meletakkan kecerdasan buatan sebagai persoalan zaman kita untuk generasi ini.",
+      "title": "",
+      "tts": {
+        "text": "Paus Leo yang keempat belas meletakkan kecerdasan buatan sebagai persoalan zaman kita untuk generasi ini.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-105",
+      "block_type": "text",
+      "text": "Itu gema yang disengajakan.",
+      "text_markdown": "Itu gema yang disengajakan.",
+      "title": "",
+      "tts": {
+        "text": "Itu gema yang disengajakan.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-106",
+      "block_type": "text",
+      "text": "Perkara itu memang dilakukan dengan sengaja.",
+      "text_markdown": "Perkara itu memang dilakukan dengan sengaja.",
+      "title": "",
+      "tts": {
+        "text": "Perkara itu memang dilakukan dengan sengaja.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "block_type": "text",
+      "text": "Bahkan, nama pemerintahan yang dipilihnya, Leo, sudah menjadi petanda.",
+      "text_markdown": "Bahkan, nama pemerintahan yang dipilihnya, Leo, sudah menjadi petanda.",
+      "title": "",
+      "tts": {
+        "text": "Bahkan, nama pemerintahan yang dipilihnya, Lio, sudah menjadi petanda.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "block_type": "text",
+      "text": "Pope ini mengatakan dengan terang bahawa AI adalah kepada abad kita seperti apa industrialisasi kepada abad kesembilan belas.",
+      "text_markdown": "Pope ini mengatakan dengan terang bahawa AI adalah kepada abad kita seperti apa industrialisasi kepada abad kesembilan belas.",
+      "title": "",
+      "tts": {
+        "text": "Pope ini mengatakan dengan terang bahawa AI adalah kepada abad kita seperti apa industrialisasi kepada abad kesembilan belas.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "block_type": "text",
+      "text": "Siapa yang membentangkan bersamanya?",
+      "text_markdown": "Siapa yang membentangkan bersamanya?",
+      "title": "",
+      "tts": {
+        "text": "Siapa yang membentangkan bersamanya?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "block_type": "text",
+      "text": "Chris Olah, pengasas bersama Anthropic, akan berada di pentas di Dewan Sinode Vatican.",
+      "text_markdown": "Chris Olah, pengasas bersama Anthropic, akan berada di pentas di Dewan Sinode Vatican.",
+      "title": "",
+      "tts": {
+        "text": "Chris Olah, pengasas bersama Anthropic, akan berada di pentas di Dewan Sinode Vatican.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "block_type": "text",
+      "text": "Olah menjalankan penyelidikan kebolehfahaman di Anthropic.",
+      "text_markdown": "Olah menjalankan penyelidikan kebolehfahaman di Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Olah menjalankan penyelidikan kebolehfahaman di Anthropic.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-112",
+      "block_type": "text",
+      "text": "Itulah bidang yang cuba mengetahui apa yang sebenarnya berlaku di dalam rangkaian neural.",
+      "text_markdown": "Itulah bidang yang cuba mengetahui apa yang sebenarnya berlaku di dalam rangkaian neural.",
+      "title": "",
+      "tts": {
+        "text": "Itulah bidang yang cuba mengetahui apa yang sebenarnya berlaku di dalam rangkaian neural.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "block_type": "text",
+      "text": "Mengapa penyelidik kebolehfahaman dan bukan eksekutif?",
+      "text_markdown": "Mengapa penyelidik kebolehfahaman dan bukan eksekutif?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa penyelidik kebolehfahaman dan bukan eksekutif?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "block_type": "text",
+      "text": "Kerana soalan utama ensiklik itu ialah \"apa benda yang kita sedang bina ini, dan bolehkah kita memahaminya?\"",
+      "text_markdown": "Kerana soalan utama ensiklik itu ialah \"apa benda yang kita sedang bina ini, dan bolehkah kita memahaminya?\"",
+      "title": "",
+      "tts": {
+        "text": "Kerana soalan utama ensiklik itu ialah \"apa benda yang kita sedang bina ini, dan bolehkah kita memahaminya?\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-115",
+      "block_type": "text",
+      "text": "Itu tepat soalan kebolehfahaman, yang dipetakan kepada kerangka moral.",
+      "text_markdown": "Itu tepat soalan kebolehfahaman, yang dipetakan kepada kerangka moral.",
+      "title": "",
+      "tts": {
+        "text": "Itu tepat soalan kebolehfahaman, yang dipetakan kepada kerangka moral.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-116",
+      "block_type": "text",
+      "text": "Pembentangan itu bukan promosi jualan, dan mereka tidak memilih orang yang menyampaikan promosi jualan tersebut.",
+      "text_markdown": "Pembentangan itu bukan promosi jualan, dan mereka tidak memilih orang yang menyampaikan promosi jualan tersebut.",
+      "title": "",
+      "tts": {
+        "text": "Pembentangan itu bukan promosi jualan, dan mereka tidak memilih orang yang menyampaikan promosi jualan tersebut.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-117",
+      "block_type": "text",
+      "text": "Siapa lagi di pentas?",
+      "text_markdown": "Siapa lagi di pentas?",
+      "title": "",
+      "tts": {
+        "text": "Siapa lagi di pentas?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "block_type": "text",
+      "text": "Kardinal Pietro Parolin akan menyampaikan ucapan penutup.",
+      "text_markdown": "Kardinal Pietro Parolin akan menyampaikan ucapan penutup.",
+      "title": "",
+      "tts": {
+        "text": "Kardinal Piyetro Parolin akan menyampaikan ucapan penutup.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-119",
+      "block_type": "text",
+      "text": "Turut membentang ialah Kardinal Víctor Manuel Fernández dan Kardinal Michael Czerny.",
+      "text_markdown": "Turut membentang ialah Kardinal Víctor Manuel Fernández dan Kardinal Michael Czerny.",
+      "title": "",
+      "tts": {
+        "text": "Turut membentang ialah Kardinal Fiktor Manuel Fernandes dan Kardinal Mikael Cherni.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-120",
+      "block_type": "text",
+      "text": "Anna Rowlands dari Universiti Durham di United Kingdom dan Léocadie Lushombo dari Sekolah Teologi Jesuit di Universiti Santa Clara, dua profesor teologi, akan turut menjadi ahli panel.",
+      "text_markdown": "Anna Rowlands dari Universiti Durham di United Kingdom dan Léocadie Lushombo dari Sekolah Teologi Jesuit di Universiti Santa Clara, dua profesor teologi, akan turut menjadi ahli panel.",
+      "title": "",
+      "tts": {
+        "text": "Anna Rowlands dari Universiti Durham di United Kingdom dan Leocadie Lushombo dari Sekolah Teologi Jesuit di Universiti Santa Clara, dua profesor teologi, akan turut menjadi ahli panel.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-121",
+      "block_type": "text",
+      "text": "Mengapa ini penting di luar ruangan ini?",
+      "text_markdown": "Mengapa ini penting di luar ruangan ini?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa ini penting di luar ruangan ini?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-122",
+      "block_type": "text",
+      "text": "Kerana terdapat 1.4 bilion penganut Katolik di dunia.",
+      "text_markdown": "Kerana terdapat 1.4 bilion penganut Katolik di dunia.",
+      "title": "",
+      "tts": {
+        "text": "Kerana terdapat satu perpuluhan empat bilion penganut Katolik di dunia.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "block_type": "text",
+      "text": "Apabila pemimpin tertinggi Gereja Katolik mengeluarkan surat ajaran rasmi, surat itu membentuk cara ramai orang berfikir tentang sesuatu perkara sepanjang satu generasi.",
+      "text_markdown": "Apabila pemimpin tertinggi Gereja Katolik mengeluarkan surat ajaran rasmi, surat itu membentuk cara ramai orang berfikir tentang sesuatu perkara sepanjang satu generasi.",
+      "title": "",
+      "tts": {
+        "text": "Apabila pemimpin tertinggi Gereja Katolik mengeluarkan surat ajaran rasmi, surat itu membentuk cara ramai orang berfikir tentang sesuatu perkara sepanjang satu generasi.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-124",
+      "block_type": "text",
+      "text": "Surat pekeliling paus itu masih menjadi asas ajaran sosial Gereja Katolik tentang buruh, 135 tahun kemudian.",
+      "text_markdown": "Surat pekeliling paus itu masih menjadi asas ajaran sosial Gereja Katolik tentang buruh, 135 tahun kemudian.",
+      "title": "",
+      "tts": {
+        "text": "Surat pekeliling paus itu masih menjadi asas ajaran sosial Gereja Katolik tentang buruh, seratus tiga puluh lima tahun kemudian.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-125",
+      "block_type": "text",
+      "text": "Organisasi itu kini mampu menerapkan pendekatan yang sama dalam bidang kecerdasan buatan.",
+      "text_markdown": "Organisasi itu kini mampu menerapkan pendekatan yang sama dalam bidang kecerdasan buatan.",
+      "title": "",
+      "tts": {
+        "text": "Organisasi itu kini mampu menerapkan pendekatan yang sama dalam bidang kecerdasan buatan.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-126",
+      "block_type": "text",
+      "text": "Dan sudut pandang ke arah yang lain?",
+      "text_markdown": "Dan sudut pandang ke arah yang lain?",
+      "title": "",
+      "tts": {
+        "text": "Dan sudut pandang ke arah yang lain?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-127",
+      "block_type": "text",
+      "text": "Sebuah institusi dari luar bidang kecerdasan buatan kini memainkan peranan pendidikan dengan tekun tentang teknologi yang sedang kita bangunkan.",
+      "text_markdown": "Sebuah institusi dari luar bidang kecerdasan buatan kini memainkan peranan pendidikan dengan tekun tentang teknologi yang sedang kita bangunkan.",
+      "title": "",
+      "tts": {
+        "text": "Sebuah institusi dari luar bidang kecerdasan buatan kini memainkan peranan pendidikan dengan tekun tentang teknologi yang sedang kita bangunkan.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-128",
+      "block_type": "text",
+      "text": "Dan pihak industri hadir, di meja, dengan jenis penyelidik yang betul.",
+      "text_markdown": "Dan pihak industri hadir, di meja, dengan jenis penyelidik yang betul.",
+      "title": "",
+      "tts": {
+        "text": "Dan pihak industri hadir, di meja, dengan jenis penyelidik yang betul.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "block_type": "text",
+      "text": "Itu bukan pendirian yang biasa, kerana lazimnya orang sama ada berkata bahawa mereka paling memahami perkara itu lalu urusannya patut diserahkan kepada mereka, atau mereka memilih jalan untuk memujuk pihak berkuasa.",
+      "text_markdown": "Itu bukan pendirian yang biasa, kerana lazimnya orang sama ada berkata bahawa mereka paling memahami perkara itu lalu urusannya patut diserahkan kepada mereka, atau mereka memilih jalan untuk memujuk pihak berkuasa.",
+      "title": "",
+      "tts": {
+        "text": "Itu bukan pendirian yang biasa, kerana lazimnya orang sama ada berkata bahawa mereka paling memahami perkara itu lalu urusannya patut diserahkan kepada mereka, atau mereka memilih jalan untuk memujuk pihak berkuasa.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "block_type": "text",
+      "text": "Ini adalah sikap yang berbeza.",
+      "text_markdown": "Ini adalah sikap yang berbeza.",
+      "title": "",
+      "tts": {
+        "text": "Ini adalah sikap yang berbeza.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "block_type": "text",
+      "text": "Masa yang baik untuk menamatkan bahagian ini.",
+      "text_markdown": "Masa yang baik untuk menamatkan bahagian ini.",
+      "title": "",
+      "tts": {
+        "text": "Masa yang baik untuk menamatkan bahagian ini.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-132",
+      "block_type": "text",
+      "text": "Sekarang mari kita beralih kepada konsep minggu ini.",
+      "text_markdown": "Sekarang mari kita beralih kepada konsep minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Sekarang mari kita beralih kepada konsep minggu ini.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-133",
+      "block_type": "text",
+      "text": "Konsep minggu ini ialah quantization.",
+      "text_markdown": "Konsep minggu ini ialah quantization.",
+      "title": "",
+      "tts": {
+        "text": "Konsep minggu ini ialah quantization.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "block_type": "text",
+      "text": "Ron, terangkan kepada kami.",
+      "text_markdown": "Ron, terangkan kepada kami.",
+      "title": "",
+      "tts": {
+        "text": "Ron, terangkan kepada kami.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "block_type": "text",
+      "text": "Quantization ialah bagaimana model 7-bilion-parameter muat dalam telefon anda.",
+      "text_markdown": "Quantization ialah bagaimana model 7-bilion-parameter muat dalam telefon anda.",
+      "title": "",
+      "tts": {
+        "text": "Quantization ialah bagaimana model tujuh bilion parameter muat dalam telefon anda.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "block_type": "text",
+      "text": "Mulakan dengan masalah asas.",
+      "text_markdown": "Mulakan dengan masalah asas.",
+      "title": "",
+      "tts": {
+        "text": "Mulakan dengan masalah asas.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-137",
+      "block_type": "text",
+      "text": "Setiap berat dalam model biasanya ialah nombor floating-point 16-bit.",
+      "text_markdown": "Setiap berat dalam model biasanya ialah nombor floating-point 16-bit.",
+      "title": "",
+      "tts": {
+        "text": "Setiap berat dalam model biasanya ialah nombor floating point enam belas bit.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-138",
+      "block_type": "text",
+      "text": "Model 7-bilion-parameter dalam 16-bit ialah kira-kira 14 gigabytes pada cakera.",
+      "text_markdown": "Model 7-bilion-parameter dalam 16-bit ialah kira-kira 14 gigabytes pada cakera.",
+      "title": "",
+      "tts": {
+        "text": "Model tujuh bilion parameter dalam enam belas bit ialah kira-kira empat belas gigabytes pada cakera.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "block_type": "text",
+      "text": "Itu tidak muat dalam telefon.",
+      "text_markdown": "Itu tidak muat dalam telefon.",
+      "title": "",
+      "tts": {
+        "text": "Itu tidak muat dalam telefon.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-140",
+      "block_type": "text",
+      "text": "Hasilnya, anda mengecilkan semua nilai itu.",
+      "text_markdown": "Hasilnya, anda mengecilkan semua nilai itu.",
+      "title": "",
+      "tts": {
+        "text": "Hasilnya, anda mengecilkan semua nilai itu.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-141",
+      "block_type": "text",
+      "text": "Betul.",
+      "text_markdown": "Betul.",
+      "title": "",
+      "tts": {
+        "text": "Betul.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-142",
+      "block_type": "text",
+      "text": "Anda membundarkan setiap pemberat kepada digit binari yang lebih sedikit.",
+      "text_markdown": "Anda membundarkan setiap pemberat kepada digit binari yang lebih sedikit.",
+      "title": "",
+      "tts": {
+        "text": "Anda membundarkan setiap pemberat kepada digit binari yang lebih sedikit.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-143",
+      "block_type": "text",
+      "text": "Lapan bit setiap berat memotong model kepada separuh.",
+      "text_markdown": "Lapan bit setiap berat memotong model kepada separuh.",
+      "title": "",
+      "tts": {
+        "text": "Lapan bit setiap berat memotong model kepada separuh.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-144",
+      "block_type": "text",
+      "text": "Empat bit setiap berat memotongnya kepada satu perempat.",
+      "text_markdown": "Empat bit setiap berat memotongnya kepada satu perempat.",
+      "title": "",
+      "tts": {
+        "text": "Empat bit setiap berat memotongnya kepada satu perempat.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-145",
+      "block_type": "text",
+      "text": "Model 7-bilion-parameter yang sama pada empat bit ialah 3.5 gigabytes.",
+      "text_markdown": "Model 7-bilion-parameter yang sama pada empat bit ialah 3.5 gigabytes.",
+      "title": "",
+      "tts": {
+        "text": "Model tujuh bilion parameter yang sama pada empat bit ialah tiga perpuluhan lima gigabytes.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-146",
+      "block_type": "text",
+      "text": "Sekarang semuanya tersusun dengan rapi.",
+      "text_markdown": "Sekarang semuanya tersusun dengan rapi.",
+      "title": "",
+      "tts": {
+        "text": "Sekarang semuanya tersusun dengan rapi.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-147",
+      "block_type": "text",
+      "text": "Sistem ini masih berfungsi dengan lancar?",
+      "text_markdown": "Sistem ini masih berfungsi dengan lancar?",
+      "title": "",
+      "tts": {
+        "text": "Sistem ini masih berfungsi dengan lancar?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-148",
+      "block_type": "text",
+      "text": "Pada dasarnya, betul, cuma mutunya sedikit menurun.",
+      "text_markdown": "Pada dasarnya, betul, cuma mutunya sedikit menurun.",
+      "title": "",
+      "tts": {
+        "text": "Pada dasarnya, betul, cuma mutunya sedikit menurun.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-149",
+      "block_type": "text",
+      "text": "Triknya ialah memilih di mana dalam model untuk kehilangan ketepatan.",
+      "text_markdown": "Triknya ialah memilih di mana dalam model untuk kehilangan ketepatan.",
+      "title": "",
+      "tts": {
+        "text": "Triknya ialah memilih di mana dalam model untuk kehilangan ketepatan.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-150",
+      "block_type": "text",
+      "text": "AWQ — activation-aware weight quantization — mengekalkan saluran yang paling penting dalam ketepatan yang lebih tinggi dan memampatkan yang lain.",
+      "text_markdown": "AWQ — activation-aware weight quantization — mengekalkan saluran yang paling penting dalam ketepatan yang lebih tinggi dan memampatkan yang lain.",
+      "title": "",
+      "tts": {
+        "text": "AWQ — activation aware weight quantization — mengekalkan saluran yang paling penting dalam ketepatan yang lebih tinggi dan memampatkan yang lain.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-151",
+      "block_type": "text",
+      "text": "Format GGUF yang digunakan oleh llama.cpp termasuk pilihan seperti Q4_K_M, yang mencampurkan tahap ketepatan dalam satu fail model.",
+      "text_markdown": "Format GGUF yang digunakan oleh llama.cpp termasuk pilihan seperti Q4_K_M, yang mencampurkan tahap ketepatan dalam satu fail model.",
+      "title": "",
+      "tts": {
+        "text": "Format ji ji yu ef yang digunakan oleh lama dot si pi pi termasuk pilihan seperti kiu empat kei em, yang mencampurkan tahap ketepatan dalam satu fail model.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-152",
+      "block_type": "text",
+      "text": "Seberapa kecil anda boleh dapatkan?",
+      "text_markdown": "Seberapa kecil anda boleh dapatkan?",
+      "title": "",
+      "tts": {
+        "text": "Seberapa kecil anda boleh dapatkan?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-153",
+      "block_type": "text",
+      "text": "Model asas on-device Apple pergi ke 2 bit setiap berat.",
+      "text_markdown": "Model asas on-device Apple pergi ke 2 bit setiap berat.",
+      "title": "",
+      "tts": {
+        "text": "Model asas on device Apple pergi ke dua bit setiap berat.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-154",
+      "block_type": "text",
+      "text": "Mereka menggunakan latihan sedar pengkuantuman, iaitu model dilatih dari awal dengan mengetahui ia akan menjadi 2-bit semasa inferens.",
+      "text_markdown": "Mereka menggunakan latihan sedar pengkuantuman, iaitu model dilatih dari awal dengan mengetahui ia akan menjadi 2-bit semasa inferens.",
+      "title": "",
+      "tts": {
+        "text": "Mereka menggunakan latihan sedar pengkuantuman, iaitu model dilatih dari awal dengan mengetahui ia akan menjadi dua bit semasa inferens.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-155",
+      "block_type": "text",
+      "text": "Itu hasil yang jauh lebih baik berbanding pembundaran kasar yang dibuat kemudian.",
+      "text_markdown": "Itu hasil yang jauh lebih baik berbanding pembundaran kasar yang dibuat kemudian.",
+      "title": "",
+      "tts": {
+        "text": "Itu hasil yang jauh lebih baik berbanding pembundaran kasar yang dibuat kemudian.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-156",
+      "block_type": "text",
+      "text": "Kira-kira 3 bilion parameter pada 2 bit menghasilkan kira-kira 750 megabytes.",
+      "text_markdown": "Kira-kira 3 bilion parameter pada 2 bit menghasilkan kira-kira 750 megabytes.",
+      "title": "",
+      "tts": {
+        "text": "Kira-kira tiga bilion parameter pada dua bit menghasilkan kira-kira tujuh ratus lima puluh megabytes.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-157",
+      "block_type": "text",
+      "text": "Itu muat dalam telefon dengan ruang yang tinggal.",
+      "text_markdown": "Itu muat dalam telefon dengan ruang yang tinggal.",
+      "title": "",
+      "tts": {
+        "text": "Itu muat dalam telefon dengan ruang yang tinggal.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-158",
+      "block_type": "text",
+      "text": "Jadi itulah mengapa AI on-device akhirnya boleh digunakan tahun ini.",
+      "text_markdown": "Jadi itulah mengapa AI on-device akhirnya boleh digunakan tahun ini.",
+      "title": "",
+      "tts": {
+        "text": "Jadi itulah mengapa AI on device akhirnya boleh digunakan tahun ini.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-159",
+      "block_type": "text",
+      "text": "Itulah punca paling utama.",
+      "text_markdown": "Itulah punca paling utama.",
+      "title": "",
+      "tts": {
+        "text": "Itulah punca paling utama.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-160",
+      "block_type": "text",
+      "text": "Tiga istilah untuk dibawa bersama anda: AWQ, GGUF, dan latihan sedar pengkuantuman.",
+      "text_markdown": "Tiga istilah untuk dibawa bersama anda: AWQ, GGUF, dan latihan sedar pengkuantuman.",
+      "title": "",
+      "tts": {
+        "text": "Tiga istilah untuk dibawa bersama anda, a dabliu kiu, ji ji yu ef, dan latihan sedar pengkuantuman.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-161",
+      "block_type": "text",
+      "text": "Jika sebuah model menghantar ketiga-tiga perkara itu, ia akan dihantar pada telefon.",
+      "text_markdown": "Jika sebuah model menghantar ketiga-tiga perkara itu, ia akan dihantar pada telefon.",
+      "title": "",
+      "tts": {
+        "text": "Jika sebuah model menghantar ketiga-tiga perkara itu, ia akan dihantar pada telefon.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-162",
+      "block_type": "text",
+      "text": "Tempat yang baik untuk mendarat.",
+      "text_markdown": "Tempat yang baik untuk mendarat.",
+      "title": "",
+      "tts": {
+        "text": "Tempat yang baik untuk mendarat.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-163",
+      "block_type": "text",
+      "text": "Ron, terima kasih.",
+      "text_markdown": "Ron, terima kasih.",
+      "title": "",
+      "tts": {
+        "text": "Ron, terima kasih.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-164",
+      "block_type": "text",
+      "text": "Bila-bila masa, Vindy.",
+      "text_markdown": "Bila-bila masa, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bila-bila masa, Vindy.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-165",
+      "block_type": "text",
+      "text": "Itu adalah AI This Week untuk 20 Mei, 2026.",
+      "text_markdown": "Itu adalah AI This Week untuk 20 Mei, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah AI This Week untuk dua puluh Mei, dua ribu dua puluh enam.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-166",
+      "block_type": "text",
+      "text": "Isu baru Rabu depan.",
+      "text_markdown": "Isu baru Rabu depan.",
+      "title": "",
+      "tts": {
+        "text": "Isu baru Rabu depan.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-167",
+      "block_type": "text",
+      "text": "Sehingga itu, jaga diri.",
+      "text_markdown": "Sehingga itu, jaga diri.",
+      "title": "",
+      "tts": {
+        "text": "Sehingga itu, jaga diri.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

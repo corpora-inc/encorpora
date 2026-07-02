@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "nl",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord vooraf",
+      "text_markdown": "Een woord vooraf"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een klein boek over een grote keuken.",
+      "text_markdown": "Dit is een klein boek over een grote keuken.",
+      "tts": {
+        "text": "Dit is een klein boek over een grote keuken.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het gaat over soul food, uit het zuiden van de Verenigde Staten.",
+      "text_markdown": "Het gaat over soul food, uit het zuiden van de Verenigde Staten.",
+      "tts": {
+        "text": "Het gaat over sool foed, uit het zuiden van de Verenigde Staten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food is echt eten.",
+      "text_markdown": "Soul food is echt eten.",
+      "tts": {
+        "text": "Sool foed is echt eten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mensen koken het thuis.",
+      "text_markdown": "Mensen koken het thuis.",
+      "tts": {
+        "text": "Mensen koken het thuis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen eten het op zondag.",
+      "text_markdown": "Mensen eten het op zondag.",
+      "tts": {
+        "text": "Mensen eten het op zondag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mensen eten het ook op een dinsdag.",
+      "text_markdown": "Mensen eten het ook op een dinsdag.",
+      "tts": {
+        "text": "Mensen eten het ook op een dinsdag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We beginnen met de naam.",
+      "text_markdown": "We beginnen met de naam.",
+      "tts": {
+        "text": "We beginnen met de naam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daarna kijken we naar de planten en de dieren.",
+      "text_markdown": "Daarna kijken we naar de planten en de dieren.",
+      "tts": {
+        "text": "Daarna kijken we naar de planten en de dieren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daarna kijken we naar de potten en de pannen.",
+      "text_markdown": "Daarna kijken we naar de potten en de pannen.",
+      "tts": {
+        "text": "Daarna kijken we naar de potten en de pannen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aan het eind weet je wat er op het bord ligt, en weet je waar het vandaan komt.",
+      "text_markdown": "Aan het eind weet je wat er op het bord ligt, en weet je waar het vandaan komt.",
+      "tts": {
+        "text": "Aan het eind weet je wat er op het bord ligt, en weet je waar het vandaan komt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ik heet Kym en ik ga je het verhaal vertellen.",
+      "text_markdown": "Een vriendin die Kym heet vertelt je dit verhaal.",
+      "tts": {
+        "text": "Ik heet Kym en ik ga je het verhaal vertellen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 1 — Wat is soul food",
+      "text_markdown": "Hoofdstuk 1 — Wat is soul food"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food is het dagelijkse eten van zwarte families in het Amerikaanse Zuiden.",
+      "text_markdown": "Soul food is het dagelijkse eten van zwarte families in het Amerikaanse Zuiden.",
+      "tts": {
+        "text": "Sool foed is het dagelijkse eten van zwarte families in het Amerikaanse Zuiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De naam \"soul food\" werd gebruikelijk in de jaren zestig.",
+      "text_markdown": "De naam \"soul food\" werd gebruikelijk in de jaren zestig.",
+      "tts": {
+        "text": "De naam \"sool foed\" werd gebruikelijk in de jaren zestig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het woord \"soul\" kwam uit de muziek en uit de kerk.",
+      "text_markdown": "Het woord \"soul\" kwam uit de muziek en uit de kerk.",
+      "tts": {
+        "text": "Het woord \"sool\" kwam uit de muziek en uit de kerk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het betekende iets dieps en echts.",
+      "text_markdown": "Het betekende iets dieps en echts.",
+      "tts": {
+        "text": "Het betekende iets dieps en echts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het betekende iets zwarts en iets trots.",
+      "text_markdown": "Het betekende iets zwarts en iets trots.",
+      "tts": {
+        "text": "Het betekende iets zwarts en iets trots.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het eten zelf is veel ouder.",
+      "text_markdown": "Maar het eten zelf is veel ouder.",
+      "tts": {
+        "text": "Maar het eten zelf is veel ouder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het komt uit de plantagekeukens van de achttiende en negentiende eeuw.",
+      "text_markdown": "Het komt uit de plantagekeukens van de achttiende en negentiende eeuw.",
+      "tts": {
+        "text": "Het komt uit de plantagekeukens van de achttiende en negentiende eeuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tot slaaf gemaakte Afrikaanse koks namen de planten en dieren die ze hadden, en maakten er een maaltijd van.",
+      "text_markdown": "Tot slaaf gemaakte Afrikaanse koks namen de planten en dieren die ze hadden, en maakten er een maaltijd van.",
+      "tts": {
+        "text": "Tot slaaf gemaakte Afrikaanse koks namen de planten en dieren die ze hadden, en maakten er een maaltijd van.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die koks waren briljant.",
+      "text_markdown": "Die koks waren briljant.",
+      "tts": {
+        "text": "Die koks waren briljant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze werkten met weinig, en gaven velen te eten.",
+      "text_markdown": "Ze werkten met weinig, en gaven velen te eten.",
+      "tts": {
+        "text": "Ze werkten met weinig, en gaven velen te eten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze bewaarden elk deel van het varken.",
+      "text_markdown": "Ze bewaarden elk deel van het varken.",
+      "tts": {
+        "text": "Ze bewaarden elk deel van het varken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze lieten de bladgroenten zoet smaken.",
+      "text_markdown": "Ze lieten de bladgroenten zoet smaken.",
+      "tts": {
+        "text": "Ze lieten de bladgroenten zoet smaken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ze maakten van maïsmeel brood, pap en honderd kleine dingen.",
+      "text_markdown": "Ze maakten van maïsmeel brood, pap en honderd kleine dingen.",
+      "tts": {
+        "text": "Ze maakten van maïsmeel brood, pap en honderd kleine dingen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen zwarte families in de twintigste eeuw naar het noorden trokken, namen ze dit eten mee.",
+      "text_markdown": "Toen zwarte families in de twintigste eeuw naar het noorden trokken, namen ze dit eten mee.",
+      "tts": {
+        "text": "Toen zwarte families in de twintigste eeuw naar het noorden trokken, namen ze dit eten mee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nu vind je soul food in Chicago, in New York, in Detroit en in elke stad in het Zuiden.",
+      "text_markdown": "Nu vind je soul food in Chicago, in New York, in Detroit en in elke stad in het Zuiden.",
+      "tts": {
+        "text": "Nu vind je sool foed in Sjikago, in Njoe Jork, in Detroit en in elke stad in het Zuiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — Wat is soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maar het hart ervan ligt nog steeds in het Zuiden.",
+      "text_markdown": "Maar het hart ervan ligt nog steeds in het Zuiden.",
+      "tts": {
+        "text": "Maar het hart ervan ligt nog steeds in het Zuiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 2 — De ingrediënten",
+      "text_markdown": "Hoofdstuk 2 — De ingrediënten"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food heeft twee grote wortels.",
+      "text_markdown": "Soul food heeft twee grote wortels.",
+      "tts": {
+        "text": "Sool foed heeft twee grote wortels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eén wortel ligt in West Afrika.",
+      "text_markdown": "Eén wortel ligt in West Afrika.",
+      "tts": {
+        "text": "Een wortel ligt in West Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De andere wortel ligt in de Amerika's.",
+      "text_markdown": "De andere wortel ligt in de Amerika's.",
+      "tts": {
+        "text": "De andere wortel ligt in de Amerika's.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uit West Afrika kwam okra.",
+      "text_markdown": "Uit West Afrika kwam okra.",
+      "tts": {
+        "text": "Uit West Afrika kwam okra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Okra is een groene peul.",
+      "text_markdown": "Okra is een groene peul.",
+      "tts": {
+        "text": "Okra is een groene peul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het groeit aan een hoge plant.",
+      "text_markdown": "Het groeit aan een hoge plant.",
+      "tts": {
+        "text": "Het groeit aan een hoge plant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Als je het kookt, wordt het zacht en een beetje glibberig.",
+      "text_markdown": "Als je het kookt, wordt het zacht en een beetje glibberig.",
+      "tts": {
+        "text": "Als je het kookt, wordt het zacht en een beetje glibberig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het zit in gumbo, en het wordt in maïsmeel gebakken.",
+      "text_markdown": "Het zit in gumbo, en het wordt in maïsmeel gebakken.",
+      "tts": {
+        "text": "Het zit in gumbo, en het wordt in maïsmeel gebakken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwartoogbonen kwamen ook uit West Afrika.",
+      "text_markdown": "Zwartoogbonen kwamen ook uit West Afrika.",
+      "tts": {
+        "text": "Zwartoogbonen kwamen ook uit West Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat gold ook voor watermeloen.",
+      "text_markdown": "Dat gold ook voor watermeloen.",
+      "tts": {
+        "text": "Dat gold ook voor watermeloen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En ook voor sesamzaad.",
+      "text_markdown": "En ook voor sesamzaad.",
+      "tts": {
+        "text": "En ook voor sesamzaad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Oude koks in het Zuiden noemden sesam \"benne\". Ze deden benne in koekjes en op brood.",
+      "text_markdown": "Oude koks in het Zuiden noemden sesam \"benne\". Ze deden benne in koekjes en op brood.",
+      "tts": {
+        "text": "Oude koks in het Zuiden noemden sesam \"benne\". Ze deden benne in koekjes en op brood.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rijst kwam ook over de oceaan.",
+      "text_markdown": "Rijst kwam ook over de oceaan.",
+      "tts": {
+        "text": "Rijst kwam ook over de oceaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrikaanse boeren verbouwden al duizend jaar rijst.",
+      "text_markdown": "Afrikaanse boeren verbouwden al duizend jaar rijst.",
+      "tts": {
+        "text": "Afrikaanse boeren verbouwden al duizend jaar rijst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In South Carolina zijn met die kennis hele steden ontstaan.",
+      "text_markdown": "In South Carolina zijn met die kennis hele steden ontstaan.",
+      "tts": {
+        "text": "In Zuid Karolajna zijn met die kennis hele steden ontstaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uit de Amerika's kwam maïs.",
+      "text_markdown": "Uit de Amerika's kwam maïs.",
+      "tts": {
+        "text": "Uit de Amerika's kwam maïs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maïs komt oorspronkelijk uit Mexico.",
+      "text_markdown": "Maïs komt oorspronkelijk uit Mexico.",
+      "tts": {
+        "text": "Maïs komt oorspronkelijk uit Mexico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het trok al noordwaarts naar de Cherokee en de Choctaw, lang voordat de Spanjaarden kwamen.",
+      "text_markdown": "Het trok al noordwaarts naar de Cherokee en de Choctaw, lang voordat de Spanjaarden kwamen.",
+      "tts": {
+        "text": "Het trok al noordwaarts naar de Tsjerokie en de Tsjokto, lang voordat de Spanjaarden kwamen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uit de Amerika's kwamen ook zoete aardappels, pinda's en veel soorten bonen.",
+      "text_markdown": "Uit de Amerika's kwamen ook zoete aardappels, pinda's en veel soorten bonen.",
+      "tts": {
+        "text": "Uit de Amerika's kwamen ook zoete aardappels, pinda's en veel soorten bonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De ingrediënten",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food is wat er gebeurde toen deze twee voorraadkasten samenkwamen in één keuken.",
+      "text_markdown": "Soul food is wat er gebeurde toen deze twee voorraadkasten samenkwamen in één keuken.",
+      "tts": {
+        "text": "Sool foed is wat er gebeurde toen deze twee voorraadkasten samenkwamen in een keuken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 3 — Het vlees en de vis",
+      "text_markdown": "Hoofdstuk 3 — Het vlees en de vis"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het belangrijkste vlees in soul food is varkensvlees.",
+      "text_markdown": "Het belangrijkste vlees in soul food is varkensvlees.",
+      "tts": {
+        "text": "Het belangrijkste vlees in sool foed is varkensvlees.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een kleine boerderij kon een varken houden.",
+      "text_markdown": "Een kleine boerderij kon een varken houden.",
+      "tts": {
+        "text": "Een kleine boerderij kon een varken houden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het varken at restjes.",
+      "text_markdown": "Het varken at restjes.",
+      "tts": {
+        "text": "Het varken at restjes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In het najaar slachtte de familie het varken, en gebruikten ze elk deel.",
+      "text_markdown": "In het najaar slachtte de familie het varken, en gebruikten ze elk deel.",
+      "tts": {
+        "text": "In het najaar slachtte de familie het varken, en gebruikten ze elk deel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze rookten de ham.",
+      "text_markdown": "Ze rookten de ham.",
+      "tts": {
+        "text": "Ze rookten de ham.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ze pekelden het spek.",
+      "text_markdown": "Ze pekelden het spek.",
+      "tts": {
+        "text": "Ze pekelden het spek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze kookten de poten in azijn.",
+      "text_markdown": "Ze kookten de poten in azijn.",
+      "tts": {
+        "text": "Ze kookten de poten in azijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ze bewaarden het vet voor biscuits.",
+      "text_markdown": "Ze bewaarden het vet voor biscuits.",
+      "tts": {
+        "text": "Ze bewaarden het vet voor biskits.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarna komt kip.",
+      "text_markdown": "Daarna komt kip.",
+      "tts": {
+        "text": "Daarna komt kip.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kippen liepen op het erf.",
+      "text_markdown": "De kippen liepen op het erf.",
+      "tts": {
+        "text": "De kippen liepen op het erf.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze legden 's morgens eieren, en werden het zondagse eten.",
+      "text_markdown": "Ze legden 's morgens eieren, en werden het zondagse eten.",
+      "tts": {
+        "text": "Ze legden 's morgens eieren, en werden het zondagse eten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gefrituurde kip is het beroemdste gerecht uit het Zuiden.",
+      "text_markdown": "Gefrituurde kip is het beroemdste gerecht uit het Zuiden.",
+      "tts": {
+        "text": "Gefrituurde kip is het beroemdste gerecht uit het Zuiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kip gaat door bloem, zout en peper.",
+      "text_markdown": "De kip gaat door bloem, zout en peper.",
+      "tts": {
+        "text": "De kip gaat door bloem, zout en peper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daarna gaat het in hete olie.",
+      "text_markdown": "Daarna gaat het in hete olie.",
+      "tts": {
+        "text": "Daarna gaat het in hete olie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het vel wordt krokant en goudbruin.",
+      "text_markdown": "Het vel wordt krokant en goudbruin.",
+      "tts": {
+        "text": "Het vel wordt krokant en goudbruin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meerval leeft in de rivieren en meren.",
+      "text_markdown": "Meerval leeft in de rivieren en meren.",
+      "tts": {
+        "text": "Meerval leeft in de rivieren en meren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koks in het Zuiden halen de meerval door maïsmeel en bakken hem.",
+      "text_markdown": "Koks in het Zuiden halen de meerval door maïsmeel en bakken hem.",
+      "tts": {
+        "text": "Koks in het Zuiden halen de meerval door maïsmeel en bakken hem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze eten hem met hush puppies, kleine balletjes van gefrituurd maïsmeel.",
+      "text_markdown": "Ze eten hem met hush puppies, kleine balletjes van gefrituurd maïsmeel.",
+      "tts": {
+        "text": "Ze eten hem met hush pappies, kleine balletjes van gefrituurd maïsmeel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Het vlees en de vis",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De naam is grappig, maar het eten is serieus.",
+      "text_markdown": "De naam is grappig, maar het eten is serieus.",
+      "tts": {
+        "text": "De naam is grappig, maar het eten is serieus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 4 — De kookmethodes",
+      "text_markdown": "Hoofdstuk 4 — De kookmethodes"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food draait vooral om drie manieren van koken: bakken, langzaam stoven en roken.",
+      "text_markdown": "Soul food draait vooral om drie manieren van koken: bakken, langzaam stoven en roken.",
+      "tts": {
+        "text": "Sool foed draait vooral om drie manieren van koken: bakken, langzaam stoven en roken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bakken gebeurt in een zware pan, een gietijzeren koekenpan.",
+      "text_markdown": "Bakken gebeurt in een zware pan, een gietijzeren koekenpan.",
+      "tts": {
+        "text": "Bakken gebeurt in een zware pan, een gietijzeren koekenpan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gietijzer houdt warmte lang vast.",
+      "text_markdown": "Gietijzer houdt warmte lang vast.",
+      "tts": {
+        "text": "Gietijzer houdt warmte lang vast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een goede koekenpan is ouder dan de kok.",
+      "text_markdown": "Een goede koekenpan is ouder dan de kok.",
+      "tts": {
+        "text": "Een goede koekenpan is ouder dan de kok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die wordt van moeder op dochter doorgegeven.",
+      "text_markdown": "Die wordt van moeder op dochter doorgegeven.",
+      "tts": {
+        "text": "Die wordt van moeder op dochter doorgegeven.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langzaam stoven gebeurt in een grote pan achter op het fornuis.",
+      "text_markdown": "Langzaam stoven gebeurt in een grote pan achter op het fornuis.",
+      "tts": {
+        "text": "Langzaam stoven gebeurt in een grote pan achter op het fornuis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De bladgroenten gaan twee of drie uur de pan in.",
+      "text_markdown": "De bladgroenten gaan twee of drie uur de pan in.",
+      "tts": {
+        "text": "De bladgroenten gaan twee of drie uur de pan in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een stuk gerookt varkensvlees gaat erbij voor de smaak.",
+      "text_markdown": "Een stuk gerookt varkensvlees gaat erbij voor de smaak.",
+      "tts": {
+        "text": "Een stuk gerookt varkensvlees gaat erbij voor de smaak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het water wordt een donkere, volle bouillon.",
+      "text_markdown": "Het water wordt een donkere, volle bouillon.",
+      "tts": {
+        "text": "Het water wordt een donkere, volle bouillon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mensen noemen deze bouillon \"pot likker\", en schenken hem over maïsbrood.",
+      "text_markdown": "Mensen noemen deze bouillon \"pot likker\", en schenken hem over maïsbrood.",
+      "tts": {
+        "text": "Mensen noemen deze bouillon \"pot likker\", en schenken hem over maïsbrood.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roken gebeurt buiten, in een rookhok of een vat.",
+      "text_markdown": "Roken gebeurt buiten, in een rookhok of een vat.",
+      "tts": {
+        "text": "Roken gebeurt buiten, in een rookhok of een vat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hout brandt langzaam onder het vlees.",
+      "text_markdown": "Hout brandt langzaam onder het vlees.",
+      "tts": {
+        "text": "Hout brandt langzaam onder het vlees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hickoryhout is het favoriete hout.",
+      "text_markdown": "Hickoryhout is het favoriete hout.",
+      "tts": {
+        "text": "Hikkoriehout is het favoriete hout.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De rook kleurt het vlees bruin en geeft het een diepe smaak.",
+      "text_markdown": "De rook kleurt het vlees bruin en geeft het een diepe smaak.",
+      "tts": {
+        "text": "De rook kleurt het vlees bruin en geeft het een diepe smaak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Varkensschouder wordt urenlang gerookt, soms een hele dag.",
+      "text_markdown": "Varkensschouder wordt urenlang gerookt, soms een hele dag.",
+      "tts": {
+        "text": "Varkensschouder wordt urenlang gerookt, soms een hele dag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — De kookmethodes",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een goede keuken in het Zuiden heeft vuur, tijd en aandacht.",
+      "text_markdown": "Een goede keuken in het Zuiden heeft vuur, tijd en aandacht.",
+      "tts": {
+        "text": "Een goede keuken in het Zuiden heeft vuur, tijd en aandacht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 5 — Regionale barbecue",
+      "text_markdown": "Hoofdstuk 5 — Regionale barbecue"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het Zuiden betekent \"barbecue\" vlees dat langzaam gaart boven houtrook.",
+      "text_markdown": "In het Zuiden betekent \"barbecue\" vlees dat langzaam gaart boven houtrook.",
+      "tts": {
+        "text": "In het Zuiden betekent \"barbekjoe\" vlees dat langzaam gaart boven houtrook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke streek heeft zijn eigen manier.",
+      "text_markdown": "Elke streek heeft zijn eigen manier.",
+      "tts": {
+        "text": "Elke streek heeft zijn eigen manier.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Carolina's is barbecue varkensvlees.",
+      "text_markdown": "In de Carolina's is barbecue varkensvlees.",
+      "tts": {
+        "text": "In de Karolajna's is barbekjoe varkensvlees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In het oosten van North Carolina wordt de saus gemaakt van azijn en peper.",
+      "text_markdown": "In het oosten van North Carolina wordt de saus gemaakt van azijn en peper.",
+      "tts": {
+        "text": "In het oosten van Noord Karolajna wordt de saus gemaakt van azijn en peper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die is dun en scherp.",
+      "text_markdown": "Die is dun en scherp.",
+      "tts": {
+        "text": "Die is dun en scherp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In South Carolina is de saus geel, gemaakt van mosterd.",
+      "text_markdown": "In South Carolina is de saus geel, gemaakt van mosterd.",
+      "tts": {
+        "text": "In Zuid Karolajna is de saus geel, gemaakt van mosterd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die is een beetje zoet.",
+      "text_markdown": "Die is een beetje zoet.",
+      "tts": {
+        "text": "Die is een beetje zoet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Memphis, in de staat Tennessee, is het vlees varkensribben.",
+      "text_markdown": "In Memphis, in de staat Tennessee, is het vlees varkensribben.",
+      "tts": {
+        "text": "In Memfis, in de staat Tennessie, is het vlees varkensribben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De ribben worden ingewreven met een droog mengsel van zout, peper en veel kruiden.",
+      "text_markdown": "De ribben worden ingewreven met een droog mengsel van zout, peper en veel kruiden.",
+      "tts": {
+        "text": "De ribben worden ingewreven met een droog mengsel van zout, peper en veel kruiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het vlees is de ster, en de saus speelt maar een kleine rol.",
+      "text_markdown": "Het vlees is de ster, en de saus speelt maar een kleine rol.",
+      "tts": {
+        "text": "Het vlees is de ster, en de saus speelt maar een kleine rol.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Texas is barbecue rundvlees.",
+      "text_markdown": "In Texas is barbecue rundvlees.",
+      "tts": {
+        "text": "In Teksus is barbekjoe rundvlees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat stuk heet brisket.",
+      "text_markdown": "Dat stuk heet brisket.",
+      "tts": {
+        "text": "Dat stuk heet brisket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het wordt twaalf tot veertien uur gerookt boven eikenhout.",
+      "text_markdown": "Het wordt twaalf tot veertien uur gerookt boven eikenhout.",
+      "tts": {
+        "text": "Het wordt twaalf tot veertien uur gerookt boven eikenhout.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Als het goed is, trek je het met je vingers uit elkaar.",
+      "text_markdown": "Als het goed is, trek je het met je vingers uit elkaar.",
+      "tts": {
+        "text": "Als het goed is, trek je het met je vingers uit elkaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Kansas City is barbecue van allerlei soorten vlees, varken, rund, kip, zelfs worst.",
+      "text_markdown": "In Kansas City is barbecue van allerlei soorten vlees, varken, rund, kip, zelfs worst.",
+      "tts": {
+        "text": "In Kanzas Sittie is barbekjoe van allerlei soorten vlees, varken, rund, kip, zelfs worst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De saus is dik, zoet en rood, gemaakt van tomaat en melasse.",
+      "text_markdown": "De saus is dik, zoet en rood, gemaakt van tomaat en melasse.",
+      "tts": {
+        "text": "De saus is dik, zoet en rood, gemaakt van tomaat en melasse.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Regionale barbecue",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kaart van de zuidelijke barbecue is een kaart van streken en rivieren.",
+      "text_markdown": "De kaart van de zuidelijke barbecue is een kaart van streken en rivieren.",
+      "tts": {
+        "text": "De kaart van de zuidelijke barbekjoe is een kaart van streken en rivieren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 6 — Het klassieke bord",
+      "text_markdown": "Hoofdstuk 6 — Het klassieke bord"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bord voor het zondagseten is goed gevuld.",
+      "text_markdown": "Een bord voor het zondagseten is goed gevuld.",
+      "tts": {
+        "text": "Een bord voor het zondagseten is goed gevuld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het midden ligt gefrituurde kip.",
+      "text_markdown": "In het midden ligt gefrituurde kip.",
+      "tts": {
+        "text": "In het midden ligt gefrituurde kip.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Naast de kip ligt een schep aardappelpuree met bruine jus.",
+      "text_markdown": "Naast de kip ligt een schep aardappelpuree met bruine jus.",
+      "tts": {
+        "text": "Naast de kip ligt een schep aardappelpuree met bruine jus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aan één kant ligt een hoop collard greens, langzaam gegaard met gerookt varkensvlees.",
+      "text_markdown": "Aan één kant ligt een hoop collard greens, langzaam gegaard met gerookt varkensvlees.",
+      "tts": {
+        "text": "Aan een kant ligt een hoop kollerd griens, langzaam gegaard met gerookt varkensvlees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De groenten zijn donker en zacht.",
+      "text_markdown": "De groenten zijn donker en zacht.",
+      "tts": {
+        "text": "De groenten zijn donker en zacht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aan de andere kant ligt macaroni met kaas, gebakken tot de bovenkant goudbruin en krokant is.",
+      "text_markdown": "Aan de andere kant ligt macaroni met kaas, gebakken tot de bovenkant goudbruin en krokant is.",
+      "tts": {
+        "text": "Aan de andere kant ligt macaroni met kaas, gebakken tot de bovenkant goudbruin en krokant is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Veel koks leggen er bovenop nog een laag kaas.",
+      "text_markdown": "Veel koks leggen er bovenop nog een laag kaas.",
+      "tts": {
+        "text": "Veel koks leggen er bovenop nog een laag kaas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er staat maïsbrood op tafel.",
+      "text_markdown": "Er staat maïsbrood op tafel.",
+      "tts": {
+        "text": "Er staat maïsbrood op tafel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maïsbrood wordt gemaakt van geel maïsmeel en gebakken in een hete gietijzeren pan.",
+      "text_markdown": "Maïsbrood wordt gemaakt van geel maïsmeel en gebakken in een hete gietijzeren pan.",
+      "tts": {
+        "text": "Maïsbrood wordt gemaakt van geel maïsmeel en gebakken in een hete gietijzeren pan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is stevig, een beetje zoet en perfect met boter.",
+      "text_markdown": "Het is stevig, een beetje zoet en perfect met boter.",
+      "tts": {
+        "text": "Het is stevig, een beetje zoet en perfect met boter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om te drinken is er zoete thee.",
+      "text_markdown": "Om te drinken is er zoete thee.",
+      "tts": {
+        "text": "Om te drinken is er zoete thee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zoete thee is zwarte thee, sterk gezet en gemengd met suiker terwijl die heet is.",
+      "text_markdown": "Zoete thee is zwarte thee, sterk gezet en gemengd met suiker terwijl die heet is.",
+      "tts": {
+        "text": "Zoete thee is zwarte thee, sterk gezet en gemengd met suiker terwijl die heet is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die wordt koud met ijs geserveerd.",
+      "text_markdown": "Die wordt koud met ijs geserveerd.",
+      "tts": {
+        "text": "Die wordt koud met ijs geserveerd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na het eten komt taart.",
+      "text_markdown": "Na het eten komt taart.",
+      "tts": {
+        "text": "Na het eten komt taart.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zoeteaardappeltaart is dé taart van het Zuiden.",
+      "text_markdown": "Zoeteaardappeltaart is dé taart van het Zuiden.",
+      "tts": {
+        "text": "Zoeteaardappeltaart is dé taart van het Zuiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die is bruin, glad en warm van kaneel en nootmuskaat.",
+      "text_markdown": "Die is bruin, glad en warm van kaneel en nootmuskaat.",
+      "tts": {
+        "text": "Die is bruin, glad en warm van kaneel en nootmuskaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Het klassieke bord",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het klassieke bord.",
+      "text_markdown": "Dit is het klassieke bord.",
+      "tts": {
+        "text": "Dit is het klassieke bord.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 7 — Aan tafel",
+      "text_markdown": "Hoofdstuk 7 — Aan tafel"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een maaltijd in het Zuiden speelt zich af aan tafel, met iedereen samen.",
+      "text_markdown": "Een maaltijd in het Zuiden speelt zich af aan tafel, met iedereen samen.",
+      "tts": {
+        "text": "Een maaltijd in het Zuiden speelt zich af aan tafel, met iedereen samen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het eten komt op tafel in grote schalen en op grote borden.",
+      "text_markdown": "Het eten komt op tafel in grote schalen en op grote borden.",
+      "tts": {
+        "text": "Het eten komt op tafel in grote schalen en op grote borden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dit heet \"family style\". Iedereen geeft de schaal door aan de volgende.",
+      "text_markdown": "Dit heet \"family style\". Iedereen geeft de schaal door aan de volgende.",
+      "tts": {
+        "text": "Dit heet \"femilie stajl\". Iedereen geeft de schaal door aan de volgende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iedereen neemt wat die wil.",
+      "text_markdown": "Iedereen neemt wat die wil.",
+      "tts": {
+        "text": "Iedereen neemt wat die wil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vorken en messen zijn eenvoudig.",
+      "text_markdown": "De vorken en messen zijn eenvoudig.",
+      "tts": {
+        "text": "De vorken en messen zijn eenvoudig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er is geen vaste volgorde.",
+      "text_markdown": "Er is geen vaste volgorde.",
+      "tts": {
+        "text": "Er is geen vaste volgorde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je eet de kip met een vork, of je pakt hem op met je handen.",
+      "text_markdown": "Je eet de kip met een vork, of je pakt hem op met je handen.",
+      "tts": {
+        "text": "Je eet de kip met een vork, of je pakt hem op met je handen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Allebei is goed.",
+      "text_markdown": "Allebei is goed.",
+      "tts": {
+        "text": "Allebei is goed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maïsbrood breek je met de hand, nooit met een mes.",
+      "text_markdown": "Maïsbrood breek je met de hand, nooit met een mes.",
+      "tts": {
+        "text": "Maïsbrood breek je met de hand, nooit met een mes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor de maaltijd zegt iemand vaak een kort gebed.",
+      "text_markdown": "Voor de maaltijd zegt iemand vaak een kort gebed.",
+      "tts": {
+        "text": "Voor de maaltijd zegt iemand vaak een kort gebed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze danken God voor het eten en voor de koks.",
+      "text_markdown": "Ze danken God voor het eten en voor de koks.",
+      "tts": {
+        "text": "Ze danken God voor het eten en voor de koks.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je te gast bent, krijg je te horen dat je nog meer moet nemen, en nog meer, en nog meer.",
+      "text_markdown": "Als je te gast bent, krijg je te horen dat je nog meer moet nemen, en nog meer, en nog meer.",
+      "tts": {
+        "text": "Als je te gast bent, krijg je te horen dat je nog meer moet nemen, en nog meer, en nog meer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dan moet je minstens twee keer ja zeggen.",
+      "text_markdown": "Dan moet je minstens twee keer ja zeggen.",
+      "tts": {
+        "text": "Dan moet je minstens twee keer ja zeggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Met honger weggaan mag niet.",
+      "text_markdown": "Met honger weggaan mag niet.",
+      "tts": {
+        "text": "Met honger weggaan mag niet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aan het eind van de maaltijd heeft niemand haast om op te staan.",
+      "text_markdown": "Aan het eind van de maaltijd heeft niemand haast om op te staan.",
+      "tts": {
+        "text": "Aan het eind van de maaltijd heeft niemand haast om op te staan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Aan tafel",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het praten is de helft van de maaltijd.",
+      "text_markdown": "Het praten is de helft van de maaltijd.",
+      "tts": {
+        "text": "Het praten is de helft van de maaltijd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Over dit boek",
+      "text_markdown": "Over dit boek"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het eerste boek in de reeks Food of the World.",
+      "text_markdown": "Dit is het eerste boek in de reeks Food of the World.",
+      "tts": {
+        "text": "Dit is het eerste boek in de reeks Foed of de Wurld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ik, je vriendin Kym, lees het voor.",
+      "text_markdown": "Het wordt voorgelezen door Kym.",
+      "tts": {
+        "text": "Ik, je vriendin Kym, lees het voor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+      "text_markdown": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+      "tts": {
+        "text": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je wilt horen hoe een zin klinkt in een andere taal, luister dan naar hetzelfde boek in die taal.",
+      "text_markdown": "Als je wilt horen hoe een zin klinkt in een andere taal, luister dan naar hetzelfde boek in die taal.",
+      "tts": {
+        "text": "Als je wilt horen hoe een zin klinkt in een andere taal, luister dan naar hetzelfde boek in die taal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De woorden op de pagina komen overeen met wat je hoort.",
+      "text_markdown": "De woorden op de pagina komen overeen met wat je hoort.",
+      "tts": {
+        "text": "De woorden op de pagina komen overeen met wat je hoort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zo leer je.",
+      "text_markdown": "Zo leer je.",
+      "tts": {
+        "text": "Zo leer je.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ga nu iets goeds te eten zoeken, en een vriend om het mee te delen.",
+      "text_markdown": "Ga nu iets goeds te eten zoeken, en een vriend om het mee te delen.",
+      "tts": {
+        "text": "Ga nu iets goeds te eten zoeken, en een vriend om het mee te delen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

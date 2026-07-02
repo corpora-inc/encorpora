@@ -1,0 +1,6407 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_heart",
+  "lang": "ko",
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "멈추지 않는 펌프",
+      "text_markdown": "멈추지 않는 펌프"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "당신의 심장은 지금 이 순간에도 뛰고 있습니다.",
+      "text_markdown": "당신의 심장은 지금 이 순간에도 뛰고 있습니다.",
+      "tts": {
+        "text": "당신의 심장은 지금 이 순간에도 뛰고 있습니다.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잠을 자는 동안에도 뜁니다.",
+      "text_markdown": "잠을 자는 동안에도 뜁니다.",
+      "tts": {
+        "text": "잠을 자는 동안에도 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "밥을 먹는 동안에도 뜁니다.",
+      "text_markdown": "밥을 먹는 동안에도 뜁니다.",
+      "tts": {
+        "text": "밥을 먹는 동안에도 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 문장을 읽는 동안에도 뜁니다.",
+      "text_markdown": "이 문장을 읽는 동안에도 뜁니다.",
+      "tts": {
+        "text": "이 문장을 읽는 동안에도 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "심장은 결코 쉬지 않습니다.",
+      "text_markdown": "심장은 결코 쉬지 않습니다.",
+      "tts": {
+        "text": "심장은 결코 쉬지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "심장은 세상에서 가장 신뢰할 수 있는 펌프입니다.",
+      "text_markdown": "심장은 세상에서 가장 신뢰할 수 있는 펌프입니다.",
+      "tts": {
+        "text": "심장은 세상에서 가장 신뢰할 수 있는 펌프입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 가슴 안에 있는 근육성 장기입니다.",
+      "text_markdown": "심장은 가슴 안에 있는 근육성 장기입니다.",
+      "tts": {
+        "text": "심장은 가슴 안에 있는 근육성 장기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "장기란 특정한 역할을 하는 신체 부위입니다.",
+      "text_markdown": "장기란 특정한 역할을 하는 신체 부위입니다.",
+      "tts": {
+        "text": "장기란 특정한 역할을 하는 신체 부위입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심장의 역할은 혈액을 펌프질하는 것입니다.",
+      "text_markdown": "심장의 역할은 혈액을 펌프질하는 것입니다.",
+      "tts": {
+        "text": "심장의 역할은 혈액을 펌프질하는 것입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장은 가슴 중앙에서 약간 왼쪽에 위치합니다.",
+      "text_markdown": "심장은 가슴 중앙에서 약간 왼쪽에 위치합니다.",
+      "tts": {
+        "text": "심장은 가슴 중앙에서 약간 왼쪽에 위치합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "크기는 대략 주먹만 합니다.",
+      "text_markdown": "크기는 대략 주먹만 합니다.",
+      "tts": {
+        "text": "크기는 대략 주먹만 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 심근(心筋)이라 불리는 특수한 유형의 근육으로 이루어져 있습니다.",
+      "text_markdown": "심장은 심근(心筋)이라 불리는 특수한 유형의 근육으로 이루어져 있습니다.",
+      "tts": {
+        "text": "심장은 심근이라 불리는 특수한 유형의 근육으로 이루어져 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심근(Cardiac muscle)의 카디악(Cardiac)은 \"심장과 관련된\"이라는 뜻입니다. 심근은 팔과 다리의 근육과는 다릅니다.",
+      "text_markdown": "심근(Cardiac muscle)의 카디악(Cardiac)은 \"심장과 관련된\"이라는 뜻입니다. 심근은 팔과 다리의 근육과는 다릅니다.",
+      "tts": {
+        "text": "심근의 카디악은 심장과 관련된이라는 뜻입니다. 심근은 팔과 다리의 근육과는 다릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "팔 근육은 생각으로 조절할 수 있습니다.",
+      "text_markdown": "팔 근육은 생각으로 조절할 수 있습니다.",
+      "tts": {
+        "text": "팔 근육은 생각으로 조절할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심근은 의지대로 조절할 수 없습니다.",
+      "text_markdown": "심근은 의지대로 조절할 수 없습니다.",
+      "tts": {
+        "text": "심근은 의지대로 조절할 수 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "심근은 저절로 수축합니다.",
+      "text_markdown": "심근은 저절로 수축합니다.",
+      "tts": {
+        "text": "심근은 저절로 수축합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "살아가는 매 순간 자동으로 수축합니다.",
+      "text_markdown": "살아가는 매 순간 자동으로 수축합니다.",
+      "tts": {
+        "text": "살아가는 매 순간 자동으로 수축합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수축할 때마다 혈액을 온몸으로 밀어냅니다.",
+      "text_markdown": "수축할 때마다 혈액을 온몸으로 밀어냅니다.",
+      "tts": {
+        "text": "수축할 때마다 혈액을 온몸으로 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "혈액은 세포에 산소를 운반합니다.",
+      "text_markdown": "혈액은 세포에 산소를 운반합니다.",
+      "tts": {
+        "text": "혈액은 세포에 산소를 운반합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "산소는 세포가 에너지를 생산하는 데 필요한 기체입니다.",
+      "text_markdown": "산소는 세포가 에너지를 생산하는 데 필요한 기체입니다.",
+      "tts": {
+        "text": "산소는 세포가 에너지를 생산하는 데 필요한 기체입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "산소가 없으면 세포는 몇 분 안에 죽습니다.",
+      "text_markdown": "산소가 없으면 세포는 몇 분 안에 죽습니다.",
+      "tts": {
+        "text": "산소가 없으면 세포는 몇 분 안에 죽습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "심장은 산소가 신체 모든 부위에 도달하도록 합니다.",
+      "text_markdown": "심장은 산소가 신체 모든 부위에 도달하도록 합니다.",
+      "tts": {
+        "text": "심장은 산소가 신체 모든 부위에 도달하도록 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 분당 약 오 리터의 혈액을 펌프질합니다.",
+      "text_markdown": "심장은 분당 약 오 리터의 혈액을 펌프질합니다.",
+      "tts": {
+        "text": "심장은 분당 약 오 리터의 혈액을 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일 리터는 대략 일 쿼트입니다.",
+      "text_markdown": "일 리터는 대략 일 쿼트입니다.",
+      "tts": {
+        "text": "일 리터는 대략 일 쿼트입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "즉, 체내 혈액 전체가 약 일 분마다 한 번씩 심장을 통해 순환합니다.",
+      "text_markdown": "즉, 체내 혈액 전체가 약 일 분마다 한 번씩 심장을 통해 순환합니다.",
+      "tts": {
+        "text": "즉, 체내 혈액 전체가 약 일 분마다 한 번씩 심장을 통해 순환합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하루에 심장은 약 칠천오백 리터의 혈액을 펌프질합니다.",
+      "text_markdown": "하루에 심장은 약 칠천오백 리터의 혈액을 펌프질합니다.",
+      "tts": {
+        "text": "하루에 심장은 약 칠천오백 리터의 혈액을 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "일 년이면 거의 삼백만 리터를 펌프질합니다.",
+      "text_markdown": "일 년이면 거의 삼백만 리터를 펌프질합니다.",
+      "tts": {
+        "text": "일 년이면 거의 삼백만 리터를 펌프질합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인간의 심장은 일찍부터 뛰기 시작합니다.",
+      "text_markdown": "인간의 심장은 일찍부터 뛰기 시작합니다.",
+      "tts": {
+        "text": "인간의 심장은 일찍부터 뛰기 시작합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수정 후 약 삼 주에서 사 주 후에 박동이 시작됩니다.",
+      "text_markdown": "수정 후 약 삼 주에서 사 주 후에 박동이 시작됩니다.",
+      "tts": {
+        "text": "수정 후 약 삼 주에서 사 주 후에 박동이 시작됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수정이란 새 생명이 시작되는 순간입니다.",
+      "text_markdown": "수정이란 새 생명이 시작되는 순간입니다.",
+      "tts": {
+        "text": "수정이란 새 생명이 시작되는 순간입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장은 가장 먼저 형성되는 장기 중 하나입니다.",
+      "text_markdown": "심장은 가장 먼저 형성되는 장기 중 하나입니다.",
+      "tts": {
+        "text": "심장은 가장 먼저 형성되는 장기 중 하나입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "뇌가 완전히 발달하기 전에 이미 뜁니다.",
+      "text_markdown": "뇌가 완전히 발달하기 전에 이미 뜁니다.",
+      "tts": {
+        "text": "뇌가 완전히 발달하기 전에 이미 뜁니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고대인들도 심장이 중요하다는 것을 알고 있었습니다.",
+      "text_markdown": "고대인들도 심장이 중요하다는 것을 알고 있었습니다.",
+      "tts": {
+        "text": "고대인들도 심장이 중요하다는 것을 알고 있었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이집트인들은 심장이 지성의 중심이라고 믿었습니다.",
+      "text_markdown": "이집트인들은 심장이 지성의 중심이라고 믿었습니다.",
+      "tts": {
+        "text": "이집트인들은 심장이 지성의 중심이라고 믿었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리스인들은 심장과 뇌 중 어느 쪽이 신체를 지배하는지 논쟁했습니다.",
+      "text_markdown": "그리스인들은 심장과 뇌 중 어느 쪽이 신체를 지배하는지 논쟁했습니다.",
+      "tts": {
+        "text": "그리스인들은 심장과 뇌 중 어느 쪽이 신체를 지배하는지 논쟁했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아리스토텔레스는 심장이 영혼의 자리라고 생각했습니다.",
+      "text_markdown": "아리스토텔레스는 심장이 영혼의 자리라고 생각했습니다.",
+      "tts": {
+        "text": "아리스토텔레스는 심장이 영혼의 자리라고 생각했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "우리는 이제 뇌가 사고를 지배한다는 것을 알고 있습니다.",
+      "text_markdown": "우리는 이제 뇌가 사고를 지배한다는 것을 알고 있습니다.",
+      "tts": {
+        "text": "우리는 이제 뇌가 사고를 지배한다는 것을 알고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "하지만 심장은 뇌를 살아있게 합니다.",
+      "text_markdown": "하지만 심장은 뇌를 살아있게 합니다.",
+      "tts": {
+        "text": "하지만 심장은 뇌를 살아있게 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "순환계는 혈액을 온몸에 이동시키는 네트워크입니다.",
+      "text_markdown": "순환계는 혈액을 온몸에 이동시키는 네트워크입니다.",
+      "tts": {
+        "text": "순환계는 혈액을 온몸에 이동시키는 네트워크입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심장은 이 시스템의 중심에 있습니다.",
+      "text_markdown": "심장은 이 시스템의 중심에 있습니다.",
+      "tts": {
+        "text": "심장은 이 시스템의 중심에 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "순환(Circulatory)이라는 단어는 \"순환하다(circulate)\"에서 왔으며, 원을 그리며 움직인다는 뜻입니다.",
+      "text_markdown": "순환(Circulatory)이라는 단어는 \"순환하다(circulate)\"에서 왔으며, 원을 그리며 움직인다는 뜻입니다.",
+      "tts": {
+        "text": "순환이라는 단어는 순환하다에서 왔으며, 원을 그리며 움직인다는 뜻입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "혈액은 심장을 떠나 온몸을 돌고 다시 심장으로 돌아옵니다.",
+      "text_markdown": "혈액은 심장을 떠나 온몸을 돌고 다시 심장으로 돌아옵니다.",
+      "tts": {
+        "text": "혈액은 심장을 떠나 온몸을 돌고 다시 심장으로 돌아옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이 순환은 결코 멈추지 않습니다.",
+      "text_markdown": "이 순환은 결코 멈추지 않습니다.",
+      "tts": {
+        "text": "이 순환은 결코 멈추지 않습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "당신의 심장은 태어나기 전부터 뛰고 있었습니다.",
+      "text_markdown": "당신의 심장은 태어나기 전부터 뛰고 있었습니다.",
+      "tts": {
+        "text": "당신의 심장은 태어나기 전부터 뛰고 있었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "멈추지 않는 펌프",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "평생 수십억 번 뛸 것입니다.",
+      "text_markdown": "평생 수십억 번 뛸 것입니다.",
+      "tts": {
+        "text": "평생 수십억 번 뛸 것입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "네 개의 심방",
+      "text_markdown": "네 개의 심방"
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인간의 심장은 네 개의 방으로 이루어져 있습니다.",
+      "text_markdown": "인간의 심장은 네 개의 방으로 이루어져 있습니다.",
+      "tts": {
+        "text": "인간의 심장은 네 개의 방으로 이루어져 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "방이란 둘러싸인 공간입니다.",
+      "text_markdown": "방이란 둘러싸인 공간입니다.",
+      "tts": {
+        "text": "방이란 둘러싸인 공간입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각 방은 혈액을 이동시키는 데 특정한 역할을 합니다.",
+      "text_markdown": "각 방은 혈액을 이동시키는 데 특정한 역할을 합니다.",
+      "tts": {
+        "text": "각 방은 혈액을 이동시키는 데 특정한 역할을 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "위쪽 두 개의 방은 심방(心房)이라고 합니다.",
+      "text_markdown": "위쪽 두 개의 방은 심방(心房)이라고 합니다.",
+      "tts": {
+        "text": "위쪽 두 개의 방은 심방이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하나는 심방(atrium)이라고 합니다.",
+      "text_markdown": "하나는 심방(atrium)이라고 합니다.",
+      "tts": {
+        "text": "하나는 심방이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심방은 크기가 작고 벽이 얇습니다.",
+      "text_markdown": "심방은 크기가 작고 벽이 얇습니다.",
+      "tts": {
+        "text": "심방은 크기가 작고 벽이 얇습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장으로 흘러 들어오는 혈액을 받아들입니다.",
+      "text_markdown": "심장으로 흘러 들어오는 혈액을 받아들입니다.",
+      "tts": {
+        "text": "심장으로 흘러 들어오는 혈액을 받아들입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "접수실 같은 역할을 한다고 생각하면 됩니다.",
+      "text_markdown": "접수실 같은 역할을 한다고 생각하면 됩니다.",
+      "tts": {
+        "text": "접수실 같은 역할을 한다고 생각하면 됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아래쪽 두 개의 방은 심실(心室)이라고 합니다.",
+      "text_markdown": "아래쪽 두 개의 방은 심실(心室)이라고 합니다.",
+      "tts": {
+        "text": "아래쪽 두 개의 방은 심실이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심실은 두껍고 근육이 많은 방입니다.",
+      "text_markdown": "심실은 두껍고 근육이 많은 방입니다.",
+      "tts": {
+        "text": "심실은 두껍고 근육이 많은 방입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심실은 혈액을 심장 밖으로 펌프질합니다.",
+      "text_markdown": "심실은 혈액을 심장 밖으로 펌프질합니다.",
+      "tts": {
+        "text": "심실은 혈액을 심장 밖으로 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심실이 힘든 일을 담당합니다.",
+      "text_markdown": "심실이 힘든 일을 담당합니다.",
+      "tts": {
+        "text": "심실이 힘든 일을 담당합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우심방은 온몸에서 온 혈액을 받습니다.",
+      "text_markdown": "우심방은 온몸에서 온 혈액을 받습니다.",
+      "tts": {
+        "text": "우심방은 온몸에서 온 혈액을 받습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 혈액은 이미 세포에 산소를 전달한 혈액입니다.",
+      "text_markdown": "이 혈액은 이미 세포에 산소를 전달한 혈액입니다.",
+      "tts": {
+        "text": "이 혈액은 이미 세포에 산소를 전달한 혈액입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "산소가 적습니다.",
+      "text_markdown": "산소가 적습니다.",
+      "tts": {
+        "text": "산소가 적습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "짙은 붉은색입니다.",
+      "text_markdown": "짙은 붉은색입니다.",
+      "tts": {
+        "text": "짙은 붉은색입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "혈액은 두 개의 큰 정맥을 통해 우심방으로 들어옵니다.",
+      "text_markdown": "혈액은 두 개의 큰 정맥을 통해 우심방으로 들어옵니다.",
+      "tts": {
+        "text": "혈액은 두 개의 큰 정맥을 통해 우심방으로 들어옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "정맥이란 혈액을 심장 쪽으로 운반하는 혈관입니다.",
+      "text_markdown": "정맥이란 혈액을 심장 쪽으로 운반하는 혈관입니다.",
+      "tts": {
+        "text": "정맥이란 혈액을 심장 쪽으로 운반하는 혈관입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "두 정맥은 상대정맥(superior vena cava)과 하대정맥(inferior vena cava)입니다.",
+      "text_markdown": "두 정맥은 상대정맥(superior vena cava)과 하대정맥(inferior vena cava)입니다.",
+      "tts": {
+        "text": "두 정맥은 상대정맥과 하대정맥입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "상(superior)은 위쪽을 뜻합니다.",
+      "text_markdown": "상(superior)은 위쪽을 뜻합니다.",
+      "tts": {
+        "text": "상은 위쪽을 뜻합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p15",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "하(inferior)는 아래쪽을 뜻합니다.",
+      "text_markdown": "하(inferior)는 아래쪽을 뜻합니다.",
+      "tts": {
+        "text": "하는 아래쪽을 뜻합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우심방에서 혈액은 아래로 흘러 우심실로 들어갑니다.",
+      "text_markdown": "우심방에서 혈액은 아래로 흘러 우심실로 들어갑니다.",
+      "tts": {
+        "text": "우심방에서 혈액은 아래로 흘러 우심실로 들어갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우심실은 이 혈액을 폐로 펌프질합니다.",
+      "text_markdown": "우심실은 이 혈액을 폐로 펌프질합니다.",
+      "tts": {
+        "text": "우심실은 이 혈액을 폐로 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폐에서 혈액은 신선한 산소를 흡수합니다.",
+      "text_markdown": "폐에서 혈액은 신선한 산소를 흡수합니다.",
+      "tts": {
+        "text": "폐에서 혈액은 신선한 산소를 흡수합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "또한 이산화탄소를 방출합니다.",
+      "text_markdown": "또한 이산화탄소를 방출합니다.",
+      "tts": {
+        "text": "또한 이산화탄소를 방출합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이산화탄소는 세포가 만들어내는 노폐 기체입니다.",
+      "text_markdown": "이산화탄소는 세포가 만들어내는 노폐 기체입니다.",
+      "tts": {
+        "text": "이산화탄소는 세포가 만들어내는 노폐 기체입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "숨을 내쉴 때마다 이산화탄소를 내보냅니다.",
+      "text_markdown": "숨을 내쉴 때마다 이산화탄소를 내보냅니다.",
+      "tts": {
+        "text": "숨을 내쉴 때마다 이산화탄소를 내보냅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈액은 폐에서 좌심방으로 돌아옵니다.",
+      "text_markdown": "혈액은 폐에서 좌심방으로 돌아옵니다.",
+      "tts": {
+        "text": "혈액은 폐에서 좌심방으로 돌아옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 혈액은 이제 산소가 풍부합니다.",
+      "text_markdown": "이 혈액은 이제 산소가 풍부합니다.",
+      "tts": {
+        "text": "이 혈액은 이제 산소가 풍부합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "밝은 붉은색입니다.",
+      "text_markdown": "밝은 붉은색입니다.",
+      "tts": {
+        "text": "밝은 붉은색입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "폐정맥을 통해 좌심방으로 들어옵니다.",
+      "text_markdown": "폐정맥을 통해 좌심방으로 들어옵니다.",
+      "tts": {
+        "text": "폐정맥을 통해 좌심방으로 들어옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "폐(Pulmonary)라는 단어는 \"폐와 관련된\"이라는 뜻입니다.",
+      "text_markdown": "폐(Pulmonary)라는 단어는 \"폐와 관련된\"이라는 뜻입니다.",
+      "tts": {
+        "text": "폐라는 단어는 폐와 관련된이라는 뜻입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "좌심방에서 혈액은 좌심실로 흘러 들어갑니다.",
+      "text_markdown": "좌심방에서 혈액은 좌심실로 흘러 들어갑니다.",
+      "tts": {
+        "text": "좌심방에서 혈액은 좌심실로 흘러 들어갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "좌심실은 가장 힘이 센 방입니다.",
+      "text_markdown": "좌심실은 가장 힘이 센 방입니다.",
+      "tts": {
+        "text": "좌심실은 가장 힘이 센 방입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "벽이 가장 두껍습니다.",
+      "text_markdown": "벽이 가장 두껍습니다.",
+      "tts": {
+        "text": "벽이 가장 두껍습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "좌심실은 산소가 풍부한 혈액을 온몸으로 펌프질합니다.",
+      "text_markdown": "좌심실은 산소가 풍부한 혈액을 온몸으로 펌프질합니다.",
+      "tts": {
+        "text": "좌심실은 산소가 풍부한 혈액을 온몸으로 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "발끝부터 머리 꼭대기까지 혈액을 밀어야 합니다.",
+      "text_markdown": "발끝부터 머리 꼭대기까지 혈액을 밀어야 합니다.",
+      "tts": {
+        "text": "발끝부터 머리 꼭대기까지 혈액을 밀어야 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "엄청난 힘이 필요합니다.",
+      "text_markdown": "엄청난 힘이 필요합니다.",
+      "tts": {
+        "text": "엄청난 힘이 필요합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "방과 방 사이에는 판막이 있습니다.",
+      "text_markdown": "방과 방 사이에는 판막이 있습니다.",
+      "tts": {
+        "text": "방과 방 사이에는 판막이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "판막은 한 방향으로만 열리는 덮개입니다.",
+      "text_markdown": "판막은 한 방향으로만 열리는 덮개입니다.",
+      "tts": {
+        "text": "판막은 한 방향으로만 열리는 덮개입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "판막은 혈액이 역류하는 것을 막습니다.",
+      "text_markdown": "판막은 혈액이 역류하는 것을 막습니다.",
+      "tts": {
+        "text": "판막은 혈액이 역류하는 것을 막습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장에는 네 개의 판막이 있습니다.",
+      "text_markdown": "심장에는 네 개의 판막이 있습니다.",
+      "tts": {
+        "text": "심장에는 네 개의 판막이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "삼첨판(tricuspid valve)은 우심방과 우심실 사이에 있습니다.",
+      "text_markdown": "삼첨판(tricuspid valve)은 우심방과 우심실 사이에 있습니다.",
+      "tts": {
+        "text": "삼첨판은 우심방과 우심실 사이에 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "승모판(mitral valve)은 좌심방과 좌심실 사이에 있습니다.",
+      "text_markdown": "승모판(mitral valve)은 좌심방과 좌심실 사이에 있습니다.",
+      "tts": {
+        "text": "승모판은 좌심방과 좌심실 사이에 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "폐동맥판(pulmonary valve)은 우심실에서 나가는 출구를 지킵니다.",
+      "text_markdown": "폐동맥판(pulmonary valve)은 우심실에서 나가는 출구를 지킵니다.",
+      "tts": {
+        "text": "폐동맥판은 우심실에서 나가는 출구를 지킵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p19",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "대동맥판(aortic valve)은 좌심실에서 나가는 출구를 지킵니다.",
+      "text_markdown": "대동맥판(aortic valve)은 좌심실에서 나가는 출구를 지킵니다.",
+      "tts": {
+        "text": "대동맥판은 좌심실에서 나가는 출구를 지킵니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "판막이 닫힐 때 소리가 납니다.",
+      "text_markdown": "판막이 닫힐 때 소리가 납니다.",
+      "tts": {
+        "text": "판막이 닫힐 때 소리가 납니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "의사는 청진기로 이 소리를 들을 수 있습니다.",
+      "text_markdown": "의사는 청진기로 이 소리를 들을 수 있습니다.",
+      "tts": {
+        "text": "의사는 청진기로 이 소리를 들을 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "청진기는 신체 내부의 소리를 듣는 도구입니다.",
+      "text_markdown": "청진기는 신체 내부의 소리를 듣는 도구입니다.",
+      "tts": {
+        "text": "청진기는 신체 내부의 소리를 듣는 도구입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "\"덥-덥\" 하는 심장 소리는 판막이 닫힐 때 납니다.",
+      "text_markdown": "\"덥-덥\" 하는 심장 소리는 판막이 닫힐 때 납니다.",
+      "tts": {
+        "text": "덥덥 하는 심장 소리는 판막이 닫힐 때 납니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "\"덥\"의 첫 소리는 승모판과 삼첨판이 닫히는 소리입니다.",
+      "text_markdown": "\"덥\"의 첫 소리는 승모판과 삼첨판이 닫히는 소리입니다.",
+      "tts": {
+        "text": "덥의 첫 소리는 승모판과 삼첨판이 닫히는 소리입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p20",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "\"덥\"의 두 번째 소리는 대동맥판과 폐동맥판이 닫히는 소리입니다.",
+      "text_markdown": "\"덥\"의 두 번째 소리는 대동맥판과 폐동맥판이 닫히는 소리입니다.",
+      "tts": {
+        "text": "덥의 두 번째 소리는 대동맥판과 폐동맥판이 닫히는 소리입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네 개의 방.",
+      "text_markdown": "네 개의 방.",
+      "tts": {
+        "text": "네 개의 방.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "네 개의 판막.",
+      "text_markdown": "네 개의 판막.",
+      "tts": {
+        "text": "네 개의 판막.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "네 개의 심방",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하나의 목적: 혈액을 계속 움직이게 하는 것.",
+      "text_markdown": "하나의 목적: 혈액을 계속 움직이게 하는 것.",
+      "tts": {
+        "text": "하나의 목적: 혈액을 계속 움직이게 하는 것.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "혈관",
+      "text_markdown": "혈관"
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈액은 몸속을 자유롭게 흘러다니지 않습니다.",
+      "text_markdown": "혈액은 몸속을 자유롭게 흘러다니지 않습니다.",
+      "tts": {
+        "text": "혈액은 몸속을 자유롭게 흘러다니지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "혈관이라고 불리는 관을 통해 이동합니다.",
+      "text_markdown": "혈관이라고 불리는 관을 통해 이동합니다.",
+      "tts": {
+        "text": "혈관이라고 불리는 관을 통해 이동합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "혈관은 신체의 모든 조직에 닿는 네트워크를 형성합니다.",
+      "text_markdown": "혈관은 신체의 모든 조직에 닿는 네트워크를 형성합니다.",
+      "tts": {
+        "text": "혈관은 신체의 모든 조직에 닿는 네트워크를 형성합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 혈관을 끝에서 끝까지 이으면 약 십만 킬로미터에 달합니다.",
+      "text_markdown": "모든 혈관을 끝에서 끝까지 이으면 약 십만 킬로미터에 달합니다.",
+      "tts": {
+        "text": "모든 혈관을 끝에서 끝까지 이으면 약 십만 킬로미터에 달합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "지구를 두 바퀴 반 돌 수 있는 길이입니다.",
+      "text_markdown": "지구를 두 바퀴 반 돌 수 있는 길이입니다.",
+      "tts": {
+        "text": "지구를 두 바퀴 반 돌 수 있는 길이입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈관에는 세 가지 주요 종류가 있습니다: 동맥, 정맥, 모세혈관.",
+      "text_markdown": "혈관에는 세 가지 주요 종류가 있습니다: 동맥, 정맥, 모세혈관.",
+      "tts": {
+        "text": "혈관에는 세 가지 주요 종류가 있습니다. 동맥, 정맥, 모세혈관.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동맥은 심장에서 혈액을 내보냅니다.",
+      "text_markdown": "동맥은 심장에서 혈액을 내보냅니다.",
+      "tts": {
+        "text": "동맥은 심장에서 혈액을 내보냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이렇게 기억하세요: \"동맥(artery)\"과 \"멀어지다(away)\"는 모두 같은 \"a\"로 시작합니다. 동맥은 산소가 풍부한 혈액을 조직으로 운반합니다.",
+      "text_markdown": "이렇게 기억하세요: \"동맥(artery)\"과 \"멀어지다(away)\"는 모두 같은 \"a\"로 시작합니다. 동맥은 산소가 풍부한 혈액을 조직으로 운반합니다.",
+      "tts": {
+        "text": "이렇게 기억하세요. 동맥과 멀어지다는 모두 같은 소리로 시작합니다. 동맥은 산소가 풍부한 혈액을 조직으로 운반합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 큰 동맥은 대동맥(aorta)입니다.",
+      "text_markdown": "가장 큰 동맥은 대동맥(aorta)입니다.",
+      "tts": {
+        "text": "가장 큰 동맥은 대동맥입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "대동맥은 좌심실에서 나옵니다.",
+      "text_markdown": "대동맥은 좌심실에서 나옵니다.",
+      "tts": {
+        "text": "대동맥은 좌심실에서 나옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "위로 활처럼 휘었다가 가슴과 복부를 따라 아래로 구부러집니다.",
+      "text_markdown": "위로 활처럼 휘었다가 가슴과 복부를 따라 아래로 구부러집니다.",
+      "tts": {
+        "text": "위로 활처럼 휘었다가 가슴과 복부를 따라 아래로 구부러집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p25",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "대동맥에서 가지가 갈라져 온몸 곳곳으로 이어집니다.",
+      "text_markdown": "대동맥에서 가지가 갈라져 온몸 곳곳으로 이어집니다.",
+      "tts": {
+        "text": "대동맥에서 가지가 갈라져 온몸 곳곳으로 이어집니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동맥 벽은 두껍고 탄력 있습니다.",
+      "text_markdown": "동맥 벽은 두껍고 탄력 있습니다.",
+      "tts": {
+        "text": "동맥 벽은 두껍고 탄력 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "탄력이 있다는 것은 늘어났다가 다시 되돌아올 수 있다는 뜻입니다.",
+      "text_markdown": "탄력이 있다는 것은 늘어났다가 다시 되돌아올 수 있다는 뜻입니다.",
+      "tts": {
+        "text": "탄력이 있다는 것은 늘어났다가 다시 되돌아올 수 있다는 뜻입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심장이 수축하면 혈액의 파동이 동맥으로 밀려 들어옵니다.",
+      "text_markdown": "심장이 수축하면 혈액의 파동이 동맥으로 밀려 들어옵니다.",
+      "tts": {
+        "text": "심장이 수축하면 혈액의 파동이 동맥으로 밀려 들어옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "동맥 벽은 이 압력을 흡수하기 위해 팽창합니다.",
+      "text_markdown": "동맥 벽은 이 압력을 흡수하기 위해 팽창합니다.",
+      "tts": {
+        "text": "동맥 벽은 이 압력을 흡수하기 위해 팽창합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그런 다음 되돌아오면서 혈액을 앞으로 밀어냅니다.",
+      "text_markdown": "그런 다음 되돌아오면서 혈액을 앞으로 밀어냅니다.",
+      "tts": {
+        "text": "그런 다음 되돌아오면서 혈액을 앞으로 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "이것이 맥박을 만들어냅니다.",
+      "text_markdown": "이것이 맥박을 만들어냅니다.",
+      "tts": {
+        "text": "이것이 맥박을 만들어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "맥박은 특정 부위에서 느낄 수 있는 리드미컬한 박동입니다.",
+      "text_markdown": "맥박은 특정 부위에서 느낄 수 있는 리드미컬한 박동입니다.",
+      "tts": {
+        "text": "맥박은 특정 부위에서 느낄 수 있는 리드미컬한 박동입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "손목이나 목 옆에서 맥박을 느낄 수 있습니다.",
+      "text_markdown": "손목이나 목 옆에서 맥박을 느낄 수 있습니다.",
+      "tts": {
+        "text": "손목이나 목 옆에서 맥박을 느낄 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정맥은 혈액을 심장 쪽으로 되돌려 보냅니다.",
+      "text_markdown": "정맥은 혈액을 심장 쪽으로 되돌려 보냅니다.",
+      "tts": {
+        "text": "정맥은 혈액을 심장 쪽으로 되돌려 보냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분의 정맥은 산소가 적은 혈액을 운반합니다.",
+      "text_markdown": "대부분의 정맥은 산소가 적은 혈액을 운반합니다.",
+      "tts": {
+        "text": "대부분의 정맥은 산소가 적은 혈액을 운반합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정맥 벽은 동맥 벽보다 얇습니다.",
+      "text_markdown": "정맥 벽은 동맥 벽보다 얇습니다.",
+      "tts": {
+        "text": "정맥 벽은 동맥 벽보다 얇습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정맥 안의 혈액은 더 낮은 압력으로 흐릅니다.",
+      "text_markdown": "정맥 안의 혈액은 더 낮은 압력으로 흐릅니다.",
+      "tts": {
+        "text": "정맥 안의 혈액은 더 낮은 압력으로 흐릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "정맥 안에는 작은 판막이 있습니다.",
+      "text_markdown": "정맥 안에는 작은 판막이 있습니다.",
+      "tts": {
+        "text": "정맥 안에는 작은 판막이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "이 판막들은 혈액이 역류하는 것을 막습니다.",
+      "text_markdown": "이 판막들은 혈액이 역류하는 것을 막습니다.",
+      "tts": {
+        "text": "이 판막들은 혈액이 역류하는 것을 막습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "서 있을 때 다리의 혈액은 중력을 거슬러 위로 흘러야 합니다.",
+      "text_markdown": "서 있을 때 다리의 혈액은 중력을 거슬러 위로 흘러야 합니다.",
+      "tts": {
+        "text": "서 있을 때 다리의 혈액은 중력을 거슬러 위로 흘러야 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p27",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "판막이 혈액을 올바른 방향으로 계속 흐르게 합니다.",
+      "text_markdown": "판막이 혈액을 올바른 방향으로 계속 흐르게 합니다.",
+      "tts": {
+        "text": "판막이 혈액을 올바른 방향으로 계속 흐르게 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모세혈관은 가장 작은 혈관입니다.",
+      "text_markdown": "모세혈관은 가장 작은 혈관입니다.",
+      "tts": {
+        "text": "모세혈관은 가장 작은 혈관입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "현미경으로 볼 수 있는 크기입니다.",
+      "text_markdown": "현미경으로 볼 수 있는 크기입니다.",
+      "tts": {
+        "text": "현미경으로 볼 수 있는 크기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "현미경적이란 현미경 없이는 볼 수 없을 정도로 작다는 뜻입니다.",
+      "text_markdown": "현미경적이란 현미경 없이는 볼 수 없을 정도로 작다는 뜻입니다.",
+      "tts": {
+        "text": "현미경적이란 현미경 없이는 볼 수 없을 정도로 작다는 뜻입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모세혈관 벽은 한 세포 두께입니다.",
+      "text_markdown": "모세혈관 벽은 한 세포 두께입니다.",
+      "tts": {
+        "text": "모세혈관 벽은 한 세포 두께입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이 얇음이 중요합니다.",
+      "text_markdown": "이 얇음이 중요합니다.",
+      "tts": {
+        "text": "이 얇음이 중요합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "산소는 모세혈관 벽을 통과해 주변 조직으로 들어갑니다.",
+      "text_markdown": "산소는 모세혈관 벽을 통과해 주변 조직으로 들어갑니다.",
+      "tts": {
+        "text": "산소는 모세혈관 벽을 통과해 주변 조직으로 들어갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "이산화탄소는 조직에서 모세혈관으로 들어옵니다.",
+      "text_markdown": "이산화탄소는 조직에서 모세혈관으로 들어옵니다.",
+      "tts": {
+        "text": "이산화탄소는 조직에서 모세혈관으로 들어옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "영양소는 빠져나갑니다.",
+      "text_markdown": "영양소는 빠져나갑니다.",
+      "tts": {
+        "text": "영양소는 빠져나갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "노폐물은 들어옵니다.",
+      "text_markdown": "노폐물은 들어옵니다.",
+      "tts": {
+        "text": "노폐물은 들어옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p28",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "모든 교환은 모세혈관에서 이루어집니다.",
+      "text_markdown": "모든 교환은 모세혈관에서 이루어집니다.",
+      "tts": {
+        "text": "모든 교환은 모세혈관에서 이루어집니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동맥은 세동맥(arterioles)이라는 점점 더 작은 혈관으로 갈라집니다.",
+      "text_markdown": "동맥은 세동맥(arterioles)이라는 점점 더 작은 혈관으로 갈라집니다.",
+      "tts": {
+        "text": "동맥은 세동맥이라는 점점 더 작은 혈관으로 갈라집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세동맥은 모세혈관과 연결됩니다.",
+      "text_markdown": "세동맥은 모세혈관과 연결됩니다.",
+      "tts": {
+        "text": "세동맥은 모세혈관과 연결됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모세혈관은 세정맥(venules)이라는 약간 더 큰 혈관으로 합쳐집니다.",
+      "text_markdown": "모세혈관은 세정맥(venules)이라는 약간 더 큰 혈관으로 합쳐집니다.",
+      "tts": {
+        "text": "모세혈관은 세정맥이라는 약간 더 큰 혈관으로 합쳐집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "세정맥은 정맥으로 합쳐집니다.",
+      "text_markdown": "세정맥은 정맥으로 합쳐집니다.",
+      "tts": {
+        "text": "세정맥은 정맥으로 합쳐집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "정맥은 혈액을 심장으로 되돌려 보냅니다.",
+      "text_markdown": "정맥은 혈액을 심장으로 되돌려 보냅니다.",
+      "tts": {
+        "text": "정맥은 혈액을 심장으로 되돌려 보냅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 닫힌 순환 고리입니다.",
+      "text_markdown": "이것은 닫힌 순환 고리입니다.",
+      "tts": {
+        "text": "이것은 닫힌 순환 고리입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정상적인 상황에서 혈액은 혈관을 벗어나지 않습니다.",
+      "text_markdown": "정상적인 상황에서 혈액은 혈관을 벗어나지 않습니다.",
+      "tts": {
+        "text": "정상적인 상황에서 혈액은 혈관을 벗어나지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심장은 동맥을 통해 혈액을 밀어냅니다.",
+      "text_markdown": "심장은 동맥을 통해 혈액을 밀어냅니다.",
+      "tts": {
+        "text": "심장은 동맥을 통해 혈액을 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모세혈관이 교환을 합니다.",
+      "text_markdown": "모세혈관이 교환을 합니다.",
+      "tts": {
+        "text": "모세혈관이 교환을 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "혈관",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "정맥이 혈액을 집으로 되돌려 보냅니다.",
+      "text_markdown": "정맥이 혈액을 집으로 되돌려 보냅니다.",
+      "tts": {
+        "text": "정맥이 혈액을 집으로 되돌려 보냅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "심장 박동",
+      "text_markdown": "심장 박동"
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 하루에 약 십만 번 뜁니다.",
+      "text_markdown": "심장은 하루에 약 십만 번 뜁니다.",
+      "tts": {
+        "text": "심장은 하루에 약 십만 번 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 박동은 정밀하게 시간이 맞춰진 일련의 사건들입니다.",
+      "text_markdown": "각 박동은 정밀하게 시간이 맞춰진 일련의 사건들입니다.",
+      "tts": {
+        "text": "각 박동은 정밀하게 시간이 맞춰진 일련의 사건들입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "타이밍은 심장 자체 내부에서 발생하는 전기 신호에 의해 제어됩니다.",
+      "text_markdown": "타이밍은 심장 자체 내부에서 발생하는 전기 신호에 의해 제어됩니다.",
+      "tts": {
+        "text": "타이밍은 심장 자체 내부에서 발생하는 전기 신호에 의해 제어됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장의 자연 박동기는 동방결절(sinoatrial node)이라고 합니다.",
+      "text_markdown": "심장의 자연 박동기는 동방결절(sinoatrial node)이라고 합니다.",
+      "tts": {
+        "text": "심장의 자연 박동기는 동방결절이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "보통 SA 결절이라고 부릅니다.",
+      "text_markdown": "보통 SA 결절이라고 부릅니다.",
+      "tts": {
+        "text": "보통 동방결절이라고 부릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "우심방 벽에 있는 작은 세포 집합체입니다.",
+      "text_markdown": "우심방 벽에 있는 작은 세포 집합체입니다.",
+      "tts": {
+        "text": "우심방 벽에 있는 작은 세포 집합체입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "집합체란 서로 가까이 모여 있는 것들의 무리입니다.",
+      "text_markdown": "집합체란 서로 가까이 모여 있는 것들의 무리입니다.",
+      "tts": {
+        "text": "집합체란 서로 가까이 모여 있는 것들의 무리입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "SA 결절은 전기 충격을 생성합니다.",
+      "text_markdown": "SA 결절은 전기 충격을 생성합니다.",
+      "tts": {
+        "text": "동방결절은 전기 충격을 생성합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "충격이란 갑작스러운 에너지 폭발입니다.",
+      "text_markdown": "충격이란 갑작스러운 에너지 폭발입니다.",
+      "tts": {
+        "text": "충격이란 갑작스러운 에너지 폭발입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "이 충격들이 심장 박동의 속도를 설정합니다.",
+      "text_markdown": "이 충격들이 심장 박동의 속도를 설정합니다.",
+      "tts": {
+        "text": "이 충격들이 심장 박동의 속도를 설정합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "SA 결절은 안정 시 성인의 경우 분당 약 육십에서 백 번 발화합니다.",
+      "text_markdown": "SA 결절은 안정 시 성인의 경우 분당 약 육십에서 백 번 발화합니다.",
+      "tts": {
+        "text": "동방결절은 안정 시 성인의 경우 분당 약 육십에서 백 번 발화합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 충격은 양쪽 심방 전체로 퍼집니다.",
+      "text_markdown": "각 충격은 양쪽 심방 전체로 퍼집니다.",
+      "tts": {
+        "text": "각 충격은 양쪽 심방 전체로 퍼집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심방은 함께 수축합니다.",
+      "text_markdown": "심방은 함께 수축합니다.",
+      "tts": {
+        "text": "심방은 함께 수축합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "혈액을 심실로 밀어 넣습니다.",
+      "text_markdown": "혈액을 심실로 밀어 넣습니다.",
+      "tts": {
+        "text": "혈액을 심실로 밀어 넣습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "충격은 그런 다음 방실결절(atrioventricular node)이라는 또 다른 결절에 도달합니다.",
+      "text_markdown": "충격은 그런 다음 방실결절(atrioventricular node)이라는 또 다른 결절에 도달합니다.",
+      "tts": {
+        "text": "충격은 그런 다음 방실결절이라는 또 다른 결절에 도달합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것을 AV 결절이라고 합니다.",
+      "text_markdown": "이것을 AV 결절이라고 합니다.",
+      "tts": {
+        "text": "이것을 방실결절이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "AV 결절은 심방과 심실 사이에 있습니다.",
+      "text_markdown": "AV 결절은 심방과 심실 사이에 있습니다.",
+      "tts": {
+        "text": "방실결절은 심방과 심실 사이에 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "신호를 잠시 멈춥니다.",
+      "text_markdown": "신호를 잠시 멈춥니다.",
+      "tts": {
+        "text": "신호를 잠시 멈춥니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이 멈춤은 매우 중요합니다.",
+      "text_markdown": "이 멈춤은 매우 중요합니다.",
+      "tts": {
+        "text": "이 멈춤은 매우 중요합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "심실이 수축하기 전에 심방이 비워질 시간을 줍니다.",
+      "text_markdown": "심실이 수축하기 전에 심방이 비워질 시간을 줍니다.",
+      "tts": {
+        "text": "심실이 수축하기 전에 심방이 비워질 시간을 줍니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "멈춤 후 신호는 히스속(bundle of His)이라는 경로를 따라 내려갑니다.",
+      "text_markdown": "멈춤 후 신호는 히스속(bundle of His)이라는 경로를 따라 내려갑니다.",
+      "tts": {
+        "text": "멈춤 후 신호는 히스속이라는 경로를 따라 내려갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "히스(His)는 \"히스\"로 발음합니다. 이것을 발견한 과학자 빌헬름 히스 주니어(Wilhelm His Jr.)의 이름을 따서 붙여졌습니다.",
+      "text_markdown": "히스(His)는 \"히스\"로 발음합니다. 이것을 발견한 과학자 빌헬름 히스 주니어(Wilhelm His Jr.)의 이름을 따서 붙여졌습니다.",
+      "tts": {
+        "text": "히스는 히스로 발음합니다. 이것을 발견한 과학자 빌헬름 히스 주니어의 이름을 따서 붙여졌습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "히스속은 두 개의 가지로 나뉩니다.",
+      "text_markdown": "히스속은 두 개의 가지로 나뉩니다.",
+      "tts": {
+        "text": "히스속은 두 개의 가지로 나뉩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하나의 가지는 우심실로 갑니다.",
+      "text_markdown": "하나의 가지는 우심실로 갑니다.",
+      "tts": {
+        "text": "하나의 가지는 우심실로 갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "나머지 하나는 좌심실로 갑니다.",
+      "text_markdown": "나머지 하나는 좌심실로 갑니다.",
+      "tts": {
+        "text": "나머지 하나는 좌심실로 갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "가지들은 푸르키네 섬유(Purkinje fibers)라는 작은 섬유로 퍼집니다.",
+      "text_markdown": "가지들은 푸르키네 섬유(Purkinje fibers)라는 작은 섬유로 퍼집니다.",
+      "tts": {
+        "text": "가지들은 푸르키네 섬유라는 작은 섬유로 퍼집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "이 섬유들은 양쪽 심실의 근육 세포에 신호를 전달합니다.",
+      "text_markdown": "이 섬유들은 양쪽 심실의 근육 세포에 신호를 전달합니다.",
+      "tts": {
+        "text": "이 섬유들은 양쪽 심실의 근육 세포에 신호를 전달합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "심실은 강하게 동시에 수축합니다.",
+      "text_markdown": "심실은 강하게 동시에 수축합니다.",
+      "tts": {
+        "text": "심실은 강하게 동시에 수축합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수축과 이완의 완전한 한 주기를 심장 주기라고 합니다.",
+      "text_markdown": "수축과 이완의 완전한 한 주기를 심장 주기라고 합니다.",
+      "tts": {
+        "text": "수축과 이완의 완전한 한 주기를 심장 주기라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수축 단계는 수축기(systole)라고 합니다.",
+      "text_markdown": "수축 단계는 수축기(systole)라고 합니다.",
+      "tts": {
+        "text": "수축 단계는 수축기라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수축기(Systole)는 \"함께 모은다\"는 뜻의 그리스어에서 유래했습니다. 이완 단계는 이완기(diastole)라고 합니다.",
+      "text_markdown": "수축기(Systole)는 \"함께 모은다\"는 뜻의 그리스어에서 유래했습니다. 이완 단계는 이완기(diastole)라고 합니다.",
+      "tts": {
+        "text": "수축기는 함께 모은다는 뜻의 그리스어에서 유래했습니다. 이완 단계는 이완기라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이완기(Diastole)는 \"확장한다\"는 뜻의 그리스어에서 유래했습니다.",
+      "text_markdown": "이완기(Diastole)는 \"확장한다\"는 뜻의 그리스어에서 유래했습니다.",
+      "tts": {
+        "text": "이완기는 확장한다는 뜻의 그리스어에서 유래했습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수축기 동안 심실은 짜내듯 수축하며 혈액을 밀어냅니다.",
+      "text_markdown": "수축기 동안 심실은 짜내듯 수축하며 혈액을 밀어냅니다.",
+      "tts": {
+        "text": "수축기 동안 심실은 짜내듯 수축하며 혈액을 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이완기 동안 심실은 이완되어 혈액으로 채워집니다.",
+      "text_markdown": "이완기 동안 심실은 이완되어 혈액으로 채워집니다.",
+      "tts": {
+        "text": "이완기 동안 심실은 이완되어 혈액으로 채워집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 주기는 끝없이 반복됩니다.",
+      "text_markdown": "이 주기는 끝없이 반복됩니다.",
+      "tts": {
+        "text": "이 주기는 끝없이 반복됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "의사는 심전도(electrocardiogram, ECG)라는 기계로 심장의 전기적 활동을 측정할 수 있습니다.",
+      "text_markdown": "의사는 심전도(electrocardiogram, ECG)라는 기계로 심장의 전기적 활동을 측정할 수 있습니다.",
+      "tts": {
+        "text": "의사는 심전도라는 기계로 심장의 전기적 활동을 측정할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심전도는 화면에 파형으로 전기 충격을 보여줍니다.",
+      "text_markdown": "심전도는 화면에 파형으로 전기 충격을 보여줍니다.",
+      "tts": {
+        "text": "심전도는 화면에 파형으로 전기 충격을 보여줍니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각 파형은 특정한 형태를 가집니다.",
+      "text_markdown": "각 파형은 특정한 형태를 가집니다.",
+      "tts": {
+        "text": "각 파형은 특정한 형태를 가집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "의사는 이 형태를 읽어 심장이 제대로 작동하는지 확인합니다.",
+      "text_markdown": "의사는 이 형태를 읽어 심장이 제대로 작동하는지 확인합니다.",
+      "tts": {
+        "text": "의사는 이 형태를 읽어 심장이 제대로 작동하는지 확인합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "불규칙한 심장 박동을 부정맥(arrhythmia)이라고 합니다.",
+      "text_markdown": "불규칙한 심장 박동을 부정맥(arrhythmia)이라고 합니다.",
+      "tts": {
+        "text": "불규칙한 심장 박동을 부정맥이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "부정맥(Arrhythmia)은 \"리듬이 없다\"는 뜻입니다. 일부 부정맥은 해롭지 않습니다.",
+      "text_markdown": "부정맥(Arrhythmia)은 \"리듬이 없다\"는 뜻입니다. 일부 부정맥은 해롭지 않습니다.",
+      "tts": {
+        "text": "부정맥은 리듬이 없다는 뜻입니다. 일부 부정맥은 해롭지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 것은 위험합니다.",
+      "text_markdown": "어떤 것은 위험합니다.",
+      "tts": {
+        "text": "어떤 것은 위험합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "SA 결절이 제 기능을 못하면 의사가 인공 박동기를 이식할 수 있습니다.",
+      "text_markdown": "SA 결절이 제 기능을 못하면 의사가 인공 박동기를 이식할 수 있습니다.",
+      "tts": {
+        "text": "동방결절이 제 기능을 못하면 의사가 인공 박동기를 이식할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이 작은 장치는 전기 신호를 보내 심장이 안정적으로 뛰도록 합니다.",
+      "text_markdown": "이 작은 장치는 전기 신호를 보내 심장이 안정적으로 뛰도록 합니다.",
+      "tts": {
+        "text": "이 작은 장치는 전기 신호를 보내 심장이 안정적으로 뛰도록 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 스스로의 박자를 가진 드러머입니다.",
+      "text_markdown": "심장은 스스로의 박자를 가진 드러머입니다.",
+      "tts": {
+        "text": "심장은 스스로의 박자를 가진 드러머입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "심장 박동",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스스로 박자를 설정하고 완벽한 리듬을 유지합니다.",
+      "text_markdown": "스스로 박자를 설정하고 완벽한 리듬을 유지합니다.",
+      "tts": {
+        "text": "스스로 박자를 설정하고 완벽한 리듬을 유지합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-199",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "혈압",
+      "text_markdown": "혈압"
+    },
+    {
+      "id": "ch05-200",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈액이 흐를 때 동맥 벽을 밀어냅니다.",
+      "text_markdown": "혈액이 흐를 때 동맥 벽을 밀어냅니다.",
+      "tts": {
+        "text": "혈액이 흐를 때 동맥 벽을 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-201",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 밀어냄을 혈압이라고 합니다.",
+      "text_markdown": "이 밀어냄을 혈압이라고 합니다.",
+      "tts": {
+        "text": "이 밀어냄을 혈압이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-202",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "혈압은 혈액이 혈관 내벽을 누르는 힘입니다.",
+      "text_markdown": "혈압은 혈액이 혈관 내벽을 누르는 힘입니다.",
+      "tts": {
+        "text": "혈압은 혈액이 혈관 내벽을 누르는 힘입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch05-203",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈압은 두 개의 숫자로 측정됩니다.",
+      "text_markdown": "혈압은 두 개의 숫자로 측정됩니다.",
+      "tts": {
+        "text": "혈압은 두 개의 숫자로 측정됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-204",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "위 숫자는 수축기 혈압(systolic pressure)이라고 합니다.",
+      "text_markdown": "위 숫자는 수축기 혈압(systolic pressure)이라고 합니다.",
+      "tts": {
+        "text": "위 숫자는 수축기 혈압이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-205",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "수축기 혈압은 심장이 수축할 때의 힘입니다.",
+      "text_markdown": "수축기 혈압은 심장이 수축할 때의 힘입니다.",
+      "tts": {
+        "text": "수축기 혈압은 심장이 수축할 때의 힘입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-206",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 높은 숫자입니다.",
+      "text_markdown": "더 높은 숫자입니다.",
+      "tts": {
+        "text": "더 높은 숫자입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-207",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "아래 숫자는 이완기 혈압(diastolic pressure)이라고 합니다.",
+      "text_markdown": "아래 숫자는 이완기 혈압(diastolic pressure)이라고 합니다.",
+      "tts": {
+        "text": "아래 숫자는 이완기 혈압이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "이완기 혈압은 심장이 이완할 때의 힘입니다.",
+      "text_markdown": "이완기 혈압은 심장이 이완할 때의 힘입니다.",
+      "tts": {
+        "text": "이완기 혈압은 심장이 이완할 때의 힘입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p44",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "더 낮은 숫자입니다.",
+      "text_markdown": "더 낮은 숫자입니다.",
+      "tts": {
+        "text": "더 낮은 숫자입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "성인의 정상 혈압은 약 백이십에서 팔십입니다.",
+      "text_markdown": "성인의 정상 혈압은 약 백이십에서 팔십입니다.",
+      "tts": {
+        "text": "성인의 정상 혈압은 약 백이십에서 팔십입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "120/80으로 씁니다.",
+      "text_markdown": "120/80으로 씁니다.",
+      "tts": {
+        "text": "백이십 대 팔십으로 씁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "측정 단위는 수은 밀리미터이며 mmHg로 씁니다.",
+      "text_markdown": "측정 단위는 수은 밀리미터이며 mmHg로 씁니다.",
+      "tts": {
+        "text": "측정 단위는 수은 밀리미터이며 밀리미터 수은주로 씁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 단위는 수은 기둥을 사용하던 초기 압력 측정 장치에서 유래했습니다.",
+      "text_markdown": "이 단위는 수은 기둥을 사용하던 초기 압력 측정 장치에서 유래했습니다.",
+      "tts": {
+        "text": "이 단위는 수은 기둥을 사용하던 초기 압력 측정 장치에서 유래했습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈압은 혈압계(sphygmomanometer)라는 장치로 측정합니다.",
+      "text_markdown": "혈압은 혈압계(sphygmomanometer)라는 장치로 측정합니다.",
+      "tts": {
+        "text": "혈압은 혈압계라는 장치로 측정합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "긴 단어입니다.",
+      "text_markdown": "긴 단어입니다.",
+      "tts": {
+        "text": "긴 단어입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "\"맥박\"과 \"측정\"을 뜻하는 그리스어 어근에서 유래했습니다. 커프가 윗팔을 감쌉니다.",
+      "text_markdown": "\"맥박\"과 \"측정\"을 뜻하는 그리스어 어근에서 유래했습니다. 커프가 윗팔을 감쌉니다.",
+      "tts": {
+        "text": "맥박과 측정을 뜻하는 그리스어 어근에서 유래했습니다. 커프가 윗팔을 감쌉니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "커프가 부풀어 올라 동맥을 닫습니다.",
+      "text_markdown": "커프가 부풀어 올라 동맥을 닫습니다.",
+      "tts": {
+        "text": "커프가 부풀어 올라 동맥을 닫습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그런 다음 커프가 천천히 수축합니다.",
+      "text_markdown": "그런 다음 커프가 천천히 수축합니다.",
+      "tts": {
+        "text": "그런 다음 커프가 천천히 수축합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "의사는 청진기로 혈액이 흐르는 소리를 듣습니다.",
+      "text_markdown": "의사는 청진기로 혈액이 흐르는 소리를 듣습니다.",
+      "tts": {
+        "text": "의사는 청진기로 혈액이 흐르는 소리를 듣습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "소리가 시작되는 지점이 수축기 혈압입니다.",
+      "text_markdown": "소리가 시작되는 지점이 수축기 혈압입니다.",
+      "tts": {
+        "text": "소리가 시작되는 지점이 수축기 혈압입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "소리가 사라지는 지점이 이완기 혈압입니다.",
+      "text_markdown": "소리가 사라지는 지점이 이완기 혈압입니다.",
+      "tts": {
+        "text": "소리가 사라지는 지점이 이완기 혈압입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고혈압을 고혈압증(hypertension)이라고 합니다.",
+      "text_markdown": "고혈압을 고혈압증(hypertension)이라고 합니다.",
+      "tts": {
+        "text": "고혈압을 고혈압증이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"하이퍼(hyper)\"는 \"이상\" 또는 \"과도한\"을 뜻합니다. \"텐션(tension)\"은 압력을 말합니다.",
+      "text_markdown": "\"하이퍼(hyper)\"는 \"이상\" 또는 \"과도한\"을 뜻합니다. \"텐션(tension)\"은 압력을 말합니다.",
+      "tts": {
+        "text": "하이퍼는 이상 또는 과도한을 뜻합니다. 텐션은 압력을 말합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고혈압증은 혈액이 동맥 벽을 너무 세게 민다는 뜻입니다.",
+      "text_markdown": "고혈압증은 혈액이 동맥 벽을 너무 세게 민다는 뜻입니다.",
+      "tts": {
+        "text": "고혈압증은 혈액이 동맥 벽을 너무 세게 민다는 뜻입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시간이 지나면 동맥이 손상됩니다.",
+      "text_markdown": "시간이 지나면 동맥이 손상됩니다.",
+      "tts": {
+        "text": "시간이 지나면 동맥이 손상됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "심장이 더 열심히 일해야 합니다.",
+      "text_markdown": "심장이 더 열심히 일해야 합니다.",
+      "tts": {
+        "text": "심장이 더 열심히 일해야 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "심장마비와 뇌졸중의 위험이 높아집니다.",
+      "text_markdown": "심장마비와 뇌졸중의 위험이 높아집니다.",
+      "tts": {
+        "text": "심장마비와 뇌졸중의 위험이 높아집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "심장마비는 심장 근육의 일부로 가는 혈류가 막힐 때 발생합니다.",
+      "text_markdown": "심장마비는 심장 근육의 일부로 가는 혈류가 막힐 때 발생합니다.",
+      "tts": {
+        "text": "심장마비는 심장 근육의 일부로 가는 혈류가 막힐 때 발생합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p47",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "뇌졸중은 뇌의 일부로 가는 혈류가 막힐 때 발생합니다.",
+      "text_markdown": "뇌졸중은 뇌의 일부로 가는 혈류가 막힐 때 발생합니다.",
+      "tts": {
+        "text": "뇌졸중은 뇌의 일부로 가는 혈류가 막힐 때 발생합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "고혈압증은 침묵의 살인자라고 불립니다.",
+      "text_markdown": "고혈압증은 침묵의 살인자라고 불립니다.",
+      "tts": {
+        "text": "고혈압증은 침묵의 살인자라고 불립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "고혈압을 가진 대부분의 사람들은 아무 증상도 느끼지 못합니다.",
+      "text_markdown": "고혈압을 가진 대부분의 사람들은 아무 증상도 느끼지 못합니다.",
+      "tts": {
+        "text": "고혈압을 가진 대부분의 사람들은 아무 증상도 느끼지 못합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자신이 고혈압이라는 것을 모릅니다.",
+      "text_markdown": "자신이 고혈압이라는 것을 모릅니다.",
+      "tts": {
+        "text": "자신이 고혈압이라는 것을 모릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그래서 정기 검진이 중요합니다.",
+      "text_markdown": "그래서 정기 검진이 중요합니다.",
+      "tts": {
+        "text": "그래서 정기 검진이 중요합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "저혈압을 저혈압증(hypotension)이라고 합니다.",
+      "text_markdown": "저혈압을 저혈압증(hypotension)이라고 합니다.",
+      "tts": {
+        "text": "저혈압을 저혈압증이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"하이포(hypo)\"는 \"아래\"를 뜻합니다. 저혈압증은 어지러움과 실신을 유발할 수 있습니다.",
+      "text_markdown": "\"하이포(hypo)\"는 \"아래\"를 뜻합니다. 저혈압증은 어지러움과 실신을 유발할 수 있습니다.",
+      "tts": {
+        "text": "하이포는 아래를 뜻합니다. 저혈압증은 어지러움과 실신을 유발할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "신체에 충분한 혈액이 흐르지 않는다는 뜻입니다.",
+      "text_markdown": "신체에 충분한 혈액이 흐르지 않는다는 뜻입니다.",
+      "tts": {
+        "text": "신체에 충분한 혈액이 흐르지 않는다는 뜻입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 요인들이 혈압에 영향을 줍니다.",
+      "text_markdown": "많은 요인들이 혈압에 영향을 줍니다.",
+      "tts": {
+        "text": "많은 요인들이 혈압에 영향을 줍니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소금은 혈압을 높입니다.",
+      "text_markdown": "소금은 혈압을 높입니다.",
+      "tts": {
+        "text": "소금은 혈압을 높입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "운동은 일시적으로 혈압을 높이지만 장기적으로는 개선합니다.",
+      "text_markdown": "운동은 일시적으로 혈압을 높이지만 장기적으로는 개선합니다.",
+      "tts": {
+        "text": "운동은 일시적으로 혈압을 높이지만 장기적으로는 개선합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스트레스는 혈압을 높입니다.",
+      "text_markdown": "스트레스는 혈압을 높입니다.",
+      "tts": {
+        "text": "스트레스는 혈압을 높입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "수면은 혈압을 낮춥니다.",
+      "text_markdown": "수면은 혈압을 낮춥니다.",
+      "tts": {
+        "text": "수면은 혈압을 낮춥니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "비만은 혈압을 높입니다.",
+      "text_markdown": "비만은 혈압을 높입니다.",
+      "tts": {
+        "text": "비만은 혈압을 높입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "비만은 체지방이 너무 많다는 뜻입니다.",
+      "text_markdown": "비만은 체지방이 너무 많다는 뜻입니다.",
+      "tts": {
+        "text": "비만은 체지방이 너무 많다는 뜻입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "혈압을 건강한 범위 내로 유지하면 심장, 뇌, 신장 그리고 신체의 모든 장기를 보호합니다.",
+      "text_markdown": "혈압을 건강한 범위 내로 유지하면 심장, 뇌, 신장 그리고 신체의 모든 장기를 보호합니다.",
+      "tts": {
+        "text": "혈압을 건강한 범위 내로 유지하면 심장, 뇌, 신장 그리고 신체의 모든 장기를 보호합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "혈압",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "모든 심장 박동 뒤의 힘은 중요합니다.",
+      "text_markdown": "모든 심장 박동 뒤의 힘은 중요합니다.",
+      "tts": {
+        "text": "모든 심장 박동 뒤의 힘은 중요합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-246",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "운동과 심장",
+      "text_markdown": "운동과 심장"
+    },
+    {
+      "id": "ch06-247",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "운동은 심장을 강하게 만듭니다.",
+      "text_markdown": "운동은 심장을 강하게 만듭니다.",
+      "tts": {
+        "text": "운동은 심장을 강하게 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-248",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심장은 근육입니다.",
+      "text_markdown": "심장은 근육입니다.",
+      "tts": {
+        "text": "심장은 근육입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-249",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 근육이든 사용할수록 강해집니다.",
+      "text_markdown": "어떤 근육이든 사용할수록 강해집니다.",
+      "tts": {
+        "text": "어떤 근육이든 사용할수록 강해집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-250",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "규칙적인 운동은 심장을 위해 할 수 있는 가장 좋은 일 중 하나입니다.",
+      "text_markdown": "규칙적인 운동은 심장을 위해 할 수 있는 가장 좋은 일 중 하나입니다.",
+      "tts": {
+        "text": "규칙적인 운동은 심장을 위해 할 수 있는 가장 좋은 일 중 하나입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-251",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "운동할 때 근육은 더 많은 산소를 필요로 합니다.",
+      "text_markdown": "운동할 때 근육은 더 많은 산소를 필요로 합니다.",
+      "tts": {
+        "text": "운동할 때 근육은 더 많은 산소를 필요로 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "근육이 더 열심히 일하고 있습니다.",
+      "text_markdown": "근육이 더 열심히 일하고 있습니다.",
+      "tts": {
+        "text": "근육이 더 열심히 일하고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더 많은 에너지를 소비하고 있습니다.",
+      "text_markdown": "더 많은 에너지를 소비하고 있습니다.",
+      "tts": {
+        "text": "더 많은 에너지를 소비하고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 많은 산소를 공급하기 위해 심장이 더 빠르게 뜁니다.",
+      "text_markdown": "더 많은 산소를 공급하기 위해 심장이 더 빠르게 뜁니다.",
+      "tts": {
+        "text": "더 많은 산소를 공급하기 위해 심장이 더 빠르게 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "더 강하게도 뜁니다.",
+      "text_markdown": "더 강하게도 뜁니다.",
+      "tts": {
+        "text": "더 강하게도 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "수축할 때마다 더 많은 혈액을 펌프질합니다.",
+      "text_markdown": "수축할 때마다 더 많은 혈액을 펌프질합니다.",
+      "tts": {
+        "text": "수축할 때마다 더 많은 혈액을 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p54",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "심장이 분당 펌프질하는 혈액의 양을 심박출량(cardiac output)이라고 합니다.",
+      "text_markdown": "심장이 분당 펌프질하는 혈액의 양을 심박출량(cardiac output)이라고 합니다.",
+      "tts": {
+        "text": "심장이 분당 펌프질하는 혈액의 양을 심박출량이라고 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "건강한 성인의 안정 시 심박수는 분당 육십에서 백 회입니다.",
+      "text_markdown": "건강한 성인의 안정 시 심박수는 분당 육십에서 백 회입니다.",
+      "tts": {
+        "text": "건강한 성인의 안정 시 심박수는 분당 육십에서 백 회입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "격렬한 운동 중에는 심박수가 분당 백오십, 백칠십, 심지어 이백 회까지 올라갈 수 있습니다.",
+      "text_markdown": "격렬한 운동 중에는 심박수가 분당 백오십, 백칠십, 심지어 이백 회까지 올라갈 수 있습니다.",
+      "tts": {
+        "text": "격렬한 운동 중에는 심박수가 분당 백오십, 백칠십, 심지어 이백 회까지 올라갈 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심박수는 일 분 동안의 심장 박동 수입니다.",
+      "text_markdown": "심박수는 일 분 동안의 심장 박동 수입니다.",
+      "tts": {
+        "text": "심박수는 일 분 동안의 심장 박동 수입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "십오 초 동안 맥박을 세고 사를 곱하면 측정할 수 있습니다.",
+      "text_markdown": "십오 초 동안 맥박을 세고 사를 곱하면 측정할 수 있습니다.",
+      "tts": {
+        "text": "십오 초 동안 맥박을 세고 사를 곱하면 측정할 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "운동선수는 종종 안정 시 심박수가 더 낮습니다.",
+      "text_markdown": "운동선수는 종종 안정 시 심박수가 더 낮습니다.",
+      "tts": {
+        "text": "운동선수는 종종 안정 시 심박수가 더 낮습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잘 훈련된 지구력 운동선수의 안정 시 심박수는 분당 사십에서 오십 회일 수 있습니다.",
+      "text_markdown": "잘 훈련된 지구력 운동선수의 안정 시 심박수는 분당 사십에서 오십 회일 수 있습니다.",
+      "tts": {
+        "text": "잘 훈련된 지구력 운동선수의 안정 시 심박수는 분당 사십에서 오십 회일 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심장이 더 강하기 때문입니다.",
+      "text_markdown": "심장이 더 강하기 때문입니다.",
+      "tts": {
+        "text": "심장이 더 강하기 때문입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "더 강한 심장은 박동당 더 많은 혈액을 펌프질합니다.",
+      "text_markdown": "더 강한 심장은 박동당 더 많은 혈액을 펌프질합니다.",
+      "tts": {
+        "text": "더 강한 심장은 박동당 더 많은 혈액을 펌프질합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그만큼 자주 뛸 필요가 없습니다.",
+      "text_markdown": "그만큼 자주 뛸 필요가 없습니다.",
+      "tts": {
+        "text": "그만큼 자주 뛸 필요가 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "이것을 일회박출량(stroke volume)이라고 합니다.",
+      "text_markdown": "이것을 일회박출량(stroke volume)이라고 합니다.",
+      "tts": {
+        "text": "이것을 일회박출량이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "일회박출량은 한 번의 박동으로 펌프질되는 혈액의 양입니다.",
+      "text_markdown": "일회박출량은 한 번의 박동으로 펌프질되는 혈액의 양입니다.",
+      "tts": {
+        "text": "일회박출량은 한 번의 박동으로 펌프질되는 혈액의 양입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p56",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "훈련은 일회박출량을 증가시킵니다.",
+      "text_markdown": "훈련은 일회박출량을 증가시킵니다.",
+      "tts": {
+        "text": "훈련은 일회박출량을 증가시킵니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유산소 운동은 특히 심장에 좋습니다.",
+      "text_markdown": "유산소 운동은 특히 심장에 좋습니다.",
+      "tts": {
+        "text": "유산소 운동은 특히 심장에 좋습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"에어로빅(Aerobic)\"은 \"산소와 함께\"를 뜻합니다. 유산소 운동에는 달리기, 수영, 자전거 타기, 빠르게 걷기가 포함됩니다.",
+      "text_markdown": "\"에어로빅(Aerobic)\"은 \"산소와 함께\"를 뜻합니다. 유산소 운동에는 달리기, 수영, 자전거 타기, 빠르게 걷기가 포함됩니다.",
+      "tts": {
+        "text": "에어로빅은 산소와 함께를 뜻합니다. 유산소 운동에는 달리기, 수영, 자전거 타기, 빠르게 걷기가 포함됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유산소 운동 중에는 호흡수가 증가합니다.",
+      "text_markdown": "유산소 운동 중에는 호흡수가 증가합니다.",
+      "tts": {
+        "text": "유산소 운동 중에는 호흡수가 증가합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심박수가 증가합니다.",
+      "text_markdown": "심박수가 증가합니다.",
+      "tts": {
+        "text": "심박수가 증가합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "신체는 오랜 시간 동안 꾸준히 연료를 태우기 위해 산소를 사용합니다.",
+      "text_markdown": "신체는 오랜 시간 동안 꾸준히 연료를 태우기 위해 산소를 사용합니다.",
+      "tts": {
+        "text": "신체는 오랜 시간 동안 꾸준히 연료를 태우기 위해 산소를 사용합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "규칙적인 유산소 운동은 안정 시 혈압을 낮춥니다.",
+      "text_markdown": "규칙적인 유산소 운동은 안정 시 혈압을 낮춥니다.",
+      "tts": {
+        "text": "규칙적인 유산소 운동은 안정 시 혈압을 낮춥니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "HDL 콜레스테롤 수치를 높입니다.",
+      "text_markdown": "HDL 콜레스테롤 수치를 높입니다.",
+      "tts": {
+        "text": "고밀도 지단백 콜레스테롤 수치를 높입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "HDL은 고밀도 지단백(high-density lipoprotein)의 약자입니다.",
+      "text_markdown": "HDL은 고밀도 지단백(high-density lipoprotein)의 약자입니다.",
+      "tts": {
+        "text": "이것은 고밀도 지단백의 약자입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "HDL은 흔히 \"좋은\" 콜레스테롤이라고 불립니다.",
+      "text_markdown": "HDL은 흔히 \"좋은\" 콜레스테롤이라고 불립니다.",
+      "tts": {
+        "text": "고밀도 지단백은 흔히 좋은 콜레스테롤이라고 불립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "동맥에서 해로운 콜레스테롤을 제거하는 데 도움이 됩니다.",
+      "text_markdown": "동맥에서 해로운 콜레스테롤을 제거하는 데 도움이 됩니다.",
+      "tts": {
+        "text": "동맥에서 해로운 콜레스테롤을 제거하는 데 도움이 됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "콜레스테롤은 혈액 속의 납 같은 물질입니다.",
+      "text_markdown": "콜레스테롤은 혈액 속의 납 같은 물질입니다.",
+      "tts": {
+        "text": "콜레스테롤은 혈액 속의 납 같은 물질입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "잘못된 종류가 너무 많으면 동맥이 막힐 수 있습니다.",
+      "text_markdown": "잘못된 종류가 너무 많으면 동맥이 막힐 수 있습니다.",
+      "tts": {
+        "text": "잘못된 종류가 너무 많으면 동맥이 막힐 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "운동은 또한 혈관 벽을 강화합니다.",
+      "text_markdown": "운동은 또한 혈관 벽을 강화합니다.",
+      "tts": {
+        "text": "운동은 또한 혈관 벽을 강화합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "혈관을 더 유연하게 만듭니다.",
+      "text_markdown": "혈관을 더 유연하게 만듭니다.",
+      "tts": {
+        "text": "혈관을 더 유연하게 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "유연한 혈관은 압력 변화를 더 잘 처리합니다.",
+      "text_markdown": "유연한 혈관은 압력 변화를 더 잘 처리합니다.",
+      "tts": {
+        "text": "유연한 혈관은 압력 변화를 더 잘 처리합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "운동은 염증을 줄입니다.",
+      "text_markdown": "운동은 염증을 줄입니다.",
+      "tts": {
+        "text": "운동은 염증을 줄입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "염증이란 조직의 붓기와 자극입니다.",
+      "text_markdown": "염증이란 조직의 붓기와 자극입니다.",
+      "tts": {
+        "text": "염증이란 조직의 붓기와 자극입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "만성 염증은 시간이 지남에 따라 동맥을 손상시킵니다.",
+      "text_markdown": "만성 염증은 시간이 지남에 따라 동맥을 손상시킵니다.",
+      "tts": {
+        "text": "만성 염증은 시간이 지남에 따라 동맥을 손상시킵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p59",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "만성이란 오래 지속된다는 뜻입니다.",
+      "text_markdown": "만성이란 오래 지속된다는 뜻입니다.",
+      "tts": {
+        "text": "만성이란 오래 지속된다는 뜻입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "활동하지 않는 사람들은 심장 질환의 위험이 더 높습니다.",
+      "text_markdown": "활동하지 않는 사람들은 심장 질환의 위험이 더 높습니다.",
+      "tts": {
+        "text": "활동하지 않는 사람들은 심장 질환의 위험이 더 높습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심장 질환은 전 세계 사망의 주요 원인입니다.",
+      "text_markdown": "심장 질환은 전 세계 사망의 주요 원인입니다.",
+      "tts": {
+        "text": "심장 질환은 전 세계 사망의 주요 원인입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "적당한 운동도 차이를 만듭니다.",
+      "text_markdown": "적당한 운동도 차이를 만듭니다.",
+      "tts": {
+        "text": "적당한 운동도 차이를 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하루 삼십 분 걷기만 해도 위험이 크게 줄어듭니다.",
+      "text_markdown": "하루 삼십 분 걷기만 해도 위험이 크게 줄어듭니다.",
+      "tts": {
+        "text": "하루 삼십 분 걷기만 해도 위험이 크게 줄어듭니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 당신이 어떻게 사는지에 반응합니다.",
+      "text_markdown": "심장은 당신이 어떻게 사는지에 반응합니다.",
+      "tts": {
+        "text": "심장은 당신이 어떻게 사는지에 반응합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도전하면 더 강해집니다.",
+      "text_markdown": "도전하면 더 강해집니다.",
+      "tts": {
+        "text": "도전하면 더 강해집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "방치하면 약해집니다.",
+      "text_markdown": "방치하면 약해집니다.",
+      "tts": {
+        "text": "방치하면 약해집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "운동과 심장",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 발걸음이 중요합니다.",
+      "text_markdown": "모든 발걸음이 중요합니다.",
+      "tts": {
+        "text": "모든 발걸음이 중요합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-297",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "태어나기 전의 심장",
+      "text_markdown": "태어나기 전의 심장"
+    },
+    {
+      "id": "ch07-298",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장은 가장 먼저 발달하는 장기 중 하나입니다.",
+      "text_markdown": "심장은 가장 먼저 발달하는 장기 중 하나입니다.",
+      "tts": {
+        "text": "심장은 가장 먼저 발달하는 장기 중 하나입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-299",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "성장하는 배아가 생존하기 위해 혈액 공급이 필요하기 때문에 일찍 형성됩니다.",
+      "text_markdown": "성장하는 배아가 생존하기 위해 혈액 공급이 필요하기 때문에 일찍 형성됩니다.",
+      "tts": {
+        "text": "성장하는 배아가 생존하기 위해 혈액 공급이 필요하기 때문에 일찍 형성됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-300",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배아란 발달의 초기 단계에 있는 생명체입니다.",
+      "text_markdown": "배아란 발달의 초기 단계에 있는 생명체입니다.",
+      "tts": {
+        "text": "배아란 발달의 초기 단계에 있는 생명체입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-301",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수정 후 약 십팔에서 이십 일이 되면 심장 세포가 나타나기 시작합니다.",
+      "text_markdown": "수정 후 약 십팔에서 이십 일이 되면 심장 세포가 나타나기 시작합니다.",
+      "tts": {
+        "text": "수정 후 약 십팔에서 이십 일이 되면 심장 세포가 나타나기 시작합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-302",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "단순한 관 형태로 만들어집니다.",
+      "text_markdown": "단순한 관 형태로 만들어집니다.",
+      "tts": {
+        "text": "단순한 관 형태로 만들어집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-303",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 관은 약 이십이 일째에 박동하기 시작합니다.",
+      "text_markdown": "이 관은 약 이십이 일째에 박동하기 시작합니다.",
+      "tts": {
+        "text": "이 관은 약 이십이 일째에 박동하기 시작합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-304",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 시점에 배아는 쌀 한 알보다 작습니다.",
+      "text_markdown": "이 시점에 배아는 쌀 한 알보다 작습니다.",
+      "tts": {
+        "text": "이 시점에 배아는 쌀 한 알보다 작습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-305",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p64",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "박동하는 관이 작은 몸 전체에 체액을 밀어 보냅니다.",
+      "text_markdown": "박동하는 관이 작은 몸 전체에 체액을 밀어 보냅니다.",
+      "tts": {
+        "text": "박동하는 관이 작은 몸 전체에 체액을 밀어 보냅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-306",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 후 몇 주에 걸쳐 관은 접히고 비틀립니다.",
+      "text_markdown": "그 후 몇 주에 걸쳐 관은 접히고 비틀립니다.",
+      "tts": {
+        "text": "그 후 몇 주에 걸쳐 관은 접히고 비틀립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-307",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "S자 모양으로 휘어집니다.",
+      "text_markdown": "S자 모양으로 휘어집니다.",
+      "tts": {
+        "text": "에스자 모양으로 휘어집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-308",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "방으로 나뉩니다.",
+      "text_markdown": "방으로 나뉩니다.",
+      "tts": {
+        "text": "방으로 나뉩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-309",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "중격(septa)이라 불리는 벽이 방들 사이에 자랍니다.",
+      "text_markdown": "중격(septa)이라 불리는 벽이 방들 사이에 자랍니다.",
+      "tts": {
+        "text": "중격이라 불리는 벽이 방들 사이에 자랍니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-310",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "중격(septum)은 두 공간을 나누는 벽입니다.",
+      "text_markdown": "중격(septum)은 두 공간을 나누는 벽입니다.",
+      "tts": {
+        "text": "중격은 두 공간을 나누는 벽입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-311",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "복수형은 세프타(septa)입니다.",
+      "text_markdown": "복수형은 세프타(septa)입니다.",
+      "tts": {
+        "text": "복수형은 중격들입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-312",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "약 팔 주가 되면 심장은 뚜렷하게 구분되는 네 개의 방을 갖게 됩니다.",
+      "text_markdown": "약 팔 주가 되면 심장은 뚜렷하게 구분되는 네 개의 방을 갖게 됩니다.",
+      "tts": {
+        "text": "약 팔 주가 되면 심장은 뚜렷하게 구분되는 네 개의 방을 갖게 됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-313",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "태아의 심장은 출생 후의 심장과 다르게 작동합니다.",
+      "text_markdown": "태아의 심장은 출생 후의 심장과 다르게 작동합니다.",
+      "tts": {
+        "text": "태아의 심장은 출생 후의 심장과 다르게 작동합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-314",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "태아란 발달 약 팔 주 이후의 태어나지 않은 아기입니다.",
+      "text_markdown": "태아란 발달 약 팔 주 이후의 태어나지 않은 아기입니다.",
+      "tts": {
+        "text": "태아란 발달 약 팔 주 이후의 태어나지 않은 아기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-315",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "태아는 공기를 호흡하지 않습니다.",
+      "text_markdown": "태아는 공기를 호흡하지 않습니다.",
+      "tts": {
+        "text": "태아는 공기를 호흡하지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-316",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "폐는 체액으로 채워져 있습니다.",
+      "text_markdown": "폐는 체액으로 채워져 있습니다.",
+      "tts": {
+        "text": "폐는 체액으로 채워져 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-317",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "태반을 통해 어머니로부터 산소를 공급받습니다.",
+      "text_markdown": "태반을 통해 어머니로부터 산소를 공급받습니다.",
+      "tts": {
+        "text": "태반을 통해 어머니로부터 산소를 공급받습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-318",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "태반은 태아를 어머니의 혈액 공급과 연결하는 장기입니다.",
+      "text_markdown": "태반은 태아를 어머니의 혈액 공급과 연결하는 장기입니다.",
+      "tts": {
+        "text": "태반은 태아를 어머니의 혈액 공급과 연결하는 장기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-319",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p66",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "산소와 영양소는 태반을 통해 어머니의 혈액에서 태아의 혈액으로 전달됩니다.",
+      "text_markdown": "산소와 영양소는 태반을 통해 어머니의 혈액에서 태아의 혈액으로 전달됩니다.",
+      "tts": {
+        "text": "산소와 영양소는 태반을 통해 어머니의 혈액에서 태아의 혈액으로 전달됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-320",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "태아의 폐가 사용되지 않기 때문에 심장에는 지름길이 있습니다.",
+      "text_markdown": "태아의 폐가 사용되지 않기 때문에 심장에는 지름길이 있습니다.",
+      "tts": {
+        "text": "태아의 폐가 사용되지 않기 때문에 심장에는 지름길이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-321",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "우심방과 좌심방 사이에 구멍이 있습니다.",
+      "text_markdown": "우심방과 좌심방 사이에 구멍이 있습니다.",
+      "tts": {
+        "text": "우심방과 좌심방 사이에 구멍이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-322",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 구멍을 난원공(foramen ovale)이라고 합니다.",
+      "text_markdown": "이 구멍을 난원공(foramen ovale)이라고 합니다.",
+      "tts": {
+        "text": "이 구멍을 난원공이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-323",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "포라멘(Foramen)은 라틴어로 \"구멍\"을 뜻합니다.",
+      "text_markdown": "포라멘(Foramen)은 라틴어로 \"구멍\"을 뜻합니다.",
+      "tts": {
+        "text": "포라멘은 라틴어로 구멍을 뜻합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-324",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "\"오발레(Ovale)\"는 \"타원형\"을 뜻합니다. 혈액은 폐를 우회하여 이 구멍을 통과합니다.",
+      "text_markdown": "\"오발레(Ovale)\"는 \"타원형\"을 뜻합니다. 혈액은 폐를 우회하여 이 구멍을 통과합니다.",
+      "tts": {
+        "text": "오발레는 타원형을 뜻합니다. 혈액은 폐를 우회하여 이 구멍을 통과합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-325",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "대부분의 혈액은 심장 왼쪽으로 직접 흘러 온몸으로 나갑니다.",
+      "text_markdown": "대부분의 혈액은 심장 왼쪽으로 직접 흘러 온몸으로 나갑니다.",
+      "tts": {
+        "text": "대부분의 혈액은 심장 왼쪽으로 직접 흘러 온몸으로 나갑니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-326",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "동맥관(ductus arteriosus)이라는 또 다른 지름길이 있습니다.",
+      "text_markdown": "동맥관(ductus arteriosus)이라는 또 다른 지름길이 있습니다.",
+      "tts": {
+        "text": "동맥관이라는 또 다른 지름길이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-327",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 폐동맥과 대동맥을 연결하는 작은 혈관입니다.",
+      "text_markdown": "이것은 폐동맥과 대동맥을 연결하는 작은 혈관입니다.",
+      "tts": {
+        "text": "이것은 폐동맥과 대동맥을 연결하는 작은 혈관입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-328",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폐로 가는 혈액을 우회시킵니다.",
+      "text_markdown": "폐로 가는 혈액을 우회시킵니다.",
+      "tts": {
+        "text": "폐로 가는 혈액을 우회시킵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-329",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 두 지름길은 아직 작동하지 않는 폐로 낭비되는 여행 없이 혈액이 신체에 빠르게 도달하도록 합니다.",
+      "text_markdown": "이 두 지름길은 아직 작동하지 않는 폐로 낭비되는 여행 없이 혈액이 신체에 빠르게 도달하도록 합니다.",
+      "tts": {
+        "text": "이 두 지름길은 아직 작동하지 않는 폐로 낭비되는 여행 없이 혈액이 신체에 빠르게 도달하도록 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-330",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "출생 시 모든 것이 바뀝니다.",
+      "text_markdown": "출생 시 모든 것이 바뀝니다.",
+      "tts": {
+        "text": "출생 시 모든 것이 바뀝니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-331",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아기는 첫 호흡을 합니다.",
+      "text_markdown": "아기는 첫 호흡을 합니다.",
+      "tts": {
+        "text": "아기는 첫 호흡을 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-332",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폐가 팽창합니다.",
+      "text_markdown": "폐가 팽창합니다.",
+      "tts": {
+        "text": "폐가 팽창합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-333",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "산소를 흡수하기 위해 폐로 혈액이 흐르기 시작합니다.",
+      "text_markdown": "산소를 흡수하기 위해 폐로 혈액이 흐르기 시작합니다.",
+      "tts": {
+        "text": "산소를 흡수하기 위해 폐로 혈액이 흐르기 시작합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-334",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "난원공이 닫힙니다.",
+      "text_markdown": "난원공이 닫힙니다.",
+      "tts": {
+        "text": "난원공이 닫힙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-335",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "보통 생후 첫 일 년 안에 완전히 봉합됩니다.",
+      "text_markdown": "보통 생후 첫 일 년 안에 완전히 봉합됩니다.",
+      "tts": {
+        "text": "보통 생후 첫 일 년 안에 완전히 봉합됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-336",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "동맥관도 닫힙니다.",
+      "text_markdown": "동맥관도 닫힙니다.",
+      "tts": {
+        "text": "동맥관도 닫힙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-337",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p69",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "보통 출생 후 며칠 안에 닫힙니다.",
+      "text_markdown": "보통 출생 후 며칠 안에 닫힙니다.",
+      "tts": {
+        "text": "보통 출생 후 며칠 안에 닫힙니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-338",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "때로는 이 구조물들이 제대로 닫히지 않습니다.",
+      "text_markdown": "때로는 이 구조물들이 제대로 닫히지 않습니다.",
+      "tts": {
+        "text": "때로는 이 구조물들이 제대로 닫히지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-339",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "열려 있는 난원공은 열린 난원공(patent foramen ovale)이라고 합니다.",
+      "text_markdown": "열려 있는 난원공은 열린 난원공(patent foramen ovale)이라고 합니다.",
+      "tts": {
+        "text": "열려 있는 난원공은 열린 난원공이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-340",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "\"페이턴트(Patent)\"는 \"열린\"을 뜻합니다. 이 상태는 흔합니다.",
+      "text_markdown": "\"페이턴트(Patent)\"는 \"열린\"을 뜻합니다. 이 상태는 흔합니다.",
+      "tts": {
+        "text": "페이턴트는 열린을 뜻합니다. 이 상태는 흔합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-341",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "약 네 명 중 한 명이 이를 가지고 있습니다.",
+      "text_markdown": "약 네 명 중 한 명이 이를 가지고 있습니다.",
+      "tts": {
+        "text": "약 네 명 중 한 명이 이를 가지고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-342",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "대부분은 알지 못합니다.",
+      "text_markdown": "대부분은 알지 못합니다.",
+      "tts": {
+        "text": "대부분은 알지 못합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-343",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "거의 문제를 일으키지 않습니다.",
+      "text_markdown": "거의 문제를 일으키지 않습니다.",
+      "tts": {
+        "text": "거의 문제를 일으키지 않습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-344",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "출생 시의 변화는 놀랍습니다.",
+      "text_markdown": "출생 시의 변화는 놀랍습니다.",
+      "tts": {
+        "text": "출생 시의 변화는 놀랍습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-345",
+      "part": 0,
+      "chapter": 7,
+      "title": "태어나기 전의 심장",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "몇 초 만에 심장은 태아 순환에서 평생 사용할 순환 패턴으로 전환됩니다.",
+      "text_markdown": "몇 초 만에 심장은 태아 순환에서 평생 사용할 순환 패턴으로 전환됩니다.",
+      "tts": {
+        "text": "몇 초 만에 심장은 태아 순환에서 평생 사용할 순환 패턴으로 전환됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch08-346",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "평생의 박동",
+      "text_markdown": "평생의 박동"
+    },
+    {
+      "id": "ch08-347",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인간의 평균 심장은 평생 약 이십오억 번 뜁니다.",
+      "text_markdown": "인간의 평균 심장은 평생 약 이십오억 번 뜁니다.",
+      "tts": {
+        "text": "인간의 평균 심장은 평생 약 이십오억 번 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-348",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 숫자는 엄청납니다.",
+      "text_markdown": "그 숫자는 엄청납니다.",
+      "tts": {
+        "text": "그 숫자는 엄청납니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-349",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "세상의 어떤 기계 펌프도 이런 신뢰성에는 미치지 못합니다.",
+      "text_markdown": "세상의 어떤 기계 펌프도 이런 신뢰성에는 미치지 못합니다.",
+      "tts": {
+        "text": "세상의 어떤 기계 펌프도 이런 신뢰성에는 미치지 못합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-350",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유아기에는 심장이 빠르게 뜁니다.",
+      "text_markdown": "유아기에는 심장이 빠르게 뜁니다.",
+      "tts": {
+        "text": "유아기에는 심장이 빠르게 뜁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-351",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "신생아의 심박수는 분당 백이십에서 백육십 회입니다.",
+      "text_markdown": "신생아의 심박수는 분당 백이십에서 백육십 회입니다.",
+      "tts": {
+        "text": "신생아의 심박수는 분당 백이십에서 백육십 회입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-352",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아기들은 작습니다.",
+      "text_markdown": "아기들은 작습니다.",
+      "tts": {
+        "text": "아기들은 작습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-353",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장도 작습니다.",
+      "text_markdown": "심장도 작습니다.",
+      "tts": {
+        "text": "심장도 작습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-354",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "작은 심장은 충분한 혈액을 펌프질하기 위해 더 빠르게 뛰어야 합니다.",
+      "text_markdown": "작은 심장은 충분한 혈액을 펌프질하기 위해 더 빠르게 뛰어야 합니다.",
+      "tts": {
+        "text": "작은 심장은 충분한 혈액을 펌프질하기 위해 더 빠르게 뛰어야 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-355",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "아이가 성장하면서 심장도 함께 자랍니다.",
+      "text_markdown": "아이가 성장하면서 심장도 함께 자랍니다.",
+      "tts": {
+        "text": "아이가 성장하면서 심장도 함께 자랍니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-356",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p74",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "심박수는 점차 느려집니다.",
+      "text_markdown": "심박수는 점차 느려집니다.",
+      "tts": {
+        "text": "심박수는 점차 느려집니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-357",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "성인이 되면 안정 시 심박수는 분당 육십에서 백 회로 안정됩니다.",
+      "text_markdown": "성인이 되면 안정 시 심박수는 분당 육십에서 백 회로 안정됩니다.",
+      "tts": {
+        "text": "성인이 되면 안정 시 심박수는 분당 육십에서 백 회로 안정됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-358",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 속도는 수십 년 동안 비교적 안정적으로 유지됩니다.",
+      "text_markdown": "이 속도는 수십 년 동안 비교적 안정적으로 유지됩니다.",
+      "tts": {
+        "text": "이 속도는 수십 년 동안 비교적 안정적으로 유지됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-359",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "노년에는 심장이 약간 느려질 수 있습니다.",
+      "text_markdown": "노년에는 심장이 약간 느려질 수 있습니다.",
+      "tts": {
+        "text": "노년에는 심장이 약간 느려질 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-360",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심근은 시간이 지남에 따라 굳어집니다.",
+      "text_markdown": "심근은 시간이 지남에 따라 굳어집니다.",
+      "tts": {
+        "text": "심근은 시간이 지남에 따라 굳어집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-361",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "판막이 두꺼워질 수 있습니다.",
+      "text_markdown": "판막이 두꺼워질 수 있습니다.",
+      "tts": {
+        "text": "판막이 두꺼워질 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-362",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "전기 시스템이 덜 신뢰적이 될 수 있습니다.",
+      "text_markdown": "전기 시스템이 덜 신뢰적이 될 수 있습니다.",
+      "tts": {
+        "text": "전기 시스템이 덜 신뢰적이 될 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-363",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p75",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "그래도 심장은 계속 뜁니다.",
+      "text_markdown": "그래도 심장은 계속 뜁니다.",
+      "tts": {
+        "text": "그래도 심장은 계속 뜁니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-364",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장 질환은 이 리듬을 방해할 수 있습니다.",
+      "text_markdown": "심장 질환은 이 리듬을 방해할 수 있습니다.",
+      "tts": {
+        "text": "심장 질환은 이 리듬을 방해할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-365",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "관상동맥 질환이 가장 흔한 형태입니다.",
+      "text_markdown": "관상동맥 질환이 가장 흔한 형태입니다.",
+      "tts": {
+        "text": "관상동맥 질환이 가장 흔한 형태입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-366",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "관상동맥은 심장 근육 자체에 혈액을 공급하는 혈관입니다.",
+      "text_markdown": "관상동맥은 심장 근육 자체에 혈액을 공급하는 혈관입니다.",
+      "tts": {
+        "text": "관상동맥은 심장 근육 자체에 혈액을 공급하는 혈관입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-367",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장은 기능하기 위해 자체적인 혈액 공급이 필요합니다.",
+      "text_markdown": "심장은 기능하기 위해 자체적인 혈액 공급이 필요합니다.",
+      "tts": {
+        "text": "심장은 기능하기 위해 자체적인 혈액 공급이 필요합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-368",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "관상동맥 질환은 플라크(plaques)라고 불리는 지방 침전물이 이 동맥 안에 쌓일 때 발생합니다.",
+      "text_markdown": "관상동맥 질환은 플라크(plaques)라고 불리는 지방 침전물이 이 동맥 안에 쌓일 때 발생합니다.",
+      "tts": {
+        "text": "관상동맥 질환은 플라크라고 불리는 지방 침전물이 이 동맥 안에 쌓일 때 발생합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-369",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "플라크는 동맥을 좁힙니다.",
+      "text_markdown": "플라크는 동맥을 좁힙니다.",
+      "tts": {
+        "text": "플라크는 동맥을 좁힙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-370",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p76",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "심장 근육에 도달하는 혈액이 줄어듭니다.",
+      "text_markdown": "심장 근육에 도달하는 혈액이 줄어듭니다.",
+      "tts": {
+        "text": "심장 근육에 도달하는 혈액이 줄어듭니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-371",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "플라크가 파열되면 혈전이 생길 수 있습니다.",
+      "text_markdown": "플라크가 파열되면 혈전이 생길 수 있습니다.",
+      "tts": {
+        "text": "플라크가 파열되면 혈전이 생길 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-372",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "혈전은 굳어진 혈액 덩어리입니다.",
+      "text_markdown": "혈전은 굳어진 혈액 덩어리입니다.",
+      "tts": {
+        "text": "혈전은 굳어진 혈액 덩어리입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-373",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "혈전이 관상동맥을 완전히 막으면 심장 근육의 일부가 산소 부족으로 굶주리게 됩니다.",
+      "text_markdown": "혈전이 관상동맥을 완전히 막으면 심장 근육의 일부가 산소 부족으로 굶주리게 됩니다.",
+      "tts": {
+        "text": "혈전이 관상동맥을 완전히 막으면 심장 근육의 일부가 산소 부족으로 굶주리게 됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-374",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 근육 조직이 죽기 시작합니다.",
+      "text_markdown": "그 근육 조직이 죽기 시작합니다.",
+      "tts": {
+        "text": "그 근육 조직이 죽기 시작합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-375",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이것이 심장마비입니다.",
+      "text_markdown": "이것이 심장마비입니다.",
+      "tts": {
+        "text": "이것이 심장마비입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-376",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "의학 용어로는 심근경색(myocardial infarction)이라고 합니다.",
+      "text_markdown": "의학 용어로는 심근경색(myocardial infarction)이라고 합니다.",
+      "tts": {
+        "text": "의학 용어로는 심근경색이라고 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-377",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p77",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "\"심근(Myocardial)\"은 \"심장 근육과 관련된\"이라는 뜻입니다. \"경색(Infarction)\"은 \"혈액 부족으로 인한 조직 괴사\"를 뜻합니다.",
+      "text_markdown": "\"심근(Myocardial)\"은 \"심장 근육과 관련된\"이라는 뜻입니다. \"경색(Infarction)\"은 \"혈액 부족으로 인한 조직 괴사\"를 뜻합니다.",
+      "tts": {
+        "text": "심근은 심장 근육과 관련된이라는 뜻입니다. 경색은 혈액 부족으로 인한 조직 괴사를 뜻합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-378",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심장마비 중에는 신속한 치료가 심장 근육을 구할 수 있습니다.",
+      "text_markdown": "심장마비 중에는 신속한 치료가 심장 근육을 구할 수 있습니다.",
+      "tts": {
+        "text": "심장마비 중에는 신속한 치료가 심장 근육을 구할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-379",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "의사는 스텐트(stent)를 삽입할 수 있습니다.",
+      "text_markdown": "의사는 스텐트(stent)를 삽입할 수 있습니다.",
+      "tts": {
+        "text": "의사는 스텐트를 삽입할 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-380",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "스텐트는 작은 망 형태의 관입니다.",
+      "text_markdown": "스텐트는 작은 망 형태의 관입니다.",
+      "tts": {
+        "text": "스텐트는 작은 망 형태의 관입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-381",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "동맥을 열어 두게 합니다.",
+      "text_markdown": "동맥을 열어 두게 합니다.",
+      "tts": {
+        "text": "동맥을 열어 두게 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-382",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "의사는 또한 우회 수술을 수행할 수도 있습니다.",
+      "text_markdown": "의사는 또한 우회 수술을 수행할 수도 있습니다.",
+      "tts": {
+        "text": "의사는 또한 우회 수술을 수행할 수도 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-383",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p78",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "신체의 다른 부분에서 건강한 혈관을 가져다가 막힌 부분을 우회하도록 혈액을 재연결합니다.",
+      "text_markdown": "신체의 다른 부분에서 건강한 혈관을 가져다가 막힌 부분을 우회하도록 혈액을 재연결합니다.",
+      "tts": {
+        "text": "신체의 다른 부분에서 건강한 혈관을 가져다가 막힌 부분을 우회하도록 혈액을 재연결합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-384",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심부전은 다른 상태입니다.",
+      "text_markdown": "심부전은 다른 상태입니다.",
+      "tts": {
+        "text": "심부전은 다른 상태입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-385",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심부전에서 심장은 신체의 필요를 충족시키기에 충분한 혈액을 펌프질하기에는 너무 약합니다.",
+      "text_markdown": "심부전에서 심장은 신체의 필요를 충족시키기에 충분한 혈액을 펌프질하기에는 너무 약합니다.",
+      "tts": {
+        "text": "심부전에서 심장은 신체의 필요를 충족시키기에 충분한 혈액을 펌프질하기에는 너무 약합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch08-386",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "심장이 멈췄다는 뜻은 아닙니다.",
+      "text_markdown": "심장이 멈췄다는 뜻은 아닙니다.",
+      "tts": {
+        "text": "심장이 멈췄다는 뜻은 아닙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-387",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "심장이 따라가지 못한다는 뜻입니다.",
+      "text_markdown": "심장이 따라가지 못한다는 뜻입니다.",
+      "tts": {
+        "text": "심장이 따라가지 못한다는 뜻입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-388",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "폐와 다리에 체액이 쌓일 수 있습니다.",
+      "text_markdown": "폐와 다리에 체액이 쌓일 수 있습니다.",
+      "tts": {
+        "text": "폐와 다리에 체액이 쌓일 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-389",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일부 환자의 경우 유일한 선택은 심장 이식입니다.",
+      "text_markdown": "일부 환자의 경우 유일한 선택은 심장 이식입니다.",
+      "tts": {
+        "text": "일부 환자의 경우 유일한 선택은 심장 이식입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-390",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "심장 이식은 기증자의 건강한 심장으로 기능을 다한 심장을 교체합니다.",
+      "text_markdown": "심장 이식은 기증자의 건강한 심장으로 기능을 다한 심장을 교체합니다.",
+      "tts": {
+        "text": "심장 이식은 기증자의 건강한 심장으로 기능을 다한 심장을 교체합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "id": "ch08-391",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "최초의 성공적인 인간 심장 이식은 남아프리카의 크리스티안 바나드 박사에 의해 천구백육십칠 년에 수행되었습니다.",
+      "text_markdown": "최초의 성공적인 인간 심장 이식은 남아프리카의 크리스티안 바나드 박사에 의해 천구백육십칠 년에 수행되었습니다.",
+      "tts": {
+        "text": "최초의 성공적인 인간 심장 이식은 남아프리카의 크리스티안 바나드 박사에 의해 천구백육십칠 년에 수행되었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-392",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "오늘날에는 매년 수천 건의 심장 이식이 시행됩니다.",
+      "text_markdown": "오늘날에는 매년 수천 건의 심장 이식이 시행됩니다.",
+      "tts": {
+        "text": "오늘날에는 매년 수천 건의 심장 이식이 시행됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-393",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "과학은 또한 인공 심장도 만들어냈습니다.",
+      "text_markdown": "과학은 또한 인공 심장도 만들어냈습니다.",
+      "tts": {
+        "text": "과학은 또한 인공 심장도 만들어냈습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-394",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 기계 장치들은 환자가 이식을 기다리는 동안 혈액이 계속 흐르도록 합니다.",
+      "text_markdown": "이 기계 장치들은 환자가 이식을 기다리는 동안 혈액이 계속 흐르도록 합니다.",
+      "tts": {
+        "text": "이 기계 장치들은 환자가 이식을 기다리는 동안 혈액이 계속 흐르도록 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-395",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아직은 영구적인 대체품이 아닙니다.",
+      "text_markdown": "아직은 영구적인 대체품이 아닙니다.",
+      "tts": {
+        "text": "아직은 영구적인 대체품이 아닙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-396",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 연구는 계속됩니다.",
+      "text_markdown": "하지만 연구는 계속됩니다.",
+      "tts": {
+        "text": "하지만 연구는 계속됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-397",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "당신의 심장은 놀랍습니다.",
+      "text_markdown": "당신의 심장은 놀랍습니다.",
+      "tts": {
+        "text": "당신의 심장은 놀랍습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-398",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "쉬지 않고 일합니다.",
+      "text_markdown": "쉬지 않고 일합니다.",
+      "tts": {
+        "text": "쉬지 않고 일합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-399",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당신의 필요에 맞게 적응합니다.",
+      "text_markdown": "당신의 필요에 맞게 적응합니다.",
+      "tts": {
+        "text": "당신의 필요에 맞게 적응합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-400",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "기쁨, 두려움, 운동, 수면에 반응합니다.",
+      "text_markdown": "기쁨, 두려움, 운동, 수면에 반응합니다.",
+      "tts": {
+        "text": "기쁨, 두려움, 운동, 수면에 반응합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-401",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그것은 당신 삶의 엔진입니다.",
+      "text_markdown": "그것은 당신 삶의 엔진입니다.",
+      "tts": {
+        "text": "그것은 당신 삶의 엔진입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-402",
+      "part": 0,
+      "chapter": 8,
+      "title": "평생의 박동",
+      "paragraph_id": "p82",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "잘 돌보면 심장도 당신을 잘 돌봐줄 것입니다.",
+      "text_markdown": "잘 돌보면 심장도 당신을 잘 돌봐줄 것입니다.",
+      "tts": {
+        "text": "잘 돌보면 심장도 당신을 잘 돌봐줄 것입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    }
+  ]
+}

@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Kuuma autiomaa",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kuuma autiomaa",
+      "text_markdown": "Kuuma autiomaa"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Missä autiomaat ovat",
+      "text_markdown": "Missä autiomaat ovat"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tervetuloa kuumaan autiomaahan.",
+      "text_markdown": "Tervetuloa kuumaan autiomaahan.",
+      "tts": {
+        "text": "Tervetuloa kuumaan autiomaahan.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on yksi maailman suurista biomeista.",
+      "text_markdown": "Tämä on yksi maailman suurista biomeista.",
+      "tts": {
+        "text": "Tämä on yksi maailman suurista biomeista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "text_markdown": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+      "tts": {
+        "text": "Biomi on osa Maata, jolla on oma säänsä, kasvinsa ja eläimensä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuma autiomaa on kuiva paikka.",
+      "text_markdown": "Kuuma autiomaa on kuiva paikka.",
+      "tts": {
+        "text": "Kuuma autiomaa on kuiva paikka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Täällä sataa hyvin vähän.",
+      "text_markdown": "Täällä sataa hyvin vähän.",
+      "tts": {
+        "text": "Täällä sataa hyvin vähän.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat päivät ovat hyvin kuumia, ja useimmat yöt ovat viileitä tai kylmiä.",
+      "text_markdown": "Useimmat päivät ovat hyvin kuumia, ja useimmat yöt ovat viileitä tai kylmiä.",
+      "tts": {
+        "text": "Useimmat päivät ovat hyvin kuumia, ja useimmat yöt ovat viileitä tai kylmiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maailman suurin kuuma autiomaa on Sahara, pohjoisessa Afrikassa.",
+      "text_markdown": "Maailman suurin kuuma autiomaa on Sahara, pohjoisessa Afrikassa.",
+      "tts": {
+        "text": "Maailman suurin kuuma autiomaa on Sahara, pohjoisessa Afrikassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ulottuu Atlantin valtamerestä lähes Punaiseen mereen asti.",
+      "text_markdown": "Se ulottuu Atlantin valtamerestä lähes Punaiseen mereen asti.",
+      "tts": {
+        "text": "Se ulottuu Atlantin valtamerestä lähes Punaiseen mereen asti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arabian keskellä on suuria autiomaita, kuten Tyhjä Neljännes.",
+      "text_markdown": "Arabian keskellä on suuria autiomaita, kuten Tyhjä Neljännes.",
+      "tts": {
+        "text": "Arabian keskellä on suuria autiomaita, kuten Tyhjä Neljännes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois-Amerikassa on kuumia autiomaita, esimerkiksi Yhdysvaltojen lounaisosassa ja pohjoisessa Meksikossa.",
+      "text_markdown": "Pohjois-Amerikassa on kuumia autiomaita, esimerkiksi Yhdysvaltojen lounaisosassa ja pohjoisessa Meksikossa.",
+      "tts": {
+        "text": "Pohjois Amerikassa on kuumia autiomaita, esimerkiksi Yhdysvaltojen lounaisosassa ja pohjoisessa Meksikossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pienempiä autiomaita on Etelä-Amerikassa, eteläisessä Afrikassa, Intiassa ja suuressa osassa Australiaa.",
+      "text_markdown": "Pienempiä autiomaita on Etelä-Amerikassa, eteläisessä Afrikassa, Intiassa ja suuressa osassa Australiaa.",
+      "tts": {
+        "text": "Pienempiä autiomaita on Etelä Amerikassa, eteläisessä Afrikassa, Intiassa ja suuressa osassa Australiaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen näistä autiomaista kasvoi omillaan, kaukana muista.",
+      "text_markdown": "Jokainen näistä autiomaista kasvoi omillaan, kaukana muista.",
+      "tts": {
+        "text": "Jokainen näistä autiomaista kasvoi omillaan, kaukana muista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+      "text_markdown": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+      "tts": {
+        "text": "Siksi kasvit ja eläimet ovat erilaisia maailman eri osissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktus, jonka näet yhdessä autiomaassa, ei ole sama kuin se, jonka näet toisessa.",
+      "text_markdown": "Kaktus, jonka näet yhdessä autiomaassa, ei ole sama kuin se, jonka näet toisessa.",
+      "tts": {
+        "text": "Kaktus, jonka näet yhdessä autiomaassa, ei ole sama kuin se, jonka näet toisessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta ne kaikki kuuluvat samaan biomiin.",
+      "text_markdown": "Mutta ne kaikki kuuluvat samaan biomiin.",
+      "tts": {
+        "text": "Mutta ne kaikki kuuluvat samaan biomiin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun seisot kuumassa autiomaassa, ilma tuntuu kuivalta.",
+      "text_markdown": "Kun seisot kuumassa autiomaassa, ilma tuntuu kuivalta.",
+      "tts": {
+        "text": "Kun seisot kuumassa autiomaassa, ilma tuntuu kuivalta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurinko paistaa voimakkaasti kasvoillesi.",
+      "text_markdown": "Aurinko paistaa voimakkaasti kasvoillesi.",
+      "tts": {
+        "text": "Aurinko paistaa voimakkaasti kasvoillesi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maa on kivistä monin paikoin ja hiekkaista toisaalla.",
+      "text_markdown": "Maa on kivistä monin paikoin ja hiekkaista toisaalla.",
+      "tts": {
+        "text": "Maa on kivistä monin paikoin ja hiekkaista toisaalla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voit nähdä hyvin kauas.",
+      "text_markdown": "Voit nähdä hyvin kauas.",
+      "tts": {
+        "text": "Voit nähdä hyvin kauas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taivas on valtava.",
+      "text_markdown": "Taivas on valtava.",
+      "tts": {
+        "text": "Taivas on valtava.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et ehkä näe toista ihmistä tai toista eläintä koko päivänä.",
+      "text_markdown": "Et ehkä näe toista ihmistä tai toista eläintä koko päivänä.",
+      "tts": {
+        "text": "Et ehkä näe toista ihmistä tai toista eläintä koko päivänä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on kuuma autiomaa.",
+      "text_markdown": "Se on kuuma autiomaa.",
+      "tts": {
+        "text": "Se on kuuma autiomaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Missä autiomaat ovat",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laaja, kuiva hiekan, kiven ja polttavan auringon maa.",
+      "text_markdown": "Laaja, kuiva hiekan, kiven ja polttavan auringon maa.",
+      "tts": {
+        "text": "Laaja, kuiva hiekan, kiven ja polttavan auringon maa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Sää",
+      "text_markdown": "Sää"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuman autiomaan sään muovaa kaksi asiaa.",
+      "text_markdown": "Kuuman autiomaan sään muovaa kaksi asiaa.",
+      "tts": {
+        "text": "Kuuman autiomaan sään muovaa kaksi asiaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aurinkoa on liikaa, eikä sadetta riittävästi.",
+      "text_markdown": "Aurinkoa on liikaa, eikä sadetta riittävästi.",
+      "tts": {
+        "text": "Aurinkoa on liikaa, eikä sadetta riittävästi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin autiomaissa sataa vain muutamana päivänä vuodessa.",
+      "text_markdown": "Joissakin autiomaissa sataa vain muutamana päivänä vuodessa.",
+      "tts": {
+        "text": "Joissakin autiomaissa sataa vain muutamana päivänä vuodessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisissa paikoissa ei sada lainkaan moneen vuoteen.",
+      "text_markdown": "Toisissa paikoissa ei sada lainkaan moneen vuoteen.",
+      "tts": {
+        "text": "Toisissa paikoissa ei sada lainkaan moneen vuoteen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Päivät ovat hyvin kuumia.",
+      "text_markdown": "Päivät ovat hyvin kuumia.",
+      "tts": {
+        "text": "Päivät ovat hyvin kuumia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keskipäivällä aurinko voi kuumentaa hiekan niin kuumaksi, että se polttaisi jalkasi.",
+      "text_markdown": "Keskipäivällä aurinko voi kuumentaa hiekan niin kuumaksi, että se polttaisi jalkasi.",
+      "tts": {
+        "text": "Keskipäivällä aurinko voi kuumentaa hiekan niin kuumaksi, että se polttaisi jalkasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta yöt ovat hyvin erilaisia.",
+      "text_markdown": "Mutta yöt ovat hyvin erilaisia.",
+      "tts": {
+        "text": "Mutta yöt ovat hyvin erilaisia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ei ole pilviä eikä puita pitämään lämpöä.",
+      "text_markdown": "Ei ole pilviä eikä puita pitämään lämpöä.",
+      "tts": {
+        "text": "Ei ole pilviä eikä puita pitämään lämpöä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heti kun aurinko laskee, lämpö pakenee taivaalle.",
+      "text_markdown": "Heti kun aurinko laskee, lämpö pakenee taivaalle.",
+      "tts": {
+        "text": "Heti kun aurinko laskee, lämpö pakenee taivaalle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keskiyöhön mennessä voi tuntua viileältä tai jopa kylmältä.",
+      "text_markdown": "Keskiyöhön mennessä voi tuntua viileältä tai jopa kylmältä.",
+      "tts": {
+        "text": "Keskiyöhön mennessä voi tuntua viileältä tai jopa kylmältä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aamulla kivet tuntuvat viileiltä kosketukseen.",
+      "text_markdown": "Aamulla kivet tuntuvat viileiltä kosketukseen.",
+      "tts": {
+        "text": "Aamulla kivet tuntuvat viileiltä kosketukseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten aurinko nousee, ja kuumuus alkaa taas.",
+      "text_markdown": "Sitten aurinko nousee, ja kuumuus alkaa taas.",
+      "tts": {
+        "text": "Sitten aurinko nousee, ja kuumuus alkaa taas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun sade tulee, se tulee usein kerralla.",
+      "text_markdown": "Kun sade tulee, se tulee usein kerralla.",
+      "tts": {
+        "text": "Kun sade tulee, se tulee usein kerralla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suuri myrsky vyöryy paikalle, ja vesi kaatuu tunnin verran.",
+      "text_markdown": "Suuri myrsky vyöryy paikalle, ja vesi kaatuu tunnin verran.",
+      "tts": {
+        "text": "Suuri myrsky vyöryy paikalle, ja vesi kaatuu tunnin verran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuivat joet täyttyvät, ja vesi virtaa hiekan yli.",
+      "text_markdown": "Kuivat joet täyttyvät, ja vesi virtaa hiekan yli.",
+      "tts": {
+        "text": "Kuivat joet täyttyvät, ja vesi virtaa hiekan yli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten aurinko palaa, ja päivässä vesi on taas poissa.",
+      "text_markdown": "Sitten aurinko palaa, ja päivässä vesi on taas poissa.",
+      "tts": {
+        "text": "Sitten aurinko palaa, ja päivässä vesi on taas poissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Sää",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Autiomaan kasveille ja eläimille jokainen pisara tuosta vedestä on tärkeä.",
+      "text_markdown": "Autiomaan kasveille ja eläimille jokainen pisara tuosta vedestä on tärkeä.",
+      "tts": {
+        "text": "Autiomaan kasveille ja eläimille jokainen pisara tuosta vedestä on tärkeä.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Maa ja vesi",
+      "text_markdown": "Maa ja vesi"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurin osa kuumasta autiomaasta ei ole hiekkaa.",
+      "text_markdown": "Suurin osa kuumasta autiomaasta ei ole hiekkaa.",
+      "tts": {
+        "text": "Suurin osa kuumasta autiomaasta ei ole hiekkaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suurin osa siitä on kiveä, soraa ja kovaa kuivaa maata.",
+      "text_markdown": "Suurin osa siitä on kiveä, soraa ja kovaa kuivaa maata.",
+      "tts": {
+        "text": "Suurin osa siitä on kiveä, soraa ja kovaa kuivaa maata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On myös paikkoja, joissa on valtavia hiekkadyynien meriä.",
+      "text_markdown": "On myös paikkoja, joissa on valtavia hiekkadyynien meriä.",
+      "tts": {
+        "text": "On myös paikkoja, joissa on valtavia hiekkadyynien meriä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuuli liikuttaa hiekkadyynejä hitaasti maan poikki.",
+      "text_markdown": "Tuuli liikuttaa hiekkadyynejä hitaasti maan poikki.",
+      "tts": {
+        "text": "Tuuli liikuttaa hiekkadyynejä hitaasti maan poikki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiekkadyyni voi olla pienempi kuin talo tai korkeampi kuin korkea rakennus.",
+      "text_markdown": "Hiekkadyyni voi olla pienempi kuin talo tai korkeampi kuin korkea rakennus.",
+      "tts": {
+        "text": "Hiekkadyyni voi olla pienempi kuin talo tai korkeampi kuin korkea rakennus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin paikoissa vuoret nousevat autiomaasta.",
+      "text_markdown": "Joissakin paikoissa vuoret nousevat autiomaasta.",
+      "tts": {
+        "text": "Joissakin paikoissa vuoret nousevat autiomaasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuuli ja hiekka veistävät kivistä outoja muotoja monien vuosien aikana.",
+      "text_markdown": "Tuuli ja hiekka veistävät kivistä outoja muotoja monien vuosien aikana.",
+      "tts": {
+        "text": "Tuuli ja hiekka veistävät kivistä outoja muotoja monien vuosien aikana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vesi on autiomaan harvinaisin ja kallisarvoisin asia.",
+      "text_markdown": "Vesi on autiomaan harvinaisin ja kallisarvoisin asia.",
+      "tts": {
+        "text": "Vesi on autiomaan harvinaisin ja kallisarvoisin asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat joet virtaavat vain myrskyn jälkeen, ja sitten ne kuivuvat.",
+      "text_markdown": "Useimmat joet virtaavat vain myrskyn jälkeen, ja sitten ne kuivuvat.",
+      "tts": {
+        "text": "Useimmat joet virtaavat vain myrskyn jälkeen, ja sitten ne kuivuvat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta syvällä hiekan alla vesi voi levätä kivissä.",
+      "text_markdown": "Mutta syvällä hiekan alla vesi voi levätä kivissä.",
+      "tts": {
+        "text": "Mutta syvällä hiekan alla vesi voi levätä kivissä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joissakin paikoissa tämä piilotettu vesi nousee pintaan ja muodostaa pienen vihreän lammen.",
+      "text_markdown": "Joissakin paikoissa tämä piilotettu vesi nousee pintaan ja muodostaa pienen vihreän lammen.",
+      "tts": {
+        "text": "Joissakin paikoissa tämä piilotettu vesi nousee pintaan ja muodostaa pienen vihreän lammen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tätä kutsutaan keitaaksi.",
+      "text_markdown": "Tätä kutsutaan keitaaksi.",
+      "tts": {
+        "text": "Tätä kutsutaan keitaaksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keitaalla kasvaa puita, linnut laulavat, ja ihmiset pysähtyvät juomaan.",
+      "text_markdown": "Keitaalla kasvaa puita, linnut laulavat, ja ihmiset pysähtyvät juomaan.",
+      "tts": {
+        "text": "Keitaalla kasvaa puita, linnut laulavat, ja ihmiset pysähtyvät juomaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keidas voi olla pieni palmupuiden rengas valtavassa hiekkameressä.",
+      "text_markdown": "Keidas voi olla pieni palmupuiden rengas valtavassa hiekkameressä.",
+      "tts": {
+        "text": "Keidas voi olla pieni palmupuiden rengas valtavassa hiekkameressä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Maa ja vesi",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ilman näitä vesipisteitä kukaan ei voisi ylittää suuria autiomaita lainkaan.",
+      "text_markdown": "Ilman näitä vesipisteitä kukaan ei voisi ylittää suuria autiomaita lainkaan.",
+      "tts": {
+        "text": "Ilman näitä vesipisteitä kukaan ei voisi ylittää suuria autiomaita lainkaan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kasvit",
+      "text_markdown": "Kasvit"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuman autiomaan kasvit ovat odottamisen mestareita.",
+      "text_markdown": "Kuuman autiomaan kasvit ovat odottamisen mestareita.",
+      "tts": {
+        "text": "Kuuman autiomaan kasvit ovat odottamisen mestareita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne ovat oppineet elämään lähes ilman vettä.",
+      "text_markdown": "Ne ovat oppineet elämään lähes ilman vettä.",
+      "tts": {
+        "text": "Ne ovat oppineet elämään lähes ilman vettä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joillakin niistä kasvaa pitkiä juuria, jotka ulottuvat syvälle maahan.",
+      "text_markdown": "Joillakin niistä kasvaa pitkiä juuria, jotka ulottuvat syvälle maahan.",
+      "tts": {
+        "text": "Joillakin niistä kasvaa pitkiä juuria, jotka ulottuvat syvälle maahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisilla kasveilla on leveät, matalat juuret, jotka leviävät lähelle pintaa.",
+      "text_markdown": "Toisilla kasveilla on leveät, matalat juuret, jotka leviävät lähelle pintaa.",
+      "tts": {
+        "text": "Toisilla kasveilla on leveät, matalat juuret, jotka leviävät lähelle pintaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sateen jälkeen nämä juuret juovat jokaisen pisaran vettä ennen kuin se kuivuu.",
+      "text_markdown": "Sateen jälkeen nämä juuret juovat jokaisen pisaran vettä ennen kuin se kuivuu.",
+      "tts": {
+        "text": "Sateen jälkeen nämä juuret juovat jokaisen pisaran vettä ennen kuin se kuivuu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet autiomaan kasvit varastoivat vettä sisälleen pitkää kuivaa aikaa varten.",
+      "text_markdown": "Monet autiomaan kasvit varastoivat vettä sisälleen pitkää kuivaa aikaa varten.",
+      "tts": {
+        "text": "Monet autiomaan kasvit varastoivat vettä sisälleen pitkää kuivaa aikaa varten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niiden paksut varret ja lehdet voivat säilyttää vettä kuukausia tai jopa vuosia.",
+      "text_markdown": "Niiden paksut varret ja lehdet voivat säilyttää vettä kuukausia tai jopa vuosia.",
+      "tts": {
+        "text": "Niiden paksut varret ja lehdet voivat säilyttää vettä kuukausia tai jopa vuosia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerikan autiomaissa on kasveja, joita kutsutaan kaktuksiksi.",
+      "text_markdown": "Amerikan autiomaissa on kasveja, joita kutsutaan kaktuksiksi.",
+      "tts": {
+        "text": "Amerikan autiomaissa on kasveja, joita kutsutaan kaktuksiksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaktuksilla on paksut vihreät varret täynnä vettä ja terävät piikit pehmeiden lehtien sijaan.",
+      "text_markdown": "Kaktuksilla on paksut vihreät varret täynnä vettä ja terävät piikit pehmeiden lehtien sijaan.",
+      "tts": {
+        "text": "Kaktuksilla on paksut vihreät varret täynnä vettä ja terävät piikit pehmeiden lehtien sijaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piikit estävät eläimiä syömästä kasveja.",
+      "text_markdown": "Piikit estävät eläimiä syömästä kasveja.",
+      "tts": {
+        "text": "Piikit estävät eläimiä syömästä kasveja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piikit tekevät myös hieman varjoa voimakasta aurinkoa vastaan.",
+      "text_markdown": "Piikit tekevät myös hieman varjoa voimakasta aurinkoa vastaan.",
+      "tts": {
+        "text": "Piikit tekevät myös hieman varjoa voimakasta aurinkoa vastaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrikan ja Aasian autiomaissa muut paksut kasvit tekevät samaa työtä.",
+      "text_markdown": "Afrikan ja Aasian autiomaissa muut paksut kasvit tekevät samaa työtä.",
+      "tts": {
+        "text": "Afrikan ja Aasian autiomaissa muut paksut kasvit tekevät samaa työtä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet autiomaan kasvit ovat harmaita tai vaaleanvihreitä.",
+      "text_markdown": "Monet autiomaan kasvit ovat harmaita tai vaaleanvihreitä.",
+      "tts": {
+        "text": "Monet autiomaan kasvit ovat harmaita tai vaaleanvihreitä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vaalea väri heijastaa auringonvalon pois.",
+      "text_markdown": "Vaalea väri heijastaa auringonvalon pois.",
+      "tts": {
+        "text": "Vaalea väri heijastaa auringonvalon pois.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkin kasvit pudottavat lehtensä, kun kuiva kausi tulee.",
+      "text_markdown": "Jotkin kasvit pudottavat lehtensä, kun kuiva kausi tulee.",
+      "tts": {
+        "text": "Jotkin kasvit pudottavat lehtensä, kun kuiva kausi tulee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne pysyvät elossa paljaina ruskeina oksina seuraavaan sateeseen asti.",
+      "text_markdown": "Ne pysyvät elossa paljaina ruskeina oksina seuraavaan sateeseen asti.",
+      "tts": {
+        "text": "Ne pysyvät elossa paljaina ruskeina oksina seuraavaan sateeseen asti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kovan sateen jälkeen autiomaa voi muuttua yhdessä yössä.",
+      "text_markdown": "Kovan sateen jälkeen autiomaa voi muuttua yhdessä yössä.",
+      "tts": {
+        "text": "Kovan sateen jälkeen autiomaa voi muuttua yhdessä yössä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pienet siemenet, jotka ovat odottaneet maaperässä vuosia, puhkeavat kukkaan.",
+      "text_markdown": "Pienet siemenet, jotka ovat odottaneet maaperässä vuosia, puhkeavat kukkaan.",
+      "tts": {
+        "text": "Pienet siemenet, jotka ovat odottaneet maaperässä vuosia, puhkeavat kukkaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muutaman viikon ajan osa autiomaasta on punaisten, keltaisten ja violettien kukkien peitossa.",
+      "text_markdown": "Muutaman viikon ajan osa autiomaasta on punaisten, keltaisten ja violettien kukkien peitossa.",
+      "tts": {
+        "text": "Muutaman viikon ajan osa autiomaasta on punaisten, keltaisten ja violettien kukkien peitossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Kasvit",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten kukat kuihtuvat, siemenet putoavat, ja autiomaa odottaa taas.",
+      "text_markdown": "Sitten kukat kuihtuvat, siemenet putoavat, ja autiomaa odottaa taas.",
+      "tts": {
+        "text": "Sitten kukat kuihtuvat, siemenet putoavat, ja autiomaa odottaa taas.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Eläimet",
+      "text_markdown": "Eläimet"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuman autiomaan eläimillä on monia nokkelia tapoja selviytyä.",
+      "text_markdown": "Kuuman autiomaan eläimillä on monia nokkelia tapoja selviytyä.",
+      "tts": {
+        "text": "Kuuman autiomaan eläimillä on monia nokkelia tapoja selviytyä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Useimmat niistä nukkuvat päivän kuuman keskivaiheen läpi.",
+      "text_markdown": "Useimmat niistä nukkuvat päivän kuuman keskivaiheen läpi.",
+      "tts": {
+        "text": "Useimmat niistä nukkuvat päivän kuuman keskivaiheen läpi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne tulevat esiin aamun viileydessä, illalla ja yöllä.",
+      "text_markdown": "Ne tulevat esiin aamun viileydessä, illalla ja yöllä.",
+      "tts": {
+        "text": "Ne tulevat esiin aamun viileydessä, illalla ja yöllä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet autiomaan eläimet kaivavat koloja hiekkaan tai kivien alle.",
+      "text_markdown": "Monet autiomaan eläimet kaivavat koloja hiekkaan tai kivien alle.",
+      "tts": {
+        "text": "Monet autiomaan eläimet kaivavat koloja hiekkaan tai kivien alle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolo pysyy viileänä, kun ilma ulkona on polttavan kuuma.",
+      "text_markdown": "Kolo pysyy viileänä, kun ilma ulkona on polttavan kuuma.",
+      "tts": {
+        "text": "Kolo pysyy viileänä, kun ilma ulkona on polttavan kuuma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieni hiiri voi nukkua koko päivän kolossaan, eikä koskaan tunne kuumuutta.",
+      "text_markdown": "Pieni hiiri voi nukkua koko päivän kolossaan, eikä koskaan tunne kuumuutta.",
+      "tts": {
+        "text": "Pieni hiiri voi nukkua koko päivän kolossaan, eikä koskaan tunne kuumuutta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liskot ovat hyvin yleisiä kuumassa autiomaassa.",
+      "text_markdown": "Liskot ovat hyvin yleisiä kuumassa autiomaassa.",
+      "tts": {
+        "text": "Liskot ovat hyvin yleisiä kuumassa autiomaassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne istuvat lämpimillä kivillä varhaisessa auringossa.",
+      "text_markdown": "Ne istuvat lämpimillä kivillä varhaisessa auringossa.",
+      "tts": {
+        "text": "Ne istuvat lämpimillä kivillä varhaisessa auringossa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun päivä käy liian kuumaksi, ne livahtavat varjoon tai kiven alle.",
+      "text_markdown": "Kun päivä käy liian kuumaksi, ne livahtavat varjoon tai kiven alle.",
+      "tts": {
+        "text": "Kun päivä käy liian kuumaksi, ne livahtavat varjoon tai kiven alle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Käärmeet ovat myös yleisiä.",
+      "text_markdown": "Käärmeet ovat myös yleisiä.",
+      "tts": {
+        "text": "Käärmeet ovat myös yleisiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne liukuvat hiekan yli etsien pieniä eläimiä syötäväksi.",
+      "text_markdown": "Ne liukuvat hiekan yli etsien pieniä eläimiä syötäväksi.",
+      "tts": {
+        "text": "Ne liukuvat hiekan yli etsien pieniä eläimiä syötäväksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joillakin käärmeillä on erityinen tapa liikkua sivuttain kuuman hiekan yli pitääkseen ruumiinsa irti maasta.",
+      "text_markdown": "Joillakin käärmeillä on erityinen tapa liikkua sivuttain kuuman hiekan yli pitääkseen ruumiinsa irti maasta.",
+      "tts": {
+        "text": "Joillakin käärmeillä on erityinen tapa liikkua sivuttain kuuman hiekan yli pitääkseen ruumiinsa irti maasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skorpionit metsästävät yöllä, häntänsä korkealla pystyssä.",
+      "text_markdown": "Skorpionit metsästävät yöllä, häntänsä korkealla pystyssä.",
+      "tts": {
+        "text": "Skorpionit metsästävät yöllä, häntänsä korkealla pystyssä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hämähäkkejä ja kovakuoriaisia elää myös kaikkialla autiomaassa.",
+      "text_markdown": "Hämähäkkejä ja kovakuoriaisia elää myös kaikkialla autiomaassa.",
+      "tts": {
+        "text": "Hämähäkkejä ja kovakuoriaisia elää myös kaikkialla autiomaassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet autiomaan kovakuoriaiset voivat selviytyä juomatta koskaan vettä.",
+      "text_markdown": "Monet autiomaan kovakuoriaiset voivat selviytyä juomatta koskaan vettä.",
+      "tts": {
+        "text": "Monet autiomaan kovakuoriaiset voivat selviytyä juomatta koskaan vettä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne saavat kaiken tarvitsemansa veden ruoasta, jota syövät.",
+      "text_markdown": "Ne saavat kaiken tarvitsemansa veden ruoasta, jota syövät.",
+      "tts": {
+        "text": "Ne saavat kaiken tarvitsemansa veden ruoasta, jota syövät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrikan ja Arabian autiomaiden suurin eläin on kameli.",
+      "text_markdown": "Afrikan ja Arabian autiomaiden suurin eläin on kameli.",
+      "tts": {
+        "text": "Afrikan ja Arabian autiomaiden suurin eläin on kameli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kameli voi juoda valtavan määrän vettä kerralla ja sitten kulkea monta päivää juomatta uudelleen.",
+      "text_markdown": "Kameli voi juoda valtavan määrän vettä kerralla ja sitten kulkea monta päivää juomatta uudelleen.",
+      "tts": {
+        "text": "Kameli voi juoda valtavan määrän vettä kerralla ja sitten kulkea monta päivää juomatta uudelleen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sen leveät, pehmeät jalat estävät sitä uppoamasta hiekkaan.",
+      "text_markdown": "Sen leveät, pehmeät jalat estävät sitä uppoamasta hiekkaan.",
+      "tts": {
+        "text": "Sen leveät, pehmeät jalat estävät sitä uppoamasta hiekkaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjois-Amerikan autiomaissa ketut ja pienet villit kissat metsästävät yöllä.",
+      "text_markdown": "Pohjois-Amerikan autiomaissa ketut ja pienet villit kissat metsästävät yöllä.",
+      "tts": {
+        "text": "Pohjois Amerikan autiomaissa ketut ja pienet villit kissat metsästävät yöllä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrikassa pienet ketut, joilla on hyvin suuret korvat, elävät hiekassa.",
+      "text_markdown": "Afrikassa pienet ketut, joilla on hyvin suuret korvat, elävät hiekassa.",
+      "tts": {
+        "text": "Afrikassa pienet ketut, joilla on hyvin suuret korvat, elävät hiekassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suuret korvat auttavat niitä kuulemaan pieniä eläimiä, jotka liikkuvat maan alla.",
+      "text_markdown": "Suuret korvat auttavat niitä kuulemaan pieniä eläimiä, jotka liikkuvat maan alla.",
+      "tts": {
+        "text": "Suuret korvat auttavat niitä kuulemaan pieniä eläimiä, jotka liikkuvat maan alla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suuret korvat auttavat niitä myös luovuttamaan lämpöä yön viileydessä.",
+      "text_markdown": "Suuret korvat auttavat niitä myös luovuttamaan lämpöä yön viileydessä.",
+      "tts": {
+        "text": "Suuret korvat auttavat niitä myös luovuttamaan lämpöä yön viileydessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korkealla yläpuolella korppikotkat ja kotkat liitelevät lämpimässä autiomaan ilmassa.",
+      "text_markdown": "Korkealla yläpuolella korppikotkat ja kotkat liitelevät lämpimässä autiomaan ilmassa.",
+      "tts": {
+        "text": "Korkealla yläpuolella korppikotkat ja kotkat liitelevät lämpimässä autiomaan ilmassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne tarkkailevat pieniäkin liikkeitä maassa.",
+      "text_markdown": "Ne tarkkailevat pieniäkin liikkeitä maassa.",
+      "tts": {
+        "text": "Ne tarkkailevat pieniäkin liikkeitä maassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Eläimet",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen täällä elävä eläin tietää, miten odottaa viileyttä, miten löytää varjoa ja miten saada jokainen vesipisara riittämään.",
+      "text_markdown": "Jokainen täällä elävä eläin tietää, miten odottaa viileyttä, miten löytää varjoa ja miten saada jokainen vesipisara riittämään.",
+      "tts": {
+        "text": "Jokainen täällä elävä eläin tietää, miten odottaa viileyttä, miten löytää varjoa ja miten saada jokainen vesipisara riittämään.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ihmiset",
+      "text_markdown": "Ihmiset"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset ovat asuneet kuumassa autiomaassa tuhansia vuosia.",
+      "text_markdown": "Ihmiset ovat asuneet kuumassa autiomaassa tuhansia vuosia.",
+      "tts": {
+        "text": "Ihmiset ovat asuneet kuumassa autiomaassa tuhansia vuosia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He ovat löytäneet omat tapansa elää auringon ja hiekan maassa.",
+      "text_markdown": "He ovat löytäneet omat tapansa elää auringon ja hiekan maassa.",
+      "tts": {
+        "text": "He ovat löytäneet omat tapansa elää auringon ja hiekan maassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monissa autiomaissa perheet matkustavat paikasta toiseen laumojensa kanssa.",
+      "text_markdown": "Monissa autiomaissa perheet matkustavat paikasta toiseen laumojensa kanssa.",
+      "tts": {
+        "text": "Monissa autiomaissa perheet matkustavat paikasta toiseen laumojensa kanssa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saharassa ja Arabian autiomaissa ihmiset pitävät kameleiden, vuohien ja lampaiden laumoja.",
+      "text_markdown": "Saharassa ja Arabian autiomaissa ihmiset pitävät kameleiden, vuohien ja lampaiden laumoja.",
+      "tts": {
+        "text": "Saharassa ja Arabian autiomaissa ihmiset pitävät kameleiden, vuohien ja lampaiden laumoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eläimet voivat kävellä pitkän aikaa juomien välillä.",
+      "text_markdown": "Eläimet voivat kävellä pitkän aikaa juomien välillä.",
+      "tts": {
+        "text": "Eläimet voivat kävellä pitkän aikaa juomien välillä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset seuraavat eläimiä, ja eläimet johdattavat heidät ruoan luo.",
+      "text_markdown": "Ihmiset seuraavat eläimiä, ja eläimet johdattavat heidät ruoan luo.",
+      "tts": {
+        "text": "Ihmiset seuraavat eläimiä, ja eläimet johdattavat heidät ruoan luo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heidän telttansa on tehty kankaasta, joka on kudottu heidän eläintensä karvasta.",
+      "text_markdown": "Heidän telttansa on tehty kankaasta, joka on kudottu heidän eläintensä karvasta.",
+      "tts": {
+        "text": "Heidän telttansa on tehty kankaasta, joka on kudottu heidän eläintensä karvasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teltta voidaan pystyttää tunnissa ja purkaa tunnissa.",
+      "text_markdown": "Teltta voidaan pystyttää tunnissa ja purkaa tunnissa.",
+      "tts": {
+        "text": "Teltta voidaan pystyttää tunnissa ja purkaa tunnissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se pitää polttavan auringon ulkona ja päästää viileän yöilman lävitseen.",
+      "text_markdown": "Se pitää polttavan auringon ulkona ja päästää viileän yöilman lävitseen.",
+      "tts": {
+        "text": "Se pitää polttavan auringon ulkona ja päästää viileän yöilman lävitseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Autiomaan ihmiset käyttävät väljiä, pitkiä vaatteita.",
+      "text_markdown": "Autiomaan ihmiset käyttävät väljiä, pitkiä vaatteita.",
+      "tts": {
+        "text": "Autiomaan ihmiset käyttävät väljiä, pitkiä vaatteita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pitkät hihat ja peitetty pää pitävät ruumiin viileänä ja suojaavat sitä auringolta.",
+      "text_markdown": "Pitkät hihat ja peitetty pää pitävät ruumiin viileänä ja suojaavat sitä auringolta.",
+      "tts": {
+        "text": "Pitkät hihat ja peitetty pää pitävät ruumiin viileänä ja suojaavat sitä auringolta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kirkas kuvio kankaassa auttaa ystävää näkemään sinut kaukaa.",
+      "text_markdown": "Kirkas kuvio kankaassa auttaa ystävää näkemään sinut kaukaa.",
+      "tts": {
+        "text": "Kirkas kuvio kankaassa auttaa ystävää näkemään sinut kaukaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkut autiomaan ihmiset asuvat kaupungeissa, jotka on rakennettu keitaan ympärille.",
+      "text_markdown": "Jotkut autiomaan ihmiset asuvat kaupungeissa, jotka on rakennettu keitaan ympärille.",
+      "tts": {
+        "text": "Jotkut autiomaan ihmiset asuvat kaupungeissa, jotka on rakennettu keitaan ympärille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He kasvattavat taatelipalmuja, hedelmiä ja viljoja vihreässä renkaassa veden ympärillä.",
+      "text_markdown": "He kasvattavat taatelipalmuja, hedelmiä ja viljoja vihreässä renkaassa veden ympärillä.",
+      "tts": {
+        "text": "He kasvattavat taatelipalmuja, hedelmiä ja viljoja vihreässä renkaassa veden ympärillä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He ovat oppineet kaivamaan syviä kaivoja löytääkseen piilotetun veden hiekan alta.",
+      "text_markdown": "He ovat oppineet kaivamaan syviä kaivoja löytääkseen piilotetun veden hiekan alta.",
+      "tts": {
+        "text": "He ovat oppineet kaivamaan syviä kaivoja löytääkseen piilotetun veden hiekan alta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matkailijat kaukaa tulevat keitaalle lepäämään ja täyttämään vesisäkkinsä.",
+      "text_markdown": "Matkailijat kaukaa tulevat keitaalle lepäämään ja täyttämään vesisäkkinsä.",
+      "tts": {
+        "text": "Matkailijat kaukaa tulevat keitaalle lepäämään ja täyttämään vesisäkkinsä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Autiomaan ihmiset tuntevat jokaisen tähden yötaivaalla.",
+      "text_markdown": "Autiomaan ihmiset tuntevat jokaisen tähden yötaivaalla.",
+      "tts": {
+        "text": "Autiomaan ihmiset tuntevat jokaisen tähden yötaivaalla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He tuntevat jokaisen puhaltavan tuulen nimet.",
+      "text_markdown": "He tuntevat jokaisen puhaltavan tuulen nimet.",
+      "tts": {
+        "text": "He tuntevat jokaisen puhaltavan tuulen nimet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He osaavat lukea jokaisen eläimen jäljet hiekasta.",
+      "text_markdown": "He osaavat lukea jokaisen eläimen jäljet hiekasta.",
+      "tts": {
+        "text": "He osaavat lukea jokaisen eläimen jäljet hiekasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä tieto siirtyy vanhemmilta lapsille vuosi vuoden jälkeen.",
+      "text_markdown": "Tämä tieto siirtyy vanhemmilta lapsille vuosi vuoden jälkeen.",
+      "tts": {
+        "text": "Tämä tieto siirtyy vanhemmilta lapsille vuosi vuoden jälkeen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ihmiset",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokaisessa suuressa autiomaassa tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+      "text_markdown": "Jokaisessa suuressa autiomaassa tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+      "tts": {
+        "text": "Jokaisessa suuressa autiomaassa tällä elämäntavalla on omat kielensä, laulunsa ja tarinansa.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Autiomaa tänään",
+      "text_markdown": "Autiomaa tänään"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuma autiomaa on kaunis ja vaativa biomi.",
+      "text_markdown": "Kuuma autiomaa on kaunis ja vaativa biomi.",
+      "tts": {
+        "text": "Kuuma autiomaa on kaunis ja vaativa biomi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se kattaa suuren osan Maan maa-alueesta.",
+      "text_markdown": "Se kattaa suuren osan Maan maa-alueesta.",
+      "tts": {
+        "text": "Se kattaa suuren osan Maan maa alueesta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voimakas autiomaan aurinko on myös yksi suurimmista puhtaan energian lähteistämme.",
+      "text_markdown": "Voimakas autiomaan aurinko on myös yksi suurimmista puhtaan energian lähteistämme.",
+      "tts": {
+        "text": "Voimakas autiomaan aurinko on myös yksi suurimmista puhtaan energian lähteistämme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moniin autiomaihin rakennetaan suuria aurinkopaneelikenttiä.",
+      "text_markdown": "Moniin autiomaihin rakennetaan suuria aurinkopaneelikenttiä.",
+      "tts": {
+        "text": "Moniin autiomaihin rakennetaan suuria aurinkopaneelikenttiä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne muuttavat autiomaan auringon sähköksi kaukaisille kaupungeille.",
+      "text_markdown": "Ne muuttavat autiomaan auringon sähköksi kaukaisille kaupungeille.",
+      "tts": {
+        "text": "Ne muuttavat autiomaan auringon sähköksi kaukaisille kaupungeille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mutta autiomaa on vaikeuksissa joissakin paikoissa.",
+      "text_markdown": "Mutta autiomaa on vaikeuksissa joissakin paikoissa.",
+      "tts": {
+        "text": "Mutta autiomaa on vaikeuksissa joissakin paikoissa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Joillakin alueilla autiomaa kasvaa, koska ihmiset ovat käyttäneet loppuun veden ja ruohon sen reunoilta.",
+      "text_markdown": "Joillakin alueilla autiomaa kasvaa, koska ihmiset ovat käyttäneet loppuun veden ja ruohon sen reunoilta.",
+      "tts": {
+        "text": "Joillakin alueilla autiomaa kasvaa, koska ihmiset ovat käyttäneet loppuun veden ja ruohon sen reunoilta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ruoho kuolee, puut katoavat, ja hiekka tunkeutuu sisään.",
+      "text_markdown": "Ruoho kuolee, puut katoavat, ja hiekka tunkeutuu sisään.",
+      "tts": {
+        "text": "Ruoho kuolee, puut katoavat, ja hiekka tunkeutuu sisään.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toisissa paikoissa autiomaan reunalla olevat kaupungit käyttävät liikaa piilotettua vettä maan alta.",
+      "text_markdown": "Toisissa paikoissa autiomaan reunalla olevat kaupungit käyttävät liikaa piilotettua vettä maan alta.",
+      "tts": {
+        "text": "Toisissa paikoissa autiomaan reunalla olevat kaupungit käyttävät liikaa piilotettua vettä maan alta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun syvä vesi loppuu, myös keitaat kuivuvat.",
+      "text_markdown": "Kun syvä vesi loppuu, myös keitaat kuivuvat.",
+      "tts": {
+        "text": "Kun syvä vesi loppuu, myös keitaat kuivuvat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monet ryhmät ympäri maailmaa työskentelevät pitääkseen huolta autiomaista.",
+      "text_markdown": "Monet ryhmät ympäri maailmaa työskentelevät pitääkseen huolta autiomaista.",
+      "tts": {
+        "text": "Monet ryhmät ympäri maailmaa työskentelevät pitääkseen huolta autiomaista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He istuttavat rivejä puita ja ruohoja pidätelläkseen liikkuvaa hiekkaa.",
+      "text_markdown": "He istuttavat rivejä puita ja ruohoja pidätelläkseen liikkuvaa hiekkaa.",
+      "tts": {
+        "text": "He istuttavat rivejä puita ja ruohoja pidätelläkseen liikkuvaa hiekkaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He auttavat autiomaassa asuvia ihmisiä käyttämään vettä viisaasti.",
+      "text_markdown": "He auttavat autiomaassa asuvia ihmisiä käyttämään vettä viisaasti.",
+      "tts": {
+        "text": "He auttavat autiomaassa asuvia ihmisiä käyttämään vettä viisaasti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He tutkivat autiomaita, jotta voimme ymmärtää niitä paremmin.",
+      "text_markdown": "He tutkivat autiomaita, jotta voimme ymmärtää niitä paremmin.",
+      "tts": {
+        "text": "He tutkivat autiomaita, jotta voimme ymmärtää niitä paremmin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terve autiomaa on täynnä elämää, jota et osaisi odottaa.",
+      "text_markdown": "Terve autiomaa on täynnä elämää, jota et osaisi odottaa.",
+      "tts": {
+        "text": "Terve autiomaa on täynnä elämää, jota et osaisi odottaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Autiomaa tänään",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on huolenpitomme arvoinen.",
+      "text_markdown": "Se on huolenpitomme arvoinen.",
+      "tts": {
+        "text": "Se on huolenpitomme arvoinen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lopuksi",
+      "text_markdown": "Lopuksi"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se on kuuma autiomaa.",
+      "text_markdown": "Se on kuuma autiomaa.",
+      "tts": {
+        "text": "Se on kuuma autiomaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuiva, auringonvalon kylvettämä hiekan, kiven ja kärsivällisen elämän maailma.",
+      "text_markdown": "Kuiva, auringonvalon kylvettämä hiekan, kiven ja kärsivällisen elämän maailma.",
+      "tts": {
+        "text": "Kuiva, auringonvalon kylvettämä hiekan, kiven ja kärsivällisen elämän maailma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos joskus seisot sellaisessa, ole hiljaa hetken.",
+      "text_markdown": "Jos joskus seisot sellaisessa, ole hiljaa hetken.",
+      "tts": {
+        "text": "Jos joskus seisot sellaisessa, ole hiljaa hetken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuuntele tuulta, joka liikkuu hiekkadyynien yli.",
+      "text_markdown": "Kuuntele tuulta, joka liikkuu hiekkadyynien yli.",
+      "tts": {
+        "text": "Kuuntele tuulta, joka liikkuu hiekkadyynien yli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tunne auringon kuumuus ja varjon viileys.",
+      "text_markdown": "Tunne auringon kuumuus ja varjon viileys.",
+      "tts": {
+        "text": "Tunne auringon kuumuus ja varjon viileys.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Lopuksi",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuulet biomin sydämen sykkivän ympärilläsi.",
+      "text_markdown": "Kuulet biomin sydämen sykkivän ympärilläsi.",
+      "tts": {
+        "text": "Kuulet biomin sydämen sykkivän ympärilläsi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

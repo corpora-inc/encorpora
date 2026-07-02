@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "熱帯サバンナ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "熱帯サバンナ",
+      "text_markdown": "熱帯サバンナ"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "サバンナが育つ場所",
+      "text_markdown": "サバンナが育つ場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯サバンナへようこそ。",
+      "text_markdown": "熱帯サバンナへようこそ。",
+      "tts": {
+        "text": "熱帯サバンナへようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは世界の大きなバイオームのひとつです。",
+      "text_markdown": "ここは世界の大きなバイオームのひとつです。",
+      "tts": {
+        "text": "ここは世界の大きなバイオームのひとつです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、独自の天気と、植物と、動物を持つ地球の一部です。",
+      "text_markdown": "バイオームとは、独自の天気と、植物と、動物を持つ地球の一部です。",
+      "tts": {
+        "text": "バイオームとは、独自の天気と、植物と、動物を持つ地球の一部です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナは、木がまばらに生える広い草原です。",
+      "text_markdown": "サバンナは、木がまばらに生える広い草原です。",
+      "tts": {
+        "text": "サバンナは、木がまばらに生える広い草原です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年中暖かいです。",
+      "text_markdown": "一年中暖かいです。",
+      "tts": {
+        "text": "一年中暖かいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い乾季と、短い雨季があります。",
+      "text_markdown": "長い乾季と、短い雨季があります。",
+      "tts": {
+        "text": "長い乾季と、短い雨季があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界で一番大きなサバンナはアフリカにあります。",
+      "text_markdown": "世界で一番大きなサバンナはアフリカにあります。",
+      "tts": {
+        "text": "世界で一番大きなサバンナはアフリカにあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大陸の真ん中の大部分に広がっています。",
+      "text_markdown": "大陸の真ん中の大部分に広がっています。",
+      "tts": {
+        "text": "大陸の真ん中の大部分に広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカにも、セラードと呼ばれる大きなサバンナがあります。",
+      "text_markdown": "南アメリカにも、セラードと呼ばれる大きなサバンナがあります。",
+      "tts": {
+        "text": "南アメリカにも、セラードと呼ばれる大きなサバンナがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーストラリアの北部にも、熱帯サバンナが広がっています。",
+      "text_markdown": "オーストラリアの北部にも、熱帯サバンナが広がっています。",
+      "tts": {
+        "text": "オーストラリアの北部にも、熱帯サバンナが広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インドや東南アジアにも、小さなサバンナがあります。",
+      "text_markdown": "インドや東南アジアにも、小さなサバンナがあります。",
+      "tts": {
+        "text": "インドや東南アジアにも、小さなサバンナがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれが、ほかのサバンナから遠く離れて、別々に育ちました。",
+      "text_markdown": "それぞれが、ほかのサバンナから遠く離れて、別々に育ちました。",
+      "tts": {
+        "text": "それぞれが、ほかのサバンナから遠く離れて、別々に育ちました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ですから、植物や動物は場所ごとに違います。",
+      "text_markdown": "ですから、植物や動物は場所ごとに違います。",
+      "tts": {
+        "text": "ですから、植物や動物は場所ごとに違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカの草食動物は、南アメリカやオーストラリアの動物と違います。",
+      "text_markdown": "アフリカの草食動物は、南アメリカやオーストラリアの動物と違います。",
+      "tts": {
+        "text": "アフリカの草食動物は、南アメリカやオーストラリアの動物と違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、みんな同じバイオームの仲間です。",
+      "text_markdown": "でも、みんな同じバイオームの仲間です。",
+      "tts": {
+        "text": "でも、みんな同じバイオームの仲間です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナに立つと、遠くまで見渡せます。",
+      "text_markdown": "サバンナに立つと、遠くまで見渡せます。",
+      "tts": {
+        "text": "サバンナに立つと、遠くまで見渡せます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は腰の高さか、それより高くなります。",
+      "text_markdown": "草は腰の高さか、それより高くなります。",
+      "tts": {
+        "text": "草は腰の高さか、それより高くなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草の上に、てっぺんが平らな木が何本か立っています。",
+      "text_markdown": "草の上に、てっぺんが平らな木が何本か立っています。",
+      "tts": {
+        "text": "草の上に、てっぺんが平らな木が何本か立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空はとても大きいです。",
+      "text_markdown": "空はとても大きいです。",
+      "tts": {
+        "text": "空はとても大きいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "光は黄金色です。",
+      "text_markdown": "光は黄金色です。",
+      "tts": {
+        "text": "光は黄金色です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草の間を風が通り抜ける音が聞こえます。",
+      "text_markdown": "草の間を風が通り抜ける音が聞こえます。",
+      "tts": {
+        "text": "草の間を風が通り抜ける音が聞こえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遠くで鳥の鳴き声が聞こえます。",
+      "text_markdown": "遠くで鳥の鳴き声が聞こえます。",
+      "tts": {
+        "text": "遠くで鳥の鳴き声が聞こえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがサバンナです。",
+      "text_markdown": "これがサバンナです。",
+      "tts": {
+        "text": "これがサバンナです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "サバンナが育つ場所",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草と、まばらな木と、大きな空が広がる、開けた大地です。",
+      "text_markdown": "草と、まばらな木と、大きな空が広がる、開けた大地です。",
+      "tts": {
+        "text": "草と、まばらな木と、大きな空が広がる、開けた大地です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天気",
+      "text_markdown": "天気"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯サバンナの天気は単純です。",
+      "text_markdown": "熱帯サバンナの天気は単純です。",
+      "tts": {
+        "text": "熱帯サバンナの天気は単純です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年中暖かいです。",
+      "text_markdown": "一年中暖かいです。",
+      "tts": {
+        "text": "一年中暖かいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも熱帯雨林とは違い、サバンナには大きく違う二つの季節があります。",
+      "text_markdown": "でも熱帯雨林とは違い、サバンナには大きく違う二つの季節があります。",
+      "tts": {
+        "text": "でも熱帯雨林とは違い、サバンナには大きく違う二つの季節があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い乾季と、短い雨季があります。",
+      "text_markdown": "長い乾季と、短い雨季があります。",
+      "tts": {
+        "text": "長い乾季と、短い雨季があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾季には、空が何ヶ月も澄み渡ります。",
+      "text_markdown": "乾季には、空が何ヶ月も澄み渡ります。",
+      "tts": {
+        "text": "乾季には、空が何ヶ月も澄み渡ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は黄金色になり、ぱりぱりと乾きます。",
+      "text_markdown": "草は黄金色になり、ぱりぱりと乾きます。",
+      "tts": {
+        "text": "草は黄金色になり、ぱりぱりと乾きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川は細くなり、小さな池はすっかり干上がります。",
+      "text_markdown": "川は細くなり、小さな池はすっかり干上がります。",
+      "tts": {
+        "text": "川は細くなり、小さな池はすっかり干上がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木は水を守るために葉を落とします。",
+      "text_markdown": "木は水を守るために葉を落とします。",
+      "tts": {
+        "text": "木は水を守るために葉を落とします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季は、地平線に大きな雲がもくもくと現れて始まります。",
+      "text_markdown": "雨季は、地平線に大きな雲がもくもくと現れて始まります。",
+      "tts": {
+        "text": "雨季は、地平線に大きな雲がもくもくと現れて始まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の雨は、雷と稲妻を伴う激しい嵐となって降ります。",
+      "text_markdown": "最初の雨は、雷と稲妻を伴う激しい嵐となって降ります。",
+      "tts": {
+        "text": "最初の雨は、雷と稲妻を伴う激しい嵐となって降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨が降ると、サバンナは一晩で姿を変えます。",
+      "text_markdown": "雨が降ると、サバンナは一晩で姿を変えます。",
+      "tts": {
+        "text": "雨が降ると、サバンナは一晩で姿を変えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾いた大地から新しい草の芽が出ます。",
+      "text_markdown": "乾いた大地から新しい草の芽が出ます。",
+      "tts": {
+        "text": "乾いた大地から新しい草の芽が出ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木にも新しい緑の葉が育ちます。",
+      "text_markdown": "木にも新しい緑の葉が育ちます。",
+      "tts": {
+        "text": "木にも新しい緑の葉が育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花が次々と色とりどりに咲きます。",
+      "text_markdown": "花が次々と色とりどりに咲きます。",
+      "tts": {
+        "text": "花が次々と色とりどりに咲きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季は短いですが、多くの命はこの時に動き出します。",
+      "text_markdown": "雨季は短いですが、多くの命はこの時に動き出します。",
+      "tts": {
+        "text": "雨季は短いですが、多くの命はこの時に動き出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾季は長いですが、サバンナはそれに合うように作られています。",
+      "text_markdown": "乾季は長いですが、サバンナはそれに合うように作られています。",
+      "tts": {
+        "text": "乾季は長いですが、サバンナはそれに合うように作られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここに住むすべての植物と動物は、雨を待つ術を知っています。",
+      "text_markdown": "ここに住むすべての植物と動物は、雨を待つ術を知っています。",
+      "tts": {
+        "text": "ここに住むすべての植物と動物は、雨を待つ術を知っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "大地と水",
+      "text_markdown": "大地と水"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの大地は、たいてい平らで広いです。",
+      "text_markdown": "サバンナの大地は、たいてい平らで広いです。",
+      "tts": {
+        "text": "サバンナの大地は、たいてい平らで広いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "場所によっては、なだらかな丘が草原から立ち上がります。",
+      "text_markdown": "場所によっては、なだらかな丘が草原から立ち上がります。",
+      "tts": {
+        "text": "場所によっては、なだらかな丘が草原から立ち上がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ときどき、大きな岩山が平原にぽつんと立っています。",
+      "text_markdown": "ときどき、大きな岩山が平原にぽつんと立っています。",
+      "tts": {
+        "text": "ときどき、大きな岩山が平原にぽつんと立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草の下の土は、サバンナの場所ごとに違います。",
+      "text_markdown": "草の下の土は、サバンナの場所ごとに違います。",
+      "tts": {
+        "text": "草の下の土は、サバンナの場所ごとに違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黒くて豊かな土の場所もあります。",
+      "text_markdown": "黒くて豊かな土の場所もあります。",
+      "tts": {
+        "text": "黒くて豊かな土の場所もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂っぽい土や、薄い土の場所もあります。",
+      "text_markdown": "砂っぽい土や、薄い土の場所もあります。",
+      "tts": {
+        "text": "砂っぽい土や、薄い土の場所もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草はどの土にも育つすべを身につけました。",
+      "text_markdown": "草はどの土にも育つすべを身につけました。",
+      "tts": {
+        "text": "草はどの土にも育つすべを身につけました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨が降ると、水は低い場所に集まり、池や浅い湖を作ります。",
+      "text_markdown": "雨が降ると、水は低い場所に集まり、池や浅い湖を作ります。",
+      "tts": {
+        "text": "雨が降ると、水は低い場所に集まり、池や浅い湖を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何ヶ月も残るものもあれば、数週間で干上がるものもあります。",
+      "text_markdown": "何ヶ月も残るものもあれば、数週間で干上がるものもあります。",
+      "tts": {
+        "text": "何ヶ月も残るものもあれば、数週間で干上がるものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川はサバンナを長くゆるやかに蛇行します。",
+      "text_markdown": "川はサバンナを長くゆるやかに蛇行します。",
+      "tts": {
+        "text": "川はサバンナを長くゆるやかに蛇行します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季には、川は広く満々と流れます。",
+      "text_markdown": "雨季には、川は広く満々と流れます。",
+      "tts": {
+        "text": "雨季には、川は広く満々と流れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾季には、砂の上の細い流れや、静かな水たまりの連なりに縮みます。",
+      "text_markdown": "乾季には、砂の上の細い流れや、静かな水たまりの連なりに縮みます。",
+      "tts": {
+        "text": "乾季には、砂の上の細い流れや、静かな水たまりの連なりに縮みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの動物たちの多くは、この川や池に水を飲みに集まります。",
+      "text_markdown": "サバンナの動物たちの多くは、この川や池に水を飲みに集まります。",
+      "tts": {
+        "text": "サバンナの動物たちの多くは、この川や池に水を飲みに集まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾季の池はにぎやかな場所です。",
+      "text_markdown": "乾季の池はにぎやかな場所です。",
+      "tts": {
+        "text": "乾季の池はにぎやかな場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ふだんは出会わない動物たちが、すぐ近くで並んで水を飲みます。",
+      "text_markdown": "ふだんは出会わない動物たちが、すぐ近くで並んで水を飲みます。",
+      "tts": {
+        "text": "ふだんは出会わない動物たちが、すぐ近くで並んで水を飲みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川はまた、背の高い木の帯も連れてきます。",
+      "text_markdown": "川はまた、背の高い木の帯も連れてきます。",
+      "tts": {
+        "text": "川はまた、背の高い木の帯も連れてきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川岸の木は、乾季でも青々と茂ります。",
+      "text_markdown": "川岸の木は、乾季でも青々と茂ります。",
+      "tts": {
+        "text": "川岸の木は、乾季でも青々と茂ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この森のリボンは、開けたサバンナを緑の道のように横切ります。",
+      "text_markdown": "この森のリボンは、開けたサバンナを緑の道のように横切ります。",
+      "tts": {
+        "text": "この森のリボンは、開けたサバンナを緑の道のように横切ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは、一年中日陰と水が必要な動物たちの家です。",
+      "text_markdown": "ここは、一年中日陰と水が必要な動物たちの家です。",
+      "tts": {
+        "text": "ここは、一年中日陰と水が必要な動物たちの家です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの心は草です。",
+      "text_markdown": "サバンナの心は草です。",
+      "tts": {
+        "text": "サバンナの心は草です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "背の高い草が、どこまでも大地を覆っています。",
+      "text_markdown": "背の高い草が、どこまでも大地を覆っています。",
+      "tts": {
+        "text": "背の高い草が、どこまでも大地を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人と同じくらいの高さに育つ草もあります。",
+      "text_markdown": "人と同じくらいの高さに育つ草もあります。",
+      "tts": {
+        "text": "人と同じくらいの高さに育つ草もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根は水を求めて土の奥深くまで伸びます。",
+      "text_markdown": "根は水を求めて土の奥深くまで伸びます。",
+      "tts": {
+        "text": "根は水を求めて土の奥深くまで伸びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナを火が走ると、草の上の部分は燃えます。",
+      "text_markdown": "サバンナを火が走ると、草の上の部分は燃えます。",
+      "tts": {
+        "text": "サバンナを火が走ると、草の上の部分は燃えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも根は地下で生き続けます。",
+      "text_markdown": "でも根は地下で生き続けます。",
+      "tts": {
+        "text": "でも根は地下で生き続けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次の雨が降ると、草は新しく青々と生え戻ります。",
+      "text_markdown": "次の雨が降ると、草は新しく青々と生え戻ります。",
+      "tts": {
+        "text": "次の雨が降ると、草は新しく青々と生え戻ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火は、このバイオームの自然な一部です。",
+      "text_markdown": "火は、このバイオームの自然な一部です。",
+      "tts": {
+        "text": "火は、このバイオームの自然な一部です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの植物の多くは、健康を保つために火を必要とします。",
+      "text_markdown": "ここの植物の多くは、健康を保つために火を必要とします。",
+      "tts": {
+        "text": "ここの植物の多くは、健康を保つために火を必要とします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木もサバンナに育ちますが、まばらに散らばっています。",
+      "text_markdown": "木もサバンナに育ちますが、まばらに散らばっています。",
+      "tts": {
+        "text": "木もサバンナに育ちますが、まばらに散らばっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木と木の間には草があり、互いに離れて立っています。",
+      "text_markdown": "木と木の間には草があり、互いに離れて立っています。",
+      "tts": {
+        "text": "木と木の間には草があり、互いに離れて立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの木はたいてい背が低く、てっぺんが広く平らです。",
+      "text_markdown": "サバンナの木はたいてい背が低く、てっぺんが広く平らです。",
+      "tts": {
+        "text": "サバンナの木はたいてい背が低く、てっぺんが広く平らです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平らなてっぺんは、光を一滴も逃さない大きな葉の傘です。",
+      "text_markdown": "平らなてっぺんは、光を一滴も逃さない大きな葉の傘です。",
+      "tts": {
+        "text": "平らなてっぺんは、光を一滴も逃さない大きな葉の傘です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの木の多くは、大きな動物に食べられないよう、とげを持っています。",
+      "text_markdown": "サバンナの木の多くは、大きな動物に食べられないよう、とげを持っています。",
+      "tts": {
+        "text": "サバンナの木の多くは、大きな動物に食べられないよう、とげを持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有名なバオバブは、太くて頑丈な幹を持つ巨大なサバンナの木です。",
+      "text_markdown": "有名なバオバブは、太くて頑丈な幹を持つ巨大なサバンナの木です。",
+      "tts": {
+        "text": "有名なバオバブは、太くて頑丈な幹を持つ巨大なサバンナの木です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い乾季のために、幹の中に水を蓄えることができます。",
+      "text_markdown": "長い乾季のために、幹の中に水を蓄えることができます。",
+      "tts": {
+        "text": "長い乾季のために、幹の中に水を蓄えることができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バオバブの中には、千年以上生きるものもあります。",
+      "text_markdown": "バオバブの中には、千年以上生きるものもあります。",
+      "tts": {
+        "text": "バオバブの中には、千年以上生きるものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川沿いには、背の高い木が細い緑の帯となって育ちます。",
+      "text_markdown": "川沿いには、背の高い木が細い緑の帯となって育ちます。",
+      "tts": {
+        "text": "川沿いには、背の高い木が細い緑の帯となって育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "開けた平原に出ると、見渡す限り草とまばらな木だけが広がります。",
+      "text_markdown": "開けた平原に出ると、見渡す限り草とまばらな木だけが広がります。",
+      "tts": {
+        "text": "開けた平原に出ると、見渡す限り草とまばらな木だけが広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季には、草の間に小さな花が咲きます。",
+      "text_markdown": "雨季には、草の間に小さな花が咲きます。",
+      "tts": {
+        "text": "雨季には、草の間に小さな花が咲きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花はすぐに開き、数週間しか咲きません。",
+      "text_markdown": "花はすぐに開き、数週間しか咲きません。",
+      "tts": {
+        "text": "花はすぐに開き、数週間しか咲きません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナは、草と、まばらな木と、太陽と、辛抱強い根でできた静かな機械です。",
+      "text_markdown": "サバンナは、草と、まばらな木と、太陽と、辛抱強い根でできた静かな機械です。",
+      "tts": {
+        "text": "サバンナは、草と、まばらな木と、太陽と、辛抱強い根でできた静かな機械です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯サバンナは、その動物たちで世界中に知られています。",
+      "text_markdown": "熱帯サバンナは、その動物たちで世界中に知られています。",
+      "tts": {
+        "text": "熱帯サバンナは、その動物たちで世界中に知られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は、たくさんの草食動物の大きな群れを養います。",
+      "text_markdown": "草は、たくさんの草食動物の大きな群れを養います。",
+      "tts": {
+        "text": "草は、たくさんの草食動物の大きな群れを養います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカでは、シマウマやアンテロープ、水牛の大群が平原を移動します。",
+      "text_markdown": "アフリカでは、シマウマやアンテロープ、水牛の大群が平原を移動します。",
+      "tts": {
+        "text": "アフリカでは、シマウマやアンテロープ、水牛の大群が平原を移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らは雨を追って、サバンナの中を移っていきます。",
+      "text_markdown": "彼らは雨を追って、サバンナの中を移っていきます。",
+      "tts": {
+        "text": "彼らは雨を追って、サバンナの中を移っていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地球で一番大きな陸の動物、象は、アフリカのサバンナに住んでいます。",
+      "text_markdown": "地球で一番大きな陸の動物、象は、アフリカのサバンナに住んでいます。",
+      "tts": {
+        "text": "地球で一番大きな陸の動物、象は、アフリカのサバンナに住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "象の家族は、年とった母親に導かれて、ゆっくりと草原を歩きます。",
+      "text_markdown": "象の家族は、年とった母親に導かれて、ゆっくりと草原を歩きます。",
+      "tts": {
+        "text": "象の家族は、年とった母親に導かれて、ゆっくりと草原を歩きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キリンは長い首を伸ばし、木の葉を食べながら一緒に歩きます。",
+      "text_markdown": "キリンは長い首を伸ばし、木の葉を食べながら一緒に歩きます。",
+      "tts": {
+        "text": "キリンは長い首を伸ばし、木の葉を食べながら一緒に歩きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草食動物が多い場所には、狩りをする動物もいます。",
+      "text_markdown": "草食動物が多い場所には、狩りをする動物もいます。",
+      "tts": {
+        "text": "草食動物が多い場所には、狩りをする動物もいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ライオンはアフリカのサバンナの大きな狩人です。",
+      "text_markdown": "ライオンはアフリカのサバンナの大きな狩人です。",
+      "tts": {
+        "text": "ライオンはアフリカのサバンナの大きな狩人です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ライオンはプライドと呼ばれる家族の群れで暮らします。",
+      "text_markdown": "ライオンはプライドと呼ばれる家族の群れで暮らします。",
+      "tts": {
+        "text": "ライオンはプライドと呼ばれる家族の群れで暮らします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チーターは陸で一番速い動物です。",
+      "text_markdown": "チーターは陸で一番速い動物です。",
+      "tts": {
+        "text": "チーターは陸で一番速い動物です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い全力疾走で、平原を駆けるアンテロープを捕まえます。",
+      "text_markdown": "短い全力疾走で、平原を駆けるアンテロープを捕まえます。",
+      "tts": {
+        "text": "短い全力疾走で、平原を駆けるアンテロープを捕まえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヒョウは静かな狩人で、木に登り、獲物を枝の上に引き上げます。",
+      "text_markdown": "ヒョウは静かな狩人で、木に登り、獲物を枝の上に引き上げます。",
+      "tts": {
+        "text": "ヒョウは静かな狩人で、木に登り、獲物を枝の上に引き上げます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイエナは群れで狩り、大きな狩人の食べ残しも片付けます。",
+      "text_markdown": "ハイエナは群れで狩り、大きな狩人の食べ残しも片付けます。",
+      "tts": {
+        "text": "ハイエナは群れで狩り、大きな狩人の食べ残しも片付けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな動物たちも、あちこちにいます。",
+      "text_markdown": "小さな動物たちも、あちこちにいます。",
+      "tts": {
+        "text": "小さな動物たちも、あちこちにいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヒヒは騒がしい群れで、草原や木々の間を移動します。",
+      "text_markdown": "ヒヒは騒がしい群れで、草原や木々の間を移動します。",
+      "tts": {
+        "text": "ヒヒは騒がしい群れで、草原や木々の間を移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ダチョウという大きな鳥が、長い脚で開けた平原を走ります。",
+      "text_markdown": "ダチョウという大きな鳥が、長い脚で開けた平原を走ります。",
+      "tts": {
+        "text": "ダチョウという大きな鳥が、長い脚で開けた平原を走ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハゲワシは空高く旋回し、死んだ動物を探します。",
+      "text_markdown": "ハゲワシは空高く旋回し、死んだ動物を探します。",
+      "tts": {
+        "text": "ハゲワシは空高く旋回し、死んだ動物を探します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季には、毎晩、新しい池の周りでカエルが歌います。",
+      "text_markdown": "雨季には、毎晩、新しい池の周りでカエルが歌います。",
+      "tts": {
+        "text": "雨季には、毎晩、新しい池の周りでカエルが歌います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "虫が暖かい空気を満たし、チョウが花の間を舞います。",
+      "text_markdown": "虫が暖かい空気を満たし、チョウが花の間を舞います。",
+      "tts": {
+        "text": "虫が暖かい空気を満たし、チョウが花の間を舞います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "川では、カバが昼間ずっと水の中で休み、夜になると草を食べに上がってきます。",
+      "text_markdown": "川では、カバが昼間ずっと水の中で休み、夜になると草を食べに上がってきます。",
+      "tts": {
+        "text": "川では、カバが昼間ずっと水の中で休み、夜になると草を食べに上がってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカのサバンナでは、大きなげっ歯類や大きな鳥が、アフリカの動物の代わりを務めます。",
+      "text_markdown": "南アメリカのサバンナでは、大きなげっ歯類や大きな鳥が、アフリカの動物の代わりを務めます。",
+      "tts": {
+        "text": "南アメリカのサバンナでは、大きなげっ歯類や大きな鳥が、アフリカの動物の代わりを務めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーストラリアのサバンナでは、アンテロープの代わりにカンガルーが草原を跳ねていきます。",
+      "text_markdown": "オーストラリアのサバンナでは、アンテロープの代わりにカンガルーが草原を跳ねていきます。",
+      "tts": {
+        "text": "オーストラリアのサバンナでは、アンテロープの代わりにカンガルーが草原を跳ねていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれの土地で、動物の姿は違います。",
+      "text_markdown": "それぞれの土地で、動物の姿は違います。",
+      "tts": {
+        "text": "それぞれの土地で、動物の姿は違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、その形は同じです。",
+      "text_markdown": "でも、その形は同じです。",
+      "tts": {
+        "text": "でも、その形は同じです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原を走る大きな草食動物の群れ、静かな狩人、空を飛ぶ鳥の大群です。",
+      "text_markdown": "草原を走る大きな草食動物の群れ、静かな狩人、空を飛ぶ鳥の大群です。",
+      "tts": {
+        "text": "草原を走る大きな草食動物の群れ、静かな狩人、空を飛ぶ鳥の大群です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これがサバンナです。",
+      "text_markdown": "これがサバンナです。",
+      "tts": {
+        "text": "これがサバンナです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は、ずっと昔から熱帯サバンナに住んできました。",
+      "text_markdown": "人々は、ずっと昔から熱帯サバンナに住んできました。",
+      "tts": {
+        "text": "人々は、ずっと昔から熱帯サバンナに住んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "実は、私たちの祖先は、こうしたサバンナで初めて立ち上がり、歩き始めたのです。",
+      "text_markdown": "実は、私たちの祖先は、こうしたサバンナで初めて立ち上がり、歩き始めたのです。",
+      "tts": {
+        "text": "実は、私たちの祖先は、こうしたサバンナで初めて立ち上がり、歩き始めたのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "開けた草原とまばらな木が、私たちの体の動き方を作りました。",
+      "text_markdown": "開けた草原とまばらな木が、私たちの体の動き方を作りました。",
+      "tts": {
+        "text": "開けた草原とまばらな木が、私たちの体の動き方を作りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの多くの人々は、動物の群れを飼っています。",
+      "text_markdown": "サバンナの多くの人々は、動物の群れを飼っています。",
+      "tts": {
+        "text": "サバンナの多くの人々は、動物の群れを飼っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカでは、家族が牛やヤギ、羊を草原で飼っています。",
+      "text_markdown": "アフリカでは、家族が牛やヤギ、羊を草原で飼っています。",
+      "tts": {
+        "text": "アフリカでは、家族が牛やヤギ、羊を草原で飼っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動物たちは草を食べ、人々のために乳や肉に変えてくれます。",
+      "text_markdown": "動物たちは草を食べ、人々のために乳や肉に変えてくれます。",
+      "tts": {
+        "text": "動物たちは草を食べ、人々のために乳や肉に変えてくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "羊飼いたちは、雨を追って動物と一緒に移動します。",
+      "text_markdown": "羊飼いたちは、雨を追って動物と一緒に移動します。",
+      "tts": {
+        "text": "羊飼いたちは、雨を追って動物と一緒に移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾季には川の方へ移動します。",
+      "text_markdown": "乾季には川の方へ移動します。",
+      "tts": {
+        "text": "乾季には川の方へ移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季には、緑の平原に広がっていきます。",
+      "text_markdown": "雨季には、緑の平原に広がっていきます。",
+      "tts": {
+        "text": "雨季には、緑の平原に広がっていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らの家は、簡単に解体して新しい場所へ運べるものが多いです。",
+      "text_markdown": "彼らの家は、簡単に解体して新しい場所へ運べるものが多いです。",
+      "tts": {
+        "text": "彼らの家は、簡単に解体して新しい場所へ運べるものが多いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの他の人々は、小さな畑で食物を育てます。",
+      "text_markdown": "サバンナの他の人々は、小さな畑で食物を育てます。",
+      "tts": {
+        "text": "サバンナの他の人々は、小さな畑で食物を育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土が豊かな場所では、穀物や豆を植えます。",
+      "text_markdown": "土が豊かな場所では、穀物や豆を植えます。",
+      "tts": {
+        "text": "土が豊かな場所では、穀物や豆を植えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らは火を慎重に使って新しい畑を開き、動物のために草を新しく保ちます。",
+      "text_markdown": "彼らは火を慎重に使って新しい畑を開き、動物のために草を新しく保ちます。",
+      "tts": {
+        "text": "彼らは火を慎重に使って新しい畑を開き、動物のために草を新しく保ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サバンナの人々は、土地のことをとても詳しく知っています。",
+      "text_markdown": "サバンナの人々は、土地のことをとても詳しく知っています。",
+      "tts": {
+        "text": "サバンナの人々は、土地のことをとても詳しく知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの植物が食べても安全か、どれが薬になるかを知っています。",
+      "text_markdown": "どの植物が食べても安全か、どれが薬になるかを知っています。",
+      "tts": {
+        "text": "どの植物が食べても安全か、どれが薬になるかを知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土の上の動物の足跡を、すべて見分けることができます。",
+      "text_markdown": "土の上の動物の足跡を、すべて見分けることができます。",
+      "tts": {
+        "text": "土の上の動物の足跡を、すべて見分けることができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空に浮かぶどんな雲の意味も読み取れます。",
+      "text_markdown": "空に浮かぶどんな雲の意味も読み取れます。",
+      "tts": {
+        "text": "空に浮かぶどんな雲の意味も読み取れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この知恵は、毎年、親から子へと受け継がれます。",
+      "text_markdown": "この知恵は、毎年、親から子へと受け継がれます。",
+      "tts": {
+        "text": "この知恵は、毎年、親から子へと受け継がれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どのサバンナにも、こうした暮らしの言葉と、歌と、物語があります。",
+      "text_markdown": "どのサバンナにも、こうした暮らしの言葉と、歌と、物語があります。",
+      "tts": {
+        "text": "どのサバンナにも、こうした暮らしの言葉と、歌と、物語があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日のサバンナ",
+      "text_markdown": "今日のサバンナ"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯サバンナは、地球の大きな野生の大地のひとつです。",
+      "text_markdown": "熱帯サバンナは、地球の大きな野生の大地のひとつです。",
+      "tts": {
+        "text": "熱帯サバンナは、地球の大きな野生の大地のひとつです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巨大な動物の群れを養っています。",
+      "text_markdown": "巨大な動物の群れを養っています。",
+      "tts": {
+        "text": "巨大な動物の群れを養っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もここで暮らしてきた羊飼いや農民を支えています。",
+      "text_markdown": "何千年もここで暮らしてきた羊飼いや農民を支えています。",
+      "tts": {
+        "text": "何千年もここで暮らしてきた羊飼いや農民を支えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原は、深い根の中にたくさんの水と養分も蓄えています。",
+      "text_markdown": "草原は、深い根の中にたくさんの水と養分も蓄えています。",
+      "tts": {
+        "text": "草原は、深い根の中にたくさんの水と養分も蓄えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、サバンナも危機に直面しています。",
+      "text_markdown": "でも、サバンナも危機に直面しています。",
+      "tts": {
+        "text": "でも、サバンナも危機に直面しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの場所で、人々は草を耕して作物を植えたり、牛のために柵で囲ったりしました。",
+      "text_markdown": "多くの場所で、人々は草を耕して作物を植えたり、牛のために柵で囲ったりしました。",
+      "tts": {
+        "text": "多くの場所で、人々は草を耕して作物を植えたり、牛のために柵で囲ったりしました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原が分断されると、野生動物の群れは開けた道を失います。",
+      "text_markdown": "草原が分断されると、野生動物の群れは開けた道を失います。",
+      "tts": {
+        "text": "草原が分断されると、野生動物の群れは開けた道を失います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "道路や柵が、象やアンテロープが大昔からたどってきた道を分断します。",
+      "text_markdown": "道路や柵が、象やアンテロープが大昔からたどってきた道を分断します。",
+      "tts": {
+        "text": "道路や柵が、象やアンテロープが大昔からたどってきた道を分断します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サイやチーターのようなサバンナの動物の中には、とても珍しくなったものもいます。",
+      "text_markdown": "サイやチーターのようなサバンナの動物の中には、とても珍しくなったものもいます。",
+      "tts": {
+        "text": "サイやチーターのようなサバンナの動物の中には、とても珍しくなったものもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+      "text_markdown": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+      "tts": {
+        "text": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野生動物が自由に動ける広い公園を作っています。",
+      "text_markdown": "野生動物が自由に動ける広い公園を作っています。",
+      "tts": {
+        "text": "野生動物が自由に動ける広い公園を作っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "公園の近くに住む人々と一緒に、土地を分かち合うように働きます。",
+      "text_markdown": "公園の近くに住む人々と一緒に、土地を分かち合うように働きます。",
+      "tts": {
+        "text": "公園の近くに住む人々と一緒に、土地を分かち合うように働きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草や木や動物の群れを研究して、私たちはサバンナをよりよく理解しています。",
+      "text_markdown": "草や木や動物の群れを研究して、私たちはサバンナをよりよく理解しています。",
+      "tts": {
+        "text": "草や木や動物の群れを研究して、私たちはサバンナをよりよく理解しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健康なサバンナは、他のどの陸のバイオームよりも多くの命を支えられます。",
+      "text_markdown": "健康なサバンナは、他のどの陸のバイオームよりも多くの命を支えられます。",
+      "tts": {
+        "text": "健康なサバンナは、他のどの陸のバイオームよりも多くの命を支えられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今日のサバンナ",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私たちが大切に守る価値があります。",
+      "text_markdown": "私たちが大切に守る価値があります。",
+      "tts": {
+        "text": "私たちが大切に守る価値があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これが熱帯サバンナです。",
+      "text_markdown": "これが熱帯サバンナです。",
+      "tts": {
+        "text": "これが熱帯サバンナです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "広く、暖かい、草と、まばらな木と、大きな動物の群れの大地です。",
+      "text_markdown": "広く、暖かい、草と、まばらな木と、大きな動物の群れの大地です。",
+      "tts": {
+        "text": "広く、暖かい、草と、まばらな木と、大きな動物の群れの大地です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしサバンナに立つことがあったら、少しだけ静かにしていてください。",
+      "text_markdown": "もしサバンナに立つことがあったら、少しだけ静かにしていてください。",
+      "tts": {
+        "text": "もしサバンナに立つことがあったら、少しだけ静かにしていてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草を渡る風と、遠くの鳥の声に耳を澄ませてください。",
+      "text_markdown": "草を渡る風と、遠くの鳥の声に耳を澄ませてください。",
+      "tts": {
+        "text": "草を渡る風と、遠くの鳥の声に耳を澄ませてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い地平線を見渡してください。",
+      "text_markdown": "長い地平線を見渡してください。",
+      "tts": {
+        "text": "長い地平線を見渡してください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたの周りで、バイオームの心臓が鼓動するのを感じるでしょう。",
+      "text_markdown": "あなたの周りで、バイオームの心臓が鼓動するのを感じるでしょう。",
+      "tts": {
+        "text": "あなたの周りで、バイオームの心臓が鼓動するのを感じるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

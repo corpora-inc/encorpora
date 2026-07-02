@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "da",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "En note til læseren",
+      "text": "En note til læseren",
+      "text_markdown": "En note til læseren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Dette er den sande historie om Hayreddin Barbarossa, manden der gjorde Det Osmanniske Rige til en sømagt.",
+      "text_markdown": "Dette er den sande historie om Hayreddin Barbarossa, manden der gjorde Det Osmanniske Rige til en sømagt.",
+      "tts": {
+        "text": "Dette er den sande historie om Hayreddin Barbarossa, manden der gjorde Det Osmanniske Rige til en sømagt.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Han begyndte sit liv som søn af en pottemager på en græsk ø.",
+      "text_markdown": "Han begyndte sit liv som søn af en pottemager på en græsk ø.",
+      "tts": {
+        "text": "Han begyndte sit liv som søn af en pottemager på en græsk ø.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Han endte det som storadmiral over den mægtigste flåde i Middelhavet.",
+      "text_markdown": "Han endte det som storadmiral over den mægtigste flåde i Middelhavet.",
+      "tts": {
+        "text": "Han endte det som storadmiral over den mægtigste flåde i Middelhavet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Hans historie strækker sig over et århundredes konflikt mellem Det Osmanniske Rige og det kristne Europa.",
+      "text_markdown": "Hans historie strækker sig over et århundredes konflikt mellem Det Osmanniske Rige og det kristne Europa.",
+      "tts": {
+        "text": "Hans historie strækker sig over et århundredes konflikt mellem Det Osmanniske Rige og det kristne Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Det er en historie om brødre, korsarer, sultaner og kampen om herredømmet over havet.",
+      "text_markdown": "Det er en historie om brødre, korsarer, sultaner og kampen om herredømmet over havet.",
+      "tts": {
+        "text": "Det er en historie om brødre, korsarer, sultaner og kampen om herredømmet over havet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Hvert slag, hver alliance og hvert forræderi, der beskrives i denne bog, er hentet fra det historiske kildemateriale.",
+      "text_markdown": "Hvert slag, hver alliance og hvert forræderi, der beskrives i denne bog, er hentet fra det historiske kildemateriale.",
+      "tts": {
+        "text": "Hvert slag, hver alliance og hvert forræderi, der beskrives i denne bog, er hentet fra det historiske kildemateriale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Barbarossas karriere ændrede kortet over Middelhavsverdenen.",
+      "text_markdown": "Barbarossas karriere ændrede kortet over Middelhavsverdenen.",
+      "tts": {
+        "text": "Barbarossas karriere ændrede kortet over Middelhavsverdenen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Den flåde, han byggede, dominerede havet i generationer efter hans død.",
+      "text_markdown": "Den flåde, han byggede, dominerede havet i generationer efter hans død.",
+      "tts": {
+        "text": "Den flåde, han byggede, dominerede havet i generationer efter hans død.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Hans eftermæle former stadig kysterne og kulturerne i Nordafrika i dag.",
+      "text_markdown": "Hans eftermæle former stadig kysterne og kulturerne i Nordafrika i dag.",
+      "tts": {
+        "text": "Hans eftermæle former stadig kysterne og kulturerne i Nordafrika i dag.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Hvor det historiske kildemateriale er ufuldstændigt, siger vi det tydeligt.",
+      "text_markdown": "Hvor det historiske kildemateriale er ufuldstændigt, siger vi det tydeligt.",
+      "tts": {
+        "text": "Hvor det historiske kildemateriale er ufuldstændigt, siger vi det tydeligt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Hvor historikere er uenige om datoer eller detaljer, præsenterer vi den mest anerkendte beretning.",
+      "text_markdown": "Hvor historikere er uenige om datoer eller detaljer, præsenterer vi den mest anerkendte beretning.",
+      "tts": {
+        "text": "Hvor historikere er uenige om datoer eller detaljer, præsenterer vi den mest anerkendte beretning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "En note til læseren",
+      "text": "Dette er historie, ikke legende, og vi behandler den med den omhu, den fortjener.",
+      "text_markdown": "Dette er historie, ikke legende, og vi behandler den med den omhu, den fortjener.",
+      "tts": {
+        "text": "Dette er historie, ikke legende, og vi behandler den med den omhu, den fortjener.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Middelhavets verden",
+      "text": "Middelhavets verden",
+      "text_markdown": "Middelhavets verden"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Middelhavet ligger ved skæringspunktet mellem tre kontinenter.",
+      "text_markdown": "Middelhavet ligger ved skæringspunktet mellem tre kontinenter.",
+      "tts": {
+        "text": "Middelhavet ligger ved skæringspunktet mellem tre kontinenter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Mod nord ligger Europa, mod syd Afrika, og mod øst ligger Asien.",
+      "text_markdown": "Mod nord ligger Europa, mod syd Afrika, og mod øst ligger Asien.",
+      "tts": {
+        "text": "Mod nord ligger Europa, mod syd Afrika, og mod øst ligger Asien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "I tusindvis af år har enhver stor civilisation langs dets kyster kæmpet for at beherske det.",
+      "text_markdown": "I tusindvis af år har enhver stor civilisation langs dets kyster kæmpet for at beherske det.",
+      "tts": {
+        "text": "I tusindvis af år har enhver stor civilisation langs dets kyster kæmpet for at beherske det.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "I slutningen af det femtende århundrede var Middelhavet en slagmark mellem to stormagter.",
+      "text_markdown": "I slutningen af det femtende århundrede var Middelhavet en slagmark mellem to stormagter.",
+      "tts": {
+        "text": "I slutningen af det femtende århundrede var Middelhavet en slagmark mellem to stormagter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Mod øst udvidede Det Osmanniske Rige sig hurtigt under en række ambitiøse sultaner.",
+      "text_markdown": "Mod øst udvidede Det Osmanniske Rige sig hurtigt under en række ambitiøse sultaner.",
+      "tts": {
+        "text": "Mod øst udvidede Det Osmanniske Rige sig hurtigt under en række ambitiøse sultaner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Mod vest forsøgte kongerigerne Spanien og Det Hellige Romerske Rige under Karl den Femte at slå tilbage.",
+      "text_markdown": "Mod vest forsøgte kongerigerne Spanien og Det Hellige Romerske Rige under Karl den Femte at slå tilbage.",
+      "tts": {
+        "text": "Mod vest forsøgte kongerigerne Spanien og Det Hellige Romerske Rige under Karl den Femte at slå tilbage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Det Osmanniske Rige havde erobret Konstantinopel i fjorten hundrede treoghalvtreds.",
+      "text_markdown": "Det Osmanniske Rige havde erobret Konstantinopel i fjorten hundrede treoghalvtreds.",
+      "tts": {
+        "text": "Det Osmanniske Rige havde erobret Konstantinopel i fjorten hundrede treoghalvtreds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Den sejr gjorde en ende på Det Byzantinske Rige og gav osmannerne kontrol over det østlige Middelhav.",
+      "text_markdown": "Den sejr gjorde en ende på Det Byzantinske Rige og gav osmannerne kontrol over det østlige Middelhav.",
+      "tts": {
+        "text": "Den sejr gjorde en ende på Det Byzantinske Rige og gav osmannerne kontrol over det østlige Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Byen blev omdøbt til Istanbul og blev hovedstad i et vidtstrakt og voksende rige.",
+      "text_markdown": "Byen blev omdøbt til Istanbul og blev hovedstad i et vidtstrakt og voksende rige.",
+      "tts": {
+        "text": "Byen blev omdøbt til Istanbul og blev hovedstad i et vidtstrakt og voksende rige.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Dens havn, Det Gyldne Horn, blev hjemmehavn for den osmanniske flåde.",
+      "text_markdown": "Dens havn, Det Gyldne Horn, blev hjemmehavn for den osmanniske flåde.",
+      "tts": {
+        "text": "Dens havn, Det Gyldne Horn, blev hjemmehavn for den osmanniske flåde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Spanien havde imens netop fuldført Reconquistaen.",
+      "text_markdown": "Spanien havde imens netop fuldført Reconquistaen.",
+      "tts": {
+        "text": "Spanien havde imens netop fuldført Reconquistaen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "I 1492 erobrede de spanske monarker Ferdinand og Isabella Granada, det sidste muslimske kongerige på Den Iberiske Halvø.",
+      "text_markdown": "I 1492 erobrede de spanske monarker Ferdinand og Isabella Granada, det sidste muslimske kongerige på Den Iberiske Halvø.",
+      "tts": {
+        "text": "I fjorten hundrede tooghalvfems erobrede de spanske monarker Ferdinand og Isabella Granada, det sidste muslimske kongerige på Den Iberiske Halvø.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Hundredtusinder af muslimer og jøder blev fordrevet fra Spanien i de følgende år.",
+      "text_markdown": "Hundredtusinder af muslimer og jøder blev fordrevet fra Spanien i de følgende år.",
+      "tts": {
+        "text": "Hundredtusinder af muslimer og jøder blev fordrevet fra Spanien i de følgende år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Mange af dem flygtede til Nordafrika og Det Osmanniske Rige.",
+      "text_markdown": "Mange af dem flygtede til Nordafrika og Det Osmanniske Rige.",
+      "tts": {
+        "text": "Mange af dem flygtede til Nordafrika og Det Osmanniske Rige.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Den nordafrikanske kyst, kendt som Berberkysten, blev et tilflugtssted for disse landflygtige.",
+      "text_markdown": "Den nordafrikanske kyst, kendt som Berberkysten, blev et tilflugtssted for disse landflygtige.",
+      "tts": {
+        "text": "Den nordafrikanske kyst, kendt som Berberkysten, blev et tilflugtssted for disse landflygtige.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Byer som Algier, Tunis og Tripoli optog bølger af flygtninge fra Spanien.",
+      "text_markdown": "Byer som Algier, Tunis og Tripoli optog bølger af flygtninge fra Spanien.",
+      "tts": {
+        "text": "Byer som Algier, Tunis og Tripoli optog bølger af flygtninge fra Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Disse fordrevne befolkninger nærede en dyb harme mod den spanske krone.",
+      "text_markdown": "Disse fordrevne befolkninger nærede en dyb harme mod den spanske krone.",
+      "tts": {
+        "text": "Disse fordrevne befolkninger nærede en dyb harme mod den spanske krone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Mange vendte sig mod korsarvirksomhed som både levebrød og hævn.",
+      "text_markdown": "Mange vendte sig mod korsarvirksomhed som både levebrød og hævn.",
+      "tts": {
+        "text": "Mange vendte sig mod korsarvirksomhed som både levebrød og hævn.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "En korsar var noget andet end en almindelig pirat.",
+      "text_markdown": "En korsar var noget andet end en almindelig pirat.",
+      "tts": {
+        "text": "En korsar var noget andet end en almindelig pirat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Korsarer opererede med en regerings eller herskers godkendelse.",
+      "text_markdown": "Korsarer opererede med en regerings eller herskers godkendelse.",
+      "tts": {
+        "text": "Korsarer opererede med en regerings eller herskers godkendelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "De angreb fjendtlig skibsfart og delte byttet med den stat, der støttede dem.",
+      "text_markdown": "De angreb fjendtlig skibsfart og delte byttet med den stat, der støttede dem.",
+      "tts": {
+        "text": "De angreb fjendtlig skibsfart og delte byttet med den stat, der støttede dem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "På den måde var korsarvirksomhed en form for søkrig, der blev ført af private personer.",
+      "text_markdown": "På den måde var korsarvirksomhed en form for søkrig, der blev ført af private personer.",
+      "tts": {
+        "text": "På den måde var korsarvirksomhed en form for søkrig, der blev ført af private personer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Både kristne og muslimske magter benyttede sig flittigt af korsarer.",
+      "text_markdown": "Både kristne og muslimske magter benyttede sig flittigt af korsarer.",
+      "tts": {
+        "text": "Både kristne og muslimske magter benyttede sig flittigt af korsarer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Johanniterne, der havde base på øen Rhodos og senere på Malta, var kristne korsarer, der angreb muslimsk skibsfart.",
+      "text_markdown": "Johanniterne, der havde base på øen Rhodos og senere på Malta, var kristne korsarer, der angreb muslimsk skibsfart.",
+      "tts": {
+        "text": "Johanniterne, der havde base på øen Rhodos og senere på Malta, var kristne korsarer, der angreb muslimsk skibsfart.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Muslimske korsarer med base i Nordafrika angreb til gengæld kristen skibsfart.",
+      "text_markdown": "Muslimske korsarer med base i Nordafrika angreb til gengæld kristen skibsfart.",
+      "tts": {
+        "text": "Muslimske korsarer med base i Nordafrika angreb til gengæld kristen skibsfart.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Middelhavet var et hav i konstant, lavintensiv krig.",
+      "text_markdown": "Middelhavet var et hav i konstant, lavintensiv krig.",
+      "tts": {
+        "text": "Middelhavet var et hav i konstant, lavintensiv krig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Handel var den præmie, der drev konflikten.",
+      "text_markdown": "Handel var den præmie, der drev konflikten.",
+      "tts": {
+        "text": "Handel var den præmie, der drev konflikten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Middelhavet transporterede silke fra Kina, krydderier fra Indien, korn fra Egypten og uld fra Europa.",
+      "text_markdown": "Middelhavet transporterede silke fra Kina, krydderier fra Indien, korn fra Egypten og uld fra Europa.",
+      "tts": {
+        "text": "Middelhavet transporterede silke fra Kina, krydderier fra Indien, korn fra Egypten og uld fra Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Kontrol over disse handelsruter betød enorm rigdom.",
+      "text_markdown": "Kontrol over disse handelsruter betød enorm rigdom.",
+      "tts": {
+        "text": "Kontrol over disse handelsruter betød enorm rigdom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Enhver havneby var afhængig af havet for sin overlevelse.",
+      "text_markdown": "Enhver havneby var afhængig af havet for sin overlevelse.",
+      "tts": {
+        "text": "Enhver havneby var afhængig af havet for sin overlevelse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Middelhavets øer var strategiske præmier.",
+      "text_markdown": "Middelhavets øer var strategiske præmier.",
+      "tts": {
+        "text": "Middelhavets øer var strategiske præmier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Den, der beherskede øerne, beherskede skibsruterne imellem dem.",
+      "text_markdown": "Den, der beherskede øerne, beherskede skibsruterne imellem dem.",
+      "tts": {
+        "text": "Den, der beherskede øerne, beherskede skibsruterne imellem dem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Rhodos, Cypern, Kreta, Sicilien og Malta skiftede hænder gentagne gange gennem århundrederne.",
+      "text_markdown": "Rhodos, Cypern, Kreta, Sicilien og Malta skiftede hænder gentagne gange gennem århundrederne.",
+      "tts": {
+        "text": "Rhodos, Cypern, Kreta, Sicilien og Malta skiftede hænder gentagne gange gennem århundrederne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Sømagten afgjorde, hvilket imperium der besad dem.",
+      "text_markdown": "Sømagten afgjorde, hvilket imperium der besad dem.",
+      "tts": {
+        "text": "Sømagten afgjorde, hvilket imperium der besad dem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Galejer var Middelhavets krigsskibe i denne tid.",
+      "text_markdown": "Galejer var Middelhavets krigsskibe i denne tid.",
+      "tts": {
+        "text": "Galejer var Middelhavets krigsskibe i denne tid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "En galej var et langt og smalt fartøj drevet frem af årer og sejl.",
+      "text_markdown": "En galej var et langt og smalt fartøj drevet frem af årer og sejl.",
+      "tts": {
+        "text": "En galej var et langt og smalt fartøj drevet frem af årer og sejl.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Hver galej havde hundredvis af roere om bord, og mange af dem var slaver eller krigsfanger.",
+      "text_markdown": "Hver galej havde hundredvis af roere om bord, og mange af dem var slaver eller krigsfanger.",
+      "tts": {
+        "text": "Hver galej havde hundredvis af roere om bord, og mange af dem var slaver eller krigsfanger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "I kamp ramte galejer fjendens skibe med vædderstævnen og sendte derefter væbnede soldater om bord til nærkamp.",
+      "text_markdown": "I kamp ramte galejer fjendens skibe med vædderstævnen og sendte derefter væbnede soldater om bord til nærkamp.",
+      "tts": {
+        "text": "I kamp ramte galejer fjendens skibe med vædderstævnen og sendte derefter væbnede soldater om bord til nærkamp.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Slavesystemet på galejerne var brutalt ud over enhver beskrivelse.",
+      "text_markdown": "Slavesystemet på galejerne var brutalt ud over enhver beskrivelse.",
+      "tts": {
+        "text": "Slavesystemet på galejerne var brutalt ud over enhver beskrivelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Fanger fra krige og togter blev lænket til årerne og tvunget til at ro, indtil de døde.",
+      "text_markdown": "Fanger fra krige og togter blev lænket til årerne og tvunget til at ro, indtil de døde.",
+      "tts": {
+        "text": "Fanger fra krige og togter blev lænket til årerne og tvunget til at ro, indtil de døde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Kristne gjorde muslimer til slaver, og muslimer gjorde kristne til slaver.",
+      "text_markdown": "Kristne gjorde muslimer til slaver, og muslimer gjorde kristne til slaver.",
+      "tts": {
+        "text": "Kristne gjorde muslimer til slaver, og muslimer gjorde kristne til slaver.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Denne grusomhed var så hverdagsagtig, at begge sider accepterede den som normal.",
+      "text_markdown": "Denne grusomhed var så hverdagsagtig, at begge sider accepterede den som normal.",
+      "tts": {
+        "text": "Denne grusomhed var så hverdagsagtig, at begge sider accepterede den som normal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Paven i Rom forsøgte gentagne gange at samle de kristne kongeriger mod den osmanniske trussel.",
+      "text_markdown": "Paven i Rom forsøgte gentagne gange at samle de kristne kongeriger mod den osmanniske trussel.",
+      "tts": {
+        "text": "Paven i Rom forsøgte gentagne gange at samle de kristne kongeriger mod den osmanniske trussel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Disse alliancer, kaldet Den Hellige Liga, samlede skibe fra Spanien, Venedig, Genova og Pavestaten.",
+      "text_markdown": "Disse alliancer, kaldet Den Hellige Liga, samlede skibe fra Spanien, Venedig, Genova og Pavestaten.",
+      "tts": {
+        "text": "Disse alliancer, kaldet Den Hellige Liga, samlede skibe fra Spanien, Venedig, Genova og Pavestaten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Men de kristne kongeriger mistroede hinanden næsten lige så meget, som de frygtede osmannerne.",
+      "text_markdown": "Men de kristne kongeriger mistroede hinanden næsten lige så meget, som de frygtede osmannerne.",
+      "tts": {
+        "text": "Men de kristne kongeriger mistroede hinanden næsten lige så meget, som de frygtede osmannerne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Disse alliancer var skrøbelige og brød ofte sammen, før de kunne opnå varige resultater.",
+      "text_markdown": "Disse alliancer var skrøbelige og brød ofte sammen, før de kunne opnå varige resultater.",
+      "tts": {
+        "text": "Disse alliancer var skrøbelige og brød ofte sammen, før de kunne opnå varige resultater.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Ind i denne voldsomme og omstridte verden blev to brødre født på en græsk ø under osmannisk styre.",
+      "text_markdown": "Ind i denne voldsomme og omstridte verden blev to brødre født på en græsk ø under osmannisk styre.",
+      "tts": {
+        "text": "Ind i denne voldsomme og omstridte verden blev to brødre født på en græsk ø under osmannisk styre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Deres navne var Aruj og Hizir.",
+      "text_markdown": "Deres navne var Aruj og Hizir.",
+      "tts": {
+        "text": "Deres navne var Aruj og Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Hizir blev senere kendt af verden som Hayreddin Barbarossa.",
+      "text_markdown": "Hizir blev senere kendt af verden som Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir blev senere kendt af verden som Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Middelhavets verden",
+      "text": "Sammen ville de omforme magtbalancen i hele Middelhavet.",
+      "text_markdown": "Sammen ville de omforme magtbalancen i hele Middelhavet.",
+      "tts": {
+        "text": "Sammen ville de omforme magtbalancen i hele Middelhavet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Oprindelse",
+      "text": "Oprindelse",
+      "text_markdown": "Oprindelse"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hayreddin Barbarossa blev født omkring 1478 på øen Lesbos.",
+      "text_markdown": "Hayreddin Barbarossa blev født omkring 1478 på øen Lesbos.",
+      "tts": {
+        "text": "Hayreddin Barbarossa blev født omkring fjorten hundrede otteoghalvfjerds på øen Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Lesbos er en stor græsk ø i det nordøstlige Ægæerhav, tæt på det nuværende Tyrkiets kyst.",
+      "text_markdown": "Lesbos er en stor græsk ø i det nordøstlige Ægæerhav, tæt på det nuværende Tyrkiets kyst.",
+      "tts": {
+        "text": "Lesbos er en stor græsk ø i det nordøstlige Ægæerhav, tæt på det nuværende Tyrkiets kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "På tidspunktet for hans fødsel var øen for nylig kommet under osmannisk kontrol.",
+      "text_markdown": "På tidspunktet for hans fødsel var øen for nylig kommet under osmannisk kontrol.",
+      "tts": {
+        "text": "På tidspunktet for hans fødsel var øen for nylig kommet under osmannisk kontrol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hans far var Yakup, en tidligere osmannisk soldat, der havde slået sig ned på Lesbos efter sin militærtjeneste.",
+      "text_markdown": "Hans far var Yakup, en tidligere osmannisk soldat, der havde slået sig ned på Lesbos efter sin militærtjeneste.",
+      "tts": {
+        "text": "Hans far var Yakup, en tidligere osmannisk soldat, der havde slået sig ned på Lesbos efter sin militærtjeneste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Yakup arbejdede som pottemager og var efter de fleste beretninger en beskeden håndværker.",
+      "text_markdown": "Yakup arbejdede som pottemager og var efter de fleste beretninger en beskeden håndværker.",
+      "tts": {
+        "text": "Yakup arbejdede som pottemager og var efter de fleste beretninger en beskeden håndværker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hans mor var en lokal græsk kvinde, sandsynligvis af kristen oprindelse, hvis navn er overleveret som Katerina.",
+      "text_markdown": "Hans mor var en lokal græsk kvinde, sandsynligvis af kristen oprindelse, hvis navn er overleveret som Katerina.",
+      "tts": {
+        "text": "Hans mor var en lokal græsk kvinde, sandsynligvis af kristen oprindelse, hvis navn er overleveret som Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Familien var ikke velhavende, men de var heller ikke nødlidende.",
+      "text_markdown": "Familien var ikke velhavende, men de var heller ikke nødlidende.",
+      "tts": {
+        "text": "Familien var ikke velhavende, men de var heller ikke nødlidende.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Yakup og Katerina fik fire sønner.",
+      "text_markdown": "Yakup og Katerina fik fire sønner.",
+      "tts": {
+        "text": "Yakup og Katerina fik fire sønner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Den ældste var Ishak, derefter Aruj, så Hizir og endelig Ilyas.",
+      "text_markdown": "Den ældste var Ishak, derefter Aruj, så Hizir og endelig Ilyas.",
+      "tts": {
+        "text": "Den ældste var Ishak, derefter Aruj, så Hizir og endelig Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Drengen, der skulle blive Hayreddin Barbarossa, var Hizir.",
+      "text_markdown": "Drengen, der skulle blive Hayreddin Barbarossa, var Hizir.",
+      "tts": {
+        "text": "Drengen, der skulle blive Hayreddin Barbarossa, var Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Alle fire brødre skulle med tiden tage til søs.",
+      "text_markdown": "Alle fire brødre skulle med tiden tage til søs.",
+      "tts": {
+        "text": "Alle fire brødre skulle med tiden tage til søs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Brødrene voksede op i en verden formet af havet.",
+      "text_markdown": "Brødrene voksede op i en verden formet af havet.",
+      "tts": {
+        "text": "Brødrene voksede op i en verden formet af havet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Lesbos var økonomisk afhængig af fiskeri og søhandel.",
+      "text_markdown": "Lesbos var økonomisk afhængig af fiskeri og søhandel.",
+      "tts": {
+        "text": "Lesbos var økonomisk afhængig af fiskeri og søhandel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Enhver dreng på øen lærte at føre en båd, før han kunne læse.",
+      "text_markdown": "Enhver dreng på øen lærte at føre en båd, før han kunne læse.",
+      "tts": {
+        "text": "Enhver dreng på øen lærte at føre en båd, før han kunne læse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Havet var ikke en abstraktion for dem; det var deres daglige virkelighed.",
+      "text_markdown": "Havet var ikke en abstraktion for dem; det var deres daglige virkelighed.",
+      "tts": {
+        "text": "Havet var ikke en abstraktion for dem; det var deres daglige virkelighed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Som unge mænd begyndte brødrene at arbejde som sømænd og handelsmænd.",
+      "text_markdown": "Som unge mænd begyndte brødrene at arbejde som sømænd og handelsmænd.",
+      "tts": {
+        "text": "Som unge mænd begyndte brødrene at arbejde som sømænd og handelsmænd.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "De fragtede varer mellem øerne i Ægæerhavet og det osmanniske fastland.",
+      "text_markdown": "De fragtede varer mellem øerne i Ægæerhavet og det osmanniske fastland.",
+      "tts": {
+        "text": "De fragtede varer mellem øerne i Ægæerhavet og det osmanniske fastland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Men handel var et risikabelt foretagende på et hav fuld af korsarer.",
+      "text_markdown": "Men handel var et risikabelt foretagende på et hav fuld af korsarer.",
+      "tts": {
+        "text": "Men handel var et risikabelt foretagende på et hav fuld af korsarer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "På en af deres tidlige rejser blev brødrene angrebet af Johanniterne.",
+      "text_markdown": "På en af deres tidlige rejser blev brødrene angrebet af Johanniterne.",
+      "tts": {
+        "text": "På en af deres tidlige rejser blev brødrene angrebet af Johanniterne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Johanniterne var en kristen militær orden med base på øen Rhodos.",
+      "text_markdown": "Johanniterne var en kristen militær orden med base på øen Rhodos.",
+      "tts": {
+        "text": "Johanniterne var en kristen militær orden med base på øen Rhodos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "De var blandt de mest frygtede korsarer i Middelhavet.",
+      "text_markdown": "De var blandt de mest frygtede korsarer i Middelhavet.",
+      "tts": {
+        "text": "De var blandt de mest frygtede korsarer i Middelhavet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "De angreb ubarmhjertigt muslimsk skibsfart, erobrede gods og gjorde besætninger til slaver.",
+      "text_markdown": "De angreb ubarmhjertigt muslimsk skibsfart, erobrede gods og gjorde besætninger til slaver.",
+      "tts": {
+        "text": "De angreb ubarmhjertigt muslimsk skibsfart, erobrede gods og gjorde besætninger til slaver.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Under angrebet på brødrenes fartøj blev Ilyas, den yngste bror, dræbt.",
+      "text_markdown": "Under angrebet på brødrenes fartøj blev Ilyas, den yngste bror, dræbt.",
+      "tts": {
+        "text": "Under angrebet på brødrenes fartøj blev Ilyas, den yngste bror, dræbt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Aruj, den mest hidsige af brødrene, blev taget til fange og gjort til slave.",
+      "text_markdown": "Aruj, den mest hidsige af brødrene, blev taget til fange og gjort til slave.",
+      "tts": {
+        "text": "Aruj, den mest hidsige af brødrene, blev taget til fange og gjort til slave.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Han tilbragte flere år som galejslave, lænket til årerne på et kristent krigsskib.",
+      "text_markdown": "Han tilbragte flere år som galejslave, lænket til årerne på et kristent krigsskib.",
+      "tts": {
+        "text": "Han tilbragte flere år som galejslave, lænket til årerne på et kristent krigsskib.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Erfaringen hærdede ham på måder, der skulle præge resten af hans liv.",
+      "text_markdown": "Erfaringen hærdede ham på måder, der skulle præge resten af hans liv.",
+      "tts": {
+        "text": "Erfaringen hærdede ham på måder, der skulle præge resten af hans liv.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Da han til sidst enten blev løskøbt eller flygtede, var han en gennemforvandlet mand.",
+      "text_markdown": "Da han til sidst enten blev løskøbt eller flygtede, var han en gennemforvandlet mand.",
+      "tts": {
+        "text": "Da han til sidst enten blev løskøbt eller flygtede, var han en gennemforvandlet mand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Aruj besluttede at blive korsar selv.",
+      "text_markdown": "Aruj besluttede at blive korsar selv.",
+      "tts": {
+        "text": "Aruj besluttede at blive korsar selv.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Han skaffede et skib og en besætning og begyndte at angribe kristen skibsfart i det østlige Middelhav.",
+      "text_markdown": "Han skaffede et skib og en besætning og begyndte at angribe kristen skibsfart i det østlige Middelhav.",
+      "tts": {
+        "text": "Han skaffede et skib og en besætning og begyndte at angribe kristen skibsfart i det østlige Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hans yngre bror Hizir sluttede sig til ham som næstkommanderende.",
+      "text_markdown": "Hans yngre bror Hizir sluttede sig til ham som næstkommanderende.",
+      "tts": {
+        "text": "Hans yngre bror Hizir sluttede sig til ham som næstkommanderende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Sammen viste de sig at være enestående dygtige havrøvere.",
+      "text_markdown": "Sammen viste de sig at være enestående dygtige havrøvere.",
+      "tts": {
+        "text": "Sammen viste de sig at være enestående dygtige havrøvere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Brødrene flyttede deres operationsbase til det vestlige Middelhav.",
+      "text_markdown": "Brødrene flyttede deres operationsbase til det vestlige Middelhav.",
+      "tts": {
+        "text": "Brødrene flyttede deres operationsbase til det vestlige Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "De etablerede sig på øen Djerba ud for det nuværende Tunesiens kyst.",
+      "text_markdown": "De etablerede sig på øen Djerba ud for det nuværende Tunesiens kyst.",
+      "tts": {
+        "text": "De etablerede sig på øen Djerba ud for det nuværende Tunesiens kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Fra Djerba kunne de angribe spansk og italiensk skibsfart langs de travle handelsruter.",
+      "text_markdown": "Fra Djerba kunne de angribe spansk og italiensk skibsfart langs de travle handelsruter.",
+      "tts": {
+        "text": "Fra Djerba kunne de angribe spansk og italiensk skibsfart langs de travle handelsruter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Deres ry voksede hurtigt blandt både allierede og fjender.",
+      "text_markdown": "Deres ry voksede hurtigt blandt både allierede og fjender.",
+      "tts": {
+        "text": "Deres ry voksede hurtigt blandt både allierede og fjender.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Aruj var partnerskabets ansigt udadtil.",
+      "text_markdown": "Aruj var partnerskabets ansigt udadtil.",
+      "tts": {
+        "text": "Aruj var partnerskabets ansigt udadtil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Han var dristig, karismatisk og fysisk imponerende.",
+      "text_markdown": "Han var dristig, karismatisk og fysisk imponerende.",
+      "tts": {
+        "text": "Han var dristig, karismatisk og fysisk imponerende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Europæiske kilder beskriver ham som rødskægget, hvilket gav brødrene deres berømte tilnavn.",
+      "text_markdown": "Europæiske kilder beskriver ham som rødskægget, hvilket gav brødrene deres berømte tilnavn.",
+      "tts": {
+        "text": "Europæiske kilder beskriver ham som rødskægget, hvilket gav brødrene deres berømte tilnavn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Navnet Barbarossa, som betyder rødskæg, blev oprindeligt brugt om Aruj og senere overført til Hayreddin.",
+      "text_markdown": "Navnet Barbarossa, som betyder rødskæg, blev oprindeligt brugt om Aruj og senere overført til Hayreddin.",
+      "tts": {
+        "text": "Navnet Barbarossa, som betyder rødskæg, blev oprindeligt brugt om Aruj og senere overført til Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hizir var strategen og organisatoren bag kulisserne.",
+      "text_markdown": "Hizir var strategen og organisatoren bag kulisserne.",
+      "tts": {
+        "text": "Hizir var strategen og organisatoren bag kulisserne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Han stod for logistikken i deres voksende flåde og opretholdt alliancer med lokale herskere.",
+      "text_markdown": "Han stod for logistikken i deres voksende flåde og opretholdt alliancer med lokale herskere.",
+      "tts": {
+        "text": "Han stod for logistikken i deres voksende flåde og opretholdt alliancer med lokale herskere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Mens Aruj ledede togterne i egen person, sørgede Hizir for, at virksomheden fungerede gnidningsfrit.",
+      "text_markdown": "Mens Aruj ledede togterne i egen person, sørgede Hizir for, at virksomheden fungerede gnidningsfrit.",
+      "tts": {
+        "text": "Mens Aruj ledede togterne i egen person, sørgede Hizir for, at virksomheden fungerede gnidningsfrit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Deres modsatrettede evner gjorde dem til et formidabelt team.",
+      "text_markdown": "Deres modsatrettede evner gjorde dem til et formidabelt team.",
+      "tts": {
+        "text": "Deres modsatrettede evner gjorde dem til et formidabelt team.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Brødrenes togter tjente et formål ud over personlig vinding.",
+      "text_markdown": "Brødrenes togter tjente et formål ud over personlig vinding.",
+      "tts": {
+        "text": "Brødrenes togter tjente et formål ud over personlig vinding.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "De reddede muslimske flygtninge, der flygtede fra Den Spanske Inkvisition.",
+      "text_markdown": "De reddede muslimske flygtninge, der flygtede fra Den Spanske Inkvisition.",
+      "tts": {
+        "text": "De reddede muslimske flygtninge, der flygtede fra Den Spanske Inkvisition.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Mellem 1504 og 1510 fragtede de tusindvis af muslimer fra Spanien til Nordafrika.",
+      "text_markdown": "Mellem 1504 og 1510 fragtede de tusindvis af muslimer fra Spanien til Nordafrika.",
+      "tts": {
+        "text": "Mellem femten hundrede fire og femten hundrede ti fragtede de tusindvis af muslimer fra Spanien til Nordafrika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Det skaffede dem enorm respekt blandt de muslimske samfund langs Berberkysten.",
+      "text_markdown": "Det skaffede dem enorm respekt blandt de muslimske samfund langs Berberkysten.",
+      "tts": {
+        "text": "Det skaffede dem enorm respekt blandt de muslimske samfund langs Berberkysten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Aruj satte sig en større præmie for øje end blot at plyndre.",
+      "text_markdown": "Aruj satte sig en større præmie for øje end blot at plyndre.",
+      "tts": {
+        "text": "Aruj satte sig en større præmie for øje end blot at plyndre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Han ville erobre en by og oprette en base, der kunne stå imod spansk magt.",
+      "text_markdown": "Han ville erobre en by og oprette en base, der kunne stå imod spansk magt.",
+      "tts": {
+        "text": "Han ville erobre en by og oprette en base, der kunne stå imod spansk magt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "Hans mål var Algier, en havneby på den nordafrikanske kyst med en pragtfuld naturlig havn.",
+      "text_markdown": "Hans mål var Algier, en havneby på den nordafrikanske kyst med en pragtfuld naturlig havn.",
+      "tts": {
+        "text": "Hans mål var Algier, en havneby på den nordafrikanske kyst med en pragtfuld naturlig havn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Oprindelse",
+      "text": "At indtage Algier ville forvandle brødrene fra korsarer til herskere.",
+      "text_markdown": "At indtage Algier ville forvandle brødrene fra korsarer til herskere.",
+      "tts": {
+        "text": "At indtage Algier ville forvandle brødrene fra korsarer til herskere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Vejen til magten",
+      "text": "Vejen til magten",
+      "text_markdown": "Vejen til magten"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "I 1516 erobrede Aruj byen Algier.",
+      "text_markdown": "I 1516 erobrede Aruj byen Algier.",
+      "tts": {
+        "text": "I femten hundrede seksten erobrede Aruj byen Algier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han styrtede den lokale hersker og udråbte sig selv til sultan af Algier.",
+      "text_markdown": "Han styrtede den lokale hersker og udråbte sig selv til sultan af Algier.",
+      "tts": {
+        "text": "Han styrtede den lokale hersker og udråbte sig selv til sultan af Algier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Det var et modigt og dristigt skridt, der vakte uro i Det Spanske Imperium.",
+      "text_markdown": "Det var et modigt og dristigt skridt, der vakte uro i Det Spanske Imperium.",
+      "tts": {
+        "text": "Det var et modigt og dristigt skridt, der vakte uro i Det Spanske Imperium.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Algier var nu i hænderne på en korsarkrigsherre.",
+      "text_markdown": "Algier var nu i hænderne på en korsarkrigsherre.",
+      "tts": {
+        "text": "Algier var nu i hænderne på en korsarkrigsherre.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Aruj viste sig at være en dygtig, men hensynsløs hersker.",
+      "text_markdown": "Aruj viste sig at være en dygtig, men hensynsløs hersker.",
+      "tts": {
+        "text": "Aruj viste sig at være en dygtig, men hensynsløs hersker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han udvidede sit territorium langs den nordafrikanske kyst.",
+      "text_markdown": "Han udvidede sit territorium langs den nordafrikanske kyst.",
+      "tts": {
+        "text": "Han udvidede sit territorium langs den nordafrikanske kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han indgik alliancer med lokale berbiske stammer og muslimske flygtningesamfund.",
+      "text_markdown": "Han indgik alliancer med lokale berbiske stammer og muslimske flygtningesamfund.",
+      "tts": {
+        "text": "Han indgik alliancer med lokale berbiske stammer og muslimske flygtningesamfund.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Men hans aggressive ekspansion bragte ham i direkte konflikt med Spanien.",
+      "text_markdown": "Men hans aggressive ekspansion bragte ham i direkte konflikt med Spanien.",
+      "tts": {
+        "text": "Men hans aggressive ekspansion bragte ham i direkte konflikt med Spanien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "I 1518 belejrede en stor spansk hær byen Tlemcen, hvor Aruj havde sin base.",
+      "text_markdown": "I 1518 belejrede en stor spansk hær byen Tlemcen, hvor Aruj havde sin base.",
+      "tts": {
+        "text": "I femten hundrede atten belejrede en stor spansk hær byen Tlemcen, hvor Aruj havde sin base.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Aruj forsøgte at slippe væk med en mindre styrke.",
+      "text_markdown": "Aruj forsøgte at slippe væk med en mindre styrke.",
+      "tts": {
+        "text": "Aruj forsøgte at slippe væk med en mindre styrke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han blev indhentet og dræbt af spanske soldater under tilbagetoget.",
+      "text_markdown": "Han blev indhentet og dræbt af spanske soldater under tilbagetoget.",
+      "tts": {
+        "text": "Han blev indhentet og dræbt af spanske soldater under tilbagetoget.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hans død efterlod Hizir som den eneste overlevende bror og som leder af alt det, Aruj havde opbygget.",
+      "text_markdown": "Hans død efterlod Hizir som den eneste overlevende bror og som leder af alt det, Aruj havde opbygget.",
+      "tts": {
+        "text": "Hans død efterlod Hizir som den eneste overlevende bror og som leder af alt det, Aruj havde opbygget.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hizir, nu i begyndelsen af fyrrerne, befandt sig i en umulig situation.",
+      "text_markdown": "Hizir, nu i begyndelsen af fyrrerne, befandt sig i en umulig situation.",
+      "tts": {
+        "text": "Hizir, nu i begyndelsen af fyrrerne, befandt sig i en umulig situation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Den spanske hær rykkede frem, hans bror var død, og hans styrker var i undertal.",
+      "text_markdown": "Den spanske hær rykkede frem, hans bror var død, og hans styrker var i undertal.",
+      "tts": {
+        "text": "Den spanske hær rykkede frem, hans bror var død, og hans styrker var i undertal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han havde brug for en mægtig allieret, ellers ville han miste alt.",
+      "text_markdown": "Han havde brug for en mægtig allieret, ellers ville han miste alt.",
+      "tts": {
+        "text": "Han havde brug for en mægtig allieret, ellers ville han miste alt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han vendte sig mod den største magt i den muslimske verden: Det Osmanniske Rige.",
+      "text_markdown": "Han vendte sig mod den største magt i den muslimske verden: Det Osmanniske Rige.",
+      "tts": {
+        "text": "Han vendte sig mod den største magt i den muslimske verden: Det Osmanniske Rige.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hizir sendte udsendinge til sultan Selim den Første i Istanbul.",
+      "text_markdown": "Hizir sendte udsendinge til sultan Selim den Første i Istanbul.",
+      "tts": {
+        "text": "Hizir sendte udsendinge til sultan Selim den Første i Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han tilbød at lægge Algier under osmannisk overhøjhed til gengæld for militær støtte.",
+      "text_markdown": "Han tilbød at lægge Algier under osmannisk overhøjhed til gengæld for militær støtte.",
+      "tts": {
+        "text": "Han tilbød at lægge Algier under osmannisk overhøjhed til gengæld for militær støtte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Sultanen erkendte den strategiske værdi af en loyal base i det vestlige Middelhav.",
+      "text_markdown": "Sultanen erkendte den strategiske værdi af en loyal base i det vestlige Middelhav.",
+      "tts": {
+        "text": "Sultanen erkendte den strategiske værdi af en loyal base i det vestlige Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han tog imod tilbuddet og sendte soldater, kanoner og en flåde af galejer til at støtte Hizir.",
+      "text_markdown": "Han tog imod tilbuddet og sendte soldater, kanoner og en flåde af galejer til at støtte Hizir.",
+      "tts": {
+        "text": "Han tog imod tilbuddet og sendte soldater, kanoner og en flåde af galejer til at støtte Hizir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Fra dette tidspunkt var Hizir ikke længere blot en korsar.",
+      "text_markdown": "Fra dette tidspunkt var Hizir ikke længere blot en korsar.",
+      "tts": {
+        "text": "Fra dette tidspunkt var Hizir ikke længere blot en korsar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han var en osmannisk guvernør, der regerede Algier i sultanens navn.",
+      "text_markdown": "Han var en osmannisk guvernør, der regerede Algier i sultanens navn.",
+      "tts": {
+        "text": "Han var en osmannisk guvernør, der regerede Algier i sultanens navn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han tog æresnavnet Hayreddin, som betyder troens godhed.",
+      "text_markdown": "Han tog æresnavnet Hayreddin, som betyder troens godhed.",
+      "tts": {
+        "text": "Han tog æresnavnet Hayreddin, som betyder troens godhed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Kombinationen af osmanniske ressourcer og hans eget maritime geni gjorde ham ustoppelig.",
+      "text_markdown": "Kombinationen af osmanniske ressourcer og hans eget maritime geni gjorde ham ustoppelig.",
+      "tts": {
+        "text": "Kombinationen af osmanniske ressourcer og hans eget maritime geni gjorde ham ustoppelig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hayreddin tilbragte det næste årti med at konsolidere osmannisk magt langs den nordafrikanske kyst.",
+      "text_markdown": "Hayreddin tilbragte det næste årti med at konsolidere osmannisk magt langs den nordafrikanske kyst.",
+      "tts": {
+        "text": "Hayreddin tilbragte det næste årti med at konsolidere osmannisk magt langs den nordafrikanske kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han erobrede Tunis, drev spanske garnisoner ud af nøglefæstninger og udvidede korsarflåden.",
+      "text_markdown": "Han erobrede Tunis, drev spanske garnisoner ud af nøglefæstninger og udvidede korsarflåden.",
+      "tts": {
+        "text": "Han erobrede Tunis, drev spanske garnisoner ud af nøglefæstninger og udvidede korsarflåden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han oplærte en ny generation af flådeførere, som skulle tjene Det Osmanniske Rige i årtier.",
+      "text_markdown": "Han oplærte en ny generation af flådeførere, som skulle tjene Det Osmanniske Rige i årtier.",
+      "tts": {
+        "text": "Han oplærte en ny generation af flådeførere, som skulle tjene Det Osmanniske Rige i årtier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hans flåde blev den dominerende styrke i det vestlige Middelhav.",
+      "text_markdown": "Hans flåde blev den dominerende styrke i det vestlige Middelhav.",
+      "tts": {
+        "text": "Hans flåde blev den dominerende styrke i det vestlige Middelhav.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "I 1533 indkaldte sultan Suleiman den Prægtige Hayreddin til Istanbul.",
+      "text_markdown": "I 1533 indkaldte sultan Suleiman den Prægtige Hayreddin til Istanbul.",
+      "tts": {
+        "text": "I femten hundrede treogtredive indkaldte sultan Suleiman den Prægtige Hayreddin til Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Suleiman var den mægtigste hersker i verden på den tid.",
+      "text_markdown": "Suleiman var den mægtigste hersker i verden på den tid.",
+      "tts": {
+        "text": "Suleiman var den mægtigste hersker i verden på den tid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han erkendte, at Det Osmanniske Rige havde brug for en professionel flåde, der kunne matche dets legendariske hær.",
+      "text_markdown": "Han erkendte, at Det Osmanniske Rige havde brug for en professionel flåde, der kunne matche dets legendariske hær.",
+      "tts": {
+        "text": "Han erkendte, at Det Osmanniske Rige havde brug for en professionel flåde, der kunne matche dets legendariske hær.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han udnævnte Hayreddin til Kapudan Pasha, storadmiral over hele den osmanniske flåde.",
+      "text_markdown": "Han udnævnte Hayreddin til Kapudan Pasha, storadmiral over hele den osmanniske flåde.",
+      "tts": {
+        "text": "Han udnævnte Hayreddin til Kapudan Pasha, storadmiral over hele den osmanniske flåde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Denne udnævnelse blev et vendepunkt i Middelhavets historie.",
+      "text_markdown": "Denne udnævnelse blev et vendepunkt i Middelhavets historie.",
+      "tts": {
+        "text": "Denne udnævnelse blev et vendepunkt i Middelhavets historie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Den osmanniske flåde havde været kompetent, men ikke dominerende.",
+      "text_markdown": "Den osmanniske flåde havde været kompetent, men ikke dominerende.",
+      "tts": {
+        "text": "Den osmanniske flåde havde været kompetent, men ikke dominerende.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Under Hayreddins kommando skulle den blive den mest frygtede flådestyrke i verden.",
+      "text_markdown": "Under Hayreddins kommando skulle den blive den mest frygtede flådestyrke i verden.",
+      "tts": {
+        "text": "Under Hayreddins kommando skulle den blive den mest frygtede flådestyrke i verden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han genopbyggede flåden fra Istanbuls skibsværfter og anvendte alt, hvad han havde lært i årtier med korsarkrigsførelse.",
+      "text_markdown": "Han genopbyggede flåden fra Istanbuls skibsværfter og anvendte alt, hvad han havde lært i årtier med korsarkrigsførelse.",
+      "tts": {
+        "text": "Han genopbyggede flåden fra Istanbuls skibsværfter og anvendte alt, hvad han havde lært i årtier med korsarkrigsførelse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hayreddin moderniserede den osmanniske skibsbygningskunst.",
+      "text_markdown": "Hayreddin moderniserede den osmanniske skibsbygningskunst.",
+      "tts": {
+        "text": "Hayreddin moderniserede den osmanniske skibsbygningskunst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han konstruerede hurtigere og mere manøvredygtige galejer baseret på korsarernes fartøjer.",
+      "text_markdown": "Han konstruerede hurtigere og mere manøvredygtige galejer baseret på korsarernes fartøjer.",
+      "tts": {
+        "text": "Han konstruerede hurtigere og mere manøvredygtige galejer baseret på korsarernes fartøjer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han oprettede uddannelsesprogrammer for osmanniske flådeofficerer.",
+      "text_markdown": "Han oprettede uddannelsesprogrammer for osmanniske flådeofficerer.",
+      "tts": {
+        "text": "Han oprettede uddannelsesprogrammer for osmanniske flådeofficerer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han rekrutterede erfarne korsarer fra hele Middelhavet til at tjene som kaptajner.",
+      "text_markdown": "Han rekrutterede erfarne korsarer fra hele Middelhavet til at tjene som kaptajner.",
+      "tts": {
+        "text": "Han rekrutterede erfarne korsarer fra hele Middelhavet til at tjene som kaptajner.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hans første store felttog som storadmiral var rettet mod den italienske kyst.",
+      "text_markdown": "Hans første store felttog som storadmiral var rettet mod den italienske kyst.",
+      "tts": {
+        "text": "Hans første store felttog som storadmiral var rettet mod den italienske kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "I 1534 ledede han den osmanniske flåde på et hærgende togt langs Syditaliens kyster.",
+      "text_markdown": "I 1534 ledede han den osmanniske flåde på et hærgende togt langs Syditaliens kyster.",
+      "tts": {
+        "text": "I femten hundrede fireogtredive ledede han den osmanniske flåde på et hærgende togt langs Syditaliens kyster.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han erobrede byen Tunis og gjorde den til en osmannisk flådebase.",
+      "text_markdown": "Han erobrede byen Tunis og gjorde den til en osmannisk flådebase.",
+      "tts": {
+        "text": "Han erobrede byen Tunis og gjorde den til en osmannisk flådebase.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Togtet skræmte de kristne stater og viste den osmanniske sømagts rækkevidde.",
+      "text_markdown": "Togtet skræmte de kristne stater og viste den osmanniske sømagts rækkevidde.",
+      "tts": {
+        "text": "Togtet skræmte de kristne stater og viste den osmanniske sømagts rækkevidde.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Kejser Karl den Femte af Det Hellige Romerske Rige svarede igen med et massivt modangreb.",
+      "text_markdown": "Kejser Karl den Femte af Det Hellige Romerske Rige svarede igen med et massivt modangreb.",
+      "tts": {
+        "text": "Kejser Karl den Femte af Det Hellige Romerske Rige svarede igen med et massivt modangreb.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "I 1535 samlede Karl en af de største flåder i europæisk historie for at generobre Tunis.",
+      "text_markdown": "I 1535 samlede Karl en af de største flåder i europæisk historie for at generobre Tunis.",
+      "tts": {
+        "text": "I femten hundrede femogtredive samlede Karl en af de største flåder i europæisk historie for at generobre Tunis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Flåden omfattede skibe fra Spanien, Italien, Portugal og Pavestaten.",
+      "text_markdown": "Flåden omfattede skibe fra Spanien, Italien, Portugal og Pavestaten.",
+      "tts": {
+        "text": "Flåden omfattede skibe fra Spanien, Italien, Portugal og Pavestaten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Karl lykkedes med at indtage Tunis, men Hayreddin slap væk med kernen af sin flåde i behold.",
+      "text_markdown": "Karl lykkedes med at indtage Tunis, men Hayreddin slap væk med kernen af sin flåde i behold.",
+      "tts": {
+        "text": "Karl lykkedes med at indtage Tunis, men Hayreddin slap væk med kernen af sin flåde i behold.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "At miste Tunis var et tilbageslag, men det var ikke enden.",
+      "text_markdown": "At miste Tunis var et tilbageslag, men det var ikke enden.",
+      "tts": {
+        "text": "At miste Tunis var et tilbageslag, men det var ikke enden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Hayreddin trak sig tilbage til Algier og begyndte straks at genopbygge sine styrker.",
+      "text_markdown": "Hayreddin trak sig tilbage til Algier og begyndte straks at genopbygge sine styrker.",
+      "tts": {
+        "text": "Hayreddin trak sig tilbage til Algier og begyndte straks at genopbygge sine styrker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han vidste, at den kristne alliance var midlertidig og ville smuldre, så snart den umiddelbare trussel var ovre.",
+      "text_markdown": "Han vidste, at den kristne alliance var midlertidig og ville smuldre, så snart den umiddelbare trussel var ovre.",
+      "tts": {
+        "text": "Han vidste, at den kristne alliance var midlertidig og ville smuldre, så snart den umiddelbare trussel var ovre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Han fik ret, og inden for få måneder begyndte alliancen at gå i opløsning.",
+      "text_markdown": "Han fik ret, og inden for få måneder begyndte alliancen at gå i opløsning.",
+      "tts": {
+        "text": "Han fik ret, og inden for få måneder begyndte alliancen at gå i opløsning.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Inden for to år var Hayreddin klar til sit største slag.",
+      "text_markdown": "Inden for to år var Hayreddin klar til sit største slag.",
+      "tts": {
+        "text": "Inden for to år var Hayreddin klar til sit største slag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Den konfrontation, der skulle definere hans eftermæle, var ved at indfinde sig.",
+      "text_markdown": "Den konfrontation, der skulle definere hans eftermæle, var ved at indfinde sig.",
+      "tts": {
+        "text": "Den konfrontation, der skulle definere hans eftermæle, var ved at indfinde sig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Den ville finde sted i farvandet ud for Grækenlands vestkyst.",
+      "text_markdown": "Den ville finde sted i farvandet ud for Grækenlands vestkyst.",
+      "tts": {
+        "text": "Den ville finde sted i farvandet ud for Grækenlands vestkyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Vejen til magten",
+      "text": "Slagets navn var Preveza, og det ville for altid ændre Middelhavet.",
+      "text_markdown": "Slagets navn var Preveza, og det ville for altid ændre Middelhavet.",
+      "tts": {
+        "text": "Slagets navn var Preveza, og det ville for altid ændre Middelhavet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "På højdepunktet",
+      "text": "På højdepunktet",
+      "text_markdown": "På højdepunktet"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Slaget ved Preveza fandt sted den 28. september 1538.",
+      "text_markdown": "Slaget ved Preveza fandt sted den 28. september 1538.",
+      "tts": {
+        "text": "Slaget ved Preveza fandt sted den otteogtyvende september femten hundrede otteogtredive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Det var det afgørende søslag i Middelhavet i det sekstende århundrede.",
+      "text_markdown": "Det var det afgørende søslag i Middelhavet i det sekstende århundrede.",
+      "tts": {
+        "text": "Det var det afgørende søslag i Middelhavet i det sekstende århundrede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "På den ene side stod den osmanniske flåde under Hayreddin Barbarossa.",
+      "text_markdown": "På den ene side stod den osmanniske flåde under Hayreddin Barbarossa.",
+      "tts": {
+        "text": "På den ene side stod den osmanniske flåde under Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "På den anden stod den forenede flåde fra Den Hellige Liga, en alliance af kristne stater.",
+      "text_markdown": "På den anden stod den forenede flåde fra Den Hellige Liga, en alliance af kristne stater.",
+      "tts": {
+        "text": "På den anden stod den forenede flåde fra Den Hellige Liga, en alliance af kristne stater.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Den Hellige Ligas flåde blev anført af den genovesiske admiral Andrea Doria.",
+      "text_markdown": "Den Hellige Ligas flåde blev anført af den genovesiske admiral Andrea Doria.",
+      "tts": {
+        "text": "Den Hellige Ligas flåde blev anført af den genovesiske admiral Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Den bestod af omkring 300 skibe fra Spanien, Venedig, Pavestaten og Genova.",
+      "text_markdown": "Den bestod af omkring 300 skibe fra Spanien, Venedig, Pavestaten og Genova.",
+      "tts": {
+        "text": "Den bestod af omkring tre hundrede skibe fra Spanien, Venedig, Pavestaten og Genova.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "På papiret var den kristne flåde markant større end den osmanniske styrke.",
+      "text_markdown": "På papiret var den kristne flåde markant større end den osmanniske styrke.",
+      "tts": {
+        "text": "På papiret var den kristne flåde markant større end den osmanniske styrke.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Men størrelse alene vinder ikke slag til søs.",
+      "text_markdown": "Men størrelse alene vinder ikke slag til søs.",
+      "tts": {
+        "text": "Men størrelse alene vinder ikke slag til søs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddin kommanderede omkring 150 galejer foruden mindre støttefartøjer.",
+      "text_markdown": "Hayreddin kommanderede omkring 150 galejer foruden mindre støttefartøjer.",
+      "tts": {
+        "text": "Hayreddin kommanderede omkring et hundrede og halvtreds galejer foruden mindre støttefartøjer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hans flåde var i undertal, men bedre trænet, bedre koordineret og bedre ledet.",
+      "text_markdown": "Hans flåde var i undertal, men bedre trænet, bedre koordineret og bedre ledet.",
+      "tts": {
+        "text": "Hans flåde var i undertal, men bedre trænet, bedre koordineret og bedre ledet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddin havde tilbragt årtier med at kæmpe i disse farvande og kendte hver strøm, hvert vindmønster og enhver taktisk fordel, som kystlinjen tilbød.",
+      "text_markdown": "Hayreddin havde tilbragt årtier med at kæmpe i disse farvande og kendte hver strøm, hvert vindmønster og enhver taktisk fordel, som kystlinjen tilbød.",
+      "tts": {
+        "text": "Hayreddin havde tilbragt årtier med at kæmpe i disse farvande og kendte hver strøm, hvert vindmønster og enhver taktisk fordel, som kystlinjen tilbød.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Slaget fandt sted nær indsejlingen til Ambrakiske Bugt ud for det vestlige Grækenlands kyst.",
+      "text_markdown": "Slaget fandt sted nær indsejlingen til Ambrakiske Bugt ud for det vestlige Grækenlands kyst.",
+      "tts": {
+        "text": "Slaget fandt sted nær indsejlingen til Ambrakiske Bugt ud for det vestlige Grækenlands kyst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddin placerede sin flåde, så han kunne udnytte de fremherskende vinde.",
+      "text_markdown": "Hayreddin placerede sin flåde, så han kunne udnytte de fremherskende vinde.",
+      "tts": {
+        "text": "Hayreddin placerede sin flåde, så han kunne udnytte de fremherskende vinde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han stillede sine galejer op i en halvmåneformation, der gjorde det muligt at koncentrere ildkraften mod isolerede fjendegrupper.",
+      "text_markdown": "Han stillede sine galejer op i en halvmåneformation, der gjorde det muligt at koncentrere ildkraften mod isolerede fjendegrupper.",
+      "tts": {
+        "text": "Han stillede sine galejer op i en halvmåneformation, der gjorde det muligt at koncentrere ildkraften mod isolerede fjendegrupper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hans taktiske placering var mesterlig.",
+      "text_markdown": "Hans taktiske placering var mesterlig.",
+      "tts": {
+        "text": "Hans taktiske placering var mesterlig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Andrea Doria tøvede i det afgørende øjeblik.",
+      "text_markdown": "Andrea Doria tøvede i det afgørende øjeblik.",
+      "tts": {
+        "text": "Andrea Doria tøvede i det afgørende øjeblik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Trods sin numeriske overlegenhed var han uvillig til at indsætte hele sin flåde i en tæt kamp.",
+      "text_markdown": "Trods sin numeriske overlegenhed var han uvillig til at indsætte hele sin flåde i en tæt kamp.",
+      "tts": {
+        "text": "Trods sin numeriske overlegenhed var han uvillig til at indsætte hele sin flåde i en tæt kamp.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han holdt sine bedste skibe i reserve og forsøgte at manøvrere sig til en bedre stilling.",
+      "text_markdown": "Han holdt sine bedste skibe i reserve og forsøgte at manøvrere sig til en bedre stilling.",
+      "tts": {
+        "text": "Han holdt sine bedste skibe i reserve og forsøgte at manøvrere sig til en bedre stilling.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Denne forsigtighed viste sig at blive skæbnesvanger for den kristne sag.",
+      "text_markdown": "Denne forsigtighed viste sig at blive skæbnesvanger for den kristne sag.",
+      "tts": {
+        "text": "Denne forsigtighed viste sig at blive skæbnesvanger for den kristne sag.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddin angreb aggressivt og rettede slaget mod de venetianske og pavelige skibe, der var rykket frem foran hovedflåden.",
+      "text_markdown": "Hayreddin angreb aggressivt og rettede slaget mod de venetianske og pavelige skibe, der var rykket frem foran hovedflåden.",
+      "tts": {
+        "text": "Hayreddin angreb aggressivt og rettede slaget mod de venetianske og pavelige skibe, der var rykket frem foran hovedflåden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hans galejer lukkede hurtigt afstanden og gik i nærkamp.",
+      "text_markdown": "Hans galejer lukkede hurtigt afstanden og gik i nærkamp.",
+      "tts": {
+        "text": "Hans galejer lukkede hurtigt afstanden og gik i nærkamp.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Kampen var intens og brutal, med kanonild og nærkamp mand mod mand på tværs af snesevis af skibe.",
+      "text_markdown": "Kampen var intens og brutal, med kanonild og nærkamp mand mod mand på tværs af snesevis af skibe.",
+      "tts": {
+        "text": "Kampen var intens og brutal, med kanonild og nærkamp mand mod mand på tværs af snesevis af skibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "De isolerede kristne eskadrer blev nedkæmpet én efter én.",
+      "text_markdown": "De isolerede kristne eskadrer blev nedkæmpet én efter én.",
+      "tts": {
+        "text": "De isolerede kristne eskadrer blev nedkæmpet én efter én.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Ved dagens slutning havde Den Hellige Liga lidt et knusende nederlag.",
+      "text_markdown": "Ved dagens slutning havde Den Hellige Liga lidt et knusende nederlag.",
+      "tts": {
+        "text": "Ved dagens slutning havde Den Hellige Liga lidt et knusende nederlag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddins styrker erobrede eller sænkede snesevis af kristne krigsskibe.",
+      "text_markdown": "Hayreddins styrker erobrede eller sænkede snesevis af kristne krigsskibe.",
+      "tts": {
+        "text": "Hayreddins styrker erobrede eller sænkede snesevis af kristne krigsskibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Tusindvis af kristne sømænd og soldater blev dræbt eller taget til fange.",
+      "text_markdown": "Tusindvis af kristne sømænd og soldater blev dræbt eller taget til fange.",
+      "tts": {
+        "text": "Tusindvis af kristne sømænd og soldater blev dræbt eller taget til fange.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Andrea Doria trak sig tilbage med resterne af sin flåde og overlod havet til osmannerne.",
+      "text_markdown": "Andrea Doria trak sig tilbage med resterne af sin flåde og overlod havet til osmannerne.",
+      "tts": {
+        "text": "Andrea Doria trak sig tilbage med resterne af sin flåde og overlod havet til osmannerne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Slaget ved Preveza etablerede osmannisk flådeherredømme i Middelhavet.",
+      "text_markdown": "Slaget ved Preveza etablerede osmannisk flådeherredømme i Middelhavet.",
+      "tts": {
+        "text": "Slaget ved Preveza etablerede osmannisk flådeherredømme i Middelhavet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "I de næste flere årtier kunne ingen kristen flåde udfordre osmannisk kontrol over det østlige og centrale Middelhav.",
+      "text_markdown": "I de næste flere årtier kunne ingen kristen flåde udfordre osmannisk kontrol over det østlige og centrale Middelhav.",
+      "tts": {
+        "text": "I de næste flere årtier kunne ingen kristen flåde udfordre osmannisk kontrol over det østlige og centrale Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Det Osmanniske Rige kunne nu projicere militær magt langs hele den nordafrikanske kyst og mod Den Italienske Halvø.",
+      "text_markdown": "Det Osmanniske Rige kunne nu projicere militær magt langs hele den nordafrikanske kyst og mod Den Italienske Halvø.",
+      "tts": {
+        "text": "Det Osmanniske Rige kunne nu projicere militær magt langs hele den nordafrikanske kyst og mod Den Italienske Halvø.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Det var den vigtigste flådesejr i det sekstende århundrede.",
+      "text_markdown": "Det var den vigtigste flådesejr i det sekstende århundrede.",
+      "tts": {
+        "text": "Det var den vigtigste flådesejr i det sekstende århundrede.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddin vendte tilbage til Istanbul som en sejrende helt.",
+      "text_markdown": "Hayreddin vendte tilbage til Istanbul som en sejrende helt.",
+      "tts": {
+        "text": "Hayreddin vendte tilbage til Istanbul som en sejrende helt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Sultan Suleiman tog imod ham med de højeste æresbevisninger, som riget kunne uddele.",
+      "text_markdown": "Sultan Suleiman tog imod ham med de højeste æresbevisninger, som riget kunne uddele.",
+      "tts": {
+        "text": "Sultan Suleiman tog imod ham med de højeste æresbevisninger, som riget kunne uddele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Storadmiralen havde opnået, hvad sultanen havde bedt ham om.",
+      "text_markdown": "Storadmiralen havde opnået, hvad sultanen havde bedt ham om.",
+      "tts": {
+        "text": "Storadmiralen havde opnået, hvad sultanen havde bedt ham om.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han havde gjort den osmanniske flåde til den førende styrke i Middelhavet.",
+      "text_markdown": "Han havde gjort den osmanniske flåde til den førende styrke i Middelhavet.",
+      "tts": {
+        "text": "Han havde gjort den osmanniske flåde til den førende styrke i Middelhavet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "I årene efter Preveza fortsatte Hayreddin med at føre den osmanniske flåde.",
+      "text_markdown": "I årene efter Preveza fortsatte Hayreddin med at føre den osmanniske flåde.",
+      "tts": {
+        "text": "I årene efter Preveza fortsatte Hayreddin med at føre den osmanniske flåde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han gennemførte togter mod spanske og italienske kystbyer.",
+      "text_markdown": "Han gennemførte togter mod spanske og italienske kystbyer.",
+      "tts": {
+        "text": "Han gennemførte togter mod spanske og italienske kystbyer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han forhandlede med den franske kong Frans den Første, som allierede sig med osmannerne mod deres fælles fjende, Karl den Femte.",
+      "text_markdown": "Han forhandlede med den franske kong Frans den Første, som allierede sig med osmannerne mod deres fælles fjende, Karl den Femte.",
+      "tts": {
+        "text": "Han forhandlede med den franske kong Frans den Første, som allierede sig med osmannerne mod deres fælles fjende, Karl den Femte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Denne alliance mellem et muslimsk rige og et kristent kongerige rystede hele Europa.",
+      "text_markdown": "Denne alliance mellem et muslimsk rige og et kristent kongerige rystede hele Europa.",
+      "tts": {
+        "text": "Denne alliance mellem et muslimsk rige og et kristent kongerige rystede hele Europa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "I vinteren 1543 ankrede Hayreddin sin flåde op i den franske havneby Toulon.",
+      "text_markdown": "I vinteren 1543 ankrede Hayreddin sin flåde op i den franske havneby Toulon.",
+      "tts": {
+        "text": "I vinteren femten hundrede treogfyrre ankrede Hayreddin sin flåde op i den franske havneby Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Den franske konge havde tilbudt havnen som base for fælles operationer mod Spanien.",
+      "text_markdown": "Den franske konge havde tilbudt havnen som base for fælles operationer mod Spanien.",
+      "tts": {
+        "text": "Den franske konge havde tilbudt havnen som base for fælles operationer mod Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "I flere måneder opererede osmanniske krigsskibe ud fra en fransk havn.",
+      "text_markdown": "I flere måneder opererede osmanniske krigsskibe ud fra en fransk havn.",
+      "tts": {
+        "text": "I flere måneder opererede osmanniske krigsskibe ud fra en fransk havn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Det var et syn, der forbløffede den kristne verden og viste, at magtpolitik kunne tilsidesætte religiøse skel.",
+      "text_markdown": "Det var et syn, der forbløffede den kristne verden og viste, at magtpolitik kunne tilsidesætte religiøse skel.",
+      "tts": {
+        "text": "Det var et syn, der forbløffede den kristne verden og viste, at magtpolitik kunne tilsidesætte religiøse skel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hayreddins styre i Algier fortsatte sideløbende med hans flådefelttog.",
+      "text_markdown": "Hayreddins styre i Algier fortsatte sideløbende med hans flådefelttog.",
+      "tts": {
+        "text": "Hayreddins styre i Algier fortsatte sideløbende med hans flådefelttog.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han byggede moskeer, offentlige bade og befæstninger i byen.",
+      "text_markdown": "Han byggede moskeer, offentlige bade og befæstninger i byen.",
+      "tts": {
+        "text": "Han byggede moskeer, offentlige bade og befæstninger i byen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han opmuntrede handelen og tiltrak dygtige håndværkere fra hele den muslimske verden.",
+      "text_markdown": "Han opmuntrede handelen og tiltrak dygtige håndværkere fra hele den muslimske verden.",
+      "tts": {
+        "text": "Han opmuntrede handelen og tiltrak dygtige håndværkere fra hele den muslimske verden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Under hans styre voksede Algier fra en mindre havn til en af de vigtigste byer i Nordafrika.",
+      "text_markdown": "Under hans styre voksede Algier fra en mindre havn til en af de vigtigste byer i Nordafrika.",
+      "tts": {
+        "text": "Under hans styre voksede Algier fra en mindre havn til en af de vigtigste byer i Nordafrika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Hans flåde beskyttede de osmanniske handelsruter, der forbandt Istanbul med det vestlige Middelhav.",
+      "text_markdown": "Hans flåde beskyttede de osmanniske handelsruter, der forbandt Istanbul med det vestlige Middelhav.",
+      "tts": {
+        "text": "Hans flåde beskyttede de osmanniske handelsruter, der forbandt Istanbul med det vestlige Middelhav.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Handelsskibe med korn, tekstiler og fabriksvarer sejlede under beskyttelse af hans krigsskibe.",
+      "text_markdown": "Handelsskibe med korn, tekstiler og fabriksvarer sejlede under beskyttelse af hans krigsskibe.",
+      "tts": {
+        "text": "Handelsskibe med korn, tekstiler og fabriksvarer sejlede under beskyttelse af hans krigsskibe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Den økonomiske velstand i det osmanniske Middelhav afhang i høj grad af den flåde, Hayreddin havde bygget.",
+      "text_markdown": "Den økonomiske velstand i det osmanniske Middelhav afhang i høj grad af den flåde, Hayreddin havde bygget.",
+      "tts": {
+        "text": "Den økonomiske velstand i det osmanniske Middelhav afhang i høj grad af den flåde, Hayreddin havde bygget.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "På højdepunktet",
+      "text": "Han havde forvandlet korsartogter til et redskab for imperial magt.",
+      "text_markdown": "Han havde forvandlet korsartogter til et redskab for imperial magt.",
+      "tts": {
+        "text": "Han havde forvandlet korsartogter til et redskab for imperial magt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Afslutningen",
+      "text": "Afslutningen",
+      "text_markdown": "Afslutningen"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "I begyndelsen af femten hundrede fyrrerne var Hayreddin Barbarossa midt i tresserne.",
+      "text_markdown": "I begyndelsen af femten hundrede fyrrerne var Hayreddin Barbarossa midt i tresserne.",
+      "tts": {
+        "text": "I begyndelsen af femten hundrede fyrrerne var Hayreddin Barbarossa midt i tresserne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han havde tilbragt mere end fire årtier til søs med at kæmpe, bygge og kommandere.",
+      "text_markdown": "Han havde tilbragt mere end fire årtier til søs med at kæmpe, bygge og kommandere.",
+      "tts": {
+        "text": "Han havde tilbragt mere end fire årtier til søs med at kæmpe, bygge og kommandere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hans krop var slidt af årtier med krig, barskt vejr og de fysiske krav ved livet om bord.",
+      "text_markdown": "Hans krop var slidt af årtier med krig, barskt vejr og de fysiske krav ved livet om bord.",
+      "tts": {
+        "text": "Hans krop var slidt af årtier med krig, barskt vejr og de fysiske krav ved livet om bord.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Men hans sind var stadig skarpt, og hans autoritet uanfægtet.",
+      "text_markdown": "Men hans sind var stadig skarpt, og hans autoritet uanfægtet.",
+      "tts": {
+        "text": "Men hans sind var stadig skarpt, og hans autoritet uanfægtet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Efter Toulon-felttoget i 1543 vendte Hayreddin tilbage til Istanbul.",
+      "text_markdown": "Efter Toulon-felttoget i 1543 vendte Hayreddin tilbage til Istanbul.",
+      "tts": {
+        "text": "Efter Toulon felttoget i femten hundrede treogfyrre vendte Hayreddin tilbage til Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han havde gennemført sin sidste store flådeoperation.",
+      "text_markdown": "Han havde gennemført sin sidste store flådeoperation.",
+      "tts": {
+        "text": "Han havde gennemført sin sidste store flådeoperation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Sultanen bad ham ikke om at lede et nyt felttog.",
+      "text_markdown": "Sultanen bad ham ikke om at lede et nyt felttog.",
+      "tts": {
+        "text": "Sultanen bad ham ikke om at lede et nyt felttog.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "I hans alder og med hans bedrifter var tilbagetrækning både fortjent og passende.",
+      "text_markdown": "I hans alder og med hans bedrifter var tilbagetrækning både fortjent og passende.",
+      "tts": {
+        "text": "I hans alder og med hans bedrifter var tilbagetrækning både fortjent og passende.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hayreddin tilbragte sine sidste år i Istanbul, i et storslået palads med udsigt over Bosporus.",
+      "text_markdown": "Hayreddin tilbragte sine sidste år i Istanbul, i et storslået palads med udsigt over Bosporus.",
+      "tts": {
+        "text": "Hayreddin tilbragte sine sidste år i Istanbul, i et storslået palads med udsigt over Bosporus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han dikterede sine erindringer til en skriver og skabte dermed en af de vigtigste primærkilder til Middelhavets korsarhistorie.",
+      "text_markdown": "Han dikterede sine erindringer til en skriver og skabte dermed en af de vigtigste primærkilder til Middelhavets korsarhistorie.",
+      "tts": {
+        "text": "Han dikterede sine erindringer til en skriver og skabte dermed en af de vigtigste primærkilder til Middelhavets korsarhistorie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Disse erindringer, kendt som Gazavat-i Hayreddin Pasha, er bevaret i håndskrift.",
+      "text_markdown": "Disse erindringer, kendt som Gazavat-i Hayreddin Pasha, er bevaret i håndskrift.",
+      "tts": {
+        "text": "Disse erindringer, kendt som Gazavat i Hayreddin Pasha, er bevaret i håndskrift.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "De er blevet studeret af historikere i århundreder.",
+      "text_markdown": "De er blevet studeret af historikere i århundreder.",
+      "tts": {
+        "text": "De er blevet studeret af historikere i århundreder.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han forblev involveret i osmanniske flådespørgsmål i en rådgivende rolle.",
+      "text_markdown": "Han forblev involveret i osmanniske flådespørgsmål i en rådgivende rolle.",
+      "tts": {
+        "text": "Han forblev involveret i osmanniske flådespørgsmål i en rådgivende rolle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Yngre admiraler søgte hans råd om strategi og skibsbygning.",
+      "text_markdown": "Yngre admiraler søgte hans råd om strategi og skibsbygning.",
+      "tts": {
+        "text": "Yngre admiraler søgte hans råd om strategi og skibsbygning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han havde oplært en hel generation af flådeofficerer, som ville videreføre hans arbejde.",
+      "text_markdown": "Han havde oplært en hel generation af flådeofficerer, som ville videreføre hans arbejde.",
+      "tts": {
+        "text": "Han havde oplært en hel generation af flådeofficerer, som ville videreføre hans arbejde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Den institutionelle viden, han havde indbygget i den osmanniske flåde, var hans mest varige bidrag.",
+      "text_markdown": "Den institutionelle viden, han havde indbygget i den osmanniske flåde, var hans mest varige bidrag.",
+      "tts": {
+        "text": "Den institutionelle viden, han havde indbygget i den osmanniske flåde, var hans mest varige bidrag.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hayreddin Barbarossa døde den 4. juli 1546 i Istanbul.",
+      "text_markdown": "Hayreddin Barbarossa døde den 4. juli 1546 i Istanbul.",
+      "tts": {
+        "text": "Hayreddin Barbarossa døde den fjerde juli femten hundrede seksogfyrre i Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han blev cirka otteogtres år gammel.",
+      "text_markdown": "Han blev cirka otteogtres år gammel.",
+      "tts": {
+        "text": "Han blev cirka otteogtres år gammel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hans død blev sørget i hele Det Osmanniske Rige.",
+      "text_markdown": "Hans død blev sørget i hele Det Osmanniske Rige.",
+      "tts": {
+        "text": "Hans død blev sørget i hele Det Osmanniske Rige.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Sultan Suleiman gav ordre til, at der skulle bygges et pragtfuldt gravmæle for ham på bredderne af Bosporus, ved Beşiktaş.",
+      "text_markdown": "Sultan Suleiman gav ordre til, at der skulle bygges et pragtfuldt gravmæle for ham på bredderne af Bosporus, ved Beşiktaş.",
+      "tts": {
+        "text": "Sultan Suleiman gav ordre til, at der skulle bygges et pragtfuldt gravmæle for ham på bredderne af Bosporus, ved Beşiktaş.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Gravmælet står stadig i dag i Beşiktaş-kvarteret i Istanbul.",
+      "text_markdown": "Gravmælet står stadig i dag i Beşiktaş-kvarteret i Istanbul.",
+      "tts": {
+        "text": "Gravmælet står stadig i dag i Beşiktaş kvarteret i Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Det er et monument over osmannisk arkitektur, udsmykket med fliser og kalligrafi.",
+      "text_markdown": "Det er et monument over osmannisk arkitektur, udsmykket med fliser og kalligrafi.",
+      "tts": {
+        "text": "Det er et monument over osmannisk arkitektur, udsmykket med fliser og kalligrafi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "I århundreder besøgte osmanniske sømænd gravmælet, før de sejlede ud på rejser.",
+      "text_markdown": "I århundreder besøgte osmanniske sømænd gravmælet, før de sejlede ud på rejser.",
+      "tts": {
+        "text": "I århundreder besøgte osmanniske sømænd gravmælet, før de sejlede ud på rejser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "De bad om sikker overfart og om, at den store admirals ånd ville lede dem.",
+      "text_markdown": "De bad om sikker overfart og om, at den store admirals ånd ville lede dem.",
+      "tts": {
+        "text": "De bad om sikker overfart og om, at den store admirals ånd ville lede dem.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hans efterfølgere i den osmanniske flåde holdt den flåde, han havde bygget, ved magt.",
+      "text_markdown": "Hans efterfølgere i den osmanniske flåde holdt den flåde, han havde bygget, ved magt.",
+      "tts": {
+        "text": "Hans efterfølgere i den osmanniske flåde holdt den flåde, han havde bygget, ved magt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Admiraler som Turgut Reis og Piyale Pasha videreførte osmannisk flådeherredømme i årtier.",
+      "text_markdown": "Admiraler som Turgut Reis og Piyale Pasha videreførte osmannisk flådeherredømme i årtier.",
+      "tts": {
+        "text": "Admiraler som Turgut Reis og Piyale Pasha videreførte osmannisk flådeherredømme i årtier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "De havde lært deres håndværk under Hayreddin og bar hans taktiske doktriner videre.",
+      "text_markdown": "De havde lært deres håndværk under Hayreddin og bar hans taktiske doktriner videre.",
+      "tts": {
+        "text": "De havde lært deres håndværk under Hayreddin og bar hans taktiske doktriner videre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Slaget ved Lepanto i femten hundrede enoghalvfjerds ville til sidst gøre en ende på det osmanniske herredømme til søs, men selv det nederlag tilintetgjorde ikke den flåde, Hayreddin havde skabt.",
+      "text_markdown": "Slaget ved Lepanto i femten hundrede enoghalvfjerds ville til sidst gøre en ende på det osmanniske herredømme til søs, men selv det nederlag tilintetgjorde ikke den flåde, Hayreddin havde skabt.",
+      "tts": {
+        "text": "Slaget ved Lepanto i femten hundrede enoghalvfjerds ville til sidst gøre en ende på det osmanniske herredømme til søs, men selv det nederlag tilintetgjorde ikke den flåde, Hayreddin havde skabt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "De nordafrikanske territorier, som Hayreddin havde bragt under osmannisk kontrol, forblev osmanniske provinser i århundreder.",
+      "text_markdown": "De nordafrikanske territorier, som Hayreddin havde bragt under osmannisk kontrol, forblev osmanniske provinser i århundreder.",
+      "tts": {
+        "text": "De nordafrikanske territorier, som Hayreddin havde bragt under osmannisk kontrol, forblev osmanniske provinser i århundreder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Algier, Tunis og Tripoli forblev korsarbaser langt ind i det nittende århundrede.",
+      "text_markdown": "Algier, Tunis og Tripoli forblev korsarbaser langt ind i det nittende århundrede.",
+      "tts": {
+        "text": "Algier, Tunis og Tripoli forblev korsarbaser langt ind i det nittende århundrede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Den korsartradition langs Berberkysten, som Hayreddin var med til at grundlægge, varede i tre hundrede år.",
+      "text_markdown": "Den korsartradition langs Berberkysten, som Hayreddin var med til at grundlægge, varede i tre hundrede år.",
+      "tts": {
+        "text": "Den korsartradition langs Berberkysten, som Hayreddin var med til at grundlægge, varede i tre hundrede år.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Det krævede Frankrigs og Storbritanniens samlede magt at bringe den til ophør.",
+      "text_markdown": "Det krævede Frankrigs og Storbritanniens samlede magt at bringe den til ophør.",
+      "tts": {
+        "text": "Det krævede Frankrigs og Storbritanniens samlede magt at bringe den til ophør.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hayreddin døde, som han havde levet: i den osmanniske stats tjeneste.",
+      "text_markdown": "Hayreddin døde, som han havde levet: i den osmanniske stats tjeneste.",
+      "tts": {
+        "text": "Hayreddin døde, som han havde levet: i den osmanniske stats tjeneste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han var begyndt som søn af en pottemager på en græsk ø.",
+      "text_markdown": "Han var begyndt som søn af en pottemager på en græsk ø.",
+      "tts": {
+        "text": "Han var begyndt som søn af en pottemager på en græsk ø.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Han endte som den mest fejrede admiral i Det Osmanniske Riges historie.",
+      "text_markdown": "Han endte som den mest fejrede admiral i Det Osmanniske Riges historie.",
+      "tts": {
+        "text": "Han endte som den mest fejrede admiral i Det Osmanniske Riges historie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Afslutningen",
+      "text": "Hans rejse fra Lesbos til storadmiralsembedet er en af de mest bemærkelsesværdige karrierer i flådehistorien.",
+      "text_markdown": "Hans rejse fra Lesbos til storadmiralsembedet er en af de mest bemærkelsesværdige karrierer i flådehistorien.",
+      "tts": {
+        "text": "Hans rejse fra Lesbos til storadmiralsembedet er en af de mest bemærkelsesværdige karrierer i flådehistorien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "title": "Eftermæle",
+      "text": "Eftermæle",
+      "text_markdown": "Eftermæle"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hayreddin Barbarossa forvandlede Det Osmanniske Rige fra en landmagt til en flådestormagt.",
+      "text_markdown": "Hayreddin Barbarossa forvandlede Det Osmanniske Rige fra en landmagt til en flådestormagt.",
+      "tts": {
+        "text": "Hayreddin Barbarossa forvandlede Det Osmanniske Rige fra en landmagt til en flådestormagt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Før hans karriere var osmannerne formidable på land, men marginale til søs.",
+      "text_markdown": "Før hans karriere var osmannerne formidable på land, men marginale til søs.",
+      "tts": {
+        "text": "Før hans karriere var osmannerne formidable på land, men marginale til søs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Efter hans karriere beherskede den osmanniske flåde Middelhavet i generationer.",
+      "text_markdown": "Efter hans karriere beherskede den osmanniske flåde Middelhavet i generationer.",
+      "tts": {
+        "text": "Efter hans karriere beherskede den osmanniske flåde Middelhavet i generationer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Denne forvandling hører til blandt det sekstende århundredes vigtigste militære bedrifter.",
+      "text_markdown": "Denne forvandling hører til blandt det sekstende århundredes vigtigste militære bedrifter.",
+      "tts": {
+        "text": "Denne forvandling hører til blandt det sekstende århundredes vigtigste militære bedrifter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hans sejr ved Preveza studeres på flådeakademier verden over den dag i dag.",
+      "text_markdown": "Hans sejr ved Preveza studeres på flådeakademier verden over den dag i dag.",
+      "tts": {
+        "text": "Hans sejr ved Preveza studeres på flådeakademier verden over den dag i dag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Den viser, hvordan overlegent lederskab og taktik kan overvinde et numerisk underskud.",
+      "text_markdown": "Den viser, hvordan overlegent lederskab og taktik kan overvinde et numerisk underskud.",
+      "tts": {
+        "text": "Den viser, hvordan overlegent lederskab og taktik kan overvinde et numerisk underskud.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Slaget viste, at en velkoordineret flåde kunne besejre en større, men dårligt ledet flåde.",
+      "text_markdown": "Slaget viste, at en velkoordineret flåde kunne besejre en større, men dårligt ledet flåde.",
+      "tts": {
+        "text": "Slaget viste, at en velkoordineret flåde kunne besejre en større, men dårligt ledet flåde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Det er fortsat et lærebogseksempel på flådestrategi fem århundreder senere.",
+      "text_markdown": "Det er fortsat et lærebogseksempel på flådestrategi fem århundreder senere.",
+      "tts": {
+        "text": "Det er fortsat et lærebogseksempel på flådestrategi fem århundreder senere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hayreddins virkning på Nordafrika var lige så dybtgående.",
+      "text_markdown": "Hayreddins virkning på Nordafrika var lige så dybtgående.",
+      "tts": {
+        "text": "Hayreddins virkning på Nordafrika var lige så dybtgående.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Ved at bringe Algier og andre byer under osmannisk styre skabte han en politisk struktur, der bestod i århundreder.",
+      "text_markdown": "Ved at bringe Algier og andre byer under osmannisk styre skabte han en politisk struktur, der bestod i århundreder.",
+      "tts": {
+        "text": "Ved at bringe Algier og andre byer under osmannisk styre skabte han en politisk struktur, der bestod i århundreder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Befolkningerne i disse byer blev formet af hans politik om at tage imod flygtninge fra Spanien.",
+      "text_markdown": "Befolkningerne i disse byer blev formet af hans politik om at tage imod flygtninge fra Spanien.",
+      "tts": {
+        "text": "Befolkningerne i disse byer blev formet af hans politik om at tage imod flygtninge fra Spanien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Den kulturelle blanding af berbiske, arabiske, tyrkiske og andalusiske påvirkninger, der definerer Maghreb i dag, har rødder i den verden, Hayreddin var med til at skabe.",
+      "text_markdown": "Den kulturelle blanding af berbiske, arabiske, tyrkiske og andalusiske påvirkninger, der definerer Maghreb i dag, har rødder i den verden, Hayreddin var med til at skabe.",
+      "tts": {
+        "text": "Den kulturelle blanding af berbiske, arabiske, tyrkiske og andalusiske påvirkninger, der definerer Maghreb i dag, har rødder i den verden, Hayreddin var med til at skabe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "I Tyrkiet er Hayreddin Barbarossa en nationalhelt.",
+      "text_markdown": "I Tyrkiet er Hayreddin Barbarossa en nationalhelt.",
+      "tts": {
+        "text": "I Tyrkiet er Hayreddin Barbarossa en nationalhelt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Den tyrkiske flåde opkaldte sin første ubåd efter ham.",
+      "text_markdown": "Den tyrkiske flåde opkaldte sin første ubåd efter ham.",
+      "tts": {
+        "text": "Den tyrkiske flåde opkaldte sin første ubåd efter ham.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hans billede optræder på monumenter, frimærker og mønter.",
+      "text_markdown": "Hans billede optræder på monumenter, frimærker og mønter.",
+      "tts": {
+        "text": "Hans billede optræder på monumenter, frimærker og mønter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Ethvert tyrkisk skolebarn lærer hans navn og hans historie.",
+      "text_markdown": "Ethvert tyrkisk skolebarn lærer hans navn og hans historie.",
+      "tts": {
+        "text": "Ethvert tyrkisk skolebarn lærer hans navn og hans historie.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "I europæisk historisk hukommelse er Barbarossa en mere sammensat skikkelse.",
+      "text_markdown": "I europæisk historisk hukommelse er Barbarossa en mere sammensat skikkelse.",
+      "tts": {
+        "text": "I europæisk historisk hukommelse er Barbarossa en mere sammensat skikkelse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "For datidens spaniere og italienere var han en frygtet fjende og en hensynsløs sørøver.",
+      "text_markdown": "For datidens spaniere og italienere var han en frygtet fjende og en hensynsløs sørøver.",
+      "tts": {
+        "text": "For datidens spaniere og italienere var han en frygtet fjende og en hensynsløs sørøver.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "For franskmændene var han en uventet allieret mod deres fælles spanske rival.",
+      "text_markdown": "For franskmændene var han en uventet allieret mod deres fælles spanske rival.",
+      "tts": {
+        "text": "For franskmændene var han en uventet allieret mod deres fælles spanske rival.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hans eftermæle i Europa afspejler Middelhavets historie som en delt og omstridt fortælling.",
+      "text_markdown": "Hans eftermæle i Europa afspejler Middelhavets historie som en delt og omstridt fortælling.",
+      "tts": {
+        "text": "Hans eftermæle i Europa afspejler Middelhavets historie som en delt og omstridt fortælling.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Historikere diskuterer, om Hayreddin overhovedet bør kaldes en pirat.",
+      "text_markdown": "Historikere diskuterer, om Hayreddin overhovedet bør kaldes en pirat.",
+      "tts": {
+        "text": "Historikere diskuterer, om Hayreddin overhovedet bør kaldes en pirat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Han opererede med den osmanniske sultans udtrykkelige bemyndigelse i størstedelen af sin karriere.",
+      "text_markdown": "Han opererede med den osmanniske sultans udtrykkelige bemyndigelse i størstedelen af sin karriere.",
+      "tts": {
+        "text": "Han opererede med den osmanniske sultans udtrykkelige bemyndigelse i størstedelen af sin karriere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hans korsarvirksomhed var en anerkendt form for søkrigsførelse i Middelhavet i det sekstende århundrede.",
+      "text_markdown": "Hans korsarvirksomhed var en anerkendt form for søkrigsførelse i Middelhavet i det sekstende århundrede.",
+      "tts": {
+        "text": "Hans korsarvirksomhed var en anerkendt form for søkrigsførelse i Middelhavet i det sekstende århundrede.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Grænsen mellem sørøveri og statssanktioneret søkrig var sløret, og Hayreddin levede på begge sider af den.",
+      "text_markdown": "Grænsen mellem sørøveri og statssanktioneret søkrig var sløret, og Hayreddin levede på begge sider af den.",
+      "tts": {
+        "text": "Grænsen mellem sørøveri og statssanktioneret søkrig var sløret, og Hayreddin levede på begge sider af den.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hvad der ikke kan diskuteres, er omfanget af hans bedrift.",
+      "text_markdown": "Hvad der ikke kan diskuteres, er omfanget af hans bedrift.",
+      "tts": {
+        "text": "Hvad der ikke kan diskuteres, er omfanget af hans bedrift.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "En pottemagersøn fra en græsk ø byggede den mægtigste flåde i Middelhavet.",
+      "text_markdown": "En pottemagersøn fra en græsk ø byggede den mægtigste flåde i Middelhavet.",
+      "tts": {
+        "text": "En pottemagersøn fra en græsk ø byggede den mægtigste flåde i Middelhavet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Han besejrede de samlede flåder fra de mægtigste kristne stater i Europa.",
+      "text_markdown": "Han besejrede de samlede flåder fra de mægtigste kristne stater i Europa.",
+      "tts": {
+        "text": "Han besejrede de samlede flåder fra de mægtigste kristne stater i Europa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Han styrede en stor by, formede et helt kontinents politik og døde æret af det mægtigste rige i verden.",
+      "text_markdown": "Han styrede en stor by, formede et helt kontinents politik og døde æret af det mægtigste rige i verden.",
+      "tts": {
+        "text": "Han styrede en stor by, formede et helt kontinents politik og døde æret af det mægtigste rige i verden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "title": "Eftermæle",
+      "text": "Hans liv er et vidnesbyrd om, hvad ambition, dygtighed og lejlighed kan frembringe, når de mødes på det rette tidspunkt i historien.",
+      "text_markdown": "Hans liv er et vidnesbyrd om, hvad ambition, dygtighed og lejlighed kan frembringe, når de mødes på det rette tidspunkt i historien.",
+      "tts": {
+        "text": "Hans liv er et vidnesbyrd om, hvad ambition, dygtighed og lejlighed kan frembringe, når de mødes på det rette tidspunkt i historien.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

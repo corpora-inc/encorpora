@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "السافانا الاستوائية",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "السافانا الاستوائية",
+      "text_markdown": "السافانا الاستوائية"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أين تنمو السافانا",
+      "text_markdown": "أين تنمو السافانا"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مرحبًا بكم في السافانا الاستوائية.",
+      "text_markdown": "مرحبًا بكم في السافانا الاستوائية.",
+      "tts": {
+        "text": "مرحبًا بكم في السافانا الاستوائية.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه واحدة من أعظم المناطق الحيوية في العالم.",
+      "text_markdown": "هذه واحدة من أعظم المناطق الحيوية في العالم.",
+      "tts": {
+        "text": "هذه واحدة من أعظم المناطق الحيوية في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "text_markdown": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+      "tts": {
+        "text": "المنطقة الحيوية هي جزء من الأرض له طقسه ونباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السافانا سهل عشبي واسع تتناثر فيه الأشجار.",
+      "text_markdown": "السافانا سهل عشبي واسع تتناثر فيه الأشجار.",
+      "tts": {
+        "text": "السافانا سهل عشبي واسع تتناثر فيه الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجو دافئ طوال السنة.",
+      "text_markdown": "الجو دافئ طوال السنة.",
+      "tts": {
+        "text": "الجو دافئ طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فيها فصل جفاف طويل وفصل ممطر أقصر.",
+      "text_markdown": "فيها فصل جفاف طويل وفصل ممطر أقصر.",
+      "tts": {
+        "text": "فيها فصل جفاف طويل وفصل ممطر أقصر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر مناطق السافانا في العالم توجد في أفريقيا.",
+      "text_markdown": "أكبر مناطق السافانا في العالم توجد في أفريقيا.",
+      "tts": {
+        "text": "أكبر مناطق السافانا في العالم توجد في أفريقيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمتد عبر جزء كبير من وسط القارة.",
+      "text_markdown": "تمتد عبر جزء كبير من وسط القارة.",
+      "tts": {
+        "text": "تمتد عبر جزء كبير من وسط القارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "توجد أيضًا مناطق سافانا واسعة في أمريكا الجنوبية تُسمى السيرادو.",
+      "text_markdown": "توجد أيضًا مناطق سافانا واسعة في أمريكا الجنوبية تُسمى السيرادو.",
+      "tts": {
+        "text": "توجد أيضًا مناطق سافانا واسعة في أمريكا الجنوبية تُسمى السيرادو.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتوجد سافانا استوائية في شمال أستراليا.",
+      "text_markdown": "وتوجد سافانا استوائية في شمال أستراليا.",
+      "tts": {
+        "text": "وتوجد سافانا استوائية في شمال أستراليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتوجد مناطق سافانا أصغر في الهند وفي جنوب شرق آسيا.",
+      "text_markdown": "وتوجد مناطق سافانا أصغر في الهند وفي جنوب شرق آسيا.",
+      "tts": {
+        "text": "وتوجد مناطق سافانا أصغر في الهند وفي جنوب شرق آسيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نشأت كل واحدة منها وحدها، بعيدًا عن الأخريات.",
+      "text_markdown": "نشأت كل واحدة منها وحدها، بعيدًا عن الأخريات.",
+      "tts": {
+        "text": "نشأت كل واحدة منها وحدها، بعيدًا عن الأخريات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "text_markdown": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+      "tts": {
+        "text": "لذلك تختلف النباتات والحيوانات في كل جزء من العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الحيوان الذي يرعى في أفريقيا ليس هو نفسه الذي يرعى في أمريكا الجنوبية أو أستراليا.",
+      "text_markdown": "الحيوان الذي يرعى في أفريقيا ليس هو نفسه الذي يرعى في أمريكا الجنوبية أو أستراليا.",
+      "tts": {
+        "text": "الحيوان الذي يرعى في أفريقيا ليس هو نفسه الذي يرعى في أمريكا الجنوبية أو أستراليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها جميعًا جزء من نفس المنطقة الحيوية.",
+      "text_markdown": "لكنها جميعًا جزء من نفس المنطقة الحيوية.",
+      "tts": {
+        "text": "لكنها جميعًا جزء من نفس المنطقة الحيوية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تقف في السافانا يمكنك أن ترى إلى مسافة بعيدة.",
+      "text_markdown": "حين تقف في السافانا يمكنك أن ترى إلى مسافة بعيدة.",
+      "tts": {
+        "text": "حين تقف في السافانا يمكنك أن ترى إلى مسافة بعيدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يصل العشب إلى خصرك أو أعلى.",
+      "text_markdown": "يصل العشب إلى خصرك أو أعلى.",
+      "tts": {
+        "text": "يصل العشب إلى خصرك أو أعلى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ترتفع فوق العشب بضع أشجار ذات قمم مسطحة.",
+      "text_markdown": "ترتفع فوق العشب بضع أشجار ذات قمم مسطحة.",
+      "tts": {
+        "text": "ترتفع فوق العشب بضع أشجار ذات قمم مسطحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السماء شاسعة.",
+      "text_markdown": "السماء شاسعة.",
+      "tts": {
+        "text": "السماء شاسعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الضوء ذهبي.",
+      "text_markdown": "الضوء ذهبي.",
+      "tts": {
+        "text": "الضوء ذهبي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسمع الريح وهي تتحرك عبر العشب.",
+      "text_markdown": "تسمع الريح وهي تتحرك عبر العشب.",
+      "tts": {
+        "text": "تسمع الريح وهي تتحرك عبر العشب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسمع الطيور تنادي من بعيد.",
+      "text_markdown": "تسمع الطيور تنادي من بعيد.",
+      "tts": {
+        "text": "تسمع الطيور تنادي من بعيد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي السافانا.",
+      "text_markdown": "تلك هي السافانا.",
+      "tts": {
+        "text": "تلك هي السافانا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "أين تنمو السافانا",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض مفتوحة شاسعة من العشب والأشجار المتناثرة والسماء الواسعة.",
+      "text_markdown": "أرض مفتوحة شاسعة من العشب والأشجار المتناثرة والسماء الواسعة.",
+      "tts": {
+        "text": "أرض مفتوحة شاسعة من العشب والأشجار المتناثرة والسماء الواسعة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطقس",
+      "text_markdown": "الطقس"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الطقس في السافانا الاستوائية بسيط.",
+      "text_markdown": "الطقس في السافانا الاستوائية بسيط.",
+      "tts": {
+        "text": "الطقس في السافانا الاستوائية بسيط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجو دافئ طوال السنة.",
+      "text_markdown": "الجو دافئ طوال السنة.",
+      "tts": {
+        "text": "الجو دافئ طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن على عكس الغابة المطيرة، فإن للسافانا فصلين مختلفين جدًا.",
+      "text_markdown": "لكن على عكس الغابة المطيرة، فإن للسافانا فصلين مختلفين جدًا.",
+      "tts": {
+        "text": "لكن على عكس الغابة المطيرة، فإن للسافانا فصلين مختلفين جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك فصل جفاف طويل وفصل ممطر أقصر.",
+      "text_markdown": "هناك فصل جفاف طويل وفصل ممطر أقصر.",
+      "tts": {
+        "text": "هناك فصل جفاف طويل وفصل ممطر أقصر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في فصل الجفاف تكون السماء صافية لأشهر كثيرة.",
+      "text_markdown": "في فصل الجفاف تكون السماء صافية لأشهر كثيرة.",
+      "tts": {
+        "text": "في فصل الجفاف تكون السماء صافية لأشهر كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يصبح العشب ذهبي اللون وهشًا.",
+      "text_markdown": "يصبح العشب ذهبي اللون وهشًا.",
+      "tts": {
+        "text": "يصبح العشب ذهبي اللون وهشًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنحسر الأنهار، وتجف كثير من البرك الصغيرة تمامًا.",
+      "text_markdown": "تنحسر الأنهار، وتجف كثير من البرك الصغيرة تمامًا.",
+      "tts": {
+        "text": "تنحسر الأنهار، وتجف كثير من البرك الصغيرة تمامًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تفقد الأشجار أوراقها لتوفّر الماء.",
+      "text_markdown": "تفقد الأشجار أوراقها لتوفّر الماء.",
+      "tts": {
+        "text": "تفقد الأشجار أوراقها لتوفّر الماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يبدأ الفصل الممطر بسحب عظيمة تتراكم في الأفق.",
+      "text_markdown": "يبدأ الفصل الممطر بسحب عظيمة تتراكم في الأفق.",
+      "tts": {
+        "text": "يبدأ الفصل الممطر بسحب عظيمة تتراكم في الأفق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تهطل الأمطار الأولى في عواصف شديدة مع رعد وبرق.",
+      "text_markdown": "تهطل الأمطار الأولى في عواصف شديدة مع رعد وبرق.",
+      "tts": {
+        "text": "تهطل الأمطار الأولى في عواصف شديدة مع رعد وبرق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين يأتي المطر تتغير السافانا بين عشية وضحاها.",
+      "text_markdown": "حين يأتي المطر تتغير السافانا بين عشية وضحاها.",
+      "tts": {
+        "text": "حين يأتي المطر تتغير السافانا بين عشية وضحاها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنبت أعشاب جديدة من الأرض الجافة.",
+      "text_markdown": "تنبت أعشاب جديدة من الأرض الجافة.",
+      "tts": {
+        "text": "تنبت أعشاب جديدة من الأرض الجافة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنبت في الأشجار أوراق خضراء طازجة.",
+      "text_markdown": "تنبت في الأشجار أوراق خضراء طازجة.",
+      "tts": {
+        "text": "تنبت في الأشجار أوراق خضراء طازجة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتفتح الأزهار في موجات من الألوان.",
+      "text_markdown": "تتفتح الأزهار في موجات من الألوان.",
+      "tts": {
+        "text": "تتفتح الأزهار في موجات من الألوان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الفصل الممطر قصير، لكنه الوقت الذي يحدث فيه معظم نشاط الحياة.",
+      "text_markdown": "الفصل الممطر قصير، لكنه الوقت الذي يحدث فيه معظم نشاط الحياة.",
+      "tts": {
+        "text": "الفصل الممطر قصير، لكنه الوقت الذي يحدث فيه معظم نشاط الحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فصل الجفاف طويل، لكن السافانا مهيأة له.",
+      "text_markdown": "فصل الجفاف طويل، لكن السافانا مهيأة له.",
+      "tts": {
+        "text": "فصل الجفاف طويل، لكن السافانا مهيأة له.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل نبتة وكل حيوان هنا يعرف كيف ينتظر المطر.",
+      "text_markdown": "كل نبتة وكل حيوان هنا يعرف كيف ينتظر المطر.",
+      "tts": {
+        "text": "كل نبتة وكل حيوان هنا يعرف كيف ينتظر المطر.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض السافانا في معظمها مسطحة وواسعة.",
+      "text_markdown": "أرض السافانا في معظمها مسطحة وواسعة.",
+      "tts": {
+        "text": "أرض السافانا في معظمها مسطحة وواسعة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الأماكن ترتفع تلال منخفضة متموجة من بين العشب.",
+      "text_markdown": "في بعض الأماكن ترتفع تلال منخفضة متموجة من بين العشب.",
+      "tts": {
+        "text": "في بعض الأماكن ترتفع تلال منخفضة متموجة من بين العشب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبين حين وآخر تقف صخرة كبيرة وحدها على السهل.",
+      "text_markdown": "وبين حين وآخر تقف صخرة كبيرة وحدها على السهل.",
+      "tts": {
+        "text": "وبين حين وآخر تقف صخرة كبيرة وحدها على السهل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تختلف التربة تحت العشب في أجزاء السافانا المختلفة.",
+      "text_markdown": "تختلف التربة تحت العشب في أجزاء السافانا المختلفة.",
+      "tts": {
+        "text": "تختلف التربة تحت العشب في أجزاء السافانا المختلفة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الأماكن تكون داكنة وغنية.",
+      "text_markdown": "في بعض الأماكن تكون داكنة وغنية.",
+      "tts": {
+        "text": "في بعض الأماكن تكون داكنة وغنية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي أماكن أخرى تكون رملية أو رقيقة.",
+      "text_markdown": "وفي أماكن أخرى تكون رملية أو رقيقة.",
+      "tts": {
+        "text": "وفي أماكن أخرى تكون رملية أو رقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلّمت الأعشاب أن تنمو في كل أنواعها.",
+      "text_markdown": "تعلّمت الأعشاب أن تنمو في كل أنواعها.",
+      "tts": {
+        "text": "تعلّمت الأعشاب أن تنمو في كل أنواعها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تأتي الأمطار يتجمع الماء في المناطق المنخفضة فيكوّن البرك والبحيرات الضحلة.",
+      "text_markdown": "حين تأتي الأمطار يتجمع الماء في المناطق المنخفضة فيكوّن البرك والبحيرات الضحلة.",
+      "tts": {
+        "text": "حين تأتي الأمطار يتجمع الماء في المناطق المنخفضة فيكوّن البرك والبحيرات الضحلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تبقى بعض هذه البرك أشهرًا، وبعضها يجف خلال أسابيع قليلة.",
+      "text_markdown": "تبقى بعض هذه البرك أشهرًا، وبعضها يجف خلال أسابيع قليلة.",
+      "tts": {
+        "text": "تبقى بعض هذه البرك أشهرًا، وبعضها يجف خلال أسابيع قليلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتعرج الأنهار عبر السافانا في منعطفات طويلة بطيئة.",
+      "text_markdown": "تتعرج الأنهار عبر السافانا في منعطفات طويلة بطيئة.",
+      "tts": {
+        "text": "تتعرج الأنهار عبر السافانا في منعطفات طويلة بطيئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الفصل الممطر تكون واسعة وممتلئة.",
+      "text_markdown": "في الفصل الممطر تكون واسعة وممتلئة.",
+      "tts": {
+        "text": "في الفصل الممطر تكون واسعة وممتلئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي فصل الجفاف تنحسر إلى خيط رفيع من الماء في الرمل، أو إلى سلسلة من البرك الهادئة.",
+      "text_markdown": "وفي فصل الجفاف تنحسر إلى خيط رفيع من الماء في الرمل، أو إلى سلسلة من البرك الهادئة.",
+      "tts": {
+        "text": "وفي فصل الجفاف تنحسر إلى خيط رفيع من الماء في الرمل، أو إلى سلسلة من البرك الهادئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتجمع كثير من حيوانات السافانا عند هذه الأنهار والبرك لتشرب.",
+      "text_markdown": "تتجمع كثير من حيوانات السافانا عند هذه الأنهار والبرك لتشرب.",
+      "tts": {
+        "text": "تتجمع كثير من حيوانات السافانا عند هذه الأنهار والبرك لتشرب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "البركة في فصل الجفاف مكان مزدحم.",
+      "text_markdown": "البركة في فصل الجفاف مكان مزدحم.",
+      "tts": {
+        "text": "البركة في فصل الجفاف مكان مزدحم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حيوانات لا تلتقي عادةً تقف بجانب بعضها لتشرب.",
+      "text_markdown": "حيوانات لا تلتقي عادةً تقف بجانب بعضها لتشرب.",
+      "tts": {
+        "text": "حيوانات لا تلتقي عادةً تقف بجانب بعضها لتشرب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما تجلب الأنهار معها شريطًا من الأشجار الأطول.",
+      "text_markdown": "كما تجلب الأنهار معها شريطًا من الأشجار الأطول.",
+      "tts": {
+        "text": "كما تجلب الأنهار معها شريطًا من الأشجار الأطول.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على الضفاف تنمو الأشجار كثيفة وخضراء حتى في فصل الجفاف.",
+      "text_markdown": "على الضفاف تنمو الأشجار كثيفة وخضراء حتى في فصل الجفاف.",
+      "tts": {
+        "text": "على الضفاف تنمو الأشجار كثيفة وخضراء حتى في فصل الجفاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه الأشرطة من الغابات تعبر السافانا المفتوحة كأنها طرق خضراء.",
+      "text_markdown": "هذه الأشرطة من الغابات تعبر السافانا المفتوحة كأنها طرق خضراء.",
+      "tts": {
+        "text": "هذه الأشرطة من الغابات تعبر السافانا المفتوحة كأنها طرق خضراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي موطن للحيوانات التي تحتاج إلى الظل والماء طوال العام.",
+      "text_markdown": "وهي موطن للحيوانات التي تحتاج إلى الظل والماء طوال العام.",
+      "tts": {
+        "text": "وهي موطن للحيوانات التي تحتاج إلى الظل والماء طوال العام.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "النباتات",
+      "text_markdown": "النباتات"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قلب السافانا هو العشب.",
+      "text_markdown": "قلب السافانا هو العشب.",
+      "tts": {
+        "text": "قلب السافانا هو العشب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تغطي الأعشاب الطويلة الأرض في كل اتجاه.",
+      "text_markdown": "تغطي الأعشاب الطويلة الأرض في كل اتجاه.",
+      "tts": {
+        "text": "تغطي الأعشاب الطويلة الأرض في كل اتجاه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الأعشاب ينمو حتى يصل إلى ارتفاع الإنسان.",
+      "text_markdown": "بعض الأعشاب ينمو حتى يصل إلى ارتفاع الإنسان.",
+      "tts": {
+        "text": "بعض الأعشاب ينمو حتى يصل إلى ارتفاع الإنسان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمتد جذورها عميقًا في التربة لتجد الماء.",
+      "text_markdown": "تمتد جذورها عميقًا في التربة لتجد الماء.",
+      "tts": {
+        "text": "تمتد جذورها عميقًا في التربة لتجد الماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تجتاح النار السافانا تحترق أطراف الأعشاب العليا.",
+      "text_markdown": "حين تجتاح النار السافانا تحترق أطراف الأعشاب العليا.",
+      "tts": {
+        "text": "حين تجتاح النار السافانا تحترق أطراف الأعشاب العليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الجذور تظل حية تحت الأرض.",
+      "text_markdown": "لكن الجذور تظل حية تحت الأرض.",
+      "tts": {
+        "text": "لكن الجذور تظل حية تحت الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد المطر التالي تعود الأعشاب للنمو طازجة وخضراء.",
+      "text_markdown": "بعد المطر التالي تعود الأعشاب للنمو طازجة وخضراء.",
+      "tts": {
+        "text": "بعد المطر التالي تعود الأعشاب للنمو طازجة وخضراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "النار جزء طبيعي من هذه المنطقة الحيوية.",
+      "text_markdown": "النار جزء طبيعي من هذه المنطقة الحيوية.",
+      "tts": {
+        "text": "النار جزء طبيعي من هذه المنطقة الحيوية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من النباتات هنا يحتاج إلى النار ليبقى صحيًا.",
+      "text_markdown": "كثير من النباتات هنا يحتاج إلى النار ليبقى صحيًا.",
+      "tts": {
+        "text": "كثير من النباتات هنا يحتاج إلى النار ليبقى صحيًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو الأشجار في السافانا أيضًا، لكنها متناثرة.",
+      "text_markdown": "تنمو الأشجار في السافانا أيضًا، لكنها متناثرة.",
+      "tts": {
+        "text": "تنمو الأشجار في السافانا أيضًا، لكنها متناثرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تقف متباعدة، ويفصل بينها العشب.",
+      "text_markdown": "تقف متباعدة، ويفصل بينها العشب.",
+      "tts": {
+        "text": "تقف متباعدة، ويفصل بينها العشب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم أشجار السافانا قصيرة، ذات قمم عريضة مسطحة.",
+      "text_markdown": "معظم أشجار السافانا قصيرة، ذات قمم عريضة مسطحة.",
+      "tts": {
+        "text": "معظم أشجار السافانا قصيرة، ذات قمم عريضة مسطحة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القمة المسطحة مظلة عريضة من الأوراق تلتقط كل قطرة من الضوء.",
+      "text_markdown": "القمة المسطحة مظلة عريضة من الأوراق تلتقط كل قطرة من الضوء.",
+      "tts": {
+        "text": "القمة المسطحة مظلة عريضة من الأوراق تلتقط كل قطرة من الضوء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكثير من أشجار السافانا أشواك تمنع الحيوانات الكبيرة من أكلها.",
+      "text_markdown": "لكثير من أشجار السافانا أشواك تمنع الحيوانات الكبيرة من أكلها.",
+      "tts": {
+        "text": "لكثير من أشجار السافانا أشواك تمنع الحيوانات الكبيرة من أكلها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الباوباب الشهير شجرة سافانا عملاقة لها جذع سميك قوي.",
+      "text_markdown": "الباوباب الشهير شجرة سافانا عملاقة لها جذع سميك قوي.",
+      "tts": {
+        "text": "الباوباب الشهير شجرة سافانا عملاقة لها جذع سميك قوي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستطيع تخزين الماء داخل جذعها لفصل الجفاف الطويل.",
+      "text_markdown": "تستطيع تخزين الماء داخل جذعها لفصل الجفاف الطويل.",
+      "tts": {
+        "text": "تستطيع تخزين الماء داخل جذعها لفصل الجفاف الطويل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش بعض أشجار الباوباب أكثر من ألف سنة.",
+      "text_markdown": "تعيش بعض أشجار الباوباب أكثر من ألف سنة.",
+      "tts": {
+        "text": "تعيش بعض أشجار الباوباب أكثر من ألف سنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على ضفاف الأنهار تنمو أشجار أطول في شريط أخضر رفيع.",
+      "text_markdown": "على ضفاف الأنهار تنمو أشجار أطول في شريط أخضر رفيع.",
+      "tts": {
+        "text": "على ضفاف الأنهار تنمو أشجار أطول في شريط أخضر رفيع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في السهل المفتوح، لا ترى لأميال إلا العشب وبضع أشجار متناثرة.",
+      "text_markdown": "في السهل المفتوح، لا ترى لأميال إلا العشب وبضع أشجار متناثرة.",
+      "tts": {
+        "text": "في السهل المفتوح، لا ترى لأميال إلا العشب وبضع أشجار متناثرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الفصل الممطر تتفتح أزهار صغيرة بين الأعشاب.",
+      "text_markdown": "في الفصل الممطر تتفتح أزهار صغيرة بين الأعشاب.",
+      "tts": {
+        "text": "في الفصل الممطر تتفتح أزهار صغيرة بين الأعشاب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتفتح بسرعة وتبقى أسابيع قليلة فقط.",
+      "text_markdown": "تتفتح بسرعة وتبقى أسابيع قليلة فقط.",
+      "tts": {
+        "text": "تتفتح بسرعة وتبقى أسابيع قليلة فقط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السافانا آلة هادئة، مصنوعة من العشب والأشجار المتناثرة والشمس والجذور الصابرة.",
+      "text_markdown": "السافانا آلة هادئة، مصنوعة من العشب والأشجار المتناثرة والشمس والجذور الصابرة.",
+      "tts": {
+        "text": "السافانا آلة هادئة، مصنوعة من العشب والأشجار المتناثرة والشمس والجذور الصابرة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السافانا الاستوائية مشهورة في كل أنحاء العالم بحيواناتها.",
+      "text_markdown": "السافانا الاستوائية مشهورة في كل أنحاء العالم بحيواناتها.",
+      "tts": {
+        "text": "السافانا الاستوائية مشهورة في كل أنحاء العالم بحيواناتها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُطعم الأعشاب قطعانًا ضخمة من الحيوانات الراعية.",
+      "text_markdown": "تُطعم الأعشاب قطعانًا ضخمة من الحيوانات الراعية.",
+      "tts": {
+        "text": "تُطعم الأعشاب قطعانًا ضخمة من الحيوانات الراعية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أفريقيا، تتنقل قطعان كبيرة من الحمار الوحشي والظباء والجاموس عبر السهول.",
+      "text_markdown": "في أفريقيا، تتنقل قطعان كبيرة من الحمار الوحشي والظباء والجاموس عبر السهول.",
+      "tts": {
+        "text": "في أفريقيا، تتنقل قطعان كبيرة من الحمار الوحشي والظباء والجاموس عبر السهول.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتبع الأمطار من جزء من السافانا إلى آخر.",
+      "text_markdown": "تتبع الأمطار من جزء من السافانا إلى آخر.",
+      "tts": {
+        "text": "تتبع الأمطار من جزء من السافانا إلى آخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أكبر حيوان بري على الأرض، وهو الفيل، يعيش في السافانا الأفريقية.",
+      "text_markdown": "أكبر حيوان بري على الأرض، وهو الفيل، يعيش في السافانا الأفريقية.",
+      "tts": {
+        "text": "أكبر حيوان بري على الأرض، وهو الفيل، يعيش في السافانا الأفريقية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تسير عائلة من الفيلة ببطء عبر العشب، تقودها أم عجوز.",
+      "text_markdown": "تسير عائلة من الفيلة ببطء عبر العشب، تقودها أم عجوز.",
+      "tts": {
+        "text": "تسير عائلة من الفيلة ببطء عبر العشب، تقودها أم عجوز.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تمشي الزرافة إلى جانبها، تمد عنقها الطويل لتأكل أوراق الأشجار.",
+      "text_markdown": "تمشي الزرافة إلى جانبها، تمد عنقها الطويل لتأكل أوراق الأشجار.",
+      "tts": {
+        "text": "تمشي الزرافة إلى جانبها، تمد عنقها الطويل لتأكل أوراق الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حيث توجد حيوانات راعية كثيرة، يوجد صيادون أيضًا.",
+      "text_markdown": "حيث توجد حيوانات راعية كثيرة، يوجد صيادون أيضًا.",
+      "tts": {
+        "text": "حيث توجد حيوانات راعية كثيرة، يوجد صيادون أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأسد هو الصياد العظيم في السافانا الأفريقية.",
+      "text_markdown": "الأسد هو الصياد العظيم في السافانا الأفريقية.",
+      "tts": {
+        "text": "الأسد هو الصياد العظيم في السافانا الأفريقية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش الأسود معًا في مجموعات عائلية تُسمى قطعان الأسود.",
+      "text_markdown": "تعيش الأسود معًا في مجموعات عائلية تُسمى قطعان الأسود.",
+      "tts": {
+        "text": "تعيش الأسود معًا في مجموعات عائلية تُسمى قطعان الأسود.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الفهد الصياد هو أسرع حيوان على اليابسة.",
+      "text_markdown": "الفهد الصياد هو أسرع حيوان على اليابسة.",
+      "tts": {
+        "text": "الفهد الصياد هو أسرع حيوان على اليابسة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يجري في اندفاعات قصيرة ليمسك الظباء التي ترعى في السهول.",
+      "text_markdown": "يجري في اندفاعات قصيرة ليمسك الظباء التي ترعى في السهول.",
+      "tts": {
+        "text": "يجري في اندفاعات قصيرة ليمسك الظباء التي ترعى في السهول.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "النمر صياد هادئ يتسلق الأشجار ويسحب طعامه إلى الأغصان.",
+      "text_markdown": "النمر صياد هادئ يتسلق الأشجار ويسحب طعامه إلى الأغصان.",
+      "tts": {
+        "text": "النمر صياد هادئ يتسلق الأشجار ويسحب طعامه إلى الأغصان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تصطاد الضباع في مجموعات وتنظف ما يتركه الصيادون الأكبر.",
+      "text_markdown": "تصطاد الضباع في مجموعات وتنظف ما يتركه الصيادون الأكبر.",
+      "tts": {
+        "text": "تصطاد الضباع في مجموعات وتنظف ما يتركه الصيادون الأكبر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما توجد حيوانات أصغر في كل مكان.",
+      "text_markdown": "كما توجد حيوانات أصغر في كل مكان.",
+      "tts": {
+        "text": "كما توجد حيوانات أصغر في كل مكان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنتقل القرود البابون في مجموعات صاخبة عبر العشب وبين الأشجار.",
+      "text_markdown": "تنتقل القرود البابون في مجموعات صاخبة عبر العشب وبين الأشجار.",
+      "tts": {
+        "text": "تنتقل القرود البابون في مجموعات صاخبة عبر العشب وبين الأشجار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "طيور كبيرة تُسمى النعام تجري عبر السهل المفتوح على سيقان طويلة.",
+      "text_markdown": "طيور كبيرة تُسمى النعام تجري عبر السهل المفتوح على سيقان طويلة.",
+      "tts": {
+        "text": "طيور كبيرة تُسمى النعام تجري عبر السهل المفتوح على سيقان طويلة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحلق النسور عاليًا، تترقب الحيوانات التي ماتت.",
+      "text_markdown": "تحلق النسور عاليًا، تترقب الحيوانات التي ماتت.",
+      "tts": {
+        "text": "تحلق النسور عاليًا، تترقب الحيوانات التي ماتت.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الفصل الممطر، تغني الضفادع كل ليلة حول البرك الجديدة.",
+      "text_markdown": "في الفصل الممطر، تغني الضفادع كل ليلة حول البرك الجديدة.",
+      "tts": {
+        "text": "في الفصل الممطر، تغني الضفادع كل ليلة حول البرك الجديدة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تملأ الحشرات الهواء الدافئ، وترفرف الفراشات بين الأزهار.",
+      "text_markdown": "تملأ الحشرات الهواء الدافئ، وترفرف الفراشات بين الأزهار.",
+      "tts": {
+        "text": "تملأ الحشرات الهواء الدافئ، وترفرف الفراشات بين الأزهار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الأنهار، يستريح فرس النهر في الماء طوال النهار، ويخرج ليرعى العشب في الليل.",
+      "text_markdown": "في الأنهار، يستريح فرس النهر في الماء طوال النهار، ويخرج ليرعى العشب في الليل.",
+      "tts": {
+        "text": "في الأنهار، يستريح فرس النهر في الماء طوال النهار، ويخرج ليرعى العشب في الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في سافانا أمريكا الجنوبية، تحل القوارض الكبيرة والطيور الضخمة محل الحيوانات الأفريقية.",
+      "text_markdown": "في سافانا أمريكا الجنوبية، تحل القوارض الكبيرة والطيور الضخمة محل الحيوانات الأفريقية.",
+      "tts": {
+        "text": "في سافانا أمريكا الجنوبية، تحل القوارض الكبيرة والطيور الضخمة محل الحيوانات الأفريقية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في سافانا أستراليا، تقفز الكنغر عبر العشب بدلًا من الظباء التي تجري عبره.",
+      "text_markdown": "في سافانا أستراليا، تقفز الكنغر عبر العشب بدلًا من الظباء التي تجري عبره.",
+      "tts": {
+        "text": "في سافانا أستراليا، تقفز الكنغر عبر العشب بدلًا من الظباء التي تجري عبره.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في كل من هذه الأراضي، تبدو الحيوانات مختلفة.",
+      "text_markdown": "في كل من هذه الأراضي، تبدو الحيوانات مختلفة.",
+      "tts": {
+        "text": "في كل من هذه الأراضي، تبدو الحيوانات مختلفة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن النمط واحد.",
+      "text_markdown": "لكن النمط واحد.",
+      "tts": {
+        "text": "لكن النمط واحد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قطعان ضخمة من الراعية، وصيادون هادئون في العشب، وأسراب عظيمة من الطيور في السماء.",
+      "text_markdown": "قطعان ضخمة من الراعية، وصيادون هادئون في العشب، وأسراب عظيمة من الطيور في السماء.",
+      "tts": {
+        "text": "قطعان ضخمة من الراعية، وصيادون هادئون في العشب، وأسراب عظيمة من الطيور في السماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي السافانا.",
+      "text_markdown": "تلك هي السافانا.",
+      "tts": {
+        "text": "تلك هي السافانا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الناس",
+      "text_markdown": "الناس"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عاش الناس في السافانا الاستوائية منذ زمن بعيد جدًا.",
+      "text_markdown": "عاش الناس في السافانا الاستوائية منذ زمن بعيد جدًا.",
+      "tts": {
+        "text": "عاش الناس في السافانا الاستوائية منذ زمن بعيد جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الواقع، وقف أجدادنا للمرة الأولى ومشوا عبر مناطق سافانا مثل هذه.",
+      "text_markdown": "في الواقع، وقف أجدادنا للمرة الأولى ومشوا عبر مناطق سافانا مثل هذه.",
+      "tts": {
+        "text": "في الواقع، وقف أجدادنا للمرة الأولى ومشوا عبر مناطق سافانا مثل هذه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "العشب المفتوح والأشجار المتناثرة شكّلا الطريقة التي تتحرك بها أجسامنا.",
+      "text_markdown": "العشب المفتوح والأشجار المتناثرة شكّلا الطريقة التي تتحرك بها أجسامنا.",
+      "tts": {
+        "text": "العشب المفتوح والأشجار المتناثرة شكّلا الطريقة التي تتحرك بها أجسامنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير من سكان السافانا يربون قطعانًا من الحيوانات.",
+      "text_markdown": "كثير من سكان السافانا يربون قطعانًا من الحيوانات.",
+      "tts": {
+        "text": "كثير من سكان السافانا يربون قطعانًا من الحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أفريقيا، ترعى العائلات الماشية والماعز والأغنام عبر الأراضي العشبية.",
+      "text_markdown": "في أفريقيا، ترعى العائلات الماشية والماعز والأغنام عبر الأراضي العشبية.",
+      "tts": {
+        "text": "في أفريقيا، ترعى العائلات الماشية والماعز والأغنام عبر الأراضي العشبية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأكل الحيوانات العشب وتحوّله إلى حليب ولحم للناس.",
+      "text_markdown": "تأكل الحيوانات العشب وتحوّله إلى حليب ولحم للناس.",
+      "tts": {
+        "text": "تأكل الحيوانات العشب وتحوّله إلى حليب ولحم للناس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ينتقل الرعاة مع حيواناتهم ليتبعوا الأمطار.",
+      "text_markdown": "ينتقل الرعاة مع حيواناتهم ليتبعوا الأمطار.",
+      "tts": {
+        "text": "ينتقل الرعاة مع حيواناتهم ليتبعوا الأمطار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في فصل الجفاف يسافرون نحو الأنهار.",
+      "text_markdown": "في فصل الجفاف يسافرون نحو الأنهار.",
+      "tts": {
+        "text": "في فصل الجفاف يسافرون نحو الأنهار.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي الفصل الممطر ينتشرون عبر السهول الخضراء.",
+      "text_markdown": "وفي الفصل الممطر ينتشرون عبر السهول الخضراء.",
+      "tts": {
+        "text": "وفي الفصل الممطر ينتشرون عبر السهول الخضراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بيوتهم غالبًا سهلة الفك والنقل إلى مكان جديد.",
+      "text_markdown": "بيوتهم غالبًا سهلة الفك والنقل إلى مكان جديد.",
+      "tts": {
+        "text": "بيوتهم غالبًا سهلة الفك والنقل إلى مكان جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض سكان السافانا يزرعون الطعام في حقول صغيرة.",
+      "text_markdown": "بعض سكان السافانا يزرعون الطعام في حقول صغيرة.",
+      "tts": {
+        "text": "بعض سكان السافانا يزرعون الطعام في حقول صغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حيث تكون التربة غنية، يزرعون الحبوب والبقوليات.",
+      "text_markdown": "حيث تكون التربة غنية، يزرعون الحبوب والبقوليات.",
+      "tts": {
+        "text": "حيث تكون التربة غنية، يزرعون الحبوب والبقوليات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يستخدمون النار بحذر لتنظيف حقول جديدة وللحفاظ على عشب طازج لحيواناتهم.",
+      "text_markdown": "يستخدمون النار بحذر لتنظيف حقول جديدة وللحفاظ على عشب طازج لحيواناتهم.",
+      "tts": {
+        "text": "يستخدمون النار بحذر لتنظيف حقول جديدة وللحفاظ على عشب طازج لحيواناتهم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرف سكان السافانا الأرض بتفصيل دقيق.",
+      "text_markdown": "يعرف سكان السافانا الأرض بتفصيل دقيق.",
+      "tts": {
+        "text": "يعرف سكان السافانا الأرض بتفصيل دقيق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرفون أي النباتات آمنة للأكل وأيها صالحة للدواء.",
+      "text_markdown": "يعرفون أي النباتات آمنة للأكل وأيها صالحة للدواء.",
+      "tts": {
+        "text": "يعرفون أي النباتات آمنة للأكل وأيها صالحة للدواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرفون آثار كل حيوان في التراب.",
+      "text_markdown": "يعرفون آثار كل حيوان في التراب.",
+      "tts": {
+        "text": "يعرفون آثار كل حيوان في التراب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعرفون معنى كل نوع من السحب في السماء.",
+      "text_markdown": "يعرفون معنى كل نوع من السحب في السماء.",
+      "tts": {
+        "text": "يعرفون معنى كل نوع من السحب في السماء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنتقل هذه المعرفة من الآباء إلى الأبناء، عامًا بعد عام.",
+      "text_markdown": "تنتقل هذه المعرفة من الآباء إلى الأبناء، عامًا بعد عام.",
+      "tts": {
+        "text": "تنتقل هذه المعرفة من الآباء إلى الأبناء، عامًا بعد عام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في كل سافانا، لهذا النمط من الحياة لغاته الخاصة وأغانيه الخاصة وحكاياته الخاصة.",
+      "text_markdown": "في كل سافانا، لهذا النمط من الحياة لغاته الخاصة وأغانيه الخاصة وحكاياته الخاصة.",
+      "tts": {
+        "text": "في كل سافانا، لهذا النمط من الحياة لغاته الخاصة وأغانيه الخاصة وحكاياته الخاصة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "السافانا اليوم",
+      "text_markdown": "السافانا اليوم"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السافانا الاستوائية واحدة من أعظم الأراضي البرية على الأرض.",
+      "text_markdown": "السافانا الاستوائية واحدة من أعظم الأراضي البرية على الأرض.",
+      "tts": {
+        "text": "السافانا الاستوائية واحدة من أعظم الأراضي البرية على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُطعم قطعانًا هائلة من الحيوانات.",
+      "text_markdown": "تُطعم قطعانًا هائلة من الحيوانات.",
+      "tts": {
+        "text": "تُطعم قطعانًا هائلة من الحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تدعم الرعاة والمزارعين الذين عاشوا هنا منذ آلاف السنين.",
+      "text_markdown": "تدعم الرعاة والمزارعين الذين عاشوا هنا منذ آلاف السنين.",
+      "tts": {
+        "text": "تدعم الرعاة والمزارعين الذين عاشوا هنا منذ آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما تخزن الأراضي العشبية كثيرًا من الماء والغذاء في جذورها العميقة.",
+      "text_markdown": "كما تخزن الأراضي العشبية كثيرًا من الماء والغذاء في جذورها العميقة.",
+      "tts": {
+        "text": "كما تخزن الأراضي العشبية كثيرًا من الماء والغذاء في جذورها العميقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن السافانا في خطر أيضًا.",
+      "text_markdown": "لكن السافانا في خطر أيضًا.",
+      "tts": {
+        "text": "لكن السافانا في خطر أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أماكن كثيرة، حرث الناس العشب لزراعة المحاصيل، أو سيّجوه للماشية.",
+      "text_markdown": "في أماكن كثيرة، حرث الناس العشب لزراعة المحاصيل، أو سيّجوه للماشية.",
+      "tts": {
+        "text": "في أماكن كثيرة، حرث الناس العشب لزراعة المحاصيل، أو سيّجوه للماشية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين يتفتت العشب، تفقد قطعان الحيوانات البرية طريقها المفتوح.",
+      "text_markdown": "حين يتفتت العشب، تفقد قطعان الحيوانات البرية طريقها المفتوح.",
+      "tts": {
+        "text": "حين يتفتت العشب، تفقد قطعان الحيوانات البرية طريقها المفتوح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تقطع الطرق والأسوار المسارات التي اتبعتها الفيلة والظباء منذ عصور.",
+      "text_markdown": "تقطع الطرق والأسوار المسارات التي اتبعتها الفيلة والظباء منذ عصور.",
+      "tts": {
+        "text": "تقطع الطرق والأسوار المسارات التي اتبعتها الفيلة والظباء منذ عصور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض حيوانات السافانا، مثل وحيد القرن والفهد الصياد، أصبحت نادرة جدًا.",
+      "text_markdown": "بعض حيوانات السافانا، مثل وحيد القرن والفهد الصياد، أصبحت نادرة جدًا.",
+      "tts": {
+        "text": "بعض حيوانات السافانا، مثل وحيد القرن والفهد الصياد، أصبحت نادرة جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعمل مجموعات كثيرة حول العالم على حماية ما تبقى.",
+      "text_markdown": "تعمل مجموعات كثيرة حول العالم على حماية ما تبقى.",
+      "tts": {
+        "text": "تعمل مجموعات كثيرة حول العالم على حماية ما تبقى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يخصصون حدائق طبيعية كبيرة تستطيع الحيوانات البرية فيها أن تتحرك بحرية.",
+      "text_markdown": "يخصصون حدائق طبيعية كبيرة تستطيع الحيوانات البرية فيها أن تتحرك بحرية.",
+      "tts": {
+        "text": "يخصصون حدائق طبيعية كبيرة تستطيع الحيوانات البرية فيها أن تتحرك بحرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعملون مع الناس الذين يعيشون قرب هذه الحدائق لتقاسم الأرض.",
+      "text_markdown": "يعملون مع الناس الذين يعيشون قرب هذه الحدائق لتقاسم الأرض.",
+      "tts": {
+        "text": "يعملون مع الناس الذين يعيشون قرب هذه الحدائق لتقاسم الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يدرسون العشب والأشجار والقطعان لكي نفهم السافانا أفضل.",
+      "text_markdown": "يدرسون العشب والأشجار والقطعان لكي نفهم السافانا أفضل.",
+      "tts": {
+        "text": "يدرسون العشب والأشجار والقطعان لكي نفهم السافانا أفضل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستطيع سافانا صحية أن تدعم حياة أكثر من أي منطقة حيوية برية أخرى تقريبًا.",
+      "text_markdown": "تستطيع سافانا صحية أن تدعم حياة أكثر من أي منطقة حيوية برية أخرى تقريبًا.",
+      "tts": {
+        "text": "تستطيع سافانا صحية أن تدعم حياة أكثر من أي منطقة حيوية برية أخرى تقريبًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "السافانا اليوم",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هي تستحق رعايتنا.",
+      "text_markdown": "هي تستحق رعايتنا.",
+      "tts": {
+        "text": "هي تستحق رعايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الخاتمة",
+      "text_markdown": "الخاتمة"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي السافانا الاستوائية.",
+      "text_markdown": "تلك هي السافانا الاستوائية.",
+      "tts": {
+        "text": "تلك هي السافانا الاستوائية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض واسعة دافئة من العشب والأشجار المتناثرة وقطعان كبيرة من الحيوانات.",
+      "text_markdown": "أرض واسعة دافئة من العشب والأشجار المتناثرة وقطعان كبيرة من الحيوانات.",
+      "tts": {
+        "text": "أرض واسعة دافئة من العشب والأشجار المتناثرة وقطعان كبيرة من الحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن وقفت يومًا في إحداها، اسكن لدقيقة.",
+      "text_markdown": "إن وقفت يومًا في إحداها، اسكن لدقيقة.",
+      "tts": {
+        "text": "إن وقفت يومًا في إحداها، اسكن لدقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أصغِ إلى الريح في العشب وإلى الطيور في البعيد.",
+      "text_markdown": "أصغِ إلى الريح في العشب وإلى الطيور في البعيد.",
+      "tts": {
+        "text": "أصغِ إلى الريح في العشب وإلى الطيور في البعيد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انظر إلى الأفق البعيد.",
+      "text_markdown": "انظر إلى الأفق البعيد.",
+      "tts": {
+        "text": "انظر إلى الأفق البعيد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ستشعر بقلب المنطقة الحيوية ينبض من حولك.",
+      "text_markdown": "ستشعر بقلب المنطقة الحيوية ينبض من حولك.",
+      "tts": {
+        "text": "ستشعر بقلب المنطقة الحيوية ينبض من حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tropiske regnskov",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tropiske regnskov",
+      "text_markdown": "Den tropiske regnskov"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor regnskove vokser",
+      "text_markdown": "Hvor regnskove vokser"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til den tropiske regnskov.",
+      "text_markdown": "Velkommen til den tropiske regnskov.",
+      "tts": {
+        "text": "Velkommen til den tropiske regnskov.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er et af verdens store biomer.",
+      "text_markdown": "Det er et af verdens store biomer.",
+      "tts": {
+        "text": "Det er et af verdens store biomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og dyr.",
+      "text_markdown": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og dyr.",
+      "tts": {
+        "text": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiske regnskov er varm hele året.",
+      "text_markdown": "Den tropiske regnskov er varm hele året.",
+      "tts": {
+        "text": "Den tropiske regnskov er varm hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er våd hele året.",
+      "text_markdown": "Den er våd hele året.",
+      "tts": {
+        "text": "Den er våd hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er fuld af liv.",
+      "text_markdown": "Den er fuld af liv.",
+      "tts": {
+        "text": "Den er fuld af liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste regnskove vokser nær ækvator.",
+      "text_markdown": "De fleste regnskove vokser nær ækvator.",
+      "tts": {
+        "text": "De fleste regnskove vokser nær ækvator.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ækvator er den linje, der løber rundt om midten af Jorden.",
+      "text_markdown": "Ækvator er den linje, der løber rundt om midten af Jorden.",
+      "tts": {
+        "text": "Ækvator er den linje, der løber rundt om midten af Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nær ækvator er solen stærk hver dag.",
+      "text_markdown": "Nær ækvator er solen stærk hver dag.",
+      "tts": {
+        "text": "Nær ækvator er solen stærk hver dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den største regnskov i verden er Amazonas i Sydamerika.",
+      "text_markdown": "Den største regnskov i verden er Amazonas i Sydamerika.",
+      "tts": {
+        "text": "Den største regnskov i verden er Amazonas i Sydamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er også store regnskove i Afrika, nær Congofloden.",
+      "text_markdown": "Der er også store regnskove i Afrika, nær Congofloden.",
+      "tts": {
+        "text": "Der er også store regnskove i Afrika, nær Congofloden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er regnskove i Sydøstasien, på mange øer.",
+      "text_markdown": "Der er regnskove i Sydøstasien, på mange øer.",
+      "tts": {
+        "text": "Der er regnskove i Sydøstasien, på mange øer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er mindre regnskove i Mellemamerika og på øer i Stillehavet.",
+      "text_markdown": "Der er mindre regnskove i Mellemamerika og på øer i Stillehavet.",
+      "tts": {
+        "text": "Der er mindre regnskove i Mellemamerika og på øer i Stillehavet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver af disse skove voksede op for sig selv, langt fra de andre.",
+      "text_markdown": "Hver af disse skove voksede op for sig selv, langt fra de andre.",
+      "tts": {
+        "text": "Hver af disse skove voksede op for sig selv, langt fra de andre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så planterne og dyrene er forskellige i hver del af verden.",
+      "text_markdown": "Så planterne og dyrene er forskellige i hver del af verden.",
+      "tts": {
+        "text": "Så planterne og dyrene er forskellige i hver del af verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En abe i Amazonas er ikke den samme som en abe i Afrika eller Asien.",
+      "text_markdown": "En abe i Amazonas er ikke den samme som en abe i Afrika eller Asien.",
+      "tts": {
+        "text": "En abe i Amazonas er ikke den samme som en abe i Afrika eller Asien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de er alle en del af det samme biom.",
+      "text_markdown": "Men de er alle en del af det samme biom.",
+      "tts": {
+        "text": "Men de er alle en del af det samme biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du står inde i en regnskov, føles luften tung og varm.",
+      "text_markdown": "Når du står inde i en regnskov, føles luften tung og varm.",
+      "tts": {
+        "text": "Når du står inde i en regnskov, føles luften tung og varm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyset er blødt og grønt.",
+      "text_markdown": "Lyset er blødt og grønt.",
+      "tts": {
+        "text": "Lyset er blødt og grønt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne er så høje, at du næsten ikke kan se himlen.",
+      "text_markdown": "Træerne er så høje, at du næsten ikke kan se himlen.",
+      "tts": {
+        "text": "Træerne er så høje, at du næsten ikke kan se himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hører fugle og insekter rundt om dig.",
+      "text_markdown": "Du hører fugle og insekter rundt om dig.",
+      "tts": {
+        "text": "Du hører fugle og insekter rundt om dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du hører vand dryppe fra bladene.",
+      "text_markdown": "Du hører vand dryppe fra bladene.",
+      "tts": {
+        "text": "Du hører vand dryppe fra bladene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du føler, at du er inde i en levende stue.",
+      "text_markdown": "Du føler, at du er inde i en levende stue.",
+      "tts": {
+        "text": "Du føler, at du er inde i en levende stue.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er, hvad regnskoven er.",
+      "text_markdown": "Det er, hvad regnskoven er.",
+      "tts": {
+        "text": "Det er, hvad regnskoven er.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Hvor regnskove vokser",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En hel verden bygget af træer og regn.",
+      "text_markdown": "En hel verden bygget af træer og regn.",
+      "tts": {
+        "text": "En hel verden bygget af træer og regn.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vejret",
+      "text_markdown": "Vejret"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vejret i den tropiske regnskov er enkelt.",
+      "text_markdown": "Vejret i den tropiske regnskov er enkelt.",
+      "tts": {
+        "text": "Vejret i den tropiske regnskov er enkelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er varmt, og det regner meget.",
+      "text_markdown": "Det er varmt, og det regner meget.",
+      "tts": {
+        "text": "Det er varmt, og det regner meget.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Temperaturen holder sig nogenlunde den samme hele året.",
+      "text_markdown": "Temperaturen holder sig nogenlunde den samme hele året.",
+      "tts": {
+        "text": "Temperaturen holder sig nogenlunde den samme hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det bliver ikke koldt om vinteren.",
+      "text_markdown": "Det bliver ikke koldt om vinteren.",
+      "tts": {
+        "text": "Det bliver ikke koldt om vinteren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det bliver ikke meget varmt om sommeren.",
+      "text_markdown": "Det bliver ikke meget varmt om sommeren.",
+      "tts": {
+        "text": "Det bliver ikke meget varmt om sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste dage er varme og rolige.",
+      "text_markdown": "De fleste dage er varme og rolige.",
+      "tts": {
+        "text": "De fleste dage er varme og rolige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det regner næsten hver dag.",
+      "text_markdown": "Det regner næsten hver dag.",
+      "tts": {
+        "text": "Det regner næsten hver dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle steder får mere end to meter regn på et år.",
+      "text_markdown": "Nogle steder får mere end to meter regn på et år.",
+      "tts": {
+        "text": "Nogle steder får mere end to meter regn på et år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er mere regn, end de fleste dele af verden nogensinde ser.",
+      "text_markdown": "Det er mere regn, end de fleste dele af verden nogensinde ser.",
+      "tts": {
+        "text": "Det er mere regn, end de fleste dele af verden nogensinde ser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regnen kommer ofte om eftermiddagen.",
+      "text_markdown": "Regnen kommer ofte om eftermiddagen.",
+      "tts": {
+        "text": "Regnen kommer ofte om eftermiddagen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Store skyer samler sig over træerne.",
+      "text_markdown": "Store skyer samler sig over træerne.",
+      "tts": {
+        "text": "Store skyer samler sig over træerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kraftig byge falder i en time eller to.",
+      "text_markdown": "En kraftig byge falder i en time eller to.",
+      "tts": {
+        "text": "En kraftig byge falder i en time eller to.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så kommer solen frem igen.",
+      "text_markdown": "Så kommer solen frem igen.",
+      "tts": {
+        "text": "Så kommer solen frem igen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bladene skinner, og damp stiger op fra jorden.",
+      "text_markdown": "Bladene skinner, og damp stiger op fra jorden.",
+      "tts": {
+        "text": "Bladene skinner, og damp stiger op fra jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er ingen fire årstider her.",
+      "text_markdown": "Der er ingen fire årstider her.",
+      "tts": {
+        "text": "Der er ingen fire årstider her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er kun en vådere tid og en tørrere tid.",
+      "text_markdown": "Der er kun en vådere tid og en tørrere tid.",
+      "tts": {
+        "text": "Der er kun en vådere tid og en tørrere tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selv i den tørrere tid regner det stadig ofte.",
+      "text_markdown": "Selv i den tørrere tid regner det stadig ofte.",
+      "tts": {
+        "text": "Selv i den tørrere tid regner det stadig ofte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For regnskovens planter og dyr føles hver dag nogenlunde ens.",
+      "text_markdown": "For regnskovens planter og dyr føles hver dag nogenlunde ens.",
+      "tts": {
+        "text": "For regnskovens planter og dyr føles hver dag nogenlunde ens.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vandet",
+      "text_markdown": "Landet og vandet"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regnskovens bund er rig på liv, men jorden er tynd.",
+      "text_markdown": "Regnskovens bund er rig på liv, men jorden er tynd.",
+      "tts": {
+        "text": "Regnskovens bund er rig på liv, men jorden er tynd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det meste af næringen ligger i de øverste få centimeter.",
+      "text_markdown": "Det meste af næringen ligger i de øverste få centimeter.",
+      "tts": {
+        "text": "Det meste af næringen ligger i de øverste få centimeter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når et blad falder, nedbryder insekter og små levende ting det meget hurtigt.",
+      "text_markdown": "Når et blad falder, nedbryder insekter og små levende ting det meget hurtigt.",
+      "tts": {
+        "text": "Når et blad falder, nedbryder insekter og små levende ting det meget hurtigt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne tager næringen tilbage næsten med det samme.",
+      "text_markdown": "Træerne tager næringen tilbage næsten med det samme.",
+      "tts": {
+        "text": "Træerne tager næringen tilbage næsten med det samme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Derfor er en fældet regnskov svær at få tilbage.",
+      "text_markdown": "Derfor er en fældet regnskov svær at få tilbage.",
+      "tts": {
+        "text": "Derfor er en fældet regnskov svær at få tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uden træerne skyller regnen den tynde jord væk.",
+      "text_markdown": "Uden træerne skyller regnen den tynde jord væk.",
+      "tts": {
+        "text": "Uden træerne skyller regnen den tynde jord væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Floder løber gennem hver regnskov.",
+      "text_markdown": "Floder løber gennem hver regnskov.",
+      "tts": {
+        "text": "Floder løber gennem hver regnskov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle floder er enorme.",
+      "text_markdown": "Nogle floder er enorme.",
+      "tts": {
+        "text": "Nogle floder er enorme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amazonfloden fører mere vand end nogen anden flod i verden.",
+      "text_markdown": "Amazonfloden fører mere vand end nogen anden flod i verden.",
+      "tts": {
+        "text": "Amazonfloden fører mere vand end nogen anden flod i verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I den våde tid breder floderne sig langt ind i skoven.",
+      "text_markdown": "I den våde tid breder floderne sig langt ind i skoven.",
+      "tts": {
+        "text": "I den våde tid breder floderne sig langt ind i skoven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne står i vand i månedsvis.",
+      "text_markdown": "Træerne står i vand i månedsvis.",
+      "tts": {
+        "text": "Træerne står i vand i månedsvis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fisk svømmer mellem stammerne.",
+      "text_markdown": "Fisk svømmer mellem stammerne.",
+      "tts": {
+        "text": "Fisk svømmer mellem stammerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre floder er små og klare, med sten i bunden.",
+      "text_markdown": "Andre floder er små og klare, med sten i bunden.",
+      "tts": {
+        "text": "Andre floder er små og klare, med sten i bunden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selve skoven vokser i lag.",
+      "text_markdown": "Selve skoven vokser i lag.",
+      "tts": {
+        "text": "Selve skoven vokser i lag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Højt oppe er de højeste træer, med deres kroner spredt ud i solen.",
+      "text_markdown": "Højt oppe er de højeste træer, med deres kroner spredt ud i solen.",
+      "tts": {
+        "text": "Højt oppe er de højeste træer, med deres kroner spredt ud i solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under dem er et tykt grønt tag af blade.",
+      "text_markdown": "Under dem er et tykt grønt tag af blade.",
+      "tts": {
+        "text": "Under dem er et tykt grønt tag af blade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under det tag er luften skyggefuld og stille.",
+      "text_markdown": "Under det tag er luften skyggefuld og stille.",
+      "tts": {
+        "text": "Under det tag er luften skyggefuld og stille.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nede på jorden kommer kun lidt lys igennem.",
+      "text_markdown": "Nede på jorden kommer kun lidt lys igennem.",
+      "tts": {
+        "text": "Nede på jorden kommer kun lidt lys igennem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert lag er et andet hjem for biomets dyr og planter.",
+      "text_markdown": "Hvert lag er et andet hjem for biomets dyr og planter.",
+      "tts": {
+        "text": "Hvert lag er et andet hjem for biomets dyr og planter.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Planterne",
+      "text_markdown": "Planterne"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiske regnskov rummer flere slags planter end noget andet biom på land.",
+      "text_markdown": "Den tropiske regnskov rummer flere slags planter end noget andet biom på land.",
+      "tts": {
+        "text": "Den tropiske regnskov rummer flere slags planter end noget andet biom på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne er dens hjerte.",
+      "text_markdown": "Træerne er dens hjerte.",
+      "tts": {
+        "text": "Træerne er dens hjerte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle træer vokser meget høje og rækker mod solen.",
+      "text_markdown": "Nogle træer vokser meget høje og rækker mod solen.",
+      "tts": {
+        "text": "Nogle træer vokser meget høje og rækker mod solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres stammer er lige og glatte.",
+      "text_markdown": "Deres stammer er lige og glatte.",
+      "tts": {
+        "text": "Deres stammer er lige og glatte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres rødder breder sig vidt ud forneden, som mure, for at holde dem oppe i den tynde jord.",
+      "text_markdown": "Deres rødder breder sig vidt ud forneden, som mure, for at holde dem oppe i den tynde jord.",
+      "tts": {
+        "text": "Deres rødder breder sig vidt ud forneden, som mure, for at holde dem oppe i den tynde jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lianer klatrer op ad stammerne mod lyset.",
+      "text_markdown": "Lianer klatrer op ad stammerne mod lyset.",
+      "tts": {
+        "text": "Lianer klatrer op ad stammerne mod lyset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle lianer er så tykke som din arm.",
+      "text_markdown": "Nogle lianer er så tykke som din arm.",
+      "tts": {
+        "text": "Nogle lianer er så tykke som din arm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De snor sig omkring træerne og hænger ned fra grenene.",
+      "text_markdown": "De snor sig omkring træerne og hænger ned fra grenene.",
+      "tts": {
+        "text": "De snor sig omkring træerne og hænger ned fra grenene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planter vokser på selve træerne, højt oppe i luften.",
+      "text_markdown": "Planter vokser på selve træerne, højt oppe i luften.",
+      "tts": {
+        "text": "Planter vokser på selve træerne, højt oppe i luften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har slet ingen rødder i jorden.",
+      "text_markdown": "De har slet ingen rødder i jorden.",
+      "tts": {
+        "text": "De har slet ingen rødder i jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De drikker den regn, der løber ned ad barken.",
+      "text_markdown": "De drikker den regn, der løber ned ad barken.",
+      "tts": {
+        "text": "De drikker den regn, der løber ned ad barken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den mørke skovbund vokser bregner og bløde grønne planter.",
+      "text_markdown": "På den mørke skovbund vokser bregner og bløde grønne planter.",
+      "tts": {
+        "text": "På den mørke skovbund vokser bregner og bløde grønne planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har brede, flade blade, der kan fange hver dråbe lys.",
+      "text_markdown": "De har brede, flade blade, der kan fange hver dråbe lys.",
+      "tts": {
+        "text": "De har brede, flade blade, der kan fange hver dråbe lys.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blomster blomstrer i alle farver, du kan tænke på.",
+      "text_markdown": "Blomster blomstrer i alle farver, du kan tænke på.",
+      "tts": {
+        "text": "Blomster blomstrer i alle farver, du kan tænke på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle er røde, nogle er gule, nogle er dybt lilla.",
+      "text_markdown": "Nogle er røde, nogle er gule, nogle er dybt lilla.",
+      "tts": {
+        "text": "Nogle er røde, nogle er gule, nogle er dybt lilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af dem åbner sig om natten.",
+      "text_markdown": "Mange af dem åbner sig om natten.",
+      "tts": {
+        "text": "Mange af dem åbner sig om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Frugter hænger fra grenene hele året.",
+      "text_markdown": "Frugter hænger fra grenene hele året.",
+      "tts": {
+        "text": "Frugter hænger fra grenene hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er søde frugter, sure frugter og frugter med hårde skaller.",
+      "text_markdown": "Der er søde frugter, sure frugter og frugter med hårde skaller.",
+      "tts": {
+        "text": "Der er søde frugter, sure frugter og frugter med hårde skaller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af de fødevarer, vi spiser derhjemme, voksede først vildt i regnskove.",
+      "text_markdown": "Mange af de fødevarer, vi spiser derhjemme, voksede først vildt i regnskove.",
+      "tts": {
+        "text": "Mange af de fødevarer, vi spiser derhjemme, voksede først vildt i regnskove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kakao, planten der giver os chokolade, kom fra regnskovene i Sydamerika.",
+      "text_markdown": "Kakao, planten der giver os chokolade, kom fra regnskovene i Sydamerika.",
+      "tts": {
+        "text": "Kakao, planten der giver os chokolade, kom fra regnskovene i Sydamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De første bananplanter voksede i regnskovene i Sydøstasien.",
+      "text_markdown": "De første bananplanter voksede i regnskovene i Sydøstasien.",
+      "tts": {
+        "text": "De første bananplanter voksede i regnskovene i Sydøstasien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver fødevare, vi elsker, har historien om en skov et sted på Jorden.",
+      "text_markdown": "Hver fødevare, vi elsker, har historien om en skov et sted på Jorden.",
+      "tts": {
+        "text": "Hver fødevare, vi elsker, har historien om en skov et sted på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du ser på en regnskovsplante, har den ofte fundet en smart måde at leve på.",
+      "text_markdown": "Når du ser på en regnskovsplante, har den ofte fundet en smart måde at leve på.",
+      "tts": {
+        "text": "Når du ser på en regnskovsplante, har den ofte fundet en smart måde at leve på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle blade har en lang spids i enden, så regnen løber hurtigt af.",
+      "text_markdown": "Nogle blade har en lang spids i enden, så regnen løber hurtigt af.",
+      "tts": {
+        "text": "Nogle blade har en lang spids i enden, så regnen løber hurtigt af.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle blomster dufter sødt kun om natten for at kalde det rette insekt på besøg.",
+      "text_markdown": "Nogle blomster dufter sødt kun om natten for at kalde det rette insekt på besøg.",
+      "tts": {
+        "text": "Nogle blomster dufter sødt kun om natten for at kalde det rette insekt på besøg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hele skoven er en stille maskine lavet af grønt.",
+      "text_markdown": "Hele skoven er en stille maskine lavet af grønt.",
+      "tts": {
+        "text": "Hele skoven er en stille maskine lavet af grønt.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der lever flere slags dyr i den tropiske regnskov end noget andet sted på land.",
+      "text_markdown": "Der lever flere slags dyr i den tropiske regnskov end noget andet sted på land.",
+      "tts": {
+        "text": "Der lever flere slags dyr i den tropiske regnskov end noget andet sted på land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af dem lever oppe i træerne, ikke på jorden.",
+      "text_markdown": "De fleste af dem lever oppe i træerne, ikke på jorden.",
+      "tts": {
+        "text": "De fleste af dem lever oppe i træerne, ikke på jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er mere mad og mere lys højt oppe.",
+      "text_markdown": "Der er mere mad og mere lys højt oppe.",
+      "tts": {
+        "text": "Der er mere mad og mere lys højt oppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber lever i mange regnskove.",
+      "text_markdown": "Aber lever i mange regnskove.",
+      "tts": {
+        "text": "Aber lever i mange regnskove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De springer fra gren til gren og råber til hinanden gennem træerne.",
+      "text_markdown": "De springer fra gren til gren og råber til hinanden gennem træerne.",
+      "tts": {
+        "text": "De springer fra gren til gren og råber til hinanden gennem træerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskovene i Sydamerika har nogle aber lange haler, som de bruger som en ekstra hånd.",
+      "text_markdown": "I regnskovene i Sydamerika har nogle aber lange haler, som de bruger som en ekstra hånd.",
+      "tts": {
+        "text": "I regnskovene i Sydamerika har nogle aber lange haler, som de bruger som en ekstra hånd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papegøjer og andre farverige fugle flyver mellem de høje grene.",
+      "text_markdown": "Papegøjer og andre farverige fugle flyver mellem de høje grene.",
+      "tts": {
+        "text": "Papegøjer og andre farverige fugle flyver mellem de høje grene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De spiser frugt og frø.",
+      "text_markdown": "De spiser frugt og frø.",
+      "tts": {
+        "text": "De spiser frugt og frø.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deres fjer er røde, grønne, blå og gule.",
+      "text_markdown": "Deres fjer er røde, grønne, blå og gule.",
+      "tts": {
+        "text": "Deres fjer er røde, grønne, blå og gule.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I mange regnskove jager store katte på jorden om natten.",
+      "text_markdown": "I mange regnskove jager store katte på jorden om natten.",
+      "tts": {
+        "text": "I mange regnskove jager store katte på jorden om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Amerika er denne kat jaguaren.",
+      "text_markdown": "I Amerika er denne kat jaguaren.",
+      "tts": {
+        "text": "I Amerika er denne kat jaguaren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Asien er det tigeren.",
+      "text_markdown": "I Asien er det tigeren.",
+      "tts": {
+        "text": "I Asien er det tigeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Afrika er det leoparden.",
+      "text_markdown": "I Afrika er det leoparden.",
+      "tts": {
+        "text": "I Afrika er det leoparden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alle er stærke og stille, med pletter eller striber i pelsen.",
+      "text_markdown": "Alle er stærke og stille, med pletter eller striber i pelsen.",
+      "tts": {
+        "text": "Alle er stærke og stille, med pletter eller striber i pelsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slanger glider gennem bladene og træerne.",
+      "text_markdown": "Slanger glider gennem bladene og træerne.",
+      "tts": {
+        "text": "Slanger glider gennem bladene og træerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle slanger er meget små, og nogle er meget lange.",
+      "text_markdown": "Nogle slanger er meget små, og nogle er meget lange.",
+      "tts": {
+        "text": "Nogle slanger er meget små, og nogle er meget lange.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af dem er sky og holder sig væk fra mennesker.",
+      "text_markdown": "De fleste af dem er sky og holder sig væk fra mennesker.",
+      "tts": {
+        "text": "De fleste af dem er sky og holder sig væk fra mennesker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Frøer synger hver nat, især efter regnen.",
+      "text_markdown": "Frøer synger hver nat, især efter regnen.",
+      "tts": {
+        "text": "Frøer synger hver nat, især efter regnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle frøer er små og klare i farverne.",
+      "text_markdown": "Nogle frøer er små og klare i farverne.",
+      "tts": {
+        "text": "Nogle frøer er små og klare i farverne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De klare farver advarer andre dyr om ikke at spise dem.",
+      "text_markdown": "De klare farver advarer andre dyr om ikke at spise dem.",
+      "tts": {
+        "text": "De klare farver advarer andre dyr om ikke at spise dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insekter fylder hvert hjørne af skoven.",
+      "text_markdown": "Insekter fylder hvert hjørne af skoven.",
+      "tts": {
+        "text": "Insekter fylder hvert hjørne af skoven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er flere insekter i regnskoven end nogen anden slags dyr.",
+      "text_markdown": "Der er flere insekter i regnskoven end nogen anden slags dyr.",
+      "tts": {
+        "text": "Der er flere insekter i regnskoven end nogen anden slags dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Myrer marcherer i lange rækker hen over skovbunden.",
+      "text_markdown": "Myrer marcherer i lange rækker hen over skovbunden.",
+      "tts": {
+        "text": "Myrer marcherer i lange rækker hen over skovbunden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biller klatrer op ad stammerne.",
+      "text_markdown": "Biller klatrer op ad stammerne.",
+      "tts": {
+        "text": "Biller klatrer op ad stammerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommerfugle svæver gennem luften på brede, malede vinger.",
+      "text_markdown": "Sommerfugle svæver gennem luften på brede, malede vinger.",
+      "tts": {
+        "text": "Sommerfugle svæver gennem luften på brede, malede vinger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fisk lever i floderne, i mange former og størrelser.",
+      "text_markdown": "Fisk lever i floderne, i mange former og størrelser.",
+      "tts": {
+        "text": "Fisk lever i floderne, i mange former og størrelser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle fisk er små og sølvfarvede, og nogle er større end et barn.",
+      "text_markdown": "Nogle fisk er små og sølvfarvede, og nogle er større end et barn.",
+      "tts": {
+        "text": "Nogle fisk er små og sølvfarvede, og nogle er større end et barn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Højt over det hele svæver ørne over skovens grønne tag.",
+      "text_markdown": "Højt over det hele svæver ørne over skovens grønne tag.",
+      "tts": {
+        "text": "Højt over det hele svæver ørne over skovens grønne tag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De holder øje med bevægelser nedenunder.",
+      "text_markdown": "De holder øje med bevægelser nedenunder.",
+      "tts": {
+        "text": "De holder øje med bevægelser nedenunder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Flagermus flyver ud ved solnedgang for at spise frugt og insekter.",
+      "text_markdown": "Flagermus flyver ud ved solnedgang for at spise frugt og insekter.",
+      "tts": {
+        "text": "Flagermus flyver ud ved solnedgang for at spise frugt og insekter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ét regnskovstræ kan du finde flere slags dyr end i en hel by et andet sted.",
+      "text_markdown": "I ét regnskovstræ kan du finde flere slags dyr end i en hel by et andet sted.",
+      "tts": {
+        "text": "I ét regnskovstræ kan du finde flere slags dyr end i en hel by et andet sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er underet ved dette biom.",
+      "text_markdown": "Det er underet ved dette biom.",
+      "tts": {
+        "text": "Det er underet ved dette biom.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Menneskene",
+      "text_markdown": "Menneskene"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker har boet i den tropiske regnskov i meget lang tid.",
+      "text_markdown": "Mennesker har boet i den tropiske regnskov i meget lang tid.",
+      "tts": {
+        "text": "Mennesker har boet i den tropiske regnskov i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har lært, hvordan man lever godt sammen med træerne, regnen og dyrene.",
+      "text_markdown": "De har lært, hvordan man lever godt sammen med træerne, regnen og dyrene.",
+      "tts": {
+        "text": "De har lært, hvordan man lever godt sammen med træerne, regnen og dyrene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af regnskovens mennesker bor i små landsbyer.",
+      "text_markdown": "Mange af regnskovens mennesker bor i små landsbyer.",
+      "tts": {
+        "text": "Mange af regnskovens mennesker bor i små landsbyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Husene er ofte bygget på høje træpæle for at holde dem oppe over den våde jord.",
+      "text_markdown": "Husene er ofte bygget på høje træpæle for at holde dem oppe over den våde jord.",
+      "tts": {
+        "text": "Husene er ofte bygget på høje træpæle for at holde dem oppe over den våde jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tagene er lavet af blade lagt i tykke rækker.",
+      "text_markdown": "Tagene er lavet af blade lagt i tykke rækker.",
+      "tts": {
+        "text": "Tagene er lavet af blade lagt i tykke rækker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et godt bladtag holder den kraftige regn ude.",
+      "text_markdown": "Et godt bladtag holder den kraftige regn ude.",
+      "tts": {
+        "text": "Et godt bladtag holder den kraftige regn ude.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Væggene er ofte åbne, så den varme luft kan slippe igennem.",
+      "text_markdown": "Væggene er ofte åbne, så den varme luft kan slippe igennem.",
+      "tts": {
+        "text": "Væggene er ofte åbne, så den varme luft kan slippe igennem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menneskene fisker i floderne og samler mad fra skoven.",
+      "text_markdown": "Menneskene fisker i floderne og samler mad fra skoven.",
+      "tts": {
+        "text": "Menneskene fisker i floderne og samler mad fra skoven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De jager små dyr med buer og spyd.",
+      "text_markdown": "De jager små dyr med buer og spyd.",
+      "tts": {
+        "text": "De jager små dyr med buer og spyd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dyrker mad i små haver, ryddet ud af træerne.",
+      "text_markdown": "De dyrker mad i små haver, ryddet ud af træerne.",
+      "tts": {
+        "text": "De dyrker mad i små haver, ryddet ud af træerne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvad de dyrker afhænger af, hvor de bor.",
+      "text_markdown": "Hvad de dyrker afhænger af, hvor de bor.",
+      "tts": {
+        "text": "Hvad de dyrker afhænger af, hvor de bor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskovene i Sydamerika har folk dyrket maniok og søde kartofler i tusindvis af år.",
+      "text_markdown": "I regnskovene i Sydamerika har folk dyrket maniok og søde kartofler i tusindvis af år.",
+      "tts": {
+        "text": "I regnskovene i Sydamerika har folk dyrket maniok og søde kartofler i tusindvis af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskovene i Afrika har folk dyrket yams og palmefrugt.",
+      "text_markdown": "I regnskovene i Afrika har folk dyrket yams og palmefrugt.",
+      "tts": {
+        "text": "I regnskovene i Afrika har folk dyrket yams og palmefrugt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I regnskovene i Sydøstasien og Stillehavet har folk dyrket taro, ris og brødfrugt.",
+      "text_markdown": "I regnskovene i Sydøstasien og Stillehavet har folk dyrket taro, ris og brødfrugt.",
+      "tts": {
+        "text": "I regnskovene i Sydøstasien og Stillehavet har folk dyrket taro, ris og brødfrugt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter nogle år lader de haven vokse tilbage til skov, og de laver en ny et andet sted.",
+      "text_markdown": "Efter nogle år lader de haven vokse tilbage til skov, og de laver en ny et andet sted.",
+      "tts": {
+        "text": "Efter nogle år lader de haven vokse tilbage til skov, og de laver en ny et andet sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sådan holder skoven sig sund.",
+      "text_markdown": "Sådan holder skoven sig sund.",
+      "tts": {
+        "text": "Sådan holder skoven sig sund.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regnskovens folk kender tusindvis af planter.",
+      "text_markdown": "Regnskovens folk kender tusindvis af planter.",
+      "tts": {
+        "text": "Regnskovens folk kender tusindvis af planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De ved, hvilke der giver mad, hvilke der giver medicin, og hvilke der ikke er sikre at spise.",
+      "text_markdown": "De ved, hvilke der giver mad, hvilke der giver medicin, og hvilke der ikke er sikre at spise.",
+      "tts": {
+        "text": "De ved, hvilke der giver mad, hvilke der giver medicin, og hvilke der ikke er sikre at spise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lærer fuglenes sange.",
+      "text_markdown": "De lærer fuglenes sange.",
+      "tts": {
+        "text": "De lærer fuglenes sange.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lærer dyrenes spor.",
+      "text_markdown": "De lærer dyrenes spor.",
+      "tts": {
+        "text": "De lærer dyrenes spor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne viden gives videre fra forældre til børn, år efter år.",
+      "text_markdown": "Denne viden gives videre fra forældre til børn, år efter år.",
+      "tts": {
+        "text": "Denne viden gives videre fra forældre til børn, år efter år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I hver regnskov har denne slags liv sine egne sprog, sine egne historier og sin egen musik.",
+      "text_markdown": "I hver regnskov har denne slags liv sine egne sprog, sine egne historier og sin egen musik.",
+      "tts": {
+        "text": "I hver regnskov har denne slags liv sine egne sprog, sine egne historier og sin egen musik.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Regnskoven i dag",
+      "text_markdown": "Regnskoven i dag"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tropiske regnskov er et af de vigtigste biomer på Jorden.",
+      "text_markdown": "Den tropiske regnskov er et af de vigtigste biomer på Jorden.",
+      "tts": {
+        "text": "Den tropiske regnskov er et af de vigtigste biomer på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne trækker vand op fra jorden og ånder det ud i himlen.",
+      "text_markdown": "Træerne trækker vand op fra jorden og ånder det ud i himlen.",
+      "tts": {
+        "text": "Træerne trækker vand op fra jorden og ånder det ud i himlen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skyerne, der danner sig over skoven, bærer regn til lande langt væk.",
+      "text_markdown": "Skyerne, der danner sig over skoven, bærer regn til lande langt væk.",
+      "tts": {
+        "text": "Skyerne, der danner sig over skoven, bærer regn til lande langt væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træerne ånder også, men den modsatte vej af os.",
+      "text_markdown": "Træerne ånder også, men den modsatte vej af os.",
+      "tts": {
+        "text": "Træerne ånder også, men den modsatte vej af os.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De optager den luftart, vi ånder ud, og de bruger den til at vokse.",
+      "text_markdown": "De optager den luftart, vi ånder ud, og de bruger den til at vokse.",
+      "tts": {
+        "text": "De optager den luftart, vi ånder ud, og de bruger den til at vokse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Og de giver den luftart tilbage, som vi ånder ind.",
+      "text_markdown": "Og de giver den luftart tilbage, som vi ånder ind.",
+      "tts": {
+        "text": "Og de giver den luftart tilbage, som vi ånder ind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men regnskoven er i fare.",
+      "text_markdown": "Men regnskoven er i fare.",
+      "tts": {
+        "text": "Men regnskoven er i fare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange steder har folk fældet træerne for at dyrke afgrøder eller holde dyr.",
+      "text_markdown": "Mange steder har folk fældet træerne for at dyrke afgrøder eller holde dyr.",
+      "tts": {
+        "text": "Mange steder har folk fældet træerne for at dyrke afgrøder eller holde dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når træerne er væk, skyller jorden bort, og regnen falder ikke længere, som den plejede.",
+      "text_markdown": "Når træerne er væk, skyller jorden bort, og regnen falder ikke længere, som den plejede.",
+      "tts": {
+        "text": "Når træerne er væk, skyller jorden bort, og regnen falder ikke længere, som den plejede.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene og menneskene, der bor der, mister deres hjem.",
+      "text_markdown": "Dyrene og menneskene, der bor der, mister deres hjem.",
+      "tts": {
+        "text": "Dyrene og menneskene, der bor der, mister deres hjem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbejder på at beskytte det, der er tilbage.",
+      "text_markdown": "Mange grupper rundt om i verden arbejder på at beskytte det, der er tilbage.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbejder på at beskytte det, der er tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planter nye træer.",
+      "text_markdown": "De planter nye træer.",
+      "tts": {
+        "text": "De planter nye træer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hjælper de mennesker, der bor i skoven, med at passe på den.",
+      "text_markdown": "De hjælper de mennesker, der bor i skoven, med at passe på den.",
+      "tts": {
+        "text": "De hjælper de mennesker, der bor i skoven, med at passe på den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer skoven, så vi forstår den bedre.",
+      "text_markdown": "De studerer skoven, så vi forstår den bedre.",
+      "tts": {
+        "text": "De studerer skoven, så vi forstår den bedre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En regnskov tager hundreder af år at vokse.",
+      "text_markdown": "En regnskov tager hundreder af år at vokse.",
+      "tts": {
+        "text": "En regnskov tager hundreder af år at vokse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men en sund regnskov kan blive ved med at vokse i tusindvis af år.",
+      "text_markdown": "Men en sund regnskov kan blive ved med at vokse i tusindvis af år.",
+      "tts": {
+        "text": "Men en sund regnskov kan blive ved med at vokse i tusindvis af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Regnskoven i dag",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er værd at passe på.",
+      "text_markdown": "Den er værd at passe på.",
+      "tts": {
+        "text": "Den er værd at passe på.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afslutning",
+      "text_markdown": "Afslutning"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tropiske regnskov.",
+      "text_markdown": "Det er den tropiske regnskov.",
+      "tts": {
+        "text": "Det er den tropiske regnskov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En varm, våd, grøn verden fuld af liv.",
+      "text_markdown": "En varm, våd, grøn verden fuld af liv.",
+      "tts": {
+        "text": "En varm, våd, grøn verden fuld af liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du nogensinde går ind i en, så stå stille et minut.",
+      "text_markdown": "Hvis du nogensinde går ind i en, så stå stille et minut.",
+      "tts": {
+        "text": "Hvis du nogensinde går ind i en, så stå stille et minut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyt til fuglene, frøerne og regnen på bladene.",
+      "text_markdown": "Lyt til fuglene, frøerne og regnen på bladene.",
+      "tts": {
+        "text": "Lyt til fuglene, frøerne og regnen på bladene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil høre biomets hjerte slå omkring dig.",
+      "text_markdown": "Du vil høre biomets hjerte slå omkring dig.",
+      "tts": {
+        "text": "Du vil høre biomets hjerte slå omkring dig.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

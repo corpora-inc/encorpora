@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Lockropet",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Lockropet",
+      "text_markdown": "Lockropet"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns ett ögonblick, precis efter att du lämnat planet, som jag önskar att jag kunde ge dig gratis.",
+      "text_markdown": "Det finns ett ögonblick, precis efter att du lämnat planet, som jag önskar att jag kunde ge dig gratis.",
+      "tts": {
+        "text": "Det finns ett ögonblick, precis efter att du lämnat planet, som jag önskar att jag kunde ge dig gratis.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Världen slutar vara en plats du lever i.",
+      "text_markdown": "Världen slutar vara en plats du lever i.",
+      "tts": {
+        "text": "Världen slutar vara en plats du lever i.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den blir en plats du faller genom.",
+      "text_markdown": "Den blir en plats du faller genom.",
+      "tts": {
+        "text": "Den blir en plats du faller genom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Och de första sekunderna hinner ditt sinne inte riktigt med vad din kropp precis har gjort.",
+      "text_markdown": "Och de första sekunderna hinner ditt sinne inte riktigt med vad din kropp precis har gjort.",
+      "tts": {
+        "text": "Och de första sekunderna hinner ditt sinne inte riktigt med vad din kropp precis har gjort.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk frågar mig varför jag hoppar.",
+      "text_markdown": "Folk frågar mig varför jag hoppar.",
+      "tts": {
+        "text": "Folk frågar mig varför jag hoppar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De väntar sig alltid att jag ska säga att det är kicken.",
+      "text_markdown": "De väntar sig alltid att jag ska säga att det är kicken.",
+      "tts": {
+        "text": "De väntar sig alltid att jag ska säga att det är kicken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det är inte kicken.",
+      "text_markdown": "Det är inte kicken.",
+      "tts": {
+        "text": "Det är inte kicken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kicken är vad du känner under dina första fem hopp.",
+      "text_markdown": "Kicken är vad du känner under dina första fem hopp.",
+      "tts": {
+        "text": "Kicken är vad du känner under dina första fem hopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sedan tar något stillsammare över.",
+      "text_markdown": "Sedan tar något stillsammare över.",
+      "tts": {
+        "text": "Sedan tar något stillsammare över.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det jag jagar är klarheten.",
+      "text_markdown": "Det jag jagar är klarheten.",
+      "tts": {
+        "text": "Det jag jagar är klarheten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Under sextio sekunder i fritt fall har ditt sinne ingenting annat att göra.",
+      "text_markdown": "Under sextio sekunder i fritt fall har ditt sinne ingenting annat att göra.",
+      "tts": {
+        "text": "Under sextio sekunder i fritt fall har ditt sinne ingenting annat att göra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ingen telefon.",
+      "text_markdown": "Ingen telefon.",
+      "tts": {
+        "text": "Ingen telefon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Inga räkningar.",
+      "text_markdown": "Inga räkningar.",
+      "tts": {
+        "text": "Inga räkningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Inget litet bekymmer om morgondagen.",
+      "text_markdown": "Inget litet bekymmer om morgondagen.",
+      "tts": {
+        "text": "Inget litet bekymmer om morgondagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bara vinden, din andning och jordens långsamma välvning under dig.",
+      "text_markdown": "Bara vinden, din andning och jordens långsamma välvning under dig.",
+      "tts": {
+        "text": "Bara vinden, din andning och jordens långsamma välvning under dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Det mesta i livet är bullrigt.",
+      "text_markdown": "Det mesta i livet är bullrigt.",
+      "tts": {
+        "text": "Det mesta i livet är bullrigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Den minuten är det inte.",
+      "text_markdown": "Den minuten är det inte.",
+      "tts": {
+        "text": "Den minuten är det inte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fallskärmshoppare är inte galna.",
+      "text_markdown": "Fallskärmshoppare är inte galna.",
+      "tts": {
+        "text": "Fallskärmshoppare är inte galna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De flesta av oss är lugna människor som hittade ett sätt att känna sig lugna snabbare.",
+      "text_markdown": "De flesta av oss är lugna människor som hittade ett sätt att känna sig lugna snabbare.",
+      "tts": {
+        "text": "De flesta av oss är lugna människor som hittade ett sätt att känna sig lugna snabbare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vi hoppar ut ur flygplan på samma sätt som andra mediterar.",
+      "text_markdown": "Vi hoppar ut ur flygplan på samma sätt som andra mediterar.",
+      "tts": {
+        "text": "Vi hoppar ut ur flygplan på samma sätt som andra mediterar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det rensar någonting.",
+      "text_markdown": "Det rensar någonting.",
+      "tts": {
+        "text": "Det rensar någonting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Och sedan, varje helg, rensar det det igen.",
+      "text_markdown": "Och sedan, varje helg, rensar det det igen.",
+      "tts": {
+        "text": "Och sedan, varje helg, rensar det det igen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Första gången jag såg en fallskärm öppna sig ovanför mig grät jag in i selen.",
+      "text_markdown": "Första gången jag såg en fallskärm öppna sig ovanför mig grät jag in i selen.",
+      "tts": {
+        "text": "Första gången jag såg en fallskärm öppna sig ovanför mig grät jag in i selen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jag hade inte väntat mig det.",
+      "text_markdown": "Jag hade inte väntat mig det.",
+      "tts": {
+        "text": "Jag hade inte väntat mig det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En vuxen människa, hängande i himlen under en fyrkant av mjukt tyg, gråtande utan att kunna förklara varför.",
+      "text_markdown": "En vuxen människa, hängande i himlen under en fyrkant av mjukt tyg, gråtande utan att kunna förklara varför.",
+      "tts": {
+        "text": "En vuxen människa, hängande i himlen under en fyrkant av mjukt tyg, gråtande utan att kunna förklara varför.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Min instruktör skrattade vänligt och klappade mig på axeln.",
+      "text_markdown": "Min instruktör skrattade vänligt och klappade mig på axeln.",
+      "tts": {
+        "text": "Min instruktör skrattade vänligt och klappade mig på axeln.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Han hade sett det många gånger.",
+      "text_markdown": "Han hade sett det många gånger.",
+      "tts": {
+        "text": "Han hade sett det många gånger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det var i den stunden jag visste att jag skulle komma tillbaka.",
+      "text_markdown": "Det var i den stunden jag visste att jag skulle komma tillbaka.",
+      "tts": {
+        "text": "Det var i den stunden jag visste att jag skulle komma tillbaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fallskärmshoppning handlar inte om att vara modig.",
+      "text_markdown": "Fallskärmshoppning handlar inte om att vara modig.",
+      "tts": {
+        "text": "Fallskärmshoppning handlar inte om att vara modig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det handlar om att hitta den enda plats där ditt sinne blir tyst.",
+      "text_markdown": "Det handlar om att hitta den enda plats där ditt sinne blir tyst.",
+      "tts": {
+        "text": "Det handlar om att hitta den enda plats där ditt sinne blir tyst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "För en del människor är den platsen en yogamatta.",
+      "text_markdown": "För en del människor är den platsen en yogamatta.",
+      "tts": {
+        "text": "För en del människor är den platsen en yogamatta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "För andra är det en lång löprunda på en tom väg.",
+      "text_markdown": "För andra är det en lång löprunda på en tom väg.",
+      "tts": {
+        "text": "För andra är det en lång löprunda på en tom väg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "För andra är det ett metspö, eller ett piano, eller ett kök vid sex på morgonen.",
+      "text_markdown": "För andra är det ett metspö, eller ett piano, eller ett kök vid sex på morgonen.",
+      "tts": {
+        "text": "För andra är det ett metspö, eller ett piano, eller ett kök vid sex på morgonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "För mig är det trettontusen fot ovanför marken, där det enda jag behöver göra är att andas in djupt.",
+      "text_markdown": "För mig är det trettontusen fot ovanför marken, där det enda jag behöver göra är att andas in djupt.",
+      "tts": {
+        "text": "För mig är det trettontusen fot ovanför marken, där det enda jag behöver göra är att andas in djupt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sugverkan, när du väl känner den, är svår att beskriva för en vän vid middagsbordet.",
+      "text_markdown": "Sugverkan, när du väl känner den, är svår att beskriva för en vän vid middagsbordet.",
+      "tts": {
+        "text": "Sugverkan, när du väl känner den, är svår att beskriva för en vän vid middagsbordet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du kommer att försöka, och de kommer att le artigt, och du kommer att ge upp.",
+      "text_markdown": "Du kommer att försöka, och de kommer att le artigt, och du kommer att ge upp.",
+      "tts": {
+        "text": "Du kommer att försöka, och de kommer att le artigt, och du kommer att ge upp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det är okej.",
+      "text_markdown": "Det är okej.",
+      "tts": {
+        "text": "Det är okej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du började inte hoppa för att förklara det.",
+      "text_markdown": "Du började inte hoppa för att förklara det.",
+      "tts": {
+        "text": "Du började inte hoppa för att förklara det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du började hoppa för att, första gången du provade, sa något inom dig, åh, där är du.",
+      "text_markdown": "Du började hoppa för att, första gången du provade, sa något inom dig, åh, där är du.",
+      "tts": {
+        "text": "Du började hoppa för att, första gången du provade, sa något inom dig, åh, där är du.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Har du någonsin stått vid kanten av något högt och känt din kropp luta sig mot den öppna luften?",
+      "text_markdown": "Har du någonsin stått vid kanten av något högt och känt din kropp luta sig mot den öppna luften?",
+      "tts": {
+        "text": "Har du någonsin stått vid kanten av något högt och känt din kropp luta sig mot den öppna luften?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bara lite, bara för en sekund.",
+      "text_markdown": "Bara lite, bara för en sekund.",
+      "tts": {
+        "text": "Bara lite, bara för en sekund.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Om du har det, så vet du redan vad jag pratar om.",
+      "text_markdown": "Om du har det, så vet du redan vad jag pratar om.",
+      "tts": {
+        "text": "Om du har det, så vet du redan vad jag pratar om.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fallskärmshoppning är vad som händer när du slutar låtsas att du inte lutar dig.",
+      "text_markdown": "Fallskärmshoppning är vad som händer när du slutar låtsas att du inte lutar dig.",
+      "tts": {
+        "text": "Fallskärmshoppning är vad som händer när du slutar låtsas att du inte lutar dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du kliver ut, med flit, in i den plats som din kropp tyst har frågat efter i åratal.",
+      "text_markdown": "Du kliver ut, med flit, in i den plats som din kropp tyst har frågat efter i åratal.",
+      "tts": {
+        "text": "Du kliver ut, med flit, in i den plats som din kropp tyst har frågat efter i åratal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Och sedan, väldigt snabbt, lär du dig att marken aldrig var där rädslan fanns.",
+      "text_markdown": "Och sedan, väldigt snabbt, lär du dig att marken aldrig var där rädslan fanns.",
+      "tts": {
+        "text": "Och sedan, väldigt snabbt, lär du dig att marken aldrig var där rädslan fanns.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rädslan fanns i lutandet.",
+      "text_markdown": "Rädslan fanns i lutandet.",
+      "tts": {
+        "text": "Rädslan fanns i lutandet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "När du väl hoppar försvinner rädslan.",
+      "text_markdown": "När du väl hoppar försvinner rädslan.",
+      "tts": {
+        "text": "När du väl hoppar försvinner rädslan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det som finns kvar är något som nästan känns som hemma.",
+      "text_markdown": "Det som finns kvar är något som nästan känns som hemma.",
+      "tts": {
+        "text": "Det som finns kvar är något som nästan känns som hemma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ditt hjärta saktar ner.",
+      "text_markdown": "Ditt hjärta saktar ner.",
+      "tts": {
+        "text": "Ditt hjärta saktar ner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Din andning hittar en rytm den har letat efter.",
+      "text_markdown": "Din andning hittar en rytm den har letat efter.",
+      "tts": {
+        "text": "Din andning hittar en rytm den har letat efter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Luften håller dig.",
+      "text_markdown": "Luften håller dig.",
+      "tts": {
+        "text": "Luften håller dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Och du känner, kanske för första gången på länge, att du är precis där du är.",
+      "text_markdown": "Och du känner, kanske för första gången på länge, att du är precis där du är.",
+      "tts": {
+        "text": "Och du känner, kanske för första gången på länge, att du är precis där du är.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är vad jag skulle berätta för dig, om du frågade mig under en lång promenad.",
+      "text_markdown": "Det är vad jag skulle berätta för dig, om du frågade mig under en lång promenad.",
+      "tts": {
+        "text": "Det är vad jag skulle berätta för dig, om du frågade mig under en lång promenad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Varför fortsätter en lugn och förnuftig person att hoppa ut ur fullt fungerande flygplan?",
+      "text_markdown": "Varför fortsätter en lugn och förnuftig person att hoppa ut ur fullt fungerande flygplan?",
+      "tts": {
+        "text": "Varför fortsätter en lugn och förnuftig person att hoppa ut ur fullt fungerande flygplan?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jag skulle berätta att det är det tystaste jag gör.",
+      "text_markdown": "Jag skulle berätta att det är det tystaste jag gör.",
+      "tts": {
+        "text": "Jag skulle berätta att det är det tystaste jag gör.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Och jag skulle mena det.",
+      "text_markdown": "Och jag skulle mena det.",
+      "tts": {
+        "text": "Och jag skulle mena det.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Första gången",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Första gången",
+      "text_markdown": "Första gången"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Låt mig sätta dig i planet.",
+      "text_markdown": "Låt mig sätta dig i planet.",
+      "tts": {
+        "text": "Låt mig sätta dig i planet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du sitter på en låg metallbänk, fastspänd i en instruktör bakom dig.",
+      "text_markdown": "Du sitter på en låg metallbänk, fastspänd i en instruktör bakom dig.",
+      "tts": {
+        "text": "Du sitter på en låg metallbänk, fastspänd i en instruktör bakom dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Planet stiger i långsamma, lättjefulla cirklar.",
+      "text_markdown": "Planet stiger i långsamma, lättjefulla cirklar.",
+      "tts": {
+        "text": "Planet stiger i långsamma, lättjefulla cirklar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det lilla fyrkantiga fönstret bredvid dig blir blåare och blåare.",
+      "text_markdown": "Det lilla fyrkantiga fönstret bredvid dig blir blåare och blåare.",
+      "tts": {
+        "text": "Det lilla fyrkantiga fönstret bredvid dig blir blåare och blåare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du kan känna ditt hjärta i halsen, men du får inte panik.",
+      "text_markdown": "Du kan känna ditt hjärta i halsen, men du får inte panik.",
+      "tts": {
+        "text": "Du kan känna ditt hjärta i halsen, men du får inte panik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du är bara väldigt, väldigt vaken.",
+      "text_markdown": "Du är bara väldigt, väldigt vaken.",
+      "tts": {
+        "text": "Du är bara väldigt, väldigt vaken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Instruktören lutar sig nära ditt öra.",
+      "text_markdown": "Instruktören lutar sig nära ditt öra.",
+      "tts": {
+        "text": "Instruktören lutar sig nära ditt öra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han säger lugnt till dig att allt du behöver göra, det säger han till dig när det är dags.",
+      "text_markdown": "Han säger lugnt till dig att allt du behöver göra, det säger han till dig när det är dags.",
+      "tts": {
+        "text": "Han säger lugnt till dig att allt du behöver göra, det säger han till dig när det är dags.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du nickar.",
+      "text_markdown": "Du nickar.",
+      "tts": {
+        "text": "Du nickar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du har nickat så många gånger den senaste timmen att din nacke börjar göra ont.",
+      "text_markdown": "Du har nickat så många gånger den senaste timmen att din nacke börjar göra ont.",
+      "tts": {
+        "text": "Du har nickat så många gånger den senaste timmen att din nacke börjar göra ont.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan öppnas dörren.",
+      "text_markdown": "Sedan öppnas dörren.",
+      "tts": {
+        "text": "Sedan öppnas dörren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden kommer in som en vägg, högljudd och kall och levande, och plötsligt känns planet väldigt litet.",
+      "text_markdown": "Vinden kommer in som en vägg, högljudd och kall och levande, och plötsligt känns planet väldigt litet.",
+      "tts": {
+        "text": "Vinden kommer in som en vägg, högljudd och kall och levande, och plötsligt känns planet väldigt litet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du hasar dig till kanten.",
+      "text_markdown": "Du hasar dig till kanten.",
+      "tts": {
+        "text": "Du hasar dig till kanten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dina tår hänger i ingenting.",
+      "text_markdown": "Dina tår hänger i ingenting.",
+      "tts": {
+        "text": "Dina tår hänger i ingenting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du tittar ner, och marken är så långt borta att den inte ser ut som mark längre.",
+      "text_markdown": "Du tittar ner, och marken är så långt borta att den inte ser ut som mark längre.",
+      "tts": {
+        "text": "Du tittar ner, och marken är så långt borta att den inte ser ut som mark längre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den ser ut som ett lapptäcke.",
+      "text_markdown": "Den ser ut som ett lapptäcke.",
+      "tts": {
+        "text": "Den ser ut som ett lapptäcke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Vägar lika tunna som tråd.",
+      "text_markdown": "Vägar lika tunna som tråd.",
+      "tts": {
+        "text": "Vägar lika tunna som tråd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "En flod i färgen av matt silver.",
+      "text_markdown": "En flod i färgen av matt silver.",
+      "tts": {
+        "text": "En flod i färgen av matt silver.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Små gröna och bruna fält sammansydda av häckar.",
+      "text_markdown": "Små gröna och bruna fält sammansydda av häckar.",
+      "tts": {
+        "text": "Små gröna och bruna fält sammansydda av häckar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Din instruktör räknar.",
+      "text_markdown": "Din instruktör räknar.",
+      "tts": {
+        "text": "Din instruktör räknar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Han säger ett.",
+      "text_markdown": "Han säger ett.",
+      "tts": {
+        "text": "Han säger ett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Han säger två.",
+      "text_markdown": "Han säger två.",
+      "tts": {
+        "text": "Han säger två.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vid tre är planet borta.",
+      "text_markdown": "Vid tre är planet borta.",
+      "tts": {
+        "text": "Vid tre är planet borta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De första tre sekunderna är de svåraste.",
+      "text_markdown": "De första tre sekunderna är de svåraste.",
+      "tts": {
+        "text": "De första tre sekunderna är de svåraste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Din kropp tror att den faller, eftersom den gör det, och din kropp har aldrig fått höra att det är okej.",
+      "text_markdown": "Din kropp tror att den faller, eftersom den gör det, och din kropp har aldrig fått höra att det är okej.",
+      "tts": {
+        "text": "Din kropp tror att den faller, eftersom den gör det, och din kropp har aldrig fått höra att det är okej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du gör ett ljud.",
+      "text_markdown": "Du gör ett ljud.",
+      "tts": {
+        "text": "Du gör ett ljud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alla gör ett ljud.",
+      "text_markdown": "Alla gör ett ljud.",
+      "tts": {
+        "text": "Alla gör ett ljud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det finns ingen anledning att skämmas över ljudet.",
+      "text_markdown": "Det finns ingen anledning att skämmas över ljudet.",
+      "tts": {
+        "text": "Det finns ingen anledning att skämmas över ljudet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan händer något extraordinärt.",
+      "text_markdown": "Sedan händer något extraordinärt.",
+      "tts": {
+        "text": "Sedan händer något extraordinärt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fallet slutar kännas som ett fall.",
+      "text_markdown": "Fallet slutar kännas som ett fall.",
+      "tts": {
+        "text": "Fallet slutar kännas som ett fall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vinden kommer upp för att möta dig och håller dig, på samma sätt som vatten håller dig när du flyter på rygg.",
+      "text_markdown": "Vinden kommer upp för att möta dig och håller dig, på samma sätt som vatten håller dig när du flyter på rygg.",
+      "tts": {
+        "text": "Vinden kommer upp för att möta dig och håller dig, på samma sätt som vatten håller dig när du flyter på rygg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dina armar och ben sprider sig ut utan att du ber dem.",
+      "text_markdown": "Dina armar och ben sprider sig ut utan att du ber dem.",
+      "tts": {
+        "text": "Dina armar och ben sprider sig ut utan att du ber dem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ditt ansikte känns som om det dras i många riktningar samtidigt.",
+      "text_markdown": "Ditt ansikte känns som om det dras i många riktningar samtidigt.",
+      "tts": {
+        "text": "Ditt ansikte känns som om det dras i många riktningar samtidigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du kan inte avgöra om du ler eller skriker.",
+      "text_markdown": "Du kan inte avgöra om du ler eller skriker.",
+      "tts": {
+        "text": "Du kan inte avgöra om du ler eller skriker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Det spelar ingen roll.",
+      "text_markdown": "Det spelar ingen roll.",
+      "tts": {
+        "text": "Det spelar ingen roll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du tittar dig omkring.",
+      "text_markdown": "Du tittar dig omkring.",
+      "tts": {
+        "text": "Du tittar dig omkring.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jorden är fortfarande väldigt långt under dig, men den är närmare nu, och du kan se färgerna bättre.",
+      "text_markdown": "Jorden är fortfarande väldigt långt under dig, men den är närmare nu, och du kan se färgerna bättre.",
+      "tts": {
+        "text": "Jorden är fortfarande väldigt långt under dig, men den är närmare nu, och du kan se färgerna bättre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bilar på en motorväg, långsamma som myror.",
+      "text_markdown": "Bilar på en motorväg, långsamma som myror.",
+      "tts": {
+        "text": "Bilar på en motorväg, långsamma som myror.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En sjö, helt stilla.",
+      "text_markdown": "En sjö, helt stilla.",
+      "tts": {
+        "text": "En sjö, helt stilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Molnskugga som driver över en skog.",
+      "text_markdown": "Molnskugga som driver över en skog.",
+      "tts": {
+        "text": "Molnskugga som driver över en skog.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du flyger.",
+      "text_markdown": "Du flyger.",
+      "tts": {
+        "text": "Du flyger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inte i ett plan.",
+      "text_markdown": "Inte i ett plan.",
+      "tts": {
+        "text": "Inte i ett plan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du, din kropp, flyger.",
+      "text_markdown": "Du, din kropp, flyger.",
+      "tts": {
+        "text": "Du, din kropp, flyger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Din instruktör knackar dig på axeln.",
+      "text_markdown": "Din instruktör knackar dig på axeln.",
+      "tts": {
+        "text": "Din instruktör knackar dig på axeln.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du drar i utlösaren.",
+      "text_markdown": "Du drar i utlösaren.",
+      "tts": {
+        "text": "Du drar i utlösaren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det blir en mjuk ryck, som om någon försiktigt tar tag i ryggen på din skjorta.",
+      "text_markdown": "Det blir en mjuk ryck, som om någon försiktigt tar tag i ryggen på din skjorta.",
+      "tts": {
+        "text": "Det blir en mjuk ryck, som om någon försiktigt tar tag i ryggen på din skjorta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sedan en andra ryck, hårdare, som lyfter dig upprätt.",
+      "text_markdown": "Sedan en andra ryck, hårdare, som lyfter dig upprätt.",
+      "tts": {
+        "text": "Sedan en andra ryck, hårdare, som lyfter dig upprätt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Världen blir tyst.",
+      "text_markdown": "Världen blir tyst.",
+      "tts": {
+        "text": "Världen blir tyst.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden är borta.",
+      "text_markdown": "Vinden är borta.",
+      "tts": {
+        "text": "Vinden är borta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bruset är borta.",
+      "text_markdown": "Bruset är borta.",
+      "tts": {
+        "text": "Bruset är borta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fallet är borta.",
+      "text_markdown": "Fallet är borta.",
+      "tts": {
+        "text": "Fallet är borta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du hänger nu, i en sele, under en bred rektangel av tyg.",
+      "text_markdown": "Du hänger nu, i en sele, under en bred rektangel av tyg.",
+      "tts": {
+        "text": "Du hänger nu, i en sele, under en bred rektangel av tyg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Himlen är plötsligt väldigt, väldigt stilla.",
+      "text_markdown": "Himlen är plötsligt väldigt, väldigt stilla.",
+      "tts": {
+        "text": "Himlen är plötsligt väldigt, väldigt stilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du kan höra fågeln under dig.",
+      "text_markdown": "Du kan höra fågeln under dig.",
+      "tts": {
+        "text": "Du kan höra fågeln under dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Du kan höra dig själv andas.",
+      "text_markdown": "Du kan höra dig själv andas.",
+      "tts": {
+        "text": "Du kan höra dig själv andas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Din instruktör skrattar i ditt öra och frågar hur det går för dig.",
+      "text_markdown": "Din instruktör skrattar i ditt öra och frågar hur det går för dig.",
+      "tts": {
+        "text": "Din instruktör skrattar i ditt öra och frågar hur det går för dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Du kan inte svara på en stund, för du gråter, eller skrattar, eller båda delarna.",
+      "text_markdown": "Du kan inte svara på en stund, för du gråter, eller skrattar, eller båda delarna.",
+      "tts": {
+        "text": "Du kan inte svara på en stund, för du gråter, eller skrattar, eller båda delarna.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Färden under kupolen tar omkring fem minuter.",
+      "text_markdown": "Färden under kupolen tar omkring fem minuter.",
+      "tts": {
+        "text": "Färden under kupolen tar omkring fem minuter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De är fem av de mest fridfulla minuterna i ditt liv.",
+      "text_markdown": "De är fem av de mest fridfulla minuterna i ditt liv.",
+      "tts": {
+        "text": "De är fem av de mest fridfulla minuterna i ditt liv.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När dina fötter rör marken tar du tre korta löpsteg och stannar.",
+      "text_markdown": "När dina fötter rör marken tar du tre korta löpsteg och stannar.",
+      "tts": {
+        "text": "När dina fötter rör marken tar du tre korta löpsteg och stannar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gräset är verkligt igen.",
+      "text_markdown": "Gräset är verkligt igen.",
+      "tts": {
+        "text": "Gräset är verkligt igen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Världen är fast igen.",
+      "text_markdown": "Världen är fast igen.",
+      "tts": {
+        "text": "Världen är fast igen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du vänder dig om och tittar upp mot himlen.",
+      "text_markdown": "Du vänder dig om och tittar upp mot himlen.",
+      "tts": {
+        "text": "Du vänder dig om och tittar upp mot himlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Och du förstår, för första gången, vad din vän har försökt berätta för dig alla dessa år.",
+      "text_markdown": "Och du förstår, för första gången, vad din vän har försökt berätta för dig alla dessa år.",
+      "tts": {
+        "text": "Och du förstår, för första gången, vad din vän har försökt berätta för dig alla dessa år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Komma igång",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Komma igång",
+      "text_markdown": "Komma igång"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så hur gör du faktiskt det här, om du en dag bestämmer dig för att du vill.",
+      "text_markdown": "Så hur gör du faktiskt det här, om du en dag bestämmer dig för att du vill.",
+      "tts": {
+        "text": "Så hur gör du faktiskt det här, om du en dag bestämmer dig för att du vill.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det ärliga svaret är, lättare än du tror.",
+      "text_markdown": "Det ärliga svaret är, lättare än du tror.",
+      "tts": {
+        "text": "Det ärliga svaret är, lättare än du tror.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nästan vilken hoppzon som helst i världen tar emot en helt nybörjare samma morgon.",
+      "text_markdown": "Nästan vilken hoppzon som helst i världen tar emot en helt nybörjare samma morgon.",
+      "tts": {
+        "text": "Nästan vilken hoppzon som helst i världen tar emot en helt nybörjare samma morgon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De sätter dig i himlen på ett tandemhopp, med en instruktör på din rygg.",
+      "text_markdown": "De sätter dig i himlen på ett tandemhopp, med en instruktör på din rygg.",
+      "tts": {
+        "text": "De sätter dig i himlen på ett tandemhopp, med en instruktör på din rygg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du anländer, du skriver under papperna, du tittar på en kort film och du träffar din instruktör.",
+      "text_markdown": "Du anländer, du skriver under papperna, du tittar på en kort film och du träffar din instruktör.",
+      "tts": {
+        "text": "Du anländer, du skriver under papperna, du tittar på en kort film och du träffar din instruktör.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du har på dig en hoppdräkt och en sele.",
+      "text_markdown": "Du har på dig en hoppdräkt och en sele.",
+      "tts": {
+        "text": "Du har på dig en hoppdräkt och en sele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du klättrar in i planet.",
+      "text_markdown": "Du klättrar in i planet.",
+      "tts": {
+        "text": "Du klättrar in i planet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ungefär tjugo minuter senare går du tillbaka över gräset med det största leendet i ditt liv.",
+      "text_markdown": "Ungefär tjugo minuter senare går du tillbaka över gräset med det största leendet i ditt liv.",
+      "tts": {
+        "text": "Ungefär tjugo minuter senare går du tillbaka över gräset med det största leendet i ditt liv.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "För ditt första hopp behöver du inte vara modig.",
+      "text_markdown": "För ditt första hopp behöver du inte vara modig.",
+      "tts": {
+        "text": "För ditt första hopp behöver du inte vara modig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du behöver bara vara villig.",
+      "text_markdown": "Du behöver bara vara villig.",
+      "tts": {
+        "text": "Du behöver bara vara villig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Instruktören gör allt.",
+      "text_markdown": "Instruktören gör allt.",
+      "tts": {
+        "text": "Instruktören gör allt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Han drar fallskärmen.",
+      "text_markdown": "Han drar fallskärmen.",
+      "tts": {
+        "text": "Han drar fallskärmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Han flyger kupolen.",
+      "text_markdown": "Han flyger kupolen.",
+      "tts": {
+        "text": "Han flyger kupolen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Han landar dig.",
+      "text_markdown": "Han landar dig.",
+      "tts": {
+        "text": "Han landar dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Du följer med på resan, med den bästa platsen i världen.",
+      "text_markdown": "Du följer med på resan, med den bästa platsen i världen.",
+      "tts": {
+        "text": "Du följer med på resan, med den bästa platsen i världen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du efter det första hoppet är intresserad av att hoppa själv, så heter vägen Accelererat Fritt Fall.",
+      "text_markdown": "Om du efter det första hoppet är intresserad av att hoppa själv, så heter vägen Accelererat Fritt Fall.",
+      "tts": {
+        "text": "Om du efter det första hoppet är intresserad av att hoppa själv, så heter vägen Accelererat Fritt Fall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är ett utbildningsprogram, som lärs ut på varje hoppzon, och som gör dig till en riktig fallskärmshoppare på riktigt.",
+      "text_markdown": "Det är ett utbildningsprogram, som lärs ut på varje hoppzon, och som gör dig till en riktig fallskärmshoppare på riktigt.",
+      "tts": {
+        "text": "Det är ett utbildningsprogram, som lärs ut på varje hoppzon, och som gör dig till en riktig fallskärmshoppare på riktigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inte en passagerare.",
+      "text_markdown": "Inte en passagerare.",
+      "tts": {
+        "text": "Inte en passagerare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En pilot av din egen kropp i himlen.",
+      "text_markdown": "En pilot av din egen kropp i himlen.",
+      "tts": {
+        "text": "En pilot av din egen kropp i himlen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den första nivån i programmet är en lång klassrumsdag.",
+      "text_markdown": "Den första nivån i programmet är en lång klassrumsdag.",
+      "tts": {
+        "text": "Den första nivån i programmet är en lång klassrumsdag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du lär dig att falla.",
+      "text_markdown": "Du lär dig att falla.",
+      "tts": {
+        "text": "Du lär dig att falla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du lär dig att läsa din höjdmätare.",
+      "text_markdown": "Du lär dig att läsa din höjdmätare.",
+      "tts": {
+        "text": "Du lär dig att läsa din höjdmätare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du lär dig vad du ska göra om din huvudfallskärm inte öppnar sig.",
+      "text_markdown": "Du lär dig vad du ska göra om din huvudfallskärm inte öppnar sig.",
+      "tts": {
+        "text": "Du lär dig vad du ska göra om din huvudfallskärm inte öppnar sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Klassrumsdagen tar omkring sex eller sju timmar.",
+      "text_markdown": "Klassrumsdagen tar omkring sex eller sju timmar.",
+      "tts": {
+        "text": "Klassrumsdagen tar omkring sex eller sju timmar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "I slutet av den vet du mer om fallskärmar än vad de flesta lär sig under en hel livstid.",
+      "text_markdown": "I slutet av den vet du mer om fallskärmar än vad de flesta lär sig under en hel livstid.",
+      "tts": {
+        "text": "I slutet av den vet du mer om fallskärmar än vad de flesta lär sig under en hel livstid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan kommer ditt första solohopp.",
+      "text_markdown": "Sedan kommer ditt första solohopp.",
+      "tts": {
+        "text": "Sedan kommer ditt första solohopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Två instruktörer hoppar med dig, en på varje sida, och håller i din sele.",
+      "text_markdown": "Två instruktörer hoppar med dig, en på varje sida, och håller i din sele.",
+      "tts": {
+        "text": "Två instruktörer hoppar med dig, en på varje sida, och håller i din sele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De släpper dig i fritt fall så fort du är stabil.",
+      "text_markdown": "De släpper dig i fritt fall så fort du är stabil.",
+      "tts": {
+        "text": "De släpper dig i fritt fall så fort du är stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du drar din egen fallskärm.",
+      "text_markdown": "Du drar din egen fallskärm.",
+      "tts": {
+        "text": "Du drar din egen fallskärm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du flyger din egen kupol ner till marken.",
+      "text_markdown": "Du flyger din egen kupol ner till marken.",
+      "tts": {
+        "text": "Du flyger din egen kupol ner till marken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Första gången du gör det här kommer ditt ansikte att göra ont nästa dag av hur hårt du har lett.",
+      "text_markdown": "Första gången du gör det här kommer ditt ansikte att göra ont nästa dag av hur hårt du har lett.",
+      "tts": {
+        "text": "Första gången du gör det här kommer ditt ansikte att göra ont nästa dag av hur hårt du har lett.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hela programmet leder dig genom omkring sju hopp.",
+      "text_markdown": "Hela programmet leder dig genom omkring sju hopp.",
+      "tts": {
+        "text": "Hela programmet leder dig genom omkring sju hopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vid slutet hoppar du själv.",
+      "text_markdown": "Vid slutet hoppar du själv.",
+      "tts": {
+        "text": "Vid slutet hoppar du själv.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Därifrån slutför fallskärmshoppare oftast sina första hundra hopp under det följande året.",
+      "text_markdown": "Därifrån slutför fallskärmshoppare oftast sina första hundra hopp under det följande året.",
+      "tts": {
+        "text": "Därifrån slutför fallskärmshoppare oftast sina första hundra hopp under det följande året.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "På vägen lär de sig att flyga relativt andra hoppare.",
+      "text_markdown": "På vägen lär de sig att flyga relativt andra hoppare.",
+      "tts": {
+        "text": "På vägen lär de sig att flyga relativt andra hoppare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De lär sig att tracka över himlen.",
+      "text_markdown": "De lär sig att tracka över himlen.",
+      "tts": {
+        "text": "De lär sig att tracka över himlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De lär sig att packa sin egen fallskärm.",
+      "text_markdown": "De lär sig att packa sin egen fallskärm.",
+      "tts": {
+        "text": "De lär sig att packa sin egen fallskärm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Gemenskapen är liten, vänlig och tålmodig.",
+      "text_markdown": "Gemenskapen är liten, vänlig och tålmodig.",
+      "tts": {
+        "text": "Gemenskapen är liten, vänlig och tålmodig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ingen på en hoppzon kommer någonsin att få dig att känna dig dum för att du är nybörjare.",
+      "text_markdown": "Ingen på en hoppzon kommer någonsin att få dig att känna dig dum för att du är nybörjare.",
+      "tts": {
+        "text": "Ingen på en hoppzon kommer någonsin att få dig att känna dig dum för att du är nybörjare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Vi var alla nybörjare en gång.",
+      "text_markdown": "Vi var alla nybörjare en gång.",
+      "tts": {
+        "text": "Vi var alla nybörjare en gång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "De flesta av oss känner sig fortfarande som nybörjare.",
+      "text_markdown": "De flesta av oss känner sig fortfarande som nybörjare.",
+      "tts": {
+        "text": "De flesta av oss känner sig fortfarande som nybörjare.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vad gäller säkerheten.",
+      "text_markdown": "Vad gäller säkerheten.",
+      "tts": {
+        "text": "Vad gäller säkerheten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är frågan varje förnuftig människa ställer, och den förtjänar ett riktigt svar.",
+      "text_markdown": "Det är frågan varje förnuftig människa ställer, och den förtjänar ett riktigt svar.",
+      "tts": {
+        "text": "Det är frågan varje förnuftig människa ställer, och den förtjänar ett riktigt svar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fallskärmshoppning är, faktiskt, väldigt säkert.",
+      "text_markdown": "Fallskärmshoppning är, faktiskt, väldigt säkert.",
+      "tts": {
+        "text": "Fallskärmshoppning är, faktiskt, väldigt säkert.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Inte lika säkert som att gå, men säkrare än att köra bil till hoppzonen.",
+      "text_markdown": "Inte lika säkert som att gå, men säkrare än att köra bil till hoppzonen.",
+      "tts": {
+        "text": "Inte lika säkert som att gå, men säkrare än att köra bil till hoppzonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Utrustningen är utmärkt.",
+      "text_markdown": "Utrustningen är utmärkt.",
+      "tts": {
+        "text": "Utrustningen är utmärkt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det finns en huvudfallskärm och en reservfallskärm, och en automatisk anordning som utlöser reserven om du inte kan.",
+      "text_markdown": "Det finns en huvudfallskärm och en reservfallskärm, och en automatisk anordning som utlöser reserven om du inte kan.",
+      "tts": {
+        "text": "Det finns en huvudfallskärm och en reservfallskärm, och en automatisk anordning som utlöser reserven om du inte kan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hoppzoner drivs av professionella som bryr sig om dig.",
+      "text_markdown": "Hoppzoner drivs av professionella som bryr sig om dig.",
+      "tts": {
+        "text": "Hoppzoner drivs av professionella som bryr sig om dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Instruktörer bryr sig, djupt, om varje hopp.",
+      "text_markdown": "Instruktörer bryr sig, djupt, om varje hopp.",
+      "tts": {
+        "text": "Instruktörer bryr sig, djupt, om varje hopp.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vad kostar det.",
+      "text_markdown": "Vad kostar det.",
+      "tts": {
+        "text": "Vad kostar det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ett tandemhopp kostar lika mycket som en fin middag för två.",
+      "text_markdown": "Ett tandemhopp kostar lika mycket som en fin middag för två.",
+      "tts": {
+        "text": "Ett tandemhopp kostar lika mycket som en fin middag för två.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Utbildningsprogrammet kostar lika mycket som en liten semester.",
+      "text_markdown": "Utbildningsprogrammet kostar lika mycket som en liten semester.",
+      "tts": {
+        "text": "Utbildningsprogrammet kostar lika mycket som en liten semester.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Efter det kostar varje hopp lika mycket som en biobiljett och en måltid.",
+      "text_markdown": "Efter det kostar varje hopp lika mycket som en biobiljett och en måltid.",
+      "tts": {
+        "text": "Efter det kostar varje hopp lika mycket som en biobiljett och en måltid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Människor med vanliga jobb och vanliga liv gör det här varje helg.",
+      "text_markdown": "Människor med vanliga jobb och vanliga liv gör det här varje helg.",
+      "tts": {
+        "text": "Människor med vanliga jobb och vanliga liv gör det här varje helg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De är inte rika.",
+      "text_markdown": "De är inte rika.",
+      "tts": {
+        "text": "De är inte rika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De är inte ovanliga.",
+      "text_markdown": "De är inte ovanliga.",
+      "tts": {
+        "text": "De är inte ovanliga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "De har bara bestämt att det här är det de gör.",
+      "text_markdown": "De har bara bestämt att det här är det de gör.",
+      "tts": {
+        "text": "De har bara bestämt att det här är det de gör.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du funderar på ditt första hopp, så är det här det enda råd som spelar någon roll.",
+      "text_markdown": "Om du funderar på ditt första hopp, så är det här det enda råd som spelar någon roll.",
+      "tts": {
+        "text": "Om du funderar på ditt första hopp, så är det här det enda råd som spelar någon roll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Välj ett datum.",
+      "text_markdown": "Välj ett datum.",
+      "tts": {
+        "text": "Välj ett datum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Berätta för en vän.",
+      "text_markdown": "Berätta för en vän.",
+      "tts": {
+        "text": "Berätta för en vän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dyk upp.",
+      "text_markdown": "Dyk upp.",
+      "tts": {
+        "text": "Dyk upp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det svåra är inte fallandet.",
+      "text_markdown": "Det svåra är inte fallandet.",
+      "tts": {
+        "text": "Det svåra är inte fallandet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det svåra är beslutet.",
+      "text_markdown": "Det svåra är beslutet.",
+      "tts": {
+        "text": "Det svåra är beslutet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "När du väl bestämmer dig är himlen redan din.",
+      "text_markdown": "När du väl bestämmer dig är himlen redan din.",
+      "tts": {
+        "text": "När du väl bestämmer dig är himlen redan din.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hantverket",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hantverket",
+      "text_markdown": "Hantverket"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns ett hantverk gömt inuti fallandet, och det är den del av fallskärmshoppning som behåller dig för livet.",
+      "text_markdown": "Det finns ett hantverk gömt inuti fallandet, och det är den del av fallskärmshoppning som behåller dig för livet.",
+      "tts": {
+        "text": "Det finns ett hantverk gömt inuti fallandet, och det är den del av fallskärmshoppning som behåller dig för livet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du tittar på en erfaren fallskärmshoppare i fritt fall ser du inte någon som faller.",
+      "text_markdown": "När du tittar på en erfaren fallskärmshoppare i fritt fall ser du inte någon som faller.",
+      "tts": {
+        "text": "När du tittar på en erfaren fallskärmshoppare i fritt fall ser du inte någon som faller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du ser någon som flyger.",
+      "text_markdown": "Du ser någon som flyger.",
+      "tts": {
+        "text": "Du ser någon som flyger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De vänder sig långsamt, med flit, med fingertopparna.",
+      "text_markdown": "De vänder sig långsamt, med flit, med fingertopparna.",
+      "tts": {
+        "text": "De vänder sig långsamt, med flit, med fingertopparna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De glider framåt över himlen en halv mil genom att tippa sina axlar fram två tum.",
+      "text_markdown": "De glider framåt över himlen en halv mil genom att tippa sina axlar fram två tum.",
+      "tts": {
+        "text": "De glider framåt över himlen en halv mil genom att tippa sina axlar fram två tum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De stannar, mitt i fallet, och håller en stillhet som ser omöjlig ut.",
+      "text_markdown": "De stannar, mitt i fallet, och håller en stillhet som ser omöjlig ut.",
+      "tts": {
+        "text": "De stannar, mitt i fallet, och håller en stillhet som ser omöjlig ut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kroppen är flygplanet.",
+      "text_markdown": "Kroppen är flygplanet.",
+      "tts": {
+        "text": "Kroppen är flygplanet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är hantverkets första hemlighet.",
+      "text_markdown": "Det är hantverkets första hemlighet.",
+      "tts": {
+        "text": "Det är hantverkets första hemlighet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "När du väl förstår det följer allt annat.",
+      "text_markdown": "När du väl förstår det följer allt annat.",
+      "tts": {
+        "text": "När du väl förstår det följer allt annat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den grundläggande formen för ett stabilt fritt fall kallas bågen.",
+      "text_markdown": "Den grundläggande formen för ett stabilt fritt fall kallas bågen.",
+      "tts": {
+        "text": "Den grundläggande formen för ett stabilt fritt fall kallas bågen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du skjuter höfterna framåt och låter armar och ben släpa bakom, som en banan.",
+      "text_markdown": "Du skjuter höfterna framåt och låter armar och ben släpa bakom, som en banan.",
+      "tts": {
+        "text": "Du skjuter höfterna framåt och låter armar och ben släpa bakom, som en banan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bågen är det som håller dig vänd nedåt mot jorden utan att du behöver tänka på det.",
+      "text_markdown": "Bågen är det som håller dig vänd nedåt mot jorden utan att du behöver tänka på det.",
+      "tts": {
+        "text": "Bågen är det som håller dig vänd nedåt mot jorden utan att du behöver tänka på det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nya hoppare lär sig bågen i en skumgummigrop, sedan i en vindtunnel, sedan i himlen.",
+      "text_markdown": "Nya hoppare lär sig bågen i en skumgummigrop, sedan i en vindtunnel, sedan i himlen.",
+      "tts": {
+        "text": "Nya hoppare lär sig bågen i en skumgummigrop, sedan i en vindtunnel, sedan i himlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gamla hoppare pratar fortfarande om bågen så som gamla löpare pratar om sitt steg.",
+      "text_markdown": "Gamla hoppare pratar fortfarande om bågen så som gamla löpare pratar om sitt steg.",
+      "tts": {
+        "text": "Gamla hoppare pratar fortfarande om bågen så som gamla löpare pratar om sitt steg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du väl har en stabil båge öppnar sig resten av det fria fallet.",
+      "text_markdown": "När du väl har en stabil båge öppnar sig resten av det fria fallet.",
+      "tts": {
+        "text": "När du väl har en stabil båge öppnar sig resten av det fria fallet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du lär dig att falla långsamt genom att sprida ut dig brett, och förvandla dig till en drake.",
+      "text_markdown": "Du lär dig att falla långsamt genom att sprida ut dig brett, och förvandla dig till en drake.",
+      "tts": {
+        "text": "Du lär dig att falla långsamt genom att sprida ut dig brett, och förvandla dig till en drake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du lär dig att falla snabbt genom att vika ihop dig smått, och förvandla dig till en sten.",
+      "text_markdown": "Du lär dig att falla snabbt genom att vika ihop dig smått, och förvandla dig till en sten.",
+      "tts": {
+        "text": "Du lär dig att falla snabbt genom att vika ihop dig smått, och förvandla dig till en sten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du lär dig att tracka, vilket är det närmaste flygande en mänsklig kropp kan komma.",
+      "text_markdown": "Du lär dig att tracka, vilket är det närmaste flygande en mänsklig kropp kan komma.",
+      "tts": {
+        "text": "Du lär dig att tracka, vilket är det närmaste flygande en mänsklig kropp kan komma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En bra trackare kan tillryggalägga en kvarts mil över himlen på tjugo sekunder.",
+      "text_markdown": "En bra trackare kan tillryggalägga en kvarts mil över himlen på tjugo sekunder.",
+      "tts": {
+        "text": "En bra trackare kan tillryggalägga en kvarts mil över himlen på tjugo sekunder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Armar svepta bakåt, kroppen i vinkel, rör sig som ett pappersflygplan som vet vart det är på väg.",
+      "text_markdown": "Armar svepta bakåt, kroppen i vinkel, rör sig som ett pappersflygplan som vet vart det är på väg.",
+      "tts": {
+        "text": "Armar svepta bakåt, kroppen i vinkel, rör sig som ett pappersflygplan som vet vart det är på väg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den andra halvan av hantverket är kupolen.",
+      "text_markdown": "Den andra halvan av hantverket är kupolen.",
+      "tts": {
+        "text": "Den andra halvan av hantverket är kupolen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fallskärmen är inget passivt som flyter dig ner.",
+      "text_markdown": "Fallskärmen är inget passivt som flyter dig ner.",
+      "tts": {
+        "text": "Fallskärmen är inget passivt som flyter dig ner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den är en vinge, och du flyger den.",
+      "text_markdown": "Den är en vinge, och du flyger den.",
+      "tts": {
+        "text": "Den är en vinge, och du flyger den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Att dra i höger styrlina sänker den högra vingen och svänger dig höger.",
+      "text_markdown": "Att dra i höger styrlina sänker den högra vingen och svänger dig höger.",
+      "tts": {
+        "text": "Att dra i höger styrlina sänker den högra vingen och svänger dig höger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Att dra i båda samtidigt saktar ner dig och låter dig landa mjukt.",
+      "text_markdown": "Att dra i båda samtidigt saktar ner dig och låter dig landa mjukt.",
+      "tts": {
+        "text": "Att dra i båda samtidigt saktar ner dig och låter dig landa mjukt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du läser vinden, du väljer ut platsen, du planerar din bana.",
+      "text_markdown": "Du läser vinden, du väljer ut platsen, du planerar din bana.",
+      "tts": {
+        "text": "Du läser vinden, du väljer ut platsen, du planerar din bana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Du flarar i sista sekunden, så att dina fötter kysser marken i stället för att dunsa i den.",
+      "text_markdown": "Du flarar i sista sekunden, så att dina fötter kysser marken i stället för att dunsa i den.",
+      "tts": {
+        "text": "Du flarar i sista sekunden, så att dina fötter kysser marken i stället för att dunsa i den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Allt det är kupolflygning, och det är en egen disciplin.",
+      "text_markdown": "Allt det är kupolflygning, och det är en egen disciplin.",
+      "tts": {
+        "text": "Allt det är kupolflygning, och det är en egen disciplin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Och sedan finns packningen.",
+      "text_markdown": "Och sedan finns packningen.",
+      "tts": {
+        "text": "Och sedan finns packningen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varje fallskärmshoppare packar sin egen fallskärm.",
+      "text_markdown": "Varje fallskärmshoppare packar sin egen fallskärm.",
+      "tts": {
+        "text": "Varje fallskärmshoppare packar sin egen fallskärm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Varenda gång.",
+      "text_markdown": "Varenda gång.",
+      "tts": {
+        "text": "Varenda gång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du lägger ut kupolen på en lång matta.",
+      "text_markdown": "Du lägger ut kupolen på en lång matta.",
+      "tts": {
+        "text": "Du lägger ut kupolen på en lång matta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du jämnar till linorna.",
+      "text_markdown": "Du jämnar till linorna.",
+      "tts": {
+        "text": "Du jämnar till linorna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du viker cellerna.",
+      "text_markdown": "Du viker cellerna.",
+      "tts": {
+        "text": "Du viker cellerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du lindar in tyget, lirkar in det i påsen, drar bryggan, stänger behållaren.",
+      "text_markdown": "Du lindar in tyget, lirkar in det i påsen, drar bryggan, stänger behållaren.",
+      "tts": {
+        "text": "Du lindar in tyget, lirkar in det i påsen, drar bryggan, stänger behållaren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Det tar omkring femton minuter, och du gör det långsamt, för ditt liv kommer att hänga på just det här tygstycket.",
+      "text_markdown": "Det tar omkring femton minuter, och du gör det långsamt, för ditt liv kommer att hänga på just det här tygstycket.",
+      "tts": {
+        "text": "Det tar omkring femton minuter, och du gör det långsamt, för ditt liv kommer att hänga på just det här tygstycket.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Packning är meditation.",
+      "text_markdown": "Packning är meditation.",
+      "tts": {
+        "text": "Packning är meditation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Många fallskärmshoppare säger att det är den del av dagen som de älskar mest.",
+      "text_markdown": "Många fallskärmshoppare säger att det är den del av dagen som de älskar mest.",
+      "tts": {
+        "text": "Många fallskärmshoppare säger att det är den del av dagen som de älskar mest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mattan, linorna, det långsamma vikandet.",
+      "text_markdown": "Mattan, linorna, det långsamma vikandet.",
+      "tts": {
+        "text": "Mattan, linorna, det långsamma vikandet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Axeln av en vän som packar bredvid dig.",
+      "text_markdown": "Axeln av en vän som packar bredvid dig.",
+      "tts": {
+        "text": "Axeln av en vän som packar bredvid dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Radion i hörnet som spelar en låt du har hört för många gånger.",
+      "text_markdown": "Radion i hörnet som spelar en låt du har hört för många gånger.",
+      "tts": {
+        "text": "Radion i hörnet som spelar en låt du har hört för många gånger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det går inte att jäkta packningen.",
+      "text_markdown": "Det går inte att jäkta packningen.",
+      "tts": {
+        "text": "Det går inte att jäkta packningen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Himlen bryr sig inte om ditt schema.",
+      "text_markdown": "Himlen bryr sig inte om ditt schema.",
+      "tts": {
+        "text": "Himlen bryr sig inte om ditt schema.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hantverkets inställning är tålamod.",
+      "text_markdown": "Hantverkets inställning är tålamod.",
+      "tts": {
+        "text": "Hantverkets inställning är tålamod.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är ödmjukhet.",
+      "text_markdown": "Det är ödmjukhet.",
+      "tts": {
+        "text": "Det är ödmjukhet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det är viljan att gå igenom varje enskilt hopp i efterhand, även de tråkiga.",
+      "text_markdown": "Det är viljan att gå igenom varje enskilt hopp i efterhand, även de tråkiga.",
+      "tts": {
+        "text": "Det är viljan att gå igenom varje enskilt hopp i efterhand, även de tråkiga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fallskärmshoppare älskar att prata efter ett hopp.",
+      "text_markdown": "Fallskärmshoppare älskar att prata efter ett hopp.",
+      "tts": {
+        "text": "Fallskärmshoppare älskar att prata efter ett hopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De sätter sig vid ett picknickbord och går igenom varje sekund, kroppsposition för kroppsposition.",
+      "text_markdown": "De sätter sig vid ett picknickbord och går igenom varje sekund, kroppsposition för kroppsposition.",
+      "tts": {
+        "text": "De sätter sig vid ett picknickbord och går igenom varje sekund, kroppsposition för kroppsposition.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Vad som fungerade.",
+      "text_markdown": "Vad som fungerade.",
+      "tts": {
+        "text": "Vad som fungerade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Vad som var slarvigt.",
+      "text_markdown": "Vad som var slarvigt.",
+      "tts": {
+        "text": "Vad som var slarvigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Vad de vill prova nästa gång.",
+      "text_markdown": "Vad de vill prova nästa gång.",
+      "tts": {
+        "text": "Vad de vill prova nästa gång.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det är därför folk stannar kvar.",
+      "text_markdown": "Det är därför folk stannar kvar.",
+      "tts": {
+        "text": "Det är därför folk stannar kvar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inte för att fallandet är spännande.",
+      "text_markdown": "Inte för att fallandet är spännande.",
+      "tts": {
+        "text": "Inte för att fallandet är spännande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fallandet är den lätta delen.",
+      "text_markdown": "Fallandet är den lätta delen.",
+      "tts": {
+        "text": "Fallandet är den lätta delen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Folk stannar för att det alltid finns något att lära sig.",
+      "text_markdown": "Folk stannar för att det alltid finns något att lära sig.",
+      "tts": {
+        "text": "Folk stannar för att det alltid finns något att lära sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det finns alltid en vän att lära sig det med.",
+      "text_markdown": "Det finns alltid en vän att lära sig det med.",
+      "tts": {
+        "text": "Det finns alltid en vän att lära sig det med.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Och det finns en himmel som väntar på dig vid lunch i morgon.",
+      "text_markdown": "Och det finns en himmel som väntar på dig vid lunch i morgon.",
+      "tts": {
+        "text": "Och det finns en himmel som väntar på dig vid lunch i morgon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Stunder",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Stunder",
+      "text_markdown": "Stunder"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Låt mig ge dig tre.",
+      "text_markdown": "Låt mig ge dig tre.",
+      "tts": {
+        "text": "Låt mig ge dig tre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den första är ett solnedgångshopp.",
+      "text_markdown": "Den första är ett solnedgångshopp.",
+      "tts": {
+        "text": "Den första är ett solnedgångshopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Planet lyfter tjugo minuter innan solen går ner.",
+      "text_markdown": "Planet lyfter tjugo minuter innan solen går ner.",
+      "tts": {
+        "text": "Planet lyfter tjugo minuter innan solen går ner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du klättrar genom lager av orange ljus, kabinen varm, dina vänner tysta.",
+      "text_markdown": "Du klättrar genom lager av orange ljus, kabinen varm, dina vänner tysta.",
+      "tts": {
+        "text": "Du klättrar genom lager av orange ljus, kabinen varm, dina vänner tysta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "När dörren öppnas den här gången är luften rosa.",
+      "text_markdown": "När dörren öppnas den här gången är luften rosa.",
+      "tts": {
+        "text": "När dörren öppnas den här gången är luften rosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Jorden under dig är till hälften i skugga, till hälften i guld.",
+      "text_markdown": "Jorden under dig är till hälften i skugga, till hälften i guld.",
+      "tts": {
+        "text": "Jorden under dig är till hälften i skugga, till hälften i guld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du kliver ut, och under sextio sekunder faller du genom insidan av en solnedgång.",
+      "text_markdown": "Du kliver ut, och under sextio sekunder faller du genom insidan av en solnedgång.",
+      "tts": {
+        "text": "Du kliver ut, och under sextio sekunder faller du genom insidan av en solnedgång.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det ser inte verkligt ut.",
+      "text_markdown": "Det ser inte verkligt ut.",
+      "tts": {
+        "text": "Det ser inte verkligt ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du kommer att se färger som du inte visste att dina ögon kunde hitta.",
+      "text_markdown": "Du kommer att se färger som du inte visste att dina ögon kunde hitta.",
+      "tts": {
+        "text": "Du kommer att se färger som du inte visste att dina ögon kunde hitta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "När din fallskärm öppnar sig svävar du över en värld som under en kort stund står i lågor.",
+      "text_markdown": "När din fallskärm öppnar sig svävar du över en värld som under en kort stund står i lågor.",
+      "tts": {
+        "text": "När din fallskärm öppnar sig svävar du över en värld som under en kort stund står i lågor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vinden har dött bort till ingenting.",
+      "text_markdown": "Vinden har dött bort till ingenting.",
+      "tts": {
+        "text": "Vinden har dött bort till ingenting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hoppzonen är en liten grön fyrkant under dig, med ett enda varmt ljus tänt.",
+      "text_markdown": "Hoppzonen är en liten grön fyrkant under dig, med ett enda varmt ljus tänt.",
+      "tts": {
+        "text": "Hoppzonen är en liten grön fyrkant under dig, med ett enda varmt ljus tänt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du väljer en långsam cirkel och låter dig själv landa sist, för ingen vill att den här delen ska ta slut.",
+      "text_markdown": "Du väljer en långsam cirkel och låter dig själv landa sist, för ingen vill att den här delen ska ta slut.",
+      "tts": {
+        "text": "Du väljer en långsam cirkel och låter dig själv landa sist, för ingen vill att den här delen ska ta slut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "När dina fötter rör vid gräset är himlen lila.",
+      "text_markdown": "När dina fötter rör vid gräset är himlen lila.",
+      "tts": {
+        "text": "När dina fötter rör vid gräset är himlen lila.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Dina vänner kommer in från sina egna landningar.",
+      "text_markdown": "Dina vänner kommer in från sina egna landningar.",
+      "tts": {
+        "text": "Dina vänner kommer in från sina egna landningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "En av dem bara tittar på dig.",
+      "text_markdown": "En av dem bara tittar på dig.",
+      "tts": {
+        "text": "En av dem bara tittar på dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Ni skakar båda på huvudet.",
+      "text_markdown": "Ni skakar båda på huvudet.",
+      "tts": {
+        "text": "Ni skakar båda på huvudet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Ingen av er hittar ett ord.",
+      "text_markdown": "Ingen av er hittar ett ord.",
+      "tts": {
+        "text": "Ingen av er hittar ett ord.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den andra är ett formationshopp.",
+      "text_markdown": "Den andra är ett formationshopp.",
+      "tts": {
+        "text": "Den andra är ett formationshopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni är åtta på lasten.",
+      "text_markdown": "Ni är åtta på lasten.",
+      "tts": {
+        "text": "Ni är åtta på lasten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni sitter på bänken, hjälmarna i knät, och den ledande hopparen ritar dyket på en liten whiteboard.",
+      "text_markdown": "Ni sitter på bänken, hjälmarna i knät, och den ledande hopparen ritar dyket på en liten whiteboard.",
+      "tts": {
+        "text": "Ni sitter på bänken, hjälmarna i knät, och den ledande hopparen ritar dyket på en liten whiteboard.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ni kommer att lämna planet i klunga, falla tillsammans, bygga en cirkel.",
+      "text_markdown": "Ni kommer att lämna planet i klunga, falla tillsammans, bygga en cirkel.",
+      "tts": {
+        "text": "Ni kommer att lämna planet i klunga, falla tillsammans, bygga en cirkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ni kan alla er plats.",
+      "text_markdown": "Ni kan alla er plats.",
+      "tts": {
+        "text": "Ni kan alla er plats.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ni dunkar nävar, ni kollar varandras utrustning, ni skrattar nervöst.",
+      "text_markdown": "Ni dunkar nävar, ni kollar varandras utrustning, ni skrattar nervöst.",
+      "tts": {
+        "text": "Ni dunkar nävar, ni kollar varandras utrustning, ni skrattar nervöst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Åtta vuxna människor, rädda och uppspelta på samma gång, som barn på övernattning.",
+      "text_markdown": "Åtta vuxna människor, rädda och uppspelta på samma gång, som barn på övernattning.",
+      "tts": {
+        "text": "Åtta vuxna människor, rädda och uppspelta på samma gång, som barn på övernattning.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planet planar ut.",
+      "text_markdown": "Planet planar ut.",
+      "tts": {
+        "text": "Planet planar ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dörren öppnas.",
+      "text_markdown": "Dörren öppnas.",
+      "tts": {
+        "text": "Dörren öppnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er ledare kliver ut, och resten av er följer, ett hjärtslag efter varandra.",
+      "text_markdown": "Er ledare kliver ut, och resten av er följer, ett hjärtslag efter varandra.",
+      "tts": {
+        "text": "Er ledare kliver ut, och resten av er följer, ett hjärtslag efter varandra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I fritt fall hittar ni varandra nästan utan att tänka.",
+      "text_markdown": "I fritt fall hittar ni varandra nästan utan att tänka.",
+      "tts": {
+        "text": "I fritt fall hittar ni varandra nästan utan att tänka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Händer möter händer.",
+      "text_markdown": "Händer möter händer.",
+      "tts": {
+        "text": "Händer möter händer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Cirkeln formas.",
+      "text_markdown": "Cirkeln formas.",
+      "tts": {
+        "text": "Cirkeln formas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Under några perfekta sekunder håller åtta människor varandra i himlen.",
+      "text_markdown": "Under några perfekta sekunder håller åtta människor varandra i himlen.",
+      "tts": {
+        "text": "Under några perfekta sekunder håller åtta människor varandra i himlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Faller i samma hastighet.",
+      "text_markdown": "Faller i samma hastighet.",
+      "tts": {
+        "text": "Faller i samma hastighet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Tittar varandra i ögonen.",
+      "text_markdown": "Tittar varandra i ögonen.",
+      "tts": {
+        "text": "Tittar varandra i ögonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Sedan säger din höjdmätare att det är dags.",
+      "text_markdown": "Sedan säger din höjdmätare att det är dags.",
+      "tts": {
+        "text": "Sedan säger din höjdmätare att det är dags.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Ni släpper.",
+      "text_markdown": "Ni släpper.",
+      "tts": {
+        "text": "Ni släpper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Ni trackar bort från varandra, för att ge era fallskärmar plats att öppna sig.",
+      "text_markdown": "Ni trackar bort från varandra, för att ge era fallskärmar plats att öppna sig.",
+      "tts": {
+        "text": "Ni trackar bort från varandra, för att ge era fallskärmar plats att öppna sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "På marken kan ni inte sluta krama varandra.",
+      "text_markdown": "På marken kan ni inte sluta krama varandra.",
+      "tts": {
+        "text": "På marken kan ni inte sluta krama varandra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tredje är ett hopp efter ett tufft år.",
+      "text_markdown": "Den tredje är ett hopp efter ett tufft år.",
+      "tts": {
+        "text": "Den tredje är ett hopp efter ett tufft år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanske har du varit med om något.",
+      "text_markdown": "Kanske har du varit med om något.",
+      "tts": {
+        "text": "Kanske har du varit med om något.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En dålig period på jobbet.",
+      "text_markdown": "En dålig period på jobbet.",
+      "tts": {
+        "text": "En dålig period på jobbet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En relation som tog slut.",
+      "text_markdown": "En relation som tog slut.",
+      "tts": {
+        "text": "En relation som tog slut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En förlust som fick den vanliga världen att kännas tunn och avlägsen.",
+      "text_markdown": "En förlust som fick den vanliga världen att kännas tunn och avlägsen.",
+      "tts": {
+        "text": "En förlust som fick den vanliga världen att kännas tunn och avlägsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du hoppar inte för att du vill känna något.",
+      "text_markdown": "Du hoppar inte för att du vill känna något.",
+      "tts": {
+        "text": "Du hoppar inte för att du vill känna något.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du hoppar för att du inte har kunnat känna något, och du vill veta om du fortfarande finns där inne.",
+      "text_markdown": "Du hoppar för att du inte har kunnat känna något, och du vill veta om du fortfarande finns där inne.",
+      "tts": {
+        "text": "Du hoppar för att du inte har kunnat känna något, och du vill veta om du fortfarande finns där inne.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planet stiger.",
+      "text_markdown": "Planet stiger.",
+      "tts": {
+        "text": "Planet stiger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dörren öppnas.",
+      "text_markdown": "Dörren öppnas.",
+      "tts": {
+        "text": "Dörren öppnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du kliver ut.",
+      "text_markdown": "Du kliver ut.",
+      "tts": {
+        "text": "Du kliver ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Och under de första tre sekunderna, innan vinden fångar dig, brister något inom dig upp.",
+      "text_markdown": "Och under de första tre sekunderna, innan vinden fångar dig, brister något inom dig upp.",
+      "tts": {
+        "text": "Och under de första tre sekunderna, innan vinden fångar dig, brister något inom dig upp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du tänkte inte gråta.",
+      "text_markdown": "Du tänkte inte gråta.",
+      "tts": {
+        "text": "Du tänkte inte gråta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du gråter ändå.",
+      "text_markdown": "Du gråter ändå.",
+      "tts": {
+        "text": "Du gråter ändå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Det fria fallet gör sitt jobb.",
+      "text_markdown": "Det fria fallet gör sitt jobb.",
+      "tts": {
+        "text": "Det fria fallet gör sitt jobb.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Sextio långa sekunder av ingenting annat än vind och andning och fall.",
+      "text_markdown": "Sextio långa sekunder av ingenting annat än vind och andning och fall.",
+      "tts": {
+        "text": "Sextio långa sekunder av ingenting annat än vind och andning och fall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Och någonstans där inne lägger den del av dig som har hållit allt äntligen ner det för en stund.",
+      "text_markdown": "Och någonstans där inne lägger den del av dig som har hållit allt äntligen ner det för en stund.",
+      "tts": {
+        "text": "Och någonstans där inne lägger den del av dig som har hållit allt äntligen ner det för en stund.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Fallskärmen öppnar sig.",
+      "text_markdown": "Fallskärmen öppnar sig.",
+      "tts": {
+        "text": "Fallskärmen öppnar sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Världen blir tyst.",
+      "text_markdown": "Världen blir tyst.",
+      "tts": {
+        "text": "Världen blir tyst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Du hänger i selen, och du gråter, och du skrattar, och du gråter igen.",
+      "text_markdown": "Du hänger i selen, och du gråter, och du skrattar, och du gråter igen.",
+      "tts": {
+        "text": "Du hänger i selen, och du gråter, och du skrattar, och du gråter igen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Ingen kan se dig.",
+      "text_markdown": "Ingen kan se dig.",
+      "tts": {
+        "text": "Ingen kan se dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Det är poängen.",
+      "text_markdown": "Det är poängen.",
+      "tts": {
+        "text": "Det är poängen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "När du landar är du inte lagad.",
+      "text_markdown": "När du landar är du inte lagad.",
+      "tts": {
+        "text": "När du landar är du inte lagad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du bär fortfarande på vad du än bar med dig dit upp.",
+      "text_markdown": "Du bär fortfarande på vad du än bar med dig dit upp.",
+      "tts": {
+        "text": "Du bär fortfarande på vad du än bar med dig dit upp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Men under en hel timme där uppe, mindes något inom dig precis hur det är att leva i nuet.",
+      "text_markdown": "Men under en hel timme där uppe, mindes något inom dig precis hur det är att leva i nuet.",
+      "tts": {
+        "text": "Men under en hel timme där uppe, mindes något inom dig precis hur det är att leva i nuet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fallskärmshoppning löste inte ditt år.",
+      "text_markdown": "Fallskärmshoppning löste inte ditt år.",
+      "tts": {
+        "text": "Fallskärmshoppning löste inte ditt år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det gav det bara tillbaka till dig under sextio sekunder, i bitar små nog att hålla i.",
+      "text_markdown": "Det gav det bara tillbaka till dig under sextio sekunder, i bitar små nog att hålla i.",
+      "tts": {
+        "text": "Det gav det bara tillbaka till dig under sextio sekunder, i bitar små nog att hålla i.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Varför det stannar kvar",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Varför det stannar kvar",
+      "text_markdown": "Varför det stannar kvar"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jag har hoppat länge nu.",
+      "text_markdown": "Jag har hoppat länge nu.",
+      "tts": {
+        "text": "Jag har hoppat länge nu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tillräckligt länge för att jag inte minns räkningen.",
+      "text_markdown": "Tillräckligt länge för att jag inte minns räkningen.",
+      "tts": {
+        "text": "Tillräckligt länge för att jag inte minns räkningen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tillräckligt länge för att frågan, varför håller du fortfarande på med det här, har slutat betyda något för mig.",
+      "text_markdown": "Tillräckligt länge för att frågan, varför håller du fortfarande på med det här, har slutat betyda något för mig.",
+      "tts": {
+        "text": "Tillräckligt länge för att frågan, varför håller du fortfarande på med det här, har slutat betyda något för mig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jag vill lämna dig med några saker.",
+      "text_markdown": "Jag vill lämna dig med några saker.",
+      "tts": {
+        "text": "Jag vill lämna dig med några saker.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den första är att fallskärmshoppning inte är en fas.",
+      "text_markdown": "Den första är att fallskärmshoppning inte är en fas.",
+      "tts": {
+        "text": "Den första är att fallskärmshoppning inte är en fas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk oroar sig, när de ser en vän börja med det.",
+      "text_markdown": "Folk oroar sig, när de ser en vän börja med det.",
+      "tts": {
+        "text": "Folk oroar sig, när de ser en vän börja med det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De oroar sig att det är ett uppror, en medelålderskris, ett sätt att fly från något.",
+      "text_markdown": "De oroar sig att det är ett uppror, en medelålderskris, ett sätt att fly från något.",
+      "tts": {
+        "text": "De oroar sig att det är ett uppror, en medelålderskris, ett sätt att fly från något.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det är det inte.",
+      "text_markdown": "Det är det inte.",
+      "tts": {
+        "text": "Det är det inte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De som stannar kvar flyr inte.",
+      "text_markdown": "De som stannar kvar flyr inte.",
+      "tts": {
+        "text": "De som stannar kvar flyr inte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De har, nästan utan att mena det, byggt ett litet liv inne i himlen.",
+      "text_markdown": "De har, nästan utan att mena det, byggt ett litet liv inne i himlen.",
+      "tts": {
+        "text": "De har, nästan utan att mena det, byggt ett litet liv inne i himlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De dyker upp på lördagar.",
+      "text_markdown": "De dyker upp på lördagar.",
+      "tts": {
+        "text": "De dyker upp på lördagar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "De packar sina fallskärmar.",
+      "text_markdown": "De packar sina fallskärmar.",
+      "tts": {
+        "text": "De packar sina fallskärmar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "De kramar sina vänner.",
+      "text_markdown": "De kramar sina vänner.",
+      "tts": {
+        "text": "De kramar sina vänner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "De går hem vid solnedgången, trötta på det goda sättet.",
+      "text_markdown": "De går hem vid solnedgången, trötta på det goda sättet.",
+      "tts": {
+        "text": "De går hem vid solnedgången, trötta på det goda sättet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "På måndagen går de tillbaka till jobbet, och de är märkbart snällare än de brukade vara.",
+      "text_markdown": "På måndagen går de tillbaka till jobbet, och de är märkbart snällare än de brukade vara.",
+      "tts": {
+        "text": "På måndagen går de tillbaka till jobbet, och de är märkbart snällare än de brukade vara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Himlen förändrar dig, men långsamt.",
+      "text_markdown": "Himlen förändrar dig, men långsamt.",
+      "tts": {
+        "text": "Himlen förändrar dig, men långsamt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du blir mer närvarande.",
+      "text_markdown": "Du blir mer närvarande.",
+      "tts": {
+        "text": "Du blir mer närvarande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du blir mindre rädd för små saker, för du har övat på att vara ärlig om större saker.",
+      "text_markdown": "Du blir mindre rädd för små saker, för du har övat på att vara ärlig om större saker.",
+      "tts": {
+        "text": "Du blir mindre rädd för små saker, för du har övat på att vara ärlig om större saker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du skrattar lättare.",
+      "text_markdown": "Du skrattar lättare.",
+      "tts": {
+        "text": "Du skrattar lättare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du säger till människor att du älskar dem oftare.",
+      "text_markdown": "Du säger till människor att du älskar dem oftare.",
+      "tts": {
+        "text": "Du säger till människor att du älskar dem oftare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du har stått i en dörröppning, tolvtusen fot upp, och kommit ihåg att inget är garanterat.",
+      "text_markdown": "Du har stått i en dörröppning, tolvtusen fot upp, och kommit ihåg att inget är garanterat.",
+      "tts": {
+        "text": "Du har stått i en dörröppning, tolvtusen fot upp, och kommit ihåg att inget är garanterat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du någonsin sitter på en middag med en fallskärmshoppare, så är det här saker du kan fråga.",
+      "text_markdown": "Om du någonsin sitter på en middag med en fallskärmshoppare, så är det här saker du kan fråga.",
+      "tts": {
+        "text": "Om du någonsin sitter på en middag med en fallskärmshoppare, så är det här saker du kan fråga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kan fråga hur de kom in på det.",
+      "text_markdown": "Du kan fråga hur de kom in på det.",
+      "tts": {
+        "text": "Du kan fråga hur de kom in på det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Varje fallskärmshoppare minns sitt första hopp i levande detalj, och de kommer gärna att berätta för dig.",
+      "text_markdown": "Varje fallskärmshoppare minns sitt första hopp i levande detalj, och de kommer gärna att berätta för dig.",
+      "tts": {
+        "text": "Varje fallskärmshoppare minns sitt första hopp i levande detalj, och de kommer gärna att berätta för dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du kan fråga hur många hopp de har gjort.",
+      "text_markdown": "Du kan fråga hur många hopp de har gjort.",
+      "tts": {
+        "text": "Du kan fråga hur många hopp de har gjort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De kommer att veta antalet, plus eller minus några, och de kommer inte att låtsas att det är fler än det är.",
+      "text_markdown": "De kommer att veta antalet, plus eller minus några, och de kommer inte att låtsas att det är fler än det är.",
+      "tts": {
+        "text": "De kommer att veta antalet, plus eller minus några, och de kommer inte att låtsas att det är fler än det är.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du kan fråga vilken sorts hopp som är deras favorit.",
+      "text_markdown": "Du kan fråga vilken sorts hopp som är deras favorit.",
+      "tts": {
+        "text": "Du kan fråga vilken sorts hopp som är deras favorit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Några säger en solnedgång.",
+      "text_markdown": "Några säger en solnedgång.",
+      "tts": {
+        "text": "Några säger en solnedgång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Några säger en stor formation.",
+      "text_markdown": "Några säger en stor formation.",
+      "tts": {
+        "text": "Några säger en stor formation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Några säger ett stilla solohopp en lugn kväll.",
+      "text_markdown": "Några säger ett stilla solohopp en lugn kväll.",
+      "tts": {
+        "text": "Några säger ett stilla solohopp en lugn kväll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kan fråga om de var rädda första gången.",
+      "text_markdown": "Du kan fråga om de var rädda första gången.",
+      "tts": {
+        "text": "Du kan fråga om de var rädda första gången.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det var de förstås.",
+      "text_markdown": "Det var de förstås.",
+      "tts": {
+        "text": "Det var de förstås.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alla är det.",
+      "text_markdown": "Alla är det.",
+      "tts": {
+        "text": "Alla är det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De kommer förmodligen att nämna vinden i dörren, räkningen, och hur världen ser ut precis innan du kliver ut.",
+      "text_markdown": "De kommer förmodligen att nämna vinden i dörren, räkningen, och hur världen ser ut precis innan du kliver ut.",
+      "tts": {
+        "text": "De kommer förmodligen att nämna vinden i dörren, räkningen, och hur världen ser ut precis innan du kliver ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Lyssna noga.",
+      "text_markdown": "Lyssna noga.",
+      "tts": {
+        "text": "Lyssna noga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De ger dig en liten gåva.",
+      "text_markdown": "De ger dig en liten gåva.",
+      "tts": {
+        "text": "De ger dig en liten gåva.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du vill få en fallskärmshoppare att lysa upp, be dem beskriva ögonblicket då fallskärmen öppnar sig.",
+      "text_markdown": "Om du vill få en fallskärmshoppare att lysa upp, be dem beskriva ögonblicket då fallskärmen öppnar sig.",
+      "tts": {
+        "text": "Om du vill få en fallskärmshoppare att lysa upp, be dem beskriva ögonblicket då fallskärmen öppnar sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kommer att blunda i en halv sekund.",
+      "text_markdown": "De kommer att blunda i en halv sekund.",
+      "tts": {
+        "text": "De kommer att blunda i en halv sekund.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sedan kommer de att försöka.",
+      "text_markdown": "Sedan kommer de att försöka.",
+      "tts": {
+        "text": "Sedan kommer de att försöka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De kommer att använda ett annat ord varje gång.",
+      "text_markdown": "De kommer att använda ett annat ord varje gång.",
+      "tts": {
+        "text": "De kommer att använda ett annat ord varje gång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kanske stilla.",
+      "text_markdown": "Kanske stilla.",
+      "tts": {
+        "text": "Kanske stilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kanske mjukt.",
+      "text_markdown": "Kanske mjukt.",
+      "tts": {
+        "text": "Kanske mjukt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Som att vakna upp.",
+      "text_markdown": "Som att vakna upp.",
+      "tts": {
+        "text": "Som att vakna upp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Som att komma hem.",
+      "text_markdown": "Som att komma hem.",
+      "tts": {
+        "text": "Som att komma hem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ingen beskriver det på samma sätt två gånger.",
+      "text_markdown": "Ingen beskriver det på samma sätt två gånger.",
+      "tts": {
+        "text": "Ingen beskriver det på samma sätt två gånger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Var inte rädd för att erkänna att du aldrig har hoppat.",
+      "text_markdown": "Var inte rädd för att erkänna att du aldrig har hoppat.",
+      "tts": {
+        "text": "Var inte rädd för att erkänna att du aldrig har hoppat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fallskärmshoppare älskar den frågan.",
+      "text_markdown": "Fallskärmshoppare älskar den frågan.",
+      "tts": {
+        "text": "Fallskärmshoppare älskar den frågan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fallskärmshoppare älskar också att säga till dig att du borde prova, och sedan säga till dig, väldigt allvarligt, att de följer med dig.",
+      "text_markdown": "Fallskärmshoppare älskar också att säga till dig att du borde prova, och sedan säga till dig, väldigt allvarligt, att de följer med dig.",
+      "tts": {
+        "text": "Fallskärmshoppare älskar också att säga till dig att du borde prova, och sedan säga till dig, väldigt allvarligt, att de följer med dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De flesta av oss har tagit med en vän till deras första hopp.",
+      "text_markdown": "De flesta av oss har tagit med en vän till deras första hopp.",
+      "tts": {
+        "text": "De flesta av oss har tagit med en vän till deras första hopp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det är en av sportens stora glädjeämnen.",
+      "text_markdown": "Det är en av sportens stora glädjeämnen.",
+      "tts": {
+        "text": "Det är en av sportens stora glädjeämnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns ingen stor läxa i slutet av allt det här.",
+      "text_markdown": "Det finns ingen stor läxa i slutet av allt det här.",
+      "tts": {
+        "text": "Det finns ingen stor läxa i slutet av allt det här.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bara det här.",
+      "text_markdown": "Bara det här.",
+      "tts": {
+        "text": "Bara det här.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Någonstans i världen just nu går en liten grupp lugna och tålmodiga människor ut till ett plan.",
+      "text_markdown": "Någonstans i världen just nu går en liten grupp lugna och tålmodiga människor ut till ett plan.",
+      "tts": {
+        "text": "Någonstans i världen just nu går en liten grupp lugna och tålmodiga människor ut till ett plan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fältet är solbelyst.",
+      "text_markdown": "Fältet är solbelyst.",
+      "tts": {
+        "text": "Fältet är solbelyst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gräset är varmt.",
+      "text_markdown": "Gräset är varmt.",
+      "tts": {
+        "text": "Gräset är varmt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De kollar varandras utrustning.",
+      "text_markdown": "De kollar varandras utrustning.",
+      "tts": {
+        "text": "De kollar varandras utrustning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De ler.",
+      "text_markdown": "De ler.",
+      "tts": {
+        "text": "De ler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Om trettio minuter är de i himlen och gör den tystaste sak de vet hur man gör.",
+      "text_markdown": "Om trettio minuter är de i himlen och gör den tystaste sak de vet hur man gör.",
+      "tts": {
+        "text": "Om trettio minuter är de i himlen och gör den tystaste sak de vet hur man gör.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanske blir du en av dem en dag.",
+      "text_markdown": "Kanske blir du en av dem en dag.",
+      "tts": {
+        "text": "Kanske blir du en av dem en dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanske blir du det inte.",
+      "text_markdown": "Kanske blir du det inte.",
+      "tts": {
+        "text": "Kanske blir du det inte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hur som helst, himlen finns där.",
+      "text_markdown": "Hur som helst, himlen finns där.",
+      "tts": {
+        "text": "Hur som helst, himlen finns där.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den har alltid funnits där.",
+      "text_markdown": "Den har alltid funnits där.",
+      "tts": {
+        "text": "Den har alltid funnits där.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den väntar, tålmodigt, ifall du någonsin känner för att luta dig.",
+      "text_markdown": "Den väntar, tålmodigt, ifall du någonsin känner för att luta dig.",
+      "tts": {
+        "text": "Den väntar, tålmodigt, ifall du någonsin känner för att luta dig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "no",
+  "total_segments": 62,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Velkommen til AI This Week. Jeg er Vindy.",
+      "text_markdown": "Velkommen til AI This Week. Jeg er Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Velkommen til AI This Week. Jeg er Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Med meg, som alltid, er Ron.",
+      "text_markdown": "Med meg, som alltid, er Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med meg, som alltid, er Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Godt å være her.",
+      "text_markdown": "Godt å være her.",
+      "title": "",
+      "tts": {
+        "text": "Godt å være her.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "I dag er det onsdag 13. mai 2026. Snart: modellene som ble lansert denne uken. Ledertavlene, og hvorfor du bør slutte å stole på noen av dem. Ukens konsept. Og det større bildet – USA har nettopp fått en ny Federal Reserve-sjef, og det betyr mer for AI enn du kanskje tror.",
+      "text_markdown": "I dag er det onsdag 13. mai 2026. Snart: modellene som ble lansert denne uken. Ledertavlene, og hvorfor du bør slutte å stole på noen av dem. Ukens konsept. Og det større bildet – USA har nettopp fått en ny Federal Reserve-sjef, og det betyr mer for AI enn du kanskje tror.",
+      "title": "",
+      "tts": {
+        "text": "I dag er det onsdag trettende mai, tjue tjue seks. Snart: modellene som ble lansert denne uken. Ledertavlene, og hvorfor du bør slutte å stole på noen av dem. Ukens konsept. Og det større bildet – USA har nettopp fått en ny Federal Reserve-sjef, og det betyr mer for AI enn du kanskje tror.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, hva er den største modellnyheten denne uken?",
+      "text_markdown": "Ron, hva er den største modellnyheten denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Ron, hva er den største modellnyheten denne uken?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Standardhjernen i ChatGPT endret seg. OpenAI lanserte en ny modell kalt GPT-5.5 Instant til gratistjenesten forrige uke, tirsdag 5. mai. Hvis en gratis ChatGPT-respons har føltes kortere eller mindre full av emojier, er det derfor.",
+      "text_markdown": "Standardhjernen i ChatGPT endret seg. OpenAI lanserte en ny modell kalt GPT-5.5 Instant til gratistjenesten forrige uke, tirsdag 5. mai. Hvis en gratis ChatGPT-respons har føltes kortere eller mindre full av emojier, er det derfor.",
+      "title": "",
+      "tts": {
+        "text": "Standardhjernen i ChatGPT endret seg. OpenAI lanserte en ny modell kalt GPT fem komma fem Instant til gratistjenesten forrige uke, tirsdag femte mai. Hvis en gratis ChatGPT-respons har føltes kortere eller mindre full av emojier, er det derfor.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Kortere hvordan?",
+      "text_markdown": "Kortere hvordan?",
+      "title": "",
+      "tts": {
+        "text": "Kortere hvordan?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "OpenAI sier at den nye standarden skriver omtrent 30 % færre ord og 30 % færre linjer enn modellen den erstattet. De hevder også en 50 % reduksjon i hallusinerte påstander på de vanskeligste spørsmålene. Ting som medisinske spørsmål, juridiske spørsmål og finansielle spørsmål.",
+      "text_markdown": "OpenAI sier at den nye standarden skriver omtrent 30 % færre ord og 30 % færre linjer enn modellen den erstattet. De hevder også en 50 % reduksjon i hallusinerte påstander på de vanskeligste spørsmålene. Ting som medisinske spørsmål, juridiske spørsmål og finansielle spørsmål.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI sier at den nye standarden skriver omtrent tretti prosent færre ord og tretti prosent færre linjer enn modellen den erstattet. De hevder også en femti prosent reduksjon i hallusinerte påstander på de vanskeligste spørsmålene. Ting som medisinske spørsmål, juridiske spørsmål og finansielle spørsmål.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Har noen utenfor OpenAI verifisert disse tallene?",
+      "text_markdown": "Har noen utenfor OpenAI verifisert disse tallene?",
+      "title": "",
+      "tts": {
+        "text": "Har noen utenfor OpenAI verifisert disse tallene?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ikke i stor skala. De uavhengige benchmark-folkene, som Artificial Analysis, har den nye modellen på toppen av sin samlede intelligensindeks. Men hallusinasjonspåstander er trege å verifisere. De pleier å dukke opp over uker, etter hvert som folk faktisk bruker modellen.",
+      "text_markdown": "Ikke i stor skala. De uavhengige benchmark-folkene, som Artificial Analysis, har den nye modellen på toppen av sin samlede intelligensindeks. Men hallusinasjonspåstander er trege å verifisere. De pleier å dukke opp over uker, etter hvert som folk faktisk bruker modellen.",
+      "title": "",
+      "tts": {
+        "text": "Ikke i stor skala. De uavhengige benchmark-folkene, som Artificial Analysis, har den nye modellen på toppen av sin samlede intelligensindeks. Men hallusinasjonspåstander er trege å verifisere. De pleier å dukke opp over uker, etter hvert som folk faktisk bruker modellen.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Og på open weights-siden?",
+      "text_markdown": "Og på open weights-siden?",
+      "title": "",
+      "tts": {
+        "text": "Og på open weights-siden?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "To store ting. Moonshot, det kinesiske laboratoriet bak Kimi-modellen, hentet inn 2 milliarder dollar forrige uke, 7. mai, til en verdsettelse på 20 milliarder dollar. Og deres nyeste modell, Kimi K 2.6, tok nettopp førsteplassen på OpenRouter for tokenvolum.",
+      "text_markdown": "To store ting. Moonshot, det kinesiske laboratoriet bak Kimi-modellen, hentet inn 2 milliarder dollar forrige uke, 7. mai, til en verdsettelse på 20 milliarder dollar. Og deres nyeste modell, Kimi K 2.6, tok nettopp førsteplassen på OpenRouter for tokenvolum.",
+      "title": "",
+      "tts": {
+        "text": "To store ting. Moonshot, det kinesiske laboratoriet bak Kimi-modellen, hentet inn to milliarder dollar forrige uke, syvende mai, til en verdsettelse på tjue milliarder dollar. Og deres nyeste modell, Kimi K to komma seks, tok nettopp førsteplassen på OpenRouter for tokenvolum.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Førsteplassen? Totalt?",
+      "text_markdown": "Førsteplassen? Totalt?",
+      "title": "",
+      "tts": {
+        "text": "Førsteplassen? Totalt?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Totalt. Det er en kinesisk open weights-modell på førsteplass på en stor kommersiell ruter. For seks måneder siden ville det ha vært utenkelig.",
+      "text_markdown": "Totalt. Det er en kinesisk open weights-modell på førsteplass på en stor kommersiell ruter. For seks måneder siden ville det ha vært utenkelig.",
+      "title": "",
+      "tts": {
+        "text": "Totalt. Det er en kinesisk open weights-modell på førsteplass på en stor kommersiell ruter. For seks måneder siden ville det ha vært utenkelig.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Noe annet verdt å nevne?",
+      "text_markdown": "Noe annet verdt å nevne?",
+      "title": "",
+      "tts": {
+        "text": "Noe annet verdt å nevne?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Mistral, det franske laboratoriet, lanserte Medium 3.5 i slutten av april. De slår sammen den gamle splitten mellom en chat-modell, en resonneringsmodell og en kodemodell til ett produkt. Samme trend som OpenAI startet med GPT-5-familien. Hele bransjen beveger seg i den retningen.",
+      "text_markdown": "Mistral, det franske laboratoriet, lanserte Medium 3.5 i slutten av april. De slår sammen den gamle splitten mellom en chat-modell, en resonneringsmodell og en kodemodell til ett produkt. Samme trend som OpenAI startet med GPT-5-familien. Hele bransjen beveger seg i den retningen.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, det franske laboratoriet, lanserte Medium tre komma fem i slutten av april. De slår sammen den gamle splitten mellom en chat-modell, en resonneringsmodell og en kodemodell til ett produkt. Samme trend som OpenAI startet med GPT fem-familien. Hele bransjen beveger seg i den retningen.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Og hva kommer deretter?",
+      "text_markdown": "Og hva kommer deretter?",
+      "title": "",
+      "tts": {
+        "text": "Og hva kommer deretter?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Google I/O er på tirsdag. Alle forventer en ny Gemini, og det er troverdige rykter om en videogenereringsmodell kalt Gemini Omni. OpenAI har GPT-5.6 under testing. Anthropic har en modell kalt Mythos i en privat forhåndsvisning. Vi vil vite mye mer neste uke.",
+      "text_markdown": "Google I/O er på tirsdag. Alle forventer en ny Gemini, og det er troverdige rykter om en videogenereringsmodell kalt Gemini Omni. OpenAI har GPT-5.6 under testing. Anthropic har en modell kalt Mythos i en privat forhåndsvisning. Vi vil vite mye mer neste uke.",
+      "title": "",
+      "tts": {
+        "text": "Google I O er på tirsdag. Alle forventer en ny Gemini, og det er troverdige rykter om en videogenereringsmodell kalt Gemini Omni. OpenAI har GPT fem komma seks under testing. Anthropic har en modell kalt Mythos i en privat forhåndsvisning. Vi vil vite mye mer neste uke.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ok, la oss gå til ledertavlene.",
+      "text_markdown": "Ok, la oss gå til ledertavlene.",
+      "title": "",
+      "tts": {
+        "text": "Ok, la oss gå til ledertavlene.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, hva rører seg på tavlene denne uken?",
+      "text_markdown": "Ron, hva rører seg på tavlene denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Ron, hva rører seg på tavlene denne uken?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Den virkelige historien denne uken er ikke poengsummene. Det er poengsummene du bør slutte å stole på.",
+      "text_markdown": "Den virkelige historien denne uken er ikke poengsummene. Det er poengsummene du bør slutte å stole på.",
+      "title": "",
+      "tts": {
+        "text": "Den virkelige historien denne uken er ikke poengsummene. Det er poengsummene du bør slutte å stole på.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Fortell oss litt mer om det, Ron.",
+      "text_markdown": "Fortell oss litt mer om det, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Fortell oss litt mer om det, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "En gruppe ved Berkeley publiserte en artikkel. De bygget en automatisert skanner som scoret nesten perfekt på hver store AI-agent benchmark. Uten faktisk å løse en eneste oppgave. De utnyttet måten benchmarkene sjekker sine egne svar på.",
+      "text_markdown": "En gruppe ved Berkeley publiserte en artikkel. De bygget en automatisert skanner som scoret nesten perfekt på hver store AI-agent benchmark. Uten faktisk å løse en eneste oppgave. De utnyttet måten benchmarkene sjekker sine egne svar på.",
+      "title": "",
+      "tts": {
+        "text": "En gruppe ved Berkeley publiserte en artikkel. De bygget en automatisert skanner som scoret nesten perfekt på hver store AI-agent benchmark. Uten faktisk å løse en eneste oppgave. De utnyttet måten benchmarkene sjekker sine egne svar på.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "De jukset, og benchmarkene fanget det ikke opp.",
+      "text_markdown": "De jukset, og benchmarkene fanget det ikke opp.",
+      "title": "",
+      "tts": {
+        "text": "De jukset, og benchmarkene fanget det ikke opp.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Stemmer. Og samme uke kunngjorde OpenAI at de trekker tilbake sine evalueringer på SWE bench Verified. Det er en koding-benchmark de pleide å sitere hele tiden. De trakk den tilbake fordi mer enn halvparten av de vanskelige oppgavene viste seg å ha ødelagte tester.",
+      "text_markdown": "Stemmer. Og samme uke kunngjorde OpenAI at de trekker tilbake sine evalueringer på SWE bench Verified. Det er en koding-benchmark de pleide å sitere hele tiden. De trakk den tilbake fordi mer enn halvparten av de vanskelige oppgavene viste seg å ha ødelagte tester.",
+      "title": "",
+      "tts": {
+        "text": "Stemmer. Og samme uke kunngjorde OpenAI at de trekker tilbake sine evalueringer på SWE bench Verified. Det er en koding-benchmark de pleide å sitere hele tiden. De trakk den tilbake fordi mer enn halvparten av de vanskelige oppgavene viste seg å ha ødelagte tester.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Så mange av tallene vi har hørt det siste året er...",
+      "text_markdown": "Så mange av tallene vi har hørt det siste året er...",
+      "title": "",
+      "tts": {
+        "text": "Så mange av tallene vi har hørt det siste året er...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "I hvert fall delvis oppblåst. Ikke hver modell. Ikke hver benchmark. Men feltet bygger opp målebåndet sitt i offentligheten. Nyere evalueringer som SWE-bench Pro og et prosjekt kalt SWE-rebench prøver å fikse dette ved å holde testkoden privat.",
+      "text_markdown": "I hvert fall delvis oppblåst. Ikke hver modell. Ikke hver benchmark. Men feltet bygger opp målebåndet sitt i offentligheten. Nyere evalueringer som SWE-bench Pro og et prosjekt kalt SWE-rebench prøver å fikse dette ved å holde testkoden privat.",
+      "title": "",
+      "tts": {
+        "text": "I hvert fall delvis oppblåst. Ikke hver modell. Ikke hver benchmark. Men feltet bygger opp målebåndet sitt i offentligheten. Nyere evalueringer som SWE bench Pro og et prosjekt kalt SWE rebench prøver å fikse dette ved å holde testkoden privat.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Er det noe som faktisk beveger seg rent oppover?",
+      "text_markdown": "Er det noe som faktisk beveger seg rent oppover?",
+      "title": "",
+      "tts": {
+        "text": "Er det noe som faktisk beveger seg rent oppover?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "To ting, på renere tavler. I midten av april ble Anthropic's Claude Opus 4.7 den første modellen til å passere en Elo på 1500 på LM Arena koding-ledertavlen. Opus 4.6 hadde berørt 1500 et par uker tidligere. Per denne uken er Opus 4.7 fortsatt på topp, rundt 1569. Anthropic har også en separat modell kalt Mythos i en privat partnerforhåndsvisning som leder 17 av de 18 agent-benchmarkene Anthropic målte.",
+      "text_markdown": "To ting, på renere tavler. I midten av april ble Anthropic's Claude Opus 4.7 den første modellen til å passere en Elo på 1500 på LM Arena koding-ledertavlen. Opus 4.6 hadde berørt 1500 et par uker tidligere. Per denne uken er Opus 4.7 fortsatt på topp, rundt 1569. Anthropic har også en separat modell kalt Mythos i en privat partnerforhåndsvisning som leder 17 av de 18 agent-benchmarkene Anthropic målte.",
+      "title": "",
+      "tts": {
+        "text": "To ting, på renere tavler. I midten av april ble Anthropic's Claude Opus fire komma syv den første modellen til å passere en Elo på femten hundre på LM Arena koding-ledertavlen. Opus fire komma seks hadde berørt femten hundre et par uker tidligere. Per denne uken er Opus fire komma syv fortsatt på topp, rundt femten sekstini. Anthropic har også en separat modell kalt Mythos i en privat partnerforhåndsvisning som leder sytten av de atten agent-benchmarkene Anthropic målte.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "En modell som publikum ikke kan bruke, er på toppen av tavlene.",
+      "text_markdown": "En modell som publikum ikke kan bruke, er på toppen av tavlene.",
+      "title": "",
+      "tts": {
+        "text": "En modell som publikum ikke kan bruke, er på toppen av tavlene.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Det er der vi er. Den andre store trenden er gapet mellom åpent og lukket. Det er det smaleste det noen gang har vært. DeepSeek V4 Pro og Kimi K 2.6 er innen rekkevidde av GPT-5.5 på kryss-evalueringsindeksen for intelligens. Det gapet pleide å være enormt. Nå er det lite.",
+      "text_markdown": "Det er der vi er. Den andre store trenden er gapet mellom åpent og lukket. Det er det smaleste det noen gang har vært. DeepSeek V4 Pro og Kimi K 2.6 er innen rekkevidde av GPT-5.5 på kryss-evalueringsindeksen for intelligens. Det gapet pleide å være enormt. Nå er det lite.",
+      "title": "",
+      "tts": {
+        "text": "Det er der vi er. Den andre store trenden er gapet mellom åpent og lukket. Det er det smaleste det noen gang har vært. DeepSeek V fire Pro og Kimi K to punkt seks er innen rekkevidde av GPT fem punkt fem på kryss-evalueringsindeksen for intelligens. Det gapet pleide å være enormt. Nå er det lite.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ok, la oss gå inn på ukens konsept.",
+      "text_markdown": "Ok, la oss gå inn på ukens konsept.",
+      "title": "",
+      "tts": {
+        "text": "Ok, la oss gå inn på ukens konsept.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, ukens konsept er «mixture of experts». Hvorfor fokuserer vi på «mixture of experts»?",
+      "text_markdown": "Ron, ukens konsept er «mixture of experts». Hvorfor fokuserer vi på «mixture of experts»?",
+      "title": "",
+      "tts": {
+        "text": "Ron, ukens konsept er «mixture of experts». Hvorfor fokuserer vi på «mixture of experts»?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fordi den åpne vekter-modellen vi nettopp snakket om, Kimi K 2.6, har totalt 1 billion parametere. Men bare 32 milliarder av disse parameterne kjører til enhver tid. Det er «mixture of experts».",
+      "text_markdown": "Fordi den åpne vekter-modellen vi nettopp snakket om, Kimi K 2.6, har totalt 1 billion parametere. Men bare 32 milliarder av disse parameterne kjører til enhver tid. Det er «mixture of experts».",
+      "title": "",
+      "tts": {
+        "text": "Fordi den åpne vekter-modellen vi nettopp snakket om, Kimi K to punkt seks, har totalt én billion parametere. Men bare trettito milliarder av disse parameterne kjører til enhver tid. Det er «mixture of experts».",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Forklar det for de som lytter.",
+      "text_markdown": "Forklar det for de som lytter.",
+      "title": "",
+      "tts": {
+        "text": "Forklar det for de som lytter.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "En vanlig AI-modell er som én gigantisk hjerne. Hvert ord den genererer bruker hver del av hjernen. En «mixture of experts»-modell er mer som en bygning full av spesialister. Med en resepsjonist ved døren. For hvert ord velger resepsjonisten to eller tre spesialister å konsultere, og resten av bygningen forblir stille.",
+      "text_markdown": "En vanlig AI-modell er som én gigantisk hjerne. Hvert ord den genererer bruker hver del av hjernen. En «mixture of experts»-modell er mer som en bygning full av spesialister. Med en resepsjonist ved døren. For hvert ord velger resepsjonisten to eller tre spesialister å konsultere, og resten av bygningen forblir stille.",
+      "title": "",
+      "tts": {
+        "text": "En vanlig AI-modell er som én gigantisk hjerne. Hvert ord den genererer bruker hver del av hjernen. En «mixture of experts»-modell er mer som en bygning full av spesialister. Med en resepsjonist ved døren. For hvert ord velger resepsjonisten to eller tre spesialister å konsultere, og resten av bygningen forblir stille.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Så modellen er enorm på papiret, men billig å drive.",
+      "text_markdown": "Så modellen er enorm på papiret, men billig å drive.",
+      "title": "",
+      "tts": {
+        "text": "Så modellen er enorm på papiret, men billig å drive.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Nøyaktig. 1 billion parametere kapasitet. Men bare 32 milliarder parametere beregning per ord. Det er trikset. Resepsjonisten er et lite stykke kode kalt en ruter. Spesialistene er undernettverk kalt eksperter. Modellen trener ruteren og ekspertene sammen, ende-til-ende.",
+      "text_markdown": "Nøyaktig. 1 billion parametere kapasitet. Men bare 32 milliarder parametere beregning per ord. Det er trikset. Resepsjonisten er et lite stykke kode kalt en ruter. Spesialistene er undernettverk kalt eksperter. Modellen trener ruteren og ekspertene sammen, ende-til-ende.",
+      "title": "",
+      "tts": {
+        "text": "Nøyaktig. Én billion parametere kapasitet. Men bare trettito milliarder parametere beregning per ord. Det er trikset. Resepsjonisten er et lite stykke kode kalt en ruter. Spesialistene er undernettverk kalt eksperter. Modellen trener ruteren og ekspertene sammen, ende-til-ende.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Gjør alle de store grensemodellene dette?",
+      "text_markdown": "Gjør alle de store grensemodellene dette?",
+      "title": "",
+      "tts": {
+        "text": "Gjør alle de store grensemodellene dette?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "De fleste av dem, ja. Selv om laboratoriene ikke alltid bekrefter det. GPT-4 var en «mixture of experts»-modell. Flaggskipet fra DeepSeek er en «mixture of experts»-modell. Mistral har levert «mixture of experts»-modeller siden 2023. Den nye bølgen fra Kina har presset dette designet til det ytterste.",
+      "text_markdown": "De fleste av dem, ja. Selv om laboratoriene ikke alltid bekrefter det. GPT-4 var en «mixture of experts»-modell. Flaggskipet fra DeepSeek er en «mixture of experts»-modell. Mistral har levert «mixture of experts»-modeller siden 2023. Den nye bølgen fra Kina har presset dette designet til det ytterste.",
+      "title": "",
+      "tts": {
+        "text": "De fleste av dem, ja. Selv om laboratoriene ikke alltid bekrefter det. GPT fire var en «mixture of experts»-modell. Flaggskipet fra DeepSeek er en «mixture of experts»-modell. Mistral har levert «mixture of experts»-modeller siden totusenogtjue tre. Den nye bølgen fra Kina har presset dette designet til det ytterste.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hvorfor er det viktig for noen som bare bruker ChatGPT?",
+      "text_markdown": "Hvorfor er det viktig for noen som bare bruker ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er det viktig for noen som bare bruker ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "To grunner. Én. Det er hovedgrunnen til at et laboratorium med åpne vekter i Kina kan operere med grenseklassekvalitet på en brøkdel av budsjettet. To. Det er hovedgrunnen til at et enkelt API-kall koster cent, ikke dollar. Når du ser prisene falle og kvaliteten forbli høy, er «mixture of experts» vanligvis årsaken.",
+      "text_markdown": "To grunner. Én. Det er hovedgrunnen til at et laboratorium med åpne vekter i Kina kan operere med grenseklassekvalitet på en brøkdel av budsjettet. To. Det er hovedgrunnen til at et enkelt API-kall koster cent, ikke dollar. Når du ser prisene falle og kvaliteten forbli høy, er «mixture of experts» vanligvis årsaken.",
+      "title": "",
+      "tts": {
+        "text": "To grunner. Én. Det er hovedgrunnen til at et laboratorium med åpne vekter i Kina kan operere med grenseklassekvalitet på en brøkdel av budsjettet. To. Det er hovedgrunnen til at et enkelt API-kall koster cent, ikke dollar. Når du ser prisene falle og kvaliteten forbli høy, er «mixture of experts» vanligvis årsaken.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "«Mixture of experts». Ruter. Eksperter. Sparsom aktivering. Tre ord å ta med deg. Nå, la oss se på det større bildet.",
+      "text_markdown": "«Mixture of experts». Ruter. Eksperter. Sparsom aktivering. Tre ord å ta med deg. Nå, la oss se på det større bildet.",
+      "title": "",
+      "tts": {
+        "text": "«Mixture of experts». Ruter. Eksperter. Sparsom aktivering. Tre ord å ta med deg. Nå, la oss se på det større bildet.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, den store historien utenfor vår verden denne uken er Federal Reserve.",
+      "text_markdown": "Ron, den store historien utenfor vår verden denne uken er Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, den store historien utenfor vår verden denne uken er Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "I dag bekreftet det amerikanske senatet Kevin Warsh som neste leder av Federal Reserve. Avstemningen var 54 mot 45. Den knappeste avstemningen for en Fed-leder i moderne amerikansk historie. Bare én demokrat brøt partilinjen.",
+      "text_markdown": "I dag bekreftet det amerikanske senatet Kevin Warsh som neste leder av Federal Reserve. Avstemningen var 54 mot 45. Den knappeste avstemningen for en Fed-leder i moderne amerikansk historie. Bare én demokrat brøt partilinjen.",
+      "title": "",
+      "tts": {
+        "text": "I dag bekreftet det amerikanske senatet Kevin Warsh som neste leder av Federal Reserve. Avstemningen var femtifire mot førtifem. Den knappeste avstemningen for en Fed-leder i moderne amerikansk historie. Bare én demokrat brøt partilinjen.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hvorfor er det viktig for AI?",
+      "text_markdown": "Hvorfor er det viktig for AI?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er det viktig for AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fordi AI-utbyggingen akkurat nå er begrenset av to ting. Elektrisitet og kapitalkostnadene. Fed fastsetter kapitalkostnadene. Og den nye lederen har uttalt offentlig at han ønsker å kutte rentene raskere enn forgjengeren ville ha gjort.",
+      "text_markdown": "Fordi AI-utbyggingen akkurat nå er begrenset av to ting. Elektrisitet og kapitalkostnadene. Fed fastsetter kapitalkostnadene. Og den nye lederen har uttalt offentlig at han ønsker å kutte rentene raskere enn forgjengeren ville ha gjort.",
+      "title": "",
+      "tts": {
+        "text": "Fordi AI-utbyggingen akkurat nå er begrenset av to ting. Elektrisitet og kapitalkostnadene. Fed fastsetter kapitalkostnadene. Og den nye lederen har uttalt offentlig at han ønsker å kutte rentene raskere enn forgjengeren ville ha gjort.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Raskere rentekutt gjør AI-investeringer billigere.",
+      "text_markdown": "Raskere rentekutt gjør AI-investeringer billigere.",
+      "title": "",
+      "tts": {
+        "text": "Raskere rentekutt gjør AI-investeringer billigere.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ja. Hyperskalere – Microsoft, Google, Amazon, Meta – er i ferd med å bruke rundt 700 milliarder dollar på kapitalutgifter i år. Det meste av dette er GPU-er og datasentre. En lavere diskonteringsrente gjør at disse flerårige utbyggingene blir lønnsomme med høyere verdivurderinger.",
+      "text_markdown": "Ja. Hyperskalere – Microsoft, Google, Amazon, Meta – er i ferd med å bruke rundt 700 milliarder dollar på kapitalutgifter i år. Det meste av dette er GPU-er og datasentre. En lavere diskonteringsrente gjør at disse flerårige utbyggingene blir lønnsomme med høyere verdivurderinger.",
+      "title": "",
+      "tts": {
+        "text": "Ja. Hyperskalere – Microsoft, Google, Amazon, Meta – er i ferd med å bruke rundt syv hundre milliarder dollar på kapitalutgifter i år. Det meste av dette er G P U-er og datasentre. En lavere diskonteringsrente gjør at disse flerårige utbyggingene blir lønnsomme med høyere verdivurderinger.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Og den andre retningen. Hvordan påvirker AI det Fed må bestemme?",
+      "text_markdown": "Og den andre retningen. Hvordan påvirker AI det Fed må bestemme?",
+      "title": "",
+      "tts": {
+        "text": "Og den andre retningen. Hvordan påvirker AI det Fed må bestemme?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Dette er den interessante delen. AI-kapitalutgifter er nå store nok til å være et makrotall. Ikke en sektorhistorie. Wall Street-analytikere sier at AI-relaterte bygge- og utstyrsutgifter har utgjort flertallet av USAs økonomiske vekst de siste flere kvartalene.",
+      "text_markdown": "Dette er den interessante delen. AI-kapitalutgifter er nå store nok til å være et makrotall. Ikke en sektorhistorie. Wall Street-analytikere sier at AI-relaterte bygge- og utstyrsutgifter har utgjort flertallet av USAs økonomiske vekst de siste flere kvartalene.",
+      "title": "",
+      "tts": {
+        "text": "Dette er den interessante delen. AI-kapitalutgifter er nå store nok til å være et makrotall. Ikke en sektorhistorie. Wall Street-analytikere sier at AI-relaterte bygge- og utstyrsutgifter har utgjort flertallet av USAs økonomiske vekst de siste flere kvartalene.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Flertallet av veksten.",
+      "text_markdown": "Flertallet av veksten.",
+      "title": "",
+      "tts": {
+        "text": "Flertallet av veksten.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Flertallet. Og det går i to retninger for Fed. På lang sikt er AI en produktivitetsmedvind. Det er deflasjonært. Det gir Fed rom til å kutte. På kort sikt er det et etterspørselssjokk på strøm, på kobber, på faglært arbeidskraft, på vann til kjøling. Det er inflasjonært. Spesielt på steder som Virginia og Texas, hvor datasentrene er konsentrert.",
+      "text_markdown": "Flertallet. Og det går i to retninger for Fed. På lang sikt er AI en produktivitetsmedvind. Det er deflasjonært. Det gir Fed rom til å kutte. På kort sikt er det et etterspørselssjokk på strøm, på kobber, på faglært arbeidskraft, på vann til kjøling. Det er inflasjonært. Spesielt på steder som Virginia og Texas, hvor datasentrene er konsentrert.",
+      "title": "",
+      "tts": {
+        "text": "Flertallet. Og det går i to retninger for Fed. På lang sikt er AI en produktivitetsmedvind. Det er deflasjonært. Det gir Fed rom til å kutte. På kort sikt er det et etterspørselssjokk på strøm, på kobber, på faglært arbeidskraft, på vann til kjøling. Det er inflasjonært. Spesielt på steder som Virginia og Texas, hvor datasentrene er konsentrert.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Så den nye lederen må bestemme om AI er svaret på inflasjon, eller om AI er årsaken til inflasjon.",
+      "text_markdown": "Så den nye lederen må bestemme om AI er svaret på inflasjon, eller om AI er årsaken til inflasjon.",
+      "title": "",
+      "tts": {
+        "text": "Så den nye lederen må bestemme om AI er svaret på inflasjon, eller om AI er årsaken til inflasjon.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Begge deler, samtidig. Og uansett hva han sier i sine første offentlige taler, vil det påvirke alle AI-kapitalutgiftsmodeller på Wall Street.",
+      "text_markdown": "Begge deler, samtidig. Og uansett hva han sier i sine første offentlige taler, vil det påvirke alle AI-kapitalutgiftsmodeller på Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Begge deler, samtidig. Og uansett hva han sier i sine første offentlige taler, vil det påvirke alle AI-kapitalutgiftsmodeller på Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Microsoft har 80 milliarder dollar i uoppfylte skyordrer på grunn av strøm. Er det riktig tall?",
+      "text_markdown": "Microsoft har 80 milliarder dollar i uoppfylte skyordrer på grunn av strøm. Er det riktig tall?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft har åttito milliarder dollar i uoppfylte skyordrer på grunn av strøm. Er det riktig tall?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Det er tallet Microsoft har rapportert. Azure-kunder står i kø for kapasitet. Flaskehalsen er ikke lenger brikker. Det er strømnettet. Strømmarkedene kan ikke bygge ut ny kapasitet så raskt som datasentrene ønsker det.",
+      "text_markdown": "Det er tallet Microsoft har rapportert. Azure-kunder står i kø for kapasitet. Flaskehalsen er ikke lenger brikker. Det er strømnettet. Strømmarkedene kan ikke bygge ut ny kapasitet så raskt som datasentrene ønsker det.",
+      "title": "",
+      "tts": {
+        "text": "Det er tallet Microsoft har rapportert. Azure-kunder står i kø for kapasitet. Flaskehalsen er ikke lenger brikker. Det er strømnettet. Strømmarkedene kan ikke bygge ut ny kapasitet så raskt som datasentrene ønsker det.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Når er Warshs første møte?",
+      "text_markdown": "Når er Warshs første møte?",
+      "title": "",
+      "tts": {
+        "text": "Når er Warshs første møte?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Den 16. og 17. juni. Vi vil vite mye mer om rentebanen etter det.",
+      "text_markdown": "Den 16. og 17. juni. Vi vil vite mye mer om rentebanen etter det.",
+      "title": "",
+      "tts": {
+        "text": "Den sekstende og syttende juni. Vi vil vite mye mer om rentebanen etter det.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Et godt sted å avslutte. Ron, takk.",
+      "text_markdown": "Et godt sted å avslutte. Ron, takk.",
+      "title": "",
+      "tts": {
+        "text": "Et godt sted å avslutte. Ron, takk.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bare hyggelig, Vindy.",
+      "text_markdown": "Bare hyggelig, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bare hyggelig, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Det var AI This Week for 13. mai 2026. Ny utgave neste onsdag. Inntil da, ta vare på deg selv.",
+      "text_markdown": "Det var AI This Week for 13. mai 2026. Ny utgave neste onsdag. Inntil da, ta vare på deg selv.",
+      "title": "",
+      "tts": {
+        "text": "Det var AI This Week for trettende mai, tjue tjue seks. Ny utgave neste onsdag. Inntil da, ta vare på deg selv.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

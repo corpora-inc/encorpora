@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tempererte skogen",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tempererte skogen",
+      "text_markdown": "Den tempererte skogen"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der tempererte skoger vokser",
+      "text_markdown": "Der tempererte skoger vokser"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til den tempererte skogen.",
+      "text_markdown": "Velkommen til den tempererte skogen.",
+      "tts": {
+        "text": "Velkommen til den tempererte skogen.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er ett av de store biomene i verden.",
+      "text_markdown": "Dette er ett av de store biomene i verden.",
+      "tts": {
+        "text": "Dette er ett av de store biomene i verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og sine egne dyr.",
+      "text_markdown": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og sine egne dyr.",
+      "tts": {
+        "text": "Et biom er en del av Jorden med sitt eget vær, sine egne planter og sine egne dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte skogen er en skog av brede, løvrike trær.",
+      "text_markdown": "Den tempererte skogen er en skog av brede, løvrike trær.",
+      "tts": {
+        "text": "Den tempererte skogen er en skog av brede, løvrike trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste trærne her mister bladene én gang i året og får nye om våren.",
+      "text_markdown": "De fleste trærne her mister bladene én gang i året og får nye om våren.",
+      "tts": {
+        "text": "De fleste trærne her mister bladene én gang i året og får nye om våren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trær som feller bladene sine slik kalles løvfellende trær.",
+      "text_markdown": "Trær som feller bladene sine slik kalles løvfellende trær.",
+      "tts": {
+        "text": "Trær som feller bladene sine slik kalles løvfellende trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tempererte skoger vokser i de midtre delene av verden, mellom det kalde nord og de varme tropene.",
+      "text_markdown": "Tempererte skoger vokser i de midtre delene av verden, mellom det kalde nord og de varme tropene.",
+      "tts": {
+        "text": "Tempererte skoger vokser i de midtre delene av verden, mellom det kalde nord og de varme tropene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes store tempererte skoger i den østlige delen av Nord-Amerika.",
+      "text_markdown": "Det finnes store tempererte skoger i den østlige delen av Nord-Amerika.",
+      "tts": {
+        "text": "Det finnes store tempererte skoger i den østlige delen av Nord Amerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes tempererte skoger over store deler av Europa.",
+      "text_markdown": "Det finnes tempererte skoger over store deler av Europa.",
+      "tts": {
+        "text": "Det finnes tempererte skoger over store deler av Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes tempererte skoger i Øst-Asia, i Kina, Korea og Japan.",
+      "text_markdown": "Det finnes tempererte skoger i Øst-Asia, i Kina, Korea og Japan.",
+      "tts": {
+        "text": "Det finnes tempererte skoger i Øst Asia, i Kina, Korea og Japan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes mindre områder sør i Sør-Amerika, sørøst i Australia og sør på New Zealand.",
+      "text_markdown": "Det finnes mindre områder sør i Sør-Amerika, sørøst i Australia og sør på New Zealand.",
+      "tts": {
+        "text": "Det finnes mindre områder sør i Sør Amerika, sørøst i Australia og sør på New Zealand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver av disse skogene vokste opp på egen hånd, langt fra de andre.",
+      "text_markdown": "Hver av disse skogene vokste opp på egen hånd, langt fra de andre.",
+      "tts": {
+        "text": "Hver av disse skogene vokste opp på egen hånd, langt fra de andre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så slagene av trær og dyr er forskjellige i hver del av verden.",
+      "text_markdown": "Så slagene av trær og dyr er forskjellige i hver del av verden.",
+      "tts": {
+        "text": "Så slagene av trær og dyr er forskjellige i hver del av verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de deler alle det samme mønsteret.",
+      "text_markdown": "Men de deler alle det samme mønsteret.",
+      "tts": {
+        "text": "Men de deler alle det samme mønsteret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et tak av løvrike trær, et mykt gulv av falne blader og fire svært forskjellige årstider.",
+      "text_markdown": "Et tak av løvrike trær, et mykt gulv av falne blader og fire svært forskjellige årstider.",
+      "tts": {
+        "text": "Et tak av løvrike trær, et mykt gulv av falne blader og fire svært forskjellige årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du går inn i en temperert skog, kjennes luften kjølig og mild.",
+      "text_markdown": "Når du går inn i en temperert skog, kjennes luften kjølig og mild.",
+      "tts": {
+        "text": "Når du går inn i en temperert skog, kjennes luften kjølig og mild.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren faller sollyset gjennom bladene i myke grønne flekker.",
+      "text_markdown": "Om sommeren faller sollyset gjennom bladene i myke grønne flekker.",
+      "tts": {
+        "text": "Om sommeren faller sollyset gjennom bladene i myke grønne flekker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten blir bladene gule, oransje og røde.",
+      "text_markdown": "Om høsten blir bladene gule, oransje og røde.",
+      "tts": {
+        "text": "Om høsten blir bladene gule, oransje og røde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren står trærne nakne mot himmelen.",
+      "text_markdown": "Om vinteren står trærne nakne mot himmelen.",
+      "tts": {
+        "text": "Om vinteren står trærne nakne mot himmelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om våren kommer det små grønne knopper, og hele skogen våkner igjen.",
+      "text_markdown": "Om våren kommer det små grønne knopper, og hele skogen våkner igjen.",
+      "tts": {
+        "text": "Om våren kommer det små grønne knopper, og hele skogen våkner igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tempererte skogen.",
+      "text_markdown": "Det er den tempererte skogen.",
+      "tts": {
+        "text": "Det er den tempererte skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Der tempererte skoger vokser",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En grønn verden som skifter ansikt fire ganger i året.",
+      "text_markdown": "En grønn verden som skifter ansikt fire ganger i året.",
+      "tts": {
+        "text": "En grønn verden som skifter ansikt fire ganger i året.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Været",
+      "text_markdown": "Været"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Været i den tempererte skogen forandrer seg mye gjennom året.",
+      "text_markdown": "Været i den tempererte skogen forandrer seg mye gjennom året.",
+      "tts": {
+        "text": "Været i den tempererte skogen forandrer seg mye gjennom året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er fire årstider, og hver av dem er svært forskjellig.",
+      "text_markdown": "Det er fire årstider, og hver av dem er svært forskjellig.",
+      "tts": {
+        "text": "Det er fire årstider, og hver av dem er svært forskjellig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren er dagene lange og varme.",
+      "text_markdown": "Om sommeren er dagene lange og varme.",
+      "tts": {
+        "text": "Om sommeren er dagene lange og varme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det regner ofte, og noen ganger trekker et kraftig uvær inn over trærne.",
+      "text_markdown": "Det regner ofte, og noen ganger trekker et kraftig uvær inn over trærne.",
+      "tts": {
+        "text": "Det regner ofte, og noen ganger trekker et kraftig uvær inn over trærne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogen er full av grønne blader og fuglesang.",
+      "text_markdown": "Skogen er full av grønne blader og fuglesang.",
+      "tts": {
+        "text": "Skogen er full av grønne blader og fuglesang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten blir dagene kortere, og luften blir kjølig.",
+      "text_markdown": "Om høsten blir dagene kortere, og luften blir kjølig.",
+      "tts": {
+        "text": "Om høsten blir dagene kortere, og luften blir kjølig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bladene på trærne skifter farge og faller til bakken.",
+      "text_markdown": "Bladene på trærne skifter farge og faller til bakken.",
+      "tts": {
+        "text": "Bladene på trærne skifter farge og faller til bakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tur i en høstskog er en tur over et mykt, lysende teppe av blader.",
+      "text_markdown": "En tur i en høstskog er en tur over et mykt, lysende teppe av blader.",
+      "tts": {
+        "text": "En tur i en høstskog er en tur over et mykt, lysende teppe av blader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren er dagene korte, og nettene er lange og kalde.",
+      "text_markdown": "Om vinteren er dagene korte, og nettene er lange og kalde.",
+      "tts": {
+        "text": "Om vinteren er dagene korte, og nettene er lange og kalde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange steder dekker snøen skogen i flere uker i strekk.",
+      "text_markdown": "Mange steder dekker snøen skogen i flere uker i strekk.",
+      "tts": {
+        "text": "Mange steder dekker snøen skogen i flere uker i strekk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De nakne grenene på trærne står stille mot en grå himmel.",
+      "text_markdown": "De nakne grenene på trærne står stille mot en grå himmel.",
+      "tts": {
+        "text": "De nakne grenene på trærne står stille mot en grå himmel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange dyr sover seg gjennom kulden eller gjemmer seg i hulene sine.",
+      "text_markdown": "Mange dyr sover seg gjennom kulden eller gjemmer seg i hulene sine.",
+      "tts": {
+        "text": "Mange dyr sover seg gjennom kulden eller gjemmer seg i hulene sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så vender våren tilbake.",
+      "text_markdown": "Så vender våren tilbake.",
+      "tts": {
+        "text": "Så vender våren tilbake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snøen smelter, regnet begynner igjen, og jorda varmes opp.",
+      "text_markdown": "Snøen smelter, regnet begynner igjen, og jorda varmes opp.",
+      "tts": {
+        "text": "Snøen smelter, regnet begynner igjen, og jorda varmes opp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grønne knopper åpner seg på grenene, blomster skyter opp fra bakken, og skogen fylles med lyd og farge igjen.",
+      "text_markdown": "Grønne knopper åpner seg på grenene, blomster skyter opp fra bakken, og skogen fylles med lyd og farge igjen.",
+      "tts": {
+        "text": "Grønne knopper åpner seg på grenene, blomster skyter opp fra bakken, og skogen fylles med lyd og farge igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte skogen vet hvordan den skal vente gjennom kulden, og hvordan den skal feire når varmen kommer tilbake.",
+      "text_markdown": "Den tempererte skogen vet hvordan den skal vente gjennom kulden, og hvordan den skal feire når varmen kommer tilbake.",
+      "tts": {
+        "text": "Den tempererte skogen vet hvordan den skal vente gjennom kulden, og hvordan den skal feire når varmen kommer tilbake.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vannet",
+      "text_markdown": "Landet og vannet"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorda under en temperert skog er rik.",
+      "text_markdown": "Jorda under en temperert skog er rik.",
+      "tts": {
+        "text": "Jorda under en temperert skog er rik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tusenvis av år har blader falt fra trærne og sakte blitt til mørk, myk jord.",
+      "text_markdown": "I tusenvis av år har blader falt fra trærne og sakte blitt til mørk, myk jord.",
+      "tts": {
+        "text": "I tusenvis av år har blader falt fra trærne og sakte blitt til mørk, myk jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denne typen jord holder godt på vannet, og den gir trærne rikelig med næring.",
+      "text_markdown": "Denne typen jord holder godt på vannet, og den gir trærne rikelig med næring.",
+      "tts": {
+        "text": "Denne typen jord holder godt på vannet, og den gir trærne rikelig med næring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogbunnen er dekket av gamle blader, knekte kvister og flekker av grønn mose.",
+      "text_markdown": "Skogbunnen er dekket av gamle blader, knekte kvister og flekker av grønn mose.",
+      "tts": {
+        "text": "Skogbunnen er dekket av gamle blader, knekte kvister og flekker av grønn mose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du skyver bladene til side, finner du mørk jord full av små levende ting.",
+      "text_markdown": "Når du skyver bladene til side, finner du mørk jord full av små levende ting.",
+      "tts": {
+        "text": "Når du skyver bladene til side, finner du mørk jord full av små levende ting.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mark og insekter beveger seg gjennom den.",
+      "text_markdown": "Mark og insekter beveger seg gjennom den.",
+      "tts": {
+        "text": "Mark og insekter beveger seg gjennom den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sopp skyter opp nedenfra etter et regnvær.",
+      "text_markdown": "Sopp skyter opp nedenfra etter et regnvær.",
+      "tts": {
+        "text": "Sopp skyter opp nedenfra etter et regnvær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bekker bukter seg gjennom enhver temperert skog.",
+      "text_markdown": "Bekker bukter seg gjennom enhver temperert skog.",
+      "tts": {
+        "text": "Bekker bukter seg gjennom enhver temperert skog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De renner kalde og klare om våren, fulle av smeltende snø.",
+      "text_markdown": "De renner kalde og klare om våren, fulle av smeltende snø.",
+      "tts": {
+        "text": "De renner kalde og klare om våren, fulle av smeltende snø.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren renner de saktere, med steiner som stikker opp i det grunne vannet.",
+      "text_markdown": "Om sommeren renner de saktere, med steiner som stikker opp i det grunne vannet.",
+      "tts": {
+        "text": "Om sommeren renner de saktere, med steiner som stikker opp i det grunne vannet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten flyter gylne blader nedover dem som små båter.",
+      "text_markdown": "Om høsten flyter gylne blader nedover dem som små båter.",
+      "tts": {
+        "text": "Om høsten flyter gylne blader nedover dem som små båter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren fryser de minste bekkene, og vannet gjemmer seg under et tak av is.",
+      "text_markdown": "Om vinteren fryser de minste bekkene, og vannet gjemmer seg under et tak av is.",
+      "tts": {
+        "text": "Om vinteren fryser de minste bekkene, og vannet gjemmer seg under et tak av is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av de store elvene i den tempererte verden begynner i disse skogene.",
+      "text_markdown": "Mange av de store elvene i den tempererte verden begynner i disse skogene.",
+      "tts": {
+        "text": "Mange av de store elvene i den tempererte verden begynner i disse skogene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trærne holder jorda på plass og mater bekkene med litt vann om gangen.",
+      "text_markdown": "Trærne holder jorda på plass og mater bekkene med litt vann om gangen.",
+      "tts": {
+        "text": "Trærne holder jorda på plass og mater bekkene med litt vann om gangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uten skogen ville elvene ikke vært de samme.",
+      "text_markdown": "Uten skogen ville elvene ikke vært de samme.",
+      "tts": {
+        "text": "Uten skogen ville elvene ikke vært de samme.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Plantene",
+      "text_markdown": "Plantene"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trærne er hjertet i den tempererte skogen.",
+      "text_markdown": "Trærne er hjertet i den tempererte skogen.",
+      "tts": {
+        "text": "Trærne er hjertet i den tempererte skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av dem vokser seg høye og sterke, med tykke stammer og brede grener.",
+      "text_markdown": "Mange av dem vokser seg høye og sterke, med tykke stammer og brede grener.",
+      "tts": {
+        "text": "Mange av dem vokser seg høye og sterke, med tykke stammer og brede grener.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veden deres er hard, og et enkelt tre kan leve i hundrevis av år.",
+      "text_markdown": "Veden deres er hard, og et enkelt tre kan leve i hundrevis av år.",
+      "tts": {
+        "text": "Veden deres er hard, og et enkelt tre kan leve i hundrevis av år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen vokser enda lenger enn det.",
+      "text_markdown": "Noen vokser enda lenger enn det.",
+      "tts": {
+        "text": "Noen vokser enda lenger enn det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mest kjente trærne i den tempererte skogen er eik, lønn, bøk og bjørk.",
+      "text_markdown": "De mest kjente trærne i den tempererte skogen er eik, lønn, bøk og bjørk.",
+      "tts": {
+        "text": "De mest kjente trærne i den tempererte skogen er eik, lønn, bøk og bjørk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I forskjellige deler av verden finner du ulike slag av disse trærne.",
+      "text_markdown": "I forskjellige deler av verden finner du ulike slag av disse trærne.",
+      "tts": {
+        "text": "I forskjellige deler av verden finner du ulike slag av disse trærne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de har samme form og samme årlige historie.",
+      "text_markdown": "Men de har samme form og samme årlige historie.",
+      "tts": {
+        "text": "Men de har samme form og samme årlige historie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om våren åpner nye blader seg på hver gren.",
+      "text_markdown": "Om våren åpner nye blader seg på hver gren.",
+      "tts": {
+        "text": "Om våren åpner nye blader seg på hver gren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bladene er lysegrønne og myke.",
+      "text_markdown": "Bladene er lysegrønne og myke.",
+      "tts": {
+        "text": "Bladene er lysegrønne og myke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gjennom sommeren brer de seg vidt utover for å fange sollyset.",
+      "text_markdown": "Gjennom sommeren brer de seg vidt utover for å fange sollyset.",
+      "tts": {
+        "text": "Gjennom sommeren brer de seg vidt utover for å fange sollyset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert grønne blad gjør sollys, vann og luft om til næring for treet.",
+      "text_markdown": "Hvert grønne blad gjør sollys, vann og luft om til næring for treet.",
+      "tts": {
+        "text": "Hvert grønne blad gjør sollys, vann og luft om til næring for treet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten skifter bladene farge før de faller.",
+      "text_markdown": "Om høsten skifter bladene farge før de faller.",
+      "tts": {
+        "text": "Om høsten skifter bladene farge før de faller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen blir knallrøde, noen lyser gult, og noen blir dypt brune.",
+      "text_markdown": "Noen blir knallrøde, noen lyser gult, og noen blir dypt brune.",
+      "tts": {
+        "text": "Noen blir knallrøde, noen lyser gult, og noen blir dypt brune.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fargene maler hele åssider i noen få korte uker.",
+      "text_markdown": "Fargene maler hele åssider i noen få korte uker.",
+      "tts": {
+        "text": "Fargene maler hele åssider i noen få korte uker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så faller bladene, og treet hviler gjennom kulden.",
+      "text_markdown": "Så faller bladene, og treet hviler gjennom kulden.",
+      "tts": {
+        "text": "Så faller bladene, og treet hviler gjennom kulden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veden i treet tar vare på det den trenger, dypt inne.",
+      "text_markdown": "Veden i treet tar vare på det den trenger, dypt inne.",
+      "tts": {
+        "text": "Veden i treet tar vare på det den trenger, dypt inne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når våren kommer tilbake, begynner treet på nytt.",
+      "text_markdown": "Når våren kommer tilbake, begynner treet på nytt.",
+      "tts": {
+        "text": "Når våren kommer tilbake, begynner treet på nytt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Under de høye trærne vokser mindre planter.",
+      "text_markdown": "Under de høye trærne vokser mindre planter.",
+      "tts": {
+        "text": "Under de høye trærne vokser mindre planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes busker med bær som dyrene elsker.",
+      "text_markdown": "Det finnes busker med bær som dyrene elsker.",
+      "tts": {
+        "text": "Det finnes busker med bær som dyrene elsker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes bregner og myk mose på steinene og de gamle tømmerstokkene.",
+      "text_markdown": "Det finnes bregner og myk mose på steinene og de gamle tømmerstokkene.",
+      "tts": {
+        "text": "Det finnes bregner og myk mose på steinene og de gamle tømmerstokkene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tidlig om våren, før de store trærne har blader, fyller villblomster skogbunnen.",
+      "text_markdown": "Tidlig om våren, før de store trærne har blader, fyller villblomster skogbunnen.",
+      "tts": {
+        "text": "Tidlig om våren, før de store trærne har blader, fyller villblomster skogbunnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I noen få uker er bakken dekket av blåklokker, påskeliljer eller andre lysende blomster.",
+      "text_markdown": "I noen få uker er bakken dekket av blåklokker, påskeliljer eller andre lysende blomster.",
+      "tts": {
+        "text": "I noen få uker er bakken dekket av blåklokker, påskeliljer eller andre lysende blomster.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når trærne får bladene sine og skygger for bakken, visner blomstene bort.",
+      "text_markdown": "Når trærne får bladene sine og skygger for bakken, visner blomstene bort.",
+      "tts": {
+        "text": "Når trærne får bladene sine og skygger for bakken, visner blomstene bort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vil vente på neste vår under jorda.",
+      "text_markdown": "De vil vente på neste vår under jorda.",
+      "tts": {
+        "text": "De vil vente på neste vår under jorda.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte skogen er hjem for mange slags dyr.",
+      "text_markdown": "Den tempererte skogen er hjem for mange slags dyr.",
+      "tts": {
+        "text": "Den tempererte skogen er hjem for mange slags dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I trærne og på bakken har de alle sine egne måter å leve med årstidsskiftene på.",
+      "text_markdown": "I trærne og på bakken har de alle sine egne måter å leve med årstidsskiftene på.",
+      "tts": {
+        "text": "I trærne og på bakken har de alle sine egne måter å leve med årstidsskiftene på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjort er vanlig i mange tempererte skoger.",
+      "text_markdown": "Hjort er vanlig i mange tempererte skoger.",
+      "tts": {
+        "text": "Hjort er vanlig i mange tempererte skoger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De går mykt mellom trærne og spiser blader, gress og små planter.",
+      "text_markdown": "De går mykt mellom trærne og spiser blader, gress og små planter.",
+      "tts": {
+        "text": "De går mykt mellom trærne og spiser blader, gress og små planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren er pelsen deres kort og brun.",
+      "text_markdown": "Om sommeren er pelsen deres kort og brun.",
+      "tts": {
+        "text": "Om sommeren er pelsen deres kort og brun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren blir pelsen tykk og grå.",
+      "text_markdown": "Om vinteren blir pelsen tykk og grå.",
+      "tts": {
+        "text": "Om vinteren blir pelsen tykk og grå.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bjørner lever også i noen av disse skogene.",
+      "text_markdown": "Bjørner lever også i noen av disse skogene.",
+      "tts": {
+        "text": "Bjørner lever også i noen av disse skogene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En bjørn spiser nesten hva som helst, bær, fisk, honning og små dyr.",
+      "text_markdown": "En bjørn spiser nesten hva som helst, bær, fisk, honning og små dyr.",
+      "tts": {
+        "text": "En bjørn spiser nesten hva som helst, bær, fisk, honning og små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten spiser en bjørn så mye den kan.",
+      "text_markdown": "Om høsten spiser en bjørn så mye den kan.",
+      "tts": {
+        "text": "Om høsten spiser en bjørn så mye den kan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så finner den et stille sted og sover dypt gjennom den kaldeste delen av vinteren.",
+      "text_markdown": "Så finner den et stille sted og sover dypt gjennom den kaldeste delen av vinteren.",
+      "tts": {
+        "text": "Så finner den et stille sted og sover dypt gjennom den kaldeste delen av vinteren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulver og rever jakter i skogen.",
+      "text_markdown": "Ulver og rever jakter i skogen.",
+      "tts": {
+        "text": "Ulver og rever jakter i skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulver lever i familieflokker og reiser mange mil hver dag.",
+      "text_markdown": "Ulver lever i familieflokker og reiser mange mil hver dag.",
+      "tts": {
+        "text": "Ulver lever i familieflokker og reiser mange mil hver dag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rever er mindre, og de jakter alene, ofte om natten.",
+      "text_markdown": "Rever er mindre, og de jakter alene, ofte om natten.",
+      "tts": {
+        "text": "Rever er mindre, og de jakter alene, ofte om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekorn finnes overalt.",
+      "text_markdown": "Ekorn finnes overalt.",
+      "tts": {
+        "text": "Ekorn finnes overalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten samler de nøtter og graver dem ned over hele skogen.",
+      "text_markdown": "Om høsten samler de nøtter og graver dem ned over hele skogen.",
+      "tts": {
+        "text": "Om høsten samler de nøtter og graver dem ned over hele skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren graver de opp de skjulte lagrene sine for å spise.",
+      "text_markdown": "Om vinteren graver de opp de skjulte lagrene sine for å spise.",
+      "tts": {
+        "text": "Om vinteren graver de opp de skjulte lagrene sine for å spise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen ganger glemmer de noen, og de nøttene vokser opp til de neste trærne.",
+      "text_markdown": "Noen ganger glemmer de noen, og de nøttene vokser opp til de neste trærne.",
+      "tts": {
+        "text": "Noen ganger glemmer de noen, og de nøttene vokser opp til de neste trærne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaniner og små mus bor i den myke jorda og under falne tømmerstokker.",
+      "text_markdown": "Kaniner og små mus bor i den myke jorda og under falne tømmerstokker.",
+      "tts": {
+        "text": "Kaniner og små mus bor i den myke jorda og under falne tømmerstokker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange slags fugler fyller den tempererte skogen med lyd.",
+      "text_markdown": "Mange slags fugler fyller den tempererte skogen med lyd.",
+      "tts": {
+        "text": "Mange slags fugler fyller den tempererte skogen med lyd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen fugler blir hele året, og du kan se dem på de nakne vintergreinene.",
+      "text_markdown": "Noen fugler blir hele året, og du kan se dem på de nakne vintergreinene.",
+      "tts": {
+        "text": "Noen fugler blir hele året, og du kan se dem på de nakne vintergreinene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange andre fugler flyr sørover om vinteren og kommer tilbake når våren vender tilbake.",
+      "text_markdown": "Mange andre fugler flyr sørover om vinteren og kommer tilbake når våren vender tilbake.",
+      "tts": {
+        "text": "Mange andre fugler flyr sørover om vinteren og kommer tilbake når våren vender tilbake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spetter hamrer på stammene av trær.",
+      "text_markdown": "Spetter hamrer på stammene av trær.",
+      "tts": {
+        "text": "Spetter hamrer på stammene av trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ugler jakter om natten.",
+      "text_markdown": "Ugler jakter om natten.",
+      "tts": {
+        "text": "Ugler jakter om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dammer og bekker synger frosker, og små fisker svømmer under isen om vinteren.",
+      "text_markdown": "I dammer og bekker synger frosker, og små fisker svømmer under isen om vinteren.",
+      "tts": {
+        "text": "I dammer og bekker synger frosker, og små fisker svømmer under isen om vinteren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommerfugler og bier kommer ut i de varme månedene, når blomstene åpner seg.",
+      "text_markdown": "Sommerfugler og bier kommer ut i de varme månedene, når blomstene åpner seg.",
+      "tts": {
+        "text": "Sommerfugler og bier kommer ut i de varme månedene, når blomstene åpner seg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert dyr her kjenner de fire årstidene i kroppen sin.",
+      "text_markdown": "Hvert dyr her kjenner de fire årstidene i kroppen sin.",
+      "tts": {
+        "text": "Hvert dyr her kjenner de fire årstidene i kroppen sin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert av dem vet når det skal være travelt, når det skal hvile, og når det skal våkne igjen.",
+      "text_markdown": "Hvert av dem vet når det skal være travelt, når det skal hvile, og når det skal våkne igjen.",
+      "tts": {
+        "text": "Hvert av dem vet når det skal være travelt, når det skal hvile, og når det skal våkne igjen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Menneskene",
+      "text_markdown": "Menneskene"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker har bodd i den tempererte skogen i mange tusen år.",
+      "text_markdown": "Mennesker har bodd i den tempererte skogen i mange tusen år.",
+      "tts": {
+        "text": "Mennesker har bodd i den tempererte skogen i mange tusen år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De milde årstidene og den rike jorda har alltid gjort disse stedene gode for menneskeliv.",
+      "text_markdown": "De milde årstidene og den rike jorda har alltid gjort disse stedene gode for menneskeliv.",
+      "tts": {
+        "text": "De milde årstidene og den rike jorda har alltid gjort disse stedene gode for menneskeliv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For lenge siden jaktet folk i disse skogene på hjort og små dyr.",
+      "text_markdown": "For lenge siden jaktet folk i disse skogene på hjort og små dyr.",
+      "tts": {
+        "text": "For lenge siden jaktet folk i disse skogene på hjort og små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De samlet nøtter, bær og røtter fra skogbunnen.",
+      "text_markdown": "De samlet nøtter, bær og røtter fra skogbunnen.",
+      "tts": {
+        "text": "De samlet nøtter, bær og røtter fra skogbunnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De visste hvilke sopper som var trygge og hvilke som ikke var det.",
+      "text_markdown": "De visste hvilke sopper som var trygge og hvilke som ikke var det.",
+      "tts": {
+        "text": "De visste hvilke sopper som var trygge og hvilke som ikke var det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De bygde hjemmene sine av veden fra trærne omkring dem.",
+      "text_markdown": "De bygde hjemmene sine av veden fra trærne omkring dem.",
+      "tts": {
+        "text": "De bygde hjemmene sine av veden fra trærne omkring dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et hus av tømmerstokker og et tak av bark kan holde en familie varm gjennom en lang vinter.",
+      "text_markdown": "Et hus av tømmerstokker og et tak av bark kan holde en familie varm gjennom en lang vinter.",
+      "tts": {
+        "text": "Et hus av tømmerstokker og et tak av bark kan holde en familie varm gjennom en lang vinter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om våren og sommeren dyrket de mat på små åkre som var ryddet i skogen.",
+      "text_markdown": "Om våren og sommeren dyrket de mat på små åkre som var ryddet i skogen.",
+      "tts": {
+        "text": "Om våren og sommeren dyrket de mat på små åkre som var ryddet i skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De plantet korn, bønner og røtter som ville trives i det kjølige været.",
+      "text_markdown": "De plantet korn, bønner og røtter som ville trives i det kjølige været.",
+      "tts": {
+        "text": "De plantet korn, bønner og røtter som ville trives i det kjølige været.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten samlet de inn avlingen og lagret den unna til de kalde månedene.",
+      "text_markdown": "Om høsten samlet de inn avlingen og lagret den unna til de kalde månedene.",
+      "tts": {
+        "text": "Om høsten samlet de inn avlingen og lagret den unna til de kalde månedene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren satt de ved bålene sine, reparerte redskapene sine, fortalte historier og ventet på våren.",
+      "text_markdown": "Om vinteren satt de ved bålene sine, reparerte redskapene sine, fortalte historier og ventet på våren.",
+      "tts": {
+        "text": "Om vinteren satt de ved bålene sine, reparerte redskapene sine, fortalte historier og ventet på våren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogen ga dem ved til bål og til bygging.",
+      "text_markdown": "Skogen ga dem ved til bål og til bygging.",
+      "tts": {
+        "text": "Skogen ga dem ved til bål og til bygging.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den ga dem bark og blader til medisin.",
+      "text_markdown": "Den ga dem bark og blader til medisin.",
+      "tts": {
+        "text": "Den ga dem bark og blader til medisin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den ga dem farger til stoff, og mat i hver årstid.",
+      "text_markdown": "Den ga dem farger til stoff, og mat i hver årstid.",
+      "tts": {
+        "text": "Den ga dem farger til stoff, og mat i hver årstid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Med tiden ble mange av disse skogene hogd ned for å gi plass til gårder og byer.",
+      "text_markdown": "Med tiden ble mange av disse skogene hogd ned for å gi plass til gårder og byer.",
+      "tts": {
+        "text": "Med tiden ble mange av disse skogene hogd ned for å gi plass til gårder og byer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landsbyene ble til småbyer, og småbyene ble til de store byene i den tempererte verden.",
+      "text_markdown": "Landsbyene ble til småbyer, og småbyene ble til de store byene i den tempererte verden.",
+      "tts": {
+        "text": "Landsbyene ble til småbyer, og småbyene ble til de store byene i den tempererte verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men folk kjenner fortsatt skogen i historiene og sangene sine.",
+      "text_markdown": "Men folk kjenner fortsatt skogen i historiene og sangene sine.",
+      "tts": {
+        "text": "Men folk kjenner fortsatt skogen i historiene og sangene sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av de gamle sangene og historiene fra disse landene er fulle av trær, ulver, hjort og de lange vinternettene.",
+      "text_markdown": "Mange av de gamle sangene og historiene fra disse landene er fulle av trær, ulver, hjort og de lange vinternettene.",
+      "tts": {
+        "text": "Mange av de gamle sangene og historiene fra disse landene er fulle av trær, ulver, hjort og de lange vinternettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I hver temperert skog har denne typen liv sine egne språk, sin egen mat og sine egne måter å vente på våren på.",
+      "text_markdown": "I hver temperert skog har denne typen liv sine egne språk, sin egen mat og sine egne måter å vente på våren på.",
+      "tts": {
+        "text": "I hver temperert skog har denne typen liv sine egne språk, sin egen mat og sine egne måter å vente på våren på.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Skogen i dag",
+      "text_markdown": "Skogen i dag"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte skogen er ett av de viktigste biomene for menneskene.",
+      "text_markdown": "Den tempererte skogen er ett av de viktigste biomene for menneskene.",
+      "tts": {
+        "text": "Den tempererte skogen er ett av de viktigste biomene for menneskene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste av verdens store byer ligger på steder som en gang var temperert skog.",
+      "text_markdown": "De fleste av verdens store byer ligger på steder som en gang var temperert skog.",
+      "tts": {
+        "text": "De fleste av verdens store byer ligger på steder som en gang var temperert skog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogene gir oss ved til bygging, papir til skriving og rent vann til drikke.",
+      "text_markdown": "Skogene gir oss ved til bygging, papir til skriving og rent vann til drikke.",
+      "tts": {
+        "text": "Skogene gir oss ved til bygging, papir til skriving og rent vann til drikke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trærne tar inn gassen vi puster ut og bruker den til å vokse.",
+      "text_markdown": "Trærne tar inn gassen vi puster ut og bruker den til å vokse.",
+      "tts": {
+        "text": "Trærne tar inn gassen vi puster ut og bruker den til å vokse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De gir tilbake gassen vi puster inn.",
+      "text_markdown": "De gir tilbake gassen vi puster inn.",
+      "tts": {
+        "text": "De gir tilbake gassen vi puster inn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten er skogen ett av de vakreste synene på Jorden.",
+      "text_markdown": "Om høsten er skogen ett av de vakreste synene på Jorden.",
+      "tts": {
+        "text": "Om høsten er skogen ett av de vakreste synene på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk reiser lange avstander bare for å se de fargede bladene.",
+      "text_markdown": "Folk reiser lange avstander bare for å se de fargede bladene.",
+      "tts": {
+        "text": "Folk reiser lange avstander bare for å se de fargede bladene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men den tempererte skogen har mistet mye av sitt land.",
+      "text_markdown": "Men den tempererte skogen har mistet mye av sitt land.",
+      "tts": {
+        "text": "Men den tempererte skogen har mistet mye av sitt land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gjennom tusenvis av år ble mye av den opprinnelige skogen hogd ned.",
+      "text_markdown": "Gjennom tusenvis av år ble mye av den opprinnelige skogen hogd ned.",
+      "tts": {
+        "text": "Gjennom tusenvis av år ble mye av den opprinnelige skogen hogd ned.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der det en gang var endeløse trær, er det nå åkre, småbyer, veier og byer.",
+      "text_markdown": "Der det en gang var endeløse trær, er det nå åkre, småbyer, veier og byer.",
+      "tts": {
+        "text": "Der det en gang var endeløse trær, er det nå åkre, småbyer, veier og byer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogene som er igjen, er mindre og oppdelte.",
+      "text_markdown": "Skogene som er igjen, er mindre og oppdelte.",
+      "tts": {
+        "text": "Skogene som er igjen, er mindre og oppdelte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+      "text_markdown": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planter nye trær der gamle ble borte.",
+      "text_markdown": "De planter nye trær der gamle ble borte.",
+      "tts": {
+        "text": "De planter nye trær der gamle ble borte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De beskytter gamle skoger mot å bli hogd ned.",
+      "text_markdown": "De beskytter gamle skoger mot å bli hogd ned.",
+      "tts": {
+        "text": "De beskytter gamle skoger mot å bli hogd ned.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer skogen så vi kan forstå den bedre.",
+      "text_markdown": "De studerer skogen så vi kan forstå den bedre.",
+      "tts": {
+        "text": "De studerer skogen så vi kan forstå den bedre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ung skog kan vokse tilbake i løpet av hundre år.",
+      "text_markdown": "En ung skog kan vokse tilbake i løpet av hundre år.",
+      "tts": {
+        "text": "En ung skog kan vokse tilbake i løpet av hundre år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En gammel skog kan romme levende trær som er eldre enn noen bygning i nærheten.",
+      "text_markdown": "En gammel skog kan romme levende trær som er eldre enn noen bygning i nærheten.",
+      "tts": {
+        "text": "En gammel skog kan romme levende trær som er eldre enn noen bygning i nærheten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Skogen i dag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skogen er verdt vår omsorg.",
+      "text_markdown": "Skogen er verdt vår omsorg.",
+      "tts": {
+        "text": "Skogen er verdt vår omsorg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tempererte skogen.",
+      "text_markdown": "Det er den tempererte skogen.",
+      "tts": {
+        "text": "Det er den tempererte skogen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En grønn verden av høye trær, kjølige bekker og fire svært forskjellige årstider.",
+      "text_markdown": "En grønn verden av høye trær, kjølige bekker og fire svært forskjellige årstider.",
+      "tts": {
+        "text": "En grønn verden av høye trær, kjølige bekker og fire svært forskjellige årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du noen gang går inn i en, stå stille et øyeblikk.",
+      "text_markdown": "Hvis du noen gang går inn i en, stå stille et øyeblikk.",
+      "tts": {
+        "text": "Hvis du noen gang går inn i en, stå stille et øyeblikk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lytt til vinden i bladene over deg.",
+      "text_markdown": "Lytt til vinden i bladene over deg.",
+      "tts": {
+        "text": "Lytt til vinden i bladene over deg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se på det myke teppet av gamle blader under føttene dine.",
+      "text_markdown": "Se på det myke teppet av gamle blader under føttene dine.",
+      "tts": {
+        "text": "Se på det myke teppet av gamle blader under føttene dine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil høre hjertet i biomet slå rundt deg.",
+      "text_markdown": "Du vil høre hjertet i biomet slå rundt deg.",
+      "tts": {
+        "text": "Du vil høre hjertet i biomet slå rundt deg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

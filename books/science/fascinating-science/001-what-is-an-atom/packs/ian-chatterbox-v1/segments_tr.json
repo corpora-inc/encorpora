@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "tr",
+  "total_segments": 300,
+  "segments": [
+    {
+      "block_type": "heading",
+      "id": "ch01-001",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Her Şey Atomlardan Yapılmıştır",
+      "text_markdown": "Her Şey Atomlardan Yapılmıştır",
+      "title": "Her Şey Atomlardan Yapılmıştır"
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-002",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "Etrafına bak.",
+      "text_markdown": "Etrafına bak.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Etrafına bak.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-003",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "Görebildiğin her şey atomlardan yapılmıştır.",
+      "text_markdown": "Görebildiğin her şey atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Görebildiğin her şey atomlardan yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-004",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "Soluduğun hava atomlardan yapılmıştır.",
+      "text_markdown": "Soluduğun hava atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Soluduğun hava atomlardan yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-005",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "İçtiğin su atomlardan yapılmıştır.",
+      "text_markdown": "İçtiğin su atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "İçtiğin su atomlardan yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-006",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "Vücudun atomlardan yapılmıştır.",
+      "text_markdown": "Vücudun atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Vücudun atomlardan yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-007",
+      "chapter": 1,
+      "sentence_index": 5,
+      "paragraph_id": "p2",
+      "part": 0,
+      "text": "Ayaklarının altındaki toprak atomlardan yapılmıştır.",
+      "text_markdown": "Ayaklarının altındaki toprak atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Ayaklarının altındaki toprak atomlardan yapılmıştır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-008",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "part": 0,
+      "text": "Atom, hâlâ kimyasal bir kimliği olan en küçük madde parçasıdır.",
+      "text_markdown": "Atom, hâlâ kimyasal bir kimliği olan en küçük madde parçasıdır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atom, hâlâ kimyasal bir kimliği olan en küçük madde parçasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-009",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "text": "Tek bir atomu gözlerinle göremezsin.",
+      "text_markdown": "Tek bir atomu gözlerinle göremezsin.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Tek bir atomu gözlerinle göremezsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-010",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p3",
+      "part": 0,
+      "text": "Tek bir atomu sıradan bir mikroskopla bile göremezsin.",
+      "text_markdown": "Tek bir atomu sıradan bir mikroskopla bile göremezsin.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Tek bir atomu sıradan bir mikroskopla bile göremezsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-011",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p3",
+      "part": 0,
+      "text": "Atomlar işte bu kadar küçüktür.",
+      "text_markdown": "Atomlar işte bu kadar küçüktür.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomlar işte bu kadar küçüktür.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-012",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "part": 0,
+      "text": "Tek bir kum tanesi yaklaşık elli kentilyon atom içerir.",
+      "text_markdown": "Tek bir kum tanesi yaklaşık elli kentilyon atom içerir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Tek bir kum tanesi yaklaşık elli kentilyon atom içerir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-013",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p4",
+      "part": 0,
+      "text": "Bu sayı, ellinin yanına on sekiz sıfır koyulmasıyla elde edilir.",
+      "text_markdown": "Bu sayı, ellinin yanına on sekiz sıfır koyulmasıyla elde edilir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Bu sayı, ellinin yanına on sekiz sıfır koyulmasıyla elde edilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-014",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p4",
+      "part": 0,
+      "text": "Bir kum tanesindeki atom sayısı, bir sahildeki kum tanesi sayısından fazladır.",
+      "text_markdown": "Bir kum tanesindeki atom sayısı, bir sahildeki kum tanesi sayısından fazladır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Bir kum tanesindeki atom sayısı, bir sahildeki kum tanesi sayısından fazladır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-015",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "part": 0,
+      "text": "Atomlar, fiziksel dünyadaki her şeyin yapı taşlarıdır.",
+      "text_markdown": "Atomlar, fiziksel dünyadaki her şeyin yapı taşlarıdır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomlar, fiziksel dünyadaki her şeyin yapı taşlarıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-016",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "text": "Bir duvar tuğlalardan yapılır.",
+      "text_markdown": "Bir duvar tuğlalardan yapılır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Bir duvar tuğlalardan yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-017",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "part": 0,
+      "text": "Bir cümle kelimelerden yapılır.",
+      "text_markdown": "Bir cümle kelimelerden yapılır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Bir cümle kelimelerden yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-018",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p5",
+      "part": 0,
+      "text": "Evren atomlardan yapılmıştır.",
+      "text_markdown": "Evren atomlardan yapılmıştır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Evren atomlardan yapılmıştır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-019",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "part": 0,
+      "text": "Atom kelimesi eski Yunancadan gelir.",
+      "text_markdown": "Atom kelimesi eski Yunancadan gelir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atom kelimesi eski Yunancadan gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-020",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "text": "Yunanca atomos kelimesi bölünemez anlamına gelir.",
+      "text_markdown": "Yunanca atomos kelimesi bölünemez anlamına gelir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Yunanca atomos kelimesi bölünemez anlamına gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-021",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "part": 0,
+      "text": "Eski Yunan filozofları atomların maddenin en küçük parçaları olduğunu düşünüyordu.",
+      "text_markdown": "Eski Yunan filozofları atomların maddenin en küçük parçaları olduğunu düşünüyordu.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Eski Yunan filozofları atomların maddenin en küçük parçaları olduğunu düşünüyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-022",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "part": 0,
+      "text": "Neredeyse haklılardı.",
+      "text_markdown": "Neredeyse haklılardı.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Neredeyse haklılardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-023",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "part": 0,
+      "text": "Atomlar gerçekte en küçük parçacıklar değildir, ama kimyasal özelliklerini koruyan en küçük birimlerdir.",
+      "text_markdown": "Atomlar gerçekte en küçük parçacıklar değildir, ama kimyasal özelliklerini koruyan en küçük birimlerdir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomlar gerçekte en küçük parçacıklar değildir, ama kimyasal özelliklerini koruyan en küçük birimlerdir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-024",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "part": 0,
+      "text": "Atomlar inanılmaz derecede dayanıklıdır.",
+      "text_markdown": "Atomlar inanılmaz derecede dayanıklıdır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomlar inanılmaz derecede dayanıklıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-025",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "text": "Vücudundaki atomlar milyarlarca yaşındadır.",
+      "text_markdown": "Vücudundaki atomlar milyarlarca yaşındadır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Vücudundaki atomlar milyarlarca yaşındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-026",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "part": 0,
+      "text": "Bugün içtiğin sudaki bazı hidrojen atomları, Büyük Patlama’dan sonraki ilk dakikalarda oluşturulmuştur.",
+      "text_markdown": "Bugün içtiğin sudaki bazı hidrojen atomları, Büyük Patlama’dan sonraki ilk dakikalarda oluşturulmuştur.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Bugün içtiğin sudaki bazı hidrojen atomları, Büyük Patlama’dan sonraki ilk dakikalarda oluşturulmuştur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-027",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "part": 0,
+      "text": "Sen çok eski malzemelerden yapılmışsın.",
+      "text_markdown": "Sen çok eski malzemelerden yapılmışsın.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Sen çok eski malzemelerden yapılmışsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-028",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Atomlar günlük yaşamda asla yaratılmaz ya da yok edilmez.",
+      "text_markdown": "Atomlar günlük yaşamda asla yaratılmaz ya da yok edilmez.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomlar günlük yaşamda asla yaratılmaz ya da yok edilmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-029",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Onlar yeniden düzenlenir.",
+      "text_markdown": "Onlar yeniden düzenlenir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Onlar yeniden düzenlenir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-030",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Odun yandığında atomlar yok olmaz.",
+      "text_markdown": "Odun yandığında atomlar yok olmaz.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Odun yandığında atomlar yok olmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-031",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Duman, kül ve gaz olarak yeniden düzenlenir.",
+      "text_markdown": "Duman, kül ve gaz olarak yeniden düzenlenir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Duman, kül ve gaz olarak yeniden düzenlenir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-032",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Buz eridiğinde atomlar aynı kalır.",
+      "text_markdown": "Buz eridiğinde atomlar aynı kalır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Buz eridiğinde atomlar aynı kalır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-033",
+      "chapter": 1,
+      "sentence_index": 5,
+      "paragraph_id": "p8",
+      "part": 0,
+      "text": "Sadece dizilişleri değişir.",
+      "text_markdown": "Sadece dizilişleri değişir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Sadece dizilişleri değişir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-034",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "part": 0,
+      "text": "Atomları anlamak kimyanın temelidir.",
+      "text_markdown": "Atomları anlamak kimyanın temelidir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Atomları anlamak kimyanın temelidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-035",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "part": 0,
+      "text": "Kimya, atomların nasıl birleştiğini, yeniden düzenlendiğini ve etkileşime girdiğini inceleyen bilimdir.",
+      "text_markdown": "Kimya, atomların nasıl birleştiğini, yeniden düzenlendiğini ve etkileşime girdiğini inceleyen bilimdir.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Kimya, atomların nasıl birleştiğini, yeniden düzenlendiğini ve etkileşime girdiğini inceleyen bilimdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch01-036",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "part": 0,
+      "text": "Fiziksel dünyada olan her şey sonuçta atomlara ve onların yaptıklarına dayanır.",
+      "text_markdown": "Fiziksel dünyada olan her şey sonuçta atomlara ve onların yaptıklarına dayanır.",
+      "title": "Her Şey Atomlardan Yapılmıştır",
+      "tts": {
+        "text": "Fiziksel dünyada olan her şey sonuçta atomlara ve onların yaptıklarına dayanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch02-037",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Atomun İçi",
+      "text_markdown": "Atomun İçi",
+      "title": "Atomun İçi"
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-038",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "part": 0,
+      "text": "Bir atomun içinde üç tür parçacık vardır.",
+      "text_markdown": "Bir atomun içinde üç tür parçacık vardır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir atomun içinde üç tür parçacık vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-039",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p11",
+      "part": 0,
+      "text": "Protonlar.",
+      "text_markdown": "Protonlar.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Protonlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-040",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "text": "Nötronlar.",
+      "text_markdown": "Nötronlar.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-041",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p11",
+      "part": 0,
+      "text": "Elektronlar.",
+      "text_markdown": "Elektronlar.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Elektronlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-042",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p11",
+      "part": 0,
+      "text": "Bu üç parçacık evrendeki her atomu oluşturur.",
+      "text_markdown": "Bu üç parçacık evrendeki her atomu oluşturur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bu üç parçacık evrendeki her atomu oluşturur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-043",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "part": 0,
+      "text": "Atomun merkezi çekirdek olarak adlandırılır.",
+      "text_markdown": "Atomun merkezi çekirdek olarak adlandırılır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Atomun merkezi çekirdek olarak adlandırılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-044",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p12",
+      "part": 0,
+      "text": "Çekirdek, protonları ve nötronları içerir.",
+      "text_markdown": "Çekirdek, protonları ve nötronları içerir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Çekirdek, protonları ve nötronları içerir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-045",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "text": "Çekirdek, tüm atoma kıyasla çok küçüktür.",
+      "text_markdown": "Çekirdek, tüm atoma kıyasla çok küçüktür.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Çekirdek, tüm atoma kıyasla çok küçüktür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-046",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p12",
+      "part": 0,
+      "text": "Eğer atom bir futbol stadyumu büyüklüğünde olsaydı, çekirdek sahadaki orta çizgide duran bir misket büyüklüğünde olurdu.",
+      "text_markdown": "Eğer atom bir futbol stadyumu büyüklüğünde olsaydı, çekirdek sahadaki orta çizgide duran bir misket büyüklüğünde olurdu.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Eğer atom bir futbol stadyumu büyüklüğünde olsaydı, çekirdek sahadaki orta çizgide duran bir misket büyüklüğünde olurdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-047",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Protonlar pozitif elektrik yükü taşır.",
+      "text_markdown": "Protonlar pozitif elektrik yükü taşır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Protonlar pozitif elektrik yükü taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-048",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Her proton aynı miktarda pozitif yük taşır.",
+      "text_markdown": "Her proton aynı miktarda pozitif yük taşır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Her proton aynı miktarda pozitif yük taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-049",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Bir atomdaki proton sayısı, o atomun hangi element olduğunu belirler.",
+      "text_markdown": "Bir atomdaki proton sayısı, o atomun hangi element olduğunu belirler.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir atomdaki proton sayısı, o atomun hangi element olduğunu belirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-050",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Bir proton, hidrojen demektir.",
+      "text_markdown": "Bir proton, hidrojen demektir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir proton, hidrojen demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-051",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Altı proton, karbon demektir.",
+      "text_markdown": "Altı proton, karbon demektir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Altı proton, karbon demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-052",
+      "chapter": 2,
+      "sentence_index": 5,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Yirmi altı proton, demir demektir.",
+      "text_markdown": "Yirmi altı proton, demir demektir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Yirmi altı proton, demir demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-053",
+      "chapter": 2,
+      "sentence_index": 6,
+      "paragraph_id": "p13",
+      "part": 0,
+      "text": "Proton sayısı, bir atom hakkındaki en önemli bilgidir.",
+      "text_markdown": "Proton sayısı, bir atom hakkındaki en önemli bilgidir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Proton sayısı, bir atom hakkındaki en önemli bilgidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-054",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "part": 0,
+      "text": "Nötronlar elektrik yükü taşımaz.",
+      "text_markdown": "Nötronlar elektrik yükü taşımaz.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar elektrik yükü taşımaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-055",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "part": 0,
+      "text": "Nötronlar nötrdür.",
+      "text_markdown": "Nötronlar nötrdür.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar nötrdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-056",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "text": "Nötronlar çekirdeğin içinde protonların yanında bulunur.",
+      "text_markdown": "Nötronlar çekirdeğin içinde protonların yanında bulunur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar çekirdeğin içinde protonların yanında bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-057",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p14",
+      "part": 0,
+      "text": "Nötronlar çekirdeği bir arada tutmaya yardımcı olur.",
+      "text_markdown": "Nötronlar çekirdeği bir arada tutmaya yardımcı olur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar çekirdeği bir arada tutmaya yardımcı olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-058",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p14",
+      "part": 0,
+      "text": "Nötronlar olmasaydı, protonlar hepsi aynı pozitif yükü taşıdıkları için birbirlerini iteceklerdi.",
+      "text_markdown": "Nötronlar olmasaydı, protonlar hepsi aynı pozitif yükü taşıdıkları için birbirlerini iteceklerdi.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötronlar olmasaydı, protonlar hepsi aynı pozitif yükü taşıdıkları için birbirlerini iteceklerdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-059",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "part": 0,
+      "text": "Elektronlar negatif elektrik yükü taşır.",
+      "text_markdown": "Elektronlar negatif elektrik yükü taşır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Elektronlar negatif elektrik yükü taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-060",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "part": 0,
+      "text": "Elektronlar çekirdeğin etrafında bir bulut içinde hareket eder.",
+      "text_markdown": "Elektronlar çekirdeğin etrafında bir bulut içinde hareket eder.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Elektronlar çekirdeğin etrafında bir bulut içinde hareket eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-061",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "text": "Güneşin etrafında dönen gezegenler gibi yörüngede dönmezler.",
+      "text_markdown": "Güneşin etrafında dönen gezegenler gibi yörüngede dönmezler.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Güneşin etrafında dönen gezegenler gibi yörüngede dönmezler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-062",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p15",
+      "part": 0,
+      "text": "Çekirdeğin etrafında bulanık bir olasılık bölgesinde bulunurlar.",
+      "text_markdown": "Çekirdeğin etrafında bulanık bir olasılık bölgesinde bulunurlar.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Çekirdeğin etrafında bulanık bir olasılık bölgesinde bulunurlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-063",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p15",
+      "part": 0,
+      "text": "Elektron bulutu, herhangi bir anda bir elektronu bulma olasılığının yüksek olduğu bölgedir.",
+      "text_markdown": "Elektron bulutu, herhangi bir anda bir elektronu bulma olasılığının yüksek olduğu bölgedir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Elektron bulutu, herhangi bir anda bir elektronu bulma olasılığının yüksek olduğu bölgedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-064",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "part": 0,
+      "text": "Bir elektronun kütlesi, bir proton veya nötronla karşılaştırıldığında neredeyse hiç yoktur.",
+      "text_markdown": "Bir elektronun kütlesi, bir proton veya nötronla karşılaştırıldığında neredeyse hiç yoktur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir elektronun kütlesi, bir proton veya nötronla karşılaştırıldığında neredeyse hiç yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-065",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p16",
+      "part": 0,
+      "text": "Bir proton, bir elektrondan yaklaşık 1.836 kat daha ağırdır.",
+      "text_markdown": "Bir proton, bir elektrondan yaklaşık 1.836 kat daha ağırdır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir proton, bir elektrondan yaklaşık bin sekiz yüz otuz altı kat daha ağırdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-066",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p16",
+      "part": 0,
+      "text": "Bir atomun kütlesinin neredeyse tamamı çekirdektedir.",
+      "text_markdown": "Bir atomun kütlesinin neredeyse tamamı çekirdektedir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir atomun kütlesinin neredeyse tamamı çekirdektedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-067",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "part": 0,
+      "text": "Nötr bir atomda elektron sayısı proton sayısına eşittir.",
+      "text_markdown": "Nötr bir atomda elektron sayısı proton sayısına eşittir.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Nötr bir atomda elektron sayısı proton sayısına eşittir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-068",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "part": 0,
+      "text": "Pozitif yükler ve negatif yükler birbirini dengeler.",
+      "text_markdown": "Pozitif yükler ve negatif yükler birbirini dengeler.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Pozitif yükler ve negatif yükler birbirini dengeler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-069",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "text": "Atomun toplam yükü sıfırdır.",
+      "text_markdown": "Atomun toplam yükü sıfırdır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Atomun toplam yükü sıfırdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-070",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "part": 0,
+      "text": "Bu denge, bir atomun varsayılan durumudur.",
+      "text_markdown": "Bu denge, bir atomun varsayılan durumudur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bu denge, bir atomun varsayılan durumudur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-071",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Bir atomun çoğu boş uzaydır.",
+      "text_markdown": "Bir atomun çoğu boş uzaydır.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Bir atomun çoğu boş uzaydır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-072",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Çekirdek yoğun ve çok küçüktür.",
+      "text_markdown": "Çekirdek yoğun ve çok küçüktür.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Çekirdek yoğun ve çok küçüktür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-073",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Elektron bulutu büyüktür ve çoğunlukla boşluktan oluşur.",
+      "text_markdown": "Elektron bulutu büyüktür ve çoğunlukla boşluktan oluşur.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Elektron bulutu büyüktür ve çoğunlukla boşluktan oluşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-074",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Vücudundaki her atomdan tüm boş alanı çıkarabilseydin, bir tuz tanesinden daha küçük bir boyuta küçülürdün.",
+      "text_markdown": "Vücudundaki her atomdan tüm boş alanı çıkarabilseydin, bir tuz tanesinden daha küçük bir boyuta küçülürdün.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Vücudundaki her atomdan tüm boş alanı çıkarabilseydin, bir tuz tanesinden daha küçük bir boyuta küçülürdün.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-075",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Kütlen aynı kalırdı.",
+      "text_markdown": "Kütlen aynı kalırdı.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Kütlen aynı kalırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch02-076",
+      "chapter": 2,
+      "sentence_index": 5,
+      "paragraph_id": "p18",
+      "part": 0,
+      "text": "Sadece inanılmaz derecede yoğun olurdun.",
+      "text_markdown": "Sadece inanılmaz derecede yoğun olurdun.",
+      "title": "Atomun İçi",
+      "tts": {
+        "text": "Sadece inanılmaz derecede yoğun olurdun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch03-077",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Elementler",
+      "text_markdown": "Elementler",
+      "title": "Elementler"
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-078",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "part": 0,
+      "text": "Element, yalnızca bir tür atomdan oluşan bir maddedir.",
+      "text_markdown": "Element, yalnızca bir tür atomdan oluşan bir maddedir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Element, yalnızca bir tür atomdan oluşan bir maddedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-079",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "part": 0,
+      "text": "Saf altın bir elementtir.",
+      "text_markdown": "Saf altın bir elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Saf altın bir elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-080",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "part": 0,
+      "text": "Saf bir altın külçesindeki her atomun yetmiş dokuz protonu vardır.",
+      "text_markdown": "Saf bir altın külçesindeki her atomun yetmiş dokuz protonu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Saf bir altın külçesindeki her atomun yetmiş dokuz protonu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-081",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "text": "Saf oksijen bir elementtir.",
+      "text_markdown": "Saf oksijen bir elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Saf oksijen bir elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-082",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p20",
+      "part": 0,
+      "text": "Saf oksijen dolu bir tüpteki her atomun sekiz protonu vardır.",
+      "text_markdown": "Saf oksijen dolu bir tüpteki her atomun sekiz protonu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Saf oksijen dolu bir tüpteki her atomun sekiz protonu vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-083",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "part": 0,
+      "text": "Dünyada doğal olarak bulunan yaklaşık doksan iki element vardır.",
+      "text_markdown": "Dünyada doğal olarak bulunan yaklaşık doksan iki element vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Dünyada doğal olarak bulunan yaklaşık doksan iki element vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-084",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "part": 0,
+      "text": "Bilim insanları laboratuvarlarda ek elementler üretmiştir.",
+      "text_markdown": "Bilim insanları laboratuvarlarda ek elementler üretmiştir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Bilim insanları laboratuvarlarda ek elementler üretmiştir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-085",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "part": 0,
+      "text": "Bilinen toplam element sayısı yüz on sekizin üzerindedir.",
+      "text_markdown": "Bilinen toplam element sayısı yüz on sekizin üzerindedir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Bilinen toplam element sayısı yüz on sekizin üzerindedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-086",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "text": "Her elementin kendine özgü bir proton sayısı vardır.",
+      "text_markdown": "Her elementin kendine özgü bir proton sayısı vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Her elementin kendine özgü bir proton sayısı vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-087",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Her elementin bir adı ve bir sembolü vardır.",
+      "text_markdown": "Her elementin bir adı ve bir sembolü vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Her elementin bir adı ve bir sembolü vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-088",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Hidrojen H’dir. Oksijen O’dur. Karbon C’dir. Demir Fe’dir.",
+      "text_markdown": "Hidrojen H’dir. Oksijen O’dur. Karbon C’dir. Demir Fe’dir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Hidrojen he’dir. Oksijen o’dur. Karbon ce’dir. Demir fe e’dir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-089",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Altın Au’dur.",
+      "text_markdown": "Altın Au’dur.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Altın a u’dur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-090",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Semboller Latince, Yunanca veya İngilizce isimlerden gelir.",
+      "text_markdown": "Semboller Latince, Yunanca veya İngilizce isimlerden gelir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Semboller Latince, Yunanca veya İngilizce isimlerden gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-091",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Fe, Latince ferrum kelimesinden gelir.",
+      "text_markdown": "Fe, Latince ferrum kelimesinden gelir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Fe e, Latince ferrum kelimesinden gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-092",
+      "chapter": 3,
+      "sentence_index": 5,
+      "paragraph_id": "p22",
+      "part": 0,
+      "text": "Au, Latince aurum kelimesinden gelir.",
+      "text_markdown": "Au, Latince aurum kelimesinden gelir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "A u, Latince aurum kelimesinden gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-093",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "part": 0,
+      "text": "Hidrojen en basit elementtir.",
+      "text_markdown": "Hidrojen en basit elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Hidrojen en basit elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-094",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "part": 0,
+      "text": "Bir hidrojen atomunun bir protonu ve bir elektronu vardır.",
+      "text_markdown": "Bir hidrojen atomunun bir protonu ve bir elektronu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Bir hidrojen atomunun bir protonu ve bir elektronu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-095",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "part": 0,
+      "text": "Hidrojen evrendeki en yaygın elementtir.",
+      "text_markdown": "Hidrojen evrendeki en yaygın elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Hidrojen evrendeki en yaygın elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-096",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "text": "Yıldızlar çoğunlukla hidrojenden yapılmıştır.",
+      "text_markdown": "Yıldızlar çoğunlukla hidrojenden yapılmıştır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Yıldızlar çoğunlukla hidrojenden yapılmıştır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-097",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "part": 0,
+      "text": "Karbon yaşamın elementidir.",
+      "text_markdown": "Karbon yaşamın elementidir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Karbon yaşamın elementidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-098",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p24",
+      "part": 0,
+      "text": "Karbonun altı protonu vardır.",
+      "text_markdown": "Karbonun altı protonu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Karbonun altı protonu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-099",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p24",
+      "part": 0,
+      "text": "Karbon atomları aynı anda birden fazla atomla bağ kurabilir.",
+      "text_markdown": "Karbon atomları aynı anda birden fazla atomla bağ kurabilir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Karbon atomları aynı anda birden fazla atomla bağ kurabilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-100",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "text": "Bu yetenek, karbonu tüm canlıların omurgası yapar.",
+      "text_markdown": "Bu yetenek, karbonu tüm canlıların omurgası yapar.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Bu yetenek, karbonu tüm canlıların omurgası yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-101",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p24",
+      "part": 0,
+      "text": "Vücudundaki her protein, her DNA ipliği ve her şeker molekülü karbon içerir.",
+      "text_markdown": "Vücudundaki her protein, her DNA ipliği ve her şeker molekülü karbon içerir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Vücudundaki her protein, her DNA ipliği ve her şeker molekülü karbon içerir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-102",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "part": 0,
+      "text": "Oksijenin sekiz protonu vardır.",
+      "text_markdown": "Oksijenin sekiz protonu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Oksijenin sekiz protonu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-103",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p25",
+      "part": 0,
+      "text": "Oksijen, soluduğun elementtir.",
+      "text_markdown": "Oksijen, soluduğun elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Oksijen, soluduğun elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-104",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p25",
+      "part": 0,
+      "text": "Ciğerlerin havadan oksijeni alır ve kanına gönderir.",
+      "text_markdown": "Ciğerlerin havadan oksijeni alır ve kanına gönderir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Ciğerlerin havadan oksijeni alır ve kanına gönderir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-105",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "text": "Hücrelerin oksijeni kullanarak yiyeceklerden enerji açığa çıkarır.",
+      "text_markdown": "Hücrelerin oksijeni kullanarak yiyeceklerden enerji açığa çıkarır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Hücrelerin oksijeni kullanarak yiyeceklerden enerji açığa çıkarır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-106",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "part": 0,
+      "text": "Demirin yirmi altı protonu vardır.",
+      "text_markdown": "Demirin yirmi altı protonu vardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Demirin yirmi altı protonu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-107",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "part": 0,
+      "text": "Demir, kanını kırmızı yapan elementtir.",
+      "text_markdown": "Demir, kanını kırmızı yapan elementtir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Demir, kanını kırmızı yapan elementtir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-108",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "part": 0,
+      "text": "Demir, çeliğin ana bileşenidir.",
+      "text_markdown": "Demir, çeliğin ana bileşenidir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Demir, çeliğin ana bileşenidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-109",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "text": "Dünya’nın çekirdeği çoğunlukla demirden oluşur.",
+      "text_markdown": "Dünya’nın çekirdeği çoğunlukla demirden oluşur.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Dünya’nın çekirdeği çoğunlukla demirden oluşur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-110",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "part": 0,
+      "text": "En hafif elementler evrende en yaygın olanlardır.",
+      "text_markdown": "En hafif elementler evrende en yaygın olanlardır.",
+      "title": "Elementler",
+      "tts": {
+        "text": "En hafif elementler evrende en yaygın olanlardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-111",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "part": 0,
+      "text": "Hidrojen ve helyum birlikte evrendeki tüm atomların yaklaşık yüzde doksan sekizini oluşturur.",
+      "text_markdown": "Hidrojen ve helyum birlikte evrendeki tüm atomların yaklaşık yüzde doksan sekizini oluşturur.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Hidrojen ve helyum birlikte evrendeki tüm atomların yaklaşık yüzde doksan sekizini oluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-112",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p27",
+      "part": 0,
+      "text": "Ağır elementler karşılaştırma yaparsak çok daha nadirdir.",
+      "text_markdown": "Ağır elementler karşılaştırma yaparsak çok daha nadirdir.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Ağır elementler karşılaştırma yaparsak çok daha nadirdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch03-113",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "text": "Her ağır elementin her atomu bir yıldızın içinde oluşturulmuştur.",
+      "text_markdown": "Her ağır elementin her atomu bir yıldızın içinde oluşturulmuştur.",
+      "title": "Elementler",
+      "tts": {
+        "text": "Her ağır elementin her atomu bir yıldızın içinde oluşturulmuştur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch04-114",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Periyodik Tablo",
+      "text_markdown": "Periyodik Tablo",
+      "title": "Periyodik Tablo"
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-115",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "part": 0,
+      "text": "Periyodik tablo, bilinen her elementi düzenleyen bir çizelgedir.",
+      "text_markdown": "Periyodik tablo, bilinen her elementi düzenleyen bir çizelgedir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Periyodik tablo, bilinen her elementi düzenleyen bir çizelgedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-116",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p29",
+      "part": 0,
+      "text": "Tablo, elementleri proton sayılarına göre küçükten büyüğe sıralar.",
+      "text_markdown": "Tablo, elementleri proton sayılarına göre küçükten büyüğe sıralar.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Tablo, elementleri proton sayılarına göre küçükten büyüğe sıralar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-117",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p29",
+      "part": 0,
+      "text": "Hidrojen bir protonla birincisidir.",
+      "text_markdown": "Hidrojen bir protonla birincisidir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Hidrojen bir protonla birincisidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-118",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p29",
+      "part": 0,
+      "text": "Helyum iki protonla ikincisidir.",
+      "text_markdown": "Helyum iki protonla ikincisidir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Helyum iki protonla ikincisidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-119",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "text": "Tablo yüz on sekiz protonla oganesson’a kadar devam eder.",
+      "text_markdown": "Tablo yüz on sekiz protonla oganesson’a kadar devam eder.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Tablo yüz on sekiz protonla oganesson’a kadar devam eder.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-120",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Periyodik tablonun satırları ve sütunları vardır.",
+      "text_markdown": "Periyodik tablonun satırları ve sütunları vardır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Periyodik tablonun satırları ve sütunları vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-121",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Satırlara periyot denir.",
+      "text_markdown": "Satırlara periyot denir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Satırlara periyot denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-122",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Sütunlara grup denir.",
+      "text_markdown": "Sütunlara grup denir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Sütunlara grup denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-123",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Aynı gruptaki elementler benzer özellikleri paylaşır.",
+      "text_markdown": "Aynı gruptaki elementler benzer özellikleri paylaşır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Aynı gruptaki elementler benzer özellikleri paylaşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-124",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Tabloya bu yüzden periyodik denir.",
+      "text_markdown": "Tabloya bu yüzden periyodik denir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Tabloya bu yüzden periyodik denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-125",
+      "chapter": 4,
+      "sentence_index": 5,
+      "paragraph_id": "p30",
+      "part": 0,
+      "text": "Özellikler düzenli bir kalıpla tekrarlanır.",
+      "text_markdown": "Özellikler düzenli bir kalıpla tekrarlanır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Özellikler düzenli bir kalıpla tekrarlanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-126",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Tablonun sol tarafındaki elementler metallerdir.",
+      "text_markdown": "Tablonun sol tarafındaki elementler metallerdir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Tablonun sol tarafındaki elementler metallerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-127",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Elementlerin çoğu metaldir.",
+      "text_markdown": "Elementlerin çoğu metaldir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Elementlerin çoğu metaldir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-128",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Metaller parlaktır.",
+      "text_markdown": "Metaller parlaktır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Metaller parlaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-129",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Metaller elektriği iletir.",
+      "text_markdown": "Metaller elektriği iletir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Metaller elektriği iletir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-130",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Metaller ısıyı iletir.",
+      "text_markdown": "Metaller ısıyı iletir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Metaller ısıyı iletir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-131",
+      "chapter": 4,
+      "sentence_index": 5,
+      "paragraph_id": "p31",
+      "part": 0,
+      "text": "Demir, bakır, altın ve alüminyum hep metaldir.",
+      "text_markdown": "Demir, bakır, altın ve alüminyum hep metaldir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Demir, bakır, altın ve alüminyum hep metaldir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-132",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "part": 0,
+      "text": "Tablonun sağ tarafındaki elementler ametallerdir.",
+      "text_markdown": "Tablonun sağ tarafındaki elementler ametallerdir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Tablonun sağ tarafındaki elementler ametallerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-133",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "part": 0,
+      "text": "Ametaller arasında oksijen, azot, karbon ve kükürt vardır.",
+      "text_markdown": "Ametaller arasında oksijen, azot, karbon ve kükürt vardır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Ametaller arasında oksijen, azot, karbon ve kükürt vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-134",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "part": 0,
+      "text": "Ametaller elektriği iyi iletmez.",
+      "text_markdown": "Ametaller elektriği iyi iletmez.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Ametaller elektriği iyi iletmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-135",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "part": 0,
+      "text": "Ametaller havayı, suyu ve canlıları oluşturan elementlerdir.",
+      "text_markdown": "Ametaller havayı, suyu ve canlıları oluşturan elementlerdir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Ametaller havayı, suyu ve canlıları oluşturan elementlerdir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-136",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "part": 0,
+      "text": "Birkaç element metaller ve ametaller arasındaki sınırda bulunur.",
+      "text_markdown": "Birkaç element metaller ve ametaller arasındaki sınırda bulunur.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Birkaç element metaller ve ametaller arasındaki sınırda bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-137",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "part": 0,
+      "text": "Bu elementlere yarı metal denir.",
+      "text_markdown": "Bu elementlere yarı metal denir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bu elementlere yarı metal denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-138",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "part": 0,
+      "text": "Silisyum bir yarı metaldir.",
+      "text_markdown": "Silisyum bir yarı metaldir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Silisyum bir yarı metaldir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-139",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p33",
+      "part": 0,
+      "text": "Silisyum elektriği biraz iletir ama bir metal kadar iyi değil.",
+      "text_markdown": "Silisyum elektriği biraz iletir ama bir metal kadar iyi değil.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Silisyum elektriği biraz iletir ama bir metal kadar iyi değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-140",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "text": "Bu özellik silisyumu bilgisayar çiplerinde kullanışlı kılar.",
+      "text_markdown": "Bu özellik silisyumu bilgisayar çiplerinde kullanışlı kılar.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bu özellik silisyumu bilgisayar çiplerinde kullanışlı kılar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-141",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "part": 0,
+      "text": "Soy gazlar en sağdaki son sütundadır.",
+      "text_markdown": "Soy gazlar en sağdaki son sütundadır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Soy gazlar en sağdaki son sütundadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-142",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "part": 0,
+      "text": "Helyum, neon, argon, kripton, ksenon ve radon soy gazlardır.",
+      "text_markdown": "Helyum, neon, argon, kripton, ksenon ve radon soy gazlardır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Helyum, neon, argon, kripton, ksenon ve radon soy gazlardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-143",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "part": 0,
+      "text": "Soy gazlar neredeyse hiçbir zaman başka elementlerle tepkimeye girmez.",
+      "text_markdown": "Soy gazlar neredeyse hiçbir zaman başka elementlerle tepkimeye girmez.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Soy gazlar neredeyse hiçbir zaman başka elementlerle tepkimeye girmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-144",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "part": 0,
+      "text": "Elektron düzenlemeleri zaten kararlıdır.",
+      "text_markdown": "Elektron düzenlemeleri zaten kararlıdır.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Elektron düzenlemeleri zaten kararlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-145",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "text": "Bağ kurmalarına gerek yoktur.",
+      "text_markdown": "Bağ kurmalarına gerek yoktur.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bağ kurmalarına gerek yoktur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-146",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "part": 0,
+      "text": "Dmitri Mendeleyev adlı bir Rus bilim insanı, ilk periyodik tabloyu 1869’da oluşturdu.",
+      "text_markdown": "Dmitri Mendeleyev adlı bir Rus bilim insanı, ilk periyodik tabloyu 1869’da oluşturdu.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Dmitri Mendeleyev adlı bir Rus bilim insanı, ilk periyodik tabloyu bin sekiz yüz altmış dokuzda oluşturdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-147",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "part": 0,
+      "text": "Mendeleyev, elementleri özelliklerine göre düzenledi ve tekrarlanan kalıbı fark etti.",
+      "text_markdown": "Mendeleyev, elementleri özelliklerine göre düzenledi ve tekrarlanan kalıbı fark etti.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Mendeleyev, elementleri özelliklerine göre düzenledi ve tekrarlanan kalıbı fark etti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-148",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "part": 0,
+      "text": "Bilinmeyen elementlerin olması gerektiğini tahmin ettiği yerlerde tablosunda boşluklar bıraktı.",
+      "text_markdown": "Bilinmeyen elementlerin olması gerektiğini tahmin ettiği yerlerde tablosunda boşluklar bıraktı.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bilinmeyen elementlerin olması gerektiğini tahmin ettiği yerlerde tablosunda boşluklar bıraktı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-149",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p35",
+      "part": 0,
+      "text": "Bilim insanları daha sonra o elementleri keşfetti.",
+      "text_markdown": "Bilim insanları daha sonra o elementleri keşfetti.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bilim insanları daha sonra o elementleri keşfetti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-150",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "text": "Her tahmin doğruydu.",
+      "text_markdown": "Her tahmin doğruydu.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Her tahmin doğruydu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-151",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "part": 0,
+      "text": "Periyodik tablo bilimin en güçlü araçlarından biridir.",
+      "text_markdown": "Periyodik tablo bilimin en güçlü araçlarından biridir.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Periyodik tablo bilimin en güçlü araçlarından biridir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch04-152",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "part": 0,
+      "text": "Bir elementin tabloda nerede olduğunu bilirsen, nasıl davranacağını tahmin edebilirsin.",
+      "text_markdown": "Bir elementin tabloda nerede olduğunu bilirsen, nasıl davranacağını tahmin edebilirsin.",
+      "title": "Periyodik Tablo",
+      "tts": {
+        "text": "Bir elementin tabloda nerede olduğunu bilirsen, nasıl davranacağını tahmin edebilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch05-153",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Atomlar Nasıl Bağ Kurar",
+      "text_markdown": "Atomlar Nasıl Bağ Kurar",
+      "title": "Atomlar Nasıl Bağ Kurar"
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-154",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Atomlar nadiren tek başlarına bulunur.",
+      "text_markdown": "Atomlar nadiren tek başlarına bulunur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Atomlar nadiren tek başlarına bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-155",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Çoğu atom molekül oluşturmak için diğer atomlarla bağ kurar.",
+      "text_markdown": "Çoğu atom molekül oluşturmak için diğer atomlarla bağ kurar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Çoğu atom molekül oluşturmak için diğer atomlarla bağ kurar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-156",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Molekül, kimyasal bağlarla bir arada tutulan bir atom grubudur.",
+      "text_markdown": "Molekül, kimyasal bağlarla bir arada tutulan bir atom grubudur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Molekül, kimyasal bağlarla bir arada tutulan bir atom grubudur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-157",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Su bir moleküldür.",
+      "text_markdown": "Su bir moleküldür.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Su bir moleküldür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-158",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Oksijen gazı bir moleküldür.",
+      "text_markdown": "Oksijen gazı bir moleküldür.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Oksijen gazı bir moleküldür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-159",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "text": "Şeker bir moleküldür.",
+      "text_markdown": "Şeker bir moleküldür.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Şeker bir moleküldür.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-160",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "part": 0,
+      "text": "Atomlar elektronları nedeniyle bağ kurar.",
+      "text_markdown": "Atomlar elektronları nedeniyle bağ kurar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Atomlar elektronları nedeniyle bağ kurar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-161",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "part": 0,
+      "text": "Bir atomun en dış kabuğundaki elektronlar, o atomun diğer atomlarla nasıl etkileşeceğini belirler.",
+      "text_markdown": "Bir atomun en dış kabuğundaki elektronlar, o atomun diğer atomlarla nasıl etkileşeceğini belirler.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bir atomun en dış kabuğundaki elektronlar, o atomun diğer atomlarla nasıl etkileşeceğini belirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-162",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p39",
+      "part": 0,
+      "text": "Bu dış elektronlara değerlik elektronları denir.",
+      "text_markdown": "Bu dış elektronlara değerlik elektronları denir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bu dış elektronlara değerlik elektronları denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-163",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p39",
+      "part": 0,
+      "text": "Dış kabuğu dolu olan bir atom kararlıdır.",
+      "text_markdown": "Dış kabuğu dolu olan bir atom kararlıdır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Dış kabuğu dolu olan bir atom kararlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-164",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p39",
+      "part": 0,
+      "text": "Dış kabuğu dolu olmayan bir atom onu doldurmaya çalışır.",
+      "text_markdown": "Dış kabuğu dolu olmayan bir atom onu doldurmaya çalışır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Dış kabuğu dolu olmayan bir atom onu doldurmaya çalışır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-165",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "part": 0,
+      "text": "İki ana tür kimyasal bağ vardır.",
+      "text_markdown": "İki ana tür kimyasal bağ vardır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "İki ana tür kimyasal bağ vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-166",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p40",
+      "part": 0,
+      "text": "Kovalent bağlar ve iyonik bağlar.",
+      "text_markdown": "Kovalent bağlar ve iyonik bağlar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Kovalent bağlar ve iyonik bağlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-167",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Kovalent bağda iki atom elektronları paylaşır.",
+      "text_markdown": "Kovalent bağda iki atom elektronları paylaşır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Kovalent bağda iki atom elektronları paylaşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-168",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Her iki atom da ortak bir çifte elektron katkıda bulunur.",
+      "text_markdown": "Her iki atom da ortak bir çifte elektron katkıda bulunur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Her iki atom da ortak bir çifte elektron katkıda bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-169",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Paylaşılan elektronlar her iki çekirdeğin etrafında döner.",
+      "text_markdown": "Paylaşılan elektronlar her iki çekirdeğin etrafında döner.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Paylaşılan elektronlar her iki çekirdeğin etrafında döner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-170",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Bu paylaşım atomları bir arada tutar.",
+      "text_markdown": "Bu paylaşım atomları bir arada tutar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bu paylaşım atomları bir arada tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-171",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Su kovalent bağlarla bir arada tutulur.",
+      "text_markdown": "Su kovalent bağlarla bir arada tutulur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Su kovalent bağlarla bir arada tutulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-172",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "text": "Her hidrojen atomu oksijen atomuyla bir elektron paylaşır.",
+      "text_markdown": "Her hidrojen atomu oksijen atomuyla bir elektron paylaşır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Her hidrojen atomu oksijen atomuyla bir elektron paylaşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-173",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "İyonik bağda bir atom diğerine elektron verir.",
+      "text_markdown": "İyonik bağda bir atom diğerine elektron verir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "İyonik bağda bir atom diğerine elektron verir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-174",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Elektron kaybeden atom pozitif yüklü olur.",
+      "text_markdown": "Elektron kaybeden atom pozitif yüklü olur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Elektron kaybeden atom pozitif yüklü olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-175",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Elektron kazanan atom negatif yüklü olur.",
+      "text_markdown": "Elektron kazanan atom negatif yüklü olur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Elektron kazanan atom negatif yüklü olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-176",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Zıt yükler birbirini çeker.",
+      "text_markdown": "Zıt yükler birbirini çeker.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Zıt yükler birbirini çeker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-177",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Bu çekim iki atomu bir arada tutar.",
+      "text_markdown": "Bu çekim iki atomu bir arada tutar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bu çekim iki atomu bir arada tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-178",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Sofra tuzu iyonik bağlarla bir arada tutulur.",
+      "text_markdown": "Sofra tuzu iyonik bağlarla bir arada tutulur.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Sofra tuzu iyonik bağlarla bir arada tutulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-179",
+      "chapter": 5,
+      "sentence_index": 6,
+      "paragraph_id": "p42",
+      "part": 0,
+      "text": "Sodyum klora bir elektron verir.",
+      "text_markdown": "Sodyum klora bir elektron verir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Sodyum klora bir elektron verir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-180",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "part": 0,
+      "text": "Bir su molekülü iki hidrojen atomu ve bir oksijen atomu içerir.",
+      "text_markdown": "Bir su molekülü iki hidrojen atomu ve bir oksijen atomu içerir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bir su molekülü iki hidrojen atomu ve bir oksijen atomu içerir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-181",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "part": 0,
+      "text": "Bilim insanları bunu H2O olarak yazar.",
+      "text_markdown": "Bilim insanları bunu H2O olarak yazar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bilim insanları bunu he iki o olarak yazar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-182",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "part": 0,
+      "text": "H hidrojeni temsil eder.",
+      "text_markdown": "H hidrojeni temsil eder.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "He hidrojeni temsil eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-183",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p43",
+      "part": 0,
+      "text": "O oksijeni temsil eder.",
+      "text_markdown": "O oksijeni temsil eder.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "O oksijeni temsil eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-184",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p43",
+      "part": 0,
+      "text": "2 sayısı iki hidrojen atomu olduğu anlamına gelir.",
+      "text_markdown": "2 sayısı iki hidrojen atomu olduğu anlamına gelir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "İki sayısı iki hidrojen atomu olduğu anlamına gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-185",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "part": 0,
+      "text": "Bir karbondioksit molekülü bir karbon atomu ve iki oksijen atomu içerir.",
+      "text_markdown": "Bir karbondioksit molekülü bir karbon atomu ve iki oksijen atomu içerir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bir karbondioksit molekülü bir karbon atomu ve iki oksijen atomu içerir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-186",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "part": 0,
+      "text": "Bilim insanları bunu CO2 olarak yazar.",
+      "text_markdown": "Bilim insanları bunu CO2 olarak yazar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bilim insanları bunu ce o iki olarak yazar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-187",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p44",
+      "part": 0,
+      "text": "Bitkiler havadaki karbondioksiti emer ve şeker molekülleri üretmek için kullanır.",
+      "text_markdown": "Bitkiler havadaki karbondioksiti emer ve şeker molekülleri üretmek için kullanır.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bitkiler havadaki karbondioksiti emer ve şeker molekülleri üretmek için kullanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-188",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "part": 0,
+      "text": "Atomlar arasındaki bağlar enerji depolar.",
+      "text_markdown": "Atomlar arasındaki bağlar enerji depolar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Atomlar arasındaki bağlar enerji depolar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-189",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p45",
+      "part": 0,
+      "text": "Bağlar kırıldığında enerji açığa çıkar.",
+      "text_markdown": "Bağlar kırıldığında enerji açığa çıkar.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bağlar kırıldığında enerji açığa çıkar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-190",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p45",
+      "part": 0,
+      "text": "Bağlar oluştuğunda enerji emilir.",
+      "text_markdown": "Bağlar oluştuğunda enerji emilir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Bağlar oluştuğunda enerji emilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch05-191",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p45",
+      "part": 0,
+      "text": "Evrendeki her kimyasal tepkime eski bağların kırılmasını ve yenilerinin oluşmasını içerir.",
+      "text_markdown": "Evrendeki her kimyasal tepkime eski bağların kırılmasını ve yenilerinin oluşmasını içerir.",
+      "title": "Atomlar Nasıl Bağ Kurar",
+      "tts": {
+        "text": "Evrendeki her kimyasal tepkime eski bağların kırılmasını ve yenilerinin oluşmasını içerir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch06-192",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Hareket Halindeki Atomlar",
+      "text_markdown": "Hareket Halindeki Atomlar",
+      "title": "Hareket Halindeki Atomlar"
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-193",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "part": 0,
+      "text": "Atomlar her zaman hareket halindedir.",
+      "text_markdown": "Atomlar her zaman hareket halindedir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Atomlar her zaman hareket halindedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-194",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p47",
+      "part": 0,
+      "text": "Hiç durmazlar.",
+      "text_markdown": "Hiç durmazlar.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Hiç durmazlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-195",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p47",
+      "part": 0,
+      "text": "Mutlak sıfırın üzerindeki herhangi bir sıcaklıkta atomlar titreşir, döner ve uzayda hareket eder.",
+      "text_markdown": "Mutlak sıfırın üzerindeki herhangi bir sıcaklıkta atomlar titreşir, döner ve uzayda hareket eder.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Mutlak sıfırın üzerindeki herhangi bir sıcaklıkta atomlar titreşir, döner ve uzayda hareket eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-196",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p47",
+      "part": 0,
+      "text": "Bu hareket bizim ısı olarak deneyimlediğimiz şeydir.",
+      "text_markdown": "Bu hareket bizim ısı olarak deneyimlediğimiz şeydir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bu hareket bizim ısı olarak deneyimlediğimiz şeydir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-197",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "part": 0,
+      "text": "Bir katıda atomlar yerinde titreşir.",
+      "text_markdown": "Bir katıda atomlar yerinde titreşir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir katıda atomlar yerinde titreşir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-198",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "part": 0,
+      "text": "Sabit bir yapı içinde kilitlidirler.",
+      "text_markdown": "Sabit bir yapı içinde kilitlidirler.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Sabit bir yapı içinde kilitlidirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-199",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "part": 0,
+      "text": "İleri geri sallanırlar ama yerlerinden ayrılmazlar.",
+      "text_markdown": "İleri geri sallanırlar ama yerlerinden ayrılmazlar.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "İleri geri sallanırlar ama yerlerinden ayrılmazlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-200",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p48",
+      "part": 0,
+      "text": "Katıların şeklini korumasının nedeni budur.",
+      "text_markdown": "Katıların şeklini korumasının nedeni budur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Katıların şeklini korumasının nedeni budur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-201",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p48",
+      "part": 0,
+      "text": "Bir buz parçasındaki atomlar titreşir ama katı bir kristal düzeninde kalır.",
+      "text_markdown": "Bir buz parçasındaki atomlar titreşir ama katı bir kristal düzeninde kalır.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir buz parçasındaki atomlar titreşir ama katı bir kristal düzeninde kalır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-202",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "part": 0,
+      "text": "Bir sıvıda atomlar daha serbest hareket eder.",
+      "text_markdown": "Bir sıvıda atomlar daha serbest hareket eder.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir sıvıda atomlar daha serbest hareket eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-203",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "part": 0,
+      "text": "Birbirlerinin üzerinden kayarlar.",
+      "text_markdown": "Birbirlerinin üzerinden kayarlar.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Birbirlerinin üzerinden kayarlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-204",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "part": 0,
+      "text": "Birbirlerine yakın dururlar ama sabit bir konumda kilitli değillerdir.",
+      "text_markdown": "Birbirlerine yakın dururlar ama sabit bir konumda kilitli değillerdir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Birbirlerine yakın dururlar ama sabit bir konumda kilitli değillerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-205",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "part": 0,
+      "text": "Sıvıların akmasının nedeni budur.",
+      "text_markdown": "Sıvıların akmasının nedeni budur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Sıvıların akmasının nedeni budur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-206",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "part": 0,
+      "text": "Bir bardak sudaki atomlar sürekli hareket eder ve yeniden düzenlenir ama birbirlerinin yakınında kalır.",
+      "text_markdown": "Bir bardak sudaki atomlar sürekli hareket eder ve yeniden düzenlenir ama birbirlerinin yakınında kalır.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir bardak sudaki atomlar sürekli hareket eder ve yeniden düzenlenir ama birbirlerinin yakınında kalır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-207",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "part": 0,
+      "text": "Bir gazda atomlar hızlı hareket eder ve birbirinden uzaklaşır.",
+      "text_markdown": "Bir gazda atomlar hızlı hareket eder ve birbirinden uzaklaşır.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir gazda atomlar hızlı hareket eder ve birbirinden uzaklaşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-208",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "part": 0,
+      "text": "Başka bir atoma ya da duvara çarpana kadar düz bir çizgide uçarlar.",
+      "text_markdown": "Başka bir atoma ya da duvara çarpana kadar düz bir çizgide uçarlar.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Başka bir atoma ya da duvara çarpana kadar düz bir çizgide uçarlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-209",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "part": 0,
+      "text": "Birbirlerinden sekip yön değiştirirler.",
+      "text_markdown": "Birbirlerinden sekip yön değiştirirler.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Birbirlerinden sekip yön değiştirirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-210",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p50",
+      "part": 0,
+      "text": "Bir gazın içine konduğu kabı tamamen dolduruyor olmasının nedeni budur.",
+      "text_markdown": "Bir gazın içine konduğu kabı tamamen dolduruyor olmasının nedeni budur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir gazın içine konduğu kabı tamamen dolduruyor olmasının nedeni budur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-211",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p50",
+      "part": 0,
+      "text": "Havayla dolu bir odadaki atomlar saniyede yüzlerce metre hızla her yöne uçuşur.",
+      "text_markdown": "Havayla dolu bir odadaki atomlar saniyede yüzlerce metre hızla her yöne uçuşur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Havayla dolu bir odadaki atomlar saniyede yüzlerce metre hızla her yöne uçuşur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-212",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "part": 0,
+      "text": "Sıcaklık, atomların ne kadar hızlı hareket ettiğinin ölçüsüdür.",
+      "text_markdown": "Sıcaklık, atomların ne kadar hızlı hareket ettiğinin ölçüsüdür.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Sıcaklık, atomların ne kadar hızlı hareket ettiğinin ölçüsüdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-213",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p51",
+      "part": 0,
+      "text": "Sıcak, atomların hızlı hareket ettiği anlamına gelir.",
+      "text_markdown": "Sıcak, atomların hızlı hareket ettiği anlamına gelir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Sıcak, atomların hızlı hareket ettiği anlamına gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-214",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p51",
+      "part": 0,
+      "text": "Soğuk, atomların yavaş hareket ettiği anlamına gelir.",
+      "text_markdown": "Soğuk, atomların yavaş hareket ettiği anlamına gelir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Soğuk, atomların yavaş hareket ettiği anlamına gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-215",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p51",
+      "part": 0,
+      "text": "Ocakta su ısıttığında su moleküllerini daha hızlı hareket ettirmiş olursun.",
+      "text_markdown": "Ocakta su ısıttığında su moleküllerini daha hızlı hareket ettirmiş olursun.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Ocakta su ısıttığında su moleküllerini daha hızlı hareket ettirmiş olursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-216",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p51",
+      "part": 0,
+      "text": "Moleküller yeterince hızlı hareket ettiğinde sıvıdan kaçıp buhar olur.",
+      "text_markdown": "Moleküller yeterince hızlı hareket ettiğinde sıvıdan kaçıp buhar olur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Moleküller yeterince hızlı hareket ettiğinde sıvıdan kaçıp buhar olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-217",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "part": 0,
+      "text": "Mutlak sıfır, mümkün olan en düşük sıcaklıktır.",
+      "text_markdown": "Mutlak sıfır, mümkün olan en düşük sıcaklıktır.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Mutlak sıfır, mümkün olan en düşük sıcaklıktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-218",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p52",
+      "part": 0,
+      "text": "Yaklaşık eksi 273 derece Santigrat’tır.",
+      "text_markdown": "Yaklaşık eksi 273 derece Santigrat’tır.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Yaklaşık eksi iki yüz yetmiş üç derece Santigrat’tır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-219",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p52",
+      "part": 0,
+      "text": "Mutlak sıfırda atomlar mümkün olan en düşük enerjiye sahiptir.",
+      "text_markdown": "Mutlak sıfırda atomlar mümkün olan en düşük enerjiye sahiptir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Mutlak sıfırda atomlar mümkün olan en düşük enerjiye sahiptir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-220",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p52",
+      "part": 0,
+      "text": "Hiçbir şey mutlak sıfırdan daha soğuk olamaz.",
+      "text_markdown": "Hiçbir şey mutlak sıfırdan daha soğuk olamaz.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Hiçbir şey mutlak sıfırdan daha soğuk olamaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-221",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p52",
+      "part": 0,
+      "text": "Bilim insanları laboratuvarlarda mutlak sıfıra çok yaklaştı ama henüz kimse tam olarak ulaşamadı.",
+      "text_markdown": "Bilim insanları laboratuvarlarda mutlak sıfıra çok yaklaştı ama henüz kimse tam olarak ulaşamadı.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bilim insanları laboratuvarlarda mutlak sıfıra çok yaklaştı ama henüz kimse tam olarak ulaşamadı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-222",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p53",
+      "part": 0,
+      "text": "Basınç, atomların yüzeylere çarpmasıyla oluşur.",
+      "text_markdown": "Basınç, atomların yüzeylere çarpmasıyla oluşur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Basınç, atomların yüzeylere çarpmasıyla oluşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-223",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p53",
+      "part": 0,
+      "text": "Bir lastiğin içindeki hava dışarı doğru iter çünkü hava molekülleri sürekli olarak lastiğin iç duvarlarına çarpar.",
+      "text_markdown": "Bir lastiğin içindeki hava dışarı doğru iter çünkü hava molekülleri sürekli olarak lastiğin iç duvarlarına çarpar.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Bir lastiğin içindeki hava dışarı doğru iter çünkü hava molekülleri sürekli olarak lastiğin iç duvarlarına çarpar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-224",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p53",
+      "part": 0,
+      "text": "Daha fazla molekül veya daha hızlı moleküller daha fazla basınç demektir.",
+      "text_markdown": "Daha fazla molekül veya daha hızlı moleküller daha fazla basınç demektir.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Daha fazla molekül veya daha hızlı moleküller daha fazla basınç demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch06-225",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p53",
+      "part": 0,
+      "text": "Hava sıcakken bir lastiğin daha sert hissedilmesinin nedeni budur.",
+      "text_markdown": "Hava sıcakken bir lastiğin daha sert hissedilmesinin nedeni budur.",
+      "title": "Hareket Halindeki Atomlar",
+      "tts": {
+        "text": "Hava sıcakken bir lastiğin daha sert hissedilmesinin nedeni budur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch07-226",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p54",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Atomlar Nereden Gelir",
+      "text_markdown": "Atomlar Nereden Gelir",
+      "title": "Atomlar Nereden Gelir"
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-227",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p55",
+      "part": 0,
+      "text": "Evrendeki hidrojen ve helyum, Büyük Patlama’dan sonraki ilk birkaç dakikada oluşturuldu.",
+      "text_markdown": "Evrendeki hidrojen ve helyum, Büyük Patlama’dan sonraki ilk birkaç dakikada oluşturuldu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Evrendeki hidrojen ve helyum, Büyük Patlama’dan sonraki ilk birkaç dakikada oluşturuldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-228",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p55",
+      "part": 0,
+      "text": "Evren yaklaşık 13,8 milyar yıl önce inanılmaz derecede sıcak ve yoğun bir nokta olarak başladı.",
+      "text_markdown": "Evren yaklaşık 13,8 milyar yıl önce inanılmaz derecede sıcak ve yoğun bir nokta olarak başladı.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Evren yaklaşık on üç virgül sekiz milyar yıl önce inanılmaz derecede sıcak ve yoğun bir nokta olarak başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-229",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p55",
+      "part": 0,
+      "text": "Genişleyip soğudukça protonlar ve nötronlar oluştu.",
+      "text_markdown": "Genişleyip soğudukça protonlar ve nötronlar oluştu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Genişleyip soğudukça protonlar ve nötronlar oluştu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-230",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p55",
+      "part": 0,
+      "text": "Bu protonlar ve nötronlar en basit çekirdekleri oluşturmak için birleşti.",
+      "text_markdown": "Bu protonlar ve nötronlar en basit çekirdekleri oluşturmak için birleşti.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu protonlar ve nötronlar en basit çekirdekleri oluşturmak için birleşti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-231",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p55",
+      "part": 0,
+      "text": "Hidrojen ve helyum ilk elementlerdi.",
+      "text_markdown": "Hidrojen ve helyum ilk elementlerdi.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Hidrojen ve helyum ilk elementlerdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-232",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p56",
+      "part": 0,
+      "text": "Milyonlarca yıl boyunca evren bir hidrojen ve helyum gazı bulutuydu.",
+      "text_markdown": "Milyonlarca yıl boyunca evren bir hidrojen ve helyum gazı bulutuydu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Milyonlarca yıl boyunca evren bir hidrojen ve helyum gazı bulutuydu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-233",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p56",
+      "part": 0,
+      "text": "Sonra kütleçekim gazı bir araya toplamaya başladı.",
+      "text_markdown": "Sonra kütleçekim gazı bir araya toplamaya başladı.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sonra kütleçekim gazı bir araya toplamaya başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-234",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p56",
+      "part": 0,
+      "text": "Bu kümeler giderek daha yoğun ve sıcak oldu.",
+      "text_markdown": "Bu kümeler giderek daha yoğun ve sıcak oldu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu kümeler giderek daha yoğun ve sıcak oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-235",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p56",
+      "part": 0,
+      "text": "Bir kümenin merkezi yaklaşık on milyon dereceye ulaştığında nükleer füzyon başladı.",
+      "text_markdown": "Bir kümenin merkezi yaklaşık on milyon dereceye ulaştığında nükleer füzyon başladı.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir kümenin merkezi yaklaşık on milyon dereceye ulaştığında nükleer füzyon başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-236",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p56",
+      "part": 0,
+      "text": "Bir yıldız doğmuştu.",
+      "text_markdown": "Bir yıldız doğmuştu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir yıldız doğmuştu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-237",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p57",
+      "part": 0,
+      "text": "Yıldızlar atom fabrikalarıdır.",
+      "text_markdown": "Yıldızlar atom fabrikalarıdır.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Yıldızlar atom fabrikalarıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-238",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p57",
+      "part": 0,
+      "text": "Bir yıldızın içinde hidrojen atomları birleşerek helyum oluşturur.",
+      "text_markdown": "Bir yıldızın içinde hidrojen atomları birleşerek helyum oluşturur.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir yıldızın içinde hidrojen atomları birleşerek helyum oluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-239",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p57",
+      "part": 0,
+      "text": "Bu füzyon muazzam miktarda enerji açığa çıkarır.",
+      "text_markdown": "Bu füzyon muazzam miktarda enerji açığa çıkarır.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu füzyon muazzam miktarda enerji açığa çıkarır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-240",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p57",
+      "part": 0,
+      "text": "Bu enerji bir yıldızın parlamasını sağlayan şeydir.",
+      "text_markdown": "Bu enerji bir yıldızın parlamasını sağlayan şeydir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu enerji bir yıldızın parlamasını sağlayan şeydir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-241",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p57",
+      "part": 0,
+      "text": "Güneşimiz her saniye yaklaşık altı yüz milyon ton hidrojeni helyuma dönüştürür.",
+      "text_markdown": "Güneşimiz her saniye yaklaşık altı yüz milyon ton hidrojeni helyuma dönüştürür.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Güneşimiz her saniye yaklaşık altı yüz milyon ton hidrojeni helyuma dönüştürür.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-242",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Daha büyük yıldızlar daha ağır elementleri birleştirir.",
+      "text_markdown": "Daha büyük yıldızlar daha ağır elementleri birleştirir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Daha büyük yıldızlar daha ağır elementleri birleştirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-243",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Bir yıldız hidrojenini tükettikten sonra helyumu karbona dönüştürmeye başlar.",
+      "text_markdown": "Bir yıldız hidrojenini tükettikten sonra helyumu karbona dönüştürmeye başlar.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir yıldız hidrojenini tükettikten sonra helyumu karbona dönüştürmeye başlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-244",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Sonra karbonu oksijene.",
+      "text_markdown": "Sonra karbonu oksijene.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sonra karbonu oksijene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-245",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Sonra oksijeni silisyuma.",
+      "text_markdown": "Sonra oksijeni silisyuma.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sonra oksijeni silisyuma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-246",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Sonra silisyumu demire.",
+      "text_markdown": "Sonra silisyumu demire.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sonra silisyumu demire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-247",
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Her aşama daha ağır bir element üretir.",
+      "text_markdown": "Her aşama daha ağır bir element üretir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Her aşama daha ağır bir element üretir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-248",
+      "chapter": 7,
+      "sentence_index": 6,
+      "paragraph_id": "p58",
+      "part": 0,
+      "text": "Demir, bir yıldızın normal füzyonla üretebileceği en ağır elementtir.",
+      "text_markdown": "Demir, bir yıldızın normal füzyonla üretebileceği en ağır elementtir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Demir, bir yıldızın normal füzyonla üretebileceği en ağır elementtir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-249",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p59",
+      "part": 0,
+      "text": "Demirden ağır elementler, devasa yıldızlar patladığında oluşur.",
+      "text_markdown": "Demirden ağır elementler, devasa yıldızlar patladığında oluşur.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Demirden ağır elementler, devasa yıldızlar patladığında oluşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-250",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p59",
+      "part": 0,
+      "text": "Bu patlamalara süpernova denir.",
+      "text_markdown": "Bu patlamalara süpernova denir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu patlamalara süpernova denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-251",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p59",
+      "part": 0,
+      "text": "Bir süpernova birkaç saniyede Güneş’in tüm yaşamı boyunca üreteceğinden daha fazla enerji açığa çıkarır.",
+      "text_markdown": "Bir süpernova birkaç saniyede Güneş’in tüm yaşamı boyunca üreteceğinden daha fazla enerji açığa çıkarır.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir süpernova birkaç saniyede Güneş’in tüm yaşamı boyunca üreteceğinden daha fazla enerji açığa çıkarır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-252",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p59",
+      "part": 0,
+      "text": "Bir süpernovanın aşırı koşulları altın, gümüş, platin ve uranyum gibi elementleri oluşturur.",
+      "text_markdown": "Bir süpernovanın aşırı koşulları altın, gümüş, platin ve uranyum gibi elementleri oluşturur.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bir süpernovanın aşırı koşulları altın, gümüş, platin ve uranyum gibi elementleri oluşturur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-253",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p60",
+      "part": 0,
+      "text": "Patlama bu ağır elementleri uzayın her yerine saçar.",
+      "text_markdown": "Patlama bu ağır elementleri uzayın her yerine saçar.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Patlama bu ağır elementleri uzayın her yerine saçar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-254",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p60",
+      "part": 0,
+      "text": "Elementler hidrojen ve helyum gaz bulutlarıyla karışır.",
+      "text_markdown": "Elementler hidrojen ve helyum gaz bulutlarıyla karışır.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Elementler hidrojen ve helyum gaz bulutlarıyla karışır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-255",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p60",
+      "part": 0,
+      "text": "Sonunda kütleçekim zenginleşmiş gazı bir araya toplayarak yeni yıldızlar ve gezegenler oluşturur.",
+      "text_markdown": "Sonunda kütleçekim zenginleşmiş gazı bir araya toplayarak yeni yıldızlar ve gezegenler oluşturur.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sonunda kütleçekim zenginleşmiş gazı bir araya toplayarak yeni yıldızlar ve gezegenler oluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-256",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p60",
+      "part": 0,
+      "text": "Güneş sistemimiz yaklaşık 4,6 milyar yıl önce bu zenginleşmiş bulutlardan birinden oluştu.",
+      "text_markdown": "Güneş sistemimiz yaklaşık 4,6 milyar yıl önce bu zenginleşmiş bulutlardan birinden oluştu.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Güneş sistemimiz yaklaşık dört virgül altı milyar yıl önce bu zenginleşmiş bulutlardan birinden oluştu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-257",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Vücudundaki hidrojenden ağır her atom bir yıldızın içinde yapılmıştır.",
+      "text_markdown": "Vücudundaki hidrojenden ağır her atom bir yıldızın içinde yapılmıştır.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Vücudundaki hidrojenden ağır her atom bir yıldızın içinde yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-258",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Kemiklerindeki kalsiyum.",
+      "text_markdown": "Kemiklerindeki kalsiyum.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Kemiklerindeki kalsiyum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-259",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Kanındaki demir.",
+      "text_markdown": "Kanındaki demir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Kanındaki demir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-260",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Cildindeki karbon.",
+      "text_markdown": "Cildindeki karbon.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Cildindeki karbon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-261",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Sen yıldız tozundan yapılmışsın.",
+      "text_markdown": "Sen yıldız tozundan yapılmışsın.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Sen yıldız tozundan yapılmışsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-262",
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Bu bir mecaz değil.",
+      "text_markdown": "Bu bir mecaz değil.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu bir mecaz değil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch07-263",
+      "chapter": 7,
+      "sentence_index": 6,
+      "paragraph_id": "p61",
+      "part": 0,
+      "text": "Bu nükleer fiziğin bir gerçeğidir.",
+      "text_markdown": "Bu nükleer fiziğin bir gerçeğidir.",
+      "title": "Atomlar Nereden Gelir",
+      "tts": {
+        "text": "Bu nükleer fiziğin bir gerçeğidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "id": "ch08-264",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Atomlar Her Şeydir",
+      "text_markdown": "Atomlar Her Şeydir",
+      "title": "Atomlar Her Şeydir"
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-265",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Artık temelleri biliyorsun.",
+      "text_markdown": "Artık temelleri biliyorsun.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Artık temelleri biliyorsun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-266",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Her şey atomlardan yapılmıştır.",
+      "text_markdown": "Her şey atomlardan yapılmıştır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Her şey atomlardan yapılmıştır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-267",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Atomlar proton, nötron ve elektron içerir.",
+      "text_markdown": "Atomlar proton, nötron ve elektron içerir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomlar proton, nötron ve elektron içerir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-268",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Proton sayısı elementi belirler.",
+      "text_markdown": "Proton sayısı elementi belirler.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Proton sayısı elementi belirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-269",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Atomlar bağ kurarak molekül oluşturur.",
+      "text_markdown": "Atomlar bağ kurarak molekül oluşturur.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomlar bağ kurarak molekül oluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-270",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Atomlar her zaman hareket halindedir.",
+      "text_markdown": "Atomlar her zaman hareket halindedir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomlar her zaman hareket halindedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-271",
+      "chapter": 8,
+      "sentence_index": 6,
+      "paragraph_id": "p63",
+      "part": 0,
+      "text": "Yıldızlar dünyamızı oluşturan atomları yarattı.",
+      "text_markdown": "Yıldızlar dünyamızı oluşturan atomları yarattı.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Yıldızlar dünyamızı oluşturan atomları yarattı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-272",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p64",
+      "part": 0,
+      "text": "Bu bilgi kimyanın, biyolojinin, fiziğin ve tıbbın temelidir.",
+      "text_markdown": "Bu bilgi kimyanın, biyolojinin, fiziğin ve tıbbın temelidir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bu bilgi kimyanın, biyolojinin, fiziğin ve tıbbın temelidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-273",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p64",
+      "part": 0,
+      "text": "Her bilim dalı atomlara dayanır.",
+      "text_markdown": "Her bilim dalı atomlara dayanır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Her bilim dalı atomlara dayanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-274",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p65",
+      "part": 0,
+      "text": "Bir doktor ilaç yazdığında, o ilaç vücudundaki moleküllerle etkileşmek üzere tasarlanmış belirli bir atom düzenidir.",
+      "text_markdown": "Bir doktor ilaç yazdığında, o ilaç vücudundaki moleküllerle etkileşmek üzere tasarlanmış belirli bir atom düzenidir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bir doktor ilaç yazdığında, o ilaç vücudundaki moleküllerle etkileşmek üzere tasarlanmış belirli bir atom düzenidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-275",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p65",
+      "part": 0,
+      "text": "Bir mühendis köprü inşa ettiğinde, o köprünün dayanıklılığı çelikteki demir atomlarının nasıl düzenlendiğine bağlıdır.",
+      "text_markdown": "Bir mühendis köprü inşa ettiğinde, o köprünün dayanıklılığı çelikteki demir atomlarının nasıl düzenlendiğine bağlıdır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bir mühendis köprü inşa ettiğinde, o köprünün dayanıklılığı çelikteki demir atomlarının nasıl düzenlendiğine bağlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-276",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p65",
+      "part": 0,
+      "text": "Bir çiftçi ürün yetiştirdiğinde, ürün büyür çünkü havadaki karbon atomları yaprakların içinde su ve güneş ışığıyla birleşir.",
+      "text_markdown": "Bir çiftçi ürün yetiştirdiğinde, ürün büyür çünkü havadaki karbon atomları yaprakların içinde su ve güneş ışığıyla birleşir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bir çiftçi ürün yetiştirdiğinde, ürün büyür çünkü havadaki karbon atomları yaprakların içinde su ve güneş ışığıyla birleşir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-277",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Yemek yapmak kimyadır.",
+      "text_markdown": "Yemek yapmak kimyadır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Yemek yapmak kimyadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-278",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Ekmek pişirdiğinde ısı, hamurdaki atomların yeniden düzenlenmesine neden olur.",
+      "text_markdown": "Ekmek pişirdiğinde ısı, hamurdaki atomların yeniden düzenlenmesine neden olur.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Ekmek pişirdiğinde ısı, hamurdaki atomların yeniden düzenlenmesine neden olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-279",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Proteinler açılır.",
+      "text_markdown": "Proteinler açılır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Proteinler açılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-280",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Şekerler parçalanır ve yeniden birleşir.",
+      "text_markdown": "Şekerler parçalanır ve yeniden birleşir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Şekerler parçalanır ve yeniden birleşir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-281",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Kabuğun rengini, dokusunu ve lezzetini oluşturan yeni moleküller meydana gelir.",
+      "text_markdown": "Kabuğun rengini, dokusunu ve lezzetini oluşturan yeni moleküller meydana gelir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Kabuğun rengini, dokusunu ve lezzetini oluşturan yeni moleküller meydana gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-282",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p66",
+      "part": 0,
+      "text": "Her tarif, atomları yeniden düzenlemeye yönelik bir talimatlar dizisidir.",
+      "text_markdown": "Her tarif, atomları yeniden düzenlemeye yönelik bir talimatlar dizisidir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Her tarif, atomları yeniden düzenlemeye yönelik bir talimatlar dizisidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-283",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Nefes almak kimyadır.",
+      "text_markdown": "Nefes almak kimyadır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Nefes almak kimyadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-284",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Oksijen moleküllerini solursun.",
+      "text_markdown": "Oksijen moleküllerini solursun.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Oksijen moleküllerini solursun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-285",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Kanın bu molekülleri hücrelerine taşır.",
+      "text_markdown": "Kanın bu molekülleri hücrelerine taşır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Kanın bu molekülleri hücrelerine taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-286",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Hücrelerinin içinde oksijen atomları yiyeceklerden gelen karbon atomlarıyla birleşir.",
+      "text_markdown": "Hücrelerinin içinde oksijen atomları yiyeceklerden gelen karbon atomlarıyla birleşir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Hücrelerinin içinde oksijen atomları yiyeceklerden gelen karbon atomlarıyla birleşir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-287",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Tepkime enerji açığa çıkarır.",
+      "text_markdown": "Tepkime enerji açığa çıkarır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Tepkime enerji açığa çıkarır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-288",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Karbon ve oksijeni karbondioksit olarak dışarı verirsin.",
+      "text_markdown": "Karbon ve oksijeni karbondioksit olarak dışarı verirsin.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Karbon ve oksijeni karbondioksit olarak dışarı verirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-289",
+      "chapter": 8,
+      "sentence_index": 6,
+      "paragraph_id": "p67",
+      "part": 0,
+      "text": "Her nefes bir kimyasal tepkimedir.",
+      "text_markdown": "Her nefes bir kimyasal tepkimedir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Her nefes bir kimyasal tepkimedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-290",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Paslanma kimyadır.",
+      "text_markdown": "Paslanma kimyadır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Paslanma kimyadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-291",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Bir çivinin yüzeyindeki demir atomları havadaki oksijen atomlarıyla tepkimeye girer.",
+      "text_markdown": "Bir çivinin yüzeyindeki demir atomları havadaki oksijen atomlarıyla tepkimeye girer.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bir çivinin yüzeyindeki demir atomları havadaki oksijen atomlarıyla tepkimeye girer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-292",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Demir ve oksijen birleşerek demir oksit adı verilen yeni bir madde oluşturur.",
+      "text_markdown": "Demir ve oksijen birleşerek demir oksit adı verilen yeni bir madde oluşturur.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Demir ve oksijen birleşerek demir oksit adı verilen yeni bir madde oluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-293",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Demir oksit, pas dediğimiz kızıl kahverengi maddedir.",
+      "text_markdown": "Demir oksit, pas dediğimiz kızıl kahverengi maddedir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Demir oksit, pas dediğimiz kızıl kahverengi maddedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-294",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Demir atomları hâlâ oradadır.",
+      "text_markdown": "Demir atomları hâlâ oradadır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Demir atomları hâlâ oradadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-295",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p68",
+      "part": 0,
+      "text": "Sadece oksijenle bağ kurmuşlardır.",
+      "text_markdown": "Sadece oksijenle bağ kurmuşlardır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Sadece oksijenle bağ kurmuşlardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-296",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p69",
+      "part": 0,
+      "text": "Atomlar soyut bir kavram değildir.",
+      "text_markdown": "Atomlar soyut bir kavram değildir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomlar soyut bir kavram değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-297",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p69",
+      "part": 0,
+      "text": "Atomlar, dokunduğun, tattığın, gördüğün ve kokladığın her şeyin fiziksel gerçekliğidir.",
+      "text_markdown": "Atomlar, dokunduğun, tattığın, gördüğün ve kokladığın her şeyin fiziksel gerçekliğidir.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomlar, dokunduğun, tattığın, gördüğün ve kokladığın her şeyin fiziksel gerçekliğidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-298",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p69",
+      "part": 0,
+      "text": "Atomları ne kadar çok anlarsan dünyayı o kadar çok anlarsın.",
+      "text_markdown": "Atomları ne kadar çok anlarsan dünyayı o kadar çok anlarsın.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Atomları ne kadar çok anlarsan dünyayı o kadar çok anlarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-299",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p69",
+      "part": 0,
+      "text": "Bu bir başlangıçtır.",
+      "text_markdown": "Bu bir başlangıçtır.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Bu bir başlangıçtır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch08-300",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p69",
+      "part": 0,
+      "text": "Keşfedilecek çok daha fazlası var.",
+      "text_markdown": "Keşfedilecek çok daha fazlası var.",
+      "title": "Atomlar Her Şeydir",
+      "tts": {
+        "text": "Keşfedilecek çok daha fazlası var.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

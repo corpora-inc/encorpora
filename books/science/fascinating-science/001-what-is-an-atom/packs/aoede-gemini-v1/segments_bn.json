@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "bn",
+  "total_segments": 300,
+  "segments": [
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "chapter": 1,
+      "text": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "text_markdown": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-002",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনার চারপাশে তাকান।",
+      "text_markdown": "আপনার চারপাশে তাকান।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনার চারপাশে তাকান।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-003",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনি যা কিছু দেখতে পাচ্ছেন, তা পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "আপনি যা কিছু দেখতে পাচ্ছেন, তা পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি যা কিছু দেখতে পাচ্ছেন, তা পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-004",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনি যে বাতাস শ্বাস নেন, তা পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "আপনি যে বাতাস শ্বাস নেন, তা পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি যে বাতাস শ্বাস নেন, তা পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-005",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনি যে জল পান করেন, তা পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "আপনি যে জল পান করেন, তা পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি যে জল পান করেন, তা পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-006",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনার শরীর পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "আপনার শরীর পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনার শরীর পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-007",
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "আপনার পায়ের নিচের মাটি পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "আপনার পায়ের নিচের মাটি পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনার পায়ের নিচের মাটি পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-008",
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "একটি পরমাণু হলো পদার্থের ক্ষুদ্রতম অংশ যা এখনও একটি রাসায়নিক পরিচয় ধারণ করে।",
+      "text_markdown": "একটি পরমাণু হলো পদার্থের ক্ষুদ্রতম অংশ যা এখনও একটি রাসায়নিক পরিচয় ধারণ করে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "একটি পরমাণু হলো পদার্থের ক্ষুদ্রতম অংশ যা এখনও একটি রাসায়নিক পরিচয় ধারণ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-009",
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "আপনি আপনার চোখ দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+      "text_markdown": "আপনি আপনার চোখ দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি আপনার চোখ দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-010",
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "আপনি একটি সাধারণ অণুবীক্ষণ যন্ত্র দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+      "text_markdown": "আপনি একটি সাধারণ অণুবীক্ষণ যন্ত্র দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি একটি সাধারণ অণুবীক্ষণ যন্ত্র দিয়ে একটি একক পরমাণু দেখতে পারবেন না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-011",
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "পরমাণু এতই ছোট।",
+      "text_markdown": "পরমাণু এতই ছোট।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "পরমাণু এতই ছোট।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-012",
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "এক দানা বালিতে প্রায় পঞ্চাশ কুইন্টিলিয়ন পরমাণু থাকে।",
+      "text_markdown": "এক দানা বালিতে প্রায় পঞ্চাশ কুইন্টিলিয়ন পরমাণু থাকে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "এক দানা বালিতে প্রায় পঞ্চাশ কুইন্টিলিয়ন পরমাণু থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-013",
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "এই সংখ্যাটি পঞ্চাশের পরে আঠারোটি শূন্য।",
+      "text_markdown": "এই সংখ্যাটি পঞ্চাশের পরে আঠারোটি শূন্য।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "এই সংখ্যাটি পঞ্চাশের পরে আঠারোটি শূন্য।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-014",
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "একটি বালির কণায় একটি সৈকতে যত বালিকণা আছে, তার চেয়েও বেশি পরমাণু থাকে।",
+      "text_markdown": "একটি বালির কণায় একটি সৈকতে যত বালিকণা আছে, তার চেয়েও বেশি পরমাণু থাকে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "একটি বালির কণায় থাকে একটি সৈকতে যত বালিকণা আছে, তার চেয়েও বেশি পরমাণুর ভিড়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-015",
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "পরমাণু হলো ভৌত জগতের সবকিছু তৈরির মূল উপাদান।",
+      "text_markdown": "পরমাণু হলো ভৌত জগতের সবকিছু তৈরির মূল উপাদান।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "পরমাণু হলো ভৌত জগতের সবকিছু তৈরির মূল উপাদান।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-016",
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "একটি দেয়াল ইট দিয়ে তৈরি।",
+      "text_markdown": "একটি দেয়াল ইট দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "একটি দেয়াল ইট দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-017",
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "একটি বাক্য শব্দ দিয়ে তৈরি।",
+      "text_markdown": "একটি বাক্য শব্দ দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "একটি বাক্য শব্দ দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-018",
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "মহাবিশ্ব পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "মহাবিশ্ব পরমাণু দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "মহাবিশ্ব পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-019",
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "‘অ্যাটম’ শব্দটি প্রাচীন গ্রিক থেকে এসেছে।",
+      "text_markdown": "‘অ্যাটম’ শব্দটি প্রাচীন গ্রিক থেকে এসেছে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "‘অ্যাটম’ শব্দটি প্রাচীন গ্রিক থেকে এসেছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-020",
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "গ্রিক শব্দ ‘অ্যাটমস’ এর অর্থ হলো ‘অবিভাজ্য’।",
+      "text_markdown": "গ্রিক শব্দ ‘অ্যাটমস’ এর অর্থ হলো ‘অবিভাজ্য’।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "গ্রিক শব্দ ‘অ্যাটমস’ এর অর্থ হলো ‘অবিভাজ্য’।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-021",
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "প্রাচীন গ্রিক দার্শনিকরা মনে করতেন যে পরমাণু হলো পদার্থের ক্ষুদ্রতম সম্ভাব্য অংশ।",
+      "text_markdown": "প্রাচীন গ্রিক দার্শনিকরা মনে করতেন যে পরমাণু হলো পদার্থের ক্ষুদ্রতম সম্ভাব্য অংশ।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "প্রাচীন গ্রিক দার্শনিকরা মনে করতেন যে পরমাণু হলো পদার্থের ক্ষুদ্রতম সম্ভাব্য অংশ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-022",
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "তারা প্রায় সঠিক ছিলেন।",
+      "text_markdown": "তারা প্রায় সঠিক ছিলেন।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "তারা প্রায় সঠিক ছিলেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-023",
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "পরমাণু প্রকৃতপক্ষে ক্ষুদ্রতম কণা নয়, তবে এগুলি ক্ষুদ্রতম একক যা তাদের রাসায়নিক বৈশিষ্ট্য বজায় রাখে।",
+      "text_markdown": "পরমাণু প্রকৃতপক্ষে ক্ষুদ্রতম কণা নয়, তবে এগুলি ক্ষুদ্রতম একক যা তাদের রাসায়নিক বৈশিষ্ট্য বজায় রাখে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "পরমাণু সত্যিকারের ক্ষুদ্রতম কণা নয়, তবে রাসায়নিক বৈশিষ্ট্য ধরে রাখার ক্ষুদ্রতম একক।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-024",
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "পরমাণু অবিশ্বাস্যভাবে টেকসই।",
+      "text_markdown": "পরমাণু অবিশ্বাস্যভাবে টেকসই।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "পরমাণু অবিশ্বাস্যভাবে টেকসই।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-025",
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "আপনার শরীরের পরমাণুগুলি বিলিয়ন বিলিয়ন বছর পুরোনো।",
+      "text_markdown": "আপনার শরীরের পরমাণুগুলি বিলিয়ন বিলিয়ন বছর পুরোনো।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনার শরীরের পরমাণুগুলি বিলিয়ন বিলিয়ন বছর পুরোনো।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-026",
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "আপনি আজ যে জল পান করেছেন তার কিছু হাইড্রোজেন পরমাণু মহাবিস্ফোরণের প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+      "text_markdown": "আপনি আজ যে জল পান করেছেন তার কিছু হাইড্রোজেন পরমাণু মহাবিস্ফোরণের প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি আজ যে জল পান করেছেন তার কিছু হাইড্রোজেন পরমাণু মহাবিস্ফোরণের প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-027",
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "আপনি প্রাচীন উপাদান দিয়ে তৈরি।",
+      "text_markdown": "আপনি প্রাচীন উপাদান দিয়ে তৈরি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "আপনি প্রাচীন উপাদান দিয়ে তৈরি।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-028",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "সাধারণ জীবনে পরমাণু কখনও তৈরি বা ধ্বংস হয় না।",
+      "text_markdown": "সাধারণ জীবনে পরমাণু কখনও তৈরি বা ধ্বংস হয় না।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "সাধারণ জীবনে পরমাণু কখনও তৈরি বা ধ্বংস হয় না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-029",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "তারা পুনর্বিন্যস্ত হয়।",
+      "text_markdown": "তারা পুনর্বিন্যস্ত হয়।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "তারা পুনর্বিন্যস্ত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-030",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "কাঠ পুড়লে পরমাণুগুলি অদৃশ্য হয়ে যায় না।",
+      "text_markdown": "কাঠ পুড়লে পরমাণুগুলি অদৃশ্য হয়ে যায় না।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "কাঠ পুড়লে পরমাণুগুলি অদৃশ্য হয়ে যায় না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-031",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "তারা ধোঁয়া, ছাই এবং গ্যাসে পুনর্বিন্যাসিত হয়।",
+      "text_markdown": "তারা ধোঁয়া, ছাই এবং গ্যাসে পুনর্বিন্যাসিত হয়।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "তারা ধোঁয়া, ছাই এবং গ্যাসে পুনর্বিন্যাসিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-032",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "যখন বরফ গলে, পরমাণুগুলি একই থাকে।",
+      "text_markdown": "যখন বরফ গলে, পরমাণুগুলি একই থাকে।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "যখন বরফ গলে, পরমাণুগুলি একই থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-033",
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "শুধুমাত্র তাদের বিন্যাস পরিবর্তিত হয়।",
+      "text_markdown": "শুধুমাত্র তাদের বিন্যাস পরিবর্তিত হয়।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "শুধুমাত্র তাদের বিন্যাস পরিবর্তিত হয়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-034",
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "পরমাণু বোঝা রসায়নের ভিত্তি।",
+      "text_markdown": "পরমাণু বোঝা রসায়নের ভিত্তি।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "পরমাণু বোঝা রসায়নের ভিত্তি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-035",
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "রসায়ন হলো পরমাণু কীভাবে একত্রিত হয়, পুনর্বিন্যাসিত হয় এবং মিথস্ক্রিয়া করে তার বিজ্ঞান।",
+      "text_markdown": "রসায়ন হলো পরমাণু কীভাবে একত্রিত হয়, পুনর্বিন্যাসিত হয় এবং মিথস্ক্রিয়া করে তার বিজ্ঞান।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "রসায়ন হলো পরমাণু কীভাবে একত্রিত হয়, পুনর্বিন্যাসিত হয় এবং মিথস্ক্রিয়া করে তার বিজ্ঞান।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch01-036",
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "ভৌত জগতে যা কিছু ঘটে, তা পরমাণু এবং তাদের কার্যকলাপের উপর নির্ভরশীল।",
+      "text_markdown": "ভৌত জগতে যা কিছু ঘটে, তা পরমাণু এবং তাদের কার্যকলাপের উপর নির্ভরশীল।",
+      "title": "সবকিছু পরমাণু দিয়ে তৈরি",
+      "tts": {
+        "text": "ভৌত জগতে যা কিছু ঘটে, তা পরমাণু এবং তাদের কার্যকলাপের উপর নির্ভরশীল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch02-037",
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "text": "পরমাণুর অভ্যন্তরে",
+      "text_markdown": "পরমাণুর অভ্যন্তরে",
+      "title": "পরমাণুর অভ্যন্তরে"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-038",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "একটি পরমাণুর ভিতরে তিন ধরনের কণা থাকে।",
+      "text_markdown": "একটি পরমাণুর ভিতরে তিন ধরনের কণা থাকে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি পরমাণুর ভিতরে তিন ধরনের কণা থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-039",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "প্রোটন।",
+      "text_markdown": "প্রোটন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "প্রোটন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-040",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "নিউট্রন।",
+      "text_markdown": "নিউট্রন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-041",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "ইলেকট্রন।",
+      "text_markdown": "ইলেকট্রন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ইলেকট্রন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-042",
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "এই তিনটি কণা মহাবিশ্বের প্রতিটি পরমাণু তৈরি করে।",
+      "text_markdown": "এই তিনটি কণা মহাবিশ্বের প্রতিটি পরমাণু তৈরি করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "এই তিনটি কণা মহাবিশ্বের প্রতিটি পরমাণু তৈরি করে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-043",
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "পরমাণুর কেন্দ্রকে নিউক্লিয়াস বলা হয়।",
+      "text_markdown": "পরমাণুর কেন্দ্রকে নিউক্লিয়াস বলা হয়।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "পরমাণুর কেন্দ্রকে নিউক্লিয়াস বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-044",
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "নিউক্লিয়াসে প্রোটন এবং নিউট্রন থাকে।",
+      "text_markdown": "নিউক্লিয়াসে প্রোটন এবং নিউট্রন থাকে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউক্লিয়াসে প্রোটন এবং নিউট্রন থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-045",
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "পুরো পরমাণুর তুলনায় নিউক্লিয়াস অত্যন্ত ক্ষুদ্র।",
+      "text_markdown": "পুরো পরমাণুর তুলনায় নিউক্লিয়াস অত্যন্ত ক্ষুদ্র।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "পুরো পরমাণুর তুলনায় নিউক্লিয়াস অত্যন্ত ক্ষুদ্র।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-046",
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "যদি পরমাণু একটি ফুটবল স্টেডিয়ামের আকারের হতো, তাহলে নিউক্লিয়াস পঞ্চাশ-গজ লাইনের উপর রাখা একটি মার্বেলের আকারের হতো।",
+      "text_markdown": "যদি পরমাণু একটি ফুটবল স্টেডিয়ামের আকারের হতো, তাহলে নিউক্লিয়াস পঞ্চাশ-গজ লাইনের উপর রাখা একটি মার্বেলের আকারের হতো।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "পরমাণু যদি ফুটবল স্টেডিয়ামের আকারের হতো, তবে নিউক্লিয়াস হতো পঞ্চাশ-গজ লাইনের ওপর রাখা একটি মার্বেল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-047",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "প্রোটন ধনাত্মক বৈদ্যুতিক আধান বহন করে।",
+      "text_markdown": "প্রোটন ধনাত্মক বৈদ্যুতিক আধান বহন করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "প্রোটন ধনাত্মক বৈদ্যুতিক আধান বহন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-048",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "প্রতিটি প্রোটনের একই পরিমাণ ধনাত্মক আধান থাকে।",
+      "text_markdown": "প্রতিটি প্রোটনের একই পরিমাণ ধনাত্মক আধান থাকে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "প্রতিটি প্রোটনের একই পরিমাণ ধনাত্মক আধান থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-049",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "একটি পরমাণুতে প্রোটনের সংখ্যা নির্ধারণ করে যে পরমাণুটি কোন মৌল।",
+      "text_markdown": "একটি পরমাণুতে প্রোটনের সংখ্যা নির্ধারণ করে যে পরমাণুটি কোন মৌল।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি পরমাণুতে প্রোটনের সংখ্যা নির্ধারণ করে যে পরমাণুটি কোন মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-050",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "এক প্রোটন মানে হাইড্রোজেন।",
+      "text_markdown": "এক প্রোটন মানে হাইড্রোজেন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "এক প্রোটন মানে হাইড্রোজেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-051",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "ছয় প্রোটন মানে কার্বন।",
+      "text_markdown": "ছয় প্রোটন মানে কার্বন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ছয় প্রোটন মানে কার্বন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-052",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "ছাব্বিশ প্রোটন মানে লোহা।",
+      "text_markdown": "ছাব্বিশ প্রোটন মানে লোহা।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ছাব্বিশ প্রোটন মানে লোহা।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-053",
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "প্রোটনের সংখ্যা একটি পরমাণু সম্পর্কে সবচেয়ে গুরুত্বপূর্ণ তথ্য।",
+      "text_markdown": "প্রোটনের সংখ্যা একটি পরমাণু সম্পর্কে সবচেয়ে গুরুত্বপূর্ণ তথ্য।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "প্রোটনের সংখ্যা একটি পরমাণু সম্পর্কে সবচেয়ে গুরুত্বপূর্ণ তথ্য।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-054",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "নিউট্রন কোনো বৈদ্যুতিক আধান বহন করে না।",
+      "text_markdown": "নিউট্রন কোনো বৈদ্যুতিক আধান বহন করে না।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন কোনো বৈদ্যুতিক আধান বহন করে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-055",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "নিউট্রন নিরপেক্ষ।",
+      "text_markdown": "নিউট্রন নিরপেক্ষ।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন নিরপেক্ষ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-056",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "নিউট্রন প্রোটনের পাশে নিউক্লিয়াসে থাকে।",
+      "text_markdown": "নিউট্রন প্রোটনের পাশে নিউক্লিয়াসে থাকে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন প্রোটনের পাশে নিউক্লিয়াসে থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-057",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "নিউট্রন নিউক্লিয়াসকে একত্রিত রাখতে সাহায্য করে।",
+      "text_markdown": "নিউট্রন নিউক্লিয়াসকে একত্রিত রাখতে সাহায্য করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন নিউক্লিয়াসকে একত্রিত রাখতে সাহায্য করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-058",
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "নিউট্রন ছাড়া, প্রোটনগুলি একে অপরকে দূরে ঠেলে দিত কারণ তারা সবাই একই ধনাত্মক আধান বহন করে।",
+      "text_markdown": "নিউট্রন ছাড়া, প্রোটনগুলি একে অপরকে দূরে ঠেলে দিত কারণ তারা সবাই একই ধনাত্মক আধান বহন করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউট্রন না থাকলে একই ধনাত্মক আধানের জন্য প্রোটনগুলো একে অপরকে দূরে ঠেলে দিত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-059",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ইলেকট্রন ঋণাত্মক বৈদ্যুতিক আধান বহন করে।",
+      "text_markdown": "ইলেকট্রন ঋণাত্মক বৈদ্যুতিক আধান বহন করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ইলেকট্রন ঋণাত্মক বৈদ্যুতিক আধান বহন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-060",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ইলেকট্রন নিউক্লিয়াসের চারপাশে একটি মেঘের মতো ঘোরাফেরা করে।",
+      "text_markdown": "ইলেকট্রন নিউক্লিয়াসের চারপাশে একটি মেঘের মতো ঘোরাফেরা করে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ইলেকট্রন নিউক্লিয়াসের চারপাশে একটি মেঘের মতো ঘোরাফেরা করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-061",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "তারা সূর্যের চারপাশে গ্রহের মতো কক্ষপথে ঘোরে না।",
+      "text_markdown": "তারা সূর্যের চারপাশে গ্রহের মতো কক্ষপথে ঘোরে না।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "তারা সূর্যের চারপাশে গ্রহের মতো ঘোরে না, তাদের চলন ভিন্ন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-062",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "তারা নিউক্লিয়াসের চারপাশে সম্ভাবনার একটি অস্পষ্ট অঞ্চলে বিদ্যমান।",
+      "text_markdown": "তারা নিউক্লিয়াসের চারপাশে সম্ভাবনার একটি অস্পষ্ট অঞ্চলে বিদ্যমান।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "তারা নিউক্লিয়াসের চারপাশে সম্ভাবনার একটি অস্পষ্ট অঞ্চলে বিদ্যমান।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-063",
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ইলেকট্রন মেঘ এমন একটি স্থান যেখানে আপনি যেকোনো মুহূর্তে একটি ইলেকট্রন খুঁজে পাওয়ার সম্ভাবনা রাখেন।",
+      "text_markdown": "ইলেকট্রন মেঘ এমন একটি স্থান যেখানে আপনি যেকোনো মুহূর্তে একটি ইলেকট্রন খুঁজে পাওয়ার সম্ভাবনা রাখেন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ইলেকট্রন মেঘ এমন একটি স্থান যেখানে আপনি যেকোনো মুহূর্তে একটি ইলেকট্রন খুঁজে পাওয়ার সম্ভাবনা রাখেন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-064",
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "একটি প্রোটন বা নিউট্রনের তুলনায় একটি ইলেকট্রনের ভর প্রায় নেই বললেই চলে।",
+      "text_markdown": "একটি প্রোটন বা নিউট্রনের তুলনায় একটি ইলেকট্রনের ভর প্রায় নেই বললেই চলে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি প্রোটন বা নিউট্রনের তুলনায় একটি ইলেকট্রনের ভর প্রায় নেই বললেই চলে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-065",
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "একটি প্রোটন একটি ইলেকট্রনের চেয়ে প্রায় ১,৮৩৬ গুণ ভারী।",
+      "text_markdown": "একটি প্রোটন একটি ইলেকট্রনের চেয়ে প্রায় ১,৮৩৬ গুণ ভারী।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি প্রোটন একটি ইলেকট্রনের চেয়ে প্রায় এক হাজার আটশ ছত্রিশ গুণ ভারী।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-066",
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "একটি পরমাণুর প্রায় সমস্ত ভর নিউক্লিয়াসে থাকে।",
+      "text_markdown": "একটি পরমাণুর প্রায় সমস্ত ভর নিউক্লিয়াসে থাকে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি পরমাণুর প্রায় সমস্ত ভর নিউক্লিয়াসে থাকে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-067",
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "একটি নিরপেক্ষ পরমাণুতে, ইলেকট্রনের সংখ্যা প্রোটনের সংখ্যার সমান হয়।",
+      "text_markdown": "একটি নিরপেক্ষ পরমাণুতে, ইলেকট্রনের সংখ্যা প্রোটনের সংখ্যার সমান হয়।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি নিরপেক্ষ পরমাণুতে, ইলেকট্রনের সংখ্যা প্রোটনের সংখ্যার সমান হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-068",
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "ধনাত্মক চার্জ এবং ঋণাত্মক চার্জ একে অপরের ভারসাম্য বজায় রাখে।",
+      "text_markdown": "ধনাত্মক চার্জ এবং ঋণাত্মক চার্জ একে অপরের ভারসাম্য বজায় রাখে।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ধনাত্মক চার্জ এবং ঋণাত্মক চার্জ একে অপরের ভারসাম্য বজায় রাখে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-069",
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "পরমাণুর কোনো সামগ্রিক চার্জ থাকে না।",
+      "text_markdown": "পরমাণুর কোনো সামগ্রিক চার্জ থাকে না।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "পরমাণুর কোনো সামগ্রিক চার্জ থাকে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-070",
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "এই ভারসাম্য একটি পরমাণুর ডিফল্ট অবস্থা।",
+      "text_markdown": "এই ভারসাম্য একটি পরমাণুর ডিফল্ট অবস্থা।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "এই ভারসাম্য একটি পরমাণুর ডিফল্ট অবস্থা।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-071",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "একটি পরমাণুর বেশিরভাগই খালি জায়গা।",
+      "text_markdown": "একটি পরমাণুর বেশিরভাগই খালি জায়গা।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "একটি পরমাণুর বেশিরভাগই খালি জায়গা।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-072",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "নিউক্লিয়াস ঘন এবং ক্ষুদ্র।",
+      "text_markdown": "নিউক্লিয়াস ঘন এবং ক্ষুদ্র।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "নিউক্লিয়াস ঘন এবং ক্ষুদ্র।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-073",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "ইলেকট্রন মেঘ বড় এবং বেশিরভাগই শূন্য।",
+      "text_markdown": "ইলেকট্রন মেঘ বড় এবং বেশিরভাগই শূন্য।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "ইলেকট্রন মেঘ বড় এবং বেশিরভাগই শূন্য।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-074",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "যদি আপনি আপনার শরীরের প্রতিটি পরমাণু থেকে সমস্ত খালি জায়গা সরিয়ে ফেলতে পারতেন, তবে আপনি একটি লবণের দানার চেয়েও ছোট আকারে সংকুচিত হয়ে যেতেন।",
+      "text_markdown": "যদি আপনি আপনার শরীরের প্রতিটি পরমাণু থেকে সমস্ত খালি জায়গা সরিয়ে ফেলতে পারতেন, তবে আপনি একটি লবণের দানার চেয়েও ছোট আকারে সংকুচিত হয়ে যেতেন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "শরীরের সব পরমাণু থেকে খালি জায়গা সরালে আপনি সঙ্কুচিত হয়ে যেতেন, লবণের দানার চেয়েও ছোট কণমাত্র।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-075",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "আপনার ভর একই থাকত।",
+      "text_markdown": "আপনার ভর একই থাকত।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "আপনার ভর একই থাকত।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch02-076",
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "আপনি কেবল অবিশ্বাস্যভাবে ঘন হয়ে যেতেন।",
+      "text_markdown": "আপনি কেবল অবিশ্বাস্যভাবে ঘন হয়ে যেতেন।",
+      "title": "পরমাণুর অভ্যন্তরে",
+      "tts": {
+        "text": "আপনি কেবল অবিশ্বাস্যভাবে ঘন হয়ে যেতেন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch03-077",
+      "paragraph_id": "p19",
+      "chapter": 3,
+      "text": "মৌল",
+      "text_markdown": "মৌল",
+      "title": "মৌল"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-078",
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "একটি মৌল হল এমন একটি পদার্থ যা শুধুমাত্র এক প্রকারের পরমাণু দ্বারা গঠিত।",
+      "text_markdown": "একটি মৌল হল এমন একটি পদার্থ যা শুধুমাত্র এক প্রকারের পরমাণু দ্বারা গঠিত।",
+      "title": "মৌল",
+      "tts": {
+        "text": "একটি মৌল হল এমন একটি পদার্থ যা শুধুমাত্র এক প্রকারের পরমাণু দ্বারা গঠিত।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-079",
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "বিশুদ্ধ সোনা একটি মৌল।",
+      "text_markdown": "বিশুদ্ধ সোনা একটি মৌল।",
+      "title": "মৌল",
+      "tts": {
+        "text": "বিশুদ্ধ সোনা একটি মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-080",
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "এক বার বিশুদ্ধ সোনার প্রতিটি পরমাণুতে উনআশিটি প্রোটন থাকে।",
+      "text_markdown": "এক বার বিশুদ্ধ সোনার প্রতিটি পরমাণুতে উনআশিটি প্রোটন থাকে।",
+      "title": "মৌল",
+      "tts": {
+        "text": "বিশুদ্ধ সোনার এক বারের প্রতিটি পরমাণুতে থাকে উনআশিটি প্রোটন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-081",
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "বিশুদ্ধ অক্সিজেন একটি মৌল।",
+      "text_markdown": "বিশুদ্ধ অক্সিজেন একটি মৌল।",
+      "title": "মৌল",
+      "tts": {
+        "text": "বিশুদ্ধ অক্সিজেন একটি মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-082",
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "এক ট্যাঙ্ক বিশুদ্ধ অক্সিজেনের প্রতিটি পরমাণুতে আটটি প্রোটন থাকে।",
+      "text_markdown": "এক ট্যাঙ্ক বিশুদ্ধ অক্সিজেনের প্রতিটি পরমাণুতে আটটি প্রোটন থাকে।",
+      "title": "মৌল",
+      "tts": {
+        "text": "এক ট্যাঙ্ক বিশুদ্ধ অক্সিজেনের প্রতিটি পরমাণুতে আটটি প্রোটন থাকে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-083",
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "পৃথিবীতে প্রাকৃতিকভাবে প্রায় বিরানব্বইটি মৌল পাওয়া যায়।",
+      "text_markdown": "পৃথিবীতে প্রাকৃতিকভাবে প্রায় বিরানব্বইটি মৌল পাওয়া যায়।",
+      "title": "মৌল",
+      "tts": {
+        "text": "পৃথিবীতে প্রাকৃতিকভাবে প্রায় বিরানব্বইটি মৌল পাওয়া যায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-084",
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "বিজ্ঞানীরা গবেষণাগারে অতিরিক্ত মৌল তৈরি করেছেন।",
+      "text_markdown": "বিজ্ঞানীরা গবেষণাগারে অতিরিক্ত মৌল তৈরি করেছেন।",
+      "title": "মৌল",
+      "tts": {
+        "text": "বিজ্ঞানীরা গবেষণাগারে অতিরিক্ত মৌল তৈরি করেছেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-085",
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "পরিচিত মৌলের মোট সংখ্যা একশ আঠারোর বেশি।",
+      "text_markdown": "পরিচিত মৌলের মোট সংখ্যা একশ আঠারোর বেশি।",
+      "title": "মৌল",
+      "tts": {
+        "text": "পরিচিত মৌলের মোট সংখ্যা একশ আঠারোর বেশি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-086",
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "প্রতিটি মৌলের একটি অনন্য সংখ্যক প্রোটন থাকে।",
+      "text_markdown": "প্রতিটি মৌলের একটি অনন্য সংখ্যক প্রোটন থাকে।",
+      "title": "মৌল",
+      "tts": {
+        "text": "প্রতিটি মৌলের একটি অনন্য সংখ্যক প্রোটন থাকে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-087",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "প্রতিটি মৌলের একটি নাম এবং একটি প্রতীক আছে।",
+      "text_markdown": "প্রতিটি মৌলের একটি নাম এবং একটি প্রতীক আছে।",
+      "title": "মৌল",
+      "tts": {
+        "text": "প্রতিটি মৌলের একটি নাম এবং একটি প্রতীক আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-088",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "হাইড্রোজেন হল H। অক্সিজেন হল O। কার্বন হল C। আয়রন হল Fe।",
+      "text_markdown": "হাইড্রোজেন হল H। অক্সিজেন হল O। কার্বন হল C। আয়রন হল Fe।",
+      "title": "মৌল",
+      "tts": {
+        "text": "হাইড্রোজেন হল এইচ। অক্সিজেন হল ও। কার্বন হল সি। আয়রন হল এফ ই।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-089",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "সোনা হল Au।",
+      "text_markdown": "সোনা হল Au।",
+      "title": "মৌল",
+      "tts": {
+        "text": "সোনা হল এ ইউ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-090",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "প্রতীকগুলি ল্যাটিন, গ্রিক বা ইংরেজি নাম থেকে এসেছে।",
+      "text_markdown": "প্রতীকগুলি ল্যাটিন, গ্রিক বা ইংরেজি নাম থেকে এসেছে।",
+      "title": "মৌল",
+      "tts": {
+        "text": "প্রতীকগুলি ল্যাটিন, গ্রিক বা ইংরেজি নাম থেকে এসেছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-091",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "Fe ল্যাটিন শব্দ ferrum থেকে এসেছে।",
+      "text_markdown": "Fe ল্যাটিন শব্দ ferrum থেকে এসেছে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "এফ ই ল্যাটিন শব্দ ferrum থেকে এসেছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-092",
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "Au ল্যাটিন শব্দ aurum থেকে এসেছে।",
+      "text_markdown": "Au ল্যাটিন শব্দ aurum থেকে এসেছে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "এ ইউ ল্যাটিন শব্দ aurum থেকে এসেছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-093",
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "হাইড্রোজে্ন হলো সবচেয়ে সরল মৌল।",
+      "text_markdown": "হাইড্রোজে্ন হলো সবচেয়ে সরল মৌল।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "হাইড্রোজে্ন হলো সবচেয়ে সরল মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-094",
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "একটি হাইড্রোজেন পরমাণুতে একটি প্রোটন এবং একটি ইলেকট্রন থাকে।",
+      "text_markdown": "একটি হাইড্রোজেন পরমাণুতে একটি প্রোটন এবং একটি ইলেকট্রন থাকে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "একটি হাইড্রোজেন পরমাণুতে একটি প্রোটন এবং একটি ইলেকট্রন থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-095",
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "মহাবিশ্বে হাইড্রোজে্ন সবচেয়ে সাধারণ মৌল।",
+      "text_markdown": "মহাবিশ্বে হাইড্রোজে্ন সবচেয়ে সাধারণ মৌল।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "মহাবিশ্বে হাইড্রোজে্ন সবচেয়ে সাধারণ মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-096",
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "তারাগুলো প্রধানত হাইড্রোজে্ন দিয়ে গঠিত।",
+      "text_markdown": "তারাগুলো প্রধানত হাইড্রোজে্ন দিয়ে গঠিত।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "তারাগুলো প্রধানত হাইড্রোজে্ন দিয়ে গঠিত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-097",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "কার্বন হলো জীবনের মৌল।",
+      "text_markdown": "কার্বন হলো জীবনের মৌল।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "কার্বন হলো জীবনের মৌল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-098",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "কার্বনের ছয়টি প্রোটন আছে।",
+      "text_markdown": "কার্বনের ছয়টি প্রোটন আছে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "কার্বনের ছয়টি প্রোটন আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-099",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "কার্বন পরমাণু একই সময়ে অন্যান্য অনেক পরমাণুর সাথে বন্ধন তৈরি করতে পারে।",
+      "text_markdown": "কার্বন পরমাণু একই সময়ে অন্যান্য অনেক পরমাণুর সাথে বন্ধন তৈরি করতে পারে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "কার্বন পরমাণু একই সময়ে অন্যান্য অনেক পরমাণুর সাথে বন্ধন তৈরি করতে পারে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-100",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "এই ক্ষমতা কার্বনকে সমস্ত জীবন্ত জিনিসের মেরুদণ্ড করে তোলে।",
+      "text_markdown": "এই ক্ষমতা কার্বনকে সমস্ত জীবন্ত জিনিসের মেরুদণ্ড করে তোলে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "এই ক্ষমতা কার্বনকে সমস্ত জীবন্ত জিনিসের মেরুদণ্ড করে তোলে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-101",
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "আপনার শরীরের প্রতিটি প্রোটিন, প্রতিটি ডিএনএ স্ট্র্যান্ড এবং প্রতিটি চিনির অণুতে কার্বন থাকে।",
+      "text_markdown": "আপনার শরীরের প্রতিটি প্রোটিন, প্রতিটি ডিএনএ স্ট্র্যান্ড এবং প্রতিটি চিনির অণুতে কার্বন থাকে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "আপনার শরীরের প্রতিটি প্রোটিন, প্রতিটি ডিএনএ স্ট্র্যান্ড আর প্রতিটি চিনির অণুতে থাকে কার্বন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-102",
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "অক্সিজেনের আটটি প্রোটন আছে।",
+      "text_markdown": "অক্সিজেনের আটটি প্রোটন আছে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "অক্সিজেনের আটটি প্রোটন আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-103",
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "অক্সিজেন হলো সেই মৌল যা আপনি শ্বাস নেন।",
+      "text_markdown": "অক্সিজেন হলো সেই মৌল যা আপনি শ্বাস নেন।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "অক্সিজেন হলো সেই মৌল যা আপনি শ্বাস নেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-104",
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "আপনার ফুসফুস বাতাস থেকে অক্সিজেন টেনে নেয় এবং আপনার রক্তে পাঠায়।",
+      "text_markdown": "আপনার ফুসফুস বাতাস থেকে অক্সিজেন টেনে নেয় এবং আপনার রক্তে পাঠায়।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "আপনার ফুসফুস বাতাস থেকে অক্সিজেন টেনে নেয় এবং আপনার রক্তে পাঠায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-105",
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "আপনার কোষগুলো খাদ্য থেকে শক্তি মুক্ত করতে অক্সিজেন ব্যবহার করে।",
+      "text_markdown": "আপনার কোষগুলো খাদ্য থেকে শক্তি মুক্ত করতে অক্সিজেন ব্যবহার করে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "আপনার কোষগুলো খাদ্য থেকে শক্তি মুক্ত করতে অক্সিজেন ব্যবহার করে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-106",
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "আয়রনের ছাব্বিশটি প্রোটন আছে।",
+      "text_markdown": "আয়রনের ছাব্বিশটি প্রোটন আছে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "আয়রনের ছাব্বিশটি প্রোটন আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-107",
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "আয়রন হলো সেই মৌল যা আপনার রক্তকে লাল করে।",
+      "text_markdown": "আয়রন হলো সেই মৌল যা আপনার রক্তকে লাল করে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "আয়রন হলো সেই মৌল যা আপনার রক্তকে লাল করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-108",
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "ইস্পাতের প্রধান উপাদান হলো আয়রন।",
+      "text_markdown": "ইস্পাতের প্রধান উপাদান হলো আয়রন।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "ইস্পাতের প্রধান উপাদান হলো আয়রন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-109",
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "পৃথিবীর কেন্দ্র প্রধানত আয়রন দিয়ে গঠিত।",
+      "text_markdown": "পৃথিবীর কেন্দ্র প্রধানত আয়রন দিয়ে গঠিত।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "পৃথিবীর কেন্দ্র প্রধানত আয়রন দিয়ে গঠিত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-110",
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "সবচেয়ে হালকা মৌলগুলো মহাবিশ্বে সবচেয়ে সাধারণ।",
+      "text_markdown": "সবচেয়ে হালকা মৌলগুলো মহাবিশ্বে সবচেয়ে সাধারণ।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "সবচেয়ে হালকা মৌলগুলো মহাবিশ্বে সবচেয়ে সাধারণ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-111",
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "হাইড্রোজে্ন এবং হিলিয়াম একসাথে মহাবিশ্বের সমস্ত পরমাণুর প্রায় আটানব্বই শতাংশ তৈরি করে।",
+      "text_markdown": "হাইড্রোজে্ন এবং হিলিয়াম একসাথে মহাবিশ্বের সমস্ত পরমাণুর প্রায় আটানব্বই শতাংশ তৈরি করে।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "মহাবিশ্বের সব পরমাণুর প্রায় আটানব্বই শতাংশই হাইড্রোজেন আর হিলিয়াম।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-112",
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "তুলনামূলকভাবে ভারী মৌলগুলো বিরল।",
+      "text_markdown": "তুলনামূলকভাবে ভারী মৌলগুলো বিরল।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "তুলনামূলকভাবে ভারী মৌলগুলো বিরল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch03-113",
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "প্রতিটি ভারী মৌলের প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+      "text_markdown": "প্রতিটি ভারী মৌলের প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+      "title": "মৌলসমূহ",
+      "tts": {
+        "text": "প্রতিটি ভারী মৌলের প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch04-114",
+      "paragraph_id": "p28",
+      "chapter": 4,
+      "text": "পর্যায় সারণী",
+      "text_markdown": "পর্যায় সারণী",
+      "title": "পর্যায় সারণী"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-115",
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "পর্যায় সারণী হলো একটি তালিকা যা প্রতিটি পরিচিত মৌলকে সংগঠিত করে।",
+      "text_markdown": "পর্যায় সারণী হলো একটি তালিকা যা প্রতিটি পরিচিত মৌলকে সংগঠিত করে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "পর্যায় সারণী সব পরিচিত মৌলকে সাজানো একটি তালিকাপত্র।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-116",
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "এই তালিকা মৌলগুলোকে তাদের প্রোটন সংখ্যা অনুসারে, ছোট থেকে বড় ক্রমে সাজায়।",
+      "text_markdown": "এই তালিকা মৌলগুলোকে তাদের প্রোটন সংখ্যা অনুসারে, ছোট থেকে বড় ক্রমে সাজায়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "এই তালিকা মৌলগুলোকে তাদের প্রোটন সংখ্যা অনুসারে, ছোট থেকে বড় ক্রমে সাজায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-117",
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "হাইড্রোজে্ন প্রথম, একটি প্রোটন সহ।",
+      "text_markdown": "হাইড্রোজে্ন প্রথম, একটি প্রোটন সহ।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "হাইড্রোজে্ন প্রথম, একটি প্রোটন সহ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-118",
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "হিলিয়াম দ্বিতীয়, দুটি প্রোটন সহ।",
+      "text_markdown": "হিলিয়াম দ্বিতীয়, দুটি প্রোটন সহ।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "হিলিয়াম দ্বিতীয়, দুটি প্রোটন সহ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-119",
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "এই তালিকা ওগানেসন পর্যন্ত চলে, যার একশো আঠারোটি প্রোটন আছে।",
+      "text_markdown": "এই তালিকা ওগানেসন পর্যন্ত চলে, যার একশো আঠারোটি প্রোটন আছে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "এই তালিকা ওগানেসন পর্যন্ত চলে, যার একশো আঠারোটি প্রোটন আছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-120",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "পর্যায় সারণীতে সারি এবং কলাম আছে।",
+      "text_markdown": "পর্যায় সারণীতে সারি এবং কলাম আছে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "পর্যায় সারণীতে সারি এবং কলাম আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-121",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "সারিগুলিকে পর্যায় বলা হয়।",
+      "text_markdown": "সারিগুলিকে পর্যায় বলা হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "সারিগুলিকে পর্যায় বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-122",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "কলামগুলিকে গ্রুপ বলা হয়।",
+      "text_markdown": "কলামগুলিকে গ্রুপ বলা হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "কলামগুলিকে গ্রুপ বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-123",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "একই গ্রুপের মৌলগুলির মধ্যে একই রকম বৈশিষ্ট্য থাকে।",
+      "text_markdown": "একই গ্রুপের মৌলগুলির মধ্যে একই রকম বৈশিষ্ট্য থাকে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "একই গ্রুপের মৌলগুলির মধ্যে একই রকম বৈশিষ্ট্য থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-124",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "এই কারণেই সারণীটিকে পর্যায়ক্রমিক বলা হয়।",
+      "text_markdown": "এই কারণেই সারণীটিকে পর্যায়ক্রমিক বলা হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "এই কারণেই সারণীটিকে পর্যায়ক্রমিক বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-125",
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "বৈশিষ্ট্যগুলি একটি নিয়মিত প্যাটার্নে পুনরাবৃত্তি হয়।",
+      "text_markdown": "বৈশিষ্ট্যগুলি একটি নিয়মিত প্যাটার্নে পুনরাবৃত্তি হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "মৌলগুলোর বৈশিষ্ট্য একটি নিয়মিত প্যাটার্নে বারবার ফিরে আসে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-126",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "সারণীর বাম দিকের মৌলগুলি ধাতু।",
+      "text_markdown": "সারণীর বাম দিকের মৌলগুলি ধাতু।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "সারণীর বাম দিকের মৌলগুলি ধাতু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-127",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "অধিকাংশ মৌলই ধাতু।",
+      "text_markdown": "অধিকাংশ মৌলই ধাতু।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "অধিকাংশ মৌলই ধাতু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-128",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ধাতু চকচকে হয়।",
+      "text_markdown": "ধাতু চকচকে হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "ধাতু চকচকে হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-129",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ধাতু বিদ্যুৎ পরিবহন করে।",
+      "text_markdown": "ধাতু বিদ্যুৎ পরিবহন করে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "ধাতু বিদ্যুৎ পরিবহন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-130",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ধাতু তাপ পরিবহন করে।",
+      "text_markdown": "ধাতু তাপ পরিবহন করে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "ধাতু তাপ পরিবহন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-131",
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "লোহা, তামা, সোনা এবং অ্যালুমিনিয়াম সবই ধাতু।",
+      "text_markdown": "লোহা, তামা, সোনা এবং অ্যালুমিনিয়াম সবই ধাতু।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "লোহা, তামা, সোনা এবং অ্যালুমিনিয়াম সবই ধাতু।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-132",
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "সারণীর ডান দিকের মৌলগুলি অধাতু।",
+      "text_markdown": "সারণীর ডান দিকের মৌলগুলি অধাতু।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "সারণীর ডান দিকের মৌলগুলি অধাতু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-133",
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "অধাতুগুলির মধ্যে রয়েছে অক্সিজেন, নাইট্রোজেন, কার্বন এবং সালফার।",
+      "text_markdown": "অধাতুগুলির মধ্যে রয়েছে অক্সিজেন, নাইট্রোজেন, কার্বন এবং সালফার।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "অধাতুগুলির মধ্যে রয়েছে অক্সিজেন, নাইট্রোজেন, কার্বন এবং সালফার।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-134",
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "অধাতুগুলি ভালোভাবে বিদ্যুৎ পরিবহন করে না।",
+      "text_markdown": "অধাতুগুলি ভালোভাবে বিদ্যুৎ পরিবহন করে না।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "অধাতুগুলি ভালোভাবে বিদ্যুৎ পরিবহন করে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-135",
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "অধাতুগুলি হলো সেই মৌল যা বাতাস, জল এবং জীবন্ত জিনিস তৈরি করে।",
+      "text_markdown": "অধাতুগুলি হলো সেই মৌল যা বাতাস, জল এবং জীবন্ত জিনিস তৈরি করে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "অধাতুগুলি হলো সেই মৌল যা বাতাস, জল এবং জীবন্ত জিনিস তৈরি করে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-136",
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "কিছু মৌল ধাতু এবং অধাতুর সীমানায় থাকে।",
+      "text_markdown": "কিছু মৌল ধাতু এবং অধাতুর সীমানায় থাকে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "কিছু মৌল ধাতু এবং অধাতুর সীমানায় থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-137",
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "এই মৌলগুলিকে মেটালয়েড বলা হয়।",
+      "text_markdown": "এই মৌলগুলিকে মেটালয়েড বলা হয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "এই মৌলগুলিকে মেটালয়েড বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-138",
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "সিলিকন একটি মেটালয়েড।",
+      "text_markdown": "সিলিকন একটি মেটালয়েড।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "সিলিকন একটি মেটালয়েড।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-139",
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "সিলিকন কিছুটা বিদ্যুৎ পরিবহন করে, তবে ধাতুর মতো ভালোভাবে নয়।",
+      "text_markdown": "সিলিকন কিছুটা বিদ্যুৎ পরিবহন করে, তবে ধাতুর মতো ভালোভাবে নয়।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "সিলিকন কিছুটা বিদ্যুৎ পরিবহন করে, তবে ধাতুর মতো ভালোভাবে নয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-140",
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "এই বৈশিষ্ট্যের কারণে সিলিকন কম্পিউটার চিপসে কার্যকর।",
+      "text_markdown": "এই বৈশিষ্ট্যের কারণে সিলিকন কম্পিউটার চিপসে কার্যকর।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "এই বৈশিষ্ট্যের কারণে সিলিকন কম্পিউটার চিপসে কার্যকর।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-141",
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "নোবেল গ্যাসগুলি ডানদিকের শেষ কলামে থাকে।",
+      "text_markdown": "নোবেল গ্যাসগুলি ডানদিকের শেষ কলামে থাকে।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "নোবেল গ্যাসগুলি ডানদিকের শেষ কলামে থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-142",
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "হিলিয়াম, নিয়ন, আর্গন, ক্রিপ্টন, জেনন এবং রেডন হলো নোবেল গ্যাস।",
+      "text_markdown": "হিলিয়াম, নিয়ন, আর্গন, ক্রিপ্টন, জেনন এবং রেডন হলো নোবেল গ্যাস।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "হিলিয়াম, নিয়ন, আর্গন, ক্রিপ্টন, জেনন এবং রেডন হলো নোবেল গ্যাস।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-143",
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "নোবেল গ্যাসগুলি প্রায় কখনোই অন্য মৌলগুলির সাথে বিক্রিয়া করে না।",
+      "text_markdown": "নোবেল গ্যাসগুলি প্রায় কখনোই অন্য মৌলগুলির সাথে বিক্রিয়া করে না।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "নোবেল গ্যাসগুলি প্রায় কখনোই অন্য মৌলগুলির সাথে বিক্রিয়া করে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-144",
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "তাদের ইলেকট্রন বিন্যাস ইতিমধ্যেই স্থিতিশীল।",
+      "text_markdown": "তাদের ইলেকট্রন বিন্যাস ইতিমধ্যেই স্থিতিশীল।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "তাদের ইলেকট্রন বিন্যাস ইতিমধ্যেই স্থিতিশীল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-145",
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "তাদের বন্ধন তৈরি করার প্রয়োজন হয় না।",
+      "text_markdown": "তাদের বন্ধন তৈরি করার প্রয়োজন হয় না।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "তাদের বন্ধন তৈরি করার প্রয়োজন হয় না।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-146",
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "দিমিত্রি মেন্ডেলিভ নামের একজন রুশ বিজ্ঞানী ১৮৬৯ সালে প্রথম পর্যায় সারণী তৈরি করেন।",
+      "text_markdown": "দিমিত্রি মেন্ডেলিভ নামের একজন রুশ বিজ্ঞানী ১৮৬৯ সালে প্রথম পর্যায় সারণী তৈরি করেন।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "রুশ বিজ্ঞানী দিমিত্রি মেন্ডেলিভ আঠারোশো উনসত্তর সালে প্রথম পর্যায় সারণী তৈরি করেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-147",
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "মেন্ডেলিভ মৌলগুলিকে তাদের বৈশিষ্ট্য অনুসারে সাজিয়েছিলেন এবং পুনরাবৃত্ত প্যাটার্নটি লক্ষ্য করেছিলেন।",
+      "text_markdown": "মেন্ডেলিভ মৌলগুলিকে তাদের বৈশিষ্ট্য অনুসারে সাজিয়েছিলেন এবং পুনরাবৃত্ত প্যাটার্নটি লক্ষ্য করেছিলেন।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "মেন্ডেলিভ মৌলগুলোকে তাদের বৈশিষ্ট্য অনুযায়ী সাজিয়েছিলেন এবং পুনরাবৃত্ত প্যাটার্নটি লক্ষ্য করেছিলেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-148",
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "তিনি তার সারণীতে ফাঁকা স্থান রেখেছিলেন যেখানে তিনি অনুমান করেছিলেন যে অজানা মৌলগুলি থাকা উচিত।",
+      "text_markdown": "তিনি তার সারণীতে ফাঁকা স্থান রেখেছিলেন যেখানে তিনি অনুমান করেছিলেন যে অজানা মৌলগুলি থাকা উচিত।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "তিনি সারণিতে ফাঁকা স্থান রেখেছিলেন, যেখানে তাঁর মতে অজানা মৌল থাকা উচিত।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-149",
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "বিজ্ঞানীরা পরে সেই মৌলগুলি আবিষ্কার করেন।",
+      "text_markdown": "বিজ্ঞানীরা পরে সেই মৌলগুলি আবিষ্কার করেন।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "বিজ্ঞানীরা পরে সেই মৌলগুলি আবিষ্কার করেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-150",
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "প্রতিটি ভবিষ্যদ্বাণী সঠিক ছিল।",
+      "text_markdown": "প্রতিটি ভবিষ্যদ্বাণী সঠিক ছিল।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "প্রতিটি ভবিষ্যদ্বাণী সঠিক ছিল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-151",
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "text": "পর্যায় সারণী বিজ্ঞানের অন্যতম শক্তিশালী হাতিয়ার।",
+      "text_markdown": "পর্যায় সারণী বিজ্ঞানের অন্যতম শক্তিশালী হাতিয়ার।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "পর্যায় সারণী বিজ্ঞানের অন্যতম শক্তিশালী হাতিয়ার।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch04-152",
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "text": "যদি আপনি জানেন যে একটি মৌল সারণীতে কোথায় অবস্থিত, তাহলে আপনি এর আচরণ কেমন হবে তা অনুমান করতে পারবেন।",
+      "text_markdown": "যদি আপনি জানেন যে একটি মৌল সারণীতে কোথায় অবস্থিত, তাহলে আপনি এর আচরণ কেমন হবে তা অনুমান করতে পারবেন।",
+      "title": "পর্যায় সারণী",
+      "tts": {
+        "text": "যদি আপনি জানেন যে একটি মৌল সারণীতে কোথায় অবস্থিত, তাহলে আপনি এর আচরণ কেমন হবে তা অনুমান করতে পারবেন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch05-153",
+      "paragraph_id": "p37",
+      "chapter": 5,
+      "text": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "text_markdown": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-154",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "পরমাণু খুব কমই একা থাকে।",
+      "text_markdown": "পরমাণু খুব কমই একা থাকে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "পরমাণু খুব কমই একা থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-155",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "বেশিরভাগ পরমাণু অণু তৈরি করতে অন্যান্য পরমাণুর সাথে বন্ধন তৈরি করে।",
+      "text_markdown": "বেশিরভাগ পরমাণু অণু তৈরি করতে অন্যান্য পরমাণুর সাথে বন্ধন তৈরি করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "অণু গঠনের সময় বেশিরভাগ পরমাণু অন্য পরমাণুর সঙ্গে গড়ে বন্ধন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-156",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "একটি অণু হলো রাসায়নিক বন্ধন দ্বারা একত্রিত পরমাণুর একটি সমষ্টি।",
+      "text_markdown": "একটি অণু হলো রাসায়নিক বন্ধন দ্বারা একত্রিত পরমাণুর একটি সমষ্টি।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি অণু হলো রাসায়নিক বন্ধন দ্বারা একত্রিত পরমাণুর একটি সমষ্টি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-157",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "জল একটি অণু।",
+      "text_markdown": "জল একটি অণু।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "জল একটি অণু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-158",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "অক্সিজেন গ্যাস একটি অণু।",
+      "text_markdown": "অক্সিজেন গ্যাস একটি অণু।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "অক্সিজেন গ্যাস একটি অণু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-159",
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "চিনি একটি অণু।",
+      "text_markdown": "চিনি একটি অণু।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "চিনি একটি অণু।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-160",
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "পরমাণু তাদের ইলেকট্রনের কারণে বন্ধন তৈরি করে।",
+      "text_markdown": "পরমাণু তাদের ইলেকট্রনের কারণে বন্ধন তৈরি করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "পরমাণু তাদের ইলেকট্রনের কারণে বন্ধন তৈরি করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-161",
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "একটি পরমাণুর সবচেয়ে বাইরের কক্ষপথের ইলেকট্রনগুলি নির্ধারণ করে যে সেই পরমাণু কীভাবে অন্যান্য পরমাণুর সাথে মিথস্ক্রিয়া করবে।",
+      "text_markdown": "একটি পরমাণুর সবচেয়ে বাইরের কক্ষপথের ইলেকট্রনগুলি নির্ধারণ করে যে সেই পরমাণু কীভাবে অন্যান্য পরমাণুর সাথে মিথস্ক্রিয়া করবে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "অন্য পরমাণুর সঙ্গে তার মিথস্ক্রিয়ার ধরন ঠিক করে সবচেয়ে বাইরের ইলেকট্রন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-162",
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "এই বাইরের ইলেকট্রনগুলিকে যোজ্যতা ইলেকট্রন বলা হয়।",
+      "text_markdown": "এই বাইরের ইলেকট্রনগুলিকে যোজ্যতা ইলেকট্রন বলা হয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "এই বাইরের ইলেকট্রনগুলিকে যোজ্যতা ইলেকট্রন বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-163",
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "একটি সম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু স্থিতিশীল।",
+      "text_markdown": "একটি সম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু স্থিতিশীল।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি সম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু স্থিতিশীল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-164",
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "একটি অসম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু এটি পূরণ করার চেষ্টা করবে।",
+      "text_markdown": "একটি অসম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু এটি পূরণ করার চেষ্টা করবে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি অসম্পূর্ণ বাইরের কক্ষপথ সহ একটি পরমাণু এটি পূরণ করার চেষ্টা করবে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-165",
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "text": "রাসায়নিক বন্ধন প্রধানত দুই প্রকার।",
+      "text_markdown": "রাসায়নিক বন্ধন প্রধানত দুই প্রকার।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "রাসায়নিক বন্ধন প্রধানত দুই প্রকার।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-166",
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "text": "সমযোজী বন্ধন এবং আয়নিক বন্ধন।",
+      "text_markdown": "সমযোজী বন্ধন এবং আয়নিক বন্ধন।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "সমযোজী বন্ধন এবং আয়নিক বন্ধন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-167",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "একটি সমযোজী বন্ধনে, দুটি পরমাণু ইলেকট্রন ভাগ করে নেয়।",
+      "text_markdown": "একটি সমযোজী বন্ধনে, দুটি পরমাণু ইলেকট্রন ভাগ করে নেয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি সমযোজী বন্ধনে, দুটি পরমাণু ইলেকট্রন ভাগ করে নেয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-168",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "উভয় পরমাণু একটি ভাগ করা জোড়ায় ইলেকট্রন সরবরাহ করে।",
+      "text_markdown": "উভয় পরমাণু একটি ভাগ করা জোড়ায় ইলেকট্রন সরবরাহ করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "উভয় পরমাণু একটি ভাগ করা জোড়ায় ইলেকট্রন সরবরাহ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-169",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "ভাগ করা ইলেকট্রনগুলি উভয় নিউক্লিয়াসকে প্রদক্ষিণ করে।",
+      "text_markdown": "ভাগ করা ইলেকট্রনগুলি উভয় নিউক্লিয়াসকে প্রদক্ষিণ করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "ভাগ করা ইলেকট্রনগুলি উভয় নিউক্লিয়াসকে প্রদক্ষিণ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-170",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "এই ভাগাভাগি পরমাণুগুলিকে একত্রিত রাখে।",
+      "text_markdown": "এই ভাগাভাগি পরমাণুগুলিকে একত্রিত রাখে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "এই ভাগাভাগি পরমাণুগুলিকে একত্রিত রাখে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-171",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "জল সমযোজী বন্ধন দ্বারা একত্রিত থাকে।",
+      "text_markdown": "জল সমযোজী বন্ধন দ্বারা একত্রিত থাকে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "জল সমযোজী বন্ধন দ্বারা একত্রিত থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-172",
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "প্রতিটি হাইড্রোজেন পরমাণু অক্সিজেন পরমাণুর সাথে একটি ইলেকট্রন ভাগ করে নেয়।",
+      "text_markdown": "প্রতিটি হাইড্রোজেন পরমাণু অক্সিজেন পরমাণুর সাথে একটি ইলেকট্রন ভাগ করে নেয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "প্রতিটি হাইড্রোজেন পরমাণু অক্সিজেন পরমাণুর সাথে একটি ইলেকট্রন ভাগ করে নেয়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-173",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "একটি আয়নিক বন্ধনে, একটি পরমাণু অন্য পরমাণুকে ইলেকট্রন দেয়।",
+      "text_markdown": "একটি আয়নিক বন্ধনে, একটি পরমাণু অন্য পরমাণুকে ইলেকট্রন দেয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি আয়নিক বন্ধনে, একটি পরমাণু অন্য পরমাণুকে ইলেকট্রন দেয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-174",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "যে পরমাণু ইলেকট্রন হারায় তা ধনাত্মক আধানযুক্ত হয়।",
+      "text_markdown": "যে পরমাণু ইলেকট্রন হারায় তা ধনাত্মক আধানযুক্ত হয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "যে পরমাণু ইলেকট্রন হারায় তা ধনাত্মক আধানযুক্ত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-175",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "যে পরমাণু ইলেকট্রন গ্রহণ করে তা ঋণাত্মক আধানযুক্ত হয়।",
+      "text_markdown": "যে পরমাণু ইলেকট্রন গ্রহণ করে তা ঋণাত্মক আধানযুক্ত হয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "যে পরমাণু ইলেকট্রন গ্রহণ করে তা ঋণাত্মক আধানযুক্ত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-176",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "বিপরীত আধান আকর্ষণ করে।",
+      "text_markdown": "বিপরীত আধান আকর্ষণ করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "বিপরীত আধান আকর্ষণ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-177",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "এই আকর্ষণ দুটি পরমাণুকে একত্রিত রাখে।",
+      "text_markdown": "এই আকর্ষণ দুটি পরমাণুকে একত্রিত রাখে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "এই আকর্ষণ দুটি পরমাণুকে একত্রিত রাখে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-178",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "খাবার লবণ আয়নিক বন্ধন দ্বারা একত্রিত থাকে।",
+      "text_markdown": "খাবার লবণ আয়নিক বন্ধন দ্বারা একত্রিত থাকে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "খাবার লবণ আয়নিক বন্ধন দ্বারা একত্রিত থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-179",
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "সোডিয়াম ক্লোরিনকে একটি ইলেকট্রন দেয়।",
+      "text_markdown": "সোডিয়াম ক্লোরিনকে একটি ইলেকট্রন দেয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "সোডিয়াম ক্লোরিনকে একটি ইলেকট্রন দেয়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-180",
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "একটি জলের অণুতে দুটি হাইড্রোজেন পরমাণু এবং একটি অক্সিজেন পরমাণু থাকে।",
+      "text_markdown": "একটি জলের অণুতে দুটি হাইড্রোজেন পরমাণু এবং একটি অক্সিজেন পরমাণু থাকে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "একটি জলের অণুতে দুটি হাইড্রোজেন পরমাণু এবং একটি অক্সিজেন পরমাণু থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-181",
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "বিজ্ঞানীরা এটিকে H2O হিসেবে লেখেন।",
+      "text_markdown": "বিজ্ঞানীরা এটিকে H2O হিসেবে লেখেন।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "বিজ্ঞানীরা এটিকে এইচ টু ও হিসেবে লেখেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-182",
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "H দ্বারা হাইড্রোজেন বোঝায়।",
+      "text_markdown": "H দ্বারা হাইড্রোজেন বোঝায়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "এইচ দ্বারা হাইড্রোজেন বোঝায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-183",
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "O দ্বারা অক্সিজেন বোঝায়।",
+      "text_markdown": "O দ্বারা অক্সিজেন বোঝায়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "ও দ্বারা অক্সিজেন বোঝায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-184",
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "2 মানে দুটি হাইড্রোজেন পরমাণু আছে।",
+      "text_markdown": "2 মানে দুটি হাইড্রোজেন পরমাণু আছে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "দুই মানে দুটি হাইড্রোজেন পরমাণু আছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-185",
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "কার্বন ডাই অক্সাইডের একটি অণুতে একটি কার্বন পরমাণু এবং দুটি অক্সিজেন পরমাণু থাকে।",
+      "text_markdown": "কার্বন ডাই অক্সাইডের একটি অণুতে একটি কার্বন পরমাণু এবং দুটি অক্সিজেন পরমাণু থাকে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "কার্বন ডাই অক্সাইডের একটি অণুতে একটি কার্বন পরমাণু এবং দুটি অক্সিজেন পরমাণু থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-186",
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "বিজ্ঞানীরা এটিকে CO2 হিসেবে লেখেন।",
+      "text_markdown": "বিজ্ঞানীরা এটিকে CO2 হিসেবে লেখেন।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "বিজ্ঞানীরা এটিকে সি ও টু হিসেবে লেখেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-187",
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "উদ্ভিদ বাতাস থেকে কার্বন ডাই অক্সাইড শোষণ করে এবং এটি ব্যবহার করে চিনির অণু তৈরি করে।",
+      "text_markdown": "উদ্ভিদ বাতাস থেকে কার্বন ডাই অক্সাইড শোষণ করে এবং এটি ব্যবহার করে চিনির অণু তৈরি করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "উদ্ভিদ বাতাস থেকে কার্বন ডাই অক্সাইড শোষণ করে এবং এটি ব্যবহার করে চিনির অণু তৈরি করে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-188",
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "পরমাণুগুলির মধ্যেকার বন্ধন শক্তি সঞ্চয় করে।",
+      "text_markdown": "পরমাণুগুলির মধ্যেকার বন্ধন শক্তি সঞ্চয় করে।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "পরমাণুগুলির মধ্যেকার বন্ধন শক্তি সঞ্চয় করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-189",
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "যখন বন্ধন ভাঙে, শক্তি নির্গত হয়।",
+      "text_markdown": "যখন বন্ধন ভাঙে, শক্তি নির্গত হয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "যখন বন্ধন ভাঙে, শক্তি নির্গত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-190",
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "যখন বন্ধন তৈরি হয়, শক্তি শোষিত হয়।",
+      "text_markdown": "যখন বন্ধন তৈরি হয়, শক্তি শোষিত হয়।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "যখন বন্ধন তৈরি হয়, শক্তি শোষিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch05-191",
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "মহাবিশ্বের প্রতিটি রাসায়নিক বিক্রিয়ায় পুরনো বন্ধন ভাঙা এবং নতুন বন্ধন তৈরি হওয়া জড়িত।",
+      "text_markdown": "মহাবিশ্বের প্রতিটি রাসায়নিক বিক্রিয়ায় পুরনো বন্ধন ভাঙা এবং নতুন বন্ধন তৈরি হওয়া জড়িত।",
+      "title": "পরমাণু কীভাবে বন্ধন তৈরি করে",
+      "tts": {
+        "text": "মহাবিশ্বের প্রতিটি রাসায়নিক বিক্রিয়ায় পুরোনো বন্ধন ভাঙা আর নতুন বন্ধন গঠন জড়িত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch06-192",
+      "paragraph_id": "p46",
+      "chapter": 6,
+      "text": "গতিশীল পরমাণু",
+      "text_markdown": "গতিশীল পরমাণু",
+      "title": "গতিশীল পরমাণু"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-193",
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "পরমাণু সবসময় গতিশীল থাকে।",
+      "text_markdown": "পরমাণু সবসময় গতিশীল থাকে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "পরমাণু সবসময় গতিশীল থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-194",
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "তারা কখনো থামে না।",
+      "text_markdown": "তারা কখনো থামে না।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা কখনো থামে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-195",
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "পরম শূন্যের উপরের যেকোনো তাপমাত্রায়, পরমাণুগুলি কম্পন করে, ঘোরে এবং মহাকাশে চলাচল করে।",
+      "text_markdown": "পরম শূন্যের উপরের যেকোনো তাপমাত্রায়, পরমাণুগুলি কম্পন করে, ঘোরে এবং মহাকাশে চলাচল করে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "পরম শূন্যের উপরের যেকোনো তাপমাত্রায়, পরমাণুগুলি কম্পন করে, ঘোরে এবং মহাকাশে চলাচল করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-196",
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "এই গতিকেই আমরা তাপ হিসেবে অনুভব করি।",
+      "text_markdown": "এই গতিকেই আমরা তাপ হিসেবে অনুভব করি।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "এই গতিকেই আমরা তাপ হিসেবে অনুভব করি।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-197",
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "কঠিন পদার্থে, পরমাণুগুলি নিজ স্থানে কম্পন করে।",
+      "text_markdown": "কঠিন পদার্থে, পরমাণুগুলি নিজ স্থানে কম্পন করে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "কঠিন পদার্থে, পরমাণুগুলি নিজ স্থানে কম্পন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-198",
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "তারা একটি নির্দিষ্ট কাঠামোতে আবদ্ধ থাকে।",
+      "text_markdown": "তারা একটি নির্দিষ্ট কাঠামোতে আবদ্ধ থাকে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা একটি নির্দিষ্ট কাঠামোতে আবদ্ধ থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-199",
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "তারা সামনে-পিছনে কাঁপে, কিন্তু তাদের অবস্থান ত্যাগ করে না।",
+      "text_markdown": "তারা সামনে-পিছনে কাঁপে, কিন্তু তাদের অবস্থান ত্যাগ করে না।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা সামনে-পিছনে কাঁপে, কিন্তু তাদের অবস্থান ত্যাগ করে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-200",
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "এই কারণেই কঠিন পদার্থ তাদের আকার ধরে রাখে।",
+      "text_markdown": "এই কারণেই কঠিন পদার্থ তাদের আকার ধরে রাখে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "এই কারণেই কঠিন পদার্থ তাদের আকার ধরে রাখে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-201",
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "এক টুকরো বরফের পরমাণুগুলি কম্পন করে, কিন্তু তারা একটি অনমনীয় স্ফটিক বিন্যাসে থাকে।",
+      "text_markdown": "এক টুকরো বরফের পরমাণুগুলি কম্পন করে, কিন্তু তারা একটি অনমনীয় স্ফটিক বিন্যাসে থাকে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "বরফের একটি টুকরোর পরমাণুগুলো কম্পন করে, কিন্তু তারা শক্ত স্ফটিক বিন্যাসে থাকে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-202",
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "তরল পদার্থে, পরমাণুগুলি আরও অবাধে চলাচল করে।",
+      "text_markdown": "তরল পদার্থে, পরমাণুগুলি আরও অবাধে চলাচল করে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তরল পদার্থে, পরমাণুগুলি আরও অবাধে চলাচল করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-203",
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "তারা একে অপরের পাশ দিয়ে পিছলে যায়।",
+      "text_markdown": "তারা একে অপরের পাশ দিয়ে পিছলে যায়।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা একে অপরের পাশ দিয়ে পিছলে যায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-204",
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "তারা কাছাকাছি থাকে, কিন্তু অবস্থানে আবদ্ধ থাকে না।",
+      "text_markdown": "তারা কাছাকাছি থাকে, কিন্তু অবস্থানে আবদ্ধ থাকে না।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা কাছাকাছি থাকে, কিন্তু অবস্থানে আবদ্ধ থাকে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-205",
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "এই কারণেই তরল পদার্থ প্রবাহিত হয়।",
+      "text_markdown": "এই কারণেই তরল পদার্থ প্রবাহিত হয়।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "এই কারণেই তরল পদার্থ প্রবাহিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-206",
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "এক গ্লাস জলের পরমাণুগুলি ক্রমাগত চলাচল করে এবং নিজেদের পুনর্বিন্যাস করে, কিন্তু তারা একে অপরের কাছাকাছি থাকে।",
+      "text_markdown": "এক গ্লাস জলের পরমাণুগুলি ক্রমাগত চলাচল করে এবং নিজেদের পুনর্বিন্যাস করে, কিন্তু তারা একে অপরের কাছাকাছি থাকে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "এক গ্লাস জলের পরমাণুগুলি ক্রমাগত চলাচল করে এবং নিজেদের পুনর্বিন্যাস করে, কিন্তু তারা একে অপরের কাছাকাছি থাকে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-207",
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "গ্যাসীয় পদার্থে, পরমাণুগুলি দ্রুত চলাচল করে এবং ছড়িয়ে পড়ে।",
+      "text_markdown": "গ্যাসীয় পদার্থে, পরমাণুগুলি দ্রুত চলাচল করে এবং ছড়িয়ে পড়ে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "গ্যাসীয় পদার্থে, পরমাণুগুলি দ্রুত চলাচল করে এবং ছড়িয়ে পড়ে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-208",
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "তারা সরলরেখায় উড়ে যায় যতক্ষণ না তারা অন্য কোনো পরমাণু বা দেওয়ালে আঘাত করে।",
+      "text_markdown": "তারা সরলরেখায় উড়ে যায় যতক্ষণ না তারা অন্য কোনো পরমাণু বা দেওয়ালে আঘাত করে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা সরলরেখায় উড়ে যায় যতক্ষণ না তারা অন্য কোনো পরমাণু বা দেওয়ালে আঘাত করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-209",
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "তারা একে অপরের থেকে প্রতিফলিত হয়ে দিক পরিবর্তন করে।",
+      "text_markdown": "তারা একে অপরের থেকে প্রতিফলিত হয়ে দিক পরিবর্তন করে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "তারা একে অপরের থেকে প্রতিফলিত হয়ে দিক পরিবর্তন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-210",
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "এই কারণেই গ্যাস যেকোনো পাত্রে রাখলে তা পূর্ণ করে ফেলে।",
+      "text_markdown": "এই কারণেই গ্যাস যেকোনো পাত্রে রাখলে তা পূর্ণ করে ফেলে।",
+      "title": "গতিশীল পরমাণু",
+      "tts": {
+        "text": "এই কারণেই গ্যাস যেকোনো পাত্রে রাখলে তা পূর্ণ করে ফেলে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-211",
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "একটি ঘরে ভরা বাতাসের পরমাণুগুলো প্রতি সেকেন্ডে শত শত মিটার বেগে সব দিকে ছুটে বেড়াচ্ছে।",
+      "text_markdown": "একটি ঘরে ভরা বাতাসের পরমাণুগুলো প্রতি সেকেন্ডে শত শত মিটার বেগে সব দিকে ছুটে বেড়াচ্ছে।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "একটি ঘরে ভরা বাতাসের পরমাণুগুলো প্রতি সেকেন্ডে শত শত মিটার বেগে সব দিকে ছুটে বেড়াচ্ছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-212",
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "তাপমাত্রা হলো পরমাণুগুলো কত দ্রুত গতিশীল, তার একটি পরিমাপ।",
+      "text_markdown": "তাপমাত্রা হলো পরমাণুগুলো কত দ্রুত গতিশীল, তার একটি পরিমাপ।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "তাপমাত্রা হলো পরমাণুগুলো কত দ্রুত গতিশীল, তার একটি পরিমাপ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-213",
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "গরম মানে পরমাণুগুলো দ্রুত গতিশীল।",
+      "text_markdown": "গরম মানে পরমাণুগুলো দ্রুত গতিশীল।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "গরম মানে পরমাণুগুলো দ্রুত গতিশীল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-214",
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "ঠান্ডা মানে পরমাণুগুলো ধীরে গতিশীল।",
+      "text_markdown": "ঠান্ডা মানে পরমাণুগুলো ধীরে গতিশীল।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "ঠান্ডা মানে পরমাণুগুলো ধীরে গতিশীল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-215",
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "যখন আপনি চুলায় জল গরম করেন, তখন আপনি জলের অণুগুলোকে দ্রুত গতিশীল করেন।",
+      "text_markdown": "যখন আপনি চুলায় জল গরম করেন, তখন আপনি জলের অণুগুলোকে দ্রুত গতিশীল করেন।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "যখন আপনি চুলায় জল গরম করেন, তখন আপনি জলের অণুগুলোকে দ্রুত গতিশীল করেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-216",
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "যখন অণুগুলো যথেষ্ট দ্রুত গতিশীল হয়, তখন তারা তরল থেকে বেরিয়ে বাষ্পে পরিণত হয়।",
+      "text_markdown": "যখন অণুগুলো যথেষ্ট দ্রুত গতিশীল হয়, তখন তারা তরল থেকে বেরিয়ে বাষ্পে পরিণত হয়।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "অণুগুলো যথেষ্ট দ্রুত চললে, তারা তরল ছেড়ে বেরিয়ে পড়ে, আর তৈরি হয় বাষ্প।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-217",
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "পরম শূন্য তাপমাত্রা হলো সম্ভাব্য শীতলতম তাপমাত্রা।",
+      "text_markdown": "পরম শূন্য তাপমাত্রা হলো সম্ভাব্য শীতলতম তাপমাত্রা।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "পরম শূন্য তাপমাত্রা হলো সম্ভাব্য শীতলতম তাপমাত্রা।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-218",
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "এটি প্রায় মাইনাস ২৭৩ ডিগ্রি সেলসিয়াস।",
+      "text_markdown": "এটি প্রায় মাইনাস ২৭৩ ডিগ্রি সেলসিয়াস।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "এটি প্রায় মাইনাস দুইশো তিয়াত্তর ডিগ্রি সেলসিয়াস।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-219",
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "পরম শূন্য তাপমাত্রায়, পরমাণুগুলোর সর্বনিম্ন সম্ভাব্য শক্তি থাকে।",
+      "text_markdown": "পরম শূন্য তাপমাত্রায়, পরমাণুগুলোর সর্বনিম্ন সম্ভাব্য শক্তি থাকে।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "পরম শূন্য তাপমাত্রায়, পরমাণুগুলোর সর্বনিম্ন সম্ভাব্য শক্তি থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-220",
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "পরম শূন্যের চেয়ে ঠান্ডা আর কিছু হতে পারে না।",
+      "text_markdown": "পরম শূন্যের চেয়ে ঠান্ডা আর কিছু হতে পারে না।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "পরম শূন্যের চেয়ে ঠান্ডা আর কিছু হতে পারে না।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-221",
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "বিজ্ঞানীরা পরীক্ষাগারে পরম শূন্যের খুব কাছাকাছি পৌঁছাতে পেরেছেন, কিন্তু কেউ কখনো ঠিক সেই তাপমাত্রায় পৌঁছাতে পারেননি।",
+      "text_markdown": "বিজ্ঞানীরা পরীক্ষাগারে পরম শূন্যের খুব কাছাকাছি পৌঁছাতে পেরেছেন, কিন্তু কেউ কখনো ঠিক সেই তাপমাত্রায় পৌঁছাতে পারেননি।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "বিজ্ঞানীরা পরীক্ষাগারে পরম শূন্যের খুব কাছে পৌঁছেছেন, কিন্তু ঠিক সেই তাপমাত্রা এখনো অপ্রাপ্ত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-222",
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "পৃষ্ঠে পরমাণুর আঘাতের কারণে চাপ সৃষ্টি হয়।",
+      "text_markdown": "পৃষ্ঠে পরমাণুর আঘাতের কারণে চাপ সৃষ্টি হয়।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "পৃষ্ঠে পরমাণুর আঘাতের কারণে চাপ সৃষ্টি হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-223",
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "একটি টায়ারের ভেতরের বাতাস বাইরের দিকে চাপ সৃষ্টি করে কারণ বাতাসের অণুগুলো টায়ারের ভেতরের দেয়ালে ক্রমাগত ধাক্কা খায়।",
+      "text_markdown": "একটি টায়ারের ভেতরের বাতাস বাইরের দিকে চাপ সৃষ্টি করে কারণ বাতাসের অণুগুলো টায়ারের ভেতরের দেয়ালে ক্রমাগত ধাক্কা খায়।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "টায়ারের ভেতরের বাতাস বাইরে চাপ দেয়, কারণ ভেতরের দেয়ালে তার অণুগুলোর ক্রমাগত আঘাত।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-224",
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "বেশি অণু বা দ্রুত গতিশীল অণু মানে বেশি চাপ।",
+      "text_markdown": "বেশি অণু বা দ্রুত গতিশীল অণু মানে বেশি চাপ।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "বেশি অণু বা দ্রুত গতিশীল অণু মানে বেশি চাপ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch06-225",
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "এই কারণেই বাতাস গরম হলে টায়ার শক্ত মনে হয়।",
+      "text_markdown": "এই কারণেই বাতাস গরম হলে টায়ার শক্ত মনে হয়।",
+      "title": "পরমাণুর গতি",
+      "tts": {
+        "text": "এই কারণেই বাতাস গরম হলে টায়ার শক্ত মনে হয়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch07-226",
+      "paragraph_id": "p54",
+      "chapter": 7,
+      "text": "পরমাণু কোথা থেকে আসে",
+      "text_markdown": "পরমাণু কোথা থেকে আসে",
+      "title": "পরমাণু কোথা থেকে আসে"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-227",
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "মহাবিশ্বের হাইড্রোজেন এবং হিলিয়াম বিগ ব্যাং-এর প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+      "text_markdown": "মহাবিশ্বের হাইড্রোজেন এবং হিলিয়াম বিগ ব্যাং-এর প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "মহাবিশ্বের হাইড্রোজেন এবং হিলিয়াম বিগ ব্যাং-এর প্রথম কয়েক মিনিটের মধ্যে তৈরি হয়েছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-228",
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "মহাবিশ্ব প্রায় ১৩.৮ বিলিয়ন বছর আগে একটি অবিশ্বাস্যরকম গরম, ঘন বিন্দু হিসাবে শুরু হয়েছিল।",
+      "text_markdown": "মহাবিশ্ব প্রায় ১৩.৮ বিলিয়ন বছর আগে একটি অবিশ্বাস্যরকম গরম, ঘন বিন্দু হিসাবে শুরু হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "মহাবিশ্ব প্রায় তেরো দশমিক আট বিলিয়ন বছর আগে একটি অবিশ্বাস্যরকম গরম, ঘন বিন্দু হিসাবে শুরু হয়েছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-229",
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "এটি প্রসারিত ও ঠান্ডা হওয়ার সাথে সাথে প্রোটন এবং নিউট্রন গঠিত হয়েছিল।",
+      "text_markdown": "এটি প্রসারিত ও ঠান্ডা হওয়ার সাথে সাথে প্রোটন এবং নিউট্রন গঠিত হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এটি প্রসারিত ও ঠান্ডা হওয়ার সাথে সাথে প্রোটন এবং নিউট্রন গঠিত হয়েছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-230",
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "সেই প্রোটন এবং নিউট্রনগুলো একত্রিত হয়ে সরলতম নিউক্লিয়াস তৈরি করেছিল।",
+      "text_markdown": "সেই প্রোটন এবং নিউট্রনগুলো একত্রিত হয়ে সরলতম নিউক্লিয়াস তৈরি করেছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "সেই প্রোটন এবং নিউট্রনগুলো একত্রিত হয়ে সরলতম নিউক্লিয়াস তৈরি করেছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-231",
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "হাইড্রোজেন এবং হিলিয়াম ছিল প্রথম মৌল।",
+      "text_markdown": "হাইড্রোজেন এবং হিলিয়াম ছিল প্রথম মৌল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "হাইড্রোজেন এবং হিলিয়াম ছিল প্রথম মৌল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-232",
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "লক্ষ লক্ষ বছর ধরে, মহাবিশ্ব হাইড্রোজেন এবং হিলিয়াম গ্যাসের একটি মেঘ ছিল।",
+      "text_markdown": "লক্ষ লক্ষ বছর ধরে, মহাবিশ্ব হাইড্রোজেন এবং হিলিয়াম গ্যাসের একটি মেঘ ছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "লক্ষ লক্ষ বছর ধরে, মহাবিশ্ব হাইড্রোজেন এবং হিলিয়াম গ্যাসের একটি মেঘ ছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-233",
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "তারপর মহাকর্ষ গ্যাসকে একত্রিত করে পিণ্ডে পরিণত করে।",
+      "text_markdown": "তারপর মহাকর্ষ গ্যাসকে একত্রিত করে পিণ্ডে পরিণত করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "তারপর মহাকর্ষ গ্যাসকে একত্রিত করে পিণ্ডে পরিণত করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-234",
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "পিণ্ডগুলো আরও ঘন এবং গরম হতে থাকে।",
+      "text_markdown": "পিণ্ডগুলো আরও ঘন এবং গরম হতে থাকে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "পিণ্ডগুলো আরও ঘন এবং গরম হতে থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-235",
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "যখন একটি পিণ্ডের কেন্দ্র প্রায় দশ মিলিয়ন ডিগ্রিতে পৌঁছায়, তখন নিউক্লিয়ার ফিউশন শুরু হয়।",
+      "text_markdown": "যখন একটি পিণ্ডের কেন্দ্র প্রায় দশ মিলিয়ন ডিগ্রিতে পৌঁছায়, তখন নিউক্লিয়ার ফিউশন শুরু হয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "যখন একটি পিণ্ডের কেন্দ্র প্রায় দশ মিলিয়ন ডিগ্রিতে পৌঁছায়, তখন নিউক্লিয়ার ফিউশন শুরু হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-236",
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "একটি তারার জন্ম হয়েছিল।",
+      "text_markdown": "একটি তারার জন্ম হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "একটি তারার জন্ম হয়েছিল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-237",
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "তারারা হলো পরমাণু তৈরির কারখানা।",
+      "text_markdown": "তারারা হলো পরমাণু তৈরির কারখানা।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "তারারা হলো পরমাণু তৈরির কারখানা।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-238",
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "একটি তারার ভিতরে, হাইড্রোজেন পরমাণুগুলো একত্রিত হয়ে হিলিয়াম তৈরি করে।",
+      "text_markdown": "একটি তারার ভিতরে, হাইড্রোজেন পরমাণুগুলো একত্রিত হয়ে হিলিয়াম তৈরি করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "একটি তারার ভিতরে, হাইড্রোজেন পরমাণুগুলো একত্রিত হয়ে হিলিয়াম তৈরি করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-239",
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "এই ফিউশন বিপুল শক্তি নির্গত করে।",
+      "text_markdown": "এই ফিউশন বিপুল শক্তি নির্গত করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এই ফিউশন বিপুল শক্তি নির্গত করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-240",
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "এই শক্তিই একটি তারাকে উজ্জ্বল করে তোলে।",
+      "text_markdown": "এই শক্তিই একটি তারাকে উজ্জ্বল করে তোলে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এই শক্তিই একটি তারাকে উজ্জ্বল করে তোলে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-241",
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "আমাদের সূর্য প্রতি সেকেন্ডে প্রায় ছয়শো মিলিয়ন টন হাইড্রোজেনকে হিলিয়ামে রূপান্তরিত করে।",
+      "text_markdown": "আমাদের সূর্য প্রতি সেকেন্ডে প্রায় ছয়শো মিলিয়ন টন হাইড্রোজেনকে হিলিয়ামে রূপান্তরিত করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আমাদের সূর্য প্রতি সেকেন্ডে প্রায় ছয়শো মিলিয়ন টন হাইড্রোজেন ফিউজ করে গড়ে তোলে হিলিয়াম।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-242",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "বড় তারারা ভারী মৌলগুলিকে ফিউজ করে।",
+      "text_markdown": "বড় তারারা ভারী মৌলগুলিকে ফিউজ করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "বড় তারারা ভারী মৌলগুলিকে ফিউজ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-243",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "একটি তারা তার হাইড্রোজেন পুড়িয়ে ফেলার পর, এটি হিলিয়ামকে কার্বনে ফিউজ করা শুরু করে।",
+      "text_markdown": "একটি তারা তার হাইড্রোজেন পুড়িয়ে ফেলার পর, এটি হিলিয়ামকে কার্বনে ফিউজ করা শুরু করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "একটি তারার হাইড্রোজেন ফুরিয়ে গেলে, সেটি হিলিয়ামকে কার্বনে রূপ দিতে শুরু করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-244",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "তারপর কার্বনকে অক্সিজেনে।",
+      "text_markdown": "তারপর কার্বনকে অক্সিজেনে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "তারপর কার্বনকে অক্সিজেনে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-245",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "তারপর অক্সিজেনকে সিলিকনে।",
+      "text_markdown": "তারপর অক্সিজেনকে সিলিকনে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "তারপর অক্সিজেনকে সিলিকনে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-246",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "তারপর সিলিকনকে আয়রনে।",
+      "text_markdown": "তারপর সিলিকনকে আয়রনে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "তারপর সিলিকনকে আয়রনে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-247",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "প্রতিটি ধাপে একটি ভারী মৌল উৎপন্ন হয়।",
+      "text_markdown": "প্রতিটি ধাপে একটি ভারী মৌল উৎপন্ন হয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "প্রতিটি ধাপে একটি ভারী মৌল উৎপন্ন হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-248",
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "সাধারণ ফিউশনের মাধ্যমে একটি তারা যে সবচেয়ে ভারী মৌল তৈরি করতে পারে তা হলো আয়রন।",
+      "text_markdown": "সাধারণ ফিউশনের মাধ্যমে একটি তারা যে সবচেয়ে ভারী মৌল তৈরি করতে পারে তা হলো আয়রন।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "সাধারণ ফিউশনের মাধ্যমে একটি তারা যে সবচেয়ে ভারী মৌল তৈরি করতে পারে তা হলো আয়রন।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-249",
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "আয়রনের চেয়ে ভারী মৌলগুলি তৈরি হয় যখন বিশাল তারারা বিস্ফোরিত হয়।",
+      "text_markdown": "আয়রনের চেয়ে ভারী মৌলগুলি তৈরি হয় যখন বিশাল তারারা বিস্ফোরিত হয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আয়রনের চেয়ে ভারী মৌলগুলি তৈরি হয় যখন বিশাল তারারা বিস্ফোরিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-250",
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "এই বিস্ফোরণগুলিকে সুপারনোভা বলা হয়।",
+      "text_markdown": "এই বিস্ফোরণগুলিকে সুপারনোভা বলা হয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এই বিস্ফোরণগুলিকে সুপারনোভা বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-251",
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "একটি সুপারনোভা কয়েক সেকেন্ডে সূর্যের সারা জীবন ধরে উৎপন্ন শক্তির চেয়ে বেশি শক্তি নির্গত করে।",
+      "text_markdown": "একটি সুপারনোভা কয়েক সেকেন্ডে সূর্যের সারা জীবন ধরে উৎপন্ন শক্তির চেয়ে বেশি শক্তি নির্গত করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "একটি সুপারনোভা কয়েক সেকেন্ডেই ছাড়ে সূর্যের পুরো জীবনের চেয়েও বেশি শক্তির বিস্ফোরণ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-252",
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "একটি সুপারনোভার চরম পরিস্থিতিতে সোনা, রূপা, প্ল্যাটিনাম এবং ইউরেনিয়ামের মতো মৌলগুলি তৈরি হয়।",
+      "text_markdown": "একটি সুপারনোভার চরম পরিস্থিতিতে সোনা, রূপা, প্ল্যাটিনাম এবং ইউরেনিয়ামের মতো মৌলগুলি তৈরি হয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "একটি সুপারনোভার চরম অবস্থায় গড়ে ওঠে সোনা, রূপা, প্ল্যাটিনাম আর ইউরেনিয়ামের মতো মৌল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-253",
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "বিস্ফোরণটি এই ভারী মৌলগুলিকে মহাকাশে ছড়িয়ে দেয়।",
+      "text_markdown": "বিস্ফোরণটি এই ভারী মৌলগুলিকে মহাকাশে ছড়িয়ে দেয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "বিস্ফোরণটি এই ভারী মৌলগুলোকে মহাকাশজুড়ে ছড়িয়ে দেয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-254",
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "মৌলগুলি হাইড্রোজেন এবং হিলিয়াম গ্যাসের মেঘের সাথে মিশে যায়।",
+      "text_markdown": "মৌলগুলি হাইড্রোজেন এবং হিলিয়াম গ্যাসের মেঘের সাথে মিশে যায়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "মৌলগুলি হাইড্রোজেন এবং হিলিয়াম গ্যাসের মেঘের সাথে মিশে যায়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-255",
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "অবশেষে, মাধ্যাকর্ষণ শক্তি সমৃদ্ধ গ্যাসকে একত্রিত করে নতুন তারা ও গ্রহ তৈরি করে।",
+      "text_markdown": "অবশেষে, মাধ্যাকর্ষণ শক্তি সমৃদ্ধ গ্যাসকে একত্রিত করে নতুন তারা ও গ্রহ তৈরি করে।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "শেষে, মাধ্যাকর্ষণ এই সমৃদ্ধ গ্যাসকে টেনে জড়ো করে নতুন তারা ও গ্রহ গঠন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-256",
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "আমাদের সৌরজগৎ প্রায় ৪.৬ বিলিয়ন বছর আগে এই সমৃদ্ধ মেঘগুলির মধ্যে একটি থেকে গঠিত হয়েছিল।",
+      "text_markdown": "আমাদের সৌরজগৎ প্রায় ৪.৬ বিলিয়ন বছর আগে এই সমৃদ্ধ মেঘগুলির মধ্যে একটি থেকে গঠিত হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আমাদের সৌরজগৎ প্রায় চার দশমিক ছয় বিলিয়ন বছর আগে এই সমৃদ্ধ মেঘগুলির মধ্যে একটি থেকে গঠিত হয়েছিল।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-257",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "আপনার শরীরের হাইড্রোজেনের চেয়ে ভারী প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+      "text_markdown": "আপনার শরীরের হাইড্রোজেনের চেয়ে ভারী প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আপনার শরীরের হাইড্রোজেনের চেয়ে ভারী প্রতিটি পরমাণু একটি তারার ভিতরে তৈরি হয়েছিল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-258",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "আপনার হাড়ের ক্যালসিয়াম।",
+      "text_markdown": "আপনার হাড়ের ক্যালসিয়াম।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আপনার হাড়ের ক্যালসিয়াম।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-259",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "আপনার রক্তের আয়রন।",
+      "text_markdown": "আপনার রক্তের আয়রন।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আপনার রক্তের আয়রন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-260",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "আপনার ত্বকের কার্বন।",
+      "text_markdown": "আপনার ত্বকের কার্বন।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আপনার ত্বকের কার্বন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-261",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "আপনি নক্ষত্রধূলি দিয়ে তৈরি।",
+      "text_markdown": "আপনি নক্ষত্রধূলি দিয়ে তৈরি।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "আপনি নক্ষত্রধূলি দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-262",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "এটি কোনো রূপক নয়।",
+      "text_markdown": "এটি কোনো রূপক নয়।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এটি কোনো রূপক নয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch07-263",
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "এটি পারমাণবিক পদার্থবিজ্ঞানের একটি সত্য।",
+      "text_markdown": "এটি পারমাণবিক পদার্থবিজ্ঞানের একটি সত্য।",
+      "title": "পরমাণু কোথা থেকে আসে",
+      "tts": {
+        "text": "এটি পারমাণবিক পদার্থবিজ্ঞানের একটি সত্য।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "id": "ch08-264",
+      "paragraph_id": "p62",
+      "chapter": 8,
+      "text": "পরমাণু সবকিছু",
+      "text_markdown": "পরমাণু সবকিছু",
+      "title": "পরমাণু সবকিছু"
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-265",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "আপনি এখন মৌলিক বিষয়গুলি জানেন।",
+      "text_markdown": "আপনি এখন মৌলিক বিষয়গুলি জানেন।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "আপনি এখন মৌলিক বিষয়গুলি জানেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-266",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "সবকিছু পরমাণু দিয়ে তৈরি।",
+      "text_markdown": "সবকিছু পরমাণু দিয়ে তৈরি।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "সবকিছু পরমাণু দিয়ে তৈরি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-267",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "পরমাণুতে প্রোটন, নিউট্রন এবং ইলেকট্রন থাকে।",
+      "text_markdown": "পরমাণুতে প্রোটন, নিউট্রন এবং ইলেকট্রন থাকে।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "পরমাণুতে প্রোটন, নিউট্রন এবং ইলেকট্রন থাকে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-268",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "প্রোটনের সংখ্যা মৌল নির্ধারণ করে।",
+      "text_markdown": "প্রোটনের সংখ্যা মৌল নির্ধারণ করে।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "প্রোটনের সংখ্যা মৌল নির্ধারণ করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-269",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "পরমাণুগুলি অণু গঠন করতে বন্ধন তৈরি করে।",
+      "text_markdown": "পরমাণুগুলি অণু গঠন করতে বন্ধন তৈরি করে।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "পরমাণুগুলি অণু গঠন করতে বন্ধন তৈরি করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-270",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "পরমাণুগুলি সর্বদা গতিশীল।",
+      "text_markdown": "পরমাণুগুলি সর্বদা গতিশীল।",
+      "title": "পরমাণু সবকিছু",
+      "tts": {
+        "text": "পরমাণুগুলি সর্বদা গতিশীল।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-271",
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "তারারাই সেই পরমাণু তৈরি করেছে যা দিয়ে আমাদের পৃথিবী গঠিত।",
+      "text_markdown": "তারারাই সেই পরমাণু তৈরি করেছে যা দিয়ে আমাদের পৃথিবী গঠিত।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "তারারাই সেই পরমাণু তৈরি করেছে যা দিয়ে আমাদের পৃথিবী গঠিত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-272",
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "text": "এই জ্ঞান রসায়ন, জীববিজ্ঞান, পদার্থবিজ্ঞান এবং চিকিৎসার ভিত্তি।",
+      "text_markdown": "এই জ্ঞান রসায়ন, জীববিজ্ঞান, পদার্থবিজ্ঞান এবং চিকিৎসার ভিত্তি।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "এই জ্ঞান রসায়ন, জীববিজ্ঞান, পদার্থবিজ্ঞান এবং চিকিৎসার ভিত্তি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-273",
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "text": "বিজ্ঞানের প্রতিটি ক্ষেত্র পরমাণুর সাথে যুক্ত।",
+      "text_markdown": "বিজ্ঞানের প্রতিটি ক্ষেত্র পরমাণুর সাথে যুক্ত।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "বিজ্ঞানের প্রতিটি ক্ষেত্র পরমাণুর সাথে যুক্ত।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-274",
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "যখন একজন ডাক্তার ওষুধ দেন, সেই ওষুধটি হলো পরমাণুর একটি নির্দিষ্ট বিন্যাস যা আপনার শরীরের অণুগুলির সাথে মিথস্ক্রিয়া করার জন্য তৈরি।",
+      "text_markdown": "যখন একজন ডাক্তার ওষুধ দেন, সেই ওষুধটি হলো পরমাণুর একটি নির্দিষ্ট বিন্যাস যা আপনার শরীরের অণুগুলির সাথে মিথস্ক্রিয়া করার জন্য তৈরি।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "যখন একজন ডাক্তার ওষুধ দেন, সেই ওষুধ আসলে আপনার শরীরের অণুগুলোর সঙ্গে মিথস্ক্রিয়ার জন্য নকশা করা এক পরমাণু বিন্যাস।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-275",
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "যখন একজন প্রকৌশলী একটি সেতু তৈরি করেন, সেই সেতুর শক্তি নির্ভর করে স্টিলের লোহার পরমাণুগুলি কীভাবে বিন্যস্ত আছে তার উপর।",
+      "text_markdown": "যখন একজন প্রকৌশলী একটি সেতু তৈরি করেন, সেই সেতুর শক্তি নির্ভর করে স্টিলের লোহার পরমাণুগুলি কীভাবে বিন্যস্ত আছে তার উপর।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "যখন একজন প্রকৌশলী একটি সেতু বানান, সেই সেতুর শক্তি নির্ভর করে স্টিলের লোহার পরমাণুগুলো কীভাবে সাজানো আছে তার উপর।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-276",
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "যখন একজন কৃষক ফসল ফলান, তখন বাতাস থেকে কার্বন পরমাণু পাতার ভিতরে জল এবং সূর্যালোকের সাথে মিলিত হওয়ার কারণে ফসল বৃদ্ধি পায়।",
+      "text_markdown": "যখন একজন কৃষক ফসল ফলান, তখন বাতাস থেকে কার্বন পরমাণু পাতার ভিতরে জল এবং সূর্যালোকের সাথে মিলিত হওয়ার কারণে ফসল বৃদ্ধি পায়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "যখন একজন কৃষক ফসল ফলান, তখন বাতাস থেকে কার্বন পরমাণু পাতার ভিতরে জল এবং সূর্যালোকের সাথে মিলিত হওয়ার কারণে ফসল বৃদ্ধি পায়।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-277",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "রান্না হলো রসায়ন।",
+      "text_markdown": "রান্না হলো রসায়ন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "রান্না হলো রসায়ন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-278",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "যখন আপনি রুটি সেঁকেন, তাপের কারণে ময়দার পরমাণুগুলি পুনরায় বিন্যস্ত হয়।",
+      "text_markdown": "যখন আপনি রুটি সেঁকেন, তাপের কারণে ময়দার পরমাণুগুলি পুনরায় বিন্যস্ত হয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "যখন আপনি রুটি সেঁকেন, তাপের কারণে ময়দার পরমাণুগুলি পুনরায় বিন্যস্ত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-279",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "প্রোটিনগুলি উন্মোচিত হয়।",
+      "text_markdown": "প্রোটিনগুলি উন্মোচিত হয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "প্রোটিনগুলি উন্মোচিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-280",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "শর্করা ভেঙে যায় এবং পুনরায় একত্রিত হয়।",
+      "text_markdown": "শর্করা ভেঙে যায় এবং পুনরায় একত্রিত হয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "শর্করা ভেঙে যায় এবং পুনরায় একত্রিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-281",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "নতুন অণু তৈরি হয় যা রুটির উপরের অংশের রঙ, গঠন এবং স্বাদ তৈরি করে।",
+      "text_markdown": "নতুন অণু তৈরি হয় যা রুটির উপরের অংশের রঙ, গঠন এবং স্বাদ তৈরি করে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "নতুন অণু তৈরি হয় যা রুটির উপরের অংশের রঙ, গঠন এবং স্বাদ তৈরি করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-282",
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "প্রতিটি রেসিপি হলো পরমাণুগুলিকে পুনরায় বিন্যস্ত করার নির্দেশাবলীর একটি সেট।",
+      "text_markdown": "প্রতিটি রেসিপি হলো পরমাণুগুলিকে পুনরায় বিন্যস্ত করার নির্দেশাবলীর একটি সেট।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "প্রতিটি রেসিপি হলো পরমাণুগুলিকে পুনরায় বিন্যস্ত করার নির্দেশাবলীর একটি সেট।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-283",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "শ্বাস-প্রশ্বাস হলো রসায়ন।",
+      "text_markdown": "শ্বাস-প্রশ্বাস হলো রসায়ন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "শ্বাস-প্রশ্বাস হলো রসায়ন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-284",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "আপনি অক্সিজেন অণু শ্বাস নেন।",
+      "text_markdown": "আপনি অক্সিজেন অণু শ্বাস নেন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনি অক্সিজেন অণু শ্বাস নেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-285",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "আপনার রক্ত সেই অণুগুলিকে আপনার কোষগুলিতে বহন করে।",
+      "text_markdown": "আপনার রক্ত সেই অণুগুলিকে আপনার কোষগুলিতে বহন করে।",
+      "title": "পর পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনার রক্ত সেই অণুগুলিকে আপনার কোষগুলিতে বহন করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-286",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "আপনার কোষগুলির ভিতরে, অক্সিজেন পরমাণু খাদ্যের কার্বন পরমাণুর সাথে মিলিত হয়।",
+      "text_markdown": "আপনার কোষগুলির ভিতরে, অক্সিজেন পরমাণু খাদ্যের কার্বন পরমাণুর সাথে মিলিত হয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনার কোষগুলির ভিতরে, অক্সিজেন পরমাণু খাদ্যের কার্বন পরমাণুর সাথে মিলিত হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-287",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "এই বিক্রিয়া শক্তি নির্গত করে।",
+      "text_markdown": "এই বিক্রিয়া শক্তি নির্গত করে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "এই বিক্রিয়া শক্তি নির্গত করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-288",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "আপনি কার্বন এবং অক্সিজেনকে কার্বন ডাই অক্সাইড হিসাবে নিঃশ্বাস ত্যাগ করেন।",
+      "text_markdown": "আপনি কার্বন এবং অক্সিজেনকে কার্বন ডাই অক্সাইড হিসাবে নিঃশ্বাস ত্যাগ করেন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনি কার্বন এবং অক্সিজেনকে কার্বন ডাই অক্সাইড হিসাবে নিঃশ্বাস ত্যাগ করেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-289",
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "প্রতিটি শ্বাস একটি রাসায়নিক বিক্রিয়া।",
+      "text_markdown": "প্রতিটি শ্বাস একটি রাসায়নিক বিক্রিয়া।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "প্রতিটি শ্বাস একটি রাসায়নিক বিক্রিয়া।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-290",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "মরিচা হলো রসায়ন।",
+      "text_markdown": "মরিচা হলো রসায়ন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "মরিচা হলো রসায়ন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-291",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "একটি পেরেক-এর পৃষ্ঠে থাকা লোহার পরমাণুগুলি বাতাসের অক্সিজেন পরমাণুর সাথে বিক্রিয়া করে।",
+      "text_markdown": "একটি পেরেক-এর পৃষ্ঠে থাকা লোহার পরমাণুগুলি বাতাসের অক্সিজেন পরমাণুর সাথে বিক্রিয়া করে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "একটি পেরেক-এর পৃষ্ঠে থাকা লোহার পরমাণুগুলি বাতাসের অক্সিজেন পরমাণুর সাথে বিক্রিয়া করে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-292",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "লোহা এবং অক্সিজেন একত্রিত হয়ে একটি নতুন পদার্থ তৈরি করে যাকে আয়রন অক্সাইড বলা হয়।",
+      "text_markdown": "লোহা এবং অক্সিজেন একত্রিত হয়ে একটি নতুন পদার্থ তৈরি করে যাকে আয়রন অক্সাইড বলা হয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "লোহা এবং অক্সিজেন একত্রিত হয়ে একটি নতুন পদার্থ তৈরি করে যাকে আয়রন অক্সাইড বলা হয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-293",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "আয়রন অক্সাইড হলো সেই লালচে-বাদামী পদার্থ যাকে আমরা মরিচা বলি।",
+      "text_markdown": "আয়রন অক্সাইড হলো সেই লালচে-বাদামী পদার্থ যাকে আমরা মরিচা বলি।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আয়রন অক্সাইড হলো সেই লালচে-বাদামী পদার্থ যাকে আমরা মরিচা বলি।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-294",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "লোহার পরমাণুগুলি এখনও সেখানেই আছে।",
+      "text_markdown": "লোহার পরমাণুগুলি এখনও সেখানেই আছে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "লোহার পরমাণুগুলি এখনও সেখানেই আছে।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-295",
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "তারা কেবল অক্সিজেনের সাথে বন্ধন তৈরি করেছে।",
+      "text_markdown": "তারা কেবল অক্সিজেনের সাথে বন্ধন তৈরি করেছে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "তারা কেবল অক্সিজেনের সাথে বন্ধন তৈরি করেছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-296",
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "পরমাণু বিমূর্ত নয়।",
+      "text_markdown": "পরমাণু বিমূর্ত নয়।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "পরমাণু বিমূর্ত নয়।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-297",
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "আপনি যা কিছু স্পর্শ করেন, স্বাদ গ্রহণ করেন, দেখেন এবং গন্ধ পান, তার সবকিছুর ভৌত বাস্তবতা হলো পরমাণু।",
+      "text_markdown": "আপনি যা কিছু স্পর্শ করেন, স্বাদ গ্রহণ করেন, দেখেন এবং গন্ধ পান, তার সবকিছুর ভৌত বাস্তবতা হলো পরমাণু।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনি যা কিছু স্পর্শ করেন, স্বাদ গ্রহণ করেন, দেখেন এবং গন্ধ পান, তার সবকিছুর ভৌত বাস্তবতা হলো পরমাণু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-298",
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "আপনি পরমাণু সম্পর্কে যত বেশি বুঝবেন, পৃথিবী সম্পর্কে তত বেশি বুঝতে পারবেন।",
+      "text_markdown": "আপনি পরমাণু সম্পর্কে যত বেশি বুঝবেন, পৃথিবী সম্পর্কে তত বেশি বুঝতে পারবেন।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আপনি পরমাণু সম্পর্কে যত বেশি বুঝবেন, পৃথিবী সম্পর্কে তত বেশি বুঝতে পারবেন।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-299",
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "এটি শুরু।",
+      "text_markdown": "এটি শুরু।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "এটি শুরু।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "id": "ch08-300",
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "আরও অনেক কিছু অন্বেষণ করার আছে।",
+      "text_markdown": "আরও অনেক কিছু অন্বেষণ করার আছে।",
+      "title": "পরমাণুই সবকিছু",
+      "tts": {
+        "text": "আরও অনেক কিছু অন্বেষণ করার আছে।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

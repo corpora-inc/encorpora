@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "pt",
+  "total_segments": 121,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bem-vindos ao AI This Week.",
+      "text_markdown": "Bem-vindos ao AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Bem-vindos ao AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Eu sou Vindy.",
+      "text_markdown": "Eu sou Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Eu sou Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Comigo, como sempre, está Ron.",
+      "text_markdown": "Comigo, como sempre, está Ron.",
+      "title": "",
+      "tts": {
+        "text": "Comigo, como sempre, está Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "É bom estar aqui, Vindy.",
+      "text_markdown": "É bom estar aqui, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "É bom estar aqui, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hoje é domingo, 14 de junho de 2026.",
+      "text_markdown": "Hoje é domingo, 14 de junho de 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hoje é domingo, quatorze de junho de dois mil e vinte e seis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Duas coisas são diferentes hoje.",
+      "text_markdown": "Duas coisas são diferentes hoje.",
+      "title": "",
+      "tts": {
+        "text": "Duas coisas são diferentes hoje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Estamos mudando para os domingos, e pela primeira vez vamos contar quem realmente faz este programa.",
+      "text_markdown": "Estamos mudando para os domingos, e pela primeira vez vamos contar quem realmente faz este programa.",
+      "title": "",
+      "tts": {
+        "text": "Estamos mudando para os domingos, e pela primeira vez vamos contar quem realmente faz este programa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Depois, de volta à programação regular — pesos abertos, pequenos laboratórios e a semana mais ampla da IA.",
+      "text_markdown": "Depois, de volta à programação regular — pesos abertos, pequenos laboratórios e a semana mais ampla da IA.",
+      "title": "",
+      "tts": {
+        "text": "Depois, de volta à programação regular — pesos abertos, pequenos laboratórios e a semana mais ampla da IA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "A seguir — a mudança de horário e o porquê.",
+      "text_markdown": "A seguir — a mudança de horário e o porquê.",
+      "title": "",
+      "tts": {
+        "text": "A seguir — a mudança de horário e o porquê.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Uma primeira olhada na Corpora Inc., a pequena equipe por trás do aplicativo Corpán e deste podcast.",
+      "text_markdown": "Uma primeira olhada na Corpora Inc., a pequena equipe por trás do aplicativo Corpán e deste podcast.",
+      "title": "",
+      "tts": {
+        "text": "Uma primeira olhada na Corpora Inc., a pequena equipe por trás do aplicativo Corpán e deste podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Uma notícia principal sobre o beatlounge, nosso novo pacote de música sendo lançado no Corpán 0.18.0.",
+      "text_markdown": "Uma notícia principal sobre o beatlounge, nosso novo pacote de música sendo lançado no Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Uma notícia principal sobre o beatlounge, nosso novo pacote de música sendo lançado no Corpán zero ponto um oito ponto zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pesos abertos da semana, liderados pelo primeiro modelo de texto de difusão aberto do Google.",
+      "text_markdown": "Pesos abertos da semana, liderados pelo primeiro modelo de texto de difusão aberto do Google.",
+      "title": "",
+      "tts": {
+        "text": "Pesos abertos da semana, liderados pelo primeiro modelo de texto de difusão aberto do Google.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Um rápido clipe de manchetes através da lente do ecossistema aberto.",
+      "text_markdown": "Um rápido clipe de manchetes através da lente do ecossistema aberto.",
+      "title": "",
+      "tts": {
+        "text": "Um rápido clipe de manchetes através da lente do ecossistema aberto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Um pequeno laboratório da semana — onze pessoas em Paris fazendo uma aposta contrária no silício da AMD.",
+      "text_markdown": "Um pequeno laboratório da semana — onze pessoas em Paris fazendo uma aposta contrária no silício da AMD.",
+      "title": "",
+      "tts": {
+        "text": "Um pequeno laboratório da semana — onze pessoas em Paris fazendo uma aposta contrária no silício da AMD.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E nosso conceito da semana — difusão versus autorregressivo, o truque por trás do lançamento principal desta semana.",
+      "text_markdown": "E nosso conceito da semana — difusão versus autorregressivo, o truque por trás do lançamento principal desta semana.",
+      "title": "",
+      "tts": {
+        "text": "E nosso conceito da semana — difusão versus autorregressivo, o truque por trás do lançamento principal desta semana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, vamos começar com a programação.",
+      "text_markdown": "Ron, vamos começar com a programação.",
+      "title": "",
+      "tts": {
+        "text": "Ron, vamos começar com a programação.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Por que estamos saindo das quartas-feiras?",
+      "text_markdown": "Por que estamos saindo das quartas-feiras?",
+      "title": "",
+      "tts": {
+        "text": "Por que estamos saindo das quartas-feiras?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Quarta-feira era o dia de Odin, e Odin estava ocupado governando Asgard.",
+      "text_markdown": "Quarta-feira era o dia de Odin, e Odin estava ocupado governando Asgard.",
+      "title": "",
+      "tts": {
+        "text": "Quarta-feira era o dia de Odin, e Odin estava ocupado governando Asgard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Somos uma equipe pequena com empregos diurnos, e um corte no meio da semana nunca ficou realmente limpo.",
+      "text_markdown": "Somos uma equipe pequena com empregos diurnos, e um corte no meio da semana nunca ficou realmente limpo.",
+      "title": "",
+      "tts": {
+        "text": "Somos uma equipe pequena com empregos diurnos, e um corte no meio da semana nunca ficou realmente limpo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Os domingos encerram a semana e iniciam a próxima, o que parecia o ritmo certo para um programa de notícias.",
+      "text_markdown": "Os domingos encerram a semana e iniciam a próxima, o que parecia o ritmo certo para um programa de notícias.",
+      "title": "",
+      "tts": {
+        "text": "Os domingos encerram a semana e iniciam a próxima, o que parecia o ritmo certo para um programa de notícias.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Como é realmente o lançamento?",
+      "text_markdown": "Como é realmente o lançamento?",
+      "title": "",
+      "tts": {
+        "text": "Como é realmente o lançamento?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Começa no sábado em inglês e segue até a manhã de segunda-feira, idioma por idioma, à medida que cada tradução e passagem de áudio é concluída.",
+      "text_markdown": "Começa no sábado em inglês e segue até a manhã de segunda-feira, idioma por idioma, à medida que cada tradução e passagem de áudio é concluída.",
+      "title": "",
+      "tts": {
+        "text": "Começa no sábado em inglês e segue até a manhã de segunda-feira, idioma por idioma, à medida que cada tradução e passagem de áudio é concluída.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Até o café de segunda-feira, devemos estar perto de cinquenta idiomas.",
+      "text_markdown": "Até o café de segunda-feira, devemos estar perto de cinquenta idiomas.",
+      "title": "",
+      "tts": {
+        "text": "Até o café de segunda-feira, devemos estar perto de cinquenta idiomas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O que nos leva à segunda novidade.",
+      "text_markdown": "O que nos leva à segunda novidade.",
+      "title": "",
+      "tts": {
+        "text": "O que nos leva à segunda novidade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Quem faz este programa.",
+      "text_markdown": "Quem faz este programa.",
+      "title": "",
+      "tts": {
+        "text": "Quem faz este programa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A Corpora Inc., uma pequena equipe independente, desenvolve o aplicativo Corpán e produz este podcast.",
+      "text_markdown": "A Corpora Inc., uma pequena equipe independente, desenvolve o aplicativo Corpán e produz este podcast.",
+      "title": "",
+      "tts": {
+        "text": "A Corpora Inc., uma pequena equipe independente, desenvolve o aplicativo Corpán e produz este podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O que é Corpán.",
+      "text_markdown": "O que é Corpán.",
+      "title": "",
+      "tts": {
+        "text": "O que é Corpán.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Um playground de idiomas, música e aprendizado construído com prioridade no dispositivo.",
+      "text_markdown": "Um playground de idiomas, música e aprendizado construído com prioridade no dispositivo.",
+      "title": "",
+      "tts": {
+        "text": "Um playground de idiomas, música e aprendizado construído com prioridade no dispositivo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Explique 'prioridade no dispositivo' — o que isso significa na prática.",
+      "text_markdown": "Explique 'prioridade no dispositivo' — o que isso significa na prática.",
+      "title": "",
+      "tts": {
+        "text": "Explique 'prioridade no dispositivo' — o que isso significa na prática.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Significa que priorizamos a execução local sempre que o recurso permite.",
+      "text_markdown": "Significa que priorizamos a execução local sempre que o recurso permite.",
+      "title": "",
+      "tts": {
+        "text": "Significa que priorizamos a execução local sempre que o recurso permite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Qwen3-4B para o assistente, Whisper large-v3 para reconhecimento de fala, Chatterbox para síntese de voz, Stable Diffusion três e meio para imagens, pipelines LoRA para tutores de personagens.",
+      "text_markdown": "Qwen3-4B para o assistente, Whisper large-v3 para reconhecimento de fala, Chatterbox para síntese de voz, Stable Diffusion três e meio para imagens, pipelines LoRA para tutores de personagens.",
+      "title": "",
+      "tts": {
+        "text": "Qwen três quatro B para o assistente, Whisper large v três para reconhecimento de fala, Chatterbox para síntese de voz, Stable Diffusion três e meio para imagens, pipelines LoRA para tutores de personagens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tudo isso funciona no seu telefone ou tablet, offline, no modo avião, no meio do nada.",
+      "text_markdown": "Tudo isso funciona no seu telefone ou tablet, offline, no modo avião, no meio do nada.",
+      "title": "",
+      "tts": {
+        "text": "Tudo isso funciona no seu telefone ou tablet, offline, no modo avião, no meio do nada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Recursos que realmente precisam da rede — rádio mundial, multiplayer — usam a rede, e não fingimos o contrário.",
+      "text_markdown": "Recursos que realmente precisam da rede — rádio mundial, multiplayer — usam a rede, e não fingimos o contrário.",
+      "title": "",
+      "tts": {
+        "text": "Recursos que realmente precisam da rede — rádio mundial, multiplayer — usam a rede, e não fingimos o contrário.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E o lado do negócio.",
+      "text_markdown": "E o lado do negócio.",
+      "title": "",
+      "tts": {
+        "text": "E o lado do negócio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Equipe independente enxuta, sem bilhões de dólares de capital por trás de nós, sem anúncios no aplicativo hoje, com um nível gratuito generoso e uma assinatura premium opcional para pessoas que querem apoiar o trabalho.",
+      "text_markdown": "Equipe independente enxuta, sem bilhões de dólares de capital por trás de nós, sem anúncios no aplicativo hoje, com um nível gratuito generoso e uma assinatura premium opcional para pessoas que querem apoiar o trabalho.",
+      "title": "",
+      "tts": {
+        "text": "Equipe independente enxuta, sem bilhões de dólares de capital por trás de nós, sem anúncios no aplicativo hoje, com um nível gratuito generoso e uma assinatura premium opcional para pessoas que querem apoiar o trabalho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Gostaríamos de permanecer sem anúncios o máximo que pudermos — sem promessas para sempre, mas essa é a direção.",
+      "text_markdown": "Gostaríamos de permanecer sem anúncios o máximo que pudermos — sem promessas para sempre, mas essa é a direção.",
+      "title": "",
+      "tts": {
+        "text": "Gostaríamos de permanecer sem anúncios o máximo que pudermos — sem promessas para sempre, mas essa é a direção.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Qual é a prova de que vocês realmente entregam.",
+      "text_markdown": "Qual é a prova de que vocês realmente entregam.",
+      "title": "",
+      "tts": {
+        "text": "Qual é a prova de que vocês realmente entregam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Na maioria das semanas, entregamos algo — uma narração de livro, um pacote, um lançamento de aplicativo, este programa — em mais de trinta e cinco idiomas hoje, e crescendo.",
+      "text_markdown": "Na maioria das semanas, entregamos algo — uma narração de livro, um pacote, um lançamento de aplicativo, este programa — em mais de trinta e cinco idiomas hoje, e crescendo.",
+      "title": "",
+      "tts": {
+        "text": "Na maioria das semanas, entregamos algo — uma narração de livro, um pacote, um lançamento de aplicativo, este programa — em mais de trinta e cinco idiomas hoje, e crescendo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Por que fazer isso, afinal.",
+      "text_markdown": "Por que fazer isso, afinal.",
+      "title": "",
+      "tts": {
+        "text": "Por que fazer isso, afinal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Essa é a proposta — provar que uma experiência de aprendizado multilíngue, de qualidade de ponta e com prioridade no dispositivo, pode vir de uma equipe pequena sem grande capital, mantendo o aplicativo sem anúncios o máximo que pudermos.",
+      "text_markdown": "Essa é a proposta — provar que uma experiência de aprendizado multilíngue, de qualidade de ponta e com prioridade no dispositivo, pode vir de uma equipe pequena sem grande capital, mantendo o aplicativo sem anúncios o máximo que pudermos.",
+      "title": "",
+      "tts": {
+        "text": "Essa é a proposta — provar que uma experiência de aprendizado multilíngue, de qualidade de ponta e com prioridade no dispositivo, pode vir de uma equipe pequena sem grande capital, mantendo o aplicativo sem anúncios o máximo que pudermos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O que nos leva à notícia principal — beatlounge.",
+      "text_markdown": "O que nos leva à notícia principal — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "O que nos leva à notícia principal — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ele será lançado no Corpán 0.18.0 esta semana.",
+      "text_markdown": "Ele será lançado no Corpán 0.18.0 esta semana.",
+      "title": "",
+      "tts": {
+        "text": "Ele será lançado no Corpán zero ponto um oito ponto zero esta semana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "beatlounge é um sequenciador de batidas e uma ferramenta de linguagem em uma só caixa.",
+      "text_markdown": "beatlounge é um sequenciador de batidas e uma ferramenta de linguagem em uma só caixa.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge é um sequenciador de batidas e uma ferramenta de linguagem em uma só caixa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Um sequenciador endereçado por tick a novecentos e sessenta pulsos por quarto, um motor de harmonia que fala modos ocidentais, thaats indianos, melakartas carnáticos e maqamat árabes, e um corpus de frases com mais de dez milhões de frases de linguagem real em mais de cinquenta idiomas.",
+      "text_markdown": "Um sequenciador endereçado por tick a novecentos e sessenta pulsos por quarto, um motor de harmonia que fala modos ocidentais, thaats indianos, melakartas carnáticos e maqamat árabes, e um corpus de frases com mais de dez milhões de frases de linguagem real em mais de cinquenta idiomas.",
+      "title": "",
+      "tts": {
+        "text": "Um sequenciador endereçado por tick a novecentos e sessenta pulsos por quarto, um motor de harmonia que fala modos ocidentais, thaats indianos, melakartas carnáticos e maqamat árabes, e um corpus de frases com mais de dez milhões de frases de linguagem real em mais de cinquenta idiomas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tudo com afinação performável, e reproduzível offline assim que o pacote estiver no seu dispositivo.",
+      "text_markdown": "Tudo com afinação performável, e reproduzível offline assim que o pacote estiver no seu dispositivo.",
+      "title": "",
+      "tts": {
+        "text": "Tudo com afinação performável, e reproduzível offline assim que o pacote estiver no seu dispositivo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Então o instrumento é a linguagem.",
+      "text_markdown": "Então o instrumento é a linguagem.",
+      "title": "",
+      "tts": {
+        "text": "Então o instrumento é a linguagem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Você toca frases da mesma forma que tocaria notas.",
+      "text_markdown": "Você toca frases da mesma forma que tocaria notas.",
+      "title": "",
+      "tts": {
+        "text": "Você toca frases da mesma forma que tocaria notas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Uma frase em hindi na batida um, uma interjeição árabe no final da dois, uma sílaba em mandarim como um crescendo de fita.",
+      "text_markdown": "Uma frase em hindi na batida um, uma interjeição árabe no final da dois, uma sílaba em mandarim como um crescendo de fita.",
+      "title": "",
+      "tts": {
+        "text": "Uma frase em hindi na batida um, uma interjeição árabe no final da dois, uma sílaba em mandarim como um crescendo de fita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "É uma DAW onde as amostras são frases, dubladas por TTS no dispositivo.",
+      "text_markdown": "É uma DAW onde as amostras são frases, dubladas por TTS no dispositivo.",
+      "title": "",
+      "tts": {
+        "text": "É uma D A W onde as amostras são frases, dubladas por T T S no dispositivo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Nenhuma teoria musical necessária.",
+      "text_markdown": "Nenhuma teoria musical necessária.",
+      "title": "",
+      "tts": {
+        "text": "Nenhuma teoria musical necessária.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nada mesmo.",
+      "text_markdown": "Nada mesmo.",
+      "title": "",
+      "tts": {
+        "text": "Nada mesmo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O motor de harmonia lida com as regras; você aponta para os sons que gosta e os modos permanecem limpos.",
+      "text_markdown": "O motor de harmonia lida com as regras; você aponta para os sons que gosta e os modos permanecem limpos.",
+      "title": "",
+      "tts": {
+        "text": "O motor de harmonia lida com as regras; você aponta para os sons que gosta e os modos permanecem limpos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O que mais há no 0.18.0.",
+      "text_markdown": "O que mais há no 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "O que mais há no zero ponto um oito ponto zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Três peças de engenharia sob o capô — as emendas de host para pacotes de conteúdo foram ativadas com o beatlounge como piloto.",
+      "text_markdown": "Três peças de engenharia sob o capô — as emendas de host para pacotes de conteúdo foram ativadas com o beatlounge como piloto.",
+      "title": "",
+      "tts": {
+        "text": "Três peças de engenharia sob o capô — as emendas de host para pacotes de conteúdo foram ativadas com o beatlounge como piloto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O Android agora captura rastros de falhas nativas para que as falhas de llama e ggml sejam diagnosticadas corretamente.",
+      "text_markdown": "O Android agora captura rastros de falhas nativas para que as falhas de llama e ggml sejam diagnosticadas corretamente.",
+      "title": "",
+      "tts": {
+        "text": "O Android agora captura rastros de falhas nativas para que as falhas de llama e ggml sejam diagnosticadas corretamente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "E corrigimos a instalação de modelos de vários gigabytes que costumava causar OOM no iOS — agora ele transmite para o disco em vez de armazenar em buffer dois gigabytes e meio de Qwen3-4B na RAM.",
+      "text_markdown": "E corrigimos a instalação de modelos de vários gigabytes que costumava causar OOM no iOS — agora ele transmite para o disco em vez de armazenar em buffer dois gigabytes e meio de Qwen3-4B na RAM.",
+      "title": "",
+      "tts": {
+        "text": "E corrigimos a instalação de modelos de vários gigabytes que costumava causar O O M no I O S — agora ele transmite para o disco em vez de armazenar em buffer dois gigabytes e meio de Qwen três quatro B na R A M.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Chato por baixo, divertido por cima.",
+      "text_markdown": "Chato por baixo, divertido por cima.",
+      "title": "",
+      "tts": {
+        "text": "Chato por baixo, divertido por cima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O que é, em linhas gerais, o resumo de toda a empresa.",
+      "text_markdown": "O que é, em linhas gerais, o resumo de toda a empresa.",
+      "title": "",
+      "tts": {
+        "text": "O que é, em linhas gerais, o resumo de toda a empresa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ok, vamos para os pesos abertos.",
+      "text_markdown": "Ok, vamos para os pesos abertos.",
+      "title": "",
+      "tts": {
+        "text": "Ok, vamos para os pesos abertos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Qual foi o grande destaque desta semana.",
+      "text_markdown": "Qual foi o grande destaque desta semana.",
+      "title": "",
+      "tts": {
+        "text": "Qual foi o grande destaque desta semana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Google lançou o DiffusionGemma.",
+      "text_markdown": "Google lançou o DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google lançou o DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Uma mistura de especialistas de vinte e seis bilhões de parâmetros com três vírgula oito bilhões ativos, Apache 2.0 no Hugging Face, que gera texto por difusão em vez de autorregressão.",
+      "text_markdown": "Uma mistura de especialistas de vinte e seis bilhões de parâmetros com três vírgula oito bilhões ativos, Apache 2.0 no Hugging Face, que gera texto por difusão em vez de autorregressão.",
+      "title": "",
+      "tts": {
+        "text": "Uma mistura de especialistas de vinte e seis bilhões de parâmetros com três vírgula oito bilhões ativos, Apache dois ponto zero no Hugging Face, que gera texto por difusão em vez de autorregressão.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Em linguagem simples — o que a difusão para texto realmente significa.",
+      "text_markdown": "Em linguagem simples — o que a difusão para texto realmente significa.",
+      "title": "",
+      "tts": {
+        "text": "Em linguagem simples — o que a difusão para texto realmente significa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Em vez de prever um token por vez, ele remove o ruído de um bloco de duzentos e cinquenta e seis tokens em paralelo.",
+      "text_markdown": "Em vez de prever um token por vez, ele remove o ruído de um bloco de duzentos e cinquenta e seis tokens em paralelo.",
+      "title": "",
+      "tts": {
+        "text": "Em vez de prever um token por vez, ele remove o ruído de um bloco de duzentos e cinquenta e seis tokens em paralelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mais de mil tokens por segundo em uma única H100, aproximadamente quatro vezes mais rápido que o Gemma autorregressivo comparável.",
+      "text_markdown": "Mais de mil tokens por segundo em uma única H100, aproximadamente quatro vezes mais rápido que o Gemma autorregressivo comparável.",
+      "title": "",
+      "tts": {
+        "text": "Mais de mil tokens por segundo em uma única H cem, aproximadamente quatro vezes mais rápido que o Gemma autorregressivo comparável.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E o porém.",
+      "text_markdown": "E o porém.",
+      "title": "",
+      "tts": {
+        "text": "E o porém.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pontuações mais baixas em MMLU e codificação — o Google mesmo diz; este lançamento é para trabalho crítico de velocidade, não para subir no ranking.",
+      "text_markdown": "Pontuações mais baixas em MMLU e codificação — o Google mesmo diz; este lançamento é para trabalho crítico de velocidade, não para subir no ranking.",
+      "title": "",
+      "tts": {
+        "text": "Pontuações mais baixas em M M L U e codificação — o Google mesmo diz; este lançamento é para trabalho crítico de velocidade, não para subir no ranking.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E modelos de voz abertos — qualquer coisa.",
+      "text_markdown": "E modelos de voz abertos — qualquer coisa.",
+      "title": "",
+      "tts": {
+        "text": "E modelos de voz abertos — qualquer coisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dois lançados na mesma semana.",
+      "text_markdown": "Dois lançados na mesma semana.",
+      "title": "",
+      "tts": {
+        "text": "Dois lançados na mesma semana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "RedNote, a rede social chinesa, lançou em código aberto o dots-dot-tts — dois bilhões de parâmetros, totalmente contínuo sem tokens discretos em qualquer parte do pipeline, latência de primeiro token de cinquenta e quatro milissegundos, Apache 2.0.",
+      "text_markdown": "RedNote, a rede social chinesa, lançou em código aberto o dots-dot-tts — dois bilhões de parâmetros, totalmente contínuo sem tokens discretos em qualquer parte do pipeline, latência de primeiro token de cinquenta e quatro milissegundos, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, a rede social chinesa, lançou em código aberto o dots dot t t s — dois bilhões de parâmetros, totalmente contínuo sem tokens discretos em qualquer parte do pipeline, cinquenta e quatro milissegundos de latência de primeiro token, Apache dois ponto zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "E a Boson AI lançou o Higgs Audio versão três — quatro bilhões de parâmetros, cento e duas línguas, vinte e um tokens de controle de emoção, saída de streaming, licença não comercial; essa última parte é o asterisco.",
+      "text_markdown": "E a Boson AI lançou o Higgs Audio versão três — quatro bilhões de parâmetros, cento e duas línguas, vinte e um tokens de controle de emoção, saída de streaming, licença não comercial; essa última parte é o asterisco.",
+      "title": "",
+      "tts": {
+        "text": "E a Boson A I lançou o Higgs Audio versão três — quatro bilhões de parâmetros, cento e duas línguas, vinte e um tokens de controle de emoção, saída de streaming, licença não comercial; essa última parte é o asterisco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "A clonagem de voz é oficialmente uma commodity.",
+      "text_markdown": "A clonagem de voz é oficialmente uma commodity.",
+      "title": "",
+      "tts": {
+        "text": "A clonagem de voz é oficialmente uma commodity.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "É sim.",
+      "text_markdown": "É sim.",
+      "title": "",
+      "tts": {
+        "text": "É sim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mais um do lado aberto.",
+      "text_markdown": "Mais um do lado aberto.",
+      "title": "",
+      "tts": {
+        "text": "Mais um do lado aberto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A NVIDIA lançou discretamente o Nemotron 3 Ultra — um modelo híbrido Mamba-attention de quinhentos e cinquenta bilhões de parâmetros.",
+      "text_markdown": "A NVIDIA lançou discretamente o Nemotron 3 Ultra — um modelo híbrido Mamba-attention de quinhentos e cinquenta bilhões de parâmetros.",
+      "title": "",
+      "tts": {
+        "text": "A N V I D I A lançou discretamente o Nemotron três Ultra — um modelo híbrido Mamba-attention de quinhentos e cinquenta bilhões de parâmetros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pesos e a receita completa de treinamento sob a licença OpenMDW da Linux Foundation — o lançamento mais realmente aberto do mês.",
+      "text_markdown": "Pesos e a receita completa de treinamento sob a licença OpenMDW da Linux Foundation — o lançamento mais realmente aberto do mês.",
+      "title": "",
+      "tts": {
+        "text": "Pesos e a receita completa de treinamento sob a licença Open M D W da Linux Foundation — o lançamento mais realmente aberto do mês.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E ninguém cobriu.",
+      "text_markdown": "E ninguém cobriu.",
+      "title": "",
+      "tts": {
+        "text": "E ninguém cobriu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Porque classificamos a NVIDIA como silício, não laboratório.",
+      "text_markdown": "Porque classificamos a NVIDIA como silício, não laboratório.",
+      "title": "",
+      "tts": {
+        "text": "Porque classificamos a NVIDIA como silício, não laboratório.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mas esta semana eles lançaram algo reproduzível e aberto em escala de fronteira.",
+      "text_markdown": "Mas esta semana eles lançaram algo reproduzível e aberto em escala de fronteira.",
+      "title": "",
+      "tts": {
+        "text": "Mas esta semana eles lançaram algo reproduzível e aberto em escala de fronteira.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Manchetes, rápido.",
+      "text_markdown": "Manchetes, rápido.",
+      "title": "",
+      "tts": {
+        "text": "Manchetes, rápido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Primeiro.",
+      "text_markdown": "Primeiro.",
+      "title": "",
+      "tts": {
+        "text": "Primeiro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A Moonshot lançou o Kimi K2.7-Code — um trilhão de parâmetros, trinta e dois bilhões ativos, afirma superar o Claude Opus 4.8 no próprio benchmark da Moonshot.",
+      "text_markdown": "A Moonshot lançou o Kimi K2.7-Code — um trilhão de parâmetros, trinta e dois bilhões ativos, afirma superar o Claude Opus 4.8 no próprio benchmark da Moonshot.",
+      "title": "",
+      "tts": {
+        "text": "A Moonshot lançou o Kimi K dois ponto sete Code — um trilhão de parâmetros, trinta e dois bilhões ativos, afirma superar o Claude Opus quatro ponto oito no próprio benchmark da Moonshot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Profissionais analisaram os números e dizem que os benchmarks não se confirmam; os pesos auto-hospedados são de quinhentos e noventa e cinco gigabytes, o modo de pensamento não pode ser desativado.",
+      "text_markdown": "Profissionais analisaram os números e dizem que os benchmarks não se confirmam; os pesos auto-hospedados são de quinhentos e noventa e cinco gigabytes, o modo de pensamento não pode ser desativado.",
+      "title": "",
+      "tts": {
+        "text": "Profissionais analisaram os números e dizem que os benchmarks não se confirmam; os pesos auto-hospedados são de quinhentos e noventa e cinco gigabytes, o modo de pensamento não pode ser desativado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A palavra 'aberto' está fazendo muito trabalho nessa frase.",
+      "text_markdown": "A palavra 'aberto' está fazendo muito trabalho nessa frase.",
+      "title": "",
+      "tts": {
+        "text": "A palavra 'aberto' está fazendo muito trabalho nessa frase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Segundo.",
+      "text_markdown": "Segundo.",
+      "title": "",
+      "tts": {
+        "text": "Segundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A Cohere, um laboratório ocidental que quase nunca lança pesos, realmente lançou pesos — North Mini Code, trinta bilhões no total, três bilhões ativos, Apache 2.0, roda em uma única H100 em quatro bits.",
+      "text_markdown": "A Cohere, um laboratório ocidental que quase nunca lança pesos, realmente lançou pesos — North Mini Code, trinta bilhões no total, três bilhões ativos, Apache 2.0, roda em uma única H100 em quatro bits.",
+      "title": "",
+      "tts": {
+        "text": "A Cohere, um laboratório ocidental que quase nunca lança pesos, realmente lançou pesos — North Mini Code, trinta bilhões no total, três bilhões ativos, Apache dois ponto zero, roda em uma única H cem em quatro bits.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Um laboratório ocidental lançando um Apache 2.0 real em 2026 já é notícia por si só.",
+      "text_markdown": "Um laboratório ocidental lançando um Apache 2.0 real em 2026 já é notícia por si só.",
+      "title": "",
+      "tts": {
+        "text": "Um laboratório ocidental lançando um Apache dois ponto zero real em dois mil e vinte e seis já é notícia por si só.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Terceiro.",
+      "text_markdown": "Terceiro.",
+      "title": "",
+      "tts": {
+        "text": "Terceiro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A Apple apostou pesado na WWDC na IA no dispositivo como a história estratégica.",
+      "text_markdown": "A Apple apostou pesado na WWDC na IA no dispositivo como a história estratégica.",
+      "title": "",
+      "tts": {
+        "text": "A Apple apostou pesado na W W D C na I A no dispositivo como a história estratégica.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mas o novo modelo da Siri é, segundo relatos, uma destilação do Gemini do Google que a Apple licencia e encolhe.",
+      "text_markdown": "Mas o novo modelo da Siri é, segundo relatos, uma destilação do Gemini do Google que a Apple licencia e encolhe.",
+      "title": "",
+      "tts": {
+        "text": "Mas o novo modelo da Siri é, segundo relatos, uma destilação do Gemini do Google que a Apple licencia e encolhe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Inferência local, cadeia de suprimentos complicada.",
+      "text_markdown": "Inferência local, cadeia de suprimentos complicada.",
+      "title": "",
+      "tts": {
+        "text": "Inferência local, cadeia de suprimentos complicada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E em quarto lugar.",
+      "text_markdown": "E em quarto lugar.",
+      "title": "",
+      "tts": {
+        "text": "E em quarto lugar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Alibaba disponibilizou Qwen 3.7-Plus para o público — multimodal, gera GUIs a partir de capturas de tela, cerca de quarenta centavos por milhão de tokens de entrada.",
+      "text_markdown": "Alibaba disponibilizou Qwen 3.7-Plus para o público — multimodal, gera GUIs a partir de capturas de tela, cerca de quarenta centavos por milhão de tokens de entrada.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba disponibilizou Qwen três ponto sete Plus para o público — multimodal, gera G U I s a partir de capturas de tela, cerca de quarenta centavos por milhão de tokens de entrada.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Apesar da marca Qwen, este é apenas para API, não de pesos abertos.",
+      "text_markdown": "Apesar da marca Qwen, este é apenas para API, não de pesos abertos.",
+      "title": "",
+      "tts": {
+        "text": "Apesar da marca Qwen, este é apenas para A P I, não de pesos abertos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vale a pena saber, porque os ouvintes confundem Qwen com aberto; este não é.",
+      "text_markdown": "Vale a pena saber, porque os ouvintes confundem Qwen com aberto; este não é.",
+      "title": "",
+      "tts": {
+        "text": "Vale a pena saber, porque os ouvintes confundem Qwen com aberto; este não é.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pequeno laboratório da semana.",
+      "text_markdown": "Pequeno laboratório da semana.",
+      "title": "",
+      "tts": {
+        "text": "Pequeno laboratório da semana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Chama-se Kog.",
+      "text_markdown": "Chama-se Kog.",
+      "title": "",
+      "tts": {
+        "text": "Chama-se Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Onze pessoas em Paris, alegando três mil tokens de saída por segundo por requisição em oito GPUs AMD MI300X.",
+      "text_markdown": "Onze pessoas em Paris, alegando três mil tokens de saída por segundo por requisição em oito GPUs AMD MI300X.",
+      "title": "",
+      "tts": {
+        "text": "Onze pessoas em Paris, alegando três mil tokens de saída por segundo por requisição em oito G P U s A M D M I trezentos X.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O argumento deles — a indústria gastou demais em silício de inferência personalizado quando o gargalo sempre foi o software.",
+      "text_markdown": "O argumento deles — a indústria gastou demais em silício de inferência personalizado quando o gargalo sempre foi o software.",
+      "title": "",
+      "tts": {
+        "text": "O argumento deles — a indústria gastou demais em silício de inferência personalizado quando o gargalo sempre foi o software.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Onze pessoas, e AMD em vez de NVIDIA.",
+      "text_markdown": "Onze pessoas, e AMD em vez de NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Onze pessoas, e A M D em vez de N V I D I A.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Logo após um IPO de silício personalizado, um timing contrariano perfeito.",
+      "text_markdown": "Logo após um IPO de silício personalizado, um timing contrariano perfeito.",
+      "title": "",
+      "tts": {
+        "text": "Logo após um I P O de silício personalizado, um timing contrariano perfeito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "E quanto ao hardware no banco de testes.",
+      "text_markdown": "E quanto ao hardware no banco de testes.",
+      "title": "",
+      "tts": {
+        "text": "E quanto ao hardware no banco de testes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A Raspberry Pi lançou o AI HAT+ 2 — quarenta TOPS acoplados a um Pi 5.",
+      "text_markdown": "A Raspberry Pi lançou o AI HAT+ 2 — quarenta TOPS acoplados a um Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "A Raspberry Pi lançou o A I H A T mais dois — quarenta T O P S acoplados a um Pi cinco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O Jetson Orin Nano Super da NVIDIA faz sessenta e sete TOPS por menos de trezentos dólares.",
+      "text_markdown": "O Jetson Orin Nano Super da NVIDIA faz sessenta e sete TOPS por menos de trezentos dólares.",
+      "title": "",
+      "tts": {
+        "text": "O Jetson Orin Nano Super da N V I D I A faz sessenta e sete T O P S por menos de trezentos dólares.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Em dispositivo costumava significar um Mac.",
+      "text_markdown": "Em dispositivo costumava significar um Mac.",
+      "title": "",
+      "tts": {
+        "text": "Em dispositivo costumava significar um Mac.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Agora significa uma placa que você pode esconder numa gaveta.",
+      "text_markdown": "Agora significa uma placa que você pode esconder numa gaveta.",
+      "title": "",
+      "tts": {
+        "text": "Agora significa uma placa que você pode esconder numa gaveta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Conceito da semana — difusão versus autorregressivo.",
+      "text_markdown": "Conceito da semana — difusão versus autorregressivo.",
+      "title": "",
+      "tts": {
+        "text": "Conceito da semana — difusão versus autorregressivo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mesmo destino, rotas diferentes.",
+      "text_markdown": "Mesmo destino, rotas diferentes.",
+      "title": "",
+      "tts": {
+        "text": "Mesmo destino, rotas diferentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Modelos autorregressivos, a maioria dos LLMs que você conhece, geram um token por vez, condicionam-se a ele, geram o próximo, repetem — sequenciais por design.",
+      "text_markdown": "Modelos autorregressivos, a maioria dos LLMs que você conhece, geram um token por vez, condicionam-se a ele, geram o próximo, repetem — sequenciais por design.",
+      "title": "",
+      "tts": {
+        "text": "Modelos autorregressivos, a maioria dos L L M s que você conhece, geram um token por vez, condicionam-se a ele, geram o próximo, repetem — sequenciais por design.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Modelos de difusão começam com um bloco de ruído puro e o removem de uma vez por um número fixo de passos.",
+      "text_markdown": "Modelos de difusão começam com um bloco de ruído puro e o removem de uma vez por um número fixo de passos.",
+      "title": "",
+      "tts": {
+        "text": "Modelos de difusão começam com um bloco de ruído puro e o removem de uma vez por um número fixo de passos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Você troca um pouco de qualidade por paralelismo, e com pequenas contagens de passos você obtém aqueles números de throughput impressionantes.",
+      "text_markdown": "Você troca um pouco de qualidade por paralelismo, e com pequenas contagens de passos você obtém aqueles números de throughput impressionantes.",
+      "title": "",
+      "tts": {
+        "text": "Você troca um pouco de qualidade por paralelismo, e com pequenas contagens de passos você obtém aqueles números de throughput impressionantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Então DiffusionGemma é a primeira vez que temos pesos abertos para realmente sentir a diferença.",
+      "text_markdown": "Então DiffusionGemma é a primeira vez que temos pesos abertos para realmente sentir a diferença.",
+      "title": "",
+      "tts": {
+        "text": "Então DiffusionGemma é a primeira vez que temos pesos abertos para realmente sentir a diferença.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Primeira vez nesta escala, sim.",
+      "text_markdown": "Primeira vez nesta escala, sim.",
+      "title": "",
+      "tts": {
+        "text": "Primeira vez nesta escala, sim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "E é por isso que as equipes de inferência de código aberto importam esta semana — llama-dot-cpp, vLLM, MLX — são elas que aprenderão a fazê-lo funcionar em hardware real.",
+      "text_markdown": "E é por isso que as equipes de inferência de código aberto importam esta semana — llama-dot-cpp, vLLM, MLX — são elas que aprenderão a fazê-lo funcionar em hardware real.",
+      "title": "",
+      "tts": {
+        "text": "E é por isso que as equipes de inferência de código aberto importam esta semana — llama ponto c p p, v L L M, M L X — são elas que aprenderão a fazê-lo funcionar em hardware real.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bom lugar para terminar.",
+      "text_markdown": "Bom lugar para terminar.",
+      "title": "",
+      "tts": {
+        "text": "Bom lugar para terminar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, obrigado.",
+      "text_markdown": "Ron, obrigado.",
+      "title": "",
+      "tts": {
+        "text": "Ron, obrigado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "A qualquer hora, Vindy.",
+      "text_markdown": "A qualquer hora, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "A qualquer hora, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Este foi o AI This Week de 14 de junho de 2026.",
+      "text_markdown": "Este foi o AI This Week de 14 de junho de 2026.",
+      "title": "",
+      "tts": {
+        "text": "Este foi o A I This Week de quatorze de junho de dois mil e vinte e seis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O mesmo programa aguerrido, novo horário de domingo.",
+      "text_markdown": "O mesmo programa aguerrido, novo horário de domingo.",
+      "title": "",
+      "tts": {
+        "text": "O mesmo programa aguerrido, novo horário de domingo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Novas linguagens continuarão sendo lançadas até segunda-feira de manhã; Corpán 0.18.0 está disponível onde você baixa aplicativos — experimente beatlounge.",
+      "text_markdown": "Novas linguagens continuarão sendo lançadas até segunda-feira de manhã; Corpán 0.18.0 está disponível onde você baixa aplicativos — experimente beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Novas linguagens continuarão sendo lançadas até segunda-feira de manhã; Corpán zero ponto dezoito ponto zero está disponível onde você baixa aplicativos — experimente beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Até o próximo domingo, cuide-se.",
+      "text_markdown": "Até o próximo domingo, cuide-se.",
+      "title": "",
+      "tts": {
+        "text": "Até o próximo domingo, cuide-se.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

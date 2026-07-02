@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "hi",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "श्रोता के लिए एक बात",
+      "text_markdown": "श्रोता के लिए एक बात"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह ऊद पर एक पुस्तक है। ऊद तारों वाला लकड़ी का एक वाद्य है।",
+      "text_markdown": "यह ऊद पर एक पुस्तक है। ऊद तारों वाला लकड़ी का एक वाद्य है।",
+      "tts": {
+        "text": "यह ऊद पर एक पुस्तक है। ऊद तारों वाला लकड़ी का एक वाद्य है।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोग इसे एक हज़ार साल से भी ज़्यादा समय से बजा रहे हैं।",
+      "text_markdown": "लोग इसे एक हज़ार साल से भी ज़्यादा समय से बजा रहे हैं।",
+      "tts": {
+        "text": "लोग इसे एक हजार साल से भी ज्यादा समय से बजा रहे हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप ऊद को समुद्र किनारे के नगरों में सुन सकते हैं। पहाड़ी गाँवों में भी इसकी धुन गूंजती।",
+      "text_markdown": "आप ऊद को समुद्र किनारे के नगरों में सुन सकते हैं। पहाड़ी गाँवों में भी इसकी धुन गूंजती।",
+      "tts": {
+        "text": "आप ऊद को समुद्र किनारे के नगरों में सुन सकते हैं। पहाड़ी गाँवों में भी इसकी धुन गूंजती।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आप इसे पुराने महलों में सुन सकते हैं। छोटे लकड़ी के मंचों पर भी सुन सकते हैं।",
+      "text_markdown": "आप इसे पुराने महलों में सुन सकते हैं। छोटे लकड़ी के मंचों पर भी सुन सकते हैं।",
+      "tts": {
+        "text": "आप इसे पुराने महलों में सुन सकते हैं। छोटे लकड़ी के मंचों पर भी सुन सकते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इस पुस्तक में हम जानेंगे कि ऊद कैसा दिखता है। हम देखेंगे कि यह कैसे बनता है। हम उन लोगों के नाम भी जानेंगे, जिन्होंने इसकी कहानी गढ़ी।",
+      "text_markdown": "इस पुस्तक में हम जानेंगे कि ऊद कैसा दिखता है। हम देखेंगे कि यह कैसे बनता है। हम उन लोगों के नाम भी जानेंगे, जिन्होंने इसकी कहानी गढ़ी।",
+      "tts": {
+        "text": "इस पुस्तक में हम जानेंगे कि ऊद कैसा दिखता है। हम देखेंगे कि यह कैसे बनता है। हम उन लोगों के नाम भी जानेंगे, जिन्होंने इसकी कहानी गढी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अंत तक आप जान जाएंगे कि ऊद को कभी कभी सारे तारों का राजा क्यों कहा जाता है।",
+      "text_markdown": "अंत तक आप जान जाएंगे कि ऊद को कभी कभी सारे तारों का राजा क्यों कहा जाता है।",
+      "tts": {
+        "text": "अंत तक आप जान जाएंगे कि ऊद को कभी कभी सारे तारों का राजा क्यों कहा जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 1 — ऊद क्या है?",
+      "text_markdown": "अध्याय 1 — ऊद क्या है?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद एक तार वाला वाद्य है।",
+      "text_markdown": "ऊद एक तार वाला वाद्य है।",
+      "tts": {
+        "text": "ऊद एक तार वाला वाद्य है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह ल्यूट का एक प्रकार है। इसका शरीर आधी कटी नाशपाती जैसा होता है।",
+      "text_markdown": "यह ल्यूट का एक प्रकार है। इसका शरीर आधी कटी नाशपाती जैसा होता है।",
+      "tts": {
+        "text": "यह ल्यूट का एक प्रकार है। इसका शरीर आधी कटी नाशपाती जैसा होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद का पिछला भाग गोल और गहरा होता है। वह लकड़ी के कटोरे जैसा लगता है।",
+      "text_markdown": "ऊद का पिछला भाग गोल और गहरा होता है। वह लकड़ी के कटोरे जैसा लगता है।",
+      "tts": {
+        "text": "ऊद का पिछला भाग गोल और गहरा होता है। वह लकड़ी के कटोरे जैसा लगता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका अगला भाग सपाट होता है।",
+      "text_markdown": "उसका अगला भाग सपाट होता है।",
+      "tts": {
+        "text": "उसका अगला भाग सपाट होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हम इस सपाट हिस्से को साउंडबोर्ड कहते हैं।",
+      "text_markdown": "हम इस सपाट हिस्से को साउंडबोर्ड कहते हैं।",
+      "tts": {
+        "text": "हम इस सपाट हिस्से को साउंड बोर्ड कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद का नेक छोटा होता है। उसमें फ्रेट नहीं होते।",
+      "text_markdown": "ऊद का नेक छोटा होता है। उसमें फ्रेट नहीं होते।",
+      "tts": {
+        "text": "ऊद का नेक छोटा होता है। उसमें फ्रेट नहीं होते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फ्रेट वे छोटी धातु की रेखाएँ हैं। आप उन्हें गिटार पर देखते हैं।",
+      "text_markdown": "फ्रेट वे छोटी धातु की रेखाएँ हैं। आप उन्हें गिटार पर देखते हैं।",
+      "tts": {
+        "text": "फ्रेट वे छोटी धातु की रेखाएँ हैं। आप उन्हें गिटार पर देखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उनके बिना वादक सुरों के बीच बहुत मुलायम ढंग से फिसल सकता है।",
+      "text_markdown": "उनके बिना वादक सुरों के बीच बहुत मुलायम ढंग से फिसल सकता है।",
+      "tts": {
+        "text": "उनके बिना वादक सुरों के बीच बहुत मुलायम ढंग से फिसल सकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़्यादातर ऊदों में ग्यारह तार होते हैं। वे छह जोड़ियों में बँटे होते हैं।",
+      "text_markdown": "ज़्यादातर ऊदों में ग्यारह तार होते हैं। वे छह जोड़ियों में बँटे होते हैं।",
+      "tts": {
+        "text": "ज्यादातर ऊदों में ग्यारह तार होते हैं। वे छह जोड़ियों में बँटे होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर जोड़ी को हम एक कोर्स कहते हैं।",
+      "text_markdown": "हर जोड़ी को हम एक कोर्स कहते हैं।",
+      "tts": {
+        "text": "हर जोड़ी को हम एक कोर्स कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इनमें से पाँच कोर्सों में दो दो तार होते हैं। दोनों एक ही सुर में मिलाए जाते हैं।",
+      "text_markdown": "इनमें से पाँच कोर्सों में दो दो तार होते हैं। दोनों एक ही सुर में मिलाए जाते हैं।",
+      "tts": {
+        "text": "इनमें से पाँच कोर्सों में दो दो तार होते हैं। दोनों एक ही सुर में मिलाए जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "छठे कोर्स में केवल एक तार होता है।",
+      "text_markdown": "छठे कोर्स में केवल एक तार होता है।",
+      "tts": {
+        "text": "छठे कोर्स में केवल एक तार होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "इस तरह कुल ग्यारह तार होते हैं।",
+      "text_markdown": "इस तरह कुल ग्यारह तार होते हैं।",
+      "tts": {
+        "text": "इस तरह कुल ग्यारह तार होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वादक ऊद को अपनी गोद पर रखता है।",
+      "text_markdown": "वादक ऊद को अपनी गोद पर रखता है।",
+      "tts": {
+        "text": "वादक ऊद को अपनी गोद पर रखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक हाथ नेक पर तारों को दबाता है।",
+      "text_markdown": "एक हाथ नेक पर तारों को दबाता है।",
+      "tts": {
+        "text": "एक हाथ नेक पर तारों को दबाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दूसरा हाथ रिशा नाम के पतले प्लेक्ट्रम से उन्हें छेड़ता है।",
+      "text_markdown": "दूसरा हाथ रिशा नाम के पतले प्लेक्ट्रम से उन्हें छेड़ता है।",
+      "tts": {
+        "text": "दूसरा हाथ रिशा नाम के पतले प्लेक्ट्रम से उन्हें छेड़ता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसकी ध्वनि गर्म और गहरी होती है।",
+      "text_markdown": "इसकी ध्वनि गर्म और गहरी होती है।",
+      "tts": {
+        "text": "इसकी ध्वनि गर्म और गहरी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसमें एक साथ थोड़ी उदासी और थोड़ी मिठास होती है।",
+      "text_markdown": "उसमें एक साथ थोड़ी उदासी और थोड़ी मिठास होती है।",
+      "tts": {
+        "text": "उसमें एक साथ थोड़ी उदासी और थोड़ी मिठास होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 2 — नाम कहाँ से आता है",
+      "text_markdown": "अध्याय 2 — नाम कहाँ से आता है"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद नाम अरबी का एक शब्द है। उसका अर्थ लकड़ी होता है।",
+      "text_markdown": "ऊद नाम अरबी का एक शब्द है। उसका अर्थ लकड़ी होता है।",
+      "tts": {
+        "text": "ऊद नाम अरबी का एक शब्द है। उसका अर्थ लकड़ी होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इस वाद्य का नाम उसी चीज़ पर रखा गया है। वही चीज़ इससे बनती भी है।",
+      "text_markdown": "इस वाद्य का नाम उसी चीज़ पर रखा गया है। वही चीज़ इससे बनती भी है।",
+      "tts": {
+        "text": "इस वाद्य का नाम उसी चीज पर रखा गया है। वही चीज इससे बनती भी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद से बहुत पहले उसका एक पुराना रिश्तेदार था। उसे बारबत कहा जाता था।",
+      "text_markdown": "ऊद से बहुत पहले उसका एक पुराना रिश्तेदार था। उसे बारबत कहा जाता था।",
+      "tts": {
+        "text": "ऊद से बहुत पहले उसका एक पुराना रिश्तेदार था। उसे बारबत कहा जाता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बारबत प्राचीन फ़ारस में बजाया जाता था। यह दो हज़ार साल से भी पहले की बात है।",
+      "text_markdown": "बारबत प्राचीन फ़ारस में बजाया जाता था। यह दो हज़ार साल से भी पहले की बात है।",
+      "tts": {
+        "text": "बारबत प्राचीन फारस में बजाया जाता था। यह दो हजार साल से भी पहले की बात है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारबत का शरीर लकड़ी का होता था। उसके तार रेशम के होते थे।",
+      "text_markdown": "बारबत का शरीर लकड़ी का होता था। उसके तार रेशम के होते थे।",
+      "tts": {
+        "text": "बारबत का शरीर लकड़ी का होता था। उसके तार रेशम के होते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसकी ध्वनि लंबी और कोमल होती थी।",
+      "text_markdown": "उसकी ध्वनि लंबी और कोमल होती थी।",
+      "tts": {
+        "text": "उसकी ध्वनि लंबी और कोमल होती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "राजाओं के दरबारों में लोग उसे बजाते थे।",
+      "text_markdown": "राजाओं के दरबारों में लोग उसे बजाते थे।",
+      "tts": {
+        "text": "राजाओं के दरबारों में लोग उसे बजाते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "धीरे धीरे बारबत बदलने लगा।",
+      "text_markdown": "धीरे धीरे बारबत बदलने लगा।",
+      "tts": {
+        "text": "धीरे धीरे बारबत बदलने लगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका शरीर और गोल हुआ। तार जोड़ियों में दोगुने हुए। नेक छोटा हो गया।",
+      "text_markdown": "उसका शरीर और गोल हुआ। तार जोड़ियों में दोगुने हुए। नेक छोटा हो गया।",
+      "tts": {
+        "text": "उसका शरीर और गोल हुआ। तार जोड़ियों में दोगुने हुए। नेक छोटा हो गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लगभग सन सात सौ तक, अरब जगत में लोग वही वाद्य बजा रहे थे। आज हम उसे ऊद कहते हैं।",
+      "text_markdown": "लगभग सन सात सौ तक, अरब जगत में लोग वही वाद्य बजा रहे थे। आज हम उसे ऊद कहते हैं।",
+      "tts": {
+        "text": "लगभग सन सात सौ तक, अरब जगत में लोग वही वाद्य बजा रहे थे। आज हम उसे ऊद कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वहाँ से ऊद ने यात्रा शुरू की।",
+      "text_markdown": "वहाँ से ऊद ने यात्रा शुरू की।",
+      "tts": {
+        "text": "वहाँ से ऊद ने यात्रा शुरू की।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह मिस्र और उत्तरी अफ्रीका पहुँचा।",
+      "text_markdown": "वह मिस्र और उत्तरी अफ्रीका पहुँचा।",
+      "tts": {
+        "text": "वह मिस्र और उत्तरी अफ्रीका पहुँचा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वह समुद्र पार करके स्पेन पहुँचा।",
+      "text_markdown": "वह समुद्र पार करके स्पेन पहुँचा।",
+      "tts": {
+        "text": "वह समुद्र पार करके स्पेन पहुँचा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह उत्तर की ओर तुर्की और यूनान तक गया।",
+      "text_markdown": "वह उत्तर की ओर तुर्की और यूनान तक गया।",
+      "tts": {
+        "text": "वह उत्तर की ओर तुर्की और यूनान तक गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "हर जगह ने ऊद को अपनी आवाज़ का थोड़ा रंग दिया।",
+      "text_markdown": "हर जगह ने ऊद को अपनी आवाज़ का थोड़ा रंग दिया।",
+      "tts": {
+        "text": "हर जगह ने ऊद को अपनी आवाज का थोड़ा रंग दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन उसका नाम वही रहा।",
+      "text_markdown": "लेकिन उसका नाम वही रहा।",
+      "tts": {
+        "text": "लेकिन उसका नाम वही रहा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह जहाँ भी गया, लकड़ी का यह वाद्य ऊद ही रहा।",
+      "text_markdown": "वह जहाँ भी गया, लकड़ी का यह वाद्य ऊद ही रहा।",
+      "tts": {
+        "text": "वह जहाँ भी गया, लकड़ी का यह वाद्य ऊद ही रहा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 3 — ऊद कैसे बनता है",
+      "text_markdown": "अध्याय 3 — ऊद कैसे बनता है"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद बनाना बहुत समय लेता है।",
+      "text_markdown": "ऊद बनाना बहुत समय लेता है।",
+      "tts": {
+        "text": "ऊद बनाना बहुत समय लेता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक अच्छा निर्माता एक ही वाद्य पर कई हफ़्ते लगा सकता है।",
+      "text_markdown": "एक अच्छा निर्माता एक ही वाद्य पर कई हफ़्ते लगा सकता है।",
+      "tts": {
+        "text": "एक अच्छा निर्माता एक ही वाद्य पर कई हफ्ते लगा सकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उसका कटोरे जैसा भाग लकड़ी की पतली पट्टियों से बनता है। ऐसी पट्टियाँ आम तौर पर पंद्रह से पच्चीस होती हैं।",
+      "text_markdown": "उसका कटोरे जैसा भाग लकड़ी की पतली पट्टियों से बनता है। ऐसी पट्टियाँ आम तौर पर पंद्रह से पच्चीस होती हैं।",
+      "tts": {
+        "text": "उसका कटोरे जैसा भाग लकड़ी की पतली पट्टियों से बनता है। ऐसी पट्टियाँ आम तौर पर पंद्रह से पच्चीस होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर पट्टी को मोड़कर अगली पट्टी से चिपकाया जाता है।",
+      "text_markdown": "हर पट्टी को मोड़कर अगली पट्टी से चिपकाया जाता है।",
+      "tts": {
+        "text": "हर पट्टी को मोड़कर अगली पट्टी से चिपकाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मिलकर वे ऊद का गहरा और गोल पिछला भाग बनाती हैं।",
+      "text_markdown": "मिलकर वे ऊद का गहरा और गोल पिछला भाग बनाती हैं।",
+      "tts": {
+        "text": "मिलकर वे ऊद का गहरा और गोल पिछला भाग बनाती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बहुत मायने रखता है सही लकड़ी का चुनाव।",
+      "text_markdown": "बहुत मायने रखता है सही लकड़ी का चुनाव।",
+      "tts": {
+        "text": "बहुत मायने रखता है सही लकड़ी का चुनाव।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अखरोट की लकड़ी गर्म ध्वनि देती है। महोगनी गहरी ध्वनि देती है। शहतूत चमकीली झंकार देता है।",
+      "text_markdown": "अखरोट की लकड़ी गर्म ध्वनि देती है। महोगनी गहरी ध्वनि देती है। शहतूत चमकीली झंकार देता है।",
+      "tts": {
+        "text": "अखरोट की लकड़ी गर्म ध्वनि देती है। महोगनी गहरी ध्वनि देती है। शहतूत चमकीली झंकार देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "निर्माता वही लकड़ी चुनता है, जैसी आवाज़ वह चाहता है।",
+      "text_markdown": "निर्माता वही लकड़ी चुनता है, जैसी आवाज़ वह चाहता है।",
+      "tts": {
+        "text": "निर्माता वही लकड़ी चुनता है, जैसी आवाज वह चाहता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सपाट अगला भाग, यानी साउंडबोर्ड, स्प्रूस से बनाया जाता है।",
+      "text_markdown": "सपाट अगला भाग, यानी साउंडबोर्ड, स्प्रूस से बनाया जाता है।",
+      "tts": {
+        "text": "सपाट अगला भाग, यानी साउंड बोर्ड, स्प्रूस से बनाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "स्प्रूस हल्की और मज़बूत होती है। उससे लकड़ी आसानी से कंपित होती है।",
+      "text_markdown": "स्प्रूस हल्की और मज़बूत होती है। उससे लकड़ी आसानी से कंपित होती है।",
+      "tts": {
+        "text": "स्प्रूस हल्की और मजबूत होती है। उससे लकड़ी आसानी से कंपित होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यही कंपन हमारे कानों तक संगीत बनकर आता है।",
+      "text_markdown": "यही कंपन हमारे कानों तक संगीत बनकर आता है।",
+      "tts": {
+        "text": "यही कंपन हमारे कानों तक संगीत बनकर आता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साउंडबोर्ड में छोटे गोल छेद होते हैं। उन्हें रोसेट कहा जाता है।",
+      "text_markdown": "साउंडबोर्ड में छोटे गोल छेद होते हैं। उन्हें रोसेट कहा जाता है।",
+      "tts": {
+        "text": "साउंड बोर्ड में छोटे गोल छेद होते हैं। उन्हें रोजेट कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अक्सर उन पर बहुत सुंदर नक़्शे उकेरे जाते हैं।",
+      "text_markdown": "अक्सर उन पर बहुत सुंदर नक़्शे उकेरे जाते हैं।",
+      "tts": {
+        "text": "अक्सर उन पर बहुत सुंदर नक्शे उकेरे जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "रोसेट कटोरे जैसे भाग से ध्वनि को बाहर आने देते हैं।",
+      "text_markdown": "रोसेट कटोरे जैसे भाग से ध्वनि को बाहर आने देते हैं।",
+      "tts": {
+        "text": "रोजेट कटोरे जैसे भाग से ध्वनि को बाहर आने देते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहले तार गट से बनते थे। यह सूखी पशु नसों का एक प्रकार है।",
+      "text_markdown": "पहले तार गट से बनते थे। यह सूखी पशु नसों का एक प्रकार है।",
+      "tts": {
+        "text": "पहले तार गट से बनते थे। यह सूखी पशु नसों का एक प्रकार है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आज ज़्यादातर तार नायलॉन के बनते हैं। सबसे नीचे वाले तारों पर पतली धातु की तार लपेटी जाती है।",
+      "text_markdown": "आज ज़्यादातर तार नायलॉन के बनते हैं। सबसे नीचे वाले तारों पर पतली धातु की तार लपेटी जाती है।",
+      "tts": {
+        "text": "आज ज्यादातर तार नायलॉन के बनते हैं। सबसे नीचे वाले तारों पर पतली धातु की तार लपेटी जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वादक तारों को रिशा से छेड़ता है।",
+      "text_markdown": "वादक तारों को रिशा से छेड़ता है।",
+      "tts": {
+        "text": "वादक तारों को रिशा से छेड़ता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "रिशा शब्द का अर्थ पंख होता है।",
+      "text_markdown": "रिशा शब्द का अर्थ पंख होता है।",
+      "tts": {
+        "text": "रिशा शब्द का अर्थ पंख होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "सबसे पहले प्लेक्ट्रम चील के पंखों से बनाए जाते थे।",
+      "text_markdown": "सबसे पहले प्लेक्ट्रम चील के पंखों से बनाए जाते थे।",
+      "tts": {
+        "text": "सबसे पहले प्लेक्ट्रम चील के पंखों से बनाए जाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "आज वे प्लास्टिक, हड्डी, या कछुए के खोल से बनते हैं।",
+      "text_markdown": "आज वे प्लास्टिक, हड्डी, या कछुए के खोल से बनते हैं।",
+      "tts": {
+        "text": "आज वे प्लास्टिक, हड्डी, या कछुए के खोल से बनते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 4 — ऊद कहाँ बजाया जाता है",
+      "text_markdown": "अध्याय 4 — ऊद कहाँ बजाया जाता है"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद पूरे अरब जगत में बजाया जाता है।",
+      "text_markdown": "ऊद पूरे अरब जगत में बजाया जाता है।",
+      "tts": {
+        "text": "ऊद पूरे अरब जगत में बजाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आप इसे मिस्र, सीरिया, इराक, लेबनान, खाड़ी के देशों, और उत्तरी अफ्रीका में सुनेंगे।",
+      "text_markdown": "आप इसे मिस्र, सीरिया, इराक, लेबनान, खाड़ी के देशों, और उत्तरी अफ्रीका में सुनेंगे।",
+      "tts": {
+        "text": "आप इसे मिस्र, सीरिया, इराक, लेबनान, खाड़ी के देशों, और उत्तरी अफ्रीका में सुनेंगे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह अरब जगत के बाहर भी बजाया जाता है।",
+      "text_markdown": "यह अरब जगत के बाहर भी बजाया जाता है।",
+      "tts": {
+        "text": "यह अरब जगत के बाहर भी बजाया जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुर्कों का भी अपना ऊद है।",
+      "text_markdown": "तुर्कों का भी अपना ऊद है।",
+      "tts": {
+        "text": "तुर्कों का भी अपना ऊद है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यूनानियों का भी अपना ऊद है।",
+      "text_markdown": "यूनानियों का भी अपना ऊद है।",
+      "tts": {
+        "text": "यूनानियों का भी अपना ऊद है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "आर्मीनियाई और ईरानी इसके करीबी रिश्तेदार वाद्य बजाते हैं।",
+      "text_markdown": "आर्मीनियाई और ईरानी इसके करीबी रिश्तेदार वाद्य बजाते हैं।",
+      "tts": {
+        "text": "आर्मीनियाई और ईरानी इसके करीबी रिश्तेदार वाद्य बजाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "स्पेन में यह सैकड़ों वर्षों तक बजाया गया।",
+      "text_markdown": "स्पेन में यह सैकड़ों वर्षों तक बजाया गया।",
+      "tts": {
+        "text": "स्पेन में यह सैकड़ों वर्षों तक बजाया गया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज ऊद के तीन मुख्य प्रकार हैं।",
+      "text_markdown": "आज ऊद के तीन मुख्य प्रकार हैं।",
+      "tts": {
+        "text": "आज ऊद के तीन मुख्य प्रकार हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अरबी ऊद बड़ा और गहरा होता है। उसकी ध्वनि भरपूर और ठहरी हुई होती है।",
+      "text_markdown": "अरबी ऊद बड़ा और गहरा होता है। उसकी ध्वनि भरपूर और ठहरी हुई होती है।",
+      "tts": {
+        "text": "अरबी ऊद बड़ा और गहरा होता है। उसकी ध्वनि भरपूर और ठहरी हुई होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह मिस्र और लेवांत का ऊद है।",
+      "text_markdown": "यह मिस्र और लेवांत का ऊद है।",
+      "tts": {
+        "text": "यह मिस्र और लेवांत का ऊद है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुर्की ऊद छोटा और अधिक चमकीला होता है। उसका सुर अरबी ऊद से थोड़ा ऊँचा मिलाया जाता है।",
+      "text_markdown": "तुर्की ऊद छोटा और अधिक चमकीला होता है। उसका सुर अरबी ऊद से थोड़ा ऊँचा मिलाया जाता है।",
+      "tts": {
+        "text": "तुर्की ऊद छोटा और अधिक चमकीला होता है। उसका सुर अरबी ऊद से थोड़ा ऊँचा मिलाया जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फ़ारसी रिश्तेदार को बारबत कहा जाता है।",
+      "text_markdown": "फ़ारसी रिश्तेदार को बारबत कहा जाता है।",
+      "tts": {
+        "text": "फारसी रिश्तेदार को बारबत कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह छोटा और तीखा होता है। उसमें सुरों का अलग समूह होता है।",
+      "text_markdown": "वह छोटा और तीखा होता है। उसमें सुरों का अलग समूह होता है।",
+      "tts": {
+        "text": "वह छोटा और तीखा होता है। उसमें सुरों का अलग समूह होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद शास्त्रीय अरब संगीत और तुर्की मकाम संगीत का हृदय है।",
+      "text_markdown": "ऊद शास्त्रीय अरब संगीत और तुर्की मकाम संगीत का हृदय है।",
+      "tts": {
+        "text": "ऊद शास्त्रीय अरब संगीत और तुर्की मकाम संगीत का हृदय है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह शादियों में और शोक सभाओं में बजता है। यह सभागारों में और मित्रों की बैठकों में भी बजता है।",
+      "text_markdown": "यह शादियों में और शोक सभाओं में बजता है। यह सभागारों में और मित्रों की बैठकों में भी बजता है।",
+      "tts": {
+        "text": "यह शादियों में और शोक सभाओं में बजता है। यह सभागारों में और मित्रों की बैठकों में भी बजता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जहाँ भी लोग जुटते हैं और आत्मा वाला संगीत चाहते हैं, वहाँ कोई न कोई ऊद निकाल सकता है।",
+      "text_markdown": "जहाँ भी लोग जुटते हैं और आत्मा वाला संगीत चाहते हैं, वहाँ कोई न कोई ऊद निकाल सकता है।",
+      "tts": {
+        "text": "जहाँ भी लोग जुटते हैं और आत्मा वाला संगीत चाहते हैं, वहाँ कोई न कोई ऊद निकाल सकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 5 — मक़ाम",
+      "text_markdown": "अध्याय 5 — मक़ाम"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आप पियानो बजाते हैं, तो सफ़ेद और काली कुंजियाँ दबाते हैं।",
+      "text_markdown": "जब आप पियानो बजाते हैं, तो सफ़ेद और काली कुंजियाँ दबाते हैं।",
+      "tts": {
+        "text": "जब आप पियानो बजाते हैं, तो सफेद और काली कुंजियाँ दबाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर सप्तक में बारह स्वर होते हैं। हर क़दम एक ही आकार का होता है।",
+      "text_markdown": "हर सप्तक में बारह स्वर होते हैं। हर क़दम एक ही आकार का होता है।",
+      "tts": {
+        "text": "हर सप्तक में बारह स्वर होते हैं। हर कदम एक ही आकार का होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसे हम समस्वर प्रणाली कहते हैं।",
+      "text_markdown": "इसे हम समस्वर प्रणाली कहते हैं।",
+      "tts": {
+        "text": "इसे हम समस्वर प्रणाली कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद इस तरह काम नहीं करता।",
+      "text_markdown": "ऊद इस तरह काम नहीं करता।",
+      "tts": {
+        "text": "ऊद इस तरह काम नहीं करता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ऊद एक बहुत पुरानी व्यवस्था अपनाता है। उसे मक़ाम कहा जाता है।",
+      "text_markdown": "ऊद एक बहुत पुरानी व्यवस्था अपनाता है। उसे मक़ाम कहा जाता है।",
+      "tts": {
+        "text": "ऊद एक बहुत पुरानी व्यवस्था अपनाता है। उसे मकाम कहा जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मक़ाम सुर चुनने का एक तरीका है। ऐसे बहुत से मक़ामात हैं।",
+      "text_markdown": "मक़ाम सुर चुनने का एक तरीका है। ऐसे बहुत से मक़ामात हैं।",
+      "tts": {
+        "text": "मकाम सुर चुनने का एक तरीका है। ऐसे बहुत से मकामात हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर मक़ाम का अपना मनोभाव होता है।",
+      "text_markdown": "हर मक़ाम का अपना मनोभाव होता है।",
+      "tts": {
+        "text": "हर मकाम का अपना मनोभाव होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कुछ प्रसन्न होते हैं, कुछ उदास। कुछ थोड़े रहस्यमय लगते हैं।",
+      "text_markdown": "कुछ प्रसन्न होते हैं, कुछ उदास। कुछ थोड़े रहस्यमय लगते हैं।",
+      "tts": {
+        "text": "कुछ प्रसन्न होते हैं, कुछ उदास। कुछ थोड़े रहस्यमय लगते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मक़ाम का बड़ा रहस्य यह है। उसमें पियानो से ज़्यादा स्वर होते हैं।",
+      "text_markdown": "मक़ाम का बड़ा रहस्य यह है। उसमें पियानो से ज़्यादा स्वर होते हैं।",
+      "tts": {
+        "text": "मकाम का बड़ा रहस्य यह है। उसमें पियानो से ज्यादा स्वर होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सफ़ेद और काली कुंजियों के बीच और भी छोटे क़दम होते हैं। उन्हें हम चौथाई स्वर कहते हैं।",
+      "text_markdown": "सफ़ेद और काली कुंजियों के बीच और भी छोटे क़दम होते हैं। उन्हें हम चौथाई स्वर कहते हैं।",
+      "tts": {
+        "text": "सफेद और काली कुंजियों के बीच और भी छोटे कदम होते हैं। उन्हें हम चौथाई स्वर कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चौथाई स्वर, आधे क़दम का भी आधा होता है।",
+      "text_markdown": "चौथाई स्वर, आधे क़दम का भी आधा होता है।",
+      "tts": {
+        "text": "चौथाई स्वर, आधे कदम का भी आधा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह एक बहुत छोटा स्वर है। वह जाने पहचाने स्वरों के बीच रहता है।",
+      "text_markdown": "यह एक बहुत छोटा स्वर है। वह जाने पहचाने स्वरों के बीच रहता है।",
+      "tts": {
+        "text": "यह एक बहुत छोटा स्वर है। वह जाने पहचाने स्वरों के बीच रहता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पियानो पर आप इसे नहीं बजा सकते।",
+      "text_markdown": "पियानो पर आप इसे नहीं बजा सकते।",
+      "tts": {
+        "text": "पियानो पर आप इसे नहीं बजा सकते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ऊद पर आप उँगली सरकाकर उसे पा सकते हैं।",
+      "text_markdown": "ऊद पर आप उँगली सरकाकर उसे पा सकते हैं।",
+      "tts": {
+        "text": "ऊद पर आप उँगली सरकाकर उसे पा सकते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक मक़ाम छोटे छोटे स्वर समूहों से बनता है।",
+      "text_markdown": "एक मक़ाम छोटे छोटे स्वर समूहों से बनता है।",
+      "tts": {
+        "text": "एक मकाम छोटे छोटे स्वर समूहों से बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर छोटे समूह को जिन्स कहा जाता है।",
+      "text_markdown": "हर छोटे समूह को जिन्स कहा जाता है।",
+      "tts": {
+        "text": "हर छोटे समूह को जिन्स कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ज़्यादातर अजनास में चार स्वर होते हैं।",
+      "text_markdown": "ज़्यादातर अजनास में चार स्वर होते हैं।",
+      "tts": {
+        "text": "ज्यादातर अजनास में चार स्वर होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "आप जिन्स को संगीत की एक छोटी लेगो ईंट समझ सकते हैं। उन्हें जोड़कर एक मक़ाम बनता है।",
+      "text_markdown": "आप जिन्स को संगीत की एक छोटी लेगो ईंट समझ सकते हैं। उन्हें जोड़कर एक मक़ाम बनता है।",
+      "tts": {
+        "text": "आप जिन्स को संगीत की एक छोटी लेगो ईंट समझ सकते हैं। उन्हें जोड़कर एक मकाम बनता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मक़ाम धुन पर चलता है। वह सुरों के मेल पर नहीं चलता।",
+      "text_markdown": "मक़ाम धुन पर चलता है। वह सुरों के मेल पर नहीं चलता।",
+      "tts": {
+        "text": "मकाम धुन पर चलता है। वह सुरों के मेल पर नहीं चलता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यानी संगीत एक बार में एक स्वर आगे बढ़ता है। वह गिटार की तरह कई स्वरों को एक साथ नहीं रखता।",
+      "text_markdown": "यानी संगीत एक बार में एक स्वर आगे बढ़ता है। वह गिटार की तरह कई स्वरों को एक साथ नहीं रखता।",
+      "tts": {
+        "text": "यानी संगीत एक बार में एक स्वर आगे बढता है। वह गिटार की तरह कई स्वरों को एक साथ नहीं रखता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब ऊद धीमा, घूमता हुआ एकल बजाता है, तब वादक किसी मक़ाम के भीतर चल रहा होता है।",
+      "text_markdown": "जब ऊद धीमा, घूमता हुआ एकल बजाता है, तब वादक किसी मक़ाम के भीतर चल रहा होता है।",
+      "tts": {
+        "text": "जब ऊद धीमा, घूमता हुआ एकल बजाता है, तब वादक किसी मकाम के भीतर चल रहा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह एक ईंट से स्वर चुनता है। फिर सरककर अगली ईंट तक जाता है।",
+      "text_markdown": "वह एक ईंट से स्वर चुनता है। फिर सरककर अगली ईंट तक जाता है।",
+      "tts": {
+        "text": "वह एक ईंट से स्वर चुनता है। फिर सरककर अगली ईंट तक जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उस एकल का भी एक नाम है।",
+      "text_markdown": "उस एकल का भी एक नाम है।",
+      "tts": {
+        "text": "उस एकल का भी एक नाम है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "हम उसे तक़सीम कहते हैं।",
+      "text_markdown": "हम उसे तक़सीम कहते हैं।",
+      "tts": {
+        "text": "हम उसे तकसीम कहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अच्छी तक़सीम आपको हँसा भी सकती है। वह आपको रुला भी सकती है।",
+      "text_markdown": "अच्छी तक़सीम आपको हँसा भी सकती है। वह आपको रुला भी सकती है।",
+      "tts": {
+        "text": "अच्छी तकसीम आपको हँसा भी सकती है। वह आपको रुला भी सकती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यही ऊद का सबसे सुंदर रूप है।",
+      "text_markdown": "यही ऊद का सबसे सुंदर रूप है।",
+      "tts": {
+        "text": "यही ऊद का सबसे सुंदर रूप है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 6 — महान उस्ताद",
+      "text_markdown": "अध्याय 6 — महान उस्ताद"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद एक हज़ार साल से भी ज़्यादा समय से बजाया जा रहा है।",
+      "text_markdown": "ऊद एक हज़ार साल से भी ज़्यादा समय से बजाया जा रहा है।",
+      "tts": {
+        "text": "ऊद एक हजार साल से भी ज्यादा समय से बजाया जा रहा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इतने लंबे समय में, कुछ लोगों ने इसे हमेशा के लिए बदल दिया।",
+      "text_markdown": "इतने लंबे समय में, कुछ लोगों ने इसे हमेशा के लिए बदल दिया।",
+      "tts": {
+        "text": "इतने लंबे समय में, कुछ लोगों ने इसे हमेशा के लिए बदल दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहला व्यक्ति वादक से ज़्यादा एक विचारक था। उसका नाम अल फ़ाराबी था।",
+      "text_markdown": "पहला व्यक्ति वादक से ज़्यादा एक विचारक था। उसका नाम अल फ़ाराबी था।",
+      "tts": {
+        "text": "पहला व्यक्ति वादक से ज्यादा एक विचारक था। उसका नाम अल फाराबी था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह लगभग सन आठ सौ बहत्तर से सन नौ सौ पचास तक जीवित रहा। वह महान नगर बगदाद में काम करता था।",
+      "text_markdown": "वह लगभग सन आठ सौ बहत्तर से सन नौ सौ पचास तक जीवित रहा। वह महान नगर बगदाद में काम करता था।",
+      "tts": {
+        "text": "वह लगभग सन आठ सौ बहत्तर से सन नौ सौ पचास तक जीवित रहा। वह महान नगर बगदाद में काम करता था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अल फ़ाराबी ने संगीत पर एक बहुत बड़ी पुस्तक लिखी।",
+      "text_markdown": "अल फ़ाराबी ने संगीत पर एक बहुत बड़ी पुस्तक लिखी।",
+      "tts": {
+        "text": "अल फाराबी ने संगीत पर एक बहुत बड़ी पुस्तक लिखी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उन्होंने समझाया कि तार कैसे कंपित होते हैं।",
+      "text_markdown": "उन्होंने समझाया कि तार कैसे कंपित होते हैं।",
+      "tts": {
+        "text": "उन्होंने समझाया कि तार कैसे कंपित होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्होंने समझाया कि कुछ स्वर साथ में मधुर क्यों लगते हैं।",
+      "text_markdown": "उन्होंने समझाया कि कुछ स्वर साथ में मधुर क्यों लगते हैं।",
+      "tts": {
+        "text": "उन्होंने समझाया कि कुछ स्वर साथ में मधुर क्यों लगते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उन्होंने समझाया कि संगीत किसी व्यक्ति की भावना क्यों बदल सकता है।",
+      "text_markdown": "उन्होंने समझाया कि संगीत किसी व्यक्ति की भावना क्यों बदल सकता है।",
+      "tts": {
+        "text": "उन्होंने समझाया कि संगीत किसी व्यक्ति की भावना क्यों बदल सकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उनकी पुस्तक अरबी और लैटिन में सदियों तक पढ़ी गई।",
+      "text_markdown": "उनकी पुस्तक अरबी और लैटिन में सदियों तक पढ़ी गई।",
+      "tts": {
+        "text": "उनकी पुस्तक अरबी और लैटिन में सदियों तक पढी गई।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद का दूसरा महान उस्ताद जिरयाब नाम का गायक था। उसका जन्म इराक में हुआ था, और यह लगभग सन सात सौ नवासी के आसपास की बात है।",
+      "text_markdown": "ऊद का दूसरा महान उस्ताद जिरयाब नाम का गायक था। उसका जन्म इराक में हुआ था, और यह लगभग सन सात सौ नवासी के आसपास की बात है।",
+      "tts": {
+        "text": "ऊद का दूसरा महान उस्ताद जिरयाब नाम का गायक था। उसका जन्म इराक में हुआ था, और यह लगभग सन सात सौ नवासी के आसपास की बात है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "युवा होने पर उसे बगदाद जल्दी में छोड़ना पड़ा।",
+      "text_markdown": "युवा होने पर उसे बगदाद जल्दी में छोड़ना पड़ा।",
+      "tts": {
+        "text": "युवा होने पर उसे बगदाद जल्दी में छोड़ना पड़ा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़िरयाब उत्तरी अफ्रीका के पार पश्चिम की ओर यात्रा करता गया।",
+      "text_markdown": "ज़िरयाब उत्तरी अफ्रीका के पार पश्चिम की ओर यात्रा करता गया।",
+      "tts": {
+        "text": "जिरयाब उत्तरी अफ्रीका के पार पश्चिम की ओर यात्रा करता गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह सन आठ सौ बाईस में स्पेन के नगर कोरदोबा पहुँचा।",
+      "text_markdown": "वह सन आठ सौ बाईस में स्पेन के नगर कोरदोबा पहुँचा।",
+      "tts": {
+        "text": "वह सन आठ सौ बाईस में स्पेन के नगर कोरदोबा पहुँचा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कोरदोबा के राजा को उसका संगीत बहुत प्रिय लगा। उन्होंने उसे घर, वेतन, और सिखाने का समय दिया।",
+      "text_markdown": "कोरदोबा के राजा को उसका संगीत बहुत प्रिय लगा। उन्होंने उसे घर, वेतन, और सिखाने का समय दिया।",
+      "tts": {
+        "text": "कोरदोबा के राजा को उसका संगीत बहुत प्रिय लगा। उन्होंने उसे घर, वेतन, और सिखाने का समय दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "स्पेन में ज़िरयाब ने एक संगीत विद्यालय खोला।",
+      "text_markdown": "स्पेन में ज़िरयाब ने एक संगीत विद्यालय खोला।",
+      "tts": {
+        "text": "स्पेन में जिरयाब ने एक संगीत विद्यालय खोला।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कुछ लोग कहते हैं, वही दुनिया का पहला संगीत महाविद्यालय था।",
+      "text_markdown": "कुछ लोग कहते हैं, वही दुनिया का पहला संगीत महाविद्यालय था।",
+      "tts": {
+        "text": "कुछ लोग कहते हैं, वही दुनिया का पहला संगीत महाविद्यालय था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसने ऊद में तारों का पाँचवाँ कोर्स जोड़ा। उसने प्लेक्ट्रम बनाने का तरीका भी बदल दिया।",
+      "text_markdown": "उसने ऊद में तारों का पाँचवाँ कोर्स जोड़ा। उसने प्लेक्ट्रम बनाने का तरीका भी बदल दिया।",
+      "tts": {
+        "text": "उसने ऊद में तारों का पाँचवाँ कोर्स जोड़ा। उसने प्लेक्ट्रम बनाने का तरीका भी बदल दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़िरयाब के बहुत बाद, हमारे ही समय में, इराक के एक वादक ने ऊद को नई ऊँचाई दी।",
+      "text_markdown": "ज़िरयाब के बहुत बाद, हमारे ही समय में, इराक के एक वादक ने ऊद को नई ऊँचाई दी।",
+      "tts": {
+        "text": "जिरयाब के बहुत बाद, हमारे ही समय में, इराक के एक वादक ने ऊद को नई ऊँचाई दी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका नाम मुनीर बशीर था। लोग उसे ऊद का राजा कहते थे।",
+      "text_markdown": "उसका नाम मुनीर बशीर था। लोग उसे ऊद का राजा कहते थे।",
+      "tts": {
+        "text": "उसका नाम मुनीर बशीर था। लोग उसे ऊद का राजा कहते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बशीर से पहले, ऊद प्रायः दूसरे वाद्यों के साथ ही बजता था।",
+      "text_markdown": "बशीर से पहले, ऊद प्रायः दूसरे वाद्यों के साथ ही बजता था।",
+      "tts": {
+        "text": "बशीर से पहले, ऊद प्रायः दूसरे वाद्यों के साथ ही बजता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बशीर उसे मंच पर अकेले लेकर आए। उन्होंने लंबे, शांत, गहरे एकल बजाए।",
+      "text_markdown": "बशीर उसे मंच पर अकेले लेकर आए। उन्होंने लंबे, शांत, गहरे एकल बजाए।",
+      "tts": {
+        "text": "बशीर उसे मंच पर अकेले लेकर आए। उन्होंने लंबे, शांत, गहरे एकल बजाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दुनिया भर के लोगों ने उन्हें सुना। वे फिर से ऊद पर मुग्ध हो गए।",
+      "text_markdown": "दुनिया भर के लोगों ने उन्हें सुना। वे फिर से ऊद पर मुग्ध हो गए।",
+      "tts": {
+        "text": "दुनिया भर के लोगों ने उन्हें सुना। वे फिर से ऊद पर मुग्ध हो गए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और भी बहुत से लोग थे।",
+      "text_markdown": "और भी बहुत से लोग थे।",
+      "tts": {
+        "text": "और भी बहुत से लोग थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फ़रीद अल अत्राश ने ऊद को मिस्री फ़िल्मों की आवाज़ बना दिया।",
+      "text_markdown": "फ़रीद अल अत्राश ने ऊद को मिस्री फ़िल्मों की आवाज़ बना दिया।",
+      "tts": {
+        "text": "फरीद अल अत्राश ने ऊद को मिस्री फिल्मों की आवाज बना दिया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ट्यूनीशिया के अनुआर ब्राहेम यूरोप और अमरीका के जैज़ संगीतकारों के साथ ऊद बजाते हैं।",
+      "text_markdown": "ट्यूनीशिया के अनुआर ब्राहेम यूरोप और अमरीका के जैज़ संगीतकारों के साथ ऊद बजाते हैं।",
+      "tts": {
+        "text": "ट्यूनीशिया के अनुआर ब्राहेम यूरोप और अमरीका के जैज संगीतकारों के साथ ऊद बजाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद आज भी जीवित है।",
+      "text_markdown": "ऊद आज भी जीवित है।",
+      "tts": {
+        "text": "ऊद आज भी जीवित है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर साल दुनिया में कहीं न कहीं एक नया उस्ताद जन्म लेता है।",
+      "text_markdown": "हर साल दुनिया में कहीं न कहीं एक नया उस्ताद जन्म लेता है।",
+      "tts": {
+        "text": "हर साल दुनिया में कहीं न कहीं एक नया उस्ताद जन्म लेता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 7 — ऊद और दुनिया",
+      "text_markdown": "अध्याय 7 — ऊद और दुनिया"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद अरब जगत तक सीमित नहीं रहा।",
+      "text_markdown": "ऊद अरब जगत तक सीमित नहीं रहा।",
+      "tts": {
+        "text": "ऊद अरब जगत तक सीमित नहीं रहा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यात्रा करते हुए उसका रूप बदला। उसका नाम बदला। उसके गीत बदले।",
+      "text_markdown": "यात्रा करते हुए उसका रूप बदला। उसका नाम बदला। उसके गीत बदले।",
+      "tts": {
+        "text": "यात्रा करते हुए उसका रूप बदला। उसका नाम बदला। उसके गीत बदले।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब ऊद मध्यकालीन स्पेन पहुँचा, तो यूरोप के वादकों को उसका लकड़ी का कटोरा और गहरी ध्वनि पसंद आई।",
+      "text_markdown": "जब ऊद मध्यकालीन स्पेन पहुँचा, तो यूरोप के वादकों को उसका लकड़ी का कटोरा और गहरी ध्वनि पसंद आई।",
+      "tts": {
+        "text": "जब ऊद मध्यकालीन स्पेन पहुँचा, तो यूरोप के वादकों को उसका लकड़ी का कटोरा और गहरी ध्वनि पसंद आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लेकिन वे उसमें फ्रेट चाहते थे। ऐसे फ्रेट जैसे वे अपने छोटे वाद्यों में जानते थे।",
+      "text_markdown": "लेकिन वे उसमें फ्रेट चाहते थे। ऐसे फ्रेट जैसे वे अपने छोटे वाद्यों में जानते थे।",
+      "tts": {
+        "text": "लेकिन वे उसमें फ्रेट चाहते थे। ऐसे फ्रेट जैसे वे अपने छोटे वाद्यों में जानते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसलिए उन्होंने उसमें फ्रेट जोड़े। पिछला भाग थोड़ा सपाट किया। नए वाद्य को ल्यूट कहा।",
+      "text_markdown": "इसलिए उन्होंने उसमें फ्रेट जोड़े। पिछला भाग थोड़ा सपाट किया। नए वाद्य को ल्यूट कहा।",
+      "tts": {
+        "text": "इसलिए उन्होंने उसमें फ्रेट जोड़े। पिछला भाग थोड़ा सपाट किया। नए वाद्य को ल्यूट कहा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पाँच सौ साल तक ल्यूट यूरोप का प्रिय वाद्य रहा।",
+      "text_markdown": "पाँच सौ साल तक ल्यूट यूरोप का प्रिय वाद्य रहा।",
+      "tts": {
+        "text": "पाँच सौ साल तक ल्यूट यूरोप का प्रिय वाद्य रहा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "राजा उसे बजाते थे।",
+      "text_markdown": "राजा उसे बजाते थे।",
+      "tts": {
+        "text": "राजा उसे बजाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कवि उसे बजाते थे।",
+      "text_markdown": "कवि उसे बजाते थे।",
+      "tts": {
+        "text": "कवि उसे बजाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "सबसे बड़े रचनाकारों ने उसके लिए रचनाएँ लिखीं।",
+      "text_markdown": "सबसे बड़े रचनाकारों ने उसके लिए रचनाएँ लिखीं।",
+      "tts": {
+        "text": "सबसे बड़े रचनाकारों ने उसके लिए रचनाएँ लिखीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर ल्यूट फिर से बदला।",
+      "text_markdown": "फिर ल्यूट फिर से बदला।",
+      "tts": {
+        "text": "फिर ल्यूट फिर से बदला।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वादकों ने और तार जोड़े। पिछला भाग और सपाट किया। उस पर छोटा, हल्का शरीर रखा।",
+      "text_markdown": "वादकों ने और तार जोड़े। पिछला भाग और सपाट किया। उस पर छोटा, हल्का शरीर रखा।",
+      "tts": {
+        "text": "वादकों ने और तार जोड़े। पिछला भाग और सपाट किया। उस पर छोटा, हल्का शरीर रखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लगभग सन अठारह सौ तक, स्पेन में इस नए वाद्य का एक नाम था। वह नाम हम सब जानते हैं।",
+      "text_markdown": "लगभग सन अठारह सौ तक, स्पेन में इस नए वाद्य का एक नाम था। वह नाम हम सब जानते हैं।",
+      "tts": {
+        "text": "लगभग सन अठारह सौ तक, स्पेन में इस नए वाद्य का एक नाम था। वह नाम हम सब जानते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह गिटार था।",
+      "text_markdown": "वह गिटार था।",
+      "tts": {
+        "text": "वह गिटार था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इस तरह ऊद, ल्यूट, और गिटार एक ही परिवार के सदस्य हैं।",
+      "text_markdown": "इस तरह ऊद, ल्यूट, और गिटार एक ही परिवार के सदस्य हैं।",
+      "tts": {
+        "text": "इस तरह ऊद, ल्यूट, और गिटार एक ही परिवार के सदस्य हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे आपस में चचेरे भाई जैसे हैं। उनका एक साझा पुरखा है।",
+      "text_markdown": "वे आपस में चचेरे भाई जैसे हैं। उनका एक साझा पुरखा है।",
+      "tts": {
+        "text": "वे आपस में चचेरे भाई जैसे हैं। उनका एक साझा पुरखा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वह पुरखा ऊद है।",
+      "text_markdown": "वह पुरखा ऊद है।",
+      "tts": {
+        "text": "वह पुरखा ऊद है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज ऊद और गिटार साथ में बजते हैं।",
+      "text_markdown": "आज ऊद और गिटार साथ में बजते हैं।",
+      "tts": {
+        "text": "आज ऊद और गिटार साथ में बजते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अनुआर ब्राहेम जैज़ गिटार वादकों के साथ ऊद बजाते हैं।",
+      "text_markdown": "अनुआर ब्राहेम जैज़ गिटार वादकों के साथ ऊद बजाते हैं।",
+      "tts": {
+        "text": "अनुआर ब्राहेम जैज गिटार वादकों के साथ ऊद बजाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मुनीर बशीर वाद्यवृंदों के लिए बजाते थे।",
+      "text_markdown": "मुनीर बशीर वाद्यवृंदों के लिए बजाते थे।",
+      "tts": {
+        "text": "मुनीर बशीर वाद्यवृंदों के लिए बजाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "बेरूत, इस्तांबुल, पेरिस, और न्यूयॉर्क के युवा वादक ऊद को रॉक, हिप हॉप, और फ़िल्म संगीत के साथ मिला रहे हैं।",
+      "text_markdown": "बेरूत, इस्तांबुल, पेरिस, और न्यूयॉर्क के युवा वादक ऊद को रॉक, हिप हॉप, और फ़िल्म संगीत के साथ मिला रहे हैं।",
+      "tts": {
+        "text": "बेरूत, इस्तांबुल, पेरिस, और न्युयॉर्क के युवा वादक ऊद को रॉक, हिप हॉप, और फिल्म संगीत के साथ मिला रहे हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊद केवल एक वाद्य नहीं है।",
+      "text_markdown": "ऊद केवल एक वाद्य नहीं है।",
+      "tts": {
+        "text": "ऊद केवल एक वाद्य नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह एक सेतु है।",
+      "text_markdown": "वह एक सेतु है।",
+      "tts": {
+        "text": "वह एक सेतु है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वह मेसोपोटामिया से एक कहानी लेकर चलता है। वह फ़ारस, अरब जगत, स्पेन, यूरोप, और फिर दुनिया के हर देश तक जाती है।",
+      "text_markdown": "वह मेसोपोटामिया से एक कहानी लेकर चलता है। वह फ़ारस, अरब जगत, स्पेन, यूरोप, और फिर दुनिया के हर देश तक जाती है।",
+      "tts": {
+        "text": "वह मेसोपोटामिया से एक कहानी लेकर चलता है। वह फारस, अरब जगत, स्पेन, यूरोप, और फिर दुनिया के हर देश तक जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब भी आप गिटार सुनते हैं, बहुत भीतर कहीं, ऊद की मुलायम और गहरी आवाज़ भी सुनाई देती है।",
+      "text_markdown": "जब भी आप गिटार सुनते हैं, बहुत भीतर कहीं, ऊद की मुलायम और गहरी आवाज़ भी सुनाई देती है।",
+      "tts": {
+        "text": "जब भी आप गिटार सुनते हैं, बहुत भीतर कहीं, ऊद की मुलायम और गहरी आवाज भी सुनाई देती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "इस पुस्तक के बारे में",
+      "text_markdown": "इस पुस्तक के बारे में"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह विश्व के वाद्ययंत्र नामक शृंखला का पहला खंड है।",
+      "text_markdown": "यह विश्व के वाद्ययंत्र नामक शृंखला का पहला खंड है।",
+      "tts": {
+        "text": "यह विश्व के वाद्ययंत्र नामक श्रृंखला का पहला खंड है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इस शृंखला की हर पुस्तक एक ही वाद्य की कहानी कहती है।",
+      "text_markdown": "इस शृंखला की हर पुस्तक एक ही वाद्य की कहानी कहती है।",
+      "tts": {
+        "text": "इस श्रृंखला की हर पुस्तक एक ही वाद्य की कहानी कहती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर पुस्तक छोटी है, और हर पुस्तक सच पर आधारित है।",
+      "text_markdown": "हर पुस्तक छोटी है, और हर पुस्तक सच पर आधारित है।",
+      "tts": {
+        "text": "हर पुस्तक छोटी है, और हर पुस्तक सच पर आधारित है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगली पुस्तक सितार पर है। वह भारत का महान लंबे नेक वाला ल्यूट है। उसके बहुत से तार हैं। उसकी आवाज़ गहरी और झंकार भरी है।",
+      "text_markdown": "अगली पुस्तक सितार पर है। वह भारत का महान लंबे नेक वाला ल्यूट है। उसके बहुत से तार हैं। उसकी आवाज़ गहरी और झंकार भरी है।",
+      "tts": {
+        "text": "अगली पुस्तक सितार पर है। वह भारत का महान लंबे नेक वाला ल्यूट है। उसके बहुत से तार हैं। उसकी आवाज गहरी और झंकार भरी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सितार के बाद हम कोरा के लिए पश्चिम अफ्रीका चलेंगे। फिर शकुहाची के लिए जापान जाएँगे।",
+      "text_markdown": "सितार के बाद हम कोरा के लिए पश्चिम अफ्रीका चलेंगे। फिर शकुहाची के लिए जापान जाएँगे।",
+      "tts": {
+        "text": "सितार के बाद हम कोरा के लिए पश्चिम अफ्रीका चलेंगे। फिर शकुहाची के लिए जापान जाएँगे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सुनने के लिए धन्यवाद।",
+      "text_markdown": "सुनने के लिए धन्यवाद।",
+      "tts": {
+        "text": "सुनने के लिए धन्यवाद।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक ऊद खोजिए, चाहे इंटरनेट पर या अपने शहर में। फिर उसे अपने लिए बजने दीजिए।",
+      "text_markdown": "एक ऊद खोजिए, चाहे इंटरनेट पर या अपने शहर में। फिर उसे अपने लिए बजने दीजिए।",
+      "tts": {
+        "text": "एक ऊद खोजिए, चाहे इंटरनेट पर या अपने शहर में। फिर उसे अपने लिए बजने दीजिए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "ja",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのメモ",
+      "text_markdown": "読者へのメモ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはバイクの物語です。",
+      "text_markdown": "これはバイクの物語です。",
+      "tts": {
+        "text": "これはバイクの物語です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "本当の話です。",
+      "text_markdown": "本当の話です。",
+      "tts": {
+        "text": "本当の話です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "むかしむかし、だれもバイクを持っていませんでした。",
+      "text_markdown": "むかしむかし、だれもバイクを持っていませんでした。",
+      "tts": {
+        "text": "むかしむかし、だれもバイクを持っていませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今では、何百万台もあります。",
+      "text_markdown": "今では、何百万台もあります。",
+      "tts": {
+        "text": "今では、何百万台もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "うるさくて、はやくて、ピカピカです。",
+      "text_markdown": "うるさくて、はやくて、ピカピカです。",
+      "tts": {
+        "text": "うるさくて、はやくて、ピカピカです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちは、いちばんはじめからはじめます。",
+      "text_markdown": "わたしたちは、いちばんはじめからはじめます。",
+      "tts": {
+        "text": "わたしたちは、いちばんはじめからはじめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "はじめての作り手や、はじめてのライダーたち、そしてはじめてのレースに会います。",
+      "text_markdown": "はじめての作り手や、はじめてのライダーたち、そしてはじめてのレースに会います。",
+      "tts": {
+        "text": "はじめての作り手や、はじめてのライダーたち、そしてはじめてのレースに会います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それから、今の世界を見てみましょう。",
+      "text_markdown": "それから、今の世界を見てみましょう。",
+      "tts": {
+        "text": "それから、今の世界を見てみましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのメモ",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "さいごには、この小さな機械がどうやって道をかえたのか、わかります。",
+      "text_markdown": "さいごには、この小さな機械がどうやって道をかえたのか、わかります。",
+      "tts": {
+        "text": "さいごには、この小さな機械がどうやって道をかえたのか、わかります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章 はじめてのブーンとはしる二輪車",
+      "text_markdown": "第一章 はじめてのブーンとはしる二輪車"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイクは、エンジンのついた自転車です。",
+      "text_markdown": "バイクは、エンジンのついた自転車です。",
+      "tts": {
+        "text": "バイクは、エンジンのついた自転車です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エンジンが車輪をおします。",
+      "text_markdown": "エンジンが車輪をおします。",
+      "tts": {
+        "text": "エンジンが車輪をおします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ライダーはペダルをこぎません。",
+      "text_markdown": "ライダーはペダルをこぎません。",
+      "tts": {
+        "text": "ライダーはペダルをこぎません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "むかしは、バイクはありませんでした。",
+      "text_markdown": "むかしは、バイクはありませんでした。",
+      "tts": {
+        "text": "むかしは、バイクはありませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人々は馬に乗っていました。",
+      "text_markdown": "人々は馬に乗っていました。",
+      "tts": {
+        "text": "人々は馬に乗っていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人々は自転車に乗っていました。",
+      "text_markdown": "人々は自転車に乗っていました。",
+      "tts": {
+        "text": "人々は自転車に乗っていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自転車には車輪が二つあって、エンジンはありません。",
+      "text_markdown": "自転車には車輪が二つあって、エンジンはありません。",
+      "tts": {
+        "text": "自転車には車輪が二つあって、エンジンはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "足でペダルをこがなくてはなりません。",
+      "text_markdown": "足でペダルをこがなくてはなりません。",
+      "tts": {
+        "text": "足でペダルをこがなくてはなりません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1885年、ドイツのある男の人が大きなアイデアを思いつきました。",
+      "text_markdown": "1885年、ドイツのある男の人が大きなアイデアを思いつきました。",
+      "tts": {
+        "text": "せんはっぴゃくはちじゅうごねん、ドイツのある男の人が大きなアイデアを思いつきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "名前はゴットリープ・ダイムラーといいました。",
+      "text_markdown": "名前はゴットリープ・ダイムラーといいました。",
+      "tts": {
+        "text": "名前はゴットリープ ダイムラーといいました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "小さなガソリンエンジンを、木の自転車にとりつけました。",
+      "text_markdown": "小さなガソリンエンジンを、木の自転車にとりつけました。",
+      "tts": {
+        "text": "小さなガソリンエンジンを、木の自転車にとりつけました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その機械をライトヴァーゲンとよびました。",
+      "text_markdown": "その機械をライトヴァーゲンとよびました。",
+      "tts": {
+        "text": "その機械をライトヴァーゲンとよびました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この言葉はドイツ語で「乗る馬車」という意味です。",
+      "text_markdown": "この言葉はドイツ語で「乗る馬車」という意味です。",
+      "tts": {
+        "text": "この言葉はドイツ語で、乗る馬車、という意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これが世界ではじめてのバイクでした。",
+      "text_markdown": "これが世界ではじめてのバイクでした。",
+      "tts": {
+        "text": "これが世界ではじめてのバイクでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ライトヴァーゲンはうるさかったです。",
+      "text_markdown": "ライトヴァーゲンはうるさかったです。",
+      "tts": {
+        "text": "ライトヴァーゲンはうるさかったです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガタガタゆれました。",
+      "text_markdown": "ガタガタゆれました。",
+      "tts": {
+        "text": "ガタガタゆれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スピードは一つしかありませんでした。",
+      "text_markdown": "スピードは一つしかありませんでした。",
+      "tts": {
+        "text": "スピードは一つしかありませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "時速7マイルくらいで走れました。",
+      "text_markdown": "時速7マイルくらいで走れました。",
+      "tts": {
+        "text": "時速ななマイルくらいで走れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "今、自転車に乗っている人より、おそいです。",
+      "text_markdown": "今、自転車に乗っている人より、おそいです。",
+      "tts": {
+        "text": "今、自転車に乗っている人より、おそいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "でも、馬がいなくても動けたし、ペダルがなくても動けました。",
+      "text_markdown": "でも、馬がいなくても動けたし、ペダルがなくても動けました。",
+      "tts": {
+        "text": "でも、馬がいなくても動けたし、ペダルがなくても動けました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 はじめてのブーンとはしる二輪車",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイクが生まれたのです。",
+      "text_markdown": "バイクが生まれたのです。",
+      "tts": {
+        "text": "バイクが生まれたのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章 はじめての会社",
+      "text_markdown": "第二章 はじめての会社"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ダイムラーのあと、ほかの人たちもバイクを作りたくなりました。",
+      "text_markdown": "ダイムラーのあと、ほかの人たちもバイクを作りたくなりました。",
+      "tts": {
+        "text": "ダイムラーのあと、ほかの人たちもバイクを作りたくなりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "すぐに、世界中のあちこちに小さな工房が開かれました。",
+      "text_markdown": "すぐに、世界中のあちこちに小さな工房が開かれました。",
+      "tts": {
+        "text": "すぐに、世界中のあちこちに小さな工房が開かれました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イギリスでは、ジークフリート・ベットマンという人がトライアンフという会社をはじめました。",
+      "text_markdown": "イギリスでは、ジークフリート・ベットマンという人がトライアンフという会社をはじめました。",
+      "tts": {
+        "text": "イギリスでは、ジークフリート ベットマンという人がトライアンフという会社をはじめました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "はじめてのトライアンフのバイクは、1902年に作られました。",
+      "text_markdown": "はじめてのトライアンフのバイクは、1902年に作られました。",
+      "tts": {
+        "text": "はじめてのトライアンフのバイクは、せんきゅうひゃくにねんに作られました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカでは、ウィリアム・ハーレーとアーサー・ダビッドソンという二人の友だちが、小さな木の小屋ではじめてのバイクを作りました。",
+      "text_markdown": "アメリカでは、ウィリアム・ハーレーとアーサー・ダビッドソンという二人の友だちが、小さな木の小屋ではじめてのバイクを作りました。",
+      "tts": {
+        "text": "アメリカでは、ウィリアム ハーレーとアーサー ダビッドソンという二人の友だちが、小さな木の小屋ではじめてのバイクを作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その小屋は、ミルウォーキーという町にありました。",
+      "text_markdown": "その小屋は、ミルウォーキーという町にありました。",
+      "tts": {
+        "text": "その小屋は、ミルウォーキーという町にありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1903年のことでした。",
+      "text_markdown": "1903年のことでした。",
+      "tts": {
+        "text": "せんきゅうひゃくさんねんのことでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二人はその会社をハーレーダビッドソンとよびました。",
+      "text_markdown": "二人はその会社をハーレーダビッドソンとよびました。",
+      "tts": {
+        "text": "二人はその会社をハーレーダビッドソンとよびました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もう一つのアメリカの会社は、もう少しはやくはじまりました。",
+      "text_markdown": "もう一つのアメリカの会社は、もう少しはやくはじまりました。",
+      "tts": {
+        "text": "もう一つのアメリカの会社は、もう少しはやくはじまりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マサチューセッツしゅうのスプリングフィールドの二人の男の人が、1901年にはじめての機械を作りました。",
+      "text_markdown": "マサチューセッツしゅうのスプリングフィールドの二人の男の人が、1901年にはじめての機械を作りました。",
+      "tts": {
+        "text": "マサチューセッツしゅうのスプリングフィールドの二人の男の人が、せんきゅうひゃくいちねんにはじめての機械を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのバイクをインディアンとよびました。",
+      "text_markdown": "そのバイクをインディアンとよびました。",
+      "tts": {
+        "text": "そのバイクをインディアンとよびました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インドでは、ロイヤルエンフィールドという会社が、1901年にバイクを作りはじめました。",
+      "text_markdown": "インドでは、ロイヤルエンフィールドという会社が、1901年にバイクを作りはじめました。",
+      "tts": {
+        "text": "インドでは、ロイヤルエンフィールドという会社が、せんきゅうひゃくいちねんにバイクを作りはじめました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今、ロイヤルエンフィールドは、まだバイクを作っている世界でいちばん古いバイクの会社です。",
+      "text_markdown": "今、ロイヤルエンフィールドは、まだバイクを作っている世界でいちばん古いバイクの会社です。",
+      "tts": {
+        "text": "今、ロイヤルエンフィールドは、まだバイクを作っている世界でいちばん古いバイクの会社です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドイツでは、BMWという会社が少しあとで、1923年にバイクを作りはじめました。",
+      "text_markdown": "ドイツでは、BMWという会社が少しあとで、1923年にバイクを作りはじめました。",
+      "tts": {
+        "text": "ドイツでは、ビーエムダブリューという会社が少しあとで、せんきゅうひゃくにじゅうさんねんにバイクを作りはじめました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMWはドイツ語で「バイエルンの自動車工場」という意味です。",
+      "text_markdown": "BMWはドイツ語で「バイエルンの自動車工場」という意味です。",
+      "tts": {
+        "text": "ビーエムダブリューはドイツ語で、バイエルンの自動車工場、という意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1910年には、バイクはどこにでもありました。",
+      "text_markdown": "1910年には、バイクはどこにでもありました。",
+      "tts": {
+        "text": "せんきゅうひゃくじゅうねんには、バイクはどこにでもありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "町の道にも、いなかの道にもありました。",
+      "text_markdown": "町の道にも、いなかの道にもありました。",
+      "tts": {
+        "text": "町の道にも、いなかの道にもありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 はじめての会社",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バイクの時代が、本当にはじまったのです。",
+      "text_markdown": "バイクの時代が、本当にはじまったのです。",
+      "tts": {
+        "text": "バイクの時代が、本当にはじまったのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章 バイクが戦争に行く",
+      "text_markdown": "第三章 バイクが戦争に行く"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイクははやいです。",
+      "text_markdown": "バイクははやいです。",
+      "tts": {
+        "text": "バイクははやいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "せまい道も通れます。",
+      "text_markdown": "せまい道も通れます。",
+      "tts": {
+        "text": "せまい道も通れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "陣地から陣地へ、知らせを運べます。",
+      "text_markdown": "陣地から陣地へ、知らせを運べます。",
+      "tts": {
+        "text": "陣地から陣地へ、知らせを運べます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "だから、戦争がはじまると、軍たいはバイクをほしがりました。",
+      "text_markdown": "だから、戦争がはじまると、軍たいはバイクをほしがりました。",
+      "tts": {
+        "text": "だから、戦争がはじまると、軍たいはバイクをほしがりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一次世界大戦は、1914年にはじまりました。",
+      "text_markdown": "第一次世界大戦は、1914年にはじまりました。",
+      "tts": {
+        "text": "第一次世界大戦は、せんきゅうひゃくじゅうよねんにはじまりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "兵たいはトライアンフのバイクで命令を運びました。",
+      "text_markdown": "兵たいはトライアンフのバイクで命令を運びました。",
+      "tts": {
+        "text": "兵たいはトライアンフのバイクで命令を運びました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "トライアンフ・モデルHは、じょうぶでしずかでした。",
+      "text_markdown": "トライアンフ・モデルHは、じょうぶでしずかでした。",
+      "tts": {
+        "text": "トライアンフ モデル エイチは、じょうぶでしずかでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "馬が行けない所へも行けました。",
+      "text_markdown": "馬が行けない所へも行けました。",
+      "tts": {
+        "text": "馬が行けない所へも行けました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二次世界大戦は、1939年にはじまりました。",
+      "text_markdown": "第二次世界大戦は、1939年にはじまりました。",
+      "tts": {
+        "text": "第二次世界大戦は、せんきゅうひゃくさんじゅうきゅうねんにはじまりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そのころ、バイクはもっとはやく、もっとじょうぶになっていました。",
+      "text_markdown": "そのころ、バイクはもっとはやく、もっとじょうぶになっていました。",
+      "tts": {
+        "text": "そのころ、バイクはもっとはやく、もっとじょうぶになっていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アメリカの兵たいは、ハーレーダビッドソンWLAに乗りました。",
+      "text_markdown": "アメリカの兵たいは、ハーレーダビッドソンWLAに乗りました。",
+      "tts": {
+        "text": "アメリカの兵たいは、ハーレーダビッドソン ダブリューエルエーに乗りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドイツの兵たいは、BMW R75に乗りました。",
+      "text_markdown": "ドイツの兵たいは、BMW R75に乗りました。",
+      "tts": {
+        "text": "ドイツの兵たいは、ビーエムダブリュー アール七十五に乗りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75にはサイドカーがついていて、三つめの車輪と、もう一人の兵たいがすわるせきがありました。",
+      "text_markdown": "R75にはサイドカーがついていて、三つめの車輪と、もう一人の兵たいがすわるせきがありました。",
+      "tts": {
+        "text": "アール七十五にはサイドカーがついていて、三つめの車輪と、もう一人の兵たいがすわるせきがありました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争のあと、兵たいたちは家にかえりました。",
+      "text_markdown": "戦争のあと、兵たいたちは家にかえりました。",
+      "tts": {
+        "text": "戦争のあと、兵たいたちは家にかえりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バイクもいっしょに持ってかえりました。",
+      "text_markdown": "バイクもいっしょに持ってかえりました。",
+      "tts": {
+        "text": "バイクもいっしょに持ってかえりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの人がそのまま乗りつづけたかったのです。",
+      "text_markdown": "多くの人がそのまま乗りつづけたかったのです。",
+      "tts": {
+        "text": "多くの人がそのまま乗りつづけたかったのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自分たちのバイククラブをはじめた人たちもいました。",
+      "text_markdown": "自分たちのバイククラブをはじめた人たちもいました。",
+      "tts": {
+        "text": "自分たちのバイククラブをはじめた人たちもいました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦争はバイクを有名にしました。",
+      "text_markdown": "戦争はバイクを有名にしました。",
+      "tts": {
+        "text": "戦争はバイクを有名にしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何百万人もの人が、はじめてバイクを見ました。",
+      "text_markdown": "何百万人もの人が、はじめてバイクを見ました。",
+      "tts": {
+        "text": "何百万人もの人が、はじめてバイクを見ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 バイクが戦争に行く",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの人が自分のバイクをほしくなりました。",
+      "text_markdown": "多くの人が自分のバイクをほしくなりました。",
+      "tts": {
+        "text": "多くの人が自分のバイクをほしくなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章 日本のたいとう",
+      "text_markdown": "第四章 日本のたいとう"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二次世界大戦のあと、日本はまずしかったです。",
+      "text_markdown": "第二次世界大戦のあと、日本はまずしかったです。",
+      "tts": {
+        "text": "第二次世界大戦のあと、日本はまずしかったです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどの車は高すぎました。",
+      "text_markdown": "ほとんどの車は高すぎました。",
+      "tts": {
+        "text": "ほとんどの車は高すぎました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人々は、小さくて安く動ける方法をもとめていました。",
+      "text_markdown": "人々は、小さくて安く動ける方法をもとめていました。",
+      "tts": {
+        "text": "人々は、小さくて安く動ける方法をもとめていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わかい日本人がチャンスを見つけました。",
+      "text_markdown": "わかい日本人がチャンスを見つけました。",
+      "tts": {
+        "text": "わかい日本人がチャンスを見つけました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "名前は本田宗一郎といいました。",
+      "text_markdown": "名前は本田宗一郎といいました。",
+      "tts": {
+        "text": "名前は本田宗一郎といいました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1948年に小さな会社をはじめました。",
+      "text_markdown": "1948年に小さな会社をはじめました。",
+      "tts": {
+        "text": "せんきゅうひゃくよんじゅうはちねんに小さな会社をはじめました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その会社をホンダとよびました。",
+      "text_markdown": "その会社をホンダとよびました。",
+      "tts": {
+        "text": "その会社をホンダとよびました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1958年、ホンダはスーパーカブという小さなバイクを作りました。",
+      "text_markdown": "1958年、ホンダはスーパーカブという小さなバイクを作りました。",
+      "tts": {
+        "text": "せんきゅうひゃくごじゅうはちねん、ホンダはスーパーカブという小さなバイクを作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スーパーカブは乗りやすかったです。",
+      "text_markdown": "スーパーカブは乗りやすかったです。",
+      "tts": {
+        "text": "スーパーカブは乗りやすかったです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "なおしやすかったです。",
+      "text_markdown": "なおしやすかったです。",
+      "tts": {
+        "text": "なおしやすかったです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "とてもとても安かったです。",
+      "text_markdown": "とてもとても安かったです。",
+      "tts": {
+        "text": "とてもとても安かったです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の人々がスーパーカブを買いました。",
+      "text_markdown": "世界中の人々がスーパーカブを買いました。",
+      "tts": {
+        "text": "世界中の人々がスーパーカブを買いました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今、1億台以上のスーパーカブが売れました。",
+      "text_markdown": "今、1億台以上のスーパーカブが売れました。",
+      "tts": {
+        "text": "今、いちおくだいいじょうのスーパーカブが売れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史上いちばん売れた、エンジンつきの乗り物です。",
+      "text_markdown": "歴史上いちばん売れた、エンジンつきの乗り物です。",
+      "tts": {
+        "text": "歴史上いちばん売れた、エンジンつきの乗り物です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "すぐに、ほかの三つの日本の会社がホンダにつづきました。",
+      "text_markdown": "すぐに、ほかの三つの日本の会社がホンダにつづきました。",
+      "tts": {
+        "text": "すぐに、ほかの三つの日本の会社がホンダにつづきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヤマハ、スズキ、そしてカワサキです。",
+      "text_markdown": "ヤマハ、スズキ、そしてカワサキです。",
+      "tts": {
+        "text": "ヤマハ、スズキ、そしてカワサキです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ホンダといっしょに、四つの会社はビッグフォーとよばれます。",
+      "text_markdown": "ホンダといっしょに、四つの会社はビッグフォーとよばれます。",
+      "tts": {
+        "text": "ホンダといっしょに、四つの会社はビッグフォーとよばれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ビッグフォーは、はやくて、安くて、乗りやすいバイクを作りました。",
+      "text_markdown": "ビッグフォーは、はやくて、安くて、乗りやすいバイクを作りました。",
+      "tts": {
+        "text": "ビッグフォーは、はやくて、安くて、乗りやすいバイクを作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1960年代には、日本のバイクはどこにでもありました。",
+      "text_markdown": "1960年代には、日本のバイクはどこにでもありました。",
+      "tts": {
+        "text": "せんきゅうひゃくろくじゅうねんだいには、日本のバイクはどこにでもありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 日本のたいとう",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あたらしい道の王さまになりました。",
+      "text_markdown": "あたらしい道の王さまになりました。",
+      "tts": {
+        "text": "あたらしい道の王さまになりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "text_markdown": "第五章 もっとはやく、もっとはやく、もっとはやく"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1960年代、ライダーたちはもっとはやく走りたがりました。",
+      "text_markdown": "1960年代、ライダーたちはもっとはやく走りたがりました。",
+      "tts": {
+        "text": "せんきゅうひゃくろくじゅうねんだい、ライダーたちはもっとはやく走りたがりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "作り手たちは、世界でいちばんはやいバイクを作るレースをはじめました。",
+      "text_markdown": "作り手たちは、世界でいちばんはやいバイクを作るレースをはじめました。",
+      "tts": {
+        "text": "作り手たちは、世界でいちばんはやいバイクを作るレースをはじめました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イタリアでは、MVアグスタという小さな会社が、レースに次々とかつ、きれいな赤いバイクを作りました。",
+      "text_markdown": "イタリアでは、MVアグスタという小さな会社が、レースに次々とかつ、きれいな赤いバイクを作りました。",
+      "tts": {
+        "text": "イタリアでは、エムブイ アグスタという小さな会社が、レースに次々とかつ、きれいな赤いバイクを作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスでは、トライアンフとノートンも力強いバイクを作りました。",
+      "text_markdown": "イギリスでは、トライアンフとノートンも力強いバイクを作りました。",
+      "tts": {
+        "text": "イギリスでは、トライアンフとノートンも力強いバイクを作りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、1969年、ホンダはすごいことをしました。",
+      "text_markdown": "そして、1969年、ホンダはすごいことをしました。",
+      "tts": {
+        "text": "そして、せんきゅうひゃくろくじゅうきゅうねん、ホンダはすごいことをしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "CB 750というバイクを作ったのです。",
+      "text_markdown": "CB 750というバイクを作ったのです。",
+      "tts": {
+        "text": "シービー七百五十というバイクを作ったのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "シリンダーが四つあって、大きなエンジンがついていました。",
+      "text_markdown": "シリンダーが四つあって、大きなエンジンがついていました。",
+      "tts": {
+        "text": "シリンダーが四つあって、大きなエンジンがついていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "時速120マイル以上で走れました。",
+      "text_markdown": "時速120マイル以上で走れました。",
+      "tts": {
+        "text": "時速ひゃくにじゅうマイル以上で走れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "はじめての本当のスーパーバイクでした。",
+      "text_markdown": "はじめての本当のスーパーバイクでした。",
+      "tts": {
+        "text": "はじめての本当のスーパーバイクでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "CB 750のあと、どの会社もスーパーバイクを作りたがりました。",
+      "text_markdown": "CB 750のあと、どの会社もスーパーバイクを作りたがりました。",
+      "tts": {
+        "text": "シービー七百五十のあと、どの会社もスーパーバイクを作りたがりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バイクはどんどんはやくなりました。",
+      "text_markdown": "バイクはどんどんはやくなりました。",
+      "tts": {
+        "text": "バイクはどんどんはやくなりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのうち、風を切るつるつるのプラスチックのからである、明るいフェアリングがつきました。",
+      "text_markdown": "そのうち、風を切るつるつるのプラスチックのからである、明るいフェアリングがつきました。",
+      "tts": {
+        "text": "そのうち、風を切るつるつるのプラスチックのからである、明るいフェアリングがつきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1990年、カワサキZX-11という日本のバイクが、世界でいちばんはやいバイクになりました。",
+      "text_markdown": "1990年、カワサキZX-11という日本のバイクが、世界でいちばんはやいバイクになりました。",
+      "tts": {
+        "text": "せんきゅうひゃくきゅうじゅうねん、カワサキ ゼットエックス十一という日本のバイクが、世界でいちばんはやいバイクになりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "時速175マイルくらいで走れました。",
+      "text_markdown": "時速175マイルくらいで走れました。",
+      "tts": {
+        "text": "時速ひゃくななじゅうごマイルくらいで走れました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数年あと、スズキ・ハヤブサはもっとはやく走りました。",
+      "text_markdown": "数年あと、スズキ・ハヤブサはもっとはやく走りました。",
+      "tts": {
+        "text": "数年あと、スズキ ハヤブサはもっとはやく走りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "時速194マイルに達しました。",
+      "text_markdown": "時速194マイルに達しました。",
+      "tts": {
+        "text": "時速ひゃくきゅうじゅうよんマイルに達しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 もっとはやく、もっとはやく、もっとはやく",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今、道を走っているほとんどの車よりはやいです。",
+      "text_markdown": "今、道を走っているほとんどの車よりはやいです。",
+      "tts": {
+        "text": "今、道を走っているほとんどの車よりはやいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章 いろいろなしゅるいのバイク",
+      "text_markdown": "第六章 いろいろなしゅるいのバイク"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今、バイクにはいろいろな形があります。",
+      "text_markdown": "今、バイクにはいろいろな形があります。",
+      "tts": {
+        "text": "今、バイクにはいろいろな形があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それぞれ、ちがう仕事のために作られています。",
+      "text_markdown": "それぞれ、ちがう仕事のために作られています。",
+      "tts": {
+        "text": "それぞれ、ちがう仕事のために作られています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スポーツバイクは、とてもはやく走るために作られています。",
+      "text_markdown": "スポーツバイクは、とてもはやく走るために作られています。",
+      "tts": {
+        "text": "スポーツバイクは、とてもはやく走るために作られています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "かるくて、ひくいです。",
+      "text_markdown": "かるくて、ひくいです。",
+      "tts": {
+        "text": "かるくて、ひくいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ライダーは前にかがみます。",
+      "text_markdown": "ライダーは前にかがみます。",
+      "tts": {
+        "text": "ライダーは前にかがみます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スポーツバイクは、なめらかな道やレース場のために作られています。",
+      "text_markdown": "スポーツバイクは、なめらかな道やレース場のために作られています。",
+      "tts": {
+        "text": "スポーツバイクは、なめらかな道やレース場のために作られています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ダートバイクは、どろや土のために作られています。",
+      "text_markdown": "ダートバイクは、どろや土のために作られています。",
+      "tts": {
+        "text": "ダートバイクは、どろや土のために作られています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "高い車輪と大きなタイヤがついています。",
+      "text_markdown": "高い車輪と大きなタイヤがついています。",
+      "tts": {
+        "text": "高い車輪と大きなタイヤがついています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ダートバイクは丘をジャンプできます。",
+      "text_markdown": "ダートバイクは丘をジャンプできます。",
+      "tts": {
+        "text": "ダートバイクは丘をジャンプできます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くのわかいライダーは、まずダートバイクで習います。",
+      "text_markdown": "多くのわかいライダーは、まずダートバイクで習います。",
+      "tts": {
+        "text": "多くのわかいライダーは、まずダートバイクで習います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クルーザーは長くてひくいです。",
+      "text_markdown": "クルーザーは長くてひくいです。",
+      "tts": {
+        "text": "クルーザーは長くてひくいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ライダーはまっすぐすわって、ゆっくり走ります。",
+      "text_markdown": "ライダーはまっすぐすわって、ゆっくり走ります。",
+      "tts": {
+        "text": "ライダーはまっすぐすわって、ゆっくり走ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハーレーダビッドソンはクルーザーで有名です。",
+      "text_markdown": "ハーレーダビッドソンはクルーザーで有名です。",
+      "tts": {
+        "text": "ハーレーダビッドソンはクルーザーで有名です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インディアンも有名です。",
+      "text_markdown": "インディアンも有名です。",
+      "tts": {
+        "text": "インディアンも有名です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アドベンチャーバイクは、長いたびのために作られています。",
+      "text_markdown": "アドベンチャーバイクは、長いたびのために作られています。",
+      "tts": {
+        "text": "アドベンチャーバイクは、長いたびのために作られています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "道でも土でも走れます。",
+      "text_markdown": "道でも土でも走れます。",
+      "tts": {
+        "text": "道でも土でも走れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GSは有名なアドベンチャーバイクです。",
+      "text_markdown": "BMW GSは有名なアドベンチャーバイクです。",
+      "tts": {
+        "text": "ビーエムダブリュー ジーエスは有名なアドベンチャーバイクです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "KTMもそうです。",
+      "text_markdown": "KTMもそうです。",
+      "tts": {
+        "text": "ケーティーエムもそうです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チョッパーバイク、スクーターバイク、レーシングバイク、そして電気バイクもあります。",
+      "text_markdown": "チョッパーバイク、スクーターバイク、レーシングバイク、そして電気バイクもあります。",
+      "tts": {
+        "text": "チョッパーバイク、スクーターバイク、レーシングバイク、そして電気バイクもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほとんどどんな道のためにも、バイクがあります。",
+      "text_markdown": "ほとんどどんな道のためにも、バイクがあります。",
+      "tts": {
+        "text": "ほとんどどんな道のためにも、バイクがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろなしゅるいのバイク",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今、世界のどの国にもバイクがあります。",
+      "text_markdown": "今、世界のどの国にもバイクがあります。",
+      "tts": {
+        "text": "今、世界のどの国にもバイクがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章 あたらしい道",
+      "text_markdown": "第七章 あたらしい道"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今、バイクにはあたらしいしゅるいのエンジンがあります。",
+      "text_markdown": "今、バイクにはあたらしいしゅるいのエンジンがあります。",
+      "tts": {
+        "text": "今、バイクにはあたらしいしゅるいのエンジンがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "電気エンジンです。",
+      "text_markdown": "電気エンジンです。",
+      "tts": {
+        "text": "電気エンジンです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "電気バイクはしずかです。",
+      "text_markdown": "電気バイクはしずかです。",
+      "tts": {
+        "text": "電気バイクはしずかです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ガソリンはいりません。",
+      "text_markdown": "ガソリンはいりません。",
+      "tts": {
+        "text": "ガソリンはいりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "電話みたいに、コンセントにつなぐだけです。",
+      "text_markdown": "電話みたいに、コンセントにつなぐだけです。",
+      "tts": {
+        "text": "電話みたいに、コンセントにつなぐだけです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゼロという会社が、カリフォルニアで電気バイクを作っています。",
+      "text_markdown": "ゼロという会社が、カリフォルニアで電気バイクを作っています。",
+      "tts": {
+        "text": "ゼロという会社が、カリフォルニアで電気バイクを作っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハーレーダビッドソンは、今、ライブワイヤーという電気バイクを作っています。",
+      "text_markdown": "ハーレーダビッドソンは、今、ライブワイヤーという電気バイクを作っています。",
+      "tts": {
+        "text": "ハーレーダビッドソンは、今、ライブワイヤーという電気バイクを作っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エネルジカというイタリアの会社は、電気のレーシングバイクを作っています。",
+      "text_markdown": "エネルジカというイタリアの会社は、電気のレーシングバイクを作っています。",
+      "tts": {
+        "text": "エネルジカというイタリアの会社は、電気のレーシングバイクを作っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "とてもはやいです。",
+      "text_markdown": "とてもはやいです。",
+      "tts": {
+        "text": "とてもはやいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "はじめてのバイク、ライトヴァーゲンは、時速7マイルで走れました。",
+      "text_markdown": "はじめてのバイク、ライトヴァーゲンは、時速7マイルで走れました。",
+      "tts": {
+        "text": "はじめてのバイク、ライトヴァーゲンは、時速ななマイルで走れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今の電気バイクは、時速200マイル以上で走れます。",
+      "text_markdown": "今の電気バイクは、時速200マイル以上で走れます。",
+      "tts": {
+        "text": "今の電気バイクは、時速にひゃくマイル以上で走れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ここまでが、バイクの物語です。",
+      "text_markdown": "ここまでが、バイクの物語です。",
+      "tts": {
+        "text": "ここまでが、バイクの物語です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは大きな物語でした。",
+      "text_markdown": "これは大きな物語でした。",
+      "tts": {
+        "text": "これは大きな物語でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "つぎの十一さつの本では、小さな物語をはなします。",
+      "text_markdown": "つぎの十一さつの本では、小さな物語をはなします。",
+      "tts": {
+        "text": "つぎの十一さつの本では、小さな物語をはなします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それぞれ、バイクの世界の一つの部分について書いてあります。",
+      "text_markdown": "それぞれ、バイクの世界の一つの部分について書いてあります。",
+      "tts": {
+        "text": "それぞれ、バイクの世界の一つの部分について書いてあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二かんはハーレーダビッドソンについてです。",
+      "text_markdown": "二かんはハーレーダビッドソンについてです。",
+      "tts": {
+        "text": "二かんはハーレーダビッドソンについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三かんはホンダについてです。",
+      "text_markdown": "三かんはホンダについてです。",
+      "tts": {
+        "text": "三かんはホンダについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "四かんはイタリアのドゥカティについてです。",
+      "text_markdown": "四かんはイタリアのドゥカティについてです。",
+      "tts": {
+        "text": "四かんはイタリアのドゥカティについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "五かんはドイツのBMWについてです。",
+      "text_markdown": "五かんはドイツのBMWについてです。",
+      "tts": {
+        "text": "五かんはドイツのビーエムダブリューについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "六かんはイギリスのトライアンフについてです。",
+      "text_markdown": "六かんはイギリスのトライアンフについてです。",
+      "tts": {
+        "text": "六かんはイギリスのトライアンフについてです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "七かんはダートバイクについてです。",
+      "text_markdown": "七かんはダートバイクについてです。",
+      "tts": {
+        "text": "七かんはダートバイクについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "八かんはスポーツバイクについてです。",
+      "text_markdown": "八かんはスポーツバイクについてです。",
+      "tts": {
+        "text": "八かんはスポーツバイクについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "九かんはクルーザーとチョッパーについてです。",
+      "text_markdown": "九かんはクルーザーとチョッパーについてです。",
+      "tts": {
+        "text": "九かんはクルーザーとチョッパーについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "十かんはアドベンチャーバイクについてです。",
+      "text_markdown": "十かんはアドベンチャーバイクについてです。",
+      "tts": {
+        "text": "十かんはアドベンチャーバイクについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "十一かんはレースについてです。",
+      "text_markdown": "十一かんはレースについてです。",
+      "tts": {
+        "text": "十一かんはレースについてです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十二かんは電気バイクとみらいについてです。",
+      "text_markdown": "十二かんは電気バイクとみらいについてです。",
+      "tts": {
+        "text": "十二かんは電気バイクとみらいについてです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いちばんおもしろそうなのをえらんでください。",
+      "text_markdown": "いちばんおもしろそうなのをえらんでください。",
+      "tts": {
+        "text": "いちばんおもしろそうなのをえらんでください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 あたらしい道",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それから、いっしょに走りに来てください。",
+      "text_markdown": "それから、いっしょに走りに来てください。",
+      "tts": {
+        "text": "それから、いっしょに走りに来てください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "この本について",
+      "text_markdown": "この本について"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはバイクシリーズのさいしょの本です。",
+      "text_markdown": "これはバイクシリーズのさいしょの本です。",
+      "tts": {
+        "text": "これはバイクシリーズのさいしょの本です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オーガストが声に出して読みます。",
+      "text_markdown": "オーガストが声に出して読みます。",
+      "tts": {
+        "text": "オーガストが声に出して読みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どんな言葉でもいっしょに読めるように、文はみじかくてはっきりしています。",
+      "text_markdown": "どんな言葉でもいっしょに読めるように、文はみじかくてはっきりしています。",
+      "tts": {
+        "text": "どんな言葉でもいっしょに読めるように、文はみじかくてはっきりしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの言葉で文がどう聞こえるか知りたかったら、その言葉で同じ本を聞いてください。",
+      "text_markdown": "ほかの言葉で文がどう聞こえるか知りたかったら、その言葉で同じ本を聞いてください。",
+      "tts": {
+        "text": "ほかの言葉で文がどう聞こえるか知りたかったら、その言葉で同じ本を聞いてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ページの上の言葉と、聞こえる言葉が同じです。",
+      "text_markdown": "ページの上の言葉と、聞こえる言葉が同じです。",
+      "tts": {
+        "text": "ページの上の言葉と、聞こえる言葉が同じです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そうやって学びます。",
+      "text_markdown": "そうやって学びます。",
+      "tts": {
+        "text": "そうやって学びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "さあ、バイクをさがして、ブーンという音を聞いてみよう。",
+      "text_markdown": "さあ、バイクをさがして、ブーンという音を聞いてみよう。",
+      "tts": {
+        "text": "さあ、バイクをさがして、ブーンという音を聞いてみよう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Примечание для читателя",
+      "text_markdown": "Примечание для читателя"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уже двести лет поезд связывает мир железным путем.",
+      "text_markdown": "Уже двести лет поезд связывает мир железным путем.",
+      "tts": {
+        "text": "Уже двести лет поезд связывает мир железным путем.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Поезда перевозят людей.",
+      "text_markdown": "Поезда перевозят людей.",
+      "tts": {
+        "text": "Поезда перевозят людей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Поезда перевозят грузы.",
+      "text_markdown": "Поезда перевозят грузы.",
+      "tts": {
+        "text": "Поезда перевозят грузы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Длинный поезд может увезти столько зерна, сколько нужно целому городу.",
+      "text_markdown": "Длинный поезд может увезти столько зерна, сколько нужно целому городу.",
+      "tts": {
+        "text": "Длинный поезд может увезти столько зерна, сколько нужно целому городу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Быстрый поезд может обогнать машину на шоссе.",
+      "text_markdown": "Быстрый поезд может обогнать машину на шоссе.",
+      "tts": {
+        "text": "Быстрый поезд может обогнать машину на шоссе.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Примечание для читателя",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "История поезда начинается в Англии почти двести лет назад с человека, огня и чайника с кипящей водой.",
+      "text_markdown": "История поезда начинается в Англии почти двести лет назад с человека, огня и чайника с кипящей водой.",
+      "tts": {
+        "text": "История поезда начинается в Англии почти двести лет назад с человека, огня и чайника с кипящей водой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 1. Первый паровой поезд",
+      "text_markdown": "Глава 1. Первый паровой поезд"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поезд это ряд вагонов, который идет по железным рельсам.",
+      "text_markdown": "Поезд это ряд вагонов, который идет по железным рельсам.",
+      "tts": {
+        "text": "Поезд это ряд вагонов, который идет по железным рельсам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Первым идет локомотив.",
+      "text_markdown": "Первым идет локомотив.",
+      "tts": {
+        "text": "Первым идет локомотив.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он тянет все остальные.",
+      "text_markdown": "Он тянет все остальные.",
+      "tts": {
+        "text": "Он тянет все остальные.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первые поезда работали на пару.",
+      "text_markdown": "Первые поезда работали на пару.",
+      "tts": {
+        "text": "Первые поезда работали на пару.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Паровая машина сжигает уголь, чтобы вскипятить воду.",
+      "text_markdown": "Паровая машина сжигает уголь, чтобы вскипятить воду.",
+      "tts": {
+        "text": "Паровая машина сжигает уголь, чтобы вскипятить воду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Горячий пар толкает поршни.",
+      "text_markdown": "Горячий пар толкает поршни.",
+      "tts": {
+        "text": "Горячий пар толкает поршни.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Поршни вращают колеса.",
+      "text_markdown": "Поршни вращают колеса.",
+      "tts": {
+        "text": "Поршни вращают колеса.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Колеса катятся по рельсам.",
+      "text_markdown": "Колеса катятся по рельсам.",
+      "tts": {
+        "text": "Колеса катятся по рельсам.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эта история начинается в Англии.",
+      "text_markdown": "Эта история начинается в Англии.",
+      "tts": {
+        "text": "Эта история начинается в Англии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В 1825 году открылась первая общественная железная дорога.",
+      "text_markdown": "В 1825 году открылась первая общественная железная дорога.",
+      "tts": {
+        "text": "В тысяча восемьсот двадцать пятом году открылась первая общественная железная дорога.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она называлась «Железная дорога Стоктон и Дарлингтон».",
+      "text_markdown": "Она называлась «Железная дорога Стоктон и Дарлингтон».",
+      "tts": {
+        "text": "Она называлась железная дорога Стоктон и Дарлингтон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Она возила уголь от шахты к реке.",
+      "text_markdown": "Она возила уголь от шахты к реке.",
+      "tts": {
+        "text": "Она возила уголь от шахты к реке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Локомотивы строил человек по имени Джордж Стефенсон.",
+      "text_markdown": "Локомотивы строил человек по имени Джордж Стефенсон.",
+      "tts": {
+        "text": "Локомотивы строил человек по имени Джордж Стефенсон.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Люди называли его Отцом железных дорог.",
+      "text_markdown": "Люди называли его Отцом железных дорог.",
+      "tts": {
+        "text": "Люди называли его Отцом железных дорог.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В 1829 году его сын Роберт Стефенсон построил знаменитый локомотив под названием «Ракета».",
+      "text_markdown": "В 1829 году его сын Роберт Стефенсон построил знаменитый локомотив под названием «Ракета».",
+      "tts": {
+        "text": "В тысяча восемьсот двадцать девятом году его сын Роберт Стефенсон построил знаменитый локомотив под названием Ракета.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он победил в гонке за звание самого быстрого поезда.",
+      "text_markdown": "Он победил в гонке за звание самого быстрого поезда.",
+      "tts": {
+        "text": "Он победил в гонке за звание самого быстрого поезда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "«Ракета» могла ехать почти со скоростью 30 миль в час.",
+      "text_markdown": "«Ракета» могла ехать почти со скоростью 30 миль в час.",
+      "tts": {
+        "text": "Ракета могла ехать почти со скоростью тридцать миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Это было быстрее любой лошади.",
+      "text_markdown": "Это было быстрее любой лошади.",
+      "tts": {
+        "text": "Это было быстрее любой лошади.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Глава 1. Первый паровой поезд",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эпоха поезда началась.",
+      "text_markdown": "Эпоха поезда началась.",
+      "tts": {
+        "text": "Эпоха поезда началась.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 2. Железная дорога растет",
+      "text_markdown": "Глава 2. Железная дорога растет"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После «Ракеты» железные дороги начали быстро расти.",
+      "text_markdown": "После «Ракеты» железные дороги начали быстро расти.",
+      "tts": {
+        "text": "После «Ракеты» железные дороги начали быстро расти.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В Британии проложили тысячи миль путей.",
+      "text_markdown": "В Британии проложили тысячи миль путей.",
+      "tts": {
+        "text": "В Британии проложили тысячи миль путей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом за ней последовал и весь остальной мир.",
+      "text_markdown": "Потом за ней последовал и весь остальной мир.",
+      "tts": {
+        "text": "Потом за ней последовал и весь остальной мир.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В 1830 году открылась первая большая американская железная дорога.",
+      "text_markdown": "В 1830 году открылась первая большая американская железная дорога.",
+      "tts": {
+        "text": "В тысяча восемьсот тридцатом году открылась первая большая американская железная дорога.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она называлась «Балтимор энд Огайо».",
+      "text_markdown": "Она называлась «Балтимор энд Огайо».",
+      "tts": {
+        "text": "Она называлась Балтимор энд Огайо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она соединила город Балтимор с рекой Огайо.",
+      "text_markdown": "Она соединила город Балтимор с рекой Огайо.",
+      "tts": {
+        "text": "Она соединила город Балтимор с рекой Огайо.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во Франции первая железная дорога открылась в 1832 году.",
+      "text_markdown": "Во Франции первая железная дорога открылась в 1832 году.",
+      "tts": {
+        "text": "Во Франции первая железная дорога открылась в тысяча восемьсот тридцать втором году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она возила уголь, как и британская линия.",
+      "text_markdown": "Она возила уголь, как и британская линия.",
+      "tts": {
+        "text": "Она возила уголь, как и британская линия.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Германии первая длинная железная дорога открылась в 1839 году.",
+      "text_markdown": "В Германии первая длинная железная дорога открылась в 1839 году.",
+      "tts": {
+        "text": "В Германии первая длинная железная дорога открылась в тысяча восемьсот тридцать девятом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она шла между двумя городами, Лейпцигом и Дрезденом.",
+      "text_markdown": "Она шла между двумя городами, Лейпцигом и Дрезденом.",
+      "tts": {
+        "text": "Она шла между двумя городами, Лейпцигом и Дрезденом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Россия построила свою первую железную дорогу в 1837 году.",
+      "text_markdown": "Россия построила свою первую железную дорогу в 1837 году.",
+      "tts": {
+        "text": "Россия построила свою первую железную дорогу в тысяча восемьсот тридцать седьмом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Линия шла от Санкт-Петербурга до соседнего города.",
+      "text_markdown": "Линия шла от Санкт-Петербурга до соседнего города.",
+      "tts": {
+        "text": "Линия шла от Санкт Петербурга до соседнего города.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Строить железную дорогу было тяжело.",
+      "text_markdown": "Строить железную дорогу было тяжело.",
+      "tts": {
+        "text": "Строить железную дорогу было тяжело.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Люди рыли тоннели сквозь горы.",
+      "text_markdown": "Люди рыли тоннели сквозь горы.",
+      "tts": {
+        "text": "Люди рыли тоннели сквозь горы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они строили мосты через реки.",
+      "text_markdown": "Они строили мосты через реки.",
+      "tts": {
+        "text": "Они строили мосты через реки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они укладывали каждый рельс вручную.",
+      "text_markdown": "Они укладывали каждый рельс вручную.",
+      "tts": {
+        "text": "Они укладывали каждый рельс вручную.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Города росли вдоль линий.",
+      "text_markdown": "Города росли вдоль линий.",
+      "tts": {
+        "text": "Города росли вдоль линий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Небольшая деревня со станцией могла стать городом.",
+      "text_markdown": "Небольшая деревня со станцией могла стать городом.",
+      "tts": {
+        "text": "Небольшая деревня со станцией могла стать городом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Поезд привозил людей.",
+      "text_markdown": "Поезд привозил людей.",
+      "tts": {
+        "text": "Поезд привозил людей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Поезд привозил грузы.",
+      "text_markdown": "Поезд привозил грузы.",
+      "tts": {
+        "text": "Поезд привозил грузы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Глава 2. Железная дорога растет",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Поезд сделал мир немного ближе.",
+      "text_markdown": "Поезд сделал мир немного ближе.",
+      "tts": {
+        "text": "Поезд сделал мир немного ближе.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 3. Великие магистрали",
+      "text_markdown": "Глава 3. Великие магистрали"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Одни железные дороги короткие.",
+      "text_markdown": "Одни железные дороги короткие.",
+      "tts": {
+        "text": "Одни железные дороги короткие.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Другие очень длинные.",
+      "text_markdown": "Другие очень длинные.",
+      "tts": {
+        "text": "Другие очень длинные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Самые длинные линии пересекали целые континенты.",
+      "text_markdown": "Самые длинные линии пересекали целые континенты.",
+      "tts": {
+        "text": "Самые длинные линии пересекали целые континенты.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Соединенных Штатах две компании строили железную дорогу через всю страну.",
+      "text_markdown": "В Соединенных Штатах две компании строили железную дорогу через всю страну.",
+      "tts": {
+        "text": "В Соединенных Штатах две компании строили железную дорогу через всю страну.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Одна начала в Калифорнии и шла на восток.",
+      "text_markdown": "Одна начала в Калифорнии и шла на восток.",
+      "tts": {
+        "text": "Одна начала в Калифорнии и шла на восток.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Другая начала в Небраске и шла на запад.",
+      "text_markdown": "Другая начала в Небраске и шла на запад.",
+      "tts": {
+        "text": "Другая начала в Небраске и шла на запад.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они встретились в месте под названием Промонтори Саммит в Юте.",
+      "text_markdown": "Они встретились в месте под названием Промонтори Саммит в Юте.",
+      "tts": {
+        "text": "Они встретились в месте под названием Промонтори Саммит в Юте.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это было в 1869 году.",
+      "text_markdown": "Это было в 1869 году.",
+      "tts": {
+        "text": "Это было в тысяча восемьсот шестьдесят девятом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Последний костыль был сделан из золота.",
+      "text_markdown": "Последний костыль был сделан из золота.",
+      "tts": {
+        "text": "Последний костыль был сделан из золота.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Люди назвали его «Золотым костылем».",
+      "text_markdown": "Люди назвали его «Золотым костылем».",
+      "tts": {
+        "text": "Люди назвали его «Золотым костылем».",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Эту линию назвали Трансконтинентальной железной дорогой.",
+      "text_markdown": "Эту линию назвали Трансконтинентальной железной дорогой.",
+      "tts": {
+        "text": "Эту линию назвали Трансконтинентальной железной дорогой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Теперь можно было доехать на поезде от одного океана до другого примерно за неделю.",
+      "text_markdown": "Теперь можно было доехать на поезде от одного океана до другого примерно за неделю.",
+      "tts": {
+        "text": "Теперь можно было доехать на поезде от одного океана до другого примерно за неделю.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Россия построила еще более длинную линию.",
+      "text_markdown": "Россия построила еще более длинную линию.",
+      "tts": {
+        "text": "Россия построила еще более длинную линию.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она называется Транссибирской магистралью.",
+      "text_markdown": "Она называется Транссибирской магистралью.",
+      "tts": {
+        "text": "Она называется Транссибирской магистралью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она тянется от Москвы на западе до Владивостока на востоке.",
+      "text_markdown": "Она тянется от Москвы на западе до Владивостока на востоке.",
+      "tts": {
+        "text": "Она тянется от Москвы на западе до Владивостока на востоке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Линию закончили в 1916 году.",
+      "text_markdown": "Линию закончили в 1916 году.",
+      "tts": {
+        "text": "Линию закончили в тысяча девятьсот шестнадцатом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ее длина больше 9000 километров.",
+      "text_markdown": "Ее длина больше 9000 километров.",
+      "tts": {
+        "text": "Ее длина больше девяти тысяч километров.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Вся поездка занимает около семи дней.",
+      "text_markdown": "Вся поездка занимает около семи дней.",
+      "tts": {
+        "text": "Вся поездка занимает около семи дней.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Глава 3. Великие магистрали",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Она до сих пор остается самой длинной железной дорогой в мире.",
+      "text_markdown": "Она до сих пор остается самой длинной железной дорогой в мире.",
+      "tts": {
+        "text": "Она до сих пор остается самой длинной железной дорогой в мире.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 4. Пар, дизель, электричество",
+      "text_markdown": "Глава 4. Пар, дизель, электричество"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Около ста лет почти каждый поезд был паровым.",
+      "text_markdown": "Около ста лет почти каждый поезд был паровым.",
+      "tts": {
+        "text": "Около ста лет почти каждый поезд был паровым.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Паровозы были большими и шумными.",
+      "text_markdown": "Паровозы были большими и шумными.",
+      "tts": {
+        "text": "Паровозы были большими и шумными.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они сжигали уголь.",
+      "text_markdown": "Они сжигали уголь.",
+      "tts": {
+        "text": "Они сжигали уголь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они пускали густой дым в небо.",
+      "text_markdown": "Они пускали густой дым в небо.",
+      "tts": {
+        "text": "Они пускали густой дым в небо.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом появился дизельный локомотив.",
+      "text_markdown": "Потом появился дизельный локомотив.",
+      "tts": {
+        "text": "Потом появился дизельный локомотив.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Дизельный двигатель сжигает топливо вместо угля.",
+      "text_markdown": "Дизельный двигатель сжигает топливо вместо угля.",
+      "tts": {
+        "text": "Дизельный двигатель сжигает топливо вместо угля.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он меньше и чище.",
+      "text_markdown": "Он меньше и чище.",
+      "tts": {
+        "text": "Он меньше и чище.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ему не нужны огонь и бак с водой.",
+      "text_markdown": "Ему не нужны огонь и бак с водой.",
+      "tts": {
+        "text": "Ему не нужны огонь и бак с водой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дизельные поезда стали обычными в сороковые и пятидесятые годы двадцатого века.",
+      "text_markdown": "Дизельные поезда стали обычными в сороковые и пятидесятые годы двадцатого века.",
+      "tts": {
+        "text": "Дизельные поезда стали обычными в сороковые и пятидесятые годы двадцатого века.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Постепенно великие паровозы уходили в прошлое.",
+      "text_markdown": "Постепенно великие паровозы уходили в прошлое.",
+      "tts": {
+        "text": "Постепенно великие паровозы уходили в прошлое.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Некоторые до сих пор стоят в музеях и на туристических линиях.",
+      "text_markdown": "Некоторые до сих пор стоят в музеях и на туристических линиях.",
+      "tts": {
+        "text": "Некоторые до сих пор стоят в музеях и на туристических линиях.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Следующим шагом стал электрический поезд.",
+      "text_markdown": "Следующим шагом стал электрический поезд.",
+      "tts": {
+        "text": "Следующим шагом стал электрический поезд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У электрического поезда нет двигателя, который сжигает топливо.",
+      "text_markdown": "У электрического поезда нет двигателя, который сжигает топливо.",
+      "tts": {
+        "text": "У электрического поезда нет двигателя, который сжигает топливо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он получает энергию от провода над путями или от третьего рельса рядом с путями.",
+      "text_markdown": "Он получает энергию от провода над путями или от третьего рельса рядом с путями.",
+      "tts": {
+        "text": "Он получает энергию от провода над путями или от третьего рельса рядом с путями.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Электрические поезда тихие и очень чистые.",
+      "text_markdown": "Электрические поезда тихие и очень чистые.",
+      "tts": {
+        "text": "Электрические поезда тихие и очень чистые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "И еще они очень мощные.",
+      "text_markdown": "И еще они очень мощные.",
+      "tts": {
+        "text": "И еще они очень мощные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Сегодня большинство поездов в городах и большинство быстрых поездов электрические.",
+      "text_markdown": "Сегодня большинство поездов в городах и большинство быстрых поездов электрические.",
+      "tts": {
+        "text": "Сегодня большинство поездов в городах и большинство быстрых поездов электрические.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пар, дизель, электричество.",
+      "text_markdown": "Пар, дизель, электричество.",
+      "tts": {
+        "text": "Пар, дизель, электричество.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Глава 4. Пар, дизель, электричество",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Три двигателя, три эпохи.",
+      "text_markdown": "Три двигателя, три эпохи.",
+      "tts": {
+        "text": "Три двигателя, три эпохи.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "text_markdown": "Глава 5. Скоростные поезда и погоня за скоростью"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В 1964 году Япония открыла совершенно новую железную дорогу.",
+      "text_markdown": "В 1964 году Япония открыла совершенно новую железную дорогу.",
+      "tts": {
+        "text": "В тысяча девятьсот шестьдесят четвертом году Япония открыла совершенно новую железную дорогу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она шла от Токио до Осаки.",
+      "text_markdown": "Она шла от Токио до Осаки.",
+      "tts": {
+        "text": "Она шла от Токио до Осаки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Поезда были похожи на длинные белые пули.",
+      "text_markdown": "Поезда были похожи на длинные белые пули.",
+      "tts": {
+        "text": "Поезда были похожи на длинные белые пули.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Люди прозвали их поездами-пулями.",
+      "text_markdown": "Люди прозвали их поездами-пулями.",
+      "tts": {
+        "text": "Люди прозвали их поездами пулями.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Японское название это Синкансэн.",
+      "text_markdown": "Японское название это Синкансэн.",
+      "tts": {
+        "text": "Японское название это Синкансэн.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первые такие поезда шли со скоростью 130 миль в час.",
+      "text_markdown": "Первые такие поезда шли со скоростью 130 миль в час.",
+      "tts": {
+        "text": "Первые такие поезда шли со скоростью сто тридцать миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Для поезда в 1964 году это было очень быстро.",
+      "text_markdown": "Для поезда в 1964 году это было очень быстро.",
+      "tts": {
+        "text": "Для поезда в тысяча девятьсот шестьдесят четвертом году это было очень быстро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Линия открылась как раз к Олимпийским играм в Токио.",
+      "text_markdown": "Линия открылась как раз к Олимпийским играм в Токио.",
+      "tts": {
+        "text": "Линия открылась как раз к Олимпийским играм в Токио.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Другие страны тоже пошли этим путем.",
+      "text_markdown": "Другие страны тоже пошли этим путем.",
+      "tts": {
+        "text": "Другие страны тоже пошли этим путем.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Франция открыла свою скоростную линию в 1981 году.",
+      "text_markdown": "Франция открыла свою скоростную линию в 1981 году.",
+      "tts": {
+        "text": "Франция открыла свою скоростную линию в тысяча девятьсот восемьдесят первом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Эти поезда называются TGV.",
+      "text_markdown": "Эти поезда называются TGV.",
+      "tts": {
+        "text": "Эти поезда называются тэ жэ вэ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Потом Германия запустила ICE.",
+      "text_markdown": "Потом Германия запустила ICE.",
+      "tts": {
+        "text": "Потом Германия запустила и це е.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Италия, Испания и Корея построили свои скоростные линии.",
+      "text_markdown": "Италия, Испания и Корея построили свои скоростные линии.",
+      "tts": {
+        "text": "Италия, Испания и Корея построили свои скоростные линии.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Китай начал позже всех, но строил быстро.",
+      "text_markdown": "Китай начал позже всех, но строил быстро.",
+      "tts": {
+        "text": "Китай начал позже всех, но строил быстро.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сегодня у Китая самая большая скоростная сеть в мире.",
+      "text_markdown": "Сегодня у Китая самая большая скоростная сеть в мире.",
+      "tts": {
+        "text": "Сегодня у Китая самая большая скоростная сеть в мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "В ней десятки тысяч километров путей.",
+      "text_markdown": "В ней десятки тысяч километров путей.",
+      "tts": {
+        "text": "В ней десятки тысяч километров путей.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Современные скоростные поезда могут идти со скоростью больше 200 миль в час.",
+      "text_markdown": "Современные скоростные поезда могут идти со скоростью больше 200 миль в час.",
+      "tts": {
+        "text": "Современные скоростные поезда могут идти со скоростью больше двухсот миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они идут плавно, тихо и почти всегда по расписанию.",
+      "text_markdown": "Они идут плавно, тихо и почти всегда по расписанию.",
+      "tts": {
+        "text": "Они идут плавно, тихо и почти всегда по расписанию.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Глава 5. Скоростные поезда и погоня за скоростью",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Во многих поездках они быстрее самолета.",
+      "text_markdown": "Во многих поездках они быстрее самолета.",
+      "tts": {
+        "text": "Во многих поездках они быстрее самолета.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 6. Разные виды поездов",
+      "text_markdown": "Глава 6. Разные виды поездов"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Не все поезда одинаковые.",
+      "text_markdown": "Не все поезда одинаковые.",
+      "tts": {
+        "text": "Не все поезда одинаковые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Их бывает много видов.",
+      "text_markdown": "Их бывает много видов.",
+      "tts": {
+        "text": "Их бывает много видов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пассажирский поезд перевозит людей.",
+      "text_markdown": "Пассажирский поезд перевозит людей.",
+      "tts": {
+        "text": "Пассажирский поезд перевозит людей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В нем есть сиденья, окна, а иногда вагон-ресторан или спальный вагон.",
+      "text_markdown": "В нем есть сиденья, окна, а иногда вагон-ресторан или спальный вагон.",
+      "tts": {
+        "text": "В нем есть сиденья, окна, а иногда вагон ресторан или спальный вагон.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Грузовой поезд перевозит товары.",
+      "text_markdown": "Грузовой поезд перевозит товары.",
+      "tts": {
+        "text": "Грузовой поезд перевозит товары.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его вагоны называют грузовыми.",
+      "text_markdown": "Его вагоны называют грузовыми.",
+      "tts": {
+        "text": "Его вагоны называют грузовыми.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Одни везут зерно.",
+      "text_markdown": "Одни везут зерно.",
+      "tts": {
+        "text": "Одни везут зерно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Другие везут нефть.",
+      "text_markdown": "Другие везут нефть.",
+      "tts": {
+        "text": "Другие везут нефть.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Некоторые везут целые морские контейнеры, поставленные в два яруса.",
+      "text_markdown": "Некоторые везут целые морские контейнеры, поставленные в два яруса.",
+      "tts": {
+        "text": "Некоторые везут целые морские контейнеры, поставленные в два яруса.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Метро это подземный поезд в городе.",
+      "text_markdown": "Метро это подземный поезд в городе.",
+      "tts": {
+        "text": "Метро это подземный поезд в городе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Первое метро открылось в Лондоне в 1863 году.",
+      "text_markdown": "Первое метро открылось в Лондоне в 1863 году.",
+      "tts": {
+        "text": "Первое метро открылось в Лондоне в тысяча восемьсот шестьдесят третьем году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Сегодня под улицами больших городов лежат огромные сети метро.",
+      "text_markdown": "Сегодня под улицами больших городов лежат огромные сети метро.",
+      "tts": {
+        "text": "Сегодня под улицами больших городов лежат огромные сети метро.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Трамвай или легкорельсовый поезд это небольшой поезд, который идет по городским улицам.",
+      "text_markdown": "Трамвай или легкорельсовый поезд это небольшой поезд, который идет по городским улицам.",
+      "tts": {
+        "text": "Трамвай или легкорельсовый поезд это небольшой поезд, который идет по городским улицам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Часто он делит дорогу с машинами и автобусами.",
+      "text_markdown": "Часто он делит дорогу с машинами и автобусами.",
+      "tts": {
+        "text": "Часто он делит дорогу с машинами и автобусами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Горный поезд поднимается по крутым склонам.",
+      "text_markdown": "Горный поезд поднимается по крутым склонам.",
+      "tts": {
+        "text": "Горный поезд поднимается по крутым склонам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У некоторых посередине есть особый зубчатый рельс, который называют зубчатой рейкой.",
+      "text_markdown": "У некоторых посередине есть особый зубчатый рельс, который называют зубчатой рейкой.",
+      "tts": {
+        "text": "У некоторых посередине есть особый зубчатый рельс, который называют зубчатой рейкой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Локомотив цепляется за эту рейку, чтобы подниматься и безопасно спускаться.",
+      "text_markdown": "Локомотив цепляется за эту рейку, чтобы подниматься и безопасно спускаться.",
+      "tts": {
+        "text": "Локомотив цепляется за эту рейку, чтобы подниматься и безопасно спускаться.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые поезда бывают и туристическими.",
+      "text_markdown": "Некоторые поезда бывают и туристическими.",
+      "tts": {
+        "text": "Некоторые поезда бывают и туристическими.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Глава 6. Разные виды поездов",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они идут через леса и горы просто ради красивого вида.",
+      "text_markdown": "Они идут через леса и горы просто ради красивого вида.",
+      "tts": {
+        "text": "Они идут через леса и горы просто ради красивого вида.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 7. Будущее на рельсах",
+      "text_markdown": "Глава 7. Будущее на рельсах"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "История поезда еще не закончилась.",
+      "text_markdown": "История поезда еще не закончилась.",
+      "tts": {
+        "text": "История поезда еще не закончилась.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Прямо сейчас строят новые виды поездов.",
+      "text_markdown": "Прямо сейчас строят новые виды поездов.",
+      "tts": {
+        "text": "Прямо сейчас строят новые виды поездов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самый удивительный из них это маглев.",
+      "text_markdown": "Самый удивительный из них это маглев.",
+      "tts": {
+        "text": "Самый удивительный из них это маглев.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Слово маглев это сокращение от магнитной левитации.",
+      "text_markdown": "Слово маглев это сокращение от магнитной левитации.",
+      "tts": {
+        "text": "Слово маглев это сокращение от магнитной левитации.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Поезд маглев не касается своего пути.",
+      "text_markdown": "Поезд маглев не касается своего пути.",
+      "tts": {
+        "text": "Поезд маглев не касается своего пути.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он парит на подушке из магнитов.",
+      "text_markdown": "Он парит на подушке из магнитов.",
+      "tts": {
+        "text": "Он парит на подушке из магнитов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Колеса не крутятся.",
+      "text_markdown": "Колеса не крутятся.",
+      "tts": {
+        "text": "Колеса не крутятся.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Трения нет.",
+      "text_markdown": "Трения нет.",
+      "tts": {
+        "text": "Трения нет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В 2004 году в Шанхае в Китае открылась линия маглева.",
+      "text_markdown": "В 2004 году в Шанхае в Китае открылась линия маглева.",
+      "tts": {
+        "text": "В две тысячи четвертом году в Шанхае в Китае открылась линия маглева.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Этот поезд может разгоняться больше чем до 250 миль в час.",
+      "text_markdown": "Этот поезд может разгоняться больше чем до 250 миль в час.",
+      "tts": {
+        "text": "Этот поезд может разгоняться больше чем до двухсот пятидесяти миль в час.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "В Японии испытательный поезд маглев ехал быстрее 370 миль в час.",
+      "text_markdown": "В Японии испытательный поезд маглев ехал быстрее 370 миль в час.",
+      "tts": {
+        "text": "В Японии испытательный поезд маглев ехал быстрее трехсот семидесяти миль в час.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Другие инженеры работают над водородным поездом.",
+      "text_markdown": "Другие инженеры работают над водородным поездом.",
+      "tts": {
+        "text": "Другие инженеры работают над водородным поездом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Водородный поезд получает электричество от небольшого топливного элемента.",
+      "text_markdown": "Водородный поезд получает электричество от небольшого топливного элемента.",
+      "tts": {
+        "text": "Водородный поезд получает электричество от небольшого топливного элемента.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Единственное, что выходит из двигателя, это водяной пар.",
+      "text_markdown": "Единственное, что выходит из двигателя, это водяной пар.",
+      "tts": {
+        "text": "Единственное, что выходит из двигателя, это водяной пар.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Никакого дыма.",
+      "text_markdown": "Никакого дыма.",
+      "tts": {
+        "text": "Никакого дыма.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Никакого угля.",
+      "text_markdown": "Никакого угля.",
+      "tts": {
+        "text": "Никакого угля.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Первые водородные поезда начали работать в Германии в 2018 году.",
+      "text_markdown": "Первые водородные поезда начали работать в Германии в 2018 году.",
+      "tts": {
+        "text": "Первые водородные поезда начали работать в Германии в две тысячи восемнадцатом году.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поезда очень старые.",
+      "text_markdown": "Поезда очень старые.",
+      "tts": {
+        "text": "Поезда очень старые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Но они и очень новые.",
+      "text_markdown": "Но они и очень новые.",
+      "tts": {
+        "text": "Но они и очень новые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Глава 7. Будущее на рельсах",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Спустя двести лет после «Ракеты» рельсы все еще остаются дорогой в будущее.",
+      "text_markdown": "Спустя двести лет после «Ракеты» рельсы все еще остаются дорогой в будущее.",
+      "tts": {
+        "text": "Спустя двести лет после Ракеты рельсы все еще остаются дорогой в будущее.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Железная дорога продолжается",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Железная дорога продолжается",
+      "text_markdown": "Железная дорога продолжается"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Железная дорога продолжается",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "От «Ракеты» до маглева поезд почти двести лет везет мир вперед.",
+      "text_markdown": "От «Ракеты» до маглева поезд почти двести лет везет мир вперед.",
+      "tts": {
+        "text": "От Ракеты до маглева поезд почти двести лет везет мир вперед.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Железная дорога продолжается",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Прямо сейчас новые линии прокладывают в пустынях, в горах и под городами.",
+      "text_markdown": "Прямо сейчас новые линии прокладывают в пустынях, в горах и под городами.",
+      "tts": {
+        "text": "Прямо сейчас новые линии прокладывают в пустынях, в горах и под городами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Железная дорога продолжается",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Следующая станция всегда где-то впереди.",
+      "text_markdown": "Следующая станция всегда где-то впереди.",
+      "tts": {
+        "text": "Следующая станция всегда где то впереди.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "ru"
+}

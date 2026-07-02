@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "心をつかむもの",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "心をつかむもの",
+      "text_markdown": "心をつかむもの"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飛行機を出たすぐあとに、無料であなたに贈れたらいいのに、と思う瞬間があるんです。",
+      "text_markdown": "飛行機を出たすぐあとに、無料であなたに贈れたらいいのに、と思う瞬間があるんです。",
+      "tts": {
+        "text": "飛行機を出たすぐあとに、無料であなたに贈れたらいいのに、と思う瞬間があるんです。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界が、あなたの住む場所であることをやめます。",
+      "text_markdown": "世界が、あなたの住む場所であることをやめます。",
+      "tts": {
+        "text": "世界が、あなたの住む場所であることをやめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたが落ちて通り抜けていくものに変わるんです。",
+      "text_markdown": "あなたが落ちて通り抜けていくものに変わるんです。",
+      "tts": {
+        "text": "あなたが落ちて通り抜けていくものに変わるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして最初の数秒間、心は、自分の体が今やったことに、まだうまく追いつけません。",
+      "text_markdown": "そして最初の数秒間、心は、自分の体が今やったことに、まだうまく追いつけません。",
+      "tts": {
+        "text": "そして最初の数秒間、心は、自分の体が今やったことに、まだうまく追いつけません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "なぜ飛び降りるのか、と人によく聞かれます。",
+      "text_markdown": "なぜ飛び降りるのか、と人によく聞かれます。",
+      "tts": {
+        "text": "なぜ飛び降りるのか、と人によく聞かれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "みんなはきっと、私がスリルだと答えると思っているんです。",
+      "text_markdown": "みんなはきっと、私がスリルだと答えると思っているんです。",
+      "tts": {
+        "text": "みんなはきっと、私がスリルだと答えると思っているんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "でも、スリルじゃありません。",
+      "text_markdown": "でも、スリルじゃありません。",
+      "tts": {
+        "text": "でも、スリルじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スリルというのは、最初の五回くらいの飛び降りで感じるものです。",
+      "text_markdown": "スリルというのは、最初の五回くらいの飛び降りで感じるものです。",
+      "tts": {
+        "text": "スリルというのは、最初の五回くらいの飛び降りで感じるものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "そのあとは、もっと静かな何かが心を満たしていきます。",
+      "text_markdown": "そのあとは、もっと静かな何かが心を満たしていきます。",
+      "tts": {
+        "text": "そのあとは、もっと静かな何かが心を満たしていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私が追いかけているのは、その澄んだ感覚なんです。",
+      "text_markdown": "私が追いかけているのは、その澄んだ感覚なんです。",
+      "tts": {
+        "text": "私が追いかけているのは、その澄んだ感覚なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自由落下の六十秒間、心はほかに何もすることがありません。",
+      "text_markdown": "自由落下の六十秒間、心はほかに何もすることがありません。",
+      "tts": {
+        "text": "自由落下の六十秒間、心はほかに何もすることがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "電話もありません。",
+      "text_markdown": "電話もありません。",
+      "tts": {
+        "text": "電話もありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "請求書もありません。",
+      "text_markdown": "請求書もありません。",
+      "tts": {
+        "text": "請求書もありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "明日への小さな心配もありません。",
+      "text_markdown": "明日への小さな心配もありません。",
+      "tts": {
+        "text": "明日への小さな心配もありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あるのは、風と、自分の呼吸と、足元にゆるくカーブしている地球だけです。",
+      "text_markdown": "あるのは、風と、自分の呼吸と、足元にゆるくカーブしている地球だけです。",
+      "tts": {
+        "text": "あるのは、風と、自分の呼吸と、足元にゆるくカーブしている地球だけです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "人生のほとんどは、騒がしいものです。",
+      "text_markdown": "人生のほとんどは、騒がしいものです。",
+      "tts": {
+        "text": "人生のほとんどは、騒がしいものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "でも、その一分間は違います。",
+      "text_markdown": "でも、その一分間は違います。",
+      "tts": {
+        "text": "でも、その一分間は違います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スカイダイバーは、変な人たちじゃありません。",
+      "text_markdown": "スカイダイバーは、変な人たちじゃありません。",
+      "tts": {
+        "text": "スカイダイバーは、変な人たちじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私たちのほとんどは、もっと早く落ち着く方法を見つけた、穏やかな人たちなんです。",
+      "text_markdown": "私たちのほとんどは、もっと早く落ち着く方法を見つけた、穏やかな人たちなんです。",
+      "tts": {
+        "text": "私たちのほとんどは、もっと早く落ち着く方法を見つけた、穏やかな人たちなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほかの人が瞑想するのと同じように、私たちは飛行機から飛び降りるんです。",
+      "text_markdown": "ほかの人が瞑想するのと同じように、私たちは飛行機から飛び降りるんです。",
+      "tts": {
+        "text": "ほかの人が瞑想するのと同じように、私たちは飛行機から飛び降りるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それで、何かがすっきり片づきます。",
+      "text_markdown": "それで、何かがすっきり片づきます。",
+      "tts": {
+        "text": "それで、何かがすっきり片づきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "そして週末ごとに、また片づけ直しているんです。",
+      "text_markdown": "そして週末ごとに、また片づけ直しているんです。",
+      "tts": {
+        "text": "そして週末ごとに、また片づけ直しているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "初めて頭の上でパラシュートが開いたとき、私はハーネスの中で泣きました。",
+      "text_markdown": "初めて頭の上でパラシュートが開いたとき、私はハーネスの中で泣きました。",
+      "tts": {
+        "text": "初めて頭の上でパラシュートが開いたとき、私はハーネスの中で泣きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そんなつもりはなかったんです。",
+      "text_markdown": "そんなつもりはなかったんです。",
+      "tts": {
+        "text": "そんなつもりはなかったんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いい大人が、柔らかい布の四角いものの下で空に吊られて、自分でも説明できない理由で泣いていたんです。",
+      "text_markdown": "いい大人が、柔らかい布の四角いものの下で空に吊られて、自分でも説明できない理由で泣いていたんです。",
+      "tts": {
+        "text": "いい大人が、柔らかい布の四角いものの下で空に吊られて、自分でも説明できない理由で泣いていたんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "インストラクターは静かに笑って、私の肩を軽くたたいてくれました。",
+      "text_markdown": "インストラクターは静かに笑って、私の肩を軽くたたいてくれました。",
+      "tts": {
+        "text": "インストラクターは静かに笑って、私の肩を軽くたたいてくれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼は、それを何度も見てきたんです。",
+      "text_markdown": "彼は、それを何度も見てきたんです。",
+      "tts": {
+        "text": "彼は、それを何度も見てきたんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あの瞬間、私はまた戻ってくるとわかりました。",
+      "text_markdown": "あの瞬間、私はまた戻ってくるとわかりました。",
+      "tts": {
+        "text": "あの瞬間、私はまた戻ってくるとわかりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スカイダイビングは、勇敢でいることが目的じゃありません。",
+      "text_markdown": "スカイダイビングは、勇敢でいることが目的じゃありません。",
+      "tts": {
+        "text": "スカイダイビングは、勇敢でいることが目的じゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "心が静かになる、たったひとつの場所を見つけることが目的なんです。",
+      "text_markdown": "心が静かになる、たったひとつの場所を見つけることが目的なんです。",
+      "tts": {
+        "text": "心が静かになる、たったひとつの場所を見つけることが目的なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ある人にとっては、その場所はヨガマットの上です。",
+      "text_markdown": "ある人にとっては、その場所はヨガマットの上です。",
+      "tts": {
+        "text": "ある人にとっては、その場所はヨガマットの上です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ある人にとっては、誰もいない道での長いランニングです。",
+      "text_markdown": "ある人にとっては、誰もいない道での長いランニングです。",
+      "tts": {
+        "text": "ある人にとっては、誰もいない道での長いランニングです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ある人にとっては、釣り糸や、ピアノや、朝六時の台所だったりします。",
+      "text_markdown": "ある人にとっては、釣り糸や、ピアノや、朝六時の台所だったりします。",
+      "tts": {
+        "text": "ある人にとっては、釣り糸や、ピアノや、朝六時の台所だったりします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "私にとっては、地上から約四千メートルの高さで、ただ息をするだけ、という場所なんです。",
+      "text_markdown": "私にとっては、地上から約四千メートルの高さで、ただ息をするだけ、という場所なんです。",
+      "tts": {
+        "text": "私にとっては、地上から約四千メートルの高さで、ただ息をするだけ、という場所なんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一度この引力を感じると、夕食の席で友だちにそれを説明するのは難しいんです。",
+      "text_markdown": "一度この引力を感じると、夕食の席で友だちにそれを説明するのは難しいんです。",
+      "tts": {
+        "text": "一度この引力を感じると、夕食の席で友だちにそれを説明するのは難しいんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたは説明しようとして、相手は礼儀正しくほほえんで、あなたはあきらめます。",
+      "text_markdown": "あなたは説明しようとして、相手は礼儀正しくほほえんで、あなたはあきらめます。",
+      "tts": {
+        "text": "あなたは説明しようとして、相手は礼儀正しくほほえんで、あなたはあきらめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それでいいんです。",
+      "text_markdown": "それでいいんです。",
+      "tts": {
+        "text": "それでいいんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あなたは説明するために飛び始めたんじゃありません。",
+      "text_markdown": "あなたは説明するために飛び始めたんじゃありません。",
+      "tts": {
+        "text": "あなたは説明するために飛び始めたんじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "初めて飛んでみたとき、自分の中で何かが、ああ、ここにいたのか、と言ったから飛び始めたんです。",
+      "text_markdown": "初めて飛んでみたとき、自分の中で何かが、ああ、ここにいたのか、と言ったから飛び始めたんです。",
+      "tts": {
+        "text": "初めて飛んでみたとき、自分の中で何かが、ああ、ここにいたのか、と言ったから飛び始めたんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い場所のへりに立って、自分の体が外の空気のほうへ、ふっと傾くのを感じたことはありますか。",
+      "text_markdown": "高い場所のへりに立って、自分の体が外の空気のほうへ、ふっと傾くのを感じたことはありますか。",
+      "tts": {
+        "text": "高い場所のへりに立って、自分の体が外の空気のほうへ、ふっと傾くのを感じたことはありますか。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ほんの少し、ほんの一瞬だけ。",
+      "text_markdown": "ほんの少し、ほんの一瞬だけ。",
+      "tts": {
+        "text": "ほんの少し、ほんの一瞬だけ。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もしあるなら、私が話していることは、もうわかっているはずです。",
+      "text_markdown": "もしあるなら、私が話していることは、もうわかっているはずです。",
+      "tts": {
+        "text": "もしあるなら、私が話していることは、もうわかっているはずです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スカイダイビングというのは、自分が傾いていないふりをやめたとき、起こることなんです。",
+      "text_markdown": "スカイダイビングというのは、自分が傾いていないふりをやめたとき、起こることなんです。",
+      "tts": {
+        "text": "スカイダイビングというのは、自分が傾いていないふりをやめたとき、起こることなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "あなたは意識して一歩を踏み出します。あなたの体が長年、静かに問いかけてきた、その場所へ。",
+      "text_markdown": "あなたは意識して一歩を踏み出します。あなたの体が長年、静かに問いかけてきた、その場所へ。",
+      "tts": {
+        "text": "あなたは意識して一歩を踏み出します。あなたの体が長年、静かに問いかけてきた、その場所へ。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そしてすぐに気づきます。怖さがあったのは、地面のほうじゃなかったんだと。",
+      "text_markdown": "そしてすぐに気づきます。怖さがあったのは、地面のほうじゃなかったんだと。",
+      "tts": {
+        "text": "そしてすぐに気づきます。怖さがあったのは、地面のほうじゃなかったんだと。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "怖さは、あの傾きのほうにあったんです。",
+      "text_markdown": "怖さは、あの傾きのほうにあったんです。",
+      "tts": {
+        "text": "怖さは、あの傾きのほうにあったんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一度飛んでしまえば、怖さは消えます。",
+      "text_markdown": "一度飛んでしまえば、怖さは消えます。",
+      "tts": {
+        "text": "一度飛んでしまえば、怖さは消えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残るのは、ほとんど我が家のような感覚です。",
+      "text_markdown": "残るのは、ほとんど我が家のような感覚です。",
+      "tts": {
+        "text": "残るのは、ほとんど我が家のような感覚です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "心臓の鼓動が、ゆっくりになります。",
+      "text_markdown": "心臓の鼓動が、ゆっくりになります。",
+      "tts": {
+        "text": "心臓の鼓動が、ゆっくりになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "呼吸が、ずっと探していたリズムを見つけます。",
+      "text_markdown": "呼吸が、ずっと探していたリズムを見つけます。",
+      "tts": {
+        "text": "呼吸が、ずっと探していたリズムを見つけます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "空気があなたを抱きとめます。",
+      "text_markdown": "空気があなたを抱きとめます。",
+      "tts": {
+        "text": "空気があなたを抱きとめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "そしてたぶん、久しぶりに、自分が今いるべき場所にちょうどいるんだ、と感じるんです。",
+      "text_markdown": "そしてたぶん、久しぶりに、自分が今いるべき場所にちょうどいるんだ、と感じるんです。",
+      "tts": {
+        "text": "そしてたぶん、久しぶりに、自分が今いるべき場所にちょうどいるんだ、と感じるんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もし長い散歩のときに聞かれたら、あなたにこう話したいんです。",
+      "text_markdown": "もし長い散歩のときに聞かれたら、あなたにこう話したいんです。",
+      "tts": {
+        "text": "もし長い散歩のときに聞かれたら、あなたにこう話したいんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "穏やかで分別のある人間が、なぜまったく問題のない飛行機からわざわざ飛び降り続けるのか、と。",
+      "text_markdown": "穏やかで分別のある人間が、なぜまったく問題のない飛行機からわざわざ飛び降り続けるのか、と。",
+      "tts": {
+        "text": "穏やかで分別のある人間が、なぜまったく問題のない飛行機からわざわざ飛び降り続けるのか、と。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私はあなたに、これは私が一番静かに過ごす時間なんですよ、と話します。",
+      "text_markdown": "私はあなたに、これは私が一番静かに過ごす時間なんですよ、と話します。",
+      "tts": {
+        "text": "私はあなたに、これは私が一番静かに過ごす時間なんですよ、と話します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして本気でそう言うんです。",
+      "text_markdown": "そして本気でそう言うんです。",
+      "tts": {
+        "text": "そして本気でそう言うんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "初めての一歩",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "初めての一歩",
+      "text_markdown": "初めての一歩"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたを、その飛行機の中に置いてみますね。",
+      "text_markdown": "あなたを、その飛行機の中に置いてみますね。",
+      "tts": {
+        "text": "あなたを、その飛行機の中に置いてみますね。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたは低い金属のベンチに座っていて、後ろのインストラクターと一緒にハーネスでつながれています。",
+      "text_markdown": "あなたは低い金属のベンチに座っていて、後ろのインストラクターと一緒にハーネスでつながれています。",
+      "tts": {
+        "text": "あなたは低い金属のベンチに座っていて、後ろのインストラクターと一緒にハーネスでつながれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "飛行機は、ゆっくりと、のんびりした円を描きながら登っていきます。",
+      "text_markdown": "飛行機は、ゆっくりと、のんびりした円を描きながら登っていきます。",
+      "tts": {
+        "text": "飛行機は、ゆっくりと、のんびりした円を描きながら登っていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "横にある小さな四角い窓が、だんだん青くなっていきます。",
+      "text_markdown": "横にある小さな四角い窓が、だんだん青くなっていきます。",
+      "tts": {
+        "text": "横にある小さな四角い窓が、だんだん青くなっていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "心臓が喉まで上がってくるのを感じます。でもパニックにはなっていません。",
+      "text_markdown": "心臓が喉まで上がってくるのを感じます。でもパニックにはなっていません。",
+      "tts": {
+        "text": "心臓が喉まで上がってくるのを感じます。でもパニックにはなっていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ただ、ものすごく、ものすごく、目が冴えているんです。",
+      "text_markdown": "ただ、ものすごく、ものすごく、目が冴えているんです。",
+      "tts": {
+        "text": "ただ、ものすごく、ものすごく、目が冴えているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インストラクターが、あなたの耳の近くに身を寄せます。",
+      "text_markdown": "インストラクターが、あなたの耳の近くに身を寄せます。",
+      "tts": {
+        "text": "インストラクターが、あなたの耳の近くに身を寄せます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたがやるべきことは、すべて自分がそのときに伝えますから、と落ち着いた声で言います。",
+      "text_markdown": "あなたがやるべきことは、すべて自分がそのときに伝えますから、と落ち着いた声で言います。",
+      "tts": {
+        "text": "あなたがやるべきことは、すべて自分がそのときに伝えますから、と落ち着いた声で言います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたはうなずきます。",
+      "text_markdown": "あなたはうなずきます。",
+      "tts": {
+        "text": "あなたはうなずきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この一時間で何度もうなずきすぎて、首が痛くなりかけているくらいです。",
+      "text_markdown": "この一時間で何度もうなずきすぎて、首が痛くなりかけているくらいです。",
+      "tts": {
+        "text": "この一時間で何度もうなずきすぎて、首が痛くなりかけているくらいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そしてドアが開きます。",
+      "text_markdown": "そしてドアが開きます。",
+      "tts": {
+        "text": "そしてドアが開きます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風が壁のように入ってきます。うるさくて、冷たくて、生きているみたいで、機内が急にとても小さく感じられます。",
+      "text_markdown": "風が壁のように入ってきます。うるさくて、冷たくて、生きているみたいで、機内が急にとても小さく感じられます。",
+      "tts": {
+        "text": "風が壁のように入ってきます。うるさくて、冷たくて、生きているみたいで、機内が急にとても小さく感じられます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたは、へりまでにじり寄ります。",
+      "text_markdown": "あなたは、へりまでにじり寄ります。",
+      "tts": {
+        "text": "あなたは、へりまでにじり寄ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "つま先が、何もない空間にぶら下がります。",
+      "text_markdown": "つま先が、何もない空間にぶら下がります。",
+      "tts": {
+        "text": "つま先が、何もない空間にぶら下がります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "下を見ると、地面はあまりに遠くて、もう地面に見えません。",
+      "text_markdown": "下を見ると、地面はあまりに遠くて、もう地面に見えません。",
+      "tts": {
+        "text": "下を見ると、地面はあまりに遠くて、もう地面に見えません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "それは、キルトの布のように見えます。",
+      "text_markdown": "それは、キルトの布のように見えます。",
+      "tts": {
+        "text": "それは、キルトの布のように見えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "糸のように細い道路。",
+      "text_markdown": "糸のように細い道路。",
+      "tts": {
+        "text": "糸のように細い道路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "くすんだ銀色の川。",
+      "text_markdown": "くすんだ銀色の川。",
+      "tts": {
+        "text": "くすんだ銀色の川。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "小さな緑と茶色の畑が、生垣でつなぎ合わされています。",
+      "text_markdown": "小さな緑と茶色の畑が、生垣でつなぎ合わされています。",
+      "tts": {
+        "text": "小さな緑と茶色の畑が、生垣でつなぎ合わされています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インストラクターが数えます。",
+      "text_markdown": "インストラクターが数えます。",
+      "tts": {
+        "text": "インストラクターが数えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は、いち、と言います。",
+      "text_markdown": "彼は、いち、と言います。",
+      "tts": {
+        "text": "彼は、いち、と言います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は、に、と言います。",
+      "text_markdown": "彼は、に、と言います。",
+      "tts": {
+        "text": "彼は、に、と言います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "さん、で飛行機は消えています。",
+      "text_markdown": "さん、で飛行機は消えています。",
+      "tts": {
+        "text": "さん、で飛行機は消えています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の三秒が、いちばん大変です。",
+      "text_markdown": "最初の三秒が、いちばん大変です。",
+      "tts": {
+        "text": "最初の三秒が、いちばん大変です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "体は自分が落ちていると信じます。実際に落ちているからです。そして、これでいいんだと、体は今まで教わったことがないんです。",
+      "text_markdown": "体は自分が落ちていると信じます。実際に落ちているからです。そして、これでいいんだと、体は今まで教わったことがないんです。",
+      "tts": {
+        "text": "体は自分が落ちていると信じます。実際に落ちているからです。そして、これでいいんだと、体は今まで教わったことがないんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたは声を出します。",
+      "text_markdown": "あなたは声を出します。",
+      "tts": {
+        "text": "あなたは声を出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "誰もが声を出すんです。",
+      "text_markdown": "誰もが声を出すんです。",
+      "tts": {
+        "text": "誰もが声を出すんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "その声を恥ずかしがる必要はありません。",
+      "text_markdown": "その声を恥ずかしがる必要はありません。",
+      "tts": {
+        "text": "その声を恥ずかしがる必要はありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、とんでもないことが起こります。",
+      "text_markdown": "そして、とんでもないことが起こります。",
+      "tts": {
+        "text": "そして、とんでもないことが起こります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "落下が、落下のように感じられなくなるんです。",
+      "text_markdown": "落下が、落下のように感じられなくなるんです。",
+      "tts": {
+        "text": "落下が、落下のように感じられなくなるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "風が下から登ってきて、あなたを抱きとめます。仰向けで浮かんでいるときに水があなたを支えてくれるのと同じように。",
+      "text_markdown": "風が下から登ってきて、あなたを抱きとめます。仰向けで浮かんでいるときに水があなたを支えてくれるのと同じように。",
+      "tts": {
+        "text": "風が下から登ってきて、あなたを抱きとめます。仰向けで浮かんでいるときに水があなたを支えてくれるのと同じように。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "腕も脚も、頼んでもいないのに自然に広がります。",
+      "text_markdown": "腕も脚も、頼んでもいないのに自然に広がります。",
+      "tts": {
+        "text": "腕も脚も、頼んでもいないのに自然に広がります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "顔は、いっぺんにいろんな方向に引っぱられているように感じます。",
+      "text_markdown": "顔は、いっぺんにいろんな方向に引っぱられているように感じます。",
+      "tts": {
+        "text": "顔は、いっぺんにいろんな方向に引っぱられているように感じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "自分が笑っているのか、叫んでいるのか、わからなくなります。",
+      "text_markdown": "自分が笑っているのか、叫んでいるのか、わからなくなります。",
+      "tts": {
+        "text": "自分が笑っているのか、叫んでいるのか、わからなくなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "それは、もう関係ありません。",
+      "text_markdown": "それは、もう関係ありません。",
+      "tts": {
+        "text": "それは、もう関係ありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたは、まわりを見渡します。",
+      "text_markdown": "あなたは、まわりを見渡します。",
+      "tts": {
+        "text": "あなたは、まわりを見渡します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地面はまだはるか下です。でも、さっきよりは近くなっていて、色がはっきり見えるようになっています。",
+      "text_markdown": "地面はまだはるか下です。でも、さっきよりは近くなっていて、色がはっきり見えるようになっています。",
+      "tts": {
+        "text": "地面はまだはるか下です。でも、さっきよりは近くなっていて、色がはっきり見えるようになっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高速道路の車が、アリのようにのろのろ動いています。",
+      "text_markdown": "高速道路の車が、アリのようにのろのろ動いています。",
+      "tts": {
+        "text": "高速道路の車が、アリのようにのろのろ動いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "湖が、まったくの静けさで広がっています。",
+      "text_markdown": "湖が、まったくの静けさで広がっています。",
+      "tts": {
+        "text": "湖が、まったくの静けさで広がっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "雲の影が、森の上をゆっくり流れていきます。",
+      "text_markdown": "雲の影が、森の上をゆっくり流れていきます。",
+      "tts": {
+        "text": "雲の影が、森の上をゆっくり流れていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたは飛んでいるんです。",
+      "text_markdown": "あなたは飛んでいるんです。",
+      "tts": {
+        "text": "あなたは飛んでいるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "飛行機の中で、ではありません。",
+      "text_markdown": "飛行機の中で、ではありません。",
+      "tts": {
+        "text": "飛行機の中で、ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなた自身が、自分の体で、飛んでいるんです。",
+      "text_markdown": "あなた自身が、自分の体で、飛んでいるんです。",
+      "tts": {
+        "text": "あなた自身が、自分の体で、飛んでいるんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "インストラクターが、あなたの肩をたたきます。",
+      "text_markdown": "インストラクターが、あなたの肩をたたきます。",
+      "tts": {
+        "text": "インストラクターが、あなたの肩をたたきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたはコードを引きます。",
+      "text_markdown": "あなたはコードを引きます。",
+      "tts": {
+        "text": "あなたはコードを引きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "誰かにシャツの背中をそっとつかまれたような、やわらかい引きを感じます。",
+      "text_markdown": "誰かにシャツの背中をそっとつかまれたような、やわらかい引きを感じます。",
+      "tts": {
+        "text": "誰かにシャツの背中をそっとつかまれたような、やわらかい引きを感じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして二度目の、もっと強い引きが、あなたを上に立たせます。",
+      "text_markdown": "そして二度目の、もっと強い引きが、あなたを上に立たせます。",
+      "tts": {
+        "text": "そして二度目の、もっと強い引きが、あなたを上に立たせます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界が、しんと静かになります。",
+      "text_markdown": "世界が、しんと静かになります。",
+      "tts": {
+        "text": "世界が、しんと静かになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風は消えています。",
+      "text_markdown": "風は消えています。",
+      "tts": {
+        "text": "風は消えています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あの轟音も消えています。",
+      "text_markdown": "あの轟音も消えています。",
+      "tts": {
+        "text": "あの轟音も消えています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "落下も消えています。",
+      "text_markdown": "落下も消えています。",
+      "tts": {
+        "text": "落下も消えています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あなたは今、ハーネスに吊られて、広い長方形の布の下にぶら下がっています。",
+      "text_markdown": "あなたは今、ハーネスに吊られて、広い長方形の布の下にぶら下がっています。",
+      "tts": {
+        "text": "あなたは今、ハーネスに吊られて、広い長方形の布の下にぶら下がっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "空が、急に、とても、とても静かになります。",
+      "text_markdown": "空が、急に、とても、とても静かになります。",
+      "tts": {
+        "text": "空が、急に、とても、とても静かになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "下にいる鳥の声が聞こえます。",
+      "text_markdown": "下にいる鳥の声が聞こえます。",
+      "tts": {
+        "text": "下にいる鳥の声が聞こえます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "自分が呼吸している音も聞こえます。",
+      "text_markdown": "自分が呼吸している音も聞こえます。",
+      "tts": {
+        "text": "自分が呼吸している音も聞こえます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "インストラクターが耳元で笑って、調子はどう、と聞いてきます。",
+      "text_markdown": "インストラクターが耳元で笑って、調子はどう、と聞いてきます。",
+      "tts": {
+        "text": "インストラクターが耳元で笑って、調子はどう、と聞いてきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "あなたはしばらく答えられません。だって、泣いているか、笑っているか、その両方だからです。",
+      "text_markdown": "あなたはしばらく答えられません。だって、泣いているか、笑っているか、その両方だからです。",
+      "tts": {
+        "text": "あなたはしばらく答えられません。だって、泣いているか、笑っているか、その両方だからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キャノピーで降りる時間は、五分くらいです。",
+      "text_markdown": "キャノピーで降りる時間は、五分くらいです。",
+      "tts": {
+        "text": "キャノピーで降りる時間は、五分くらいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、あなたの人生で最も穏やかな五分間のひとつになります。",
+      "text_markdown": "それは、あなたの人生で最も穏やかな五分間のひとつになります。",
+      "tts": {
+        "text": "それは、あなたの人生で最も穏やかな五分間のひとつになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "足が地面につくと、あなたは三歩、軽く走って止まります。",
+      "text_markdown": "足が地面につくと、あなたは三歩、軽く走って止まります。",
+      "tts": {
+        "text": "足が地面につくと、あなたは三歩、軽く走って止まります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "草が、ふたたび本物になります。",
+      "text_markdown": "草が、ふたたび本物になります。",
+      "tts": {
+        "text": "草が、ふたたび本物になります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界が、ふたたび確かなものに戻ります。",
+      "text_markdown": "世界が、ふたたび確かなものに戻ります。",
+      "tts": {
+        "text": "世界が、ふたたび確かなものに戻ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あなたは振り返って、空を見上げます。",
+      "text_markdown": "あなたは振り返って、空を見上げます。",
+      "tts": {
+        "text": "あなたは振り返って、空を見上げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "そして初めて、あの友人が長年あなたに伝えようとしてきたことが、わかるんです。",
+      "text_markdown": "そして初めて、あの友人が長年あなたに伝えようとしてきたことが、わかるんです。",
+      "tts": {
+        "text": "そして初めて、あの友人が長年あなたに伝えようとしてきたことが、わかるんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "始め方",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "始め方",
+      "text_markdown": "始め方"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、ある日これをやってみたいと思ったとき、実際にどう始めればいいのか、お話ししますね。",
+      "text_markdown": "では、ある日これをやってみたいと思ったとき、実際にどう始めればいいのか、お話ししますね。",
+      "tts": {
+        "text": "では、ある日これをやってみたいと思ったとき、実際にどう始めればいいのか、お話ししますね。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "正直に言うと、思っているよりずっと簡単です。",
+      "text_markdown": "正直に言うと、思っているよりずっと簡単です。",
+      "tts": {
+        "text": "正直に言うと、思っているよりずっと簡単です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界中のほとんどのドロップゾーンが、まったくの初心者を、その日の朝に受け入れてくれます。",
+      "text_markdown": "世界中のほとんどのドロップゾーンが、まったくの初心者を、その日の朝に受け入れてくれます。",
+      "tts": {
+        "text": "世界中のほとんどのドロップゾーンが、まったくの初心者を、その日の朝に受け入れてくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたを空に連れていくのは、タンデムジャンプという形で、インストラクターが背中側についてくれます。",
+      "text_markdown": "あなたを空に連れていくのは、タンデムジャンプという形で、インストラクターが背中側についてくれます。",
+      "tts": {
+        "text": "あなたを空に連れていくのは、タンデムジャンプという形で、インストラクターが背中側についてくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到着して、書類にサインをして、短い動画を観て、インストラクターに会います。",
+      "text_markdown": "到着して、書類にサインをして、短い動画を観て、インストラクターに会います。",
+      "tts": {
+        "text": "到着して、書類にサインをして、短い動画を観て、インストラクターに会います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ジャンプスーツとハーネスを身につけます。",
+      "text_markdown": "ジャンプスーツとハーネスを身につけます。",
+      "tts": {
+        "text": "ジャンプスーツとハーネスを身につけます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "そして、飛行機に乗り込みます。",
+      "text_markdown": "そして、飛行機に乗り込みます。",
+      "tts": {
+        "text": "そして、飛行機に乗り込みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "二十分ほどあとには、人生で一番大きな笑顔を浮かべて、芝生の上を歩いて戻っているんです。",
+      "text_markdown": "二十分ほどあとには、人生で一番大きな笑顔を浮かべて、芝生の上を歩いて戻っているんです。",
+      "tts": {
+        "text": "二十分ほどあとには、人生で一番大きな笑顔を浮かべて、芝生の上を歩いて戻っているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "初めての飛び降りで、勇敢である必要はありません。",
+      "text_markdown": "初めての飛び降りで、勇敢である必要はありません。",
+      "tts": {
+        "text": "初めての飛び降りで、勇敢である必要はありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ただ、やってみる気持ちさえあればいいんです。",
+      "text_markdown": "ただ、やってみる気持ちさえあればいいんです。",
+      "tts": {
+        "text": "ただ、やってみる気持ちさえあればいいんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "インストラクターがすべてやってくれます。",
+      "text_markdown": "インストラクターがすべてやってくれます。",
+      "tts": {
+        "text": "インストラクターがすべてやってくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼がパラシュートを引きます。",
+      "text_markdown": "彼がパラシュートを引きます。",
+      "tts": {
+        "text": "彼がパラシュートを引きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼がキャノピーを操ります。",
+      "text_markdown": "彼がキャノピーを操ります。",
+      "tts": {
+        "text": "彼がキャノピーを操ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "彼があなたを着地させてくれます。",
+      "text_markdown": "彼があなたを着地させてくれます。",
+      "tts": {
+        "text": "彼があなたを着地させてくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "あなたは、世界一の特等席で、ただ一緒に乗っていればいいんです。",
+      "text_markdown": "あなたは、世界一の特等席で、ただ一緒に乗っていればいいんです。",
+      "tts": {
+        "text": "あなたは、世界一の特等席で、ただ一緒に乗っていればいいんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしその初めてのジャンプのあと、自分ひとりで飛んでみたいと思ったら、進む道は、加速自由落下と呼ばれています。",
+      "text_markdown": "もしその初めてのジャンプのあと、自分ひとりで飛んでみたいと思ったら、進む道は、加速自由落下と呼ばれています。",
+      "tts": {
+        "text": "もしその初めてのジャンプのあと、自分ひとりで飛んでみたいと思ったら、進む道は、加速自由落下と呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、どのドロップゾーンでも教えている訓練プログラムで、あなたを本物のスカイダイバーにしてくれます。",
+      "text_markdown": "それは、どのドロップゾーンでも教えている訓練プログラムで、あなたを本物のスカイダイバーにしてくれます。",
+      "tts": {
+        "text": "それは、どのドロップゾーンでも教えている訓練プログラムで、あなたを本物のスカイダイバーにしてくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "お客さんではなく、です。",
+      "text_markdown": "お客さんではなく、です。",
+      "tts": {
+        "text": "お客さんではなく、です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "空で、自分自身の体を操る操縦士、ということです。",
+      "text_markdown": "空で、自分自身の体を操る操縦士、ということです。",
+      "tts": {
+        "text": "空で、自分自身の体を操る操縦士、ということです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プログラムの最初のレベルは、長い座学の一日です。",
+      "text_markdown": "プログラムの最初のレベルは、長い座学の一日です。",
+      "tts": {
+        "text": "プログラムの最初のレベルは、長い座学の一日です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "落ち方を学びます。",
+      "text_markdown": "落ち方を学びます。",
+      "tts": {
+        "text": "落ち方を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "高度計の読み方を学びます。",
+      "text_markdown": "高度計の読み方を学びます。",
+      "tts": {
+        "text": "高度計の読み方を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "メインパラシュートが開かなかったときに、どうすればいいのかも学びます。",
+      "text_markdown": "メインパラシュートが開かなかったときに、どうすればいいのかも学びます。",
+      "tts": {
+        "text": "メインパラシュートが開かなかったときに、どうすればいいのかも学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "座学の日は、六、七時間ほどかかります。",
+      "text_markdown": "座学の日は、六、七時間ほどかかります。",
+      "tts": {
+        "text": "座学の日は、六、七時間ほどかかります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "終わるころには、ほとんどの人が一生かけて学ぶより多くのことを、パラシュートについて知っているようになります。",
+      "text_markdown": "終わるころには、ほとんどの人が一生かけて学ぶより多くのことを、パラシュートについて知っているようになります。",
+      "tts": {
+        "text": "終わるころには、ほとんどの人が一生かけて学ぶより多くのことを、パラシュートについて知っているようになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それから、初めての単独ジャンプが来ます。",
+      "text_markdown": "それから、初めての単独ジャンプが来ます。",
+      "tts": {
+        "text": "それから、初めての単独ジャンプが来ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "二人のインストラクターが、両側からあなたのハーネスをつかんで、一緒に飛んでくれます。",
+      "text_markdown": "二人のインストラクターが、両側からあなたのハーネスをつかんで、一緒に飛んでくれます。",
+      "tts": {
+        "text": "二人のインストラクターが、両側からあなたのハーネスをつかんで、一緒に飛んでくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたが安定したら、自由落下の中で、彼らはあなたを離します。",
+      "text_markdown": "あなたが安定したら、自由落下の中で、彼らはあなたを離します。",
+      "tts": {
+        "text": "あなたが安定したら、自由落下の中で、彼らはあなたを離します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あなたは自分でパラシュートを引きます。",
+      "text_markdown": "あなたは自分でパラシュートを引きます。",
+      "tts": {
+        "text": "あなたは自分でパラシュートを引きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "自分でキャノピーを操って、地面まで降りていきます。",
+      "text_markdown": "自分でキャノピーを操って、地面まで降りていきます。",
+      "tts": {
+        "text": "自分でキャノピーを操って、地面まで降りていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "初めてこれをやった次の日、笑いすぎて顔が痛くなるくらいです。",
+      "text_markdown": "初めてこれをやった次の日、笑いすぎて顔が痛くなるくらいです。",
+      "tts": {
+        "text": "初めてこれをやった次の日、笑いすぎて顔が痛くなるくらいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プログラム全体で、だいたい七回のジャンプを経験します。",
+      "text_markdown": "プログラム全体で、だいたい七回のジャンプを経験します。",
+      "tts": {
+        "text": "プログラム全体で、だいたい七回のジャンプを経験します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "終わるころには、自分ひとりで飛んでいるんです。",
+      "text_markdown": "終わるころには、自分ひとりで飛んでいるんです。",
+      "tts": {
+        "text": "終わるころには、自分ひとりで飛んでいるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこから先、スカイダイバーは、ふつうその後の一年で最初の百回のジャンプを終えていきます。",
+      "text_markdown": "そこから先、スカイダイバーは、ふつうその後の一年で最初の百回のジャンプを終えていきます。",
+      "tts": {
+        "text": "そこから先、スカイダイバーは、ふつうその後の一年で最初の百回のジャンプを終えていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その途中で、ほかのジャンパーに対して相対的に飛ぶことを学びます。",
+      "text_markdown": "その途中で、ほかのジャンパーに対して相対的に飛ぶことを学びます。",
+      "tts": {
+        "text": "その途中で、ほかのジャンパーに対して相対的に飛ぶことを学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "空を横切ってトラッキングする方法を学びます。",
+      "text_markdown": "空を横切ってトラッキングする方法を学びます。",
+      "tts": {
+        "text": "空を横切ってトラッキングする方法を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "自分のパラシュートをパッキングする方法を学びます。",
+      "text_markdown": "自分のパラシュートをパッキングする方法を学びます。",
+      "tts": {
+        "text": "自分のパラシュートをパッキングする方法を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "コミュニティは小さくて、フレンドリーで、辛抱強いんです。",
+      "text_markdown": "コミュニティは小さくて、フレンドリーで、辛抱強いんです。",
+      "tts": {
+        "text": "コミュニティは小さくて、フレンドリーで、辛抱強いんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ドロップゾーンでは、初心者だからといって、誰かにばかにされることはありません。",
+      "text_markdown": "ドロップゾーンでは、初心者だからといって、誰かにばかにされることはありません。",
+      "tts": {
+        "text": "ドロップゾーンでは、初心者だからといって、誰かにばかにされることはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "私たちはみんな、かつて初心者でした。",
+      "text_markdown": "私たちはみんな、かつて初心者でした。",
+      "tts": {
+        "text": "私たちはみんな、かつて初心者でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "今でも自分のことを初心者みたいに感じている人が、ほとんどです。",
+      "text_markdown": "今でも自分のことを初心者みたいに感じている人が、ほとんどです。",
+      "tts": {
+        "text": "今でも自分のことを初心者みたいに感じている人が、ほとんどです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、安全についてはどうでしょう。",
+      "text_markdown": "では、安全についてはどうでしょう。",
+      "tts": {
+        "text": "では、安全についてはどうでしょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは、分別のある人なら誰もが聞く質問で、ちゃんとした答えを受け取るに値する質問です。",
+      "text_markdown": "これは、分別のある人なら誰もが聞く質問で、ちゃんとした答えを受け取るに値する質問です。",
+      "tts": {
+        "text": "これは、分別のある人なら誰もが聞く質問で、ちゃんとした答えを受け取るに値する質問です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "実のところ、スカイダイビングはとても安全です。",
+      "text_markdown": "実のところ、スカイダイビングはとても安全です。",
+      "tts": {
+        "text": "実のところ、スカイダイビングはとても安全です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "歩くほど安全ではありませんが、ドロップゾーンまで車で行くより安全なんです。",
+      "text_markdown": "歩くほど安全ではありませんが、ドロップゾーンまで車で行くより安全なんです。",
+      "tts": {
+        "text": "歩くほど安全ではありませんが、ドロップゾーンまで車で行くより安全なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "装備は、すばらしいものです。",
+      "text_markdown": "装備は、すばらしいものです。",
+      "tts": {
+        "text": "装備は、すばらしいものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "メインのパラシュートと予備のパラシュートがあります。そして、もし自分で予備を出せなくても、自動装置が代わりに作動してくれます。",
+      "text_markdown": "メインのパラシュートと予備のパラシュートがあります。そして、もし自分で予備を出せなくても、自動装置が代わりに作動してくれます。",
+      "tts": {
+        "text": "メインのパラシュートと予備のパラシュートがあります。そして、もし自分で予備を出せなくても、自動装置が代わりに作動してくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ドロップゾーンは、あなたを大切に思ってくれるプロフェッショナルたちが運営しています。",
+      "text_markdown": "ドロップゾーンは、あなたを大切に思ってくれるプロフェッショナルたちが運営しています。",
+      "tts": {
+        "text": "ドロップゾーンは、あなたを大切に思ってくれるプロフェッショナルたちが運営しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "インストラクターは、すべてのジャンプについて、本当に深く心を配っています。",
+      "text_markdown": "インストラクターは、すべてのジャンプについて、本当に深く心を配っています。",
+      "tts": {
+        "text": "インストラクターは、すべてのジャンプについて、本当に深く心を配っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、費用はどうでしょう。",
+      "text_markdown": "では、費用はどうでしょう。",
+      "tts": {
+        "text": "では、費用はどうでしょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "タンデムジャンプは、二人で行く、ちょっといい夕食くらいの値段です。",
+      "text_markdown": "タンデムジャンプは、二人で行く、ちょっといい夕食くらいの値段です。",
+      "tts": {
+        "text": "タンデムジャンプは、二人で行く、ちょっといい夕食くらいの値段です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "訓練プログラムは、ちょっとした旅行くらいの値段です。",
+      "text_markdown": "訓練プログラムは、ちょっとした旅行くらいの値段です。",
+      "tts": {
+        "text": "訓練プログラムは、ちょっとした旅行くらいの値段です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そのあとは、一回のジャンプは、映画のチケットと食事一回分くらいの値段です。",
+      "text_markdown": "そのあとは、一回のジャンプは、映画のチケットと食事一回分くらいの値段です。",
+      "tts": {
+        "text": "そのあとは、一回のジャンプは、映画のチケットと食事一回分くらいの値段です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ふつうの仕事と、ふつうの暮らしを送っている人たちが、毎週末これをやっています。",
+      "text_markdown": "ふつうの仕事と、ふつうの暮らしを送っている人たちが、毎週末これをやっています。",
+      "tts": {
+        "text": "ふつうの仕事と、ふつうの暮らしを送っている人たちが、毎週末これをやっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "彼らはお金持ちじゃありません。",
+      "text_markdown": "彼らはお金持ちじゃありません。",
+      "tts": {
+        "text": "彼らはお金持ちじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "特別な人たちでもありません。",
+      "text_markdown": "特別な人たちでもありません。",
+      "tts": {
+        "text": "特別な人たちでもありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ただ、これは自分がやることなんだ、と決めただけなんです。",
+      "text_markdown": "ただ、これは自分がやることなんだ、と決めただけなんです。",
+      "tts": {
+        "text": "ただ、これは自分がやることなんだ、と決めただけなんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もし最初のジャンプを考えているなら、本当に大事な助言はひとつだけです。",
+      "text_markdown": "もし最初のジャンプを考えているなら、本当に大事な助言はひとつだけです。",
+      "tts": {
+        "text": "もし最初のジャンプを考えているなら、本当に大事な助言はひとつだけです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "日にちを決めましょう。",
+      "text_markdown": "日にちを決めましょう。",
+      "tts": {
+        "text": "日にちを決めましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "友だちを一人だけ誘いましょう。",
+      "text_markdown": "友だちを一人だけ誘いましょう。",
+      "tts": {
+        "text": "友だちを一人だけ誘いましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして、姿を見せに行きましょう。",
+      "text_markdown": "そして、姿を見せに行きましょう。",
+      "tts": {
+        "text": "そして、姿を見せに行きましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "難しいのは、落ちることじゃありません。",
+      "text_markdown": "難しいのは、落ちることじゃありません。",
+      "tts": {
+        "text": "難しいのは、落ちることじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "難しいのは、決めることなんです。",
+      "text_markdown": "難しいのは、決めることなんです。",
+      "tts": {
+        "text": "難しいのは、決めることなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "決めてしまえば、空はもうあなたのものです。",
+      "text_markdown": "決めてしまえば、空はもうあなたのものです。",
+      "tts": {
+        "text": "決めてしまえば、空はもうあなたのものです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "技の世界",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "技の世界",
+      "text_markdown": "技の世界"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "落下のなかには、ひとつの技が隠れています。それこそがスカイダイビングの、生涯あなたを引き留める部分なんです。",
+      "text_markdown": "落下のなかには、ひとつの技が隠れています。それこそがスカイダイビングの、生涯あなたを引き留める部分なんです。",
+      "tts": {
+        "text": "落下のなかには、ひとつの技が隠れています。それこそがスカイダイビングの、生涯あなたを引き留める部分なんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "経験を積んだスカイダイバーが自由落下しているのを見ても、誰かが落ちているようには見えません。",
+      "text_markdown": "経験を積んだスカイダイバーが自由落下しているのを見ても、誰かが落ちているようには見えません。",
+      "tts": {
+        "text": "経験を積んだスカイダイバーが自由落下しているのを見ても、誰かが落ちているようには見えません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "誰かが飛んでいるように見えるんです。",
+      "text_markdown": "誰かが飛んでいるように見えるんです。",
+      "tts": {
+        "text": "誰かが飛んでいるように見えるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは指先を使って、わざとゆっくり回ります。",
+      "text_markdown": "彼らは指先を使って、わざとゆっくり回ります。",
+      "tts": {
+        "text": "彼らは指先を使って、わざとゆっくり回ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "肩を五センチほど前に傾けるだけで、空のなかを八百メートルほど前に滑っていきます。",
+      "text_markdown": "肩を五センチほど前に傾けるだけで、空のなかを八百メートルほど前に滑っていきます。",
+      "tts": {
+        "text": "肩を五センチほど前に傾けるだけで、空のなかを八百メートルほど前に滑っていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼らは落下の途中で止まり、不可能に見えるような静止を保ちます。",
+      "text_markdown": "彼らは落下の途中で止まり、不可能に見えるような静止を保ちます。",
+      "tts": {
+        "text": "彼らは落下の途中で止まり、不可能に見えるような静止を保ちます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "体そのものが、飛行機なんです。",
+      "text_markdown": "体そのものが、飛行機なんです。",
+      "tts": {
+        "text": "体そのものが、飛行機なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それが、この技の最初の秘訣です。",
+      "text_markdown": "それが、この技の最初の秘訣です。",
+      "tts": {
+        "text": "それが、この技の最初の秘訣です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それを理解できれば、あとはすべて自然についてきます。",
+      "text_markdown": "それを理解できれば、あとはすべて自然についてきます。",
+      "tts": {
+        "text": "それを理解できれば、あとはすべて自然についてきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安定した自由落下の基本姿勢は、アーチと呼ばれています。",
+      "text_markdown": "安定した自由落下の基本姿勢は、アーチと呼ばれています。",
+      "tts": {
+        "text": "安定した自由落下の基本姿勢は、アーチと呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "腰を前に押し出して、腕と脚を後ろに流します。バナナのような形です。",
+      "text_markdown": "腰を前に押し出して、腕と脚を後ろに流します。バナナのような形です。",
+      "tts": {
+        "text": "腰を前に押し出して、腕と脚を後ろに流します。バナナのような形です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アーチは、あなたが意識しなくても、地面に対して顔を下に向けたままでいさせてくれる姿勢なんです。",
+      "text_markdown": "アーチは、あなたが意識しなくても、地面に対して顔を下に向けたままでいさせてくれる姿勢なんです。",
+      "tts": {
+        "text": "アーチは、あなたが意識しなくても、地面に対して顔を下に向けたままでいさせてくれる姿勢なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "新しいジャンパーは、フォームのプールの中でアーチを学び、次に風洞のなかで学び、それから空で学びます。",
+      "text_markdown": "新しいジャンパーは、フォームのプールの中でアーチを学び、次に風洞のなかで学び、それから空で学びます。",
+      "tts": {
+        "text": "新しいジャンパーは、フォームのプールの中でアーチを学び、次に風洞のなかで学び、それから空で学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ベテランのジャンパーは今でも、ベテランのランナーが自分の走りについて語るように、アーチについて語り合います。",
+      "text_markdown": "ベテランのジャンパーは今でも、ベテランのランナーが自分の走りについて語るように、アーチについて語り合います。",
+      "tts": {
+        "text": "ベテランのジャンパーは今でも、ベテランのランナーが自分の走りについて語るように、アーチについて語り合います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "安定したアーチが身につけば、自由落下の世界がもっと開けてきます。",
+      "text_markdown": "安定したアーチが身につけば、自由落下の世界がもっと開けてきます。",
+      "tts": {
+        "text": "安定したアーチが身につけば、自由落下の世界がもっと開けてきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "体を大きく広げて、自分を凧に変えることで、ゆっくり落ちる方法を学びます。",
+      "text_markdown": "体を大きく広げて、自分を凧に変えることで、ゆっくり落ちる方法を学びます。",
+      "tts": {
+        "text": "体を大きく広げて、自分を凧に変えることで、ゆっくり落ちる方法を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "体を小さく丸めて、自分を石に変えることで、速く落ちる方法を学びます。",
+      "text_markdown": "体を小さく丸めて、自分を石に変えることで、速く落ちる方法を学びます。",
+      "tts": {
+        "text": "体を小さく丸めて、自分を石に変えることで、速く落ちる方法を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トラッキングを学びます。これは、人間の体ができるなかで、空を飛ぶことに一番近いものなんです。",
+      "text_markdown": "トラッキングを学びます。これは、人間の体ができるなかで、空を飛ぶことに一番近いものなんです。",
+      "tts": {
+        "text": "トラッキングを学びます。これは、人間の体ができるなかで、空を飛ぶことに一番近いものなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "上手なトラッカーは、二十秒で空を四百メートルほど横切ることができます。",
+      "text_markdown": "上手なトラッカーは、二十秒で空を四百メートルほど横切ることができます。",
+      "tts": {
+        "text": "上手なトラッカーは、二十秒で空を四百メートルほど横切ることができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "腕は後ろに、体は斜めに、自分が向かう先をわかっている紙飛行機のように動いていきます。",
+      "text_markdown": "腕は後ろに、体は斜めに、自分が向かう先をわかっている紙飛行機のように動いていきます。",
+      "tts": {
+        "text": "腕は後ろに、体は斜めに、自分が向かう先をわかっている紙飛行機のように動いていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "技のもう半分は、キャノピーです。",
+      "text_markdown": "技のもう半分は、キャノピーです。",
+      "tts": {
+        "text": "技のもう半分は、キャノピーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "パラシュートは、あなたを下まで漂わせてくれる、受け身なものではありません。",
+      "text_markdown": "パラシュートは、あなたを下まで漂わせてくれる、受け身なものではありません。",
+      "tts": {
+        "text": "パラシュートは、あなたを下まで漂わせてくれる、受け身なものではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは翼で、あなたが操って飛ばすものなんです。",
+      "text_markdown": "それは翼で、あなたが操って飛ばすものなんです。",
+      "tts": {
+        "text": "それは翼で、あなたが操って飛ばすものなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "右のトグルを引くと、右の翼が下がり、あなたは右に旋回します。",
+      "text_markdown": "右のトグルを引くと、右の翼が下がり、あなたは右に旋回します。",
+      "tts": {
+        "text": "右のトグルを引くと、右の翼が下がり、あなたは右に旋回します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "両方を同時に引くと、減速して、ふんわりと着地できます。",
+      "text_markdown": "両方を同時に引くと、減速して、ふんわりと着地できます。",
+      "tts": {
+        "text": "両方を同時に引くと、減速して、ふんわりと着地できます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "風を読み、降りる場所を選び、回り方を計画します。",
+      "text_markdown": "風を読み、降りる場所を選び、回り方を計画します。",
+      "tts": {
+        "text": "風を読み、降りる場所を選び、回り方を計画します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "最後の瞬間にフレアをかけて、足を地面に叩きつけるのではなく、軽くふれさせるんです。",
+      "text_markdown": "最後の瞬間にフレアをかけて、足を地面に叩きつけるのではなく、軽くふれさせるんです。",
+      "tts": {
+        "text": "最後の瞬間にフレアをかけて、足を地面に叩きつけるのではなく、軽くふれさせるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "これらすべてが、キャノピーフライトであり、それ自体がひとつの分野になっています。",
+      "text_markdown": "これらすべてが、キャノピーフライトであり、それ自体がひとつの分野になっています。",
+      "tts": {
+        "text": "これらすべてが、キャノピーフライトであり、それ自体がひとつの分野になっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、パッキングがあります。",
+      "text_markdown": "そして、パッキングがあります。",
+      "tts": {
+        "text": "そして、パッキングがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "すべてのスカイダイバーが、自分のパラシュートを自分でパッキングします。",
+      "text_markdown": "すべてのスカイダイバーが、自分のパラシュートを自分でパッキングします。",
+      "tts": {
+        "text": "すべてのスカイダイバーが、自分のパラシュートを自分でパッキングします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "毎回、必ずです。",
+      "text_markdown": "毎回、必ずです。",
+      "tts": {
+        "text": "毎回、必ずです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "長いマットの上にキャノピーを広げます。",
+      "text_markdown": "長いマットの上にキャノピーを広げます。",
+      "tts": {
+        "text": "長いマットの上にキャノピーを広げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ラインを丁寧に整えます。",
+      "text_markdown": "ラインを丁寧に整えます。",
+      "tts": {
+        "text": "ラインを丁寧に整えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "セルを折りたたんでいきます。",
+      "text_markdown": "セルを折りたたんでいきます。",
+      "tts": {
+        "text": "セルを折りたたんでいきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "布を繭のようにまとめ、バッグの中にそっと収め、ブライドルを通し、コンテナを閉じます。",
+      "text_markdown": "布を繭のようにまとめ、バッグの中にそっと収め、ブライドルを通し、コンテナを閉じます。",
+      "tts": {
+        "text": "布を繭のようにまとめ、バッグの中にそっと収め、ブライドルを通し、コンテナを閉じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "十五分ほどかかります。そしてあなたはそれをゆっくり進めます。なぜなら、自分の命がこの一枚の布にかかっているからです。",
+      "text_markdown": "十五分ほどかかります。そしてあなたはそれをゆっくり進めます。なぜなら、自分の命がこの一枚の布にかかっているからです。",
+      "tts": {
+        "text": "十五分ほどかかります。そしてあなたはそれをゆっくり進めます。なぜなら、自分の命がこの一枚の布にかかっているからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パッキングは、瞑想です。",
+      "text_markdown": "パッキングは、瞑想です。",
+      "tts": {
+        "text": "パッキングは、瞑想です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くのスカイダイバーが、その日のなかで一番好きな時間だ、と言っています。",
+      "text_markdown": "多くのスカイダイバーが、その日のなかで一番好きな時間だ、と言っています。",
+      "tts": {
+        "text": "多くのスカイダイバーが、その日のなかで一番好きな時間だ、と言っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マット、ライン、ゆっくりとした折りたたみ。",
+      "text_markdown": "マット、ライン、ゆっくりとした折りたたみ。",
+      "tts": {
+        "text": "マット、ライン、ゆっくりとした折りたたみ。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "横でパッキングしている友だちの肩。",
+      "text_markdown": "横でパッキングしている友だちの肩。",
+      "tts": {
+        "text": "横でパッキングしている友だちの肩。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "隅のラジオから流れてくる、もう何度も聴いた歌。",
+      "text_markdown": "隅のラジオから流れてくる、もう何度も聴いた歌。",
+      "tts": {
+        "text": "隅のラジオから流れてくる、もう何度も聴いた歌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "パックは急がせるものじゃありません。",
+      "text_markdown": "パックは急がせるものじゃありません。",
+      "tts": {
+        "text": "パックは急がせるものじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "空は、あなたの予定を気にしてくれませんから。",
+      "text_markdown": "空は、あなたの予定を気にしてくれませんから。",
+      "tts": {
+        "text": "空は、あなたの予定を気にしてくれませんから。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この技の心がまえは、忍耐です。",
+      "text_markdown": "この技の心がまえは、忍耐です。",
+      "tts": {
+        "text": "この技の心がまえは、忍耐です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、謙虚さです。",
+      "text_markdown": "それは、謙虚さです。",
+      "tts": {
+        "text": "それは、謙虚さです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは、退屈に見えるジャンプも含めて、毎回振り返ろうとする気持ちです。",
+      "text_markdown": "それは、退屈に見えるジャンプも含めて、毎回振り返ろうとする気持ちです。",
+      "tts": {
+        "text": "それは、退屈に見えるジャンプも含めて、毎回振り返ろうとする気持ちです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スカイダイバーは、ジャンプのあとに話すのが大好きです。",
+      "text_markdown": "スカイダイバーは、ジャンプのあとに話すのが大好きです。",
+      "tts": {
+        "text": "スカイダイバーは、ジャンプのあとに話すのが大好きです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ピクニックテーブルに座って、一秒ごと、体の動きごとに、飛んだ時間を一緒に振り返ります。",
+      "text_markdown": "ピクニックテーブルに座って、一秒ごと、体の動きごとに、飛んだ時間を一緒に振り返ります。",
+      "tts": {
+        "text": "ピクニックテーブルに座って、一秒ごと、体の動きごとに、飛んだ時間を一緒に振り返ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "うまくいったところはどこか。",
+      "text_markdown": "うまくいったところはどこか。",
+      "tts": {
+        "text": "うまくいったところはどこか。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "雑になっていたところはどこか。",
+      "text_markdown": "雑になっていたところはどこか。",
+      "tts": {
+        "text": "雑になっていたところはどこか。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "次はどんなことを試してみたいか。",
+      "text_markdown": "次はどんなことを試してみたいか。",
+      "tts": {
+        "text": "次はどんなことを試してみたいか。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、人はこの世界に残るんです。",
+      "text_markdown": "だから、人はこの世界に残るんです。",
+      "tts": {
+        "text": "だから、人はこの世界に残るんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "落ちることがわくわくするから、ではありません。",
+      "text_markdown": "落ちることがわくわくするから、ではありません。",
+      "tts": {
+        "text": "落ちることがわくわくするから、ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "落ちることは、簡単な部分なんです。",
+      "text_markdown": "落ちることは、簡単な部分なんです。",
+      "tts": {
+        "text": "落ちることは、簡単な部分なんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "残るのは、いつも学ぶことがあるからです。",
+      "text_markdown": "残るのは、いつも学ぶことがあるからです。",
+      "tts": {
+        "text": "残るのは、いつも学ぶことがあるからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "そして、いつも一緒に学んでくれる仲間がいるからです。",
+      "text_markdown": "そして、いつも一緒に学んでくれる仲間がいるからです。",
+      "tts": {
+        "text": "そして、いつも一緒に学んでくれる仲間がいるからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "そして、明日のお昼にも、空があなたを待っていてくれるからです。",
+      "text_markdown": "そして、明日のお昼にも、空があなたを待っていてくれるからです。",
+      "tts": {
+        "text": "そして、明日のお昼にも、空があなたを待っていてくれるからです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "忘れられない瞬間",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "忘れられない瞬間",
+      "text_markdown": "忘れられない瞬間"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "三つ、お話ししますね。",
+      "text_markdown": "三つ、お話ししますね。",
+      "tts": {
+        "text": "三つ、お話ししますね。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ひとつめは、夕暮れのフライトです。",
+      "text_markdown": "ひとつめは、夕暮れのフライトです。",
+      "tts": {
+        "text": "ひとつめは、夕暮れのフライトです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "飛行機は、太陽が沈む二十分前に離陸します。",
+      "text_markdown": "飛行機は、太陽が沈む二十分前に離陸します。",
+      "tts": {
+        "text": "飛行機は、太陽が沈む二十分前に離陸します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オレンジ色の光の層を抜けて登っていきます。機内はあたたかく、仲間たちは静かです。",
+      "text_markdown": "オレンジ色の光の層を抜けて登っていきます。機内はあたたかく、仲間たちは静かです。",
+      "tts": {
+        "text": "オレンジ色の光の層を抜けて登っていきます。機内はあたたかく、仲間たちは静かです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "今回ドアが開くと、空気はピンク色をしています。",
+      "text_markdown": "今回ドアが開くと、空気はピンク色をしています。",
+      "tts": {
+        "text": "今回ドアが開くと、空気はピンク色をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "下に広がる地面は、半分は影、半分は金色です。",
+      "text_markdown": "下に広がる地面は、半分は影、半分は金色です。",
+      "tts": {
+        "text": "下に広がる地面は、半分は影、半分は金色です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あなたは一歩外へ踏み出し、六十秒のあいだ、夕焼けの内側を落ちていきます。",
+      "text_markdown": "あなたは一歩外へ踏み出し、六十秒のあいだ、夕焼けの内側を落ちていきます。",
+      "tts": {
+        "text": "あなたは一歩外へ踏み出し、六十秒のあいだ、夕焼けの内側を落ちていきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "現実とは思えません。",
+      "text_markdown": "現実とは思えません。",
+      "tts": {
+        "text": "現実とは思えません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "自分の目がとらえられると思っていなかったような色が、いくつも見えるはずです。",
+      "text_markdown": "自分の目がとらえられると思っていなかったような色が、いくつも見えるはずです。",
+      "tts": {
+        "text": "自分の目がとらえられると思っていなかったような色が、いくつも見えるはずです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "パラシュートが開くと、あなたは、いっとき燃えているような世界の上を漂っているんです。",
+      "text_markdown": "パラシュートが開くと、あなたは、いっとき燃えているような世界の上を漂っているんです。",
+      "tts": {
+        "text": "パラシュートが開くと、あなたは、いっとき燃えているような世界の上を漂っているんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "風は、すっかり凪いでいます。",
+      "text_markdown": "風は、すっかり凪いでいます。",
+      "tts": {
+        "text": "風は、すっかり凪いでいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ドロップゾーンは、あなたの下にある小さな緑色の四角で、あたたかい光がひとつだけ灯っています。",
+      "text_markdown": "ドロップゾーンは、あなたの下にある小さな緑色の四角で、あたたかい光がひとつだけ灯っています。",
+      "tts": {
+        "text": "ドロップゾーンは、あなたの下にある小さな緑色の四角で、あたたかい光がひとつだけ灯っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あなたはゆっくりした旋回をひとつ選んで、最後に着地するようにします。誰もこの時間を終わらせたくないからです。",
+      "text_markdown": "あなたはゆっくりした旋回をひとつ選んで、最後に着地するようにします。誰もこの時間を終わらせたくないからです。",
+      "tts": {
+        "text": "あなたはゆっくりした旋回をひとつ選んで、最後に着地するようにします。誰もこの時間を終わらせたくないからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "足が草に着いたとき、空は紫色をしています。",
+      "text_markdown": "足が草に着いたとき、空は紫色をしています。",
+      "tts": {
+        "text": "足が草に着いたとき、空は紫色をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "仲間たちが、それぞれの着地地点から歩いて戻ってきます。",
+      "text_markdown": "仲間たちが、それぞれの着地地点から歩いて戻ってきます。",
+      "tts": {
+        "text": "仲間たちが、それぞれの着地地点から歩いて戻ってきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "そのうちの一人が、ただ、あなたを見つめます。",
+      "text_markdown": "そのうちの一人が、ただ、あなたを見つめます。",
+      "tts": {
+        "text": "そのうちの一人が、ただ、あなたを見つめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "ふたりとも、首を横に振ります。",
+      "text_markdown": "ふたりとも、首を横に振ります。",
+      "tts": {
+        "text": "ふたりとも、首を横に振ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "どちらも、言葉を見つけられません。",
+      "text_markdown": "どちらも、言葉を見つけられません。",
+      "tts": {
+        "text": "どちらも、言葉を見つけられません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ふたつめは、フォーメーションのジャンプです。",
+      "text_markdown": "ふたつめは、フォーメーションのジャンプです。",
+      "tts": {
+        "text": "ふたつめは、フォーメーションのジャンプです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そのフライトには八人います。",
+      "text_markdown": "そのフライトには八人います。",
+      "tts": {
+        "text": "そのフライトには八人います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ベンチに座って、ヘルメットを膝の上に置き、リーダーの人が小さなホワイトボードに飛び方の図を描きます。",
+      "text_markdown": "ベンチに座って、ヘルメットを膝の上に置き、リーダーの人が小さなホワイトボードに飛び方の図を描きます。",
+      "tts": {
+        "text": "ベンチに座って、ヘルメットを膝の上に置き、リーダーの人が小さなホワイトボードに飛び方の図を描きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "あなたたちは、かたまりになって飛行機を出て、一緒に落ちて、円を作ります。",
+      "text_markdown": "あなたたちは、かたまりになって飛行機を出て、一緒に落ちて、円を作ります。",
+      "tts": {
+        "text": "あなたたちは、かたまりになって飛行機を出て、一緒に落ちて、円を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "全員が、自分の位置を知っています。",
+      "text_markdown": "全員が、自分の位置を知っています。",
+      "tts": {
+        "text": "全員が、自分の位置を知っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "拳を軽く合わせ、おたがいの装備をたしかめ、緊張気味に笑います。",
+      "text_markdown": "拳を軽く合わせ、おたがいの装備をたしかめ、緊張気味に笑います。",
+      "tts": {
+        "text": "拳を軽く合わせ、おたがいの装備をたしかめ、緊張気味に笑います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "八人の大人が、お泊まり会の子どものように、こわくて、わくわくして、同じ顔をしています。",
+      "text_markdown": "八人の大人が、お泊まり会の子どものように、こわくて、わくわくして、同じ顔をしています。",
+      "tts": {
+        "text": "八人の大人が、お泊まり会の子どものように、こわくて、わくわくして、同じ顔をしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飛行機が水平になります。",
+      "text_markdown": "飛行機が水平になります。",
+      "tts": {
+        "text": "飛行機が水平になります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドアが開きます。",
+      "text_markdown": "ドアが開きます。",
+      "tts": {
+        "text": "ドアが開きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "リーダーが先に出て、あとに続いて、心臓ひとつぶんずつ間をあけて、ほかの全員が飛び出していきます。",
+      "text_markdown": "リーダーが先に出て、あとに続いて、心臓ひとつぶんずつ間をあけて、ほかの全員が飛び出していきます。",
+      "tts": {
+        "text": "リーダーが先に出て、あとに続いて、心臓ひとつぶんずつ間をあけて、ほかの全員が飛び出していきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "自由落下のなかで、考えるよりも先に、おたがいを見つけます。",
+      "text_markdown": "自由落下のなかで、考えるよりも先に、おたがいを見つけます。",
+      "tts": {
+        "text": "自由落下のなかで、考えるよりも先に、おたがいを見つけます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "手と手が出会います。",
+      "text_markdown": "手と手が出会います。",
+      "tts": {
+        "text": "手と手が出会います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "円ができあがります。",
+      "text_markdown": "円ができあがります。",
+      "tts": {
+        "text": "円ができあがります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "完璧なほんの数秒間、八人の人間が空でおたがいを支えあいます。",
+      "text_markdown": "完璧なほんの数秒間、八人の人間が空でおたがいを支えあいます。",
+      "tts": {
+        "text": "完璧なほんの数秒間、八人の人間が空でおたがいを支えあいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "同じ速さで落ちながら。",
+      "text_markdown": "同じ速さで落ちながら。",
+      "tts": {
+        "text": "同じ速さで落ちながら。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "おたがいの目を見つめあいながら。",
+      "text_markdown": "おたがいの目を見つめあいながら。",
+      "tts": {
+        "text": "おたがいの目を見つめあいながら。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "そして高度計が、もう時間だ、と告げます。",
+      "text_markdown": "そして高度計が、もう時間だ、と告げます。",
+      "tts": {
+        "text": "そして高度計が、もう時間だ、と告げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "あなたは手を離します。",
+      "text_markdown": "あなたは手を離します。",
+      "tts": {
+        "text": "あなたは手を離します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "それぞれのパラシュートを開く余裕を作るため、おたがいから離れるようにトラッキングしていきます。",
+      "text_markdown": "それぞれのパラシュートを開く余裕を作るため、おたがいから離れるようにトラッキングしていきます。",
+      "tts": {
+        "text": "それぞれのパラシュートを開く余裕を作るため、おたがいから離れるようにトラッキングしていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "地上では、誰かを抱きしめるのを止められません。",
+      "text_markdown": "地上では、誰かを抱きしめるのを止められません。",
+      "tts": {
+        "text": "地上では、誰かを抱きしめるのを止められません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "みっつめは、つらい一年のあとのジャンプです。",
+      "text_markdown": "みっつめは、つらい一年のあとのジャンプです。",
+      "tts": {
+        "text": "みっつめは、つらい一年のあとのジャンプです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしかしたら、あなたは何かをくぐり抜けてきたのかもしれません。",
+      "text_markdown": "もしかしたら、あなたは何かをくぐり抜けてきたのかもしれません。",
+      "tts": {
+        "text": "もしかしたら、あなたは何かをくぐり抜けてきたのかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "仕事で苦しい時期を過ごしたかもしれません。",
+      "text_markdown": "仕事で苦しい時期を過ごしたかもしれません。",
+      "tts": {
+        "text": "仕事で苦しい時期を過ごしたかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "終わってしまった関係があったかもしれません。",
+      "text_markdown": "終わってしまった関係があったかもしれません。",
+      "tts": {
+        "text": "終わってしまった関係があったかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ふだんの世界が、薄くて遠く感じられるくらいの喪失があったかもしれません。",
+      "text_markdown": "ふだんの世界が、薄くて遠く感じられるくらいの喪失があったかもしれません。",
+      "tts": {
+        "text": "ふだんの世界が、薄くて遠く感じられるくらいの喪失があったかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "あなたは、何かを感じたいから飛ぶんじゃありません。",
+      "text_markdown": "あなたは、何かを感じたいから飛ぶんじゃありません。",
+      "tts": {
+        "text": "あなたは、何かを感じたいから飛ぶんじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ずっと何も感じられなくなっていて、自分がまだそこにいるのか、確かめたくて飛ぶんです。",
+      "text_markdown": "ずっと何も感じられなくなっていて、自分がまだそこにいるのか、確かめたくて飛ぶんです。",
+      "tts": {
+        "text": "ずっと何も感じられなくなっていて、自分がまだそこにいるのか、確かめたくて飛ぶんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飛行機が登っていきます。",
+      "text_markdown": "飛行機が登っていきます。",
+      "tts": {
+        "text": "飛行機が登っていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ドアが開きます。",
+      "text_markdown": "ドアが開きます。",
+      "tts": {
+        "text": "ドアが開きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あなたは外へ踏み出します。",
+      "text_markdown": "あなたは外へ踏み出します。",
+      "tts": {
+        "text": "あなたは外へ踏み出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして最初の三秒、風があなたをつかむ前に、あなたのなかの何かがぱりんと割れて開くんです。",
+      "text_markdown": "そして最初の三秒、風があなたをつかむ前に、あなたのなかの何かがぱりんと割れて開くんです。",
+      "tts": {
+        "text": "そして最初の三秒、風があなたをつかむ前に、あなたのなかの何かがぱりんと割れて開くんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "泣くつもりじゃなかったはずです。",
+      "text_markdown": "泣くつもりじゃなかったはずです。",
+      "tts": {
+        "text": "泣くつもりじゃなかったはずです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "それでも、あなたは泣いています。",
+      "text_markdown": "それでも、あなたは泣いています。",
+      "tts": {
+        "text": "それでも、あなたは泣いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "自由落下が、自分の仕事をしてくれます。",
+      "text_markdown": "自由落下が、自分の仕事をしてくれます。",
+      "tts": {
+        "text": "自由落下が、自分の仕事をしてくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "風と呼吸と落下しかない、長い六十秒間です。",
+      "text_markdown": "風と呼吸と落下しかない、長い六十秒間です。",
+      "tts": {
+        "text": "風と呼吸と落下しかない、長い六十秒間です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "そしてそのどこかで、すべてを抱え込み続けてきた自分の一部が、ようやくほんの一分だけ、それを下に置いてくれるんです。",
+      "text_markdown": "そしてそのどこかで、すべてを抱え込み続けてきた自分の一部が、ようやくほんの一分だけ、それを下に置いてくれるんです。",
+      "tts": {
+        "text": "そしてそのどこかで、すべてを抱え込み続けてきた自分の一部が、ようやくほんの一分だけ、それを下に置いてくれるんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "パラシュートが開きます。",
+      "text_markdown": "パラシュートが開きます。",
+      "tts": {
+        "text": "パラシュートが開きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "世界が、しんと静かになります。",
+      "text_markdown": "世界が、しんと静かになります。",
+      "tts": {
+        "text": "世界が、しんと静かになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "あなたはハーネスにぶら下がりながら、泣いて、笑って、また泣いて。",
+      "text_markdown": "あなたはハーネスにぶら下がりながら、泣いて、笑って、また泣いて。",
+      "tts": {
+        "text": "あなたはハーネスにぶら下がりながら、泣いて、笑って、また泣いて。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "誰にも、あなたの姿は見えません。",
+      "text_markdown": "誰にも、あなたの姿は見えません。",
+      "tts": {
+        "text": "誰にも、あなたの姿は見えません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "それが、大事なところなんです。",
+      "text_markdown": "それが、大事なところなんです。",
+      "tts": {
+        "text": "それが、大事なところなんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "着地したとき、あなたが治っているわけじゃありません。",
+      "text_markdown": "着地したとき、あなたが治っているわけじゃありません。",
+      "tts": {
+        "text": "着地したとき、あなたが治っているわけじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたはまだ、自分が空に持ち上げてきたものを抱えたままです。",
+      "text_markdown": "あなたはまだ、自分が空に持ち上げてきたものを抱えたままです。",
+      "tts": {
+        "text": "あなたはまだ、自分が空に持ち上げてきたものを抱えたままです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "けれども、空にいた一時間のあいだ、あなたのなかの何かが、生きているとはこういう感じだった、ということをはっきり思い出していたんです。",
+      "text_markdown": "けれども、空にいた一時間のあいだ、あなたのなかの何かが、生きているとはこういう感じだった、ということをはっきり思い出していたんです。",
+      "tts": {
+        "text": "けれども、空にいた一時間のあいだ、あなたのなかの何かが、生きているとはこういう感じだった、ということをはっきり思い出していたんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スカイダイビングが、あなたの一年を解決してくれたわけじゃありません。",
+      "text_markdown": "スカイダイビングが、あなたの一年を解決してくれたわけじゃありません。",
+      "tts": {
+        "text": "スカイダイビングが、あなたの一年を解決してくれたわけじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ただ六十秒だけ、抱えられるくらい小さな破片にして、あなたにそれを返してくれただけなんです。",
+      "text_markdown": "ただ六十秒だけ、抱えられるくらい小さな破片にして、あなたにそれを返してくれただけなんです。",
+      "tts": {
+        "text": "ただ六十秒だけ、抱えられるくらい小さな破片にして、あなたにそれを返してくれただけなんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "なぜ続くのか",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "なぜ続くのか",
+      "text_markdown": "なぜ続くのか"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私はもう、長いあいだ飛び続けています。",
+      "text_markdown": "私はもう、長いあいだ飛び続けています。",
+      "tts": {
+        "text": "私はもう、長いあいだ飛び続けています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "回数を覚えていられないくらい、長いあいだです。",
+      "text_markdown": "回数を覚えていられないくらい、長いあいだです。",
+      "tts": {
+        "text": "回数を覚えていられないくらい、長いあいだです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "なぜまだやっているの、という質問が、もう自分にとって意味をなさないくらい、長いあいだです。",
+      "text_markdown": "なぜまだやっているの、という質問が、もう自分にとって意味をなさないくらい、長いあいだです。",
+      "tts": {
+        "text": "なぜまだやっているの、という質問が、もう自分にとって意味をなさないくらい、長いあいだです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたに、いくつかのことを伝えて締めくくりたいと思います。",
+      "text_markdown": "あなたに、いくつかのことを伝えて締めくくりたいと思います。",
+      "tts": {
+        "text": "あなたに、いくつかのことを伝えて締めくくりたいと思います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ひとつめは、スカイダイビングは一時的な熱中ではない、ということです。",
+      "text_markdown": "ひとつめは、スカイダイビングは一時的な熱中ではない、ということです。",
+      "tts": {
+        "text": "ひとつめは、スカイダイビングは一時的な熱中ではない、ということです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "友だちが始めたのを見て、心配する人たちがいます。",
+      "text_markdown": "友だちが始めたのを見て、心配する人たちがいます。",
+      "tts": {
+        "text": "友だちが始めたのを見て、心配する人たちがいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それを反抗だとか、中年期の何かだとか、何かから逃げているんだとか、思ってしまうんです。",
+      "text_markdown": "それを反抗だとか、中年期の何かだとか、何かから逃げているんだとか、思ってしまうんです。",
+      "tts": {
+        "text": "それを反抗だとか、中年期の何かだとか、何かから逃げているんだとか、思ってしまうんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "でも、そうじゃありません。",
+      "text_markdown": "でも、そうじゃありません。",
+      "tts": {
+        "text": "でも、そうじゃありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "残っている人たちは、逃げているわけじゃないんです。",
+      "text_markdown": "残っている人たちは、逃げているわけじゃないんです。",
+      "tts": {
+        "text": "残っている人たちは、逃げているわけじゃないんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "意図せずいつのまにか、空のなかに小さな暮らしを築いていただけなんです。",
+      "text_markdown": "意図せずいつのまにか、空のなかに小さな暮らしを築いていただけなんです。",
+      "tts": {
+        "text": "意図せずいつのまにか、空のなかに小さな暮らしを築いていただけなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "土曜日になると姿を見せます。",
+      "text_markdown": "土曜日になると姿を見せます。",
+      "tts": {
+        "text": "土曜日になると姿を見せます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "自分のパラシュートをパッキングします。",
+      "text_markdown": "自分のパラシュートをパッキングします。",
+      "tts": {
+        "text": "自分のパラシュートをパッキングします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "仲間たちを抱きしめます。",
+      "text_markdown": "仲間たちを抱きしめます。",
+      "tts": {
+        "text": "仲間たちを抱きしめます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "夕暮れに家に帰ります。心地よく疲れた状態で、です。",
+      "text_markdown": "夕暮れに家に帰ります。心地よく疲れた状態で、です。",
+      "tts": {
+        "text": "夕暮れに家に帰ります。心地よく疲れた状態で、です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "月曜日には仕事に戻り、以前よりはっきりとやさしくなっています。",
+      "text_markdown": "月曜日には仕事に戻り、以前よりはっきりとやさしくなっています。",
+      "tts": {
+        "text": "月曜日には仕事に戻り、以前よりはっきりとやさしくなっています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空は、あなたを変えてくれます。でもゆっくりとです。",
+      "text_markdown": "空は、あなたを変えてくれます。でもゆっくりとです。",
+      "tts": {
+        "text": "空は、あなたを変えてくれます。でもゆっくりとです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あなたは、もっと今この瞬間にいられるようになります。",
+      "text_markdown": "あなたは、もっと今この瞬間にいられるようになります。",
+      "tts": {
+        "text": "あなたは、もっと今この瞬間にいられるようになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もっと大きなことに正直に向き合う練習を積んでいるから、小さなことに対する怖さが減っていきます。",
+      "text_markdown": "もっと大きなことに正直に向き合う練習を積んでいるから、小さなことに対する怖さが減っていきます。",
+      "tts": {
+        "text": "もっと大きなことに正直に向き合う練習を積んでいるから、小さなことに対する怖さが減っていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "もっと簡単に笑えるようになります。",
+      "text_markdown": "もっと簡単に笑えるようになります。",
+      "tts": {
+        "text": "もっと簡単に笑えるようになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "大事な人に、もっと頻繁に、好きだよ、と伝えるようになります。",
+      "text_markdown": "大事な人に、もっと頻繁に、好きだよ、と伝えるようになります。",
+      "tts": {
+        "text": "大事な人に、もっと頻繁に、好きだよ、と伝えるようになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あなたは高度約三千七百メートルの戸口に立ち、約束されているものなど何もないのだと、思い出した人になっているんです。",
+      "text_markdown": "あなたは高度約三千七百メートルの戸口に立ち、約束されているものなど何もないのだと、思い出した人になっているんです。",
+      "tts": {
+        "text": "あなたは高度約三千七百メートルの戸口に立ち、約束されているものなど何もないのだと、思い出した人になっているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もし夕食の席でスカイダイバーと一緒になることがあれば、聞ける質問はこんなものです。",
+      "text_markdown": "もし夕食の席でスカイダイバーと一緒になることがあれば、聞ける質問はこんなものです。",
+      "tts": {
+        "text": "もし夕食の席でスカイダイバーと一緒になることがあれば、聞ける質問はこんなものです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どうやって始めたのか、聞いてみてください。",
+      "text_markdown": "どうやって始めたのか、聞いてみてください。",
+      "tts": {
+        "text": "どうやって始めたのか、聞いてみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "どのスカイダイバーも、初めてのジャンプを鮮明に覚えていて、よろこんで話してくれるはずです。",
+      "text_markdown": "どのスカイダイバーも、初めてのジャンプを鮮明に覚えていて、よろこんで話してくれるはずです。",
+      "tts": {
+        "text": "どのスカイダイバーも、初めてのジャンプを鮮明に覚えていて、よろこんで話してくれるはずです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今までに何回くらい飛んだのか、聞いてみてください。",
+      "text_markdown": "今までに何回くらい飛んだのか、聞いてみてください。",
+      "tts": {
+        "text": "今までに何回くらい飛んだのか、聞いてみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは、ほぼ正確な数を知っていて、それを実際より多く見せようとはしません。",
+      "text_markdown": "彼らは、ほぼ正確な数を知っていて、それを実際より多く見せようとはしません。",
+      "tts": {
+        "text": "彼らは、ほぼ正確な数を知っていて、それを実際より多く見せようとはしません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "どんな種類のジャンプが一番好きか、聞いてみてください。",
+      "text_markdown": "どんな種類のジャンプが一番好きか、聞いてみてください。",
+      "tts": {
+        "text": "どんな種類のジャンプが一番好きか、聞いてみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ある人は、夕焼けのジャンプ、と言うでしょう。",
+      "text_markdown": "ある人は、夕焼けのジャンプ、と言うでしょう。",
+      "tts": {
+        "text": "ある人は、夕焼けのジャンプ、と言うでしょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ある人は、大きなフォーメーション、と言うでしょう。",
+      "text_markdown": "ある人は、大きなフォーメーション、と言うでしょう。",
+      "tts": {
+        "text": "ある人は、大きなフォーメーション、と言うでしょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ある人は、穏やかな夕方の静かなソロ、と言うでしょう。",
+      "text_markdown": "ある人は、穏やかな夕方の静かなソロ、と言うでしょう。",
+      "tts": {
+        "text": "ある人は、穏やかな夕方の静かなソロ、と言うでしょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "初めてのとき、こわかったかどうか、聞いてみてください。",
+      "text_markdown": "初めてのとき、こわかったかどうか、聞いてみてください。",
+      "tts": {
+        "text": "初めてのとき、こわかったかどうか、聞いてみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "もちろん、こわかったに決まっています。",
+      "text_markdown": "もちろん、こわかったに決まっています。",
+      "tts": {
+        "text": "もちろん、こわかったに決まっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "誰だってそうです。",
+      "text_markdown": "誰だってそうです。",
+      "tts": {
+        "text": "誰だってそうです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らはたぶん、ドアにぶつかる風のこと、カウントのこと、そして外に踏み出す直前の世界の見え方のことを話してくれます。",
+      "text_markdown": "彼らはたぶん、ドアにぶつかる風のこと、カウントのこと、そして外に踏み出す直前の世界の見え方のことを話してくれます。",
+      "tts": {
+        "text": "彼らはたぶん、ドアにぶつかる風のこと、カウントのこと、そして外に踏み出す直前の世界の見え方のことを話してくれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ていねいに、聞いてあげてください。",
+      "text_markdown": "ていねいに、聞いてあげてください。",
+      "tts": {
+        "text": "ていねいに、聞いてあげてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "彼らはあなたに、小さな贈り物を差し出してくれているんです。",
+      "text_markdown": "彼らはあなたに、小さな贈り物を差し出してくれているんです。",
+      "tts": {
+        "text": "彼らはあなたに、小さな贈り物を差し出してくれているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしスカイダイバーの目を輝かせたいなら、パラシュートが開くあの瞬間を表現してみて、と頼んでみてください。",
+      "text_markdown": "もしスカイダイバーの目を輝かせたいなら、パラシュートが開くあの瞬間を表現してみて、と頼んでみてください。",
+      "tts": {
+        "text": "もしスカイダイバーの目を輝かせたいなら、パラシュートが開くあの瞬間を表現してみて、と頼んでみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは、半秒くらい目を閉じます。",
+      "text_markdown": "彼らは、半秒くらい目を閉じます。",
+      "tts": {
+        "text": "彼らは、半秒くらい目を閉じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それから、言葉にしようとします。",
+      "text_markdown": "それから、言葉にしようとします。",
+      "tts": {
+        "text": "それから、言葉にしようとします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "毎回、違う言葉を使うんです。",
+      "text_markdown": "毎回、違う言葉を使うんです。",
+      "tts": {
+        "text": "毎回、違う言葉を使うんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "たとえば、静か。",
+      "text_markdown": "たとえば、静か。",
+      "tts": {
+        "text": "たとえば、静か。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "たとえば、やさしい。",
+      "text_markdown": "たとえば、やさしい。",
+      "tts": {
+        "text": "たとえば、やさしい。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "目覚めるみたい、と。",
+      "text_markdown": "目覚めるみたい、と。",
+      "tts": {
+        "text": "目覚めるみたい、と。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "家に帰ってきたみたい、と。",
+      "text_markdown": "家に帰ってきたみたい、と。",
+      "tts": {
+        "text": "家に帰ってきたみたい、と。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "同じように描写する人は、誰一人いません。",
+      "text_markdown": "同じように描写する人は、誰一人いません。",
+      "tts": {
+        "text": "同じように描写する人は、誰一人いません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "自分はまだ飛んだことがない、と認めることを、こわがらないでください。",
+      "text_markdown": "自分はまだ飛んだことがない、と認めることを、こわがらないでください。",
+      "tts": {
+        "text": "自分はまだ飛んだことがない、と認めることを、こわがらないでください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スカイダイバーは、その質問が大好きです。",
+      "text_markdown": "スカイダイバーは、その質問が大好きです。",
+      "tts": {
+        "text": "スカイダイバーは、その質問が大好きです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それから、やってみるべきだよ、と言って、そしてとても真剣な顔で、私が一緒に行くから、と言ってくれるのも大好きなんです。",
+      "text_markdown": "それから、やってみるべきだよ、と言って、そしてとても真剣な顔で、私が一緒に行くから、と言ってくれるのも大好きなんです。",
+      "tts": {
+        "text": "それから、やってみるべきだよ、と言って、そしてとても真剣な顔で、私が一緒に行くから、と言ってくれるのも大好きなんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "私たちのほとんどは、友だちを初めてのジャンプに連れていったことがあります。",
+      "text_markdown": "私たちのほとんどは、友だちを初めてのジャンプに連れていったことがあります。",
+      "tts": {
+        "text": "私たちのほとんどは、友だちを初めてのジャンプに連れていったことがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "それは、このスポーツの大きな喜びのひとつなんです。",
+      "text_markdown": "それは、このスポーツの大きな喜びのひとつなんです。",
+      "tts": {
+        "text": "それは、このスポーツの大きな喜びのひとつなんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この話の最後に、大きな教訓はありません。",
+      "text_markdown": "この話の最後に、大きな教訓はありません。",
+      "tts": {
+        "text": "この話の最後に、大きな教訓はありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "あるのは、ただ、これだけです。",
+      "text_markdown": "あるのは、ただ、これだけです。",
+      "tts": {
+        "text": "あるのは、ただ、これだけです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今この瞬間、世界のどこかで、穏やかで辛抱強い小さなグループが、飛行機に向かって歩いていきます。",
+      "text_markdown": "今この瞬間、世界のどこかで、穏やかで辛抱強い小さなグループが、飛行機に向かって歩いていきます。",
+      "tts": {
+        "text": "今この瞬間、世界のどこかで、穏やかで辛抱強い小さなグループが、飛行機に向かって歩いていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "野原は、日に照らされています。",
+      "text_markdown": "野原は、日に照らされています。",
+      "tts": {
+        "text": "野原は、日に照らされています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "草は、あたたかいんです。",
+      "text_markdown": "草は、あたたかいんです。",
+      "tts": {
+        "text": "草は、あたたかいんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "彼らは、おたがいの装備をたしかめあっています。",
+      "text_markdown": "彼らは、おたがいの装備をたしかめあっています。",
+      "tts": {
+        "text": "彼らは、おたがいの装備をたしかめあっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "笑っています。",
+      "text_markdown": "笑っています。",
+      "tts": {
+        "text": "笑っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "三十分後、彼らは空にいて、自分たちが知っている、いちばん静かなことをしています。",
+      "text_markdown": "三十分後、彼らは空にいて、自分たちが知っている、いちばん静かなことをしています。",
+      "tts": {
+        "text": "三十分後、彼らは空にいて、自分たちが知っている、いちばん静かなことをしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしかしたら、いつかあなたも、その一人になるかもしれません。",
+      "text_markdown": "もしかしたら、いつかあなたも、その一人になるかもしれません。",
+      "tts": {
+        "text": "もしかしたら、いつかあなたも、その一人になるかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "もしかしたら、ならないかもしれません。",
+      "text_markdown": "もしかしたら、ならないかもしれません。",
+      "tts": {
+        "text": "もしかしたら、ならないかもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どちらにしても、空はそこにあります。",
+      "text_markdown": "どちらにしても、空はそこにあります。",
+      "tts": {
+        "text": "どちらにしても、空はそこにあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ずっと、そこにあったんです。",
+      "text_markdown": "ずっと、そこにあったんです。",
+      "tts": {
+        "text": "ずっと、そこにあったんです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "もしあなたが、いつかすこしだけ傾いてみたいと思ったら、辛抱強く、待ってくれているんです。",
+      "text_markdown": "もしあなたが、いつかすこしだけ傾いてみたいと思ったら、辛抱強く、待ってくれているんです。",
+      "tts": {
+        "text": "もしあなたが、いつかすこしだけ傾いてみたいと思ったら、辛抱強く、待ってくれているんです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

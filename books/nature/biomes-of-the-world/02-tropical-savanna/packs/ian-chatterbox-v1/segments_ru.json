@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Тропическая саванна",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Тропическая саванна",
+      "text_markdown": "Тропическая саванна"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Где растут саванны",
+      "text_markdown": "Где растут саванны"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Добро пожаловать в тропическую саванну.",
+      "text_markdown": "Добро пожаловать в тропическую саванну.",
+      "tts": {
+        "text": "Добро пожаловать в тропическую саванну.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это один из великих биомов мира.",
+      "text_markdown": "Это один из великих биомов мира.",
+      "tts": {
+        "text": "Это один из великих биомов мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Биом — это часть Земли со своей погодой, растениями и животными.",
+      "text_markdown": "Биом — это часть Земли со своей погодой, растениями и животными.",
+      "tts": {
+        "text": "Биом это часть Земли со своей погодой, растениями и животными.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Саванна — это широкая травянистая равнина с редкими деревьями.",
+      "text_markdown": "Саванна — это широкая травянистая равнина с редкими деревьями.",
+      "tts": {
+        "text": "Саванна это широкая травянистая равнина с редкими деревьями.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь тепло круглый год.",
+      "text_markdown": "Здесь тепло круглый год.",
+      "tts": {
+        "text": "Здесь тепло круглый год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь одно долгое сухое время и одно более короткое влажное время.",
+      "text_markdown": "Здесь одно долгое сухое время и одно более короткое влажное время.",
+      "tts": {
+        "text": "Здесь одно долгое сухое время и одно более короткое влажное время.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самые большие саванны в мире находятся в Африке.",
+      "text_markdown": "Самые большие саванны в мире находятся в Африке.",
+      "tts": {
+        "text": "Самые большие саванны в мире находятся в Африке.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они тянутся через большую часть середины континента.",
+      "text_markdown": "Они тянутся через большую часть середины континента.",
+      "tts": {
+        "text": "Они тянутся через большую часть середины континента.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большие саванны есть и в Южной Америке, их называют серрадо.",
+      "text_markdown": "Большие саванны есть и в Южной Америке, их называют серрадо.",
+      "tts": {
+        "text": "Большие саванны есть и в Южной Америке, их называют серрадо.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тропические саванны простираются на севере Австралии.",
+      "text_markdown": "Тропические саванны простираются на севере Австралии.",
+      "tts": {
+        "text": "Тропические саванны простираются на севере Австралии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Меньшие саванны есть в Индии и в Юго-Восточной Азии.",
+      "text_markdown": "Меньшие саванны есть в Индии и в Юго-Восточной Азии.",
+      "tts": {
+        "text": "Меньшие саванны есть в Индии и в Юго Восточной Азии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждая из них выросла сама по себе, далеко от других.",
+      "text_markdown": "Каждая из них выросла сама по себе, далеко от других.",
+      "tts": {
+        "text": "Каждая из них выросла сама по себе, далеко от других.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поэтому растения и животные в каждой части мира разные.",
+      "text_markdown": "Поэтому растения и животные в каждой части мира разные.",
+      "tts": {
+        "text": "Поэтому растения и животные в каждой части мира разные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Травоядное животное в Африке — это не то же, что животное в Южной Америке или Австралии.",
+      "text_markdown": "Травоядное животное в Африке — это не то же, что животное в Южной Америке или Австралии.",
+      "tts": {
+        "text": "Травоядное животное в Африке это не то же, что животное в Южной Америке или Австралии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но все они часть одного и того же биома.",
+      "text_markdown": "Но все они часть одного и того же биома.",
+      "tts": {
+        "text": "Но все они часть одного и того же биома.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда ты стоишь в саванне, ты можешь видеть очень далеко.",
+      "text_markdown": "Когда ты стоишь в саванне, ты можешь видеть очень далеко.",
+      "tts": {
+        "text": "Когда ты стоишь в саванне, ты можешь видеть очень далеко.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Трава доходит тебе до пояса или выше.",
+      "text_markdown": "Трава доходит тебе до пояса или выше.",
+      "tts": {
+        "text": "Трава доходит тебе до пояса или выше.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Несколько деревьев с плоскими вершинами поднимаются над травой.",
+      "text_markdown": "Несколько деревьев с плоскими вершинами поднимаются над травой.",
+      "tts": {
+        "text": "Несколько деревьев с плоскими вершинами поднимаются над травой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Небо огромное.",
+      "text_markdown": "Небо огромное.",
+      "tts": {
+        "text": "Небо огромное.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Свет золотой.",
+      "text_markdown": "Свет золотой.",
+      "tts": {
+        "text": "Свет золотой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты слышишь, как ветер движется в траве.",
+      "text_markdown": "Ты слышишь, как ветер движется в траве.",
+      "tts": {
+        "text": "Ты слышишь, как ветер движется в траве.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты слышишь голоса птиц вдалеке.",
+      "text_markdown": "Ты слышишь голоса птиц вдалеке.",
+      "tts": {
+        "text": "Ты слышишь голоса птиц вдалеке.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это и есть саванна.",
+      "text_markdown": "Это и есть саванна.",
+      "tts": {
+        "text": "Это и есть саванна.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Где растут саванны",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большая открытая земля травы, редких деревьев и широкого неба.",
+      "text_markdown": "Большая открытая земля травы, редких деревьев и широкого неба.",
+      "tts": {
+        "text": "Большая открытая земля травы, редких деревьев и широкого неба.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Погода",
+      "text_markdown": "Погода"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Погода в тропической саванне простая.",
+      "text_markdown": "Погода в тропической саванне простая.",
+      "tts": {
+        "text": "Погода в тропической саванне простая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь тепло круглый год.",
+      "text_markdown": "Здесь тепло круглый год.",
+      "tts": {
+        "text": "Здесь тепло круглый год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но, в отличие от тропического леса, у саванны два очень разных сезона.",
+      "text_markdown": "Но, в отличие от тропического леса, у саванны два очень разных сезона.",
+      "tts": {
+        "text": "Но, в отличие от тропического леса, у саванны два очень разных сезона.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть долгое сухое время и более короткое влажное время.",
+      "text_markdown": "Есть долгое сухое время и более короткое влажное время.",
+      "tts": {
+        "text": "Есть долгое сухое время и более короткое влажное время.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В сухое время небо чистое много месяцев подряд.",
+      "text_markdown": "В сухое время небо чистое много месяцев подряд.",
+      "tts": {
+        "text": "В сухое время небо чистое много месяцев подряд.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Трава становится золотой и ломкой.",
+      "text_markdown": "Трава становится золотой и ломкой.",
+      "tts": {
+        "text": "Трава становится золотой и ломкой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Реки мелеют, а многие маленькие пруды полностью пересыхают.",
+      "text_markdown": "Реки мелеют, а многие маленькие пруды полностью пересыхают.",
+      "tts": {
+        "text": "Реки мелеют, а многие маленькие пруды полностью пересыхают.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья сбрасывают листья, чтобы беречь воду.",
+      "text_markdown": "Деревья сбрасывают листья, чтобы беречь воду.",
+      "tts": {
+        "text": "Деревья сбрасывают листья, чтобы беречь воду.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Влажное время начинается, когда на горизонте собираются большие тучи.",
+      "text_markdown": "Влажное время начинается, когда на горизонте собираются большие тучи.",
+      "tts": {
+        "text": "Влажное время начинается, когда на горизонте собираются большие тучи.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первые дожди приходят сильными грозами с громом и молниями.",
+      "text_markdown": "Первые дожди приходят сильными грозами с громом и молниями.",
+      "tts": {
+        "text": "Первые дожди приходят сильными грозами с громом и молниями.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда приходит дождь, саванна меняется за одну ночь.",
+      "text_markdown": "Когда приходит дождь, саванна меняется за одну ночь.",
+      "tts": {
+        "text": "Когда приходит дождь, саванна меняется за одну ночь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Новая трава пробивается из сухой земли.",
+      "text_markdown": "Новая трава пробивается из сухой земли.",
+      "tts": {
+        "text": "Новая трава пробивается из сухой земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На деревьях растут свежие зелёные листья.",
+      "text_markdown": "На деревьях растут свежие зелёные листья.",
+      "tts": {
+        "text": "На деревьях растут свежие зелёные листья.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Цветы распускаются волнами красок.",
+      "text_markdown": "Цветы распускаются волнами красок.",
+      "tts": {
+        "text": "Цветы распускаются волнами красок.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Влажное время короткое, но именно тогда происходит большая часть жизни.",
+      "text_markdown": "Влажное время короткое, но именно тогда происходит большая часть жизни.",
+      "tts": {
+        "text": "Влажное время короткое, но именно тогда происходит большая часть жизни.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сухое время долгое, но саванна устроена для него.",
+      "text_markdown": "Сухое время долгое, но саванна устроена для него.",
+      "tts": {
+        "text": "Сухое время долгое, но саванна устроена для него.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждое растение и каждое животное здесь знает, как ждать дождя.",
+      "text_markdown": "Каждое растение и каждое животное здесь знает, как ждать дождя.",
+      "tts": {
+        "text": "Каждое растение и каждое животное здесь знает, как ждать дождя.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Земля и вода",
+      "text_markdown": "Земля и вода"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Земля саванны в основном плоская и широкая.",
+      "text_markdown": "Земля саванны в основном плоская и широкая.",
+      "tts": {
+        "text": "Земля саванны в основном плоская и широкая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В некоторых местах низкие пологие холмы поднимаются из травы.",
+      "text_markdown": "В некоторых местах низкие пологие холмы поднимаются из травы.",
+      "tts": {
+        "text": "В некоторых местах низкие пологие холмы поднимаются из травы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Иногда большая скала стоит одна на равнине.",
+      "text_markdown": "Иногда большая скала стоит одна на равнине.",
+      "tts": {
+        "text": "Иногда большая скала стоит одна на равнине.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почва под травой разная в разных частях саванны.",
+      "text_markdown": "Почва под травой разная в разных частях саванны.",
+      "tts": {
+        "text": "Почва под травой разная в разных частях саванны.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В одних местах она тёмная и богатая.",
+      "text_markdown": "В одних местах она тёмная и богатая.",
+      "tts": {
+        "text": "В одних местах она тёмная и богатая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В других местах она песчаная или тонкая.",
+      "text_markdown": "В других местах она песчаная или тонкая.",
+      "tts": {
+        "text": "В других местах она песчаная или тонкая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Травы научились расти во всех этих почвах.",
+      "text_markdown": "Травы научились расти во всех этих почвах.",
+      "tts": {
+        "text": "Травы научились расти во всех этих почвах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда приходят дожди, вода собирается в низинах и образует пруды и неглубокие озёра.",
+      "text_markdown": "Когда приходят дожди, вода собирается в низинах и образует пруды и неглубокие озёра.",
+      "tts": {
+        "text": "Когда приходят дожди, вода собирается в низинах и образует пруды и неглубокие озёра.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые из них держатся месяцами, а некоторые пересыхают за несколько недель.",
+      "text_markdown": "Некоторые из них держатся месяцами, а некоторые пересыхают за несколько недель.",
+      "tts": {
+        "text": "Некоторые из них держатся месяцами, а некоторые пересыхают за несколько недель.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Реки извиваются через саванну длинными медленными изгибами.",
+      "text_markdown": "Реки извиваются через саванну длинными медленными изгибами.",
+      "tts": {
+        "text": "Реки извиваются через саванну длинными медленными изгибами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во влажное время они широкие и полные.",
+      "text_markdown": "Во влажное время они широкие и полные.",
+      "tts": {
+        "text": "Во влажное время они широкие и полные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В сухое время они превращаются в тонкий ручеёк в песке или в цепочку тихих заводей.",
+      "text_markdown": "В сухое время они превращаются в тонкий ручеёк в песке или в цепочку тихих заводей.",
+      "tts": {
+        "text": "В сухое время они превращаются в тонкий ручеёк в песке или в цепочку тихих заводей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие животные саванны собираются у этих рек и прудов, чтобы пить.",
+      "text_markdown": "Многие животные саванны собираются у этих рек и прудов, чтобы пить.",
+      "tts": {
+        "text": "Многие животные саванны собираются у этих рек и прудов, чтобы пить.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пруд в сухое время — это оживлённое место.",
+      "text_markdown": "Пруд в сухое время — это оживлённое место.",
+      "tts": {
+        "text": "Пруд в сухое время это оживлённое место.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Животные, которые обычно не встречаются, стоят рядом, чтобы пить.",
+      "text_markdown": "Животные, которые обычно не встречаются, стоят рядом, чтобы пить.",
+      "tts": {
+        "text": "Животные, которые обычно не встречаются, стоят рядом, чтобы пить.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Реки также приносят с собой полосу более высоких деревьев.",
+      "text_markdown": "Реки также приносят с собой полосу более высоких деревьев.",
+      "tts": {
+        "text": "Реки также приносят с собой полосу более высоких деревьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вдоль берегов деревья растут густо и зелено даже в сухое время.",
+      "text_markdown": "Вдоль берегов деревья растут густо и зелено даже в сухое время.",
+      "tts": {
+        "text": "Вдоль берегов деревья растут густо и зелено даже в сухое время.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эти ленты леса пересекают открытую саванну как зелёные дороги.",
+      "text_markdown": "Эти ленты леса пересекают открытую саванну как зелёные дороги.",
+      "tts": {
+        "text": "Эти ленты леса пересекают открытую саванну как зелёные дороги.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они дом для животных, которым нужна тень и вода круглый год.",
+      "text_markdown": "Они дом для животных, которым нужна тень и вода круглый год.",
+      "tts": {
+        "text": "Они дом для животных, которым нужна тень и вода круглый год.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Растения",
+      "text_markdown": "Растения"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сердце саванны — это трава.",
+      "text_markdown": "Сердце саванны — это трава.",
+      "tts": {
+        "text": "Сердце саванны это трава.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Высокие травы покрывают землю во всех направлениях.",
+      "text_markdown": "Высокие травы покрывают землю во всех направлениях.",
+      "tts": {
+        "text": "Высокие травы покрывают землю во всех направлениях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые травы вырастают высотой с человека.",
+      "text_markdown": "Некоторые травы вырастают высотой с человека.",
+      "tts": {
+        "text": "Некоторые травы вырастают высотой с человека.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их корни уходят глубоко в почву, чтобы найти воду.",
+      "text_markdown": "Их корни уходят глубоко в почву, чтобы найти воду.",
+      "tts": {
+        "text": "Их корни уходят глубоко в почву, чтобы найти воду.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда огонь проходит через саванну, верхушки трав сгорают.",
+      "text_markdown": "Когда огонь проходит через саванну, верхушки трав сгорают.",
+      "tts": {
+        "text": "Когда огонь проходит через саванну, верхушки трав сгорают.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но корни остаются живыми под землёй.",
+      "text_markdown": "Но корни остаются живыми под землёй.",
+      "tts": {
+        "text": "Но корни остаются живыми под землёй.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "После следующего дождя травы вырастают снова, свежие и зелёные.",
+      "text_markdown": "После следующего дождя травы вырастают снова, свежие и зелёные.",
+      "tts": {
+        "text": "После следующего дождя травы вырастают снова, свежие и зелёные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Огонь — это естественная часть этого биома.",
+      "text_markdown": "Огонь — это естественная часть этого биома.",
+      "tts": {
+        "text": "Огонь это естественная часть этого биома.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многим растениям здесь нужен огонь, чтобы оставаться здоровыми.",
+      "text_markdown": "Многим растениям здесь нужен огонь, чтобы оставаться здоровыми.",
+      "tts": {
+        "text": "Многим растениям здесь нужен огонь, чтобы оставаться здоровыми.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья тоже растут по всей саванне, но они разбросаны.",
+      "text_markdown": "Деревья тоже растут по всей саванне, но они разбросаны.",
+      "tts": {
+        "text": "Деревья тоже растут по всей саванне, но они разбросаны.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они стоят далеко друг от друга, с травой между ними.",
+      "text_markdown": "Они стоят далеко друг от друга, с травой между ними.",
+      "tts": {
+        "text": "Они стоят далеко друг от друга, с травой между ними.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большинство деревьев саванны невысокие, с широкими плоскими вершинами.",
+      "text_markdown": "Большинство деревьев саванны невысокие, с широкими плоскими вершинами.",
+      "tts": {
+        "text": "Большинство деревьев саванны невысокие, с широкими плоскими вершинами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Плоская вершина — это широкий зонт из листьев, который ловит каждую каплю света.",
+      "text_markdown": "Плоская вершина — это широкий зонт из листьев, который ловит каждую каплю света.",
+      "tts": {
+        "text": "Плоская вершина это широкий зонт из листьев, который ловит каждую каплю света.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У многих деревьев саванны есть шипы, чтобы большие животные не ели их.",
+      "text_markdown": "У многих деревьев саванны есть шипы, чтобы большие животные не ели их.",
+      "tts": {
+        "text": "У многих деревьев саванны есть шипы, чтобы большие животные не ели их.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Знаменитый баобаб — это огромное дерево саванны с толстым крепким стволом.",
+      "text_markdown": "Знаменитый баобаб — это огромное дерево саванны с толстым крепким стволом.",
+      "tts": {
+        "text": "Знаменитый баобаб это огромное дерево саванны с толстым крепким стволом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Он может хранить воду внутри ствола в долгое сухое время.",
+      "text_markdown": "Он может хранить воду внутри ствола в долгое сухое время.",
+      "tts": {
+        "text": "Он может хранить воду внутри ствола в долгое сухое время.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые баобабы живут больше тысячи лет.",
+      "text_markdown": "Некоторые баобабы живут больше тысячи лет.",
+      "tts": {
+        "text": "Некоторые баобабы живут больше тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вдоль рек более высокие деревья растут тонкой зелёной полосой.",
+      "text_markdown": "Вдоль рек более высокие деревья растут тонкой зелёной полосой.",
+      "tts": {
+        "text": "Вдоль рек более высокие деревья растут тонкой зелёной полосой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На открытой равнине трава и несколько редких деревьев — это всё, что видно на много километров.",
+      "text_markdown": "На открытой равнине трава и несколько редких деревьев — это всё, что видно на много километров.",
+      "tts": {
+        "text": "На открытой равнине трава и несколько редких деревьев это всё, что видно на много километров.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во влажное время маленькие цветы распускаются между травами.",
+      "text_markdown": "Во влажное время маленькие цветы распускаются между травами.",
+      "tts": {
+        "text": "Во влажное время маленькие цветы распускаются между травами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они открываются быстро и держатся всего несколько недель.",
+      "text_markdown": "Они открываются быстро и держатся всего несколько недель.",
+      "tts": {
+        "text": "Они открываются быстро и держатся всего несколько недель.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Саванна — это тихая машина из травы, редких деревьев, солнца и терпеливых корней.",
+      "text_markdown": "Саванна — это тихая машина из травы, редких деревьев, солнца и терпеливых корней.",
+      "tts": {
+        "text": "Саванна это тихая машина из травы, редких деревьев, солнца и терпеливых корней.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Животные",
+      "text_markdown": "Животные"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тропическая саванна известна во всём мире своими животными.",
+      "text_markdown": "Тропическая саванна известна во всём мире своими животными.",
+      "tts": {
+        "text": "Тропическая саванна известна во всём мире своими животными.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Травы кормят огромные стада травоядных животных.",
+      "text_markdown": "Травы кормят огромные стада травоядных животных.",
+      "tts": {
+        "text": "Травы кормят огромные стада травоядных животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Африке большие стада зебр, антилоп и буйволов движутся по равнинам.",
+      "text_markdown": "В Африке большие стада зебр, антилоп и буйволов движутся по равнинам.",
+      "tts": {
+        "text": "В Африке большие стада зебр, антилоп и буйволов движутся по равнинам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они идут за дождями из одной части саванны в другую.",
+      "text_markdown": "Они идут за дождями из одной части саванны в другую.",
+      "tts": {
+        "text": "Они идут за дождями из одной части саванны в другую.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самое большое наземное животное на Земле, слон, живёт в африканской саванне.",
+      "text_markdown": "Самое большое наземное животное на Земле, слон, живёт в африканской саванне.",
+      "tts": {
+        "text": "Самое большое наземное животное на Земле, слон, живёт в африканской саванне.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Семья слонов медленно идёт по траве, во главе со старой матерью.",
+      "text_markdown": "Семья слонов медленно идёт по траве, во главе со старой матерью.",
+      "tts": {
+        "text": "Семья слонов медленно идёт по траве, во главе со старой матерью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Жираф идёт рядом, тянется длинной шеей, чтобы есть листья деревьев.",
+      "text_markdown": "Жираф идёт рядом, тянется длинной шеей, чтобы есть листья деревьев.",
+      "tts": {
+        "text": "Жираф идёт рядом, тянется длинной шеей, чтобы есть листья деревьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Где много травоядных, там есть и охотники.",
+      "text_markdown": "Где много травоядных, там есть и охотники.",
+      "tts": {
+        "text": "Где много травоядных, там есть и охотники.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лев — это великий охотник африканской саванны.",
+      "text_markdown": "Лев — это великий охотник африканской саванны.",
+      "tts": {
+        "text": "Лев это великий охотник африканской саванны.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Львы живут вместе семейными группами, которые называют прайдами.",
+      "text_markdown": "Львы живут вместе семейными группами, которые называют прайдами.",
+      "tts": {
+        "text": "Львы живут вместе семейными группами, которые называют прайдами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Гепард — это самое быстрое животное на земле.",
+      "text_markdown": "Гепард — это самое быстрое животное на земле.",
+      "tts": {
+        "text": "Гепард это самое быстрое животное на земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Он бежит короткими рывками, чтобы ловить антилоп, которые пасутся на равнинах.",
+      "text_markdown": "Он бежит короткими рывками, чтобы ловить антилоп, которые пасутся на равнинах.",
+      "tts": {
+        "text": "Он бежит короткими рывками, чтобы ловить антилоп, которые пасутся на равнинах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Леопард — это тихий охотник, который забирается на деревья и поднимает свою добычу на ветки.",
+      "text_markdown": "Леопард — это тихий охотник, который забирается на деревья и поднимает свою добычу на ветки.",
+      "tts": {
+        "text": "Леопард это тихий охотник, который забирается на деревья и поднимает свою добычу на ветки.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Гиены охотятся стаями и доедают то, что оставляют более крупные охотники.",
+      "text_markdown": "Гиены охотятся стаями и доедают то, что оставляют более крупные охотники.",
+      "tts": {
+        "text": "Гиены охотятся стаями и доедают то, что оставляют более крупные охотники.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Маленькие животные тоже повсюду.",
+      "text_markdown": "Маленькие животные тоже повсюду.",
+      "tts": {
+        "text": "Маленькие животные тоже повсюду.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Бабуины ходят шумными группами по траве и среди деревьев.",
+      "text_markdown": "Бабуины ходят шумными группами по траве и среди деревьев.",
+      "tts": {
+        "text": "Бабуины ходят шумными группами по траве и среди деревьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большие птицы, которых называют страусами, бегут по открытой равнине на длинных ногах.",
+      "text_markdown": "Большие птицы, которых называют страусами, бегут по открытой равнине на длинных ногах.",
+      "tts": {
+        "text": "Большие птицы, которых называют страусами, бегут по открытой равнине на длинных ногах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Грифы кружат высоко в небе и высматривают погибших животных.",
+      "text_markdown": "Грифы кружат высоко в небе и высматривают погибших животных.",
+      "tts": {
+        "text": "Грифы кружат высоко в небе и высматривают погибших животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во влажное время лягушки поют каждую ночь возле новых прудов.",
+      "text_markdown": "Во влажное время лягушки поют каждую ночь возле новых прудов.",
+      "tts": {
+        "text": "Во влажное время лягушки поют каждую ночь возле новых прудов.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Насекомые наполняют тёплый воздух, а бабочки порхают между цветами.",
+      "text_markdown": "Насекомые наполняют тёплый воздух, а бабочки порхают между цветами.",
+      "tts": {
+        "text": "Насекомые наполняют тёплый воздух, а бабочки порхают между цветами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В реках бегемоты отдыхают в воде весь день, а ночью выходят пастись на траве.",
+      "text_markdown": "В реках бегемоты отдыхают в воде весь день, а ночью выходят пастись на траве.",
+      "tts": {
+        "text": "В реках бегемоты отдыхают в воде весь день, а ночью выходят пастись на траве.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В южноамериканской саванне большие грызуны и крупные птицы занимают место африканских.",
+      "text_markdown": "В южноамериканской саванне большие грызуны и крупные птицы занимают место африканских.",
+      "tts": {
+        "text": "В южноамериканской саванне большие грызуны и крупные птицы занимают место африканских.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В австралийской саванне кенгуру прыгают по траве вместо антилоп, которые бегут по ней.",
+      "text_markdown": "В австралийской саванне кенгуру прыгают по траве вместо антилоп, которые бегут по ней.",
+      "tts": {
+        "text": "В австралийской саванне кенгуру прыгают по траве вместо антилоп, которые бегут по ней.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В каждой из этих земель животные выглядят по-разному.",
+      "text_markdown": "В каждой из этих земель животные выглядят по-разному.",
+      "tts": {
+        "text": "В каждой из этих земель животные выглядят по разному.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но узор тот же.",
+      "text_markdown": "Но узор тот же.",
+      "tts": {
+        "text": "Но узор тот же.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Огромные стада травоядных, тихие охотники в траве и большие стаи птиц в небе.",
+      "text_markdown": "Огромные стада травоядных, тихие охотники в траве и большие стаи птиц в небе.",
+      "tts": {
+        "text": "Огромные стада травоядных, тихие охотники в траве и большие стаи птиц в небе.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это и есть саванна.",
+      "text_markdown": "Это и есть саванна.",
+      "tts": {
+        "text": "Это и есть саванна.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Люди",
+      "text_markdown": "Люди"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди живут в тропической саванне очень давно.",
+      "text_markdown": "Люди живут в тропической саванне очень давно.",
+      "tts": {
+        "text": "Люди живут в тропической саванне очень давно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На самом деле, наши собственные предки впервые встали и пошли по таким саваннам.",
+      "text_markdown": "На самом деле, наши собственные предки впервые встали и пошли по таким саваннам.",
+      "tts": {
+        "text": "На самом деле, наши собственные предки впервые встали и пошли по таким саваннам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Открытая трава и редкие деревья сформировали то, как двигаются наши тела.",
+      "text_markdown": "Открытая трава и редкие деревья сформировали то, как двигаются наши тела.",
+      "tts": {
+        "text": "Открытая трава и редкие деревья сформировали то, как двигаются наши тела.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие люди саванны держат стада животных.",
+      "text_markdown": "Многие люди саванны держат стада животных.",
+      "tts": {
+        "text": "Многие люди саванны держат стада животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Африке семьи пасут крупный рогатый скот, коз и овец по травянистым равнинам.",
+      "text_markdown": "В Африке семьи пасут крупный рогатый скот, коз и овец по травянистым равнинам.",
+      "tts": {
+        "text": "В Африке семьи пасут крупный рогатый скот, коз и овец по травянистым равнинам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Животные едят траву и превращают её в молоко и мясо для людей.",
+      "text_markdown": "Животные едят траву и превращают её в молоко и мясо для людей.",
+      "tts": {
+        "text": "Животные едят траву и превращают её в молоко и мясо для людей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пастухи перемещаются со своими животными, чтобы идти за дождями.",
+      "text_markdown": "Пастухи перемещаются со своими животными, чтобы идти за дождями.",
+      "tts": {
+        "text": "Пастухи перемещаются со своими животными, чтобы идти за дождями.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В сухое время они движутся к рекам.",
+      "text_markdown": "В сухое время они движутся к рекам.",
+      "tts": {
+        "text": "В сухое время они движутся к рекам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во влажное время они расходятся по зелёным равнинам.",
+      "text_markdown": "Во влажное время они расходятся по зелёным равнинам.",
+      "tts": {
+        "text": "Во влажное время они расходятся по зелёным равнинам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их дома часто легко разобрать и перенести на новое место.",
+      "text_markdown": "Их дома часто легко разобрать и перенести на новое место.",
+      "tts": {
+        "text": "Их дома часто легко разобрать и перенести на новое место.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Другие люди саванны выращивают еду на маленьких полях.",
+      "text_markdown": "Другие люди саванны выращивают еду на маленьких полях.",
+      "tts": {
+        "text": "Другие люди саванны выращивают еду на маленьких полях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Там, где почва богатая, они сажают зерно и бобы.",
+      "text_markdown": "Там, где почва богатая, они сажают зерно и бобы.",
+      "tts": {
+        "text": "Там, где почва богатая, они сажают зерно и бобы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они осторожно используют огонь, чтобы очищать новые поля и держать траву свежей для своих животных.",
+      "text_markdown": "Они осторожно используют огонь, чтобы очищать новые поля и держать траву свежей для своих животных.",
+      "tts": {
+        "text": "Они осторожно используют огонь, чтобы очищать новые поля и держать траву свежей для своих животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди саванны знают эту землю очень подробно.",
+      "text_markdown": "Люди саванны знают эту землю очень подробно.",
+      "tts": {
+        "text": "Люди саванны знают эту землю очень подробно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они знают, какие растения можно есть, а какие хороши как лекарство.",
+      "text_markdown": "Они знают, какие растения можно есть, а какие хороши как лекарство.",
+      "tts": {
+        "text": "Они знают, какие растения можно есть, а какие хороши как лекарство.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они знают следы каждого животного в пыли.",
+      "text_markdown": "Они знают следы каждого животного в пыли.",
+      "tts": {
+        "text": "Они знают следы каждого животного в пыли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они знают значение каждого вида облака в небе.",
+      "text_markdown": "Они знают значение каждого вида облака в небе.",
+      "tts": {
+        "text": "Они знают значение каждого вида облака в небе.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это знание передаётся от родителей к детям, год за годом.",
+      "text_markdown": "Это знание передаётся от родителей к детям, год за годом.",
+      "tts": {
+        "text": "Это знание передаётся от родителей к детям, год за годом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В каждой саванне у такой жизни свои языки, свои песни и свои истории.",
+      "text_markdown": "В каждой саванне у такой жизни свои языки, свои песни и свои истории.",
+      "tts": {
+        "text": "В каждой саванне у такой жизни свои языки, свои песни и свои истории.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Саванна сегодня",
+      "text_markdown": "Саванна сегодня"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тропическая саванна — это одна из великих диких земель Земли.",
+      "text_markdown": "Тропическая саванна — это одна из великих диких земель Земли.",
+      "tts": {
+        "text": "Тропическая саванна это одна из великих диких земель Земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она кормит огромные стада животных.",
+      "text_markdown": "Она кормит огромные стада животных.",
+      "tts": {
+        "text": "Она кормит огромные стада животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она поддерживает пастухов и земледельцев, которые живут здесь тысячи лет.",
+      "text_markdown": "Она поддерживает пастухов и земледельцев, которые живут здесь тысячи лет.",
+      "tts": {
+        "text": "Она поддерживает пастухов и земледельцев, которые живут здесь тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Травянистые равнины также хранят много воды и пищи в своих глубоких корнях.",
+      "text_markdown": "Травянистые равнины также хранят много воды и пищи в своих глубоких корнях.",
+      "tts": {
+        "text": "Травянистые равнины также хранят много воды и пищи в своих глубоких корнях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но и у саванны есть свои беды.",
+      "text_markdown": "Но и у саванны есть свои беды.",
+      "tts": {
+        "text": "Но и у саванны есть свои беды.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во многих местах люди распахали траву, чтобы посадить зерно, или огородили её для скота.",
+      "text_markdown": "Во многих местах люди распахали траву, чтобы посадить зерно, или огородили её для скота.",
+      "tts": {
+        "text": "Во многих местах люди распахали траву, чтобы посадить зерно, или огородили её для скота.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда трава разбита, стада диких животных теряют свой открытый путь.",
+      "text_markdown": "Когда трава разбита, стада диких животных теряют свой открытый путь.",
+      "tts": {
+        "text": "Когда трава разбита, стада диких животных теряют свой открытый путь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дороги и заборы пересекают пути, по которым слоны и антилопы ходили веками.",
+      "text_markdown": "Дороги и заборы пересекают пути, по которым слоны и антилопы ходили веками.",
+      "tts": {
+        "text": "Дороги и заборы пересекают пути, по которым слоны и антилопы ходили веками.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые животные саванны, такие как носорог и гепард, стали очень редкими.",
+      "text_markdown": "Некоторые животные саванны, такие как носорог и гепард, стали очень редкими.",
+      "tts": {
+        "text": "Некоторые животные саванны, такие как носорог и гепард, стали очень редкими.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+      "text_markdown": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+      "tts": {
+        "text": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они выделяют большие парки, где дикие животные могут свободно двигаться.",
+      "text_markdown": "Они выделяют большие парки, где дикие животные могут свободно двигаться.",
+      "tts": {
+        "text": "Они выделяют большие парки, где дикие животные могут свободно двигаться.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они работают с людьми, которые живут рядом с парками, чтобы делить эту землю.",
+      "text_markdown": "Они работают с людьми, которые живут рядом с парками, чтобы делить эту землю.",
+      "tts": {
+        "text": "Они работают с людьми, которые живут рядом с парками, чтобы делить эту землю.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они изучают траву, деревья и стада, чтобы мы лучше их понимали.",
+      "text_markdown": "Они изучают траву, деревья и стада, чтобы мы лучше их понимали.",
+      "tts": {
+        "text": "Они изучают траву, деревья и стада, чтобы мы лучше их понимали.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здоровая саванна может поддерживать больше жизни, чем почти любой другой наземный биом.",
+      "text_markdown": "Здоровая саванна может поддерживать больше жизни, чем почти любой другой наземный биом.",
+      "tts": {
+        "text": "Здоровая саванна может поддерживать больше жизни, чем почти любой другой наземный биом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Саванна сегодня",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она достойна нашей заботы.",
+      "text_markdown": "Она достойна нашей заботы.",
+      "tts": {
+        "text": "Она достойна нашей заботы.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Заключение",
+      "text_markdown": "Заключение"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это и есть тропическая саванна.",
+      "text_markdown": "Это и есть тропическая саванна.",
+      "tts": {
+        "text": "Это и есть тропическая саванна.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Широкая тёплая земля травы, редких деревьев и больших стад животных.",
+      "text_markdown": "Широкая тёплая земля травы, редких деревьев и больших стад животных.",
+      "tts": {
+        "text": "Широкая тёплая земля травы, редких деревьев и больших стад животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если ты когда-нибудь окажешься в ней, замри на минуту.",
+      "text_markdown": "Если ты когда-нибудь окажешься в ней, замри на минуту.",
+      "tts": {
+        "text": "Если ты когда нибудь окажешься в ней, замри на минуту.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Слушай ветер в траве и птиц вдалеке.",
+      "text_markdown": "Слушай ветер в траве и птиц вдалеке.",
+      "tts": {
+        "text": "Слушай ветер в траве и птиц вдалеке.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Посмотри на далёкий горизонт.",
+      "text_markdown": "Посмотри на далёкий горизонт.",
+      "tts": {
+        "text": "Посмотри на далёкий горизонт.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты почувствуешь, как вокруг тебя бьётся сердце биома.",
+      "text_markdown": "Ты почувствуешь, как вокруг тебя бьётся сердце биома.",
+      "tts": {
+        "text": "Ты почувствуешь, как вокруг тебя бьётся сердце биома.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

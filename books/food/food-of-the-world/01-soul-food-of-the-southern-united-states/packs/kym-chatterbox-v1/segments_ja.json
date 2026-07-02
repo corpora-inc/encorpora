@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ja",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのひとこと",
+      "text_markdown": "読者へのひとこと"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、大きな食文化についての小さな本です。",
+      "text_markdown": "これは、大きな食文化についての小さな本です。",
+      "tts": {
+        "text": "これは、大きな食文化についての小さな本です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その料理は、アメリカ南部のソウルフードです。",
+      "text_markdown": "その料理は、アメリカ南部のソウルフードです。",
+      "tts": {
+        "text": "その料理は、アメリカ南部のソウルフードです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードは、本物の食べものです。",
+      "text_markdown": "ソウルフードは、本物の食べものです。",
+      "tts": {
+        "text": "ソウルフードは、本物の食べものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人びとはそれを家で作ります。",
+      "text_markdown": "人びとはそれを家で作ります。",
+      "tts": {
+        "text": "人びとはそれを家で作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人びとは日曜日にそれを食べます。",
+      "text_markdown": "人びとは日曜日にそれを食べます。",
+      "tts": {
+        "text": "人びとは日曜日にそれを食べます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "火曜日に食べることもあります。",
+      "text_markdown": "火曜日に食べることもあります。",
+      "tts": {
+        "text": "火曜日に食べることもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まずは、その名前から始めましょう。",
+      "text_markdown": "まずは、その名前から始めましょう。",
+      "tts": {
+        "text": "まずは、その名前から始めましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それから、植物と動物を見ていきます。",
+      "text_markdown": "それから、植物と動物を見ていきます。",
+      "tts": {
+        "text": "それから、植物と動物を見ていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのあとで、鍋やフライパンを見ていきます。",
+      "text_markdown": "そのあとで、鍋やフライパンを見ていきます。",
+      "tts": {
+        "text": "そのあとで、鍋やフライパンを見ていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最後には、皿の上に何があるのか、その料理がどこから来たのかがわかります。",
+      "text_markdown": "最後には、皿の上に何があるのか、その料理がどこから来たのかがわかります。",
+      "tts": {
+        "text": "最後には、皿の上に何があるのか、その料理がどこから来たのかがわかります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのひとこと",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私の名前はKymで、これからこのお話をします。",
+      "text_markdown": "キムという友だちが、その話をしてくれます。",
+      "tts": {
+        "text": "私の名前はキムで、これからこのお話をします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章 ソウルフードとは何か",
+      "text_markdown": "第一章 ソウルフードとは何か"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードは、アメリカ南部に暮らす黒人の家庭の日々の食事です。",
+      "text_markdown": "ソウルフードは、アメリカ南部に暮らす黒人の家庭の日々の食事です。",
+      "tts": {
+        "text": "ソウルフードは、アメリカ南部に暮らす黒人の家庭の日々の食事です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "\"ソウルフード\" という名前が広く使われるようになったのは、一九六〇年代です。",
+      "text_markdown": "\"ソウルフード\" という名前が広く使われるようになったのは、一九六〇年代です。",
+      "tts": {
+        "text": "\"ソウルフード\" という名前が広く使われるようになったのは、一九六〇年代です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"ソウル\" という言葉は、音楽と教会から来ました。",
+      "text_markdown": "\"ソウル\" という言葉は、音楽と教会から来ました。",
+      "tts": {
+        "text": "\"ソウル\" という言葉は、音楽と教会から来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは、深くて本物のものを意味していました。",
+      "text_markdown": "それは、深くて本物のものを意味していました。",
+      "tts": {
+        "text": "それは、深くて本物のものを意味していました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは、黒人であることの誇りも意味していました。",
+      "text_markdown": "それは、黒人であることの誇りも意味していました。",
+      "tts": {
+        "text": "それは、黒人であることの誇りも意味していました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、この料理そのものはずっと古いです。",
+      "text_markdown": "でも、この料理そのものはずっと古いです。",
+      "tts": {
+        "text": "でも、この料理そのものはずっと古いです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、十八世紀と十九世紀のプランテーションの台所から来ています。",
+      "text_markdown": "それは、十八世紀と十九世紀のプランテーションの台所から来ています。",
+      "tts": {
+        "text": "それは、十八世紀と十九世紀のプランテーションの台所から来ています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "奴隷にされたアフリカ人の料理人たちは、手元にある植物や動物を使って、食事を作りました。",
+      "text_markdown": "奴隷にされたアフリカ人の料理人たちは、手元にある植物や動物を使って、食事を作りました。",
+      "tts": {
+        "text": "奴隷にされたアフリカ人の料理人たちは、手元にある植物や動物を使って、食事を作りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "料理人たちは、本当に見事でした。",
+      "text_markdown": "料理人たちは、本当に見事でした。",
+      "tts": {
+        "text": "料理人たちは、本当に見事でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "少ないもので、大勢を食べさせました。",
+      "text_markdown": "少ないもので、大勢を食べさせました。",
+      "tts": {
+        "text": "少ないもので、大勢を食べさせました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "豚は、どの部分も無駄にしませんでした。",
+      "text_markdown": "豚は、どの部分も無駄にしませんでした。",
+      "tts": {
+        "text": "豚は、どの部分も無駄にしませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "青菜の甘みを引き出しました。",
+      "text_markdown": "青菜の甘みを引き出しました。",
+      "tts": {
+        "text": "青菜の甘みを引き出しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "コーンミールを、パンにも、おかゆにも、百もの小さな料理にも変えました。",
+      "text_markdown": "コーンミールを、パンにも、おかゆにも、百もの小さな料理にも変えました。",
+      "tts": {
+        "text": "コーンミールを、パンにも、おかゆにも、百もの小さな料理にも変えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二十世紀に黒人の家族が北へ移ったとき、その料理もいっしょに持って行きました。",
+      "text_markdown": "二十世紀に黒人の家族が北へ移ったとき、その料理もいっしょに持って行きました。",
+      "tts": {
+        "text": "二十世紀に黒人の家族が北へ移ったとき、その料理もいっしょに持って行きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今では、ソウルフードはシカゴにも、ニューヨークにも、デトロイトにも、そして南部のどの町にもあります。",
+      "text_markdown": "今では、ソウルフードはシカゴにも、ニューヨークにも、デトロイトにも、そして南部のどの町にもあります。",
+      "tts": {
+        "text": "今では、ソウルフードはシカゴにも、ニューヨークにも、デトロイトにも、そして南部のどの町にもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 ソウルフードとは何か",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "でも、その中心は今も南部にあります。",
+      "text_markdown": "でも、その中心は今も南部にあります。",
+      "tts": {
+        "text": "でも、その中心は今も南部にあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章 材料",
+      "text_markdown": "第二章 材料"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードには、大きなルーツが二つあります。",
+      "text_markdown": "ソウルフードには、大きなルーツが二つあります。",
+      "tts": {
+        "text": "ソウルフードには、大きなルーツが二つあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一つは西アフリカです。",
+      "text_markdown": "一つは西アフリカです。",
+      "tts": {
+        "text": "一つは西アフリカです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もう一つはアメリカ大陸です。",
+      "text_markdown": "もう一つはアメリカ大陸です。",
+      "tts": {
+        "text": "もう一つはアメリカ大陸です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オクラは西アフリカから来ました。",
+      "text_markdown": "オクラは西アフリカから来ました。",
+      "tts": {
+        "text": "オクラは西アフリカから来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オクラは緑色のさやです。",
+      "text_markdown": "オクラは緑色のさやです。",
+      "tts": {
+        "text": "オクラは緑色のさやです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "背の高い植物に実ります。",
+      "text_markdown": "背の高い植物に実ります。",
+      "tts": {
+        "text": "背の高い植物に実ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "火を通すと、やわらかくなって、少しぬめりが出ます。",
+      "text_markdown": "火を通すと、やわらかくなって、少しぬめりが出ます。",
+      "tts": {
+        "text": "火を通すと、やわらかくなって、少しぬめりが出ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ガンボに入りますし、コーンミールをまぶして揚げることもあります。",
+      "text_markdown": "ガンボに入りますし、コーンミールをまぶして揚げることもあります。",
+      "tts": {
+        "text": "ガンボに入りますし、コーンミールをまぶして揚げることもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ブラックアイドピーも西アフリカから来ました。",
+      "text_markdown": "ブラックアイドピーも西アフリカから来ました。",
+      "tts": {
+        "text": "ブラックアイドピーも西アフリカから来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スイカもそうです。",
+      "text_markdown": "スイカもそうです。",
+      "tts": {
+        "text": "スイカもそうです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ごまもそうです。",
+      "text_markdown": "ごまもそうです。",
+      "tts": {
+        "text": "ごまもそうです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "昔の南部の料理人たちは、ごまを \"ベニー\" と呼びました。ベニーをクッキーに入れたり、パンの上にのせたりしました。",
+      "text_markdown": "昔の南部の料理人たちは、ごまを \"ベニー\" と呼びました。ベニーをクッキーに入れたり、パンの上にのせたりしました。",
+      "tts": {
+        "text": "昔の南部の料理人たちは、ごまを \"ベニー\" と呼びました。ベニーをクッキーに入れたり、パンの上にのせたりしました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米も海を渡って来ました。",
+      "text_markdown": "米も海を渡って来ました。",
+      "tts": {
+        "text": "米も海を渡って来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アフリカの農民たちは、千年ものあいだ米を育ててきました。",
+      "text_markdown": "アフリカの農民たちは、千年ものあいだ米を育ててきました。",
+      "tts": {
+        "text": "アフリカの農民たちは、千年ものあいだ米を育ててきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サウスカロライナでは、その知識が町をいくつも生みました。",
+      "text_markdown": "サウスカロライナでは、その知識が町をいくつも生みました。",
+      "tts": {
+        "text": "サウスカロライナでは、その知識が町をいくつも生みました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トウモロコシはアメリカ大陸から来ました。",
+      "text_markdown": "トウモロコシはアメリカ大陸から来ました。",
+      "tts": {
+        "text": "トウモロコシはアメリカ大陸から来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トウモロコシのふるさとはメキシコです。",
+      "text_markdown": "トウモロコシのふるさとはメキシコです。",
+      "tts": {
+        "text": "トウモロコシのふるさとはメキシコです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スペイン人が来るずっと前に、それは北へ広がり、チェロキーやチョクトーの人びとのもとに届いていました。",
+      "text_markdown": "スペイン人が来るずっと前に、それは北へ広がり、チェロキーやチョクトーの人びとのもとに届いていました。",
+      "tts": {
+        "text": "スペイン人が来るずっと前に、それは北へ広がり、チェロキーやチョクトーの人びとのもとに届いていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サツマイモやピーナッツ、それにいろいろな豆も、アメリカ大陸から来ました。",
+      "text_markdown": "サツマイモやピーナッツ、それにいろいろな豆も、アメリカ大陸から来ました。",
+      "tts": {
+        "text": "サツマイモやピーナッツ、それにいろいろな豆も、アメリカ大陸から来ました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 材料",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードは、二つの食材の棚が一つの台所で出会ったときに生まれた料理です。",
+      "text_markdown": "ソウルフードは、二つの食材の棚が一つの台所で出会ったときに生まれた料理です。",
+      "tts": {
+        "text": "ソウルフードは、二つの食材の棚が一つの台所で出会ったときに生まれた料理です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章 肉と魚",
+      "text_markdown": "第三章 肉と魚"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードでいちばん大切な肉は豚肉です。",
+      "text_markdown": "ソウルフードでいちばん大切な肉は豚肉です。",
+      "tts": {
+        "text": "ソウルフードでいちばん大切な肉は豚肉です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな農場でも豚を一頭飼えました。",
+      "text_markdown": "小さな農場でも豚を一頭飼えました。",
+      "tts": {
+        "text": "小さな農場でも豚を一頭飼えました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その豚は残りものを食べました。",
+      "text_markdown": "その豚は残りものを食べました。",
+      "tts": {
+        "text": "その豚は残りものを食べました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "秋になると、家族はその豚をしめて、どの部分も使いました。",
+      "text_markdown": "秋になると、家族はその豚をしめて、どの部分も使いました。",
+      "tts": {
+        "text": "秋になると、家族はその豚をしめて、どの部分も使いました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ハムは燻製にしました。",
+      "text_markdown": "ハムは燻製にしました。",
+      "tts": {
+        "text": "ハムは燻製にしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ベーコンは塩漬けにしました。",
+      "text_markdown": "ベーコンは塩漬けにしました。",
+      "tts": {
+        "text": "ベーコンは塩漬けにしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "足は酢で煮ました。",
+      "text_markdown": "足は酢で煮ました。",
+      "tts": {
+        "text": "足は酢で煮ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "脂はビスケットのために取っておきました。",
+      "text_markdown": "脂はビスケットのために取っておきました。",
+      "tts": {
+        "text": "脂はビスケットのために取っておきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その次に大事な肉は鶏肉です。",
+      "text_markdown": "その次に大事な肉は鶏肉です。",
+      "tts": {
+        "text": "その次に大事な肉は鶏肉です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鶏は庭で飼われていました。",
+      "text_markdown": "鶏は庭で飼われていました。",
+      "tts": {
+        "text": "鶏は庭で飼われていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "朝には卵を産み、日曜日の晩ごはんにもなりました。",
+      "text_markdown": "朝には卵を産み、日曜日の晩ごはんにもなりました。",
+      "tts": {
+        "text": "朝には卵を産み、日曜日の晩ごはんにもなりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フライドチキンは、南部でいちばん有名な料理です。",
+      "text_markdown": "フライドチキンは、南部でいちばん有名な料理です。",
+      "tts": {
+        "text": "フライドチキンは、南部でいちばん有名な料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鶏肉には小麦粉と塩とこしょうをまぶします。",
+      "text_markdown": "鶏肉には小麦粉と塩とこしょうをまぶします。",
+      "tts": {
+        "text": "鶏肉には小麦粉と塩とこしょうをまぶします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それを熱い油に入れます。",
+      "text_markdown": "それを熱い油に入れます。",
+      "tts": {
+        "text": "それを熱い油に入れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "皮はこんがりして、かりっとします。",
+      "text_markdown": "皮はこんがりして、かりっとします。",
+      "tts": {
+        "text": "皮はこんがりして、かりっとします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ナマズは川や湖にいます。",
+      "text_markdown": "ナマズは川や湖にいます。",
+      "tts": {
+        "text": "ナマズは川や湖にいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南部の料理人たちは、ナマズにコーンミールをまぶして揚げます。",
+      "text_markdown": "南部の料理人たちは、ナマズにコーンミールをまぶして揚げます。",
+      "tts": {
+        "text": "南部の料理人たちは、ナマズにコーンミールをまぶして揚げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それを、ハッシュパピーズという、コーンミールを小さく丸めて揚げたものといっしょに食べます。",
+      "text_markdown": "それを、ハッシュパピーズという、コーンミールを小さく丸めて揚げたものといっしょに食べます。",
+      "tts": {
+        "text": "それを、ハッシュパピーズという、コーンミールを小さく丸めて揚げたものといっしょに食べます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 肉と魚",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "名前はおかしいですが、料理は大まじめです。",
+      "text_markdown": "名前はおかしいですが、料理は大まじめです。",
+      "tts": {
+        "text": "名前はおかしいですが、料理は大まじめです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章 料理のしかた",
+      "text_markdown": "第四章 料理のしかた"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ソウルフードの多くを支えているのは、揚げること、ゆっくり煮ること、そして燻すことという三つの調理法です。",
+      "text_markdown": "ソウルフードの多くを支えているのは、揚げること、ゆっくり煮ること、そして燻すことという三つの調理法です。",
+      "tts": {
+        "text": "ソウルフードの多くを支えているのは、揚げること、ゆっくり煮ること、そして燻すことという三つの調理法です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "揚げものには、鋳鉄のスキレットという重いフライパンを使います。",
+      "text_markdown": "揚げものには、鋳鉄のスキレットという重いフライパンを使います。",
+      "tts": {
+        "text": "揚げものには、鋳鉄のスキレットという重いフライパンを使います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鋳鉄は熱を長く保ちます。",
+      "text_markdown": "鋳鉄は熱を長く保ちます。",
+      "tts": {
+        "text": "鋳鉄は熱を長く保ちます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いいスキレットは、料理する人より年上だったりします。",
+      "text_markdown": "いいスキレットは、料理する人より年上だったりします。",
+      "tts": {
+        "text": "いいスキレットは、料理する人より年上だったりします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは母から娘へ受け継がれます。",
+      "text_markdown": "それは母から娘へ受け継がれます。",
+      "tts": {
+        "text": "それは母から娘へ受け継がれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ゆっくり煮る料理は、コンロの奥に置いた大きな鍋で作ります。",
+      "text_markdown": "ゆっくり煮る料理は、コンロの奥に置いた大きな鍋で作ります。",
+      "tts": {
+        "text": "ゆっくり煮る料理は、コンロの奥に置いた大きな鍋で作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "青菜はその鍋で二時間か三時間煮ます。",
+      "text_markdown": "青菜はその鍋で二時間か三時間煮ます。",
+      "tts": {
+        "text": "青菜はその鍋で二時間か三時間煮ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "味つけのために、燻製の豚肉をひとかけ入れます。",
+      "text_markdown": "味つけのために、燻製の豚肉をひとかけ入れます。",
+      "tts": {
+        "text": "味つけのために、燻製の豚肉をひとかけ入れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "水は、色の濃い、うまみのあるスープになります。",
+      "text_markdown": "水は、色の濃い、うまみのあるスープになります。",
+      "tts": {
+        "text": "水は、色の濃い、うまみのあるスープになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "このスープは \"ポットリカー\" と呼ばれ、コーンブレッドにかけて食べます。",
+      "text_markdown": "このスープは \"ポットリカー\" と呼ばれ、コーンブレッドにかけて食べます。",
+      "tts": {
+        "text": "このスープは \"ポットリカー\" と呼ばれ、コーンブレッドにかけて食べます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "燻製は、スモークハウスや樽を使って、外で作ります。",
+      "text_markdown": "燻製は、スモークハウスや樽を使って、外で作ります。",
+      "tts": {
+        "text": "燻製は、スモークハウスや樽を使って、外で作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "肉の下で木がゆっくり燃えます。",
+      "text_markdown": "肉の下で木がゆっくり燃えます。",
+      "tts": {
+        "text": "肉の下で木がゆっくり燃えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いちばん好まれるのはヒッコリーの木です。",
+      "text_markdown": "いちばん好まれるのはヒッコリーの木です。",
+      "tts": {
+        "text": "いちばん好まれるのはヒッコリーの木です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "煙で肉は茶色く色づき、味も深くなります。",
+      "text_markdown": "煙で肉は茶色く色づき、味も深くなります。",
+      "tts": {
+        "text": "煙で肉は茶色く色づき、味も深くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "豚肩肉は何時間も燻され、ときには一日じゅうそうすることもあります。",
+      "text_markdown": "豚肩肉は何時間も燻され、ときには一日じゅうそうすることもあります。",
+      "tts": {
+        "text": "豚肩肉は何時間も燻され、ときには一日じゅうそうすることもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 料理のしかた",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "いい南部の台所には、火と時間と手間があります。",
+      "text_markdown": "いい南部の台所には、火と時間と手間があります。",
+      "tts": {
+        "text": "いい南部の台所には、火と時間と手間があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章 地域ごとのバーベキュー",
+      "text_markdown": "第五章 地域ごとのバーベキュー"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南部で \"バーベキュー\" といえば、木の煙でゆっくり火を通した肉のことです。",
+      "text_markdown": "南部で \"バーベキュー\" といえば、木の煙でゆっくり火を通した肉のことです。",
+      "tts": {
+        "text": "南部で \"バーベキュー\" といえば、木の煙でゆっくり火を通した肉のことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地域ごとにやり方があります。",
+      "text_markdown": "地域ごとにやり方があります。",
+      "tts": {
+        "text": "地域ごとにやり方があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カロライナ地方では、バーベキューといえば豚肉です。",
+      "text_markdown": "カロライナ地方では、バーベキューといえば豚肉です。",
+      "tts": {
+        "text": "カロライナ地方では、バーベキューといえば豚肉です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ノースカロライナ東部では、ソースは酢とこしょうで作ります。",
+      "text_markdown": "ノースカロライナ東部では、ソースは酢とこしょうで作ります。",
+      "tts": {
+        "text": "ノースカロライナ東部では、ソースは酢とこしょうで作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "さらっとしていて、きりっとしています。",
+      "text_markdown": "さらっとしていて、きりっとしています。",
+      "tts": {
+        "text": "さらっとしていて、きりっとしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サウスカロライナでは、ソースはマスタードで作る黄色いものです。",
+      "text_markdown": "サウスカロライナでは、ソースはマスタードで作る黄色いものです。",
+      "tts": {
+        "text": "サウスカロライナでは、ソースはマスタードで作る黄色いものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "少し甘いです。",
+      "text_markdown": "少し甘いです。",
+      "tts": {
+        "text": "少し甘いです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テネシー州のメンフィスでは、肉は豚のリブです。",
+      "text_markdown": "テネシー州のメンフィスでは、肉は豚のリブです。",
+      "tts": {
+        "text": "テネシー州のメンフィスでは、肉は豚のリブです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そのリブには、塩とこしょう、それにたくさんの香辛料を混ぜた乾いた調味料をすり込みます。",
+      "text_markdown": "そのリブには、塩とこしょう、それにたくさんの香辛料を混ぜた乾いた調味料をすり込みます。",
+      "tts": {
+        "text": "そのリブには、塩とこしょう、それにたくさんの香辛料を混ぜた乾いた調味料をすり込みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "主役は肉で、ソースは控えめです。",
+      "text_markdown": "主役は肉で、ソースは控えめです。",
+      "tts": {
+        "text": "主役は肉で、ソースは控えめです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テキサスでは、バーベキューといえば牛肉です。",
+      "text_markdown": "テキサスでは、バーベキューといえば牛肉です。",
+      "tts": {
+        "text": "テキサスでは、バーベキューといえば牛肉です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その部位はブリスケットと呼ばれます。",
+      "text_markdown": "その部位はブリスケットと呼ばれます。",
+      "tts": {
+        "text": "その部位はブリスケットと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オークの木で、十二時間から十四時間ほど燻します。",
+      "text_markdown": "オークの木で、十二時間から十四時間ほど燻します。",
+      "tts": {
+        "text": "オークの木で、十二時間から十四時間ほど燻します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "うまくできると、指でほぐせます。",
+      "text_markdown": "うまくできると、指でほぐせます。",
+      "tts": {
+        "text": "うまくできると、指でほぐせます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カンザスシティでは、バーベキューに使う肉はさまざまで、豚肉、牛肉、鶏肉、ソーセージまであります。",
+      "text_markdown": "カンザスシティでは、バーベキューに使う肉はさまざまで、豚肉、牛肉、鶏肉、ソーセージまであります。",
+      "tts": {
+        "text": "カンザスシティでは、バーベキューに使う肉はさまざまで、豚肉、牛肉、鶏肉、ソーセージまであります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ソースはとろりとして甘く、トマトと糖蜜で作る赤いソースです。",
+      "text_markdown": "ソースはとろりとして甘く、トマトと糖蜜で作る赤いソースです。",
+      "tts": {
+        "text": "ソースはとろりとして甘く、トマトと糖蜜で作る赤いソースです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 地域ごとのバーベキュー",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南部のバーベキューの地図は、そのまま地域と川の地図でもあります。",
+      "text_markdown": "南部のバーベキューの地図は、そのまま地域と川の地図でもあります。",
+      "tts": {
+        "text": "南部のバーベキューの地図は、そのまま地域と川の地図でもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章 定番のひと皿",
+      "text_markdown": "第六章 定番のひと皿"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "日曜日の夕食の皿は、たっぷりです。",
+      "text_markdown": "日曜日の夕食の皿は、たっぷりです。",
+      "tts": {
+        "text": "日曜日の夕食の皿は、たっぷりです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真ん中にはフライドチキンがあります。",
+      "text_markdown": "真ん中にはフライドチキンがあります。",
+      "tts": {
+        "text": "真ん中にはフライドチキンがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その横には、ブラウングレービーをかけたマッシュポテトがひとすくいあります。",
+      "text_markdown": "その横には、ブラウングレービーをかけたマッシュポテトがひとすくいあります。",
+      "tts": {
+        "text": "その横には、ブラウングレービーをかけたマッシュポテトがひとすくいあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "片側には、燻製の豚肉とゆっくり煮たコラードグリーンズが山のようにのっています。",
+      "text_markdown": "片側には、燻製の豚肉とゆっくり煮たコラードグリーンズが山のようにのっています。",
+      "tts": {
+        "text": "片側には、燻製の豚肉とゆっくり煮たコラードグリーンズが山のようにのっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その青菜は、色が濃くてやわらかいです。",
+      "text_markdown": "その青菜は、色が濃くてやわらかいです。",
+      "tts": {
+        "text": "その青菜は、色が濃くてやわらかいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "反対側には、上がこんがりしてかりっとするまで焼いたマカロニチーズがあります。",
+      "text_markdown": "反対側には、上がこんがりしてかりっとするまで焼いたマカロニチーズがあります。",
+      "tts": {
+        "text": "反対側には、上がこんがりしてかりっとするまで焼いたマカロニチーズがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "上にチーズを一層のせる料理人も多いです。",
+      "text_markdown": "上にチーズを一層のせる料理人も多いです。",
+      "tts": {
+        "text": "上にチーズを一層のせる料理人も多いです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テーブルにはコーンブレッドがあります。",
+      "text_markdown": "テーブルにはコーンブレッドがあります。",
+      "tts": {
+        "text": "テーブルにはコーンブレッドがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "コーンブレッドは黄色いコーンミールで作り、熱い鉄のスキレットで焼きます。",
+      "text_markdown": "コーンブレッドは黄色いコーンミールで作り、熱い鉄のスキレットで焼きます。",
+      "tts": {
+        "text": "コーンブレッドは黄色いコーンミールで作り、熱い鉄のスキレットで焼きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どっしりしていて、少し甘く、バターとよく合います。",
+      "text_markdown": "どっしりしていて、少し甘く、バターとよく合います。",
+      "tts": {
+        "text": "どっしりしていて、少し甘く、バターとよく合います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "飲みものはスイートティーです。",
+      "text_markdown": "飲みものはスイートティーです。",
+      "tts": {
+        "text": "飲みものはスイートティーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スイートティーは、濃くいれた紅茶に、熱いうちに砂糖を混ぜたものです。",
+      "text_markdown": "スイートティーは、濃くいれた紅茶に、熱いうちに砂糖を混ぜたものです。",
+      "tts": {
+        "text": "スイートティーは、濃くいれた紅茶に、熱いうちに砂糖を混ぜたものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "氷を入れて冷たくして出します。",
+      "text_markdown": "氷を入れて冷たくして出します。",
+      "tts": {
+        "text": "氷を入れて冷たくして出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夕食のあとにはパイが出ます。",
+      "text_markdown": "夕食のあとにはパイが出ます。",
+      "tts": {
+        "text": "夕食のあとにはパイが出ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スイートポテトパイは、いちばん南部らしいパイです。",
+      "text_markdown": "スイートポテトパイは、いちばん南部らしいパイです。",
+      "tts": {
+        "text": "スイートポテトパイは、いちばん南部らしいパイです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "茶色くて、なめらかで、シナモンとナツメグの香りで温かみがあります。",
+      "text_markdown": "茶色くて、なめらかで、シナモンとナツメグの香りで温かみがあります。",
+      "tts": {
+        "text": "茶色くて、なめらかで、シナモンとナツメグの香りで温かみがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 定番のひと皿",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これが定番のひと皿です。",
+      "text_markdown": "これが定番のひと皿です。",
+      "tts": {
+        "text": "これが定番のひと皿です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章 食卓",
+      "text_markdown": "第七章 食卓"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南部の夕食は、みんなでいっしょにテーブルを囲んで食べます。",
+      "text_markdown": "南部の夕食は、みんなでいっしょにテーブルを囲んで食べます。",
+      "tts": {
+        "text": "南部の夕食は、みんなでいっしょにテーブルを囲んで食べます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "料理は、大きなボウルや大きな皿にのせてテーブルへ運ばれます。",
+      "text_markdown": "料理は、大きなボウルや大きな皿にのせてテーブルへ運ばれます。",
+      "tts": {
+        "text": "料理は、大きなボウルや大きな皿にのせてテーブルへ運ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これを \"ファミリースタイル\" と呼びます。ひとりひとりが、次の人へボウルを回します。",
+      "text_markdown": "これを \"ファミリースタイル\" と呼びます。ひとりひとりが、次の人へボウルを回します。",
+      "tts": {
+        "text": "これを \"ファミリースタイル\" と呼びます。ひとりひとりが、次の人へボウルを回します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それぞれが、食べたいものを取ります。",
+      "text_markdown": "それぞれが、食べたいものを取ります。",
+      "tts": {
+        "text": "それぞれが、食べたいものを取ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フォークもナイフも、特別なものではありません。",
+      "text_markdown": "フォークもナイフも、特別なものではありません。",
+      "tts": {
+        "text": "フォークもナイフも、特別なものではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "決まった順番はありません。",
+      "text_markdown": "決まった順番はありません。",
+      "tts": {
+        "text": "決まった順番はありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チキンはフォークで食べてもいいし、手で持って食べてもかまいません。",
+      "text_markdown": "チキンはフォークで食べてもいいし、手で持って食べてもかまいません。",
+      "tts": {
+        "text": "チキンはフォークで食べてもいいし、手で持って食べてもかまいません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "どちらでも大丈夫です。",
+      "text_markdown": "どちらでも大丈夫です。",
+      "tts": {
+        "text": "どちらでも大丈夫です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コーンブレッドは手で割り、ナイフで切ることはありません。",
+      "text_markdown": "コーンブレッドは手で割り、ナイフで切ることはありません。",
+      "tts": {
+        "text": "コーンブレッドは手で割り、ナイフで切ることはありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食事の前には、だれかが短い祈りの言葉を言うことがよくあります。",
+      "text_markdown": "食事の前には、だれかが短い祈りの言葉を言うことがよくあります。",
+      "tts": {
+        "text": "食事の前には、だれかが短い祈りの言葉を言うことがよくあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "食べものと料理した人たちに感謝して、神にお礼を言います。",
+      "text_markdown": "食べものと料理した人たちに感謝して、神にお礼を言います。",
+      "tts": {
+        "text": "食べものと料理した人たちに感謝して、神にお礼を言います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "客として行くと、もっと食べて、もっと食べて、と何度も言われます。",
+      "text_markdown": "客として行くと、もっと食べて、もっと食べて、と何度も言われます。",
+      "tts": {
+        "text": "客として行くと、もっと食べて、もっと食べて、と何度も言われます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "少なくとも二回は、はいと言ったほうがいいです。",
+      "text_markdown": "少なくとも二回は、はいと言ったほうがいいです。",
+      "tts": {
+        "text": "少なくとも二回は、はいと言ったほうがいいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "おなかをすかせたまま帰るのは、だめです。",
+      "text_markdown": "おなかをすかせたまま帰るのは、だめです。",
+      "tts": {
+        "text": "おなかをすかせたまま帰るのは、だめです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食事の終わりになっても、だれもすぐには立ち上がりません。",
+      "text_markdown": "食事の終わりになっても、だれもすぐには立ち上がりません。",
+      "tts": {
+        "text": "食事の終わりになっても、だれもすぐには立ち上がりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 食卓",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "おしゃべりも夕食の半分です。",
+      "text_markdown": "おしゃべりも夕食の半分です。",
+      "tts": {
+        "text": "おしゃべりも夕食の半分です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "この本について",
+      "text_markdown": "この本について"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、世界の食べものシリーズの最初の本です。",
+      "text_markdown": "これは、世界の食べものシリーズの最初の本です。",
+      "tts": {
+        "text": "これは、世界の食べものシリーズの最初の本です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これを読むのは、あなたの友だちのKymである私です。",
+      "text_markdown": "朗読はキムが担当しています。",
+      "tts": {
+        "text": "これを読むのは、あなたの友だちのキムである私です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どの文も短くてわかりやすいので、どんな言語でも音に合わせて読めます。",
+      "text_markdown": "どの文も短くてわかりやすいので、どんな言語でも音に合わせて読めます。",
+      "tts": {
+        "text": "どの文も短くてわかりやすいので、どんな言語でも音に合わせて読めます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの言語で文がどう聞こえるか知りたければ、その言語の同じ本を聞いてください。",
+      "text_markdown": "ほかの言語で文がどう聞こえるか知りたければ、その言語の同じ本を聞いてください。",
+      "tts": {
+        "text": "ほかの言語で文がどう聞こえるか知りたければ、その言語の同じ本を聞いてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ページの言葉は、聞こえてくる言葉と一致します。",
+      "text_markdown": "ページの言葉は、聞こえてくる言葉と一致します。",
+      "tts": {
+        "text": "ページの言葉は、聞こえてくる言葉と一致します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そうやって学んでいきます。",
+      "text_markdown": "そうやって学んでいきます。",
+      "tts": {
+        "text": "そうやって学んでいきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "この本について",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、おいしい食べものと、それをいっしょに食べる友だちを見つけてください。",
+      "text_markdown": "では、おいしい食べものと、それをいっしょに食べる友だちを見つけてください。",
+      "tts": {
+        "text": "では、おいしい食べものと、それをいっしょに食べる友だちを見つけてください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    }
+  ]
+}

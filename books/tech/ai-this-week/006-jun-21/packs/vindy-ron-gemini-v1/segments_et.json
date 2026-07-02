@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "et",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Tere tulemast AI This Week'i.",
+      "text_markdown": "Tere tulemast AI This Week'i.",
+      "title": "",
+      "tts": {
+        "text": "Tere tulemast AI This Week'i.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Vindy olengi mina.",
+      "text_markdown": "Vindy olengi mina.",
+      "title": "",
+      "tts": {
+        "text": "Vindi olengi mina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Nagu alati, on minuga kaasas Ron.",
+      "text_markdown": "Nagu alati, on minuga kaasas Ron.",
+      "title": "",
+      "tts": {
+        "text": "Nagu alati, on minuga kaasas Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Hea siin olla, Vindy.",
+      "text_markdown": "Hea siin olla, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hea siin olla, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Täna on pühapäev, 21. juuni 2026.",
+      "text_markdown": "Täna on pühapäev, 21. juuni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Täna on pühapäev, kahekümne esimene juuni kakskümmend kuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Eelmisel nädalal rääkisime endast; täna liigume teises suunas — otse võimukeskustesse.",
+      "text_markdown": "Eelmisel nädalal rääkisime endast; täna liigume teises suunas — otse võimukeskustesse.",
+      "title": "",
+      "tts": {
+        "text": "Eelmisel nädalal rääkisime endast; täna liigume teises suunas — otse võimukeskustesse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Kes kontrollib tehisintellekti juurutamist, kes maksab väljaehituse eest, kellele kuulub räni.",
+      "text_markdown": "Kes kontrollib tehisintellekti juurutamist, kes maksab väljaehituse eest, kellele kuulub räni.",
+      "title": "",
+      "tts": {
+        "text": "Kes kontrollib tehisintellekti juurutamist, kes maksab väljaehituse eest, kellele kuulub räni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "Tulemas — USA kaubandusministeerium eemaldas eelmisel reedel Ameerika mudeli avalikust kasutusest ja me alustame sellest.",
+      "text_markdown": "Tulemas — USA kaubandusministeerium eemaldas eelmisel reedel Ameerika mudeli avalikust kasutusest ja me alustame sellest.",
+      "title": "",
+      "tts": {
+        "text": "Tulemas — USA kaubandusministeerium eemaldas eelmisel reedel Ameerika mudeli avalikust kasutusest ja me alustame sellest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Järgmiseks tuleb andmekeskuste väljaehitus, kus teadaanded ja tegelikkus ei lähe kokku.",
+      "text_markdown": "Järgmiseks tuleb andmekeskuste väljaehitus, kus teadaanded ja tegelikkus ei lähe kokku.",
+      "title": "",
+      "tts": {
+        "text": "Järgmiseks tuleb andmekeskuste väljaehitus, kus teadaanded ja tegelikkus ei lähe kokku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Seejärel USA ja Hiina võrdlus, kus klišee on asendatud tegeliku piirava teguriga.",
+      "text_markdown": "Seejärel USA ja Hiina võrdlus, kus klišee on asendatud tegeliku piirava teguriga.",
+      "title": "",
+      "tts": {
+        "text": "Seejärel USA ja Hiina võrdlus, kus klišee on asendatud tegeliku piirava teguriga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Ja nädala kontseptsioon — üks rida Oracle'i bilansis, mis ütleb teile peaaegu kõik.",
+      "text_markdown": "Ja nädala kontseptsioon — üks rida Oracle'i bilansis, mis ütleb teile peaaegu kõik.",
+      "title": "",
+      "tts": {
+        "text": "Ja nädala kontseptsioon — üks rida Oracle'i bilansis, mis ütleb teile peaaegu kõik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Ron, alustame ettevõttest Anthropic.",
+      "text_markdown": "Ron, alustame ettevõttest Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, alustame ettevõttest Äntroopik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Mis juhtus kaheteistkümnendal juunil.",
+      "text_markdown": "Mis juhtus kaheteistkümnendal juunil.",
+      "title": "",
+      "tts": {
+        "text": "Mis juhtus kaheteistkümnendal juunil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Reedel, kaheteistkümnendal juunil kell viis kakskümmend üks p.m. Ida aja järgi võttis Anthropic oma kaks uusimat mudelit — Claude Mythos viis ja Claude Fable viis — võrgust maha.",
+      "text_markdown": "Reedel, kaheteistkümnendal juunil kell viis kakskümmend üks p.m. Ida aja järgi võttis Anthropic oma kaks uusimat mudelit — Claude Mythos viis ja Claude Fable viis — võrgust maha.",
+      "title": "",
+      "tts": {
+        "text": "Reedel, kaheteistkümnendal juunil kell viis kakskümmend üks pärastlõunal Ida aja järgi võttis Anthropic oma kaks uusimat mudelit — Claude Mythos viis ja Claude Fable viis — võrgust maha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Mitte hoolduseks, mitte omaalgatuslikuks ohutushindamiseks.",
+      "text_markdown": "Mitte hoolduseks, mitte omaalgatuslikuks ohutushindamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Mitte hoolduseks, mitte omaalgatuslikuks ohutushindamiseks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Nad võtsid need maha, sest USA kaubandusministeerium andis välja direktiivi, viidates ekspordikontrollile.",
+      "text_markdown": "Nad võtsid need maha, sest USA kaubandusministeerium andis välja direktiivi, viidates ekspordikontrollile.",
+      "title": "",
+      "tts": {
+        "text": "Nad võtsid need maha, sest USA kaubandusministeerium andis välja direktiivi, viidates ekspordikontrollile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Mis oli tehniline põhjus.",
+      "text_markdown": "Mis oli tehniline põhjus.",
+      "title": "",
+      "tts": {
+        "text": "Mis oli tehniline põhjus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Demonstreeriti jailbreak'i, väidetavalt teise ettevõtte poolt, mis tootis väljundit, mida kaubandusministeerium pidas ekspordikontrolli alla kuuluvaks.",
+      "text_markdown": "Demonstreeriti jailbreak'i, väidetavalt teise ettevõtte poolt, mis tootis väljundit, mida kaubandusministeerium pidas ekspordikontrolli alla kuuluvaks.",
+      "title": "",
+      "tts": {
+        "text": "Demonstreeriti jailbreak'i, väidetavalt teise ettevõtte poolt, mis tootis väljundit, mida kaubandusministeerium pidas ekspordikontrolli alla kuuluvaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Fortune teatas, et Amazon oli see, kes Valget Maja sellest teavitas.",
+      "text_markdown": "Fortune teatas, et Amazon oli see, kes Valget Maja sellest teavitas.",
+      "title": "",
+      "tts": {
+        "text": "Fortune teatas, et Amazon oli see, kes Valget Maja sellest teavitas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Ja kuidas Anthropic vastas.",
+      "text_markdown": "Ja kuidas Anthropic vastas.",
+      "title": "",
+      "tts": {
+        "text": "Ja kuidas Anthropic vastas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Anthropic vaidlustab avalikult põhjenduse.",
+      "text_markdown": "Anthropic vaidlustab avalikult põhjenduse.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic vaidlustab avalikult põhjenduse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Nende avaldus nimetas jailbreak'i — ja ma tsiteerin — \"kitsaks, mitteuniversaalseks\" ning lisas, et sama väljund on saadaval ka teistest mudelitest, sealhulgas OpenAI GPT-viis-punkt-viisist.",
+      "text_markdown": "Nende avaldus nimetas jailbreak'i — ja ma tsiteerin — \"kitsaks, mitteuniversaalseks\" ning lisas, et sama väljund on saadaval ka teistest mudelitest, sealhulgas OpenAI GPT-viis-punkt-viisist.",
+      "title": "",
+      "tts": {
+        "text": "Nende avaldus nimetas jailbreak'i — ja ma tsiteerin — \"kitsaks, mitteuniversaalseks\" ning lisas, et sama väljund on saadaval ka teistest mudelitest, sealhulgas OpenAI GPT viis punkt viiest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Nende kokkuvõttev lause: \"valitsuse tegevus põhineb arusaamatusel.\"",
+      "text_markdown": "Nende kokkuvõttev lause: \"valitsuse tegevus põhineb arusaamatusel.\"",
+      "title": "",
+      "tts": {
+        "text": "Nende kokkuvõttev lause: \"valitsuse tegevus põhineb arusaamatusel.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "See on tehisintellekti labori kohta ebatavaliselt otsene erimeelsus USA valitsusega.",
+      "text_markdown": "See on tehisintellekti labori kohta ebatavaliselt otsene erimeelsus USA valitsusega.",
+      "title": "",
+      "tts": {
+        "text": "See on tehisintellekti labori kohta ebatavaliselt otsene erimeelsus USA valitsusega.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "See on, ja selle all olev struktuurne fakt on pealkiri.",
+      "text_markdown": "See on, ja selle all olev struktuurne fakt on pealkiri.",
+      "title": "",
+      "tts": {
+        "text": "See on, ja selle all olev struktuurne fakt on pealkiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Kaubandusministeerium saab nüüd käskida eraviisilisel Ameerika tehisintellekti laboril mudeli võrgust maha võtta, viidates ekspordikontrollile, ja see korraldus jõustub seitsmekümne kahe tunni jooksul.",
+      "text_markdown": "Kaubandusministeerium saab nüüd käskida eraviisilisel Ameerika tehisintellekti laboril mudeli võrgust maha võtta, viidates ekspordikontrollile, ja see korraldus jõustub seitsmekümne kahe tunni jooksul.",
+      "title": "",
+      "tts": {
+        "text": "Kaubandusministeerium saab nüüd käskida eraviisilisel Ameerika tehisintellekti laboril mudeli võrgust maha võtta, viidates ekspordikontrollile, ja see korraldus jõustub seitsmekümne kahe tunni jooksul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Ükskõik, kas te arvate, et korraldus oli õige.",
+      "text_markdown": "Ükskõik, kas te arvate, et korraldus oli õige.",
+      "title": "",
+      "tts": {
+        "text": "Ükskõik, kas te arvate, et korraldus oli õige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Ükskõik, kas te arvate, et korraldus oli õige.",
+      "text_markdown": "Ükskõik, kas te arvate, et korraldus oli õige.",
+      "title": "",
+      "tts": {
+        "text": "Ükskõik, kas te arvate, et korraldus oli õige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Oluline on autoriteet ise, kiirus ja pretsedent.",
+      "text_markdown": "Oluline on autoriteet ise, kiirus ja pretsedent.",
+      "title": "",
+      "tts": {
+        "text": "Oluline on autoriteet ise, kiirus ja pretsedent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Ja Amazoni roll siin.",
+      "text_markdown": "Ja Amazoni roll siin.",
+      "title": "",
+      "tts": {
+        "text": "Ja Amazoni roll siin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "See on osa, mida jälgida.",
+      "text_markdown": "See on osa, mida jälgida.",
+      "title": "",
+      "tts": {
+        "text": "See on osa, mida jälgida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Amazon on suur Anthropicu investor ja konkureerib Anthropicuga ka alusmudelite turul omaenda töö kaudu.",
+      "text_markdown": "Amazon on suur Anthropicu investor ja konkureerib Anthropicuga ka alusmudelite turul omaenda töö kaudu.",
+      "title": "",
+      "tts": {
+        "text": "Amazon on suur Anthropicu investor ja konkureerib Anthropicuga ka alusmudelite turul omaenda töö kaudu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Kui konkurendi hoiatus valitsusele suudab rivaali mudeli pika nädalavahetuse jooksul võrgust välja lülitada, on see tööstuse dünaamika jaoks uus kuju.",
+      "text_markdown": "Kui konkurendi hoiatus valitsusele suudab rivaali mudeli pika nädalavahetuse jooksul võrgust välja lülitada, on see tööstuse dünaamika jaoks uus kuju.",
+      "title": "",
+      "tts": {
+        "text": "Kui konkurendi hoiatus valitsusele suudab rivaali mudeli pika nädalavahetuse jooksul võrgust välja lülitada, on see tööstuse dünaamika jaoks uus kuju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Liigume ehituse juurde.",
+      "text_markdown": "Liigume ehituse juurde.",
+      "title": "",
+      "tts": {
+        "text": "Liigume ehituse juurde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Stargate — OpenAI, Oracle'i, SoftBanki andmekeskuse initsiatiiv.",
+      "text_markdown": "Stargate — OpenAI, Oracle'i, SoftBanki andmekeskuse initsiatiiv.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI, Oracle'i, SoftBanki andmekeskuse initsiatiiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Millised on tegelikud numbrid?",
+      "text_markdown": "Millised on tegelikud numbrid?",
+      "title": "",
+      "tts": {
+        "text": "Millised on tegelikud numbrid?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Stargate on teatanud üheteistkümnest gigavatist USA võimsusest.",
+      "text_markdown": "Stargate on teatanud üheteistkümnest gigavatist USA võimsusest.",
+      "title": "",
+      "tts": {
+        "text": "Stargate on teatanud üheteistkümnest gigavatist Ameerika Ühendriikide võimsusest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Juuni keskpaiga seisuga on umbes kakssada megavatti töös Abilene'i Texase asukohas, esimeses faasis.",
+      "text_markdown": "Juuni keskpaiga seisuga on umbes kakssada megavatti töös Abilene'i Texase asukohas, esimeses faasis.",
+      "title": "",
+      "tts": {
+        "text": "Juuni keskpaiga seisuga on umbes kakssada megavatti töös Abilene'i Texase asukohas, faas üks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Üksteist gigavatti välja kuulutatud, kakssada megavatti ühendatud.",
+      "text_markdown": "Üksteist gigavatti välja kuulutatud, kakssada megavatti ühendatud.",
+      "title": "",
+      "tts": {
+        "text": "Üksteist gigavatti välja kuulutatud, kakssada megavatti ühendatud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "See on kogu lünk ühes reas.",
+      "text_markdown": "See on kogu lünk ühes reas.",
+      "title": "",
+      "tts": {
+        "text": "See on kogu lünk ühes reas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "See on, ja kõige puhtam näide asub New Mexicos.",
+      "text_markdown": "See on, ja kõige puhtam näide asub New Mexicos.",
+      "title": "",
+      "tts": {
+        "text": "See on, ja kõige puhtam näide asub New Mexicos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Doña Ana maakonna asukoht on suurim üksik Stargate'i ülikoolilinnak, mille võimsuseks on kavandatud neli koma viis gigavatti.",
+      "text_markdown": "Doña Ana maakonna asukoht on suurim üksik Stargate'i ülikoolilinnak, mille võimsuseks on kavandatud neli koma viis gigavatti.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana maakonna asukoht on suurim üksik Stargate'i ülikoolilinnak, mille võimsuseks on kavandatud neli koma viis gigavatti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "Kaheksateist miljardit dollarit sündikaatprojektirahastust on paigas — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pluss kolme miljardi dollari suurune omakapitali sissemakse Blue Owlilt.",
+      "text_markdown": "Kaheksateist miljardit dollarit sündikaatprojektirahastust on paigas — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pluss kolme miljardi dollari suurune omakapitali sissemakse Blue Owlilt.",
+      "title": "",
+      "tts": {
+        "text": "Kaheksateist miljardit dollarit sündikaatprojektirahastust on paigas — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pluss kolme miljardi dollari suurune omakapitali sissemakse Blue Owlilt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Ja ehituse olukord kohapeal.",
+      "text_markdown": "Ja ehituse olukord kohapeal.",
+      "title": "",
+      "tts": {
+        "text": "Ja ehituse olukord kohapeal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Seni pole ühtegi labidat maasse löödud.",
+      "text_markdown": "Seni pole ühtegi labidat maasse löödud.",
+      "title": "",
+      "tts": {
+        "text": "Seni pole ühtegi labidat maasse löödud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Asukoht ootab New Mexico keskkonnaosakonnalt õhukvaliteedi luba, mida algselt oodati kahekümne teisel aprillil, kuid mis on nüüd edasi lükatud kahekümne esimesele juulile pärast enam kui seitset tuhat avalikku kommentaari.",
+      "text_markdown": "Asukoht ootab New Mexico keskkonnaosakonnalt õhukvaliteedi luba, mida algselt oodati kahekümne teisel aprillil, kuid mis on nüüd edasi lükatud kahekümne esimesele juulile pärast enam kui seitset tuhat avalikku kommentaari.",
+      "title": "",
+      "tts": {
+        "text": "Asukoht ootab New Mexico keskkonnaosakonnalt õhukvaliteedi luba, mida algselt oodati kahekümne teisel aprillil, kuid mis on nüüd edasi lükatud kahekümne esimesele juulile pärast enam kui seitset tuhat avalikku kommentaari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Kaheksateist miljardit dollarit pühendatud, null labidat maasse löödud, üks õhukvaliteedi loa tähtaeg.",
+      "text_markdown": "Kaheksateist miljardit dollarit pühendatud, null labidat maasse löödud, üks õhukvaliteedi loa tähtaeg.",
+      "title": "",
+      "tts": {
+        "text": "Kaheksateist miljardit dollarit pühendatud, null labidat maasse löödud, üks õhukvaliteedi loa tähtaeg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Kes on vastutaja, kui numbrid ei klapi?",
+      "text_markdown": "Kes on vastutaja, kui numbrid ei klapi?",
+      "title": "",
+      "tts": {
+        "text": "Kes on vastutaja, kui numbrid ei klapi?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "See on koht, kus Oracle muutub huvitavaks.",
+      "text_markdown": "See on koht, kus Oracle muutub huvitavaks.",
+      "title": "",
+      "tts": {
+        "text": "See on koht, kus Oracle muutub huvitavaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Oracle'i täitmata kohustused (Remaining Performance Obligations) — raamatupidamisrida, mis kajastab lepingulist, kuid veel tarnimata tulu — ulatusid viiesaja viiekümne kolme miljardi dollarini 2026. majandusaasta kolmandas kvartalis.",
+      "text_markdown": "Oracle'i täitmata kohustused (Remaining Performance Obligations) — raamatupidamisrida, mis kajastab lepingulist, kuid veel tarnimata tulu — ulatusid viiesaja viiekümne kolme miljardi dollarini 2026. majandusaasta kolmandas kvartalis.",
+      "title": "",
+      "tts": {
+        "text": "Oracle'i täitmata kohustused — raamatupidamisrida, mis kajastab lepingulist, kuid veel tarnimata tulu — ulatusid viiesaja viiekümne kolme miljardi dollarini kahetuhande kahekümne kuuenda majandusaasta kolmandas kvartalis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "See on kolmsada kakskümmend viis protsenti aastatagusest kõrgem ja suurem osa sellest kasvust on avalikult seotud OpenAI ja Stargate'iga.",
+      "text_markdown": "See on kolmsada kakskümmend viis protsenti aastatagusest kõrgem ja suurem osa sellest kasvust on avalikult seotud OpenAI ja Stargate'iga.",
+      "title": "",
+      "tts": {
+        "text": "See on kolmsada kakskümmend viis protsenti aastatagusest kõrgem ja suurem osa sellest kasvust on avalikult seotud OpenAI ja Stargate'iga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Võla poolelt vaadatuna.",
+      "text_markdown": "Võla poolelt vaadatuna.",
+      "title": "",
+      "tts": {
+        "text": "Võla poolelt vaadatuna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Kogulaenud ulatusid veebruari kahekümne kaheksanda seisuga saja kolmekümne nelja koma kuue miljardi dollarini.",
+      "text_markdown": "Kogulaenud ulatusid veebruari kahekümne kaheksanda seisuga saja kolmekümne nelja koma kuue miljardi dollarini.",
+      "title": "",
+      "tts": {
+        "text": "Kogulaenud ulatusid veebruari kahekümne kaheksanda seisuga saja kolmekümne nelja koma kuue miljardi dollarini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Oracle kaasas ainuüksi veebruaris kolmkümmend miljardit — investeerimisjärgu võlakirjad pluss kohustuslikud konverteeritavad eelisaktsiad — ja emiteeris üheksa kuu jooksul nelikümmend kolm miljardit dollarit uusi vanemvõlakirju.",
+      "text_markdown": "Oracle kaasas ainuüksi veebruaris kolmkümmend miljardit — investeerimisjärgu võlakirjad pluss kohustuslikud konverteeritavad eelisaktsiad — ja emiteeris üheksa kuu jooksul nelikümmend kolm miljardit dollarit uusi vanemvõlakirju.",
+      "title": "",
+      "tts": {
+        "text": "Oracle kaasas ainuüksi veebruaris kolmkümmend miljardit — investeerimisjärgu võlakirjad pluss kohustuslikud konverteeritavad eelisaktsiad — ja emiteeris üheksa kuu jooksul nelikümmend kolm miljardit dollarit uusi vanemvõlakirju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Nii et võtame olukorra kokku.",
+      "text_markdown": "Nii et võtame olukorra kokku.",
+      "title": "",
+      "tts": {
+        "text": "Nii et võtame olukorra kokku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Lubadusi on 553 miljardit dollarit, võlga 134 miljardit dollarit ja üks suur klient kannab suurema osa riskist.",
+      "text_markdown": "Lubadusi on 553 miljardit dollarit, võlga 134 miljardit dollarit ja üks suur klient kannab suurema osa riskist.",
+      "title": "",
+      "tts": {
+        "text": "Lubadusi on viissada viiskümmend kolm miljardit dollarit, võlga sada kolmkümmend neli miljardit dollarit ja üks suur klient kannab suurema osa riskist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "See on ehituse struktuur ühes lauses.",
+      "text_markdown": "See on ehituse struktuur ühes lauses.",
+      "title": "",
+      "tts": {
+        "text": "See on ehituse struktuur ühes lauses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Liigume USA ja Hiina võrdluse juurde.",
+      "text_markdown": "Liigume USA ja Hiina võrdluse juurde.",
+      "title": "",
+      "tts": {
+        "text": "Liigume Ameerika Ühendriikide ja Hiina võrdluse juurde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Klišee on, et Hiina on teatud arvu kuid maas.",
+      "text_markdown": "Klišee on, et Hiina on teatud arvu kuid maas.",
+      "title": "",
+      "tts": {
+        "text": "Klišee on, et Hiina on teatud arvu kuid maas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Klišee on vale, sest see mõõdab valet asja.",
+      "text_markdown": "Klišee on vale, sest see mõõdab valet asja.",
+      "title": "",
+      "tts": {
+        "text": "Klišee on vale, sest see mõõdab valet asja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Esmaspäeval, üheksandal juunil, teatas Bloomberg Hiina riikliku arengu- ja reformikomisjoni (National Development and Reform Commission) kavandist – kaks triljonit jüaani, ligikaudu kakssada üheksakümmend viis miljardit dollarit, üleriigilise tehisintellekti andmekeskuste võrgu loomiseks aastaks kakskümmend kakskümmend kaheksa.",
+      "text_markdown": "Esmaspäeval, üheksandal juunil, teatas Bloomberg Hiina riikliku arengu- ja reformikomisjoni (National Development and Reform Commission) kavandist – kaks triljonit jüaani, ligikaudu kakssada üheksakümmend viis miljardit dollarit, üleriigilise tehisintellekti andmekeskuste võrgu loomiseks aastaks kakskümmend kakskümmend kaheksa.",
+      "title": "",
+      "tts": {
+        "text": "Esmaspäeval, üheksandal juunil, teatas Bloomberg Hiina riikliku arengu- ja reformikomisjoni kavandist – kaks triljonit jüaani, ligikaudu kakssada üheksakümmend viis miljardit dollarit, üleriigilise tehisintellekti andmekeskuste võrgu loomiseks aastaks kakskümmend kakskümmend kaheksa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Plaan näeb ette kaheksakümmend protsenti kodumaist räni ja seda opereeriks ühtse ühendatud arvutusvõrguna China Mobile ja China Telecom.",
+      "text_markdown": "Plaan näeb ette kaheksakümmend protsenti kodumaist räni ja seda opereeriks ühtse ühendatud arvutusvõrguna China Mobile ja China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Plaan näeb ette kaheksakümmend protsenti kodumaist räni ja seda opereeriks ühtse ühendatud arvutusvõrguna China Mobile ja China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Ja kus on selle plaani konks?",
+      "text_markdown": "Ja kus on selle plaani konks?",
+      "title": "",
+      "tts": {
+        "text": "Ja kus on selle plaani konks?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "Kaks triljonit jüaani, kaheksakümmend protsenti kodumaist räni, kakskümmend kakskümmend kaheksa tähtaeg – ja konks on selles, et piirav tegur ei ole loogikakiibid, vaid suure ribalaiusega mälu.",
+      "text_markdown": "Kaks triljonit jüaani, kaheksakümmend protsenti kodumaist räni, kakskümmend kakskümmend kaheksa tähtaeg – ja konks on selles, et piirav tegur ei ole loogikakiibid, vaid suure ribalaiusega mälu.",
+      "title": "",
+      "tts": {
+        "text": "Kaks triljonit jüaani, kaheksakümmend protsenti kodumaist räni, kakskümmend kakskümmend kaheksa tähtaeg – ja konks on selles, et piirav tegur ei ole loogikakiibid, vaid suure ribalaiusega mälu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "Selgitage seda meile.",
+      "text_markdown": "Selgitage seda meile.",
+      "title": "",
+      "tts": {
+        "text": "Selgitage seda meile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "Iga tehisintellekti kiirendi vajab HBM-virnasid, mis on loogikamatriitsile kinnitatud.",
+      "text_markdown": "Iga tehisintellekti kiirendi vajab HBM-virnasid, mis on loogikamatriitsile kinnitatud.",
+      "title": "",
+      "tts": {
+        "text": "Iga tehisintellekti kiirendi vajab H B M-virnasid, mis on loogikamatriitsile kinnitatud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "Ilma HBM-ita on kiip paberiraskus.",
+      "text_markdown": "Ilma HBM-ita on kiip paberiraskus.",
+      "title": "",
+      "tts": {
+        "text": "Ilma H B M-ita on kiip paberiraskus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "Hiina varus umbes kolmteist miljonit HBM-virna enne ekspordikontrolli sulgemist – ainuüksi Samsungilt üksteist koma neli miljonit.",
+      "text_markdown": "Hiina varus umbes kolmteist miljonit HBM-virna enne ekspordikontrolli sulgemist – ainuüksi Samsungilt üksteist koma neli miljonit.",
+      "title": "",
+      "tts": {
+        "text": "Hiina varus umbes kolmteist miljonit H B M-virna enne ekspordikontrolli sulgemist – ainuüksi Samsungilt üksteist koma neli miljonit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Huawei Ascend üheksa-kümme C pakendussuhete juures piisab sellest varust ligikaudu ühe koma kuue miljoni kiibi jaoks.",
+      "text_markdown": "Huawei Ascend üheksa-kümme C pakendussuhete juures piisab sellest varust ligikaudu ühe koma kuue miljoni kiibi jaoks.",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend üheksa kümme C pakendussuhete juures piisab sellest varust ligikaudu ühe koma kuue miljoni kiibi jaoks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "Ja siis saab varu otsa.",
+      "text_markdown": "Ja siis saab varu otsa.",
+      "title": "",
+      "tts": {
+        "text": "Ja siis saab varu otsa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "Siis saab varu otsa – kolmteist miljonit HBM-virna, piisavalt ühe koma kuue miljoni kiibi jaoks, ja see on lagi.",
+      "text_markdown": "Siis saab varu otsa – kolmteist miljonit HBM-virna, piisavalt ühe koma kuue miljoni kiibi jaoks, ja see on lagi.",
+      "title": "",
+      "tts": {
+        "text": "Siis saab varu otsa – kolmteist miljonit H B M-virna, piisavalt ühe koma kuue miljoni kiibi jaoks, ja see on lagi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "Kodumaine Hiina HBM, CXMT-lt, on kakskümmend kakskümmend kuus aastaks graafikus umbes kahe miljoni virna jaoks – piisavalt ehk kakssada viiskümmend kuni kolmsada tuhat kiirendit.",
+      "text_markdown": "Kodumaine Hiina HBM, CXMT-lt, on kakskümmend kakskümmend kuus aastaks graafikus umbes kahe miljoni virna jaoks – piisavalt ehk kakssada viiskümmend kuni kolmsada tuhat kiirendit.",
+      "title": "",
+      "tts": {
+        "text": "Kodumaine Hiina H B M, C X M T-lt, on kakskümmend kakskümmend kuus aastaks graafikus umbes kahe miljoni virna jaoks – piisavalt ehk kakssada viiskümmend kuni kolmsada tuhat kiirendit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "Nii et Huawei räniplaanid näevad välja millised?",
+      "text_markdown": "Nii et Huawei räniplaanid näevad välja millised?",
+      "title": "",
+      "tts": {
+        "text": "Nii et Huawei räniplaanid näevad välja millised?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "Bloomberg, viidates Huawei plaanidele, prognoosis kakskümmend kakskümmend kuus aastaks kuussada tuhat üheksa-kümme C kiipi, kusjuures laiem Ascendi tootesari ulatub kokku kuni ühe koma kuue miljoni matriitsini.",
+      "text_markdown": "Bloomberg, viidates Huawei plaanidele, prognoosis kakskümmend kakskümmend kuus aastaks kuussada tuhat üheksa-kümme C kiipi, kusjuures laiem Ascendi tootesari ulatub kokku kuni ühe koma kuue miljoni matriitsini.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, viidates Huawei plaanidele, prognoosis kakskümmend kakskümmend kuus aastaks kuussada tuhat üheksa kümme C kiipi, kusjuures laiem Ascendi tootesari ulatub kokku kuni ühe koma kuue miljoni matriitsini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "See number, kuussada tuhat, on siht, mitte tarnitud toodang.",
+      "text_markdown": "See number, kuussada tuhat, on siht, mitte tarnitud toodang.",
+      "title": "",
+      "tts": {
+        "text": "See number, kuussada tuhat, on siht, mitte tarnitud toodang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "Ja eraldi, enne kui ekspordikontrollid nad ära lõikasid, kogus Huawei Sophgo ja Bitmaini varifirmade kaudu üle kahe koma üheksa miljoni TSMC-s valmistatud Ascendi matriitsi.",
+      "text_markdown": "Ja eraldi, enne kui ekspordikontrollid nad ära lõikasid, kogus Huawei Sophgo ja Bitmaini varifirmade kaudu üle kahe koma üheksa miljoni TSMC-s valmistatud Ascendi matriitsi.",
+      "title": "",
+      "tts": {
+        "text": "Ja eraldi, enne kui ekspordikontrollid nad ära lõikasid, kogus Huawei Sophgo ja Bitmaini varifirmade kaudu üle kahe koma üheksa miljoni T S M C-s valmistatud Ascendi matriitsi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "Ekspordikontrollide toimimise narratiivil on kahe koma üheksa miljoni matriitsi suurune auk sees.",
+      "text_markdown": "Ekspordikontrollide toimimise narratiivil on kahe koma üheksa miljoni matriitsi suurune auk sees.",
+      "title": "",
+      "tts": {
+        "text": "Ekspordikontrollide toimimise narratiivil on kahe koma üheksa miljoni matriitsi suurune auk sees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "Vaatame pealkirjad kiirelt üle.",
+      "text_markdown": "Vaatame pealkirjad kiirelt üle.",
+      "title": "",
+      "tts": {
+        "text": "Vaatame pealkirjad kiirelt üle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "Selle nädala esimene pealkiri, Broadcom.",
+      "text_markdown": "Selle nädala esimene pealkiri, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Selle nädala esimene pealkiri, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "Broadcomi turukapitalisatsioon on umbes kaks triljonit dollarit.",
+      "text_markdown": "Broadcomi turukapitalisatsioon on umbes kaks triljonit dollarit.",
+      "title": "",
+      "tts": {
+        "text": "Broadcomi turukapitalisatsioon on umbes kaks triljonit dollarit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "Nende tegevjuht Hock Tan kordas kolmandal juunil toimunud tulukõnes saja miljardi dollari suurust tehisintellekti pooljuhtide tulueesmärki fiskaalaastaks kakskümmend kakskümmend seitse, mida toetab umbes seitsekümmend kolm miljardit dollarit tehisintellekti tellimuste mahajäämust ja pikaajalisi lepinguid Alphabeti ja Metaga, mis ulatuvad aastani kakskümmend kolmkümmend üks.",
+      "text_markdown": "Nende tegevjuht Hock Tan kordas kolmandal juunil toimunud tulukõnes saja miljardi dollari suurust tehisintellekti pooljuhtide tulueesmärki fiskaalaastaks kakskümmend kakskümmend seitse, mida toetab umbes seitsekümmend kolm miljardit dollarit tehisintellekti tellimuste mahajäämust ja pikaajalisi lepinguid Alphabeti ja Metaga, mis ulatuvad aastani kakskümmend kolmkümmend üks.",
+      "title": "",
+      "tts": {
+        "text": "Nende tegevjuht Hock Tan kordas kolmandal juunil toimunud tulukõnes saja miljardi dollari suurust A I pooljuhtide tulueesmärki fiskaalaastaks kakskümmend kakskümmend seitse, mida toetab umbes seitsekümmend kolm miljardit dollarit A I tellimuste mahajäämust ja pikaajalisi lepinguid Alphabeti ja Metaga, mis ulatuvad aastani kakskümmend kolmkümmend üks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "Kaks triljonit dollarit turukapitalisatsiooni, saja miljardi dollari suurune tehisintellekti tulueesmärk, peaaegu puudub jaekaubanduse brändituntus.",
+      "text_markdown": "Kaks triljonit dollarit turukapitalisatsiooni, saja miljardi dollari suurune tehisintellekti tulueesmärk, peaaegu puudub jaekaubanduse brändituntus.",
+      "title": "",
+      "tts": {
+        "text": "Kaks triljonit dollarit turukapitalisatsiooni, saja miljardi dollari suurune A I tulueesmärk, peaaegu puudub jaekaubanduse brändituntus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "Selle nädala teine pealkiri, ASML.",
+      "text_markdown": "Selle nädala teine pealkiri, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Selle nädala teine pealkiri, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "ASML, Hollandi ettevõte, mis ehitab litograafiamasinaid, millest sõltub kogu tipptasemel loogika, müüb oma High-N.A. E.U.V. süsteemi umbes kolmesaja seitsmekümne miljoni dollari eest.",
+      "text_markdown": "ASML, Hollandi ettevõte, mis ehitab litograafiamasinaid, millest sõltub kogu tipptasemel loogika, müüb oma High-N.A. E.U.V. süsteemi umbes kolmesaja seitsmekümne miljoni dollari eest.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, Hollandi ettevõte, mis ehitab litograafiamasinaid, millest sõltub kogu tipptasemel loogika, müüb oma High N A E U V süsteemi umbes kolmesaja seitsmekümne miljoni dollari eest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "Ülemaailmne tootmisvõimsus on alla kahekümne ühiku aastas.",
+      "text_markdown": "Ülemaailmne tootmisvõimsus on alla kahekümne ühiku aastas.",
+      "title": "",
+      "tts": {
+        "text": "Ülemaailmne tootmisvõimsus on alla kahekümne ühiku aastas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "Kolmsada seitsekümmend miljonit dollarit masina kohta, alla kahekümne masina aastas, üks ettevõte toodab neid – see on tegelik pudelikael globaalses ränitootmises, mitte poliitika.",
+      "text_markdown": "Kolmsada seitsekümmend miljonit dollarit masina kohta, alla kahekümne masina aastas, üks ettevõte toodab neid – see on tegelik pudelikael globaalses ränitootmises, mitte poliitika.",
+      "title": "",
+      "tts": {
+        "text": "Kolmsada seitsekümmend miljonit dollarit masina kohta, alla kahekümne masina aastas, üks ettevõte toodab neid – see on tegelik pudelikael globaalses ränitootmises, mitte poliitika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "Selle nädala kolmas pealkiri, ekspordikontrollid.",
+      "text_markdown": "Selle nädala kolmas pealkiri, ekspordikontrollid.",
+      "title": "",
+      "tts": {
+        "text": "Selle nädala kolmas pealkiri, ekspordikontrollid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "Kaubandus tühistas Bideni-aegse tehisintellekti leviku reegli kolmeteistkümnendal mail kakskümmend kakskümmend viis ja ei väljastanud uut B.I.S. jõustamise selgitust enne kolmekümne esimest maid kakskümmend kakskümmend kuus.",
+      "text_markdown": "Kaubandus tühistas Bideni-aegse tehisintellekti leviku reegli kolmeteistkümnendal mail kakskümmend kakskümmend viis ja ei väljastanud uut B.I.S. jõustamise selgitust enne kolmekümne esimest maid kakskümmend kakskümmend kuus.",
+      "title": "",
+      "tts": {
+        "text": "Kaubandus tühistas Bideni-aegse A I leviku reegli kolmeteistkümnendal mail kakskümmend kakskümmend viis ja ei väljastanud uut B I S jõustamise selgitust enne kolmekümne esimest maid kakskümmend kakskümmend kuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "See on ligikaudu aastane aken, mil litsentsimisnõudeid aktiivselt ei jõustatud.",
+      "text_markdown": "See on ligikaudu aastane aken, mil litsentsimisnõudeid aktiivselt ei jõustatud.",
+      "title": "",
+      "tts": {
+        "text": "See on ligikaudu aastane aken, mil litsentsimisnõudeid aktiivselt ei jõustatud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "Nii et loendage päevi.",
+      "text_markdown": "Nii et loendage päevi.",
+      "title": "",
+      "tts": {
+        "text": "Nii et loendage päevi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "72 tundi USA mudeli sulgemiseks, 380 päeva kiibiekspordi reegli jõustamiseks: see asümmeetria ongi peamine.",
+      "text_markdown": "72 tundi USA mudeli sulgemiseks, 380 päeva kiibiekspordi reegli jõustamiseks: see asümmeetria ongi peamine.",
+      "title": "",
+      "tts": {
+        "text": "Seitsekümmend kaks tundi USA mudeli sulgemiseks, kolmsada kaheksakümmend päeva kiibiekspordi reegli jõustamiseks, see asümmeetria ongi peamine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "Ja kuhu need kiibid nende kolmesaja kaheksakümne päeva jooksul läksid?",
+      "text_markdown": "Ja kuhu need kiibid nende kolmesaja kaheksakümne päeva jooksul läksid?",
+      "title": "",
+      "tts": {
+        "text": "Ja kuhu need kiibid nende kolmesaja kaheksakümne päeva jooksul läksid?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Kagu-Aasiasse läks enamik neist.",
+      "text_markdown": "Kagu-Aasiasse läks enamik neist.",
+      "title": "",
+      "tts": {
+        "text": "Kagu-Aasiasse läks enamik neist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "Justiitsministeerium avalikustas märtsi lõpus süüdistused, milles väidetakse, et Nvidia H100 ja A100 kiibid suunati Malaisia ja Singapuri vahendajate kaudu.",
+      "text_markdown": "Justiitsministeerium avalikustas märtsi lõpus süüdistused, milles väidetakse, et Nvidia H100 ja A100 kiibid suunati Malaisia ja Singapuri vahendajate kaudu.",
+      "title": "",
+      "tts": {
+        "text": "Justiitsministeerium avalikustas märtsi lõpus süüdistused, milles väidetakse, et Nvidia H üks sada ja A üks sada kiibid suunati Malaisia ja Singapuri vahendajate kaudu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "Fortune avaldas mais krüpteeritud tekstid, mis näitasid logistikat, ja Super Micro on seotud kahe ja poole miljardi dollari suuruse variettevõtte juhtumiga.",
+      "text_markdown": "Fortune avaldas mais krüpteeritud tekstid, mis näitasid logistikat, ja Super Micro on seotud kahe ja poole miljardi dollari suuruse variettevõtte juhtumiga.",
+      "title": "",
+      "tts": {
+        "text": "Fortune avaldas mais krüpteeritud tekstid, mis näitasid logistikat, ja Super Micro on seotud kahe ja poole miljardi dollari suuruse variettevõtte juhtumiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "Trumpi administratsioon koostab väidetavalt uusi kiibiekspordi piiranguid, mis on suunatud spetsiaalselt Malaisiale ja Taile.",
+      "text_markdown": "Trumpi administratsioon koostab väidetavalt uusi kiibiekspordi piiranguid, mis on suunatud spetsiaalselt Malaisiale ja Taile.",
+      "title": "",
+      "tts": {
+        "text": "Trumpi administratsioon koostab väidetavalt uusi kiibiekspordi piiranguid, mis on suunatud spetsiaalselt Malaisiale ja Taile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Nii et pilt ühes lauses.",
+      "text_markdown": "Nii et pilt ühes lauses.",
+      "title": "",
+      "tts": {
+        "text": "Nii et pilt ühes lauses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Kiibid ei lenda Shenzheni – nad lendavad esmalt Penangisse ja Singapuri.",
+      "text_markdown": "Kiibid ei lenda Shenzheni – nad lendavad esmalt Penangisse ja Singapuri.",
+      "title": "",
+      "tts": {
+        "text": "Kiibid ei lenda Shenzheni – nad lendavad esmalt Penangisse ja Singapuri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "Nädala kontseptsioon – Täitmata Jäänud Kohustused.",
+      "text_markdown": "Nädala kontseptsioon – Täitmata Jäänud Kohustused.",
+      "title": "",
+      "tts": {
+        "text": "Nädala kontseptsioon – Täitmata Jäänud Kohustused.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "TJK on raamatupidamisrida, mis kajastab ettevõtte sõlmitud, kuid veel täitmata lepingute dollariväärtust.",
+      "text_markdown": "TJK on raamatupidamisrida, mis kajastab ettevõtte sõlmitud, kuid veel täitmata lepingute dollariväärtust.",
+      "title": "",
+      "tts": {
+        "text": "Tee Jii Koo on raamatupidamisrida, mis kajastab ettevõtte sõlmitud, kuid veel täitmata lepingute dollariväärtust.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "See on tulevikku vaatav – see räägib teile tulevasest tulust, mitte tänasest pangas olevast rahast.",
+      "text_markdown": "See on tulevikku vaatav – see räägib teile tulevasest tulust, mitte tänasest pangas olevast rahast.",
+      "title": "",
+      "tts": {
+        "text": "See on tulevikku vaatav – see räägib teile tulevasest tulust, mitte tänasest pangas olevast rahast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Ja miks see Oracle'i jaoks oluline on?",
+      "text_markdown": "Ja miks see Oracle'i jaoks oluline on?",
+      "title": "",
+      "tts": {
+        "text": "Ja miks see Oracle'i jaoks oluline on?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "Sest viissada viiskümmend kolm miljardit dollarit TJK-d, mis on suuresti koondunud ühele kliendile ühe ehituse jaoks, tähendab, et Oracle on lubanud tarnida tohutu hulga arvutusvõimsust järgmise mitme aasta jooksul kliendile, kelle enda tulude mudeli üle veel vaieldakse.",
+      "text_markdown": "Sest viissada viiskümmend kolm miljardit dollarit TJK-d, mis on suuresti koondunud ühele kliendile ühe ehituse jaoks, tähendab, et Oracle on lubanud tarnida tohutu hulga arvutusvõimsust järgmise mitme aasta jooksul kliendile, kelle enda tulude mudeli üle veel vaieldakse.",
+      "title": "",
+      "tts": {
+        "text": "Sest viissada viiskümmend kolm miljardit dollarit Tee Jii Koo-d, mis on suuresti koondunud ühele kliendile ühe ehituse jaoks, tähendab, et Oracle on lubanud tarnida tohutu hulga arvutusvõimsust järgmise mitme aasta jooksul kliendile, kelle enda tulude mudeli üle veel vaieldakse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "Kui need lepingud täidetakse, on Oracle'il kümnendi tehing.",
+      "text_markdown": "Kui need lepingud täidetakse, on Oracle'il kümnendi tehing.",
+      "title": "",
+      "tts": {
+        "text": "Kui need lepingud täidetakse, on Oracle'il kümnendi tehing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "Kui need libisevad – või läbirääkimiste käigus muudetakse – kannab Oracle võlga, samal ajal kui lepingud kahanevad.",
+      "text_markdown": "Kui need libisevad – või läbirääkimiste käigus muudetakse – kannab Oracle võlga, samal ajal kui lepingud kahanevad.",
+      "title": "",
+      "tts": {
+        "text": "Kui need libisevad – või läbirääkimiste käigus muudetakse – kannab Oracle võlga, samal ajal kui lepingud kahanevad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "Nii et kui näete tehnoloogiaaruandes TJK numbrit.",
+      "text_markdown": "Nii et kui näete tehnoloogiaaruandes TJK numbrit.",
+      "title": "",
+      "tts": {
+        "text": "Nii et kui näete tehnoloogiaaruandes TJK numbrit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "Lugege, kes on kliendid, kui kontsentreeritud kohustused on, ja mis peaks juhtuma, et ettevõte need tegelikult täidaks.",
+      "text_markdown": "Lugege, kes on kliendid, kui kontsentreeritud kohustused on, ja mis peaks juhtuma, et ettevõte need tegelikult täidaks.",
+      "title": "",
+      "tts": {
+        "text": "Lugege, kes on kliendid, kui kontsentreeritud kohustused on, ja mis peaks juhtuma, et ettevõte need tegelikult täidaks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "TJK on koht, kus kaotajad ilmuvad joonealustesse märkustesse.",
+      "text_markdown": "TJK on koht, kus kaotajad ilmuvad joonealustesse märkustesse.",
+      "title": "",
+      "tts": {
+        "text": "Tee Jii Koo on koht, kus kaotajad ilmuvad joonealustesse märkustesse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "Hea koht maandumiseks.",
+      "text_markdown": "Hea koht maandumiseks.",
+      "title": "",
+      "tts": {
+        "text": "Hea koht maandumiseks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "Ron, aitäh ülevaate eest.",
+      "text_markdown": "Ron, aitäh ülevaate eest.",
+      "title": "",
+      "tts": {
+        "text": "Ron, aitäh ülevaate eest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "Igal ajal, Vindy – hea siin olla.",
+      "text_markdown": "Igal ajal, Vindy – hea siin olla.",
+      "title": "",
+      "tts": {
+        "text": "Igal ajal, Vindy – hea siin olla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "See oli AI This Week kahekümne esimese juuni, kakstuhat kakskümmend kuus.",
+      "text_markdown": "See oli AI This Week kahekümne esimese juuni, kakstuhat kakskümmend kuus.",
+      "title": "",
+      "tts": {
+        "text": "See oli AI This Week kahekümne esimese juuni, kakstuhat kakskümmend kuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "Järgmisel nädalal tagasi avatud kaalude ja väikeste laborite teema juurde.",
+      "text_markdown": "Järgmisel nädalal tagasi avatud kaalude ja väikeste laborite teema juurde.",
+      "title": "",
+      "tts": {
+        "text": "Järgmisel nädalal tagasi avatud kaalude ja väikeste laborite teema juurde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "Järgmise pühapäevani, hoolitsege enda eest.",
+      "text_markdown": "Järgmise pühapäevani, hoolitsege enda eest.",
+      "title": "",
+      "tts": {
+        "text": "Järgmise pühapäevani, hoolitsege enda eest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

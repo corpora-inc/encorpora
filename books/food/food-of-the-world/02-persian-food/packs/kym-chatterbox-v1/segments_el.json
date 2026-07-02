@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "el",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Μια σημείωση για τον αναγνώστη",
+      "text_markdown": "Μια σημείωση για τον αναγνώστη"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Γεια σου.",
+      "text_markdown": "Γεια σου.",
+      "tts": {
+        "text": "Γεια σου.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είμαι η Kym.",
+      "text_markdown": "Είμαι η Kym.",
+      "tts": {
+        "text": "Είμαι η Κιμ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Λατρεύω το φαγητό.",
+      "text_markdown": "Λατρεύω το φαγητό.",
+      "tts": {
+        "text": "Λατρεύω το φαγητό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Λατρεύω και τις ιστορίες για το φαγητό.",
+      "text_markdown": "Λατρεύω και τις ιστορίες για το φαγητό.",
+      "tts": {
+        "text": "Λατρεύω και τις ιστορίες για το φαγητό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι ένα μικρό βιβλίο για μια μεγάλη κουζίνα.",
+      "text_markdown": "Αυτό είναι ένα μικρό βιβλίο για μια μεγάλη κουζίνα.",
+      "tts": {
+        "text": "Αυτό είναι ένα μικρό βιβλίο για μια μεγάλη κουζίνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αυτή η κουζίνα είναι η περσική κουζίνα.",
+      "text_markdown": "Αυτή η κουζίνα είναι η περσική κουζίνα.",
+      "tts": {
+        "text": "Αυτή η κουζίνα είναι η περσική κουζίνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι η κουζίνα του Ιράν.",
+      "text_markdown": "Είναι η κουζίνα του Ιράν.",
+      "tts": {
+        "text": "Είναι η κουζίνα του Ιράν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Είναι και η κουζίνα μιας πολύ παλιότερης χώρας που λεγόταν Περσία.",
+      "text_markdown": "Είναι και η κουζίνα μιας πολύ παλιότερης χώρας που λεγόταν Περσία.",
+      "tts": {
+        "text": "Είναι και η κουζίνα μιας πολύ παλιότερης χώρας που λεγόταν Περσία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η Περσία είναι ένας από τους αρχαιότερους τόπους στη γη όπου οι άνθρωποι καλλιέργησαν τροφή συνειδητά.",
+      "text_markdown": "Η Περσία είναι ένας από τους αρχαιότερους τόπους στη γη όπου οι άνθρωποι καλλιέργησαν τροφή συνειδητά.",
+      "tts": {
+        "text": "Η Περσία είναι ένας από τους αρχαιότερους τόπους στη γη όπου οι άνθρωποι καλλιέργησαν τροφή συνειδητά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το σιτάρι, το κριθάρι, το ροδάκινο, το βερίκοκο, το ρόδι, το σπανάκι, το σαφράν. Πολλά πράγματα στο πιάτο σου γεννήθηκαν εκεί.",
+      "text_markdown": "Το σιτάρι, το κριθάρι, το ροδάκινο, το βερίκοκο, το ρόδι, το σπανάκι, το σαφράν. Πολλά πράγματα στο πιάτο σου γεννήθηκαν εκεί.",
+      "tts": {
+        "text": "Το σιτάρι, το κριθάρι, το ροδάκινο, το βερίκοκο, το ρόδι, το σπανάκι, το σαφράν. Πολλά πράγματα στο πιάτο σου γεννήθηκαν εκεί.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Θα αρχίσουμε από τη γη.",
+      "text_markdown": "Θα αρχίσουμε από τη γη.",
+      "tts": {
+        "text": "Θα αρχίσουμε από τη γη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ύστερα θα δούμε όσα φυτρώνουν εκεί.",
+      "text_markdown": "Ύστερα θα δούμε όσα φυτρώνουν εκεί.",
+      "tts": {
+        "text": "Ύστερα θα δούμε όσα φυτρώνουν εκεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μετά θα δούμε το ρύζι, το ψωμί, το κρέας και τα μαγειρευτά.",
+      "text_markdown": "Μετά θα δούμε το ρύζι, το ψωμί, το κρέας και τα μαγειρευτά.",
+      "tts": {
+        "text": "Μετά θα δούμε το ρύζι, το ψωμί, το κρέας και τα μαγειρευτά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στο τέλος, θα ξέρεις τι υπάρχει σε ένα περσικό τραπέζι και από πού ήρθε.",
+      "text_markdown": "Στο τέλος, θα ξέρεις τι υπάρχει σε ένα περσικό τραπέζι και από πού ήρθε.",
+      "tts": {
+        "text": "Στο τέλος, θα ξέρεις τι υπάρχει σε ένα περσικό τραπέζι και από πού ήρθε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθισε.",
+      "text_markdown": "Κάθισε.",
+      "tts": {
+        "text": "Κάθισε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Βάλε λίγο τσάι.",
+      "text_markdown": "Βάλε λίγο τσάι.",
+      "tts": {
+        "text": "Βάλε λίγο τσάι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ας αρχίσουμε.",
+      "text_markdown": "Ας αρχίσουμε.",
+      "tts": {
+        "text": "Ας αρχίσουμε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 1 — Η γη όπου άρχισε η γεωργία",
+      "text_markdown": "Κεφάλαιο 1 — Η γη όπου άρχισε η γεωργία"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η Περσία είναι μια ορεινή και ξερή γη.",
+      "text_markdown": "Η Περσία είναι μια ορεινή και ξερή γη.",
+      "tts": {
+        "text": "Η Περσία είναι μια ορεινή και ξερή γη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Βρίσκεται ανάμεσα στην Κασπία Θάλασσα στα βόρεια και στον Περσικό Κόλπο στα νότια.",
+      "text_markdown": "Βρίσκεται ανάμεσα στην Κασπία Θάλασσα στα βόρεια και στον Περσικό Κόλπο στα νότια.",
+      "tts": {
+        "text": "Βρίσκεται ανάμεσα στην Κασπία Θάλασσα στα βόρεια και στον Περσικό Κόλπο στα νότια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στα δυτικά είναι η Μεσοποταμία.",
+      "text_markdown": "Στα δυτικά είναι η Μεσοποταμία.",
+      "tts": {
+        "text": "Στα δυτικά είναι η Μεσοποταμία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στα ανατολικά είναι η Ινδία.",
+      "text_markdown": "Στα ανατολικά είναι η Ινδία.",
+      "tts": {
+        "text": "Στα ανατολικά είναι η Ινδία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Στη μέση υπάρχουν βουνά και έρημοι.",
+      "text_markdown": "Στη μέση υπάρχουν βουνά και έρημοι.",
+      "tts": {
+        "text": "Στη μέση υπάρχουν βουνά και έρημοι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακριβώς δίπλα, πριν από περίπου δέκα χιλιάδες χρόνια, οι άνθρωποι καλλιέργησαν πρώτη φορά σιτάρι και κριθάρι.",
+      "text_markdown": "Ακριβώς δίπλα, πριν από περίπου δέκα χιλιάδες χρόνια, οι άνθρωποι καλλιέργησαν πρώτη φορά σιτάρι και κριθάρι.",
+      "tts": {
+        "text": "Ακριβώς δίπλα, πριν από περίπου δέκα χιλιάδες χρόνια, οι άνθρωποι καλλιέργησαν πρώτη φορά σιτάρι και κριθάρι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Εκεί γεννήθηκε η γεωργία.",
+      "text_markdown": "Εκεί γεννήθηκε η γεωργία.",
+      "tts": {
+        "text": "Εκεί γεννήθηκε η γεωργία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η Περσία ήταν από τα πρώτα μέρη που την έμαθαν.",
+      "text_markdown": "Η Περσία ήταν από τα πρώτα μέρη που την έμαθαν.",
+      "tts": {
+        "text": "Η Περσία ήταν από τα πρώτα μέρη που την έμαθαν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό το μεγάλο προβάδισμα φαίνεται σε κάθε περσικό πιάτο.",
+      "text_markdown": "Αυτό το μεγάλο προβάδισμα φαίνεται σε κάθε περσικό πιάτο.",
+      "tts": {
+        "text": "Αυτό το μεγάλο προβάδισμα φαίνεται σε κάθε περσικό πιάτο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το ροδάκινο έρχεται από την Περσία.",
+      "text_markdown": "Το ροδάκινο έρχεται από την Περσία.",
+      "tts": {
+        "text": "Το ροδάκινο έρχεται από την Περσία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι Ρωμαίοι το έλεγαν Πέρσικα, δηλαδή το περσικό φρούτο. Από αυτό το όνομα βγήκε αργότερα και η αγγλική λέξη πιτς.",
+      "text_markdown": "Οι Ρωμαίοι το έλεγαν Πέρσικα, δηλαδή το περσικό φρούτο. Από αυτό το όνομα βγήκε αργότερα και η αγγλική λέξη πιτς.",
+      "tts": {
+        "text": "Οι Ρωμαίοι το έλεγαν Πέρσικα, δηλαδή το περσικό φρούτο. Από αυτό το όνομα βγήκε αργότερα και η αγγλική λέξη πιτς.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και το βερίκοκο έρχεται από εκεί.",
+      "text_markdown": "Και το βερίκοκο έρχεται από εκεί.",
+      "tts": {
+        "text": "Και το βερίκοκο έρχεται από εκεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το ίδιο και το ρόδι.",
+      "text_markdown": "Το ίδιο και το ρόδι.",
+      "tts": {
+        "text": "Το ίδιο και το ρόδι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το ίδιο και το καρύδι.",
+      "text_markdown": "Το ίδιο και το καρύδι.",
+      "tts": {
+        "text": "Το ίδιο και το καρύδι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το ίδιο και το βύσσινο.",
+      "text_markdown": "Το ίδιο και το βύσσινο.",
+      "tts": {
+        "text": "Το ίδιο και το βύσσινο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το ίδιο και ένα από τα πρώτα σαλατικά του κόσμου, το σπανάκι.",
+      "text_markdown": "Το ίδιο και ένα από τα πρώτα σαλατικά του κόσμου, το σπανάκι.",
+      "tts": {
+        "text": "Το ίδιο και ένα από τα πρώτα σαλατικά του κόσμου, το σπανάκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Η αγγλική λέξη σπίνατς έρχεται από την περσική λέξη εσφανάτζ.",
+      "text_markdown": "Η αγγλική λέξη σπίνατς έρχεται από την περσική λέξη εσφανάτζ.",
+      "tts": {
+        "text": "Η αγγλική λέξη σπίνατς έρχεται από την περσική λέξη εσφανάτζ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ακόμα και η λέξη παράνταϊς είναι περσική.",
+      "text_markdown": "Ακόμα και η λέξη παράνταϊς είναι περσική.",
+      "tts": {
+        "text": "Ακόμα και η λέξη παράνταϊς είναι περσική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έρχεται από το παρντίς, έναν περιφραγμένο κήπο.",
+      "text_markdown": "Έρχεται από το παρντίς, έναν περιφραγμένο κήπο.",
+      "tts": {
+        "text": "Έρχεται από το παρντίς, έναν περιφραγμένο κήπο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο πρώτος παράδεισος ήταν ένας περσικός οπωρώνας γεμάτος ροδιές.",
+      "text_markdown": "Ο πρώτος παράδεισος ήταν ένας περσικός οπωρώνας γεμάτος ροδιές.",
+      "tts": {
+        "text": "Ο πρώτος παράδεισος ήταν ένας περσικός οπωρώνας γεμάτος ροδιές.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η Περσία δεν έτρωγε μόνο καλά.",
+      "text_markdown": "Η Περσία δεν έτρωγε μόνο καλά.",
+      "tts": {
+        "text": "Η Περσία δεν έτρωγε μόνο καλά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η Περσία έμαθε στον κόσμο πώς να τρώει καλά.",
+      "text_markdown": "Η Περσία έμαθε στον κόσμο πώς να τρώει καλά.",
+      "tts": {
+        "text": "Η Περσία έμαθε στον κόσμο πώς να τρώει καλά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 2 — Τα ντόπια υλικά",
+      "text_markdown": "Κεφάλαιο 2 — Τα ντόπια υλικά"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άνοιξε ένα περσικό ντουλάπι τροφίμων.",
+      "text_markdown": "Άνοιξε ένα περσικό ντουλάπι τροφίμων.",
+      "tts": {
+        "text": "Άνοιξε ένα περσικό ντουλάπι τροφίμων.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι μυρωδιές λένε την ιστορία.",
+      "text_markdown": "Οι μυρωδιές λένε την ιστορία.",
+      "tts": {
+        "text": "Οι μυρωδιές λένε την ιστορία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η πρώτη μυρωδιά είναι το σαφράν.",
+      "text_markdown": "Η πρώτη μυρωδιά είναι το σαφράν.",
+      "tts": {
+        "text": "Η πρώτη μυρωδιά είναι το σαφράν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το Ιράν παράγει περίπου το ενενήντα τοις εκατό από το σαφράν του κόσμου.",
+      "text_markdown": "Το Ιράν παράγει περίπου το ενενήντα τοις εκατό από το σαφράν του κόσμου.",
+      "tts": {
+        "text": "Το Ιράν παράγει περίπου το ενενήντα τοις εκατό από το σαφράν του κόσμου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το περισσότερο έρχεται από μια επαρχία που λέγεται Χορασάν.",
+      "text_markdown": "Το περισσότερο έρχεται από μια επαρχία που λέγεται Χορασάν.",
+      "tts": {
+        "text": "Το περισσότερο έρχεται από μια επαρχία που λέγεται Χορασάν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Για να φτιάξει ένα γραμμάριο, ο αγρότης μαζεύει με το χέρι τις κόκκινες ίνες από περίπου διακόσια άνθη κρόκου.",
+      "text_markdown": "Για να φτιάξει ένα γραμμάριο, ο αγρότης μαζεύει με το χέρι τις κόκκινες ίνες από περίπου διακόσια άνθη κρόκου.",
+      "tts": {
+        "text": "Για να φτιάξει ένα γραμμάριο, ο αγρότης μαζεύει με το χέρι τις κόκκινες ίνες από περίπου διακόσια άνθη κρόκου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η δουλειά γίνεται σε κρύα φθινοπωρινά χαράματα.",
+      "text_markdown": "Η δουλειά γίνεται σε κρύα φθινοπωρινά χαράματα.",
+      "tts": {
+        "text": "Η δουλειά γίνεται σε κρύα φθινοπωρινά χαράματα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Το σαφράν είναι το ακριβότερο μπαχαρικό στον κόσμο.",
+      "text_markdown": "Το σαφράν είναι το ακριβότερο μπαχαρικό στον κόσμο.",
+      "tts": {
+        "text": "Το σαφράν είναι το ακριβότερο μπαχαρικό στον κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Μια πρέζα κάνει το ρύζι χρυσό και το νερό άρωμα.",
+      "text_markdown": "Μια πρέζα κάνει το ρύζι χρυσό και το νερό άρωμα.",
+      "tts": {
+        "text": "Μια πρέζα κάνει το ρύζι χρυσό και το νερό άρωμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η δεύτερη μυρωδιά είναι το ρόδι.",
+      "text_markdown": "Η δεύτερη μυρωδιά είναι το ρόδι.",
+      "tts": {
+        "text": "Η δεύτερη μυρωδιά είναι το ρόδι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Πέρσες καλλιεργούν ρόδια εδώ και χιλιάδες χρόνια.",
+      "text_markdown": "Οι Πέρσες καλλιεργούν ρόδια εδώ και χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Οι Πέρσες καλλιεργούν ρόδια εδώ και χιλιάδες χρόνια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτό το φρούτο είναι σύμβολο αγάπης και παραδείσου.",
+      "text_markdown": "Αυτό το φρούτο είναι σύμβολο αγάπης και παραδείσου.",
+      "tts": {
+        "text": "Αυτό το φρούτο είναι σύμβολο αγάπης και παραδείσου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Τον χυμό τον στύβουν για τα μαγειρευτά.",
+      "text_markdown": "Τον χυμό τον στύβουν για τα μαγειρευτά.",
+      "tts": {
+        "text": "Τον χυμό τον στύβουν για τα μαγειρευτά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Τους σπόρους τους πασπαλίζουν πάνω σε ρύζι και σαλάτες.",
+      "text_markdown": "Τους σπόρους τους πασπαλίζουν πάνω σε ρύζι και σαλάτες.",
+      "tts": {
+        "text": "Τους σπόρους τους πασπαλίζουν πάνω σε ρύζι και σαλάτες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έπειτα έρχονται τα φιστίκια.",
+      "text_markdown": "Έπειτα έρχονται τα φιστίκια.",
+      "tts": {
+        "text": "Έπειτα έρχονται τα φιστίκια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το Ιράν έχει φιστικεώνες που είναι τριών χιλιάδων ετών.",
+      "text_markdown": "Το Ιράν έχει φιστικεώνες που είναι τριών χιλιάδων ετών.",
+      "tts": {
+        "text": "Το Ιράν έχει φιστικεώνες που είναι τριών χιλιάδων ετών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το φιστίκι που τρως σήμερα στον κόσμο είναι συχνά απόγονος ενός περσικού δέντρου.",
+      "text_markdown": "Το φιστίκι που τρως σήμερα στον κόσμο είναι συχνά απόγονος ενός περσικού δέντρου.",
+      "tts": {
+        "text": "Το φιστίκι που τρως σήμερα στον κόσμο είναι συχνά απόγονος ενός περσικού δέντρου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν καρύδια, βύσσινα, κυδώνια, πεπόνια και χουρμάδες.",
+      "text_markdown": "Υπάρχουν καρύδια, βύσσινα, κυδώνια, πεπόνια και χουρμάδες.",
+      "tts": {
+        "text": "Υπάρχουν καρύδια, βύσσινα, κυδώνια, πεπόνια και χουρμάδες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Υπάρχει και το σουμάκ, ένα σκούρο κόκκινο και ξινό μπαχαρικό από άγριο θάμνο.",
+      "text_markdown": "Υπάρχει και το σουμάκ, ένα σκούρο κόκκινο και ξινό μπαχαρικό από άγριο θάμνο.",
+      "tts": {
+        "text": "Υπάρχει και το σουμάκ, ένα σκούρο κόκκινο και ξινό μπαχαρικό από άγριο θάμνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πριν γεμίσει ο τόπος λεμόνια, το σουμάκ έδινε ζωντάνια στο φαγητό.",
+      "text_markdown": "Πριν γεμίσει ο τόπος λεμόνια, το σουμάκ έδινε ζωντάνια στο φαγητό.",
+      "tts": {
+        "text": "Πριν γεμίσει ο τόπος λεμόνια, το σουμάκ έδινε ζωντάνια στο φαγητό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και ακόμα το κάνει.",
+      "text_markdown": "Και ακόμα το κάνει.",
+      "tts": {
+        "text": "Και ακόμα το κάνει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα περσικό ντουλάπι κρατά τη μισή ιστορία των φρούτων.",
+      "text_markdown": "Ένα περσικό ντουλάπι κρατά τη μισή ιστορία των φρούτων.",
+      "tts": {
+        "text": "Ένα περσικό ντουλάπι κρατά τη μισή ιστορία των φρούτων.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 3 — Ρύζι, ψωμί και η ιερή κρούστα",
+      "text_markdown": "Κεφάλαιο 3 — Ρύζι, ψωμί και η ιερή κρούστα"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ρύζι ήρθε στην Περσία από την Ινδία πριν από περίπου δύο χιλιάδες πεντακόσια χρόνια.",
+      "text_markdown": "Το ρύζι ήρθε στην Περσία από την Ινδία πριν από περίπου δύο χιλιάδες πεντακόσια χρόνια.",
+      "tts": {
+        "text": "Το ρύζι ήρθε στην Περσία από την Ινδία πριν από περίπου δύο χιλιάδες πεντακόσια χρόνια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έγινε η καρδιά του τραπεζιού.",
+      "text_markdown": "Έγινε η καρδιά του τραπεζιού.",
+      "tts": {
+        "text": "Έγινε η καρδιά του τραπεζιού.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι Πέρσες μαγειρεύουν το ρύζι με δύο τρόπους.",
+      "text_markdown": "Οι Πέρσες μαγειρεύουν το ρύζι με δύο τρόπους.",
+      "tts": {
+        "text": "Οι Πέρσες μαγειρεύουν το ρύζι με δύο τρόπους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το απλό ρύζι λέγεται τσέλο.",
+      "text_markdown": "Το απλό ρύζι λέγεται τσέλο.",
+      "tts": {
+        "text": "Το απλό ρύζι λέγεται τσέλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το ρύζι με μυρωδικά, κρέας ή φρούτα λέγεται πόλο.",
+      "text_markdown": "Το ρύζι με μυρωδικά, κρέας ή φρούτα λέγεται πόλο.",
+      "tts": {
+        "text": "Το ρύζι με μυρωδικά, κρέας ή φρούτα λέγεται πόλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και τα δύο βγαίνουν μακρύκοκκα, ανάλαφρα και σπυρωτά.",
+      "text_markdown": "Και τα δύο βγαίνουν μακρύκοκκα, ανάλαφρα και σπυρωτά.",
+      "tts": {
+        "text": "Και τα δύο βγαίνουν μακρύκοκκα, ανάλαφρα και σπυρωτά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως η μαγεία είναι στον πάτο της κατσαρόλας.",
+      "text_markdown": "Όμως η μαγεία είναι στον πάτο της κατσαρόλας.",
+      "tts": {
+        "text": "Όμως η μαγεία είναι στον πάτο της κατσαρόλας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Λέγεται ταχντίγκ.",
+      "text_markdown": "Λέγεται ταχντίγκ.",
+      "tts": {
+        "text": "Λέγεται ταχντίγκ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο μάγειρας βάζει ένα λεπτό στρώμα στον πάτο. Μερικές φορές είναι ρύζι με σαφράν. Μερικές φορές είναι μια φέτα πατάτα. Μερικές φορές είναι ένα κομμάτι ψωμί.",
+      "text_markdown": "Ο μάγειρας βάζει ένα λεπτό στρώμα στον πάτο. Μερικές φορές είναι ρύζι με σαφράν. Μερικές φορές είναι μια φέτα πατάτα. Μερικές φορές είναι ένα κομμάτι ψωμί.",
+      "tts": {
+        "text": "Ο μάγειρας βάζει ένα λεπτό στρώμα στον πάτο. Μερικές φορές είναι ρύζι με σαφράν. Μερικές φορές είναι μια φέτα πατάτα. Μερικές φορές είναι ένα κομμάτι ψωμί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ύστερα μπαίνει από πάνω το ρύζι.",
+      "text_markdown": "Ύστερα μπαίνει από πάνω το ρύζι.",
+      "tts": {
+        "text": "Ύστερα μπαίνει από πάνω το ρύζι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Μετά μπαίνει το καπάκι, τυλιγμένο με μια πετσέτα τσαγιού, και ο ατμός κάνει τη δουλειά.",
+      "text_markdown": "Μετά μπαίνει το καπάκι, τυλιγμένο με μια πετσέτα τσαγιού, και ο ατμός κάνει τη δουλειά.",
+      "tts": {
+        "text": "Μετά μπαίνει το καπάκι, τυλιγμένο με μια πετσέτα τσαγιού, και ο ατμός κάνει τη δουλειά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ύστερα από μία ώρα, εκείνο το κάτω στρώμα είναι χρυσό και τραγανό.",
+      "text_markdown": "Ύστερα από μία ώρα, εκείνο το κάτω στρώμα είναι χρυσό και τραγανό.",
+      "tts": {
+        "text": "Ύστερα από μία ώρα, εκείνο το κάτω στρώμα είναι χρυσό και τραγανό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ταχντίγκ είναι ιερό.",
+      "text_markdown": "Το ταχντίγκ είναι ιερό.",
+      "tts": {
+        "text": "Το ταχντίγκ είναι ιερό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι οικογένειες μαλώνουν γι' αυτό.",
+      "text_markdown": "Οι οικογένειες μαλώνουν γι' αυτό.",
+      "tts": {
+        "text": "Οι οικογένειες μαλώνουν γι' αυτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στην ιρανική τηλεόραση υπάρχουν ολόκληρες εκπομπές για το ποιος φτιάχνει το καλύτερο.",
+      "text_markdown": "Στην ιρανική τηλεόραση υπάρχουν ολόκληρες εκπομπές για το ποιος φτιάχνει το καλύτερο.",
+      "tts": {
+        "text": "Στην ιρανική τηλεόραση υπάρχουν ολόκληρες εκπομπές για το ποιος φτιάχνει το καλύτερο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ένα τέλειο ταχντίγκ βγαίνει από το τηγάνι σαν ένας όμορφος στρογγυλός δίσκος.",
+      "text_markdown": "Ένα τέλειο ταχντίγκ βγαίνει από το τηγάνι σαν ένας όμορφος στρογγυλός δίσκος.",
+      "tts": {
+        "text": "Ένα τέλειο ταχντίγκ βγαίνει από το τηγάνι σαν ένας όμορφος στρογγυλός δίσκος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και μετά έρχεται το ψωμί.",
+      "text_markdown": "Και μετά έρχεται το ψωμί.",
+      "tts": {
+        "text": "Και μετά έρχεται το ψωμί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το πιο διάσημο είναι το σανγκάκ.",
+      "text_markdown": "Το πιο διάσημο είναι το σανγκάκ.",
+      "tts": {
+        "text": "Το πιο διάσημο είναι το σανγκάκ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το σανγκάκ ψήνεται πάνω σε στρώμα από καυτές πετρούλες. Αυτή η μέθοδος είναι πέντε χιλιάδων ετών.",
+      "text_markdown": "Το σανγκάκ ψήνεται πάνω σε στρώμα από καυτές πετρούλες. Αυτή η μέθοδος είναι πέντε χιλιάδων ετών.",
+      "tts": {
+        "text": "Το σανγκάκ ψήνεται πάνω σε στρώμα από καυτές πετρούλες. Αυτή η μέθοδος είναι πέντε χιλιάδων ετών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι πετρούλες βγαίνουν ακόμα μαζί με το ψωμί.",
+      "text_markdown": "Οι πετρούλες βγαίνουν ακόμα μαζί με το ψωμί.",
+      "tts": {
+        "text": "Οι πετρούλες βγαίνουν ακόμα μαζί με το ψωμί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Τις βγάζεις στο τραπέζι.",
+      "text_markdown": "Τις βγάζεις στο τραπέζι.",
+      "tts": {
+        "text": "Τις βγάζεις στο τραπέζι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άλλα ψωμιά είναι το μπαρμπαρί, το λαβάς και το ταφτούν.",
+      "text_markdown": "Άλλα ψωμιά είναι το μπαρμπαρί, το λαβάς και το ταφτούν.",
+      "tts": {
+        "text": "Άλλα ψωμιά είναι το μπαρμπαρί, το λαβάς και το ταφτούν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ένα περσικό πρωινό έχει ψωμί, τσάι και ένα μαλακό λευκό τυρί.",
+      "text_markdown": "Ένα περσικό πρωινό έχει ψωμί, τσάι και ένα μαλακό λευκό τυρί.",
+      "tts": {
+        "text": "Ένα περσικό πρωινό έχει ψωμί, τσάι και ένα μαλακό λευκό τυρί.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 4 — Το κεμπάπ και το υπομονετικό μαγειρευτό",
+      "text_markdown": "Κεφάλαιο 4 — Το κεμπάπ και το υπομονετικό μαγειρευτό"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η λέξη κεμπάπ είναι περσική.",
+      "text_markdown": "Η λέξη κεμπάπ είναι περσική.",
+      "tts": {
+        "text": "Η λέξη κεμπάπ είναι περσική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Στα περσικά είναι καμπάμπ, και σημαίνει κρέας ψημένο πάνω στη φωτιά.",
+      "text_markdown": "Στα περσικά είναι καμπάμπ, και σημαίνει κρέας ψημένο πάνω στη φωτιά.",
+      "tts": {
+        "text": "Στα περσικά είναι καμπάμπ, και σημαίνει κρέας ψημένο πάνω στη φωτιά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι Πέρσες ψήνουν αρνί σε μακριές πλατιές σούβλες εδώ και χιλιάδες χρόνια.",
+      "text_markdown": "Οι Πέρσες ψήνουν αρνί σε μακριές πλατιές σούβλες εδώ και χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Οι Πέρσες ψήνουν αρνί σε μακριές πλατιές σούβλες εδώ και χιλιάδες χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πιο δημοφιλές κεμπάπ σήμερα είναι το κουμπιντέ.",
+      "text_markdown": "Το πιο δημοφιλές κεμπάπ σήμερα είναι το κουμπιντέ.",
+      "tts": {
+        "text": "Το πιο δημοφιλές κεμπάπ σήμερα είναι το κουμπιντέ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι κιμάς από αρνί ή μοσχάρι, ανακατεμένος με κρεμμύδι και αλάτι, πιεσμένος πάνω σε φαρδιά επίπεδη σούβλα και ψημένος στα κάρβουνα.",
+      "text_markdown": "Είναι κιμάς από αρνί ή μοσχάρι, ανακατεμένος με κρεμμύδι και αλάτι, πιεσμένος πάνω σε φαρδιά επίπεδη σούβλα και ψημένος στα κάρβουνα.",
+      "tts": {
+        "text": "Είναι κιμάς από αρνί ή μοσχάρι, ανακατεμένος με κρεμμύδι και αλάτι, πιεσμένος πάνω σε φαρδιά επίπεδη σούβλα και ψημένος στα κάρβουνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μοιάζει αρχαίο.",
+      "text_markdown": "Μοιάζει αρχαίο.",
+      "tts": {
+        "text": "Μοιάζει αρχαίο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Δεν είναι.",
+      "text_markdown": "Δεν είναι.",
+      "tts": {
+        "text": "Δεν είναι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η μηχανή του κιμά έφτασε στο Ιράν μόνο στα τέλη του δέκατου ένατου αιώνα.",
+      "text_markdown": "Η μηχανή του κιμά έφτασε στο Ιράν μόνο στα τέλη του δέκατου ένατου αιώνα.",
+      "tts": {
+        "text": "Η μηχανή του κιμά έφτασε στο Ιράν μόνο στα τέλη του δέκατου ένατου αιώνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Το κουμπιντέ, το πιο περσικό από τα κεμπάπ, είναι μόλις λίγο πάνω από εκατό ετών.",
+      "text_markdown": "Το κουμπιντέ, το πιο περσικό από τα κεμπάπ, είναι μόλις λίγο πάνω από εκατό ετών.",
+      "tts": {
+        "text": "Το κουμπιντέ, το πιο περσικό από τα κεμπάπ, είναι μόλις λίγο πάνω από εκατό ετών.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα παλιότερα κεμπάπ γίνονται από κομμένο κρέας.",
+      "text_markdown": "Τα παλιότερα κεμπάπ γίνονται από κομμένο κρέας.",
+      "tts": {
+        "text": "Τα παλιότερα κεμπάπ γίνονται από κομμένο κρέας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το τζουτζέ είναι κοτόπουλο με σαφράν και γιαούρτι.",
+      "text_markdown": "Το τζουτζέ είναι κοτόπουλο με σαφράν και γιαούρτι.",
+      "tts": {
+        "text": "Το τζουτζέ είναι κοτόπουλο με σαφράν και γιαούρτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το μπαργκ είναι λεπτό φιλέτο αρνιού.",
+      "text_markdown": "Το μπαργκ είναι λεπτό φιλέτο αρνιού.",
+      "tts": {
+        "text": "Το μπαργκ είναι λεπτό φιλέτο αρνιού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και τα δύο σερβίρονται πάνω σε στρώμα από ρύζι με σαφράν και με μια ψητή ντομάτα.",
+      "text_markdown": "Και τα δύο σερβίρονται πάνω σε στρώμα από ρύζι με σαφράν και με μια ψητή ντομάτα.",
+      "tts": {
+        "text": "Και τα δύο σερβίρονται πάνω σε στρώμα από ρύζι με σαφράν και με μια ψητή ντομάτα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τώρα γνώρισε το υπομονετικό φαγητό, το χορές, το περσικό μαγειρευτό.",
+      "text_markdown": "Τώρα γνώρισε το υπομονετικό φαγητό, το χορές, το περσικό μαγειρευτό.",
+      "tts": {
+        "text": "Τώρα γνώρισε το υπομονετικό φαγητό, το χορές, το περσικό μαγειρευτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ένα χορές σιγομαγειρεύεται για ώρες.",
+      "text_markdown": "Ένα χορές σιγομαγειρεύεται για ώρες.",
+      "tts": {
+        "text": "Ένα χορές σιγομαγειρεύεται για ώρες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πιο διάσημο είναι το φεσεντζάν.",
+      "text_markdown": "Το πιο διάσημο είναι το φεσεντζάν.",
+      "tts": {
+        "text": "Το πιο διάσημο είναι το φεσεντζάν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι κοτόπουλο ή πάπια, που σιγομαγειρεύονται σε πηχτή σάλτσα από τριμμένο καρύδι και χυμό ροδιού.",
+      "text_markdown": "Είναι κοτόπουλο ή πάπια, που σιγομαγειρεύονται σε πηχτή σάλτσα από τριμμένο καρύδι και χυμό ροδιού.",
+      "tts": {
+        "text": "Είναι κοτόπουλο ή πάπια, που σιγομαγειρεύονται σε πηχτή σάλτσα από τριμμένο καρύδι και χυμό ροδιού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτή η συνταγή είναι μία από τις αρχαιότερες συνταγές για μαγειρευτό που έχουν βρεθεί.",
+      "text_markdown": "Αυτή η συνταγή είναι μία από τις αρχαιότερες συνταγές για μαγειρευτό που έχουν βρεθεί.",
+      "tts": {
+        "text": "Αυτή η συνταγή είναι μία από τις αρχαιότερες συνταγές για μαγειρευτό που έχουν βρεθεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μια εκδοχή της είναι γραμμένη σε σφηνοειδείς πινακίδες από τα ερείπια της Περσέπολης.",
+      "text_markdown": "Μια εκδοχή της είναι γραμμένη σε σφηνοειδείς πινακίδες από τα ερείπια της Περσέπολης.",
+      "tts": {
+        "text": "Μια εκδοχή της είναι γραμμένη σε σφηνοειδείς πινακίδες από τα ερείπια της Περσέπολης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Αυτό την κάνει πάνω από δύο χιλιάδες πεντακόσια ετών.",
+      "text_markdown": "Αυτό την κάνει πάνω από δύο χιλιάδες πεντακόσια ετών.",
+      "tts": {
+        "text": "Αυτό την κάνει πάνω από δύο χιλιάδες πεντακόσια ετών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Οι άνθρωποι ακόμα τη μαγειρεύουν με τον ίδιο τρόπο.",
+      "text_markdown": "Οι άνθρωποι ακόμα τη μαγειρεύουν με τον ίδιο τρόπο.",
+      "tts": {
+        "text": "Οι άνθρωποι ακόμα τη μαγειρεύουν με τον ίδιο τρόπο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα άλλο κλασικό είναι το γκορμέ σαμπζί. Έχει αρνί, κόκκινα φασόλια και ένα βουνό από φρέσκα μυρωδικά. Όλα σιγομαγειρεύονται με αποξηραμένο μοσχολέμονο.",
+      "text_markdown": "Ένα άλλο κλασικό είναι το γκορμέ σαμπζί. Έχει αρνί, κόκκινα φασόλια και ένα βουνό από φρέσκα μυρωδικά. Όλα σιγομαγειρεύονται με αποξηραμένο μοσχολέμονο.",
+      "tts": {
+        "text": "Ένα άλλο κλασικό είναι το γκορμέ σαμπζί. Έχει αρνί, κόκκινα φασόλια και ένα βουνό από φρέσκα μυρωδικά. Όλα σιγομαγειρεύονται με αποξηραμένο μοσχολέμονο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Πολλοί Ιρανοί το λένε εθνικό πιάτο.",
+      "text_markdown": "Πολλοί Ιρανοί το λένε εθνικό πιάτο.",
+      "tts": {
+        "text": "Πολλοί Ιρανοί το λένε εθνικό πιάτο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 5 — Γιαούρτι, τσάι και τα πιο παλιά γλυκά",
+      "text_markdown": "Κεφάλαιο 5 — Γιαούρτι, τσάι και τα πιο παλιά γλυκά"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι Πέρσες τρώνε γιαούρτι με τα πάντα.",
+      "text_markdown": "Οι Πέρσες τρώνε γιαούρτι με τα πάντα.",
+      "tts": {
+        "text": "Οι Πέρσες τρώνε γιαούρτι με τα πάντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το απλό γιαούρτι λέγεται μαστ.",
+      "text_markdown": "Το απλό γιαούρτι λέγεται μαστ.",
+      "tts": {
+        "text": "Το απλό γιαούρτι λέγεται μαστ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το μαστ με αγγούρι και ξερό δυόσμο λέγεται μαστ ο χιάρ.",
+      "text_markdown": "Το μαστ με αγγούρι και ξερό δυόσμο λέγεται μαστ ο χιάρ.",
+      "tts": {
+        "text": "Το μαστ με αγγούρι και ξερό δυόσμο λέγεται μαστ ο χιάρ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ένα αλμυρό ποτό από γιαούρτι με δυόσμο λέγεται ντουγ.",
+      "text_markdown": "Ένα αλμυρό ποτό από γιαούρτι με δυόσμο λέγεται ντουγ.",
+      "tts": {
+        "text": "Ένα αλμυρό ποτό από γιαούρτι με δυόσμο λέγεται ντουγ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Υπάρχει και το κασκ, ένας δυνατός αποξηραμένος ορός γάλακτος, που μπαίνει στις σούπες.",
+      "text_markdown": "Υπάρχει και το κασκ, ένας δυνατός αποξηραμένος ορός γάλακτος, που μπαίνει στις σούπες.",
+      "tts": {
+        "text": "Υπάρχει και το κασκ, ένας δυνατός αποξηραμένος ορός γάλακτος, που μπαίνει στις σούπες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και μετά έρχεται το τσάι.",
+      "text_markdown": "Και μετά έρχεται το τσάι.",
+      "tts": {
+        "text": "Και μετά έρχεται το τσάι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Πέρσες το πίνουν πρωί, μεσημέρι και βράδυ, δυνατό, βρασμένο σε ψηλή τσαγιέρα πάνω σε σαμοβάρι.",
+      "text_markdown": "Οι Πέρσες το πίνουν πρωί, μεσημέρι και βράδυ, δυνατό, βρασμένο σε ψηλή τσαγιέρα πάνω σε σαμοβάρι.",
+      "tts": {
+        "text": "Οι Πέρσες το πίνουν πρωί, μεσημέρι και βράδυ, δυνατό, βρασμένο σε ψηλή τσαγιέρα πάνω σε σαμοβάρι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το τσάι είναι τόσο κεντρικό, που πολλοί ξαφνιάζονται όταν μαθαίνουν ότι ήρθε αργά.",
+      "text_markdown": "Το τσάι είναι τόσο κεντρικό, που πολλοί ξαφνιάζονται όταν μαθαίνουν ότι ήρθε αργά.",
+      "tts": {
+        "text": "Το τσάι είναι τόσο κεντρικό, που πολλοί ξαφνιάζονται όταν μαθαίνουν ότι ήρθε αργά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στο μεγαλύτερο μέρος της περσικής ιστορίας, το ποτό ήταν ο καφές.",
+      "text_markdown": "Στο μεγαλύτερο μέρος της περσικής ιστορίας, το ποτό ήταν ο καφές.",
+      "tts": {
+        "text": "Στο μεγαλύτερο μέρος της περσικής ιστορίας, το ποτό ήταν ο καφές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το τσάι κυριάρχησε μόνο στα τέλη του δέκατου ένατου αιώνα.",
+      "text_markdown": "Το τσάι κυριάρχησε μόνο στα τέλη του δέκατου ένατου αιώνα.",
+      "tts": {
+        "text": "Το τσάι κυριάρχησε μόνο στα τέλη του δέκατου ένατου αιώνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Σήμερα το Ιράν είναι από τις χώρες που πίνουν το περισσότερο τσάι στον κόσμο.",
+      "text_markdown": "Σήμερα το Ιράν είναι από τις χώρες που πίνουν το περισσότερο τσάι στον κόσμο.",
+      "tts": {
+        "text": "Σήμερα το Ιράν είναι από τις χώρες που πίνουν το περισσότερο τσάι στον κόσμο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει και ένα μικρό τελετουργικό.",
+      "text_markdown": "Υπάρχει και ένα μικρό τελετουργικό.",
+      "tts": {
+        "text": "Υπάρχει και ένα μικρό τελετουργικό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κρατάς έναν κύβο ζάχαρης ανάμεσα στα δόντια σου.",
+      "text_markdown": "Κρατάς έναν κύβο ζάχαρης ανάμεσα στα δόντια σου.",
+      "tts": {
+        "text": "Κρατάς έναν κύβο ζάχαρης ανάμεσα στα δόντια σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ρουφάς το τσάι μέσα από τον κύβο.",
+      "text_markdown": "Ρουφάς το τσάι μέσα από τον κύβο.",
+      "tts": {
+        "text": "Ρουφάς το τσάι μέσα από τον κύβο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο κύβος λιώνει λίγο.",
+      "text_markdown": "Ο κύβος λιώνει λίγο.",
+      "tts": {
+        "text": "Ο κύβος λιώνει λίγο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το τσάι κατεβαίνει ζεστό, σκούρο και γλυκό.",
+      "text_markdown": "Το τσάι κατεβαίνει ζεστό, σκούρο και γλυκό.",
+      "tts": {
+        "text": "Το τσάι κατεβαίνει ζεστό, σκούρο και γλυκό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τώρα τα γλυκά.",
+      "text_markdown": "Τώρα τα γλυκά.",
+      "tts": {
+        "text": "Τώρα τα γλυκά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τα περσικά γλυκά είναι παλιά, πλούσια και μικρά.",
+      "text_markdown": "Τα περσικά γλυκά είναι παλιά, πλούσια και μικρά.",
+      "tts": {
+        "text": "Τα περσικά γλυκά είναι παλιά, πλούσια και μικρά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πιο παλιό είναι το φαλουντέ.",
+      "text_markdown": "Το πιο παλιό είναι το φαλουντέ.",
+      "tts": {
+        "text": "Το πιο παλιό είναι το φαλουντέ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι λεπτές χυλοπίτες ρυζιού, παγωμένες σε σιρόπι από ροδόνερο, και σερβίρονται με χυμό από μοσχολέμονο και φιστίκι.",
+      "text_markdown": "Είναι λεπτές χυλοπίτες ρυζιού, παγωμένες σε σιρόπι από ροδόνερο, και σερβίρονται με χυμό από μοσχολέμονο και φιστίκι.",
+      "tts": {
+        "text": "Είναι λεπτές χυλοπίτες ρυζιού, παγωμένες σε σιρόπι από ροδόνερο, και σερβίρονται με χυμό από μοσχολέμονο και φιστίκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πέρσες συγγραφείς το περιγράφουν από περίπου τετρακόσια χρόνια πριν από τον Χριστό.",
+      "text_markdown": "Πέρσες συγγραφείς το περιγράφουν από περίπου τετρακόσια χρόνια πριν από τον Χριστό.",
+      "tts": {
+        "text": "Πέρσες συγγραφείς το περιγράφουν από περίπου τετρακόσια χρόνια πριν από τον Χριστό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Αυτό κάνει το φαλουντέ ένα από τα αρχαιότερα παγωμένα επιδόρπια στον κόσμο.",
+      "text_markdown": "Αυτό κάνει το φαλουντέ ένα από τα αρχαιότερα παγωμένα επιδόρπια στον κόσμο.",
+      "tts": {
+        "text": "Αυτό κάνει το φαλουντέ ένα από τα αρχαιότερα παγωμένα επιδόρπια στον κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Είναι πάνω από δύο χιλιάδες χρόνια παλιότερο από το παγωτό.",
+      "text_markdown": "Είναι πάνω από δύο χιλιάδες χρόνια παλιότερο από το παγωτό.",
+      "tts": {
+        "text": "Είναι πάνω από δύο χιλιάδες χρόνια παλιότερο από το παγωτό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άλλο κλασικό είναι ο μπακλαβάς από το Ταμπρίζ, πιο ελαφρύς από τον τουρκικό, με καρύδι και ροδόνερο.",
+      "text_markdown": "Άλλο κλασικό είναι ο μπακλαβάς από το Ταμπρίζ, πιο ελαφρύς από τον τουρκικό, με καρύδι και ροδόνερο.",
+      "tts": {
+        "text": "Άλλο κλασικό είναι ο μπακλαβάς από το Ταμπρίζ, πιο ελαφρύς από τον τουρκικό, με καρύδι και ροδόνερο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο χαλβάς, μια πυκνή πάστα από σουσάμι ή σαφράν.",
+      "text_markdown": "Ο χαλβάς, μια πυκνή πάστα από σουσάμι ή σαφράν.",
+      "tts": {
+        "text": "Ο χαλβάς, μια πυκνή πάστα από σουσάμι ή σαφράν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το γκαζ από το Ισφαχάν, ένα μαλακό νουγκά με φιστίκι.",
+      "text_markdown": "Το γκαζ από το Ισφαχάν, ένα μαλακό νουγκά με φιστίκι.",
+      "tts": {
+        "text": "Το γκαζ από το Ισφαχάν, ένα μαλακό νουγκά με φιστίκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το σοχάν, μια τραγανή χρυσή καραμέλα με σαφράν.",
+      "text_markdown": "Το σοχάν, μια τραγανή χρυσή καραμέλα με σαφράν.",
+      "tts": {
+        "text": "Το σοχάν, μια τραγανή χρυσή καραμέλα με σαφράν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το νοχοτσί από το Κομ, ένα μικρό μπισκότο από ρεβίθι.",
+      "text_markdown": "Το νοχοτσί από το Κομ, ένα μικρό μπισκότο από ρεβίθι.",
+      "tts": {
+        "text": "Το νοχοτσί από το Κομ, ένα μικρό μπισκότο από ρεβίθι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα μικρό πιάτο με γλυκά, ένα φλιτζάνι τσάι, μια αργή κουβέντα.",
+      "text_markdown": "Ένα μικρό πιάτο με γλυκά, ένα φλιτζάνι τσάι, μια αργή κουβέντα.",
+      "tts": {
+        "text": "Ένα μικρό πιάτο με γλυκά, ένα φλιτζάνι τσάι, μια αργή κουβέντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αυτό είναι ένα περσικό απόγευμα.",
+      "text_markdown": "Αυτό είναι ένα περσικό απόγευμα.",
+      "tts": {
+        "text": "Αυτό είναι ένα περσικό απόγευμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 6 — Όσα έδωσε η Περσία, όσα πήρε",
+      "text_markdown": "Κεφάλαιο 6 — Όσα έδωσε η Περσία, όσα πήρε"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η Περσία βρισκόταν στη μέση του παλιού κόσμου.",
+      "text_markdown": "Η Περσία βρισκόταν στη μέση του παλιού κόσμου.",
+      "tts": {
+        "text": "Η Περσία βρισκόταν στη μέση του παλιού κόσμου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Καραβάνια την περνούσαν.",
+      "text_markdown": "Καραβάνια την περνούσαν.",
+      "tts": {
+        "text": "Καραβάνια την περνούσαν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πάνω της ανέβαιναν και έπεφταν αυτοκρατορίες.",
+      "text_markdown": "Πάνω της ανέβαιναν και έπεφταν αυτοκρατορίες.",
+      "tts": {
+        "text": "Πάνω της ανέβαιναν και έπεφταν αυτοκρατορίες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και το φαγητό την περνούσε και προς τις δύο κατευθύνσεις.",
+      "text_markdown": "Και το φαγητό την περνούσε και προς τις δύο κατευθύνσεις.",
+      "tts": {
+        "text": "Και το φαγητό την περνούσε και προς τις δύο κατευθύνσεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοίτα τις λέξεις.",
+      "text_markdown": "Κοίτα τις λέξεις.",
+      "tts": {
+        "text": "Κοίτα τις λέξεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τα αγγλικά πήραν δεκάδες λέξεις για το φαγητό από τα περσικά.",
+      "text_markdown": "Τα αγγλικά πήραν δεκάδες λέξεις για το φαγητό από τα περσικά.",
+      "tts": {
+        "text": "Τα αγγλικά πήραν δεκάδες λέξεις για το φαγητό από τα περσικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι λέξεις σούγκαρ, κάντι, λέμον, όραντζ, τζάσμιν, λάιλακ, τούλιπ, κιόσκι, σέρμπετ και παράνταϊς έχουν όλες περσική προέλευση.",
+      "text_markdown": "Οι λέξεις σούγκαρ, κάντι, λέμον, όραντζ, τζάσμιν, λάιλακ, τούλιπ, κιόσκι, σέρμπετ και παράνταϊς έχουν όλες περσική προέλευση.",
+      "tts": {
+        "text": "Οι λέξεις σούγκαρ, κάντι, λέμον, όραντζ, τζάσμιν, λάιλακ, τούλιπ, κιόσκι, σέρμπετ και παράνταϊς έχουν όλες περσική προέλευση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το ίδιο και η αγγλική λέξη τσέκμεϊτ, από το σαχ ματ, που σημαίνει ο βασιλιάς είναι αβοήθητος. Η Περσία έβαλε λέξεις στο στόμα του μισού κόσμου.",
+      "text_markdown": "Το ίδιο και η αγγλική λέξη τσέκμεϊτ, από το σαχ ματ, που σημαίνει ο βασιλιάς είναι αβοήθητος. Η Περσία έβαλε λέξεις στο στόμα του μισού κόσμου.",
+      "tts": {
+        "text": "Το ίδιο και η αγγλική λέξη τσέκμεϊτ, από το σαχ ματ, που σημαίνει ο βασιλιάς είναι αβοήθητος. Η Περσία έβαλε λέξεις στο στόμα του μισού κόσμου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο περσικός τρόπος μαγειρέματος του ρυζιού πήγε ανατολικά.",
+      "text_markdown": "Ο περσικός τρόπος μαγειρέματος του ρυζιού πήγε ανατολικά.",
+      "tts": {
+        "text": "Ο περσικός τρόπος μαγειρέματος του ρυζιού πήγε ανατολικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι βασιλιάδες των Μουγκάλ στην Ινδία αγαπούσαν το περσικό φαγητό και έφεραν περσικούς μάγειρες στην αυλή τους.",
+      "text_markdown": "Οι βασιλιάδες των Μουγκάλ στην Ινδία αγαπούσαν το περσικό φαγητό και έφεραν περσικούς μάγειρες στην αυλή τους.",
+      "tts": {
+        "text": "Οι βασιλιάδες των Μουγκάλ στην Ινδία αγαπούσαν το περσικό φαγητό και έφεραν περσικούς μάγειρες στην αυλή τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Εκείνοι οι μάγειρες έφτιαξαν το μπιριανί.",
+      "text_markdown": "Εκείνοι οι μάγειρες έφτιαξαν το μπιριανί.",
+      "tts": {
+        "text": "Εκείνοι οι μάγειρες έφτιαξαν το μπιριανί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το πιλάφι, αυτό το αρωματισμένο μακρύκοκκο ρύζι από τη Μεσόγειο ως τις στέπες της Κεντρικής Ασίας, ριζώνει στην περσική παράδοση του ρυζιού.",
+      "text_markdown": "Το πιλάφι, αυτό το αρωματισμένο μακρύκοκκο ρύζι από τη Μεσόγειο ως τις στέπες της Κεντρικής Ασίας, ριζώνει στην περσική παράδοση του ρυζιού.",
+      "tts": {
+        "text": "Το πιλάφι, αυτό το αρωματισμένο μακρύκοκκο ρύζι από τη Μεσόγειο ως τις στέπες της Κεντρικής Ασίας, ριζώνει στην περσική παράδοση του ρυζιού.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα περσικά φρούτα πήγαν δυτικά.",
+      "text_markdown": "Τα περσικά φρούτα πήγαν δυτικά.",
+      "tts": {
+        "text": "Τα περσικά φρούτα πήγαν δυτικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Ρωμαίοι καλλιέργησαν το ροδάκινο στην Ιταλία, επειδή το πήραν από την Περσία.",
+      "text_markdown": "Οι Ρωμαίοι καλλιέργησαν το ροδάκινο στην Ιταλία, επειδή το πήραν από την Περσία.",
+      "tts": {
+        "text": "Οι Ρωμαίοι καλλιέργησαν το ροδάκινο στην Ιταλία, επειδή το πήραν από την Περσία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το σπανάκι έφτασε στην Ευρώπη μέσα από την Ισπανία, το έφεραν έμποροι από τον περσικό κόσμο.",
+      "text_markdown": "Το σπανάκι έφτασε στην Ευρώπη μέσα από την Ισπανία, το έφεραν έμποροι από τον περσικό κόσμο.",
+      "tts": {
+        "text": "Το σπανάκι έφτασε στην Ευρώπη μέσα από την Ισπανία, το έφεραν έμποροι από τον περσικό κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι τουλίπες, σύμβολο της Ολλανδίας, καλλιεργήθηκαν πρώτα στην Περσία και στην Τουρκία, πριν φτάσουν ποτέ στην Ολλανδία.",
+      "text_markdown": "Οι τουλίπες, σύμβολο της Ολλανδίας, καλλιεργήθηκαν πρώτα στην Περσία και στην Τουρκία, πριν φτάσουν ποτέ στην Ολλανδία.",
+      "tts": {
+        "text": "Οι τουλίπες, σύμβολο της Ολλανδίας, καλλιεργήθηκαν πρώτα στην Περσία και στην Τουρκία, πριν φτάσουν ποτέ στην Ολλανδία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και η Περσία πήρε πράγματα από άλλους.",
+      "text_markdown": "Και η Περσία πήρε πράγματα από άλλους.",
+      "tts": {
+        "text": "Και η Περσία πήρε πράγματα από άλλους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Μογγόλοι, που εισέβαλαν τον δέκατο τρίτο αιώνα, έφεραν πιο δυνατή αγάπη για το ψητό και το κρεατικό στη σχάρα.",
+      "text_markdown": "Οι Μογγόλοι, που εισέβαλαν τον δέκατο τρίτο αιώνα, έφεραν πιο δυνατή αγάπη για το ψητό και το κρεατικό στη σχάρα.",
+      "tts": {
+        "text": "Οι Μογγόλοι, που εισέβαλαν τον δέκατο τρίτο αιώνα, έφεραν πιο δυνατή αγάπη για το ψητό και το κρεατικό στη σχάρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η αραβική γεωργία έφερε ζαχαροκάλαμο, εσπεριδοειδή και ρύζι από τον νότο και την ανατολή.",
+      "text_markdown": "Η αραβική γεωργία έφερε ζαχαροκάλαμο, εσπεριδοειδή και ρύζι από τον νότο και την ανατολή.",
+      "tts": {
+        "text": "Η αραβική γεωργία έφερε ζαχαροκάλαμο, εσπεριδοειδή και ρύζι από τον νότο και την ανατολή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το σαμοβάρι ήρθε από τον βορρά, από τη Ρωσία, τον δέκατο όγδοο αιώνα.",
+      "text_markdown": "Το σαμοβάρι ήρθε από τον βορρά, από τη Ρωσία, τον δέκατο όγδοο αιώνα.",
+      "tts": {
+        "text": "Το σαμοβάρι ήρθε από τον βορρά, από τη Ρωσία, τον δέκατο όγδοο αιώνα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο Έλληνας ιστορικός Ηρόδοτος, που έγραφε πριν από δύο χιλιάδες πεντακόσια χρόνια, είπε ότι οι Πέρσες γιόρταζαν τα γενέθλιά τους πιο πλούσια από κάθε άλλη μέρα του χρόνου.",
+      "text_markdown": "Ο Έλληνας ιστορικός Ηρόδοτος, που έγραφε πριν από δύο χιλιάδες πεντακόσια χρόνια, είπε ότι οι Πέρσες γιόρταζαν τα γενέθλιά τους πιο πλούσια από κάθε άλλη μέρα του χρόνου.",
+      "tts": {
+        "text": "Ο Έλληνας ιστορικός Ηρόδοτος, που έγραφε πριν από δύο χιλιάδες πεντακόσια χρόνια, είπε ότι οι Πέρσες γιόρταζαν τα γενέθλιά τους πιο πλούσια από κάθε άλλη μέρα του χρόνου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Εκείνη τη μέρα, έγραψε, το τραπέζι στρώνεται πιο πλούσια από το συνηθισμένο.",
+      "text_markdown": "Εκείνη τη μέρα, έγραψε, το τραπέζι στρώνεται πιο πλούσια από το συνηθισμένο.",
+      "tts": {
+        "text": "Εκείνη τη μέρα, έγραψε, το τραπέζι στρώνεται πιο πλούσια από το συνηθισμένο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μερικά πράγματα δεν άλλαξαν.",
+      "text_markdown": "Μερικά πράγματα δεν άλλαξαν.",
+      "tts": {
+        "text": "Μερικά πράγματα δεν άλλαξαν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 7 — Στο περσικό τραπέζι",
+      "text_markdown": "Κεφάλαιο 7 — Στο περσικό τραπέζι"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τώρα καθόμαστε.",
+      "text_markdown": "Τώρα καθόμαστε.",
+      "tts": {
+        "text": "Τώρα καθόμαστε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το περσικό έτος αρχίζει στην εαρινή ισημερία, γύρω στην εικοστή πρώτη Μαρτίου.",
+      "text_markdown": "Το περσικό έτος αρχίζει στην εαρινή ισημερία, γύρω στην εικοστή πρώτη Μαρτίου.",
+      "tts": {
+        "text": "Το περσικό έτος αρχίζει στην εαρινή ισημερία, γύρω στην εικοστή πρώτη Μαρτίου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η γιορτή λέγεται Νοουρούζ, η Νέα Μέρα.",
+      "text_markdown": "Η γιορτή λέγεται Νοουρούζ, η Νέα Μέρα.",
+      "tts": {
+        "text": "Η γιορτή λέγεται Νοουρούζ, η Νέα Μέρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι η σημαντικότερη γιορτή του χρόνου.",
+      "text_markdown": "Είναι η σημαντικότερη γιορτή του χρόνου.",
+      "tts": {
+        "text": "Είναι η σημαντικότερη γιορτή του χρόνου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε οικογένεια στρώνει ένα ειδικό τραπέζι που λέγεται χαφτ σιν.",
+      "text_markdown": "Κάθε οικογένεια στρώνει ένα ειδικό τραπέζι που λέγεται χαφτ σιν.",
+      "tts": {
+        "text": "Κάθε οικογένεια στρώνει ένα ειδικό τραπέζι που λέγεται χαφτ σιν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Χαφτ σημαίνει επτά.",
+      "text_markdown": "Χαφτ σημαίνει επτά.",
+      "tts": {
+        "text": "Χαφτ σημαίνει επτά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Σιν είναι το γράμμα σίγμα. Το τραπέζι κρατά επτά πράγματα που αρχίζουν από σίγμα στα περσικά.",
+      "text_markdown": "Σιν είναι το γράμμα σίγμα. Το τραπέζι κρατά επτά πράγματα που αρχίζουν από σίγμα στα περσικά.",
+      "tts": {
+        "text": "Σιν είναι το γράμμα σίγμα. Το τραπέζι κρατά επτά πράγματα που αρχίζουν από σίγμα στα περσικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Υπάρχει το σιμπ, ένα μήλο.",
+      "text_markdown": "Υπάρχει το σιμπ, ένα μήλο.",
+      "tts": {
+        "text": "Υπάρχει το σιμπ, ένα μήλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το σεκκέ, ένα νόμισμα.",
+      "text_markdown": "Το σεκκέ, ένα νόμισμα.",
+      "tts": {
+        "text": "Το σεκκέ, ένα νόμισμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Το σονμπόλ, ένα άνθος υάκινθου.",
+      "text_markdown": "Το σονμπόλ, ένα άνθος υάκινθου.",
+      "tts": {
+        "text": "Το σονμπόλ, ένα άνθος υάκινθου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Το σαμανού, μια γλυκιά κρέμα από σιτάρι.",
+      "text_markdown": "Το σαμανού, μια γλυκιά κρέμα από σιτάρι.",
+      "tts": {
+        "text": "Το σαμανού, μια γλυκιά κρέμα από σιτάρι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Το σεντζέντ, ο αποξηραμένος καρπός της αγριελιάς.",
+      "text_markdown": "Το σεντζέντ, ο αποξηραμένος καρπός της αγριελιάς.",
+      "tts": {
+        "text": "Το σεντζέντ, ο αποξηραμένος καρπός της αγριελιάς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Το σομάγ, δηλαδή το σουμάκ.",
+      "text_markdown": "Το σομάγ, δηλαδή το σουμάκ.",
+      "tts": {
+        "text": "Το σομάγ, δηλαδή το σουμάκ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Το σερκέ, δηλαδή το ξίδι.",
+      "text_markdown": "Το σερκέ, δηλαδή το ξίδι.",
+      "tts": {
+        "text": "Το σερκέ, δηλαδή το ξίδι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Το καθένα συμβολίζει κάτι. Υγεία, πλούτο, ομορφιά, υπομονή, αγάπη, τον ήλιο που ανεβαίνει, το πέρασμα του χρόνου.",
+      "text_markdown": "Το καθένα συμβολίζει κάτι. Υγεία, πλούτο, ομορφιά, υπομονή, αγάπη, τον ήλιο που ανεβαίνει, το πέρασμα του χρόνου.",
+      "tts": {
+        "text": "Το καθένα συμβολίζει κάτι. Υγεία, πλούτο, ομορφιά, υπομονή, αγάπη, τον ήλιο που ανεβαίνει, το πέρασμα του χρόνου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το φαγητό της Πρωτοχρονιάς είναι σαμπζί πόλο με μαχί.",
+      "text_markdown": "Το φαγητό της Πρωτοχρονιάς είναι σαμπζί πόλο με μαχί.",
+      "tts": {
+        "text": "Το φαγητό της Πρωτοχρονιάς είναι σαμπζί πόλο με μαχί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ρύζι καταπράσινο από ψιλοκομμένα φρέσκα μυρωδικά, και σερβίρεται με λευκό ψάρι.",
+      "text_markdown": "Είναι ρύζι καταπράσινο από ψιλοκομμένα φρέσκα μυρωδικά, και σερβίρεται με λευκό ψάρι.",
+      "tts": {
+        "text": "Είναι ρύζι καταπράσινο από ψιλοκομμένα φρέσκα μυρωδικά, και σερβίρεται με λευκό ψάρι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Άνοιξη σε ένα πιάτο.",
+      "text_markdown": "Άνοιξη σε ένα πιάτο.",
+      "tts": {
+        "text": "Άνοιξη σε ένα πιάτο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα άλλο κλασικό είναι το ας ρεστέ, μια πηχτή σούπα με φασόλια, μυρωδικά, τηγανητό κρεμμύδι, κασκ και ζυμαρικά.",
+      "text_markdown": "Ένα άλλο κλασικό είναι το ας ρεστέ, μια πηχτή σούπα με φασόλια, μυρωδικά, τηγανητό κρεμμύδι, κασκ και ζυμαρικά.",
+      "tts": {
+        "text": "Ένα άλλο κλασικό είναι το ας ρεστέ, μια πηχτή σούπα με φασόλια, μυρωδικά, τηγανητό κρεμμύδι, κασκ και ζυμαρικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Πέρσες λένε πως πρέπει να το τρως πριν από μια δύσκολη απόφαση.",
+      "text_markdown": "Οι Πέρσες λένε πως πρέπει να το τρως πριν από μια δύσκολη απόφαση.",
+      "tts": {
+        "text": "Οι Πέρσες λένε πως πρέπει να το τρως πριν από μια δύσκολη απόφαση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Τα ζυμαρικά, λένε, ξεμπερδεύουν τα νήματα της μοίρας.",
+      "text_markdown": "Τα ζυμαρικά, λένε, ξεμπερδεύουν τα νήματα της μοίρας.",
+      "tts": {
+        "text": "Τα ζυμαρικά, λένε, ξεμπερδεύουν τα νήματα της μοίρας.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και το τσαγεράδικο είναι περσική επινόηση.",
+      "text_markdown": "Και το τσαγεράδικο είναι περσική επινόηση.",
+      "tts": {
+        "text": "Και το τσαγεράδικο είναι περσική επινόηση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Λέγεται καχβεχανέ, κυριολεκτικά καφενείο, παρόλο που τώρα το ποτό είναι το τσάι.",
+      "text_markdown": "Λέγεται καχβεχανέ, κυριολεκτικά καφενείο, παρόλο που τώρα το ποτό είναι το τσάι.",
+      "tts": {
+        "text": "Λέγεται καχβεχανέ, κυριολεκτικά καφενείο, παρόλο που τώρα το ποτό είναι το τσάι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Εδώ και πεντακόσια χρόνια, άντρες και γυναίκες μαζεύονται εκεί για να παίξουν τάβλι, να ακούσουν ποίηση και να μαλώσουν για τον κόσμο.",
+      "text_markdown": "Εδώ και πεντακόσια χρόνια, άντρες και γυναίκες μαζεύονται εκεί για να παίξουν τάβλι, να ακούσουν ποίηση και να μαλώσουν για τον κόσμο.",
+      "tts": {
+        "text": "Εδώ και πεντακόσια χρόνια, άντρες και γυναίκες μαζεύονται εκεί για να παίξουν τάβλι, να ακούσουν ποίηση και να μαλώσουν για τον κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Πολλές μεγάλες περσικές ιστορίες ειπώθηκαν πρώτα πάνω από ένα ποτήρι που αχνίζει.",
+      "text_markdown": "Πολλές μεγάλες περσικές ιστορίες ειπώθηκαν πρώτα πάνω από ένα ποτήρι που αχνίζει.",
+      "tts": {
+        "text": "Πολλές μεγάλες περσικές ιστορίες ειπώθηκαν πρώτα πάνω από ένα ποτήρι που αχνίζει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας διάσημος Πέρσης γιατρός, ο Αβικέννας, που έζησε πριν από χίλια χρόνια, δίδασκε ότι κάθε τροφή είναι είτε ζεστή είτε κρύα.",
+      "text_markdown": "Ένας διάσημος Πέρσης γιατρός, ο Αβικέννας, που έζησε πριν από χίλια χρόνια, δίδασκε ότι κάθε τροφή είναι είτε ζεστή είτε κρύα.",
+      "tts": {
+        "text": "Ένας διάσημος Πέρσης γιατρός, ο Αβικέννας, που έζησε πριν από χίλια χρόνια, δίδασκε ότι κάθε τροφή είναι είτε ζεστή είτε κρύα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το σαφράν, τα καρύδια και το αρνί είναι ζεστά.",
+      "text_markdown": "Το σαφράν, τα καρύδια και το αρνί είναι ζεστά.",
+      "tts": {
+        "text": "Το σαφράν, τα καρύδια και το αρνί είναι ζεστά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το γιαούρτι, το αγγούρι και το καρπούζι είναι κρύα.",
+      "text_markdown": "Το γιαούρτι, το αγγούρι και το καρπούζι είναι κρύα.",
+      "tts": {
+        "text": "Το γιαούρτι, το αγγούρι και το καρπούζι είναι κρύα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ένα καλό γεύμα τα ισορροπεί.",
+      "text_markdown": "Ένα καλό γεύμα τα ισορροπεί.",
+      "tts": {
+        "text": "Ένα καλό γεύμα τα ισορροπεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Σε πολλά περσικά σπίτια, αυτή η ιδέα ζει ακόμα στο μεσημεριανό.",
+      "text_markdown": "Σε πολλά περσικά σπίτια, αυτή η ιδέα ζει ακόμα στο μεσημεριανό.",
+      "tts": {
+        "text": "Σε πολλά περσικά σπίτια, αυτή η ιδέα ζει ακόμα στο μεσημεριανό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το περσικό φαγητό έχει υπομονή.",
+      "text_markdown": "Το περσικό φαγητό έχει υπομονή.",
+      "tts": {
+        "text": "Το περσικό φαγητό έχει υπομονή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι γενναιόδωρο.",
+      "text_markdown": "Είναι γενναιόδωρο.",
+      "tts": {
+        "text": "Είναι γενναιόδωρο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι παλιό.",
+      "text_markdown": "Είναι παλιό.",
+      "tts": {
+        "text": "Είναι παλιό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και ακόμα μαγειρεύεται κάθε μέρα πάνω σε εκατομμύρια εστίες.",
+      "text_markdown": "Και ακόμα μαγειρεύεται κάθε μέρα πάνω σε εκατομμύρια εστίες.",
+      "tts": {
+        "text": "Και ακόμα μαγειρεύεται κάθε μέρα πάνω σε εκατομμύρια εστίες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Αντίο",
+      "text_markdown": "Αντίο"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Εδώ τελειώνει η μικρή μας βόλτα.",
+      "text_markdown": "Εδώ τελειώνει η μικρή μας βόλτα.",
+      "tts": {
+        "text": "Εδώ τελειώνει η μικρή μας βόλτα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ελπίζω να έμαθες κάτι.",
+      "text_markdown": "Ελπίζω να έμαθες κάτι.",
+      "tts": {
+        "text": "Ελπίζω να έμαθες κάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ελπίζω κάτι στη σελίδα να σου άνοιξε την όρεξη.",
+      "text_markdown": "Ελπίζω κάτι στη σελίδα να σου άνοιξε την όρεξη.",
+      "tts": {
+        "text": "Ελπίζω κάτι στη σελίδα να σου άνοιξε την όρεξη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Σαφράν και ρύζι.",
+      "text_markdown": "Σαφράν και ρύζι.",
+      "tts": {
+        "text": "Σαφράν και ρύζι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ρόδι και καρύδι.",
+      "text_markdown": "Ρόδι και καρύδι.",
+      "tts": {
+        "text": "Ρόδι και καρύδι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ένα μικρό γλυκό σε ένα μικρό πιάτο.",
+      "text_markdown": "Ένα μικρό γλυκό σε ένα μικρό πιάτο.",
+      "tts": {
+        "text": "Ένα μικρό γλυκό σε ένα μικρό πιάτο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν μπορείς, βρες ένα περσικό εστιατόριο κοντά σου.",
+      "text_markdown": "Αν μπορείς, βρες ένα περσικό εστιατόριο κοντά σου.",
+      "tts": {
+        "text": "Αν μπορείς, βρες ένα περσικό εστιατόριο κοντά σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ή άνοιξε ένα περσικό βιβλίο μαγειρικής.",
+      "text_markdown": "Ή άνοιξε ένα περσικό βιβλίο μαγειρικής.",
+      "tts": {
+        "text": "Ή άνοιξε ένα περσικό βιβλίο μαγειρικής.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Δοκίμασε ένα μαγειρευτό.",
+      "text_markdown": "Δοκίμασε ένα μαγειρευτό.",
+      "tts": {
+        "text": "Δοκίμασε ένα μαγειρευτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Δοκίμασε ένα μπολάκι τσάι.",
+      "text_markdown": "Δοκίμασε ένα μπολάκι τσάι.",
+      "tts": {
+        "text": "Δοκίμασε ένα μπολάκι τσάι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Αυτό το φαγητό περιμένει εδώ και χιλιάδες χρόνια.",
+      "text_markdown": "Αυτό το φαγητό περιμένει εδώ και χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Αυτό το φαγητό περιμένει εδώ και χιλιάδες χρόνια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Μπορεί να περιμένει και για σένα.",
+      "text_markdown": "Μπορεί να περιμένει και για σένα.",
+      "tts": {
+        "text": "Μπορεί να περιμένει και για σένα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ευχαριστώ που άκουσες.",
+      "text_markdown": "Ευχαριστώ που άκουσες.",
+      "tts": {
+        "text": "Ευχαριστώ που άκουσες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μαγείρεψε κάτι.",
+      "text_markdown": "Μαγείρεψε κάτι.",
+      "tts": {
+        "text": "Μαγείρεψε κάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Φάε με άλλους.",
+      "text_markdown": "Φάε με άλλους.",
+      "tts": {
+        "text": "Φάε με άλλους.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Είμαι η Kym.",
+      "text_markdown": "Είμαι η Kym.",
+      "tts": {
+        "text": "Είμαι η Κιμ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αντίο.",
+      "text_markdown": "Αντίο.",
+      "tts": {
+        "text": "Αντίο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

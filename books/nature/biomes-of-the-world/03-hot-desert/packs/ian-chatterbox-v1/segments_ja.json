@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "熱帯砂漠",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "熱帯砂漠",
+      "text_markdown": "熱帯砂漠"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "砂漠のある場所",
+      "text_markdown": "砂漠のある場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠へようこそ。",
+      "text_markdown": "熱帯砂漠へようこそ。",
+      "tts": {
+        "text": "熱帯砂漠へようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは世界の偉大なバイオームの一つです。",
+      "text_markdown": "これは世界の偉大なバイオームの一つです。",
+      "tts": {
+        "text": "これは世界の偉大なバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、地球の中で独自の天気や植物や動物を持つ場所です。",
+      "text_markdown": "バイオームとは、地球の中で独自の天気や植物や動物を持つ場所です。",
+      "tts": {
+        "text": "バイオームとは、地球の中で独自の天気や植物や動物を持つ場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠は乾いた場所です。",
+      "text_markdown": "熱帯砂漠は乾いた場所です。",
+      "tts": {
+        "text": "熱帯砂漠は乾いた場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここではほとんど雨が降りません。",
+      "text_markdown": "ここではほとんど雨が降りません。",
+      "tts": {
+        "text": "ここではほとんど雨が降りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昼はとても暑く、夜はたいてい涼しいか寒いです。",
+      "text_markdown": "昼はとても暑く、夜はたいてい涼しいか寒いです。",
+      "tts": {
+        "text": "昼はとても暑く、夜はたいてい涼しいか寒いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界で一番大きな熱帯砂漠は、アフリカ北部のサハラです。",
+      "text_markdown": "世界で一番大きな熱帯砂漠は、アフリカ北部のサハラです。",
+      "tts": {
+        "text": "世界で一番大きな熱帯砂漠は、アフリカ北部のサハラです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大西洋から紅海近くまで広がっています。",
+      "text_markdown": "大西洋から紅海近くまで広がっています。",
+      "tts": {
+        "text": "大西洋から紅海近くまで広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アラビアの真ん中には、ルブアルハリ砂漠のような大きな砂漠があります。",
+      "text_markdown": "アラビアの真ん中には、ルブアルハリ砂漠のような大きな砂漠があります。",
+      "tts": {
+        "text": "アラビアの真ん中には、ルブアルハリ砂漠のような大きな砂漠があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカにも、アメリカ南西部やメキシコ北部に熱帯砂漠があります。",
+      "text_markdown": "北アメリカにも、アメリカ南西部やメキシコ北部に熱帯砂漠があります。",
+      "tts": {
+        "text": "北アメリカにも、アメリカ南西部やメキシコ北部に熱帯砂漠があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカやアフリカ南部、インド、そしてオーストラリアの広い範囲にも、小さな砂漠があります。",
+      "text_markdown": "南アメリカやアフリカ南部、インド、そしてオーストラリアの広い範囲にも、小さな砂漠があります。",
+      "tts": {
+        "text": "南アメリカやアフリカ南部、インド、そしてオーストラリアの広い範囲にも、小さな砂漠があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの砂漠は、それぞれ独自に、遠く離れて生まれました。",
+      "text_markdown": "これらの砂漠は、それぞれ独自に、遠く離れて生まれました。",
+      "tts": {
+        "text": "これらの砂漠は、それぞれ独自に、遠く離れて生まれました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、世界の各地で植物や動物は違います。",
+      "text_markdown": "だから、世界の各地で植物や動物は違います。",
+      "tts": {
+        "text": "だから、世界の各地で植物や動物は違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある砂漠で見るサボテンは、別の砂漠のサボテンと同じではありません。",
+      "text_markdown": "ある砂漠で見るサボテンは、別の砂漠のサボテンと同じではありません。",
+      "tts": {
+        "text": "ある砂漠で見るサボテンは、別の砂漠のサボテンと同じではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、すべて同じバイオームの一部です。",
+      "text_markdown": "でも、すべて同じバイオームの一部です。",
+      "tts": {
+        "text": "でも、すべて同じバイオームの一部です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠に立つと、空気が乾いて感じられます。",
+      "text_markdown": "熱帯砂漠に立つと、空気が乾いて感じられます。",
+      "tts": {
+        "text": "熱帯砂漠に立つと、空気が乾いて感じられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽の光が顔に強く当たります。",
+      "text_markdown": "太陽の光が顔に強く当たります。",
+      "tts": {
+        "text": "太陽の光が顔に強く当たります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面は岩が多い場所も、砂が多い場所もあります。",
+      "text_markdown": "地面は岩が多い場所も、砂が多い場所もあります。",
+      "tts": {
+        "text": "地面は岩が多い場所も、砂が多い場所もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とても遠くまで見渡すことができます。",
+      "text_markdown": "とても遠くまで見渡すことができます。",
+      "tts": {
+        "text": "とても遠くまで見渡すことができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空はとても広いです。",
+      "text_markdown": "空はとても広いです。",
+      "tts": {
+        "text": "空はとても広いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一日中、他の人や動物を見かけないこともあります。",
+      "text_markdown": "一日中、他の人や動物を見かけないこともあります。",
+      "tts": {
+        "text": "一日中、他の人や動物を見かけないこともあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが熱帯砂漠です。",
+      "text_markdown": "それが熱帯砂漠です。",
+      "tts": {
+        "text": "それが熱帯砂漠です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "砂漠のある場所",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂と岩と焼けつく太陽の、広く乾いた土地です。",
+      "text_markdown": "砂と岩と焼けつく太陽の、広く乾いた土地です。",
+      "tts": {
+        "text": "砂と岩と焼けつく太陽の、広く乾いた土地です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天気",
+      "text_markdown": "天気"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠の天気は、二つのことで決まります。",
+      "text_markdown": "熱帯砂漠の天気は、二つのことで決まります。",
+      "tts": {
+        "text": "熱帯砂漠の天気は、二つのことで決まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽の光が強すぎ、雨が足りないのです。",
+      "text_markdown": "太陽の光が強すぎ、雨が足りないのです。",
+      "tts": {
+        "text": "太陽の光が強すぎ、雨が足りないのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある砂漠では、雨が降るのは一年に数日だけです。",
+      "text_markdown": "ある砂漠では、雨が降るのは一年に数日だけです。",
+      "tts": {
+        "text": "ある砂漠では、雨が降るのは一年に数日だけです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の場所では、何年も全く雨が降りません。",
+      "text_markdown": "他の場所では、何年も全く雨が降りません。",
+      "tts": {
+        "text": "他の場所では、何年も全く雨が降りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昼はとても暑いです。",
+      "text_markdown": "昼はとても暑いです。",
+      "tts": {
+        "text": "昼はとても暑いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真昼には、太陽が砂を足にやけどさせるほど熱くします。",
+      "text_markdown": "真昼には、太陽が砂を足にやけどさせるほど熱くします。",
+      "tts": {
+        "text": "真昼には、太陽が砂を足にやけどさせるほど熱くします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、夜はずいぶん違います。",
+      "text_markdown": "でも、夜はずいぶん違います。",
+      "tts": {
+        "text": "でも、夜はずいぶん違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱を留めておく雲も木もありません。",
+      "text_markdown": "熱を留めておく雲も木もありません。",
+      "tts": {
+        "text": "熱を留めておく雲も木もありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、太陽が沈むとすぐに、熱は空へ逃げていきます。",
+      "text_markdown": "だから、太陽が沈むとすぐに、熱は空へ逃げていきます。",
+      "tts": {
+        "text": "だから、太陽が沈むとすぐに、熱は空へ逃げていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "真夜中までには、涼しく、寒くさえ感じられます。",
+      "text_markdown": "真夜中までには、涼しく、寒くさえ感じられます。",
+      "tts": {
+        "text": "真夜中までには、涼しく、寒くさえ感じられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "朝には、岩を触ると冷たいです。",
+      "text_markdown": "朝には、岩を触ると冷たいです。",
+      "tts": {
+        "text": "朝には、岩を触ると冷たいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして太陽が昇り、また熱が始まります。",
+      "text_markdown": "そして太陽が昇り、また熱が始まります。",
+      "tts": {
+        "text": "そして太陽が昇り、また熱が始まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨が降るときは、たいてい一度にまとめて降ります。",
+      "text_markdown": "雨が降るときは、たいてい一度にまとめて降ります。",
+      "tts": {
+        "text": "雨が降るときは、たいてい一度にまとめて降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな嵐がやってきて、一時間ほど水が降り注ぎます。",
+      "text_markdown": "大きな嵐がやってきて、一時間ほど水が降り注ぎます。",
+      "tts": {
+        "text": "大きな嵐がやってきて、一時間ほど水が降り注ぎます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾いた川がいっぱいになり、水が砂の上を流れていきます。",
+      "text_markdown": "乾いた川がいっぱいになり、水が砂の上を流れていきます。",
+      "tts": {
+        "text": "乾いた川がいっぱいになり、水が砂の上を流れていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして太陽が戻り、一日のうちに水はまた消えてしまいます。",
+      "text_markdown": "そして太陽が戻り、一日のうちに水はまた消えてしまいます。",
+      "tts": {
+        "text": "そして太陽が戻り、一日のうちに水はまた消えてしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天気",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂漠の植物や動物にとって、その水の一滴一滴が大切です。",
+      "text_markdown": "砂漠の植物や動物にとって、その水の一滴一滴が大切です。",
+      "tts": {
+        "text": "砂漠の植物や動物にとって、その水の一滴一滴が大切です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地と水",
+      "text_markdown": "土地と水"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠の大部分は砂でできていません。",
+      "text_markdown": "熱帯砂漠の大部分は砂でできていません。",
+      "tts": {
+        "text": "熱帯砂漠の大部分は砂でできていません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどは岩や砂利や、固く乾いた地面です。",
+      "text_markdown": "ほとんどは岩や砂利や、固く乾いた地面です。",
+      "tts": {
+        "text": "ほとんどは岩や砂利や、固く乾いた地面です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂丘の大海原のような場所もあります。",
+      "text_markdown": "砂丘の大海原のような場所もあります。",
+      "tts": {
+        "text": "砂丘の大海原のような場所もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風が砂丘をゆっくりと土地の上で動かします。",
+      "text_markdown": "風が砂丘をゆっくりと土地の上で動かします。",
+      "tts": {
+        "text": "風が砂丘をゆっくりと土地の上で動かします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂丘は、家より小さいことも、高い建物より高いこともあります。",
+      "text_markdown": "砂丘は、家より小さいことも、高い建物より高いこともあります。",
+      "tts": {
+        "text": "砂丘は、家より小さいことも、高い建物より高いこともあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある場所では、砂漠の中から山々がそびえ立っています。",
+      "text_markdown": "ある場所では、砂漠の中から山々がそびえ立っています。",
+      "tts": {
+        "text": "ある場所では、砂漠の中から山々がそびえ立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "風と砂が長い年月をかけて、岩を不思議な形に彫り上げます。",
+      "text_markdown": "風と砂が長い年月をかけて、岩を不思議な形に彫り上げます。",
+      "tts": {
+        "text": "風と砂が長い年月をかけて、岩を不思議な形に彫り上げます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水は砂漠で最も珍しく、最も貴重なものです。",
+      "text_markdown": "水は砂漠で最も珍しく、最も貴重なものです。",
+      "tts": {
+        "text": "水は砂漠で最も珍しく、最も貴重なものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの川は嵐のあとだけ流れ、そして乾いてしまいます。",
+      "text_markdown": "ほとんどの川は嵐のあとだけ流れ、そして乾いてしまいます。",
+      "tts": {
+        "text": "ほとんどの川は嵐のあとだけ流れ、そして乾いてしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも砂の深い下では、水が岩の中で眠っていることがあります。",
+      "text_markdown": "でも砂の深い下では、水が岩の中で眠っていることがあります。",
+      "tts": {
+        "text": "でも砂の深い下では、水が岩の中で眠っていることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある場所では、この隠れた水が地表に上がり、小さな緑の池を作ります。",
+      "text_markdown": "ある場所では、この隠れた水が地表に上がり、小さな緑の池を作ります。",
+      "tts": {
+        "text": "ある場所では、この隠れた水が地表に上がり、小さな緑の池を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはオアシスと呼ばれます。",
+      "text_markdown": "これはオアシスと呼ばれます。",
+      "tts": {
+        "text": "これはオアシスと呼ばれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オアシスでは木が育ち、鳥が歌い、人々が水を飲みに立ち止まります。",
+      "text_markdown": "オアシスでは木が育ち、鳥が歌い、人々が水を飲みに立ち止まります。",
+      "tts": {
+        "text": "オアシスでは木が育ち、鳥が歌い、人々が水を飲みに立ち止まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オアシスは、広大な砂の海に浮かぶ、小さなヤシの木の輪のこともあります。",
+      "text_markdown": "オアシスは、広大な砂の海に浮かぶ、小さなヤシの木の輪のこともあります。",
+      "tts": {
+        "text": "オアシスは、広大な砂の海に浮かぶ、小さなヤシの木の輪のこともあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうした水の点がなければ、誰も大きな砂漠を渡ることはできません。",
+      "text_markdown": "こうした水の点がなければ、誰も大きな砂漠を渡ることはできません。",
+      "tts": {
+        "text": "こうした水の点がなければ、誰も大きな砂漠を渡ることはできません。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠の植物は、待つことの達人です。",
+      "text_markdown": "熱帯砂漠の植物は、待つことの達人です。",
+      "tts": {
+        "text": "熱帯砂漠の植物は、待つことの達人です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんど水なしで生きる方法を身につけました。",
+      "text_markdown": "ほとんど水なしで生きる方法を身につけました。",
+      "tts": {
+        "text": "ほとんど水なしで生きる方法を身につけました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある植物は、地面の奥深くまで届く長い根を伸ばします。",
+      "text_markdown": "ある植物は、地面の奥深くまで届く長い根を伸ばします。",
+      "tts": {
+        "text": "ある植物は、地面の奥深くまで届く長い根を伸ばします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の植物は、地表近くに広く浅い根を広げます。",
+      "text_markdown": "他の植物は、地表近くに広く浅い根を広げます。",
+      "tts": {
+        "text": "他の植物は、地表近くに広く浅い根を広げます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨のあと、これらの根は乾く前に水の一滴一滴を吸い込みます。",
+      "text_markdown": "雨のあと、これらの根は乾く前に水の一滴一滴を吸い込みます。",
+      "tts": {
+        "text": "雨のあと、これらの根は乾く前に水の一滴一滴を吸い込みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠の植物は、長い乾季のために体の中に水をたくわえます。",
+      "text_markdown": "多くの砂漠の植物は、長い乾季のために体の中に水をたくわえます。",
+      "tts": {
+        "text": "多くの砂漠の植物は、長い乾季のために体の中に水をたくわえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "厚い茎や葉は、何ヶ月も、何年も水を保つことができます。",
+      "text_markdown": "厚い茎や葉は、何ヶ月も、何年も水を保つことができます。",
+      "tts": {
+        "text": "厚い茎や葉は、何ヶ月も、何年も水を保つことができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカの砂漠には、サボテンと呼ばれる植物があります。",
+      "text_markdown": "アメリカの砂漠には、サボテンと呼ばれる植物があります。",
+      "tts": {
+        "text": "アメリカの砂漠には、サボテンと呼ばれる植物があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サボテンは水でいっぱいの太い緑の茎と、柔らかい葉の代わりに鋭いとげを持っています。",
+      "text_markdown": "サボテンは水でいっぱいの太い緑の茎と、柔らかい葉の代わりに鋭いとげを持っています。",
+      "tts": {
+        "text": "サボテンは水でいっぱいの太い緑の茎と、柔らかい葉の代わりに鋭いとげを持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とげは動物が植物を食べるのを防ぎます。",
+      "text_markdown": "とげは動物が植物を食べるのを防ぎます。",
+      "tts": {
+        "text": "とげは動物が植物を食べるのを防ぎます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とげはまた、強い太陽に対して少しの日陰を作ります。",
+      "text_markdown": "とげはまた、強い太陽に対して少しの日陰を作ります。",
+      "tts": {
+        "text": "とげはまた、強い太陽に対して少しの日陰を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカやアジアの砂漠では、別の厚い植物が同じ役割を果たします。",
+      "text_markdown": "アフリカやアジアの砂漠では、別の厚い植物が同じ役割を果たします。",
+      "tts": {
+        "text": "アフリカやアジアの砂漠では、別の厚い植物が同じ役割を果たします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠の植物は灰色か淡い緑色です。",
+      "text_markdown": "多くの砂漠の植物は灰色か淡い緑色です。",
+      "tts": {
+        "text": "多くの砂漠の植物は灰色か淡い緑色です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "淡い色は太陽の光を反射します。",
+      "text_markdown": "淡い色は太陽の光を反射します。",
+      "tts": {
+        "text": "淡い色は太陽の光を反射します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある植物は、乾季が来ると葉を落とします。",
+      "text_markdown": "ある植物は、乾季が来ると葉を落とします。",
+      "tts": {
+        "text": "ある植物は、乾季が来ると葉を落とします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次の雨まで、裸の茶色い小枝のまま生き続けます。",
+      "text_markdown": "次の雨まで、裸の茶色い小枝のまま生き続けます。",
+      "tts": {
+        "text": "次の雨まで、裸の茶色い小枝のまま生き続けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大雨のあと、砂漠は一晩で変わることがあります。",
+      "text_markdown": "大雨のあと、砂漠は一晩で変わることがあります。",
+      "tts": {
+        "text": "大雨のあと、砂漠は一晩で変わることがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何年も土の中で待っていた小さな種が、花を咲かせます。",
+      "text_markdown": "何年も土の中で待っていた小さな種が、花を咲かせます。",
+      "tts": {
+        "text": "何年も土の中で待っていた小さな種が、花を咲かせます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数週間の間、砂漠の一部が赤や黄色や紫の花で覆われます。",
+      "text_markdown": "数週間の間、砂漠の一部が赤や黄色や紫の花で覆われます。",
+      "tts": {
+        "text": "数週間の間、砂漠の一部が赤や黄色や紫の花で覆われます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて花は色あせ、種が落ち、砂漠はまた待ち始めます。",
+      "text_markdown": "やがて花は色あせ、種が落ち、砂漠はまた待ち始めます。",
+      "tts": {
+        "text": "やがて花は色あせ、種が落ち、砂漠はまた待ち始めます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠の動物には、生き残るための賢い方法がたくさんあります。",
+      "text_markdown": "熱帯砂漠の動物には、生き残るための賢い方法がたくさんあります。",
+      "tts": {
+        "text": "熱帯砂漠の動物には、生き残るための賢い方法がたくさんあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの動物は、暑い真昼の間、眠ります。",
+      "text_markdown": "ほとんどの動物は、暑い真昼の間、眠ります。",
+      "tts": {
+        "text": "ほとんどの動物は、暑い真昼の間、眠ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "涼しい朝や夕方や夜に出てきます。",
+      "text_markdown": "涼しい朝や夕方や夜に出てきます。",
+      "tts": {
+        "text": "涼しい朝や夕方や夜に出てきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠の動物は、砂や岩の下に巣穴を掘ります。",
+      "text_markdown": "多くの砂漠の動物は、砂や岩の下に巣穴を掘ります。",
+      "tts": {
+        "text": "多くの砂漠の動物は、砂や岩の下に巣穴を掘ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "外の空気が焼けつくときも、巣穴は涼しいままです。",
+      "text_markdown": "外の空気が焼けつくときも、巣穴は涼しいままです。",
+      "tts": {
+        "text": "外の空気が焼けつくときも、巣穴は涼しいままです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さなネズミは一日中巣穴で眠り、熱を感じることがありません。",
+      "text_markdown": "小さなネズミは一日中巣穴で眠り、熱を感じることがありません。",
+      "tts": {
+        "text": "小さなネズミは一日中巣穴で眠り、熱を感じることがありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トカゲは熱帯砂漠でとてもよく見られます。",
+      "text_markdown": "トカゲは熱帯砂漠でとてもよく見られます。",
+      "tts": {
+        "text": "トカゲは熱帯砂漠でとてもよく見られます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "朝の早い太陽の中で、温かい石の上にじっとしています。",
+      "text_markdown": "朝の早い太陽の中で、温かい石の上にじっとしています。",
+      "tts": {
+        "text": "朝の早い太陽の中で、温かい石の上にじっとしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昼が暑くなりすぎると、日陰や岩の下に滑り込みます。",
+      "text_markdown": "昼が暑くなりすぎると、日陰や岩の下に滑り込みます。",
+      "tts": {
+        "text": "昼が暑くなりすぎると、日陰や岩の下に滑り込みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘビもよくいます。",
+      "text_markdown": "ヘビもよくいます。",
+      "tts": {
+        "text": "ヘビもよくいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな動物を探して、砂の上を滑るように進みます。",
+      "text_markdown": "小さな動物を探して、砂の上を滑るように進みます。",
+      "tts": {
+        "text": "小さな動物を探して、砂の上を滑るように進みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある種のヘビは、熱い砂の上で体を地面から離すために、横向きに動く特別な方法を持っています。",
+      "text_markdown": "ある種のヘビは、熱い砂の上で体を地面から離すために、横向きに動く特別な方法を持っています。",
+      "tts": {
+        "text": "ある種のヘビは、熱い砂の上で体を地面から離すために、横向きに動く特別な方法を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サソリは尾を高く上げて、夜に狩りをします。",
+      "text_markdown": "サソリは尾を高く上げて、夜に狩りをします。",
+      "tts": {
+        "text": "サソリは尾を高く上げて、夜に狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クモや甲虫も、砂漠のあらゆる場所に住んでいます。",
+      "text_markdown": "クモや甲虫も、砂漠のあらゆる場所に住んでいます。",
+      "tts": {
+        "text": "クモや甲虫も、砂漠のあらゆる場所に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠の甲虫は、水を飲まずに生きられます。",
+      "text_markdown": "多くの砂漠の甲虫は、水を飲まずに生きられます。",
+      "tts": {
+        "text": "多くの砂漠の甲虫は、水を飲まずに生きられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "必要な水を全部、食べ物から得ているのです。",
+      "text_markdown": "必要な水を全部、食べ物から得ているのです。",
+      "tts": {
+        "text": "必要な水を全部、食べ物から得ているのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカやアラビアの砂漠で最も大きな動物は、ラクダです。",
+      "text_markdown": "アフリカやアラビアの砂漠で最も大きな動物は、ラクダです。",
+      "tts": {
+        "text": "アフリカやアラビアの砂漠で最も大きな動物は、ラクダです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ラクダは一度に大量の水を飲み、それから何日も水を飲まずに過ごせます。",
+      "text_markdown": "ラクダは一度に大量の水を飲み、それから何日も水を飲まずに過ごせます。",
+      "tts": {
+        "text": "ラクダは一度に大量の水を飲み、それから何日も水を飲まずに過ごせます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "幅広く柔らかい足のおかげで、砂に沈みません。",
+      "text_markdown": "幅広く柔らかい足のおかげで、砂に沈みません。",
+      "tts": {
+        "text": "幅広く柔らかい足のおかげで、砂に沈みません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカの砂漠では、キツネや小さな野生のネコが夜に狩りをします。",
+      "text_markdown": "北アメリカの砂漠では、キツネや小さな野生のネコが夜に狩りをします。",
+      "tts": {
+        "text": "北アメリカの砂漠では、キツネや小さな野生のネコが夜に狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカでは、とても大きな耳を持つ小さなキツネが砂の中に住んでいます。",
+      "text_markdown": "アフリカでは、とても大きな耳を持つ小さなキツネが砂の中に住んでいます。",
+      "tts": {
+        "text": "アフリカでは、とても大きな耳を持つ小さなキツネが砂の中に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな耳は、地面の下で動く小さな動物の音を聞くのに役立ちます。",
+      "text_markdown": "大きな耳は、地面の下で動く小さな動物の音を聞くのに役立ちます。",
+      "tts": {
+        "text": "大きな耳は、地面の下で動く小さな動物の音を聞くのに役立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな耳はまた、涼しい夜に熱を逃がすのにも役立ちます。",
+      "text_markdown": "大きな耳はまた、涼しい夜に熱を逃がすのにも役立ちます。",
+      "tts": {
+        "text": "大きな耳はまた、涼しい夜に熱を逃がすのにも役立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い空では、ハゲワシやワシが暖かい砂漠の空気の上を漂います。",
+      "text_markdown": "高い空では、ハゲワシやワシが暖かい砂漠の空気の上を漂います。",
+      "tts": {
+        "text": "高い空では、ハゲワシやワシが暖かい砂漠の空気の上を漂います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面の小さな動きを見張っています。",
+      "text_markdown": "地面の小さな動きを見張っています。",
+      "tts": {
+        "text": "地面の小さな動きを見張っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここのどの動物も、涼しさを待ち、日陰を見つけ、一口の水を大切にする方法を知っています。",
+      "text_markdown": "ここのどの動物も、涼しさを待ち、日陰を見つけ、一口の水を大切にする方法を知っています。",
+      "tts": {
+        "text": "ここのどの動物も、涼しさを待ち、日陰を見つけ、一口の水を大切にする方法を知っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は何千年もの間、熱帯砂漠で暮らしてきました。",
+      "text_markdown": "人々は何千年もの間、熱帯砂漠で暮らしてきました。",
+      "tts": {
+        "text": "人々は何千年もの間、熱帯砂漠で暮らしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽と砂の土地で生きる、独自の方法を見つけてきました。",
+      "text_markdown": "太陽と砂の土地で生きる、独自の方法を見つけてきました。",
+      "tts": {
+        "text": "太陽と砂の土地で生きる、独自の方法を見つけてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠では、家族が群れと一緒に、場所を移動しながら暮らします。",
+      "text_markdown": "多くの砂漠では、家族が群れと一緒に、場所を移動しながら暮らします。",
+      "tts": {
+        "text": "多くの砂漠では、家族が群れと一緒に、場所を移動しながら暮らします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サハラやアラビアの砂漠では、人々はラクダやヤギや羊の群れを飼っています。",
+      "text_markdown": "サハラやアラビアの砂漠では、人々はラクダやヤギや羊の群れを飼っています。",
+      "tts": {
+        "text": "サハラやアラビアの砂漠では、人々はラクダやヤギや羊の群れを飼っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動物たちは、水を飲む間隔が長くても歩き続けられます。",
+      "text_markdown": "動物たちは、水を飲む間隔が長くても歩き続けられます。",
+      "tts": {
+        "text": "動物たちは、水を飲む間隔が長くても歩き続けられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は動物について行き、動物は食べ物のある場所へ案内します。",
+      "text_markdown": "人々は動物について行き、動物は食べ物のある場所へ案内します。",
+      "tts": {
+        "text": "人々は動物について行き、動物は食べ物のある場所へ案内します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼らのテントは、動物の毛から織られた布で作られています。",
+      "text_markdown": "彼らのテントは、動物の毛から織られた布で作られています。",
+      "tts": {
+        "text": "彼らのテントは、動物の毛から織られた布で作られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "テントは一時間で組み立てられ、一時間で片づけられます。",
+      "text_markdown": "テントは一時間で組み立てられ、一時間で片づけられます。",
+      "tts": {
+        "text": "テントは一時間で組み立てられ、一時間で片づけられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "焼けつく太陽を遮り、涼しい夜の空気を通します。",
+      "text_markdown": "焼けつく太陽を遮り、涼しい夜の空気を通します。",
+      "tts": {
+        "text": "焼けつく太陽を遮り、涼しい夜の空気を通します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂漠の人々は、ゆったりとした長い服を着ます。",
+      "text_markdown": "砂漠の人々は、ゆったりとした長い服を着ます。",
+      "tts": {
+        "text": "砂漠の人々は、ゆったりとした長い服を着ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長い袖と覆われた頭は、体を涼しく保ち、太陽から守ります。",
+      "text_markdown": "長い袖と覆われた頭は、体を涼しく保ち、太陽から守ります。",
+      "tts": {
+        "text": "長い袖と覆われた頭は、体を涼しく保ち、太陽から守ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明るい布の模様は、友達が遠くからあなたを見つけるのに役立ちます。",
+      "text_markdown": "明るい布の模様は、友達が遠くからあなたを見つけるのに役立ちます。",
+      "tts": {
+        "text": "明るい布の模様は、友達が遠くからあなたを見つけるのに役立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある砂漠の人々は、オアシスの周りに作られた町に住んでいます。",
+      "text_markdown": "ある砂漠の人々は、オアシスの周りに作られた町に住んでいます。",
+      "tts": {
+        "text": "ある砂漠の人々は、オアシスの周りに作られた町に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "水の周りの緑の輪の中で、ナツメヤシや果物や穀物を育てます。",
+      "text_markdown": "水の周りの緑の輪の中で、ナツメヤシや果物や穀物を育てます。",
+      "tts": {
+        "text": "水の周りの緑の輪の中で、ナツメヤシや果物や穀物を育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂の下に隠れた水を見つけるため、深い井戸を掘ることを覚えました。",
+      "text_markdown": "砂の下に隠れた水を見つけるため、深い井戸を掘ることを覚えました。",
+      "tts": {
+        "text": "砂の下に隠れた水を見つけるため、深い井戸を掘ることを覚えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "遠くからの旅人たちは、休んで水袋を満たすためにオアシスにやってきます。",
+      "text_markdown": "遠くからの旅人たちは、休んで水袋を満たすためにオアシスにやってきます。",
+      "tts": {
+        "text": "遠くからの旅人たちは、休んで水袋を満たすためにオアシスにやってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂漠の人々は、夜空のすべての星を知っています。",
+      "text_markdown": "砂漠の人々は、夜空のすべての星を知っています。",
+      "tts": {
+        "text": "砂漠の人々は、夜空のすべての星を知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "吹くすべての風の名前を知っています。",
+      "text_markdown": "吹くすべての風の名前を知っています。",
+      "tts": {
+        "text": "吹くすべての風の名前を知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂の上のすべての動物の足跡を読み取れます。",
+      "text_markdown": "砂の上のすべての動物の足跡を読み取れます。",
+      "tts": {
+        "text": "砂の上のすべての動物の足跡を読み取れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この知識は、親から子へ、年ごとに伝えられます。",
+      "text_markdown": "この知識は、親から子へ、年ごとに伝えられます。",
+      "tts": {
+        "text": "この知識は、親から子へ、年ごとに伝えられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの大きな砂漠でも、こうした暮らしには独自の言葉や歌や物語があります。",
+      "text_markdown": "どの大きな砂漠でも、こうした暮らしには独自の言葉や歌や物語があります。",
+      "tts": {
+        "text": "どの大きな砂漠でも、こうした暮らしには独自の言葉や歌や物語があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日の砂漠",
+      "text_markdown": "今日の砂漠"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯砂漠は美しく、厳しいバイオームです。",
+      "text_markdown": "熱帯砂漠は美しく、厳しいバイオームです。",
+      "tts": {
+        "text": "熱帯砂漠は美しく、厳しいバイオームです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地球の陸地の広い部分を覆っています。",
+      "text_markdown": "地球の陸地の広い部分を覆っています。",
+      "tts": {
+        "text": "地球の陸地の広い部分を覆っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "強い砂漠の太陽は、最大のクリーンエネルギーの源の一つでもあります。",
+      "text_markdown": "強い砂漠の太陽は、最大のクリーンエネルギーの源の一つでもあります。",
+      "tts": {
+        "text": "強い砂漠の太陽は、最大のクリーンエネルギーの源の一つでもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの砂漠で、太陽を集める大きなパネルの畑が作られています。",
+      "text_markdown": "多くの砂漠で、太陽を集める大きなパネルの畑が作られています。",
+      "tts": {
+        "text": "多くの砂漠で、太陽を集める大きなパネルの畑が作られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それらは砂漠の太陽を、遠い街への電気に変えます。",
+      "text_markdown": "それらは砂漠の太陽を、遠い街への電気に変えます。",
+      "tts": {
+        "text": "それらは砂漠の太陽を、遠い街への電気に変えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、砂漠は場所によっては問題を抱えています。",
+      "text_markdown": "でも、砂漠は場所によっては問題を抱えています。",
+      "tts": {
+        "text": "でも、砂漠は場所によっては問題を抱えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある地域では、人々が砂漠の縁の水や草を使い切ってしまい、砂漠が広がっています。",
+      "text_markdown": "ある地域では、人々が砂漠の縁の水や草を使い切ってしまい、砂漠が広がっています。",
+      "tts": {
+        "text": "ある地域では、人々が砂漠の縁の水や草を使い切ってしまい、砂漠が広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草は枯れ、木は消え、砂が入り込んできます。",
+      "text_markdown": "草は枯れ、木は消え、砂が入り込んできます。",
+      "tts": {
+        "text": "草は枯れ、木は消え、砂が入り込んできます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他の場所では、砂漠の縁の町が地下の隠れた水を使いすぎています。",
+      "text_markdown": "他の場所では、砂漠の縁の町が地下の隠れた水を使いすぎています。",
+      "tts": {
+        "text": "他の場所では、砂漠の縁の町が地下の隠れた水を使いすぎています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "深い水がなくなると、オアシスも干上がります。",
+      "text_markdown": "深い水がなくなると、オアシスも干上がります。",
+      "tts": {
+        "text": "深い水がなくなると、オアシスも干上がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の多くの団体が、砂漠を守るために働いています。",
+      "text_markdown": "世界中の多くの団体が、砂漠を守るために働いています。",
+      "tts": {
+        "text": "世界中の多くの団体が、砂漠を守るために働いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動く砂を食い止めるために、木や草の列を植えます。",
+      "text_markdown": "動く砂を食い止めるために、木や草の列を植えます。",
+      "tts": {
+        "text": "動く砂を食い止めるために、木や草の列を植えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂漠に住む人々が、水を賢く使えるように手助けします。",
+      "text_markdown": "砂漠に住む人々が、水を賢く使えるように手助けします。",
+      "tts": {
+        "text": "砂漠に住む人々が、水を賢く使えるように手助けします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂漠をよりよく理解するために、研究を行います。",
+      "text_markdown": "砂漠をよりよく理解するために、研究を行います。",
+      "tts": {
+        "text": "砂漠をよりよく理解するために、研究を行います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健康な砂漠は、思いがけない命であふれています。",
+      "text_markdown": "健康な砂漠は、思いがけない命であふれています。",
+      "tts": {
+        "text": "健康な砂漠は、思いがけない命であふれています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今日の砂漠",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私たちが大切にする価値があります。",
+      "text_markdown": "私たちが大切にする価値があります。",
+      "tts": {
+        "text": "私たちが大切にする価値があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが熱帯砂漠です。",
+      "text_markdown": "それが熱帯砂漠です。",
+      "tts": {
+        "text": "それが熱帯砂漠です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂と岩と、辛抱強い命の、乾いた日の当たる世界です。",
+      "text_markdown": "砂と岩と、辛抱強い命の、乾いた日の当たる世界です。",
+      "tts": {
+        "text": "砂と岩と、辛抱強い命の、乾いた日の当たる世界です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしいつかその中に立つことがあれば、一分間じっとしてみてください。",
+      "text_markdown": "もしいつかその中に立つことがあれば、一分間じっとしてみてください。",
+      "tts": {
+        "text": "もしいつかその中に立つことがあれば、一分間じっとしてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "砂丘を越えて吹く風の音を聞いてください。",
+      "text_markdown": "砂丘を越えて吹く風の音を聞いてください。",
+      "tts": {
+        "text": "砂丘を越えて吹く風の音を聞いてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽の熱と日陰の涼しさを感じてください。",
+      "text_markdown": "太陽の熱と日陰の涼しさを感じてください。",
+      "tts": {
+        "text": "太陽の熱と日陰の涼しさを感じてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームの心臓が、あなたの周りで脈打つのが聞こえるでしょう。",
+      "text_markdown": "バイオームの心臓が、あなたの周りで脈打つのが聞こえるでしょう。",
+      "tts": {
+        "text": "バイオームの心臓が、あなたの周りで脈打つのが聞こえるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

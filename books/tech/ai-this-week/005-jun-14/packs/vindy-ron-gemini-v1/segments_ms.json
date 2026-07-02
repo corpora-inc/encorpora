@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "ms",
+  "total_segments": 121,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Selamat datang ke AI Minggu Ini.",
+      "text_markdown": "Selamat datang ke AI Minggu Ini.",
+      "title": "",
+      "tts": {
+        "text": "Selamat datang ke AI Minggu Ini.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Saya Vindy.",
+      "text_markdown": "Saya Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Saya Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Bersama saya, seperti biasa, Ron.",
+      "text_markdown": "Bersama saya, seperti biasa, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bersama saya, seperti biasa, Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Senang berada di sini, Vindy.",
+      "text_markdown": "Senang berada di sini, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Senang berada di sini, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Hari ini Ahad, 14 Jun 2026.",
+      "text_markdown": "Hari ini Ahad, 14 Jun 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini Ahad, empat belas Jun, dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Dua perkara berbeza tentang hari ini.",
+      "text_markdown": "Dua perkara berbeza tentang hari ini.",
+      "title": "",
+      "tts": {
+        "text": "Dua perkara berbeza tentang hari ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Kami beralih ke hari Ahad, dan buat pertama kalinya kami akan memberitahu anda siapa sebenarnya yang menghasilkan rancangan ini.",
+      "text_markdown": "Kami beralih ke hari Ahad, dan buat pertama kalinya kami akan memberitahu anda siapa sebenarnya yang menghasilkan rancangan ini.",
+      "title": "",
+      "tts": {
+        "text": "Kami beralih ke hari Ahad, dan buat pertama kalinya kami akan memberitahu anda siapa sebenarnya yang menghasilkan rancangan ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "Kemudian kembali ke program biasa — pemberat terbuka, makmal kecil, dan minggu AI yang lebih luas.",
+      "text_markdown": "Kemudian kembali ke program biasa — pemberat terbuka, makmal kecil, dan minggu AI yang lebih luas.",
+      "title": "",
+      "tts": {
+        "text": "Kemudian kembali ke program biasa — pemberat terbuka, makmal kecil, dan minggu AI yang lebih luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Seterusnya — perubahan jadual dan sebabnya.",
+      "text_markdown": "Seterusnya — perubahan jadual dan sebabnya.",
+      "title": "",
+      "tts": {
+        "text": "Seterusnya — perubahan jadual dan sebabnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Pandangan pertama di Corpora Inc., pasukan kecil di sebalik aplikasi Corpán dan podcast ini.",
+      "text_markdown": "Pandangan pertama di Corpora Inc., pasukan kecil di sebalik aplikasi Corpán dan podcast ini.",
+      "title": "",
+      "tts": {
+        "text": "Pandangan pertama di Corpora Inc., pasukan kecil di sebalik aplikasi Corpán dan podcast ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Berita utama di beatlounge, pek muzik baharu kami yang dilancarkan dalam Corpán 0.18.0.",
+      "text_markdown": "Berita utama di beatlounge, pek muzik baharu kami yang dilancarkan dalam Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Berita utama di beatlounge, pek muzik baharu kami yang dilancarkan dalam Corpán sifar perpuluhan satu lapan.sifar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Pemberat terbuka minggu ini, diketuai oleh model teks resapan terbuka pertama Google.",
+      "text_markdown": "Pemberat terbuka minggu ini, diketuai oleh model teks resapan terbuka pertama Google.",
+      "title": "",
+      "tts": {
+        "text": "Pemberat terbuka minggu ini, diketuai oleh model teks resapan terbuka pertama Google.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Klip pantas tajuk berita melalui lensa ekosistem terbuka.",
+      "text_markdown": "Klip pantas tajuk berita melalui lensa ekosistem terbuka.",
+      "title": "",
+      "tts": {
+        "text": "Klip pantas tajuk berita melalui lensa ekosistem terbuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Makmal kecil minggu ini — sebelas orang di Paris membuat pertaruhan bertentangan pada silikon AMD.",
+      "text_markdown": "Makmal kecil minggu ini — sebelas orang di Paris membuat pertaruhan bertentangan pada silikon AMD.",
+      "title": "",
+      "tts": {
+        "text": "Makmal kecil minggu ini — sebelas orang di Paris membuat pertaruhan bertentangan pada silikon A. M. D.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Dan konsep minggu ini — resapan berbanding autoregresif, helah di sebalik keluaran utama minggu ini.",
+      "text_markdown": "Dan konsep minggu ini — resapan berbanding autoregresif, helah di sebalik keluaran utama minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Dan konsep minggu ini — resapan berbanding autoregresif, helah di sebalik keluaran utama minggu ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Ron, mari kita mulakan dengan jadual.",
+      "text_markdown": "Ron, mari kita mulakan dengan jadual.",
+      "title": "",
+      "tts": {
+        "text": "Ron, mari kita mulakan dengan jadual.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Mengapa kita beralih dari hari Rabu?",
+      "text_markdown": "Mengapa kita beralih dari hari Rabu?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa kita beralih dari hari Rabu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Rabu adalah hari Odin, dan Odin sibuk memerintah Asgard.",
+      "text_markdown": "Rabu adalah hari Odin, dan Odin sibuk memerintah Asgard.",
+      "title": "",
+      "tts": {
+        "text": "Rabu adalah hari Odin, dan Odin sibuk memerintah Asgard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Kami adalah pasukan kecil dengan pekerjaan harian, dan pemotongan pertengahan minggu tidak pernah benar-benar berjaya.",
+      "text_markdown": "Kami adalah pasukan kecil dengan pekerjaan harian, dan pemotongan pertengahan minggu tidak pernah benar-benar berjaya.",
+      "title": "",
+      "tts": {
+        "text": "Kami adalah pasukan kecil dengan pekerjaan harian, dan pemotongan pertengahan minggu tidak pernah benar-benar berjaya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Hari Ahad mengakhiri minggu dan memulakan minggu seterusnya, yang terasa seperti irama yang tepat untuk rancangan berita.",
+      "text_markdown": "Hari Ahad mengakhiri minggu dan memulakan minggu seterusnya, yang terasa seperti irama yang tepat untuk rancangan berita.",
+      "title": "",
+      "tts": {
+        "text": "Hari Ahad mengakhiri minggu dan memulakan minggu seterusnya, yang terasa seperti irama yang tepat untuk rancangan berita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Bagaimana sebenarnya pelancaran itu?",
+      "text_markdown": "Bagaimana sebenarnya pelancaran itu?",
+      "title": "",
+      "tts": {
+        "text": "Bagaimana sebenarnya pelancaran itu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Ia bermula Sabtu dalam bahasa Inggeris dan berterusan hingga pagi Isnin, bahasa demi bahasa, apabila setiap terjemahan dan lulus audio selesai.",
+      "text_markdown": "Ia bermula Sabtu dalam bahasa Inggeris dan berterusan hingga pagi Isnin, bahasa demi bahasa, apabila setiap terjemahan dan lulus audio selesai.",
+      "title": "",
+      "tts": {
+        "text": "Ia bermula Sabtu dalam bahasa Inggeris dan berterusan hingga pagi Isnin, bahasa demi bahasa, apabila setiap terjemahan dan lulus audio selesai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Menjelang kopi Isnin, kita sepatutnya hampir lima puluh bahasa.",
+      "text_markdown": "Menjelang kopi Isnin, kita sepatutnya hampir lima puluh bahasa.",
+      "title": "",
+      "tts": {
+        "text": "Menjelang kopi Isnin, kita sepatutnya hampir lima puluh bahasa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Yang membawa kita kepada perkara baharu yang kedua.",
+      "text_markdown": "Yang membawa kita kepada perkara baharu yang kedua.",
+      "title": "",
+      "tts": {
+        "text": "Yang membawa kita kepada perkara baharu yang kedua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Siapa yang menghasilkan rancangan ini.",
+      "text_markdown": "Siapa yang menghasilkan rancangan ini.",
+      "title": "",
+      "tts": {
+        "text": "Siapa yang menghasilkan rancangan ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Corpora Inc., sebuah pasukan bebas kecil, membina aplikasi Corpán dan menghasilkan podcast ini.",
+      "text_markdown": "Corpora Inc., sebuah pasukan bebas kecil, membina aplikasi Corpán dan menghasilkan podcast ini.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., sebuah pasukan bebas kecil, membina aplikasi Corpán dan menghasilkan podcast ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Apa itu Corpán.",
+      "text_markdown": "Apa itu Corpán.",
+      "title": "",
+      "tts": {
+        "text": "Apa itu Corpán.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Tempat bermain bahasa, muzik, dan pembelajaran yang dibina secara on-device-first.",
+      "text_markdown": "Tempat bermain bahasa, muzik, dan pembelajaran yang dibina secara on-device-first.",
+      "title": "",
+      "tts": {
+        "text": "Tempat bermain bahasa, muzik, dan pembelajaran yang dibina secara on device first.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Huraikan on-device-first — apa maksudnya dalam amalan.",
+      "text_markdown": "Huraikan on-device-first — apa maksudnya dalam amalan.",
+      "title": "",
+      "tts": {
+        "text": "Huraikan on device first — apa maksudnya dalam amalan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Ini bermakna kami mengutamakan operasi secara tempatan apabila ciri itu membenarkan.",
+      "text_markdown": "Ini bermakna kami mengutamakan operasi secara tempatan apabila ciri itu membenarkan.",
+      "title": "",
+      "tts": {
+        "text": "Ini bermakna kami mengutamakan operasi secara tempatan apabila ciri itu membenarkan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "Qwen3-4B untuk pembantu, Whisper large-v3 untuk pengecaman pertuturan, Chatterbox untuk sintesis suara, Stable Diffusion three-and-a-half untuk imej, LoRA pipelines untuk tutor watak.",
+      "text_markdown": "Qwen3-4B untuk pembantu, Whisper large-v3 untuk pengecaman pertuturan, Chatterbox untuk sintesis suara, Stable Diffusion three-and-a-half untuk imej, LoRA pipelines untuk tutor watak.",
+      "title": "",
+      "tts": {
+        "text": "Qwen tiga empat B untuk pembantu, Whisper large v tiga untuk pengecaman pertuturan, Chatterbox untuk sintesis suara, Stable Diffusion tiga setengah untuk imej, LoRA pipelines untuk tutor watak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Semua itu berjalan pada telefon atau tablet anda, luar talian, dalam mod kapal terbang, di tengah-tengah tempat terpencil.",
+      "text_markdown": "Semua itu berjalan pada telefon atau tablet anda, luar talian, dalam mod kapal terbang, di tengah-tengah tempat terpencil.",
+      "title": "",
+      "tts": {
+        "text": "Semua itu berjalan pada telefon atau tablet anda, luar talian, dalam mod kapal terbang, di tengah-tengah tempat terpencil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Ciri-ciri yang benar-benar memerlukan rangkaian — radio dunia, berbilang pemain — menggunakan rangkaian, dan kami tidak berpura-pura sebaliknya.",
+      "text_markdown": "Ciri-ciri yang benar-benar memerlukan rangkaian — radio dunia, berbilang pemain — menggunakan rangkaian, dan kami tidak berpura-pura sebaliknya.",
+      "title": "",
+      "tts": {
+        "text": "Ciri-ciri yang benar-benar memerlukan rangkaian — radio dunia, berbilang pemain — menggunakan rangkaian, dan kami tidak berpura-pura sebaliknya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Dan bahagian perniagaan.",
+      "text_markdown": "Dan bahagian perniagaan.",
+      "title": "",
+      "tts": {
+        "text": "Dan bahagian perniagaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Pasukan bebas yang cekap, tiada berbilion dolar modal di belakang kami, bebas iklan dalam aplikasi hari ini, dengan peringkat percuma yang murah hati dan langganan premium pilihan untuk orang yang ingin menyokong kerja ini.",
+      "text_markdown": "Pasukan bebas yang cekap, tiada berbilion dolar modal di belakang kami, bebas iklan dalam aplikasi hari ini, dengan peringkat percuma yang murah hati dan langganan premium pilihan untuk orang yang ingin menyokong kerja ini.",
+      "title": "",
+      "tts": {
+        "text": "Pasukan bebas yang cekap, tiada berbilion dolar modal di belakang kami, bebas iklan dalam aplikasi hari ini, dengan peringkat percuma yang murah hati dan langganan premium pilihan untuk orang yang ingin menyokong kerja ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Kami ingin kekal bebas iklan selama yang kami mampu — tiada janji selama-lamanya, tetapi itulah arah tujuannya.",
+      "text_markdown": "Kami ingin kekal bebas iklan selama yang kami mampu — tiada janji selama-lamanya, tetapi itulah arah tujuannya.",
+      "title": "",
+      "tts": {
+        "text": "Kami ingin kekal bebas iklan selama yang kami mampu — tiada janji selama-lamanya, tetapi itulah arah tujuannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Apakah bukti anda benar-benar menghantar produk.",
+      "text_markdown": "Apakah bukti anda benar-benar menghantar produk.",
+      "title": "",
+      "tts": {
+        "text": "Apakah bukti anda benar-benar menghantar produk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Kebanyakan minggu kami menghantar sesuatu — narasi buku, pek, keluaran aplikasi, rancangan ini — merentasi tiga puluh lima lebih bahasa hari ini, dan semakin bertambah.",
+      "text_markdown": "Kebanyakan minggu kami menghantar sesuatu — narasi buku, pek, keluaran aplikasi, rancangan ini — merentasi tiga puluh lima lebih bahasa hari ini, dan semakin bertambah.",
+      "title": "",
+      "tts": {
+        "text": "Kebanyakan minggu kami menghantar sesuatu — narasi buku, pek, keluaran aplikasi, rancangan ini — merentasi tiga puluh lima lebih bahasa hari ini, dan semakin bertambah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Mengapa melakukan ini sama sekali.",
+      "text_markdown": "Mengapa melakukan ini sama sekali.",
+      "title": "",
+      "tts": {
+        "text": "Mengapa melakukan ini sama sekali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Itulah tawaran kami — membuktikan pengalaman pembelajaran berbilang bahasa, berkualiti tinggi, mengutamakan peranti boleh datang daripada pasukan kecil tanpa modal besar, sambil memastikan aplikasi bebas iklan selama yang kami mampu.",
+      "text_markdown": "Itulah tawaran kami — membuktikan pengalaman pembelajaran berbilang bahasa, berkualiti tinggi, mengutamakan peranti boleh datang daripada pasukan kecil tanpa modal besar, sambil memastikan aplikasi bebas iklan selama yang kami mampu.",
+      "title": "",
+      "tts": {
+        "text": "Itulah tawaran kami — membuktikan pengalaman pembelajaran berbilang bahasa, berkualiti tinggi, mengutamakan peranti boleh datang daripada pasukan kecil tanpa modal besar, sambil memastikan aplikasi bebas iklan selama yang kami mampu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Yang membawa kita kepada berita utama — beatlounge.",
+      "text_markdown": "Yang membawa kita kepada berita utama — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Yang membawa kita kepada berita utama — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Ia dilancarkan dalam Corpán 0.18.0 minggu ini.",
+      "text_markdown": "Ia dilancarkan dalam Corpán 0.18.0 minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Ia dilancarkan dalam Corpán sifar perpuluhan satu lapan.sifar minggu ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "beatlounge ialah penjujukan rentak dan alat bahasa dalam satu kotak.",
+      "text_markdown": "beatlounge ialah penjujukan rentak dan alat bahasa dalam satu kotak.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge ialah penjujukan rentak dan alat bahasa dalam satu kotak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Penjujukan beralamat tik pada sembilan ratus enam puluh denyutan per suku, enjin harmoni yang memahami mod Barat, thaats India, melakartas Carnatic, dan maqamat Arab, dan korpus frasa lebih daripada sepuluh juta frasa bahasa sebenar merentasi lebih lima puluh bahasa.",
+      "text_markdown": "Penjujukan beralamat tik pada sembilan ratus enam puluh denyutan per suku, enjin harmoni yang memahami mod Barat, thaats India, melakartas Carnatic, dan maqamat Arab, dan korpus frasa lebih daripada sepuluh juta frasa bahasa sebenar merentasi lebih lima puluh bahasa.",
+      "title": "",
+      "tts": {
+        "text": "Penjujukan beralamat tik pada sembilan ratus enam puluh denyutan per suku, enjin harmoni yang memahami mod Barat, thaats India, melakartas Carnatic, dan maqamat Arab, dan korpus frasa lebih daripada sepuluh juta frasa bahasa sebenar merentasi lebih lima puluh bahasa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Semua boleh dipersembahkan mengikut pic, dan boleh dimainkan luar talian setelah pek berada pada peranti anda.",
+      "text_markdown": "Semua boleh dipersembahkan mengikut pic, dan boleh dimainkan luar talian setelah pek berada pada peranti anda.",
+      "title": "",
+      "tts": {
+        "text": "Semua boleh dipersembahkan mengikut pic, dan boleh dimainkan luar talian setelah pek berada pada peranti anda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Jadi instrumen itu adalah bahasa.",
+      "text_markdown": "Jadi instrumen itu adalah bahasa.",
+      "title": "",
+      "tts": {
+        "text": "Jadi instrumen itu adalah bahasa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Anda memainkan frasa seperti anda memainkan not.",
+      "text_markdown": "Anda memainkan frasa seperti anda memainkan not.",
+      "title": "",
+      "tts": {
+        "text": "Anda memainkan frasa seperti anda memainkan not.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Frasa Hindi pada rentak satu, seruan Arab di belakang dua, suku kata Mandarin sebagai alunan reben.",
+      "text_markdown": "Frasa Hindi pada rentak satu, seruan Arab di belakang dua, suku kata Mandarin sebagai alunan reben.",
+      "title": "",
+      "tts": {
+        "text": "Frasa Hindi pada rentak satu, seruan Arab di belakang dua, suku kata Mandarin sebagai alunan reben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "Ia adalah DAW di mana sampel adalah ayat, disuarakan oleh TTS pada peranti.",
+      "text_markdown": "Ia adalah DAW di mana sampel adalah ayat, disuarakan oleh TTS pada peranti.",
+      "title": "",
+      "tts": {
+        "text": "Ia adalah D A W di mana sampel adalah ayat, disuarakan oleh T T S pada peranti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Tiada teori muzik diperlukan.",
+      "text_markdown": "Tiada teori muzik diperlukan.",
+      "title": "",
+      "tts": {
+        "text": "Tiada teori muzik diperlukan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Tiada apa-apa pun.",
+      "text_markdown": "Tiada apa-apa pun.",
+      "title": "",
+      "tts": {
+        "text": "Tiada apa-apa pun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Enjin harmoni mengendalikan peraturan; anda menunjuk pada bunyi yang anda suka dan mod kekal bersih.",
+      "text_markdown": "Enjin harmoni mengendalikan peraturan; anda menunjuk pada bunyi yang anda suka dan mod kekal bersih.",
+      "title": "",
+      "tts": {
+        "text": "Enjin harmoni mengendalikan peraturan; anda menunjuk pada bunyi yang anda suka dan mod kekal bersih.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Apa lagi yang ada dalam 0.18.0.",
+      "text_markdown": "Apa lagi yang ada dalam 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Apa lagi yang ada dalam sifar perpuluhan satu lapan.sifar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Tiga bahagian kejuruteraan di sebalik tabir — sambungan hos untuk pek kandungan telah dilancarkan dengan beatlounge sebagai perintis.",
+      "text_markdown": "Tiga bahagian kejuruteraan di sebalik tabir — sambungan hos untuk pek kandungan telah dilancarkan dengan beatlounge sebagai perintis.",
+      "title": "",
+      "tts": {
+        "text": "Tiga bahagian kejuruteraan di sebalik tabir — sambungan hos untuk pek kandungan telah dilancarkan dengan beatlounge sebagai perintis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Android kini merekodkan jejak ralat asli supaya kerosakan llama dan ggml dapat didiagnosis dengan betul.",
+      "text_markdown": "Android kini merekodkan jejak ralat asli supaya kerosakan llama dan ggml dapat didiagnosis dengan betul.",
+      "title": "",
+      "tts": {
+        "text": "Android kini merekodkan jejak ralat asli supaya kerosakan llama dan g g m l dapat didiagnosis dengan betul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Dan kami membetulkan pemasangan model berbilang gigabait yang dahulunya menyebabkan OOM iOS — kini ia menstrim ke cakera dan bukannya menimbal dua setengah gigabait Qwen3-4B dalam RAM.",
+      "text_markdown": "Dan kami membetulkan pemasangan model berbilang gigabait yang dahulunya menyebabkan OOM iOS — kini ia menstrim ke cakera dan bukannya menimbal dua setengah gigabait Qwen3-4B dalam RAM.",
+      "title": "",
+      "tts": {
+        "text": "Dan kami membetulkan pemasangan model berbilang gigabait yang dahulunya menyebabkan O O M iOS — kini ia menstrim ke cakera dan bukannya menimbal dua setengah gigabait Qwen tiga empat B dalam R A M.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Membosankan di bawah, menyeronokkan di atas.",
+      "text_markdown": "Membosankan di bawah, menyeronokkan di atas.",
+      "title": "",
+      "tts": {
+        "text": "Membosankan di bawah, menyeronokkan di atas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Yang secara kasarnya adalah ringkasan keseluruhan syarikat.",
+      "text_markdown": "Yang secara kasarnya adalah ringkasan keseluruhan syarikat.",
+      "title": "",
+      "tts": {
+        "text": "Yang secara kasarnya adalah ringkasan keseluruhan syarikat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Baiklah, mari kita beralih kepada 'open weights'.",
+      "text_markdown": "Baiklah, mari kita beralih kepada 'open weights'.",
+      "title": "",
+      "tts": {
+        "text": "Baiklah, mari kita beralih kepada 'open weights'.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Apakah yang besar minggu ini.",
+      "text_markdown": "Apakah yang besar minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Apakah yang besar minggu ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Google mengeluarkan DiffusionGemma.",
+      "text_markdown": "Google mengeluarkan DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google mengeluarkan DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Campuran pakar dua puluh enam bilion parameter dengan tiga perpuluhan lapan bilion aktif, Apache 2.0 di Hugging Face, yang menjana teks melalui resapan dan bukannya autoregresi.",
+      "text_markdown": "Campuran pakar dua puluh enam bilion parameter dengan tiga perpuluhan lapan bilion aktif, Apache 2.0 di Hugging Face, yang menjana teks melalui resapan dan bukannya autoregresi.",
+      "title": "",
+      "tts": {
+        "text": "Campuran pakar dua puluh enam bilion parameter dengan tiga perpuluhan lapan bilion aktif, Apache dua perpuluhan sifar di Hugging Face, yang menjana teks melalui resapan dan bukannya autoregresi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Bahasa biasa — apakah sebenarnya maksud resapan-untuk-teks.",
+      "text_markdown": "Bahasa biasa — apakah sebenarnya maksud resapan-untuk-teks.",
+      "title": "",
+      "tts": {
+        "text": "Bahasa biasa — apakah sebenarnya maksud resapan untuk teks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "Daripada meramal satu token pada satu masa, ia menyahbunyi blok dua ratus lima puluh enam token secara selari.",
+      "text_markdown": "Daripada meramal satu token pada satu masa, ia menyahbunyi blok dua ratus lima puluh enam token secara selari.",
+      "title": "",
+      "tts": {
+        "text": "Daripada meramal satu token pada satu masa, ia menyahbunyi blok dua ratus lima puluh enam token secara selari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "Lebih seribu token sesaat pada satu H100, kira-kira empat kali lebih pantas daripada Gemma autoregresif yang setanding.",
+      "text_markdown": "Lebih seribu token sesaat pada satu H100, kira-kira empat kali lebih pantas daripada Gemma autoregresif yang setanding.",
+      "title": "",
+      "tts": {
+        "text": "Lebih seribu token sesaat pada satu H satu ratus, kira-kira empat kali lebih pantas daripada Gemma autoregresif yang setanding.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "Dan kelemahannya.",
+      "text_markdown": "Dan kelemahannya.",
+      "title": "",
+      "tts": {
+        "text": "Dan kelemahannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "Skor yang lebih rendah pada MMLU dan pengekodan — Google sendiri mengatakannya; keluaran ini adalah untuk kerja kritikal kelajuan, bukan untuk mendaki papan pendahulu.",
+      "text_markdown": "Skor yang lebih rendah pada MMLU dan pengekodan — Google sendiri mengatakannya; keluaran ini adalah untuk kerja kritikal kelajuan, bukan untuk mendaki papan pendahulu.",
+      "title": "",
+      "tts": {
+        "text": "Skor yang lebih rendah pada MMLU dan pengekodan — Google sendiri mengatakannya; keluaran ini adalah untuk kerja kritikal kelajuan, bukan untuk mendaki papan pendahulu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "Dan model suara terbuka — apa-apa sahaja.",
+      "text_markdown": "Dan model suara terbuka — apa-apa sahaja.",
+      "title": "",
+      "tts": {
+        "text": "Dan model suara terbuka — apa-apa sahaja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Dua dikeluarkan pada minggu yang sama.",
+      "text_markdown": "Dua dikeluarkan pada minggu yang sama.",
+      "title": "",
+      "tts": {
+        "text": "Dua dikeluarkan pada minggu yang sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "RedNote, rangkaian sosial Cina, telah membuka sumber dots-dot-tts — dua bilion parameter, berterusan sepenuhnya tanpa token diskret di mana-mana dalam saluran paip, kependaman token pertama lima puluh empat milisaat, Apache 2.0.",
+      "text_markdown": "RedNote, rangkaian sosial Cina, telah membuka sumber dots-dot-tts — dua bilion parameter, berterusan sepenuhnya tanpa token diskret di mana-mana dalam saluran paip, kependaman token pertama lima puluh empat milisaat, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, rangkaian sosial Cina, telah membuka sumber dots dot tts — dua bilion parameter, berterusan sepenuhnya tanpa token diskret di mana-mana dalam saluran paip, lima puluh empat milisaat kependaman token pertama, Apache dua perpuluhan sifar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "Dan Boson AI mengeluarkan Higgs Audio versi tiga — empat bilion parameter, seratus dua bahasa, dua puluh satu token kawalan emosi, output penstriman, lesen bukan komersial; bahagian terakhir itu adalah tanda bintang.",
+      "text_markdown": "Dan Boson AI mengeluarkan Higgs Audio versi tiga — empat bilion parameter, seratus dua bahasa, dua puluh satu token kawalan emosi, output penstriman, lesen bukan komersial; bahagian terakhir itu adalah tanda bintang.",
+      "title": "",
+      "tts": {
+        "text": "Dan Boson AI mengeluarkan Higgs Audio versi tiga — empat bilion parameter, seratus dua bahasa, dua puluh satu token kawalan emosi, output penstriman, lesen bukan komersial; bahagian terakhir itu adalah tanda bintang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "Pengklonan suara secara rasmi adalah komoditi.",
+      "text_markdown": "Pengklonan suara secara rasmi adalah komoditi.",
+      "title": "",
+      "tts": {
+        "text": "Pengklonan suara secara rasmi adalah komoditi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "Memang begitu.",
+      "text_markdown": "Memang begitu.",
+      "title": "",
+      "tts": {
+        "text": "Memang begitu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "Satu lagi di pihak terbuka.",
+      "text_markdown": "Satu lagi di pihak terbuka.",
+      "title": "",
+      "tts": {
+        "text": "Satu lagi di pihak terbuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "NVIDIA secara senyap mengeluarkan Nemotron 3 Ultra — model hibrid Mamba-attention lima ratus lima puluh bilion parameter.",
+      "text_markdown": "NVIDIA secara senyap mengeluarkan Nemotron 3 Ultra — model hibrid Mamba-attention lima ratus lima puluh bilion parameter.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA secara senyap mengeluarkan Nemotron tiga Ultra — model hibrid Mamba attention lima ratus lima puluh bilion parameter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "Bobot dan resipi latihan penuh di bawah lesen Linux Foundation OpenMDW — keluaran paling benar-benar terbuka bulan ini.",
+      "text_markdown": "Bobot dan resipi latihan penuh di bawah lesen Linux Foundation OpenMDW — keluaran paling benar-benar terbuka bulan ini.",
+      "title": "",
+      "tts": {
+        "text": "Bobot dan resipi latihan penuh di bawah lesen Linux Foundation OpenMDW — keluaran paling benar-benar terbuka bulan ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "Dan tiada siapa yang meliputinya.",
+      "text_markdown": "Dan tiada siapa yang meliputinya.",
+      "title": "",
+      "tts": {
+        "text": "Dan tiada siapa yang meliputinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "Kerana kami mengklasifikasikan NVIDIA di bawah silikon, bukan makmal.",
+      "text_markdown": "Kerana kami mengklasifikasikan NVIDIA di bawah silikon, bukan makmal.",
+      "title": "",
+      "tts": {
+        "text": "Kerana kami mengklasifikasikan NVIDIA di bawah silikon, bukan makmal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "Tetapi minggu ini mereka mengeluarkan sumber terbuka yang boleh dihasilkan semula pada skala sempadan.",
+      "text_markdown": "Tetapi minggu ini mereka mengeluarkan sumber terbuka yang boleh dihasilkan semula pada skala sempadan.",
+      "title": "",
+      "tts": {
+        "text": "Tetapi minggu ini mereka mengeluarkan sumber terbuka yang boleh dihasilkan semula pada skala sempadan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "Tajuk utama, klip pantas.",
+      "text_markdown": "Tajuk utama, klip pantas.",
+      "title": "",
+      "tts": {
+        "text": "Tajuk utama, klip pantas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "Pertama.",
+      "text_markdown": "Pertama.",
+      "title": "",
+      "tts": {
+        "text": "Pertama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "Moonshot mengeluarkan Kimi K2-point-seven-Code — satu trilion parameter, tiga puluh dua bilion aktif, mendakwa mengalahkan Claude Opus 4.8 pada penanda aras Moonshot sendiri.",
+      "text_markdown": "Moonshot mengeluarkan Kimi K2-point-seven-Code — satu trilion parameter, tiga puluh dua bilion aktif, mendakwa mengalahkan Claude Opus 4.8 pada penanda aras Moonshot sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot mengeluarkan Kimi K dua perpuluhan tujuh Code — satu trilion parameter, tiga puluh dua bilion aktif, mendakwa mengalahkan Claude Opus empat perpuluhan lapan pada penanda aras Moonshot sendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "Pengamal menjalankan angka dan mengatakan penanda aras tidak sepadan; bobot yang dihoskan sendiri adalah lima ratus sembilan puluh lima gigabait, mod pemikiran tidak boleh dimatikan.",
+      "text_markdown": "Pengamal menjalankan angka dan mengatakan penanda aras tidak sepadan; bobot yang dihoskan sendiri adalah lima ratus sembilan puluh lima gigabait, mod pemikiran tidak boleh dimatikan.",
+      "title": "",
+      "tts": {
+        "text": "Pengamal menjalankan angka dan mengatakan penanda aras tidak sepadan; bobot yang dihoskan sendiri adalah lima ratus sembilan puluh lima gigabait, mod pemikiran tidak boleh dimatikan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "Perkataan 'terbuka' melakukan banyak kerja dalam ayat itu.",
+      "text_markdown": "Perkataan 'terbuka' melakukan banyak kerja dalam ayat itu.",
+      "title": "",
+      "tts": {
+        "text": "Perkataan 'terbuka' melakukan banyak kerja dalam ayat itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "Kedua.",
+      "text_markdown": "Kedua.",
+      "title": "",
+      "tts": {
+        "text": "Kedua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "Cohere, sebuah makmal Barat yang hampir tidak pernah mengeluarkan bobot, sebenarnya mengeluarkan bobot — North Mini Code, tiga puluh bilion jumlah, tiga bilion aktif, Apache 2.0, berjalan pada satu H100 pada empat-bit.",
+      "text_markdown": "Cohere, sebuah makmal Barat yang hampir tidak pernah mengeluarkan bobot, sebenarnya mengeluarkan bobot — North Mini Code, tiga puluh bilion jumlah, tiga bilion aktif, Apache 2.0, berjalan pada satu H100 pada empat-bit.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, sebuah makmal Barat yang hampir tidak pernah mengeluarkan bobot, sebenarnya mengeluarkan bobot — North Mini Code, tiga puluh bilion jumlah, tiga bilion aktif, Apache dua perpuluhan sifar, berjalan pada satu H satu ratus pada empat bit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "Sebuah makmal Barat yang mengeluarkan Apache 2.0 sebenar pada tahun 2026 adalah berita tersendiri.",
+      "text_markdown": "Sebuah makmal Barat yang mengeluarkan Apache 2.0 sebenar pada tahun 2026 adalah berita tersendiri.",
+      "title": "",
+      "tts": {
+        "text": "Sebuah makmal Barat yang mengeluarkan Apache dua perpuluhan sifar sebenar pada tahun dua ribu dua puluh enam adalah berita tersendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "Ketiga.",
+      "text_markdown": "Ketiga.",
+      "title": "",
+      "tts": {
+        "text": "Ketiga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "Apple sangat menekankan AI pada peranti di WWDC sebagai cerita strategik.",
+      "text_markdown": "Apple sangat menekankan AI pada peranti di WWDC sebagai cerita strategik.",
+      "title": "",
+      "tts": {
+        "text": "Apple sangat menekankan AI pada peranti di WWDC sebagai cerita strategik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "Tetapi model Siri baharu dilaporkan adalah penyulingan Gemini Google yang dilesenkan dan dikecilkan oleh Apple.",
+      "text_markdown": "Tetapi model Siri baharu dilaporkan adalah penyulingan Gemini Google yang dilesenkan dan dikecilkan oleh Apple.",
+      "title": "",
+      "tts": {
+        "text": "Tetapi model Siri baharu dilaporkan adalah penyulingan Gemini Google yang dilesenkan dan dikecilkan oleh Apple.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "Inferens tempatan, rantaian bekalan yang rumit.",
+      "text_markdown": "Inferens tempatan, rantaian bekalan yang rumit.",
+      "title": "",
+      "tts": {
+        "text": "Inferens tempatan, rantaian bekalan yang rumit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "Dan keempat.",
+      "text_markdown": "Dan keempat.",
+      "title": "",
+      "tts": {
+        "text": "Dan keempat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Alibaba melancarkan Qwen 3.7-Plus untuk ketersediaan umum, multimodal, memacu GUI daripada tangkapan skrin, sekitar empat puluh sen setiap juta token input.",
+      "text_markdown": "Alibaba melancarkan Qwen 3.7-Plus untuk ketersediaan umum, multimodal, memacu GUI daripada tangkapan skrin, sekitar empat puluh sen setiap juta token input.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba melancarkan Qwen tiga perpuluhan tujuh Plus untuk ketersediaan umum, multimodal, memacu GUI daripada tangkapan skrin, sekitar empat puluh sen setiap juta token input.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "Walaupun jenama Qwen, yang ini hanya API, bukan berat terbuka.",
+      "text_markdown": "Walaupun jenama Qwen, yang ini hanya API, bukan berat terbuka.",
+      "title": "",
+      "tts": {
+        "text": "Walaupun jenama Qwen, yang ini hanya A P I, bukan berat terbuka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "Perlu diketahui, kerana pendengar mengaitkan Qwen dengan sumber terbuka; yang ini tidak.",
+      "text_markdown": "Perlu diketahui, kerana pendengar mengaitkan Qwen dengan sumber terbuka; yang ini tidak.",
+      "title": "",
+      "tts": {
+        "text": "Perlu diketahui, kerana pendengar mengaitkan Qwen dengan sumber terbuka; yang ini tidak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "Makmal kecil minggu ini.",
+      "text_markdown": "Makmal kecil minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Makmal kecil minggu ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Ia dipanggil Kog.",
+      "text_markdown": "Ia dipanggil Kog.",
+      "title": "",
+      "tts": {
+        "text": "Ia dipanggil Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Sebelas orang di Paris, mendakwa tiga ribu token output sesaat setiap permintaan pada lapan GPU AMD MI300X.",
+      "text_markdown": "Sebelas orang di Paris, mendakwa tiga ribu token output sesaat setiap permintaan pada lapan GPU AMD MI300X.",
+      "title": "",
+      "tts": {
+        "text": "Sebelas orang di Paris, mendakwa tiga ribu token output sesaat setiap permintaan pada lapan G P U A M D M I tiga ratus X.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "Tawaran mereka — industri terlebih belanja pada silikon inferens tersuai sedangkan kesesakan adalah perisian sepanjang masa.",
+      "text_markdown": "Tawaran mereka — industri terlebih belanja pada silikon inferens tersuai sedangkan kesesakan adalah perisian sepanjang masa.",
+      "title": "",
+      "tts": {
+        "text": "Tawaran mereka — industri terlebih belanja pada silikon inferens tersuai sedangkan kesesakan adalah perisian sepanjang masa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "Sebelas orang, dan AMD bukannya NVIDIA.",
+      "text_markdown": "Sebelas orang, dan AMD bukannya NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Sebelas orang, dan A M D bukannya N V I D I A.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "Sejurus selepas IPO silikon tersuai, masa yang tepat untuk menentang arus.",
+      "text_markdown": "Sejurus selepas IPO silikon tersuai, masa yang tepat untuk menentang arus.",
+      "title": "",
+      "tts": {
+        "text": "Sejurus selepas I P O silikon tersuai, masa yang tepat untuk menentang arus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Bagaimana pula dengan perkakasan di bangku simpanan.",
+      "text_markdown": "Bagaimana pula dengan perkakasan di bangku simpanan.",
+      "title": "",
+      "tts": {
+        "text": "Bagaimana pula dengan perkakasan di bangku simpanan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "Raspberry Pi menghantar AI HAT+ 2 — empat puluh TOPS dipasang pada Pi 5.",
+      "text_markdown": "Raspberry Pi menghantar AI HAT+ 2 — empat puluh TOPS dipasang pada Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi menghantar A I H A T Plus dua — empat puluh T O P S dipasang pada Pi lima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "Jetson Orin Nano Super NVIDIA melakukan enam puluh tujuh TOPS dengan harga di bawah tiga ratus dolar.",
+      "text_markdown": "Jetson Orin Nano Super NVIDIA melakukan enam puluh tujuh TOPS dengan harga di bawah tiga ratus dolar.",
+      "title": "",
+      "tts": {
+        "text": "Jetson Orin Nano Super N V I D I A melakukan enam puluh tujuh T O P S dengan harga di bawah tiga ratus dolar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "Pada peranti dahulunya bermaksud Mac.",
+      "text_markdown": "Pada peranti dahulunya bermaksud Mac.",
+      "title": "",
+      "tts": {
+        "text": "Pada peranti dahulunya bermaksud Mac.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "Kini ia bermaksud papan yang boleh anda sembunyikan dalam laci.",
+      "text_markdown": "Kini ia bermaksud papan yang boleh anda sembunyikan dalam laci.",
+      "title": "",
+      "tts": {
+        "text": "Kini ia bermaksud papan yang boleh anda sembunyikan dalam laci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "Konsep minggu ini — penyebaran berbanding autoregresif.",
+      "text_markdown": "Konsep minggu ini — penyebaran berbanding autoregresif.",
+      "title": "",
+      "tts": {
+        "text": "Konsep minggu ini — penyebaran berbanding autoregresif.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "Destinasi sama, laluan berbeza.",
+      "text_markdown": "Destinasi sama, laluan berbeza.",
+      "title": "",
+      "tts": {
+        "text": "Destinasi sama, laluan berbeza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "Model autoregresif, kebanyakan LLM yang anda tahu, menjana satu token pada satu masa, mengkondisikannya, menjana yang seterusnya, ulang — berurutan mengikut reka bentuk.",
+      "text_markdown": "Model autoregresif, kebanyakan LLM yang anda tahu, menjana satu token pada satu masa, mengkondisikannya, menjana yang seterusnya, ulang — berurutan mengikut reka bentuk.",
+      "title": "",
+      "tts": {
+        "text": "Model autoregresif, kebanyakan L L M yang anda tahu, menjana satu token pada satu masa, mengkondisikannya, menjana yang seterusnya, ulang — berurutan mengikut reka bentuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "Model penyebaran bermula dengan blok hingar tulen dan menyahhingarkannya sekaligus dalam beberapa langkah tetap.",
+      "text_markdown": "Model penyebaran bermula dengan blok hingar tulen dan menyahhingarkannya sekaligus dalam beberapa langkah tetap.",
+      "title": "",
+      "tts": {
+        "text": "Model penyebaran bermula dengan blok hingar tulen dan menyahhingarkannya sekaligus dalam beberapa langkah tetap.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "Anda menukar sedikit kualiti untuk keparalelan, dan pada kiraan langkah kecil anda mendapat nombor daya pemprosesan yang menakjubkan itu.",
+      "text_markdown": "Anda menukar sedikit kualiti untuk keparalelan, dan pada kiraan langkah kecil anda mendapat nombor daya pemprosesan yang menakjubkan itu.",
+      "title": "",
+      "tts": {
+        "text": "Anda menukar sedikit kualiti untuk keparalelan, dan pada kiraan langkah kecil anda mendapat nombor daya pemprosesan yang menakjubkan itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "Jadi DiffusionGemma adalah kali pertama kita mempunyai berat terbuka untuk benar-benar merasakan perbezaannya.",
+      "text_markdown": "Jadi DiffusionGemma adalah kali pertama kita mempunyai berat terbuka untuk benar-benar merasakan perbezaannya.",
+      "title": "",
+      "tts": {
+        "text": "Jadi DiffusionGemma adalah kali pertama kita mempunyai berat terbuka untuk benar-benar merasakan perbezaannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "Kali pertama pada skala ini, ya.",
+      "text_markdown": "Kali pertama pada skala ini, ya.",
+      "title": "",
+      "tts": {
+        "text": "Kali pertama pada skala ini, ya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "Dan itulah sebabnya pasukan inferens sumber terbuka penting minggu ini — llama-dot-cpp, vLLM, MLX — merekalah yang akan belajar untuk menjayakannya pada perkakasan sebenar.",
+      "text_markdown": "Dan itulah sebabnya pasukan inferens sumber terbuka penting minggu ini — llama-dot-cpp, vLLM, MLX — merekalah yang akan belajar untuk menjayakannya pada perkakasan sebenar.",
+      "title": "",
+      "tts": {
+        "text": "Dan itulah sebabnya pasukan inferens sumber terbuka penting minggu ini — llama titik c p p, v L L M, M L X — merekalah yang akan belajar untuk menjayakannya pada perkakasan sebenar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-115",
+      "text": "Tempat yang baik untuk mendarat.",
+      "text_markdown": "Tempat yang baik untuk mendarat.",
+      "title": "",
+      "tts": {
+        "text": "Tempat yang baik untuk mendarat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-116",
+      "text": "Ron, terima kasih.",
+      "text_markdown": "Ron, terima kasih.",
+      "title": "",
+      "tts": {
+        "text": "Ron, terima kasih.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-117",
+      "text": "Bila-bila masa, Vindy.",
+      "text_markdown": "Bila-bila masa, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bila-bila masa, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-118",
+      "text": "Itu adalah AI This Week untuk 14 Jun 2026.",
+      "text_markdown": "Itu adalah AI This Week untuk 14 Jun 2026.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah A I This Week untuk empat belas Jun dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-119",
+      "text": "Rancangan yang sama, slot Ahad yang baharu.",
+      "text_markdown": "Rancangan yang sama, slot Ahad yang baharu.",
+      "title": "",
+      "tts": {
+        "text": "Rancangan yang sama, slot Ahad yang baharu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-120",
+      "text": "Bahasa akan terus dikeluarkan sehingga pagi Isnin; Corpán 0.18.0 boleh didapati di mana-mana anda mendapatkan aplikasi — cuba beatlounge.",
+      "text_markdown": "Bahasa akan terus dikeluarkan sehingga pagi Isnin; Corpán 0.18.0 boleh didapati di mana-mana anda mendapatkan aplikasi — cuba beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Bahasa akan terus dikeluarkan sehingga pagi Isnin; Corpán sifar titik satu lapan titik sifar boleh didapati di mana-mana anda mendapatkan aplikasi — cuba beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-121",
+      "text": "Sehingga Ahad depan, jaga diri.",
+      "text_markdown": "Sehingga Ahad depan, jaga diri.",
+      "title": "",
+      "tts": {
+        "text": "Sehingga Ahad depan, jaga diri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

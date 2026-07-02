@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "온대 초원",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "온대 초원",
+      "text_markdown": "온대 초원"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "온대 초원이 자라는 곳",
+      "text_markdown": "온대 초원이 자라는 곳"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원에 오신 것을 환영해요.",
+      "text_markdown": "온대 초원에 오신 것을 환영해요.",
+      "tts": {
+        "text": "온대 초원에 오신 것을 환영해요.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+      "text_markdown": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+      "tts": {
+        "text": "이곳은 세계의 위대한 생물군계 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "생물군계란 고유한 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+      "text_markdown": "생물군계란 고유한 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+      "tts": {
+        "text": "생물군계란 고유한 날씨와 식물과 동물을 가진 지구의 한 부분이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원은 나무가 거의 없는 넓은 풀밭이에요.",
+      "text_markdown": "온대 초원은 나무가 거의 없는 넓은 풀밭이에요.",
+      "tts": {
+        "text": "온대 초원은 나무가 거의 없는 넓은 풀밭이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "추운 북쪽과 따뜻한 열대 사이, 세계의 중간 지역에 자리해요.",
+      "text_markdown": "추운 북쪽과 따뜻한 열대 사이, 세계의 중간 지역에 자리해요.",
+      "tts": {
+        "text": "추운 북쪽과 따뜻한 열대 사이, 세계의 중간 지역에 자리해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "열대 사바나와 달리, 이 땅은 겨울이 춥고 여름이 따뜻해요.",
+      "text_markdown": "열대 사바나와 달리, 이 땅은 겨울이 춥고 여름이 따뜻해요.",
+      "tts": {
+        "text": "열대 사바나와 달리, 이 땅은 겨울이 춥고 여름이 따뜻해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계에서 가장 큰 온대 초원은 북아메리카와 유라시아에 있어요.",
+      "text_markdown": "세계에서 가장 큰 온대 초원은 북아메리카와 유라시아에 있어요.",
+      "tts": {
+        "text": "세계에서 가장 큰 온대 초원은 북아메리카와 유라시아에 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아메리카의 거대한 중앙 평원은 프레리라고 불려요.",
+      "text_markdown": "북아메리카의 거대한 중앙 평원은 프레리라고 불려요.",
+      "tts": {
+        "text": "북아메리카의 거대한 중앙 평원은 프레리라고 불려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "러시아, 우크라이나, 카자흐스탄, 몽골에서는 스텝이라고 불려요.",
+      "text_markdown": "러시아, 우크라이나, 카자흐스탄, 몽골에서는 스텝이라고 불려요.",
+      "tts": {
+        "text": "러시아, 우크라이나, 카자흐스탄, 몽골에서는 스텝이라고 불려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아르헨티나와 우루과이에서는 팜파스라고 불려요.",
+      "text_markdown": "아르헨티나와 우루과이에서는 팜파스라고 불려요.",
+      "tts": {
+        "text": "아르헨티나와 우루과이에서는 팜파스라고 불려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남쪽 아프리카와 호주 일부에는 더 작은 온대 초원이 있어요.",
+      "text_markdown": "남쪽 아프리카와 호주 일부에는 더 작은 온대 초원이 있어요.",
+      "tts": {
+        "text": "남쪽 아프리카와 호주 일부에는 더 작은 온대 초원이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 초원들은 저마다 따로 생겨났어요.",
+      "text_markdown": "이 초원들은 저마다 따로 생겨났어요.",
+      "tts": {
+        "text": "이 초원들은 저마다 따로 생겨났어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 세계 각 지역마다 식물과 동물이 달라요.",
+      "text_markdown": "그래서 세계 각 지역마다 식물과 동물이 달라요.",
+      "tts": {
+        "text": "그래서 세계 각 지역마다 식물과 동물이 달라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 모두 같은 모습을 띠고 있어요.",
+      "text_markdown": "하지만 모두 같은 모습을 띠고 있어요.",
+      "tts": {
+        "text": "하지만 모두 같은 모습을 띠고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀의 바다, 드넓은 하늘, 거센 바람, 그리고 강가에 늘어선 몇 그루 나무뿐이에요.",
+      "text_markdown": "풀의 바다, 드넓은 하늘, 거센 바람, 그리고 강가에 늘어선 몇 그루 나무뿐이에요.",
+      "tts": {
+        "text": "풀의 바다, 드넓은 하늘, 거센 바람, 그리고 강가에 늘어선 몇 그루 나무뿐이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원에 서면, 바람이 거의 늘 불고 있어요.",
+      "text_markdown": "온대 초원에 서면, 바람이 거의 늘 불고 있어요.",
+      "tts": {
+        "text": "온대 초원에 서면, 바람이 거의 늘 불고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀이 바다 표면처럼 움직여요.",
+      "text_markdown": "풀이 바다 표면처럼 움직여요.",
+      "tts": {
+        "text": "풀이 바다 표면처럼 움직여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사방으로 아주 멀리까지 보여요.",
+      "text_markdown": "사방으로 아주 멀리까지 보여요.",
+      "tts": {
+        "text": "사방으로 아주 멀리까지 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하늘이 어느 숲에서보다 두 배는 커 보여요.",
+      "text_markdown": "하늘이 어느 숲에서보다 두 배는 커 보여요.",
+      "tts": {
+        "text": "하늘이 어느 숲에서보다 두 배는 커 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 풀이 길고 푸르러요.",
+      "text_markdown": "여름에는 풀이 길고 푸르러요.",
+      "tts": {
+        "text": "여름에는 풀이 길고 푸르러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을이면 황금빛 갈색으로 변해요.",
+      "text_markdown": "가을이면 황금빛 갈색으로 변해요.",
+      "tts": {
+        "text": "가을이면 황금빛 갈색으로 변해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 눈 아래서 갈색으로 뻣뻣하게 굳어요.",
+      "text_markdown": "겨울에는 눈 아래서 갈색으로 뻣뻣하게 굳어요.",
+      "tts": {
+        "text": "겨울에는 눈 아래서 갈색으로 뻣뻣하게 굳어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄에는 싱싱하고 밝게 다시 자라나요.",
+      "text_markdown": "봄에는 싱싱하고 밝게 다시 자라나요.",
+      "tts": {
+        "text": "봄에는 싱싱하고 밝게 다시 자라나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 바로 온대 초원이에요.",
+      "text_markdown": "이것이 바로 온대 초원이에요.",
+      "tts": {
+        "text": "이것이 바로 온대 초원이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "온대 초원이 자라는 곳",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀과 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+      "text_markdown": "풀과 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+      "tts": {
+        "text": "풀과 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "날씨",
+      "text_markdown": "날씨"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원의 날씨는 드넓은 하늘에 의해 빚어져요.",
+      "text_markdown": "온대 초원의 날씨는 드넓은 하늘에 의해 빚어져요.",
+      "tts": {
+        "text": "온대 초원의 날씨는 드넓은 하늘에 의해 빚어져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바람을 막을 나무와 언덕이 거의 없어요.",
+      "text_markdown": "바람을 막을 나무와 언덕이 거의 없어요.",
+      "tts": {
+        "text": "바람을 막을 나무와 언덕이 거의 없어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "네 계절이 있고, 모두 뚜렷해요.",
+      "text_markdown": "네 계절이 있고, 모두 뚜렷해요.",
+      "tts": {
+        "text": "네 계절이 있고, 모두 뚜렷해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름은 덥고 밝아요.",
+      "text_markdown": "여름은 덥고 밝아요.",
+      "tts": {
+        "text": "여름은 덥고 밝아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해가 탁 트인 풀밭에 내리쬐고, 낮이 길어요.",
+      "text_markdown": "해가 탁 트인 풀밭에 내리쬐고, 낮이 길어요.",
+      "tts": {
+        "text": "해가 탁 트인 풀밭에 내리쬐고, 낮이 길어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오후 한나절 사이에 거대한 폭풍이 지평선에서 몰려올 수 있어요.",
+      "text_markdown": "오후 한나절 사이에 거대한 폭풍이 지평선에서 몰려올 수 있어요.",
+      "tts": {
+        "text": "오후 한나절 사이에 거대한 폭풍이 지평선에서 몰려올 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "번개가 저 멀리서 번쩍이고, 폭우가 한꺼번에 쏟아져요.",
+      "text_markdown": "번개가 저 멀리서 번쩍이고, 폭우가 한꺼번에 쏟아져요.",
+      "tts": {
+        "text": "번개가 저 멀리서 번쩍이고, 폭우가 한꺼번에 쏟아져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울은 추워요.",
+      "text_markdown": "겨울은 추워요.",
+      "tts": {
+        "text": "겨울은 추워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 초원에서는 기온이 몇 주 동안 영하로 뚝 떨어지기도 해요.",
+      "text_markdown": "어떤 초원에서는 기온이 몇 주 동안 영하로 뚝 떨어지기도 해요.",
+      "tts": {
+        "text": "어떤 초원에서는 기온이 몇 주 동안 영하로 뚝 떨어지기도 해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "눈이 탁 트인 땅을 휘몰아치고 길게 쌓여요.",
+      "text_markdown": "눈이 탁 트인 땅을 휘몰아치고 길게 쌓여요.",
+      "tts": {
+        "text": "눈이 탁 트인 땅을 휘몰아치고 길게 쌓여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울 바람은 강하고 매서워요.",
+      "text_markdown": "겨울 바람은 강하고 매서워요.",
+      "tts": {
+        "text": "겨울 바람은 강하고 매서워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "봄이 오면 눈이 녹고, 강물이 불어 흘러요.",
+      "text_markdown": "봄이 오면 눈이 녹고, 강물이 불어 흘러요.",
+      "tts": {
+        "text": "봄이 오면 눈이 녹고, 강물이 불어 흘러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀이 거의 하룻밤 사이에 푸르러져요.",
+      "text_markdown": "풀이 거의 하룻밤 사이에 푸르러져요.",
+      "tts": {
+        "text": "풀이 거의 하룻밤 사이에 푸르러져요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "새들이 따뜻한 땅에서 돌아와 공기를 소리로 채워요.",
+      "text_markdown": "새들이 따뜻한 땅에서 돌아와 공기를 소리로 채워요.",
+      "tts": {
+        "text": "새들이 따뜻한 땅에서 돌아와 공기를 소리로 채워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가을이 오면 풀은 황금빛이 되고, 바람은 서늘해지며, 무리들은 안식처로 이동해요.",
+      "text_markdown": "가을이 오면 풀은 황금빛이 되고, 바람은 서늘해지며, 무리들은 안식처로 이동해요.",
+      "tts": {
+        "text": "가을이 오면 풀은 황금빛이 되고, 바람은 서늘해지며, 무리들은 안식처로 이동해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "초원은 풀을 키울 만큼 딱 알맞은 비가 와요.",
+      "text_markdown": "초원은 풀을 키울 만큼 딱 알맞은 비가 와요.",
+      "tts": {
+        "text": "초원은 풀을 키울 만큼 딱 알맞은 비가 와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "날씨",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "큰 숲을 키울 만큼은 아니지만, 풀과 동물에게는 충분해요.",
+      "text_markdown": "큰 숲을 키울 만큼은 아니지만, 풀과 동물에게는 충분해요.",
+      "tts": {
+        "text": "큰 숲을 키울 만큼은 아니지만, 풀과 동물에게는 충분해요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "땅과 물",
+      "text_markdown": "땅과 물"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원의 땅은 대부분 평평하거나 완만하게 굽이쳐요.",
+      "text_markdown": "온대 초원의 땅은 대부분 평평하거나 완만하게 굽이쳐요.",
+      "tts": {
+        "text": "온대 초원의 땅은 대부분 평평하거나 완만하게 굽이쳐요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 곳에서는 낮은 언덕이 풀밭 위로 솟아 있어요.",
+      "text_markdown": "어떤 곳에서는 낮은 언덕이 풀밭 위로 솟아 있어요.",
+      "tts": {
+        "text": "어떤 곳에서는 낮은 언덕이 풀밭 위로 솟아 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 곳은 너무 평평해서 지평선이 완벽한 직선으로 보여요.",
+      "text_markdown": "어떤 곳은 너무 평평해서 지평선이 완벽한 직선으로 보여요.",
+      "tts": {
+        "text": "어떤 곳은 너무 평평해서 지평선이 완벽한 직선으로 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳의 흙은 지구에서 가장 비옥한 흙에 속해요.",
+      "text_markdown": "이곳의 흙은 지구에서 가장 비옥한 흙에 속해요.",
+      "tts": {
+        "text": "이곳의 흙은 지구에서 가장 비옥한 흙에 속해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수천 년 동안 풀이 자라고, 죽고, 땅으로 썩어 들어갔어요.",
+      "text_markdown": "수천 년 동안 풀이 자라고, 죽고, 땅으로 썩어 들어갔어요.",
+      "tts": {
+        "text": "수천 년 동안 풀이 자라고, 죽고, 땅으로 썩어 들어갔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 식물의 양분이 가득한 두껍고 검은 흙이 만들어졌어요.",
+      "text_markdown": "그래서 식물의 양분이 가득한 두껍고 검은 흙이 만들어졌어요.",
+      "tts": {
+        "text": "그래서 식물의 양분이 가득한 두껍고 검은 흙이 만들어졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그래서 이 땅들은 거대한 밀밭과 옥수수밭으로 많이 바뀌었어요.",
+      "text_markdown": "그래서 이 땅들은 거대한 밀밭과 옥수수밭으로 많이 바뀌었어요.",
+      "tts": {
+        "text": "그래서 이 땅들은 거대한 밀밭과 옥수수밭으로 많이 바뀌었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강은 초원을 길고 느린 곡선으로 굽이굽이 흘러요.",
+      "text_markdown": "강은 초원을 길고 느린 곡선으로 굽이굽이 흘러요.",
+      "tts": {
+        "text": "강은 초원을 길고 느린 곡선으로 굽이굽이 흘러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강은 머나먼 산과 눈 녹은 물을 탁 트인 땅으로 실어 날라요.",
+      "text_markdown": "강은 머나먼 산과 눈 녹은 물을 탁 트인 땅으로 실어 날라요.",
+      "tts": {
+        "text": "강은 머나먼 산과 눈 녹은 물을 탁 트인 땅으로 실어 날라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강기슭을 따라가면 가느다란 나무 줄이 보여요.",
+      "text_markdown": "강기슭을 따라가면 가느다란 나무 줄이 보여요.",
+      "tts": {
+        "text": "강기슭을 따라가면 가느다란 나무 줄이 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 나무들은 물길을 따라 자라고, 풀의 바다 속 푸른 띠처럼 보여요.",
+      "text_markdown": "이 나무들은 물길을 따라 자라고, 풀의 바다 속 푸른 띠처럼 보여요.",
+      "tts": {
+        "text": "이 나무들은 물길을 따라 자라고, 풀의 바다 속 푸른 띠처럼 보여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강에서 멀어지면 나무가 거의 없어요.",
+      "text_markdown": "강에서 멀어지면 나무가 거의 없어요.",
+      "tts": {
+        "text": "강에서 멀어지면 나무가 거의 없어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바람, 추운 겨울, 건조한 여름이 대부분의 나무가 자라지 못하게 해요.",
+      "text_markdown": "바람, 추운 겨울, 건조한 여름이 대부분의 나무가 자라지 못하게 해요.",
+      "tts": {
+        "text": "바람, 추운 겨울, 건조한 여름이 대부분의 나무가 자라지 못하게 해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 풀은 많이 필요하지 않아요.",
+      "text_markdown": "하지만 풀은 많이 필요하지 않아요.",
+      "tts": {
+        "text": "하지만 풀은 많이 필요하지 않아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "긴 뿌리가 비옥한 흙 깊이 뻗어 있고, 봄마다 다시 돌아와요.",
+      "text_markdown": "긴 뿌리가 비옥한 흙 깊이 뻗어 있고, 봄마다 다시 돌아와요.",
+      "tts": {
+        "text": "긴 뿌리가 비옥한 흙 깊이 뻗어 있고, 봄마다 다시 돌아와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이따금 불이 이 땅을 휩쓸고 지나가기도 해요.",
+      "text_markdown": "이따금 불이 이 땅을 휩쓸고 지나가기도 해요.",
+      "tts": {
+        "text": "이따금 불이 이 땅을 휩쓸고 지나가기도 해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀은 빨리 타지만, 깊은 뿌리는 살아남아요.",
+      "text_markdown": "풀은 빨리 타지만, 깊은 뿌리는 살아남아요.",
+      "tts": {
+        "text": "풀은 빨리 타지만, 깊은 뿌리는 살아남아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "땅과 물",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "비가 온 뒤, 풀은 전보다 더 푸르고 튼튼하게 다시 자라요.",
+      "text_markdown": "비가 온 뒤, 풀은 전보다 더 푸르고 튼튼하게 다시 자라요.",
+      "tts": {
+        "text": "비가 온 뒤, 풀은 전보다 더 푸르고 튼튼하게 다시 자라요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "식물",
+      "text_markdown": "식물"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀이 이 생물군계의 심장이에요.",
+      "text_markdown": "풀이 이 생물군계의 심장이에요.",
+      "tts": {
+        "text": "풀이 이 생물군계의 심장이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원에는 다양한 종류의 풀이 있어요.",
+      "text_markdown": "온대 초원에는 다양한 종류의 풀이 있어요.",
+      "tts": {
+        "text": "온대 초원에는 다양한 종류의 풀이 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 풀은 발목 높이로만 자라요.",
+      "text_markdown": "어떤 풀은 발목 높이로만 자라요.",
+      "tts": {
+        "text": "어떤 풀은 발목 높이로만 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 풀은 사람만큼 키가 커요.",
+      "text_markdown": "어떤 풀은 사람만큼 키가 커요.",
+      "tts": {
+        "text": "어떤 풀은 사람만큼 키가 커요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 풀이든 꼭대기에 씨가 가득한 길고 부드러운 이삭이 달려 있어요.",
+      "text_markdown": "어떤 풀이든 꼭대기에 씨가 가득한 길고 부드러운 이삭이 달려 있어요.",
+      "tts": {
+        "text": "어떤 풀이든 꼭대기에 씨가 가득한 길고 부드러운 이삭이 달려 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 바람이 씨 이삭의 물결을 땅 위로 실어 나르고 있어요.",
+      "text_markdown": "여름에는 바람이 씨 이삭의 물결을 땅 위로 실어 나르고 있어요.",
+      "tts": {
+        "text": "여름에는 바람이 씨 이삭의 물결을 땅 위로 실어 나르고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀은 검은 흙 깊이 뻗는 아주 긴 뿌리를 가지고 있어요.",
+      "text_markdown": "풀은 검은 흙 깊이 뻗는 아주 긴 뿌리를 가지고 있어요.",
+      "tts": {
+        "text": "풀은 검은 흙 깊이 뻗는 아주 긴 뿌리를 가지고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "땅속 뿌리가 땅 위 풀보다 더 길 수도 있어요.",
+      "text_markdown": "땅속 뿌리가 땅 위 풀보다 더 길 수도 있어요.",
+      "tts": {
+        "text": "땅속 뿌리가 땅 위 풀보다 더 길 수도 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀은 이렇게 가뭄과 추운 겨울을 견뎌요.",
+      "text_markdown": "풀은 이렇게 가뭄과 추운 겨울을 견뎌요.",
+      "tts": {
+        "text": "풀은 이렇게 가뭄과 추운 겨울을 견뎌요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 이렇게 풀은 불이 난 뒤에도 금세 다시 자라요.",
+      "text_markdown": "또 이렇게 풀은 불이 난 뒤에도 금세 다시 자라요.",
+      "tts": {
+        "text": "또 이렇게 풀은 불이 난 뒤에도 금세 다시 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀 사이로 따뜻한 달에는 작은 꽃들이 피어요.",
+      "text_markdown": "풀 사이로 따뜻한 달에는 작은 꽃들이 피어요.",
+      "tts": {
+        "text": "풀 사이로 따뜻한 달에는 작은 꽃들이 피어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "야생 해바라기와 많은 화사한 꽃들이 여름 초원을 가득 채워요.",
+      "text_markdown": "야생 해바라기와 많은 화사한 꽃들이 여름 초원을 가득 채워요.",
+      "tts": {
+        "text": "야생 해바라기와 많은 화사한 꽃들이 여름 초원을 가득 채워요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "벌과 나비가 꽃에서 꽃으로 옮겨 다녀요.",
+      "text_markdown": "벌과 나비가 꽃에서 꽃으로 옮겨 다녀요.",
+      "tts": {
+        "text": "벌과 나비가 꽃에서 꽃으로 옮겨 다녀요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "초원 대부분에는 나무가 거의 없어요.",
+      "text_markdown": "초원 대부분에는 나무가 거의 없어요.",
+      "tts": {
+        "text": "초원 대부분에는 나무가 거의 없어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자라는 곳에서도 나무는 작고 단단해요.",
+      "text_markdown": "자라는 곳에서도 나무는 작고 단단해요.",
+      "tts": {
+        "text": "자라는 곳에서도 나무는 작고 단단해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "물이 많은 강가나, 겨울에 눈이 모이는 낮은 곳에서 자라요.",
+      "text_markdown": "물이 많은 강가나, 겨울에 눈이 모이는 낮은 곳에서 자라요.",
+      "tts": {
+        "text": "물이 많은 강가나, 겨울에 눈이 모이는 낮은 곳에서 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "탁 트인 평원에서는 풀만 홀로 있어요.",
+      "text_markdown": "탁 트인 평원에서는 풀만 홀로 있어요.",
+      "tts": {
+        "text": "탁 트인 평원에서는 풀만 홀로 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "식물",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀은 생물군계 전체를 하나로 묶는 푸르고 황금빛이며 은빛인 융단이에요.",
+      "text_markdown": "풀은 생물군계 전체를 하나로 묶는 푸르고 황금빛이며 은빛인 융단이에요.",
+      "tts": {
+        "text": "풀은 생물군계 전체를 하나로 묶는 푸르고 황금빛이며 은빛인 융단이에요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "동물",
+      "text_markdown": "동물"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원의 동물들은 탁 트이고 바람 많은 세계에 맞게 만들어졌어요.",
+      "text_markdown": "온대 초원의 동물들은 탁 트이고 바람 많은 세계에 맞게 만들어졌어요.",
+      "tts": {
+        "text": "온대 초원의 동물들은 탁 트이고 바람 많은 세계에 맞게 만들어졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳에서 가장 큰 동물들은 풀을 뜯는 큰 동물이에요.",
+      "text_markdown": "이곳에서 가장 큰 동물들은 풀을 뜯는 큰 동물이에요.",
+      "tts": {
+        "text": "이곳에서 가장 큰 동물들은 풀을 뜯는 큰 동물이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀을 먹으며 큰 무리를 지어 탁 트인 땅을 가로질러요.",
+      "text_markdown": "풀을 먹으며 큰 무리를 지어 탁 트인 땅을 가로질러요.",
+      "tts": {
+        "text": "풀을 먹으며 큰 무리를 지어 탁 트인 땅을 가로질러요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아메리카에서 가장 유명한 동물은 들소예요.",
+      "text_markdown": "북아메리카에서 가장 유명한 동물은 들소예요.",
+      "tts": {
+        "text": "북아메리카에서 가장 유명한 동물은 들소예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "들소는 거대하고 무겁고 털북숭이이며, 큰 갈색 머리를 가졌어요.",
+      "text_markdown": "들소는 거대하고 무겁고 털북숭이이며, 큰 갈색 머리를 가졌어요.",
+      "tts": {
+        "text": "들소는 거대하고 무겁고 털북숭이이며, 큰 갈색 머리를 가졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "옛날에는 들소가 수백만 마리 무리로 평원을 누볐어요.",
+      "text_markdown": "옛날에는 들소가 수백만 마리 무리로 평원을 누볐어요.",
+      "tts": {
+        "text": "옛날에는 들소가 수백만 마리 무리로 평원을 누볐어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유라시아에서는 야생마가 스텝을 같은 방식으로 누볐어요.",
+      "text_markdown": "유라시아에서는 야생마가 스텝을 같은 방식으로 누볐어요.",
+      "tts": {
+        "text": "유라시아에서는 야생마가 스텝을 같은 방식으로 누볐어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남아메리카의 팜파스에서는 더 작은 사슴과 다른 풀 뜯는 동물이 그 자리를 차지했어요.",
+      "text_markdown": "남아메리카의 팜파스에서는 더 작은 사슴과 다른 풀 뜯는 동물이 그 자리를 차지했어요.",
+      "tts": {
+        "text": "남아메리카의 팜파스에서는 더 작은 사슴과 다른 풀 뜯는 동물이 그 자리를 차지했어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 작은 동물들이 풀밭 아래 살아요.",
+      "text_markdown": "많은 작은 동물들이 풀밭 아래 살아요.",
+      "tts": {
+        "text": "많은 작은 동물들이 풀밭 아래 살아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프레리도그, 땅다람쥐, 또 다른 작은 동물들이 흙 속에 긴 굴과 방을 파요.",
+      "text_markdown": "프레리도그, 땅다람쥐, 또 다른 작은 동물들이 흙 속에 긴 굴과 방을 파요.",
+      "tts": {
+        "text": "프레리도그, 땅다람쥐, 또 다른 작은 동물들이 흙 속에 긴 굴과 방을 파요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "낮에는 위로 올라와 먹이를 먹고, 안전을 위해 굴로 다시 들어가요.",
+      "text_markdown": "낮에는 위로 올라와 먹이를 먹고, 안전을 위해 굴로 다시 들어가요.",
+      "tts": {
+        "text": "낮에는 위로 올라와 먹이를 먹고, 안전을 위해 굴로 다시 들어가요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이런 작은 동물들로 가득한 초원은 땅에 작은 구멍이 가득해요.",
+      "text_markdown": "이런 작은 동물들로 가득한 초원은 땅에 작은 구멍이 가득해요.",
+      "tts": {
+        "text": "이런 작은 동물들로 가득한 초원은 땅에 작은 구멍이 가득해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "늑대, 여우, 작은 야생 고양이가 풀밭을 가로질러 사냥해요.",
+      "text_markdown": "늑대, 여우, 작은 야생 고양이가 풀밭을 가로질러 사냥해요.",
+      "tts": {
+        "text": "늑대, 여우, 작은 야생 고양이가 풀밭을 가로질러 사냥해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "늑대는 탁 트인 평원의 위대한 사냥꾼이에요.",
+      "text_markdown": "늑대는 탁 트인 평원의 위대한 사냥꾼이에요.",
+      "tts": {
+        "text": "늑대는 탁 트인 평원의 위대한 사냥꾼이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여우나 야생 고양이 같은 작은 사냥꾼은 쥐, 토끼, 새를 잡아요.",
+      "text_markdown": "여우나 야생 고양이 같은 작은 사냥꾼은 쥐, 토끼, 새를 잡아요.",
+      "tts": {
+        "text": "여우나 야생 고양이 같은 작은 사냥꾼은 쥐, 토끼, 새를 잡아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하늘 높이서, 매와 독수리가 천천히 원을 그려요.",
+      "text_markdown": "하늘 높이서, 매와 독수리가 천천히 원을 그려요.",
+      "tts": {
+        "text": "하늘 높이서, 매와 독수리가 천천히 원을 그려요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀밭 아래 움직임을 지켜봐요.",
+      "text_markdown": "풀밭 아래 움직임을 지켜봐요.",
+      "tts": {
+        "text": "풀밭 아래 움직임을 지켜봐요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "많은 종류의 새가 긴 풀에 숨겨진 채 땅 위에 바로 둥지를 틀어요.",
+      "text_markdown": "많은 종류의 새가 긴 풀에 숨겨진 채 땅 위에 바로 둥지를 틀어요.",
+      "tts": {
+        "text": "많은 종류의 새가 긴 풀에 숨겨진 채 땅 위에 바로 둥지를 틀어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 공기가 곤충들로 가득해요.",
+      "text_markdown": "여름에는 공기가 곤충들로 가득해요.",
+      "tts": {
+        "text": "여름에는 공기가 곤충들로 가득해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메뚜기가 따뜻한 바람 속에서 소리내며 뛰어요.",
+      "text_markdown": "메뚜기가 따뜻한 바람 속에서 소리내며 뛰어요.",
+      "tts": {
+        "text": "메뚜기가 따뜻한 바람 속에서 소리내며 뛰어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "나비와 벌이 꽃에서 꽃으로 옮겨 다녀요.",
+      "text_markdown": "나비와 벌이 꽃에서 꽃으로 옮겨 다녀요.",
+      "tts": {
+        "text": "나비와 벌이 꽃에서 꽃으로 옮겨 다녀요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뱀은 풀 사이를 미끄러지며 쥐와 새알을 찾아요.",
+      "text_markdown": "뱀은 풀 사이를 미끄러지며 쥐와 새알을 찾아요.",
+      "tts": {
+        "text": "뱀은 풀 사이를 미끄러지며 쥐와 새알을 찾아요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이곳의 모든 동물은 같은 교훈을 알고 있어요.",
+      "text_markdown": "이곳의 모든 동물은 같은 교훈을 알고 있어요.",
+      "tts": {
+        "text": "이곳의 모든 동물은 같은 교훈을 알고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "계절을 따라 움직여요.",
+      "text_markdown": "계절을 따라 움직여요.",
+      "tts": {
+        "text": "계절을 따라 움직여요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "뜨거운 해를 피해 숨어요.",
+      "text_markdown": "뜨거운 해를 피해 숨어요.",
+      "tts": {
+        "text": "뜨거운 해를 피해 숨어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "차가운 바람으로부터 달아나요.",
+      "text_markdown": "차가운 바람으로부터 달아나요.",
+      "tts": {
+        "text": "차가운 바람으로부터 달아나요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "동물",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "강을 찾을 수 있을 때 물을 마셔요.",
+      "text_markdown": "강을 찾을 수 있을 때 물을 마셔요.",
+      "tts": {
+        "text": "강을 찾을 수 있을 때 물을 마셔요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "사람들",
+      "text_markdown": "사람들"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들은 수천 년 동안 온대 초원에 살아왔어요.",
+      "text_markdown": "사람들은 수천 년 동안 온대 초원에 살아왔어요.",
+      "tts": {
+        "text": "사람들은 수천 년 동안 온대 초원에 살아왔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "탁 트인 땅, 동물 무리, 비옥한 흙이 그들의 삶을 빚어 왔어요.",
+      "text_markdown": "탁 트인 땅, 동물 무리, 비옥한 흙이 그들의 삶을 빚어 왔어요.",
+      "tts": {
+        "text": "탁 트인 땅, 동물 무리, 비옥한 흙이 그들의 삶을 빚어 왔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오래전, 아시아 스텝의 사람들이 야생마를 길들였어요.",
+      "text_markdown": "오래전, 아시아 스텝의 사람들이 야생마를 길들였어요.",
+      "tts": {
+        "text": "오래전, 아시아 스텝의 사람들이 야생마를 길들였어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말 등에서, 사람은 걸어서보다 훨씬 빨리 평원을 가로지를 수 있었어요.",
+      "text_markdown": "말 등에서, 사람은 걸어서보다 훨씬 빨리 평원을 가로지를 수 있었어요.",
+      "tts": {
+        "text": "말 등에서, 사람은 걸어서보다 훨씬 빨리 평원을 가로지를 수 있었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말은 초원 사람들에게 모든 것을 바꾸었어요.",
+      "text_markdown": "말은 초원 사람들에게 모든 것을 바꾸었어요.",
+      "tts": {
+        "text": "말은 초원 사람들에게 모든 것을 바꾸었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람들이 사냥하고, 여행하고, 싸우는 방식을 모두 바꾸었어요.",
+      "text_markdown": "사람들이 사냥하고, 여행하고, 싸우는 방식을 모두 바꾸었어요.",
+      "tts": {
+        "text": "사람들이 사냥하고, 여행하고, 싸우는 방식을 모두 바꾸었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스텝의 옛 사람들 중 많은 이들이 유목민이었어요.",
+      "text_markdown": "스텝의 옛 사람들 중 많은 이들이 유목민이었어요.",
+      "tts": {
+        "text": "스텝의 옛 사람들 중 많은 이들이 유목민이었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말, 소, 양, 염소 무리를 초원의 한 곳에서 다른 곳으로 옮겼어요.",
+      "text_markdown": "말, 소, 양, 염소 무리를 초원의 한 곳에서 다른 곳으로 옮겼어요.",
+      "tts": {
+        "text": "말, 소, 양, 염소 무리를 초원의 한 곳에서 다른 곳으로 옮겼어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여름에는 시원한 높은 평원으로 옮겨 갔어요.",
+      "text_markdown": "여름에는 시원한 높은 평원으로 옮겨 갔어요.",
+      "tts": {
+        "text": "여름에는 시원한 높은 평원으로 옮겨 갔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "겨울에는 더 낮고 따뜻한 골짜기로 내려왔어요.",
+      "text_markdown": "겨울에는 더 낮고 따뜻한 골짜기로 내려왔어요.",
+      "tts": {
+        "text": "겨울에는 더 낮고 따뜻한 골짜기로 내려왔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그들의 집은 펠트와 나무로 만든 둥근 천막이었어요.",
+      "text_markdown": "그들의 집은 펠트와 나무로 만든 둥근 천막이었어요.",
+      "tts": {
+        "text": "그들의 집은 펠트와 나무로 만든 둥근 천막이었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이런 둥근 천막은 한 시간 만에 해체해, 동물 등에 싣고, 다른 곳에 다시 세울 수 있어요.",
+      "text_markdown": "이런 둥근 천막은 한 시간 만에 해체해, 동물 등에 싣고, 다른 곳에 다시 세울 수 있어요.",
+      "tts": {
+        "text": "이런 둥근 천막은 한 시간 만에 해체해, 동물 등에 싣고, 다른 곳에 다시 세울 수 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "북아메리카에서는 평원 사람들이 수천 년 동안 큰 들소 무리와 함께 살았어요.",
+      "text_markdown": "북아메리카에서는 평원 사람들이 수천 년 동안 큰 들소 무리와 함께 살았어요.",
+      "tts": {
+        "text": "북아메리카에서는 평원 사람들이 수천 년 동안 큰 들소 무리와 함께 살았어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "탁 트인 땅을 가로질러 무리를 따라다녔어요.",
+      "text_markdown": "탁 트인 땅을 가로질러 무리를 따라다녔어요.",
+      "tts": {
+        "text": "탁 트인 땅을 가로질러 무리를 따라다녔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그들의 집은 나무 기둥에 가죽을 씌운 높은 천막이었어요.",
+      "text_markdown": "그들의 집은 나무 기둥에 가죽을 씌운 높은 천막이었어요.",
+      "tts": {
+        "text": "그들의 집은 나무 기둥에 가죽을 씌운 높은 천막이었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말이 평원에 들어오자, 그곳의 삶도 깊이 바뀌었어요.",
+      "text_markdown": "말이 평원에 들어오자, 그곳의 삶도 깊이 바뀌었어요.",
+      "tts": {
+        "text": "말이 평원에 들어오자, 그곳의 삶도 깊이 바뀌었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남아메리카 팜파스에서는 말을 탄 목동들이 땅의 일부가 되었어요.",
+      "text_markdown": "남아메리카 팜파스에서는 말을 탄 목동들이 땅의 일부가 되었어요.",
+      "tts": {
+        "text": "남아메리카 팜파스에서는 말을 탄 목동들이 땅의 일부가 되었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지난 몇백 년 사이, 온대 초원 대부분이 다시 바뀌었어요.",
+      "text_markdown": "지난 몇백 년 사이, 온대 초원 대부분이 다시 바뀌었어요.",
+      "tts": {
+        "text": "지난 몇백 년 사이, 온대 초원 대부분이 다시 바뀌었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "깊고 비옥한 흙이 갈아엎혀 밀, 옥수수, 다른 곡식을 키우게 되었어요.",
+      "text_markdown": "깊고 비옥한 흙이 갈아엎혀 밀, 옥수수, 다른 곡식을 키우게 되었어요.",
+      "tts": {
+        "text": "깊고 비옥한 흙이 갈아엎혀 밀, 옥수수, 다른 곡식을 키우게 되었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 세계를 먹이는 곡식의 많은 부분이 이 땅에서 나와요.",
+      "text_markdown": "오늘날 세계를 먹이는 곡식의 많은 부분이 이 땅에서 나와요.",
+      "tts": {
+        "text": "오늘날 세계를 먹이는 곡식의 많은 부분이 이 땅에서 나와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "무리를 따라 옮겨 다니던 옛 방식은 많은 곳에서 사라졌어요.",
+      "text_markdown": "무리를 따라 옮겨 다니던 옛 방식은 많은 곳에서 사라졌어요.",
+      "tts": {
+        "text": "무리를 따라 옮겨 다니던 옛 방식은 많은 곳에서 사라졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 노래와 이야기, 그리고 탁 트인 하늘에 대한 사랑은 살아 있어요.",
+      "text_markdown": "하지만 노래와 이야기, 그리고 탁 트인 하늘에 대한 사랑은 살아 있어요.",
+      "tts": {
+        "text": "하지만 노래와 이야기, 그리고 탁 트인 하늘에 대한 사랑은 살아 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "사람들",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어느 큰 초원에서든, 그곳에서 자란 사람들은 바람을 마음에 품고 있어요.",
+      "text_markdown": "어느 큰 초원에서든, 그곳에서 자란 사람들은 바람을 마음에 품고 있어요.",
+      "tts": {
+        "text": "어느 큰 초원에서든, 그곳에서 자란 사람들은 바람을 마음에 품고 있어요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "오늘의 초원",
+      "text_markdown": "오늘의 초원"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "온대 초원은 사람들에게 가장 중요한 생물군계 중 하나예요.",
+      "text_markdown": "온대 초원은 사람들에게 가장 중요한 생물군계 중 하나예요.",
+      "tts": {
+        "text": "온대 초원은 사람들에게 가장 중요한 생물군계 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "깊고 비옥한 흙은 먹거리를 키우기에 완벽해요.",
+      "text_markdown": "깊고 비옥한 흙은 먹거리를 키우기에 완벽해요.",
+      "tts": {
+        "text": "깊고 비옥한 흙은 먹거리를 키우기에 완벽해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계가 먹는 빵, 파스타, 옥수수 대부분이 이 땅에서 나와요.",
+      "text_markdown": "세계가 먹는 빵, 파스타, 옥수수 대부분이 이 땅에서 나와요.",
+      "tts": {
+        "text": "세계가 먹는 빵, 파스타, 옥수수 대부분이 이 땅에서 나와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 그 대가는 컸어요.",
+      "text_markdown": "하지만 그 대가는 컸어요.",
+      "tts": {
+        "text": "하지만 그 대가는 컸어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계의 원래 초원 대부분이 갈아엎혔어요.",
+      "text_markdown": "세계의 원래 초원 대부분이 갈아엎혔어요.",
+      "tts": {
+        "text": "세계의 원래 초원 대부분이 갈아엎혔어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "들소와 야생마의 큰 무리는 거의 사라졌어요.",
+      "text_markdown": "들소와 야생마의 큰 무리는 거의 사라졌어요.",
+      "tts": {
+        "text": "들소와 야생마의 큰 무리는 거의 사라졌어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "굴을 파는 작은 동물들은 살 곳이 줄어들었어요.",
+      "text_markdown": "굴을 파는 작은 동물들은 살 곳이 줄어들었어요.",
+      "tts": {
+        "text": "굴을 파는 작은 동물들은 살 곳이 줄어들었어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한때 지평선까지 뻗었던 풀밭이 이제는 작은 자투리 땅에서만 자라요.",
+      "text_markdown": "한때 지평선까지 뻗었던 풀밭이 이제는 작은 자투리 땅에서만 자라요.",
+      "tts": {
+        "text": "한때 지평선까지 뻗었던 풀밭이 이제는 작은 자투리 땅에서만 자라요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 곳에서는 풀이 사라지고 흙이 드러나면, 바람이 검은 흙을 날려 보내요.",
+      "text_markdown": "어떤 곳에서는 풀이 사라지고 흙이 드러나면, 바람이 검은 흙을 날려 보내요.",
+      "tts": {
+        "text": "어떤 곳에서는 풀이 사라지고 흙이 드러나면, 바람이 검은 흙을 날려 보내요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계 곳곳의 많은 단체가 남은 것을 지키려 애쓰고 있어요.",
+      "text_markdown": "세계 곳곳의 많은 단체가 남은 것을 지키려 애쓰고 있어요.",
+      "tts": {
+        "text": "세계 곳곳의 많은 단체가 남은 것을 지키려 애쓰고 있어요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀이 다시 길게 자랄 수 있는 공원들을 따로 마련해요.",
+      "text_markdown": "풀이 다시 길게 자랄 수 있는 공원들을 따로 마련해요.",
+      "tts": {
+        "text": "풀이 다시 길게 자랄 수 있는 공원들을 따로 마련해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "들소와 다른 동물들이 한때 채웠던 땅에 다시 돌아오도록 도와요.",
+      "text_markdown": "들소와 다른 동물들이 한때 채웠던 땅에 다시 돌아오도록 도와요.",
+      "tts": {
+        "text": "들소와 다른 동물들이 한때 채웠던 땅에 다시 돌아오도록 도와요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "잃지 않고 쓸 수 있도록 깊은 흙을 연구해요.",
+      "text_markdown": "잃지 않고 쓸 수 있도록 깊은 흙을 연구해요.",
+      "tts": {
+        "text": "잃지 않고 쓸 수 있도록 깊은 흙을 연구해요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "건강한 초원은 지구에서 가장 생기 넘치는 곳 중 하나예요.",
+      "text_markdown": "건강한 초원은 지구에서 가장 생기 넘치는 곳 중 하나예요.",
+      "tts": {
+        "text": "건강한 초원은 지구에서 가장 생기 넘치는 곳 중 하나예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "오늘의 초원",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우리가 보살필 만한 가치가 있어요.",
+      "text_markdown": "우리가 보살필 만한 가치가 있어요.",
+      "tts": {
+        "text": "우리가 보살필 만한 가치가 있어요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "맺음말",
+      "text_markdown": "맺음말"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 바로 온대 초원이에요.",
+      "text_markdown": "이것이 바로 온대 초원이에요.",
+      "tts": {
+        "text": "이것이 바로 온대 초원이에요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀과 드넓은 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+      "text_markdown": "풀과 드넓은 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+      "tts": {
+        "text": "풀과 드넓은 하늘과 바뀌는 계절이 펼쳐진, 넓고 바람 많은 세계예요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "언젠가 그곳에 서게 된다면, 잠시 가만히 있어 보세요.",
+      "text_markdown": "언젠가 그곳에 서게 된다면, 잠시 가만히 있어 보세요.",
+      "tts": {
+        "text": "언젠가 그곳에 서게 된다면, 잠시 가만히 있어 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "풀밭을 가로지르는 바람 소리에 귀 기울여 보세요.",
+      "text_markdown": "풀밭을 가로지르는 바람 소리에 귀 기울여 보세요.",
+      "tts": {
+        "text": "풀밭을 가로지르는 바람 소리에 귀 기울여 보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "길게 뻗은 지평선을 바라보세요.",
+      "text_markdown": "길게 뻗은 지평선을 바라보세요.",
+      "tts": {
+        "text": "길게 뻗은 지평선을 바라보세요.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "맺음말",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "생물군계의 심장이 당신 주위에서 뛰는 것을 느낄 수 있을 거예요.",
+      "text_markdown": "생물군계의 심장이 당신 주위에서 뛰는 것을 느낄 수 있을 거예요.",
+      "tts": {
+        "text": "생물군계의 심장이 당신 주위에서 뛰는 것을 느낄 수 있을 거예요.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "yue-Hant-HK",
+  "total_segments": 121,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "歡迎收睇《本週AI》。",
+      "text_markdown": "歡迎收睇《本週AI》。",
+      "title": "",
+      "tts": {
+        "text": "歡迎收睇《本週AI》。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "我係Vindy。",
+      "text_markdown": "我係Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我係Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "同我一齊嘅，一如既往，係Ron。",
+      "text_markdown": "同我一齊嘅，一如既往，係Ron。",
+      "title": "",
+      "tts": {
+        "text": "同我一齊嘅，一如既往，係Ron。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "好開心喺度，Vindy。",
+      "text_markdown": "好開心喺度，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "好開心喺度，Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "今日係2026年6月14號，星期日。",
+      "text_markdown": "今日係2026年6月14號，星期日。",
+      "title": "",
+      "tts": {
+        "text": "今日係二零二六年六月十四號，星期日。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "今日有兩樣嘢唔同咗。",
+      "text_markdown": "今日有兩樣嘢唔同咗。",
+      "title": "",
+      "tts": {
+        "text": "今日有兩樣嘢唔同咗。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "我哋將會改喺星期日播出，而且我哋會第一次話你知，究竟係邊個製作呢個節目。",
+      "text_markdown": "我哋將會改喺星期日播出，而且我哋會第一次話你知，究竟係邊個製作呢個節目。",
+      "title": "",
+      "tts": {
+        "text": "我哋將會改喺星期日播出，而且我哋會第一次話你知，究竟係邊個製作呢個節目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "然後返去常規節目內容——開放權重、小型實驗室，同埋更廣泛嘅AI週報。",
+      "text_markdown": "然後返去常規節目內容——開放權重、小型實驗室，同埋更廣泛嘅AI週報。",
+      "title": "",
+      "tts": {
+        "text": "然後返去常規節目內容——開放權重、小型實驗室，同埋更廣泛嘅AI週報。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "稍後內容——時間表調整同埋原因。",
+      "text_markdown": "稍後內容——時間表調整同埋原因。",
+      "title": "",
+      "tts": {
+        "text": "稍後內容——時間表調整同埋原因。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "首次披露Corpora Inc.，呢個係Corpán應用程式同埋呢個播客背後嘅小型團隊。",
+      "text_markdown": "首次披露Corpora Inc.，呢個係Corpán應用程式同埋呢個播客背後嘅小型團隊。",
+      "title": "",
+      "tts": {
+        "text": "首次披露Corpora Inc.，呢個係Corpán應用程式同埋呢個播客背後嘅小型團隊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "beatlounge嘅頭條新聞，我哋嘅新音樂包將會喺Corpán 0.18.0推出。",
+      "text_markdown": "beatlounge嘅頭條新聞，我哋嘅新音樂包將會喺Corpán 0.18.0推出。",
+      "title": "",
+      "tts": {
+        "text": "beatlounge嘅頭條新聞，我哋嘅新音樂包將會喺Corpán零點一八點零推出。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本週開放權重，由Google首個開放擴散文本模型領銜。",
+      "text_markdown": "本週開放權重，由Google首個開放擴散文本模型領銜。",
+      "title": "",
+      "tts": {
+        "text": "本週開放權重，由Google首個開放擴散文本模型領銜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "透過開放生態系統視角嘅快速新聞剪輯。",
+      "text_markdown": "透過開放生態系統視角嘅快速新聞剪輯。",
+      "title": "",
+      "tts": {
+        "text": "透過開放生態系統視角嘅快速新聞剪輯。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本週小型實驗室——巴黎有十一個人對AMD矽晶片作出逆向押注。",
+      "text_markdown": "本週小型實驗室——巴黎有十一個人對AMD矽晶片作出逆向押注。",
+      "title": "",
+      "tts": {
+        "text": "本週小型實驗室——巴黎有十一個人對AMD矽晶片作出逆向押注。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "我哋本週嘅概念——擴散模型對比自回歸模型，呢個係本週主要發佈背後嘅技巧。",
+      "text_markdown": "我哋本週嘅概念——擴散模型對比自回歸模型，呢個係本週主要發佈背後嘅技巧。",
+      "title": "",
+      "tts": {
+        "text": "我哋本週嘅概念——擴散模型對比自回歸模型，呢個係本週主要發佈背後嘅技巧。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron，我哋由時間表講起啦。",
+      "text_markdown": "Ron，我哋由時間表講起啦。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我哋由時間表講起啦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "點解我哋要將節目由星期三移開呢？",
+      "text_markdown": "點解我哋要將節目由星期三移開呢？",
+      "title": "",
+      "tts": {
+        "text": "點解我哋要將節目由星期三移開呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "星期三係奧丁嘅日子，而奧丁忙於統治阿斯嘉。",
+      "text_markdown": "星期三係奧丁嘅日子，而奧丁忙於統治阿斯嘉。",
+      "title": "",
+      "tts": {
+        "text": "星期三係奧丁嘅日子，而奧丁忙於統治阿斯嘉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "我哋係一個有正職嘅小團隊，而週中截稿從來都唔係咁順利。",
+      "text_markdown": "我哋係一個有正職嘅小團隊，而週中截稿從來都唔係咁順利。",
+      "title": "",
+      "tts": {
+        "text": "我哋係一個有正職嘅小團隊，而週中截稿從來都唔係咁順利。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "星期日係一週嘅結束，亦都係下一週嘅開始，呢種節奏對於一個新聞節目嚟講感覺啱啱好。",
+      "text_markdown": "星期日係一週嘅結束，亦都係下一週嘅開始，呢種節奏對於一個新聞節目嚟講感覺啱啱好。",
+      "title": "",
+      "tts": {
+        "text": "星期日係一週嘅結束，亦都係下一週嘅開始，呢種節奏對於一個新聞節目嚟講感覺啱啱好。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "實際嘅推出方式係點樣嘅呢？",
+      "text_markdown": "實際嘅推出方式係點樣嘅呢？",
+      "title": "",
+      "tts": {
+        "text": "實際嘅推出方式係點樣嘅呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "佢會喺星期六以英文開始，然後逐個語言推出，直到星期一早上，當每個翻譯同音頻處理完成。",
+      "text_markdown": "佢會喺星期六以英文開始，然後逐個語言推出，直到星期一早上，當每個翻譯同音頻處理完成。",
+      "title": "",
+      "tts": {
+        "text": "佢會喺星期六以英文開始，然後逐個語言推出，直到星期一早上，當每個翻譯同音頻處理完成。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "到咗星期一飲咖啡嘅時間，我哋應該會接近五十種語言。",
+      "text_markdown": "到咗星期一飲咖啡嘅時間，我哋應該會接近五十種語言。",
+      "title": "",
+      "tts": {
+        "text": "到咗星期一飲咖啡嘅時間，我哋應該會接近五十種語言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "呢個就帶到我哋去第二樣新嘢。",
+      "text_markdown": "呢個就帶到我哋去第二樣新嘢。",
+      "title": "",
+      "tts": {
+        "text": "呢個就帶到我哋去第二樣新嘢。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "邊個製作呢個節目。",
+      "text_markdown": "邊個製作呢個節目。",
+      "title": "",
+      "tts": {
+        "text": "邊個製作呢個節目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Corpora Inc.，一個小型獨立團隊，開發Corpán應用程式並製作呢個播客。",
+      "text_markdown": "Corpora Inc.，一個小型獨立團隊，開發Corpán應用程式並製作呢個播客。",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc.，一個小型獨立團隊，開發Corpán應用程式並製作呢個播客。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "咩係Corpán？",
+      "text_markdown": "咩係Corpán？",
+      "title": "",
+      "tts": {
+        "text": "咩係Corpán？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一個語言、音樂同學習嘅遊樂場，以裝置優先（on-device-first）嘅方式構建。",
+      "text_markdown": "一個語言、音樂同學習嘅遊樂場，以裝置優先（on-device-first）嘅方式構建。",
+      "title": "",
+      "tts": {
+        "text": "一個語言、音樂同學習嘅遊樂場，以裝置優先嘅方式構建。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "解釋下「裝置優先」——喺實際操作中係咩意思？",
+      "text_markdown": "解釋下「裝置優先」——喺實際操作中係咩意思？",
+      "title": "",
+      "tts": {
+        "text": "解釋下「裝置優先」——喺實際操作中係咩意思？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "佢嘅意思係，只要功能允許，我哋都會優先選擇喺本地運行。",
+      "text_markdown": "佢嘅意思係，只要功能允許，我哋都會優先選擇喺本地運行。",
+      "title": "",
+      "tts": {
+        "text": "佢嘅意思係，只要功能允許，我哋都會優先選擇喺本地運行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen3-4B 用於助手，Whisper large-v3 用於語音識別，Chatterbox 用於語音合成，Stable Diffusion three-and-a-half 用於圖像，LoRA pipelines 用於角色導師。",
+      "text_markdown": "Qwen3-4B 用於助手，Whisper large-v3 用於語音識別，Chatterbox 用於語音合成，Stable Diffusion three-and-a-half 用於圖像，LoRA pipelines 用於角色導師。",
+      "title": "",
+      "tts": {
+        "text": "Qwen 三四 B 用於助手，Whisper large v 三 用於語音識別，Chatterbox 用於語音合成，Stable Diffusion 三點五 用於圖像，LoRA pipelines 用於角色導師。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "所有這些都可以在你的手機或平板電腦上，離線、飛行模式下，甚至在荒山野嶺中運行。",
+      "text_markdown": "所有這些都可以在你的手機或平板電腦上，離線、飛行模式下，甚至在荒山野嶺中運行。",
+      "title": "",
+      "tts": {
+        "text": "所有這些都可以在你的手機或平板電腦上，離線、飛行模式下，甚至在荒山野嶺中運行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "真正需要網絡的功能——例如世界電台、多人遊戲——會用到網絡，我們對此從不掩飾。",
+      "text_markdown": "真正需要網絡的功能——例如世界電台、多人遊戲——會用到網絡，我們對此從不掩飾。",
+      "title": "",
+      "tts": {
+        "text": "真正需要網絡的功能——例如世界電台、多人遊戲——會用到網絡，我們對此從不掩飾。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "還有商業方面。",
+      "text_markdown": "還有商業方面。",
+      "title": "",
+      "tts": {
+        "text": "還有商業方面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "精簡的獨立團隊，背後沒有十億美元的資金，應用程式今日無廣告，設有慷慨的免費層級，以及供想支持我們工作的人選擇的高級訂閱。",
+      "text_markdown": "精簡的獨立團隊，背後沒有十億美元的資金，應用程式今日無廣告，設有慷慨的免費層級，以及供想支持我們工作的人選擇的高級訂閱。",
+      "title": "",
+      "tts": {
+        "text": "精簡嘅獨立團隊，背後冇十億美元嘅資金，應用程式今日冇廣告，設有慷慨嘅免費層級，以及供想支持我哋工作嘅人選擇嘅高級訂閱。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "我們希望盡可能保持無廣告——不承諾永遠，但這是我們的方向。",
+      "text_markdown": "我們希望盡可能保持無廣告——不承諾永遠，但這是我們的方向。",
+      "title": "",
+      "tts": {
+        "text": "我哋希望盡可能保持冇廣告——唔承諾永遠，但呢個係我哋嘅方向。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "你實際出貨的證明是什麼？",
+      "text_markdown": "你實際出貨的證明是什麼？",
+      "title": "",
+      "tts": {
+        "text": "你實際出貨的證明是什麼？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "大多數星期我們都會推出一些東西——書籍旁白、套件、應用程式發布、這個節目——今天已涵蓋三十五種以上語言，而且還在不斷增加。",
+      "text_markdown": "大多數星期我們都會推出一些東西——書籍旁白、套件、應用程式發布、這個節目——今天已涵蓋三十五種以上語言，而且還在不斷增加。",
+      "title": "",
+      "tts": {
+        "text": "大多數星期我哋都會推出啲嘢——書籍旁白、套件、應用程式發布、呢個節目——今日已涵蓋三十五加種語言，而且仲不斷增加。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "為什麼要做這些？",
+      "text_markdown": "為什麼要做這些？",
+      "title": "",
+      "tts": {
+        "text": "為什麼要做這些？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "這就是我們的理念——證明一種前沿品質、設備優先、多語言學習體驗可以由一個沒有龐大資金的小團隊創造，同時盡可能保持應用程式無廣告。",
+      "text_markdown": "這就是我們的理念——證明一種前沿品質、設備優先、多語言學習體驗可以由一個沒有龐大資金的小團隊創造，同時盡可能保持應用程式無廣告。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係我哋嘅理念——證明一種前沿品質、設備優先、多語言學習體驗可以由一個冇龐大資金嘅小團隊創造，同時盡可能保持應用程式冇廣告。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "這就帶我們去到頭條新聞——beatlounge。",
+      "text_markdown": "這就帶我們去到頭條新聞——beatlounge。",
+      "title": "",
+      "tts": {
+        "text": "這就帶我們去到頭條新聞——beatlounge。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "它將於本週在 Corpán 0.18.0 版本中推出。",
+      "text_markdown": "它將於本週在 Corpán 0.18.0 版本中推出。",
+      "title": "",
+      "tts": {
+        "text": "佢將於本週喺 Corpán 零點一八點零 版本中推出。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "beatlounge 是一個節奏編曲器和一個語言工具，集於一身。",
+      "text_markdown": "beatlounge 是一個節奏編曲器和一個語言工具，集於一身。",
+      "title": "",
+      "tts": {
+        "text": "beatlounge 是一個節奏編曲器和一個語言工具，集於一身。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一個以拍點定址的編曲器，每拍九百六十個脈衝，一個支援西方調式、印度 thaats、卡納提克 melakartas 和阿拉伯 maqamat 的和聲引擎，以及一個包含超過一千萬個真實語言短語的語料庫，涵蓋五十多種語言。",
+      "text_markdown": "一個以拍點定址的編曲器，每拍九百六十個脈衝，一個支援西方調式、印度 thaats、卡納提克 melakartas 和阿拉伯 maqamat 的和聲引擎，以及一個包含超過一千萬個真實語言短語的語料庫，涵蓋五十多種語言。",
+      "title": "",
+      "tts": {
+        "text": "一個以拍點定址嘅編曲器，每拍九百六十個脈衝，一個支援西方調式、印度 thaats、卡納提克 melakartas 同埋阿拉伯 maqamat 嘅和聲引擎，以及一個包含超過一千萬個真實語言短語嘅語料庫，涵蓋五十多種語言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "所有都可以進行音高演奏，一旦套件安裝在你的設備上，就可以離線播放。",
+      "text_markdown": "所有都可以進行音高演奏，一旦套件安裝在你的設備上，就可以離線播放。",
+      "title": "",
+      "tts": {
+        "text": "所有都可以進行音高演奏，一旦套件安裝喺你嘅設備上，就可以離線播放。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "所以樂器就是語言。",
+      "text_markdown": "所以樂器就是語言。",
+      "title": "",
+      "tts": {
+        "text": "所以樂器就是語言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "你會像彈奏音符一樣彈奏短語。",
+      "text_markdown": "你會像彈奏音符一樣彈奏短語。",
+      "title": "",
+      "tts": {
+        "text": "你會像彈奏音符一樣彈奏短語。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "第一拍的印地語短語，第二拍後面的一個阿拉伯語感嘆詞，一個作為漸強音的普通話音節。",
+      "text_markdown": "第一拍的印地語短語，第二拍後面的一個阿拉伯語感嘆詞，一個作為漸強音的普通話音節。",
+      "title": "",
+      "tts": {
+        "text": "第一拍的印地語短語，第二拍後面的一個阿拉伯語感嘆詞，一個作為漸強音的普通話音節。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它是一個 DAW，其中樣本是句子，由設備上的 TTS 發聲。",
+      "text_markdown": "它是一個 DAW，其中樣本是句子，由設備上的 TTS 發聲。",
+      "title": "",
+      "tts": {
+        "text": "佢係一個 D A W，其中樣本係句子，由設備上嘅 T T S 發聲。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "不需要樂理知識。",
+      "text_markdown": "不需要樂理知識。",
+      "title": "",
+      "tts": {
+        "text": "不需要樂理知識。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "其實沒什麼。",
+      "text_markdown": "其實沒什麼。",
+      "title": "",
+      "tts": {
+        "text": "其實沒什麼。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "和聲引擎會處理規則；你只需指向你喜歡的聲音，調式就會保持清晰。",
+      "text_markdown": "和聲引擎會處理規則；你只需指向你喜歡的聲音，調式就會保持清晰。",
+      "title": "",
+      "tts": {
+        "text": "和聲引擎會處理規則；你只需指向你喜歡的聲音，調式就會保持清晰。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "0.18.0 還有什麼？",
+      "text_markdown": "0.18.0 還有什麼？",
+      "title": "",
+      "tts": {
+        "text": "零點一八點零 仲有啲乜嘢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "底層有三個工程項目——內容套件的主機接縫功能已上線，並以 beatlounge 作為試點。",
+      "text_markdown": "底層有三個工程項目——內容套件的主機接縫功能已上線，並以 beatlounge 作為試點。",
+      "title": "",
+      "tts": {
+        "text": "底層有三個工程項目——內容套件的主機接縫功能已上線，並以 beatlounge 作為試點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Android 現在會捕捉原生錯誤追蹤，這樣 llama 和 ggml 崩潰就可以得到適當的診斷。",
+      "text_markdown": "Android 現在會捕捉原生錯誤追蹤，這樣 llama 和 ggml 崩潰就可以得到適當的診斷。",
+      "title": "",
+      "tts": {
+        "text": "Android 而家會捕捉原生錯誤追蹤，咁樣 llama 同 ggml 崩潰就可以得到適當嘅診斷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "我們還解決了以前會導致 iOS OOM 的多 GB 模型安裝問題——現在它會串流到磁碟，而不是在 RAM 中緩衝兩點五 GB 的 Qwen3-4B。",
+      "text_markdown": "我們還解決了以前會導致 iOS OOM 的多 GB 模型安裝問題——現在它會串流到磁碟，而不是在 RAM 中緩衝兩點五 GB 的 Qwen3-4B。",
+      "title": "",
+      "tts": {
+        "text": "我哋仲解決咗以前會導致 i O S O O M 嘅多 gigabyte 模型安裝問題——而家佢會串流到磁碟，而唔係喺 R A M 中緩衝兩點五 gigabytes 嘅 Qwen 三四 B。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "底層枯燥，上層有趣。",
+      "text_markdown": "底層枯燥，上層有趣。",
+      "title": "",
+      "tts": {
+        "text": "底層枯燥，上層有趣。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "這大概就是整個公司的簡介。",
+      "text_markdown": "這大概就是整個公司的簡介。",
+      "title": "",
+      "tts": {
+        "text": "這大概就是整個公司的簡介。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "好的，我們轉到開放權重。",
+      "text_markdown": "好的，我們轉到開放權重。",
+      "title": "",
+      "tts": {
+        "text": "好的，我們轉到開放權重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "這週有什麼大新聞？",
+      "text_markdown": "這週有什麼大新聞？",
+      "title": "",
+      "tts": {
+        "text": "這週有什麼大新聞？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Google 推出了 DiffusionGemma。",
+      "text_markdown": "Google 推出了 DiffusionGemma。",
+      "title": "",
+      "tts": {
+        "text": "Google 推出了 DiffusionGemma。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一個有 260 億個參數的專家混合模型，其中 38 億個活躍，在 Hugging Face 上以 Apache 2.0 許可發布，它透過擴散而非自動回歸來生成文本。",
+      "text_markdown": "一個有 260 億個參數的專家混合模型，其中 38 億個活躍，在 Hugging Face 上以 Apache 2.0 許可發布，它透過擴散而非自動回歸來生成文本。",
+      "title": "",
+      "tts": {
+        "text": "一個有二十六億個參數的專家混合模型，其中三點八億個活躍，在 Hugging Face 上以 Apache 二點零許可發布，它透過擴散而非自動回歸來生成文本。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "用白話文講 — 文本擴散到底是什麼意思？",
+      "text_markdown": "用白話文講 — 文本擴散到底是什麼意思？",
+      "title": "",
+      "tts": {
+        "text": "用白話文講 — 文本擴散到底是什麼意思？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它不是一次預測一個 token，而是並行地對一個 256 個 token 的區塊進行去噪。",
+      "text_markdown": "它不是一次預測一個 token，而是並行地對一個 256 個 token 的區塊進行去噪。",
+      "title": "",
+      "tts": {
+        "text": "它不是一次預測一個 token，而是並行地對一個二百五十六個 token 的區塊進行去噪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "在單個 H100 上每秒超過一千個 token，比同類的自動回歸 Gemma 快約四倍。",
+      "text_markdown": "在單個 H100 上每秒超過一千個 token，比同類的自動回歸 Gemma 快約四倍。",
+      "title": "",
+      "tts": {
+        "text": "在單個 H 一百 上每秒超過一千個 token，比同類的自動回歸 Gemma 快約四倍。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "但有什麼問題呢？",
+      "text_markdown": "但有什麼問題呢？",
+      "title": "",
+      "tts": {
+        "text": "但有什麼問題呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "在 MMLU 和編碼方面的分數較低 — Google 自己也這麼說；這次發布是為了速度關鍵型工作，而不是為了爭奪排行榜。",
+      "text_markdown": "在 MMLU 和編碼方面的分數較低 — Google 自己也這麼說；這次發布是為了速度關鍵型工作，而不是為了爭奪排行榜。",
+      "title": "",
+      "tts": {
+        "text": "在 MMLU 和編碼方面的分數較低 — Google 自己也這麼說；這次發布是為了速度關鍵型工作，而不是為了爭奪排行榜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "還有開源語音模型 — 任何東西。",
+      "text_markdown": "還有開源語音模型 — 任何東西。",
+      "title": "",
+      "tts": {
+        "text": "還有開源語音模型 — 任何東西。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "同一週內發布了兩個。",
+      "text_markdown": "同一週內發布了兩個。",
+      "title": "",
+      "tts": {
+        "text": "同一週內發布了兩個。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "中國社交網絡 RedNote 開源了 dots-dot-tts — 20 億個參數，完全連續，在整個管道中沒有任何離散 token，首個 token 延遲為 54 毫秒，Apache 2.0。",
+      "text_markdown": "中國社交網絡 RedNote 開源了 dots-dot-tts — 20 億個參數，完全連續，在整個管道中沒有任何離散 token，首個 token 延遲為 54 毫秒，Apache 2.0。",
+      "title": "",
+      "tts": {
+        "text": "中國社交網絡 RedNote 開源了 dots-dot-tts — 二十億個參數，完全連續，在整個管道中沒有任何離散 token，首個 token 延遲為五十四毫秒，Apache 二點零。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "而 Boson AI 推出了 Higgs Audio 第三版 — 40 億個參數，102 種語言，21 個情感控制 token，串流輸出，非商業許可；最後一點是重點。",
+      "text_markdown": "而 Boson AI 推出了 Higgs Audio 第三版 — 40 億個參數，102 種語言，21 個情感控制 token，串流輸出，非商業許可；最後一點是重點。",
+      "title": "",
+      "tts": {
+        "text": "而 Boson AI 推出了 Higgs Audio 第三版 — 四十億個參數，一百零二種語言，二十一個情感控制 token，串流輸出，非商業許可；最後一點是重點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "語音克隆正式成為一種商品。",
+      "text_markdown": "語音克隆正式成為一種商品。",
+      "title": "",
+      "tts": {
+        "text": "語音克隆正式成為一種商品。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "的確如此。",
+      "text_markdown": "的確如此。",
+      "title": "",
+      "tts": {
+        "text": "的確如此。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "開源方面還有一個。",
+      "text_markdown": "開源方面還有一個。",
+      "title": "",
+      "tts": {
+        "text": "開源方面還有一個。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA 悄然發布了 Nemotron 3 Ultra — 一個 5500 億個參數的混合 Mamba-attention 模型。",
+      "text_markdown": "NVIDIA 悄然發布了 Nemotron 3 Ultra — 一個 5500 億個參數的混合 Mamba-attention 模型。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA 悄然發布了 Nemotron 三 Ultra — 一個五千五百億個參數的混合 Mamba-attention 模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "權重和完整的訓練配方在 Linux Foundation OpenMDW 許可下發布 — 本月最「真正」開源的版本。",
+      "text_markdown": "權重和完整的訓練配方在 Linux Foundation OpenMDW 許可下發布 — 本月最「真正」開源的版本。",
+      "title": "",
+      "tts": {
+        "text": "權重和完整的訓練配方在 Linux Foundation OpenMDW 許可下發布 — 本月最「真正」開源的版本。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "但沒有人報導。",
+      "text_markdown": "但沒有人報導。",
+      "title": "",
+      "tts": {
+        "text": "但沒有人報導。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "因為我們將 NVIDIA 歸類為晶片公司，而不是實驗室。",
+      "text_markdown": "因為我們將 NVIDIA 歸類為晶片公司，而不是實驗室。",
+      "title": "",
+      "tts": {
+        "text": "因為我們將 NVIDIA 歸類為晶片公司，而不是實驗室。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "但本週他們發布了前沿規模的可重現開源模型。",
+      "text_markdown": "但本週他們發布了前沿規模的可重現開源模型。",
+      "title": "",
+      "tts": {
+        "text": "但本週他們發布了前沿規模的可重現開源模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "頭條新聞，快速瀏覽。",
+      "text_markdown": "頭條新聞，快速瀏覽。",
+      "title": "",
+      "tts": {
+        "text": "頭條新聞，快速瀏覽。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "首先。",
+      "text_markdown": "首先。",
+      "title": "",
+      "tts": {
+        "text": "首先。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Moonshot 發布了 Kimi K2.7 Code — 一萬億個參數，320 億個活躍，聲稱在 Moonshot 自己的基準測試中擊敗了 Claude Opus 4.8。",
+      "text_markdown": "Moonshot 發布了 Kimi K2.7 Code — 一萬億個參數，320 億個活躍，聲稱在 Moonshot 自己的基準測試中擊敗了 Claude Opus 4.8。",
+      "title": "",
+      "tts": {
+        "text": "Moonshot 發布了 Kimi K 二點七 Code — 一萬億個參數，三十二億個活躍，聲稱在 Moonshot 自己的基準測試中擊敗了 Claude Opus 四點八。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "實踐者們核查了數據，表示基準測試不符；自託管權重為 595 GB，思維模式無法關閉。",
+      "text_markdown": "實踐者們核查了數據，表示基準測試不符；自託管權重為 595 GB，思維模式無法關閉。",
+      "title": "",
+      "tts": {
+        "text": "實踐者們核查了數據，表示基準測試不符；自託管權重為五百九十五 GB，思維模式無法關閉。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "「開源」在這個句子裡承擔了很多意義。",
+      "text_markdown": "「開源」在這個句子裡承擔了很多意義。",
+      "title": "",
+      "tts": {
+        "text": "「開源」在這個句子裡承擔了很多意義。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "其次。",
+      "text_markdown": "其次。",
+      "title": "",
+      "tts": {
+        "text": "其次。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cohere，一個幾乎從不發布權重的西方實驗室，竟然發布了權重 — North Mini Code，總計 300 億個參數，30 億個活躍，Apache 2.0，在單個 H100 上以 4 位元運行。",
+      "text_markdown": "Cohere，一個幾乎從不發布權重的西方實驗室，竟然發布了權重 — North Mini Code，總計 300 億個參數，30 億個活躍，Apache 2.0，在單個 H100 上以 4 位元運行。",
+      "title": "",
+      "tts": {
+        "text": "Cohere，一個幾乎從不發布權重的西方實驗室，竟然發布了權重 — North Mini Code，總計三十億個參數，三億個活躍，Apache 二點零，在單個 H 一百 上以四位元運行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一個西方實驗室在 2026 年發布真正的 Apache 2.0 許可模型本身就是新聞。",
+      "text_markdown": "一個西方實驗室在 2026 年發布真正的 Apache 2.0 許可模型本身就是新聞。",
+      "title": "",
+      "tts": {
+        "text": "一個西方實驗室在二零二六年發布真正的 Apache 二點零許可模型本身就是新聞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "第三。",
+      "text_markdown": "第三。",
+      "title": "",
+      "tts": {
+        "text": "第三。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Apple 在 WWDC 上大力強調設備端 AI 作為其戰略重點。",
+      "text_markdown": "Apple 在 WWDC 上大力強調設備端 AI 作為其戰略重點。",
+      "title": "",
+      "tts": {
+        "text": "Apple 在 WWDC 上大力強調設備端 AI 作為其戰略重點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "但據報導，新的 Siri 模型是 Google Gemini 的精煉版本，Apple 獲得許可並將其縮小。",
+      "text_markdown": "但據報導，新的 Siri 模型是 Google Gemini 的精煉版本，Apple 獲得許可並將其縮小。",
+      "title": "",
+      "tts": {
+        "text": "但據報導，新的 Siri 模型是 Google Gemini 的精煉版本，Apple 獲得許可並將其縮小。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本地推論，複雜嘅供應鏈。",
+      "text_markdown": "本地推論，複雜嘅供應鏈。",
+      "title": "",
+      "tts": {
+        "text": "本地推論，複雜嘅供應鏈。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "第四點。",
+      "text_markdown": "第四點。",
+      "title": "",
+      "tts": {
+        "text": "第四點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "阿里巴巴將 Qwen 3.7-Plus 推向全面可用——多模態，可以從截圖驅動 GUI，每百萬輸入 token 大約四十美分。",
+      "text_markdown": "阿里巴巴將 Qwen 3.7-Plus 推向全面可用——多模態，可以從截圖驅動 GUI，每百萬輸入 token 大約四十美分。",
+      "title": "",
+      "tts": {
+        "text": "阿里巴巴將 Qwen 三點七 Plus 推向全面可用——多模態，可以從截圖驅動 GUI，每百萬輸入 token 大約四十美分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "儘管有 Qwen 嘅品牌，呢個版本只係 API 專用，唔係開放權重。",
+      "text_markdown": "儘管有 Qwen 嘅品牌，呢個版本只係 API 專用，唔係開放權重。",
+      "title": "",
+      "tts": {
+        "text": "儘管有 Qwen 嘅品牌，呢個版本只係 A P I 專用，唔係開放權重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "值得注意，因為聽眾會將 Qwen 同開放混淆；呢個版本唔係。",
+      "text_markdown": "值得注意，因為聽眾會將 Qwen 同開放混淆；呢個版本唔係。",
+      "title": "",
+      "tts": {
+        "text": "值得注意，因為聽眾會將 Qwen 同開放混淆；呢個版本唔係。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本週小型實驗室。",
+      "text_markdown": "本週小型實驗室。",
+      "title": "",
+      "tts": {
+        "text": "本週小型實驗室。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "佢叫做 Kog。",
+      "text_markdown": "佢叫做 Kog。",
+      "title": "",
+      "tts": {
+        "text": "佢叫做 Kog。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "巴黎有十一個人，聲稱喺八個 AMD MI300X GPU 上，每個請求每秒可以產生三千個輸出 token。",
+      "text_markdown": "巴黎有十一個人，聲稱喺八個 AMD MI300X GPU 上，每個請求每秒可以產生三千個輸出 token。",
+      "title": "",
+      "tts": {
+        "text": "巴黎有十一個人，聲稱喺八個 A M D M I 三百 X G P U 上，每個請求每秒可以產生三千個輸出 token。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "佢哋嘅論點係——當瓶頸一直都係軟件嘅時候，業界喺定制推論晶片上花費過多。",
+      "text_markdown": "佢哋嘅論點係——當瓶頸一直都係軟件嘅時候，業界喺定制推論晶片上花費過多。",
+      "title": "",
+      "tts": {
+        "text": "佢哋嘅論點係——當瓶頸一直都係軟件嘅時候，業界喺定制推論晶片上花費過多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "十一個人，而且係用 AMD 而唔係 NVIDIA。",
+      "text_markdown": "十一個人，而且係用 AMD 而唔係 NVIDIA。",
+      "title": "",
+      "tts": {
+        "text": "十一個人，而且係用 AMD 而唔係 NVIDIA。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "啱啱喺定制晶片 IPO 之後，完美嘅逆向時機。",
+      "text_markdown": "啱啱喺定制晶片 IPO 之後，完美嘅逆向時機。",
+      "title": "",
+      "tts": {
+        "text": "啱啱喺定制晶片 I P O 之後，完美嘅逆向時機。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "咁工作台上嘅硬件又點呢？",
+      "text_markdown": "咁工作台上嘅硬件又點呢？",
+      "title": "",
+      "tts": {
+        "text": "咁工作台上嘅硬件又點呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Raspberry Pi 推出咗 AI HAT+ 2——將四十 TOPS 裝喺 Pi 5 上。",
+      "text_markdown": "Raspberry Pi 推出咗 AI HAT+ 2——將四十 TOPS 裝喺 Pi 5 上。",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi 推出咗 A I H A T Plus 二——將四十 T O P S 裝喺 Pi 五上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA 嘅 Jetson Orin Nano Super 以唔到三百美元嘅價格提供六十七 TOPS。",
+      "text_markdown": "NVIDIA 嘅 Jetson Orin Nano Super 以唔到三百美元嘅價格提供六十七 TOPS。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA 嘅 Jetson Orin Nano Super 以唔到三百美元嘅價格提供六十七 T O P S。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "設備上嘅意思以前係指 Mac。",
+      "text_markdown": "設備上嘅意思以前係指 Mac。",
+      "title": "",
+      "tts": {
+        "text": "設備上嘅意思以前係指 Mac。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "而家佢係指一塊你可以藏喺抽屜入面嘅板。",
+      "text_markdown": "而家佢係指一塊你可以藏喺抽屜入面嘅板。",
+      "title": "",
+      "tts": {
+        "text": "而家佢係指一塊你可以藏喺抽屜入面嘅板。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本週概念——擴散模型對比自回歸模型。",
+      "text_markdown": "本週概念——擴散模型對比自回歸模型。",
+      "title": "",
+      "tts": {
+        "text": "本週概念——擴散模型對比自回歸模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "相同嘅目的地，唔同嘅路線。",
+      "text_markdown": "相同嘅目的地，唔同嘅路線。",
+      "title": "",
+      "tts": {
+        "text": "相同嘅目的地，唔同嘅路線。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "自回歸模型，你所認識嘅大部分 LLM，一次生成一個 token，然後基於佢生成下一個，重複——設計上就係順序嘅。",
+      "text_markdown": "自回歸模型，你所認識嘅大部分 LLM，一次生成一個 token，然後基於佢生成下一個，重複——設計上就係順序嘅。",
+      "title": "",
+      "tts": {
+        "text": "自回歸模型，你所認識嘅大部分 L L M，一次生成一個 token，然後基於佢生成下一個，重複——設計上就係順序嘅。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "擴散模型以一塊純噪音開始，並喺固定步數內一次性將其去噪。",
+      "text_markdown": "擴散模型以一塊純噪音開始，並喺固定步數內一次性將其去噪。",
+      "title": "",
+      "tts": {
+        "text": "擴散模型以一塊純噪音開始，並喺固定步數內一次性將其去噪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "你犧牲咗一啲質量嚟換取並行性，而喺少量步數下，你就可以得到嗰啲令人驚訝嘅吞吐量數字。",
+      "text_markdown": "你犧牲咗一啲質量嚟換取並行性，而喺少量步數下，你就可以得到嗰啲令人驚訝嘅吞吐量數字。",
+      "title": "",
+      "tts": {
+        "text": "你犧牲咗一啲質量嚟換取並行性，而喺少量步數下，你就可以得到嗰啲令人驚訝嘅吞吐量數字。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "所以 DiffusionGemma 係我哋第一次擁有開放權重，可以真正感受到差異。",
+      "text_markdown": "所以 DiffusionGemma 係我哋第一次擁有開放權重，可以真正感受到差異。",
+      "title": "",
+      "tts": {
+        "text": "所以 DiffusionGemma 係我哋第一次擁有開放權重，可以真正感受到差異。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "係，呢個規模係第一次。",
+      "text_markdown": "係，呢個規模係第一次。",
+      "title": "",
+      "tts": {
+        "text": "係，呢個規模係第一次。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "呢就係點解開源推論團隊喺本週好重要——llama-dot-cpp、vLLM、MLX——佢哋將會學習點樣喺真實硬件上發揮佢嘅潛力。",
+      "text_markdown": "呢就係點解開源推論團隊喺本週好重要——llama-dot-cpp、vLLM、MLX——佢哋將會學習點樣喺真實硬件上發揮佢嘅潛力。",
+      "title": "",
+      "tts": {
+        "text": "呢就係點解開源推論團隊喺本週好重要——llama dot cpp、v L L M、M L X——佢哋將會學習點樣喺真實硬件上發揮佢嘅潛力。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "係個好嘅結束點。",
+      "text_markdown": "係個好嘅結束點。",
+      "title": "",
+      "tts": {
+        "text": "係個好嘅結束點。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron，多謝你。",
+      "text_markdown": "Ron，多謝你。",
+      "title": "",
+      "tts": {
+        "text": "Ron，多謝你。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "隨時都得，Vindy。",
+      "text_markdown": "隨時都得，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "隨時都得，Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "呢個係 2026 年 6 月 14 日嘅《AI 本週》。",
+      "text_markdown": "呢個係 2026 年 6 月 14 日嘅《AI 本週》。",
+      "title": "",
+      "tts": {
+        "text": "呢個係二零二六年六月十四日嘅《A I 本週》。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "同樣嘅奮鬥節目，新嘅星期日檔期。",
+      "text_markdown": "同樣嘅奮鬥節目，新嘅星期日檔期。",
+      "title": "",
+      "tts": {
+        "text": "同樣嘅奮鬥節目，新嘅星期日檔期。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "語言將會喺星期一朝早持續發布；Corpán 0.18.0 喺你獲取應用程式嘅任何地方都可以搵到——試吓 beatlounge。",
+      "text_markdown": "語言將會喺星期一朝早持續發布；Corpán 0.18.0 喺你獲取應用程式嘅任何地方都可以搵到——試吓 beatlounge。",
+      "title": "",
+      "tts": {
+        "text": "語言將會喺星期一朝早持續發布；Corpán 零點一八點零 喺你獲取應用程式嘅任何地方都可以搵到——試吓 beatlounge。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "下個星期日見，保重。",
+      "text_markdown": "下個星期日見，保重。",
+      "title": "",
+      "tts": {
+        "text": "下個星期日見，保重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

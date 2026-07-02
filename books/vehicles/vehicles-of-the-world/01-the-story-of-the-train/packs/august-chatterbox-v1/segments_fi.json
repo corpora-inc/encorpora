@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Huomautus lukijalle",
+      "text_markdown": "Huomautus lukijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juna on ollut maailman rautainen tie jo kahdensadan vuoden ajan.",
+      "text_markdown": "Juna on ollut maailman rautainen tie jo kahdensadan vuoden ajan.",
+      "tts": {
+        "text": "Juna on ollut maailman rautainen tie jo kahdensadan vuoden ajan.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Junat kuljettavat ihmisiä.",
+      "text_markdown": "Junat kuljettavat ihmisiä.",
+      "tts": {
+        "text": "Junat kuljettavat ihmisiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Junat kuljettavat tavaroita.",
+      "text_markdown": "Junat kuljettavat tavaroita.",
+      "tts": {
+        "text": "Junat kuljettavat tavaroita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pitkä juna voi kuljettaa kokonaisen kaupungin verran viljaa.",
+      "text_markdown": "Pitkä juna voi kuljettaa kokonaisen kaupungin verran viljaa.",
+      "tts": {
+        "text": "Pitkä juna voi kuljettaa kokonaisen kaupungin verran viljaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nopea juna voi olla moottoritiellä ajavaa autoa nopeampi.",
+      "text_markdown": "Nopea juna voi olla moottoritiellä ajavaa autoa nopeampi.",
+      "tts": {
+        "text": "Nopea juna voi olla moottoritiellä ajavaa autoa nopeampi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Huomautus lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Junan tarina alkaa Englannissa lähes kaksisataa vuotta sitten, ja siinä on mukana mies, tuli ja kiehuva vesikattila.",
+      "text_markdown": "Junan tarina alkaa Englannissa lähes kaksisataa vuotta sitten, ja siinä on mukana mies, tuli ja kiehuva vesikattila.",
+      "tts": {
+        "text": "Junan tarina alkaa Englannissa lähes kaksisataa vuotta sitten, ja siinä on mukana mies, tuli ja kiehuva vesikattila.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 1: Ensimmäinen höyryjuna",
+      "text_markdown": "Luku 1: Ensimmäinen höyryjuna"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Juna on vaunujen jono, joka kulkee rautakiskoilla.",
+      "text_markdown": "Juna on vaunujen jono, joka kulkee rautakiskoilla.",
+      "tts": {
+        "text": "Juna on vaunujen jono, joka kulkee rautakiskoilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Junan ensimmäisenä on veturi.",
+      "text_markdown": "Junan ensimmäisenä on veturi.",
+      "tts": {
+        "text": "Junan ensimmäisenä on veturi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se vetää kaikkia muita vaunuja.",
+      "text_markdown": "Se vetää kaikkia muita vaunuja.",
+      "tts": {
+        "text": "Se vetää kaikkia muita vaunuja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäiset junat kulkivat höyryllä.",
+      "text_markdown": "Ensimmäiset junat kulkivat höyryllä.",
+      "tts": {
+        "text": "Ensimmäiset junat kulkivat höyryllä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Höyrykone polttaa hiiltä veden keittämiseksi.",
+      "text_markdown": "Höyrykone polttaa hiiltä veden keittämiseksi.",
+      "tts": {
+        "text": "Höyrykone polttaa hiiltä veden keittämiseksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuuma höyry työntää mäntiä.",
+      "text_markdown": "Kuuma höyry työntää mäntiä.",
+      "tts": {
+        "text": "Kuuma höyry työntää mäntiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Männät pyörittävät pyöriä.",
+      "text_markdown": "Männät pyörittävät pyöriä.",
+      "tts": {
+        "text": "Männät pyörittävät pyöriä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pyörät kulkevat kiskoilla.",
+      "text_markdown": "Pyörät kulkevat kiskoilla.",
+      "tts": {
+        "text": "Pyörät kulkevat kiskoilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarina alkaa Englannissa.",
+      "text_markdown": "Tarina alkaa Englannissa.",
+      "tts": {
+        "text": "Tarina alkaa Englannissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vuonna 1825 avattiin ensimmäinen julkinen rautatie.",
+      "text_markdown": "Vuonna 1825 avattiin ensimmäinen julkinen rautatie.",
+      "tts": {
+        "text": "Vuonna tuhat kahdeksansataa kaksikymmentäviisi avattiin ensimmäinen julkinen rautatie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sen nimi oli Stockton and Darlington Railway.",
+      "text_markdown": "Sen nimi oli Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Sen nimi oli Stokton änd Daalington reilvei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se kuljetti hiiltä kaivoksesta joelle.",
+      "text_markdown": "Se kuljetti hiiltä kaivoksesta joelle.",
+      "tts": {
+        "text": "Se kuljetti hiiltä kaivoksesta joelle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mies nimeltä George Stephenson rakensi veturit.",
+      "text_markdown": "Mies nimeltä George Stephenson rakensi veturit.",
+      "tts": {
+        "text": "Mies nimeltä Džordž Stiivenson rakensi veturit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihmiset kutsuivat häntä rautateiden isäksi.",
+      "text_markdown": "Ihmiset kutsuivat häntä rautateiden isäksi.",
+      "tts": {
+        "text": "Ihmiset kutsuivat häntä rautateiden isäksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1829 hänen poikansa Robert Stephenson rakensi kuuluisan veturin nimeltä Rocket.",
+      "text_markdown": "Vuonna 1829 hänen poikansa Robert Stephenson rakensi kuuluisan veturin nimeltä Rocket.",
+      "tts": {
+        "text": "Vuonna tuhat kahdeksansataa kaksikymmentäyhdeksän hänen poikansa Robert Stiivenson rakensi kuuluisan veturin nimeltä Roket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se voitti kilpailun nopeimmasta junasta.",
+      "text_markdown": "Se voitti kilpailun nopeimmasta junasta.",
+      "tts": {
+        "text": "Se voitti kilpailun nopeimmasta junasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket kulki lähes 30 mailia tunnissa.",
+      "text_markdown": "Rocket kulki lähes 30 mailia tunnissa.",
+      "tts": {
+        "text": "Roket kulki lähes kolmekymmentä mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se oli nopeampi kuin yksikään hevonen.",
+      "text_markdown": "Se oli nopeampi kuin yksikään hevonen.",
+      "tts": {
+        "text": "Se oli nopeampi kuin yksikään hevonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Luku 1: Ensimmäinen höyryjuna",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Junan aikakausi oli alkanut.",
+      "text_markdown": "Junan aikakausi oli alkanut.",
+      "tts": {
+        "text": "Junan aikakausi oli alkanut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 2: Rautainen tie leviää",
+      "text_markdown": "Luku 2: Rautainen tie leviää"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rocketin jälkeen rautatiet levisivät nopeasti.",
+      "text_markdown": "Rocketin jälkeen rautatiet levisivät nopeasti.",
+      "tts": {
+        "text": "Roketin jälkeen rautatiet levisivät nopeasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Britannia rakensi tuhansia maileja rataa.",
+      "text_markdown": "Britannia rakensi tuhansia maileja rataa.",
+      "tts": {
+        "text": "Britannia rakensi tuhansia maileja rataa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten muu maailma seurasi perässä.",
+      "text_markdown": "Sitten muu maailma seurasi perässä.",
+      "tts": {
+        "text": "Sitten muu maailma seurasi perässä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1830 avattiin ensimmäinen suuri amerikkalainen rautatie.",
+      "text_markdown": "Vuonna 1830 avattiin ensimmäinen suuri amerikkalainen rautatie.",
+      "tts": {
+        "text": "Vuonna tuhat kahdeksansataa kolmekymmentä avattiin ensimmäinen suuri amerikkalainen rautatie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sen nimi oli Baltimore and Ohio.",
+      "text_markdown": "Sen nimi oli Baltimore and Ohio.",
+      "tts": {
+        "text": "Sen nimi oli Boltimor änd Ohaio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se yhdisti Baltimoren kaupungin Ohiojokeen.",
+      "text_markdown": "Se yhdisti Baltimoren kaupungin Ohiojokeen.",
+      "tts": {
+        "text": "Se yhdisti Baltimoren kaupungin Ohiojokeen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ranskassa ensimmäinen rautatie avattiin vuonna 1832.",
+      "text_markdown": "Ranskassa ensimmäinen rautatie avattiin vuonna 1832.",
+      "tts": {
+        "text": "Ranskassa ensimmäinen rautatie avattiin vuonna tuhat kahdeksansataa kolmekymmentäkaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se kuljetti hiiltä, kuten brittiläinen rata.",
+      "text_markdown": "Se kuljetti hiiltä, kuten brittiläinen rata.",
+      "tts": {
+        "text": "Se kuljetti hiiltä, kuten brittiläinen rata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saksassa ensimmäinen pitkä rautatie avattiin vuonna 1839.",
+      "text_markdown": "Saksassa ensimmäinen pitkä rautatie avattiin vuonna 1839.",
+      "tts": {
+        "text": "Saksassa ensimmäinen pitkä rautatie avattiin vuonna tuhat kahdeksansataa kolmekymmentäyhdeksän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se kulki kahden kaupungin, Leipzigin ja Dresdenin, välillä.",
+      "text_markdown": "Se kulki kahden kaupungin, Leipzigin ja Dresdenin, välillä.",
+      "tts": {
+        "text": "Se kulki kahden kaupungin, Laiptsigin ja Dresdenin, välillä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Venäjä rakensi ensimmäisen rautatiensä vuonna 1837.",
+      "text_markdown": "Venäjä rakensi ensimmäisen rautatiensä vuonna 1837.",
+      "tts": {
+        "text": "Venäjä rakensi ensimmäisen rautatiensä vuonna tuhat kahdeksansataa kolmekymmentäseitsemän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rata kulki Saint Petersburgista läheiseen kaupunkiin.",
+      "text_markdown": "Rata kulki Saint Petersburgista läheiseen kaupunkiin.",
+      "tts": {
+        "text": "Rata kulki Saint Petersburgista läheiseen kaupunkiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rautatien rakentaminen oli kovaa työtä.",
+      "text_markdown": "Rautatien rakentaminen oli kovaa työtä.",
+      "tts": {
+        "text": "Rautatien rakentaminen oli kovaa työtä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miehet kaivoivat tunneleita vuorten läpi.",
+      "text_markdown": "Miehet kaivoivat tunneleita vuorten läpi.",
+      "tts": {
+        "text": "Miehet kaivoivat tunneleita vuorten läpi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He rakensivat siltoja jokien yli.",
+      "text_markdown": "He rakensivat siltoja jokien yli.",
+      "tts": {
+        "text": "He rakensivat siltoja jokien yli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He asettivat jokaisen kiskon käsin.",
+      "text_markdown": "He asettivat jokaisen kiskon käsin.",
+      "tts": {
+        "text": "He asettivat jokaisen kiskon käsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Paikkakunnat kasvoivat ratojen varrella.",
+      "text_markdown": "Paikkakunnat kasvoivat ratojen varrella.",
+      "tts": {
+        "text": "Paikkakunnat kasvoivat ratojen varrella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pienestä kylästä, jossa oli asema, saattoi kasvaa kaupunki.",
+      "text_markdown": "Pienestä kylästä, jossa oli asema, saattoi kasvaa kaupunki.",
+      "tts": {
+        "text": "Pienestä kylästä, jossa oli asema, saattoi kasvaa kaupunki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juna toi ihmisiä.",
+      "text_markdown": "Juna toi ihmisiä.",
+      "tts": {
+        "text": "Juna toi ihmisiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juna toi tavaroita.",
+      "text_markdown": "Juna toi tavaroita.",
+      "tts": {
+        "text": "Juna toi tavaroita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Luku 2: Rautainen tie leviää",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Juna toi maailman hieman lähemmäs.",
+      "text_markdown": "Juna toi maailman hieman lähemmäs.",
+      "tts": {
+        "text": "Juna toi maailman hieman lähemmäs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 3: Suuret radat",
+      "text_markdown": "Luku 3: Suuret radat"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkut rautatiet ovat lyhyitä.",
+      "text_markdown": "Jotkut rautatiet ovat lyhyitä.",
+      "tts": {
+        "text": "Jotkut rautatiet ovat lyhyitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jotkut ovat hyvin pitkiä.",
+      "text_markdown": "Jotkut ovat hyvin pitkiä.",
+      "tts": {
+        "text": "Jotkut ovat hyvin pitkiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pisimmät radat ylittivät kokonaisia maanosia.",
+      "text_markdown": "Pisimmät radat ylittivät kokonaisia maanosia.",
+      "tts": {
+        "text": "Pisimmät radat ylittivät kokonaisia maanosia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yhdysvalloissa kaksi yhtiötä rakensi rautatien maan halki.",
+      "text_markdown": "Yhdysvalloissa kaksi yhtiötä rakensi rautatien maan halki.",
+      "tts": {
+        "text": "Yhdysvalloissa kaksi yhtiötä rakensi rautatien maan halki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yksi aloitti Kaliforniasta ja eteni itään.",
+      "text_markdown": "Yksi aloitti Kaliforniasta ja eteni itään.",
+      "tts": {
+        "text": "Yksi aloitti Kaliforniasta ja eteni itään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toinen aloitti Nebraskasta ja eteni länteen.",
+      "text_markdown": "Toinen aloitti Nebraskasta ja eteni länteen.",
+      "tts": {
+        "text": "Toinen aloitti Nebraskasta ja eteni länteen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ne kohtasivat Utahissa paikassa nimeltä Promontory Summit.",
+      "text_markdown": "Ne kohtasivat Utahissa paikassa nimeltä Promontory Summit.",
+      "tts": {
+        "text": "Ne kohtasivat Utahissa paikassa nimeltä Promontori Sammit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä tapahtui vuonna 1869.",
+      "text_markdown": "Tämä tapahtui vuonna 1869.",
+      "tts": {
+        "text": "Tämä tapahtui vuonna tuhat kahdeksansataa kuusikymmentäyhdeksän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viimeinen naula oli tehty kullasta.",
+      "text_markdown": "Viimeinen naula oli tehty kullasta.",
+      "tts": {
+        "text": "Viimeinen naula oli tehty kullasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihmiset kutsuivat sitä kultaiseksi naulaksi.",
+      "text_markdown": "Ihmiset kutsuivat sitä kultaiseksi naulaksi.",
+      "tts": {
+        "text": "Ihmiset kutsuivat sitä kultaiseksi naulaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linjaa kutsuttiin nimellä Transcontinental Railroad.",
+      "text_markdown": "Linjaa kutsuttiin nimellä Transcontinental Railroad.",
+      "tts": {
+        "text": "Linjaa kutsuttiin nimellä Transkontinental reilroud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nyt junalla saattoi matkustaa valtamereltä toiselle noin viikossa.",
+      "text_markdown": "Nyt junalla saattoi matkustaa valtamereltä toiselle noin viikossa.",
+      "tts": {
+        "text": "Nyt junalla saattoi matkustaa valtamereltä toiselle noin viikossa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Venäjä rakensi vieläkin pidemmän radan.",
+      "text_markdown": "Venäjä rakensi vieläkin pidemmän radan.",
+      "tts": {
+        "text": "Venäjä rakensi vieläkin pidemmän radan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitä kutsutaan nimellä Trans Siberian Railway.",
+      "text_markdown": "Sitä kutsutaan nimellä Trans Siberian Railway.",
+      "tts": {
+        "text": "Sitä kutsutaan nimellä Trans Saiberian reilvei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se kulkee Moskovasta lännessä Vladivostokiin idässä.",
+      "text_markdown": "Se kulkee Moskovasta lännessä Vladivostokiin idässä.",
+      "tts": {
+        "text": "Se kulkee Moskovasta lännessä Vladivostokiin idässä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linja valmistui vuonna 1916.",
+      "text_markdown": "Linja valmistui vuonna 1916.",
+      "tts": {
+        "text": "Linja valmistui vuonna tuhat yhdeksänsataa kuusitoista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se on yli yhdeksäntuhatta kilometriä pitkä.",
+      "text_markdown": "Se on yli yhdeksäntuhatta kilometriä pitkä.",
+      "tts": {
+        "text": "Se on yli yhdeksäntuhatta kilometriä pitkä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koko matka kestää noin seitsemän päivää.",
+      "text_markdown": "Koko matka kestää noin seitsemän päivää.",
+      "tts": {
+        "text": "Koko matka kestää noin seitsemän päivää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Luku 3: Suuret radat",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Se on yhä maailman pisin rautatie.",
+      "text_markdown": "Se on yhä maailman pisin rautatie.",
+      "tts": {
+        "text": "Se on yhä maailman pisin rautatie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 4: Höyry, diesel, sähkö",
+      "text_markdown": "Luku 4: Höyry, diesel, sähkö"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noin sadan vuoden ajan melkein jokainen juna oli höyryjuna.",
+      "text_markdown": "Noin sadan vuoden ajan melkein jokainen juna oli höyryjuna.",
+      "tts": {
+        "text": "Noin sadan vuoden ajan melkein jokainen juna oli höyryjuna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Höyryveturit olivat suuria ja äänekkäitä.",
+      "text_markdown": "Höyryveturit olivat suuria ja äänekkäitä.",
+      "tts": {
+        "text": "Höyryveturit olivat suuria ja äänekkäitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ne polttivat hiiltä.",
+      "text_markdown": "Ne polttivat hiiltä.",
+      "tts": {
+        "text": "Ne polttivat hiiltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ne päästivät paksua savua taivaalle.",
+      "text_markdown": "Ne päästivät paksua savua taivaalle.",
+      "tts": {
+        "text": "Ne päästivät paksua savua taivaalle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten tuli dieselveturi.",
+      "text_markdown": "Sitten tuli dieselveturi.",
+      "tts": {
+        "text": "Sitten tuli dieselveturi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dieselmoottori polttaa öljyä hiilen sijaan.",
+      "text_markdown": "Dieselmoottori polttaa öljyä hiilen sijaan.",
+      "tts": {
+        "text": "Dieselmoottori polttaa öljyä hiilen sijaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on pienempi ja puhtaampi.",
+      "text_markdown": "Se on pienempi ja puhtaampi.",
+      "tts": {
+        "text": "Se on pienempi ja puhtaampi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se ei tarvitse tulta eikä vesisäiliötä.",
+      "text_markdown": "Se ei tarvitse tulta eikä vesisäiliötä.",
+      "tts": {
+        "text": "Se ei tarvitse tulta eikä vesisäiliötä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieseljunat yleistyivät neljäkymmentäluvulla ja viisikymmentäluvulla.",
+      "text_markdown": "Dieseljunat yleistyivät neljäkymmentäluvulla ja viisikymmentäluvulla.",
+      "tts": {
+        "text": "Dieseljunat yleistyivät neljäkymmentäluvulla ja viisikymmentäluvulla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vähitellen suuret höyryveturit poistettiin käytöstä.",
+      "text_markdown": "Vähitellen suuret höyryveturit poistettiin käytöstä.",
+      "tts": {
+        "text": "Vähitellen suuret höyryveturit poistettiin käytöstä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muutamia säilytetään yhä museoissa ja turistiradoilla.",
+      "text_markdown": "Muutamia säilytetään yhä museoissa ja turistiradoilla.",
+      "tts": {
+        "text": "Muutamia säilytetään yhä museoissa ja turistiradoilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seuraava askel oli sähköjuna.",
+      "text_markdown": "Seuraava askel oli sähköjuna.",
+      "tts": {
+        "text": "Seuraava askel oli sähköjuna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sähköjunassa ei ole polttoainetta polttavaa moottoria.",
+      "text_markdown": "Sähköjunassa ei ole polttoainetta polttavaa moottoria.",
+      "tts": {
+        "text": "Sähköjunassa ei ole polttoainetta polttavaa moottoria.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se saa voimansa radan yläpuolella olevasta johdosta tai radan vieressä kulkevasta kolmannesta kiskosta.",
+      "text_markdown": "Se saa voimansa radan yläpuolella olevasta johdosta tai radan vieressä kulkevasta kolmannesta kiskosta.",
+      "tts": {
+        "text": "Se saa voimansa radan yläpuolella olevasta johdosta tai radan vieressä kulkevasta kolmannesta kiskosta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sähköjunat ovat hiljaisia ja hyvin puhtaita.",
+      "text_markdown": "Sähköjunat ovat hiljaisia ja hyvin puhtaita.",
+      "tts": {
+        "text": "Sähköjunat ovat hiljaisia ja hyvin puhtaita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne ovat myös hyvin tehokkaita.",
+      "text_markdown": "Ne ovat myös hyvin tehokkaita.",
+      "tts": {
+        "text": "Ne ovat myös hyvin tehokkaita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Useimmat kaupunkien junat ja useimmat nopeat junat ovat nykyään sähköjunia.",
+      "text_markdown": "Useimmat kaupunkien junat ja useimmat nopeat junat ovat nykyään sähköjunia.",
+      "tts": {
+        "text": "Useimmat kaupunkien junat ja useimmat nopeat junat ovat nykyään sähköjunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Höyry, diesel, sähkö.",
+      "text_markdown": "Höyry, diesel, sähkö.",
+      "tts": {
+        "text": "Höyry, diesel, sähkö.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Luku 4: Höyry, diesel, sähkö",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kolme voimanlähdettä, kolme aikakautta.",
+      "text_markdown": "Kolme voimanlähdettä, kolme aikakautta.",
+      "tts": {
+        "text": "Kolme voimanlähdettä, kolme aikakautta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "text_markdown": "Luku 5: Luotijunat ja kilpailu nopeudesta"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1964 Japani avasi aivan uuden rautatien.",
+      "text_markdown": "Vuonna 1964 Japani avasi aivan uuden rautatien.",
+      "tts": {
+        "text": "Vuonna tuhat yhdeksänsataa kuusikymmentäneljä Japani avasi aivan uuden rautatien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se kulki Tokiosta Osakaan.",
+      "text_markdown": "Se kulki Tokiosta Osakaan.",
+      "tts": {
+        "text": "Se kulki Tokiosta Osakaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Junat näyttivät pitkiltä valkoisilta luodeilta.",
+      "text_markdown": "Junat näyttivät pitkiltä valkoisilta luodeilta.",
+      "tts": {
+        "text": "Junat näyttivät pitkiltä valkoisilta luodeilta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihmiset kutsuivat niitä luotijuniksi.",
+      "text_markdown": "Ihmiset kutsuivat niitä luotijuniksi.",
+      "tts": {
+        "text": "Ihmiset kutsuivat niitä luotijuniksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Japaninkielinen nimi on Shinkansen.",
+      "text_markdown": "Japaninkielinen nimi on Shinkansen.",
+      "tts": {
+        "text": "Japaninkielinen nimi on Shinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäiset luotijunat kulkivat 130 mailia tunnissa.",
+      "text_markdown": "Ensimmäiset luotijunat kulkivat 130 mailia tunnissa.",
+      "tts": {
+        "text": "Ensimmäiset luotijunat kulkivat sata kolmekymmentä mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se oli junalle hyvin nopeaa vuonna 1964.",
+      "text_markdown": "Se oli junalle hyvin nopeaa vuonna 1964.",
+      "tts": {
+        "text": "Se oli junalle hyvin nopeaa vuonna tuhat yhdeksänsataa kuusikymmentäneljä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Linja avattiin juuri sopivasti Tokyon olympialaisia varten.",
+      "text_markdown": "Linja avattiin juuri sopivasti Tokyon olympialaisia varten.",
+      "tts": {
+        "text": "Linja avattiin juuri sopivasti Tokyon olympialaisia varten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muut maat seurasivat perässä.",
+      "text_markdown": "Muut maat seurasivat perässä.",
+      "tts": {
+        "text": "Muut maat seurasivat perässä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ranska avasi suurnopeusratansa vuonna 1981.",
+      "text_markdown": "Ranska avasi suurnopeusratansa vuonna 1981.",
+      "tts": {
+        "text": "Ranska avasi suurnopeusratansa vuonna tuhat yhdeksänsataa kahdeksankymmentäyksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Junia kutsutaan nimellä TGV.",
+      "text_markdown": "Junia kutsutaan nimellä TGV.",
+      "tts": {
+        "text": "Junia kutsutaan nimellä tee gee vee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saksa seurasi perässä ICE-junilla.",
+      "text_markdown": "Saksa seurasi perässä ICE-junilla.",
+      "tts": {
+        "text": "Saksa seurasi perässä ii see ee junilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italia, Espanja ja Korea rakensivat omat suurnopeusratansa.",
+      "text_markdown": "Italia, Espanja ja Korea rakensivat omat suurnopeusratansa.",
+      "tts": {
+        "text": "Italia, Espanja ja Korea rakensivat omat suurnopeusratansa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiina aloitti viimeisenä, mutta se rakensi nopeasti.",
+      "text_markdown": "Kiina aloitti viimeisenä, mutta se rakensi nopeasti.",
+      "tts": {
+        "text": "Kiina aloitti viimeisenä, mutta se rakensi nopeasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nykyään Kiinalla on maailman suurin suurnopeusverkko.",
+      "text_markdown": "Nykyään Kiinalla on maailman suurin suurnopeusverkko.",
+      "tts": {
+        "text": "Nykyään Kiinalla on maailman suurin suurnopeusverkko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rataa on kymmeniä tuhansia kilometrejä.",
+      "text_markdown": "Rataa on kymmeniä tuhansia kilometrejä.",
+      "tts": {
+        "text": "Rataa on kymmeniä tuhansia kilometrejä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nykyaikaiset luotijunat voivat kulkea yli 200 mailia tunnissa.",
+      "text_markdown": "Nykyaikaiset luotijunat voivat kulkea yli 200 mailia tunnissa.",
+      "tts": {
+        "text": "Nykyaikaiset luotijunat voivat kulkea yli kaksisataa mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne kulkevat pehmeästi, ovat hiljaisia ja lähes aina ajallaan.",
+      "text_markdown": "Ne kulkevat pehmeästi, ovat hiljaisia ja lähes aina ajallaan.",
+      "tts": {
+        "text": "Ne kulkevat pehmeästi, ovat hiljaisia ja lähes aina ajallaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Luku 5: Luotijunat ja kilpailu nopeudesta",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Monilla matkoilla ne ovat lentämistä nopeampia.",
+      "text_markdown": "Monilla matkoilla ne ovat lentämistä nopeampia.",
+      "tts": {
+        "text": "Monilla matkoilla ne ovat lentämistä nopeampia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 6: Monenlaisia junia",
+      "text_markdown": "Luku 6: Monenlaisia junia"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaikki junat eivät ole samanlaisia.",
+      "text_markdown": "Kaikki junat eivät ole samanlaisia.",
+      "tts": {
+        "text": "Kaikki junat eivät ole samanlaisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niitä on monenlaisia.",
+      "text_markdown": "Niitä on monenlaisia.",
+      "tts": {
+        "text": "Niitä on monenlaisia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matkustajajuna kuljettaa ihmisiä.",
+      "text_markdown": "Matkustajajuna kuljettaa ihmisiä.",
+      "tts": {
+        "text": "Matkustajajuna kuljettaa ihmisiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siinä on istuimia, ikkunoita ja joskus ravintolavaunu tai makuuvaunu.",
+      "text_markdown": "Siinä on istuimia, ikkunoita ja joskus ravintolavaunu tai makuuvaunu.",
+      "tts": {
+        "text": "Siinä on istuimia, ikkunoita ja joskus ravintolavaunu tai makuuvaunu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tavarajuna kuljettaa tavaroita.",
+      "text_markdown": "Tavarajuna kuljettaa tavaroita.",
+      "tts": {
+        "text": "Tavarajuna kuljettaa tavaroita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sen vaunuja kutsutaan tavaravaunuiksi.",
+      "text_markdown": "Sen vaunuja kutsutaan tavaravaunuiksi.",
+      "tts": {
+        "text": "Sen vaunuja kutsutaan tavaravaunuiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jotkut kuljettavat viljaa.",
+      "text_markdown": "Jotkut kuljettavat viljaa.",
+      "tts": {
+        "text": "Jotkut kuljettavat viljaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jotkut kuljettavat öljyä.",
+      "text_markdown": "Jotkut kuljettavat öljyä.",
+      "tts": {
+        "text": "Jotkut kuljettavat öljyä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Jotkut kuljettavat kokonaisia rahtikontteja, pinottuina kahteen kerrokseen.",
+      "text_markdown": "Jotkut kuljettavat kokonaisia rahtikontteja, pinottuina kahteen kerrokseen.",
+      "tts": {
+        "text": "Jotkut kuljettavat kokonaisia rahtikontteja, pinottuina kahteen kerrokseen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Metro on kaupungin maanalainen juna.",
+      "text_markdown": "Metro on kaupungin maanalainen juna.",
+      "tts": {
+        "text": "Metro on kaupungin maanalainen juna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ensimmäinen metro avattiin Lontoossa vuonna 1863.",
+      "text_markdown": "Ensimmäinen metro avattiin Lontoossa vuonna 1863.",
+      "tts": {
+        "text": "Ensimmäinen metro avattiin Lontoossa vuonna tuhat kahdeksansataa kuusikymmentäkolme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nykyään suurilla kaupungeilla on katujensa alla valtavat metroverkot.",
+      "text_markdown": "Nykyään suurilla kaupungeilla on katujensa alla valtavat metroverkot.",
+      "tts": {
+        "text": "Nykyään suurilla kaupungeilla on katujensa alla valtavat metroverkot.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Raitiovaunu tai pikaraitiotie on pieni juna, joka kulkee kaupungin kaduilla.",
+      "text_markdown": "Raitiovaunu tai pikaraitiotie on pieni juna, joka kulkee kaupungin kaduilla.",
+      "tts": {
+        "text": "Raitiovaunu tai pikaraitiotie on pieni juna, joka kulkee kaupungin kaduilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se jakaa usein tien autojen ja bussien kanssa.",
+      "text_markdown": "Se jakaa usein tien autojen ja bussien kanssa.",
+      "tts": {
+        "text": "Se jakaa usein tien autojen ja bussien kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuoristojuna nousee jyrkkiä rinteitä.",
+      "text_markdown": "Vuoristojuna nousee jyrkkiä rinteitä.",
+      "tts": {
+        "text": "Vuoristojuna nousee jyrkkiä rinteitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joissakin on keskellä erityinen hammastettu kisko, jota kutsutaan hammaskiskoksi.",
+      "text_markdown": "Joissakin on keskellä erityinen hammastettu kisko, jota kutsutaan hammaskiskoksi.",
+      "tts": {
+        "text": "Joissakin on keskellä erityinen hammastettu kisko, jota kutsutaan hammaskiskoksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Veturi tarttuu hammaskiskoon päästäkseen ylös ja tullakseen alas turvallisesti.",
+      "text_markdown": "Veturi tarttuu hammaskiskoon päästäkseen ylös ja tullakseen alas turvallisesti.",
+      "tts": {
+        "text": "Veturi tarttuu hammaskiskoon päästäkseen ylös ja tullakseen alas turvallisesti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jotkut junat ovat myös turistijunia.",
+      "text_markdown": "Jotkut junat ovat myös turistijunia.",
+      "tts": {
+        "text": "Jotkut junat ovat myös turistijunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Luku 6: Monenlaisia junia",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne kulkevat metsien ja vuorten halki vain maisemien vuoksi.",
+      "text_markdown": "Ne kulkevat metsien ja vuorten halki vain maisemien vuoksi.",
+      "tts": {
+        "text": "Ne kulkevat metsien ja vuorten halki vain maisemien vuoksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Luku 7: Tulevaisuus raiteilla",
+      "text_markdown": "Luku 7: Tulevaisuus raiteilla"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Junan tarina ei ole ohi.",
+      "text_markdown": "Junan tarina ei ole ohi.",
+      "tts": {
+        "text": "Junan tarina ei ole ohi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uudenlaisia junia rakennetaan juuri nyt.",
+      "text_markdown": "Uudenlaisia junia rakennetaan juuri nyt.",
+      "tts": {
+        "text": "Uudenlaisia junia rakennetaan juuri nyt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaikkein hämmästyttävin niistä on maglev.",
+      "text_markdown": "Kaikkein hämmästyttävin niistä on maglev.",
+      "tts": {
+        "text": "Kaikkein hämmästyttävin niistä on maglev.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sana maglev on lyhenne, joka tarkoittaa magneettista leijuntaa.",
+      "text_markdown": "Sana maglev on lyhenne, joka tarkoittaa magneettista leijuntaa.",
+      "tts": {
+        "text": "Sana maglev on lyhenne, joka tarkoittaa magneettista leijuntaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maglevjuna ei kosketa rataa.",
+      "text_markdown": "Maglevjuna ei kosketa rataa.",
+      "tts": {
+        "text": "Maglev juna ei kosketa rataa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se leijuu magneettien varassa.",
+      "text_markdown": "Se leijuu magneettien varassa.",
+      "tts": {
+        "text": "Se leijuu magneettien varassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pyörät eivät pyöri.",
+      "text_markdown": "Pyörät eivät pyöri.",
+      "tts": {
+        "text": "Pyörät eivät pyöri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kitkaa ei ole.",
+      "text_markdown": "Kitkaa ei ole.",
+      "tts": {
+        "text": "Kitkaa ei ole.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 2004 Kiinan Shanghaissa avattiin maglevrata.",
+      "text_markdown": "Vuonna 2004 Kiinan Shanghaissa avattiin maglevrata.",
+      "tts": {
+        "text": "Vuonna kaksi tuhatta neljä Kiinan Sanghaissa avattiin maglev rata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Juna voi saavuttaa yli 250 mailia tunnissa.",
+      "text_markdown": "Juna voi saavuttaa yli 250 mailia tunnissa.",
+      "tts": {
+        "text": "Juna voi saavuttaa yli kaksisataa viisikymmentä mailia tunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Japanissa testikäytössä oleva maglevjuna on kulkenut yli 370 mailia tunnissa.",
+      "text_markdown": "Japanissa testikäytössä oleva maglevjuna on kulkenut yli 370 mailia tunnissa.",
+      "tts": {
+        "text": "Japanissa testikäytössä oleva maglev juna on kulkenut yli kolmesataa seitsemänkymmentä mailia tunnissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muut insinöörit kehittävät vetyjunaa.",
+      "text_markdown": "Muut insinöörit kehittävät vetyjunaa.",
+      "tts": {
+        "text": "Muut insinöörit kehittävät vetyjunaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vetyjuna tuottaa sähköä pienestä polttokennosta.",
+      "text_markdown": "Vetyjuna tuottaa sähköä pienestä polttokennosta.",
+      "tts": {
+        "text": "Vetyjuna tuottaa sähköä pienestä polttokennosta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Moottorista tulee ulos vain vesihöyryä.",
+      "text_markdown": "Moottorista tulee ulos vain vesihöyryä.",
+      "tts": {
+        "text": "Moottorista tulee ulos vain vesihöyryä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ei savua.",
+      "text_markdown": "Ei savua.",
+      "tts": {
+        "text": "Ei savua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ei hiiltä.",
+      "text_markdown": "Ei hiiltä.",
+      "tts": {
+        "text": "Ei hiiltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ensimmäiset vetyjunat aloittivat liikenteen Saksassa vuonna 2018.",
+      "text_markdown": "Ensimmäiset vetyjunat aloittivat liikenteen Saksassa vuonna 2018.",
+      "tts": {
+        "text": "Ensimmäiset vetyjunat aloittivat liikenteen Saksassa vuonna kaksi tuhatta kahdeksantoista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Junat ovat hyvin vanhoja.",
+      "text_markdown": "Junat ovat hyvin vanhoja.",
+      "tts": {
+        "text": "Junat ovat hyvin vanhoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne ovat myös aivan uusia.",
+      "text_markdown": "Ne ovat myös aivan uusia.",
+      "tts": {
+        "text": "Ne ovat myös aivan uusia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Luku 7: Tulevaisuus raiteilla",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaksisataa vuotta Rocketin jälkeen raiteet ovat yhä tulevaisuutta.",
+      "text_markdown": "Kaksisataa vuotta Rocketin jälkeen raiteet ovat yhä tulevaisuutta.",
+      "tts": {
+        "text": "Kaksisataa vuotta Roketin jälkeen raiteet ovat yhä tulevaisuutta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rautainen tie jatkuu",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rautainen tie jatkuu",
+      "text_markdown": "Rautainen tie jatkuu"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rautainen tie jatkuu",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rocketista maglevjunaan juna on vienyt maailmaa eteenpäin jo lähes kaksisataa vuotta.",
+      "text_markdown": "Rocketista maglevjunaan juna on vienyt maailmaa eteenpäin jo lähes kaksisataa vuotta.",
+      "tts": {
+        "text": "Roketista maglev junaan juna on vienyt maailmaa eteenpäin jo lähes kaksisataa vuotta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rautainen tie jatkuu",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uusia ratoja rakennetaan juuri nyt aavikoille, vuorille ja kaupunkien alle.",
+      "text_markdown": "Uusia ratoja rakennetaan juuri nyt aavikoille, vuorille ja kaupunkien alle.",
+      "tts": {
+        "text": "Uusia ratoja rakennetaan juuri nyt aavikoille, vuorille ja kaupunkien alle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rautainen tie jatkuu",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Seuraava asema on aina jossakin edessäpäin.",
+      "text_markdown": "Seuraava asema on aina jossakin edessäpäin.",
+      "tts": {
+        "text": "Seuraava asema on aina jossakin edessäpäin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "fi"
+}

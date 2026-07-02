@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "yue-Hant-HK",
+  "total_segments": 62,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "歡迎收聽《AI This Week》。我係Vindy。",
+      "text_markdown": "歡迎收聽《AI This Week》。我係Vindy。",
+      "title": "",
+      "tts": {
+        "text": "歡迎收聽《AI This Week》。我係Vindy。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "同我一齊嘅，一如既往，係Ron。",
+      "text_markdown": "同我一齊嘅，一如既往，係Ron。",
+      "title": "",
+      "tts": {
+        "text": "同我一齊嘅，一如既往，係Ron。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "好高興喺度。",
+      "text_markdown": "好高興喺度。",
+      "title": "",
+      "tts": {
+        "text": "好高興喺度。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "今日係2026年5月13日星期三。即將為大家帶嚟：今個星期推出嘅模型、排行榜，以及點解有啲排行榜你應該停止相信。我哋嘅本週概念。同埋更大嘅圖景——美國啱啱有咗新嘅聯邦儲備委員會主席，呢件事對AI嘅影響比你諗嘅更重要。",
+      "text_markdown": "今日係2026年5月13日星期三。即將為大家帶嚟：今個星期推出嘅模型、排行榜，以及點解有啲排行榜你應該停止相信。我哋嘅本週概念。同埋更大嘅圖景——美國啱啱有咗新嘅聯邦儲備委員會主席，呢件事對AI嘅影響比你諗嘅更重要。",
+      "title": "",
+      "tts": {
+        "text": "今日係二零二六年五月十三日星期三。即將為大家帶嚟：今個星期推出嘅模型、排行榜，以及點解有啲排行榜你應該停止相信。我哋嘅本週概念。同埋更大嘅圖景——美國啱啱有咗新嘅聯邦儲備委員會主席，呢件事對AI嘅影響比你諗嘅更重要。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron，今個星期最大嘅模型新聞係乜嘢？",
+      "text_markdown": "Ron，今個星期最大嘅模型新聞係乜嘢？",
+      "title": "",
+      "tts": {
+        "text": "Ron，今個星期最大嘅模型新聞係乜嘢？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ChatGPT入面嘅默認大腦變咗。OpenAI喺上星期，即係5月5日星期二，向免費用戶推出咗一個叫GPT-5.5 Instant嘅新模型。如果你覺得免費ChatGPT嘅回應變短咗或者emoji少咗，呢個就係原因。",
+      "text_markdown": "ChatGPT入面嘅默認大腦變咗。OpenAI喺上星期，即係5月5日星期二，向免費用戶推出咗一個叫GPT-5.5 Instant嘅新模型。如果你覺得免費ChatGPT嘅回應變短咗或者emoji少咗，呢個就係原因。",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT入面嘅默認大腦變咗。OpenAI喺上星期，即係五月五日星期二，向免費用戶推出咗一個叫GPT五點五 Instant嘅新模型。如果你覺得免費ChatGPT嘅回應變短咗或者emoji少咗，呢個就係原因。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "點樣短法？",
+      "text_markdown": "點樣短法？",
+      "title": "",
+      "tts": {
+        "text": "點樣短法？",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "OpenAI話呢個新嘅默認模型寫嘅字數比佢取代嘅模型大概少30%，行數亦都少30%。佢哋仲聲稱喺最難嘅提示上面，幻覺聲明減少咗50%。好似醫學問題、法律問題同埋金融問題咁。",
+      "text_markdown": "OpenAI話呢個新嘅默認模型寫嘅字數比佢取代嘅模型大概少30%，行數亦都少30%。佢哋仲聲稱喺最難嘅提示上面，幻覺聲明減少咗50%。好似醫學問題、法律問題同埋金融問題咁。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI話呢個新嘅默認模型寫嘅字數比佢取代嘅模型大概少三十個百分點，行數亦都少三十個百分點。佢哋仲聲稱喺最難嘅提示上面，幻覺聲明減少咗五十個百分點。好似醫學問題、法律問題同埋金融問題咁。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "有冇OpenAI以外嘅人驗證過呢啲數字？",
+      "text_markdown": "有冇OpenAI以外嘅人驗證過呢啲數字？",
+      "title": "",
+      "tts": {
+        "text": "有冇OpenAI以外嘅人驗證過呢啲數字？",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "大規模驗證就冇。獨立基準測試嘅人，好似Artificial Analysis，將呢個新模型放喺佢哋整體智能指數嘅榜首。但係幻覺聲明嘅驗證需要時間。呢啲通常要幾個星期先會浮現，當人哋真正使用呢個模型嘅時候。",
+      "text_markdown": "大規模驗證就冇。獨立基準測試嘅人，好似Artificial Analysis，將呢個新模型放喺佢哋整體智能指數嘅榜首。但係幻覺聲明嘅驗證需要時間。呢啲通常要幾個星期先會浮現，當人哋真正使用呢個模型嘅時候。",
+      "title": "",
+      "tts": {
+        "text": "大規模驗證就冇。獨立基準測試嘅人，好似Artificial Analysis，將呢個新模型放喺佢哋整體智能指數嘅榜首。但係幻覺聲明嘅驗證需要時間。呢啲通常要幾個星期先會浮現，當人哋真正使用呢個模型嘅時候。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "咁開放權重方面呢？",
+      "text_markdown": "咁開放權重方面呢？",
+      "title": "",
+      "tts": {
+        "text": "咁開放權重方面呢？",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "有兩件大事。Moonshot，即係Kimi模型背後嘅中國實驗室，喺上星期5月7日籌集咗20億美元，估值200億美元。而佢哋嘅最新模型Kimi K 2.6，啱啱喺OpenRouter嘅token量方面攞到第一位。",
+      "text_markdown": "有兩件大事。Moonshot，即係Kimi模型背後嘅中國實驗室，喺上星期5月7日籌集咗20億美元，估值200億美元。而佢哋嘅最新模型Kimi K 2.6，啱啱喺OpenRouter嘅token量方面攞到第一位。",
+      "title": "",
+      "tts": {
+        "text": "有兩件大事。Moonshot，即係Kimi模型背後嘅中國實驗室，喺上星期五月七日籌集咗二十億美元，估值二百億美元。而佢哋嘅最新模型Kimi K二點六，啱啱喺OpenRouter嘅token量方面攞到第一位。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "第一位？總體嚟講？",
+      "text_markdown": "第一位？總體嚟講？",
+      "title": "",
+      "tts": {
+        "text": "第一位？總體嚟講？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "總體嚟講。呢個係一個中國開放權重模型喺主要商業路由器上面排第一。六個月前，呢件事係不可想像嘅。",
+      "text_markdown": "總體嚟講。呢個係一個中國開放權重模型喺主要商業路由器上面排第一。六個月前，呢件事係不可想像嘅。",
+      "title": "",
+      "tts": {
+        "text": "總體嚟講。呢個係一個中國開放權重模型喺主要商業路由器上面排第一。六個月前，呢件事係不可想像嘅。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "仲有冇其他值得關注嘅？",
+      "text_markdown": "仲有冇其他值得關注嘅？",
+      "title": "",
+      "tts": {
+        "text": "仲有冇其他值得關注嘅？",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mistral，即係嗰個法國實驗室，喺4月尾推出咗Medium 3.5。佢哋將以前分開嘅聊天模型、推理模型同埋編程模型合併成一個產品。呢個係OpenAI用GPT-5系列開始嘅同一個趨勢。成個行業都朝呢個方向發展。",
+      "text_markdown": "Mistral，即係嗰個法國實驗室，喺4月尾推出咗Medium 3.5。佢哋將以前分開嘅聊天模型、推理模型同埋編程模型合併成一個產品。呢個係OpenAI用GPT-5系列開始嘅同一個趨勢。成個行業都朝呢個方向發展。",
+      "title": "",
+      "tts": {
+        "text": "Mistral，即係嗰個法國實驗室，喺四月尾推出咗Medium三點五。佢哋將以前分開嘅聊天模型、推理模型同埋編程模型合併成一個產品。呢個係OpenAI用GPT五系列開始嘅同一個趨勢。成個行業都朝呢個方向發展。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "咁接落嚟會有乜嘢？",
+      "text_markdown": "咁接落嚟會有乜嘢？",
+      "title": "",
+      "tts": {
+        "text": "咁接落嚟會有乜嘢？",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Google I/O係星期二。大家都預期有新嘅Gemini，而且有可靠消息話會有一個叫Gemini Omni嘅視頻生成模型。OpenAI有GPT-5.6喺測試緊。Anthropic有一個叫Mythos嘅模型喺私人預覽。下星期我哋會知多好多。",
+      "text_markdown": "Google I/O係星期二。大家都預期有新嘅Gemini，而且有可靠消息話會有一個叫Gemini Omni嘅視頻生成模型。OpenAI有GPT-5.6喺測試緊。Anthropic有一個叫Mythos嘅模型喺私人預覽。下星期我哋會知多好多。",
+      "title": "",
+      "tts": {
+        "text": "Google I O係星期二。大家都預期有新嘅Gemini，而且有可靠消息話會有一個叫Gemini Omni嘅視頻生成模型。OpenAI有GPT五點六喺測試緊。Anthropic有一個叫Mythos嘅模型喺私人預覽。下星期我哋會知多好多。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "好，我哋嚟睇下排行榜。",
+      "text_markdown": "好，我哋嚟睇下排行榜。",
+      "title": "",
+      "tts": {
+        "text": "好，我哋嚟睇下排行榜。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron，今個星期排行榜上面有乜嘢變化？",
+      "text_markdown": "Ron，今個星期排行榜上面有乜嘢變化？",
+      "title": "",
+      "tts": {
+        "text": "Ron，今個星期排行榜上面有乜嘢變化？",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "今個星期真正嘅故事唔係分數。係你應該停止相信嘅分數。",
+      "text_markdown": "今個星期真正嘅故事唔係分數。係你應該停止相信嘅分數。",
+      "title": "",
+      "tts": {
+        "text": "今個星期真正嘅故事唔係分數。係你應該停止相信嘅分數。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron，詳細講下呢件事。",
+      "text_markdown": "Ron，詳細講下呢件事。",
+      "title": "",
+      "tts": {
+        "text": "Ron，詳細講下呢件事。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Berkeley嘅一個小組發表咗一篇論文。佢哋造咗一個自動化掃描器，喺每個主要AI代理基準測試上面都攞到接近滿分。但係實際上一個任務都冇解決。佢哋利用咗基準測試檢查自己答案嘅方式。",
+      "text_markdown": "Berkeley嘅一個小組發表咗一篇論文。佢哋造咗一個自動化掃描器，喺每個主要AI代理基準測試上面都攞到接近滿分。但係實際上一個任務都冇解決。佢哋利用咗基準測試檢查自己答案嘅方式。",
+      "title": "",
+      "tts": {
+        "text": "Berkeley嘅一個小組發表咗一篇論文。佢哋造咗一個自動化掃描器，喺每個主要AI代理基準測試上面都攞到接近滿分。但係實際上一個任務都冇解決。佢哋利用咗基準測試檢查自己答案嘅方式。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "佢哋作弊，而基準測試冇發現。",
+      "text_markdown": "佢哋作弊，而基準測試冇發現。",
+      "title": "",
+      "tts": {
+        "text": "佢哋作弊，而基準測試冇發現。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "啱。而且同一個星期，OpenAI宣佈佢哋停用SWE bench Verified嘅評估。呢個係一個佢哋以前成日引用嘅編程基準測試。佢哋停用佢係因為超過一半嘅困難任務原來都有壞咗嘅測試。",
+      "text_markdown": "啱。而且同一個星期，OpenAI宣佈佢哋停用SWE bench Verified嘅評估。呢個係一個佢哋以前成日引用嘅編程基準測試。佢哋停用佢係因為超過一半嘅困難任務原來都有壞咗嘅測試。",
+      "title": "",
+      "tts": {
+        "text": "啱。而且同一個星期，OpenAI宣佈佢哋停用SWE bench Verified嘅評估。呢個係一個佢哋以前成日引用嘅編程基準測試。佢哋停用佢係因為超過一半嘅困難任務原來都有壞咗嘅測試。",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "咁我哋過去一年聽到嘅好多數字都係...",
+      "text_markdown": "咁我哋過去一年聽到嘅好多數字都係...",
+      "title": "",
+      "tts": {
+        "text": "咁我哋過去一年聽到嘅好多數字都係...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "至少部分係誇大咗嘅。唔係每個模型。唔係每個基準測試。但係呢個領域正在公開重建佢嘅測量尺度。較新嘅評估好似SWE-bench Pro同埋一個叫SWE-rebench嘅項目，試圖通過將測試代碼保密嚟解決呢個問題。",
+      "text_markdown": "至少部分係誇大咗嘅。唔係每個模型。唔係每個基準測試。但係呢個領域正在公開重建佢嘅測量尺度。較新嘅評估好似SWE-bench Pro同埋一個叫SWE-rebench嘅項目，試圖通過將測試代碼保密嚟解決呢個問題。",
+      "title": "",
+      "tts": {
+        "text": "至少部分係誇大咗嘅。唔係每個模型。唔係每個基準測試。但係呢個領域正在公開重建佢嘅測量尺度。較新嘅評估好似SWE bench Pro同埋一個叫SWE rebench嘅項目，試圖通過將測試代碼保密嚟解決呢個問題。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "有冇嘢確實係乾淨咁上升嘅？",
+      "text_markdown": "有冇嘢確實係乾淨咁上升嘅？",
+      "title": "",
+      "tts": {
+        "text": "有冇嘢確實係乾淨咁上升嘅？",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "有兩樣嘢，喺較乾淨嘅排行榜上面。喺4月中，Anthropic嘅Claude Opus 4.7成為第一個喺LM Arena編程排行榜上面乾淨咁推過Elo 1500嘅模型。Opus 4.6喺幾個星期前已經觸及過1500。截至今個星期，Opus 4.7仍然排第一，大概1569。Anthropic仲有一個叫Mythos嘅獨立模型喺私人合作夥伴預覽入面，喺Anthropic測量嘅18個代理基準測試入面領先17個。",
+      "text_markdown": "有兩樣嘢，喺較乾淨嘅排行榜上面。喺4月中，Anthropic嘅Claude Opus 4.7成為第一個喺LM Arena編程排行榜上面乾淨咁推過Elo 1500嘅模型。Opus 4.6喺幾個星期前已經觸及過1500。截至今個星期，Opus 4.7仍然排第一，大概1569。Anthropic仲有一個叫Mythos嘅獨立模型喺私人合作夥伴預覽入面，喺Anthropic測量嘅18個代理基準測試入面領先17個。",
+      "title": "",
+      "tts": {
+        "text": "有兩樣嘢，喺較乾淨嘅排行榜上面。喺四月中，Anthropic嘅Claude Opus四點七成為第一個喺LM Arena編程排行榜上面乾淨咁推過Elo一千五百嘅模型。Opus四點六喺幾個星期前已經觸及過一千五百。截至今個星期，Opus四點七仍然排第一，大概一千五百六十九。Anthropic仲有一個叫Mythos嘅獨立模型喺私人合作夥伴預覽入面，喺Anthropic測量嘅十八個代理基準測試入面領先十七個。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "一個公眾用唔到嘅模型排喺排行榜第一。",
+      "text_markdown": "一個公眾用唔到嘅模型排喺排行榜第一。",
+      "title": "",
+      "tts": {
+        "text": "一個公眾用唔到嘅模型排喺排行榜第一。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "呢個就係我哋嘅現況。另一個大趨勢係開放對封閉嘅差距。呢個差距係有史以來最窄嘅。DeepSeek V4 Pro同埋Kimi K 2.6喺交叉評估智能指數上面同GPT-5.5相當接近。呢個差距以前好大。而家好細。",
+      "text_markdown": "呢個就係我哋嘅現況。另一個大趨勢係開放對封閉嘅差距。呢個差距係有史以來最窄嘅。DeepSeek V4 Pro同埋Kimi K 2.6喺交叉評估智能指數上面同GPT-5.5相當接近。呢個差距以前好大。而家好細。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係我哋嘅現況。另一個大趨勢係開放對封閉嘅差距。呢個差距係有史以來最窄嘅。DeepSeek V四 Pro同埋Kimi K二點六喺交叉評估智能指數上面同GPT五點五相當接近。呢個差距以前好大。而家好細。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "好，我哋嚟講下本週概念。",
+      "text_markdown": "好，我哋嚟講下本週概念。",
+      "title": "",
+      "tts": {
+        "text": "好，我哋嚟講下本週概念。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron，今個星期嘅概念係mixture of experts。點解我哋要專注於mixture of experts？",
+      "text_markdown": "Ron，今個星期嘅概念係mixture of experts。點解我哋要專注於mixture of experts？",
+      "title": "",
+      "tts": {
+        "text": "Ron，今個星期嘅概念係mixture of experts。點解我哋要專注於mixture of experts？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "因為我哋啱啱講嘅開放權重模型Kimi K 2.6，總共有1萬億個參數。但係喺任何時候只有320億個參數運行。呢個就係mixture of experts。",
+      "text_markdown": "因為我哋啱啱講嘅開放權重模型Kimi K 2.6，總共有1萬億個參數。但係喺任何時候只有320億個參數運行。呢個就係mixture of experts。",
+      "title": "",
+      "tts": {
+        "text": "因為我哋啱啱講嘅開放權重模型Kimi K二點六，總共有一萬億個參數。但係喺任何時候只有三百二十億個參數運行。呢個就係mixture of experts。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "為收聽緊嘅朋友解釋下。",
+      "text_markdown": "為收聽緊嘅朋友解釋下。",
+      "title": "",
+      "tts": {
+        "text": "為收聽緊嘅朋友解釋下。",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "一個普通嘅AI模型就好似一個巨大嘅大腦。佢生成嘅每個字都會用到大腦嘅每個部分。而mixture of experts模型就更似一棟滿係專家嘅大樓。門口有個接待員。對於每個字，接待員會揀兩三個專家嚟諮詢，而大樓嘅其他部分就保持安靜。",
+      "text_markdown": "一個普通嘅AI模型就好似一個巨大嘅大腦。佢生成嘅每個字都會用到大腦嘅每個部分。而mixture of experts模型就更似一棟滿係專家嘅大樓。門口有個接待員。對於每個字，接待員會揀兩三個專家嚟諮詢，而大樓嘅其他部分就保持安靜。",
+      "title": "",
+      "tts": {
+        "text": "一個普通嘅AI模型就好似一個巨大嘅大腦。佢生成嘅每個字都會用到大腦嘅每個部分。而mixture of experts模型就更似一棟滿係專家嘅大樓。門口有個接待員。對於每個字，接待員會揀兩三個專家嚟諮詢，而大樓嘅其他部分就保持安靜。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "所以個模型喺紙面上好大，但係運行成本低。",
+      "text_markdown": "所以個模型喺紙面上好大，但係運行成本低。",
+      "title": "",
+      "tts": {
+        "text": "所以個模型喺紙面上好大，但係運行成本低。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "啱。1萬億個參數嘅容量。但係每個字只需要320億個參數嘅計算。呢個就係竅門。接待員係一小段叫router嘅代碼。專家係叫experts嘅子網絡。個模型會一齊訓練router同experts，端到端咁。",
+      "text_markdown": "啱。1萬億個參數嘅容量。但係每個字只需要320億個參數嘅計算。呢個就係竅門。接待員係一小段叫router嘅代碼。專家係叫experts嘅子網絡。個模型會一齊訓練router同experts，端到端咁。",
+      "title": "",
+      "tts": {
+        "text": "啱。一萬億個參數嘅容量。但係每個字只需要三百二十億個參數嘅計算。呢個就係竅門。接待員係一小段叫router嘅代碼。專家係叫experts嘅子網絡。個模型會一齊訓練router同experts，端到端咁。",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "係咪每個主要前沿模型都係咁做？",
+      "text_markdown": "係咪每個主要前沿模型都係咁做？",
+      "title": "",
+      "tts": {
+        "text": "係咪每個主要前沿模型都係咁做？",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "大部分都係，係嘅。雖然實驗室唔係成日確認呢點。GPT-4係mixture of experts模型。DeepSeek嘅旗艦產品係mixture of experts模型。Mistral自2023年開始已經推出mixture of experts模型。中國嘅新浪潮將呢個設計推到極限。",
+      "text_markdown": "大部分都係，係嘅。雖然實驗室唔係成日確認呢點。GPT-4係mixture of experts模型。DeepSeek嘅旗艦產品係mixture of experts模型。Mistral自2023年開始已經推出mixture of experts模型。中國嘅新浪潮將呢個設計推到極限。",
+      "title": "",
+      "tts": {
+        "text": "大部分都係，係嘅。雖然實驗室唔係成日確認呢點。GPT四係mixture of experts模型。DeepSeek嘅旗艦產品係mixture of experts模型。Mistral自二零二三年開始已經推出mixture of experts模型。中國嘅新浪潮將呢個設計推到極限。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "點解對一個只係用ChatGPT嘅人嚟講會有關係？",
+      "text_markdown": "點解對一個只係用ChatGPT嘅人嚟講會有關係？",
+      "title": "",
+      "tts": {
+        "text": "點解對一個只係用ChatGPT嘅人嚟講會有關係？",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "有兩個原因。第一，呢個係點解中國嘅開放權重實驗室可以用少咗好多嘅預算嚟做到前沿級別嘅質素嘅主要原因。第二，呢個係點解單一API調用只係需要幾分錢而唔係幾蚊嘅主要原因。當你見到價錢下跌但質素保持高水準嘅時候，混合專家通常就係原因。",
+      "text_markdown": "有兩個原因。第一，呢個係點解中國嘅開放權重實驗室可以用少咗好多嘅預算嚟做到前沿級別嘅質素嘅主要原因。第二，呢個係點解單一API調用只係需要幾分錢而唔係幾蚊嘅主要原因。當你見到價錢下跌但質素保持高水準嘅時候，混合專家通常就係原因。",
+      "title": "",
+      "tts": {
+        "text": "有兩個原因。第一，呢個係點解中國嘅開放權重實驗室可以用少咗好多嘅預算嚟做到前沿級別嘅質素嘅主要原因。第二，呢個係點解單一API調用只係需要幾分錢而唔係幾蚊嘅主要原因。當你見到價錢下跌但質素保持高水準嘅時候，混合專家通常就係原因。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "混合專家。路由器。專家。稀疏激活。呢三個詞要記住。而家我哋拉返去睇個大圖。",
+      "text_markdown": "混合專家。路由器。專家。稀疏激活。呢三個詞要記住。而家我哋拉返去睇個大圖。",
+      "title": "",
+      "tts": {
+        "text": "混合專家。路由器。專家。稀疏激活。呢三個詞要記住。而家我哋拉返去睇個大圖。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron，我哋世界之外今個星期嘅大新聞係聯邦儲備局。",
+      "text_markdown": "Ron，我哋世界之外今個星期嘅大新聞係聯邦儲備局。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我哋世界之外今個星期嘅大新聞係聯邦儲備局。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "今日，美國參議院確認Kevin Warsh做下任聯邦儲備局主席。投票結果係54對45。係現代美國歷史上聯儲局主席選舉最窄嘅差距。只有一個民主黨人過咗界。",
+      "text_markdown": "今日，美國參議院確認Kevin Warsh做下任聯邦儲備局主席。投票結果係54對45。係現代美國歷史上聯儲局主席選舉最窄嘅差距。只有一個民主黨人過咗界。",
+      "title": "",
+      "tts": {
+        "text": "今日，美國參議院確認Kevin Warsh做下任聯邦儲備局主席。投票結果係五十四對四十五。係現代美國歷史上聯儲局主席選舉最窄嘅差距。只有一個民主黨人過咗界。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "點解呢個對AI有關係？",
+      "text_markdown": "點解呢個對AI有關係？",
+      "title": "",
+      "tts": {
+        "text": "點解呢個對AI有關係？",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "因為而家AI嘅建設受到兩樣嘢限制。電力，同埋資本成本。聯儲局設定資本成本。而新主席有記錄話佢想比前任更快咁減息。",
+      "text_markdown": "因為而家AI嘅建設受到兩樣嘢限制。電力，同埋資本成本。聯儲局設定資本成本。而新主席有記錄話佢想比前任更快咁減息。",
+      "title": "",
+      "tts": {
+        "text": "因為而家AI嘅建設受到兩樣嘢限制。電力，同埋資本成本。聯儲局設定資本成本。而新主席有記錄話佢想比前任更快咁減息。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "更快嘅減息令AI投資更平。",
+      "text_markdown": "更快嘅減息令AI投資更平。",
+      "title": "",
+      "tts": {
+        "text": "更快嘅減息令AI投資更平。",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "係嘅。超大規模雲端服務商——Microsoft、Google、Amazon、Meta——預計今年會喺資本支出上面花大約7000億美元。大部分都係GPU同埋數據中心。更低嘅貼現率令呢啲多年期建設項目喺更高估值下都計得番。",
+      "text_markdown": "係嘅。超大規模雲端服務商——Microsoft、Google、Amazon、Meta——預計今年會喺資本支出上面花大約7000億美元。大部分都係GPU同埋數據中心。更低嘅貼現率令呢啲多年期建設項目喺更高估值下都計得番。",
+      "title": "",
+      "tts": {
+        "text": "係嘅。超大規模雲端服務商——Microsoft、Google、Amazon、Meta——預計今年會喺資本支出上面花大約七千億美元。大部分都係GPU同埋數據中心。更低嘅貼現率令呢啲多年期建設項目喺更高估值下都計得番。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "咁另一個方向呢。AI點樣影響聯儲局要決定嘅嘢？",
+      "text_markdown": "咁另一個方向呢。AI點樣影響聯儲局要決定嘅嘢？",
+      "title": "",
+      "tts": {
+        "text": "咁另一個方向呢。AI點樣影響聯儲局要決定嘅嘢？",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "呢個就係有趣嘅部分。AI資本支出而家大到已經係宏觀經濟數字。唔係行業故事。華爾街分析員話AI相關嘅建築同設備支出已經係過去幾個季度美國經濟增長嘅大部分。",
+      "text_markdown": "呢個就係有趣嘅部分。AI資本支出而家大到已經係宏觀經濟數字。唔係行業故事。華爾街分析員話AI相關嘅建築同設備支出已經係過去幾個季度美國經濟增長嘅大部分。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係有趣嘅部分。AI資本支出而家大到已經係宏觀經濟數字。唔係行業故事。華爾街分析員話AI相關嘅建築同設備支出已經係過去幾個季度美國經濟增長嘅大部分。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "增長嘅大部分。",
+      "text_markdown": "增長嘅大部分。",
+      "title": "",
+      "tts": {
+        "text": "增長嘅大部分。",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "大部分。而且對聯儲局嚟講有兩個方向。長遠嚟講，AI係生產力嘅順風。呢個係通縮性嘅。令聯儲局有空間減息。短期嚟講，呢個係對電力、銅、技術勞工、冷卻用水嘅需求衝擊。呢個係通脹性嘅。特別係喺Virginia同Texas呢啲數據中心集中嘅地方。",
+      "text_markdown": "大部分。而且對聯儲局嚟講有兩個方向。長遠嚟講，AI係生產力嘅順風。呢個係通縮性嘅。令聯儲局有空間減息。短期嚟講，呢個係對電力、銅、技術勞工、冷卻用水嘅需求衝擊。呢個係通脹性嘅。特別係喺Virginia同Texas呢啲數據中心集中嘅地方。",
+      "title": "",
+      "tts": {
+        "text": "大部分。而且對聯儲局嚟講有兩個方向。長遠嚟講，AI係生產力嘅順風。呢個係通縮性嘅。令聯儲局有空間減息。短期嚟講，呢個係對電力、銅、技術勞工、冷卻用水嘅需求衝擊。呢個係通脹性嘅。特別係喺Virginia同Texas呢啲數據中心集中嘅地方。",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "所以新主席要決定AI係通脹嘅答案，定係AI係通脹嘅成因。",
+      "text_markdown": "所以新主席要決定AI係通脹嘅答案，定係AI係通脹嘅成因。",
+      "title": "",
+      "tts": {
+        "text": "所以新主席要決定AI係通脹嘅答案，定係AI係通脹嘅成因。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "兩樣嘢，同時間發生。而且無論佢喺首次公開講話入面講啲乜，都會影響華爾街每一個AI資本支出模型。",
+      "text_markdown": "兩樣嘢，同時間發生。而且無論佢喺首次公開講話入面講啲乜，都會影響華爾街每一個AI資本支出模型。",
+      "title": "",
+      "tts": {
+        "text": "兩樣嘢，同時間發生。而且無論佢喺首次公開講話入面講啲乜，都會影響華爾街每一個AI資本支出模型。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Microsoft有800億美元嘅未完成雲端訂單係因為電力問題。呢個係啱嘅數字嗎？",
+      "text_markdown": "Microsoft有800億美元嘅未完成雲端訂單係因為電力問題。呢個係啱嘅數字嗎？",
+      "title": "",
+      "tts": {
+        "text": "Microsoft有八百億美元嘅未完成雲端訂單係因為電力問題。呢個係啱嘅數字嗎？",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "呢個係Microsoft報告嘅數字。Azure客戶喺度排隊等容量。樽頸已經唔係芯片。係電網。電力市場建設新容量嘅速度跟唔上數據中心想要嘅速度。",
+      "text_markdown": "呢個係Microsoft報告嘅數字。Azure客戶喺度排隊等容量。樽頸已經唔係芯片。係電網。電力市場建設新容量嘅速度跟唔上數據中心想要嘅速度。",
+      "title": "",
+      "tts": {
+        "text": "呢個係Microsoft報告嘅數字。Azure客戶喺度排隊等容量。樽頸已經唔係芯片。係電網。電力市場建設新容量嘅速度跟唔上數據中心想要嘅速度。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Warsh幾時開第一次會議？",
+      "text_markdown": "Warsh幾時開第一次會議？",
+      "title": "",
+      "tts": {
+        "text": "Warsh幾時開第一次會議？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "6月16號同17號。之後我哋會對利率路徑知道多好多。",
+      "text_markdown": "6月16號同17號。之後我哋會對利率路徑知道多好多。",
+      "title": "",
+      "tts": {
+        "text": "六月十六號同十七號。之後我哋會對利率路徑知道多好多。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "好地方收尾。Ron，多謝。",
+      "text_markdown": "好地方收尾。Ron，多謝。",
+      "title": "",
+      "tts": {
+        "text": "好地方收尾。Ron，多謝。",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "唔使客氣，Vindy。",
+      "text_markdown": "唔使客氣，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "唔使客氣，Vindy。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "呢個係2026年5月13日嘅AI This Week。下個星期三有新一期。到時見，保重。",
+      "text_markdown": "呢個係2026年5月13日嘅AI This Week。下個星期三有新一期。到時見，保重。",
+      "title": "",
+      "tts": {
+        "text": "呢個係二零二六年五月十三日嘅AI This Week。下個星期三有新一期。到時見，保重。",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

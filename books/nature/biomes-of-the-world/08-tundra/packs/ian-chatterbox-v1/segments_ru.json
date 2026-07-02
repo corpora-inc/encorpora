@@ -1,0 +1,2221 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tundra",
+  "total_segments": 150,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tundra",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Тундра",
+      "text_markdown": "Тундра"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Где встречается этот биом",
+      "text_markdown": "Где встречается этот биом"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Добро пожаловать в тундру.",
+      "text_markdown": "Добро пожаловать в тундру.",
+      "tts": {
+        "text": "Добро пожаловать в тундру.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это один из великих биомов мира.",
+      "text_markdown": "Это один из великих биомов мира.",
+      "tts": {
+        "text": "Это один из великих биомов мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Биом это область Земли со своей погодой, растениями и животными.",
+      "text_markdown": "Биом это область Земли со своей погодой, растениями и животными.",
+      "tts": {
+        "text": "Биом это область Земли со своей погодой, растениями и животными.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра это холодная открытая земля, где слишком холодно для деревьев.",
+      "text_markdown": "Тундра это холодная открытая земля, где слишком холодно для деревьев.",
+      "tts": {
+        "text": "Тундра это холодная открытая земля, где слишком холодно для деревьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Слово тундра происходит от старого слова, означающего безлесную равнину.",
+      "text_markdown": "Слово тундра происходит от старого слова, означающего безлесную равнину.",
+      "tts": {
+        "text": "Слово тундра происходит от старого слова, означающего безлесную равнину.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра это самый холодный биом на суше.",
+      "text_markdown": "Тундра это самый холодный биом на суше.",
+      "tts": {
+        "text": "Тундра это самый холодный биом на суше.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большая часть тундры лежит широким кольцом вокруг вершины мира.",
+      "text_markdown": "Большая часть тундры лежит широким кольцом вокруг вершины мира.",
+      "tts": {
+        "text": "Большая часть тундры лежит широким кольцом вокруг вершины мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она покрывает северные окраины Канады, Аляски и Гренландии в Северной Америке.",
+      "text_markdown": "Она покрывает северные окраины Канады, Аляски и Гренландии в Северной Америке.",
+      "tts": {
+        "text": "Она покрывает северные окраины Канады, Аляски и Гренландии в Северной Америке.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она покрывает крайний север Норвегии, Швеции и Финляндии в Северной Европе.",
+      "text_markdown": "Она покрывает крайний север Норвегии, Швеции и Финляндии в Северной Европе.",
+      "tts": {
+        "text": "Она покрывает крайний север Норвегии, Швеции и Финляндии в Северной Европе.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она покрывает длинное северное побережье России через всю вершину Азии.",
+      "text_markdown": "Она покрывает длинное северное побережье России через всю вершину Азии.",
+      "tts": {
+        "text": "Она покрывает длинное северное побережье России через всю вершину Азии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это холодное кольцо земли лежит к северу от тайги и вокруг замёрзшего моря.",
+      "text_markdown": "Это холодное кольцо земли лежит к северу от тайги и вокруг замёрзшего моря.",
+      "tts": {
+        "text": "Это холодное кольцо земли лежит к северу от тайги и вокруг замёрзшего моря.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть и другой вид тундры.",
+      "text_markdown": "Есть и другой вид тундры.",
+      "tts": {
+        "text": "Есть и другой вид тундры.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Высоко в горах, выше последних деревьев, появляется такая же холодная открытая земля.",
+      "text_markdown": "Высоко в горах, выше последних деревьев, появляется такая же холодная открытая земля.",
+      "tts": {
+        "text": "Высоко в горах, выше последних деревьев, появляется такая же холодная открытая земля.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эта горная тундра встречается на высоких вершинах по всему миру, даже у тёплой середины Земли.",
+      "text_markdown": "Эта горная тундра встречается на высоких вершинах по всему миру, даже у тёплой середины Земли.",
+      "tts": {
+        "text": "Эта горная тундра встречается на высоких вершинах по всему миру, даже у тёплой середины Земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Где бы она ни была, тундра это край низких растений, холодного ветра и широкого открытого неба.",
+      "text_markdown": "Где бы она ни была, тундра это край низких растений, холодного ветра и широкого открытого неба.",
+      "tts": {
+        "text": "Где бы она ни была, тундра это край низких растений, холодного ветра и широкого открытого неба.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь нет лесов.",
+      "text_markdown": "Здесь нет лесов.",
+      "tts": {
+        "text": "Здесь нет лесов.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Земля крепко промёрзла большую часть года.",
+      "text_markdown": "Земля крепко промёрзла большую часть года.",
+      "tts": {
+        "text": "Земля крепко промёрзла большую часть года.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но даже в этом холодном краю жизнь находит путь.",
+      "text_markdown": "Но даже в этом холодном краю жизнь находит путь.",
+      "tts": {
+        "text": "Но даже в этом холодном краю жизнь находит путь.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-021",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Погода",
+      "text_markdown": "Погода"
+    },
+    {
+      "id": "ch03-022",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра холодная, сухая и ветреная большую часть года.",
+      "text_markdown": "Тундра холодная, сухая и ветреная большую часть года.",
+      "tts": {
+        "text": "Тундра холодная, сухая и ветреная большую часть года.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-023",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Зима долгая, тёмная и жестоко холодная.",
+      "text_markdown": "Зима долгая, тёмная и жестоко холодная.",
+      "tts": {
+        "text": "Зима долгая, тёмная и жестоко холодная.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-024",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На крайнем севере зима может длиться восемь или девять месяцев.",
+      "text_markdown": "На крайнем севере зима может длиться восемь или девять месяцев.",
+      "tts": {
+        "text": "На крайнем севере зима может длиться восемь или девять месяцев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Воздух может опуститься далеко ниже нуля, холоднее домашней морозилки.",
+      "text_markdown": "Воздух может опуститься далеко ниже нуля, холоднее домашней морозилки.",
+      "tts": {
+        "text": "Воздух может опуститься далеко ниже нуля, холоднее домашней морозилки.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие недели в разгар зимы солнце совсем не восходит.",
+      "text_markdown": "Многие недели в разгар зимы солнце совсем не восходит.",
+      "tts": {
+        "text": "Многие недели в разгар зимы солнце совсем не восходит.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Земля лежит в долгих синих и тёмных сумерках, день за днём.",
+      "text_markdown": "Земля лежит в долгих синих и тёмных сумерках, день за днём.",
+      "tts": {
+        "text": "Земля лежит в долгих синих и тёмных сумерках, день за днём.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сильные ветры дуют над открытой землёй, и деревья не сдерживают их.",
+      "text_markdown": "Сильные ветры дуют над открытой землёй, и деревья не сдерживают их.",
+      "tts": {
+        "text": "Сильные ветры дуют над открытой землёй, и деревья не сдерживают их.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ветер поднимает сухой снег и гонит его по земле.",
+      "text_markdown": "Ветер поднимает сухой снег и гонит его по земле.",
+      "tts": {
+        "text": "Ветер поднимает сухой снег и гонит его по земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь выпадает очень мало снега или дождя.",
+      "text_markdown": "Здесь выпадает очень мало снега или дождя.",
+      "tts": {
+        "text": "Здесь выпадает очень мало снега или дождя.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра так суха, что её иногда называют холодной пустыней.",
+      "text_markdown": "Тундра так суха, что её иногда называют холодной пустыней.",
+      "tts": {
+        "text": "Тундра так суха, что её иногда называют холодной пустыней.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но выпавшая вода не может уйти в промёрзшую землю.",
+      "text_markdown": "Но выпавшая вода не может уйти в промёрзшую землю.",
+      "tts": {
+        "text": "Но выпавшая вода не может уйти в промёрзшую землю.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поэтому она остаётся сверху, и земля усеяна мелкими лужами и сырыми местами.",
+      "text_markdown": "Поэтому она остаётся сверху, и земля усеяна мелкими лужами и сырыми местами.",
+      "tts": {
+        "text": "Поэтому она остаётся сверху, и земля усеяна мелкими лужами и сырыми местами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лето короткое и прохладное.",
+      "text_markdown": "Лето короткое и прохладное.",
+      "tts": {
+        "text": "Лето короткое и прохладное.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Несколько недель солнце стоит в небе почти весь день и всю ночь.",
+      "text_markdown": "Несколько недель солнце стоит в небе почти весь день и всю ночь.",
+      "tts": {
+        "text": "Несколько недель солнце стоит в небе почти весь день и всю ночь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Верх промёрзшей земли оттаивает, и край становится зелёным и ярким.",
+      "text_markdown": "Верх промёрзшей земли оттаивает, и край становится зелёным и ярким.",
+      "tts": {
+        "text": "Верх промёрзшей земли оттаивает, и край становится зелёным и ярким.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Даже летом воздух остаётся прохладным, и мороз может вернуться любой ночью.",
+      "text_markdown": "Даже летом воздух остаётся прохладным, и мороз может вернуться любой ночью.",
+      "tts": {
+        "text": "Даже летом воздух остаётся прохладным, и мороз может вернуться любой ночью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом короткое лето кончается, солнце опускается низко, и снова начинается долгая зима.",
+      "text_markdown": "Потом короткое лето кончается, солнце опускается низко, и снова начинается долгая зима.",
+      "tts": {
+        "text": "Потом короткое лето кончается, солнце опускается низко, и снова начинается долгая зима.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-039",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Земля и вода",
+      "text_markdown": "Земля и вода"
+    },
+    {
+      "id": "ch04-040",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самое важное в тундре лежит под ногами.",
+      "text_markdown": "Самое важное в тундре лежит под ногами.",
+      "tts": {
+        "text": "Самое важное в тундре лежит под ногами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-041",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Под поверхностью земля промёрзла насквозь круглый год.",
+      "text_markdown": "Под поверхностью земля промёрзла насквозь круглый год.",
+      "tts": {
+        "text": "Под поверхностью земля промёрзла насквозь круглый год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эту промёрзшую землю называют вечной мерзлотой.",
+      "text_markdown": "Эту промёрзшую землю называют вечной мерзлотой.",
+      "tts": {
+        "text": "Эту промёрзшую землю называют вечной мерзлотой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Местами вечная мерзлота уходит вглубь глубже самого высокого здания.",
+      "text_markdown": "Местами вечная мерзлота уходит вглубь глубже самого высокого здания.",
+      "tts": {
+        "text": "Местами вечная мерзлота уходит вглубь глубже самого высокого здания.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она остаётся замёрзшей тысячи лет.",
+      "text_markdown": "Она остаётся замёрзшей тысячи лет.",
+      "tts": {
+        "text": "Она остаётся замёрзшей тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Летом оттаивает лишь самый верхний слой почвы.",
+      "text_markdown": "Летом оттаивает лишь самый верхний слой почвы.",
+      "tts": {
+        "text": "Летом оттаивает лишь самый верхний слой почвы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В этом тонком оттаявшем слое и должны жить все растения.",
+      "text_markdown": "В этом тонком оттаявшем слое и должны жить все растения.",
+      "tts": {
+        "text": "В этом тонком оттаявшем слое и должны жить все растения.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их корни не могут уйти глубоко, ведь сразу под ними земля твёрдая как камень.",
+      "text_markdown": "Их корни не могут уйти глубоко, ведь сразу под ними земля твёрдая как камень.",
+      "tts": {
+        "text": "Их корни не могут уйти глубоко, ведь сразу под ними земля твёрдая как камень.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Промёрзшая земля ещё и удерживает воду на поверхности.",
+      "text_markdown": "Промёрзшая земля ещё и удерживает воду на поверхности.",
+      "tts": {
+        "text": "Промёрзшая земля ещё и удерживает воду на поверхности.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дождь и талый снег не могут просочиться сквозь вечную мерзлоту.",
+      "text_markdown": "Дождь и талый снег не могут просочиться сквозь вечную мерзлоту.",
+      "tts": {
+        "text": "Дождь и талый снег не могут просочиться сквозь вечную мерзлоту.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поэтому летом тундра становится краем мелких луж, болот и медленных ручьёв.",
+      "text_markdown": "Поэтому летом тундра становится краем мелких луж, болот и медленных ручьёв.",
+      "tts": {
+        "text": "Поэтому летом тундра становится краем мелких луж, болот и медленных ручьёв.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сверху летняя тундра сверкает тысячами маленьких прудов.",
+      "text_markdown": "Сверху летняя тундра сверкает тысячами маленьких прудов.",
+      "tts": {
+        "text": "Сверху летняя тундра сверкает тысячами маленьких прудов.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сама земля в основном плоская или слегка холмистая.",
+      "text_markdown": "Сама земля в основном плоская или слегка холмистая.",
+      "tts": {
+        "text": "Сама земля в основном плоская или слегка холмистая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во многих местах промерзание и оттаивание разбивают землю на странные фигуры.",
+      "text_markdown": "Во многих местах промерзание и оттаивание разбивают землю на странные фигуры.",
+      "tts": {
+        "text": "Во многих местах промерзание и оттаивание разбивают землю на странные фигуры.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почва промерзает и вспучивается, потом оттаивает и оседает, год за годом.",
+      "text_markdown": "Почва промерзает и вспучивается, потом оттаивает и оседает, год за годом.",
+      "tts": {
+        "text": "Почва промерзает и вспучивается, потом оттаивает и оседает, год за годом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это медленное движение растрескивает землю на кольца, полосы и низкие бугры.",
+      "text_markdown": "Это медленное движение растрескивает землю на кольца, полосы и низкие бугры.",
+      "tts": {
+        "text": "Это медленное движение растрескивает землю на кольца, полосы и низкие бугры.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почва тундры тонкая, бедная и холодная.",
+      "text_markdown": "Почва тундры тонкая, бедная и холодная.",
+      "tts": {
+        "text": "Почва тундры тонкая, бедная и холодная.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Отмершие растения очень медленно разлагаются на холоде, и хорошая почва копится медленно.",
+      "text_markdown": "Отмершие растения очень медленно разлагаются на холоде, и хорошая почва копится медленно.",
+      "tts": {
+        "text": "Отмершие растения очень медленно разлагаются на холоде, и хорошая почва копится медленно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это суровый край, мёрзлый, сырой и голый, но он тихо полон жизни.",
+      "text_markdown": "Это суровый край, мёрзлый, сырой и голый, но он тихо полон жизни.",
+      "tts": {
+        "text": "Это суровый край, мёрзлый, сырой и голый, но он тихо полон жизни.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Растения",
+      "text_markdown": "Растения"
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Растения тундры маленькие, выносливые и прижаты к земле.",
+      "text_markdown": "Растения тундры маленькие, выносливые и прижаты к земле.",
+      "tts": {
+        "text": "Растения тундры маленькие, выносливые и прижаты к земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь нет деревьев, ведь деревья не могут жить в мёрзлой земле и холодном ветре.",
+      "text_markdown": "Здесь нет деревьев, ведь деревья не могут жить в мёрзлой земле и холодном ветре.",
+      "tts": {
+        "text": "Здесь нет деревьев, ведь деревья не могут жить в мёрзлой земле и холодном ветре.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вместо них тундру покрывают низкие ковры мелких растений.",
+      "text_markdown": "Вместо них тундру покрывают низкие ковры мелких растений.",
+      "tts": {
+        "text": "Вместо них тундру покрывают низкие ковры мелких растений.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Держаться у земли вот секрет жизни здесь.",
+      "text_markdown": "Держаться у земли вот секрет жизни здесь.",
+      "tts": {
+        "text": "Держаться у земли вот секрет жизни здесь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У самой земли ветер слабее, а воздух немного теплее.",
+      "text_markdown": "У самой земли ветер слабее, а воздух немного теплее.",
+      "tts": {
+        "text": "У самой земли ветер слабее, а воздух немного теплее.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие растения тундры растут плотными подушками или густыми коврами, чтобы удержать тепло.",
+      "text_markdown": "Многие растения тундры растут плотными подушками или густыми коврами, чтобы удержать тепло.",
+      "tts": {
+        "text": "Многие растения тундры растут плотными подушками или густыми коврами, чтобы удержать тепло.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мхи растут густо и мягко на большей части земли.",
+      "text_markdown": "Мхи растут густо и мягко на большей части земли.",
+      "tts": {
+        "text": "Мхи растут густо и мягко на большей части земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лишайники растут на голых камнях и на почве серыми, зелёными и жёлтыми пятнами.",
+      "text_markdown": "Лишайники растут на голых камнях и на почве серыми, зелёными и жёлтыми пятнами.",
+      "tts": {
+        "text": "Лишайники растут на голых камнях и на почве серыми, зелёными и жёлтыми пятнами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лишайник это не одно растение, а два вида жизни, живущие вместе как одно.",
+      "text_markdown": "Лишайник это не одно растение, а два вида жизни, живущие вместе как одно.",
+      "tts": {
+        "text": "Лишайник это не одно растение, а два вида жизни, живущие вместе как одно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лишайники могут жить там, где почти ничто другое не может, и растут они очень медленно.",
+      "text_markdown": "Лишайники могут жить там, где почти ничто другое не может, и растут они очень медленно.",
+      "tts": {
+        "text": "Лишайники могут жить там, где почти ничто другое не может, и растут они очень медленно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторым лишайникам в тундре сотни лет.",
+      "text_markdown": "Некоторым лишайникам в тундре сотни лет.",
+      "tts": {
+        "text": "Некоторым лишайникам в тундре сотни лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Между мхами растут мелкие травы и низкие цветущие растения.",
+      "text_markdown": "Между мхами растут мелкие травы и низкие цветущие растения.",
+      "tts": {
+        "text": "Между мхами растут мелкие травы и низкие цветущие растения.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В короткое лето тундра вспыхивает цветением.",
+      "text_markdown": "В короткое лето тундра вспыхивает цветением.",
+      "tts": {
+        "text": "В короткое лето тундра вспыхивает цветением.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Несколько ярких недель земля покрыта крошечными цветами.",
+      "text_markdown": "Несколько ярких недель земля покрыта крошечными цветами.",
+      "tts": {
+        "text": "Несколько ярких недель земля покрыта крошечными цветами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Повсюду мелкие жёлтые, белые, розовые и фиолетовые цветы.",
+      "text_markdown": "Повсюду мелкие жёлтые, белые, розовые и фиолетовые цветы.",
+      "tts": {
+        "text": "Повсюду мелкие жёлтые, белые, розовые и фиолетовые цветы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Растения должны быстро зацвести, дать семена и запасти пищу, пока не вернулся холод.",
+      "text_markdown": "Растения должны быстро зацвести, дать семена и запасти пищу, пока не вернулся холод.",
+      "tts": {
+        "text": "Растения должны быстро зацвести, дать семена и запасти пищу, пока не вернулся холод.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь растут и немногие мелкие кустарники, такие как карликовая ива и карликовая берёза.",
+      "text_markdown": "Здесь растут и немногие мелкие кустарники, такие как карликовая ива и карликовая берёза.",
+      "tts": {
+        "text": "Здесь растут и немногие мелкие кустарники, такие как карликовая ива и карликовая берёза.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это те же деревья, что растут высокими в тёплых краях.",
+      "text_markdown": "Это те же деревья, что растут высокими в тёплых краях.",
+      "tts": {
+        "text": "Это те же деревья, что растут высокими в тёплых краях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но здесь они растут крошечными кустиками, всего по щиколотку, стелясь по земле.",
+      "text_markdown": "Но здесь они растут крошечными кустиками, всего по щиколотку, стелясь по земле.",
+      "tts": {
+        "text": "Но здесь они растут крошечными кустиками, всего по щиколотку, стелясь по земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На некоторых из этих низких растений в конце лета созревают мелкие ягоды.",
+      "text_markdown": "На некоторых из этих низких растений в конце лета созревают мелкие ягоды.",
+      "tts": {
+        "text": "На некоторых из этих низких растений в конце лета созревают мелкие ягоды.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Звери и люди тундры собирают их, пока могут.",
+      "text_markdown": "Звери и люди тундры собирают их, пока могут.",
+      "tts": {
+        "text": "Звери и люди тундры собирают их, пока могут.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Животные",
+      "text_markdown": "Животные"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Животные тундры созданы, чтобы жить с холодом и ветром.",
+      "text_markdown": "Животные тундры созданы, чтобы жить с холодом и ветром.",
+      "tts": {
+        "text": "Животные тундры созданы, чтобы жить с холодом и ветром.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У многих густой мех или густые перья и слой жира, чтобы согреться.",
+      "text_markdown": "У многих густой мех или густые перья и слой жира, чтобы согреться.",
+      "tts": {
+        "text": "У многих густой мех или густые перья и слой жира, чтобы согреться.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самые крупные животные тундры это карибу, которых также зовут северными оленями.",
+      "text_markdown": "Самые крупные животные тундры это карибу, которых также зовут северными оленями.",
+      "tts": {
+        "text": "Самые крупные животные тундры это карибу, которых также зовут северными оленями.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Карибу живут большими стадами и проходят долгие пути по открытой земле.",
+      "text_markdown": "Карибу живут большими стадами и проходят долгие пути по открытой земле.",
+      "tts": {
+        "text": "Карибу живут большими стадами и проходят долгие пути по открытой земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Летом они кормятся растениями тундры, а зимой раскапывают снег в поисках лишайников.",
+      "text_markdown": "Летом они кормятся растениями тундры, а зимой раскапывают снег в поисках лишайников.",
+      "tts": {
+        "text": "Летом они кормятся растениями тундры, а зимой раскапывают снег в поисках лишайников.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Овцебык это ещё одно крупное животное тундры.",
+      "text_markdown": "Овцебык это ещё одно крупное животное тундры.",
+      "tts": {
+        "text": "Овцебык это ещё одно крупное животное тундры.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У овцебыка тяжёлое тело и густая шуба из длинной шерсти, свисающей почти до земли.",
+      "text_markdown": "У овцебыка тяжёлое тело и густая шуба из длинной шерсти, свисающей почти до земли.",
+      "tts": {
+        "text": "У овцебыка тяжёлое тело и густая шуба из длинной шерсти, свисающей почти до земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда приближаются волки, овцебыки встают кольцом, мордами наружу, чтобы уберечь детёнышей.",
+      "text_markdown": "Когда приближаются волки, овцебыки встают кольцом, мордами наружу, чтобы уберечь детёнышей.",
+      "tts": {
+        "text": "Когда приближаются волки, овцебыки встают кольцом, мордами наружу, чтобы уберечь детёнышей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Волки идут за стадами по тундре, охотясь на старых и слабых.",
+      "text_markdown": "Волки идут за стадами по тундре, охотясь на старых и слабых.",
+      "tts": {
+        "text": "Волки идут за стадами по тундре, охотясь на старых и слабых.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Песец мал, с густым мехом, который зимой становится белым, а летом бурым.",
+      "text_markdown": "Песец мал, с густым мехом, который зимой становится белым, а летом бурым.",
+      "tts": {
+        "text": "Песец мал, с густым мехом, который зимой становится белым, а летом бурым.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Он ходит за крупными зверями и доедает то, что они оставляют, а ещё охотится на мелких животных.",
+      "text_markdown": "Он ходит за крупными зверями и доедает то, что они оставляют, а ещё охотится на мелких животных.",
+      "tts": {
+        "text": "Он ходит за крупными зверями и доедает то, что они оставляют, а ещё охотится на мелких животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Арктический заяц зимой белый, и у него короткие уши, чтобы удержать тепло.",
+      "text_markdown": "Арктический заяц зимой белый, и у него короткие уши, чтобы удержать тепло.",
+      "tts": {
+        "text": "Арктический заяц зимой белый, и у него короткие уши, чтобы удержать тепло.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Под снегом маленькие зверьки, лемминги, роют ходы и хлопочут всю зиму.",
+      "text_markdown": "Под снегом маленькие зверьки, лемминги, роют ходы и хлопочут всю зиму.",
+      "tts": {
+        "text": "Под снегом маленькие зверьки, лемминги, роют ходы и хлопочут всю зиму.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лемминги это пища для песца, совы и многих других охотников.",
+      "text_markdown": "Лемминги это пища для песца, совы и многих других охотников.",
+      "tts": {
+        "text": "Лемминги это пища для песца, совы и многих других охотников.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Полярная сова это большая белая сова, что охотится по открытой тундре днём и ночью.",
+      "text_markdown": "Полярная сова это большая белая сова, что охотится по открытой тундре днём и ночью.",
+      "tts": {
+        "text": "Полярная сова это большая белая сова, что охотится по открытой тундре днём и ночью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она высматривает с невысокого пригорка и бесшумно падает на леммингов и других мелких зверьков.",
+      "text_markdown": "Она высматривает с невысокого пригорка и бесшумно падает на леммингов и других мелких зверьков.",
+      "tts": {
+        "text": "Она высматривает с невысокого пригорка и бесшумно падает на леммингов и других мелких зверьков.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В короткое лето с юга прилетают огромные стаи птиц.",
+      "text_markdown": "В короткое лето с юга прилетают огромные стаи птиц.",
+      "tts": {
+        "text": "В короткое лето с юга прилетают огромные стаи птиц.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Гуси, утки и много мелких птиц прилетают гнездиться на сырой, полной мошкары тундре.",
+      "text_markdown": "Гуси, утки и много мелких птиц прилетают гнездиться на сырой, полной мошкары тундре.",
+      "tts": {
+        "text": "Гуси, утки и много мелких птиц прилетают гнездиться на сырой, полной мошкары тундре.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они прилетают, потому что долгие летние дни и обилие насекомых сулят много корма.",
+      "text_markdown": "Они прилетают, потому что долгие летние дни и обилие насекомых сулят много корма.",
+      "tts": {
+        "text": "Они прилетают, потому что долгие летние дни и обилие насекомых сулят много корма.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Несколько недель тучи комаров и мелких мошек наполняют воздух.",
+      "text_markdown": "Несколько недель тучи комаров и мелких мошек наполняют воздух.",
+      "tts": {
+        "text": "Несколько недель тучи комаров и мелких мошек наполняют воздух.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом птицы быстро выкармливают птенцов и снова улетают на юг, пока не вернулся холод.",
+      "text_markdown": "Потом птицы быстро выкармливают птенцов и снова улетают на юг, пока не вернулся холод.",
+      "tts": {
+        "text": "Потом птицы быстро выкармливают птенцов и снова улетают на юг, пока не вернулся холод.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У северной кромки, где тундра встречается с замёрзшим морем, на льду охотится белый медведь.",
+      "text_markdown": "У северной кромки, где тундра встречается с замёрзшим морем, на льду охотится белый медведь.",
+      "tts": {
+        "text": "У северной кромки, где тундра встречается с замёрзшим морем, на льду охотится белый медведь.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-104",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Люди",
+      "text_markdown": "Люди"
+    },
+    {
+      "id": "ch07-105",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди живут в тундре многие тысячи лет.",
+      "text_markdown": "Люди живут в тундре многие тысячи лет.",
+      "tts": {
+        "text": "Люди живут в тундре многие тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-106",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Чтобы жить здесь, нужно глубокое знание холодной земли и её животных.",
+      "text_markdown": "Чтобы жить здесь, нужно глубокое знание холодной земли и её животных.",
+      "tts": {
+        "text": "Чтобы жить здесь, нужно глубокое знание холодной земли и её животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-107",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Северной Америке инуиты и другие северные народы живут в тундре и на замёрзшем побережье очень давно.",
+      "text_markdown": "В Северной Америке инуиты и другие северные народы живут в тундре и на замёрзшем побережье очень давно.",
+      "tts": {
+        "text": "В Северной Америке инуиты и другие северные народы живут в тундре и на замёрзшем побережье очень давно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они охотились на карибу, ловили рыбу в реках и в море и добывали тюленей вдоль льда.",
+      "text_markdown": "Они охотились на карибу, ловили рыбу в реках и в море и добывали тюленей вдоль льда.",
+      "tts": {
+        "text": "Они охотились на карибу, ловили рыбу в реках и в море и добывали тюленей вдоль льда.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они шили тёплую одежду из шкур и меха, чтобы не пускать ветер.",
+      "text_markdown": "Они шили тёплую одежду из шкур и меха, чтобы не пускать ветер.",
+      "tts": {
+        "text": "Они шили тёплую одежду из шкур и меха, чтобы не пускать ветер.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они строили жилища из того, что давала земля, и ездили на санях по снегу.",
+      "text_markdown": "Они строили жилища из того, что давала земля, и ездили на санях по снегу.",
+      "tts": {
+        "text": "Они строили жилища из того, что давала земля, и ездили на санях по снегу.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Северной Европе саамы идут за северными оленями по тундре многие поколения.",
+      "text_markdown": "В Северной Европе саамы идут за северными оленями по тундре многие поколения.",
+      "tts": {
+        "text": "В Северной Европе саамы идут за северными оленями по тундре многие поколения.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Олени давали им мясо, молоко, шкуры для одежды и силу, чтобы возить сани.",
+      "text_markdown": "Олени давали им мясо, молоко, шкуры для одежды и силу, чтобы возить сани.",
+      "tts": {
+        "text": "Олени давали им мясо, молоко, шкуры для одежды и силу, чтобы возить сани.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На севере России многие народы сделали тундру своим домом.",
+      "text_markdown": "На севере России многие народы сделали тундру своим домом.",
+      "tts": {
+        "text": "На севере России многие народы сделали тундру своим домом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ненцы, чукчи и другие пасут оленей на этих холодных землях очень давно.",
+      "text_markdown": "Ненцы, чукчи и другие пасут оленей на этих холодных землях очень давно.",
+      "tts": {
+        "text": "Ненцы, чукчи и другие пасут оленей на этих холодных землях очень давно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые из них и сегодня кочуют со своими стадами, следуя за временами года.",
+      "text_markdown": "Некоторые из них и сегодня кочуют со своими стадами, следуя за временами года.",
+      "tts": {
+        "text": "Некоторые из них и сегодня кочуют со своими стадами, следуя за временами года.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Летом они идут за оленями на север, к побережью.",
+      "text_markdown": "Летом они идут за оленями на север, к побережью.",
+      "tts": {
+        "text": "Летом они идут за оленями на север, к побережью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Зимой они уходят на юг, под защиту опушки леса.",
+      "text_markdown": "Зимой они уходят на юг, под защиту опушки леса.",
+      "tts": {
+        "text": "Зимой они уходят на юг, под защиту опушки леса.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На всех этих землях люди научились читать погоду, снег и лёд.",
+      "text_markdown": "На всех этих землях люди научились читать погоду, снег и лёд.",
+      "tts": {
+        "text": "На всех этих землях люди научились читать погоду, снег и лёд.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они узнали пути карибу и северных оленей.",
+      "text_markdown": "Они узнали пути карибу и северных оленей.",
+      "tts": {
+        "text": "Они узнали пути карибу и северных оленей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они узнали, где собирается рыба и когда прилетают птицы.",
+      "text_markdown": "Они узнали, где собирается рыба и когда прилетают птицы.",
+      "tts": {
+        "text": "Они узнали, где собирается рыба и когда прилетают птицы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они научились запасать в короткое лето еду, чтобы её хватило на долгую зиму.",
+      "text_markdown": "Они научились запасать в короткое лето еду, чтобы её хватило на долгую зиму.",
+      "tts": {
+        "text": "Они научились запасать в короткое лето еду, чтобы её хватило на долгую зиму.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра даёт мало и требует много, но люди хорошо живут здесь очень давно.",
+      "text_markdown": "Тундра даёт мало и требует много, но люди хорошо живут здесь очень давно.",
+      "tts": {
+        "text": "Тундра даёт мало и требует много, но люди хорошо живут здесь очень давно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их песни, их сказания и их языки выросли вместе с холодным ветром и широкой открытой землёй.",
+      "text_markdown": "Их песни, их сказания и их языки выросли вместе с холодным ветром и широкой открытой землёй.",
+      "tts": {
+        "text": "Их песни, их сказания и их языки выросли вместе с холодным ветром и широкой открытой землёй.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-124",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Биом сегодня",
+      "text_markdown": "Биом сегодня"
+    },
+    {
+      "id": "ch08-125",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра один из самых диких и пустынных биомов, но она быстро меняется.",
+      "text_markdown": "Тундра один из самых диких и пустынных биомов, но она быстро меняется.",
+      "tts": {
+        "text": "Тундра один из самых диких и пустынных биомов, но она быстро меняется.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-126",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Из всех биомов тундра теплеет быстрее всех.",
+      "text_markdown": "Из всех биомов тундра теплеет быстрее всех.",
+      "tts": {
+        "text": "Из всех биомов тундра теплеет быстрее всех.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-127",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Крайний север становится теплее год за годом.",
+      "text_markdown": "Крайний север становится теплее год за годом.",
+      "tts": {
+        "text": "Крайний север становится теплее год за годом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-128",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда воздух теплеет, промёрзшая земля начинает оттаивать.",
+      "text_markdown": "Когда воздух теплеет, промёрзшая земля начинает оттаивать.",
+      "tts": {
+        "text": "Когда воздух теплеет, промёрзшая земля начинает оттаивать.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-129",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда вечная мерзлота тает, земля может проседать, трескаться и превращаться в грязь.",
+      "text_markdown": "Когда вечная мерзлота тает, земля может проседать, трескаться и превращаться в грязь.",
+      "tts": {
+        "text": "Когда вечная мерзлота тает, земля может проседать, трескаться и превращаться в грязь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дороги, дома и трубопроводы, построенные на мёрзлой земле, могут гнуться и ломаться.",
+      "text_markdown": "Дороги, дома и трубопроводы, построенные на мёрзлой земле, могут гнуться и ломаться.",
+      "tts": {
+        "text": "Дороги, дома и трубопроводы, построенные на мёрзлой земле, могут гнуться и ломаться.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Оттаивающая земля ещё и выпускает газы, что были заперты в мёрзлой почве очень долго.",
+      "text_markdown": "Оттаивающая земля ещё и выпускает газы, что были заперты в мёрзлой почве очень долго.",
+      "tts": {
+        "text": "Оттаивающая земля ещё и выпускает газы, что были заперты в мёрзлой почве очень долго.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Эти газы поднимаются в воздух и могут сделать всю Землю ещё немного теплее.",
+      "text_markdown": "Эти газы поднимаются в воздух и могут сделать всю Землю ещё немного теплее.",
+      "tts": {
+        "text": "Эти газы поднимаются в воздух и могут сделать всю Землю ещё немного теплее.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пока тундра теплеет, кустарники и небольшие деревья медленно продвигаются в неё на север.",
+      "text_markdown": "Пока тундра теплеет, кустарники и небольшие деревья медленно продвигаются в неё на север.",
+      "tts": {
+        "text": "Пока тундра теплеет, кустарники и небольшие деревья медленно продвигаются в неё на север.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые животные тёплого юга тоже перебираются на север.",
+      "text_markdown": "Некоторые животные тёплого юга тоже перебираются на север.",
+      "tts": {
+        "text": "Некоторые животные тёплого юга тоже перебираются на север.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди тоже приходят в тундру искать в земле нефть, газ и металл.",
+      "text_markdown": "Люди тоже приходят в тундру искать в земле нефть, газ и металл.",
+      "tts": {
+        "text": "Люди тоже приходят в тундру искать в земле нефть, газ и металл.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их дороги и машины оставляют на земле следы, что очень медленно заживают на холоде.",
+      "text_markdown": "Их дороги и машины оставляют на земле следы, что очень медленно заживают на холоде.",
+      "tts": {
+        "text": "Их дороги и машины оставляют на земле следы, что очень медленно заживают на холоде.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня многие люди и объединения стараются беречь тундру.",
+      "text_markdown": "Сегодня многие люди и объединения стараются беречь тундру.",
+      "tts": {
+        "text": "Сегодня многие люди и объединения стараются беречь тундру.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они создают большие заповедники, где карибу и птицы всё ещё могут кочевать.",
+      "text_markdown": "Они создают большие заповедники, где карибу и птицы всё ещё могут кочевать.",
+      "tts": {
+        "text": "Они создают большие заповедники, где карибу и птицы всё ещё могут кочевать.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они работают вместе с людьми, что живут здесь многие поколения, чтобы защитить землю.",
+      "text_markdown": "Они работают вместе с людьми, что живут здесь многие поколения, чтобы защитить землю.",
+      "tts": {
+        "text": "Они работают вместе с людьми, что живут здесь многие поколения, чтобы защитить землю.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они изучают тундру, чтобы понять, как она меняется и как сохранить её здоровой.",
+      "text_markdown": "Они изучают тундру, чтобы понять, как она меняется и как сохранить её здоровой.",
+      "tts": {
+        "text": "Они изучают тундру, чтобы понять, как она меняется и как сохранить её здоровой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тундра хрупка и медленно заживает, и в ней хранится огромный запас замёрзшего углерода.",
+      "text_markdown": "Тундра хрупка и медленно заживает, и в ней хранится огромный запас замёрзшего углерода.",
+      "tts": {
+        "text": "Тундра хрупка и медленно заживает, и в ней хранится огромный запас замёрзшего углерода.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Она достойна нашей заботы.",
+      "text_markdown": "Она достойна нашей заботы.",
+      "tts": {
+        "text": "Она достойна нашей заботы.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-143",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Заключение",
+      "text_markdown": "Заключение"
+    },
+    {
+      "id": "ch09-144",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот такая тундра.",
+      "text_markdown": "Вот такая тундра.",
+      "tts": {
+        "text": "Вот такая тундра.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-145",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Холодная, открытая, безлесная земля мёрзлой почвы, низких растений и широкого светлого неба на вершине мира.",
+      "text_markdown": "Холодная, открытая, безлесная земля мёрзлой почвы, низких растений и широкого светлого неба на вершине мира.",
+      "tts": {
+        "text": "Холодная, открытая, безлесная земля мёрзлой почвы, низких растений и широкого светлого неба на вершине мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch09-146",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если однажды окажешься в ней, замри на минуту.",
+      "text_markdown": "Если однажды окажешься в ней, замри на минуту.",
+      "tts": {
+        "text": "Если однажды окажешься в ней, замри на минуту.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почувствуй, как холодный ветер идёт над открытой землёй.",
+      "text_markdown": "Почувствуй, как холодный ветер идёт над открытой землёй.",
+      "tts": {
+        "text": "Почувствуй, как холодный ветер идёт над открытой землёй.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Взгляни вниз, на крошечные цветы и мягкий мох под ногами.",
+      "text_markdown": "Взгляни вниз, на крошечные цветы и мягкий мох под ногами.",
+      "tts": {
+        "text": "Взгляни вниз, на крошечные цветы и мягкий мох под ногами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Взгляни вверх, на огромное и пустое небо.",
+      "text_markdown": "Взгляни вверх, на огромное и пустое небо.",
+      "tts": {
+        "text": "Взгляни вверх, на огромное и пустое небо.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты почувствуешь, как вокруг тебя бьётся тихое, терпеливое сердце биома.",
+      "text_markdown": "Ты почувствуешь, как вокруг тебя бьётся тихое, терпеливое сердце биома.",
+      "tts": {
+        "text": "Ты почувствуешь, как вокруг тебя бьётся тихое, терпеливое сердце биома.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.88
+      }
+    }
+  ]
+}

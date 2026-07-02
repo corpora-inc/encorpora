@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "sv",
+  "total_segments": 121,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Välkommen till AI This Week.",
+      "text_markdown": "Välkommen till AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Välkommen till AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Jag är Vindy.",
+      "text_markdown": "Jag är Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jag är Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Med mig, som alltid, är Ron.",
+      "text_markdown": "Med mig, som alltid, är Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med mig, som alltid, är Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Kul att vara här, Vindy.",
+      "text_markdown": "Kul att vara här, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kul att vara här, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Idag är det söndag den 14 juni 2026.",
+      "text_markdown": "Idag är det söndag den 14 juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Idag är det söndag den fjortonde juni tjugo tjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "Två saker är annorlunda idag.",
+      "text_markdown": "Två saker är annorlunda idag.",
+      "title": "",
+      "tts": {
+        "text": "Två saker är annorlunda idag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Vi flyttar till söndagar, och för första gången ska vi berätta vem som faktiskt gör den här showen.",
+      "text_markdown": "Vi flyttar till söndagar, och för första gången ska vi berätta vem som faktiskt gör den här showen.",
+      "title": "",
+      "tts": {
+        "text": "Vi flyttar till söndagar, och för första gången ska vi berätta vem som faktiskt gör den här showen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "Sedan tillbaka till den vanliga programmeringen – öppna vikter, små labb och den bredare AI-veckan.",
+      "text_markdown": "Sedan tillbaka till den vanliga programmeringen – öppna vikter, små labb och den bredare AI-veckan.",
+      "title": "",
+      "tts": {
+        "text": "Sedan tillbaka till den vanliga programmeringen – öppna vikter, små labb och den bredare AI-veckan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "På gång – schemaläggningsändringen och varför.",
+      "text_markdown": "På gång – schemaläggningsändringen och varför.",
+      "title": "",
+      "tts": {
+        "text": "På gång – schemaläggningsändringen och varför.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "En första titt på Corpora Inc., det lilla teamet bakom Corpán-appen och denna podcast.",
+      "text_markdown": "En första titt på Corpora Inc., det lilla teamet bakom Corpán-appen och denna podcast.",
+      "title": "",
+      "tts": {
+        "text": "En första titt på Corpora Inc., det lilla teamet bakom Corpán-appen och denna podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "En toppnyhet om beatlounge, vårt nya musikpaket som lanseras i Corpán 0.18.0.",
+      "text_markdown": "En toppnyhet om beatlounge, vårt nya musikpaket som lanseras i Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "En toppnyhet om beatlounge, vårt nya musikpaket som lanseras i Corpán noll punkt ett åtta punkt noll.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Veckans öppna vikter, ledda av Googles första öppna diffusionstextmodell.",
+      "text_markdown": "Veckans öppna vikter, ledda av Googles första öppna diffusionstextmodell.",
+      "title": "",
+      "tts": {
+        "text": "Veckans öppna vikter, ledda av Googles första öppna diffusionstextmodell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Ett snabbt klipp av rubriker genom det öppna ekosystemets lins.",
+      "text_markdown": "Ett snabbt klipp av rubriker genom det öppna ekosystemets lins.",
+      "title": "",
+      "tts": {
+        "text": "Ett snabbt klipp av rubriker genom det öppna ekosystemets lins.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "chapter": 0,
+      "text": "Veckans lilla labb – elva personer i Paris som gör en konträr satsning på AMD-kisel.",
+      "text_markdown": "Veckans lilla labb – elva personer i Paris som gör en konträr satsning på AMD-kisel.",
+      "title": "",
+      "tts": {
+        "text": "Veckans lilla labb – elva personer i Paris som gör en konträr satsning på AMD-kisel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Och veckans koncept – diffusion kontra autoregressiv, tricket bakom veckans huvudsläpp.",
+      "text_markdown": "Och veckans koncept – diffusion kontra autoregressiv, tricket bakom veckans huvudsläpp.",
+      "title": "",
+      "tts": {
+        "text": "Och veckans koncept – diffusion kontra autoregressiv, tricket bakom veckans huvudsläpp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Ron, låt oss börja med schemat.",
+      "text_markdown": "Ron, låt oss börja med schemat.",
+      "title": "",
+      "tts": {
+        "text": "Ron, låt oss börja med schemat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "Varför flyttar vi från onsdagar?",
+      "text_markdown": "Varför flyttar vi från onsdagar?",
+      "title": "",
+      "tts": {
+        "text": "Varför flyttar vi från onsdagar?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "Onsdag var Odens dag, och Oden var upptagen med att styra Asgård.",
+      "text_markdown": "Onsdag var Odens dag, och Oden var upptagen med att styra Asgård.",
+      "title": "",
+      "tts": {
+        "text": "Onsdag var Odens dag, och Oden var upptagen med att styra Asgård.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Vi är ett litet team med dagjobb, och en mitt-i-veckan-deadline blev aldrig riktigt smidig.",
+      "text_markdown": "Vi är ett litet team med dagjobb, och en mitt-i-veckan-deadline blev aldrig riktigt smidig.",
+      "title": "",
+      "tts": {
+        "text": "Vi är ett litet team med dagjobb, och en mitt-i-veckan-deadline blev aldrig riktigt smidig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "Söndagar avslutar veckan och startar nästa, vilket kändes som rätt rytm för en nyhetsshow.",
+      "text_markdown": "Söndagar avslutar veckan och startar nästa, vilket kändes som rätt rytm för en nyhetsshow.",
+      "title": "",
+      "tts": {
+        "text": "Söndagar avslutar veckan och startar nästa, vilket kändes som rätt rytm för en nyhetsshow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Hur ser lanseringen egentligen ut?",
+      "text_markdown": "Hur ser lanseringen egentligen ut?",
+      "title": "",
+      "tts": {
+        "text": "Hur ser lanseringen egentligen ut?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "Starten sker på lördagen med den engelska versionen och fortsätter fram till måndag morgon, språk för språk, allt eftersom varje översättning och ljudbearbetning blir klar.",
+      "text_markdown": "Starten sker på lördagen med den engelska versionen och fortsätter fram till måndag morgon, språk för språk, allt eftersom varje översättning och ljudbearbetning blir klar.",
+      "title": "",
+      "tts": {
+        "text": "Starten sker på lördagen med den engelska versionen och fortsätter fram till måndag morgon, språk för språk, allt eftersom varje översättning och ljudbearbetning blir klar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "Vid måndagskaffet borde vi vara nära femtio språk.",
+      "text_markdown": "Vid måndagskaffet borde vi vara nära femtio språk.",
+      "title": "",
+      "tts": {
+        "text": "Vid måndagskaffet borde vi vara nära femtio språk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "Vilket för oss till den andra nya saken.",
+      "text_markdown": "Vilket för oss till den andra nya saken.",
+      "title": "",
+      "tts": {
+        "text": "Vilket för oss till den andra nya saken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Vem som gör den här showen.",
+      "text_markdown": "Vem som gör den här showen.",
+      "title": "",
+      "tts": {
+        "text": "Vem som gör den här showen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Corpora Inc., ett litet oberoende team, bygger Corpán-appen och producerar denna podcast.",
+      "text_markdown": "Corpora Inc., ett litet oberoende team, bygger Corpán-appen och producerar denna podcast.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., ett litet oberoende team, bygger Corpán-appen och producerar denna podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "Vad är Corpán.",
+      "text_markdown": "Vad är Corpán.",
+      "title": "",
+      "tts": {
+        "text": "Vad är Corpán.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "En lekplats för språk, musik och lärande, byggd med 'on-device-first'-principen.",
+      "text_markdown": "En lekplats för språk, musik och lärande, byggd med 'on-device-first'-principen.",
+      "title": "",
+      "tts": {
+        "text": "En lekplats för språk, musik och lärande, byggd med on device first-principen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "Förklara 'on-device-first' – vad betyder det i praktiken.",
+      "text_markdown": "Förklara 'on-device-first' – vad betyder det i praktiken.",
+      "title": "",
+      "tts": {
+        "text": "Förklara on device first – vad betyder det i praktiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "Det betyder att vi prioriterar att köra lokalt närhelst funktionen tillåter det.",
+      "text_markdown": "Det betyder att vi prioriterar att köra lokalt närhelst funktionen tillåter det.",
+      "title": "",
+      "tts": {
+        "text": "Det betyder att vi prioriterar att köra lokalt närhelst funktionen tillåter det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "Qwen3-4B för assistenten, Whisper large-v3 för taligenkänning, Chatterbox för röstsyntes, Stable Diffusion tre och en halv för bilder, LoRA-pipelines för karaktärscoacher.",
+      "text_markdown": "Qwen3-4B för assistenten, Whisper large-v3 för taligenkänning, Chatterbox för röstsyntes, Stable Diffusion tre och en halv för bilder, LoRA-pipelines för karaktärscoacher.",
+      "title": "",
+      "tts": {
+        "text": "Qwen tre fyra B för assistenten, Whisper large v tre för taligenkänning, Chatterbox för röstsyntes, Stable Diffusion tre och en halv för bilder, LoRA-pipelines för karaktärscoacher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Allt det körs på din telefon eller surfplatta, offline, i flygplansläge, mitt ute i ingenstans.",
+      "text_markdown": "Allt det körs på din telefon eller surfplatta, offline, i flygplansläge, mitt ute i ingenstans.",
+      "title": "",
+      "tts": {
+        "text": "Allt det körs på din telefon eller surfplatta, offline, i flygplansläge, mitt ute i ingenstans.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "Funktioner som verkligen behöver nätverket — världsradio, multiplayer — använder nätverket, och vi låtsas inte något annat.",
+      "text_markdown": "Funktioner som verkligen behöver nätverket — världsradio, multiplayer — använder nätverket, och vi låtsas inte något annat.",
+      "title": "",
+      "tts": {
+        "text": "Funktioner som verkligen behöver nätverket — världsradio, multiplayer — använder nätverket, och vi låtsas inte något annat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Och affärssidan.",
+      "text_markdown": "Och affärssidan.",
+      "title": "",
+      "tts": {
+        "text": "Och affärssidan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Ett litet oberoende team, inga miljarder dollar i kapital bakom oss, reklamfritt i appen idag, med en generös gratisnivå och en valfri premium-prenumeration för de som vill stödja arbetet.",
+      "text_markdown": "Ett litet oberoende team, inga miljarder dollar i kapital bakom oss, reklamfritt i appen idag, med en generös gratisnivå och en valfri premium-prenumeration för de som vill stödja arbetet.",
+      "title": "",
+      "tts": {
+        "text": "Ett litet oberoende team, inga miljarder dollar i kapital bakom oss, reklamfritt i appen idag, med en generös gratisnivå och en valfri premium-prenumeration för de som vill stödja arbetet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Vi vill gärna förbli reklamfria så länge vi kan — inga löften för evigt, men det är riktningen.",
+      "text_markdown": "Vi vill gärna förbli reklamfria så länge vi kan — inga löften för evigt, men det är riktningen.",
+      "title": "",
+      "tts": {
+        "text": "Vi vill gärna förbli reklamfria så länge vi kan — inga löften för evigt, men det är riktningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "Vad är beviset på att ni faktiskt levererar.",
+      "text_markdown": "Vad är beviset på att ni faktiskt levererar.",
+      "title": "",
+      "tts": {
+        "text": "Vad är beviset på att ni faktiskt levererar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "De flesta veckor levererar vi något — en bokuppläsning, ett paket, en app-release, den här showen — på trettiofem plus språk idag, och det ökar.",
+      "text_markdown": "De flesta veckor levererar vi något — en bokuppläsning, ett paket, en app-release, den här showen — på trettiofem plus språk idag, och det ökar.",
+      "title": "",
+      "tts": {
+        "text": "De flesta veckor levererar vi något — en bokuppläsning, ett paket, en app-release, den här showen — på trettiofem plus språk idag, och det ökar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Varför göra detta överhuvudtaget.",
+      "text_markdown": "Varför göra detta överhuvudtaget.",
+      "title": "",
+      "tts": {
+        "text": "Varför göra detta överhuvudtaget.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "Det är presentationen — att bevisa att en banbrytande, enhetsfokuserad, flerspråkig inlärningsupplevelse kan komma från ett litet team utan stort kapital, samtidigt som appen hålls reklamfri så länge vi kan.",
+      "text_markdown": "Det är presentationen — att bevisa att en banbrytande, enhetsfokuserad, flerspråkig inlärningsupplevelse kan komma från ett litet team utan stort kapital, samtidigt som appen hålls reklamfri så länge vi kan.",
+      "title": "",
+      "tts": {
+        "text": "Det är presentationen — att bevisa att en banbrytande, enhetsfokuserad, flerspråkig inlärningsupplevelse kan komma från ett litet team utan stort kapital, samtidigt som appen hålls reklamfri så länge vi kan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Vilket leder oss till den viktigaste nyheten — beatlounge.",
+      "text_markdown": "Vilket leder oss till den viktigaste nyheten — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Vilket leder oss till den viktigaste nyheten — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "Den lanseras i Corpán 0.18.0 den här veckan.",
+      "text_markdown": "Den lanseras i Corpán 0.18.0 den här veckan.",
+      "title": "",
+      "tts": {
+        "text": "Den lanseras i Corpán noll punkt arton punkt noll den här veckan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "beatlounge är en beat-sequencer och ett språkverktyg i ett.",
+      "text_markdown": "beatlounge är en beat-sequencer och ett språkverktyg i ett.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge är en beat-sequencer och ett språkverktyg i ett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "En tick-adresserad sequencer med niohundrasextio pulser per kvart, en harmonimotor som talar västerländska moduler, indiska thaats, karnatiska melakartas och arabiska maqamat, samt ett fraskorpus på mer än tio miljoner verkliga språkfraser över femtio språk.",
+      "text_markdown": "En tick-adresserad sequencer med niohundrasextio pulser per kvart, en harmonimotor som talar västerländska moduler, indiska thaats, karnatiska melakartas och arabiska maqamat, samt ett fraskorpus på mer än tio miljoner verkliga språkfraser över femtio språk.",
+      "title": "",
+      "tts": {
+        "text": "En tick-adresserad sequencer med niohundrasextio pulser per kvart, en harmonimotor som talar västerländska moduler, indiska thaats, karnatiska melakartas och arabiska maqamat, samt ett fraskorpus på mer än tio miljoner verkliga språkfraser över femtio språk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Allt pitch-framförbart, och spelbart offline när paketet väl är på din enhet.",
+      "text_markdown": "Allt pitch-framförbart, och spelbart offline när paketet väl är på din enhet.",
+      "title": "",
+      "tts": {
+        "text": "Allt pitch-framförbart, och spelbart offline när paketet väl är på din enhet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "Så instrumentet är språket.",
+      "text_markdown": "Så instrumentet är språket.",
+      "title": "",
+      "tts": {
+        "text": "Så instrumentet är språket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "Du spelar fraser på samma sätt som du skulle spela noter.",
+      "text_markdown": "Du spelar fraser på samma sätt som du skulle spela noter.",
+      "title": "",
+      "tts": {
+        "text": "Du spelar fraser på samma sätt som du skulle spela noter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "En hindi-fras på första taktslaget, ett arabiskt utrop på baksidan av det andra, en mandarin-stavelse som en bandsvall.",
+      "text_markdown": "En hindi-fras på första taktslaget, ett arabiskt utrop på baksidan av det andra, en mandarin-stavelse som en bandsvall.",
+      "title": "",
+      "tts": {
+        "text": "En hindi-fras på första taktslaget, ett arabiskt utrop på baksidan av det andra, en mandarin-stavelse som en bandsvall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "Det är en DAW där samplingarna är meningar, uttalade av enhets-TTS.",
+      "text_markdown": "Det är en DAW där samplingarna är meningar, uttalade av enhets-TTS.",
+      "title": "",
+      "tts": {
+        "text": "Det är en D A W där samplingarna är meningar, uttalade av enhets T T S.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "Ingen musikteori krävs.",
+      "text_markdown": "Ingen musikteori krävs.",
+      "title": "",
+      "tts": {
+        "text": "Ingen musikteori krävs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "Inget egentligen.",
+      "text_markdown": "Inget egentligen.",
+      "title": "",
+      "tts": {
+        "text": "Inget egentligen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "Harmonimotorn hanterar reglerna; du pekar på ljud du gillar och lägena förblir rena.",
+      "text_markdown": "Harmonimotorn hanterar reglerna; du pekar på ljud du gillar och lägena förblir rena.",
+      "title": "",
+      "tts": {
+        "text": "Harmonimotorn hanterar reglerna; du pekar på ljud du gillar och lägena förblir rena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "Vad mer finns i 0.18.0.",
+      "text_markdown": "Vad mer finns i 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Vad mer finns i noll punkt arton punkt noll.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "Tre ingenjörsdelar under huven — värdsömmar för innehållspaket lanserades med beatlounge som pilot.",
+      "text_markdown": "Tre ingenjörsdelar under huven — värdsömmar för innehållspaket lanserades med beatlounge som pilot.",
+      "title": "",
+      "tts": {
+        "text": "Tre ingenjörsdelar under huven — värdsömmar för innehållspaket lanserades med beatlounge som pilot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Android fångar nu native-fault breadcrumbs så att llama- och ggml-krascher diagnostiseras korrekt.",
+      "text_markdown": "Android fångar nu native-fault breadcrumbs så att llama- och ggml-krascher diagnostiseras korrekt.",
+      "title": "",
+      "tts": {
+        "text": "Android fångar nu native-fault breadcrumbs så att llama- och ggml-krascher diagnostiseras korrekt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Och vi fixade den multi-gigabyte modellinstallation som brukade få iOS att OOM:a, så nu strömmar den till disk istället för att buffra 2,5 gigabyte Qwen3-4B i arbetsminnet.",
+      "text_markdown": "Och vi fixade den multi-gigabyte modellinstallation som brukade få iOS att OOM:a, så nu strömmar den till disk istället för att buffra 2,5 gigabyte Qwen3-4B i arbetsminnet.",
+      "title": "",
+      "tts": {
+        "text": "Och vi fixade den multigigabyte modellinstallation som brukade få aj o ess att få slut på minne, så nu strömmar den till disk istället för att buffra två och en halv gigabyte Qwen tre fyra be i arbetsminnet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "Tråkigt under ytan, kul ovanpå.",
+      "text_markdown": "Tråkigt under ytan, kul ovanpå.",
+      "title": "",
+      "tts": {
+        "text": "Tråkigt under ytan, kul ovanpå.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "Vilket ungefär är hela företagets sammanfattning.",
+      "text_markdown": "Vilket ungefär är hela företagets sammanfattning.",
+      "title": "",
+      "tts": {
+        "text": "Vilket ungefär är hela företagets sammanfattning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "Okej, låt oss gå vidare till open weights.",
+      "text_markdown": "Okej, låt oss gå vidare till open weights.",
+      "title": "",
+      "tts": {
+        "text": "Okej, låt oss gå vidare till open weights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "Vad var den stora nyheten den här veckan.",
+      "text_markdown": "Vad var den stora nyheten den här veckan.",
+      "title": "",
+      "tts": {
+        "text": "Vad var den stora nyheten den här veckan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Google lanserade DiffusionGemma.",
+      "text_markdown": "Google lanserade DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google lanserade DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "En blandning av experter med tjugosex miljarder parametrar, varav tre komma åtta miljarder aktiva, Apache 2.0 på Hugging Face, som genererar text genom diffusion istället för autoregression.",
+      "text_markdown": "En blandning av experter med tjugosex miljarder parametrar, varav tre komma åtta miljarder aktiva, Apache 2.0 på Hugging Face, som genererar text genom diffusion istället för autoregression.",
+      "title": "",
+      "tts": {
+        "text": "En blandning av experter med tjugosex miljarder parametrar, varav tre komma åtta miljarder aktiva, Apache två punkt noll på Hugging Face, som genererar text genom diffusion istället för autoregression.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "Enkelt uttryckt – vad betyder diffusion för text egentligen?",
+      "text_markdown": "Enkelt uttryckt – vad betyder diffusion för text egentligen?",
+      "title": "",
+      "tts": {
+        "text": "Enkelt uttryckt – vad betyder diffusion för text egentligen?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "Istället för att förutsäga en token i taget, avbrusar den ett tvåhundrafemtiosex token-block parallellt.",
+      "text_markdown": "Istället för att förutsäga en token i taget, avbrusar den ett tvåhundrafemtiosex token-block parallellt.",
+      "title": "",
+      "tts": {
+        "text": "Istället för att förutsäga en token i taget, avbrusar den ett tvåhundrafemtiosex token-block parallellt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "Över tusen tokens per sekund på en enda H100, ungefär fyra gånger snabbare än den jämförbara autoregressiva Gemma.",
+      "text_markdown": "Över tusen tokens per sekund på en enda H100, ungefär fyra gånger snabbare än den jämförbara autoregressiva Gemma.",
+      "title": "",
+      "tts": {
+        "text": "Över tusen tokens per sekund på en enda H etthundra, ungefär fyra gånger snabbare än den jämförbara autoregressiva Gemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "Och haken.",
+      "text_markdown": "Och haken.",
+      "title": "",
+      "tts": {
+        "text": "Och haken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Lägre poäng på MMLU och kodning, säger Google själva, så den här lanseringen handlar om hastighetskritiskt arbete, inte om att jaga topplaceringar i benchmarktabeller.",
+      "text_markdown": "Lägre poäng på MMLU och kodning, säger Google själva, så den här lanseringen handlar om hastighetskritiskt arbete, inte om att jaga topplaceringar i benchmarktabeller.",
+      "title": "",
+      "tts": {
+        "text": "Lägre poäng på em em el u och kodning, säger Google själva, så den här lanseringen handlar om hastighetskritiskt arbete, inte om att jaga topplaceringar i benchmarktabeller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "Och öppna röstmodeller – vad som helst.",
+      "text_markdown": "Och öppna röstmodeller – vad som helst.",
+      "title": "",
+      "tts": {
+        "text": "Och öppna röstmodeller – vad som helst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Två släpptes samma vecka.",
+      "text_markdown": "Två släpptes samma vecka.",
+      "title": "",
+      "tts": {
+        "text": "Två släpptes samma vecka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "RedNote, det kinesiska sociala nätverket, öppnade källkoden för dots-dot-tts – två miljarder parametrar, helt kontinuerlig utan diskreta tokens någonstans i pipelinen, femtiofyra millisekunders första-token-latens, Apache 2.0.",
+      "text_markdown": "RedNote, det kinesiska sociala nätverket, öppnade källkoden för dots-dot-tts – två miljarder parametrar, helt kontinuerlig utan diskreta tokens någonstans i pipelinen, femtiofyra millisekunders första-token-latens, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, det kinesiska sociala nätverket, öppnade källkoden för dots dot tts – två miljarder parametrar, helt kontinuerlig utan diskreta tokens någonstans i pipelinen, femtiofyra millisekunders första token latens, Apache två punkt noll.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "Och Boson AI lanserade Higgs Audio version tre – fyra miljarder parametrar, etthundratvå språk, tjugoen känslokontroll-tokens, strömmande utdata, icke-kommersiell licens; den sista delen är asterisken.",
+      "text_markdown": "Och Boson AI lanserade Higgs Audio version tre – fyra miljarder parametrar, etthundratvå språk, tjugoen känslokontroll-tokens, strömmande utdata, icke-kommersiell licens; den sista delen är asterisken.",
+      "title": "",
+      "tts": {
+        "text": "Och Boson A I lanserade Higgs Audio version tre – fyra miljarder parametrar, etthundratvå språk, tjugoen känslokontroll-tokens, strömmande utdata, icke-kommersiell licens; den sista delen är asterisken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "Röstkloning är officiellt en handelsvara.",
+      "text_markdown": "Röstkloning är officiellt en handelsvara.",
+      "title": "",
+      "tts": {
+        "text": "Röstkloning är officiellt en handelsvara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "Det är det.",
+      "text_markdown": "Det är det.",
+      "title": "",
+      "tts": {
+        "text": "Det är det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "En till på den öppna sidan.",
+      "text_markdown": "En till på den öppna sidan.",
+      "title": "",
+      "tts": {
+        "text": "En till på den öppna sidan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "NVIDIA släppte tyst Nemotron 3 Ultra – en hybrid Mamba-attention-modell med femhundrafemtio miljarder parametrar.",
+      "text_markdown": "NVIDIA släppte tyst Nemotron 3 Ultra – en hybrid Mamba-attention-modell med femhundrafemtio miljarder parametrar.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA släppte tyst Nemotron tre Ultra – en hybrid Mamba attention-modell med femhundrafemtio miljarder parametrar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "Vikter och hela träningsreceptet under Linux Foundation OpenMDW-licensen – månadens mest faktiskt öppna lansering.",
+      "text_markdown": "Vikter och hela träningsreceptet under Linux Foundation OpenMDW-licensen – månadens mest faktiskt öppna lansering.",
+      "title": "",
+      "tts": {
+        "text": "Vikter och hela träningsreceptet under Linux Foundation Open M D W-licensen – månadens mest faktiskt öppna lansering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "Och ingen rapporterade om det.",
+      "text_markdown": "Och ingen rapporterade om det.",
+      "title": "",
+      "tts": {
+        "text": "Och ingen rapporterade om det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "Eftersom vi placerar NVIDIA under kisel, inte laboratorium.",
+      "text_markdown": "Eftersom vi placerar NVIDIA under kisel, inte laboratorium.",
+      "title": "",
+      "tts": {
+        "text": "Eftersom vi placerar NVIDIA under kisel, inte laboratorium.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "Men den här veckan levererade de reproducerbart öppet i gränsskala.",
+      "text_markdown": "Men den här veckan levererade de reproducerbart öppet i gränsskala.",
+      "title": "",
+      "tts": {
+        "text": "Men den här veckan levererade de reproducerbart öppet i gränsskala.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "Snabba rubriker.",
+      "text_markdown": "Snabba rubriker.",
+      "title": "",
+      "tts": {
+        "text": "Snabba rubriker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "Först.",
+      "text_markdown": "Först.",
+      "title": "",
+      "tts": {
+        "text": "Först.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "Moonshot släppte Kimi K2.7 Code – en biljon parametrar, trettiotvå miljarder aktiva, påstår sig slå Claude Opus 4.8 på Moonshots eget benchmark.",
+      "text_markdown": "Moonshot släppte Kimi K2.7 Code – en biljon parametrar, trettiotvå miljarder aktiva, påstår sig slå Claude Opus 4.8 på Moonshots eget benchmark.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot släppte Kimi K två punkt sju Code – en biljon parametrar, trettiotvå miljarder aktiva, påstår sig slå Claude Opus fyra punkt åtta på Moonshots eget benchmark.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "Praktiker granskade siffrorna och säger att benchmark-resultaten inte stämmer; de självhostade vikterna är femhundranittiofem gigabyte, tankeläget kan inte stängas av.",
+      "text_markdown": "Praktiker granskade siffrorna och säger att benchmark-resultaten inte stämmer; de självhostade vikterna är femhundranittiofem gigabyte, tankeläget kan inte stängas av.",
+      "title": "",
+      "tts": {
+        "text": "Praktiker granskade siffrorna och säger att benchmark-resultaten inte stämmer; de självhostade vikterna är femhundranittiofem gigabyte, tankeläget kan inte stängas av.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "Ordet 'öppen' gör mycket arbete i den meningen.",
+      "text_markdown": "Ordet 'öppen' gör mycket arbete i den meningen.",
+      "title": "",
+      "tts": {
+        "text": "Ordet 'öppen' gör mycket arbete i den meningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "För det andra.",
+      "text_markdown": "För det andra.",
+      "title": "",
+      "tts": {
+        "text": "För det andra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "text": "Cohere, ett västerländskt labb som nästan aldrig släpper vikter, släppte faktiskt vikter – North Mini Code, trettio miljarder totalt, tre miljarder aktiva, Apache 2.0, körs på en enda H100 vid fyrabit.",
+      "text_markdown": "Cohere, ett västerländskt labb som nästan aldrig släpper vikter, släppte faktiskt vikter – North Mini Code, trettio miljarder totalt, tre miljarder aktiva, Apache 2.0, körs på en enda H100 vid fyrabit.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, ett västerländskt labb som nästan aldrig släpper vikter, släppte faktiskt vikter – North Mini Code, trettio miljarder totalt, tre miljarder aktiva, Apache två punkt noll, körs på en enda H etthundra vid fyrabit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "Ett västerländskt labb som levererar äkta Apache 2.0 år 2026 är en nyhet i sig.",
+      "text_markdown": "Ett västerländskt labb som levererar äkta Apache 2.0 år 2026 är en nyhet i sig.",
+      "title": "",
+      "tts": {
+        "text": "Ett västerländskt labb som levererar äkta Apache två punkt noll år tjugo tjugosex är en nyhet i sig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "För det tredje.",
+      "text_markdown": "För det tredje.",
+      "title": "",
+      "tts": {
+        "text": "För det tredje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "Apple betonade starkt på WWDC enhetsbaserad AI som den strategiska berättelsen.",
+      "text_markdown": "Apple betonade starkt på WWDC enhetsbaserad AI som den strategiska berättelsen.",
+      "title": "",
+      "tts": {
+        "text": "Apple betonade starkt på W W D C enhetsbaserad A I som den strategiska berättelsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "Men den nya Siri-modellen rapporteras vara en destillation av Googles Gemini som Apple licensierar och förminskar.",
+      "text_markdown": "Men den nya Siri-modellen rapporteras vara en destillation av Googles Gemini som Apple licensierar och förminskar.",
+      "title": "",
+      "tts": {
+        "text": "Men den nya Siri-modellen rapporteras vara en destillation av Googles Gemini som Apple licensierar och förminskar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "Lokal inferens, komplicerad leveranskedja.",
+      "text_markdown": "Lokal inferens, komplicerad leveranskedja.",
+      "title": "",
+      "tts": {
+        "text": "Lokal inferens, komplicerad leveranskedja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "Och för det fjärde.",
+      "text_markdown": "Och för det fjärde.",
+      "title": "",
+      "tts": {
+        "text": "Och för det fjärde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "Alibaba lanserade Qwen 3.7-Plus för allmän tillgänglighet — multimodalt, driver GUI:er från skärmdumpar, cirka fyrtio cent per miljon inmatningstokens.",
+      "text_markdown": "Alibaba lanserade Qwen 3.7-Plus för allmän tillgänglighet — multimodalt, driver GUI:er från skärmdumpar, cirka fyrtio cent per miljon inmatningstokens.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba lanserade Qwen tre punkt sju Plus för allmän tillgänglighet — multimodalt, driver G U I:er från skärmdumpar, cirka fyrtio cent per miljon inmatningstokens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "Trots varumärket Qwen är denna endast API-baserad, inte öppna vikter.",
+      "text_markdown": "Trots varumärket Qwen är denna endast API-baserad, inte öppna vikter.",
+      "title": "",
+      "tts": {
+        "text": "Trots varumärket Qwen är denna endast A P I-baserad, inte öppna vikter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "Värt att veta, eftersom lyssnare förväxlar Qwen med öppen; denna är det inte.",
+      "text_markdown": "Värt att veta, eftersom lyssnare förväxlar Qwen med öppen; denna är det inte.",
+      "title": "",
+      "tts": {
+        "text": "Värt att veta, eftersom lyssnare förväxlar Qwen med öppen; denna är det inte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "Veckans lilla labb.",
+      "text_markdown": "Veckans lilla labb.",
+      "title": "",
+      "tts": {
+        "text": "Veckans lilla labb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "Det heter Kog.",
+      "text_markdown": "Det heter Kog.",
+      "title": "",
+      "tts": {
+        "text": "Det heter Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Elva personer i Paris, som hävdar tre tusen utmatningstokens per sekund per förfrågan på åtta AMD MI300X GPU:er.",
+      "text_markdown": "Elva personer i Paris, som hävdar tre tusen utmatningstokens per sekund per förfrågan på åtta AMD MI300X GPU:er.",
+      "title": "",
+      "tts": {
+        "text": "Elva personer i Paris, som hävdar tre tusen utmatningstokens per sekund per förfrågan på åtta A M D M I trehundra X G P U:er.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "Deras argument — branschen överspenderade på anpassad inferens-kisel när flaskhalsen hela tiden var mjukvara.",
+      "text_markdown": "Deras argument — branschen överspenderade på anpassad inferens-kisel när flaskhalsen hela tiden var mjukvara.",
+      "title": "",
+      "tts": {
+        "text": "Deras argument — branschen överspenderade på anpassad inferens-kisel när flaskhalsen hela tiden var mjukvara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "Elva personer, och AMD istället för NVIDIA.",
+      "text_markdown": "Elva personer, och AMD istället för NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Elva personer, och AMD istället för NVIDIA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "Precis efter en börsintroduktion för anpassad kisel, perfekt konträr timing.",
+      "text_markdown": "Precis efter en börsintroduktion för anpassad kisel, perfekt konträr timing.",
+      "title": "",
+      "tts": {
+        "text": "Precis efter en börsintroduktion för anpassad kisel, perfekt konträr timing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Vad sägs om hårdvara på bänken.",
+      "text_markdown": "Vad sägs om hårdvara på bänken.",
+      "title": "",
+      "tts": {
+        "text": "Vad sägs om hårdvara på bänken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "Raspberry Pi lanserade AI HAT+ 2 — fyrtio TOPS bultade på en Pi 5.",
+      "text_markdown": "Raspberry Pi lanserade AI HAT+ 2 — fyrtio TOPS bultade på en Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi lanserade A I H A T plus två — fyrtio T O P S bultade på en Pi fem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "NVIDIAs Jetson Orin Nano Super presterar sextiosju TOPS för under trehundra dollar.",
+      "text_markdown": "NVIDIAs Jetson Orin Nano Super presterar sextiosju TOPS för under trehundra dollar.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIAs Jetson Orin Nano Super presterar sextiosju T O P S för under trehundra dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "På enheten brukade betyda en Mac.",
+      "text_markdown": "På enheten brukade betyda en Mac.",
+      "title": "",
+      "tts": {
+        "text": "På enheten brukade betyda en Mac.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "Nu betyder det ett kort du kan gömma i en låda.",
+      "text_markdown": "Nu betyder det ett kort du kan gömma i en låda.",
+      "title": "",
+      "tts": {
+        "text": "Nu betyder det ett kort du kan gömma i en låda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "Veckans koncept — diffusion kontra autoregressiv.",
+      "text_markdown": "Veckans koncept — diffusion kontra autoregressiv.",
+      "title": "",
+      "tts": {
+        "text": "Veckans koncept — diffusion kontra autoregressiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "Samma destination, olika vägar.",
+      "text_markdown": "Samma destination, olika vägar.",
+      "title": "",
+      "tts": {
+        "text": "Samma destination, olika vägar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "Autoregressiva modeller, de flesta av de LLM:er du känner till, genererar en token i taget, villkorar den, genererar nästa, upprepar — sekventiellt av design.",
+      "text_markdown": "Autoregressiva modeller, de flesta av de LLM:er du känner till, genererar en token i taget, villkorar den, genererar nästa, upprepar — sekventiellt av design.",
+      "title": "",
+      "tts": {
+        "text": "Autoregressiva modeller, de flesta av de L L M:er du känner till, genererar en token i taget, villkorar den, genererar nästa, upprepar — sekventiellt av design.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Diffusionsmodeller börjar med ett block av rent brus och avbrusar det allt på en gång över ett fast antal steg.",
+      "text_markdown": "Diffusionsmodeller börjar med ett block av rent brus och avbrusar det allt på en gång över ett fast antal steg.",
+      "title": "",
+      "tts": {
+        "text": "Diffusionsmodeller börjar med ett block av rent brus och avbrusar det allt på en gång över ett fast antal steg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "Du byter viss kvalitet mot parallellism, och vid små stegantal får du de där häpnadsväckande genomströmningssiffrorna.",
+      "text_markdown": "Du byter viss kvalitet mot parallellism, och vid små stegantal får du de där häpnadsväckande genomströmningssiffrorna.",
+      "title": "",
+      "tts": {
+        "text": "Du byter viss kvalitet mot parallellism, och vid små stegantal får du de där häpnadsväckande genomströmningssiffrorna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "Så DiffusionGemma är första gången vi har öppna vikter för att faktiskt känna skillnaden.",
+      "text_markdown": "Så DiffusionGemma är första gången vi har öppna vikter för att faktiskt känna skillnaden.",
+      "title": "",
+      "tts": {
+        "text": "Så DiffusionGemma är första gången vi har öppna vikter för att faktiskt känna skillnaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "Första gången i denna skala, ja.",
+      "text_markdown": "Första gången i denna skala, ja.",
+      "title": "",
+      "tts": {
+        "text": "Första gången i denna skala, ja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "Och det är därför teamen för öppen källkods-inferens är viktiga den här veckan — llama-dot-cpp, vLLM, MLX — det är de som kommer att lära sig att få det att sjunga på verklig hårdvara.",
+      "text_markdown": "Och det är därför teamen för öppen källkods-inferens är viktiga den här veckan — llama-dot-cpp, vLLM, MLX — det är de som kommer att lära sig att få det att sjunga på verklig hårdvara.",
+      "title": "",
+      "tts": {
+        "text": "Och det är därför teamen för öppen källkods-inferens är viktiga den här veckan — llama punkt c p p, v L L M, M L X — det är de som kommer att lära sig att få det att sjunga på verklig hårdvara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-115",
+      "chapter": 0,
+      "text": "Ett bra ställe att landa på.",
+      "text_markdown": "Ett bra ställe att landa på.",
+      "title": "",
+      "tts": {
+        "text": "Ett bra ställe att landa på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "chapter": 0,
+      "text": "Ron, tack.",
+      "text_markdown": "Ron, tack.",
+      "title": "",
+      "tts": {
+        "text": "Ron, tack.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "chapter": 0,
+      "text": "När som helst, Vindy.",
+      "text_markdown": "När som helst, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "När som helst, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-118",
+      "chapter": 0,
+      "text": "Det var AI This Week för den 14 juni 2026.",
+      "text_markdown": "Det var AI This Week för den 14 juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Det var A I This Week för den fjortonde juni tjugohundratjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-119",
+      "chapter": 0,
+      "text": "Samma strävsamma program, ny söndagsplats.",
+      "text_markdown": "Samma strävsamma program, ny söndagsplats.",
+      "title": "",
+      "tts": {
+        "text": "Samma strävsamma program, ny söndagsplats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-120",
+      "chapter": 0,
+      "text": "Språk kommer att fortsätta släppas fram till måndag morgon; Corpán 0.18.0 finns där du hämtar appar — prova beatlounge.",
+      "text_markdown": "Språk kommer att fortsätta släppas fram till måndag morgon; Corpán 0.18.0 finns där du hämtar appar — prova beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Språk kommer att fortsätta släppas fram till måndag morgon; Corpán noll punkt ett åtta punkt noll finns där du hämtar appar — prova beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-121",
+      "chapter": 0,
+      "text": "Tills nästa söndag, ta hand om dig.",
+      "text_markdown": "Tills nästa söndag, ta hand om dig.",
+      "title": "",
+      "tts": {
+        "text": "Tills nästa söndag, ta hand om dig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

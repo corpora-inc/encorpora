@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "zh",
+  "total_segments": 300,
+  "segments": [
+    {
+      "heading_level": 1,
+      "paragraph_id": "p1",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "text": "万物皆由原子构成",
+      "text_markdown": "万物皆由原子构成",
+      "title": "万物皆由原子构成"
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "text": "看看你的周围。",
+      "text_markdown": "看看你的周围。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "看看你的周围。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "text": "你能看到的一切都是由原子构成的。",
+      "text_markdown": "你能看到的一切都是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你能看到的一切都是由原子构成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "text": "你呼吸的空气是由原子构成的。",
+      "text_markdown": "你呼吸的空气是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你呼吸的空气是由原子构成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "text": "你喝的水是由原子构成的。",
+      "text_markdown": "你喝的水是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你喝的水是由原子构成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "text": "你的身体是由原子构成的。",
+      "text_markdown": "你的身体是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你的身体是由原子构成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "text": "你脚下的大地是由原子构成的。",
+      "text_markdown": "你脚下的大地是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你脚下的大地是由原子构成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "text": "原子是物质中最小的、仍然保持化学特性的微粒。",
+      "text_markdown": "原子是物质中最小的、仍然保持化学特性的微粒。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子是物质中最小的、仍然保持化学特性的微粒。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "text": "你用眼睛看不到一个原子。",
+      "text_markdown": "你用眼睛看不到一个原子。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你用眼睛看不到一个原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "text": "用普通显微镜也看不到一个原子。",
+      "text_markdown": "用普通显微镜也看不到一个原子。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "用普通显微镜也看不到一个原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "text": "原子就是那么小。",
+      "text_markdown": "原子就是那么小。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子就是那么小。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "text": "一粒沙子里大约有五千亿亿个原子。",
+      "text_markdown": "一粒沙子里大约有五千亿亿个原子。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "一粒沙子里大约有五千亿亿个原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "text": "这个数字是五后面跟着十八个零。",
+      "text_markdown": "这个数字是五后面跟着十八个零。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "这个数字是五后面跟着十八个零。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "text": "一粒沙子里的原子数量，比海滩上所有沙粒的数量还要多。",
+      "text_markdown": "一粒沙子里的原子数量，比海滩上所有沙粒的数量还要多。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "一粒沙子里的原子数量，比海滩上所有沙粒的数量还要多。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "text": "原子是物质世界中万物的基本组成部分。",
+      "text_markdown": "原子是物质世界中万物的基本组成部分。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子是物质世界中万物的基本组成部分。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "text": "一面墙是由砖块砌成的。",
+      "text_markdown": "一面墙是由砖块砌成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "一面墙是由砖块砌成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "text": "一个句子是由文字组成的。",
+      "text_markdown": "一个句子是由文字组成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "一个句子是由文字组成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "text": "宇宙是由原子构成的。",
+      "text_markdown": "宇宙是由原子构成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "宇宙是由原子构成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "text": "“原子”这个词来源于古希腊语。",
+      "text_markdown": "“原子”这个词来源于古希腊语。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "“原子”这个词来源于古希腊语。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "text": "希腊语中的“atomos”意思是不可分割的。",
+      "text_markdown": "希腊语中的“atomos”意思是不可分割的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "希腊语中的“atomos”意思是不可分割的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "text": "古希腊的哲学家们认为原子是物质中最小的碎片。",
+      "text_markdown": "古希腊的哲学家们认为原子是物质中最小的碎片。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "古希腊的哲学家们认为原子是物质中最小的碎片。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "text": "他们差不多是对的。",
+      "text_markdown": "他们差不多是对的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "他们差不多是对的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "text": "原子并不是真正最小的粒子，但它们是能保持化学性质的最小单位。",
+      "text_markdown": "原子并不是真正最小的粒子，但它们是能保持化学性质的最小单位。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子并不是真正最小的粒子，但它们是能保持化学性质的最小单位。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "text": "原子非常坚固耐久。",
+      "text_markdown": "原子非常坚固耐久。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "原子非常坚固耐久。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "text": "你身体里的原子已经有几十亿年的历史了。",
+      "text_markdown": "你身体里的原子已经有几十亿年的历史了。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你身体里的原子已经有几十亿年的历史了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "text": "你今天喝的水里，有些氢原子是在大爆炸后最初几分钟内产生的。",
+      "text_markdown": "你今天喝的水里，有些氢原子是在大爆炸后最初几分钟内产生的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你今天喝的水里，有些氢原子是在大爆炸后最初几分钟内产生的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "text": "你是由古老的材料组成的。",
+      "text_markdown": "你是由古老的材料组成的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "你是由古老的材料组成的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "text": "在日常生活中，原子既不会被创造，也不会被消灭。",
+      "text_markdown": "在日常生活中，原子既不会被创造，也不会被消灭。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "在日常生活中，原子既不会被创造，也不会被消灭。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "text": "它们只是重新排列。",
+      "text_markdown": "它们只是重新排列。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "它们只是重新排列。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "text": "木头燃烧时，原子并不会消失。",
+      "text_markdown": "木头燃烧时，原子并不会消失。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "木头燃烧时，原子并不会消失。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "text": "它们重新排列成了烟、灰和气体。",
+      "text_markdown": "它们重新排列成了烟、灰和气体。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "它们重新排列成了烟、灰和气体。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "text": "冰融化时，原子还是一样的。",
+      "text_markdown": "冰融化时，原子还是一样的。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "冰融化时，原子还是一样的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "text": "只是它们的排列方式发生了变化。",
+      "text_markdown": "只是它们的排列方式发生了变化。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "只是它们的排列方式发生了变化。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "text": "了解原子是学习化学的基础。",
+      "text_markdown": "了解原子是学习化学的基础。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "了解原子是学习化学的基础。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "text": "化学是研究原子如何结合、重新排列和相互作用的科学。",
+      "text_markdown": "化学是研究原子如何结合、重新排列和相互作用的科学。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "化学是研究原子如何结合、重新排列和相互作用的科学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "text": "物质世界中发生的一切，归根结底都和原子以及它们的活动有关。",
+      "text_markdown": "物质世界中发生的一切，归根结底都和原子以及它们的活动有关。",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "物质世界中发生的一切，归根结底都和原子以及它们的活动有关。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "text": "原子的内部",
+      "text_markdown": "原子的内部",
+      "title": "原子的内部"
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "text": "一个原子内部有三种粒子。",
+      "text_markdown": "一个原子内部有三种粒子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "一个原子内部有三种粒子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "text": "质子。",
+      "text_markdown": "质子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "text": "中子。",
+      "text_markdown": "中子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "text": "电子。",
+      "text_markdown": "电子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "电子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "text": "这三种粒子组成了宇宙中的每一个原子。",
+      "text_markdown": "这三种粒子组成了宇宙中的每一个原子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "这三种粒子组成了宇宙中的每一个原子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "text": "原子的中心叫做原子核。",
+      "text_markdown": "原子的中心叫做原子核。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子的中心叫做原子核。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "text": "原子核里有质子和中子。",
+      "text_markdown": "原子核里有质子和中子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子核里有质子和中子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "text": "和整个原子相比，原子核非常非常小。",
+      "text_markdown": "和整个原子相比，原子核非常非常小。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "和整个原子相比，原子核非常非常小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "text": "如果把原子放大到一座足球场那么大，原子核就像球场中央的一颗弹珠那么小。",
+      "text_markdown": "如果把原子放大到一座足球场那么大，原子核就像球场中央的一颗弹珠那么小。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "如果把原子放大到一座足球场那么大，原子核就像球场中央的一颗弹珠那么小。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "text": "质子带正电荷。",
+      "text_markdown": "质子带正电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "质子带正电荷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "text": "每个质子都带有相同数量的正电荷。",
+      "text_markdown": "每个质子都带有相同数量的正电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "每个质子都带有相同数量的正电荷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "text": "一个原子中质子的数量决定了这个原子是什么元素。",
+      "text_markdown": "一个原子中质子的数量决定了这个原子是什么元素。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "一个原子中质子的数量决定了这个原子是什么元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "text": "一个质子就是氢。",
+      "text_markdown": "一个质子就是氢。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "一个质子就是氢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "text": "六个质子就是碳。",
+      "text_markdown": "六个质子就是碳。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "六个质子就是碳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "text": "二十六个质子就是铁。",
+      "text_markdown": "二十六个质子就是铁。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "二十六个质子就是铁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "text": "质子的数量是原子最重要的特征。",
+      "text_markdown": "质子的数量是原子最重要的特征。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "质子的数量是原子最重要的特征。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "text": "中子不带电荷。",
+      "text_markdown": "中子不带电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中子不带电荷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "text": "中子是中性的。",
+      "text_markdown": "中子是中性的。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中子是中性的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "text": "中子在原子核里，紧挨着质子。",
+      "text_markdown": "中子在原子核里，紧挨着质子。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中子在原子核里，紧挨着质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "text": "中子帮助把原子核结合在一起。",
+      "text_markdown": "中子帮助把原子核结合在一起。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "中子帮助把原子核结合在一起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "text": "如果没有中子，质子们会互相推开，因为它们都带正电荷。",
+      "text_markdown": "如果没有中子，质子们会互相推开，因为它们都带正电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "如果没有中子，质子们会互相推开，因为它们都带正电荷。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "text": "电子带负电荷。",
+      "text_markdown": "电子带负电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "电子带负电荷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "text": "电子在原子核周围像一团云一样运动。",
+      "text_markdown": "电子在原子核周围像一团云一样运动。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "电子在原子核周围像一团云一样运动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "text": "它们不像行星围绕太阳那样运行。",
+      "text_markdown": "它们不像行星围绕太阳那样运行。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "它们不像行星围绕太阳那样运行。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "text": "它们存在于原子核周围一个模糊的概率区域中。",
+      "text_markdown": "它们存在于原子核周围一个模糊的概率区域中。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "它们存在于原子核周围一个模糊的概率区域中。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "text": "电子云就是你在任何时刻可能找到电子的区域。",
+      "text_markdown": "电子云就是你在任何时刻可能找到电子的区域。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "电子云就是你在任何时刻可能找到电子的区域。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "text": "和质子或中子相比，电子的质量几乎可以忽略不计。",
+      "text_markdown": "和质子或中子相比，电子的质量几乎可以忽略不计。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "和质子或中子相比，电子的质量几乎可以忽略不计。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "text": "一个质子的重量大约是一个电子的一千八百三十六倍。",
+      "text_markdown": "一个质子的重量大约是一个电子的一千八百三十六倍。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "一个质子的重量大约是一个电子的一千八百三十六倍。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "text": "原子几乎所有的质量都集中在原子核里。",
+      "text_markdown": "原子几乎所有的质量都集中在原子核里。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子几乎所有的质量都集中在原子核里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "text": "在一个中性原子中，电子的数量等于质子的数量。",
+      "text_markdown": "在一个中性原子中，电子的数量等于质子的数量。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "在一个中性原子中，电子的数量等于质子的数量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "text": "正电荷和负电荷刚好平衡。",
+      "text_markdown": "正电荷和负电荷刚好平衡。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "正电荷和负电荷刚好平衡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "text": "整个原子没有多余的电荷。",
+      "text_markdown": "整个原子没有多余的电荷。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "整个原子没有多余的电荷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "text": "这种平衡是原子的正常状态。",
+      "text_markdown": "这种平衡是原子的正常状态。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "这种平衡是原子的正常状态。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "text": "原子的大部分空间是空的。",
+      "text_markdown": "原子的大部分空间是空的。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子的大部分空间是空的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "text": "原子核密度很大，但非常小。",
+      "text_markdown": "原子核密度很大，但非常小。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "原子核密度很大，但非常小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "text": "电子云很大，但大部分什么都没有。",
+      "text_markdown": "电子云很大，但大部分什么都没有。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "电子云很大，但大部分什么都没有。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "text": "如果能把你身体里每个原子中的空隙全部去掉，你会缩小到比一粒盐还小。",
+      "text_markdown": "如果能把你身体里每个原子中的空隙全部去掉，你会缩小到比一粒盐还小。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "如果能把你身体里每个原子中的空隙全部去掉，你会缩小到比一粒盐还小。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "text": "但你的质量不会改变。",
+      "text_markdown": "但你的质量不会改变。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "但你的质量不会改变。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "text": "你只是变得无比密实。",
+      "text_markdown": "你只是变得无比密实。",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "你只是变得无比密实。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "text": "元素",
+      "text_markdown": "元素",
+      "title": "元素"
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "text": "元素是只由一种原子组成的物质。",
+      "text_markdown": "元素是只由一种原子组成的物质。",
+      "title": "Elements",
+      "tts": {
+        "text": "元素是只由一种原子组成的物质。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "text": "纯金是一种元素。",
+      "text_markdown": "纯金是一种元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "纯金是一种元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "text": "一块纯金中的每一个原子都有七十九个质子。",
+      "text_markdown": "一块纯金中的每一个原子都有七十九个质子。",
+      "title": "Elements",
+      "tts": {
+        "text": "一块纯金中的每一个原子都有七十九个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "text": "纯氧是一种元素。",
+      "text_markdown": "纯氧是一种元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "纯氧是一种元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "text": "一罐纯氧中的每一个原子都有八个质子。",
+      "text_markdown": "一罐纯氧中的每一个原子都有八个质子。",
+      "title": "Elements",
+      "tts": {
+        "text": "一罐纯氧中的每一个原子都有八个质子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "text": "地球上自然存在的元素大约有九十二种。",
+      "text_markdown": "地球上自然存在的元素大约有九十二种。",
+      "title": "Elements",
+      "tts": {
+        "text": "地球上自然存在的元素大约有九十二种。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "text": "科学家在实验室里又制造出了一些新的元素。",
+      "text_markdown": "科学家在实验室里又制造出了一些新的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "科学家在实验室里又制造出了一些新的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "text": "目前已知的元素总数超过一百一十八种。",
+      "text_markdown": "目前已知的元素总数超过一百一十八种。",
+      "title": "Elements",
+      "tts": {
+        "text": "目前已知的元素总数超过一百一十八种。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "text": "每种元素都有独特的质子数量。",
+      "text_markdown": "每种元素都有独特的质子数量。",
+      "title": "Elements",
+      "tts": {
+        "text": "每种元素都有独特的质子数量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "text": "每种元素都有自己的名字和符号。",
+      "text_markdown": "每种元素都有自己的名字和符号。",
+      "title": "Elements",
+      "tts": {
+        "text": "每种元素都有自己的名字和符号。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "text": "氢是H，氧是O，碳是C，铁是Fe。",
+      "text_markdown": "氢是H，氧是O，碳是C，铁是Fe。",
+      "title": "Elements",
+      "tts": {
+        "text": "氢是艾奇，氧是欧，碳是西，铁是艾弗伊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "text": "金是Au。",
+      "text_markdown": "金是Au。",
+      "title": "Elements",
+      "tts": {
+        "text": "金是诶尤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "text": "这些符号来自拉丁语、希腊语或英语名称。",
+      "text_markdown": "这些符号来自拉丁语、希腊语或英语名称。",
+      "title": "Elements",
+      "tts": {
+        "text": "这些符号来自拉丁语、希腊语或英语名称。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "text": "Fe来自拉丁语单词ferrum。",
+      "text_markdown": "Fe来自拉丁语单词ferrum。",
+      "title": "Elements",
+      "tts": {
+        "text": "艾弗伊来自拉丁语单词费卢姆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "text": "Au来自拉丁语单词aurum。",
+      "text_markdown": "Au来自拉丁语单词aurum。",
+      "title": "Elements",
+      "tts": {
+        "text": "诶尤来自拉丁语单词奥卢姆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "text": "氢是最简单的元素。",
+      "text_markdown": "氢是最简单的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "氢是最简单的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "text": "一个氢原子有一个质子和一个电子。",
+      "text_markdown": "一个氢原子有一个质子和一个电子。",
+      "title": "Elements",
+      "tts": {
+        "text": "一个氢原子有一个质子和一个电子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "text": "氢是宇宙中最常见的元素。",
+      "text_markdown": "氢是宇宙中最常见的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "氢是宇宙中最常见的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "text": "恒星主要由氢组成。",
+      "text_markdown": "恒星主要由氢组成。",
+      "title": "Elements",
+      "tts": {
+        "text": "恒星主要由氢组成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "text": "碳是生命的元素。",
+      "text_markdown": "碳是生命的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "碳是生命的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "text": "碳有六个质子。",
+      "text_markdown": "碳有六个质子。",
+      "title": "Elements",
+      "tts": {
+        "text": "碳有六个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "text": "碳原子可以同时和许多其他原子形成化学键。",
+      "text_markdown": "碳原子可以同时和许多其他原子形成化学键。",
+      "title": "Elements",
+      "tts": {
+        "text": "碳原子可以同时和许多其他原子形成化学键。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "text": "这种能力使碳成为所有生命体的骨架。",
+      "text_markdown": "这种能力使碳成为所有生命体的骨架。",
+      "title": "Elements",
+      "tts": {
+        "text": "这种能力使碳成为所有生命体的骨架。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "text": "你身体中的每一种蛋白质、每一条DNA链和每一个糖分子都含有碳。",
+      "text_markdown": "你身体中的每一种蛋白质、每一条DNA链和每一个糖分子都含有碳。",
+      "title": "Elements",
+      "tts": {
+        "text": "你身体中的每一种蛋白质、每一条DNA链和每一个糖分子都含有碳。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "text": "氧有八个质子。",
+      "text_markdown": "氧有八个质子。",
+      "title": "Elements",
+      "tts": {
+        "text": "氧有八个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "text": "氧是你呼吸的元素。",
+      "text_markdown": "氧是你呼吸的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "氧是你呼吸的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "text": "你的肺从空气中吸取氧气，然后把它送入血液。",
+      "text_markdown": "你的肺从空气中吸取氧气，然后把它送入血液。",
+      "title": "Elements",
+      "tts": {
+        "text": "你的肺从空气中吸取氧气，然后把它送入血液。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "text": "你的细胞利用氧气从食物中释放能量。",
+      "text_markdown": "你的细胞利用氧气从食物中释放能量。",
+      "title": "Elements",
+      "tts": {
+        "text": "你的细胞利用氧气从食物中释放能量。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "text": "铁有二十六个质子。",
+      "text_markdown": "铁有二十六个质子。",
+      "title": "Elements",
+      "tts": {
+        "text": "铁有二十六个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "text": "铁是让你的血液变红的元素。",
+      "text_markdown": "铁是让你的血液变红的元素。",
+      "title": "Elements",
+      "tts": {
+        "text": "铁是让你的血液变红的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "text": "铁是钢的主要成分。",
+      "text_markdown": "铁是钢的主要成分。",
+      "title": "Elements",
+      "tts": {
+        "text": "铁是钢的主要成分。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "text": "地球的核心主要由铁组成。",
+      "text_markdown": "地球的核心主要由铁组成。",
+      "title": "Elements",
+      "tts": {
+        "text": "地球的核心主要由铁组成。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "text": "最轻的元素是宇宙中最常见的。",
+      "text_markdown": "最轻的元素是宇宙中最常见的。",
+      "title": "Elements",
+      "tts": {
+        "text": "最轻的元素是宇宙中最常见的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "text": "氢和氦加在一起，约占宇宙中所有原子的百分之九十八。",
+      "text_markdown": "氢和氦加在一起，约占宇宙中所有原子的百分之九十八。",
+      "title": "Elements",
+      "tts": {
+        "text": "氢和氦加在一起，约占宇宙中所有原子的百分之九十八。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "text": "相比之下，较重的元素就很稀少。",
+      "text_markdown": "相比之下，较重的元素就很稀少。",
+      "title": "Elements",
+      "tts": {
+        "text": "相比之下，较重的元素就很稀少。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "text": "每一个重元素的原子都是在恒星内部锻造出来的。",
+      "text_markdown": "每一个重元素的原子都是在恒星内部锻造出来的。",
+      "title": "Elements",
+      "tts": {
+        "text": "每一个重元素的原子都是在恒星内部锻造出来的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "text": "元素周期表",
+      "text_markdown": "元素周期表",
+      "title": "元素周期表"
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "text": "元素周期表是一张把所有已知元素组织起来的图表。",
+      "text_markdown": "元素周期表是一张把所有已知元素组织起来的图表。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "元素周期表是一张把所有已知元素组织起来的图表。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "text": "这张表按照质子数从少到多的顺序排列元素。",
+      "text_markdown": "这张表按照质子数从少到多的顺序排列元素。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "这张表按照质子数从少到多的顺序排列元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "text": "氢排在第一位，它有一个质子。",
+      "text_markdown": "氢排在第一位，它有一个质子。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "氢排在第一位，它有一个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "text": "氦排在第二位，它有两个质子。",
+      "text_markdown": "氦排在第二位，它有两个质子。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "氦排在第二位，它有两个质子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "text": "这张表一直排到鿫，它有一百一十八个质子。",
+      "text_markdown": "这张表一直排到鿫，它有一百一十八个质子。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "这张表一直排到鿫，它有一百一十八个质子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "text": "元素周期表有行和列。",
+      "text_markdown": "元素周期表有行和列。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "元素周期表有行和列。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "text": "行叫做周期。",
+      "text_markdown": "行叫做周期。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "行叫做周期。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "text": "列叫做族。",
+      "text_markdown": "列叫做族。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "列叫做族。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "text": "同一族的元素具有相似的性质。",
+      "text_markdown": "同一族的元素具有相似的性质。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "同一族的元素具有相似的性质。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "text": "这就是为什么这张表叫做元素“周期”表。",
+      "text_markdown": "这就是为什么这张表叫做元素“周期”表。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "这就是为什么这张表叫做元素“周期”表。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "text": "元素的性质以有规律的方式重复出现。",
+      "text_markdown": "元素的性质以有规律的方式重复出现。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "元素的性质以有规律的方式重复出现。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "text": "表格左边的元素是金属。",
+      "text_markdown": "表格左边的元素是金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "表格左边的元素是金属。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "text": "大多数元素都是金属。",
+      "text_markdown": "大多数元素都是金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "大多数元素都是金属。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "text": "金属有光泽。",
+      "text_markdown": "金属有光泽。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属有光泽。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "text": "金属能导电。",
+      "text_markdown": "金属能导电。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属能导电。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "text": "金属能导热。",
+      "text_markdown": "金属能导热。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "金属能导热。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "text": "铁、铜、金和铝都是金属。",
+      "text_markdown": "铁、铜、金和铝都是金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "铁、铜、金和铝都是金属。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "text": "表格右边的元素是非金属。",
+      "text_markdown": "表格右边的元素是非金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "表格右边的元素是非金属。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "text": "非金属包括氧、氮、碳和硫。",
+      "text_markdown": "非金属包括氧、氮、碳和硫。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属包括氧、氮、碳和硫。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "text": "非金属不太能导电。",
+      "text_markdown": "非金属不太能导电。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属不太能导电。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "text": "非金属是组成空气、水和生物的元素。",
+      "text_markdown": "非金属是组成空气、水和生物的元素。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "非金属是组成空气、水和生物的元素。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "text": "有几种元素处于金属和非金属的交界处。",
+      "text_markdown": "有几种元素处于金属和非金属的交界处。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "有几种元素处于金属和非金属的交界处。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "text": "这些元素叫做类金属。",
+      "text_markdown": "这些元素叫做类金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "这些元素叫做类金属。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "text": "硅就是一种类金属。",
+      "text_markdown": "硅就是一种类金属。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "硅就是一种类金属。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "text": "硅能导一点电，但没有金属那么好。",
+      "text_markdown": "硅能导一点电，但没有金属那么好。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "硅能导一点电，但没有金属那么好。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "text": "这个特性使硅成为制造电脑芯片的好材料。",
+      "text_markdown": "这个特性使硅成为制造电脑芯片的好材料。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "这个特性使硅成为制造电脑芯片的好材料。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "text": "惰性气体在最右边的那一列。",
+      "text_markdown": "惰性气体在最右边的那一列。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "惰性气体在最右边的那一列。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "text": "氦、氖、氩、氪、氙和氡都是惰性气体。",
+      "text_markdown": "氦、氖、氩、氪、氙和氡都是惰性气体。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "氦、氖、氩、氪、氙和氡都是惰性气体。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "text": "惰性气体几乎从不和其他元素发生反应。",
+      "text_markdown": "惰性气体几乎从不和其他元素发生反应。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "惰性气体几乎从不和其他元素发生反应。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "text": "它们的电子排列已经很稳定了。",
+      "text_markdown": "它们的电子排列已经很稳定了。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "它们的电子排列已经很稳定了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "text": "它们不需要和别的原子形成化学键。",
+      "text_markdown": "它们不需要和别的原子形成化学键。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "它们不需要和别的原子形成化学键。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "text": "一位名叫德米特里·门捷列夫的俄罗斯科学家在1869年创建了第一张元素周期表。",
+      "text_markdown": "一位名叫德米特里·门捷列夫的俄罗斯科学家在1869年创建了第一张元素周期表。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "一位名叫德米特里·门捷列夫的俄罗斯科学家在一千八百六十九年创建了第一张元素周期表。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "text": "门捷列夫按元素的性质排列它们，并发现了这种重复的规律。",
+      "text_markdown": "门捷列夫按元素的性质排列它们，并发现了这种重复的规律。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "门捷列夫按元素的性质排列它们，并发现了这种重复的规律。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "text": "他在表中留下了空位，预测那些位置应该有尚未发现的元素。",
+      "text_markdown": "他在表中留下了空位，预测那些位置应该有尚未发现的元素。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "他在表中留下了空位，预测那些位置应该有尚未发现的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "text": "科学家们后来发现了那些元素。",
+      "text_markdown": "科学家们后来发现了那些元素。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "科学家们后来发现了那些元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "text": "每一个预测都是正确的。",
+      "text_markdown": "每一个预测都是正确的。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "每一个预测都是正确的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "text": "元素周期表是科学中最强大的工具之一。",
+      "text_markdown": "元素周期表是科学中最强大的工具之一。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "元素周期表是科学中最强大的工具之一。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "text": "如果你知道一种元素在表上的位置，就可以预测它会怎样表现。",
+      "text_markdown": "如果你知道一种元素在表上的位置，就可以预测它会怎样表现。",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "如果你知道一种元素在表上的位置，就可以预测它会怎样表现。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "text": "原子如何结合",
+      "text_markdown": "原子如何结合",
+      "title": "原子如何结合"
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "text": "原子很少单独存在。",
+      "text_markdown": "原子很少单独存在。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子很少单独存在。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "text": "大多数原子和其他原子结合在一起，组成分子。",
+      "text_markdown": "大多数原子和其他原子结合在一起，组成分子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "大多数原子和其他原子结合在一起，组成分子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "text": "分子是一组通过化学键结合在一起的原子。",
+      "text_markdown": "分子是一组通过化学键结合在一起的原子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "分子是一组通过化学键结合在一起的原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "text": "水是一种分子。",
+      "text_markdown": "水是一种分子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "水是一种分子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "text": "氧气是一种分子。",
+      "text_markdown": "氧气是一种分子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "氧气是一种分子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "text": "糖是一种分子。",
+      "text_markdown": "糖是一种分子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "糖是一种分子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "text": "原子因为电子而结合。",
+      "text_markdown": "原子因为电子而结合。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子因为电子而结合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "text": "原子最外层的电子决定了这个原子如何与其他原子互动。",
+      "text_markdown": "原子最外层的电子决定了这个原子如何与其他原子互动。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子最外层的电子决定了这个原子如何与其他原子互动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "text": "这些最外层的电子叫做价电子。",
+      "text_markdown": "这些最外层的电子叫做价电子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "这些最外层的电子叫做价电子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "text": "一个外层电子满了的原子是稳定的。",
+      "text_markdown": "一个外层电子满了的原子是稳定的。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "一个外层电子满了的原子是稳定的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "text": "一个外层电子没有满的原子会想办法填满它。",
+      "text_markdown": "一个外层电子没有满的原子会想办法填满它。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "一个外层电子没有满的原子会想办法填满它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "text": "化学键主要有两种。",
+      "text_markdown": "化学键主要有两种。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "化学键主要有两种。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "text": "共价键和离子键。",
+      "text_markdown": "共价键和离子键。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "共价键和离子键。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "text": "在共价键中，两个原子共享电子。",
+      "text_markdown": "在共价键中，两个原子共享电子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "在共价键中，两个原子共享电子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "text": "两个原子各出一些电子，共同使用。",
+      "text_markdown": "两个原子各出一些电子，共同使用。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "两个原子各出一些电子，共同使用。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "text": "共享的电子围绕着两个原子核运动。",
+      "text_markdown": "共享的电子围绕着两个原子核运动。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "共享的电子围绕着两个原子核运动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "text": "这种共享把原子们连在一起。",
+      "text_markdown": "这种共享把原子们连在一起。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "这种共享把原子们连在一起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "text": "水是通过共价键结合在一起的。",
+      "text_markdown": "水是通过共价键结合在一起的。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "水是通过共价键结合在一起的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "text": "每个氢原子和氧原子共享一个电子。",
+      "text_markdown": "每个氢原子和氧原子共享一个电子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "每个氢原子和氧原子共享一个电子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "text": "在离子键中，一个原子把电子给另一个原子。",
+      "text_markdown": "在离子键中，一个原子把电子给另一个原子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "在离子键中，一个原子把电子给另一个原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "text": "失去电子的原子变成带正电的。",
+      "text_markdown": "失去电子的原子变成带正电的。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "失去电子的原子变成带正电的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "text": "得到电子的原子变成带负电的。",
+      "text_markdown": "得到电子的原子变成带负电的。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "得到电子的原子变成带负电的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "text": "正电和负电互相吸引。",
+      "text_markdown": "正电和负电互相吸引。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "正电和负电互相吸引。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "text": "这种吸引力把两个原子拉在一起。",
+      "text_markdown": "这种吸引力把两个原子拉在一起。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "这种吸引力把两个原子拉在一起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "text": "食盐是通过离子键结合在一起的。",
+      "text_markdown": "食盐是通过离子键结合在一起的。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "食盐是通过离子键结合在一起的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "text": "钠把一个电子给了氯。",
+      "text_markdown": "钠把一个电子给了氯。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "钠把一个电子给了氯。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "text": "一个水分子包含两个氢原子和一个氧原子。",
+      "text_markdown": "一个水分子包含两个氢原子和一个氧原子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "一个水分子包含两个氢原子和一个氧原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "text": "科学家把它写成H2O。",
+      "text_markdown": "科学家把它写成H2O。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "科学家把它写成艾奇二欧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "text": "H代表氢。",
+      "text_markdown": "H代表氢。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "艾奇代表氢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "text": "O代表氧。",
+      "text_markdown": "O代表氧。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "欧代表氧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "text": "这个2表示有两个氢原子。",
+      "text_markdown": "这个2表示有两个氢原子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "这个二表示有两个氢原子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "text": "一个二氧化碳分子包含一个碳原子和两个氧原子。",
+      "text_markdown": "一个二氧化碳分子包含一个碳原子和两个氧原子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "一个二氧化碳分子包含一个碳原子和两个氧原子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "text": "科学家把它写成CO2。",
+      "text_markdown": "科学家把它写成CO2。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "科学家把它写成西欧二。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "text": "植物从空气中吸收二氧化碳，用它来制造糖分子。",
+      "text_markdown": "植物从空气中吸收二氧化碳，用它来制造糖分子。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "植物从空气中吸收二氧化碳，用它来制造糖分子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "text": "原子之间的化学键储存着能量。",
+      "text_markdown": "原子之间的化学键储存着能量。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "原子之间的化学键储存着能量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "text": "当化学键断裂时，能量会释放出来。",
+      "text_markdown": "当化学键断裂时，能量会释放出来。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "当化学键断裂时，能量会释放出来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "text": "当化学键形成时，能量会被吸收。",
+      "text_markdown": "当化学键形成时，能量会被吸收。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "当化学键形成时，能量会被吸收。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "text": "宇宙中每一个化学反应都涉及打断旧键和形成新键。",
+      "text_markdown": "宇宙中每一个化学反应都涉及打断旧键和形成新键。",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "宇宙中每一个化学反应都涉及打断旧键和形成新键。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "text": "运动中的原子",
+      "text_markdown": "运动中的原子",
+      "title": "运动中的原子"
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "text": "原子总是在运动。",
+      "text_markdown": "原子总是在运动。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "原子总是在运动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "text": "它们从不停止。",
+      "text_markdown": "它们从不停止。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们从不停止。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "text": "在高于绝对零度的任何温度下，原子都在振动、旋转并穿越空间。",
+      "text_markdown": "在高于绝对零度的任何温度下，原子都在振动、旋转并穿越空间。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "在高于绝对零度的任何温度下，原子都在振动、旋转并穿越空间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "text": "这种运动就是我们感受到的热。",
+      "text_markdown": "这种运动就是我们感受到的热。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "这种运动就是我们感受到的热。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "text": "在固体中，原子在原地振动。",
+      "text_markdown": "在固体中，原子在原地振动。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "在固体中，原子在原地振动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "text": "它们被锁在一个固定的结构里。",
+      "text_markdown": "它们被锁在一个固定的结构里。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们被锁在一个固定的结构里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "text": "它们前后晃动，但不会离开自己的位置。",
+      "text_markdown": "它们前后晃动，但不会离开自己的位置。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们前后晃动，但不会离开自己的位置。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "text": "这就是为什么固体能保持形状。",
+      "text_markdown": "这就是为什么固体能保持形状。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "这就是为什么固体能保持形状。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "text": "冰块里的原子在振动，但它们排列在一个规整的晶体图案中。",
+      "text_markdown": "冰块里的原子在振动，但它们排列在一个规整的晶体图案中。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "冰块里的原子在振动，但它们排列在一个规整的晶体图案中。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "text": "在液体中，原子移动得更自由。",
+      "text_markdown": "在液体中，原子移动得更自由。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "在液体中，原子移动得更自由。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "text": "它们互相滑过。",
+      "text_markdown": "它们互相滑过。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们互相滑过。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "text": "它们彼此靠得很近，但没有被锁定在固定位置。",
+      "text_markdown": "它们彼此靠得很近，但没有被锁定在固定位置。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们彼此靠得很近，但没有被锁定在固定位置。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "text": "这就是为什么液体会流动。",
+      "text_markdown": "这就是为什么液体会流动。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "这就是为什么液体会流动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "text": "一杯水中的原子在不断移动和重新排列，但它们始终保持在彼此附近。",
+      "text_markdown": "一杯水中的原子在不断移动和重新排列，但它们始终保持在彼此附近。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "一杯水中的原子在不断移动和重新排列，但它们始终保持在彼此附近。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "text": "在气体中，原子运动得很快，并且彼此散开。",
+      "text_markdown": "在气体中，原子运动得很快，并且彼此散开。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "在气体中，原子运动得很快，并且彼此散开。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "text": "它们沿直线飞行，直到撞上另一个原子或墙壁。",
+      "text_markdown": "它们沿直线飞行，直到撞上另一个原子或墙壁。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们沿直线飞行，直到撞上另一个原子或墙壁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "text": "它们互相弹开，改变方向。",
+      "text_markdown": "它们互相弹开，改变方向。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "它们互相弹开，改变方向。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "text": "这就是为什么气体能充满任何容器。",
+      "text_markdown": "这就是为什么气体能充满任何容器。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "这就是为什么气体能充满任何容器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "text": "房间里空气中的原子正以每秒几百米的速度朝各个方向飞行。",
+      "text_markdown": "房间里空气中的原子正以每秒几百米的速度朝各个方向飞行。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "房间里空气中的原子正以每秒几百米的速度朝各个方向飞行。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "text": "温度是衡量原子运动快慢的指标。",
+      "text_markdown": "温度是衡量原子运动快慢的指标。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "温度是衡量原子运动快慢的指标。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "text": "热意味着原子运动得快。",
+      "text_markdown": "热意味着原子运动得快。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "热意味着原子运动得快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "text": "冷意味着原子运动得慢。",
+      "text_markdown": "冷意味着原子运动得慢。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "冷意味着原子运动得慢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "text": "当你在炉子上加热水时，你其实是在让水分子运动得更快。",
+      "text_markdown": "当你在炉子上加热水时，你其实是在让水分子运动得更快。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "当你在炉子上加热水时，你其实是在让水分子运动得更快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "text": "当分子运动得足够快时，它们就会脱离液体变成蒸汽。",
+      "text_markdown": "当分子运动得足够快时，它们就会脱离液体变成蒸汽。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "当分子运动得足够快时，它们就会脱离液体变成蒸汽。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "text": "绝对零度是最低的温度。",
+      "text_markdown": "绝对零度是最低的温度。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "绝对零度是最低的温度。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "text": "大约是零下273摄氏度。",
+      "text_markdown": "大约是零下273摄氏度。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "大约是零下二百七十三摄氏度。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "text": "在绝对零度时，原子拥有最低限度的能量。",
+      "text_markdown": "在绝对零度时，原子拥有最低限度的能量。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "在绝对零度时，原子拥有最低限度的能量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "text": "没有什么能比绝对零度更冷。",
+      "text_markdown": "没有什么能比绝对零度更冷。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "没有什么能比绝对零度更冷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "text": "科学家们在实验室里已经非常接近绝对零度了，但还没有人真正达到过。",
+      "text_markdown": "科学家们在实验室里已经非常接近绝对零度了，但还没有人真正达到过。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "科学家们在实验室里已经非常接近绝对零度了，但还没有人真正达到过。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "text": "气压是由原子撞击表面产生的。",
+      "text_markdown": "气压是由原子撞击表面产生的。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "气压是由原子撞击表面产生的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "text": "轮胎里的空气向外推，是因为空气分子不断地撞击轮胎内壁。",
+      "text_markdown": "轮胎里的空气向外推，是因为空气分子不断地撞击轮胎内壁。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "轮胎里的空气向外推，是因为空气分子不断地撞击轮胎内壁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "text": "更多的分子或更快的分子意味着更大的压力。",
+      "text_markdown": "更多的分子或更快的分子意味着更大的压力。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "更多的分子或更快的分子意味着更大的压力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "text": "这就是为什么天气热的时候轮胎摸起来更硬。",
+      "text_markdown": "这就是为什么天气热的时候轮胎摸起来更硬。",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "这就是为什么天气热的时候轮胎摸起来更硬。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p54",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "text": "原子从哪里来",
+      "text_markdown": "原子从哪里来",
+      "title": "原子从哪里来"
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "text": "宇宙中的氢和氦是在大爆炸后最初几分钟内产生的。",
+      "text_markdown": "宇宙中的氢和氦是在大爆炸后最初几分钟内产生的。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "宇宙中的氢和氦是在大爆炸后最初几分钟内产生的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "text": "大约138亿年前，宇宙从一个极其炽热、极其稠密的点开始。",
+      "text_markdown": "大约138亿年前，宇宙从一个极其炽热、极其稠密的点开始。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "大约十三点八亿年前，宇宙从一个极其炽热、极其稠密的点开始。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "text": "随着宇宙膨胀和冷却，质子和中子形成了。",
+      "text_markdown": "随着宇宙膨胀和冷却，质子和中子形成了。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "随着宇宙膨胀和冷却，质子和中子形成了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "text": "那些质子和中子结合成了最简单的原子核。",
+      "text_markdown": "那些质子和中子结合成了最简单的原子核。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "那些质子和中子结合成了最简单的原子核。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "text": "氢和氦是最早的元素。",
+      "text_markdown": "氢和氦是最早的元素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "氢和氦是最早的元素。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "text": "在几百万年里，宇宙是一团由氢和氦组成的气体云。",
+      "text_markdown": "在几百万年里，宇宙是一团由氢和氦组成的气体云。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "在几百万年里，宇宙是一团由氢和氦组成的气体云。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "text": "后来引力把气体拉到了一起，形成了团块。",
+      "text_markdown": "后来引力把气体拉到了一起，形成了团块。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "后来引力把气体拉到了一起，形成了团块。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "text": "这些团块变得越来越密、越来越热。",
+      "text_markdown": "这些团块变得越来越密、越来越热。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这些团块变得越来越密、越来越热。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "text": "当团块的中心温度达到大约一千万度时，核聚变就点燃了。",
+      "text_markdown": "当团块的中心温度达到大约一千万度时，核聚变就点燃了。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "当团块的中心温度达到大约一千万度时，核聚变就点燃了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "text": "一颗恒星就此诞生了。",
+      "text_markdown": "一颗恒星就此诞生了。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "一颗恒星就此诞生了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "text": "恒星是原子的工厂。",
+      "text_markdown": "恒星是原子的工厂。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "恒星是原子的工厂。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "text": "在恒星内部，氢原子融合在一起形成氦。",
+      "text_markdown": "在恒星内部，氢原子融合在一起形成氦。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "在恒星内部，氢原子融合在一起形成氦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "text": "这种聚变释放出巨大的能量。",
+      "text_markdown": "这种聚变释放出巨大的能量。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这种聚变释放出巨大的能量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "text": "这些能量就是恒星发光的原因。",
+      "text_markdown": "这些能量就是恒星发光的原因。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这些能量就是恒星发光的原因。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "text": "我们的太阳每秒钟将大约六亿吨氢聚变成氦。",
+      "text_markdown": "我们的太阳每秒钟将大约六亿吨氢聚变成氦。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "我们的太阳每秒钟将大约六亿吨氢聚变成氦。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "text": "更大的恒星能聚变出更重的元素。",
+      "text_markdown": "更大的恒星能聚变出更重的元素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "更大的恒星能聚变出更重的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "text": "当一颗恒星烧完了氢，它就开始把氦聚变成碳。",
+      "text_markdown": "当一颗恒星烧完了氢，它就开始把氦聚变成碳。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "当一颗恒星烧完了氢，它就开始把氦聚变成碳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "text": "然后把碳变成氧。",
+      "text_markdown": "然后把碳变成氧。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "然后把碳变成氧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "text": "然后把氧变成硅。",
+      "text_markdown": "然后把氧变成硅。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "然后把氧变成硅。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "text": "然后把硅变成铁。",
+      "text_markdown": "然后把硅变成铁。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "然后把硅变成铁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "text": "每一个阶段都产生更重的元素。",
+      "text_markdown": "每一个阶段都产生更重的元素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "每一个阶段都产生更重的元素。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "text": "铁是恒星通过正常聚变能制造的最重的元素。",
+      "text_markdown": "铁是恒星通过正常聚变能制造的最重的元素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "铁是恒星通过正常聚变能制造的最重的元素。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "text": "比铁更重的元素是在大质量恒星爆炸时产生的。",
+      "text_markdown": "比铁更重的元素是在大质量恒星爆炸时产生的。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "比铁更重的元素是在大质量恒星爆炸时产生的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "text": "这些爆炸叫做超新星。",
+      "text_markdown": "这些爆炸叫做超新星。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这些爆炸叫做超新星。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "text": "一颗超新星在短短几秒内释放的能量，比太阳一生释放的还要多。",
+      "text_markdown": "一颗超新星在短短几秒内释放的能量，比太阳一生释放的还要多。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "一颗超新星在短短几秒内释放的能量，比太阳一生释放的还要多。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "text": "超新星的极端环境锻造出了金、银、铂和铀等元素。",
+      "text_markdown": "超新星的极端环境锻造出了金、银、铂和铀等元素。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "超新星的极端环境锻造出了金、银、铂和铀等元素。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "text": "爆炸把这些重元素抛散到太空中。",
+      "text_markdown": "爆炸把这些重元素抛散到太空中。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "爆炸把这些重元素抛散到太空中。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "text": "这些元素和氢、氦气体云混合在一起。",
+      "text_markdown": "这些元素和氢、氦气体云混合在一起。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这些元素和氢、氦气体云混合在一起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "text": "最终，引力把这些富含各种元素的气体重新拉到一起，形成新的恒星和行星。",
+      "text_markdown": "最终，引力把这些富含各种元素的气体重新拉到一起，形成新的恒星和行星。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "最终，引力把这些富含各种元素的气体重新拉到一起，形成新的恒星和行星。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "text": "我们的太阳系大约在46亿年前，从这样一团富含元素的气体云中诞生。",
+      "text_markdown": "我们的太阳系大约在46亿年前，从这样一团富含元素的气体云中诞生。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "我们的太阳系大约在四十六亿年前，从这样一团富含元素的气体云中诞生。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "text": "你身体里每一个比氢重的原子，都是在一颗恒星内部产生的。",
+      "text_markdown": "你身体里每一个比氢重的原子，都是在一颗恒星内部产生的。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "你身体里每一个比氢重的原子，都是在一颗恒星内部产生的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "text": "你骨头里的钙。",
+      "text_markdown": "你骨头里的钙。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "你骨头里的钙。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "text": "你血液中的铁。",
+      "text_markdown": "你血液中的铁。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "你血液中的铁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "text": "你皮肤中的碳。",
+      "text_markdown": "你皮肤中的碳。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "你皮肤中的碳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "text": "你是由星尘组成的。",
+      "text_markdown": "你是由星尘组成的。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "你是由星尘组成的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "text": "这不是比喻。",
+      "text_markdown": "这不是比喻。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这不是比喻。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "text": "这是核物理学的事实。",
+      "text_markdown": "这是核物理学的事实。",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "这是核物理学的事实。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "paragraph_id": "p62",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "text": "原子就是一切",
+      "text_markdown": "原子就是一切",
+      "title": "原子就是一切"
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "text": "你现在已经了解了基础知识。",
+      "text_markdown": "你现在已经了解了基础知识。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "你现在已经了解了基础知识。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "text": "万物都由原子构成。",
+      "text_markdown": "万物都由原子构成。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "万物都由原子构成。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "text": "原子包含质子、中子和电子。",
+      "text_markdown": "原子包含质子、中子和电子。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子包含质子、中子和电子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "text": "质子的数量决定了元素的种类。",
+      "text_markdown": "质子的数量决定了元素的种类。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "质子的数量决定了元素的种类。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "text": "原子结合在一起形成分子。",
+      "text_markdown": "原子结合在一起形成分子。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子结合在一起形成分子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "text": "原子总是在运动。",
+      "text_markdown": "原子总是在运动。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子总是在运动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "text": "恒星创造了构成我们世界的原子。",
+      "text_markdown": "恒星创造了构成我们世界的原子。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "恒星创造了构成我们世界的原子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "text": "这些知识是化学、生物学、物理学和医学的基础。",
+      "text_markdown": "这些知识是化学、生物学、物理学和医学的基础。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "这些知识是化学、生物学、物理学和医学的基础。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "text": "每一个科学领域都和原子有关。",
+      "text_markdown": "每一个科学领域都和原子有关。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "每一个科学领域都和原子有关。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "text": "当医生开药时，那种药物是一种特定的原子排列，专门用来和你身体里的分子相互作用。",
+      "text_markdown": "当医生开药时，那种药物是一种特定的原子排列，专门用来和你身体里的分子相互作用。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "当医生开药时，那种药物是一种特定的原子排列，专门用来和你身体里的分子相互作用。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "text": "当工程师建造一座桥时，桥的强度取决于钢铁中铁原子的排列方式。",
+      "text_markdown": "当工程师建造一座桥时，桥的强度取决于钢铁中铁原子的排列方式。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "当工程师建造一座桥时，桥的强度取决于钢铁中铁原子的排列方式。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "text": "当农民种庄稼时，庄稼之所以能生长，是因为空气中的碳原子在叶子里和水、阳光结合在了一起。",
+      "text_markdown": "当农民种庄稼时，庄稼之所以能生长，是因为空气中的碳原子在叶子里和水、阳光结合在了一起。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "当农民种庄稼时，庄稼之所以能生长，是因为空气中的碳原子在叶子里和水、阳光结合在了一起。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "text": "烹饪就是化学。",
+      "text_markdown": "烹饪就是化学。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "烹饪就是化学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "text": "当你烤面包时，热量会让面团里的原子重新排列。",
+      "text_markdown": "当你烤面包时，热量会让面团里的原子重新排列。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "当你烤面包时，热量会让面团里的原子重新排列。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "text": "蛋白质展开了。",
+      "text_markdown": "蛋白质展开了。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "蛋白质展开了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "text": "糖分解了又重新组合。",
+      "text_markdown": "糖分解了又重新组合。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "糖分解了又重新组合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "text": "新的分子形成了，它们创造了面包皮的颜色、质地和味道。",
+      "text_markdown": "新的分子形成了，它们创造了面包皮的颜色、质地和味道。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "新的分子形成了，它们创造了面包皮的颜色、质地和味道。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "text": "每一个食谱都是一套让原子重新排列的说明书。",
+      "text_markdown": "每一个食谱都是一套让原子重新排列的说明书。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "每一个食谱都是一套让原子重新排列的说明书。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "text": "呼吸就是化学。",
+      "text_markdown": "呼吸就是化学。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "呼吸就是化学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "text": "你吸入氧气分子。",
+      "text_markdown": "你吸入氧气分子。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "你吸入氧气分子。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "text": "你的血液把这些分子运送到你的细胞里。",
+      "text_markdown": "你的血液把这些分子运送到你的细胞里。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "你的血液把这些分子运送到你的细胞里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "text": "在你的细胞里，氧原子和来自食物的碳原子结合。",
+      "text_markdown": "在你的细胞里，氧原子和来自食物的碳原子结合。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "在你的细胞里，氧原子和来自食物的碳原子结合。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "text": "这个反应释放出能量。",
+      "text_markdown": "这个反应释放出能量。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "这个反应释放出能量。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "text": "你呼出的碳和氧变成了二氧化碳。",
+      "text_markdown": "你呼出的碳和氧变成了二氧化碳。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "你呼出的碳和氧变成了二氧化碳。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "text": "每一次呼吸都是一个化学反应。",
+      "text_markdown": "每一次呼吸都是一个化学反应。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "每一次呼吸都是一个化学反应。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "text": "生锈就是化学。",
+      "text_markdown": "生锈就是化学。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "生锈就是化学。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "text": "钉子表面的铁原子和空气中的氧原子发生反应。",
+      "text_markdown": "钉子表面的铁原子和空气中的氧原子发生反应。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "钉子表面的铁原子和空气中的氧原子发生反应。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "text": "铁和氧结合在一起，形成了一种叫做氧化铁的新物质。",
+      "text_markdown": "铁和氧结合在一起，形成了一种叫做氧化铁的新物质。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "铁和氧结合在一起，形成了一种叫做氧化铁的新物质。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "text": "氧化铁就是我们说的铁锈，一种红棕色的东西。",
+      "text_markdown": "氧化铁就是我们说的铁锈，一种红棕色的东西。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "氧化铁就是我们说的铁锈，一种红棕色的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "text": "铁原子还在那里。",
+      "text_markdown": "铁原子还在那里。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "铁原子还在那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "text": "它们只是和氧结合在了一起。",
+      "text_markdown": "它们只是和氧结合在了一起。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "它们只是和氧结合在了一起。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "text": "原子不是抽象的概念。",
+      "text_markdown": "原子不是抽象的概念。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子不是抽象的概念。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "text": "原子是你触摸、品尝、看到和闻到的一切事物的物质本身。",
+      "text_markdown": "原子是你触摸、品尝、看到和闻到的一切事物的物质本身。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "原子是你触摸、品尝、看到和闻到的一切事物的物质本身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "text": "你越了解原子，就越了解这个世界。",
+      "text_markdown": "你越了解原子，就越了解这个世界。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "你越了解原子，就越了解这个世界。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "text": "这只是个开始。",
+      "text_markdown": "这只是个开始。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "这只是个开始。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "text": "还有更多的知识等着你去探索。",
+      "text_markdown": "还有更多的知识等着你去探索。",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "还有更多的知识等着你去探索。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "El Llamado",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El Llamado",
+      "text_markdown": "El Llamado"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay un momento, justo después de salir del avión, que me gustaría poder regalarte.",
+      "text_markdown": "Hay un momento, justo después de salir del avión, que me gustaría poder regalarte.",
+      "tts": {
+        "text": "Hay un momento, justo después de salir del avión, que me gustaría poder regalarte.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El mundo deja de ser una cosa en la que vives.",
+      "text_markdown": "El mundo deja de ser una cosa en la que vives.",
+      "tts": {
+        "text": "El mundo deja de ser una cosa en la que vives.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se vuelve una cosa por la que caes.",
+      "text_markdown": "Se vuelve una cosa por la que caes.",
+      "tts": {
+        "text": "Se vuelve una cosa por la que caes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Y durante los primeros segundos, tu mente no termina de alcanzar lo que tu cuerpo acaba de hacer.",
+      "text_markdown": "Y durante los primeros segundos, tu mente no termina de alcanzar lo que tu cuerpo acaba de hacer.",
+      "tts": {
+        "text": "Y durante los primeros segundos, tu mente no termina de alcanzar lo que tu cuerpo acaba de hacer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente me pregunta por qué salto.",
+      "text_markdown": "La gente me pregunta por qué salto.",
+      "tts": {
+        "text": "La gente me pregunta por qué salto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siempre esperan que diga que es por la adrenalina.",
+      "text_markdown": "Siempre esperan que diga que es por la adrenalina.",
+      "tts": {
+        "text": "Siempre esperan que diga que es por la adrenalina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No es la adrenalina.",
+      "text_markdown": "No es la adrenalina.",
+      "tts": {
+        "text": "No es la adrenalina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La adrenalina es lo que sientes en tus primeros cinco saltos.",
+      "text_markdown": "La adrenalina es lo que sientes en tus primeros cinco saltos.",
+      "tts": {
+        "text": "La adrenalina es lo que sientes en tus primeros cinco saltos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Después de eso, algo más callado toma el control.",
+      "text_markdown": "Después de eso, algo más callado toma el control.",
+      "tts": {
+        "text": "Después de eso, algo más callado toma el control.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lo que estoy persiguiendo es la claridad.",
+      "text_markdown": "Lo que estoy persiguiendo es la claridad.",
+      "tts": {
+        "text": "Lo que estoy persiguiendo es la claridad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Durante sesenta segundos en caída libre, tu mente no tiene nada más que hacer.",
+      "text_markdown": "Durante sesenta segundos en caída libre, tu mente no tiene nada más que hacer.",
+      "tts": {
+        "text": "Durante sesenta segundos en caída libre, tu mente no tiene nada más que hacer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin teléfono.",
+      "text_markdown": "Sin teléfono.",
+      "tts": {
+        "text": "Sin teléfono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sin cuentas que pagar.",
+      "text_markdown": "Sin cuentas que pagar.",
+      "tts": {
+        "text": "Sin cuentas que pagar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sin esa pequeña preocupación por el día siguiente.",
+      "text_markdown": "Sin esa pequeña preocupación por el día siguiente.",
+      "tts": {
+        "text": "Sin esa pequeña preocupación por el día siguiente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Solo el viento, tu respiración, y la curva lenta de la tierra debajo de ti.",
+      "text_markdown": "Solo el viento, tu respiración, y la curva lenta de la tierra debajo de ti.",
+      "tts": {
+        "text": "Solo el viento, tu respiración, y la curva lenta de la tierra debajo de ti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "La mayor parte de la vida es ruidosa.",
+      "text_markdown": "La mayor parte de la vida es ruidosa.",
+      "tts": {
+        "text": "La mayor parte de la vida es ruidosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ese minuto no lo es.",
+      "text_markdown": "Ese minuto no lo es.",
+      "tts": {
+        "text": "Ese minuto no lo es.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los paracaidistas no estamos locos.",
+      "text_markdown": "Los paracaidistas no estamos locos.",
+      "tts": {
+        "text": "Los paracaidistas no estamos locos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La mayoría somos personas tranquilas que encontramos una manera de sentirnos en calma más rápido.",
+      "text_markdown": "La mayoría somos personas tranquilas que encontramos una manera de sentirnos en calma más rápido.",
+      "tts": {
+        "text": "La mayoría somos personas tranquilas que encontramos una manera de sentirnos en calma más rápido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saltamos de aviones de la misma manera en que otras personas meditan.",
+      "text_markdown": "Saltamos de aviones de la misma manera en que otras personas meditan.",
+      "tts": {
+        "text": "Saltamos de aviones de la misma manera en que otras personas meditan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Limpia algo por dentro.",
+      "text_markdown": "Limpia algo por dentro.",
+      "tts": {
+        "text": "Limpia algo por dentro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Y luego, cada fin de semana, lo limpia otra vez.",
+      "text_markdown": "Y luego, cada fin de semana, lo limpia otra vez.",
+      "tts": {
+        "text": "Y luego, cada fin de semana, lo limpia otra vez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La primera vez que vi un paracaídas abrirse sobre mí, lloré dentro del arnés.",
+      "text_markdown": "La primera vez que vi un paracaídas abrirse sobre mí, lloré dentro del arnés.",
+      "tts": {
+        "text": "La primera vez que vi un paracaídas abrirse sobre mí, lloré dentro del arnés.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No me lo esperaba.",
+      "text_markdown": "No me lo esperaba.",
+      "tts": {
+        "text": "No me lo esperaba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Un adulto hecho y derecho, colgado en el cielo bajo un cuadrado de tela suave, llorando sin saber por qué.",
+      "text_markdown": "Un adulto hecho y derecho, colgado en el cielo bajo un cuadrado de tela suave, llorando sin saber por qué.",
+      "tts": {
+        "text": "Un adulto hecho y derecho, colgado en el cielo bajo un cuadrado de tela suave, llorando sin saber por qué.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mi instructor se rió con suavidad y me dio una palmadita en el hombro.",
+      "text_markdown": "Mi instructor se rió con suavidad y me dio una palmadita en el hombro.",
+      "tts": {
+        "text": "Mi instructor se rió con suavidad y me dio una palmadita en el hombro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Lo había visto muchas veces.",
+      "text_markdown": "Lo había visto muchas veces.",
+      "tts": {
+        "text": "Lo había visto muchas veces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ese fue el momento en que supe que iba a volver.",
+      "text_markdown": "Ese fue el momento en que supe que iba a volver.",
+      "tts": {
+        "text": "Ese fue el momento en que supe que iba a volver.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El paracaidismo no se trata de ser valiente.",
+      "text_markdown": "El paracaidismo no se trata de ser valiente.",
+      "tts": {
+        "text": "El paracaidismo no se trata de ser valiente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se trata de encontrar el único lugar donde tu mente se queda en silencio.",
+      "text_markdown": "Se trata de encontrar el único lugar donde tu mente se queda en silencio.",
+      "tts": {
+        "text": "Se trata de encontrar el único lugar donde tu mente se queda en silencio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Para algunas personas, ese lugar es un tapete de yoga.",
+      "text_markdown": "Para algunas personas, ese lugar es un tapete de yoga.",
+      "tts": {
+        "text": "Para algunas personas, ese lugar es un tapete de yoga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Para algunos, es una corrida larga por una carretera vacía.",
+      "text_markdown": "Para algunos, es una corrida larga por una carretera vacía.",
+      "tts": {
+        "text": "Para algunos, es una corrida larga por una carretera vacía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Para algunos, es un sedal de pesca, o un piano, o una cocina a las seis de la mañana.",
+      "text_markdown": "Para algunos, es un sedal de pesca, o un piano, o una cocina a las seis de la mañana.",
+      "tts": {
+        "text": "Para algunos, es un sedal de pesca, o un piano, o una cocina a las seis de la mañana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Para mí, es trece mil pies sobre el suelo, sin nada que hacer más que respirar.",
+      "text_markdown": "Para mí, es trece mil pies sobre el suelo, sin nada que hacer más que respirar.",
+      "tts": {
+        "text": "Para mí, es trece mil pies sobre el suelo, sin nada que hacer más que respirar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esa atracción, una vez que la sientes, es difícil de describirle a un amigo durante la cena.",
+      "text_markdown": "Esa atracción, una vez que la sientes, es difícil de describirle a un amigo durante la cena.",
+      "tts": {
+        "text": "Esa atracción, una vez que la sientes, es difícil de describirle a un amigo durante la cena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lo intentarás, ellos sonreirán con cortesía, y terminarás dándote por vencido.",
+      "text_markdown": "Lo intentarás, ellos sonreirán con cortesía, y terminarás dándote por vencido.",
+      "tts": {
+        "text": "Lo intentarás, ellos sonreirán con cortesía, y terminarás dándote por vencido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Y está bien.",
+      "text_markdown": "Y está bien.",
+      "tts": {
+        "text": "Y está bien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No empezaste a saltar para poder explicarlo.",
+      "text_markdown": "No empezaste a saltar para poder explicarlo.",
+      "tts": {
+        "text": "No empezaste a saltar para poder explicarlo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Empezaste a saltar porque, la primera vez que lo intentaste, algo dentro de ti dijo, ah, ahí estás.",
+      "text_markdown": "Empezaste a saltar porque, la primera vez que lo intentaste, algo dentro de ti dijo, ah, ahí estás.",
+      "tts": {
+        "text": "Empezaste a saltar porque, la primera vez que lo intentaste, algo dentro de ti dijo, ah, ahí estás.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "¿Alguna vez has estado parado al borde de algo alto y has sentido que tu cuerpo se inclina hacia el aire abierto?",
+      "text_markdown": "¿Alguna vez has estado parado al borde de algo alto y has sentido que tu cuerpo se inclina hacia el aire abierto?",
+      "tts": {
+        "text": "¿Alguna vez has estado parado al borde de algo alto y has sentido que tu cuerpo se inclina hacia el aire abierto?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solo un poquito, solo por un segundo.",
+      "text_markdown": "Solo un poquito, solo por un segundo.",
+      "tts": {
+        "text": "Solo un poquito, solo por un segundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si te ha pasado, ya sabes de lo que estoy hablando.",
+      "text_markdown": "Si te ha pasado, ya sabes de lo que estoy hablando.",
+      "tts": {
+        "text": "Si te ha pasado, ya sabes de lo que estoy hablando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El paracaidismo es lo que sucede cuando dejas de fingir que no te inclinas.",
+      "text_markdown": "El paracaidismo es lo que sucede cuando dejas de fingir que no te inclinas.",
+      "tts": {
+        "text": "El paracaidismo es lo que sucede cuando dejas de fingir que no te inclinas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das un paso hacia afuera, a propósito, hacia ese lugar por el que tu cuerpo lleva años preguntando en silencio.",
+      "text_markdown": "Das un paso hacia afuera, a propósito, hacia ese lugar por el que tu cuerpo lleva años preguntando en silencio.",
+      "tts": {
+        "text": "Das un paso hacia afuera, a propósito, hacia ese lugar por el que tu cuerpo lleva años preguntando en silencio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Y entonces, muy rápidamente, aprendes que el suelo nunca fue donde estaba el miedo.",
+      "text_markdown": "Y entonces, muy rápidamente, aprendes que el suelo nunca fue donde estaba el miedo.",
+      "tts": {
+        "text": "Y entonces, muy rápidamente, aprendes que el suelo nunca fue donde estaba el miedo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El miedo estaba en el inclinarse.",
+      "text_markdown": "El miedo estaba en el inclinarse.",
+      "tts": {
+        "text": "El miedo estaba en el inclinarse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una vez que saltas, el miedo se va.",
+      "text_markdown": "Una vez que saltas, el miedo se va.",
+      "tts": {
+        "text": "Una vez que saltas, el miedo se va.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lo que queda es algo casi parecido al hogar.",
+      "text_markdown": "Lo que queda es algo casi parecido al hogar.",
+      "tts": {
+        "text": "Lo que queda es algo casi parecido al hogar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tu corazón se desacelera.",
+      "text_markdown": "Tu corazón se desacelera.",
+      "tts": {
+        "text": "Tu corazón se desacelera.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tu respiración encuentra un ritmo que llevaba mucho tiempo buscando.",
+      "text_markdown": "Tu respiración encuentra un ritmo que llevaba mucho tiempo buscando.",
+      "tts": {
+        "text": "Tu respiración encuentra un ritmo que llevaba mucho tiempo buscando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "El aire te sostiene.",
+      "text_markdown": "El aire te sostiene.",
+      "tts": {
+        "text": "El aire te sostiene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Y sientes, tal vez por primera vez en mucho tiempo, que estás exactamente donde estás.",
+      "text_markdown": "Y sientes, tal vez por primera vez en mucho tiempo, que estás exactamente donde estás.",
+      "tts": {
+        "text": "Y sientes, tal vez por primera vez en mucho tiempo, que estás exactamente donde estás.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eso es lo que te diría, si me lo preguntaras durante una caminata larga.",
+      "text_markdown": "Eso es lo que te diría, si me lo preguntaras durante una caminata larga.",
+      "tts": {
+        "text": "Eso es lo que te diría, si me lo preguntaras durante una caminata larga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "¿Por qué una persona tranquila y razonable sigue saltando de aviones perfectamente buenos?",
+      "text_markdown": "¿Por qué una persona tranquila y razonable sigue saltando de aviones perfectamente buenos?",
+      "tts": {
+        "text": "¿Por qué una persona tranquila y razonable sigue saltando de aviones perfectamente buenos?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te diría que es la cosa más callada que hago.",
+      "text_markdown": "Te diría que es la cosa más callada que hago.",
+      "tts": {
+        "text": "Te diría que es la cosa más callada que hago.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Y lo diría en serio.",
+      "text_markdown": "Y lo diría en serio.",
+      "tts": {
+        "text": "Y lo diría en serio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "La Primera Vez",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La Primera Vez",
+      "text_markdown": "La Primera Vez"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Déjame ponerte en el avión.",
+      "text_markdown": "Déjame ponerte en el avión.",
+      "tts": {
+        "text": "Déjame ponerte en el avión.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estás sentado en una banca metálica baja, sujeto con un arnés a un instructor detrás de ti.",
+      "text_markdown": "Estás sentado en una banca metálica baja, sujeto con un arnés a un instructor detrás de ti.",
+      "tts": {
+        "text": "Estás sentado en una banca metálica baja, sujeto con un arnés a un instructor detrás de ti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El avión sube en círculos lentos y perezosos.",
+      "text_markdown": "El avión sube en círculos lentos y perezosos.",
+      "tts": {
+        "text": "El avión sube en círculos lentos y perezosos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La pequeña ventana cuadrada a tu lado se vuelve cada vez más azul.",
+      "text_markdown": "La pequeña ventana cuadrada a tu lado se vuelve cada vez más azul.",
+      "tts": {
+        "text": "La pequeña ventana cuadrada a tu lado se vuelve cada vez más azul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Puedes sentir tu corazón en la garganta, pero no estás entrando en pánico.",
+      "text_markdown": "Puedes sentir tu corazón en la garganta, pero no estás entrando en pánico.",
+      "tts": {
+        "text": "Puedes sentir tu corazón en la garganta, pero no estás entrando en pánico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Solo estás muy, muy despierto.",
+      "text_markdown": "Solo estás muy, muy despierto.",
+      "tts": {
+        "text": "Solo estás muy, muy despierto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El instructor se inclina cerca de tu oreja.",
+      "text_markdown": "El instructor se inclina cerca de tu oreja.",
+      "tts": {
+        "text": "El instructor se inclina cerca de tu oreja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Te dice, con calma, que todo lo que necesites hacer, él te lo dirá cuando toque.",
+      "text_markdown": "Te dice, con calma, que todo lo que necesites hacer, él te lo dirá cuando toque.",
+      "tts": {
+        "text": "Te dice, con calma, que todo lo que necesites hacer, él te lo dirá cuando toque.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Asientes con la cabeza.",
+      "text_markdown": "Asientes con la cabeza.",
+      "tts": {
+        "text": "Asientes con la cabeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Has asentido tantas veces en la última hora que ya te empieza a doler el cuello.",
+      "text_markdown": "Has asentido tantas veces en la última hora que ya te empieza a doler el cuello.",
+      "tts": {
+        "text": "Has asentido tantas veces en la última hora que ya te empieza a doler el cuello.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entonces se abre la puerta.",
+      "text_markdown": "Entonces se abre la puerta.",
+      "tts": {
+        "text": "Entonces se abre la puerta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El viento entra como un muro, fuerte y frío y vivo, y de pronto el avión se siente muy pequeño.",
+      "text_markdown": "El viento entra como un muro, fuerte y frío y vivo, y de pronto el avión se siente muy pequeño.",
+      "tts": {
+        "text": "El viento entra como un muro, fuerte y frío y vivo, y de pronto el avión se siente muy pequeño.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Te deslizas hasta el borde.",
+      "text_markdown": "Te deslizas hasta el borde.",
+      "tts": {
+        "text": "Te deslizas hasta el borde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tus dedos de los pies cuelgan en la nada.",
+      "text_markdown": "Tus dedos de los pies cuelgan en la nada.",
+      "tts": {
+        "text": "Tus dedos de los pies cuelgan en la nada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Miras hacia abajo, y el suelo está tan lejos que ya no parece suelo.",
+      "text_markdown": "Miras hacia abajo, y el suelo está tan lejos que ya no parece suelo.",
+      "tts": {
+        "text": "Miras hacia abajo, y el suelo está tan lejos que ya no parece suelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Parece una colcha.",
+      "text_markdown": "Parece una colcha.",
+      "tts": {
+        "text": "Parece una colcha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Carreteras finas como hilos.",
+      "text_markdown": "Carreteras finas como hilos.",
+      "tts": {
+        "text": "Carreteras finas como hilos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Un río del color de la plata opaca.",
+      "text_markdown": "Un río del color de la plata opaca.",
+      "tts": {
+        "text": "Un río del color de la plata opaca.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Pequeños campos verdes y marrones cosidos por setos.",
+      "text_markdown": "Pequeños campos verdes y marrones cosidos por setos.",
+      "tts": {
+        "text": "Pequeños campos verdes y marrones cosidos por setos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tu instructor cuenta.",
+      "text_markdown": "Tu instructor cuenta.",
+      "tts": {
+        "text": "Tu instructor cuenta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dice uno.",
+      "text_markdown": "Dice uno.",
+      "tts": {
+        "text": "Dice uno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dice dos.",
+      "text_markdown": "Dice dos.",
+      "tts": {
+        "text": "Dice dos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al tres, el avión ha desaparecido.",
+      "text_markdown": "Al tres, el avión ha desaparecido.",
+      "tts": {
+        "text": "Al tres, el avión ha desaparecido.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los primeros tres segundos son los más difíciles.",
+      "text_markdown": "Los primeros tres segundos son los más difíciles.",
+      "tts": {
+        "text": "Los primeros tres segundos son los más difíciles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tu cuerpo cree que está cayendo, porque lo está, y a tu cuerpo nunca le habían dicho que esto está bien.",
+      "text_markdown": "Tu cuerpo cree que está cayendo, porque lo está, y a tu cuerpo nunca le habían dicho que esto está bien.",
+      "tts": {
+        "text": "Tu cuerpo cree que está cayendo, porque lo está, y a tu cuerpo nunca le habían dicho que esto está bien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Haces un sonido.",
+      "text_markdown": "Haces un sonido.",
+      "tts": {
+        "text": "Haces un sonido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Todos hacen un sonido.",
+      "text_markdown": "Todos hacen un sonido.",
+      "tts": {
+        "text": "Todos hacen un sonido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No hay por qué avergonzarse del sonido.",
+      "text_markdown": "No hay por qué avergonzarse del sonido.",
+      "tts": {
+        "text": "No hay por qué avergonzarse del sonido.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entonces ocurre algo extraordinario.",
+      "text_markdown": "Entonces ocurre algo extraordinario.",
+      "tts": {
+        "text": "Entonces ocurre algo extraordinario.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La caída deja de sentirse como caer.",
+      "text_markdown": "La caída deja de sentirse como caer.",
+      "tts": {
+        "text": "La caída deja de sentirse como caer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El viento sube a tu encuentro y te sostiene, de la misma manera en que el agua te sostiene cuando flotas de espaldas.",
+      "text_markdown": "El viento sube a tu encuentro y te sostiene, de la misma manera en que el agua te sostiene cuando flotas de espaldas.",
+      "tts": {
+        "text": "El viento sube a tu encuentro y te sostiene, de la misma manera en que el agua te sostiene cuando flotas de espaldas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tus brazos y tus piernas se extienden sin que tú se lo pidas.",
+      "text_markdown": "Tus brazos y tus piernas se extienden sin que tú se lo pidas.",
+      "tts": {
+        "text": "Tus brazos y tus piernas se extienden sin que tú se lo pidas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sientes que tu cara está siendo jalada en muchas direcciones a la vez.",
+      "text_markdown": "Sientes que tu cara está siendo jalada en muchas direcciones a la vez.",
+      "tts": {
+        "text": "Sientes que tu cara está siendo jalada en muchas direcciones a la vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "No puedes saber si estás sonriendo o gritando.",
+      "text_markdown": "No puedes saber si estás sonriendo o gritando.",
+      "tts": {
+        "text": "No puedes saber si estás sonriendo o gritando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "No importa.",
+      "text_markdown": "No importa.",
+      "tts": {
+        "text": "No importa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miras a tu alrededor.",
+      "text_markdown": "Miras a tu alrededor.",
+      "tts": {
+        "text": "Miras a tu alrededor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La tierra todavía está muy lejos debajo de ti, pero ahora está más cerca, y puedes ver mejor los colores.",
+      "text_markdown": "La tierra todavía está muy lejos debajo de ti, pero ahora está más cerca, y puedes ver mejor los colores.",
+      "tts": {
+        "text": "La tierra todavía está muy lejos debajo de ti, pero ahora está más cerca, y puedes ver mejor los colores.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Carros en una autopista, lentos como hormigas.",
+      "text_markdown": "Carros en una autopista, lentos como hormigas.",
+      "tts": {
+        "text": "Carros en una autopista, lentos como hormigas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un lago, perfectamente inmóvil.",
+      "text_markdown": "Un lago, perfectamente inmóvil.",
+      "tts": {
+        "text": "Un lago, perfectamente inmóvil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "La sombra de una nube cruzando un bosque.",
+      "text_markdown": "La sombra de una nube cruzando un bosque.",
+      "tts": {
+        "text": "La sombra de una nube cruzando un bosque.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estás volando.",
+      "text_markdown": "Estás volando.",
+      "tts": {
+        "text": "Estás volando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No en un avión.",
+      "text_markdown": "No en un avión.",
+      "tts": {
+        "text": "No en un avión.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tú, tu cuerpo, estás volando.",
+      "text_markdown": "Tú, tu cuerpo, estás volando.",
+      "tts": {
+        "text": "Tú, tu cuerpo, estás volando.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tu instructor te da un toque en el hombro.",
+      "text_markdown": "Tu instructor te da un toque en el hombro.",
+      "tts": {
+        "text": "Tu instructor te da un toque en el hombro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tiras de la manija.",
+      "text_markdown": "Tiras de la manija.",
+      "tts": {
+        "text": "Tiras de la manija.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hay un tirón suave, como si alguien te agarrara con cuidado por la espalda de la camisa.",
+      "text_markdown": "Hay un tirón suave, como si alguien te agarrara con cuidado por la espalda de la camisa.",
+      "tts": {
+        "text": "Hay un tirón suave, como si alguien te agarrara con cuidado por la espalda de la camisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Luego un segundo tirón, más fuerte, que te levanta y te pone derecho.",
+      "text_markdown": "Luego un segundo tirón, más fuerte, que te levanta y te pone derecho.",
+      "tts": {
+        "text": "Luego un segundo tirón, más fuerte, que te levanta y te pone derecho.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El mundo se queda en silencio.",
+      "text_markdown": "El mundo se queda en silencio.",
+      "tts": {
+        "text": "El mundo se queda en silencio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El viento se ha ido.",
+      "text_markdown": "El viento se ha ido.",
+      "tts": {
+        "text": "El viento se ha ido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El rugido se ha ido.",
+      "text_markdown": "El rugido se ha ido.",
+      "tts": {
+        "text": "El rugido se ha ido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La caída se ha ido.",
+      "text_markdown": "La caída se ha ido.",
+      "tts": {
+        "text": "La caída se ha ido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ahora estás colgado, en un arnés, bajo un rectángulo amplio de tela.",
+      "text_markdown": "Ahora estás colgado, en un arnés, bajo un rectángulo amplio de tela.",
+      "tts": {
+        "text": "Ahora estás colgado, en un arnés, bajo un rectángulo amplio de tela.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El cielo está, de pronto, muy, muy quieto.",
+      "text_markdown": "El cielo está, de pronto, muy, muy quieto.",
+      "tts": {
+        "text": "El cielo está, de pronto, muy, muy quieto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Puedes oír al pájaro debajo de ti.",
+      "text_markdown": "Puedes oír al pájaro debajo de ti.",
+      "tts": {
+        "text": "Puedes oír al pájaro debajo de ti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Puedes oírte respirar.",
+      "text_markdown": "Puedes oírte respirar.",
+      "tts": {
+        "text": "Puedes oírte respirar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Tu instructor se ríe en tu oído y te pregunta cómo te sientes.",
+      "text_markdown": "Tu instructor se ríe en tu oído y te pregunta cómo te sientes.",
+      "tts": {
+        "text": "Tu instructor se ríe en tu oído y te pregunta cómo te sientes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "No puedes contestar por un momento, porque estás llorando, o riendo, o las dos cosas.",
+      "text_markdown": "No puedes contestar por un momento, porque estás llorando, o riendo, o las dos cosas.",
+      "tts": {
+        "text": "No puedes contestar por un momento, porque estás llorando, o riendo, o las dos cosas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El paseo bajo el paracaídas dura unos cinco minutos.",
+      "text_markdown": "El paseo bajo el paracaídas dura unos cinco minutos.",
+      "tts": {
+        "text": "El paseo bajo el paracaídas dura unos cinco minutos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son cinco de los minutos más apacibles de tu vida.",
+      "text_markdown": "Son cinco de los minutos más apacibles de tu vida.",
+      "tts": {
+        "text": "Son cinco de los minutos más apacibles de tu vida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando tus pies tocan el suelo, das tres pequeños pasos corriendo y te detienes.",
+      "text_markdown": "Cuando tus pies tocan el suelo, das tres pequeños pasos corriendo y te detienes.",
+      "tts": {
+        "text": "Cuando tus pies tocan el suelo, das tres pequeños pasos corriendo y te detienes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El pasto vuelve a ser real.",
+      "text_markdown": "El pasto vuelve a ser real.",
+      "tts": {
+        "text": "El pasto vuelve a ser real.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El mundo vuelve a ser sólido.",
+      "text_markdown": "El mundo vuelve a ser sólido.",
+      "tts": {
+        "text": "El mundo vuelve a ser sólido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Te das vuelta y miras al cielo.",
+      "text_markdown": "Te das vuelta y miras al cielo.",
+      "tts": {
+        "text": "Te das vuelta y miras al cielo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Y entiendes, por primera vez, lo que tu amigo ha estado tratando de decirte todos estos años.",
+      "text_markdown": "Y entiendes, por primera vez, lo que tu amigo ha estado tratando de decirte todos estos años.",
+      "tts": {
+        "text": "Y entiendes, por primera vez, lo que tu amigo ha estado tratando de decirte todos estos años.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Cómo Empezar",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cómo Empezar",
+      "text_markdown": "Cómo Empezar"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "¿Y cómo se hace esto en realidad, si un día decides que quieres hacerlo?",
+      "text_markdown": "¿Y cómo se hace esto en realidad, si un día decides que quieres hacerlo?",
+      "tts": {
+        "text": "¿Y cómo se hace esto en realidad, si un día decides que quieres hacerlo?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La respuesta honesta es, más fácil de lo que piensas.",
+      "text_markdown": "La respuesta honesta es, más fácil de lo que piensas.",
+      "tts": {
+        "text": "La respuesta honesta es, más fácil de lo que piensas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Casi cualquier zona de salto en el mundo aceptará a un principiante absoluto esa misma mañana.",
+      "text_markdown": "Casi cualquier zona de salto en el mundo aceptará a un principiante absoluto esa misma mañana.",
+      "tts": {
+        "text": "Casi cualquier zona de salto en el mundo aceptará a un principiante absoluto esa misma mañana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te ponen en el cielo en un salto en tándem, con un instructor a tu espalda.",
+      "text_markdown": "Te ponen en el cielo en un salto en tándem, con un instructor a tu espalda.",
+      "tts": {
+        "text": "Te ponen en el cielo en un salto en tándem, con un instructor a tu espalda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Llegas, firmas los papeles, ves un video corto, y conoces a tu instructor.",
+      "text_markdown": "Llegas, firmas los papeles, ves un video corto, y conoces a tu instructor.",
+      "tts": {
+        "text": "Llegas, firmas los papeles, ves un video corto, y conoces a tu instructor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Te pones un mono de salto y un arnés.",
+      "text_markdown": "Te pones un mono de salto y un arnés.",
+      "tts": {
+        "text": "Te pones un mono de salto y un arnés.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Subes al avión.",
+      "text_markdown": "Subes al avión.",
+      "tts": {
+        "text": "Subes al avión.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Unos veinte minutos después, vas caminando de regreso por el pasto con la sonrisa más grande de tu vida.",
+      "text_markdown": "Unos veinte minutos después, vas caminando de regreso por el pasto con la sonrisa más grande de tu vida.",
+      "tts": {
+        "text": "Unos veinte minutos después, vas caminando de regreso por el pasto con la sonrisa más grande de tu vida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para tu primer salto, no necesitas ser valiente.",
+      "text_markdown": "Para tu primer salto, no necesitas ser valiente.",
+      "tts": {
+        "text": "Para tu primer salto, no necesitas ser valiente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solo necesitas estar dispuesto.",
+      "text_markdown": "Solo necesitas estar dispuesto.",
+      "tts": {
+        "text": "Solo necesitas estar dispuesto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El instructor lo hace todo.",
+      "text_markdown": "El instructor lo hace todo.",
+      "tts": {
+        "text": "El instructor lo hace todo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Él tira del paracaídas.",
+      "text_markdown": "Él tira del paracaídas.",
+      "tts": {
+        "text": "Él tira del paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Él pilota el paracaídas.",
+      "text_markdown": "Él pilota el paracaídas.",
+      "tts": {
+        "text": "Él pilota el paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Él te aterriza.",
+      "text_markdown": "Él te aterriza.",
+      "tts": {
+        "text": "Él te aterriza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Tú vas de paseo, con el mejor asiento del mundo.",
+      "text_markdown": "Tú vas de paseo, con el mejor asiento del mundo.",
+      "tts": {
+        "text": "Tú vas de paseo, con el mejor asiento del mundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si después de ese primer salto te interesa saltar por tu cuenta, el camino se llama Caída Libre Acelerada.",
+      "text_markdown": "Si después de ese primer salto te interesa saltar por tu cuenta, el camino se llama Caída Libre Acelerada.",
+      "tts": {
+        "text": "Si después de ese primer salto te interesa saltar por tu cuenta, el camino se llama Caída Libre Acelerada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es un programa de entrenamiento, que se enseña en cada zona de salto, y te enseña a ser un paracaidista de verdad.",
+      "text_markdown": "Es un programa de entrenamiento, que se enseña en cada zona de salto, y te enseña a ser un paracaidista de verdad.",
+      "tts": {
+        "text": "Es un programa de entrenamiento, que se enseña en cada zona de salto, y te enseña a ser un paracaidista de verdad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No un pasajero.",
+      "text_markdown": "No un pasajero.",
+      "tts": {
+        "text": "No un pasajero.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Un piloto de tu propio cuerpo en el cielo.",
+      "text_markdown": "Un piloto de tu propio cuerpo en el cielo.",
+      "tts": {
+        "text": "Un piloto de tu propio cuerpo en el cielo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El primer nivel del programa es un día largo de salón de clase.",
+      "text_markdown": "El primer nivel del programa es un día largo de salón de clase.",
+      "tts": {
+        "text": "El primer nivel del programa es un día largo de salón de clase.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aprendes a caer.",
+      "text_markdown": "Aprendes a caer.",
+      "tts": {
+        "text": "Aprendes a caer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aprendes a leer tu altímetro.",
+      "text_markdown": "Aprendes a leer tu altímetro.",
+      "tts": {
+        "text": "Aprendes a leer tu altímetro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aprendes qué hacer si tu paracaídas principal no se abre.",
+      "text_markdown": "Aprendes qué hacer si tu paracaídas principal no se abre.",
+      "tts": {
+        "text": "Aprendes qué hacer si tu paracaídas principal no se abre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El día de salón de clase dura unas seis o siete horas.",
+      "text_markdown": "El día de salón de clase dura unas seis o siete horas.",
+      "tts": {
+        "text": "El día de salón de clase dura unas seis o siete horas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Para cuando termina, sabes más sobre paracaídas de lo que la mayoría de la gente aprende en toda una vida.",
+      "text_markdown": "Para cuando termina, sabes más sobre paracaídas de lo que la mayoría de la gente aprende en toda una vida.",
+      "tts": {
+        "text": "Para cuando termina, sabes más sobre paracaídas de lo que la mayoría de la gente aprende en toda una vida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luego viene tu primer salto en solitario.",
+      "text_markdown": "Luego viene tu primer salto en solitario.",
+      "tts": {
+        "text": "Luego viene tu primer salto en solitario.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dos instructores saltan contigo, uno a cada lado, sosteniéndote por el arnés.",
+      "text_markdown": "Dos instructores saltan contigo, uno a cada lado, sosteniéndote por el arnés.",
+      "tts": {
+        "text": "Dos instructores saltan contigo, uno a cada lado, sosteniéndote por el arnés.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te sueltan en caída libre cuando estás estable.",
+      "text_markdown": "Te sueltan en caída libre cuando estás estable.",
+      "tts": {
+        "text": "Te sueltan en caída libre cuando estás estable.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tiras de tu propio paracaídas.",
+      "text_markdown": "Tiras de tu propio paracaídas.",
+      "tts": {
+        "text": "Tiras de tu propio paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vuelas tu propio paracaídas hasta el suelo.",
+      "text_markdown": "Vuelas tu propio paracaídas hasta el suelo.",
+      "tts": {
+        "text": "Vuelas tu propio paracaídas hasta el suelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "La primera vez que haces esto, al día siguiente te va a doler la cara de tanto sonreír.",
+      "text_markdown": "La primera vez que haces esto, al día siguiente te va a doler la cara de tanto sonreír.",
+      "tts": {
+        "text": "La primera vez que haces esto, al día siguiente te va a doler la cara de tanto sonreír.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El programa completo te lleva por unos siete saltos.",
+      "text_markdown": "El programa completo te lleva por unos siete saltos.",
+      "tts": {
+        "text": "El programa completo te lleva por unos siete saltos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para el final, ya estás saltando solo.",
+      "text_markdown": "Para el final, ya estás saltando solo.",
+      "tts": {
+        "text": "Para el final, ya estás saltando solo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A partir de ahí, los paracaidistas suelen completar sus primeros cien saltos durante el año siguiente.",
+      "text_markdown": "A partir de ahí, los paracaidistas suelen completar sus primeros cien saltos durante el año siguiente.",
+      "tts": {
+        "text": "A partir de ahí, los paracaidistas suelen completar sus primeros cien saltos durante el año siguiente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Por el camino, aprenden a volar en relación con otros saltadores.",
+      "text_markdown": "Por el camino, aprenden a volar en relación con otros saltadores.",
+      "tts": {
+        "text": "Por el camino, aprenden a volar en relación con otros saltadores.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Aprenden a hacer tracking por el cielo.",
+      "text_markdown": "Aprenden a hacer tracking por el cielo.",
+      "tts": {
+        "text": "Aprenden a hacer tracking por el cielo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Aprenden a empacar su propio paracaídas.",
+      "text_markdown": "Aprenden a empacar su propio paracaídas.",
+      "tts": {
+        "text": "Aprenden a empacar su propio paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "La comunidad es pequeña, amigable y paciente.",
+      "text_markdown": "La comunidad es pequeña, amigable y paciente.",
+      "tts": {
+        "text": "La comunidad es pequeña, amigable y paciente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Nadie en una zona de salto te va a hacer sentir tonto por ser principiante.",
+      "text_markdown": "Nadie en una zona de salto te va a hacer sentir tonto por ser principiante.",
+      "tts": {
+        "text": "Nadie en una zona de salto te va a hacer sentir tonto por ser principiante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Todos fuimos principiantes alguna vez.",
+      "text_markdown": "Todos fuimos principiantes alguna vez.",
+      "tts": {
+        "text": "Todos fuimos principiantes alguna vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "La mayoría seguimos sintiéndonos como principiantes.",
+      "text_markdown": "La mayoría seguimos sintiéndonos como principiantes.",
+      "tts": {
+        "text": "La mayoría seguimos sintiéndonos como principiantes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "¿Y la seguridad?",
+      "text_markdown": "¿Y la seguridad?",
+      "tts": {
+        "text": "¿Y la seguridad?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Esta es la pregunta que toda persona razonable hace, y merece una respuesta de verdad.",
+      "text_markdown": "Esta es la pregunta que toda persona razonable hace, y merece una respuesta de verdad.",
+      "tts": {
+        "text": "Esta es la pregunta que toda persona razonable hace, y merece una respuesta de verdad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El paracaidismo es, de hecho, muy seguro.",
+      "text_markdown": "El paracaidismo es, de hecho, muy seguro.",
+      "tts": {
+        "text": "El paracaidismo es, de hecho, muy seguro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No tan seguro como caminar, pero más seguro que manejar hasta la zona de salto.",
+      "text_markdown": "No tan seguro como caminar, pero más seguro que manejar hasta la zona de salto.",
+      "tts": {
+        "text": "No tan seguro como caminar, pero más seguro que manejar hasta la zona de salto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El equipo es excelente.",
+      "text_markdown": "El equipo es excelente.",
+      "tts": {
+        "text": "El equipo es excelente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hay un paracaídas principal y un paracaídas de reserva, y un dispositivo automático que disparará la reserva si tú no puedes.",
+      "text_markdown": "Hay un paracaídas principal y un paracaídas de reserva, y un dispositivo automático que disparará la reserva si tú no puedes.",
+      "tts": {
+        "text": "Hay un paracaídas principal y un paracaídas de reserva, y un dispositivo automático que disparará la reserva si tú no puedes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Las zonas de salto las dirigen profesionales que se preocupan por ti.",
+      "text_markdown": "Las zonas de salto las dirigen profesionales que se preocupan por ti.",
+      "tts": {
+        "text": "Las zonas de salto las dirigen profesionales que se preocupan por ti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "A los instructores les importa, profundamente, cada salto.",
+      "text_markdown": "A los instructores les importa, profundamente, cada salto.",
+      "tts": {
+        "text": "A los instructores les importa, profundamente, cada salto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "¿Cuál es el costo?",
+      "text_markdown": "¿Cuál es el costo?",
+      "tts": {
+        "text": "¿Cuál es el costo?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Un salto en tándem cuesta lo mismo que una buena cena para dos.",
+      "text_markdown": "Un salto en tándem cuesta lo mismo que una buena cena para dos.",
+      "tts": {
+        "text": "Un salto en tándem cuesta lo mismo que una buena cena para dos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El programa de entrenamiento cuesta lo mismo que unas vacaciones cortas.",
+      "text_markdown": "El programa de entrenamiento cuesta lo mismo que unas vacaciones cortas.",
+      "tts": {
+        "text": "El programa de entrenamiento cuesta lo mismo que unas vacaciones cortas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Después de eso, cada salto cuesta lo mismo que una entrada al cine y una comida.",
+      "text_markdown": "Después de eso, cada salto cuesta lo mismo que una entrada al cine y una comida.",
+      "tts": {
+        "text": "Después de eso, cada salto cuesta lo mismo que una entrada al cine y una comida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Personas con trabajos normales y vidas normales hacen esto cada fin de semana.",
+      "text_markdown": "Personas con trabajos normales y vidas normales hacen esto cada fin de semana.",
+      "tts": {
+        "text": "Personas con trabajos normales y vidas normales hacen esto cada fin de semana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "No son ricos.",
+      "text_markdown": "No son ricos.",
+      "tts": {
+        "text": "No son ricos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "No son raros.",
+      "text_markdown": "No son raros.",
+      "tts": {
+        "text": "No son raros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Simplemente han decidido que esta es la cosa que hacen.",
+      "text_markdown": "Simplemente han decidido que esta es la cosa que hacen.",
+      "tts": {
+        "text": "Simplemente han decidido que esta es la cosa que hacen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si estás pensando en tu primer salto, este es el único consejo que importa.",
+      "text_markdown": "Si estás pensando en tu primer salto, este es el único consejo que importa.",
+      "tts": {
+        "text": "Si estás pensando en tu primer salto, este es el único consejo que importa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elige una fecha.",
+      "text_markdown": "Elige una fecha.",
+      "tts": {
+        "text": "Elige una fecha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuéntale a un amigo.",
+      "text_markdown": "Cuéntale a un amigo.",
+      "tts": {
+        "text": "Cuéntale a un amigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Preséntate.",
+      "text_markdown": "Preséntate.",
+      "tts": {
+        "text": "Preséntate.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "La parte difícil no es la caída.",
+      "text_markdown": "La parte difícil no es la caída.",
+      "tts": {
+        "text": "La parte difícil no es la caída.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "La parte difícil es el decidirse.",
+      "text_markdown": "La parte difícil es el decidirse.",
+      "tts": {
+        "text": "La parte difícil es el decidirse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Una vez que decides, el cielo ya es tuyo.",
+      "text_markdown": "Una vez que decides, el cielo ya es tuyo.",
+      "tts": {
+        "text": "Una vez que decides, el cielo ya es tuyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "El Oficio",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El Oficio",
+      "text_markdown": "El Oficio"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay un oficio escondido dentro de la caída, y es la parte del paracaidismo que te atrapa de por vida.",
+      "text_markdown": "Hay un oficio escondido dentro de la caída, y es la parte del paracaidismo que te atrapa de por vida.",
+      "tts": {
+        "text": "Hay un oficio escondido dentro de la caída, y es la parte del paracaidismo que te atrapa de por vida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando ves a un paracaidista experimentado en caída libre, no ves a alguien cayendo.",
+      "text_markdown": "Cuando ves a un paracaidista experimentado en caída libre, no ves a alguien cayendo.",
+      "tts": {
+        "text": "Cuando ves a un paracaidista experimentado en caída libre, no ves a alguien cayendo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ves a alguien volando.",
+      "text_markdown": "Ves a alguien volando.",
+      "tts": {
+        "text": "Ves a alguien volando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Giran lentamente, a propósito, con las puntas de los dedos.",
+      "text_markdown": "Giran lentamente, a propósito, con las puntas de los dedos.",
+      "tts": {
+        "text": "Giran lentamente, a propósito, con las puntas de los dedos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se deslizan hacia adelante por el cielo media milla con solo inclinar los hombros dos pulgadas hacia adelante.",
+      "text_markdown": "Se deslizan hacia adelante por el cielo media milla con solo inclinar los hombros dos pulgadas hacia adelante.",
+      "tts": {
+        "text": "Se deslizan hacia adelante por el cielo media milla con solo inclinar los hombros dos pulgadas hacia adelante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se detienen, en pleno descenso, y mantienen una quietud que parece imposible.",
+      "text_markdown": "Se detienen, en pleno descenso, y mantienen una quietud que parece imposible.",
+      "tts": {
+        "text": "Se detienen, en pleno descenso, y mantienen una quietud que parece imposible.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El cuerpo es el avión.",
+      "text_markdown": "El cuerpo es el avión.",
+      "tts": {
+        "text": "El cuerpo es el avión.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ese es el primer secreto del oficio.",
+      "text_markdown": "Ese es el primer secreto del oficio.",
+      "tts": {
+        "text": "Ese es el primer secreto del oficio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una vez que entiendes eso, todo lo demás sigue.",
+      "text_markdown": "Una vez que entiendes eso, todo lo demás sigue.",
+      "tts": {
+        "text": "Una vez que entiendes eso, todo lo demás sigue.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La forma básica de una caída libre estable se llama el arco.",
+      "text_markdown": "La forma básica de una caída libre estable se llama el arco.",
+      "tts": {
+        "text": "La forma básica de una caída libre estable se llama el arco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Empujas las caderas hacia adelante y dejas que tus brazos y piernas vayan detrás, como un plátano.",
+      "text_markdown": "Empujas las caderas hacia adelante y dejas que tus brazos y piernas vayan detrás, como un plátano.",
+      "tts": {
+        "text": "Empujas las caderas hacia adelante y dejas que tus brazos y piernas vayan detrás, como un plátano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El arco es lo que te mantiene boca abajo hacia la tierra sin que tengas que pensarlo.",
+      "text_markdown": "El arco es lo que te mantiene boca abajo hacia la tierra sin que tengas que pensarlo.",
+      "tts": {
+        "text": "El arco es lo que te mantiene boca abajo hacia la tierra sin que tengas que pensarlo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los nuevos saltadores aprenden el arco en una fosa de espuma, luego en un túnel de viento, luego en el cielo.",
+      "text_markdown": "Los nuevos saltadores aprenden el arco en una fosa de espuma, luego en un túnel de viento, luego en el cielo.",
+      "tts": {
+        "text": "Los nuevos saltadores aprenden el arco en una fosa de espuma, luego en un túnel de viento, luego en el cielo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Los saltadores veteranos todavía hablan del arco como los corredores veteranos hablan de su zancada.",
+      "text_markdown": "Los saltadores veteranos todavía hablan del arco como los corredores veteranos hablan de su zancada.",
+      "tts": {
+        "text": "Los saltadores veteranos todavía hablan del arco como los corredores veteranos hablan de su zancada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una vez que tienes un arco estable, el resto de la caída libre se abre.",
+      "text_markdown": "Una vez que tienes un arco estable, el resto de la caída libre se abre.",
+      "tts": {
+        "text": "Una vez que tienes un arco estable, el resto de la caída libre se abre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aprendes a caer despacio extendiéndote ancho, convirtiéndote en una cometa.",
+      "text_markdown": "Aprendes a caer despacio extendiéndote ancho, convirtiéndote en una cometa.",
+      "tts": {
+        "text": "Aprendes a caer despacio extendiéndote ancho, convirtiéndote en una cometa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aprendes a caer rápido encogiéndote pequeño, convirtiéndote en una piedra.",
+      "text_markdown": "Aprendes a caer rápido encogiéndote pequeño, convirtiéndote en una piedra.",
+      "tts": {
+        "text": "Aprendes a caer rápido encogiéndote pequeño, convirtiéndote en una piedra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aprendes a hacer tracking, que es lo más cercano a volar que un cuerpo humano puede hacer.",
+      "text_markdown": "Aprendes a hacer tracking, que es lo más cercano a volar que un cuerpo humano puede hacer.",
+      "tts": {
+        "text": "Aprendes a hacer tracking, que es lo más cercano a volar que un cuerpo humano puede hacer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Un buen practicante de tracking puede cubrir un cuarto de milla por el cielo en veinte segundos.",
+      "text_markdown": "Un buen practicante de tracking puede cubrir un cuarto de milla por el cielo en veinte segundos.",
+      "tts": {
+        "text": "Un buen practicante de tracking puede cubrir un cuarto de milla por el cielo en veinte segundos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Brazos hacia atrás, cuerpo inclinado, moviéndose como un avión de papel que sabe a dónde va.",
+      "text_markdown": "Brazos hacia atrás, cuerpo inclinado, moviéndose como un avión de papel que sabe a dónde va.",
+      "tts": {
+        "text": "Brazos hacia atrás, cuerpo inclinado, moviéndose como un avión de papel que sabe a dónde va.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La otra mitad del oficio es el paracaídas.",
+      "text_markdown": "La otra mitad del oficio es el paracaídas.",
+      "tts": {
+        "text": "La otra mitad del oficio es el paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El paracaídas no es algo pasivo que te baja flotando.",
+      "text_markdown": "El paracaídas no es algo pasivo que te baja flotando.",
+      "tts": {
+        "text": "El paracaídas no es algo pasivo que te baja flotando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es un ala, y tú la vuelas.",
+      "text_markdown": "Es un ala, y tú la vuelas.",
+      "tts": {
+        "text": "Es un ala, y tú la vuelas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tirar de la cuerda derecha hace bajar el ala derecha y te gira hacia la derecha.",
+      "text_markdown": "Tirar de la cuerda derecha hace bajar el ala derecha y te gira hacia la derecha.",
+      "tts": {
+        "text": "Tirar de la cuerda derecha hace bajar el ala derecha y te gira hacia la derecha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tirar de las dos al mismo tiempo te frena y te permite aterrizar suave.",
+      "text_markdown": "Tirar de las dos al mismo tiempo te frena y te permite aterrizar suave.",
+      "tts": {
+        "text": "Tirar de las dos al mismo tiempo te frena y te permite aterrizar suave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Lees el viento, eliges el lugar, planeas tu circuito.",
+      "text_markdown": "Lees el viento, eliges el lugar, planeas tu circuito.",
+      "tts": {
+        "text": "Lees el viento, eliges el lugar, planeas tu circuito.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Frenas en el último segundo, para que tus pies besen el suelo en lugar de chocar contra él.",
+      "text_markdown": "Frenas en el último segundo, para que tus pies besen el suelo en lugar de chocar contra él.",
+      "tts": {
+        "text": "Frenas en el último segundo, para que tus pies besen el suelo en lugar de chocar contra él.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Todo eso es vuelo de paracaídas, y es una disciplina por sí sola.",
+      "text_markdown": "Todo eso es vuelo de paracaídas, y es una disciplina por sí sola.",
+      "tts": {
+        "text": "Todo eso es vuelo de paracaídas, y es una disciplina por sí sola.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Y luego está el empacado.",
+      "text_markdown": "Y luego está el empacado.",
+      "tts": {
+        "text": "Y luego está el empacado.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada paracaidista empaca su propio paracaídas.",
+      "text_markdown": "Cada paracaidista empaca su propio paracaídas.",
+      "tts": {
+        "text": "Cada paracaidista empaca su propio paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada vez.",
+      "text_markdown": "Cada vez.",
+      "tts": {
+        "text": "Cada vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Extiendes el paracaídas sobre un tapete largo.",
+      "text_markdown": "Extiendes el paracaídas sobre un tapete largo.",
+      "tts": {
+        "text": "Extiendes el paracaídas sobre un tapete largo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alisas las líneas.",
+      "text_markdown": "Alisas las líneas.",
+      "tts": {
+        "text": "Alisas las líneas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Doblas las celdas.",
+      "text_markdown": "Doblas las celdas.",
+      "tts": {
+        "text": "Doblas las celdas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Envuelves la tela como un capullo, la metes con cuidado en la bolsa, acomodas la brida, cierras el contenedor.",
+      "text_markdown": "Envuelves la tela como un capullo, la metes con cuidado en la bolsa, acomodas la brida, cierras el contenedor.",
+      "tts": {
+        "text": "Envuelves la tela como un capullo, la metes con cuidado en la bolsa, acomodas la brida, cierras el contenedor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Toma unos quince minutos, y lo haces despacio, porque tu vida va a depender de ese pedazo de tela.",
+      "text_markdown": "Toma unos quince minutos, y lo haces despacio, porque tu vida va a depender de ese pedazo de tela.",
+      "tts": {
+        "text": "Toma unos quince minutos, y lo haces despacio, porque tu vida va a depender de ese pedazo de tela.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Empacar es meditación.",
+      "text_markdown": "Empacar es meditación.",
+      "tts": {
+        "text": "Empacar es meditación.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muchos paracaidistas dicen que es la parte del día que más aman.",
+      "text_markdown": "Muchos paracaidistas dicen que es la parte del día que más aman.",
+      "tts": {
+        "text": "Muchos paracaidistas dicen que es la parte del día que más aman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El tapete, las líneas, el doblado lento.",
+      "text_markdown": "El tapete, las líneas, el doblado lento.",
+      "tts": {
+        "text": "El tapete, las líneas, el doblado lento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El hombro de un amigo empacando a tu lado.",
+      "text_markdown": "El hombro de un amigo empacando a tu lado.",
+      "tts": {
+        "text": "El hombro de un amigo empacando a tu lado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El radio en la esquina tocando una canción que has oído demasiadas veces.",
+      "text_markdown": "El radio en la esquina tocando una canción que has oído demasiadas veces.",
+      "tts": {
+        "text": "El radio en la esquina tocando una canción que has oído demasiadas veces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "No se puede apresurar el empacado.",
+      "text_markdown": "No se puede apresurar el empacado.",
+      "tts": {
+        "text": "No se puede apresurar el empacado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Al cielo no le importa tu agenda.",
+      "text_markdown": "Al cielo no le importa tu agenda.",
+      "tts": {
+        "text": "Al cielo no le importa tu agenda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mentalidad del oficio es la paciencia.",
+      "text_markdown": "La mentalidad del oficio es la paciencia.",
+      "tts": {
+        "text": "La mentalidad del oficio es la paciencia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es la humildad.",
+      "text_markdown": "Es la humildad.",
+      "tts": {
+        "text": "Es la humildad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es la disposición a repasar cada salto, incluso los aburridos.",
+      "text_markdown": "Es la disposición a repasar cada salto, incluso los aburridos.",
+      "tts": {
+        "text": "Es la disposición a repasar cada salto, incluso los aburridos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A los paracaidistas les encanta hablar después de un salto.",
+      "text_markdown": "A los paracaidistas les encanta hablar después de un salto.",
+      "tts": {
+        "text": "A los paracaidistas les encanta hablar después de un salto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se sientan en una mesa de picnic y van paso a paso por cada segundo, posición del cuerpo por posición del cuerpo.",
+      "text_markdown": "Se sientan en una mesa de picnic y van paso a paso por cada segundo, posición del cuerpo por posición del cuerpo.",
+      "tts": {
+        "text": "Se sientan en una mesa de picnic y van paso a paso por cada segundo, posición del cuerpo por posición del cuerpo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Qué funcionó.",
+      "text_markdown": "Qué funcionó.",
+      "tts": {
+        "text": "Qué funcionó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Qué estuvo descuidado.",
+      "text_markdown": "Qué estuvo descuidado.",
+      "tts": {
+        "text": "Qué estuvo descuidado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Qué quieren intentar la próxima vez.",
+      "text_markdown": "Qué quieren intentar la próxima vez.",
+      "tts": {
+        "text": "Qué quieren intentar la próxima vez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por eso la gente se queda.",
+      "text_markdown": "Por eso la gente se queda.",
+      "tts": {
+        "text": "Por eso la gente se queda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No porque la caída sea emocionante.",
+      "text_markdown": "No porque la caída sea emocionante.",
+      "tts": {
+        "text": "No porque la caída sea emocionante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La caída es la parte fácil.",
+      "text_markdown": "La caída es la parte fácil.",
+      "tts": {
+        "text": "La caída es la parte fácil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La gente se queda porque siempre hay algo que aprender.",
+      "text_markdown": "La gente se queda porque siempre hay algo que aprender.",
+      "tts": {
+        "text": "La gente se queda porque siempre hay algo que aprender.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Siempre hay un amigo con quien aprenderlo.",
+      "text_markdown": "Siempre hay un amigo con quien aprenderlo.",
+      "tts": {
+        "text": "Siempre hay un amigo con quien aprenderlo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Y hay un cielo esperándote mañana al mediodía.",
+      "text_markdown": "Y hay un cielo esperándote mañana al mediodía.",
+      "tts": {
+        "text": "Y hay un cielo esperándote mañana al mediodía.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Momentos",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Momentos",
+      "text_markdown": "Momentos"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Déjame darte tres.",
+      "text_markdown": "Déjame darte tres.",
+      "tts": {
+        "text": "Déjame darte tres.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El primero es un vuelo al atardecer.",
+      "text_markdown": "El primero es un vuelo al atardecer.",
+      "tts": {
+        "text": "El primero es un vuelo al atardecer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El avión despega veinte minutos antes de que el sol se ponga.",
+      "text_markdown": "El avión despega veinte minutos antes de que el sol se ponga.",
+      "tts": {
+        "text": "El avión despega veinte minutos antes de que el sol se ponga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Subes a través de capas de luz anaranjada, la cabina cálida, tus amigos en silencio.",
+      "text_markdown": "Subes a través de capas de luz anaranjada, la cabina cálida, tus amigos en silencio.",
+      "tts": {
+        "text": "Subes a través de capas de luz anaranjada, la cabina cálida, tus amigos en silencio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando se abre la puerta esta vez, el aire es rosa.",
+      "text_markdown": "Cuando se abre la puerta esta vez, el aire es rosa.",
+      "tts": {
+        "text": "Cuando se abre la puerta esta vez, el aire es rosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "La tierra debajo de ti está mitad en sombra, mitad en oro.",
+      "text_markdown": "La tierra debajo de ti está mitad en sombra, mitad en oro.",
+      "tts": {
+        "text": "La tierra debajo de ti está mitad en sombra, mitad en oro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sales por la puerta, y por sesenta segundos vas cayendo por dentro de un atardecer.",
+      "text_markdown": "Sales por la puerta, y por sesenta segundos vas cayendo por dentro de un atardecer.",
+      "tts": {
+        "text": "Sales por la puerta, y por sesenta segundos vas cayendo por dentro de un atardecer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No parece real.",
+      "text_markdown": "No parece real.",
+      "tts": {
+        "text": "No parece real.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Verás colores que no sabías que tus ojos podían encontrar.",
+      "text_markdown": "Verás colores que no sabías que tus ojos podían encontrar.",
+      "tts": {
+        "text": "Verás colores que no sabías que tus ojos podían encontrar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuando tu paracaídas se abre, estás flotando sobre un mundo que por un momento está en llamas.",
+      "text_markdown": "Cuando tu paracaídas se abre, estás flotando sobre un mundo que por un momento está en llamas.",
+      "tts": {
+        "text": "Cuando tu paracaídas se abre, estás flotando sobre un mundo que por un momento está en llamas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El viento ha bajado a nada.",
+      "text_markdown": "El viento ha bajado a nada.",
+      "tts": {
+        "text": "El viento ha bajado a nada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "La zona de salto es un pequeño cuadrado verde debajo de ti, con una luz cálida encendida.",
+      "text_markdown": "La zona de salto es un pequeño cuadrado verde debajo de ti, con una luz cálida encendida.",
+      "tts": {
+        "text": "La zona de salto es un pequeño cuadrado verde debajo de ti, con una luz cálida encendida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Eliges un círculo lento y te dejas aterrizar al final, porque nadie quiere que esta parte termine.",
+      "text_markdown": "Eliges un círculo lento y te dejas aterrizar al final, porque nadie quiere que esta parte termine.",
+      "tts": {
+        "text": "Eliges un círculo lento y te dejas aterrizar al final, porque nadie quiere que esta parte termine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Cuando tus pies tocan el pasto, el cielo está morado.",
+      "text_markdown": "Cuando tus pies tocan el pasto, el cielo está morado.",
+      "tts": {
+        "text": "Cuando tus pies tocan el pasto, el cielo está morado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Tus amigos van llegando desde sus propios aterrizajes.",
+      "text_markdown": "Tus amigos van llegando desde sus propios aterrizajes.",
+      "tts": {
+        "text": "Tus amigos van llegando desde sus propios aterrizajes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Uno de ellos solo te mira.",
+      "text_markdown": "Uno de ellos solo te mira.",
+      "tts": {
+        "text": "Uno de ellos solo te mira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Los dos sacuden la cabeza.",
+      "text_markdown": "Los dos sacuden la cabeza.",
+      "tts": {
+        "text": "Los dos sacuden la cabeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Ninguno de los dos encuentra una palabra.",
+      "text_markdown": "Ninguno de los dos encuentra una palabra.",
+      "tts": {
+        "text": "Ninguno de los dos encuentra una palabra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El segundo es un salto en formación.",
+      "text_markdown": "El segundo es un salto en formación.",
+      "tts": {
+        "text": "El segundo es un salto en formación.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son ocho los que van en el vuelo.",
+      "text_markdown": "Son ocho los que van en el vuelo.",
+      "tts": {
+        "text": "Son ocho los que van en el vuelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se sientan en la banca, los cascos en el regazo, y el saltador líder dibuja la formación en una pequeña pizarra.",
+      "text_markdown": "Se sientan en la banca, los cascos en el regazo, y el saltador líder dibuja la formación en una pequeña pizarra.",
+      "tts": {
+        "text": "Se sientan en la banca, los cascos en el regazo, y el saltador líder dibuja la formación en una pequeña pizarra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saldrán del avión en racimo, caerán juntos, formarán un círculo.",
+      "text_markdown": "Saldrán del avión en racimo, caerán juntos, formarán un círculo.",
+      "tts": {
+        "text": "Saldrán del avión en racimo, caerán juntos, formarán un círculo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Todos saben su lugar.",
+      "text_markdown": "Todos saben su lugar.",
+      "tts": {
+        "text": "Todos saben su lugar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Chocan los puños, se revisan el equipo unos a otros, se ríen nerviosos.",
+      "text_markdown": "Chocan los puños, se revisan el equipo unos a otros, se ríen nerviosos.",
+      "tts": {
+        "text": "Chocan los puños, se revisan el equipo unos a otros, se ríen nerviosos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ocho adultos hechos y derechos, asustados y alegres al mismo tiempo, como niños en una pijamada.",
+      "text_markdown": "Ocho adultos hechos y derechos, asustados y alegres al mismo tiempo, como niños en una pijamada.",
+      "tts": {
+        "text": "Ocho adultos hechos y derechos, asustados y alegres al mismo tiempo, como niños en una pijamada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El avión nivela el vuelo.",
+      "text_markdown": "El avión nivela el vuelo.",
+      "tts": {
+        "text": "El avión nivela el vuelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se abre la puerta.",
+      "text_markdown": "Se abre la puerta.",
+      "tts": {
+        "text": "Se abre la puerta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tu líder sale por la puerta, y el resto lo siguen, separados por un latido de corazón.",
+      "text_markdown": "Tu líder sale por la puerta, y el resto lo siguen, separados por un latido de corazón.",
+      "tts": {
+        "text": "Tu líder sale por la puerta, y el resto lo siguen, separados por un latido de corazón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En caída libre, se encuentran unos a otros casi sin pensarlo.",
+      "text_markdown": "En caída libre, se encuentran unos a otros casi sin pensarlo.",
+      "tts": {
+        "text": "En caída libre, se encuentran unos a otros casi sin pensarlo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Las manos se encuentran con las manos.",
+      "text_markdown": "Las manos se encuentran con las manos.",
+      "tts": {
+        "text": "Las manos se encuentran con las manos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "El círculo se forma.",
+      "text_markdown": "El círculo se forma.",
+      "tts": {
+        "text": "El círculo se forma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Por unos segundos perfectos, ocho seres humanos se sostienen unos a otros en el cielo.",
+      "text_markdown": "Por unos segundos perfectos, ocho seres humanos se sostienen unos a otros en el cielo.",
+      "tts": {
+        "text": "Por unos segundos perfectos, ocho seres humanos se sostienen unos a otros en el cielo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Cayendo a la misma velocidad.",
+      "text_markdown": "Cayendo a la misma velocidad.",
+      "tts": {
+        "text": "Cayendo a la misma velocidad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Mirándose a los ojos.",
+      "text_markdown": "Mirándose a los ojos.",
+      "tts": {
+        "text": "Mirándose a los ojos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Entonces tu altímetro dice que es la hora.",
+      "text_markdown": "Entonces tu altímetro dice que es la hora.",
+      "tts": {
+        "text": "Entonces tu altímetro dice que es la hora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Te sueltas.",
+      "text_markdown": "Te sueltas.",
+      "tts": {
+        "text": "Te sueltas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Hacen tracking alejándose unos de otros, para darle espacio a sus paracaídas para abrirse.",
+      "text_markdown": "Hacen tracking alejándose unos de otros, para darle espacio a sus paracaídas para abrirse.",
+      "tts": {
+        "text": "Hacen tracking alejándose unos de otros, para darle espacio a sus paracaídas para abrirse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "En el suelo, no pueden parar de abrazarse.",
+      "text_markdown": "En el suelo, no pueden parar de abrazarse.",
+      "tts": {
+        "text": "En el suelo, no pueden parar de abrazarse.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El tercero es un salto después de un año duro.",
+      "text_markdown": "El tercero es un salto después de un año duro.",
+      "tts": {
+        "text": "El tercero es un salto después de un año duro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tal vez has pasado por algo.",
+      "text_markdown": "Tal vez has pasado por algo.",
+      "tts": {
+        "text": "Tal vez has pasado por algo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una mala temporada en el trabajo.",
+      "text_markdown": "Una mala temporada en el trabajo.",
+      "tts": {
+        "text": "Una mala temporada en el trabajo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una relación que terminó.",
+      "text_markdown": "Una relación que terminó.",
+      "tts": {
+        "text": "Una relación que terminó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Una pérdida que hizo que el mundo cotidiano se sintiera delgado y lejano.",
+      "text_markdown": "Una pérdida que hizo que el mundo cotidiano se sintiera delgado y lejano.",
+      "tts": {
+        "text": "Una pérdida que hizo que el mundo cotidiano se sintiera delgado y lejano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No saltas porque quieras sentir algo.",
+      "text_markdown": "No saltas porque quieras sentir algo.",
+      "tts": {
+        "text": "No saltas porque quieras sentir algo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Saltas porque no has podido sentir nada, y quieres saber si todavía estás ahí adentro.",
+      "text_markdown": "Saltas porque no has podido sentir nada, y quieres saber si todavía estás ahí adentro.",
+      "tts": {
+        "text": "Saltas porque no has podido sentir nada, y quieres saber si todavía estás ahí adentro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El avión sube.",
+      "text_markdown": "El avión sube.",
+      "tts": {
+        "text": "El avión sube.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se abre la puerta.",
+      "text_markdown": "Se abre la puerta.",
+      "tts": {
+        "text": "Se abre la puerta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sales por la puerta.",
+      "text_markdown": "Sales por la puerta.",
+      "tts": {
+        "text": "Sales por la puerta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Y en esos primeros tres segundos, antes de que el viento te atrape, algo dentro de ti se abre.",
+      "text_markdown": "Y en esos primeros tres segundos, antes de que el viento te atrape, algo dentro de ti se abre.",
+      "tts": {
+        "text": "Y en esos primeros tres segundos, antes de que el viento te atrape, algo dentro de ti se abre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No tenías planeado llorar.",
+      "text_markdown": "No tenías planeado llorar.",
+      "tts": {
+        "text": "No tenías planeado llorar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Lloras de todas maneras.",
+      "text_markdown": "Lloras de todas maneras.",
+      "tts": {
+        "text": "Lloras de todas maneras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "La caída libre hace su trabajo.",
+      "text_markdown": "La caída libre hace su trabajo.",
+      "tts": {
+        "text": "La caída libre hace su trabajo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Sesenta largos segundos de nada más que viento y respiración y caída.",
+      "text_markdown": "Sesenta largos segundos de nada más que viento y respiración y caída.",
+      "tts": {
+        "text": "Sesenta largos segundos de nada más que viento y respiración y caída.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Y en algún punto ahí, la parte de ti que ha estado sosteniéndolo todo finalmente lo suelta por un minuto.",
+      "text_markdown": "Y en algún punto ahí, la parte de ti que ha estado sosteniéndolo todo finalmente lo suelta por un minuto.",
+      "tts": {
+        "text": "Y en algún punto ahí, la parte de ti que ha estado sosteniéndolo todo finalmente lo suelta por un minuto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "El paracaídas se abre.",
+      "text_markdown": "El paracaídas se abre.",
+      "tts": {
+        "text": "El paracaídas se abre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "El mundo se queda en silencio.",
+      "text_markdown": "El mundo se queda en silencio.",
+      "tts": {
+        "text": "El mundo se queda en silencio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Cuelgas del arnés, y lloras, y ríes, y vuelves a llorar.",
+      "text_markdown": "Cuelgas del arnés, y lloras, y ríes, y vuelves a llorar.",
+      "tts": {
+        "text": "Cuelgas del arnés, y lloras, y ríes, y vuelves a llorar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Nadie puede verte.",
+      "text_markdown": "Nadie puede verte.",
+      "tts": {
+        "text": "Nadie puede verte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Esa es la idea.",
+      "text_markdown": "Esa es la idea.",
+      "tts": {
+        "text": "Esa es la idea.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando aterrizas, no estás curado.",
+      "text_markdown": "Cuando aterrizas, no estás curado.",
+      "tts": {
+        "text": "Cuando aterrizas, no estás curado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sigues cargando con todo lo que llevaste allá arriba.",
+      "text_markdown": "Sigues cargando con todo lo que llevaste allá arriba.",
+      "tts": {
+        "text": "Sigues cargando con todo lo que llevaste allá arriba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero por una hora completa allá arriba, algo dentro de ti recordó exactamente lo que se siente estar vivo.",
+      "text_markdown": "Pero por una hora completa allá arriba, algo dentro de ti recordó exactamente lo que se siente estar vivo.",
+      "tts": {
+        "text": "Pero por una hora completa allá arriba, algo dentro de ti recordó exactamente lo que se siente estar vivo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El paracaidismo no resolvió tu año.",
+      "text_markdown": "El paracaidismo no resolvió tu año.",
+      "tts": {
+        "text": "El paracaidismo no resolvió tu año.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Solo te lo devolvió por sesenta segundos, en pedazos lo bastante pequeños como para sostenerlos.",
+      "text_markdown": "Solo te lo devolvió por sesenta segundos, en pedazos lo bastante pequeños como para sostenerlos.",
+      "tts": {
+        "text": "Solo te lo devolvió por sesenta segundos, en pedazos lo bastante pequeños como para sostenerlos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Por Qué Permanece",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Por Qué Permanece",
+      "text_markdown": "Por Qué Permanece"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Llevo saltando mucho tiempo ya.",
+      "text_markdown": "Llevo saltando mucho tiempo ya.",
+      "tts": {
+        "text": "Llevo saltando mucho tiempo ya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El suficiente como para no acordarme de la cuenta.",
+      "text_markdown": "El suficiente como para no acordarme de la cuenta.",
+      "tts": {
+        "text": "El suficiente como para no acordarme de la cuenta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "El suficiente como para que la pregunta, ¿por qué sigues haciendo esto?, haya dejado de significar algo para mí.",
+      "text_markdown": "El suficiente como para que la pregunta, ¿por qué sigues haciendo esto?, haya dejado de significar algo para mí.",
+      "tts": {
+        "text": "El suficiente como para que la pregunta, ¿por qué sigues haciendo esto?, haya dejado de significar algo para mí.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quiero dejarte con algunas cosas.",
+      "text_markdown": "Quiero dejarte con algunas cosas.",
+      "tts": {
+        "text": "Quiero dejarte con algunas cosas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La primera es que el paracaidismo no es una etapa.",
+      "text_markdown": "La primera es que el paracaidismo no es una etapa.",
+      "tts": {
+        "text": "La primera es que el paracaidismo no es una etapa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La gente se preocupa, cuando ve a un amigo empezar.",
+      "text_markdown": "La gente se preocupa, cuando ve a un amigo empezar.",
+      "tts": {
+        "text": "La gente se preocupa, cuando ve a un amigo empezar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se preocupan de que sea una rebeldía, una crisis de la mediana edad, una manera de huir de algo.",
+      "text_markdown": "Se preocupan de que sea una rebeldía, una crisis de la mediana edad, una manera de huir de algo.",
+      "tts": {
+        "text": "Se preocupan de que sea una rebeldía, una crisis de la mediana edad, una manera de huir de algo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No lo es.",
+      "text_markdown": "No lo es.",
+      "tts": {
+        "text": "No lo es.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Las personas que se quedan no están huyendo.",
+      "text_markdown": "Las personas que se quedan no están huyendo.",
+      "tts": {
+        "text": "Las personas que se quedan no están huyendo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Han, casi sin querer, construido una pequeña vida dentro del cielo.",
+      "text_markdown": "Han, casi sin querer, construido una pequeña vida dentro del cielo.",
+      "tts": {
+        "text": "Han, casi sin querer, construido una pequeña vida dentro del cielo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Se aparecen los sábados.",
+      "text_markdown": "Se aparecen los sábados.",
+      "tts": {
+        "text": "Se aparecen los sábados.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Empacan sus paracaídas.",
+      "text_markdown": "Empacan sus paracaídas.",
+      "tts": {
+        "text": "Empacan sus paracaídas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Abrazan a sus amigos.",
+      "text_markdown": "Abrazan a sus amigos.",
+      "tts": {
+        "text": "Abrazan a sus amigos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Se van a casa al atardecer, cansados del modo bueno.",
+      "text_markdown": "Se van a casa al atardecer, cansados del modo bueno.",
+      "tts": {
+        "text": "Se van a casa al atardecer, cansados del modo bueno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "El lunes vuelven al trabajo, y son notablemente más amables que antes.",
+      "text_markdown": "El lunes vuelven al trabajo, y son notablemente más amables que antes.",
+      "tts": {
+        "text": "El lunes vuelven al trabajo, y son notablemente más amables que antes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El cielo te cambia, pero despacio.",
+      "text_markdown": "El cielo te cambia, pero despacio.",
+      "tts": {
+        "text": "El cielo te cambia, pero despacio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Te vuelves más presente.",
+      "text_markdown": "Te vuelves más presente.",
+      "tts": {
+        "text": "Te vuelves más presente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te vuelves menos miedoso de las cosas pequeñas, porque has practicado ser honesto con cosas más grandes.",
+      "text_markdown": "Te vuelves menos miedoso de las cosas pequeñas, porque has practicado ser honesto con cosas más grandes.",
+      "tts": {
+        "text": "Te vuelves menos miedoso de las cosas pequeñas, porque has practicado ser honesto con cosas más grandes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Te ríes con más facilidad.",
+      "text_markdown": "Te ríes con más facilidad.",
+      "tts": {
+        "text": "Te ríes con más facilidad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Le dices a la gente que la quieres más a menudo.",
+      "text_markdown": "Le dices a la gente que la quieres más a menudo.",
+      "tts": {
+        "text": "Le dices a la gente que la quieres más a menudo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Te has parado en una puerta, a doce mil pies de altura, y has recordado que nada está prometido.",
+      "text_markdown": "Te has parado en una puerta, a doce mil pies de altura, y has recordado que nada está prometido.",
+      "tts": {
+        "text": "Te has parado en una puerta, a doce mil pies de altura, y has recordado que nada está prometido.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si alguna vez te encuentras en una cena con un paracaidista, estas son las cosas que puedes preguntarle.",
+      "text_markdown": "Si alguna vez te encuentras en una cena con un paracaidista, estas son las cosas que puedes preguntarle.",
+      "tts": {
+        "text": "Si alguna vez te encuentras en una cena con un paracaidista, estas son las cosas que puedes preguntarle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le puedes preguntar cómo se metió en esto.",
+      "text_markdown": "Le puedes preguntar cómo se metió en esto.",
+      "tts": {
+        "text": "Le puedes preguntar cómo se metió en esto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada paracaidista recuerda su primer salto con todo detalle, y estará feliz de contártelo.",
+      "text_markdown": "Cada paracaidista recuerda su primer salto con todo detalle, y estará feliz de contártelo.",
+      "tts": {
+        "text": "Cada paracaidista recuerda su primer salto con todo detalle, y estará feliz de contártelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Le puedes preguntar cuántos saltos lleva.",
+      "text_markdown": "Le puedes preguntar cuántos saltos lleva.",
+      "tts": {
+        "text": "Le puedes preguntar cuántos saltos lleva.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sabrá el número, más o menos, y no fingirá que es más de lo que es.",
+      "text_markdown": "Sabrá el número, más o menos, y no fingirá que es más de lo que es.",
+      "tts": {
+        "text": "Sabrá el número, más o menos, y no fingirá que es más de lo que es.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Le puedes preguntar cuál es su tipo favorito de salto.",
+      "text_markdown": "Le puedes preguntar cuál es su tipo favorito de salto.",
+      "tts": {
+        "text": "Le puedes preguntar cuál es su tipo favorito de salto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Algunos dirán un atardecer.",
+      "text_markdown": "Algunos dirán un atardecer.",
+      "tts": {
+        "text": "Algunos dirán un atardecer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Algunos dirán una formación grande.",
+      "text_markdown": "Algunos dirán una formación grande.",
+      "tts": {
+        "text": "Algunos dirán una formación grande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Algunos dirán un solitario tranquilo en una tarde calmada.",
+      "text_markdown": "Algunos dirán un solitario tranquilo en una tarde calmada.",
+      "tts": {
+        "text": "Algunos dirán un solitario tranquilo en una tarde calmada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le puedes preguntar si tuvo miedo la primera vez.",
+      "text_markdown": "Le puedes preguntar si tuvo miedo la primera vez.",
+      "tts": {
+        "text": "Le puedes preguntar si tuvo miedo la primera vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Por supuesto que sí.",
+      "text_markdown": "Por supuesto que sí.",
+      "tts": {
+        "text": "Por supuesto que sí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Todos lo tienen.",
+      "text_markdown": "Todos lo tienen.",
+      "tts": {
+        "text": "Todos lo tienen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Probablemente mencionará el viento en la puerta, la cuenta, y cómo se ve el mundo justo antes de salir.",
+      "text_markdown": "Probablemente mencionará el viento en la puerta, la cuenta, y cómo se ve el mundo justo antes de salir.",
+      "tts": {
+        "text": "Probablemente mencionará el viento en la puerta, la cuenta, y cómo se ve el mundo justo antes de salir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Escucha con atención.",
+      "text_markdown": "Escucha con atención.",
+      "tts": {
+        "text": "Escucha con atención.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Te está dando un pequeño regalo.",
+      "text_markdown": "Te está dando un pequeño regalo.",
+      "tts": {
+        "text": "Te está dando un pequeño regalo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si quieres hacer que a un paracaidista se le ilumine la cara, pídele que describa el momento en que el paracaídas se abre.",
+      "text_markdown": "Si quieres hacer que a un paracaidista se le ilumine la cara, pídele que describa el momento en que el paracaídas se abre.",
+      "tts": {
+        "text": "Si quieres hacer que a un paracaidista se le ilumine la cara, pídele que describa el momento en que el paracaídas se abre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cerrará los ojos por medio segundo.",
+      "text_markdown": "Cerrará los ojos por medio segundo.",
+      "tts": {
+        "text": "Cerrará los ojos por medio segundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Luego lo intentará.",
+      "text_markdown": "Luego lo intentará.",
+      "tts": {
+        "text": "Luego lo intentará.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Usará una palabra distinta cada vez.",
+      "text_markdown": "Usará una palabra distinta cada vez.",
+      "tts": {
+        "text": "Usará una palabra distinta cada vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tal vez tranquilo.",
+      "text_markdown": "Tal vez tranquilo.",
+      "tts": {
+        "text": "Tal vez tranquilo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tal vez suave.",
+      "text_markdown": "Tal vez suave.",
+      "tts": {
+        "text": "Tal vez suave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Como despertar.",
+      "text_markdown": "Como despertar.",
+      "tts": {
+        "text": "Como despertar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Como llegar a casa.",
+      "text_markdown": "Como llegar a casa.",
+      "tts": {
+        "text": "Como llegar a casa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Nadie lo describe igual dos veces.",
+      "text_markdown": "Nadie lo describe igual dos veces.",
+      "tts": {
+        "text": "Nadie lo describe igual dos veces.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No tengas miedo de admitir que nunca has saltado.",
+      "text_markdown": "No tengas miedo de admitir que nunca has saltado.",
+      "tts": {
+        "text": "No tengas miedo de admitir que nunca has saltado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A los paracaidistas les encanta esa pregunta.",
+      "text_markdown": "A los paracaidistas les encanta esa pregunta.",
+      "tts": {
+        "text": "A los paracaidistas les encanta esa pregunta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A los paracaidistas también les encanta decirte que deberías intentarlo, y luego decirte, muy en serio, que ellos van contigo.",
+      "text_markdown": "A los paracaidistas también les encanta decirte que deberías intentarlo, y luego decirte, muy en serio, que ellos van contigo.",
+      "tts": {
+        "text": "A los paracaidistas también les encanta decirte que deberías intentarlo, y luego decirte, muy en serio, que ellos van contigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La mayoría hemos llevado a un amigo a su primer salto.",
+      "text_markdown": "La mayoría hemos llevado a un amigo a su primer salto.",
+      "tts": {
+        "text": "La mayoría hemos llevado a un amigo a su primer salto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es uno de los grandes placeres del deporte.",
+      "text_markdown": "Es uno de los grandes placeres del deporte.",
+      "tts": {
+        "text": "Es uno de los grandes placeres del deporte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No hay una gran lección al final de esto.",
+      "text_markdown": "No hay una gran lección al final de esto.",
+      "tts": {
+        "text": "No hay una gran lección al final de esto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Solo esto.",
+      "text_markdown": "Solo esto.",
+      "tts": {
+        "text": "Solo esto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En algún lugar del mundo, en este momento, un pequeño grupo de personas tranquilas y pacientes va caminando hacia un avión.",
+      "text_markdown": "En algún lugar del mundo, en este momento, un pequeño grupo de personas tranquilas y pacientes va caminando hacia un avión.",
+      "tts": {
+        "text": "En algún lugar del mundo, en este momento, un pequeño grupo de personas tranquilas y pacientes va caminando hacia un avión.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El campo está bañado por el sol.",
+      "text_markdown": "El campo está bañado por el sol.",
+      "tts": {
+        "text": "El campo está bañado por el sol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "El pasto está cálido.",
+      "text_markdown": "El pasto está cálido.",
+      "tts": {
+        "text": "El pasto está cálido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Se están revisando el equipo unos a otros.",
+      "text_markdown": "Se están revisando el equipo unos a otros.",
+      "tts": {
+        "text": "Se están revisando el equipo unos a otros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Están sonriendo.",
+      "text_markdown": "Están sonriendo.",
+      "tts": {
+        "text": "Están sonriendo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "En treinta minutos, estarán en el cielo, haciendo la cosa más callada que saben hacer.",
+      "text_markdown": "En treinta minutos, estarán en el cielo, haciendo la cosa más callada que saben hacer.",
+      "tts": {
+        "text": "En treinta minutos, estarán en el cielo, haciendo la cosa más callada que saben hacer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tal vez algún día tú serás uno de ellos.",
+      "text_markdown": "Tal vez algún día tú serás uno de ellos.",
+      "tts": {
+        "text": "Tal vez algún día tú serás uno de ellos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tal vez algún día no.",
+      "text_markdown": "Tal vez algún día no.",
+      "tts": {
+        "text": "Tal vez algún día no.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De cualquier manera, el cielo está ahí.",
+      "text_markdown": "De cualquier manera, el cielo está ahí.",
+      "tts": {
+        "text": "De cualquier manera, el cielo está ahí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Siempre ha estado ahí.",
+      "text_markdown": "Siempre ha estado ahí.",
+      "tts": {
+        "text": "Siempre ha estado ahí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Está esperando, con paciencia, por si alguna vez sientes ganas de inclinarte.",
+      "text_markdown": "Está esperando, con paciencia, por si alguna vez sientes ganas de inclinarte.",
+      "tts": {
+        "text": "Está esperando, con paciencia, por si alguna vez sientes ganas de inclinarte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

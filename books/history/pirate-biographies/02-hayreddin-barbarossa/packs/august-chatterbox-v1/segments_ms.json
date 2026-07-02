@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "ms",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Catatan untuk Pembaca",
+      "text_markdown": "Catatan untuk Pembaca"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini ialah kisah benar Hayreddin Barbarossa, lelaki yang menjadikan Empayar Uthmaniyyah sebuah kuasa besar lautan.",
+      "text_markdown": "Ini ialah kisah benar Hayreddin Barbarossa, lelaki yang menjadikan Empayar Uthmaniyyah sebuah kuasa besar lautan.",
+      "tts": {
+        "text": "Ini ialah kisah benar Hayreddin Barbarossa, lelaki yang menjadikan Empayar Uthmaniyyah sebuah kuasa besar lautan.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+      "text_markdown": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+      "tts": {
+        "text": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengakhirinya sebagai Laksamana Agung tentera laut yang paling berkuasa di Laut Mediterranean.",
+      "text_markdown": "Dia mengakhirinya sebagai Laksamana Agung tentera laut yang paling berkuasa di Laut Mediterranean.",
+      "tts": {
+        "text": "Dia mengakhirinya sebagai Laksamana Agung tentera laut yang paling berkuasa di Laut Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisahnya merentas satu abad konflik antara Empayar Uthmaniyyah dan Eropah Kristian.",
+      "text_markdown": "Kisahnya merentas satu abad konflik antara Empayar Uthmaniyyah dan Eropah Kristian.",
+      "tts": {
+        "text": "Kisahnya merentas satu abad konflik antara Empayar Uthmaniyyah dan Eropah Kristian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia adalah kisah tentang adik-beradik, lanun bertauliah, sultan, dan perjuangan menguasai laut.",
+      "text_markdown": "Ia adalah kisah tentang adik-beradik, lanun bertauliah, sultan, dan perjuangan menguasai laut.",
+      "tts": {
+        "text": "Ia adalah kisah tentang adik beradik, lanun bertauliah, sultan, dan perjuangan menguasai laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap pertempuran, persekutuan, dan pengkhianatan yang digambarkan dalam buku ini diambil daripada catatan sejarah.",
+      "text_markdown": "Setiap pertempuran, persekutuan, dan pengkhianatan yang digambarkan dalam buku ini diambil daripada catatan sejarah.",
+      "tts": {
+        "text": "Setiap pertempuran, persekutuan, dan pengkhianatan yang digambarkan dalam buku ini diambil daripada catatan sejarah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kerjaya Barbarossa mengubah peta dunia Mediterranean.",
+      "text_markdown": "Kerjaya Barbarossa mengubah peta dunia Mediterranean.",
+      "tts": {
+        "text": "Kerjaya Barbarossa mengubah peta dunia Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Armada yang dibinanya menguasai laut selama beberapa generasi selepas kematiannya.",
+      "text_markdown": "Armada yang dibinanya menguasai laut selama beberapa generasi selepas kematiannya.",
+      "tts": {
+        "text": "Armada yang dibinanya menguasai laut selama beberapa generasi selepas kematiannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Warisannya masih membentuk persisiran pantai dan budaya Afrika Utara hingga hari ini.",
+      "text_markdown": "Warisannya masih membentuk persisiran pantai dan budaya Afrika Utara hingga hari ini.",
+      "tts": {
+        "text": "Warisannya masih membentuk persisiran pantai dan budaya Afrika Utara hingga hari ini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika catatan sejarah tidak lengkap, kami menyatakannya dengan jelas.",
+      "text_markdown": "Jika catatan sejarah tidak lengkap, kami menyatakannya dengan jelas.",
+      "tts": {
+        "text": "Jika catatan sejarah tidak lengkap, kami menyatakannya dengan jelas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jika sejarawan tidak sepakat tentang tarikh atau butiran, kami membentangkan versi yang paling diterima ramai.",
+      "text_markdown": "Jika sejarawan tidak sepakat tentang tarikh atau butiran, kami membentangkan versi yang paling diterima ramai.",
+      "tts": {
+        "text": "Jika sejarawan tidak sepakat tentang tarikh atau butiran, kami membentangkan versi yang paling diterima ramai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Catatan untuk Pembaca",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ini adalah sejarah, bukan legenda, dan kami menanganinya dengan ketelitian yang sewajarnya.",
+      "text_markdown": "Ini adalah sejarah, bukan legenda, dan kami menanganinya dengan ketelitian yang sewajarnya.",
+      "tts": {
+        "text": "Ini adalah sejarah, bukan legenda, dan kami menanganinya dengan ketelitian yang sewajarnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dunia Laut Mediterranean",
+      "text_markdown": "Dunia Laut Mediterranean"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laut Mediterranean terletak di persimpangan tiga benua.",
+      "text_markdown": "Laut Mediterranean terletak di persimpangan tiga benua.",
+      "tts": {
+        "text": "Laut Mediterranean terletak di persimpangan tiga benua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di utara terletak Eropah, di selatan Afrika, dan di timur terletak Asia.",
+      "text_markdown": "Di utara terletak Eropah, di selatan Afrika, dan di timur terletak Asia.",
+      "tts": {
+        "text": "Di utara terletak Eropah, di selatan Afrika, dan di timur terletak Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selama ribuan tahun, setiap tamadun besar di sekitar pantainya telah berjuang untuk menguasainya.",
+      "text_markdown": "Selama ribuan tahun, setiap tamadun besar di sekitar pantainya telah berjuang untuk menguasainya.",
+      "tts": {
+        "text": "Selama ribuan tahun, setiap tamadun besar di sekitar pantainya telah berjuang untuk menguasainya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menjelang akhir kurun kelima belas, Laut Mediterranean menjadi medan pertempuran antara dua kuasa besar.",
+      "text_markdown": "Menjelang akhir kurun kelima belas, Laut Mediterranean menjadi medan pertempuran antara dua kuasa besar.",
+      "tts": {
+        "text": "Menjelang akhir kurun kelima belas, Laut Mediterranean menjadi medan pertempuran antara dua kuasa besar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Di timur, Empayar Uthmaniyyah berkembang pesat di bawah beberapa sultan yang bercita-cita tinggi.",
+      "text_markdown": "Di timur, Empayar Uthmaniyyah berkembang pesat di bawah beberapa sultan yang bercita-cita tinggi.",
+      "tts": {
+        "text": "Di timur, Empayar Uthmaniyyah berkembang pesat di bawah beberapa sultan yang bercita cita tinggi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di barat, kerajaan-kerajaan Sepanyol dan Empayar Rom Suci di bawah Charles Kelima berusaha untuk menahannya.",
+      "text_markdown": "Di barat, kerajaan-kerajaan Sepanyol dan Empayar Rom Suci di bawah Charles Kelima berusaha untuk menahannya.",
+      "tts": {
+        "text": "Di barat, kerajaan kerajaan Sepanyol dan Empayar Rom Suci di bawah Charles Kelima berusaha untuk menahannya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Empayar Uthmaniyyah telah menawan Konstantinopel pada tahun seribu empat ratus lima puluh tiga.",
+      "text_markdown": "Empayar Uthmaniyyah telah menawan Konstantinopel pada tahun seribu empat ratus lima puluh tiga.",
+      "tts": {
+        "text": "Empayar Uthmaniyyah telah menawan Konstantinopel pada tahun seribu empat ratus lima puluh tiga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kemenangan itu mengakhiri Empayar Byzantine dan memberikan orang Uthmaniyyah kawalan ke atas Mediterranean timur.",
+      "text_markdown": "Kemenangan itu mengakhiri Empayar Byzantine dan memberikan orang Uthmaniyyah kawalan ke atas Mediterranean timur.",
+      "tts": {
+        "text": "Kemenangan itu mengakhiri Empayar Byzantine dan memberikan orang Uthmaniyyah kawalan ke atas Mediterranean timur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kota itu dinamakan semula sebagai Istanbul dan menjadi ibu kota empayar yang luas dan sedang berkembang.",
+      "text_markdown": "Kota itu dinamakan semula sebagai Istanbul dan menjadi ibu kota empayar yang luas dan sedang berkembang.",
+      "tts": {
+        "text": "Kota itu dinamakan semula sebagai Istanbul dan menjadi ibu kota empayar yang luas dan sedang berkembang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pelabuhannya, Tanduk Emas, menjadi pelabuhan utama armada Uthmaniyyah.",
+      "text_markdown": "Pelabuhannya, Tanduk Emas, menjadi pelabuhan utama armada Uthmaniyyah.",
+      "tts": {
+        "text": "Pelabuhannya, Tanduk Emas, menjadi pelabuhan utama armada Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sementara itu, Sepanyol baru sahaja menyelesaikan Reconquista.",
+      "text_markdown": "Sementara itu, Sepanyol baru sahaja menyelesaikan Reconquista.",
+      "tts": {
+        "text": "Sementara itu, Sepanyol baru sahaja menyelesaikan Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada tahun 1492, raja Sepanyol Ferdinand dan Isabella menakluki Granada, kerajaan Muslim terakhir di Semenanjung Iberia.",
+      "text_markdown": "Pada tahun 1492, raja Sepanyol Ferdinand dan Isabella menakluki Granada, kerajaan Muslim terakhir di Semenanjung Iberia.",
+      "tts": {
+        "text": "Pada tahun seribu empat ratus sembilan puluh dua, raja Sepanyol Ferdinand dan Isabella menakluki Granada, kerajaan Muslim terakhir di Semenanjung Iberia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beratus-ratus ribu orang Muslim dan Yahudi diusir dari Sepanyol pada tahun-tahun yang menyusul.",
+      "text_markdown": "Beratus-ratus ribu orang Muslim dan Yahudi diusir dari Sepanyol pada tahun-tahun yang menyusul.",
+      "tts": {
+        "text": "Beratus ratus ribu orang Muslim dan Yahudi diusir dari Sepanyol pada tahun tahun yang menyusul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ramai daripada mereka melarikan diri ke Afrika Utara dan Empayar Uthmaniyyah.",
+      "text_markdown": "Ramai daripada mereka melarikan diri ke Afrika Utara dan Empayar Uthmaniyyah.",
+      "tts": {
+        "text": "Ramai daripada mereka melarikan diri ke Afrika Utara dan Empayar Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pantai Afrika Utara, yang dikenali sebagai Pantai Barbary, menjadi tempat perlindungan bagi pelarian-pelarian ini.",
+      "text_markdown": "Pantai Afrika Utara, yang dikenali sebagai Pantai Barbary, menjadi tempat perlindungan bagi pelarian-pelarian ini.",
+      "tts": {
+        "text": "Pantai Afrika Utara, yang dikenali sebagai Pantai Barbary, menjadi tempat perlindungan bagi pelarian pelarian ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bandar-bandar seperti Algiers, Tunis, dan Tripoli menyerap gelombang pelarian dari Sepanyol.",
+      "text_markdown": "Bandar-bandar seperti Algiers, Tunis, dan Tripoli menyerap gelombang pelarian dari Sepanyol.",
+      "tts": {
+        "text": "Bandar bandar seperti Algiers, Tunis, dan Tripoli menyerap gelombang pelarian dari Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Masyarakat yang terbuang ini menyimpan kebencian yang mendalam terhadap Mahkota Sepanyol.",
+      "text_markdown": "Masyarakat yang terbuang ini menyimpan kebencian yang mendalam terhadap Mahkota Sepanyol.",
+      "tts": {
+        "text": "Masyarakat yang terbuang ini menyimpan kebencian yang mendalam terhadap Mahkota Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ramai yang beralih kepada kegiatan lanun bertauliah sebagai mata pencarian dan juga sebagai balas dendam.",
+      "text_markdown": "Ramai yang beralih kepada kegiatan lanun bertauliah sebagai mata pencarian dan juga sebagai balas dendam.",
+      "tts": {
+        "text": "Ramai yang beralih kepada kegiatan lanun bertauliah sebagai mata pencarian dan juga sebagai balas dendam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lanun bertauliah berbeza daripada lanun biasa.",
+      "text_markdown": "Lanun bertauliah berbeza daripada lanun biasa.",
+      "tts": {
+        "text": "Lanun bertauliah berbeza daripada lanun biasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lanun bertauliah beroperasi dengan keizinan kerajaan atau pemerintah.",
+      "text_markdown": "Lanun bertauliah beroperasi dengan keizinan kerajaan atau pemerintah.",
+      "tts": {
+        "text": "Lanun bertauliah beroperasi dengan keizinan kerajaan atau pemerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka menyerang kapal-kapal musuh dan berkongsi keuntungan dengan negara naungan mereka.",
+      "text_markdown": "Mereka menyerang kapal-kapal musuh dan berkongsi keuntungan dengan negara naungan mereka.",
+      "tts": {
+        "text": "Mereka menyerang kapal kapal musuh dan berkongsi keuntungan dengan negara naungan mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dengan cara ini, kegiatan lanun bertauliah ialah satu bentuk peperangan laut yang dijalankan oleh individu persendirian.",
+      "text_markdown": "Dengan cara ini, kegiatan lanun bertauliah ialah satu bentuk peperangan laut yang dijalankan oleh individu persendirian.",
+      "tts": {
+        "text": "Dengan cara ini, kegiatan lanun bertauliah ialah satu bentuk peperangan laut yang dijalankan oleh individu persendirian.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kedua-dua kuasa Kristian dan Muslim menggunakan lanun bertauliah secara meluas.",
+      "text_markdown": "Kedua-dua kuasa Kristian dan Muslim menggunakan lanun bertauliah secara meluas.",
+      "tts": {
+        "text": "Kedua dua kuasa Kristian dan Muslim menggunakan lanun bertauliah secara meluas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kesateria Saint John, yang berpangkalan di pulau Rhodes dan kemudiannya Malta, ialah lanun bertauliah Kristian yang menyerbu kapal-kapal Muslim.",
+      "text_markdown": "Kesateria Saint John, yang berpangkalan di pulau Rhodes dan kemudiannya Malta, ialah lanun bertauliah Kristian yang menyerbu kapal-kapal Muslim.",
+      "tts": {
+        "text": "Kesateria Saint John, yang berpangkalan di pulau Rhodes dan kemudiannya Malta, ialah lanun bertauliah Kristian yang menyerbu kapal kapal Muslim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lanun bertauliah Muslim yang berpangkalan di Afrika Utara membalas dengan menyerbu kapal-kapal Kristian.",
+      "text_markdown": "Lanun bertauliah Muslim yang berpangkalan di Afrika Utara membalas dengan menyerbu kapal-kapal Kristian.",
+      "tts": {
+        "text": "Lanun bertauliah Muslim yang berpangkalan di Afrika Utara membalas dengan menyerbu kapal kapal Kristian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Laut Mediterranean adalah laut yang sentiasa dilanda perang berskala rendah.",
+      "text_markdown": "Laut Mediterranean adalah laut yang sentiasa dilanda perang berskala rendah.",
+      "tts": {
+        "text": "Laut Mediterranean adalah laut yang sentiasa dilanda perang berskala rendah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perdagangan adalah ganjaran yang mendorong konflik ini.",
+      "text_markdown": "Perdagangan adalah ganjaran yang mendorong konflik ini.",
+      "tts": {
+        "text": "Perdagangan adalah ganjaran yang mendorong konflik ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Laut Mediterranean membawa sutera dari China, rempah dari India, bijirin dari Mesir, dan bulu biri-biri dari Eropah.",
+      "text_markdown": "Laut Mediterranean membawa sutera dari China, rempah dari India, bijirin dari Mesir, dan bulu biri-biri dari Eropah.",
+      "tts": {
+        "text": "Laut Mediterranean membawa sutera dari China, rempah dari India, bijirin dari Mesir, dan bulu biri biri dari Eropah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penguasaan laluan perdagangan ini bererti kekayaan yang sangat besar.",
+      "text_markdown": "Penguasaan laluan perdagangan ini bererti kekayaan yang sangat besar.",
+      "tts": {
+        "text": "Penguasaan laluan perdagangan ini bererti kekayaan yang sangat besar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Setiap bandar pelabuhan bergantung kepada laut untuk kelangsungan hidupnya.",
+      "text_markdown": "Setiap bandar pelabuhan bergantung kepada laut untuk kelangsungan hidupnya.",
+      "tts": {
+        "text": "Setiap bandar pelabuhan bergantung kepada laut untuk kelangsungan hidupnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pulau-pulau di Laut Mediterranean adalah ganjaran strategik.",
+      "text_markdown": "Pulau-pulau di Laut Mediterranean adalah ganjaran strategik.",
+      "tts": {
+        "text": "Pulau pulau di Laut Mediterranean adalah ganjaran strategik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siapa yang menguasai pulau-pulau itu menguasai laluan perkapalan di antaranya.",
+      "text_markdown": "Siapa yang menguasai pulau-pulau itu menguasai laluan perkapalan di antaranya.",
+      "tts": {
+        "text": "Siapa yang menguasai pulau pulau itu menguasai laluan perkapalan di antaranya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rhodes, Cyprus, Crete, Sicily, dan Malta bertukar tangan berulang kali selama berabad-abad.",
+      "text_markdown": "Rhodes, Cyprus, Crete, Sicily, dan Malta bertukar tangan berulang kali selama berabad-abad.",
+      "tts": {
+        "text": "Rhodes, Cyprus, Crete, Sicily, dan Malta bertukar tangan berulang kali selama berabad abad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuasa laut menentukan empayar mana yang memegangnya.",
+      "text_markdown": "Kuasa laut menentukan empayar mana yang memegangnya.",
+      "tts": {
+        "text": "Kuasa laut menentukan empayar mana yang memegangnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Galley adalah kapal perang Laut Mediterranean pada zaman ini.",
+      "text_markdown": "Galley adalah kapal perang Laut Mediterranean pada zaman ini.",
+      "tts": {
+        "text": "Galley adalah kapal perang Laut Mediterranean pada zaman ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galley ialah kapal panjang dan sempit yang digerakkan oleh dayung dan layar.",
+      "text_markdown": "Galley ialah kapal panjang dan sempit yang digerakkan oleh dayung dan layar.",
+      "tts": {
+        "text": "Galley ialah kapal panjang dan sempit yang digerakkan oleh dayung dan layar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap galley membawa ratusan pendayung, ramai daripadanya adalah hamba atau tawanan perang.",
+      "text_markdown": "Setiap galley membawa ratusan pendayung, ramai daripadanya adalah hamba atau tawanan perang.",
+      "tts": {
+        "text": "Setiap galley membawa ratusan pendayung, ramai daripadanya adalah hamba atau tawanan perang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dalam pertempuran, galley menempuh kapal musuh dan kemudian menghantar askar bersenjata ke atasnya untuk bertarung secara berdepan.",
+      "text_markdown": "Dalam pertempuran, galley menempuh kapal musuh dan kemudian menghantar askar bersenjata ke atasnya untuk bertarung secara berdepan.",
+      "tts": {
+        "text": "Dalam pertempuran, galley menempuh kapal musuh dan kemudian menghantar askar bersenjata ke atasnya untuk bertarung secara berdepan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sistem hamba galley adalah kejam yang tidak terperi.",
+      "text_markdown": "Sistem hamba galley adalah kejam yang tidak terperi.",
+      "tts": {
+        "text": "Sistem hamba galley adalah kejam yang tidak terperi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tawanan daripada peperangan dan serbuan dirantaikan pada dayung dan dipaksa mendayung sehingga mereka mati.",
+      "text_markdown": "Tawanan daripada peperangan dan serbuan dirantaikan pada dayung dan dipaksa mendayung sehingga mereka mati.",
+      "tts": {
+        "text": "Tawanan daripada peperangan dan serbuan dirantaikan pada dayung dan dipaksa mendayung sehingga mereka mati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang Kristian memperhambakan orang Muslim, dan orang Muslim memperhambakan orang Kristian.",
+      "text_markdown": "Orang Kristian memperhambakan orang Muslim, dan orang Muslim memperhambakan orang Kristian.",
+      "tts": {
+        "text": "Orang Kristian memperhambakan orang Muslim, dan orang Muslim memperhambakan orang Kristian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kekejaman ini begitu lazim sehingga kedua-dua pihak menganggapnya sebagai perkara biasa.",
+      "text_markdown": "Kekejaman ini begitu lazim sehingga kedua-dua pihak menganggapnya sebagai perkara biasa.",
+      "tts": {
+        "text": "Kekejaman ini begitu lazim sehingga kedua dua pihak menganggapnya sebagai perkara biasa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pope di Rom berulang kali cuba menyatukan kerajaan-kerajaan Kristian menentang ancaman Uthmaniyyah.",
+      "text_markdown": "Pope di Rom berulang kali cuba menyatukan kerajaan-kerajaan Kristian menentang ancaman Uthmaniyyah.",
+      "tts": {
+        "text": "Pope di Rom berulang kali cuba menyatukan kerajaan kerajaan Kristian menentang ancaman Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pakatan-pakatan ini, yang dipanggil Liga Suci, menghimpunkan kapal-kapal dari Sepanyol, Venice, Genoa, dan Negara-negara Pope.",
+      "text_markdown": "Pakatan-pakatan ini, yang dipanggil Liga Suci, menghimpunkan kapal-kapal dari Sepanyol, Venice, Genoa, dan Negara-negara Pope.",
+      "tts": {
+        "text": "Pakatan pakatan ini, yang dipanggil Liga Suci, menghimpunkan kapal kapal dari Sepanyol, Venice, Genoa, dan Negara negara Pope.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tetapi kerajaan-kerajaan Kristian saling curiga antara satu sama lain hampir sebanyak mereka takut kepada orang Uthmaniyyah.",
+      "text_markdown": "Tetapi kerajaan-kerajaan Kristian saling curiga antara satu sama lain hampir sebanyak mereka takut kepada orang Uthmaniyyah.",
+      "tts": {
+        "text": "Tetapi kerajaan kerajaan Kristian saling curiga antara satu sama lain hampir sebanyak mereka takut kepada orang Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pakatan-pakatan ini rapuh dan sering runtuh sebelum dapat mencapai hasil yang berkekalan.",
+      "text_markdown": "Pakatan-pakatan ini rapuh dan sering runtuh sebelum dapat mencapai hasil yang berkekalan.",
+      "tts": {
+        "text": "Pakatan pakatan ini rapuh dan sering runtuh sebelum dapat mencapai hasil yang berkekalan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ke dalam dunia yang ganas dan dipertikaikan ini, dua adik-beradik dilahirkan di sebuah pulau Yunani di bawah pemerintahan Uthmaniyyah.",
+      "text_markdown": "Ke dalam dunia yang ganas dan dipertikaikan ini, dua adik-beradik dilahirkan di sebuah pulau Yunani di bawah pemerintahan Uthmaniyyah.",
+      "tts": {
+        "text": "Ke dalam dunia yang ganas dan dipertikaikan ini, dua adik beradik dilahirkan di sebuah pulau Yunani di bawah pemerintahan Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nama mereka ialah Aruj dan Hizir.",
+      "text_markdown": "Nama mereka ialah Aruj dan Hizir.",
+      "tts": {
+        "text": "Nama mereka ialah Aruj dan Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir kemudiannya akan dikenali oleh dunia sebagai Hayreddin Barbarossa.",
+      "text_markdown": "Hizir kemudiannya akan dikenali oleh dunia sebagai Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir kemudiannya akan dikenali oleh dunia sebagai Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Dunia Laut Mediterranean",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bersama-sama, mereka akan membentuk semula keseimbangan kuasa seluruh Laut Mediterranean.",
+      "text_markdown": "Bersama-sama, mereka akan membentuk semula keseimbangan kuasa seluruh Laut Mediterranean.",
+      "tts": {
+        "text": "Bersama sama, mereka akan membentuk semula keseimbangan kuasa seluruh Laut Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Asal Usul",
+      "text_markdown": "Asal Usul"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa dilahirkan sekitar tahun 1478 di pulau Lesbos.",
+      "text_markdown": "Hayreddin Barbarossa dilahirkan sekitar tahun 1478 di pulau Lesbos.",
+      "tts": {
+        "text": "Hayreddin Barbarossa dilahirkan sekitar tahun seribu empat ratus tujuh puluh lapan di pulau Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos ialah sebuah pulau Yunani yang besar di timur laut Laut Aegean, dekat dengan pantai Turki moden.",
+      "text_markdown": "Lesbos ialah sebuah pulau Yunani yang besar di timur laut Laut Aegean, dekat dengan pantai Turki moden.",
+      "tts": {
+        "text": "Lesbos ialah sebuah pulau Yunani yang besar di timur laut Laut Aegean, dekat dengan pantai Turki moden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pada masa kelahirannya, pulau itu baru sahaja jatuh ke bawah penguasaan Uthmaniyyah.",
+      "text_markdown": "Pada masa kelahirannya, pulau itu baru sahaja jatuh ke bawah penguasaan Uthmaniyyah.",
+      "tts": {
+        "text": "Pada masa kelahirannya, pulau itu baru sahaja jatuh ke bawah penguasaan Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bapanya ialah Yakup, seorang bekas askar Uthmaniyyah yang menetap di Lesbos selepas berkhidmat dalam tentera.",
+      "text_markdown": "Bapanya ialah Yakup, seorang bekas askar Uthmaniyyah yang menetap di Lesbos selepas berkhidmat dalam tentera.",
+      "tts": {
+        "text": "Bapanya ialah Yakup, seorang bekas askar Uthmaniyyah yang menetap di Lesbos selepas berkhidmat dalam tentera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup bekerja sebagai tukang tembikar dan, menurut kebanyakan catatan, seorang pengrajin yang sederhana.",
+      "text_markdown": "Yakup bekerja sebagai tukang tembikar dan, menurut kebanyakan catatan, seorang pengrajin yang sederhana.",
+      "tts": {
+        "text": "Yakup bekerja sebagai tukang tembikar dan, menurut kebanyakan catatan, seorang pengrajin yang sederhana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ibunya ialah seorang wanita Yunani tempatan, kemungkinan berasal dari keluarga Kristian, yang namanya dicatatkan sebagai Katerina.",
+      "text_markdown": "Ibunya ialah seorang wanita Yunani tempatan, kemungkinan berasal dari keluarga Kristian, yang namanya dicatatkan sebagai Katerina.",
+      "tts": {
+        "text": "Ibunya ialah seorang wanita Yunani tempatan, kemungkinan berasal dari keluarga Kristian, yang namanya dicatatkan sebagai Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Keluarga itu tidak kaya, tetapi mereka juga tidak melarat.",
+      "text_markdown": "Keluarga itu tidak kaya, tetapi mereka juga tidak melarat.",
+      "tts": {
+        "text": "Keluarga itu tidak kaya, tetapi mereka juga tidak melarat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakup dan Katerina mempunyai empat orang anak lelaki.",
+      "text_markdown": "Yakup dan Katerina mempunyai empat orang anak lelaki.",
+      "tts": {
+        "text": "Yakup dan Katerina mempunyai empat orang anak lelaki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yang tertua ialah Ishak, kemudian Aruj, kemudian Hizir, dan akhir sekali Ilyas.",
+      "text_markdown": "Yang tertua ialah Ishak, kemudian Aruj, kemudian Hizir, dan akhir sekali Ilyas.",
+      "tts": {
+        "text": "Yang tertua ialah Ishak, kemudian Aruj, kemudian Hizir, dan akhir sekali Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anak lelaki yang akan menjadi Hayreddin Barbarossa ialah Hizir.",
+      "text_markdown": "Anak lelaki yang akan menjadi Hayreddin Barbarossa ialah Hizir.",
+      "tts": {
+        "text": "Anak lelaki yang akan menjadi Hayreddin Barbarossa ialah Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Keempat-empat adik-beradik itu akhirnya akan turun ke laut.",
+      "text_markdown": "Keempat-empat adik-beradik itu akhirnya akan turun ke laut.",
+      "tts": {
+        "text": "Keempat empat adik beradik itu akhirnya akan turun ke laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adik-beradik itu membesar dalam dunia yang dibentuk oleh laut.",
+      "text_markdown": "Adik-beradik itu membesar dalam dunia yang dibentuk oleh laut.",
+      "tts": {
+        "text": "Adik beradik itu membesar dalam dunia yang dibentuk oleh laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos bergantung pada penangkapan ikan dan perdagangan maritim untuk ekonominya.",
+      "text_markdown": "Lesbos bergantung pada penangkapan ikan dan perdagangan maritim untuk ekonominya.",
+      "tts": {
+        "text": "Lesbos bergantung pada penangkapan ikan dan perdagangan maritim untuk ekonominya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Setiap anak lelaki di pulau itu belajar mengendalikan bot sebelum dia boleh membaca.",
+      "text_markdown": "Setiap anak lelaki di pulau itu belajar mengendalikan bot sebelum dia boleh membaca.",
+      "tts": {
+        "text": "Setiap anak lelaki di pulau itu belajar mengendalikan bot sebelum dia boleh membaca.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Laut bukan sesuatu yang abstrak bagi mereka; ia adalah kenyataan harian mereka.",
+      "text_markdown": "Laut bukan sesuatu yang abstrak bagi mereka; ia adalah kenyataan harian mereka.",
+      "tts": {
+        "text": "Laut bukan sesuatu yang abstrak bagi mereka; ia adalah kenyataan harian mereka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebagai pemuda, adik-beradik itu mula bekerja sebagai pelaut dan peniaga.",
+      "text_markdown": "Sebagai pemuda, adik-beradik itu mula bekerja sebagai pelaut dan peniaga.",
+      "tts": {
+        "text": "Sebagai pemuda, adik beradik itu mula bekerja sebagai pelaut dan peniaga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka mengangkut barangan antara pulau-pulau Laut Aegean dan tanah besar Uthmaniyyah.",
+      "text_markdown": "Mereka mengangkut barangan antara pulau-pulau Laut Aegean dan tanah besar Uthmaniyyah.",
+      "tts": {
+        "text": "Mereka mengangkut barangan antara pulau pulau Laut Aegean dan tanah besar Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tetapi perdagangan adalah perniagaan yang berisiko di sebuah laut yang penuh dengan lanun bertauliah.",
+      "text_markdown": "Tetapi perdagangan adalah perniagaan yang berisiko di sebuah laut yang penuh dengan lanun bertauliah.",
+      "tts": {
+        "text": "Tetapi perdagangan adalah perniagaan yang berisiko di sebuah laut yang penuh dengan lanun bertauliah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada salah satu pelayaran awal mereka, adik-beradik itu diserang oleh Kesateria Saint John.",
+      "text_markdown": "Pada salah satu pelayaran awal mereka, adik-beradik itu diserang oleh Kesateria Saint John.",
+      "tts": {
+        "text": "Pada salah satu pelayaran awal mereka, adik beradik itu diserang oleh Kesateria Saint John.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesateria Saint John ialah sebuah perintah ketenteraan Kristian yang berpangkalan di pulau Rhodes.",
+      "text_markdown": "Kesateria Saint John ialah sebuah perintah ketenteraan Kristian yang berpangkalan di pulau Rhodes.",
+      "tts": {
+        "text": "Kesateria Saint John ialah sebuah perintah ketenteraan Kristian yang berpangkalan di pulau Rhodes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka adalah antara lanun bertauliah yang paling ditakuti di Laut Mediterranean.",
+      "text_markdown": "Mereka adalah antara lanun bertauliah yang paling ditakuti di Laut Mediterranean.",
+      "tts": {
+        "text": "Mereka adalah antara lanun bertauliah yang paling ditakuti di Laut Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka menyerang kapal-kapal Muslim tanpa henti, merampas barangan dan memperhambakan anak kapal.",
+      "text_markdown": "Mereka menyerang kapal-kapal Muslim tanpa henti, merampas barangan dan memperhambakan anak kapal.",
+      "tts": {
+        "text": "Mereka menyerang kapal kapal Muslim tanpa henti, merampas barangan dan memperhambakan anak kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Semasa serangan ke atas kapal adik-beradik itu, Ilyas, adik bongsu, terbunuh.",
+      "text_markdown": "Semasa serangan ke atas kapal adik-beradik itu, Ilyas, adik bongsu, terbunuh.",
+      "tts": {
+        "text": "Semasa serangan ke atas kapal adik beradik itu, Ilyas, adik bongsu, terbunuh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj, yang paling agresif antara adik-beradik itu, ditangkap dan dijadikan hamba.",
+      "text_markdown": "Aruj, yang paling agresif antara adik-beradik itu, ditangkap dan dijadikan hamba.",
+      "tts": {
+        "text": "Aruj, yang paling agresif antara adik beradik itu, ditangkap dan dijadikan hamba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menghabiskan beberapa tahun sebagai hamba galley, dirantaikan pada dayung sebuah kapal perang Kristian.",
+      "text_markdown": "Dia menghabiskan beberapa tahun sebagai hamba galley, dirantaikan pada dayung sebuah kapal perang Kristian.",
+      "tts": {
+        "text": "Dia menghabiskan beberapa tahun sebagai hamba galley, dirantaikan pada dayung sebuah kapal perang Kristian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pengalaman itu mengeraskannya dalam cara yang akan membentuk seluruh sisa hidupnya.",
+      "text_markdown": "Pengalaman itu mengeraskannya dalam cara yang akan membentuk seluruh sisa hidupnya.",
+      "tts": {
+        "text": "Pengalaman itu mengeraskannya dalam cara yang akan membentuk seluruh sisa hidupnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Apabila dia akhirnya ditebus atau melarikan diri, dia menjadi seorang yang berubah sama sekali.",
+      "text_markdown": "Apabila dia akhirnya ditebus atau melarikan diri, dia menjadi seorang yang berubah sama sekali.",
+      "tts": {
+        "text": "Apabila dia akhirnya ditebus atau melarikan diri, dia menjadi seorang yang berubah sama sekali.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj memutuskan untuk menjadi seorang lanun bertauliah sendiri.",
+      "text_markdown": "Aruj memutuskan untuk menjadi seorang lanun bertauliah sendiri.",
+      "tts": {
+        "text": "Aruj memutuskan untuk menjadi seorang lanun bertauliah sendiri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia memperoleh sebuah kapal dan anak kapal dan mula menyerbu kapal-kapal Kristian di Mediterranean timur.",
+      "text_markdown": "Dia memperoleh sebuah kapal dan anak kapal dan mula menyerbu kapal-kapal Kristian di Mediterranean timur.",
+      "tts": {
+        "text": "Dia memperoleh sebuah kapal dan anak kapal dan mula menyerbu kapal kapal Kristian di Mediterranean timur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adiknya Hizir menyertainya sebagai orang kanannya.",
+      "text_markdown": "Adiknya Hizir menyertainya sebagai orang kanannya.",
+      "tts": {
+        "text": "Adiknya Hizir menyertainya sebagai orang kanannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bersama-sama, mereka terbukti menjadi penyerbu laut yang luar biasa berkemampuan.",
+      "text_markdown": "Bersama-sama, mereka terbukti menjadi penyerbu laut yang luar biasa berkemampuan.",
+      "tts": {
+        "text": "Bersama sama, mereka terbukti menjadi penyerbu laut yang luar biasa berkemampuan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Adik-beradik itu memindahkan pangkalan operasi mereka ke Mediterranean barat.",
+      "text_markdown": "Adik-beradik itu memindahkan pangkalan operasi mereka ke Mediterranean barat.",
+      "tts": {
+        "text": "Adik beradik itu memindahkan pangkalan operasi mereka ke Mediterranean barat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka menetap di pulau Djerba, di luar pantai Tunisia moden.",
+      "text_markdown": "Mereka menetap di pulau Djerba, di luar pantai Tunisia moden.",
+      "tts": {
+        "text": "Mereka menetap di pulau Djerba, di luar pantai Tunisia moden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dari Djerba, mereka boleh menyerbu kapal-kapal Sepanyol dan Itali di sepanjang laluan perdagangan yang sibuk.",
+      "text_markdown": "Dari Djerba, mereka boleh menyerbu kapal-kapal Sepanyol dan Itali di sepanjang laluan perdagangan yang sibuk.",
+      "tts": {
+        "text": "Dari Djerba, mereka boleh menyerbu kapal kapal Sepanyol dan Itali di sepanjang laluan perdagangan yang sibuk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Reputasi mereka berkembang pesat di kalangan sekutu mahupun musuh.",
+      "text_markdown": "Reputasi mereka berkembang pesat di kalangan sekutu mahupun musuh.",
+      "tts": {
+        "text": "Reputasi mereka berkembang pesat di kalangan sekutu mahupun musuh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj adalah wajah umum perkongsian mereka.",
+      "text_markdown": "Aruj adalah wajah umum perkongsian mereka.",
+      "tts": {
+        "text": "Aruj adalah wajah umum perkongsian mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia berani, berkarisma, dan tegap secara fizikal.",
+      "text_markdown": "Dia berani, berkarisma, dan tegap secara fizikal.",
+      "tts": {
+        "text": "Dia berani, berkarisma, dan tegap secara fizikal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sumber-sumber Eropah menggambarkannya mempunyai janggut merah, yang memberi adik-beradik itu nama jolokan terkenal mereka.",
+      "text_markdown": "Sumber-sumber Eropah menggambarkannya mempunyai janggut merah, yang memberi adik-beradik itu nama jolokan terkenal mereka.",
+      "tts": {
+        "text": "Sumber sumber Eropah menggambarkannya mempunyai janggut merah, yang memberi adik beradik itu nama jolokan terkenal mereka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nama Barbarossa, yang bermaksud janggut merah, pada asalnya diberikan kepada Aruj dan kemudiannya dipindahkan kepada Hayreddin.",
+      "text_markdown": "Nama Barbarossa, yang bermaksud janggut merah, pada asalnya diberikan kepada Aruj dan kemudiannya dipindahkan kepada Hayreddin.",
+      "tts": {
+        "text": "Nama Barbarossa, yang bermaksud janggut merah, pada asalnya diberikan kepada Aruj dan kemudiannya dipindahkan kepada Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir adalah ahli strategi dan penyelaras di sebalik tabir.",
+      "text_markdown": "Hizir adalah ahli strategi dan penyelaras di sebalik tabir.",
+      "tts": {
+        "text": "Hizir adalah ahli strategi dan penyelaras di sebalik tabir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menguruskan logistik armada mereka yang sedang berkembang dan mengekalkan pakatan dengan pemerintah tempatan.",
+      "text_markdown": "Dia menguruskan logistik armada mereka yang sedang berkembang dan mengekalkan pakatan dengan pemerintah tempatan.",
+      "tts": {
+        "text": "Dia menguruskan logistik armada mereka yang sedang berkembang dan mengekalkan pakatan dengan pemerintah tempatan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sementara Aruj memimpin serbuan secara peribadi, Hizir memastikan perusahaan itu berjalan lancar.",
+      "text_markdown": "Sementara Aruj memimpin serbuan secara peribadi, Hizir memastikan perusahaan itu berjalan lancar.",
+      "tts": {
+        "text": "Sementara Aruj memimpin serbuan secara peribadi, Hizir memastikan perusahaan itu berjalan lancar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kemahiran mereka yang berbeza menjadikan mereka satu pasukan yang menggerunkan.",
+      "text_markdown": "Kemahiran mereka yang berbeza menjadikan mereka satu pasukan yang menggerunkan.",
+      "tts": {
+        "text": "Kemahiran mereka yang berbeza menjadikan mereka satu pasukan yang menggerunkan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Serbuan adik-beradik itu bertujuan melebihi keuntungan peribadi.",
+      "text_markdown": "Serbuan adik-beradik itu bertujuan melebihi keuntungan peribadi.",
+      "tts": {
+        "text": "Serbuan adik beradik itu bertujuan melebihi keuntungan peribadi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mereka menyelamatkan pelarian Muslim yang melarikan diri dari Inkuisisi Sepanyol.",
+      "text_markdown": "Mereka menyelamatkan pelarian Muslim yang melarikan diri dari Inkuisisi Sepanyol.",
+      "tts": {
+        "text": "Mereka menyelamatkan pelarian Muslim yang melarikan diri dari Inkuisisi Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Antara tahun 1504 dan 1510, mereka mengangkut beribu-ribu orang Muslim dari Sepanyol ke Afrika Utara.",
+      "text_markdown": "Antara tahun 1504 dan 1510, mereka mengangkut beribu-ribu orang Muslim dari Sepanyol ke Afrika Utara.",
+      "tts": {
+        "text": "Antara tahun seribu lima ratus empat dan seribu lima ratus sepuluh, mereka mengangkut beribu ribu orang Muslim dari Sepanyol ke Afrika Utara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ini mendapatkan mereka rasa hormat yang sangat besar di kalangan masyarakat Muslim di Pantai Barbary.",
+      "text_markdown": "Ini mendapatkan mereka rasa hormat yang sangat besar di kalangan masyarakat Muslim di Pantai Barbary.",
+      "tts": {
+        "text": "Ini mendapatkan mereka rasa hormat yang sangat besar di kalangan masyarakat Muslim di Pantai Barbary.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj menetapkan matlamatnya kepada ganjaran yang lebih besar daripada serbuan.",
+      "text_markdown": "Aruj menetapkan matlamatnya kepada ganjaran yang lebih besar daripada serbuan.",
+      "tts": {
+        "text": "Aruj menetapkan matlamatnya kepada ganjaran yang lebih besar daripada serbuan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia ingin menawan sebuah bandar dan menubuhkan pangkalan yang boleh menentang kuasa Sepanyol.",
+      "text_markdown": "Dia ingin menawan sebuah bandar dan menubuhkan pangkalan yang boleh menentang kuasa Sepanyol.",
+      "tts": {
+        "text": "Dia ingin menawan sebuah bandar dan menubuhkan pangkalan yang boleh menentang kuasa Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sasarannya ialah Algiers, sebuah bandar pelabuhan di pantai Afrika Utara dengan pelabuhan semula jadi yang menakjubkan.",
+      "text_markdown": "Sasarannya ialah Algiers, sebuah bandar pelabuhan di pantai Afrika Utara dengan pelabuhan semula jadi yang menakjubkan.",
+      "tts": {
+        "text": "Sasarannya ialah Algiers, sebuah bandar pelabuhan di pantai Afrika Utara dengan pelabuhan semula jadi yang menakjubkan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asal Usul",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mengambil Algiers akan mengubah adik-beradik itu daripada lanun bertauliah menjadi pemerintah.",
+      "text_markdown": "Mengambil Algiers akan mengubah adik-beradik itu daripada lanun bertauliah menjadi pemerintah.",
+      "tts": {
+        "text": "Mengambil Algiers akan mengubah adik beradik itu daripada lanun bertauliah menjadi pemerintah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kebangkitan Kuasa",
+      "text_markdown": "Kebangkitan Kuasa"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1516, Aruj menawan bandar Algiers.",
+      "text_markdown": "Pada tahun 1516, Aruj menawan bandar Algiers.",
+      "tts": {
+        "text": "Pada tahun seribu lima ratus enam belas, Aruj menawan bandar Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menggulingkan pemerintah tempatan dan mengisytiharkan dirinya sebagai Sultan Algiers.",
+      "text_markdown": "Dia menggulingkan pemerintah tempatan dan mengisytiharkan dirinya sebagai Sultan Algiers.",
+      "tts": {
+        "text": "Dia menggulingkan pemerintah tempatan dan mengisytiharkan dirinya sebagai Sultan Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia adalah langkah yang berani dan berisiko tinggi yang merisaukan Empayar Sepanyol.",
+      "text_markdown": "Ia adalah langkah yang berani dan berisiko tinggi yang merisaukan Empayar Sepanyol.",
+      "tts": {
+        "text": "Ia adalah langkah yang berani dan berisiko tinggi yang merisaukan Empayar Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algiers kini berada di tangan seorang panglima lanun bertauliah.",
+      "text_markdown": "Algiers kini berada di tangan seorang panglima lanun bertauliah.",
+      "tts": {
+        "text": "Algiers kini berada di tangan seorang panglima lanun bertauliah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj terbukti seorang pemerintah yang berkemampuan tetapi kejam.",
+      "text_markdown": "Aruj terbukti seorang pemerintah yang berkemampuan tetapi kejam.",
+      "tts": {
+        "text": "Aruj terbukti seorang pemerintah yang berkemampuan tetapi kejam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia memperluaskan wilayahnya di sepanjang pantai Afrika Utara.",
+      "text_markdown": "Dia memperluaskan wilayahnya di sepanjang pantai Afrika Utara.",
+      "tts": {
+        "text": "Dia memperluaskan wilayahnya di sepanjang pantai Afrika Utara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia membina pakatan dengan suku-suku Berber tempatan dan komuniti pelarian Muslim.",
+      "text_markdown": "Dia membina pakatan dengan suku-suku Berber tempatan dan komuniti pelarian Muslim.",
+      "tts": {
+        "text": "Dia membina pakatan dengan suku suku Berber tempatan dan komuniti pelarian Muslim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetapi pengembangan agresifnya membawanya ke dalam konflik langsung dengan Sepanyol.",
+      "text_markdown": "Tetapi pengembangan agresifnya membawanya ke dalam konflik langsung dengan Sepanyol.",
+      "tts": {
+        "text": "Tetapi pengembangan agresifnya membawanya ke dalam konflik langsung dengan Sepanyol.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1518, sebuah tentera Sepanyol yang besar mengepung bandar Tlemcen, tempat Aruj berpangkalan.",
+      "text_markdown": "Pada tahun 1518, sebuah tentera Sepanyol yang besar mengepung bandar Tlemcen, tempat Aruj berpangkalan.",
+      "tts": {
+        "text": "Pada tahun seribu lima ratus lapan belas, sebuah tentera Sepanyol yang besar mengepung bandar Tlemcen, tempat Aruj berpangkalan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aruj cuba melarikan diri dengan pasukan kecil.",
+      "text_markdown": "Aruj cuba melarikan diri dengan pasukan kecil.",
+      "tts": {
+        "text": "Aruj cuba melarikan diri dengan pasukan kecil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia ditangkap dan dibunuh oleh askar Sepanyol semasa berundur.",
+      "text_markdown": "Dia ditangkap dan dibunuh oleh askar Sepanyol semasa berundur.",
+      "tts": {
+        "text": "Dia ditangkap dan dibunuh oleh askar Sepanyol semasa berundur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kematiannya meninggalkan Hizir sebagai satu-satunya adik-beradik yang masih hidup dan ketua segala yang telah Aruj bina.",
+      "text_markdown": "Kematiannya meninggalkan Hizir sebagai satu-satunya adik-beradik yang masih hidup dan ketua segala yang telah Aruj bina.",
+      "tts": {
+        "text": "Kematiannya meninggalkan Hizir sebagai satu satunya adik beradik yang masih hidup dan ketua segala yang telah Aruj bina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir, kini dalam awal empat puluhan, mendapati dirinya dalam keadaan yang mustahil.",
+      "text_markdown": "Hizir, kini dalam awal empat puluhan, mendapati dirinya dalam keadaan yang mustahil.",
+      "tts": {
+        "text": "Hizir, kini dalam awal empat puluhan, mendapati dirinya dalam keadaan yang mustahil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tentera Sepanyol sedang maju, abangnya telah mati, dan pasukannya kalah jumlah.",
+      "text_markdown": "Tentera Sepanyol sedang maju, abangnya telah mati, dan pasukannya kalah jumlah.",
+      "tts": {
+        "text": "Tentera Sepanyol sedang maju, abangnya telah mati, dan pasukannya kalah jumlah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia memerlukan sekutu yang berkuasa atau dia akan kehilangan segala-galanya.",
+      "text_markdown": "Dia memerlukan sekutu yang berkuasa atau dia akan kehilangan segala-galanya.",
+      "tts": {
+        "text": "Dia memerlukan sekutu yang berkuasa atau dia akan kehilangan segala galanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia berpaling kepada kuasa terbesar di dunia Muslim: Empayar Uthmaniyyah.",
+      "text_markdown": "Dia berpaling kepada kuasa terbesar di dunia Muslim: Empayar Uthmaniyyah.",
+      "tts": {
+        "text": "Dia berpaling kepada kuasa terbesar di dunia Muslim: Empayar Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir menghantar utusan kepada Sultan Selim Pertama di Istanbul.",
+      "text_markdown": "Hizir menghantar utusan kepada Sultan Selim Pertama di Istanbul.",
+      "tts": {
+        "text": "Hizir menghantar utusan kepada Sultan Selim Pertama di Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menawarkan untuk meletakkan Algiers di bawah kedaulatan Uthmaniyyah sebagai pertukaran bagi sokongan ketenteraan.",
+      "text_markdown": "Dia menawarkan untuk meletakkan Algiers di bawah kedaulatan Uthmaniyyah sebagai pertukaran bagi sokongan ketenteraan.",
+      "tts": {
+        "text": "Dia menawarkan untuk meletakkan Algiers di bawah kedaulatan Uthmaniyyah sebagai pertukaran bagi sokongan ketenteraan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultan mengiktiraf nilai strategik pangkalan yang taat setia di Mediterranean barat.",
+      "text_markdown": "Sultan mengiktiraf nilai strategik pangkalan yang taat setia di Mediterranean barat.",
+      "tts": {
+        "text": "Sultan mengiktiraf nilai strategik pangkalan yang taat setia di Mediterranean barat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia menerima tawaran itu dan menghantar askar, meriam, dan armada galley untuk menyokong Hizir.",
+      "text_markdown": "Dia menerima tawaran itu dan menghantar askar, meriam, dan armada galley untuk menyokong Hizir.",
+      "tts": {
+        "text": "Dia menerima tawaran itu dan menghantar askar, meriam, dan armada galley untuk menyokong Hizir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dari ketika ini, Hizir bukan lagi sekadar seorang lanun bertauliah.",
+      "text_markdown": "Dari ketika ini, Hizir bukan lagi sekadar seorang lanun bertauliah.",
+      "tts": {
+        "text": "Dari ketika ini, Hizir bukan lagi sekadar seorang lanun bertauliah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menjadi seorang gabenor Uthmaniyyah, memerintah Algiers atas nama Sultan.",
+      "text_markdown": "Dia menjadi seorang gabenor Uthmaniyyah, memerintah Algiers atas nama Sultan.",
+      "tts": {
+        "text": "Dia menjadi seorang gabenor Uthmaniyyah, memerintah Algiers atas nama Sultan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengambil nama kehormat Hayreddin, yang bermaksud kebaikan agama.",
+      "text_markdown": "Dia mengambil nama kehormat Hayreddin, yang bermaksud kebaikan agama.",
+      "tts": {
+        "text": "Dia mengambil nama kehormat Hayreddin, yang bermaksud kebaikan agama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gabungan sumber Uthmaniyyah dan kebijaksanaan tentera lautnya sendiri menjadikannya tidak dapat dihentikan.",
+      "text_markdown": "Gabungan sumber Uthmaniyyah dan kebijaksanaan tentera lautnya sendiri menjadikannya tidak dapat dihentikan.",
+      "tts": {
+        "text": "Gabungan sumber Uthmaniyyah dan kebijaksanaan tentera lautnya sendiri menjadikannya tidak dapat dihentikan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin menghabiskan sepuluh tahun berikutnya mengukuhkan kuasa Uthmaniyyah di sepanjang pantai Afrika Utara.",
+      "text_markdown": "Hayreddin menghabiskan sepuluh tahun berikutnya mengukuhkan kuasa Uthmaniyyah di sepanjang pantai Afrika Utara.",
+      "tts": {
+        "text": "Hayreddin menghabiskan sepuluh tahun berikutnya mengukuhkan kuasa Uthmaniyyah di sepanjang pantai Afrika Utara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menawan Tunis, menghalau garnisun Sepanyol dari kubu-kubu utama, dan memperluaskan armada lanun bertauliah.",
+      "text_markdown": "Dia menawan Tunis, menghalau garnisun Sepanyol dari kubu-kubu utama, dan memperluaskan armada lanun bertauliah.",
+      "tts": {
+        "text": "Dia menawan Tunis, menghalau garnisun Sepanyol dari kubu kubu utama, dan memperluaskan armada lanun bertauliah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia melatih generasi baharu komander tentera laut yang akan berkhidmat dengan Empayar Uthmaniyyah selama beberapa dekad.",
+      "text_markdown": "Dia melatih generasi baharu komander tentera laut yang akan berkhidmat dengan Empayar Uthmaniyyah selama beberapa dekad.",
+      "tts": {
+        "text": "Dia melatih generasi baharu komander tentera laut yang akan berkhidmat dengan Empayar Uthmaniyyah selama beberapa dekad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Armadanya menjadi kuasa dominan di Mediterranean barat.",
+      "text_markdown": "Armadanya menjadi kuasa dominan di Mediterranean barat.",
+      "tts": {
+        "text": "Armadanya menjadi kuasa dominan di Mediterranean barat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun 1533, Sultan Suleiman yang Agung memanggil Hayreddin ke Istanbul.",
+      "text_markdown": "Pada tahun 1533, Sultan Suleiman yang Agung memanggil Hayreddin ke Istanbul.",
+      "tts": {
+        "text": "Pada tahun seribu lima ratus tiga puluh tiga, Sultan Suleiman yang Agung memanggil Hayreddin ke Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suleiman ialah pemerintah yang paling berkuasa di dunia pada masa itu.",
+      "text_markdown": "Suleiman ialah pemerintah yang paling berkuasa di dunia pada masa itu.",
+      "tts": {
+        "text": "Suleiman ialah pemerintah yang paling berkuasa di dunia pada masa itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengiktiraf bahawa Empayar Uthmaniyyah memerlukan tentera laut profesional untuk menandingi tentera daratnya yang legenda.",
+      "text_markdown": "Dia mengiktiraf bahawa Empayar Uthmaniyyah memerlukan tentera laut profesional untuk menandingi tentera daratnya yang legenda.",
+      "tts": {
+        "text": "Dia mengiktiraf bahawa Empayar Uthmaniyyah memerlukan tentera laut profesional untuk menandingi tentera daratnya yang legenda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia melantik Hayreddin sebagai Kapudan Pasha, Laksamana Agung seluruh armada Uthmaniyyah.",
+      "text_markdown": "Dia melantik Hayreddin sebagai Kapudan Pasha, Laksamana Agung seluruh armada Uthmaniyyah.",
+      "tts": {
+        "text": "Dia melantik Hayreddin sebagai Kapudan Pasha, Laksamana Agung seluruh armada Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pelantikan ini adalah titik perubahan dalam sejarah Mediterranean.",
+      "text_markdown": "Pelantikan ini adalah titik perubahan dalam sejarah Mediterranean.",
+      "tts": {
+        "text": "Pelantikan ini adalah titik perubahan dalam sejarah Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tentera laut Uthmaniyyah sebelum ini cekap tetapi tidak dominan.",
+      "text_markdown": "Tentera laut Uthmaniyyah sebelum ini cekap tetapi tidak dominan.",
+      "tts": {
+        "text": "Tentera laut Uthmaniyyah sebelum ini cekap tetapi tidak dominan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di bawah perintah Hayreddin, ia akan menjadi kuasa tentera laut yang paling ditakuti di dunia.",
+      "text_markdown": "Di bawah perintah Hayreddin, ia akan menjadi kuasa tentera laut yang paling ditakuti di dunia.",
+      "tts": {
+        "text": "Di bawah perintah Hayreddin, ia akan menjadi kuasa tentera laut yang paling ditakuti di dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia membina semula armada itu dari limbungan kapal di Istanbul, menerapkan segala yang telah dipelajarinya selama berdekad-dekad dalam peperangan lanun bertauliah.",
+      "text_markdown": "Dia membina semula armada itu dari limbungan kapal di Istanbul, menerapkan segala yang telah dipelajarinya selama berdekad-dekad dalam peperangan lanun bertauliah.",
+      "tts": {
+        "text": "Dia membina semula armada itu dari limbungan kapal di Istanbul, menerapkan segala yang telah dipelajarinya selama berdekad dekad dalam peperangan lanun bertauliah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin memodenkan teknik pembinaan kapal Uthmaniyyah.",
+      "text_markdown": "Hayreddin memodenkan teknik pembinaan kapal Uthmaniyyah.",
+      "tts": {
+        "text": "Hayreddin memodenkan teknik pembinaan kapal Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia mereka bentuk galley yang lebih pantas dan lebih mudah dikendalikan berdasarkan kapal-kapal lanun bertauliah.",
+      "text_markdown": "Dia mereka bentuk galley yang lebih pantas dan lebih mudah dikendalikan berdasarkan kapal-kapal lanun bertauliah.",
+      "tts": {
+        "text": "Dia mereka bentuk galley yang lebih pantas dan lebih mudah dikendalikan berdasarkan kapal kapal lanun bertauliah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menubuhkan program latihan untuk pegawai-pegawai tentera laut Uthmaniyyah.",
+      "text_markdown": "Dia menubuhkan program latihan untuk pegawai-pegawai tentera laut Uthmaniyyah.",
+      "tts": {
+        "text": "Dia menubuhkan program latihan untuk pegawai pegawai tentera laut Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia merekrut lanun-lanun bertauliah berpengalaman dari seluruh Mediterranean untuk berkhidmat sebagai kapten.",
+      "text_markdown": "Dia merekrut lanun-lanun bertauliah berpengalaman dari seluruh Mediterranean untuk berkhidmat sebagai kapten.",
+      "tts": {
+        "text": "Dia merekrut lanun lanun bertauliah berpengalaman dari seluruh Mediterranean untuk berkhidmat sebagai kapten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kempen besar pertamanya sebagai Laksamana Agung menyasarkan pantai Itali.",
+      "text_markdown": "Kempen besar pertamanya sebagai Laksamana Agung menyasarkan pantai Itali.",
+      "tts": {
+        "text": "Kempen besar pertamanya sebagai Laksamana Agung menyasarkan pantai Itali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada tahun 1534, dia memimpin armada Uthmaniyyah dalam satu serbuan yang dahsyat di sepanjang pantai selatan Itali.",
+      "text_markdown": "Pada tahun 1534, dia memimpin armada Uthmaniyyah dalam satu serbuan yang dahsyat di sepanjang pantai selatan Itali.",
+      "tts": {
+        "text": "Pada tahun seribu lima ratus tiga puluh empat, dia memimpin armada Uthmaniyyah dalam satu serbuan yang dahsyat di sepanjang pantai selatan Itali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menawan bandar Tunis dan menjadikannya pangkalan tentera laut Uthmaniyyah.",
+      "text_markdown": "Dia menawan bandar Tunis dan menjadikannya pangkalan tentera laut Uthmaniyyah.",
+      "tts": {
+        "text": "Dia menawan bandar Tunis dan menjadikannya pangkalan tentera laut Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Serbuan itu menggerunkan negara-negara Kristian dan menunjukkan jangkauan kuasa laut Uthmaniyyah.",
+      "text_markdown": "Serbuan itu menggerunkan negara-negara Kristian dan menunjukkan jangkauan kuasa laut Uthmaniyyah.",
+      "tts": {
+        "text": "Serbuan itu menggerunkan negara negara Kristian dan menunjukkan jangkauan kuasa laut Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maharaja Charles Kelima daripada Empayar Rom Suci menjawab dengan serangan balas yang besar-besaran.",
+      "text_markdown": "Maharaja Charles Kelima daripada Empayar Rom Suci menjawab dengan serangan balas yang besar-besaran.",
+      "tts": {
+        "text": "Maharaja Charles Kelima daripada Empayar Rom Suci menjawab dengan serangan balas yang besar besaran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada tahun 1535, Charles menghimpunkan salah satu armada terbesar dalam sejarah Eropah untuk mengambil semula Tunis.",
+      "text_markdown": "Pada tahun 1535, Charles menghimpunkan salah satu armada terbesar dalam sejarah Eropah untuk mengambil semula Tunis.",
+      "tts": {
+        "text": "Pada tahun seribu lima ratus tiga puluh lima, Charles menghimpunkan salah satu armada terbesar dalam sejarah Eropah untuk mengambil semula Tunis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Armada itu termasuk kapal-kapal dari Sepanyol, Itali, Portugal, dan Negara-negara Pope.",
+      "text_markdown": "Armada itu termasuk kapal-kapal dari Sepanyol, Itali, Portugal, dan Negara-negara Pope.",
+      "tts": {
+        "text": "Armada itu termasuk kapal kapal dari Sepanyol, Itali, Portugal, dan Negara negara Pope.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Charles berjaya menawan Tunis, tetapi Hayreddin terlepas bersama teras armadanya yang utuh.",
+      "text_markdown": "Charles berjaya menawan Tunis, tetapi Hayreddin terlepas bersama teras armadanya yang utuh.",
+      "tts": {
+        "text": "Charles berjaya menawan Tunis, tetapi Hayreddin terlepas bersama teras armadanya yang utuh.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kehilangan Tunis adalah satu kemunduran, tetapi itu bukanlah pengakhirannya.",
+      "text_markdown": "Kehilangan Tunis adalah satu kemunduran, tetapi itu bukanlah pengakhirannya.",
+      "tts": {
+        "text": "Kehilangan Tunis adalah satu kemunduran, tetapi itu bukanlah pengakhirannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin berundur ke Algiers dan mula membina semula pasukannya dengan segera.",
+      "text_markdown": "Hayreddin berundur ke Algiers dan mula membina semula pasukannya dengan segera.",
+      "tts": {
+        "text": "Hayreddin berundur ke Algiers dan mula membina semula pasukannya dengan segera.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia tahu bahawa pakatan Kristian itu sementara dan akan berpecah belah sebaik sahaja ancaman segera berlalu.",
+      "text_markdown": "Dia tahu bahawa pakatan Kristian itu sementara dan akan berpecah belah sebaik sahaja ancaman segera berlalu.",
+      "tts": {
+        "text": "Dia tahu bahawa pakatan Kristian itu sementara dan akan berpecah belah sebaik sahaja ancaman segera berlalu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia betul, dan dalam beberapa bulan pakatan itu mula terbubar.",
+      "text_markdown": "Dia betul, dan dalam beberapa bulan pakatan itu mula terbubar.",
+      "tts": {
+        "text": "Dia betul, dan dalam beberapa bulan pakatan itu mula terbubar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dalam tempoh dua tahun, Hayreddin bersedia untuk pertempuran terbesarnya.",
+      "text_markdown": "Dalam tempoh dua tahun, Hayreddin bersedia untuk pertempuran terbesarnya.",
+      "tts": {
+        "text": "Dalam tempoh dua tahun, Hayreddin bersedia untuk pertempuran terbesarnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pertarungan yang akan menentukan warisannya semakin hampir.",
+      "text_markdown": "Pertarungan yang akan menentukan warisannya semakin hampir.",
+      "tts": {
+        "text": "Pertarungan yang akan menentukan warisannya semakin hampir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia akan berlaku di perairan luar pantai barat Greece.",
+      "text_markdown": "Ia akan berlaku di perairan luar pantai barat Greece.",
+      "tts": {
+        "text": "Ia akan berlaku di perairan luar pantai barat Greece.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kebangkitan Kuasa",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nama pertempuran itu ialah Preveza, dan ia akan mengubah Laut Mediterranean selama-lamanya.",
+      "text_markdown": "Nama pertempuran itu ialah Preveza, dan ia akan mengubah Laut Mediterranean selama-lamanya.",
+      "tts": {
+        "text": "Nama pertempuran itu ialah Preveza, dan ia akan mengubah Laut Mediterranean selama lamanya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pada Kemuncak",
+      "text_markdown": "Pada Kemuncak"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pertempuran Preveza berlaku pada 28 September 1538.",
+      "text_markdown": "Pertempuran Preveza berlaku pada 28 September 1538.",
+      "tts": {
+        "text": "Pertempuran Preveza berlaku pada dua puluh lapan September seribu lima ratus tiga puluh lapan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia adalah pertarungan tentera laut yang menentukan di Mediterranean kurun keenam belas.",
+      "text_markdown": "Ia adalah pertarungan tentera laut yang menentukan di Mediterranean kurun keenam belas.",
+      "tts": {
+        "text": "Ia adalah pertarungan tentera laut yang menentukan di Mediterranean kurun keenam belas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di satu pihak ialah armada Uthmaniyyah di bawah Hayreddin Barbarossa.",
+      "text_markdown": "Di satu pihak ialah armada Uthmaniyyah di bawah Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Di satu pihak ialah armada Uthmaniyyah di bawah Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Di pihak satu lagi ialah armada gabungan Liga Suci, satu pakatan negara-negara Kristian.",
+      "text_markdown": "Di pihak satu lagi ialah armada gabungan Liga Suci, satu pakatan negara-negara Kristian.",
+      "tts": {
+        "text": "Di pihak satu lagi ialah armada gabungan Liga Suci, satu pakatan negara negara Kristian.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Armada Liga Suci dipimpin oleh laksamana Genoa, Andrea Doria.",
+      "text_markdown": "Armada Liga Suci dipimpin oleh laksamana Genoa, Andrea Doria.",
+      "tts": {
+        "text": "Armada Liga Suci dipimpin oleh laksamana Genoa, Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia terdiri daripada kira-kira 300 buah kapal dari Sepanyol, Venice, Negara-negara Pope, dan Genoa.",
+      "text_markdown": "Ia terdiri daripada kira-kira 300 buah kapal dari Sepanyol, Venice, Negara-negara Pope, dan Genoa.",
+      "tts": {
+        "text": "Ia terdiri daripada kira kira tiga ratus buah kapal dari Sepanyol, Venice, Negara negara Pope, dan Genoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di atas kertas, armada Kristian jauh lebih besar daripada pasukan Uthmaniyyah.",
+      "text_markdown": "Di atas kertas, armada Kristian jauh lebih besar daripada pasukan Uthmaniyyah.",
+      "tts": {
+        "text": "Di atas kertas, armada Kristian jauh lebih besar daripada pasukan Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetapi saiz sahaja tidak memenangi pertempuran di laut.",
+      "text_markdown": "Tetapi saiz sahaja tidak memenangi pertempuran di laut.",
+      "tts": {
+        "text": "Tetapi saiz sahaja tidak memenangi pertempuran di laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin memerintah sekitar 150 buah galley, bersama-sama dengan kapal-kapal sokongan yang lebih kecil.",
+      "text_markdown": "Hayreddin memerintah sekitar 150 buah galley, bersama-sama dengan kapal-kapal sokongan yang lebih kecil.",
+      "tts": {
+        "text": "Hayreddin memerintah sekitar seratus lima puluh buah galley, bersama sama dengan kapal kapal sokongan yang lebih kecil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Armadanya kalah jumlah tetapi lebih terlatih, lebih terselaras, dan lebih baik dipimpin.",
+      "text_markdown": "Armadanya kalah jumlah tetapi lebih terlatih, lebih terselaras, dan lebih baik dipimpin.",
+      "tts": {
+        "text": "Armadanya kalah jumlah tetapi lebih terlatih, lebih terselaras, dan lebih baik dipimpin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin telah menghabiskan berdekad-dekad bertempur di perairan ini dan mengetahui setiap arus, setiap corak angin, dan setiap kelebihan taktikal yang ditawarkan oleh garis pantai.",
+      "text_markdown": "Hayreddin telah menghabiskan berdekad-dekad bertempur di perairan ini dan mengetahui setiap arus, setiap corak angin, dan setiap kelebihan taktikal yang ditawarkan oleh garis pantai.",
+      "tts": {
+        "text": "Hayreddin telah menghabiskan berdekad dekad bertempur di perairan ini dan mengetahui setiap arus, setiap corak angin, dan setiap kelebihan taktikal yang ditawarkan oleh garis pantai.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pertempuran itu berlaku berhampiran pintu masuk Teluk Ambracian, di luar pantai barat Greece.",
+      "text_markdown": "Pertempuran itu berlaku berhampiran pintu masuk Teluk Ambracian, di luar pantai barat Greece.",
+      "tts": {
+        "text": "Pertempuran itu berlaku berhampiran pintu masuk Teluk Ambracian, di luar pantai barat Greece.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin meletakkan armadanya untuk memanfaatkan angin yang bertiup.",
+      "text_markdown": "Hayreddin meletakkan armadanya untuk memanfaatkan angin yang bertiup.",
+      "tts": {
+        "text": "Hayreddin meletakkan armadanya untuk memanfaatkan angin yang bertiup.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengatur galley-galley nya dalam formasi bulan sabit yang membenarkan penumpuan tembakan pada kumpulan musuh yang terasing.",
+      "text_markdown": "Dia mengatur galley-galley nya dalam formasi bulan sabit yang membenarkan penumpuan tembakan pada kumpulan musuh yang terasing.",
+      "tts": {
+        "text": "Dia mengatur galley galley nya dalam formasi bulan sabit yang membenarkan penumpuan tembakan pada kumpulan musuh yang terasing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Penempatan taktikalnya adalah hebat.",
+      "text_markdown": "Penempatan taktikalnya adalah hebat.",
+      "tts": {
+        "text": "Penempatan taktikalnya adalah hebat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria teragak-agak pada saat yang kritikal.",
+      "text_markdown": "Andrea Doria teragak-agak pada saat yang kritikal.",
+      "tts": {
+        "text": "Andrea Doria teragak agak pada saat yang kritikal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walaupun mempunyai kelebihan jumlah, dia enggan mengerahkan seluruh armadanya ke dalam pertempuran jarak dekat.",
+      "text_markdown": "Walaupun mempunyai kelebihan jumlah, dia enggan mengerahkan seluruh armadanya ke dalam pertempuran jarak dekat.",
+      "tts": {
+        "text": "Walaupun mempunyai kelebihan jumlah, dia enggan mengerahkan seluruh armadanya ke dalam pertempuran jarak dekat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menyimpan kapal-kapal terbaiknya sebagai simpanan dan cuba bergerak untuk kedudukan yang lebih baik.",
+      "text_markdown": "Dia menyimpan kapal-kapal terbaiknya sebagai simpanan dan cuba bergerak untuk kedudukan yang lebih baik.",
+      "tts": {
+        "text": "Dia menyimpan kapal kapal terbaiknya sebagai simpanan dan cuba bergerak untuk kedudukan yang lebih baik.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kewaspadaan ini terbukti maut bagi pihak Kristian.",
+      "text_markdown": "Kewaspadaan ini terbukti maut bagi pihak Kristian.",
+      "tts": {
+        "text": "Kewaspadaan ini terbukti maut bagi pihak Kristian.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin menyerang secara agresif, menyasarkan kapal-kapal Venice dan kapal-kapal Pope yang telah maju mendahului armada utama.",
+      "text_markdown": "Hayreddin menyerang secara agresif, menyasarkan kapal-kapal Venice dan kapal-kapal Pope yang telah maju mendahului armada utama.",
+      "tts": {
+        "text": "Hayreddin menyerang secara agresif, menyasarkan kapal kapal Venice dan kapal kapal Pope yang telah maju mendahului armada utama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galley-galley nya merapat dengan pantas dan terlibat dalam pertempuran jarak dekat.",
+      "text_markdown": "Galley-galley nya merapat dengan pantas dan terlibat dalam pertempuran jarak dekat.",
+      "tts": {
+        "text": "Galley galley nya merapat dengan pantas dan terlibat dalam pertempuran jarak dekat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pertempuran itu sengit dan ganas, dengan tembakan meriam dan pertarungan berdepan di puluhan kapal.",
+      "text_markdown": "Pertempuran itu sengit dan ganas, dengan tembakan meriam dan pertarungan berdepan di puluhan kapal.",
+      "tts": {
+        "text": "Pertempuran itu sengit dan ganas, dengan tembakan meriam dan pertarungan berdepan di puluhan kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Skuadron-skuadron Kristian yang terasing dilumpuhkan satu demi satu.",
+      "text_markdown": "Skuadron-skuadron Kristian yang terasing dilumpuhkan satu demi satu.",
+      "tts": {
+        "text": "Skuadron skuadron Kristian yang terasing dilumpuhkan satu demi satu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menjelang penghujung hari, Liga Suci mengalami kekalahan yang dahsyat.",
+      "text_markdown": "Menjelang penghujung hari, Liga Suci mengalami kekalahan yang dahsyat.",
+      "tts": {
+        "text": "Menjelang penghujung hari, Liga Suci mengalami kekalahan yang dahsyat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pasukan Hayreddin menawan atau menenggelamkan puluhan kapal perang Kristian.",
+      "text_markdown": "Pasukan Hayreddin menawan atau menenggelamkan puluhan kapal perang Kristian.",
+      "tts": {
+        "text": "Pasukan Hayreddin menawan atau menenggelamkan puluhan kapal perang Kristian.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beribu-ribu pelaut dan askar Kristian terbunuh atau ditawan.",
+      "text_markdown": "Beribu-ribu pelaut dan askar Kristian terbunuh atau ditawan.",
+      "tts": {
+        "text": "Beribu ribu pelaut dan askar Kristian terbunuh atau ditawan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria berundur dengan saki-baki armadanya, meninggalkan laut kepada orang Uthmaniyyah.",
+      "text_markdown": "Andrea Doria berundur dengan saki-baki armadanya, meninggalkan laut kepada orang Uthmaniyyah.",
+      "tts": {
+        "text": "Andrea Doria berundur dengan saki baki armadanya, meninggalkan laut kepada orang Uthmaniyyah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pertempuran Preveza menetapkan keagungan tentera laut Uthmaniyyah di Laut Mediterranean.",
+      "text_markdown": "Pertempuran Preveza menetapkan keagungan tentera laut Uthmaniyyah di Laut Mediterranean.",
+      "tts": {
+        "text": "Pertempuran Preveza menetapkan keagungan tentera laut Uthmaniyyah di Laut Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selama beberapa dekad berikutnya, tiada armada Kristian yang boleh mencabar kawalan Uthmaniyyah ke atas laut timur dan tengah.",
+      "text_markdown": "Selama beberapa dekad berikutnya, tiada armada Kristian yang boleh mencabar kawalan Uthmaniyyah ke atas laut timur dan tengah.",
+      "tts": {
+        "text": "Selama beberapa dekad berikutnya, tiada armada Kristian yang boleh mencabar kawalan Uthmaniyyah ke atas laut timur dan tengah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Empayar Uthmaniyyah kini boleh memproyeksikan kuasa tentera di sepanjang seluruh pantai Afrika Utara dan terhadap semenanjung Itali.",
+      "text_markdown": "Empayar Uthmaniyyah kini boleh memproyeksikan kuasa tentera di sepanjang seluruh pantai Afrika Utara dan terhadap semenanjung Itali.",
+      "tts": {
+        "text": "Empayar Uthmaniyyah kini boleh memproyeksikan kuasa tentera di sepanjang seluruh pantai Afrika Utara dan terhadap semenanjung Itali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia merupakan kemenangan tentera laut yang paling penting dalam kurun keenam belas.",
+      "text_markdown": "Ia merupakan kemenangan tentera laut yang paling penting dalam kurun keenam belas.",
+      "tts": {
+        "text": "Ia merupakan kemenangan tentera laut yang paling penting dalam kurun keenam belas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin kembali ke Istanbul sebagai wira penakluk.",
+      "text_markdown": "Hayreddin kembali ke Istanbul sebagai wira penakluk.",
+      "tts": {
+        "text": "Hayreddin kembali ke Istanbul sebagai wira penakluk.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan Suleiman menyambutnya dengan penghormatan tertinggi yang dapat diberikan oleh empayar itu.",
+      "text_markdown": "Sultan Suleiman menyambutnya dengan penghormatan tertinggi yang dapat diberikan oleh empayar itu.",
+      "tts": {
+        "text": "Sultan Suleiman menyambutnya dengan penghormatan tertinggi yang dapat diberikan oleh empayar itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Laksamana Agung telah mencapai apa yang Sultan telah memintanya.",
+      "text_markdown": "Laksamana Agung telah mencapai apa yang Sultan telah memintanya.",
+      "tts": {
+        "text": "Laksamana Agung telah mencapai apa yang Sultan telah memintanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia telah menjadikan tentera laut Uthmaniyyah sebagai kuasa yang tertinggi di Laut Mediterranean.",
+      "text_markdown": "Dia telah menjadikan tentera laut Uthmaniyyah sebagai kuasa yang tertinggi di Laut Mediterranean.",
+      "tts": {
+        "text": "Dia telah menjadikan tentera laut Uthmaniyyah sebagai kuasa yang tertinggi di Laut Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada tahun-tahun selepas Preveza, Hayreddin terus memerintah armada Uthmaniyyah.",
+      "text_markdown": "Pada tahun-tahun selepas Preveza, Hayreddin terus memerintah armada Uthmaniyyah.",
+      "tts": {
+        "text": "Pada tahun tahun selepas Preveza, Hayreddin terus memerintah armada Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia menjalankan serbuan terhadap bandar-bandar pesisir Sepanyol dan Itali.",
+      "text_markdown": "Dia menjalankan serbuan terhadap bandar-bandar pesisir Sepanyol dan Itali.",
+      "tts": {
+        "text": "Dia menjalankan serbuan terhadap bandar bandar pesisir Sepanyol dan Itali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia berunding dengan Raja Perancis, Francis Pertama, yang berpakat dengan orang Uthmaniyyah menentang musuh bersama mereka, Charles Kelima.",
+      "text_markdown": "Dia berunding dengan Raja Perancis, Francis Pertama, yang berpakat dengan orang Uthmaniyyah menentang musuh bersama mereka, Charles Kelima.",
+      "tts": {
+        "text": "Dia berunding dengan Raja Perancis, Francis Pertama, yang berpakat dengan orang Uthmaniyyah menentang musuh bersama mereka, Charles Kelima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pakatan antara sebuah empayar Muslim dan kerajaan Kristian ini mengejutkan seluruh Eropah.",
+      "text_markdown": "Pakatan antara sebuah empayar Muslim dan kerajaan Kristian ini mengejutkan seluruh Eropah.",
+      "tts": {
+        "text": "Pakatan antara sebuah empayar Muslim dan kerajaan Kristian ini mengejutkan seluruh Eropah.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim sejuk tahun 1543, Hayreddin melabuhkan armadanya di pelabuhan Perancis, Toulon.",
+      "text_markdown": "Pada musim sejuk tahun 1543, Hayreddin melabuhkan armadanya di pelabuhan Perancis, Toulon.",
+      "tts": {
+        "text": "Pada musim sejuk tahun seribu lima ratus empat puluh tiga, Hayreddin melabuhkan armadanya di pelabuhan Perancis, Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raja Perancis telah menawarkan pelabuhan itu sebagai pangkalan untuk operasi bersama menentang Sepanyol.",
+      "text_markdown": "Raja Perancis telah menawarkan pelabuhan itu sebagai pangkalan untuk operasi bersama menentang Sepanyol.",
+      "tts": {
+        "text": "Raja Perancis telah menawarkan pelabuhan itu sebagai pangkalan untuk operasi bersama menentang Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selama beberapa bulan, kapal-kapal perang Uthmaniyyah beroperasi dari sebuah pelabuhan Perancis.",
+      "text_markdown": "Selama beberapa bulan, kapal-kapal perang Uthmaniyyah beroperasi dari sebuah pelabuhan Perancis.",
+      "tts": {
+        "text": "Selama beberapa bulan, kapal kapal perang Uthmaniyyah beroperasi dari sebuah pelabuhan Perancis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia adalah satu tontonan yang menakjubkan dunia Kristian dan menunjukkan bahawa politik kuasa boleh mengatasi perpecahan agama.",
+      "text_markdown": "Ia adalah satu tontonan yang menakjubkan dunia Kristian dan menunjukkan bahawa politik kuasa boleh mengatasi perpecahan agama.",
+      "tts": {
+        "text": "Ia adalah satu tontonan yang menakjubkan dunia Kristian dan menunjukkan bahawa politik kuasa boleh mengatasi perpecahan agama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pentadbiran Hayreddin ke atas Algiers berterusan bersama-sama dengan kempen-kempen tentera lautnya.",
+      "text_markdown": "Pentadbiran Hayreddin ke atas Algiers berterusan bersama-sama dengan kempen-kempen tentera lautnya.",
+      "tts": {
+        "text": "Pentadbiran Hayreddin ke atas Algiers berterusan bersama sama dengan kempen kempen tentera lautnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia membina masjid, tempat mandi awam, dan kubu-kubu di dalam bandar itu.",
+      "text_markdown": "Dia membina masjid, tempat mandi awam, dan kubu-kubu di dalam bandar itu.",
+      "tts": {
+        "text": "Dia membina masjid, tempat mandi awam, dan kubu kubu di dalam bandar itu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia menggalakkan perdagangan dan menarik tukang-tukang mahir dari seluruh dunia Muslim.",
+      "text_markdown": "Dia menggalakkan perdagangan dan menarik tukang-tukang mahir dari seluruh dunia Muslim.",
+      "tts": {
+        "text": "Dia menggalakkan perdagangan dan menarik tukang tukang mahir dari seluruh dunia Muslim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Di bawah pemerintahannya, Algiers berkembang daripada sebuah pelabuhan kecil menjadi salah satu bandar paling penting di Afrika Utara.",
+      "text_markdown": "Di bawah pemerintahannya, Algiers berkembang daripada sebuah pelabuhan kecil menjadi salah satu bandar paling penting di Afrika Utara.",
+      "tts": {
+        "text": "Di bawah pemerintahannya, Algiers berkembang daripada sebuah pelabuhan kecil menjadi salah satu bandar paling penting di Afrika Utara.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Armadanya melindungi laluan perdagangan Uthmaniyyah yang menghubungkan Istanbul ke Mediterranean barat.",
+      "text_markdown": "Armadanya melindungi laluan perdagangan Uthmaniyyah yang menghubungkan Istanbul ke Mediterranean barat.",
+      "tts": {
+        "text": "Armadanya melindungi laluan perdagangan Uthmaniyyah yang menghubungkan Istanbul ke Mediterranean barat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kapal-kapal dagang yang membawa bijirin, tekstil, dan barangan kilang belayar di bawah perlindungan kapal-kapal perangnya.",
+      "text_markdown": "Kapal-kapal dagang yang membawa bijirin, tekstil, dan barangan kilang belayar di bawah perlindungan kapal-kapal perangnya.",
+      "tts": {
+        "text": "Kapal kapal dagang yang membawa bijirin, tekstil, dan barangan kilang belayar di bawah perlindungan kapal kapal perangnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemakmuran ekonomi Mediterranean Uthmaniyyah bergantung sebahagian besarnya kepada tentera laut yang dibina oleh Hayreddin.",
+      "text_markdown": "Kemakmuran ekonomi Mediterranean Uthmaniyyah bergantung sebahagian besarnya kepada tentera laut yang dibina oleh Hayreddin.",
+      "tts": {
+        "text": "Kemakmuran ekonomi Mediterranean Uthmaniyyah bergantung sebahagian besarnya kepada tentera laut yang dibina oleh Hayreddin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Pada Kemuncak",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia telah mengubah serbuan lanun bertauliah menjadi alat kuasa imperial.",
+      "text_markdown": "Dia telah mengubah serbuan lanun bertauliah menjadi alat kuasa imperial.",
+      "tts": {
+        "text": "Dia telah mengubah serbuan lanun bertauliah menjadi alat kuasa imperial.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pengakhiran",
+      "text_markdown": "Pengakhiran"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menjelang awal tahun lima ratus empat puluhan, Hayreddin Barbarossa berusia pertengahan enam puluhan.",
+      "text_markdown": "Menjelang awal tahun lima ratus empat puluhan, Hayreddin Barbarossa berusia pertengahan enam puluhan.",
+      "tts": {
+        "text": "Menjelang awal tahun lima ratus empat puluhan, Hayreddin Barbarossa berusia pertengahan enam puluhan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia telah menghabiskan lebih daripada empat dekad di laut, bertempur, membina, dan memerintah.",
+      "text_markdown": "Dia telah menghabiskan lebih daripada empat dekad di laut, bertempur, membina, dan memerintah.",
+      "tts": {
+        "text": "Dia telah menghabiskan lebih daripada empat dekad di laut, bertempur, membina, dan memerintah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Badannya lesu kerana berdekad-dekad peperangan, cuaca yang keras, dan tuntutan fizikal kehidupan di atas kapal.",
+      "text_markdown": "Badannya lesu kerana berdekad-dekad peperangan, cuaca yang keras, dan tuntutan fizikal kehidupan di atas kapal.",
+      "tts": {
+        "text": "Badannya lesu kerana berdekad dekad peperangan, cuaca yang keras, dan tuntutan fizikal kehidupan di atas kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tetapi mindanya kekal tajam dan kewibawaannya tidak dipertikaikan.",
+      "text_markdown": "Tetapi mindanya kekal tajam dan kewibawaannya tidak dipertikaikan.",
+      "tts": {
+        "text": "Tetapi mindanya kekal tajam dan kewibawaannya tidak dipertikaikan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas kempen Toulon pada tahun 1543, Hayreddin kembali ke Istanbul.",
+      "text_markdown": "Selepas kempen Toulon pada tahun 1543, Hayreddin kembali ke Istanbul.",
+      "tts": {
+        "text": "Selepas kempen Toulon pada tahun seribu lima ratus empat puluh tiga, Hayreddin kembali ke Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia telah menyempurnakan operasi tentera laut utamanya yang terakhir.",
+      "text_markdown": "Dia telah menyempurnakan operasi tentera laut utamanya yang terakhir.",
+      "tts": {
+        "text": "Dia telah menyempurnakan operasi tentera laut utamanya yang terakhir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultan tidak meminta dia memimpin kempen yang lain.",
+      "text_markdown": "Sultan tidak meminta dia memimpin kempen yang lain.",
+      "tts": {
+        "text": "Sultan tidak meminta dia memimpin kempen yang lain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada usianya dan dengan pencapaiannya, persaraan adalah berhak dan sesuai.",
+      "text_markdown": "Pada usianya dan dengan pencapaiannya, persaraan adalah berhak dan sesuai.",
+      "tts": {
+        "text": "Pada usianya dan dengan pencapaiannya, persaraan adalah berhak dan sesuai.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin menghabiskan tahun-tahun akhirnya di Istanbul, di sebuah istana yang megah menghadap Bosporus.",
+      "text_markdown": "Hayreddin menghabiskan tahun-tahun akhirnya di Istanbul, di sebuah istana yang megah menghadap Bosporus.",
+      "tts": {
+        "text": "Hayreddin menghabiskan tahun tahun akhirnya di Istanbul, di sebuah istana yang megah menghadap Bosporus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia merencanakan memoirnya kepada seorang jurutulis, mewujudkan salah satu sumber utama yang paling penting bagi sejarah lanun bertauliah Mediterranean.",
+      "text_markdown": "Dia merencanakan memoirnya kepada seorang jurutulis, mewujudkan salah satu sumber utama yang paling penting bagi sejarah lanun bertauliah Mediterranean.",
+      "tts": {
+        "text": "Dia merencanakan memoirnya kepada seorang jurutulis, mewujudkan salah satu sumber utama yang paling penting bagi sejarah lanun bertauliah Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Memoir ini, yang dikenali sebagai Gazavat-i Hayreddin Pasha, kekal dalam bentuk manuskrip.",
+      "text_markdown": "Memoir ini, yang dikenali sebagai Gazavat-i Hayreddin Pasha, kekal dalam bentuk manuskrip.",
+      "tts": {
+        "text": "Memoir ini, yang dikenali sebagai Gazavat i Hayreddin Pasha, kekal dalam bentuk manuskrip.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Memoir itu telah dikaji oleh sejarawan selama berkurun-kurun.",
+      "text_markdown": "Memoir itu telah dikaji oleh sejarawan selama berkurun-kurun.",
+      "tts": {
+        "text": "Memoir itu telah dikaji oleh sejarawan selama berkurun kurun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dia kekal terlibat dalam hal ehwal tentera laut Uthmaniyyah dalam peranan penasihat.",
+      "text_markdown": "Dia kekal terlibat dalam hal ehwal tentera laut Uthmaniyyah dalam peranan penasihat.",
+      "tts": {
+        "text": "Dia kekal terlibat dalam hal ehwal tentera laut Uthmaniyyah dalam peranan penasihat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para laksamana yang lebih muda meminta nasihatnya tentang strategi dan pembinaan kapal.",
+      "text_markdown": "Para laksamana yang lebih muda meminta nasihatnya tentang strategi dan pembinaan kapal.",
+      "tts": {
+        "text": "Para laksamana yang lebih muda meminta nasihatnya tentang strategi dan pembinaan kapal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia telah melatih seluruh generasi pegawai tentera laut yang akan meneruskan kerjanya.",
+      "text_markdown": "Dia telah melatih seluruh generasi pegawai tentera laut yang akan meneruskan kerjanya.",
+      "tts": {
+        "text": "Dia telah melatih seluruh generasi pegawai tentera laut yang akan meneruskan kerjanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pengetahuan institusi yang telah dibinanya ke dalam tentera laut Uthmaniyyah merupakan sumbangannya yang paling kekal.",
+      "text_markdown": "Pengetahuan institusi yang telah dibinanya ke dalam tentera laut Uthmaniyyah merupakan sumbangannya yang paling kekal.",
+      "tts": {
+        "text": "Pengetahuan institusi yang telah dibinanya ke dalam tentera laut Uthmaniyyah merupakan sumbangannya yang paling kekal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa meninggal dunia pada 4 Julai 1546, di Istanbul.",
+      "text_markdown": "Hayreddin Barbarossa meninggal dunia pada 4 Julai 1546, di Istanbul.",
+      "tts": {
+        "text": "Hayreddin Barbarossa meninggal dunia pada empat Julai seribu lima ratus empat puluh enam, di Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia berusia kira-kira enam puluh lapan tahun.",
+      "text_markdown": "Dia berusia kira-kira enam puluh lapan tahun.",
+      "tts": {
+        "text": "Dia berusia kira kira enam puluh lapan tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kematiannya diratapi di seluruh Empayar Uthmaniyyah.",
+      "text_markdown": "Kematiannya diratapi di seluruh Empayar Uthmaniyyah.",
+      "tts": {
+        "text": "Kematiannya diratapi di seluruh Empayar Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sultan Suleiman mengarahkan sebuah makam yang megah dibina untuknya di tebing Bosporus, di Besiktas.",
+      "text_markdown": "Sultan Suleiman mengarahkan sebuah makam yang megah dibina untuknya di tebing Bosporus, di Besiktas.",
+      "tts": {
+        "text": "Sultan Suleiman mengarahkan sebuah makam yang megah dibina untuknya di tebing Bosporus, di Besiktas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam itu masih berdiri hari ini di daerah Besiktas, Istanbul.",
+      "text_markdown": "Makam itu masih berdiri hari ini di daerah Besiktas, Istanbul.",
+      "tts": {
+        "text": "Makam itu masih berdiri hari ini di daerah Besiktas, Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia adalah monumen seni bina Uthmaniyyah, dihias dengan jubin dan kaligrafi.",
+      "text_markdown": "Ia adalah monumen seni bina Uthmaniyyah, dihias dengan jubin dan kaligrafi.",
+      "tts": {
+        "text": "Ia adalah monumen seni bina Uthmaniyyah, dihias dengan jubin dan kaligrafi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selama berabad-abad, pelaut-pelaut Uthmaniyyah melawat makam itu sebelum keluar berlayar.",
+      "text_markdown": "Selama berabad-abad, pelaut-pelaut Uthmaniyyah melawat makam itu sebelum keluar berlayar.",
+      "tts": {
+        "text": "Selama berabad abad, pelaut pelaut Uthmaniyyah melawat makam itu sebelum keluar berlayar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mereka berdoa untuk perjalanan yang selamat dan untuk roh laksamana agung itu membimbing mereka.",
+      "text_markdown": "Mereka berdoa untuk perjalanan yang selamat dan untuk roh laksamana agung itu membimbing mereka.",
+      "tts": {
+        "text": "Mereka berdoa untuk perjalanan yang selamat dan untuk roh laksamana agung itu membimbing mereka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para penggantinya dalam tentera laut Uthmaniyyah mengekalkan armada yang telah dibinanya.",
+      "text_markdown": "Para penggantinya dalam tentera laut Uthmaniyyah mengekalkan armada yang telah dibinanya.",
+      "tts": {
+        "text": "Para penggantinya dalam tentera laut Uthmaniyyah mengekalkan armada yang telah dibinanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Para laksamana seperti Turgut Reis dan Piyale Pasha meneruskan keagungan tentera laut Uthmaniyyah selama berdekad-dekad.",
+      "text_markdown": "Para laksamana seperti Turgut Reis dan Piyale Pasha meneruskan keagungan tentera laut Uthmaniyyah selama berdekad-dekad.",
+      "tts": {
+        "text": "Para laksamana seperti Turgut Reis dan Piyale Pasha meneruskan keagungan tentera laut Uthmaniyyah selama berdekad dekad.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mereka telah mempelajari kemahiran mereka di bawah Hayreddin dan meneruskan doktrin taktikalnya.",
+      "text_markdown": "Mereka telah mempelajari kemahiran mereka di bawah Hayreddin dan meneruskan doktrin taktikalnya.",
+      "tts": {
+        "text": "Mereka telah mempelajari kemahiran mereka di bawah Hayreddin dan meneruskan doktrin taktikalnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pertempuran Lepanto pada tahun lima ratus tujuh puluh satu akhirnya akan menamatkan keagungan Uthmaniyyah di laut, tetapi kekalahan itu pun tidak memusnahkan tentera laut yang telah diciptakan oleh Hayreddin.",
+      "text_markdown": "Pertempuran Lepanto pada tahun lima ratus tujuh puluh satu akhirnya akan menamatkan keagungan Uthmaniyyah di laut, tetapi kekalahan itu pun tidak memusnahkan tentera laut yang telah diciptakan oleh Hayreddin.",
+      "tts": {
+        "text": "Pertempuran Lepanto pada tahun lima ratus tujuh puluh satu akhirnya akan menamatkan keagungan Uthmaniyyah di laut, tetapi kekalahan itu pun tidak memusnahkan tentera laut yang telah diciptakan oleh Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilayah-wilayah Afrika Utara yang telah dibawa oleh Hayreddin di bawah kawalan Uthmaniyyah kekal sebagai wilayah Uthmaniyyah selama berkurun-kurun.",
+      "text_markdown": "Wilayah-wilayah Afrika Utara yang telah dibawa oleh Hayreddin di bawah kawalan Uthmaniyyah kekal sebagai wilayah Uthmaniyyah selama berkurun-kurun.",
+      "tts": {
+        "text": "Wilayah wilayah Afrika Utara yang telah dibawa oleh Hayreddin di bawah kawalan Uthmaniyyah kekal sebagai wilayah Uthmaniyyah selama berkurun kurun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers, Tunis, dan Tripoli kekal sebagai pangkalan lanun bertauliah sehingga jauh ke dalam kurun kesembilan belas.",
+      "text_markdown": "Algiers, Tunis, dan Tripoli kekal sebagai pangkalan lanun bertauliah sehingga jauh ke dalam kurun kesembilan belas.",
+      "tts": {
+        "text": "Algiers, Tunis, dan Tripoli kekal sebagai pangkalan lanun bertauliah sehingga jauh ke dalam kurun kesembilan belas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tradisi lanun bertauliah Pantai Barbary yang dibantu didirikan oleh Hayreddin bertahan selama tiga ratus tahun.",
+      "text_markdown": "Tradisi lanun bertauliah Pantai Barbary yang dibantu didirikan oleh Hayreddin bertahan selama tiga ratus tahun.",
+      "tts": {
+        "text": "Tradisi lanun bertauliah Pantai Barbary yang dibantu didirikan oleh Hayreddin bertahan selama tiga ratus tahun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia memerlukan kuasa gabungan Perancis dan Britain untuk akhirnya menamatkannya.",
+      "text_markdown": "Ia memerlukan kuasa gabungan Perancis dan Britain untuk akhirnya menamatkannya.",
+      "tts": {
+        "text": "Ia memerlukan kuasa gabungan Perancis dan Britain untuk akhirnya menamatkannya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin mati sebagaimana dia hidup: dalam perkhidmatan negara Uthmaniyyah.",
+      "text_markdown": "Hayreddin mati sebagaimana dia hidup: dalam perkhidmatan negara Uthmaniyyah.",
+      "tts": {
+        "text": "Hayreddin mati sebagaimana dia hidup: dalam perkhidmatan negara Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+      "text_markdown": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+      "tts": {
+        "text": "Dia memulakan hidupnya sebagai anak seorang tukang tembikar di sebuah pulau Yunani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengakhirinya sebagai laksamana yang paling diraikan dalam sejarah Empayar Uthmaniyyah.",
+      "text_markdown": "Dia mengakhirinya sebagai laksamana yang paling diraikan dalam sejarah Empayar Uthmaniyyah.",
+      "tts": {
+        "text": "Dia mengakhirinya sebagai laksamana yang paling diraikan dalam sejarah Empayar Uthmaniyyah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Pengakhiran",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Perjalanannya dari Lesbos ke Laksamana Agung adalah salah satu kerjaya yang paling luar biasa dalam sejarah tentera laut.",
+      "text_markdown": "Perjalanannya dari Lesbos ke Laksamana Agung adalah salah satu kerjaya yang paling luar biasa dalam sejarah tentera laut.",
+      "tts": {
+        "text": "Perjalanannya dari Lesbos ke Laksamana Agung adalah salah satu kerjaya yang paling luar biasa dalam sejarah tentera laut.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Warisan",
+      "text_markdown": "Warisan"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa mengubah Empayar Uthmaniyyah daripada sebuah kuasa darat kepada sebuah kuasa besar tentera laut.",
+      "text_markdown": "Hayreddin Barbarossa mengubah Empayar Uthmaniyyah daripada sebuah kuasa darat kepada sebuah kuasa besar tentera laut.",
+      "tts": {
+        "text": "Hayreddin Barbarossa mengubah Empayar Uthmaniyyah daripada sebuah kuasa darat kepada sebuah kuasa besar tentera laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sebelum kerjayanya, orang Uthmaniyyah hebat di darat tetapi tidak penting di laut.",
+      "text_markdown": "Sebelum kerjayanya, orang Uthmaniyyah hebat di darat tetapi tidak penting di laut.",
+      "tts": {
+        "text": "Sebelum kerjayanya, orang Uthmaniyyah hebat di darat tetapi tidak penting di laut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selepas kerjayanya, tentera laut Uthmaniyyah mengawal Laut Mediterranean selama beberapa generasi.",
+      "text_markdown": "Selepas kerjayanya, tentera laut Uthmaniyyah mengawal Laut Mediterranean selama beberapa generasi.",
+      "tts": {
+        "text": "Selepas kerjayanya, tentera laut Uthmaniyyah mengawal Laut Mediterranean selama beberapa generasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Transformasi ini tergolong di antara pencapaian ketenteraan yang paling penting dalam kurun keenam belas.",
+      "text_markdown": "Transformasi ini tergolong di antara pencapaian ketenteraan yang paling penting dalam kurun keenam belas.",
+      "tts": {
+        "text": "Transformasi ini tergolong di antara pencapaian ketenteraan yang paling penting dalam kurun keenam belas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemenangannya di Preveza dikaji di akademi tentera laut di seluruh dunia hingga ke hari ini.",
+      "text_markdown": "Kemenangannya di Preveza dikaji di akademi tentera laut di seluruh dunia hingga ke hari ini.",
+      "tts": {
+        "text": "Kemenangannya di Preveza dikaji di akademi tentera laut di seluruh dunia hingga ke hari ini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia menunjukkan bagaimana kepimpinan dan taktik yang unggul boleh mengatasi kekurangan jumlah.",
+      "text_markdown": "Ia menunjukkan bagaimana kepimpinan dan taktik yang unggul boleh mengatasi kekurangan jumlah.",
+      "tts": {
+        "text": "Ia menunjukkan bagaimana kepimpinan dan taktik yang unggul boleh mengatasi kekurangan jumlah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pertempuran itu menunjukkan bahawa sebuah armada yang terselaras dengan baik boleh mengalahkan armada yang lebih besar tetapi dipimpin dengan lemah.",
+      "text_markdown": "Pertempuran itu menunjukkan bahawa sebuah armada yang terselaras dengan baik boleh mengalahkan armada yang lebih besar tetapi dipimpin dengan lemah.",
+      "tts": {
+        "text": "Pertempuran itu menunjukkan bahawa sebuah armada yang terselaras dengan baik boleh mengalahkan armada yang lebih besar tetapi dipimpin dengan lemah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia kekal sebagai contoh strategi tentera laut dalam buku teks lima abad kemudian.",
+      "text_markdown": "Ia kekal sebagai contoh strategi tentera laut dalam buku teks lima abad kemudian.",
+      "tts": {
+        "text": "Ia kekal sebagai contoh strategi tentera laut dalam buku teks lima abad kemudian.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kesan Hayreddin ke atas Afrika Utara adalah sama mendalamnya.",
+      "text_markdown": "Kesan Hayreddin ke atas Afrika Utara adalah sama mendalamnya.",
+      "tts": {
+        "text": "Kesan Hayreddin ke atas Afrika Utara adalah sama mendalamnya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dengan membawa Algiers dan bandar-bandar lain di bawah pemerintahan Uthmaniyyah, dia mewujudkan struktur politik yang bertahan selama berkurun-kurun.",
+      "text_markdown": "Dengan membawa Algiers dan bandar-bandar lain di bawah pemerintahan Uthmaniyyah, dia mewujudkan struktur politik yang bertahan selama berkurun-kurun.",
+      "tts": {
+        "text": "Dengan membawa Algiers dan bandar bandar lain di bawah pemerintahan Uthmaniyyah, dia mewujudkan struktur politik yang bertahan selama berkurun kurun.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penduduk bandar-bandar ini dibentuk oleh dasar-dasarnya menerima pelarian dari Sepanyol.",
+      "text_markdown": "Penduduk bandar-bandar ini dibentuk oleh dasar-dasarnya menerima pelarian dari Sepanyol.",
+      "tts": {
+        "text": "Penduduk bandar bandar ini dibentuk oleh dasar dasarnya menerima pelarian dari Sepanyol.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Campuran budaya Berber, Arab, Turki, dan Andalusia yang menentukan rupa Maghreb hari ini berakar umbi dalam dunia yang dibantu diciptakan oleh Hayreddin.",
+      "text_markdown": "Campuran budaya Berber, Arab, Turki, dan Andalusia yang menentukan rupa Maghreb hari ini berakar umbi dalam dunia yang dibantu diciptakan oleh Hayreddin.",
+      "tts": {
+        "text": "Campuran budaya Berber, Arab, Turki, dan Andalusia yang menentukan rupa Maghreb hari ini berakar umbi dalam dunia yang dibantu diciptakan oleh Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Turki, Hayreddin Barbarossa ialah seorang wira negara.",
+      "text_markdown": "Di Turki, Hayreddin Barbarossa ialah seorang wira negara.",
+      "tts": {
+        "text": "Di Turki, Hayreddin Barbarossa ialah seorang wira negara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tentera Laut Turki menamakan kapal selam pertamanya sempena namanya.",
+      "text_markdown": "Tentera Laut Turki menamakan kapal selam pertamanya sempena namanya.",
+      "tts": {
+        "text": "Tentera Laut Turki menamakan kapal selam pertamanya sempena namanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imejnya muncul di monumen, setem, dan mata wang.",
+      "text_markdown": "Imejnya muncul di monumen, setem, dan mata wang.",
+      "tts": {
+        "text": "Imejnya muncul di monumen, setem, dan mata wang.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Setiap anak sekolah Turki belajar nama dan kisahnya.",
+      "text_markdown": "Setiap anak sekolah Turki belajar nama dan kisahnya.",
+      "tts": {
+        "text": "Setiap anak sekolah Turki belajar nama dan kisahnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dalam ingatan sejarah Eropah, Barbarossa ialah tokoh yang lebih rumit.",
+      "text_markdown": "Dalam ingatan sejarah Eropah, Barbarossa ialah tokoh yang lebih rumit.",
+      "tts": {
+        "text": "Dalam ingatan sejarah Eropah, Barbarossa ialah tokoh yang lebih rumit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bagi orang Sepanyol dan Itali pada zamannya, dia ialah musuh yang ditakuti dan penyerbu yang kejam.",
+      "text_markdown": "Bagi orang Sepanyol dan Itali pada zamannya, dia ialah musuh yang ditakuti dan penyerbu yang kejam.",
+      "tts": {
+        "text": "Bagi orang Sepanyol dan Itali pada zamannya, dia ialah musuh yang ditakuti dan penyerbu yang kejam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bagi orang Perancis, dia ialah sekutu yang tidak dijangka menentang saingan Sepanyol yang sama.",
+      "text_markdown": "Bagi orang Perancis, dia ialah sekutu yang tidak dijangka menentang saingan Sepanyol yang sama.",
+      "tts": {
+        "text": "Bagi orang Perancis, dia ialah sekutu yang tidak dijangka menentang saingan Sepanyol yang sama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Warisannya di Eropah mencerminkan sifat sejarah Mediterranean yang terbahagi dan dipertikaikan.",
+      "text_markdown": "Warisannya di Eropah mencerminkan sifat sejarah Mediterranean yang terbahagi dan dipertikaikan.",
+      "tts": {
+        "text": "Warisannya di Eropah mencerminkan sifat sejarah Mediterranean yang terbahagi dan dipertikaikan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sejarawan memperdebatkan sama ada Hayreddin patut digelar sebagai lanun sama sekali.",
+      "text_markdown": "Sejarawan memperdebatkan sama ada Hayreddin patut digelar sebagai lanun sama sekali.",
+      "tts": {
+        "text": "Sejarawan memperdebatkan sama ada Hayreddin patut digelar sebagai lanun sama sekali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dia beroperasi dengan kuasa eksplisit Sultan Uthmaniyyah untuk sebahagian besar kerjayanya.",
+      "text_markdown": "Dia beroperasi dengan kuasa eksplisit Sultan Uthmaniyyah untuk sebahagian besar kerjayanya.",
+      "tts": {
+        "text": "Dia beroperasi dengan kuasa eksplisit Sultan Uthmaniyyah untuk sebahagian besar kerjayanya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kegiatan lanun bertauliahnya adalah satu bentuk peperangan tentera laut yang diiktiraf di Mediterranean kurun keenam belas.",
+      "text_markdown": "Kegiatan lanun bertauliahnya adalah satu bentuk peperangan tentera laut yang diiktiraf di Mediterranean kurun keenam belas.",
+      "tts": {
+        "text": "Kegiatan lanun bertauliahnya adalah satu bentuk peperangan tentera laut yang diiktiraf di Mediterranean kurun keenam belas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Garis antara kelanunan dan peperangan tentera laut yang ditaja oleh negara adalah kabur, dan Hayreddin hidup di kedua-dua belahnya.",
+      "text_markdown": "Garis antara kelanunan dan peperangan tentera laut yang ditaja oleh negara adalah kabur, dan Hayreddin hidup di kedua-dua belahnya.",
+      "tts": {
+        "text": "Garis antara kelanunan dan peperangan tentera laut yang ditaja oleh negara adalah kabur, dan Hayreddin hidup di kedua dua belahnya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apa yang tidak dapat dipertikaikan ialah skala pencapaiannya.",
+      "text_markdown": "Apa yang tidak dapat dipertikaikan ialah skala pencapaiannya.",
+      "tts": {
+        "text": "Apa yang tidak dapat dipertikaikan ialah skala pencapaiannya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seorang anak tukang tembikar dari sebuah pulau Yunani membina tentera laut yang paling berkuasa di Laut Mediterranean.",
+      "text_markdown": "Seorang anak tukang tembikar dari sebuah pulau Yunani membina tentera laut yang paling berkuasa di Laut Mediterranean.",
+      "tts": {
+        "text": "Seorang anak tukang tembikar dari sebuah pulau Yunani membina tentera laut yang paling berkuasa di Laut Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dia mengalahkan armada-armada gabungan negara-negara Kristian yang paling berkuasa di Eropah.",
+      "text_markdown": "Dia mengalahkan armada-armada gabungan negara-negara Kristian yang paling berkuasa di Eropah.",
+      "tts": {
+        "text": "Dia mengalahkan armada armada gabungan negara negara Kristian yang paling berkuasa di Eropah.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dia memerintah sebuah bandar besar, membentuk politik sebuah benua, dan meninggal dunia dengan dihormati oleh empayar paling berkuasa di dunia.",
+      "text_markdown": "Dia memerintah sebuah bandar besar, membentuk politik sebuah benua, dan meninggal dunia dengan dihormati oleh empayar paling berkuasa di dunia.",
+      "tts": {
+        "text": "Dia memerintah sebuah bandar besar, membentuk politik sebuah benua, dan meninggal dunia dengan dihormati oleh empayar paling berkuasa di dunia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Warisan",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hidupnya menjadi bukti tentang apa yang boleh dihasilkan oleh cita-cita, kemahiran, dan peluang apabila ia bertemu pada saat yang tepat dalam sejarah.",
+      "text_markdown": "Hidupnya menjadi bukti tentang apa yang boleh dihasilkan oleh cita-cita, kemahiran, dan peluang apabila ia bertemu pada saat yang tepat dalam sejarah.",
+      "tts": {
+        "text": "Hidupnya menjadi bukti tentang apa yang boleh dihasilkan oleh cita cita, kemahiran, dan peluang apabila ia bertemu pada saat yang tepat dalam sejarah.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

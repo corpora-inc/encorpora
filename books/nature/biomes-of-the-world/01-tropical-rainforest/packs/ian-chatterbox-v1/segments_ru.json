@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Тропический лес",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Тропический лес",
+      "text_markdown": "Тропический лес"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Где растут тропические леса",
+      "text_markdown": "Где растут тропические леса"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Добро пожаловать в тропический лес.",
+      "text_markdown": "Добро пожаловать в тропический лес.",
+      "tts": {
+        "text": "Добро пожаловать в тропический лес.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это один из великих биомов мира.",
+      "text_markdown": "Это один из великих биомов мира.",
+      "tts": {
+        "text": "Это один из великих биомов мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Биом — это часть Земли со своей погодой, своими растениями и своими животными.",
+      "text_markdown": "Биом — это часть Земли со своей погодой, своими растениями и своими животными.",
+      "tts": {
+        "text": "Биом это часть Земли со своей погодой, своими растениями и своими животными.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропическом лесу тепло круглый год.",
+      "text_markdown": "В тропическом лесу тепло круглый год.",
+      "tts": {
+        "text": "В тропическом лесу тепло круглый год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь влажно весь год.",
+      "text_markdown": "Здесь влажно весь год.",
+      "tts": {
+        "text": "Здесь влажно весь год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Он полон жизни.",
+      "text_markdown": "Он полон жизни.",
+      "tts": {
+        "text": "Он полон жизни.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большинство тропических лесов растёт у экватора.",
+      "text_markdown": "Большинство тропических лесов растёт у экватора.",
+      "tts": {
+        "text": "Большинство тропических лесов растёт у экватора.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Экватор — это линия, которая проходит вокруг середины Земли.",
+      "text_markdown": "Экватор — это линия, которая проходит вокруг середины Земли.",
+      "tts": {
+        "text": "Экватор это линия, которая проходит вокруг середины Земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У экватора солнце сильное каждый день.",
+      "text_markdown": "У экватора солнце сильное каждый день.",
+      "tts": {
+        "text": "У экватора солнце сильное каждый день.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самый большой тропический лес в мире — Амазония, в Южной Америке.",
+      "text_markdown": "Самый большой тропический лес в мире — Амазония, в Южной Америке.",
+      "tts": {
+        "text": "Самый большой тропический лес в мире Амазония, в Южной Америке.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть большие тропические леса и в Африке, у реки Конго.",
+      "text_markdown": "Есть большие тропические леса и в Африке, у реки Конго.",
+      "tts": {
+        "text": "Есть большие тропические леса и в Африке, у реки Конго.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть тропические леса в Юго-Восточной Азии, на многих островах.",
+      "text_markdown": "Есть тропические леса в Юго-Восточной Азии, на многих островах.",
+      "tts": {
+        "text": "Есть тропические леса в Юго Восточной Азии, на многих островах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть тропические леса поменьше в Центральной Америке и на островах в Тихом океане.",
+      "text_markdown": "Есть тропические леса поменьше в Центральной Америке и на островах в Тихом океане.",
+      "tts": {
+        "text": "Есть тропические леса поменьше в Центральной Америке и на островах в Тихом океане.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждый из этих лесов вырос сам по себе, далеко от других.",
+      "text_markdown": "Каждый из этих лесов вырос сам по себе, далеко от других.",
+      "tts": {
+        "text": "Каждый из этих лесов вырос сам по себе, далеко от других.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поэтому растения и животные в каждой части света разные.",
+      "text_markdown": "Поэтому растения и животные в каждой части света разные.",
+      "tts": {
+        "text": "Поэтому растения и животные в каждой части света разные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Обезьяна в Амазонии — не такая же, как обезьяна в Африке или Азии.",
+      "text_markdown": "Обезьяна в Амазонии — не такая же, как обезьяна в Африке или Азии.",
+      "tts": {
+        "text": "Обезьяна в Амазонии не такая же, как обезьяна в Африке или Азии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но все они — часть одного и того же биома.",
+      "text_markdown": "Но все они — часть одного и того же биома.",
+      "tts": {
+        "text": "Но все они часть одного и того же биома.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда стоишь внутри тропического леса, воздух кажется тяжёлым и тёплым.",
+      "text_markdown": "Когда стоишь внутри тропического леса, воздух кажется тяжёлым и тёплым.",
+      "tts": {
+        "text": "Когда стоишь внутри тропического леса, воздух кажется тяжёлым и тёплым.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Свет мягкий и зелёный.",
+      "text_markdown": "Свет мягкий и зелёный.",
+      "tts": {
+        "text": "Свет мягкий и зелёный.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья такие высокие, что неба почти не видно.",
+      "text_markdown": "Деревья такие высокие, что неба почти не видно.",
+      "tts": {
+        "text": "Деревья такие высокие, что неба почти не видно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вокруг слышны птицы и насекомые.",
+      "text_markdown": "Вокруг слышны птицы и насекомые.",
+      "tts": {
+        "text": "Вокруг слышны птицы и насекомые.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Слышно, как вода капает с листьев.",
+      "text_markdown": "Слышно, как вода капает с листьев.",
+      "tts": {
+        "text": "Слышно, как вода капает с листьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Кажется, будто ты внутри живой комнаты.",
+      "text_markdown": "Кажется, будто ты внутри живой комнаты.",
+      "tts": {
+        "text": "Кажется, будто ты внутри живой комнаты.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот что такое тропический лес.",
+      "text_markdown": "Вот что такое тропический лес.",
+      "tts": {
+        "text": "Вот что такое тропический лес.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Где растут тропические леса",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Целый мир, построенный из деревьев и дождя.",
+      "text_markdown": "Целый мир, построенный из деревьев и дождя.",
+      "tts": {
+        "text": "Целый мир, построенный из деревьев и дождя.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Погода",
+      "text_markdown": "Погода"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Погода в тропическом лесу простая.",
+      "text_markdown": "Погода в тропическом лесу простая.",
+      "tts": {
+        "text": "Погода в тропическом лесу простая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тепло, и много дождей.",
+      "text_markdown": "Тепло, и много дождей.",
+      "tts": {
+        "text": "Тепло, и много дождей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Температура почти не меняется весь год.",
+      "text_markdown": "Температура почти не меняется весь год.",
+      "tts": {
+        "text": "Температура почти не меняется весь год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Зимой не становится холодно.",
+      "text_markdown": "Зимой не становится холодно.",
+      "tts": {
+        "text": "Зимой не становится холодно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Летом не становится очень жарко.",
+      "text_markdown": "Летом не становится очень жарко.",
+      "tts": {
+        "text": "Летом не становится очень жарко.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большинство дней тёплые и ровные.",
+      "text_markdown": "Большинство дней тёплые и ровные.",
+      "tts": {
+        "text": "Большинство дней тёплые и ровные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дождь идёт почти каждый день.",
+      "text_markdown": "Дождь идёт почти каждый день.",
+      "tts": {
+        "text": "Дождь идёт почти каждый день.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В некоторых местах за год выпадает больше двух метров дождя.",
+      "text_markdown": "В некоторых местах за год выпадает больше двух метров дождя.",
+      "tts": {
+        "text": "В некоторых местах за год выпадает больше двух метров дождя.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это больше, чем когда-либо видит большая часть мира.",
+      "text_markdown": "Это больше, чем когда-либо видит большая часть мира.",
+      "tts": {
+        "text": "Это больше, чем когда либо видит большая часть мира.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дождь часто идёт после полудня.",
+      "text_markdown": "Дождь часто идёт после полудня.",
+      "tts": {
+        "text": "Дождь часто идёт после полудня.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Над деревьями собираются большие тучи.",
+      "text_markdown": "Над деревьями собираются большие тучи.",
+      "tts": {
+        "text": "Над деревьями собираются большие тучи.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сильный ливень идёт час или два.",
+      "text_markdown": "Сильный ливень идёт час или два.",
+      "tts": {
+        "text": "Сильный ливень идёт час или два.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом солнце снова выходит.",
+      "text_markdown": "Потом солнце снова выходит.",
+      "tts": {
+        "text": "Потом солнце снова выходит.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Листья блестят, и от земли поднимается пар.",
+      "text_markdown": "Листья блестят, и от земли поднимается пар.",
+      "tts": {
+        "text": "Листья блестят, и от земли поднимается пар.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Здесь нет четырёх времён года.",
+      "text_markdown": "Здесь нет четырёх времён года.",
+      "tts": {
+        "text": "Здесь нет четырёх времён года.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть только более влажное время и более сухое время.",
+      "text_markdown": "Есть только более влажное время и более сухое время.",
+      "tts": {
+        "text": "Есть только более влажное время и более сухое время.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Даже в более сухое время дождь идёт часто.",
+      "text_markdown": "Даже в более сухое время дождь идёт часто.",
+      "tts": {
+        "text": "Даже в более сухое время дождь идёт часто.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Погода",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Для растений и животных тропического леса каждый день кажется почти одинаковым.",
+      "text_markdown": "Для растений и животных тропического леса каждый день кажется почти одинаковым.",
+      "tts": {
+        "text": "Для растений и животных тропического леса каждый день кажется почти одинаковым.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Земля и вода",
+      "text_markdown": "Земля и вода"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Земля тропического леса полна жизни, но почва тонкая.",
+      "text_markdown": "Земля тропического леса полна жизни, но почва тонкая.",
+      "tts": {
+        "text": "Земля тропического леса полна жизни, но почва тонкая.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Почти вся её сила находится в верхних нескольких сантиметрах.",
+      "text_markdown": "Почти вся её сила находится в верхних нескольких сантиметрах.",
+      "tts": {
+        "text": "Почти вся её сила находится в верхних нескольких сантиметрах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда падает лист, насекомые и крошечные живые существа очень быстро его разлагают.",
+      "text_markdown": "Когда падает лист, насекомые и крошечные живые существа очень быстро его разлагают.",
+      "tts": {
+        "text": "Когда падает лист, насекомые и крошечные живые существа очень быстро его разлагают.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья почти сразу забирают эту пищу обратно.",
+      "text_markdown": "Деревья почти сразу забирают эту пищу обратно.",
+      "tts": {
+        "text": "Деревья почти сразу забирают эту пищу обратно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Поэтому срубленный тропический лес трудно вернуть.",
+      "text_markdown": "Поэтому срубленный тропический лес трудно вернуть.",
+      "tts": {
+        "text": "Поэтому срубленный тропический лес трудно вернуть.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Без деревьев дождь смывает тонкую почву.",
+      "text_markdown": "Без деревьев дождь смывает тонкую почву.",
+      "tts": {
+        "text": "Без деревьев дождь смывает тонкую почву.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Реки текут через каждый тропический лес.",
+      "text_markdown": "Реки текут через каждый тропический лес.",
+      "tts": {
+        "text": "Реки текут через каждый тропический лес.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые реки огромные.",
+      "text_markdown": "Некоторые реки огромные.",
+      "tts": {
+        "text": "Некоторые реки огромные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Река Амазонка несёт больше воды, чем любая другая река в мире.",
+      "text_markdown": "Река Амазонка несёт больше воды, чем любая другая река в мире.",
+      "tts": {
+        "text": "Река Амазонка несёт больше воды, чем любая другая река в мире.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В дождливое время реки разливаются далеко в лес.",
+      "text_markdown": "В дождливое время реки разливаются далеко в лес.",
+      "tts": {
+        "text": "В дождливое время реки разливаются далеко в лес.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья стоят в воде месяцами.",
+      "text_markdown": "Деревья стоят в воде месяцами.",
+      "tts": {
+        "text": "Деревья стоят в воде месяцами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Рыбы плавают между стволами.",
+      "text_markdown": "Рыбы плавают между стволами.",
+      "tts": {
+        "text": "Рыбы плавают между стволами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Другие реки маленькие и прозрачные, с камнями на дне.",
+      "text_markdown": "Другие реки маленькие и прозрачные, с камнями на дне.",
+      "tts": {
+        "text": "Другие реки маленькие и прозрачные, с камнями на дне.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сам лес растёт слоями.",
+      "text_markdown": "Сам лес растёт слоями.",
+      "tts": {
+        "text": "Сам лес растёт слоями.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Высоко наверху — самые высокие деревья, их кроны раскинулись на солнце.",
+      "text_markdown": "Высоко наверху — самые высокие деревья, их кроны раскинулись на солнце.",
+      "tts": {
+        "text": "Высоко наверху самые высокие деревья, их кроны раскинулись на солнце.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Под ними — густая зелёная крыша из листьев.",
+      "text_markdown": "Под ними — густая зелёная крыша из листьев.",
+      "tts": {
+        "text": "Под ними густая зелёная крыша из листьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Под этой крышей воздух тенистый и спокойный.",
+      "text_markdown": "Под этой крышей воздух тенистый и спокойный.",
+      "tts": {
+        "text": "Под этой крышей воздух тенистый и спокойный.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Внизу, на земле, проходит только немного света.",
+      "text_markdown": "Внизу, на земле, проходит только немного света.",
+      "tts": {
+        "text": "Внизу, на земле, проходит только немного света.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Земля и вода",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждый слой — это особый дом для животных и растений биома.",
+      "text_markdown": "Каждый слой — это особый дом для животных и растений биома.",
+      "tts": {
+        "text": "Каждый слой это особый дом для животных и растений биома.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Растения",
+      "text_markdown": "Растения"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропическом лесу больше видов растений, чем в любом другом наземном биоме.",
+      "text_markdown": "В тропическом лесу больше видов растений, чем в любом другом наземном биоме.",
+      "tts": {
+        "text": "В тропическом лесу больше видов растений, чем в любом другом наземном биоме.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья — его сердце.",
+      "text_markdown": "Деревья — его сердце.",
+      "tts": {
+        "text": "Деревья его сердце.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые деревья вырастают очень высокими, тянутся к солнцу.",
+      "text_markdown": "Некоторые деревья вырастают очень высокими, тянутся к солнцу.",
+      "tts": {
+        "text": "Некоторые деревья вырастают очень высокими, тянутся к солнцу.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их стволы прямые и гладкие.",
+      "text_markdown": "Их стволы прямые и гладкие.",
+      "tts": {
+        "text": "Их стволы прямые и гладкие.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их корни широко расходятся внизу, как стены, чтобы держать дерево в тонкой почве.",
+      "text_markdown": "Их корни широко расходятся внизу, как стены, чтобы держать дерево в тонкой почве.",
+      "tts": {
+        "text": "Их корни широко расходятся внизу, как стены, чтобы держать дерево в тонкой почве.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лианы взбираются по стволам к свету.",
+      "text_markdown": "Лианы взбираются по стволам к свету.",
+      "tts": {
+        "text": "Лианы взбираются по стволам к свету.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые лианы толщиной с твою руку.",
+      "text_markdown": "Некоторые лианы толщиной с твою руку.",
+      "tts": {
+        "text": "Некоторые лианы толщиной с твою руку.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они обвивают деревья и свисают с веток.",
+      "text_markdown": "Они обвивают деревья и свисают с веток.",
+      "tts": {
+        "text": "Они обвивают деревья и свисают с веток.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На самих деревьях растут растения, высоко в воздухе.",
+      "text_markdown": "На самих деревьях растут растения, высоко в воздухе.",
+      "tts": {
+        "text": "На самих деревьях растут растения, высоко в воздухе.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У них совсем нет корней в земле.",
+      "text_markdown": "У них совсем нет корней в земле.",
+      "tts": {
+        "text": "У них совсем нет корней в земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они пьют дождь, который стекает по коре.",
+      "text_markdown": "Они пьют дождь, который стекает по коре.",
+      "tts": {
+        "text": "Они пьют дождь, который стекает по коре.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На тёмной лесной земле растут папоротники и мягкие зелёные растения.",
+      "text_markdown": "На тёмной лесной земле растут папоротники и мягкие зелёные растения.",
+      "tts": {
+        "text": "На тёмной лесной земле растут папоротники и мягкие зелёные растения.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У них широкие плоские листья, чтобы поймать каждую каплю света.",
+      "text_markdown": "У них широкие плоские листья, чтобы поймать каждую каплю света.",
+      "tts": {
+        "text": "У них широкие плоские листья, чтобы поймать каждую каплю света.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Цветы цветут всех цветов, какие только можно представить.",
+      "text_markdown": "Цветы цветут всех цветов, какие только можно представить.",
+      "tts": {
+        "text": "Цветы цветут всех цветов, какие только можно представить.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Одни красные, другие жёлтые, третьи тёмно-фиолетовые.",
+      "text_markdown": "Одни красные, другие жёлтые, третьи тёмно-фиолетовые.",
+      "tts": {
+        "text": "Одни красные, другие жёлтые, третьи тёмно фиолетовые.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие из них раскрываются ночью.",
+      "text_markdown": "Многие из них раскрываются ночью.",
+      "tts": {
+        "text": "Многие из них раскрываются ночью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Плоды висят на ветках круглый год.",
+      "text_markdown": "Плоды висят на ветках круглый год.",
+      "tts": {
+        "text": "Плоды висят на ветках круглый год.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть сладкие плоды, кислые плоды и плоды с твёрдой скорлупой.",
+      "text_markdown": "Есть сладкие плоды, кислые плоды и плоды с твёрдой скорлупой.",
+      "tts": {
+        "text": "Есть сладкие плоды, кислые плоды и плоды с твёрдой скорлупой.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие продукты, которые мы едим дома, сначала росли в тропических лесах.",
+      "text_markdown": "Многие продукты, которые мы едим дома, сначала росли в тропических лесах.",
+      "tts": {
+        "text": "Многие продукты, которые мы едим дома, сначала росли в тропических лесах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Какао, растение, которое даёт нам шоколад, появилось в тропических лесах Южной Америки.",
+      "text_markdown": "Какао, растение, которое даёт нам шоколад, появилось в тропических лесах Южной Америки.",
+      "tts": {
+        "text": "Какао, растение, которое даёт нам шоколад, появилось в тропических лесах Южной Америки.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первые банановые растения росли в тропических лесах Юго-Восточной Азии.",
+      "text_markdown": "Первые банановые растения росли в тропических лесах Юго-Восточной Азии.",
+      "tts": {
+        "text": "Первые банановые растения росли в тропических лесах Юго Восточной Азии.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У каждой любимой еды есть история леса где-то на Земле.",
+      "text_markdown": "У каждой любимой еды есть история леса где-то на Земле.",
+      "tts": {
+        "text": "У каждой любимой еды есть история леса где то на Земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если посмотреть на растение тропического леса, у него часто есть хитрый способ жить.",
+      "text_markdown": "Если посмотреть на растение тропического леса, у него часто есть хитрый способ жить.",
+      "tts": {
+        "text": "Если посмотреть на растение тропического леса, у него часто есть хитрый способ жить.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У некоторых листьев на конце длинный остриё, чтобы дождь быстро стекал.",
+      "text_markdown": "У некоторых листьев на конце длинный остриё, чтобы дождь быстро стекал.",
+      "tts": {
+        "text": "У некоторых листьев на конце длинный остриё, чтобы дождь быстро стекал.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые цветы пахнут сладко только ночью, чтобы позвать в гости нужное насекомое.",
+      "text_markdown": "Некоторые цветы пахнут сладко только ночью, чтобы позвать в гости нужное насекомое.",
+      "tts": {
+        "text": "Некоторые цветы пахнут сладко только ночью, чтобы позвать в гости нужное насекомое.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Растения",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Весь лес — это тихая машина, сделанная из зелени.",
+      "text_markdown": "Весь лес — это тихая машина, сделанная из зелени.",
+      "tts": {
+        "text": "Весь лес это тихая машина, сделанная из зелени.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Животные",
+      "text_markdown": "Животные"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропическом лесу живёт больше видов животных, чем где-либо ещё на суше.",
+      "text_markdown": "В тропическом лесу живёт больше видов животных, чем где-либо ещё на суше.",
+      "tts": {
+        "text": "В тропическом лесу живёт больше видов животных, чем где либо ещё на суше.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большинство из них живёт на деревьях, а не на земле.",
+      "text_markdown": "Большинство из них живёт на деревьях, а не на земле.",
+      "tts": {
+        "text": "Большинство из них живёт на деревьях, а не на земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Наверху больше еды и больше света.",
+      "text_markdown": "Наверху больше еды и больше света.",
+      "tts": {
+        "text": "Наверху больше еды и больше света.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Обезьяны живут во многих тропических лесах.",
+      "text_markdown": "Обезьяны живут во многих тропических лесах.",
+      "tts": {
+        "text": "Обезьяны живут во многих тропических лесах.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они прыгают с ветки на ветку и перекликаются друг с другом через деревья.",
+      "text_markdown": "Они прыгают с ветки на ветку и перекликаются друг с другом через деревья.",
+      "tts": {
+        "text": "Они прыгают с ветки на ветку и перекликаются друг с другом через деревья.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропических лесах Южной Америки у некоторых обезьян длинные хвосты, которые они используют как ещё одну руку.",
+      "text_markdown": "В тропических лесах Южной Америки у некоторых обезьян длинные хвосты, которые они используют как ещё одну руку.",
+      "tts": {
+        "text": "В тропических лесах Южной Америки у некоторых обезьян длинные хвосты, которые они используют как ещё одну руку.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Попугаи и другие яркие птицы летают между высокими ветками.",
+      "text_markdown": "Попугаи и другие яркие птицы летают между высокими ветками.",
+      "tts": {
+        "text": "Попугаи и другие яркие птицы летают между высокими ветками.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они едят плоды и семена.",
+      "text_markdown": "Они едят плоды и семена.",
+      "tts": {
+        "text": "Они едят плоды и семена.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Их перья красные, зелёные, синие и жёлтые.",
+      "text_markdown": "Их перья красные, зелёные, синие и жёлтые.",
+      "tts": {
+        "text": "Их перья красные, зелёные, синие и жёлтые.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во многих тропических лесах большие кошки охотятся на земле ночью.",
+      "text_markdown": "Во многих тропических лесах большие кошки охотятся на земле ночью.",
+      "tts": {
+        "text": "Во многих тропических лесах большие кошки охотятся на земле ночью.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Америках эта кошка — ягуар.",
+      "text_markdown": "В Америках эта кошка — ягуар.",
+      "tts": {
+        "text": "В Америках эта кошка ягуар.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Азии это тигр.",
+      "text_markdown": "В Азии это тигр.",
+      "tts": {
+        "text": "В Азии это тигр.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Африке это леопард.",
+      "text_markdown": "В Африке это леопард.",
+      "tts": {
+        "text": "В Африке это леопард.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Все они сильные и тихие, с пятнами или полосами на шерсти.",
+      "text_markdown": "Все они сильные и тихие, с пятнами или полосами на шерсти.",
+      "tts": {
+        "text": "Все они сильные и тихие, с пятнами или полосами на шерсти.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Змеи скользят среди листьев и по деревьям.",
+      "text_markdown": "Змеи скользят среди листьев и по деревьям.",
+      "tts": {
+        "text": "Змеи скользят среди листьев и по деревьям.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Одни змеи совсем маленькие, а другие очень длинные.",
+      "text_markdown": "Одни змеи совсем маленькие, а другие очень длинные.",
+      "tts": {
+        "text": "Одни змеи совсем маленькие, а другие очень длинные.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Большинство из них пугливые и держатся подальше от людей.",
+      "text_markdown": "Большинство из них пугливые и держатся подальше от людей.",
+      "tts": {
+        "text": "Большинство из них пугливые и держатся подальше от людей.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Лягушки поют каждую ночь, особенно после дождя.",
+      "text_markdown": "Лягушки поют каждую ночь, особенно после дождя.",
+      "tts": {
+        "text": "Лягушки поют каждую ночь, особенно после дождя.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Некоторые лягушки крошечные и яркие.",
+      "text_markdown": "Некоторые лягушки крошечные и яркие.",
+      "tts": {
+        "text": "Некоторые лягушки крошечные и яркие.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Яркие цвета предупреждают других животных, чтобы их не ели.",
+      "text_markdown": "Яркие цвета предупреждают других животных, чтобы их не ели.",
+      "tts": {
+        "text": "Яркие цвета предупреждают других животных, чтобы их не ели.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Насекомые наполняют каждый уголок леса.",
+      "text_markdown": "Насекомые наполняют каждый уголок леса.",
+      "tts": {
+        "text": "Насекомые наполняют каждый уголок леса.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропическом лесу насекомых больше, чем животных любого другого вида.",
+      "text_markdown": "В тропическом лесу насекомых больше, чем животных любого другого вида.",
+      "tts": {
+        "text": "В тропическом лесу насекомых больше, чем животных любого другого вида.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Муравьи длинными рядами идут по лесной земле.",
+      "text_markdown": "Муравьи длинными рядами идут по лесной земле.",
+      "tts": {
+        "text": "Муравьи длинными рядами идут по лесной земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Жуки взбираются по стволам.",
+      "text_markdown": "Жуки взбираются по стволам.",
+      "tts": {
+        "text": "Жуки взбираются по стволам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Бабочки плывут по воздуху на широких расписных крыльях.",
+      "text_markdown": "Бабочки плывут по воздуху на широких расписных крыльях.",
+      "tts": {
+        "text": "Бабочки плывут по воздуху на широких расписных крыльях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В реках живут рыбы самых разных форм и размеров.",
+      "text_markdown": "В реках живут рыбы самых разных форм и размеров.",
+      "tts": {
+        "text": "В реках живут рыбы самых разных форм и размеров.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Одни рыбы крошечные и серебристые, а другие больше ребёнка.",
+      "text_markdown": "Одни рыбы крошечные и серебристые, а другие больше ребёнка.",
+      "tts": {
+        "text": "Одни рыбы крошечные и серебристые, а другие больше ребёнка.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Высоко над всем этим орлы парят над зелёной крышей леса.",
+      "text_markdown": "Высоко над всем этим орлы парят над зелёной крышей леса.",
+      "tts": {
+        "text": "Высоко над всем этим орлы парят над зелёной крышей леса.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они высматривают движение внизу.",
+      "text_markdown": "Они высматривают движение внизу.",
+      "tts": {
+        "text": "Они высматривают движение внизу.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Летучие мыши вылетают на закате, чтобы есть плоды и насекомых.",
+      "text_markdown": "Летучие мыши вылетают на закате, чтобы есть плоды и насекомых.",
+      "tts": {
+        "text": "Летучие мыши вылетают на закате, чтобы есть плоды и насекомых.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На одном дереве тропического леса можно найти больше видов животных, чем во всём городе где-нибудь ещё.",
+      "text_markdown": "На одном дереве тропического леса можно найти больше видов животных, чем во всём городе где-нибудь ещё.",
+      "tts": {
+        "text": "На одном дереве тропического леса можно найти больше видов животных, чем во всём городе где нибудь ещё.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Животные",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В этом и есть чудо этого биома.",
+      "text_markdown": "В этом и есть чудо этого биома.",
+      "tts": {
+        "text": "В этом и есть чудо этого биома.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Люди",
+      "text_markdown": "Люди"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди живут в тропическом лесу очень давно.",
+      "text_markdown": "Люди живут в тропическом лесу очень давно.",
+      "tts": {
+        "text": "Люди живут в тропическом лесу очень давно.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они научились хорошо жить с деревьями, дождём и животными.",
+      "text_markdown": "Они научились хорошо жить с деревьями, дождём и животными.",
+      "tts": {
+        "text": "Они научились хорошо жить с деревьями, дождём и животными.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие люди тропического леса живут в маленьких деревнях.",
+      "text_markdown": "Многие люди тропического леса живут в маленьких деревнях.",
+      "tts": {
+        "text": "Многие люди тропического леса живут в маленьких деревнях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дома часто строят на высоких деревянных столбах, чтобы они были над влажной землёй.",
+      "text_markdown": "Дома часто строят на высоких деревянных столбах, чтобы они были над влажной землёй.",
+      "tts": {
+        "text": "Дома часто строят на высоких деревянных столбах, чтобы они были над влажной землёй.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Крыши делают из листьев, уложенных толстыми рядами.",
+      "text_markdown": "Крыши делают из листьев, уложенных толстыми рядами.",
+      "tts": {
+        "text": "Крыши делают из листьев, уложенных толстыми рядами.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Хорошая крыша из листьев не пропускает сильный дождь.",
+      "text_markdown": "Хорошая крыша из листьев не пропускает сильный дождь.",
+      "tts": {
+        "text": "Хорошая крыша из листьев не пропускает сильный дождь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Стены часто открыты, чтобы тёплый воздух проходил насквозь.",
+      "text_markdown": "Стены часто открыты, чтобы тёплый воздух проходил насквозь.",
+      "tts": {
+        "text": "Стены часто открыты, чтобы тёплый воздух проходил насквозь.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди ловят рыбу в реках и собирают еду в лесу.",
+      "text_markdown": "Люди ловят рыбу в реках и собирают еду в лесу.",
+      "tts": {
+        "text": "Люди ловят рыбу в реках и собирают еду в лесу.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они охотятся на мелких животных луком и копьём.",
+      "text_markdown": "Они охотятся на мелких животных луком и копьём.",
+      "tts": {
+        "text": "Они охотятся на мелких животных луком и копьём.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они выращивают еду на маленьких огородах, расчищенных среди деревьев.",
+      "text_markdown": "Они выращивают еду на маленьких огородах, расчищенных среди деревьев.",
+      "tts": {
+        "text": "Они выращивают еду на маленьких огородах, расчищенных среди деревьев.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Что они выращивают, зависит от того, где они живут.",
+      "text_markdown": "Что они выращивают, зависит от того, где они живут.",
+      "tts": {
+        "text": "Что они выращивают, зависит от того, где они живут.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропических лесах Южной Америки люди выращивают маниок и сладкий картофель уже тысячи лет.",
+      "text_markdown": "В тропических лесах Южной Америки люди выращивают маниок и сладкий картофель уже тысячи лет.",
+      "tts": {
+        "text": "В тропических лесах Южной Америки люди выращивают маниок и сладкий картофель уже тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропических лесах Африки люди выращивают ямс и плоды пальмы.",
+      "text_markdown": "В тропических лесах Африки люди выращивают ямс и плоды пальмы.",
+      "tts": {
+        "text": "В тропических лесах Африки люди выращивают ямс и плоды пальмы.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В тропических лесах Юго-Восточной Азии и Тихого океана люди выращивают таро, рис и хлебное дерево.",
+      "text_markdown": "В тропических лесах Юго-Восточной Азии и Тихого океана люди выращивают таро, рис и хлебное дерево.",
+      "tts": {
+        "text": "В тропических лесах Юго Восточной Азии и Тихого океана люди выращивают таро, рис и хлебное дерево.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Через несколько лет они дают огороду снова зарасти лесом и делают новый где-то ещё.",
+      "text_markdown": "Через несколько лет они дают огороду снова зарасти лесом и делают новый где-то ещё.",
+      "tts": {
+        "text": "Через несколько лет они дают огороду снова зарасти лесом и делают новый где то ещё.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Так лес остаётся здоровым.",
+      "text_markdown": "Так лес остаётся здоровым.",
+      "tts": {
+        "text": "Так лес остаётся здоровым.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди тропического леса знают тысячи растений.",
+      "text_markdown": "Люди тропического леса знают тысячи растений.",
+      "tts": {
+        "text": "Люди тропического леса знают тысячи растений.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они знают, какие дают еду, какие дают лекарства, а какие нельзя есть.",
+      "text_markdown": "Они знают, какие дают еду, какие дают лекарства, а какие нельзя есть.",
+      "tts": {
+        "text": "Они знают, какие дают еду, какие дают лекарства, а какие нельзя есть.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они учат песни птиц.",
+      "text_markdown": "Они учат песни птиц.",
+      "tts": {
+        "text": "Они учат песни птиц.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они учат следы животных.",
+      "text_markdown": "Они учат следы животных.",
+      "tts": {
+        "text": "Они учат следы животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это знание передаётся от родителей к детям, год за годом.",
+      "text_markdown": "Это знание передаётся от родителей к детям, год за годом.",
+      "tts": {
+        "text": "Это знание передаётся от родителей к детям, год за годом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Люди",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В каждом тропическом лесу у такой жизни свои языки, свои истории и своя музыка.",
+      "text_markdown": "В каждом тропическом лесу у такой жизни свои языки, свои истории и своя музыка.",
+      "tts": {
+        "text": "В каждом тропическом лесу у такой жизни свои языки, свои истории и своя музыка.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Тропический лес сегодня",
+      "text_markdown": "Тропический лес сегодня"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тропический лес — один из самых важных биомов на Земле.",
+      "text_markdown": "Тропический лес — один из самых важных биомов на Земле.",
+      "tts": {
+        "text": "Тропический лес один из самых важных биомов на Земле.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья тянут воду из земли и выдыхают её в небо.",
+      "text_markdown": "Деревья тянут воду из земли и выдыхают её в небо.",
+      "tts": {
+        "text": "Деревья тянут воду из земли и выдыхают её в небо.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Облака, которые образуются над лесом, несут дождь в далёкие земли.",
+      "text_markdown": "Облака, которые образуются над лесом, несут дождь в далёкие земли.",
+      "tts": {
+        "text": "Облака, которые образуются над лесом, несут дождь в далёкие земли.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Деревья тоже дышат, но наоборот по отношению к нам.",
+      "text_markdown": "Деревья тоже дышат, но наоборот по отношению к нам.",
+      "tts": {
+        "text": "Деревья тоже дышат, но наоборот по отношению к нам.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они вбирают газ, который мы выдыхаем, и используют его, чтобы расти.",
+      "text_markdown": "Они вбирают газ, который мы выдыхаем, и используют его, чтобы расти.",
+      "tts": {
+        "text": "Они вбирают газ, который мы выдыхаем, и используют его, чтобы расти.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А отдают газ, которым мы дышим.",
+      "text_markdown": "А отдают газ, которым мы дышим.",
+      "tts": {
+        "text": "А отдают газ, которым мы дышим.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но у тропического леса беда.",
+      "text_markdown": "Но у тропического леса беда.",
+      "tts": {
+        "text": "Но у тропического леса беда.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Во многих местах люди срубили деревья, чтобы сажать посевы или разводить животных.",
+      "text_markdown": "Во многих местах люди срубили деревья, чтобы сажать посевы или разводить животных.",
+      "tts": {
+        "text": "Во многих местах люди срубили деревья, чтобы сажать посевы или разводить животных.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда деревьев нет, почву смывает, и дождь перестаёт идти так, как раньше.",
+      "text_markdown": "Когда деревьев нет, почву смывает, и дождь перестаёт идти так, как раньше.",
+      "tts": {
+        "text": "Когда деревьев нет, почву смывает, и дождь перестаёт идти так, как раньше.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Животные и люди, которые там живут, теряют свой дом.",
+      "text_markdown": "Животные и люди, которые там живут, теряют свой дом.",
+      "tts": {
+        "text": "Животные и люди, которые там живут, теряют свой дом.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+      "text_markdown": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+      "tts": {
+        "text": "Многие группы по всему миру работают, чтобы защитить то, что осталось.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они сажают новые деревья.",
+      "text_markdown": "Они сажают новые деревья.",
+      "tts": {
+        "text": "Они сажают новые деревья.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они помогают людям, которые живут в лесу, ухаживать за ним.",
+      "text_markdown": "Они помогают людям, которые живут в лесу, ухаживать за ним.",
+      "tts": {
+        "text": "Они помогают людям, которые живут в лесу, ухаживать за ним.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Они изучают лес, чтобы мы понимали его лучше.",
+      "text_markdown": "Они изучают лес, чтобы мы понимали его лучше.",
+      "tts": {
+        "text": "Они изучают лес, чтобы мы понимали его лучше.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тропический лес растёт сотни лет.",
+      "text_markdown": "Тропический лес растёт сотни лет.",
+      "tts": {
+        "text": "Тропический лес растёт сотни лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но здоровый тропический лес может расти и тысячи лет.",
+      "text_markdown": "Но здоровый тропический лес может расти и тысячи лет.",
+      "tts": {
+        "text": "Но здоровый тропический лес может расти и тысячи лет.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Тропический лес сегодня",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Он стоит того, чтобы о нём заботиться.",
+      "text_markdown": "Он стоит того, чтобы о нём заботиться.",
+      "tts": {
+        "text": "Он стоит того, чтобы о нём заботиться.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Заключение",
+      "text_markdown": "Заключение"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот что такое тропический лес.",
+      "text_markdown": "Вот что такое тропический лес.",
+      "tts": {
+        "text": "Вот что такое тропический лес.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тёплый, влажный, зелёный мир, полный жизни.",
+      "text_markdown": "Тёплый, влажный, зелёный мир, полный жизни.",
+      "tts": {
+        "text": "Тёплый, влажный, зелёный мир, полный жизни.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если ты когда-нибудь зайдёшь в такой лес, постой неподвижно минуту.",
+      "text_markdown": "Если ты когда-нибудь зайдёшь в такой лес, постой неподвижно минуту.",
+      "tts": {
+        "text": "Если ты когда нибудь зайдёшь в такой лес, постой неподвижно минуту.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Послушай птиц, лягушек и дождь на листьях.",
+      "text_markdown": "Послушай птиц, лягушек и дождь на листьях.",
+      "tts": {
+        "text": "Послушай птиц, лягушек и дождь на листьях.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Заключение",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты услышишь, как вокруг тебя бьётся сердце биома.",
+      "text_markdown": "Ты услышишь, как вокруг тебя бьётся сердце биома.",
+      "tts": {
+        "text": "Ты услышишь, как вокруг тебя бьётся сердце биома.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

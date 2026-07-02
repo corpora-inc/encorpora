@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "הביום הים תיכוני",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הביום הים תיכוני",
+      "text_markdown": "הביום הים תיכוני"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "היכן הביום הזה גדל",
+      "text_markdown": "היכן הביום הזה גדל"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברוכים הבאים אל הביום הים תיכוני.",
+      "text_markdown": "ברוכים הבאים אל הביום הים תיכוני.",
+      "tts": {
+        "text": "ברוכים הבאים אל הביום הים תיכוני.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו אחד הביומים הגדולים של העולם.",
+      "text_markdown": "זהו אחד הביומים הגדולים של העולם.",
+      "tts": {
+        "text": "זהו אחד הביומים הגדולים של העולם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביום הוא חלק מכדור הארץ שיש לו מזג אוויר משלו, צמחים משלו ובעלי חיים משלו.",
+      "text_markdown": "ביום הוא חלק מכדור הארץ שיש לו מזג אוויר משלו, צמחים משלו ובעלי חיים משלו.",
+      "tts": {
+        "text": "ביום הוא חלק מכדור הארץ שיש לו מזג אוויר משלו, צמחים משלו ובעלי חיים משלו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביום הים תיכוני נקרא על שם הארצות שסביב הים התיכון.",
+      "text_markdown": "הביום הים תיכוני נקרא על שם הארצות שסביב הים התיכון.",
+      "tts": {
+        "text": "הביום הים תיכוני נקרא על שם הארצות שסביב הים התיכון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל הוא לא גדל רק שם.",
+      "text_markdown": "אבל הוא לא גדל רק שם.",
+      "tts": {
+        "text": "אבל הוא לא גדל רק שם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביום הים תיכוני מופיע בחמישה אזורים קטנים בעולם.",
+      "text_markdown": "הביום הים תיכוני מופיע בחמישה אזורים קטנים בעולם.",
+      "tts": {
+        "text": "הביום הים תיכוני מופיע בחמישה אזורים קטנים בעולם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא גדל בארצות שסביב הים התיכון, בדרום אירופה ולאורך חופי צפון אפריקה.",
+      "text_markdown": "הוא גדל בארצות שסביב הים התיכון, בדרום אירופה ולאורך חופי צפון אפריקה.",
+      "tts": {
+        "text": "הוא גדל בארצות שסביב הים התיכון, בדרום אירופה ולאורך חופי צפון אפריקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא גדל בקליפורניה, בחלק המערבי של צפון אמריקה.",
+      "text_markdown": "הוא גדל בקליפורניה, בחלק המערבי של צפון אמריקה.",
+      "tts": {
+        "text": "הוא גדל בקליפורניה, בחלק המערבי של צפון אמריקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא גדל לאורך אמצע החוף של צ׳ילה, בדרום אמריקה.",
+      "text_markdown": "הוא גדל לאורך אמצע החוף של צ׳ילה, בדרום אמריקה.",
+      "tts": {
+        "text": "הוא גדל לאורך אמצע החוף של צ׳ילה, בדרום אמריקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא גדל ליד הקצה הדרומי של אפריקה, באזור הכף.",
+      "text_markdown": "הוא גדל ליד הקצה הדרומי של אפריקה, באזור הכף.",
+      "tts": {
+        "text": "הוא גדל ליד הקצה הדרומי של אפריקה, באזור הכף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא גדל בחלקים הדרום מערביים והדרומיים של אוסטרליה.",
+      "text_markdown": "הוא גדל בחלקים הדרום מערביים והדרומיים של אוסטרליה.",
+      "tts": {
+        "text": "הוא גדל בחלקים הדרום מערביים והדרומיים של אוסטרליה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל אחד מהמקומות האלה רחוק מן האחרים.",
+      "text_markdown": "כל אחד מהמקומות האלה רחוק מן האחרים.",
+      "tts": {
+        "text": "כל אחד מהמקומות האלה רחוק מן האחרים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל לכולם יש אותו מזג אוויר מיוחד.",
+      "text_markdown": "אבל לכולם יש אותו מזג אוויר מיוחד.",
+      "tts": {
+        "text": "אבל לכולם יש אותו מזג אוויר מיוחד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקיץ חם ויבש, והחורף נעים ולח.",
+      "text_markdown": "הקיץ חם ויבש, והחורף נעים ולח.",
+      "tts": {
+        "text": "הקיץ חם ויבש, והחורף נעים ולח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה נדיר על כדור הארץ.",
+      "text_markdown": "זה נדיר על כדור הארץ.",
+      "tts": {
+        "text": "זה נדיר על כדור הארץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברוב הביומים עונת הגשמים נופלת בחודשים החמים.",
+      "text_markdown": "ברוב הביומים עונת הגשמים נופלת בחודשים החמים.",
+      "tts": {
+        "text": "ברוב הביומים עונת הגשמים נופלת בחודשים החמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כאן, הגשם יורד בחודשים הקרירים במקום זאת.",
+      "text_markdown": "כאן, הגשם יורד בחודשים הקרירים במקום זאת.",
+      "tts": {
+        "text": "כאן, הגשם יורד בחודשים הקרירים במקום זאת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לכל אחד מחמשת המקומות האלה יש צמחים ובעלי חיים משלו.",
+      "text_markdown": "לכל אחד מחמשת המקומות האלה יש צמחים ובעלי חיים משלו.",
+      "tts": {
+        "text": "לכל אחד מחמשת המקומות האלה יש צמחים ובעלי חיים משלו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל הצורות זהות.",
+      "text_markdown": "אבל הצורות זהות.",
+      "tts": {
+        "text": "אבל הצורות זהות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שיחים נמוכים ועמידים, עצים מפוזרים, צמחי תבלין ריחניים וגבעות סלעיות חשופות.",
+      "text_markdown": "שיחים נמוכים ועמידים, עצים מפוזרים, צמחי תבלין ריחניים וגבעות סלעיות חשופות.",
+      "tts": {
+        "text": "שיחים נמוכים ועמידים, עצים מפוזרים, צמחי תבלין ריחניים וגבעות סלעיות חשופות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשעומדים בארץ ים תיכונית בקיץ, באוויר מורגש ריח של צמחי תבלין יבשים ושל אבן חמה.",
+      "text_markdown": "כשעומדים בארץ ים תיכונית בקיץ, באוויר מורגש ריח של צמחי תבלין יבשים ושל אבן חמה.",
+      "tts": {
+        "text": "כשעומדים בארץ ים תיכונית בקיץ, באוויר מורגש ריח של צמחי תבלין יבשים ושל אבן חמה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האור חזק וזהוב.",
+      "text_markdown": "האור חזק וזהוב.",
+      "tts": {
+        "text": "האור חזק וזהוב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגבעות מנוקדות בשיחים נמוכים בצבע ירוק כסוף.",
+      "text_markdown": "הגבעות מנוקדות בשיחים נמוכים בצבע ירוק כסוף.",
+      "tts": {
+        "text": "הגבעות מנוקדות בשיחים נמוכים בצבע ירוק כסוף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הביום הים תיכוני.",
+      "text_markdown": "זה הביום הים תיכוני.",
+      "tts": {
+        "text": "זה הביום הים תיכוני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "היכן הביום הזה גדל",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עולם בהיר, יבש וריחני שגדל בחמש פינות קטנות של כדור הארץ.",
+      "text_markdown": "עולם בהיר, יבש וריחני שגדל בחמש פינות קטנות של כדור הארץ.",
+      "tts": {
+        "text": "עולם בהיר, יבש וריחני שגדל בחמש פינות קטנות של כדור הארץ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "מזג האוויר",
+      "text_markdown": "מזג האוויר"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מזג האוויר בביום הים תיכוני יוצא דופן.",
+      "text_markdown": "מזג האוויר בביום הים תיכוני יוצא דופן.",
+      "tts": {
+        "text": "מזג האוויר בביום הים תיכוני יוצא דופן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש שתי עונות ברורות.",
+      "text_markdown": "יש שתי עונות ברורות.",
+      "tts": {
+        "text": "יש שתי עונות ברורות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש קיץ ארוך, חם ויבש.",
+      "text_markdown": "יש קיץ ארוך, חם ויבש.",
+      "tts": {
+        "text": "יש קיץ ארוך, חם ויבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש חורף קצר יותר, נעים ולח.",
+      "text_markdown": "יש חורף קצר יותר, נעים ולח.",
+      "tts": {
+        "text": "יש חורף קצר יותר, נעים ולח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ, השמיים כחולים במשך שבועות שלמים.",
+      "text_markdown": "בקיץ, השמיים כחולים במשך שבועות שלמים.",
+      "tts": {
+        "text": "בקיץ, השמיים כחולים במשך שבועות שלמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השמש חזקה, והאוויר יבש.",
+      "text_markdown": "השמש חזקה, והאוויר יבש.",
+      "tts": {
+        "text": "השמש חזקה, והאוויר יבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמעט שלא יורד גשם במשך חודשים רבים.",
+      "text_markdown": "כמעט שלא יורד גשם במשך חודשים רבים.",
+      "tts": {
+        "text": "כמעט שלא יורד גשם במשך חודשים רבים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עד סוף הקיץ העשב חום והנחלים מצטמקים לכמה שלוליות שקטות.",
+      "text_markdown": "עד סוף הקיץ העשב חום והנחלים מצטמקים לכמה שלוליות שקטות.",
+      "tts": {
+        "text": "עד סוף הקיץ העשב חום והנחלים מצטמקים לכמה שלוליות שקטות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בסתיו, באים הרוחות הקרירות הראשונות מהים.",
+      "text_markdown": "בסתיו, באים הרוחות הקרירות הראשונות מהים.",
+      "tts": {
+        "text": "בסתיו, באים הרוחות הקרירות הראשונות מהים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העננים מתאספים, והגשמים הכבדים הראשונים יורדים על האדמה היבשה.",
+      "text_markdown": "העננים מתאספים, והגשמים הכבדים הראשונים יורדים על האדמה היבשה.",
+      "tts": {
+        "text": "העננים מתאספים, והגשמים הכבדים הראשונים יורדים על האדמה היבשה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה שותה את המים, והעשב מוריק שוב.",
+      "text_markdown": "האדמה שותה את המים, והעשב מוריק שוב.",
+      "tts": {
+        "text": "האדמה שותה את המים, והעשב מוריק שוב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "החורף אינו קר מאוד.",
+      "text_markdown": "החורף אינו קר מאוד.",
+      "tts": {
+        "text": "החורף אינו קר מאוד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שלג יורד לעיתים נדירות, חוץ מאשר גבוה בהרים.",
+      "text_markdown": "שלג יורד לעיתים נדירות, חוץ מאשר גבוה בהרים.",
+      "tts": {
+        "text": "שלג יורד לעיתים נדירות, חוץ מאשר גבוה בהרים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגשם יורד במטרות ארוכות ורכות והנהרות זורמים מלאים.",
+      "text_markdown": "הגשם יורד במטרות ארוכות ורכות והנהרות זורמים מלאים.",
+      "tts": {
+        "text": "הגשם יורד במטרות ארוכות ורכות והנהרות זורמים מלאים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באביב, האוויר חמים והגבעות ירוקות.",
+      "text_markdown": "באביב, האוויר חמים והגבעות ירוקות.",
+      "tts": {
+        "text": "באביב, האוויר חמים והגבעות ירוקות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך כמה שבועות קצרים, פרחי בר מכסים כל מדרון.",
+      "text_markdown": "במשך כמה שבועות קצרים, פרחי בר מכסים כל מדרון.",
+      "tts": {
+        "text": "במשך כמה שבועות קצרים, פרחי בר מכסים כל מדרון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז הקיץ מתחיל שוב, והמחזור מתחדש.",
+      "text_markdown": "ואז הקיץ מתחיל שוב, והמחזור מתחדש.",
+      "tts": {
+        "text": "ואז הקיץ מתחיל שוב, והמחזור מתחדש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אש היא גם חלק מהביום הזה.",
+      "text_markdown": "אש היא גם חלק מהביום הזה.",
+      "tts": {
+        "text": "אש היא גם חלק מהביום הזה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקיץ הארוך והיבש, ברק או ניצוץ של חוסר זהירות יכולים להצית את השיחים היבשים.",
+      "text_markdown": "בקיץ הארוך והיבש, ברק או ניצוץ של חוסר זהירות יכולים להצית את השיחים היבשים.",
+      "tts": {
+        "text": "בקיץ הארוך והיבש, ברק או ניצוץ של חוסר זהירות יכולים להצית את השיחים היבשים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים רבים כאן למדו לחיות עם האש ולצמוח מחדש במהירות לאחר שהיא חולפת.",
+      "text_markdown": "צמחים רבים כאן למדו לחיות עם האש ולצמוח מחדש במהירות לאחר שהיא חולפת.",
+      "tts": {
+        "text": "צמחים רבים כאן למדו לחיות עם האש ולצמוח מחדש במהירות לאחר שהיא חולפת.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האדמה והמים",
+      "text_markdown": "האדמה והמים"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה של הביום הים תיכוני לרוב גבעית.",
+      "text_markdown": "האדמה של הביום הים תיכוני לרוב גבעית.",
+      "tts": {
+        "text": "האדמה של הביום הים תיכוני לרוב גבעית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרים מתנשאים קרוב לחוף בהרבה מהאזורים האלה.",
+      "text_markdown": "הרים מתנשאים קרוב לחוף בהרבה מהאזורים האלה.",
+      "tts": {
+        "text": "הרים מתנשאים קרוב לחוף בהרבה מהאזורים האלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המדרונות סלעיים, והקרקע לרוב דקה.",
+      "text_markdown": "המדרונות סלעיים, והקרקע לרוב דקה.",
+      "tts": {
+        "text": "המדרונות סלעיים, והקרקע לרוב דקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הימים והאוקיינוסים הסמוכים מעצבים את מזג האוויר.",
+      "text_markdown": "הימים והאוקיינוסים הסמוכים מעצבים את מזג האוויר.",
+      "tts": {
+        "text": "הימים והאוקיינוסים הסמוכים מעצבים את מזג האוויר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המים הקרירים מונעים מהקיץ להיות חם כמו במדבר, ומהחורף להיות קר כמו בארצות שיותר עמוק ביבשה.",
+      "text_markdown": "המים הקרירים מונעים מהקיץ להיות חם כמו במדבר, ומהחורף להיות קר כמו בארצות שיותר עמוק ביבשה.",
+      "tts": {
+        "text": "המים הקרירים מונעים מהקיץ להיות חם כמו במדבר, ומהחורף להיות קר כמו בארצות שיותר עמוק ביבשה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המים יקרים כאן.",
+      "text_markdown": "המים יקרים כאן.",
+      "tts": {
+        "text": "המים יקרים כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב הנהרות מצטמקים לקילוח דק עד סוף הקיץ.",
+      "text_markdown": "רוב הנהרות מצטמקים לקילוח דק עד סוף הקיץ.",
+      "tts": {
+        "text": "רוב הנהרות מצטמקים לקילוח דק עד סוף הקיץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמה נחלים קטנים נעלמים לחלוטין.",
+      "text_markdown": "כמה נחלים קטנים נעלמים לחלוטין.",
+      "tts": {
+        "text": "כמה נחלים קטנים נעלמים לחלוטין.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשגשמי החורף חוזרים, הנהרות מתמלאים במהירות וזורמים במורד הגבעות לעבר הים.",
+      "text_markdown": "כשגשמי החורף חוזרים, הנהרות מתמלאים במהירות וזורמים במורד הגבעות לעבר הים.",
+      "tts": {
+        "text": "כשגשמי החורף חוזרים, הנהרות מתמלאים במהירות וזורמים במורד הגבעות לעבר הים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכמה מקומות, מים תת קרקעיים עמוקים עולים ויוצרים מעיין.",
+      "text_markdown": "בכמה מקומות, מים תת קרקעיים עמוקים עולים ויוצרים מעיין.",
+      "tts": {
+        "text": "בכמה מקומות, מים תת קרקעיים עמוקים עולים ויוצרים מעיין.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מעיין הוא בריכה קטנה של מים מתוקים שזורמים מן הסלע כל השנה.",
+      "text_markdown": "מעיין הוא בריכה קטנה של מים מתוקים שזורמים מן הסלע כל השנה.",
+      "tts": {
+        "text": "מעיין הוא בריכה קטנה של מים מתוקים שזורמים מן הסלע כל השנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך אלפי שנים, אנשים, בעלי חיים ועצים התקבצו סביב המעיינות האלה.",
+      "text_markdown": "במשך אלפי שנים, אנשים, בעלי חיים ועצים התקבצו סביב המעיינות האלה.",
+      "tts": {
+        "text": "במשך אלפי שנים, אנשים, בעלי חיים ועצים התקבצו סביב המעיינות האלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאורך החוף, היבשה פוגשת את הים במצוקים, חופים ומפרצים קטנים.",
+      "text_markdown": "לאורך החוף, היבשה פוגשת את הים במצוקים, חופים ומפרצים קטנים.",
+      "tts": {
+        "text": "לאורך החוף, היבשה פוגשת את הים במצוקים, חופים ומפרצים קטנים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הים מלא חיים.",
+      "text_markdown": "הים מלא חיים.",
+      "tts": {
+        "text": "הים מלא חיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דגים, תמנונים ועופות ים מוצאים מזון במים החמים והמלוחים.",
+      "text_markdown": "דגים, תמנונים ועופות ים מוצאים מזון במים החמים והמלוחים.",
+      "tts": {
+        "text": "דגים, תמנונים ועופות ים מוצאים מזון במים החמים והמלוחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביום חי בין היבשה, הים ושמיים כחולים וארוכים של קיץ.",
+      "text_markdown": "הביום חי בין היבשה, הים ושמיים כחולים וארוכים של קיץ.",
+      "tts": {
+        "text": "הביום חי בין היבשה, הים ושמיים כחולים וארוכים של קיץ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הצמחים",
+      "text_markdown": "הצמחים"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הצמחים של הביום הים תיכוני עמידים וחכמים.",
+      "text_markdown": "הצמחים של הביום הים תיכוני עמידים וחכמים.",
+      "tts": {
+        "text": "הצמחים של הביום הים תיכוני עמידים וחכמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו איך לחיות בקיץ ארוך ויבש.",
+      "text_markdown": "הם למדו איך לחיות בקיץ ארוך ויבש.",
+      "tts": {
+        "text": "הם למדו איך לחיות בקיץ ארוך ויבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רובם אינם גבוהים.",
+      "text_markdown": "רובם אינם גבוהים.",
+      "tts": {
+        "text": "רובם אינם גבוהים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם גדלים כשיחים נמוכים, עם עלים עבים ועוריים.",
+      "text_markdown": "הם גדלים כשיחים נמוכים, עם עלים עבים ועוריים.",
+      "tts": {
+        "text": "הם גדלים כשיחים נמוכים, עם עלים עבים ועוריים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העלים קטנים ומבריקים, לפעמים כסופים או אפורים ירקרקים.",
+      "text_markdown": "העלים קטנים ומבריקים, לפעמים כסופים או אפורים ירקרקים.",
+      "tts": {
+        "text": "העלים קטנים ומבריקים, לפעמים כסופים או אפורים ירקרקים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עלה קטן ומבריק מאבד פחות מים לשמש.",
+      "text_markdown": "עלה קטן ומבריק מאבד פחות מים לשמש.",
+      "tts": {
+        "text": "עלה קטן ומבריק מאבד פחות מים לשמש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עלה בהיר מחזיר יותר מאור השמש.",
+      "text_markdown": "עלה בהיר מחזיר יותר מאור השמש.",
+      "tts": {
+        "text": "עלה בהיר מחזיר יותר מאור השמש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים רבים מפיצים ריח חזק ומתוק כשנוגעים בהם.",
+      "text_markdown": "צמחים רבים מפיצים ריח חזק ומתוק כשנוגעים בהם.",
+      "tts": {
+        "text": "צמחים רבים מפיצים ריח חזק ומתוק כשנוגעים בהם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הריח הזה בא משמנים שבתוך העלים.",
+      "text_markdown": "הריח הזה בא משמנים שבתוך העלים.",
+      "tts": {
+        "text": "הריח הזה בא משמנים שבתוך העלים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השמנים מאטים את אובדן המים ועוזרים לצמח לשרוד את החום.",
+      "text_markdown": "השמנים מאטים את אובדן המים ועוזרים לצמח לשרוד את החום.",
+      "tts": {
+        "text": "השמנים מאטים את אובדן המים ועוזרים לצמח לשרוד את החום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זו הסיבה שכל כך הרבה מצמחי התבלין האהובים על הבישול שלנו באים מהארצות האלה.",
+      "text_markdown": "זו הסיבה שכל כך הרבה מצמחי התבלין האהובים על הבישול שלנו באים מהארצות האלה.",
+      "tts": {
+        "text": "זו הסיבה שכל כך הרבה מצמחי התבלין האהובים על הבישול שלנו באים מהארצות האלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים כמו רוזמרין, מרווה, קורנית, לבנדר, נענע ואורגנו, כולם גדלים בר בביום הים תיכוני.",
+      "text_markdown": "צמחים כמו רוזמרין, מרווה, קורנית, לבנדר, נענע ואורגנו, כולם גדלים בר בביום הים תיכוני.",
+      "tts": {
+        "text": "צמחים כמו רוזמרין, מרווה, קורנית, לבנדר, נענע ואורגנו, כולם גדלים בר בביום הים תיכוני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העץ המפורסם ביותר של הביום הזה הוא עץ הזית.",
+      "text_markdown": "העץ המפורסם ביותר של הביום הזה הוא עץ הזית.",
+      "tts": {
+        "text": "העץ המפורסם ביותר של הביום הזה הוא עץ הזית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לעץ זית יש גזע עבה ומפותל ועלים קטנים בצבע אפור כסוף.",
+      "text_markdown": "לעץ זית יש גזע עבה ומפותל ועלים קטנים בצבע אפור כסוף.",
+      "tts": {
+        "text": "לעץ זית יש גזע עבה ומפותל ועלים קטנים בצבע אפור כסוף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש עצי זית שחיים יותר מאלף שנה.",
+      "text_markdown": "יש עצי זית שחיים יותר מאלף שנה.",
+      "tts": {
+        "text": "יש עצי זית שחיים יותר מאלף שנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עצים נפוצים אחרים הם אלונים ירוקי עד נמוכים, אורנים ואלוני שעם.",
+      "text_markdown": "עצים נפוצים אחרים הם אלונים ירוקי עד נמוכים, אורנים ואלוני שעם.",
+      "tts": {
+        "text": "עצים נפוצים אחרים הם אלונים ירוקי עד נמוכים, אורנים ואלוני שעם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם גפן הבר התחילה בארצות האלה וטיפסה מעל השיחים.",
+      "text_markdown": "גם גפן הבר התחילה בארצות האלה וטיפסה מעל השיחים.",
+      "tts": {
+        "text": "גם גפן הבר התחילה בארצות האלה וטיפסה מעל השיחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאורך החוף, אפשר למצוא גושים גבוהים של במבוק, עצי תאנה ושקדיות.",
+      "text_markdown": "לאורך החוף, אפשר למצוא גושים גבוהים של במבוק, עצי תאנה ושקדיות.",
+      "tts": {
+        "text": "לאורך החוף, אפשר למצוא גושים גבוהים של במבוק, עצי תאנה ושקדיות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב הצמחים כאן שומרים על העלים שלהם כל השנה, במקום להשיר אותם בסתיו.",
+      "text_markdown": "רוב הצמחים כאן שומרים על העלים שלהם כל השנה, במקום להשיר אותם בסתיו.",
+      "tts": {
+        "text": "רוב הצמחים כאן שומרים על העלים שלהם כל השנה, במקום להשיר אותם בסתיו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם לא יכולים להרשות לעצמם להצמיח עלים חדשים בכל אביב.",
+      "text_markdown": "הם לא יכולים להרשות לעצמם להצמיח עלים חדשים בכל אביב.",
+      "tts": {
+        "text": "הם לא יכולים להרשות לעצמם להצמיח עלים חדשים בכל אביב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז הם נאחזים בעלים קטנים ועמידים לאורך כל השנה.",
+      "text_markdown": "אז הם נאחזים בעלים קטנים ועמידים לאורך כל השנה.",
+      "tts": {
+        "text": "אז הם נאחזים בעלים קטנים ועמידים לאורך כל השנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה מה שמעניק לביום הים תיכוני את מראהו המאובק וירוק העד.",
+      "text_markdown": "זה מה שמעניק לביום הים תיכוני את מראהו המאובק וירוק העד.",
+      "tts": {
+        "text": "זה מה שמעניק לביום הים תיכוני את מראהו המאובק וירוק העד.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "בעלי החיים",
+      "text_markdown": "בעלי החיים"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לבעלי החיים של הביום הים תיכוני יש דרכים רבות להתמודד עם החום והקיץ היבש.",
+      "text_markdown": "לבעלי החיים של הביום הים תיכוני יש דרכים רבות להתמודד עם החום והקיץ היבש.",
+      "tts": {
+        "text": "לבעלי החיים של הביום הים תיכוני יש דרכים רבות להתמודד עם החום והקיץ היבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רובם קטנים וזריזים.",
+      "text_markdown": "רובם קטנים וזריזים.",
+      "tts": {
+        "text": "רובם קטנים וזריזים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעל חיים קטן יכול להתחבא בקלות תחת שיח או בסדק שבין סלעים.",
+      "text_markdown": "בעל חיים קטן יכול להתחבא בקלות תחת שיח או בסדק שבין סלעים.",
+      "tts": {
+        "text": "בעל חיים קטן יכול להתחבא בקלות תחת שיח או בסדק שבין סלעים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רבים מהם נחים באמצע היום החם ויוצאים בקרירות הבוקר והערב.",
+      "text_markdown": "רבים מהם נחים באמצע היום החם ויוצאים בקרירות הבוקר והערב.",
+      "tts": {
+        "text": "רבים מהם נחים באמצע היום החם ויוצאים בקרירות הבוקר והערב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ארנבים וארנבות חיים בהרבה מהארצות האלה.",
+      "text_markdown": "ארנבים וארנבות חיים בהרבה מהארצות האלה.",
+      "tts": {
+        "text": "ארנבים וארנבות חיים בהרבה מהארצות האלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם אוכלים בדמדומים ובשחר, ומבלים את היום במחילה מוסתרת תחת שיח.",
+      "text_markdown": "הם אוכלים בדמדומים ובשחר, ומבלים את היום במחילה מוסתרת תחת שיח.",
+      "tts": {
+        "text": "הם אוכלים בדמדומים ובשחר, ומבלים את היום במחילה מוסתרת תחת שיח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שועלים צדים ארנבים ובעלי חיים קטנים אחרים.",
+      "text_markdown": "שועלים צדים ארנבים ובעלי חיים קטנים אחרים.",
+      "tts": {
+        "text": "שועלים צדים ארנבים ובעלי חיים קטנים אחרים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השועל מכיר כל שביל בין השיחים.",
+      "text_markdown": "השועל מכיר כל שביל בין השיחים.",
+      "tts": {
+        "text": "השועל מכיר כל שביל בין השיחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חזירי בר חופרים בקרקע הרכה ומחפשים שורשים, אגוזים ובעלי חיים קטנים.",
+      "text_markdown": "חזירי בר חופרים בקרקע הרכה ומחפשים שורשים, אגוזים ובעלי חיים קטנים.",
+      "tts": {
+        "text": "חזירי בר חופרים בקרקע הרכה ומחפשים שורשים, אגוזים ובעלי חיים קטנים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם חזקים וביישנים, ונעים בקבוצות משפחה קטנות.",
+      "text_markdown": "הם חזקים וביישנים, ונעים בקבוצות משפחה קטנות.",
+      "tts": {
+        "text": "הם חזקים וביישנים, ונעים בקבוצות משפחה קטנות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכמה מהארצות הים תיכוניות, חתולי בר קטנים צדים בלילה.",
+      "text_markdown": "בכמה מהארצות הים תיכוניות, חתולי בר קטנים צדים בלילה.",
+      "tts": {
+        "text": "בכמה מהארצות הים תיכוניות, חתולי בר קטנים צדים בלילה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השונר הוא אחד מהחתולים האלה, עם זנב קצר ואוזניים מצויצות.",
+      "text_markdown": "השונר הוא אחד מהחתולים האלה, עם זנב קצר ואוזניים מצויצות.",
+      "tts": {
+        "text": "השונר הוא אחד מהחתולים האלה, עם זנב קצר ואוזניים מצויצות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא נדיר כיום וחי רק בכמה פינות פראיות.",
+      "text_markdown": "הוא נדיר כיום וחי רק בכמה פינות פראיות.",
+      "tts": {
+        "text": "הוא נדיר כיום וחי רק בכמה פינות פראיות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם איילים חיים ביערות שבשולי הביום.",
+      "text_markdown": "גם איילים חיים ביערות שבשולי הביום.",
+      "tts": {
+        "text": "גם איילים חיים ביערות שבשולי הביום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נחשים ולטאות נמצאים בכל מקום.",
+      "text_markdown": "נחשים ולטאות נמצאים בכל מקום.",
+      "tts": {
+        "text": "נחשים ולטאות נמצאים בכל מקום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לטאה היושבת על סלע חמים היא מראה נפוץ בקיץ.",
+      "text_markdown": "לטאה היושבת על סלע חמים היא מראה נפוץ בקיץ.",
+      "tts": {
+        "text": "לטאה היושבת על סלע חמים היא מראה נפוץ בקיץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צבי יבשה נעים לאט בין השיחים, אוכלים עלים ועשב.",
+      "text_markdown": "צבי יבשה נעים לאט בין השיחים, אוכלים עלים ועשב.",
+      "tts": {
+        "text": "צבי יבשה נעים לאט בין השיחים, אוכלים עלים ועשב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צב היבשה הים תיכוני יכול לחיות עשרות שנים רבות.",
+      "text_markdown": "צב היבשה הים תיכוני יכול לחיות עשרות שנים רבות.",
+      "tts": {
+        "text": "צב היבשה הים תיכוני יכול לחיות עשרות שנים רבות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ציפורים רבות חיות כאן.",
+      "text_markdown": "ציפורים רבות חיות כאן.",
+      "tts": {
+        "text": "ציפורים רבות חיות כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דרורים, אדומי החזה וסבכים ממלאים את השיחים בקול.",
+      "text_markdown": "דרורים, אדומי החזה וסבכים ממלאים את השיחים בקול.",
+      "tts": {
+        "text": "דרורים, אדומי החזה וסבכים ממלאים את השיחים בקול.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גבוה מעל הראש, נשרים וציפורים גדולות אחרות מרחפים על אוויר אחר הצהריים החמים.",
+      "text_markdown": "גבוה מעל הראש, נשרים וציפורים גדולות אחרות מרחפים על אוויר אחר הצהריים החמים.",
+      "tts": {
+        "text": "גבוה מעל הראש, נשרים וציפורים גדולות אחרות מרחפים על אוויר אחר הצהריים החמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באביב, פרפרים רוקדים מפרח לפרח.",
+      "text_markdown": "באביב, פרפרים רוקדים מפרח לפרח.",
+      "tts": {
+        "text": "באביב, פרפרים רוקדים מפרח לפרח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צרצרים וחגבים שרים בערבי הקיץ החמים.",
+      "text_markdown": "צרצרים וחגבים שרים בערבי הקיץ החמים.",
+      "tts": {
+        "text": "צרצרים וחגבים שרים בערבי הקיץ החמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ליד הים, שחפים וציפורי ים אחרות מקננים על המצוקים ועל איים סלעיים.",
+      "text_markdown": "ליד הים, שחפים וציפורי ים אחרות מקננים על המצוקים ועל איים סלעיים.",
+      "tts": {
+        "text": "ליד הים, שחפים וציפורי ים אחרות מקננים על המצוקים ועל איים סלעיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל בעל חיים כאן יודע איך למצוא צל בקיץ, איך לשתות במעיין, ואיך לחכות לקרירות גשמי החורף.",
+      "text_markdown": "כל בעל חיים כאן יודע איך למצוא צל בקיץ, איך לשתות במעיין, ואיך לחכות לקרירות גשמי החורף.",
+      "tts": {
+        "text": "כל בעל חיים כאן יודע איך למצוא צל בקיץ, איך לשתות במעיין, ואיך לחכות לקרירות גשמי החורף.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האנשים",
+      "text_markdown": "האנשים"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביום הים תיכוני הוא בית לאנשים כבר זמן רב מאוד.",
+      "text_markdown": "הביום הים תיכוני הוא בית לאנשים כבר זמן רב מאוד.",
+      "tts": {
+        "text": "הביום הים תיכוני הוא בית לאנשים כבר זמן רב מאוד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמה מהערים והחוות העתיקות ביותר בעולם החלו כאן.",
+      "text_markdown": "כמה מהערים והחוות העתיקות ביותר בעולם החלו כאן.",
+      "tts": {
+        "text": "כמה מהערים והחוות העתיקות ביותר בעולם החלו כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך אלפי שנים, אנשים על חופי הים התיכון גידלו שלושה צמחים יחד.",
+      "text_markdown": "במשך אלפי שנים, אנשים על חופי הים התיכון גידלו שלושה צמחים יחד.",
+      "tts": {
+        "text": "במשך אלפי שנים, אנשים על חופי הים התיכון גידלו שלושה צמחים יחד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מגדלים עצי זית לשמן.",
+      "text_markdown": "הם מגדלים עצי זית לשמן.",
+      "tts": {
+        "text": "הם מגדלים עצי זית לשמן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מגדלים גפנים לפרי וליין.",
+      "text_markdown": "הם מגדלים גפנים לפרי וליין.",
+      "tts": {
+        "text": "הם מגדלים גפנים לפרי וליין.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מגדלים חיטה ודגנים אחרים ללחם.",
+      "text_markdown": "הם מגדלים חיטה ודגנים אחרים ללחם.",
+      "tts": {
+        "text": "הם מגדלים חיטה ודגנים אחרים ללחם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביחד, השלושה האלה נקראים לפעמים לב המטבח הים תיכוני.",
+      "text_markdown": "ביחד, השלושה האלה נקראים לפעמים לב המטבח הים תיכוני.",
+      "tts": {
+        "text": "ביחד, השלושה האלה נקראים לפעמים לב המטבח הים תיכוני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אליהם הוסיפו האנשים ירקות, פירות וצמחי התבלין הבר של הגבעות.",
+      "text_markdown": "אליהם הוסיפו האנשים ירקות, פירות וצמחי התבלין הבר של הגבעות.",
+      "tts": {
+        "text": "אליהם הוסיפו האנשים ירקות, פירות וצמחי התבלין הבר של הגבעות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים גם החזיקו בעדרי כבשים ועזים בארצות האלה במשך אלפי שנים רבות.",
+      "text_markdown": "אנשים גם החזיקו בעדרי כבשים ועזים בארצות האלה במשך אלפי שנים רבות.",
+      "tts": {
+        "text": "אנשים גם החזיקו בעדרי כבשים ועזים בארצות האלה במשך אלפי שנים רבות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי החיים יכולים למצוא מזון במדרונות הסלעיים שבהם קשה לגדל יבולים.",
+      "text_markdown": "בעלי החיים יכולים למצוא מזון במדרונות הסלעיים שבהם קשה לגדל יבולים.",
+      "tts": {
+        "text": "בעלי החיים יכולים למצוא מזון במדרונות הסלעיים שבהם קשה לגדל יבולים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם נותנים חלב לגבינה וליוגורט, צמר לבגדים, ובשר.",
+      "text_markdown": "הם נותנים חלב לגבינה וליוגורט, צמר לבגדים, ובשר.",
+      "tts": {
+        "text": "הם נותנים חלב לגבינה וליוגורט, צמר לבגדים, ובשר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מכיוון שהימים והאוקיינוסים קרובים, אנשי הביום הזה היו תמיד דייגים ומלחים.",
+      "text_markdown": "מכיוון שהימים והאוקיינוסים קרובים, אנשי הביום הזה היו תמיד דייגים ומלחים.",
+      "tts": {
+        "text": "מכיוון שהימים והאוקיינוסים קרובים, אנשי הביום הזה היו תמיד דייגים ומלחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "סירות עץ יוצאות בשחר וחוזרות עם דגים, תמנונים ופירות ים אחרים.",
+      "text_markdown": "סירות עץ יוצאות בשחר וחוזרות עם דגים, תמנונים ופירות ים אחרים.",
+      "tts": {
+        "text": "סירות עץ יוצאות בשחר וחוזרות עם דגים, תמנונים ופירות ים אחרים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בארצות הים תיכוניות האחרות בעולם, בקליפורניה, צ׳ילה, דרום אפריקה ואוסטרליה, האנשים שחיו שם במשך אלפי שנים השתמשו באותם צמחי בר ובעלי חיים בדרכים משלהם.",
+      "text_markdown": "בארצות הים תיכוניות האחרות בעולם, בקליפורניה, צ׳ילה, דרום אפריקה ואוסטרליה, האנשים שחיו שם במשך אלפי שנים השתמשו באותם צמחי בר ובעלי חיים בדרכים משלהם.",
+      "tts": {
+        "text": "בארצות הים תיכוניות האחרות בעולם, בקליפורניה, צ׳ילה, דרום אפריקה ואוסטרליה, האנשים שחיו שם במשך אלפי שנים השתמשו באותם צמחי בר ובעלי חיים בדרכים משלהם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשחקלאים מהארצות שסביב הים התיכון הגיעו לאותם מקומות הרבה יותר מאוחר, הם הביאו איתם את הזיתים שלהם, את הגפנים שלהם ואת החיטה שלהם.",
+      "text_markdown": "כשחקלאים מהארצות שסביב הים התיכון הגיעו לאותם מקומות הרבה יותר מאוחר, הם הביאו איתם את הזיתים שלהם, את הגפנים שלהם ואת החיטה שלהם.",
+      "tts": {
+        "text": "כשחקלאים מהארצות שסביב הים התיכון הגיעו לאותם מקומות הרבה יותר מאוחר, הם הביאו איתם את הזיתים שלהם, את הגפנים שלהם ואת החיטה שלהם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כיום, בכל חמשת האזורים הים תיכוניים בעולם מגדלים אותם סוגי מזון.",
+      "text_markdown": "כיום, בכל חמשת האזורים הים תיכוניים בעולם מגדלים אותם סוגי מזון.",
+      "tts": {
+        "text": "כיום, בכל חמשת האזורים הים תיכוניים בעולם מגדלים אותם סוגי מזון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה כאילו מזמינה את זה.",
+      "text_markdown": "האדמה כאילו מזמינה את זה.",
+      "tts": {
+        "text": "האדמה כאילו מזמינה את זה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המטבחים של כל אזור ים תיכוני חולקים את אותן מתנות יסודיות.",
+      "text_markdown": "המטבחים של כל אזור ים תיכוני חולקים את אותן מתנות יסודיות.",
+      "tts": {
+        "text": "המטבחים של כל אזור ים תיכוני חולקים את אותן מתנות יסודיות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לחם, גבינה, שמן זית, עגבניות טריות, דגים, פירות ויין.",
+      "text_markdown": "לחם, גבינה, שמן זית, עגבניות טריות, דגים, פירות ויין.",
+      "tts": {
+        "text": "לחם, גבינה, שמן זית, עגבניות טריות, דגים, פירות ויין.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשי הארצות האלה ידעו תמיד איך להפיק את המיטב מקיץ ארוך ויבש.",
+      "text_markdown": "אנשי הארצות האלה ידעו תמיד איך להפיק את המיטב מקיץ ארוך ויבש.",
+      "tts": {
+        "text": "אנשי הארצות האלה ידעו תמיד איך להפיק את המיטב מקיץ ארוך ויבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם אוכלים טרי בחודשים החמים.",
+      "text_markdown": "הם אוכלים טרי בחודשים החמים.",
+      "tts": {
+        "text": "הם אוכלים טרי בחודשים החמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם שומרים מזון בשמן, במלח ובצנצנות לקראת החורף הגשום.",
+      "text_markdown": "הם שומרים מזון בשמן, במלח ובצנצנות לקראת החורף הגשום.",
+      "tts": {
+        "text": "הם שומרים מזון בשמן, במלח ובצנצנות לקראת החורף הגשום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל אזור ים תיכוני, לאורח החיים הזה יש שפות, שירים וסיפורים משלו.",
+      "text_markdown": "בכל אזור ים תיכוני, לאורח החיים הזה יש שפות, שירים וסיפורים משלו.",
+      "tts": {
+        "text": "בכל אזור ים תיכוני, לאורח החיים הזה יש שפות, שירים וסיפורים משלו.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הביום היום",
+      "text_markdown": "הביום היום"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביום הים תיכוני קטן אך חשוב מאוד.",
+      "text_markdown": "הביום הים תיכוני קטן אך חשוב מאוד.",
+      "tts": {
+        "text": "הביום הים תיכוני קטן אך חשוב מאוד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אף שהוא מכסה רק חלק קטן מכדור הארץ, יש בו מספר עצום של צמחים ובעלי חיים שלא נמצאים בשום מקום אחר.",
+      "text_markdown": "אף שהוא מכסה רק חלק קטן מכדור הארץ, יש בו מספר עצום של צמחים ובעלי חיים שלא נמצאים בשום מקום אחר.",
+      "tts": {
+        "text": "אף שהוא מכסה רק חלק קטן מכדור הארץ, יש בו מספר עצום של צמחים ובעלי חיים שלא נמצאים בשום מקום אחר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לבני אדם, הביום הזה היה ערש המזון והחקלאות במשך אלפי שנים.",
+      "text_markdown": "לבני אדם, הביום הזה היה ערש המזון והחקלאות במשך אלפי שנים.",
+      "tts": {
+        "text": "לבני אדם, הביום הזה היה ערש המזון והחקלאות במשך אלפי שנים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל הביום נמצא בצרה בהרבה מקומות.",
+      "text_markdown": "אבל הביום נמצא בצרה בהרבה מקומות.",
+      "tts": {
+        "text": "אבל הביום נמצא בצרה בהרבה מקומות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ערים ועיירות צמחו לאורך החופים שבהם מזג האוויר נעים והים קרוב.",
+      "text_markdown": "ערים ועיירות צמחו לאורך החופים שבהם מזג האוויר נעים והים קרוב.",
+      "tts": {
+        "text": "ערים ועיירות צמחו לאורך החופים שבהם מזג האוויר נעים והים קרוב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כבישים, בתים, מלונות ומשקים החליפו רבים מהשיחים והעצים הפראיים.",
+      "text_markdown": "כבישים, בתים, מלונות ומשקים החליפו רבים מהשיחים והעצים הפראיים.",
+      "tts": {
+        "text": "כבישים, בתים, מלונות ומשקים החליפו רבים מהשיחים והעצים הפראיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קיצים ארוכים ויבשים, חמים יותר מבעבר, הופכים את השרפות לגדולות ומסוכנות יותר.",
+      "text_markdown": "קיצים ארוכים ויבשים, חמים יותר מבעבר, הופכים את השרפות לגדולות ומסוכנות יותר.",
+      "tts": {
+        "text": "קיצים ארוכים ויבשים, חמים יותר מבעבר, הופכים את השרפות לגדולות ומסוכנות יותר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמה בעלי חיים, כמו השונר וצב היבשה הים תיכוני, הפכו לנדירים מאוד.",
+      "text_markdown": "כמה בעלי חיים, כמו השונר וצב היבשה הים תיכוני, הפכו לנדירים מאוד.",
+      "tts": {
+        "text": "כמה בעלי חיים, כמו השונר וצב היבשה הים תיכוני, הפכו לנדירים מאוד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קבוצות רבות ברחבי העולם פועלות כדי לטפל במה שנותר.",
+      "text_markdown": "קבוצות רבות ברחבי העולם פועלות כדי לטפל במה שנותר.",
+      "tts": {
+        "text": "קבוצות רבות ברחבי העולם פועלות כדי לטפל במה שנותר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מייעדים פארקים שבהם הצמחים ובעלי החיים הפראיים יכולים עדיין לחיות.",
+      "text_markdown": "הם מייעדים פארקים שבהם הצמחים ובעלי החיים הפראיים יכולים עדיין לחיות.",
+      "tts": {
+        "text": "הם מייעדים פארקים שבהם הצמחים ובעלי החיים הפראיים יכולים עדיין לחיות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם נוטעים עצי זית חדשים ומגנים על העתיקים.",
+      "text_markdown": "הם נוטעים עצי זית חדשים ומגנים על העתיקים.",
+      "tts": {
+        "text": "הם נוטעים עצי זית חדשים ומגנים על העתיקים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם עוזרים לחקלאים לגדל מזון בדרכים שמיטיבות עם האדמה.",
+      "text_markdown": "הם עוזרים לחקלאים לגדל מזון בדרכים שמיטיבות עם האדמה.",
+      "tts": {
+        "text": "הם עוזרים לחקלאים לגדל מזון בדרכים שמיטיבות עם האדמה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם חוקרים את הביום כדי שנוכל להבין אותו טוב יותר.",
+      "text_markdown": "הם חוקרים את הביום כדי שנוכל להבין אותו טוב יותר.",
+      "tts": {
+        "text": "הם חוקרים את הביום כדי שנוכל להבין אותו טוב יותר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביום ים תיכוני בריא הוא מקום שקט, ריחני ויפה.",
+      "text_markdown": "ביום ים תיכוני בריא הוא מקום שקט, ריחני ויפה.",
+      "tts": {
+        "text": "ביום ים תיכוני בריא הוא מקום שקט, ריחני ויפה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "הביום היום",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא ראוי לטיפול שלנו.",
+      "text_markdown": "הוא ראוי לטיפול שלנו.",
+      "tts": {
+        "text": "הוא ראוי לטיפול שלנו.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "סיכום",
+      "text_markdown": "סיכום"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הביום הים תיכוני.",
+      "text_markdown": "זה הביום הים תיכוני.",
+      "tts": {
+        "text": "זה הביום הים תיכוני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עולם בהיר, יבש וריחני של עצי זית, שיחים נמוכים וערבי קיץ חמים.",
+      "text_markdown": "עולם בהיר, יבש וריחני של עצי זית, שיחים נמוכים וערבי קיץ חמים.",
+      "tts": {
+        "text": "עולם בהיר, יבש וריחני של עצי זית, שיחים נמוכים וערבי קיץ חמים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם תעמדו פעם באחד מהם, עצרו לרגע.",
+      "text_markdown": "אם תעמדו פעם באחד מהם, עצרו לרגע.",
+      "tts": {
+        "text": "אם תעמדו פעם באחד מהם, עצרו לרגע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הריחו את צמחי התבלין החמים באוויר.",
+      "text_markdown": "הריחו את צמחי התבלין החמים באוויר.",
+      "tts": {
+        "text": "הריחו את צמחי התבלין החמים באוויר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקשיבו לצרצרים בעשב היבש.",
+      "text_markdown": "הקשיבו לצרצרים בעשב היבש.",
+      "tts": {
+        "text": "הקשיבו לצרצרים בעשב היבש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הביטו לעבר הים.",
+      "text_markdown": "הביטו לעבר הים.",
+      "tts": {
+        "text": "הביטו לעבר הים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "סיכום",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תרגישו את לב הביום פועם סביבכם.",
+      "text_markdown": "תרגישו את לב הביום פועם סביבכם.",
+      "tts": {
+        "text": "תרגישו את לב הביום פועם סביבכם.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

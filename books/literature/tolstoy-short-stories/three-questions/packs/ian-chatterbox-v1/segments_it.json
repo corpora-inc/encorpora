@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "it",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Tre domande",
+      "text_markdown": "Tre domande",
+      "title": "Tre domande"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Un re pensò che se avesse sempre saputo quale fosse il momento più importante per ogni cosa, e avesse conosciuto le persone più necessarie, e, soprattutto, avesse sempre saputo quale fosse la più importante di tutte le cose da fare, non avrebbe mai fallito in nulla.",
+      "text_markdown": "Un re pensò che se avesse sempre saputo quale fosse il momento più importante per ogni cosa, e avesse conosciuto le persone più necessarie, e, soprattutto, avesse sempre saputo quale fosse la più importante di tutte le cose da fare, non avrebbe mai fallito in nulla.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Un re pensò che se avesse sempre saputo quale fosse il momento più importante per ogni cosa, e avesse conosciuto le persone più necessarie, e, soprattutto, avesse sempre saputo quale fosse la più importante di tutte le cose da fare, non avrebbe mai fallito in nulla.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "E, pensando questo, il re annunciò in tutto il suo regno che avrebbe dato una grande ricompensa a chi gli avesse insegnato come conoscere il momento giusto per ogni cosa, come sapere quali persone sono le più necessarie, e come non sbagliare nel riconoscere quale sia la cosa più importante di tutte.",
+      "text_markdown": "E, pensando questo, il re annunciò in tutto il suo regno che avrebbe dato una grande ricompensa a chi gli avesse insegnato come conoscere il momento giusto per ogni cosa, come sapere quali persone sono le più necessarie, e come non sbagliare nel riconoscere quale sia la cosa più importante di tutte.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "E, pensando questo, il re annunciò in tutto il suo regno che avrebbe dato una grande ricompensa a chi gli avesse insegnato come conoscere il momento giusto per ogni cosa, come sapere quali persone sono le più necessarie, e come non sbagliare nel riconoscere quale sia la cosa più importante di tutte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Iniziarono a venire dal re persone dotte e risposero alle sue domande in modi diversi.",
+      "text_markdown": "Iniziarono a venire dal re persone dotte e risposero alle sue domande in modi diversi.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Iniziarono a venire dal re persone dotte e risposero alle sue domande in modi diversi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Alla prima domanda alcuni dicevano che per conoscere il momento giusto per ogni cosa, bisognava preparare in anticipo un programma di giorni, mesi e anni e seguirlo rigorosamente.",
+      "text_markdown": "Alla prima domanda alcuni dicevano che per conoscere il momento giusto per ogni cosa, bisognava preparare in anticipo un programma di giorni, mesi e anni e seguirlo rigorosamente.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Alla prima domanda alcuni dicevano che per conoscere il momento giusto per ogni cosa, bisognava preparare in anticipo un programma di giorni, mesi e anni e seguirlo rigorosamente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Solo allora, dicevano, ogni cosa sarebbe stata fatta al momento giusto.",
+      "text_markdown": "Solo allora, dicevano, ogni cosa sarebbe stata fatta al momento giusto.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Solo allora, dicevano, ogni cosa sarebbe stata fatta al momento giusto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Altri dicevano che non si poteva decidere in anticipo quale fosse il momento giusto per quale cosa, ma che bisognava, senza distrarsi con vani divertimenti, essere sempre attenti a tutto ciò che accadeva, e allora fare sempre quello che era più necessario.",
+      "text_markdown": "Altri dicevano che non si poteva decidere in anticipo quale fosse il momento giusto per quale cosa, ma che bisognava, senza distrarsi con vani divertimenti, essere sempre attenti a tutto ciò che accadeva, e allora fare sempre quello che era più necessario.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Altri dicevano che non si poteva decidere in anticipo quale fosse il momento giusto per quale cosa, ma che bisognava, senza distrarsi con vani divertimenti, essere sempre attenti a tutto ciò che accadeva, e allora fare sempre quello che era più necessario.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "I terzi dicevano che per quanto attento fosse il re a tutto ciò che accadeva, una sola persona non poteva sempre decidere correttamente su ogni cosa, quando fosse il suo momento, e che bisognava avere il consiglio di saggi e secondo il loro consiglio stabilire il momento per ogni cosa.",
+      "text_markdown": "I terzi dicevano che per quanto attento fosse il re a tutto ciò che accadeva, una sola persona non poteva sempre decidere correttamente su ogni cosa, quando fosse il suo momento, e che bisognava avere il consiglio di saggi e secondo il loro consiglio stabilire il momento per ogni cosa.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "I terzi dicevano che per quanto attento fosse il re a tutto ciò che accadeva, una sola persona non poteva sempre decidere correttamente su ogni cosa, quando fosse il suo momento, e che bisognava avere il consiglio di saggi e secondo il loro consiglio stabilire il momento per ogni cosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "I quarti dicevano che ci sono cose che bisogna decidere subito, senza aspettare una consultazione, e che per sapere quando esattamente accadono, bisogna sapere cosa succederà in futuro.",
+      "text_markdown": "I quarti dicevano che ci sono cose che bisogna decidere subito, senza aspettare una consultazione, e che per sapere quando esattamente accadono, bisogna sapere cosa succederà in futuro.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "I quarti dicevano che ci sono cose che bisogna decidere subito, senza aspettare una consultazione, e che per sapere quando esattamente accadono, bisogna sapere cosa succederà in futuro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "E questo lo possono sapere solo i maghi.",
+      "text_markdown": "E questo lo possono sapere solo i maghi.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "E questo lo possono sapere solo i maghi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "E perciò, per conoscere il momento giusto per ogni cosa, bisogna chiedere ai maghi.",
+      "text_markdown": "E perciò, per conoscere il momento giusto per ogni cosa, bisogna chiedere ai maghi.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "E perciò, per conoscere il momento giusto per ogni cosa, bisogna chiedere ai maghi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Anche alla seconda domanda risposero in modo diverso.",
+      "text_markdown": "Anche alla seconda domanda risposero in modo diverso.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Anche alla seconda domanda risposero in modo diverso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Alcuni dicevano che le persone più necessarie al re erano i governatori, altri dicevano i sacerdoti, altri i medici, altri ancora i guerrieri.",
+      "text_markdown": "Alcuni dicevano che le persone più necessarie al re erano i governatori, altri dicevano i sacerdoti, altri i medici, altri ancora i guerrieri.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Alcuni dicevano che le persone più necessarie al re erano i governatori, altri dicevano i sacerdoti, altri i medici, altri ancora i guerrieri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Alla terza domanda — quale cosa è la più importante? — alcuni dicevano che la cosa più importante al mondo è la scienza; altri dicevano l'arte militare, altri dicevano la pietà.",
+      "text_markdown": "Alla terza domanda — quale cosa è la più importante? — alcuni dicevano che la cosa più importante al mondo è la scienza; altri dicevano l'arte militare, altri dicevano la pietà.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Alla terza domanda — quale cosa è la più importante? — alcuni dicevano che la cosa più importante al mondo è la scienza; altri dicevano l'arte militare, altri dicevano la pietà.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Tutte le risposte erano diverse, e perciò il re non fu d'accordo con nessuna e non diede ricompense a nessuno.",
+      "text_markdown": "Tutte le risposte erano diverse, e perciò il re non fu d'accordo con nessuna e non diede ricompense a nessuno.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Tutte le risposte erano diverse, e perciò il re non fu d'accordo con nessuna e non diede ricompense a nessuno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Per conoscere meglio le risposte alle sue domande, decise di chiedere a un eremita, del quale si diceva che fosse un uomo saggio.",
+      "text_markdown": "Per conoscere meglio le risposte alle sue domande, decise di chiedere a un eremita, del quale si diceva che fosse un uomo saggio.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Per conoscere meglio le risposte alle sue domande, decise di chiedere a un eremita, del quale si diceva che fosse un uomo saggio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "L'eremita viveva nella foresta, e non ne usciva mai.",
+      "text_markdown": "L'eremita viveva nella foresta, e non ne usciva mai.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "L'eremita viveva nella foresta, e non ne usciva mai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Riceveva solo gente semplice, e perciò il re si vestì semplicemente e, prima di arrivare alla dimora dell'eremita, scese da cavallo e andò da lui da solo.",
+      "text_markdown": "Riceveva solo gente semplice, e perciò il re si vestì semplicemente e, prima di arrivare alla dimora dell'eremita, scese da cavallo e andò da lui da solo.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Riceveva solo gente semplice, e perciò il re si vestì semplicemente e, prima di arrivare alla dimora dell'eremita, scese da cavallo e andò da lui da solo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Quando il re si avvicinò a lui, l'eremita stava zappando delle aiuole davanti alla sua capanna.",
+      "text_markdown": "Quando il re si avvicinò a lui, l'eremita stava zappando delle aiuole davanti alla sua capanna.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Quando il re si avvicinò a lui, l'eremita stava zappando delle aiuole davanti alla sua capanna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Vedendo il re, l'eremita gli fece un cenno con la testa e continuò a zappare.",
+      "text_markdown": "Vedendo il re, l'eremita gli fece un cenno con la testa e continuò a zappare.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Vedendo il re, l'eremita gli fece un cenno con la testa e continuò a zappare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "L'eremita era magro e debole e, piantando la vanga nella terra e rivoltando piccole zolle di terra, ansimava pesantemente.",
+      "text_markdown": "L'eremita era magro e debole e, piantando la vanga nella terra e rivoltando piccole zolle di terra, ansimava pesantemente.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "L'eremita era magro e debole e, piantando la vanga nella terra e rivoltando piccole zolle di terra, ansimava pesantemente.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Il re si avvicinò a lui e disse:",
+      "text_markdown": "Il re si avvicinò a lui e disse:",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Il re si avvicinò a lui e disse:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Sono venuto da te, saggio eremita, per chiederti di rispondere a tre domande: quale momento bisogna ricordare e non lasciar passare, per non pentirsene poi?",
+      "text_markdown": "— Sono venuto da te, saggio eremita, per chiederti di rispondere a tre domande: quale momento bisogna ricordare e non lasciar passare, per non pentirsene poi?",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Sono venuto da te, saggio eremita, per chiederti di rispondere a tre domande: quale momento bisogna ricordare e non lasciar passare, per non pentirsene poi?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Quali persone sono le più necessarie?",
+      "text_markdown": "Quali persone sono le più necessarie?",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Quali persone sono le più necessarie?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "E quale cosa è la più importante?",
+      "text_markdown": "E quale cosa è la più importante?",
+      "title": "Tre domande",
+      "tts": {
+        "text": "E quale cosa è la più importante?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "L'eremita ascoltò il re, ma non rispose nulla, sputò sulla mano e ricominciò a zappare.",
+      "text_markdown": "L'eremita ascoltò il re, ma non rispose nulla, sputò sulla mano e ricominciò a zappare.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "L'eremita ascoltò il re, ma non rispose nulla, sputò sulla mano e ricominciò a zappare.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Sei stanco, — disse il re.",
+      "text_markdown": "— Sei stanco, — disse il re.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Sei stanco, — disse il re.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Lascia che ti aiuti.",
+      "text_markdown": "— Lascia che ti aiuti.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Lascia che ti aiuti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Grazie, — disse l'eremita e, dando al re la vanga, si sedette per terra.",
+      "text_markdown": "— Grazie, — disse l'eremita e, dando al re la vanga, si sedette per terra.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Grazie, — disse l'eremita e, dando al re la vanga, si sedette per terra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Dopo aver zappato due aiuole, il re si fermò e ripeté le sue domande.",
+      "text_markdown": "Dopo aver zappato due aiuole, il re si fermò e ripeté le sue domande.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Dopo aver zappato due aiuole, il re si fermò e ripeté le sue domande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "L'eremita di nuovo non rispose, ma si alzò e tese la mano verso la vanga:",
+      "text_markdown": "L'eremita di nuovo non rispose, ma si alzò e tese la mano verso la vanga:",
+      "title": "Tre domande",
+      "tts": {
+        "text": "L'eremita di nuovo non rispose, ma si alzò e tese la mano verso la vanga:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Ora riposati, dammi la vanga, — disse.",
+      "text_markdown": "— Ora riposati, dammi la vanga, — disse.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Ora riposati, dammi la vanga, — disse.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Ma il re non diede la vanga e continuò a zappare.",
+      "text_markdown": "Ma il re non diede la vanga e continuò a zappare.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Ma il re non diede la vanga e continuò a zappare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Passò un'ora, ne passò un'altra.",
+      "text_markdown": "Passò un'ora, ne passò un'altra.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Passò un'ora, ne passò un'altra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Il sole tramontò dietro gli alberi.",
+      "text_markdown": "Il sole tramontò dietro gli alberi.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Il sole tramontò dietro gli alberi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Il re piantò la vanga nella terra e disse:",
+      "text_markdown": "Il re piantò la vanga nella terra e disse:",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Il re piantò la vanga nella terra e disse:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Sono venuto da te, saggio, per avere risposta alle mie domande.",
+      "text_markdown": "— Sono venuto da te, saggio, per avere risposta alle mie domande.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Sono venuto da te, saggio, per avere risposta alle mie domande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Se non puoi rispondermi, dimmelo, e tornerò a casa.",
+      "text_markdown": "Se non puoi rispondermi, dimmelo, e tornerò a casa.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "Se non puoi rispondermi, dimmelo, e tornerò a casa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Ecco, qualcuno sta correndo, — disse l'eremita.",
+      "text_markdown": "— Ecco, qualcuno sta correndo, — disse l'eremita.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Ecco, qualcuno sta correndo, — disse l'eremita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Vediamo chi è.",
+      "text_markdown": "— Vediamo chi è.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Vediamo chi è.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Lo zar si voltò e vide un uomo barbuto che correva fuori dal bosco.",
+      "text_markdown": "Lo zar si voltò e vide un uomo barbuto che correva fuori dal bosco.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar si voltò e vide un uomo barbuto che correva fuori dal bosco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Quest'uomo si teneva con le mani una ferita al ventre, dalle quali colava sangue.",
+      "text_markdown": "Quest'uomo si teneva con le mani una ferita al ventre, dalle quali colava sangue.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Quest'uomo si teneva con le mani una ferita al ventre, dalle quali colava sangue.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Arrivato di corsa dallo zar, l'uomo cadde a terra privo di sensi e giaceva gemendo piano.",
+      "text_markdown": "Arrivato di corsa dallo zar, l'uomo cadde a terra privo di sensi e giaceva gemendo piano.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Arrivato di corsa dallo zar, l'uomo cadde a terra privo di sensi e giaceva gemendo piano.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Lo zar insieme all'eremita slacciò e tolse i vestiti all'uomo.",
+      "text_markdown": "Lo zar insieme all'eremita slacciò e tolse i vestiti all'uomo.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar insieme all'eremita slacciò e tolse i vestiti all'uomo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Nel ventre c'era una grande ferita.",
+      "text_markdown": "Nel ventre c'era una grande ferita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Nel ventre c'era una grande ferita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Lo zar, come poté, lavò la ferita e la fasciò con il suo fazzoletto e l'asciugamano dell'eremita.",
+      "text_markdown": "Lo zar, come poté, lavò la ferita e la fasciò con il suo fazzoletto e l'asciugamano dell'eremita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar, come poté, lavò la ferita e la fasciò con il suo fazzoletto e l'asciugamano dell'eremita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Ma il sangue non si fermava.",
+      "text_markdown": "Ma il sangue non si fermava.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Ma il sangue non si fermava.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Lo zar più volte tolse la benda e di nuovo lavò e fasciò la ferita.",
+      "text_markdown": "Lo zar più volte tolse la benda e di nuovo lavò e fasciò la ferita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar più volte tolse la benda e di nuovo lavò e fasciò la ferita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Quando finalmente il sangue si calmò, l'uomo rinvenne e chiese da bere.",
+      "text_markdown": "Quando finalmente il sangue si calmò, l'uomo rinvenne e chiese da bere.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Quando finalmente il sangue si calmò, l'uomo rinvenne e chiese da bere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Lo zar gli portò dell'acqua fresca e lo dissetò.",
+      "text_markdown": "Lo zar gli portò dell'acqua fresca e lo dissetò.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar gli portò dell'acqua fresca e lo dissetò.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Nel frattempo il sole tramontò completamente e iniziò a fare freddo.",
+      "text_markdown": "Nel frattempo il sole tramontò completamente e iniziò a fare freddo.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Nel frattempo il sole tramontò completamente e iniziò a fare freddo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Lo zar con l'aiuto dell'eremita portò il ferito nella capanna e lo mise sul letto.",
+      "text_markdown": "Lo zar con l'aiuto dell'eremita portò il ferito nella capanna e lo mise sul letto.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar con l'aiuto dell'eremita portò il ferito nella capanna e lo mise sul letto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Il ferito chiuse gli occhi e si calmò.",
+      "text_markdown": "Il ferito chiuse gli occhi e si calmò.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Il ferito chiuse gli occhi e si calmò.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Lo zar era così stanco dal camminare e dal lavoro che lì stesso, sulla soglia, si sdraiò e si addormentò — si addormentò così profondamente che dormì tutta la breve notte estiva, e quando si svegliò al mattino, per molto tempo non riuscì a capire dove fosse e chi fosse quello strano uomo barbuto che giaceva sul letto e lo fissava ostinatamente con occhi lucenti.",
+      "text_markdown": "Lo zar era così stanco dal camminare e dal lavoro che lì stesso, sulla soglia, si sdraiò e si addormentò — si addormentò così profondamente che dormì tutta la breve notte estiva, e quando si svegliò al mattino, per molto tempo non riuscì a capire dove fosse e chi fosse quello strano uomo barbuto che giaceva sul letto e lo fissava ostinatamente con occhi lucenti.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar era così stanco dal camminare e dal lavoro che lì stesso, sulla soglia, si sdraiò e si addormentò — si addormentò così profondamente che dormì tutta la breve notte estiva, e quando si svegliò al mattino, per molto tempo non riuscì a capire dove fosse e chi fosse quello strano uomo barbuto che giaceva sul letto e lo fissava ostinatamente con occhi lucenti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Perdonami — disse l'uomo barbuto con voce debole, quando vide che lo zar si era svegliato e lo guardava.",
+      "text_markdown": "— Perdonami — disse l'uomo barbuto con voce debole, quando vide che lo zar si era svegliato e lo guardava.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Perdonami — disse l'uomo barbuto con voce debole, quando vide che lo zar si era svegliato e lo guardava.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Io non ti conosco e non ho niente da perdonarti — disse lo zar.",
+      "text_markdown": "— Io non ti conosco e non ho niente da perdonarti — disse lo zar.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Io non ti conosco e non ho niente da perdonarti — disse lo zar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Tu non mi conosci, ma io ti conosco.",
+      "text_markdown": "— Tu non mi conosci, ma io ti conosco.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Tu non mi conosci, ma io ti conosco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Io sono il tuo nemico, quello stesso che ha giurato di vendicarsi di te per aver giustiziato mio fratello e avermi tolto i miei possedimenti.",
+      "text_markdown": "Io sono il tuo nemico, quello stesso che ha giurato di vendicarsi di te per aver giustiziato mio fratello e avermi tolto i miei possedimenti.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Io sono il tuo nemico, quello stesso che ha giurato di vendicarsi di te per aver giustiziato mio fratello e avermi tolto i miei possedimenti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Sapevo che eri andato solo dall'eremita e ho deciso di ucciderti sulla via del ritorno.",
+      "text_markdown": "Sapevo che eri andato solo dall'eremita e ho deciso di ucciderti sulla via del ritorno.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Sapevo che eri andato solo dall'eremita e ho deciso di ucciderti sulla via del ritorno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Ma passò tutto il giorno e tu non arrivavi mai.",
+      "text_markdown": "Ma passò tutto il giorno e tu non arrivavi mai.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Ma passò tutto il giorno e tu non arrivavi mai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Allora uscii dall'agguato per cercarti e mi imbattei nelle tue guardie del corpo.",
+      "text_markdown": "Allora uscii dall'agguato per cercarti e mi imbattei nelle tue guardie del corpo.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Allora uscii dall'agguato per cercarti e mi imbattei nelle tue guardie del corpo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Mi riconobbero e mi ferirono.",
+      "text_markdown": "Mi riconobbero e mi ferirono.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Mi riconobbero e mi ferirono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Fuggii da loro, ma se tu non avessi fasciato la mia ferita, sarei morto.",
+      "text_markdown": "Fuggii da loro, ma se tu non avessi fasciato la mia ferita, sarei morto.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Fuggii da loro, ma se tu non avessi fasciato la mia ferita, sarei morto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Volevo ucciderti e tu mi hai salvato la vita.",
+      "text_markdown": "Volevo ucciderti e tu mi hai salvato la vita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Volevo ucciderti e tu mi hai salvato la vita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Ora, se rimarrò vivo e tu lo vorrai, ti servirò come il più fedele schiavo e ordinerò ai miei figli di fare lo stesso.",
+      "text_markdown": "Ora, se rimarrò vivo e tu lo vorrai, ti servirò come il più fedele schiavo e ordinerò ai miei figli di fare lo stesso.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Ora, se rimarrò vivo e tu lo vorrai, ti servirò come il più fedele schiavo e ordinerò ai miei figli di fare lo stesso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Perdonami.",
+      "text_markdown": "Perdonami.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Perdonami.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Lo zar fu molto felice di essere riuscito così facilmente a riconciliarsi con il nemico e acquisire un amico, e lo perdonò e gli promise di restituirgli i suoi possedimenti e di mandargli i suoi medici e servitori perché si prendessero cura di lui.",
+      "text_markdown": "Lo zar fu molto felice di essere riuscito così facilmente a riconciliarsi con il nemico e acquisire un amico, e lo perdonò e gli promise di restituirgli i suoi possedimenti e di mandargli i suoi medici e servitori perché si prendessero cura di lui.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar fu molto felice di essere riuscito così facilmente a riconciliarsi con il nemico e acquisire un amico, e lo perdonò e gli promise di restituirgli i suoi possedimenti e di mandargli i suoi medici e servitori perché si prendessero cura di lui.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Congedatosi dal ferito, lo zar uscì sul portico e iniziò a cercare con gli occhi l'eremita.",
+      "text_markdown": "Congedatosi dal ferito, lo zar uscì sul portico e iniziò a cercare con gli occhi l'eremita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Congedatosi dal ferito, lo zar uscì sul portico e iniziò a cercare con gli occhi l'eremita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Prima di andarsene voleva chiedergli ancora una volta una risposta alle sue domande.",
+      "text_markdown": "Prima di andarsene voleva chiedergli ancora una volta una risposta alle sue domande.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Prima di andarsene voleva chiedergli ancora una volta una risposta alle sue domande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "L'eremita era nel cortile e, stando in ginocchio, piantava semi nelle aiuole che erano state vangate ieri.",
+      "text_markdown": "L'eremita era nel cortile e, stando in ginocchio, piantava semi nelle aiuole che erano state vangate ieri.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "L'eremita era nel cortile e, stando in ginocchio, piantava semi nelle aiuole che erano state vangate ieri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Lo zar si avvicinò a lui.",
+      "text_markdown": "Lo zar si avvicinò a lui.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "Lo zar si avvicinò a lui.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Uomo saggio, per l'ultima volta ti prego: rispondi alle mie domande.",
+      "text_markdown": "— Uomo saggio, per l'ultima volta ti prego: rispondi alle mie domande.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Uomo saggio, per l'ultima volta ti prego: rispondi alle mie domande.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Ma tu hai già ricevuto la risposta — disse l'eremita, seduto sulle gambe magre accovacciato e guardando dal basso lo zar che stava davanti a lui.",
+      "text_markdown": "— Ma tu hai già ricevuto la risposta — disse l'eremita, seduto sulle gambe magre accovacciato e guardando dal basso lo zar che stava davanti a lui.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Ma tu hai già ricevuto la risposta — disse l'eremita, seduto sulle gambe magre accovacciato e guardando dal basso lo zar che stava davanti a lui.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Come ho ricevuto la risposta? — chiese lo zar.",
+      "text_markdown": "— Come ho ricevuto la risposta? — chiese lo zar.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Come ho ricevuto la risposta? — chiese lo zar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— E come no? — disse l'eremita.",
+      "text_markdown": "— E come no? — disse l'eremita.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— E come no? — disse l'eremita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Se ieri tu non avessi avuto pietà di me e non avessi scavato al posto mio queste aiuole, ma fossi tornato indietro, quell'uomo ti avrebbe ucciso.",
+      "text_markdown": "— Se ieri tu non avessi avuto pietà di me e non avessi scavato al posto mio queste aiuole, ma fossi tornato indietro, quell'uomo ti avrebbe ucciso.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "— Se ieri tu non avessi avuto pietà di me e non avessi scavato al posto mio queste aiuole, ma fossi tornato indietro, quell'uomo ti avrebbe ucciso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "E perciò il tempo più importante fu quello in cui scavavi le aiuole.",
+      "text_markdown": "E perciò il tempo più importante fu quello in cui scavavi le aiuole.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "E perciò il tempo più importante fu quello in cui scavavi le aiuole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "E la persona più necessaria ero io.",
+      "text_markdown": "E la persona più necessaria ero io.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "E la persona più necessaria ero io.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "E la cosa più importante era — farmi del bene.",
+      "text_markdown": "E la cosa più importante era — farmi del bene.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "E la cosa più importante era — farmi del bene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "E poi, quando arrivò correndo quell'uomo, il tempo più importante fu quello in cui ti prendesti cura di lui, perché se tu non avessi lavato la sua ferita, sarebbe morto senza riconciliarsi con te.",
+      "text_markdown": "E poi, quando arrivò correndo quell'uomo, il tempo più importante fu quello in cui ti prendesti cura di lui, perché se tu non avessi lavato la sua ferita, sarebbe morto senza riconciliarsi con te.",
+      "title": "Le Tre Domande",
+      "tts": {
+        "text": "E poi, quando arrivò correndo quell'uomo, il tempo più importante fu quello in cui ti prendesti cura di lui, perché se tu non avessi lavato la sua ferita, sarebbe morto senza riconciliarsi con te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "E perciò la persona più necessaria era lui, e la cosa più importante era quello che tu facevi per lui.",
+      "text_markdown": "E perciò la persona più necessaria era lui, e la cosa più importante era quello che tu facevi per lui.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "E perciò la persona più necessaria era lui, e la cosa più importante era quello che tu facevi per lui.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Ricorda dunque, — disse l'eremita, — che il tempo più importante è uno solo: adesso, — ed è il più importante perché solo in esso abbiamo potere su noi stessi; e la persona più necessaria è quella con cui hai a che fare ora, perché nessuno può sapere se avrà ancora a che fare con qualche altra persona; e la cosa più importante è farle del bene, perché solo per questo l'uomo è stato mandato nella vita.",
+      "text_markdown": "— Ricorda dunque, — disse l'eremita, — che il tempo più importante è uno solo: adesso, — ed è il più importante perché solo in esso abbiamo potere su noi stessi; e la persona più necessaria è quella con cui hai a che fare ora, perché nessuno può sapere se avrà ancora a che fare con qualche altra persona; e la cosa più importante è farle del bene, perché solo per questo l'uomo è stato mandato nella vita.",
+      "title": "Tre domande",
+      "tts": {
+        "text": "— Ricorda dunque, — disse l'eremita, — che il tempo più importante è uno solo: adesso, — ed è il più importante perché solo in esso abbiamo potere su noi stessi; e la persona più necessaria è quella con cui hai a che fare ora, perché nessuno può sapere se avrà ancora a che fare con qualche altra persona; e la cosa più importante è farle del bene, perché solo per questo l'uomo è stato mandato nella vita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

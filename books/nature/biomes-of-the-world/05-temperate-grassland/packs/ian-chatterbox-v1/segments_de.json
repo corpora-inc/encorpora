@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Die gemäßigte Grassteppe",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die gemäßigte Grassteppe",
+      "text_markdown": "Die gemäßigte Grassteppe"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Wo gemäßigte Grassteppen wachsen",
+      "text_markdown": "Wo gemäßigte Grassteppen wachsen"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Willkommen in der gemäßigten Grassteppe.",
+      "text_markdown": "Willkommen in der gemäßigten Grassteppe.",
+      "tts": {
+        "text": "Willkommen in der gemäßigten Grassteppe.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dies ist eines der großen Biome der Welt.",
+      "text_markdown": "Dies ist eines der großen Biome der Welt.",
+      "tts": {
+        "text": "Dies ist eines der großen Biome der Welt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "text_markdown": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+      "tts": {
+        "text": "Ein Biom ist ein Teil der Erde mit eigenem Wetter, eigenen Pflanzen und eigenen Tieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die gemäßigte Grassteppe ist ein weites Land aus Gras mit sehr wenigen Bäumen.",
+      "text_markdown": "Die gemäßigte Grassteppe ist ein weites Land aus Gras mit sehr wenigen Bäumen.",
+      "tts": {
+        "text": "Die gemäßigte Grassteppe ist ein weites Land aus Gras mit sehr wenigen Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie liegt in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+      "text_markdown": "Sie liegt in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+      "tts": {
+        "text": "Sie liegt in den mittleren Teilen der Welt, zwischen dem kalten Norden und den warmen Tropen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anders als die tropische Savanne hat dieses Land kalte Winter und warme Sommer.",
+      "text_markdown": "Anders als die tropische Savanne hat dieses Land kalte Winter und warme Sommer.",
+      "tts": {
+        "text": "Anders als die tropische Savanne hat dieses Land kalte Winter und warme Sommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die größten gemäßigten Grassteppen der Welt liegen in Nordamerika und in Eurasien.",
+      "text_markdown": "Die größten gemäßigten Grassteppen der Welt liegen in Nordamerika und in Eurasien.",
+      "tts": {
+        "text": "Die größten gemäßigten Grassteppen der Welt liegen in Nordamerika und in Eurasien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Nordamerika werden die großen zentralen Ebenen die Prärien genannt.",
+      "text_markdown": "In Nordamerika werden die großen zentralen Ebenen die Prärien genannt.",
+      "tts": {
+        "text": "In Nordamerika werden die großen zentralen Ebenen die Prärien genannt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Russland, der Ukraine, Kasachstan und der Mongolei werden sie die Steppen genannt.",
+      "text_markdown": "In Russland, der Ukraine, Kasachstan und der Mongolei werden sie die Steppen genannt.",
+      "tts": {
+        "text": "In Russland, der Ukraine, Kasachstan und der Mongolei werden sie die Steppen genannt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Argentinien und Uruguay werden sie die Pampas genannt.",
+      "text_markdown": "In Argentinien und Uruguay werden sie die Pampas genannt.",
+      "tts": {
+        "text": "In Argentinien und Uruguay werden sie die Pampas genannt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt kleinere gemäßigte Grassteppen im südlichen Afrika und in Teilen Australiens.",
+      "text_markdown": "Es gibt kleinere gemäßigte Grassteppen im südlichen Afrika und in Teilen Australiens.",
+      "tts": {
+        "text": "Es gibt kleinere gemäßigte Grassteppen im südlichen Afrika und in Teilen Australiens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jede dieser Grassteppen ist für sich gewachsen.",
+      "text_markdown": "Jede dieser Grassteppen ist für sich gewachsen.",
+      "tts": {
+        "text": "Jede dieser Grassteppen ist für sich gewachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deshalb sind die Pflanzen und Tiere in jedem Teil der Welt verschieden.",
+      "text_markdown": "Deshalb sind die Pflanzen und Tiere in jedem Teil der Welt verschieden.",
+      "tts": {
+        "text": "Deshalb sind die Pflanzen und Tiere in jedem Teil der Welt verschieden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber sie teilen alle dasselbe Muster.",
+      "text_markdown": "Aber sie teilen alle dasselbe Muster.",
+      "tts": {
+        "text": "Aber sie teilen alle dasselbe Muster.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Meer aus Gras, ein großer offener Himmel, starke Winde und nur wenige Bäume entlang der Flüsse.",
+      "text_markdown": "Ein Meer aus Gras, ein großer offener Himmel, starke Winde und nur wenige Bäume entlang der Flüsse.",
+      "tts": {
+        "text": "Ein Meer aus Gras, ein großer offener Himmel, starke Winde und nur wenige Bäume entlang der Flüsse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du in einer gemäßigten Grassteppe stehst, weht fast immer der Wind.",
+      "text_markdown": "Wenn du in einer gemäßigten Grassteppe stehst, weht fast immer der Wind.",
+      "tts": {
+        "text": "Wenn du in einer gemäßigten Grassteppe stehst, weht fast immer der Wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Gras bewegt sich wie die Oberfläche des Meeres.",
+      "text_markdown": "Das Gras bewegt sich wie die Oberfläche des Meeres.",
+      "tts": {
+        "text": "Das Gras bewegt sich wie die Oberfläche des Meeres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kannst in jede Richtung weit blicken.",
+      "text_markdown": "Du kannst in jede Richtung weit blicken.",
+      "tts": {
+        "text": "Du kannst in jede Richtung weit blicken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Himmel wirkt doppelt so groß wie in einem Wald.",
+      "text_markdown": "Der Himmel wirkt doppelt so groß wie in einem Wald.",
+      "tts": {
+        "text": "Der Himmel wirkt doppelt so groß wie in einem Wald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer ist das Gras hoch und grün.",
+      "text_markdown": "Im Sommer ist das Gras hoch und grün.",
+      "tts": {
+        "text": "Im Sommer ist das Gras hoch und grün.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst wird es goldbraun.",
+      "text_markdown": "Im Herbst wird es goldbraun.",
+      "tts": {
+        "text": "Im Herbst wird es goldbraun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter ist es braun und steif unter dem Schnee.",
+      "text_markdown": "Im Winter ist es braun und steif unter dem Schnee.",
+      "tts": {
+        "text": "Im Winter ist es braun und steif unter dem Schnee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling wächst es frisch und leuchtend nach.",
+      "text_markdown": "Im Frühling wächst es frisch und leuchtend nach.",
+      "tts": {
+        "text": "Im Frühling wächst es frisch und leuchtend nach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist die gemäßigte Grassteppe.",
+      "text_markdown": "Das ist die gemäßigte Grassteppe.",
+      "tts": {
+        "text": "Das ist die gemäßigte Grassteppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Wo gemäßigte Grassteppen wachsen",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine weite, windige Welt aus Gras, Himmel und wechselnden Jahreszeiten.",
+      "text_markdown": "Eine weite, windige Welt aus Gras, Himmel und wechselnden Jahreszeiten.",
+      "tts": {
+        "text": "Eine weite, windige Welt aus Gras, Himmel und wechselnden Jahreszeiten.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Wetter",
+      "text_markdown": "Das Wetter"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Wetter in der gemäßigten Grassteppe wird vom offenen Himmel geprägt.",
+      "text_markdown": "Das Wetter in der gemäßigten Grassteppe wird vom offenen Himmel geprägt.",
+      "tts": {
+        "text": "Das Wetter in der gemäßigten Grassteppe wird vom offenen Himmel geprägt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt sehr wenige Bäume und wenige Hügel, die den Wind bremsen.",
+      "text_markdown": "Es gibt sehr wenige Bäume und wenige Hügel, die den Wind bremsen.",
+      "tts": {
+        "text": "Es gibt sehr wenige Bäume und wenige Hügel, die den Wind bremsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt vier Jahreszeiten, und jede ist kräftig.",
+      "text_markdown": "Es gibt vier Jahreszeiten, und jede ist kräftig.",
+      "tts": {
+        "text": "Es gibt vier Jahreszeiten, und jede ist kräftig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Sommer sind heiß und hell.",
+      "text_markdown": "Die Sommer sind heiß und hell.",
+      "tts": {
+        "text": "Die Sommer sind heiß und hell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Sonne brennt auf das offene Gras herunter, und die Tage sind lang.",
+      "text_markdown": "Die Sonne brennt auf das offene Gras herunter, und die Tage sind lang.",
+      "tts": {
+        "text": "Die Sonne brennt auf das offene Gras herunter, und die Tage sind lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An einem einzigen Nachmittag kann ein gewaltiges Gewitter vom Horizont heranziehen.",
+      "text_markdown": "An einem einzigen Nachmittag kann ein gewaltiges Gewitter vom Horizont heranziehen.",
+      "tts": {
+        "text": "An einem einzigen Nachmittag kann ein gewaltiges Gewitter vom Horizont heranziehen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blitze zucken in der Ferne, und schwerer Regen fällt auf einmal.",
+      "text_markdown": "Blitze zucken in der Ferne, und schwerer Regen fällt auf einmal.",
+      "tts": {
+        "text": "Blitze zucken in der Ferne, und schwerer Regen fällt auf einmal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Winter sind kalt.",
+      "text_markdown": "Die Winter sind kalt.",
+      "tts": {
+        "text": "Die Winter sind kalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In manchen Grassteppen kann die Temperatur wochenlang weit unter den Gefrierpunkt fallen.",
+      "text_markdown": "In manchen Grassteppen kann die Temperatur wochenlang weit unter den Gefrierpunkt fallen.",
+      "tts": {
+        "text": "In manchen Grassteppen kann die Temperatur wochenlang weit unter den Gefrierpunkt fallen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schnee weht über das offene Land und sammelt sich in langen Verwehungen.",
+      "text_markdown": "Schnee weht über das offene Land und sammelt sich in langen Verwehungen.",
+      "tts": {
+        "text": "Schnee weht über das offene Land und sammelt sich in langen Verwehungen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wind im Winter ist stark und scharf.",
+      "text_markdown": "Der Wind im Winter ist stark und scharf.",
+      "tts": {
+        "text": "Der Wind im Winter ist stark und scharf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Frühling schmilzt der Schnee, und die Flüsse führen Hochwasser.",
+      "text_markdown": "Im Frühling schmilzt der Schnee, und die Flüsse führen Hochwasser.",
+      "tts": {
+        "text": "Im Frühling schmilzt der Schnee, und die Flüsse führen Hochwasser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Gras wird fast über Nacht grün.",
+      "text_markdown": "Das Gras wird fast über Nacht grün.",
+      "tts": {
+        "text": "Das Gras wird fast über Nacht grün.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vögel kehren aus wärmeren Ländern zurück und erfüllen die Luft mit Klang.",
+      "text_markdown": "Vögel kehren aus wärmeren Ländern zurück und erfüllen die Luft mit Klang.",
+      "tts": {
+        "text": "Vögel kehren aus wärmeren Ländern zurück und erfüllen die Luft mit Klang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Herbst wird das Gras golden, der Wind wird kühler, und die Herden ziehen zum Schutz.",
+      "text_markdown": "Im Herbst wird das Gras golden, der Wind wird kühler, und die Herden ziehen zum Schutz.",
+      "tts": {
+        "text": "Im Herbst wird das Gras golden, der Wind wird kühler, und die Herden ziehen zum Schutz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Grassteppe bekommt gerade genug Regen, um das Gras zu nähren.",
+      "text_markdown": "Die Grassteppe bekommt gerade genug Regen, um das Gras zu nähren.",
+      "tts": {
+        "text": "Die Grassteppe bekommt gerade genug Regen, um das Gras zu nähren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Das Wetter",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es ist nicht genug Regen für große Wälder, aber reichlich für das Gras und die Tiere, die es brauchen.",
+      "text_markdown": "Es ist nicht genug Regen für große Wälder, aber reichlich für das Gras und die Tiere, die es brauchen.",
+      "tts": {
+        "text": "Es ist nicht genug Regen für große Wälder, aber reichlich für das Gras und die Tiere, die es brauchen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Land und das Wasser",
+      "text_markdown": "Das Land und das Wasser"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Land der gemäßigten Grassteppe ist meist flach oder sanft gewellt.",
+      "text_markdown": "Das Land der gemäßigten Grassteppe ist meist flach oder sanft gewellt.",
+      "tts": {
+        "text": "Das Land der gemäßigten Grassteppe ist meist flach oder sanft gewellt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An manchen Stellen erheben sich niedrige Hügel aus dem Gras.",
+      "text_markdown": "An manchen Stellen erheben sich niedrige Hügel aus dem Gras.",
+      "tts": {
+        "text": "An manchen Stellen erheben sich niedrige Hügel aus dem Gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An anderen ist das Land so flach, dass man den Horizont als perfekt gerade Linie sehen kann.",
+      "text_markdown": "An anderen ist das Land so flach, dass man den Horizont als perfekt gerade Linie sehen kann.",
+      "tts": {
+        "text": "An anderen ist das Land so flach, dass man den Horizont als perfekt gerade Linie sehen kann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Boden hier gehört zu den reichsten Böden der Erde.",
+      "text_markdown": "Der Boden hier gehört zu den reichsten Böden der Erde.",
+      "tts": {
+        "text": "Der Boden hier gehört zu den reichsten Böden der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seit tausenden von Jahren sind Gräser gewachsen, gestorben und im Boden verrottet.",
+      "text_markdown": "Seit tausenden von Jahren sind Gräser gewachsen, gestorben und im Boden verrottet.",
+      "tts": {
+        "text": "Seit tausenden von Jahren sind Gräser gewachsen, gestorben und im Boden verrottet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das hat einen dicken, dunklen Boden geschaffen, der voller Nahrung für Pflanzen ist.",
+      "text_markdown": "Das hat einen dicken, dunklen Boden geschaffen, der voller Nahrung für Pflanzen ist.",
+      "tts": {
+        "text": "Das hat einen dicken, dunklen Boden geschaffen, der voller Nahrung für Pflanzen ist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Darum wurden so viele dieser Länder in große Felder für Weizen und Mais verwandelt.",
+      "text_markdown": "Darum wurden so viele dieser Länder in große Felder für Weizen und Mais verwandelt.",
+      "tts": {
+        "text": "Darum wurden so viele dieser Länder in große Felder für Weizen und Mais verwandelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Flüsse winden sich in langen, langsamen Bögen durch die Grassteppen.",
+      "text_markdown": "Flüsse winden sich in langen, langsamen Bögen durch die Grassteppen.",
+      "tts": {
+        "text": "Flüsse winden sich in langen, langsamen Bögen durch die Grassteppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Flüsse tragen Wasser aus fernen Bergen und Schmelzwasser über das offene Land.",
+      "text_markdown": "Die Flüsse tragen Wasser aus fernen Bergen und Schmelzwasser über das offene Land.",
+      "tts": {
+        "text": "Die Flüsse tragen Wasser aus fernen Bergen und Schmelzwasser über das offene Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An den Ufern der Flüsse findest du eine dünne Linie aus Bäumen.",
+      "text_markdown": "An den Ufern der Flüsse findest du eine dünne Linie aus Bäumen.",
+      "tts": {
+        "text": "An den Ufern der Flüsse findest du eine dünne Linie aus Bäumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diese Bäume folgen dem Wasser und heben sich als grüne Bänder im weiten Grasmeer ab.",
+      "text_markdown": "Diese Bäume folgen dem Wasser und heben sich als grüne Bänder im weiten Grasmeer ab.",
+      "tts": {
+        "text": "Diese Bäume folgen dem Wasser und heben sich als grüne Bänder im weiten Grasmeer ab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abseits der Flüsse gibt es sehr wenige Bäume.",
+      "text_markdown": "Abseits der Flüsse gibt es sehr wenige Bäume.",
+      "tts": {
+        "text": "Abseits der Flüsse gibt es sehr wenige Bäume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wind, die kalten Winter und die trockenen Sommer halten die meisten Bäume davon ab, hier zu wachsen.",
+      "text_markdown": "Der Wind, die kalten Winter und die trockenen Sommer halten die meisten Bäume davon ab, hier zu wachsen.",
+      "tts": {
+        "text": "Der Wind, die kalten Winter und die trockenen Sommer halten die meisten Bäume davon ab, hier zu wachsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber das Gras braucht nicht viel.",
+      "text_markdown": "Aber das Gras braucht nicht viel.",
+      "tts": {
+        "text": "Aber das Gras braucht nicht viel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seine langen Wurzeln reichen tief in den reichen Boden, und es kehrt jeden Frühling zurück.",
+      "text_markdown": "Seine langen Wurzeln reichen tief in den reichen Boden, und es kehrt jeden Frühling zurück.",
+      "tts": {
+        "text": "Seine langen Wurzeln reichen tief in den reichen Boden, und es kehrt jeden Frühling zurück.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auch Feuer zieht von Zeit zu Zeit durch dieses Land.",
+      "text_markdown": "Auch Feuer zieht von Zeit zu Zeit durch dieses Land.",
+      "tts": {
+        "text": "Auch Feuer zieht von Zeit zu Zeit durch dieses Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Gras brennt schnell, aber die tiefen Wurzeln bleiben am Leben.",
+      "text_markdown": "Das Gras brennt schnell, aber die tiefen Wurzeln bleiben am Leben.",
+      "tts": {
+        "text": "Das Gras brennt schnell, aber die tiefen Wurzeln bleiben am Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Das Land und das Wasser",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach einem Regen wächst das Gras grüner und stärker nach als zuvor.",
+      "text_markdown": "Nach einem Regen wächst das Gras grüner und stärker nach als zuvor.",
+      "tts": {
+        "text": "Nach einem Regen wächst das Gras grüner und stärker nach als zuvor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Pflanzen",
+      "text_markdown": "Die Pflanzen"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Gräser sind das Herz dieses Bioms.",
+      "text_markdown": "Die Gräser sind das Herz dieses Bioms.",
+      "tts": {
+        "text": "Die Gräser sind das Herz dieses Bioms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt viele verschiedene Grasarten in einer gemäßigten Grassteppe.",
+      "text_markdown": "Es gibt viele verschiedene Grasarten in einer gemäßigten Grassteppe.",
+      "tts": {
+        "text": "Es gibt viele verschiedene Grasarten in einer gemäßigten Grassteppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Gräser wachsen nur knöchelhoch.",
+      "text_markdown": "Manche Gräser wachsen nur knöchelhoch.",
+      "tts": {
+        "text": "Manche Gräser wachsen nur knöchelhoch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere stehen so hoch wie ein Mensch.",
+      "text_markdown": "Andere stehen so hoch wie ein Mensch.",
+      "tts": {
+        "text": "Andere stehen so hoch wie ein Mensch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jede Grasart hat oben eine lange, weiche Ähre voller Samen.",
+      "text_markdown": "Jede Grasart hat oben eine lange, weiche Ähre voller Samen.",
+      "tts": {
+        "text": "Jede Grasart hat oben eine lange, weiche Ähre voller Samen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer trägt der Wind Wellen von Samenähren über das Land.",
+      "text_markdown": "Im Sommer trägt der Wind Wellen von Samenähren über das Land.",
+      "tts": {
+        "text": "Im Sommer trägt der Wind Wellen von Samenähren über das Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Gras hat sehr lange Wurzeln, die tief in den dunklen Boden reichen.",
+      "text_markdown": "Das Gras hat sehr lange Wurzeln, die tief in den dunklen Boden reichen.",
+      "tts": {
+        "text": "Das Gras hat sehr lange Wurzeln, die tief in den dunklen Boden reichen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wurzeln können unter der Erde länger sein, als das Gras über der Erde hoch ist.",
+      "text_markdown": "Die Wurzeln können unter der Erde länger sein, als das Gras über der Erde hoch ist.",
+      "tts": {
+        "text": "Die Wurzeln können unter der Erde länger sein, als das Gras über der Erde hoch ist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So überlebt das Gras die trockenen Zeiten und die kalten Winter.",
+      "text_markdown": "So überlebt das Gras die trockenen Zeiten und die kalten Winter.",
+      "tts": {
+        "text": "So überlebt das Gras die trockenen Zeiten und die kalten Winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So kehrt das Gras auch nach einem Feuer schnell zurück.",
+      "text_markdown": "So kehrt das Gras auch nach einem Feuer schnell zurück.",
+      "tts": {
+        "text": "So kehrt das Gras auch nach einem Feuer schnell zurück.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwischen den Gräsern blühen in den warmen Monaten kleine Blumen.",
+      "text_markdown": "Zwischen den Gräsern blühen in den warmen Monaten kleine Blumen.",
+      "tts": {
+        "text": "Zwischen den Gräsern blühen in den warmen Monaten kleine Blumen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilde Sonnenblumen und viele andere leuchtende Blumen erfüllen die Grassteppe im Sommer.",
+      "text_markdown": "Wilde Sonnenblumen und viele andere leuchtende Blumen erfüllen die Grassteppe im Sommer.",
+      "tts": {
+        "text": "Wilde Sonnenblumen und viele andere leuchtende Blumen erfüllen die Grassteppe im Sommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bienen und Schmetterlinge ziehen von einer Blüte zur nächsten.",
+      "text_markdown": "Bienen und Schmetterlinge ziehen von einer Blüte zur nächsten.",
+      "tts": {
+        "text": "Bienen und Schmetterlinge ziehen von einer Blüte zur nächsten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt sehr wenige Bäume im größten Teil der Grassteppe.",
+      "text_markdown": "Es gibt sehr wenige Bäume im größten Teil der Grassteppe.",
+      "tts": {
+        "text": "Es gibt sehr wenige Bäume im größten Teil der Grassteppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wo sie wachsen, sind sie meist klein und zäh.",
+      "text_markdown": "Wo sie wachsen, sind sie meist klein und zäh.",
+      "tts": {
+        "text": "Wo sie wachsen, sind sie meist klein und zäh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie wachsen entlang der Flüsse, wo es mehr Wasser gibt, oder in tiefen Stellen, wo sich im Winter Schnee sammelt.",
+      "text_markdown": "Sie wachsen entlang der Flüsse, wo es mehr Wasser gibt, oder in tiefen Stellen, wo sich im Winter Schnee sammelt.",
+      "tts": {
+        "text": "Sie wachsen entlang der Flüsse, wo es mehr Wasser gibt, oder in tiefen Stellen, wo sich im Winter Schnee sammelt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Draußen auf der offenen Ebene ist das Gras allein.",
+      "text_markdown": "Draußen auf der offenen Ebene ist das Gras allein.",
+      "tts": {
+        "text": "Draußen auf der offenen Ebene ist das Gras allein.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Die Pflanzen",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es ist der grüne, goldene und silberne Teppich, der das ganze Biom zusammenhält.",
+      "text_markdown": "Es ist der grüne, goldene und silberne Teppich, der das ganze Biom zusammenhält.",
+      "tts": {
+        "text": "Es ist der grüne, goldene und silberne Teppich, der das ganze Biom zusammenhält.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Tiere",
+      "text_markdown": "Die Tiere"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Tiere der gemäßigten Grassteppe sind für eine offene, windige Welt gebaut.",
+      "text_markdown": "Die Tiere der gemäßigten Grassteppe sind für eine offene, windige Welt gebaut.",
+      "tts": {
+        "text": "Die Tiere der gemäßigten Grassteppe sind für eine offene, windige Welt gebaut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die größten Tiere hier sind große Grasfresser.",
+      "text_markdown": "Die größten Tiere hier sind große Grasfresser.",
+      "tts": {
+        "text": "Die größten Tiere hier sind große Grasfresser.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie fressen das Gras und ziehen in großen Herden über das offene Land.",
+      "text_markdown": "Sie fressen das Gras und ziehen in großen Herden über das offene Land.",
+      "tts": {
+        "text": "Sie fressen das Gras und ziehen in großen Herden über das offene Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Nordamerika ist der berühmteste von ihnen der Bison.",
+      "text_markdown": "In Nordamerika ist der berühmteste von ihnen der Bison.",
+      "tts": {
+        "text": "In Nordamerika ist der berühmteste von ihnen der Bison.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Bison ist riesig, schwer und zottelig, mit einem großen braunen Kopf.",
+      "text_markdown": "Ein Bison ist riesig, schwer und zottelig, mit einem großen braunen Kopf.",
+      "tts": {
+        "text": "Ein Bison ist riesig, schwer und zottelig, mit einem großen braunen Kopf.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Einst zogen Bisons in Herden von Millionen über die Ebenen.",
+      "text_markdown": "Einst zogen Bisons in Herden von Millionen über die Ebenen.",
+      "tts": {
+        "text": "Einst zogen Bisons in Herden von Millionen über die Ebenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Eurasien zogen einst Wildpferde auf die gleiche Weise über die Steppen.",
+      "text_markdown": "In Eurasien zogen einst Wildpferde auf die gleiche Weise über die Steppen.",
+      "tts": {
+        "text": "In Eurasien zogen einst Wildpferde auf die gleiche Weise über die Steppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Pampas Südamerikas nahmen kleinere Hirsche und andere Grasfresser ihren Platz ein.",
+      "text_markdown": "In den Pampas Südamerikas nahmen kleinere Hirsche und andere Grasfresser ihren Platz ein.",
+      "tts": {
+        "text": "In den Pampas Südamerikas nahmen kleinere Hirsche und andere Grasfresser ihren Platz ein.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele kleinere Tiere leben unter dem Gras.",
+      "text_markdown": "Viele kleinere Tiere leben unter dem Gras.",
+      "tts": {
+        "text": "Viele kleinere Tiere leben unter dem Gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Präriehunde, Ziesel und andere kleine Tiere graben lange Tunnel und Räume in den Boden.",
+      "text_markdown": "Präriehunde, Ziesel und andere kleine Tiere graben lange Tunnel und Räume in den Boden.",
+      "tts": {
+        "text": "Präriehunde, Ziesel und andere kleine Tiere graben lange Tunnel und Räume in den Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie kommen tagsüber zum Fressen heraus und tauchen zur Sicherheit wieder in ihre Bauten.",
+      "text_markdown": "Sie kommen tagsüber zum Fressen heraus und tauchen zur Sicherheit wieder in ihre Bauten.",
+      "tts": {
+        "text": "Sie kommen tagsüber zum Fressen heraus und tauchen zur Sicherheit wieder in ihre Bauten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Grassteppe voller dieser kleinen Tiere ist voller kleiner Löcher im Boden.",
+      "text_markdown": "Eine Grassteppe voller dieser kleinen Tiere ist voller kleiner Löcher im Boden.",
+      "tts": {
+        "text": "Eine Grassteppe voller dieser kleinen Tiere ist voller kleiner Löcher im Boden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wölfe, Füchse und kleine Wildkatzen jagen über das Gras.",
+      "text_markdown": "Wölfe, Füchse und kleine Wildkatzen jagen über das Gras.",
+      "tts": {
+        "text": "Wölfe, Füchse und kleine Wildkatzen jagen über das Gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Wolf ist der große Jäger der offenen Ebenen.",
+      "text_markdown": "Der Wolf ist der große Jäger der offenen Ebenen.",
+      "tts": {
+        "text": "Der Wolf ist der große Jäger der offenen Ebenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleinere Jäger wie der Fuchs und die Wildkatze fangen Mäuse, Kaninchen und Vögel.",
+      "text_markdown": "Kleinere Jäger wie der Fuchs und die Wildkatze fangen Mäuse, Kaninchen und Vögel.",
+      "tts": {
+        "text": "Kleinere Jäger wie der Fuchs und die Wildkatze fangen Mäuse, Kaninchen und Vögel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoch am Himmel kreisen Falken und Adler langsam.",
+      "text_markdown": "Hoch am Himmel kreisen Falken und Adler langsam.",
+      "tts": {
+        "text": "Hoch am Himmel kreisen Falken und Adler langsam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie achten auf Bewegung im Gras unter ihnen.",
+      "text_markdown": "Sie achten auf Bewegung im Gras unter ihnen.",
+      "tts": {
+        "text": "Sie achten auf Bewegung im Gras unter ihnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Vogelarten nisten direkt auf dem Boden, versteckt im langen Gras.",
+      "text_markdown": "Viele Vogelarten nisten direkt auf dem Boden, versteckt im langen Gras.",
+      "tts": {
+        "text": "Viele Vogelarten nisten direkt auf dem Boden, versteckt im langen Gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer ist die Luft voller Insekten.",
+      "text_markdown": "Im Sommer ist die Luft voller Insekten.",
+      "tts": {
+        "text": "Im Sommer ist die Luft voller Insekten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heuschrecken zirpen und springen im warmen Wind.",
+      "text_markdown": "Heuschrecken zirpen und springen im warmen Wind.",
+      "tts": {
+        "text": "Heuschrecken zirpen und springen im warmen Wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schmetterlinge und Bienen ziehen von Blume zu Blume.",
+      "text_markdown": "Schmetterlinge und Bienen ziehen von Blume zu Blume.",
+      "tts": {
+        "text": "Schmetterlinge und Bienen ziehen von Blume zu Blume.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schlangen gleiten durch das Gras und suchen nach Mäusen und Vogeleiern.",
+      "text_markdown": "Schlangen gleiten durch das Gras und suchen nach Mäusen und Vogeleiern.",
+      "tts": {
+        "text": "Schlangen gleiten durch das Gras und suchen nach Mäusen und Vogeleiern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedes Tier hier kennt die gleichen Lektionen.",
+      "text_markdown": "Jedes Tier hier kennt die gleichen Lektionen.",
+      "tts": {
+        "text": "Jedes Tier hier kennt die gleichen Lektionen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziehe mit den Jahreszeiten.",
+      "text_markdown": "Ziehe mit den Jahreszeiten.",
+      "tts": {
+        "text": "Ziehe mit den Jahreszeiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Verstecke dich vor der heißen Sonne.",
+      "text_markdown": "Verstecke dich vor der heißen Sonne.",
+      "tts": {
+        "text": "Verstecke dich vor der heißen Sonne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fliehe vor dem kalten Wind.",
+      "text_markdown": "Fliehe vor dem kalten Wind.",
+      "tts": {
+        "text": "Fliehe vor dem kalten Wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Die Tiere",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trinke vom Fluss, wenn du ihn finden kannst.",
+      "text_markdown": "Trinke vom Fluss, wenn du ihn finden kannst.",
+      "tts": {
+        "text": "Trinke vom Fluss, wenn du ihn finden kannst.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Menschen",
+      "text_markdown": "Die Menschen"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen leben seit vielen tausend Jahren in der gemäßigten Grassteppe.",
+      "text_markdown": "Menschen leben seit vielen tausend Jahren in der gemäßigten Grassteppe.",
+      "tts": {
+        "text": "Menschen leben seit vielen tausend Jahren in der gemäßigten Grassteppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das weite offene Land, die Herden von Tieren und der reiche Boden haben ihre Lebensweise geprägt.",
+      "text_markdown": "Das weite offene Land, die Herden von Tieren und der reiche Boden haben ihre Lebensweise geprägt.",
+      "tts": {
+        "text": "Das weite offene Land, die Herden von Tieren und der reiche Boden haben ihre Lebensweise geprägt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vor langer Zeit zähmten die Menschen der Steppen Asiens das Wildpferd.",
+      "text_markdown": "Vor langer Zeit zähmten die Menschen der Steppen Asiens das Wildpferd.",
+      "tts": {
+        "text": "Vor langer Zeit zähmten die Menschen der Steppen Asiens das Wildpferd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Auf dem Rücken eines Pferdes konnte ein Mensch die offenen Ebenen viel schneller durchqueren als zu Fuß.",
+      "text_markdown": "Auf dem Rücken eines Pferdes konnte ein Mensch die offenen Ebenen viel schneller durchqueren als zu Fuß.",
+      "tts": {
+        "text": "Auf dem Rücken eines Pferdes konnte ein Mensch die offenen Ebenen viel schneller durchqueren als zu Fuß.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Pferd veränderte alles für die Menschen der Grassteppen.",
+      "text_markdown": "Das Pferd veränderte alles für die Menschen der Grassteppen.",
+      "tts": {
+        "text": "Das Pferd veränderte alles für die Menschen der Grassteppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es veränderte, wie sie jagten, wie sie reisten und wie sie kämpften.",
+      "text_markdown": "Es veränderte, wie sie jagten, wie sie reisten und wie sie kämpften.",
+      "tts": {
+        "text": "Es veränderte, wie sie jagten, wie sie reisten und wie sie kämpften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele der alten Völker der Steppen waren Nomaden.",
+      "text_markdown": "Viele der alten Völker der Steppen waren Nomaden.",
+      "tts": {
+        "text": "Viele der alten Völker der Steppen waren Nomaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie zogen mit ihren Herden von Pferden, Rindern, Schafen und Ziegen von einem Teil der Grassteppe zum anderen.",
+      "text_markdown": "Sie zogen mit ihren Herden von Pferden, Rindern, Schafen und Ziegen von einem Teil der Grassteppe zum anderen.",
+      "tts": {
+        "text": "Sie zogen mit ihren Herden von Pferden, Rindern, Schafen und Ziegen von einem Teil der Grassteppe zum anderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Sommer zogen sie zu den kühlen hohen Ebenen.",
+      "text_markdown": "Im Sommer zogen sie zu den kühlen hohen Ebenen.",
+      "tts": {
+        "text": "Im Sommer zogen sie zu den kühlen hohen Ebenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Winter kamen sie hinunter in tiefer gelegene, wärmere Täler.",
+      "text_markdown": "Im Winter kamen sie hinunter in tiefer gelegene, wärmere Täler.",
+      "tts": {
+        "text": "Im Winter kamen sie hinunter in tiefer gelegene, wärmere Täler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Häuser waren runde Zelte aus Filz und Holz.",
+      "text_markdown": "Ihre Häuser waren runde Zelte aus Filz und Holz.",
+      "tts": {
+        "text": "Ihre Häuser waren runde Zelte aus Filz und Holz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Solch ein rundes Zelt kann in einer Stunde abgebaut, auf den Rücken eines Tieres gepackt und woanders wieder aufgebaut werden.",
+      "text_markdown": "Solch ein rundes Zelt kann in einer Stunde abgebaut, auf den Rücken eines Tieres gepackt und woanders wieder aufgebaut werden.",
+      "tts": {
+        "text": "Solch ein rundes Zelt kann in einer Stunde abgebaut, auf den Rücken eines Tieres gepackt und woanders wieder aufgebaut werden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Nordamerika lebten die Menschen der Ebenen jahrtausendelang an der Seite der großen Bisonherden.",
+      "text_markdown": "In Nordamerika lebten die Menschen der Ebenen jahrtausendelang an der Seite der großen Bisonherden.",
+      "tts": {
+        "text": "In Nordamerika lebten die Menschen der Ebenen jahrtausendelang an der Seite der großen Bisonherden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie folgten den Herden über das offene Land.",
+      "text_markdown": "Sie folgten den Herden über das offene Land.",
+      "tts": {
+        "text": "Sie folgten den Herden über das offene Land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihre Häuser waren hohe Zelte aus Haut, die über hölzerne Stangen gespannt waren.",
+      "text_markdown": "Ihre Häuser waren hohe Zelte aus Haut, die über hölzerne Stangen gespannt waren.",
+      "tts": {
+        "text": "Ihre Häuser waren hohe Zelte aus Haut, die über hölzerne Stangen gespannt waren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als das Pferd in die Ebenen kam, veränderte sich auch dort die Lebensweise tiefgreifend.",
+      "text_markdown": "Als das Pferd in die Ebenen kam, veränderte sich auch dort die Lebensweise tiefgreifend.",
+      "tts": {
+        "text": "Als das Pferd in die Ebenen kam, veränderte sich auch dort die Lebensweise tiefgreifend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Pampas Südamerikas wurden Hirten zu Pferd ebenfalls Teil des Landes.",
+      "text_markdown": "In den Pampas Südamerikas wurden Hirten zu Pferd ebenfalls Teil des Landes.",
+      "tts": {
+        "text": "In den Pampas Südamerikas wurden Hirten zu Pferd ebenfalls Teil des Landes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den letzten paar hundert Jahren hat sich ein Großteil der gemäßigten Grassteppe erneut verändert.",
+      "text_markdown": "In den letzten paar hundert Jahren hat sich ein Großteil der gemäßigten Grassteppe erneut verändert.",
+      "tts": {
+        "text": "In den letzten paar hundert Jahren hat sich ein Großteil der gemäßigten Grassteppe erneut verändert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der tiefe, reiche Boden wurde umgepflügt, um Weizen, Mais und andere Körner anzubauen.",
+      "text_markdown": "Der tiefe, reiche Boden wurde umgepflügt, um Weizen, Mais und andere Körner anzubauen.",
+      "tts": {
+        "text": "Der tiefe, reiche Boden wurde umgepflügt, um Weizen, Mais und andere Körner anzubauen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heute kommt ein großer Teil des Getreides, das die Welt ernährt, aus diesen Ländern.",
+      "text_markdown": "Heute kommt ein großer Teil des Getreides, das die Welt ernährt, aus diesen Ländern.",
+      "tts": {
+        "text": "Heute kommt ein großer Teil des Getreides, das die Welt ernährt, aus diesen Ländern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die alte Art, mit den Herden zu ziehen, ist an vielen Orten verschwunden.",
+      "text_markdown": "Die alte Art, mit den Herden zu ziehen, ist an vielen Orten verschwunden.",
+      "tts": {
+        "text": "Die alte Art, mit den Herden zu ziehen, ist an vielen Orten verschwunden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber die Lieder, die Geschichten und die Liebe zum offenen Himmel leben weiter.",
+      "text_markdown": "Aber die Lieder, die Geschichten und die Liebe zum offenen Himmel leben weiter.",
+      "tts": {
+        "text": "Aber die Lieder, die Geschichten und die Liebe zum offenen Himmel leben weiter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Die Menschen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In jeder großen Grassteppe tragen die Menschen, die dort aufgewachsen sind, den Wind in ihren Herzen.",
+      "text_markdown": "In jeder großen Grassteppe tragen die Menschen, die dort aufgewachsen sind, den Wind in ihren Herzen.",
+      "tts": {
+        "text": "In jeder großen Grassteppe tragen die Menschen, die dort aufgewachsen sind, den Wind in ihren Herzen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Grassteppe heute",
+      "text_markdown": "Die Grassteppe heute"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die gemäßigte Grassteppe ist eines der wichtigsten Biome für die Menschen.",
+      "text_markdown": "Die gemäßigte Grassteppe ist eines der wichtigsten Biome für die Menschen.",
+      "tts": {
+        "text": "Die gemäßigte Grassteppe ist eines der wichtigsten Biome für die Menschen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der tiefe, reiche Boden macht sie perfekt für den Anbau von Nahrung.",
+      "text_markdown": "Der tiefe, reiche Boden macht sie perfekt für den Anbau von Nahrung.",
+      "tts": {
+        "text": "Der tiefe, reiche Boden macht sie perfekt für den Anbau von Nahrung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein großer Teil des Brotes, der Pasta und des Maises, den die Welt isst, kommt aus diesen Ländern.",
+      "text_markdown": "Ein großer Teil des Brotes, der Pasta und des Maises, den die Welt isst, kommt aus diesen Ländern.",
+      "tts": {
+        "text": "Ein großer Teil des Brotes, der Pasta und des Maises, den die Welt isst, kommt aus diesen Ländern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aber der Preis war hoch.",
+      "text_markdown": "Aber der Preis war hoch.",
+      "tts": {
+        "text": "Aber der Preis war hoch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die meisten der ursprünglichen Grassteppen der Welt wurden umgepflügt.",
+      "text_markdown": "Die meisten der ursprünglichen Grassteppen der Welt wurden umgepflügt.",
+      "tts": {
+        "text": "Die meisten der ursprünglichen Grassteppen der Welt wurden umgepflügt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die großen Herden von Bisons und Wildpferden sind größtenteils verschwunden.",
+      "text_markdown": "Die großen Herden von Bisons und Wildpferden sind größtenteils verschwunden.",
+      "tts": {
+        "text": "Die großen Herden von Bisons und Wildpferden sind größtenteils verschwunden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die kleinen grabenden Tiere haben weniger Orte zum Leben.",
+      "text_markdown": "Die kleinen grabenden Tiere haben weniger Orte zum Leben.",
+      "tts": {
+        "text": "Die kleinen grabenden Tiere haben weniger Orte zum Leben.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Gras, das sich einst bis zum Horizont erstreckte, wächst jetzt nur noch in kleinen Flecken.",
+      "text_markdown": "Das Gras, das sich einst bis zum Horizont erstreckte, wächst jetzt nur noch in kleinen Flecken.",
+      "tts": {
+        "text": "Das Gras, das sich einst bis zum Horizont erstreckte, wächst jetzt nur noch in kleinen Flecken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An manchen Orten, wo das Gras verschwunden und der Boden bloß ist, weht der Wind die dunkle Erde fort.",
+      "text_markdown": "An manchen Orten, wo das Gras verschwunden und der Boden bloß ist, weht der Wind die dunkle Erde fort.",
+      "tts": {
+        "text": "An manchen Orten, wo das Gras verschwunden und der Boden bloß ist, weht der Wind die dunkle Erde fort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Gruppen auf der ganzen Welt setzen sich dafür ein, das zu bewahren, was übrig ist.",
+      "text_markdown": "Viele Gruppen auf der ganzen Welt setzen sich dafür ein, das zu bewahren, was übrig ist.",
+      "tts": {
+        "text": "Viele Gruppen auf der ganzen Welt setzen sich dafür ein, das zu bewahren, was übrig ist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie richten Parks ein, in denen das Gras wieder hoch wachsen kann.",
+      "text_markdown": "Sie richten Parks ein, in denen das Gras wieder hoch wachsen kann.",
+      "tts": {
+        "text": "Sie richten Parks ein, in denen das Gras wieder hoch wachsen kann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie helfen Bisons und anderen Tieren, in Länder zurückzukehren, die sie einst erfüllten.",
+      "text_markdown": "Sie helfen Bisons und anderen Tieren, in Länder zurückzukehren, die sie einst erfüllten.",
+      "tts": {
+        "text": "Sie helfen Bisons und anderen Tieren, in Länder zurückzukehren, die sie einst erfüllten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie erforschen den tiefen Boden, damit wir ihn nutzen können, ohne ihn zu verlieren.",
+      "text_markdown": "Sie erforschen den tiefen Boden, damit wir ihn nutzen können, ohne ihn zu verlieren.",
+      "tts": {
+        "text": "Sie erforschen den tiefen Boden, damit wir ihn nutzen können, ohne ihn zu verlieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine gesunde Grassteppe ist einer der lebendigsten Orte auf der Erde.",
+      "text_markdown": "Eine gesunde Grassteppe ist einer der lebendigsten Orte auf der Erde.",
+      "tts": {
+        "text": "Eine gesunde Grassteppe ist einer der lebendigsten Orte auf der Erde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Die Grassteppe heute",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sie ist unsere Fürsorge wert.",
+      "text_markdown": "Sie ist unsere Fürsorge wert.",
+      "tts": {
+        "text": "Sie ist unsere Fürsorge wert.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Abschluss",
+      "text_markdown": "Abschluss"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist die gemäßigte Grassteppe.",
+      "text_markdown": "Das ist die gemäßigte Grassteppe.",
+      "tts": {
+        "text": "Das ist die gemäßigte Grassteppe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine weite, windige Welt aus Gras, weitem Himmel und wechselnden Jahreszeiten.",
+      "text_markdown": "Eine weite, windige Welt aus Gras, weitem Himmel und wechselnden Jahreszeiten.",
+      "tts": {
+        "text": "Eine weite, windige Welt aus Gras, weitem Himmel und wechselnden Jahreszeiten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du jemals in einer stehst, halte für eine Minute still.",
+      "text_markdown": "Wenn du jemals in einer stehst, halte für eine Minute still.",
+      "tts": {
+        "text": "Wenn du jemals in einer stehst, halte für eine Minute still.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Höre dem Wind zu, der über das Gras zieht.",
+      "text_markdown": "Höre dem Wind zu, der über das Gras zieht.",
+      "tts": {
+        "text": "Höre dem Wind zu, der über das Gras zieht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schaue hinaus auf den langen Horizont.",
+      "text_markdown": "Schaue hinaus auf den langen Horizont.",
+      "tts": {
+        "text": "Schaue hinaus auf den langen Horizont.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Abschluss",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du wirst das Herz des Bioms um dich herum schlagen fühlen.",
+      "text_markdown": "Du wirst das Herz des Bioms um dich herum schlagen fühlen.",
+      "tts": {
+        "text": "Du wirst das Herz des Bioms um dich herum schlagen fühlen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

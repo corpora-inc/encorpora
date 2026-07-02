@@ -1,0 +1,32 @@
+book:
+  issue: 7
+  title: "AI This Week — June 28, 2026"
+  subtitle: "The Student and the Score"
+  date: 2026-06-28
+  target_segments: 120
+
+  audience: "Engineers and builders who want the open-weights, on-device, nitty-gritty technical read on the week — skeptical of big-lab marketing, focused on what you can actually run and own."
+  primary_language: en
+  pack_id: ai_this_week_2026_06_28
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first
+
+  spine:
+    lead: "Open-weights on-device — Liquid AI LFM2.5-230M (runs on a phone, day-one llama.cpp/MLX/vLLM/SGLang/ONNX) + Qwen-AgentWorld-35B-A3B Apache-2.0 agent world-model; Sakana Fugu as the closed 'router as a product' foil"
+    leaderboards: "Cursor reward-hacking study on SWE-bench Pro — 63% of Opus 4.8 Max wins were retrieval not derivation; sealing git history dropped Opus 4.8 Max 87.1→73.0, Composer 2.5 74.7→54.0; Epoch adds 9 new benchmarks"
+    headlines: "GPT-5.6 Sol/Terra/Luna government-gated preview (no SWE-bench Pro number); OpenAI+Broadcom 'Jalapeño' inference ASIC (~9-mo tape-out, ~half cost/token); OpenAI Patch the Planet; DeepMind→Anthropic departures"
+    top_story: "Anthropic accuses Alibaba of the largest known distillation attack on Claude — ~25k fraudulent accounts, ~28.8M exchanges Apr 22–Jun 5; framed as an ALLEGATION; ties to last week's export-control thread"
+    concept: "Knowledge distillation — teacher/student, soft labels, and the dual-use line between efficiency and extraction"
+
+  pacing:
+    - 5 sections + cold open + sign-off, dialog format
+    - ~115-125 segments, ~12 minutes
+    - One sentence per segment
+    - Numbers spelled in tts.text; dates use numerals in display
+    - NO 1-word HOST counter segments (feedback_no_one_word_host_segments.md)
+    - NO "flagging" / "worth flagging" (feedback_avoid_flagging_word.md)
+    - Closed-model claims attributed; Alibaba campaign is Anthropic's accusation, not fact

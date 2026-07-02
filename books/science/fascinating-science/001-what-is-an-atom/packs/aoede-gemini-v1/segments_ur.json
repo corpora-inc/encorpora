@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "ur",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-001",
+      "block_type": "heading",
+      "text": "ہر چیز ایٹموں سے بنی ہے",
+      "text_markdown": "ہر چیز ایٹموں سے بنی ہے",
+      "title": "ہر چیز ایٹموں سے بنی ہے"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-002",
+      "block_type": "text",
+      "text": "اپنے ارد گرد دیکھیں۔",
+      "text_markdown": "اپنے ارد گرد دیکھیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "اپنے ارد گرد دیکھیں۔",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-003",
+      "block_type": "text",
+      "text": "ہر وہ چیز جو آپ دیکھ سکتے ہیں، ایٹموں سے بنی ہے۔",
+      "text_markdown": "ہر وہ چیز جو آپ دیکھ سکتے ہیں، ایٹموں سے بنی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ہر وہ چیز جو آپ دیکھ سکتے ہیں، ایٹموں سے بنی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-004",
+      "block_type": "text",
+      "text": "جو ہوا آپ سانس لیتے ہیں وہ ایٹموں سے بنی ہے۔",
+      "text_markdown": "جو ہوا آپ سانس لیتے ہیں وہ ایٹموں سے بنی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "جو ہوا آپ سانس لیتے ہیں وہ ایٹموں سے بنی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-005",
+      "block_type": "text",
+      "text": "جو پانی آپ پیتے ہیں وہ ایٹموں سے بنا ہے۔",
+      "text_markdown": "جو پانی آپ پیتے ہیں وہ ایٹموں سے بنا ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "جو پانی آپ پیتے ہیں وہ ایٹموں سے بنا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-006",
+      "block_type": "text",
+      "text": "آپ کا جسم ایٹموں سے بنا ہے۔",
+      "text_markdown": "آپ کا جسم ایٹموں سے بنا ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ کا جسم ایٹموں سے بنا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-007",
+      "block_type": "text",
+      "text": "آپ کے قدموں تلے کی زمین ایٹموں سے بنی ہے۔",
+      "text_markdown": "آپ کے قدموں تلے کی زمین ایٹموں سے بنی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ کے قدموں تلے کی زمین ایٹموں سے بنی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-008",
+      "block_type": "text",
+      "text": "ایٹم مادے کا سب سے چھوٹا ٹکڑا ہے جو اب بھی اپنی کیمیائی شناخت رکھتا ہے۔",
+      "text_markdown": "ایٹم مادے کا سب سے چھوٹا ٹکڑا ہے جو اب بھی اپنی کیمیائی شناخت رکھتا ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایٹم مادے کا سب سے چھوٹا ٹکڑا ہے جو اب بھی اپنی کیمیائی شناخت رکھتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-009",
+      "block_type": "text",
+      "text": "آپ اپنی آنکھوں سے ایک ایٹم بھی نہیں دیکھ سکتے۔",
+      "text_markdown": "آپ اپنی آنکھوں سے ایک ایٹم بھی نہیں دیکھ سکتے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ اپنی آنکھوں سے ایک ایٹم بھی نہیں دیکھ سکتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-010",
+      "block_type": "text",
+      "text": "آپ ایک عام خوردبین سے بھی ایک ایٹم نہیں دیکھ سکتے۔",
+      "text_markdown": "آپ ایک عام خوردبین سے بھی ایک ایٹم نہیں دیکھ سکتے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ ایک عام خوردبین سے بھی ایک ایٹم نہیں دیکھ سکتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-011",
+      "block_type": "text",
+      "text": "ایٹم اتنے چھوٹے ہوتے ہیں۔",
+      "text_markdown": "ایٹم اتنے چھوٹے ہوتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایٹم اتنے چھوٹے ہوتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-012",
+      "block_type": "text",
+      "text": "ریت کے ایک دانے میں تقریباً پچاس کوئنٹیلین ایٹم ہوتے ہیں۔",
+      "text_markdown": "ریت کے ایک دانے میں تقریباً پچاس کوئنٹیلین ایٹم ہوتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ریت کے ایک دانے میں ہوتے ہیں تقریباً پچاس کوئنٹیلین ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-013",
+      "block_type": "text",
+      "text": "یہ تعداد پچاس کے بعد اٹھارہ صفر ہے۔",
+      "text_markdown": "یہ تعداد پچاس کے بعد اٹھارہ صفر ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "یہ تعداد ہے پچاس کے بعد اٹھارہ صفر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-014",
+      "block_type": "text",
+      "text": "ریت کے ایک دانے میں اتنے ایٹم ہوتے ہیں جتنے ایک ساحل پر ریت کے دانے نہیں ہوتے۔",
+      "text_markdown": "ریت کے ایک دانے میں اتنے ایٹم ہوتے ہیں جتنے ایک ساحل پر ریت کے دانے نہیں ہوتے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ریت کے ایک دانے میں اتنے ایٹم ہوتے ہیں جتنے ایک ساحل پر ریت کے دانے نہیں ہوتے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-015",
+      "block_type": "text",
+      "text": "ایٹم طبعی دنیا میں ہر چیز کے بنیادی اجزاء ہیں۔",
+      "text_markdown": "ایٹم طبعی دنیا میں ہر چیز کے بنیادی اجزاء ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "طبعی دنیا کی ہر چیز کی بنیاد ہیں ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-016",
+      "block_type": "text",
+      "text": "ایک دیوار اینٹوں سے بنی ہوتی ہے۔",
+      "text_markdown": "ایک دیوار اینٹوں سے بنی ہوتی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایک دیوار اینٹوں سے بنی ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-017",
+      "block_type": "text",
+      "text": "ایک جملہ الفاظ سے بنتا ہے۔",
+      "text_markdown": "ایک جملہ الفاظ سے بنتا ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایک جملہ الفاظ سے بنتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-018",
+      "block_type": "text",
+      "text": "کائنات ایٹموں سے بنی ہے۔",
+      "text_markdown": "کائنات ایٹموں سے بنی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "کائنات ایٹموں سے بنی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-019",
+      "block_type": "text",
+      "text": "لفظ ایٹم قدیم یونانی زبان سے آیا ہے۔",
+      "text_markdown": "لفظ ایٹم قدیم یونانی زبان سے آیا ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "قدیم یونانی زبان سے آیا ہے لفظ ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-020",
+      "block_type": "text",
+      "text": "یونانی لفظ \"ایٹوموس\" کا مطلب ہے \"ناقابل تقسیم\"۔",
+      "text_markdown": "یونانی لفظ \"ایٹوموس\" کا مطلب ہے \"ناقابل تقسیم\"۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "یونانی لفظ \"ایٹوموس\" کا مطلب ہے \"ناقابل تقسیم\"۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-021",
+      "block_type": "text",
+      "text": "قدیم یونانی فلسفیوں کا خیال تھا کہ ایٹم مادے کے سب سے چھوٹے ممکنہ ٹکڑے ہیں۔",
+      "text_markdown": "قدیم یونانی فلسفیوں کا خیال تھا کہ ایٹم مادے کے سب سے چھوٹے ممکنہ ٹکڑے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "قدیم یونانی فلسفیوں کا خیال تھا کہ ایٹم مادے کے سب سے چھوٹے ممکنہ ٹکڑے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-022",
+      "block_type": "text",
+      "text": "وہ تقریباً صحیح تھے۔",
+      "text_markdown": "وہ تقریباً صحیح تھے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "وہ تقریباً صحیح تھے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-023",
+      "block_type": "text",
+      "text": "ایٹم حقیقی معنوں میں سب سے چھوٹے ذرات نہیں ہیں، لیکن وہ سب سے چھوٹی اکائیاں ہیں جو اپنی کیمیائی خصوصیات برقرار رکھتی ہیں۔",
+      "text_markdown": "ایٹم حقیقی معنوں میں سب سے چھوٹے ذرات نہیں ہیں، لیکن وہ سب سے چھوٹی اکائیاں ہیں جو اپنی کیمیائی خصوصیات برقرار رکھتی ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایٹم حقیقی معنوں میں سب سے چھوٹے ذرات نہیں ہیں، لیکن وہ سب سے چھوٹی اکائیاں ہیں جو اپنی کیمیائی خصوصیات برقرار رکھتی ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-024",
+      "block_type": "text",
+      "text": "ایٹم ناقابل یقین حد تک پائیدار ہوتے ہیں۔",
+      "text_markdown": "ایٹم ناقابل یقین حد تک پائیدار ہوتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ناقابل یقین حد تک پائیدار ہوتے ہیں ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-025",
+      "block_type": "text",
+      "text": "آپ کے جسم میں موجود ایٹم اربوں سال پرانے ہیں۔",
+      "text_markdown": "آپ کے جسم میں موجود ایٹم اربوں سال پرانے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ کے جسم میں موجود ایٹم اربوں سال پرانے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-026",
+      "block_type": "text",
+      "text": "آج آپ نے جو پانی پیا، اس میں موجود کچھ ہائیڈروجن ایٹم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+      "text_markdown": "آج آپ نے جو پانی پیا، اس میں موجود کچھ ہائیڈروجن ایٹم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آج آپ نے جو پانی پیا، اس میں موجود کچھ ہائیڈروجن ایٹم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-027",
+      "block_type": "text",
+      "text": "آپ قدیم مادوں سے بنے ہیں۔",
+      "text_markdown": "آپ قدیم مادوں سے بنے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "آپ قدیم مادوں سے بنے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-028",
+      "block_type": "text",
+      "text": "عام زندگی میں ایٹم نہ تو بنتے ہیں اور نہ ہی تباہ ہوتے ہیں۔",
+      "text_markdown": "عام زندگی میں ایٹم نہ تو بنتے ہیں اور نہ ہی تباہ ہوتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "عام زندگی میں ایٹم نہ تو بنتے ہیں اور نہ ہی تباہ ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-029",
+      "block_type": "text",
+      "text": "وہ اپنی ترتیب بدلتے ہیں۔",
+      "text_markdown": "وہ اپنی ترتیب بدلتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "وہ اپنی ترتیب بدلتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-030",
+      "block_type": "text",
+      "text": "جب لکڑی جلتی ہے تو ایٹم غائب نہیں ہوتے۔",
+      "text_markdown": "جب لکڑی جلتی ہے تو ایٹم غائب نہیں ہوتے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "جب لکڑی جلتی ہے تو ایٹم غائب نہیں ہوتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-031",
+      "block_type": "text",
+      "text": "وہ دھوئیں، راکھ اور گیس میں دوبارہ ترتیب پاتے ہیں۔",
+      "text_markdown": "وہ دھوئیں، راکھ اور گیس میں دوبارہ ترتیب پاتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "وہ دوبارہ ترتیب پا کر بن جاتے ہیں دھواں، راکھ اور گیس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-032",
+      "block_type": "text",
+      "text": "جب برف پگھلتی ہے تو ایٹم ویسے ہی رہتے ہیں۔",
+      "text_markdown": "جب برف پگھلتی ہے تو ایٹم ویسے ہی رہتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "جب برف پگھلتی ہے تو ایٹم ویسے ہی رہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-033",
+      "block_type": "text",
+      "text": "صرف ان کی ترتیب بدلتی ہے۔",
+      "text_markdown": "صرف ان کی ترتیب بدلتی ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "صرف ان کی ترتیب بدلتی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-034",
+      "block_type": "text",
+      "text": "ایٹموں کو سمجھنا کیمسٹری کی بنیاد ہے۔",
+      "text_markdown": "ایٹموں کو سمجھنا کیمسٹری کی بنیاد ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "ایٹموں کو سمجھنا کیمسٹری کی بنیاد ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-035",
+      "block_type": "text",
+      "text": "کیمسٹری وہ سائنس ہے جو بتاتی ہے کہ ایٹم کیسے ملتے ہیں، دوبارہ ترتیب پاتے ہیں اور تعامل کرتے ہیں۔",
+      "text_markdown": "کیمسٹری وہ سائنس ہے جو بتاتی ہے کہ ایٹم کیسے ملتے ہیں، دوبارہ ترتیب پاتے ہیں اور تعامل کرتے ہیں۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "کیمسٹری ہے ایٹموں کے ملاپ، نئی ترتیب اور تعامل کی سائنس۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-036",
+      "block_type": "text",
+      "text": "طبعی دنیا میں جو کچھ بھی ہوتا ہے وہ ایٹموں اور ان کے افعال پر منحصر ہے۔",
+      "text_markdown": "طبعی دنیا میں جو کچھ بھی ہوتا ہے وہ ایٹموں اور ان کے افعال پر منحصر ہے۔",
+      "title": "ہر چیز ایٹموں سے بنی ہے",
+      "tts": {
+        "text": "طبعی دنیا میں جو کچھ بھی ہوتا ہے وہ ایٹموں اور ان کے افعال پر منحصر ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p10",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-037",
+      "block_type": "heading",
+      "text": "ایٹم کے اندر",
+      "text_markdown": "ایٹم کے اندر",
+      "title": "ایٹم کے اندر"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-038",
+      "block_type": "text",
+      "text": "ایک ایٹم کے اندر تین قسم کے ذرات ہوتے ہیں۔",
+      "text_markdown": "ایک ایٹم کے اندر تین قسم کے ذرات ہوتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک ایٹم کے اندر تین قسم کے ذرات ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-039",
+      "block_type": "text",
+      "text": "پروٹونز۔",
+      "text_markdown": "پروٹونز۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "یہ ہیں پروٹونز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-040",
+      "block_type": "text",
+      "text": "نیوٹرونز۔",
+      "text_markdown": "نیوٹرونز۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-041",
+      "block_type": "text",
+      "text": "الیکٹرونز۔",
+      "text_markdown": "الیکٹرونز۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "الیکٹرونز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-042",
+      "block_type": "text",
+      "text": "یہ تینوں ذرات کائنات کے ہر ایٹم کو بناتے ہیں۔",
+      "text_markdown": "یہ تینوں ذرات کائنات کے ہر ایٹم کو بناتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "یہ تینوں ذرات کائنات کے ہر ایٹم کو بناتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-043",
+      "block_type": "text",
+      "text": "ایٹم کے مرکز کو نیوکلیئس کہتے ہیں۔",
+      "text_markdown": "ایٹم کے مرکز کو نیوکلیئس کہتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایٹم کے مرکز کو نیوکلیئس کہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-044",
+      "block_type": "text",
+      "text": "نیوکلیئس میں پروٹونز اور نیوٹرونز ہوتے ہیں۔",
+      "text_markdown": "نیوکلیئس میں پروٹونز اور نیوٹرونز ہوتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوکلیئس میں پروٹونز اور نیوٹرونز ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-045",
+      "block_type": "text",
+      "text": "پورا ایٹم کے مقابلے میں نیوکلیئس بہت چھوٹا ہوتا ہے۔",
+      "text_markdown": "پورا ایٹم کے مقابلے میں نیوکلیئس بہت چھوٹا ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "پورا ایٹم کے مقابلے میں نیوکلیئس بہت چھوٹا ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-046",
+      "block_type": "text",
+      "text": "اگر ایٹم ایک فٹ بال اسٹیڈیم کے سائز کا ہوتا، تو نیوکلیئس پچاس گز کی لائن پر ایک سنگ مرمر کے گولے کے سائز کا ہوتا۔",
+      "text_markdown": "اگر ایٹم ایک فٹ بال اسٹیڈیم کے سائز کا ہوتا، تو نیوکلیئس پچاس گز کی لائن پر ایک سنگ مرمر کے گولے کے سائز کا ہوتا۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "اگر ایٹم ایک فٹ بال اسٹیڈیم کے سائز کا ہوتا، تو نیوکلیئس پچاس گز کی لائن پر ایک سنگ مرمر کے گولے کے سائز کا ہوتا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-047",
+      "block_type": "text",
+      "text": "پروٹونز پر مثبت برقی چارج ہوتا ہے۔",
+      "text_markdown": "پروٹونز پر مثبت برقی چارج ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "پروٹونز پر مثبت برقی چارج ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-048",
+      "block_type": "text",
+      "text": "ہر پروٹون پر مثبت چارج کی مقدار یکساں ہوتی ہے۔",
+      "text_markdown": "ہر پروٹون پر مثبت چارج کی مقدار یکساں ہوتی ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ہر پروٹون اٹھاتا ہے برابر مثبت چارج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-049",
+      "block_type": "text",
+      "text": "ایک ایٹم میں پروٹونز کی تعداد یہ طے کرتی ہے کہ وہ ایٹم کس عنصر کا ہے۔",
+      "text_markdown": "ایک ایٹم میں پروٹونز کی تعداد یہ طے کرتی ہے کہ وہ ایٹم کس عنصر کا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک ایٹم میں پروٹونز کی تعداد یہ طے کرتی ہے کہ وہ ایٹم کس عنصر کا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-050",
+      "block_type": "text",
+      "text": "ایک پروٹون کا مطلب ہائیڈروجن ہے۔",
+      "text_markdown": "ایک پروٹون کا مطلب ہائیڈروجن ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک پروٹون کا مطلب ہائیڈروجن ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-051",
+      "block_type": "text",
+      "text": "چھ پروٹونز کا مطلب کاربن ہے۔",
+      "text_markdown": "چھ پروٹونز کا مطلب کاربن ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "چھ پروٹونز کا مطلب کاربن ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-052",
+      "block_type": "text",
+      "text": "چھبیس پروٹونز کا مطلب آئرن ہے۔",
+      "text_markdown": "چھبیس پروٹونز کا مطلب آئرن ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "چھبیس پروٹونز کا مطلب آئرن ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p13",
+      "sentence_index": 6,
+      "chapter": 2,
+      "id": "ch02-053",
+      "block_type": "text",
+      "text": "پروٹونز کی تعداد ایک ایٹم کے بارے میں سب سے اہم حقیقت ہے۔",
+      "text_markdown": "پروٹونز کی تعداد ایک ایٹم کے بارے میں سب سے اہم حقیقت ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "پروٹونز کی تعداد ایک ایٹم کے بارے میں سب سے اہم حقیقت ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-054",
+      "block_type": "text",
+      "text": "نیوٹرونز پر کوئی برقی چارج نہیں ہوتا۔",
+      "text_markdown": "نیوٹرونز پر کوئی برقی چارج نہیں ہوتا۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز پر کوئی برقی چارج نہیں ہوتا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-055",
+      "block_type": "text",
+      "text": "نیوٹرونز بے چارج ہوتے ہیں۔",
+      "text_markdown": "نیوٹرونز بے چارج ہوتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز بے چارج ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-056",
+      "block_type": "text",
+      "text": "نیوٹرونز نیوکلیئس میں پروٹونز کے ساتھ رہتے ہیں۔",
+      "text_markdown": "نیوٹرونز نیوکلیئس میں پروٹونز کے ساتھ رہتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز نیوکلیئس میں پروٹونز کے ساتھ رہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-057",
+      "block_type": "text",
+      "text": "نیوٹرونز نیوکلیئس کو اکٹھا رکھنے میں مدد کرتے ہیں۔",
+      "text_markdown": "نیوٹرونز نیوکلیئس کو اکٹھا رکھنے میں مدد کرتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز نیوکلیئس کو اکٹھا رکھنے میں مدد کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-058",
+      "block_type": "text",
+      "text": "نیوٹرونز کے بغیر، پروٹونز ایک دوسرے کو دور دھکیل دیتے کیونکہ ان سب پر ایک ہی مثبت چارج ہوتا ہے۔",
+      "text_markdown": "نیوٹرونز کے بغیر، پروٹونز ایک دوسرے کو دور دھکیل دیتے کیونکہ ان سب پر ایک ہی مثبت چارج ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوٹرونز کے بغیر پروٹونز ایک دوسرے کو دور دھکیلتے، وجہ ان سب کا ایک سا مثبت برقی بار۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-059",
+      "block_type": "text",
+      "text": "الیکٹرونز پر منفی برقی چارج ہوتا ہے۔",
+      "text_markdown": "الیکٹرونز پر منفی برقی چارج ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "الیکٹرونز پر منفی برقی چارج ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-060",
+      "block_type": "text",
+      "text": "الیکٹرونز نیوکلیئس کے گرد ایک بادل کی شکل میں حرکت کرتے ہیں۔",
+      "text_markdown": "الیکٹرونز نیوکلیئس کے گرد ایک بادل کی شکل میں حرکت کرتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "الیکٹرونز نیوکلیئس کے گرد ایک بادل کی شکل میں حرکت کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-061",
+      "block_type": "text",
+      "text": "وہ سورج کے گرد سیاروں کی طرح گردش نہیں کرتے۔",
+      "text_markdown": "وہ سورج کے گرد سیاروں کی طرح گردش نہیں کرتے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "وہ سورج کے گرد سیاروں کی طرح گردش نہیں کرتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-062",
+      "block_type": "text",
+      "text": "وہ نیوکلیئس کے گرد امکان کے ایک دھندلے علاقے میں موجود ہوتے ہیں۔",
+      "text_markdown": "وہ نیوکلیئس کے گرد امکان کے ایک دھندلے علاقے میں موجود ہوتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "وہ نیوکلیئس کے گرد امکان کے ایک دھندلے علاقے میں موجود ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-063",
+      "block_type": "text",
+      "text": "الیکٹران کلاؤڈ وہ جگہ ہے جہاں کسی بھی لمحے آپ کو ایک الیکٹران ملنے کا امکان ہوتا ہے۔",
+      "text_markdown": "الیکٹران کلاؤڈ وہ جگہ ہے جہاں کسی بھی لمحے آپ کو ایک الیکٹران ملنے کا امکان ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "الیکٹران کلاؤڈ وہ جگہ ہے جہاں کسی بھی لمحے آپ کو ایک الیکٹران ملنے کا امکان ہوتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-064",
+      "block_type": "text",
+      "text": "ایک الیکٹران کا پروٹون یا نیوٹران کے مقابلے میں تقریباً کوئی وزن نہیں ہوتا۔",
+      "text_markdown": "ایک الیکٹران کا پروٹون یا نیوٹران کے مقابلے میں تقریباً کوئی وزن نہیں ہوتا۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک الیکٹران کا پروٹون یا نیوٹران کے مقابلے میں تقریباً کوئی وزن نہیں ہوتا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-065",
+      "block_type": "text",
+      "text": "ایک پروٹون ایک الیکٹران سے تقریباً 1,836 گنا زیادہ بھاری ہوتا ہے۔",
+      "text_markdown": "ایک پروٹون ایک الیکٹران سے تقریباً 1,836 گنا زیادہ بھاری ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک پروٹون ایک الیکٹران سے تقریباً ایک ہزار آٹھ سو چھتیس گنا زیادہ بھاری ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-066",
+      "block_type": "text",
+      "text": "ایک ایٹم کا تقریباً تمام وزن نیوکلیئس میں ہوتا ہے۔",
+      "text_markdown": "ایک ایٹم کا تقریباً تمام وزن نیوکلیئس میں ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک ایٹم کا تقریباً تمام وزن نیوکلیئس میں ہوتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-067",
+      "block_type": "text",
+      "text": "ایک غیر جانبدار ایٹم میں، الیکٹرانوں کی تعداد پروٹونوں کی تعداد کے برابر ہوتی ہے۔",
+      "text_markdown": "ایک غیر جانبدار ایٹم میں، الیکٹرانوں کی تعداد پروٹونوں کی تعداد کے برابر ہوتی ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک غیر جانبدار ایٹم میں، الیکٹرانوں کی تعداد پروٹونوں کی تعداد کے برابر ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-068",
+      "block_type": "text",
+      "text": "مثبت چارجز اور منفی چارجز متوازن ہوتے ہیں۔",
+      "text_markdown": "مثبت چارجز اور منفی چارجز متوازن ہوتے ہیں۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "مثبت چارجز اور منفی چارجز متوازن ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-069",
+      "block_type": "text",
+      "text": "ایٹم کا کوئی مجموعی چارج نہیں ہوتا۔",
+      "text_markdown": "ایٹم کا کوئی مجموعی چارج نہیں ہوتا۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایٹم کا کوئی مجموعی چارج نہیں ہوتا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-070",
+      "block_type": "text",
+      "text": "یہ توازن ایک ایٹم کی بنیادی حالت ہے۔",
+      "text_markdown": "یہ توازن ایک ایٹم کی بنیادی حالت ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "یہ توازن ایک ایٹم کی بنیادی حالت ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-071",
+      "block_type": "text",
+      "text": "ایک ایٹم کا زیادہ تر حصہ خالی جگہ ہوتا ہے۔",
+      "text_markdown": "ایک ایٹم کا زیادہ تر حصہ خالی جگہ ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "ایک ایٹم کا زیادہ تر حصہ خالی جگہ ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-072",
+      "block_type": "text",
+      "text": "نیوکلیئس گھنا اور چھوٹا ہوتا ہے۔",
+      "text_markdown": "نیوکلیئس گھنا اور چھوٹا ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "نیوکلیئس گھنا اور چھوٹا ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-073",
+      "block_type": "text",
+      "text": "الیکٹران کلاؤڈ بڑا اور زیادہ تر خالی ہوتا ہے۔",
+      "text_markdown": "الیکٹران کلاؤڈ بڑا اور زیادہ تر خالی ہوتا ہے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "الیکٹران کلاؤڈ بڑا اور زیادہ تر خالی ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-074",
+      "block_type": "text",
+      "text": "اگر آپ اپنے جسم کے ہر ایٹم سے تمام خالی جگہ ہٹا سکیں تو آپ نمک کے ایک دانے سے بھی چھوٹے ہو جائیں گے۔",
+      "text_markdown": "اگر آپ اپنے جسم کے ہر ایٹم سے تمام خالی جگہ ہٹا سکیں تو آپ نمک کے ایک دانے سے بھی چھوٹے ہو جائیں گے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "اگر آپ اپنے جسم کے ہر ایٹم سے تمام خالی جگہ ہٹا سکیں تو آپ نمک کے ایک دانے سے بھی چھوٹے ہو جائیں گے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-075",
+      "block_type": "text",
+      "text": "آپ کا وزن وہی رہے گا۔",
+      "text_markdown": "آپ کا وزن وہی رہے گا۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "آپ کا وزن وہی رہے گا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-076",
+      "block_type": "text",
+      "text": "آپ صرف ناقابل یقین حد تک گھنے ہو جائیں گے۔",
+      "text_markdown": "آپ صرف ناقابل یقین حد تک گھنے ہو جائیں گے۔",
+      "title": "ایٹم کے اندر",
+      "tts": {
+        "text": "آپ صرف ناقابل یقین حد تک گھنے ہو جائیں گے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p19",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-077",
+      "block_type": "heading",
+      "text": "عناصر",
+      "text_markdown": "عناصر",
+      "title": "عناصر"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-078",
+      "block_type": "text",
+      "text": "ایک عنصر صرف ایک قسم کے ایٹم سے بنا ہوا مادہ ہوتا ہے۔",
+      "text_markdown": "ایک عنصر صرف ایک قسم کے ایٹم سے بنا ہوا مادہ ہوتا ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ایک عنصر صرف ایک قسم کے ایٹم سے بنا ہوا مادہ ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-079",
+      "block_type": "text",
+      "text": "خالص سونا ایک عنصر ہے۔",
+      "text_markdown": "خالص سونا ایک عنصر ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص سونا ایک عنصر ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-080",
+      "block_type": "text",
+      "text": "خالص سونے کی ایک سلاخ میں ہر ایٹم میں 79 پروٹون ہوتے ہیں۔",
+      "text_markdown": "خالص سونے کی ایک سلاخ میں ہر ایٹم میں 79 پروٹون ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص سونے کی ایک سلاخ میں ہر ایٹم میں ستتر نو پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-081",
+      "block_type": "text",
+      "text": "خالص آکسیجن ایک عنصر ہے۔",
+      "text_markdown": "خالص آکسیجن ایک عنصر ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص آکسیجن ایک عنصر ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-082",
+      "block_type": "text",
+      "text": "خالص آکسیجن کے ایک ٹینک میں ہر ایٹم میں 8 پروٹون ہوتے ہیں۔",
+      "text_markdown": "خالص آکسیجن کے ایک ٹینک میں ہر ایٹم میں 8 پروٹون ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "خالص آکسیجن کے ایک ٹینک میں ہر ایٹم میں آٹھ پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-083",
+      "block_type": "text",
+      "text": "زمین پر قدرتی طور پر تقریباً 92 عناصر پائے جاتے ہیں۔",
+      "text_markdown": "زمین پر قدرتی طور پر تقریباً 92 عناصر پائے جاتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "زمین پر قدرتی طور پر تقریباً بانوے عناصر پائے جاتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-084",
+      "block_type": "text",
+      "text": "سائنسدانوں نے تجربہ گاہوں میں اضافی عناصر بنائے ہیں۔",
+      "text_markdown": "سائنسدانوں نے تجربہ گاہوں میں اضافی عناصر بنائے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سائنسدانوں نے تجربہ گاہوں میں اضافی عناصر بنائے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-085",
+      "block_type": "text",
+      "text": "معلوم عناصر کی کل تعداد 118 سے زیادہ ہے۔",
+      "text_markdown": "معلوم عناصر کی کل تعداد 118 سے زیادہ ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "معلوم عناصر کی کل تعداد ایک سو اٹھارہ سے زیادہ ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-086",
+      "block_type": "text",
+      "text": "ہر عنصر میں پروٹونوں کی ایک منفرد تعداد ہوتی ہے۔",
+      "text_markdown": "ہر عنصر میں پروٹونوں کی ایک منفرد تعداد ہوتی ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر عنصر میں پروٹونوں کی ایک منفرد تعداد ہوتی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-087",
+      "block_type": "text",
+      "text": "ہر عنصر کا ایک نام اور ایک علامت ہوتی ہے۔",
+      "text_markdown": "ہر عنصر کا ایک نام اور ایک علامت ہوتی ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر عنصر کا ایک نام اور ایک علامت ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-088",
+      "block_type": "text",
+      "text": "ہائیڈروجن H ہے۔ آکسیجن O ہے۔ کاربن C ہے۔ آئرن Fe ہے۔",
+      "text_markdown": "ہائیڈروجن H ہے۔ آکسیجن O ہے۔ کاربن C ہے۔ آئرن Fe ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن کے لیے ایچ، آکسیجن کے لیے او، کاربن کے لیے سی، اور آئرن کے لیے ایف ای علامت۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-089",
+      "block_type": "text",
+      "text": "سونا Au ہے۔",
+      "text_markdown": "سونا Au ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سونا اے یو ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-090",
+      "block_type": "text",
+      "text": "یہ علامتیں لاطینی، یونانی یا انگریزی ناموں سے آتی ہیں۔",
+      "text_markdown": "یہ علامتیں لاطینی، یونانی یا انگریزی ناموں سے آتی ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "یہ علامتیں لاطینی، یونانی یا انگریزی ناموں سے آتی ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-091",
+      "block_type": "text",
+      "text": "Fe لاطینی لفظ ferrum سے ماخوذ ہے۔",
+      "text_markdown": "Fe comes from the Latin word ferrum.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ایف ای لاطینی لفظ فیرم سے ماخوذ ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "chapter": 3,
+      "id": "ch03-092",
+      "block_type": "text",
+      "text": "Au لاطینی لفظ aurum سے ماخوذ ہے۔",
+      "text_markdown": "Au comes from the Latin word aurum.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اے یو لاطینی لفظ اورم سے ماخوذ ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-093",
+      "block_type": "text",
+      "text": "ہائیڈروجن سب سے سادہ عنصر ہے۔",
+      "text_markdown": "ہائیڈروجن سب سے سادہ عنصر ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن، سب سے سادہ عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-094",
+      "block_type": "text",
+      "text": "ہائیڈروجن کے ایک ایٹم میں ایک پروٹون اور ایک الیکٹران ہوتا ہے۔",
+      "text_markdown": "ہائیڈروجن کے ایک ایٹم میں ایک پروٹون اور ایک الیکٹران ہوتا ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن کے ایک ایٹم کی ساخت، ایک پروٹون اور ایک الیکٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-095",
+      "block_type": "text",
+      "text": "ہائیڈروجن کائنات میں سب سے عام عنصر ہے۔",
+      "text_markdown": "ہائیڈروجن کائنات میں سب سے عام عنصر ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن کائنات میں سب سے عام عنصر ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-096",
+      "block_type": "text",
+      "text": "ستارے زیادہ تر ہائیڈروجن سے بنے ہوتے ہیں۔",
+      "text_markdown": "ستارے زیادہ تر ہائیڈروجن سے بنے ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ستارے زیادہ تر ہائیڈروجن سے بنے ہوتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-097",
+      "block_type": "text",
+      "text": "کاربن زندگی کا عنصر ہے۔",
+      "text_markdown": "کاربن زندگی کا عنصر ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن زندگی کا عنصر ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-098",
+      "block_type": "text",
+      "text": "کاربن میں چھ پروٹون ہوتے ہیں۔",
+      "text_markdown": "کاربن میں چھ پروٹون ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن میں چھ پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-099",
+      "block_type": "text",
+      "text": "کاربن کے ایٹم ایک ہی وقت میں کئی دوسرے ایٹموں کے ساتھ بانڈ بنا سکتے ہیں۔",
+      "text_markdown": "کاربن کے ایٹم ایک ہی وقت میں کئی دوسرے ایٹموں کے ساتھ بانڈ بنا سکتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "کاربن کے ایٹم ایک ہی وقت میں کئی دوسرے ایٹموں کے ساتھ بانڈ بنا سکتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-100",
+      "block_type": "text",
+      "text": "یہ صلاحیت کاربن کو تمام جانداروں کی ریڑھ کی ہڈی بناتی ہے۔",
+      "text_markdown": "یہ صلاحیت کاربن کو تمام جانداروں کی ریڑھ کی ہڈی بناتی ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "یہ صلاحیت کاربن کو تمام جانداروں کی ریڑھ کی ہڈی بناتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-101",
+      "block_type": "text",
+      "text": "آپ کے جسم میں ہر پروٹین، ڈی این اے کا ہر دھاگہ، اور ہر شوگر مالیکیول کاربن پر مشتمل ہوتا ہے۔",
+      "text_markdown": "آپ کے جسم میں ہر پروٹین، ڈی این اے کا ہر دھاگہ، اور ہر شوگر مالیکیول کاربن پر مشتمل ہوتا ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آپ کے جسم میں ہر پروٹین، ڈی این اے کا ہر دھاگہ، اور ہر شوگر مالیکیول کاربن پر مشتمل ہوتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-102",
+      "block_type": "text",
+      "text": "آکسیجن میں آٹھ پروٹون ہوتے ہیں۔",
+      "text_markdown": "آکسیجن میں آٹھ پروٹون ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آکسیجن میں آٹھ پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-103",
+      "block_type": "text",
+      "text": "آکسیجن وہ عنصر ہے جسے آپ سانس لیتے ہیں۔",
+      "text_markdown": "آکسیجن وہ عنصر ہے جسے آپ سانس لیتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آکسیجن وہ عنصر ہے جسے آپ سانس لیتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-104",
+      "block_type": "text",
+      "text": "آپ کے پھیپھڑے ہوا سے آکسیجن نکال کر اسے آپ کے خون میں بھیجتے ہیں۔",
+      "text_markdown": "آپ کے پھیپھڑے ہوا سے آکسیجن نکال کر اسے آپ کے خون میں بھیجتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آپ کے پھیپھڑے ہوا سے آکسیجن نکال کر اسے آپ کے خون میں بھیجتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-105",
+      "block_type": "text",
+      "text": "آپ کے خلیے خوراک سے توانائی خارج کرنے کے لیے آکسیجن کا استعمال کرتے ہیں۔",
+      "text_markdown": "آپ کے خلیے خوراک سے توانائی خارج کرنے کے لیے آکسیجن کا استعمال کرتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آپ کے خلیے خوراک سے توانائی خارج کرنے کے لیے آکسیجن کا استعمال کرتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-106",
+      "block_type": "text",
+      "text": "آئرن میں چھبیس پروٹون ہوتے ہیں۔",
+      "text_markdown": "آئرن میں چھبیس پروٹون ہوتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آئرن میں چھبیس پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-107",
+      "block_type": "text",
+      "text": "آئرن وہ عنصر ہے جو آپ کے خون کو سرخ بناتا ہے۔",
+      "text_markdown": "آئرن وہ عنصر ہے جو آپ کے خون کو سرخ بناتا ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آئرن وہ عنصر ہے جو آپ کے خون کو سرخ بناتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-108",
+      "block_type": "text",
+      "text": "آئرن اسٹیل کا بنیادی جزو ہے۔",
+      "text_markdown": "آئرن اسٹیل کا بنیادی جزو ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "آئرن اسٹیل کا بنیادی جزو ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-109",
+      "block_type": "text",
+      "text": "زمین کا مرکز زیادہ تر آئرن پر مشتمل ہے۔",
+      "text_markdown": "زمین کا مرکز زیادہ تر آئرن پر مشتمل ہے۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "زمین کا مرکز زیادہ تر آئرن پر مشتمل ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-110",
+      "block_type": "text",
+      "text": "سب سے ہلکے عناصر کائنات میں سب سے زیادہ عام ہیں۔",
+      "text_markdown": "سب سے ہلکے عناصر کائنات میں سب سے زیادہ عام ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "سب سے ہلکے عناصر کائنات میں سب سے زیادہ عام ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-111",
+      "block_type": "text",
+      "text": "ہائیڈروجن اور ہیلیم مل کر کائنات کے تمام ایٹموں کا تقریباً اٹھانوے فیصد بناتے ہیں۔",
+      "text_markdown": "ہائیڈروجن اور ہیلیم مل کر کائنات کے تمام ایٹموں کا تقریباً اٹھانوے فیصد بناتے ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہائیڈروجن اور ہیلیم مل کر کائنات کے تمام ایٹموں کا تقریباً اٹھانوے فیصد بناتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-112",
+      "block_type": "text",
+      "text": "اس کے مقابلے میں بھاری عناصر نایاب ہیں۔",
+      "text_markdown": "اس کے مقابلے میں بھاری عناصر نایاب ہیں۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "اس کے مقابلے میں بھاری عناصر نایاب ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-113",
+      "block_type": "text",
+      "text": "ہر بھاری عنصر کا ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+      "text_markdown": "ہر بھاری عنصر کا ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+      "title": "عناصر",
+      "tts": {
+        "text": "ہر بھاری عنصر کا ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p28",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-114",
+      "block_type": "heading",
+      "text": "متواتر جدول",
+      "text_markdown": "متواتر جدول",
+      "title": "متواتر جدول"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-115",
+      "block_type": "text",
+      "text": "متواتر جدول ایک ایسا چارٹ ہے جو ہر معلوم عنصر کو منظم کرتا ہے۔",
+      "text_markdown": "متواتر جدول ایک ایسا چارٹ ہے جو ہر معلوم عنصر کو منظم کرتا ہے۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "متواتر جدول ایک ایسا چارٹ ہے جو ہر معلوم عنصر کو منظم کرتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-116",
+      "block_type": "text",
+      "text": "یہ جدول عناصر کو ان کے پروٹون کی تعداد کے لحاظ سے، سب سے چھوٹے سے سب سے بڑے تک ترتیب دیتا ہے۔",
+      "text_markdown": "یہ جدول عناصر کو ان کے پروٹون کی تعداد کے لحاظ سے، سب سے چھوٹے سے سب سے بڑے تک ترتیب دیتا ہے۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "پروٹون کی تعداد کے حساب سے، چھوٹے سے بڑے تک، عناصر کو منظم کرتا ہے یہ جدول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-117",
+      "block_type": "text",
+      "text": "ہائیڈروجن ایک پروٹون کے ساتھ پہلے نمبر پر ہے۔",
+      "text_markdown": "ہائیڈروجن ایک پروٹون کے ساتھ پہلے نمبر پر ہے۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "ایک پروٹون کے ساتھ پہلے نمبر پر آتا ہے ہائیڈروجن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-118",
+      "block_type": "text",
+      "text": "ہیلیم دو پروٹون کے ساتھ دوسرے نمبر پر ہے۔",
+      "text_markdown": "ہیلیم دو پروٹون کے ساتھ دوسرے نمبر پر ہے۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "ہیلیم دو پروٹون کے ساتھ دوسرے نمبر پر ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-119",
+      "block_type": "text",
+      "text": "یہ جدول اوگانیسن تک جاری رہتا ہے جس میں ایک سو اٹھارہ پروٹون ہوتے ہیں۔",
+      "text_markdown": "یہ جدول اوگانیسن تک جاری رہتا ہے جس میں ایک سو اٹھارہ پروٹون ہوتے ہیں۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "یہ جدول اوگانیسن تک جاری رہتا ہے جس میں ایک سو اٹھارہ پروٹون ہوتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-120",
+      "block_type": "text",
+      "text": "متواتر جدول میں قطاریں اور کالم ہوتے ہیں۔",
+      "text_markdown": "متواتر جدول میں قطاریں اور کالم ہوتے ہیں۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "متواتر جدول میں قطاریں اور کالم ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-121",
+      "block_type": "text",
+      "text": "قطاروں کو پیریڈز کہا جاتا ہے۔",
+      "text_markdown": "قطاروں کو پیریڈز کہا جاتا ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "قطاروں کو پیریڈز کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-122",
+      "block_type": "text",
+      "text": "کالموں کو گروپس کہا جاتا ہے۔",
+      "text_markdown": "کالموں کو گروپس کہا جاتا ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "کالموں کو گروپس کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-123",
+      "block_type": "text",
+      "text": "ایک ہی گروپ میں موجود عناصر کی خصوصیات ایک جیسی ہوتی ہیں۔",
+      "text_markdown": "ایک ہی گروپ میں موجود عناصر کی خصوصیات ایک جیسی ہوتی ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ایک ہی گروپ میں موجود عناصر کی خصوصیات ایک جیسی ہوتی ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-124",
+      "block_type": "text",
+      "text": "یہی وجہ ہے کہ اس ٹیبل کو پیریوڈک کہا جاتا ہے۔",
+      "text_markdown": "یہی وجہ ہے کہ اس ٹیبل کو پیریوڈک کہا جاتا ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "یہی وجہ ہے کہ اس ٹیبل کو پیریوڈک کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-125",
+      "block_type": "text",
+      "text": "خصوصیات ایک باقاعدہ انداز میں دہرائی جاتی ہیں۔",
+      "text_markdown": "خصوصیات ایک باقاعدہ انداز میں دہرائی جاتی ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "خصوصیات ایک باقاعدہ انداز میں دہرائی جاتی ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-126",
+      "block_type": "text",
+      "text": "ٹیبل کے بائیں جانب کے عناصر دھاتیں ہیں۔",
+      "text_markdown": "ٹیبل کے بائیں جانب کے عناصر دھاتیں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ٹیبل کے بائیں جانب کے عناصر دھاتیں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-127",
+      "block_type": "text",
+      "text": "زیادہ تر عناصر دھاتیں ہیں۔",
+      "text_markdown": "زیادہ تر عناصر دھاتیں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "زیادہ تر عناصر دھاتیں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-128",
+      "block_type": "text",
+      "text": "دھاتیں چمکدار ہوتی ہیں۔",
+      "text_markdown": "دھاتیں چمکدار ہوتی ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "دھاتیں چمکدار ہوتی ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-129",
+      "block_type": "text",
+      "text": "دھاتیں بجلی کی موصل ہوتی ہیں۔",
+      "text_markdown": "دھاتیں بجلی کی موصل ہوتی ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "دھاتیں بجلی کی موصل ہوتی ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-130",
+      "block_type": "text",
+      "text": "دھاتیں حرارت کی موصل ہوتی ہیں۔",
+      "text_markdown": "دھاتیں حرارت کی موصل ہوتی ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "دھاتیں حرارت کی موصل ہوتی ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-131",
+      "block_type": "text",
+      "text": "لوہا، تانبا، سونا اور ایلومینیم سب دھاتیں ہیں۔",
+      "text_markdown": "لوہا، تانبا، سونا اور ایلومینیم سب دھاتیں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "لوہا، تانبا، سونا اور ایلومینیم سب دھاتیں ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-132",
+      "block_type": "text",
+      "text": "ٹیبل کے دائیں جانب کے عناصر غیر دھاتیں ہیں۔",
+      "text_markdown": "ٹیبل کے دائیں جانب کے عناصر غیر دھاتیں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ٹیبل کے دائیں جانب کے عناصر غیر دھاتیں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-133",
+      "block_type": "text",
+      "text": "غیر دھاتوں میں آکسیجن، نائٹروجن، کاربن اور سلفر شامل ہیں۔",
+      "text_markdown": "غیر دھاتوں میں آکسیجن، نائٹروجن، کاربن اور سلفر شامل ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتوں میں آکسیجن، نائٹروجن، کاربن اور سلفر شامل ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-134",
+      "block_type": "text",
+      "text": "غیر دھاتیں بجلی کی اچھی موصل نہیں ہوتیں۔",
+      "text_markdown": "غیر دھاتیں بجلی کی اچھی موصل نہیں ہوتیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتیں بجلی کی اچھی موصل نہیں ہوتیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-135",
+      "block_type": "text",
+      "text": "غیر دھاتیں وہ عناصر ہیں جو ہوا، پانی اور جاندار اشیاء کو بناتے ہیں۔",
+      "text_markdown": "غیر دھاتیں وہ عناصر ہیں جو ہوا، پانی اور جاندار اشیاء کو بناتے ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "غیر دھاتیں وہ عناصر ہیں جو ہوا، پانی اور جاندار اشیاء کو بناتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-136",
+      "block_type": "text",
+      "text": "چند عناصر دھاتوں اور غیر دھاتوں کی سرحد پر واقع ہیں۔",
+      "text_markdown": "چند عناصر دھاتوں اور غیر دھاتوں کی سرحد پر واقع ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "چند عناصر دھاتوں اور غیر دھاتوں کی سرحد پر واقع ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-137",
+      "block_type": "text",
+      "text": "ان عناصر کو میٹالائیڈز کہا جاتا ہے۔",
+      "text_markdown": "ان عناصر کو میٹالائیڈز کہا جاتا ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ان عناصر کو میٹالائیڈز کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-138",
+      "block_type": "text",
+      "text": "سلیکون ایک میٹالائیڈ ہے۔",
+      "text_markdown": "سلیکون ایک میٹالائیڈ ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "سلیکون ایک میٹالائیڈ ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-139",
+      "block_type": "text",
+      "text": "سلیکون تھوڑی بہت بجلی کی موصل ہے، لیکن دھات کی طرح اچھی نہیں۔",
+      "text_markdown": "سلیکون تھوڑی بہت بجلی کی موصل ہے، لیکن دھات کی طرح اچھی نہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "سلیکون تھوڑی بہت بجلی کی موصل ہے، لیکن دھات کی طرح اچھی نہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-140",
+      "block_type": "text",
+      "text": "یہ خاصیت سلیکون کو کمپیوٹر چپس میں مفید بناتی ہے۔",
+      "text_markdown": "یہ خاصیت سلیکون کو کمپیوٹر چپس میں مفید بناتی ہے۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "یہ خاصیت سلیکون کو کمپیوٹر چپس میں مفید بناتی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-141",
+      "block_type": "text",
+      "text": "نوبل گیسیں دائیں جانب کے آخری کالم میں ہیں۔",
+      "text_markdown": "نوبل گیسیں دائیں جانب کے آخری کالم میں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "نوبل گیسیں دائیں جانب کے آخری کالم میں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-142",
+      "block_type": "text",
+      "text": "ہیلیئم، نیون، آرگون، کرپٹون، زینون اور ریڈون نوبل گیسیں ہیں۔",
+      "text_markdown": "ہیلیئم، نیون، آرگون، کرپٹون، زینون اور ریڈون نوبل گیسیں ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ہیلیئم، نیون، آرگون، کرپٹون، زینون اور ریڈون نوبل گیسیں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-143",
+      "block_type": "text",
+      "text": "نوبل گیسیں تقریباً کبھی دوسرے عناصر کے ساتھ تعامل نہیں کرتیں۔",
+      "text_markdown": "نوبل گیسیں تقریباً کبھی دوسرے عناصر کے ساتھ تعامل نہیں کرتیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "نوبل گیسیں تقریباً کبھی دوسرے عناصر کے ساتھ تعامل نہیں کرتیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-144",
+      "block_type": "text",
+      "text": "ان کے الیکٹران کے انتظامات پہلے ہی مستحکم ہوتے ہیں۔",
+      "text_markdown": "ان کے الیکٹران کے انتظامات پہلے ہی مستحکم ہوتے ہیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ان کے الیکٹران کے انتظامات پہلے ہی مستحکم ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-145",
+      "block_type": "text",
+      "text": "انہیں بانڈ بنانے کی ضرورت نہیں ہوتی۔",
+      "text_markdown": "انہیں بانڈ بنانے کی ضرورت نہیں ہوتی۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "انہیں بانڈ بنانے کی ضرورت نہیں ہوتی۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-146",
+      "block_type": "text",
+      "text": "ایک روسی سائنسدان دمتری مینڈلیو نے پہلا پیریوڈک ٹیبل 1869 میں بنایا تھا۔",
+      "text_markdown": "ایک روسی سائنسدان دمتری مینڈلیو نے پہلا پیریوڈک ٹیبل 1869 میں بنایا تھا۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ایک روسی سائنسدان دمتری مینڈلیو نے پہلا پیریوڈک ٹیبل اٹھارہ سو انہتر میں بنایا تھا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-147",
+      "block_type": "text",
+      "text": "مینڈلیو نے عناصر کو ان کی خصوصیات کے لحاظ سے ترتیب دیا اور دہرائے جانے والے انداز کو دیکھا۔",
+      "text_markdown": "مینڈلیو نے عناصر کو ان کی خصوصیات کے لحاظ سے ترتیب دیا اور دہرائے جانے والے انداز کو دیکھا۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "مینڈلیو نے عناصر کو ان کی خصوصیات کے لحاظ سے ترتیب دیا اور دہرائے جانے والے انداز کو دیکھا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-148",
+      "block_type": "text",
+      "text": "اس نے اپنے ٹیبل میں خالی جگہیں چھوڑ دیں جہاں اس نے پیش گوئی کی تھی کہ نامعلوم عناصر ہونے چاہئیں۔",
+      "text_markdown": "اس نے اپنے ٹیبل میں خالی جگہیں چھوڑ دیں جہاں اس نے پیش گوئی کی تھی کہ نامعلوم عناصر ہونے چاہئیں۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "اس نے اپنے ٹیبل میں خالی جگہیں چھوڑ دیں جہاں اس نے پیش گوئی کی تھی کہ نامعلوم عناصر ہونے چاہئیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-149",
+      "block_type": "text",
+      "text": "سائنسدانوں نے بعد میں ان عناصر کو دریافت کیا۔",
+      "text_markdown": "سائنسدانوں نے بعد میں ان عناصر کو دریافت کیا۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "سائنسدانوں نے بعد میں ان عناصر کو دریافت کیا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-150",
+      "block_type": "text",
+      "text": "ہر پیش گوئی درست ثابت ہوئی۔",
+      "text_markdown": "ہر پیش گوئی درست ثابت ہوئی۔",
+      "title": "پیریوڈک ٹیبل",
+      "tts": {
+        "text": "ہر پیش گوئی درست ثابت ہوئی۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-151",
+      "block_type": "text",
+      "text": "متواتر جدول سائنس کے سب سے طاقتور آلات میں سے ایک ہے۔",
+      "text_markdown": "متواتر جدول سائنس کے سب سے طاقتور آلات میں سے ایک ہے۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "متواتر جدول سائنس کے سب سے طاقتور آلات میں سے ایک ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-152",
+      "block_type": "text",
+      "text": "اگر آپ جانتے ہیں کہ کوئی عنصر جدول میں کہاں موجود ہے، تو آپ پیش گوئی کر سکتے ہیں کہ وہ کیسے برتاؤ کرے گا۔",
+      "text_markdown": "اگر آپ جانتے ہیں کہ کوئی عنصر جدول میں کہاں موجود ہے، تو آپ پیش گوئی کر سکتے ہیں کہ وہ کیسے برتاؤ کرے گا۔",
+      "title": "متواتر جدول",
+      "tts": {
+        "text": "عنصر کی جدول میں جگہ جان کر، اس کے برتاؤ کا تعین۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p37",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-153",
+      "block_type": "heading",
+      "text": "ایٹم کیسے جڑتے ہیں",
+      "text_markdown": "ایٹم کیسے جڑتے ہیں",
+      "title": "ایٹم کیسے جڑتے ہیں"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-154",
+      "block_type": "text",
+      "text": "ایٹم شاذ و نادر ہی اکیلے موجود ہوتے ہیں۔",
+      "text_markdown": "ایٹم شاذ و نادر ہی اکیلے موجود ہوتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایٹم شاذ و نادر ہی اکیلے موجود ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-155",
+      "block_type": "text",
+      "text": "زیادہ تر ایٹم مالیکیول بنانے کے لیے دوسرے ایٹموں کے ساتھ جڑتے ہیں۔",
+      "text_markdown": "زیادہ تر ایٹم مالیکیول بنانے کے لیے دوسرے ایٹموں کے ساتھ جڑتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "زیادہ تر ایٹم دوسرے ایٹموں سے جڑ کر بناتے ہیں مالیکیول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-156",
+      "block_type": "text",
+      "text": "ایک مالیکیول ایٹموں کا ایک ایسا گروہ ہے جو کیمیائی بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "text_markdown": "ایک مالیکیول ایٹموں کا ایک ایسا گروہ ہے جو کیمیائی بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "مالیکیول، کیمیائی بندھنوں سے جڑا ایٹموں کا گروہ۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-157",
+      "block_type": "text",
+      "text": "پانی ایک مالیکیول ہے۔",
+      "text_markdown": "پانی ایک مالیکیول ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "پانی ایک مالیکیول ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-158",
+      "block_type": "text",
+      "text": "آکسیجن گیس ایک مالیکیول ہے۔",
+      "text_markdown": "آکسیجن گیس ایک مالیکیول ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "آکسیجن گیس ایک مالیکیول ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-159",
+      "block_type": "text",
+      "text": "چینی ایک مالیکیول ہے۔",
+      "text_markdown": "چینی ایک مالیکیول ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "چینی ایک مالیکیول ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-160",
+      "block_type": "text",
+      "text": "ایٹم اپنے الیکٹرانوں کی وجہ سے جڑتے ہیں۔",
+      "text_markdown": "ایٹم اپنے الیکٹرانوں کی وجہ سے جڑتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایٹم اپنے الیکٹرانوں کی وجہ سے جڑتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-161",
+      "block_type": "text",
+      "text": "ایک ایٹم کے سب سے بیرونی خول میں موجود الیکٹران یہ طے کرتے ہیں کہ وہ ایٹم دوسرے ایٹموں کے ساتھ کیسے تعامل کرتا ہے۔",
+      "text_markdown": "ایک ایٹم کے سب سے بیرونی خول میں موجود الیکٹران یہ طے کرتے ہیں کہ وہ ایٹم دوسرے ایٹموں کے ساتھ کیسے تعامل کرتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایٹم کے بیرونی خول کے الیکٹران، دوسرے ایٹموں کے ساتھ اس کے تعامل کے ذمہ دار۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-162",
+      "block_type": "text",
+      "text": "ان بیرونی الیکٹرانوں کو ویلنس الیکٹران کہا جاتا ہے۔",
+      "text_markdown": "ان بیرونی الیکٹرانوں کو ویلنس الیکٹران کہا جاتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ان بیرونی الیکٹرانوں کو ویلنس الیکٹران کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-163",
+      "block_type": "text",
+      "text": "ایک مکمل بیرونی خول والا ایٹم مستحکم ہوتا ہے۔",
+      "text_markdown": "ایک مکمل بیرونی خول والا ایٹم مستحکم ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایک مکمل بیرونی خول والا ایٹم مستحکم ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-164",
+      "block_type": "text",
+      "text": "ایک ایٹم جس کا بیرونی خول مکمل نہیں ہوتا، وہ اسے بھرنے کی کوشش کرے گا۔",
+      "text_markdown": "ایک ایٹم جس کا بیرونی خول مکمل نہیں ہوتا، وہ اسے بھرنے کی کوشش کرے گا۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایک ایٹم جس کا بیرونی خول مکمل نہیں ہوتا، وہ اسے بھرنے کی کوشش کرے گا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-165",
+      "block_type": "text",
+      "text": "کیمیائی بندھنوں کی دو اہم اقسام ہیں۔",
+      "text_markdown": "کیمیائی بندھنوں کی دو اہم اقسام ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "کیمیائی بندھنوں کی دو اہم اقسام ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-166",
+      "block_type": "text",
+      "text": "کوویلنٹ بندھن اور آئنک بندھن۔",
+      "text_markdown": "کوویلنٹ بندھن اور آئنک بندھن۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "کوویلنٹ بندھن اور آئنک بندھن۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-167",
+      "block_type": "text",
+      "text": "ایک کوویلنٹ بندھن میں، دو ایٹم الیکٹران بانٹتے ہیں۔",
+      "text_markdown": "ایک کوویلنٹ بندھن میں، دو ایٹم الیکٹران بانٹتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایک کوویلنٹ بندھن میں، دو ایٹم الیکٹران بانٹتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-168",
+      "block_type": "text",
+      "text": "دونوں ایٹم ایک مشترکہ جوڑے میں الیکٹران فراہم کرتے ہیں۔",
+      "text_markdown": "دونوں ایٹم ایک مشترکہ جوڑے میں الیکٹران فراہم کرتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "دونوں ایٹم ایک مشترکہ جوڑے میں الیکٹران فراہم کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-169",
+      "block_type": "text",
+      "text": "مشترکہ الیکٹران دونوں نیوکلیائی کے گرد گردش کرتے ہیں۔",
+      "text_markdown": "مشترکہ الیکٹران دونوں نیوکلیائی کے گرد گردش کرتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "مشترکہ الیکٹران دونوں نیوکلیائی کے گرد گردش کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-170",
+      "block_type": "text",
+      "text": "یہ اشتراک ایٹموں کو آپس میں جوڑے رکھتا ہے۔",
+      "text_markdown": "یہ اشتراک ایٹموں کو آپس میں جوڑے رکھتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "یہ اشتراک ایٹموں کو آپس میں جوڑے رکھتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-171",
+      "block_type": "text",
+      "text": "پانی کوویلنٹ بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "text_markdown": "پانی کوویلنٹ بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "پانی کوویلنٹ بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-172",
+      "block_type": "text",
+      "text": "ہر ہائیڈروجن ایٹم آکسیجن ایٹم کے ساتھ ایک الیکٹران بانٹتا ہے۔",
+      "text_markdown": "ہر ہائیڈروجن ایٹم آکسیجن ایٹم کے ساتھ ایک الیکٹران بانٹتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ہر ہائیڈروجن ایٹم آکسیجن ایٹم کے ساتھ ایک الیکٹران بانٹتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-173",
+      "block_type": "text",
+      "text": "ایک آئنک بندھن میں، ایک ایٹم دوسرے ایٹم کو الیکٹران دیتا ہے۔",
+      "text_markdown": "ایک آئنک بندھن میں، ایک ایٹم دوسرے ایٹم کو الیکٹران دیتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایک آئنک بندھن میں، ایک ایٹم دوسرے ایٹم کو الیکٹران دیتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-174",
+      "block_type": "text",
+      "text": "وہ ایٹم جو الیکٹران کھو دیتا ہے، مثبت چارج والا بن جاتا ہے۔",
+      "text_markdown": "وہ ایٹم جو الیکٹران کھو دیتا ہے، مثبت چارج والا بن جاتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "وہ ایٹم جو الیکٹران کھو دیتا ہے، مثبت چارج والا بن جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-175",
+      "block_type": "text",
+      "text": "وہ ایٹم جو الیکٹران حاصل کرتا ہے، منفی چارج والا بن جاتا ہے۔",
+      "text_markdown": "وہ ایٹم جو الیکٹران حاصل کرتا ہے، منفی چارج والا بن جاتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "وہ ایٹم جو الیکٹران حاصل کرتا ہے، منفی چارج والا بن جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-176",
+      "block_type": "text",
+      "text": "مخالف چارجز ایک دوسرے کو اپنی طرف کھینچتے ہیں۔",
+      "text_markdown": "مخالف چارجز ایک دوسرے کو اپنی طرف کھینچتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "مخالف چارجز ایک دوسرے کو اپنی طرف کھینچتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-177",
+      "block_type": "text",
+      "text": "یہ کشش دونوں ایٹموں کو آپس میں جوڑے رکھتی ہے۔",
+      "text_markdown": "یہ کشش دونوں ایٹموں کو آپس میں جوڑے رکھتی ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "یہ کشش دونوں ایٹموں کو آپس میں جوڑے رکھتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-178",
+      "block_type": "text",
+      "text": "کھانے کا نمک آئنک بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "text_markdown": "کھانے کا نمک آئنک بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "کھانے کا نمک آئنک بندھنوں سے آپس میں جڑا ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "chapter": 5,
+      "id": "ch05-179",
+      "block_type": "text",
+      "text": "سوڈیم کلورین کو ایک الیکٹران دیتا ہے۔",
+      "text_markdown": "سوڈیم کلورین کو ایک الیکٹران دیتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "سوڈیم کلورین کو ایک الیکٹران دیتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-180",
+      "block_type": "text",
+      "text": "پانی کے ایک مالیکیول میں دو ہائیڈروجن ایٹم اور ایک آکسیجن ایٹم ہوتا ہے۔",
+      "text_markdown": "پانی کے ایک مالیکیول میں دو ہائیڈروجن ایٹم اور ایک آکسیجن ایٹم ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "پانی کے ایک مالیکیول میں دو ہائیڈروجن ایٹم اور ایک آکسیجن ایٹم ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-181",
+      "block_type": "text",
+      "text": "سائنس دان اسے H2O لکھتے ہیں۔",
+      "text_markdown": "سائنس دان اسے H2O لکھتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "سائنس دان اسے ایچ دو او لکھتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-182",
+      "block_type": "text",
+      "text": "H ہائیڈروجن کے لیے ہے۔",
+      "text_markdown": "H ہائیڈروجن کے لیے ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایچ ہائیڈروجن کے لیے ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-183",
+      "block_type": "text",
+      "text": "O آکسیجن کے لیے ہے۔",
+      "text_markdown": "O آکسیجن کے لیے ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "او آکسیجن کے لیے ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-184",
+      "block_type": "text",
+      "text": "2 کا مطلب ہے کہ ہائیڈروجن کے دو ایٹم ہیں۔",
+      "text_markdown": "2 کا مطلب ہے کہ ہائیڈروجن کے دو ایٹم ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "دو کا مطلب ہے کہ ہائیڈروجن کے دو ایٹم ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-185",
+      "block_type": "text",
+      "text": "کاربن ڈائی آکسائیڈ کے ایک مالیکیول میں ایک کاربن ایٹم اور دو آکسیجن ایٹم ہوتے ہیں۔",
+      "text_markdown": "کاربن ڈائی آکسائیڈ کے ایک مالیکیول میں ایک کاربن ایٹم اور دو آکسیجن ایٹم ہوتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "کاربن ڈائی آکسائیڈ کے ایک مالیکیول میں ہوتا ہے ایک کاربن ایٹم اور دو آکسیجن ایٹم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-186",
+      "block_type": "text",
+      "text": "سائنس دان اسے CO2 لکھتے ہیں۔",
+      "text_markdown": "سائنس دان اسے CO2 لکھتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "سائنس دان اسے سی او دو لکھتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-187",
+      "block_type": "text",
+      "text": "پودے ہوا سے کاربن ڈائی آکسائیڈ جذب کرتے ہیں اور اسے شوگر کے مالیکیول بنانے کے لیے استعمال کرتے ہیں۔",
+      "text_markdown": "پودے ہوا سے کاربن ڈائی آکسائیڈ جذب کرتے ہیں اور اسے شوگر کے مالیکیول بنانے کے لیے استعمال کرتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "پودے ہوا سے کاربن ڈائی آکسائیڈ جذب کرتے ہیں اور اسے شوگر کے مالیکیول بنانے کے لیے استعمال کرتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-188",
+      "block_type": "text",
+      "text": "ایٹموں کے درمیان کے بندھن توانائی ذخیرہ کرتے ہیں۔",
+      "text_markdown": "ایٹموں کے درمیان کے بندھن توانائی ذخیرہ کرتے ہیں۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "ایٹموں کے درمیان کے بندھن توانائی ذخیرہ کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-189",
+      "block_type": "text",
+      "text": "جب بندھن ٹوٹتے ہیں تو توانائی خارج ہوتی ہے۔",
+      "text_markdown": "جب بندھن ٹوٹتے ہیں تو توانائی خارج ہوتی ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "جب بندھن ٹوٹتے ہیں تو توانائی خارج ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-190",
+      "block_type": "text",
+      "text": "جب بندھن بنتے ہیں تو توانائی جذب ہوتی ہے۔",
+      "text_markdown": "جب بندھن بنتے ہیں تو توانائی جذب ہوتی ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "جب بندھن بنتے ہیں تو توانائی جذب ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-191",
+      "block_type": "text",
+      "text": "کائنات میں ہر کیمیائی رد عمل میں پرانے بندھنوں کا ٹوٹنا اور نئے بندھنوں کا بننا شامل ہوتا ہے۔",
+      "text_markdown": "کائنات میں ہر کیمیائی رد عمل میں پرانے بندھنوں کا ٹوٹنا اور نئے بندھنوں کا بننا شامل ہوتا ہے۔",
+      "title": "ایٹم کیسے جڑتے ہیں",
+      "tts": {
+        "text": "کائنات میں ہر کیمیائی رد عمل میں پرانے بندھنوں کا ٹوٹنا اور نئے بندھنوں کا بننا شامل ہوتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p46",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-192",
+      "block_type": "heading",
+      "text": "حرکت میں ایٹم",
+      "text_markdown": "حرکت میں ایٹم",
+      "title": "حرکت میں ایٹم"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-193",
+      "block_type": "text",
+      "text": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+      "text_markdown": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-194",
+      "block_type": "text",
+      "text": "وہ کبھی نہیں رکتے۔",
+      "text_markdown": "وہ کبھی نہیں رکتے۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ کبھی نہیں رکتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-195",
+      "block_type": "text",
+      "text": "مطلق صفر سے اوپر کسی بھی درجہ حرارت پر، ایٹم ارتعاش کرتے ہیں، گھومتے ہیں اور خلا میں سفر کرتے ہیں۔",
+      "text_markdown": "مطلق صفر سے اوپر کسی بھی درجہ حرارت پر، ایٹم ارتعاش کرتے ہیں، گھومتے ہیں اور خلا میں سفر کرتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "مطلق صفر سے اوپر کسی بھی درجہ حرارت پر، ایٹم ارتعاش کرتے ہیں، گھومتے ہیں اور خلا میں سفر کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-196",
+      "block_type": "text",
+      "text": "یہ حرکت ہی ہے جسے ہم حرارت کے طور پر محسوس کرتے ہیں۔",
+      "text_markdown": "یہ حرکت ہی ہے جسے ہم حرارت کے طور پر محسوس کرتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "حرارت، یہی محسوس ہونے والی حرکت۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-197",
+      "block_type": "text",
+      "text": "ٹھوس میں، ایٹم اپنی جگہ پر ارتعاش کرتے ہیں۔",
+      "text_markdown": "ٹھوس میں، ایٹم اپنی جگہ پر ارتعاش کرتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "ٹھوس میں، ایٹم اپنی جگہ پر ارتعاش کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-198",
+      "block_type": "text",
+      "text": "وہ ایک مقررہ ساخت میں بندھے ہوتے ہیں۔",
+      "text_markdown": "وہ ایک مقررہ ساخت میں بندھے ہوتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ ایک مقررہ ساخت میں بندھے ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-199",
+      "block_type": "text",
+      "text": "وہ آگے پیچھے جھولتے ہیں، لیکن اپنی جگہ نہیں چھوڑتے۔",
+      "text_markdown": "وہ آگے پیچھے جھولتے ہیں، لیکن اپنی جگہ نہیں چھوڑتے۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ آگے پیچھے جھولتے ہیں، لیکن اپنی جگہ نہیں چھوڑتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-200",
+      "block_type": "text",
+      "text": "یہی وجہ ہے کہ ٹھوس اپنی شکل برقرار رکھتے ہیں۔",
+      "text_markdown": "یہی وجہ ہے کہ ٹھوس اپنی شکل برقرار رکھتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "یہی وجہ ہے کہ ٹھوس اپنی شکل برقرار رکھتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-201",
+      "block_type": "text",
+      "text": "برف کے ایک ٹکڑے میں ایٹم ارتعاش کرتے ہیں، لیکن وہ ایک سخت کرسٹل پیٹرن میں رہتے ہیں۔",
+      "text_markdown": "برف کے ایک ٹکڑے میں ایٹم ارتعاش کرتے ہیں، لیکن وہ ایک سخت کرسٹل پیٹرن میں رہتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "برف کے ایک ٹکڑے میں ایٹم ارتعاش کرتے ہیں، لیکن وہ ایک سخت کرسٹل پیٹرن میں رہتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-202",
+      "block_type": "text",
+      "text": "مائع میں، ایٹم زیادہ آزادانہ طور پر حرکت کرتے ہیں۔",
+      "text_markdown": "مائع میں، ایٹم زیادہ آزادانہ طور پر حرکت کرتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "مائع میں ایٹم زیادہ آزاد اور زیادہ متحرک۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-203",
+      "block_type": "text",
+      "text": "وہ ایک دوسرے کے پاس سے پھسلتے ہیں۔",
+      "text_markdown": "وہ ایک دوسرے کے پاس سے پھسلتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ ایک دوسرے کے پاس سے پھسلتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-204",
+      "block_type": "text",
+      "text": "وہ ایک دوسرے کے قریب رہتے ہیں، لیکن اپنی جگہ پر بندھے نہیں ہوتے۔",
+      "text_markdown": "وہ ایک دوسرے کے قریب رہتے ہیں، لیکن اپنی جگہ پر بندھے نہیں ہوتے۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ ایک دوسرے کے قریب رہتے ہیں، لیکن اپنی جگہ پر بندھے نہیں ہوتے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-205",
+      "block_type": "text",
+      "text": "یہی وجہ ہے کہ مائع بہتے ہیں۔",
+      "text_markdown": "یہی وجہ ہے کہ مائع بہتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "یہی وجہ ہے کہ مائع بہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-206",
+      "block_type": "text",
+      "text": "پانی کے ایک گلاس میں ایٹم مسلسل حرکت کرتے اور دوبارہ ترتیب پاتے رہتے ہیں، لیکن وہ ایک دوسرے کے قریب رہتے ہیں۔",
+      "text_markdown": "پانی کے ایک گلاس میں ایٹم مسلسل حرکت کرتے اور دوبارہ ترتیب پاتے رہتے ہیں، لیکن وہ ایک دوسرے کے قریب رہتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "پانی کے ایک گلاس میں ایٹم مسلسل حرکت کرتے اور دوبارہ ترتیب پاتے رہتے ہیں، لیکن وہ ایک دوسرے کے قریب رہتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-207",
+      "block_type": "text",
+      "text": "گیس میں، ایٹم تیزی سے حرکت کرتے اور پھیل جاتے ہیں۔",
+      "text_markdown": "گیس میں، ایٹم تیزی سے حرکت کرتے اور پھیل جاتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "گیس میں، ایٹم تیزی سے حرکت کرتے اور پھیل جاتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-208",
+      "block_type": "text",
+      "text": "وہ سیدھی لکیروں میں اڑتے ہیں جب تک کہ وہ کسی دوسرے ایٹم یا دیوار سے نہ ٹکرائیں۔",
+      "text_markdown": "وہ سیدھی لکیروں میں اڑتے ہیں جب تک کہ وہ کسی دوسرے ایٹم یا دیوار سے نہ ٹکرائیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ سیدھی لکیروں میں اڑتے ہیں جب تک کہ وہ کسی دوسرے ایٹم یا دیوار سے نہ ٹکرائیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-209",
+      "block_type": "text",
+      "text": "وہ ایک دوسرے سے ٹکرا کر سمت بدلتے ہیں۔",
+      "text_markdown": "وہ ایک دوسرے سے ٹکرا کر سمت بدلتے ہیں۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "وہ ایک دوسرے سے ٹکرا کر سمت بدلتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-210",
+      "block_type": "text",
+      "text": "یہی وجہ ہے کہ گیس کسی بھی برتن کو بھر دیتی ہے جس میں اسے رکھا جائے۔",
+      "text_markdown": "یہی وجہ ہے کہ گیس کسی بھی برتن کو بھر دیتی ہے جس میں اسے رکھا جائے۔",
+      "title": "حرکت میں ایٹم",
+      "tts": {
+        "text": "یہی وجہ ہے کہ گیس کسی بھی برتن کو بھر دیتی ہے جس میں اسے رکھا جائے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-211",
+      "block_type": "text",
+      "text": "ایک کمرے میں ہوا کے ایٹم ہر سمت میں سینکڑوں میٹر فی سیکنڈ کی رفتار سے حرکت کر رہے ہیں۔",
+      "text_markdown": "ایک کمرے میں ہوا کے ایٹم ہر سمت میں سینکڑوں میٹر فی سیکنڈ کی رفتار سے حرکت کر رہے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "ایک کمرے میں ہوا کے ایٹم ہر سمت میں سینکڑوں میٹر فی سیکنڈ کی رفتار سے حرکت کر رہے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-212",
+      "block_type": "text",
+      "text": "درجہ حرارت اس بات کی پیمائش ہے کہ ایٹم کتنی تیزی سے حرکت کر رہے ہیں۔",
+      "text_markdown": "درجہ حرارت اس بات کی پیمائش ہے کہ ایٹم کتنی تیزی سے حرکت کر رہے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "درجہ حرارت اس بات کی پیمائش ہے کہ ایٹم کتنی تیزی سے حرکت کر رہے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-213",
+      "block_type": "text",
+      "text": "گرم کا مطلب ہے کہ ایٹم تیزی سے حرکت کر رہے ہیں۔",
+      "text_markdown": "گرم کا مطلب ہے کہ ایٹم تیزی سے حرکت کر رہے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "گرم کا مطلب ہے کہ ایٹم تیزی سے حرکت کر رہے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-214",
+      "block_type": "text",
+      "text": "ٹھنڈا کا مطلب ہے کہ ایٹم آہستہ حرکت کر رہے ہیں۔",
+      "text_markdown": "ٹھنڈا کا مطلب ہے کہ ایٹم آہستہ حرکت کر رہے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "ٹھنڈا کا مطلب ہے کہ ایٹم آہستہ حرکت کر رہے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-215",
+      "block_type": "text",
+      "text": "جب آپ چولہے پر پانی گرم کرتے ہیں، تو آپ پانی کے مالیکیولز کو تیزی سے حرکت دیتے ہیں۔",
+      "text_markdown": "جب آپ چولہے پر پانی گرم کرتے ہیں، تو آپ پانی کے مالیکیولز کو تیزی سے حرکت دیتے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "جب آپ چولہے پر پانی گرم کرتے ہیں، تو آپ پانی کے مالیکیولز کو تیزی سے حرکت دیتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-216",
+      "block_type": "text",
+      "text": "جب مالیکیولز کافی تیزی سے حرکت کرتے ہیں، تو وہ مائع سے نکل کر بھاپ بن جاتے ہیں۔",
+      "text_markdown": "جب مالیکیولز کافی تیزی سے حرکت کرتے ہیں، تو وہ مائع سے نکل کر بھاپ بن جاتے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "جب مالیکیولز کافی تیزی سے حرکت کرتے ہیں، تو وہ مائع سے نکل کر بھاپ بن جاتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-217",
+      "block_type": "text",
+      "text": "مطلق صفر سب سے کم ممکنہ درجہ حرارت ہے۔",
+      "text_markdown": "مطلق صفر سب سے کم ممکنہ درجہ حرارت ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "مطلق صفر سب سے کم ممکنہ درجہ حرارت ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-218",
+      "block_type": "text",
+      "text": "یہ تقریباً منفی 273 ڈگری سیلسیس ہے۔",
+      "text_markdown": "یہ تقریباً منفی 273 ڈگری سیلسیس ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "یہ تقریباً منفی دو سو تہتر ڈگری سیلسیس ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-219",
+      "block_type": "text",
+      "text": "مطلق صفر پر، ایٹموں میں کم سے کم ممکنہ توانائی ہوتی ہے۔",
+      "text_markdown": "مطلق صفر پر، ایٹموں میں کم سے کم ممکنہ توانائی ہوتی ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "مطلق صفر پر، ایٹموں میں کم سے کم ممکنہ توانائی ہوتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-220",
+      "block_type": "text",
+      "text": "مطلق صفر سے زیادہ ٹھنڈا کچھ نہیں ہو سکتا۔",
+      "text_markdown": "مطلق صفر سے زیادہ ٹھنڈا کچھ نہیں ہو سکتا۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "مطلق صفر سے زیادہ ٹھنڈا کچھ نہیں ہو سکتا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p52",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-221",
+      "block_type": "text",
+      "text": "سائنسدان تجربہ گاہوں میں مطلق صفر کے بہت قریب پہنچ چکے ہیں، لیکن کوئی بھی اسے بالکل ٹھیک حاصل نہیں کر سکا۔",
+      "text_markdown": "سائنسدان تجربہ گاہوں میں مطلق صفر کے بہت قریب پہنچ چکے ہیں، لیکن کوئی بھی اسے بالکل ٹھیک حاصل نہیں کر سکا۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "سائنسدان تجربہ گاہوں میں مطلق صفر کے بہت قریب پہنچ چکے ہیں، لیکن کوئی بھی اسے بالکل ٹھیک حاصل نہیں کر سکا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-222",
+      "block_type": "text",
+      "text": "دباؤ ایٹموں کے سطحوں سے ٹکرانے کی وجہ سے پیدا ہوتا ہے۔",
+      "text_markdown": "دباؤ ایٹموں کے سطحوں سے ٹکرانے کی وجہ سے پیدا ہوتا ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "دباؤ ایٹموں کے سطحوں سے ٹکرانے کی وجہ سے پیدا ہوتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-223",
+      "block_type": "text",
+      "text": "ٹائر میں ہوا باہر کی طرف دھکیلتی ہے کیونکہ ہوا کے مالیکیولز مسلسل ٹائر کی اندرونی دیواروں سے ٹکرا رہے ہوتے ہیں۔",
+      "text_markdown": "ٹائر میں ہوا باہر کی طرف دھکیلتی ہے کیونکہ ہوا کے مالیکیولز مسلسل ٹائر کی اندرونی دیواروں سے ٹکرا رہے ہوتے ہیں۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "ٹائر میں ہوا باہر کی طرف دھکیلتی ہے کیونکہ ہوا کے مالیکیولز مسلسل ٹائر کی اندرونی دیواروں سے ٹکرا رہے ہوتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-224",
+      "block_type": "text",
+      "text": "زیادہ مالیکیولز یا تیز حرکت کرنے والے مالیکیولز کا مطلب زیادہ دباؤ ہے۔",
+      "text_markdown": "زیادہ مالیکیولز یا تیز حرکت کرنے والے مالیکیولز کا مطلب زیادہ دباؤ ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "زیادہ مالیکیولز یا تیز حرکت کرنے والے مالیکیولز کا مطلب زیادہ دباؤ ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-225",
+      "block_type": "text",
+      "text": "یہی وجہ ہے کہ جب ہوا گرم ہوتی ہے تو ٹائر زیادہ سخت محسوس ہوتا ہے۔",
+      "text_markdown": "یہی وجہ ہے کہ جب ہوا گرم ہوتی ہے تو ٹائر زیادہ سخت محسوس ہوتا ہے۔",
+      "title": "ایٹم حرکت میں",
+      "tts": {
+        "text": "یہی وجہ ہے کہ جب ہوا گرم ہوتی ہے تو ٹائر زیادہ سخت محسوس ہوتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p54",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-226",
+      "block_type": "heading",
+      "text": "ایٹم کہاں سے آتے ہیں",
+      "text_markdown": "ایٹم کہاں سے آتے ہیں",
+      "title": "ایٹم کہاں سے آتے ہیں"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-227",
+      "block_type": "text",
+      "text": "کائنات میں ہائیڈروجن اور ہیلیم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+      "text_markdown": "کائنات میں ہائیڈروجن اور ہیلیم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "کائنات میں ہائیڈروجن اور ہیلیم بگ بینگ کے بعد پہلے چند منٹوں میں بنے تھے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-228",
+      "block_type": "text",
+      "text": "کائنات کا آغاز تقریباً 13.8 ارب سال پہلے ایک انتہائی گرم، گھنے نقطے کے طور پر ہوا تھا۔",
+      "text_markdown": "کائنات کا آغاز تقریباً 13.8 ارب سال پہلے ایک انتہائی گرم، گھنے نقطے کے طور پر ہوا تھا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "کائنات کا آغاز تقریباً تیرہ اعشاریہ آٹھ ارب سال پہلے ایک انتہائی گرم، گھنے نقطے کے طور پر ہوا تھا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-229",
+      "block_type": "text",
+      "text": "جیسے جیسے یہ پھیلی اور ٹھنڈی ہوئی، پروٹون اور نیوٹران بنے۔",
+      "text_markdown": "جیسے جیسے یہ پھیلی اور ٹھنڈی ہوئی، پروٹون اور نیوٹران بنے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "جیسے جیسے یہ پھیلی اور ٹھنڈی ہوئی، پروٹون اور نیوٹران بنے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-230",
+      "block_type": "text",
+      "text": "وہ پروٹون اور نیوٹران مل کر سب سے سادہ نیوکلیائی بنے۔",
+      "text_markdown": "وہ پروٹون اور نیوٹران مل کر سب سے سادہ نیوکلیائی بنے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "وہ پروٹون اور نیوٹران مل کر سب سے سادہ نیوکلیائی بنے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-231",
+      "block_type": "text",
+      "text": "ہائیڈروجن اور ہیلیم پہلے عناصر تھے۔",
+      "text_markdown": "ہائیڈروجن اور ہیلیم پہلے عناصر تھے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ہائیڈروجن اور ہیلیم پہلے عناصر تھے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-232",
+      "block_type": "text",
+      "text": "لاکھوں سال تک، کائنات ہائیڈروجن اور ہیلیم گیس کا ایک بادل تھی۔",
+      "text_markdown": "لاکھوں سال تک، کائنات ہائیڈروجن اور ہیلیم گیس کا ایک بادل تھی۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "لاکھوں سال تک کائنات رہی ہائیڈروجن اور ہیلیم گیس کا ایک بادل۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-233",
+      "block_type": "text",
+      "text": "پھر کشش ثقل نے گیس کو اکٹھا کر کے گچھوں میں تبدیل کر دیا۔",
+      "text_markdown": "پھر کشش ثقل نے گیس کو اکٹھا کر کے گچھوں میں تبدیل کر دیا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "پھر کشش ثقل نے گیس کو اکٹھا کر کے گچھوں میں تبدیل کر دیا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-234",
+      "block_type": "text",
+      "text": "گچھے زیادہ گھنے اور گرم ہوتے گئے۔",
+      "text_markdown": "گچھے زیادہ گھنے اور گرم ہوتے گئے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "گچھے زیادہ گھنے اور گرم ہوتے گئے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-235",
+      "block_type": "text",
+      "text": "جب ایک گچھے کا مرکز تقریباً دس ملین ڈگری تک پہنچا، تو نیوکلیائی فیوژن شروع ہو گیا۔",
+      "text_markdown": "جب ایک گچھے کا مرکز تقریباً دس ملین ڈگری تک پہنچا، تو نیوکلیائی فیوژن شروع ہو گیا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "جب ایک گچھے کا مرکز تقریباً دس ملین ڈگری تک پہنچا، تو نیوکلیائی فیوژن کا آغاز۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-236",
+      "block_type": "text",
+      "text": "ایک ستارہ پیدا ہوا۔",
+      "text_markdown": "ایک ستارہ پیدا ہوا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ایک ستارہ پیدا ہوا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-237",
+      "block_type": "text",
+      "text": "ستارے ایٹم فیکٹریاں ہیں۔",
+      "text_markdown": "ستارے ایٹم فیکٹریاں ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ستارے ایٹم فیکٹریاں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-238",
+      "block_type": "text",
+      "text": "ایک ستارے کے اندر، ہائیڈروجن ایٹم مل کر ہیلیم بناتے ہیں۔",
+      "text_markdown": "ایک ستارے کے اندر، ہائیڈروجن ایٹم مل کر ہیلیم بناتے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ایک ستارے کے اندر، ہائیڈروجن ایٹم مل کر ہیلیم بناتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-239",
+      "block_type": "text",
+      "text": "یہ فیوژن بے پناہ توانائی خارج کرتا ہے۔",
+      "text_markdown": "یہ فیوژن بے پناہ توانائی خارج کرتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ فیوژن بے پناہ توانائی خارج کرتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-240",
+      "block_type": "text",
+      "text": "یہ توانائی ہی ہے جو ستارے کو چمکاتی ہے۔",
+      "text_markdown": "یہ توانائی ہی ہے جو ستارے کو چمکاتی ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہی توانائی بنتی ہے ستارے کی چمک کا سبب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-241",
+      "block_type": "text",
+      "text": "ہمارا سورج ہر سیکنڈ میں تقریباً چھ سو ملین ٹن ہائیڈروجن کو ہیلیم میں تبدیل کرتا ہے۔",
+      "text_markdown": "ہمارا سورج ہر سیکنڈ میں تقریباً چھ سو ملین ٹن ہائیڈروجن کو ہیلیم میں تبدیل کرتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ہر سیکنڈ ہمارا سورج تقریباً چھ سو ملین ٹن ہائیڈروجن کو فیوز کر کے بناتا ہے ہیلیم۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-242",
+      "block_type": "text",
+      "text": "بڑے ستارے بھاری عناصر کو فیوز کرتے ہیں۔",
+      "text_markdown": "بڑے ستارے بھاری عناصر کو فیوز کرتے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "بڑے ستارے بھاری عناصر کو فیوز کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-243",
+      "block_type": "text",
+      "text": "جب ایک ستارہ اپنی ہائیڈروجن کو جلا دیتا ہے، تو وہ ہیلیم کو کاربن میں فیوز کرنا شروع کر دیتا ہے۔",
+      "text_markdown": "جب ایک ستارہ اپنی ہائیڈروجن کو جلا دیتا ہے، تو وہ ہیلیم کو کاربن میں فیوز کرنا شروع کر دیتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "جب ایک ستارہ اپنی ہائیڈروجن کو جلا دیتا ہے، تو وہ ہیلیم کو کاربن میں فیوز کرنا شروع کر دیتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-244",
+      "block_type": "text",
+      "text": "پھر کاربن کو آکسیجن میں۔",
+      "text_markdown": "پھر کاربن کو آکسیجن میں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "پھر کاربن کو آکسیجن میں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-245",
+      "block_type": "text",
+      "text": "پھر آکسیجن کو سلیکون میں۔",
+      "text_markdown": "پھر آکسیجن کو سلیکون میں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "پھر آکسیجن کو سلیکون میں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-246",
+      "block_type": "text",
+      "text": "پھر سلیکون کو لوہے میں۔",
+      "text_markdown": "پھر سلیکون کو لوہے میں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "پھر سلیکون کو لوہے میں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-247",
+      "block_type": "text",
+      "text": "ہر مرحلہ ایک بھاری عنصر پیدا کرتا ہے۔",
+      "text_markdown": "ہر مرحلہ ایک بھاری عنصر پیدا کرتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ہر مرحلے کا نتیجہ، ایک بھاری عنصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-248",
+      "block_type": "text",
+      "text": "لوہا سب سے بھاری عنصر ہے جسے ایک ستارہ عام فیوژن کے ذریعے پیدا کر سکتا ہے۔",
+      "text_markdown": "لوہا سب سے بھاری عنصر ہے جسے ایک ستارہ عام فیوژن کے ذریعے پیدا کر سکتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "لوہا سب سے بھاری عنصر ہے جسے ایک ستارہ عام فیوژن کے ذریعے پیدا کر سکتا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-249",
+      "block_type": "text",
+      "text": "لوہے سے بھاری عناصر اس وقت بنتے ہیں جب بڑے ستارے پھٹتے ہیں۔",
+      "text_markdown": "لوہے سے بھاری عناصر اس وقت بنتے ہیں جب بڑے ستارے پھٹتے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "بڑے ستاروں کے دھماکوں سے بنتے ہیں لوہے سے بھاری عناصر۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-250",
+      "block_type": "text",
+      "text": "ان دھماکوں کو سپرنووا کہا جاتا ہے۔",
+      "text_markdown": "ان دھماکوں کو سپرنووا کہا جاتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ان دھماکوں کو سپرنووا کہا جاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-251",
+      "block_type": "text",
+      "text": "ایک سپرنووا چند سیکنڈ میں اتنی توانائی خارج کرتا ہے جتنی سورج اپنی پوری زندگی میں پیدا کرے گا۔",
+      "text_markdown": "ایک سپرنووا چند سیکنڈ میں اتنی توانائی خارج کرتا ہے جتنی سورج اپنی پوری زندگی میں پیدا کرے گا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "چند سیکنڈ کے ایک سپرنووا میں ہوتا ہے سورج کی پوری عمر سے زیادہ توانائی کا اخراج۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-252",
+      "block_type": "text",
+      "text": "ایک سپرنووا کے انتہائی حالات سونے، چاندی، پلاٹینم اور یورینیم جیسے عناصر کو بناتے ہیں۔",
+      "text_markdown": "ایک سپرنووا کے انتہائی حالات سونے، چاندی، پلاٹینم اور یورینیم جیسے عناصر کو بناتے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "سپرنووا کے انتہائی حالات بناتے ہیں سونا، چاندی، پلاٹینم اور یورینیم جیسے عناصر۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-253",
+      "block_type": "text",
+      "text": "یہ دھماکہ ان بھاری عناصر کو خلا میں بکھیر دیتا ہے۔",
+      "text_markdown": "یہ دھماکہ ان بھاری عناصر کو خلا میں بکھیر دیتا ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ دھماکہ ان بھاری عناصر کو خلا میں بکھیر دیتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-254",
+      "block_type": "text",
+      "text": "یہ عناصر ہائیڈروجن اور ہیلیم گیس کے بادلوں کے ساتھ مل جاتے ہیں۔",
+      "text_markdown": "یہ عناصر ہائیڈروجن اور ہیلیم گیس کے بادلوں کے ساتھ مل جاتے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ عناصر ہائیڈروجن اور ہیلیم گیس کے بادلوں کے ساتھ مل جاتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-255",
+      "block_type": "text",
+      "text": "آخر کار، کشش ثقل اس افزودہ گیس کو اکٹھا کرتی ہے تاکہ نئے ستارے اور سیارے بن سکیں۔",
+      "text_markdown": "آخر کار، کشش ثقل اس افزودہ گیس کو اکٹھا کرتی ہے تاکہ نئے ستارے اور سیارے بن سکیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "آخر کار، کشش ثقل اس افزودہ گیس کو اکٹھا کرتی ہے تاکہ نئے ستارے اور سیارے بن سکیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-256",
+      "block_type": "text",
+      "text": "ہمارا نظام شمسی تقریباً 4.6 بلین سال پہلے ایسے ہی ایک افزودہ بادل سے بنا تھا۔",
+      "text_markdown": "ہمارا نظام شمسی تقریباً 4.6 بلین سال پہلے ایسے ہی ایک افزودہ بادل سے بنا تھا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "ہمارا نظام شمسی تقریباً چار اعشاریہ چھ بلین سال پہلے ایسے ہی ایک افزودہ بادل سے بنا تھا۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-257",
+      "block_type": "text",
+      "text": "آپ کے جسم میں ہائیڈروجن سے بھاری ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+      "text_markdown": "آپ کے جسم میں ہائیڈروجن سے بھاری ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "آپ کے جسم میں ہائیڈروجن سے بھاری ہر ایٹم ایک ستارے کے اندر بنا تھا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-258",
+      "block_type": "text",
+      "text": "آپ کی ہڈیوں میں موجود کیلشیم۔",
+      "text_markdown": "آپ کی ہڈیوں میں موجود کیلشیم۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ ہے آپ کی ہڈیوں میں موجود کیلشیم۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-259",
+      "block_type": "text",
+      "text": "آپ کے خون میں موجود لوہا۔",
+      "text_markdown": "آپ کے خون میں موجود لوہا۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "آپ کے خون میں موجود لوہا۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-260",
+      "block_type": "text",
+      "text": "آپ کی جلد میں موجود کاربن۔",
+      "text_markdown": "آپ کی جلد میں موجود کاربن۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "آپ کی جلد میں موجود کاربن۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-261",
+      "block_type": "text",
+      "text": "آپ ستاروں کی دھول سے بنے ہیں۔",
+      "text_markdown": "آپ ستاروں کی دھول سے بنے ہیں۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "آپ ستاروں کی دھول سے بنے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-262",
+      "block_type": "text",
+      "text": "یہ کوئی استعارہ نہیں ہے۔",
+      "text_markdown": "یہ کوئی استعارہ نہیں ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ کوئی استعارہ نہیں ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-263",
+      "block_type": "text",
+      "text": "یہ نیوکلیئر فزکس کا ایک حقیقت ہے۔",
+      "text_markdown": "یہ نیوکلیئر فزکس کا ایک حقیقت ہے۔",
+      "title": "ایٹم کہاں سے آتے ہیں",
+      "tts": {
+        "text": "یہ نیوکلیئر فزکس کا ایک حقیقت ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-264",
+      "block_type": "heading",
+      "text": "ایٹم سب کچھ ہیں",
+      "text_markdown": "ایٹم سب کچھ ہیں",
+      "title": "ایٹم سب کچھ ہیں"
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-265",
+      "block_type": "text",
+      "text": "اب آپ بنیادی باتیں جانتے ہیں۔",
+      "text_markdown": "اب آپ بنیادی باتیں جانتے ہیں۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "اب آپ بنیادی باتیں جانتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-266",
+      "block_type": "text",
+      "text": "ہر چیز ایٹموں سے بنی ہے۔",
+      "text_markdown": "ہر چیز ایٹموں سے بنی ہے۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "ہر چیز ایٹموں سے بنی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-267",
+      "block_type": "text",
+      "text": "ایٹموں میں پروٹون، نیوٹران اور الیکٹران ہوتے ہیں۔",
+      "text_markdown": "ایٹموں میں پروٹون، نیوٹران اور الیکٹران ہوتے ہیں۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "ایٹموں کے اندر پروٹون، نیوٹران اور الیکٹران۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-268",
+      "block_type": "text",
+      "text": "پروٹون کی تعداد عنصر کا تعین کرتی ہے۔",
+      "text_markdown": "پروٹون کی تعداد عنصر کا تعین کرتی ہے۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "پروٹون کی تعداد عنصر کا تعین کرتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-269",
+      "block_type": "text",
+      "text": "ایٹم مالیکیول بنانے کے لیے آپس میں جڑتے ہیں۔",
+      "text_markdown": "ایٹم مالیکیول بنانے کے لیے آپس میں جڑتے ہیں۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "ایٹم آپس میں جڑتے ہیں، نتیجہ مالیکیول۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-270",
+      "block_type": "text",
+      "text": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+      "text_markdown": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+      "title": "ایٹم سب کچھ ہیں",
+      "tts": {
+        "text": "ایٹم ہمیشہ حرکت میں رہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p63",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-271",
+      "block_type": "text",
+      "text": "ستارے ان ایٹموں کو بناتے ہیں جو ہماری دنیا کو تشکیل دیتے ہیں۔",
+      "text_markdown": "ستارے ان ایٹموں کو بناتے ہیں جو ہماری دنیا کو تشکیل دیتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ستارے ان ایٹموں کو بناتے ہیں جو ہماری دنیا کو تشکیل دیتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-272",
+      "block_type": "text",
+      "text": "یہ علم کیمیا، حیاتیات، طبیعیات اور طب کی بنیاد ہے۔",
+      "text_markdown": "یہ علم کیمیا، حیاتیات، طبیعیات اور طب کی بنیاد ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "یہ علم ہے کیمیا، حیاتیات، طبیعیات اور طب کی بنیاد۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-273",
+      "block_type": "text",
+      "text": "سائنس کا ہر شعبہ ایٹموں سے جڑا ہوا ہے۔",
+      "text_markdown": "سائنس کا ہر شعبہ ایٹموں سے جڑا ہوا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "سائنس کا ہر شعبہ ایٹموں سے جڑا ہوا ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-274",
+      "block_type": "text",
+      "text": "جب کوئی ڈاکٹر دوا تجویز کرتا ہے، تو وہ دوا ایٹموں کی ایک مخصوص ترتیب ہوتی ہے جسے آپ کے جسم میں موجود مالیکیولز کے ساتھ تعامل کرنے کے لیے ڈیزائن کیا گیا ہے۔",
+      "text_markdown": "جب کوئی ڈاکٹر دوا تجویز کرتا ہے، تو وہ دوا ایٹموں کی ایک مخصوص ترتیب ہوتی ہے جسے آپ کے جسم میں موجود مالیکیولز کے ساتھ تعامل کرنے کے لیے ڈیزائن کیا گیا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ڈاکٹر کی تجویز کردہ دوا ایٹموں کی ایک خاص ترتیب، جسم کے مالیکیولز کے ساتھ تعامل کرنے والا مرکب۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-275",
+      "block_type": "text",
+      "text": "جب کوئی انجینئر پل بناتا ہے، تو اس پل کی مضبوطی اس بات پر منحصر ہوتی ہے کہ سٹیل میں لوہے کے ایٹم کس طرح ترتیب دیے گئے ہیں۔",
+      "text_markdown": "جب کوئی انجینئر پل بناتا ہے، تو اس پل کی مضبوطی اس بات پر منحصر ہوتی ہے کہ سٹیل میں لوہے کے ایٹم کس طرح ترتیب دیے گئے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "جب کوئی انجینئر پل بناتا ہے، تو اس پل کی مضبوطی اس بات پر منحصر ہوتی ہے کہ سٹیل میں لوہے کے ایٹم کس طرح ترتیب دیے گئے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-276",
+      "block_type": "text",
+      "text": "جب کوئی کسان فصل اگاتا ہے، تو فصل اس لیے بڑھتی ہے کیونکہ ہوا سے کاربن کے ایٹم پتوں کے اندر پانی اور سورج کی روشنی کے ساتھ مل جاتے ہیں۔",
+      "text_markdown": "جب کوئی کسان فصل اگاتا ہے، تو فصل اس لیے بڑھتی ہے کیونکہ ہوا سے کاربن کے ایٹم پتوں کے اندر پانی اور سورج کی روشنی کے ساتھ مل جاتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "جب کوئی کسان فصل اگاتا ہے، تو فصل اس لیے بڑھتی ہے کیونکہ ہوا سے کاربن کے ایٹم پتوں کے اندر پانی اور سورج کی روشنی کے ساتھ مل جاتے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-277",
+      "block_type": "text",
+      "text": "کھانا پکانا کیمیا ہے۔",
+      "text_markdown": "کھانا پکانا کیمیا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "کھانا پکانا کیمیا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-278",
+      "block_type": "text",
+      "text": "جب آپ روٹی پکاتے ہیں، تو حرارت آٹے میں موجود ایٹموں کو دوبارہ ترتیب دیتی ہے۔",
+      "text_markdown": "جب آپ روٹی پکاتے ہیں، تو حرارت آٹے میں موجود ایٹموں کو دوبارہ ترتیب دیتی ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "جب آپ روٹی پکاتے ہیں، تو حرارت آٹے میں موجود ایٹموں کو دوبارہ ترتیب دیتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-279",
+      "block_type": "text",
+      "text": "پروٹین کھل جاتے ہیں۔",
+      "text_markdown": "پروٹین کھل جاتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "حرارت سے کھل جاتے ہیں پروٹین۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-280",
+      "block_type": "text",
+      "text": "شکر ٹوٹ کر دوبارہ مل جاتی ہے۔",
+      "text_markdown": "شکر ٹوٹ کر دوبارہ مل جاتی ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "شکر ٹوٹ کر دوبارہ مل جاتی ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-281",
+      "block_type": "text",
+      "text": "نئے مالیکیولز بنتے ہیں جو کرسٹ کا رنگ، بناوٹ اور ذائقہ پیدا کرتے ہیں۔",
+      "text_markdown": "نئے مالیکیولز بنتے ہیں جو کرسٹ کا رنگ، بناوٹ اور ذائقہ پیدا کرتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "نئے مالیکیولز بنتے ہیں جو کرسٹ کا رنگ، بناوٹ اور ذائقہ پیدا کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-282",
+      "block_type": "text",
+      "text": "ہر ترکیب ایٹموں کو دوبارہ ترتیب دینے کے لیے ہدایات کا ایک مجموعہ ہے۔",
+      "text_markdown": "ہر ترکیب ایٹموں کو دوبارہ ترتیب دینے کے لیے ہدایات کا ایک مجموعہ ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ہر ترکیب ایٹموں کو دوبارہ ترتیب دینے کے لیے ہدایات کا ایک مجموعہ ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-283",
+      "block_type": "text",
+      "text": "سانس لینا کیمیا ہے۔",
+      "text_markdown": "سانس لینا کیمیا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "سانس لینا کیمیا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-284",
+      "block_type": "text",
+      "text": "آپ آکسیجن کے مالیکیولز سانس لیتے ہیں۔",
+      "text_markdown": "آپ آکسیجن کے مالیکیولز سانس لیتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آپ آکسیجن کے مالیکیولز سانس لیتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-285",
+      "block_type": "text",
+      "text": "آپ کا خون ان مالیکیولز کو آپ کے خلیوں تک پہنچاتا ہے۔",
+      "text_markdown": "آپ کا خون ان مالیکیولز کو آپ کے خلیوں تک پہنچاتا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آپ کا خون ان مالیکیولز کو آپ کے خلیوں تک پہنچاتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-286",
+      "block_type": "text",
+      "text": "آپ کے خلیوں کے اندر، آکسیجن کے ایٹم خوراک سے کاربن کے ایٹموں کے ساتھ مل جاتے ہیں۔",
+      "text_markdown": "آپ کے خلیوں کے اندر، آکسیجن کے ایٹم خوراک سے کاربن کے ایٹموں کے ساتھ مل جاتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آپ کے خلیوں کے اندر، آکسیجن کے ایٹم خوراک سے کاربن کے ایٹموں کے ساتھ مل جاتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-287",
+      "block_type": "text",
+      "text": "یہ رد عمل توانائی خارج کرتا ہے۔",
+      "text_markdown": "یہ رد عمل توانائی خارج کرتا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "یہ رد عمل توانائی خارج کرتا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-288",
+      "block_type": "text",
+      "text": "آپ کاربن اور آکسیجن کو کاربن ڈائی آکسائیڈ کے طور پر خارج کرتے ہیں۔",
+      "text_markdown": "آپ کاربن اور آکسیجن کو کاربن ڈائی آکسائیڈ کے طور پر خارج کرتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آپ کاربن اور آکسیجن کو کاربن ڈائی آکسائیڈ کے طور پر خارج کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-289",
+      "block_type": "text",
+      "text": "ہر سانس ایک کیمیائی رد عمل ہے۔",
+      "text_markdown": "ہر سانس ایک کیمیائی رد عمل ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ہر سانس ایک کیمیائی رد عمل ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-290",
+      "block_type": "text",
+      "text": "زنگ کیمیا ہے۔",
+      "text_markdown": "زنگ کیمیا ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "زنگ کیمیا ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-291",
+      "block_type": "text",
+      "text": "کیل کی سطح پر لوہے کے ایٹم ہوا میں موجود آکسیجن کے ایٹموں کے ساتھ رد عمل کرتے ہیں۔",
+      "text_markdown": "کیل کی سطح پر لوہے کے ایٹم ہوا میں موجود آکسیجن کے ایٹموں کے ساتھ رد عمل کرتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "کیل کی سطح پر لوہے کے ایٹم ہوا میں موجود آکسیجن کے ایٹموں کے ساتھ رد عمل کرتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-292",
+      "block_type": "text",
+      "text": "لوہا اور آکسیجن مل کر ایک نیا مادہ بناتے ہیں جسے آئرن آکسائیڈ کہتے ہیں۔",
+      "text_markdown": "لوہا اور آکسیجن مل کر ایک نیا مادہ بناتے ہیں جسے آئرن آکسائیڈ کہتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "لوہا اور آکسیجن مل کر ایک نیا مادہ بناتے ہیں جسے آئرن آکسائیڈ کہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-293",
+      "block_type": "text",
+      "text": "آئرن آکسائیڈ وہ سرخی مائل بھورا مواد ہے جسے ہم زنگ کہتے ہیں۔",
+      "text_markdown": "آئرن آکسائیڈ وہ سرخی مائل بھورا مواد ہے جسے ہم زنگ کہتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آئرن آکسائیڈ وہ سرخی مائل بھورا مواد ہے جسے ہم زنگ کہتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-294",
+      "block_type": "text",
+      "text": "لوہے کے ایٹم اب بھی وہاں موجود ہیں۔",
+      "text_markdown": "لوہے کے ایٹم اب بھی وہاں موجود ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "لوہے کے ایٹم اب بھی وہاں موجود ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-295",
+      "block_type": "text",
+      "text": "وہ صرف آکسیجن کے ساتھ جڑے ہیں۔",
+      "text_markdown": "وہ صرف آکسیجن کے ساتھ جڑے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "وہ صرف آکسیجن کے ساتھ جڑے ہیں۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-296",
+      "block_type": "text",
+      "text": "ایٹم تجریدی نہیں ہیں۔",
+      "text_markdown": "ایٹم تجریدی نہیں ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ایٹم تجریدی نہیں ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-297",
+      "block_type": "text",
+      "text": "ایٹم ہر اس چیز کی طبعی حقیقت ہیں جسے آپ چھوتے، چکھتے، دیکھتے اور سونگھتے ہیں۔",
+      "text_markdown": "ایٹم ہر اس چیز کی طبعی حقیقت ہیں جسے آپ چھوتے، چکھتے، دیکھتے اور سونگھتے ہیں۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "ایٹم ہر اس چیز کی طبعی حقیقت ہیں جسے آپ چھوتے، چکھتے، دیکھتے اور سونگھتے ہیں۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-298",
+      "block_type": "text",
+      "text": "آپ ایٹموں کو جتنا زیادہ سمجھیں گے، دنیا کو اتنا ہی زیادہ سمجھیں گے۔",
+      "text_markdown": "آپ ایٹموں کو جتنا زیادہ سمجھیں گے، دنیا کو اتنا ہی زیادہ سمجھیں گے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "آپ ایٹموں کو جتنا زیادہ سمجھیں گے، دنیا کو اتنا ہی زیادہ سمجھیں گے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-299",
+      "block_type": "text",
+      "text": "یہ آغاز ہے۔",
+      "text_markdown": "یہ آغاز ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "یہ آغاز ہے۔",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-300",
+      "block_type": "text",
+      "text": "مزید بہت کچھ دریافت کرنا باقی ہے۔",
+      "text_markdown": "مزید بہت کچھ دریافت کرنا باقی ہے۔",
+      "title": "ایٹم ہی سب کچھ ہیں",
+      "tts": {
+        "text": "مزید بہت کچھ دریافت کرنا باقی ہے۔",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "ko",
+  "total_segments": 209,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "AI This Week에 오신 것을 환영합니다.",
+      "text_markdown": "AI This Week에 오신 것을 환영합니다.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week에 오신 것을 환영합니다.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "저는 빈디입니다.",
+      "text_markdown": "저는 빈디입니다.",
+      "title": "",
+      "tts": {
+        "text": "저는 빈디입니다.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "늘 그렇듯이, 론이 함께합니다.",
+      "text_markdown": "늘 그렇듯이, 론이 함께합니다.",
+      "title": "",
+      "tts": {
+        "text": "늘 그렇듯이, 론이 함께합니다.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "여기 함께하게 되어 좋습니다, 빈디.",
+      "text_markdown": "여기 함께하게 되어 좋습니다, 빈디.",
+      "title": "",
+      "tts": {
+        "text": "여기 함께하게 되어 좋습니다, 빈디.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "오늘은 2026년 5월 27일 수요일입니다.",
+      "text_markdown": "오늘은 2026년 5월 27일 수요일입니다.",
+      "title": "",
+      "tts": {
+        "text": "오늘은 이천이십육년 오월 이십칠일 수요일입니다.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "겉으로 보기에는 조용한 한 주였습니다.",
+      "text_markdown": "겉으로 보기에는 조용한 한 주였습니다.",
+      "title": "",
+      "tts": {
+        "text": "겉으로 보기에는 조용한 한 주였습니다.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "새로운 대규모 오픈 모델은 출시되지 않았습니다.",
+      "text_markdown": "새로운 대규모 오픈 모델은 출시되지 않았습니다.",
+      "title": "",
+      "tts": {
+        "text": "새로운 대규모 오픈 모델은 출시되지 않았습니다.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "하지만 조용한 한 주에 진짜 이야기가 숨어있죠.",
+      "text_markdown": "하지만 조용한 한 주에 진짜 이야기가 숨어있죠.",
+      "title": "",
+      "tts": {
+        "text": "하지만 조용한 한 주에 진짜 이야기가 숨어있죠.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "그래서 오늘은 기조연설에서 다루지 않는 곳으로 가보겠습니다.",
+      "text_markdown": "그래서 오늘은 기조연설에서 다루지 않는 곳으로 가보겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "그래서 오늘은 기조연설에서 다루지 않는 곳으로 가보겠습니다.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "이어서 — 오픈 웨이트에서 실제로 어떤 변화가 있었는지.",
+      "text_markdown": "이어서 — 오픈 웨이트에서 실제로 어떤 변화가 있었는지.",
+      "title": "",
+      "tts": {
+        "text": "이어서 — 오픈 웨이트에서 실제로 어떤 변화가 있었는지.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "중요한 단 하나의 리더보드, 그리고 그것은 품질 리더보드가 아닙니다.",
+      "text_markdown": "중요한 단 하나의 리더보드, 그리고 그것은 품질 리더보드가 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "중요한 단 하나의 리더보드, 그리고 그것은 품질 리더보드가 아닙니다.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "이번 주말에 활용할 수 있는 속보 헤드라인입니다.",
+      "text_markdown": "이번 주말에 활용할 수 있는 속보 헤드라인입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주말에 활용할 수 있는 속보 헤드라인입니다.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "오늘의 주요 소식, 오픈 보이스가 소유할 만큼 충분히 좋아진 해.",
+      "text_markdown": "오늘의 주요 소식, 오픈 보이스가 소유할 만큼 충분히 좋아진 해.",
+      "title": "",
+      "tts": {
+        "text": "오늘의 주요 소식, 오픈 보이스가 소유할 만큼 충분히 좋아진 해.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "text": "이번 주의 개념은 신경 오디오 코덱입니다. 전체 음성을 휴대폰에 맞게 압축하는 방법이죠.",
+      "text_markdown": "이번 주의 개념은 신경 오디오 코덱입니다. 전체 음성을 휴대폰에 맞게 압축하는 방법이죠.",
+      "title": "",
+      "tts": {
+        "text": "이번 주의 개념은 신경 오디오 코덱입니다. 전체 음성을 휴대폰에 맞게 압축하는 방법이죠.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "론, 오픈 웨이트 세계부터 시작해볼까요.",
+      "text_markdown": "론, 오픈 웨이트 세계부터 시작해볼까요.",
+      "title": "",
+      "tts": {
+        "text": "론, 오픈 웨이트 세계부터 시작해볼까요.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "이번 주에 어떤 변화가 있었나요?",
+      "text_markdown": "이번 주에 어떤 변화가 있었나요?",
+      "title": "",
+      "tts": {
+        "text": "이번 주에 어떤 변화가 있었나요?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "솔직히 말해서, 이번 주에는 새로운 프론티어 오픈 모델이 출시되지 않았습니다.",
+      "text_markdown": "솔직히 말해서, 이번 주에는 새로운 프론티어 오픈 모델이 출시되지 않았습니다.",
+      "title": "",
+      "tts": {
+        "text": "솔직히 말해서, 이번 주에는 새로운 프론티어 오픈 모델이 출시되지 않았습니다.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "그리고 괜찮습니다.",
+      "text_markdown": "그리고 괜찮습니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 괜찮습니다.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "이번 주 진짜 오픈 소식은 기반 기술과 가격 책정이었습니다.",
+      "text_markdown": "이번 주 진짜 오픈 소식은 기반 기술과 가격 책정이었습니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 진짜 오픈 소식은 기반 기술과 가격 책정이었습니다.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "기반 기술부터 — 무엇이 고장 났거나 고쳐졌나요?",
+      "text_markdown": "기반 기술부터 — 무엇이 고장 났거나 고쳐졌나요?",
+      "title": "",
+      "tts": {
+        "text": "기반 기술부터 — 무엇이 고장 났거나 고쳐졌나요?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "5월 26일, SGLang 프로젝트는 DeepSeek V4 서비스를 위한 안정성 패치를 출시했습니다.",
+      "text_markdown": "5월 26일, SGLang 프로젝트는 DeepSeek V4 서비스를 위한 안정성 패치를 출시했습니다.",
+      "title": "",
+      "tts": {
+        "text": "오월 이십육일, 에스 지 랭 프로젝트는 딥시크 브이 포 서비스를 위한 안정성 패치를 출시했습니다.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "SGLang은 모델을 직접 실행하는 데 사용하는 두 가지 주요 오픈 엔진 중 하나입니다.",
+      "text_markdown": "SGLang은 모델을 직접 실행하는 데 사용하는 두 가지 주요 오픈 엔진 중 하나입니다.",
+      "title": "",
+      "tts": {
+        "text": "에스 지 랭은 모델을 직접 실행하는 데 사용하는 두 가지 주요 오픈 엔진 중 하나입니다.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "다른 하나는 vLLM입니다.",
+      "text_markdown": "다른 하나는 vLLM입니다.",
+      "title": "",
+      "tts": {
+        "text": "다른 하나는 브이 엘 엘 엠입니다.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "이 패치는 최신 카드에서 발생하는 깨진 출력과 과부하 시의 충돌을 수정했습니다.",
+      "text_markdown": "이 패치는 최신 카드에서 발생하는 깨진 출력과 과부하 시의 충돌을 수정했습니다.",
+      "title": "",
+      "tts": {
+        "text": "이 패치는 최신 카드에서 발생하는 깨진 출력과 과부하 시의 충돌을 수정했습니다.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "왜 서비스 패치가 중요한가요?",
+      "text_markdown": "왜 서비스 패치가 중요한가요?",
+      "title": "",
+      "tts": {
+        "text": "왜 서비스 패치가 중요한가요?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "오픈 웨이트는 안정적으로 서비스할 수 없다면 쓸모가 없기 때문입니다.",
+      "text_markdown": "오픈 웨이트는 안정적으로 서비스할 수 없다면 쓸모가 없기 때문입니다.",
+      "title": "",
+      "tts": {
+        "text": "오픈 웨이트는 안정적으로 서비스할 수 없다면 쓸모가 없기 때문입니다.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "DeepSeek V4는 오픈 소스이며 MIT 라이선스를 따르지만, 거대한 모델입니다.",
+      "text_markdown": "DeepSeek V4는 오픈 소스이며 MIT 라이선스를 따르지만, 거대한 모델입니다.",
+      "title": "",
+      "tts": {
+        "text": "딥시크 브이 포는 오픈 소스이며 엠 아이 티 라이선스를 따르지만, 거대한 모델입니다.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "이 모델을 실제로 작동하게 하는 엔진들은 오픈 생태계의 화려하지 않은 절반을 차지합니다.",
+      "text_markdown": "이 모델을 실제로 작동하게 하는 엔진들은 오픈 생태계의 화려하지 않은 절반을 차지합니다.",
+      "title": "",
+      "tts": {
+        "text": "이 모델을 실제로 작동하게 하는 엔진들은 오픈 생태계의 화려하지 않은 절반을 차지합니다.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "지루한 패치 주간은 건강한 프로젝트의 모습입니다.",
+      "text_markdown": "지루한 패치 주간은 건강한 프로젝트의 모습입니다.",
+      "title": "",
+      "tts": {
+        "text": "지루한 패치 주간은 건강한 프로젝트의 모습입니다.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "가격 책정 측면은요?",
+      "text_markdown": "가격 책정 측면은요?",
+      "title": "",
+      "tts": {
+        "text": "가격 책정 측면은요?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "이것이 더 흥미로운 부분입니다.",
+      "text_markdown": "이것이 더 흥미로운 부분입니다.",
+      "title": "",
+      "tts": {
+        "text": "이것이 더 흥미로운 부분입니다.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "5월 22일경, DeepSeek은 V4-Pro의 75% 가격 인하를 영구화했습니다.",
+      "text_markdown": "5월 22일경, DeepSeek은 V4-Pro의 75% 가격 인하를 영구화했습니다.",
+      "title": "",
+      "tts": {
+        "text": "오월 이십이일경, 딥시크는 브이 포 프로의 칠십오 퍼센트 가격 인하를 영구화했습니다.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "출력 가격은 이제 백만 토큰당 약 $0.87입니다.",
+      "text_markdown": "출력 가격은 이제 백만 토큰당 약 $0.87입니다.",
+      "title": "",
+      "tts": {
+        "text": "출력 가격은 이제 백만 토큰당 약 영 점 팔 칠 달러입니다.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "이는 출시 당시 가격의 대략 4분의 1 수준입니다.",
+      "text_markdown": "이는 출시 당시 가격의 대략 4분의 1 수준입니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 출시 당시 가격의 대략 사분의 일 수준입니다.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "그래서 오픈 모델을 빌리는 비용이 더 저렴해졌습니다.",
+      "text_markdown": "그래서 오픈 모델을 빌리는 비용이 더 저렴해졌습니다.",
+      "title": "",
+      "tts": {
+        "text": "그래서 오픈 모델을 빌리는 비용이 더 저렴해졌습니다.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "맞습니다. 그리고 그것은 질문의 관점을 완전히 뒤바꿉니다.",
+      "text_markdown": "맞습니다. 그리고 그것은 질문의 관점을 완전히 뒤바꿉니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다. 그리고 그것은 질문의 관점을 완전히 뒤바꿉니다.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "우리는 보통 오픈 웨이트는 자체 호스팅을 의미한다고 말합니다.",
+      "text_markdown": "우리는 보통 오픈 웨이트는 자체 호스팅을 의미한다고 말합니다.",
+      "title": "",
+      "tts": {
+        "text": "우리는 보통 오픈 웨이트는 자체 호스팅을 의미한다고 말합니다.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "하지만 백만 토큰당 1달러 미만으로 즉시 사용할 수 있다면, 임대하는 것이 종종 자체 전기료보다 저렴합니다.",
+      "text_markdown": "하지만 백만 토큰당 1달러 미만으로 즉시 사용할 수 있다면, 임대하는 것이 종종 자체 전기료보다 저렴합니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 백만 토큰당 일 달러 미만으로 즉시 사용할 수 있다면, 임대하는 것이 종종 자체 전기료보다 저렴합니다.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "그래서 새로운 프레임은 — 개인 정보 보호 및 오프라인을 위해 자체 호스팅하고, 저렴한 단기 사용을 위해 API를 임대하는 것입니다.",
+      "text_markdown": "그래서 새로운 프레임은 — 개인 정보 보호 및 오프라인을 위해 자체 호스팅하고, 저렴한 단기 사용을 위해 API를 임대하는 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "그래서 새로운 프레임은 — 개인 정보 보호 및 오프라인을 위해 자체 호스팅하고, 저렴한 단기 사용을 위해 에이 피 아이를 임대하는 것입니다.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "동일한 오픈 웨이트지만, 사용하는 이유는 매우 다릅니다.",
+      "text_markdown": "동일한 오픈 웨이트지만, 사용하는 이유는 매우 다릅니다.",
+      "title": "",
+      "tts": {
+        "text": "동일한 오픈 웨이트지만, 사용하는 이유는 매우 다릅니다.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "온디바이스 사용자들은 어떻습니까?",
+      "text_markdown": "온디바이스 사용자들은 어떻습니까?",
+      "title": "",
+      "tts": {
+        "text": "온 디바이스 사용자들은 어떻습니까?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "llama.cpp는 한 주 내내 제 역할을 했습니다.",
+      "text_markdown": "llama.cpp는 한 주 내내 제 역할을 했습니다.",
+      "title": "",
+      "tts": {
+        "text": "라마 씨 피 피는 한 주 내내 제 역할을 했습니다.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "실제로 릴리스를 하지는 않습니다 — 거의 매일 빌드를 배포합니다.",
+      "text_markdown": "실제로 릴리스를 하지는 않습니다 — 거의 매일 빌드를 배포합니다.",
+      "title": "",
+      "tts": {
+        "text": "실제로 릴리스를 하지는 않습니다 — 거의 매일 빌드를 배포합니다.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "이번 주는 Vulkan, Intel, 그리고 휴대폰급 칩의 속도 개선 작업이 있었습니다.",
+      "text_markdown": "이번 주는 Vulkan, Intel, 그리고 휴대폰급 칩의 속도 개선 작업이 있었습니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주는 벌칸, 인텔, 그리고 휴대폰급 칩의 속도 개선 작업이 있었습니다.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "그것이 온디바이스 세계가 실제로 작동하는 엔진입니다.",
+      "text_markdown": "그것이 온디바이스 세계가 실제로 작동하는 엔진입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 온 디바이스 세계가 실제로 작동하는 엔진입니다.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "별다른 문제 없이, 그저 더 빨라졌을 뿐입니다 — 성숙한 인프라에서 기대하는 바로 그것이죠.",
+      "text_markdown": "별다른 문제 없이, 그저 더 빨라졌을 뿐입니다 — 성숙한 인프라에서 기대하는 바로 그것이죠.",
+      "title": "",
+      "tts": {
+        "text": "별다른 문제 없이, 그저 더 빨라졌을 뿐입니다 — 성숙한 인프라에서 기대하는 바로 그것이죠.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "더 큰 그림을 설명해 주십시오.",
+      "text_markdown": "더 큰 그림을 설명해 주십시오.",
+      "title": "",
+      "tts": {
+        "text": "더 큰 그림을 설명해 주십시오.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "현재 오픈 프론티어는 주로 중국이 주도하고 있습니다.",
+      "text_markdown": "현재 오픈 프론티어는 주로 중국이 주도하고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "현재 오픈 프론티어는 주로 중국이 주도하고 있습니다.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "지난 4월에는 DeepSeek V4, Qwen 3.6, Kimi K2.6 등 약 2주 만에 여러 모델이 쏟아져 나왔습니다.",
+      "text_markdown": "지난 4월에는 DeepSeek V4, Qwen 3.6, Kimi K2.6 등 약 2주 만에 여러 모델이 쏟아져 나왔습니다.",
+      "title": "",
+      "tts": {
+        "text": "지난 사월에는 딥시크 브이 포, 큐웬 삼 점 육, 키미 케이 이 점 육 등 약 이 주 만에 여러 모델이 쏟아져 나왔습니다.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "이번 주는 그 물결의 조용한 여파입니다.",
+      "text_markdown": "이번 주는 그 물결의 조용한 여파입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주는 그 물결의 조용한 여파입니다.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "그리고 Qwen — 소식이 있지 않았나요?",
+      "text_markdown": "그리고 Qwen — 소식이 있지 않았나요?",
+      "title": "",
+      "tts": {
+        "text": "그리고 Qwen — 소식이 있지 않았나요?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "네, 그리고 의미심장한 소식입니다.",
+      "text_markdown": "네, 그리고 의미심장한 소식입니다.",
+      "title": "",
+      "tts": {
+        "text": "네, 그리고 의미심장한 소식입니다.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "알리바바의 새로운 플래그십 모델인 Qwen 3.7 Max는 API 전용이며 — 오픈 웨이트는 없습니다.",
+      "text_markdown": "알리바바의 새로운 플래그십 모델인 Qwen 3.7 Max는 API 전용이며 — 오픈 웨이트는 없습니다.",
+      "title": "",
+      "tts": {
+        "text": "알리바바의 새로운 플래그십 모델인 큐웬 삼 점 칠 맥스는 에이 피 아이 전용이며 — 오픈 웨이트는 없습니다.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "오픈 Qwen 라인은 여전히 3.6에서 멈춰 있습니다.",
+      "text_markdown": "오픈 Qwen 라인은 여전히 3.6에서 멈춰 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "오픈 큐웬 라인은 여전히 삼 점 육에서 멈춰 있습니다.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "따라서 알리바바는 폐쇄형 플래그십과 오픈형 미드티어로 분리되고 있습니다.",
+      "text_markdown": "따라서 알리바바는 폐쇄형 플래그십과 오픈형 미드티어로 분리되고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "따라서 알리바바는 폐쇄형 플래그십과 오픈형 미드 티어로 분리되고 있습니다.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "이는 미스트랄이 작년에 사용했던 것과 동일한 전략입니다.",
+      "text_markdown": "이는 미스트랄이 작년에 사용했던 것과 동일한 전략입니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 미스트랄이 작년에 사용했던 것과 동일한 전략입니다.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "그렇다면 지켜볼 가치가 있습니다.",
+      "text_markdown": "그렇다면 지켜볼 가치가 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "그렇다면 지켜볼 가치가 있습니다.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "주목할 만한 오픈 모델은 오픈 Qwen 3.7 미드티어입니다.",
+      "text_markdown": "주목할 만한 오픈 모델은 오픈 Qwen 3.7 미드티어입니다.",
+      "title": "",
+      "tts": {
+        "text": "주목할 만한 오픈 모델은 오픈 큐웬 삼 점 칠 미드 티어입니다.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "이번 주 현재, 아직 Hugging Face에는 아무것도 올라오지 않았습니다.",
+      "text_markdown": "이번 주 현재, 아직 Hugging Face에는 아무것도 올라오지 않았습니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 현재, 아직 Hugging Face에는 아무것도 올라오지 않았습니다.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "자, 이제 리더보드로 넘어가겠습니다.",
+      "text_markdown": "자, 이제 리더보드로 넘어가겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "자, 이제 리더보드로 넘어가겠습니다.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "이번 주에 상황이 어떻게 되었을까요?",
+      "text_markdown": "이번 주에 상황이 어떻게 되었을까요?",
+      "title": "",
+      "tts": {
+        "text": "이번 주에 상황이 어떻게 되었을까요?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "헤드라인입니다. 그리고 좀 이상합니다.",
+      "text_markdown": "헤드라인입니다. 그리고 좀 이상합니다.",
+      "title": "",
+      "tts": {
+        "text": "헤드라인입니다. 그리고 좀 이상합니다.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "이번 주에 변동이 있었던 리더보드는 품질 순위표가 아닙니다.",
+      "text_markdown": "이번 주에 변동이 있었던 리더보드는 품질 순위표가 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주에 변동이 있었던 리더보드는 품질 순위표가 아닙니다.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "그것은 OpenRouter의 사용량 측정기입니다. 의견이 아니라 실제 모델 호출이죠.",
+      "text_markdown": "그것은 OpenRouter의 사용량 측정기입니다. 의견이 아니라 실제 모델 호출이죠.",
+      "title": "",
+      "tts": {
+        "text": "그것은 OpenRouter의 사용량 측정기입니다. 의견이 아니라 실제 모델 호출이죠.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "사용량 측정기는 무엇을 말해주나요?",
+      "text_markdown": "사용량 측정기는 무엇을 말해주나요?",
+      "title": "",
+      "tts": {
+        "text": "사용량 측정기는 무엇을 말해주나요?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "5월 18일부터 24일까지 한 주 동안, 지구상에서 가장 많이 사용된 단일 모델은 DeepSeek V4-Flash라는 모델이었습니다.",
+      "text_markdown": "5월 18일부터 24일까지 한 주 동안, 지구상에서 가장 많이 사용된 단일 모델은 DeepSeek V4-Flash라는 모델이었습니다.",
+      "title": "",
+      "tts": {
+        "text": "오월 십팔일부터 이십사일까지 한 주 동안, 지구상에서 가장 많이 사용된 단일 모델은 딥시크 브이 포 플래시라는 모델이었습니다.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "일주일 동안 약 3.43조 개의 토큰을 처리했습니다.",
+      "text_markdown": "일주일 동안 약 3.43조 개의 토큰을 처리했습니다.",
+      "title": "",
+      "tts": {
+        "text": "일주일 동안 약 삼 점 사 삼 조 개의 토큰을 처리했습니다.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "그리고 오픈 웨이트이며, MIT 라이선스이고, 다운로드하여 자체 호스팅할 수 있는 것입니다.",
+      "text_markdown": "그리고 오픈 웨이트이며, MIT 라이선스이고, 다운로드하여 자체 호스팅할 수 있는 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 오픈 웨이트이며, 엠 아이 티 라이선스이고, 다운로드하여 자체 호스팅할 수 있는 것입니다.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "가장 많이 사용되는 모델이 오픈 소스라고요?",
+      "text_markdown": "가장 많이 사용되는 모델이 오픈 소스라고요?",
+      "title": "",
+      "tts": {
+        "text": "가장 많이 사용되는 모델이 오픈 소스라고요?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "사용량 차트의 맨 위에서는 그렇습니다.",
+      "text_markdown": "사용량 차트의 맨 위에서는 그렇습니다.",
+      "title": "",
+      "tts": {
+        "text": "사용량 차트의 맨 위에서는 그렇습니다.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "그리고 그 격차는 큽니다.",
+      "text_markdown": "그리고 그 격차는 큽니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 그 격차는 큽니다.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "그 주에 중국 모델은 약 9.2조 개의 토큰을 처리했고, 미국 모델은 약 4.9조 개를 처리했습니다.",
+      "text_markdown": "그 주에 중국 모델은 약 9.2조 개의 토큰을 처리했고, 미국 모델은 약 4.9조 개를 처리했습니다.",
+      "title": "",
+      "tts": {
+        "text": "그 주에 중국 모델은 약 구 점 이 조 개의 토큰을 처리했고, 미국 모델은 약 사 점 구 조 개를 처리했습니다.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "이는 중국 오픈 모델이 전 세계 사용량을 주도한 4주 연속 기록입니다.",
+      "text_markdown": "이는 중국 오픈 모델이 전 세계 사용량을 주도한 4주 연속 기록입니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 중국 오픈 모델이 전 세계 사용량을 주도한 사 주 연속 기록입니다.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "이는 진정한 역전입니다.",
+      "text_markdown": "이는 진정한 역전입니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 진정한 역전입니다.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "그렇습니다. 개발자들이 실제로 체감하는 지표, 즉 프로덕션에서 실행되는 것을 기준으로 보면, 오픈 소스가 선두에서 승리하고 있습니다.",
+      "text_markdown": "그렇습니다. 개발자들이 실제로 체감하는 지표, 즉 프로덕션에서 실행되는 것을 기준으로 보면, 오픈 소스가 선두에서 승리하고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "그렇습니다. 개발자들이 실제로 체감하는 지표, 즉 프로덕션에서 실행되는 것을 기준으로 보면, 오픈 소스가 선두에서 승리하고 있습니다.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "하지만 사용량 차트에 대해서는 솔직해져야 합니다.",
+      "text_markdown": "하지만 사용량 차트에 대해서는 솔직해져야 합니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 사용량 차트에 대해서는 솔직해져야 합니다.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "좋은 직감입니다. 그리고 이번 주에 완벽한 경고성 사례가 있습니다.",
+      "text_markdown": "좋은 직감입니다. 그리고 이번 주에 완벽한 경고성 사례가 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "좋은 직감입니다. 그리고 이번 주에 완벽한 경고성 사례가 있습니다.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "또 다른 모델인 텐센트의 Hy3가 같은 사용량 차트에서 급상승했습니다.",
+      "text_markdown": "또 다른 모델인 텐센트의 Hy3가 같은 사용량 차트에서 급상승했습니다.",
+      "title": "",
+      "tts": {
+        "text": "또 다른 모델인 텐센트의 에이치 와이 쓰리가 같은 사용량 차트에서 급상승했습니다.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "분석가 맥스 울프가 5월 26일에 이를 분석했습니다.",
+      "text_markdown": "분석가 맥스 울프가 5월 26일에 이를 분석했습니다.",
+      "title": "",
+      "tts": {
+        "text": "분석가 맥스 울프가 오월 이십육일에 이를 분석했습니다.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "그는 무엇을 발견했을까요?",
+      "text_markdown": "그는 무엇을 발견했을까요?",
+      "title": "",
+      "tts": {
+        "text": "그는 무엇을 발견했을까요?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "토큰당 비용은 저렴해 보이지만, 캐시 읽기 비용이 매우 높습니다.",
+      "text_markdown": "토큰당 비용은 저렴해 보이지만, 캐시 읽기 비용이 매우 높습니다.",
+      "title": "",
+      "tts": {
+        "text": "토큰당 비용은 저렴해 보이지만, 캐시 읽기 비용이 매우 높습니다.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "그 비용을 모두 계산하면, DeepSeek의 실제 가격의 거의 두 배에 달합니다.",
+      "text_markdown": "그 비용을 모두 계산하면, DeepSeek의 실제 가격의 거의 두 배에 달합니다.",
+      "title": "",
+      "tts": {
+        "text": "그 비용을 모두 계산하면, DeepSeek의 실제 가격의 거의 두 배에 달합니다.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "그리고 그 급증은 광범위한 인기가 아니라 하나의 거대한 앱 때문인 것으로 보입니다.",
+      "text_markdown": "그리고 그 급증은 광범위한 인기가 아니라 하나의 거대한 앱 때문인 것으로 보입니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 그 급증은 광범위한 인기가 아니라 하나의 거대한 앱 때문인 것으로 보입니다.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "따라서 사용량 순위표는 무엇이 좋은지가 아니라 누가 돈을 쓰고 있는지를 알려줍니다.",
+      "text_markdown": "따라서 사용량 순위표는 무엇이 좋은지가 아니라 누가 돈을 쓰고 있는지를 알려줍니다.",
+      "title": "",
+      "tts": {
+        "text": "따라서 사용량 순위표는 무엇이 좋은지가 아니라 누가 돈을 쓰고 있는지를 알려줍니다.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "트렌딩이 최고를 의미하는 것은 아닙니다.",
+      "text_markdown": "트렌딩이 최고를 의미하는 것은 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "트렌딩이 최고를 의미하는 것은 아닙니다.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "그것이 바로 새겨야 할 교훈입니다.",
+      "text_markdown": "그것이 바로 새겨야 할 교훈입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 바로 새겨야 할 교훈입니다.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "품질 순위표는 어떻습니까?",
+      "text_markdown": "품질 순위표는 어떻습니까?",
+      "title": "",
+      "tts": {
+        "text": "품질 순위표는 어떻습니까?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "가장 어려운 순위표에서는 여전히 클로즈드 모델이 선두를 달리고 있습니다.",
+      "text_markdown": "가장 어려운 순위표에서는 여전히 클로즈드 모델이 선두를 달리고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "가장 어려운 순위표에서는 여전히 클로즈드 모델이 선두를 달리고 있습니다.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "현재 채팅 품질 및 에이전트 터미널 순위표의 상위권은 모두 클로즈드 모델입니다.",
+      "text_markdown": "현재 채팅 품질 및 에이전트 터미널 순위표의 상위권은 모두 클로즈드 모델입니다.",
+      "title": "",
+      "tts": {
+        "text": "현재 채팅 품질 및 에이전트 터미널 순위표의 상위권은 모두 클로즈드 모델입니다.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "하지만 코딩 테스트인 SWE-bench Verified에서는 오픈 소스가 기본적으로 동등한 수준입니다.",
+      "text_markdown": "하지만 코딩 테스트인 SWE-bench Verified에서는 오픈 소스가 기본적으로 동등한 수준입니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 코딩 테스트인 에스 더블유 이 벤치 베리파이드에서는 오픈 소스가 기본적으로 동등한 수준입니다.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "추적자들은 최고의 오픈 모델들이 약 80% 정도라고 말합니다.",
+      "text_markdown": "추적자들은 최고의 오픈 모델들이 약 80% 정도라고 말합니다.",
+      "title": "",
+      "tts": {
+        "text": "추적자들은 최고의 오픈 모델들이 약 팔십 퍼센트 정도라고 말합니다.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "어떤 오픈 모델들인가요?",
+      "text_markdown": "어떤 오픈 모델들인가요?",
+      "title": "",
+      "tts": {
+        "text": "어떤 오픈 모델들인가요?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "Kimi K2.6와 MiniMax이며, DeepSeek의 가장 큰 모델도 비슷하다고 주장합니다.",
+      "text_markdown": "Kimi K2.6와 MiniMax이며, DeepSeek의 가장 큰 모델도 비슷하다고 주장합니다.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K 이 점 육과 MiniMax이며, DeepSeek의 가장 큰 모델도 비슷하다고 주장합니다.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "주장한다고 말하는 이유는, 추적자들마다 의견이 다르기 때문입니다.",
+      "text_markdown": "주장한다고 말하는 이유는, 추적자들마다 의견이 다르기 때문입니다.",
+      "title": "",
+      "tts": {
+        "text": "주장한다고 말하는 이유는, 추적자들마다 의견이 다르기 때문입니다.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "어떤 단일 벤치마크 숫자든 사실이 아닌 주장으로 간주하세요.",
+      "text_markdown": "어떤 단일 벤치마크 숫자든 사실이 아닌 주장으로 간주하세요.",
+      "title": "",
+      "tts": {
+        "text": "어떤 단일 벤치마크 숫자든 사실이 아닌 주장으로 간주하세요.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "말 나온 김에 — 벤치마크 신뢰 문제에 대해 이야기해봅시다.",
+      "text_markdown": "말 나온 김에 — 벤치마크 신뢰 문제에 대해 이야기해봅시다.",
+      "title": "",
+      "tts": {
+        "text": "말 나온 김에 — 벤치마크 신뢰 문제에 대해 이야기해봅시다.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "네, 5월 19일에 바로 그 주제에 대한 날카로운 논문이 발표되었습니다.",
+      "text_markdown": "네, 5월 19일에 바로 그 주제에 대한 날카로운 논문이 발표되었습니다.",
+      "title": "",
+      "tts": {
+        "text": "네, 오월 십구일에 바로 그 주제에 대한 날카로운 논문이 발표되었습니다.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "주장은 벤치마크가 오염 방지적이어야 한다는 것입니다.",
+      "text_markdown": "주장은 벤치마크가 오염 방지적이어야 한다는 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "주장은 벤치마크가 오염 방지적이어야 한다는 것입니다.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "즉, 테스트가 훈련 데이터로 유출되어서는 안 된다는 뜻입니다.",
+      "text_markdown": "즉, 테스트가 훈련 데이터로 유출되어서는 안 된다는 뜻입니다.",
+      "title": "",
+      "tts": {
+        "text": "즉, 테스트가 훈련 데이터로 유출되어서는 안 된다는 뜻입니다.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "그렇지 않으면 높은 점수는 추론 능력이 아닌 기억력을 측정하는 것이 됩니다.",
+      "text_markdown": "그렇지 않으면 높은 점수는 추론 능력이 아닌 기억력을 측정하는 것이 됩니다.",
+      "title": "",
+      "tts": {
+        "text": "그렇지 않으면 높은 점수는 추론 능력이 아닌 기억력을 측정하는 것이 됩니다.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "그러니 순위표가 거짓말을 할 수 있는 두 가지 방법이 있습니다.",
+      "text_markdown": "그러니 순위표가 거짓말을 할 수 있는 두 가지 방법이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "그러니 순위표가 거짓말을 할 수 있는 두 가지 방법이 있습니다.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "맞습니다 — 한쪽에는 사용량 조작, 다른 한쪽에는 오염이 있습니다.",
+      "text_markdown": "맞습니다 — 한쪽에는 사용량 조작, 다른 한쪽에는 오염이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다 — 한쪽에는 사용량 조작, 다른 한쪽에는 오염이 있습니다.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "같은 교훈 — 순위표를 읽되, 맹신하지 마십시오.",
+      "text_markdown": "같은 교훈 — 순위표를 읽되, 맹신하지 마십시오.",
+      "title": "",
+      "tts": {
+        "text": "같은 교훈 — 순위표를 읽되, 맹신하지 마십시오.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "이제 헤드라인을 살펴보겠습니다.",
+      "text_markdown": "이제 헤드라인을 살펴보겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "이제 헤드라인을 살펴보겠습니다.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "빠른 요약, 실제로 사용할 수 있는 것들입니다.",
+      "text_markdown": "빠른 요약, 실제로 사용할 수 있는 것들입니다.",
+      "title": "",
+      "tts": {
+        "text": "빠른 요약, 실제로 사용할 수 있는 것들입니다.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "첫째, 그 1위 모델에 대한 솔직한 자체 호스팅 계산입니다.",
+      "text_markdown": "첫째, 그 1위 모델에 대한 솔직한 자체 호스팅 계산입니다.",
+      "title": "",
+      "tts": {
+        "text": "첫째, 그 일위 모델에 대한 솔직한 자체 호스팅 계산입니다.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "DeepSeek V4-Flash는 약 170기가바이트의 GPU 메모리가 필요합니다.",
+      "text_markdown": "DeepSeek V4-Flash는 약 170기가바이트의 GPU 메모리가 필요합니다.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek 브이 포 플래시는 약 백칠십 기가바이트의 지피유 메모리가 필요합니다.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "이는 최고급 데이터센터 카드 한 쌍에 해당하며, 클라우드에서는 시간당 약 7달러입니다.",
+      "text_markdown": "이는 최고급 데이터센터 카드 한 쌍에 해당하며, 클라우드에서는 시간당 약 7달러입니다.",
+      "title": "",
+      "tts": {
+        "text": "이는 최고급 데이터센터 카드 한 쌍에 해당하며, 클라우드에서는 시간당 약 칠 달러입니다.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "트래픽이 매우 많지 않다면, 저렴한 API가 여전히 유리합니다.",
+      "text_markdown": "트래픽이 매우 많지 않다면, 저렴한 API가 여전히 유리합니다.",
+      "title": "",
+      "tts": {
+        "text": "트래픽이 매우 많지 않다면, 저렴한 API가 여전히 유리합니다.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "개인 정보 보호와 제어를 위해 자체 호스팅을 하세요. 돈을 절약하기 위함이 아닙니다 — 규모가 매우 크지 않다면 말이죠.",
+      "text_markdown": "개인 정보 보호와 제어를 위해 자체 호스팅을 하세요. 돈을 절약하기 위함이 아닙니다 — 규모가 매우 크지 않다면 말이죠.",
+      "title": "",
+      "tts": {
+        "text": "개인 정보 보호와 제어를 위해 자체 호스팅을 하세요. 돈을 절약하기 위함이 아닙니다 — 규모가 매우 크지 않다면 말이죠.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "좋습니다, 또 다른 소식은요?",
+      "text_markdown": "좋습니다, 또 다른 소식은요?",
+      "title": "",
+      "tts": {
+        "text": "좋습니다, 또 다른 소식은요?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "둘째, 온디바이스 음성 기술이 올해 큰 발전을 이루었습니다.",
+      "text_markdown": "둘째, 온디바이스 음성 기술이 올해 큰 발전을 이루었습니다.",
+      "title": "",
+      "tts": {
+        "text": "둘째, 온디바이스 음성 기술이 올해 큰 발전을 이루었습니다.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "GPU 없이 CPU에서만 실행되는 오픈 소스 텍스트-투-스피치 모델이 있습니다.",
+      "text_markdown": "GPU 없이 CPU에서만 실행되는 오픈 소스 텍스트-투-스피치 모델이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "지피유 없이 씨피유에서만 실행되는 오픈 소스 텍스트-투-스피치 모델이 있습니다.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "그 생각은 잠시 접어두세요 — 그것이 저희의 주요 기사입니다.",
+      "text_markdown": "그 생각은 잠시 접어두세요 — 그것이 저희의 주요 기사입니다.",
+      "title": "",
+      "tts": {
+        "text": "그 생각은 잠시 접어두세요 — 그것이 저희의 주요 기사입니다.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-115",
+      "chapter": 0,
+      "text": "예고 잘 받았습니다.",
+      "text_markdown": "예고 잘 받았습니다.",
+      "title": "",
+      "tts": {
+        "text": "예고 잘 받았습니다.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-116",
+      "chapter": 0,
+      "text": "셋째, 커뮤니티 퀀트 레이어가 오픈 소스 세계를 계속해서 지원합니다.",
+      "text_markdown": "셋째, 커뮤니티 퀀트 레이어가 오픈 소스 세계를 계속해서 지원합니다.",
+      "title": "",
+      "tts": {
+        "text": "셋째, 커뮤니티 퀀트 레이어가 오픈 소스 세계를 계속해서 지원합니다.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-117",
+      "chapter": 0,
+      "text": "Unsloth와 같은 그룹은 며칠 내에 새로운 모델의 튜닝되고 축소된 버전을 출시합니다.",
+      "text_markdown": "Unsloth와 같은 그룹은 며칠 내에 새로운 모델의 튜닝되고 축소된 버전을 출시합니다.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth와 같은 그룹은 며칠 내에 새로운 모델의 튜닝되고 축소된 버전을 출시합니다.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-118",
+      "chapter": 0,
+      "text": "그것이 거대한 모델이 당신의 카드에 맞는 형태로 변하는 방식입니다.",
+      "text_markdown": "그것이 거대한 모델이 당신의 카드에 맞는 형태로 변하는 방식입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 거대한 모델이 당신의 카드에 맞는 형태로 변하는 방식입니다.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-119",
+      "chapter": 0,
+      "text": "그리고 듣는 쪽에서는요?",
+      "text_markdown": "그리고 듣는 쪽에서는요?",
+      "title": "",
+      "tts": {
+        "text": "그리고 듣는 쪽에서는요?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-120",
+      "chapter": 0,
+      "text": "음성-텍스트 변환도 발전했습니다.",
+      "text_markdown": "음성-텍스트 변환도 발전했습니다.",
+      "title": "",
+      "tts": {
+        "text": "음성-텍스트 변환도 발전했습니다.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-121",
+      "chapter": 0,
+      "text": "Moonshine v2는 Whisper보다 정확도가 높으면서도 크기는 훨씬 작은 오픈 모델입니다.",
+      "text_markdown": "Moonshine v2는 Whisper보다 정확도가 높으면서도 크기는 훨씬 작은 오픈 모델입니다.",
+      "title": "",
+      "tts": {
+        "text": "문샤인 버전 투는 위스퍼보다 정확도가 높으면서도 크기는 훨씬 작은 오픈 모델입니다.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-122",
+      "chapter": 0,
+      "text": "라즈베리 파이나 휴대폰용으로 제작되었습니다.",
+      "text_markdown": "라즈베리 파이나 휴대폰용으로 제작되었습니다.",
+      "title": "",
+      "tts": {
+        "text": "라즈베리 파이나 휴대폰용으로 제작되었습니다.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-123",
+      "chapter": 0,
+      "text": "서버에서 대량 전사를 할 때는 NVIDIA의 Parakeet이 속도 면에서 최고입니다.",
+      "text_markdown": "서버에서 대량 전사를 할 때는 NVIDIA의 Parakeet이 속도 면에서 최고입니다.",
+      "title": "",
+      "tts": {
+        "text": "서버에서 대량 전사를 할 때는 NVIDIA의 Parakeet이 속도 면에서 최고입니다.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-124",
+      "chapter": 0,
+      "text": "하나 더 — 칩 이야기입니다.",
+      "text_markdown": "하나 더 — 칩 이야기입니다.",
+      "title": "",
+      "tts": {
+        "text": "하나 더 — 칩 이야기입니다.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-125",
+      "chapter": 0,
+      "text": "이것이 전체 에피소드를 하나로 묶어줍니다.",
+      "text_markdown": "이것이 전체 에피소드를 하나로 묶어줍니다.",
+      "title": "",
+      "tts": {
+        "text": "이것이 전체 에피소드를 하나로 묶어줍니다.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-126",
+      "chapter": 0,
+      "text": "5월 21일, 엔비디아의 젠슨 황은 중국 칩 시장을 화웨이에 거의 내주었다고 말했습니다.",
+      "text_markdown": "5월 21일, 엔비디아의 젠슨 황은 중국 칩 시장을 화웨이에 거의 내주었다고 말했습니다.",
+      "title": "",
+      "tts": {
+        "text": "오월 이십일일, 엔비디아의 젠슨 황은 중국 칩 시장을 화웨이에 거의 내주었다고 말했습니다.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-127",
+      "chapter": 0,
+      "text": "중국은 자국 실리콘을 밀어붙이기 위해 승인된 엔비디아 수입까지 막고 있습니다.",
+      "text_markdown": "중국은 자국 실리콘을 밀어붙이기 위해 승인된 엔비디아 수입까지 막고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "중국은 자국 실리콘을 밀어붙이기 위해 승인된 엔비디아 수입까지 막고 있습니다.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-128",
+      "chapter": 0,
+      "text": "그것이 개발자에게 왜 중요할까요?",
+      "text_markdown": "그것이 개발자에게 왜 중요할까요?",
+      "title": "",
+      "tts": {
+        "text": "그것이 개발자에게 왜 중요할까요?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-129",
+      "chapter": 0,
+      "text": "사용량 차트에서 상위권을 차지하는 중국 오픈 모델들이 점점 더 화웨이 칩으로 훈련되고 서비스되기 때문입니다.",
+      "text_markdown": "사용량 차트에서 상위권을 차지하는 중국 오픈 모델들이 점점 더 화웨이 칩으로 훈련되고 서비스되기 때문입니다.",
+      "title": "",
+      "tts": {
+        "text": "사용량 차트에서 상위권을 차지하는 중국 오픈 모델들이 점점 더 화웨이 칩으로 훈련되고 서비스되기 때문입니다.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-130",
+      "chapter": 0,
+      "text": "수출 통제는 중국의 AI 발전을 늦추기 위한 것이었습니다.",
+      "text_markdown": "수출 통제는 중국의 AI 발전을 늦추기 위한 것이었습니다.",
+      "title": "",
+      "tts": {
+        "text": "수출 통제는 중국의 AI 발전을 늦추기 위한 것이었습니다.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-131",
+      "chapter": 0,
+      "text": "대신 그들은 칩과 가중치 모두를 포함하는 병렬 오픈 스택을 자체적으로 구축했습니다.",
+      "text_markdown": "대신 그들은 칩과 가중치 모두를 포함하는 병렬 오픈 스택을 자체적으로 구축했습니다.",
+      "title": "",
+      "tts": {
+        "text": "대신 그들은 칩과 가중치 모두를 포함하는 병렬 오픈 스택을 자체적으로 구축했습니다.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-132",
+      "chapter": 0,
+      "text": "리더보드 이야기와 칩 이야기는 같은 이야기입니다.",
+      "text_markdown": "리더보드 이야기와 칩 이야기는 같은 이야기입니다.",
+      "title": "",
+      "tts": {
+        "text": "리더보드 이야기와 칩 이야기는 같은 이야기입니다.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-133",
+      "chapter": 0,
+      "text": "이제 주요 이야기로 돌아가 봅시다.",
+      "text_markdown": "이제 주요 이야기로 돌아가 봅시다.",
+      "title": "",
+      "tts": {
+        "text": "이제 주요 이야기로 돌아가 봅시다.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-134",
+      "chapter": 0,
+      "text": "오픈 보이스를 약속하셨죠.",
+      "text_markdown": "오픈 보이스를 약속하셨죠.",
+      "title": "",
+      "tts": {
+        "text": "오픈 보이스를 약속하셨죠.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-135",
+      "chapter": 0,
+      "text": "네, 그랬습니다. 그리고 이것이 바로 이 쇼의 핵심 동력입니다.",
+      "text_markdown": "네, 그랬습니다. 그리고 이것이 바로 이 쇼의 핵심 동력입니다.",
+      "title": "",
+      "tts": {
+        "text": "네, 그랬습니다. 그리고 이것이 바로 이 쇼의 핵심 동력입니다.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-136",
+      "chapter": 0,
+      "text": "그것에 대해 더 말씀해 주세요.",
+      "text_markdown": "그것에 대해 더 말씀해 주세요.",
+      "title": "",
+      "tts": {
+        "text": "그것에 대해 더 말씀해 주세요.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-137",
+      "chapter": 0,
+      "text": "지금 들으시는 목소리는 오픈 및 호스팅 음성 모델 스택을 기반으로 합니다.",
+      "text_markdown": "지금 들으시는 목소리는 오픈 및 호스팅 음성 모델 스택을 기반으로 합니다.",
+      "title": "",
+      "tts": {
+        "text": "지금 들으시는 목소리는 오픈 및 호스팅 음성 모델 스택을 기반으로 합니다.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-138",
+      "chapter": 0,
+      "text": "그리고 2026년은 오픈 모델들이 소유할 만큼 충분히 좋아진 해입니다.",
+      "text_markdown": "그리고 2026년은 오픈 모델들이 소유할 만큼 충분히 좋아진 해입니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 이천 이십육년은 오픈 모델들이 소유할 만큼 충분히 좋아진 해입니다.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-139",
+      "chapter": 0,
+      "text": "가장 가까운 것부터 시작해 봅시다.",
+      "text_markdown": "가장 가까운 것부터 시작해 봅시다.",
+      "title": "",
+      "tts": {
+        "text": "가장 가까운 것부터 시작해 봅시다.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-140",
+      "chapter": 0,
+      "text": "그것은 Resemble AI의 Chatterbox입니다.",
+      "text_markdown": "그것은 Resemble AI의 Chatterbox입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것은 Resemble AI의 Chatterbox입니다.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-141",
+      "chapter": 0,
+      "text": "MIT 라이선스를 가지고 있으며, 23개 언어를 지원하고, 온디바이스로 실행됩니다.",
+      "text_markdown": "MIT 라이선스를 가지고 있으며, 23개 언어를 지원하고, 온디바이스로 실행됩니다.",
+      "title": "",
+      "tts": {
+        "text": "엠아이티 라이선스를 가지고 있으며, 이십삼개 언어를 지원하고, 온디바이스로 실행됩니다.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-142",
+      "chapter": 0,
+      "text": "터보 버전은 3월에 출시되었습니다.",
+      "text_markdown": "터보 버전은 3월에 출시되었습니다.",
+      "title": "",
+      "tts": {
+        "text": "터보 버전은 삼월에 출시되었습니다.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-143",
+      "chapter": 0,
+      "text": "오디오 디코더를 10단계 대신 단일 단계로 만드는 트릭을 사용합니다.",
+      "text_markdown": "오디오 디코더를 10단계 대신 단일 단계로 만드는 트릭을 사용합니다.",
+      "title": "",
+      "tts": {
+        "text": "오디오 디코더를 열 단계 대신 단일 단계로 만드는 트릭을 사용합니다.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-144",
+      "chapter": 0,
+      "text": "그 트릭을 쉽게 설명하자면요?",
+      "text_markdown": "그 트릭을 쉽게 설명하자면요?",
+      "title": "",
+      "tts": {
+        "text": "그 트릭을 쉽게 설명하자면요?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-145",
+      "chapter": 0,
+      "text": "같은 목소리에 훨씬 적은 연산이 필요하다는 의미입니다.",
+      "text_markdown": "같은 목소리에 훨씬 적은 연산이 필요하다는 의미입니다.",
+      "title": "",
+      "tts": {
+        "text": "같은 목소리에 훨씬 적은 연산이 필요하다는 의미입니다.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-146",
+      "chapter": 0,
+      "text": "그것이 좋은 목소리를 휴대폰에서 현실적으로 만드는 비결입니다.",
+      "text_markdown": "그것이 좋은 목소리를 휴대폰에서 현실적으로 만드는 비결입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 좋은 목소리를 휴대폰에서 현실적으로 만드는 비결입니다.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-147",
+      "chapter": 0,
+      "text": "더 많은 언어가 필요하다면요?",
+      "text_markdown": "더 많은 언어가 필요하다면요?",
+      "title": "",
+      "tts": {
+        "text": "더 많은 언어가 필요하다면요?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-148",
+      "chapter": 0,
+      "text": "OmniVoice라는 오픈 모델이 있습니다.",
+      "text_markdown": "OmniVoice라는 오픈 모델이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "옴니 보이스라는 오픈 모델이 있습니다.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-149",
+      "chapter": 0,
+      "text": "600개 이상의 언어를 지원한다고 주장하며, 빠릅니다.",
+      "text_markdown": "600개 이상의 언어를 지원한다고 주장하며, 빠릅니다.",
+      "title": "",
+      "tts": {
+        "text": "육백개 이상의 언어를 지원한다고 주장하며, 빠릅니다.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-150",
+      "chapter": 0,
+      "text": "아파치 라이선스이므로 상업적으로 안전하게 사용할 수 있습니다.",
+      "text_markdown": "아파치 라이선스이므로 상업적으로 안전하게 사용할 수 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "아파치 라이선스이므로 상업적으로 안전하게 사용할 수 있습니다.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-151",
+      "chapter": 0,
+      "text": "600개 언어는 너무 좋아 보여요.",
+      "text_markdown": "600개 언어는 너무 좋아 보여요.",
+      "title": "",
+      "tts": {
+        "text": "육백 개 언어는 너무 좋아 보여요.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-152",
+      "chapter": 0,
+      "text": "그것은 합리적인 걱정입니다.",
+      "text_markdown": "그것은 합리적인 걱정입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것은 합리적인 걱정입니다.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-153",
+      "chapter": 0,
+      "text": "어떤 언어를 지원하는 것과 그 언어로 소리가 좋게 들리는 것은 다릅니다.",
+      "text_markdown": "어떤 언어를 지원하는 것과 그 언어로 소리가 좋게 들리는 것은 다릅니다.",
+      "title": "",
+      "tts": {
+        "text": "어떤 언어를 지원하는 것과 그 언어로 소리가 좋게 들리는 것은 다릅니다.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-154",
+      "chapter": 0,
+      "text": "신뢰하기 전에 여전히 언어별로 직접 들어봐야 합니다.",
+      "text_markdown": "신뢰하기 전에 여전히 언어별로 직접 들어봐야 합니다.",
+      "title": "",
+      "tts": {
+        "text": "신뢰하기 전에 여전히 언어별로 직접 들어봐야 합니다.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-155",
+      "chapter": 0,
+      "text": "스튜디오 품질은 어떤가요?",
+      "text_markdown": "스튜디오 품질은 어떤가요?",
+      "title": "",
+      "tts": {
+        "text": "스튜디오 품질은 어떤가요?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-156",
+      "chapter": 0,
+      "text": "그것에 대해서는 VoxCPM2를 보세요.",
+      "text_markdown": "그것에 대해서는 VoxCPM2를 보세요.",
+      "title": "",
+      "tts": {
+        "text": "그것에 대해서는 Vox 씨피엠투를 보세요.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-157",
+      "chapter": 0,
+      "text": "약 20억 개의 파라미터를 가지고 있으며, 아파치 라이선스이고, 고음질로 출력됩니다.",
+      "text_markdown": "약 20억 개의 파라미터를 가지고 있으며, 아파치 라이선스이고, 고음질로 출력됩니다.",
+      "title": "",
+      "tts": {
+        "text": "약 이십억 개의 파라미터를 가지고 있으며, 아파치 라이선스이고, 고음질로 출력됩니다.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-158",
+      "chapter": 0,
+      "text": "30개 언어를 지원하며, 작은 음성 샘플로 미세 조정할 수 있습니다.",
+      "text_markdown": "30개 언어를 지원하며, 작은 음성 샘플로 미세 조정할 수 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "삼십 개 언어를 지원하며, 작은 음성 샘플로 미세 조정할 수 있습니다.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-159",
+      "chapter": 0,
+      "text": "이러한 조합으로 인해 상용화 가능성이 가장 높은 중간 규모의 오픈 보이스가 됩니다.",
+      "text_markdown": "이러한 조합으로 인해 상용화 가능성이 가장 높은 중간 규모의 오픈 보이스가 됩니다.",
+      "title": "",
+      "tts": {
+        "text": "이러한 조합으로 인해 상용화 가능성이 가장 높은 중간 규모의 오픈 보이스가 됩니다.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-160",
+      "chapter": 0,
+      "text": "그리고 예고했던 온디바이스 플렉스는요?",
+      "text_markdown": "그리고 예고했던 온디바이스 플렉스는요?",
+      "title": "",
+      "tts": {
+        "text": "그리고 예고했던 온디바이스 플렉스는요?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-161",
+      "chapter": 0,
+      "text": "그것은 MOSS-TTS-Nano입니다.",
+      "text_markdown": "그것은 MOSS-TTS-Nano입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것은 모스 티티에스 나노입니다.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-162",
+      "chapter": 0,
+      "text": "매우 작아서 약 1억 개의 파라미터를 가지고 있습니다.",
+      "text_markdown": "매우 작아서 약 1억 개의 파라미터를 가지고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "매우 작아서 약 일억 개의 파라미터를 가지고 있습니다.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-163",
+      "chapter": 0,
+      "text": "GPU 없이 CPU에서 실행됩니다. 심지어 노트북의 단일 코어에서도 가능합니다.",
+      "text_markdown": "GPU 없이 CPU에서 실행됩니다. 심지어 노트북의 단일 코어에서도 가능합니다.",
+      "title": "",
+      "tts": {
+        "text": "GPU 없이 CPU에서 실행됩니다. 심지어 노트북의 단일 코어에서도 가능합니다.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-164",
+      "chapter": 0,
+      "text": "휴대폰에 음성을 탑재하려는 사람들에게는 꿈같은 일입니다.",
+      "text_markdown": "휴대폰에 음성을 탑재하려는 사람들에게는 꿈같은 일입니다.",
+      "title": "",
+      "tts": {
+        "text": "휴대폰에 음성을 탑재하려는 사람들에게는 꿈같은 일입니다.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-165",
+      "chapter": 0,
+      "text": "그럼 장점만 있다는 건가요?",
+      "text_markdown": "그럼 장점만 있다는 건가요?",
+      "title": "",
+      "tts": {
+        "text": "그럼 장점만 있다는 건가요?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-166",
+      "chapter": 0,
+      "text": "아닙니다. 그리고 모두가 놓치는 함정이 있습니다.",
+      "text_markdown": "아닙니다. 그리고 모두가 놓치는 함정이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "아닙니다. 그리고 모두가 놓치는 함정이 있습니다.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-167",
+      "chapter": 0,
+      "text": "미스트랄은 Voxtral이라는 멋진 음성 모델을 출시했습니다.",
+      "text_markdown": "미스트랄은 Voxtral이라는 멋진 음성 모델을 출시했습니다.",
+      "title": "",
+      "tts": {
+        "text": "미스트랄은 Voxtral이라는 멋진 음성 모델을 출시했습니다.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-168",
+      "chapter": 0,
+      "text": "가중치는 공개되어 있고 품질은 훌륭합니다.",
+      "text_markdown": "가중치는 공개되어 있고 품질은 훌륭합니다.",
+      "title": "",
+      "tts": {
+        "text": "가중치는 공개되어 있고 품질은 훌륭합니다.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-169",
+      "chapter": 0,
+      "text": "하지만 라이선스는 비상업적입니다.",
+      "text_markdown": "하지만 라이선스는 비상업적입니다.",
+      "title": "",
+      "tts": {
+        "text": "하지만 라이선스는 비상업적입니다.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-170",
+      "chapter": 0,
+      "text": "즉, 배포할 수 없다는 뜻입니다.",
+      "text_markdown": "즉, 배포할 수 없다는 뜻입니다.",
+      "title": "",
+      "tts": {
+        "text": "즉, 배포할 수 없다는 뜻입니다.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-171",
+      "chapter": 0,
+      "text": "유료 제품에는 안 되고, 계약 없이는 안 됩니다.",
+      "text_markdown": "유료 제품에는 안 되고, 계약 없이는 안 됩니다.",
+      "title": "",
+      "tts": {
+        "text": "유료 제품에는 안 되고, 계약 없이는 안 됩니다.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-172",
+      "chapter": 0,
+      "text": "가중치가 공개되었다고 해서 항상 사용할 수 있는 것은 아닙니다.",
+      "text_markdown": "가중치가 공개되었다고 해서 항상 사용할 수 있는 것은 아닙니다.",
+      "title": "",
+      "tts": {
+        "text": "가중치가 공개되었다고 해서 항상 사용할 수 있는 것은 아닙니다.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-173",
+      "chapter": 0,
+      "text": "실제 앱을 만들려면, 반하기 전에 라이선스를 읽어봐야 합니다.",
+      "text_markdown": "실제 앱을 만들려면, 반하기 전에 라이선스를 읽어봐야 합니다.",
+      "title": "",
+      "tts": {
+        "text": "실제 앱을 만들려면, 반하기 전에 라이선스를 읽어봐야 합니다.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-174",
+      "chapter": 0,
+      "text": "그리고 이러한 벤치마크 주장들은요?",
+      "text_markdown": "그리고 이러한 벤치마크 주장들은요?",
+      "title": "",
+      "tts": {
+        "text": "그리고 이러한 벤치마크 주장들은요?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-175",
+      "chapter": 0,
+      "text": "회의적으로 보세요.",
+      "text_markdown": "회의적으로 보세요.",
+      "title": "",
+      "tts": {
+        "text": "회의적으로 보세요.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-176",
+      "chapter": 0,
+      "text": "여기서 '선두를 제쳤다'는 모든 주장은 공급업체가 자체적으로 블라인드 테스트를 진행한 것입니다.",
+      "text_markdown": "여기서 '선두를 제쳤다'는 모든 주장은 공급업체가 자체적으로 블라인드 테스트를 진행한 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "여기서 '선두를 제쳤다'는 모든 주장은 공급업체가 자체적으로 블라인드 테스트를 진행한 것입니다.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-177",
+      "chapter": 0,
+      "text": "그들의 차트가 아니라 당신의 귀를 믿으세요.",
+      "text_markdown": "그들의 차트가 아니라 당신의 귀를 믿으세요.",
+      "title": "",
+      "tts": {
+        "text": "그들의 차트가 아니라 당신의 귀를 믿으세요.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-178",
+      "chapter": 0,
+      "text": "그럼 우리는 어디에 있는 걸까요?",
+      "text_markdown": "그럼 우리는 어디에 있는 걸까요?",
+      "title": "",
+      "tts": {
+        "text": "그럼 우리는 어디에 있는 걸까요?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-179",
+      "chapter": 0,
+      "text": "우리는 진정으로 새로운 곳에 있습니다.",
+      "text_markdown": "우리는 진정으로 새로운 곳에 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "우리는 진정으로 새로운 곳에 있습니다.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-180",
+      "chapter": 0,
+      "text": "오늘날 당신은 당신의 기기에서 훌륭한 음성을 실행할 수 있습니다.",
+      "text_markdown": "오늘날 당신은 당신의 기기에서 훌륭한 음성을 실행할 수 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "오늘날 당신은 당신의 기기에서 훌륭한 음성을 실행할 수 있습니다.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-181",
+      "chapter": 0,
+      "text": "어려운 질문은 더 이상 '할 수 있는가'가 아니라 '어떤 라이선스가 그것을 유지하게 하는가'입니다.",
+      "text_markdown": "어려운 질문은 더 이상 '할 수 있는가'가 아니라 '어떤 라이선스가 그것을 유지하게 하는가'입니다.",
+      "title": "",
+      "tts": {
+        "text": "어려운 질문은 더 이상 '할 수 있는가'가 아니라 '어떤 라이선스가 그것을 유지하게 하는가'입니다.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-182",
+      "chapter": 0,
+      "text": "이야기에 마침표를 찍기에 좋은 말이네요.",
+      "text_markdown": "이야기에 마침표를 찍기에 좋은 말이네요.",
+      "title": "",
+      "tts": {
+        "text": "이야기에 마침표를 찍기에 좋은 말이네요.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-183",
+      "chapter": 0,
+      "text": "이번 주의 개념을 알아볼까요.",
+      "text_markdown": "이번 주의 개념을 알아볼까요.",
+      "title": "",
+      "tts": {
+        "text": "이번 주의 개념을 알아볼까요.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-184",
+      "block_type": "text",
+      "text": "신경 오디오 코덱을 선택하셨군요.",
+      "text_markdown": "신경 오디오 코덱을 선택하셨군요.",
+      "title": "",
+      "tts": {
+        "text": "신경 오디오 코덱을 선택하셨군요.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-185",
+      "block_type": "text",
+      "text": "네, 맞아요. 모든 온디바이스 음성 뒤에 숨겨진 비결이기 때문입니다.",
+      "text_markdown": "네, 맞아요. 모든 온디바이스 음성 뒤에 숨겨진 비결이기 때문입니다.",
+      "title": "",
+      "tts": {
+        "text": "네, 맞아요. 모든 온디바이스 음성 뒤에 숨겨진 비결이기 때문입니다.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-186",
+      "block_type": "text",
+      "text": "원시 오디오는 엄청나게 큽니다. 몇 초만 해도 수백만 개의 숫자죠.",
+      "text_markdown": "원시 오디오는 엄청나게 큽니다. 몇 초만 해도 수백만 개의 숫자죠.",
+      "title": "",
+      "tts": {
+        "text": "원시 오디오는 엄청나게 큽니다. 몇 초만 해도 수백만 개의 숫자죠.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-187",
+      "block_type": "text",
+      "text": "휴대폰은 그 모든 것을 실시간으로 모델에 스트리밍할 수 없습니다.",
+      "text_markdown": "휴대폰은 그 모든 것을 실시간으로 모델에 스트리밍할 수 없습니다.",
+      "title": "",
+      "tts": {
+        "text": "휴대폰은 그 모든 것을 실시간으로 모델에 스트리밍할 수 없습니다.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-188",
+      "block_type": "text",
+      "text": "그럼 코덱은 무엇을 할까요?",
+      "text_markdown": "그럼 코덱은 무엇을 할까요?",
+      "title": "",
+      "tts": {
+        "text": "그럼 코덱은 무엇을 할까요?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-189",
+      "block_type": "text",
+      "text": "코덱은 그 오디오를 압축하여 아주 작은 토큰 스트림으로 만드는 법을 배웁니다.",
+      "text_markdown": "코덱은 그 오디오를 압축하여 아주 작은 토큰 스트림으로 만드는 법을 배웁니다.",
+      "title": "",
+      "tts": {
+        "text": "코덱은 그 오디오를 압축하여 아주 작은 토큰 스트림으로 만드는 법을 배웁니다.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-190",
+      "block_type": "text",
+      "text": "소리를 위한 스마트한 압축 파일이라고 생각하시면 됩니다.",
+      "text_markdown": "소리를 위한 스마트한 압축 파일이라고 생각하시면 됩니다.",
+      "title": "",
+      "tts": {
+        "text": "소리를 위한 스마트한 압축 파일이라고 생각하시면 됩니다.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-191",
+      "block_type": "text",
+      "text": "Mimi라고 불리는 오픈 코덱은 초당 약 1킬로비트까지 압축합니다.",
+      "text_markdown": "Mimi라고 불리는 오픈 코덱은 초당 약 1킬로비트까지 압축합니다.",
+      "title": "",
+      "tts": {
+        "text": "Mimi라고 불리는 오픈 코덱은 초당 약 일 킬로비트까지 압축합니다.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-192",
+      "block_type": "text",
+      "text": "그게 정말 얼마나 작은 걸까요?",
+      "text_markdown": "그게 정말 얼마나 작은 걸까요?",
+      "title": "",
+      "tts": {
+        "text": "그게 정말 얼마나 작은 걸까요?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-193",
+      "block_type": "text",
+      "text": "수백만 개 대신 초당 수백 개의 작은 숫자들입니다.",
+      "text_markdown": "수백만 개 대신 초당 수백 개의 작은 숫자들입니다.",
+      "title": "",
+      "tts": {
+        "text": "수백만 개 대신 초당 수백 개의 작은 숫자들입니다.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-194",
+      "block_type": "text",
+      "text": "그리고 여전히 음성을 자연스럽게 들리도록 재구성합니다.",
+      "text_markdown": "그리고 여전히 음성을 자연스럽게 들리도록 재구성합니다.",
+      "title": "",
+      "tts": {
+        "text": "그리고 여전히 음성을 자연스럽게 들리도록 재구성합니다.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-195",
+      "block_type": "text",
+      "text": "그것이 음성 모델에 왜 중요할까요?",
+      "text_markdown": "그것이 음성 모델에 왜 중요할까요?",
+      "title": "",
+      "tts": {
+        "text": "그것이 음성 모델에 왜 중요할까요?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-196",
+      "block_type": "text",
+      "text": "모델이 원시 사운드가 아닌 그 토큰으로 말하기 때문입니다.",
+      "text_markdown": "모델이 원시 사운드가 아닌 그 토큰으로 말하기 때문입니다.",
+      "title": "",
+      "tts": {
+        "text": "모델이 원시 사운드가 아닌 그 토큰으로 말하기 때문입니다.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-197",
+      "block_type": "text",
+      "text": "토큰이 적다는 것은 모든 단어에 필요한 연산량이 적다는 것을 의미합니다.",
+      "text_markdown": "토큰이 적다는 것은 모든 단어에 필요한 연산량이 적다는 것을 의미합니다.",
+      "title": "",
+      "tts": {
+        "text": "토큰이 적다는 것은 모든 단어에 필요한 연산량이 적다는 것을 의미합니다.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-198",
+      "block_type": "text",
+      "text": "그것이 좋은 음성이 휴대폰에서 오프라인으로 실행될 수 있게 하는 이유입니다.",
+      "text_markdown": "그것이 좋은 음성이 휴대폰에서 오프라인으로 실행될 수 있게 하는 이유입니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 좋은 음성이 휴대폰에서 오프라인으로 실행될 수 있게 하는 이유입니다.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-199",
+      "block_type": "text",
+      "text": "그러니까 코덱이 최저 기준을 설정하는군요.",
+      "text_markdown": "그러니까 코덱이 최저 기준을 설정하는군요.",
+      "title": "",
+      "tts": {
+        "text": "그러니까 코덱이 최저 기준을 설정하는군요.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-200",
+      "block_type": "text",
+      "text": "맞습니다. 코덱은 다른 모든 것이 기반하는 지연 시간과 비트레이트를 설정합니다.",
+      "text_markdown": "맞습니다. 코덱은 다른 모든 것이 기반하는 지연 시간과 비트레이트를 설정합니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다. 코덱은 다른 모든 것이 기반하는 지연 시간과 비트레이트를 설정합니다.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-201",
+      "block_type": "text",
+      "text": "Mimi와 SNAC이라는 사촌 격인 오픈 코덱들이 새로운 음성 모델들이 기반하는 것입니다.",
+      "text_markdown": "Mimi와 SNAC이라는 사촌 격인 오픈 코덱들이 새로운 음성 모델들이 기반하는 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "Mimi와 SNAC이라는 사촌 격인 오픈 코덱들이 새로운 음성 모델들이 기반하는 것입니다.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-202",
+      "block_type": "text",
+      "text": "작은 온디바이스 음성을 만나면, 그 아래에는 그런 코덱이 있습니다.",
+      "text_markdown": "작은 온디바이스 음성을 만나면, 그 아래에는 그런 코덱이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "작은 온디바이스 음성을 만나면, 그 아래에는 그런 코덱이 있습니다.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-203",
+      "block_type": "text",
+      "text": "들을 수 있을 정도로 투명한 압축, 그것이 바로 조용한 돌파구입니다.",
+      "text_markdown": "들을 수 있을 정도로 투명한 압축, 그것이 바로 조용한 돌파구입니다.",
+      "title": "",
+      "tts": {
+        "text": "들을 수 있을 정도로 투명한 압축, 그것이 바로 조용한 돌파구입니다.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-204",
+      "chapter": 0,
+      "text": "마무리하기에 좋네요.",
+      "text_markdown": "마무리하기에 좋네요.",
+      "title": "",
+      "tts": {
+        "text": "마무리하기에 좋네요.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-205",
+      "chapter": 0,
+      "text": "론, 감사합니다.",
+      "text_markdown": "론, 감사합니다.",
+      "title": "",
+      "tts": {
+        "text": "론, 감사합니다.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-206",
+      "chapter": 0,
+      "text": "천만에요, 빈디.",
+      "text_markdown": "천만에요, 빈디.",
+      "title": "",
+      "tts": {
+        "text": "천만에요, 빈디.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-207",
+      "chapter": 0,
+      "text": "이상은 2026년 5월 27일자 AI This Week였습니다.",
+      "text_markdown": "이상은 2026년 5월 27일자 AI This Week였습니다.",
+      "title": "",
+      "tts": {
+        "text": "이상은 이천이십육년 오월 이십칠일자 AI This Week였습니다.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-208",
+      "chapter": 0,
+      "text": "다음 주 수요일에 새 호가 나옵니다.",
+      "text_markdown": "다음 주 수요일에 새 호가 나옵니다.",
+      "title": "",
+      "tts": {
+        "text": "다음 주 수요일에 새 호가 나옵니다.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-209",
+      "chapter": 0,
+      "text": "그때까지 잘 지내세요.",
+      "text_markdown": "그때까지 잘 지내세요.",
+      "title": "",
+      "tts": {
+        "text": "그때까지 잘 지내세요.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

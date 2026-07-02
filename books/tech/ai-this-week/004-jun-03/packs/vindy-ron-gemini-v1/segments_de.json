@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "de",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Willkommen bei AI This Week.",
+      "text_markdown": "Willkommen bei AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Willkommen bei AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ich bin Vindy.",
+      "text_markdown": "Ich bin Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ich bin Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Bei mir ist wie immer Ron.",
+      "text_markdown": "Bei mir ist wie immer Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bei mir ist wie immer Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Schön, hier zu sein, Vindy.",
+      "text_markdown": "Schön, hier zu sein, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Schön, hier zu sein, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Heute ist Mittwoch, der 3. Juni 2026.",
+      "text_markdown": "Heute ist Mittwoch, der 3. Juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Heute ist Mittwoch, der dritte Juni, zweitausendsechsundzwanzig.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Dies war eine ruhige Woche für Marketing und eine laute Woche für Hardware.",
+      "text_markdown": "Dies war eine ruhige Woche für Marketing und eine laute Woche für Hardware.",
+      "title": "",
+      "tts": {
+        "text": "Dies war eine ruhige Woche für Marketing und eine laute Woche für Hardware.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Die Form der Schlagzeilen war ungewöhnlich.",
+      "text_markdown": "Die Form der Schlagzeilen war ungewöhnlich.",
+      "title": "",
+      "tts": {
+        "text": "Die Form der Schlagzeilen war ungewöhnlich.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Eine Keynote eines großen Labors, eine vertrauliche Einreichung, ein kleiner Computer mit einer großen Zahl auf der Verpackung.",
+      "text_markdown": "Eine Keynote eines großen Labors, eine vertrauliche Einreichung, ein kleiner Computer mit einer großen Zahl auf der Verpackung.",
+      "title": "",
+      "tts": {
+        "text": "Eine Keynote eines großen Labors, eine vertrauliche Einreichung, ein kleiner Computer mit einer großen Zahl auf der Verpackung.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Als Nächstes – was sich bei Open Weights getan hat, angeführt von einer neuen Aufmerksamkeitsarchitektur und einem offenen NVIDIA-Modell.",
+      "text_markdown": "Als Nächstes – was sich bei Open Weights getan hat, angeführt von einer neuen Aufmerksamkeitsarchitektur und einem offenen NVIDIA-Modell.",
+      "title": "",
+      "tts": {
+        "text": "Als Nächstes – was sich bei Open Weights getan hat, angeführt von einer neuen Aufmerksamkeitsarchitektur und einem offenen NVIDIA-Modell.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wo die Bestenlisten landeten und die größere Geschichte dahinter, wie wir Bewertungen überhaupt vertrauen.",
+      "text_markdown": "Wo die Bestenlisten landeten und die größere Geschichte dahinter, wie wir Bewertungen überhaupt vertrauen.",
+      "title": "",
+      "tts": {
+        "text": "Wo die Bestenlisten landeten und die größere Geschichte dahinter, wie wir Bewertungen überhaupt vertrauen.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ein schneller Überblick über Schlagzeilen, auf die Sie dieses Wochenende reagieren können.",
+      "text_markdown": "Ein schneller Überblick über Schlagzeilen, auf die Sie dieses Wochenende reagieren können.",
+      "title": "",
+      "tts": {
+        "text": "Ein schneller Überblick über Schlagzeilen, auf die Sie dieses Wochenende reagieren können.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Unsere Top-Story: Das Do-it-yourself-Rig ist erwachsen geworden – Frontier Inference ist jetzt eine Sache auf Ihrem Schreibtisch.",
+      "text_markdown": "Unsere Top-Story: Das Do-it-yourself-Rig ist erwachsen geworden – Frontier Inference ist jetzt eine Sache auf Ihrem Schreibtisch.",
+      "title": "",
+      "tts": {
+        "text": "Unsere Top-Story: Das Do-it-yourself-Rig ist erwachsen geworden – Frontier Inference ist jetzt eine Sache auf Ihrem Schreibtisch.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und das Konzept der Woche ist spekulatives Decoding – der Trick, der ein großes Modell auf einer kleinen Karte schnell erscheinen lässt.",
+      "text_markdown": "Und das Konzept der Woche ist spekulatives Decoding – der Trick, der ein großes Modell auf einer kleinen Karte schnell erscheinen lässt.",
+      "title": "",
+      "tts": {
+        "text": "Und das Konzept der Woche ist spekulatives Decoding – der Trick, der ein großes Modell auf einer kleinen Karte schnell erscheinen lässt.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, fangen wir in der Open-Weights-Welt an.",
+      "text_markdown": "Ron, fangen wir in der Open-Weights-Welt an.",
+      "title": "",
+      "tts": {
+        "text": "Ron, fangen wir in der Open-Weights-Welt an.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wo ist die Woche gelandet?",
+      "text_markdown": "Wo ist die Woche gelandet?",
+      "title": "",
+      "tts": {
+        "text": "Wo ist die Woche gelandet?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Diese Woche ging es bei der Open-Story um neue Formen, nicht um neue Größen.",
+      "text_markdown": "Diese Woche ging es bei der Open-Story um neue Formen, nicht um neue Größen.",
+      "title": "",
+      "tts": {
+        "text": "Diese Woche ging es bei der Open-Story um neue Formen, nicht um neue Größen.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Zwei architektonisch interessante Modelle wurden am selben Tag, dem 1. Juni, veröffentlicht.",
+      "text_markdown": "Zwei architektonisch interessante Modelle wurden am selben Tag, dem 1. Juni, veröffentlicht.",
+      "title": "",
+      "tts": {
+        "text": "Zwei architektonisch interessante Modelle wurden am selben Tag, dem ersten Juni, veröffentlicht.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Führen Sie uns durch das erste.",
+      "text_markdown": "Führen Sie uns durch das erste.",
+      "title": "",
+      "tts": {
+        "text": "Führen Sie uns durch das erste.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax lieferte M3 aus.",
+      "text_markdown": "MiniMax lieferte M3 aus.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax lieferte M drei aus.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es verwendet ein neues Aufmerksamkeitsdesign, das sie MSA nennen, kurz für MiniMax Sparse Attention.",
+      "text_markdown": "Es verwendet ein neues Aufmerksamkeitsdesign, das sie MSA nennen, kurz für MiniMax Sparse Attention.",
+      "title": "",
+      "tts": {
+        "text": "Es verwendet ein neues Aufmerksamkeitsdesign, das sie M S A nennen, kurz für MiniMax Sparse Attention.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das Versprechen ist ein Kontext von einer Million Token, mit etwa neunmal schnellerem Prefill und fünfzehnmal schnellerem Decode im Vergleich zu ihrem vorherigen Modell bei dieser Länge.",
+      "text_markdown": "Das Versprechen ist ein Kontext von einer Million Token, mit etwa neunmal schnellerem Prefill und fünfzehnmal schnellerem Decode im Vergleich zu ihrem vorherigen Modell bei dieser Länge.",
+      "title": "",
+      "tts": {
+        "text": "Das Versprechen ist ein Kontext von einer Million Token, mit etwa neunmal schnellerem Prefill und fünfzehnmal schnellerem Decode im Vergleich zu ihrem vorherigen Modell bei dieser Länge.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "In einfachen Worten, was Sparse Attention tatsächlich tut.",
+      "text_markdown": "In einfachen Worten, was Sparse Attention tatsächlich tut.",
+      "title": "",
+      "tts": {
+        "text": "In einfachen Worten, was Sparse Attention tatsächlich tut.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Reguläre Aufmerksamkeit vergleicht jedes Token mit jedem anderen Token, was lange Kontexte so teuer macht.",
+      "text_markdown": "Reguläre Aufmerksamkeit vergleicht jedes Token mit jedem anderen Token, was lange Kontexte so teuer macht.",
+      "title": "",
+      "tts": {
+        "text": "Reguläre Aufmerksamkeit vergleicht jedes Token mit jedem anderen Token, was lange Kontexte so teuer macht.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sparse Attention filtert den Kontext vorab in Blöcke und führt den vollständigen Vergleich nur für die Blöcke durch, die für die aktuelle Frage relevant erscheinen.",
+      "text_markdown": "Sparse Attention filtert den Kontext vorab in Blöcke und führt den vollständigen Vergleich nur für die Blöcke durch, die für die aktuelle Frage relevant erscheinen.",
+      "title": "",
+      "tts": {
+        "text": "Sparse Attention filtert den Kontext vorab in Blöcke und führt den vollständigen Vergleich nur für die Blöcke durch, die für die aktuelle Frage relevant erscheinen.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie erhalten den Großteil der Qualität zu einem Bruchteil der Rechenleistung.",
+      "text_markdown": "Sie erhalten den Großteil der Qualität zu einem Bruchteil der Rechenleistung.",
+      "title": "",
+      "tts": {
+        "text": "Sie erhalten den Großteil der Qualität zu einem Bruchteil der Rechenleistung.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und die Benchmark-Behauptung?",
+      "text_markdown": "Und die Benchmark-Behauptung?",
+      "title": "",
+      "tts": {
+        "text": "Und die Benchmark-Behauptung?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax gibt neunundfünfzig Prozent auf SWE-bench Pro an, was es auf dieser einen Bestenliste vor GPT-5.5 und Gemini 3.5 Pro positionieren würde.",
+      "text_markdown": "MiniMax gibt neunundfünfzig Prozent auf SWE-bench Pro an, was es auf dieser einen Bestenliste vor GPT-5.5 und Gemini 3.5 Pro positionieren würde.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax gibt neunundfünfzig Prozent auf S W E-bench Pro an, was es auf dieser einen Bestenliste vor G P T fünf Punkt fünf und Gemini drei Punkt fünf Pro positionieren würde.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ich sage Behauptungen – dies ist die eigene Scorecard des Anbieters, kein unabhängiger Testlauf.",
+      "text_markdown": "Ich sage Behauptungen – dies ist die eigene Scorecard des Anbieters, kein unabhängiger Testlauf.",
+      "title": "",
+      "tts": {
+        "text": "Ich sage Behauptungen – dies ist die eigene Scorecard des Anbieters, kein unabhängiger Testlauf.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Auch Open Weights?",
+      "text_markdown": "Auch Open Weights?",
+      "title": "",
+      "tts": {
+        "text": "Auch Open Weights?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja, M3 ist als Open-Weight positioniert; die API ist am ersten Tag live und die Gewichte landen in Kürze auf Hugging Face.",
+      "text_markdown": "Ja, M3 ist als Open-Weight positioniert; die API ist am ersten Tag live und die Gewichte landen in Kürze auf Hugging Face.",
+      "title": "",
+      "tts": {
+        "text": "Ja, M drei ist als Open-Weight positioniert; die A P I ist am ersten Tag live und die Gewichte landen in Kürze auf Hugging Face.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Für einen Bastler ist die Architektur die interessantere Wette als das Ergebnis.",
+      "text_markdown": "Für einen Bastler ist die Architektur die interessantere Wette als das Ergebnis.",
+      "title": "",
+      "tts": {
+        "text": "Für einen Bastler ist die Architektur die interessantere Wette als das Ergebnis.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wenn MSA Bestand hat, wird jedes andere offene Labor die Form innerhalb von Monaten kopieren.",
+      "text_markdown": "Wenn MSA Bestand hat, wird jedes andere offene Labor die Form innerhalb von Monaten kopieren.",
+      "title": "",
+      "tts": {
+        "text": "Wenn M S A Bestand hat, wird jedes andere offene Labor die Form innerhalb von Monaten kopieren.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und das zweite Modell?",
+      "text_markdown": "Und das zweite Modell?",
+      "title": "",
+      "tts": {
+        "text": "Und das zweite Modell?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA hat Nemotron 3 Ultra stillschweigend als Open Source veröffentlicht.",
+      "text_markdown": "NVIDIA hat Nemotron 3 Ultra stillschweigend als Open Source veröffentlicht.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA hat Nemotron drei Ultra stillschweigend als Open Source veröffentlicht.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es ist ein Mixture-of-Experts-Modell mit fünfhundertfünfzig Milliarden Parametern, von denen etwa fünfundfünfzig Milliarden pro Token aktiv sind.",
+      "text_markdown": "Es ist ein Mixture-of-Experts-Modell mit fünfhundertfünfzig Milliarden Parametern, von denen etwa fünfundfünfzig Milliarden pro Token aktiv sind.",
+      "title": "",
+      "tts": {
+        "text": "Es ist ein Mixture-of-Experts-Modell mit fünfhundertfünfzig Milliarden Parametern, von denen etwa fünfundfünfzig Milliarden pro Token aktiv sind.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das Rückgrat ist ein hybrider Mamba-Transformer, kein reiner Transformer.",
+      "text_markdown": "Das Rückgrat ist ein hybrider Mamba-Transformer, kein reiner Transformer.",
+      "title": "",
+      "tts": {
+        "text": "Das Rückgrat ist ein hybrider Mamba-Transformer, kein reiner Transformer.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Einfache Erklärung zu Mamba.",
+      "text_markdown": "Einfache Erklärung zu Mamba.",
+      "title": "",
+      "tts": {
+        "text": "Einfache Erklärung zu Mamba.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mamba-Layer verarbeiten lange Sequenzen mit sub-quadratischer Skalierung, was eine schicke Art ist zu sagen, dass sie pro Token günstiger werden, je größer der Kontext wird.",
+      "text_markdown": "Mamba-Layer verarbeiten lange Sequenzen mit sub-quadratischer Skalierung, was eine schicke Art ist zu sagen, dass sie pro Token günstiger werden, je größer der Kontext wird.",
+      "title": "",
+      "tts": {
+        "text": "Mamba-Layer verarbeiten lange Sequenzen mit sub-quadratischer Skalierung, was eine schicke Art ist zu sagen, dass sie pro Token günstiger werden, je größer der Kontext wird.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA behielt einige Attention-Layer im Stack, um eine präzise Erinnerung für Dinge wie die Beantwortung von Fragen zu langen Dokumenten zu erhalten.",
+      "text_markdown": "NVIDIA behielt einige Attention-Layer im Stack, um eine präzise Erinnerung für Dinge wie die Beantwortung von Fragen zu langen Dokumenten zu erhalten.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA behielt einige Attention-Layer im Stack, um eine präzise Erinnerung für Dinge wie die Beantwortung von Fragen zu langen Dokumenten zu erhalten.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es ist die Art von Hybrid, die seit einem Jahr still und leise in der Forschung gewinnt.",
+      "text_markdown": "Es ist die Art von Hybrid, die seit einem Jahr still und leise in der Forschung gewinnt.",
+      "title": "",
+      "tts": {
+        "text": "Es ist die Art von Hybrid, die seit einem Jahr still und leise in der Forschung gewinnt.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Was ist mit der Lizenz?",
+      "text_markdown": "Was ist mit der Lizenz?",
+      "title": "",
+      "tts": {
+        "text": "Was ist mit der Lizenz?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIAs eigene Open Model License, kommerzielle Nutzung erlaubt.",
+      "text_markdown": "NVIDIAs eigene Open Model License, kommerzielle Nutzung erlaubt.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIAs eigene Open Model License, kommerzielle Nutzung erlaubt.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alles wurde zusammen veröffentlicht, einschließlich Gewichten, nachtrainierten Checkpoints, NVFP4-Quantisierung und den Trainingsrezepten.",
+      "text_markdown": "Alles wurde zusammen veröffentlicht, einschließlich Gewichten, nachtrainierten Checkpoints, NVFP4-Quantisierung und den Trainingsrezepten.",
+      "title": "",
+      "tts": {
+        "text": "Alles wurde zusammen veröffentlicht, einschließlich Gewichten, nachtrainierten Checkpoints, en vee eff pee vier Quantisierung und den Trainingsrezepten.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist ein großzügigeres Paket als die meisten Open-Source-Veröffentlichungen.",
+      "text_markdown": "Das ist ein großzügigeres Paket als die meisten Open-Source-Veröffentlichungen.",
+      "title": "",
+      "tts": {
+        "text": "Das ist ein großzügigeres Paket als die meisten Open-Source-Veröffentlichungen.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und die Platzierung auf der Bestenliste?",
+      "text_markdown": "Und die Platzierung auf der Bestenliste?",
+      "title": "",
+      "tts": {
+        "text": "Und die Platzierung auf der Bestenliste?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Auf dem Artificial Analysis Intelligence Index landet Nemotron 3 Ultra bei achtundvierzig.",
+      "text_markdown": "Auf dem Artificial Analysis Intelligence Index landet Nemotron 3 Ultra bei achtundvierzig.",
+      "title": "",
+      "tts": {
+        "text": "Auf dem Artificial Analysis Intelligence Index landet Nemotron drei Ultra bei achtundvierzig.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Damit liegt es an neunter Stelle von den neunundachtzig Modellen, die sie verfolgen, und vor jedem anderen offenen US-Modell.",
+      "text_markdown": "Damit liegt es an neunter Stelle von den neunundachtzig Modellen, die sie verfolgen, und vor jedem anderen offenen US-Modell.",
+      "title": "",
+      "tts": {
+        "text": "Damit liegt es an neunter Stelle von den neunundachtzig Modellen, die sie verfolgen, und vor jedem anderen offenen US-Modell.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es liegt auch hinter Moonshots Kimi K2.6, das bei vierundfünfzig liegt.",
+      "text_markdown": "Es liegt auch hinter Moonshots Kimi K2.6, das bei vierundfünfzig liegt.",
+      "title": "",
+      "tts": {
+        "text": "Es liegt auch hinter Moonshots Kimi K zwei Komma sechs, das bei vierundfünfzig liegt.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Selbst damit führt China immer noch im Open-Source-Bereich.",
+      "text_markdown": "Selbst damit führt China immer noch im Open-Source-Bereich.",
+      "title": "",
+      "tts": {
+        "text": "Selbst damit führt China immer noch im Open-Source-Bereich.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Bei diesem einen Gesamtindex, ja, um sechs Punkte.",
+      "text_markdown": "Bei diesem einen Gesamtindex, ja, um sechs Punkte.",
+      "title": "",
+      "tts": {
+        "text": "Bei diesem einen Gesamtindex, ja, um sechs Punkte.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist die kleinere Geschichte unter der größeren.",
+      "text_markdown": "Das ist die kleinere Geschichte unter der größeren.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die kleinere Geschichte unter der größeren.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Gibt es etwas Verwandtes?",
+      "text_markdown": "Gibt es etwas Verwandtes?",
+      "title": "",
+      "tts": {
+        "text": "Gibt es etwas Verwandtes?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja, NVIDIA hat auch ein Nemotron 3 Nano Omni veröffentlicht.",
+      "text_markdown": "Ja, NVIDIA hat auch ein Nemotron 3 Nano Omni veröffentlicht.",
+      "title": "",
+      "tts": {
+        "text": "Ja, NVIDIA hat auch ein Nemotron drei Nano Omni veröffentlicht.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dieses ist ein vereinheitlichtes Vision-, Audio- und Sprachmodell, das angeblich etwa neunmal effizienter ist als vergleichbare offene Omni-Modelle.",
+      "text_markdown": "Dieses ist ein vereinheitlichtes Vision-, Audio- und Sprachmodell, das angeblich etwa neunmal effizienter ist als vergleichbare offene Omni-Modelle.",
+      "title": "",
+      "tts": {
+        "text": "Dieses ist ein vereinheitlichtes Vision-, Audio- und Sprachmodell, das angeblich etwa neunmal effizienter ist als vergleichbare offene Omni-Modelle.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es ist auf On-Device-Agenten ausgerichtet – Telefone, Laptops, kleine Workstations.",
+      "text_markdown": "Es ist auf On-Device-Agenten ausgerichtet – Telefone, Laptops, kleine Workstations.",
+      "title": "",
+      "tts": {
+        "text": "Es ist auf On-Device-Agenten ausgerichtet – Telefone, Laptops, kleine Workstations.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Was gibt es sonst noch von der Open-Source-Seite?",
+      "text_markdown": "Was gibt es sonst noch von der Open-Source-Seite?",
+      "title": "",
+      "tts": {
+        "text": "Was gibt es sonst noch von der Open-Source-Seite?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral Medium 3.5 erschien am 28. Mai in Microsofts Copilot Studio.",
+      "text_markdown": "Mistral Medium 3.5 erschien am 28. Mai in Microsofts Copilot Studio.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium drei Komma fünf erschien am achtundzwanzigsten Mai in Microsofts Copilot Studio.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es ist ein dichtes Modell mit einhundertachtundzwanzig Milliarden Parametern und einem Kontext von zweihundertsechsundfünfzigtausend Tokens.",
+      "text_markdown": "Es ist ein dichtes Modell mit einhundertachtundzwanzig Milliarden Parametern und einem Kontext von zweihundertsechsundfünfzigtausend Tokens.",
+      "title": "",
+      "tts": {
+        "text": "Es ist ein dichtes Modell mit einhundertachtundzwanzig Milliarden Parametern und einem Kontext von zweihundertsechsundfünfzigtausend Tokens.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Warum ist diese Platzierung interessant?",
+      "text_markdown": "Warum ist diese Platzierung interessant?",
+      "title": "",
+      "tts": {
+        "text": "Warum ist diese Platzierung interessant?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Weil Microsoft jetzt ein nicht-OpenAI europäisches Modell über seine eigene Plattform vertreibt, mit integrierter EU-Datenresidenz.",
+      "text_markdown": "Weil Microsoft jetzt ein nicht-OpenAI europäisches Modell über seine eigene Plattform vertreibt, mit integrierter EU-Datenresidenz.",
+      "title": "",
+      "tts": {
+        "text": "Weil Microsoft jetzt ein nicht Open A I europäisches Modell über seine eigene Plattform vertreibt, mit integrierter E U Datenresidenz.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vor zwei Jahren wäre dieser Satz undenkbar gewesen.",
+      "text_markdown": "Vor zwei Jahren wäre dieser Satz undenkbar gewesen.",
+      "title": "",
+      "tts": {
+        "text": "Vor zwei Jahren wäre dieser Satz undenkbar gewesen.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und Alibaba?",
+      "text_markdown": "Und Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "Und Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen 3.7 Plus landete am 2. Juni, ist aber nur über API auf der Bailian-Plattform verfügbar.",
+      "text_markdown": "Qwen 3.7 Plus landete am 2. Juni, ist aber nur über API auf der Bailian-Plattform verfügbar.",
+      "title": "",
+      "tts": {
+        "text": "Qwen drei Punkt sieben Plus landete am zweiten Juni, ist aber nur über API auf der Bailian-Plattform verfügbar.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Die offene Qwen-Linie endet immer noch bei 3.6.",
+      "text_markdown": "Die offene Qwen-Linie endet immer noch bei 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Die offene Qwen-Linie endet immer noch bei drei Punkt sechs.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das bestätigt die Aufteilung, die wir letzte Woche angesprochen haben – geschlossenes Flaggschiff, offene Mittelklasse.",
+      "text_markdown": "Das bestätigt die Aufteilung, die wir letzte Woche angesprochen haben – geschlossenes Flaggschiff, offene Mittelklasse.",
+      "title": "",
+      "tts": {
+        "text": "Das bestätigt die Aufteilung, die wir letzte Woche angesprochen haben – geschlossenes Flaggschiff, offene Mittelklasse.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dasselbe Vorgehen, das Mistral seit einem Jahr verfolgt.",
+      "text_markdown": "Dasselbe Vorgehen, das Mistral seit einem Jahr verfolgt.",
+      "title": "",
+      "tts": {
+        "text": "Dasselbe Vorgehen, das Mistral seit einem Jahr verfolgt.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Zwei kurze Kontextzeilen, bevor wir weitermachen?",
+      "text_markdown": "Zwei kurze Kontextzeilen, bevor wir weitermachen?",
+      "title": "",
+      "tts": {
+        "text": "Zwei kurze Kontextzeilen, bevor wir weitermachen?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Klar.",
+      "text_markdown": "Klar.",
+      "title": "",
+      "tts": {
+        "text": "Klar.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Chinesische Open Models führen immer noch beim OpenRouter Token-Volumen – derselbe Trend wie letzte Woche, keine Änderung.",
+      "text_markdown": "Chinesische Open Models führen immer noch beim OpenRouter Token-Volumen – derselbe Trend wie letzte Woche, keine Änderung.",
+      "title": "",
+      "tts": {
+        "text": "Chinesische Open Models führen immer noch beim OpenRouter Token-Volumen – derselbe Trend wie letzte Woche, keine Änderung.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Und DeepSeek V4 ging am 28. Mai auf Microsofts Foundry-Plattform live, was einfach bedeutet, dass es mehr Orte gibt, um es aufzurufen.",
+      "text_markdown": "Und DeepSeek V4 ging am 28. Mai auf Microsofts Foundry-Plattform live, was einfach bedeutet, dass es mehr Orte gibt, um es aufzurufen.",
+      "title": "",
+      "tts": {
+        "text": "Und DeepSeek V vier ging am achtundzwanzigsten Mai auf Microsofts Foundry-Plattform live, was einfach bedeutet, dass es mehr Orte gibt, um es aufzurufen.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Okay, kommen wir zu den Bestenlisten.",
+      "text_markdown": "Okay, kommen wir zu den Bestenlisten.",
+      "title": "",
+      "tts": {
+        "text": "Okay, kommen wir zu den Bestenlisten.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Gab es diese Woche einen großen Aufsteiger?",
+      "text_markdown": "Gab es diese Woche einen großen Aufsteiger?",
+      "title": "",
+      "tts": {
+        "text": "Gab es diese Woche einen großen Aufsteiger?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja, und es ist geschlossen – Claude Opus 4.8, das Anthropic am 28. Mai veröffentlichte.",
+      "text_markdown": "Ja, und es ist geschlossen – Claude Opus 4.8, das Anthropic am 28. Mai veröffentlichte.",
+      "title": "",
+      "tts": {
+        "text": "Ja, und es ist geschlossen – Claude Opus vier Punkt acht, das Anthropic am achtundzwanzigsten Mai veröffentlichte.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es erreicht 88,6 Prozent bei SWE-bench Verified und 69,2 Prozent bei SWE-bench Pro.",
+      "text_markdown": "Es erreicht 88,6 Prozent bei SWE-bench Verified und 69,2 Prozent bei SWE-bench Pro.",
+      "title": "",
+      "tts": {
+        "text": "Es erreicht achtundachtzig Komma sechs Prozent bei SWE-bench Verified und neunundsechzig Komma zwei Prozent bei SWE-bench Pro.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Und es führt nun den Artificial Analysis Intelligence Index bei der Gesamtpunktzahl an.",
+      "text_markdown": "Und es führt nun den Artificial Analysis Intelligence Index bei der Gesamtpunktzahl an.",
+      "title": "",
+      "tts": {
+        "text": "Und es führt nun den Artificial Analysis Intelligence Index bei der Gesamtpunktzahl an.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das erste Mal, dass Anthropic hier führt.",
+      "text_markdown": "Das erste Mal, dass Anthropic hier führt.",
+      "title": "",
+      "tts": {
+        "text": "Das erste Mal, dass Anthropic hier führt.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das stimmt.",
+      "text_markdown": "Das stimmt.",
+      "title": "",
+      "tts": {
+        "text": "Das stimmt.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 liegt einen Punkt dahinter, und Gemini 3.5 Pro ist ein paar Punkte dahinter.",
+      "text_markdown": "GPT-5.5 liegt einen Punkt dahinter, und Gemini 3.5 Pro ist ein paar Punkte dahinter.",
+      "title": "",
+      "tts": {
+        "text": "GPT fünf Punkt fünf liegt einen Punkt dahinter, und Gemini drei Punkt fünf Pro ist ein paar Punkte dahinter.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sehr eng an der Spitze des geschlossenen Feldes.",
+      "text_markdown": "Sehr eng an der Spitze des geschlossenen Feldes.",
+      "title": "",
+      "tts": {
+        "text": "Sehr eng an der Spitze des geschlossenen Feldes.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Aber die wahre Bewertungsgeschichte dieser Woche war etwas anderes.",
+      "text_markdown": "Aber die wahre Bewertungsgeschichte dieser Woche war etwas anderes.",
+      "title": "",
+      "tts": {
+        "text": "Aber die wahre Bewertungsgeschichte dieser Woche war etwas anderes.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja, die wahre Geschichte ist die Integrität.",
+      "text_markdown": "Ja, die wahre Geschichte ist die Integrität.",
+      "title": "",
+      "tts": {
+        "text": "Ja, die wahre Geschichte ist die Integrität.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI hat die Berichterstattung über SWE-bench Verified faktisch eingestellt.",
+      "text_markdown": "OpenAI hat die Berichterstattung über SWE-bench Verified faktisch eingestellt.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI hat die Berichterstattung über SWE-bench Verified faktisch eingestellt.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ein Kontaminationsaudit ergab, dass etwa 59 Prozent der schwierigen Aufgaben fehlerhafte Unit-Tests aufweisen und Modelle in der Lage sind, korrekte Patches wortwörtlich aus den Trainingsdaten abzurufen.",
+      "text_markdown": "Ein Kontaminationsaudit ergab, dass etwa 59 Prozent der schwierigen Aufgaben fehlerhafte Unit-Tests aufweisen und Modelle in der Lage sind, korrekte Patches wortwörtlich aus den Trainingsdaten abzurufen.",
+      "title": "",
+      "tts": {
+        "text": "Ein Kontaminationsaudit ergab, dass etwa neunundfünfzig Prozent der schwierigen Aufgaben fehlerhafte Unit-Tests aufweisen und Modelle in der Lage sind, korrekte Patches wortwörtlich aus den Trainingsdaten abzurufen.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ein hoher Wert maß also das Gedächtnis.",
+      "text_markdown": "Ein hoher Wert maß also das Gedächtnis.",
+      "title": "",
+      "tts": {
+        "text": "Ein hoher Wert maß also das Gedächtnis.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Oft, ja.",
+      "text_markdown": "Oft, ja.",
+      "title": "",
+      "tts": {
+        "text": "Oft, ja.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro ist die Version mit neuen Aufgaben und schwierigerem Scaffolding – das ist das neue Signal.",
+      "text_markdown": "Pro ist die Version mit neuen Aufgaben und schwierigerem Scaffolding – das ist das neue Signal.",
+      "title": "",
+      "tts": {
+        "text": "Pro ist die Version mit neuen Aufgaben und schwierigerem Scaffolding – das ist das neue Signal.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dies ist die institutionelle Bestätigung der Kontaminationsbedenken, die wir letzte Woche relativiert haben.",
+      "text_markdown": "Dies ist die institutionelle Bestätigung der Kontaminationsbedenken, die wir letzte Woche relativiert haben.",
+      "title": "",
+      "tts": {
+        "text": "Dies ist die institutionelle Bestätigung der Kontaminationsbedenken, die wir letzte Woche relativiert haben.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Gab es auch ein Methodik-Paper?",
+      "text_markdown": "Gab es auch ein Methodik-Paper?",
+      "title": "",
+      "tts": {
+        "text": "Gab es auch ein Methodik-Paper?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Es gab einen prägnanten Bericht von einer Gruppe namens Kili Technology.",
+      "text_markdown": "Es gab einen prägnanten Bericht von einer Gruppe namens Kili Technology.",
+      "title": "",
+      "tts": {
+        "text": "Es gab einen prägnanten Bericht von einer Gruppe namens Kili Technology.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie führten identische Modellgewichte durch fünf gängige Bewertungs-Harnesses.",
+      "text_markdown": "Sie führten identische Modellgewichte durch fünf gängige Bewertungs-Harnesses.",
+      "title": "",
+      "tts": {
+        "text": "Sie führten identische Modellgewichte durch fünf gängige Bewertungs-Harnesses.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ergebnisse wichen um zehn bis zwanzig Prozentpunkte allein aufgrund der Auswahl des Harness ab.",
+      "text_markdown": "Ergebnisse wichen um zehn bis zwanzig Prozentpunkte allein aufgrund der Auswahl des Harness ab.",
+      "title": "",
+      "tts": {
+        "text": "Ergebnisse wichen um zehn bis zwanzig Prozentpunkte allein aufgrund der Auswahl des Harness ab.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Gleiche Gewichte, andere Zahl.",
+      "text_markdown": "Gleiche Gewichte, andere Zahl.",
+      "title": "",
+      "tts": {
+        "text": "Gleiche Gewichte, andere Zahl.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Genau, so ist es.",
+      "text_markdown": "Genau, so ist es.",
+      "title": "",
+      "tts": {
+        "text": "Genau, so ist es.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ihre Erkenntnis war, dass der Rang auf der Bestenliste kein kaufentscheidendes Signal mehr für die Beschaffung ist.",
+      "text_markdown": "Ihre Erkenntnis war, dass der Rang auf der Bestenliste kein kaufentscheidendes Signal mehr für die Beschaffung ist.",
+      "title": "",
+      "tts": {
+        "text": "Ihre Erkenntnis war, dass der Rang auf der Bestenliste kein kaufentscheidendes Signal mehr für die Beschaffung ist.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Für einen Do-it-yourself-Entwickler ist die Erkenntnis schärfer — führen Sie Ihre eigenen Evaluierungen mit Ihren eigenen Prompts durch.",
+      "text_markdown": "Für einen Do-it-yourself-Entwickler ist die Erkenntnis schärfer — führen Sie Ihre eigenen Evaluierungen mit Ihren eigenen Prompts durch.",
+      "title": "",
+      "tts": {
+        "text": "Für einen Do-it-yourself-Entwickler ist die Erkenntnis schärfer — führen Sie Ihre eigenen Evaluierungen mit Ihren eigenen Prompts durch.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das knüpft tatsächlich an MSA und Nemotron Ultra an.",
+      "text_markdown": "Das knüpft tatsächlich an MSA und Nemotron Ultra an.",
+      "title": "",
+      "tts": {
+        "text": "Das knüpft tatsächlich an M S A und Nemotron Ultra an.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das tut es.",
+      "text_markdown": "Das tut es.",
+      "title": "",
+      "tts": {
+        "text": "Das tut es.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vertrauen Sie der Architektur und Ihren eigenen Tests, nicht der Tabelle eines anderen.",
+      "text_markdown": "Vertrauen Sie der Architektur und Ihren eigenen Tests, nicht der Tabelle eines anderen.",
+      "title": "",
+      "tts": {
+        "text": "Vertrauen Sie der Architektur und Ihren eigenen Tests, nicht der Tabelle eines anderen.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ein guter Punkt, um die Bestenlisten zu verlassen.",
+      "text_markdown": "Ein guter Punkt, um die Bestenlisten zu verlassen.",
+      "title": "",
+      "tts": {
+        "text": "Ein guter Punkt, um die Bestenlisten zu verlassen.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kommen wir nun zu den Schlagzeilen.",
+      "text_markdown": "Kommen wir nun zu den Schlagzeilen.",
+      "title": "",
+      "tts": {
+        "text": "Kommen wir nun zu den Schlagzeilen.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kurz und bündig, aus der Perspektive eines offenen Ökosystems.",
+      "text_markdown": "Kurz und bündig, aus der Perspektive eines offenen Ökosystems.",
+      "title": "",
+      "tts": {
+        "text": "Kurz und bündig, aus der Perspektive eines offenen Ökosystems.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Zuerst, Microsoft Build war am 2. Juni.",
+      "text_markdown": "Zuerst, Microsoft Build war am 2. Juni.",
+      "title": "",
+      "tts": {
+        "text": "Zuerst, Microsoft Build war am zweiten Juni.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft präsentierte zwei eigene Modelle — MAI-Thinking-1 und MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft präsentierte zwei eigene Modelle — MAI-Thinking-1 und MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft präsentierte zwei eigene Modelle — M A I Thinking eins und M A I Code eins Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Was ist daran interessant?",
+      "text_markdown": "Was ist daran interessant?",
+      "title": "",
+      "tts": {
+        "text": "Was ist daran interessant?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 ist ein dünn besetztes Experten-Gemisch mit fünfunddreißig Milliarden aktiven Parametern und einem Kontextfenster von zweihundertsechsundfünfzigtausend Tokens.",
+      "text_markdown": "Thinking-1 ist ein dünn besetztes Experten-Gemisch mit fünfunddreißig Milliarden aktiven Parametern und einem Kontextfenster von zweihundertsechsundfünfzigtausend Tokens.",
+      "title": "",
+      "tts": {
+        "text": "Thinking eins ist ein dünn besetztes Experten-Gemisch mit fünfunddreißig Milliarden aktiven Parametern und einem Kontextfenster von zweihundertsechsundfünfzigtausend Tokens.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Und Microsoft gibt ausdrücklich an, dass es auf kommerziell lizenzierten Daten trainiert wurde, ohne Destillation von einem Drittanbieter-Modell.",
+      "text_markdown": "Und Microsoft gibt ausdrücklich an, dass es auf kommerziell lizenzierten Daten trainiert wurde, ohne Destillation von einem Drittanbieter-Modell.",
+      "title": "",
+      "tts": {
+        "text": "Und Microsoft gibt ausdrücklich an, dass es auf kommerziell lizenzierten Daten trainiert wurde, ohne Destillation von einem Drittanbieter-Modell.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das ist ungewöhnlich.",
+      "text_markdown": "Das ist ungewöhnlich.",
+      "title": "",
+      "tts": {
+        "text": "Das ist ungewöhnlich.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sehr ungewöhnlich, wenn man bedenkt, wie sehr der Rest des Feldes auf synthetische Daten von Frontier-Modellen setzt.",
+      "text_markdown": "Sehr ungewöhnlich, wenn man bedenkt, wie sehr der Rest des Feldes auf synthetische Daten von Frontier-Modellen setzt.",
+      "title": "",
+      "tts": {
+        "text": "Sehr ungewöhnlich, wenn man bedenkt, wie sehr der Rest des Feldes auf synthetische Daten von Frontier-Modellen setzt.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash ist das günstigere Modell — es wurde am 2. Juni für alle GitHub Copilot-Stufen eingeführt.",
+      "text_markdown": "Code-1-Flash ist das günstigere Modell — es wurde am 2. Juni für alle GitHub Copilot-Stufen eingeführt.",
+      "title": "",
+      "tts": {
+        "text": "Code eins Flash ist das günstigere Modell — es wurde am zweiten Juni für alle GitHub Copilot-Stufen eingeführt.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft liefert nun Mistral, DeepSeek, OpenAI und sein eigenes MAI Seite an Seite im Copilot Studio aus.",
+      "text_markdown": "Microsoft liefert nun Mistral, DeepSeek, OpenAI und sein eigenes MAI Seite an Seite im Copilot Studio aus.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft liefert nun Mistral, DeepSeek, OpenAI und sein eigenes M A I Seite an Seite im Copilot Studio aus.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Zweite Schlagzeile?",
+      "text_markdown": "Zweite Schlagzeile?",
+      "title": "",
+      "tts": {
+        "text": "Zweite Schlagzeile?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic reichte am 1. Juni vertraulich ein S-1 bei der SEC ein.",
+      "text_markdown": "Anthropic reichte am 1. Juni vertraulich ein S-1 bei der SEC ein.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic reichte am ersten Juni vertraulich ein S eins bei der S E C ein.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das sind die Unterlagen, die den Weg zu einer öffentlichen Notierung ebnen.",
+      "text_markdown": "Das sind die Unterlagen, die den Weg zu einer öffentlichen Notierung ebnen.",
+      "title": "",
+      "tts": {
+        "text": "Das sind die Unterlagen, die den Weg zu einer öffentlichen Notierung ebnen.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ihre angegebene Umsatzrate liegt bei rund siebenundvierzig Milliarden Dollar, gegenüber etwa zehn Milliarden vor einem Jahr.",
+      "text_markdown": "Ihre angegebene Umsatzrate liegt bei rund siebenundvierzig Milliarden Dollar, gegenüber etwa zehn Milliarden vor einem Jahr.",
+      "title": "",
+      "tts": {
+        "text": "Ihre angegebene Umsatzrate liegt bei rund siebenundvierzig Milliarden Dollar, gegenüber etwa zehn Milliarden vor einem Jahr.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kein Ticker, keine Preisspanne, kein Datum bisher — nur die Unterlagen.",
+      "text_markdown": "Kein Ticker, keine Preisspanne, kein Datum bisher — nur die Unterlagen.",
+      "title": "",
+      "tts": {
+        "text": "Kein Ticker, keine Preisspanne, kein Datum bisher — nur die Unterlagen.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Drittens.",
+      "text_markdown": "Drittens.",
+      "title": "",
+      "tts": {
+        "text": "Drittens.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot wechselte am 1. Juni zur nutzungsbasierten Abrechnung.",
+      "text_markdown": "GitHub Copilot wechselte am 1. Juni zur nutzungsbasierten Abrechnung.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot wechselte am ersten Juni zur nutzungsbasierten Abrechnung.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jeder Plan misst nun Eingabe-, Ausgabe- und zwischengespeicherte Tokens zu den gleichen Raten wie die zugrunde liegende Modell-API.",
+      "text_markdown": "Jeder Plan misst nun Eingabe-, Ausgabe- und zwischengespeicherte Tokens zu den gleichen Raten wie die zugrunde liegende Modell-API.",
+      "title": "",
+      "tts": {
+        "text": "Jeder Plan misst nun Eingabe-, Ausgabe- und zwischengespeicherte Tokens zu den gleichen Raten wie die zugrunde liegende Modell-API.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie milderten die Umstellung mit einer Zuteilung von Credits pro Stufe und einem neuen Copilot Max Plan für einhundert Dollar pro Monat für intensive Agentic-Nutzer ab.",
+      "text_markdown": "Sie milderten die Umstellung mit einer Zuteilung von Credits pro Stufe und einem neuen Copilot Max Plan für einhundert Dollar pro Monat für intensive Agentic-Nutzer ab.",
+      "title": "",
+      "tts": {
+        "text": "Sie milderten die Umstellung mit einer Zuteilung von Credits pro Stufe und einem neuen Copilot Max Plan für einhundert Dollar pro Monat für intensive Agentic-Nutzer ab.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und wie haben die Entwickler das aufgenommen?",
+      "text_markdown": "Und wie haben die Entwickler das aufgenommen?",
+      "title": "",
+      "tts": {
+        "text": "Und wie haben die Entwickler das aufgenommen?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Einige Meinungen waren ziemlich scharf.",
+      "text_markdown": "Einige Meinungen waren ziemlich scharf.",
+      "title": "",
+      "tts": {
+        "text": "Einige Meinungen waren ziemlich scharf.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Power-User mit Agenten-Loops meldeten prognostizierte Rechnungen, die um ein Vielfaches höher waren als die alte Pauschalgebühr.",
+      "text_markdown": "Power-User mit Agenten-Loops meldeten prognostizierte Rechnungen, die um ein Vielfaches höher waren als die alte Pauschalgebühr.",
+      "title": "",
+      "tts": {
+        "text": "Power-User mit Agenten-Loops meldeten prognostizierte Rechnungen, die um ein Vielfaches höher waren als die alte Pauschalgebühr.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das wird für unsere Top-Story wichtig sein – merken Sie sich das.",
+      "text_markdown": "Das wird für unsere Top-Story wichtig sein – merken Sie sich das.",
+      "title": "",
+      "tts": {
+        "text": "Das wird für unsere Top-Story wichtig sein – merken Sie sich das.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Viertens, gibt es dieses Wochenende etwas zu patchen?",
+      "text_markdown": "Viertens, gibt es dieses Wochenende etwas zu patchen?",
+      "title": "",
+      "tts": {
+        "text": "Viertens, gibt es dieses Wochenende etwas zu patchen?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja, SGLang-Versionen bis null Punkt fünf Punkt elf weisen eine Cache-Denial-of-Service-Schwachstelle auf, die am 3. Juni bekannt gegeben wurde.",
+      "text_markdown": "Ja, SGLang-Versionen bis null Punkt fünf Punkt elf weisen eine Cache-Denial-of-Service-Schwachstelle auf, die am 3. Juni bekannt gegeben wurde.",
+      "title": "",
+      "tts": {
+        "text": "Ja, S G Lang-Versionen bis null Punkt fünf Punkt elf weisen eine Cache-Denial-of-Service-Schwachstelle auf, die am dritten Juni bekannt gegeben wurde.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Der Bezeichner ist CVE-2026-10775, die Schwere ist gering, die Ausnutzung ist nur lokal – aber wenn Sie SGLang verwenden, patchen Sie am Montag.",
+      "text_markdown": "Der Bezeichner ist CVE-2026-10775, die Schwere ist gering, die Ausnutzung ist nur lokal – aber wenn Sie SGLang verwenden, patchen Sie am Montag.",
+      "title": "",
+      "tts": {
+        "text": "Der Bezeichner ist C V E zwei null zwei sechs Bindestrich eins null sieben sieben fünf, die Schwere ist gering, die Ausnutzung ist nur lokal – aber wenn Sie S G Lang verwenden, patchen Sie am Montag.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Noch eins.",
+      "text_markdown": "Noch eins.",
+      "title": "",
+      "tts": {
+        "text": "Noch eins.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio hat ein Update veröffentlicht, das ein vollständiges Fine-Tuning direkt nach GGUF exportiert – nicht nur Adapter-Gewichte.",
+      "text_markdown": "Unsloth Studio hat ein Update veröffentlicht, das ein vollständiges Fine-Tuning direkt nach GGUF exportiert – nicht nur Adapter-Gewichte.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio hat ein Update veröffentlicht, das ein vollständiges Fine-Tuning direkt nach G G U F exportiert – nicht nur Adapter-Gewichte.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Eine Verbraucherkarte mit 24 Gigabyte reicht jetzt für nützliche Läufe aus.",
+      "text_markdown": "Eine Verbraucherkarte mit 24 Gigabyte reicht jetzt für nützliche Läufe aus.",
+      "title": "",
+      "tts": {
+        "text": "Eine Verbraucherkarte mit vierundzwanzig Gigabyte reicht jetzt für nützliche Läufe aus.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist die unkomplizierte Infrastruktur, die den Rest dieser Episode real macht.",
+      "text_markdown": "Das ist die unkomplizierte Infrastruktur, die den Rest dieser Episode real macht.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die unkomplizierte Infrastruktur, die den Rest dieser Episode real macht.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kommen wir nun zurück zur Top-Story.",
+      "text_markdown": "Kommen wir nun zurück zur Top-Story.",
+      "title": "",
+      "tts": {
+        "text": "Kommen wir nun zurück zur Top-Story.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sie haben ein Rig angeteasert.",
+      "text_markdown": "Sie haben ein Rig angeteasert.",
+      "title": "",
+      "tts": {
+        "text": "Sie haben ein Rig angeteasert.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das habe ich, und der Kern davon ist dieser – das Do-it-yourself-Rig ist diese Woche erwachsen geworden.",
+      "text_markdown": "Das habe ich, und der Kern davon ist dieser – das Do-it-yourself-Rig ist diese Woche erwachsen geworden.",
+      "title": "",
+      "tts": {
+        "text": "Das habe ich, und der Kern davon ist dieser – das Do it yourself Rig ist diese Woche erwachsen geworden.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Beginnen wir mit der Hardware.",
+      "text_markdown": "Beginnen wir mit der Hardware.",
+      "title": "",
+      "tts": {
+        "text": "Beginnen wir mit der Hardware.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Zwei Boxen werden jetzt tatsächlich zu Verbraucherpreisen ausgeliefert.",
+      "text_markdown": "Zwei Boxen werden jetzt tatsächlich zu Verbraucherpreisen ausgeliefert.",
+      "title": "",
+      "tts": {
+        "text": "Zwei Boxen werden jetzt tatsächlich zu Verbraucherpreisen ausgeliefert.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD hat im Juni Vorbestellungen für den Ryzen AI Halo Mini-PC für 3.999 Dollar eröffnet.",
+      "text_markdown": "AMD hat im Juni Vorbestellungen für den Ryzen AI Halo Mini-PC für 3.999 Dollar eröffnet.",
+      "title": "",
+      "tts": {
+        "text": "A M D hat im Juni Vorbestellungen für den Ryzen A I Halo Mini-PC für dreitausendneunhundertneunundneunzig Dollar eröffnet.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Er läuft mit dem Ryzen AI Max Plus 395, mit 128 Gigabyte vereinheitlichtem LPDDR5x-Speicher, und ist vorerst exklusiv bei Micro Center erhältlich.",
+      "text_markdown": "Er läuft mit dem Ryzen AI Max Plus 395, mit 128 Gigabyte vereinheitlichtem LPDDR5x-Speicher, und ist vorerst exklusiv bei Micro Center erhältlich.",
+      "title": "",
+      "tts": {
+        "text": "Er läuft mit dem Ryzen A I Max Plus dreihundertfünfundneunzig, mit einhundertachtundzwanzig Gigabyte vereinheitlichtem L P D D R fünf x Speicher, und ist vorerst exklusiv bei Micro Center erhältlich.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und die NVIDIA-Seite?",
+      "text_markdown": "Und die NVIDIA-Seite?",
+      "title": "",
+      "tts": {
+        "text": "Und die NVIDIA-Seite?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIAs DGX Spark ist die vergleichbare Box.",
+      "text_markdown": "NVIDIAs DGX Spark ist die vergleichbare Box.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIAs D G X Spark ist die vergleichbare Box.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Er verfügt über den GB10 Grace Blackwell Chip und die gleichen 128 Gigabyte vereinheitlichten Speicher.",
+      "text_markdown": "Er verfügt über den GB10 Grace Blackwell Chip und die gleichen 128 Gigabyte vereinheitlichten Speicher.",
+      "title": "",
+      "tts": {
+        "text": "Er verfügt über den G B zehn Grace Blackwell Chip und die gleichen einhundertachtundzwanzig Gigabyte vereinheitlichten Speicher.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Der Preis stieg kürzlich von 3.999 auf 4.699, was auf den globalen Speicherengpass zurückgeführt wird.",
+      "text_markdown": "Der Preis stieg kürzlich von 3.999 auf 4.699, was auf den globalen Speicherengpass zurückgeführt wird.",
+      "title": "",
+      "tts": {
+        "text": "Der Preis stieg kürzlich von dreitausendneunhundertneunundneunzig auf viertausendsechshundertneunundneunzig, was auf den globalen Speicherengpass zurückgeführt wird.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wie groß ein Modell können diese tatsächlich aufnehmen?",
+      "text_markdown": "Wie groß ein Modell können diese tatsächlich aufnehmen?",
+      "title": "",
+      "tts": {
+        "text": "Wie groß ein Modell können diese tatsächlich aufnehmen?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Bis zu etwa 200 Milliarden Parameter bei Vier-Bit-Quantisierung, mit Platz für Kontext.",
+      "text_markdown": "Bis zu etwa 200 Milliarden Parameter bei Vier-Bit-Quantisierung, mit Platz für Kontext.",
+      "title": "",
+      "tts": {
+        "text": "Bis zu etwa zweihundert Milliarden Parameter bei Vier-Bit-Quantisierung, mit Platz für Kontext.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Koppeln Sie zwei DGX Sparks über ConnectX-7, und Sie erreichen ungefähr vierhundert Milliarden Parameter.",
+      "text_markdown": "Koppeln Sie zwei DGX Sparks über ConnectX-7, und Sie erreichen ungefähr vierhundert Milliarden Parameter.",
+      "title": "",
+      "tts": {
+        "text": "Koppeln Sie zwei D G X Sparks über Connect X sieben, und Sie erreichen ungefähr vierhundert Milliarden Parameter.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist tatsächlich ein Frontier-Klasse-Footprint auf einer Arbeitsplatte.",
+      "text_markdown": "Das ist tatsächlich ein Frontier-Klasse-Footprint auf einer Arbeitsplatte.",
+      "title": "",
+      "tts": {
+        "text": "Das ist tatsächlich ein Frontier-Klasse-Footprint auf einer Arbeitsplatte.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nun zum Software-Stack.",
+      "text_markdown": "Nun zum Software-Stack.",
+      "title": "",
+      "tts": {
+        "text": "Nun zum Software-Stack.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist es, was sich unter unseren Füßen verändert hat.",
+      "text_markdown": "Das ist es, was sich unter unseren Füßen verändert hat.",
+      "title": "",
+      "tts": {
+        "text": "Das ist es, was sich unter unseren Füßen verändert hat.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Für Inferenz haben Sie vLLM, SGLang, llama.cpp, Ollama und MLX auf Apple Silicon – alle gewartet, alle schnell.",
+      "text_markdown": "Für Inferenz haben Sie vLLM, SGLang, llama.cpp, Ollama und MLX auf Apple Silicon – alle gewartet, alle schnell.",
+      "title": "",
+      "tts": {
+        "text": "Für Inferenz haben Sie v L L M, S G Lang, llama C P P, Ollama und M L X auf Apple Silicon – alle gewartet, alle schnell.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Für das Modell selbst gibt es diese Woche Nemotron 3 Ultra Gewichte, plus Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 und die MiniMax M3 Gewichte kommen noch.",
+      "text_markdown": "Für das Modell selbst gibt es diese Woche Nemotron 3 Ultra Gewichte, plus Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 und die MiniMax M3 Gewichte kommen noch.",
+      "title": "",
+      "tts": {
+        "text": "Für das Modell selbst gibt es diese Woche Nemotron drei Ultra Gewichte, plus Kimi K zwei Punkt sechs, DeepSeek V vier Flash, G L M fünf Punkt eins, und die MiniMax M drei Gewichte kommen noch.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Für Fine-Tuning ist Unsloth Studio jetzt ein Ein-Klick-Full-Tune zu GGUF.",
+      "text_markdown": "Für Fine-Tuning ist Unsloth Studio jetzt ein Ein-Klick-Full-Tune zu GGUF.",
+      "title": "",
+      "tts": {
+        "text": "Für Fine-Tuning ist Unsloth Studio jetzt ein Ein-Klick-Full-Tune zu G G U F.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Und für Agenten gibt es Aider, Continue und LangGraph Version eins, die lokale zweiunddreißig Milliarden Parameter Modelle mit brauchbarer Zuverlässigkeit betreiben.",
+      "text_markdown": "Und für Agenten gibt es Aider, Continue und LangGraph Version eins, die lokale zweiunddreißig Milliarden Parameter Modelle mit brauchbarer Zuverlässigkeit betreiben.",
+      "title": "",
+      "tts": {
+        "text": "Und für Agenten gibt es Aider, Continue und LangGraph Version eins, die lokale zweiunddreißig Milliarden Parameter Modelle mit brauchbarer Zuverlässigkeit betreiben.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das ist die ganze Schleife.",
+      "text_markdown": "Das ist die ganze Schleife.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die ganze Schleife.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das ist die ganze Schleife.",
+      "text_markdown": "Das ist die ganze Schleife.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die ganze Schleife.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Silizium, Engine, Modell, Fine-Tuning, Agent – jede Schicht hat eine glaubwürdige offene Option, und die unterste Schicht ist jetzt ein Mini-PC für den Schreibtisch.",
+      "text_markdown": "Silizium, Engine, Modell, Fine-Tuning, Agent – jede Schicht hat eine glaubwürdige offene Option, und die unterste Schicht ist jetzt ein Mini-PC für den Schreibtisch.",
+      "title": "",
+      "tts": {
+        "text": "Silizium, Engine, Modell, Fine Tuning, Agent – jede Schicht hat eine glaubwürdige offene Option, und die unterste Schicht ist jetzt ein Mini PC für den Schreibtisch.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und die Wirtschaftlichkeit?",
+      "text_markdown": "Und die Wirtschaftlichkeit?",
+      "title": "",
+      "tts": {
+        "text": "Und die Wirtschaftlichkeit?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Die Wirtschaftlichkeit hat sich diese Woche auf eine Weise gedreht, die schwer zu übersehen ist.",
+      "text_markdown": "Die Wirtschaftlichkeit hat sich diese Woche auf eine Weise gedreht, die schwer zu übersehen ist.",
+      "title": "",
+      "tts": {
+        "text": "Die Wirtschaftlichkeit hat sich diese Woche auf eine Weise gedreht, die schwer zu übersehen ist.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Token-gemessener Copilot, ein Anthropic S-1, der auf kommenden Preisdruck hindeutet, und Netzwarnungen aus Texas, Virginia und Ohio bezüglich eines angespannten Sommers.",
+      "text_markdown": "Token-gemessener Copilot, ein Anthropic S-1, der auf kommenden Preisdruck hindeutet, und Netzwarnungen aus Texas, Virginia und Ohio bezüglich eines angespannten Sommers.",
+      "title": "",
+      "tts": {
+        "text": "Token gemessener Copilot, ein Anthropic S eins, der auf kommenden Preisdruck hindeutet, und Netzwarnungen aus Texas, Virginia und Ohio bezüglich eines angespannten Sommers.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Der Fall für Self-Hosting war früher ideologisch.",
+      "text_markdown": "Der Fall für Self-Hosting war früher ideologisch.",
+      "title": "",
+      "tts": {
+        "text": "Der Fall für Self Hosting war früher ideologisch.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Diese Woche wurde es zu einer Tabellenkalkulation.",
+      "text_markdown": "Diese Woche wurde es zu einer Tabellenkalkulation.",
+      "title": "",
+      "tts": {
+        "text": "Diese Woche wurde es zu einer Tabellenkalkulation.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Seien Sie ehrlich darüber, was sich nicht geändert hat.",
+      "text_markdown": "Seien Sie ehrlich darüber, was sich nicht geändert hat.",
+      "title": "",
+      "tts": {
+        "text": "Seien Sie ehrlich darüber, was sich nicht geändert hat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wichtiger Vorbehalt – Ihr Schreibtisch-PC schlägt die Cloud nicht an der Spitze der Qualitätsrangliste.",
+      "text_markdown": "Wichtiger Vorbehalt – Ihr Schreibtisch-PC schlägt die Cloud nicht an der Spitze der Qualitätsrangliste.",
+      "title": "",
+      "tts": {
+        "text": "Wichtiger Vorbehalt – Ihr Schreibtisch-PC schlägt die Cloud nicht an der Spitze der Qualitätsrangliste.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 führt immer noch das Gesamtbild an, und GPT-5.5 besitzt immer noch BrowseComp.",
+      "text_markdown": "Opus 4.8 führt immer noch das Gesamtbild an, und GPT-5.5 besitzt immer noch BrowseComp.",
+      "title": "",
+      "tts": {
+        "text": "Opus vier Punkt acht führt immer noch das Gesamtbild an, und GPT fünf Punkt fünf besitzt immer noch BrowseComp.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Was sich diese Woche geändert hat, ist die Untergrenze.",
+      "text_markdown": "Was sich diese Woche geändert hat, ist die Untergrenze.",
+      "title": "",
+      "tts": {
+        "text": "Was sich diese Woche geändert hat, ist die Untergrenze.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fähige, agententaugliche, feinabstimmbare Modelle auf Ihrer eigenen Hardware, mit offenen Gewichten.",
+      "text_markdown": "Fähige, agententaugliche, feinabstimmbare Modelle auf Ihrer eigenen Hardware, mit offenen Gewichten.",
+      "title": "",
+      "tts": {
+        "text": "Fähige, agententaugliche, feinabstimmbare Modelle auf Ihrer eigenen Hardware, mit offenen Gewichten.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das ist die Geschichte.",
+      "text_markdown": "Das ist die Geschichte.",
+      "title": "",
+      "tts": {
+        "text": "Das ist die Geschichte.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Früher brauchte man ein Rechenzentrum.",
+      "text_markdown": "Früher brauchte man ein Rechenzentrum.",
+      "title": "",
+      "tts": {
+        "text": "Früher brauchte man ein Rechenzentrum.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Diese Woche braucht es einen Schreibtisch-PC.",
+      "text_markdown": "Diese Woche braucht es einen Schreibtisch-PC.",
+      "title": "",
+      "tts": {
+        "text": "Diese Woche braucht es einen Schreibtisch-PC.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kommen wir zum Konzept der Woche.",
+      "text_markdown": "Kommen wir zum Konzept der Woche.",
+      "title": "",
+      "tts": {
+        "text": "Kommen wir zum Konzept der Woche.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sie haben sich für spekulatives Decoding entschieden.",
+      "text_markdown": "Sie haben sich für spekulatives Decoding entschieden.",
+      "title": "",
+      "tts": {
+        "text": "Sie haben sich für spekulatives Decoding entschieden.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das habe ich, denn es ist der Trick, der alles, worüber wir gerade gesprochen haben, schnell erscheinen lässt.",
+      "text_markdown": "Das habe ich, denn es ist der Trick, der alles, worüber wir gerade gesprochen haben, schnell erscheinen lässt.",
+      "title": "",
+      "tts": {
+        "text": "Das habe ich, denn es ist der Trick, der alles, worüber wir gerade gesprochen haben, schnell erscheinen lässt.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax's fünfzehnfacher Dekodierungsanspruch stützt sich auf einen Verwandten.",
+      "text_markdown": "MiniMax's fünfzehnfacher Dekodierungsanspruch stützt sich auf einen Verwandten.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax's fünfzehnfacher Dekodierungsanspruch stützt sich auf einen Verwandten.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Llama.cpps Entwurfsmodell-Modus ist genau diese Idee.",
+      "text_markdown": "Llama.cpps Entwurfsmodell-Modus ist genau diese Idee.",
+      "title": "",
+      "tts": {
+        "text": "Llama.cpps Entwurfsmodell-Modus ist genau diese Idee.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Führen Sie uns hindurch.",
+      "text_markdown": "Führen Sie uns hindurch.",
+      "title": "",
+      "tts": {
+        "text": "Führen Sie uns hindurch.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie betreiben zwei Modelle nebeneinander.",
+      "text_markdown": "Sie betreiben zwei Modelle nebeneinander.",
+      "title": "",
+      "tts": {
+        "text": "Sie betreiben zwei Modelle nebeneinander.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ein kleines, schnelles Modell, das als Drafter bezeichnet wird, und das große, langsame Modell, das als Verifier bezeichnet wird.",
+      "text_markdown": "Ein kleines, schnelles Modell, das als Drafter bezeichnet wird, und das große, langsame Modell, das als Verifier bezeichnet wird.",
+      "title": "",
+      "tts": {
+        "text": "Ein kleines, schnelles Modell, das als Drafter bezeichnet wird, und das große, langsame Modell, das als Verifier bezeichnet wird.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Der Drafter errät, sagen wir, die nächsten vier Token in einem einzigen Durchgang.",
+      "text_markdown": "Der Drafter errät, sagen wir, die nächsten vier Token in einem einzigen Durchgang.",
+      "title": "",
+      "tts": {
+        "text": "Der Drafter errät, sagen wir, die nächsten vier Token in einem einzigen Durchgang.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Der Verifier prüft alle vier parallel.",
+      "text_markdown": "Der Verifier prüft alle vier parallel.",
+      "title": "",
+      "tts": {
+        "text": "Der Verifier prüft alle vier parallel.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Und dann?",
+      "text_markdown": "Und dann?",
+      "title": "",
+      "tts": {
+        "text": "Und dann?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wenn der Verifier zustimmt, behalten Sie alle vier und machen weiter – Sie haben gerade vier Token für die Kosten von etwa einem erledigt.",
+      "text_markdown": "Wenn der Verifier zustimmt, behalten Sie alle vier und machen weiter – Sie haben gerade vier Token für die Kosten von etwa einem erledigt.",
+      "title": "",
+      "tts": {
+        "text": "Wenn der Verifier zustimmt, behalten Sie alle vier und machen weiter – Sie haben gerade vier Token für die Kosten von etwa einem erledigt.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wenn er nicht zustimmt, akzeptieren Sie bis zur ersten Abweichung und lassen das große Modell von dort übernehmen.",
+      "text_markdown": "Wenn er nicht zustimmt, akzeptieren Sie bis zur ersten Abweichung und lassen das große Modell von dort übernehmen.",
+      "title": "",
+      "tts": {
+        "text": "Wenn er nicht zustimmt, akzeptieren Sie bis zur ersten Abweichung und lassen das große Modell von dort übernehmen.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Die Antwort ist also identisch.",
+      "text_markdown": "Die Antwort ist also identisch.",
+      "title": "",
+      "tts": {
+        "text": "Die Antwort ist also identisch.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Genau, das ist der elegante Teil.",
+      "text_markdown": "Genau, das ist der elegante Teil.",
+      "title": "",
+      "tts": {
+        "text": "Genau, das ist der elegante Teil.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Die Ausgabe ist genau das, was das große Modell von selbst produziert hätte.",
+      "text_markdown": "Die Ausgabe ist genau das, was das große Modell von selbst produziert hätte.",
+      "title": "",
+      "tts": {
+        "text": "Die Ausgabe ist genau das, was das große Modell von selbst produziert hätte.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie haben nur für weniger seiner Forward Passes bezahlt.",
+      "text_markdown": "Sie haben nur für weniger seiner Forward Passes bezahlt.",
+      "title": "",
+      "tts": {
+        "text": "Sie haben nur für weniger seiner Forward Passes bezahlt.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Warum ist das für einen Bastler wichtig?",
+      "text_markdown": "Warum ist das für einen Bastler wichtig?",
+      "title": "",
+      "tts": {
+        "text": "Warum ist das für einen Bastler wichtig?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Weil es ein siebzig Milliarden Parameter Modell auf einer einzigen Karte von einer Neuheit in eine nutzbare Konversation verwandelt.",
+      "text_markdown": "Weil es ein siebzig Milliarden Parameter Modell auf einer einzigen Karte von einer Neuheit in eine nutzbare Konversation verwandelt.",
+      "title": "",
+      "tts": {
+        "text": "Weil es ein siebzig Milliarden Parameter Modell auf einer einzigen Karte von einer Neuheit in eine nutzbare Konversation verwandelt.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Und auf einem Telefon ist es Teil dessen, wie sich ein echter On-Device-Assistent reaktionsschnell anfühlt.",
+      "text_markdown": "Und auf einem Telefon ist es Teil dessen, wie sich ein echter On-Device-Assistent reaktionsschnell anfühlt.",
+      "title": "",
+      "tts": {
+        "text": "Und auf einem Telefon ist es Teil dessen, wie sich ein echter On-Device-Assistent reaktionsschnell anfühlt.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Das Konzept der letzten Woche, neuronale Audio-Codecs, war die Audio-Version desselben Tricks – weniger teure Schritte für die gleiche Qualität.",
+      "text_markdown": "Das Konzept der letzten Woche, neuronale Audio-Codecs, war die Audio-Version desselben Tricks – weniger teure Schritte für die gleiche Qualität.",
+      "title": "",
+      "tts": {
+        "text": "Das Konzept der letzten Woche, neuronale Audio-Codecs, war die Audio-Version desselben Tricks – weniger teure Schritte für die gleiche Qualität.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wohin sollten Neugierige sich von hier aus wenden?",
+      "text_markdown": "Wohin sollten Neugierige sich von hier aus wenden?",
+      "title": "",
+      "tts": {
+        "text": "Wohin sollten Neugierige sich von hier aus wenden?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Suchen Sie nach EAGLE-3, Medusa und Lookahead-Decoding.",
+      "text_markdown": "Suchen Sie nach EAGLE-3, Medusa und Lookahead-Decoding.",
+      "title": "",
+      "tts": {
+        "text": "Suchen Sie nach Eagle drei, Medusa und Lookahead-Decoding.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sie sind die modernen Vettern der ursprünglichen Drafter-Verifier-Idee, und sie sind das, was Ihre Inferenz-Engine tatsächlich im Hintergrund ausführt.",
+      "text_markdown": "Sie sind die modernen Vettern der ursprünglichen Drafter-Verifier-Idee, und sie sind das, was Ihre Inferenz-Engine tatsächlich im Hintergrund ausführt.",
+      "title": "",
+      "tts": {
+        "text": "Sie sind die modernen Vettern der ursprünglichen Drafter-Verifier-Idee, und sie sind das, was Ihre Inferenz-Engine tatsächlich im Hintergrund ausführt.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ein guter Abschluss.",
+      "text_markdown": "Ein guter Abschluss.",
+      "title": "",
+      "tts": {
+        "text": "Ein guter Abschluss.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, danke.",
+      "text_markdown": "Ron, danke.",
+      "title": "",
+      "tts": {
+        "text": "Ron, danke.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Jederzeit, Vindy.",
+      "text_markdown": "Jederzeit, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jederzeit, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Das war AI This Week vom 3. Juni 2026.",
+      "text_markdown": "Das war AI This Week vom 3. Juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Das war AI This Week vom dritten Juni zweitausendsechsundzwanzig.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nächste Ausgabe nächsten Mittwoch.",
+      "text_markdown": "Nächste Ausgabe nächsten Mittwoch.",
+      "title": "",
+      "tts": {
+        "text": "Nächste Ausgabe nächsten Mittwoch.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Bis dahin, passen Sie auf sich auf.",
+      "text_markdown": "Bis dahin, passen Sie auf sich auf.",
+      "title": "",
+      "tts": {
+        "text": "Bis dahin, passen Sie auf sich auf.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

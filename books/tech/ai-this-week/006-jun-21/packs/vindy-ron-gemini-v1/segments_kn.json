@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "kn",
+  "total_segments": 114,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "AI This Week ಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ, ಸ್ನೇಹಿತರೇ.",
+      "text_markdown": "AI This Week ಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ, ಸ್ನೇಹಿತರೇ.",
+      "title": "",
+      "tts": {
+        "text": "ಎ ಐ ಈ ವಾರಕ್ಕೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ, ಸ್ನೇಹಿತರೇ.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಾನು Vindy.",
+      "text_markdown": "ನಾನು Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ನಾನು Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಯಾವಾಗಲೂ ಇರುವಂತೆ, Ron ನನ್ನ ಜೊತೆ ಇದ್ದಾರೆ.",
+      "text_markdown": "ಯಾವಾಗಲೂ ಇರುವಂತೆ, Ron ನನ್ನ ಜೊತೆ ಇದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಯಾವಾಗಲೂ ಇರುವಂತೆ, Ron ನನ್ನ ಜೊತೆ ಇದ್ದಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+      "text_markdown": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ಇಲ್ಲಿರುವುದು ಸಂತೋಷ, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ 21, 2026.",
+      "text_markdown": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ 21, 2026.",
+      "title": "",
+      "tts": {
+        "text": "ಇಂದು ಭಾನುವಾರ, ಜೂನ್ ಇಪ್ಪತ್ತೊಂದನೆಯ ತಾರೀಖು, ಎರಡು ಸಾವಿರದ ಇಪ್ಪತ್ತಾರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಕಳೆದ ವಾರ ನಾವು ನಮ್ಮ ಬಗ್ಗೆ ಮಾತನಾಡಿದ್ದೆವು; ಇಂದು ನಾವು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ಕಡೆ ಹೋಗುತ್ತೇವೆ — ನೇರವಾಗಿ ಅಧಿಕಾರದ ಕೇಂದ್ರಗಳ ಕಡೆಗೆ.",
+      "text_markdown": "ಕಳೆದ ವಾರ ನಾವು ನಮ್ಮ ಬಗ್ಗೆ ಮಾತನಾಡಿದ್ದೆವು; ಇಂದು ನಾವು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ಕಡೆ ಹೋಗುತ್ತೇವೆ — ನೇರವಾಗಿ ಅಧಿಕಾರದ ಕೇಂದ್ರಗಳ ಕಡೆಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಕಳೆದ ವಾರ ನಾವು ನಮ್ಮ ಬಗ್ಗೆ ಮಾತನಾಡಿದ್ದೆವು; ಇಂದು ನಾವು ಇನ್ನೊಂದು ದಿಕ್ಕಿನ ಕಡೆ ಹೋಗುತ್ತೇವೆ — ನೇರವಾಗಿ ಅಧಿಕಾರದ ಕೇಂದ್ರಗಳ ಕಡೆಗೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "AI ನಿಯೋಜನೆಯನ್ನು ಯಾರು ನಿಯಂತ್ರಿಸುತ್ತಾರೆ, ನಿರ್ಮಾಣಕ್ಕೆ ಯಾರು ಹಣ ಕೊಡುತ್ತಾರೆ, silicon ಅನ್ನು ಯಾರು ಹೊಂದಿದ್ದಾರೆ.",
+      "text_markdown": "AI ನಿಯೋಜನೆಯನ್ನು ಯಾರು ನಿಯಂತ್ರಿಸುತ್ತಾರೆ, ನಿರ್ಮಾಣಕ್ಕೆ ಯಾರು ಹಣ ಕೊಡುತ್ತಾರೆ, silicon ಅನ್ನು ಯಾರು ಹೊಂದಿದ್ದಾರೆ.",
+      "title": "",
+      "tts": {
+        "text": "AI ನಿಯೋಜನೆಯನ್ನು ಯಾರು ನಿಯಂತ್ರಿಸುತ್ತಾರೆ, ನಿರ್ಮಾಣಕ್ಕೆ ಯಾರು ಹಣ ಕೊಡುತ್ತಾರೆ, silicon ಅನ್ನು ಯಾರು ಹೊಂದಿದ್ದಾರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮುಂದೆ ಬರಲಿರುವುದು — ಕಳೆದ ಶುಕ್ರವಾರ U.S. Commerce Department ಒಂದು ಅಮೆರಿಕನ್ ಮಾದರಿಯನ್ನು ಸಾರ್ವಜನಿಕ ಬಳಕೆಯಿಂದ ಹಿಂಪಡೆಯಿತು, ಮತ್ತು ನಾವು ಅಲ್ಲಿಂದ ಪ್ರಾರಂಭಿಸಲಿದ್ದೇವೆ.",
+      "text_markdown": "ಮುಂದೆ ಬರಲಿರುವುದು — ಕಳೆದ ಶುಕ್ರವಾರ U.S. Commerce Department ಒಂದು ಅಮೆರಿಕನ್ ಮಾದರಿಯನ್ನು ಸಾರ್ವಜನಿಕ ಬಳಕೆಯಿಂದ ಹಿಂಪಡೆಯಿತು, ಮತ್ತು ನಾವು ಅಲ್ಲಿಂದ ಪ್ರಾರಂಭಿಸಲಿದ್ದೇವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದೆ ಬರಲಿರುವುದು — ಕಳೆದ ಶುಕ್ರವಾರ U.S. Commerce Department ಒಂದು ಅಮೆರಿಕನ್ ಮಾದರಿಯನ್ನು ಸಾರ್ವಜನಿಕ ಬಳಕೆಯಿಂದ ಹಿಂಪಡೆಯಿತು, ಮತ್ತು ನಾವು ಅಲ್ಲಿಂದ ಪ್ರಾರಂಭಿಸಲಿದ್ದೇವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಂತರ data center ನಿರ್ಮಾಣದ ಬಗ್ಗೆ, ಅಲ್ಲಿ ಘೋಷಣೆಗಳು ಮತ್ತು ನೈಜ ಸ್ಥಿತಿ ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ನಂತರ data center ನಿರ್ಮಾಣದ ಬಗ್ಗೆ, ಅಲ್ಲಿ ಘೋಷಣೆಗಳು ಮತ್ತು ನೈಜ ಸ್ಥಿತಿ ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ನಂತರ data center ನಿರ್ಮಾಣದ ಬಗ್ಗೆ, ಅಲ್ಲಿ ಘೋಷಣೆಗಳು ಮತ್ತು ನೈಜ ಸ್ಥಿತಿ ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಂತರ U.S. ಮತ್ತು China ಹೋಲಿಕೆ, ಸಾಮಾನ್ಯ ಉಕ್ತಿಯ ಬದಲು ನಿಜವಾದ ಬಂಧಿಸುವ ನಿರ್ಬಂಧದೊಂದಿಗೆ.",
+      "text_markdown": "ನಂತರ U.S. ಮತ್ತು China ಹೋಲಿಕೆ, ಸಾಮಾನ್ಯ ಉಕ್ತಿಯ ಬದಲು ನಿಜವಾದ ಬಂಧಿಸುವ ನಿರ್ಬಂಧದೊಂದಿಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "ನಂತರ U.S. ಮತ್ತು China ಹೋಲಿಕೆ, ಸಾಮಾನ್ಯ ಉಕ್ತಿಯ ಬದಲು ನಿಜವಾದ ಬಂಧಿಸುವ ನಿರ್ಬಂಧದೊಂದಿಗೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ — Oracle ನ balance sheet ನಲ್ಲಿ ಒಂದೇ ಒಂದು ಸಾಲು, ಅದು ನಿಮಗೆ ಬಹುತೇಕ ಎಲ್ಲವನ್ನೂ ಹೇಳುತ್ತದೆ.",
+      "text_markdown": "ಮತ್ತು ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ — Oracle ನ balance sheet ನಲ್ಲಿ ಒಂದೇ ಒಂದು ಸಾಲು, ಅದು ನಿಮಗೆ ಬಹುತೇಕ ಎಲ್ಲವನ್ನೂ ಹೇಳುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ — Oracle ನ balance sheet ನಲ್ಲಿ ಒಂದೇ ಒಂದು ಸಾಲು, ಅದು ನಿಮಗೆ ಬಹುತೇಕ ಎಲ್ಲವನ್ನೂ ಹೇಳುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, Anthropic ನಿಂದ ಪ್ರಾರಂಭಿಸೋಣ.",
+      "text_markdown": "Ron, Anthropic ನಿಂದ ಪ್ರಾರಂಭಿಸೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "Ron, Anthropic ನಿಂದ ಪ್ರಾರಂಭಿಸೋಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಏನಾಯಿತು.",
+      "text_markdown": "ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಏನಾಯಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಏನಾಯಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಶುಕ್ರವಾರ ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಸಂಜೆ 5:21 ಕ್ಕೆ Eastern ಸಮಯದಂತೆ, Anthropic ತನ್ನ ಎರಡು ಹೊಸ ಮಾದರಿಗಳಾದ — Claude Mythos five ಮತ್ತು Claude Fable five — ಅನ್ನು offline ಮಾಡಿತು.",
+      "text_markdown": "ಶುಕ್ರವಾರ ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಸಂಜೆ 5:21 ಕ್ಕೆ Eastern ಸಮಯದಂತೆ, Anthropic ತನ್ನ ಎರಡು ಹೊಸ ಮಾದರಿಗಳಾದ — Claude Mythos five ಮತ್ತು Claude Fable five — ಅನ್ನು offline ಮಾಡಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಶುಕ್ರವಾರ ಜೂನ್ ಹನ್ನೆರಡನೆಯ ತಾರೀಖಿನಂದು ಸಂಜೆ ಐದು ಇಪ್ಪತ್ತೊಂದಕ್ಕೆ Eastern ಸಮಯದಂತೆ, Anthropic ತನ್ನ ಎರಡು ಹೊಸ ಮಾದರಿಗಳಾದ — Claude Mythos five ಮತ್ತು Claude Fable five — ಅನ್ನು offline ಮಾಡಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಿರ್ವಹಣೆಗಾಗಿ ಅಲ್ಲ, ತಮ್ಮದೇ ಉಪಕ್ರಮದ ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆಗಾಗಿ ಅಲ್ಲ.",
+      "text_markdown": "ನಿರ್ವಹಣೆಗಾಗಿ ಅಲ್ಲ, ತಮ್ಮದೇ ಉಪಕ್ರಮದ ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆಗಾಗಿ ಅಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ನಿರ್ವಹಣೆಗಾಗಿ ಅಲ್ಲ, ತಮ್ಮದೇ ಉಪಕ್ರಮದ ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆಗಾಗಿ ಅಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "U.S. Commerce Department export controls ಉಲ್ಲೇಖಿಸಿ ಆದೇಶ ಹೊರಡಿಸಿದ್ದರಿಂದ ಅವರು ಅವುಗಳನ್ನು ತೆಗೆದರು.",
+      "text_markdown": "U.S. Commerce Department export controls ಉಲ್ಲೇಖಿಸಿ ಆದೇಶ ಹೊರಡಿಸಿದ್ದರಿಂದ ಅವರು ಅವುಗಳನ್ನು ತೆಗೆದರು.",
+      "title": "",
+      "tts": {
+        "text": "U.S. Commerce Department export controls ಉಲ್ಲೇಖಿಸಿ ಆದೇಶ ಹೊರಡಿಸಿದ್ದರಿಂದ ಅವರು ಅವುಗಳನ್ನು ತೆಗೆದರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ತಾಂತ್ರಿಕ ಕಾರಣ ಏನಾಗಿತ್ತು.",
+      "text_markdown": "ತಾಂತ್ರಿಕ ಕಾರಣ ಏನಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ತಾಂತ್ರಿಕ ಕಾರಣ ಏನಾಗಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತೊಂದು ಕಂಪನಿಯು ಒಂದು jailbreak ಪ್ರದರ್ಶಿಸಿತು ಎಂದು ವರದಿಯಾಗಿದ್ದು, ಅದು Commerce ಪ್ರಕಾರ export-controlled ಆದ ಔಟ್‌ಪುಟ್ ಉತ್ಪಾದಿಸಿತು.",
+      "text_markdown": "ಮತ್ತೊಂದು ಕಂಪನಿಯು ಒಂದು jailbreak ಪ್ರದರ್ಶಿಸಿತು ಎಂದು ವರದಿಯಾಗಿದ್ದು, ಅದು Commerce ಪ್ರಕಾರ export-controlled ಆದ ಔಟ್‌ಪುಟ್ ಉತ್ಪಾದಿಸಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತೊಂದು ಕಂಪನಿಯು ಒಂದು jailbreak ಪ್ರದರ್ಶಿಸಿತು ಎಂದು ವರದಿಯಾಗಿದ್ದು, ಅದು Commerce ಪ್ರಕಾರ export controlled ಆದ ಔಟ್‌ಪುಟ್ ಉತ್ಪಾದಿಸಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune ವರದಿ ಮಾಡಿದ ಪ್ರಕಾರ Amazon White House ಗೆ ಇದನ್ನು ತಿಳಿಸಿದ್ದು.",
+      "text_markdown": "Fortune ವರದಿ ಮಾಡಿದ ಪ್ರಕಾರ Amazon White House ಗೆ ಇದನ್ನು ತಿಳಿಸಿದ್ದು.",
+      "title": "",
+      "tts": {
+        "text": "Fortune ವರದಿ ಮಾಡಿದ ಪ್ರಕಾರ Amazon White House ಗೆ ಇದನ್ನು ತಿಳಿಸಿದ್ದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಆಂತ್ರೋಪಿಕ್ ಅದಕ್ಕೆ ಹೇಗೆ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿತು.",
+      "text_markdown": "ಮತ್ತು ಆಂತ್ರೋಪಿಕ್ ಅದಕ್ಕೆ ಹೇಗೆ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿತು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಆಂತ್ರೋಪಿಕ್ ಅದಕ್ಕೆ ಹೇಗೆ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropic ಬಹಿರಂಗವಾಗಿ ಕಾರಣವನ್ನು ವಿರೋಧಿಸುತ್ತದೆ.",
+      "text_markdown": "Anthropic ಬಹಿರಂಗವಾಗಿ ಕಾರಣವನ್ನು ವಿರೋಧಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ಬಹಿರಂಗವಾಗಿ ಕಾರಣವನ್ನು ವಿರೋಧಿಸುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅವರ ಹೇಳಿಕೆಯಲ್ಲಿ jailbreak ಅನ್ನು — ನಾನು ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದೇನೆ — \"ಸಂಕುಚಿತ, ಸಾರ್ವತ್ರಿಕವಲ್ಲದ\" ಎಂದು ಕರೆದರು, ಮತ್ತು ಅದೇ ಔಟ್‌ಪುಟ್ OpenAI ನ GPT-5.5 ಸೇರಿದಂತೆ ಇತರ ಮಾದರಿಗಳಿಂದ ಲಭ್ಯವಿದೆ ಎಂದು ಸೇರಿಸಿದರು.",
+      "text_markdown": "ಅವರ ಹೇಳಿಕೆಯಲ್ಲಿ jailbreak ಅನ್ನು — ನಾನು ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದೇನೆ — \"ಸಂಕುಚಿತ, ಸಾರ್ವತ್ರಿಕವಲ್ಲದ\" ಎಂದು ಕರೆದರು, ಮತ್ತು ಅದೇ ಔಟ್‌ಪುಟ್ OpenAI ನ GPT-5.5 ಸೇರಿದಂತೆ ಇತರ ಮಾದರಿಗಳಿಂದ ಲಭ್ಯವಿದೆ ಎಂದು ಸೇರಿಸಿದರು.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಹೇಳಿಕೆಯಲ್ಲಿ jailbreak ಅನ್ನು — ನಾನು ಉಲ್ಲೇಖಿಸುತ್ತಿದ್ದೇನೆ — \"ಸಂಕುಚಿತ, ಸಾರ್ವತ್ರಿಕವಲ್ಲದ\" ಎಂದು ಕರೆದರು, ಮತ್ತು ಅದೇ ಔಟ್‌ಪುಟ್ OpenAI ನ GPT ಐದು ಪಾಯಿಂಟ್ ಐದು ಸೇರಿದಂತೆ ಇತರ ಮಾದರಿಗಳಿಂದ ಲಭ್ಯವಿದೆ ಎಂದು ಸೇರಿಸಿದರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅವರ ಸಾರಾಂಶ ವಾಕ್ಯ: \"ಸರ್ಕಾರದ ಕ್ರಮವು ತಪ್ಪು ತಿಳಿವಳಿಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿದೆ.\"",
+      "text_markdown": "ಅವರ ಸಾರಾಂಶ ವಾಕ್ಯ: \"ಸರ್ಕಾರದ ಕ್ರಮವು ತಪ್ಪು ತಿಳಿವಳಿಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿದೆ.\"",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಸಾರಾಂಶ ವಾಕ್ಯ: \"ಸರ್ಕಾರದ ಕ್ರಮವು ತಪ್ಪು ತಿಳಿವಳಿಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿದೆ.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಒಂದು AI ಲ್ಯಾಬ್‌ನಿಂದ U.S. ಸರ್ಕಾರದೊಂದಿಗಿನ ಇದು ಅಸಾಮಾನ್ಯವಾಗಿ ನೇರವಾದ ಭಿನ್ನಾಭಿಪ್ರಾಯ.",
+      "text_markdown": "ಒಂದು AI ಲ್ಯಾಬ್‌ನಿಂದ U.S. ಸರ್ಕಾರದೊಂದಿಗಿನ ಇದು ಅಸಾಮಾನ್ಯವಾಗಿ ನೇರವಾದ ಭಿನ್ನಾಭಿಪ್ರಾಯ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದು AI ಲ್ಯಾಬ್‌ನಿಂದ U.S. ಸರ್ಕಾರದೊಂದಿಗಿನ ಇದು ಅಸಾಮಾನ್ಯವಾಗಿ ನೇರವಾದ ಭಿನ್ನಾಭಿಪ್ರಾಯ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹೌದು, ಮತ್ತು ಅದರ ಕೆಳಗಿರುವ ರಚನಾತ್ಮಕ ಸತ್ಯವೇ ಶಿರೋನಾಮೆ.",
+      "text_markdown": "ಹೌದು, ಮತ್ತು ಅದರ ಕೆಳಗಿರುವ ರಚನಾತ್ಮಕ ಸತ್ಯವೇ ಶಿರೋನಾಮೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹೌದು, ಮತ್ತು ಅದರ ಕೆಳಗಿರುವ ರಚನಾತ್ಮಕ ಸತ್ಯವೇ ಶಿರೋನಾಮೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Commerce ಈಗ ಒಂದು ಖಾಸಗಿ ಅಮೆರಿಕನ್ AI ಲ್ಯಾಬ್‌ಗೆ export controls ಉಲ್ಲೇಖಿಸಿ ಒಂದು ಮಾದರಿಯನ್ನು offline ಮಾಡಲು ಆದೇಶಿಸಬಹುದು, ಮತ್ತು ಆ ಆದೇಶ 72 ಗಂಟೆಗಳ ಒಳಗೆ ಜಾರಿಗೆ ಬರುತ್ತದೆ.",
+      "text_markdown": "Commerce ಈಗ ಒಂದು ಖಾಸಗಿ ಅಮೆರಿಕನ್ AI ಲ್ಯಾಬ್‌ಗೆ export controls ಉಲ್ಲೇಖಿಸಿ ಒಂದು ಮಾದರಿಯನ್ನು offline ಮಾಡಲು ಆದೇಶಿಸಬಹುದು, ಮತ್ತು ಆ ಆದೇಶ 72 ಗಂಟೆಗಳ ಒಳಗೆ ಜಾರಿಗೆ ಬರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Commerce ಈಗ ಒಂದು ಖಾಸಗಿ ಅಮೆರಿಕನ್ AI ಲ್ಯಾಬ್‌ಗೆ export controls ಉಲ್ಲೇಖಿಸಿ ಒಂದು ಮಾದರಿಯನ್ನು offline ಮಾಡಲು ಆದೇಶಿಸಬಹುದು, ಮತ್ತು ಆ ಆದೇಶ ಎಪ್ಪತ್ತೆರಡು ಗಂಟೆಗಳ ಒಳಗೆ ಜಾರಿಗೆ ಬರುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+      "text_markdown": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+      "text_markdown": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆದೇಶ ಸರಿಯಾಗಿತ್ತೋ ಇಲ್ಲವೋ ಎಂಬ ವಿಷಯ ಬೇರೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅಧಿಕಾರ ಸ್ವತಃ, ವೇಗ, ಮತ್ತು ಪೂರ್ವನಿದರ್ಶನ — ಇವೇ ಮಹತ್ವದ್ದು.",
+      "text_markdown": "ಅಧಿಕಾರ ಸ್ವತಃ, ವೇಗ, ಮತ್ತು ಪೂರ್ವನಿದರ್ಶನ — ಇವೇ ಮಹತ್ವದ್ದು.",
+      "title": "",
+      "tts": {
+        "text": "ಅಧಿಕಾರ ಸ್ವತಃ, ವೇಗ, ಮತ್ತು ಪೂರ್ವನಿದರ್ಶನ — ಇವೇ ಮಹತ್ವದ್ದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಇಲ್ಲಿ Amazon ನ ಪಾತ್ರ.",
+      "text_markdown": "ಮತ್ತು ಇಲ್ಲಿ Amazon ನ ಪಾತ್ರ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಇಲ್ಲಿ Amazon ನ ಪಾತ್ರ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅದೇ ಗಮನಿಸಬೇಕಾದ ಭಾಗ.",
+      "text_markdown": "ಅದೇ ಗಮನಿಸಬೇಕಾದ ಭಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದೇ ಗಮನಿಸಬೇಕಾದ ಭಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Amazon Anthropic ನ ಪ್ರಮುಖ ಹೂಡಿಕೆದಾರ ಮತ್ತು ಜೊತೆಗೆ ತನ್ನದೇ ಕಾರ್ಯದ ಮೂಲಕ foundation model ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ Anthropic ನೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸುತ್ತದೆ.",
+      "text_markdown": "Amazon Anthropic ನ ಪ್ರಮುಖ ಹೂಡಿಕೆದಾರ ಮತ್ತು ಜೊತೆಗೆ ತನ್ನದೇ ಕಾರ್ಯದ ಮೂಲಕ foundation model ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ Anthropic ನೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Amazon Anthropic ನ ಪ್ರಮುಖ ಹೂಡಿಕೆದಾರ ಮತ್ತು ಜೊತೆಗೆ ತನ್ನದೇ ಕಾರ್ಯದ ಮೂಲಕ foundation model ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ Anthropic ನೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಒಂದು ಸ್ಪರ್ಧಿಯ ಸರ್ಕಾರಕ್ಕೆ ಎಚ್ಚರಿಕೆ ಒಂದು ದೀರ್ಘ ವಾರಾಂತ್ಯದಲ್ಲಿ ಪ್ರತಿಸ್ಪರ್ಧಿಯ ಮಾದರಿಯನ್ನು offline ಮಾಡಬಹುದಾದರೆ, ಅದು ಉದ್ಯಮದ ಡೈನಾಮಿಕ್ಸ್‌ಗೆ ಹೊಸ ರೂಪ.",
+      "text_markdown": "ಒಂದು ಸ್ಪರ್ಧಿಯ ಸರ್ಕಾರಕ್ಕೆ ಎಚ್ಚರಿಕೆ ಒಂದು ದೀರ್ಘ ವಾರಾಂತ್ಯದಲ್ಲಿ ಪ್ರತಿಸ್ಪರ್ಧಿಯ ಮಾದರಿಯನ್ನು offline ಮಾಡಬಹುದಾದರೆ, ಅದು ಉದ್ಯಮದ ಡೈನಾಮಿಕ್ಸ್‌ಗೆ ಹೊಸ ರೂಪ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದು ಸ್ಪರ್ಧಿಯ ಸರ್ಕಾರಕ್ಕೆ ಎಚ್ಚರಿಕೆ ಒಂದು ದೀರ್ಘ ವಾರಾಂತ್ಯದಲ್ಲಿ ಪ್ರತಿಸ್ಪರ್ಧಿಯ ಮಾದರಿಯನ್ನು offline ಮಾಡಬಹುದಾದರೆ, ಅದು ಉದ್ಯಮದ ಡೈನಾಮಿಕ್ಸ್‌ಗೆ ಹೊಸ ರೂಪ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಿರ್ಮಾಣದ ಕಡೆಗೆ ಹೋಗೋಣ.",
+      "text_markdown": "ನಿರ್ಮಾಣದ ಕಡೆಗೆ ಹೋಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ನಿರ್ಮಾಣದ ಕಡೆಗೆ ಹೋಗೋಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate: OpenAI, Oracle, SoftBank ನ data center ಯೋಜನೆ.",
+      "text_markdown": "Stargate: OpenAI, Oracle, SoftBank ನ data center ಯೋಜನೆ.",
+      "title": "",
+      "tts": {
+        "text": "Stargate ಅಂದರೆ OpenAI, Oracle, SoftBank ನ data center ಯೋಜನೆಯಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ನಿಜವಾದ ಸಂಖ್ಯೆಗಳು ಏನು.",
+      "text_markdown": "ನಿಜವಾದ ಸಂಖ್ಯೆಗಳು ಏನು.",
+      "title": "",
+      "tts": {
+        "text": "ನಿಜವಾದ ಸಂಖ್ಯೆಗಳು ಏನು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate 11 gigawatts ನ U.S. ಸಾಮರ್ಥ್ಯ ಘೋಷಿಸಿದೆ.",
+      "text_markdown": "Stargate 11 gigawatts ನ U.S. ಸಾಮರ್ಥ್ಯ ಘೋಷಿಸಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Stargate ಹನ್ನೊಂದು gigawatts ನ U.S. ಸಾಮರ್ಥ್ಯ ಘೋಷಿಸಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಜೂನ್ ಮಧ್ಯಭಾಗದ ಹೊತ್ತಿಗೆ, Abilene Texas ತಾಣದಲ್ಲಿ Phase One ರಲ್ಲಿ ಸುಮಾರು 200 megawatts ಕಾರ್ಯಾಚರಿಸುತ್ತಿದೆ.",
+      "text_markdown": "ಜೂನ್ ಮಧ್ಯಭಾಗದ ಹೊತ್ತಿಗೆ, Abilene Texas ತಾಣದಲ್ಲಿ Phase One ರಲ್ಲಿ ಸುಮಾರು 200 megawatts ಕಾರ್ಯಾಚರಿಸುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಜೂನ್ ಮಧ್ಯಭಾಗದ ಹೊತ್ತಿಗೆ, Abilene Texas ತಾಣದಲ್ಲಿ Phase One ರಲ್ಲಿ ಸುಮಾರು ಇನ್ನೂರು megawatts ಕಾರ್ಯಾಚರಿಸುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹನ್ನೊಂದು gigawatts ಘೋಷಿಸಲಾಗಿದೆ, ಇನ್ನೂರು megawatts ಸಂಪರ್ಕಗೊಂಡಿದೆ.",
+      "text_markdown": "ಹನ್ನೊಂದು gigawatts ಘೋಷಿಸಲಾಗಿದೆ, ಇನ್ನೂರು megawatts ಸಂಪರ್ಕಗೊಂಡಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹನ್ನೊಂದು gigawatts ಘೋಷಿಸಲಾಗಿದೆ, ಇನ್ನೂರು megawatts ಸಂಪರ್ಕಗೊಂಡಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಒಂದೇ ಸಾಲಿನಲ್ಲಿ ಇಡೀ ಅಂತರ ಅದೇ.",
+      "text_markdown": "ಒಂದೇ ಸಾಲಿನಲ್ಲಿ ಇಡೀ ಅಂತರ ಅದೇ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದೇ ಸಾಲಿನಲ್ಲಿ ಇಡೀ ಅಂತರ ಅದೇ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹೌದು, ಮತ್ತು ಅತ್ಯಂತ ಸ್ಪಷ್ಟವಾದ ಉದಾಹರಣೆ ನ್ಯೂ ಮೆಕ್ಸಿಕೋದಲ್ಲಿದೆ.",
+      "text_markdown": "ಹೌದು, ಮತ್ತು ಅತ್ಯಂತ ಸ್ಪಷ್ಟವಾದ ಉದಾಹರಣೆ ನ್ಯೂ ಮೆಕ್ಸಿಕೋದಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹೌದು, ಮತ್ತು ಅತ್ಯಂತ ಸ್ಪಷ್ಟವಾದ ಉದಾಹರಣೆ ನ್ಯೂ ಮೆಕ್ಸಿಕೋದಲ್ಲಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Doña Ana County ತಾಣವು ಅತಿದೊಡ್ಡ ಏಕ Stargate ಕ್ಯಾಂಪಸ್ ಆಗಿದ್ದು, ಇದು ನಾಲ್ಕು-ಪಾಯಿಂಟ್-ಐದು ಗಿಗಾವ್ಯಾಟ್‌ಗೆ ನಿಗದಿಪಡಿಸಲಾಗಿದೆ.",
+      "text_markdown": "Doña Ana County ತಾಣವು ಅತಿದೊಡ್ಡ ಏಕ Stargate ಕ್ಯಾಂಪಸ್ ಆಗಿದ್ದು, ಇದು ನಾಲ್ಕು-ಪಾಯಿಂಟ್-ಐದು ಗಿಗಾವ್ಯಾಟ್‌ಗೆ ನಿಗದಿಪಡಿಸಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana County ತಾಣವು ಅತಿದೊಡ್ಡ ಏಕ Stargate ಕ್ಯಾಂಪಸ್ ಆಗಿದ್ದು, ಇದು ನಾಲ್ಕು ಪಾಯಿಂಟ್ ಐದು ಗಿಗಾವ್ಯಾಟ್‌ಗೆ ನಿಗದಿಪಡಿಸಲಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಸಿಂಡಿಕೇಟೆಡ್ ಪ್ರಾಜೆಕ್ಟ್ ಹಣಕಾಸಿನಲ್ಲಿ ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಮೊತ್ತ ಸಿದ್ಧವಾಗಿದೆ — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ಜೊತೆಗೆ Blue Owl ನಿಂದ ಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಇಕ್ವಿಟಿ ಚೆಕ್.",
+      "text_markdown": "ಸಿಂಡಿಕೇಟೆಡ್ ಪ್ರಾಜೆಕ್ಟ್ ಹಣಕಾಸಿನಲ್ಲಿ ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಮೊತ್ತ ಸಿದ್ಧವಾಗಿದೆ — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ಜೊತೆಗೆ Blue Owl ನಿಂದ ಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಇಕ್ವಿಟಿ ಚೆಕ್.",
+      "title": "",
+      "tts": {
+        "text": "ಸಿಂಡಿಕೇಟೆಡ್ ಪ್ರಾಜೆಕ್ಟ್ ಹಣಕಾಸಿನಲ್ಲಿ ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಮೊತ್ತ ಸಿದ್ಧವಾಗಿದೆ — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ಜೊತೆಗೆ Blue Owl ನಿಂದ ಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಇಕ್ವಿಟಿ ಚೆಕ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಭೂಮಿಯ ಮೇಲಿನ ನಿರ್ಮಾಣ ಸ್ಥಿತಿ.",
+      "text_markdown": "ಮತ್ತು ಭೂಮಿಯ ಮೇಲಿನ ನಿರ್ಮಾಣ ಸ್ಥಿತಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಭೂಮಿಯ ಮೇಲಿನ ನಿರ್ಮಾಣ ಸ್ಥಿತಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇಲ್ಲಿಯವರೆಗೆ ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ.",
+      "text_markdown": "ಇಲ್ಲಿಯವರೆಗೆ ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಇಲ್ಲಿಯವರೆಗೆ ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ತಾಣವು New Mexico Environment Department ನಿಂದ ವಾಯು-ಗುಣಮಟ್ಟ ಪರವಾನಗಿಗಾಗಿ ಕಾಯುತ್ತಿದ್ದು, ಮೂಲತಃ ಏಪ್ರಿಲ್ ಇಪ್ಪತ್ತೆರಡನೇ ತಾರೀಖು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತು, ಏಳು ಸಾವಿರಕ್ಕೂ ಹೆಚ್ಚು ಸಾರ್ವಜನಿಕ ಅಭಿಪ್ರಾಯಗಳ ನಂತರ ಈಗ ಜುಲೈ ಇಪ್ಪತ್ತೊಂದನೇ ತಾರೀಖಿಗೆ ಮುಂದೂಡಲಾಗಿದೆ.",
+      "text_markdown": "ತಾಣವು New Mexico Environment Department ನಿಂದ ವಾಯು-ಗುಣಮಟ್ಟ ಪರವಾನಗಿಗಾಗಿ ಕಾಯುತ್ತಿದ್ದು, ಮೂಲತಃ ಏಪ್ರಿಲ್ ಇಪ್ಪತ್ತೆರಡನೇ ತಾರೀಖು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತು, ಏಳು ಸಾವಿರಕ್ಕೂ ಹೆಚ್ಚು ಸಾರ್ವಜನಿಕ ಅಭಿಪ್ರಾಯಗಳ ನಂತರ ಈಗ ಜುಲೈ ಇಪ್ಪತ್ತೊಂದನೇ ತಾರೀಖಿಗೆ ಮುಂದೂಡಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ತಾಣವು New Mexico Environment Department ನಿಂದ ವಾಯು ಗುಣಮಟ್ಟ ಪರವಾನಗಿಗಾಗಿ ಕಾಯುತ್ತಿದ್ದು, ಮೂಲತಃ ಏಪ್ರಿಲ್ ಇಪ್ಪತ್ತೆರಡನೇ ತಾರೀಖು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತು, ಏಳು ಸಾವಿರಕ್ಕೂ ಹೆಚ್ಚು ಸಾರ್ವಜನಿಕ ಅಭಿಪ್ರಾಯಗಳ ನಂತರ ಈಗ ಜುಲೈ ಇಪ್ಪತ್ತೊಂದನೇ ತಾರೀಖಿಗೆ ಮುಂದೂಡಲಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬದ್ಧತೆ, ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ, ಒಂದು ವಾಯು-ಗುಣಮಟ್ಟ ಪರವಾನಗಿ ಗಡುವು.",
+      "text_markdown": "ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬದ್ಧತೆ, ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ, ಒಂದು ವಾಯು-ಗುಣಮಟ್ಟ ಪರವಾನಗಿ ಗಡುವು.",
+      "title": "",
+      "tts": {
+        "text": "ಹದಿನೆಂಟು ಬಿಲಿಯನ್ ಡಾಲರ್ ಬದ್ಧತೆ, ನೆಲದಲ್ಲಿ ಒಂದೇ ಒಂದು ಗುದ್ದಲಿ ಇಲ್ಲ, ಒಂದು ವಾಯು ಗುಣಮಟ್ಟ ಪರವಾನಗಿ ಗಡುವು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಲೆಕ್ಕಾಚಾರ ಸರಿ ಹೋಗದಿದ್ದರೆ ನಷ್ಟ ಹೊರುವವರು ಯಾರು.",
+      "text_markdown": "ಲೆಕ್ಕಾಚಾರ ಸರಿ ಹೋಗದಿದ್ದರೆ ನಷ್ಟ ಹೊರುವವರು ಯಾರು.",
+      "title": "",
+      "tts": {
+        "text": "ಲೆಕ್ಕಾಚಾರ ಸರಿ ಹೋಗದಿದ್ದರೆ ನಷ್ಟ ಹೊರುವವರು ಯಾರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅಲ್ಲಿಯೇ Oracle ಆಸಕ್ತಿಕರವಾಗುತ್ತದೆ.",
+      "text_markdown": "ಅಲ್ಲಿಯೇ Oracle ಆಸಕ್ತಿಕರವಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅಲ್ಲಿಯೇ Oracle ಆಸಕ್ತಿಕರವಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oracle ನ Remaining Performance Obligations — ಇನ್ನೂ ತಲುಪಿಸದ ಒಪ್ಪಂದದ ಆದಾಯವನ್ನು ದಾಖಲಿಸುವ ಲೆಕ್ಕಪತ್ರ ಸಾಲು — ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತು-ಇಪ್ಪತ್ತಾರರ Q3 ರಲ್ಲಿ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿತು.",
+      "text_markdown": "Oracle ನ Remaining Performance Obligations — ಇನ್ನೂ ತಲುಪಿಸದ ಒಪ್ಪಂದದ ಆದಾಯವನ್ನು ದಾಖಲಿಸುವ ಲೆಕ್ಕಪತ್ರ ಸಾಲು — ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತು-ಇಪ್ಪತ್ತಾರರ Q3 ರಲ್ಲಿ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿತು.",
+      "title": "",
+      "tts": {
+        "text": "Oracle ನ Remaining Performance Obligations — ಇನ್ನೂ ತಲುಪಿಸದ ಒಪ್ಪಂದದ ಆದಾಯವನ್ನು ದಾಖಲಿಸುವ ಲೆಕ್ಕಪತ್ರ ಸಾಲು — ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತಾರರ Q ಮೂರರಲ್ಲಿ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇದು ವರ್ಷದಿಂದ ವರ್ಷಕ್ಕೆ ಮುನ್ನೂರ ಇಪ್ಪತ್ತೈದು ಪ್ರತಿಶತ ಏರಿಕೆಯಾಗಿದ್ದು, ಆ ಏರಿಕೆಯ ಬಹುಭಾಗವನ್ನು OpenAI ಮತ್ತು Stargate ಜೊತೆ ಸಾರ್ವಜನಿಕವಾಗಿ ಗುರುತಿಸಲಾಗಿದೆ.",
+      "text_markdown": "ಇದು ವರ್ಷದಿಂದ ವರ್ಷಕ್ಕೆ ಮುನ್ನೂರ ಇಪ್ಪತ್ತೈದು ಪ್ರತಿಶತ ಏರಿಕೆಯಾಗಿದ್ದು, ಆ ಏರಿಕೆಯ ಬಹುಭಾಗವನ್ನು OpenAI ಮತ್ತು Stargate ಜೊತೆ ಸಾರ್ವಜನಿಕವಾಗಿ ಗುರುತಿಸಲಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ವರ್ಷದಿಂದ ವರ್ಷಕ್ಕೆ ಮುನ್ನೂರ ಇಪ್ಪತ್ತೈದು ಪ್ರತಿಶತ ಏರಿಕೆಯಾಗಿದ್ದು, ಆ ಏರಿಕೆಯ ಬಹುಭಾಗವನ್ನು OpenAI ಮತ್ತು Stargate ಜೊತೆ ಸಾರ್ವಜನಿಕವಾಗಿ ಗುರುತಿಸಲಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಸಾಲದ ಭಾಗ.",
+      "text_markdown": "ಮತ್ತು ಸಾಲದ ಭಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಸಾಲದ ಭಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಫೆಬ್ರವರಿ ಇಪ್ಪತ್ತೆಂಟನೇ ತಾರೀಖಿನ ಹೊತ್ತಿಗೆ ಒಟ್ಟು ಸಾಲ ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು-ಪಾಯಿಂಟ್-ಆರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿದೆ.",
+      "text_markdown": "ಫೆಬ್ರವರಿ ಇಪ್ಪತ್ತೆಂಟನೇ ತಾರೀಖಿನ ಹೊತ್ತಿಗೆ ಒಟ್ಟು ಸಾಲ ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು-ಪಾಯಿಂಟ್-ಆರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಫೆಬ್ರವರಿ ಇಪ್ಪತ್ತೆಂಟನೇ ತಾರೀಖಿನ ಹೊತ್ತಿಗೆ ಒಟ್ಟು ಸಾಲ ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು ಪಾಯಿಂಟ್ ಆರು ಬಿಲಿಯನ್ ಡಾಲರ್ ತಲುಪಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oracle ಕೇವಲ ಫೆಬ್ರವರಿಯಲ್ಲಿ ಮೂವತ್ತು ಬಿಲಿಯನ್ ಸಂಗ್ರಹಿಸಿತು — investment-grade ಬಾಂಡ್‌ಗಳು ಮತ್ತು mandatory convertible preferred — ಮತ್ತು ಒಂಬತ್ತು-ತಿಂಗಳ ಅವಧಿಯಲ್ಲಿ ನಲ್ವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಹೊಸ senior notes ನೀಡಿತು.",
+      "text_markdown": "Oracle ಕೇವಲ ಫೆಬ್ರವರಿಯಲ್ಲಿ ಮೂವತ್ತು ಬಿಲಿಯನ್ ಸಂಗ್ರಹಿಸಿತು — investment-grade ಬಾಂಡ್‌ಗಳು ಮತ್ತು mandatory convertible preferred — ಮತ್ತು ಒಂಬತ್ತು-ತಿಂಗಳ ಅವಧಿಯಲ್ಲಿ ನಲ್ವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಹೊಸ senior notes ನೀಡಿತು.",
+      "title": "",
+      "tts": {
+        "text": "Oracle ಕೇವಲ ಫೆಬ್ರವರಿಯಲ್ಲಿ ಮೂವತ್ತು ಬಿಲಿಯನ್ ಸಂಗ್ರಹಿಸಿತು — investment grade ಬಾಂಡ್‌ಗಳು ಮತ್ತು mandatory convertible preferred — ಮತ್ತು ಒಂಬತ್ತು ತಿಂಗಳ ಅವಧಿಯಲ್ಲಿ ನಲ್ವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಹೊಸ senior notes ನೀಡಿತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹಾಗಾದರೆ ಸ್ಥಿತಿಯನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಹೇಳಿ.",
+      "text_markdown": "ಹಾಗಾದರೆ ಸ್ಥಿತಿಯನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಹೇಳಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಹಾಗಾದರೆ ಸ್ಥಿತಿಯನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಹೇಳಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಭರವಸೆಗಳು, ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು ಬಿಲಿಯನ್ ಡಾಲರ್ ಸಾಲ, ಮತ್ತು ಹೆಚ್ಚಿನ ಅಪಾಯ ಹೊತ್ತ ಒಬ್ಬ ದೊಡ್ಡ ಗ್ರಾಹಕ.",
+      "text_markdown": "ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಭರವಸೆಗಳು, ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು ಬಿಲಿಯನ್ ಡಾಲರ್ ಸಾಲ, ಮತ್ತು ಹೆಚ್ಚಿನ ಅಪಾಯ ಹೊತ್ತ ಒಬ್ಬ ದೊಡ್ಡ ಗ್ರಾಹಕ.",
+      "title": "",
+      "tts": {
+        "text": "ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಭರವಸೆಗಳು, ಒಂದು ನೂರ ಮೂವತ್ತನಾಲ್ಕು ಬಿಲಿಯನ್ ಡಾಲರ್ ಸಾಲ, ಮತ್ತು ಹೆಚ್ಚಿನ ಅಪಾಯ ಹೊತ್ತ ಒಬ್ಬ ದೊಡ್ಡ ಗ್ರಾಹಕ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇದೇ ನಿರ್ಮಾಣದ ರಚನೆಯನ್ನು ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಹೇಳಿದಂತಿದೆ.",
+      "text_markdown": "ಇದೇ ನಿರ್ಮಾಣದ ರಚನೆಯನ್ನು ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಹೇಳಿದಂತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದೇ ನಿರ್ಮಾಣದ ರಚನೆಯನ್ನು ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಹೇಳಿದಂತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅಮೆರಿಕ ಮತ್ತು ಚೀನಾ ಹೋಲಿಕೆಗೆ ಹೋಗೋಣ.",
+      "text_markdown": "ಅಮೆರಿಕ ಮತ್ತು ಚೀನಾ ಹೋಲಿಕೆಗೆ ಹೋಗೋಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಅಮೆರಿಕ ಮತ್ತು ಚೀನಾ ಹೋಲಿಕೆಗೆ ಹೋಗೋಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಚೀನಾ ಕೆಲವು ತಿಂಗಳುಗಳಷ್ಟು ಹಿಂದಿದೆ ಎಂಬುದು ಸಾಮಾನ್ಯ ಮಾತು.",
+      "text_markdown": "ಚೀನಾ ಕೆಲವು ತಿಂಗಳುಗಳಷ್ಟು ಹಿಂದಿದೆ ಎಂಬುದು ಸಾಮಾನ್ಯ ಮಾತು.",
+      "title": "",
+      "tts": {
+        "text": "ಚೀನಾ ಕೆಲವು ತಿಂಗಳುಗಳಷ್ಟು ಹಿಂದಿದೆ ಎಂಬುದು ಸಾಮಾನ್ಯ ಮಾತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆ ಸಾಮಾನ್ಯ ಮಾತು ತಪ್ಪು, ಏಕೆಂದರೆ ಅದು ತಪ್ಪಾದ ವಿಷಯವನ್ನು ಅಳೆಯುತ್ತದೆ.",
+      "text_markdown": "ಆ ಸಾಮಾನ್ಯ ಮಾತು ತಪ್ಪು, ಏಕೆಂದರೆ ಅದು ತಪ್ಪಾದ ವಿಷಯವನ್ನು ಅಳೆಯುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆ ಸಾಮಾನ್ಯ ಮಾತು ತಪ್ಪು, ಏಕೆಂದರೆ ಅದು ತಪ್ಪಾದ ವಿಷಯವನ್ನು ಅಳೆಯುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಸೋಮವಾರ, ಜೂನ್ ಒಂಬತ್ತನೇ ತಾರೀಖು, Bloomberg ನ್ಯಾಷನಲ್ ಡೆವಲಪ್‌ಮೆಂಟ್ ಅಂಡ್ ರಿಫಾರ್ಮ್ ಕಮಿಷನ್‌ನ ಚೀನಾದ ಕರಡು ಯೋಜನೆಯನ್ನು ವರದಿ ಮಾಡಿತು — ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಸರಿಸುಮಾರು ಇನ್ನೂರ ತೊಂಬತ್ತೈದು ಬಿಲಿಯನ್ ಡಾಲರ್, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೆಂಟರ ಹೊತ್ತಿಗೆ ರಾಷ್ಟ್ರವ್ಯಾಪಿ AI ಡೇಟಾ ಸೆಂಟರ್ ಜಾಲಕ್ಕಾಗಿ.",
+      "text_markdown": "ಸೋಮವಾರ, ಜೂನ್ ಒಂಬತ್ತನೇ ತಾರೀಖು, Bloomberg ನ್ಯಾಷನಲ್ ಡೆವಲಪ್‌ಮೆಂಟ್ ಅಂಡ್ ರಿಫಾರ್ಮ್ ಕಮಿಷನ್‌ನ ಚೀನಾದ ಕರಡು ಯೋಜನೆಯನ್ನು ವರದಿ ಮಾಡಿತು — ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಸರಿಸುಮಾರು ಇನ್ನೂರ ತೊಂಬತ್ತೈದು ಬಿಲಿಯನ್ ಡಾಲರ್, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೆಂಟರ ಹೊತ್ತಿಗೆ ರಾಷ್ಟ್ರವ್ಯಾಪಿ AI ಡೇಟಾ ಸೆಂಟರ್ ಜಾಲಕ್ಕಾಗಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಸೋಮವಾರ, ಜೂನ್ ಒಂಬತ್ತನೇ ತಾರೀಖು, Bloomberg ನ್ಯಾಷನಲ್ ಡೆವಲಪ್‌ಮೆಂಟ್ ಅಂಡ್ ರಿಫಾರ್ಮ್ ಕಮಿಷನ್‌ನ ಚೀನಾದ ಕರಡು ಯೋಜನೆಯನ್ನು ವರದಿ ಮಾಡಿತು — ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಸರಿಸುಮಾರು ಇನ್ನೂರ ತೊಂಬತ್ತೈದು ಬಿಲಿಯನ್ ಡಾಲರ್, ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತೆಂಟರ ಹೊತ್ತಿಗೆ ರಾಷ್ಟ್ರವ್ಯಾಪಿ AI ಡೇಟಾ ಸೆಂಟರ್ ಜಾಲಕ್ಕಾಗಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಈ ಯೋಜನೆಯು ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್ ಕಡ್ಡಾಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು China Mobile ಹಾಗೂ China Telecom ಮೂಲಕ ಒಂದೇ ಸಂಪರ್ಕಿತ ಕಂಪ್ಯೂಟ್ ಫ್ಯಾಬ್ರಿಕ್ ಆಗಿ ನಿರ್ವಹಿಸಲಾಗುವುದು.",
+      "text_markdown": "ಈ ಯೋಜನೆಯು ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್ ಕಡ್ಡಾಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು China Mobile ಹಾಗೂ China Telecom ಮೂಲಕ ಒಂದೇ ಸಂಪರ್ಕಿತ ಕಂಪ್ಯೂಟ್ ಫ್ಯಾಬ್ರಿಕ್ ಆಗಿ ನಿರ್ವಹಿಸಲಾಗುವುದು.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ಯೋಜನೆಯು ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್ ಕಡ್ಡಾಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು China Mobile ಹಾಗೂ China Telecom ಮೂಲಕ ಒಂದೇ ಸಂಪರ್ಕಿತ ಕಂಪ್ಯೂಟ್ ಫ್ಯಾಬ್ರಿಕ್ ಆಗಿ ನಿರ್ವಹಿಸಲಾಗುವುದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಆ ಯೋಜನೆಯಲ್ಲಿ ಸಮಸ್ಯೆ ಎಲ್ಲಿದೆ.",
+      "text_markdown": "ಮತ್ತು ಆ ಯೋಜನೆಯಲ್ಲಿ ಸಮಸ್ಯೆ ಎಲ್ಲಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಆ ಯೋಜನೆಯಲ್ಲಿ ಸಮಸ್ಯೆ ಎಲ್ಲಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೆಂಟರ ಗಡುವು — ಮತ್ತು ಸಮಸ್ಯೆ ಎಂದರೆ ನಿಯಂತ್ರಣ ಮಿತಿ ಲಾಜಿಕ್ ಚಿಪ್‌ಗಳಲ್ಲ, ಅದು ಹೈ-ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ ಮೆಮೊರಿ.",
+      "text_markdown": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೆಂಟರ ಗಡುವು — ಮತ್ತು ಸಮಸ್ಯೆ ಎಂದರೆ ನಿಯಂತ್ರಣ ಮಿತಿ ಲಾಜಿಕ್ ಚಿಪ್‌ಗಳಲ್ಲ, ಅದು ಹೈ-ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ ಮೆಮೊರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಯುವಾನ್, ಎಂಭತ್ತು ಪ್ರತಿಶತ ದೇಶೀಯ ಸಿಲಿಕಾನ್, ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತೆಂಟರ ಗಡುವು — ಮತ್ತು ಸಮಸ್ಯೆ ಎಂದರೆ ನಿಯಂತ್ರಣ ಮಿತಿ ಲಾಜಿಕ್ ಚಿಪ್‌ಗಳಲ್ಲ, ಅದು ಹೈ ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ ಮೆಮೊರಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅದನ್ನು ವಿವರಿಸಿ.",
+      "text_markdown": "ಅದನ್ನು ವಿವರಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಅದನ್ನು ವಿವರಿಸಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಪ್ರತಿಯೊಂದು AI ಆಕ್ಸಿಲರೇಟರ್‌ಗೆ ಲಾಜಿಕ್ ಡೈ ಮೇಲೆ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಜೋಡಿಸಬೇಕಾಗುತ್ತದೆ.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು AI ಆಕ್ಸಿಲರೇಟರ್‌ಗೆ ಲಾಜಿಕ್ ಡೈ ಮೇಲೆ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಜೋಡಿಸಬೇಕಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು AI ಆಕ್ಸಿಲರೇಟರ್‌ಗೆ ಲಾಜಿಕ್ ಡೈ ಮೇಲೆ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಜೋಡಿಸಬೇಕಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "HBM ಇಲ್ಲದಿದ್ದರೆ, ಚಿಪ್ ನಿಷ್ಕ್ರಿಯ ತೂಕವಷ್ಟೆ.",
+      "text_markdown": "HBM ಇಲ್ಲದಿದ್ದರೆ, ಚಿಪ್ ನಿಷ್ಕ್ರಿಯ ತೂಕವಷ್ಟೆ.",
+      "title": "",
+      "tts": {
+        "text": "HBM ಇಲ್ಲದಿದ್ದರೆ, ಚಿಪ್ ನಿಷ್ಕ್ರಿಯ ತೂಕವಷ್ಟೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಮುಚ್ಚಿಕೊಳ್ಳುವ ಮೊದಲು ಚೀನಾ ಸುಮಾರು ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು — Samsung ಒಂದರಿಂದಲೇ ಹನ್ನೊಂದು-ಪಾಯಿಂಟ್-ನಾಲ್ಕು ಮಿಲಿಯನ್.",
+      "text_markdown": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಮುಚ್ಚಿಕೊಳ್ಳುವ ಮೊದಲು ಚೀನಾ ಸುಮಾರು ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು — Samsung ಒಂದರಿಂದಲೇ ಹನ್ನೊಂದು-ಪಾಯಿಂಟ್-ನಾಲ್ಕು ಮಿಲಿಯನ್.",
+      "title": "",
+      "tts": {
+        "text": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಮುಚ್ಚಿಕೊಳ್ಳುವ ಮೊದಲು ಚೀನಾ ಸುಮಾರು ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು — Samsung ಒಂದರಿಂದಲೇ ಹನ್ನೊಂದು ಪಾಯಿಂಟ್ ನಾಲ್ಕು ಮಿಲಿಯನ್.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Huawei Ascend 910C ಪ್ಯಾಕೇಜಿಂಗ್ ಅನುಪಾತದಲ್ಲಿ, ಆ ದಾಸ್ತಾನು ಸರಿಸುಮಾರು ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+      "text_markdown": "Huawei Ascend 910C ಪ್ಯಾಕೇಜಿಂಗ್ ಅನುಪಾತದಲ್ಲಿ, ಆ ದಾಸ್ತಾನು ಸರಿಸುಮಾರು ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend ಒಂಬತ್ತು ಹತ್ತು C ಪ್ಯಾಕೇಜಿಂಗ್ ಅನುಪಾತದಲ್ಲಿ, ಆ ದಾಸ್ತಾನು ಸರಿಸುಮಾರು ಒಂದು ಪಾಯಿಂಟ್ ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ನಂತರ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ.",
+      "text_markdown": "ಮತ್ತು ನಂತರ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ನಂತರ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆಗ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ — ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳು, ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕು, ಮತ್ತು ಅದೇ ಮಿತಿ.",
+      "text_markdown": "ಆಗ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ — ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳು, ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕು, ಮತ್ತು ಅದೇ ಮಿತಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಆಗ ಪೂರೈಕೆ ಖಾಲಿಯಾಗುತ್ತದೆ — ಹದಿಮೂರು ಮಿಲಿಯನ್ HBM ಸ್ಟ್ಯಾಕ್‌ಗಳು, ಒಂದು ಪಾಯಿಂಟ್ ಆರು ಮಿಲಿಯನ್ ಚಿಪ್‌ಗಳಿಗೆ ಸಾಕು, ಮತ್ತು ಅದೇ ಮಿತಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "CXMT ಯಿಂದ ದೇಶೀಯ ಚೀನೀ HBM, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರಲ್ಲಿ ಸುಮಾರು ಎರಡು ಮಿಲಿಯನ್ ಸ್ಟ್ಯಾಕ್‌ಗಳ ವೇಗದಲ್ಲಿದೆ — ಬಹುಶಃ ಎರಡು ಲಕ್ಷ ಐವತ್ತು ಸಾವಿರದಿಂದ ಮೂರು ಲಕ್ಷ ಆಕ್ಸಿಲರೇಟರ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+      "text_markdown": "CXMT ಯಿಂದ ದೇಶೀಯ ಚೀನೀ HBM, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರಲ್ಲಿ ಸುಮಾರು ಎರಡು ಮಿಲಿಯನ್ ಸ್ಟ್ಯಾಕ್‌ಗಳ ವೇಗದಲ್ಲಿದೆ — ಬಹುಶಃ ಎರಡು ಲಕ್ಷ ಐವತ್ತು ಸಾವಿರದಿಂದ ಮೂರು ಲಕ್ಷ ಆಕ್ಸಿಲರೇಟರ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "CXMT ಯಿಂದ ದೇಶೀಯ ಚೀನೀ HBM, ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತಾರರಲ್ಲಿ ಸುಮಾರು ಎರಡು ಮಿಲಿಯನ್ ಸ್ಟ್ಯಾಕ್‌ಗಳ ವೇಗದಲ್ಲಿದೆ — ಬಹುಶಃ ಎರಡು ಲಕ್ಷ ಐವತ್ತು ಸಾವಿರದಿಂದ ಮೂರು ಲಕ್ಷ ಆಕ್ಸಿಲರೇಟರ್‌ಗಳಿಗೆ ಸಾಕಾಗುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹಾಗಾದರೆ Huawei ನ ಸಿಲಿಕಾನ್ ಯೋಜನೆಗಳು ಹೇಗೆ ಕಾಣಿಸುತ್ತವೆ.",
+      "text_markdown": "ಹಾಗಾದರೆ Huawei ನ ಸಿಲಿಕಾನ್ ಯೋಜನೆಗಳು ಹೇಗೆ ಕಾಣಿಸುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಹಾಗಾದರೆ Huawei ನ ಸಿಲಿಕಾನ್ ಯೋಜನೆಗಳು ಹೇಗೆ ಕಾಣಿಸುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bloomberg, Huawei ನ ಯೋಜನೆಗಳನ್ನು ಉಲ್ಲೇಖಿಸಿ, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರ ಉತ್ಪಾದನೆಯನ್ನು ಆರು ಲಕ್ಷ 910C ಚಿಪ್‌ಗಳೆಂದು ಹೇಳಿತು, ಮತ್ತು ವಿಶಾಲ Ascend ಉತ್ಪನ್ನ ಸಾಲು ಒಟ್ಟು ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಡೈ ತಲುಪಬಹುದು.",
+      "text_markdown": "Bloomberg, Huawei ನ ಯೋಜನೆಗಳನ್ನು ಉಲ್ಲೇಖಿಸಿ, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರ ಉತ್ಪಾದನೆಯನ್ನು ಆರು ಲಕ್ಷ 910C ಚಿಪ್‌ಗಳೆಂದು ಹೇಳಿತು, ಮತ್ತು ವಿಶಾಲ Ascend ಉತ್ಪನ್ನ ಸಾಲು ಒಟ್ಟು ಒಂದು-ಪಾಯಿಂಟ್-ಆರು ಮಿಲಿಯನ್ ಡೈ ತಲುಪಬಹುದು.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, Huawei ನ ಯೋಜನೆಗಳನ್ನು ಉಲ್ಲೇಖಿಸಿ, ಇಪ್ಪತ್ತು ಇಪ್ಪತ್ತಾರರ ಉತ್ಪಾದನೆಯನ್ನು ಆರು ಲಕ್ಷ ಒಂಬತ್ತು ಹತ್ತು C ಚಿಪ್‌ಗಳೆಂದು ಹೇಳಿತು, ಮತ್ತು ವಿಶಾಲ Ascend ಉತ್ಪನ್ನ ಸಾಲು ಒಟ್ಟು ಒಂದು ಪಾಯಿಂಟ್ ಆರು ಮಿಲಿಯನ್ ಡೈ ತಲುಪಬಹುದು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆ ಸಂಖ್ಯೆ, ಆರು ಲಕ್ಷ, ಒಂದು ಗುರಿ — ಕಳುಹಿಸಿದ ಉತ್ಪಾದನೆ ಅಲ್ಲ.",
+      "text_markdown": "ಆ ಸಂಖ್ಯೆ, ಆರು ಲಕ್ಷ, ಒಂದು ಗುರಿ — ಕಳುಹಿಸಿದ ಉತ್ಪಾದನೆ ಅಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಆ ಸಂಖ್ಯೆ, ಆರು ಲಕ್ಷ, ಒಂದು ಗುರಿ — ಕಳುಹಿಸಿದ ಉತ್ಪಾದನೆ ಅಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಪ್ರತ್ಯೇಕವಾಗಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕಡಿತಗೊಳ್ಳುವ ಮೊದಲು, Huawei Sophgo ಮತ್ತು Bitmain ಶೆಲ್ ಕಂಪನಿಗಳ ಮೂಲಕ TSMC ನಲ್ಲಿ ತಯಾರಿಸಲಾದ ಎರಡು-ಪಾಯಿಂಟ್-ಒಂಬತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು Ascend ಡೈಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು.",
+      "text_markdown": "ಮತ್ತು ಪ್ರತ್ಯೇಕವಾಗಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕಡಿತಗೊಳ್ಳುವ ಮೊದಲು, Huawei Sophgo ಮತ್ತು Bitmain ಶೆಲ್ ಕಂಪನಿಗಳ ಮೂಲಕ TSMC ನಲ್ಲಿ ತಯಾರಿಸಲಾದ ಎರಡು-ಪಾಯಿಂಟ್-ಒಂಬತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು Ascend ಡೈಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಪ್ರತ್ಯೇಕವಾಗಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕಡಿತಗೊಳ್ಳುವ ಮೊದಲು, Huawei Sophgo ಮತ್ತು Bitmain ಶೆಲ್ ಕಂಪನಿಗಳ ಮೂಲಕ TSMC ನಲ್ಲಿ ತಯಾರಿಸಲಾದ ಎರಡು ಪಾಯಿಂಟ್ ಒಂಬತ್ತು ಮಿಲಿಯನ್‌ಗಿಂತ ಹೆಚ್ಚು Ascend ಡೈಗಳನ್ನು ಸಂಗ್ರಹಿಸಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ ಎಂಬ ನಿರೂಪಣೆಯಲ್ಲಿ ಎರಡು-ಪಾಯಿಂಟ್-ಒಂಬತ್ತು-ಮಿಲಿಯನ್-ಡೈ ಕೊರತೆ ಇದೆ.",
+      "text_markdown": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ ಎಂಬ ನಿರೂಪಣೆಯಲ್ಲಿ ಎರಡು-ಪಾಯಿಂಟ್-ಒಂಬತ್ತು-ಮಿಲಿಯನ್-ಡೈ ಕೊರತೆ ಇದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ರಫ್ತು ನಿಯಂತ್ರಣಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ ಎಂಬ ನಿರೂಪಣೆಯಲ್ಲಿ ಎರಡು ಪಾಯಿಂಟ್ ಒಂಬತ್ತು ಮಿಲಿಯನ್ ಡೈ ಕೊರತೆ ಇದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಶೀರ್ಷಿಕೆಗಳಿಗೆ ಹೋಗೋಣ, ವೇಗವಾಗಿ.",
+      "text_markdown": "ಶೀರ್ಷಿಕೆಗಳಿಗೆ ಹೋಗೋಣ, ವೇಗವಾಗಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಶೀರ್ಷಿಕೆಗಳಿಗೆ ಹೋಗೋಣ, ವೇಗವಾಗಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಮೊದಲ ಶೀರ್ಷಿಕೆ, Broadcom.",
+      "text_markdown": "ಈ ವಾರದ ಮೊದಲ ಶೀರ್ಷಿಕೆ, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಮೊದಲ ಶೀರ್ಷಿಕೆ, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Broadcom ನ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ ಸರಿಸುಮಾರು ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಆಗಿದೆ.",
+      "text_markdown": "Broadcom ನ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ ಸರಿಸುಮಾರು ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಆಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "Broadcom ನ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ ಸರಿಸುಮಾರು ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಆಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅವರ CEO, Hock Tan, ಜೂನ್ ಮೂರರ ಆದಾಯ ಕರೆಯಲ್ಲಿ ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೇಳಕ್ಕೆ ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಸೆಮಿಕಂಡಕ್ಟರ್ ಆದಾಯ ಗುರಿಯನ್ನು ಮತ್ತೆ ಪ್ರತಿಪಾದಿಸಿದರು — ಸರಿಸುಮಾರು ಎಪ್ಪತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಬ್ಯಾಕ್‌ಲಾಗ್ ಮತ್ತು Alphabet ಹಾಗೂ Meta ಜೊತೆ ಇಪ್ಪತ್ತೊಂದಕ್ಕೆ ವಿಸ್ತರಿಸುವ ದೀರ್ಘಕಾಲೀನ ಒಪ್ಪಂದಗಳ ಆಧಾರದ ಮೇಲೆ.",
+      "text_markdown": "ಅವರ CEO, Hock Tan, ಜೂನ್ ಮೂರರ ಆದಾಯ ಕರೆಯಲ್ಲಿ ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೇಳಕ್ಕೆ ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಸೆಮಿಕಂಡಕ್ಟರ್ ಆದಾಯ ಗುರಿಯನ್ನು ಮತ್ತೆ ಪ್ರತಿಪಾದಿಸಿದರು — ಸರಿಸುಮಾರು ಎಪ್ಪತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಬ್ಯಾಕ್‌ಲಾಗ್ ಮತ್ತು Alphabet ಹಾಗೂ Meta ಜೊತೆ ಇಪ್ಪತ್ತೊಂದಕ್ಕೆ ವಿಸ್ತರಿಸುವ ದೀರ್ಘಕಾಲೀನ ಒಪ್ಪಂದಗಳ ಆಧಾರದ ಮೇಲೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವರ ಸಿಇಒ, ಹಾಕ್ ಟಾನ್, ಜೂನ್ ಮೂರರ ಆದಾಯ ಕರೆಯಲ್ಲಿ ಹಣಕಾಸು ವರ್ಷ ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೇಳಕ್ಕೆ ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಎಐ ಸೆಮಿಕಂಡಕ್ಟರ್ ಆದಾಯ ಗುರಿಯನ್ನು ಮತ್ತೆ ಪ್ರತಿಪಾದಿಸಿದರು — ಸರಿಸುಮಾರು ಎಪ್ಪತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಎಐ ಬ್ಯಾಕ್‌ಲಾಗ್ ಮತ್ತು ಆಲ್ಫಾಬೆಟ್ ಹಾಗೂ ಮೆಟಾ ಜೊತೆ ಇಪ್ಪತ್ತೊಂದಕ್ಕೆ ವಿಸ್ತರಿಸುವ ದೀರ್ಘಕಾಲೀನ ಒಪ್ಪಂದಗಳ ಆಧಾರದ ಮೇಲೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ, ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಆದಾಯ ಗುರಿ, ಹಾಗೂ ಚಿಲ್ಲರೆ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಬಹುತೇಕ ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಗುರುತಿಲ್ಲ.",
+      "text_markdown": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ, ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ A.I. ಆದಾಯ ಗುರಿ, ಹಾಗೂ ಚಿಲ್ಲರೆ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಬಹುತೇಕ ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಗುರುತಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಎರಡು ಟ್ರಿಲಿಯನ್ ಡಾಲರ್ ಮಾರುಕಟ್ಟೆ ಬಂಡವಾಳ, ನೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಎಐ ಆದಾಯ ಗುರಿ, ಹಾಗೂ ಚಿಲ್ಲರೆ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಬಹುತೇಕ ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಗುರುತಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಎರಡನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ASML.",
+      "text_markdown": "ಈ ವಾರದ ಎರಡನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ASML.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಎರಡನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ASML, ಎಲ್ಲಾ ಮುಂಚೂಣಿ ತರ್ಕ ಚಿಪ್‌ಗಳಿಗೆ ಅಗತ್ಯವಾದ ಲಿಥೋಗ್ರಫಿ ಯಂತ್ರಗಳನ್ನು ನಿರ್ಮಿಸುವ ಡಚ್ ಕಂಪನಿ, ತನ್ನ High-N.A. E.U.V. ವ್ಯವಸ್ಥೆಯನ್ನು ಸರಿಸುಮಾರು ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್‌ಗೆ ಮಾರಾಟ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ASML, ಎಲ್ಲಾ ಮುಂಚೂಣಿ ತರ್ಕ ಚಿಪ್‌ಗಳಿಗೆ ಅಗತ್ಯವಾದ ಲಿಥೋಗ್ರಫಿ ಯಂತ್ರಗಳನ್ನು ನಿರ್ಮಿಸುವ ಡಚ್ ಕಂಪನಿ, ತನ್ನ High-N.A. E.U.V. ವ್ಯವಸ್ಥೆಯನ್ನು ಸರಿಸುಮಾರು ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್‌ಗೆ ಮಾರಾಟ ಮಾಡುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಎಎಸ್‌ಎಂಎಲ್, ಎಲ್ಲಾ ಮುಂಚೂಣಿ ತರ್ಕ ಚಿಪ್‌ಗಳಿಗೆ ಅಗತ್ಯವಾದ ಲಿಥೋಗ್ರಫಿ ಯಂತ್ರಗಳನ್ನು ನಿರ್ಮಿಸುವ ಡಚ್ ಕಂಪನಿ, ತನ್ನ ಹೈ ಎನ್‌ಎ ಇಯುವಿ ವ್ಯವಸ್ಥೆಯನ್ನು ಸರಿಸುಮಾರು ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್‌ಗೆ ಮಾರಾಟ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಜಾಗತಿಕ ಉತ್ಪಾದನಾ ಸಾಮರ್ಥ್ಯ ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಘಟಕಗಳಷ್ಟೇ ಇದೆ.",
+      "text_markdown": "ಜಾಗತಿಕ ಉತ್ಪಾದನಾ ಸಾಮರ್ಥ್ಯ ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಘಟಕಗಳಷ್ಟೇ ಇದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಜಾಗತಿಕ ಉತ್ಪಾದನಾ ಸಾಮರ್ಥ್ಯ ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಘಟಕಗಳಷ್ಟೇ ಇದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್ ಒಂದು ಯಂತ್ರಕ್ಕೆ, ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಯಂತ್ರಗಳು, ಒಂದೇ ಕಂಪನಿ ಅವುಗಳನ್ನು ತಯಾರಿಸುತ್ತದೆ — ಇದು ಜಾಗತಿಕ ಸಿಲಿಕಾನ್‌ನ ನಿಜವಾದ ಕಿರಿದಾದ ಅಂಗಳ, ನೀತಿಯಲ್ಲ.",
+      "text_markdown": "ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್ ಒಂದು ಯಂತ್ರಕ್ಕೆ, ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಯಂತ್ರಗಳು, ಒಂದೇ ಕಂಪನಿ ಅವುಗಳನ್ನು ತಯಾರಿಸುತ್ತದೆ — ಇದು ಜಾಗತಿಕ ಸಿಲಿಕಾನ್‌ನ ನಿಜವಾದ ಕಿರಿದಾದ ಅಂಗಳ, ನೀತಿಯಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುನ್ನೂರ ಎಪ್ಪತ್ತು ಮಿಲಿಯನ್ ಡಾಲರ್ ಒಂದು ಯಂತ್ರಕ್ಕೆ, ವರ್ಷಕ್ಕೆ ಇಪ್ಪತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಯಂತ್ರಗಳು, ಒಂದೇ ಕಂಪನಿ ಅವುಗಳನ್ನು ತಯಾರಿಸುತ್ತದೆ — ಇದು ಜಾಗತಿಕ ಸಿಲಿಕಾನ್‌ನ ನಿಜವಾದ ಕಿರಿದಾದ ಅಂಗಳ, ನೀತಿಯಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಮೂರನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು.",
+      "text_markdown": "ಈ ವಾರದ ಮೂರನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಮೂರನೇ ಮುಖ್ಯ ಸುದ್ದಿ, ರಫ್ತು ನಿಯಂತ್ರಣಗಳು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Commerce ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೈದರ ಮೇ ಹದಿಮೂರರಂದು Biden ಯುಗದ A.I. Diffusion Rule ಅನ್ನು ರದ್ದುಗೊಳಿಸಿತು ಮತ್ತು ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರ ಮೇ ಮೂವತ್ತೊಂದರವರೆಗೆ ಹೊಸ B.I.S. ಜಾರಿ ಸ್ಪಷ್ಟೀಕರಣವನ್ನು ನೀಡಲಿಲ್ಲ.",
+      "text_markdown": "Commerce ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೈದರ ಮೇ ಹದಿಮೂರರಂದು Biden ಯುಗದ A.I. Diffusion Rule ಅನ್ನು ರದ್ದುಗೊಳಿಸಿತು ಮತ್ತು ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರ ಮೇ ಮೂವತ್ತೊಂದರವರೆಗೆ ಹೊಸ B.I.S. ಜಾರಿ ಸ್ಪಷ್ಟೀಕರಣವನ್ನು ನೀಡಲಿಲ್ಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಕಾಮರ್ಸ್ ಇಪ್ಪತ್ತಿಪ್ಪತ್ತೈದರ ಮೇ ಹದಿಮೂರರಂದು ಬೈಡನ್ ಯುಗದ ಎಐ ಡಿಫ್ಯೂಷನ್ ರೂಲ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಿತು ಮತ್ತು ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರರ ಮೇ ಮೂವತ್ತೊಂದರವರೆಗೆ ಹೊಸ ಬಿಐಎಸ್ ಜಾರಿ ಸ್ಪಷ್ಟೀಕರಣವನ್ನು ನೀಡಲಿಲ್ಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅಂದರೆ ಲೈಸೆನ್ಸಿಂಗ್ ಅವಶ್ಯಕತೆಗಳನ್ನು ಸಕ್ರಿಯವಾಗಿ ಜಾರಿಗೊಳಿಸದ ಸರಿಸುಮಾರು ಒಂದು ವರ್ಷದ ಅವಧಿ ಇತ್ತು.",
+      "text_markdown": "ಅಂದರೆ ಲೈಸೆನ್ಸಿಂಗ್ ಅವಶ್ಯಕತೆಗಳನ್ನು ಸಕ್ರಿಯವಾಗಿ ಜಾರಿಗೊಳಿಸದ ಸರಿಸುಮಾರು ಒಂದು ವರ್ಷದ ಅವಧಿ ಇತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಅಂದರೆ ಲೈಸೆನ್ಸಿಂಗ್ ಅವಶ್ಯಕತೆಗಳನ್ನು ಸಕ್ರಿಯವಾಗಿ ಜಾರಿಗೊಳಿಸದ ಸರಿಸುಮಾರು ಒಂದು ವರ್ಷದ ಅವಧಿ ಇತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹಾಗಾಗಿ ದಿನಗಳನ್ನು ಎಣಿಸಿ.",
+      "text_markdown": "ಹಾಗಾಗಿ ದಿನಗಳನ್ನು ಎಣಿಸಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಹಾಗಾಗಿ ದಿನಗಳನ್ನು ಎಣಿಸಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಒಂದು U.S. ಮಾದರಿಯನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಲು ಎಪ್ಪತ್ತೆರಡು ಗಂಟೆಗಳು, ಚಿಪ್ ರಫ್ತು ನಿಯಮವನ್ನು ಜಾರಿಗೊಳಿಸಲು ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳು — ಆ ಅಸಮತೋಲನವೇ ಈ ಕಾರ್ಯಕ್ರಮದ ಮೂಲ.",
+      "text_markdown": "ಒಂದು U.S. ಮಾದರಿಯನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಲು ಎಪ್ಪತ್ತೆರಡು ಗಂಟೆಗಳು, ಚಿಪ್ ರಫ್ತು ನಿಯಮವನ್ನು ಜಾರಿಗೊಳಿಸಲು ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳು — ಆ ಅಸಮತೋಲನವೇ ಈ ಕಾರ್ಯಕ್ರಮದ ಮೂಲ.",
+      "title": "",
+      "tts": {
+        "text": "ಒಂದು ಯುಎಸ್ ಮಾದರಿಯನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಲು ಎಪ್ಪತ್ತೆರಡು ಗಂಟೆಗಳು, ಚಿಪ್ ರಫ್ತು ನಿಯಮವನ್ನು ಜಾರಿಗೊಳಿಸಲು ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳು — ಆ ಅಸಮತೋಲನವೇ ಈ ಕಾರ್ಯಕ್ರಮದ ಮೂಲ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು ಆ ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳಲ್ಲಿ ಚಿಪ್‌ಗಳು ಎಲ್ಲಿ ಹೋದವು.",
+      "text_markdown": "ಮತ್ತು ಆ ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳಲ್ಲಿ ಚಿಪ್‌ಗಳು ಎಲ್ಲಿ ಹೋದವು.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು ಆ ಮುನ್ನೂರ ಎಂಬತ್ತು ದಿನಗಳಲ್ಲಿ ಚಿಪ್‌ಗಳು ಎಲ್ಲಿ ಹೋದವು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹೆಚ್ಚಿನವು ಆಗ್ನೇಯ ಏಷ್ಯಾಕ್ಕೆ ಹೋದವು.",
+      "text_markdown": "ಹೆಚ್ಚಿನವು ಆಗ್ನೇಯ ಏಷ್ಯಾಕ್ಕೆ ಹೋದವು.",
+      "title": "",
+      "tts": {
+        "text": "ಹೆಚ್ಚಿನವು ಆಗ್ನೇಯ ಏಷ್ಯಾಕ್ಕೆ ಹೋದವು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Justice Department ಮಾರ್ಚ್ ಕೊನೆಯ ಭಾಗದಲ್ಲಿ ಆರೋಪ ಪಟ್ಟಿಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — Nvidia H100 ಮತ್ತು A100 ಚಿಪ್‌ಗಳನ್ನು ಮಲೇಷ್ಯಾ ಮತ್ತು ಸಿಂಗಾಪುರದ ಮಧ್ಯವರ್ತಿಗಳ ಮೂಲಕ ರವಾನಿಸಲಾಯಿತು ಎಂದು ಆರೋಪಿಸಲಾಗಿತ್ತು.",
+      "text_markdown": "Justice Department ಮಾರ್ಚ್ ಕೊನೆಯ ಭಾಗದಲ್ಲಿ ಆರೋಪ ಪಟ್ಟಿಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — Nvidia H100 ಮತ್ತು A100 ಚಿಪ್‌ಗಳನ್ನು ಮಲೇಷ್ಯಾ ಮತ್ತು ಸಿಂಗಾಪುರದ ಮಧ್ಯವರ್ತಿಗಳ ಮೂಲಕ ರವಾನಿಸಲಾಯಿತು ಎಂದು ಆರೋಪಿಸಲಾಗಿತ್ತು.",
+      "title": "",
+      "tts": {
+        "text": "ಜಸ್ಟಿಸ್ ಡಿಪಾರ್ಟ್‌ಮೆಂಟ್ ಮಾರ್ಚ್ ಕೊನೆಯ ಭಾಗದಲ್ಲಿ ಆರೋಪ ಪಟ್ಟಿಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿತು — ಎನ್‌ವಿಡಿಯಾ ಎಚ್ ನೂರು ಮತ್ತು ಎ ನೂರು ಚಿಪ್‌ಗಳನ್ನು ಮಲೇಷ್ಯಾ ಮತ್ತು ಸಿಂಗಾಪುರದ ಮಧ್ಯವರ್ತಿಗಳ ಮೂಲಕ ರವಾನಿಸಲಾಯಿತು ಎಂದು ಆರೋಪಿಸಲಾಗಿತ್ತು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune ಮೇ ತಿಂಗಳಲ್ಲಿ ರಸದ್ಭುತ ಸಂದೇಶಗಳನ್ನು ಪ್ರಕಟಿಸಿ ಲಾಜಿಸ್ಟಿಕ್ಸ್ ತೋರಿಸಿತು, ಮತ್ತು Super Micro ಎರಡೂವರೆ ಬಿಲಿಯನ್ ಡಾಲರ್ ಶೆಲ್ ಕಂಪನಿ ಪ್ರಕರಣದಲ್ಲಿ ಭಾಗಿಯಾಗಿದೆ ಎಂದು ಹೇಳಲಾಗುತ್ತಿದೆ.",
+      "text_markdown": "Fortune ಮೇ ತಿಂಗಳಲ್ಲಿ ರಸದ್ಭುತ ಸಂದೇಶಗಳನ್ನು ಪ್ರಕಟಿಸಿ ಲಾಜಿಸ್ಟಿಕ್ಸ್ ತೋರಿಸಿತು, ಮತ್ತು Super Micro ಎರಡೂವರೆ ಬಿಲಿಯನ್ ಡಾಲರ್ ಶೆಲ್ ಕಂಪನಿ ಪ್ರಕರಣದಲ್ಲಿ ಭಾಗಿಯಾಗಿದೆ ಎಂದು ಹೇಳಲಾಗುತ್ತಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಫಾರ್ಚ್ಯೂನ್ ಮೇ ತಿಂಗಳಲ್ಲಿ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಸಂದೇಶಗಳನ್ನು ಪ್ರಕಟಿಸಿ ಲಾಜಿಸ್ಟಿಕ್ಸ್ ತೋರಿಸಿತು, ಮತ್ತು ಸೂಪರ್ ಮೈಕ್ರೋ ಎರಡೂವರೆ ಬಿಲಿಯನ್ ಡಾಲರ್ ಶೆಲ್ ಕಂಪನಿ ಪ್ರಕರಣದಲ್ಲಿ ಭಾಗಿಯಾಗಿದೆ ಎಂದು ಹೇಳಲಾಗುತ್ತಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Trump ಆಡಳಿತ ನಿರ್ದಿಷ್ಟವಾಗಿ ಮಲೇಷ್ಯಾ ಮತ್ತು ಥೈಲ್ಯಾಂಡ್ ಗುರಿಯಾಗಿಟ್ಟುಕೊಂಡು ಹೊಸ ಚಿಪ್ ರಫ್ತು ನಿರ್ಬಂಧಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿಯಾಗಿದೆ.",
+      "text_markdown": "Trump ಆಡಳಿತ ನಿರ್ದಿಷ್ಟವಾಗಿ ಮಲೇಷ್ಯಾ ಮತ್ತು ಥೈಲ್ಯಾಂಡ್ ಗುರಿಯಾಗಿಟ್ಟುಕೊಂಡು ಹೊಸ ಚಿಪ್ ರಫ್ತು ನಿರ್ಬಂಧಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿಯಾಗಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಟ್ರಂಪ್ ಆಡಳಿತ ನಿರ್ದಿಷ್ಟವಾಗಿ ಮಲೇಷ್ಯಾ ಮತ್ತು ಥೈಲ್ಯಾಂಡ್ ಗುರಿಯಾಗಿಟ್ಟುಕೊಂಡು ಹೊಸ ಚಿಪ್ ರಫ್ತು ನಿರ್ಬಂಧಗಳನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿಯಾಗಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹಾಗಾಗಿ ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಚಿತ್ರಣ.",
+      "text_markdown": "ಹಾಗಾಗಿ ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಚಿತ್ರಣ.",
+      "title": "",
+      "tts": {
+        "text": "ಹಾಗಾಗಿ ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಚಿತ್ರಣ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಚಿಪ್‌ಗಳು ನೇರವಾಗಿ Shenzhen ಕ್ಕೆ ಹೋಗುವುದಿಲ್ಲ — ಮೊದಲು Penang ಮತ್ತು Singapore ಗೆ ಹೋಗುತ್ತವೆ.",
+      "text_markdown": "ಚಿಪ್‌ಗಳು ನೇರವಾಗಿ Shenzhen ಕ್ಕೆ ಹೋಗುವುದಿಲ್ಲ — ಮೊದಲು Penang ಮತ್ತು Singapore ಗೆ ಹೋಗುತ್ತವೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಚಿಪ್‌ಗಳು ನೇರವಾಗಿ Shenzhen ಕ್ಕೆ ಹೋಗುವುದಿಲ್ಲ — ಮೊದಲು Penang ಮತ್ತು Singapore ಗೆ ಹೋಗುತ್ತವೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ: ಉಳಿದ ಕಾರ್ಯನಿರ್ವಹಣಾ ಬಾಧ್ಯತೆಗಳು.",
+      "text_markdown": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ: ಉಳಿದ ಕಾರ್ಯನಿರ್ವಹಣಾ ಬಾಧ್ಯತೆಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "ಈ ವಾರದ ಪರಿಕಲ್ಪನೆ, ಉಳಿದ ಕಾರ್ಯನಿರ್ವಹಣಾ ಬಾಧ್ಯತೆಗಳು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "R.P.O. ಎಂಬುದು ಒಂದು ಲೆಕ್ಕಪರಿಶೋಧನಾ ಸಾಲು — ಕಂಪನಿ ಸಹಿ ಮಾಡಿದ ಆದರೆ ಇನ್ನೂ ಪೂರೈಸದ ಒಪ್ಪಂದಗಳ ಡಾಲರ್ ಮೌಲ್ಯವನ್ನು ದಾಖಲಿಸುತ್ತದೆ.",
+      "text_markdown": "R.P.O. ಎಂಬುದು ಒಂದು ಲೆಕ್ಕಪರಿಶೋಧನಾ ಸಾಲು — ಕಂಪನಿ ಸಹಿ ಮಾಡಿದ ಆದರೆ ಇನ್ನೂ ಪೂರೈಸದ ಒಪ್ಪಂದಗಳ ಡಾಲರ್ ಮೌಲ್ಯವನ್ನು ದಾಖಲಿಸುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆರ್‌ಪಿಒ ಎಂಬುದು ಒಂದು ಲೆಕ್ಕಪರಿಶೋಧನಾ ಸಾಲು — ಕಂಪನಿ ಸಹಿ ಮಾಡಿದ ಆದರೆ ಇನ್ನೂ ಪೂರೈಸದ ಒಪ್ಪಂದಗಳ ಡಾಲರ್ ಮೌಲ್ಯವನ್ನು ದಾಖಲಿಸುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇದು ಭವಿಷ್ಯಮುಖಿ — ಇಂದು ಬ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಹಣವನ್ನಲ್ಲ, ಭವಿಷ್ಯದ ಆದಾಯದ ಬಗ್ಗೆ ಹೇಳುತ್ತದೆ.",
+      "text_markdown": "ಇದು ಭವಿಷ್ಯಮುಖಿ — ಇಂದು ಬ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಹಣವನ್ನಲ್ಲ, ಭವಿಷ್ಯದ ಆದಾಯದ ಬಗ್ಗೆ ಹೇಳುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಭವಿಷ್ಯಮುಖಿ — ಇಂದು ಬ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಹಣವನ್ನಲ್ಲ, ಭವಿಷ್ಯದ ಆದಾಯದ ಬಗ್ಗೆ ಹೇಳುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮತ್ತು Oracle ಗೆ ಇದು ಏಕೆ ಮುಖ್ಯ.",
+      "text_markdown": "ಮತ್ತು Oracle ಗೆ ಇದು ಏಕೆ ಮುಖ್ಯ.",
+      "title": "",
+      "tts": {
+        "text": "ಮತ್ತು Oracle ಗೆ ಇದು ಏಕೆ ಮುಖ್ಯ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಏಕೆಂದರೆ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ R.P.O., ಒಂದು ನಿರ್ಮಾಣಕ್ಕಾಗಿ ಒಬ್ಬ ಗ್ರಾಹಕರಲ್ಲಿ ಭಾರೀ ಕೇಂದ್ರೀಕೃತವಾಗಿದ್ದರೆ, Oracle ಮುಂದಿನ ಕೆಲವು ವರ್ಷಗಳಲ್ಲಿ ಅಪಾರ ಪ್ರಮಾಣದ compute ವನ್ನು ನೀಡಲು ವಾಗ್ದಾನ ಮಾಡಿದೆ — ತನ್ನದೇ ಆದಾಯ ಮಾದರಿ ಇನ್ನೂ ಚರ್ಚೆಯಲ್ಲಿರುವ ಗ್ರಾಹಕರಿಗೆ.",
+      "text_markdown": "ಏಕೆಂದರೆ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ R.P.O., ಒಂದು ನಿರ್ಮಾಣಕ್ಕಾಗಿ ಒಬ್ಬ ಗ್ರಾಹಕರಲ್ಲಿ ಭಾರೀ ಕೇಂದ್ರೀಕೃತವಾಗಿದ್ದರೆ, Oracle ಮುಂದಿನ ಕೆಲವು ವರ್ಷಗಳಲ್ಲಿ ಅಪಾರ ಪ್ರಮಾಣದ compute ವನ್ನು ನೀಡಲು ವಾಗ್ದಾನ ಮಾಡಿದೆ — ತನ್ನದೇ ಆದಾಯ ಮಾದರಿ ಇನ್ನೂ ಚರ್ಚೆಯಲ್ಲಿರುವ ಗ್ರಾಹಕರಿಗೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಏಕೆಂದರೆ ಐನೂರ ಐವತ್ತಮೂರು ಬಿಲಿಯನ್ ಡಾಲರ್ ಆರ್‌ಪಿಒ, ಒಂದು ನಿರ್ಮಾಣಕ್ಕಾಗಿ ಒಬ್ಬ ಗ್ರಾಹಕರಲ್ಲಿ ಭಾರೀ ಕೇಂದ್ರೀಕೃತವಾಗಿದ್ದರೆ, ಒರಾಕಲ್ ಮುಂದಿನ ಕೆಲವು ವರ್ಷಗಳಲ್ಲಿ ಅಪಾರ ಪ್ರಮಾಣದ ಕಂಪ್ಯೂಟ್ ಅನ್ನು ನೀಡಲು ವಾಗ್ದಾನ ಮಾಡಿದೆ — ತನ್ನದೇ ಆದಾಯ ಮಾದರಿ ಇನ್ನೂ ಚರ್ಚೆಯಲ್ಲಿರುವ ಗ್ರಾಹಕರಿಗೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಆ ಒಪ್ಪಂದಗಳು ಯಶಸ್ವಿಯಾದರೆ, Oracle ದಶಕದ ಒಪ್ಪಂದ ಮಾಡಿಕೊಂಡಿದೆ.",
+      "text_markdown": "ಆ ಒಪ್ಪಂದಗಳು ಯಶಸ್ವಿಯಾದರೆ, Oracle ದಶಕದ ಒಪ್ಪಂದ ಮಾಡಿಕೊಂಡಿದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಆ ಒಪ್ಪಂದಗಳು ಯಶಸ್ವಿಯಾದರೆ, Oracle ದಶಕದ ಒಪ್ಪಂದ ಮಾಡಿಕೊಂಡಿದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಅವು ತಡವಾದರೆ — ಅಥವಾ ಮರು-ಮಾತುಕತೆಗೆ ಒಳಗಾದರೆ — Oracle ಒಪ್ಪಂದಗಳು ಕುಗ್ಗುತ್ತಿರುವಾಗ ಸಾಲದ ಹೊರೆ ಹೊರುತ್ತಿರುತ್ತದೆ.",
+      "text_markdown": "ಅವು ತಡವಾದರೆ — ಅಥವಾ ಮರು-ಮಾತುಕತೆಗೆ ಒಳಗಾದರೆ — Oracle ಒಪ್ಪಂದಗಳು ಕುಗ್ಗುತ್ತಿರುವಾಗ ಸಾಲದ ಹೊರೆ ಹೊರುತ್ತಿರುತ್ತದೆ.",
+      "title": "",
+      "tts": {
+        "text": "ಅವು ತಡವಾದರೆ — ಅಥವಾ ಮರು-ಮಾತುಕತೆಗೆ ಒಳಗಾದರೆ — Oracle ಒಪ್ಪಂದಗಳು ಕುಗ್ಗುತ್ತಿರುವಾಗ ಸಾಲದ ಹೊರೆ ಹೊರುತ್ತಿರುತ್ತದೆ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಹಾಗಾಗಿ ತಂತ್ರಜ್ಞಾನ ಫೈಲಿಂಗ್‌ನಲ್ಲಿ R.P.O. ಸಂಖ್ಯೆ ಕಂಡಾಗ.",
+      "text_markdown": "ಹಾಗಾಗಿ ತಂತ್ರಜ್ಞಾನ ಫೈಲಿಂಗ್‌ನಲ್ಲಿ R.P.O. ಸಂಖ್ಯೆ ಕಂಡಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಹಾಗಾಗಿ ತಂತ್ರಜ್ಞಾನ ಫೈಲಿಂಗ್‌ನಲ್ಲಿ ಆರ್‌ಪಿಒ ಸಂಖ್ಯೆ ಕಂಡಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಗ್ರಾಹಕರು ಯಾರು, ಬಾಧ್ಯತೆಗಳು ಎಷ್ಟು ಕೇಂದ್ರೀಕೃತವಾಗಿವೆ, ಮತ್ತು ಕಂಪನಿ ಅವುಗಳನ್ನು ನಿಜವಾಗಿ ಪೂರೈಸಲು ಏನು ನಡೆಯಬೇಕು ಎಂಬುದನ್ನು ಓದಿ.",
+      "text_markdown": "ಗ್ರಾಹಕರು ಯಾರು, ಬಾಧ್ಯತೆಗಳು ಎಷ್ಟು ಕೇಂದ್ರೀಕೃತವಾಗಿವೆ, ಮತ್ತು ಕಂಪನಿ ಅವುಗಳನ್ನು ನಿಜವಾಗಿ ಪೂರೈಸಲು ಏನು ನಡೆಯಬೇಕು ಎಂಬುದನ್ನು ಓದಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಗ್ರಾಹಕರು ಯಾರು, ಬಾಧ್ಯತೆಗಳು ಎಷ್ಟು ಕೇಂದ್ರೀಕೃತವಾಗಿವೆ, ಮತ್ತು ಕಂಪನಿ ಅವುಗಳನ್ನು ನಿಜವಾಗಿ ಪೂರೈಸಲು ಏನು ನಡೆಯಬೇಕು ಎಂಬುದನ್ನು ಓದಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "R.P.O. ಎಂಬುದು ಫ಼ೂಟ್‌ನೋಟ್‌ಗಳಲ್ಲಿ bag-holder ಗಳು ಕಾಣಿಸಿಕೊಳ್ಳುವ ಜಾಗ.",
+      "text_markdown": "R.P.O. ಎಂಬುದು ಫ಼ೂಟ್‌ನೋಟ್‌ಗಳಲ್ಲಿ bag-holder ಗಳು ಕಾಣಿಸಿಕೊಳ್ಳುವ ಜಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಆರ್‌ಪಿಒ ಎಂಬುದು ಫ಼ೂಟ್‌ನೋಟ್‌ಗಳಲ್ಲಿ ಬ್ಯಾಗ್ ಹೋಲ್ಡರ್‌ಗಳು ಕಾಣಿಸಿಕೊಳ್ಳುವ ಜಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮುಗಿಸಲು ಒಳ್ಳೆಯ ಜಾಗ.",
+      "text_markdown": "ಮುಗಿಸಲು ಒಳ್ಳೆಯ ಜಾಗ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಗಿಸಲು ಒಳ್ಳೆಯ ಜಾಗ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, ಸಾರಾಂಶಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+      "text_markdown": "Ron, ಸಾರಾಂಶಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+      "title": "",
+      "tts": {
+        "text": "Ron, ಸಾರಾಂಶಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy — ಇಲ್ಲಿರಲು ಸಂತೋಷ.",
+      "text_markdown": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy — ಇಲ್ಲಿರಲು ಸಂತೋಷ.",
+      "title": "",
+      "tts": {
+        "text": "ಯಾವಾಗ ಬೇಕಾದರೂ, Vindy — ಇಲ್ಲಿರಲು ಸಂತೋಷ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಇದು ಜೂನ್ ಇಪ್ಪತ್ತೊಂದರ AI This Week ಆಗಿತ್ತು, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರು.",
+      "text_markdown": "ಇದು ಜೂನ್ ಇಪ್ಪತ್ತೊಂದರ AI This Week ಆಗಿತ್ತು, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರು.",
+      "title": "",
+      "tts": {
+        "text": "ಇದು ಜೂನ್ ಇಪ್ಪತ್ತೊಂದರ ಎಐ ದಿಸ್ ವೀಕ್ ಆಗಿತ್ತು, ಇಪ್ಪತ್ತಿಪ್ಪತ್ತಾರು.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮುಂದಿನ ವಾರ, open-weights ಮತ್ತು ಸಣ್ಣ ಲ್ಯಾಬ್ ಬೀಟ್‌ಗೆ ಮರಳಿ.",
+      "text_markdown": "ಮುಂದಿನ ವಾರ, open-weights ಮತ್ತು ಸಣ್ಣ ಲ್ಯಾಬ್ ಬೀಟ್‌ಗೆ ಮರಳಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದಿನ ವಾರ, ಓಪನ್ ವೇಟ್ಸ್ ಮತ್ತು ಸ್ಮಾಲ್ ಲ್ಯಾಬ್ ಬೀಟ್‌ಗೆ ಮರಳಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಆರೋಗ್ಯವಾಗಿರಿ.",
+      "text_markdown": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಆರೋಗ್ಯವಾಗಿರಿ.",
+      "title": "",
+      "tts": {
+        "text": "ಮುಂದಿನ ಭಾನುವಾರದವರೆಗೆ, ಆರೋಗ್ಯವಾಗಿರಿ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

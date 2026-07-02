@@ -1,0 +1,2567 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "language": "he",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "יער הגשם הטרופי",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "יער הגשם הטרופי",
+      "text_markdown": "יער הגשם הטרופי"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "היכן גדלים יערות הגשם",
+      "text_markdown": "היכן גדלים יערות הגשם"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברוכים הבאים ליער הגשם הטרופי.",
+      "text_markdown": "ברוכים הבאים ליער הגשם הטרופי.",
+      "tts": {
+        "text": "בְרוּכִים הַבָּאִים לְיַעַר הַגְּשָׁם הַטְּרוֹפִי.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו אחד הביומים הגדולים של העולם.",
+      "text_markdown": "זהו אחד הביומים הגדולים של העולם.",
+      "tts": {
+        "text": "זֶהוּ אֶחָד הַבִּיוֹמִים הַגְּדוֹלִים שֶׁל הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביום הוא חלק של כדור הארץ עם מזג אויר, צמחים ובעלי חיים שלו.",
+      "text_markdown": "ביום הוא חלק של כדור הארץ עם מזג אויר, צמחים ובעלי חיים שלו.",
+      "tts": {
+        "text": "בִּיוֹם הוּא חֵלֶק שֶׁל כְּדוּר הָאָרֶץ עִם מֶזֶג אָוִיר, צְמָחִים וּבְעָלֵי חַיִּים שֶׁלּוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביער הגשם הטרופי חם כל השנה.",
+      "text_markdown": "ביער הגשם הטרופי חם כל השנה.",
+      "tts": {
+        "text": "בַּיַּעַר הַגְּשָׁם הַטְּרוֹפִי חַם כָּל הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל השנה רטוב.",
+      "text_markdown": "כל השנה רטוב.",
+      "tts": {
+        "text": "כָּל הַשָּׁנָה רָטוֹב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא מלא בחיים.",
+      "text_markdown": "הוא מלא בחיים.",
+      "tts": {
+        "text": "הוּא מָלֵא בַּחַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב יערות הגשם גדולים ליד קו המשווה.",
+      "text_markdown": "רוב יערות הגשם גדולים ליד קו המשווה.",
+      "tts": {
+        "text": "רוּב יַעֲרוֹת הַגְּשָׁם גְּדוֹלִים לִיד קַו הַמִּשְׁוָּוה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קו המשווה הוא הקו שעובר סביב אמצע כדור הארץ.",
+      "text_markdown": "קו המשווה הוא הקו שעובר סביב אמצע כדור הארץ.",
+      "tts": {
+        "text": "קַו הַמִּשְׁוָּוה הוּא הַקַּו שֶׁעוֹבֵר סָבִיב אֶמְצַע כְּדוּר הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ליד קו המשווה השמש חזקה כל יום.",
+      "text_markdown": "ליד קו המשווה השמש חזקה כל יום.",
+      "tts": {
+        "text": "לִיד קַו הַמִּשְׁוָּוה הַשֶּׁמֶשׁ חֲזָקָה כָּל יוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יער הגשם הגדול בעולם הוא יער האמזונס, בדרום אמריקה.",
+      "text_markdown": "יער הגשם הגדול בעולם הוא יער האמזונס, בדרום אמריקה.",
+      "tts": {
+        "text": "יַעַר הַגְּשָׁם הַגָּדוֹל בָּעוֹלָם הוּא יַעַר הָאֲמָזוֹנָס, בִּדְרוֹם אָמֵרִיקָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יערות גשם גדולים גם באפריקה, ליד נהר הקונגו.",
+      "text_markdown": "יש יערות גשם גדולים גם באפריקה, ליד נהר הקונגו.",
+      "tts": {
+        "text": "יֵשׁ יַעֲרוֹת גְּשָׁם גְּדוֹלִים גַּם בְּאַפְרִיקָה, לִיד נְהַר הַקּוֹנְגוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יערות גשם בדרום מזרח אסיה, באיים רבים.",
+      "text_markdown": "יש יערות גשם בדרום מזרח אסיה, באיים רבים.",
+      "tts": {
+        "text": "יֵשׁ יַעֲרוֹת גְּשָׁם בִּדְרוֹם מִזְרַח אַסְיָה, בָּאִיִּים רַבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יערות גשם קטנים יותר במרכז אמריקה ובאיים באוקינוס השקט.",
+      "text_markdown": "יש יערות גשם קטנים יותר במרכז אמריקה ובאיים באוקינוס השקט.",
+      "tts": {
+        "text": "יֵשׁ יַעֲרוֹת גְּשָׁם קְטַנִּים יוֹתֵר בְּמֶרְכַּז אָמֵרִיקָה וּבְאִיִּים בָּאוֹקְיָנוֹס הַשָּׁקֵט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל אחד מהיערות האלה גדול בעצמו, רחוק מהאחרים.",
+      "text_markdown": "כל אחד מהיערות האלה גדול בעצמו, רחוק מהאחרים.",
+      "tts": {
+        "text": "כָּל אֶחָד מִהַיַּעֲרוֹת הָאֵלֶּה גְּדוֹל בְּעַצְמוֹ, רָחוֹק מֵהָאֲחֵרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז הצמחים ובעלי החיים שונים בכל חלק של העולם.",
+      "text_markdown": "אז הצמחים ובעלי החיים שונים בכל חלק של העולם.",
+      "tts": {
+        "text": "אַז הַצְּמָחִים וּבְעָלֵי הַחַיִּים שׁוֹנִים בְּכָל חֵלֶק שֶׁל הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קוף ביער האמזונס אינו זהה לקוף באפריקה או באסיה.",
+      "text_markdown": "קוף ביער האמזונס אינו זהה לקוף באפריקה או באסיה.",
+      "tts": {
+        "text": "קוֹף בְּיַעַר הָאֲמָזוֹנָס אֵינוֹ זָהֶה לְקוֹף בְּאַפְרִיקָה אוֹ בְּאַסְיָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל כלם חלק מאותו ביום.",
+      "text_markdown": "אבל כלם חלק מאותו ביום.",
+      "tts": {
+        "text": "אֲבָל כֻּלָּם חֵלֶק מֵאוֹתוֹ בִּיוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשאתם עומדים בתוך יער גשם, האויר מרגיש כבד וחם.",
+      "text_markdown": "כשאתם עומדים בתוך יער גשם, האויר מרגיש כבד וחם.",
+      "tts": {
+        "text": "כְּשֶׁאַתֶּם עוֹמְדִים בְּתוֹךְ יַעַר גְּשָׁם, הָאָוִיר מַרְגִּיש כָּבֵד וְחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האור רך וירוק.",
+      "text_markdown": "האור רך וירוק.",
+      "tts": {
+        "text": "הָאוֹר רַךְ וְיָרוֹק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העצים כל כך גבוהים שכמעט אי אפשר לראות את השמים.",
+      "text_markdown": "העצים כל כך גבוהים שכמעט אי אפשר לראות את השמים.",
+      "tts": {
+        "text": "הָעֵצִים כָּל כָּךְ גְּבוֹהִים שֶׁכְּמַעַט אִי אֶפְשָׁר לִרְאוֹת אֶת הַשָּׁמַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שומעים צפורים וחרקים מסביב.",
+      "text_markdown": "שומעים צפורים וחרקים מסביב.",
+      "tts": {
+        "text": "שׁוֹמְעִים צִפּוֹרִים וְחַרְקִים מִסָּבִיב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שומעים מים מטפטפים מהעלים.",
+      "text_markdown": "שומעים מים מטפטפים מהעלים.",
+      "tts": {
+        "text": "שׁוֹמְעִים מַיִם מִטְפְּטְפִים מֵהָעָלִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מרגישים כאילו אתם בתוך חדר חי.",
+      "text_markdown": "מרגישים כאילו אתם בתוך חדר חי.",
+      "tts": {
+        "text": "מַרְגִּישִׁים כְּאִילּוּ אַתֶּם בְּתוֹךְ חֶדֶר חַי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה מה שיער הגשם הוא.",
+      "text_markdown": "זה מה שיער הגשם הוא.",
+      "tts": {
+        "text": "זֶה מַה שֶּׁיַּעַר הַגְּשָׁם הוּא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "היכן גדלים יערות הגשם",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עולם שלם בנוי מעצים ומגשם.",
+      "text_markdown": "עולם שלם בנוי מעצים ומגשם.",
+      "tts": {
+        "text": "עוֹלָם שָׁלֵם בָּנוּי מֵעֲצִים וּמִגְּשָׁם.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "מזג האוויר",
+      "text_markdown": "מזג האוויר"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מזג האויר ביער הגשם הטרופי פשוט.",
+      "text_markdown": "מזג האויר ביער הגשם הטרופי פשוט.",
+      "tts": {
+        "text": "מֶזֶג הָאֲוִיר בְּיַעַר הַגְּשָׁם הַטְּרוֹפִי פָּשׁוּט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חם, ויורד הרבה גשם.",
+      "text_markdown": "חם, ויורד הרבה גשם.",
+      "tts": {
+        "text": "חַם, וְיוֹרֵד הַרְבֵּה גְּשָׁם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטמפרטורה נשמרת בערך אותו דבר כל השנה.",
+      "text_markdown": "הטמפרטורה נשמרת בערך אותו דבר כל השנה.",
+      "tts": {
+        "text": "הַטֶּמְפְּרָטוּרָה נִשְׁמְרַת בְּעֵרֶךְ אוֹתוֹ דָּבָר כָּל הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לא נהיה קר בחורף.",
+      "text_markdown": "לא נהיה קר בחורף.",
+      "tts": {
+        "text": "לֹא נִהְיֶה קַר בַּחוֹרֶף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לא נהיה חם מאוד בקיץ.",
+      "text_markdown": "לא נהיה חם מאוד בקיץ.",
+      "tts": {
+        "text": "לֹא נִהְיֶה חַם מְאוֹד בַּקַּיִץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב הימים חמים ויציבים.",
+      "text_markdown": "רוב הימים חמים ויציבים.",
+      "tts": {
+        "text": "רוֹב הַיָּמִים חַמִּים וְיַצִּיבִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יורד גשם כמעט כל יום.",
+      "text_markdown": "יורד גשם כמעט כל יום.",
+      "tts": {
+        "text": "יוֹרֵד גְּשָׁם כְּמַעַט כָּל יוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות מסוימים יורד יותר משני מטרים של גשם בשנה.",
+      "text_markdown": "במקומות מסוימים יורד יותר משני מטרים של גשם בשנה.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת מְסוּיָּמִים יוֹרֵד יוֹתֵר מִשְׁנֵי מְטָרִים שֶׁל גְּשָׁם בַּשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה יותר גשם ממה שרוב חלקי העולם רואים אף פעם.",
+      "text_markdown": "זה יותר גשם ממה שרוב חלקי העולם רואים אף פעם.",
+      "tts": {
+        "text": "זֶה יוֹתֵר גְּשָׁם מִמַּה שֶּׁרוֹב חֲלָקֵי הָעוֹלָם רוֹאִים אַף פַּעַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגשם בא לעתים קרובות אחר הצהרים.",
+      "text_markdown": "הגשם בא לעתים קרובות אחר הצהרים.",
+      "tts": {
+        "text": "הַגְּשָׁם בָּא לְעִתִּים קְרוֹבוֹת אַחַר הַצָּהֳרַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עננים גדולים מתאספים מעל העצים.",
+      "text_markdown": "עננים גדולים מתאספים מעל העצים.",
+      "tts": {
+        "text": "עֲנָנִים גְּדוֹלִים מִתְאַסְּפִים מֵעַל הָעֵצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ממטר כבד יורד במשך שעה או שעתים.",
+      "text_markdown": "ממטר כבד יורד במשך שעה או שעתים.",
+      "tts": {
+        "text": "מִמְטַר כָּבֵד יוֹרֵד בְּמִשְׁךְ שָׁעָה אוֹ שַׁעְתַּיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז השמש חוזרת.",
+      "text_markdown": "אז השמש חוזרת.",
+      "tts": {
+        "text": "אָז הַשֶּׁמֶשׁ חוֹזֶרֶת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העלים נוצצים, ואדים עולים מהאדמה.",
+      "text_markdown": "העלים נוצצים, ואדים עולים מהאדמה.",
+      "tts": {
+        "text": "הָעָלִים נוֹצְצִים, וַאֲדִים עוֹלִים מֵהָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אין כאן ארבע עונות.",
+      "text_markdown": "אין כאן ארבע עונות.",
+      "tts": {
+        "text": "אֵין כָּאן אַרְבַּע עוֹנוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש רק זמן רטוב יותר וזמן יבש יותר.",
+      "text_markdown": "יש רק זמן רטוב יותר וזמן יבש יותר.",
+      "tts": {
+        "text": "יֵשׁ רַק זְמַן רָטוֹב יוֹתֵר וְזְמַן יָבֵשׁ יוֹתֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם בזמן היבש יותר, עדין יורד גשם לעיתים קרובות.",
+      "text_markdown": "גם בזמן היבש יותר, עדין יורד גשם לעיתים קרובות.",
+      "tts": {
+        "text": "גַּם בִּזְמַן הַיָּבֵשׁ יוֹתֵר, עֲדַיִן יוֹרֵד גֶּשֶׁם לְעִיתִים קְרוֹבוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "מזג האוויר",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לצמחים ולבעלי החיים של יער הגשם, כל יום מרגיש כמעט אותו דבר.",
+      "text_markdown": "לצמחים ולבעלי החיים של יער הגשם, כל יום מרגיש כמעט אותו דבר.",
+      "tts": {
+        "text": "לַצְּמָחִים וּלְבַעֲלֵי הַחַיִּים שֶׁל יַעַר הַגֶּשֶׁם, כָּל יוֹם מַרְגִּישׁ כִּמְעַט אוֹתוֹ דָּבָר.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האדמה והמים",
+      "text_markdown": "האדמה והמים"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האדמה של יער הגשם עשירה בחיים, אבל השכבה הפוריה דקה.",
+      "text_markdown": "האדמה של יער הגשם עשירה בחיים, אבל השכבה הפוריה דקה.",
+      "tts": {
+        "text": "הָאֲדָמָה שֶׁל יַעַר הַגֶּשֶׁם עֲשִׁירָה בַּחַיִּים, אֲבָל הַשְּׁכָבָה הַפּוֹרִיָּה דַּקָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב הטוב נמצא בסנטימטרים הראשונים.",
+      "text_markdown": "רוב הטוב נמצא בסנטימטרים הראשונים.",
+      "tts": {
+        "text": "רוֹב הַטּוֹב נִמְצָא בַּסַּנְטִימֶטְרִים הָרִאשׁוֹנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשעלה נופל, חרקים ויצורים קטנטנים מפרקים אותו במהירות רבה.",
+      "text_markdown": "כשעלה נופל, חרקים ויצורים קטנטנים מפרקים אותו במהירות רבה.",
+      "tts": {
+        "text": "כְּשֶׁעָלֶה נוֹפֵל, חֲרָקִים וִיצוּרִים קְטַנְטַנִּים מְפָרְקִים אוֹתוֹ בִּמְהִירוּת רַבָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העצים תופסים את המזון בחזרה כמעט מיד.",
+      "text_markdown": "העצים תופסים את המזון בחזרה כמעט מיד.",
+      "tts": {
+        "text": "הָעֵצִים תּוֹפְסִים אֶת הַמָּזוֹן בַּחֲזָרָה כִּמְעַט מִיָּד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בגלל זה קשה להחזיר יער גשם שנכרת.",
+      "text_markdown": "בגלל זה קשה להחזיר יער גשם שנכרת.",
+      "tts": {
+        "text": "בִּגְלַל זֶה קָשֶׁה לְהַחְזִיר יַעַר גֶּשֶׁם שֶׁנִּכְרַת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בלי העצים, הגשם שוטף את האדמה הדקה.",
+      "text_markdown": "בלי העצים, הגשם שוטף את האדמה הדקה.",
+      "tts": {
+        "text": "בְּלִי הָעֵצִים, הַגֶּשֶׁם שׁוֹטֵף אֶת הָאֲדָמָה הַדַּקָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נהרות זורמים בכל יער גשם.",
+      "text_markdown": "נהרות זורמים בכל יער גשם.",
+      "tts": {
+        "text": "נְהָרוֹת זוֹרְמִים בְּכָל יַעַר גֶּשֶׁם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן הנהרות עצומים.",
+      "text_markdown": "חלק מן הנהרות עצומים.",
+      "tts": {
+        "text": "חֵלֶק מִן־הַנְּהָרוֹת עֲצוּמִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נהר האמזונס נושא יותר מים מכל נהר אחר בעולם.",
+      "text_markdown": "נהר האמזונס נושא יותר מים מכל נהר אחר בעולם.",
+      "tts": {
+        "text": "נְהַר הָאָמָזוֹנָס נוֹשֵׂא יוֹתֵר מַיִם מִכָּל נָהָר אַחֵר בָּעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בזמן הגשמים, הנהרות מתפשטים עמוק לתוך היער.",
+      "text_markdown": "בזמן הגשמים, הנהרות מתפשטים עמוק לתוך היער.",
+      "tts": {
+        "text": "בִּזְמַן הַגְּשָׁמִים, הַנְּהָרוֹת מִתְפַּשְׁטִים עָמוּק לְתוֹךְ הַיָּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העצים עומדים במים במשך חודשים.",
+      "text_markdown": "העצים עומדים במים במשך חודשים.",
+      "tts": {
+        "text": "הָעֵצִים עוֹמְדִים בַּמַּיִם בְּמִשְׁךְ חוֹדָשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דגים שוחים בין הגזעים.",
+      "text_markdown": "דגים שוחים בין הגזעים.",
+      "tts": {
+        "text": "דָּגִים שׂוֹחִים בֵּין הַגְּזָעִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נהרות אחרים קטנים וצלולים, עם אבנים בקרקעית.",
+      "text_markdown": "נהרות אחרים קטנים וצלולים, עם אבנים בקרקעית.",
+      "tts": {
+        "text": "נְהָרוֹת אֲחֵרִים קְטַנִּים וְצְלוּלִים, עִם אֲבָנִים בִּקְרַקַּעִית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היער עצמו גדל בשכבות.",
+      "text_markdown": "היער עצמו גדל בשכבות.",
+      "tts": {
+        "text": "הַיַּעַר עַצְמוֹ גָּדֵל בִּשְׁכָבוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "למעלה נמצאים העצים הגבוהים ביותר, עם הצמרות הפרושות בשמש.",
+      "text_markdown": "למעלה נמצאים העצים הגבוהים ביותר, עם הצמרות הפרושות בשמש.",
+      "tts": {
+        "text": "לְמַעְלָה נִמְצָאִים הָעֵצִים הַגְּבוֹהִים בְּיוֹתֵר, עִם הַצָּמְרוֹת הַפְּרוּשׁוֹת בַּשָּׁמֶשׁ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מתחתם יש גג ירוק וסמיך של עלים.",
+      "text_markdown": "מתחתם יש גג ירוק וסמיך של עלים.",
+      "tts": {
+        "text": "מִתַּחְתָּם יֵשׁ גַּג יָרוֹק וְסָמִיךְ שֶׁל עָלִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מתחת לגג הזה האויר מוצלל ושקט.",
+      "text_markdown": "מתחת לגג הזה האויר מוצלל ושקט.",
+      "tts": {
+        "text": "מִתַּחַת לַגַּג הַזֶּה הָאֲוִיר מוּצְלָל וְשָׁקֵט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "למטה על האדמה, רק מעט אור מגיע.",
+      "text_markdown": "למטה על האדמה, רק מעט אור מגיע.",
+      "tts": {
+        "text": "לְמַטָּה עַל הָאֲדָמָה, רַק מְעַט אוֹר מַגִּיעַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "האדמה והמים",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל שכבה היא בית שונה לבעלי החיים ולצמחים של היום.",
+      "text_markdown": "כל שכבה היא בית שונה לבעלי החיים ולצמחים של היום.",
+      "tts": {
+        "text": "כָּל שִׁכְבָה הִיא בַּיִת שׁוֹנֶה לִבְעָלֵי הַחַיִּים וְלַצְּמָחִים שֶׁל הַיּוֹם.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הצמחים",
+      "text_markdown": "הצמחים"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביער הגשם הטרופי יש יותר סוגים של צמחים מבכל יום אחר ביבשת.",
+      "text_markdown": "ביער הגשם הטרופי יש יותר סוגים של צמחים מבכל יום אחר ביבשת.",
+      "tts": {
+        "text": "בַּיַּעַר הַגְּשַׁם הַטְּרוֹפִי יֵשׁ יוֹתֵר סוּגִים שֶׁל צְמָחִים מִבְּכָל יוֹם אַחֵר בַּיַּבֶּשֶׁת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העצים הם הלב של היער.",
+      "text_markdown": "העצים הם הלב של היער.",
+      "tts": {
+        "text": "הָעֵצִים הֵם הַלֵּב שֶׁל הַיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן העצים גדולים גבוה מאד, ומגיעים אל השמש.",
+      "text_markdown": "חלק מן העצים גדולים גבוה מאד, ומגיעים אל השמש.",
+      "tts": {
+        "text": "חֵלֶק מִן הָעֵצִים גְּדוֹלִים גָּבוֹהַּ מְאֹד, וּמַגִּיעִים אֶל הַשֶּׁמֶשׁ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגזעים שלהם ישרים וחלקים.",
+      "text_markdown": "הגזעים שלהם ישרים וחלקים.",
+      "tts": {
+        "text": "הַגְּזָעִים שֶׁלָּהֶם יְשָׁרִים וַחֲלָקִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השורשים שלהם מתפשטים רחב בתחתית, כמו קירות, כדי להחזיק אותם באדמה הדקה.",
+      "text_markdown": "השורשים שלהם מתפשטים רחב בתחתית, כמו קירות, כדי להחזיק אותם באדמה הדקה.",
+      "tts": {
+        "text": "הַשּׁוֹרָשִׁים שֶׁלָּהֶם מִתְפַּשְּׁטִים רָחָב בַּתַּחְתִּית, כְּמוֹ קִירוֹת, כְּדֵי לְהַחֲזִיק אוֹתָם בָּאֲדָמָה הַדַּקָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מטפסים עולים על הגזעים אל האור.",
+      "text_markdown": "מטפסים עולים על הגזעים אל האור.",
+      "tts": {
+        "text": "מַטְפְּסִים עוֹלִים עַל הַגְּזָעִים אֶל הָאוֹר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן המטפסים עבים כמו הזרוע שלכם.",
+      "text_markdown": "חלק מן המטפסים עבים כמו הזרוע שלכם.",
+      "tts": {
+        "text": "חֵלֶק מִן הַמַּטְפְּסִים עָבִים כְּמוֹ הַזְּרוֹעַ שֶׁלָּכֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מתפתלים סביב העצים ותלוים מהענפים.",
+      "text_markdown": "הם מתפתלים סביב העצים ותלוים מהענפים.",
+      "tts": {
+        "text": "הֵם מִתְפַּתְּלִים סְבִיב הָעֵצִים וְתָלוּיִם מֵהָעֲנָפִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים גדולים על העצים עצמם, גבוה באוויר.",
+      "text_markdown": "צמחים גדולים על העצים עצמם, גבוה באוויר.",
+      "tts": {
+        "text": "צְמָחִים גְּדוֹלִים עַל הָעֵצִים עַצְמָם, גָּבוֹהַּ בָּאֲוִויר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אין להם שורשים באדמה בכלל.",
+      "text_markdown": "אין להם שורשים באדמה בכלל.",
+      "tts": {
+        "text": "אֵין לָהֶם שׁוֹרָשִׁים בָּאֲדָמָה בְּכָלָל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם שותים את הגשם שזורם על הקליפה.",
+      "text_markdown": "הם שותים את הגשם שזורם על הקליפה.",
+      "tts": {
+        "text": "הֵם שׁוֹתִים אֶת הַגְּשַׁם שֶׁזוֹרֵם עַל הַקְּלִיפָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "על קרקע היער החשוכה גדולים שרכים וצמחים ירוקים רכים.",
+      "text_markdown": "על קרקע היער החשוכה גדולים שרכים וצמחים ירוקים רכים.",
+      "tts": {
+        "text": "עַל קַרְקַע הַיַּעַר הַחֲשׁוּכָה גְּדוֹלִים שְׁרָכִים וּצְמָחִים יְרוּקִים רַכִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש להם עלים רחבים ושטוחים כדי לתפס כל טפת של אור.",
+      "text_markdown": "יש להם עלים רחבים ושטוחים כדי לתפס כל טפת של אור.",
+      "tts": {
+        "text": "יֵשׁ לָהֶם עָלִים רְחָבִים וּשְׁטוּחִים כְּדֵי לִתְפֹּס כָּל טִפַּת שֶׁל אוֹר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרחים פורחים בכל צבע שאפשר לחשב עליו.",
+      "text_markdown": "פרחים פורחים בכל צבע שאפשר לחשב עליו.",
+      "tts": {
+        "text": "פְּרָחִים פּוֹרְחִים בְּכָל צֶבַע שֶׁאֶפְשָׁר לַחֲשֹׁב עָלָיו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלקם אדומים, חלקם צהובים, חלקם סגולים עמוקים.",
+      "text_markdown": "חלקם אדומים, חלקם צהובים, חלקם סגולים עמוקים.",
+      "tts": {
+        "text": "חֵלְקָם אֲדוּמִים, חֵלְקָם צְהוּבִים, חֵלְקָם סְגוּלִים עֲמוּקִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רבים מהם נפתחים בלילה.",
+      "text_markdown": "רבים מהם נפתחים בלילה.",
+      "tts": {
+        "text": "רַבִּים מֵהֶם נִפְתָּחִים בַּלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פירות תלוים מהענפים כל השנה.",
+      "text_markdown": "פירות תלוים מהענפים כל השנה.",
+      "tts": {
+        "text": "פֵּירוֹת תָּלוּיִם מֵהָעֲנָפִים כָּל הַשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש פירות מתוקים, פירות חמוצים, ופירות עם קליפות קשות.",
+      "text_markdown": "יש פירות מתוקים, פירות חמוצים, ופירות עם קליפות קשות.",
+      "tts": {
+        "text": "יֵשׁ פֵּירוֹת מְתוּקִים, פֵּירוֹת חֲמוּצִים, וּפֵירוֹת עִם קְלִיפוֹת קָשׁוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרבה ממאכלים שאנו אוכלים בבית גדלו לראשונה בבר ביערות הגשם.",
+      "text_markdown": "הרבה ממאכלים שאנו אוכלים בבית גדלו לראשונה בבר ביערות הגשם.",
+      "tts": {
+        "text": "הַרְבֵּה מִמַּאֲכָלִים שֶׁאָנוּ אוֹכְלִים בַּבַּיִת גָּדְלוּ לְרִאשׁוֹנָה בַּבַּר בִּיְעָרוֹת הַגְּשָׁם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקקאו, הצמח שנותן לנו שוקולד, הגיע מיערות הגשם של דרום אמריקה.",
+      "text_markdown": "הקקאו, הצמח שנותן לנו שוקולד, הגיע מיערות הגשם של דרום אמריקה.",
+      "tts": {
+        "text": "הַקָּקָאוֹ, הַצֶּמַח שֶׁנוֹתֵן לָנוּ שׁוֹקוֹלָד, הַגִּיעַ מִיְעָרוֹת הַגְּשָׁם שֶׁל דְּרוֹם אָמֵרִיקָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחי הבננה הראשונים גדלו ביערות הגשם של דרום מזרח אסיה.",
+      "text_markdown": "צמחי הבננה הראשונים גדלו ביערות הגשם של דרום מזרח אסיה.",
+      "tts": {
+        "text": "צִמְחֵי הַבָּנָנָה הָרִאשׁוֹנִים גָּדְלוּ בִּיְעָרוֹת הַגְּשָׁם שֶׁל דְּרוֹם מִזְרַח אַסְיָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לכל מאכל שאנו אוהבים יש ספור של יער איפשהו על כדור הארץ.",
+      "text_markdown": "לכל מאכל שאנו אוהבים יש ספור של יער איפשהו על כדור הארץ.",
+      "tts": {
+        "text": "לְכָל מַאֲכָל שֶׁאָנוּ אוֹהֲבִים יֵשׁ סִפּוּר שֶׁל יָעַר אֵיפְשֶׁהוּ עַל כְּדוּר הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשאתם מסתכלים על צמח של יער הגשם, לעתים קרובות הוא מצא דרך חכמה לחיות.",
+      "text_markdown": "כשאתם מסתכלים על צמח של יער הגשם, לעתים קרובות הוא מצא דרך חכמה לחיות.",
+      "tts": {
+        "text": "כְּשֶׁאַתֶּם מִסְתַּכְּלִים עַל צֶמַח שֶׁל יַעַר הַגְּשָׁם, לְעִתִּים קְרוֹבוֹת הוּא מָצָא דֶּרֶךְ חֲכָמָה לַחֲיוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לחלק מהעלים יש קצה ארוך וחד בקצה, כדי שהגשם יזרם במהירות.",
+      "text_markdown": "לחלק מהעלים יש קצה ארוך וחד בקצה, כדי שהגשם יזרם במהירות.",
+      "tts": {
+        "text": "לַחֲלַק מֵהָעָלִים יֵשׁ קָצֶה אָרוּךְ וְחַד בַּקָּצֶה, כְּדֵי שֶׁהַגְּשָׁם יִזְרֹם בִּמְהִירוּת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מהפרחים מריחים מתוק רק בלילה, כדי לקרוא לחרק הנכון לבקר.",
+      "text_markdown": "חלק מהפרחים מריחים מתוק רק בלילה, כדי לקרוא לחרק הנכון לבקר.",
+      "tts": {
+        "text": "חֵלֶק מֵהַפְּרָחִים מְרִיחִים מָתוֹק רַק בַּלַּיְלָה, כְּדֵי לִקְרוֹא לַחֶרֶק הַנָּכוֹן לְבַקֵּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "הצמחים",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל היער הוא מכונה שקטה, עשויה מירוק.",
+      "text_markdown": "כל היער הוא מכונה שקטה, עשויה מירוק.",
+      "tts": {
+        "text": "כָּל הַיָּעַר הוּא מְכוֹנָה שְׁקֵטָה, עֲשׂוּיָה מִיְרוֹק.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "בעלי החיים",
+      "text_markdown": "בעלי החיים"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביער הגשם הטרופי חיים יותר סוגים של בעלי חיים מבכל מקום אחר ביבשה.",
+      "text_markdown": "ביער הגשם הטרופי חיים יותר סוגים של בעלי חיים מבכל מקום אחר ביבשה.",
+      "tts": {
+        "text": "בַּיַּעַר הַגְּשָׁם הַטְּרוֹפִּי חַיִּים יוֹתֵר סוּגִים שֶׁל בַּעֲלֵי חַיִּים מִבְּכָל מָקוֹם אַחֵר בַּיַּבָּשָׁה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רובם חיים למעלה בעצים, לא על האדמה.",
+      "text_markdown": "רובם חיים למעלה בעצים, לא על האדמה.",
+      "tts": {
+        "text": "רוּבָם חַיִּים לְמַעְלָה בָּעֵצִים, לֹא עַל הָאֲדָמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יותר מזון ויותר אור למעלה.",
+      "text_markdown": "יש יותר מזון ויותר אור למעלה.",
+      "tts": {
+        "text": "יֵשׁ יוֹתֵר מָזוֹן וְיוֹתֵר אוֹר לְמַעְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קופים חיים ביערות גשם רבים.",
+      "text_markdown": "קופים חיים ביערות גשם רבים.",
+      "tts": {
+        "text": "קוֹפִים חַיִּים בִּיְעָרוֹת גְּשָׁם רַבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם קופצים מענף לענף וקוראים זה לזה בין העצים.",
+      "text_markdown": "הם קופצים מענף לענף וקוראים זה לזה בין העצים.",
+      "tts": {
+        "text": "הֵם קוֹפְצִים מֵעָנָף לְעָנָף וְקוֹרְאִים זֶה לָזֶה בֵּין הָעֵצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביערות הגשם של דרום אמריקה, לחלק מהקופים יש זנבות ארוכים שהם משתמשים בהם כמו יד נוספת.",
+      "text_markdown": "ביערות הגשם של דרום אמריקה, לחלק מהקופים יש זנבות ארוכים שהם משתמשים בהם כמו יד נוספת.",
+      "tts": {
+        "text": "בִּיְעָרוֹת הַגְּשָׁם שֶׁל דְּרוֹם אָמֵרִיקָה, לַחֲלַק מֵהַקּוֹפִים יֵשׁ זְנָבוֹת אֲרוּכִּים שֶׁהֵם מִשְׁתַּמְּשִׁים בָּהֶם כְּמוֹ יָד נוֹסֶפֶת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תוכים וצפורים בהירות אחרות עפו בין הענפים הגבוהים.",
+      "text_markdown": "תוכים וצפורים בהירות אחרות עפו בין הענפים הגבוהים.",
+      "tts": {
+        "text": "תּוּכִּים וְצִפּוֹרִים בְּהִירוֹת אֲחֵרוֹת עָפוּ בֵּין הָעֲנָפִים הַגְּבוֹהִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם אוכלים פרות וזרעים.",
+      "text_markdown": "הם אוכלים פרות וזרעים.",
+      "tts": {
+        "text": "הֵם אוֹכְלִים פֵּרוֹת וְזַרְעִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הנוצות שלהם אדומות, ירוקות, כחולות וצהובות.",
+      "text_markdown": "הנוצות שלהם אדומות, ירוקות, כחולות וצהובות.",
+      "tts": {
+        "text": "הַנּוֹצוֹת שֶׁלָּהֶם אֲדוּמוֹת, יְרוּקוֹת, כְּחוּלוֹת וּצְהוּבוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביערות גשם רבים, חתולים גדולים צדים על האדמה בלילה.",
+      "text_markdown": "ביערות גשם רבים, חתולים גדולים צדים על האדמה בלילה.",
+      "tts": {
+        "text": "בִּיְעָרוֹת גְּשָׁם רַבִּים, חֲתוּלִים גְּדוֹלִים צָדִים עַל הָאֲדָמָה בַּלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באמריקה, החתול הזה הוא היגואר.",
+      "text_markdown": "באמריקה, החתול הזה הוא היגואר.",
+      "tts": {
+        "text": "בְּאָמֵרִיקָה, הַחָתוּל הַזֶּה הוּא הַיְגוּאָר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באסיה, הוא הטיגריס.",
+      "text_markdown": "באסיה, הוא הטיגריס.",
+      "tts": {
+        "text": "בְּאַסְיָה, הוּא הַטִּיגְרִיס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באפריקה, הוא הנמר.",
+      "text_markdown": "באפריקה, הוא הנמר.",
+      "tts": {
+        "text": "בְאַפְרִיקָה, הוּא הַנָּמֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כלם חזקים ושקטים, עם נקדות או פסים על הפרוה.",
+      "text_markdown": "כלם חזקים ושקטים, עם נקדות או פסים על הפרוה.",
+      "tts": {
+        "text": "כֻּלָּם חֲזָקִים וְשָׁקֵטִים, עִם נְקֻדּוֹת אוֹ פְסִים עַל הַפִּרְוָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נחשים מחליקים בין העלים והעצים.",
+      "text_markdown": "נחשים מחליקים בין העלים והעצים.",
+      "tts": {
+        "text": "נְחָשִׁים מַחְלִיקִים בֵּין הֶעָלִים וְהָעֵצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן הנחשים קטנים מאד, וחלקם ארוכים מאד.",
+      "text_markdown": "חלק מן הנחשים קטנים מאד, וחלקם ארוכים מאד.",
+      "tts": {
+        "text": "חֵלֶק מִן הַנְּחָשִׁים קְטַנִּים מְאֹד, וְחֵלְקָם אֲרוּכִים מְאֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רבם בישנים ומתרחקים מאנשים.",
+      "text_markdown": "רבם בישנים ומתרחקים מאנשים.",
+      "tts": {
+        "text": "רֻבָּם בַּיִשְׁנִים וּמִתְרַחֲקִים מֵאֲנָשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צפרדעים שרות כל לילה, במיוחד אחרי הגשם.",
+      "text_markdown": "צפרדעים שרות כל לילה, במיוחד אחרי הגשם.",
+      "tts": {
+        "text": "צְפַרְדְּעִים שָׁרוֹת כָּל לַיְלָה, בִּמְיוּחָד אַחֲרֵי הַגָּשֶׁם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן הצפרדעים קטנטנות ובהירות.",
+      "text_markdown": "חלק מן הצפרדעים קטנטנות ובהירות.",
+      "tts": {
+        "text": "חֵלֶק מִן הַצְּפַרְדְּעִים קְטַנְטַנּוֹת וּבְהִירוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צבעים בהירים מזהירים בעלי חיים אחרים לא לאכל אותן.",
+      "text_markdown": "צבעים בהירים מזהירים בעלי חיים אחרים לא לאכל אותן.",
+      "tts": {
+        "text": "צְבָעִים בְהִירִים מְזַהִּירִים בַּעֲלֵי חַיִּים אֲחֵרִים לֹא לֶאֱכֹל אוֹתָן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חרקים ממלאים כל פינה ביער.",
+      "text_markdown": "חרקים ממלאים כל פינה ביער.",
+      "tts": {
+        "text": "חֲרָקִים מְמַלְּאִים כָּל פִּינָה בַּיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יותר חרקים ביער הגשם מכל סוג אחר של בעלי חיים.",
+      "text_markdown": "יש יותר חרקים ביער הגשם מכל סוג אחר של בעלי חיים.",
+      "tts": {
+        "text": "יֵשׁ יוֹתֵר חֲרָקִים בַּיַּעַר הַגָּשֶׁם מִכָּל סוּג אַחֵר שֶׁל בַּעֲלֵי חַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נמלים צועדות בשורות ארוכות על קרקע היער.",
+      "text_markdown": "נמלים צועדות בשורות ארוכות על קרקע היער.",
+      "tts": {
+        "text": "נְמָלִים צוֹעֲדוֹת בִּשׁוּרוֹת אֲרוּכוֹת עַל קַרְקַע הַיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חיפושיות מטפסות על הגזעים.",
+      "text_markdown": "חיפושיות מטפסות על הגזעים.",
+      "tts": {
+        "text": "חִיפּוּשִׁיּוֹת מְטַפְּסוֹת עַל הַגְּזָעִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרפרים מרחפים באויר על כנפים רחבות וצבועות.",
+      "text_markdown": "פרפרים מרחפים באויר על כנפים רחבות וצבועות.",
+      "tts": {
+        "text": "פַּרְפָּרִים מְרַחֲפִים בָּאֲוִיר עַל כְּנָפַיִם רְחָבוֹת וּצְבוּעוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דגים חיים בנהרות, בצורות וגודלים רבים.",
+      "text_markdown": "דגים חיים בנהרות, בצורות וגודלים רבים.",
+      "tts": {
+        "text": "דָּגִים חַיִּים בִּנְהָרוֹת, בְּצוּרוֹת וְגוֹדְלִים רַבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מן הדגים קטנטנים וכסופים, וחלקם גדולים יותר מילד.",
+      "text_markdown": "חלק מן הדגים קטנטנים וכסופים, וחלקם גדולים יותר מילד.",
+      "tts": {
+        "text": "חֵלֶק מִן הַדָּגִים קְטַנְטַנִּים וּכְסוּפִים, וְחֵלְקָם גְּדוֹלִים יוֹתֵר מִיֶּלֶד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גבוה מעל הכל, נשרים גולשים מעל הגג הירוק של היער.",
+      "text_markdown": "גבוה מעל הכל, נשרים גולשים מעל הגג הירוק של היער.",
+      "tts": {
+        "text": "גָּבוֹהַּ מֵעַל הַכֹּל, נְשָׁרִים גּוֹלְשִׁים מֵעַל הַגַּג הַיָּרוֹק שֶׁל הַיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מתבוננים בתנועה למטה.",
+      "text_markdown": "הם מתבוננים בתנועה למטה.",
+      "tts": {
+        "text": "הֵם מִתְבּוֹנְנִים בַּתְּנוּעָה לְמַטָּה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עטלפים יוצאים לעפוף בשקיעה כדי לאכל פרות וחרקים.",
+      "text_markdown": "עטלפים יוצאים לעפוף בשקיעה כדי לאכל פרות וחרקים.",
+      "tts": {
+        "text": "עַטְלָפִים יוֹצְאִים לַעֲפוֹף בִּשְׁקִיעָה כְּדֵי לֶאֱכֹל פֵּרוֹת וַחֲרָקִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעץ אחד של יער הגשם, אפשר למצא יותר סוגים של בעלי חיים מבעיר שלמה במקום אחר.",
+      "text_markdown": "בעץ אחד של יער הגשם, אפשר למצא יותר סוגים של בעלי חיים מבעיר שלמה במקום אחר.",
+      "tts": {
+        "text": "בְעֵץ אֶחָד שֶׁל יַעַר הַגָּשֶׁם, אֶפְשָׁר לִמְצֹא יוֹתֵר סוּגִים שֶׁל בַּעֲלֵי חַיִּים מִבְּעִיר שְׁלֵמָה בִּמְקוֹם אַחֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "בעלי החיים",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו הפלא של הביום הזה.",
+      "text_markdown": "זהו הפלא של הביום הזה.",
+      "tts": {
+        "text": "זֶהוּ הַפֶּלֶא שֶׁל הַבִּיוּם הַזֶּה.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האנשים",
+      "text_markdown": "האנשים"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים חיים ביער הגשם הטרופי מזמן רב מאוד.",
+      "text_markdown": "אנשים חיים ביער הגשם הטרופי מזמן רב מאוד.",
+      "tts": {
+        "text": "אָנָשִׁים חַיִּים בַּיַּעַר הַגֶּשֶׁם הַטְּרוֹפִּי מִזְּמַן רַב מְאוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו לחיות טוב עם העצים, הגשם ובעלי החיים.",
+      "text_markdown": "הם למדו לחיות טוב עם העצים, הגשם ובעלי החיים.",
+      "tts": {
+        "text": "הֵם לָמְדוּ לַחֲיוֹת טוֹב עִם הָעֵצִים, הַגֶּשֶׁם וּבְעָלֵי הַחַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים רבים של יער הגשם חיים בכפרים קטנים.",
+      "text_markdown": "אנשים רבים של יער הגשם חיים בכפרים קטנים.",
+      "tts": {
+        "text": "אָנָשִׁים רַבִּים שֶׁל יַעַר הַגֶּשֶׁם חַיִּים בִּכְפָרִים קְטַנִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הבתים בנויים לעתים קרובות על עמודי עץ גבוהים כדי להשאר מעל האדמה הרטובה.",
+      "text_markdown": "הבתים בנויים לעתים קרובות על עמודי עץ גבוהים כדי להשאר מעל האדמה הרטובה.",
+      "tts": {
+        "text": "הַבָּתִּים בְּנוּיִים לְעִתִּים קְרוֹבוֹת עַל עַמּוּדֵי עֵץ גָּבוֹהִים כְּדֵי לְהִשָּׁאֵר מֵעַל הָאֲדָמָה הָרְטוּבָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגגות עשויים מעלים מונחים בשורות עבות.",
+      "text_markdown": "הגגות עשויים מעלים מונחים בשורות עבות.",
+      "tts": {
+        "text": "הַגָּגוֹת עֲשׂוּיִים מֵעָלִים מוּנָּחִים בִּשׁוּרוֹת עָבוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גג עלים טוב מונע מהגשם הכבד להיכנס.",
+      "text_markdown": "גג עלים טוב מונע מהגשם הכבד להיכנס.",
+      "tts": {
+        "text": "גַּג עָלִים טוֹב מוֹנֵעַ מֵהַגֶּשֶׁם הַכָּבֵד לְהִיכָּנֵס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקירות פתוחים לעתים קרובות כדי לתת לאויר החם לעבר.",
+      "text_markdown": "הקירות פתוחים לעתים קרובות כדי לתת לאויר החם לעבר.",
+      "tts": {
+        "text": "הַקִּירוֹת פְּתוּחִים לְעִתִּים קְרוֹבוֹת כְּדֵי לָתֵת לָאֲוִיר הַחַם לַעֲבֹר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האנשים דוגים בנהרות ואוספים מזון מן היער.",
+      "text_markdown": "האנשים דוגים בנהרות ואוספים מזון מן היער.",
+      "tts": {
+        "text": "הָאָנָשִׁים דּוֹגִים בִּנְהָרוֹת וְאוֹסְפִים מָזוֹן מִן הַיַּעַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם צודים בעלי חיים קטנים בקשתות ובחניתות.",
+      "text_markdown": "הם צודים בעלי חיים קטנים בקשתות ובחניתות.",
+      "tts": {
+        "text": "הֵם צוֹדִים בְעָלֵי חַיִּים קְטַנִּים בִּקְשָׁתוֹת וּבַחֲנִיתוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מגדלים מזון בגנות קטנות שסללו מן העצים.",
+      "text_markdown": "הם מגדלים מזון בגנות קטנות שסללו מן העצים.",
+      "tts": {
+        "text": "הֵם מְגַדְּלִים מָזוֹן בַּגִּנּוֹת קְטַנּוֹת שֶׁסִּלְּלוּ מִן הָעֵצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מה שהם מגדלים תלוי במקום שבו הם חיים.",
+      "text_markdown": "מה שהם מגדלים תלוי במקום שבו הם חיים.",
+      "tts": {
+        "text": "מַה שֶׁהֵם מְגַדְּלִים תָּלוּי בַּמָּקוֹם שֶׁבּוֹ הֵם חַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביערות הגשם של דרום אמריקה, אנשים מגדלים קסאוה ובטטות במשך אלפי שנים.",
+      "text_markdown": "ביערות הגשם של דרום אמריקה, אנשים מגדלים קסאוה ובטטות במשך אלפי שנים.",
+      "tts": {
+        "text": "בְּיַעְרוֹת הַגֶּשֶׁם שֶׁל דְּרוֹם אָמֶרִיקָה, אָנָשִׁים מְגַדְּלִים קַסָּאוָה וּבְטָטוֹת בִּמְשֹׁךְ אַלְפֵי שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביערות הגשם של אפריקה, אנשים מגדלים יאם ופרי הדקלה.",
+      "text_markdown": "ביערות הגשם של אפריקה, אנשים מגדלים יאם ופרי הדקלה.",
+      "tts": {
+        "text": "בְּיַעְרוֹת הַגֶּשֶׁם שֶׁל אַפְרִיקָה, אָנָשִׁים מְגַדְּלִים יָאם וּפְרִי הַדִּקְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביערות הגשם של דרום מזרח אסיה ושל האוקינוס השקט, אנשים מגדלים טארו, אורז ופרי הלחם.",
+      "text_markdown": "ביערות הגשם של דרום מזרח אסיה ושל האוקינוס השקט, אנשים מגדלים טארו, אורז ופרי הלחם.",
+      "tts": {
+        "text": "בְּיַעְרוֹת הַגֶּשֶׁם שֶׁל דְּרוֹם מִזְרַח אַסְיָה וְשֶׁל הָאוֹקְיָנוֹס הַשָּׁקֵט, אָנָשִׁים מְגַדְּלִים טָארוֹ, אוֹרֶז וּפְרִי הַלֶּחֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי כמה שנים הם נותנים לגנה לחזור להיות יער, והם עושים גנה חדשה במקום אחר.",
+      "text_markdown": "אחרי כמה שנים הם נותנים לגנה לחזור להיות יער, והם עושים גנה חדשה במקום אחר.",
+      "tts": {
+        "text": "אַחֲרֵי כַּמָּה שָׁנִים הֵם נוֹתְנִים לַגִּנָּה לַחֲזוֹר לִהְיוֹת יַעַר, וְהֵם עוֹשִׂים גִּנָּה חֲדָשָׁה בְּמָקוֹם אַחֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כך היער נשאר בריא.",
+      "text_markdown": "כך היער נשאר בריא.",
+      "tts": {
+        "text": "כָּךְ הַיַּעַר נִשְׁאַר בָּרִיא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשי יער הגשם מכירים אלפי צמחים.",
+      "text_markdown": "אנשי יער הגשם מכירים אלפי צמחים.",
+      "tts": {
+        "text": "אַנְשֵׁי יַעַר הַגֶּשֶׁם מַכִּירִים אַלְפֵי צְמָחִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם יודעים אילו נותנים מזון, אילו נותנים תרופה, ואילו לא בטוחים לאכילה.",
+      "text_markdown": "הם יודעים אילו נותנים מזון, אילו נותנים תרופה, ואילו לא בטוחים לאכילה.",
+      "tts": {
+        "text": "הֵם יוֹדְעִים אֵילוּ נוֹתְנִים מָזוֹן, אֵילוּ נוֹתְנִים תְּרוּפָה, וְאֵילוּ לֹא בְּטוּחִים לַאֲכִילָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם לומדים את שירת הצפורים.",
+      "text_markdown": "הם לומדים את שירת הצפורים.",
+      "tts": {
+        "text": "הֵם לוֹמְדִים אֶת שִׁירַת הַצִּפּוֹרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם לומדים את עקבות בעלי החיים.",
+      "text_markdown": "הם לומדים את עקבות בעלי החיים.",
+      "tts": {
+        "text": "הֵם לוֹמְדִים אֶת עִקְּבוֹת בְעָלֵי הַחַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הידעה הזאת עוברת מהורים לילדים, שנה אחר שנה.",
+      "text_markdown": "הידעה הזאת עוברת מהורים לילדים, שנה אחר שנה.",
+      "tts": {
+        "text": "הַיִּדְעָה הַזֹּאת עוֹבֶרֶת מֵהוֹרִים לְיַלְדִים, שָׁנָה אַחַר שָׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "האנשים",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל יער גשם, לחיים האלה יש שפות שלהם, ספורים שלהם ומוזיקה שלהם.",
+      "text_markdown": "בכל יער גשם, לחיים האלה יש שפות שלהם, ספורים שלהם ומוזיקה שלהם.",
+      "tts": {
+        "text": "בְכָל יַעַר גֶּשֶׁם, לַחַיִּים הָאֵלֶּה יֵשׁ שָׂפוֹת שֶׁלָּהֶם, סִפּוּרִים שֶׁלָּהֶם וּמוּזִיקָה שֶׁלָּהֶם.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "יער הגשם היום",
+      "text_markdown": "יער הגשם היום"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יער הגשם הטרופי הוא אחד הביומים החשובים ביותר על כדור הארץ.",
+      "text_markdown": "יער הגשם הטרופי הוא אחד הביומים החשובים ביותר על כדור הארץ.",
+      "tts": {
+        "text": "יַעַר הַגֶּשֶׁם הַטְרוֹפִי הוּא אֶחָד הַבִּיוֹמִים הַחֲשׁוּבִים בְּיוֹתֵר עַל כְּדוּר הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העצים שואבים מים מהאדמה ונושפים אותם אל השמים.",
+      "text_markdown": "העצים שואבים מים מהאדמה ונושפים אותם אל השמים.",
+      "tts": {
+        "text": "הָעֵצִים שׁוֹאֲבִים מַיִם מֵהָאֲדָמָה וְנוֹשְׁפִים אוֹתָם אֶל הַשָּׁמַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העננים שנוצרו מעל היער נושאים גשם לארצות רחוקות.",
+      "text_markdown": "העננים שנוצרו מעל היער נושאים גשם לארצות רחוקות.",
+      "tts": {
+        "text": "הֶעֲנָנִים שֶׁנוֹצְרוּ מֵעַל הַיַּעַר נוֹשְׂאִים גֶּשֶׁם לְאַרְצוֹת רְחוֹקוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם העצים נושמים, אבל הפוך מאתנו.",
+      "text_markdown": "גם העצים נושמים, אבל הפוך מאתנו.",
+      "tts": {
+        "text": "גַּם הָעֵצִים נוֹשְׁמִים, אֲבָל הַפּוּךְ מֵאִתָּנוּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם לוקחים את הגז שאנו נושפים, ומשתמשים בו כדי לגדול.",
+      "text_markdown": "הם לוקחים את הגז שאנו נושפים, ומשתמשים בו כדי לגדול.",
+      "tts": {
+        "text": "הֵם לוֹקְחִים אֶת הַגָּז שֶׁאָנוּ נוֹשְׁפִים, וּמִשְׁתַּמְּשִׁים בּוֹ כְּדֵי לִגְדּוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "והם מחזירים את הגז שאנו שואפים.",
+      "text_markdown": "והם מחזירים את הגז שאנו שואפים.",
+      "tts": {
+        "text": "וְהֵם מַחְזִירִים אֶת הַגָּז שֶׁאָנוּ שׁוֹאֲפִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל יער הגשם בצרה.",
+      "text_markdown": "אבל יער הגשם בצרה.",
+      "tts": {
+        "text": "אֲבָל יַעַר הַגֶּשֶׁם בְּצָרָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות רבים, אנשים כרתו את העצים כדי לגדל יבולים או לגדל בעלי חיים.",
+      "text_markdown": "במקומות רבים, אנשים כרתו את העצים כדי לגדל יבולים או לגדל בעלי חיים.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת רַבִּים, אֲנָשִׁים כָּרְתוּ אֶת הָעֵצִים כְּדֵי לִגְדֹּל יְבוּלִים אוֹ לִגְדֹּל בַּעֲלֵי חַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהעצים נעלמו, האדמה נשטפתה, והגשם מפסיק לרדת כמו שהיה רגיל.",
+      "text_markdown": "כשהעצים נעלמו, האדמה נשטפתה, והגשם מפסיק לרדת כמו שהיה רגיל.",
+      "tts": {
+        "text": "כְּשֶׁהָעֵצִים נֶעֱלָמוּ, הָאֲדָמָה נִשְׁטַפְתָּה, וְהַגֶּשֶׁם מִפְסִיק לֵרֶדֶת כְּמוֹ שֶׁהָיָה רָגִיל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי החיים והאנשים שחיים שם מאבדים את הבית שלהם.",
+      "text_markdown": "בעלי החיים והאנשים שחיים שם מאבדים את הבית שלהם.",
+      "tts": {
+        "text": "בַּעֲלֵי הַחַיִּים וְהָאֲנָשִׁים שֶׁחַיִּים שָׁם מְאַבְּדִים אֶת הַבַּיִת שֶׁלָּהֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קבוצות רבות ברחבי העולם פועלות להגן על מה שנשאר.",
+      "text_markdown": "קבוצות רבות ברחבי העולם פועלות להגן על מה שנשאר.",
+      "tts": {
+        "text": "קְבוּצוֹת רַבּוֹת בִּרְחַבֵּי הָעוֹלָם פּוֹעֲלוֹת לְהָגֵן עַל מַה שֶׁנִּשְׁאַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן שותלות עצים חדשים.",
+      "text_markdown": "הן שותלות עצים חדשים.",
+      "tts": {
+        "text": "הֵן שׁוֹתְלוֹת עֵצִים חֲדָשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן עוזרות לאנשים שחיים ביער לשמור עליו.",
+      "text_markdown": "הן עוזרות לאנשים שחיים ביער לשמור עליו.",
+      "tts": {
+        "text": "הֵן עוֹזְרוֹת לַאֲנָשִׁים שֶׁחַיִּים בַּיַּעַר לִשְׁמוֹר עָלָיו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן חוקרות את היער כדי שנבין אותו טוב יותר.",
+      "text_markdown": "הן חוקרות את היער כדי שנבין אותו טוב יותר.",
+      "tts": {
+        "text": "הֵן חוֹקְרוֹת אֶת הַיַּעַר כְּדֵי שֶׁנָּבִין אוֹתוֹ טוֹב יוֹתֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יער גשם לוקח מאות שנים לגדול.",
+      "text_markdown": "יער גשם לוקח מאות שנים לגדול.",
+      "tts": {
+        "text": "יַעַר גֶּשֶׁם לוֹקֵחַ מֵאוֹת שָׁנִים לִגְדּוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל יער גשם בריא יכול להמשיך לגדול במשך אלפי שנים.",
+      "text_markdown": "אבל יער גשם בריא יכול להמשיך לגדול במשך אלפי שנים.",
+      "tts": {
+        "text": "אֲבָל יַעַר גֶּשֶׁם בָּרִיא יָכוֹל לְהַמְשִׁיךְ לִגְדּוֹל בְּמִשְׁךְ אַלְפֵי שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "יער הגשם היום",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא שווי את הדאגה שלנו.",
+      "text_markdown": "הוא שווי את הדאגה שלנו.",
+      "tts": {
+        "text": "הוּא שָׁווּי אֶת הַדְּאָגָה שֶׁלָּנוּ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "סיום",
+      "text_markdown": "סיום"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו יער הגשם הטרופי.",
+      "text_markdown": "זהו יער הגשם הטרופי.",
+      "tts": {
+        "text": "זֶהוּ יַעַר הַגֶּשֶׁם הַטְרוֹפִי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עולם חם, רטוב וירוק מלא בחיים.",
+      "text_markdown": "עולם חם, רטוב וירוק מלא בחיים.",
+      "tts": {
+        "text": "עוֹלָם חַם, רָטוֹב וְיָרוֹק מָלֵא בְחַיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם תכנסו פעם אל אחד מהם, עמדו רגע בשקט.",
+      "text_markdown": "אם תכנסו פעם אל אחד מהם, עמדו רגע בשקט.",
+      "tts": {
+        "text": "אִם תִּכְנְסוּ פַּעַם אֶל אַחַד מֵהֶם, עִמְדוּ רֶגַע בְּשָׁקֵט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקשיבו לצפורים, לצפרדעים ולגשם על העלים.",
+      "text_markdown": "הקשיבו לצפורים, לצפרדעים ולגשם על העלים.",
+      "tts": {
+        "text": "הַקְשִׁיבוּ לַצִּפּוֹרִים, לַצְפַרְדְּעִים וְלַגֶּשֶׁם עַל הָעָלִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "סיום",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תשמעו את לב הביאום פועם סביבכם.",
+      "text_markdown": "תשמעו את לב הביאום פועם סביבכם.",
+      "tts": {
+        "text": "תִּשְׁמְעוּ אֶת לֵב הַבִּיאוֹם פּוֹעֵם סְבִיבְכֶם.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

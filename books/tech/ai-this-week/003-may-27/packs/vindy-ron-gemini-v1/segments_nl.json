@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "nl",
+  "total_segments": 209,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "text": "Welkom bij AI Deze Week.",
+      "text_markdown": "Welkom bij AI Deze Week.",
+      "title": "",
+      "tts": {
+        "text": "Welkom bij AI Deze Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "text": "Ik ben Vindy.",
+      "text_markdown": "Ik ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ik ben Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "text": "Bij mij, zoals altijd, is Ron.",
+      "text_markdown": "Bij mij, zoals altijd, is Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bij mij, zoals altijd, is Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "text": "Fijn om hier te zijn, Vindy.",
+      "text_markdown": "Fijn om hier te zijn, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Fijn om hier te zijn, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "text": "Vandaag is het woensdag 27 mei 2026.",
+      "text_markdown": "Vandaag is het woensdag 27 mei 2026.",
+      "title": "",
+      "tts": {
+        "text": "Vandaag is het woensdag zevenentwintig mei tweeduizendzesentwintig.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "text": "En op papier was dit een rustige week.",
+      "text_markdown": "En op papier was dit een rustige week.",
+      "title": "",
+      "tts": {
+        "text": "En op papier was dit een rustige week.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "text": "Er is geen groot nieuw open model uitgebracht.",
+      "text_markdown": "Er is geen groot nieuw open model uitgebracht.",
+      "title": "",
+      "tts": {
+        "text": "Er is geen groot nieuw open model uitgebracht.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "text": "Maar in rustige weken schuilt het echte verhaal.",
+      "text_markdown": "Maar in rustige weken schuilt het echte verhaal.",
+      "title": "",
+      "tts": {
+        "text": "Maar in rustige weken schuilt het echte verhaal.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "text": "Dus vandaag gaan we waar de keynotes niet komen.",
+      "text_markdown": "Dus vandaag gaan we waar de keynotes niet komen.",
+      "title": "",
+      "tts": {
+        "text": "Dus vandaag gaan we waar de keynotes niet komen.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "text": "Straks — wat er daadwerkelijk is gebeurd met open weights.",
+      "text_markdown": "Straks — wat er daadwerkelijk is gebeurd met open weights.",
+      "title": "",
+      "tts": {
+        "text": "Straks — wat er daadwerkelijk is gebeurd met open weights.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "text": "Het enige klassement dat ertoe doet, en het is geen kwaliteitsklassement.",
+      "text_markdown": "Het enige klassement dat ertoe doet, en het is geen kwaliteitsklassement.",
+      "title": "",
+      "tts": {
+        "text": "Het enige klassement dat ertoe doet, en het is geen kwaliteitsklassement.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "text": "Een snelle reeks koppen waar je dit weekend mee aan de slag kunt.",
+      "text_markdown": "Een snelle reeks koppen waar je dit weekend mee aan de slag kunt.",
+      "title": "",
+      "tts": {
+        "text": "Een snelle reeks koppen waar je dit weekend mee aan de slag kunt.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "text": "Ons topverhaal: het jaar waarin open voice goed genoeg werd om te bezitten.",
+      "text_markdown": "Ons topverhaal: het jaar waarin open voice goed genoeg werd om te bezitten.",
+      "title": "",
+      "tts": {
+        "text": "Ons topverhaal: het jaar waarin open voice goed genoeg werd om te bezitten.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "En het concept van de week is neurale audiocodecs — hoe je een hele stem zo klein maakt dat deze op een telefoon past.",
+      "text_markdown": "En het concept van de week is neurale audiocodecs — hoe je een hele stem zo klein maakt dat deze op een telefoon past.",
+      "title": "",
+      "tts": {
+        "text": "En het concept van de week is neurale audiocodecs — hoe je een hele stem zo klein maakt dat deze op een telefoon past.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "text": "Ron, laten we beginnen in de open-weights wereld.",
+      "text_markdown": "Ron, laten we beginnen in de open-weights wereld.",
+      "title": "",
+      "tts": {
+        "text": "Ron, laten we beginnen in de open weights wereld.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "text": "Wat is er deze week gebeurd?",
+      "text_markdown": "Wat is er deze week gebeurd?",
+      "title": "",
+      "tts": {
+        "text": "Wat is er deze week gebeurd?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "text": "Eerlijk gezegd is er deze week geen nieuw grensverleggend open model uitgebracht.",
+      "text_markdown": "Eerlijk gezegd is er deze week geen nieuw grensverleggend open model uitgebracht.",
+      "title": "",
+      "tts": {
+        "text": "Eerlijk gezegd is er deze week geen nieuw grensverleggend open model uitgebracht.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "text": "En dat is prima.",
+      "text_markdown": "En dat is prima.",
+      "title": "",
+      "tts": {
+        "text": "En dat is prima.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "text": "Het echte open nieuws deze week ging over infrastructuur en prijzen.",
+      "text_markdown": "Het echte open nieuws deze week ging over infrastructuur en prijzen.",
+      "title": "",
+      "tts": {
+        "text": "Het echte open nieuws deze week ging over infrastructuur en prijzen.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "text": "Eerst de infrastructuur — wat ging er kapot of werd gerepareerd?",
+      "text_markdown": "Eerst de infrastructuur — wat ging er kapot of werd gerepareerd?",
+      "title": "",
+      "tts": {
+        "text": "Eerst de infrastructuur — wat ging er kapot of werd gerepareerd?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "text": "Op 26 mei bracht het SGLang-project een stabiliteitspatch uit voor het draaien van DeepSeek V4.",
+      "text_markdown": "Op 26 mei bracht het SGLang-project een stabiliteitspatch uit voor het draaien van DeepSeek V4.",
+      "title": "",
+      "tts": {
+        "text": "Op zesentwintig mei bracht het S G Lang-project een stabiliteitspatch uit voor het draaien van DeepSeek V vier.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "text": "SGLang is een van de twee grote open engines die je gebruikt om zelf een model te draaien.",
+      "text_markdown": "SGLang is een van de twee grote open engines die je gebruikt om zelf een model te draaien.",
+      "title": "",
+      "tts": {
+        "text": "S G Lang is een van de twee grote open engines die je gebruikt om zelf een model te draaien.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "text": "De andere is vLLM.",
+      "text_markdown": "De andere is vLLM.",
+      "title": "",
+      "tts": {
+        "text": "De andere is v L L M.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "text": "Deze patch verhielp vervormde uitvoer op de nieuwste kaarten en een crash onder zware belasting.",
+      "text_markdown": "Deze patch verhielp vervormde uitvoer op de nieuwste kaarten en een crash onder zware belasting.",
+      "title": "",
+      "tts": {
+        "text": "Deze patch verhielp vervormde uitvoer op de nieuwste kaarten en een crash onder zware belasting.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "text": "Waarom is een serving-patch belangrijk?",
+      "text_markdown": "Waarom is een serving-patch belangrijk?",
+      "title": "",
+      "tts": {
+        "text": "Waarom is een serving-patch belangrijk?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "text": "Omdat open weights nutteloos zijn als je ze niet betrouwbaar kunt draaien.",
+      "text_markdown": "Omdat open weights nutteloos zijn als je ze niet betrouwbaar kunt draaien.",
+      "title": "",
+      "tts": {
+        "text": "Omdat open weights nutteloos zijn als je ze niet betrouwbaar kunt draaien.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "text": "DeepSeek V4 is open en MIT-gelicenseerd, maar het is een enorm model.",
+      "text_markdown": "DeepSeek V4 is open en MIT-gelicenseerd, maar het is een enorm model.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V vier is open en M I T-gelicenseerd, maar het is een enorm model.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "text": "De engines die het in het wild laten draaien, zijn de onopvallende helft van het open ecosysteem.",
+      "text_markdown": "De engines die het in het wild laten draaien, zijn de onopvallende helft van het open ecosysteem.",
+      "title": "",
+      "tts": {
+        "text": "De engines die het in het wild laten draaien, zijn de onopvallende helft van het open ecosysteem.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "text": "Een saaie patchweek is hoe een gezond project eruitziet.",
+      "text_markdown": "Een saaie patchweek is hoe een gezond project eruitziet.",
+      "title": "",
+      "tts": {
+        "text": "Een saaie patchweek is hoe een gezond project eruitziet.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "text": "En de prijzenkant?",
+      "text_markdown": "En de prijzenkant?",
+      "title": "",
+      "tts": {
+        "text": "En de prijzenkant?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "text": "Dit is de interessantere.",
+      "text_markdown": "Dit is de interessantere.",
+      "title": "",
+      "tts": {
+        "text": "Dit is de interessantere.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "text": "Rond 22 mei maakte DeepSeek zijn prijsverlaging van 75% op V4-Pro permanent.",
+      "text_markdown": "Rond 22 mei maakte DeepSeek zijn prijsverlaging van 75% op V4-Pro permanent.",
+      "title": "",
+      "tts": {
+        "text": "Rond tweeëntwintig mei maakte DeepSeek zijn vijfenzeventig procent prijsverlaging op V vier Pro permanent.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "text": "De uitvoerprijs is nu ongeveer $0,87 per miljoen tokens.",
+      "text_markdown": "De uitvoerprijs is nu ongeveer $0,87 per miljoen tokens.",
+      "title": "",
+      "tts": {
+        "text": "De uitvoerprijs is nu ongeveer nul punt zevenentachtig dollar per miljoen tokens.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "text": "Dat is ruwweg een kwart van de lanceringsprijs.",
+      "text_markdown": "Dat is ruwweg een kwart van de lanceringsprijs.",
+      "title": "",
+      "tts": {
+        "text": "Dat is ruwweg een kwart van de lanceringsprijs.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "text": "Het open model werd dus goedkoper om te huren.",
+      "text_markdown": "Het open model werd dus goedkoper om te huren.",
+      "title": "",
+      "tts": {
+        "text": "Het open model werd dus goedkoper om te huren.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "text": "Precies, en dat zet een vraag op zijn kop.",
+      "text_markdown": "Precies, en dat zet een vraag op zijn kop.",
+      "title": "",
+      "tts": {
+        "text": "Precies, en dat zet een vraag op zijn kop.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "text": "We zeggen meestal dat open weights betekent dat je zelf host.",
+      "text_markdown": "We zeggen meestal dat open weights betekent dat je zelf host.",
+      "title": "",
+      "tts": {
+        "text": "We zeggen meestal dat open weights betekent dat je zelf host.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "text": "Maar met minder dan een dollar per miljoen tokens direct beschikbaar, is huren vaak goedkoper dan je eigen elektriciteit.",
+      "text_markdown": "Maar met minder dan een dollar per miljoen tokens direct beschikbaar, is huren vaak goedkoper dan je eigen elektriciteit.",
+      "title": "",
+      "tts": {
+        "text": "Maar met minder dan één dollar per miljoen tokens direct beschikbaar, is huren vaak goedkoper dan je eigen elektriciteit.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "text": "Dus de nieuwe benadering is — zelf hosten voor privacy en offline, de API huren voor goedkope pieken.",
+      "text_markdown": "Dus de nieuwe benadering is — zelf hosten voor privacy en offline, de API huren voor goedkope pieken.",
+      "title": "",
+      "tts": {
+        "text": "Dus de nieuwe benadering is — zelf hosten voor privacy en offline, de A P I huren voor goedkope pieken.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "text": "Dezelfde open weights, twee heel verschillende redenen om ze te gebruiken.",
+      "text_markdown": "Dezelfde open weights, twee heel verschillende redenen om ze te gebruiken.",
+      "title": "",
+      "tts": {
+        "text": "Dezelfde open weights, twee heel verschillende redenen om ze te gebruiken.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "text": "Hoe zit het met de on-device gebruikers?",
+      "text_markdown": "Hoe zit het met de on-device gebruikers?",
+      "title": "",
+      "tts": {
+        "text": "Hoe zit het met de on device gebruikers?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "text": "llama.cpp bleef de hele week zijn ding doen.",
+      "text_markdown": "llama.cpp bleef de hele week zijn ding doen.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P bleef de hele week zijn ding doen.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "text": "Het brengt niet echt releases uit — het levert bijna elke dag builds.",
+      "text_markdown": "Het brengt niet echt releases uit — het levert bijna elke dag builds.",
+      "title": "",
+      "tts": {
+        "text": "Het brengt niet echt releases uit — het levert bijna elke dag builds.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "text": "Deze week werd er gewerkt aan de snelheid van Vulkan, Intel en telefoon-klasse chips.",
+      "text_markdown": "Deze week werd er gewerkt aan de snelheid van Vulkan, Intel en telefoon-klasse chips.",
+      "title": "",
+      "tts": {
+        "text": "Deze week werd er gewerkt aan de snelheid van Vulkan, Intel en telefoon klasse chips.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "text": "Dat is de engine waarop de on-device wereld daadwerkelijk draait.",
+      "text_markdown": "Dat is de engine waarop de on-device wereld daadwerkelijk draait.",
+      "title": "",
+      "tts": {
+        "text": "Dat is de engine waarop de on device wereld daadwerkelijk draait.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "text": "Geen drama, gewoon sneller — precies wat je wilt van volwassen infrastructuur.",
+      "text_markdown": "Geen drama, gewoon sneller — precies wat je wilt van volwassen infrastructuur.",
+      "title": "",
+      "tts": {
+        "text": "Geen drama, gewoon sneller — precies wat je wilt van volwassen infrastructuur.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "text": "Schets de bredere context voor ons.",
+      "text_markdown": "Schets de bredere context voor ons.",
+      "title": "",
+      "tts": {
+        "text": "Schets de bredere context voor ons.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "text": "De open frontier wordt momenteel voornamelijk door China geleid.",
+      "text_markdown": "De open frontier wordt momenteel voornamelijk door China geleid.",
+      "title": "",
+      "tts": {
+        "text": "De open frontier wordt momenteel voornamelijk door China geleid.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "text": "In april was er een golf — DeepSeek V4, Qwen 3.6, Kimi K2.6, en meer, allemaal in ongeveer twee weken.",
+      "text_markdown": "In april was er een golf — DeepSeek V4, Qwen 3.6, Kimi K2.6, en meer, allemaal in ongeveer twee weken.",
+      "title": "",
+      "tts": {
+        "text": "In april was er een golf — DeepSeek V vier, Qwen drie punt zes, Kimi K twee punt zes, en meer, allemaal in ongeveer twee weken.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "text": "Deze week is de rustige nasleep van die golf.",
+      "text_markdown": "Deze week is de rustige nasleep van die golf.",
+      "title": "",
+      "tts": {
+        "text": "Deze week is de rustige nasleep van die golf.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "text": "En Qwen — hadden zij geen nieuws?",
+      "text_markdown": "En Qwen — hadden zij geen nieuws?",
+      "title": "",
+      "tts": {
+        "text": "En Qwen — hadden zij geen nieuws?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "text": "Jazeker, en het is veelzeggend.",
+      "text_markdown": "Jazeker, en het is veelzeggend.",
+      "title": "",
+      "tts": {
+        "text": "Jazeker, en het is veelzeggend.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "text": "Alibaba's nieuwe vlaggenschip, Qwen 3.7 Max, is alleen via API beschikbaar — geen open weights.",
+      "text_markdown": "Alibaba's nieuwe vlaggenschip, Qwen 3.7 Max, is alleen via API beschikbaar — geen open weights.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba's nieuwe vlaggenschip, Qwen drie punt zeven Max, is alleen via A P I beschikbaar — geen open weights.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "text": "De open Qwen-lijn stopt nog steeds bij 3.6.",
+      "text_markdown": "De open Qwen-lijn stopt nog steeds bij 3.6.",
+      "title": "",
+      "tts": {
+        "text": "De open Qwen-lijn stopt nog steeds bij drie punt zes.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "text": "Alibaba splitst zich dus op in een gesloten vlaggenschip en een open mid-tier.",
+      "text_markdown": "Alibaba splitst zich dus op in een gesloten vlaggenschip en een open mid-tier.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba splitst zich dus op in een gesloten vlaggenschip en een open mid tier.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "text": "Dat is hetzelfde draaiboek dat Mistral vorig jaar gebruikte.",
+      "text_markdown": "Dat is hetzelfde draaiboek dat Mistral vorig jaar gebruikte.",
+      "title": "",
+      "tts": {
+        "text": "Dat is hetzelfde draaiboek dat Mistral vorig jaar gebruikte.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "text": "Dan is het de moeite waard om in de gaten te houden.",
+      "text_markdown": "Dan is het de moeite waard om in de gaten te houden.",
+      "title": "",
+      "tts": {
+        "text": "Dan is het de moeite waard om in de gaten te houden.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "text": "De volgende stap is een open Qwen 3.7 mid-tier.",
+      "text_markdown": "De volgende stap is een open Qwen 3.7 mid-tier.",
+      "title": "",
+      "tts": {
+        "text": "De volgende stap is een open Qwen drie punt zeven mid tier.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "text": "Vanaf deze week staat er nog niets op Hugging Face.",
+      "text_markdown": "Vanaf deze week staat er nog niets op Hugging Face.",
+      "title": "",
+      "tts": {
+        "text": "Vanaf deze week staat er nog niets op Hugging Face.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "text": "Oké, laten we naar de leaderboards gaan.",
+      "text_markdown": "Oké, laten we naar de leaderboards gaan.",
+      "title": "",
+      "tts": {
+        "text": "Oké, laten we naar de leaderboards gaan.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "text": "Waar zijn de zaken deze week geëindigd?",
+      "text_markdown": "Waar zijn de zaken deze week geëindigd?",
+      "title": "",
+      "tts": {
+        "text": "Waar zijn de zaken deze week geëindigd?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "text": "Dit is de kop, en het is een vreemde.",
+      "text_markdown": "Dit is de kop, en het is een vreemde.",
+      "title": "",
+      "tts": {
+        "text": "Dit is de kop, en het is een vreemde.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-063",
+      "chapter": 0,
+      "text": "Het klassement dat deze week is verschoven, is geen kwaliteitsklassement.",
+      "text_markdown": "Het klassement dat deze week is verschoven, is geen kwaliteitsklassement.",
+      "title": "",
+      "tts": {
+        "text": "Het klassement dat deze week is verschoven, is geen kwaliteitsklassement.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-064",
+      "chapter": 0,
+      "text": "Het is de gebruiksmeter van OpenRouter — daadwerkelijke modelaanroepen, geen meningen.",
+      "text_markdown": "Het is de gebruiksmeter van OpenRouter — daadwerkelijke modelaanroepen, geen meningen.",
+      "title": "",
+      "tts": {
+        "text": "Het is de gebruiksmeter van OpenRouter — daadwerkelijke modelaanroepen, geen meningen.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-065",
+      "chapter": 0,
+      "text": "Wat zegt de gebruiksmeter?",
+      "text_markdown": "Wat zegt de gebruiksmeter?",
+      "title": "",
+      "tts": {
+        "text": "Wat zegt de gebruiksmeter?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-066",
+      "chapter": 0,
+      "text": "Voor de week van 18 tot 24 mei was het meest gebruikte model op Aarde DeepSeek V4-Flash.",
+      "text_markdown": "Voor de week van 18 tot 24 mei was het meest gebruikte model op Aarde DeepSeek V4-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Voor de week van achttien tot vierentwintig mei was het meest gebruikte model op Aarde DeepSeek V vier Flash.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-067",
+      "chapter": 0,
+      "text": "Het verwerkte ongeveer 3,43 biljoen tokens in één week.",
+      "text_markdown": "Het verwerkte ongeveer 3,43 biljoen tokens in één week.",
+      "title": "",
+      "tts": {
+        "text": "Het verwerkte ongeveer drie komma drieënveertig biljoen tokens in één week.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-068",
+      "chapter": 0,
+      "text": "En het zijn open weights, MIT-gelicenseerd, iets wat je kunt downloaden en zelf kunt hosten.",
+      "text_markdown": "En het zijn open weights, MIT-gelicenseerd, iets wat je kunt downloaden en zelf kunt hosten.",
+      "title": "",
+      "tts": {
+        "text": "En het zijn open weights, M I T gelicenseerd, iets wat je kunt downloaden en zelf kunt hosten.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-069",
+      "chapter": 0,
+      "text": "Het meest gebruikte model is open?",
+      "text_markdown": "Het meest gebruikte model is open?",
+      "title": "",
+      "tts": {
+        "text": "Het meest gebruikte model is open?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-070",
+      "chapter": 0,
+      "text": "Bovenaan de gebruikslijst, ja.",
+      "text_markdown": "Bovenaan de gebruikslijst, ja.",
+      "title": "",
+      "tts": {
+        "text": "Bovenaan de gebruikslijst, ja.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-071",
+      "chapter": 0,
+      "text": "En het is geen nek-aan-nekrace.",
+      "text_markdown": "En het is geen nek-aan-nekrace.",
+      "title": "",
+      "tts": {
+        "text": "En het is geen nek-aan-nekrace.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-072",
+      "chapter": 0,
+      "text": "Chinese modellen verwerkten die week ongeveer 9,2 biljoen tokens, tegenover ongeveer 4,9 biljoen voor Amerikaanse modellen.",
+      "text_markdown": "Chinese modellen verwerkten die week ongeveer 9,2 biljoen tokens, tegenover ongeveer 4,9 biljoen voor Amerikaanse modellen.",
+      "title": "",
+      "tts": {
+        "text": "Chinese modellen verwerkten die week ongeveer negen komma twee biljoen tokens, tegenover ongeveer vier komma negen biljoen voor Amerikaanse modellen.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-073",
+      "chapter": 0,
+      "text": "Dat is de vierde week op rij dat Chinese open modellen het wereldwijde gebruik leidden.",
+      "text_markdown": "Dat is de vierde week op rij dat Chinese open modellen het wereldwijde gebruik leidden.",
+      "title": "",
+      "tts": {
+        "text": "Dat is de vierde week op rij dat Chinese open modellen het wereldwijde gebruik leidden.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-074",
+      "chapter": 0,
+      "text": "Dat is een echte omkering.",
+      "text_markdown": "Dat is een echte omkering.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een echte omkering.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-075",
+      "chapter": 0,
+      "text": "Het is — op de metriek die ontwikkelaars daadwerkelijk voelen, wat er in productie draait, open wint bovenaan.",
+      "text_markdown": "Het is — op de metriek die ontwikkelaars daadwerkelijk voelen, wat er in productie draait, open wint bovenaan.",
+      "title": "",
+      "tts": {
+        "text": "Het is — op de metriek die ontwikkelaars daadwerkelijk voelen, wat er in productie draait, open wint bovenaan.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-076",
+      "chapter": 0,
+      "text": "Maar wees eerlijk over gebruiksstatistieken.",
+      "text_markdown": "Maar wees eerlijk over gebruiksstatistieken.",
+      "title": "",
+      "tts": {
+        "text": "Maar wees eerlijk over gebruiksstatistieken.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-077",
+      "chapter": 0,
+      "text": "Goed instinct, en er is deze week een perfecte waarschuwing.",
+      "text_markdown": "Goed instinct, en er is deze week een perfecte waarschuwing.",
+      "title": "",
+      "tts": {
+        "text": "Goed instinct, en er is deze week een perfecte waarschuwing.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-078",
+      "chapter": 0,
+      "text": "Een ander model, Tencent's Hy3, schoot omhoog in dezelfde gebruikslijst.",
+      "text_markdown": "Een ander model, Tencent's Hy3, schoot omhoog in dezelfde gebruikslijst.",
+      "title": "",
+      "tts": {
+        "text": "Een ander model, Tencent's H Y drie, schoot omhoog in dezelfde gebruikslijst.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-079",
+      "chapter": 0,
+      "text": "De analist Max Woolf ontleedde het op 26 mei.",
+      "text_markdown": "De analist Max Woolf ontleedde het op 26 mei.",
+      "title": "",
+      "tts": {
+        "text": "De analist Max Woolf ontleedde het op zesentwintig mei.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-080",
+      "chapter": 0,
+      "text": "Wat heeft hij gevonden?",
+      "text_markdown": "Wat heeft hij gevonden?",
+      "title": "",
+      "tts": {
+        "text": "Wat heeft hij gevonden?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-081",
+      "chapter": 0,
+      "text": "Het lijkt goedkoop per token, maar het heeft zeer hoge cache-lees kosten.",
+      "text_markdown": "Het lijkt goedkoop per token, maar het heeft zeer hoge cache-lees kosten.",
+      "title": "",
+      "tts": {
+        "text": "Het lijkt goedkoop per token, maar het heeft zeer hoge cache-lees kosten.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-082",
+      "chapter": 0,
+      "text": "Als je die meetelt, is het bijna het dubbele van de werkelijke prijs van DeepSeek.",
+      "text_markdown": "Als je die meetelt, is het bijna het dubbele van de werkelijke prijs van DeepSeek.",
+      "title": "",
+      "tts": {
+        "text": "Als je die meetelt, is het bijna het dubbele van de werkelijke prijs van DeepSeek.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-083",
+      "chapter": 0,
+      "text": "En de piek lijkt op één gigantische app, niet op brede populariteit.",
+      "text_markdown": "En de piek lijkt op één gigantische app, niet op brede populariteit.",
+      "title": "",
+      "tts": {
+        "text": "En de piek lijkt op één gigantische app, niet op brede populariteit.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-084",
+      "chapter": 0,
+      "text": "Dus een gebruiksranglijst vertelt je wie er uitgeeft, niet wat goed is.",
+      "text_markdown": "Dus een gebruiksranglijst vertelt je wie er uitgeeft, niet wat goed is.",
+      "title": "",
+      "tts": {
+        "text": "Dus een gebruiksranglijst vertelt je wie er uitgeeft, niet wat goed is.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-085",
+      "chapter": 0,
+      "text": "Trending is niet hetzelfde als het beste.",
+      "text_markdown": "Trending is niet hetzelfde als het beste.",
+      "title": "",
+      "tts": {
+        "text": "Trending is niet hetzelfde als het beste.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dat is precies de les die we moeten meenemen.",
+      "text_markdown": "Dat is precies de les die we moeten meenemen.",
+      "title": "",
+      "tts": {
+        "text": "Dat is precies de les die we moeten meenemen.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-087",
+      "chapter": 0,
+      "text": "Hoe zit het met de kwaliteitsklassementen?",
+      "text_markdown": "Hoe zit het met de kwaliteitsklassementen?",
+      "title": "",
+      "tts": {
+        "text": "Hoe zit het met de kwaliteitsklassementen?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-088",
+      "chapter": 0,
+      "text": "Op de moeilijkste klassementen leiden gesloten modellen nog steeds.",
+      "text_markdown": "Op de moeilijkste klassementen leiden gesloten modellen nog steeds.",
+      "title": "",
+      "tts": {
+        "text": "Op de moeilijkste klassementen leiden gesloten modellen nog steeds.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-089",
+      "chapter": 0,
+      "text": "De top van de chatkwaliteit- en agent-terminal klassementen is momenteel allemaal gesloten.",
+      "text_markdown": "De top van de chatkwaliteit- en agent-terminal klassementen is momenteel allemaal gesloten.",
+      "title": "",
+      "tts": {
+        "text": "De top van de chatkwaliteit- en agent-terminal klassementen is momenteel allemaal gesloten.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-090",
+      "chapter": 0,
+      "text": "Maar op SWE-bench Verified, de coderingstest, is open in principe gelijkwaardig.",
+      "text_markdown": "Maar op SWE-bench Verified, de coderingstest, is open in principe gelijkwaardig.",
+      "title": "",
+      "tts": {
+        "text": "Maar op S W E bench Verified, de coderingstest, is open in principe gelijkwaardig.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-091",
+      "chapter": 0,
+      "text": "Trackers plaatsen de beste open modellen rond de 80%.",
+      "text_markdown": "Trackers plaatsen de beste open modellen rond de 80%.",
+      "title": "",
+      "tts": {
+        "text": "Trackers plaatsen de beste open modellen rond de tachtig procent.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-092",
+      "chapter": 0,
+      "text": "Welke open modellen?",
+      "text_markdown": "Welke open modellen?",
+      "title": "",
+      "tts": {
+        "text": "Welke open modellen?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-093",
+      "chapter": 0,
+      "text": "Kimi K2.6 en MiniMax, waarbij DeepSeek's grootste model iets vergelijkbaars claimt.",
+      "text_markdown": "Kimi K2.6 en MiniMax, waarbij DeepSeek's grootste model iets vergelijkbaars claimt.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K twee punt zes en MiniMax, waarbij DeepSeek's grootste model iets vergelijkbaars claimt.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-094",
+      "chapter": 0,
+      "text": "Ik zeg 'claimen', omdat de trackers het niet met elkaar eens zijn.",
+      "text_markdown": "Ik zeg 'claimen', omdat de trackers het niet met elkaar eens zijn.",
+      "title": "",
+      "tts": {
+        "text": "Ik zeg 'claimen', omdat de trackers het niet met elkaar eens zijn.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-095",
+      "chapter": 0,
+      "text": "Beschouw elk afzonderlijk benchmarkgetal als een claim, niet als een feit.",
+      "text_markdown": "Beschouw elk afzonderlijk benchmarkgetal als een claim, niet als een feit.",
+      "title": "",
+      "tts": {
+        "text": "Beschouw elk afzonderlijk benchmarkgetal als een claim, niet als een feit.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-096",
+      "chapter": 0,
+      "text": "Daarover gesproken — het benchmark-vertrouwensprobleem.",
+      "text_markdown": "Daarover gesproken — het benchmark-vertrouwensprobleem.",
+      "title": "",
+      "tts": {
+        "text": "Daarover gesproken — het benchmark-vertrouwensprobleem.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-097",
+      "chapter": 0,
+      "text": "Ja, op 19 mei verscheen er een scherp artikel precies daarover.",
+      "text_markdown": "Ja, op 19 mei verscheen er een scherp artikel precies daarover.",
+      "title": "",
+      "tts": {
+        "text": "Ja, op negentien mei verscheen er een scherp artikel precies daarover.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-098",
+      "chapter": 0,
+      "text": "Het argument is dat benchmarks contaminatiebestendig moeten zijn.",
+      "text_markdown": "Het argument is dat benchmarks contaminatiebestendig moeten zijn.",
+      "title": "",
+      "tts": {
+        "text": "Het argument is dat benchmarks contaminatiebestendig moeten zijn.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-099",
+      "chapter": 0,
+      "text": "Wat betekent dat de test niet mag uitlekken naar de trainingsdata.",
+      "text_markdown": "Wat betekent dat de test niet mag uitlekken naar de trainingsdata.",
+      "title": "",
+      "tts": {
+        "text": "Wat betekent dat de test niet mag uitlekken naar de trainingsdata.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-100",
+      "chapter": 0,
+      "text": "Anders meet een hoge score geheugen, geen redenering.",
+      "text_markdown": "Anders meet een hoge score geheugen, geen redenering.",
+      "title": "",
+      "tts": {
+        "text": "Anders meet een hoge score geheugen, geen redenering.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-101",
+      "chapter": 0,
+      "text": "Dus twee manieren waarop een bord kan liegen.",
+      "text_markdown": "Dus twee manieren waarop een bord kan liegen.",
+      "title": "",
+      "tts": {
+        "text": "Dus twee manieren waarop een bord kan liegen.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-102",
+      "chapter": 0,
+      "text": "Juist — 'usage gaming' aan de ene kant, contaminatie aan de andere.",
+      "text_markdown": "Juist — 'usage gaming' aan de ene kant, contaminatie aan de andere.",
+      "title": "",
+      "tts": {
+        "text": "Juist — 'usage gaming' aan de ene kant, contaminatie aan de andere.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-103",
+      "chapter": 0,
+      "text": "Dezelfde les — lees het klassement, aanbid het niet.",
+      "text_markdown": "Dezelfde les — lees het klassement, aanbid het niet.",
+      "title": "",
+      "tts": {
+        "text": "Dezelfde les — lees het klassement, aanbid het niet.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-104",
+      "chapter": 0,
+      "text": "Nu de koppen.",
+      "text_markdown": "Nu de koppen.",
+      "title": "",
+      "tts": {
+        "text": "Nu de koppen.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-105",
+      "chapter": 0,
+      "text": "Snel overzicht, dingen die je echt kunt gebruiken.",
+      "text_markdown": "Snel overzicht, dingen die je echt kunt gebruiken.",
+      "title": "",
+      "tts": {
+        "text": "Snel overzicht, dingen die je echt kunt gebruiken.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-106",
+      "chapter": 0,
+      "text": "Ten eerste, de eerlijke self-hosting berekening voor dat nummer één model.",
+      "text_markdown": "Ten eerste, de eerlijke self-hosting berekening voor dat nummer één model.",
+      "title": "",
+      "tts": {
+        "text": "Ten eerste, de eerlijke self-hosting berekening voor dat nummer één model.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-107",
+      "chapter": 0,
+      "text": "DeepSeek V4-Flash heeft ongeveer 170 gigabyte GPU-geheugen nodig.",
+      "text_markdown": "DeepSeek V4-Flash heeft ongeveer 170 gigabyte GPU-geheugen nodig.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V vier Flash heeft ongeveer honderdzeventig gigabyte G P U-geheugen nodig.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-108",
+      "chapter": 0,
+      "text": "Dat is een paar top-end datacenterkaarten, ongeveer zeven dollar per uur in de cloud.",
+      "text_markdown": "Dat is een paar top-end datacenterkaarten, ongeveer zeven dollar per uur in de cloud.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een paar top-end datacenterkaarten, ongeveer zeven dollar per uur in de cloud.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-109",
+      "chapter": 0,
+      "text": "Onder zeer zwaar verkeer wint de goedkope API nog steeds.",
+      "text_markdown": "Onder zeer zwaar verkeer wint de goedkope API nog steeds.",
+      "title": "",
+      "tts": {
+        "text": "Onder zeer zwaar verkeer wint de goedkope API nog steeds.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-110",
+      "chapter": 0,
+      "text": "Host zelf voor privacy en controle, niet om geld te besparen — tenzij je gigantisch bent.",
+      "text_markdown": "Host zelf voor privacy en controle, niet om geld te besparen — tenzij je gigantisch bent.",
+      "title": "",
+      "tts": {
+        "text": "Host zelf voor privacy en controle, niet om geld te besparen — tenzij je gigantisch bent.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-111",
+      "chapter": 0,
+      "text": "Goed, wat nog meer?",
+      "text_markdown": "Goed, wat nog meer?",
+      "title": "",
+      "tts": {
+        "text": "Goed, wat nog meer?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-112",
+      "chapter": 0,
+      "text": "Ten tweede, spraak op apparaten heeft dit jaar een sprong gemaakt.",
+      "text_markdown": "Ten tweede, spraak op apparaten heeft dit jaar een sprong gemaakt.",
+      "title": "",
+      "tts": {
+        "text": "Ten tweede, spraak op apparaten heeft dit jaar een sprong gemaakt.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-113",
+      "chapter": 0,
+      "text": "Er is een open tekst-naar-spraak model dat draait op een CPU zonder enige GPU.",
+      "text_markdown": "Er is een open tekst-naar-spraak model dat draait op een CPU zonder enige GPU.",
+      "title": "",
+      "tts": {
+        "text": "Er is een open tekst-naar-spraak model dat draait op een C P U zonder enige G P U.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-114",
+      "chapter": 0,
+      "text": "Onthoud dat — het is ons topverhaal.",
+      "text_markdown": "Onthoud dat — het is ons topverhaal.",
+      "title": "",
+      "tts": {
+        "text": "Onthoud dat — het is ons topverhaal.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-115",
+      "chapter": 0,
+      "text": "Aankondiging genoteerd.",
+      "text_markdown": "Aankondiging genoteerd.",
+      "title": "",
+      "tts": {
+        "text": "Aankondiging genoteerd.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-116",
+      "chapter": 0,
+      "text": "Ten derde, de 'community quant layer' houdt de open wereld gevoed.",
+      "text_markdown": "Ten derde, de 'community quant layer' houdt de open wereld gevoed.",
+      "title": "",
+      "tts": {
+        "text": "Ten derde, de 'community quant layer' houdt de open wereld gevoed.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-117",
+      "chapter": 0,
+      "text": "Groepen zoals Unsloth leveren binnen enkele dagen getunede, verkleinde versies van nieuwe modellen.",
+      "text_markdown": "Groepen zoals Unsloth leveren binnen enkele dagen getunede, verkleinde versies van nieuwe modellen.",
+      "title": "",
+      "tts": {
+        "text": "Groepen zoals Unsloth leveren binnen enkele dagen getunede, verkleinde versies van nieuwe modellen.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-118",
+      "chapter": 0,
+      "text": "Zo wordt een gigantisch model iets dat op jouw kaart past.",
+      "text_markdown": "Zo wordt een gigantisch model iets dat op jouw kaart past.",
+      "title": "",
+      "tts": {
+        "text": "Zo wordt een gigantisch model iets dat op jouw kaart past.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-119",
+      "chapter": 0,
+      "text": "En aan de luisterkant?",
+      "text_markdown": "En aan de luisterkant?",
+      "title": "",
+      "tts": {
+        "text": "En aan de luisterkant?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-120",
+      "chapter": 0,
+      "text": "Spraak-naar-tekst is ook vooruitgegaan.",
+      "text_markdown": "Spraak-naar-tekst is ook vooruitgegaan.",
+      "title": "",
+      "tts": {
+        "text": "Spraak-naar-tekst is ook vooruitgegaan.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-121",
+      "chapter": 0,
+      "text": "Moonshine v2 is een open model dat Whisper verslaat op nauwkeurigheid met een fractie van de grootte.",
+      "text_markdown": "Moonshine v2 is een open model dat Whisper verslaat op nauwkeurigheid met een fractie van de grootte.",
+      "title": "",
+      "tts": {
+        "text": "Moonshine versie twee is een open model dat Whisper verslaat op nauwkeurigheid met een fractie van de grootte.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-122",
+      "chapter": 0,
+      "text": "Het is gebouwd voor een Raspberry Pi of een telefoon.",
+      "text_markdown": "Het is gebouwd voor een Raspberry Pi of een telefoon.",
+      "title": "",
+      "tts": {
+        "text": "Het is gebouwd voor een Raspberry Pi of een telefoon.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-123",
+      "chapter": 0,
+      "text": "Voor bulktranscriptie op een server is NVIDIA's Parakeet de snelste keuze.",
+      "text_markdown": "Voor bulktranscriptie op een server is NVIDIA's Parakeet de snelste keuze.",
+      "title": "",
+      "tts": {
+        "text": "Voor bulktranscriptie op een server is NVIDIA's Parakeet de snelste keuze.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-124",
+      "chapter": 0,
+      "text": "Nog één — het chipverhaal.",
+      "text_markdown": "Nog één — het chipverhaal.",
+      "title": "",
+      "tts": {
+        "text": "Nog één — het chipverhaal.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-125",
+      "chapter": 0,
+      "text": "Deze verbindt de hele aflevering met elkaar.",
+      "text_markdown": "Deze verbindt de hele aflevering met elkaar.",
+      "title": "",
+      "tts": {
+        "text": "Deze verbindt de hele aflevering met elkaar.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-126",
+      "chapter": 0,
+      "text": "Op 21 mei zei Jensen Huang van Nvidia dat hij de Chinese chipmarkt grotendeels aan Huawei heeft afgestaan.",
+      "text_markdown": "Op 21 mei zei Jensen Huang van Nvidia dat hij de Chinese chipmarkt grotendeels aan Huawei heeft afgestaan.",
+      "title": "",
+      "tts": {
+        "text": "Op eenentwintig mei zei Jensen Huang van Nvidia dat hij de Chinese chipmarkt grotendeels aan Huawei heeft afgestaan.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-127",
+      "chapter": 0,
+      "text": "China blokkeert zelfs goedgekeurde Nvidia-importen om zijn eigen silicium te stimuleren.",
+      "text_markdown": "China blokkeert zelfs goedgekeurde Nvidia-importen om zijn eigen silicium te stimuleren.",
+      "title": "",
+      "tts": {
+        "text": "China blokkeert zelfs goedgekeurde Nvidia-importen om zijn eigen silicium te stimuleren.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-128",
+      "chapter": 0,
+      "text": "Waarom is dat belangrijk voor een ontwikkelaar?",
+      "text_markdown": "Waarom is dat belangrijk voor een ontwikkelaar?",
+      "title": "",
+      "tts": {
+        "text": "Waarom is dat belangrijk voor een ontwikkelaar?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-129",
+      "chapter": 0,
+      "text": "Omdat die open Chinese modellen die bovenaan de gebruikslijst staan, steeds vaker worden getraind en draaien op Huawei-chips.",
+      "text_markdown": "Omdat die open Chinese modellen die bovenaan de gebruikslijst staan, steeds vaker worden getraind en draaien op Huawei-chips.",
+      "title": "",
+      "tts": {
+        "text": "Omdat die open Chinese modellen die bovenaan de gebruikslijst staan, steeds vaker worden getraind en draaien op Huawei-chips.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-130",
+      "chapter": 0,
+      "text": "Exportcontroles waren bedoeld om China's AI te vertragen.",
+      "text_markdown": "Exportcontroles waren bedoeld om China's AI te vertragen.",
+      "title": "",
+      "tts": {
+        "text": "Exportcontroles waren bedoeld om China's AI te vertragen.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-131",
+      "chapter": 0,
+      "text": "In plaats daarvan hebben ze een parallelle open stack opgestart — zowel chips als gewichten.",
+      "text_markdown": "In plaats daarvan hebben ze een parallelle open stack opgestart — zowel chips als gewichten.",
+      "title": "",
+      "tts": {
+        "text": "In plaats daarvan hebben ze een parallelle open stack opgestart — zowel chips als gewichten.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-132",
+      "chapter": 0,
+      "text": "Het leaderboard-verhaal en het chipverhaal zijn hetzelfde verhaal.",
+      "text_markdown": "Het leaderboard-verhaal en het chipverhaal zijn hetzelfde verhaal.",
+      "title": "",
+      "tts": {
+        "text": "Het leaderboard-verhaal en het chipverhaal zijn hetzelfde verhaal.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-133",
+      "chapter": 0,
+      "text": "Laten we nu teruggaan naar het hoofdverhaal.",
+      "text_markdown": "Laten we nu teruggaan naar het hoofdverhaal.",
+      "title": "",
+      "tts": {
+        "text": "Laten we nu teruggaan naar het hoofdverhaal.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-134",
+      "chapter": 0,
+      "text": "Je beloofde ons open stem.",
+      "text_markdown": "Je beloofde ons open stem.",
+      "title": "",
+      "tts": {
+        "text": "Je beloofde ons open stem.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-135",
+      "chapter": 0,
+      "text": "Dat deed ik, en dit is de machinekamer van deze show.",
+      "text_markdown": "Dat deed ik, en dit is de machinekamer van deze show.",
+      "title": "",
+      "tts": {
+        "text": "Dat deed ik, en dit is de machinekamer van deze show.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-136",
+      "chapter": 0,
+      "text": "Vertel daar meer over.",
+      "text_markdown": "Vertel daar meer over.",
+      "title": "",
+      "tts": {
+        "text": "Vertel daar meer over.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-137",
+      "chapter": 0,
+      "text": "De stem die u hoort, draait op een stapel open en gehoste spraakmodellen.",
+      "text_markdown": "De stem die u hoort, draait op een stapel open en gehoste spraakmodellen.",
+      "title": "",
+      "tts": {
+        "text": "De stem die u hoort, draait op een stapel open en gehoste spraakmodellen.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-138",
+      "chapter": 0,
+      "text": "En 2026 is het jaar dat de open modellen goed genoeg werden om te bezitten.",
+      "text_markdown": "En 2026 is het jaar dat de open modellen goed genoeg werden om te bezitten.",
+      "title": "",
+      "tts": {
+        "text": "En tweeduizendzesentwintig is het jaar dat de open modellen goed genoeg werden om te bezitten.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-139",
+      "chapter": 0,
+      "text": "Begin met degene die het dichtst bij huis is.",
+      "text_markdown": "Begin met degene die het dichtst bij huis is.",
+      "title": "",
+      "tts": {
+        "text": "Begin met degene die het dichtst bij huis is.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-140",
+      "chapter": 0,
+      "text": "Dat is Chatterbox, van Resemble AI.",
+      "text_markdown": "Dat is Chatterbox, van Resemble AI.",
+      "title": "",
+      "tts": {
+        "text": "Dat is Chatterbox, van Resemble AI.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-141",
+      "chapter": 0,
+      "text": "Het is MIT-gelicentieerd, het omvat 23 talen en het draait on-device.",
+      "text_markdown": "Het is MIT-gelicentieerd, het omvat 23 talen en het draait on-device.",
+      "title": "",
+      "tts": {
+        "text": "Het is M I T gelicentieerd, het omvat drieëntwintig talen en het draait on-device.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-142",
+      "chapter": 0,
+      "text": "Een versie genaamd Turbo kwam uit in maart.",
+      "text_markdown": "Een versie genaamd Turbo kwam uit in maart.",
+      "title": "",
+      "tts": {
+        "text": "Een versie genaamd Turbo kwam uit in maart.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-143",
+      "chapter": 0,
+      "text": "Het gebruikt een truc die de audiodecoder één stap maakt in plaats van tien.",
+      "text_markdown": "Het gebruikt een truc die de audiodecoder één stap maakt in plaats van tien.",
+      "title": "",
+      "tts": {
+        "text": "Het gebruikt een truc die de audiodecoder één stap maakt in plaats van tien.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-144",
+      "chapter": 0,
+      "text": "In lekentaal over die truc?",
+      "text_markdown": "In lekentaal over die truc?",
+      "title": "",
+      "tts": {
+        "text": "In lekentaal over die truc?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-145",
+      "chapter": 0,
+      "text": "Het betekent veel minder rekenkracht voor dezelfde stem.",
+      "text_markdown": "Het betekent veel minder rekenkracht voor dezelfde stem.",
+      "title": "",
+      "tts": {
+        "text": "Het betekent veel minder rekenkracht voor dezelfde stem.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-146",
+      "chapter": 0,
+      "text": "Dat is wat een goede stem realistisch maakt op een telefoon.",
+      "text_markdown": "Dat is wat een goede stem realistisch maakt op een telefoon.",
+      "title": "",
+      "tts": {
+        "text": "Dat is wat een goede stem realistisch maakt op een telefoon.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-147",
+      "chapter": 0,
+      "text": "Wat als je meer talen nodig hebt?",
+      "text_markdown": "Wat als je meer talen nodig hebt?",
+      "title": "",
+      "tts": {
+        "text": "Wat als je meer talen nodig hebt?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-148",
+      "chapter": 0,
+      "text": "Er is een open model genaamd OmniVoice.",
+      "text_markdown": "Er is een open model genaamd OmniVoice.",
+      "title": "",
+      "tts": {
+        "text": "Er is een open model genaamd Omni Voice.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-149",
+      "chapter": 0,
+      "text": "Het claimt meer dan 600 talen te ondersteunen, en het is snel.",
+      "text_markdown": "Het claimt meer dan 600 talen te ondersteunen, en het is snel.",
+      "title": "",
+      "tts": {
+        "text": "Het claimt meer dan zeshonderd talen te ondersteunen, en het is snel.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-150",
+      "chapter": 0,
+      "text": "Het is Apache-gelicentieerd, dus het is veilig om commercieel te gebruiken.",
+      "text_markdown": "Het is Apache-gelicentieerd, dus het is veilig om commercieel te gebruiken.",
+      "title": "",
+      "tts": {
+        "text": "Het is Apache gelicentieerd, dus het is veilig om commercieel te gebruiken.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-151",
+      "chapter": 0,
+      "text": "600 talen klinkt te mooi.",
+      "text_markdown": "600 talen klinkt te mooi.",
+      "title": "",
+      "tts": {
+        "text": "zeshonderd talen klinkt te mooi.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-152",
+      "chapter": 0,
+      "text": "Het is een terechte zorg.",
+      "text_markdown": "Het is een terechte zorg.",
+      "title": "",
+      "tts": {
+        "text": "Het is een terechte zorg.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-153",
+      "chapter": 0,
+      "text": "Een taal ondersteunen is niet hetzelfde als er goed in klinken.",
+      "text_markdown": "Een taal ondersteunen is niet hetzelfde als er goed in klinken.",
+      "title": "",
+      "tts": {
+        "text": "Een taal ondersteunen is niet hetzelfde als er goed in klinken.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-154",
+      "chapter": 0,
+      "text": "Je moet nog steeds luisteren, taal voor taal, voordat je het vertrouwt.",
+      "text_markdown": "Je moet nog steeds luisteren, taal voor taal, voordat je het vertrouwt.",
+      "title": "",
+      "tts": {
+        "text": "Je moet nog steeds luisteren, taal voor taal, voordat je het vertrouwt.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-155",
+      "chapter": 0,
+      "text": "Hoe zit het met studiokwaliteit?",
+      "text_markdown": "Hoe zit het met studiokwaliteit?",
+      "title": "",
+      "tts": {
+        "text": "Hoe zit het met studiokwaliteit?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-156",
+      "chapter": 0,
+      "text": "Kijk daarvoor naar VoxCPM2.",
+      "text_markdown": "Kijk daarvoor naar VoxCPM2.",
+      "title": "",
+      "tts": {
+        "text": "Kijk daarvoor naar Vox C P M twee.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-157",
+      "chapter": 0,
+      "text": "Het heeft ongeveer 2 miljard parameters, is Apache-gelicentieerd en levert hoge getrouwheid.",
+      "text_markdown": "Het heeft ongeveer 2 miljard parameters, is Apache-gelicentieerd en levert hoge getrouwheid.",
+      "title": "",
+      "tts": {
+        "text": "Het heeft ongeveer twee miljard parameters, is Apache gelicentieerd en levert hoge getrouwheid.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-158",
+      "chapter": 0,
+      "text": "Het ondersteunt 30 talen en je kunt het fine-tunen met een kleine stem sample.",
+      "text_markdown": "Het ondersteunt 30 talen en je kunt het fine-tunen met een kleine stem sample.",
+      "title": "",
+      "tts": {
+        "text": "Het ondersteunt dertig talen en je kunt het fine-tunen met een kleine stem sample.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-159",
+      "chapter": 0,
+      "text": "Die combinatie maakt het de meest productiseerbare middelgrote open stem.",
+      "text_markdown": "Die combinatie maakt het de meest productiseerbare middelgrote open stem.",
+      "title": "",
+      "tts": {
+        "text": "Die combinatie maakt het de meest productiseerbare middelgrote open stem.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-160",
+      "chapter": 0,
+      "text": "En de on-device flex die je plaagde?",
+      "text_markdown": "En de on-device flex die je plaagde?",
+      "title": "",
+      "tts": {
+        "text": "En de on device flex die je plaagde?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-161",
+      "chapter": 0,
+      "text": "Dat is MOSS-TTS-Nano.",
+      "text_markdown": "Dat is MOSS-TTS-Nano.",
+      "title": "",
+      "tts": {
+        "text": "Dat is MOSS T T S Nano.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-162",
+      "chapter": 0,
+      "text": "Het is klein, ongeveer 100 miljoen parameters.",
+      "text_markdown": "Het is klein, ongeveer 100 miljoen parameters.",
+      "title": "",
+      "tts": {
+        "text": "Het is klein, ongeveer honderd miljoen parameters.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-163",
+      "chapter": 0,
+      "text": "Het draait op een CPU zonder GPU — zelfs op een laptop, op een enkele core.",
+      "text_markdown": "Het draait op een CPU zonder GPU — zelfs op een laptop, op een enkele core.",
+      "title": "",
+      "tts": {
+        "text": "Het draait op een C P U zonder G P U — zelfs op een laptop, op een enkele core.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-164",
+      "chapter": 0,
+      "text": "Voor iedereen die een stem naar een telefoon verzendt, is dat de droom.",
+      "text_markdown": "Voor iedereen die een stem naar een telefoon verzendt, is dat de droom.",
+      "title": "",
+      "tts": {
+        "text": "Voor iedereen die een stem naar een telefoon verzendt, is dat de droom.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-165",
+      "chapter": 0,
+      "text": "Dus het is allemaal positief?",
+      "text_markdown": "Dus het is allemaal positief?",
+      "title": "",
+      "tts": {
+        "text": "Dus het is allemaal positief?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-166",
+      "chapter": 0,
+      "text": "Nee — en hier is de valkuil die iedereen mist.",
+      "text_markdown": "Nee — en hier is de valkuil die iedereen mist.",
+      "title": "",
+      "tts": {
+        "text": "Nee — en hier is de valkuil die iedereen mist.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-167",
+      "chapter": 0,
+      "text": "Mistral bracht een prachtig stemmodel uit genaamd Voxtral.",
+      "text_markdown": "Mistral bracht een prachtig stemmodel uit genaamd Voxtral.",
+      "title": "",
+      "tts": {
+        "text": "Mistral bracht een prachtig stemmodel uit genaamd Voxtral.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-168",
+      "chapter": 0,
+      "text": "De gewichten zijn open en de kwaliteit is geweldig.",
+      "text_markdown": "De gewichten zijn open en de kwaliteit is geweldig.",
+      "title": "",
+      "tts": {
+        "text": "De gewichten zijn open en de kwaliteit is geweldig.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-169",
+      "chapter": 0,
+      "text": "Maar de licentie is niet-commercieel.",
+      "text_markdown": "Maar de licentie is niet-commercieel.",
+      "title": "",
+      "tts": {
+        "text": "Maar de licentie is niet commercieel.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-170",
+      "chapter": 0,
+      "text": "Wat betekent dat je het niet kunt verzenden.",
+      "text_markdown": "Wat betekent dat je het niet kunt verzenden.",
+      "title": "",
+      "tts": {
+        "text": "Wat betekent dat je het niet kunt verzenden.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-171",
+      "chapter": 0,
+      "text": "Niet in een betaald product, niet zonder een overeenkomst.",
+      "text_markdown": "Niet in een betaald product, niet zonder een overeenkomst.",
+      "title": "",
+      "tts": {
+        "text": "Niet in een betaald product, niet zonder een overeenkomst.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-172",
+      "chapter": 0,
+      "text": "Open gewichten betekenen niet altijd dat je ze mag gebruiken.",
+      "text_markdown": "Open gewichten betekenen niet altijd dat je ze mag gebruiken.",
+      "title": "",
+      "tts": {
+        "text": "Open gewichten betekenen niet altijd dat je ze mag gebruiken.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-173",
+      "chapter": 0,
+      "text": "Voor een echte app lees je de licentie voordat je verliefd wordt.",
+      "text_markdown": "Voor een echte app lees je de licentie voordat je verliefd wordt.",
+      "title": "",
+      "tts": {
+        "text": "Voor een echte app lees je de licentie voordat je verliefd wordt.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-174",
+      "chapter": 0,
+      "text": "En de benchmark claims hieromtrent?",
+      "text_markdown": "En de benchmark claims hieromtrent?",
+      "title": "",
+      "tts": {
+        "text": "En de benchmark claims hieromtrent?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-175",
+      "chapter": 0,
+      "text": "Wees sceptisch.",
+      "text_markdown": "Wees sceptisch.",
+      "title": "",
+      "tts": {
+        "text": "Wees sceptisch.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-176",
+      "chapter": 0,
+      "text": "Elke 'verslaat-de-leider'-claim hier is een leverancier die zijn eigen blinde test uitvoert.",
+      "text_markdown": "Elke 'verslaat-de-leider'-claim hier is een leverancier die zijn eigen blinde test uitvoert.",
+      "title": "",
+      "tts": {
+        "text": "Elke verslaat de leider claim hier is een leverancier die zijn eigen blinde test uitvoert.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-177",
+      "chapter": 0,
+      "text": "Vertrouw je eigen oren, niet hun grafiek.",
+      "text_markdown": "Vertrouw je eigen oren, niet hun grafiek.",
+      "title": "",
+      "tts": {
+        "text": "Vertrouw je eigen oren, niet hun grafiek.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-178",
+      "chapter": 0,
+      "text": "Dus waar staan we dan?",
+      "text_markdown": "Dus waar staan we dan?",
+      "title": "",
+      "tts": {
+        "text": "Dus waar staan we dan?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-179",
+      "chapter": 0,
+      "text": "Het brengt ons op een werkelijk nieuwe plek.",
+      "text_markdown": "Het brengt ons op een werkelijk nieuwe plek.",
+      "title": "",
+      "tts": {
+        "text": "Het brengt ons op een werkelijk nieuwe plek.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-180",
+      "chapter": 0,
+      "text": "Je kunt vandaag nog een geweldige stem op je eigen apparaat draaien.",
+      "text_markdown": "Je kunt vandaag nog een geweldige stem op je eigen apparaat draaien.",
+      "title": "",
+      "tts": {
+        "text": "Je kunt vandaag nog een geweldige stem op je eigen apparaat draaien.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-181",
+      "chapter": 0,
+      "text": "De moeilijke vraag is niet langer of het kan — het is welke licentie je het laat behouden.",
+      "text_markdown": "De moeilijke vraag is niet langer of het kan — het is welke licentie je het laat behouden.",
+      "title": "",
+      "tts": {
+        "text": "De moeilijke vraag is niet langer of het kan — het is welke licentie je het laat behouden.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-182",
+      "chapter": 0,
+      "text": "Dat is een goede noot om het verhaal mee af te sluiten.",
+      "text_markdown": "Dat is een goede noot om het verhaal mee af te sluiten.",
+      "title": "",
+      "tts": {
+        "text": "Dat is een goede noot om het verhaal mee af te sluiten.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-183",
+      "chapter": 0,
+      "text": "Laten we het concept van de week doen.",
+      "text_markdown": "Laten we het concept van de week doen.",
+      "title": "",
+      "tts": {
+        "text": "Laten we het concept van de week doen.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-184",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Jij koos neurale audiocodecs.",
+      "text_markdown": "Jij koos neurale audiocodecs.",
+      "title": "",
+      "tts": {
+        "text": "Jij koos neurale audiocodecs.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-185",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dat deed ik, want het is de verborgen truc achter elke stem op het apparaat.",
+      "text_markdown": "Dat deed ik, want het is de verborgen truc achter elke stem op het apparaat.",
+      "title": "",
+      "tts": {
+        "text": "Dat deed ik, want het is de verborgen truc achter elke stem op het apparaat.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-186",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ruwe audio is enorm — een paar seconden zijn miljoenen getallen.",
+      "text_markdown": "Ruwe audio is enorm — een paar seconden zijn miljoenen getallen.",
+      "title": "",
+      "tts": {
+        "text": "Ruwe audio is enorm — een paar seconden zijn miljoenen getallen.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-187",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Een telefoon kan dat allemaal niet in realtime naar een model streamen.",
+      "text_markdown": "Een telefoon kan dat allemaal niet in realtime naar een model streamen.",
+      "title": "",
+      "tts": {
+        "text": "Een telefoon kan dat allemaal niet in realtime naar een model streamen.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-188",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dus wat doet een codec?",
+      "text_markdown": "Dus wat doet een codec?",
+      "title": "",
+      "tts": {
+        "text": "Dus wat doet een codec?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-189",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Het leert die audio te comprimeren tot een kleine stroom tokens.",
+      "text_markdown": "Het leert die audio te comprimeren tot een kleine stroom tokens.",
+      "title": "",
+      "tts": {
+        "text": "Het leert die audio te comprimeren tot een kleine stroom tokens.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-190",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Zie het als een slim zip-bestand voor geluid.",
+      "text_markdown": "Zie het als een slim zip-bestand voor geluid.",
+      "title": "",
+      "tts": {
+        "text": "Zie het als een slim zip-bestand voor geluid.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-191",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "De openbare genaamd Mimi gaat tot ongeveer één kilobit per seconde.",
+      "text_markdown": "De openbare genaamd Mimi gaat tot ongeveer één kilobit per seconde.",
+      "title": "",
+      "tts": {
+        "text": "De openbare genaamd Mimi gaat tot ongeveer één kilobit per seconde.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-192",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Hoe klein is dat eigenlijk?",
+      "text_markdown": "Hoe klein is dat eigenlijk?",
+      "title": "",
+      "tts": {
+        "text": "Hoe klein is dat eigenlijk?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-193",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Een paar honderd kleine getallen per seconde, in plaats van miljoenen.",
+      "text_markdown": "Een paar honderd kleine getallen per seconde, in plaats van miljoenen.",
+      "title": "",
+      "tts": {
+        "text": "Een paar honderd kleine getallen per seconde, in plaats van miljoenen.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-194",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "En het herbouwt de stem nog steeds zodat deze natuurlijk klinkt.",
+      "text_markdown": "En het herbouwt de stem nog steeds zodat deze natuurlijk klinkt.",
+      "title": "",
+      "tts": {
+        "text": "En het herbouwt de stem nog steeds zodat deze natuurlijk klinkt.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-195",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Waarom is dat belangrijk voor een stemmodel?",
+      "text_markdown": "Waarom is dat belangrijk voor een stemmodel?",
+      "title": "",
+      "tts": {
+        "text": "Waarom is dat belangrijk voor een stemmodel?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-196",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Omdat het model in die tokens spreekt, niet in ruw geluid.",
+      "text_markdown": "Omdat het model in die tokens spreekt, niet in ruw geluid.",
+      "title": "",
+      "tts": {
+        "text": "Omdat het model in die tokens spreekt, niet in ruw geluid.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-197",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Minder tokens betekent minder rekenkracht voor elk woord.",
+      "text_markdown": "Minder tokens betekent minder rekenkracht voor elk woord.",
+      "title": "",
+      "tts": {
+        "text": "Minder tokens betekent minder rekenkracht voor elk woord.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-198",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dat is wat een goede stem offline op een telefoon laat draaien.",
+      "text_markdown": "Dat is wat een goede stem offline op een telefoon laat draaien.",
+      "title": "",
+      "tts": {
+        "text": "Dat is wat een goede stem offline op een telefoon laat draaien.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-199",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dus de codec bepaalt de ondergrens.",
+      "text_markdown": "Dus de codec bepaalt de ondergrens.",
+      "title": "",
+      "tts": {
+        "text": "Dus de codec bepaalt de ondergrens.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-200",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Precies, het bepaalt de latentie en de bitrate waaronder al het andere leeft.",
+      "text_markdown": "Precies, het bepaalt de latentie en de bitrate waaronder al het andere leeft.",
+      "title": "",
+      "tts": {
+        "text": "Precies, het bepaalt de latentie en de bitrate waaronder al het andere leeft.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-201",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "De openbare, Mimi en een neef genaamd SNAC, zijn waar nieuwe spraakmodellen op voortbouwen.",
+      "text_markdown": "De openbare, Mimi en een neef genaamd SNAC, zijn waar nieuwe spraakmodellen op voortbouwen.",
+      "title": "",
+      "tts": {
+        "text": "De openbare, Mimi en een neef genaamd es en aa see, zijn waar nieuwe spraakmodellen op voortbouwen.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-202",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Wanneer je een kleine stem op het apparaat tegenkomt, zit zo'n codec eronder.",
+      "text_markdown": "Wanneer je een kleine stem op het apparaat tegenkomt, zit zo'n codec eronder.",
+      "title": "",
+      "tts": {
+        "text": "Wanneer je een kleine stem op het apparaat tegenkomt, zit zo'n codec eronder.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-203",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Compressie waar je doorheen kunt horen — dat is de stille doorbraak.",
+      "text_markdown": "Compressie waar je doorheen kunt horen — dat is de stille doorbraak.",
+      "title": "",
+      "tts": {
+        "text": "Compressie waar je doorheen kunt horen — dat is de stille doorbraak.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-204",
+      "chapter": 0,
+      "text": "Een goede plek om te eindigen.",
+      "text_markdown": "Een goede plek om te eindigen.",
+      "title": "",
+      "tts": {
+        "text": "Een goede plek om te eindigen.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-205",
+      "chapter": 0,
+      "text": "Ron, dank je.",
+      "text_markdown": "Ron, dank je.",
+      "title": "",
+      "tts": {
+        "text": "Ron, dank je.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-206",
+      "chapter": 0,
+      "text": "Graag gedaan, Vindy.",
+      "text_markdown": "Graag gedaan, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Graag gedaan, Vindy.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-207",
+      "chapter": 0,
+      "text": "Dat was AI This Week voor 27 mei 2026.",
+      "text_markdown": "Dat was AI This Week voor 27 mei 2026.",
+      "title": "",
+      "tts": {
+        "text": "Dat was AI This Week voor zevenentwintig mei tweeduizendzesentwintig.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-208",
+      "chapter": 0,
+      "text": "Volgende woensdag een nieuwe uitgave.",
+      "text_markdown": "Volgende woensdag een nieuwe uitgave.",
+      "title": "",
+      "tts": {
+        "text": "Volgende woensdag een nieuwe uitgave.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-209",
+      "chapter": 0,
+      "text": "Tot dan, pas goed op.",
+      "text_markdown": "Tot dan, pas goed op.",
+      "title": "",
+      "tts": {
+        "text": "Tot dan, pas goed op.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

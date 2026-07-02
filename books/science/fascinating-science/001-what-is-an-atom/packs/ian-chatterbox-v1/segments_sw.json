@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "sw",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "text": "Kila Kitu Kimetengenezwa kwa Atomi",
+      "text_markdown": "Kila Kitu Kimetengenezwa kwa Atomi",
+      "title": "Kila Kitu Kimetengenezwa kwa Atomi"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-002",
+      "paragraph_id": "p2",
+      "text": "Angalia kuzunguka kwako.",
+      "text_markdown": "Angalia kuzunguka kwako.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Angalia kuzunguka kwako.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-003",
+      "paragraph_id": "p2",
+      "text": "Kila kitu unachoweza kuona kimetengenezwa kwa atomi.",
+      "text_markdown": "Kila kitu unachoweza kuona kimetengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kila kitu unachoweza kuona kimetengenezwa kwa atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-004",
+      "paragraph_id": "p2",
+      "text": "Hewa unayopumua imetengenezwa kwa atomi.",
+      "text_markdown": "Hewa unayopumua imetengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Hewa unayopumua imetengenezwa kwa atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-005",
+      "paragraph_id": "p2",
+      "text": "Maji unayokunywa yametengenezwa kwa atomi.",
+      "text_markdown": "Maji unayokunywa yametengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Maji unayokunywa yametengenezwa kwa atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-006",
+      "paragraph_id": "p2",
+      "text": "Mwili wako umetengenezwa kwa atomi.",
+      "text_markdown": "Mwili wako umetengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Mwili wako umetengenezwa kwa atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-007",
+      "paragraph_id": "p2",
+      "text": "Ardhi chini ya miguu yako imetengenezwa kwa atomi.",
+      "text_markdown": "Ardhi chini ya miguu yako imetengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ardhi chini ya miguu yako imetengenezwa kwa atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-008",
+      "paragraph_id": "p3",
+      "text": "Atomi ni kipande kidogo zaidi cha maada ambacho bado kina utambulisho wa kikemia.",
+      "text_markdown": "Atomi ni kipande kidogo zaidi cha maada ambacho bado kina utambulisho wa kikemia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi ni kipande kidogo zaidi cha maada ambacho bado kina utambulisho wa kikemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-009",
+      "paragraph_id": "p3",
+      "text": "Huwezi kuona atomi moja kwa macho yako.",
+      "text_markdown": "Huwezi kuona atomi moja kwa macho yako.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Huwezi kuona atomi moja kwa macho yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-010",
+      "paragraph_id": "p3",
+      "text": "Huwezi kuona atomi moja kwa darubini ya kawaida.",
+      "text_markdown": "Huwezi kuona atomi moja kwa darubini ya kawaida.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Huwezi kuona atomi moja kwa darubini ya kawaida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-011",
+      "paragraph_id": "p3",
+      "text": "Atomi ni ndogo kiasi hicho.",
+      "text_markdown": "Atomi ni ndogo kiasi hicho.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi ni ndogo kiasi hicho.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-012",
+      "paragraph_id": "p4",
+      "text": "Chembe moja ya mchanga ina takribani atomi kwintilyoni hamsini.",
+      "text_markdown": "Chembe moja ya mchanga ina takribani atomi kwintilyoni hamsini.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Chembe moja ya mchanga ina takribani atomi kwintilyoni hamsini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-013",
+      "paragraph_id": "p4",
+      "text": "Nambari hiyo ni hamsini ikifuatiwa na sufuri kumi na nane.",
+      "text_markdown": "Nambari hiyo ni hamsini ikifuatiwa na sufuri kumi na nane.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Nambari hiyo ni hamsini ikifuatiwa na sufuri kumi na nane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p4",
+      "text": "Kuna atomi zaidi katika chembe moja ya mchanga kuliko chembe za mchanga zilizo kwenye ufukwe.",
+      "text_markdown": "Kuna atomi zaidi katika chembe moja ya mchanga kuliko chembe za mchanga zilizo kwenye ufukwe.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kuna atomi zaidi katika chembe moja ya mchanga kuliko chembe za mchanga zilizo kwenye ufukwe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p5",
+      "text": "Atomi ni matofali ya msingi ya kila kitu katika ulimwengu wa kimwili.",
+      "text_markdown": "Atomi ni matofali ya msingi ya kila kitu katika ulimwengu wa kimwili.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi ni matofali ya msingi ya kila kitu katika ulimwengu wa kimwili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p5",
+      "text": "Ukuta umetengenezwa kwa matofali.",
+      "text_markdown": "Ukuta umetengenezwa kwa matofali.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ukuta umetengenezwa kwa matofali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p5",
+      "text": "Sentensi imetengenezwa kwa maneno.",
+      "text_markdown": "Sentensi imetengenezwa kwa maneno.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Sentensi imetengenezwa kwa maneno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p5",
+      "text": "Ulimwengu umetengenezwa kwa atomi.",
+      "text_markdown": "Ulimwengu umetengenezwa kwa atomi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ulimwengu umetengenezwa kwa atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p6",
+      "text": "Neno atomi linatoka kwenye lugha ya Kigiriki cha kale.",
+      "text_markdown": "Neno atomi linatoka kwenye lugha ya Kigiriki cha kale.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Neno atomi linatoka kwenye lugha ya Kigiriki cha kale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p6",
+      "text": "Neno la Kigiriki atomos linamaanisha isiyokatika.",
+      "text_markdown": "Neno la Kigiriki atomos linamaanisha isiyokatika.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Neno la Kigiriki atomos linamaanisha isiyokatika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p6",
+      "text": "Wanafalsafa wa Kigiriki cha kale walidhani atomi ni vipande vidogo zaidi vinavyowezekana vya maada.",
+      "text_markdown": "Wanafalsafa wa Kigiriki cha kale walidhani atomi ni vipande vidogo zaidi vinavyowezekana vya maada.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Wanafalsafa wa Kigiriki cha kale walidhani atomi ni vipande vidogo zaidi vinavyowezekana vya maada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p6",
+      "text": "Walikuwa karibu kuwa sahihi.",
+      "text_markdown": "Walikuwa karibu kuwa sahihi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Walikuwa karibu kuwa sahihi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p6",
+      "text": "Atomi si chembe ndogo zaidi kweli kweli, lakini ni vitengo vidogo zaidi vinavyohifadhi sifa zake za kikemia.",
+      "text_markdown": "Atomi si chembe ndogo zaidi kweli kweli, lakini ni vitengo vidogo zaidi vinavyohifadhi sifa zake za kikemia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi si chembe ndogo zaidi kweli kweli, lakini ni vitengo vidogo zaidi vinavyohifadhi sifa zake za kikemia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p7",
+      "text": "Atomi ni imara sana.",
+      "text_markdown": "Atomi ni imara sana.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi ni imara sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p7",
+      "text": "Atomi katika mwili wako zina umri wa mabilioni ya miaka.",
+      "text_markdown": "Atomi katika mwili wako zina umri wa mabilioni ya miaka.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi katika mwili wako zina umri wa mabilioni ya miaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p7",
+      "text": "Baadhi ya atomi za hidrojeni katika maji uliyokunywa leo ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+      "text_markdown": "Baadhi ya atomi za hidrojeni katika maji uliyokunywa leo ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Baadhi ya atomi za hidrojeni katika maji uliyokunywa leo ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p7",
+      "text": "Umetengenezwa kwa vifaa vya kale.",
+      "text_markdown": "Umetengenezwa kwa vifaa vya kale.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Umetengenezwa kwa vifaa vya kale.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p8",
+      "text": "Atomi haziundwi wala kuharibika katika maisha ya kawaida.",
+      "text_markdown": "Atomi haziundwi wala kuharibika katika maisha ya kawaida.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi haziundwi wala kuharibika katika maisha ya kawaida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p8",
+      "text": "Zinajipanga upya.",
+      "text_markdown": "Zinajipanga upya.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Zinajipanga upya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p8",
+      "text": "Kuni zinapochomeka, atomi hazipotei.",
+      "text_markdown": "Kuni zinapochomeka, atomi hazipotei.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kuni zinapochomeka, atomi hazipotei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p8",
+      "text": "Zinajipanga upya kuwa moshi, majivu, na gesi.",
+      "text_markdown": "Zinajipanga upya kuwa moshi, majivu, na gesi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Zinajipanga upya kuwa moshi, majivu, na gesi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p8",
+      "text": "Barafu inapoyeyuka, atomi zinabaki vilevile.",
+      "text_markdown": "Barafu inapoyeyuka, atomi zinabaki vilevile.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Barafu inapoyeyuka, atomi zinabaki vilevile.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p8",
+      "text": "Mpangilio wake tu ndio unabadilika.",
+      "text_markdown": "Mpangilio wake tu ndio unabadilika.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Mpangilio wake tu ndio unabadilika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p9",
+      "text": "Kuelewa atomi ni msingi wa kemia.",
+      "text_markdown": "Kuelewa atomi ni msingi wa kemia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kuelewa atomi ni msingi wa kemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p9",
+      "text": "Kemia ni sayansi ya jinsi atomi zinavyoungana, kujipanga upya, na kushirikiana.",
+      "text_markdown": "Kemia ni sayansi ya jinsi atomi zinavyoungana, kujipanga upya, na kushirikiana.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kemia ni sayansi ya jinsi atomi zinavyoungana, kujipanga upya, na kushirikiana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p9",
+      "text": "Kila kinachotokea katika ulimwengu wa kimwili kinaishia kwenye atomi na zinachofanya.",
+      "text_markdown": "Kila kinachotokea katika ulimwengu wa kimwili kinaishia kwenye atomi na zinachofanya.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kila kinachotokea katika ulimwengu wa kimwili kinaishia kwenye atomi na zinachofanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-037",
+      "paragraph_id": "p10",
+      "text": "Ndani ya Atomi",
+      "text_markdown": "Ndani ya Atomi",
+      "title": "Ndani ya Atomi"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-038",
+      "paragraph_id": "p11",
+      "text": "Atomi ina aina tatu za chembe ndani yake.",
+      "text_markdown": "Atomi ina aina tatu za chembe ndani yake.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Atomi ina aina tatu za chembe ndani yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-039",
+      "paragraph_id": "p11",
+      "text": "Protoni.",
+      "text_markdown": "Protoni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-040",
+      "paragraph_id": "p11",
+      "text": "Neutroni.",
+      "text_markdown": "Neutroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-041",
+      "paragraph_id": "p11",
+      "text": "Elektroni.",
+      "text_markdown": "Elektroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-042",
+      "paragraph_id": "p11",
+      "text": "Chembe hizi tatu zinaunda kila atomi katika ulimwengu.",
+      "text_markdown": "Chembe hizi tatu zinaunda kila atomi katika ulimwengu.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Chembe hizi tatu zinaunda kila atomi katika ulimwengu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-043",
+      "paragraph_id": "p12",
+      "text": "Katikati ya atomi inaitwa kiini.",
+      "text_markdown": "Katikati ya atomi inaitwa kiini.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Katikati ya atomi inaitwa kiini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-044",
+      "paragraph_id": "p12",
+      "text": "Kiini kina protoni na neutroni.",
+      "text_markdown": "Kiini kina protoni na neutroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kiini kina protoni na neutroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-045",
+      "paragraph_id": "p12",
+      "text": "Kiini ni kidogo sana ikilinganishwa na atomi nzima.",
+      "text_markdown": "Kiini ni kidogo sana ikilinganishwa na atomi nzima.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kiini ni kidogo sana ikilinganishwa na atomi nzima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-046",
+      "paragraph_id": "p12",
+      "text": "Kama atomi ingekuwa na ukubwa wa uwanja wa mpira, kiini kingekuwa na ukubwa wa bile katikati ya uwanja.",
+      "text_markdown": "Kama atomi ingekuwa na ukubwa wa uwanja wa mpira, kiini kingekuwa na ukubwa wa bile katikati ya uwanja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kama atomi ingekuwa na ukubwa wa uwanja wa mpira, kiini kingekuwa na ukubwa wa bile katikati ya uwanja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-047",
+      "paragraph_id": "p13",
+      "text": "Protoni zina chaji ya umeme ya kuongeza.",
+      "text_markdown": "Protoni zina chaji ya umeme ya kuongeza.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni zina chaji ya umeme ya kuongeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-048",
+      "paragraph_id": "p13",
+      "text": "Kila protoni ina kiasi sawa cha chaji ya kuongeza.",
+      "text_markdown": "Kila protoni ina kiasi sawa cha chaji ya kuongeza.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kila protoni ina kiasi sawa cha chaji ya kuongeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-049",
+      "paragraph_id": "p13",
+      "text": "Idadi ya protoni katika atomi inaamua ni kipengele gani atomi hiyo.",
+      "text_markdown": "Idadi ya protoni katika atomi inaamua ni kipengele gani atomi hiyo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Idadi ya protoni katika atomi inaamua ni kipengele gani atomi hiyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-050",
+      "paragraph_id": "p13",
+      "text": "Protoni moja inamaanisha hidrojeni.",
+      "text_markdown": "Protoni moja inamaanisha hidrojeni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni moja inamaanisha hidrojeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-051",
+      "paragraph_id": "p13",
+      "text": "Protoni sita zinamaanisha kaboni.",
+      "text_markdown": "Protoni sita zinamaanisha kaboni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni sita zinamaanisha kaboni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-052",
+      "paragraph_id": "p13",
+      "text": "Protoni ishirini na sita zinamaanisha chuma.",
+      "text_markdown": "Protoni ishirini na sita zinamaanisha chuma.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni ishirini na sita zinamaanisha chuma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 2,
+      "id": "ch02-053",
+      "paragraph_id": "p13",
+      "text": "Idadi ya protoni ni ukweli muhimu zaidi kuhusu atomi.",
+      "text_markdown": "Idadi ya protoni ni ukweli muhimu zaidi kuhusu atomi.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Idadi ya protoni ni ukweli muhimu zaidi kuhusu atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-054",
+      "paragraph_id": "p14",
+      "text": "Neutroni hazina chaji ya umeme.",
+      "text_markdown": "Neutroni hazina chaji ya umeme.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroni hazina chaji ya umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-055",
+      "paragraph_id": "p14",
+      "text": "Neutroni ni za wastani.",
+      "text_markdown": "Neutroni ni za wastani.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroni ni za wastani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-056",
+      "paragraph_id": "p14",
+      "text": "Neutroni zinakaa ndani ya kiini pembeni ya protoni.",
+      "text_markdown": "Neutroni zinakaa ndani ya kiini pembeni ya protoni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroni zinakaa ndani ya kiini pembeni ya protoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-057",
+      "paragraph_id": "p14",
+      "text": "Neutroni zinasaidia kushikilia kiini pamoja.",
+      "text_markdown": "Neutroni zinasaidia kushikilia kiini pamoja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroni zinasaidia kushikilia kiini pamoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-058",
+      "paragraph_id": "p14",
+      "text": "Bila neutroni, protoni zingekuwa zinasukumana kwa sababu zote zina chaji sawa ya kuongeza.",
+      "text_markdown": "Bila neutroni, protoni zingekuwa zinasukumana kwa sababu zote zina chaji sawa ya kuongeza.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Bila neutroni, protoni zingekuwa zinasukumana kwa sababu zote zina chaji sawa ya kuongeza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-059",
+      "paragraph_id": "p15",
+      "text": "Elektroni zina chaji ya umeme ya kupunguza.",
+      "text_markdown": "Elektroni zina chaji ya umeme ya kupunguza.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroni zina chaji ya umeme ya kupunguza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-060",
+      "paragraph_id": "p15",
+      "text": "Elektroni zinazunguka kiini katika wingu.",
+      "text_markdown": "Elektroni zinazunguka kiini katika wingu.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroni zinazunguka kiini katika wingu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-061",
+      "paragraph_id": "p15",
+      "text": "Hazizunguki kama sayari kuzunguka jua.",
+      "text_markdown": "Hazizunguki kama sayari kuzunguka jua.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Hazizunguki kama sayari kuzunguka jua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p15",
+      "text": "Zinaishi katika eneo lisilo wazi la uwezekano kuzunguka kiini.",
+      "text_markdown": "Zinaishi katika eneo lisilo wazi la uwezekano kuzunguka kiini.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Zinaishi katika eneo lisilo wazi la uwezekano kuzunguka kiini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p15",
+      "text": "Wingu la elektroni ni mahali ambapo unaweza kupata elektroni wakati wowote.",
+      "text_markdown": "Wingu la elektroni ni mahali ambapo unaweza kupata elektroni wakati wowote.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Wingu la elektroni ni mahali ambapo unaweza kupata elektroni wakati wowote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p16",
+      "text": "Elektroni ina uzito mdogo sana ikilinganishwa na protoni au neutroni.",
+      "text_markdown": "Elektroni ina uzito mdogo sana ikilinganishwa na protoni au neutroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroni ina uzito mdogo sana ikilinganishwa na protoni au neutroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p16",
+      "text": "Protoni ni nzito mara 1,836 zaidi kuliko elektroni.",
+      "text_markdown": "Protoni ni nzito mara 1,836 zaidi kuliko elektroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni ni nzito mara elfu moja mia nane na thelathini na sita zaidi kuliko elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p16",
+      "text": "Karibu uzito wote wa atomi uko ndani ya kiini.",
+      "text_markdown": "Karibu uzito wote wa atomi uko ndani ya kiini.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Karibu uzito wote wa atomi uko ndani ya kiini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p17",
+      "text": "Katika atomi ya wastani, idadi ya elektroni inalingana na idadi ya protoni.",
+      "text_markdown": "Katika atomi ya wastani, idadi ya elektroni inalingana na idadi ya protoni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Katika atomi ya wastani, idadi ya elektroni inalingana na idadi ya protoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p17",
+      "text": "Chaji za kuongeza na chaji za kupunguza zinasawazishana.",
+      "text_markdown": "Chaji za kuongeza na chaji za kupunguza zinasawazishana.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Chaji za kuongeza na chaji za kupunguza zinasawazishana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p17",
+      "text": "Atomi haina chaji ya jumla.",
+      "text_markdown": "Atomi haina chaji ya jumla.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Atomi haina chaji ya jumla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p17",
+      "text": "Usawa huu ni hali ya kawaida ya atomi.",
+      "text_markdown": "Usawa huu ni hali ya kawaida ya atomi.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Usawa huu ni hali ya kawaida ya atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p18",
+      "text": "Sehemu kubwa ya atomi ni nafasi tupu.",
+      "text_markdown": "Sehemu kubwa ya atomi ni nafasi tupu.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Sehemu kubwa ya atomi ni nafasi tupu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p18",
+      "text": "Kiini ni kigumu na kidogo.",
+      "text_markdown": "Kiini ni kigumu na kidogo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kiini ni kigumu na kidogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p18",
+      "text": "Wingu la elektroni ni kubwa na mara nyingi halina kitu.",
+      "text_markdown": "Wingu la elektroni ni kubwa na mara nyingi halina kitu.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Wingu la elektroni ni kubwa na mara nyingi halina kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p18",
+      "text": "Kama ungeweza kuondoa nafasi tupu yote kutoka kwa kila atomi katika mwili wako, ungepungua hadi ukubwa mdogo kuliko chembe ya chumvi.",
+      "text_markdown": "Kama ungeweza kuondoa nafasi tupu yote kutoka kwa kila atomi katika mwili wako, ungepungua hadi ukubwa mdogo kuliko chembe ya chumvi.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kama ungeweza kuondoa nafasi tupu yote kutoka kwa kila atomi katika mwili wako, ungepungua hadi ukubwa mdogo kuliko chembe ya chumvi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p18",
+      "text": "Uzito wako ungebaki sawa.",
+      "text_markdown": "Uzito wako ungebaki sawa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Uzito wako ungebaki sawa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p18",
+      "text": "Ungekuwa na msongamano wa ajabu tu.",
+      "text_markdown": "Ungekuwa na msongamano wa ajabu tu.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ungekuwa na msongamano wa ajabu tu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-077",
+      "paragraph_id": "p19",
+      "text": "Vipengele",
+      "text_markdown": "Vipengele",
+      "title": "Vipengele"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-078",
+      "paragraph_id": "p20",
+      "text": "Kipengele ni dutu iliyotengenezwa kwa aina moja tu ya atomi.",
+      "text_markdown": "Kipengele ni dutu iliyotengenezwa kwa aina moja tu ya atomi.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kipengele ni dutu iliyotengenezwa kwa aina moja tu ya atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-079",
+      "paragraph_id": "p20",
+      "text": "Dhahabu safi ni kipengele.",
+      "text_markdown": "Dhahabu safi ni kipengele.",
+      "title": "Elements",
+      "tts": {
+        "text": "Dhahabu safi ni kipengele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-080",
+      "paragraph_id": "p20",
+      "text": "Kila atomi katika baa ya dhahabu safi ina protoni sabini na tisa.",
+      "text_markdown": "Kila atomi katika baa ya dhahabu safi ina protoni sabini na tisa.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila atomi katika baa ya dhahabu safi ina protoni sabini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-081",
+      "paragraph_id": "p20",
+      "text": "Oksijeni safi ni kipengele.",
+      "text_markdown": "Oksijeni safi ni kipengele.",
+      "title": "Elements",
+      "tts": {
+        "text": "Oksijeni safi ni kipengele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-082",
+      "paragraph_id": "p20",
+      "text": "Kila atomi katika tangi ya oksijeni safi ina protoni nane.",
+      "text_markdown": "Kila atomi katika tangi ya oksijeni safi ina protoni nane.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila atomi katika tangi ya oksijeni safi ina protoni nane.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-083",
+      "paragraph_id": "p21",
+      "text": "Kuna vipengele takribani tisini na viwili vinavyopatikana kiasili duniani.",
+      "text_markdown": "Kuna vipengele takribani tisini na viwili vinavyopatikana kiasili duniani.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kuna vipengele takribani tisini na viwili vinavyopatikana kiasili duniani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-084",
+      "paragraph_id": "p21",
+      "text": "Wanasayansi wameunda vipengele vya ziada katika maabara.",
+      "text_markdown": "Wanasayansi wameunda vipengele vya ziada katika maabara.",
+      "title": "Elements",
+      "tts": {
+        "text": "Wanasayansi wameunda vipengele vya ziada katika maabara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-085",
+      "paragraph_id": "p21",
+      "text": "Jumla ya vipengele vinavyojulikana ni zaidi ya mia moja na kumi na nane.",
+      "text_markdown": "Jumla ya vipengele vinavyojulikana ni zaidi ya mia moja na kumi na nane.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jumla ya vipengele vinavyojulikana ni zaidi ya mia moja na kumi na nane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-086",
+      "paragraph_id": "p21",
+      "text": "Kila kipengele kina idadi ya kipekee ya protoni.",
+      "text_markdown": "Kila kipengele kina idadi ya kipekee ya protoni.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila kipengele kina idadi ya kipekee ya protoni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-087",
+      "paragraph_id": "p22",
+      "text": "Kila kipengele kina jina na alama.",
+      "text_markdown": "Kila kipengele kina jina na alama.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila kipengele kina jina na alama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-088",
+      "paragraph_id": "p22",
+      "text": "Hidrojeni ni H. Oksijeni ni O. Kaboni ni C. Chuma ni Fe.",
+      "text_markdown": "Hidrojeni ni H. Oksijeni ni O. Kaboni ni C. Chuma ni Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hidrojeni ni eichi. Oksijeni ni ou. Kaboni ni si. Chuma ni efu i.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-089",
+      "paragraph_id": "p22",
+      "text": "Dhahabu ni Au.",
+      "text_markdown": "Dhahabu ni Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "Dhahabu ni ei yu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-090",
+      "paragraph_id": "p22",
+      "text": "Alama hizo zinatoka katika majina ya Kilatini, Kigiriki, au Kiingereza.",
+      "text_markdown": "Alama hizo zinatoka katika majina ya Kilatini, Kigiriki, au Kiingereza.",
+      "title": "Elements",
+      "tts": {
+        "text": "Alama hizo zinatoka katika majina ya Kilatini, Kigiriki, au Kiingereza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-091",
+      "paragraph_id": "p22",
+      "text": "Fe inatoka katika neno la Kilatini ferrum.",
+      "text_markdown": "Fe inatoka katika neno la Kilatini ferrum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Efu i inatoka katika neno la Kilatini ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 3,
+      "id": "ch03-092",
+      "paragraph_id": "p22",
+      "text": "Au inatoka katika neno la Kilatini aurum.",
+      "text_markdown": "Au inatoka katika neno la Kilatini aurum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Ei yu inatoka katika neno la Kilatini aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-093",
+      "paragraph_id": "p23",
+      "text": "Hidrojeni ni kipengele rahisi zaidi.",
+      "text_markdown": "Hidrojeni ni kipengele rahisi zaidi.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hidrojeni ni kipengele rahisi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-094",
+      "paragraph_id": "p23",
+      "text": "Atomi ya hidrojeni ina protoni moja na elektroni moja.",
+      "text_markdown": "Atomi ya hidrojeni ina protoni moja na elektroni moja.",
+      "title": "Elements",
+      "tts": {
+        "text": "Atomi ya hidrojeni ina protoni moja na elektroni moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-095",
+      "paragraph_id": "p23",
+      "text": "Hidrojeni ni kipengele kinachojulikana zaidi katika ulimwengu.",
+      "text_markdown": "Hidrojeni ni kipengele kinachojulikana zaidi katika ulimwengu.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hidrojeni ni kipengele kinachojulikana zaidi katika ulimwengu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-096",
+      "paragraph_id": "p23",
+      "text": "Nyota zimetengenezwa hasa kwa hidrojeni.",
+      "text_markdown": "Nyota zimetengenezwa hasa kwa hidrojeni.",
+      "title": "Elements",
+      "tts": {
+        "text": "Nyota zimetengenezwa hasa kwa hidrojeni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-097",
+      "paragraph_id": "p24",
+      "text": "Kaboni ni kipengele cha uhai.",
+      "text_markdown": "Kaboni ni kipengele cha uhai.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kaboni ni kipengele cha uhai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-098",
+      "paragraph_id": "p24",
+      "text": "Kaboni ina protoni sita.",
+      "text_markdown": "Kaboni ina protoni sita.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kaboni ina protoni sita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-099",
+      "paragraph_id": "p24",
+      "text": "Atomi za kaboni zinaweza kuunda vifungo na atomi nyingi nyingine kwa wakati mmoja.",
+      "text_markdown": "Atomi za kaboni zinaweza kuunda vifungo na atomi nyingi nyingine kwa wakati mmoja.",
+      "title": "Elements",
+      "tts": {
+        "text": "Atomi za kaboni zinaweza kuunda vifungo na atomi nyingi nyingine kwa wakati mmoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-100",
+      "paragraph_id": "p24",
+      "text": "Uwezo huu unafanya kaboni kuwa uti wa mgongo wa viumbe vyote hai.",
+      "text_markdown": "Uwezo huu unafanya kaboni kuwa uti wa mgongo wa viumbe vyote hai.",
+      "title": "Elements",
+      "tts": {
+        "text": "Uwezo huu unafanya kaboni kuwa uti wa mgongo wa viumbe vyote hai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 3,
+      "id": "ch03-101",
+      "paragraph_id": "p24",
+      "text": "Kila protini, kila uzi wa DNA, na kila molekuli ya sukari katika mwili wako ina kaboni.",
+      "text_markdown": "Kila protini, kila uzi wa DNA, na kila molekuli ya sukari katika mwili wako ina kaboni.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila protini, kila uzi wa DNA, na kila molekuli ya sukari katika mwili wako ina kaboni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-102",
+      "paragraph_id": "p25",
+      "text": "Oksijeni ina protoni nane.",
+      "text_markdown": "Oksijeni ina protoni nane.",
+      "title": "Elements",
+      "tts": {
+        "text": "Oksijeni ina protoni nane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-103",
+      "paragraph_id": "p25",
+      "text": "Oksijeni ni kipengele unachokipumua.",
+      "text_markdown": "Oksijeni ni kipengele unachokipumua.",
+      "title": "Elements",
+      "tts": {
+        "text": "Oksijeni ni kipengele unachokipumua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-104",
+      "paragraph_id": "p25",
+      "text": "Mapafu yako yanavuta oksijeni kutoka hewani na kuituma katika damu yako.",
+      "text_markdown": "Mapafu yako yanavuta oksijeni kutoka hewani na kuituma katika damu yako.",
+      "title": "Elements",
+      "tts": {
+        "text": "Mapafu yako yanavuta oksijeni kutoka hewani na kuituma katika damu yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-105",
+      "paragraph_id": "p25",
+      "text": "Seli zako zinatumia oksijeni kutoa nishati kutoka kwa chakula.",
+      "text_markdown": "Seli zako zinatumia oksijeni kutoa nishati kutoka kwa chakula.",
+      "title": "Elements",
+      "tts": {
+        "text": "Seli zako zinatumia oksijeni kutoa nishati kutoka kwa chakula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-106",
+      "paragraph_id": "p26",
+      "text": "Chuma kina protoni ishirini na sita.",
+      "text_markdown": "Chuma kina protoni ishirini na sita.",
+      "title": "Elements",
+      "tts": {
+        "text": "Chuma kina protoni ishirini na sita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-107",
+      "paragraph_id": "p26",
+      "text": "Chuma ni kipengele kinachofanya damu yako kuwa nyekundu.",
+      "text_markdown": "Chuma ni kipengele kinachofanya damu yako kuwa nyekundu.",
+      "title": "Elements",
+      "tts": {
+        "text": "Chuma ni kipengele kinachofanya damu yako kuwa nyekundu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-108",
+      "paragraph_id": "p26",
+      "text": "Chuma ni kiungo kikuu cha pua.",
+      "text_markdown": "Chuma ni kiungo kikuu cha pua.",
+      "title": "Elements",
+      "tts": {
+        "text": "Chuma ni kiungo kikuu cha pua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-109",
+      "paragraph_id": "p26",
+      "text": "Kiini cha Dunia kimetengenezwa hasa kwa chuma.",
+      "text_markdown": "Kiini cha Dunia kimetengenezwa hasa kwa chuma.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kiini cha Dunia kimetengenezwa hasa kwa chuma.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 3,
+      "id": "ch03-110",
+      "paragraph_id": "p27",
+      "text": "Vipengele vyepesi ndivyo vinavyojulikana zaidi katika ulimwengu.",
+      "text_markdown": "Vipengele vyepesi ndivyo vinavyojulikana zaidi katika ulimwengu.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vipengele vyepesi ndivyo vinavyojulikana zaidi katika ulimwengu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 3,
+      "id": "ch03-111",
+      "paragraph_id": "p27",
+      "text": "Hidrojeni na heliamu kwa pamoja vinaunda asilimia tisini na nane ya atomi zote katika ulimwengu.",
+      "text_markdown": "Hidrojeni na heliamu kwa pamoja vinaunda asilimia tisini na nane ya atomi zote katika ulimwengu.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hidrojeni na heliamu kwa pamoja vinaunda asilimia tisini na nane ya atomi zote katika ulimwengu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 3,
+      "id": "ch03-112",
+      "paragraph_id": "p27",
+      "text": "Vipengele vizito ni adimu kwa kulinganisha.",
+      "text_markdown": "Vipengele vizito ni adimu kwa kulinganisha.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vipengele vizito ni adimu kwa kulinganisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 3,
+      "id": "ch03-113",
+      "paragraph_id": "p27",
+      "text": "Kila atomi ya kila kipengele kizito ilisukwa ndani ya nyota.",
+      "text_markdown": "Kila atomi ya kila kipengele kizito ilisukwa ndani ya nyota.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kila atomi ya kila kipengele kizito ilisukwa ndani ya nyota.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-114",
+      "paragraph_id": "p28",
+      "text": "Jedwali la Upimaji",
+      "text_markdown": "Jedwali la Upimaji",
+      "title": "Jedwali la Upimaji"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-115",
+      "paragraph_id": "p29",
+      "text": "Jedwali la upimaji ni chati inayopanga kila kipengele kinachojulikana.",
+      "text_markdown": "Jedwali la upimaji ni chati inayopanga kila kipengele kinachojulikana.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jedwali la upimaji ni chati inayopanga kila kipengele kinachojulikana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-116",
+      "paragraph_id": "p29",
+      "text": "Jedwali linapanga vipengele kwa idadi ya protoni zake, kutoka ndogo zaidi hadi kubwa zaidi.",
+      "text_markdown": "Jedwali linapanga vipengele kwa idadi ya protoni zake, kutoka ndogo zaidi hadi kubwa zaidi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jedwali linapanga vipengele kwa idadi ya protoni zake, kutoka ndogo zaidi hadi kubwa zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-117",
+      "paragraph_id": "p29",
+      "text": "Hidrojeni ni ya kwanza ikiwa na protoni moja.",
+      "text_markdown": "Hidrojeni ni ya kwanza ikiwa na protoni moja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hidrojeni ni ya kwanza ikiwa na protoni moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-118",
+      "paragraph_id": "p29",
+      "text": "Heliamu ni ya pili ikiwa na protoni mbili.",
+      "text_markdown": "Heliamu ni ya pili ikiwa na protoni mbili.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Heliamu ni ya pili ikiwa na protoni mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-119",
+      "paragraph_id": "p29",
+      "text": "Jedwali linaendelea hadi oganesoni ikiwa na protoni mia moja na kumi na nane.",
+      "text_markdown": "Jedwali linaendelea hadi oganesoni ikiwa na protoni mia moja na kumi na nane.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jedwali linaendelea hadi oganesoni ikiwa na protoni mia moja na kumi na nane.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-120",
+      "paragraph_id": "p30",
+      "text": "Jedwali la upimaji lina safu mlalo na safu wima.",
+      "text_markdown": "Jedwali la upimaji lina safu mlalo na safu wima.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jedwali la upimaji lina safu mlalo na safu wima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-121",
+      "paragraph_id": "p30",
+      "text": "Safu mlalo zinaitwa vipindi.",
+      "text_markdown": "Safu mlalo zinaitwa vipindi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Safu mlalo zinaitwa vipindi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-122",
+      "paragraph_id": "p30",
+      "text": "Safu wima zinaitwa makundi.",
+      "text_markdown": "Safu wima zinaitwa makundi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Safu wima zinaitwa makundi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-123",
+      "paragraph_id": "p30",
+      "text": "Vipengele katika kundi moja vina sifa zinazofanana.",
+      "text_markdown": "Vipengele katika kundi moja vina sifa zinazofanana.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele katika kundi moja vina sifa zinazofanana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-124",
+      "paragraph_id": "p30",
+      "text": "Hii ndiyo sababu jedwali hilo linaitwa la upimaji.",
+      "text_markdown": "Hii ndiyo sababu jedwali hilo linaitwa la upimaji.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hii ndiyo sababu jedwali hilo linaitwa la upimaji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-125",
+      "paragraph_id": "p30",
+      "text": "Sifa zinarudia katika mpangilio wa kawaida.",
+      "text_markdown": "Sifa zinarudia katika mpangilio wa kawaida.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Sifa zinarudia katika mpangilio wa kawaida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-126",
+      "paragraph_id": "p31",
+      "text": "Vipengele upande wa kushoto wa jedwali ni metali.",
+      "text_markdown": "Vipengele upande wa kushoto wa jedwali ni metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele upande wa kushoto wa jedwali ni metali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-127",
+      "paragraph_id": "p31",
+      "text": "Vipengele vingi ni metali.",
+      "text_markdown": "Vipengele vingi ni metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele vingi ni metali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-128",
+      "paragraph_id": "p31",
+      "text": "Metali zinang'aa.",
+      "text_markdown": "Metali zinang'aa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metali zinang'aa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-129",
+      "paragraph_id": "p31",
+      "text": "Metali zinapitisha umeme.",
+      "text_markdown": "Metali zinapitisha umeme.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metali zinapitisha umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-130",
+      "paragraph_id": "p31",
+      "text": "Metali zinapitisha joto.",
+      "text_markdown": "Metali zinapitisha joto.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metali zinapitisha joto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 4,
+      "id": "ch04-131",
+      "paragraph_id": "p31",
+      "text": "Chuma, shaba, dhahabu, na alumini zote ni metali.",
+      "text_markdown": "Chuma, shaba, dhahabu, na alumini zote ni metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Chuma, shaba, dhahabu, na alumini zote ni metali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-132",
+      "paragraph_id": "p32",
+      "text": "Vipengele upande wa kulia wa jedwali si metali.",
+      "text_markdown": "Vipengele upande wa kulia wa jedwali si metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele upande wa kulia wa jedwali si metali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-133",
+      "paragraph_id": "p32",
+      "text": "Vipengele visivyo metali ni pamoja na oksijeni, nitrojeni, kaboni, na sulfuri.",
+      "text_markdown": "Vipengele visivyo metali ni pamoja na oksijeni, nitrojeni, kaboni, na sulfuri.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele visivyo metali ni pamoja na oksijeni, nitrojeni, kaboni, na sulfuri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-134",
+      "paragraph_id": "p32",
+      "text": "Vipengele visivyo metali havipitishi umeme vizuri.",
+      "text_markdown": "Vipengele visivyo metali havipitishi umeme vizuri.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele visivyo metali havipitishi umeme vizuri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-135",
+      "paragraph_id": "p32",
+      "text": "Vipengele visivyo metali ndivyo vinavyounda hewa, maji, na viumbe hai.",
+      "text_markdown": "Vipengele visivyo metali ndivyo vinavyounda hewa, maji, na viumbe hai.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele visivyo metali ndivyo vinavyounda hewa, maji, na viumbe hai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-136",
+      "paragraph_id": "p33",
+      "text": "Vipengele vichache viko kwenye mpaka kati ya metali na visivyo metali.",
+      "text_markdown": "Vipengele vichache viko kwenye mpaka kati ya metali na visivyo metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele vichache viko kwenye mpaka kati ya metali na visivyo metali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-137",
+      "paragraph_id": "p33",
+      "text": "Vipengele hivi vinaitwa metaloidi.",
+      "text_markdown": "Vipengele hivi vinaitwa metaloidi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vipengele hivi vinaitwa metaloidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-138",
+      "paragraph_id": "p33",
+      "text": "Silikoni ni metaloidi.",
+      "text_markdown": "Silikoni ni metaloidi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Silikoni ni metaloidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-139",
+      "paragraph_id": "p33",
+      "text": "Silikoni inapitisha umeme kidogo, lakini si vizuri kama metali.",
+      "text_markdown": "Silikoni inapitisha umeme kidogo, lakini si vizuri kama metali.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Silikoni inapitisha umeme kidogo, lakini si vizuri kama metali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-140",
+      "paragraph_id": "p33",
+      "text": "Sifa hii inafanya silikoni kuwa muhimu katika chipu za kompyuta.",
+      "text_markdown": "Sifa hii inafanya silikoni kuwa muhimu katika chipu za kompyuta.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Sifa hii inafanya silikoni kuwa muhimu katika chipu za kompyuta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-141",
+      "paragraph_id": "p34",
+      "text": "Gesi adimu ziko katika safu wima ya mwisho upande wa kulia.",
+      "text_markdown": "Gesi adimu ziko katika safu wima ya mwisho upande wa kulia.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Gesi adimu ziko katika safu wima ya mwisho upande wa kulia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-142",
+      "paragraph_id": "p34",
+      "text": "Heliamu, neoni, agoni, kriptoni, zenoni, na radoni ni gesi adimu.",
+      "text_markdown": "Heliamu, neoni, agoni, kriptoni, zenoni, na radoni ni gesi adimu.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Heliamu, neoni, agoni, kriptoni, zenoni, na radoni ni gesi adimu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-143",
+      "paragraph_id": "p34",
+      "text": "Gesi adimu karibu hazishirikiani na vipengele vingine kamwe.",
+      "text_markdown": "Gesi adimu karibu hazishirikiani na vipengele vingine kamwe.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Gesi adimu karibu hazishirikiani na vipengele vingine kamwe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-144",
+      "paragraph_id": "p34",
+      "text": "Mpangilio wao wa elektroni tayari ni imara.",
+      "text_markdown": "Mpangilio wao wa elektroni tayari ni imara.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mpangilio wao wa elektroni tayari ni imara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-145",
+      "paragraph_id": "p34",
+      "text": "Hazihitaji kuunda vifungo.",
+      "text_markdown": "Hazihitaji kuunda vifungo.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hazihitaji kuunda vifungo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-146",
+      "paragraph_id": "p35",
+      "text": "Mwanasayansi Mrusi aitwaye Dmitri Mendeleev aliunda jedwali la kwanza la upimaji mwaka 1869.",
+      "text_markdown": "Mwanasayansi Mrusi aitwaye Dmitri Mendeleev aliunda jedwali la kwanza la upimaji mwaka 1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mwanasayansi Mrusi aitwaye Dmitri Mendeleev aliunda jedwali la kwanza la upimaji mwaka elfu moja mia nane na sitini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-147",
+      "paragraph_id": "p35",
+      "text": "Mendeleev alipanga vipengele kwa sifa zake na akaona mpangilio unaorudia.",
+      "text_markdown": "Mendeleev alipanga vipengele kwa sifa zake na akaona mpangilio unaorudia.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mendeleev alipanga vipengele kwa sifa zake na akaona mpangilio unaorudia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 4,
+      "id": "ch04-148",
+      "paragraph_id": "p35",
+      "text": "Aliacha mapengo katika jedwali lake ambapo alitabiri vipengele visivyojulikana vinapaswa kuwa.",
+      "text_markdown": "Aliacha mapengo katika jedwali lake ambapo alitabiri vipengele visivyojulikana vinapaswa kuwa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Aliacha mapengo katika jedwali lake ambapo alitabiri vipengele visivyojulikana vinapaswa kuwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 4,
+      "id": "ch04-149",
+      "paragraph_id": "p35",
+      "text": "Wanasayansi baadaye walivigundua vipengele hivyo.",
+      "text_markdown": "Wanasayansi baadaye walivigundua vipengele hivyo.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Wanasayansi baadaye walivigundua vipengele hivyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 4,
+      "id": "ch04-150",
+      "paragraph_id": "p35",
+      "text": "Kila utabiri ulikuwa sahihi.",
+      "text_markdown": "Kila utabiri ulikuwa sahihi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Kila utabiri ulikuwa sahihi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 4,
+      "id": "ch04-151",
+      "paragraph_id": "p36",
+      "text": "Jedwali la upimaji ni mojawapo ya zana zenye nguvu zaidi katika sayansi.",
+      "text_markdown": "Jedwali la upimaji ni mojawapo ya zana zenye nguvu zaidi katika sayansi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jedwali la upimaji ni mojawapo ya zana zenye nguvu zaidi katika sayansi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 4,
+      "id": "ch04-152",
+      "paragraph_id": "p36",
+      "text": "Ukijua kipengele kiko wapi kwenye jedwali, unaweza kutabiri jinsi kitakavyofanya kazi.",
+      "text_markdown": "Ukijua kipengele kiko wapi kwenye jedwali, unaweza kutabiri jinsi kitakavyofanya kazi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Ukijua kipengele kiko wapi kwenye jedwali, unaweza kutabiri jinsi kitakavyofanya kazi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-153",
+      "paragraph_id": "p37",
+      "text": "Jinsi Atomi Zinavyoungana",
+      "text_markdown": "Jinsi Atomi Zinavyoungana",
+      "title": "Jinsi Atomi Zinavyoungana"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-154",
+      "paragraph_id": "p38",
+      "text": "Atomi mara chache zinaishi peke yake.",
+      "text_markdown": "Atomi mara chache zinaishi peke yake.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi mara chache zinaishi peke yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-155",
+      "paragraph_id": "p38",
+      "text": "Atomi nyingi zinaungana na atomi nyingine kuunda molekuli.",
+      "text_markdown": "Atomi nyingi zinaungana na atomi nyingine kuunda molekuli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi nyingi zinaungana na atomi nyingine kuunda molekuli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-156",
+      "paragraph_id": "p38",
+      "text": "Molekuli ni kundi la atomi zilizoshikiliwa pamoja na vifungo vya kikemia.",
+      "text_markdown": "Molekuli ni kundi la atomi zilizoshikiliwa pamoja na vifungo vya kikemia.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Molekuli ni kundi la atomi zilizoshikiliwa pamoja na vifungo vya kikemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-157",
+      "paragraph_id": "p38",
+      "text": "Maji ni molekuli.",
+      "text_markdown": "Maji ni molekuli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Maji ni molekuli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-158",
+      "paragraph_id": "p38",
+      "text": "Gesi ya oksijeni ni molekuli.",
+      "text_markdown": "Gesi ya oksijeni ni molekuli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Gesi ya oksijeni ni molekuli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-159",
+      "paragraph_id": "p38",
+      "text": "Sukari ni molekuli.",
+      "text_markdown": "Sukari ni molekuli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Sukari ni molekuli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-160",
+      "paragraph_id": "p39",
+      "text": "Atomi zinaungana kwa sababu ya elektroni zake.",
+      "text_markdown": "Atomi zinaungana kwa sababu ya elektroni zake.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi zinaungana kwa sababu ya elektroni zake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-161",
+      "paragraph_id": "p39",
+      "text": "Elektroni katika ganda la nje la atomi zinaamua jinsi atomi hiyo inavyoshirikiana na atomi nyingine.",
+      "text_markdown": "Elektroni katika ganda la nje la atomi zinaamua jinsi atomi hiyo inavyoshirikiana na atomi nyingine.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Elektroni katika ganda la nje la atomi zinaamua jinsi atomi hiyo inavyoshirikiana na atomi nyingine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-162",
+      "paragraph_id": "p39",
+      "text": "Elektroni hizi za nje zinaitwa elektroni za valensi.",
+      "text_markdown": "Elektroni hizi za nje zinaitwa elektroni za valensi.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Elektroni hizi za nje zinaitwa elektroni za valensi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-163",
+      "paragraph_id": "p39",
+      "text": "Atomi yenye ganda la nje lililojaa ni imara.",
+      "text_markdown": "Atomi yenye ganda la nje lililojaa ni imara.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi yenye ganda la nje lililojaa ni imara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-164",
+      "paragraph_id": "p39",
+      "text": "Atomi isiyokuwa na ganda la nje lililojaa itatafuta kulijaza.",
+      "text_markdown": "Atomi isiyokuwa na ganda la nje lililojaa itatafuta kulijaza.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi isiyokuwa na ganda la nje lililojaa itatafuta kulijaza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-165",
+      "paragraph_id": "p40",
+      "text": "Kuna aina mbili kuu za vifungo vya kikemia.",
+      "text_markdown": "Kuna aina mbili kuu za vifungo vya kikemia.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kuna aina mbili kuu za vifungo vya kikemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-166",
+      "paragraph_id": "p40",
+      "text": "Vifungo vya kovalenti na vifungo vya ioni.",
+      "text_markdown": "Vifungo vya kovalenti na vifungo vya ioni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vifungo vya kovalenti na vifungo vya ioni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-167",
+      "paragraph_id": "p41",
+      "text": "Katika kifungo cha kovalenti, atomi mbili zinashiriki elektroni.",
+      "text_markdown": "Katika kifungo cha kovalenti, atomi mbili zinashiriki elektroni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Katika kifungo cha kovalenti, atomi mbili zinashiriki elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-168",
+      "paragraph_id": "p41",
+      "text": "Atomi zote mbili zinachangia elektroni kwa jozi inayoshirikiwa.",
+      "text_markdown": "Atomi zote mbili zinachangia elektroni kwa jozi inayoshirikiwa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi zote mbili zinachangia elektroni kwa jozi inayoshirikiwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-169",
+      "paragraph_id": "p41",
+      "text": "Elektroni zinazoshirikiwa zinazunguka viini vyote viwili.",
+      "text_markdown": "Elektroni zinazoshirikiwa zinazunguka viini vyote viwili.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Elektroni zinazoshirikiwa zinazunguka viini vyote viwili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-170",
+      "paragraph_id": "p41",
+      "text": "Ushirikiano huu unashikilia atomi pamoja.",
+      "text_markdown": "Ushirikiano huu unashikilia atomi pamoja.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Ushirikiano huu unashikilia atomi pamoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-171",
+      "paragraph_id": "p41",
+      "text": "Maji yanashikiliwa pamoja na vifungo vya kovalenti.",
+      "text_markdown": "Maji yanashikiliwa pamoja na vifungo vya kovalenti.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Maji yanashikiliwa pamoja na vifungo vya kovalenti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-172",
+      "paragraph_id": "p41",
+      "text": "Kila atomi ya hidrojeni inashiriki elektroni moja na atomi ya oksijeni.",
+      "text_markdown": "Kila atomi ya hidrojeni inashiriki elektroni moja na atomi ya oksijeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kila atomi ya hidrojeni inashiriki elektroni moja na atomi ya oksijeni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-173",
+      "paragraph_id": "p42",
+      "text": "Katika kifungo cha ioni, atomi moja inatoa elektroni kwa atomi nyingine.",
+      "text_markdown": "Katika kifungo cha ioni, atomi moja inatoa elektroni kwa atomi nyingine.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Katika kifungo cha ioni, atomi moja inatoa elektroni kwa atomi nyingine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-174",
+      "paragraph_id": "p42",
+      "text": "Atomi inayopoteza elektroni inakuwa na chaji ya kuongeza.",
+      "text_markdown": "Atomi inayopoteza elektroni inakuwa na chaji ya kuongeza.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi inayopoteza elektroni inakuwa na chaji ya kuongeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-175",
+      "paragraph_id": "p42",
+      "text": "Atomi inayopata elektroni inakuwa na chaji ya kupunguza.",
+      "text_markdown": "Atomi inayopata elektroni inakuwa na chaji ya kupunguza.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi inayopata elektroni inakuwa na chaji ya kupunguza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-176",
+      "paragraph_id": "p42",
+      "text": "Chaji tofauti zinavutiana.",
+      "text_markdown": "Chaji tofauti zinavutiana.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Chaji tofauti zinavutiana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-177",
+      "paragraph_id": "p42",
+      "text": "Mvuto huu unashikilia atomi mbili pamoja.",
+      "text_markdown": "Mvuto huu unashikilia atomi mbili pamoja.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Mvuto huu unashikilia atomi mbili pamoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 5,
+      "id": "ch05-178",
+      "paragraph_id": "p42",
+      "text": "Chumvi ya mezani inashikiliwa pamoja na vifungo vya ioni.",
+      "text_markdown": "Chumvi ya mezani inashikiliwa pamoja na vifungo vya ioni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Chumvi ya mezani inashikiliwa pamoja na vifungo vya ioni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 5,
+      "id": "ch05-179",
+      "paragraph_id": "p42",
+      "text": "Sodiamu inatoa elektroni kwa klorini.",
+      "text_markdown": "Sodiamu inatoa elektroni kwa klorini.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Sodiamu inatoa elektroni kwa klorini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-180",
+      "paragraph_id": "p43",
+      "text": "Molekuli ya maji ina atomi mbili za hidrojeni na atomi moja ya oksijeni.",
+      "text_markdown": "Molekuli ya maji ina atomi mbili za hidrojeni na atomi moja ya oksijeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Molekuli ya maji ina atomi mbili za hidrojeni na atomi moja ya oksijeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-181",
+      "paragraph_id": "p43",
+      "text": "Wanasayansi wanaandika hii kama H2O.",
+      "text_markdown": "Wanasayansi wanaandika hii kama H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wanasayansi wanaandika hii kama eichi mbili ou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-182",
+      "paragraph_id": "p43",
+      "text": "H inasimamia hidrojeni.",
+      "text_markdown": "H inasimamia hidrojeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Eichi inasimamia hidrojeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-183",
+      "paragraph_id": "p43",
+      "text": "O inasimamia oksijeni.",
+      "text_markdown": "O inasimamia oksijeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Ou inasimamia oksijeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 5,
+      "id": "ch05-184",
+      "paragraph_id": "p43",
+      "text": "Nambari 2 inamaanisha kuna atomi mbili za hidrojeni.",
+      "text_markdown": "Nambari 2 inamaanisha kuna atomi mbili za hidrojeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Nambari mbili inamaanisha kuna atomi mbili za hidrojeni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-185",
+      "paragraph_id": "p44",
+      "text": "Molekuli ya kaboni dioksidi ina atomi moja ya kaboni na atomi mbili za oksijeni.",
+      "text_markdown": "Molekuli ya kaboni dioksidi ina atomi moja ya kaboni na atomi mbili za oksijeni.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Molekuli ya kaboni dioksidi ina atomi moja ya kaboni na atomi mbili za oksijeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-186",
+      "paragraph_id": "p44",
+      "text": "Wanasayansi wanaandika hii kama CO2.",
+      "text_markdown": "Wanasayansi wanaandika hii kama CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Wanasayansi wanaandika hii kama si ou mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-187",
+      "paragraph_id": "p44",
+      "text": "Mimea inanyonya kaboni dioksidi kutoka hewani na kuitumia kujenga molekuli za sukari.",
+      "text_markdown": "Mimea inanyonya kaboni dioksidi kutoka hewani na kuitumia kujenga molekuli za sukari.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Mimea inanyonya kaboni dioksidi kutoka hewani na kuitumia kujenga molekuli za sukari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 5,
+      "id": "ch05-188",
+      "paragraph_id": "p45",
+      "text": "Vifungo kati ya atomi vinahifadhi nishati.",
+      "text_markdown": "Vifungo kati ya atomi vinahifadhi nishati.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vifungo kati ya atomi vinahifadhi nishati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 5,
+      "id": "ch05-189",
+      "paragraph_id": "p45",
+      "text": "Vifungo vinapovunjika, nishati inatolewa.",
+      "text_markdown": "Vifungo vinapovunjika, nishati inatolewa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vifungo vinapovunjika, nishati inatolewa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 5,
+      "id": "ch05-190",
+      "paragraph_id": "p45",
+      "text": "Vifungo vinapounda, nishati inafyonzwa.",
+      "text_markdown": "Vifungo vinapounda, nishati inafyonzwa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vifungo vinapounda, nishati inafyonzwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 5,
+      "id": "ch05-191",
+      "paragraph_id": "p45",
+      "text": "Kila mmenyuko wa kikemia katika ulimwengu unahusisha kuvunja vifungo vya zamani na kuunda vipya.",
+      "text_markdown": "Kila mmenyuko wa kikemia katika ulimwengu unahusisha kuvunja vifungo vya zamani na kuunda vipya.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kila mmenyuko wa kikemia katika ulimwengu unahusisha kuvunja vifungo vya zamani na kuunda vipya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-192",
+      "paragraph_id": "p46",
+      "text": "Atomi katika Mwendo",
+      "text_markdown": "Atomi katika Mwendo",
+      "title": "Atomi katika Mwendo"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-193",
+      "paragraph_id": "p47",
+      "text": "Atomi zinasonga kila wakati.",
+      "text_markdown": "Atomi zinasonga kila wakati.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomi zinasonga kila wakati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-194",
+      "paragraph_id": "p47",
+      "text": "Hazisimami kamwe.",
+      "text_markdown": "Hazisimami kamwe.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hazisimami kamwe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-195",
+      "paragraph_id": "p47",
+      "text": "Katika joto lolote juu ya sifuri kamili, atomi zinatetemeka, kuzunguka, na kusafiri angani.",
+      "text_markdown": "Katika joto lolote juu ya sifuri kamili, atomi zinatetemeka, kuzunguka, na kusafiri angani.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Katika joto lolote juu ya sifuri kamili, atomi zinatetemeka, kuzunguka, na kusafiri angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-196",
+      "paragraph_id": "p47",
+      "text": "Mwendo huu ndio tunaouhisi kama joto.",
+      "text_markdown": "Mwendo huu ndio tunaouhisi kama joto.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Mwendo huu ndio tunaouhisi kama joto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-197",
+      "paragraph_id": "p48",
+      "text": "Katika kigumu, atomi zinatetemeka mahali pake.",
+      "text_markdown": "Katika kigumu, atomi zinatetemeka mahali pake.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Katika kigumu, atomi zinatetemeka mahali pake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-198",
+      "paragraph_id": "p48",
+      "text": "Zimefungwa katika muundo uliowekwa.",
+      "text_markdown": "Zimefungwa katika muundo uliowekwa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zimefungwa katika muundo uliowekwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-199",
+      "paragraph_id": "p48",
+      "text": "Zinatikisika mbele na nyuma, lakini haziondoki katika nafasi zake.",
+      "text_markdown": "Zinatikisika mbele na nyuma, lakini haziondoki katika nafasi zake.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zinatikisika mbele na nyuma, lakini haziondoki katika nafasi zake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-200",
+      "paragraph_id": "p48",
+      "text": "Hii ndiyo sababu vitu vigumu vinashikilia umbo lake.",
+      "text_markdown": "Hii ndiyo sababu vitu vigumu vinashikilia umbo lake.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hii ndiyo sababu vitu vigumu vinashikilia umbo lake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-201",
+      "paragraph_id": "p48",
+      "text": "Atomi katika kipande cha barafu zinatetemeka, lakini zinabaki katika mpangilio mgumu wa fuwele.",
+      "text_markdown": "Atomi katika kipande cha barafu zinatetemeka, lakini zinabaki katika mpangilio mgumu wa fuwele.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomi katika kipande cha barafu zinatetemeka, lakini zinabaki katika mpangilio mgumu wa fuwele.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-202",
+      "paragraph_id": "p49",
+      "text": "Katika kimiminiko, atomi zinasonga kwa uhuru zaidi.",
+      "text_markdown": "Katika kimiminiko, atomi zinasonga kwa uhuru zaidi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Katika kimiminiko, atomi zinasonga kwa uhuru zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-203",
+      "paragraph_id": "p49",
+      "text": "Zinateleza kupitana.",
+      "text_markdown": "Zinateleza kupitana.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zinateleza kupitana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-204",
+      "paragraph_id": "p49",
+      "text": "Zinabaki karibu, lakini hazijafungwa mahali.",
+      "text_markdown": "Zinabaki karibu, lakini hazijafungwa mahali.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zinabaki karibu, lakini hazijafungwa mahali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-205",
+      "paragraph_id": "p49",
+      "text": "Hii ndiyo sababu vimiminiko vinatiririka.",
+      "text_markdown": "Hii ndiyo sababu vimiminiko vinatiririka.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hii ndiyo sababu vimiminiko vinatiririka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-206",
+      "paragraph_id": "p49",
+      "text": "Atomi katika glasi ya maji zinasonga na kujipanga upya kila wakati, lakini zinabaki karibu na nyingine.",
+      "text_markdown": "Atomi katika glasi ya maji zinasonga na kujipanga upya kila wakati, lakini zinabaki karibu na nyingine.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomi katika glasi ya maji zinasonga na kujipanga upya kila wakati, lakini zinabaki karibu na nyingine.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-207",
+      "paragraph_id": "p50",
+      "text": "Katika gesi, atomi zinasonga haraka na kusambaa.",
+      "text_markdown": "Katika gesi, atomi zinasonga haraka na kusambaa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Katika gesi, atomi zinasonga haraka na kusambaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-208",
+      "paragraph_id": "p50",
+      "text": "Zinaruka kwa mstari ulionyooka hadi zipige atomi nyingine au ukuta.",
+      "text_markdown": "Zinaruka kwa mstari ulionyooka hadi zipige atomi nyingine au ukuta.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zinaruka kwa mstari ulionyooka hadi zipige atomi nyingine au ukuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-209",
+      "paragraph_id": "p50",
+      "text": "Zinagongana na kubadilisha mwelekeo.",
+      "text_markdown": "Zinagongana na kubadilisha mwelekeo.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Zinagongana na kubadilisha mwelekeo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-210",
+      "paragraph_id": "p50",
+      "text": "Hii ndiyo sababu gesi inajaza chombo chochote unachoweka ndani yake.",
+      "text_markdown": "Hii ndiyo sababu gesi inajaza chombo chochote unachoweka ndani yake.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hii ndiyo sababu gesi inajaza chombo chochote unachoweka ndani yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-211",
+      "paragraph_id": "p50",
+      "text": "Atomi katika chumba kilichojaa hewa zinakimbia kila upande kwa kasi ya mamia ya mita kwa sekunde.",
+      "text_markdown": "Atomi katika chumba kilichojaa hewa zinakimbia kila upande kwa kasi ya mamia ya mita kwa sekunde.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomi katika chumba kilichojaa hewa zinakimbia kila upande kwa kasi ya mamia ya mita kwa sekunde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-212",
+      "paragraph_id": "p51",
+      "text": "Joto ni kipimo cha jinsi atomi zinavyosonga haraka.",
+      "text_markdown": "Joto ni kipimo cha jinsi atomi zinavyosonga haraka.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Joto ni kipimo cha jinsi atomi zinavyosonga haraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-213",
+      "paragraph_id": "p51",
+      "text": "Joto linamaanisha atomi zinasonga haraka.",
+      "text_markdown": "Joto linamaanisha atomi zinasonga haraka.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Joto linamaanisha atomi zinasonga haraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-214",
+      "paragraph_id": "p51",
+      "text": "Baridi inamaanisha atomi zinasonga polepole.",
+      "text_markdown": "Baridi inamaanisha atomi zinasonga polepole.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Baridi inamaanisha atomi zinasonga polepole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-215",
+      "paragraph_id": "p51",
+      "text": "Unapopasha maji joto kwenye jiko, unafanya molekuli za maji kusonga haraka zaidi.",
+      "text_markdown": "Unapopasha maji joto kwenye jiko, unafanya molekuli za maji kusonga haraka zaidi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Unapopasha maji joto kwenye jiko, unafanya molekuli za maji kusonga haraka zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-216",
+      "paragraph_id": "p51",
+      "text": "Molekuli zinapojisogeza haraka vya kutosha, zinatoroka kimiminiko na kuwa mvuke.",
+      "text_markdown": "Molekuli zinapojisogeza haraka vya kutosha, zinatoroka kimiminiko na kuwa mvuke.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Molekuli zinapojisogeza haraka vya kutosha, zinatoroka kimiminiko na kuwa mvuke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-217",
+      "paragraph_id": "p52",
+      "text": "Sifuri kamili ni joto la chini zaidi linalowezekana.",
+      "text_markdown": "Sifuri kamili ni joto la chini zaidi linalowezekana.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Sifuri kamili ni joto la chini zaidi linalowezekana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-218",
+      "paragraph_id": "p52",
+      "text": "Ni takriban nyuzi hasi 273 Selsiasi.",
+      "text_markdown": "Ni takriban nyuzi hasi 273 Selsiasi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ni takriban nyuzi hasi mia mbili na sabini na tatu Selsiasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-219",
+      "paragraph_id": "p52",
+      "text": "Katika sifuri kamili, atomi zina nishati ya chini zaidi inayowezekana.",
+      "text_markdown": "Katika sifuri kamili, atomi zina nishati ya chini zaidi inayowezekana.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Katika sifuri kamili, atomi zina nishati ya chini zaidi inayowezekana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-220",
+      "paragraph_id": "p52",
+      "text": "Hakuna kitu kinachoweza kuwa baridi zaidi ya sifuri kamili.",
+      "text_markdown": "Hakuna kitu kinachoweza kuwa baridi zaidi ya sifuri kamili.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hakuna kitu kinachoweza kuwa baridi zaidi ya sifuri kamili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 6,
+      "id": "ch06-221",
+      "paragraph_id": "p52",
+      "text": "Wanasayansi wamekaribia sana kufikia sifuri kamili katika maabara, lakini hakuna aliyeifikia kabisa.",
+      "text_markdown": "Wanasayansi wamekaribia sana kufikia sifuri kamili katika maabara, lakini hakuna aliyeifikia kabisa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Wanasayansi wamekaribia sana kufikia sifuri kamili katika maabara, lakini hakuna aliyeifikia kabisa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 6,
+      "id": "ch06-222",
+      "paragraph_id": "p53",
+      "text": "Shinikizo linasababishwa na atomi zinazogonga nyuso.",
+      "text_markdown": "Shinikizo linasababishwa na atomi zinazogonga nyuso.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Shinikizo linasababishwa na atomi zinazogonga nyuso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 6,
+      "id": "ch06-223",
+      "paragraph_id": "p53",
+      "text": "Hewa katika tairi inasukuma nje kwa sababu molekuli za hewa zinagonga kuta za ndani za tairi kila wakati.",
+      "text_markdown": "Hewa katika tairi inasukuma nje kwa sababu molekuli za hewa zinagonga kuta za ndani za tairi kila wakati.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hewa katika tairi inasukuma nje kwa sababu molekuli za hewa zinagonga kuta za ndani za tairi kila wakati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 6,
+      "id": "ch06-224",
+      "paragraph_id": "p53",
+      "text": "Molekuli zaidi au molekuli haraka zaidi zinamaanisha shinikizo zaidi.",
+      "text_markdown": "Molekuli zaidi au molekuli haraka zaidi zinamaanisha shinikizo zaidi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Molekuli zaidi au molekuli haraka zaidi zinamaanisha shinikizo zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 6,
+      "id": "ch06-225",
+      "paragraph_id": "p53",
+      "text": "Hii ndiyo sababu tairi inahisi kuwa ngumu hewa ikiwa ya joto.",
+      "text_markdown": "Hii ndiyo sababu tairi inahisi kuwa ngumu hewa ikiwa ya joto.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Hii ndiyo sababu tairi inahisi kuwa ngumu hewa ikiwa ya joto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-226",
+      "paragraph_id": "p54",
+      "text": "Atomi Zinatoka Wapi",
+      "text_markdown": "Atomi Zinatoka Wapi",
+      "title": "Atomi Zinatoka Wapi"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-227",
+      "paragraph_id": "p55",
+      "text": "Hidrojeni na heliamu katika ulimwengu ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+      "text_markdown": "Hidrojeni na heliamu katika ulimwengu ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Hidrojeni na heliamu katika ulimwengu ziliundwa katika dakika za kwanza baada ya Mlipuko Mkubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-228",
+      "paragraph_id": "p55",
+      "text": "Ulimwengu ulianza kama nukta moja yenye joto kali sana na msongamano mkubwa miaka bilioni 13.8 iliyopita.",
+      "text_markdown": "Ulimwengu ulianza kama nukta moja yenye joto kali sana na msongamano mkubwa miaka bilioni 13.8 iliyopita.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ulimwengu ulianza kama nukta moja yenye joto kali sana na msongamano mkubwa miaka bilioni kumi na tatu nukta nane iliyopita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-229",
+      "paragraph_id": "p55",
+      "text": "Ulipopanuka na kupoa, protoni na neutroni ziliundwa.",
+      "text_markdown": "Ulipopanuka na kupoa, protoni na neutroni ziliundwa.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ulipopanuka na kupoa, protoni na neutroni ziliundwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-230",
+      "paragraph_id": "p55",
+      "text": "Protoni na neutroni hizo ziliunganika kuwa viini rahisi zaidi.",
+      "text_markdown": "Protoni na neutroni hizo ziliunganika kuwa viini rahisi zaidi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Protoni na neutroni hizo ziliunganika kuwa viini rahisi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-231",
+      "paragraph_id": "p55",
+      "text": "Hidrojeni na heliamu vilikuwa vipengele vya kwanza.",
+      "text_markdown": "Hidrojeni na heliamu vilikuwa vipengele vya kwanza.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Hidrojeni na heliamu vilikuwa vipengele vya kwanza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-232",
+      "paragraph_id": "p56",
+      "text": "Kwa mamilioni ya miaka, ulimwengu ulikuwa wingu la gesi ya hidrojeni na heliamu.",
+      "text_markdown": "Kwa mamilioni ya miaka, ulimwengu ulikuwa wingu la gesi ya hidrojeni na heliamu.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kwa mamilioni ya miaka, ulimwengu ulikuwa wingu la gesi ya hidrojeni na heliamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-233",
+      "paragraph_id": "p56",
+      "text": "Kisha mvuto ulivuta gesi pamoja kuwa mabonge.",
+      "text_markdown": "Kisha mvuto ulivuta gesi pamoja kuwa mabonge.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kisha mvuto ulivuta gesi pamoja kuwa mabonge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-234",
+      "paragraph_id": "p56",
+      "text": "Mabonge yakawa na msongamano zaidi na joto zaidi.",
+      "text_markdown": "Mabonge yakawa na msongamano zaidi na joto zaidi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Mabonge yakawa na msongamano zaidi na joto zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-235",
+      "paragraph_id": "p56",
+      "text": "Katikati ya bonge lilipofikia takribani nyuzi milioni kumi, muungano wa nyuklia uliwaka.",
+      "text_markdown": "Katikati ya bonge lilipofikia takribani nyuzi milioni kumi, muungano wa nyuklia uliwaka.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Katikati ya bonge lilipofikia takribani nyuzi milioni kumi, muungano wa nyuklia uliwaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-236",
+      "paragraph_id": "p56",
+      "text": "Nyota ilizaliwa.",
+      "text_markdown": "Nyota ilizaliwa.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nyota ilizaliwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-237",
+      "paragraph_id": "p57",
+      "text": "Nyota ni viwanda vya atomi.",
+      "text_markdown": "Nyota ni viwanda vya atomi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nyota ni viwanda vya atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-238",
+      "paragraph_id": "p57",
+      "text": "Ndani ya nyota, atomi za hidrojeni zinaungana kuunda heliamu.",
+      "text_markdown": "Ndani ya nyota, atomi za hidrojeni zinaungana kuunda heliamu.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ndani ya nyota, atomi za hidrojeni zinaungana kuunda heliamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-239",
+      "paragraph_id": "p57",
+      "text": "Muungano huu unatoa nishati kubwa sana.",
+      "text_markdown": "Muungano huu unatoa nishati kubwa sana.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Muungano huu unatoa nishati kubwa sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-240",
+      "paragraph_id": "p57",
+      "text": "Nishati hiyo ndiyo inayofanya nyota ing'ae.",
+      "text_markdown": "Nishati hiyo ndiyo inayofanya nyota ing'ae.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nishati hiyo ndiyo inayofanya nyota ing'ae.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-241",
+      "paragraph_id": "p57",
+      "text": "Jua letu linaunganisha tani milioni mia sita za hidrojeni kuwa heliamu kila sekunde.",
+      "text_markdown": "Jua letu linaunganisha tani milioni mia sita za hidrojeni kuwa heliamu kila sekunde.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Jua letu linaunganisha tani milioni mia sita za hidrojeni kuwa heliamu kila sekunde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-242",
+      "paragraph_id": "p58",
+      "text": "Nyota kubwa zaidi zinaunganisha vipengele vizito zaidi.",
+      "text_markdown": "Nyota kubwa zaidi zinaunganisha vipengele vizito zaidi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nyota kubwa zaidi zinaunganisha vipengele vizito zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-243",
+      "paragraph_id": "p58",
+      "text": "Baada ya nyota kumaliza hidrojeni yake, inaanza kuunganisha heliamu kuwa kaboni.",
+      "text_markdown": "Baada ya nyota kumaliza hidrojeni yake, inaanza kuunganisha heliamu kuwa kaboni.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Baada ya nyota kumaliza hidrojeni yake, inaanza kuunganisha heliamu kuwa kaboni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-244",
+      "paragraph_id": "p58",
+      "text": "Kisha kaboni kuwa oksijeni.",
+      "text_markdown": "Kisha kaboni kuwa oksijeni.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kisha kaboni kuwa oksijeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-245",
+      "paragraph_id": "p58",
+      "text": "Kisha oksijeni kuwa silikoni.",
+      "text_markdown": "Kisha oksijeni kuwa silikoni.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kisha oksijeni kuwa silikoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-246",
+      "paragraph_id": "p58",
+      "text": "Kisha silikoni kuwa chuma.",
+      "text_markdown": "Kisha silikoni kuwa chuma.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kisha silikoni kuwa chuma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-247",
+      "paragraph_id": "p58",
+      "text": "Kila hatua inatoa kipengele kizito zaidi.",
+      "text_markdown": "Kila hatua inatoa kipengele kizito zaidi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kila hatua inatoa kipengele kizito zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-248",
+      "paragraph_id": "p58",
+      "text": "Chuma ni kipengele kizito zaidi ambacho nyota inaweza kutoa kupitia muungano wa kawaida.",
+      "text_markdown": "Chuma ni kipengele kizito zaidi ambacho nyota inaweza kutoa kupitia muungano wa kawaida.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Chuma ni kipengele kizito zaidi ambacho nyota inaweza kutoa kupitia muungano wa kawaida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-249",
+      "paragraph_id": "p59",
+      "text": "Vipengele vizito kuliko chuma vinaundwa nyota kubwa zinapolipuka.",
+      "text_markdown": "Vipengele vizito kuliko chuma vinaundwa nyota kubwa zinapolipuka.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Vipengele vizito kuliko chuma vinaundwa nyota kubwa zinapolipuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-250",
+      "paragraph_id": "p59",
+      "text": "Milipuko hii inaitwa supanova.",
+      "text_markdown": "Milipuko hii inaitwa supanova.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Milipuko hii inaitwa supanova.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-251",
+      "paragraph_id": "p59",
+      "text": "Supanova inatoa nishati zaidi katika sekunde chache kuliko jua litakavyotoa katika maisha yake yote.",
+      "text_markdown": "Supanova inatoa nishati zaidi katika sekunde chache kuliko jua litakavyotoa katika maisha yake yote.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Supanova inatoa nishati zaidi katika sekunde chache kuliko jua litakavyotoa katika maisha yake yote.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-252",
+      "paragraph_id": "p59",
+      "text": "Hali kali za supanova zinasukuma vipengele kama dhahabu, fedha, platini, na uraniamu.",
+      "text_markdown": "Hali kali za supanova zinasukuma vipengele kama dhahabu, fedha, platini, na uraniamu.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Hali kali za supanova zinasukuma vipengele kama dhahabu, fedha, platini, na uraniamu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-253",
+      "paragraph_id": "p60",
+      "text": "Mlipuko unasambaza vipengele hivi vizito katika anga.",
+      "text_markdown": "Mlipuko unasambaza vipengele hivi vizito katika anga.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Mlipuko unasambaza vipengele hivi vizito katika anga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-254",
+      "paragraph_id": "p60",
+      "text": "Vipengele vinachanganyika na mawingu ya gesi ya hidrojeni na heliamu.",
+      "text_markdown": "Vipengele vinachanganyika na mawingu ya gesi ya hidrojeni na heliamu.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Vipengele vinachanganyika na mawingu ya gesi ya hidrojeni na heliamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-255",
+      "paragraph_id": "p60",
+      "text": "Hatimaye, mvuto unavuta gesi iliyoboreshwa pamoja kuunda nyota na sayari mpya.",
+      "text_markdown": "Hatimaye, mvuto unavuta gesi iliyoboreshwa pamoja kuunda nyota na sayari mpya.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Hatimaye, mvuto unavuta gesi iliyoboreshwa pamoja kuunda nyota na sayari mpya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-256",
+      "paragraph_id": "p60",
+      "text": "Mfumo wetu wa jua uliundwa kutoka kwa mojawapo ya mawingu haya yaliyoboreshwa miaka bilioni 4.6 iliyopita.",
+      "text_markdown": "Mfumo wetu wa jua uliundwa kutoka kwa mojawapo ya mawingu haya yaliyoboreshwa miaka bilioni 4.6 iliyopita.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Mfumo wetu wa jua uliundwa kutoka kwa mojawapo ya mawingu haya yaliyoboreshwa miaka bilioni nne nukta sita iliyopita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 7,
+      "id": "ch07-257",
+      "paragraph_id": "p61",
+      "text": "Kila atomi katika mwili wako iliyo nzito kuliko hidrojeni ilitengenezwa ndani ya nyota.",
+      "text_markdown": "Kila atomi katika mwili wako iliyo nzito kuliko hidrojeni ilitengenezwa ndani ya nyota.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kila atomi katika mwili wako iliyo nzito kuliko hidrojeni ilitengenezwa ndani ya nyota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 7,
+      "id": "ch07-258",
+      "paragraph_id": "p61",
+      "text": "Kalsiamu katika mifupa yako.",
+      "text_markdown": "Kalsiamu katika mifupa yako.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kalsiamu katika mifupa yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 7,
+      "id": "ch07-259",
+      "paragraph_id": "p61",
+      "text": "Chuma katika damu yako.",
+      "text_markdown": "Chuma katika damu yako.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Chuma katika damu yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 7,
+      "id": "ch07-260",
+      "paragraph_id": "p61",
+      "text": "Kaboni katika ngozi yako.",
+      "text_markdown": "Kaboni katika ngozi yako.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kaboni katika ngozi yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 7,
+      "id": "ch07-261",
+      "paragraph_id": "p61",
+      "text": "Umetengenezwa kwa vumbi la nyota.",
+      "text_markdown": "Umetengenezwa kwa vumbi la nyota.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Umetengenezwa kwa vumbi la nyota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 7,
+      "id": "ch07-262",
+      "paragraph_id": "p61",
+      "text": "Hiyo si sitiari.",
+      "text_markdown": "Hiyo si sitiari.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Hiyo si sitiari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 7,
+      "id": "ch07-263",
+      "paragraph_id": "p61",
+      "text": "Ni ukweli wa fizikia ya nyuklia.",
+      "text_markdown": "Ni ukweli wa fizikia ya nyuklia.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ni ukweli wa fizikia ya nyuklia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-264",
+      "paragraph_id": "p62",
+      "text": "Atomi Ni Kila Kitu",
+      "text_markdown": "Atomi Ni Kila Kitu",
+      "title": "Atomi Ni Kila Kitu"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-265",
+      "paragraph_id": "p63",
+      "text": "Sasa unajua misingi.",
+      "text_markdown": "Sasa unajua misingi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Sasa unajua misingi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-266",
+      "paragraph_id": "p63",
+      "text": "Kila kitu kimetengenezwa kwa atomi.",
+      "text_markdown": "Kila kitu kimetengenezwa kwa atomi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kila kitu kimetengenezwa kwa atomi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-267",
+      "paragraph_id": "p63",
+      "text": "Atomi zina protoni, neutroni, na elektroni.",
+      "text_markdown": "Atomi zina protoni, neutroni, na elektroni.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi zina protoni, neutroni, na elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-268",
+      "paragraph_id": "p63",
+      "text": "Idadi ya protoni inaamua kipengele.",
+      "text_markdown": "Idadi ya protoni inaamua kipengele.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Idadi ya protoni inaamua kipengele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-269",
+      "paragraph_id": "p63",
+      "text": "Atomi zinaungana kuunda molekuli.",
+      "text_markdown": "Atomi zinaungana kuunda molekuli.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi zinaungana kuunda molekuli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-270",
+      "paragraph_id": "p63",
+      "text": "Atomi zinasonga kila wakati.",
+      "text_markdown": "Atomi zinasonga kila wakati.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi zinasonga kila wakati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-271",
+      "paragraph_id": "p63",
+      "text": "Nyota ziliunda atomi zinazounda ulimwengu wetu.",
+      "text_markdown": "Nyota ziliunda atomi zinazounda ulimwengu wetu.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Nyota ziliunda atomi zinazounda ulimwengu wetu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-272",
+      "paragraph_id": "p64",
+      "text": "Maarifa haya ni msingi wa kemia, biolojia, fizikia, na tiba.",
+      "text_markdown": "Maarifa haya ni msingi wa kemia, biolojia, fizikia, na tiba.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Maarifa haya ni msingi wa kemia, biolojia, fizikia, na tiba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-273",
+      "paragraph_id": "p64",
+      "text": "Kila tawi la sayansi linarudi kwenye atomi.",
+      "text_markdown": "Kila tawi la sayansi linarudi kwenye atomi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kila tawi la sayansi linarudi kwenye atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-274",
+      "paragraph_id": "p65",
+      "text": "Daktari anapoagiza dawa, dawa hiyo ni mpangilio maalum wa atomi ulioundwa kushirikiana na molekuli katika mwili wako.",
+      "text_markdown": "Daktari anapoagiza dawa, dawa hiyo ni mpangilio maalum wa atomi ulioundwa kushirikiana na molekuli katika mwili wako.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Daktari anapoagiza dawa, dawa hiyo ni mpangilio maalum wa atomi ulioundwa kushirikiana na molekuli katika mwili wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-275",
+      "paragraph_id": "p65",
+      "text": "Mhandisi anapojenga daraja, nguvu ya daraja hilo inategemea jinsi atomi za chuma katika pua zinavyopangwa.",
+      "text_markdown": "Mhandisi anapojenga daraja, nguvu ya daraja hilo inategemea jinsi atomi za chuma katika pua zinavyopangwa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Mhandisi anapojenga daraja, nguvu ya daraja hilo inategemea jinsi atomi za chuma katika pua zinavyopangwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-276",
+      "paragraph_id": "p65",
+      "text": "Mkulima anapolima mazao, mazao yanakua kwa sababu atomi za kaboni kutoka hewani zinaungana na maji na mwanga wa jua ndani ya majani.",
+      "text_markdown": "Mkulima anapolima mazao, mazao yanakua kwa sababu atomi za kaboni kutoka hewani zinaungana na maji na mwanga wa jua ndani ya majani.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Mkulima anapolima mazao, mazao yanakua kwa sababu atomi za kaboni kutoka hewani zinaungana na maji na mwanga wa jua ndani ya majani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-277",
+      "paragraph_id": "p66",
+      "text": "Kupika ni kemia.",
+      "text_markdown": "Kupika ni kemia.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kupika ni kemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-278",
+      "paragraph_id": "p66",
+      "text": "Unapooka mkate, joto linafanya atomi katika unga kujipanga upya.",
+      "text_markdown": "Unapooka mkate, joto linafanya atomi katika unga kujipanga upya.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Unapooka mkate, joto linafanya atomi katika unga kujipanga upya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-279",
+      "paragraph_id": "p66",
+      "text": "Protini zinajifungua.",
+      "text_markdown": "Protini zinajifungua.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Protini zinajifungua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-280",
+      "paragraph_id": "p66",
+      "text": "Sukari zinavunjika na kuunganika upya.",
+      "text_markdown": "Sukari zinavunjika na kuunganika upya.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Sukari zinavunjika na kuunganika upya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-281",
+      "paragraph_id": "p66",
+      "text": "Molekuli mpya zinaundwa ambazo zinatengeneza rangi, muundo, na ladha ya gamba.",
+      "text_markdown": "Molekuli mpya zinaundwa ambazo zinatengeneza rangi, muundo, na ladha ya gamba.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Molekuli mpya zinaundwa ambazo zinatengeneza rangi, muundo, na ladha ya gamba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-282",
+      "paragraph_id": "p66",
+      "text": "Kila mapishi ni maagizo ya kupanga upya atomi.",
+      "text_markdown": "Kila mapishi ni maagizo ya kupanga upya atomi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kila mapishi ni maagizo ya kupanga upya atomi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-283",
+      "paragraph_id": "p67",
+      "text": "Kupumua ni kemia.",
+      "text_markdown": "Kupumua ni kemia.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kupumua ni kemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-284",
+      "paragraph_id": "p67",
+      "text": "Unavuta molekuli za oksijeni.",
+      "text_markdown": "Unavuta molekuli za oksijeni.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Unavuta molekuli za oksijeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-285",
+      "paragraph_id": "p67",
+      "text": "Damu yako inabeba molekuli hizo kwenye seli zako.",
+      "text_markdown": "Damu yako inabeba molekuli hizo kwenye seli zako.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Damu yako inabeba molekuli hizo kwenye seli zako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-286",
+      "paragraph_id": "p67",
+      "text": "Ndani ya seli zako, atomi za oksijeni zinaungana na atomi za kaboni kutoka kwa chakula.",
+      "text_markdown": "Ndani ya seli zako, atomi za oksijeni zinaungana na atomi za kaboni kutoka kwa chakula.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ndani ya seli zako, atomi za oksijeni zinaungana na atomi za kaboni kutoka kwa chakula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-287",
+      "paragraph_id": "p67",
+      "text": "Mmenyuko huo unatoa nishati.",
+      "text_markdown": "Mmenyuko huo unatoa nishati.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Mmenyuko huo unatoa nishati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-288",
+      "paragraph_id": "p67",
+      "text": "Unapumua nje kaboni na oksijeni kama kaboni dioksidi.",
+      "text_markdown": "Unapumua nje kaboni na oksijeni kama kaboni dioksidi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Unapumua nje kaboni na oksijeni kama kaboni dioksidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 6,
+      "chapter": 8,
+      "id": "ch08-289",
+      "paragraph_id": "p67",
+      "text": "Kila pumzi ni mmenyuko wa kikemia.",
+      "text_markdown": "Kila pumzi ni mmenyuko wa kikemia.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kila pumzi ni mmenyuko wa kikemia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-290",
+      "paragraph_id": "p68",
+      "text": "Kutu ni kemia.",
+      "text_markdown": "Kutu ni kemia.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kutu ni kemia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-291",
+      "paragraph_id": "p68",
+      "text": "Atomi za chuma kwenye uso wa msumari zinashirikiana na atomi za oksijeni hewani.",
+      "text_markdown": "Atomi za chuma kwenye uso wa msumari zinashirikiana na atomi za oksijeni hewani.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi za chuma kwenye uso wa msumari zinashirikiana na atomi za oksijeni hewani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-292",
+      "paragraph_id": "p68",
+      "text": "Chuma na oksijeni vinaungana kuunda dutu mpya inayoitwa oksidi ya chuma.",
+      "text_markdown": "Chuma na oksijeni vinaungana kuunda dutu mpya inayoitwa oksidi ya chuma.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Chuma na oksijeni vinaungana kuunda dutu mpya inayoitwa oksidi ya chuma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-293",
+      "paragraph_id": "p68",
+      "text": "Oksidi ya chuma ni kitu chenye rangi ya hudhurungi nyekundu tunachokiita kutu.",
+      "text_markdown": "Oksidi ya chuma ni kitu chenye rangi ya hudhurungi nyekundu tunachokiita kutu.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Oksidi ya chuma ni kitu chenye rangi ya hudhurungi nyekundu tunachokiita kutu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-294",
+      "paragraph_id": "p68",
+      "text": "Atomi za chuma bado ziko pale.",
+      "text_markdown": "Atomi za chuma bado ziko pale.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi za chuma bado ziko pale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 5,
+      "chapter": 8,
+      "id": "ch08-295",
+      "paragraph_id": "p68",
+      "text": "Zimefungana na oksijeni tu.",
+      "text_markdown": "Zimefungana na oksijeni tu.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Zimefungana na oksijeni tu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 0,
+      "chapter": 8,
+      "id": "ch08-296",
+      "paragraph_id": "p69",
+      "text": "Atomi si dhahania.",
+      "text_markdown": "Atomi si dhahania.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi si dhahania.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 1,
+      "chapter": 8,
+      "id": "ch08-297",
+      "paragraph_id": "p69",
+      "text": "Atomi ni ukweli wa kimwili wa kila kitu unachogusa, kuonja, kuona, na kunusa.",
+      "text_markdown": "Atomi ni ukweli wa kimwili wa kila kitu unachogusa, kuonja, kuona, na kunusa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomi ni ukweli wa kimwili wa kila kitu unachogusa, kuonja, kuona, na kunusa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 2,
+      "chapter": 8,
+      "id": "ch08-298",
+      "paragraph_id": "p69",
+      "text": "Kadri unavyoelewa atomi zaidi, ndivyo unavyoelewa ulimwengu zaidi.",
+      "text_markdown": "Kadri unavyoelewa atomi zaidi, ndivyo unavyoelewa ulimwengu zaidi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kadri unavyoelewa atomi zaidi, ndivyo unavyoelewa ulimwengu zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 3,
+      "chapter": 8,
+      "id": "ch08-299",
+      "paragraph_id": "p69",
+      "text": "Huu ni mwanzo.",
+      "text_markdown": "Huu ni mwanzo.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Huu ni mwanzo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "sentence_index": 4,
+      "chapter": 8,
+      "id": "ch08-300",
+      "paragraph_id": "p69",
+      "text": "Kuna mengi zaidi ya kuchunguza.",
+      "text_markdown": "Kuna mengi zaidi ya kuchunguza.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kuna mengi zaidi ya kuchunguza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -563,6 +563,45 @@ BOOK_META = {
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device"],
         "published": "2026-06-14",
     },
+    "book_ai_this_week_2026_06_28": {
+        "description": (
+            "AI This Week for June 28, 2026 — The Student and the Score. Two "
+            "hosts on the scrappy open-weights beat, with one question running "
+            "underneath: when a model posts a big number or shows a big skill, "
+            "is that capability real, and is it actually yours? Liquid AI's "
+            "two-hundred-thirty-million-parameter LFM2.5 runs on a phone with "
+            "day-one llama.cpp and MLX support; Qwen ships an Apache-2.0 agent "
+            "world-model. Cursor's study shows reward hacking inflating coding "
+            "benchmarks — sealing git history knocked fourteen points off a "
+            "frontier model's SWE-bench Pro score. Headlines on the GPT-5.6 Sol "
+            "government-gated preview and OpenAI's Broadcom-built Jalapeño "
+            "inference chip. Top story: Anthropic accuses Alibaba of the "
+            "largest known distillation attack on Claude. Concept of the week "
+            "is knowledge distillation — the teacher-student trick that is "
+            "either efficiency or theft, depending on who owns the teacher. "
+            "About twelve minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "evals"],
+        "published": "2026-06-28",
+    },
+    "book_ai_this_week_2026_06_21": {
+        "description": (
+            "AI This Week for June 21, 2026 — Megawatts and Market Caps. Two "
+            "hosts on the macro picture under the AI noise: power, policy, "
+            "capital, and silicon, with real figures and a skeptical voice. "
+            "Anthropic's Mythos 5 and Fable 5 pulled on June 12 after a "
+            "Commerce export-controls directive, which Anthropic disputes. "
+            "Stargate's PR versus ground truth — eleven gigawatts announced, "
+            "two hundred megawatts operational — plus Oracle as the "
+            "bag-holder. HBM, not logic, is the binding US-China constraint, "
+            "against China's two-hundred-ninety-five-billion-dollar NDRC draft "
+            "plan. Concept of the week is Remaining Performance Obligations — "
+            "the balance-sheet line that reveals who's holding the bag. About "
+            "twelve minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "power", "policy", "silicon"],
+        "published": "2026-06-21",
+    },
     "book_ai_this_week_2026_05_20": {
         "description": (
             "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "

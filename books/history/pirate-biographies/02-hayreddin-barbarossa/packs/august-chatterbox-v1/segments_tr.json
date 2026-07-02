@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "tr",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Not",
+      "text_markdown": "Okuyucuya Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap, Osmanlı İmparatorluğu'nu bir deniz süper gücüne dönüştüren adam Barbaros Hayreddin Paşa'nın gerçek hikâyesidir.",
+      "text_markdown": "Bu kitap, Osmanlı İmparatorluğu'nu bir deniz süper gücüne dönüştüren adam Barbaros Hayreddin Paşa'nın gerçek hikâyesidir.",
+      "tts": {
+        "text": "Bu kitap, Osmanlı İmparatorluğu'nu bir deniz süper gücüne dönüştüren adam Barbaros Hayreddin Paşa'nın gerçek hikâyesidir.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayatına bir Yunan adasında çömlekçinin oğlu olarak başladı.",
+      "text_markdown": "Hayatına bir Yunan adasında çömlekçinin oğlu olarak başladı.",
+      "tts": {
+        "text": "Hayatına bir Yunan adasında çömlekçinin oğlu olarak başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Akdeniz'in en güçlü donanmasının Büyük Amirali olarak hayata veda etti.",
+      "text_markdown": "Akdeniz'in en güçlü donanmasının Büyük Amirali olarak hayata veda etti.",
+      "tts": {
+        "text": "Akdeniz'in en güçlü donanmasının Büyük Amirali olarak hayata veda etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikâyesi, Osmanlı İmparatorluğu ile Hristiyan Avrupa arasında bir asırlık çatışmayı kapsar.",
+      "text_markdown": "Hikâyesi, Osmanlı İmparatorluğu ile Hristiyan Avrupa arasında bir asırlık çatışmayı kapsar.",
+      "tts": {
+        "text": "Hikâyesi, Osmanlı İmparatorluğu ile Hristiyan Avrupa arasında bir asırlık çatışmayı kapsar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu; kardeşlerin, korsanların, sultanların ve denizin kontrolü için verilen mücadelenin hikâyesidir.",
+      "text_markdown": "Bu; kardeşlerin, korsanların, sultanların ve denizin kontrolü için verilen mücadelenin hikâyesidir.",
+      "tts": {
+        "text": "Bu; kardeşlerin, korsanların, sultanların ve denizin kontrolü için verilen mücadelenin hikâyesidir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu kitapta anlatılan her savaş, ittifak ve ihanet tarihî kaynaklara dayanmaktadır.",
+      "text_markdown": "Bu kitapta anlatılan her savaş, ittifak ve ihanet tarihî kaynaklara dayanmaktadır.",
+      "tts": {
+        "text": "Bu kitapta anlatılan her savaş, ittifak ve ihanet tarihî kaynaklara dayanmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbaros'un kariyeri Akdeniz dünyasının haritasını değiştirdi.",
+      "text_markdown": "Barbaros'un kariyeri Akdeniz dünyasının haritasını değiştirdi.",
+      "tts": {
+        "text": "Barbaros'un kariyeri Akdeniz dünyasının haritasını değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnşa ettiği donanma, ölümünden sonra da nesiller boyunca denizlerde üstünlüğünü korudu.",
+      "text_markdown": "İnşa ettiği donanma, ölümünden sonra da nesiller boyunca denizlerde üstünlüğünü korudu.",
+      "tts": {
+        "text": "İnşa ettiği donanma, ölümünden sonra da nesiller boyunca denizlerde üstünlüğünü korudu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mirası bugün hâlâ Kuzey Afrika'nın kıyılarını ve kültürlerini şekillendirmektedir.",
+      "text_markdown": "Mirası bugün hâlâ Kuzey Afrika'nın kıyılarını ve kültürlerini şekillendirmektedir.",
+      "tts": {
+        "text": "Mirası bugün hâlâ Kuzey Afrika'nın kıyılarını ve kültürlerini şekillendirmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihî kayıtların eksik olduğu yerlerde bunu açıkça belirtiyoruz.",
+      "text_markdown": "Tarihî kayıtların eksik olduğu yerlerde bunu açıkça belirtiyoruz.",
+      "tts": {
+        "text": "Tarihî kayıtların eksik olduğu yerlerde bunu açıkça belirtiyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarihçilerin tarihler veya ayrıntılar konusunda farklı görüşte olduğu yerlerde en yaygın kabul gören anlatımı sunuyoruz.",
+      "text_markdown": "Tarihçilerin tarihler veya ayrıntılar konusunda farklı görüşte olduğu yerlerde en yaygın kabul gören anlatımı sunuyoruz.",
+      "tts": {
+        "text": "Tarihçilerin tarihler veya ayrıntılar konusunda farklı görüşte olduğu yerlerde en yaygın kabul gören anlatımı sunuyoruz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Not",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu bir tarih kitabıdır, efsane değil; ve konuya hak ettiği özeni gösteriyoruz.",
+      "text_markdown": "Bu bir tarih kitabıdır, efsane değil; ve konuya hak ettiği özeni gösteriyoruz.",
+      "tts": {
+        "text": "Bu bir tarih kitabıdır, efsane değil; ve konuya hak ettiği özeni gösteriyoruz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Akdeniz Dünyası",
+      "text_markdown": "Akdeniz Dünyası"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akdeniz, üç kıtanın kavşak noktasında yer alır.",
+      "text_markdown": "Akdeniz, üç kıtanın kavşak noktasında yer alır.",
+      "tts": {
+        "text": "Akdeniz, üç kıtanın kavşak noktasında yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzeyde Avrupa, güneyde Afrika ve doğuda Asya bulunur.",
+      "text_markdown": "Kuzeyde Avrupa, güneyde Afrika ve doğuda Asya bulunur.",
+      "tts": {
+        "text": "Kuzeyde Avrupa, güneyde Afrika ve doğuda Asya bulunur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Binlerce yıl boyunca kıyılarındaki her büyük medeniyet onu kontrol etmek için savaşmıştır.",
+      "text_markdown": "Binlerce yıl boyunca kıyılarındaki her büyük medeniyet onu kontrol etmek için savaşmıştır.",
+      "tts": {
+        "text": "Binlerce yıl boyunca kıyılarındaki her büyük medeniyet onu kontrol etmek için savaşmıştır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On beşinci yüzyılın sonlarında Akdeniz, iki büyük gücün savaş alanıydı.",
+      "text_markdown": "On beşinci yüzyılın sonlarında Akdeniz, iki büyük gücün savaş alanıydı.",
+      "tts": {
+        "text": "On beşinci yüzyılın sonlarında Akdeniz, iki büyük gücün savaş alanıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doğuda Osmanlı İmparatorluğu, bir dizi hırslı sultanın yönetiminde hızla genişliyordu.",
+      "text_markdown": "Doğuda Osmanlı İmparatorluğu, bir dizi hırslı sultanın yönetiminde hızla genişliyordu.",
+      "tts": {
+        "text": "Doğuda Osmanlı İmparatorluğu, bir dizi hırslı sultanın yönetiminde hızla genişliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batıda ise İspanya krallıkları ve Şarlken liderliğindeki Kutsal Roma İmparatorluğu karşı koymaya çalışıyordu.",
+      "text_markdown": "Batıda ise İspanya krallıkları ve Şarlken liderliğindeki Kutsal Roma İmparatorluğu karşı koymaya çalışıyordu.",
+      "tts": {
+        "text": "Batıda ise İspanya krallıkları ve Şarlken liderliğindeki Kutsal Roma İmparatorluğu karşı koymaya çalışıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu, Konstantinopolis'i 1453'te fethetmişti.",
+      "text_markdown": "Osmanlı İmparatorluğu, Konstantinopolis'i 1453'te fethetmişti.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu, Konstantinopolis'i bin dört yüz elli üçte fethetmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu zafer Bizans İmparatorluğu'nu sona erdirdi ve Osmanlılara doğu Akdeniz'in kontrolünü verdi.",
+      "text_markdown": "Bu zafer Bizans İmparatorluğu'nu sona erdirdi ve Osmanlılara doğu Akdeniz'in kontrolünü verdi.",
+      "tts": {
+        "text": "Bu zafer Bizans İmparatorluğu'nu sona erdirdi ve Osmanlılara doğu Akdeniz'in kontrolünü verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şehrin adı İstanbul olarak değiştirildi ve uçsuz bucaksız, büyüyen bir imparatorluğun başkenti oldu.",
+      "text_markdown": "Şehrin adı İstanbul olarak değiştirildi ve uçsuz bucaksız, büyüyen bir imparatorluğun başkenti oldu.",
+      "tts": {
+        "text": "Şehrin adı İstanbul olarak değiştirildi ve uçsuz bucaksız, büyüyen bir imparatorluğun başkenti oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Limanı Haliç, Osmanlı donanmasının ana üssü hâline geldi.",
+      "text_markdown": "Limanı Haliç, Osmanlı donanmasının ana üssü hâline geldi.",
+      "tts": {
+        "text": "Limanı Haliç, Osmanlı donanmasının ana üssü hâline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu sırada İspanya, Reconquista'yı yeni tamamlamıştı.",
+      "text_markdown": "Bu sırada İspanya, Reconquista'yı yeni tamamlamıştı.",
+      "tts": {
+        "text": "Bu sırada İspanya, Reconquista'yı yeni tamamlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492'de İspanyol hükümdarları Ferdinand ve İzabella, İber Yarımadası'ndaki son Müslüman krallık olan Gırnata'yı fethetti.",
+      "text_markdown": "1492'de İspanyol hükümdarları Ferdinand ve İzabella, İber Yarımadası'ndaki son Müslüman krallık olan Gırnata'yı fethetti.",
+      "tts": {
+        "text": "Bin dört yüz doksan ikide İspanyol hükümdarları Ferdinand ve İzabella, İber Yarımadası'ndaki son Müslüman krallık olan Gırnata'yı fethetti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İzleyen yıllarda yüz binlerce Müslüman ve Yahudi İspanya'dan sürüldü.",
+      "text_markdown": "İzleyen yıllarda yüz binlerce Müslüman ve Yahudi İspanya'dan sürüldü.",
+      "tts": {
+        "text": "İzleyen yıllarda yüz binlerce Müslüman ve Yahudi İspanya'dan sürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçoğu Kuzey Afrika'ya ve Osmanlı İmparatorluğu'na sığındı.",
+      "text_markdown": "Birçoğu Kuzey Afrika'ya ve Osmanlı İmparatorluğu'na sığındı.",
+      "tts": {
+        "text": "Birçoğu Kuzey Afrika'ya ve Osmanlı İmparatorluğu'na sığındı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berberi Kıyısı olarak bilinen Kuzey Afrika sahili bu sürgünler için bir sığınak oldu.",
+      "text_markdown": "Berberi Kıyısı olarak bilinen Kuzey Afrika sahili bu sürgünler için bir sığınak oldu.",
+      "tts": {
+        "text": "Berberi Kıyısı olarak bilinen Kuzey Afrika sahili bu sürgünler için bir sığınak oldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir, Tunus ve Trablusgarp gibi şehirler İspanya'dan gelen mülteci dalgalarını içine aldı.",
+      "text_markdown": "Cezayir, Tunus ve Trablusgarp gibi şehirler İspanya'dan gelen mülteci dalgalarını içine aldı.",
+      "tts": {
+        "text": "Cezayir, Tunus ve Trablusgarp gibi şehirler İspanya'dan gelen mülteci dalgalarını içine aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu yerinden edilmiş topluluklar İspanyol Krallığı'na derin bir kin besliyordu.",
+      "text_markdown": "Bu yerinden edilmiş topluluklar İspanyol Krallığı'na derin bir kin besliyordu.",
+      "tts": {
+        "text": "Bu yerinden edilmiş topluluklar İspanyol Krallığı'na derin bir kin besliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birçoğu hem geçim kaynağı hem de intikam aracı olarak korsanlığa yöneldi.",
+      "text_markdown": "Birçoğu hem geçim kaynağı hem de intikam aracı olarak korsanlığa yöneldi.",
+      "tts": {
+        "text": "Birçoğu hem geçim kaynağı hem de intikam aracı olarak korsanlığa yöneldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir korsan, sıradan bir deniz haydutundan farklıydı.",
+      "text_markdown": "Bir korsan, sıradan bir deniz haydutundan farklıydı.",
+      "tts": {
+        "text": "Bir korsan, sıradan bir deniz haydutundan farklıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsanlar bir hükümetin veya hükümdarın onayıyla faaliyet gösterirdi.",
+      "text_markdown": "Korsanlar bir hükümetin veya hükümdarın onayıyla faaliyet gösterirdi.",
+      "tts": {
+        "text": "Korsanlar bir hükümetin veya hükümdarın onayıyla faaliyet gösterirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Düşman gemilerine saldırır ve kârı hamilerinin devletiyle paylaşırlardı.",
+      "text_markdown": "Düşman gemilerine saldırır ve kârı hamilerinin devletiyle paylaşırlardı.",
+      "tts": {
+        "text": "Düşman gemilerine saldırır ve kârı hamilerinin devletiyle paylaşırlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu anlamda korsanlık, özel kişilerce yürütülen bir deniz savaşı biçimiydi.",
+      "text_markdown": "Bu anlamda korsanlık, özel kişilerce yürütülen bir deniz savaşı biçimiydi.",
+      "tts": {
+        "text": "Bu anlamda korsanlık, özel kişilerce yürütülen bir deniz savaşı biçimiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hem Hristiyan hem de Müslüman güçler korsanları yaygın biçimde kullanıyordu.",
+      "text_markdown": "Hem Hristiyan hem de Müslüman güçler korsanları yaygın biçimde kullanıyordu.",
+      "tts": {
+        "text": "Hem Hristiyan hem de Müslüman güçler korsanları yaygın biçimde kullanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rodos ve daha sonra Malta adalarında konuşlanan Sen Jan Şövalyeleri, Müslüman gemilerine baskın düzenleyen Hristiyan korsanlardı.",
+      "text_markdown": "Rodos ve daha sonra Malta adalarında konuşlanan Sen Jan Şövalyeleri, Müslüman gemilerine baskın düzenleyen Hristiyan korsanlardı.",
+      "tts": {
+        "text": "Rodos ve daha sonra Malta adalarında konuşlanan Sen Jan Şövalyeleri, Müslüman gemilerine baskın düzenleyen Hristiyan korsanlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuzey Afrika merkezli Müslüman korsanlar da karşılık olarak Hristiyan gemilerine saldırıyordu.",
+      "text_markdown": "Kuzey Afrika merkezli Müslüman korsanlar da karşılık olarak Hristiyan gemilerine saldırıyordu.",
+      "tts": {
+        "text": "Kuzey Afrika merkezli Müslüman korsanlar da karşılık olarak Hristiyan gemilerine saldırıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Akdeniz, sürekli ve düşük yoğunluklu bir savaşın deniziydi.",
+      "text_markdown": "Akdeniz, sürekli ve düşük yoğunluklu bir savaşın deniziydi.",
+      "tts": {
+        "text": "Akdeniz, sürekli ve düşük yoğunluklu bir savaşın deniziydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ticaret, bu çatışmayı körükleyen ödüldü.",
+      "text_markdown": "Ticaret, bu çatışmayı körükleyen ödüldü.",
+      "tts": {
+        "text": "Ticaret, bu çatışmayı körükleyen ödüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akdeniz; Çin'den ipek, Hindistan'dan baharat, Mısır'dan tahıl ve Avrupa'dan yün taşıyordu.",
+      "text_markdown": "Akdeniz; Çin'den ipek, Hindistan'dan baharat, Mısır'dan tahıl ve Avrupa'dan yün taşıyordu.",
+      "tts": {
+        "text": "Akdeniz; Çin'den ipek, Hindistan'dan baharat, Mısır'dan tahıl ve Avrupa'dan yün taşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu ticaret yollarının kontrolü muazzam bir zenginlik anlamına geliyordu.",
+      "text_markdown": "Bu ticaret yollarının kontrolü muazzam bir zenginlik anlamına geliyordu.",
+      "tts": {
+        "text": "Bu ticaret yollarının kontrolü muazzam bir zenginlik anlamına geliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her liman şehri hayatta kalmak için denize bağımlıydı.",
+      "text_markdown": "Her liman şehri hayatta kalmak için denize bağımlıydı.",
+      "tts": {
+        "text": "Her liman şehri hayatta kalmak için denize bağımlıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akdeniz adaları stratejik birer ödüldü.",
+      "text_markdown": "Akdeniz adaları stratejik birer ödüldü.",
+      "tts": {
+        "text": "Akdeniz adaları stratejik birer ödüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adaları kontrol eden, aralarındaki deniz yollarını da kontrol ediyordu.",
+      "text_markdown": "Adaları kontrol eden, aralarındaki deniz yollarını da kontrol ediyordu.",
+      "tts": {
+        "text": "Adaları kontrol eden, aralarındaki deniz yollarını da kontrol ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rodos, Kıbrıs, Girit, Sicilya ve Malta yüzyıllar boyunca defalarca el değiştirdi.",
+      "text_markdown": "Rodos, Kıbrıs, Girit, Sicilya ve Malta yüzyıllar boyunca defalarca el değiştirdi.",
+      "tts": {
+        "text": "Rodos, Kıbrıs, Girit, Sicilya ve Malta yüzyıllar boyunca defalarca el değiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz gücü, hangi imparatorluğun bunları elinde tutacağını belirliyordu.",
+      "text_markdown": "Deniz gücü, hangi imparatorluğun bunları elinde tutacağını belirliyordu.",
+      "tts": {
+        "text": "Deniz gücü, hangi imparatorluğun bunları elinde tutacağını belirliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kadırgalar bu dönemde Akdeniz'in savaş gemileriydi.",
+      "text_markdown": "Kadırgalar bu dönemde Akdeniz'in savaş gemileriydi.",
+      "tts": {
+        "text": "Kadırgalar bu dönemde Akdeniz'in savaş gemileriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadırga, kürek ve yelkenle hareket eden uzun, dar bir gemiydi.",
+      "text_markdown": "Kadırga, kürek ve yelkenle hareket eden uzun, dar bir gemiydi.",
+      "tts": {
+        "text": "Kadırga, kürek ve yelkenle hareket eden uzun, dar bir gemiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her kadırga yüzlerce kürekçi taşırdı, bunların çoğu ya köleydi ya da savaş esiri olarak tutulurdu.",
+      "text_markdown": "Her kadırga yüzlerce kürekçi taşırdı, bunların çoğu ya köleydi ya da savaş esiri olarak tutulurdu.",
+      "tts": {
+        "text": "Her kadırga yüzlerce kürekçi taşırdı, bunların çoğu ya köleydi ya da savaş esiri olarak tutulurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaşta kadırgalar düşman gemilerine çarpar, ardından silahlı askerler göğüs göğüse savaşmak üzere gemiye çıkardı.",
+      "text_markdown": "Savaşta kadırgalar düşman gemilerine çarpar, ardından silahlı askerler göğüs göğüse savaşmak üzere gemiye çıkardı.",
+      "tts": {
+        "text": "Savaşta kadırgalar düşman gemilerine çarpar, ardından silahlı askerler göğüs göğüse savaşmak üzere gemiye çıkardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kadırga köleliği sistemi tarif edilemeyecek kadar vahşiydi.",
+      "text_markdown": "Kadırga köleliği sistemi tarif edilemeyecek kadar vahşiydi.",
+      "tts": {
+        "text": "Kadırga köleliği sistemi tarif edilemeyecek kadar vahşiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savaşlardan ve baskınlardan alınan esirler küreklere zincirlenip ölene kadar kürek çekmeye zorlanırdı.",
+      "text_markdown": "Savaşlardan ve baskınlardan alınan esirler küreklere zincirlenip ölene kadar kürek çekmeye zorlanırdı.",
+      "tts": {
+        "text": "Savaşlardan ve baskınlardan alınan esirler küreklere zincirlenip ölene kadar kürek çekmeye zorlanırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hristiyanlar Müslümanları köleleştirdi, Müslümanlar da Hristiyanları.",
+      "text_markdown": "Hristiyanlar Müslümanları köleleştirdi, Müslümanlar da Hristiyanları.",
+      "tts": {
+        "text": "Hristiyanlar Müslümanları köleleştirdi, Müslümanlar da Hristiyanları.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu zulüm öylesine olağandı ki her iki taraf da bunu normal kabul ediyordu.",
+      "text_markdown": "Bu zulüm öylesine olağandı ki her iki taraf da bunu normal kabul ediyordu.",
+      "tts": {
+        "text": "Bu zulüm öylesine olağandı ki her iki taraf da bunu normal kabul ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roma'daki Papa, Hristiyan krallıkları Osmanlı tehdidine karşı birleştirmeye defalarca çalıştı.",
+      "text_markdown": "Roma'daki Papa, Hristiyan krallıkları Osmanlı tehdidine karşı birleştirmeye defalarca çalıştı.",
+      "tts": {
+        "text": "Roma'daki Papa, Hristiyan krallıkları Osmanlı tehdidine karşı birleştirmeye defalarca çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kutsal İttifak adı verilen bu birlikler İspanya, Venedik, Ceneviz ve Papalık Devletleri'nden gemileri bir araya getirdi.",
+      "text_markdown": "Kutsal İttifak adı verilen bu birlikler İspanya, Venedik, Ceneviz ve Papalık Devletleri'nden gemileri bir araya getirdi.",
+      "tts": {
+        "text": "Kutsal İttifak adı verilen bu birlikler İspanya, Venedik, Ceneviz ve Papalık Devletleri'nden gemileri bir araya getirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak Hristiyan krallıklar birbirlerine Osmanlılardan korktukları kadar güvenmiyorlardı.",
+      "text_markdown": "Ancak Hristiyan krallıklar birbirlerine Osmanlılardan korktukları kadar güvenmiyorlardı.",
+      "tts": {
+        "text": "Ancak Hristiyan krallıklar birbirlerine Osmanlılardan korktukları kadar güvenmiyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ittifaklar kırılgandı ve çoğu zaman kalıcı sonuçlar elde edemeden dağıldı.",
+      "text_markdown": "Bu ittifaklar kırılgandı ve çoğu zaman kalıcı sonuçlar elde edemeden dağıldı.",
+      "tts": {
+        "text": "Bu ittifaklar kırılgandı ve çoğu zaman kalıcı sonuçlar elde edemeden dağıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşte bu şiddetli ve çekişmeli dünyada, Osmanlı yönetimindeki bir Yunan adasında iki kardeş doğdu.",
+      "text_markdown": "İşte bu şiddetli ve çekişmeli dünyada, Osmanlı yönetimindeki bir Yunan adasında iki kardeş doğdu.",
+      "tts": {
+        "text": "İşte bu şiddetli ve çekişmeli dünyada, Osmanlı yönetimindeki bir Yunan adasında iki kardeş doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adları Oruç ve Hızır'dı.",
+      "text_markdown": "Adları Oruç ve Hızır'dı.",
+      "tts": {
+        "text": "Adları Oruç ve Hızır'dı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hızır, ilerleyen yıllarda tüm dünyada Barbaros Hayreddin Paşa olarak tanınacaktı.",
+      "text_markdown": "Hızır, ilerleyen yıllarda tüm dünyada Barbaros Hayreddin Paşa olarak tanınacaktı.",
+      "tts": {
+        "text": "Hızır, ilerleyen yıllarda tüm dünyada Barbaros Hayreddin Paşa olarak tanınacaktı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Akdeniz Dünyası",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birlikte, tüm Akdeniz'in güç dengesini yeniden şekillendireceklerdi.",
+      "text_markdown": "Birlikte, tüm Akdeniz'in güç dengesini yeniden şekillendireceklerdi.",
+      "tts": {
+        "text": "Birlikte, tüm Akdeniz'in güç dengesini yeniden şekillendireceklerdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kökenler",
+      "text_markdown": "Kökenler"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbaros Hayreddin Paşa yaklaşık 1478'de Midilli Adası'nda doğdu.",
+      "text_markdown": "Barbaros Hayreddin Paşa yaklaşık 1478'de Midilli Adası'nda doğdu.",
+      "tts": {
+        "text": "Barbaros Hayreddin Paşa yaklaşık bin dört yüz yetmiş sekizde Midilli Adası'nda doğdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Midilli, kuzeydoğu Ege Denizi'nde, günümüz Türkiye kıyısına yakın büyük bir Yunan adasıdır.",
+      "text_markdown": "Midilli, kuzeydoğu Ege Denizi'nde, günümüz Türkiye kıyısına yakın büyük bir Yunan adasıdır.",
+      "tts": {
+        "text": "Midilli, kuzeydoğu Ege Denizi'nde, günümüz Türkiye kıyısına yakın büyük bir Yunan adasıdır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Doğduğu sırada ada yeni Osmanlı hâkimiyetine girmişti.",
+      "text_markdown": "Doğduğu sırada ada yeni Osmanlı hâkimiyetine girmişti.",
+      "tts": {
+        "text": "Doğduğu sırada ada yeni Osmanlı hâkimiyetine girmişti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Babası Yakup, askerlik hizmetinden sonra Midilli'ye yerleşmiş eski bir Osmanlı askeriydi.",
+      "text_markdown": "Babası Yakup, askerlik hizmetinden sonra Midilli'ye yerleşmiş eski bir Osmanlı askeriydi.",
+      "tts": {
+        "text": "Babası Yakup, askerlik hizmetinden sonra Midilli'ye yerleşmiş eski bir Osmanlı askeriydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup çömlekçilik yapıyordu ve çoğu kaynağa göre mütevazı bir zanaatkârdı.",
+      "text_markdown": "Yakup çömlekçilik yapıyordu ve çoğu kaynağa göre mütevazı bir zanaatkârdı.",
+      "tts": {
+        "text": "Yakup çömlekçilik yapıyordu ve çoğu kaynağa göre mütevazı bir zanaatkârdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Annesi, muhtemelen Hristiyan kökenli yerel bir Yunan kadınıydı ve adı Katerina olarak kayıtlara geçmiştir.",
+      "text_markdown": "Annesi, muhtemelen Hristiyan kökenli yerel bir Yunan kadınıydı ve adı Katerina olarak kayıtlara geçmiştir.",
+      "tts": {
+        "text": "Annesi, muhtemelen Hristiyan kökenli yerel bir Yunan kadınıydı ve adı Katerina olarak kayıtlara geçmiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aile zengin değildi ama yoksul da sayılmazdı.",
+      "text_markdown": "Aile zengin değildi ama yoksul da sayılmazdı.",
+      "tts": {
+        "text": "Aile zengin değildi ama yoksul da sayılmazdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakup ve Katerina'nın dört oğlu vardı.",
+      "text_markdown": "Yakup ve Katerina'nın dört oğlu vardı.",
+      "tts": {
+        "text": "Yakup ve Katerina'nın dört oğlu vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En büyüğü İshak, sonra Oruç, sonra Hızır ve en küçüğü İlyas'tı.",
+      "text_markdown": "En büyüğü İshak, sonra Oruç, sonra Hızır ve en küçüğü İlyas'tı.",
+      "tts": {
+        "text": "En büyüğü İshak, sonra Oruç, sonra Hızır ve en küçüğü İlyas'tı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hızır, ileride Barbaros Hayreddin Paşa olacak çocuktu.",
+      "text_markdown": "Hızır, ileride Barbaros Hayreddin Paşa olacak çocuktu.",
+      "tts": {
+        "text": "Hızır, ileride Barbaros Hayreddin Paşa olacak çocuktu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dört kardeşin hepsi sonunda denize açılacaktı.",
+      "text_markdown": "Dört kardeşin hepsi sonunda denize açılacaktı.",
+      "tts": {
+        "text": "Dört kardeşin hepsi sonunda denize açılacaktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşler denizin şekillendirdiği bir dünyada büyüdüler.",
+      "text_markdown": "Kardeşler denizin şekillendirdiği bir dünyada büyüdüler.",
+      "tts": {
+        "text": "Kardeşler denizin şekillendirdiği bir dünyada büyüdüler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Midilli'nin ekonomisi balıkçılığa ve deniz ticaretine dayanıyordu.",
+      "text_markdown": "Midilli'nin ekonomisi balıkçılığa ve deniz ticaretine dayanıyordu.",
+      "tts": {
+        "text": "Midilli'nin ekonomisi balıkçılığa ve deniz ticaretine dayanıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adadaki her çocuk okumayı öğrenmeden önce tekne kullanmayı öğrenirdi.",
+      "text_markdown": "Adadaki her çocuk okumayı öğrenmeden önce tekne kullanmayı öğrenirdi.",
+      "tts": {
+        "text": "Adadaki her çocuk okumayı öğrenmeden önce tekne kullanmayı öğrenirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deniz onlar için soyut bir kavram değil, günlük gerçeklikleriydi.",
+      "text_markdown": "Deniz onlar için soyut bir kavram değil, günlük gerçeklikleriydi.",
+      "tts": {
+        "text": "Deniz onlar için soyut bir kavram değil, günlük gerçeklikleriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç birer delikanlı olarak kardeşler denizci ve tüccar olarak çalışmaya başladılar.",
+      "text_markdown": "Genç birer delikanlı olarak kardeşler denizci ve tüccar olarak çalışmaya başladılar.",
+      "tts": {
+        "text": "Genç birer delikanlı olarak kardeşler denizci ve tüccar olarak çalışmaya başladılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ege adaları ile Osmanlı anakarası arasında mal taşıdılar.",
+      "text_markdown": "Ege adaları ile Osmanlı anakarası arasında mal taşıdılar.",
+      "tts": {
+        "text": "Ege adaları ile Osmanlı anakarası arasında mal taşıdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ancak korsanlarla dolu bir denizde ticaret riskli bir işti.",
+      "text_markdown": "Ancak korsanlarla dolu bir denizde ticaret riskli bir işti.",
+      "tts": {
+        "text": "Ancak korsanlarla dolu bir denizde ticaret riskli bir işti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İlk seferlerinden birinde kardeşler Sen Jan Şövalyeleri tarafından saldırıya uğradı.",
+      "text_markdown": "İlk seferlerinden birinde kardeşler Sen Jan Şövalyeleri tarafından saldırıya uğradı.",
+      "tts": {
+        "text": "İlk seferlerinden birinde kardeşler Sen Jan Şövalyeleri tarafından saldırıya uğradı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sen Jan Şövalyeleri, Rodos Adası'nda konuşlanmış bir Hristiyan askerî tarikatıydı.",
+      "text_markdown": "Sen Jan Şövalyeleri, Rodos Adası'nda konuşlanmış bir Hristiyan askerî tarikatıydı.",
+      "tts": {
+        "text": "Sen Jan Şövalyeleri, Rodos Adası'nda konuşlanmış bir Hristiyan askerî tarikatıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Akdeniz'in en korkulan korsanları arasındaydılar.",
+      "text_markdown": "Akdeniz'in en korkulan korsanları arasındaydılar.",
+      "tts": {
+        "text": "Akdeniz'in en korkulan korsanları arasındaydılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Müslüman gemilerine amansızca saldırarak malları ele geçirir ve mürettebatı köleleştirirlerdi.",
+      "text_markdown": "Müslüman gemilerine amansızca saldırarak malları ele geçirir ve mürettebatı köleleştirirlerdi.",
+      "tts": {
+        "text": "Müslüman gemilerine amansızca saldırarak malları ele geçirir ve mürettebatı köleleştirirlerdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kardeşlerin gemisine yapılan saldırıda en küçük kardeş İlyas öldürüldü.",
+      "text_markdown": "Kardeşlerin gemisine yapılan saldırıda en küçük kardeş İlyas öldürüldü.",
+      "tts": {
+        "text": "Kardeşlerin gemisine yapılan saldırıda en küçük kardeş İlyas öldürüldü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşlerin en saldırganı olan Oruç esir alınıp köle yapıldı.",
+      "text_markdown": "Kardeşlerin en saldırganı olan Oruç esir alınıp köle yapıldı.",
+      "tts": {
+        "text": "Kardeşlerin en saldırganı olan Oruç esir alınıp köle yapıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Hristiyan savaş gemisinin küreklerine zincirlenmiş hâlde birkaç yıl kadırga kölesi olarak geçirdi.",
+      "text_markdown": "Bir Hristiyan savaş gemisinin küreklerine zincirlenmiş hâlde birkaç yıl kadırga kölesi olarak geçirdi.",
+      "tts": {
+        "text": "Bir Hristiyan savaş gemisinin küreklerine zincirlenmiş hâlde birkaç yıl kadırga kölesi olarak geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu deneyim onu hayatının geri kalanını şekillendirecek biçimde katılaştırdı.",
+      "text_markdown": "Bu deneyim onu hayatının geri kalanını şekillendirecek biçimde katılaştırdı.",
+      "tts": {
+        "text": "Bu deneyim onu hayatının geri kalanını şekillendirecek biçimde katılaştırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nihayetinde fidyeyle kurtulduğunda ya da kaçtığında tamamen değişmiş bir adam olmuştu.",
+      "text_markdown": "Nihayetinde fidyeyle kurtulduğunda ya da kaçtığında tamamen değişmiş bir adam olmuştu.",
+      "tts": {
+        "text": "Nihayetinde fidyeyle kurtulduğunda ya da kaçtığında tamamen değişmiş bir adam olmuştu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oruç kendisi de korsan olmaya karar verdi.",
+      "text_markdown": "Oruç kendisi de korsan olmaya karar verdi.",
+      "tts": {
+        "text": "Oruç kendisi de korsan olmaya karar verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir gemi ve mürettebat edinerek doğu Akdeniz'deki Hristiyan gemilerine baskın düzenlemeye başladı.",
+      "text_markdown": "Bir gemi ve mürettebat edinerek doğu Akdeniz'deki Hristiyan gemilerine baskın düzenlemeye başladı.",
+      "tts": {
+        "text": "Bir gemi ve mürettebat edinerek doğu Akdeniz'deki Hristiyan gemilerine baskın düzenlemeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük kardeşi Hızır, ikinci komutanı olarak ona katıldı.",
+      "text_markdown": "Küçük kardeşi Hızır, ikinci komutanı olarak ona katıldı.",
+      "tts": {
+        "text": "Küçük kardeşi Hızır, ikinci komutanı olarak ona katıldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birlikte son derece yetenekli deniz akıncıları olduklarını kanıtladılar.",
+      "text_markdown": "Birlikte son derece yetenekli deniz akıncıları olduklarını kanıtladılar.",
+      "tts": {
+        "text": "Birlikte son derece yetenekli deniz akıncıları olduklarını kanıtladılar.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşler operasyon üslerini batı Akdeniz'e taşıdılar.",
+      "text_markdown": "Kardeşler operasyon üslerini batı Akdeniz'e taşıdılar.",
+      "tts": {
+        "text": "Kardeşler operasyon üslerini batı Akdeniz'e taşıdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Günümüz Tunus kıyılarındaki Cerbe Adası'na yerleştiler.",
+      "text_markdown": "Günümüz Tunus kıyılarındaki Cerbe Adası'na yerleştiler.",
+      "tts": {
+        "text": "Günümüz Tunus kıyılarındaki Cerbe Adası'na yerleştiler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cerbe'den yoğun ticaret yolları boyunca İspanyol ve İtalyan gemilerine baskın düzenleyebiliyorlardı.",
+      "text_markdown": "Cerbe'den yoğun ticaret yolları boyunca İspanyol ve İtalyan gemilerine baskın düzenleyebiliyorlardı.",
+      "tts": {
+        "text": "Cerbe'den yoğun ticaret yolları boyunca İspanyol ve İtalyan gemilerine baskın düzenleyebiliyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hem müttefikleri hem de düşmanları arasında ünleri hızla yayıldı.",
+      "text_markdown": "Hem müttefikleri hem de düşmanları arasında ünleri hızla yayıldı.",
+      "tts": {
+        "text": "Hem müttefikleri hem de düşmanları arasında ünleri hızla yayıldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oruç, ortaklıklarının kamuoyundaki yüzüydü.",
+      "text_markdown": "Oruç, ortaklıklarının kamuoyundaki yüzüydü.",
+      "tts": {
+        "text": "Oruç, ortaklıklarının kamuoyundaki yüzüydü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cesur, karizmatik ve fiziksel olarak heybetliydi.",
+      "text_markdown": "Cesur, karizmatik ve fiziksel olarak heybetliydi.",
+      "tts": {
+        "text": "Cesur, karizmatik ve fiziksel olarak heybetliydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupalı kaynaklar onun kızıl sakallı olduğunu aktarır ki bu, kardeşlere ünlü lakabını kazandırdı.",
+      "text_markdown": "Avrupalı kaynaklar onun kızıl sakallı olduğunu aktarır ki bu, kardeşlere ünlü lakabını kazandırdı.",
+      "tts": {
+        "text": "Avrupalı kaynaklar onun kızıl sakallı olduğunu aktarır ki bu, kardeşlere ünlü lakabını kazandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kızıl sakal anlamına gelen Barbarossa lakabı aslında önce Oruç'a verilmiş, sonra Hayreddin'e geçmiştir.",
+      "text_markdown": "Kızıl sakal anlamına gelen Barbarossa lakabı aslında önce Oruç'a verilmiş, sonra Hayreddin'e geçmiştir.",
+      "tts": {
+        "text": "Kızıl sakal anlamına gelen Barbarossa lakabı aslında önce Oruç'a verilmiş, sonra Hayreddin'e geçmiştir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hızır, perde arkasındaki stratejist ve organizatördü.",
+      "text_markdown": "Hızır, perde arkasındaki stratejist ve organizatördü.",
+      "tts": {
+        "text": "Hızır, perde arkasındaki stratejist ve organizatördü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyüyen filolarının lojistiğini yönetiyor ve yerel yöneticilerle ittifakları sürdürüyordu.",
+      "text_markdown": "Büyüyen filolarının lojistiğini yönetiyor ve yerel yöneticilerle ittifakları sürdürüyordu.",
+      "tts": {
+        "text": "Büyüyen filolarının lojistiğini yönetiyor ve yerel yöneticilerle ittifakları sürdürüyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oruç bizzat baskınlara liderlik ederken Hızır işlerin sorunsuz yürümesini sağlıyordu.",
+      "text_markdown": "Oruç bizzat baskınlara liderlik ederken Hızır işlerin sorunsuz yürümesini sağlıyordu.",
+      "tts": {
+        "text": "Oruç bizzat baskınlara liderlik ederken Hızır işlerin sorunsuz yürümesini sağlıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Birbirini tamamlayan yetenekleri onları müthiş bir ekip yapıyordu.",
+      "text_markdown": "Birbirini tamamlayan yetenekleri onları müthiş bir ekip yapıyordu.",
+      "tts": {
+        "text": "Birbirini tamamlayan yetenekleri onları müthiş bir ekip yapıyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kardeşlerin baskınları kişisel zenginleşmenin ötesinde bir amaca hizmet ediyordu.",
+      "text_markdown": "Kardeşlerin baskınları kişisel zenginleşmenin ötesinde bir amaca hizmet ediyordu.",
+      "tts": {
+        "text": "Kardeşlerin baskınları kişisel zenginleşmenin ötesinde bir amaca hizmet ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol Engizisyonu'ndan kaçan Müslüman mültecileri kurtarıyorlardı.",
+      "text_markdown": "İspanyol Engizisyonu'ndan kaçan Müslüman mültecileri kurtarıyorlardı.",
+      "tts": {
+        "text": "İspanyol Engizisyonu'ndan kaçan Müslüman mültecileri kurtarıyorlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1504 ile 1510 yılları arasında binlerce Müslümanı İspanya'dan Kuzey Afrika'ya taşıdılar.",
+      "text_markdown": "1504 ile 1510 yılları arasında binlerce Müslümanı İspanya'dan Kuzey Afrika'ya taşıdılar.",
+      "tts": {
+        "text": "Bin beş yüz dört ile bin beş yüz on yılları arasında binlerce Müslümanı İspanya'dan Kuzey Afrika'ya taşıdılar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, Berberi Kıyısı'ndaki Müslüman topluluklar arasında kendilerine büyük saygı kazandırdı.",
+      "text_markdown": "Bu, Berberi Kıyısı'ndaki Müslüman topluluklar arasında kendilerine büyük saygı kazandırdı.",
+      "tts": {
+        "text": "Bu, Berberi Kıyısı'ndaki Müslüman topluluklar arasında kendilerine büyük saygı kazandırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oruç, gözünü baskından daha büyük bir ödüle dikmişti.",
+      "text_markdown": "Oruç, gözünü baskından daha büyük bir ödüle dikmişti.",
+      "tts": {
+        "text": "Oruç, gözünü baskından daha büyük bir ödüle dikmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir şehir ele geçirmek ve İspanyol gücüne karşı koyabilecek bir üs kurmak istiyordu.",
+      "text_markdown": "Bir şehir ele geçirmek ve İspanyol gücüne karşı koyabilecek bir üs kurmak istiyordu.",
+      "tts": {
+        "text": "Bir şehir ele geçirmek ve İspanyol gücüne karşı koyabilecek bir üs kurmak istiyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hedefi, Kuzey Afrika kıyısında muhteşem bir doğal limana sahip liman şehri Cezayir'di.",
+      "text_markdown": "Hedefi, Kuzey Afrika kıyısında muhteşem bir doğal limana sahip liman şehri Cezayir'di.",
+      "tts": {
+        "text": "Hedefi, Kuzey Afrika kıyısında muhteşem bir doğal limana sahip liman şehri Cezayir'di.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kökenler",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cezayir'i almak kardeşleri korsanlardan hükümdarlara dönüştürecekti.",
+      "text_markdown": "Cezayir'i almak kardeşleri korsanlardan hükümdarlara dönüştürecekti.",
+      "tts": {
+        "text": "Cezayir'i almak kardeşleri korsanlardan hükümdarlara dönüştürecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İktidarın Yükselişi",
+      "text_markdown": "İktidarın Yükselişi"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1516'da Oruç, Cezayir şehrini ele geçirdi.",
+      "text_markdown": "1516'da Oruç, Cezayir şehrini ele geçirdi.",
+      "tts": {
+        "text": "Bin beş yüz on altıda Oruç, Cezayir şehrini ele geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yerel yöneticiyi devirdi ve kendini Cezayir Sultanı ilan etti.",
+      "text_markdown": "Yerel yöneticiyi devirdi ve kendini Cezayir Sultanı ilan etti.",
+      "tts": {
+        "text": "Yerel yöneticiyi devirdi ve kendini Cezayir Sultanı ilan etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, İspanyol İmparatorluğu'nu alarma geçiren cesur ve cüretkâr bir hareketti.",
+      "text_markdown": "Bu, İspanyol İmparatorluğu'nu alarma geçiren cesur ve cüretkâr bir hareketti.",
+      "tts": {
+        "text": "Bu, İspanyol İmparatorluğu'nu alarma geçiren cesur ve cüretkâr bir hareketti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cezayir artık bir korsan savaş beyinin elindeydi.",
+      "text_markdown": "Cezayir artık bir korsan savaş beyinin elindeydi.",
+      "tts": {
+        "text": "Cezayir artık bir korsan savaş beyinin elindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oruç yetenekli ama acımasız bir yönetici olduğunu kanıtladı.",
+      "text_markdown": "Oruç yetenekli ama acımasız bir yönetici olduğunu kanıtladı.",
+      "tts": {
+        "text": "Oruç yetenekli ama acımasız bir yönetici olduğunu kanıtladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Afrika kıyısı boyunca topraklarını genişletti.",
+      "text_markdown": "Kuzey Afrika kıyısı boyunca topraklarını genişletti.",
+      "tts": {
+        "text": "Kuzey Afrika kıyısı boyunca topraklarını genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yerel Berberi kabileleri ve Müslüman mülteci topluluklarıyla ittifaklar kurdu.",
+      "text_markdown": "Yerel Berberi kabileleri ve Müslüman mülteci topluluklarıyla ittifaklar kurdu.",
+      "tts": {
+        "text": "Yerel Berberi kabileleri ve Müslüman mülteci topluluklarıyla ittifaklar kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak agresif genişlemesi onu İspanya ile doğrudan çatışmaya sürükledi.",
+      "text_markdown": "Ancak agresif genişlemesi onu İspanya ile doğrudan çatışmaya sürükledi.",
+      "tts": {
+        "text": "Ancak agresif genişlemesi onu İspanya ile doğrudan çatışmaya sürükledi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1518'de büyük bir İspanyol ordusu Oruç'un bulunduğu Tlemsen şehrini kuşattı.",
+      "text_markdown": "1518'de büyük bir İspanyol ordusu Oruç'un bulunduğu Tlemsen şehrini kuşattı.",
+      "tts": {
+        "text": "Bin beş yüz on sekizde büyük bir İspanyol ordusu Oruç'un bulunduğu Tlemsen şehrini kuşattı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Oruç küçük bir kuvvetle kaçmaya çalıştı.",
+      "text_markdown": "Oruç küçük bir kuvvetle kaçmaya çalıştı.",
+      "tts": {
+        "text": "Oruç küçük bir kuvvetle kaçmaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geri çekilme sırasında İspanyol askerleri tarafından yakalanıp öldürüldü.",
+      "text_markdown": "Geri çekilme sırasında İspanyol askerleri tarafından yakalanıp öldürüldü.",
+      "tts": {
+        "text": "Geri çekilme sırasında İspanyol askerleri tarafından yakalanıp öldürüldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ölümü, Hızır'ı hayatta kalan tek kardeş ve Oruç'un kurduğu her şeyin lideri olarak bıraktı.",
+      "text_markdown": "Ölümü, Hızır'ı hayatta kalan tek kardeş ve Oruç'un kurduğu her şeyin lideri olarak bıraktı.",
+      "tts": {
+        "text": "Ölümü, Hızır'ı hayatta kalan tek kardeş ve Oruç'un kurduğu her şeyin lideri olarak bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kırkının başındaki Hızır imkânsız bir durumla karşı karşıyaydı.",
+      "text_markdown": "Kırkının başındaki Hızır imkânsız bir durumla karşı karşıyaydı.",
+      "tts": {
+        "text": "Kırkının başındaki Hızır imkânsız bir durumla karşı karşıyaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol ordusu ilerliyor, kardeşi ölmüştü ve güçleri sayıca yetersizdi.",
+      "text_markdown": "İspanyol ordusu ilerliyor, kardeşi ölmüştü ve güçleri sayıca yetersizdi.",
+      "tts": {
+        "text": "İspanyol ordusu ilerliyor, kardeşi ölmüştü ve güçleri sayıca yetersizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güçlü bir müttefike ihtiyacı vardı, yoksa her şeyi kaybedecekti.",
+      "text_markdown": "Güçlü bir müttefike ihtiyacı vardı, yoksa her şeyi kaybedecekti.",
+      "tts": {
+        "text": "Güçlü bir müttefike ihtiyacı vardı, yoksa her şeyi kaybedecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İslam dünyasının en büyük gücüne yöneldi: Osmanlı İmparatorluğu.",
+      "text_markdown": "İslam dünyasının en büyük gücüne yöneldi: Osmanlı İmparatorluğu.",
+      "tts": {
+        "text": "İslam dünyasının en büyük gücüne yöneldi: Osmanlı İmparatorluğu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hızır, İstanbul'daki Yavuz Sultan Selim'e elçiler gönderdi.",
+      "text_markdown": "Hızır, İstanbul'daki Yavuz Sultan Selim'e elçiler gönderdi.",
+      "tts": {
+        "text": "Hızır, İstanbul'daki Yavuz Sultan Selim'e elçiler gönderdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Askerî destek karşılığında Cezayir'i Osmanlı egemenliğine sokmayı teklif etti.",
+      "text_markdown": "Askerî destek karşılığında Cezayir'i Osmanlı egemenliğine sokmayı teklif etti.",
+      "tts": {
+        "text": "Askerî destek karşılığında Cezayir'i Osmanlı egemenliğine sokmayı teklif etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultan, batı Akdeniz'de sadık bir üssün stratejik değerini fark etti.",
+      "text_markdown": "Sultan, batı Akdeniz'de sadık bir üssün stratejik değerini fark etti.",
+      "tts": {
+        "text": "Sultan, batı Akdeniz'de sadık bir üssün stratejik değerini fark etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teklifi kabul etti ve Hızır'ı desteklemek için asker, top ve bir kadırga filosu gönderdi.",
+      "text_markdown": "Teklifi kabul etti ve Hızır'ı desteklemek için asker, top ve bir kadırga filosu gönderdi.",
+      "tts": {
+        "text": "Teklifi kabul etti ve Hızır'ı desteklemek için asker, top ve bir kadırga filosu gönderdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu andan itibaren Hızır artık sadece bir korsan değildi.",
+      "text_markdown": "Bu andan itibaren Hızır artık sadece bir korsan değildi.",
+      "tts": {
+        "text": "Bu andan itibaren Hızır artık sadece bir korsan değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultan adına Cezayir'i yöneten bir Osmanlı valisiydi.",
+      "text_markdown": "Sultan adına Cezayir'i yöneten bir Osmanlı valisiydi.",
+      "tts": {
+        "text": "Sultan adına Cezayir'i yöneten bir Osmanlı valisiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dinin iyiliği anlamına gelen Hayreddin onur adını aldı.",
+      "text_markdown": "Dinin iyiliği anlamına gelen Hayreddin onur adını aldı.",
+      "tts": {
+        "text": "Dinin iyiliği anlamına gelen Hayreddin onur adını aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Osmanlı kaynakları ile kendi deniz dehası birleşince durdurulamaz oldu.",
+      "text_markdown": "Osmanlı kaynakları ile kendi deniz dehası birleşince durdurulamaz oldu.",
+      "tts": {
+        "text": "Osmanlı kaynakları ile kendi deniz dehası birleşince durdurulamaz oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin sonraki on yılı Kuzey Afrika kıyısında Osmanlı gücünü pekiştirerek geçirdi.",
+      "text_markdown": "Hayreddin sonraki on yılı Kuzey Afrika kıyısında Osmanlı gücünü pekiştirerek geçirdi.",
+      "tts": {
+        "text": "Hayreddin sonraki on yılı Kuzey Afrika kıyısında Osmanlı gücünü pekiştirerek geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tunus'u aldı, İspanyol garnizonlarını kilit kalelerden sürdü ve korsan filosunu genişletti.",
+      "text_markdown": "Tunus'u aldı, İspanyol garnizonlarını kilit kalelerden sürdü ve korsan filosunu genişletti.",
+      "tts": {
+        "text": "Tunus'u aldı, İspanyol garnizonlarını kilit kalelerden sürdü ve korsan filosunu genişletti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onlarca yıl boyunca Osmanlı İmparatorluğu'na hizmet edecek yeni bir nesil deniz komutanı yetiştirdi.",
+      "text_markdown": "Onlarca yıl boyunca Osmanlı İmparatorluğu'na hizmet edecek yeni bir nesil deniz komutanı yetiştirdi.",
+      "tts": {
+        "text": "Onlarca yıl boyunca Osmanlı İmparatorluğu'na hizmet edecek yeni bir nesil deniz komutanı yetiştirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Filosu batı Akdeniz'in baskın gücü hâline geldi.",
+      "text_markdown": "Filosu batı Akdeniz'in baskın gücü hâline geldi.",
+      "tts": {
+        "text": "Filosu batı Akdeniz'in baskın gücü hâline geldi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1533'te Kanuni Sultan Süleyman, Hayreddin'i İstanbul'a çağırdı.",
+      "text_markdown": "1533'te Kanuni Sultan Süleyman, Hayreddin'i İstanbul'a çağırdı.",
+      "tts": {
+        "text": "Bin beş yüz otuz üçte Kanuni Sultan Süleyman, Hayreddin'i İstanbul'a çağırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Süleyman o dönemde dünyanın en güçlü hükümdarıydı.",
+      "text_markdown": "Süleyman o dönemde dünyanın en güçlü hükümdarıydı.",
+      "tts": {
+        "text": "Süleyman o dönemde dünyanın en güçlü hükümdarıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu'nun efsanevi ordusuna denk bir profesyonel donanmaya ihtiyacı olduğunu fark etti.",
+      "text_markdown": "Osmanlı İmparatorluğu'nun efsanevi ordusuna denk bir profesyonel donanmaya ihtiyacı olduğunu fark etti.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu'nun efsanevi ordusuna denk bir profesyonel donanmaya ihtiyacı olduğunu fark etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hayreddin'i Kaptan-ı Derya, yani tüm Osmanlı donanmasının Büyük Amirali olarak atadı.",
+      "text_markdown": "Hayreddin'i Kaptan-ı Derya, yani tüm Osmanlı donanmasının Büyük Amirali olarak atadı.",
+      "tts": {
+        "text": "Hayreddin'i Kaptan ı Derya, yani tüm Osmanlı donanmasının Büyük Amirali olarak atadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu atama Akdeniz tarihinde bir dönüm noktasıydı.",
+      "text_markdown": "Bu atama Akdeniz tarihinde bir dönüm noktasıydı.",
+      "tts": {
+        "text": "Bu atama Akdeniz tarihinde bir dönüm noktasıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osmanlı donanması yetkin ama baskın değildi.",
+      "text_markdown": "Osmanlı donanması yetkin ama baskın değildi.",
+      "tts": {
+        "text": "Osmanlı donanması yetkin ama baskın değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin'in komutasında dünyanın en korkulan deniz kuvveti hâline gelecekti.",
+      "text_markdown": "Hayreddin'in komutasında dünyanın en korkulan deniz kuvveti hâline gelecekti.",
+      "tts": {
+        "text": "Hayreddin'in komutasında dünyanın en korkulan deniz kuvveti hâline gelecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onlarca yıllık korsan savaşında öğrendiği her şeyi uygulayarak donanmayı İstanbul tersanelerinden yeniden inşa etti.",
+      "text_markdown": "Onlarca yıllık korsan savaşında öğrendiği her şeyi uygulayarak donanmayı İstanbul tersanelerinden yeniden inşa etti.",
+      "tts": {
+        "text": "Onlarca yıllık korsan savaşında öğrendiği her şeyi uygulayarak donanmayı İstanbul tersanelerinden yeniden inşa etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin, Osmanlı gemi yapım tekniklerini modernize etti.",
+      "text_markdown": "Hayreddin, Osmanlı gemi yapım tekniklerini modernize etti.",
+      "tts": {
+        "text": "Hayreddin, Osmanlı gemi yapım tekniklerini modernize etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsan gemilerine dayanan daha hızlı, daha manevra kabiliyetli kadırgalar tasarladı.",
+      "text_markdown": "Korsan gemilerine dayanan daha hızlı, daha manevra kabiliyetli kadırgalar tasarladı.",
+      "tts": {
+        "text": "Korsan gemilerine dayanan daha hızlı, daha manevra kabiliyetli kadırgalar tasarladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı deniz subayları için eğitim programları oluşturdu.",
+      "text_markdown": "Osmanlı deniz subayları için eğitim programları oluşturdu.",
+      "tts": {
+        "text": "Osmanlı deniz subayları için eğitim programları oluşturdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Akdeniz'in dört bir yanından deneyimli korsanları kaptan olarak hizmete aldı.",
+      "text_markdown": "Akdeniz'in dört bir yanından deneyimli korsanları kaptan olarak hizmete aldı.",
+      "tts": {
+        "text": "Akdeniz'in dört bir yanından deneyimli korsanları kaptan olarak hizmete aldı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaptan-ı Derya olarak ilk büyük seferi İtalya kıyılarını hedef aldı.",
+      "text_markdown": "Kaptan-ı Derya olarak ilk büyük seferi İtalya kıyılarını hedef aldı.",
+      "tts": {
+        "text": "Kaptan ı Derya olarak ilk büyük seferi İtalya kıyılarını hedef aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1534'te Osmanlı donanmasını güney İtalya kıyıları boyunca yıkıcı bir sefere çıkardı.",
+      "text_markdown": "1534'te Osmanlı donanmasını güney İtalya kıyıları boyunca yıkıcı bir sefere çıkardı.",
+      "tts": {
+        "text": "Bin beş yüz otuz dörtte Osmanlı donanmasını güney İtalya kıyıları boyunca yıkıcı bir sefere çıkardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunus şehrini fethetti ve bir Osmanlı deniz üssü olarak kurdu.",
+      "text_markdown": "Tunus şehrini fethetti ve bir Osmanlı deniz üssü olarak kurdu.",
+      "tts": {
+        "text": "Tunus şehrini fethetti ve bir Osmanlı deniz üssü olarak kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baskın Hristiyan devletlerini dehşete düşürdü ve Osmanlı deniz gücünün erişimini gözler önüne serdi.",
+      "text_markdown": "Baskın Hristiyan devletlerini dehşete düşürdü ve Osmanlı deniz gücünün erişimini gözler önüne serdi.",
+      "tts": {
+        "text": "Baskın Hristiyan devletlerini dehşete düşürdü ve Osmanlı deniz gücünün erişimini gözler önüne serdi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutsal Roma İmparatoru Şarlken büyük bir karşı saldırıyla cevap verdi.",
+      "text_markdown": "Kutsal Roma İmparatoru Şarlken büyük bir karşı saldırıyla cevap verdi.",
+      "tts": {
+        "text": "Kutsal Roma İmparatoru Şarlken büyük bir karşı saldırıyla cevap verdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1535'te Şarlken, Tunus'u geri almak için Avrupa tarihinin en büyük filolarından birini topladı.",
+      "text_markdown": "1535'te Şarlken, Tunus'u geri almak için Avrupa tarihinin en büyük filolarından birini topladı.",
+      "tts": {
+        "text": "Bin beş yüz otuz beşte Şarlken, Tunus'u geri almak için Avrupa tarihinin en büyük filolarından birini topladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Filo; İspanya, İtalya, Portekiz ve Papalık Devletleri'nden gemiler içeriyordu.",
+      "text_markdown": "Filo; İspanya, İtalya, Portekiz ve Papalık Devletleri'nden gemiler içeriyordu.",
+      "tts": {
+        "text": "Filo; İspanya, İtalya, Portekiz ve Papalık Devletleri'nden gemiler içeriyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şarlken Tunus'u almayı başardı ancak Hayreddin filosunun çekirdeğiyle birlikte kaçtı.",
+      "text_markdown": "Şarlken Tunus'u almayı başardı ancak Hayreddin filosunun çekirdeğiyle birlikte kaçtı.",
+      "tts": {
+        "text": "Şarlken Tunus'u almayı başardı ancak Hayreddin filosunun çekirdeğiyle birlikte kaçtı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tunus'un kaybı bir aksilikti ama yenilgi değildi.",
+      "text_markdown": "Tunus'un kaybı bir aksilikti ama yenilgi değildi.",
+      "tts": {
+        "text": "Tunus'un kaybı bir aksilikti ama yenilgi değildi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin Cezayir'e çekildi ve derhal kuvvetlerini yeniden inşa etmeye başladı.",
+      "text_markdown": "Hayreddin Cezayir'e çekildi ve derhal kuvvetlerini yeniden inşa etmeye başladı.",
+      "tts": {
+        "text": "Hayreddin Cezayir'e çekildi ve derhal kuvvetlerini yeniden inşa etmeye başladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hristiyan ittifakının geçici olduğunu ve acil tehlike geçtikten sonra dağılacağını biliyordu.",
+      "text_markdown": "Hristiyan ittifakının geçici olduğunu ve acil tehlike geçtikten sonra dağılacağını biliyordu.",
+      "tts": {
+        "text": "Hristiyan ittifakının geçici olduğunu ve acil tehlike geçtikten sonra dağılacağını biliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haklıydı ve birkaç ay içinde ittifak çözülmeye başladı.",
+      "text_markdown": "Haklıydı ve birkaç ay içinde ittifak çözülmeye başladı.",
+      "tts": {
+        "text": "Haklıydı ve birkaç ay içinde ittifak çözülmeye başladı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İki yıl içinde Hayreddin en büyük muharebesine hazırdı.",
+      "text_markdown": "İki yıl içinde Hayreddin en büyük muharebesine hazırdı.",
+      "tts": {
+        "text": "İki yıl içinde Hayreddin en büyük muharebesine hazırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mirasını belirleyecek yüzleşme yaklaşıyordu.",
+      "text_markdown": "Mirasını belirleyecek yüzleşme yaklaşıyordu.",
+      "tts": {
+        "text": "Mirasını belirleyecek yüzleşme yaklaşıyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yunanistan'ın batı kıyısı açıklarında gerçekleşecekti.",
+      "text_markdown": "Yunanistan'ın batı kıyısı açıklarında gerçekleşecekti.",
+      "tts": {
+        "text": "Yunanistan'ın batı kıyısı açıklarında gerçekleşecekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "İktidarın Yükselişi",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Savaşın adı Preveze'ydi ve Akdeniz'i sonsuza dek değiştirecekti.",
+      "text_markdown": "Savaşın adı Preveze'ydi ve Akdeniz'i sonsuza dek değiştirecekti.",
+      "tts": {
+        "text": "Savaşın adı Preveze'ydi ve Akdeniz'i sonsuza dek değiştirecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zirvedeyken",
+      "text_markdown": "Zirvedeyken"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Preveze Deniz Muharebesi 28 Eylül 1538'de gerçekleşti.",
+      "text_markdown": "Preveze Deniz Muharebesi 28 Eylül 1538'de gerçekleşti.",
+      "tts": {
+        "text": "Preveze Deniz Muharebesi yirmi sekiz Eylül bin beş yüz otuz sekizde gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "On altıncı yüzyıl Akdeniz'inin belirleyici deniz muharebesiydi.",
+      "text_markdown": "On altıncı yüzyıl Akdeniz'inin belirleyici deniz muharebesiydi.",
+      "tts": {
+        "text": "On altıncı yüzyıl Akdeniz'inin belirleyici deniz muharebesiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir tarafta Barbaros Hayreddin Paşa komutasındaki Osmanlı donanması vardı.",
+      "text_markdown": "Bir tarafta Barbaros Hayreddin Paşa komutasındaki Osmanlı donanması vardı.",
+      "tts": {
+        "text": "Bir tarafta Barbaros Hayreddin Paşa komutasındaki Osmanlı donanması vardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diğer tarafta ise Hristiyan devletlerden oluşan Kutsal İttifak'ın birleşik donanması vardı.",
+      "text_markdown": "Diğer tarafta ise Hristiyan devletlerden oluşan Kutsal İttifak'ın birleşik donanması vardı.",
+      "tts": {
+        "text": "Diğer tarafta ise Hristiyan devletlerden oluşan Kutsal İttifak'ın birleşik donanması vardı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutsal İttifak donanmasına Cenevizli amiral Andrea Doria komuta ediyordu.",
+      "text_markdown": "Kutsal İttifak donanmasına Cenevizli amiral Andrea Doria komuta ediyordu.",
+      "tts": {
+        "text": "Kutsal İttifak donanmasına Cenevizli amiral Andrea Doria komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanya, Venedik, Papalık Devletleri ve Ceneviz'den yaklaşık 300 gemiden oluşuyordu.",
+      "text_markdown": "İspanya, Venedik, Papalık Devletleri ve Ceneviz'den yaklaşık 300 gemiden oluşuyordu.",
+      "tts": {
+        "text": "İspanya, Venedik, Papalık Devletleri ve Ceneviz'den yaklaşık üç yüz gemiden oluşuyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kâğıt üzerinde Hristiyan donanması Osmanlı kuvvetinden önemli ölçüde büyüktü.",
+      "text_markdown": "Kâğıt üzerinde Hristiyan donanması Osmanlı kuvvetinden önemli ölçüde büyüktü.",
+      "tts": {
+        "text": "Kâğıt üzerinde Hristiyan donanması Osmanlı kuvvetinden önemli ölçüde büyüktü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak denizde savaşları yalnızca büyüklük kazanmaz.",
+      "text_markdown": "Ancak denizde savaşları yalnızca büyüklük kazanmaz.",
+      "tts": {
+        "text": "Ancak denizde savaşları yalnızca büyüklük kazanmaz.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin, daha küçük destek gemileriyle birlikte yaklaşık 150 kadırgaya komuta ediyordu.",
+      "text_markdown": "Hayreddin, daha küçük destek gemileriyle birlikte yaklaşık 150 kadırgaya komuta ediyordu.",
+      "tts": {
+        "text": "Hayreddin, daha küçük destek gemileriyle birlikte yaklaşık yüz elli kadırgaya komuta ediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Filosu sayıca azdı ama daha iyi eğitimli, daha iyi koordineli ve daha iyi yönetiliyordu.",
+      "text_markdown": "Filosu sayıca azdı ama daha iyi eğitimli, daha iyi koordineli ve daha iyi yönetiliyordu.",
+      "tts": {
+        "text": "Filosu sayıca azdı ama daha iyi eğitimli, daha iyi koordineli ve daha iyi yönetiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin bu sularda onlarca yıl savaşmıştı; her akıntıyı, her rüzgâr düzenini ve kıyı şeridinin sunduğu her taktik avantajı biliyordu.",
+      "text_markdown": "Hayreddin bu sularda onlarca yıl savaşmıştı; her akıntıyı, her rüzgâr düzenini ve kıyı şeridinin sunduğu her taktik avantajı biliyordu.",
+      "tts": {
+        "text": "Hayreddin bu sularda onlarca yıl savaşmıştı; her akıntıyı, her rüzgâr düzenini ve kıyı şeridinin sunduğu her taktik avantajı biliyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muharebe, batı Yunanistan kıyısında Ambrakia Körfezi'nin girişi yakınında gerçekleşti.",
+      "text_markdown": "Muharebe, batı Yunanistan kıyısında Ambrakia Körfezi'nin girişi yakınında gerçekleşti.",
+      "tts": {
+        "text": "Muharebe, batı Yunanistan kıyısında Ambrakia Körfezi'nin girişi yakınında gerçekleşti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin filosunu hâkim rüzgârlardan yararlanacak şekilde konumlandırdı.",
+      "text_markdown": "Hayreddin filosunu hâkim rüzgârlardan yararlanacak şekilde konumlandırdı.",
+      "tts": {
+        "text": "Hayreddin filosunu hâkim rüzgârlardan yararlanacak şekilde konumlandırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kadırgalarını, ateşi tecrit edilmiş düşman grupları üzerine yoğunlaştırmaya olanak veren bir hilal formasyonunda dizdi.",
+      "text_markdown": "Kadırgalarını, ateşi tecrit edilmiş düşman grupları üzerine yoğunlaştırmaya olanak veren bir hilal formasyonunda dizdi.",
+      "tts": {
+        "text": "Kadırgalarını, ateşi tecrit edilmiş düşman grupları üzerine yoğunlaştırmaya olanak veren bir hilal formasyonunda dizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Taktik konumlanması ustalık eseriydi.",
+      "text_markdown": "Taktik konumlanması ustalık eseriydi.",
+      "tts": {
+        "text": "Taktik konumlanması ustalık eseriydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria kritik anda tereddüt etti.",
+      "text_markdown": "Andrea Doria kritik anda tereddüt etti.",
+      "tts": {
+        "text": "Andrea Doria kritik anda tereddüt etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayısal üstünlüğüne rağmen tüm filosunu yakın muharebeye sokmak konusunda isteksizdi.",
+      "text_markdown": "Sayısal üstünlüğüne rağmen tüm filosunu yakın muharebeye sokmak konusunda isteksizdi.",
+      "tts": {
+        "text": "Sayısal üstünlüğüne rağmen tüm filosunu yakın muharebeye sokmak konusunda isteksizdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En iyi gemilerini yedekte tuttu ve daha iyi bir pozisyon için manevra yapmaya çalıştı.",
+      "text_markdown": "En iyi gemilerini yedekte tuttu ve daha iyi bir pozisyon için manevra yapmaya çalıştı.",
+      "tts": {
+        "text": "En iyi gemilerini yedekte tuttu ve daha iyi bir pozisyon için manevra yapmaya çalıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu tedbirlilik Hristiyan davası için ölümcül oldu.",
+      "text_markdown": "Bu tedbirlilik Hristiyan davası için ölümcül oldu.",
+      "tts": {
+        "text": "Bu tedbirlilik Hristiyan davası için ölümcül oldu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin saldırgan biçimde hücum etti; ana filonun önüne geçen Venedik ve Papalık gemilerini hedef aldı.",
+      "text_markdown": "Hayreddin saldırgan biçimde hücum etti; ana filonun önüne geçen Venedik ve Papalık gemilerini hedef aldı.",
+      "tts": {
+        "text": "Hayreddin saldırgan biçimde hücum etti; ana filonun önüne geçen Venedik ve Papalık gemilerini hedef aldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kadırgaları hızla yaklaşıp yakın mesafede muharebeye girdi.",
+      "text_markdown": "Kadırgaları hızla yaklaşıp yakın mesafede muharebeye girdi.",
+      "tts": {
+        "text": "Kadırgaları hızla yaklaşıp yakın mesafede muharebeye girdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Çarpışma şiddetli ve vahşiydi; düzinelerce gemi üzerinde top ateşi ve göğüs göğüse muharebe yaşandı.",
+      "text_markdown": "Çarpışma şiddetli ve vahşiydi; düzinelerce gemi üzerinde top ateşi ve göğüs göğüse muharebe yaşandı.",
+      "tts": {
+        "text": "Çarpışma şiddetli ve vahşiydi; düzinelerce gemi üzerinde top ateşi ve göğüs göğüse muharebe yaşandı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tecrit edilmiş Hristiyan filoları birer birer ezildi.",
+      "text_markdown": "Tecrit edilmiş Hristiyan filoları birer birer ezildi.",
+      "tts": {
+        "text": "Tecrit edilmiş Hristiyan filoları birer birer ezildi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Günün sonunda Kutsal İttifak ezici bir yenilgiye uğramıştı.",
+      "text_markdown": "Günün sonunda Kutsal İttifak ezici bir yenilgiye uğramıştı.",
+      "tts": {
+        "text": "Günün sonunda Kutsal İttifak ezici bir yenilgiye uğramıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin'in kuvvetleri düzinelerce Hristiyan savaş gemisini ele geçirdi veya batırdı.",
+      "text_markdown": "Hayreddin'in kuvvetleri düzinelerce Hristiyan savaş gemisini ele geçirdi veya batırdı.",
+      "tts": {
+        "text": "Hayreddin'in kuvvetleri düzinelerce Hristiyan savaş gemisini ele geçirdi veya batırdı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Binlerce Hristiyan denizci ve asker öldürüldü ya da esir alındı.",
+      "text_markdown": "Binlerce Hristiyan denizci ve asker öldürüldü ya da esir alındı.",
+      "tts": {
+        "text": "Binlerce Hristiyan denizci ve asker öldürüldü ya da esir alındı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria filosunun kalıntılarıyla geri çekildi ve denizi Osmanlılara bıraktı.",
+      "text_markdown": "Andrea Doria filosunun kalıntılarıyla geri çekildi ve denizi Osmanlılara bıraktı.",
+      "tts": {
+        "text": "Andrea Doria filosunun kalıntılarıyla geri çekildi ve denizi Osmanlılara bıraktı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Preveze Muharebesi Akdeniz'de Osmanlı deniz üstünlüğünü tesis etti.",
+      "text_markdown": "Preveze Muharebesi Akdeniz'de Osmanlı deniz üstünlüğünü tesis etti.",
+      "tts": {
+        "text": "Preveze Muharebesi Akdeniz'de Osmanlı deniz üstünlüğünü tesis etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonraki birkaç on yıl boyunca hiçbir Hristiyan donanması doğu ve orta denizde Osmanlı hâkimiyetine meydan okuyamadı.",
+      "text_markdown": "Sonraki birkaç on yıl boyunca hiçbir Hristiyan donanması doğu ve orta denizde Osmanlı hâkimiyetine meydan okuyamadı.",
+      "tts": {
+        "text": "Sonraki birkaç on yıl boyunca hiçbir Hristiyan donanması doğu ve orta denizde Osmanlı hâkimiyetine meydan okuyamadı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu artık tüm Kuzey Afrika kıyısı boyunca ve İtalya Yarımadası'na karşı askerî güç yansıtabiliyordu.",
+      "text_markdown": "Osmanlı İmparatorluğu artık tüm Kuzey Afrika kıyısı boyunca ve İtalya Yarımadası'na karşı askerî güç yansıtabiliyordu.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu artık tüm Kuzey Afrika kıyısı boyunca ve İtalya Yarımadası'na karşı askerî güç yansıtabiliyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, on altıncı yüzyılın en önemli deniz zaferiydi.",
+      "text_markdown": "Bu, on altıncı yüzyılın en önemli deniz zaferiydi.",
+      "tts": {
+        "text": "Bu, on altıncı yüzyılın en önemli deniz zaferiydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin fatih bir kahraman olarak İstanbul'a döndü.",
+      "text_markdown": "Hayreddin fatih bir kahraman olarak İstanbul'a döndü.",
+      "tts": {
+        "text": "Hayreddin fatih bir kahraman olarak İstanbul'a döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanuni Sultan Süleyman onu imparatorluğun verebileceği en yüksek onurlarla karşıladı.",
+      "text_markdown": "Kanuni Sultan Süleyman onu imparatorluğun verebileceği en yüksek onurlarla karşıladı.",
+      "tts": {
+        "text": "Kanuni Sultan Süleyman onu imparatorluğun verebileceği en yüksek onurlarla karşıladı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaptan-ı Derya, Sultan'ın kendisinden istediğini başarmıştı.",
+      "text_markdown": "Kaptan-ı Derya, Sultan'ın kendisinden istediğini başarmıştı.",
+      "tts": {
+        "text": "Kaptan ı Derya, Sultan'ın kendisinden istediğini başarmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Osmanlı donanmasını Akdeniz'in en üstün gücü yapmıştı.",
+      "text_markdown": "Osmanlı donanmasını Akdeniz'in en üstün gücü yapmıştı.",
+      "tts": {
+        "text": "Osmanlı donanmasını Akdeniz'in en üstün gücü yapmıştı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Preveze'yi izleyen yıllarda Hayreddin Osmanlı donanmasına komuta etmeye devam etti.",
+      "text_markdown": "Preveze'yi izleyen yıllarda Hayreddin Osmanlı donanmasına komuta etmeye devam etti.",
+      "tts": {
+        "text": "Preveze'yi izleyen yıllarda Hayreddin Osmanlı donanmasına komuta etmeye devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İspanyol ve İtalyan kıyı şehirlerine baskınlar düzenledi.",
+      "text_markdown": "İspanyol ve İtalyan kıyı şehirlerine baskınlar düzenledi.",
+      "tts": {
+        "text": "İspanyol ve İtalyan kıyı şehirlerine baskınlar düzenledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ortak düşmanları Şarlken'e karşı Osmanlılarla ittifak kuran Fransa Kralı Birinci François ile müzakereler yürüttü.",
+      "text_markdown": "Ortak düşmanları Şarlken'e karşı Osmanlılarla ittifak kuran Fransa Kralı Birinci François ile müzakereler yürüttü.",
+      "tts": {
+        "text": "Ortak düşmanları Şarlken'e karşı Osmanlılarla ittifak kuran Fransa Kralı Birinci François ile müzakereler yürüttü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir Müslüman imparatorluk ile bir Hristiyan krallık arasındaki bu ittifak tüm Avrupa'yı şoke etti.",
+      "text_markdown": "Bir Müslüman imparatorluk ile bir Hristiyan krallık arasındaki bu ittifak tüm Avrupa'yı şoke etti.",
+      "tts": {
+        "text": "Bir Müslüman imparatorluk ile bir Hristiyan krallık arasındaki bu ittifak tüm Avrupa'yı şoke etti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543 kışında Hayreddin filosunu Fransız liman şehri Toulon'a demirledi.",
+      "text_markdown": "1543 kışında Hayreddin filosunu Fransız liman şehri Toulon'a demirledi.",
+      "tts": {
+        "text": "Bin beş yüz kırk üç kışında Hayreddin filosunu Fransız liman şehri Toulon'a demirledi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa Kralı İspanya'ya karşı ortak operasyonlar için limanı üs olarak sunmuştu.",
+      "text_markdown": "Fransa Kralı İspanya'ya karşı ortak operasyonlar için limanı üs olarak sunmuştu.",
+      "tts": {
+        "text": "Fransa Kralı İspanya'ya karşı ortak operasyonlar için limanı üs olarak sunmuştu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birkaç ay boyunca Osmanlı savaş gemileri bir Fransız limanından faaliyet gösterdi.",
+      "text_markdown": "Birkaç ay boyunca Osmanlı savaş gemileri bir Fransız limanından faaliyet gösterdi.",
+      "tts": {
+        "text": "Birkaç ay boyunca Osmanlı savaş gemileri bir Fransız limanından faaliyet gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, Hristiyan dünyasını hayrete düşüren ve güç politikasının dinî ayrılıkları aşabileceğini gösteren bir manzaraydı.",
+      "text_markdown": "Bu, Hristiyan dünyasını hayrete düşüren ve güç politikasının dinî ayrılıkları aşabileceğini gösteren bir manzaraydı.",
+      "tts": {
+        "text": "Bu, Hristiyan dünyasını hayrete düşüren ve güç politikasının dinî ayrılıkları aşabileceğini gösteren bir manzaraydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin'in Cezayir yönetimi deniz seferleriyle eş zamanlı sürdü.",
+      "text_markdown": "Hayreddin'in Cezayir yönetimi deniz seferleriyle eş zamanlı sürdü.",
+      "tts": {
+        "text": "Hayreddin'in Cezayir yönetimi deniz seferleriyle eş zamanlı sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehirde camiler, hamamlar ve tahkimatlar inşa etti.",
+      "text_markdown": "Şehirde camiler, hamamlar ve tahkimatlar inşa etti.",
+      "tts": {
+        "text": "Şehirde camiler, hamamlar ve tahkimatlar inşa etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ticareti teşvik etti ve İslam dünyasının dört bir yanından yetenekli zanaatkârları çekti.",
+      "text_markdown": "Ticareti teşvik etti ve İslam dünyasının dört bir yanından yetenekli zanaatkârları çekti.",
+      "tts": {
+        "text": "Ticareti teşvik etti ve İslam dünyasının dört bir yanından yetenekli zanaatkârları çekti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yönetimi altında Cezayir küçük bir limandan Kuzey Afrika'nın en önemli şehirlerinden birine dönüştü.",
+      "text_markdown": "Yönetimi altında Cezayir küçük bir limandan Kuzey Afrika'nın en önemli şehirlerinden birine dönüştü.",
+      "tts": {
+        "text": "Yönetimi altında Cezayir küçük bir limandan Kuzey Afrika'nın en önemli şehirlerinden birine dönüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Filosu, İstanbul'u batı Akdeniz'e bağlayan Osmanlı ticaret yollarını koruyordu.",
+      "text_markdown": "Filosu, İstanbul'u batı Akdeniz'e bağlayan Osmanlı ticaret yollarını koruyordu.",
+      "tts": {
+        "text": "Filosu, İstanbul'u batı Akdeniz'e bağlayan Osmanlı ticaret yollarını koruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tahıl, tekstil ve mamul mal taşıyan ticaret gemileri savaş gemilerinin koruması altında seyrediyordu.",
+      "text_markdown": "Tahıl, tekstil ve mamul mal taşıyan ticaret gemileri savaş gemilerinin koruması altında seyrediyordu.",
+      "tts": {
+        "text": "Tahıl, tekstil ve mamul mal taşıyan ticaret gemileri savaş gemilerinin koruması altında seyrediyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı Akdeniz'inin ekonomik refahı büyük ölçüde Hayreddin'in kurduğu donanmaya bağlıydı.",
+      "text_markdown": "Osmanlı Akdeniz'inin ekonomik refahı büyük ölçüde Hayreddin'in kurduğu donanmaya bağlıydı.",
+      "tts": {
+        "text": "Osmanlı Akdeniz'inin ekonomik refahı büyük ölçüde Hayreddin'in kurduğu donanmaya bağlıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Zirvedeyken",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsan akıncılığını imparatorluk gücünün bir aracına dönüştürmüştü.",
+      "text_markdown": "Korsan akıncılığını imparatorluk gücünün bir aracına dönüştürmüştü.",
+      "tts": {
+        "text": "Korsan akıncılığını imparatorluk gücünün bir aracına dönüştürmüştü.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Son",
+      "text_markdown": "Son"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bin beş yüz kırkların başında Barbaros Hayreddin Paşa altmışlarının ortasındaydı.",
+      "text_markdown": "Bin beş yüz kırkların başında Barbaros Hayreddin Paşa altmışlarının ortasındaydı.",
+      "tts": {
+        "text": "Bin beş yüz kırkların başında Barbaros Hayreddin Paşa altmışlarının ortasındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kırk yıldan fazla bir süre denizde savaşarak, inşa ederek ve komuta ederek geçirmişti.",
+      "text_markdown": "Kırk yıldan fazla bir süre denizde savaşarak, inşa ederek ve komuta ederek geçirmişti.",
+      "tts": {
+        "text": "Kırk yıldan fazla bir süre denizde savaşarak, inşa ederek ve komuta ederek geçirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bedeni onlarca yıllık savaş, sert hava koşulları ve gemi üzerindeki yaşamın fiziksel zorlukları tarafından yıpranmıştı.",
+      "text_markdown": "Bedeni onlarca yıllık savaş, sert hava koşulları ve gemi üzerindeki yaşamın fiziksel zorlukları tarafından yıpranmıştı.",
+      "tts": {
+        "text": "Bedeni onlarca yıllık savaş, sert hava koşulları ve gemi üzerindeki yaşamın fiziksel zorlukları tarafından yıpranmıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ancak zihni keskin ve otoritesi tartışmasız kalmaya devam ediyordu.",
+      "text_markdown": "Ancak zihni keskin ve otoritesi tartışmasız kalmaya devam ediyordu.",
+      "tts": {
+        "text": "Ancak zihni keskin ve otoritesi tartışmasız kalmaya devam ediyordu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543 Toulon seferinden sonra Hayreddin İstanbul'a döndü.",
+      "text_markdown": "1543 Toulon seferinden sonra Hayreddin İstanbul'a döndü.",
+      "tts": {
+        "text": "Bin beş yüz kırk üç Toulon seferinden sonra Hayreddin İstanbul'a döndü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son büyük deniz operasyonunu tamamlamıştı.",
+      "text_markdown": "Son büyük deniz operasyonunu tamamlamıştı.",
+      "tts": {
+        "text": "Son büyük deniz operasyonunu tamamlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultan ondan başka bir sefer yönetmesini istemedi.",
+      "text_markdown": "Sultan ondan başka bir sefer yönetmesini istemedi.",
+      "tts": {
+        "text": "Sultan ondan başka bir sefer yönetmesini istemedi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yaşı ve başarıları göz önüne alındığında emeklilik hem hak edilmiş hem de yerindeydi.",
+      "text_markdown": "Yaşı ve başarıları göz önüne alındığında emeklilik hem hak edilmiş hem de yerindeydi.",
+      "tts": {
+        "text": "Yaşı ve başarıları göz önüne alındığında emeklilik hem hak edilmiş hem de yerindeydi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin son yıllarını İstanbul'da, Boğaziçi'ne bakan görkemli bir sarayda geçirdi.",
+      "text_markdown": "Hayreddin son yıllarını İstanbul'da, Boğaziçi'ne bakan görkemli bir sarayda geçirdi.",
+      "tts": {
+        "text": "Hayreddin son yıllarını İstanbul'da, Boğaziçi'ne bakan görkemli bir sarayda geçirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anılarını bir kâtibe yazdırarak Akdeniz korsanlık tarihi için en önemli birincil kaynaklardan birini oluşturdu.",
+      "text_markdown": "Anılarını bir kâtibe yazdırarak Akdeniz korsanlık tarihi için en önemli birincil kaynaklardan birini oluşturdu.",
+      "tts": {
+        "text": "Anılarını bir kâtibe yazdırarak Akdeniz korsanlık tarihi için en önemli birincil kaynaklardan birini oluşturdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gazavat-ı Hayreddin Paşa olarak bilinen bu anılar el yazması olarak günümüze ulaşmıştır.",
+      "text_markdown": "Gazavat-ı Hayreddin Paşa olarak bilinen bu anılar el yazması olarak günümüze ulaşmıştır.",
+      "tts": {
+        "text": "Gazavat ı Hayreddin Paşa olarak bilinen bu anılar el yazması olarak günümüze ulaşmıştır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yüzyıllardır tarihçiler tarafından incelenmektedir.",
+      "text_markdown": "Yüzyıllardır tarihçiler tarafından incelenmektedir.",
+      "tts": {
+        "text": "Yüzyıllardır tarihçiler tarafından incelenmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Osmanlı deniz işlerinde danışman rolünde yer almaya devam etti.",
+      "text_markdown": "Osmanlı deniz işlerinde danışman rolünde yer almaya devam etti.",
+      "tts": {
+        "text": "Osmanlı deniz işlerinde danışman rolünde yer almaya devam etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Genç amiraller strateji ve gemi yapımı konusunda onun fikrini soruyordu.",
+      "text_markdown": "Genç amiraller strateji ve gemi yapımı konusunda onun fikrini soruyordu.",
+      "tts": {
+        "text": "Genç amiraller strateji ve gemi yapımı konusunda onun fikrini soruyordu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İşini sürdürecek bütün bir nesil deniz subayı yetiştirmişti.",
+      "text_markdown": "İşini sürdürecek bütün bir nesil deniz subayı yetiştirmişti.",
+      "tts": {
+        "text": "İşini sürdürecek bütün bir nesil deniz subayı yetiştirmişti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Osmanlı donanmasına kazandırdığı kurumsal bilgi en kalıcı katkısıydı.",
+      "text_markdown": "Osmanlı donanmasına kazandırdığı kurumsal bilgi en kalıcı katkısıydı.",
+      "tts": {
+        "text": "Osmanlı donanmasına kazandırdığı kurumsal bilgi en kalıcı katkısıydı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbaros Hayreddin Paşa 4 Temmuz 1546'da İstanbul'da vefat etti.",
+      "text_markdown": "Barbaros Hayreddin Paşa 4 Temmuz 1546'da İstanbul'da vefat etti.",
+      "tts": {
+        "text": "Barbaros Hayreddin Paşa dört Temmuz bin beş yüz kırk altıda İstanbul'da vefat etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık altmış sekiz yaşındaydı.",
+      "text_markdown": "Yaklaşık altmış sekiz yaşındaydı.",
+      "tts": {
+        "text": "Yaklaşık altmış sekiz yaşındaydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ölümü Osmanlı İmparatorluğu'nun her yanında yas tutuldu.",
+      "text_markdown": "Ölümü Osmanlı İmparatorluğu'nun her yanında yas tutuldu.",
+      "tts": {
+        "text": "Ölümü Osmanlı İmparatorluğu'nun her yanında yas tutuldu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanuni Sultan Süleyman, Beşiktaş'ta Boğaziçi kıyısında onun için muhteşem bir türbe yaptırdı.",
+      "text_markdown": "Kanuni Sultan Süleyman, Beşiktaş'ta Boğaziçi kıyısında onun için muhteşem bir türbe yaptırdı.",
+      "tts": {
+        "text": "Kanuni Sultan Süleyman, Beşiktaş'ta Boğaziçi kıyısında onun için muhteşem bir türbe yaptırdı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Türbe bugün İstanbul'un Beşiktaş ilçesinde hâlâ ayaktadır.",
+      "text_markdown": "Türbe bugün İstanbul'un Beşiktaş ilçesinde hâlâ ayaktadır.",
+      "tts": {
+        "text": "Türbe bugün İstanbul'un Beşiktaş ilçesinde hâlâ ayaktadır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çini ve hat sanatıyla süslenmiş bir Osmanlı mimarisi eseridir.",
+      "text_markdown": "Çini ve hat sanatıyla süslenmiş bir Osmanlı mimarisi eseridir.",
+      "tts": {
+        "text": "Çini ve hat sanatıyla süslenmiş bir Osmanlı mimarisi eseridir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yüzyıllar boyunca Osmanlı denizcileri yola çıkmadan önce türbeyi ziyaret etti.",
+      "text_markdown": "Yüzyıllar boyunca Osmanlı denizcileri yola çıkmadan önce türbeyi ziyaret etti.",
+      "tts": {
+        "text": "Yüzyıllar boyunca Osmanlı denizcileri yola çıkmadan önce türbeyi ziyaret etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Güvenli geçiş ve büyük amiralin ruhunun kendilerine rehberlik etmesi için dua ettiler.",
+      "text_markdown": "Güvenli geçiş ve büyük amiralin ruhunun kendilerine rehberlik etmesi için dua ettiler.",
+      "tts": {
+        "text": "Güvenli geçiş ve büyük amiralin ruhunun kendilerine rehberlik etmesi için dua ettiler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Osmanlı donanmasındaki halefleri onun kurduğu donanmayı sürdürdü.",
+      "text_markdown": "Osmanlı donanmasındaki halefleri onun kurduğu donanmayı sürdürdü.",
+      "tts": {
+        "text": "Osmanlı donanmasındaki halefleri onun kurduğu donanmayı sürdürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Turgut Reis ve Piyale Paşa gibi amiraller onlarca yıl Osmanlı deniz hâkimiyetini devam ettirdi.",
+      "text_markdown": "Turgut Reis ve Piyale Paşa gibi amiraller onlarca yıl Osmanlı deniz hâkimiyetini devam ettirdi.",
+      "tts": {
+        "text": "Turgut Reis ve Piyale Paşa gibi amiraller onlarca yıl Osmanlı deniz hâkimiyetini devam ettirdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zanaatlarını Hayreddin'in yanında öğrenmiş ve taktik doktrinlerini ileriye taşımışlardı.",
+      "text_markdown": "Zanaatlarını Hayreddin'in yanında öğrenmiş ve taktik doktrinlerini ileriye taşımışlardı.",
+      "tts": {
+        "text": "Zanaatlarını Hayreddin'in yanında öğrenmiş ve taktik doktrinlerini ileriye taşımışlardı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bin beş yüz yetmiş birdeki İnebahtı Muharebesi sonunda denizde Osmanlı üstünlüğünü sona erdirecekti, ancak bu yenilgi bile Hayreddin'in kurduğu donanmayı yok edemedi.",
+      "text_markdown": "Bin beş yüz yetmiş birdeki İnebahtı Muharebesi sonunda denizde Osmanlı üstünlüğünü sona erdirecekti, ancak bu yenilgi bile Hayreddin'in kurduğu donanmayı yok edemedi.",
+      "tts": {
+        "text": "Bin beş yüz yetmiş birdeki İnebahtı Muharebesi sonunda denizde Osmanlı üstünlüğünü sona erdirecekti, ancak bu yenilgi bile Hayreddin'in kurduğu donanmayı yok edemedi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin'in Osmanlı kontrolüne soktuğu Kuzey Afrika toprakları yüzyıllar boyunca Osmanlı eyaleti olarak kaldı.",
+      "text_markdown": "Hayreddin'in Osmanlı kontrolüne soktuğu Kuzey Afrika toprakları yüzyıllar boyunca Osmanlı eyaleti olarak kaldı.",
+      "tts": {
+        "text": "Hayreddin'in Osmanlı kontrolüne soktuğu Kuzey Afrika toprakları yüzyıllar boyunca Osmanlı eyaleti olarak kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir, Tunus ve Trablusgarp on dokuzuncu yüzyılın ortalarına kadar korsan üssü olarak kaldı.",
+      "text_markdown": "Cezayir, Tunus ve Trablusgarp on dokuzuncu yüzyılın ortalarına kadar korsan üssü olarak kaldı.",
+      "tts": {
+        "text": "Cezayir, Tunus ve Trablusgarp on dokuzuncu yüzyılın ortalarına kadar korsan üssü olarak kaldı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin'in kurulmasına yardım ettiği Berberi Kıyısı korsanlık geleneği üç yüz yıl sürdü.",
+      "text_markdown": "Hayreddin'in kurulmasına yardım ettiği Berberi Kıyısı korsanlık geleneği üç yüz yıl sürdü.",
+      "tts": {
+        "text": "Hayreddin'in kurulmasına yardım ettiği Berberi Kıyısı korsanlık geleneği üç yüz yıl sürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Buna son vermek Fransa ve İngiltere'nin birleşik gücünü gerektirecekti.",
+      "text_markdown": "Buna son vermek Fransa ve İngiltere'nin birleşik gücünü gerektirecekti.",
+      "tts": {
+        "text": "Buna son vermek Fransa ve İngiltere'nin birleşik gücünü gerektirecekti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin yaşadığı gibi öldü: Osmanlı devletinin hizmetinde.",
+      "text_markdown": "Hayreddin yaşadığı gibi öldü: Osmanlı devletinin hizmetinde.",
+      "tts": {
+        "text": "Hayreddin yaşadığı gibi öldü: Osmanlı devletinin hizmetinde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Yunan adasında çömlekçinin oğlu olarak başlamıştı.",
+      "text_markdown": "Bir Yunan adasında çömlekçinin oğlu olarak başlamıştı.",
+      "tts": {
+        "text": "Bir Yunan adasında çömlekçinin oğlu olarak başlamıştı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanlı İmparatorluğu tarihinin en ünlü amirali olarak sona erdi.",
+      "text_markdown": "Osmanlı İmparatorluğu tarihinin en ünlü amirali olarak sona erdi.",
+      "tts": {
+        "text": "Osmanlı İmparatorluğu tarihinin en ünlü amirali olarak sona erdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Son",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Midilli'den Kaptan-ı Deryalığa uzanan yolculuğu deniz tarihinin en olağanüstü kariyerlerinden biridir.",
+      "text_markdown": "Midilli'den Kaptan-ı Deryalığa uzanan yolculuğu deniz tarihinin en olağanüstü kariyerlerinden biridir.",
+      "tts": {
+        "text": "Midilli'den Kaptan ı Deryalığa uzanan yolculuğu deniz tarihinin en olağanüstü kariyerlerinden biridir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miras",
+      "text_markdown": "Miras"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbaros Hayreddin Paşa, Osmanlı İmparatorluğu'nu bir kara gücünden deniz süper gücüne dönüştürdü.",
+      "text_markdown": "Barbaros Hayreddin Paşa, Osmanlı İmparatorluğu'nu bir kara gücünden deniz süper gücüne dönüştürdü.",
+      "tts": {
+        "text": "Barbaros Hayreddin Paşa, Osmanlı İmparatorluğu'nu bir kara gücünden deniz süper gücüne dönüştürdü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kariyerinden önce Osmanlılar karada güçlü ama denizde marjinaldi.",
+      "text_markdown": "Kariyerinden önce Osmanlılar karada güçlü ama denizde marjinaldi.",
+      "tts": {
+        "text": "Kariyerinden önce Osmanlılar karada güçlü ama denizde marjinaldi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kariyerinden sonra Osmanlı donanması nesiller boyunca Akdeniz'i kontrol etti.",
+      "text_markdown": "Kariyerinden sonra Osmanlı donanması nesiller boyunca Akdeniz'i kontrol etti.",
+      "tts": {
+        "text": "Kariyerinden sonra Osmanlı donanması nesiller boyunca Akdeniz'i kontrol etti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu dönüşüm on altıncı yüzyılın en önemli askerî başarıları arasında yer alır.",
+      "text_markdown": "Bu dönüşüm on altıncı yüzyılın en önemli askerî başarıları arasında yer alır.",
+      "tts": {
+        "text": "Bu dönüşüm on altıncı yüzyılın en önemli askerî başarıları arasında yer alır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Preveze'deki zaferi bugün dünya genelindeki deniz harp akademilerinde incelenmektedir.",
+      "text_markdown": "Preveze'deki zaferi bugün dünya genelindeki deniz harp akademilerinde incelenmektedir.",
+      "tts": {
+        "text": "Preveze'deki zaferi bugün dünya genelindeki deniz harp akademilerinde incelenmektedir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üstün liderlik ve taktiğin sayısal dezavantajı nasıl yenebileceğini gösterir.",
+      "text_markdown": "Üstün liderlik ve taktiğin sayısal dezavantajı nasıl yenebileceğini gösterir.",
+      "tts": {
+        "text": "Üstün liderlik ve taktiğin sayısal dezavantajı nasıl yenebileceğini gösterir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muharebe, iyi koordineli bir filonun daha büyük ama kötü yönetilen bir filoyu yenebileceğini ortaya koydu.",
+      "text_markdown": "Muharebe, iyi koordineli bir filonun daha büyük ama kötü yönetilen bir filoyu yenebileceğini ortaya koydu.",
+      "tts": {
+        "text": "Muharebe, iyi koordineli bir filonun daha büyük ama kötü yönetilen bir filoyu yenebileceğini ortaya koydu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beş yüzyıl sonra hâlâ bir deniz stratejisi ders kitabı örneği olmaya devam etmektedir.",
+      "text_markdown": "Beş yüzyıl sonra hâlâ bir deniz stratejisi ders kitabı örneği olmaya devam etmektedir.",
+      "tts": {
+        "text": "Beş yüzyıl sonra hâlâ bir deniz stratejisi ders kitabı örneği olmaya devam etmektedir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin'in Kuzey Afrika üzerindeki etkisi de aynı derecede derin olmuştur.",
+      "text_markdown": "Hayreddin'in Kuzey Afrika üzerindeki etkisi de aynı derecede derin olmuştur.",
+      "tts": {
+        "text": "Hayreddin'in Kuzey Afrika üzerindeki etkisi de aynı derecede derin olmuştur.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cezayir ve diğer şehirleri Osmanlı yönetimine sokarak yüzyıllar sürecek bir siyasi yapı oluşturdu.",
+      "text_markdown": "Cezayir ve diğer şehirleri Osmanlı yönetimine sokarak yüzyıllar sürecek bir siyasi yapı oluşturdu.",
+      "tts": {
+        "text": "Cezayir ve diğer şehirleri Osmanlı yönetimine sokarak yüzyıllar sürecek bir siyasi yapı oluşturdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu şehirlerin nüfusu İspanya'dan gelen mültecilere kapılarını açma politikasıyla şekillendi.",
+      "text_markdown": "Bu şehirlerin nüfusu İspanya'dan gelen mültecilere kapılarını açma politikasıyla şekillendi.",
+      "tts": {
+        "text": "Bu şehirlerin nüfusu İspanya'dan gelen mültecilere kapılarını açma politikasıyla şekillendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bugün Mağrip'i tanımlayan Berberi, Arap, Türk ve Endülüs etkilerinin kültürel karışımının kökleri Hayreddin'in yaratılmasına yardım ettiği dünyada yatmaktadır.",
+      "text_markdown": "Bugün Mağrip'i tanımlayan Berberi, Arap, Türk ve Endülüs etkilerinin kültürel karışımının kökleri Hayreddin'in yaratılmasına yardım ettiği dünyada yatmaktadır.",
+      "tts": {
+        "text": "Bugün Mağrip'i tanımlayan Berberi, Arap, Türk ve Endülüs etkilerinin kültürel karışımının kökleri Hayreddin'in yaratılmasına yardım ettiği dünyada yatmaktadır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Türkiye'de Barbaros Hayreddin Paşa bir millî kahramandır.",
+      "text_markdown": "Türkiye'de Barbaros Hayreddin Paşa bir millî kahramandır.",
+      "tts": {
+        "text": "Türkiye'de Barbaros Hayreddin Paşa bir millî kahramandır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Türk Deniz Kuvvetleri ilk denizaltısına onun adını vermiştir.",
+      "text_markdown": "Türk Deniz Kuvvetleri ilk denizaltısına onun adını vermiştir.",
+      "tts": {
+        "text": "Türk Deniz Kuvvetleri ilk denizaltısına onun adını vermiştir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Görüntüsü anıtlarda, pullarda ve para birimlerinde yer alır.",
+      "text_markdown": "Görüntüsü anıtlarda, pullarda ve para birimlerinde yer alır.",
+      "tts": {
+        "text": "Görüntüsü anıtlarda, pullarda ve para birimlerinde yer alır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her Türk okul çocuğu onun adını ve hikâyesini öğrenir.",
+      "text_markdown": "Her Türk okul çocuğu onun adını ve hikâyesini öğrenir.",
+      "tts": {
+        "text": "Her Türk okul çocuğu onun adını ve hikâyesini öğrenir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Avrupa tarih hafızasında Barbarossa daha karmaşık bir figürdür.",
+      "text_markdown": "Avrupa tarih hafızasında Barbarossa daha karmaşık bir figürdür.",
+      "tts": {
+        "text": "Avrupa tarih hafızasında Barbarossa daha karmaşık bir figürdür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kendi dönemindeki İspanyollar ve İtalyanlar için korkulan bir düşman ve acımasız bir akıncıydı.",
+      "text_markdown": "Kendi dönemindeki İspanyollar ve İtalyanlar için korkulan bir düşman ve acımasız bir akıncıydı.",
+      "tts": {
+        "text": "Kendi dönemindeki İspanyollar ve İtalyanlar için korkulan bir düşman ve acımasız bir akıncıydı.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Fransızlar için ortak İspanyol rakiplerine karşı beklenmedik bir müttefikti.",
+      "text_markdown": "Fransızlar için ortak İspanyol rakiplerine karşı beklenmedik bir müttefikti.",
+      "tts": {
+        "text": "Fransızlar için ortak İspanyol rakiplerine karşı beklenmedik bir müttefikti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Avrupa'daki mirası Akdeniz tarihinin bölünmüş ve çekişmeli doğasını yansıtır.",
+      "text_markdown": "Avrupa'daki mirası Akdeniz tarihinin bölünmüş ve çekişmeli doğasını yansıtır.",
+      "tts": {
+        "text": "Avrupa'daki mirası Akdeniz tarihinin bölünmüş ve çekişmeli doğasını yansıtır.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tarihçiler Hayreddin'e korsan denip denemeyeceğini tartışır.",
+      "text_markdown": "Tarihçiler Hayreddin'e korsan denip denemeyeceğini tartışır.",
+      "tts": {
+        "text": "Tarihçiler Hayreddin'e korsan denip denemeyeceğini tartışır.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kariyerinin büyük bölümünde Osmanlı Sultanı'nın açık yetkisiyle faaliyet gösterdi.",
+      "text_markdown": "Kariyerinin büyük bölümünde Osmanlı Sultanı'nın açık yetkisiyle faaliyet gösterdi.",
+      "tts": {
+        "text": "Kariyerinin büyük bölümünde Osmanlı Sultanı'nın açık yetkisiyle faaliyet gösterdi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Korsanlık faaliyetleri on altıncı yüzyıl Akdeniz'inde tanınmış bir deniz savaşı biçimiydi.",
+      "text_markdown": "Korsanlık faaliyetleri on altıncı yüzyıl Akdeniz'inde tanınmış bir deniz savaşı biçimiydi.",
+      "tts": {
+        "text": "Korsanlık faaliyetleri on altıncı yüzyıl Akdeniz'inde tanınmış bir deniz savaşı biçimiydi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Korsanlık ile devlet destekli deniz savaşı arasındaki çizgi bulanıktı ve Hayreddin her iki tarafında da yaşadı.",
+      "text_markdown": "Korsanlık ile devlet destekli deniz savaşı arasındaki çizgi bulanıktı ve Hayreddin her iki tarafında da yaşadı.",
+      "tts": {
+        "text": "Korsanlık ile devlet destekli deniz savaşı arasındaki çizgi bulanıktı ve Hayreddin her iki tarafında da yaşadı.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tartışma götürmez olan başarısının büyüklüğüdür.",
+      "text_markdown": "Tartışma götürmez olan başarısının büyüklüğüdür.",
+      "tts": {
+        "text": "Tartışma götürmez olan başarısının büyüklüğüdür.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir Yunan adasından çömlekçinin oğlu Akdeniz'in en güçlü donanmasını kurdu.",
+      "text_markdown": "Bir Yunan adasından çömlekçinin oğlu Akdeniz'in en güçlü donanmasını kurdu.",
+      "tts": {
+        "text": "Bir Yunan adasından çömlekçinin oğlu Akdeniz'in en güçlü donanmasını kurdu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Avrupa'nın en güçlü Hristiyan devletlerinin birleşik filolarını yendi.",
+      "text_markdown": "Avrupa'nın en güçlü Hristiyan devletlerinin birleşik filolarını yendi.",
+      "tts": {
+        "text": "Avrupa'nın en güçlü Hristiyan devletlerinin birleşik filolarını yendi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Büyük bir şehri yönetti, bir kıtanın siyasetini şekillendirdi ve dünyanın en güçlü imparatorluğu tarafından onurlandırılarak öldü.",
+      "text_markdown": "Büyük bir şehri yönetti, bir kıtanın siyasetini şekillendirdi ve dünyanın en güçlü imparatorluğu tarafından onurlandırılarak öldü.",
+      "tts": {
+        "text": "Büyük bir şehri yönetti, bir kıtanın siyasetini şekillendirdi ve dünyanın en güçlü imparatorluğu tarafından onurlandırılarak öldü.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miras",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hayatı, hırs, beceri ve fırsatın tarihin doğru anında bir araya geldiğinde neler üretebileceğinin bir kanıtıdır.",
+      "text_markdown": "Hayatı, hırs, beceri ve fırsatın tarihin doğru anında bir araya geldiğinde neler üretebileceğinin bir kanıtıdır.",
+      "tts": {
+        "text": "Hayatı, hırs, beceri ve fırsatın tarihin doğru anında bir araya geldiğinde neler üretebileceğinin bir kanıtıdır.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "lt",
+  "total_segments": 62,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sveiki atvykę į „AI šią savaitę“. Aš esu Vindy.",
+      "text_markdown": "Sveiki atvykę į „AI šią savaitę“. Aš esu Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Sveiki atvykę į „AI šią savaitę“. Aš esu Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Su manimi, kaip visada, yra Ronas.",
+      "text_markdown": "Su manimi, kaip visada, yra Ronas.",
+      "title": "",
+      "tts": {
+        "text": "Su manimi, kaip visada, yra Ronas.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Gera čia būti.",
+      "text_markdown": "Gera čia būti.",
+      "title": "",
+      "tts": {
+        "text": "Gera čia būti.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Šiandien trečiadienis, 2026 m. gegužės 13 d. Toliau: šią savaitę išleisti modeliai. Lyderių lentelės ir kodėl kai kuriais iš jų neturėtumėte pasitikėti. Mūsų savaitės koncepcija. Ir platesnis vaizdas – JAV ką tik gavo naują Federalinio rezervų banko pirmininką, ir tai dirbtiniam intelektui svarbiau, nei galite įsivaizduoti.",
+      "text_markdown": "Šiandien trečiadienis, 2026 m. gegužės 13 d. Toliau: šią savaitę išleisti modeliai. Lyderių lentelės ir kodėl kai kuriais iš jų neturėtumėte pasitikėti. Mūsų savaitės koncepcija. Ir platesnis vaizdas – JAV ką tik gavo naują Federalinio rezervų banko pirmininką, ir tai dirbtiniam intelektui svarbiau, nei galite įsivaizduoti.",
+      "title": "",
+      "tts": {
+        "text": "Šiandien trečiadienis, gegužės trylikta, du tūkstančiai dvidešimt šešti metai. Toliau: šią savaitę išleisti modeliai. Lyderių lentelės ir kodėl kai kuriais iš jų neturėtumėte pasitikėti. Mūsų savaitės koncepcija. Ir platesnis vaizdas – Jungtinės Valstijos ką tik gavo naują Federalinio rezervų banko pirmininką, ir tai dirbtiniam intelektui svarbiau, nei galite įsivaizduoti.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ronai, kokios didžiausios modelių naujienos šią savaitę?",
+      "text_markdown": "Ronai, kokios didžiausios modelių naujienos šią savaitę?",
+      "title": "",
+      "tts": {
+        "text": "Ronai, kokios didžiausios modelių naujienos šią savaitę?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Numatytasis „ChatGPT“ smegenų modelis pasikeitė. „OpenAI“ praėjusią savaitę, gegužės 5 d., antradienį, išleido naują modelį „GPT-5.5 Instant“ nemokamai pakopai. Jei nemokamas „ChatGPT“ atsakymas atrodė trumpesnis arba su mažiau jaustukų, tai yra priežastis.",
+      "text_markdown": "Numatytasis „ChatGPT“ smegenų modelis pasikeitė. „OpenAI“ praėjusią savaitę, gegužės 5 d., antradienį, išleido naują modelį „GPT-5.5 Instant“ nemokamai pakopai. Jei nemokamas „ChatGPT“ atsakymas atrodė trumpesnis arba su mažiau jaustukų, tai yra priežastis.",
+      "title": "",
+      "tts": {
+        "text": "Numatytasis „ChatGPT“ smegenų modelis pasikeitė. „OpenAI“ praėjusią savaitę, gegužės penktą dieną, antradienį, išleido naują modelį, pavadintą „GPT penki taškas penki Instant“, nemokamai pakopai. Jei nemokamas „ChatGPT“ atsakymas atrodė trumpesnis arba su mažiau jaustukų, tai yra priežastis.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Trumpesnis kaip?",
+      "text_markdown": "Trumpesnis kaip?",
+      "title": "",
+      "tts": {
+        "text": "Trumpesnis kaip?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "„OpenAI“ teigia, kad naujasis numatytasis modelis parašo maždaug 30 % mažiau žodžių ir 30 % mažiau eilučių nei modelis, kurį jis pakeitė. Jie taip pat teigia, kad sunkiausiose užklausose haliucinacijų sumažėjo 50 %. Tokie dalykai kaip medicininiai, teisiniai ir finansiniai klausimai.",
+      "text_markdown": "„OpenAI“ teigia, kad naujasis numatytasis modelis parašo maždaug 30 % mažiau žodžių ir 30 % mažiau eilučių nei modelis, kurį jis pakeitė. Jie taip pat teigia, kad sunkiausiose užklausose haliucinacijų sumažėjo 50 %. Tokie dalykai kaip medicininiai, teisiniai ir finansiniai klausimai.",
+      "title": "",
+      "tts": {
+        "text": "„OpenAI“ teigia, kad naujasis numatytasis modelis parašo maždaug trisdešimt procentų mažiau žodžių ir trisdešimt procentų mažiau eilučių nei modelis, kurį jis pakeitė. Jie taip pat teigia, kad sunkiausiose užklausose haliucinacijų sumažėjo penkiasdešimt procentų. Tokie dalykai kaip medicininiai, teisiniai ir finansiniai klausimai.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ar kas nors už „OpenAI“ ribų patvirtino tuos skaičius?",
+      "text_markdown": "Ar kas nors už „OpenAI“ ribų patvirtino tuos skaičius?",
+      "title": "",
+      "tts": {
+        "text": "Ar kas nors už „OpenAI“ ribų patvirtino tuos skaičius?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ne dideliu mastu. Nepriklausomi etalonų vertintojai, tokie kaip „Artificial Analysis“, naująjį modelį įvertino kaip geriausią savo bendrame intelekto indekse. Tačiau haliucinacijų teiginius patikrinti užtrunka. Jie paprastai išryškėja per kelias savaites, kai žmonės iš tikrųjų naudoja modelį.",
+      "text_markdown": "Ne dideliu mastu. Nepriklausomi etalonų vertintojai, tokie kaip „Artificial Analysis“, naująjį modelį įvertino kaip geriausią savo bendrame intelekto indekse. Tačiau haliucinacijų teiginius patikrinti užtrunka. Jie paprastai išryškėja per kelias savaites, kai žmonės iš tikrųjų naudoja modelį.",
+      "title": "",
+      "tts": {
+        "text": "Ne dideliu mastu. Nepriklausomi etalonų vertintojai, tokie kaip „Artificial Analysis“, naująjį modelį įvertino kaip geriausią savo bendrame intelekto indekse. Tačiau haliucinacijų teiginius patikrinti užtrunka. Jie paprastai išryškėja per kelias savaites, kai žmonės iš tikrųjų naudoja modelį.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O atvirųjų svorių pusėje?",
+      "text_markdown": "O atvirųjų svorių pusėje?",
+      "title": "",
+      "tts": {
+        "text": "O atvirųjų svorių pusėje?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Du svarbūs dalykai. „Moonshot“, Kinijos laboratorija, kurianti „Kimi“ modelį, praėjusią savaitę, gegužės 7 d., pritraukė 2 milijardus dolerių, įvertinta 20 milijardų dolerių. Ir jų naujausias modelis, „Kimi K 2.6“, ką tik užėmė pirmąją vietą „OpenRouter“ pagal žetonų apimtį.",
+      "text_markdown": "Du svarbūs dalykai. „Moonshot“, Kinijos laboratorija, kurianti „Kimi“ modelį, praėjusią savaitę, gegužės 7 d., pritraukė 2 milijardus dolerių, įvertinta 20 milijardų dolerių. Ir jų naujausias modelis, „Kimi K 2.6“, ką tik užėmė pirmąją vietą „OpenRouter“ pagal žetonų apimtį.",
+      "title": "",
+      "tts": {
+        "text": "Du svarbūs dalykai. „Moonshot“, Kinijos laboratorija, kurianti „Kimi“ modelį, praėjusią savaitę, gegužės septintą dieną, pritraukė du milijardus dolerių, įvertinta dvidešimt milijardų dolerių. Ir jų naujausias modelis, „Kimi K du taškas šeši“, ką tik užėmė pirmąją vietą „OpenRouter“ pagal žetonų apimtį.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pirmąją vietą? Apskritai?",
+      "text_markdown": "Pirmąją vietą? Apskritai?",
+      "title": "",
+      "tts": {
+        "text": "Pirmąją vietą? Apskritai?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Apskritai. Tai Kinijos atvirųjų svorių modelis, užimantis pirmąją vietą pagrindiniame komerciniame maršrutizatoriuje. Prieš šešis mėnesius tai būtų buvę neįsivaizduojama.",
+      "text_markdown": "Apskritai. Tai Kinijos atvirųjų svorių modelis, užimantis pirmąją vietą pagrindiniame komerciniame maršrutizatoriuje. Prieš šešis mėnesius tai būtų buvę neįsivaizduojama.",
+      "title": "",
+      "tts": {
+        "text": "Apskritai. Tai Kinijos atvirųjų svorių modelis, užimantis pirmąją vietą pagrindiniame komerciniame maršrutizatoriuje. Prieš šešis mėnesius tai būtų buvę neįsivaizduojama.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dar ką nors verta paminėti?",
+      "text_markdown": "Dar ką nors verta paminėti?",
+      "title": "",
+      "tts": {
+        "text": "Dar ką nors verta paminėti?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "„Mistral“, Prancūzijos laboratorija, išleido „Medium 3.5“ dar balandžio pabaigoje. Jie sujungia senąjį pokalbių, samprotavimo ir kodavimo modelių atskyrimą į vieną produktą. Ta pati tendencija, kurią „OpenAI“ pradėjo su „GPT-5“ šeima. Visa pramonė juda ta kryptimi.",
+      "text_markdown": "„Mistral“, Prancūzijos laboratorija, išleido „Medium 3.5“ dar balandžio pabaigoje. Jie sujungia senąjį pokalbių, samprotavimo ir kodavimo modelių atskyrimą į vieną produktą. Ta pati tendencija, kurią „OpenAI“ pradėjo su „GPT-5“ šeima. Visa pramonė juda ta kryptimi.",
+      "title": "",
+      "tts": {
+        "text": "„Mistral“, Prancūzijos laboratorija, išleido „Medium trys taškas penki“ dar balandžio pabaigoje. Jie sujungia senąjį pokalbių, samprotavimo ir kodavimo modelių atskyrimą į vieną produktą. Ta pati tendencija, kurią „OpenAI“ pradėjo su „GPT penki“ šeima. Visa pramonė juda ta kryptimi.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O kas toliau?",
+      "text_markdown": "O kas toliau?",
+      "title": "",
+      "tts": {
+        "text": "O kas toliau?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "„Google I/O“ vyks antradienį. Visi tikisi naujo „Gemini“, ir yra patikimų gandų apie vaizdo generavimo modelį, pavadintą „Gemini Omni“. „OpenAI“ testuoja „GPT-5.6“. „Anthropic“ turi modelį, pavadintą „Mythos“, privačioje peržiūroje. Kitą savaitę žinosime daug daugiau.",
+      "text_markdown": "„Google I/O“ vyks antradienį. Visi tikisi naujo „Gemini“, ir yra patikimų gandų apie vaizdo generavimo modelį, pavadintą „Gemini Omni“. „OpenAI“ testuoja „GPT-5.6“. „Anthropic“ turi modelį, pavadintą „Mythos“, privačioje peržiūroje. Kitą savaitę žinosime daug daugiau.",
+      "title": "",
+      "tts": {
+        "text": "„Google I O“ vyks antradienį. Visi tikisi naujo „Gemini“, ir yra patikimų gandų apie vaizdo generavimo modelį, pavadintą „Gemini Omni“. „OpenAI“ testuoja „GPT penki taškas šeši“. „Anthropic“ turi modelį, pavadintą „Mythos“, privačioje peržiūroje. Kitą savaitę žinosime daug daugiau.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Gerai, pereikime prie lyderių lentelių.",
+      "text_markdown": "Gerai, pereikime prie lyderių lentelių.",
+      "title": "",
+      "tts": {
+        "text": "Gerai, pereikime prie lyderių lentelių.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ronai, kas vyksta lentelėse šią savaitę?",
+      "text_markdown": "Ronai, kas vyksta lentelėse šią savaitę?",
+      "title": "",
+      "tts": {
+        "text": "Ronai, kas vyksta lentelėse šią savaitę?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tikroji šios savaitės istorija – ne balai. Tai balai, kuriais neturėtumėte pasitikėti.",
+      "text_markdown": "Tikroji šios savaitės istorija – ne balai. Tai balai, kuriais neturėtumėte pasitikėti.",
+      "title": "",
+      "tts": {
+        "text": "Tikroji šios savaitės istorija – ne balai. Tai balai, kuriais neturėtumėte pasitikėti.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Papasakokite mums apie tai plačiau, Ronai.",
+      "text_markdown": "Papasakokite mums apie tai plačiau, Ronai.",
+      "title": "",
+      "tts": {
+        "text": "Papasakokite mums apie tai plačiau, Ronai.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Grupė Berklyje paskelbė straipsnį. Jie sukūrė automatinį skaitytuvą, kuris beveik tobulai įvertino kiekvieną pagrindinį AI agento etaloną. Nė neišsprendę nė vienos užduoties. Jie pasinaudojo tuo, kaip etalonai tikrina savo atsakymus.",
+      "text_markdown": "Grupė Berklyje paskelbė straipsnį. Jie sukūrė automatinį skaitytuvą, kuris beveik tobulai įvertino kiekvieną pagrindinį AI agento etaloną. Nė neišsprendę nė vienos užduoties. Jie pasinaudojo tuo, kaip etalonai tikrina savo atsakymus.",
+      "title": "",
+      "tts": {
+        "text": "Grupė Berklyje paskelbė straipsnį. Jie sukūrė automatinį skaitytuvą, kuris beveik tobulai įvertino kiekvieną pagrindinį AI agento etaloną. Nė neišsprendę nė vienos užduoties. Jie pasinaudojo tuo, kaip etalonai tikrina savo atsakymus.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jie sukčiavo, o etalonai to nepastebėjo.",
+      "text_markdown": "Jie sukčiavo, o etalonai to nepastebėjo.",
+      "title": "",
+      "tts": {
+        "text": "Jie sukčiavo, o etalonai to nepastebėjo.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Teisingai. Ir tą pačią savaitę „OpenAI“ paskelbė, kad atsisako savo vertinimų „SWE bench Verified“. Tai yra kodavimo etalonas, kurį jie nuolat cituodavo. Jie jo atsisakė, nes daugiau nei pusė sudėtingų užduočių pasirodė turinčios neveikiančius testus.",
+      "text_markdown": "Teisingai. Ir tą pačią savaitę „OpenAI“ paskelbė, kad atsisako savo vertinimų „SWE bench Verified“. Tai yra kodavimo etalonas, kurį jie nuolat cituodavo. Jie jo atsisakė, nes daugiau nei pusė sudėtingų užduočių pasirodė turinčios neveikiančius testus.",
+      "title": "",
+      "tts": {
+        "text": "Teisingai. Ir tą pačią savaitę „OpenAI“ paskelbė, kad atsisako savo vertinimų „SWE bench Verified“. Tai yra kodavimo etalonas, kurį jie nuolat cituodavo. Jie jo atsisakė, nes daugiau nei pusė sudėtingų užduočių pasirodė turinčios neveikiančius testus.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Taigi daugelis skaičių, kuriuos girdėjome pastaruosius metus, yra...",
+      "text_markdown": "Taigi daugelis skaičių, kuriuos girdėjome pastaruosius metus, yra...",
+      "title": "",
+      "tts": {
+        "text": "Taigi daugelis skaičių, kuriuos girdėjome pastaruosius metus, yra...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bent iš dalies išpūsti. Ne kiekvienas modelis. Ne kiekvienas etalonas. Tačiau ši sritis viešai atkuria savo matavimo juostą. Naujesni vertinimai, tokie kaip „SWE-bench Pro“ ir projektas, pavadintas „SWE-rebench“, bando tai ištaisyti, išlaikydami testavimo kodą privatų.",
+      "text_markdown": "Bent iš dalies išpūsti. Ne kiekvienas modelis. Ne kiekvienas etalonas. Tačiau ši sritis viešai atkuria savo matavimo juostą. Naujesni vertinimai, tokie kaip „SWE-bench Pro“ ir projektas, pavadintas „SWE-rebench“, bando tai ištaisyti, išlaikydami testavimo kodą privatų.",
+      "title": "",
+      "tts": {
+        "text": "Bent iš dalies išpūsti. Ne kiekvienas modelis. Ne kiekvienas etalonas. Tačiau ši sritis viešai atkuria savo matavimo juostą. Naujesni vertinimai, tokie kaip „SWE bench Pro“ ir projektas, pavadintas „SWE rebench“, bando tai ištaisyti, išlaikydami testavimo kodą privatų.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ar kas nors iš tikrųjų kyla švariai?",
+      "text_markdown": "Ar kas nors iš tikrųjų kyla švariai?",
+      "title": "",
+      "tts": {
+        "text": "Ar kas nors iš tikrųjų kyla švariai?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Du dalykai, švaresnėse lentelėse. Balandžio viduryje „Anthropic“ „Claude Opus 4.7“ tapo pirmuoju modeliu, kuris švariai peržengė 1500 Elo reitingą „LM Arena“ kodavimo lyderių lentelėje. „Opus 4.6“ buvo pasiekęs 1500 prieš porą savaičių. Šią savaitę „Opus 4.7“ vis dar yra viršuje, apie 1569. „Anthropic“ taip pat turi atskirą modelį, pavadintą „Mythos“, privačioje partnerių peržiūroje, kuris pirmauja 17 iš 18 agentų etalonų, kuriuos „Anthropic“ matavo.",
+      "text_markdown": "Du dalykai, švaresnėse lentelėse. Balandžio viduryje „Anthropic“ „Claude Opus 4.7“ tapo pirmuoju modeliu, kuris švariai peržengė 1500 Elo reitingą „LM Arena“ kodavimo lyderių lentelėje. „Opus 4.6“ buvo pasiekęs 1500 prieš porą savaičių. Šią savaitę „Opus 4.7“ vis dar yra viršuje, apie 1569. „Anthropic“ taip pat turi atskirą modelį, pavadintą „Mythos“, privačioje partnerių peržiūroje, kuris pirmauja 17 iš 18 agentų etalonų, kuriuos „Anthropic“ matavo.",
+      "title": "",
+      "tts": {
+        "text": "Du dalykai, švaresnėse lentelėse. Balandžio viduryje „Anthropic“ „Claude Opus keturi taškas septyni“ tapo pirmuoju modeliu, kuris švariai peržengė Elo reitingą, lygų tūkstančiui penkiems šimtams, „LM Arena“ kodavimo lyderių lentelėje. „Opus keturi taškas šeši“ buvo pasiekęs tūkstantį penkis šimtus prieš porą savaičių. Šią savaitę „Opus keturi taškas septyni“ vis dar yra viršuje, apie tūkstantį penkis šimtus šešiasdešimt devynis. „Anthropic“ taip pat turi atskirą modelį, pavadintą „Mythos“, privačioje partnerių peržiūroje, kuris pirmauja septyniolikoje iš aštuoniolikos agentų etalonų, kuriuos „Anthropic“ matavo.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Modelis, kurio visuomenė negali naudoti, yra lentelių viršuje.",
+      "text_markdown": "Modelis, kurio visuomenė negali naudoti, yra lentelių viršuje.",
+      "title": "",
+      "tts": {
+        "text": "Modelis, kurio visuomenė negali naudoti, yra lentelių viršuje.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Štai kur mes esame. Kita didelė tendencija – atvirojo ir uždarojo atotrūkis. Jis yra siauriausias, koks kada nors buvo. DeepSeek V4 Pro ir Kimi K 2.6 yra pasiekiamoje vietoje nuo GPT-5.5, vertinant pagal kryžminio vertinimo intelekto indeksą. Tas atotrūkis anksčiau buvo didžiulis. Dabar jis mažas.",
+      "text_markdown": "Štai kur mes esame. Kita didelė tendencija – atvirojo ir uždarojo atotrūkis. Jis yra siauriausias, koks kada nors buvo. DeepSeek V4 Pro ir Kimi K 2.6 yra pasiekiamoje vietoje nuo GPT-5.5, vertinant pagal kryžminio vertinimo intelekto indeksą. Tas atotrūkis anksčiau buvo didžiulis. Dabar jis mažas.",
+      "title": "",
+      "tts": {
+        "text": "Štai kur mes esame. Kita didelė tendencija – atvirojo ir uždarojo atotrūkis. Jis yra siauriausias, koks kada nors buvo. DeepSeek V keturi Pro ir Kimi K du taškas šeši yra pasiekiamoje vietoje nuo GPT penki taškas penki, vertinant pagal kryžminio vertinimo intelekto indeksą. Tas atotrūkis anksčiau buvo didžiulis. Dabar jis mažas.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Gerai, pereikime prie savaitės koncepcijos.",
+      "text_markdown": "Gerai, pereikime prie savaitės koncepcijos.",
+      "title": "",
+      "tts": {
+        "text": "Gerai, pereikime prie savaitės koncepcijos.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ronai, šios savaitės koncepcija yra ekspertų mišinys. Kodėl mes sutelkiame dėmesį į ekspertų mišinį?",
+      "text_markdown": "Ronai, šios savaitės koncepcija yra ekspertų mišinys. Kodėl mes sutelkiame dėmesį į ekspertų mišinį?",
+      "title": "",
+      "tts": {
+        "text": "Ronai, šios savaitės koncepcija yra ekspertų mišinys. Kodėl mes sutelkiame dėmesį į ekspertų mišinį?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nes atvirojo kodo modelis, apie kurį ką tik kalbėjome, Kimi K 2.6, iš viso turi 1 trilijoną parametrų. Tačiau bet kuriuo metu veikia tik 32 milijardai tų parametrų. Tai yra ekspertų mišinys.",
+      "text_markdown": "Nes atvirojo kodo modelis, apie kurį ką tik kalbėjome, Kimi K 2.6, iš viso turi 1 trilijoną parametrų. Tačiau bet kuriuo metu veikia tik 32 milijardai tų parametrų. Tai yra ekspertų mišinys.",
+      "title": "",
+      "tts": {
+        "text": "Nes atvirojo kodo modelis, apie kurį ką tik kalbėjome, Kimi K du taškas šeši, iš viso turi vieną trilijoną parametrų. Tačiau bet kuriuo metu veikia tik trisdešimt du milijardai tų parametrų. Tai yra ekspertų mišinys.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Papasakokite mums apie tai tiems, kurie mus klauso.",
+      "text_markdown": "Papasakokite mums apie tai tiems, kurie mus klauso.",
+      "title": "",
+      "tts": {
+        "text": "Papasakokite mums apie tai tiems, kurie mus klauso.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Įprastas dirbtinio intelekto modelis yra tarsi vienos milžiniškos smegenys. Kiekvienas jo sugeneruotas žodis naudoja kiekvieną smegenų dalį. Ekspertų mišinio modelis labiau primena pastatą, pilną specialistų. Su registratore prie durų. Kiekvienam žodžiui registratorė pasirenka du ar tris specialistus konsultacijai, o likusi pastato dalis lieka tyli.",
+      "text_markdown": "Įprastas dirbtinio intelekto modelis yra tarsi vienos milžiniškos smegenys. Kiekvienas jo sugeneruotas žodis naudoja kiekvieną smegenų dalį. Ekspertų mišinio modelis labiau primena pastatą, pilną specialistų. Su registratore prie durų. Kiekvienam žodžiui registratorė pasirenka du ar tris specialistus konsultacijai, o likusi pastato dalis lieka tyli.",
+      "title": "",
+      "tts": {
+        "text": "Įprastas dirbtinio intelekto modelis yra tarsi vienos milžiniškos smegenys. Kiekvienas jo sugeneruotas žodis naudoja kiekvieną smegenų dalį. Ekspertų mišinio modelis labiau primena pastatą, pilną specialistų. Su registratore prie durų. Kiekvienam žodžiui registratorė pasirenka du ar tris specialistus konsultacijai, o likusi pastato dalis lieka tyli.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Taigi modelis popieriuje yra didžiulis, bet pigus eksploatuoti.",
+      "text_markdown": "Taigi modelis popieriuje yra didžiulis, bet pigus eksploatuoti.",
+      "title": "",
+      "tts": {
+        "text": "Taigi modelis popieriuje yra didžiulis, bet pigus eksploatuoti.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tiksliai. 1 trilijonas parametrų talpos. Tačiau tik 32 milijardai skaičiavimo parametrų vienam žodžiui. Tai ir yra gudrybė. Registratorė yra mažas kodo gabalėlis, vadinamas maršrutizatoriumi. Specialistai yra potinkliai, vadinami ekspertais. Modelis apmoko maršrutizatorių ir ekspertus kartu, nuo pradžios iki pabaigos.",
+      "text_markdown": "Tiksliai. 1 trilijonas parametrų talpos. Tačiau tik 32 milijardai skaičiavimo parametrų vienam žodžiui. Tai ir yra gudrybė. Registratorė yra mažas kodo gabalėlis, vadinamas maršrutizatoriumi. Specialistai yra potinkliai, vadinami ekspertais. Modelis apmoko maršrutizatorių ir ekspertus kartu, nuo pradžios iki pabaigos.",
+      "title": "",
+      "tts": {
+        "text": "Tiksliai. Vienas trilijonas parametrų talpos. Tačiau tik trisdešimt du milijardai skaičiavimo parametrų vienam žodžiui. Tai ir yra gudrybė. Registratorė yra mažas kodo gabalėlis, vadinamas maršrutizatoriumi. Specialistai yra potinkliai, vadinami ekspertais. Modelis apmoko maršrutizatorių ir ekspertus kartu, nuo pradžios iki pabaigos.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ar kiekvienas pagrindinis pažangiausias modelis tai daro?",
+      "text_markdown": "Ar kiekvienas pagrindinis pažangiausias modelis tai daro?",
+      "title": "",
+      "tts": {
+        "text": "Ar kiekvienas pagrindinis pažangiausias modelis tai daro?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dauguma jų, taip. Nors laboratorijos ne visada tai patvirtina. GPT-4 buvo ekspertų mišinio modelis. DeepSeek flagmanas yra ekspertų mišinio modelis. Mistral siunčia ekspertų mišinio modelius nuo 2023 m. Nauja banga iš Kinijos išplėtė šį dizainą iki ribos.",
+      "text_markdown": "Dauguma jų, taip. Nors laboratorijos ne visada tai patvirtina. GPT-4 buvo ekspertų mišinio modelis. DeepSeek flagmanas yra ekspertų mišinio modelis. Mistral siunčia ekspertų mišinio modelius nuo 2023 m. Nauja banga iš Kinijos išplėtė šį dizainą iki ribos.",
+      "title": "",
+      "tts": {
+        "text": "Dauguma jų, taip. Nors laboratorijos ne visada tai patvirtina. GPT keturi buvo ekspertų mišinio modelis. DeepSeek flagmanas yra ekspertų mišinio modelis. Mistral siunčia ekspertų mišinio modelius nuo du tūkstančiai dvidešimt trijų metų. Nauja banga iš Kinijos išplėtė šį dizainą iki ribos.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kodėl tai svarbu tam, kas tiesiog naudojasi ChatGPT?",
+      "text_markdown": "Kodėl tai svarbu tam, kas tiesiog naudojasi ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Kodėl tai svarbu tam, kas tiesiog naudojasi ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dvi priežastys. Pirma. Tai yra pagrindinė priežastis, kodėl atvirojo kodo laboratorija Kinijoje gali veikti pažangiausios klasės kokybe už dalį biudžeto. Antra. Tai yra pagrindinė priežastis, kodėl vienas API iškvietimas kainuoja centus, o ne dolerius. Kai matote, kad kainos krenta, o kokybė išlieka aukšta, paprastai tai lemia ekspertų mišinys.",
+      "text_markdown": "Dvi priežastys. Pirma. Tai yra pagrindinė priežastis, kodėl atvirojo kodo laboratorija Kinijoje gali veikti pažangiausios klasės kokybe už dalį biudžeto. Antra. Tai yra pagrindinė priežastis, kodėl vienas API iškvietimas kainuoja centus, o ne dolerius. Kai matote, kad kainos krenta, o kokybė išlieka aukšta, paprastai tai lemia ekspertų mišinys.",
+      "title": "",
+      "tts": {
+        "text": "Dvi priežastys. Pirma. Tai yra pagrindinė priežastis, kodėl atvirojo kodo laboratorija Kinijoje gali veikti pažangiausios klasės kokybe už dalį biudžeto. Antra. Tai yra pagrindinė priežastis, kodėl vienas API iškvietimas kainuoja centus, o ne dolerius. Kai matote, kad kainos krenta, o kokybė išlieka aukšta, paprastai tai lemia ekspertų mišinys.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ekspertų mišinys. Maršrutizatorius. Ekspertai. Retas aktyvavimas. Trys žodžiai, kuriuos reikia prisiminti. Dabar grįžkime prie platesnio paveikslo.",
+      "text_markdown": "Ekspertų mišinys. Maršrutizatorius. Ekspertai. Retas aktyvavimas. Trys žodžiai, kuriuos reikia prisiminti. Dabar grįžkime prie platesnio paveikslo.",
+      "title": "",
+      "tts": {
+        "text": "Ekspertų mišinys. Maršrutizatorius. Ekspertai. Retas aktyvavimas. Trys žodžiai, kuriuos reikia prisiminti. Dabar grįžkime prie platesnio paveikslo.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ronai, didžioji istorija už mūsų pasaulio ribų šią savaitę yra Federalinis rezervas.",
+      "text_markdown": "Ronai, didžioji istorija už mūsų pasaulio ribų šią savaitę yra Federalinis rezervas.",
+      "title": "",
+      "tts": {
+        "text": "Ronai, didžioji istorija už mūsų pasaulio ribų šią savaitę yra Federalinis rezervas.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Šiandien JAV Senatas patvirtino Keviną Warshą kitu Federalinio rezervo pirmininku. Balsavimas buvo 54 prieš 45. Tai siauriausias balsavimas už Fed pirmininką šiuolaikinėje Amerikos istorijoje. Tik vienas demokratas perėjo į kitą pusę.",
+      "text_markdown": "Šiandien JAV Senatas patvirtino Keviną Warshą kitu Federalinio rezervo pirmininku. Balsavimas buvo 54 prieš 45. Tai siauriausias balsavimas už Fed pirmininką šiuolaikinėje Amerikos istorijoje. Tik vienas demokratas perėjo į kitą pusę.",
+      "title": "",
+      "tts": {
+        "text": "Šiandien JAV Senatas patvirtino Keviną Warshą kitu Federalinio rezervo pirmininku. Balsavimas buvo penkiasdešimt keturi prieš keturiasdešimt penkis. Tai siauriausias balsavimas už Fed pirmininką šiuolaikinėje Amerikos istorijoje. Tik vienas demokratas perėjo į kitą pusę.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kodėl tai svarbu dirbtiniam intelektui?",
+      "text_markdown": "Kodėl tai svarbu dirbtiniam intelektui?",
+      "title": "",
+      "tts": {
+        "text": "Kodėl tai svarbu dirbtiniam intelektui?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Nes dirbtinio intelekto plėtrą šiuo metu riboja du dalykai. Elektra ir kapitalo kaina. Federalinis rezervas nustato kapitalo kainą. O naujasis pirmininkas viešai pareiškė, kad nori mažinti palūkanų normas greičiau, nei būtų daręs jo pirmtakas.",
+      "text_markdown": "Nes dirbtinio intelekto plėtrą šiuo metu riboja du dalykai. Elektra ir kapitalo kaina. Federalinis rezervas nustato kapitalo kainą. O naujasis pirmininkas viešai pareiškė, kad nori mažinti palūkanų normas greičiau, nei būtų daręs jo pirmtakas.",
+      "title": "",
+      "tts": {
+        "text": "Nes dirbtinio intelekto plėtrą šiuo metu riboja du dalykai. Elektra ir kapitalo kaina. Federalinis rezervas nustato kapitalo kainą. O naujasis pirmininkas viešai pareiškė, kad nori mažinti palūkanų normas greičiau, nei būtų daręs jo pirmtakas.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Greitesnis palūkanų normų mažinimas atpigina DI investicijas.",
+      "text_markdown": "Greitesnis palūkanų normų mažinimas atpigina DI investicijas.",
+      "title": "",
+      "tts": {
+        "text": "Greitesnis palūkanų normų mažinimas atpigina DI investicijas.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Taip. Hiper-mastelio tiekėjai – „Microsoft“, „Google“, „Amazon“, „Meta“ – šiais metais planuoja išleisti maždaug 700 milijardų dolerių kapitalo išlaidoms. Didžiąją dalį sudaro GPU ir duomenų centrai. Mažesnė diskonto norma leidžia šiems daugiamečiams projektams pasiekti didesnes vertes.",
+      "text_markdown": "Taip. Hiper-mastelio tiekėjai – „Microsoft“, „Google“, „Amazon“, „Meta“ – šiais metais planuoja išleisti maždaug 700 milijardų dolerių kapitalo išlaidoms. Didžiąją dalį sudaro GPU ir duomenų centrai. Mažesnė diskonto norma leidžia šiems daugiamečiams projektams pasiekti didesnes vertes.",
+      "title": "",
+      "tts": {
+        "text": "Taip. Hiper-mastelio tiekėjai – „Microsoft“, „Google“, „Amazon“, „Meta“ – šiais metais planuoja išleisti maždaug septynis šimtus milijardų dolerių kapitalo išlaidoms. Didžiąją dalį sudaro GPU ir duomenų centrai. Mažesnė diskonto norma leidžia šiems daugiamečiams projektams pasiekti didesnes vertes.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ir kita kryptis. Kaip dirbtinis intelektas veikia tai, ką turi nuspręsti Federalinis rezervas?",
+      "text_markdown": "Ir kita kryptis. Kaip dirbtinis intelektas veikia tai, ką turi nuspręsti Federalinis rezervas?",
+      "title": "",
+      "tts": {
+        "text": "Ir kita kryptis. Kaip dirbtinis intelektas veikia tai, ką turi nuspręsti Federalinis rezervas?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Šita dalis pati įdomiausia. Išlaidos dirbtiniam intelektui dabar jau tokios didelės, kad tampa makroekonominiu dydžiu. Tai jau nebe vien sektoriaus istorija. Volstrito analitikai teigia, kad per pastaruosius kelis ketvirčius su dirbtiniu intelektu susijusios statybų ir įrangos išlaidos sudarė didžiąją dalį Jungtinių Valstijų ekonomikos augimo.",
+      "text_markdown": "Šita dalis pati įdomiausia. Išlaidos dirbtiniam intelektui dabar jau tokios didelės, kad tampa makroekonominiu dydžiu. Tai jau nebe vien sektoriaus istorija. Volstrito analitikai teigia, kad per pastaruosius kelis ketvirčius su dirbtiniu intelektu susijusios statybų ir įrangos išlaidos sudarė didžiąją dalį Jungtinių Valstijų ekonomikos augimo.",
+      "title": "",
+      "tts": {
+        "text": "Šita dalis pati įdomiausia. Išlaidos dirbtiniam intelektui dabar jau tokios didelės, kad tampa makroekonominiu dydžiu. Tai jau nebe vien sektoriaus istorija. Volstrito analitikai teigia, kad per pastaruosius kelis ketvirčius su dirbtiniu intelektu susijusios statybų ir įrangos išlaidos sudarė didžiąją dalį Jungtinių Valstijų ekonomikos augimo.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Didžioji augimo dalis.",
+      "text_markdown": "Didžioji augimo dalis.",
+      "title": "",
+      "tts": {
+        "text": "Didžioji augimo dalis.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Didžioji dalis. Ir tai veikia Federalinį rezervą dviem kryptimis. Ilguoju laikotarpiu DI yra produktyvumo variklis. Tai defliacinis veiksnys. Tai suteikia Federaliniam rezervui erdvės mažinti palūkanas. Trumpuoju laikotarpiu tai yra paklausos šokas elektrai, variui, kvalifikuotai darbo jėgai, vandeniui aušinimui. Tai yra infliacinis veiksnys. Ypač tokiose vietose kaip Virdžinija ir Teksasas, kur koncentruojasi duomenų centrai.",
+      "text_markdown": "Didžioji dalis. Ir tai veikia Federalinį rezervą dviem kryptimis. Ilguoju laikotarpiu DI yra produktyvumo variklis. Tai defliacinis veiksnys. Tai suteikia Federaliniam rezervui erdvės mažinti palūkanas. Trumpuoju laikotarpiu tai yra paklausos šokas elektrai, variui, kvalifikuotai darbo jėgai, vandeniui aušinimui. Tai yra infliacinis veiksnys. Ypač tokiose vietose kaip Virdžinija ir Teksasas, kur koncentruojasi duomenų centrai.",
+      "title": "",
+      "tts": {
+        "text": "Didžioji dalis. Ir tai veikia Federalinį rezervą dviem kryptimis. Ilguoju laikotarpiu DI yra produktyvumo variklis. Tai defliacinis veiksnys. Tai suteikia Federaliniam rezervui erdvės mažinti palūkanas. Trumpuoju laikotarpiu tai yra paklausos šokas elektrai, variui, kvalifikuotai darbo jėgai, vandeniui aušinimui. Tai yra infliacinis veiksnys. Ypač tokiose vietose kaip Virdžinija ir Teksasas, kur koncentruojasi duomenų centrai.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Taigi naujasis pirmininkas turi nuspręsti, ar DI yra atsakymas į infliaciją, ar DI yra infliacijos priežastis.",
+      "text_markdown": "Taigi naujasis pirmininkas turi nuspręsti, ar DI yra atsakymas į infliaciją, ar DI yra infliacijos priežastis.",
+      "title": "",
+      "tts": {
+        "text": "Taigi naujasis pirmininkas turi nuspręsti, ar DI yra atsakymas į infliaciją, ar DI yra infliacijos priežastis.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Abu, vienu metu. Ir viskas, ką jis pasakys savo pirmosiose viešose kalbose, paveiks kiekvieną DI kapitalo išlaidų modelį Volstryte.",
+      "text_markdown": "Abu, vienu metu. Ir viskas, ką jis pasakys savo pirmosiose viešose kalbose, paveiks kiekvieną DI kapitalo išlaidų modelį Volstryte.",
+      "title": "",
+      "tts": {
+        "text": "Abu, vienu metu. Ir viskas, ką jis pasakys savo pirmosiose viešose kalbose, paveiks kiekvieną DI kapitalo išlaidų modelį Volstryte.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "„Microsoft“ turi 80 milijardų dolerių neįvykdytų debesų kompiuterijos užsakymų dėl elektros energijos. Ar tai teisingas skaičius?",
+      "text_markdown": "„Microsoft“ turi 80 milijardų dolerių neįvykdytų debesų kompiuterijos užsakymų dėl elektros energijos. Ar tai teisingas skaičius?",
+      "title": "",
+      "tts": {
+        "text": "„Microsoft“ turi aštuoniasdešimt milijardų dolerių neįvykdytų debesų kompiuterijos užsakymų dėl elektros energijos. Ar tai teisingas skaičius?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tai yra skaičius, kurį pranešė „Microsoft“. „Azure“ klientai laukia eilėje dėl talpos. Apribojimas nebėra lustai. Tai yra elektros tinklas. Elektros energijos rinkos negali sukurti naujos talpos taip greitai, kaip nori duomenų centrai.",
+      "text_markdown": "Tai yra skaičius, kurį pranešė „Microsoft“. „Azure“ klientai laukia eilėje dėl talpos. Apribojimas nebėra lustai. Tai yra elektros tinklas. Elektros energijos rinkos negali sukurti naujos talpos taip greitai, kaip nori duomenų centrai.",
+      "title": "",
+      "tts": {
+        "text": "Tai yra skaičius, kurį pranešė „Microsoft“. „Azure“ klientai laukia eilėje dėl talpos. Apribojimas nebėra lustai. Tai yra elektros tinklas. Elektros energijos rinkos negali sukurti naujos talpos taip greitai, kaip nori duomenų centrai.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kada Warsho pirmasis susitikimas?",
+      "text_markdown": "Kada Warsho pirmasis susitikimas?",
+      "title": "",
+      "tts": {
+        "text": "Kada Warsho pirmasis susitikimas?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Birželio 16 ir 17 dienomis. Po to žinosime daug daugiau apie palūkanų normų kelią.",
+      "text_markdown": "Birželio 16 ir 17 dienomis. Po to žinosime daug daugiau apie palūkanų normų kelią.",
+      "title": "",
+      "tts": {
+        "text": "Birželio šešioliktą ir septynioliktą dienomis. Po to žinosime daug daugiau apie palūkanų normų kelią.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Gera vieta baigti. Ronai, ačiū.",
+      "text_markdown": "Gera vieta baigti. Ronai, ačiū.",
+      "title": "",
+      "tts": {
+        "text": "Gera vieta baigti. Ronai, ačiū.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vindy, kaip visada.",
+      "text_markdown": "Vindy, kaip visada.",
+      "title": "",
+      "tts": {
+        "text": "Vindy, kaip visada.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Tai buvo „AI This Week“ už 2026 m. gegužės 13 d. Naujas numeris kitą trečiadienį. Iki tol, laikykitės.",
+      "text_markdown": "Tai buvo „AI This Week“ už 2026 m. gegužės 13 d. Naujas numeris kitą trečiadienį. Iki tol, laikykitės.",
+      "title": "",
+      "tts": {
+        "text": "Tai buvo „AI This Week“ už du tūkstančiai dvidešimt šeštųjų metų gegužės tryliktąją. Naujas numeris kitą trečiadienį. Iki tol, laikykitės.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

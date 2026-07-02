@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "熱帯雨林",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "熱帯雨林",
+      "text_markdown": "熱帯雨林"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "熱帯雨林の広がる場所",
+      "text_markdown": "熱帯雨林の広がる場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林へようこそ。",
+      "text_markdown": "熱帯雨林へようこそ。",
+      "tts": {
+        "text": "熱帯雨林へようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは、世界の偉大なバイオームのひとつです。",
+      "text_markdown": "ここは、世界の偉大なバイオームのひとつです。",
+      "tts": {
+        "text": "ここは、世界の偉大なバイオームのひとつです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、独自の気候、植物、動物を持つ地球の一部です。",
+      "text_markdown": "バイオームとは、独自の気候、植物、動物を持つ地球の一部です。",
+      "tts": {
+        "text": "バイオームとは、独自の気候、植物、動物を持つ地球の一部です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林は、一年じゅう暖かいです。",
+      "text_markdown": "熱帯雨林は、一年じゅう暖かいです。",
+      "tts": {
+        "text": "熱帯雨林は、一年じゅう暖かいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年じゅう湿っています。",
+      "text_markdown": "一年じゅう湿っています。",
+      "tts": {
+        "text": "一年じゅう湿っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "命にあふれています。",
+      "text_markdown": "命にあふれています。",
+      "tts": {
+        "text": "命にあふれています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの熱帯雨林は、赤道の近くで育ちます。",
+      "text_markdown": "ほとんどの熱帯雨林は、赤道の近くで育ちます。",
+      "tts": {
+        "text": "ほとんどの熱帯雨林は、赤道の近くで育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赤道とは、地球の真ん中をぐるりと走る線のことです。",
+      "text_markdown": "赤道とは、地球の真ん中をぐるりと走る線のことです。",
+      "tts": {
+        "text": "赤道とは、地球の真ん中をぐるりと走る線のことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赤道の近くでは、太陽が毎日強く照りつけます。",
+      "text_markdown": "赤道の近くでは、太陽が毎日強く照りつけます。",
+      "tts": {
+        "text": "赤道の近くでは、太陽が毎日強く照りつけます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界でいちばん大きな熱帯雨林は、南アメリカのアマゾンです。",
+      "text_markdown": "世界でいちばん大きな熱帯雨林は、南アメリカのアマゾンです。",
+      "tts": {
+        "text": "世界でいちばん大きな熱帯雨林は、南アメリカのアマゾンです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカにも、コンゴ川の近くに大きな熱帯雨林があります。",
+      "text_markdown": "アフリカにも、コンゴ川の近くに大きな熱帯雨林があります。",
+      "tts": {
+        "text": "アフリカにも、コンゴ川の近くに大きな熱帯雨林があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東南アジアの多くの島々にも、熱帯雨林があります。",
+      "text_markdown": "東南アジアの多くの島々にも、熱帯雨林があります。",
+      "tts": {
+        "text": "東南アジアの多くの島々にも、熱帯雨林があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中央アメリカや太平洋の島々には、もっと小さな熱帯雨林もあります。",
+      "text_markdown": "中央アメリカや太平洋の島々には、もっと小さな熱帯雨林もあります。",
+      "tts": {
+        "text": "中央アメリカや太平洋の島々には、もっと小さな熱帯雨林もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの森はそれぞれ、遠く離れた場所で、独自に育ってきました。",
+      "text_markdown": "これらの森はそれぞれ、遠く離れた場所で、独自に育ってきました。",
+      "tts": {
+        "text": "これらの森はそれぞれ、遠く離れた場所で、独自に育ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ですから、植物も動物も、世界の場所ごとに違います。",
+      "text_markdown": "ですから、植物も動物も、世界の場所ごとに違います。",
+      "tts": {
+        "text": "ですから、植物も動物も、世界の場所ごとに違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アマゾンのサルと、アフリカやアジアのサルは、同じではありません。",
+      "text_markdown": "アマゾンのサルと、アフリカやアジアのサルは、同じではありません。",
+      "tts": {
+        "text": "アマゾンのサルと、アフリカやアジアのサルは、同じではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも、すべて同じバイオームの一部なのです。",
+      "text_markdown": "それでも、すべて同じバイオームの一部なのです。",
+      "tts": {
+        "text": "それでも、すべて同じバイオームの一部なのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の中に立つと、空気が重くて暖かく感じられます。",
+      "text_markdown": "熱帯雨林の中に立つと、空気が重くて暖かく感じられます。",
+      "tts": {
+        "text": "熱帯雨林の中に立つと、空気が重くて暖かく感じられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "光は、やわらかな緑色をしています。",
+      "text_markdown": "光は、やわらかな緑色をしています。",
+      "tts": {
+        "text": "光は、やわらかな緑色をしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々がとても高くて、空はほとんど見えません。",
+      "text_markdown": "木々がとても高くて、空はほとんど見えません。",
+      "tts": {
+        "text": "木々がとても高くて、空はほとんど見えません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まわりじゅうから、鳥や虫の声が聞こえます。",
+      "text_markdown": "まわりじゅうから、鳥や虫の声が聞こえます。",
+      "tts": {
+        "text": "まわりじゅうから、鳥や虫の声が聞こえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉から水が滴り落ちる音も聞こえます。",
+      "text_markdown": "葉から水が滴り落ちる音も聞こえます。",
+      "tts": {
+        "text": "葉から水が滴り落ちる音も聞こえます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まるで、生きている部屋の中にいるような気持ちになります。",
+      "text_markdown": "まるで、生きている部屋の中にいるような気持ちになります。",
+      "tts": {
+        "text": "まるで、生きている部屋の中にいるような気持ちになります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが熱帯雨林です。",
+      "text_markdown": "それが熱帯雨林です。",
+      "tts": {
+        "text": "それが熱帯雨林です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "熱帯雨林の広がる場所",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木と雨でできた、ひとつの世界です。",
+      "text_markdown": "木と雨でできた、ひとつの世界です。",
+      "tts": {
+        "text": "木と雨でできた、ひとつの世界です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "気候",
+      "text_markdown": "気候"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の気候は、とても単純です。",
+      "text_markdown": "熱帯雨林の気候は、とても単純です。",
+      "tts": {
+        "text": "熱帯雨林の気候は、とても単純です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かくて、雨がたくさん降ります。",
+      "text_markdown": "暖かくて、雨がたくさん降ります。",
+      "tts": {
+        "text": "暖かくて、雨がたくさん降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "気温は、一年じゅうほとんど変わりません。",
+      "text_markdown": "気温は、一年じゅうほとんど変わりません。",
+      "tts": {
+        "text": "気温は、一年じゅうほとんど変わりません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬になっても、寒くなりません。",
+      "text_markdown": "冬になっても、寒くなりません。",
+      "tts": {
+        "text": "冬になっても、寒くなりません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏になっても、とても暑くはなりません。",
+      "text_markdown": "夏になっても、とても暑くはなりません。",
+      "tts": {
+        "text": "夏になっても、とても暑くはなりません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの日は、暖かくて穏やかです。",
+      "text_markdown": "ほとんどの日は、暖かくて穏やかです。",
+      "tts": {
+        "text": "ほとんどの日は、暖かくて穏やかです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんど毎日、雨が降ります。",
+      "text_markdown": "ほとんど毎日、雨が降ります。",
+      "tts": {
+        "text": "ほとんど毎日、雨が降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "場所によっては、一年に二メートル以上の雨が降ります。",
+      "text_markdown": "場所によっては、一年に二メートル以上の雨が降ります。",
+      "tts": {
+        "text": "場所によっては、一年に二メートル以上の雨が降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは、世界のほとんどの場所では見られないほどの雨の量です。",
+      "text_markdown": "それは、世界のほとんどの場所では見られないほどの雨の量です。",
+      "tts": {
+        "text": "それは、世界のほとんどの場所では見られないほどの雨の量です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨は、午後に降ることが多いです。",
+      "text_markdown": "雨は、午後に降ることが多いです。",
+      "tts": {
+        "text": "雨は、午後に降ることが多いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大きな雲が、木々の上に集まってきます。",
+      "text_markdown": "大きな雲が、木々の上に集まってきます。",
+      "tts": {
+        "text": "大きな雲が、木々の上に集まってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "激しいにわか雨が、一、二時間ほど降ります。",
+      "text_markdown": "激しいにわか雨が、一、二時間ほど降ります。",
+      "tts": {
+        "text": "激しいにわか雨が、一、二時間ほど降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、また太陽が顔を出します。",
+      "text_markdown": "そして、また太陽が顔を出します。",
+      "tts": {
+        "text": "そして、また太陽が顔を出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉が輝き、地面からは湯気が立ち上ります。",
+      "text_markdown": "葉が輝き、地面からは湯気が立ち上ります。",
+      "tts": {
+        "text": "葉が輝き、地面からは湯気が立ち上ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここには、四つの季節はありません。",
+      "text_markdown": "ここには、四つの季節はありません。",
+      "tts": {
+        "text": "ここには、四つの季節はありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の多い時期と、雨の少ない時期があるだけです。",
+      "text_markdown": "雨の多い時期と、雨の少ない時期があるだけです。",
+      "tts": {
+        "text": "雨の多い時期と、雨の少ない時期があるだけです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の少ない時期でも、雨はよく降ります。",
+      "text_markdown": "雨の少ない時期でも、雨はよく降ります。",
+      "tts": {
+        "text": "雨の少ない時期でも、雨はよく降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の植物や動物にとっては、毎日がほとんど同じように感じられます。",
+      "text_markdown": "熱帯雨林の植物や動物にとっては、毎日がほとんど同じように感じられます。",
+      "tts": {
+        "text": "熱帯雨林の植物や動物にとっては、毎日がほとんど同じように感じられます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "大地と水",
+      "text_markdown": "大地と水"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の地面は命に満ちていますが、土はうすいです。",
+      "text_markdown": "熱帯雨林の地面は命に満ちていますが、土はうすいです。",
+      "tts": {
+        "text": "熱帯雨林の地面は命に満ちていますが、土はうすいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "栄養のほとんどは、表面の数センチに集まっています。",
+      "text_markdown": "栄養のほとんどは、表面の数センチに集まっています。",
+      "tts": {
+        "text": "栄養のほとんどは、表面の数センチに集まっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉が落ちると、虫や小さな生き物がすぐにそれを分解します。",
+      "text_markdown": "葉が落ちると、虫や小さな生き物がすぐにそれを分解します。",
+      "tts": {
+        "text": "葉が落ちると、虫や小さな生き物がすぐにそれを分解します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木はその栄養を、すぐに吸い上げてしまいます。",
+      "text_markdown": "木はその栄養を、すぐに吸い上げてしまいます。",
+      "tts": {
+        "text": "木はその栄養を、すぐに吸い上げてしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、切り倒された熱帯雨林を元にもどすのは、むずかしいのです。",
+      "text_markdown": "だから、切り倒された熱帯雨林を元にもどすのは、むずかしいのです。",
+      "tts": {
+        "text": "だから、切り倒された熱帯雨林を元にもどすのは、むずかしいのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木がなくなると、雨がうすい土を流してしまいます。",
+      "text_markdown": "木がなくなると、雨がうすい土を流してしまいます。",
+      "tts": {
+        "text": "木がなくなると、雨がうすい土を流してしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの熱帯雨林にも、川が流れています。",
+      "text_markdown": "どの熱帯雨林にも、川が流れています。",
+      "tts": {
+        "text": "どの熱帯雨林にも、川が流れています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とても大きな川もあります。",
+      "text_markdown": "とても大きな川もあります。",
+      "tts": {
+        "text": "とても大きな川もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アマゾン川は、世界のどの川よりも多くの水を運びます。",
+      "text_markdown": "アマゾン川は、世界のどの川よりも多くの水を運びます。",
+      "tts": {
+        "text": "アマゾン川は、世界のどの川よりも多くの水を運びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の多い時期には、川は森の奥まで広がっていきます。",
+      "text_markdown": "雨の多い時期には、川は森の奥まで広がっていきます。",
+      "tts": {
+        "text": "雨の多い時期には、川は森の奥まで広がっていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々は、何か月も水の中に立っています。",
+      "text_markdown": "木々は、何か月も水の中に立っています。",
+      "tts": {
+        "text": "木々は、何か月も水の中に立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "魚が、幹の間を泳ぎまわります。",
+      "text_markdown": "魚が、幹の間を泳ぎまわります。",
+      "tts": {
+        "text": "魚が、幹の間を泳ぎまわります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの川は小さく澄んでいて、底には石があります。",
+      "text_markdown": "ほかの川は小さく澄んでいて、底には石があります。",
+      "tts": {
+        "text": "ほかの川は小さく澄んでいて、底には石があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森そのものは、いくつかの層に分かれて育っています。",
+      "text_markdown": "森そのものは、いくつかの層に分かれて育っています。",
+      "tts": {
+        "text": "森そのものは、いくつかの層に分かれて育っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "いちばん高い場所には、太陽に向かって枝を広げる、もっとも高い木々があります。",
+      "text_markdown": "いちばん高い場所には、太陽に向かって枝を広げる、もっとも高い木々があります。",
+      "tts": {
+        "text": "いちばん高い場所には、太陽に向かって枝を広げる、もっとも高い木々があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その下には、葉の厚い緑の屋根が広がっています。",
+      "text_markdown": "その下には、葉の厚い緑の屋根が広がっています。",
+      "tts": {
+        "text": "その下には、葉の厚い緑の屋根が広がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その屋根の下では、空気が日陰で静かです。",
+      "text_markdown": "その屋根の下では、空気が日陰で静かです。",
+      "tts": {
+        "text": "その屋根の下では、空気が日陰で静かです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面までは、わずかな光しか届きません。",
+      "text_markdown": "地面までは、わずかな光しか届きません。",
+      "tts": {
+        "text": "地面までは、わずかな光しか届きません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "大地と水",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれの層が、このバイオームの動物や植物にとって、違う住みかになっています。",
+      "text_markdown": "それぞれの層が、このバイオームの動物や植物にとって、違う住みかになっています。",
+      "tts": {
+        "text": "それぞれの層が、このバイオームの動物や植物にとって、違う住みかになっています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林には、世界で一番たくさんの種類の植物があります。",
+      "text_markdown": "熱帯雨林には、世界で一番たくさんの種類の植物があります。",
+      "tts": {
+        "text": "熱帯雨林には、世界で一番たくさんの種類の植物があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々が、その中心です。",
+      "text_markdown": "木々が、その中心です。",
+      "tts": {
+        "text": "木々が、その中心です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある木々は、太陽を目指してとても高く伸びます。",
+      "text_markdown": "ある木々は、太陽を目指してとても高く伸びます。",
+      "tts": {
+        "text": "ある木々は、太陽を目指してとても高く伸びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その幹は、まっすぐで、すべすべしています。",
+      "text_markdown": "その幹は、まっすぐで、すべすべしています。",
+      "tts": {
+        "text": "その幹は、まっすぐで、すべすべしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "根は、うすい土の中でも木を支えるために、根元で壁のように広く張り出しています。",
+      "text_markdown": "根は、うすい土の中でも木を支えるために、根元で壁のように広く張り出しています。",
+      "tts": {
+        "text": "根は、うすい土の中でも木を支えるために、根元で壁のように広く張り出しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "つる植物が、光を求めて幹を這い上がります。",
+      "text_markdown": "つる植物が、光を求めて幹を這い上がります。",
+      "tts": {
+        "text": "つる植物が、光を求めて幹を這い上がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "腕ほどの太さのつる植物もあります。",
+      "text_markdown": "腕ほどの太さのつる植物もあります。",
+      "tts": {
+        "text": "腕ほどの太さのつる植物もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木のまわりに巻きつき、枝から垂れ下がっています。",
+      "text_markdown": "木のまわりに巻きつき、枝から垂れ下がっています。",
+      "tts": {
+        "text": "木のまわりに巻きつき、枝から垂れ下がっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い空中で、木そのものに育つ植物もあります。",
+      "text_markdown": "高い空中で、木そのものに育つ植物もあります。",
+      "tts": {
+        "text": "高い空中で、木そのものに育つ植物もあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地面には、まったく根を下ろしていません。",
+      "text_markdown": "地面には、まったく根を下ろしていません。",
+      "tts": {
+        "text": "地面には、まったく根を下ろしていません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "樹皮を伝って流れる雨水を飲んでいます。",
+      "text_markdown": "樹皮を伝って流れる雨水を飲んでいます。",
+      "tts": {
+        "text": "樹皮を伝って流れる雨水を飲んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暗い森の地面には、シダやしっとりした緑の植物が育ちます。",
+      "text_markdown": "暗い森の地面には、シダやしっとりした緑の植物が育ちます。",
+      "tts": {
+        "text": "暗い森の地面には、シダやしっとりした緑の植物が育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わずかな光のしずくも逃さないように、葉は広くて平らです。",
+      "text_markdown": "わずかな光のしずくも逃さないように、葉は広くて平らです。",
+      "tts": {
+        "text": "わずかな光のしずくも逃さないように、葉は広くて平らです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花は、思いつくかぎりのあらゆる色で咲きます。",
+      "text_markdown": "花は、思いつくかぎりのあらゆる色で咲きます。",
+      "tts": {
+        "text": "花は、思いつくかぎりのあらゆる色で咲きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赤いもの、黄色いもの、濃い紫のものもあります。",
+      "text_markdown": "赤いもの、黄色いもの、濃い紫のものもあります。",
+      "tts": {
+        "text": "赤いもの、黄色いもの、濃い紫のものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夜に開く花も、たくさんあります。",
+      "text_markdown": "夜に開く花も、たくさんあります。",
+      "tts": {
+        "text": "夜に開く花も、たくさんあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "果実は、一年じゅう枝に実ります。",
+      "text_markdown": "果実は、一年じゅう枝に実ります。",
+      "tts": {
+        "text": "果実は、一年じゅう枝に実ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "甘い果実、すっぱい果実、硬い殻のついた果実があります。",
+      "text_markdown": "甘い果実、すっぱい果実、硬い殻のついた果実があります。",
+      "tts": {
+        "text": "甘い果実、すっぱい果実、硬い殻のついた果実があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちが家で食べる食べ物の多くは、もともと熱帯雨林で野生に育っていました。",
+      "text_markdown": "わたしたちが家で食べる食べ物の多くは、もともと熱帯雨林で野生に育っていました。",
+      "tts": {
+        "text": "わたしたちが家で食べる食べ物の多くは、もともと熱帯雨林で野生に育っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チョコレートのもとになるカカオは、南アメリカの熱帯雨林からやってきました。",
+      "text_markdown": "チョコレートのもとになるカカオは、南アメリカの熱帯雨林からやってきました。",
+      "tts": {
+        "text": "チョコレートのもとになるカカオは、南アメリカの熱帯雨林からやってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初のバナナは、東南アジアの熱帯雨林で育っていました。",
+      "text_markdown": "最初のバナナは、東南アジアの熱帯雨林で育っていました。",
+      "tts": {
+        "text": "最初のバナナは、東南アジアの熱帯雨林で育っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちが大好きな食べ物には、それぞれ地球のどこかにある森の物語があります。",
+      "text_markdown": "わたしたちが大好きな食べ物には、それぞれ地球のどこかにある森の物語があります。",
+      "tts": {
+        "text": "わたしたちが大好きな食べ物には、それぞれ地球のどこかにある森の物語があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の植物をよく見ると、生きていくための賢い工夫が見つかります。",
+      "text_markdown": "熱帯雨林の植物をよく見ると、生きていくための賢い工夫が見つかります。",
+      "tts": {
+        "text": "熱帯雨林の植物をよく見ると、生きていくための賢い工夫が見つかります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある葉は、雨がすぐに流れ落ちるように、先が長くとがっています。",
+      "text_markdown": "ある葉は、雨がすぐに流れ落ちるように、先が長くとがっています。",
+      "tts": {
+        "text": "ある葉は、雨がすぐに流れ落ちるように、先が長くとがっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある花は、ぴったりの虫を呼ぶために、夜だけ甘い香りを放ちます。",
+      "text_markdown": "ある花は、ぴったりの虫を呼ぶために、夜だけ甘い香りを放ちます。",
+      "tts": {
+        "text": "ある花は、ぴったりの虫を呼ぶために、夜だけ甘い香りを放ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森ぜんたいが、緑でできた静かな機械のようです。",
+      "text_markdown": "森ぜんたいが、緑でできた静かな機械のようです。",
+      "tts": {
+        "text": "森ぜんたいが、緑でできた静かな機械のようです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林には、陸上のほかのどの場所よりも、たくさんの種類の動物が暮らしています。",
+      "text_markdown": "熱帯雨林には、陸上のほかのどの場所よりも、たくさんの種類の動物が暮らしています。",
+      "tts": {
+        "text": "熱帯雨林には、陸上のほかのどの場所よりも、たくさんの種類の動物が暮らしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そのほとんどは、地面ではなく、高い木の上に住んでいます。",
+      "text_markdown": "そのほとんどは、地面ではなく、高い木の上に住んでいます。",
+      "tts": {
+        "text": "そのほとんどは、地面ではなく、高い木の上に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高いところには、食べ物も光もたくさんあるからです。",
+      "text_markdown": "高いところには、食べ物も光もたくさんあるからです。",
+      "tts": {
+        "text": "高いところには、食べ物も光もたくさんあるからです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "サルは、多くの熱帯雨林に住んでいます。",
+      "text_markdown": "サルは、多くの熱帯雨林に住んでいます。",
+      "tts": {
+        "text": "サルは、多くの熱帯雨林に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "枝から枝へ飛びうつり、木々の間で鳴き交わします。",
+      "text_markdown": "枝から枝へ飛びうつり、木々の間で鳴き交わします。",
+      "tts": {
+        "text": "枝から枝へ飛びうつり、木々の間で鳴き交わします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカの熱帯雨林では、もう一本の手のように使える長い尾を持つサルもいます。",
+      "text_markdown": "南アメリカの熱帯雨林では、もう一本の手のように使える長い尾を持つサルもいます。",
+      "tts": {
+        "text": "南アメリカの熱帯雨林では、もう一本の手のように使える長い尾を持つサルもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オウムや、ほかの色あざやかな鳥たちが、高い枝の間を飛び交います。",
+      "text_markdown": "オウムや、ほかの色あざやかな鳥たちが、高い枝の間を飛び交います。",
+      "tts": {
+        "text": "オウムや、ほかの色あざやかな鳥たちが、高い枝の間を飛び交います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "果実や種を食べます。",
+      "text_markdown": "果実や種を食べます。",
+      "tts": {
+        "text": "果実や種を食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "羽は、赤や緑、青や黄色をしています。",
+      "text_markdown": "羽は、赤や緑、青や黄色をしています。",
+      "tts": {
+        "text": "羽は、赤や緑、青や黄色をしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの熱帯雨林では、大型の猫科の動物が、夜に地面で狩りをします。",
+      "text_markdown": "多くの熱帯雨林では、大型の猫科の動物が、夜に地面で狩りをします。",
+      "tts": {
+        "text": "多くの熱帯雨林では、大型の猫科の動物が、夜に地面で狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南北アメリカでは、それはジャガーです。",
+      "text_markdown": "南北アメリカでは、それはジャガーです。",
+      "tts": {
+        "text": "南北アメリカでは、それはジャガーです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アジアでは、それはトラです。",
+      "text_markdown": "アジアでは、それはトラです。",
+      "tts": {
+        "text": "アジアでは、それはトラです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカでは、それはヒョウです。",
+      "text_markdown": "アフリカでは、それはヒョウです。",
+      "tts": {
+        "text": "アフリカでは、それはヒョウです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どれも力強く静かで、毛皮には斑点や縞模様があります。",
+      "text_markdown": "どれも力強く静かで、毛皮には斑点や縞模様があります。",
+      "tts": {
+        "text": "どれも力強く静かで、毛皮には斑点や縞模様があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘビは、葉や木の間をするすると進みます。",
+      "text_markdown": "ヘビは、葉や木の間をするすると進みます。",
+      "tts": {
+        "text": "ヘビは、葉や木の間をするすると進みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とても小さなヘビもいれば、とても長いヘビもいます。",
+      "text_markdown": "とても小さなヘビもいれば、とても長いヘビもいます。",
+      "tts": {
+        "text": "とても小さなヘビもいれば、とても長いヘビもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどは臆病で、人から離れて暮らしています。",
+      "text_markdown": "ほとんどは臆病で、人から離れて暮らしています。",
+      "tts": {
+        "text": "ほとんどは臆病で、人から離れて暮らしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カエルは毎晩鳴き、雨上がりにはとくによく鳴きます。",
+      "text_markdown": "カエルは毎晩鳴き、雨上がりにはとくによく鳴きます。",
+      "tts": {
+        "text": "カエルは毎晩鳴き、雨上がりにはとくによく鳴きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とても小さくて、あざやかな色のカエルもいます。",
+      "text_markdown": "とても小さくて、あざやかな色のカエルもいます。",
+      "tts": {
+        "text": "とても小さくて、あざやかな色のカエルもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あざやかな色は、ほかの動物への警告です。",
+      "text_markdown": "あざやかな色は、ほかの動物への警告です。",
+      "tts": {
+        "text": "あざやかな色は、ほかの動物への警告です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "虫たちは、森のすみずみまで満たしています。",
+      "text_markdown": "虫たちは、森のすみずみまで満たしています。",
+      "tts": {
+        "text": "虫たちは、森のすみずみまで満たしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林には、ほかのどの種類の動物よりも、虫がたくさんいます。",
+      "text_markdown": "熱帯雨林には、ほかのどの種類の動物よりも、虫がたくさんいます。",
+      "tts": {
+        "text": "熱帯雨林には、ほかのどの種類の動物よりも、虫がたくさんいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アリは、森の地面を長い列をなして進みます。",
+      "text_markdown": "アリは、森の地面を長い列をなして進みます。",
+      "tts": {
+        "text": "アリは、森の地面を長い列をなして進みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "カブトムシは、木の幹をのぼります。",
+      "text_markdown": "カブトムシは、木の幹をのぼります。",
+      "tts": {
+        "text": "カブトムシは、木の幹をのぼります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チョウは、絵の具で染めたような広い羽で、ふわふわと空を漂います。",
+      "text_markdown": "チョウは、絵の具で染めたような広い羽で、ふわふわと空を漂います。",
+      "tts": {
+        "text": "チョウは、絵の具で染めたような広い羽で、ふわふわと空を漂います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "魚は川に住み、形も大きさもさまざまです。",
+      "text_markdown": "魚は川に住み、形も大きさもさまざまです。",
+      "tts": {
+        "text": "魚は川に住み、形も大きさもさまざまです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "とても小さな銀色の魚もいれば、子どもより大きな魚もいます。",
+      "text_markdown": "とても小さな銀色の魚もいれば、子どもより大きな魚もいます。",
+      "tts": {
+        "text": "とても小さな銀色の魚もいれば、子どもより大きな魚もいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そのはるか上空では、ワシが森の緑の屋根の上を滑るように飛びます。",
+      "text_markdown": "そのはるか上空では、ワシが森の緑の屋根の上を滑るように飛びます。",
+      "tts": {
+        "text": "そのはるか上空では、ワシが森の緑の屋根の上を滑るように飛びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下の動きを、じっと見つめています。",
+      "text_markdown": "下の動きを、じっと見つめています。",
+      "tts": {
+        "text": "下の動きを、じっと見つめています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コウモリは、日が沈むと、果実や虫を食べに飛び立ちます。",
+      "text_markdown": "コウモリは、日が沈むと、果実や虫を食べに飛び立ちます。",
+      "tts": {
+        "text": "コウモリは、日が沈むと、果実や虫を食べに飛び立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の一本の木には、ほかの場所の町ぜんたいよりも多くの種類の動物がいることもあります。",
+      "text_markdown": "熱帯雨林の一本の木には、ほかの場所の町ぜんたいよりも多くの種類の動物がいることもあります。",
+      "tts": {
+        "text": "熱帯雨林の一本の木には、ほかの場所の町ぜんたいよりも多くの種類の動物がいることもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが、このバイオームのすばらしさです。",
+      "text_markdown": "それが、このバイオームのすばらしさです。",
+      "tts": {
+        "text": "それが、このバイオームのすばらしさです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は、とても昔から熱帯雨林に暮らしてきました。",
+      "text_markdown": "人々は、とても昔から熱帯雨林に暮らしてきました。",
+      "tts": {
+        "text": "人々は、とても昔から熱帯雨林に暮らしてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木、雨、動物とともに、うまく生きる方法を学んできました。",
+      "text_markdown": "木、雨、動物とともに、うまく生きる方法を学んできました。",
+      "tts": {
+        "text": "木、雨、動物とともに、うまく生きる方法を学んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の多くの人々は、小さな村に暮らしています。",
+      "text_markdown": "熱帯雨林の多くの人々は、小さな村に暮らしています。",
+      "tts": {
+        "text": "熱帯雨林の多くの人々は、小さな村に暮らしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "家は、湿った地面より高いところに保つために、長い木の柱の上に建てられていることが多いです。",
+      "text_markdown": "家は、湿った地面より高いところに保つために、長い木の柱の上に建てられていることが多いです。",
+      "tts": {
+        "text": "家は、湿った地面より高いところに保つために、長い木の柱の上に建てられていることが多いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "屋根は、葉を厚く何層にも重ねて作られています。",
+      "text_markdown": "屋根は、葉を厚く何層にも重ねて作られています。",
+      "tts": {
+        "text": "屋根は、葉を厚く何層にも重ねて作られています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "よい葉の屋根は、激しい雨も防いでくれます。",
+      "text_markdown": "よい葉の屋根は、激しい雨も防いでくれます。",
+      "tts": {
+        "text": "よい葉の屋根は、激しい雨も防いでくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "壁は、暖かい空気が通り抜けるように、開かれていることがよくあります。",
+      "text_markdown": "壁は、暖かい空気が通り抜けるように、開かれていることがよくあります。",
+      "tts": {
+        "text": "壁は、暖かい空気が通り抜けるように、開かれていることがよくあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は川で魚を取り、森から食べ物を集めます。",
+      "text_markdown": "人々は川で魚を取り、森から食べ物を集めます。",
+      "tts": {
+        "text": "人々は川で魚を取り、森から食べ物を集めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弓や槍で、小さな動物を狩ります。",
+      "text_markdown": "弓や槍で、小さな動物を狩ります。",
+      "tts": {
+        "text": "弓や槍で、小さな動物を狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木を切り開いた小さな畑で、食べ物を育てます。",
+      "text_markdown": "木を切り開いた小さな畑で、食べ物を育てます。",
+      "tts": {
+        "text": "木を切り開いた小さな畑で、食べ物を育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何を育てるかは、住んでいる場所によって違います。",
+      "text_markdown": "何を育てるかは、住んでいる場所によって違います。",
+      "tts": {
+        "text": "何を育てるかは、住んでいる場所によって違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカの熱帯雨林では、人々は何千年もの間、キャッサバやさつまいもを育ててきました。",
+      "text_markdown": "南アメリカの熱帯雨林では、人々は何千年もの間、キャッサバやさつまいもを育ててきました。",
+      "tts": {
+        "text": "南アメリカの熱帯雨林では、人々は何千年もの間、キャッサバやさつまいもを育ててきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカの熱帯雨林では、人々はヤムイモやヤシの実を育ててきました。",
+      "text_markdown": "アフリカの熱帯雨林では、人々はヤムイモやヤシの実を育ててきました。",
+      "tts": {
+        "text": "アフリカの熱帯雨林では、人々はヤムイモやヤシの実を育ててきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東南アジアや太平洋の熱帯雨林では、人々はタロイモ、米、パンノキの実を育ててきました。",
+      "text_markdown": "東南アジアや太平洋の熱帯雨林では、人々はタロイモ、米、パンノキの実を育ててきました。",
+      "tts": {
+        "text": "東南アジアや太平洋の熱帯雨林では、人々はタロイモ、米、パンノキの実を育ててきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数年たつと、畑を森にもどし、ほかの場所に新しい畑を作ります。",
+      "text_markdown": "数年たつと、畑を森にもどし、ほかの場所に新しい畑を作ります。",
+      "tts": {
+        "text": "数年たつと、畑を森にもどし、ほかの場所に新しい畑を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こうして、森は健やかなままでいられるのです。",
+      "text_markdown": "こうして、森は健やかなままでいられるのです。",
+      "tts": {
+        "text": "こうして、森は健やかなままでいられるのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林の人々は、何千種類もの植物を知っています。",
+      "text_markdown": "熱帯雨林の人々は、何千種類もの植物を知っています。",
+      "tts": {
+        "text": "熱帯雨林の人々は、何千種類もの植物を知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どれが食べ物になるか、どれが薬になるか、どれが食べると危ないかを、知っています。",
+      "text_markdown": "どれが食べ物になるか、どれが薬になるか、どれが食べると危ないかを、知っています。",
+      "tts": {
+        "text": "どれが食べ物になるか、どれが薬になるか、どれが食べると危ないかを、知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鳥たちの歌を覚えます。",
+      "text_markdown": "鳥たちの歌を覚えます。",
+      "tts": {
+        "text": "鳥たちの歌を覚えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動物たちの足跡を覚えます。",
+      "text_markdown": "動物たちの足跡を覚えます。",
+      "tts": {
+        "text": "動物たちの足跡を覚えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この知恵は、年ごとに親から子へと伝えられていきます。",
+      "text_markdown": "この知恵は、年ごとに親から子へと伝えられていきます。",
+      "tts": {
+        "text": "この知恵は、年ごとに親から子へと伝えられていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの熱帯雨林にも、こうした暮らしには、独自の言葉、独自の物語、独自の音楽があります。",
+      "text_markdown": "どの熱帯雨林にも、こうした暮らしには、独自の言葉、独自の物語、独自の音楽があります。",
+      "tts": {
+        "text": "どの熱帯雨林にも、こうした暮らしには、独自の言葉、独自の物語、独自の音楽があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今の熱帯雨林",
+      "text_markdown": "今の熱帯雨林"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林は、地球でもっとも大切なバイオームのひとつです。",
+      "text_markdown": "熱帯雨林は、地球でもっとも大切なバイオームのひとつです。",
+      "tts": {
+        "text": "熱帯雨林は、地球でもっとも大切なバイオームのひとつです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々は、地面から水を吸い上げ、それを空へと吐き出します。",
+      "text_markdown": "木々は、地面から水を吸い上げ、それを空へと吐き出します。",
+      "tts": {
+        "text": "木々は、地面から水を吸い上げ、それを空へと吐き出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森の上にできた雲は、遠くの土地へ雨を運びます。",
+      "text_markdown": "森の上にできた雲は、遠くの土地へ雨を運びます。",
+      "tts": {
+        "text": "森の上にできた雲は、遠くの土地へ雨を運びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木も呼吸をしますが、わたしたちとは逆向きです。",
+      "text_markdown": "木も呼吸をしますが、わたしたちとは逆向きです。",
+      "tts": {
+        "text": "木も呼吸をしますが、わたしたちとは逆向きです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちが吐き出す気体を吸い込み、それを使って育ちます。",
+      "text_markdown": "わたしたちが吐き出す気体を吸い込み、それを使って育ちます。",
+      "tts": {
+        "text": "わたしたちが吐き出す気体を吸い込み、それを使って育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、わたしたちが吸い込む気体を返してくれます。",
+      "text_markdown": "そして、わたしたちが吸い込む気体を返してくれます。",
+      "tts": {
+        "text": "そして、わたしたちが吸い込む気体を返してくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "けれども、熱帯雨林は困難な状況にあります。",
+      "text_markdown": "けれども、熱帯雨林は困難な状況にあります。",
+      "tts": {
+        "text": "けれども、熱帯雨林は困難な状況にあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの場所では、人々が作物を植えたり、家畜を飼ったりするために、木を切り倒してきました。",
+      "text_markdown": "多くの場所では、人々が作物を植えたり、家畜を飼ったりするために、木を切り倒してきました。",
+      "tts": {
+        "text": "多くの場所では、人々が作物を植えたり、家畜を飼ったりするために、木を切り倒してきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木がなくなると、土は流され、雨もそれまでのようには降らなくなります。",
+      "text_markdown": "木がなくなると、土は流され、雨もそれまでのようには降らなくなります。",
+      "tts": {
+        "text": "木がなくなると、土は流され、雨もそれまでのようには降らなくなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そこに暮らす動物や人々は、住みかを失います。",
+      "text_markdown": "そこに暮らす動物や人々は、住みかを失います。",
+      "tts": {
+        "text": "そこに暮らす動物や人々は、住みかを失います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の多くの団体が、残された森を守ろうと活動しています。",
+      "text_markdown": "世界の多くの団体が、残された森を守ろうと活動しています。",
+      "tts": {
+        "text": "世界の多くの団体が、残された森を守ろうと活動しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新しい木を植えます。",
+      "text_markdown": "新しい木を植えます。",
+      "tts": {
+        "text": "新しい木を植えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森に暮らす人々が、森を守れるように手助けをします。",
+      "text_markdown": "森に暮らす人々が、森を守れるように手助けをします。",
+      "tts": {
+        "text": "森に暮らす人々が、森を守れるように手助けをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森をよりよく理解できるように、研究もしています。",
+      "text_markdown": "森をよりよく理解できるように、研究もしています。",
+      "tts": {
+        "text": "森をよりよく理解できるように、研究もしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "熱帯雨林が育つには、何百年もかかります。",
+      "text_markdown": "熱帯雨林が育つには、何百年もかかります。",
+      "tts": {
+        "text": "熱帯雨林が育つには、何百年もかかります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "けれど、健やかな熱帯雨林は、何千年も育ち続けることができます。",
+      "text_markdown": "けれど、健やかな熱帯雨林は、何千年も育ち続けることができます。",
+      "tts": {
+        "text": "けれど、健やかな熱帯雨林は、何千年も育ち続けることができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "今の熱帯雨林",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "わたしたちが大切に守る価値があります。",
+      "text_markdown": "わたしたちが大切に守る価値があります。",
+      "tts": {
+        "text": "わたしたちが大切に守る価値があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これが熱帯雨林です。",
+      "text_markdown": "これが熱帯雨林です。",
+      "tts": {
+        "text": "これが熱帯雨林です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かく、湿った、命に満ちた緑の世界です。",
+      "text_markdown": "暖かく、湿った、命に満ちた緑の世界です。",
+      "tts": {
+        "text": "暖かく、湿った、命に満ちた緑の世界です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もしいつか足を踏み入れたら、しばらく静かに立ち止まってみてください。",
+      "text_markdown": "もしいつか足を踏み入れたら、しばらく静かに立ち止まってみてください。",
+      "tts": {
+        "text": "もしいつか足を踏み入れたら、しばらく静かに立ち止まってみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鳥、カエル、葉に降る雨の音に耳をすませてみてください。",
+      "text_markdown": "鳥、カエル、葉に降る雨の音に耳をすませてみてください。",
+      "tts": {
+        "text": "鳥、カエル、葉に降る雨の音に耳をすませてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたのまわりで、このバイオームの鼓動が聞こえてくるはずです。",
+      "text_markdown": "あなたのまわりで、このバイオームの鼓動が聞こえてくるはずです。",
+      "tts": {
+        "text": "あなたのまわりで、このバイオームの鼓動が聞こえてくるはずです。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}
